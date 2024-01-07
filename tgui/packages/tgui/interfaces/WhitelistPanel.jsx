@@ -106,12 +106,13 @@ const StatusUpdate = (props, context) => {
   } = data;
   return (
     <Section fill>
-      <h1 align="center">Whitelists for: {viewed_player.name}</h1>
+      <h1 align="center">Whitelists for: {viewed_player.ckey}</h1>
       <Section title="Commanding Officer">
         <Stack align="right" grow={1}>
           {co_flags.map((bit, i) => {
             const isWhitelisted =
               viewed_player.flags && viewed_player.flags & bit.bitflag;
+            const editable = user_rights && bit.permission & user_rights;
             return (
               <Button.Checkbox
                 key={i}
@@ -120,6 +121,7 @@ const StatusUpdate = (props, context) => {
                 checked={isWhitelisted}
                 color={isWhitelisted ? 'good' : 'bad'}
                 content={bit.name}
+                disabled={!editable}
                 onClick={() =>
                   act('mob_mute', {
                     'mute_flag': !isWhitelisted
@@ -137,6 +139,7 @@ const StatusUpdate = (props, context) => {
           {syn_flags.map((bit, i) => {
             const isWhitelisted =
               viewed_player.flags && viewed_player.flags & bit.bitflag;
+            const editable = user_rights && bit.permission & user_rights;
             return (
               <Button.Checkbox
                 key={i}
@@ -145,6 +148,7 @@ const StatusUpdate = (props, context) => {
                 checked={isWhitelisted}
                 color={isWhitelisted ? 'good' : 'bad'}
                 content={bit.name}
+                disabled={!editable}
                 onClick={() =>
                   act('mob_mute', {
                     'mute_flag': !isWhitelisted
@@ -162,6 +166,7 @@ const StatusUpdate = (props, context) => {
           {yaut_flags.map((bit, i) => {
             const isWhitelisted =
               viewed_player.flags && viewed_player.flags & bit.bitflag;
+            const editable = user_rights && bit.permission & user_rights;
             return (
               <Button.Checkbox
                 key={i}
@@ -170,6 +175,7 @@ const StatusUpdate = (props, context) => {
                 checked={isWhitelisted}
                 color={isWhitelisted ? 'good' : 'bad'}
                 content={bit.name}
+                disabled={!editable}
                 onClick={() =>
                   act('mob_mute', {
                     'mute_flag': !isWhitelisted
@@ -187,6 +193,7 @@ const StatusUpdate = (props, context) => {
           {misc_flags.map((bit, i) => {
             const isWhitelisted =
               viewed_player.flags && viewed_player.flags & bit.bitflag;
+            const editable = user_rights && bit.permission & user_rights;
             return (
               <Button.Checkbox
                 key={i}
@@ -195,31 +202,7 @@ const StatusUpdate = (props, context) => {
                 checked={isWhitelisted}
                 color={isWhitelisted ? 'good' : 'bad'}
                 content={bit.name}
-                onClick={() =>
-                  act('mob_mute', {
-                    'mute_flag': !isWhitelisted
-                      ? client_muted | bit.bitflag
-                      : client_muted & ~bit.bitflag,
-                  })
-                }
-              />
-            );
-          })}
-        </Stack>
-      </Section>
-      <Section title="Controller">
-        <Stack align="right" grow={1}>
-          {misc_flags.map((bit, i) => {
-            const isWhitelisted =
-              viewed_player.flags && viewed_player.flags & bit.bitflag;
-            return (
-              <Button.Checkbox
-                key={i}
-                width="100%"
-                height="100%"
-                checked={isWhitelisted}
-                color={isWhitelisted ? 'good' : 'bad'}
-                content={bit.name}
+                disabled={!editable}
                 onClick={() =>
                   act('mob_mute', {
                     'mute_flag': !isWhitelisted

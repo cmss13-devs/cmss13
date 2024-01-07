@@ -69,50 +69,56 @@ target.client.prefs.muted = text2num(params["mute_flag"])
 
 GLOBAL_DATUM_INIT(WhitelistPanel, /datum/whitelist_panel, new)
 
+#define WL_PANEL_RIGHT_CO (1<<0)
+#define WL_PANEL_RIGHT_SYNTH (1<<1)
+#define WL_PANEL_RIGHT_YAUTJA (1<<2)
+#define WL_PANEL_RIGHT_MENTOR (1<<3)
+#define WL_PANEL_RIGHT_OVERSEER (1<<4)
+#define WL_PANEL_ALL_RIGHTS (WL_PANEL_RIGHT_CO|WL_PANEL_RIGHT_SYNTH|WL_PANEL_RIGHT_YAUTJA|WL_PANEL_RIGHT_MENTOR|WL_PANEL_RIGHT_OVERSEER)
+
 /datum/whitelist_panel
 	var/viewed_player = list()
 	var/current_menu = "Panel"
 	var/used_by
-	var/user_rights
-
-#define PANEL_RIGHT_CO (1<<0)
-#define PANEL_RIGHT_SYNTH (1<<1)
-#define PANEL_RIGHT_YAUTJA (1<<2)
-#define PANEL_RIGHT_MENTOR (1<<3)
-#define PANEL_RIGHT_OVERSEER (1<<4)
-#define PANEL_ALL_RIGHTS (PANEL_RIGHT_CO|PANEL_RIGHT_SYNTH|PANEL_RIGHT_YAUTJA|PANEL_RIGHT_MENTOR|PANEL_RIGHT_OVERSEER)
+	var/user_rights = 0
 
 /datum/whitelist_panel/proc/get_user_rights(mob/user)
 	if(!user.client)
 		return
 	var/client/person = user.client
 	if(CLIENT_HAS_RIGHTS(person, R_PERMISSIONS) || person.check_whitelist_status(WHITELISTS_LEADER))
-		return PANEL_ALL_RIGHTS
+		return WL_PANEL_ALL_RIGHTS
 	var/rights
 	if(person.check_whitelist_status(WHITELIST_COMMANDER_LEADER))
-		rights |= PANEL_RIGHT_CO
+		rights |= WL_PANEL_RIGHT_CO
 	if(person.check_whitelist_status(WHITELIST_SYNTHETIC_LEADER))
-		rights |= PANEL_RIGHT_SYNTH
+		rights |= WL_PANEL_RIGHT_SYNTH
 	if(person.check_whitelist_status(WHITELIST_YAUTJA_LEADER))
-		rights |= PANEL_RIGHT_YAUTJA
+		rights |= WL_PANEL_RIGHT_YAUTJA
 	return rights
 
-/datum/whitelist_panel/tgui_interact(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/whitelist_panel/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "WhitelistPanel", "Whitelist Panel")
 		ui.open()
+
+/datum/whitelist_panel/ui_state(mob/user)
+	return GLOB.always_state
 
 /datum/whitelist_panel/ui_close(mob/user)
 	. = ..()
 	if(used_by)
 		used_by = null
 	viewed_player = list()
+	user_rights = 0
+	current_menu = "Panel"
 
 /datum/whitelist_panel/ui_data(mob/user)
 	var/list/data = list()
 
 	data["current_menu"] = current_menu
+	data["user_rights"] = user_rights
 	data["viewed_player"] = viewed_player
 
 	var/list/datum/view_record/players/players_view = DB_VIEW(/datum/view_record/players, DB_COMP("whitelist_status", DB_NOTEQUAL, ""))
@@ -128,32 +134,31 @@ GLOBAL_DATUM_INIT(WhitelistPanel, /datum/whitelist_panel, new)
 	return data
 
 GLOBAL_LIST_INIT(co_flags, list(
-	list(name = "Whitelisted", bitflag = WHITELIST_COMMANDER, permission = PANEL_RIGHT_CO),
-	list(name = "Council", bitflag = WHITELIST_COMMANDER_COUNCIL, permission = PANEL_RIGHT_CO),
-	list(name = "Legacy Council", bitflag = WHITELIST_COMMANDER_COUNCIL_LEGACY, permission = PANEL_RIGHT_CO),
-	list(name = "Senator", bitflag = WHITELIST_COMMANDER_LEADER, permission = PANEL_RIGHT_OVERSEER)
+	list(name = "Whitelisted", bitflag = WHITELIST_COMMANDER, permission = WL_PANEL_RIGHT_CO),
+	list(name = "Council", bitflag = WHITELIST_COMMANDER_COUNCIL, permission = WL_PANEL_RIGHT_CO),
+	list(name = "Legacy Council", bitflag = WHITELIST_COMMANDER_COUNCIL_LEGACY, permission = WL_PANEL_RIGHT_CO),
+	list(name = "Senator", bitflag = WHITELIST_COMMANDER_LEADER, permission = WL_PANEL_RIGHT_OVERSEER)
 ))
 GLOBAL_LIST_INIT(syn_flags, list(
-	list(name = "Whitelisted", bitflag = WHITELIST_SYNTHETIC, permission = PANEL_RIGHT_SYNTH),
-	list(name = "Council", bitflag = WHITELIST_SYNTHETIC_COUNCIL, permission = PANEL_RIGHT_SYNTH),
-	list(name = "Legacy Council", bitflag = WHITELIST_SYNTHETIC_COUNCIL_LEGACY, permission = PANEL_RIGHT_SYNTH),
-	list(name = "Senator", bitflag = WHITELIST_SYNTHETIC_LEADER, permission = PANEL_RIGHT_OVERSEER)
+	list(name = "Whitelisted", bitflag = WHITELIST_SYNTHETIC, permission = WL_PANEL_RIGHT_SYNTH),
+	list(name = "Council", bitflag = WHITELIST_SYNTHETIC_COUNCIL, permission = WL_PANEL_RIGHT_SYNTH),
+	list(name = "Legacy Council", bitflag = WHITELIST_SYNTHETIC_COUNCIL_LEGACY, permission = WL_PANEL_RIGHT_SYNTH),
+	list(name = "Senator", bitflag = WHITELIST_SYNTHETIC_LEADER, permission = WL_PANEL_RIGHT_OVERSEER)
 ))
 GLOBAL_LIST_INIT(yaut_flags, list(
-	list(name = "Whitelisted", bitflag = WHITELIST_YAUTJA, permission = PANEL_RIGHT_YAUTJA),
-	list(name = "Legacy", bitflag = WHITELIST_YAUTJA_LEGACY, permission = PANEL_RIGHT_OVERSEER),
-	list(name = "Council", bitflag = WHITELIST_YAUTJA_COUNCIL, permission = PANEL_RIGHT_YAUTJA),
-	list(name = "Legacy Council", bitflag = WHITELIST_YAUTJA_COUNCIL_LEGACY, permission = PANEL_RIGHT_YAUTJA),
-	list(name = "Senator", bitflag = WHITELIST_YAUTJA_LEADER, permission = PANEL_RIGHT_OVERSEER)
+	list(name = "Whitelisted", bitflag = WHITELIST_YAUTJA, permission = WL_PANEL_RIGHT_YAUTJA),
+	list(name = "Legacy", bitflag = WHITELIST_YAUTJA_LEGACY, permission = WL_PANEL_RIGHT_OVERSEER),
+	list(name = "Council", bitflag = WHITELIST_YAUTJA_COUNCIL, permission = WL_PANEL_RIGHT_YAUTJA),
+	list(name = "Legacy Council", bitflag = WHITELIST_YAUTJA_COUNCIL_LEGACY, permission = WL_PANEL_RIGHT_YAUTJA),
+	list(name = "Senator", bitflag = WHITELIST_YAUTJA_LEADER, permission = WL_PANEL_RIGHT_OVERSEER)
 ))
 GLOBAL_LIST_INIT(misc_flags, list(
-	list(name = "Senior Enlisted Advisor", bitflag = WHITELIST_MENTOR, permission = PANEL_RIGHT_MENTOR),
-	list(name = "Working Joe", bitflag = WHITELIST_JOE, permission = PANEL_RIGHT_SYNTH),
+	list(name = "Senior Enlisted Advisor", bitflag = WHITELIST_MENTOR, permission = WL_PANEL_RIGHT_MENTOR),
+	list(name = "Working Joe", bitflag = WHITELIST_JOE, permission = WL_PANEL_RIGHT_SYNTH),
 ))
 
 /datum/whitelist_panel/ui_static_data(mob/user)
 	. = list()
-	.["glob_mute_bits"] = GLOB.mute_bits
 	.["co_flags"] = GLOB.co_flags
 	.["syn_flags"] = GLOB.syn_flags
 	.["yaut_flags"] = GLOB.yaut_flags
@@ -166,7 +171,7 @@ GLOBAL_LIST_INIT(misc_flags, list(
 	var/mob/user = usr
 	switch(action)
 		if("select_player")
-			if(used_by != user.ckey)
+			if(used_by && (used_by != user.ckey))
 				to_chat(user, SPAN_ALERTWARNING("Panel already in use by [used_by]"))
 				var/override_option = tgui_alert(user, "The Whitelist Panel is in use by [used_by]. Do you want to override?", "Use Panel", list("Override", "Cancel"))
 				if(override_option != "Override")
@@ -211,3 +216,9 @@ GLOBAL_LIST_INIT(misc_flags, list(
 
 
 #undef WHITELISTFILE
+#undef WL_PANEL_RIGHT_CO
+#undef WL_PANEL_RIGHT_SYNTH
+#undef WL_PANEL_RIGHT_YAUTJA
+#undef WL_PANEL_RIGHT_MENTOR
+#undef WL_PANEL_RIGHT_OVERSEER
+#undef WL_PANEL_ALL_RIGHTS

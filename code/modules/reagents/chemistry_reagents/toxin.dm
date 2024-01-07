@@ -208,7 +208,7 @@
 	color = COLOR_WHITE
 	chemfiresupp = TRUE
 	intensitymod = 0.1
-	burncolor = "#800080"
+	burncolor = COLOR_PURPLE
 	burncolormod = 5
 	overdose = 30
 	chemclass = CHEM_CLASS_UNCOMMON

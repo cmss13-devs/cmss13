@@ -42,15 +42,12 @@
 
 //color define with a proper name
 
-//gris
-//Olive rgb(128, 128, 0)
+///Olive rgb(128, 128, 0)
 #define COLOR_OLIVE "#808000"
-//Silver rgb(192, 192, 192) shade of grey
+///Silver rgb(192, 192, 192) shade of grey
 #define COLOR_SILVER "#C0C0C0"
-//Gray rgb(128, 128, 128)
+///Gray rgb(128, 128, 128)
 #define COLOR_GRAY "#808080"
-
-
 
 #define COLOR_FLOORTILE_GRAY "#8D8B8B"
 
@@ -58,7 +55,7 @@
 
 #define COLOR_DARK_RED "#A50824"
 
-//Maroon rgb(128, 0, 0) shade of red
+///Maroon rgb(128, 0, 0) shade of red
 #define COLOR_MAROON "#800000"
 
 #define COLOR_VIVID_RED "#FF3232"
@@ -74,11 +71,11 @@
 #define COLOR_TEAL "#008080"
 
 #define COLOR_MODERATE_BLUE "#555CC2"
-
+///Purple rgb( 128, 0, 128)
 #define COLOR_PURPLE "#800080"
 #define COLOR_STRONG_VIOLET "#6927c5"
 
-#define COLOR_BEIGE "#CEB689"
+#define COLOR_LIGHT_ORANGE "#CEB689"
 #define COLOR_DARK_MODERATE_ORANGE "#8B633B"
 
 #define COLOR_BROWN "#BA9F6D"

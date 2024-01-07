@@ -764,8 +764,8 @@
 	name = "Napalm E"
 	id = "napalme"
 	description = "A sticky combustible liquid chemical that penetrates the best fire retardants."
-	color = "#800080"
-	burncolor = "#800080"
+	color = COLOR_PURPLE
+	burncolor = COLOR_PURPLE
 	burn_sprite = "dynamic"
 	properties = list(
 		PROPERTY_INTENSITY = BURN_LEVEL_TIER_2,

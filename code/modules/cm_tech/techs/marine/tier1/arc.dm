@@ -3,7 +3,7 @@
 	desc = "Purchase an M540 Armored Recon Carrier, specialized in assisting groundside command. Able to be driven by Staff Officers, Executive Officers, and Commanding Officers."
 	icon_state = "upgrade"
 
-	required_points = 0 //zonenote
+	required_points = 5
 
 	tier = /datum/tier/one
 

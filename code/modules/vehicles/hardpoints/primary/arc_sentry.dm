@@ -12,7 +12,7 @@
 	damage_multiplier = 0.1
 	health = 125
 
-	origins = list(0, 1)
+	origins = list(0, 0)
 
 	ammo = new /obj/item/ammo_magazine/hardpoint/arc_sentry
 	max_clips = 2
@@ -133,13 +133,11 @@
 
 /obj/item/hardpoint/primary/arc_sentry/handle_fire(atom/target, mob/living/user, params)
 	var/turf/origin_turf = get_origin_turf()
-	//origin_turf = locate(origin_turf.x + origins[1], origin_turf.y + origins[2], origin_turf.z) //zonenote
 
 	var/obj/projectile/arc_sentry/new_bullet = generate_bullet(origin_turf)
 	ammo.current_rounds--
 	SEND_SIGNAL(new_bullet, COMSIG_BULLET_USER_EFFECTS, user)
 	new_bullet.runtime_iff_group = faction_group // Technically shouldn't be directly modifying this, but sue me
-	//new_bullet.fire_at(fire_target, owner, origin_turf, new_bullet.ammo.max_range, new_bullet.ammo.shell_speed) //zonenote origin
 
 	// turf-targeted projectiles are fired without scatter, because proc would raytrace them further away
 	var/ammo_flags = new_bullet.ammo.flags_ammo_behavior | new_bullet.projectile_override_flags
@@ -243,7 +241,7 @@
 					blocked = TRUE
 					break
 
-			for(var/obj/vehicle/multitile/vehicle in tile) //zonenote
+			for(var/obj/vehicle/multitile/vehicle in tile)
 				if(vehicle == owner) // Some of the tiles will inevitably be the ARC itself
 					continue
 				blocked = TRUE

@@ -31,6 +31,7 @@
 	pixel_x = 6;
 	pixel_y = 28
 	},
+/obj/item/device/megaphone,
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_9_1"
 	},

@@ -1,5 +1,5 @@
 /obj/item/hardpoint/support/arc_antenna
-	name = "\improper U-56 Communications Antenna"
+	name = "\improper U-56 Radar Antenna"
 	desc = "A heavy-duty antenna built for the ARC."
 	icon = 'icons/obj/vehicles/hardpoints/arc.dmi'
 

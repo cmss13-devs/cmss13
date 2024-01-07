@@ -2,7 +2,7 @@
 	name = "\improper RE700 Rotary Cannon Magazine"
 	desc = "A magazine for RE700 Rotary Cannon filled with 20mm rounds. Supports IFF."
 	caliber = "20mm"
-	icon_state = "ace_autocannon" //zonenote
+	icon_state = "ace_autocannon"
 	w_class = SIZE_LARGE
 	default_ammo = /datum/ammo/bullet/re700
 	max_rounds = 500

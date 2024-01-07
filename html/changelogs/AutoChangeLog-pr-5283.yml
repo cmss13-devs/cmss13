@@ -1,8 +1,0 @@
-author: "Blundir"
-delete-after: True
-changes:
-  - rscadd: "added approved stamp"
-  - bugfix: "fixed being unable to write on papers on noticeboard"
-  - ui: "changed noticeboard UI from scratch"
-  - refactor: "refactored noticeboard code"
-  - maptweak: "added noticeboard to req and approved stamp to QM's office, as well as some pens in req area to interact with noticeboard"

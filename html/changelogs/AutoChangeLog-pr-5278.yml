@@ -1,4 +1,0 @@
-author: "ihatethisengine"
-delete-after: True
-changes:
-  - rscadd: "Xenos now see marines on the tacmap during hijack if xenos outnumber marines for more than 25%."

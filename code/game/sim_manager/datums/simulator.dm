@@ -1,3 +1,6 @@
+#define LOWER_BOUND 0
+#define UPPER_BOUND 1
+
 /datum/simulator
 
 	// Necessary to prevent multiple users from simulating at the same time.
@@ -10,6 +13,9 @@
 
 	// garbage collection,
 	var/static/list/delete_targets = list()
+	// used in the garbage collection proc to clear from the lower and upper bounds of the sim room.
+	var/turf/lower_bound
+	var/turf/upper_bound
 
 	// list of users currently inside the simulator
 	var/static/list/users_in_sim = list()
@@ -24,6 +30,14 @@
 		RAVAGER_MODE = /mob/living/carbon/xenomorph/ravager,
 		CRUSHER_MODE = /mob/living/carbon/xenomorph/crusher,
 	)
+
+
+/datum/simulator/New()
+	. = ..()
+	sim_camera = SAFEPICK(GLOB.simulator_cameras)
+	// could of hard coded it, but I guess it's better to be safe if someone chooses to modify the sim room size in the future.
+	lower_bound = locate_sim_bound(sim_camera.x, sim_camera.y, sim_camera.z, bound_type = LOWER_BOUND)
+	upper_bound = locate_sim_bound(sim_camera.x, sim_camera.y, sim_camera.z, bound_type = UPPER_BOUND)
 
 /datum/simulator/proc/start_watching(mob/living/user)
 
@@ -51,15 +65,57 @@
 
 /datum/simulator/proc/sim_turf_garbage_collection()
 
-	var/area/sim_grid_area = get_area(sim_camera)
-	if(!sim_grid_area)
+	if(!sim_camera)
 		sim_reboot_state = FALSE
 		return
 
 	QDEL_LIST(delete_targets)
 
-	for(var/turf/open/floor/engine/engine_floor in sim_grid_area)
-		engine_floor.empty(/turf/open/floor/engine)
+	// clears from left to right like so
+	/*
+	... | ...
+	y:2 | x: 1 2 3 4 ...
+	y:1 | x: 1 2 3 4 ...
+	*/
+	for (var/y_pos in 1 to (upper_bound.y - lower_bound.y))// outer y
+		for (var/x_pos in 1 to (upper_bound.x - lower_bound.x)) // inner x
+			var/turf/current_turf = locate(lower_bound.x + x_pos, lower_bound.y + y_pos, lower_bound.z)
+			current_turf.empty(get_turf(sim_camera))
+
+/**
+ * Recursive function that finds the lower or upper bound for the sim room, assumption being the sim room size may be changed in the future.
+ * Maybe better to just do this via find the area's turf on init?
+ *
+ * Arguments:
+ * * x_pos: x coordinate value on a grid plane
+ * * y_pos: y coordinate value on a grid plane
+ * * z_pos: y coordinate value on a grid plane
+ * * bound_type: determines where the grid coordinates iterate to, either the upper right or lower left corner.
+ *
+ */
+/datum/simulator/proc/locate_sim_bound(x_pos, y_pos, z_pos, bound_type)
+	var/valid_turf
+	var/turf/current_turf = locate(x_pos, y_pos, z_pos)
+	if(current_turf.density)
+		return FALSE
+
+	if(bound_type == LOWER_BOUND)
+		valid_turf = locate_sim_bound(current_turf.x - 1, current_turf.y, current_turf.z, bound_type)
+		if(valid_turf)
+			current_turf = valid_turf
+		valid_turf = locate_sim_bound(current_turf.x, current_turf.y - 1, current_turf.z, bound_type)
+		if(valid_turf)
+			current_turf = valid_turf
+	else:
+		valid_turf = locate_sim_bound(current_turf.x + 1,  current_turf.y, current_turf.z, bound_type)
+		if(valid_turf)
+			current_turf = valid_turf
+		valid_turf = locate_sim_bound(current_turf.x, current_turf.y + 1,  current_turf.z, bound_type)
+		if(valid_turf)
+			current_turf = valid_turf
+
+	return current_turf
+
 
 /datum/simulator/proc/spawn_mobs(mob/living/user)
 
@@ -89,3 +145,5 @@
 
 	addtimer(CALLBACK(src, PROC_REF(sim_turf_garbage_collection)), 30 SECONDS, TIMER_STOPPABLE)
 
+#undef LOWER_BOUND
+#undef UPPER_BOUND

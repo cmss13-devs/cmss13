@@ -1288,8 +1288,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 						return
 					predator_caster_material = new_pred_caster_mat
 				if("pred_cape_type")
-					var/datum/job/J = RoleAuthority.roles_by_name[JOB_PREDATOR]
-					var/whitelist_status = clan_ranks_ordered[J.get_whitelist_status(owner)]
+					var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
+					var/whitelist_status = GLOB.clan_ranks_ordered[J.get_whitelist_status(owner)]
 
 					var/list/options = list("None" = "None")
 					for(var/cape_name in GLOB.all_yautja_capes)

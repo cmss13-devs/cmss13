@@ -106,7 +106,7 @@
 		valid_turf = locate_sim_bound(current_turf.x, current_turf.y - 1, current_turf.z, bound_type)
 		if(valid_turf)
 			current_turf = valid_turf
-	else:
+	else
 		valid_turf = locate_sim_bound(current_turf.x + 1,  current_turf.y, current_turf.z, bound_type)
 		if(valid_turf)
 			current_turf = valid_turf

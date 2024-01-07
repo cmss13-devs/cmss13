@@ -581,7 +581,6 @@
 
 /// Wrapper proc for the autofire system to ensure the important args aren't null.
 /obj/item/hardpoint/proc/fire_wrapper(atom/target, mob/living/user, params)
-	SHOULD_NOT_OVERRIDE(TRUE)
 	if(!target)
 		target = src.target
 	if(!user)

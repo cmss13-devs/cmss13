@@ -515,7 +515,8 @@
 
 		else
 			direct_hit = TRUE
-			SEND_SIGNAL(firer, COMSIG_BULLET_DIRECT_HIT, L)
+			if(firer)
+				SEND_SIGNAL(firer, COMSIG_BULLET_DIRECT_HIT, L)
 
 		// At present, Xenos have no inherent effects or localized damage stemming from limb targeting
 		// Therefore we exempt the shooter from direct hit accuracy penalties as well,
@@ -582,7 +583,7 @@
 	if(SEND_SIGNAL(src, COMSIG_BULLET_POST_HANDLE_MOB, L, .) & COMPONENT_BULLET_PASS_THROUGH)
 		return FALSE
 
-/obj/item/projectile/proc/check_canhit(turf/current_turf, turf/next_turf)
+/obj/projectile/proc/check_canhit(turf/current_turf, turf/next_turf)
 	var/proj_dir = get_dir(current_turf, next_turf)
 	if((proj_dir & (proj_dir - 1)) && !current_turf.Adjacent(next_turf))
 		ammo.on_hit_turf(current_turf, src)

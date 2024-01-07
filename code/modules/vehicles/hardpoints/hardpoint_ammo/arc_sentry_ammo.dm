@@ -1,6 +1,6 @@
 /obj/item/ammo_magazine/hardpoint/arc_sentry
 	name = "\improper RE700 Rotary Cannon Magazine"
-	desc = "A magazine for RE700 Rotary Cannon filled with 20mm rounds. Slightly contuses targets upon hit. Supports IFF."
+	desc = "A magazine for RE700 Rotary Cannon filled with 20mm rounds. Supports IFF."
 	caliber = "20mm"
 	icon_state = "ace_autocannon" //zonenote
 	w_class = SIZE_LARGE

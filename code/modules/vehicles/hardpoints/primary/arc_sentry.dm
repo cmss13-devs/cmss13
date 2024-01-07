@@ -1,7 +1,7 @@
 // APC cannons
 /obj/item/hardpoint/primary/arc_sentry
 	name = "\improper RE700 Rotary Cannon"
-	desc = "A primary two-barrel cannon for the APC that shoots 20mm IFF-compatible rounds."
+	desc = "A primary two-barrel cannon for the ARC that shoots 12.7mm IFF-compatible rounds."
 	icon = 'icons/obj/vehicles/hardpoints/arc.dmi'
 
 	icon_state = "autocannon"
@@ -12,7 +12,7 @@
 	damage_multiplier = 0.1
 	health = 125
 
-	origins = list(0, -2)
+	origins = list(0, 1)
 
 	ammo = new /obj/item/ammo_magazine/hardpoint/arc_sentry
 	max_clips = 2
@@ -22,21 +22,26 @@
 	muzzleflash_icon_state = "muzzle_flash_double"
 
 	muzzle_flash_pos = list(
-		"1" = list(11, -29),
-		"2" = list(-11, 10),
-		"4" = list(-14, 9),
-		"8" = list(14, 9)
+		"1" = list(1, 0),
+		"2" = list(1, -25),
+		"4" = list(16, -4),
+		"8" = list(-16, -4)
 	)
+	gun_firemode = GUN_FIREMODE_BURSTFIRE
+	gun_firemode_list = list(
+		GUN_FIREMODE_BURSTFIRE,
+	)
+	burst_delay = 2
+	burst_amount = 3
+
 	/// Potential targets the turret can shoot at
 	var/list/targets = list()
-	/// The currently focused target
-	var/atom/movable/target = null
+	/// The currently focused sentry target
+	var/atom/movable/sentry_target = null
 	/// The range that this turret can shoot at the furthest
 	var/turret_range = 4
 	/// What factions this sentry is aligned with
 	var/faction_group = FACTION_LIST_MARINE
-	/// How many rounds will fire in a burst
-	var/burst_amount = 3
 
 /obj/item/hardpoint/primary/arc_sentry/on_install(obj/vehicle/multitile/V)
 	. = ..()
@@ -45,33 +50,12 @@
 /obj/item/hardpoint/primary/arc_sentry/on_uninstall(obj/vehicle/multitile/V)
 	. = ..()
 	UnregisterSignal(owner, COMSIG_ARC_ANTENNA_TOGGLED)
-	fast_machines -= src
+	START_PROCESSING(SSfastobj, src)
 
 /obj/item/hardpoint/primary/arc_sentry/Destroy()
-	fast_machines -= src
-	target = null
+	STOP_PROCESSING(SSfastobj, src)
+	sentry_target = null
 	return ..()
-
-/obj/item/hardpoint/primary/arc_sentry/get_icon_image(x_offset, y_offset, new_dir)
-	var/is_broken = health <= 0
-	var/antenna_extended = FALSE
-	if(istype(owner, /obj/vehicle/multitile/arc))
-		var/obj/vehicle/multitile/arc/arc_owner = owner
-		antenna_extended = arc_owner.antenna_deployed
-
-	var/image/I = image(icon = disp_icon, icon_state = "[disp_icon_state]_[antenna_extended ? "extended" : "cover"]_[is_broken ? "1" : "0"]", pixel_x = x_offset, pixel_y = y_offset, dir = new_dir)
-	switch(round((health / initial(health)) * 100))
-		if(0 to 20)
-			I.color = "#4e4e4e"
-		if(21 to 40)
-			I.color = "#6e6e6e"
-		if(41 to 60)
-			I.color = "#8b8b8b"
-		if(61 to 80)
-			I.color = "#bebebe"
-		else
-			I.color = null
-	return I
 
 /obj/item/hardpoint/primary/arc_sentry/proc/toggle_processing()
 	SIGNAL_HANDLER
@@ -80,10 +64,10 @@
 
 	var/obj/vehicle/multitile/arc/vehicle = owner
 	if(vehicle.antenna_deployed)
-		fast_machines |= src
+		START_PROCESSING(SSfastobj, src)
 
 	else
-		fast_machines -= src
+		STOP_PROCESSING(SSfastobj, src)
 
 /obj/item/hardpoint/primary/arc_sentry/process()
 	for(var/mob/living/in_range_mob in range(turret_range, owner))
@@ -92,10 +76,10 @@
 	if(!length(targets))
 		return FALSE
 
-	if(!target && length(targets))
-		target = pick(targets)
+	if(!sentry_target && length(targets))
+		sentry_target = pick(targets)
 
-	get_target(target)
+	get_target(sentry_target)
 	return TRUE
 
 /obj/item/hardpoint/primary/arc_sentry/set_bullet_traits()
@@ -104,42 +88,79 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
 	))
 
-/obj/item/hardpoint/primary/arc_sentry/fire(atom/movable/target)
-	set waitfor = FALSE
-	if(ammo.current_rounds <= 0)
-		return
+/obj/item/hardpoint/primary/arc_sentry/fire_wrapper(atom/target, mob/living/user, params)
+	if(!target)
+		target = src.target
+	if(!target)
+		return NONE
 
-	next_use = world.time + cooldown * owner.misc_multipliers["cooldown"]
+	return try_fire(target, null, params)
 
-	for(var/bullets_fired in 1 to burst_amount)
-		var/atom/tile = target
-		if(!prob((accuracy * 100) / owner.misc_multipliers["accuracy"]))
-			tile = get_step(get_turf(target), pick(cardinal))
-		if(LAZYLEN(activation_sounds))
-			playsound(src, pick(activation_sounds), 60, 1)
-		fire_projectile(tile)
-		if(ammo.current_rounds <= 0)
-			break
-		if(bullets_fired < burst_amount)
-			sleep(2)
+/obj/item/hardpoint/primary/arc_sentry/clear_los()
+	var/turf/muzzle_turf = get_origin_turf()
 
-/obj/item/hardpoint/primary/arc_sentry/fire_projectile(atom/movable/target)
-	set waitfor = FALSE
+	var/turf/checking_turf = muzzle_turf
+	while(!(owner in checking_turf))
+		// Dense turfs block LoS
+		if(checking_turf.density)
+			return FALSE
 
-	var/turf/origin_turf = get_turf(src)
+		// Ensure that we can pass over all objects in the turf
+		for(var/obj/object in checking_turf)
+			// Since vehicles are multitile the
+			if(object == owner)
+				continue
+
+			// Non-dense objects are irrelevant
+			if(!object.density)
+				continue
+
+			// Make sure we can pass object from all directions
+			if(!HAS_FLAG(object.pass_flags.flags_can_pass_all, PASS_OVER_THROW_ITEM))
+				if(!HAS_FLAG(object.flags_atom, ON_BORDER))
+					return FALSE
+				//If we're behind the object, check the behind pass flags
+				else if(dir == object.dir && !HAS_FLAG(object.pass_flags.flags_can_pass_behind, PASS_OVER_THROW_ITEM))
+					return FALSE
+				//If we're in front, check front pass flags
+				else if(dir == turn(object.dir, 180) && !HAS_FLAG(object.pass_flags.flags_can_pass_front, PASS_OVER_THROW_ITEM))
+					return FALSE
+
+		// Trace back towards the vehicle
+		checking_turf = get_step(checking_turf, turn(dir,180))
+
+	return TRUE
+
+/obj/item/hardpoint/primary/arc_sentry/handle_fire(atom/target, mob/living/user, params)
+	var/turf/origin_turf = get_origin_turf()
 	//origin_turf = locate(origin_turf.x + origins[1], origin_turf.y + origins[2], origin_turf.z) //zonenote
 
-	var/obj/item/projectile/arc_sentry/new_bullet = generate_bullet(origin_turf)
+	var/obj/projectile/arc_sentry/new_bullet = generate_bullet(origin_turf)
+	ammo.current_rounds--
+	SEND_SIGNAL(new_bullet, COMSIG_BULLET_USER_EFFECTS, user)
 	new_bullet.runtime_iff_group = faction_group // Technically shouldn't be directly modifying this, but sue me
-	new_bullet.fire_at(target, owner, origin_turf, new_bullet.ammo.max_range, new_bullet.ammo.shell_speed) //zonenote origin
+	//new_bullet.fire_at(fire_target, owner, origin_turf, new_bullet.ammo.max_range, new_bullet.ammo.shell_speed) //zonenote origin
 
+	// turf-targeted projectiles are fired without scatter, because proc would raytrace them further away
+	var/ammo_flags = new_bullet.ammo.flags_ammo_behavior | new_bullet.projectile_override_flags
+	if(!HAS_FLAG(ammo_flags, AMMO_HITS_TARGET_TURF) && !HAS_FLAG(ammo_flags, AMMO_EXPLOSIVE)) //AMMO_EXPLOSIVE is also a turf-targeted projectile
+		new_bullet.scatter = scatter
+		target = simulate_scatter(new_bullet, target, origin_turf, get_turf(target), user)
+
+	INVOKE_ASYNC(new_bullet, TYPE_PROC_REF(/obj/projectile, fire_at), target, user, src, new_bullet.ammo.max_range, new_bullet.ammo.shell_speed)
+	new_bullet = null
+
+	shots_fired++
+	play_firing_sounds()
 	if(use_muzzle_flash)
 		muzzle_flash(Get_Angle(origin_turf, target))
 
-	ammo.current_rounds--
+	set_fire_cooldown(gun_firemode)
+	return AUTOFIRE_CONTINUE
+
 
 /obj/item/hardpoint/primary/arc_sentry/generate_bullet(turf/origin_turf)
-	var/obj/item/projectile/arc_sentry/new_proj = new(origin_turf, create_cause_data(initial(name), owner))
+	var/obj/projectile/arc_sentry/new_proj = new(origin_turf, create_cause_data(initial(name), owner))
 	new_proj.generate_bullet(new ammo.default_ammo)
 	new_proj.permutated += owner
 	// Apply bullet traits from gun
@@ -154,6 +175,28 @@
 		new_proj.apply_bullet_trait(trait_list)
 	return new_proj
 
+/obj/item/hardpoint/primary/arc_sentry/start_fire(datum/source, atom/object, turf/location, control, params)
+	if(istype(object, /atom/movable/screen))
+		return
+
+	if(QDELETED(object))
+		return
+
+	if(!auto_firing && !burst_firing && !COOLDOWN_FINISHED(src, fire_cooldown))
+		if(max(fire_delay, burst_delay + extra_delay) >= 2.0 SECONDS) //filter out guns with high firerate to prevent message spam.
+			to_chat(source, SPAN_WARNING("You need to wait [SPAN_HELPFUL(COOLDOWN_SECONDSLEFT(src, fire_cooldown))] seconds before [name] can be used again."))
+		return
+
+	set_target(object)
+
+	if(gun_firemode == GUN_FIREMODE_SEMIAUTO)
+		var/fire_return = try_fire(object, source, params)
+		//end-of-fire, show ammo (if changed)
+		if(fire_return == AUTOFIRE_CONTINUE)
+			reset_fire()
+			display_ammo(source)
+	else
+		SEND_SIGNAL(src, COMSIG_GUN_FIRE)
 
 /obj/item/hardpoint/primary/arc_sentry/proc/get_target(atom/movable/new_target)
 	if(!islist(targets))
@@ -171,21 +214,21 @@
 		if(isliving(movable))
 			var/mob/living/living_mob = movable
 			if(living_mob.stat & DEAD)
-				if(movable == target)
-					target = null
+				if(movable == sentry_target)
+					sentry_target = null
 				targets.Remove(movable)
 				continue
 
 			if(living_mob.get_target_lock(faction_group) || living_mob.invisibility || HAS_TRAIT(living_mob, TRAIT_ABILITY_BURROWED))
-				if(living_mob == target)
-					target = null
+				if(living_mob == sentry_target)
+					sentry_target = null
 				targets.Remove(living_mob)
 				continue
 
 		var/list/turf/path = getline2(get_turf(src), movable, include_from_atom = FALSE)
 		if(!length(path)|| get_dist(get_turf(src), movable) > turret_range)
-			if(movable == target)
-				target = null
+			if(movable == sentry_target)
+				sentry_target = null
 			targets.Remove(movable)
 			continue
 
@@ -211,8 +254,8 @@
 				break
 
 		if(blocked)
-			if(movable == target)
-				target = null
+			if(movable == sentry_target)
+				sentry_target = null
 			targets.Remove(movable)
 			continue
 
@@ -223,19 +266,22 @@
 			else
 				conscious_targets += living_mob
 
-	if(length(conscious_targets))
-		target = pick(conscious_targets)
+	if((sentry_target in conscious_targets) || (sentry_target in unconscious_targets))
+		sentry_target = sentry_target
+
+	else if(length(conscious_targets))
+		sentry_target = pick(conscious_targets)
 
 	else if(length(unconscious_targets))
-		target = pick(unconscious_targets)
+		sentry_target = pick(unconscious_targets)
 
-	if(!target) //No targets, don't bother firing
+	if(!sentry_target) //No targets, don't bother firing
 		return
 
-	fire(target)
+	start_fire(object = sentry_target)
 
 
-/obj/item/projectile/arc_sentry/check_canhit(turf/current_turf, turf/next_turf)
+/obj/projectile/arc_sentry/check_canhit(turf/current_turf, turf/next_turf)
 	var/proj_dir = get_dir(current_turf, next_turf)
 	if(!(firer in current_turf) && !(firer in next_turf) && (proj_dir & (proj_dir - 1)) && !current_turf.Adjacent(next_turf))
 		ammo.on_hit_turf(current_turf, src)

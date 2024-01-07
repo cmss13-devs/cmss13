@@ -1453,10 +1453,6 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		world.log << "## ERROR: Eek. The supply/elevator datum is missing somehow."
 		return
 
-	if(!should_block_game_interaction(SSshuttle.vehicle_elevator))
-		to_chat(usr, SPAN_WARNING("The elevator needs to be in the cargo bay dock to call a vehicle up. Ask someone to send it away."))
-		return
-
 	if(ismaintdrone(usr))
 		return
 

@@ -1,7 +1,7 @@
 /datum/tech/arc
 	name = "M540 Armored Recon Carrier"
 	desc = "Purchase an M540 Armored Recon Carrier, specialized in assisting groundside command. Able to be driven by Staff Officers, Executive Officers, and Commanding Officers."
-	icon_state = "ltb" //zonenote changeme
+	icon_state = "upgrade"
 
 	required_points = 0 //zonenote
 
@@ -15,8 +15,8 @@
 /datum/tech/arc/on_unlock()
 	. = ..()
 
-	var/obj/structure/machinery/computer/supplycomp/vehicle/comp = VehicleElevatorConsole
-	var/obj/structure/machinery/cm_vending/gear/vehicle_crew/gearcomp = VehicleGearConsole
+	var/obj/structure/machinery/computer/supplycomp/vehicle/comp = GLOB.VehicleElevatorConsole
+	var/obj/structure/machinery/cm_vending/gear/vehicle_crew/gearcomp = GLOB.VehicleGearConsole
 
 	if(!comp || !gearcomp)
 		return FALSE

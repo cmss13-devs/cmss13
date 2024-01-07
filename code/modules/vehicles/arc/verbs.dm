@@ -1,9 +1,9 @@
-/obj/vehicle/multitile/arc/proc/toggle_antenna()
+/obj/vehicle/multitile/arc/proc/toggle_antenna(mob/toggler)
 	set name = "Toggle Sensor Antenna"
 	set desc = "Raises or lowers the external sensor antenna. While raised, the ARC cannot move."
 	set category = "Vehicle"
 
-	var/mob/user = usr
+	var/mob/user = toggler || usr
 	if(!user || !istype(user))
 		return
 
@@ -24,24 +24,50 @@
 		to_chat(user, SPAN_WARNING("[vehicle]'s hull is too damaged to operate!"))
 		return
 
+	var/obj/item/hardpoint/support/arc_antenna/antenna = locate() in vehicle.hardpoints
+	if(!antenna)
+		to_chat(user, SPAN_WARNING("[vehicle] has no antenna mounted!"))
+		return
+
+	if(antenna.health <= 0)
+		to_chat(user, SPAN_WARNING("[antenna] is broken!"))
+		return
+
 	if(vehicle.antenna_deployed)
-		to_chat(user, SPAN_NOTICE("You begin to retract the antenna..."))
-		if(!do_after(user, vehicle.antenna_toggle_time, target = vehicle))
+		to_chat(user, SPAN_NOTICE("You begin to retract [antenna]..."))
+		if(!do_after(user, max(vehicle.antenna_toggle_time - antenna.deploy_animation_time, 1 SECONDS), target = vehicle))
+			to_chat(user, SPAN_NOTICE("You stop retracting [antenna]."))
 			return
-		STOP_PROCESSING(SSslowobj, vehicle)
-		to_chat(user, SPAN_NOTICE("You retract the antenna, enabling the ARC to move again."))
+
+		antenna.retract_antenna()
+		addtimer(CALLBACK(vehicle, PROC_REF(finish_antenna_retract), vehicle, user), antenna.deploy_animation_time)
 
 	else
-		to_chat(user, SPAN_NOTICE("You begin to extend the antenna..."))
-		if(!do_after(user, vehicle.antenna_toggle_time, target = vehicle))
+		to_chat(user, SPAN_NOTICE("You begin to extend [antenna]..."))
+		if(!do_after(user, max(vehicle.antenna_toggle_time - antenna.deploy_animation_time, 1 SECONDS), target = vehicle))
+			to_chat(user, SPAN_NOTICE("You stop extending [antenna]."))
 			return
-		START_PROCESSING(SSslowobj, vehicle)
-		to_chat(user, SPAN_NOTICE("You extend the antenna, locking the ARC in place."))
 
+		antenna.deploy_antenna()
+		addtimer(CALLBACK(vehicle, PROC_REF(finish_antenna_deploy), vehicle, user), antenna.deploy_animation_time)
+
+/obj/vehicle/multitile/arc/proc/finish_antenna_retract(obj/vehicle/multitile/arc/vehicle, mob/user)
+	var/obj/item/hardpoint/support/arc_antenna/antenna = locate() in vehicle.hardpoints
+	STOP_PROCESSING(SSslowobj, vehicle)
+	to_chat(user, SPAN_NOTICE("You retract [antenna], enabling the ARC to move again."))
 	playsound(user, 'sound/machines/hydraulics_2.ogg', 80, TRUE)
 	vehicle.antenna_deployed = !vehicle.antenna_deployed
+	vehicle.update_icon()
 	SEND_SIGNAL(vehicle, COMSIG_ARC_ANTENNA_TOGGLED)
 
+/obj/vehicle/multitile/arc/proc/finish_antenna_deploy(obj/vehicle/multitile/arc/vehicle, mob/user)
+	var/obj/item/hardpoint/support/arc_antenna/antenna = locate() in vehicle.hardpoints
+	START_PROCESSING(SSslowobj, vehicle)
+	to_chat(user, SPAN_NOTICE("You extend [antenna], locking the ARC in place."))
+	playsound(user, 'sound/machines/hydraulics_2.ogg', 80, TRUE)
+	vehicle.antenna_deployed = !vehicle.antenna_deployed
+	vehicle.update_icon()
+	SEND_SIGNAL(vehicle, COMSIG_ARC_ANTENNA_TOGGLED)
 
 /obj/vehicle/multitile/arc/open_controls_guide()
 	set name = "Vehicle Controls Guide"

@@ -3,7 +3,7 @@
 	desc = "An M540-A Armored Recon Carrier. A lightly armored reconnaissance and intelligence vehicle. Entrances on the sides."
 
 	icon = 'icons/obj/vehicles/arc.dmi'
-	icon_state = "arc_base" //Holdover until thwomp does his thing
+	icon_state = "arc_base"
 	pixel_x = -48
 	pixel_y = -48
 
@@ -16,7 +16,7 @@
 	interior_map = /datum/map_template/interior/arc
 
 	passengers_slots = 3
-	xenos_slots = 8
+	xenos_slots = 5
 
 	entrances = list(
 		"left" = list(2, 0),
@@ -37,6 +37,7 @@
 	hardpoints_allowed = list(
 		/obj/item/hardpoint/locomotion/apc_wheels,
 		/obj/item/hardpoint/primary/arc_sentry,
+		/obj/item/hardpoint/support/arc_antenna,
 	)
 
 	seats = list(
@@ -84,6 +85,9 @@
 		SSminimaps.add_marker(src, gotten_turf.z, MINIMAP_FLAG_USCM, "arc", 'icons/ui_icons/map_blips_large.dmi')
 
 	RegisterSignal(src, COMSIG_ARC_ANTENNA_TOGGLED, PROC_REF(on_antenna_toggle))
+
+/obj/vehicle/multitile/arc/crew_mousedown(datum/source, atom/object, turf/location, control, params)
+	return
 
 /obj/vehicle/multitile/arc/proc/on_antenna_toggle(datum/source)
 	SIGNAL_HANDLER
@@ -136,12 +140,19 @@
 	RRS.total = 1
 	role_reserved_slots += RRS
 
+/obj/vehicle/multitile/arc/set_seated_mob(seat, mob/living/M)
+	. = ..()
+	if(!.)
+		return
+
+	give_action(M, /datum/action/human_action/toggle_arc_antenna)
+
 /obj/vehicle/multitile/arc/add_seated_verbs(mob/living/M, seat)
 	if(!M.client)
 		return
 	add_verb(M.client, list(
 		/obj/vehicle/multitile/proc/get_status_info,
-		/obj/vehicle/multitile/arc/open_controls_guide,
+		//obj/vehicle/multitile/proc/open_controls_guide,
 		/obj/vehicle/multitile/proc/toggle_door_lock,
 		/obj/vehicle/multitile/proc/activate_horn,
 		/obj/vehicle/multitile/proc/name_vehicle,
@@ -153,7 +164,7 @@
 		return
 	remove_verb(M.client, list(
 		/obj/vehicle/multitile/proc/get_status_info,
-		/obj/vehicle/multitile/arc/proc/open_controls_guide,
+		//obj/vehicle/multitile/proc/open_controls_guide,
 		/obj/vehicle/multitile/proc/toggle_door_lock,
 		/obj/vehicle/multitile/proc/activate_horn,
 		/obj/vehicle/multitile/proc/name_vehicle,
@@ -165,11 +176,11 @@
 	if(!camera)
 		camera = new /obj/structure/machinery/camera/vehicle(src)
 	if(change_tag)
-		camera.c_tag = "#[rand(1,100)] M540 \"[nickname]\" ARC"
+		camera.c_tag = "#[rand(1,100)] M540-A \"[nickname]\" ARC"
 		if(camera_int)
 			camera_int.c_tag = camera.c_tag + " interior"
 	else
-		camera.c_tag = "#[rand(1,100)] 540 ARC"
+		camera.c_tag = "#[rand(1,100)] 540-A ARC"
 		if(camera_int)
 			camera_int.c_tag = camera.c_tag + " interior"
 
@@ -197,5 +208,6 @@
 	ARC.update_icon()
 
 /obj/effect/vehicle_spawner/arc/load_hardpoints(obj/vehicle/multitile/arc/vehicle)
-	vehicle.add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
+	vehicle.add_hardpoint(new /obj/item/hardpoint/locomotion/arc_wheels)
 	vehicle.add_hardpoint(new /obj/item/hardpoint/primary/arc_sentry)
+	vehicle.add_hardpoint(new /obj/item/hardpoint/support/arc_antenna)

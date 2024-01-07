@@ -937,6 +937,9 @@
 /obj/structure/machinery/computer/overwatch/almayer/broken
 	name = "Broken Overwatch Console"
 
+/obj/structure/machinery/computer/overwatch/almayer/small
+	icon_state = "engineering_terminal"
+
 /obj/structure/machinery/computer/overwatch/clf
 	faction = FACTION_CLF
 /obj/structure/machinery/computer/overwatch/upp

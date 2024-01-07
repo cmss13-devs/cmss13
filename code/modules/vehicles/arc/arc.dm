@@ -1,9 +1,9 @@
 /obj/vehicle/multitile/arc
-	name = "M540 Armored Recon Carrier"
-	desc = "An M540 Armored Recon Carrier. A lightly armored reconnaissance and intelligence vehicle. Entrances on the sides."
+	name = "M540-A Armored Recon Carrier"
+	desc = "An M540-A Armored Recon Carrier. A lightly armored reconnaissance and intelligence vehicle. Entrances on the sides."
 
-	icon = 'icons/obj/vehicles/apc.dmi'
-	icon_state = "apc_base" //Holdover until thwomp does his thing
+	icon = 'icons/obj/vehicles/arc.dmi'
+	icon_state = "arc_base" //Holdover until thwomp does his thing
 	pixel_x = -48
 	pixel_y = -48
 
@@ -141,7 +141,7 @@
 		return
 	add_verb(M.client, list(
 		/obj/vehicle/multitile/proc/get_status_info,
-		/obj/vehicle/multitile/arc/proc/open_controls_guide,
+		/obj/vehicle/multitile/arc/open_controls_guide,
 		/obj/vehicle/multitile/proc/toggle_door_lock,
 		/obj/vehicle/multitile/proc/activate_horn,
 		/obj/vehicle/multitile/proc/name_vehicle,

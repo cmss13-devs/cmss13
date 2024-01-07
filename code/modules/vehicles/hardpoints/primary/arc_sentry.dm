@@ -2,11 +2,11 @@
 /obj/item/hardpoint/primary/arc_sentry
 	name = "\improper RE700 Rotary Cannon"
 	desc = "A primary two-barrel cannon for the APC that shoots 20mm IFF-compatible rounds."
-	icon = 'icons/obj/vehicles/hardpoints/apc.dmi'
+	icon = 'icons/obj/vehicles/hardpoints/arc.dmi'
 
-	icon_state = "dual_cannon"
-	disp_icon = "apc"
-	disp_icon_state = "dualcannon"
+	icon_state = "autocannon"
+	disp_icon = "arc"
+	disp_icon_state = "autocannon"
 	activation_sounds = list('sound/weapons/gun_m60.ogg')
 
 	damage_multiplier = 0.1
@@ -51,6 +51,27 @@
 	fast_machines -= src
 	target = null
 	return ..()
+
+/obj/item/hardpoint/primary/arc_sentry/get_icon_image(x_offset, y_offset, new_dir)
+	var/is_broken = health <= 0
+	var/antenna_extended = FALSE
+	if(istype(owner, /obj/vehicle/multitile/arc))
+		var/obj/vehicle/multitile/arc/arc_owner = owner
+		antenna_extended = arc_owner.antenna_deployed
+
+	var/image/I = image(icon = disp_icon, icon_state = "[disp_icon_state]_[antenna_extended ? "extended" : "cover"]_[is_broken ? "1" : "0"]", pixel_x = x_offset, pixel_y = y_offset, dir = new_dir)
+	switch(round((health / initial(health)) * 100))
+		if(0 to 20)
+			I.color = "#4e4e4e"
+		if(21 to 40)
+			I.color = "#6e6e6e"
+		if(41 to 60)
+			I.color = "#8b8b8b"
+		if(61 to 80)
+			I.color = "#bebebe"
+		else
+			I.color = null
+	return I
 
 /obj/item/hardpoint/primary/arc_sentry/proc/toggle_processing()
 	SIGNAL_HANDLER

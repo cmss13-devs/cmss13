@@ -1,5 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aD" = (
+/obj/effect/landmark/interior/spawn/weapons_loader,
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_12"
 	},
@@ -35,14 +36,17 @@
 	},
 /area/vehicle/arc)
 "jb" = (
-/obj/structure/surface/table/reinforced/prison{
-	pixel_y = -3
-	},
-/obj/structure/machinery/computer/overwatch/almayer,
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_11"
 	},
 /area/vehicle/arc)
+"ml" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "wall"
+	},
+/obj/effect/landmark/interior/spawn/telephone,
+/turf/open/void/vehicle,
+/area/space)
 "mR" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "front_wheel_R"
@@ -112,10 +116,17 @@
 /turf/open/void/vehicle,
 /area/space)
 "Dn" = (
-/obj/effect/landmark/interior/spawn/telephone{
+/obj/structure/machinery/prop/almayer/CICmap/computer{
 	dir = 4;
-	pixel_x = -12;
 	pixel_y = 8
+	},
+/obj/structure/surface/table/reinforced/prison{
+	pixel_y = -3
+	},
+/obj/structure/machinery/computer/overwatch/almayer/small{
+	dir = 4;
+	layer = 3.01;
+	pixel_y = -5
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_10_1"
@@ -159,7 +170,7 @@
 /area/space)
 "NS" = (
 /obj/structure/bed/chair/comfy{
-	dir = 1
+	dir = 8
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_5"
@@ -185,9 +196,13 @@
 /obj/structure/surface/table/reinforced/prison{
 	pixel_y = -3
 	},
-/obj/structure/machinery/prop/almayer/CICmap{
-	indestructible = 1;
-	unslashable = 1
+/obj/structure/machinery/computer/intel/disk_reader{
+	dir = 4;
+	pixel_y = 6
+	},
+/obj/structure/machinery/computer/groundside_operations{
+	dir = 4;
+	pixel_y = -7
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_8_1"
@@ -203,16 +218,8 @@
 /turf/open/void/vehicle,
 /area/space)
 "Zs" = (
-/obj/structure/surface/table/reinforced/prison{
-	pixel_y = -3
-	},
-/obj/structure/machinery/computer/intel/disk_reader{
-	pixel_x = -9;
-	pixel_y = -4
-	},
-/obj/structure/machinery/computer/groundside_operations{
-	pixel_x = 8;
-	pixel_y = -4
+/obj/structure/bed/chair/comfy{
+	dir = 8
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_8_1"
@@ -252,7 +259,7 @@ vt
 Rb
 "}
 (3,1,1) = {"
-Ng
+ml
 Zs
 NS
 ym

@@ -461,7 +461,7 @@
 	time_of_birth = world.time
 
 	//Minimap
-	if(z)
+	if(z && !hivenumber == XENO_HIVE_TUTORIAL)
 		INVOKE_NEXT_TICK(src, PROC_REF(add_minimap_marker))
 
 	//Sight
@@ -1095,3 +1095,12 @@
 	else
 		//If we somehow use all 999 numbers fallback on 0
 		nicknumber = 0
+
+/proc/setup_xenomorph(mob/living/carbon/xenomorph/target, mob/new_player/new_player, is_late_join = FALSE)
+	new_player.spawning = TRUE
+	new_player.close_spawn_windows()
+	new_player.client.prefs.copy_all_to(target, new_player.job, is_late_join)
+
+	if(new_player.mind)
+		new_player.mind_initialize()
+		new_player.mind.transfer_to(target, TRUE)

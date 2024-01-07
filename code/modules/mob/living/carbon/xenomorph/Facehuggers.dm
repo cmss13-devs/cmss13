@@ -392,6 +392,9 @@
 			M.stored_huggers++
 			qdel(src)
 			return
+		// Tutorial facehuggers never time out
+		if(hivenumber == XENO_HIVE_TUTORIAL)
+			return
 	die()
 
 /obj/item/clothing/mask/facehugger/proc/die()

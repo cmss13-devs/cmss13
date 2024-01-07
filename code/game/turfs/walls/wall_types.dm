@@ -777,6 +777,14 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	icon_state = "thickresin"
 	walltype = WALL_THICKRESIN
 
+/turf/closed/wall/resin/tutorial
+	name = "tutorial resin wall"
+	desc = "Weird slime solidified into a wall. Remarkably resilient"
+	hivenumber = XENO_HIVE_TUTORIAL
+
+/turf/closed/wall/resin/tutorial/attack_alien(mob/living/carbon/xenomorph/xeno)
+	return
+
 /turf/closed/wall/resin/membrane
 	name = "resin membrane"
 	desc = "Weird slime translucent enough to let light pass through."

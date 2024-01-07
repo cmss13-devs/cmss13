@@ -248,6 +248,7 @@
 
 	do_buckle(mob, user)
 	ADD_TRAIT(mob, TRAIT_NESTED, TRAIT_SOURCE_BUCKLE)
+	SEND_SIGNAL(mob, COMSIG_MOB_NESTED, user)
 
 	if(!human)
 		return TRUE

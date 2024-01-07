@@ -1080,6 +1080,21 @@
 /datum/hive_status/forsaken/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
 	return FALSE
 
+/datum/hive_status/tutorial
+	name = "Tutorial Hive"
+	reporting_id = "tutorial"
+	hivenumber = XENO_HIVE_TUTORIAL
+	prefix = "Inquisitive "
+	latejoin_burrowed = FALSE
+
+	dynamic_evolution = FALSE
+	allow_queen_evolve = TRUE
+	evolution_without_ovipositor = FALSE
+	allow_no_queen_actions = TRUE
+
+/datum/hive_status/tutorial/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
+	return FALSE
+
 /datum/hive_status/yautja
 	name = "Hellhound Pack"
 	reporting_id = "hellhounds"

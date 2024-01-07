@@ -1096,7 +1096,7 @@
 		//If we somehow use all 999 numbers fallback on 0
 		nicknumber = 0
 
-/proc/setup_xenomorph(mob/living/carbon/xenomorph/target, mob/new_player/new_player, is_late_join = FALSE)
+/proc/setup_xenomorph(mob/living/carbon/xenomorph/target, mob/new_player/new_player)
 	new_player.spawning = TRUE
 	new_player.close_spawn_windows()
 	new_player.client.prefs.copy_all_to(target, new_player.job, is_late_join)

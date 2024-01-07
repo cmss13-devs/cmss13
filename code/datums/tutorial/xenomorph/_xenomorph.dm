@@ -17,8 +17,7 @@
 
 	setup_xenomorph(new_character, tutorial_mob) // What do we need to do here
 
-	//SSround_recording.recorder.track_player(new_character) //zonenote: check if necessary
-
+	// We don't want people talking to other xenomorphs across tutorials
 	new_character.can_hivemind_speak = FALSE
 
 	tutorial_mob = new_character

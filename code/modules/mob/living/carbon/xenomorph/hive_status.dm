@@ -1092,6 +1092,14 @@
 	evolution_without_ovipositor = FALSE
 	allow_no_queen_actions = TRUE
 
+	///Can have many tutorials going at once.
+	hive_structures_limit = list(
+		XENO_STRUCTURE_CORE = 999,
+		XENO_STRUCTURE_CLUSTER = 999,
+		XENO_STRUCTURE_EGGMORPH = 999,
+		XENO_STRUCTURE_RECOVERY = 999,
+	)
+
 /datum/hive_status/tutorial/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
 	return FALSE
 

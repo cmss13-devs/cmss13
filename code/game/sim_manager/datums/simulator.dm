@@ -84,7 +84,7 @@
 
 /**
  * Recursive function that finds the lower or upper bound for the sim room, assumption being the sim room size may be changed in the future.
- * Maybe better to just do this via find the area's turf on init?
+ * Maybe better to just do this via the area's turf on init?
  *
  * Arguments:
  * * x_pos: x coordinate value on a grid plane

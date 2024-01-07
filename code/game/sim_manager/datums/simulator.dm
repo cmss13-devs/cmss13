@@ -80,11 +80,11 @@
 	for (var/y_pos in 1 to (upper_bound.y - lower_bound.y))// outer y
 		for (var/x_pos in 1 to (upper_bound.x - lower_bound.x)) // inner x
 			var/turf/current_turf = locate(lower_bound.x + x_pos, lower_bound.y + y_pos, lower_bound.z)
-			current_turf.empty(get_turf(sim_camera))
+			current_turf.empty(/turf/open/floor/engine)
 
 /**
  * Recursive function that finds the lower or upper bound for the sim room, assumption being the sim room size may be changed in the future.
- * Maybe better to just do this via the area's turf on init?
+ * Maybe better to just find the upper and lower bounds via the area's turf on init?
  *
  * Arguments:
  * * x_pos: x coordinate value on a grid plane

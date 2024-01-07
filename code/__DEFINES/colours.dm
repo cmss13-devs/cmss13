@@ -33,12 +33,24 @@
 /// full cyan rgb(0, 255, 255) B + G
 #define COLOR_CYAN "#00FFFF"
 /// full magenta(not pink) rgb(255, 0, 255) R+B
-#define COLOR_PINK "#FF00FF"
+#define COLOR_MAGENTA "#FF00FF"
 /// full yellow rgb(255, 255, 0) R+G
 #define COLOR_YELLOW "#FFFF00"
 
 // colors define in use bellow
+
+
+//color define with a proper name
+
+//gris
+//Olive rgb(128, 128, 0)
+#define COLOR_OLIVE "#808000"
+//Silver rgb(192, 192, 192) shade of grey
 #define COLOR_SILVER "#C0C0C0"
+//Gray rgb(128, 128, 128)
+#define COLOR_GRAY "#808080"
+
+
 
 #define COLOR_FLOORTILE_GRAY "#8D8B8B"
 
@@ -46,14 +58,14 @@
 
 #define COLOR_DARK_RED "#A50824"
 
+//Maroon rgb(128, 0, 0) shade of red
 #define COLOR_MAROON "#800000"
+
 #define COLOR_VIVID_RED "#FF3232"
 #define COLOR_LIGHT_GRAYISH_RED "#E4C7C5"
 #define COLOR_SOFT_RED "#FA8282"
 
 #define COLOR_VERY_SOFT_YELLOW "#FAE48E"
-
-#define COLOR_OLIVE "#808000"
 
 ///light green rgb( 0, 128, 0)
 #define COLOR_LIGHT_GREEN "#008000"

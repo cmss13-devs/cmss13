@@ -234,7 +234,7 @@
 	name = "Poison Wine"
 	id = "pwine"
 	description = "Is this even wine? Toxic! Hallucinogenic! Probably consumed in boatloads by your superiors!"
-	color = "#000000" // rgb: 0, 0, 0 SHOCKER
+	color = COLOR_BLACK
 	properties = list(PROPERTY_ALCOHOLIC = 1, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1
 
@@ -559,7 +559,7 @@
 	name = "Snow White"
 	id = "snowwhite"
 	description = "A cold refreshment"
-	color = "#FFFFFF" // rgb: 255, 255, 255
+	color = COLOR_WHITE
 	properties = list(PROPERTY_ALCOHOLIC = 1.5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1.5
 

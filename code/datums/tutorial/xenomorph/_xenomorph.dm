@@ -1,7 +1,7 @@
 /datum/tutorial/xenomorph
 	category = TUTORIAL_CATEGORY_XENO
 	parent_path = /datum/tutorial/xenomorph
-	icon_state = "xeno" // CHANGE
+	icon_state = "xeno"
 	///Starting xenomorph type (caste) of type /mob/living/carbon/xenomorph/...
 	var/mob/living/carbon/xenomorph/starting_xenomorph_type = /mob/living/carbon/xenomorph/drone
 	///Reference to the actual xenomorph mob

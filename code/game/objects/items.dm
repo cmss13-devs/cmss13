@@ -364,6 +364,7 @@ cases. Override_icon_state should be a list.*/
 		qdel(src)
 
 	SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_DROPPED, src)
 	if(drop_sound && (src.loc?.z))
 		playsound(src, drop_sound, dropvol, drop_vary)
 	src.do_drop_animation(user)
@@ -517,14 +518,14 @@ cases. Override_icon_state should be a list.*/
 			if(WEAR_L_HAND)
 				if(human.l_hand)
 					return FALSE
-				if(human.lying)
+				if(human.body_position == LYING_DOWN)
 					to_chat(human, SPAN_WARNING("You can't equip that while lying down."))
 					return
 				return TRUE
 			if(WEAR_R_HAND)
 				if(human.r_hand)
 					return FALSE
-				if(human.lying)
+				if(human.body_position == LYING_DOWN)
 					to_chat(human, SPAN_WARNING("You can't equip that while lying down."))
 					return
 				return TRUE
@@ -708,7 +709,7 @@ cases. Override_icon_state should be a list.*/
 			if(WEAR_IN_SHOES)
 				if(human.shoes && istype(human.shoes, /obj/item/clothing/shoes))
 					var/obj/item/clothing/shoes/shoes = human.shoes
-					if(shoes.attempt_insert_item(human, src))
+					if(shoes.can_be_inserted(src))
 						return TRUE
 				return FALSE
 			if(WEAR_IN_SCABBARD)
@@ -795,7 +796,7 @@ cases. Override_icon_state should be a list.*/
 
 
 /obj/item/proc/showoff(mob/user)
-	var/list/viewers = get_mobs_in_view(world_view_size, user)
+	var/list/viewers = get_mobs_in_view(GLOB.world_view_size, user)
 	user.langchat_speech("holds up [src].", viewers, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote"))
 	for (var/mob/M in viewers)
 		M.show_message("[user] holds up [src]. <a HREF=?src=\ref[M];lookitem=\ref[src]>Take a closer look.</a>", SHOW_MESSAGE_VISIBLE)
@@ -850,7 +851,7 @@ cases. Override_icon_state should be a list.*/
 	UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
 	//General reset in case anything goes wrong, the view will always reset to default unless zooming in.
 	if(user.client)
-		user.client.change_view(world_view_size, src)
+		user.client.change_view(GLOB.world_view_size, src)
 		user.client.pixel_x = 0
 		user.client.pixel_y = 0
 
@@ -920,9 +921,10 @@ cases. Override_icon_state should be a list.*/
 		mob_state += GLOB.slot_to_contained_sprite_shorthand[slot]
 	return mob_state
 
-/obj/item/proc/drop_to_floor(mob/wearer)
+/obj/item/proc/drop_to_floor(mob/wearer, body_position)
 	SIGNAL_HANDLER
-	wearer.drop_inv_item_on_ground(src)
+	if(body_position == LYING_DOWN)
+		wearer.drop_inv_item_on_ground(src)
 
 // item animatzionen
 

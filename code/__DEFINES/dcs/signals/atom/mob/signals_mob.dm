@@ -37,10 +37,6 @@
 #define COMSIG_MOB_FIRED_GUN_ATTACHMENT "mob_fired_gun_attachment"
 /// From /mob/proc/death
 #define COMSIG_MOB_DEATH "mob_death"
-/// From /mob/proc/update_canmove()
-#define COMSIG_MOB_GETTING_UP "mob_getting_up"
-/// From /mob/proc/update_canmove()
-#define COMSIG_MOB_KNOCKED_DOWN "mob_knocked_down"
 /// For when a mob is dragged
 #define COMSIG_MOB_DRAGGED "mob_dragged"
 /// From /obj/item/proc/unequipped()
@@ -81,12 +77,13 @@
 ///from base of /mob/Logout(): ()
 #define COMSIG_MOB_LOGOUT "mob_logout"
 
+/// From /mob/proc/change_real_name(): (old_name, new_name)
+#define COMSIG_MOB_REAL_NAME_CHANGED "mob_real_name_changed"
+
 //from /mob/proc/on_deafness_gain()
 #define COMSIG_MOB_DEAFENED "mob_deafened"
 //from /mob/proc/on_deafness_loss()
 #define COMSIG_MOB_REGAINED_HEARING "mob_regained_hearing"
-
-#define COMSIG_MOB_POST_UPDATE_CANMOVE "mob_can_move"
 
 #define COMSIG_ATTEMPT_MOB_PULL "attempt_mob_pull"
 	#define COMPONENT_CANCEL_MOB_PULL (1<<0)
@@ -100,6 +97,9 @@
 
 #define COMSIG_MOB_MOVE_OR_LOOK "mob_move_or_look"
 	#define COMPONENT_OVERRIDE_MOB_MOVE_OR_LOOK (1<<0)
+
+///from rejuv
+#define COMSIG_LIVING_POST_FULLY_HEAL "living_post_fully_heal"
 
 ///from /mob/living/emote(): ()
 #define COMSIG_MOB_EMOTE "mob_emote"
@@ -131,5 +131,42 @@
 /// From /obj/item/proc/pickup() : (obj/item/picked_up)
 #define COMSIG_MOB_PICKUP_ITEM "mob_pickup_item"
 
+/// From /obj/item/proc/attack_self() : (obj/item/used)
+#define COMSIG_MOB_ITEM_ATTACK_SELF "mob_item_attack_self"
+
+/// From /obj/item/proc/dropped() : (obj/item/dropped)
+#define COMSIG_MOB_ITEM_DROPPED "mob_item_dropped"
+
+
+/// From /obj/item/reagent_container/food/snacks/proc/on_Consume() : (obj/item/reagent_container/food/snacks/eaten_food)
+#define COMSIG_MOB_EATEN_SNACK "mob_eaten_snack"
+
+/// From /atom/proc/attackby() : (atom/attacked, obj/item/attacked_with)
+#define COMSIG_MOB_PARENT_ATTACKBY "mob_parent_attackby"
+
+/// From /obj/item/weapon/gun/proc/reload_into_chamber() : (obj/item/weapon/gun/empty_gun)
+#define COMSIG_MOB_GUN_EMPTY "mob_gun_empty"
+
+/// From /obj/item/weapon/gun/proc/reload() : (obj/item/weapon/gun/reloaded)
+#define COMSIG_MOB_RELOADED_GUN "mob_reloaded_gun"
+
+/// From /mob/proc/get_status_tab_items() : (list/status_list)
+#define COMSIG_MOB_GET_STATUS_TAB_ITEMS "mob_get_status_tab_items"
+
+/// From /datum/tutorial/proc/update_objective() : (new_objective)
+#define COMSIG_MOB_TUTORIAL_UPDATE_OBJECTIVE "mob_tutorial_update_objective"
+
+/// From /mob/proc/swap_hand() : ()
+#define COMSIG_MOB_SWAPPED_HAND "mob_swapped_hand"
+
+/// From /mob/proc/a_intent_change() : (new_intent)
+#define COMSIG_MOB_INTENT_CHANGE "mob_intent_change"
+
+/// From /obj/item/grab/proc/progress_passive() : (mob/living/carbon/human/grabber)
+#define COMSIG_MOB_AGGRESSIVELY_GRABBED "mob_aggressively_grabbed"
+	#define COMSIG_MOB_AGGRESIVE_GRAB_CANCEL (1<<0)
+
 /// Cancels all running cloaking effects on target
 #define COMSIG_MOB_EFFECT_CLOAK_CANCEL "mob_effect_cloak_cancel"
+
+#define COMSIG_MOB_END_TUTORIAL "mob_end_tutorial"

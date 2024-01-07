@@ -43,7 +43,7 @@
 	var/stat_msg1
 	var/stat_msg2
 
-	var/datum/tacmap/tacmap
+	var/datum/tacmap/drawing/tacmap
 	var/minimap_type = MINIMAP_FLAG_USCM
 
 	processing = TRUE
@@ -98,9 +98,9 @@
 						if(-INFINITY to SEC_LEVEL_GREEN) tmp_alertlevel = SEC_LEVEL_GREEN //Cannot go below green.
 						if(SEC_LEVEL_BLUE to INFINITY) tmp_alertlevel = SEC_LEVEL_BLUE //Cannot go above blue.
 
-					var/old_level = security_level
+					var/old_level = GLOB.security_level
 					set_security_level(tmp_alertlevel)
-					if(security_level != old_level)
+					if(GLOB.security_level != old_level)
 						//Only notify the admins if an actual change happened
 						log_game("[key_name(usr)] has changed the security level to [get_security_level()].")
 						message_admins("[key_name_admin(usr)] has changed the security level to [get_security_level()].")
@@ -130,11 +130,11 @@
 				cooldown_message = world.time
 
 		if("award")
-			print_medal(usr, src)
+			open_medal_panel(usr, src)
 
 		if("evacuation_start")
 			if(state == STATE_EVACUATION)
-				if(security_level < SEC_LEVEL_DELTA)
+				if(GLOB.security_level < SEC_LEVEL_DELTA)
 					to_chat(usr, SPAN_WARNING("The ship must be under delta alert in order to enact evacuation procedures."))
 					return FALSE
 
@@ -154,6 +154,19 @@
 			state = STATE_EVACUATION
 
 		if("evacuation_cancel")
+			var/mob/living/carbon/human/human_user = usr
+			var/obj/item/card/id/idcard = human_user.get_active_hand()
+			var/bio_fail = FALSE
+			if(!istype(idcard))
+				idcard = human_user.wear_id
+			if(!istype(idcard))
+				bio_fail = TRUE
+			else if(!idcard.check_biometrics(human_user))
+				bio_fail = TRUE
+			if(bio_fail)
+				to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
+				return FALSE
+
 			if(state == STATE_EVACUATION_CANCEL)
 				if(!SShijack.cancel_evacuation())
 					to_chat(usr, SPAN_WARNING("You are unable to cancel the evacuation right now!"))
@@ -185,7 +198,7 @@
 					to_chat(usr, SPAN_WARNING("The distress beacon has recently broadcast a message. Please wait."))
 					return FALSE
 
-				if(security_level == SEC_LEVEL_DELTA)
+				if(GLOB.security_level == SEC_LEVEL_DELTA)
 					to_chat(usr, SPAN_WARNING("The ship is already undergoing self-destruct procedures!"))
 					return FALSE
 

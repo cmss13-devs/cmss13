@@ -9512,14 +9512,6 @@
 	icon_state = "desert_transition_edge1"
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
-"aCH" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
-/turf/open/floor/interior/wood/alt,
-/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aCI" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood/alt,
@@ -9575,17 +9567,6 @@
 "aCS" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
-/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
-"aCT" = (
-/obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
-	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "bright_clean"
-	},
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aCU" = (
 /obj/effect/decal/cleanable/dirt,
@@ -9651,18 +9632,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
-"aDd" = (
-/obj/structure/bed/chair,
-/obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
-	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "bright_clean"
-	},
-/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aDe" = (
 /obj/effect/decal/sand_overlay/sand1,
 /turf/open/asphalt{
@@ -25405,17 +25374,6 @@
 /obj/structure/window/reinforced,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/security/courtroom)
-"bBU" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -30;
-	start_charge = 0
-	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "darkred2"
-	},
-/area/desert_dam/building/security/southern_hallway)
 "bBV" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -64600,6 +64558,10 @@
 /obj/structure/desertdam/decals/road_edge,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
+"tcB" = (
+/obj/structure/machinery/camera/autoname/lz_camera,
+/turf/open/floor/plating,
+/area/desert_dam/exterior/landing_pad_two)
 "tdf" = (
 /obj/structure/surface/table,
 /obj/item/folder/yellow,
@@ -65030,6 +64992,10 @@
 	icon_state = "dirt2"
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
+"uHT" = (
+/obj/structure/machinery/camera/autoname/lz_camera,
+/turf/open/floor/plating,
+/area/desert_dam/exterior/landing_pad_one)
 "uKo" = (
 /obj/structure/platform/mineral/sandstone/runed{
 	dir = 4
@@ -70143,6 +70109,7 @@ dTs
 cDb
 cDK
 cDY
+tcB
 cDY
 cDY
 cDY
@@ -70151,6 +70118,7 @@ cDY
 cDY
 cDY
 cDY
+tcB
 cDY
 cDY
 cDY
@@ -70159,9 +70127,7 @@ cDY
 cDY
 cDY
 cDY
-cDY
-cDY
-cDY
+tcB
 cDY
 cMD
 cBS
@@ -72483,6 +72449,7 @@ cDc
 cDb
 cDV
 cDY
+tcB
 cDY
 cDY
 cDY
@@ -72491,6 +72458,7 @@ cDY
 cDY
 cDY
 cDY
+tcB
 cDY
 cDY
 cDY
@@ -72499,9 +72467,7 @@ cDY
 cDY
 cDY
 cDY
-cDY
-cDY
-cDY
+tcB
 cDY
 cNb
 cBS
@@ -73005,6 +72971,7 @@ aUD
 aVj
 acI
 aWh
+uHT
 aWh
 aWh
 aWh
@@ -73013,6 +72980,7 @@ aWh
 aWh
 aWh
 aWh
+uHT
 aWh
 aWh
 aWh
@@ -73021,9 +72989,7 @@ aWh
 aWh
 aWh
 aWh
-aWh
-aWh
-aWh
+uHT
 aWh
 bAF
 aVi
@@ -75345,6 +75311,7 @@ aUD
 aVg
 acJ
 aWh
+uHT
 aWh
 aWh
 aWh
@@ -75353,6 +75320,7 @@ aWh
 aWh
 aWh
 aWh
+uHT
 aWh
 aWh
 aWh
@@ -75361,9 +75329,7 @@ aWh
 aWh
 aWh
 aWh
-aWh
-aWh
-aWh
+uHT
 aWh
 bFg
 aVi
@@ -76402,7 +76368,7 @@ bsS
 bvy
 bsS
 bsS
-bBU
+bsS
 bFr
 aQH
 bIX
@@ -85490,8 +85456,8 @@ dTs
 dTs
 aEa
 aEa
-aCS
-aCS
+aEa
+aEa
 aEa
 aEa
 dTs
@@ -85724,8 +85690,8 @@ dTs
 dTs
 aEa
 aCD
-aCT
-aDd
+aCF
+aDg
 aDn
 aEa
 aDt
@@ -86425,7 +86391,7 @@ dTs
 dTs
 dTs
 aEa
-aCH
+aCJ
 aCI
 aDh
 aCJ

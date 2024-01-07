@@ -97,7 +97,7 @@
 	if(body && !body.key)
 		body.key = "@[key]" //Haaaaaaaack. But the people have spoken. If it breaks; blame adminbus
 		if(body.client)
-			body.client.change_view(world_view_size) //reset view range to default.
+			body.client.change_view(GLOB.world_view_size) //reset view range to default.
 
 		//re-open STUI
 	if(new_STUI)
@@ -184,6 +184,29 @@
 
 	dat += "</body></html>"
 	show_browser(usr, dat, "Admin record for [key]", "adminplayerinfo", "size=480x480")
+
+/datum/admins/proc/check_ckey(target_key as text)
+	set name = "Check CKey"
+	set category = "Admin"
+
+	var/mob/user = usr
+	if (!istype(src, /datum/admins))
+		src = user.client.admin_holder
+	if (!istype(src, /datum/admins) || !(rights & R_MOD))
+		to_chat(user, "Error: you are not an admin!")
+		return
+	target_key = ckey(target_key)
+	if(!target_key)
+		to_chat(user, "Error: No key detected!")
+		return
+	to_chat(user, SPAN_WARNING("Checking Ckey: [target_key]"))
+	var/list/keys = analyze_ckey(target_key)
+	if(!keys)
+		to_chat(user, SPAN_WARNING("No results for [target_key]."))
+		return
+	to_chat(user, SPAN_WARNING("Check CKey Results: [keys.Join(", ")]"))
+
+	log_admin("[key_name(user)] analyzed ckey '[target_key]'")
 
 /datum/admins/proc/sleepall()
 	set name = "Sleep All"
@@ -383,7 +406,7 @@
 	set name = "Admin Verbs - Show"
 	set category = "Admin"
 
-	add_verb(src, admin_verbs_hideable)
+	add_verb(src, GLOB.admin_verbs_hideable)
 	remove_verb(src, /client/proc/enable_admin_verbs)
 
 	if(!(admin_holder.rights & R_DEBUG))
@@ -396,7 +419,7 @@
 	set name = "Admin Verbs - Hide"
 	set category = "Admin"
 
-	remove_verb(src, admin_verbs_hideable)
+	remove_verb(src, GLOB.admin_verbs_hideable)
 	add_verb(src, /client/proc/enable_admin_verbs)
 
 /client/proc/strip_all_in_view()
@@ -657,13 +680,13 @@
 
 /proc/set_lz_resin_allowed(allowed = TRUE)
 	if(allowed)
-		for(var/area/A in all_areas)
+		for(var/area/A in GLOB.all_areas)
 			if(A.flags_area & AREA_UNWEEDABLE)
 				continue
 			A.is_resin_allowed = TRUE
 		msg_admin_niche("Areas close to landing zones are now weedable.")
 	else
-		for(var/area/A in all_areas)
+		for(var/area/A in GLOB.all_areas)
 			if(A.flags_area & AREA_UNWEEDABLE)
 				continue
 			A.is_resin_allowed = initial(A.is_resin_allowed)

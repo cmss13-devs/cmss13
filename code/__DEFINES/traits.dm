@@ -143,10 +143,22 @@
 // #define TRAIT_X "t_x"
 
 //-- mob traits --
-/// Prevents voluntary movement.
-#define TRAIT_IMMOBILIZED "immobilized"
 /// Apply this to make a mob not dense, and remove it when you want it to no longer make them undense, other sorces of undesity will still apply. Always define a unique source when adding a new instance of this!
 #define TRAIT_UNDENSE "undense"
+/// Forces the user to stay unconscious.
+#define TRAIT_KNOCKEDOUT "knockedout"
+/// Prevents voluntary movement.
+#define TRAIT_IMMOBILIZED "immobilized"
+/// Prevents voluntary standing or staying up on its own.
+#define TRAIT_FLOORED "floored"
+/// Forces user to stay standing
+#define TRAIT_FORCED_STANDING "forcedstanding"
+/// Stuns preventing movement and using objects but without further impairement
+#define TRAIT_INCAPACITATED "incapacitated"
+/// Disoriented. Unable to talk properly, and unable to use some skills as Xeno
+#define TRAIT_DAZED "dazed"
+/// Apply this to identify a mob as merged with weeds
+#define TRAIT_MERGED_WITH_WEEDS "merged_with_weeds"
 
 // SPECIES TRAITS
 /// Knowledge of Yautja technology
@@ -211,6 +223,8 @@
 #define TRAIT_HARDCORE "t_hardcore"
 /// If the mob is able to use the vulture rifle or spotting scope
 #define TRAIT_VULTURE_USER "t_vulture_user"
+/// If the mob is currently loading a tutorial
+#define TRAIT_IN_TUTORIAL "t_IN_TUTORIAL"
 /// If the mob is cloaked in any form
 #define TRAIT_CLOAKED "t_cloaked"
 
@@ -287,6 +301,7 @@ GLOBAL_LIST_INIT(mob_traits, list(
 	TRAIT_REAGENT_SCANNER,
 	TRAIT_ABILITY_BURROWED,
 	TRAIT_VULTURE_USER,
+	TRAIT_IN_TUTORIAL,
 ))
 
 /*
@@ -296,7 +311,11 @@ GLOBAL_LIST_INIT(mob_traits, list(
 */
 GLOBAL_LIST_INIT(traits_by_type, list(
 	/mob = list(
+		"TRAIT_KNOCKEDOUT" = TRAIT_KNOCKEDOUT,
 		"TRAIT_IMMOBILIZED" = TRAIT_IMMOBILIZED,
+		"TRAIT_INCAPACITATED" = TRAIT_INCAPACITATED,
+		"TRAIT_FLOORED" = TRAIT_FLOORED,
+		"TRAIT_DAZED" = TRAIT_DAZED,
 		"TRAIT_UNDENSE" = TRAIT_UNDENSE,
 		"TRAIT_YAUTJA_TECH" = TRAIT_YAUTJA_TECH,
 		"TRAIT_SUPER_STRONG" = TRAIT_SUPER_STRONG,
@@ -323,6 +342,8 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_VULTURE_USER" = TRAIT_VULTURE_USER,
 		"TRAIT_CLOAKED" = TRAIT_CLOAKED,
 	),
+//	/mob/living/carbon/human = list(
+//	),
 	/mob/living/carbon/xenomorph = list(
 		"TRAIT_ABILITY_NO_PLASMA_TRANSFER" = TRAIT_ABILITY_NO_PLASMA_TRANSFER,
 		"TRAIT_ABILITY_OVIPOSITOR" = TRAIT_ABILITY_OVIPOSITOR,
@@ -390,6 +411,8 @@ GLOBAL_LIST(trait_name_map)
 #define TRAIT_SOURCE_JOB "t_s_job"
 ///Status trait forced by staff
 #define TRAIT_SOURCE_ADMIN "t_s_admin"
+/// Status trait coming from a tutorial
+#define TRAIT_SOURCE_TUTORIAL "t_s_tutorials"
 ///Status trait coming from equipment
 #define TRAIT_SOURCE_EQUIPMENT(slot) "t_s_equipment_[slot]"
 ///Status trait coming from skill
@@ -398,10 +421,13 @@ GLOBAL_LIST(trait_name_map)
 #define TRAIT_SOURCE_ATTACHMENT(slot) "t_s_attachment_[slot]"
 ///Status trait coming from ability
 #define TRAIT_SOURCE_ABILITY(ability) "t_s_ability_[ability]"
+#define TRAIT_SOURCE_LIMB(limb) "t_s_limb_[limb]"
 ///Status trait forced by the xeno action charge
 #define TRAIT_SOURCE_XENO_ACTION_CHARGE "t_s_xeno_action_charge"
 ///Status trait coming from a xeno nest
 #define XENO_NEST_TRAIT "xeno_nest"
+///Status trait from a generic throw by xeno abilities
+#define XENO_THROW_TRAIT "xeno_throw_trait"
 //-- structure traits --
 ///Status trait coming from being flipped or unflipped.
 #define TRAIT_SOURCE_FLIP_TABLE "t_s_flip_table"
@@ -414,13 +440,39 @@ GLOBAL_LIST(trait_name_map)
 //Status trait coming from clothing.
 #define TRAIT_SOURCE_CLOTHING "t_s_clothing"
 
-/// traits associated with actively interacted machinery
-#define INTERACTION_TRAIT "interaction"
+/// trait associated to being buckled
+#define BUCKLED_TRAIT "buckled" // Yes the name doesn't conform. /tg/ appears to have changed naming style inbetween
+/// trait source when an effect is coming from a fakedeath effect (refactor this)
+#define FAKEDEATH_TRAIT "fakedeath"
+/// trait source where a condition comes from body state
+#define BODY_TRAIT "body"
+/// Trait associated to lying down (having a [lying_angle] of a different value than zero).
+#define LYING_DOWN_TRAIT "lying-down"
+/// trait associated to a stat value or range of
+#define STAT_TRAIT "stat"
+/// trait effect related to the queen ovipositor
+#define OVIPOSITOR_TRAIT "ovipositor"
+/// trait associated to being held in a chokehold
+#define CHOKEHOLD_TRAIT "chokehold"
 /// trait effect related to active specialist gear
 #define SPECIALIST_GEAR_TRAIT "specialist_gear"
 /// traits associated with usage of snowflake dropship double seats
 #define DOUBLE_SEATS_TRAIT "double_seats"
 /// traits associated with xeno on-ground weeds
 #define XENO_WEED_TRAIT "xeno_weed"
+/// traits associated with actively interacted machinery
+#define INTERACTION_TRAIT "interaction"
+/// traits bound by stunned status effects
+#define STUNNED_TRAIT "stunned"
+/// traits bound by knocked_down status effect
+#define KNOCKEDDOWN_TRAIT "knockeddown"
+/// traits bound by knocked_out status effect
+#define KNOCKEDOUT_TRAIT "knockedout"
+/// traits from being pounced
+#define POUNCED_TRAIT "pounced"
+/// traits from step_triggers on the map
+#define STEP_TRIGGER_TRAIT "step_trigger"
+/// traits from hacked machine interactions
+#define HACKED_TRAIT "hacked"
 /// traits from chloroform usage
 #define CHLOROFORM_TRAIT "chloroform"

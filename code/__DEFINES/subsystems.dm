@@ -109,6 +109,7 @@
 // Subsystems shutdown in the reverse of the order they initialize in
 // The numbers just define the ordering, they are meaningless otherwise.
 
+#define SS_INIT_PROFILER 86
 #define SS_INIT_INPUT   85
 #define SS_INIT_TOPIC 83
 #define SS_INIT_LOBBYART 82
@@ -178,9 +179,11 @@
 #define SS_PRIORITY_FAST_OBJECTS   105
 #define SS_PRIORITY_OBJECTS 104
 #define SS_PRIORITY_DECORATOR    99
+#define SS_PRIORITY_EFFECTS        97
+#define SS_PRIORITY_FASTEFFECTS    96
 #define SS_PRIORITY_HIJACK 97
 #define SS_PRIORITY_POWER   95
-#define SS_PRIORITY_EFFECTS 92
+#define SS_PRIORITY_OLDEFFECTS 92
 #define SS_PRIORITY_MACHINERY   90
 #define SS_PRIORITY_FZ_TRANSITIONS 88
 #define SS_PRIORITY_ROUND_RECORDING 83

@@ -35,40 +35,57 @@
 			return "on [t_his] shoulder"
 	return ..()
 
+/obj/item/falcon_drone/equipped(mob/user, slot, silent)
+	. = ..()
+	if(!(slot == WEAR_L_EAR || slot == WEAR_R_EAR))
+		return
+	add_verb(user, /obj/item/falcon_drone/proc/can_control_falcon_drone)
+	var/datum/action/predator_action/mask/control_falcon_drone/falcon_action = give_action(user, /datum/action/predator_action/mask/control_falcon_drone)
+	falcon_action.linked_falcon_drone = src
+
+/obj/item/falcon_drone/dropped(mob/user)
+	. = ..()
+	remove_verb(user, /obj/item/falcon_drone/proc/can_control_falcon_drone)
+	remove_action(user, /datum/action/predator_action/mask/control_falcon_drone)
+
 /obj/item/falcon_drone/attack_self(mob/user)
 	..()
-	control_falcon_drone()
+	can_control_falcon_drone()
 
-/obj/item/falcon_drone/verb/control_falcon_drone()
+/obj/item/falcon_drone/proc/can_control_falcon_drone()
 	set name = "Control Falcon Drone"
 	set desc = "Activates your falcon drone."
 	set category = "Yautja.Misc"
-	set src in usr
 
 	if(usr.is_mob_incapacitated())
 		return
 
-	var/mob/living/carbon/human/H = usr
-	if(!istype(H) || !HAS_TRAIT(usr, TRAIT_YAUTJA_TECH))
+	var/mob/living/carbon/human/human = usr
+	if(!istype(human) || !HAS_TRAIT(usr, TRAIT_YAUTJA_TECH))
 		to_chat(usr, SPAN_WARNING("You do not know how to use this."))
 		return
 
-	if(!istype(H.gloves, /obj/item/clothing/gloves/yautja))
+	if(!istype(human.gloves, /obj/item/clothing/gloves/yautja))
 		to_chat(usr, SPAN_WARNING("You need your bracers to control \the [src]!"))
 		return
+	control_falcon_drone(human, human.gloves)
 
-	var/mob/hologram/falcon/hologram = new /mob/hologram/falcon(usr.loc, usr, src, H.gloves)
-	usr.drop_inv_item_to_loc(src, hologram)
+/obj/item/falcon_drone/proc/control_falcon_drone(mob/living/user, obj/item/clothing/gloves/yautja/bracers)
+	var/mob/hologram/falcon/hologram = new /mob/hologram/falcon(get_turf(user), user, src, bracers)
+	user.drop_inv_item_to_loc(src, hologram)
 
 /mob/hologram/falcon
 	name = "falcon drone"
+	desc = "An agile drone used by Yautja to survey the hunting grounds."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	action_icon_state = "falcon_drone"
 	icon_state = "falcon_drone_active"
 	hud_possible = list(HUNTER_HUD)
+	motion_sensed = TRUE
+	initial_leave_button = /datum/action/leave_hologram/falcon
+
 	var/obj/item/falcon_drone/parent_drone
 	var/obj/item/clothing/gloves/yautja/owned_bracers
-	desc = "An agile drone used by Yautja to survey the hunting grounds."
-	motion_sensed = TRUE
 
 /mob/hologram/falcon/Initialize(mapload, mob/M, obj/item/falcon_drone/drone, obj/item/clothing/gloves/yautja/bracers)
 	. = ..()
@@ -85,11 +102,11 @@
 		PF.flags_can_pass_all = PASS_ALL
 
 /mob/hologram/falcon/add_to_all_mob_huds()
-	var/datum/mob_hud/hud = huds[MOB_HUD_HUNTER]
+	var/datum/mob_hud/hud = GLOB.huds[MOB_HUD_HUNTER]
 	hud.add_to_hud(src)
 
 /mob/hologram/falcon/remove_from_all_mob_huds()
-	var/datum/mob_hud/hud = huds[MOB_HUD_HUNTER]
+	var/datum/mob_hud/hud = GLOB.huds[MOB_HUD_HUNTER]
 	hud.remove_from_hud(src)
 
 /mob/hologram/falcon/med_hud_set_status()
@@ -128,6 +145,11 @@
 	SIGNAL_HANDLER
 
 	qdel(src)
+
+/datum/action/leave_hologram/falcon
+	icon_file = 'icons/mob/hud/actions_yautja.dmi'
+	button_icon_state = "pred_template"
+	action_icon_state = "falcon_drone"
 
 /obj/item/trash/falcon_drone
 	name = "destroyed falcon drone"

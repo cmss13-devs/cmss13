@@ -504,7 +504,7 @@ SUBSYSTEM_DEF(shuttle)
 /datum/controller/subsystem/shuttle/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "ShuttleManipulator", name, 800, 600)
+		ui = new(user, src, "ShuttleManipulator", name, 850, 600)
 		ui.open()
 
 

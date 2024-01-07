@@ -354,8 +354,7 @@
 			current_storage.attempt_item_insertion(equipping_item, disable_warning, src)
 			back.update_icon()
 		if(WEAR_IN_SHOES)
-			shoes.attempt_insert_item(src, equipping_item, TRUE)
-			shoes.update_icon()
+			shoes.attempt_insert_item(src, equipping_item)
 		if(WEAR_IN_SCABBARD)
 			var/obj/item/storage/current_storage = back
 			current_storage.attempt_item_insertion(equipping_item, disable_warning, src)
@@ -495,7 +494,8 @@
 	/// Multiplier for how quickly the user can strip things.
 	var/user_speed = user.get_skill_duration_multiplier(SKILL_CQC)
 	/// The total skill level of CQC & Police
-	var/target_skills = (target.skills.get_skill_level(SKILL_CQC) + target.skills.get_skill_level(SKILL_POLICE))
+	var/target_skills = 0
+	target_skills += (target.skills?.get_skill_level(SKILL_CQC) + target.skills?.get_skill_level(SKILL_POLICE))
 
 	/// Delay then gets + 0.5s per skill level, so long as not dead or cuffed.
 	if(!(target.stat || target.handcuffed))
@@ -550,6 +550,7 @@
 			to_chat(src, SPAN_WARNING("You can't put \the [interact_item.name] on [target_mob]!"))
 			return
 		visible_message(SPAN_NOTICE("[src] tries to put \the [interact_item.name] on [target_mob]."), null, null, 5)
+		log_interact(src, target_mob, "[key_name(src)] attempted to put [interact_item.name] on [key_name(target_mob)]'s ([slot_to_process]).")
 		if(do_after(src, get_strip_delay(src, target_mob), INTERRUPT_ALL, BUSY_ICON_GENERIC, target_mob, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 			if(interact_item == get_active_hand() && !target_mob.get_item_by_slot(slot_to_process) && Adjacent(target_mob))
 				if(interact_item.flags_item & WIELDED) //to prevent re-wielding it during the do_after
@@ -558,6 +559,7 @@
 					drop_inv_item_on_ground(interact_item)
 					if(interact_item && !QDELETED(interact_item)) //Might be self-deleted?
 						target_mob.equip_to_slot_if_possible(interact_item, slot_to_process, 1, 0, 1, 1)
+						log_interact(src, target_mob, "[key_name(src)] put [interact_item.name] on [key_name(target_mob)]'s ([slot_to_process]) successfully.")
 						if(ishuman(target_mob) && target_mob.stat == DEAD)
 							var/mob/living/carbon/human/human_target = target_mob
 							human_target.disable_lights() // take that powergamers -spookydonut
@@ -569,5 +571,3 @@
 /mob/living/carbon/human/drop_inv_item_on_ground(obj/item/I, nomoveupdate, force)
 	remember_dropped_object(I)
 	return ..()
-
-

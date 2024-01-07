@@ -96,8 +96,8 @@
 		if(E)
 			var/safety = H.get_eye_protection()
 			if(!safety)
-				to_chat(user, SPAN_DANGER("You stab [H] in the eyes with the [src]!"))
-				visible_message(SPAN_DANGER("[user] stabs [H] in the eyes with the [src]!"))
+				user.visible_message(SPAN_DANGER("[user] stabs [H] in the eyes with [src]!"),
+					SPAN_DANGER("You stab [H] in the eyes with [src]!"))
 				E.take_damage(rand(8,20))
 	return ..()
 /obj/item/tool/screwdriver/tactical
@@ -162,6 +162,7 @@
 	drop_sound = 'sound/handling/weldingtool_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
+	var/base_icon_state = ""
 
 	//Amount of OUCH when it's thrown
 	force = 3
@@ -192,6 +193,7 @@
 	. = ..()
 	create_reagents(max_fuel)
 	reagents.add_reagent("fuel", max_fuel)
+	base_icon_state = initial(icon_state)
 	return
 
 /obj/item/tool/weldingtool/Destroy()
@@ -336,7 +338,7 @@
 			weld_tick += 8 //turning the tool on does not consume fuel directly, but it advances the process that regularly consumes fuel.
 			force = 15
 			damtype = "fire"
-			icon_state = "welder1"
+			icon_state = base_icon_state + "_on"
 			w_class = SIZE_LARGE
 			heat_source = 3800
 			START_PROCESSING(SSobj, src)
@@ -348,7 +350,7 @@
 		playsound(loc, 'sound/items/weldingtool_off.ogg', 25)
 		force = 3
 		damtype = "brute"
-		icon_state = "welder"
+		icon_state = base_icon_state
 		welding = 0
 		w_class = initial(w_class)
 		heat_source = 0
@@ -415,6 +417,7 @@
 	name = "industrial blowtorch"
 	max_fuel = 60
 	matter = list("metal" = 70, "glass" = 60)
+	icon_state = "welder_c"
 
 
 /obj/item/tool/weldingtool/hugetank
@@ -442,9 +445,9 @@
 	name = "\improper ME3 hand welder"
 	desc = "A compact, handheld welding torch used by the marines of the United States Colonial Marine Corps for cutting and welding jobs on the field. Due to the small size and slow strength, its function is limited compared to a full-sized technician's blowtorch."
 	max_fuel = 5
-	color = "#cc0000"
 	has_welding_screen = TRUE
 	inherent_traits = list(TRAIT_TOOL_SIMPLE_BLOWTORCH)
+	icon_state = "welder_b"
 
 /*
  * Crowbar

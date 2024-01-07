@@ -42,6 +42,8 @@
 	var/list/Lines = list()
 	if(admin_holder && ((R_ADMIN & admin_holder.rights) || (R_MOD & admin_holder.rights)))
 		for(var/client/C in GLOB.clients)
+			if(!CLIENT_HAS_RIGHTS(src, R_STEALTH) && (CLIENT_IS_STEALTHED(C)))
+				continue
 			var/entry = "[C.key]"
 			if(C.mob) //Juuuust in case
 				if(istype(C.mob, /mob/new_player))
@@ -83,7 +85,7 @@
 									counted_humanoids["Infected humans"]++
 								if(C.mob.faction == FACTION_MARINE)
 									counted_humanoids[FACTION_MARINE]++
-									if(C.mob.job in (ROLES_MARINES))
+									if(C.mob.job in (GLOB.ROLES_MARINES))
 										counted_humanoids["USCM Marines"]++
 								else
 									counted_humanoids[C.mob.faction]++
@@ -139,7 +141,7 @@
 
 	else
 		for(var/client/C in GLOB.clients)
-			if(C.admin_holder && C.admin_holder.fakekey)
+			if((C.admin_holder && C.admin_holder.fakekey) || (CLIENT_IS_STEALTHED(C)))
 				continue
 
 			Lines += C.key
@@ -160,7 +162,7 @@
 	if(CONFIG_GET(flag/show_manager))
 		LAZYSET(mappings, "<B style='color:purple'>Management</B>", R_PERMISSIONS)
 	if(CONFIG_GET(flag/show_devs))
-		LAZYSET(mappings, "<B style='color:blue'>Maintainers</B>", R_PROFILER)
+		LAZYSET(mappings, "<B style='color:dodgerblue'>Maintainers</B>", R_PROFILER)
 	LAZYSET(mappings, "<B style='color:red'>Admins</B>", R_ADMIN)
 	if(CONFIG_GET(flag/show_mods))
 		LAZYSET(mappings, "<B style='color:orange'>Moderators</B>", R_MOD)
@@ -172,6 +174,8 @@
 		LAZYSET(listings, category, list())
 
 	for(var/client/C in GLOB.admins)
+		if(CLIENT_IS_STEALTHED(C) && !CLIENT_HAS_RIGHTS(src, R_STEALTH))
+			continue
 		if(C.admin_holder?.fakekey && !CLIENT_IS_STAFF(src))
 			continue
 		for(var/category in mappings)
@@ -182,12 +186,14 @@
 	for(var/category in listings)
 		dat += "<BR><B>Current [category] ([length(listings[category])]):<BR></B>\n"
 		for(var/client/entry in listings[category])
-			dat += "\t[entry.key] is a [entry.admin_holder.rank]"
+			dat += "\t[entry.key] is \a [entry.admin_holder.rank]"
 			if(entry.admin_holder.extra_titles?.len)
 				for(var/srank in entry.admin_holder.extra_titles)
 					dat += " & [srank]"
 			if(CLIENT_IS_STAFF(src))
-				if(entry.admin_holder?.fakekey)
+				if(CLIENT_IS_STEALTHED(entry))
+					dat += " <B><font color='#b60d0d'>(STEALTHED)</font></B>"
+				else if(entry.admin_holder?.fakekey)
 					dat += " <i>(HIDDEN)</i>"
 				if(istype(entry.mob, /mob/dead/observer))
 					dat += "<B> - <font color='#808080'>Observing</font></B>"

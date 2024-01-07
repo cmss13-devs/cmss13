@@ -49,9 +49,10 @@
 
 	if(!isxeno(M))
 		if(insta_neuro)
-			if(M.knocked_down < 3)
-				M.adjust_effect(1 * power, WEAKEN)
-			return
+			if(M.GetKnockDownDuration() < 3) // Why are you not using KnockDown(3) ? Do you even know 3 is SIX seconds ? So many questions left unanswered.
+				M.KnockDown(power)
+				M.Stun(power)
+				return
 
 		if(ishuman(M))
 			M.apply_effect(2.5, SUPERSLOW)
@@ -65,8 +66,9 @@
 				no_clothes_neuro = TRUE
 
 		if(no_clothes_neuro)
-			if(M.knocked_down < 5)
-				M.adjust_effect(1 * power, WEAKEN) // KD them a bit more
+			if(M.GetKnockDownDuration() < 5) // Nobody actually knows what this means. Supposedly it means less than 10 seconds. Frankly if you get locked into 10s of knockdown to begin with there are bigger issues.
+				M.KnockDown(power)
+				M.Stun(power)
 				M.visible_message(SPAN_DANGER("[M] falls prone."))
 
 /proc/apply_scatter_neuro(mob/living/M)
@@ -79,9 +81,9 @@
 			H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
 			return
 
-		if(M.knocked_down < 0.7) // apply knockdown only if current knockdown is less than 0.7 second
-			M.apply_effect(0.7, WEAKEN)
-			M.visible_message(SPAN_DANGER("[M] falls prone."))
+		M.KnockDown(0.7) // Completely arbitrary values from another time where stun timers incorrectly stacked. Kill as needed.
+		M.Stun(0.7)
+		M.visible_message(SPAN_DANGER("[M] falls prone."))
 
 /datum/ammo/xeno/toxin/on_hit_mob(mob/M,obj/projectile/P)
 	if(ishuman(M))

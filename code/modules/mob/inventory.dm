@@ -29,8 +29,6 @@
 
 //Puts the item into your l_hand if possible and calls all necessary triggers/updates. returns 1 on success.
 /mob/proc/put_in_l_hand(obj/item/W)
-	if(lying)
-		return FALSE
 	if(!istype(W))
 		return FALSE
 	if(!l_hand)
@@ -48,8 +46,6 @@
 
 //Puts the item into your r_hand if possible and calls all necessary triggers/updates. returns 1 on success.
 /mob/proc/put_in_r_hand(obj/item/W)
-	if(lying)
-		return FALSE
 	if(!istype(W))
 		return FALSE
 	if(!r_hand)
@@ -351,13 +347,12 @@
 					W.forceMove(B)
 					equipped = 1
 		if(WEAR_IN_SHOES)
-			if(!shoes)
-				return
+			// If the player isn't wearing shoes, or the shoes somehow aren't shoes.
 			if(!istype(shoes, /obj/item/clothing/shoes))
 				return
-			if(shoes.stored_item)
-				return
-			shoes.attempt_insert_item(src, shoes, TRUE)
+			// If the item was successfully inserted.
+			if(shoes.attempt_insert_item(src, W))
+				equipped = 1 // what is this proc
 		if(WEAR_IN_SCABBARD)
 			if(src.back && istype(src.back, /obj/item/storage/large_holster))
 				var/obj/item/storage/large_holster/B = src.back

@@ -15,7 +15,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	"1548" = "bug breaking the \"alpha\" functionality in the game, allowing clients to be able to see things/mobs they should not be able to see.",
 	))
 
-#define LIMITER_SIZE 5
+#define LIMITER_SIZE 12
 #define CURRENT_SECOND 1
 #define SECOND_COUNT 2
 #define CURRENT_MINUTE 3
@@ -56,6 +56,12 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/receive_random_tip,
 	/client/proc/set_eye_blur_type,
 ))
+
+/client/proc/reduce_minute_count()
+	if (!topiclimiter)
+		topiclimiter = new(LIMITER_SIZE)
+	if(topiclimiter[MINUTE_COUNT] > 0)
+		topiclimiter[MINUTE_COUNT] -= 1
 
 /client/Topic(href, href_list, hsrc)
 	if(!usr || usr != mob) //stops us calling Topic for somebody else's client. Also helps prevent usr=null
@@ -147,7 +153,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			return
 		cmd_admin_pm(receiver_client, null)
 		return
-
 	else if(href_list["FaxView"])
 
 		var/datum/fax/info = locate(href_list["FaxView"])
@@ -163,6 +168,14 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	else if(href_list["medals_panel"])
 		GLOB.medals_panel.tgui_interact(mob)
+
+	else if(href_list["tacmaps_panel"])
+		GLOB.tacmap_admin_panel.tgui_interact(mob)
+
+	else if(href_list["MapView"])
+		if(isxeno(mob))
+			return
+		GLOB.uscm_tacmap_status.tgui_interact(mob)
 
 	//NOTES OVERHAUL
 	if(href_list["add_merit_info"])
@@ -333,21 +346,22 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		admin.associate(src)
 
 	//Admin Authorisation
-	admin_holder = admin_datums[ckey]
+	admin_holder = GLOB.admin_datums[ckey]
 	if(admin_holder)
 		admin_holder.associate(src)
-	notify_login()
 
 	add_pref_verbs()
 	//preferences datum - also holds some persistent data for the client (because we may as well keep these datums to a minimum)
-	prefs = preferences_datums[ckey]
+	prefs = GLOB.preferences_datums[ckey]
 	if(QDELETED(prefs) || !istype(prefs))
 		prefs = new /datum/preferences(src)
-		preferences_datums[ckey] = prefs
+		GLOB.preferences_datums[ckey] = prefs
 	prefs.client_reconnected(src)
 	prefs.last_ip = address //these are gonna be used for banning
 	prefs.last_id = computer_id //these are gonna be used for banning
 	fps = prefs.fps
+
+	notify_login()
 
 	load_xeno_name()
 
@@ -363,7 +377,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		player_details.byond_version = full_version
 		GLOB.player_details[ckey] = player_details
 
-	view = world_view_size
+	view = GLOB.world_view_size
 	. = ..() //calls mob.Login()
 
 	if(SSinput.initialized)
@@ -417,10 +431,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			CEI = GLOB.custom_event_info_list[mob.faction]
 			CEI.show_player_event_info(src)
 
-	if( (world.address == address || !address) && !host )
-		host = key
-		world.update_status()
-
 	connection_time = world.time
 	winset(src, null, "command=\".configure graphics-hwmode on\"")
 
@@ -454,7 +464,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	load_player_data()
 
-	view = world_view_size
+	view = GLOB.world_view_size
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CLIENT_LOGIN, src)
 
@@ -486,7 +496,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	SSping.currentrun -= src
 
 	log_access("Logout: [key_name(src)]")
-	if(CLIENT_IS_STAFF(src))
+	if(CLIENT_IS_STAFF(src) && !CLIENT_IS_STEALTHED(src))
 		message_admins("Admin logout: [key_name(src)]")
 
 		var/list/adm = get_admin_counts(R_MOD)
@@ -503,7 +513,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 /// Handles login-related logging and associated notifications
 /client/proc/notify_login()
 	log_access("Login: [key_name(src)] from [address ? address : "localhost"]-[computer_id] || BYOND v[byond_version].[byond_build]")
-	if(CLIENT_IS_STAFF(src))
+	if(CLIENT_IS_STAFF(src) && !CLIENT_IS_STEALTHED(src))
 		message_admins("Admin login: [key_name(src)]")
 
 		var/list/adm = get_admin_counts(R_MOD)
@@ -546,17 +556,17 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 /proc/setup_player_entity(ckey)
 	if(!ckey)
 		return
-	if(player_entities["[ckey]"])
-		return player_entities["[ckey]"]
+	if(GLOB.player_entities["[ckey]"])
+		return GLOB.player_entities["[ckey]"]
 	var/datum/entity/player_entity/P = new()
 	P.ckey = ckey
 	P.name = ckey
-	player_entities["[ckey]"] = P
+	GLOB.player_entities["[ckey]"] = P
 	// P.setup_save(ckey)
 	return P
 
 /proc/save_player_entities()
-	for(var/key_ref in player_entities)
+	for(var/key_ref in GLOB.player_entities)
 		// var/datum/entity/player_entity/P = player_entities["[key_ref]"]
 		// P.save_statistics()
 	log_debug("STATISTICS: Statistics saving complete.")

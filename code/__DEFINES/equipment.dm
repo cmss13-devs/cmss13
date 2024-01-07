@@ -194,11 +194,11 @@
 
 //===========================================================================================
 //Marine armor only, use for flags_marine_armor.
-#define ARMOR_SQUAD_OVERLAY 1
-#define ARMOR_LAMP_OVERLAY 2
-#define ARMOR_LAMP_ON 4
-#define ARMOR_IS_REINFORCED 8
-#define SYNTH_ALLOWED 16
+#define ARMOR_SQUAD_OVERLAY (1<<0)
+#define ARMOR_LAMP_OVERLAY (1<<1)
+#define ARMOR_LAMP_ON (1<<2)
+#define ARMOR_IS_REINFORCED (1<<3)
+#define SYNTH_ALLOWED (1<<4)
 //===========================================================================================
 
 //===========================================================================================
@@ -493,7 +493,7 @@ GLOBAL_LIST_INIT(slot_to_contained_sprite_shorthand, list(
 #define UNIFORM_VEND_DRESS_EXTRA "dress extra"
 
 
-var/global/list/uniform_categories = list(
+GLOBAL_LIST_INIT(uniform_categories, list(
 	"UTILITY" = list(UNIFORM_VEND_UTILITY_UNIFORM, UNIFORM_VEND_UTILITY_JACKET, UNIFORM_VEND_UTILITY_HEAD, UNIFORM_VEND_UTILITY_GLOVES, UNIFORM_VEND_UTILITY_SHOES),
 	"UTILITY EXTRAS" = list(UNIFORM_VEND_UTILITY_EXTRA),
 	"SERVICE" = list(UNIFORM_VEND_SERVICE_UNIFORM, UNIFORM_VEND_SERVICE_JACKET, UNIFORM_VEND_SERVICE_GLOVES, UNIFORM_VEND_SERVICE_SHOES),
@@ -502,7 +502,7 @@ var/global/list/uniform_categories = list(
 	"DRESS" = list(UNIFORM_VEND_DRESS_UNIFORM, UNIFORM_VEND_DRESS_JACKET, UNIFORM_VEND_DRESS_GLOVES, UNIFORM_VEND_DRESS_SHOES),
 	"DRESS HEADWEAR" = list(UNIFORM_VEND_DRESS_HEAD),
 	"DRESS EXTRAS" = list(UNIFORM_VEND_DRESS_EXTRA)
-)
+))
 //=================================================
 
 

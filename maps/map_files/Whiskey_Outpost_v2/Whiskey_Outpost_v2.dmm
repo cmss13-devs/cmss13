@@ -2220,9 +2220,6 @@
 	icon_state = "floor_plate"
 	},
 /area/whiskey_outpost/inside/living)
-"hP" = (
-/turf/open/space/basic,
-/area/whiskey_outpost/inside/caves)
 "hQ" = (
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
@@ -22778,7 +22775,7 @@ mT
 mT
 mT
 mT
-hP
+mT
 mT
 mT
 dl
@@ -23177,12 +23174,12 @@ mT
 mT
 mT
 mT
-hP
 mT
 mT
 mT
 mT
-hP
+mT
+mT
 mT
 mT
 qz

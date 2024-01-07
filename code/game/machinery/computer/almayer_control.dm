@@ -72,7 +72,7 @@
 	var/list/data = list()
 	var/list/messages = list()
 
-	data["alert_level"] = security_level
+	data["alert_level"] = GLOB.security_level
 
 	data["time_request"] = cooldown_request
 	data["time_destruct"] = cooldown_destruct
@@ -110,13 +110,13 @@
 		return
 	switch(action)
 		if("award")
-			print_medal(usr, src)
+			open_medal_panel(usr, src)
 			. = TRUE
 
 		// evac stuff start \\
 
 		if("evacuation_start")
-			if(security_level < SEC_LEVEL_RED)
+			if(GLOB.security_level < SEC_LEVEL_RED)
 				to_chat(usr, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))
 				return FALSE
 
@@ -134,6 +134,19 @@
 			. = TRUE
 
 		if("evacuation_cancel")
+			var/mob/living/carbon/human/human_user = usr
+			var/obj/item/card/id/idcard = human_user.get_active_hand()
+			var/bio_fail = FALSE
+			if(!istype(idcard))
+				idcard = human_user.wear_id
+			if(!istype(idcard))
+				bio_fail = TRUE
+			else if(!idcard.check_biometrics(human_user))
+				bio_fail = TRUE
+			if(bio_fail)
+				to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
+				return FALSE
+
 			if(!SShijack.cancel_evacuation())
 				to_chat(usr, SPAN_WARNING("You are unable to cancel the evacuation right now!"))
 				return FALSE
@@ -147,7 +160,7 @@
 
 		if("change_sec_level")
 			var/list/alert_list = list(num2seclevel(SEC_LEVEL_GREEN), num2seclevel(SEC_LEVEL_BLUE))
-			switch(security_level)
+			switch(GLOB.security_level)
 				if(SEC_LEVEL_GREEN)
 					alert_list -= num2seclevel(SEC_LEVEL_GREEN)
 				if(SEC_LEVEL_BLUE)
@@ -217,7 +230,7 @@
 				to_chat(usr, SPAN_WARNING("The distress beacon has recently broadcast a message. Please wait."))
 				return FALSE
 
-			if(security_level == SEC_LEVEL_DELTA)
+			if(GLOB.security_level == SEC_LEVEL_DELTA)
 				to_chat(usr, SPAN_WARNING("The ship is already undergoing self-destruct procedures!"))
 				return FALSE
 

@@ -3,7 +3,7 @@
 	uses_special_name = TRUE
 	languages = ALL_SYNTH_LANGUAGES
 	skills = /datum/skills/synthetic
-	paygrade = "SYN"
+	paygrade = PAY_SHORT_SYN
 
 	minimap_icon = "synth"
 
@@ -41,7 +41,7 @@
 	idtype = /obj/item/card/id/gold
 	assignment = JOB_SYNTH
 	rank = "Synthetic"
-	paygrade = "SYN"
+	paygrade = PAY_SHORT_SYN
 	role_comm_title = "Syn"
 
 /datum/equipment_preset/synth/uscm/load_gear(mob/living/carbon/human/new_human)
@@ -65,7 +65,7 @@
 	idtype = /obj/item/card/id/gold
 	assignment = JOB_SYNTH
 	rank = "Synthetic"
-	paygrade = "SYN"
+	paygrade = PAY_SHORT_SYN
 	role_comm_title = "Syn"
 
 /datum/equipment_preset/synth/uscm/councillor/load_gear(mob/living/carbon/human/new_human)
@@ -317,7 +317,7 @@
 		WEAR_WAIST = /obj/item/storage/belt/marine,
 		WEAR_HANDS = /obj/item/clothing/gloves/marine/veteran,
 		WEAR_R_HAND = /obj/item/storage/pouch/flare/full,
-		WEAR_FEET = /obj/item/clothing/shoes/marine/upp,
+		WEAR_FEET = /obj/item/clothing/shoes/marine/upp/knife,
 		WEAR_L_HAND = /obj/item/storage/large_holster/katana/full
 	)
 
@@ -654,7 +654,7 @@
 	rank = JOB_COLONIST
 	skills = /datum/skills/infiltrator_synthetic
 	idtype = /obj/item/card/id/lanyard
-	paygrade = "C"
+	paygrade = PAY_SHORT_CIV
 
 /datum/equipment_preset/synth/infiltrator/New()
 	. = ..()
@@ -668,11 +668,11 @@
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
 	if(new_human.gender == MALE)
-		first_name = "[pick(first_names_male_colonist)]"
+		first_name = "[pick(GLOB.first_names_male_colonist)]"
 	else
-		first_name ="[pick(first_names_female_colonist)]"
+		first_name ="[pick(GLOB.first_names_female_colonist)]"
 
-	last_name ="[pick(last_names_colonist)]"
+	last_name ="[pick(GLOB.last_names_colonist)]"
 	random_name = "[first_name] [last_name]"
 	new_human.change_real_name(new_human, random_name)
 	var/static/list/colors = list("BLACK" = list(15, 15, 25), "BROWN" = list(102, 51, 0), "AUBURN" = list(139, 62, 19))

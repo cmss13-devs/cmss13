@@ -28,7 +28,7 @@
 	to_chat(H, SPAN_BOLD("The Dust Raiders responded with deadly force, scattering many of the colonists who attempted to fight their occupation."))
 	to_chat(H, SPAN_BOLD("The Dust Raiders and their flagship, the USS Alistoun eventually withdrew from the sector by the end of the year.</font>"))
 	to_chat(H, SPAN_BOLD("With the Neroid Sector existing in relative isolation from United America oversight for the last five years, many colonists have considered themselves free from governmental rule."))
-	to_chat(H, SPAN_BOLD("The year is now [game_year]."))
+	to_chat(H, SPAN_BOLD("The year is now [GLOB.game_year]."))
 	to_chat(H, SPAN_BOLD("The arrival of the USCM Battalion, the Falling Falcons, and their flagship, the [MAIN_SHIP_NAME], have reaffirmed that the United Americas considers the Neroid Sector part of their holdings."))
 	to_chat(H, SPAN_BOLD("It is up to you and your fellow colonists to make them realize their trespasses. This sector is no longer theirs."))
 

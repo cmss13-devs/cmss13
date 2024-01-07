@@ -66,8 +66,8 @@
 /// From /datum/action/xeno_action/onclick/plant_weeds/use_ability(): (atom/A)
 #define COMSIG_XENO_PLANT_RESIN_NODE "xeno_plant_resin_node"
 
-/// From //mob/living/carbon/xenomorph/proc/emit_pheromones(): (pheromone, emit_cost = 30)
+/// From //mob/living/carbon/xenomorph/proc/emit_pheromones(): (pheromone, emit_cost)
 #define COMSIG_XENO_START_EMIT_PHEROMONES "xeno_start_emit_pheromones"
 
-/// From
+/// From /obj/effect/alien/resin/special/eggmorph/attack_alien: (mob/living/carbon/xenomorph/M)
 #define COMSIG_XENO_TAKE_HUGGER_FROM_MORPHER "xeno_take_hugger_from_morpher"

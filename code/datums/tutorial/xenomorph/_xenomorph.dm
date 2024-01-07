@@ -1,7 +1,7 @@
 /datum/tutorial/xenomorph
 	category = TUTORIAL_CATEGORY_XENO
 	parent_path = /datum/tutorial/xenomorph
-	icon_state = "marine" // CHANGE
+	icon_state = "xeno" // CHANGE
 	///Starting xenomorph type (caste) of type /mob/living/carbon/xenomorph/...
 	var/mob/living/carbon/xenomorph/starting_xenomorph_type = /mob/living/carbon/xenomorph/drone
 	///Reference to the actual xenomorph mob
@@ -15,7 +15,7 @@
 	for(var/datum/action/action_path as anything in new_character.base_actions)
 		remove_action(new_character, action_path)
 
-	setup_xenomorph(new_character, tutorial_mob) // What do we need to do here
+	setup_xenomorph(new_character, tutorial_mob, is) // What do we need to do here
 
 	// We don't want people talking to other xenomorphs across tutorials
 	new_character.can_hivemind_speak = FALSE

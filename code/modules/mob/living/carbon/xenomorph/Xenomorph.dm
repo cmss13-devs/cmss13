@@ -1099,7 +1099,7 @@
 /proc/setup_xenomorph(mob/living/carbon/xenomorph/target, mob/new_player/new_player)
 	new_player.spawning = TRUE
 	new_player.close_spawn_windows()
-	new_player.client.prefs.copy_all_to(target, new_player.job, is_late_join)
+	new_player.client.prefs.copy_all_to(target, new_player.job, is_late_join = FALSE)
 
 	if(new_player.mind)
 		new_player.mind_initialize()

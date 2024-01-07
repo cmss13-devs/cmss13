@@ -131,8 +131,8 @@
 
 	UnregisterSignal(human_dummy, COMSIG_MOB_TACKLED_DOWN)
 
-	human_dummy.Stun(9 HOURS)
-	human_dummy.KnockDown(9 HOURS)
+	ADD_TRAIT(human_dummy, TRAIT_KNOCKEDOUT, TRAIT_SOURCE_TUTORIAL)
+	ADD_TRAIT(human_dummy, TRAIT_FLOORED, TRAIT_SOURCE_TUTORIAL)
 	xeno.melee_damage_lower = 0
 	xeno.melee_damage_upper = 0
 	message_to_player("Well done. Under normal circumstances, you would have to keep tackling the human to keep them down.")

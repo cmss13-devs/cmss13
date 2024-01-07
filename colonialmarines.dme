@@ -374,6 +374,7 @@
 #include "code\datums\ammo\rocket.dm"
 #include "code\datums\ammo\shrapnel.dm"
 #include "code\datums\ammo\xeno.dm"
+#include "code\datums\ammo\bullet\arc.dm"
 #include "code\datums\ammo\bullet\bullet.dm"
 #include "code\datums\ammo\bullet\lever_action.dm"
 #include "code\datums\ammo\bullet\pistol.dm"

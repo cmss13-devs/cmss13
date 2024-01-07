@@ -31,6 +31,8 @@
 	var/tracking_id = null //Used for the tracking subsystem
 	/// Maximum number allowed in a squad. Defaults to infinite
 	var/max_positions = -1
+	/// If uses the overlay
+	var/use_stripe_overlay = TRUE
 	/// Color for the squad marines gear overlays
 	var/equipment_color = "#FFFFFF"
 	/// The alpha for the armor overlay used by equipment color
@@ -108,6 +110,9 @@
 
 	var/minimap_color = MINIMAP_SQUAD_UNKNOWN
 
+	///Should we add the name of our squad in front of their name? Ex: Alpha Hospital Corpsman
+	var/prepend_squad_name_to_assignment = TRUE
+
 
 /datum/squad/marine
 	name = "Root"
@@ -175,6 +180,23 @@
 	roundstart = FALSE
 	locked = TRUE
 
+/datum/squad/marine/intel
+	name = SQUAD_MARINE_INTEL
+	use_stripe_overlay = FALSE
+	equipment_color = "#053818"
+	minimap_color = MINIMAP_SQUAD_INTEL
+	radio_freq = INTEL_FREQ
+
+	roundstart = FALSE
+	prepend_squad_name_to_assignment = FALSE
+
+	max_engineers = 0
+	max_medics = 0
+	max_specialists = 0
+	max_tl = 0
+	max_smartgun = 0
+	max_leaders = 0
+
 /datum/squad/marine/sof
 	name = SQUAD_SOF
 	equipment_color = "#400000"
@@ -183,6 +205,17 @@
 	squad_type = "Team"
 	lead_icon = "soctl"
 	minimap_color = MINIMAP_SQUAD_SOF
+
+	active = FALSE
+	roundstart = FALSE
+	locked = TRUE
+
+/datum/squad/marine/cbrn
+	name = SQUAD_CBRN
+	equipment_color = "#3B2A7B" //Chemical Corps Purple
+	chat_color = "#553EB2"
+	radio_freq = CBRN_FREQ
+	minimap_color = "#3B2A7B"
 
 	active = FALSE
 	roundstart = FALSE
@@ -370,13 +403,14 @@
 	var/message_colour = chat_color
 	if(only_leader)
 		if(squad_leader)
-			var/mob/living/carbon/human/SL = squad_leader
-			if(!SL.stat && SL.client)
-				SL.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, message_colour)
+			if(!squad_leader.stat && squad_leader.client)
+				playsound_client(squad_leader.client, 'sound/effects/radiostatic.ogg', squad_leader.loc, 25, FALSE)
+				squad_leader.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, message_colour)
 	else
-		for(var/mob/living/carbon/human/M in marines_list)
-			if(!M.stat && M.client) //Only living and connected people in our squad
-				M.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, message_colour)
+		for(var/mob/living/carbon/human/marine in marines_list)
+			if(!marine.stat && marine.client) //Only living and connected people in our squad
+				playsound_client(marine.client, 'sound/effects/radiostatic.ogg', marine.loc, 25, FALSE)
+				marine.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, message_colour)
 
 /// Displays a message to the squad members in chat
 /datum/squad/proc/send_message(text = "", plus_name = 0, only_leader = 0)
@@ -495,7 +529,10 @@
 	marines_list += M
 	M.assigned_squad = src //Add them to the squad
 	C.access += (src.access + extra_access) //Add their squad access to their ID
-	C.assignment = "[name] [assignment]"
+	if(prepend_squad_name_to_assignment)
+		C.assignment = "[name] [assignment]"
+	else
+		C.assignment = assignment
 
 	SEND_SIGNAL(M, COMSIG_SET_SQUAD)
 
@@ -504,7 +541,7 @@
 	C.name = "[C.registered_name]'s ID Card ([C.assignment])"
 
 	var/obj/item/device/radio/headset/almayer/marine/headset = locate() in list(M.wear_l_ear, M.wear_r_ear)
-	if(headset)
+	if(headset && radio_freq)
 		headset.set_frequency(radio_freq)
 	M.update_inv_head()
 	M.update_inv_wear_suit()
@@ -578,7 +615,7 @@
 		if(JOB_SQUAD_MEDIC)
 			old_lead.comm_title = "HM"
 		if(JOB_SQUAD_TEAM_LEADER)
-			old_lead.comm_title = "TL"
+			old_lead.comm_title = "FTL"
 		if(JOB_SQUAD_SMARTGUN)
 			old_lead.comm_title = "SG"
 		if(JOB_SQUAD_LEADER)
@@ -612,10 +649,10 @@
 //Not a safe proc. Returns null if squads or jobs aren't set up.
 //Mostly used in the marine squad console in marine_consoles.dm.
 /proc/get_squad_by_name(text)
-	if(!RoleAuthority || RoleAuthority.squads.len == 0)
+	if(!GLOB.RoleAuthority || GLOB.RoleAuthority.squads.len == 0)
 		return null
 	var/datum/squad/S
-	for(S in RoleAuthority.squads)
+	for(S in GLOB.RoleAuthority.squads)
 		if(S.name == text)
 			return S
 	return null
@@ -723,7 +760,7 @@
 //moved the main proc for ft management from human.dm here to make it support both examine and squad info way to edit fts
 /datum/squad/proc/manage_fireteams(mob/living/carbon/human/target)
 	var/obj/item/card/id/ID = target.get_idcard()
-	if(!ID || !(ID.rank in ROLES_MARINES))
+	if(!ID || !(ID.rank in GLOB.ROLES_MARINES))
 		return
 	if(ID.rank == JOB_SQUAD_LEADER || squad_leader == target) //if SL/aSL are chosen
 		var/choice = tgui_input_list(squad_leader, "Manage Fireteams and Team leaders.", "Fireteams Management", list("Cancel", "Unassign Fireteam 1 Leader", "Unassign Fireteam 2 Leader", "Unassign Fireteam 3 Leader", "Unassign all Team Leaders"))

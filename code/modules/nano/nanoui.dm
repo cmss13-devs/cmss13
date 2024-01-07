@@ -105,7 +105,7 @@ nanoui is used to open and update nano browser uis
  */
 /datum/nanoui/Destroy()
 	if(user)
-		nanomanager.ui_closed(src)
+		SSnano.nanomanager.ui_closed(src)
 		close_browser(user, "[window_id]")
 		user = null
 
@@ -177,9 +177,13 @@ nanoui is used to open and update nano browser uis
 			close()
 			return
 
+		var/mob/living/living_user
+		if(isliving(user))
+			living_user = user
+
 		if ((allowed_user_stat > -1) && (user.stat > allowed_user_stat))
 			set_status(STATUS_DISABLED, push_update) // no updates, completely disabled (red visibility)
-		else if (user.is_mob_restrained() || user.lying)
+		else if (user.is_mob_restrained() || (living_user && living_user.body_position == LYING_DOWN))
 			set_status(STATUS_UPDATE, push_update) // update only (orange visibility)
 		else if (!(src_object in view(4, user))) // If the src object is not in visable, set status to 0
 			set_status(STATUS_DISABLED, push_update) // interactive (green visibility)
@@ -440,7 +444,7 @@ nanoui is used to open and update nano browser uis
 		winset(user, "mapwindow.map", "focus=true") // return keyboard focus to map
 		on_close_winset()
 		//onclose(user, window_id)
-		nanomanager.ui_opened(src)
+		SSnano.nanomanager.ui_opened(src)
 
 /**
 * Close this UI
@@ -449,7 +453,7 @@ nanoui is used to open and update nano browser uis
 */
 /datum/nanoui/proc/close()
 	is_auto_updating = 0
-	nanomanager.ui_closed(src)
+	SSnano.nanomanager.ui_closed(src)
 	close_browser(user, "[window_id]")
 
 	qdel(src)
@@ -516,7 +520,7 @@ nanoui is used to open and update nano browser uis
 		map_update = 1
 
 	if ((src_object && src_object.Topic(href, href_list)) || map_update)
-		nanomanager.update_uis(src_object) // update all UIs attached to src_object
+		SSnano.nanomanager.update_uis(src_object) // update all UIs attached to src_object
 
 /**
 * Process this UI, updating the entire UI or just the status (aka visibility)

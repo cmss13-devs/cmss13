@@ -60,7 +60,7 @@
 	for(var/obj/docking_port/mobile/marine_dropship/shuttle in SSshuttle.mobile)
 		if(shuttle.id == ship_tag)
 			SE.linked_shuttle = shuttle
-			shuttle.equipments += SE
+			SEND_SIGNAL(shuttle, COMSIG_DROPSHIP_ADD_EQUIPMENT, SE)
 			break
 
 	SE.update_equipment()
@@ -70,6 +70,7 @@
 	name = "weapon system attach point"
 	icon_state = "equip_base_front"
 	base_category = DROPSHIP_WEAPON
+	layer = ABOVE_OBJ_LAYER
 	var/firing_arc_min
 	var/firing_arc_max
 

@@ -6,7 +6,7 @@
 	name = "chair"
 	desc = "A rectangular metallic frame sitting on four legs with a back panel. Designed to fit the sitting position, more or less comfortably."
 	icon_state = "chair"
-	buckle_lying = FALSE
+	buckle_lying = 0
 	var/propelled = FALSE //Check for fire-extinguisher-driven chairs
 	var/can_rotate = TRUE
 	var/picked_up_item = /obj/item/weapon/twohanded/folded_metal_chair

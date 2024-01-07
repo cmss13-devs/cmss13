@@ -9,7 +9,7 @@
 
 /datum/equipment_preset/goon/New()
 	. = ..()
-	access = get_all_main_access()
+	access = get_access(ACCESS_LIST_WY_GOON)
 
 /datum/equipment_preset/goon/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE, FEMALE)
@@ -22,11 +22,11 @@
 	var/last_name
 	//gender checks
 	if(new_human.gender == MALE)
-		first_name = "[pick(first_names_male_pmc)]"
+		first_name = "[pick(GLOB.first_names_male_pmc)]"
 		new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
 	else
-		first_name = "[pick(first_names_female_pmc)]"
-	last_name = "[pick(last_names_pmc)]"
+		first_name = "[pick(GLOB.first_names_female_pmc)]"
+	last_name = "[pick(GLOB.last_names_pmc)]"
 	random_name = "[first_name] [last_name]"
 	new_human.change_real_name(new_human, random_name)
 
@@ -61,7 +61,7 @@
 
 	assignment = JOB_WY_GOON
 	rank = JOB_WY_GOON
-	paygrade = "WEY-GOON"
+	paygrade = PAY_SHORT_CPO
 	skills = /datum/skills/MP
 
 /datum/equipment_preset/goon/standard/load_gear(mob/living/carbon/human/new_human)
@@ -94,8 +94,12 @@
 
 	assignment = JOB_WY_GOON_LEAD
 	rank = JOB_WY_GOON_LEAD
-	paygrade = "WEY-GOON-L"
+	paygrade = PAY_SHORT_CSPO
 	skills = /datum/skills/MP
+
+/datum/equipment_preset/goon/lead/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_WY_GOON) + list(ACCESS_WY_LEADERSHIP)
 
 /datum/equipment_preset/goon/lead/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
@@ -126,7 +130,7 @@
 
 	assignment = JOB_WY_GOON_RESEARCHER
 	rank = JOB_WY_GOON_RESEARCHER
-	paygrade = "CCMO"
+	paygrade = PAY_SHORT_CCMO
 	skills = /datum/skills/researcher
 
 /datum/equipment_preset/goon/researcher/load_gear(mob/living/carbon/human/new_human)

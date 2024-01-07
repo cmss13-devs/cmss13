@@ -110,7 +110,7 @@
 		cell.add_fingerprint(user)
 		cell.update_icon()
 
-		to_chat(user, "You remove the [src.cell].")
+		to_chat(user, "You remove [cell].")
 		src.cell = null
 		updateicon()
 		return
@@ -121,7 +121,7 @@
 	else
 		turn_on()
 		if (on)
-			to_chat(user, "You switch on the [src].")
+			to_chat(user, "You switch on [src].")
 
 /obj/item/device/suit_cooling_unit/attackby(obj/item/W as obj, mob/user as mob)
 	if (HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
@@ -137,12 +137,12 @@
 	if (istype(W, /obj/item/cell))
 		if(cover_open)
 			if(cell)
-				to_chat(user, "There is a [cell] already installed here.")
+				to_chat(user, "There is \a [cell] already installed here.")
 			else
 				if(user.drop_held_item())
 					W.forceMove(src)
 					cell = W
-					to_chat(user, "You insert the [cell].")
+					to_chat(user, "You insert [cell].")
 		updateicon()
 		return
 
@@ -169,7 +169,7 @@
 
 	if (cover_open)
 		if(cell)
-			. += "The panel is open, exposing the [cell]."
+			. += "The panel is open, exposing [cell]."
 		else
 			. += "The panel is open."
 

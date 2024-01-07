@@ -19,7 +19,17 @@ SUBSYSTEM_DEF(interior)
 
 	var/list/bottom_left = reserved_area.bottom_left_coords
 
-	template.load(locate(bottom_left[1] + (INTERIOR_BORDER_SIZE / 2), bottom_left[2] + (INTERIOR_BORDER_SIZE / 2), bottom_left[3]), centered = FALSE)
+	var/list/bounds = template.load(locate(bottom_left[1] + (INTERIOR_BORDER_SIZE / 2), bottom_left[2] + (INTERIOR_BORDER_SIZE / 2), bottom_left[3]), centered = FALSE)
+
+	var/list/turfs = block( locate(bounds[MAP_MINX], bounds[MAP_MINY], bounds[MAP_MINZ]),
+							locate(bounds[MAP_MAXX], bounds[MAP_MAXY], bounds[MAP_MAXZ]))
+
+	var/list/areas = list()
+	for(var/turf/current_turf as anything in turfs)
+		areas |= current_turf.loc
+
+	for(var/area/current_area as anything in areas)
+		current_area.add_base_lighting()
 
 	interiors += interior
 	return reserved_area
@@ -32,7 +42,7 @@ SUBSYSTEM_DEF(interior)
 			continue
 		if(x >= bounds[1].x && x <= bounds[2].x && y >= bounds[1].y && y <= bounds[2].y)
 			return current_interior
-	return FALSE
+	return
 
 /// Checks if an atom is in an interior
 /datum/controller/subsystem/interior/proc/in_interior(loc)
@@ -41,10 +51,16 @@ SUBSYSTEM_DEF(interior)
 	if(!isturf(loc))
 		loc = get_turf(loc)
 
-	var/datum/turf_reservation/interior/reservation = SSmapping.used_turfs[loc]
+	var/datum/weakref/reservation_weakref = SSmapping.used_turfs[loc]
+
+	if(!reservation_weakref)
+		return
+
+	var/datum/turf_reservation/interior/reservation = reservation_weakref.resolve()
 
 	if(!istype(reservation))
 		return FALSE
+
 	return TRUE
 
 #undef INTERIOR_BORDER_SIZE

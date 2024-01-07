@@ -682,7 +682,7 @@
 
 	return
 
-/obj/item/reagent_container/food/drinks/drinkingglass/bullet_act(obj/item/projectile/P)
+/obj/item/reagent_container/food/drinks/drinkingglass/bullet_act(obj/projectile/P)
 	. = ..()
 	smash()
 

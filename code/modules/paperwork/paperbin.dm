@@ -23,8 +23,7 @@
 /obj/item/paper_bin/MouseDrop(atom/over_object)
 	if(over_object == usr && ishuman(usr) && !usr.is_mob_restrained() && !usr.stat && (loc == usr || in_range(src, usr)))
 		if(!usr.get_active_hand()) //if active hand is empty
-			attack_hand(usr, 1, 1)
-
+			usr.put_in_hands(src)
 	return
 
 /obj/item/paper_bin/attack_hand(mob/user)
@@ -57,7 +56,7 @@
 
 		P.forceMove(user.loc)
 		user.put_in_hands(P)
-		to_chat(user, SPAN_NOTICE("You take [P] out of the [src]."))
+		to_chat(user, SPAN_NOTICE("You take [P] out of [src]."))
 	else
 		to_chat(user, SPAN_NOTICE("[src] is empty!"))
 

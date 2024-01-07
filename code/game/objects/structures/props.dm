@@ -33,10 +33,10 @@
 /obj/structure/prop/dam/drill/proc/update()
 	icon_state = "thumper[on ? "-on" : ""]"
 	if(on)
-		SetLuminosity(3)
+		set_light(3)
 		playsound(src, 'sound/machines/turbine_on.ogg')
 	else
-		SetLuminosity(0)
+		set_light(0)
 		playsound(src, 'sound/machines/turbine_off.ogg')
 	return
 
@@ -114,9 +114,9 @@
 	underlays += "shadow[lit ? "-lit" : ""]"
 	icon_state = "torii[lit ? "-lit" : ""]"
 	if(lit)
-		SetLuminosity(6)
+		set_light(6)
 	else
-		SetLuminosity(0)
+		set_light(0)
 	return
 
 /obj/structure/prop/dam/torii/attack_hand(mob/user as mob)
@@ -510,10 +510,10 @@
 /obj/structure/prop/turbine/proc/Update()
 	icon_state = "biomass_turbine[on ? "-on" : ""]"
 	if (on)
-		SetLuminosity(3)
+		set_light(3)
 		playsound(src, 'sound/machines/turbine_on.ogg')
 	else
-		SetLuminosity(0)
+		set_light(0)
 		playsound(src, 'sound/machines/turbine_off.ogg')
 	return
 
@@ -650,11 +650,18 @@
 	icon_state = "brazier"
 	density = TRUE
 	health = 150
-	luminosity = 6
+	light_range = 6
+	light_on = TRUE
 	/// What obj this becomes when it gets to its next stage of construction / ignition
 	var/frame_type
 	/// What is used to progress to the next stage
 	var/state = STATE_COMPLETE
+
+/obj/structure/prop/brazier/Initialize()
+	. = ..()
+
+	if(!light_on)
+		set_light(0)
 
 /obj/structure/prop/brazier/get_examine_text(mob/user)
 	. = ..()
@@ -686,20 +693,11 @@
 	new frame_type(loc)
 	qdel(src)
 
-/obj/structure/prop/brazier/Destroy()
-	SetLuminosity(0)
-	return ..()
-
-/obj/structure/prop/brazier/Initialize()
-	. = ..()
-	if(luminosity)
-		SetLuminosity(luminosity)
-
 /obj/structure/prop/brazier/frame
 	name = "empty brazier"
 	desc = "An empty brazier."
 	icon_state = "brazier_frame"
-	luminosity = 0
+	light_on = FALSE
 	frame_type = /obj/structure/prop/brazier/frame/full
 	state = STATE_FUEL
 
@@ -715,7 +713,7 @@
 	desc = "It's a torch."
 	icon_state = "torch"
 	density = FALSE
-	luminosity = 5
+	light_range = 5
 
 /obj/structure/prop/brazier/frame/full/torch
 	name = "unlit torch"
@@ -807,13 +805,15 @@
 
 /obj/structure/prop/brazier/campfire/attackby(obj/item/attacking_item, mob/user)
 	if(!istype(attacking_item, /obj/item/stack/sheet/wood))
-		to_chat(SPAN_NOTICE("You cannot fuel [src] with [attacking_item]."))
+		to_chat(user, SPAN_NOTICE("You cannot fuel [src] with [attacking_item]."))
 		return
 	var/obj/item/stack/sheet/wood/fuel = attacking_item
 	if(remaining_fuel >= initial(remaining_fuel))
 		to_chat(user, SPAN_NOTICE("You cannot fuel [src] further."))
+		return
 	if(!fuel.use(1))
-		to_chat(SPAN_NOTICE("You do not have enough [attacking_item] to fuel [src]."))
+		to_chat(user, SPAN_NOTICE("You do not have enough [attacking_item] to fuel [src]."))
+		return
 	visible_message(SPAN_NOTICE("[user] fuels [src] with [fuel]."))
 	remaining_fuel++
 
@@ -840,7 +840,6 @@
 	addtimer(CALLBACK(src, PROC_REF(fuel_drain), TRUE), fuel_stage_time)
 
 /obj/structure/prop/brazier/campfire/Destroy()
-	SetLuminosity(0)
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
@@ -979,6 +978,13 @@
 	icon_state = "crawler"
 	density = TRUE
 
+/obj/structure/prop/vehicles/tank/twe
+	name = "\improper FV150 Shobo MKII"
+	desc = "The FV150 Shobo MKII is a Combat Reconnaissance Vehicle Tracked, abbreviated to CVR(T) in official documentation. It was co-developed in 2175 by Weyland-Yutani and Gallar Co., a Titan based heavy vehicle manufacturer. Taking into account lessons learned from the MkI's performance in the Australian Wars, major structual changes were made, and the MKII went into production in 2178. It is armed with a twin 30mm cannon and a L56A2 10x28mm coaxial, complimented by its ammunition stores of 170 rounds of 30mm and 1600 rounds of 10x28mm. The maximum speed of the Shobo is 60 mph, but on a standard deployment after the ammo stores are fully loaded and the terrain is taken into account, it consistently sits at 55mph."
+	icon = 'icons/obj/vehicles/twe_tank.dmi'
+	icon_state = "twe_tank"
+	density = TRUE
+
 //overhead prop sets
 
 /obj/structure/prop/invuln/overhead
@@ -1015,13 +1021,6 @@
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "arcadeb"
 	name = "Spirit Phone, The Game, The Movie: II"
-
-/obj/structure/prop/maintenance_hatch
-	name = "\improper Maintenance Hatch"
-	icon = 'icons/obj/structures/structures.dmi'
-	icon_state = "hatchclosed"
-	desc = "Looks like it's rusted shut. Creepy."
-	layer = HATCH_LAYER
 
 //INVULNERABLE PROPS
 
@@ -1126,7 +1125,8 @@
 	icon = 'icons/effects/fire.dmi'
 	icon_state = "dynamic_2"
 	layer = MOB_LAYER
-	luminosity = 3
+	light_range = 3
+	light_on = TRUE
 
 /obj/structure/prop/invuln/fusion_reactor
 	name = "\improper S-52 fusion reactor"
@@ -1179,7 +1179,7 @@
 		new_info_tag.fallen_names = list(dogtag_name)
 		new_info_tag.fallen_assgns = list(dogtag_assign)
 		new_info_tag.fallen_blood_types = list(dogtag_blood)
-		fallen_list_cross -= dogtag_name
+		GLOB.fallen_list_cross -= dogtag_name
 	return ..()
 
 /obj/structure/prop/wooden_cross/attackby(obj/item/W, mob/living/user)
@@ -1187,18 +1187,18 @@
 		var/obj/item/dogtag/dog = W
 		if(!tagged)
 			tagged = TRUE
-			user.visible_message(SPAN_NOTICE("[user] drapes the [W] around the [src]."))
+			user.visible_message(SPAN_NOTICE("[user] drapes [W] around [src]."))
 			dogtag_name = popleft(dog.fallen_names)
 			dogtag_assign = popleft(dog.fallen_assgns)
 			dogtag_blood = popleft(dog.fallen_blood_types)
-			fallen_list_cross += dogtag_name
+			GLOB.fallen_list_cross += dogtag_name
 			update_icon()
 			if(!length(dog.fallen_names))
 				qdel(dog)
 			else
 				return
 		else
-			to_chat(user, SPAN_WARNING("There's already a dog tag on the [src]!"))
+			to_chat(user, SPAN_WARNING("There's already a dog tag on [src]!"))
 			balloon_alert(user, "already a tag here!")
 
 	if(istype(W, /obj/item/clothing/head))
@@ -1308,19 +1308,19 @@
 	COOLDOWN_DECLARE(damage_delay)
 	/// list of quip emotes, taken from Working Joe
 	var/static/list/quips = list(
-		/datum/emote/living/carbon/human/synthetic/working_joe/quip/alwaysknow_damaged,
+		/datum/emote/living/carbon/human/synthetic/working_joe/damage/alwaysknow_damaged,
 		/datum/emote/living/carbon/human/synthetic/working_joe/quip/not_liking,
 		/datum/emote/living/carbon/human/synthetic/working_joe/greeting/how_can_i_help,
-		/datum/emote/living/carbon/human/synthetic/working_joe/task_update/day_never_done,
-		/datum/emote/living/carbon/human/synthetic/working_joe/task_update/required_by_apollo,
+		/datum/emote/living/carbon/human/synthetic/working_joe/farewell/day_never_done,
+		/datum/emote/living/carbon/human/synthetic/working_joe/farewell/required_by_apollo,
 		/datum/emote/living/carbon/human/synthetic/working_joe/warning/safety_breach
 	)
 	/// list of voicelines to use when damaged
 	var/static/list/damaged = list(
-		/datum/emote/living/carbon/human/synthetic/working_joe/warning/damage,
-		/datum/emote/living/carbon/human/synthetic/working_joe/warning/that_stings,
-		/datum/emote/living/carbon/human/synthetic/working_joe/warning/irresponsible,
-		/datum/emote/living/carbon/human/synthetic/working_joe/warning/this_is_futile,
+		/datum/emote/living/carbon/human/synthetic/working_joe/damage/damage,
+		/datum/emote/living/carbon/human/synthetic/working_joe/damage/that_stings,
+		/datum/emote/living/carbon/human/synthetic/working_joe/damage/irresponsible,
+		/datum/emote/living/carbon/human/synthetic/working_joe/damage/this_is_futile,
 		/datum/emote/living/carbon/human/synthetic/working_joe/warning/hysterical,
 		/datum/emote/living/carbon/human/synthetic/working_joe/warning/patience
 	)
@@ -1345,7 +1345,7 @@
 	attacked()
 	return ..()
 
-/obj/structure/prop/invuln/joey/bullet_act(obj/item/projectile/P)
+/obj/structure/prop/invuln/joey/bullet_act(obj/projectile/P)
 	attacked()
 	return ..()
 
@@ -1372,4 +1372,3 @@
 	if(initial(emote.sound))
 		playsound(loc, initial(emote.sound), 50, FALSE)
 	return TRUE
-

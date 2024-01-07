@@ -29,7 +29,7 @@
 			fire_delay = 0.5
 
 /obj/structure/machinery/defenses/sentry/flamer/actual_fire(atom/A)
-	var/obj/item/projectile/P = new(create_cause_data(initial(name), owner_mob))
+	var/obj/projectile/P = new(create_cause_data(initial(name), owner_mob))
 	P.generate_bullet(new ammo.default_ammo)
 	GIVE_BULLET_TRAIT(P, /datum/element/bullet_trait_iff, faction_group)
 	P.fire_at(A, src, owner_mob, P.ammo.max_range, P.ammo.shell_speed, null)

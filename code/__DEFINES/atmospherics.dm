@@ -23,6 +23,8 @@
 
 #define T0C 273.15 // 0degC
 #define T20C 293.15 // 20degC
+#define T90C 363.15 // 90degC
+#define T120C 393.15 // 120degC
 #define TCMB 2.7 // -270.3degC
 #define ICE_COLONY_TEMPERATURE 223 //-50degC
 #define SOROKYNE_TEMPERATURE 223 // Same as Ice for now
@@ -35,9 +37,7 @@
 #define GAS_TYPE_PHORON "phoron"
 #define GAS_TYPE_CO2 "carbon dioxyde"
 
-/// This was a define, but I changed it to a variable so it can be changed in-game.(kept the all-caps definition because... code...) -Errorage
-var/MAX_EXPLOSION_RANGE = 14
-
 /// Used in /obj/structure/pipes/vents/proc/create_gas
 #define VENT_GAS_SMOKE "Smoke"
 #define VENT_GAS_CN20 "CN20 Nerve Gas"
+#define VENT_GAS_CN20_XENO "CN20-X Nerve Gas"

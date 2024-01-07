@@ -246,19 +246,19 @@
 		return FALSE
 
 	if(!isturf(loc))
-		to_chat(src, SPAN_WARNING("You can't take a strain here."))
+		to_chat(src, SPAN_WARNING("We can't take a strain here."))
 		return FALSE
 
 	if(handcuffed || legcuffed)
-		to_chat(src, SPAN_WARNING("The restraints are too restricting to allow you to take a strain."))
+		to_chat(src, SPAN_WARNING("The restraints are too restricting to allow us to take a strain."))
 		return FALSE
 
 	if(health < maxHealth)
-		to_chat(src, SPAN_WARNING("You must be at full health to take a strain."))
+		to_chat(src, SPAN_WARNING("We must be at full health to take a strain."))
 		return FALSE
 
 	if(agility || fortify || crest_defense || stealth)
-		to_chat(src, SPAN_WARNING("You cannot take a strain while in this stance."))
+		to_chat(src, SPAN_WARNING("We cannot take a strain while in this stance."))
 		return FALSE
 
 	return TRUE

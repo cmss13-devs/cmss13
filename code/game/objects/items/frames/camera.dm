@@ -105,9 +105,9 @@
 				C.auto_turn()
 
 				C.network = uniquelist(tempnetwork)
-				tempnetwork = difflist(C.network,RESTRICTED_CAMERA_NETWORKS)
+				tempnetwork = difflist(C.network,GLOB.RESTRICTED_CAMERA_NETWORKS)
 				if(!tempnetwork.len)//Camera isn't on any open network - remove its chunk from AI visibility.
-					cameranet.removeCamera(C)
+					GLOB.cameranet.removeCamera(C)
 
 				C.c_tag = input
 
@@ -167,7 +167,7 @@
 		to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
 		return 0
 
-	to_chat(user, SPAN_NOTICE("You start to weld the [src].."))
+	to_chat(user, SPAN_NOTICE("You start to weld [src].."))
 	playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
 	WT.eyecheck(user)
 	if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))

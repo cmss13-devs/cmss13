@@ -94,6 +94,7 @@
 	name = "electronic system attach point"
 	base_category = DROPSHIP_ELECTRONICS
 	icon_state = "equip_base_front"
+	layer = ABOVE_OBJ_LAYER
 
 /obj/effect/attach_point/electronics/dropship1
 	ship_tag = DROPSHIP_ALAMO

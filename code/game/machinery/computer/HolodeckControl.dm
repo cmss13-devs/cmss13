@@ -22,7 +22,7 @@
 	. = ..()
 	icon_state = "grass[pick("1","2","3","4")]"
 	update_icon()
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinals)
 		if(istype(get_step(src, direction), /turf/open/floor))
 			var/turf/open/floor/FF = get_step(src,direction)
 			FF.update_icon() //so siding get updated properly
@@ -148,29 +148,29 @@
 				return
 			M.forceMove(loc)
 			M.apply_effect(5, WEAKEN)
-			for(var/obj/structure/machinery/scoreboard/X in machines)
+			for(var/obj/structure/machinery/scoreboard/X in GLOB.machines)
 				if(X.id == id)
 					X.score(side, 3)// 3 points for dunking a mob
 					// no break, to update multiple scoreboards
-			visible_message(SPAN_DANGER("[user] dunks [M] into the [src]!"))
+			visible_message(SPAN_DANGER("[user] dunks [M] into [src]!"))
 		return
 	else if (istype(W, /obj/item) && get_dist(src,user)<2)
 		user.drop_inv_item_to_loc(W, loc)
-		for(var/obj/structure/machinery/scoreboard/X in machines)
+		for(var/obj/structure/machinery/scoreboard/X in GLOB.machines)
 			if(X.id == id)
 				X.score(side)
 				// no break, to update multiple scoreboards
-		visible_message(SPAN_NOTICE("[user] dunks [W] into the [src]!"))
+		visible_message(SPAN_NOTICE("[user] dunks [W] into [src]!"))
 		return
 
 /obj/structure/holohoop/BlockedPassDirs(atom/movable/mover, target_dir)
 	if(istype(mover,/obj/item) && mover.throwing)
 		var/obj/item/I = mover
-		if(istype(I, /obj/item/projectile))
+		if(istype(I, /obj/projectile))
 			return BLOCKED_MOVEMENT
 		if(prob(50))
 			I.forceMove(src.loc)
-			for(var/obj/structure/machinery/scoreboard/X in machines)
+			for(var/obj/structure/machinery/scoreboard/X in GLOB.machines)
 				if(X.id == id)
 					X.score(side)
 					// no break, to update multiple scoreboards

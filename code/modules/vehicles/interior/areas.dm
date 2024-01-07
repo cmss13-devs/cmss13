@@ -3,6 +3,7 @@
 	requires_power = 0
 	unlimited_power = 1
 	icon = 'icons/turf/areas_interiors.dmi'
+	base_lighting_alpha = 255
 
 	ambience_exterior = 'sound/ambience/vehicle_interior1.ogg'
 	sound_environment = SOUND_ENVIRONMENT_ROOM

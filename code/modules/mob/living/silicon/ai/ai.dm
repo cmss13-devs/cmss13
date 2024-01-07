@@ -1,8 +1,8 @@
 #define AI_CHECK_WIRELESS 1
 #define AI_CHECK_RADIO 2
 
-var/list/ai_list = list()
-var/list/ai_verbs_default = list(
+GLOBAL_LIST_EMPTY(ai_list)
+GLOBAL_LIST_INIT(ai_verbs_default, list(
 	/mob/living/silicon/ai/proc/ai_alerts,
 	/mob/living/silicon/ai/proc/ai_announcement,
 	// /mob/living/silicon/ai/proc/ai_recall_shuttle,
@@ -17,7 +17,7 @@ var/list/ai_verbs_default = list(
 	/mob/living/silicon/ai/proc/pick_icon,
 	/mob/living/silicon/ai/proc/sensor_mode,
 	/mob/living/silicon/ai/proc/toggle_acceleration
-)
+))
 
 
 	//mob/living/silicon/ai/proc/ai_hologram_change,
@@ -30,7 +30,7 @@ var/list/ai_verbs_default = list(
 /proc/AutoUpdateAI(obj/subject)
 	var/is_in_use = 0
 	if (subject!=null)
-		for(var/A in ai_list)
+		for(var/A in GLOB.ai_list)
 			var/mob/living/silicon/ai/M = A
 			if ((M.client && M.interactee == subject))
 				is_in_use = 1
@@ -82,17 +82,17 @@ var/list/ai_verbs_default = list(
 	var/datum/announcement/priority/announcement
 
 /mob/living/silicon/ai/proc/add_ai_verbs()
-	add_verb(src, ai_verbs_default)
+	add_verb(src, GLOB.ai_verbs_default)
 
 /mob/living/silicon/ai/proc/remove_ai_verbs()
-	remove_verb(src, ai_verbs_default)
+	remove_verb(src, GLOB.ai_verbs_default)
 
 /mob/living/silicon/ai/New(loc, obj/item/device/mmi/B, safety = 0)
-	var/list/possibleNames = ai_names
+	var/list/possibleNames = GLOB.ai_names
 
 	var/pickedName = null
 	while(!pickedName)
-		pickedName = pick(ai_names)
+		pickedName = pick(GLOB.ai_names)
 		for (var/mob/living/silicon/ai/A in GLOB.mob_list)
 			if (A.real_name == pickedName && possibleNames.len > 1) //fixing the theoretically possible infinite loop
 				possibleNames -= pickedName
@@ -101,8 +101,8 @@ var/list/ai_verbs_default = list(
 // aiPDA = new/obj/item/device/pda/ai(src)
 	SetName(pickedName)
 	anchored = TRUE
-	canmove = 0
-	density = TRUE
+	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_INHERENT)
+	set_density(TRUE)
 	forceMove(loc)
 
 	holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo1"))
@@ -143,12 +143,12 @@ var/list/ai_verbs_default = list(
 	spawn(5)
 		new /obj/structure/machinery/ai_powersupply(src)
 
-	ai_list += src
+	GLOB.ai_list += src
 	..()
 	return
 
 /mob/living/silicon/ai/Destroy()
-	ai_list -= src
+	GLOB.ai_list -= src
 	QDEL_NULL(aiMulti)
 	if(aiRadio)
 		aiRadio.myAi = null
@@ -301,8 +301,8 @@ var/list/ai_verbs_default = list(
 	return 0
 
 /mob/living/silicon/ai/emp_act(severity)
+	. = ..()
 	if (prob(30)) view_core()
-	..()
 
 /mob/living/silicon/ai/Topic(href, href_list)
 	if(usr != src)
@@ -315,7 +315,7 @@ var/list/ai_verbs_default = list(
 		unset_interaction()
 		src << browse(null, t1)
 	if (href_list["switchcamera"])
-		switchCamera(locate(href_list["switchcamera"])) in cameranet.cameras
+		switchCamera(locate(href_list["switchcamera"])) in GLOB.cameranet.cameras
 	if (href_list["showalerts"])
 		ai_alerts()
 	//Carn: holopad requests
@@ -355,13 +355,13 @@ var/list/ai_verbs_default = list(
 
 /mob/living/silicon/ai/reset_view(atom/A)
 	if(camera)
-		camera.SetLuminosity(0)
+		camera.set_light(0)
 	if(istype(A,/obj/structure/machinery/camera))
 		camera = A
 	..()
 	if(istype(A,/obj/structure/machinery/camera))
-		if(camera_light_on) A.SetLuminosity(AI_CAMERA_LUMINOSITY)
-		else A.SetLuminosity(0)
+		if(camera_light_on) A.set_light(AI_CAMERA_LUMINOSITY)
+		else A.set_light(0)
 
 
 /mob/living/silicon/ai/proc/switchCamera(obj/structure/machinery/camera/C)
@@ -422,11 +422,11 @@ var/list/ai_verbs_default = list(
 
 	var/mob/living/silicon/ai/U = usr
 
-	for (var/obj/structure/machinery/camera/C in cameranet.cameras)
+	for (var/obj/structure/machinery/camera/C in GLOB.cameranet.cameras)
 		if(!C.can_use())
 			continue
 
-		var/list/tempnetwork = difflist(C.network,RESTRICTED_CAMERA_NETWORKS,1)
+		var/list/tempnetwork = difflist(C.network,GLOB.RESTRICTED_CAMERA_NETWORKS,1)
 		if(tempnetwork.len)
 			for(var/i in tempnetwork)
 				cameralist[i] = i
@@ -440,7 +440,7 @@ var/list/ai_verbs_default = list(
 	if(isnull(network))
 		network = old_network // If nothing is selected
 	else
-		for(var/obj/structure/machinery/camera/C in cameranet.cameras)
+		for(var/obj/structure/machinery/camera/C in GLOB.cameranet.cameras)
 			if(!C.can_use())
 				continue
 			if(network in C.network)
@@ -458,7 +458,7 @@ var/list/ai_verbs_default = list(
 
 	var/list/ai_emotions = list("Very Happy", "Happy", "Neutral", "Unsure", "Confused", "Surprised", "Sad", "Upset", "Angry", "Awesome", "BSOD", "Blank", "Problems?", "Facepalm", "Friend Computer")
 	var/emote = tgui_input_list(usr, "Please, select a status!", "AI Status", ai_emotions)
-	for (var/obj/structure/machinery/M in machines) //change status
+	for (var/obj/structure/machinery/M in GLOB.machines) //change status
 		if(istype(M, /obj/structure/machinery/ai_status_display))
 			var/obj/structure/machinery/ai_status_display/AISD = M
 			AISD.emotion = emote
@@ -539,7 +539,7 @@ var/list/ai_verbs_default = list(
 	to_chat(src, "Camera lights [camera_light_on ? "activated" : "deactivated"].")
 	if(!camera_light_on)
 		if(camera)
-			camera.SetLuminosity(0)
+			camera.set_light(0)
 			camera = null
 	else
 		lightNearbyCamera()
@@ -554,20 +554,20 @@ var/list/ai_verbs_default = list(
 		if(src.camera)
 			var/obj/structure/machinery/camera/camera = near_range_camera(src.eyeobj)
 			if(camera && src.camera != camera)
-				src.camera.SetLuminosity(0)
+				src.camera.set_light(0)
 				if(!camera.light_disabled)
 					src.camera = camera
-					src.camera.SetLuminosity(AI_CAMERA_LUMINOSITY)
+					src.camera.set_light(AI_CAMERA_LUMINOSITY)
 				else
 					src.camera = null
 			else if(isnull(camera))
-				src.camera.SetLuminosity(0)
+				src.camera.set_light(0)
 				src.camera = null
 		else
 			var/obj/structure/machinery/camera/camera = near_range_camera(src.eyeobj)
 			if(camera && !camera.light_disabled)
 				src.camera = camera
-				src.camera.SetLuminosity(AI_CAMERA_LUMINOSITY)
+				src.camera.set_light(AI_CAMERA_LUMINOSITY)
 		camera_light_on = world.timeofday + 1 * 20 // Update the light every 2 seconds.
 
 

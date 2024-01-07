@@ -19,6 +19,7 @@
 	info = tech
 	name = tech.name
 	tech.node = src
+
 	tech.update_icon(src)
 
 /obj/effect/node/update_icon()

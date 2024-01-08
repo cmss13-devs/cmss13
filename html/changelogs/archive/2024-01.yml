@@ -1,0 +1,139 @@
+2024-01-01:
+  Cthulhu80:
+  - bugfix: fixes the associated examine text being displayed for different hud types
+      even when removed.
+  - balance: slightly increases zombie infection rate in dead mobs
+  - refactor: refactored some zombie code.
+  - bugfix: Fixes mobs being able to understand other languages while in crit.
+  - bugfix: fixes users getting stuck inside of the simulator
+  - bugfix: fixes xenos being able to view raw html on paper.
+  - bugfix: Fixes photos not being viewable from any distance as an observer
+  - bugfix: Fixes permanent lighting buff after using the vulture sniper rifle.
+  Drathek:
+  - bugfix: Fix handling of sentry_computer deletion
+  InsaneRed:
+  - spellcheck: Changed hit alerts to We instead of You on the xeno side.
+  Private Tristan:
+  - bugfix: Eggs are properly converted to Forsaken hive on evac
+  fira:
+  - bugfix: Fixed Nuke failing to detonate under specific circumstances. It may involve
+      a little rodent.
+  - bugfix: Nuke explosion will now kill mobs on its actual explosion rather than
+      at the start of the cinematic sequence.
+  mullenpaul:
+  - bugfix: properly sorted team lead position in squad info page
+2024-01-02:
+  Cthulhu80:
+  - bugfix: Fixes voting message not formatting correctly.
+  SabreML:
+  - bugfix: Fixed screen alert tooltips ('Buckled' indicator and stuff) getting stuck
+      open.
+  Zonespace27:
+  - rscadd: The Three-World Empire will now occasionally respond to distress beacons.
+  cuberound:
+  - balance: m56d can not be placed within five tiles of another one
+2024-01-03:
+  SabreML:
+  - bugfix: Fixed custom xeno ERTs sending a distress beacon announcement when it
+      shouldn't.
+  Steelpoint:
+  - mapadd: Shivas Snowball is back in rotation.
+  - maptweak: The south east landing zone on Shivas has been relocated to the south
+      west, the dig site in the south west has been similarly relocated.
+  - maptweak: Comms towers on Shivas have been placed in more consistent locations
+      near each other, instead of some of them being on the opposite sides of the
+      map from each other.
+  poltava, ihatethisengine:
+  - rscadd: added intel chestrig
+  - imageadd: added sprites for intel chestrig
+2024-01-04:
+  BeagleGaming1, Mr.Crowford:
+  - rscadd: Added Yautja action buttons
+  - qol: Added a keybind to control falcon drones
+  - qol: Thwei crystals and healing capsules say how much time until off cooldown
+  - code_imp: Yautja keybinds now redirect to action buttons
+  - code_imp: Changed thwei crystals and healing capsules to cooldowns instead of
+      timers
+  - code_imp: Miscellaneous Yautja-related code cleanup
+  SabreML:
+  - bugfix: Fixed non-combat synthetics being able to fire the M2C.
+  - bugfix: Fixed scouts being able to use the M56D or M2C before their cloak's gun
+      cooldown had ended.
+  - bugfix: Fixed the M56D and M2C saying that the user is too far away to man it,
+      even when they successfully man it.
+  - bugfix: Fixed a runtime which was caused whenever someone manned an M56D or M2C.
+  - refactor: Refactored some M56D and M2C manning/unmanning code.
+  fira:
+  - code_imp: Refactored Daze to use new Status backend
+  - bugfix: Dazed screen effect now applies immediately
+  - bugfix: Stuttering now starts properly when dazed
+  - rscdel: Removed unused disabilities code
+  - rscdel: Removed an old, goofy and unused decade old horse mask
+2024-01-05:
+  Birdtalon:
+  - bugfix: Fixed exploit in praetorian hook caused by an oversight.
+  Huffie56:
+  - refactor: for the file coulours.dm and other files change define in it from COULOUR
+      to COLOR
+  SabreML:
+  - bugfix: Made the 'Time Since Death' counter show hours if it passes 1 hour, rather
+      than wrapping the minutes back to 0.
+  - ui: Separated xeno hivemind chat messages into their own toggleable category,
+      separate from 'Radio'.
+2024-01-06:
+  private-tristan:
+  - bugfix: Trijent security southern hallway and engineering east tunnel no longer
+      have 2 APCs
+2024-01-07:
+  BadAtThisGame302:
+  - qol: Spruced up the CLs office by adding a new plant, changing the stuck posters
+      to be random every round
+  - bugfix: Fixed the ATM Machine in the CLs office having Weyland-Yutani Automatic
+      Teller Machine and not Wey-Yu. Same thing, useless mapedit.
+  - bugfix: Fixes the PROUDLY REMEMBER IO! Posters in the CLs office (Again)
+  - bugfix: Puts the 29th Poster which was a pinup into the pinup posters and not
+      the music ones.
+  Birdtalon:
+  - bugfix: Runtime when consuming xeno fruits.
+  Blundir:
+  - rscadd: added approved stamp
+  - bugfix: fixed being unable to write on papers on noticeboard
+  - ui: changed noticeboard UI from scratch
+  - refactor: refactored noticeboard code
+  - maptweak: added noticeboard to req and approved stamp to QM's office, as well
+      as some pens in req area to interact with noticeboard
+  Drathek:
+  - refactor: Refactored the overlay_lighting component to better handle objects deleting
+  - bugfix: Fix putting lights in bags somereason keeping the light on
+  - ui: Polished various aspects of the new dropship weapons UI
+  - bugfix: Fixed CAS direct firing
+  - bugfix: Fixed Medevac buttons not moving the dropship (still currently requires
+      manual winch)
+  - bugfix: Fixed camera_manager resizing the view incorrectly because of overlay_lighting
+  - refactor: Ported some hard delete fixes for maps.
+  - bugfix: Fixed simulators detonation button
+  - bugfix: Fixed weeded corpses not changing color during forsaken conversion
+  - code_imp: Add missing bitfield definitions for variable viewer (VV)
+  LTNTS:
+  - bugfix: fixes trippy carrot cake sprite
+  SabreML:
+  - bugfix: Fixed observing a monkey/farwa/stok/etc. locking the camera onto it.
+  - bugfix: Fixed the 'busy' circle icon sometimes rendering behind object on the
+      tile above.
+  - spellcheck: Updated the night vision goggles 'Tip of the round' to instead relate
+      to night vision optics.
+  TheGamerdk:
+  - rscadd: SLs, SOs and XOs can now recommend people for medals! Do this by right-clicking
+      your headset, or using the new button in the object panel of the Status Panel!
+  ihatethisengine:
+  - balance: Pylons give larva only up to 50% of groundside (weighted) marines, instead
+      of 40% of all humans.
+  - balance: Xenos get major boost to evo speed for 3 minutes after hijack. Hijacking
+      resets ovi cooldown.
+  - rscadd: Xenos now see marines on the tacmap during hijack if xenos outnumber marines
+      for more than 25%.
+  private-tristan:
+  - spellcheck: Changed a tip related to runner pounce to be more accurate
+2024-01-08:
+  realforest2001:
+  - bugfix: Yautja scimitars no longer bypass attack delay.

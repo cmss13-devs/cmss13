@@ -6,6 +6,7 @@
 #define MESSAGE_TYPE_SYSTEM "system"
 #define MESSAGE_TYPE_LOCALCHAT "localchat"
 #define MESSAGE_TYPE_RADIO "radio"
+#define MESSAGE_TYPE_HIVEMIND "hivemind"
 #define MESSAGE_TYPE_INFO "info"
 #define MESSAGE_TYPE_WARNING "warning"
 #define MESSAGE_TYPE_DEADCHAT "deadchat"

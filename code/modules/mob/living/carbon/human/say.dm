@@ -115,12 +115,9 @@
 	message = capitalize(trim(message))
 	message = process_chat_markup(message, list("~", "_"))
 
-	if(speech_problem_flag)
-		var/list/handle_r = handle_speech_problems(message)
-		message = handle_r[1]
-		verb = handle_r[2]
-		speech_problem_flag = handle_r[3]
-
+	var/list/handle_r = handle_speech_problems(message)
+	message = handle_r[1]
+	verb = handle_r[2]
 	if(!message)
 		return
 
@@ -260,40 +257,25 @@ for it but just ignore it.
 	return verb
 
 /mob/living/carbon/human/proc/handle_speech_problems(message)
-	var/list/returns[3]
+	var/list/returns[2]
 	var/verb = "says"
-	var/handled = FALSE
 	if(silent)
 		message = ""
-		handled = TRUE
 	if(sdisabilities & DISABILITY_MUTE)
 		message = ""
-		handled = TRUE
-	if(wear_mask)
-		if(istype(wear_mask, /obj/item/clothing/mask/horsehead))
-			var/obj/item/clothing/mask/horsehead/hoers = wear_mask
-			if(hoers.voicechange)
-				message = pick("NEEIIGGGHHHH!", "NEEEIIIIGHH!", "NEIIIGGHH!", "HAAWWWWW!", "HAAAWWW!")
-				verb = pick("whinnies","neighs", "says")
-				handled = TRUE
-
 	var/braindam = getBrainLoss()
-	if(slurring || stuttering || dazed || braindam >= 60)
+	if(slurring || stuttering || HAS_TRAIT(src, TRAIT_DAZED) || braindam >= 60)
 		msg_admin_niche("[key_name(src)] stuttered while saying: \"[message]\"") //Messages that get modified by the 4 reasons below have their original message logged too
 	if(slurring)
 		message = slur(message)
 		verb = pick("stammers","stutters")
-		handled = TRUE
 	if(stuttering)
 		message = NewStutter(message)
 		verb = pick("stammers", "stutters")
-		handled = TRUE
-	if(dazed)
+	if(HAS_TRAIT(src, TRAIT_DAZED))
 		message = DazedText(message)
 		verb = pick("mumbles", "babbles")
-		handled = TRUE
 	if(braindam >= 60)
-		handled = TRUE
 		if(prob(braindam/4))
 			message = stutter(message, stuttering)
 			verb = pick("stammers", "stutters")
@@ -301,7 +283,6 @@ for it but just ignore it.
 			message = uppertext(message)
 			verb = pick("yells like an idiot","says rather loudly")
 	if(HAS_TRAIT(src, TRAIT_LISPING))
-		handled = TRUE
 		var/old_message = message
 		message = lisp_replace(message)
 		if(old_message != message)
@@ -309,8 +290,6 @@ for it but just ignore it.
 
 	returns[1] = message
 	returns[2] = verb
-	returns[3] = handled
-
 	return returns
 
 /mob/living/carbon/human/hear_apollo()

@@ -287,7 +287,6 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 		apply_damage(burn, BURN, picked, sharp, edge)
 	UpdateDamageIcon()
 	updatehealth()
-	speech_problem_flag = TRUE
 
 
 //Heal MANY limbs, in random order
@@ -308,7 +307,7 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 
 		parts -= picked
 	updatehealth()
-	speech_problem_flag = TRUE
+
 	if(update) UpdateDamageIcon()
 
 // damage MANY limbs, in random order

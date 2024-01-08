@@ -42,6 +42,8 @@
 	var/list/Lines = list()
 	if(admin_holder && ((R_ADMIN & admin_holder.rights) || (R_MOD & admin_holder.rights)))
 		for(var/client/C in GLOB.clients)
+			if(!CLIENT_HAS_RIGHTS(src, R_STEALTH) && (CLIENT_IS_STEALTHED(C)))
+				continue
 			var/entry = "[C.key]"
 			if(C.mob) //Juuuust in case
 				if(istype(C.mob, /mob/new_player))
@@ -139,7 +141,7 @@
 
 	else
 		for(var/client/C in GLOB.clients)
-			if(C.admin_holder && C.admin_holder.fakekey)
+			if((C.admin_holder && C.admin_holder.fakekey) || (CLIENT_IS_STEALTHED(C)))
 				continue
 
 			Lines += C.key
@@ -172,6 +174,8 @@
 		LAZYSET(listings, category, list())
 
 	for(var/client/C in GLOB.admins)
+		if(CLIENT_IS_STEALTHED(C) && !CLIENT_HAS_RIGHTS(src, R_STEALTH))
+			continue
 		if(C.admin_holder?.fakekey && !CLIENT_IS_STAFF(src))
 			continue
 		for(var/category in mappings)
@@ -187,7 +191,9 @@
 				for(var/srank in entry.admin_holder.extra_titles)
 					dat += " & [srank]"
 			if(CLIENT_IS_STAFF(src))
-				if(entry.admin_holder?.fakekey)
+				if(CLIENT_IS_STEALTHED(entry))
+					dat += " <B><font color='#b60d0d'>(STEALTHED)</font></B>"
+				else if(entry.admin_holder?.fakekey)
 					dat += " <i>(HIDDEN)</i>"
 				if(istype(entry.mob, /mob/dead/observer))
 					dat += "<B> - <font color='#808080'>Observing</font></B>"

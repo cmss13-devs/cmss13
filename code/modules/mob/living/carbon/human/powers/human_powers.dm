@@ -202,7 +202,7 @@
 	if(new_resting == resting)
 		return
 	if(!COOLDOWN_FINISHED(src, rest_cooldown))
-		to_chat(src, SPAN_WARNING("You can't 'rest' that fast. Take a breather!"))
+		to_chat(src, SPAN_WARNING("[isxeno(src) ? "We" : "You"] can't 'rest' that fast. Take a breather!"))
 		return
 	COOLDOWN_START(src, rest_cooldown, 1 SECONDS)
 
@@ -211,24 +211,24 @@
 	if(new_resting)
 		if(body_position == LYING_DOWN)
 			if(!silent)
-				to_chat(src, SPAN_NOTICE("You will now try to stay lying down on the floor."))
+				to_chat(src, SPAN_NOTICE("[isxeno(src) ? "We" : "You"] will now try to stay lying down on the floor."))
 		else if(HAS_TRAIT(src, TRAIT_FORCED_STANDING) || (buckled && buckled.buckle_lying != NO_BUCKLE_LYING))
 			if(!silent)
-				to_chat(src, SPAN_NOTICE("You will now lay down as soon as you are able to."))
+				to_chat(src, SPAN_NOTICE("[isxeno(src) ? "We" : "You"] will now lay down as soon as [isxeno(src) ? "we" : "you"] are able to."))
 		else
 			if(!silent)
-				to_chat(src, SPAN_NOTICE("You lay down."))
+				to_chat(src, SPAN_NOTICE("[isxeno(src) ? "We" : "You"] lay down."))
 			set_lying_down()
 	else
 		if(body_position == STANDING_UP)
 			if(!silent)
-				to_chat(src, SPAN_NOTICE("You will now try to remain standing up."))
+				to_chat(src, SPAN_NOTICE("[isxeno(src) ? "We" : "You"] will now try to remain standing up."))
 		else if(HAS_TRAIT(src, TRAIT_FLOORED) || (buckled && buckled.buckle_lying != NO_BUCKLE_LYING))
 			if(!silent)
-				to_chat(src, SPAN_NOTICE("You will now stand up as soon as you are able to."))
+				to_chat(src, SPAN_NOTICE("[isxeno(src) ? "We" : "You"] will now stand up as soon as [isxeno(src) ? "we" : "you"] are able to."))
 		else
 			if(!silent)
-				to_chat(src, SPAN_NOTICE("You stand up."))
+				to_chat(src, SPAN_NOTICE("[isxeno(src) ? "We" : "You"] stand up."))
 			get_up(instant)
 
 //	SEND_SIGNAL(src, COMSIG_LIVING_RESTING, new_resting, silent, instant)

@@ -112,14 +112,14 @@
 /atom/proc/flash_lighting_fx(
 		_range = FLASH_LIGHT_RANGE,
 		_power = FLASH_LIGHT_POWER,
-		_color = LIGHT_COLOR_WHITE,
+		_color = COLOR_WHITE,
 		_duration = FLASH_LIGHT_DURATION,
 		_reset_lighting = TRUE,
 		_flash_times = 1)
 	new /obj/effect/light_flash(get_turf(src), _range, _power, _color, _duration, _flash_times)
 
 
-/obj/effect/light_flash/Initialize(mapload, _range = FLASH_LIGHT_RANGE, _power = FLASH_LIGHT_POWER, _color = LIGHT_COLOR_WHITE, _duration = FLASH_LIGHT_DURATION, _flash_times = 1)
+/obj/effect/light_flash/Initialize(mapload, _range = FLASH_LIGHT_RANGE, _power = FLASH_LIGHT_POWER, _color = COLOR_WHITE, _duration = FLASH_LIGHT_DURATION, _flash_times = 1)
 	light_range = _range
 	light_power = _power
 	light_color = _color

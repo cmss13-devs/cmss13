@@ -667,6 +667,7 @@
 #include "code\datums\supply_packs\restricted_equipment.dm"
 #include "code\datums\supply_packs\spec_ammo.dm"
 #include "code\datums\supply_packs\vehicle_ammo.dm"
+#include "code\datums\supply_packs\vehicle_equipment.dm"
 #include "code\datums\supply_packs\weapons.dm"
 #include "code\datums\tutorial\_tutorial.dm"
 #include "code\datums\tutorial\_tutorial_menu.dm"

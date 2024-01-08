@@ -48,6 +48,20 @@
 	if(resin_trap)
 		qdel(resin_trap)
 
+		if(hivenumber == XENO_HIVE_NORMAL)
+			RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
+
+/obj/structure/tunnel/proc/forsaken_handling()
+	SIGNAL_HANDLER
+	if(is_ground_level(z))
+		hive.tunnels -= src
+		hivenumber = XENO_HIVE_FORSAKEN
+		set_hive_data(src, XENO_HIVE_FORSAKEN)
+		hive = GLOB.hive_datum[XENO_HIVE_FORSAKEN]
+		hive.tunnels += src
+
+	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
+
 	SSminimaps.add_marker(src, z, get_minimap_flag_for_faction(hivenumber), "xenotunnel")
 
 /obj/structure/tunnel/Destroy()

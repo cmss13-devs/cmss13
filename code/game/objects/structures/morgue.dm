@@ -27,7 +27,7 @@
 	. = ..()
 	QDEL_NULL(connected)
 
-/obj/structure/morgue/update_icon()
+/obj/structure/morgue/update_icon_state()
 	if(morgue_open)
 		icon_state = "[morgue_type]0"
 	else
@@ -35,6 +35,20 @@
 			icon_state = "[morgue_type]2"
 		else
 			icon_state = "[morgue_type]1"
+
+/obj/structure/morgue/update_overlays()
+	. = ..()
+
+	if(morgue_open)
+		. += emissive_appearance(icon, "[morgue_type]0_emissive")
+		return
+
+	if(length(contents) > 1)
+		. += emissive_appearance(icon, "[morgue_type]2_emissive")
+		return
+
+	. += emissive_appearance(icon, "[morgue_type]1_emissive")
+
 
 /obj/structure/morgue/ex_act(severity)
 	switch(severity)

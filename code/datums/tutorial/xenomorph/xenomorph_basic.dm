@@ -27,7 +27,7 @@
 
 /datum/tutorial/xenomorph/basic/proc/on_stretch_legs()
 	message_to_player("As a drone you can perform most basic functions of the Xenomorph Hive. Such as weeding, building, planting eggs and nesting captured humans.")
-	addtimer(CALLBACK(src, PROC_REF(on_inform_health)), 10 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(on_inform_health)), 5 SECONDS)
 
 /datum/tutorial/xenomorph/basic/proc/on_inform_health()
 	message_to_player("The green icon on the <b>right</b> of your screen and green bar next to your character represents your health.")
@@ -122,7 +122,8 @@
 	if(damagedata["damage"] <= 0)
 		return
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
-	if(human_dummy.health < 100)
+	// Rejuvenate the dummy if it's less than half health so our player can't kill it and softlock themselves.
+	if(human_dummy.health < (human_hummy.maxHealth / 2))
 		message_to_player("Don't harm the human!")
 		human_dummy.rejuvenate()
 
@@ -135,8 +136,7 @@
 	ADD_TRAIT(human_dummy, TRAIT_FLOORED, TRAIT_SOURCE_TUTORIAL)
 	xeno.melee_damage_lower = 0
 	xeno.melee_damage_upper = 0
-	message_to_player("Well done. Under normal circumstances, you would have to keep tackling the human to keep them down.")
-	message_to_player("For the purposes of this tutorial they will stay down forever.")
+	message_to_player("Well done. Under normal circumstances, you would have to keep tackling the human to keep them down, but for the purposes of this tutorial they will stay down forever.")
 	addtimer(CALLBACK(src, PROC_REF(cap_phase)), 10 SECONDS)
 
 /datum/tutorial/xenomorph/basic/proc/cap_phase()

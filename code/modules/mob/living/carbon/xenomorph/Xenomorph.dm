@@ -461,7 +461,7 @@
 	time_of_birth = world.time
 
 	//Minimap
-	if(z && !hivenumber == XENO_HIVE_TUTORIAL)
+	if(z && hivenumber != XENO_HIVE_TUTORIAL)
 		INVOKE_NEXT_TICK(src, PROC_REF(add_minimap_marker))
 
 	//Sight

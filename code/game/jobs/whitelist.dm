@@ -28,8 +28,8 @@ GLOBAL_LIST_FILE_LOAD(whitelist, WHITELISTFILE)
 	if(player.check_whitelist_status(WHITELIST_SYNTHETIC))
 		LAZYADD(., "synthetic")
 
-/client/proc/whitelist_panel()
-	set name = "Whitelist Panel"
+/client/proc/whitelist_panel_backup()
+	set name = "Whitelist Panel (Backup)"
 	set category = "Admin.Panels"
 
 	var/data = "<hr><b>Whitelists:</b> <a href='?src=\ref[src];[HrefToken()];change_whitelist=[TRUE]'>Add Whitelist</a> <hr><table border=1 rules=all frame=void cellspacing=0 cellpadding=3>"
@@ -46,20 +46,14 @@ GLOBAL_LIST_FILE_LOAD(whitelist, WHITELISTFILE)
 /client/load_player_data_info(datum/entity/player/player)
 	. = ..()
 
-	if(WHITELISTS_LEADER & player.whitelist_flags)
+	if(isSenator(src))
 		add_verb(src, /client/proc/whitelist_panel)
 
-/client/proc/whitelist_panel_tgui()
-	set name = "Whitelist TGUI Panel"
+/client/proc/whitelist_panel()
+	set name = "Whitelist Panel"
 	set category = "Admin.Panels"
-	if(!SSticker.mode)
-		to_chat(usr, SPAN_WARNING("The round has not started yet."))
-		return FALSE
 
 	GLOB.WhitelistPanel.tgui_interact(mob)
-	var/mob/user = usr
-	var/log = "[key_name(user)] opened the Whitelist Panel."
-	message_admins(log)
 
 GLOBAL_DATUM_INIT(WhitelistPanel, /datum/whitelist_panel, new)
 
@@ -68,6 +62,7 @@ GLOBAL_DATUM_INIT(WhitelistPanel, /datum/whitelist_panel, new)
 #define WL_PANEL_RIGHT_YAUTJA (1<<2)
 #define WL_PANEL_RIGHT_MENTOR (1<<3)
 #define WL_PANEL_RIGHT_OVERSEER (1<<4)
+#define WL_PANEL_ALL_COUNCILS (WL_PANEL_RIGHT_CO|WL_PANEL_RIGHT_SYNTH|WL_PANEL_RIGHT_YAUTJA)
 #define WL_PANEL_ALL_RIGHTS (WL_PANEL_RIGHT_CO|WL_PANEL_RIGHT_SYNTH|WL_PANEL_RIGHT_YAUTJA|WL_PANEL_RIGHT_MENTOR|WL_PANEL_RIGHT_OVERSEER)
 
 /datum/whitelist_panel
@@ -82,7 +77,7 @@ GLOBAL_DATUM_INIT(WhitelistPanel, /datum/whitelist_panel, new)
 	if(!user.client)
 		return
 	var/client/person = user.client
-	if(CLIENT_HAS_RIGHTS(person, R_PERMISSIONS) || person.check_whitelist_status(WHITELISTS_LEADER))
+	if(CLIENT_HAS_RIGHTS(person, R_PERMISSIONS))
 		return WL_PANEL_ALL_RIGHTS
 	var/rights
 	if(person.check_whitelist_status(WHITELIST_COMMANDER_LEADER))
@@ -91,6 +86,8 @@ GLOBAL_DATUM_INIT(WhitelistPanel, /datum/whitelist_panel, new)
 		rights |= WL_PANEL_RIGHT_SYNTH
 	if(person.check_whitelist_status(WHITELIST_YAUTJA_LEADER))
 		rights |= WL_PANEL_RIGHT_YAUTJA
+	if(rights == WL_PANEL_ALL_COUNCILS)
+		return WL_PANEL_ALL_RIGHTS
 	return rights
 
 /datum/whitelist_panel/tgui_interact(mob/user, datum/tgui/ui)
@@ -140,7 +137,7 @@ GLOBAL_LIST_INIT(co_flags, list(
 	list(name = "CO Senator", bitflag = WHITELIST_COMMANDER_LEADER, permission = WL_PANEL_RIGHT_OVERSEER)
 ))
 GLOBAL_LIST_INIT(syn_flags, list(
-	list(name = "Synethetic", bitflag = WHITELIST_SYNTHETIC, permission = WL_PANEL_RIGHT_SYNTH),
+	list(name = "Synthetic", bitflag = WHITELIST_SYNTHETIC, permission = WL_PANEL_RIGHT_SYNTH),
 	list(name = "Synthetic Council", bitflag = WHITELIST_SYNTHETIC_COUNCIL, permission = WL_PANEL_RIGHT_SYNTH),
 	list(name = "Legacy Synthetic Council", bitflag = WHITELIST_SYNTHETIC_COUNCIL_LEGACY, permission = WL_PANEL_RIGHT_SYNTH),
 	list(name = "Synthetic Senator", bitflag = WHITELIST_SYNTHETIC_LEADER, permission = WL_PANEL_RIGHT_OVERSEER)
@@ -169,6 +166,9 @@ GLOBAL_LIST_INIT(misc_flags, list(
 	if(.)
 		return
 	var/mob/user = usr
+	if(used_by && (used_by != user.ckey))
+		to_chat(user, SPAN_ALERTWARNING("You are not the current user. [used_by] is editing this player."))
+		return
 	switch(action)
 		if("go_back")
 			if(used_by)
@@ -179,23 +179,10 @@ GLOBAL_LIST_INIT(misc_flags, list(
 			target_rights = 0
 			new_rights = 0
 		if("select_player")
-			if(used_by && (used_by != user.ckey))
-				to_chat(user, SPAN_ALERTWARNING("Panel already in use by [used_by]"))
-				var/override_option = tgui_alert(user, "The Whitelist Panel is in use by [used_by]. Do you want to override?", "Use Panel", list("Override", "Cancel"))
-				if(override_option != "Override")
-					return
-
-			var/datum/entity/player/player = get_player_from_key(params["player"])
-			var/list/current_player = list()
-			current_player["ckey"] = params["player"]
-			current_player["status"] = player.whitelist_status
-
-			target_rights = player.whitelist_flags
-			new_rights = player.whitelist_flags
-			viewed_player = current_player
-			current_menu = "Update"
-			user_rights = get_user_rights(user)
-			used_by = user.ckey
+			select_player(user, params["player"])
+			return
+		if("add_player")
+			select_player(user, TRUE)
 			return
 		if("update_number")
 			new_rights = text2num(params["wl_flag"])
@@ -213,6 +200,37 @@ GLOBAL_LIST_INIT(misc_flags, list(
 			target_rights = player2.whitelist_flags
 			return
 
+/datum/whitelist_panel/proc/select_player(mob/user, player_key)
+	var/target_key = player_key
+	if(IsAdminAdvancedProcCall())
+		return PROC_BLOCKED
+	if(!target_key)
+		return FALSE
+
+	if(used_by && (used_by != user.ckey))
+		to_chat(user, SPAN_ALERTWARNING("Panel already in use by [used_by]"))
+		var/override_option = tgui_alert(user, "The Whitelist Panel is in use by [used_by]. Do you want to override?", "Use Panel", list("Override", "Cancel"))
+		if(override_option != "Override")
+			return FALSE
+
+	if(target_key == TRUE)
+		var/new_player = tgui_input_text(user, "Enter the new ckey you wish to add. Do not include spaces or special characters.", "New Whitelistee")
+		if(!new_player)
+			return FALSE
+		target_key = new_player
+
+	var/datum/entity/player/player = get_player_from_key(target_key)
+	var/list/current_player = list()
+	current_player["ckey"] = target_key
+	current_player["status"] = player.whitelist_status
+
+	target_rights = player.whitelist_flags
+	new_rights = player.whitelist_flags
+	viewed_player = current_player
+	current_menu = "Update"
+	user_rights = get_user_rights(user)
+	used_by = user.ckey
+	return
 
 #undef WHITELISTFILE
 #undef WL_PANEL_RIGHT_CO

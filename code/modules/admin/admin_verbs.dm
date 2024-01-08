@@ -244,7 +244,7 @@ GLOBAL_LIST_INIT(admin_verbs_possess, list(
 GLOBAL_LIST_INIT(admin_verbs_permissions, list(
 	/client/proc/ToRban,
 	/client/proc/whitelist_panel,
-	/client/proc/whitelist_panel_tgui,
+	/client/proc/whitelist_panel_backup,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_color, list(
@@ -346,6 +346,8 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 		add_verb(src, GLOB.admin_verbs_sounds)
 	if(CLIENT_HAS_RIGHTS(src, R_SPAWN))
 		add_verb(src, GLOB.admin_verbs_spawn)
+	if(CLIENT_HAS_RIGHTS(src, R_STEALTH))
+		add_verb(src, GLOB.admin_verbs_stealth)
 	if(check_whitelist_status(WHITELIST_YAUTJA_LEADER))
 		add_verb(src, GLOB.clan_verbs)
 

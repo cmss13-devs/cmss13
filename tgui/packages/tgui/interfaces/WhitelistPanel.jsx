@@ -7,22 +7,13 @@ const PAGES = {
   'Update': () => StatusUpdate,
 };
 
-const hasPermission = (data, action) => {
-  if (!(action in data.glob_pp_actions)) return false;
-
-  const action_data = data.glob_pp_actions[action];
-  return !!(action_data.permissions_required & data.current_permissions);
-};
-
 export const WhitelistPanel = (props, context) => {
   const { data } = useBackend(context);
   const { current_menu } = data;
   const PageComponent = PAGES[current_menu]();
 
-  let themecolor = 'crtblue';
-
   return (
-    <Window theme={themecolor} width={950} height={725}>
+    <Window theme={'crtblue'} width={950} height={750}>
       <Window.Content scrollable>
         <PageComponent />
       </Window.Content>
@@ -32,7 +23,7 @@ export const WhitelistPanel = (props, context) => {
 
 const PlayerList = (props, context) => {
   const { data, act } = useBackend(context);
-  const { last_page, current_menu, whitelisted_players } = data;
+  const { whitelisted_players } = data;
 
   return (
     <Section>
@@ -44,7 +35,13 @@ const PlayerList = (props, context) => {
           p=".75rem"
           align="center"
           fontSize="1.25rem">
-          <Flex.Item width="3rem" shrink="0" mr="1rem" />
+          <Flex.Item mr="1rem">
+            <Button
+              icon="clipboard"
+              tooltip="Add Key"
+              onClick={() => act('add_player')}
+            />
+          </Flex.Item>
           <Flex.Item bold width="20rem" shrink="0" mr="1rem">
             CKey
           </Flex.Item>

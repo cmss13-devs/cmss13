@@ -241,6 +241,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			can_edit = null
 
 		var/flags = input_bitfield(usr, "Select Flags", "whitelist_status", player.whitelist_flags, allowed_edit_list = can_edit)
+
+		message_admins("Whitelists for [target_ckey] updated by [key_name(usr)] via backup panel.")
 		player.set_whitelist_status(flags)
 
 	switch(href_list["_src_"])
@@ -883,6 +885,16 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		load_player_data()
 
 	return player_data.check_whitelist_status(flag_to_check)
+
+/client/proc/check_whitelist_status_list(flags_to_check)
+	var/success = FALSE
+	if(!player_data)
+		load_player_data()
+	for(var/bitfield in flags_to_check)
+		success = player_data.check_whitelist_status(bitfield)
+		if(success)
+			break
+	return success
 
 /client/proc/check_localhost_status()
 	if(CONFIG_GET(flag/no_localhost_rank))

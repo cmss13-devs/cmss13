@@ -89,7 +89,7 @@
  * Arguments:
  * * x_pos: x coordinate value on a grid plane
  * * y_pos: y coordinate value on a grid plane
- * * z_pos: y coordinate value on a grid plane
+ * * z_pos: z coordinate value on a grid plane
  * * bound_type: determines where the grid coordinates iterate to, either the upper right or lower left corner.
  *
  */

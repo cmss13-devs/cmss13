@@ -158,8 +158,6 @@
 		if(new_xeno.client)
 			new_xeno.client.change_view(GLOB.world_view_size)
 
-	evolve_ui_transfer(new_xeno)
-
 	//Regenerate the new mob's name now that our player is inside
 	new_xeno.generate_name()
 	if(new_xeno.client)
@@ -350,8 +348,6 @@
 			new_xeno.client.pixel_x = 0
 			new_xeno.client.pixel_y = 0
 
-	evolve_ui_transfer(new_xeno)
-
 	//Regenerate the new mob's name now that our player is inside
 	new_xeno.generate_name()
 	if(new_xeno.client)
@@ -405,13 +401,3 @@
 		return FALSE
 
 	return TRUE
-
-// Transfer over any open TGUIs after evolving to the new body.
-/mob/living/carbon/xenomorph/proc/evolve_ui_transfer(mob/living/carbon/xenomorph/new_xeno)
-	SStgui.on_transfer(src, new_xeno)
-
-	// If the user has the tacmap in their `screen_maps` list.
-	var/atom/movable/screen/minimap/xeno_tacmap_screen_obj = hive.tacmap.map_holder.map
-	if(new_xeno.client.screen_maps[xeno_tacmap_screen_obj.assigned_map])
-		// Re-register the map object with the client and add it to their `screen`.
-		new_xeno.client.register_map_obj(xeno_tacmap_screen_obj)

@@ -105,7 +105,7 @@
 		to_chat(user, SPAN_WARNING("You need a better grip to do that!"))
 		return
 
-	if(victim.abiotic(1))
+	if(victim.abiotic(1) && !iszombie(victim))
 		to_chat(user, SPAN_WARNING("Subject may not have abiotic items on."))
 		return
 
@@ -118,7 +118,8 @@
 		var/area/area = get_area(user)
 		message_admins("ALERT: [user] ([user.key]) is trying to gib [victim] ([victim.key]) in [area.name] [ADMIN_JMP(turf_ref)]</font>")
 		log_attack("[key_name(user)] tried to gib [victim] ([victim.key]) in [area.name]")
-		to_chat(user, SPAN_DANGER("Are you insane?!"))
+		if(!iszombie(victim))
+			to_chat(user, SPAN_DANGER("Are you insane?!"))
 		if(do_after(user, 30 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE && grabbed && grabbed.grabbed_thing && !occupant))
 			user.visible_message(SPAN_DANGER("[user] stuffs [victim] into the gibber!"))
 			victim.forceMove(src)
@@ -169,8 +170,8 @@
 
 	var/totalslabs = 2
 
-	var/obj/item/reagent_container/food/snacks/meat/meat_template = /obj/item/reagent_container/food/snacks/meat/monkey
-	if(istype(occupant, /mob/living/carbon/xenomorph))
+	var/obj/item/reagent_container/food/snacks/meat_template = /obj/item/reagent_container/food/snacks/meat/monkey
+	if(isxeno(occupant))
 		var/mob/living/carbon/xenomorph/X = occupant
 		meat_template = /obj/item/reagent_container/food/snacks/meat/xenomeat
 		totalslabs = 1
@@ -181,18 +182,23 @@
 				totalslabs = 6
 			else
 				totalslabs += X.tier
+	else if(iscarp(occupant))
+		meat_template = /obj/item/reagent_container/food/snacks/carpmeat/space_carp
+		totalslabs = 3
+	else if(iszombie(occupant))
+		meat_template = /obj/item/reagent_container/food/snacks/meat/human/zombie
+		totalslabs = 4
 	else
-		if(istypestrict(occupant, /mob/living/carbon/human))
+		if(ishuman_strict(occupant))
 			meat_template = /obj/item/reagent_container/food/snacks/meat/human
 			totalslabs = 3
 
-	var/obj/item/reagent_container/food/snacks/meat/allmeat[totalslabs]
+	var/list/allmeat = list()
 	for(var/i in 1 to totalslabs)
-		var/obj/item/reagent_container/food/snacks/meat/newmeat
-		newmeat = new meat_template
+		var/obj/item/reagent_container/food/snacks/newmeat = new meat_template
 		newmeat.made_from_player = occupant.real_name + "-"
 		newmeat.name = newmeat.made_from_player + newmeat.name
-		allmeat[i] = newmeat
+		allmeat += newmeat
 
 		if(src.occupant.client) // Gibbed a cow with a client in it? log that shit
 			src.occupant.attack_log += "\[[time_stamp()]\] Was gibbed by <b>[key_name(user)]</b>"
@@ -206,7 +212,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(create_gibs), totalslabs, allmeat), gibtime)
 
-/obj/structure/machinery/gibber/proc/create_gibs(totalslabs, list/obj/item/reagent_container/food/snacks/allmeat)
+/obj/structure/machinery/gibber/proc/create_gibs(totalslabs, allmeat)
 	playsound(loc, 'sound/effects/splat.ogg', 25, 1)
 	operating = FALSE
 	for (var/i in 1 to totalslabs)

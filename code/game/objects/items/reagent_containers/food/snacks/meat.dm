@@ -42,6 +42,17 @@
 	name = "human meat"
 	desc = "A slab of flesh for cannibals."
 
+/obj/item/reagent_container/food/snacks/meat/human/zombie
+	name = "zombie meat"
+	desc = "A slab of zombie flesh. Looks rather tasty"
+	icon_state = "xenomeat" // it fits, let it slide.
+	filling_color = "#43DE18"
+
+/obj/item/reagent_container/food/snacks/meat/human/zombie/Initialize()
+	. = ..()
+	reagents.add_reagent("blackgoo", 30)
+	reagents.add_reagent("mindbreaker", 5)
+
 /obj/item/reagent_container/food/snacks/meat/monkey
 	//same as plain meat
 

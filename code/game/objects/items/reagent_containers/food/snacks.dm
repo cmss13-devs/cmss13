@@ -634,9 +634,17 @@
 
 /obj/item/reagent_container/food/snacks/carpmeat
 	name = "carp fillet"
-	desc = "A fillet of spess carp meat"
+	desc = "A fillet of spess carp meat" // space?
 	icon_state = "fishfillet"
 	filling_color = "#FFDEFE"
+
+/obj/item/reagent_container/food/snacks/carpmeat/space_carp
+	name = "space carp fillet"
+	desc = "A fillet of carp meat, it smells rather strange..."
+
+/obj/item/reagent_container/food/snacks/carpmeat/space_carp/Initialize()
+	. = ..()
+	reagents.add_reagent("mindbreaker",  5)
 
 /obj/item/reagent_container/food/snacks/carpmeat/Initialize()
 	. = ..()

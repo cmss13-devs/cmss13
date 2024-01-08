@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, Stack, Section, Box, Flex } from '../components';
+import { Button, Stack, Section, Flex } from '../components';
 import { Window } from '../layouts';
 
 const PAGES = {
@@ -35,61 +35,44 @@ const PlayerList = (props, context) => {
   const { last_page, current_menu, whitelisted_players } = data;
 
   return (
-    <>
-      <Section>
-        <Flex align="center">
-          <Box>
-            <Button
-              icon="arrow-left"
-              px="2rem"
-              textAlign="center"
-              tooltip="Go back"
-              onClick={() => act('go_back')}
-              disabled={last_page === current_menu}
-            />
-          </Box>
+    <Section>
+      <h1 align="center">Whitelist Panel</h1>
+
+      {!!whitelisted_players.length && (
+        <Flex
+          className="candystripe"
+          p=".75rem"
+          align="center"
+          fontSize="1.25rem">
+          <Flex.Item width="3rem" shrink="0" mr="1rem" />
+          <Flex.Item bold width="20rem" shrink="0" mr="1rem">
+            CKey
+          </Flex.Item>
+          <Flex.Item width="30rem" grow bold>
+            Status
+          </Flex.Item>
         </Flex>
-      </Section>
-
-      <Section>
-        <h1 align="center">Whitelist Panel</h1>
-
-        {!!whitelisted_players.length && (
-          <Flex
-            className="candystripe"
-            p=".75rem"
-            align="center"
-            fontSize="1.25rem">
-            <Flex.Item width="3rem" shrink="0" mr="1rem" />
-            <Flex.Item bold width="20rem" shrink="0" mr="1rem">
-              CKey
+      )}
+      {whitelisted_players.map((record, i) => {
+        return (
+          <Flex key={i} className="candystripe" p=".75rem" align="center">
+            <Flex.Item mr="1rem">
+              <Button
+                icon="pen"
+                tooltip="Edit Whitelists"
+                onClick={() => act('select_player', { player: record.ckey })}
+              />
             </Flex.Item>
-            <Flex.Item width="30rem" grow bold>
-              Status
+            <Flex.Item bold width="20rem" shrink="0" mr="1rem">
+              {record.ckey}
+            </Flex.Item>
+            <Flex.Item width="40rem" ml="1rem" shrink="0" textAlign="center">
+              {record.status}
             </Flex.Item>
           </Flex>
-        )}
-        {whitelisted_players.map((record, i) => {
-          return (
-            <Flex key={i} className="candystripe" p=".75rem" align="center">
-              <Flex.Item mr="1rem">
-                <Button
-                  icon="pen"
-                  tooltip="Edit Whitelists"
-                  onClick={() => act('select_player', { player: record.ckey })}
-                />
-              </Flex.Item>
-              <Flex.Item bold width="20rem" shrink="0" mr="1rem">
-                {record.ckey}
-              </Flex.Item>
-              <Flex.Item width="40rem" ml="1rem" shrink="0" textAlign="center">
-                {record.status}
-              </Flex.Item>
-            </Flex>
-          );
-        })}
-      </Section>
-    </>
+        );
+      })}
+    </Section>
   );
 };
 
@@ -100,18 +83,26 @@ const StatusUpdate = (props, context) => {
     syn_flags,
     yaut_flags,
     misc_flags,
-    client_muted,
     viewed_player,
     user_rights,
+    target_rights,
   } = data;
   return (
     <Section fill>
+      <Flex align="center">
+        <Button
+          icon="arrow-left"
+          px="2rem"
+          textAlign="center"
+          tooltip="Go back"
+          onClick={() => act('go_back')}
+        />
+      </Flex>
       <h1 align="center">Whitelists for: {viewed_player.ckey}</h1>
       <Section title="Commanding Officer">
         <Stack align="right" grow={1}>
           {co_flags.map((bit, i) => {
-            const isWhitelisted =
-              viewed_player.flags && viewed_player.flags & bit.bitflag;
+            const isWhitelisted = target_rights && target_rights & bit.bitflag;
             const editable = user_rights && bit.permission & user_rights;
             return (
               <Button.Checkbox
@@ -123,10 +114,11 @@ const StatusUpdate = (props, context) => {
                 content={bit.name}
                 disabled={!editable}
                 onClick={() =>
-                  act('mob_mute', {
-                    'mute_flag': !isWhitelisted
-                      ? client_muted | bit.bitflag
-                      : client_muted & ~bit.bitflag,
+                  act('update_player', {
+                    'wl_flag': !isWhitelisted
+                      ? target_rights | bit.bitflag
+                      : target_rights & ~bit.bitflag,
+                    'player': viewed_player.ckey,
                   })
                 }
               />
@@ -137,8 +129,7 @@ const StatusUpdate = (props, context) => {
       <Section title="Synthetic">
         <Stack align="right" grow={1}>
           {syn_flags.map((bit, i) => {
-            const isWhitelisted =
-              viewed_player.flags && viewed_player.flags & bit.bitflag;
+            const isWhitelisted = target_rights && target_rights & bit.bitflag;
             const editable = user_rights && bit.permission & user_rights;
             return (
               <Button.Checkbox
@@ -150,10 +141,11 @@ const StatusUpdate = (props, context) => {
                 content={bit.name}
                 disabled={!editable}
                 onClick={() =>
-                  act('mob_mute', {
-                    'mute_flag': !isWhitelisted
-                      ? client_muted | bit.bitflag
-                      : client_muted & ~bit.bitflag,
+                  act('update_player', {
+                    'wl_flag': !isWhitelisted
+                      ? target_rights | bit.bitflag
+                      : target_rights & ~bit.bitflag,
+                    'player': viewed_player.ckey,
                   })
                 }
               />
@@ -164,8 +156,7 @@ const StatusUpdate = (props, context) => {
       <Section title="Yautja">
         <Stack align="right" grow={1}>
           {yaut_flags.map((bit, i) => {
-            const isWhitelisted =
-              viewed_player.flags && viewed_player.flags & bit.bitflag;
+            const isWhitelisted = target_rights && target_rights & bit.bitflag;
             const editable = user_rights && bit.permission & user_rights;
             return (
               <Button.Checkbox
@@ -177,10 +168,11 @@ const StatusUpdate = (props, context) => {
                 content={bit.name}
                 disabled={!editable}
                 onClick={() =>
-                  act('mob_mute', {
-                    'mute_flag': !isWhitelisted
-                      ? client_muted | bit.bitflag
-                      : client_muted & ~bit.bitflag,
+                  act('update_player', {
+                    'wl_flag': !isWhitelisted
+                      ? target_rights | bit.bitflag
+                      : target_rights & ~bit.bitflag,
+                    'player': viewed_player.ckey,
                   })
                 }
               />
@@ -191,8 +183,7 @@ const StatusUpdate = (props, context) => {
       <Section title="Misc">
         <Stack align="right" grow={1}>
           {misc_flags.map((bit, i) => {
-            const isWhitelisted =
-              viewed_player.flags && viewed_player.flags & bit.bitflag;
+            const isWhitelisted = target_rights && target_rights & bit.bitflag;
             const editable = user_rights && bit.permission & user_rights;
             return (
               <Button.Checkbox
@@ -204,10 +195,11 @@ const StatusUpdate = (props, context) => {
                 content={bit.name}
                 disabled={!editable}
                 onClick={() =>
-                  act('mob_mute', {
-                    'mute_flag': !isWhitelisted
-                      ? client_muted | bit.bitflag
-                      : client_muted & ~bit.bitflag,
+                  act('update_player', {
+                    'wl_flag': !isWhitelisted
+                      ? target_rights | bit.bitflag
+                      : target_rights & ~bit.bitflag,
+                    'player': viewed_player.ckey,
                   })
                 }
               />

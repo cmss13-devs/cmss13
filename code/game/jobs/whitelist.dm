@@ -81,6 +81,7 @@ GLOBAL_DATUM_INIT(WhitelistPanel, /datum/whitelist_panel, new)
 	var/current_menu = "Panel"
 	var/used_by
 	var/user_rights = 0
+	var/target_rights = 0
 
 /datum/whitelist_panel/proc/get_user_rights(mob/user)
 	if(!user.client)
@@ -113,6 +114,7 @@ GLOBAL_DATUM_INIT(WhitelistPanel, /datum/whitelist_panel, new)
 	viewed_player = list()
 	user_rights = 0
 	current_menu = "Panel"
+	target_rights = 0
 
 /datum/whitelist_panel/ui_data(mob/user)
 	var/list/data = list()
@@ -120,6 +122,7 @@ GLOBAL_DATUM_INIT(WhitelistPanel, /datum/whitelist_panel, new)
 	data["current_menu"] = current_menu
 	data["user_rights"] = user_rights
 	data["viewed_player"] = viewed_player
+	data["target_rights"] = target_rights
 
 	var/list/datum/view_record/players/players_view = DB_VIEW(/datum/view_record/players, DB_COMP("whitelist_status", DB_NOTEQUAL, ""))
 
@@ -134,23 +137,23 @@ GLOBAL_DATUM_INIT(WhitelistPanel, /datum/whitelist_panel, new)
 	return data
 
 GLOBAL_LIST_INIT(co_flags, list(
-	list(name = "Whitelisted", bitflag = WHITELIST_COMMANDER, permission = WL_PANEL_RIGHT_CO),
-	list(name = "Council", bitflag = WHITELIST_COMMANDER_COUNCIL, permission = WL_PANEL_RIGHT_CO),
-	list(name = "Legacy Council", bitflag = WHITELIST_COMMANDER_COUNCIL_LEGACY, permission = WL_PANEL_RIGHT_CO),
-	list(name = "Senator", bitflag = WHITELIST_COMMANDER_LEADER, permission = WL_PANEL_RIGHT_OVERSEER)
+	list(name = "Commander", bitflag = WHITELIST_COMMANDER, permission = WL_PANEL_RIGHT_CO),
+	list(name = "CO Council", bitflag = WHITELIST_COMMANDER_COUNCIL, permission = WL_PANEL_RIGHT_CO),
+	list(name = "Legacy CO Council", bitflag = WHITELIST_COMMANDER_COUNCIL_LEGACY, permission = WL_PANEL_RIGHT_CO),
+	list(name = "CO Senator", bitflag = WHITELIST_COMMANDER_LEADER, permission = WL_PANEL_RIGHT_OVERSEER)
 ))
 GLOBAL_LIST_INIT(syn_flags, list(
-	list(name = "Whitelisted", bitflag = WHITELIST_SYNTHETIC, permission = WL_PANEL_RIGHT_SYNTH),
-	list(name = "Council", bitflag = WHITELIST_SYNTHETIC_COUNCIL, permission = WL_PANEL_RIGHT_SYNTH),
-	list(name = "Legacy Council", bitflag = WHITELIST_SYNTHETIC_COUNCIL_LEGACY, permission = WL_PANEL_RIGHT_SYNTH),
-	list(name = "Senator", bitflag = WHITELIST_SYNTHETIC_LEADER, permission = WL_PANEL_RIGHT_OVERSEER)
+	list(name = "Synethetic", bitflag = WHITELIST_SYNTHETIC, permission = WL_PANEL_RIGHT_SYNTH),
+	list(name = "Synthetic Council", bitflag = WHITELIST_SYNTHETIC_COUNCIL, permission = WL_PANEL_RIGHT_SYNTH),
+	list(name = "Legacy Synthetic Council", bitflag = WHITELIST_SYNTHETIC_COUNCIL_LEGACY, permission = WL_PANEL_RIGHT_SYNTH),
+	list(name = "Synthetic Senator", bitflag = WHITELIST_SYNTHETIC_LEADER, permission = WL_PANEL_RIGHT_OVERSEER)
 ))
 GLOBAL_LIST_INIT(yaut_flags, list(
-	list(name = "Whitelisted", bitflag = WHITELIST_YAUTJA, permission = WL_PANEL_RIGHT_YAUTJA),
-	list(name = "Legacy", bitflag = WHITELIST_YAUTJA_LEGACY, permission = WL_PANEL_RIGHT_OVERSEER),
-	list(name = "Council", bitflag = WHITELIST_YAUTJA_COUNCIL, permission = WL_PANEL_RIGHT_YAUTJA),
-	list(name = "Legacy Council", bitflag = WHITELIST_YAUTJA_COUNCIL_LEGACY, permission = WL_PANEL_RIGHT_YAUTJA),
-	list(name = "Senator", bitflag = WHITELIST_YAUTJA_LEADER, permission = WL_PANEL_RIGHT_OVERSEER)
+	list(name = "Yautja", bitflag = WHITELIST_YAUTJA, permission = WL_PANEL_RIGHT_YAUTJA),
+	list(name = "Legacy Yautja", bitflag = WHITELIST_YAUTJA_LEGACY, permission = WL_PANEL_RIGHT_OVERSEER),
+	list(name = "Yautja Council", bitflag = WHITELIST_YAUTJA_COUNCIL, permission = WL_PANEL_RIGHT_YAUTJA),
+	list(name = "Legacy Yautja Council", bitflag = WHITELIST_YAUTJA_COUNCIL_LEGACY, permission = WL_PANEL_RIGHT_YAUTJA),
+	list(name = "Yautja Senator", bitflag = WHITELIST_YAUTJA_LEADER, permission = WL_PANEL_RIGHT_OVERSEER)
 ))
 GLOBAL_LIST_INIT(misc_flags, list(
 	list(name = "Senior Enlisted Advisor", bitflag = WHITELIST_MENTOR, permission = WL_PANEL_RIGHT_MENTOR),
@@ -170,6 +173,13 @@ GLOBAL_LIST_INIT(misc_flags, list(
 		return
 	var/mob/user = usr
 	switch(action)
+		if("go_back")
+			if(used_by)
+				used_by = null
+			viewed_player = list()
+			user_rights = 0
+			current_menu = "Panel"
+			target_rights = 0
 		if("select_player")
 			if(used_by && (used_by != user.ckey))
 				to_chat(user, SPAN_ALERTWARNING("Panel already in use by [used_by]"))

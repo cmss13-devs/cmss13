@@ -86,6 +86,7 @@ const StatusUpdate = (props, context) => {
     viewed_player,
     user_rights,
     target_rights,
+    new_rights,
   } = data;
   return (
     <Section fill>
@@ -99,26 +100,40 @@ const StatusUpdate = (props, context) => {
         />
       </Flex>
       <h1 align="center">Whitelists for: {viewed_player.ckey}</h1>
+      <h1 align="center">Flags: {new_rights}</h1>
       <Section title="Commanding Officer">
         <Stack align="right" grow={1}>
           {co_flags.map((bit, i) => {
             const isWhitelisted = target_rights && target_rights & bit.bitflag;
+            return (
+              <Button.Checkbox
+                key={i}
+                width="100%"
+                height="100%"
+                color={isWhitelisted ? 'blue' : 'orange'}
+                content={bit.name}
+              />
+            );
+          })}
+        </Stack>
+        <Stack align="right" grow={1}>
+          {co_flags.map((bit, i) => {
+            const new_state = new_rights && new_rights & bit.bitflag;
             const editable = user_rights && bit.permission & user_rights;
             return (
               <Button.Checkbox
                 key={i}
                 width="100%"
                 height="100%"
-                checked={isWhitelisted}
-                color={isWhitelisted ? 'good' : 'bad'}
+                checked={new_state}
+                color={new_state ? 'good' : 'bad'}
                 content={bit.name}
                 disabled={!editable}
                 onClick={() =>
-                  act('update_player', {
-                    'wl_flag': !isWhitelisted
-                      ? target_rights | bit.bitflag
-                      : target_rights & ~bit.bitflag,
-                    'player': viewed_player.ckey,
+                  act('update_number', {
+                    'wl_flag': !new_state
+                      ? new_rights | bit.bitflag
+                      : new_rights & ~bit.bitflag,
                   })
                 }
               />
@@ -130,22 +145,35 @@ const StatusUpdate = (props, context) => {
         <Stack align="right" grow={1}>
           {syn_flags.map((bit, i) => {
             const isWhitelisted = target_rights && target_rights & bit.bitflag;
+            return (
+              <Button.Checkbox
+                key={i}
+                width="100%"
+                height="100%"
+                color={isWhitelisted ? 'blue' : 'orange'}
+                content={bit.name}
+              />
+            );
+          })}
+        </Stack>
+        <Stack align="right" grow={1}>
+          {syn_flags.map((bit, i) => {
+            const new_state = new_rights && new_rights & bit.bitflag;
             const editable = user_rights && bit.permission & user_rights;
             return (
               <Button.Checkbox
                 key={i}
                 width="100%"
                 height="100%"
-                checked={isWhitelisted}
-                color={isWhitelisted ? 'good' : 'bad'}
+                checked={new_state}
+                color={new_state ? 'good' : 'bad'}
                 content={bit.name}
                 disabled={!editable}
                 onClick={() =>
-                  act('update_player', {
-                    'wl_flag': !isWhitelisted
-                      ? target_rights | bit.bitflag
-                      : target_rights & ~bit.bitflag,
-                    'player': viewed_player.ckey,
+                  act('update_number', {
+                    'wl_flag': !new_state
+                      ? new_rights | bit.bitflag
+                      : new_rights & ~bit.bitflag,
                   })
                 }
               />
@@ -157,22 +185,36 @@ const StatusUpdate = (props, context) => {
         <Stack align="right" grow={1}>
           {yaut_flags.map((bit, i) => {
             const isWhitelisted = target_rights && target_rights & bit.bitflag;
-            const editable = user_rights && bit.permission & user_rights;
             return (
               <Button.Checkbox
                 key={i}
                 width="100%"
                 height="100%"
                 checked={isWhitelisted}
-                color={isWhitelisted ? 'good' : 'bad'}
+                color={isWhitelisted ? 'blue' : 'orange'}
+                content={bit.name}
+              />
+            );
+          })}
+        </Stack>
+        <Stack align="right" grow={1}>
+          {yaut_flags.map((bit, i) => {
+            const new_state = new_rights && new_rights & bit.bitflag;
+            const editable = user_rights && bit.permission & user_rights;
+            return (
+              <Button.Checkbox
+                key={i}
+                width="100%"
+                height="100%"
+                checked={new_state}
+                color={new_state ? 'good' : 'bad'}
                 content={bit.name}
                 disabled={!editable}
                 onClick={() =>
-                  act('update_player', {
-                    'wl_flag': !isWhitelisted
-                      ? target_rights | bit.bitflag
-                      : target_rights & ~bit.bitflag,
-                    'player': viewed_player.ckey,
+                  act('update_number', {
+                    'wl_flag': !new_state
+                      ? new_rights | bit.bitflag
+                      : new_rights & ~bit.bitflag,
                   })
                 }
               />
@@ -184,22 +226,36 @@ const StatusUpdate = (props, context) => {
         <Stack align="right" grow={1}>
           {misc_flags.map((bit, i) => {
             const isWhitelisted = target_rights && target_rights & bit.bitflag;
-            const editable = user_rights && bit.permission & user_rights;
             return (
               <Button.Checkbox
                 key={i}
                 width="100%"
                 height="100%"
                 checked={isWhitelisted}
-                color={isWhitelisted ? 'good' : 'bad'}
+                color={isWhitelisted ? 'blue' : 'orange'}
+                content={bit.name}
+              />
+            );
+          })}
+        </Stack>
+        <Stack align="right" grow={1}>
+          {misc_flags.map((bit, i) => {
+            const new_state = new_rights && new_rights & bit.bitflag;
+            const editable = user_rights && bit.permission & user_rights;
+            return (
+              <Button.Checkbox
+                key={i}
+                width="100%"
+                height="100%"
+                checked={new_state}
+                color={new_state ? 'good' : 'bad'}
                 content={bit.name}
                 disabled={!editable}
                 onClick={() =>
-                  act('update_player', {
-                    'wl_flag': !isWhitelisted
-                      ? target_rights | bit.bitflag
-                      : target_rights & ~bit.bitflag,
-                    'player': viewed_player.ckey,
+                  act('update_number', {
+                    'wl_flag': !new_state
+                      ? new_rights | bit.bitflag
+                      : new_rights & ~bit.bitflag,
                   })
                 }
               />
@@ -207,6 +263,16 @@ const StatusUpdate = (props, context) => {
           })}
         </Stack>
       </Section>
+      <Flex align="center">
+        <Button
+          icon="check"
+          px="2rem"
+          textAlign="center"
+          content="Update Whitelists"
+          tooltip="Update Whitelists"
+          onClick={() => act('update_perms', { 'player': viewed_player.ckey })}
+        />
+      </Flex>
     </Section>
   );
 };

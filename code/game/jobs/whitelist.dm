@@ -49,12 +49,6 @@ GLOBAL_LIST_FILE_LOAD(whitelist, WHITELISTFILE)
 	if(WHITELISTS_LEADER & player.whitelist_flags)
 		add_verb(src, /client/proc/whitelist_panel)
 
-/*
-target.client.prefs.muted = text2num(params["mute_flag"])
-	log_admin("[key_name(user)] set the mute flags for [key_name(target)] to [target.client.prefs.muted].")
-	return TRUE
-*/
-
 /client/proc/whitelist_panel_tgui()
 	set name = "Whitelist TGUI Panel"
 	set category = "Admin.Panels"
@@ -82,6 +76,7 @@ GLOBAL_DATUM_INIT(WhitelistPanel, /datum/whitelist_panel, new)
 	var/used_by
 	var/user_rights = 0
 	var/target_rights = 0
+	var/new_rights = 0
 
 /datum/whitelist_panel/proc/get_user_rights(mob/user)
 	if(!user.client)
@@ -115,6 +110,7 @@ GLOBAL_DATUM_INIT(WhitelistPanel, /datum/whitelist_panel, new)
 	user_rights = 0
 	current_menu = "Panel"
 	target_rights = 0
+	new_rights = 0
 
 /datum/whitelist_panel/ui_data(mob/user)
 	var/list/data = list()
@@ -123,6 +119,7 @@ GLOBAL_DATUM_INIT(WhitelistPanel, /datum/whitelist_panel, new)
 	data["user_rights"] = user_rights
 	data["viewed_player"] = viewed_player
 	data["target_rights"] = target_rights
+	data["new_rights"] = new_rights
 
 	var/list/datum/view_record/players/players_view = DB_VIEW(/datum/view_record/players, DB_COMP("whitelist_status", DB_NOTEQUAL, ""))
 
@@ -180,6 +177,7 @@ GLOBAL_LIST_INIT(misc_flags, list(
 			user_rights = 0
 			current_menu = "Panel"
 			target_rights = 0
+			new_rights = 0
 		if("select_player")
 			if(used_by && (used_by != user.ckey))
 				to_chat(user, SPAN_ALERTWARNING("Panel already in use by [used_by]"))
@@ -191,38 +189,22 @@ GLOBAL_LIST_INIT(misc_flags, list(
 			var/list/current_player = list()
 			current_player["ckey"] = params["player"]
 			current_player["status"] = player.whitelist_status
-			current_player["flags"] = player.whitelist_flags
 
+			target_rights = player.whitelist_flags
+			new_rights = player.whitelist_flags
 			viewed_player = current_player
 			current_menu = "Update"
 			user_rights = get_user_rights(user)
 			used_by = user.ckey
-
-/*
-/proc/update_whitelist()
-	if(!CLIENT_HAS_RIGHTS(src, R_PERMISSIONS) && !check_whitelist_status(WHITELISTS_LEADER))
-		return
-
-	var/target_ckey = href_list["change_whitelist"]
-	if(target_ckey == "[TRUE]")
-		target_ckey = ckey(tgui_input_text(usr, "Which CKEY do you want to edit?", "Select CKEY"))
-
-		if(!target_ckey || target_ckey == TRUE)
 			return
-
-	var/datum/entity/player/player = get_player_from_key(ckey)
-	var/can_edit = list()
-	for(var/bitfield in GLOB.whitelist_permissions)
-		if(player.whitelist_flags & bitfield)
-			can_edit += GLOB.whitelist_permissions[bitfield]
-	if(!length(can_edit))
-		can_edit = null
-
-	var/flags = input_bitfield(usr, "Select Flags", "whitelist_status", player.whitelist_flags, allowed_edit_list = can_edit)
-	player.set_whitelist_status(flags)
-*/
-
-
+		if("update_number")
+			new_rights = text2num(params["wl_flag"])
+			return
+		if("update_perms")
+			var/datum/entity/player/player = get_player_from_key(params["player"])
+			player.set_whitelist_status(new_rights)
+			message_admins("Whitelists updated.")
+			return
 
 
 #undef WHITELISTFILE

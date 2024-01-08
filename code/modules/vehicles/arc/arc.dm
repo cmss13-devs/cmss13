@@ -105,6 +105,13 @@
 	if((health <= 0) || !visible_in_tacmap || !is_ground_level(arc_turf.z))
 		return
 
+	var/obj/item/hardpoint/support/arc_antenna/antenna = locate() in hardpoints
+	if(!antenna || (antenna.health <= 0))
+		for(var/datum/weakref/xeno as anything in minimap_added)
+			SSminimaps.remove_marker(xeno.resolve())
+			minimap_added.Remove(xeno)
+		return
+
 	for(var/mob/living/carbon/xenomorph/current_xeno as anything in GLOB.living_xeno_list)
 		var/turf/xeno_turf = get_turf(current_xeno)
 		if(!is_ground_level(xeno_turf.z))

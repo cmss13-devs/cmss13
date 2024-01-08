@@ -16,7 +16,8 @@
 	return FALSE
 
 /atom/movable/attackby(obj/item/W, mob/living/user)
-	if(W)
+	. = ..()
+	if(W && !.)
 		if(!(W.flags_item & NOBLUDGEON))
 			visible_message(SPAN_DANGER("[src] has been hit by [user] with [W]."), null, null, 5, CHAT_TYPE_MELEE_HIT)
 			user.animation_attack_on(src)

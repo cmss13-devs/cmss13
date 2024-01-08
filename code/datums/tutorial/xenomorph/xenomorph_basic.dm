@@ -123,7 +123,7 @@
 		return
 	TUTORIAL_ATOM_FROM_TRACKING(/mob/living/carbon/human, human_dummy)
 	// Rejuvenate the dummy if it's less than half health so our player can't kill it and softlock themselves.
-	if(human_dummy.health < (human_hummy.maxHealth / 2))
+	if(human_dummy.health < (human_dummy.maxHealth / 2))
 		message_to_player("Don't harm the human!")
 		human_dummy.rejuvenate()
 

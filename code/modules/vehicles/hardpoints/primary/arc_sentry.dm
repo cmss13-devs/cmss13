@@ -278,10 +278,14 @@
 
 	start_fire(object = sentry_target)
 
+/obj/projectile/arc_sentry/Initialize(mapload, datum/cause_data/cause_data)
+	. = ..()
+	RegisterSignal(src, COMSIG_BULLET_POST_HANDLE_OBJ, PROC_REF(check_passthrough))
 
 /obj/projectile/arc_sentry/check_canhit(turf/current_turf, turf/next_turf)
 	var/proj_dir = get_dir(current_turf, next_turf)
-	if(!(firer in current_turf) && !(firer in next_turf) && (proj_dir & (proj_dir - 1)) && !current_turf.Adjacent(next_turf))
+	var/obj/item/hardpoint/arc_sentry = shot_from
+	if(!(arc_sentry.owner in current_turf) && !(arc_sentry.owner in next_turf) && (proj_dir & (proj_dir - 1)) && !current_turf.Adjacent(next_turf))
 		ammo.on_hit_turf(current_turf, src)
 		current_turf.bullet_act(src)
 		return TRUE
@@ -292,3 +296,10 @@
 
 	return FALSE
 
+/obj/projectile/arc_sentry/proc/check_passthrough(datum/source, obj/hit_obj, bool)
+	if(!istype(shot_from, /obj/item/hardpoint))
+		return
+
+	var/obj/item/hardpoint/sentry = shot_from
+	if(sentry.owner == hit_obj)
+		return COMPONENT_BULLET_PASS_THROUGH

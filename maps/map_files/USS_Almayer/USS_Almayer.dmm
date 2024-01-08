@@ -77159,12 +77159,18 @@
 	},
 /area/almayer/powered/agent)
 "wph" = (
-/obj/item/paper_bin/wy,
+/obj/item/paper_bin/wy{
+	pixel_x = 5
+	},
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/tool/pen/clicky,
 /obj/item/tool/pen/clicky,
 /obj/structure/machinery/status_display{
 	pixel_x = -32
+	},
+/obj/item/desk_bell{
+	pixel_x = -8;
+	pixel_y = 8
 	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
@@ -77700,6 +77706,7 @@
 	dir = 1;
 	name = "ship-grade camera"
 	},
+/obj/item/desk_bell,
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "red"

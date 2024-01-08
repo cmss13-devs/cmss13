@@ -2,7 +2,7 @@
 
 /obj/item/desk_bell
 	name = "desk bell"
-	desc = "The cornerstone of any customer service job. You feel an unending urge to ring it. It looks like it can be wrenched or screwdrivered."
+	desc = "The cornerstone of any customer service job. You feel an unending urge to ring it."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "desk_bell"
 	w_class = SIZE_SMALL
@@ -12,7 +12,7 @@
 	/// Is this bell broken?
 	var/broken_ringer = FALSE
 	/// Holds the time that the bell can next be rang.
-	var/ring_cooldown = 0
+	COOLDOWN_DECLARE(ring_cooldown)
 	/// The length of the cooldown. Setting it to 0 will skip all cooldowns alltogether.
 	var/ring_cooldown_length = 1 SECONDS // This is here to protect against tinnitus.
 	/// The sound the bell makes.
@@ -23,12 +23,11 @@
 		return FALSE
 	if(!anchored)
 		return ..()
-	if(ring_cooldown > world.time)
+	if(!COOLDOWN_FINISHED(src, ring_cooldown))
 		return FALSE
 	if(!ring_bell(user))
 		to_chat(user, SPAN_NOTICE("[src] is silent. Some idiot broke it."))
 		return FALSE
-	ring_cooldown = world.time + ring_cooldown_length
 	return TRUE
 
 /obj/item/desk_bell/MouseDrop(atom/over_object)
@@ -47,8 +46,8 @@
 		if(broken_ringer)
 			visible_message(SPAN_NOTICE("[user] begins repairing [src]..."), SPAN_NOTICE("You begin repairing [src]..."))
 			if(do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-				user.visible_message(SPAN_NOTICE("[user] repairs [src]"), SPAN_NOTICE("You repair [src]."))
-				playsound(user, 'sound/items/Screwdriver.ogg', 50)
+				user.visible_message(SPAN_NOTICE("[user] repairs [src]."), SPAN_NOTICE("You repair [src]."))
+				playsound(src, 'sound/items/Screwdriver.ogg', 50)
 				broken_ringer = FALSE
 				times_rang = 0
 				return TRUE
@@ -62,17 +61,18 @@
 	if(HAS_TRAIT(item, TRAIT_TOOL_WRENCH))
 		if(user.a_intent == INTENT_HARM)
 			visible_message(SPAN_NOTICE("[user] begins taking apart [src]..."), SPAN_NOTICE("You begin taking apart [src]..."))
+			playsound(src, 'sound/items/deconstruct.ogg', 35)
 			if(do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 				visible_message(SPAN_NOTICE("[user] takes apart [src]."), SPAN_NOTICE("You take apart [src]."))
-				playsound(user, 'sound/items/deconstruct.ogg', 50)
 				new /obj/item/stack/sheet/metal(get_turf(src))
 				qdel(src)
 				return TRUE
 		else
 			user.visible_message("[user] begins [anchored ? "un" : ""]securing [src]...", "You begin [anchored ? "un" : ""]securing [src]...")
+			playsound(src, 'sound/items/Ratchet.ogg', 35, vary = TRUE)
 			if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 				return FALSE
-			user.visible_message("[user] [anchored ? "un" : ""]secures [src].", "You [anchored ? "un" : ""]secure [src]")
+			user.visible_message("[user] [anchored ? "un" : ""]secures [src].", "You [anchored ? "un" : ""]secure [src].")
 			anchored = !anchored
 			return TRUE
 
@@ -80,7 +80,7 @@
 /// Check if the clapper breaks, and if it does, break it chance to break is 1% for every 100 rings of the bell.
 /obj/item/desk_bell/proc/check_clapper(mob/living/user)
 	if(prob(times_rang / 100))
-		to_chat(user, SPAN_NOTICE("You hear [src]'s clapper fall off of its hinge. Nice job, you broke it."))
+		to_chat(user, SPAN_NOTICE("You hear [src]'s clapper fall off of its hinge. Nice job hamfist, you broke it."))
 		broken_ringer = TRUE
 
 /// Ring the bell.
@@ -89,7 +89,8 @@
 		return FALSE
 	check_clapper(user)
 	// The lack of varying is intentional. The only variance occurs on the strike the bell breaks.
-	playsound(src, ring_sound, 70, vary = broken_ringer)
+	COOLDOWN_START(src, ring_cooldown, ring_cooldown_length)
+	playsound(src, ring_sound, 80)
 	flick("desk_bell_activate", src)
 	times_rang++
 	return TRUE

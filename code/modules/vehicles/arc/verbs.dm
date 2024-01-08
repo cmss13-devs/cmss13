@@ -29,14 +29,19 @@
 		to_chat(user, SPAN_WARNING("[vehicle] has no antenna mounted!"))
 		return
 
+	if(antenna.deploying)
+		return
+
 	if(antenna.health <= 0)
 		to_chat(user, SPAN_WARNING("[antenna] is broken!"))
 		return
 
 	if(vehicle.antenna_deployed)
 		to_chat(user, SPAN_NOTICE("You begin to retract [antenna]..."))
+		antenna.deploying = TRUE
 		if(!do_after(user, max(vehicle.antenna_toggle_time - antenna.deploy_animation_time, 1 SECONDS), target = vehicle))
 			to_chat(user, SPAN_NOTICE("You stop retracting [antenna]."))
+			antenna.deploying = FALSE
 			return
 
 		antenna.retract_antenna()
@@ -44,8 +49,10 @@
 
 	else
 		to_chat(user, SPAN_NOTICE("You begin to extend [antenna]..."))
+		antenna.deploying = TRUE
 		if(!do_after(user, max(vehicle.antenna_toggle_time - antenna.deploy_animation_time, 1 SECONDS), target = vehicle))
 			to_chat(user, SPAN_NOTICE("You stop extending [antenna]."))
+			antenna.deploying = FALSE
 			return
 
 		antenna.deploy_antenna()
@@ -57,6 +64,7 @@
 	to_chat(user, SPAN_NOTICE("You retract [antenna], enabling the ARC to move again."))
 	playsound(user, 'sound/machines/hydraulics_2.ogg', 80, TRUE)
 	vehicle.antenna_deployed = !vehicle.antenna_deployed
+	antenna.deploying = FALSE
 	vehicle.update_icon()
 	SEND_SIGNAL(vehicle, COMSIG_ARC_ANTENNA_TOGGLED)
 
@@ -66,6 +74,7 @@
 	to_chat(user, SPAN_NOTICE("You extend [antenna], locking the ARC in place."))
 	playsound(user, 'sound/machines/hydraulics_2.ogg', 80, TRUE)
 	vehicle.antenna_deployed = !vehicle.antenna_deployed
+	antenna.deploying = FALSE
 	vehicle.update_icon()
 	SEND_SIGNAL(vehicle, COMSIG_ARC_ANTENNA_TOGGLED)
 

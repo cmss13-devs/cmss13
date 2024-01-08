@@ -13,6 +13,8 @@
 	bound_x = -32
 	bound_y = -32
 
+	health = 800
+
 	interior_map = /datum/map_template/interior/arc
 
 	passengers_slots = 3
@@ -35,7 +37,7 @@
 	luminosity = 7
 
 	hardpoints_allowed = list(
-		/obj/item/hardpoint/locomotion/apc_wheels,
+		/obj/item/hardpoint/locomotion/arc_wheels,
 		/obj/item/hardpoint/primary/arc_sentry,
 		/obj/item/hardpoint/support/arc_antenna,
 	)
@@ -55,8 +57,8 @@
 	dmg_multipliers = list(
 		"all" = 1,
 		"acid" = 1.8,
-		"slash" = 0.9,
-		"bullet" = 0.7,
+		"slash" = 1.1,
+		"bullet" = 0.6,
 		"explosive" = 0.8,
 		"blunt" = 0.8,
 		"abstract" = 1,

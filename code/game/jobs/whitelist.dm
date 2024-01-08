@@ -109,6 +109,9 @@ GLOBAL_DATUM_INIT(WhitelistPanel, /datum/whitelist_panel, new)
 	target_rights = 0
 	new_rights = 0
 
+/datum/whitelist_panel/vv_edit_var(var_name, var_value)
+	return FALSE
+
 /datum/whitelist_panel/ui_data(mob/user)
 	var/list/data = list()
 

@@ -194,6 +194,7 @@ GLOBAL_LIST_INIT(misc_flags, list(
 				return
 			var/datum/entity/player/player = get_player_from_key(player_key)
 			player.set_whitelist_status(new_rights)
+			to_chat(user, SPAN_HELPFUL("Whitelists for [player_key] updated."))
 			message_admins("Whitelists for [player_key] updated by [key_name(user)]. Reason: '[reason]'.")
 			log_admin("WHITELISTS: Flags for [player_key] changed from [target_rights] to [new_rights]. Reason: '[reason]'.")
 			var/datum/entity/player/player2 = get_player_from_key(player_key)

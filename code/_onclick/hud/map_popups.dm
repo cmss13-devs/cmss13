@@ -68,7 +68,7 @@
 	plane = GAME_PLANE
 
 ///le awesome parent type
-/atom/movable/screen/proc/update_icon()
+/atom/movable/screen/update_icon()
 	return
 
 /**

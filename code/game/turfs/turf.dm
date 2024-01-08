@@ -145,9 +145,6 @@
 /turf/ex_act(severity)
 	return 0
 
-/turf/proc/update_icon() //Base parent. - Abby
-	return
-
 /turf/proc/add_cleanable_overlays()
 	for(var/cleanable_type in cleanables)
 		var/obj/effect/decal/cleanable/C = cleanables[cleanable_type]

@@ -922,7 +922,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 /obj/structure/machinery/vending/power_change()
 	..()
 	if(stat & NOPOWER)
-		addtimer(CALLBACK(src, PROC_REF(update_icon)), rand(1, 15))
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_icon)), rand(1, 15))
 		return
 	update_icon()
 

@@ -174,13 +174,12 @@
 /obj/proc/interact(mob/user)
 	return
 
-/obj/proc/update_icon()
+/obj/update_overlays()
+	. = ..()
+
 	for(var/datum/effects/E in effects_list)
 		if(E.icon_path && E.obj_icon_state_path)
-			overlays += image(E.icon_path, icon_state = E.obj_icon_state_path)
-	return
-
-
+			. += image(E.icon_path, icon_state = E.obj_icon_state_path)
 
 /obj/item/proc/updateSelfDialog()
 	var/mob/M = loc

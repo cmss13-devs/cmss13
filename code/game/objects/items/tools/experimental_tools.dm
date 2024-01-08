@@ -219,7 +219,7 @@
 
 	if(detaching)
 		overlays += "+draining"
-		addtimer(CALLBACK(src, PROC_REF(update_icon)), attach_time)
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_icon)), attach_time)
 
 	else if(attaching)
 		overlays += "+filling"

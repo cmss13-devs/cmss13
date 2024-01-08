@@ -95,6 +95,9 @@
 	///The color this atom will be if we choose to draw it on the minimap
 	var/minimap_color = MINIMAP_SOLID
 
+	///overlays managed by update_overlays() to prevent removing overlays that weren't added by the same proc
+	var/list/managed_overlays
+
 /atom/New(loc, ...)
 	var/do_initialize = SSatoms.initialized
 	if(do_initialize != INITIALIZATION_INSSATOMS)
@@ -659,6 +662,29 @@ Parameters are passed from New.
 ///Turn on the light, should be called by a timer
 /atom/proc/reset_light()
 	turn_light(null, TRUE, 1 SECONDS, FALSE, TRUE)
+
+/atom/proc/update_icon()
+	var/signalOut = SEND_SIGNAL(src, COMSIG_ATOM_UPDATE_ICON)
+
+	if(!(signalOut & COMSIG_ATOM_NO_UPDATE_ICON_STATE))
+		update_icon_state()
+
+	if(!(signalOut & COMSIG_ATOM_NO_UPDATE_OVERLAYS))
+		var/list/new_overlays = update_overlays()
+		if(managed_overlays)
+			overlays -= managed_overlays
+			managed_overlays = null
+		if(length(new_overlays))
+			managed_overlays = new_overlays
+			overlays += new_overlays
+
+/// Updates the icon state of the atom
+/atom/proc/update_icon_state()
+
+/atom/proc/update_overlays()
+	SHOULD_CALL_PARENT(TRUE)
+	. = list()
+	SEND_SIGNAL(src, COMSIG_ATOM_UPDATE_OVERLAYS, .)
 
 /**
  * Return the markup to for the dropdown list for the VV panel for this atom

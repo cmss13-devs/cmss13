@@ -19,7 +19,7 @@
 	update_icon()
 
 /turf/open/update_icon()
-	overlays.Cut()
+	. = ..()
 
 	add_cleanable_overlays()
 
@@ -473,16 +473,17 @@
 	..()
 	update_overlays()
 
-/turf/open/gm/river/proc/update_overlays()
-	overlays.Cut()
+/turf/open/gm/river/update_overlays()
+	. = ..()
+
 	if(no_overlay)
 		return
 	if(covered)
 		name = covered_name
-		overlays += image("icon"=src.cover_icon,"icon_state"=cover_icon_state,"layer"=CATWALK_LAYER,"dir" = dir)
+		. += image("icon"=src.cover_icon,"icon_state"=cover_icon_state,"layer"=CATWALK_LAYER,"dir" = dir)
 	else
 		name = default_name
-		overlays += image("icon"=src.icon,"icon_state"=icon_overlay,"layer"=ABOVE_MOB_LAYER,"dir" = dir)
+		. += image("icon"=src.icon,"icon_state"=icon_overlay,"layer"=ABOVE_MOB_LAYER,"dir" = dir)
 
 /turf/open/gm/river/ex_act(severity)
 	if(covered & severity >= EXPLOSION_THRESHOLD_LOW)

@@ -22,11 +22,11 @@
 		name = "light switch ([area.name])"
 
 	src.on = src.area.lightswitch
-	updateicon()
+	update_icon()
 
 
 
-/obj/structure/machinery/light_switch/proc/updateicon()
+/obj/structure/machinery/light_switch/update_icon_state()
 	if(stat & NOPOWER)
 		icon_state = "light-p"
 	else
@@ -34,6 +34,12 @@
 			icon_state = "light1"
 		else
 			icon_state = "light0"
+
+/obj/structure/machinery/light_switch/update_overlays()
+	. = ..()
+	if(stat & NOPOWER)
+		return
+	. += emissive_appearance(icon, "light[on]_emissive")
 
 /obj/structure/machinery/light_switch/get_examine_text(mob/user)
 	. = ..()
@@ -47,7 +53,7 @@
 
 	for(var/obj/structure/machinery/light_switch/L in area)
 		L.on = on
-		L.updateicon()
+		L.update_icon()
 
 	area.power_change()
 
@@ -59,7 +65,7 @@
 		else
 			stat |= NOPOWER
 
-		updateicon()
+		update_icon()
 
 /obj/structure/machinery/light_switch/emp_act(severity)
 	. = ..()

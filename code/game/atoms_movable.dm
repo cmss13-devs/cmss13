@@ -94,8 +94,6 @@
 	if(light_system == DIRECTIONAL_LIGHT)
 		AddComponent(/datum/component/overlay_lighting, is_directional = TRUE)
 
-/*
-
 ///Updates this movables emissive overlay
 /atom/movable/proc/update_emissive_block()
 	if(!blocks_emissive)
@@ -113,8 +111,6 @@
 	. = ..()
 
 	. += update_emissive_block()
-
-*/
 
 /atom/movable/vv_get_dropdown()
 	. = ..()

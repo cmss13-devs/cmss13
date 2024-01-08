@@ -439,7 +439,7 @@ FORENSIC SCANNER
 				overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_value_cyan")
 			else
 				overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_value_white")
-		addtimer(CALLBACK(src, PROC_REF(update_icon)), 1 SECONDS)
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_icon)), 1 SECONDS)
 	else
 		overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_clamp_off")
 

@@ -42,7 +42,7 @@
 		update_health(0, TRUE)
 	if(user)
 		user.count_niche_stat(STATISTICS_NICHE_CADES)
-	addtimer(CALLBACK(src, PROC_REF(update_icon)), 0)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_icon)), 0)
 	starting_maxhealth = maxhealth
 
 /obj/structure/barricade/initialize_pass_flags(datum/pass_flags_container/pass_flags)

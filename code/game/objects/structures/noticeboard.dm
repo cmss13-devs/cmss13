@@ -96,10 +96,11 @@
 			remove_item(item, user)
 			return TRUE
 
-/obj/structure/noticeboard/proc/update_overlays()
-	if(overlays) overlays.Cut()
+/obj/structure/noticeboard/update_overlays()
+	. = ..()
+
 	if(notices)
-		overlays += image(icon, "notices_[notices]")
+		. += image(icon, "notices_[notices]")
 
 /obj/structure/noticeboard/proc/remove_item(obj/item/item, mob/user)
 	item.forceMove(loc)

@@ -162,8 +162,9 @@
 	I.throw_atom(starting_turf, rand(2, 5), SPEED_FAST, null, TRUE)
 	qdel(src)
 
-/obj/structure/bed/chair/proc/update_overlays()
-	overlays.Cut()
+/obj/structure/bed/chair/update_overlays()
+	. = ..()
+
 	if(!stacked_size)
 		name = initial(name)
 		desc = initial(desc)
@@ -201,7 +202,7 @@
 					I.pixel_y = previous_chair_overlay.pixel_y + 3
 		if(stacked_size > 8)
 			I.pixel_x = I.pixel_x + pick(list(-1, 1))
-		overlays += I
+		. += I
 
 /obj/structure/bed/chair/verb/rotate()
 	set name = "Rotate Chair"

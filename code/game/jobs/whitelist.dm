@@ -201,9 +201,16 @@ GLOBAL_LIST_INIT(misc_flags, list(
 			new_rights = text2num(params["wl_flag"])
 			return
 		if("update_perms")
-			var/datum/entity/player/player = get_player_from_key(params["player"])
+			var/player_key = params["player"]
+			var/reason = tgui_input_text(user, "What is the reason for this change?", "Update Reason")
+			if(!reason)
+				return
+			var/datum/entity/player/player = get_player_from_key(player_key)
 			player.set_whitelist_status(new_rights)
-			message_admins("Whitelists updated.")
+			message_admins("Whitelists for [player_key] updated by [key_name(user)]. Reason: '[reason]'.")
+			log_admin("WHITELISTS: Flags for [player_key] changed from [target_rights] to [new_rights]. Reason: '[reason]'.")
+			var/datum/entity/player/player2 = get_player_from_key(player_key)
+			target_rights = player2.whitelist_flags
 			return
 
 

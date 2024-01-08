@@ -100,17 +100,16 @@ const StatusUpdate = (props, context) => {
         />
       </Flex>
       <h1 align="center">Whitelists for: {viewed_player.ckey}</h1>
-      <h1 align="center">Flags: {new_rights}</h1>
       <Section title="Commanding Officer">
         <Stack align="right" grow={1}>
           {co_flags.map((bit, i) => {
             const isWhitelisted = target_rights && target_rights & bit.bitflag;
             return (
-              <Button.Checkbox
+              <Button
                 key={i}
                 width="100%"
                 height="100%"
-                color={isWhitelisted ? 'blue' : 'orange'}
+                color={isWhitelisted ? 'purple' : 'blue'}
                 content={bit.name}
               />
             );
@@ -146,11 +145,11 @@ const StatusUpdate = (props, context) => {
           {syn_flags.map((bit, i) => {
             const isWhitelisted = target_rights && target_rights & bit.bitflag;
             return (
-              <Button.Checkbox
+              <Button
                 key={i}
                 width="100%"
                 height="100%"
-                color={isWhitelisted ? 'blue' : 'orange'}
+                color={isWhitelisted ? 'purple' : 'blue'}
                 content={bit.name}
               />
             );
@@ -186,12 +185,11 @@ const StatusUpdate = (props, context) => {
           {yaut_flags.map((bit, i) => {
             const isWhitelisted = target_rights && target_rights & bit.bitflag;
             return (
-              <Button.Checkbox
+              <Button
                 key={i}
                 width="100%"
                 height="100%"
-                checked={isWhitelisted}
-                color={isWhitelisted ? 'blue' : 'orange'}
+                color={isWhitelisted ? 'purple' : 'blue'}
                 content={bit.name}
               />
             );
@@ -227,12 +225,11 @@ const StatusUpdate = (props, context) => {
           {misc_flags.map((bit, i) => {
             const isWhitelisted = target_rights && target_rights & bit.bitflag;
             return (
-              <Button.Checkbox
+              <Button
                 key={i}
                 width="100%"
                 height="100%"
-                checked={isWhitelisted}
-                color={isWhitelisted ? 'blue' : 'orange'}
+                color={isWhitelisted ? 'purple' : 'blue'}
                 content={bit.name}
               />
             );

@@ -58,7 +58,7 @@
 
 	potential_disk.objective.activate()
 
-	inserter.drop_inv_item_to_loc(potential_disk, src)
+	inserter.drop_inv_item_to_loc(potential_disk, parent)
 	disk = potential_disk
 	to_chat(inserter, SPAN_NOTICE("You insert [potential_disk] and enter the decryption key."))
 	inserter.count_niche_stat(STATISTICS_NICHE_DISK)

@@ -24,7 +24,7 @@
 	if(!.)
 		return
 
-	if(player.check_whitelist_status(WHITELIST_COMMANDER_LEADER))
+	if(player.check_whitelist_status(WHITELIST_COMMANDER_LEADER|WHITELIST_COMMANDER_COLONEL))
 		return get_desired_status(player.prefs.commander_status, WHITELIST_LEADER)
 	if(player.check_whitelist_status(WHITELIST_COMMANDER_COUNCIL|WHITELIST_COMMANDER_COUNCIL_LEGACY))
 		return get_desired_status(player.prefs.commander_status, WHITELIST_COUNCIL)

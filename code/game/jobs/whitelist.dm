@@ -1,12 +1,3 @@
-#define WHITELISTFILE "data/whitelist.txt"
-
-GLOBAL_LIST_FILE_LOAD(whitelist, WHITELISTFILE)
-
-/proc/check_whitelist(mob/M /*, rank*/)
-	if(!CONFIG_GET(flag/usewhitelist) || !GLOB.whitelist)
-		return 0
-	return ("[M.ckey]" in GLOB.whitelist)
-
 /proc/can_play_special_job(client/client, job)
 	if(client.admin_holder && (client.admin_holder.rights & R_ADMIN))
 		return TRUE
@@ -27,21 +18,6 @@ GLOBAL_LIST_FILE_LOAD(whitelist, WHITELISTFILE)
 		LAZYADD(., "commander")
 	if(player.check_whitelist_status(WHITELIST_SYNTHETIC))
 		LAZYADD(., "synthetic")
-
-/client/proc/whitelist_panel_backup()
-	set name = "Whitelist Panel (Backup)"
-	set category = "Admin.Panels"
-
-	var/data = "<hr><b>Whitelists:</b> <a href='?src=\ref[src];[HrefToken()];change_whitelist=[TRUE]'>Add Whitelist</a> <hr><table border=1 rules=all frame=void cellspacing=0 cellpadding=3>"
-
-	var/list/datum/view_record/players/players_view = DB_VIEW(/datum/view_record/players, DB_COMP("whitelist_status", DB_NOTEQUAL, ""))
-
-	for(var/datum/view_record/players/whitelistee in players_view)
-		data += "<tr><td> <a href='?src=\ref[src];[HrefToken()];change_whitelist=[whitelistee.ckey]'>(CHANGE)</a> Key: <b>[whitelistee.ckey]</b></td> <td>Whitelists: [whitelistee.whitelist_status]</td></tr>"
-
-	data += "</table>"
-
-	show_browser(usr, data, "Whitelist Panel", "whitelist_panel", "size=857x400")
 
 /client/load_player_data_info(datum/entity/player/player)
 	. = ..()
@@ -121,36 +97,27 @@ GLOBAL_DATUM_INIT(WhitelistPanel, /datum/whitelist_panel, new)
 	data["target_rights"] = target_rights
 	data["new_rights"] = new_rights
 
-	var/list/datum/view_record/players/players_view = DB_VIEW(/datum/view_record/players, DB_COMP("whitelist_status", DB_NOTEQUAL, ""))
-
-	var/list/whitelisted_players = list()
-	for(var/datum/view_record/players/whitelistee in players_view)
-		var/list/current_player = list()
-		current_player["ckey"] = whitelistee.ckey
-		current_player["status"] = whitelistee.whitelist_status
-		whitelisted_players += list(current_player)
-	data["whitelisted_players"] = whitelisted_players
-
 	return data
 
 GLOBAL_LIST_INIT(co_flags, list(
 	list(name = "Commander", bitflag = WHITELIST_COMMANDER, permission = WL_PANEL_RIGHT_CO),
-	list(name = "CO Council", bitflag = WHITELIST_COMMANDER_COUNCIL, permission = WL_PANEL_RIGHT_CO),
-	list(name = "Legacy CO Council", bitflag = WHITELIST_COMMANDER_COUNCIL_LEGACY, permission = WL_PANEL_RIGHT_CO),
-	list(name = "CO Senator", bitflag = WHITELIST_COMMANDER_LEADER, permission = WL_PANEL_RIGHT_OVERSEER)
+	list(name = "Council", bitflag = WHITELIST_COMMANDER_COUNCIL, permission = WL_PANEL_RIGHT_CO),
+	list(name = "Legacy Council", bitflag = WHITELIST_COMMANDER_COUNCIL_LEGACY, permission = WL_PANEL_RIGHT_CO),
+	list(name = "Senator", bitflag = WHITELIST_COMMANDER_LEADER, permission = WL_PANEL_RIGHT_OVERSEER),
+	list(name = "Colonel", bitflag = WHITELIST_COMMANDER_COLONEL, permission = WL_PANEL_RIGHT_OVERSEER)
 ))
 GLOBAL_LIST_INIT(syn_flags, list(
 	list(name = "Synthetic", bitflag = WHITELIST_SYNTHETIC, permission = WL_PANEL_RIGHT_SYNTH),
-	list(name = "Synthetic Council", bitflag = WHITELIST_SYNTHETIC_COUNCIL, permission = WL_PANEL_RIGHT_SYNTH),
-	list(name = "Legacy Synthetic Council", bitflag = WHITELIST_SYNTHETIC_COUNCIL_LEGACY, permission = WL_PANEL_RIGHT_SYNTH),
-	list(name = "Synthetic Senator", bitflag = WHITELIST_SYNTHETIC_LEADER, permission = WL_PANEL_RIGHT_OVERSEER)
+	list(name = "Council", bitflag = WHITELIST_SYNTHETIC_COUNCIL, permission = WL_PANEL_RIGHT_SYNTH),
+	list(name = "Legacy Council", bitflag = WHITELIST_SYNTHETIC_COUNCIL_LEGACY, permission = WL_PANEL_RIGHT_SYNTH),
+	list(name = "Senator", bitflag = WHITELIST_SYNTHETIC_LEADER, permission = WL_PANEL_RIGHT_OVERSEER)
 ))
 GLOBAL_LIST_INIT(yaut_flags, list(
 	list(name = "Yautja", bitflag = WHITELIST_YAUTJA, permission = WL_PANEL_RIGHT_YAUTJA),
-	list(name = "Legacy Yautja", bitflag = WHITELIST_YAUTJA_LEGACY, permission = WL_PANEL_RIGHT_OVERSEER),
-	list(name = "Yautja Council", bitflag = WHITELIST_YAUTJA_COUNCIL, permission = WL_PANEL_RIGHT_YAUTJA),
-	list(name = "Legacy Yautja Council", bitflag = WHITELIST_YAUTJA_COUNCIL_LEGACY, permission = WL_PANEL_RIGHT_YAUTJA),
-	list(name = "Yautja Senator", bitflag = WHITELIST_YAUTJA_LEADER, permission = WL_PANEL_RIGHT_OVERSEER)
+	list(name = "Legacy Holder", bitflag = WHITELIST_YAUTJA_LEGACY, permission = WL_PANEL_RIGHT_OVERSEER),
+	list(name = "Council", bitflag = WHITELIST_YAUTJA_COUNCIL, permission = WL_PANEL_RIGHT_YAUTJA),
+	list(name = "Legacy Council", bitflag = WHITELIST_YAUTJA_COUNCIL_LEGACY, permission = WL_PANEL_RIGHT_YAUTJA),
+	list(name = "Senator", bitflag = WHITELIST_YAUTJA_LEADER, permission = WL_PANEL_RIGHT_OVERSEER)
 ))
 GLOBAL_LIST_INIT(misc_flags, list(
 	list(name = "Senior Enlisted Advisor", bitflag = WHITELIST_MENTOR, permission = WL_PANEL_RIGHT_MENTOR),
@@ -164,6 +131,16 @@ GLOBAL_LIST_INIT(misc_flags, list(
 	.["yaut_flags"] = GLOB.yaut_flags
 	.["misc_flags"] = GLOB.misc_flags
 
+	var/list/datum/view_record/players/players_view = DB_VIEW(/datum/view_record/players, DB_COMP("whitelist_status", DB_NOTEQUAL, ""))
+
+	var/list/whitelisted_players = list()
+	for(var/datum/view_record/players/whitelistee in players_view)
+		var/list/current_player = list()
+		current_player["ckey"] = whitelistee.ckey
+		current_player["status"] = whitelistee.whitelist_status
+		whitelisted_players += list(current_player)
+	.["whitelisted_players"] = whitelisted_players
+
 /datum/whitelist_panel/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
@@ -174,13 +151,7 @@ GLOBAL_LIST_INIT(misc_flags, list(
 		return
 	switch(action)
 		if("go_back")
-			if(used_by)
-				used_by = null
-			viewed_player = list()
-			user_rights = 0
-			current_menu = "Panel"
-			target_rights = 0
-			new_rights = 0
+			go_back()
 		if("select_player")
 			select_player(user, params["player"])
 			return
@@ -200,9 +171,12 @@ GLOBAL_LIST_INIT(misc_flags, list(
 			to_chat(user, SPAN_HELPFUL("Whitelists for [player_key] updated."))
 			message_admins("Whitelists for [player_key] updated by [key_name(user)]. Reason: '[reason]'.")
 			log_admin("WHITELISTS: Flags for [player_key] changed from [target_rights] to [new_rights]. Reason: '[reason]'.")
-			var/datum/entity/player/player2 = get_player_from_key(player_key)
-			target_rights = player2.whitelist_flags
+			update_static_data(user, ui)
+			go_back()
 			return
+		if("refresh_data")
+			update_static_data(user, ui)
+			to_chat(user, SPAN_NOTICE("Whitelist data refreshed."))
 
 /datum/whitelist_panel/proc/select_player(mob/user, player_key)
 	var/target_key = player_key
@@ -236,7 +210,16 @@ GLOBAL_LIST_INIT(misc_flags, list(
 	used_by = user.ckey
 	return
 
-#undef WHITELISTFILE
+/datum/whitelist_panel/proc/go_back()
+	if(used_by)
+		used_by = null
+	viewed_player = list()
+	user_rights = 0
+	current_menu = "Panel"
+	target_rights = 0
+	new_rights = 0
+
+
 #undef WL_PANEL_RIGHT_CO
 #undef WL_PANEL_RIGHT_SYNTH
 #undef WL_PANEL_RIGHT_YAUTJA

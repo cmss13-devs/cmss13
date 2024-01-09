@@ -221,30 +221,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		var/datum/entity/player/P = get_player_from_key(key)
 		P.remove_note(index)
 
-	if(href_list["change_whitelist"])
-		if(!CLIENT_HAS_RIGHTS(src, R_PERMISSIONS) && !check_whitelist_status(WHITELISTS_LEADER))
-			return
-
-		var/target_ckey = href_list["change_whitelist"]
-		if(target_ckey == "[TRUE]")
-			target_ckey = ckey(tgui_input_text(usr, "Which CKEY do you want to edit?", "Select CKEY"))
-
-			if(!target_ckey || target_ckey == TRUE)
-				return
-
-		var/datum/entity/player/player = get_player_from_key(ckey)
-		var/can_edit = list()
-		for(var/bitfield in GLOB.whitelist_permissions)
-			if(player.whitelist_flags & bitfield)
-				can_edit += GLOB.whitelist_permissions[bitfield]
-		if(!length(can_edit))
-			can_edit = null
-
-		var/flags = input_bitfield(usr, "Select Flags", "whitelist_status", player.whitelist_flags, allowed_edit_list = can_edit)
-
-		message_admins("Whitelists for [target_ckey] updated by [key_name(usr)] via backup panel.")
-		player.set_whitelist_status(flags)
-
 	switch(href_list["_src_"])
 		if("admin_holder")
 			hsrc = admin_holder

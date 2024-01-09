@@ -1328,7 +1328,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 					if(whitelist_flags & (WHITELIST_COMMANDER_COUNCIL|WHITELIST_COMMANDER_COUNCIL_LEGACY))
 						options += list("Council" = WHITELIST_COUNCIL)
-					if(whitelist_flags & WHITELIST_COMMANDER_LEADER)
+					if(whitelist_flags & WHITELIST_COMMANDER_LEADER|WHITELIST_COMMANDER_COLONEL)
 						options += list("Leader" = WHITELIST_LEADER)
 
 					var/new_commander_status = tgui_input_list(user, "Choose your new Commander Whitelist Status.", "Commander Status", options)

@@ -27,25 +27,36 @@ const PlayerList = (props, context) => {
 
   return (
     <Section>
-      <h1 align="center">Whitelist Panel</h1>
-
+      <Flex align="center" grow>
+        <Flex.Item mr="1rem">
+          <Button
+            icon="clipboard"
+            tooltip="Add Key"
+            onClick={() => act('add_player')}
+          />
+        </Flex.Item>
+        <Flex.Item mr="1rem">
+          <Button
+            icon="rotate-right"
+            textAlign="center"
+            tooltip="Refresh Data"
+            onClick={() => act('refresh_data')}
+          />
+        </Flex.Item>
+        <Flex.Item mr="1rem" width="90%">
+          <h1 align="center">Whitelist Panel</h1>
+        </Flex.Item>
+      </Flex>
       {!!whitelisted_players.length && (
         <Flex
           className="candystripe"
           p=".75rem"
           align="center"
           fontSize="1.25rem">
-          <Flex.Item mr="1rem">
-            <Button
-              icon="clipboard"
-              tooltip="Add Key"
-              onClick={() => act('add_player')}
-            />
-          </Flex.Item>
-          <Flex.Item bold width="20rem" shrink="0" mr="1rem">
+          <Flex.Item bold width="20rem" shrink="0" mr="5rem">
             CKey
           </Flex.Item>
-          <Flex.Item width="30rem" grow bold>
+          <Flex.Item width="40rem" grow bold>
             Status
           </Flex.Item>
         </Flex>
@@ -260,7 +271,7 @@ const StatusUpdate = (props, context) => {
       <Flex align="center">
         <Button
           icon="check"
-          px="2rem"
+          width="100%"
           textAlign="center"
           content="Update Whitelists"
           tooltip="Update Whitelists"

@@ -244,7 +244,6 @@ GLOBAL_LIST_INIT(admin_verbs_possess, list(
 GLOBAL_LIST_INIT(admin_verbs_permissions, list(
 	/client/proc/ToRban,
 	/client/proc/whitelist_panel,
-	/client/proc/whitelist_panel_backup,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_color, list(

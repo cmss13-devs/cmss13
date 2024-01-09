@@ -403,7 +403,8 @@
 	if(cant_consume)
 		user.affected_message(affected_xeno,
 			SPAN_HELPFUL("You <b>fail to [user == affected_xeno ? "eat" : "feed [affected_xeno]"] [current_fruit]</b>."),
-			SPAN_HELPFUL("[user] <b>fails to feed</b> you <b>[current_fruit]</b>."))
+			SPAN_HELPFUL("[user] <b>fails to feed</b> you <b>[current_fruit]</b>."),
+			SPAN_NOTICE("[user] fails to [user == affected_xeno ? "eat" : "feed [affected_xeno]"] [current_fruit]."))
 		return
 	user.affected_message(affected_xeno,
 		SPAN_HELPFUL("You <b>start [user == affected_xeno ? "eating" : "feeding [affected_xeno]"] [current_fruit]</b>."),
@@ -417,7 +418,8 @@
 	if(cant_consume) //Check again after the timer incase they ate another fruit
 		user.affected_message(affected_xeno,
 			SPAN_HELPFUL("You <b>fail to [user == affected_xeno ? "eat" : "feed [affected_xeno]"] [current_fruit]</b>."),
-			SPAN_HELPFUL("[user] <b>fails to feed</b> you <b>[current_fruit]</b>."))
+			SPAN_HELPFUL("[user] <b>fails to feed</b> you <b>[current_fruit]</b>."),
+			SPAN_NOTICE("[user] fails to [user == affected_xeno ? "eat" : "feed [affected_xeno]"] [current_fruit]."))
 		return
 
 	user.affected_message(affected_xeno,

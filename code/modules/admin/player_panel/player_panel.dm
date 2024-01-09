@@ -188,6 +188,8 @@
 	for(var/mob/M in mobs)
 		if(!M.ckey)
 			continue
+		if(!CLIENT_HAS_RIGHTS(usr.client, R_STEALTH) && (M.client && (CLIENT_IS_STEALTHED(M.client))))
+			continue
 
 		var/color = i % 2 == 0 ? "#6289b7" : "#48709d"
 

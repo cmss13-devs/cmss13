@@ -11,6 +11,7 @@
 	var/hive_location
 	var/burrowed_larva
 	var/evilution_level
+	var/pylon_status
 
 	var/data_initialized = FALSE
 
@@ -104,6 +105,7 @@
 	update_xeno_vitals()
 	update_xeno_keys(FALSE)
 	update_xeno_info(FALSE)
+	update_pylon_status(FALSE)
 
 	if(send_update)
 		SStgui.update_uis(src)
@@ -113,7 +115,18 @@
 	data_initialized = TRUE
 	update_all_xeno_data(FALSE)
 	update_burrowed_larva(FALSE)
+	update_pylon_status(FALSE)
 	SStgui.update_uis(src)
+
+/datum/hive_status_ui/proc/update_pylon_status(send_update = TRUE)
+	if(assoc_hive.get_structure_count(XENO_STRUCTURE_PYLON) < 1)
+		pylon_status = ""
+	else if(assoc_hive.hit_larva_pylon_limit)
+		pylon_status = "The hive's power has surpassed what the pylons can provide."
+	else
+		pylon_status = "Pylons are strengthening our numbers!"
+	if(send_update)
+		SStgui.update_uis(src)
 
 /datum/hive_status_ui/ui_state(mob/user)
 	return GLOB.hive_state[assoc_hive.internal_faction]
@@ -141,6 +154,7 @@
 	.["hive_location"] = hive_location
 	.["burrowed_larva"] = burrowed_larva
 	.["evilution_level"] = evilution_level
+	.["pylon_status"] = pylon_status
 
 	var/mob/living/carbon/xenomorph/queen/Q = user
 	.["is_in_ovi"] = istype(Q) && Q.ovipositor

@@ -225,7 +225,10 @@
 	return ..()
 
 /datum/action/xeno_action/onclick/psychic_whisper/can_use_action()
-	return TRUE
+	var/mob/living/carbon/xenomorph/X = owner
+	if(X && !X.is_mob_incapacitated())
+		return TRUE
+	return FALSE
 
 /datum/action/xeno_action/onclick/psychic_radiance
 	name = "Psychic Radiance"
@@ -266,7 +269,10 @@
 	return ..()
 
 /datum/action/xeno_action/onclick/psychic_radiance/can_use_action()
-	return TRUE
+	var/mob/living/carbon/xenomorph/X = owner
+	if(X && !X.is_mob_incapacitated())
+		return TRUE
+	return FALSE
 
 /datum/action/xeno_action/activable/queen_give_plasma
 	name = "Give Plasma (400)"

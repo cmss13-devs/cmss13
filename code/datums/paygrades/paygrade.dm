@@ -48,8 +48,7 @@ GLOBAL_LIST_INIT(co_paygrades, list(
 
 /proc/setup_paygrades()
 	. = list()
-	for(var/I in subtypesof(/datum/paygrade))
-		var/datum/paygrade/PG = I
+	for(var/datum/paygrade/PG as anything in subtypesof(/datum/paygrade))
 		var/pg_id = initial(PG.paygrade)
 		if(pg_id)
 			if(pg_id in .)

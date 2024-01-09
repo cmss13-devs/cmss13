@@ -683,6 +683,7 @@ SUBSYSTEM_DEF(minimaps)
 		user.client.register_map_obj(map_holder.map)
 		ui = new(user, src, "TacticalMap")
 		ui.open()
+		RegisterSignal(user.mind, COMSIG_MIND_TRANSFERRED, PROC_REF(on_mind_transferred))
 
 /datum/tacmap/drawing/tgui_interact(mob/user, datum/tgui/ui)
 	var/mob/living/carbon/xenomorph/xeno = user
@@ -721,6 +722,7 @@ SUBSYSTEM_DEF(minimaps)
 			tacmap_ready_time = SSminimaps.next_fire + 2 SECONDS
 			addtimer(CALLBACK(src, PROC_REF(on_tacmap_fire), faction), SSminimaps.next_fire - world.time + 1 SECONDS)
 			user.client.register_map_obj(map_holder.map)
+			RegisterSignal(user.mind, COMSIG_MIND_TRANSFERRED, PROC_REF(on_mind_transferred))
 
 		ui = new(user, src, "TacticalMap")
 		ui.open()
@@ -805,6 +807,9 @@ SUBSYSTEM_DEF(minimaps)
 	data["isXeno"] = TRUE
 
 	return data
+
+/datum/tacmap/ui_close(mob/user)
+	UnregisterSignal(user.mind, COMSIG_MIND_TRANSFERRED)
 
 /datum/tacmap/drawing/ui_close(mob/user)
 	. = ..()
@@ -933,6 +938,11 @@ SUBSYSTEM_DEF(minimaps)
 		return UI_CLOSE
 
 	return UI_INTERACTIVE
+
+// This gets removed when the player changes bodies (i.e. xeno evolution), so re-register it when that happens.
+/datum/tacmap/proc/on_mind_transferred(datum/mind/source, mob/previous_body)
+	SIGNAL_HANDLER
+	source.current.client.register_map_obj(map_holder.map)
 
 /datum/tacmap_holder
 	var/map_ref

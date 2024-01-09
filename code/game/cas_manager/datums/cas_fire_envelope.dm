@@ -259,7 +259,7 @@
 		mission_error = "Target is off bounds or obstructed."
 		return
 	change_current_loc(target_turf)
-	playsound(shootloc, soundeffect, vol = 70, vary = TRUE, 50, falloff = 8)
+	playsound(target_turf, soundeffect, vol = 70, vary = TRUE, 50, falloff = 8)
 
 	var/relative_dir
 	for(var/mob/M in range(15, target_turf))

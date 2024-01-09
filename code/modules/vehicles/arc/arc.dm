@@ -91,6 +91,17 @@
 /obj/vehicle/multitile/arc/crew_mousedown(datum/source, atom/object, turf/location, control, params)
 	return
 
+
+/obj/vehicle/multitile/arc/get_examine_text(mob/user)
+	. = ..()
+	if(!isxeno(user))
+		return
+
+	if(health > 0)
+		. += SPAN_XENO("[src] can be crawled under once destroyed.")
+	else
+		. += SPAN_XENO("[src] can be crawled under by <b>dragging our sprite</b> to it.")
+
 /obj/vehicle/multitile/arc/proc/on_antenna_toggle(datum/source)
 	SIGNAL_HANDLER
 
@@ -140,7 +151,7 @@
 	var/datum/role_reserved_slots/RRS = new
 	RRS.category_name = "CIC Officer"
 	RRS.roles = list(JOB_SO, JOB_SEA, JOB_XO, JOB_CO, JOB_GENERAL)
-	RRS.total = 1
+	RRS.total = 2
 	role_reserved_slots += RRS
 
 	RRS = new
@@ -192,6 +203,39 @@
 		camera.c_tag = "#[rand(1,100)] 540-A ARC"
 		if(camera_int)
 			camera_int.c_tag = camera.c_tag + " interior"
+
+/obj/vehicle/multitile/arc/MouseDrop_T(mob/M, mob/user)
+	. = ..()
+	if((M != user) || !isxeno(user))
+		return
+
+	if(health > 0)
+		to_chat(user, SPAN_XENO("We can't go under [src] until it is destroyed!"))
+		return
+
+	var/turf/current_turf = get_turf(user)
+	var/dir_to_go = get_dir(current_turf, src)
+	for(var/i in 1 to 3)
+		current_turf = get_step(current_turf, dir_to_go)
+		if(!(current_turf in locs))
+			break
+
+		if(current_turf.density)
+			to_chat(user, SPAN_XENO("The path under [src] is obstructed!"))
+			return
+
+	// Now we check to make sure the turf on the other side of the ARC isn't dense too
+	current_turf = get_step(current_turf, dir_to_go)
+	if(current_turf.density)
+		to_chat(user, SPAN_XENO("The path under [src] is obstructed!"))
+		return
+
+	to_chat(user, SPAN_XENO("We begin to crawl under [src]..."))
+	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		to_chat(user, SPAN_XENO("We stop crawling under [src]."))
+		return
+
+	user.forceMove(current_turf)
 
 /*
 ** PRESETS SPAWNERS

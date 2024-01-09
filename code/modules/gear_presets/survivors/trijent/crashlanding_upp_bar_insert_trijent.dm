@@ -16,6 +16,12 @@
 		ACCESS_CIVILIAN_PUBLIC,
 	)
 
+/datum/equipment_preset/survivor/upp/load_name(mob/living/carbon/human/new_human, randomise)
+	new_human.gender = pick(60;MALE,40;FEMALE)
+	var/random_name
+	random_name = capitalize(pick(new_human.gender == MALE ? GLOB.first_names_male_upp : GLOB.first_names_female_upp)) + " " + capitalize(pick(GLOB.last_names_upp))
+	new_human.change_real_name(new_human, random_name)
+
 /datum/equipment_preset/survivor/upp/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/marine/veteran/UPP/uniform = new()
 	var/random_number = rand(1,2)

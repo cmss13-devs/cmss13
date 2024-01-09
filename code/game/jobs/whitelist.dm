@@ -137,7 +137,9 @@ GLOBAL_LIST_INIT(misc_flags, list(
 	for(var/datum/view_record/players/whitelistee in players_view)
 		var/list/current_player = list()
 		current_player["ckey"] = whitelistee.ckey
-		current_player["status"] = whitelistee.whitelist_status
+		var/list/unreadable_list = splittext(whitelistee.whitelist_status, "|")
+		var/readable_list = unreadable_list.Join(" | ")
+		current_player["status"] = readable_list
 		whitelisted_players += list(current_player)
 	.["whitelisted_players"] = whitelisted_players
 

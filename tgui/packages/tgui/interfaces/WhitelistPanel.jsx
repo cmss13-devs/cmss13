@@ -13,7 +13,7 @@ export const WhitelistPanel = (props, context) => {
   const PageComponent = PAGES[current_menu]();
 
   return (
-    <Window theme={'crtblue'} width={950} height={750}>
+    <Window theme={'crtblue'} width={990} height={750}>
       <Window.Content scrollable>
         <PageComponent />
       </Window.Content>
@@ -64,17 +64,17 @@ const PlayerList = (props, context) => {
       {whitelisted_players.map((record, i) => {
         return (
           <Flex key={i} className="candystripe" p=".75rem" align="center">
-            <Flex.Item mr="1rem">
+            <Flex.Item mr="5%">
               <Button
                 icon="pen"
                 tooltip="Edit Whitelists"
                 onClick={() => act('select_player', { player: record.ckey })}
               />
             </Flex.Item>
-            <Flex.Item bold width="20rem" shrink="0" mr="1rem">
+            <Flex.Item bold width="20%" shrink="0" mr="1rem">
               {record.ckey}
             </Flex.Item>
-            <Flex.Item width="40rem" ml="1rem" shrink="0" textAlign="center">
+            <Flex.Item width="75%" ml="1rem" shrink="0">
               {record.status}
             </Flex.Item>
           </Flex>

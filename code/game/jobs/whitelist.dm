@@ -147,7 +147,7 @@ GLOBAL_LIST_INIT(misc_flags, list(
 	. = ..()
 	if(.)
 		return
-	var/mob/user = usr
+	var/mob/user = ui.user
 	if(used_by && (used_by != user.ckey))
 		to_chat(user, SPAN_ALERTWARNING("You are not the current user. [used_by] is editing this player."))
 		return

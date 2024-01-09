@@ -259,7 +259,24 @@
 		mission_error = "Target is off bounds or obstructed."
 		return
 	change_current_loc(target_turf)
-	playsound(target_turf, soundeffect, 70, TRUE, 50)
+	playsound(shootloc, soundeffect, vol = 70, vary = TRUE, 50, falloff = 8)
+
+	var/relative_dir
+	for(var/mob/M in range(15, target_turf))
+		if(get_turf(M) == target_turf)
+			relative_dir = 0
+		else
+			relative_dir = Get_Compass_Dir(M, target_turf)
+
+		var/ds_identifier = "LARGE BIRD"
+		if (M.mob_flags & KNOWS_TECHNOLOGY)
+			ds_identifier = "DROPSHIP"
+
+		M.show_message( \
+			SPAN_HIGHDANGER("A [ds_identifier] FLIES [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
+			SPAN_HIGHDANGER("YOU HEAR SOMETHING GO [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
+		)
+
 	sleep(flyto_period)
 	stat = FIRE_MISSION_STATE_FIRING
 	mission.execute_firemission(linked_console, target_turf, dir, fire_length, step_delay, src)

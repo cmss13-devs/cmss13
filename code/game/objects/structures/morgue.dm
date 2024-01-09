@@ -158,10 +158,11 @@
 	var/bloody = FALSE
 
 /obj/structure/morgue_tray/Initialize(mapload, obj/structure/morgue/morgue_source)
+	. = ..()
+
 	icon_tray = initial(icon_state)
 	if(morgue_source)
 		linked_morgue = morgue_source
-	..()
 
 /obj/structure/morgue_tray/Destroy()
 	. = ..()

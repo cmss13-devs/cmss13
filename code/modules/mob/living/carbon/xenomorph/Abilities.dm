@@ -224,6 +224,9 @@
 
 	return ..()
 
+/datum/action/xeno_action/onclick/psychic_whisper/can_use_action()
+	return TRUE
+
 /datum/action/xeno_action/onclick/psychic_radiance
 	name = "Psychic Radiance"
 	action_icon_state = "psychic_radiance"
@@ -261,6 +264,9 @@
 				rendered_message = SPAN_XENOLEADER("PsychicRadiance: [xeno_player.real_name][xeno_track] to [targetstring], <span class='normal'>'[whisper]'</span>")
 				ghost.show_message(rendered_message, SHOW_MESSAGE_AUDIBLE)
 	return ..()
+
+/datum/action/xeno_action/onclick/psychic_radiance/can_use_action()
+	return TRUE
 
 /datum/action/xeno_action/activable/queen_give_plasma
 	name = "Give Plasma (400)"

@@ -114,10 +114,6 @@
 	var/crit_grace_time = 1 SECONDS
 	var/next_grace_time = 0
 
-	//Amount of construction resources stored internally
-	var/crystal_stored = 0
-	var/crystal_max = 0
-
 	var/evasion = 0   // RNG "Armor"
 
 	// Armor
@@ -252,7 +248,6 @@
 	var/pounce_distance = 0
 
 	// Life reduction variables.
-	var/life_daze_reduction = -1.5
 	var/life_slow_reduction = -1.5
 
 	//////////////////////////////////////////////////////////////////
@@ -436,6 +431,9 @@
 	if(mob_size < MOB_SIZE_BIG)
 		mob_flags |= SQUEEZE_UNDER_VEHICLES
 
+	GLOB.living_xeno_list += src
+	GLOB.xeno_mob_list += src
+
 	// More setup stuff for names, abilities etc
 	update_icon_source()
 	generate_name()
@@ -457,9 +455,6 @@
 	//Begin SStracking
 	SStracking.start_tracking("hive_[src.hivenumber]", src)
 
-	GLOB.living_xeno_list += src
-	GLOB.xeno_mob_list += src
-
 	//WO GAMEMODE
 	if(SSticker?.mode?.hardcore)
 		hardcore = 1 //Prevents healing and queen evolution
@@ -480,7 +475,7 @@
 		lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 
 	// Only handle free slots if the xeno is not in tdome
-	if(hive && !is_admin_level(z))
+	if(hive && !should_block_game_interaction(src))
 		var/selected_caste = GLOB.xeno_datum_list[caste_type]?.type
 		hive.used_slots[selected_caste]++
 
@@ -735,8 +730,6 @@
 	if(!isliving(AM))
 		return FALSE
 	var/mob/living/L = AM
-	if(issynth(L) && L.health < 0) // no pulling critted or dead synths
-		return FALSE
 	if(L.buckled)
 		return FALSE //to stop xeno from pulling marines on roller beds.
 	if(!L.is_xeno_grabbable())
@@ -847,7 +840,6 @@
 /mob/living/carbon/xenomorph/proc/recalculate_stats()
 	recalculate_health()
 	recalculate_plasma()
-	recalculate_stockpile()
 	recalculate_speed()
 	recalculate_armor()
 	recalculate_damage()
@@ -886,11 +878,6 @@
 	plasma_stored = round(plasma_max * plasma_ratio + 0.5) //Restore our plasma ratio, so if we're full, we continue to be full, etc. Rounding up (hence the +0.5)
 	if(plasma_stored > plasma_max)
 		plasma_stored = plasma_max
-
-/mob/living/carbon/xenomorph/proc/recalculate_stockpile()
-	crystal_max = caste.crystal_max
-	if(crystal_stored > crystal_max)
-		crystal_stored = crystal_max
 
 /mob/living/carbon/xenomorph/proc/recalculate_speed()
 	recalculate_move_delay = TRUE
@@ -1011,22 +998,21 @@
 		SPAN_NOTICE("We extinguish ourselves."), null, 5)
 
 /mob/living/carbon/xenomorph/resist_restraints()
+	if(!legcuffed)
+		return
 	var/breakouttime = legcuffed.breakouttime
 
-	next_move = world.time + 100
-	last_special = world.time + 10
+	next_move = world.time + 10 SECONDS
+	last_special = world.time + 1 SECONDS
 
 	var/displaytime = max(1, round(breakouttime / 600)) //Minutes
-	to_chat(src, SPAN_WARNING("We attempt to remove [legcuffed]. (This will take around [displaytime] minute(s) and we must stand still)"))
-	for(var/mob/O in viewers(src))
-		O.show_message(SPAN_DANGER("<B>[usr] attempts to remove [legcuffed]!</B>"), SHOW_MESSAGE_VISIBLE)
-	if(!do_after(src, breakouttime, INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
+	visible_message(SPAN_DANGER("<b>[src] attempts to remove [legcuffed]!</b>"),
+		SPAN_WARNING("We attempt to remove [legcuffed]. (This will take around [displaytime] minute\s and we must stand still)"))
+	if(!do_after(src, breakouttime, INTERRUPT_NO_NEEDHAND ^ INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
 		return
 	if(!legcuffed || buckled)
-		return // time leniency for lag which also might make this whole thing pointless but the server
-	for(var/mob/O in viewers(src))//  lags so hard that 40s isn't lenient enough - Quarxink
-		O.show_message(SPAN_DANGER("<B>[src] manages to remove [legcuffed]!</B>"), SHOW_MESSAGE_VISIBLE)
-	to_chat(src, SPAN_NOTICE(" We successfully remove [legcuffed]."))
+		return
+	visible_message(SPAN_DANGER("<b>[src] manages to remove [legcuffed]!</b>"), SPAN_NOTICE("We successfully remove [legcuffed]."))
 	drop_inv_item_on_ground(legcuffed)
 
 /mob/living/carbon/xenomorph/IgniteMob()
@@ -1053,7 +1039,7 @@
 
 /mob/living/carbon/xenomorph/ghostize(can_reenter_corpse = TRUE, aghosted = FALSE)
 	. = ..()
-	if(. && !can_reenter_corpse && stat != DEAD && !QDELETED(src) && !is_admin_level(z))
+	if(. && !can_reenter_corpse && stat != DEAD && !QDELETED(src) && !should_block_game_interaction(src))
 		handle_ghost_message()
 
 /mob/living/carbon/xenomorph/proc/handle_ghost_message()

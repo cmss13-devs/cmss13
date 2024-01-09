@@ -90,6 +90,7 @@
 	RegisterSignal(parent_mob, COMSIG_MOVABLE_MOVED, PROC_REF(on_move))
 	RegisterSignal(parent_mob, list(COMSIG_LIVING_REJUVENATED, COMSIG_HUMAN_REVIVED), PROC_REF(on_rejuv))
 	RegisterSignal(parent_mob, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(on_update))
+	RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(on_forsaken))
 	if(parent_turf)
 		RegisterSignal(parent_turf, COMSIG_WEEDNODE_GROWTH, PROC_REF(on_update))
 
@@ -109,6 +110,7 @@
 		UnregisterSignal(parent_buckle, COSMIG_OBJ_AFTER_BUCKLE)
 	if(parent_nest)
 		UnregisterSignal(parent_nest, COMSIG_PARENT_QDELETING)
+	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 
 /// SIGNAL_HANDLER for COMSIG_MOVABLE_MOVED
 /datum/component/weed_food/proc/on_move()
@@ -177,6 +179,20 @@
 		parent_mob.plane = FLOOR_PLANE
 	UnregisterSignal(parent_nest, COMSIG_PARENT_QDELETING)
 	parent_nest = null
+
+/// SIGNAL_HANDLER for COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING
+/datum/component/weed_food/proc/on_forsaken()
+	SIGNAL_HANDLER
+
+	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
+
+	if(!merged)
+		return
+	if(!is_ground_level(parent_mob.z))
+		return
+
+	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_FORSAKEN]
+	weed_appearance.color = hive.color
 
 /**
  * Try to start the process to turn into weeds

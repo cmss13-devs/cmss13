@@ -77,6 +77,12 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 
 
 // ------ ARES Logging Procs ------ //
+/proc/ares_is_active()
+	for(var/mob/living/silicon/decoy/ship_ai/ai in GLOB.ai_mob_list)
+		if(ai.stat == DEAD)
+			return FALSE //ARES dead, most other systems also die with it
+	return TRUE
+
 /proc/ares_apollo_talk(broadcast_message)
 	var/datum/language/apollo/apollo = GLOB.all_languages[LANGUAGE_APOLLO]
 	for(var/mob/living/silicon/decoy/ship_ai/ai in GLOB.ai_mob_list)
@@ -89,33 +95,38 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 
 /proc/ares_can_interface()
 	var/obj/structure/machinery/ares/processor/interface/processor = GLOB.ares_link.processor_interface
-	if(!istype(GLOB.ares_link))
+	if(!istype(GLOB.ares_link) || !ares_is_active())
 		return FALSE
 	if(processor && !processor.inoperable())
 		return TRUE
 	return FALSE //interface processor not found or is broken
 
 /proc/ares_can_log()
-	if(!istype(GLOB.ares_link) || !istype(GLOB.ares_datacore))
+	if(!istype(GLOB.ares_link) || !istype(GLOB.ares_datacore) || !ares_is_active())
 		return FALSE
 	var/obj/structure/machinery/ares/cpu/central_processor = GLOB.ares_link.central_processor
 	if(central_processor && !central_processor.inoperable())
 		return TRUE
 	return FALSE //CPU not found or is broken
 
-/proc/log_ares_apollo(speaker, message)
-	if(!ares_can_log())
+/proc/ares_can_apollo()
+	if(!istype(GLOB.ares_link) || !istype(GLOB.ares_datacore) || !ares_is_active())
 		return FALSE
 	var/datum/ares_link/link = GLOB.ares_link
 	if(!link.processor_apollo || link.processor_apollo.inoperable())
+		return FALSE
+	return TRUE
+
+/proc/log_ares_apollo(speaker, message)
+	if(!ares_can_log() || !ares_can_apollo())
 		return FALSE
 	if(!speaker)
 		speaker = "Unknown"
 	var/datum/ares_datacore/datacore = GLOB.ares_datacore
 	datacore.apollo_log.Add("[worldtime2text()]: [speaker], '[message]'")
 
-/proc/log_ares_bioscan(title, input)
-	if(!ares_can_log())
+/proc/log_ares_bioscan(title, input, forced = FALSE)
+	if(!ares_can_log() && !forced)
 		return FALSE
 	var/datum/ares_datacore/datacore = GLOB.ares_datacore
 	datacore.records_bioscan.Add(new /datum/ares_record/bioscan(title, input))
@@ -224,6 +235,13 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	var/datum/ares_record/talk_log/conversation = locate(ref)
 	conversation.conversation += "[MAIN_AI_SYSTEM] at [worldtime2text()], '[text]'"
 // ------ End ARES Interface Procs ------ //
+
+/proc/ares_final_words()
+	//APOLLO
+	ares_apollo_talk("APOLLO sub-system shutting down. STOP CODE: 0x000000f4|CRITICAL_PROCESS_DIED")
+
+	//GENERAL CREW
+	shipwide_ai_announcement("A Problem has been detected and the [MAIN_AI_SYSTEM] system has been shutdown. \nTechnical Information: \n\n*** STOP CODE: 0x000000f4|CRITICAL_PROCESS_DIED\n\nPossible caused by: Rapid Unscheduled Disassembly\nContact an AI Service Technician for further assistance.", title = ":(", ares_logging = null)
 
 /obj/structure/machinery/computer/working_joe/get_ares_access(obj/item/card/id/card)
 	if(ACCESS_ARES_DEBUG in card.access)

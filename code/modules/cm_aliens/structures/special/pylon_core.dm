@@ -159,7 +159,7 @@
 				xeno_announcement(SPAN_XENOANNOUNCE("We have lost our control of the tall's communication relay at [get_area(src)]."), hivenumber, XENO_GENERAL_ANNOUNCE)
 			else
 				xeno_announcement(SPAN_XENOANNOUNCE("Another hive has lost control of the tall's communication relay at [get_area(src)]."), hivenumber, XENO_GENERAL_ANNOUNCE)
-
+		linked_hive.hive_ui.update_pylon_status()
 	return ..()
 
 /// Checks if all comms towers are connected and then starts end game content on all pylons if they are
@@ -172,15 +172,13 @@
 			continue
 
 		if(checked_hive == linked_hive)
-			xeno_announcement(SPAN_XENOANNOUNCE("We have harnessed the tall's communication relay at [get_area(src)].\n\nWe will now grow more of our number from this pylon. Hold it!"), hivenumber, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("We have harnessed the tall's communication relay at [get_area(src)].\n\nWe will now grow our numbers from this pylon. Hold it!"), hivenumber, XENO_GENERAL_ANNOUNCE)
 		else
 			xeno_announcement(SPAN_XENOANNOUNCE("Another hive has harnessed the tall's communication relay at [get_area(src)].[linked_hive.faction_is_ally(checked_hive.name) ? "" : " Stop them!"]"), hivenumber, XENO_GENERAL_ANNOUNCE)
 
 	activated = TRUE
+	linked_hive.check_if_hit_larva_from_pylon_limit()
 	addtimer(CALLBACK(src, PROC_REF(give_larva)), XENO_PYLON_ACTIVATION_COOLDOWN, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_LOOP|TIMER_DELETE_ME)
-
-#define ENDGAME_LARVA_CAP_MULTIPLIER 0.4
-#define LARVA_ADDITION_MULTIPLIER 0.10
 
 /// Looped proc via timer to give larva after time
 /obj/effect/alien/resin/special/pylon/endgame/proc/give_larva()
@@ -190,23 +188,12 @@
 	if(!linked_hive.hive_location || !linked_hive.living_xeno_queen)
 		return
 
-	var/list/hive_xenos = linked_hive.totalXenos.Copy()
-
-	for(var/mob/living/carbon/xenomorph/xeno in hive_xenos)
-		if(!xeno.counts_for_slots)
-			hive_xenos -= xeno
-
-	var/real_total_xeno_count = length(hive_xenos) + linked_hive.stored_larva
-
-	if(real_total_xeno_count > (length(GLOB.alive_human_list) * ENDGAME_LARVA_CAP_MULTIPLIER))
+	if(linked_hive.check_if_hit_larva_from_pylon_limit())
 		return
 
-	linked_hive.partial_larva += real_total_xeno_count * LARVA_ADDITION_MULTIPLIER
+	linked_hive.partial_larva += (linked_hive.get_real_total_xeno_count() + linked_hive.stored_larva) * LARVA_ADDITION_MULTIPLIER
 	linked_hive.convert_partial_larva_to_full_larva()
 	linked_hive.hive_ui.update_burrowed_larva()
-
-#undef ENDGAME_LARVA_CAP_MULTIPLIER
-#undef LARVA_ADDITION_MULTIPLIER
 
 //Hive Core - Generates strong weeds, supports other buildings
 /obj/effect/alien/resin/special/pylon/core

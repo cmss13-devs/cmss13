@@ -77,12 +77,6 @@
 	if(isobj(affected_atom))
 		object = affected_atom
 
-		if(istype(object, /obj/structure/window_frame))
-			var/obj/structure/window_frame/window_frame = object
-			if(window_frame.reinforced && acid_type != /obj/effect/xenomorph/acid/strong)
-				to_chat(src, SPAN_WARNING("This [object.name] is too tough to be melted by our weak acid."))
-				return
-
 		wait_time = object.get_applying_acid_time()
 		if(wait_time == -1)
 			to_chat(src, SPAN_WARNING("We cannot dissolve [object]."))

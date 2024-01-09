@@ -170,24 +170,15 @@
 			return
 
 	//breaking out of handcuffs & putting out fires
-	if(!is_mob_incapacitated(TRUE))
+	if(mobility_flags & MOBILITY_MOVE)
 		if(on_fire)
 			resist_fire()
-
-		var/on_acid = FALSE
-		for(var/datum/effects/acid/A in effects_list)
-			on_acid = TRUE
-			break
-		if(on_acid)
+		if(locate(/datum/effects/acid) in effects_list)
 			resist_acid()
+		if(last_special <= world.time)
+			resist_restraints()
 
 	SEND_SIGNAL(src, COMSIG_MOB_RESISTED)
-
-	if(!iscarbon(src))
-		return
-	var/mob/living/carbon/C = src
-	if((C.handcuffed || C.legcuffed) && (C.mobility_flags & MOBILITY_MOVE) && (C.last_special <= world.time))
-		resist_restraints()
 
 /mob/living/proc/resist_buckle()
 	buckled.manual_unbuckle(src)

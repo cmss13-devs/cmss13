@@ -99,38 +99,29 @@
 		var/atom/movable/big_subject = subject
 		. += (big_subject.bound_height  - world.icon_size) / 2
 
-/proc/Get_Angle(atom/start,atom/end, tile_bound = FALSE)//For beams.
-	if(!start || !end) return 0
-	if(!start.z || !end.z) return 0 //Atoms are not on turfs.
-	var/dx
-	var/dy
-	if(tile_bound)
-		dy=end.y-start.y
-		dx=end.x-start.x
-	else
-		dy = get_pixel_position_y(end) - get_pixel_position_y(start)
-		dx = get_pixel_position_x(end) - get_pixel_position_x(start)
-	if(!dy)
-		return (dx>=0)?90:270
-	.=arctan(dx/dy)
-	if(dy<0)
-		.+=180
-	else if(dx<0)
-		.+=360
+/// Calculate the angle between two atoms. Uses north-clockwise convention: NORTH = 0, EAST = 90, etc.
+/proc/Get_Angle(atom/start, atom/end)//For beams.
+	if(!start || !end)
+		return 0
+	if(!start.z)
+		start = get_turf(start)
+		if(!start)
+			return 0 //Atoms are not on turfs.
+	if(!end.z)
+		end = get_turf(end)
+		if(!end)
+			return 0 //Atoms are not on turfs.
+	var/dy = get_pixel_position_y(end) - get_pixel_position_y(start)
+	var/dx = get_pixel_position_x(end) - get_pixel_position_x(start)
+	return delta_to_angle(dx, dy)
 
-/proc/Get_Compass_Dir(atom/start,atom/end)//get_dir() only considers an object to be north/south/east/west if there is zero deviation. This uses rounding instead.
-	if(!start || !end) return 0
-	if(!start.z || !end.z) return 0 //Atoms are not on turfs.
-	var/dy=end.y-start.y
-	var/dx=end.x-start.x
-	if(!dy)
-		return (dx>=0)?4:8
-	var/angle=arctan(dx/dy)
-	if(dy<0)
-		angle+=180
-	else if(dx<0)
-		angle+=360
+/// Calculate the angle produced by a pair of x and y deltas. Uses north-clockwise convention: NORTH = 0, EAST = 90, etc.
+/proc/delta_to_angle(dx, dy)
+	. = arctan(dy, dx) //y-then-x results in north-clockwise convention: https://en.wikipedia.org/wiki/Atan2#East-counterclockwise,_north-clockwise_and_south-clockwise_conventions,_etc.
+	if(. < 0)
+		. += 360
 
+/proc/angle_to_dir(angle)
 	switch(angle) //diagonal directions get priority over straight directions in edge cases
 		if (22.5 to 67.5)
 			return NORTHEAST
@@ -151,6 +142,8 @@
 		else
 			return NORTH
 
+/proc/Get_Compass_Dir(atom/start, atom/end)//get_dir() only considers an object to be north/south/east/west if there is zero deviation. This uses rounding instead.
+	return angle_to_dir(Get_Angle(get_turf(start), get_turf(end)))
 
 // Among other things, used by flamethrower and boiler spray to calculate if flame/spray can pass through.
 // Returns an atom for specific effects (primarily flames and acid spray) that damage things upon contact
@@ -940,86 +933,103 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 		if(!GLOB.busy_indicator_clock)
 			GLOB.busy_indicator_clock = image('icons/mob/mob.dmi', null, "busy_generic", "pixel_y" = 22)
 			GLOB.busy_indicator_clock.layer = FLY_LAYER
+			GLOB.busy_indicator_clock.plane = ABOVE_HUD_PLANE
 		return GLOB.busy_indicator_clock
 	else if(busy_type == BUSY_ICON_MEDICAL)
 		if(!GLOB.busy_indicator_medical)
 			GLOB.busy_indicator_medical = image('icons/mob/mob.dmi', null, "busy_medical", "pixel_y" = 0) //This shows directly on top of the mob, no offset!
 			GLOB.busy_indicator_medical.layer = FLY_LAYER
+			GLOB.busy_indicator_medical.plane = ABOVE_HUD_PLANE
 		return GLOB.busy_indicator_medical
 	else if(busy_type == BUSY_ICON_BUILD)
 		if(!GLOB.busy_indicator_build)
 			GLOB.busy_indicator_build = image('icons/mob/mob.dmi', null, "busy_build", "pixel_y" = 22)
 			GLOB.busy_indicator_build.layer = FLY_LAYER
+			GLOB.busy_indicator_build.plane = ABOVE_HUD_PLANE
 		return GLOB.busy_indicator_build
 	else if(busy_type == BUSY_ICON_FRIENDLY)
 		if(!GLOB.busy_indicator_friendly)
 			GLOB.busy_indicator_friendly = image('icons/mob/mob.dmi', null, "busy_friendly", "pixel_y" = 22)
 			GLOB.busy_indicator_friendly.layer = FLY_LAYER
+			GLOB.busy_indicator_friendly.plane = ABOVE_HUD_PLANE
 		return GLOB.busy_indicator_friendly
 	else if(busy_type == BUSY_ICON_HOSTILE)
 		if(!GLOB.busy_indicator_hostile)
 			GLOB.busy_indicator_hostile = image('icons/mob/mob.dmi', null, "busy_hostile", "pixel_y" = 22)
 			GLOB.busy_indicator_hostile.layer = FLY_LAYER
+			GLOB.busy_indicator_hostile.plane = ABOVE_HUD_PLANE
 		return GLOB.busy_indicator_hostile
 	else if(busy_type == EMOTE_ICON_HIGHFIVE)
 		if(!GLOB.emote_indicator_highfive)
 			GLOB.emote_indicator_highfive = image('icons/mob/mob.dmi', null, "emote_highfive", "pixel_y" = 22)
 			GLOB.emote_indicator_highfive.layer = FLY_LAYER
+			GLOB.emote_indicator_highfive.plane = ABOVE_HUD_PLANE
 		return GLOB.emote_indicator_highfive
 	else if(busy_type == EMOTE_ICON_FISTBUMP)
 		if(!GLOB.emote_indicator_fistbump)
 			GLOB.emote_indicator_fistbump = image('icons/mob/mob.dmi', null, "emote_fistbump", "pixel_y" = 22)
 			GLOB.emote_indicator_fistbump.layer = FLY_LAYER
+			GLOB.emote_indicator_fistbump.plane = ABOVE_HUD_PLANE
 		return GLOB.emote_indicator_fistbump
 	else if(busy_type == EMOTE_ICON_ROCK_PAPER_SCISSORS)
 		if(!GLOB.emote_indicator_rock_paper_scissors)
 			GLOB.emote_indicator_rock_paper_scissors = image('icons/mob/mob.dmi', null, "emote_rps", "pixel_y" = 22)
 			GLOB.emote_indicator_rock_paper_scissors.layer = FLY_LAYER
+			GLOB.emote_indicator_rock_paper_scissors.plane = ABOVE_HUD_PLANE
 		return GLOB.emote_indicator_rock_paper_scissors
 	else if(busy_type == EMOTE_ICON_ROCK)
 		if(!GLOB.emote_indicator_rock)
 			GLOB.emote_indicator_rock = image('icons/mob/mob.dmi', null, "emote_rock", "pixel_y" = 22)
 			GLOB.emote_indicator_rock.layer = FLY_LAYER
+			GLOB.emote_indicator_rock.plane = ABOVE_HUD_PLANE
 		return GLOB.emote_indicator_rock
 	else if(busy_type == EMOTE_ICON_PAPER)
 		if(!GLOB.emote_indicator_paper)
 			GLOB.emote_indicator_paper = image('icons/mob/mob.dmi', null, "emote_paper", "pixel_y" = 22)
 			GLOB.emote_indicator_paper.layer = FLY_LAYER
+			GLOB.emote_indicator_paper.plane = ABOVE_HUD_PLANE
 		return GLOB.emote_indicator_paper
 	else if(busy_type == EMOTE_ICON_SCISSORS)
 		if(!GLOB.emote_indicator_scissors)
 			GLOB.emote_indicator_scissors = image('icons/mob/mob.dmi', null, "emote_scissors", "pixel_y" = 22)
 			GLOB.emote_indicator_scissors.layer = FLY_LAYER
+			GLOB.emote_indicator_scissors.plane = ABOVE_HUD_PLANE
 		return GLOB.emote_indicator_scissors
 	else if(busy_type == EMOTE_ICON_HEADBUTT)
 		if(!GLOB.emote_indicator_headbutt)
 			GLOB.emote_indicator_headbutt = image('icons/mob/mob.dmi', null, "emote_headbutt", "pixel_y" = 22)
 			GLOB.emote_indicator_headbutt.layer = FLY_LAYER
+			GLOB.emote_indicator_headbutt.plane = ABOVE_HUD_PLANE
 		return GLOB.emote_indicator_headbutt
 	else if(busy_type == EMOTE_ICON_TAILSWIPE)
 		if(!GLOB.emote_indicator_tailswipe)
 			GLOB.emote_indicator_tailswipe = image('icons/mob/mob.dmi', null, "emote_tailswipe", "pixel_y" = 22)
 			GLOB.emote_indicator_tailswipe.layer = FLY_LAYER
+			GLOB.emote_indicator_tailswipe.plane = ABOVE_HUD_PLANE
 		return GLOB.emote_indicator_tailswipe
 	else if(busy_type == ACTION_RED_POWER_UP)
 		if(!GLOB.action_red_power_up)
 			GLOB.action_red_power_up = image('icons/effects/effects.dmi', null, "anger", "pixel_x" = 16)
 			GLOB.action_red_power_up.layer = FLY_LAYER
+			GLOB.action_red_power_up.plane = ABOVE_HUD_PLANE
 		return GLOB.action_red_power_up
 	else if(busy_type == ACTION_GREEN_POWER_UP)
 		if(!GLOB.action_green_power_up)
 			GLOB.action_green_power_up = image('icons/effects/effects.dmi', null, "vitality", "pixel_x" = 16)
 			GLOB.action_green_power_up.layer = FLY_LAYER
+			GLOB.action_green_power_up.plane = ABOVE_HUD_PLANE
 		return GLOB.action_green_power_up
 	else if(busy_type == ACTION_BLUE_POWER_UP)
 		if(!GLOB.action_blue_power_up)
 			GLOB.action_blue_power_up = image('icons/effects/effects.dmi', null, "shock", "pixel_x" = 16)
 			GLOB.action_blue_power_up.layer = FLY_LAYER
+			GLOB.action_blue_power_up.plane = ABOVE_HUD_PLANE
 		return GLOB.action_blue_power_up
 	else if(busy_type == ACTION_PURPLE_POWER_UP)
 		if(!GLOB.action_purple_power_up)
 			GLOB.action_purple_power_up = image('icons/effects/effects.dmi', null, "pain", "pixel_x" = 16)
 			GLOB.action_purple_power_up.layer = FLY_LAYER
+			GLOB.action_purple_power_up.plane = ABOVE_HUD_PLANE
 		return GLOB.action_purple_power_up
 
 
@@ -1132,7 +1142,7 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_DAZED && busy_user.dazed)
+		if(user_flags & INTERRUPT_DAZED && HAS_TRAIT(busy_user, TRAIT_DAZED))
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_EMOTE && !busy_user.flags_emote)
@@ -2095,3 +2105,15 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 
 		if(NORTHWEST)
 			return list(NORTHWEST, NORTH, WEST)
+
+/// Returns TRUE if the target is somewhere that the game should not interact with if possible
+/// In this case, admin Zs and tutorial areas
+/proc/should_block_game_interaction(atom/target)
+	if(is_admin_level(target.z))
+		return TRUE
+
+	var/area/target_area = get_area(target)
+	if(target_area?.block_game_interaction)
+		return TRUE
+
+	return FALSE

@@ -859,6 +859,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	if(!player_data)
 		load_player_data()
+	if(!player_data)
+		return FALSE
 
 	return player_data.check_whitelist_status(flag_to_check)
 

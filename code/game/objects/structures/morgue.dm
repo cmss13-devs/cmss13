@@ -19,7 +19,9 @@
 
 /obj/structure/morgue/Initialize()
 	. = ..()
+
 	connected = new tray_path(src)
+	update_icon()
 
 /obj/structure/morgue/Destroy()
 	for(var/atom/movable/object in contents)
@@ -155,7 +157,7 @@
 	throwpass = 1
 	var/bloody = FALSE
 
-/obj/structure/morgue_tray/New(loc, obj/structure/morgue/morgue_source)
+/obj/structure/morgue_tray/Initialize(mapload, obj/structure/morgue/morgue_source)
 	icon_tray = initial(icon_state)
 	if(morgue_source)
 		linked_morgue = morgue_source

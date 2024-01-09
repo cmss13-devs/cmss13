@@ -214,7 +214,7 @@
 		to_chat(xeno_player, SPAN_XENONOTICE("You said: \"[whisper]\" to [target_mob]"))
 
 		for (var/mob/dead/observer/ghost as anything in GLOB.observer_list)
-			if(!QDELETED(ghost) && !istype(ghost,/mob/new_player))
+			if(!QDELETED(ghost) && ghost.client && !istype(ghost,/mob/new_player))
 				if(ghost.client.prefs && ghost.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
 					var/rendered_message
 					var/xeno_track = "(<a href='byond://?src=\ref[ghost];track=\ref[xeno_player]'>F</a>)"
@@ -260,7 +260,7 @@
 	to_chat(xeno_player, SPAN_XENONOTICE("You said: \"[whisper]\" to [targetstring]"))
 	log_say("PsychicRadiance: [key_name(xeno_player)]->[targetstring] : [whisper]")
 	for (var/mob/dead/observer/ghost as anything in GLOB.observer_list)
-		if(!QDELETED(ghost) && !istype(ghost,/mob/new_player))
+		if(!QDELETED(ghost) && ghost.client && !istype(ghost,/mob/new_player))
 			if(ghost.client.prefs && ghost.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
 				var/rendered_message
 				var/xeno_track = "(<a href='byond://?src=\ref[ghost];track=\ref[xeno_player]'>F</a>)"

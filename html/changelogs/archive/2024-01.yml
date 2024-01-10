@@ -140,3 +140,8 @@
 2024-01-09:
   private-tristan:
   - bugfix: Tunnels are now converted to forsaken on evac.
+2024-01-10:
+  SabreML:
+  - bugfix: Fixed tunnels not showing on the minimap.
+  Tsurupeta:
+  - bugfix: Regular expressions in chat highlights work again.

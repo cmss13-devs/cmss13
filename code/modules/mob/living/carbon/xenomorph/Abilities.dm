@@ -213,14 +213,15 @@
 			to_chat(target_mob, SPAN_XENOQUEEN("You hear the voice of [xeno_player] resonate in your head. \"[whisper]\""))
 		to_chat(xeno_player, SPAN_XENONOTICE("You said: \"[whisper]\" to [target_mob]"))
 
-		for (var/mob/dead/observer/ghost as anything in GLOB.observer_list)
-			if(!QDELETED(ghost) && ghost.client && !istype(ghost,/mob/new_player))
-				if(ghost.client.prefs && ghost.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
-					var/rendered_message
-					var/xeno_track = "(<a href='byond://?src=\ref[ghost];track=\ref[xeno_player]'>F</a>)"
-					var/target_track = "(<a href='byond://?src=\ref[ghost];track=\ref[target_mob]'>F</a>)"
-					rendered_message = SPAN_XENOLEADER("PsychicWhisper: [xeno_player.real_name][xeno_track] to [target_mob.real_name][target_track], <span class='normal'>'[whisper]'</span>")
-					ghost.show_message(rendered_message, SHOW_MESSAGE_AUDIBLE)
+		for(var/mob/dead/observer/ghost as anything in GLOB.observer_list)
+			if(!ghost.client || isnewplayer(ghost))
+				continue
+			if(ghost.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
+				var/rendered_message
+				var/xeno_track = "(<a href='byond://?src=\ref[ghost];track=\ref[xeno_player]'>F</a>)"
+				var/target_track = "(<a href='byond://?src=\ref[ghost];track=\ref[target_mob]'>F</a>)"
+				rendered_message = SPAN_XENOLEADER("PsychicWhisper: [xeno_player.real_name][xeno_track] to [target_mob.real_name][target_track], <span class='normal'>'[whisper]'</span>")
+				ghost.show_message(rendered_message, SHOW_MESSAGE_AUDIBLE)
 
 	return ..()
 
@@ -260,12 +261,13 @@
 	to_chat(xeno_player, SPAN_XENONOTICE("You said: \"[whisper]\" to [targetstring]"))
 	log_say("PsychicRadiance: [key_name(xeno_player)]->[targetstring] : [whisper]")
 	for (var/mob/dead/observer/ghost as anything in GLOB.observer_list)
-		if(!QDELETED(ghost) && ghost.client && !istype(ghost,/mob/new_player))
-			if(ghost.client.prefs && ghost.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
-				var/rendered_message
-				var/xeno_track = "(<a href='byond://?src=\ref[ghost];track=\ref[xeno_player]'>F</a>)"
-				rendered_message = SPAN_XENOLEADER("PsychicRadiance: [xeno_player.real_name][xeno_track] to [targetstring], <span class='normal'>'[whisper]'</span>")
-				ghost.show_message(rendered_message, SHOW_MESSAGE_AUDIBLE)
+		if(!ghost.client || isnewplayer(ghost))
+			continue
+		if(ghost.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
+			var/rendered_message
+			var/xeno_track = "(<a href='byond://?src=\ref[ghost];track=\ref[xeno_player]'>F</a>)"
+			rendered_message = SPAN_XENOLEADER("PsychicRadiance: [xeno_player.real_name][xeno_track] to [targetstring], <span class='normal'>'[whisper]'</span>")
+			ghost.show_message(rendered_message, SHOW_MESSAGE_AUDIBLE)
 	return ..()
 
 /datum/action/xeno_action/onclick/psychic_radiance/can_use_action()

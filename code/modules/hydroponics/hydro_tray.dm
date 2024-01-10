@@ -499,6 +499,7 @@
 	return
 
 /obj/structure/machinery/portable_atmospherics/hydroponics/attackby(obj/item/O as obj, mob/user as mob)
+	user.next_move = world.time
 
 	if (O.is_open_container())
 		return 0
@@ -675,6 +676,7 @@
 	return info
 
 /obj/structure/machinery/portable_atmospherics/hydroponics/attack_hand(mob/user as mob)
+	user.next_move = world.time
 
 	if(istype(user, /mob/living/silicon))
 		return

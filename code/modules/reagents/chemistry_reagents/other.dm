@@ -720,8 +720,8 @@
 	id = "napalmgel"
 	description = "Unlike its liquid contemporaries, this gelled variant of napalm is easily extinguished, but shoots far and lingers on the ground in a viscous mess, while reacting with inorganic materials to ignite them."
 	flameshape = FLAMESHAPE_LINE
-	color = "#00ff00"
-	burncolor = "#00ff00"
+	color = COLOR_GREEN
+	burncolor = COLOR_GREEN
 	burn_sprite = "green"
 	properties = list(
 		PROPERTY_INTENSITY = BURN_LEVEL_TIER_2,
@@ -750,8 +750,8 @@
 	id = "napalmb"
 	description = "A special variant of napalm that's unable to cling well to anything, but disperses over a wide area while burning slowly. The composition reacts with inorganic materials to ignite them, causing severe damage."
 	flameshape = FLAMESHAPE_TRIANGLE
-	color = "#00ff00"
-	burncolor = "#00ff00"
+	color = COLOR_GREEN
+	burncolor = COLOR_GREEN
 	burn_sprite = "green"
 	properties = list(
 		PROPERTY_INTENSITY = BURN_LEVEL_TIER_2,

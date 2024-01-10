@@ -14,39 +14,36 @@
 
 // BLACK AND WHITE COLOR DEFINE.
 
-/// Full white. rgb(255, 255, 255)
+/// White	rgb(255, 255, 255)
 #define COLOR_WHITE "#FFFFFF"
-/// Full black. rgb(0, 0, 0)
+/// Black	rgb(0, 0, 0)
 #define COLOR_BLACK "#000000"
 
 // THE THREE PRIMARIES COLORS DEFINES.
 
-/// Full red.  rgb(255, 0, 0)
+/// Red		rgb(255, 0, 0)
 #define COLOR_RED "#FF0000"
-/// Full green. rgb(0, 255, 0)
+/// Green	rgb(0, 255, 0)
 #define COLOR_GREEN "#00FF00"
-/// Full blue.  rgb(0, 0, 255)
+/// Blue	rgb(0, 0, 255)
 #define COLOR_BLUE "#0000FF"
 
 //mix of two full primary colors
 
-/// full cyan rgb(0, 255, 255) B + G
+/// Cyan	rgb(0, 255, 255) B + G
 #define COLOR_CYAN "#00FFFF"
-/// full magenta(not pink) rgb(255, 0, 255) R+B
+/// Magenta	rgb(255, 0, 255) R+B
 #define COLOR_MAGENTA "#FF00FF"
-/// full yellow rgb(255, 255, 0) R+G
+/// Yellow	rgb(255, 255, 0) R+G
 #define COLOR_YELLOW "#FFFF00"
 
 // colors define in use bellow
 
-
-//color define with a proper name
-
-///Olive rgb(128, 128, 0)
+/// Olive	rgb(128, 128, 0)
 #define COLOR_OLIVE "#808000"
-///Silver rgb(192, 192, 192) shade of grey
+/// Silver	rgb(192, 192, 192) shade of grey
 #define COLOR_SILVER "#C0C0C0"
-///Gray rgb(128, 128, 128)
+/// Gray	rgb(128, 128, 128)
 #define COLOR_GRAY "#808080"
 
 #define COLOR_FLOORTILE_GRAY "#8D8B8B"
@@ -55,7 +52,7 @@
 
 #define COLOR_DARK_RED "#A50824"
 
-///Maroon rgb(128, 0, 0) shade of red
+/// Maroon	rgb(128, 0, 0) shade of red
 #define COLOR_MAROON "#800000"
 
 #define COLOR_VIVID_RED "#FF3232"
@@ -71,7 +68,7 @@
 #define COLOR_TEAL "#008080"
 
 #define COLOR_MODERATE_BLUE "#555CC2"
-///Purple rgb( 128, 0, 128)
+/// Purple	rgb( 128, 0, 128)
 #define COLOR_PURPLE "#800080"
 #define COLOR_STRONG_VIOLET "#6927c5"
 

@@ -37,21 +37,21 @@
 /obj/item/toy/crayon/mime
 	icon_state = "crayonmime"
 	desc = "A very sad-looking crayon."
-	crayon_color = "#FFFFFF"
-	shadeColour = "#000000"
+	crayon_color = COLOR_WHITE
+	shadeColour = COLOR_BLACK
 	colourName = "mime"
 	uses = 0
 
 /obj/item/toy/crayon/mime/attack_self(mob/living/user) //inversion
 	..()
 
-	if(crayon_color != "#FFFFFF" && shadeColour != "#000000")
-		crayon_color = "#FFFFFF"
-		shadeColour = "#000000"
+	if(crayon_color != COLOR_WHITE && shadeColour != COLOR_BLACK)
+		crayon_color = COLOR_WHITE
+		shadeColour = COLOR_BLACK
 		to_chat(user, "You will now draw in white and black with this crayon.")
 	else
-		crayon_color = "#000000"
-		shadeColour = "#FFFFFF"
+		crayon_color = COLOR_BLACK
+		shadeColour = COLOR_WHITE
 		to_chat(user, "You will now draw in black and white with this crayon.")
 
 /obj/item/toy/crayon/rainbow

@@ -239,6 +239,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	construction_name = "sticky resin"
 	cost = XENO_RESIN_STICKY_COST
 	build_time = 1 SECONDS
+	max_per_xeno = 50
 
 	build_path = /obj/effect/alien/resin/sticky
 

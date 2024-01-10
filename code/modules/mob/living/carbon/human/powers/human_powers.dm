@@ -189,13 +189,14 @@
 		to_chat(target_mob, SPAN_XENOWARNING(" You hear a strange, alien voice in your head... \italic [whisper]"))
 		to_chat(src, SPAN_XENOWARNING(" You said: \"[whisper]\" to [target_mob]"))
 		for (var/mob/dead/observer/ghost as anything in GLOB.observer_list)
-			if(!QDELETED(ghost) && !istype(ghost,/mob/new_player))
-				if(ghost.client.prefs && ghost.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
-					var/rendered_message
-					var/human_track = "(<a href='byond://?src=\ref[ghost];track=\ref[src]'>F</a>)"
-					var/target_track = "(<a href='byond://?src=\ref[ghost];track=\ref[target_mob]'>F</a>)"
-					rendered_message = SPAN_XENOLEADER("PsychicWhisper: [src.real_name][human_track] to [target_mob.real_name][target_track], <span class='normal'>'[whisper]'</span>")
-					ghost.show_message(rendered_message, SHOW_MESSAGE_AUDIBLE)
+			if(!ghost.client || isnewplayer(ghost))
+				continue
+			if(ghost.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
+				var/rendered_message
+				var/human_track = "(<a href='byond://?src=\ref[ghost];track=\ref[src]'>F</a>)"
+				var/target_track = "(<a href='byond://?src=\ref[ghost];track=\ref[target_mob]'>F</a>)"
+				rendered_message = SPAN_XENOLEADER("PsychicWhisper: [src.real_name][human_track] to [target_mob.real_name][target_track], <span class='normal'>'[whisper]'</span>")
+				ghost.show_message(rendered_message, SHOW_MESSAGE_AUDIBLE)
 	return
 
 /mob/living/verb/lay_down()

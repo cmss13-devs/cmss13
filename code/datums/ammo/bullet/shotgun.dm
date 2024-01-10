@@ -325,7 +325,7 @@
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
 	damage = 55
-	max_range = 6
+	max_range = 4
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
 	penetration = ARMOR_PENETRATION_TIER_1
 

@@ -12,7 +12,7 @@ GLOBAL_LIST_INIT(sqrtTable, list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4,
 #define CLAMP01(x) (clamp(x, 0, 1))
 
 // cotangent
-#define Cot(x) (1 / Tan(x))
+#define Cot(x) (1 / tan(x))
 
 // cosecant
 #define Csc(x) (1 / sin(x))
@@ -45,9 +45,6 @@ GLOBAL_LIST_INIT(sqrtTable, list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4,
 
 // secant
 #define Sec(x) (1 / cos(x))
-
-// tangent
-#define Tan(x) (sin(x) / cos(x))
 
 // 57.2957795 = 180 / Pi
 #define ToDegrees(radians) (radians * 57.2957795)

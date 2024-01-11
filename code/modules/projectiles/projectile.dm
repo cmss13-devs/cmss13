@@ -274,9 +274,6 @@
 
 	return FALSE
 
-//#define LERP(a, b, t) (a + (b - a) * CLAMP01(t))
-#define LERP_UNCLAMPED(a, b, t) (a + (b - a) * t)
-
 /// Animates the projectile across the process'ed flight.
 /obj/projectile/proc/animate_flight(turf/start_turf, start_pixel_x, start_pixel_y, delta_time)
 	//Get pixelspace coordinates of start and end of visual path
@@ -301,8 +298,8 @@
 	var/vis_current = vis_travelled + speed * (time_carry * 0.1) //speed * (time_carry * 0.1) for remainder time movement, visually "catching up" to where it should be
 	var/vis_interpolant = vis_current / vis_length
 
-	var/pixel_x_lerped = LERP_UNCLAMPED(pixel_x_source, pixel_x_target, vis_interpolant)
-	var/pixel_y_lerped = LERP_UNCLAMPED(pixel_y_source, pixel_y_target, vis_interpolant)
+	var/pixel_x_lerped = LERP(pixel_x_source, pixel_x_target, vis_interpolant)
+	var/pixel_y_lerped = LERP(pixel_y_source, pixel_y_target, vis_interpolant)
 
 	//Convert pixelspace to pixel offset relative to current loc
 
@@ -319,7 +316,7 @@
 
 	var/dist_current = distance_travelled + speed * (time_carry * 0.1) //speed * (time_carry * 0.1) for remainder time fade-in
 	var/alpha_interpolant = dist_current - 1 //-1 so it transitions from transparent to opaque between dist 1-2
-	var/alpha_new = LERP_UNCLAMPED(0, 255, alpha_interpolant)
+	var/alpha_new = LERP(0, 255, alpha_interpolant)
 
 	//Animate the visuals from starting position to new position
 
@@ -331,9 +328,6 @@
 
 	var/anim_time = delta_time * 0.1
 	animate(src, pixel_x = pixel_x_rel_new, pixel_y = pixel_y_rel_new, alpha = alpha_new, time = anim_time, flags = ANIMATION_END_NOW)
-
-//#undef LERP
-#undef LERP_UNCLAMPED
 
 /// Flies the projectile forward one single turf
 /obj/projectile/proc/fly()

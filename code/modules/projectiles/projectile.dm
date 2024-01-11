@@ -217,15 +217,15 @@
 		ammo.fire_bonus_projectiles(src)
 
 	path = getline2(starting, target_turf)
-	p_x += Clamp((rand()-0.5)*scatter*3, -8, 8)
-	p_y += Clamp((rand()-0.5)*scatter*3, -8, 8)
+	p_x += clamp((rand()-0.5)*scatter*3, -8, 8)
+	p_y += clamp((rand()-0.5)*scatter*3, -8, 8)
 	update_angle(starting, target_turf)
 
 	src.speed = speed
 	// Randomize speed by a small factor to help bullet animations look okay
 	// Otherwise you get a   s   t   r   e   a   m of warping bullets in same positions
 	src.speed *= (1 + (rand()-0.5) * 0.30) // 15.0% variance either way
-	src.speed = Clamp(src.speed, 0.1, 100) // Safety to avoid loop hazards
+	src.speed = clamp(src.speed, 0.1, 100) // Safety to avoid loop hazards
 
 	// Also give it some headstart, flying it now ahead of tick
 	var/delta_time = world.tick_lag * rand() * 0.4
@@ -237,8 +237,8 @@
 	SSprojectiles.queue_projectile(src)
 
 /obj/projectile/proc/update_angle(turf/source_turf, turf/aim_turf)
-	p_x = Clamp(p_x, -16, 16)
-	p_y = Clamp(p_y, -16, 16)
+	p_x = clamp(p_x, -16, 16)
+	p_y = clamp(p_y, -16, 16)
 
 	if(process_start_turf != vis_source)
 		vis_travelled = 0
@@ -1208,8 +1208,8 @@
 
 	if(P.ammo.sound_bounce) playsound(src, P.ammo.sound_bounce, 50, 1)
 	var/image/I = image('icons/obj/items/weapons/projectiles.dmi', src, P.ammo.ping, 10)
-	var/offset_x = Clamp(P.pixel_x + pixel_x_offset, -10, 10)
-	var/offset_y = Clamp(P.pixel_y + pixel_y_offset, -10, 10)
+	var/offset_x = clamp(P.pixel_x + pixel_x_offset, -10, 10)
+	var/offset_y = clamp(P.pixel_y + pixel_y_offset, -10, 10)
 	I.pixel_x += round(rand(-4,4) + offset_x, 1)
 	I.pixel_y += round(rand(-4,4) + offset_y, 1)
 

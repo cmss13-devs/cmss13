@@ -269,7 +269,7 @@
 			relative_dir = Get_Compass_Dir(M, target_turf)
 
 		var/ds_identifier = "LARGE BIRD"
-		var/fm_indentifier = "EXECUTE FIREMISSION"
+		var/fm_indentifier = "SPIT FIRE"
 		if (M.mob_flags & KNOWS_TECHNOLOGY)
 			ds_identifier = "DROPSHIP"
 			fm_indentifier = "SPIT FIRE"

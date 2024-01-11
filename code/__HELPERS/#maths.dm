@@ -26,9 +26,6 @@ GLOBAL_LIST_INIT(sqrtTable, list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4,
 #define Inverse(x) (1 / x)
 #define IsEven(x) (x % 2 == 0)
 
-// Returns true if val is from min to max, inclusive.
-#define IsInRange(val, min, max) (min <= val && val <= max)
-
 #define IsInteger(x) (Floor(x) == x)
 #define IsOdd(x) (!IsEven(x))
 #define IsMultiple(x, y) (x % y == 0)

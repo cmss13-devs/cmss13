@@ -26,10 +26,11 @@ GLOBAL_LIST_INIT(cm_vending_clothing_tutorial, list(
 
 	vendor_role = list()
 
-/obj/structure/machinery/cm_vending/clothing/tutorialmed/get_listed_products(mob/user)
-	return GLOB.cm_vending_clothing_tutorialstandard
+/obj/structure/machinery/cm_vending/clothing/tutorial/get_listed_products(mob/user)
+	return GLOB.cm_vending_clothing_tutorial
 
 // Med Standard Vendor Tutorial
+
 GLOBAL_LIST_INIT(cm_vending_clothing_tutorialstandard, list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Standard Marine Apparel", 0, list(/obj/item/clothing/under/marine, /obj/item/clothing/shoes/marine/knife, /obj/item/clothing/gloves/marine, /obj/item/clothing/head/helmet/marine), MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
@@ -57,8 +58,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_tutorialstandard, list(
 
 /obj/structure/machinery/cm_vending/clothing/tutorialmed/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_tutorialstandard
-
-
 
 //Standard Med Vendor 1
 GLOBAL_LIST_INIT(cm_vending_clothing_tutorial_medic, list(

@@ -20,10 +20,6 @@ GLOBAL_LIST_INIT(sqrtTable, list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4,
 #define Default(a, b) (a ? a : b)
 #define Floor(x) (round(x))
 
-//Finds nearest integer to x, above or below
-//something.5 or higher, round up, else round down
-#define roundNearest(x) (((Ceiling(x) - x) <= (x - Floor(x))) ? Ceiling(x) : Floor(x))
-
 // Greatest Common Divisor - Euclid's algorithm
 #define Gcd(a, b) (b ? Gcd(b, a % b) : a)
 

@@ -16,4 +16,4 @@
 
 /datum/tech/repeatable/tank_points/on_unlock()
 	. = ..()
-	supply_controller.tank_points += points_to_give
+	GLOB.supply_controller.tank_points += points_to_give

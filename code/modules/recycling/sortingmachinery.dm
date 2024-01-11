@@ -215,7 +215,7 @@
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "deliveryPaper"
 	w_class = SIZE_MEDIUM
-	var/amount = 25
+	var/amount = 50
 
 
 /obj/item/packageWrap/afterattack(obj/target as obj, mob/user as mob, proximity)
@@ -263,39 +263,55 @@
 			O.add_fingerprint(usr)
 			src.add_fingerprint(usr)
 			src.amount--
-			user.visible_message("\The [user] wraps \a [target] with \a [src].",\
-			SPAN_NOTICE("You wrap \the [target], leaving [amount] units of paper on \the [src]."),\
+			user.visible_message("[user] wraps [target] with [src].",\
+			SPAN_NOTICE("You wrap [target], leaving [amount] units of paper on [src]."),\
 			"You hear someone taping paper around a small object.")
 	else if (istype(target, /obj/structure/closet/crate))
-		var/obj/structure/closet/crate/O = target
-		if (src.amount > 3 && !O.opened)
-			var/obj/structure/bigDelivery/P = new /obj/structure/bigDelivery(get_turf(O.loc))
-			P.icon_state = "deliverycrate"
-			P.wrapped = O
-			O.forceMove(P)
-			src.amount -= 3
-			user.visible_message("\The [user] wraps \a [target] with \a [src].",\
-			SPAN_NOTICE("You wrap \the [target], leaving [amount] units of paper on \the [src]."),\
-			"You hear someone taping paper around a large object.")
-		else if(src.amount < 3)
-			to_chat(user, SPAN_WARNING("You need more paper."))
+		var/obj/structure/closet/crate/crate = target
+		var/answer = tgui_alert(user, "Wrap the crate for delivery or customize it?", "Crate wrapping", list("Customize", "Wrap"))
+		if(!answer || !user.Adjacent(target) || !target.z)
+			return
+		if(answer == "Customize")
+			if(!length(crate.crate_customizing_types))
+				to_chat(user, SPAN_WARNING("You cannot customize this kind of crate."))
+				return
+			var/label = tgui_input_text(user, "Give the crate a new logistic tag:", "Customizing")
+			if(!label || !user.Adjacent(target) || !target.z)
+				return
+			var/chosen_type = tgui_input_list(user, "Select the kind of crate to make this into:", "Customizing", crate.crate_customizing_types)
+			if(!chosen_type || !ispath(crate.crate_customizing_types[chosen_type]) || !user.Adjacent(target) || !target.z)
+				return
+			target.AddComponent(/datum/component/crate_tag, label, crate.crate_customizing_types[chosen_type])
+			amount -= 3
+		else
+			if (amount > 3 && !crate.opened)
+				var/obj/structure/bigDelivery/package = new /obj/structure/bigDelivery(get_turf(crate.loc))
+				package.icon_state = "deliverycrate"
+				package.wrapped = crate
+				crate.forceMove(package)
+				amount -= 3
+				user.visible_message("[user] wraps [target] with [src].",\
+				SPAN_NOTICE("You wrap [target], leaving [amount] units of paper on [src]."),\
+				"You hear someone taping paper around a large object.")
+			else if(amount < 3)
+				to_chat(user, SPAN_WARNING("You need more paper."))
 	else if (istype (target, /obj/structure/closet))
-		var/obj/structure/closet/O = target
-		if (src.amount > 3 && !O.opened)
-			var/obj/structure/bigDelivery/P = new /obj/structure/bigDelivery(get_turf(O.loc))
-			P.wrapped = O
-			O.welded = 1
-			O.forceMove(P)
-			src.amount -= 3
-			user.visible_message("\The [user] wraps \a [target] with \a [src].",\
-			SPAN_NOTICE("You wrap \the [target], leaving [amount] units of paper on \the [src]."),\
+		var/obj/structure/closet/object = target
+		if (amount > 3 && !object.opened)
+			var/obj/structure/bigDelivery/package = new /obj/structure/bigDelivery(get_turf(object.loc))
+			package.wrapped = object
+			object.welded = 1
+			object.forceMove(package)
+			amount -= 3
+			user.visible_message("[user] wraps [target] with [src].",\
+			SPAN_NOTICE("You wrap [target], leaving [amount] units of paper on [src]."),\
 			"You hear someone taping paper around a large object.")
-		else if(src.amount < 3)
+		else if(amount < 3)
 			to_chat(user, SPAN_WARNING("You need more paper."))
 	else
 		to_chat(user, SPAN_NOTICE(" The object you are trying to wrap is unsuitable for the sorting machinery!"))
-	if (src.amount <= 0)
-		new /obj/item/trash/c_tube( src.loc )
+	if (amount <= 0)
+		new /obj/item/trash/c_tube( loc )
 		qdel(src)
 		return
 	return
@@ -321,8 +337,8 @@
 	var/dat = "<tt><center><h1><b>TagMaster 2.3</b></h1></center>"
 
 	dat += "<table style='width:100%; padding:4px;'><tr>"
-	for(var/i = 1, i <= tagger_locations.len, i++)
-		dat += "<td><a href='?src=\ref[src];nextTag=[tagger_locations[i]]'>[tagger_locations[i]]</a></td>"
+	for(var/i = 1, i <= GLOB.tagger_locations.len, i++)
+		dat += "<td><a href='?src=\ref[src];nextTag=[GLOB.tagger_locations[i]]'>[GLOB.tagger_locations[i]]</a></td>"
 
 		if (i%4==0)
 			dat += "</tr><tr>"
@@ -341,7 +357,7 @@
 	if(.)
 		return
 	src.add_fingerprint(usr)
-	if(href_list["nextTag"] && (href_list["nextTag"] in tagger_locations))
+	if(href_list["nextTag"] && (href_list["nextTag"] in GLOB.tagger_locations))
 		src.currTag = href_list["nextTag"]
 	openwindow(usr)
 

@@ -164,7 +164,7 @@
 
 					if (detached_brain)
 						visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> states: Этот ключ активации уже был использован. Запрос на проведение полной деактивации андроида.")
-						if (detached_brain.loc in hear(world_view_size, src))
+						if (detached_brain.loc in hear(GLOB.world_view_size, src))
 							var/client/brain = detached_brain.client
 							var/transfer_needed = FALSE
 							var/mob/dead/observer/G2

@@ -45,19 +45,19 @@
 	icon_living = "[icon_name] Running"
 	icon_dead = "[icon_name] Dead"
 
-/mob/living/simple_animal/hostile/alien/spawnable/update_transform()
-	if(lying != lying_prev)
-		lying_prev = lying
+/mob/living/simple_animal/hostile/alien/update_transform(instant_update = FALSE)
+	// TODO: Move all this mess outside of update_transform
 	if(stat == DEAD)
-		icon_state = "[icon_name] Dead"
-	else if(lying)
-		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
-			icon_state = "[icon_name] Sleeping"
+		icon_state = "Normal [caste_name] Dead"
+	else if(body_position == LYING_DOWN)
+		if(!HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED))
+			icon_state = "Normal [caste_name] Sleeping"
 		else
-			icon_state = "[icon_name] Knocked Down"
+			icon_state = "Normal [caste_name] Knocked Down"
 	else
-		icon_state = "[icon_name] Running"
+		icon_state = "Normal [caste_name] Running"
 	update_wounds()
+	return ..()
 
 /mob/living/simple_animal/hostile/alien/spawnable/FindTarget()
 	var/atom/T = null

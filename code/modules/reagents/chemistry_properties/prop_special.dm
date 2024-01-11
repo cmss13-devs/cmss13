@@ -97,7 +97,7 @@
 
 /datum/chem_property/special/DNA_Disintegrating/trigger()
 	SSticker.mode.get_specific_call("Weyland-Yutani Goon (Chemical Investigation Squad)", TRUE, FALSE, holder.name)
-	chemical_data.update_credits(10)
+	GLOB.chemical_data.update_credits(10)
 	message_admins("The research department has discovered DNA_Disintegrating in [holder.name] adding 10 bonus tech points.")
 	var/datum/techtree/tree = GET_TREE(TREE_MARINE)
 	tree.add_points(10)

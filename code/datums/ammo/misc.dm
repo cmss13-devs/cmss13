@@ -178,7 +178,7 @@
 	accurate_range = 12
 	shell_speed = AMMO_SPEED_TIER_1
 
-/datum/ammo/souto/on_embed(mob/embedded_mob, obj/limb/target_organ)
+/datum/ammo/souto/on_embed(mob/embedded_mob, obj/limb/target_organ, silent = FALSE)
 	if(ishuman(embedded_mob) && !isyautja(embedded_mob))
 		if(istype(target_organ))
 			target_organ.embed(new can_type)
@@ -190,8 +190,8 @@
 			if(P.contents.len == 1)
 				for(var/obj/item/reagent_container/food/drinks/cans/souto/S in P.contents)
 					M.put_in_active_hand(S)
-					for(var/mob/O in viewers(world_view_size, P)) //find all people in view.
-						O.show_message(SPAN_DANGER("[M] catches the [S]!"), SHOW_MESSAGE_VISIBLE) //Tell them the can was caught.
+					for(var/mob/O in viewers(GLOB.world_view_size, P)) //find all people in view.
+						O.show_message(SPAN_DANGER("[M] catches [S]!"), SHOW_MESSAGE_VISIBLE) //Tell them the can was caught.
 					return //Can was caught.
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M

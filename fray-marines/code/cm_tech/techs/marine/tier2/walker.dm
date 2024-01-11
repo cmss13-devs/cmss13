@@ -16,4 +16,4 @@
 
 /datum/tech/repeatable/walker_points/on_unlock()
 	. = ..()
-	supply_controller.mech_points += points_to_give
+	GLOB.supply_controller.mech_points += points_to_give

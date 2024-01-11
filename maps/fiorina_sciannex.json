@@ -26,6 +26,7 @@
     "survivor_message": "You are a survivor of the attack on Fiorina Orbital Penitentiary. You worked or lived on the prison station, and managed to avoid the alien attacks... until now.",
     "map_item_type": "/obj/item/map/FOP_map_v3",
     "announce_text": "Получен автоматический сигнал бедствия из тюрьмы строгого режима  \"Орбитальная Тюрьма Фиорина\". Группа реагирования с ###SHIPNAME### будет отправлена для расследования.",
+    "environment_traits": { "InSpace": true },
     "traits": [{ "Ground": true }],
     "nightmare_path": "maps/Nightmare/maps/FOP_v3_Sciannex/",
     "xvx_hives": {

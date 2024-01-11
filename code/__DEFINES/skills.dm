@@ -42,6 +42,8 @@
 #define SKILL_SPEC_DEFAULT 0
 /// Is trained to use specialist gear, but hasn't picked a kit.
 #define SKILL_SPEC_TRAINED 1
+/// Is trained to use specialist gear & HAS picked a kit. (Functionally same as SPEC_ROCKET)
+#define SKILL_SPEC_KITTED 2
 /// Can use RPG
 #define SKILL_SPEC_ROCKET 2
 /// Can use thermal cloaks and custom M4RA rifle

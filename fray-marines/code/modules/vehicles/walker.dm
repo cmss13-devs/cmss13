@@ -130,7 +130,7 @@
 	if(world.time > l_move_time + move_delay)
 		if (zoom)
 			unzoom()
-		if(dir != direction && reverse_dir[dir] != direction)
+		if(dir != direction && GLOB.reverse_dir[dir] != direction)
 			l_move_time = world.time
 			dir = direction
 			pick(playsound(src.loc, 'sound/mecha/powerloader_turn.ogg', 25, 1), playsound(src.loc, 'sound/mecha/powerloader_turn2.ogg', 25, 1))
@@ -486,7 +486,7 @@
 	zoom = !zoom
 	//General reset in case anything goes wrong, the view will always reset to default unless zooming in.
 	if(user.client)
-		user.client.change_view(world_view_size, src)
+		user.client.change_view(GLOB.world_view_size, src)
 		user.client.pixel_x = 0
 		user.client.pixel_y = 0
 

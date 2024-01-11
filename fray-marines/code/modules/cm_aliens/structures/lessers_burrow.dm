@@ -86,7 +86,7 @@
 	. = attack_alien(M)
 
 /obj/structure/lessers_burrow/attack_alien(mob/living/carbon/xenomorph/M)
-	if(!istype(M) || M.stat || M.lying)
+	if(!istype(M) || M.stat || M.resting)
 		return XENO_NO_DELAY_ACTION
 
 	if(!isfriendly(M))

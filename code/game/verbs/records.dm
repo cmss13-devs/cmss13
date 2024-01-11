@@ -84,7 +84,7 @@
 	var/list/options = list()
 
 	if(CLIENT_IS_STAFF(src))
-		options = note_categories.Copy()
+		options = GLOB.note_categories.Copy()
 		if(admin_holder.rights & R_PERMISSIONS)
 			MA = TRUE
 	else if(!isCouncil(src))
@@ -97,13 +97,13 @@
 		return
 	target = ckey(target)
 
-	if(RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_COMMANDER_COUNCIL)
+	if(GLOB.RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_COMMANDER_COUNCIL)
 		options |= "Commanding Officer"
 		edit_C = TRUE
-	if(RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_SYNTHETIC_COUNCIL)
+	if(GLOB.RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_SYNTHETIC_COUNCIL)
 		options |= "Synthetic"
 		edit_S = TRUE
-	if(RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_YAUTJA_COUNCIL)
+	if(GLOB.RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_YAUTJA_COUNCIL)
 		options |= "Yautja"
 		edit_Y = TRUE
 
@@ -116,17 +116,17 @@
 		if("Merit")
 			show_other_record(NOTE_MERIT, choice, target, TRUE)
 		if("Commanding Officer")
-			if(MA || (RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_COMMANDER_LEADER))
+			if(MA || (GLOB.RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_COMMANDER_LEADER))
 				show_other_record(NOTE_COMMANDER, choice, target, TRUE, TRUE)
 			else
 				show_other_record(NOTE_COMMANDER, choice, target, edit_C)
 		if("Synthetic")
-			if(MA || (RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_SYNTHETIC_LEADER))
+			if(MA || (GLOB.RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_SYNTHETIC_LEADER))
 				show_other_record(NOTE_SYNTHETIC, choice, target, TRUE, TRUE)
 			else
 				show_other_record(NOTE_SYNTHETIC, choice, target, edit_S)
 		if("Yautja")
-			if(MA || (RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_YAUTJA_LEADER))
+			if(MA || (GLOB.RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_YAUTJA_LEADER))
 				show_other_record(NOTE_YAUTJA, choice, target, TRUE, TRUE)
 			else
 				show_other_record(NOTE_YAUTJA, choice, target, edit_Y)
@@ -181,3 +181,47 @@
 
 	dat += "</body></html>"
 	show_browser(src, dat, "[target]'s [category_text] Notes", "otherplayersinfo", "size=480x480")
+
+GLOBAL_DATUM_INIT(medals_view_tgui, /datum/medals_view_tgui, new)
+
+/datum/medals_view_tgui/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "MedalsViewer", "[user.ckey]'s Medals")
+		ui.open()
+
+/datum/medals_view_tgui/ui_static_data(mob/user)
+	. = ..()
+	.["medals"] = list()
+
+	for(var/datum/view_record/medal_view/medal as anything in DB_VIEW(/datum/view_record/medal_view, DB_COMP("player_id", DB_EQUALS, user.client.player_data.id)))
+		var/xeno_medal = FALSE
+		if(medal.medal_type in GLOB.xeno_medals)
+			xeno_medal = TRUE
+
+		var/list/current_medal = list(
+			"round_id" = medal.round_id,
+			"medal_type" = medal.medal_type,
+			"medal_icon" = replacetext(medal.medal_type, " ", "-"),
+			"xeno_medal" = xeno_medal,
+			"recipient_name" = medal.recipient_name,
+			"recipient_role" = medal.recipient_role,
+			"giver_name" = medal.giver_name,
+			"citation" = medal.citation
+		)
+
+		.["medals"] += list(current_medal)
+
+/datum/medals_view_tgui/ui_state(mob/user)
+	return GLOB.always_state
+
+/datum/medals_view_tgui/ui_assets(mob/user)
+	return list(
+		get_asset_datum(/datum/asset/spritesheet/medal)
+	)
+
+/client/verb/view_own_medals()
+	set name = "View Own Medals"
+	set category = "OOC.Records"
+
+	GLOB.medals_view_tgui.tgui_interact(mob)

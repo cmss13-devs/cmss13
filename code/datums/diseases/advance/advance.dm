@@ -9,15 +9,15 @@
 
 #define RANDOM_STARTING_LEVEL 2
 
-var/list/archive_diseases = list()
+GLOBAL_LIST_EMPTY(archive_diseases)
 
 // The order goes from easy to cure to hard to cure.
-var/list/advance_cures = list(
+GLOBAL_LIST_INIT(advance_cures, list(
 									"nutriment", "sugar", "orangejuice",
 									"spaceacillin", "kelotane", "ethanol",
 									"leporazine", "lipozine",
 									"silver", "gold", "phoron"
-								)
+								))
 
 /*
 
@@ -50,10 +50,10 @@ var/list/advance_cures = list(
 /datum/disease/advance/New(process = 1, datum/disease/advance/D)
 
 	// Setup our dictionary if it hasn't already.
-	if(!dictionary_symptoms.len)
-		for(var/symp in list_symptoms)
+	if(!GLOB.dictionary_symptoms.len)
+		for(var/symp in GLOB.list_symptoms)
 			var/datum/symptom/S = new symp
-			dictionary_symptoms[S.id] = symp
+			GLOB.dictionary_symptoms[S.id] = symp
 
 	if(!istype(D))
 		D = null
@@ -142,7 +142,7 @@ var/list/advance_cures = list(
 
 	// Generate symptoms. By default, we only choose non-deadly symptoms.
 	var/list/possible_symptoms = list()
-	for(var/symp in list_symptoms)
+	for(var/symp in GLOB.list_symptoms)
 		var/datum/symptom/S = new symp
 		if(S.level <= type_level_limit)
 			if(!HasSymptom(S))
@@ -170,13 +170,13 @@ var/list/advance_cures = list(
 	var/list/properties = GenerateProperties()
 	AssignProperties(properties)
 
-	if(!archive_diseases[GetDiseaseID()])
+	if(!GLOB.archive_diseases[GetDiseaseID()])
 		if(new_name)
 			AssignName()
-		archive_diseases[GetDiseaseID()] = src // So we don't infinite loop
-		archive_diseases[GetDiseaseID()] = new /datum/disease/advance(0, src, 1)
+		GLOB.archive_diseases[GetDiseaseID()] = src // So we don't infinite loop
+		GLOB.archive_diseases[GetDiseaseID()] = new /datum/disease/advance(0, src, 1)
 
-	var/datum/disease/advance/A = archive_diseases[GetDiseaseID()]
+	var/datum/disease/advance/A = GLOB.archive_diseases[GetDiseaseID()]
 	AssignName(A.name)
 
 //Generate disease properties based on the effects. Returns an associated list.
@@ -254,11 +254,11 @@ var/list/advance_cures = list(
 // Will generate a random cure, the less resistance the symptoms have, the harder the cure.
 /datum/disease/advance/proc/GenerateCure(list/properties = list())
 	if(properties && properties.len)
-		var/res = Clamp(properties["resistance"] - (symptoms.len / 2), 1, advance_cures.len)
-		cure_id = advance_cures[res]
+		var/res = Clamp(properties["resistance"] - (symptoms.len / 2), 1, GLOB.advance_cures.len)
+		cure_id = GLOB.advance_cures[res]
 
 		// Get the cure name from the cure_id
-		var/datum/reagent/D = chemical_reagents_list[cure_id]
+		var/datum/reagent/D = GLOB.chemical_reagents_list[cure_id]
 		cure = D.name
 
 
@@ -373,7 +373,7 @@ var/list/advance_cures = list(
 
 	var/list/symptoms = list()
 	symptoms += "Done"
-	symptoms += list_symptoms.Copy()
+	symptoms += GLOB.list_symptoms.Copy()
 	do
 		var/symptom = tgui_input_list(user, "Choose a symptom to add ([i] remaining)", "Choose a Symptom", symptoms)
 		if(istext(symptom))
@@ -391,7 +391,7 @@ var/list/advance_cures = list(
 		D.AssignName(new_name)
 		D.Refresh()
 
-		for(var/datum/disease/advance/AD in active_diseases)
+		for(var/datum/disease/advance/AD in SSdisease.all_diseases)
 			AD.Refresh()
 
 		for(var/mob/living/carbon/human/H in shuffle(GLOB.alive_mob_list.Copy()))
@@ -409,7 +409,7 @@ var/list/advance_cures = list(
 /*
 /mob/verb/test()
 
-	for(var/datum/disease/D in active_diseases)
+	for(var/datum/disease/D in SSdisease.all_diseases)
 		to_chat(src, "<a href='?_src_=vars;Vars=\ref[D]'>[D.name] - [D.holder]</a>")
 */
 

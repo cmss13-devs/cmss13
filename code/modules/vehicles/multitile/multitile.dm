@@ -361,13 +361,22 @@
 	M.reset_view(src)
 	give_action(M, /datum/action/human_action/vehicle_unbuckle)
 
+/// Get crewmember of seat.
 /obj/vehicle/multitile/proc/get_seat_mob(seat)
 	return seats[seat]
 
+/// Get seat of crewmember.
 /obj/vehicle/multitile/proc/get_mob_seat(mob/M)
 	for(var/seat in seats)
 		if(seats[seat] == M)
 			return seat
+	return null
+
+/// Get active hardpoint of crewmember.
+/obj/vehicle/multitile/proc/get_mob_hp(mob/crew)
+	var/seat = get_mob_seat(crew)
+	if(seat)
+		return active_hp[seat]
 	return null
 
 /obj/vehicle/multitile/proc/get_passengers()
@@ -397,6 +406,52 @@
 		if (health <= 0) lighting_holder.set_light_on(FALSE)
 		else lighting_holder.set_light_on(TRUE)
 	update_icon()
+
+/*
+** PRESETS SPAWNERS
+*/
+//These help spawning vehicles that don't end up as subtypes, causing problems later with various checks
+//as well as allowing customizations, like properly turning on mapped in direction and so on.
+
+/obj/effect/vehicle_spawner
+	name = "Vehicle Spawner"
+
+//Main proc which handles spawning and adding hardpoints/damaging the vehicle
+/obj/effect/vehicle_spawner/proc/spawn_vehicle()
+	return
+
+//Installation of modules kit
+/obj/effect/vehicle_spawner/proc/load_hardpoints(obj/vehicle/multitile/V)
+	return
+
+//Miscellaneous additions
+/obj/effect/vehicle_spawner/proc/load_misc(obj/vehicle/multitile/V)
+
+	V.load_role_reserved_slots()
+	V.initialize_cameras()
+	//transfer mapped in edits
+	if(color)
+		V.color = color
+	if(name != initial(name))
+		V.name = name
+	if(desc)
+		V.desc = desc
+
+//Dealing enough damage to destroy the vehicle
+/obj/effect/vehicle_spawner/proc/load_damage(obj/vehicle/multitile/V)
+	V.take_damage_type(1e8, "abstract")
+	V.take_damage_type(1e8, "abstract")
+	V.healthcheck()
+
+/obj/effect/vehicle_spawner/proc/handle_direction(obj/vehicle/multitile/M)
+	switch(dir)
+		if(EAST)
+			M.try_rotate(90)
+		if(WEST)
+			M.try_rotate(-90)
+		if(NORTH)
+			M.try_rotate(90)
+			M.try_rotate(90)
 
 /obj/vehicle/multitile/get_applying_acid_time()
 	return 3 SECONDS

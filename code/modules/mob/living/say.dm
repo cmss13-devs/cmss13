@@ -1,4 +1,4 @@
-var/list/department_radio_keys = list(
+GLOBAL_LIST_INIT(department_radio_keys, list(
 	":i" = RADIO_CHANNEL_INTERCOM, ".i" = RADIO_CHANNEL_INTERCOM, "#i" = RADIO_CHANNEL_INTERCOM,
 	":h" = RADIO_CHANNEL_DEPARTMENT, ".h" = RADIO_CHANNEL_DEPARTMENT, "#h" = RADIO_CHANNEL_DEPARTMENT,
 	":w" = RADIO_MODE_WHISPER, ".w" = RADIO_MODE_WHISPER, "#w" = RADIO_MODE_WHISPER,
@@ -97,18 +97,18 @@ var/list/department_radio_keys = list(
 	":Щ" = RADIO_CHANNEL_COLONY, ".Щ" = RADIO_CHANNEL_COLONY, "#Щ" = RADIO_CHANNEL_PMC_CCT,
 	":Я" = RADIO_CHANNEL_HIGHCOM, ".Я" = RADIO_CHANNEL_HIGHCOM, "#Я" = RADIO_CHANNEL_PMC_CMD,
 	":Л" = SQUAD_SOF, ".Л" = SQUAD_SOF, "#Л" = RADIO_CHANNEL_WY_WO,
-)
+))
 
 /proc/channel_to_prefix(channel)
 	var/channel_key
-	for(var/key in department_radio_keys)
-		if(department_radio_keys[key] == channel)
+	for(var/key in GLOB.department_radio_keys)
+		if(GLOB.department_radio_keys[key] == channel)
 			channel_key = key
 			break
 	return channel_key
 
 /proc/prefix_to_channel(prefix)
-	return department_radio_keys[prefix]
+	return GLOB.department_radio_keys[prefix]
 
 ///Shows custom speech bubbles for screaming, *warcry etc.
 /mob/living/proc/show_speech_bubble(bubble_name, bubble_type = bubble_icon)
@@ -124,7 +124,7 @@ var/list/department_radio_keys = list(
 /mob/living/proc/remove_speech_bubble(mutable_appearance/speech_bubble, list_of_mobs)
 	overlays -= speech_bubble
 
-/mob/living/say(message, datum/language/speaking = null, verb="говорит", alt_name="", italics=0, message_range = world_view_size, sound/speech_sound, sound_vol, nolog = 0, message_mode = null, bubble_type = bubble_icon)
+/mob/living/say(message, datum/language/speaking = null, verb="говорит", alt_name="", italics=0, message_range = GLOB.world_view_size, sound/speech_sound, sound_vol, nolog = 0, message_mode = null, bubble_type = bubble_icon)
 	var/turf/T
 
 	if(SEND_SIGNAL(src, COMSIG_LIVING_SPEAK, message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, nolog, message_mode) & COMPONENT_OVERRIDE_SPEAK) return
@@ -166,6 +166,13 @@ var/list/department_radio_keys = list(
 					listening += M
 					hearturfs += M.locs[1]
 					for(var/obj/O in M.contents)
+						var/obj/item/clothing/worn_item = O
+						if((O.flags_atom & USES_HEARING) || ((istype(worn_item) && worn_item.accessories)))
+							listening_obj |= O
+				else if(istype(I, /obj/structure/surface))
+					var/obj/structure/surface/table = I
+					hearturfs += table.locs[1]
+					for(var/obj/O in table.contents)
 						if(O.flags_atom & USES_HEARING)
 							listening_obj |= O
 				else if(istype(I, /obj/))

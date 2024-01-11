@@ -34,4 +34,4 @@
 	else if(H.job == JOB_SQUAD_MARINE)
 		.["Portable Composite Barricade"] = /obj/item/stack/folding_barricade
 	else
-		.["Random Tool"] = pick(common_tools)
+		.["Random Tool"] = pick(GLOB.common_tools)

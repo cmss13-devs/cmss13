@@ -45,7 +45,7 @@ GLOBAL_LIST_INIT(cm_vending_walker, list(
 	. = list()
 	. += ui_static_data(user)
 
-	.["current_m_points"] = supply_controller.mech_points
+	.["current_m_points"] = GLOB.supply_controller.mech_points
 
 	var/list/ui_listed_products = get_listed_products(user)
 	var/list/stock_values = list()
@@ -54,7 +54,7 @@ GLOBAL_LIST_INIT(cm_vending_walker, list(
 		var/prod_available = FALSE
 		var/p_cost = myprod[2]
 		var/avail_flag = myprod[4]
-		if(supply_controller.mech_points >= p_cost && (!avail_flag || ((avail_flag in available_categories) && (available_categories[avail_flag]))))
+		if(GLOB.supply_controller.mech_points >= p_cost && (!avail_flag || ((avail_flag in available_categories) && (available_categories[avail_flag]))))
 			prod_available = TRUE
 		stock_values += list(prod_available)
 
@@ -67,16 +67,16 @@ GLOBAL_LIST_INIT(cm_vending_walker, list(
 			return FALSE
 		if(!(available_categories[L[4]]))
 			return FALSE
-		if(supply_controller.mech_points < L[2])
+		if(GLOB.supply_controller.mech_points < L[2])
 			return FALSE
 		else
 			available_categories[L[4]] -= 1
-			supply_controller.mech_points -= L[2]
+			GLOB.supply_controller.mech_points -= L[2]
 	else
-		if(supply_controller.mech_points < L[2])
+		if(GLOB.supply_controller.mech_points < L[2])
 			return FALSE
 		else
-			supply_controller.mech_points -= L[2]
+			GLOB.supply_controller.mech_points -= L[2]
 
 //------------WEAPONS RACK---------------
 

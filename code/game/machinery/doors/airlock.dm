@@ -91,7 +91,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		else if(user.hallucination > 50 && prob(10) && operating == 0)
 			to_chat(user, SPAN_DANGER("<B>You feel a powerful shock course through your body!</B>"))
 			user.halloss += 10
-			user.stunned += 10
+			user.apply_effect(10, STUN)
 			return
 	..(user)
 
@@ -557,7 +557,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	if(istype(attacking_item, /obj/item/clothing/mask/cigarette))
 		if(isElectrified())
 			var/obj/item/clothing/mask/cigarette/L = attacking_item
-			L.light(SPAN_NOTICE("[user] lights their [L] on an electrical arc from the [src]"))
+			L.light(SPAN_NOTICE("[user] lights their [L] on an electrical arc from [src]"))
 			return
 
 	if(!isRemoteControlling(user))
@@ -568,7 +568,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	add_fingerprint(user)
 
 	if(istype(attacking_item, /obj/item/weapon/zombie_claws) && (welded || locked))
-		user.visible_message(SPAN_NOTICE("[user] starts tearing into the door on the [src]!"), \
+		user.visible_message(SPAN_NOTICE("[user] starts tearing into the door on [src]!"), \
 			SPAN_NOTICE("You start prying your hand into the gaps of the door with your fingers... This will take about 30 seconds."), \
 			SPAN_NOTICE("You hear tearing noises!"))
 
@@ -817,7 +817,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 /obj/structure/machinery/door/airlock/LateInitialize()
 	. = ..()
 	if(closeOtherId != null)
-		for(var/obj/structure/machinery/door/airlock/A in machines)
+		for(var/obj/structure/machinery/door/airlock/A in GLOB.machines)
 			if(A.closeOtherId == closeOtherId && A != src)
 				closeOther = A
 				break
@@ -833,7 +833,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	return
 
 /obj/structure/machinery/door/airlock/allowed(mob/M)
-	if(isWireCut(AIRLOCK_WIRE_IDSCAN) || (maint_all_access && check_access_list(list(ACCESS_MARINE_MAINT))))
+	if(isWireCut(AIRLOCK_WIRE_IDSCAN) || (GLOB.maint_all_access && check_access_list(list(ACCESS_MARINE_MAINT))))
 		return TRUE
 	return ..(M)
 
@@ -845,7 +845,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		for(var/i in resin_door_shmushereds)
 			if(istype(x,i)) //I would like to just use a if(locate() in ) here but Im not gonna add every child to GLOB.resin_door_shmushereds so it works
 				playsound(loc, "alien_resin_break", 25)
-				visible_message(SPAN_WARNING("The [src.name] closes on the [x], shmushing it!"))
+				visible_message(SPAN_WARNING("The [src.name] closes on [x], shmushing it!"))
 				if(isturf(x))
 					var/turf/closed/wall/resin_wall_to_destroy = x
 					resin_wall_to_destroy.dismantle_wall()
@@ -858,7 +858,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
 		sparks.set_up(5, 1, src)
 		sparks.start()
-		xeno.apply_effect(1, WEAKEN)
+		xeno.KnockDown(1)
+		xeno.Stun(1)
 
 	playsound(src, 'sound/effects/metalhit.ogg', 50, TRUE)
 	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] strikes \the [src] with its tail!"), SPAN_XENOWARNING("You strike \the [src] with your tail!"))
@@ -866,3 +867,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	var/damage = xeno.melee_damage_upper * TAILSTAB_AIRLOCK_DAMAGE_MULTIPLIER
 	take_damage(damage, xeno)
 	return TAILSTAB_COOLDOWN_NORMAL
+
+/obj/structure/machinery/door/airlock/autoclose()
+	if(locked)
+		return
+	..()

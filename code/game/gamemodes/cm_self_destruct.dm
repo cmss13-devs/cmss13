@@ -43,7 +43,7 @@ Regardless of where it's detonated, or how, a successful detonation will end the
 All of the necessary difines are stored under mode.dm in defines.
 */
 
-var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initited elsewhere so that the world has a chance to load in.
+GLOBAL_DATUM(EvacuationAuthority, /datum/authority/branch/evacuation)
 
 #define SOUND_CHANNEL_SD 666
 
@@ -104,7 +104,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		marine_announcement("Внимание. Тревога. Всему персоналу немедленно эвакуироваться. У вас есть [round(EVACUATION_ESTIMATE_DEPARTURE/60,1)] минут перед отправлением.", "[MAIN_AI_SYSTEM]", 'sound/AI/evacuate.ogg')
 		xeno_message_all("Волна адреналина прокатывается по обитателям улья. Эти мясные существа пытаются сбежать!")
 
-		for(var/obj/structure/machinery/status_display/SD in machines)
+		for(var/obj/structure/machinery/status_display/SD in GLOB.machines)
 			if(is_mainship_level(SD.z))
 				SD.set_picture("evac")
 		for(var/obj/docking_port/mobile/crashable/escape_shuttle/shuttle in SSshuttle.mobile)
@@ -121,7 +121,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		marine_announcement("Эвакуация была отменена.", "[MAIN_AI_SYSTEM]", 'sound/AI/evacuate_cancelled.ogg')
 
 		if(get_security_level() == "red")
-			for(var/obj/structure/machinery/status_display/SD in machines)
+			for(var/obj/structure/machinery/status_display/SD in GLOB.machines)
 				if(is_mainship_level(SD.z))
 					SD.set_picture("redalert")
 
@@ -207,7 +207,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		dest_started_at = world.time
 		set_security_level(SEC_LEVEL_DELTA) //also activate Delta alert, to open the SD shutters.
 		spawn(0)
-			for(var/obj/structure/machinery/door/poddoor/shutters/almayer/D in machines)
+			for(var/obj/structure/machinery/door/poddoor/shutters/almayer/D in GLOB.machines)
 				if(D.id == "sd_lockdown")
 					D.open()
 		return TRUE
@@ -220,7 +220,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		if(world.time >= dest_start_time + 3000 && dest_already_armed == 1 && !override) //Если пройден рубеж в 5 минут (но только после полноценного запуска) - пиздос
 			C.state("<span class='warning'>ОШИБКА: Невозможно отменить операцию.</span>")
 			return FALSE
-		for(i in EvacuationAuthority.dest_rods)
+		for(i in GLOB.EvacuationAuthority.dest_rods)
 			I = i
 			if(I.active_state == SELF_DESTRUCT_MACHINE_ARMED && !override)
 				C.state(SPAN_WARNING("ОШИБКА: Невозможно отменить операцию. Отключите все стержни."))
@@ -250,7 +250,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		for(i in dest_rods)
 			I = i
 		C.in_progress = !C.in_progress
-		for(i in EvacuationAuthority.dest_rods)
+		for(i in GLOB.EvacuationAuthority.dest_rods)
 			I = i
 			I.in_progress = 1
 		trigger_self_destruct(,,override)
@@ -369,7 +369,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 
 /obj/structure/machinery/self_destruct/Destroy()
 	. = ..()
-	machines -= src
+	GLOB.machines -= src
 	operator = null
 
 /obj/structure/machinery/self_destruct/ex_act(severity)
@@ -397,8 +397,8 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 
 /obj/structure/machinery/self_destruct/console/Destroy()
 	. = ..()
-	EvacuationAuthority.C = null
-	EvacuationAuthority.dest_rods = null
+	GLOB.EvacuationAuthority.C = null
+	GLOB.EvacuationAuthority.dest_rods = null
 
 /obj/structure/machinery/self_destruct/console/lock_or_unlock(lock)
 	playsound(src, 'sound/machines/hydraulics_1.ogg', 25, 1)
@@ -416,7 +416,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		if(!do_after(usr, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			return
 		to_chat(xenomorph, "<span class='warning'>Я взаимодействую с машиной и пытаюсь отключить устройство очищения.</span>")
-		EvacuationAuthority.cancel_self_destruct()
+		GLOB.EvacuationAuthority.cancel_self_destruct()
 
 /obj/structure/machinery/self_destruct/console/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -451,24 +451,24 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 			marine_announcement("Опасность. Система аварийного самоуничтожения активирована. Обратный отсчет - 20 минут до взрыва корабля.", "Система Самоуничтожения", 'sound/AI/selfdestruct.ogg')
 			xeno_message("Очень дурное предчувствие. Эти создания пытаются запустить механизм очищения!")
 			active_state = SELF_DESTRUCT_MACHINE_ARMED //Arm it here so the process can execute it later.
-			var/obj/structure/machinery/self_destruct/rod/I = EvacuationAuthority.dest_rods[EvacuationAuthority.dest_index]
+			var/obj/structure/machinery/self_destruct/rod/I = GLOB.EvacuationAuthority.dest_rods[GLOB.EvacuationAuthority.dest_index]
 			I.activate_time = world.time
-			EvacuationAuthority.process_self_destruct()
+			GLOB.EvacuationAuthority.process_self_destruct()
 			. = TRUE
 
 		if("dest_trigger")
 			var/obj/structure/machinery/self_destruct/rod/I
 			var/i
-			for(i in EvacuationAuthority.dest_rods)
+			for(i in GLOB.EvacuationAuthority.dest_rods)
 				I = i
 
 			to_chat(usr, "<span class='notice'>Нажимаю несколько кнопок на панели...</span>")
-			if(EvacuationAuthority.dest_already_armed != 0)
+			if(GLOB.EvacuationAuthority.dest_already_armed != 0)
 				to_chat(usr, "<span class='warning'>Система уже активирована.</span>")//"Неееет, ты не можешь запустить СД больше 2 раза!!!!!"
 				return
 			if(I.active_state != SELF_DESTRUCT_MACHINE_ARMED) //Все как в фильме. СД запустится только после активации всех стержней
 				to_chat(usr, "<span class='warning'>ОШИБКА: Невозможно активировать систему. Пожалуйста, активируйте все стержни.</span>")
-				EvacuationAuthority.dest_already_armed = 0
+				GLOB.EvacuationAuthority.dest_already_armed = 0
 				return
 			else
 				to_chat(usr, "<span class='notice'>Система вот-вот запустит механизм самоуничтожения.</span>")
@@ -476,17 +476,17 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 				xeno_message("Улей очень сильно беспокоится. Механизм очищения работает во всю!")
 //				world << sound('sound/AI/ARES_Self_Destruct_10m_FULL.ogg', repeat = 0, wait = 0, volume = 70, channel = 666)
 				world << sound('code/modules/carrotman2013/sounds/AI/selfdestruct.ogg',volume=53,channel=SOUND_CHANNEL_SD)
-				EvacuationAuthority.dest_start_time = world.time
-				EvacuationAuthority.process_sd_ticking()
-				EvacuationAuthority.dest_already_armed = 1
-				EvacuationAuthority.spawn_sd_effects()
+				GLOB.EvacuationAuthority.dest_start_time = world.time
+				GLOB.EvacuationAuthority.process_sd_ticking()
+				GLOB.EvacuationAuthority.dest_already_armed = 1
+				GLOB.EvacuationAuthority.spawn_sd_effects()
 			. = TRUE
 
 		if("dest_cancel")
 			if(!allowed(usr))
 				to_chat(usr, SPAN_WARNING("У меня нет необходимого доступа, чтобы отключить систему!"))
 				return
-			EvacuationAuthority.cancel_self_destruct()
+			GLOB.EvacuationAuthority.cancel_self_destruct()
 			. = TRUE
 
 /obj/structure/machinery/self_destruct/rod
@@ -499,8 +499,8 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 
 /obj/structure/machinery/self_destruct/rod/Destroy()
 	. = ..()
-	if(EvacuationAuthority && EvacuationAuthority.dest_rods)
-		EvacuationAuthority.dest_rods -= src
+	if(GLOB.EvacuationAuthority && GLOB.EvacuationAuthority.dest_rods)
+		GLOB.EvacuationAuthority.dest_rods -= src
 
 /obj/structure/machinery/self_destruct/rod/lock_or_unlock(lock)
 	playsound(src, 'sound/machines/hydraulics_2.ogg', 25, 1)
@@ -515,7 +515,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 
 /obj/structure/machinery/self_destruct/rod/attack_alien(mob/living/carbon/xenomorph/X) //Так как отключить СД можно только вырубив все стержни - логично дать квине возможность их вырубать. Nuff said.
 	if(isqueen(X))
-		if(world.time >= EvacuationAuthority.dest_start_time + 3000 && EvacuationAuthority.dest_already_armed == 1)
+		if(world.time >= GLOB.EvacuationAuthority.dest_start_time + 3000 && GLOB.EvacuationAuthority.dest_already_armed == 1)
 			to_chat(X, "<span class='notice'>Пытаюсь повернуть стержень, но он намертво впечатан в пол. Кажется пора сваливать.</span>")
 			return
 		else switch(active_state)
@@ -531,7 +531,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 
 /obj/structure/machinery/self_destruct/rod/attack_hand(mob/user)
 	if(..())
-		if(world.time >= EvacuationAuthority.dest_start_time + 3000 && EvacuationAuthority.dest_already_armed == 1)
+		if(world.time >= GLOB.EvacuationAuthority.dest_start_time + 3000 && GLOB.EvacuationAuthority.dest_already_armed == 1)
 			to_chat(user, "<span class='notice'>Я пытаюсь повернуть стержень, но он намертво впечатан в пол. Кажется пора сваливать.</span>")
 			return
 

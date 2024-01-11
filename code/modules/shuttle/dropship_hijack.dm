@@ -13,7 +13,7 @@
 
 /datum/dropship_hijack/almayer/proc/crash_landing()
 	//break APCs
-	for(var/obj/structure/machinery/power/apc/A in machines)
+	for(var/obj/structure/machinery/power/apc/A in GLOB.machines)
 		if(A.z != crash_site.z)
 			continue
 		if(prob(A.crash_break_probability))
@@ -53,28 +53,21 @@
 
 	// Break the ultra-reinforced windows.
 	// Break the briefing windows.
-	for(var/i in GLOB.hijack_bustable_windows)
-		var/obj/structure/window/H = i
-		H.deconstruct(FALSE)
-
-	for(var/k in GLOB.hijack_bustable_ladders)
-		var/obj/structure/ladder/fragile_almayer/L = k
-		L.deconstruct()
-
-	// Delete the briefing door(s).
-	for(var/D in GLOB.hijack_deletable_windows)
-		qdel(D)
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_HIJACK_IMPACTED)
+	RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_LANDED, PROC_REF(finish_landing))
 
 	// Sleep while the explosions do their job
 	var/explosion_alive = TRUE
 	while(explosion_alive)
 		explosion_alive = FALSE
-		for(var/datum/automata_cell/explosion/E in cellauto_cells)
+		for(var/datum/automata_cell/explosion/E in GLOB.cellauto_cells)
 			if(E.explosion_cause_data && E.explosion_cause_data.cause_name == "dropship crash")
 				explosion_alive = TRUE
 				break
 		sleep(10)
 
+/datum/dropship_hijack/almayer/proc/finish_landing()
+	SShijack.announce_status_on_crash()
 	SSticker.hijack_ocurred()
 
 /datum/dropship_hijack/almayer/proc/fire()
@@ -82,8 +75,8 @@
 		return FALSE
 	shuttle.callTime = DROPSHIP_CRASH_TRANSIT_DURATION * GLOB.ship_alt
 	SSshuttle.moveShuttle(shuttle.id, crash_site.id, TRUE)
-	if(round_statistics)
-		round_statistics.track_hijack()
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.track_hijack()
 	return TRUE
 
 /datum/dropship_hijack/almayer/proc/target_crash_site(ship_section)
@@ -117,8 +110,8 @@
 		return
 
 	// if the AA site matches target site
-	if(target_ship_section == almayer_aa_cannon.protecting_section)
-//		var/list/remaining_crash_sites = almayer_ship_sections.Copy()
+	if(target_ship_section == GLOB.almayer_aa_cannon.protecting_section)
+//		var/list/remaining_crash_sites = GLOB.almayer_ship_sections.Copy()
 //		remaining_crash_sites -= target_ship_section
 		var/turf/target = get_crashcolony_turf()
 		var/turf/offset_target = locate(target.x + HIJACK_CRASH_SITE_OFFSET_X, target.y + HIJACK_CRASH_SITE_OFFSET_Y, target.z)
@@ -136,9 +129,9 @@
 					shake_camera(M, 60, 2)
 			playsound_area(internal_area, 'sound/effects/antiair_explosions.ogg')
 		ferry_crashed = TRUE
-		almayer_aa_cannon.recharging = TRUE
+		GLOB.almayer_aa_cannon.recharging = TRUE
 	hijacked_bypass_aa = TRUE
-	almayer_aa_cannon.protecting_section = ""
+	GLOB.almayer_aa_cannon.protecting_section = ""
 
 
 
@@ -181,7 +174,7 @@
 	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/dropship_crash.ogg', volume = 75)
 
 /datum/dropship_hijack/almayer/proc/disable_latejoin()
-	enter_allowed = FALSE
+	GLOB.enter_allowed = FALSE
 
 /datum/dropship_hijack/almayer/proc/get_crashsite_turf(ship_section)
 	var/list/turfs = list()
@@ -228,7 +221,7 @@
 			turfs += get_area_turfs(/area/almayer/squads/req)
 		if("Lower deck Aftship")
 			turfs += get_area_turfs(/area/almayer/living/cryo_cells)
-			turfs += get_area_turfs(/area/almayer/engineering/engineering_workshop)
+			turfs += get_area_turfs(/area/almayer/engineering/lower/workshop)
 		else
 			CRASH("Crash site [ship_section] unknown.")
 	return pick(turfs)

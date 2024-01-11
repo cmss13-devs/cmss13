@@ -109,13 +109,12 @@
 	return
 
 /obj/structure/machinery/recharge_station/emp_act(severity)
+	. = ..()
 	if(inoperable())
-		..(severity)
 		return
 	if(occupant)
 		occupant.emp_act(severity)
 		go_out()
-	..(severity)
 
 /obj/structure/machinery/recharge_station/update_icon()
 	..()

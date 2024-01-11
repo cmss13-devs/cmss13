@@ -32,6 +32,8 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 
 /obj/structure/closet/secure_closet/securecom/Initialize()
 	. = ..()
+	new /obj/item/storage/box/kit/honorguard(src)
+	new /obj/item/storage/box/kit/honorguard(src)
 	GLOB.co_secure_boxes += src
 
 /obj/structure/closet/secure_closet/securecom/Destroy()
@@ -104,7 +106,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	new /obj/item/clothing/shoes/marine(src)
 	new /obj/item/storage/belt/gun/m4a3(src)
 	new /obj/item/storage/backpack/marine/satchel/intel(src)
-	new /obj/item/clothing/suit/storage/marine/rto/intel(src)
+	new /obj/item/clothing/suit/storage/marine/medium/rto/intel(src)
 	new /obj/item/storage/pouch/document(src)
 	new /obj/item/storage/pouch/document(src)
 	new /obj/item/device/motiondetector/intel(src)
@@ -178,7 +180,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 
 /obj/structure/closet/secure_closet/warrant_officer
 	name = "chief MP's locker"
-	req_access = list(ACCESS_MARINE_BRIG)
+	req_access = list(ACCESS_MARINE_ARMORY)
 	icon_state = "secure_locked_warrant"
 	icon_closed = "secure_unlocked_warrant"
 	icon_locked = "secure_locked_warrant"

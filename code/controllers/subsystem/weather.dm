@@ -1,4 +1,4 @@
-var/list/weather_notify_objects = list()
+GLOBAL_LIST_EMPTY(weather_notify_objects)
 
 SUBSYSTEM_DEF(weather)
 	name   = "Weather"
@@ -46,7 +46,7 @@ SUBSYSTEM_DEF(weather)
 
 /datum/controller/subsystem/weather/proc/setup_weather_areas()
 	weather_areas = list()
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.all_areas)
 		if(A.weather_enabled && map_holder.should_affect_area(A))
 			weather_areas += A
 

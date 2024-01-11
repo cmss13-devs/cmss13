@@ -24,7 +24,7 @@
 	message_admins("[key_name_admin(usr)] modified [key_name(M)]'s ckey to [new_ckey]", 1)
 
 	M.ckey = new_ckey
-	M.client?.change_view(world_view_size)
+	M.client?.change_view(GLOB.world_view_size)
 
 /client/proc/cmd_admin_changekey(mob/O in GLOB.mob_list)
 	set name = "Change CKey"
@@ -72,13 +72,13 @@
 	var/datum/mob_hud/H
 	switch(hud_choice)
 		if("Medical HUD")
-			H = huds[MOB_HUD_MEDICAL_ADVANCED]
+			H = GLOB.huds[MOB_HUD_MEDICAL_ADVANCED]
 		if("Security HUD")
-			H = huds[MOB_HUD_SECURITY_ADVANCED]
+			H = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 		if("Squad HUD")
-			H = huds[MOB_HUD_FACTION_OBSERVER]
+			H = GLOB.huds[MOB_HUD_FACTION_OBSERVER]
 		if("Xeno Status HUD")
-			H = huds[MOB_HUD_XENO_STATUS]
+			H = GLOB.huds[MOB_HUD_XENO_STATUS]
 		else return
 
 	H.add_hud_to(M, HUD_SOURCE_ADMIN)
@@ -220,7 +220,7 @@
 				"Narrating as [selected.name]")
 	if(!message) return
 
-	var/list/heard = get_mobs_in_view(world_view_size, selected)
+	var/list/heard = get_mobs_in_view(GLOB.world_view_size, selected)
 
 	switch(type)
 		if(NARRATION_METHOD_SAY)

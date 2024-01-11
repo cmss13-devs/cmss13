@@ -12,7 +12,7 @@
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station)
 "ad" = (
-/turf/open/floor/almayer{
+/turf/open/floor/tdome{
 	dir = 5;
 	icon_state = "plating"
 	},
@@ -27,7 +27,7 @@
 	id = "tdome_observer";
 	name = "\improper Observer Shutters"
 	},
-/turf/open/floor/almayer{
+/turf/open/floor/tdome{
 	dir = 5;
 	icon_state = "plating"
 	},
@@ -63,7 +63,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/turf/open/floor/almayer{
+/turf/open/floor/tdome{
 	dir = 5;
 	icon_state = "plating"
 	},
@@ -72,7 +72,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/turf/open/floor/almayer{
+/turf/open/floor/tdome{
 	dir = 5;
 	icon_state = "plating"
 	},
@@ -83,7 +83,7 @@
 	id = "tdome_t2";
 	name = "\improper Team 2 Shutters"
 	},
-/turf/open/floor/almayer{
+/turf/open/floor/tdome{
 	icon_state = "test_floor4"
 	},
 /area/tdome)
@@ -101,7 +101,7 @@
 /turf/open/space,
 /area/space)
 "aE" = (
-/turf/open/floor/almayer{
+/turf/open/floor/tdome{
 	dir = 1;
 	icon_state = "w-y0"
 	},
@@ -671,7 +671,7 @@
 /obj/item/device/binoculars{
 	pixel_y = 4
 	},
-/turf/open/floor/almayer{
+/turf/open/floor/tdome{
 	dir = 5;
 	icon_state = "plating"
 	},
@@ -880,7 +880,7 @@
 	},
 /area/adminlevel/ert_station/shuttle_dispatch)
 "wj" = (
-/turf/open/floor/almayer{
+/turf/open/floor/tdome{
 	dir = 1;
 	icon_state = "w-y2"
 	},
@@ -905,7 +905,7 @@
 /area/adminlevel/ert_station)
 "wv" = (
 /obj/structure/machinery/vending/snack,
-/turf/open/floor/almayer{
+/turf/open/floor/tdome{
 	dir = 5;
 	icon_state = "plating"
 	},
@@ -1131,7 +1131,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/turf/open/floor/almayer{
+/turf/open/floor/tdome{
 	dir = 5;
 	icon_state = "plating"
 	},
@@ -1147,7 +1147,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_20"
 	},
-/turf/open/floor/almayer{
+/turf/open/floor/tdome{
 	dir = 5;
 	icon_state = "plating"
 	},
@@ -1261,13 +1261,13 @@
 /turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "DV" = (
-/turf/open/floor/almayer{
+/turf/open/floor/tdome{
 	icon_state = "tcomms"
 	},
 /area/tdome)
 "Ee" = (
 /obj/effect/landmark/thunderdome/one,
-/turf/open/floor/almayer{
+/turf/open/floor/tdome{
 	dir = 5;
 	icon_state = "plating"
 	},
@@ -1359,7 +1359,7 @@
 "Fw" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/fancy/cigar,
-/turf/open/floor/almayer{
+/turf/open/floor/tdome{
 	dir = 5;
 	icon_state = "plating"
 	},
@@ -1623,7 +1623,7 @@
 /turf/closed/wall/mineral/gold,
 /area/adminlevel/ert_station)
 "Kq" = (
-/turf/open/floor/almayer{
+/turf/open/floor/tdome{
 	icon_state = "redfull"
 	},
 /area/tdome/tdome2)
@@ -1722,7 +1722,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
-/turf/open/floor/almayer{
+/turf/open/floor/tdome{
 	dir = 5;
 	icon_state = "plating"
 	},
@@ -1855,7 +1855,7 @@
 /area/adminlevel/ert_station)
 "NU" = (
 /obj/structure/machinery/vending/cola,
-/turf/open/floor/almayer{
+/turf/open/floor/tdome{
 	dir = 5;
 	icon_state = "plating"
 	},
@@ -1921,7 +1921,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/turf/open/floor/almayer{
+/turf/open/floor/tdome{
 	dir = 5;
 	icon_state = "plating"
 	},
@@ -1951,13 +1951,13 @@
 /area/adminlevel/simulation)
 "PF" = (
 /obj/effect/landmark/thunderdome/two,
-/turf/open/floor/almayer{
+/turf/open/floor/tdome{
 	dir = 5;
 	icon_state = "plating"
 	},
 /area/tdome/tdome2)
 "PJ" = (
-/turf/open/floor/almayer{
+/turf/open/floor/tdome{
 	dir = 1;
 	icon_state = "w-y1"
 	},
@@ -2025,7 +2025,7 @@
 /area/adminlevel/ert_station)
 "QL" = (
 /obj/structure/bed/chair/comfy/black,
-/turf/open/floor/almayer{
+/turf/open/floor/tdome{
 	icon_state = "tcomms"
 	},
 /area/tdome/tdomeobserve)
@@ -2079,7 +2079,7 @@
 	id = "tdome_t1";
 	name = "\improper Team 1 Shutters"
 	},
-/turf/open/floor/almayer{
+/turf/open/floor/tdome{
 	icon_state = "test_floor4"
 	},
 /area/tdome)
@@ -2149,7 +2149,7 @@
 	name = "Observer Shutters";
 	pixel_y = 9
 	},
-/turf/open/floor/almayer{
+/turf/open/floor/tdome{
 	dir = 5;
 	icon_state = "plating"
 	},
@@ -2297,7 +2297,7 @@
 /area/adminlevel/ert_station)
 "VD" = (
 /obj/structure/machinery/vending/cigarette/free,
-/turf/open/floor/almayer{
+/turf/open/floor/tdome{
 	dir = 5;
 	icon_state = "plating"
 	},
@@ -2467,7 +2467,7 @@
 	},
 /area/adminlevel/ert_station)
 "YP" = (
-/turf/open/floor/almayer{
+/turf/open/floor/tdome{
 	dir = 5;
 	icon_state = "plating"
 	},
@@ -2482,7 +2482,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station)
 "Zd" = (
-/turf/open/floor/almayer{
+/turf/open/floor/tdome{
 	icon_state = "bluefull"
 	},
 /area/tdome/tdome1)

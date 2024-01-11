@@ -160,7 +160,7 @@
 //damages human that comes in contact
 /obj/effect/xenomorph/spray/proc/apply_spray(mob/living/carbon/H, should_stun = TRUE)
 
-	if(!H.lying)
+	if(H.body_position == STANDING_UP)
 		to_chat(H, SPAN_DANGER("Your feet scald and burn! Argh!"))
 		if(ishuman(H))
 			H.emote("pain")
@@ -264,7 +264,7 @@
 		else
 			PAS.increment_stack_count(2)
 
-		if(!H.lying)
+		if(H.body_position == STANDING_UP)
 			to_chat(H, SPAN_DANGER("Your feet scald and burn! Argh!"))
 			H.emote("pain")
 			H.last_damage_data = cause_data
@@ -326,11 +326,11 @@
 	handle_weather()
 	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, PROC_REF(handle_weather))
 	RegisterSignal(acid_t, COMSIG_PARENT_QDELETING, PROC_REF(cleanup))
-	START_PROCESSING(SSeffects, src)
+	START_PROCESSING(SSoldeffects, src)
 
 /obj/effect/xenomorph/acid/Destroy()
 	acid_t = null
-	STOP_PROCESSING(SSeffects, src)
+	STOP_PROCESSING(SSoldeffects, src)
 	. = ..()
 
 /obj/effect/xenomorph/acid/proc/cleanup()
@@ -489,29 +489,32 @@
 /obj/effect/xenomorph/xeno_telegraph
 	name = "???"
 	desc = ""
-	icon_state = "xeno_telegraph_red"
+	icon_state = "xeno_telegraph_base"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
-/obj/effect/xenomorph/xeno_telegraph/New(loc, ttl = 10)
+/// Icon is by default a white sprite, provide an rgb hex code #RRGGBB argument to change.
+/obj/effect/xenomorph/xeno_telegraph/New(loc, ttl = 10, color = null)
 	..(loc)
+	if(color)
+		src.color = color
 	QDEL_IN(src, ttl)
 
 /obj/effect/xenomorph/xeno_telegraph/red
-	icon_state = "xeno_telegraph_red"
+	color = COLOR_DARK_RED
 
 /obj/effect/xenomorph/xeno_telegraph/brown
-	icon_state = "xeno_telegraph_brown"
+	color = COLOR_BROWN
 
 /obj/effect/xenomorph/xeno_telegraph/green
-	icon_state = "xeno_telegraph_green"
+	color = COLOR_LIGHT_GREEN
 
-/obj/effect/xenomorph/xeno_telegraph/brown/abduct_hook
+/// This has a brown icon state and does not have a color overlay by default.
+/obj/effect/xenomorph/xeno_telegraph/abduct_hook
 	icon_state = "xeno_telegraph_abduct_hook_anim"
 
-/obj/effect/xenomorph/xeno_telegraph/brown/lash
+/// This has a brown icon state and does not have a color overlay by default.
+/obj/effect/xenomorph/xeno_telegraph/lash
 	icon_state = "xeno_telegraph_lash"
-
-
 
 /obj/effect/xenomorph/acid_damage_delay
 	name = "???"

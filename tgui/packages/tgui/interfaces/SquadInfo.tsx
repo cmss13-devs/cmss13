@@ -135,7 +135,7 @@ const FireTeam = (props: { ft: string }, context) => {
       fireteam?.tl?.name === 'Not assigned' ||
       fireteam?.tl?.name === 'Unassigned' ||
       fireteam?.tl?.name === undefined);
-  const rankList = ['Mar', 'ass', 'Med', 'Eng', 'SG', 'Spc', 'RTO', 'SL'];
+  const rankList = ['Mar', 'ass', 'Med', 'Eng', 'SG', 'Spc', 'TL', 'SL'];
   const rankSort = (a: SquadMarineEntry, b: SquadMarineEntry) => {
     if (a.rank === 'Mar' && b.rank === 'Mar') {
       return a.paygrade === 'PFC' ? -1 : 1;
@@ -283,7 +283,7 @@ const SquadObjectives = (props, context) => {
 };
 
 export const SquadInfo = (_, context) => {
-  const { config, data } = useBackend<SquadProps>(context);
+  const { data } = useBackend<SquadProps>(context);
   const fireteams = ['FT1', 'FT2', 'FT3', 'Unassigned'];
 
   return (

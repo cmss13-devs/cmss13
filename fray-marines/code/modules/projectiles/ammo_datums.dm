@@ -88,7 +88,7 @@
 	var/effect_max = 20 SECONDS
 	var/resin_type = /obj/effect/alien/resin/sticky/thin
 
-/datum/ammo/xeno/sticky/on_hit_mob(mob/M,obj/projectile/P)
+/datum/ammo/xeno/sticky/on_hit_mob(mob/living/M,obj/projectile/P)
 	if (!isxeno(M))
 		var/add_time = M.superslowed + effect_time / 10
 		M.SetSuperslow(min(add_time, effect_max / 10))
@@ -131,7 +131,7 @@
 	effect_time = 5 SECONDS
 	resin_type = /obj/effect/alien/resin/sticky
 
-/datum/ammo/xeno/sticky/strong/on_hit_mob(mob/M,obj/projectile/P)
+/datum/ammo/xeno/sticky/strong/on_hit_mob(mob/living/M,obj/projectile/P)
 	. =	..()
 
 	if (!isxeno(M))
@@ -160,7 +160,7 @@
 	heal_xeno_in_radius(get_turf(O), P)
 
 /datum/ammo/xeno/sticky/heal/on_hit_turf(turf/T,obj/projectile/P)
-	var/turf/center = T.density && heal_range ? get_step(T,reverse_dir[P.dir]) : T
+	var/turf/center = T.density && heal_range ? get_step(T, GLOB.reverse_dir[P.dir]) : T
 	heal_xeno_in_radius(center, P)
 
 /datum/ammo/xeno/sticky/heal/do_at_max_range(obj/projectile/P)

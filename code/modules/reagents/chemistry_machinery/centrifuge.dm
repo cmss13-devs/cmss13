@@ -89,7 +89,7 @@
 		tgui_interact(user)
 		return
 	if(output_container)
-		to_chat(user, SPAN_NOTICE("You remove the [output_container] from the [src]."))
+		to_chat(user, SPAN_NOTICE("You remove [output_container] from the [src]."))
 		user.put_in_active_hand(output_container)
 		output_container = null
 		if(input_container)
@@ -97,7 +97,7 @@
 		else
 			icon_state = "centrifuge_empty_open"
 	else if(input_container)
-		to_chat(user, SPAN_NOTICE("You remove the [input_container] from the [src]."))
+		to_chat(user, SPAN_NOTICE("You remove [input_container] from the [src]."))
 		user.put_in_active_hand(input_container)
 		input_container = null
 		icon_state = "centrifuge_empty_open"

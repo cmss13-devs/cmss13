@@ -16,7 +16,7 @@
 		else
 			E.process()
 
-			if(!lying && world.time - l_move_time < 15)
+			if(body_position == STANDING_UP && world.time - l_move_time < 15)
 			// Moving around with fractured ribs won't do you any good
 				if(E.is_broken() && E.internal_organs && prob(15))
 					var/datum/internal_organ/I = pick(E.internal_organs)
@@ -34,7 +34,7 @@
 					pain.apply_pain(damage * 1.5)
 					heartbeating(src)
 
-	if(!lying && !buckled && prob(2))
+	if(body_position == STANDING_UP && !buckled && prob(2))
 		var/left_leg_crippled = FALSE
 		var/right_leg_crippled = FALSE
 

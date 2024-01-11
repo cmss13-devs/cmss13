@@ -37,7 +37,7 @@
 
 /datum/action/item_action/specialist/yautja_aimed_shot/can_use_action()
 	var/mob/living/carbon/human/H = owner
-	if(istype(H) && !H.is_mob_incapacitated() && !H.lying && holder_item)
+	if(istype(H) && !H.is_mob_incapacitated() && !H.resting && holder_item)
 		return TRUE
 
 /datum/action/item_action/specialist/yautja_aimed_shot/proc/use_ability(atom/A)

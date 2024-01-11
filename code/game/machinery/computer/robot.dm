@@ -51,11 +51,11 @@
 				dat += "[R.name] |"
 				if(R.stat)
 					dat += " Not Responding |"
-				else if (!R.canmove)
+				else if (HAS_TRAIT_FROM(R, TRAIT_IMMOBILIZED, HACKED_TRAIT))
 					dat += " Locked Down |"
 				else
 					dat += " Operating Normally |"
-				if(R.canmove && R.cell)
+				if(R.cell)
 					dat += " Battery Installed ([R.cell.charge]/[R.cell.maxcharge]) |"
 				else
 					dat += " No Cell Installed |"
@@ -70,7 +70,8 @@
 				if (isRemoteControlling(user))
 					if((user.mind.original == user))
 						dat += "<A href='?src=\ref[src];magbot=\ref[R]'>(<font color=blue><i>Hack</i></font>)</A> "
-				dat += "<A href='?src=\ref[src];stopbot=\ref[R]'>(<font color=green><i>[R.canmove ? "Lockdown" : "Release"]</i></font>)</A> "
+				var/canmove = HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, HACKED_TRAIT)
+				dat += "<A href='?src=\ref[src];stopbot=\ref[R]'>(<font color=green><i>[canmove ? "Lockdown" : "Release"]</i></font>)</A> "
 				dat += "<A href='?src=\ref[src];killbot=\ref[R]'>(<font color=red><i>Destroy</i></font>)</A>"
 				dat += "<BR>"
 			dat += "<A href='?src=\ref[src];screen=0'>(Return to Main Menu)</A><BR>"
@@ -161,20 +162,22 @@
 		else if (href_list["stopbot"])
 			if(src.allowed(usr))
 				var/mob/living/silicon/robot/R = locate(href_list["stopbot"])
+				var/canmove = HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, HACKED_TRAIT)
 				if(R && istype(R)) // Extra sancheck because of input var references
-					var/choice = tgui_input_list(usr, "Are you certain you wish to [R.canmove ? "lock down" : "release"] [R.name]?", "Hack machine", list("Confirm", "Abort"))
+					var/choice = tgui_input_list(usr, "Are you certain you wish to [canmove ? "lock down" : "release"] [R.name]?", "Hack machine", list("Confirm", "Abort"))
 					if(choice == "Confirm")
 						if(R && istype(R))
-							message_admins("[key_name_admin(usr)] [R.canmove ? "locked down" : "released"] [R.name]!")
-							log_game("[key_name(usr)] [R.canmove ? "locked down" : "released"] [R.name]!")
-							R.canmove = !R.canmove
+							message_admins("[key_name_admin(usr)] [canmove ? "locked down" : "released"] [R.name]!")
+							log_game("[key_name(usr)] [canmove ? "locked down" : "released"] [R.name]!")
+							if(canmove)
+								ADD_TRAIT(src, TRAIT_IMMOBILIZED, HACKED_TRAIT)
+							else
+								REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, HACKED_TRAIT)
 							if (R.lockcharge)
-							// R.cell.charge = R.lockcharge
 								R.lockcharge = !R.lockcharge
 								to_chat(R, "Your lockdown has been lifted!")
 							else
 								R.lockcharge = !R.lockcharge
-						// R.cell.charge = 0
 								to_chat(R, "You have been locked down!")
 
 			else

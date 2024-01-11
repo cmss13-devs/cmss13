@@ -19,6 +19,7 @@
 	var/force_level_absorption = 5 //How much force an item needs to even damage it at all.
 	var/barricade_hitsound
 	var/barricade_type = "barricade" //"metal", "plasteel", etc.
+	var/wire_icon = 'icons/obj/structures/barricades.dmi' //! Icon file used for the wiring
 	var/can_change_dmg_state = TRUE
 	var/damage_state = BARRICADE_DMG_NONE
 	var/closed = FALSE
@@ -102,9 +103,9 @@
 
 	if(is_wired)
 		if(!closed)
-			overlays += image('icons/obj/structures/barricades.dmi', icon_state = "[src.barricade_type]_wire")
+			overlays += image(wire_icon, icon_state = "[barricade_type]_wire")
 		else
-			overlays += image('icons/obj/structures/barricades.dmi', icon_state = "[src.barricade_type]_closed_wire")
+			overlays += image(wire_icon, icon_state = "[barricade_type]_closed_wire")
 
 	..()
 

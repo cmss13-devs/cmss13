@@ -124,7 +124,7 @@ CULT
 
 /datum/action/human_action/activable/can_use_action()
 	var/mob/living/carbon/human/H = owner
-	if(istype(H) && !H.is_mob_incapacitated() && !H.dazed)
+	if(istype(H) && !H.is_mob_incapacitated() && !HAS_TRAIT(H, TRAIT_DAZED))
 		return TRUE
 
 // Called when the action is clicked on.
@@ -465,22 +465,20 @@ CULT
 		return
 
 	to_chat(chosen, SPAN_HIGHDANGER("You feel a dangerous presence in the back of your head. You find yourself unable to move!"))
-
-	chosen.frozen = TRUE
-	chosen.update_canmove()
+	ADD_TRAIT(chosen, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Cultist Stun"))
 
 	chosen.update_xeno_hostile_hud()
 
 	if(!do_after(H, 2 SECONDS, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE, chosen, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		to_chat(H, SPAN_XENOMINORWARNING("You decide not to stun [chosen]."))
-		unroot_human(chosen)
+		unroot_human(chosen, TRAIT_SOURCE_ABILITY("Cultist Stun"))
 
 		enter_cooldown(5 SECONDS)
 		return
 
 	enter_cooldown()
 
-	unroot_human(chosen)
+	unroot_human(chosen, TRAIT_SOURCE_ABILITY("Cultist Stun"))
 
 	chosen.apply_effect(10, PARALYZE)
 	chosen.make_jittery(105)
@@ -568,7 +566,7 @@ CULT
 
 	H.cancel_camera()
 	H.reset_view()
-	H.client.change_view(world_view_size, target)
+	H.client.change_view(GLOB.world_view_size, target)
 	H.client.pixel_x = 0
 	H.client.pixel_y = 0
 
@@ -600,7 +598,7 @@ CULT
 		remove_from(H)
 
 	H.unset_interaction()
-	H.client.change_view(world_view_size, target)
+	H.client.change_view(GLOB.world_view_size, target)
 	H.client.pixel_x = 0
 	H.client.pixel_y = 0
 	H.reset_view()

@@ -29,7 +29,7 @@
 		leader = mob
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Contractor Team Leader of Vanguard's Arrow Incorporated!"))
 		arm_equipment(mob, /datum/equipment_preset/contractor/duty/leader, TRUE, TRUE)
-	else if(synths < max_synths && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_SYNTH) && RoleAuthority.roles_whitelist[mob.ckey] & WHITELIST_SYNTHETIC)
+	else if(synths < max_synths && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_SYNTH) && GLOB.RoleAuthority.roles_whitelist[mob.ckey] & WHITELIST_SYNTHETIC)
 		synths++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Contractor Support Synthetic of Vanguard's Arrow Incorporated!"))
 		arm_equipment(mob, /datum/equipment_preset/contractor/duty/synth, TRUE, TRUE)
@@ -117,13 +117,13 @@
 	var/mob/living/carbon/human/H = new(spawn_loc)
 	H.key = M.key
 	if(H.client)
-		H.client.change_view(world_view_size)
+		H.client.change_view(GLOB.world_view_size)
 
 	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))    //First one spawned is always the leader.
 		leader = H
 		to_chat(H, SPAN_ROLE_HEADER("You are a Covert Contractor Team Leader of Vanguard's Arrow Incorporated!"))
 		arm_equipment(H, /datum/equipment_preset/contractor/covert/leader, TRUE, TRUE)
-	else if(synths < max_synths && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SYNTH) && RoleAuthority.roles_whitelist[H.ckey] & WHITELIST_SYNTHETIC)
+	else if(synths < max_synths && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SYNTH) && GLOB.RoleAuthority.roles_whitelist[H.ckey] & WHITELIST_SYNTHETIC)
 		synths++
 		to_chat(H, SPAN_ROLE_HEADER("You are a Contractor Support Synthetic of Vanguard's Arrow Incorporated!"))
 		arm_equipment(H, /datum/equipment_preset/contractor/covert/synth, TRUE, TRUE)

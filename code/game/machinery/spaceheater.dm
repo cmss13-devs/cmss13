@@ -40,12 +40,11 @@
 
 
 /obj/structure/machinery/space_heater/emp_act(severity)
+	. = ..()
 	if(inoperable())
-		..(severity)
 		return
 	if(cell)
 		cell.emp_act(severity)
-	..(severity)
 
 /obj/structure/machinery/space_heater/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/cell))
@@ -67,7 +66,7 @@
 			return
 	else if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
 		open = !open
-		user.visible_message(SPAN_NOTICE("[user] [open ? "opens" : "closes"] the hatch on the [src]."), SPAN_NOTICE("You [open ? "open" : "close"] the hatch on the [src]."))
+		user.visible_message(SPAN_NOTICE("[user] [open ? "opens" : "closes"] the hatch on [src]."), SPAN_NOTICE("You [open ? "open" : "close"] the hatch on [src]."))
 		update_icon()
 		if(!open && user.interactee == src)
 			close_browser(user, "spaceheater")
@@ -108,7 +107,7 @@
 			start_processing()
 		else
 			stop_processing()
-		user.visible_message(SPAN_NOTICE("[user] switches [on ? "on" : "off"] the [src]."),SPAN_NOTICE("You switch [on ? "on" : "off"] the [src]."))
+		user.visible_message(SPAN_NOTICE("[user] switches [on ? "on" : "off"] [src]."),SPAN_NOTICE("You switch [on ? "on" : "off"] [src]."))
 		update_icon()
 	return
 
@@ -187,4 +186,3 @@
 	name = "radiator"
 	desc = "It's a radiator. It heats the room through convection with hot water. This one has a red handle."
 	icon_state = "radiator-r"
-

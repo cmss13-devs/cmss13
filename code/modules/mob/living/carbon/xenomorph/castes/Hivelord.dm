@@ -8,7 +8,6 @@
 	max_health = XENO_HEALTH_TIER_7
 	plasma_gain = XENO_PLASMA_GAIN_TIER_10
 	plasma_max = XENO_PLASMA_TIER_10
-	crystal_max = XENO_CRYSTAL_HIGH
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_1
 	armor_deflection = XENO_NO_ARMOR
 	evasion = XENO_EVASION_NONE
@@ -55,6 +54,7 @@
 	mob_size = MOB_SIZE_BIG
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 2
+
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
@@ -75,10 +75,15 @@
 		/mob/living/carbon/xenomorph/proc/rename_tunnel,
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
+
 	mutation_type = HIVELORD_NORMAL
 
 	icon_xeno = 'icons/mob/xenos/hivelord.dmi'
 	icon_xenonid = 'icons/mob/xenonids/hivelord.dmi'
+
+	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
+	weed_food_states = list("Hivelord_1","Hivelord_2","Hivelord_3")
+	weed_food_states_flipped = list("Hivelord_1","Hivelord_2","Hivelord_3")
 
 /datum/behavior_delegate/hivelord_base
 	name = "Base Hivelord Behavior Delegate"
@@ -119,7 +124,7 @@
 
 /// This check mainly exists because of the new resin node ability for resin whisperer.
 /mob/living/carbon/xenomorph/hivelord/proc/on_weeds()
-	var/turf/T = get_turf(src)
-	if(locate(/obj/effect/alien/weeds) in T)
+	var/turf/turf = get_turf(src)
+	if(locate(/obj/effect/alien/weeds) in turf)
 		return TRUE
 	return FALSE

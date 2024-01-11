@@ -163,8 +163,10 @@
 
 /datum/reagent/drink/milk/on_mob_life(mob/living/M)
 	. = ..()
-	if(!.) return
-	if(M.getBruteLoss() && prob(20)) M.heal_limb_damage(1,0)
+	if(!.)
+		return
+	if(M.getBruteLoss() && prob(20))
+		M.heal_limb_damage(1,0)
 	holder.remove_reagent("capsaicin", 10*REAGENTS_METABOLISM)
 	holder.remove_reagent("hotsauce", 10*REAGENTS_METABOLISM)
 
@@ -555,7 +557,7 @@
 /datum/reagent/neurotoxin/on_mob_life(mob/living/carbon/M)
 	. = ..()
 	if(!.) return
-	M.knocked_down = max(M.knocked_down, 3)
+	M.KnockDown(5)
 	if(!data) data = 1
 	data++
 	M.dizziness +=6

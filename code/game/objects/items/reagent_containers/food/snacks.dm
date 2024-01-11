@@ -21,6 +21,7 @@
 	//Placeholder for effect that trigger on eating that aren't tied to reagents.
 /obj/item/reagent_container/food/snacks/proc/On_Consume(mob/M)
 	SEND_SIGNAL(src, COMSIG_SNACK_EATEN, M)
+	SEND_SIGNAL(M, COMSIG_MOB_EATEN_SNACK, src)
 	if(!usr) return
 
 	if(!reagents.total_volume)
@@ -42,7 +43,7 @@
 	..()
 
 	if (world.time <= user.next_move)
-		return
+		return FALSE
 	attack(user, user, "head")//zone does not matter
 	user.next_move += attack_speed
 
@@ -51,24 +52,24 @@
 		to_chat(user, SPAN_DANGER("None of [src] left, oh no!"))
 		M.drop_inv_item_on_ground(src) //so icons update :[
 		qdel(src)
-		return 0
+		return FALSE
 
 	if(package)
 		to_chat(M, SPAN_WARNING("How do you expect to eat this with the package still on?"))
-		return 0
+		return FALSE
 
 	if(istype(M, /mob/living/carbon))
 		var/mob/living/carbon/C = M
 		var/fullness = M.nutrition + (M.reagents.get_reagent_amount("nutriment") * 25)
 		if(fullness > NUTRITION_HIGH && world.time < C.overeat_cooldown)
 			to_chat(user, SPAN_WARNING("[user == M ? "You" : "They"] don't feel like eating more right now."))
-			return
+			return FALSE
 		if(issynth(C))
 			fullness = 200 //Synths never get full
 
 		if(HAS_TRAIT(M, TRAIT_CANNOT_EAT)) //Do not feed the Working Joes
 			to_chat(user, SPAN_DANGER("[user == M ? "You are" : "[M] is"] unable to eat!"))
-			return
+			return FALSE
 
 		if(fullness > NUTRITION_HIGH)
 			C.overeat_cooldown = world.time + OVEREAT_TIME
@@ -120,9 +121,9 @@
 					reagents.trans_to_ingest(M, reagents.total_volume)
 				bitecount++
 				On_Consume(M)
-			return 1
+			return TRUE
 
-	return 0
+	return FALSE
 
 /obj/item/reagent_container/food/snacks/afterattack(obj/target, mob/user, proximity)
 	return ..()
@@ -217,10 +218,10 @@
 	if(isanimal(M))
 		if(iscorgi(M))
 			if(bitecount == 0 || prob(50))
-				M.emote("nibbles away at the [src]")
+				M.emote("nibbles away at [src]")
 			bitecount++
 			if(bitecount >= 5)
-				var/sattisfaction_text = pick("burps from enjoyment", "yaps for more", "woofs twice", "looks at the area where the [src] was")
+				var/sattisfaction_text = pick("burps from enjoyment", "yaps for more", "woofs twice", "looks at the area where [src] was")
 				if(sattisfaction_text)
 					M.emote("[sattisfaction_text]")
 				qdel(src)
@@ -2801,7 +2802,7 @@
 	if( open && pizza )
 		user.put_in_hands( pizza )
 
-		to_chat(user, SPAN_DANGER("You take the [src.pizza] out of the [src]."))
+		to_chat(user, SPAN_DANGER("You take the [src.pizza] out of [src]."))
 		src.pizza = null
 		update_icon()
 		return
@@ -2852,11 +2853,11 @@
 				box.update_icon()
 				update_icon()
 
-				to_chat(user, SPAN_DANGER("You put the [box] ontop of the [src]!"))
+				to_chat(user, SPAN_DANGER("You put [box] ontop of [src]!"))
 			else
 				to_chat(user, SPAN_DANGER("The stack is too high!"))
 		else
-			to_chat(user, SPAN_DANGER("Close the [box] first!"))
+			to_chat(user, SPAN_DANGER("Close [box] first!"))
 
 		return
 
@@ -2868,9 +2869,9 @@
 
 			update_icon()
 
-			to_chat(user, SPAN_DANGER("You put the [I] in the [src]!"))
+			to_chat(user, SPAN_DANGER("You put [I] in [src]!"))
 		else
-			to_chat(user, SPAN_DANGER("You try to push the [I] through the lid but it doesn't work!"))
+			to_chat(user, SPAN_DANGER("You try to push [I] through the lid but it doesn't work!"))
 		return
 
 	if( istype(I, /obj/item/tool/pen/) )
@@ -3131,6 +3132,7 @@
 	icon_state = "packaged-burrito"
 	bitesize = 2
 	package = 1
+	flags_obj = OBJ_NO_HELMET_BAND|OBJ_IS_HELMET_GARB
 
 /obj/item/reagent_container/food/snacks/packaged_burrito/Initialize()
 	. = ..()
@@ -3174,6 +3176,7 @@
 	name = "Packaged Hotdog"
 	desc = "A singular squishy, room temperature, hot dog. There's no time given for how long to cook it, so you assume its probably good to go. Packaged by the Weyland-Yutani Corporation."
 	icon_state = "packaged-hotdog"
+	flags_obj = OBJ_NO_HELMET_BAND|OBJ_IS_HELMET_GARB
 	bitesize = 2
 	package = 1
 

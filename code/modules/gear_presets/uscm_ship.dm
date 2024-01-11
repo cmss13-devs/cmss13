@@ -45,7 +45,7 @@
 	)
 	assignment = JOB_CORPORATE_LIAISON
 	rank = JOB_CORPORATE_LIAISON
-	paygrade = "WYC2"
+	paygrade = PAY_SHORT_WYC2
 	role_comm_title = "CL"
 	skills = /datum/skills/civilian
 
@@ -104,11 +104,11 @@
 		var/playtime = get_job_playtime(new_human.client, rank)
 		if(new_human.client.prefs.playtime_perks)
 			if(playtime > JOB_PLAYTIME_TIER_4)
-				return "WYC5"
+				return PAY_SHORT_WYC5
 			else if(playtime > JOB_PLAYTIME_TIER_3)
-				return "WYC4"
+				return PAY_SHORT_WYC4
 			else if(playtime > JOB_PLAYTIME_TIER_2)
-				return "WYC3"
+				return PAY_SHORT_WYC3
 			else
 				return paygrade
 	return paygrade
@@ -134,7 +134,7 @@
 	)
 	assignment = JOB_COMBAT_REPORTER
 	rank = JOB_COMBAT_REPORTER
-	paygrade = "C"
+	paygrade = PAY_SHORT_CIV
 	role_comm_title = "PRESS"
 	skills = /datum/skills/civilian
 	idtype = /obj/item/card/id/silver/cl
@@ -166,7 +166,7 @@
 	)
 	assignment = JOB_COMBAT_REPORTER
 	rank = JOB_COMBAT_REPORTER
-	paygrade = "ME4"
+	paygrade = PAY_SHORT_ME4
 	role_comm_title = "CC"
 	skills = /datum/skills/pfc
 	idtype = /obj/item/card/id/dogtag
@@ -218,7 +218,7 @@
 	)
 	assignment = JOB_CHIEF_ENGINEER
 	rank = JOB_CHIEF_ENGINEER
-	paygrade = "MO1"
+	paygrade = PAY_SHORT_MO1
 	role_comm_title = "CE"
 	minimum_age = 27
 	skills = /datum/skills/CE
@@ -254,7 +254,7 @@
 	)
 	assignment = JOB_MAINT_TECH
 	rank = JOB_MAINT_TECH
-	paygrade = "ME2"
+	paygrade = PAY_SHORT_ME2
 	role_comm_title = "MT"
 	skills = /datum/skills/MT
 
@@ -282,7 +282,7 @@
 /datum/equipment_preset/uscm_ship/maint/load_rank(mob/living/carbon/human/new_human)
 	if(new_human.client)
 		if(get_job_playtime(new_human.client, rank) < JOB_PLAYTIME_TIER_1)
-			return "ME1"
+			return PAY_SHORT_ME1
 	return paygrade
 
 //*****************************************************************************************************/
@@ -300,7 +300,7 @@
 	)
 	assignment = JOB_ORDNANCE_TECH
 	rank = JOB_ORDNANCE_TECH
-	paygrade = "ME2"
+	paygrade = PAY_SHORT_ME2
 	role_comm_title = "OT"
 	skills = /datum/skills/OT
 
@@ -341,7 +341,7 @@
 	)
 	assignment = JOB_CHIEF_REQUISITION
 	rank = JOB_CHIEF_REQUISITION
-	paygrade = "ME7"
+	paygrade = PAY_SHORT_ME7
 	role_comm_title = "QM"
 	minimum_age = 27
 	skills = /datum/skills/RO
@@ -374,7 +374,7 @@
 	access = list(ACCESS_MARINE_CARGO, ACCESS_MARINE_PREP)
 	assignment = JOB_CARGO_TECH
 	rank = JOB_CARGO_TECH
-	paygrade = "ME2"
+	paygrade = PAY_SHORT_ME2
 	role_comm_title = "CT"
 	skills = /datum/skills/CT
 
@@ -399,7 +399,7 @@
 /datum/equipment_preset/uscm_ship/cargo/load_rank(mob/living/carbon/human/new_human)
 	if(new_human.client)
 		if(get_job_playtime(new_human.client, rank) < JOB_PLAYTIME_TIER_1)
-			return "ME1"
+			return PAY_SHORT_ME1
 	return paygrade
 
 //*****************************************************************************************************/
@@ -411,7 +411,7 @@
 	idtype = /obj/item/card/id/gold
 	assignment = JOB_CO
 	rank = JOB_CO
-	paygrade = "MO4"
+	paygrade = PAY_SHORT_MO4
 	role_comm_title = "CO"
 	minimum_age = 30
 	skills = /datum/skills/commander
@@ -484,7 +484,7 @@
 
 	idtype = /obj/item/card/id/gold/council
 	rank = JOB_CO
-	paygrade = "MO5"
+	paygrade = PAY_SHORT_MO5
 	role_comm_title = "CO"
 	minimum_age = 35
 
@@ -503,7 +503,7 @@
 /datum/equipment_preset/uscm_ship/commander/council/plus
 	name = "USCM Commanding Officer (CO++)"
 	idtype = /obj/item/card/id/general
-	paygrade = "MO6"
+	paygrade = PAY_SHORT_MO6
 
 /datum/equipment_preset/uscm_ship/commander/council/plus/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/commander/councilchief(new_human), WEAR_HEAD)
@@ -518,7 +518,7 @@
 	idtype = /obj/item/card/id/silver
 	assignment = JOB_XO
 	rank = JOB_XO
-	paygrade = "MO3"
+	paygrade = PAY_SHORT_MO3
 	role_comm_title = "XO"
 	minimum_age = 35
 	skills = /datum/skills/XO
@@ -557,7 +557,7 @@
 	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_DATABASE, ACCESS_MARINE_MEDBAY)
 	assignment = JOB_SO
 	rank = JOB_SO
-	paygrade = "MO1"
+	paygrade = PAY_SHORT_MO1
 	role_comm_title = "SO"
 	minimum_age = 25
 	skills = /datum/skills/SO
@@ -590,7 +590,7 @@
 	access
 	assignment = JOB_SEA
 	rank = JOB_SEA
-	paygrade = "ME7"
+	paygrade = PAY_SHORT_ME7
 	role_comm_title = "SEA"
 	minimum_age = 40
 	skills = /datum/skills/SEA
@@ -634,7 +634,7 @@
 	idtype = /obj/item/card/id/silver
 	assignment = JOB_AUXILIARY_OFFICER
 	rank = JOB_AUXILIARY_OFFICER
-	paygrade = "MO2"
+	paygrade = PAY_SHORT_MO2
 	role_comm_title = "ASO"
 	minimum_age = 27
 	skills = /datum/skills/auxiliary_officer
@@ -693,7 +693,7 @@
 	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_PILOT)
 	assignment = JOB_PILOT
 	rank = JOB_PILOT
-	paygrade = "MO1"
+	paygrade = PAY_SHORT_MO1
 	role_comm_title = "DP"
 	skills = /datum/skills/pilot
 
@@ -743,7 +743,7 @@
 	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_PILOT)
 	assignment = JOB_DROPSHIP_CREW_CHIEF
 	rank = JOB_DROPSHIP_CREW_CHIEF
-	paygrade = "ME5"
+	paygrade = PAY_SHORT_ME5
 	role_comm_title = "DCC"
 	skills = /datum/skills/crew_chief
 
@@ -793,7 +793,7 @@
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = "USCM Officer"
 	rank = "USCM Officer"
-	paygrade = "MO3"
+	paygrade = PAY_SHORT_MO3
 	role_comm_title = "Cpt"
 	minimum_age = 40
 	skills = /datum/skills/commander
@@ -833,7 +833,7 @@
 	access = list(ACCESS_MARINE_KITCHEN)
 	assignment = JOB_MESS_SERGEANT
 	rank = JOB_MESS_SERGEANT
-	paygrade = "ME2"
+	paygrade = PAY_SHORT_ME2
 	role_comm_title = "MST"
 	skills = /datum/skills/mess_technician
 
@@ -859,5 +859,5 @@
 /datum/equipment_preset/uscm_ship/chef/load_rank(mob/living/carbon/human/new_human)
 	if(new_human.client)
 		if(get_job_playtime(new_human.client, rank) < JOB_PLAYTIME_TIER_1)
-			return "ME1"
+			return PAY_SHORT_ME1
 	return paygrade

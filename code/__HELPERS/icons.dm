@@ -14,8 +14,7 @@ CHANGING ICONS
 
 Several new procs have been added to the /icon datum to simplify working with icons. To use them,
 remember you first need to setup an /icon var like so:
-
-var/icon/my_icon = new('iconfile.dmi')
+	var/icon/my_icon = new('iconfile.dmi')
 
 icon/ChangeOpacity(amount = 1)
 	A very common operation in DM is to try to make an icon more or less transparent. Making an icon more
@@ -682,8 +681,9 @@ world
  * * moving - whether or not to use a moving state for the given icon
  * * sourceonly - if TRUE, only generate the asset and send back the asset url, instead of tags that display the icon to players
  * * extra_clases - string of extra css classes to use when returning the icon string
+ * * keyonly - if TRUE, only returns the asset key to use get_asset_url manually. Overrides sourceonly.
  */
-/proc/icon2html(atom/thing, client/target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE, extra_classes = null)
+/proc/icon2html(atom/thing, client/target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE, extra_classes = null, keyonly = FALSE)
 	if (!thing)
 		return
 
@@ -714,6 +714,8 @@ world
 				SSassets.transport.register_asset(name, thing)
 			for (var/thing2 in targets)
 				SSassets.transport.send_assets(thing2, name)
+			if(keyonly)
+				return name
 			if(sourceonly)
 				return SSassets.transport.get_asset_url(name)
 			return "<img class='[extra_classes] icon icon-misc' src='[SSassets.transport.get_asset_url(name)]'>"
@@ -756,6 +758,8 @@ world
 		SSassets.transport.register_asset(key, rsc_ref, file_hash, icon_path)
 	for (var/client_target in targets)
 		SSassets.transport.send_assets(client_target, key)
+	if(keyonly)
+		return key
 	if(sourceonly)
 		return SSassets.transport.get_asset_url(key)
 	return "<img class='[extra_classes] icon icon-[icon_state]' src='[SSassets.transport.get_asset_url(key)]'>"

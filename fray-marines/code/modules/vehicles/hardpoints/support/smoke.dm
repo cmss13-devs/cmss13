@@ -8,12 +8,9 @@
 
 	use_muzzle_flash = FALSE
 
-/obj/item/hardpoint/support/flare_launcher/smoke_launcher/fire(mob/user, atom/A)
-	if(ammo.current_rounds <= 0)
-		return
 
-	next_use = world.time + cooldown
 
+/obj/item/hardpoint/support/flare_launcher/smoke_launcher/try_fire(atom/target, mob/living/user, params)
 	var/turf/L
 	var/turf/R
 	switch(owner.dir)
@@ -30,28 +27,17 @@
 			L = locate(owner.x - 4, owner.y + 2, owner.z)
 			R = locate(owner.x - 4, owner.y - 2, owner.z)
 
-	if(LAZYLEN(activation_sounds))
-		playsound(get_turf(src), pick(activation_sounds), 60, 1)
-	fire_projectile(user, L)
+	if(shots_fired)
+		target = R
+	else
+		target = L
 
-	sleep(10)
+	return ..()
 
-	if(LAZYLEN(activation_sounds))
-		playsound(get_turf(src), pick(activation_sounds), 60, 1)
-	fire_projectile(user, R)
-
-	to_chat(user, SPAN_WARNING("Smoke Screen uses left: <b>[SPAN_HELPFUL(ammo ? ammo.current_rounds / 2 : 0)]/[SPAN_HELPFUL(ammo ? ammo.max_rounds / 2 : 0)]</b> | Mags: <b>[SPAN_HELPFUL(LAZYLEN(backup_clips))]/[SPAN_HELPFUL(max_clips)]</b>"))
-
-/obj/item/hardpoint/support/flare_launcher/smoke_launcher/fire_projectile(mob/user, atom/A)
-	set waitfor = 0
-
-	var/turf/origin_turf = get_turf(src)
-	origin_turf = locate(origin_turf.x + origins[1], origin_turf.y + origins[2], origin_turf.z)
-
-	var/obj/projectile/P = generate_bullet(user, origin_turf)
-	SEND_SIGNAL(P, COMSIG_BULLET_USER_EFFECTS, owner.seats[VEHICLE_GUNNER])
-	P.fire_at(A, owner.seats[VEHICLE_GUNNER], src, get_dist(origin_turf, A) + 1, P.ammo.shell_speed)
-	ammo.current_rounds--
+/obj/item/hardpoint/support/flare_launcher/smoke_launcher/get_origin_turf()
+	var/origin_turf = ..()
+	origin_turf = get_step(get_step(origin_turf, owner.dir), owner.dir) //this should get us tile in front of tank to prevent grenade being stuck under us.
+	return origin_turf
 
 /obj/item/ammo_magazine/hardpoint/turret_smoke/apc
 	name = "M-87S Smoke Screen Magazine"

@@ -14,7 +14,7 @@
 
 /datum/action/human_action/yautja_jump/can_use_action()
 	var/mob/living/carbon/human/H = owner
-	if(!H.is_mob_incapacitated() && !H.lying)
+	if(!H.is_mob_incapacitated() && !H.resting)
 		return TRUE
 
 /datum/action/human_action/yautja_jump/action_activate()
@@ -45,7 +45,7 @@
 	if (!A.z)
 		return FALSE
 
-	if (is_mob_incapacitated() || lying)
+	if (is_mob_incapacitated() || resting)
 		to_chat(src, SPAN_WARNING("You're a bit too incapacitated for that."))
 		return FALSE
 

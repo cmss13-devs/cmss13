@@ -28,8 +28,8 @@
 
 //TODO: Integrate defence zones and targeting body parts with the actual organ system, move these into organ definitions.
 
-//The base miss chance for the different defence zones
-var/list/global/base_miss_chance = list(
+/// The base miss chance for the different defence zones
+GLOBAL_LIST_INIT(base_miss_chance, list(
 	"head" = 10,
 	"chest" = 0,
 	"groin" = 5,
@@ -43,11 +43,11 @@ var/list/global/base_miss_chance = list(
 	"r_foot" = 40,
 	"eyes" = 20,
 	"mouth" = 15,
-)
+))
 
 //Used to weight organs when an organ is hit randomly (i.e. not a directed, aimed attack).
 //Also used to weight the protection value that armor provides for covering that body part when calculating protection from full-body effects.
-var/list/global/organ_rel_size = list(
+GLOBAL_LIST_INIT(organ_rel_size, list(
 	"head" = 15,
 	"chest" = 70,
 	"groin" = 30,
@@ -61,10 +61,10 @@ var/list/global/organ_rel_size = list(
 	"r_foot" = 10,
 	"eyes" = 5,
 	"mouth" = 15,
-)
+))
 
 // This is much faster than a string comparison
-var/global/list/limb_types_by_name = list(
+GLOBAL_LIST_INIT(limb_types_by_name, list(
 	"head" = /obj/limb/head,
 	"chest" = /obj/limb/chest,
 	"groin" = /obj/limb/groin,
@@ -76,7 +76,7 @@ var/global/list/limb_types_by_name = list(
 	"r_hand" = /obj/limb/hand/r_hand,
 	"l_foot" = /obj/limb/foot/l_foot,
 	"r_foot" = /obj/limb/foot/r_foot,
-)
+))
 
 /proc/check_zone(zone)
 	if(!zone)
@@ -99,17 +99,17 @@ var/global/list/limb_types_by_name = list(
 	var/rand_zone = zone
 	while (rand_zone == zone)
 		rand_zone = pick (
-			organ_rel_size["head"]; "head",
-			organ_rel_size["chest"]; "chest",
-			organ_rel_size["groin"]; "groin",
-			organ_rel_size["l_arm"]; "l_arm",
-			organ_rel_size["r_arm"]; "r_arm",
-			organ_rel_size["l_leg"]; "l_leg",
-			organ_rel_size["r_leg"]; "r_leg",
-			organ_rel_size["l_hand"]; "l_hand",
-			organ_rel_size["r_hand"]; "r_hand",
-			organ_rel_size["l_foot"]; "l_foot",
-			organ_rel_size["r_foot"]; "r_foot",
+			GLOB.organ_rel_size["head"]; "head",
+			GLOB.organ_rel_size["chest"]; "chest",
+			GLOB.organ_rel_size["groin"]; "groin",
+			GLOB.organ_rel_size["l_arm"]; "l_arm",
+			GLOB.organ_rel_size["r_arm"]; "r_arm",
+			GLOB.organ_rel_size["l_leg"]; "l_leg",
+			GLOB.organ_rel_size["r_leg"]; "r_leg",
+			GLOB.organ_rel_size["l_hand"]; "l_hand",
+			GLOB.organ_rel_size["r_hand"]; "r_hand",
+			GLOB.organ_rel_size["l_foot"]; "l_foot",
+			GLOB.organ_rel_size["r_foot"]; "r_foot",
 		)
 
 	return rand_zone
@@ -129,6 +129,72 @@ var/global/list/limb_types_by_name = list(
 		else
 			output_message += "*"
 		index++
+	return output_message
+
+/**
+ * Summary: proc that parses an html input string and scrambles the non-html string contents.
+ *
+ * Arguments:
+ * * message - an html string value to be parsed and modified.
+ *
+ * Return:
+ * returns the parsed and modified html output with the text content being partially scrambled with asteriks
+ */
+/proc/stars_decode_html(message)
+	if(!length(message))
+		return
+
+	// boolean value to know if the current indexed element needs to be scrambled.
+	var/parsing_message = FALSE
+
+	// boolean values to know if we are currently inside a double or single quotation.
+	var/in_single_quote = FALSE
+	var/in_double_quote = FALSE
+
+	// string of what tag we're currently in
+	var/current_tag = ""
+	var/escaped_tag = FALSE
+
+	// string that will be scrambled
+	var/current_string_to_scramble = ""
+
+	// output string after parse
+	var/output_message = ""
+	for(var/character_index in 1 to length(message))
+		var/current_char = message[character_index]
+
+		// Apparent edge case safety, we only want to check the < and > on the edges of the tag.
+		if(!parsing_message)
+			if(current_char == "'")
+				in_single_quote = !in_single_quote
+			if(current_char == "\"")
+				in_double_quote = !in_double_quote
+			if(in_single_quote || in_double_quote)
+				output_message += current_char
+				continue
+
+		if(current_char == ">")
+			parsing_message = TRUE
+			output_message += current_char
+			current_tag += current_char
+			if(findtext(current_tag, "<style>") == 1 || findtext(current_tag, "<style ") == 1) // findtext because HTML doesn't care about anything after whitespace
+				escaped_tag = TRUE
+			else if(escaped_tag && (findtext(current_tag, "</style>") == 1 || findtext(current_tag, "</style ") == 1)) // 1 for findtext because we only care about the start of the string matching
+				escaped_tag = FALSE
+			continue
+		if(current_char == "<")
+			parsing_message = FALSE
+			current_tag = ""
+			if(length(current_string_to_scramble))
+				var/scrambled_string = stars(current_string_to_scramble)
+				output_message += scrambled_string
+				current_string_to_scramble = ""
+
+		if(parsing_message && !escaped_tag)
+			current_string_to_scramble += current_char
+		else
+			output_message += current_char
+			current_tag += current_char
 	return output_message
 
 /proc/slur(phrase)
@@ -308,16 +374,14 @@ var/global/list/limb_types_by_name = list(
 	if(hud_used && hud_used.action_intent)
 		hud_used.action_intent.icon_state = "intent_[intent_text(a_intent)]"
 
+	SEND_SIGNAL(src, COMSIG_MOB_INTENT_CHANGE, a_intent)
+
 /mob/proc/is_mob_restrained()
 	return
 
+/// Returns if the mob is incapacitated and unable to perform general actions
 /mob/proc/is_mob_incapacitated(ignore_restrained)
-	return (stat || stunned || knocked_down || knocked_out || (!ignore_restrained && is_mob_restrained()) || status_flags & FAKEDEATH)
-
-
-//returns how many non-destroyed legs the mob has (currently only useful for humans)
-/mob/proc/has_legs()
-	return 2
+	return (stat || (!ignore_restrained && is_mob_restrained()) || (status_flags & FAKEDEATH) || HAS_TRAIT(src, TRAIT_INCAPACITATED))
 
 /mob/proc/get_eye_protection()
 	return EYE_PROTECTION_NONE
@@ -480,7 +544,7 @@ var/global/list/limb_types_by_name = list(
 	set name = "Pick Up"
 	set category = "Object"
 
-	if(!canmove || stat || is_mob_restrained() || !Adjacent(pickupify))
+	if(is_mob_incapacitated() || !Adjacent(pickupify))
 		return
 
 	if(world.time <= next_move)

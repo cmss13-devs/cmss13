@@ -118,10 +118,11 @@
  * anyway. they're effectively qdel'd.
  */
 /client/proc/clear_map(map_name)
-	if(!map_name || !(map_name in screen_maps))
+	if(!map_name || !screen_maps[map_name])
 		return FALSE
 	for(var/atom/movable/screen/screen_obj in screen_maps[map_name])
 		screen_maps[map_name] -= screen_obj
+		remove_from_screen(screen_obj)
 		if(screen_obj.del_on_map_removal)
 			qdel(screen_obj)
 	screen_maps -= map_name

@@ -1,0 +1,4 @@
+author: "Zenith, Steelpoint"
+delete-after: True
+changes:
+  - rscadd: "Updates Steelpoint's donor armour, replacing it with a new sprite, camouflage options for all maps and new item descriptions that are lore friendly."

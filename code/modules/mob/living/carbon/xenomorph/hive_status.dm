@@ -68,6 +68,10 @@
 	var/hardcore = FALSE
 	/// Set to false if you want to prevent getting burrowed larva from latejoin marines
 	var/latejoin_burrowed = TRUE
+	/// If hit limit of larva from pylons
+	var/hit_larva_pylon_limit = FALSE
+
+	var/see_humans_on_tacmap = FALSE
 
 	var/list/hive_inherant_traits
 
@@ -933,6 +937,30 @@
 
 	return TRUE
 
+// Get amount of real xenos, don't count lessers/huggers
+/datum/hive_status/proc/get_real_total_xeno_count()
+	var/count = 0
+	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
+		if(xeno.counts_for_slots)
+			count++
+	return count
+
+// Checks if we hit larva limit
+/datum/hive_status/proc/check_if_hit_larva_from_pylon_limit()
+	var/groundside_humans_weighted_count = 0
+	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
+		if(!(isspecieshuman(current_human) || isspeciessynth(current_human)))
+			continue
+		var/datum/job/job = GLOB.RoleAuthority.roles_for_mode[current_human.job]
+		if(!job)
+			continue
+		var/turf/turf = get_turf(current_human)
+		if(is_ground_level(turf?.z))
+			groundside_humans_weighted_count += GLOB.RoleAuthority.calculate_role_weight(job)
+	hit_larva_pylon_limit = (get_real_total_xeno_count() + stored_larva) > (groundside_humans_weighted_count * ENDGAME_LARVA_CAP_MULTIPLIER)
+	hive_ui.update_pylon_status()
+	return hit_larva_pylon_limit
+
 ///Called by /obj/item/alien_embryo when a host is bursting to determine extra larva per burst
 /datum/hive_status/proc/increase_larva_after_burst()
 	var/extra_per_burst = CONFIG_GET(number/extra_larva_per_burst)
@@ -1230,7 +1258,6 @@
 		if(target_hive.allies[name]) //autobreak alliance on betrayal
 			target_hive.change_stance(name, FALSE)
 
-
 /datum/hive_status/corrupted/change_stance(faction, should_ally)
 	. = ..()
 	if(allies[faction])
@@ -1282,6 +1309,10 @@
 
 	xeno_message(SPAN_XENOANNOUNCE("You sense that [english_list(defectors)] turned their backs against their sisters and the Queen in favor of their slavemasters!"), 3, hivenumber)
 	defectors.Cut()
+
+/datum/hive_status/proc/override_evilution(evil, override)
+	if(SSxevolution)
+		SSxevolution.override_power(hivenumber, evil, override)
 
 //Xeno Resin Mark Shit, the very best place for it too :0)
 //Defines at the bottom of this list here will show up at the top in the mark menu

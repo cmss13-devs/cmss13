@@ -3,7 +3,6 @@ import { Box, Button, Section, ProgressBar, NoticeBox, Stack } from '../componen
 
 interface CasSimData {
   configuration: any;
-  looking: 0 | 1;
   dummy_mode: string;
   worldtime: number;
   nextdetonationtime: number;
@@ -21,7 +20,7 @@ export const CasSim = (_props, context) => {
   const timeLeft = data.nextdetonationtime - data.worldtime;
   const timeLeftPct = timeLeft / data.detonation_cooldown;
 
-  const canDetonate = timeLeft < 0 && data.configuration && data.looking;
+  const canDetonate = timeLeft < 0 && data.configuration && simulationView;
 
   return (
     <Box className="CasSim">

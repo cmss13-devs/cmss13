@@ -272,7 +272,7 @@
 		var/fm_indentifier = "SPIT FIRE"
 		if (M.mob_flags & KNOWS_TECHNOLOGY)
 			ds_identifier = "DROPSHIP"
-			fm_indentifier = "SPIT FIRE"
+			fm_indentifier = "EXECUTE FIREMISSION"
 
 		M.show_message( \
 			SPAN_HIGHDANGER("YOU HEAR [ds_identifier] ROAR AS IT PREPARESgi TO [fm_indentifier] [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \

@@ -12676,7 +12676,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aMk" = (
-/obj/structure/machinery/mill,
+/obj/structure/machinery/autolathe,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aMl" = (
@@ -29518,12 +29518,6 @@
 	icon_state = "sterile_white"
 	},
 /area/desert_dam/interior/dam_interior/workshop)
-"bPQ" = (
-/obj/structure/machinery/mill,
-/turf/open/floor/prison{
-	icon_state = "sterile_white"
-	},
-/area/desert_dam/interior/dam_interior/workshop)
 "bPR" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
@@ -30710,10 +30704,6 @@
 	icon_state = "whiteyellowfull"
 	},
 /area/desert_dam/building/security/prison)
-"bTs" = (
-/obj/structure/machinery/squeezer,
-/turf/open/floor/interior/wood,
-/area/desert_dam/building/bar/backroom)
 "bTt" = (
 /obj/structure/window/framed/hangar/reinforced,
 /turf/open/floor/plating,
@@ -49261,10 +49251,6 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
-/turf/open/floor/prison,
-/area/desert_dam/building/hydroponics/hydroponics)
-"ddR" = (
-/obj/structure/machinery/fermenter,
 /turf/open/floor/prison,
 /area/desert_dam/building/hydroponics/hydroponics)
 "ddS" = (
@@ -72811,7 +72797,7 @@ bLW
 bLW
 bOa
 bLW
-bPQ
+bLW
 bLW
 bKt
 cGm
@@ -83606,7 +83592,7 @@ atl
 adt
 adz
 aqc
-bTs
+aec
 adt
 ceF
 cgA
@@ -91148,7 +91134,7 @@ daK
 daK
 dTP
 daK
-ddR
+ddS
 daF
 daF
 daF

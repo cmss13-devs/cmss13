@@ -3991,12 +3991,6 @@
 	icon_state = "whiteyellowfull"
 	},
 /area/lv522/oob/w_y_vault)
-"cbp" = (
-/obj/structure/machinery/squeezer,
-/turf/open/floor{
-	icon_state = "wood"
-	},
-/area/lv522/indoors/b_block/bar)
 "cbB" = (
 /obj/structure/prop/invuln/overhead/flammable_pipe/fly{
 	dir = 10;
@@ -13326,7 +13320,7 @@
 	},
 /area/lv522/outdoors/colony_streets/windbreaker/observation)
 "fRc" = (
-/obj/structure/machinery/mill,
+/obj/structure/machinery/autolathe,
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2"
 	},
@@ -39737,13 +39731,6 @@
 	icon_state = "blue_plate"
 	},
 /area/lv522/indoors/a_block/admin)
-"pDe" = (
-/obj/structure/machinery/squeezer,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "greenfull"
-	},
-/area/lv522/indoors/b_block/hydro)
 "pDh" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/prison{
@@ -48184,7 +48171,7 @@
 /obj/structure/platform{
 	dir = 1
 	},
-/obj/structure/machinery/squeezer,
+/obj/structure/machinery/autolathe,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
 "sBH" = (
@@ -50462,7 +50449,7 @@
 /obj/structure/prop/invuln/ice_prefab/trim{
 	dir = 8
 	},
-/obj/structure/machinery/mill,
+/obj/structure/machinery/autolathe,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/central_streets)
 "trZ" = (
@@ -77436,7 +77423,7 @@ rlI
 fLZ
 wCJ
 ghu
-cbp
+wuQ
 mBF
 mBF
 voI
@@ -80615,8 +80602,8 @@ xwD
 tSL
 tSL
 tSL
-pDe
 fNp
+yfR
 yfR
 tne
 xDQ

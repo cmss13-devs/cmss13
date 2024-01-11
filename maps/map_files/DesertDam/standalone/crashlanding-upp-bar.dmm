@@ -398,7 +398,6 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "hk" = (
-/obj/structure/machinery/squeezer,
 /turf/open/floor/plating,
 /area/desert_dam/building/bar/backroom)
 "hm" = (

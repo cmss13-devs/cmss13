@@ -7626,14 +7626,7 @@
 	},
 /area/lv624/lazarus/quart)
 "aHm" = (
-/obj/structure/machinery/fermenter,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
-/area/lv624/lazarus/quart)
-"aHn" = (
-/obj/structure/machinery/still,
+/obj/structure/machinery/autolathe,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -54213,7 +54206,7 @@ aFC
 aFv
 aHl
 aFv
-aHn
+aHm
 aDY
 aIu
 aJh

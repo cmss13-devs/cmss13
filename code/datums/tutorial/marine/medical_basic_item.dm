@@ -285,7 +285,7 @@
 	SIGNAL_HANDLER
 
 	message_to_player("Feel free to examine these items. When you are finished, eat the food to end the tutoiral.")
-	update_objective("Eat the food bar when you are ready to end the tutorial")
+	update_objective("Eat the food bar when you are ready to end the tutorial.")
 	var/obj/item/reagent_container/food/snacks/protein_pack/food = new(loc_from_corner(3, 3))
 	add_to_tracking_atoms(food)
 	add_highlight(food)
@@ -295,7 +295,7 @@
 	SIGNAL_HANDLER
 
 	message_to_player("Good luck Marine")
-	update_objective("")
+	update_objective("Tutorial completed")
 	tutorial_end_in(5 SECONDS, TRUE)
 
 // END OF SCRIPTING

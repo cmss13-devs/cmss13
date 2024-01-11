@@ -1,7 +1,7 @@
 // devolve a xeno - lots of old, vaguely shitty code here
 /datum/action/xeno_action/onclick/manage_hive/proc/de_evolve_other()
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
-	plasma_cost = 500
+	var/plasma_cost_devolve = 500
 	if(!user_xeno.check_state())
 		return
 	if(!user_xeno.observed_xeno)
@@ -9,7 +9,7 @@
 		return
 
 	var/mob/living/carbon/xenomorph/target_xeno = user_xeno.observed_xeno
-	if(!user_xeno.check_plasma(plasma_cost))
+	if(!user_xeno.check_plasma(plasma_cost_devolve))
 		return
 
 	if(target_xeno.hivenumber != user_xeno.hivenumber)
@@ -295,12 +295,13 @@
 
 /datum/action/xeno_action/onclick/manage_hive/proc/give_evo_points()
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
-	plasma_cost = 100
+	var/plasma_cost_givepoints = 100
+
 
 	if(!user_xeno.check_state())
 		return
 
-	if(!user_xeno.check_plasma(plasma_cost))
+	if(!user_xeno.check_plasma(plasma_cost_givepoints))
 		return
 
 	if(world.time < SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK)
@@ -361,16 +362,17 @@
 
 /datum/action/xeno_action/onclick/manage_hive/proc/give_jelly_reward()
 	var/mob/living/carbon/xenomorph/queen/xeno = owner
-	plasma_cost = 500
+	var/plasma_cost_jelly = 500
 	if(!xeno.check_state())
 		return
-	if(!xeno.check_plasma(plasma_cost))
+	if(!xeno.check_plasma(plasma_cost_jelly))
 		return
 	if(give_jelly_award(xeno.hive))
-		xeno.use_plasma(plasma_cost)
+		xeno.use_plasma(plasma_cost_jelly)
 		return
 /datum/action/xeno_action/onclick/manage_hive/use_ability(atom/Atom)
 	var/mob/living/carbon/xenomorph/queen/queenbanish = owner
+	plasma_cost = 0
 
 	var/choice = tgui_input_list(queenbanish, "Manage The Hive", "Hive Management",  list("Banish (500)", "Re-Admit (100)", "De-evolve (500)", "Reward Jelly (500)", "Exchange larva for evolution (100)",), theme="hive_status")
 	switch(choice)
@@ -388,11 +390,11 @@
 
 /datum/action/xeno_action/onclick/manage_hive/proc/banish()
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
-	plasma_cost = 500
+	var/plasma_cost_banish = 500
 	if(!user_xeno.check_state())
 		return
 
-	if(!user_xeno.check_plasma(plasma_cost))
+	if(!user_xeno.check_plasma(plasma_cost_banish))
 		return
 
 	var/choice = tgui_input_list(user_xeno, "Choose a xenomorph to banish:", "Banish", user_xeno.hive.totalXenos, theme="hive_status")
@@ -433,7 +435,7 @@
 		to_chat(user_xeno, SPAN_XENOWARNING("You must provide a reason for banishing [target_xeno]."))
 		return
 
-	if(!user_xeno.check_state() || !check_and_use_plasma_owner(plasma_cost) || target_xeno.health < 0)
+	if(!user_xeno.check_state() || !check_and_use_plasma_owner(plasma_cost_banish) || target_xeno.health < 0)
 		return
 
 	// Let everyone know they were banished
@@ -457,11 +459,11 @@
 
 /datum/action/xeno_action/onclick/manage_hive/proc/readmit()
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
-	plasma_cost = 100
+	var/plasma_cost_readmit = 100
 	if(!user_xeno.check_state())
 		return
 
-	if(!user_xeno.check_plasma(plasma_cost))
+	if(!user_xeno.check_plasma(plasma_cost_readmit))
 		return
 
 	var/choice = tgui_input_list(user_xeno, "Choose a xenomorph to readmit:", "Re-admit", user_xeno.hive.banished_ckeys, theme="hive_status")

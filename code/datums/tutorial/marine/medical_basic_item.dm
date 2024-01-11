@@ -19,7 +19,7 @@
 	init_mob()
 	message_to_player("This tutorial will discuss the medical tools you will use as a standard Marine.")
 	addtimer(CALLBACK(src, PROC_REF(intro_one)), 6 SECONDS)
-//pouch_one intro_one
+
 /datum/tutorial/marine/medical_basic_item/proc/intro_one()
 	message_to_player("You are capable of tending to your own basic injuries without needing Corpsman (sometimes called a Medic) to assist you.")
 	update_objective("")
@@ -284,8 +284,11 @@
 /datum/tutorial/marine/medical_basic_item/proc/pouch_eleven()
 	SIGNAL_HANDLER
 
-	message_to_player("Feel free to examine these items. When you are finished, eat the food to end the tutoiral.")
-	update_objective("Eat the food bar when you are ready to end the tutorial.")
+	message_to_player("Feel free to examine these items, and use the prep vendor to experiment with storing these medical items. When you are finished, eat the food to end the tutoiral.")
+	update_objective("Eat the food bar when you are ready to end the tutorial")
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep_tutorial, prep_vendor)
+	add_highlight(prep_vendor)
+	prep_vendor.req_access = list()
 	var/obj/item/reagent_container/food/snacks/protein_pack/food = new(loc_from_corner(3, 3))
 	add_to_tracking_atoms(food)
 	add_highlight(food)
@@ -295,7 +298,7 @@
 	SIGNAL_HANDLER
 
 	message_to_player("Good luck Marine")
-	update_objective("Tutorial completed")
+	update_objective("")
 	tutorial_end_in(5 SECONDS, TRUE)
 
 // END OF SCRIPTING
@@ -323,3 +326,5 @@
 	add_to_tracking_atoms(medic_vendor_bravo)
 	var/obj/structure/machinery/cm_vending/sorted/uniform_supply/medic_equip_charlie/medic_vendor_charlie = new(loc_from_corner(5, 3))
 	add_to_tracking_atoms(medic_vendor_charlie)
+	var/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep_tutorial/prep_vendor = new(loc_from_corner(0, 2))
+	add_to_tracking_atoms(prep_vendor)

@@ -262,19 +262,19 @@
 	playsound(source = target_turf, soundin = soundeffect, vol = 70, vary = TRUE, sound_range = 50, falloff = 8)
 
 	var/relative_dir
-	for(var/mob/M in range(15, target_turf))
-		if(get_turf(M) == target_turf)
+	for(var/mob/mob in range(15, target_turf))
+		if(get_turf(mob) == target_turf)
 			relative_dir = 0
 		else
-			relative_dir = Get_Compass_Dir(M, target_turf)
+			relative_dir = Get_Compass_Dir(mob, target_turf)
 
 		var/ds_identifier = "LARGE BIRD"
 		var/fm_identifier = "SPIT FIRE"
-		if (M.mob_flags & KNOWS_TECHNOLOGY)
+		if (mob.mob_flags & KNOWS_TECHNOLOGY)
 			ds_identifier = "DROPSHIP"
 			fm_identifier = "EXECUTE FIREMISSION"
 
-		M.show_message( \
+		mob.show_message( \
 			SPAN_HIGHDANGER("YOU HEAR [ds_identifier] ROAR AS IT PREPARES TO [fm_identifier] [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
 			SPAN_HIGHDANGER("YOU HEAR SOMETHING APPROACH [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
 		)

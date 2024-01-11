@@ -1125,7 +1125,7 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_DAZED && busy_user.dazed)
+		if(user_flags & INTERRUPT_DAZED && HAS_TRAIT(busy_user, TRAIT_DAZED))
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_EMOTE && !busy_user.flags_emote)

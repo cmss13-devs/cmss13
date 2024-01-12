@@ -134,3 +134,23 @@
       for more than 25%.
   private-tristan:
   - spellcheck: Changed a tip related to runner pounce to be more accurate
+2024-01-08:
+  realforest2001:
+  - bugfix: Yautja scimitars no longer bypass attack delay.
+2024-01-09:
+  private-tristan:
+  - bugfix: Tunnels are now converted to forsaken on evac.
+2024-01-10:
+  SabreML:
+  - bugfix: Fixed tunnels not showing on the minimap.
+  Tsurupeta:
+  - bugfix: Regular expressions in chat highlights work again.
+2024-01-12:
+  Vicacrov:
+  - bugfix: Placing flags now anchors the actual flag, not the stack of flags in your
+      hand.
+  Zenith, Steelpoint:
+  - rscadd: Updates Steelpoint's donor armour, replacing it with a new sprite, camouflage
+      options for all maps and new item descriptions that are lore friendly.
+  realforest2001:
+  - rscadd: Added the X17 Riot Breaching Charge.

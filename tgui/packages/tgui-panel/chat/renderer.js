@@ -235,6 +235,8 @@ class ChatRenderer {
           highlightWords.push(line);
         }
       }
+      const regexStr = regexExpressions.join('|');
+      const flags = 'g' + (matchCase ? '' : 'i');
       // We wrap this in a try-catch to ensure that broken regex doesn't break
       // the entire chat.
       try {

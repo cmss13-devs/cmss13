@@ -3723,7 +3723,7 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "akI" = (
-/obj/structure/prop/mill,
+/obj/structure/machinery/mill,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "whitegreen"
@@ -10069,7 +10069,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "aCn" = (
-/obj/structure/prop/fermenter,
+/obj/structure/machinery/fermenter,
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "aCo" = (
@@ -11749,7 +11749,7 @@
 	},
 /area/bigredv2/outside/bar)
 "aGJ" = (
-/obj/structure/prop/squeezer,
+/obj/structure/machinery/squeezer,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -22470,7 +22470,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
 "bmp" = (
-/obj/structure/prop/mill,
+/obj/structure/machinery/mill,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkyellow2"
@@ -38436,7 +38436,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "uFp" = (
-/obj/structure/prop/mill,
+/obj/structure/machinery/mill,
 /turf/open/floor,
 /area/bigred/ground/garage_workshop)
 "uFD" = (

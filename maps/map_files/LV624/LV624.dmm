@@ -7626,14 +7626,14 @@
 	},
 /area/lv624/lazarus/quart)
 "aHm" = (
-/obj/structure/prop/fermenter,
+/obj/structure/machinery/fermenter,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
 	},
 /area/lv624/lazarus/quart)
 "aHn" = (
-/obj/structure/prop/still,
+/obj/structure/machinery/still,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"

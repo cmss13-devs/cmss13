@@ -30,6 +30,7 @@
 	var/base_damage = 25
 	var/damage_scale = 10 // How much it scales by every kill
 	var/targetting = SINGLETARGETGUT
+	var/range = 2
 
 
 /datum/action/xeno_action/onclick/toggle_gut_targetting
@@ -39,39 +40,11 @@
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_5
 
-/datum/action/xeno_action/onclick/toggle_gut_targetting/can_use_action()
-	var/mob/living/carbon/xenomorph/X = owner
-	if(X && !X.buckled && !X.is_mob_incapacitated())
-		return TRUE
 
-/datum/action/xeno_action/onclick/toggle_gut_targetting/use_ability(atom/A)
-
-	var/mob/living/carbon/xenomorph/X = owner
-	var/action_icon_result
-
-	if(!X.check_state(1))
-		return
-
-	var/datum/action/xeno_action/activable/feralfrenzy/GT = get_xeno_action_by_type(X, /datum/action/xeno_action/activable/feralfrenzy)
-	if (!istype(GT))
-		return
-
-	if (GT.targetting == SINGLETARGETGUT)
-		action_icon_result = "rav_scissor_cut"
-		GT.targetting = AOETARGETGUT
-		to_chat(X, SPAN_XENOWARNING("We will now attack everyone around us"))
-	else
-		action_icon_result = "gut"
-		GT.targetting = SINGLETARGETGUT
-		to_chat(X, SPAN_XENOWARNING("We will now focus our rage on one person!"))
-
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)
-	return ..()
 
 
 /datum/action/xeno_action/onclick/feralrush
-	name = "Toughen Up"
+	name = "Feral Rush Up"
 	action_icon_state = "charge_spit"
 	ability_name = "toughen up"
 	macro_path = ""

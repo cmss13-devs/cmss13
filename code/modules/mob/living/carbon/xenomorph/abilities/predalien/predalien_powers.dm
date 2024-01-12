@@ -46,12 +46,11 @@
 	if(!xeno.check_state())
 		return
 
-	var/aoe_damage = base_damage_aoe
-	var/aoe_scale = damage_scale_aoe
-	var/range = 2
-	var/targetting_type = targetting
 
-	if(targetting_type == AOETARGETGUT)
+
+
+
+	if(targetting == AOETARGETGUT)
 		var/datum/behavior_delegate/predalien_base/behavior = xeno.behavior_delegate
 		if(!istype(behavior))
 			return
@@ -85,29 +84,15 @@
 					xeno.visible_message(SPAN_XENODANGER("[xeno] claws [human]!"), SPAN_XENODANGER("We claw [human]!"))
 					playsound(get_turf(human), "alien_claw_flesh", 30, 1)
 
-				human.apply_armoured_damage(get_xeno_damage_slash(human, aoe_damage + aoe_scale * behavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
+				human.apply_armoured_damage(get_xeno_damage_slash(human, base_damage_aoe + damage_scale_aoe * behavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
 			playsound(owner, 'sound/voice/predalien_growl.ogg', 75, 0, status = 0)
-
-		var/list/mobs_in_range = oviewers(xeno)
-		for(var/mob/mob as anything in mobs_in_range)
-			if(mob.stat == DEAD || HAS_TRAIT(mob, TRAIT_NESTED))
-				continue
-
-
 		REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Eviscerate"))
 		xeno.anchored = FALSE
 		apply_cooldown()
 		return
 
-	var/mob/living/carbon/xenomorph/x = owner
-
-	if (!action_cooldown_check())
-		return
-
-	if (!xeno.check_state())
-		return
-
-	if (!isxeno_human(target) || x.can_not_harm(target))
+	//single target checks
+	if (!isxeno_human(target) || xeno.can_not_harm(target))
 		to_chat(xeno, SPAN_XENOWARNING("We must target a hostile!"))
 		return
 
@@ -121,7 +106,7 @@
 		to_chat(xeno, SPAN_XENOWARNING("[carbon] is dead, why would we want to touch them?"))
 		return
 
-	if(targetting_type == SINGLETARGETGUT)
+	if(targetting == SINGLETARGETGUT) // single target
 		var/datum/behavior_delegate/predalien_base/predalienbehavior = xeno.behavior_delegate
 		if(!istype(predalienbehavior))
 			return
@@ -130,11 +115,6 @@
 			return
 
 		ADD_TRAIT(carbon, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Devastate"))
-
-		if (ishuman(carbon))
-			var/mob/living/carbon/human/human = carbon
-			human.update_xeno_hostile_hud()
-
 		apply_cooldown()
 
 		ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Devastate"))
@@ -178,11 +158,9 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-
-
-	addtimer(CALLBACK(src, PROC_REF(remove_effects)), duration)
+	addtimer(CALLBACK(src, PROC_REF(remove_rush_effects)), duration)
 	predatoralien.add_filter("predalien_toughen", 1, list("type" = "outline", "color" = "#421313", "size" = 1))
-	predatoralien.balloon_alert(predatoralien, "we feel our muscles tense, making us faster and more durable for a time.", text_color = "#522020ff")
+	to_chat(predatoralien, SPAN_XENOWARNING("We feel our muscles tense as our speed and armor increase!"))
 	buffs_active = TRUE
 	predatoralien.speed_modifier -= speed_buff_amount
 	predatoralien.armor_modifier += armor_buff_amount
@@ -192,29 +170,46 @@
 	apply_cooldown()
 
 
-/datum/action/xeno_action/onclick/feralrush/proc/disable_feralrush()
+/datum/action/xeno_action/onclick/feralrush/proc/remove_rush_effects()
 	SIGNAL_HANDLER
 	var/mob/living/carbon/xenomorph/predatoralien = owner
 	if (buffs_active == TRUE)
-		predatoralien.balloon_alert(predatoralien, "our muscles relax, we no longer feel as armored.", text_color = "#522020ff")
+		to_chat(predatoralien, SPAN_XENOWARNING("Our muscles relax as we feel our speed wane, we are no longe armored."))
 		predatoralien.remove_filter("predalien_toughen")
+		predatoralien.speed_modifier += speed_buff_amount
+		predatoralien.armor_modifier -= armor_buff_amount
+		predatoralien.recalculate_speed()
+		predatoralien.recalculate_armor()
+		buffs_active = FALSE
+		remove_rush_effects()
 
 
+/datum/action/xeno_action/onclick/toggle_gut_targetting/can_use_action()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(xeno && !xeno.buckled && !xeno.is_mob_incapacitated())
+		return TRUE
 
-/datum/action/xeno_action/onclick/feralrush/proc/remove_effects()
-	var/mob/living/carbon/xenomorph/predatoralien = owner
+/datum/action/xeno_action/onclick/toggle_gut_targetting/use_ability(atom/A)
 
-	if (!istype(predatoralien))
+	var/mob/living/carbon/xenomorph/xeno = owner
+	var/action_icon_result
+
+	if(!xeno.check_state())
 		return
 
-	predatoralien.speed_modifier += speed_buff_amount
-	predatoralien.armor_modifier -= armor_buff_amount
-	predatoralien.recalculate_speed()
-	predatoralien.recalculate_armor()
-	disable_feralrush()
-	buffs_active = FALSE
+	var/datum/action/xeno_action/activable/feralfrenzy/guttype = get_xeno_action_by_type(xeno, /datum/action/xeno_action/activable/feralfrenzy)
+	if (!istype(guttype))
+		return
 
+	if (guttype.targetting == SINGLETARGETGUT)
+		action_icon_result = "rav_scissor_cut"
+		guttype.targetting = AOETARGETGUT
+		to_chat(xeno, SPAN_XENOWARNING("We will now attack everyone around us."))
+	else
+		action_icon_result = "gut"
+		guttype.targetting = SINGLETARGETGUT
+		to_chat(xeno, SPAN_XENOWARNING("We will now focus our rage on one person!"))
 
-
-
-
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)
+	return ..()

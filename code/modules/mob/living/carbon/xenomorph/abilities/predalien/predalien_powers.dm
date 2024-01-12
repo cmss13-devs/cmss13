@@ -182,7 +182,7 @@
 	addtimer(CALLBACK(src, PROC_REF(remove_effects)), duration)
 
 	predatoralien.add_filter("predalien_toughen", 1, list("type" = "outline", "color" = "#421313", "size" = 1))
-	predatoralien.balloon_alert(predatoralien, "We feel our muscles tense, making us faster and more durable for a time.", text_color = "#522020ff")
+	predatoralien.balloon_alert(predatoralien, "we feel our muscles tense, making us faster and more durable for a time.", text_color = "#522020ff")
 	buffs_active = TRUE
 	predatoralien.speed_modifier -= speed_buff_amount
 	predatoralien.armor_modifier += armor_buff_amount
@@ -195,7 +195,7 @@
 	SIGNAL_HANDLER
 	var/mob/living/carbon/xenomorph/predatoralien = owner
 	if (buffs_active == TRUE)
-		predatoralien.balloon_alert(predatoralien, "Our muscles relax, we no longer feel as armored.", text_color = "#522020ff")
+		predatoralien.balloon_alert(predatoralien, "our muscles relax, we no longer feel as armored.", text_color = "#522020ff")
 		predatoralien.remove_filter("predalien_toughen")
 	UnregisterSignal(predatoralien, COMSIG_XENO_POST_TOUGHEN)
 

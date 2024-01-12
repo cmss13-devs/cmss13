@@ -7,13 +7,13 @@ import { ButtonProps } from './types';
 import { classes } from 'common/react';
 
 export interface MfdProps {
-  readonly panelStateId: string;
+  readonly panelStateId: string; // eslint-disable-line
   readonly topButtons?: Array<ButtonProps>;
   readonly leftButtons?: Array<ButtonProps>;
   readonly rightButtons?: Array<ButtonProps>;
   readonly bottomButtons?: Array<ButtonProps>;
   readonly children?: InfernoNode;
-  readonly otherPanelStateId?: string;
+  readonly otherPanelStateId?: string; // eslint-disable-line
 }
 
 export const MfdButton = (props: ButtonProps, context) => {

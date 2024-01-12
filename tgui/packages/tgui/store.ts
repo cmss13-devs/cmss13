@@ -25,8 +25,8 @@ type ConfigureStoreOptions = {
 type StackAugmentor = (stack: string, error?: Error) => string;
 
 type StoreProviderProps = {
-  store: Store;
-  children: any;
+  readonly store: Store;
+  readonly children: any;
 };
 
 const logger = createLogger('store');

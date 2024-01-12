@@ -10,21 +10,21 @@ import { addScrollableNode, removeScrollableNode } from '../events';
 import { BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 
 type SectionProps = BoxProps & {
-  className?: string;
-  title?: InfernoNode;
-  buttons?: InfernoNode;
-  fill?: boolean;
-  fitted?: boolean;
-  scrollable?: boolean;
-  scrollableHorizontal?: boolean;
+  readonly className?: string;
+  readonly title?: InfernoNode;
+  readonly buttons?: InfernoNode;
+  readonly fill?: boolean;
+  readonly fitted?: boolean;
+  readonly scrollable?: boolean;
+  readonly scrollableHorizontal?: boolean;
   /** @deprecated This property no longer works, please remove it. */
-  level?: boolean;
+  readonly level?: boolean;
   /** @deprecated Please use `scrollable` property */
-  overflowY?: any;
+  readonly overflowY?: any;
   /** @member Allows external control of scrolling. */
-  scrollableRef?: RefObject<HTMLDivElement>;
+  readonly scrollableRef?: RefObject<HTMLDivElement>;
   /** @member Callback function for the `scroll` event */
-  onScroll?: (this: GlobalEventHandlers, ev: Event) => any;
+  readonly onScroll?: (this: GlobalEventHandlers, ev: Event) => any;
 };
 
 export class Section extends Component<SectionProps> {

@@ -162,7 +162,7 @@ interface GimbalInfo {
 }
 
 const ViewFiremissionMfdPanel = (
-  props: MfdProps & { firemission: CasFiremission },
+  props: MfdProps & { readonly firemission: CasFiremission },
   context
 ) => {
   const { data, act } = useBackend<DropshipProps>(context);
@@ -248,7 +248,10 @@ const ViewFiremissionMfdPanel = (
   );
 };
 
-const FiremissionView = (props: MfdProps & { fm: CasFiremission }, context) => {
+const FiremissionView = (
+  props: MfdProps & { readonly fm: CasFiremission },
+  context
+) => {
   const { data } = useBackend<DropshipProps & FiremissionContext>(context);
 
   const { editFm } = fmEditState(context, props.panelStateId);
@@ -333,7 +336,10 @@ const gimbals: GimbalInfo[] = [
 ];
 
 const OffsetOverview = (
-  props: MfdProps & { fm: CasFiremission; equipment: DropshipEquipment }
+  props: MfdProps & {
+    readonly fm: CasFiremission;
+    readonly equipment: DropshipEquipment;
+  }
 ) => {
   const weaponFm = props.fm.records.find(
     (x) => x.weapon === props.equipment.mount_point
@@ -361,8 +367,8 @@ const OffsetOverview = (
 
 const OffsetDetailed = (
   props: MfdProps & {
-    fm: CasFiremission;
-    equipment: DropshipEquipment;
+    readonly fm: CasFiremission;
+    readonly equipment: DropshipEquipment;
   }
 ) => {
   const availableGimbals = gimbals[props.equipment.mount_point];
@@ -399,9 +405,9 @@ const OffsetDetailed = (
 
 const FMOffsetError = (
   props: MfdProps & {
-    fm: CasFiremission;
-    equipment: DropshipEquipment;
-    displayDetail?: boolean;
+    readonly fm: CasFiremission;
+    readonly equipment: DropshipEquipment;
+    readonly displayDetail?: boolean;
   }
 ) => {
   return (
@@ -434,9 +440,9 @@ const FMOffsetError = (
 
 const FMOffsetStack = (
   props: MfdProps & {
-    fm: CasFiremission;
-    equipment: DropshipEquipment;
-    displayDetail?: boolean;
+    readonly fm: CasFiremission;
+    readonly equipment: DropshipEquipment;
+    readonly displayDetail?: boolean;
   },
   context
 ) => {

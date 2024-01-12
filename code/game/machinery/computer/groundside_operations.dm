@@ -1,3 +1,5 @@
+#define COMMAND_SQUAD "Command"
+
 /obj/structure/machinery/computer/groundside_operations
 	name = "groundside operations console"
 	desc = "This can be used for various important functions."
@@ -69,7 +71,7 @@
 		dat += "<BR><hr>"
 
 	if(has_squad_overwatch)
-		dat += "Current Squad: <A href='?src=\ref[src];operation=pick_squad'>[!isnull(current_squad) ? "[current_squad.name]" : "----------"]</A><BR>"
+		dat += "Current Squad: <A href='?src=\ref[src];operation=pick_squad'>[!isnull(current_squad) ? (istext(current_squad) ? "[current_squad]" : "[current_squad.name]")  : "----------"]</A><BR>"
 		if(current_squad)
 			dat += get_overwatch_info()
 
@@ -106,6 +108,77 @@
 
 	if(!current_squad)
 		dat += "No Squad selected!<BR>"
+	else if(istext(current_squad))
+		var/list/command_marines = list(GLOB.marine_leaders[JOB_CO], GLOB.marine_leaders[JOB_XO]) + GLOB.marine_leaders[JOB_SO]
+
+		var/co_text = ""
+		var/xo_text = ""
+		var/so_text = ""
+		var/living_count = 0
+		var/almayer_count = 0
+		var/SSD_count = 0
+		var/helmetless_count = 0
+
+		for(var/X in command_marines)
+			if(!X)
+				continue //just to be safe
+			var/mob_name = "unknown"
+			var/mob_state = ""
+			var/role = "unknown"
+			var/area_name = "<b>???</b>"
+			var/mob/living/carbon/human/H
+			if(ishuman(X))
+				H = X
+				mob_name = H.real_name
+				var/area/A = get_area(H)
+				var/turf/M_turf = get_turf(H)
+				if(A)
+					area_name = sanitize_area(A.name)
+
+				if(H.job)
+					role = H.job
+				else if(istype(H.wear_id, /obj/item/card/id)) //decapitated marine is mindless,
+					var/obj/item/card/id/ID = H.wear_id //we use their ID to get their role.
+					if(ID.rank)
+						role = ID.rank
+
+				switch(H.stat)
+					if(CONSCIOUS)
+						mob_state = "Conscious"
+						living_count++
+					if(UNCONSCIOUS)
+						mob_state = "<b>Unconscious</b>"
+						living_count++
+					else
+						continue
+
+				if(!is_ground_level(M_turf.z))
+					almayer_count++
+					continue
+
+				if(!istype(H.head, /obj/item/clothing/head/helmet/marine))
+					helmetless_count++
+					continue
+
+				if(!H.key || !H.client)
+					SSD_count++
+					continue
+
+			var/marine_infos = "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[H]'>[mob_name]</a></td><td>[role]</td><td>[mob_state]</td><td>[area_name]</td></tr>"
+			switch(role)
+				if(JOB_CO)
+					co_text += marine_infos
+				if(JOB_XO)
+					xo_text += marine_infos
+				if(JOB_SO)
+					so_text += marine_infos
+		dat += "<b>Total: [len(command_marines)] Deployed</b><BR>"
+		dat += "<b>Marines detected: [living_count] ([helmetless_count] no helmet, [SSD_count] SSD, [almayer_count] on Almayer)</b><BR>"
+		dat += "<center><b>Search:</b> <input type='text' id='filter' value='' onkeyup='updateSearch();' style='width:300px;'></center>"
+		dat += "<table id='marine_list' border='2px' style='width: 100%; border-collapse: collapse;' align='center'><tr>"
+		dat += "<th>Name</th><th>Role</th><th>State</th><th>Location</th></tr>"
+		dat += co_text + xo_text + so_text
+		dat += "</table>"
 	else
 		var/leader_text = ""
 		var/spec_text = ""
@@ -254,11 +327,15 @@
 			for(var/datum/squad/S in GLOB.RoleAuthority.squads)
 				if(S.active && S.faction == faction)
 					squad_list += S.name
+			squad_list += COMMAND_SQUAD
 
 			var/name_sel = tgui_input_list(usr, "Which squad would you like to look at?", "Pick Squad", squad_list)
 			if(!name_sel)
 				return
 
+			if(name_sel == COMMAND_SQUAD)
+				current_squad = COMMAND_SQUAD
+				return
 			var/datum/squad/selected = get_squad_by_name(name_sel)
 			if(selected)
 				current_squad = selected
@@ -348,3 +425,5 @@
 	lz_selection = FALSE
 	has_squad_overwatch = FALSE
 	minimap_type = MINIMAP_FLAG_PMC
+
+#undef COMMAND_SQUAD

@@ -152,6 +152,7 @@ block( \
 //toggles_admin
 /// Splits admin tabs in Statpanel
 #define SPLIT_ADMIN_TABS (1<<0)
+#define ADMIN_STEALTHMODE (1<<1)
 
 //=================================================
 

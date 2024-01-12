@@ -78,6 +78,8 @@
 	last_camera_turf = null
 	current = null
 	registered_tools = null
+	for(var/obj/structure/machinery/defenses/sentry/sentrygun as anything in paired_sentry)
+		unpair_sentry(sentrygun)
 	paired_sentry = null
 
 /obj/item/device/sentry_computer/proc/camera_mapname_update(source, value)
@@ -211,7 +213,7 @@
 					for(var/key_id in tool.encryption_keys)
 						var/datum/weakref/ref = tool.encryption_keys[key_id]
 						var/obj/item/device/sentry_computer/key_object = ref.resolve()
-						key_object.registered_tools -= id
+						key_object?.registered_tools -= id
 					tool.encryption_keys = list()
 				to_chat(user, SPAN_NOTICE("Existing encryption keys cleared."))
 			to_chat(usr, SPAN_NOTICE("You begin encryption key to \the [tool]."))
@@ -319,9 +321,8 @@
 	.["sentry_static"] = list()
 	.["mapRef"] = camera_map_name
 	var/index = 1
-	for(var/sentry in paired_sentry)
+	for(var/obj/structure/machinery/defenses/sentry/sentrygun as anything in paired_sentry)
 		var/list/sentry_holder = list()
-		var/obj/structure/machinery/defenses/sentry/sentrygun = sentry
 		sentry_holder["selection_menu"] = list()
 		sentry_holder["index"] = index
 		sentry_holder["name"] = sentrygun.name

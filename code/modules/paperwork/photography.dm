@@ -46,7 +46,7 @@
 	..()
 
 /obj/item/photo/get_examine_text(mob/user)
-	if(in_range(user, src))
+	if(in_range(user, src) || isobserver(user))
 		show(user)
 		return list(desc)
 	else

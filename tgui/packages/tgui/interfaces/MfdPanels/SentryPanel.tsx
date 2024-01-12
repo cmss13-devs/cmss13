@@ -57,6 +57,7 @@ export const SentryMfdPanel = (props: MfdProps, context) => {
   );
   const deployLabel =
     (sentry?.data?.deployed ?? 0) === 1 ? 'RETRACT' : 'DEPLOY';
+
   return (
     <MfdPanel
       panelStateId={props.panelStateId}
@@ -70,7 +71,7 @@ export const SentryMfdPanel = (props: MfdProps, context) => {
             act('deploy-equipment', { equipment_id: sentry?.mount_point }),
         },
         {
-          children: 'CAMERA',
+          children: sentry?.data?.camera_available ? 'CAMERA' : undefined,
           onClick: () =>
             act('set-camera-sentry', { equipment_id: sentry?.mount_point }),
         },

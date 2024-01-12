@@ -621,7 +621,7 @@
 		burn_damage = 0
 
 	if(!burn_damage)
-		to_chat(M, SPAN_DANGER("You step over the flames."))
+		to_chat(M, SPAN_DANGER("[isxeno(M) ? "We" : "You"] step over the flames."))
 		return
 
 	M.last_damage_data = weapon_cause_data
@@ -632,7 +632,7 @@
 		if(FIRE_VARIANT_TYPE_B)
 			if(isxeno(M))
 				var/mob/living/carbon/xenomorph/X = M
-				X.armor_deflection?(variant_burn_msg=" You feel the flames weakening your exoskeleton!"):(variant_burn_msg=" You feel the flaming chemicals eating into your body!")
+				X.armor_deflection?(variant_burn_msg=" We feel the flames weakening our exoskeleton!"):(variant_burn_msg=" You feel the flaming chemicals eating into your body!")
 	to_chat(M, SPAN_DANGER("You are burned![variant_burn_msg?"[variant_burn_msg]":""]"))
 	M.updatehealth()
 

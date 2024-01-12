@@ -20,7 +20,7 @@ const createBabelConfig = (options) => {
         {
           modules: 'commonjs',
           useBuiltIns: 'entry',
-          corejs: '3.3.2',
+          corejs: '3',
           spec: false,
           loose: true,
           targets: [],

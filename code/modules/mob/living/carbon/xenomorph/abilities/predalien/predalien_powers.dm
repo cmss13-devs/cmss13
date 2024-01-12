@@ -179,9 +179,8 @@
 		return
 
 
-	RegisterSignal(predatoralien, COMSIG_XENO_POST_TOUGHEN, PROC_REF(disable_feralrush))
-	addtimer(CALLBACK(src, PROC_REF(remove_effects)), duration)
 
+	addtimer(CALLBACK(src, PROC_REF(remove_effects)), duration)
 	predatoralien.add_filter("predalien_toughen", 1, list("type" = "outline", "color" = "#421313", "size" = 1))
 	predatoralien.balloon_alert(predatoralien, "we feel our muscles tense, making us faster and more durable for a time.", text_color = "#522020ff")
 	buffs_active = TRUE
@@ -199,7 +198,7 @@
 	if (buffs_active == TRUE)
 		predatoralien.balloon_alert(predatoralien, "our muscles relax, we no longer feel as armored.", text_color = "#522020ff")
 		predatoralien.remove_filter("predalien_toughen")
-	UnregisterSignal(predatoralien, COMSIG_XENO_POST_TOUGHEN)
+
 
 
 /datum/action/xeno_action/onclick/feralrush/proc/remove_effects()

@@ -4,8 +4,6 @@
  * @license MIT
  */
 
-import { toFixed } from 'common/math';
-
 const SI_SYMBOLS = [
   'f', // femto
   'p', // pico
@@ -89,19 +87,19 @@ export const formatMoney = (value: number, precision = 0) => {
   return isNegative ? `-${formattedValue}` : formattedValue;
 };
 
-/**
- * Formats a floating point number as a number on the decibel scale.
- */
+// Formats a floating point number as a number on the decibel scale
 export const formatDb = (value: number) => {
-  const db = (20 * Math.log(value)) / Math.log(10);
-  const sign = db >= 0 ? '+' : '–';
+  const db = 20 * Math.log10(value);
+  const sign = db >= 0 ? '+' : '-';
   let formatted: string | number = Math.abs(db);
+
   if (formatted === Infinity) {
     formatted = 'Inf';
   } else {
-    formatted = toFixed(formatted, 2);
+    formatted = formatted.toFixed(2);
   }
-  return sign + formatted + ' dB';
+
+  return `${sign}${formatted} dB`;
 };
 
 const SI_BASE_TEN_UNITS = [

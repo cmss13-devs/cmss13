@@ -21,6 +21,7 @@
 	var/lz_selection = TRUE
 	var/has_squad_overwatch = TRUE
 	var/faction = FACTION_MARINE
+	var/show_command_squad = FALSE
 
 /obj/structure/machinery/computer/groundside_operations/Initialize()
 	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
@@ -71,7 +72,10 @@
 		dat += "<BR><hr>"
 
 	if(has_squad_overwatch)
-		dat += "Current Squad: <A href='?src=\ref[src];operation=pick_squad'>[!isnull(current_squad) ? (istext(current_squad) ? "[current_squad]" : "[current_squad.name]")  : "----------"]</A><BR>"
+		if(show_command_squad)
+			dat += "Current Squad: <A href='?src=\ref[src];operation=pick_squad'>Command</A><BR>"
+		else
+			dat += "Current Squad: <A href='?src=\ref[src];operation=pick_squad'>[!isnull(current_squad) ? "[current_squad.name]" : "----------"]</A><BR>"
 		if(current_squad)
 			dat += get_overwatch_info()
 
@@ -106,9 +110,7 @@
 	</script>
 	"}
 
-	if(!current_squad)
-		dat += "No Squad selected!<BR>"
-	else if(istext(current_squad))
+	if(show_command_squad)
 		var/list/command_marines = list(GLOB.marine_leaders[JOB_CO], GLOB.marine_leaders[JOB_XO]) + GLOB.marine_leaders[JOB_SO]
 
 		var/co_text = ""
@@ -179,7 +181,7 @@
 		dat += "<th>Name</th><th>Role</th><th>State</th><th>Location</th></tr>"
 		dat += co_text + xo_text + so_text
 		dat += "</table>"
-	else
+	else if (current_squad)
 		var/leader_text = ""
 		var/spec_text = ""
 		var/medic_text = ""
@@ -262,6 +264,8 @@
 		dat += "<th>Name</th><th>Role</th><th>State</th><th>Location</th></tr>"
 		dat += leader_text + spec_text + medic_text + engi_text + smart_text + marine_text + misc_text
 		dat += "</table>"
+	else 
+		dat += "No Squad selected!<BR>"
 	dat += "<br><hr>"
 	dat += "<A href='?src=\ref[src];operation=refresh'>Refresh</a><br>"
 	return dat
@@ -334,8 +338,11 @@
 				return
 
 			if(name_sel == COMMAND_SQUAD)
-				current_squad = COMMAND_SQUAD
+				show_command_squad = TRUE
+				current_squad = null
 				return
+			else
+				show_command_squad = FALSE
 			var/datum/squad/selected = get_squad_by_name(name_sel)
 			if(selected)
 				current_squad = selected

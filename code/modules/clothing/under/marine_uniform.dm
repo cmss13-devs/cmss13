@@ -805,6 +805,42 @@
 	icon_state = "liaison_blue_blazer"
 	worn_state = "liaison_blue_blazer"
 
+/obj/item/clothing/under/liaison_suit/field
+	name = "corporate casual"
+	desc = "A pair of dark brown slacks paired with a dark blue button-down shirt. A popular look among those in the corporate world that conduct the majority of their business from night clubs."
+	icon_state = "corporate_field"
+	worn_state = "corporate_field"
+
+/obj/item/clothing/under/liaison_suit/ivy
+	name = "country club outfit"
+	desc = "A pair of khaki slacks paired with a light blue button-down shirt. A popular look with those in the corporate world that conduct the majority of their business from country clubs."
+	icon_state = "corporate_ivy"
+	worn_state = "corporate_ivy"
+
+/obj/item/clothing/under/liaison_suit/corporate_formal
+	name = "formal suit pants"
+	desc = "A pair of ivory slacks paired with a white shirt. A popular pairing for formal corporate events."
+	icon_state = "corporate_formal"
+	worn_state = "corporate_formal"
+
+/obj/item/clothing/under/liaison_suit/black
+	name = "black suit pants"
+	desc = "A pair of black slacks paired with a white shirt. The most common pairing among corporate workers."
+	icon_state = "corporate_black"
+	worn_state = "corporate_black"
+
+/obj/item/clothing/under/liaison_suit/brown
+	name = "brown suit pants"
+	desc = "A pair of brown slacks paired with a white shirt. A common pairing among corporate workers."
+	icon_state = "corporate_brown"
+	worn_state = "corporate_brown"
+
+/obj/item/clothing/under/liaison_suit/blue
+	name = "blue suit pants"
+	desc = "A pair of blue slacks paired with a white shirt. A common pairing among corporate workers."
+	icon_state = "corporate_blue"
+	worn_state = "corporate_blue"
+
 /obj/item/clothing/under/marine/reporter
 	name = "combat correspondent uniform"
 	desc = "A relaxed and robust uniform fit for any potential reporting needs."

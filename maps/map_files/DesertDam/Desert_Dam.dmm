@@ -12676,7 +12676,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aMk" = (
-/obj/structure/machinery/mill,
+/obj/structure/prop/mill,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aMl" = (
@@ -29519,7 +29519,7 @@
 	},
 /area/desert_dam/interior/dam_interior/workshop)
 "bPQ" = (
-/obj/structure/machinery/mill,
+/obj/structure/prop/mill,
 /turf/open/floor/prison{
 	icon_state = "sterile_white"
 	},
@@ -30711,7 +30711,7 @@
 	},
 /area/desert_dam/building/security/prison)
 "bTs" = (
-/obj/structure/machinery/squeezer,
+/obj/structure/prop/squeezer,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/backroom)
 "bTt" = (
@@ -49264,7 +49264,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/hydroponics/hydroponics)
 "ddR" = (
-/obj/structure/machinery/fermenter,
+/obj/structure/prop/fermenter,
 /turf/open/floor/prison,
 /area/desert_dam/building/hydroponics/hydroponics)
 "ddS" = (

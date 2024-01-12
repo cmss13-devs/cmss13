@@ -7,7 +7,7 @@
 import { classes } from 'common/react';
 import { useDispatch } from 'common/redux';
 import { decodeHtmlEntities, toTitleCase } from 'common/string';
-import { Component } from 'inferno';
+import { Component, InfernoNode } from 'inferno';
 import { backendSuspendStart, useBackend } from '../backend';
 import { Icon } from '../components';
 import { UI_DISABLED, UI_INTERACTIVE, UI_UPDATE } from '../constants';
@@ -21,7 +21,16 @@ const logger = createLogger('Window');
 
 const DEFAULT_SIZE = [400, 600];
 
-export class Window extends Component {
+type Props = Partial<{
+  buttons: InfernoNode;
+  canClose: boolean;
+  height: number;
+  theme: string;
+  title: string;
+  width: number;
+}>;
+
+export class Window extends Component<Props> {
   componentDidMount() {
     const { suspended } = useBackend(this.context);
     const { canClose = true } = this.props;
@@ -98,15 +107,15 @@ export class Window extends Component {
           <>
             <div
               className="Window__resizeHandle__e"
-              onMousedown={resizeStartHandler(1, 0)}
+              onMouseDown={resizeStartHandler(1, 0)}
             />
             <div
               className="Window__resizeHandle__s"
-              onMousedown={resizeStartHandler(0, 1)}
+              onMouseDown={resizeStartHandler(0, 1)}
             />
             <div
               className="Window__resizeHandle__se"
-              onMousedown={resizeStartHandler(1, 1)}
+              onMouseDown={resizeStartHandler(1, 1)}
             />
           </>
         )}

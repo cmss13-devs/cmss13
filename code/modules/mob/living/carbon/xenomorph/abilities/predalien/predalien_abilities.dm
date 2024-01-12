@@ -1,15 +1,3 @@
-/datum/action/xeno_action/activable/pounce/predalien
-	name = "Leap"
-	ability_primacy = XENO_PRIMARY_ACTION_1
-
-	knockdown = FALSE
-
-	distance = 5
-	knockdown = FALSE // Should we knock down the target?
-	slash = FALSE // Do we slash upon reception?
-	freeze_self = FALSE // Should we freeze ourselves after the lunge?
-	should_destroy_objects = TRUE   // Only used for ravager charge
-
 /datum/action/xeno_action/onclick/predalien_roar
 	name = "Roar"
 	action_icon_state = "screech"
@@ -17,7 +5,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	xeno_cooldown = 25 SECONDS
-	plasma_cost = 50
+	plasma_cost = 0
 
 	var/predalien_roar = list("sound/voice/predalien_roar.ogg")
 	var/bonus_damage_scale = 2.5
@@ -31,6 +19,7 @@
 	action_icon_state = "rav_eviscerate"
 	ability_name = "devastate"
 	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_3
 	xeno_cooldown = 15 SECONDS
 	plasma_cost = 0
 
@@ -45,7 +34,7 @@
 
 /datum/action/xeno_action/onclick/toggle_gut_targetting
 	name = "Toggle Gutting Type"
-	action_icon_state = "rav_eviscerate" // default = heal
+	action_icon_state = "rav_scissor_cut" // default = heal
 	macro_path = ""
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_5
@@ -68,7 +57,7 @@
 		return
 
 	if (GT.targetting == SINGLETARGETGUT)
-		action_icon_result = "rav_eviscerate"
+		action_icon_result = "rav_scissor_cut"
 		GT.targetting = AOETARGETGUT
 		to_chat(X, SPAN_XENOWARNING("We will now attack everyone around us"))
 	else
@@ -79,5 +68,23 @@
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)
 	return ..()
+
+
+/datum/action/xeno_action/onclick/feralrush
+	name = "Toughen Up"
+	action_icon_state = "charge_spit"
+	ability_name = "toughen up"
+	macro_path = ""
+	ability_primacy = XENO_PRIMARY_ACTION_1
+	action_type = XENO_ACTION_ACTIVATE
+	plasma_cost = 0
+	xeno_cooldown = 12 SECONDS
+
+	// Config
+	var/duration = 3 SECONDS
+	var/speed_buff_amount = 0.8 // Go from shit slow to kindafast
+	var/armor_buff_amount = 10 // hopefully-minor buff so they can close the distance
+
+	var/buffs_active = FALSE
 
 

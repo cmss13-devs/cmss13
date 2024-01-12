@@ -1,6 +1,3 @@
-/datum/action/xeno_action/activable/pounce/predalien/pre_pounce_effects()
-	playsound(owner, 'sound/voice/predalien_pounce.ogg', 75, 0, status = 0)
-
 /datum/action/xeno_action/onclick/predalien_roar/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
 
@@ -49,12 +46,9 @@
 	if(!xeno.check_state())
 		return
 
-	var/activation_delay = activation_delay_aoe
 	var/aoe_damage = base_damage_aoe
 	var/aoe_scale = damage_scale_aoe
-	var/lifesteal_range =  1
 	var/range = 2
-	var/windup_reduction_aoe = 1
 	var/targetting_type = targetting
 
 	if(targetting_type == AOETARGETGUT)
@@ -68,7 +62,7 @@
 
 		ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Eviscerate"))
 		xeno.anchored = TRUE
-		if (do_after(xeno, (activation_delay - windup_reduction_aoe), INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+		if (do_after(xeno, (activation_delay_aoe), INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 			xeno.emote("roar")
 			xeno.spin_circle()
 
@@ -93,7 +87,7 @@
 
 				human.apply_armoured_damage(get_xeno_damage_slash(human, aoe_damage + aoe_scale * behavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
 
-		var/list/mobs_in_range = oviewers(lifesteal_range, xeno)
+		var/list/mobs_in_range = oviewers(xeno)
 		for(var/mob/mob as anything in mobs_in_range)
 			if(mob.stat == DEAD || HAS_TRAIT(mob, TRAIT_NESTED))
 				continue
@@ -165,3 +159,61 @@
 		xeno.visible_message(SPAN_XENODANGER("[xeno] rapidly slices into [carbon]!"))
 
 		return ..()
+
+
+/datum/action/xeno_action/onclick/feralrush/use_ability(atom/A)
+	var/mob/living/carbon/xenomorph/predatoralien = owner
+
+	if (!action_cooldown_check())
+		return
+
+	if (!istype(predatoralien) || !predatoralien.check_state())
+		return
+
+	if (buffs_active)
+		to_chat(predatoralien, SPAN_XENOHIGHDANGER("We cannot stack this!"))
+		return
+
+	if (!check_and_use_plasma_owner())
+		return
+
+
+	RegisterSignal(predatoralien, COMSIG_XENO_POST_TOUGHEN, PROC_REF(disable_feralrush))
+	addtimer(CALLBACK(src, PROC_REF(remove_effects)), duration)
+
+	predatoralien.add_filter("predalien_toughen", 1, list("type" = "outline", "color" = "#421313", "size" = 1))
+	predatoralien.balloon_alert(predatoralien, "We feel our muscles tense, making us faster and more durable for a time.", text_color = "#522020ff")
+	buffs_active = TRUE
+	predatoralien.speed_modifier -= speed_buff_amount
+	predatoralien.armor_modifier += armor_buff_amount
+	predatoralien.recalculate_speed()
+	predatoralien.recalculate_armor()
+	apply_cooldown()
+
+
+/datum/action/xeno_action/onclick/feralrush/proc/disable_feralrush()
+	SIGNAL_HANDLER
+	var/mob/living/carbon/xenomorph/predatoralien = owner
+	if (buffs_active == TRUE)
+		predatoralien.balloon_alert(predatoralien, "Our muscles relax, we no longer feel as armored.", text_color = "#522020ff")
+		predatoralien.remove_filter("predalien_toughen")
+	UnregisterSignal(predatoralien, COMSIG_XENO_POST_TOUGHEN)
+
+
+/datum/action/xeno_action/onclick/feralrush/proc/remove_effects()
+	var/mob/living/carbon/xenomorph/predatoralien = owner
+
+	if (!istype(predatoralien))
+		return
+
+	predatoralien.speed_modifier += speed_buff_amount
+	predatoralien.armor_modifier -= armor_buff_amount
+	predatoralien.recalculate_speed()
+	predatoralien.recalculate_armor()
+	disable_feralrush()
+	buffs_active = FALSE
+
+
+
+
+

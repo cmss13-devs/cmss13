@@ -6,8 +6,6 @@
 	melee_damage_upper = XENO_DAMAGE_TIER_5
 	melee_vehicle_damage = XENO_DAMAGE_TIER_5
 	max_health = XENO_HEALTH_TIER_9
-	plasma_gain = XENO_PLASMA_GAIN_TIER_9
-	plasma_max = XENO_PLASMA_TIER_3
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_10
 	armor_deflection = XENO_ARMOR_TIER_3
 	evasion = XENO_EVASION_NONE
@@ -56,7 +54,7 @@
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab,
-		/datum/action/xeno_action/activable/pounce/predalien,
+		/datum/action/xeno_action/onclick/feralrush,
 		/datum/action/xeno_action/onclick/predalien_roar,
 		/datum/action/xeno_action/activable/feralfrenzy,
 		/datum/action/xeno_action/onclick/toggle_gut_targetting,
@@ -89,10 +87,10 @@
 	to_chat(src, {"
 <span class='role_body'>|______________________|</span>
 <span class='role_header'>You are a predator-alien hybrid!</span>
-<span class='role_body'>You are a very powerful xenomorph creature that was born of a Yautja warrior body.
-You are stronger, faster, and smarter than a regular xenomorph, but you must still listen to the queen.
-You have a degree of freedom to where you can hunt and claim the heads of the hive's enemies, so check your verbs.
-Your health meter will not regenerate normally, so kill and die for the hive!</span>
+<span class='role_body'>You are a predalien born from the body of your natural enemy, you are considered an abomination to all of the predator race and they will do WHATEVER it takes to kill you.
+However, being born from one you also harbor their intelligence and strength. You are built to be able to take them on but that does not mean you are invincible. Stay with your hive and overwhelm them with your numbers, your sisters have sacrificed alot for you, do not just wander off and die.
+You must still listen to the queen.
+</span>
 <span class='role_body'>|______________________|</span>
 "})
 	emote("roar")
@@ -120,53 +118,3 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 
 	return original_damage + kills * 2.5
 
-/datum/behavior_delegate/predalien_base/handle_slash(mob/victim)
-	if(bound_xeno.can_not_harm(victim))
-		return FALSE
-
-	var/mob/living/carbon/xenomorph/predalien/xeno = bound_xeno
-
-	if(!istype(xeno))
-		return FALSE
-
-	if(victim.stat == DEAD && isxeno_human(victim))
-		if(xeno.action_busy)
-			to_chat(xeno, SPAN_XENONOTICE("You are already performing an action!"))
-			return TRUE
-
-		playsound(xeno.loc, 'sound/weapons/slice.ogg', 25)
-		xeno_attack_delay(xeno)
-
-		if(!do_after(xeno, xeno.butcher_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE, victim))
-			to_chat(xeno, SPAN_XENONOTICE("You decide not to butcher [victim]"))
-			return TRUE
-
-		if(ishuman(victim) && !isworkingjoe(victim)) //No joe meat, can still gib it though
-			var/mob/living/carbon/human/human_victim = victim
-
-			var/flesh_type = /obj/item/reagent_container/food/snacks/meat
-			var/flesh = "meat"
-			if(issynth(human_victim))
-				flesh_type = /obj/item/reagent_container/food/snacks/meat/synthmeat/synthflesh
-				flesh = "synthetic flesh"
-			for(var/i in 1 to 3)
-				var/obj/item/reagent_container/food/snacks/meat/new_meat = new flesh_type(human_victim.loc)
-				new_meat.name = "[human_victim.name] [flesh]"
-
-
-		else if (isxeno(victim))
-			var/mob/living/carbon/xenomorph/xeno_victim = victim
-
-			new /obj/effect/decal/remains/xeno(xeno_victim.loc)
-			var/obj/item/stack/sheet/animalhide/xeno/xenohide = new /obj/item/stack/sheet/animalhide/xeno(xeno_victim.loc)
-			xenohide.name = "[xeno_victim.age_prefix][xeno_victim.caste_type]-hide"
-			xenohide.singular_name = "[xeno_victim.age_prefix][xeno_victim.caste_type]-hide"
-			xenohide.stack_id = "[xeno_victim.age_prefix][xeno_victim.caste_type]-hide"
-
-		playsound(xeno.loc, 'sound/effects/blobattack.ogg', 25)
-
-		victim.gib(create_cause_data("butchering", xeno))
-
-		return TRUE
-
-	return FALSE

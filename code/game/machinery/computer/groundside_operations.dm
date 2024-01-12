@@ -172,7 +172,7 @@
 					xo_text += marine_infos
 				if(JOB_SO)
 					so_text += marine_infos
-		dat += "<b>Total: [len(command_marines)] Deployed</b><BR>"
+		dat += "<b>Total: [length(command_marines)] Deployed</b><BR>"
 		dat += "<b>Marines detected: [living_count] ([helmetless_count] no helmet, [SSD_count] SSD, [almayer_count] on Almayer)</b><BR>"
 		dat += "<center><b>Search:</b> <input type='text' id='filter' value='' onkeyup='updateSearch();' style='width:300px;'></center>"
 		dat += "<table id='marine_list' border='2px' style='width: 100%; border-collapse: collapse;' align='center'><tr>"

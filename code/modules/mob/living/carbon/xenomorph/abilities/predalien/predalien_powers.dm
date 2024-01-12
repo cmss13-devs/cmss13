@@ -174,7 +174,7 @@
 	SIGNAL_HANDLER
 	var/mob/living/carbon/xenomorph/predatoralien = owner
 	if (buffs_active == TRUE)
-		to_chat(predatoralien, SPAN_XENOWARNING("Our muscles relax as we feel our speed wane, we are no longe armored."))
+		to_chat(predatoralien, SPAN_XENOWARNING("Our muscles relax as we feel our speed wane, we are no longer armored."))
 		predatoralien.remove_filter("predalien_toughen")
 		predatoralien.speed_modifier += speed_buff_amount
 		predatoralien.armor_modifier -= armor_buff_amount

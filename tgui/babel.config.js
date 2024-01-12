@@ -9,27 +9,21 @@ const createBabelConfig = (options) => {
   // prettier-ignore
   return {
     presets: [
-      [
-        require.resolve('@babel/preset-typescript'),
-        {
-          allowDeclareFields: true,
-        },
-      ],
-      [
-        require.resolve('@babel/preset-env'),
-        {
-          modules: 'commonjs',
-          useBuiltIns: 'entry',
-          corejs: '3',
-          spec: false,
-          loose: true,
-          targets: [],
-        },
-      ],
+      [require.resolve('@babel/preset-typescript'), {
+        allowDeclareFields: true,
+      }],
+      [require.resolve('@babel/preset-env'), {
+        modules: 'commonjs',
+        useBuiltIns: 'entry',
+        corejs: '3',
+        spec: false,
+        loose: true,
+        targets: [],
+      }],
       ...presets,
     ].filter(Boolean),
     plugins: [
-      [require.resolve('@babel/plugin-transform-class-properties'), {
+      [require.resolve('@babel/plugin-proposal-class-properties'), {
         loose: true,
       }],
       require.resolve('@babel/plugin-transform-jscript'),

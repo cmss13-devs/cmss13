@@ -38,6 +38,10 @@
 	/// If this camera should have innate EMP-proofing
 	var/emp_proof = FALSE
 
+	///Autonaming
+	var/autoname = FALSE
+	var/autonumber = 0 //camera number in area
+
 /obj/structure/machinery/camera/Initialize(mapload, ...)
 	. = ..()
 	WireColorToFlag = randomCameraWires()
@@ -57,6 +61,19 @@
 
 	set_pixel_location()
 	update_icon()
+
+	//This camera automatically sets it's name to whatever the area that it's in is called.
+	if(autoname)
+		autonumber = 1
+		var/area/A = get_area(src)
+		if(A)
+			for(var/obj/structure/machinery/camera/autoname/C in GLOB.machines)
+				if(C == src) continue
+				var/area/CA = get_area(C)
+				if(CA.type == A.type)
+					if(C.autonumber)
+						autonumber = max(autonumber, C.autonumber+1)
+			c_tag = "[A.name] #[autonumber]"
 
 /obj/structure/machinery/camera/Destroy()
 	. = ..()

@@ -337,3 +337,4 @@
 				equip_to_slot_if_possible(new /obj/item/falcon_drone(src.loc), WEAR_R_EAR, disable_warning = TRUE)
 
 	remove_verb(src, /mob/living/carbon/human/proc/pred_buy)
+	remove_action(src, /datum/action/predator_action/claim_equipment)

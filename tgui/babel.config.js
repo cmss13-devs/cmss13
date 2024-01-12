@@ -26,7 +26,6 @@ const createBabelConfig = (options) => {
           targets: [],
         },
       ],
-      [require.resolve('@babel/preset-react'), { runtime: 'automatic' }],
       ...presets,
     ].filter(Boolean),
     plugins: [

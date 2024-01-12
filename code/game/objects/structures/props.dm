@@ -1372,33 +1372,3 @@
 	if(initial(emote.sound))
 		playsound(loc, initial(emote.sound), 50, FALSE)
 	return TRUE
-
-//made into prop from an old destilery project abandon 9 year ago.
-
-/obj/structure/prop/mill
-	name = "\improper Mill"
-	desc = "It is a machine that grinds produce."
-	icon_state = "autolathe"
-	density = TRUE
-	anchored = TRUE
-
-/obj/structure/prop/fermenter
-	name = "\improper Fermenter"
-	desc = "It is a machine that ferments produce into alcoholic drinks."
-	icon_state = "autolathe"
-	density = TRUE
-	anchored = TRUE
-
-/obj/structure/prop/still
-	name = "\improper Still"
-	desc = "It is a machine that produces hard liquor from alcoholic drinks."
-	icon_state = "autolathe"
-	density = TRUE
-	anchored = TRUE
-
-/obj/structure/prop/squeezer
-	name = "\improper Squeezer"
-	desc = "It is a machine that squeezes extracts from produce."
-	icon_state = "autolathe"
-	density = TRUE
-	anchored = TRUE

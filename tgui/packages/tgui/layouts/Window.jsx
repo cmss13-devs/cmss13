@@ -7,7 +7,7 @@
 import { classes } from 'common/react';
 import { useDispatch } from 'common/redux';
 import { decodeHtmlEntities, toTitleCase } from 'common/string';
-import { Component, InfernoNode } from 'inferno';
+import { Component } from 'inferno';
 import { backendSuspendStart, useBackend } from '../backend';
 import { Icon } from '../components';
 import { UI_DISABLED, UI_INTERACTIVE, UI_UPDATE } from '../constants';
@@ -21,16 +21,7 @@ const logger = createLogger('Window');
 
 const DEFAULT_SIZE = [400, 600];
 
-type Props = Partial<{
-  buttons: InfernoNode;
-  canClose: boolean;
-  height: number;
-  theme: string;
-  title: string;
-  width: number;
-}>;
-
-export class Window extends Component<Props> {
+export class Window extends Component {
   componentDidMount() {
     const { suspended } = useBackend(this.context);
     const { canClose = true } = this.props;
@@ -183,7 +174,7 @@ const TitleBar = (props, context) => {
       )}
       <div
         className="TitleBar__dragZone"
-        onMousedown={(e) => fancy && onDragStart(e)}
+        onMouseDown={(e) => fancy && onDragStart(e)}
       />
       <div className="TitleBar__title">
         {finalTitle}

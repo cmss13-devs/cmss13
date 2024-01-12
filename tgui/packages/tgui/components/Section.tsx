@@ -43,7 +43,7 @@ export class Section extends Component<SectionProps> {
 
   componentDidMount() {
     if (this.scrollable || this.scrollableHorizontal) {
-      addScrollableNode(this.scrollableRef.current);
+      addScrollableNode(this.scrollableRef.current as HTMLElement);
       if (this.onScroll && this.scrollableRef.current) {
         this.scrollableRef.current.onscroll = this.onScroll;
       }
@@ -52,7 +52,7 @@ export class Section extends Component<SectionProps> {
 
   componentWillUnmount() {
     if (this.scrollable || this.scrollableHorizontal) {
-      removeScrollableNode(this.scrollableRef.current);
+      removeScrollableNode(this.scrollableRef.current as HTMLElement);
     }
   }
 

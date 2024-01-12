@@ -10,11 +10,11 @@ export const handleIncrementChannel = function (this: Modal) {
   const { radioPrefix, availableChannels } = this.fields;
 
   if (radioPrefix === ':b ') {
-    this.timers.channelDebounce({ mode: true });
+    this.timers.channelDebounce(true);
   }
   this.fields.radioPrefix = '';
   if (channel === availableChannels.length - 1) {
-    this.timers.channelDebounce({ mode: true });
+    this.timers.channelDebounce(true);
     this.setState({
       buttonContent: availableChannels[0],
       channel: 0,
@@ -22,7 +22,7 @@ export const handleIncrementChannel = function (this: Modal) {
   } else {
     if (channel === 2) {
       // Disables thinking indicator for OOC channel
-      this.timers.channelDebounce({ mode: false });
+      this.timers.channelDebounce(false);
     }
     this.setState({
       buttonContent: availableChannels[channel + 1],

@@ -63,7 +63,7 @@
 	else
 		action_icon_result = "gut"
 		GT.targetting = SINGLETARGETGUT
-		to_chat(X, SPAN_XENOWARNING("We will now unleash our rage on one person!"))
+		to_chat(X, SPAN_XENOWARNING("We will now focus our rage on one person!"))
 
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)

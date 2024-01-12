@@ -186,8 +186,6 @@
 
 /datum/action/xeno_action/onclick/toggle_gut_targetting/can_use_action()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if(xeno && !xeno.buckled && !xeno.is_mob_incapacitated())
-		return TRUE
 
 /datum/action/xeno_action/onclick/toggle_gut_targetting/use_ability(atom/A)
 

@@ -86,6 +86,7 @@
 					playsound(get_turf(human), "alien_claw_flesh", 30, 1)
 
 				human.apply_armoured_damage(get_xeno_damage_slash(human, aoe_damage + aoe_scale * behavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
+			playsound(owner, 'sound/voice/predalien_growl.ogg', 75, 0, status = 0)
 
 		var/list/mobs_in_range = oviewers(xeno)
 		for(var/mob/mob as anything in mobs_in_range)
@@ -188,6 +189,7 @@
 	predatoralien.armor_modifier += armor_buff_amount
 	predatoralien.recalculate_speed()
 	predatoralien.recalculate_armor()
+	playsound(predatoralien, 'sound/voice/predalien_growl.ogg', 75, 0, status = 0)
 	apply_cooldown()
 
 

@@ -62,3 +62,7 @@
 
 /// For any additional things that should happen when a xeno's melee_attack_additional_effects_self() proc is called
 #define COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF "xeno_slash_additional_effects_self"
+
+/// From /mob/living/carbon/xenomorph/proc/hivemind_talk(): (message)
+#define COMSIG_XENO_TRY_HIVEMIND_TALK "xeno_try_hivemind_talk"
+	#define COMPONENT_CANCEL_HIVEMIND_TALK (1<<0)

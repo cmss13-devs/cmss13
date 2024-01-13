@@ -23180,10 +23180,12 @@
 	},
 /area/almayer/hallways/port_hallway)
 "cjz" = (
+/obj/structure/bed/chair/bolted{
+	dir = 1
+	},
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/bed/chair/bolted,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -34659,6 +34661,10 @@
 	phone_id = "Medical Lower";
 	pixel_x = 16
 	},
+/obj/item/device/helmet_visor/medical/advanced,
+/obj/item/device/helmet_visor/medical/advanced,
+/obj/item/device/helmet_visor/medical/advanced,
+/obj/item/device/helmet_visor/medical/advanced,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -70522,10 +70528,12 @@
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "tYW" = (
+/obj/structure/bed/chair/bolted{
+	dir = 1
+	},
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/bed/chair/bolted,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},

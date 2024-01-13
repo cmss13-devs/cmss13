@@ -63,15 +63,21 @@
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
 	weed_food_states = list("Facehugger_1","Facehugger_2","Facehugger_3")
 	weed_food_states_flipped = list("Facehugger_1","Facehugger_2","Facehugger_3")
+	/// The last ckey to have inhabited this mob
+	var/last_ckey_inhabited = ""
 
-/mob/living/carbon/xenomorph/facehugger/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+/mob/living/carbon/xenomorph/facehugger/Login()
 	. = ..()
+	if(ckey == last_ckey_inhabited)
+		return
+
 	AddComponent(\
 		/datum/component/temporary_mute,\
 		"We aren't old enough to vocalize anything yet.",\
 		"We feel old enough to be able to vocalize and speak to the hivemind.",\
 		3 MINUTES,\
 	)
+	last_ckey_inhabited = ckey
 
 /mob/living/carbon/xenomorph/facehugger/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()

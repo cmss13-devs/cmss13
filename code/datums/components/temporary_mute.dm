@@ -22,6 +22,7 @@
 /datum/component/temporary_mute/RegisterWithParent()
 	..()
 	RegisterSignal(parent, COMSIG_LIVING_SPEAK, PROC_REF(on_speak))
+	RegisterSignal(parent, COMSIG_XENO_TRY_HIVEMIND_TALK, PROC_REF(on_speak))
 
 /datum/component/temporary_mute/UnregisterFromParent()
 	..()
@@ -41,5 +42,8 @@
 	nolog = FALSE,
 	message_mode = null
 )
+	var/mob/mob_parent = parent
+
+	log_say("[mob_parent.name != "Unknown" ? mob_parent.name : "([mob_parent.real_name])"] attempted to say the following before their xenomorph spawn mute ended: [message] (CKEY: [mob_parent.key]) (JOB: [mob_parent.job])")
 	to_chat(parent, SPAN_BOLDNOTICE(on_speak_message))
 	return COMPONENT_OVERRIDE_SPEAK

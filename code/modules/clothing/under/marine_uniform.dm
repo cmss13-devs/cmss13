@@ -510,6 +510,9 @@
 	has_sensor = UNIFORM_NO_SENSORS
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine/veteran/bear)
 
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/uniform_1.dmi',
+	)
 
 /obj/item/clothing/under/marine/veteran/UPP
 	name = "\improper UPP fatigues"

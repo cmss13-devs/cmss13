@@ -151,7 +151,7 @@
 	storage_slots = 14
 	max_w_class = SIZE_MEDIUM
 	max_storage_space = 28
-	var/mode = 0 //Pill picking mode
+	var/mode = 1 //Picking from pill bottle mode
 
 	can_hold = list(
 		/obj/item/device/healthanalyzer,
@@ -648,7 +648,7 @@
 
 /obj/item/storage/belt/shotgun/full/random/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
-		var/random_shell_type = pick(shotgun_handfuls_12g)
+		var/random_shell_type = pick(GLOB.shotgun_handfuls_12g)
 		new random_shell_type(src)
 
 /obj/item/storage/belt/shotgun/attackby(obj/item/W, mob/user)

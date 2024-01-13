@@ -57,7 +57,7 @@
 
 	if(ishuman(usr))
 		var/mob/living/carbon/human/user = usr
-		if(user.stat || get_dist(user, src) > 1 || user.blinded || user.lying)
+		if(user.is_mob_incapacitated() || get_dist(user, src) > 1 || user.blinded)
 			return
 
 		if(!skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
@@ -101,7 +101,7 @@
 			for(var/datum/reagent/chem in beaker.reagents.reagent_list)
 				reagentnames += ";[chem.name]"
 
-			log_admin("[key_name(user)] put a [beaker] into [src], containing [reagentnames] at ([src.loc.x],[src.loc.y],[src.loc.z]).")
+			log_admin("[key_name(user)] put \a [beaker] into [src], containing [reagentnames] at ([src.loc.x],[src.loc.y],[src.loc.z]).")
 
 			to_chat(user, "You attach \the [container] to \the [src].")
 			update_beam()
@@ -179,7 +179,7 @@
 	if(!istype(usr, /mob/living))
 		return
 
-	if(usr.stat || usr.lying)
+	if(usr.stat || usr.is_mob_incapacitated())
 		return
 
 	mode = !mode

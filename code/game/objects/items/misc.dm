@@ -134,20 +134,20 @@
 					return
 				stored_item = object
 				mobber.drop_inv_item_to_loc(object, src)
-				to_chat(mobber, SPAN_NOTICE("You slide the [object] into [src]."))
+				to_chat(mobber, SPAN_NOTICE("You slide [object] into [src]."))
 				playsound(mobber, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 				update_icon()
 				break
 	. = ..()
 
 /obj/item/weapon/pole/fancy_cane/this_is_a_knife/machete
-	stored_item = new /obj/item/weapon/claymore/mercsword/machete
+	stored_item = new /obj/item/weapon/sword/machete
 
 /obj/item/weapon/pole/fancy_cane/this_is_a_knife/ceremonial_sword
-	stored_item = new /obj/item/weapon/claymore/mercsword/ceremonial
+	stored_item = new /obj/item/weapon/sword/ceremonial
 
 /obj/item/weapon/pole/fancy_cane/this_is_a_knife/katana
-	stored_item = new /obj/item/weapon/katana
+	stored_item = new /obj/item/weapon/sword/katana
 
 // IN SHOTGUNS.DM!!
 

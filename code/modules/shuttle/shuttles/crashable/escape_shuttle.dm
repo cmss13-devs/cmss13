@@ -11,7 +11,7 @@
 	/// The % chance of the escape pod crashing into the groundmap before lifeboats leaving
 	var/early_crash_land_chance = 75
 	/// The % chance of the escape pod crashing into the groundmap
-	var/crash_land_chance = 25
+	var/crash_land_chance = 0
 	/// How many people can be in the escape pod before it crashes
 	var/max_capacity = 3
 
@@ -73,6 +73,8 @@
 		for(var/mob/living/occupant in interior_area)
 			occupant_count++
 		for(var/obj/structure/machinery/cryopod/evacuation/cryotube in interior_area)
+			if(cryotube.occupant)
+				occupant_count++
 			cryos += list(cryotube)
 	if (occupant_count > max_capacity)
 		playsound(src,'sound/effects/escape_pod_warmup.ogg', 50, 1)
@@ -103,7 +105,7 @@
 /obj/docking_port/mobile/crashable/escape_shuttle/crash_check()
 	. = ..()
 
-	if(prob((EvacuationAuthority.evac_status >= EVACUATION_STATUS_IN_PROGRESS ? crash_land_chance : early_crash_land_chance)))
+	if(prob((SShijack.hijack_status >= HIJACK_OBJECTIVES_COMPLETE ? crash_land_chance : early_crash_land_chance)))
 		return TRUE
 
 /obj/docking_port/mobile/crashable/escape_shuttle/open_doors()
@@ -124,8 +126,8 @@
 	id = ESCAPE_SHUTTLE_EAST_CL
 	width = 4
 	height = 5
-	early_crash_land_chance = 25
-	crash_land_chance = 5
+	early_crash_land_chance = 0
+	crash_land_chance = 0
 
 /obj/docking_port/mobile/crashable/escape_shuttle/w
 	id = ESCAPE_SHUTTLE_WEST

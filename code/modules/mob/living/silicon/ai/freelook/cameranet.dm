@@ -2,7 +2,7 @@
 //
 // The datum containing all the chunks.
 
-var/datum/cameranet/cameranet = new()
+GLOBAL_DATUM_INIT(cameranet, /datum/cameranet, new())
 
 /datum/cameranet
 	// The cameras on the map, no matter if they work or not. Updated in obj/structure/machinery/camera/New() and Dispose().
@@ -142,7 +142,7 @@ var/datum/cameranet/cameranet = new()
 /turf/verb/view_chunk()
 	set src in world
 
-	if(cameranet.chunkGenerated(x, y, z))
-		var/datum/camerachunk/chunk = cameranet.getCameraChunk(x, y, z)
+	if(GLOB.cameranet.chunkGenerated(x, y, z))
+		var/datum/camerachunk/chunk = GLOB.cameranet.getCameraChunk(x, y, z)
 		usr.client.debug_variables(chunk)
 */

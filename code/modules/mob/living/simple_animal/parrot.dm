@@ -54,7 +54,7 @@
 	var/parrot_sleep_dur = 25 //Same as above, this is the var that physically counts down
 	var/parrot_dam_zone = list("chest", "head", "l_arm", "l_leg", "r_arm", "r_leg") //For humans, select a bodypart to attack
 
-	var/parrot_speed = 5 //"Delay in machines ticks between movement." according to byond. Yeah, that's BS but it does directly affect movement. Higher number = slower.
+	var/parrot_speed = 5 //"Delay in GLOB.machines ticks between movement." according to byond. Yeah, that's BS but it does directly affect movement. Higher number = slower.
 	var/parrot_been_shot = 0 //Parrots get a speed bonus after being shot. This will deincrement every Life() and at 0 the parrot will return to regular speed.
 
 	var/list/speech_buffer = list()
@@ -127,7 +127,7 @@
 /mob/living/simple_animal/parrot/Topic(href, href_list)
 
 	//Can the usr physically do this?
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !in_range(loc, usr))
+	if(usr.is_mob_incapacitated() || !in_range(loc, usr))
 		return
 
 	//Is the usr's mob type able to do this?
@@ -146,7 +146,7 @@
 						ears.forceMove(src.loc)
 						ears = null
 						for(var/possible_phrase in speak)
-							if(copytext(possible_phrase,1,3) in department_radio_keys)
+							if(copytext(possible_phrase,1,3) in GLOB.department_radio_keys)
 								possible_phrase = copytext(possible_phrase,3,length(possible_phrase))
 					else
 						to_chat(usr, SPAN_DANGER("There is nothing to remove from its [remove_from]."))
@@ -284,7 +284,7 @@
 	if(client || stat)
 		return //Lets not force players or dead/incap parrots to move
 
-	if(!isturf(src.loc) || !canmove || buckled)
+	if(!isturf(src.loc) || !(mobility_flags & MOBILITY_MOVE) || buckled)
 		return //If it can't move, dont let it move. (The buckled check probably isn't necessary thanks to canmove)
 
 
@@ -332,7 +332,7 @@
 						if(prob(50))
 							useradio = 1
 
-						if(copytext(possible_phrase,1,3) in department_radio_keys)
+						if(copytext(possible_phrase,1,3) in GLOB.department_radio_keys)
 							possible_phrase = "[useradio?pick(available_channels):""] [copytext(possible_phrase,3,length(possible_phrase)+1)]" //crop out the channel prefix
 						else
 							possible_phrase = "[useradio?pick(available_channels):""] [possible_phrase]"
@@ -341,7 +341,7 @@
 
 				else //If we have no headset or channels to use, dont try to use any!
 					for(var/possible_phrase in speak)
-						if(copytext(possible_phrase,1,3) in department_radio_keys)
+						if(copytext(possible_phrase,1,3) in GLOB.department_radio_keys)
 							possible_phrase = "[copytext(possible_phrase,3,length(possible_phrase)+1)]" //crop out the channel prefix
 						newspeak.Add(possible_phrase)
 				speak = newspeak
@@ -363,7 +363,7 @@
 		//Wander around aimlessly. This will help keep the loops from searches down
 		//and possibly move the mob into a new are in view of something they can use
 		if(prob(90))
-			step(src, pick(cardinal))
+			step(src, pick(GLOB.cardinals))
 			return
 
 		if(!held_item && !parrot_perch) //If we've got nothing to do... look for something to do.
@@ -413,7 +413,7 @@
 				if(!parrot_perch || parrot_interest.loc != parrot_perch.loc)
 					held_item = parrot_interest
 					parrot_interest.forceMove(src)
-					visible_message("[src] grabs the [held_item]!", SPAN_NOTICE("You grab the [held_item]!"), "You hear the sounds of wings flapping furiously.")
+					visible_message("[src] grabs [held_item]!", SPAN_NOTICE("You grab [held_item]!"), "You hear the sounds of wings flapping furiously.")
 
 			parrot_interest = null
 			parrot_state = PARROT_SWOOP|PARROT_RETURN
@@ -577,7 +577,7 @@
 		return -1
 
 	if(held_item)
-		to_chat(src, SPAN_DANGER("You are already holding the [held_item]"))
+		to_chat(src, SPAN_DANGER("You are already holding [held_item]"))
 		return 1
 
 	for(var/obj/item/I in view(1,src))
@@ -590,7 +590,7 @@
 
 			held_item = I
 			I.forceMove(src)
-			visible_message("[src] grabs the [held_item]!", SPAN_NOTICE("You grab the [held_item]!"), "You hear the sounds of wings flapping furiously.")
+			visible_message("[src] grabs [held_item]!", SPAN_NOTICE("You grab [held_item]!"), "You hear the sounds of wings flapping furiously.")
 			return held_item
 
 	to_chat(src, SPAN_DANGER("There is nothing of interest to take."))
@@ -605,7 +605,7 @@
 		return -1
 
 	if(held_item)
-		to_chat(src, SPAN_DANGER("You are already holding the [held_item]"))
+		to_chat(src, SPAN_DANGER("You are already holding [held_item]"))
 		return 1
 
 	var/obj/item/stolen_item = null
@@ -620,7 +620,7 @@
 		if(stolen_item)
 			if(C.drop_inv_item_to_loc(stolen_item, src))
 				held_item = stolen_item
-				visible_message("[src] grabs the [held_item] out of [C]'s hand!", SPAN_NOTICE("You snag the [held_item] out of [C]'s hand!"), "You hear the sounds of wings flapping furiously.")
+				visible_message("[src] grabs [held_item] out of [C]'s hand!", SPAN_NOTICE("You snag [held_item] out of [C]'s hand!"), "You hear the sounds of wings flapping furiously.")
 				return held_item
 
 	to_chat(src, SPAN_DANGER("There is nothing of interest to take."))
@@ -655,11 +655,11 @@
 			var/obj/item/explosive/grenade/G = held_item
 			G.forceMove(src.loc)
 			G.prime()
-			to_chat(src, "You let go of the [held_item]!")
+			to_chat(src, "You let go of [held_item]!")
 			held_item = null
 			return 1
 
-	to_chat(src, "You drop the [held_item].")
+	to_chat(src, "You drop [held_item].")
 
 	held_item.forceMove(src.loc)
 	held_item = null
@@ -713,7 +713,7 @@
 
 	if(length(message) >= 2)
 		var/channel_prefix = copytext(message, 1 ,3)
-		message_mode = department_radio_keys[channel_prefix]
+		message_mode = GLOB.department_radio_keys[channel_prefix]
 
 	if(copytext(message,1,2) == ":")
 		var/positioncut = 3
@@ -722,7 +722,7 @@
 	message = capitalize(trim_left(message))
 
 	if(message_mode)
-		if(message_mode in radiochannels)
+		if(message_mode in GLOB.radiochannels)
 			if(ears && istype(ears,/obj/item/device/radio))
 				ears.talk_into(src,message, message_mode, verb, null)
 

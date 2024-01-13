@@ -1,22 +1,13 @@
 // Credits to Nickr5 for the useful procs I've taken from his library resource.
 
-var/const/E = 2.71828183
-var/const/Sqrt2 = 1.41421356
-
 // List of square roots for the numbers 1-100.
-var/list/sqrtTable = list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5,
+GLOBAL_LIST_INIT(sqrtTable, list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5,
 						  5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 7,
 						  7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8,
-						  8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10)
+						  8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10))
 
 // MATH DEFINES
 
-#define Atan2(x, y) (!x && !y ? 0 : \
-						(y >= 0 ? \
-							arccos(x / sqrt(x*x + y*y)) : \
-							-(arccos(x / sqrt(x*x + y*y))) \
-						) \
-					)
 #define Ceiling(x) (-round(-x))
 #define Clamp(val, min_val, max_val) (max(min_val, min(val, max_val)))
 #define CLAMP01(x) (clamp(x, 0, 1))
@@ -81,7 +72,7 @@ var/list/sqrtTable = list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 
 
 	// Convert to polar coordinates
 	var/radius = sqrt(relative_coords[1]**2 + relative_coords[2]**2)
-	var/phi = Atan2(relative_coords[1], relative_coords[2])
+	var/phi = arctan(relative_coords[1], relative_coords[2])
 
 	// Rotate the point around the axis
 	phi += degrees
@@ -108,42 +99,6 @@ var/list/sqrtTable = list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 
 	else if(powerused < 1000000000) //Less than a GW
 		return "[round((powerused * 0.000001),0.001)] MW"
 	return "[round((powerused * 0.000000001),0.0001)] GW"
-
-///Calculate the angle between two movables and the west|east coordinate
-/proc/get_angle(atom/movable/start, atom/movable/end)//For beams.
-	if(!start || !end)
-		return 0
-	var/dy =(32 * end.y + end.pixel_y) - (32 * start.y + start.pixel_y)
-	var/dx =(32 * end.x + end.pixel_x) - (32 * start.x + start.pixel_x)
-	if(!dy)
-		return (dx >= 0) ? 90 : 270
-	. = arctan(dx/dy)
-	if(dy < 0)
-		. += 180
-	else if(dx < 0)
-		. += 360
-
-/// Angle between two arbitrary points and horizontal line same as [/proc/get_angle]
-/proc/get_angle_raw(start_x, start_y, start_pixel_x, start_pixel_y, end_x, end_y, end_pixel_x, end_pixel_y)
-	var/dy = (32 * end_y + end_pixel_y) - (32 * start_y + start_pixel_y)
-	var/dx = (32 * end_x + end_pixel_x) - (32 * start_x + start_pixel_x)
-	if(!dy)
-		return (dx >= 0) ? 90 : 270
-	. = arctan(dx/dy)
-	if(dy < 0)
-		. += 180
-	else if(dx < 0)
-		. += 360
-
-///for getting the angle when animating something's pixel_x and pixel_y
-/proc/get_pixel_angle(y, x)
-	if(!y)
-		return (x >= 0) ? 90 : 270
-	. = arctan(x/y)
-	if(y < 0)
-		. += 180
-	else if(x < 0)
-		. += 360
 
 /**
  * Get a list of turfs in a line from `starting_atom` to `ending_atom`.

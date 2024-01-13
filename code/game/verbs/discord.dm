@@ -29,7 +29,7 @@
 	var/datum/entity/discord_identifier/new_identifier = DB_ENTITY(/datum/entity/discord_identifier)
 
 	var/not_unique = TRUE
-	var/long_list = operation_postfixes + operation_prefixes + operation_titles
+	var/long_list = GLOB.operation_postfixes + GLOB.operation_prefixes + GLOB.operation_titles
 	var/token
 
 	while(not_unique)

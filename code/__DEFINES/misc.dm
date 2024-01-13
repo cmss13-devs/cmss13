@@ -124,7 +124,6 @@
 #define MATERIAL_METAL "metal"
 #define MATERIAL_PLASTEEL "plasteel"
 #define MATERIAL_WOOD "wood plank"
-#define MATERIAL_CRYSTAL "plasmagas"
 
 // SIZES FOR ITEMS, use it for w_class
 

@@ -7,7 +7,7 @@
 #define MENU_SETTINGS "settings"
 #define MENU_SPECIAL "special"
 
-var/list/preferences_datums = list()
+GLOBAL_LIST_EMPTY(preferences_datums)
 
 GLOBAL_LIST_INIT(stylesheets, list(
 	"Modern" = "common.css",
@@ -21,7 +21,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	"whitefull"
 ))
 
-var/const/MAX_SAVE_SLOTS = 10
+#define MAX_SAVE_SLOTS 10
 
 /datum/preferences
 	var/client/owner
@@ -239,6 +239,8 @@ var/const/MAX_SAVE_SLOTS = 10
 	/// if this client has tooltips enabled
 	var/tooltips = TRUE
 
+	/// A list of tutorials that the client has completed, saved across rounds
+	var/list/completed_tutorials = list()
 	/// If this client has auto observe enabled, used by /datum/orbit_menu
 	var/auto_observe = TRUE
 
@@ -306,13 +308,13 @@ var/const/MAX_SAVE_SLOTS = 10
 	dat += "<center>"
 	dat += "<a[current_menu == MENU_MARINE ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_MARINE]\"><b>Human</b></a> - "
 	dat += "<a[current_menu == MENU_XENOMORPH ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_XENOMORPH]\"><b>Xenomorph</b></a> - "
-	if(RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_COMMANDER)
+	if(GLOB.RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_COMMANDER)
 		dat += "<a[current_menu == MENU_CO ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_CO]\"><b>Commanding Officer</b></a> - "
-	if(RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_SYNTHETIC)
+	if(GLOB.RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_SYNTHETIC)
 		dat += "<a[current_menu == MENU_SYNTHETIC ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_SYNTHETIC]\"><b>Synthetic</b></a> - "
-	if(RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_PREDATOR)
+	if(GLOB.RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_PREDATOR)
 		dat += "<a[current_menu == MENU_YAUTJA ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_YAUTJA]\"><b>Yautja</b></a> - "
-	if(RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_MENTOR)
+	if(GLOB.RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_MENTOR)
 		dat += "<a[current_menu == MENU_MENTOR ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_MENTOR]\"><b>Mentor</b></a> - "
 	dat += "<a[current_menu == MENU_SETTINGS ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_SETTINGS]\"><b>Settings</b></a> - "
 	dat += "<a[current_menu == MENU_SPECIAL ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_SPECIAL]\"><b>Special Roles</b></a>"
@@ -382,7 +384,7 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<b>Underwear:</b> <a href ='?_src_=prefs;preference=underwear;task=input'><b>[underwear]</b></a><br>"
 			dat += "<b>Undershirt:</b> <a href='?_src_=prefs;preference=undershirt;task=input'><b>[undershirt]</b></a><br>"
 
-			dat += "<b>Backpack Type:</b> <a href ='?_src_=prefs;preference=bag;task=input'><b>[backbaglist[backbag]]</b></a><br>"
+			dat += "<b>Backpack Type:</b> <a href ='?_src_=prefs;preference=bag;task=input'><b>[GLOB.backbaglist[backbag]]</b></a><br>"
 
 			dat += "<b>Preferred Armor:</b> <a href ='?_src_=prefs;preference=prefarmor;task=input'><b>[preferred_armor]</b></a><br>"
 
@@ -398,7 +400,7 @@ var/const/MAX_SAVE_SLOTS = 10
 			if(length(gear))
 				dat += "<br>"
 				for(var/i = 1; i <= gear.len; i++)
-					var/datum/gear/G = gear_datums_by_name[gear[i]]
+					var/datum/gear/G = GLOB.gear_datums_by_name[gear[i]]
 					if(G)
 						total_cost += G.cost
 						dat += "[gear[i]] ([G.cost] points) <a href='byond://?src=\ref[user];preference=loadout;task=remove;gear=[i]'><b>Remove</b></a><br>"
@@ -482,7 +484,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 				n++
 		if(MENU_CO)
-			if(RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_COMMANDER)
+			if(GLOB.RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_COMMANDER)
 				dat += "<div id='column1'>"
 				dat += "<h2><b><u>Commander Settings:</u></b></h2>"
 				dat += "<b>Commander Whitelist Status:</b> <a href='?_src_=prefs;preference=commander_status;task=input'><b>[commander_status]</b></a><br>"
@@ -492,7 +494,7 @@ var/const/MAX_SAVE_SLOTS = 10
 			else
 				dat += "<b>You do not have the whitelist for this role.</b>"
 		if(MENU_SYNTHETIC)
-			if(RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_SYNTHETIC)
+			if(GLOB.RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_SYNTHETIC)
 				dat += "<div id='column1'>"
 				dat += "<h2><b><u>Synthetic Settings:</u></b></h2>"
 				dat += "<b>Synthetic Name:</b> <a href='?_src_=prefs;preference=synth_name;task=input'><b>[synthetic_name]</b></a><br>"
@@ -502,7 +504,7 @@ var/const/MAX_SAVE_SLOTS = 10
 			else
 				dat += "<b>You do not have the whitelist for this role.</b>"
 		if(MENU_YAUTJA)
-			if(RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_PREDATOR)
+			if(GLOB.RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_PREDATOR)
 				dat += "<div id='column1'>"
 				dat += "<h2><b><u>Yautja Information:</u></b></h2>"
 				dat += "<b>Yautja Name:</b> <a href='?_src_=prefs;preference=pred_name;task=input'><b>[predator_name]</b></a><br>"
@@ -516,7 +518,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 				dat += "<div id='column2'>"
 				dat += "<h2><b><u>Equipment Setup:</u></b></h2>"
-				if(RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_YAUTJA_LEGACY)
+				if(GLOB.RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_YAUTJA_LEGACY)
 					dat += "<b>Legacy Gear:</b> <a href='?_src_=prefs;preference=pred_use_legacy;task=input'><b>[predator_use_legacy]</b></a><br>"
 				dat += "<b>Translator Type:</b> <a href='?_src_=prefs;preference=pred_trans_type;task=input'><b>[predator_translator_type]</b></a><br>"
 				dat += "<b>Mask Style:</b> <a href='?_src_=prefs;preference=pred_mask_type;task=input'><b>([predator_mask_type])</b></a><br>"
@@ -540,7 +542,7 @@ var/const/MAX_SAVE_SLOTS = 10
 			else
 				dat += "<b>You do not have the whitelist for this role.</b>"
 		if(MENU_MENTOR)
-			if(RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_MENTOR)
+			if(GLOB.RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_MENTOR)
 				dat += "<b>Nothing here. For now.</b>"
 			else
 				dat += "<b>You do not have the whitelist for this role.</b>"
@@ -573,6 +575,7 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<b>Ghost Ears:</b> <a href='?_src_=prefs;preference=ghost_ears'><b>[(toggles_chat & CHAT_GHOSTEARS) ? "All Speech" : "Nearest Creatures"]</b></a><br>"
 			dat += "<b>Ghost Sight:</b> <a href='?_src_=prefs;preference=ghost_sight'><b>[(toggles_chat & CHAT_GHOSTSIGHT) ? "All Emotes" : "Nearest Creatures"]</b></a><br>"
 			dat += "<b>Ghost Radio:</b> <a href='?_src_=prefs;preference=ghost_radio'><b>[(toggles_chat & CHAT_GHOSTRADIO) ? "All Chatter" : "Nearest Speakers"]</b></a><br>"
+			dat += "<b>Ghost Spy Radio:</b> <a href='?_src_=prefs;preference=ghost_spyradio'><b>[(toggles_chat & CHAT_LISTENINGBUG) ? "Hear" : "Silence"] listening devices</b></a><br>"
 			dat += "<b>Ghost Hivemind:</b> <a href='?_src_=prefs;preference=ghost_hivemind'><b>[(toggles_chat & CHAT_GHOSTHIVEMIND) ? "Show Hivemind" : "Hide Hivemind"]</b></a><br>"
 			dat += "<b>Abovehead Chat:</b> <a href='?_src_=prefs;preference=lang_chat_disabled'><b>[lang_chat_disabled ? "Hide" : "Show"]</b></a><br>"
 			dat += "<b>Abovehead Emotes:</b> <a href='?_src_=prefs;preference=langchat_emotes'><b>[(toggles_langchat & LANGCHAT_SEE_EMOTES) ? "Show" : "Hide"]</b></a><br>"
@@ -586,8 +589,7 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<b>Tooltips:</b> <a href='?_src_=prefs;preference=tooltips'><b>[tooltips ? "Enabled" : "Disabled"]</b></a><br>"
 			dat += "<b>tgui Window Mode:</b> <a href='?_src_=prefs;preference=tgui_fancy'><b>[(tgui_fancy) ? "Fancy (default)" : "Compatible (slower)"]</b></a><br>"
 			dat += "<b>tgui Window Placement:</b> <a href='?_src_=prefs;preference=tgui_lock'><b>[(tgui_lock) ? "Primary monitor" : "Free (default)"]</b></a><br>"
-			dat += "<b>Play Admin Midis:</b> <a href='?_src_=prefs;preference=hear_midis'><b>[(toggles_sound & SOUND_MIDI) ? "Yes" : "No"]</b></a><br>"
-			dat += "<b>Play Admin Internet Sounds:</b> <a href='?_src_=prefs;preference=hear_internet'><b>[(toggles_sound & SOUND_INTERNET) ? "Yes" : "No"]</b></a><br>"
+			dat += "<b>Play Admin Sounds:</b> <a href='?_src_=prefs;preference=hear_admin_sounds'><b>[(toggles_sound & SOUND_MIDI) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Toggle Meme or Atmospheric Sounds:</b> <a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_admin_sound_types'>Toggle</a><br>"
 			dat += "<b>Set Eye Blur Type:</b> <a href='?src=\ref[src];action=proccall;procpath=/client/proc/set_eye_blur_type'>Set</a><br>"
 			dat += "<b>Play Lobby Music:</b> <a href='?_src_=prefs;preference=lobby_music'><b>[(toggles_sound & SOUND_LOBBY) ? "Yes" : "No"]</b></a><br>"
@@ -634,7 +636,7 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<b>Spawn as Engineer:</b> <a href='?_src_=prefs;preference=toggles_ert;flag=[PLAY_ENGINEER]'><b>[toggles_ert & PLAY_ENGINEER ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Spawn as Specialist:</b> <a href='?_src_=prefs;preference=toggles_ert;flag=[PLAY_HEAVY]'><b>[toggles_ert & PLAY_HEAVY ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Spawn as Smartgunner:</b> <a href='?_src_=prefs;preference=toggles_ert;flag=[PLAY_SMARTGUNNER]'><b>[toggles_ert & PLAY_SMARTGUNNER ? "Yes" : "No"]</b></a><br>"
-			if(RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_SYNTHETIC)
+			if(GLOB.RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_SYNTHETIC)
 				dat += "<b>Spawn as Synth:</b> <a href='?_src_=prefs;preference=toggles_ert;flag=[PLAY_SYNTH]'><b>[toggles_ert & PLAY_SYNTH ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Spawn as Miscellaneous:</b> <a href='?_src_=prefs;preference=toggles_ert;flag=[PLAY_MISC]'><b>[toggles_ert & PLAY_MISC ? "Yes" : "No"]</b></a><br>"
 			dat += "</div>"
@@ -650,7 +652,7 @@ var/const/MAX_SAVE_SLOTS = 10
 //width - Screen' width. Defaults to 550 to make it look nice.
 //height - Screen's height. Defaults to 500 to make it look nice.
 /datum/preferences/proc/SetChoices(mob/user, limit = 19, list/splitJobs = list(JOB_CHIEF_REQUISITION), width = 950, height = 700)
-	if(!RoleAuthority)
+	if(!GLOB.RoleAuthority)
 		return
 
 	var/HTML = "<body>"
@@ -665,10 +667,10 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	var/list/active_role_names = GLOB.gamemode_roles[GLOB.master_mode]
 	if(!active_role_names)
-		active_role_names = ROLES_DISTRESS_SIGNAL
+		active_role_names = GLOB.ROLES_DISTRESS_SIGNAL
 
 	for(var/role_name as anything in active_role_names)
-		var/datum/job/job = RoleAuthority.roles_by_name[role_name]
+		var/datum/job/job = GLOB.RoleAuthority.roles_by_name[role_name]
 		if(!job)
 			debug_log("Missing job for prefs: [role_name]")
 			continue
@@ -682,7 +684,7 @@ var/const/MAX_SAVE_SLOTS = 10
 		if(jobban_isbanned(user, job.title))
 			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='center'></td><td><b>BANNED</b></td></tr>"
 			continue
-		else if(job.flags_startup_parameters & ROLE_WHITELISTED && !(RoleAuthority.roles_whitelist[user.ckey] & job.flags_whitelist))
+		else if(job.flags_startup_parameters & ROLE_WHITELISTED && !(GLOB.RoleAuthority.roles_whitelist[user.ckey] & job.flags_whitelist))
 			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='center'></td><td>WHITELISTED</td></tr>"
 			continue
 		else if(!job.can_play_role(user.client))
@@ -763,7 +765,7 @@ var/const/MAX_SAVE_SLOTS = 10
 //width - Screen' width. Defaults to 550 to make it look nice.
 //height - Screen's height. Defaults to 500 to make it look nice.
 /datum/preferences/proc/set_job_slots(mob/user, limit = 19, list/splitJobs = list(JOB_CHIEF_REQUISITION), width = 950, height = 700)
-	if(!RoleAuthority)
+	if(!GLOB.RoleAuthority)
 		return
 
 	var/HTML = "<body>"
@@ -778,10 +780,10 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	var/list/active_role_names = GLOB.gamemode_roles[GLOB.master_mode]
 	if(!active_role_names)
-		active_role_names = ROLES_DISTRESS_SIGNAL
+		active_role_names = GLOB.ROLES_DISTRESS_SIGNAL
 
 	for(var/role_name as anything in active_role_names)
-		var/datum/job/job = RoleAuthority.roles_by_name[role_name]
+		var/datum/job/job = GLOB.RoleAuthority.roles_by_name[role_name]
 		if(!job)
 			debug_log("Missing job for prefs: [role_name]")
 			continue
@@ -794,7 +796,7 @@ var/const/MAX_SAVE_SLOTS = 10
 		if(jobban_isbanned(user, job.title))
 			HTML += "<b><del>[job.disp_title]</del></b></td><td width='60%'><b>BANNED</b></td></tr>"
 			continue
-		else if(job.flags_startup_parameters & ROLE_WHITELISTED && !(RoleAuthority.roles_whitelist[user.ckey] & job.flags_whitelist))
+		else if(job.flags_startup_parameters & ROLE_WHITELISTED && !(GLOB.RoleAuthority.roles_whitelist[user.ckey] & job.flags_whitelist))
 			HTML += "<b><del>[job.disp_title]</del></b></td><td width='60%'>WHITELISTED</td></tr>"
 			continue
 		else if(!job.can_play_role(user.client))
@@ -874,7 +876,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	return
 
 /datum/preferences/proc/SetJob(mob/user, role, priority)
-	var/datum/job/job = RoleAuthority.roles_by_name[role]
+	var/datum/job/job = GLOB.RoleAuthority.roles_by_name[role]
 	if(!job)
 		close_browser(user, "mob_occupation")
 		ShowChoices(user)
@@ -891,12 +893,12 @@ var/const/MAX_SAVE_SLOTS = 10
 			job_preference_list[job] = NEVER_PRIORITY
 		return
 
-	if(!RoleAuthority)
+	if(!GLOB.RoleAuthority)
 		return
 
 	job_preference_list = list()
-	for(var/role in RoleAuthority.roles_by_path)
-		var/datum/job/J = RoleAuthority.roles_by_path[role]
+	for(var/role in GLOB.RoleAuthority.roles_by_path)
+		var/datum/job/J = GLOB.RoleAuthority.roles_by_path[role]
 		job_preference_list[J.title] = NEVER_PRIORITY
 
 /datum/preferences/proc/get_job_priority(J)
@@ -955,12 +957,12 @@ var/const/MAX_SAVE_SLOTS = 10
 /datum/preferences/proc/reset_job_slots()
 	pref_job_slots = list()
 	var/datum/job/J
-	for(var/role in RoleAuthority.roles_by_path)
-		J = RoleAuthority.roles_by_path[role]
+	for(var/role in GLOB.RoleAuthority.roles_by_path)
+		J = GLOB.RoleAuthority.roles_by_path[role]
 		pref_job_slots[J.title] = JOB_SLOT_CURRENT_SLOT
 
 /datum/preferences/proc/process_link(mob/user, list/href_list)
-	var/whitelist_flags = RoleAuthority.roles_whitelist[user.ckey]
+	var/whitelist_flags = GLOB.RoleAuthority.roles_whitelist[user.ckey]
 
 	switch(href_list["preference"])
 		if("job")
@@ -1007,10 +1009,10 @@ var/const/MAX_SAVE_SLOTS = 10
 		if("loadout")
 			switch(href_list["task"])
 				if("input")
-					var/gear_category = tgui_input_list(user, "Select gear category: ", "Gear to add", gear_datums_by_category)
+					var/gear_category = tgui_input_list(user, "Select gear category: ", "Gear to add", GLOB.gear_datums_by_category)
 					if(!gear_category)
 						return
-					var/choice = tgui_input_list(user, "Select gear to add: ", gear_category, gear_datums_by_category[gear_category])
+					var/choice = tgui_input_list(user, "Select gear to add: ", gear_category, GLOB.gear_datums_by_category[gear_category])
 					if(!choice)
 						return
 
@@ -1020,10 +1022,10 @@ var/const/MAX_SAVE_SLOTS = 10
 						gear = list()
 					if(gear.len)
 						for(var/gear_name in gear)
-							G = gear_datums_by_name[gear_name]
+							G = GLOB.gear_datums_by_name[gear_name]
 							total_cost += G?.cost
 
-					G = gear_datums_by_category[gear_category][choice]
+					G = GLOB.gear_datums_by_category[gear_category][choice]
 					total_cost += G.cost
 					if(total_cost <= MAX_GEAR_COST)
 						gear += G.display_name
@@ -1283,8 +1285,8 @@ var/const/MAX_SAVE_SLOTS = 10
 						return
 					predator_caster_material = new_pred_caster_mat
 				if("pred_cape_type")
-					var/datum/job/J = RoleAuthority.roles_by_name[JOB_PREDATOR]
-					var/whitelist_status = clan_ranks_ordered[J.get_whitelist_status(RoleAuthority.roles_whitelist, owner)]
+					var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
+					var/whitelist_status = GLOB.clan_ranks_ordered[J.get_whitelist_status(GLOB.RoleAuthority.roles_whitelist, owner)]
 
 					var/list/options = list("None" = "None")
 					for(var/cape_name in GLOB.all_yautja_capes)
@@ -1414,11 +1416,8 @@ var/const/MAX_SAVE_SLOTS = 10
 						var/all_ok = TRUE
 						for(var/i=1, i<=length(new_xeno_prefix), i++)
 							var/ascii_char = text2ascii(new_xeno_prefix,i)
-							switch(ascii_char)
-								// A  .. Z
-								if(65 to 90) //Uppercase Letters will work
-								else
-									all_ok = FALSE //everything else - won't
+							if(ascii_char < 65 || ascii_char > 90)
+								all_ok = FALSE //everything else - won't
 						if(all_ok)
 							xeno_prefix = new_xeno_prefix
 							owner.load_xeno_name()
@@ -1606,9 +1605,9 @@ var/const/MAX_SAVE_SLOTS = 10
 						ooccolor = new_ooccolor
 
 				if("bag")
-					var/new_backbag = input(user, "Choose your character's style of bag:", "Character Preference")  as null|anything in backbaglist
+					var/new_backbag = input(user, "Choose your character's style of bag:", "Character Preference")  as null|anything in GLOB.backbaglist
 					if(new_backbag)
-						backbag = backbaglist.Find(new_backbag)
+						backbag = GLOB.backbaglist.Find(new_backbag)
 
 				if("nt_relation")
 					var/new_relation = input(user, "Choose your relation to the Weyland-Yutani company. Note that this represents what others can find out about your character by researching your background, not what your character actually thinks.", "Character Preference")  as null|anything in list("Loyal", "Supportive", "Neutral", "Skeptical", "Opposed")
@@ -1624,6 +1623,8 @@ var/const/MAX_SAVE_SLOTS = 10
 					var/new_pref_armor = tgui_input_list(user, "Choose your character's default style of armor:", "Character Preferences", GLOB.armor_style_list)
 					if(new_pref_armor)
 						preferred_armor = new_pref_armor
+						// Update the dummy with the new armor style.
+						update_preview_icon()
 
 				if("limbs")
 					var/limb_name = tgui_input_list(user, "Which limb do you want to change?", list("Left Leg","Right Leg","Left Arm","Right Arm","Left Foot","Right Foot","Left Hand","Right Hand"))
@@ -1701,13 +1702,15 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("origin")
 					var/choice = tgui_input_list(user, "Please choose your character's origin.", "Origin Selection", GLOB.player_origins)
 					var/datum/origin/picked_choice = GLOB.origins[choice]
+					if(!picked_choice)
+						return
 					if(tgui_alert(user, "You've selected [picked_choice.name]. [picked_choice.desc]", "Selected Origin", list("Confirm", "Cancel")) == "Cancel")
 						return
 					if(choice)
 						origin = choice
 
 				if("religion")
-					var/choice = tgui_input_list(user, "Please choose a religion.", "Religion choice", religion_choices + "Other")
+					var/choice = tgui_input_list(user, "Please choose a religion.", "Religion choice", GLOB.religion_choices + "Other")
 					if(!choice)
 						return
 					if(choice == "Other")
@@ -1718,7 +1721,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					religion = choice
 
 				if("special_job_select")
-					var/datum/job/job = RoleAuthority.roles_by_name[href_list["text"]]
+					var/datum/job/job = GLOB.RoleAuthority.roles_by_name[href_list["text"]]
 					if(!job)
 						close_browser(user, "mob_occupation")
 						ShowChoices(user)
@@ -1808,11 +1811,10 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("rand_body")
 					be_random_body = !be_random_body
 
-				if("hear_midis")
+				if("hear_admin_sounds")
 					toggles_sound ^= SOUND_MIDI
-
-				if("hear_internet")
-					toggles_sound ^= SOUND_INTERNET
+					if(!(toggles_sound & SOUND_MIDI))
+						user?.client?.tgui_panel?.stop_music()
 
 				if("lobby_music")
 					toggles_sound ^= SOUND_LOBBY
@@ -1832,6 +1834,9 @@ var/const/MAX_SAVE_SLOTS = 10
 
 				if("ghost_radio")
 					toggles_chat ^= CHAT_GHOSTRADIO
+
+				if("ghost_spyradio")
+					toggles_chat ^= CHAT_LISTENINGBUG
 
 				if("ghost_hivemind")
 					toggles_chat ^= CHAT_GHOSTHIVEMIND
@@ -1992,7 +1997,8 @@ var/const/MAX_SAVE_SLOTS = 10
 	if(!istype(character))
 		return
 
-	find_assigned_slot(job_title, is_late_join)
+	if(job_title)
+		find_assigned_slot(job_title, is_late_join)
 	if(check_datacore && !(be_random_body && be_random_name))
 		for(var/datum/data/record/record as anything in GLOB.data_core.locked)
 			if(record.fields["name"] == real_name)
@@ -2007,9 +2013,9 @@ var/const/MAX_SAVE_SLOTS = 10
 		var/firstspace = findtext(real_name, " ")
 		var/name_length = length(real_name)
 		if(!firstspace) //we need a surname
-			real_name += " [pick(last_names)]"
+			real_name += " [pick(GLOB.last_names)]"
 		else if(firstspace == name_length)
-			real_name += "[pick(last_names)]"
+			real_name += "[pick(GLOB.last_names)]"
 
 	character.real_name = real_name
 	character.voice = real_name
@@ -2210,7 +2216,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	if (key in key_mod_buf)
 		return
 
-	if (key in key_mods)
+	if (key in GLOB.key_mods)
 		key_mod_buf.Add(key)
 
 /datum/preferences/proc/set_key_buf(client/source, key)
@@ -2298,6 +2304,22 @@ var/const/MAX_SAVE_SLOTS = 10
 	dat += "</body>"
 	show_browser(user, dat, "Character Traits", "character_traits")
 	update_preview_icon(TRUE)
+
+/// Converts a client's list of completed tutorials into a string for saving
+/datum/preferences/proc/tutorial_list_to_savestring()
+	if(!length(completed_tutorials))
+		return ""
+
+	var/return_string = ""
+	var/last_id = completed_tutorials[length(completed_tutorials)]
+	for(var/tutorial_id in completed_tutorials)
+		return_string += tutorial_id + (tutorial_id != last_id ? ";" : "")
+	return return_string
+
+/// Converts a saved string of completed tutorials into a list for in-game use
+/datum/preferences/proc/tutorial_savestring_to_list(savestring)
+	completed_tutorials = splittext(savestring, ";")
+	return completed_tutorials
 
 #undef MENU_MARINE
 #undef MENU_XENOMORPH

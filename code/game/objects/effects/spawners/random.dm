@@ -57,10 +57,13 @@
 	icon_state = "atmos"
 
 /obj/effect/spawner/random/technology_scanner/item_to_spawn()
-	return pick(prob(5);/obj/item/device/t_scanner,\
-				prob(2);/obj/item/device/radio,\
-				prob(5);/obj/item/device/analyzer)
-
+	return pick_weight(list(
+		"none" = 10,
+		/obj/item/device/t_scanner = 10,
+		/obj/item/device/radio = 8,
+		/obj/item/device/analyzer = 10,
+		/obj/item/device/black_market_hacking_device = 2,
+	))
 
 /obj/effect/spawner/random/powercell
 	name = "Random Powercell"
@@ -339,38 +342,37 @@
 	var/gunpath = pick(guns)
 	var/ammopath
 	if(istype(gunpath, /obj/item/weapon/gun/shotgun))
-		ammopath = pick(shotgun_boxes_12g)
+		ammopath = pick(GLOB.shotgun_boxes_12g)
 	else if(istype(gunpath, /obj/item/weapon/gun/launcher/grenade))
-		ammopath = pick(grenade_packets)
+		ammopath = pick(GLOB.grenade_packets)
 	else
 		ammopath = guns[gunpath]
 	spawn_weapon_on_floor(gunpath, ammopath, rand(mags_min, mags_max))
 
 /obj/effect/spawner/random/gun/proc/spawn_weapon_on_floor(gunpath, ammopath, ammo_amount = 1)
 
-	var/atom/spawnloc = src
-	spawnloc = get_turf(spawnloc)
+	var/turf/spawnloc = get_turf(src)
 	var/obj/gun
 	var/obj/ammo
 
 	if(gunpath)
 		gun = new gunpath(spawnloc)
 		if(scatter)
-			var/direction = pick(alldirs)
-			var/turf/T = get_step(gun, direction)
-			if(!T || T.density)
+			var/direction = pick(GLOB.alldirs)
+			var/turf/turf = get_step(gun, direction)
+			if(!turf || turf.density)
 				return
-			gun.loc = T
+			gun.forceMove(turf)
 	if(ammopath)
 		for(var/i in 0 to ammo_amount-1)
 			ammo = new ammopath(spawnloc)
 			if(scatter)
 				for(i=0, i<rand(1,3), i++)
-					var/direction = pick(alldirs)
-					var/turf/T = get_step(ammo, direction)
-					if(!T || T.density)
+					var/direction = pick(GLOB.alldirs)
+					var/turf/turf = get_step(ammo, direction)
+					if(!turf || turf.density)
 						break
-					ammo.loc = T
+					ammo.forceMove(turf)
 
 /*
 // the actual spawners themselves

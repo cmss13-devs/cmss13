@@ -317,10 +317,10 @@
 		has_supply_pad = TRUE
 	data["can_launch_crates"] = has_supply_pad
 	data["has_crate_loaded"] = supply_crate
-	data["can_launch_obs"] = almayer_orbital_cannon
-	if(almayer_orbital_cannon)
-		data["ob_cooldown"] = COOLDOWN_TIMELEFT(almayer_orbital_cannon, ob_firing_cooldown)
-		data["ob_loaded"] = almayer_orbital_cannon.chambered_tray
+	data["can_launch_obs"] = GLOB.almayer_orbital_cannon
+	if(GLOB.almayer_orbital_cannon)
+		data["ob_cooldown"] = COOLDOWN_TIMELEFT(GLOB.almayer_orbital_cannon, ob_firing_cooldown)
+		data["ob_loaded"] = GLOB.almayer_orbital_cannon.chambered_tray
 
 	data["supply_cooldown"] = COOLDOWN_TIMELEFT(current_squad, next_supplydrop)
 	data["operator"] = operator.name

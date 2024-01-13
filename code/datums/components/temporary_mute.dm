@@ -29,6 +29,7 @@
 	if(parent)
 		to_chat(parent, SPAN_NOTICE(on_unmute_message))
 		UnregisterSignal(parent, COMSIG_LIVING_SPEAK)
+		UnregisterFromParent(parent, COMSIG_XENO_TRY_HIVEMIND_TALK)
 
 /datum/component/temporary_mute/proc/on_speak(
 	message,

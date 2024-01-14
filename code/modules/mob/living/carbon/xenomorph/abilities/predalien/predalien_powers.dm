@@ -92,7 +92,7 @@
 		REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Eviscerate"))
 		xeno.anchored = FALSE
 		apply_cooldown()
-		return
+		return ..()
 
 	//single target checks
 	if (!isxeno_human(target) || xeno.can_not_harm(target))

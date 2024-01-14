@@ -18405,11 +18405,11 @@
 	},
 /area/lv522/indoors/lone_buildings/outdoor_bot)
 "hKz" = (
-/obj/item/clothing/under/liaison_suit/suspenders{
-	pixel_x = -4;
-	pixel_y = 9
-	},
 /obj/item/clothing/accessory/red,
+/obj/item/clothing/under/liaison_suit/field{
+	pixel_y = 9;
+	pixel_x = -4
+	},
 /turf/open/floor/carpet,
 /area/lv522/indoors/a_block/executive)
 "hKE" = (
@@ -19025,7 +19025,7 @@
 	pixel_x = 5;
 	pixel_y = 6
 	},
-/obj/item/clothing/under/liaison_suit/suspenders,
+/obj/item/clothing/suit/storage/jacket/marine/corporate,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "white_cyan1"

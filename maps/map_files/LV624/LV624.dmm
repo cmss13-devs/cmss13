@@ -23469,7 +23469,7 @@
 	pixel_x = 5;
 	pixel_y = 6
 	},
-/obj/item/clothing/under/liaison_suit/suspenders,
+/obj/item/clothing/under/liaison_suit/blue,
 /turf/open/floor{
 	dir = 6;
 	icon_state = "whiteyellow"

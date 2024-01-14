@@ -821,7 +821,7 @@
 	worn_state = "corporate_ivy"
 
 /obj/item/clothing/under/liaison_suit/corporate_formal
-	name = "formal suit pants"
+	name = "white suit pants"
 	desc = "A pair of ivory slacks paired with a white shirt. A popular pairing for formal corporate events."
 	icon_state = "corporate_formal"
 	worn_state = "corporate_formal"

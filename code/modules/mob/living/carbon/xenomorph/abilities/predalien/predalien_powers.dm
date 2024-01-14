@@ -191,7 +191,7 @@
 		return
 
 	var/datum/action/xeno_action/activable/feralfrenzy/guttype = get_xeno_action_by_type(xeno, /datum/action/xeno_action/activable/feralfrenzy)
-	if (!istype(guttype))
+	if (!guttype)
 		return
 
 	if (guttype.targetting == SINGLETARGETGUT)

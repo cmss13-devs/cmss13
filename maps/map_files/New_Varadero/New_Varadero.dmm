@@ -6074,10 +6074,7 @@
 	pixel_x = -7;
 	pixel_y = 8
 	},
-/obj/item/tool/lighter/zippo{
-	icon_off = "blackzippo";
-	icon_on = "blackzippoon";
-	icon_state = "blackzippo";
+/obj/item/tool/lighter/zippo/black{
 	pixel_x = -5;
 	pixel_y = 7
 	},

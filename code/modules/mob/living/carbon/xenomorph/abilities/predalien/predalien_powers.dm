@@ -49,10 +49,9 @@
 
 
 
-
+	var/datum/behavior_delegate/predalien_base/predalienbehavior = xeno.behavior_delegate
 	if(targetting == AOETARGETGUT)
-		var/datum/behavior_delegate/predalien_base/behavior = xeno.behavior_delegate
-		if(!istype(behavior))
+		if(!istype(predalienbehavior))
 			return
 		if (range > 1)
 			xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] begins digging in for a massive strike!"), SPAN_XENOHIGHDANGER("We begin digging in for a massive strike!"))
@@ -87,7 +86,7 @@
 					xeno.visible_message(SPAN_XENODANGER("[xeno] claws [human]!"), SPAN_XENODANGER("We claw [human]!"))
 					playsound(get_turf(human), "alien_claw_flesh", 30, 1)
 
-				human.apply_armoured_damage(get_xeno_damage_slash(human, base_damage_aoe + damage_scale_aoe * behavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
+				human.apply_armoured_damage(get_xeno_damage_slash(human, base_damage_aoe + damage_scale_aoe * predalienbehavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
 			playsound(owner, 'sound/voice/predalien_growl.ogg', 75, 0, status = 0)
 		REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Eviscerate"))
 		xeno.anchored = FALSE
@@ -108,18 +107,12 @@
 	if (carbon.stat == DEAD)
 		to_chat(xeno, SPAN_XENOWARNING("[carbon] is dead, why would we want to touch them?"))
 		return
-
 	if(targetting == SINGLETARGETGUT) // single target
-		var/datum/behavior_delegate/predalien_base/predalienbehavior = xeno.behavior_delegate
 		if(!istype(predalienbehavior))
 			return
-
-		if (!check_and_use_plasma_owner())
-			return
-
 		ADD_TRAIT(carbon, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Devastate"))
 		apply_cooldown()
-
+		
 		ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Devastate"))
 		xeno.anchored = TRUE
 

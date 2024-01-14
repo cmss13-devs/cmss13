@@ -182,6 +182,7 @@
 		predatoralien.recalculate_armor()
 		buffs_active = FALSE
 		remove_rush_effects()
+
 /datum/action/xeno_action/onclick/toggle_gut_targetting/use_ability(atom/A)
 
 	var/mob/living/carbon/xenomorph/xeno = owner

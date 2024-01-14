@@ -1019,7 +1019,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		if(!T) //Off edge of map.
 			throw_turfs.Remove(T)
 			continue
-		var/list/turf/path = getline2(get_step_towards(src, T), T) //Same path throw code will calculate from.
+		var/list/turf/path = get_line(get_step_towards(src, T), T) //Same path throw code will calculate from.
 		if(!path.len)
 			throw_turfs.Remove(T)
 			continue

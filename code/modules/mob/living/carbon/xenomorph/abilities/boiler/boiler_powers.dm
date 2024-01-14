@@ -29,7 +29,7 @@
 		var/range = base_range + stacks*range_per_stack
 		var/damage = base_damage + stacks*damage_per_stack
 		var/turfs_visited = 0
-		for (var/turf/turf in getline2(get_turf(xeno), affected_atom))
+		for (var/turf/turf in get_line(get_turf(xeno), affected_atom))
 			if(turf.density || turf.opacity)
 				break
 

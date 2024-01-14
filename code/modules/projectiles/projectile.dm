@@ -216,7 +216,7 @@
 	if(ammo.bonus_projectiles_amount && ammo.bonus_projectiles_type)
 		ammo.fire_bonus_projectiles(src)
 
-	path = getline2(starting, target_turf)
+	path = get_line(starting, target_turf)
 	p_x += Clamp((rand()-0.5)*scatter*3, -8, 8)
 	p_y += Clamp((rand()-0.5)*scatter*3, -8, 8)
 	update_angle(starting, target_turf)
@@ -387,7 +387,7 @@
 
 /obj/projectile/proc/retarget(atom/new_target, keep_angle = FALSE)
 	var/turf/current_turf = get_turf(src)
-	path = getline2(current_turf, new_target)
+	path = get_line(current_turf, new_target)
 	path.Cut(1, 2) // remove the turf we're already on
 	var/atom/source = keep_angle ? original : current_turf
 	update_angle(source, new_target)

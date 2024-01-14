@@ -189,7 +189,7 @@
 	if(distance > 2)
 		return
 
-	var/list/turf/path = getline2(xeno, hit_target, include_from_atom = FALSE)
+	var/list/turf/path = get_line(xeno, hit_target, include_start_atom = FALSE)
 	for(var/turf/path_turf as anything in path)
 		if(path_turf.density)
 			to_chat(xeno, SPAN_WARNING("There's something blocking us from striking!"))

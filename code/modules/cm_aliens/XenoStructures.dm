@@ -577,7 +577,7 @@
 	var/turf/last_turf = loc
 	var/atom/temp_atom = new acid_type()
 	var/current_pos = 1
-	for(var/i in getline(src, current_mob))
+	for(var/i in get_line(src, current_mob))
 		current_turf = i
 		if(LinkBlocked(temp_atom, last_turf, current_turf))
 			qdel(temp_atom)

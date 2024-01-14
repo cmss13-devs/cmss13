@@ -214,7 +214,7 @@
 	if(R.rangefire == -1)
 		max_range = current_mag.reagents.max_fire_rad
 
-	var/turf/temp[] = getline2(get_turf(user), get_turf(target))
+	var/turf/temp[] = get_line(get_turf(user), get_turf(target))
 
 	var/turf/to_fire = temp[2]
 

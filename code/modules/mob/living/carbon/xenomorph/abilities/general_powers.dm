@@ -481,7 +481,7 @@
 
 	// Build our list of target turfs based on
 	if (spray_type == ACID_SPRAY_LINE)
-		X.do_acid_spray_line(getline2(X, A, include_from_atom = FALSE), spray_effect_type, spray_distance)
+		X.do_acid_spray_line(get_line(X, A, include_start_atom = FALSE), spray_effect_type, spray_distance)
 
 	else if (spray_type == ACID_SPRAY_CONE)
 		X.do_acid_spray_cone(get_turf(A), spray_effect_type, spray_distance)
@@ -927,7 +927,7 @@
 	if(distance > 2)
 		return FALSE
 
-	var/list/turf/path = getline2(stabbing_xeno, targetted_atom, include_from_atom = FALSE)
+	var/list/turf/path = get_line(stabbing_xeno, targetted_atom, include_start_atom = FALSE)
 	for(var/turf/path_turf as anything in path)
 		if(path_turf.density)
 			to_chat(stabbing_xeno, SPAN_WARNING("There's something blocking our strike!"))

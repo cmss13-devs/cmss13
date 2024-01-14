@@ -1534,88 +1534,48 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 /proc/format_text(text)
 	return replacetext(replacetext(text,"\proper ",""),"\improper ","")
 
-/proc/getline(atom/M, atom/N, include_from_atom = TRUE)//Ultra-Fast Bresenham Line-Drawing Algorithm
-	var/px=M.x //starting x
-	var/py=M.y
-	var/line[] = list(locate(px,py,M.z))
-	var/dx=N.x-px //x distance
-	var/dy=N.y-py
-	var/dxabs=abs(dx)//Absolute value of x distance
-	var/dyabs=abs(dy)
-	var/sdx=sign(dx) //Sign of x distance (+ or -)
-	var/sdy=sign(dy)
-	var/x=dxabs>>1 //Counters for steps taken, setting to distance/2
-	var/y=dyabs>>1 //Bit-shifting makes me l33t.  It also makes getline() unnessecarrily fast.
-	var/j //Generic integer for counting
-	if(dxabs>=dyabs) //x distance is greater than y
-		for(j=0;j<dxabs;j++)//It'll take dxabs steps to get there
-			y+=dyabs
-			if(y>=dxabs) //Every dyabs steps, step once in y direction
-				y-=dxabs
-				py+=sdy
-			px+=sdx //Step on in x direction
-			if(j > 0 || include_from_atom)
-				line+=locate(px,py,M.z)//Add the turf to the list
-	else
-		for(j=0;j<dyabs;j++)
-			x+=dxabs
-			if(x>=dyabs)
-				x-=dyabs
-				px+=sdx
-			py+=sdy
-			if(j > 0 || include_from_atom)
-				line+=locate(px,py,M.z)
+/**
+ * Get a list of turfs in a line from `start_atom` to `end_atom`.
+ *
+ * Based on a linear interpolation method from [Red Blob Games](https://www.redblobgames.com/grids/line-drawing/#optimization).
+ *
+ * Arguments:
+ * * start_atom - starting point of the line
+ * * end_atom - ending point of the line
+ * * include_start_atom - when truthy includes start_atom in the list, default TRUE
+ *
+ * Returns:
+ * list - turfs from start_atom (in/exclusive) to end_atom (inclusive)
+ */
+/proc/get_line(atom/start_atom, atom/end_atom, include_start_atom = TRUE)
+	var/turf/start_turf = get_turf(start_atom)
+	var/turf/end_turf = get_turf(end_atom)
+
+	var/list/line = list()
+	if(include_start_atom)
+		line += start_turf
+
+	var/step_count = get_dist(start_turf, end_turf)
+	if(!step_count)
+		return line
+
+	//since the step_count and step size (1) are known, can pre-calculate a lerp step
+	var/step_fract = 1 / step_count
+	var/step_x = (end_turf.x - start_turf.x) * step_fract
+	var/step_y = (end_turf.y - start_turf.y) * step_fract
+
+	//locate() truncates the fraction, adding 0.5 so its effectively rounding to nearest coords for free
+	var/x = start_turf.x + 0.5
+	var/y = start_turf.y + 0.5
+	var/z = start_turf.z
+	for(var/step in 0 to (step_count - 2)) //increment then locate() skips start_turf (-1), since end_turf is known can skip that step too (-2)
+		x += step_x
+		y += step_y
+		line += locate(x, y, z)
+
+	line += end_turf
+
 	return line
-
-//Bresenham's algorithm. This one deals efficiently with all 8 octants.
-//Just don't ask me how it works.
-/proc/getline2(atom/from_atom, atom/to_atom, include_from_atom = TRUE)
-	if(!from_atom || !to_atom) return 0
-	var/list/turf/turfs = list()
-
-	var/cur_x = from_atom.x
-	var/cur_y = from_atom.y
-
-	var/w = to_atom.x - from_atom.x
-	var/h = to_atom.y - from_atom.y
-	var/dx1 = 0
-	var/dx2 = 0
-	var/dy1 = 0
-	var/dy2 = 0
-	if(w < 0)
-		dx1 = -1
-		dx2 = -1
-	else if(w > 0)
-		dx1 = 1
-		dx2 = 1
-	if(h < 0) dy1 = -1
-	else if(h > 0) dy1 = 1
-	var/longest = abs(w)
-	var/shortest = abs(h)
-	if(!(longest > shortest))
-		longest = abs(h)
-		shortest = abs(w)
-		if(h < 0) dy2 = -1
-		else if (h > 0) dy2 = 1
-		dx2 = 0
-
-	var/numerator = longest >> 1
-	var/i
-	for(i = 0; i <= longest; i++)
-		if(i > 0 || include_from_atom)
-			turfs += locate(cur_x,cur_y,from_atom.z)
-		numerator += shortest
-		if(!(numerator < longest))
-			numerator -= longest
-			cur_x += dx1
-			cur_y += dy1
-		else
-			cur_x += dx2
-			cur_y += dy2
-
-
-	return turfs
-
 
 //Key thing that stops lag. Cornerstone of performance in ss13, Just sitting here, in unsorted.dm.
 

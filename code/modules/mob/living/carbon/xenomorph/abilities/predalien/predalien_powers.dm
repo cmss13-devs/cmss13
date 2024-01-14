@@ -78,6 +78,9 @@
 				if (range > 1)
 					xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] rips open the guts of [human]!"), SPAN_XENOHIGHDANGER("We rip open the guts of [human]!"))
 					human.spawn_gibs()
+					xeno.animation_attack_on(human)
+					xeno.spin_circle()
+					xeno.flick_attack_overlay(human, "tail")
 					playsound(get_turf(human), 'sound/effects/gibbed.ogg', 30, 1)
 					human.apply_effect(get_xeno_stun_duration(human, 1), WEAKEN)
 				else

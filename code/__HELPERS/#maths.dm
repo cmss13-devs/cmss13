@@ -74,11 +74,6 @@ GLOBAL_LIST_INIT(sqrtTable, list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4,
 
 	return rotated_point
 
-// Round up
-/proc/n_ceil(num)
-	if(isnum(num))
-		return round(num)+1
-
 ///Format a power value in W, kW, MW, or GW.
 /proc/display_power(powerused)
 	if(powerused < 1000) //Less than a kW

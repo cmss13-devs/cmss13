@@ -62,8 +62,10 @@
 
 #define ACID_SPRAY_LINE 0
 #define ACID_SPRAY_CONE 1
+/// Defines for Abomination ability /datum/action/xeno_action/activable/feralfrenzy
 #define SINGLETARGETGUT 0
 #define AOETARGETGUT 1
+
 #define WARDEN_HEAL_SHIELD 0
 #define WARDEN_HEAL_HP 1
 #define WARDEN_HEAL_DEBUFFS 2

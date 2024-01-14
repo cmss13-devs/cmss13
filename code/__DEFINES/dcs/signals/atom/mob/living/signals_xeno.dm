@@ -13,7 +13,6 @@
 /// From ../xeno_action/activable/xeno_spit/use_ability
 #define COMSIG_XENO_POST_SPIT "xeno_spit"
 
-
 /// From /mob/living/carbon/xenomorph/revive()
 #define COMSIG_XENO_REVIVED "xeno_revived"
 

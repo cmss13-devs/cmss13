@@ -25,6 +25,17 @@
 	set_hive_data(src, hivenumber)
 	. = ..()
 
+	if(hivenumber == XENO_HIVE_NORMAL)
+		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
+
+/obj/item/xeno_egg/proc/forsaken_handling()
+	SIGNAL_HANDLER
+	if(is_ground_level(z))
+		hivenumber = XENO_HIVE_FORSAKEN
+		set_hive_data(src, XENO_HIVE_FORSAKEN)
+
+	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
+
 /obj/item/xeno_egg/get_examine_text(mob/user)
 	. = ..()
 	if(isxeno(user))

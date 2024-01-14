@@ -12,7 +12,6 @@
 	max_health = XENO_HEALTH_QUEEN
 	plasma_gain = XENO_PLASMA_GAIN_TIER_7
 	plasma_max = XENO_PLASMA_TIER_10
-	crystal_max = XENO_CRYSTAL_MEDIUM
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_10
 	armor_deflection = XENO_ARMOR_TIER_2
 	evasion = XENO_EVASION_NONE
@@ -59,7 +58,7 @@
 				if(hive.living_xeno_queen.hivenumber == hive.hivenumber)
 					continue
 			for(var/mob/living/carbon/xenomorph/queen/Q in GLOB.living_xeno_list)
-				if(Q.hivenumber == hive.hivenumber && !is_admin_level(Q.z))
+				if(Q.hivenumber == hive.hivenumber && !should_block_game_interaction(Q))
 					hive.living_xeno_queen = Q
 					xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hive.hivenumber)
 					continue outer_loop
@@ -103,6 +102,7 @@
 		COMSIG_XENO_STOP_OVERWATCH,
 		COMSIG_XENO_STOP_OVERWATCH_XENO
 	), PROC_REF(stop_watching))
+	RegisterSignal(Q, COMSIG_MOB_REAL_NAME_CHANGED, PROC_REF(on_name_changed))
 	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTER, PROC_REF(turf_weed_only))
 
 	// Default color
@@ -157,6 +157,10 @@
 	is_watching = null
 	X.reset_view()
 	return
+
+/mob/hologram/queen/proc/on_name_changed(mob/parent, old_name, new_name)
+	SIGNAL_HANDLER
+	name = "[initial(src.name)] ([new_name])"
 
 /mob/hologram/queen/proc/turf_weed_only(mob/self, turf/crossing_turf)
 	SIGNAL_HANDLER
@@ -264,8 +268,6 @@
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 0 //Queen doesn't count towards population limit.
 	hive_pos = XENO_QUEEN
-	crystal_max = XENO_CRYSTAL_MEDIUM
-	crystal_stored = XENO_CRYSTAL_MEDIUM
 	small_explosives_stun = FALSE
 	pull_speed = 3 //screech/neurodragging is cancer, at the very absolute least get some runner to do it for teamwork
 
@@ -303,10 +305,8 @@
 		/datum/action/xeno_action/onclick/choose_resin/queen_macro, //fourth macro
 		/datum/action/xeno_action/activable/secrete_resin/queen_macro, //fifth macro
 		/datum/action/xeno_action/onclick/grow_ovipositor,
-		/datum/action/xeno_action/onclick/banish,
-		/datum/action/xeno_action/onclick/readmit,
-		/datum/action/xeno_action/onclick/queen_award,
 		/datum/action/xeno_action/activable/info_marker/queen,
+		/datum/action/xeno_action/onclick/manage_hive,
 	)
 
 	inherent_verbs = list(
@@ -336,13 +336,12 @@
 		/datum/action/xeno_action/onclick/choose_resin/queen_macro, //fourth macro
 		/datum/action/xeno_action/activable/secrete_resin/queen_macro, //fifth macro
 		/datum/action/xeno_action/onclick/grow_ovipositor,
-		/datum/action/xeno_action/onclick/banish,
-		/datum/action/xeno_action/onclick/readmit,
-		/datum/action/xeno_action/onclick/queen_award,
+		/datum/action/xeno_action/onclick/manage_hive,
 		/datum/action/xeno_action/activable/info_marker/queen,
 		/datum/action/xeno_action/onclick/screech, //custom macro, Screech
 		/datum/action/xeno_action/activable/xeno_spit/queen_macro, //third macro
-		/datum/action/xeno_action/onclick/shift_spits, //second macro
+		/datum/action/xeno_action/onclick/shift_spits,
+		//second macro
 	)
 
 	// Abilities they get when they've successfully aged.
@@ -394,7 +393,7 @@
 /mob/living/carbon/xenomorph/queen/Initialize()
 	. = ..()
 	SStracking.set_leader("hive_[hivenumber]", src)
-	if(!is_admin_level(z))//so admins can safely spawn Queens in Thunderdome for tests.
+	if(!should_block_game_interaction(src))//so admins can safely spawn Queens in Thunderdome for tests.
 		xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hivenumber)
 		notify_ghosts(header = "New Queen", message = "A new Queen has risen.", source = src, action = NOTIFY_ORBIT)
 	playsound(loc, 'sound/voice/alien_queen_command.ogg', 75, 0)
@@ -500,7 +499,7 @@
 	if(hive && hive.living_xeno_queen == src)
 		var/mob/living/carbon/xenomorph/queen/next_queen = null
 		for(var/mob/living/carbon/xenomorph/queen/queen in hive.totalXenos)
-			if(!is_admin_level(queen.z) && queen != src && !QDELETED(queen))
+			if(!should_block_game_interaction(queen) && queen != src && !QDELETED(queen))
 				next_queen = queen
 				break
 		hive.set_living_xeno_queen(next_queen) // either null or a queen
@@ -792,12 +791,23 @@
 		return TRUE
 
 /mob/living/carbon/xenomorph/queen/death(cause, gibbed)
-	if(hive.living_xeno_queen == src)
+	if(src == hive?.living_xeno_queen)
 		hive.xeno_queen_timer = world.time + XENO_QUEEN_DEATH_DELAY
-		hive.banished_ckeys   = list() // Reset the banished ckey list
+
+		// Reset the banished ckey list
+		if(length(hive.banished_ckeys))
+			for(var/mob/living/carbon/xenomorph/target_xeno in hive.totalXenos)
+				if(!target_xeno.ckey)
+					continue
+				for(var/mob_name in hive.banished_ckeys)
+					if(target_xeno.ckey == hive.banished_ckeys[mob_name])
+						target_xeno.banished = FALSE
+						target_xeno.hud_update_banished()
+						target_xeno.lock_evolve = FALSE
+			hive.banished_ckeys = list()
+
 	icon = queen_standing_icon
 	return ..()
-
 
 /mob/living/carbon/xenomorph/queen/proc/mount_ovipositor()
 	if(ovipositor)
@@ -826,19 +836,15 @@
 		/datum/action/xeno_action/onclick/psychic_whisper,
 		/datum/action/xeno_action/onclick/psychic_radiance,
 		/datum/action/xeno_action/onclick/choose_resin/queen_macro, //fourth macro
-		/datum/action/xeno_action/onclick/banish,
-		/datum/action/xeno_action/onclick/readmit,
-		/datum/action/xeno_action/onclick/queen_award,
+		/datum/action/xeno_action/onclick/manage_hive,
 		/datum/action/xeno_action/activable/info_marker/queen,
 		// Screech is typically new for this list, but its possible they never ovi and it then is forced here:
 		/datum/action/xeno_action/onclick/screech, //custom macro, Screech
 		// These are new and their arrangement matters:
 		/datum/action/xeno_action/onclick/remove_eggsac,
-		/datum/action/xeno_action/onclick/give_evo_points,
 		/datum/action/xeno_action/onclick/set_xeno_lead,
 		/datum/action/xeno_action/activable/queen_heal, //first macro
 		/datum/action/xeno_action/activable/queen_give_plasma, //second macro
-		/datum/action/xeno_action/onclick/deevolve,
 		/datum/action/xeno_action/onclick/queen_order,
 		/datum/action/xeno_action/activable/expand_weeds, //third macro
 		/datum/action/xeno_action/activable/secrete_resin/remote/queen, //fifth macro

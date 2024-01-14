@@ -3,7 +3,7 @@
 //Thrall subtypes are located in /code/modules/cm_preds/thrall_items.dm
 
 /proc/add_to_missing_pred_gear(obj/item/W)
-	if(!is_admin_level(W.z))
+	if(!should_block_game_interaction(W))
 		GLOB.loose_yautja_gear |= W
 
 /proc/remove_from_missing_pred_gear(obj/item/W)
@@ -217,7 +217,7 @@
 	siemens_coefficient = 0.2
 	min_cold_protection_temperature = SHOE_MIN_COLD_PROT
 	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
-	items_allowed = list(
+	allowed_items_typecache = list(
 		/obj/item/weapon/yautja/knife,
 		/obj/item/weapon/gun/energy/yautja/plasmapistol,
 	)
@@ -259,10 +259,9 @@
 	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 
-/obj/item/clothing/shoes/yautja/hunter/knife/New()
-	..()
-	stored_item = new /obj/item/weapon/yautja/knife(src)
-	update_icon()
+/obj/item/clothing/shoes/yautja/hunter/knife
+	spawn_item_type = /obj/item/weapon/yautja/knife
+
 /obj/item/clothing/under/chainshirt
 	name = "ancient alien mesh suit"
 	desc = "A strange alloy weave in the form of a vest. It feels cold with an alien weight."
@@ -394,7 +393,7 @@
 	var/mob/living/carbon/human/H = user
 	var/ship_to_tele = list("Yautja Ship" = -1, "Human Ship" = "Human")
 
-	if(!HAS_TRAIT(H, TRAIT_YAUTJA_TECH) || is_admin_level(H.z))
+	if(!HAS_TRAIT(H, TRAIT_YAUTJA_TECH) || should_block_game_interaction(H))
 		to_chat(user, SPAN_WARNING("You fiddle with it, but nothing happens!"))
 		return
 

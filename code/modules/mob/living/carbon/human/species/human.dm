@@ -28,7 +28,7 @@
 			else if(chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
 				b_volume *= 1
 			else if(heart.damage >= heart.organ_status >= ORGAN_BRUISED)
-				b_volume *= Clamp(100 - (2 * heart.damage), 30, 100) / 100
+				b_volume *= clamp(100 - (2 * heart.damage), 30, 100) / 100
 
 	//Effects of bloodloss
 		if(b_volume <= BLOOD_VOLUME_SAFE)
@@ -37,7 +37,7 @@
 			/// How much oxyloss will there be from the next time blood processes
 			var/additional_oxyloss = (100 - blood_percentage) / 5
 			/// The limit of the oxyloss gained, ignoring oxyloss from the switch statement
-			var/maximum_oxyloss = Clamp((100 - blood_percentage) / 2, oxyloss, 100)
+			var/maximum_oxyloss = clamp((100 - blood_percentage) / 2, oxyloss, 100)
 			if(oxyloss < maximum_oxyloss)
 				oxyloss += round(max(additional_oxyloss, 0))
 

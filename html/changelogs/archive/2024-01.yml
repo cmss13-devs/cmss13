@@ -145,3 +145,23 @@
   - bugfix: Fixed tunnels not showing on the minimap.
   Tsurupeta:
   - bugfix: Regular expressions in chat highlights work again.
+2024-01-12:
+  Vicacrov:
+  - bugfix: Placing flags now anchors the actual flag, not the stack of flags in your
+      hand.
+  Zenith, Steelpoint:
+  - rscadd: Updates Steelpoint's donor armour, replacing it with a new sprite, camouflage
+      options for all maps and new item descriptions that are lore friendly.
+  realforest2001:
+  - rscadd: Added the X17 Riot Breaching Charge.
+2024-01-15:
+  InsaneRed:
+  - qol: Moves "Banish, Re-admit and De-evolving" queen abilities into one list, making
+      the queen ui  less clutterier
+  Stakeyng:
+  - rscadd: Added the ability to combine prescription glasses with eyewear for varying
+      roles
+  private-tristan:
+  - bugfix: removed a light fixture being doubled on trijent
+  - maptweak: moved some trijent lights in marshals off windows
+  - maptweak: Alamayer PermaBrig Chairs face the right way

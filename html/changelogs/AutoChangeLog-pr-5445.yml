@@ -1,0 +1,4 @@
+author: "Huffie56"
+delete-after: True
+changes:
+  - rscadd: "Add the ability to build multi tile assembly from metal sheets."

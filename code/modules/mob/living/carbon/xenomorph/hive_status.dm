@@ -737,7 +737,7 @@
 		if(is_mainship_level(turf?.z))
 			shipside_humans_weighted_count += GLOB.RoleAuthority.calculate_role_weight(job)
 	hijack_burrowed_surge = TRUE
-	hijack_burrowed_left = max(n_ceil(shipside_humans_weighted_count * 0.5) - xenos_count, 5)
+	hijack_burrowed_left = max(Ceiling(shipside_humans_weighted_count * 0.5) - xenos_count, 5)
 	hivecore_cooldown = FALSE
 	xeno_message(SPAN_XENOBOLDNOTICE("The weeds have recovered! A new hive core can be built!"),3,hivenumber)
 

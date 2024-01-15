@@ -125,11 +125,11 @@
 		//Position the effect so the beam is one continous line
 		var/a
 		if(abs(Pixel_x)>world.icon_size)
-			a = Pixel_x > 0 ? round(Pixel_x/32) : CEILING(Pixel_x/world.icon_size, 1)
+			a = Pixel_x > 0 ? round(Pixel_x/32) : Ceiling(Pixel_x/world.icon_size)
 			X.x += a
 			Pixel_x %= world.icon_size
 		if(abs(Pixel_y)>world.icon_size)
-			a = Pixel_y > 0 ? round(Pixel_y/32) : CEILING(Pixel_y/world.icon_size, 1)
+			a = Pixel_y > 0 ? round(Pixel_y/32) : Ceiling(Pixel_y/world.icon_size)
 			X.y += a
 			Pixel_y %= world.icon_size
 

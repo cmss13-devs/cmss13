@@ -45,7 +45,7 @@
 	///How many rounds are in the weapon. This is useful if we break down our guns.
 	var/rounds = 0
 	///Indicates whether the M56D will come with its folding mount already attached
-	var/has_mount = FALSE 
+	var/has_mount = FALSE
 	///The distance this has to be away from other m56d_hmg and m56d_post to be placed.
 	var/defense_check_range = 5
 
@@ -826,6 +826,9 @@
 /obj/structure/machinery/m56d_hmg/proc/try_mount_gun(mob/living/carbon/human/user)
 	// If the user isn't a human.
 	if(!istype(user))
+		return
+	// If the user is unconscious or dead.
+	if(user.stat)
 		return
 
 	// If the user isn't actually allowed to use guns.

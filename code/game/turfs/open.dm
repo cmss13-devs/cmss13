@@ -115,10 +115,10 @@
 				scorchedness = 1
 
 		if(2 to 30)
-			scorchedness = Clamp(scorchedness + 1, 0, 3) //increase scorch by 1 (not that hot of a fire)
+			scorchedness = clamp(scorchedness + 1, 0, 3) //increase scorch by 1 (not that hot of a fire)
 
 		if(31 to 60)
-			scorchedness = Clamp(scorchedness + 2, 0, 3) //increase scorch by 2 (hotter fire)
+			scorchedness = clamp(scorchedness + 2, 0, 3) //increase scorch by 2 (hotter fire)
 
 		if(61 to INFINITY)
 			scorchedness = 3 //max out the scorchedness (hottest fire)

@@ -4800,6 +4800,7 @@
 /area/lv624/lazarus/research)
 "axL" = (
 /obj/structure/surface/table,
+/obj/item/book/manual/research_and_development,
 /obj/item/cell/hyper,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /obj/effect/landmark/objective_landmark/science,
@@ -9769,6 +9770,7 @@
 "aQH" = (
 /obj/structure/bookcase,
 /obj/item/bananapeel,
+/obj/item/book/manual/research_and_development,
 /obj/item/book/manual/security_space_law,
 /turf/open/floor{
 	icon_state = "wood"
@@ -13819,6 +13821,7 @@
 /area/lv624/ground/caves/west_caves)
 "dLd" = (
 /obj/structure/bookcase,
+/obj/item/book/manual/research_and_development,
 /obj/item/book/manual/medical_diagnostics_manual,
 /obj/item/book/manual/security_space_law,
 /obj/effect/landmark/objective_landmark/close,

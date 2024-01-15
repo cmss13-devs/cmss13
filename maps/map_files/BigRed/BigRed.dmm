@@ -39745,6 +39745,14 @@
 	icon_state = "mars_cave_16"
 	},
 /area/bigredv2/caves/mining)
+"wQu" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/book/manual/research_and_development,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurple"
+	},
+/area/bigredv2/caves/lambda/xenobiology)
 "wQC" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_7"
@@ -80442,7 +80450,7 @@ adZ
 adZ
 adZ
 aeQ
-afy
+wQu
 daB
 amO
 afy

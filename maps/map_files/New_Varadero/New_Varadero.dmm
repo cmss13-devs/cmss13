@@ -23557,6 +23557,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
+/obj/item/book/manual/research_and_development,
 /turf/open/floor/carpet,
 /area/varadero/interior/library)
 "pjs" = (

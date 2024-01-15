@@ -15797,6 +15797,7 @@
 "aXl" = (
 /obj/structure/surface/rack,
 /obj/item/book/manual/orbital_cannon_manual,
+/obj/item/book/manual/research_and_development,
 /turf/open/floor/strata{
 	icon_state = "orange_cover"
 	},
@@ -16339,6 +16340,7 @@
 /area/strata/ag/exterior/marsh/river)
 "aZy" = (
 /obj/structure/surface/rack,
+/obj/item/book/manual/research_and_development,
 /obj/item/book/manual/security_space_law,
 /obj/structure/machinery/light/small{
 	dir = 4

@@ -571,9 +571,10 @@
 				options["Xeno Leader [xeno_lead]"] = list(TRACKER_LEADER, xeno_leader_index)
 			xeno_leader_index++
 
+		var/list/sorted_tunnels = sort_list_dist(user.hive.tunnels, get_turf(user))
 		var/tunnel_index = 1
-		for(var/obj/structure/tunnel/tracked_tunnel in user.hive.tunnels)
-			options["Tunnel [tracked_tunnel.tunnel_desc]"] = list(TRACKER_TUNNEL, tunnel_index)
+		for(var/obj/structure/tunnel/tunnel in sorted_tunnels)
+			options["Tunnel [tunnel.tunnel_desc]"] = list(TRACKER_TUNNEL, tunnel_index)
 			tunnel_index++
 
 		var/selected = tgui_input_list(user, "Select what you want the locator to track.", "Locator Options", options)

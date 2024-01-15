@@ -29,14 +29,14 @@
 //------------ DOCTOR ---------------
 GLOBAL_LIST_INIT(cm_vending_clothing_doctor, list(
 
-        list("MEDICAL SET (MANDATORY)", 0, null, null, null),
+		list("MEDICAL SET (MANDATORY)", 0, null, null, null),
 		list("Essential Medical Set", 0, /obj/effect/essentials_set/medical/doctor, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
 		list("STANDARD EQUIPMENT", 0, null, null, null),
 		list("Gloves", 0, /obj/item/clothing/gloves/latex, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/doc, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 
-        list("EYEWEAR (CHOOSE 1)", 0, null, null, null),
+		list("EYEWEAR (CHOOSE 1)", 0, null, null, null),
 		list("Medical HUD Glasses", 0, /obj/item/clothing/glasses/hud/health, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
 		list("Prescription Medical HUD Glasses", 0, /obj/item/clothing/glasses/hud/health/prescription, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
 
@@ -94,14 +94,14 @@ GLOBAL_LIST_INIT(cm_vending_clothing_doctor, list(
 //------------ NURSE ---------------
 GLOBAL_LIST_INIT(cm_vending_clothing_nurse, list(
 
-        list("MEDICAL SET (MANDATORY)", 0, null, null, null),
+		list("MEDICAL SET (MANDATORY)", 0, null, null, null),
 		list("Essential Medical Set", 0, /obj/effect/essentials_set/medical, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
 		list("STANDARD EQUIPMENT", 0, null, null, null),
 		list("Gloves", 0, /obj/item/clothing/gloves/latex, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/doc, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 
-        list("EYEWEAR (CHOOSE 1)", 0, null, null, null),
+		list("EYEWEAR (CHOOSE 1)", 0, null, null, null),
 		list("Medical HUD Glasses", 0, /obj/item/clothing/glasses/hud/health, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
 		list("Prescription Medical HUD Glasses", 0, /obj/item/clothing/glasses/hud/health/prescription, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
 
@@ -168,7 +168,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_researcher, list(
 		list("Gloves", 0, /obj/item/clothing/gloves/latex, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/research, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 
-        list("EYEWEAR (CHOOSE 1)", 0, null, null, null),
+		list("EYEWEAR (CHOOSE 1)", 0, null, null, null),
 		list("Medical HUD Glasses", 0, /obj/item/clothing/glasses/hud/health, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_RECOMMENDED),
 		list("Prescription Medical HUD Glasses", 0, /obj/item/clothing/glasses/hud/health/prescription, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_RECOMMENDED),
 		list("Reagent Scanner HUD Goggles", 0, /obj/item/clothing/glasses/science, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),

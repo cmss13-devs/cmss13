@@ -30527,7 +30527,6 @@
 /area/almayer/hull/lower_hull/l_m_s)
 "eIT" = (
 /obj/structure/surface/table/almayer,
-/obj/item/book/manual/engineering_particle_accelerator,
 /obj/item/folder/yellow,
 /obj/structure/machinery/keycard_auth{
 	pixel_x = -8;
@@ -41943,9 +41942,7 @@
 	opacity = 0
 	},
 /obj/item/book/manual/surgery,
-/obj/item/book/manual/research_and_development,
 /obj/item/book/manual/medical_diagnostics_manual,
-/obj/item/book/manual/medical_cloning,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -48646,9 +48643,6 @@
 /obj/structure/surface/rack,
 /obj/effect/decal/cleanable/cobweb{
 	dir = 8
-	},
-/obj/item/book/manual/robotics_cyborgs{
-	pixel_y = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/synthcloset)

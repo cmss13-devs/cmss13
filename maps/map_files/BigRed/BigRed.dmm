@@ -3848,14 +3848,6 @@
 	icon_state = "whitepurplefull"
 	},
 /area/bigredv2/caves/lambda/xenobiology)
-"ald" = (
-/obj/structure/surface/table/reinforced,
-/obj/item/book/manual/research_and_development,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitepurple"
-	},
-/area/bigredv2/caves/lambda/xenobiology)
 "ale" = (
 /obj/effect/landmark/xeno_spawn,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -80450,7 +80442,7 @@ adZ
 adZ
 adZ
 aeQ
-ald
+afy
 daB
 amO
 afy

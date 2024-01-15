@@ -23557,7 +23557,6 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/obj/item/book/manual/research_and_development,
 /turf/open/floor/carpet,
 /area/varadero/interior/library)
 "pjs" = (
@@ -34887,10 +34886,6 @@
 	icon_state = "blue"
 	},
 /area/varadero/interior/administration)
-"wjd" = (
-/obj/item/book/manual/robotics_cyborgs,
-/turf/open/floor/carpet,
-/area/varadero/interior/library)
 "wjf" = (
 /obj/structure/machinery/washing_machine,
 /obj/structure/machinery/washing_machine{
@@ -53823,7 +53818,7 @@ pjn
 mCY
 jzZ
 mCY
-wjd
+jzZ
 mRq
 xWY
 hvO

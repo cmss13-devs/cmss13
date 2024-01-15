@@ -132,7 +132,7 @@
 	author = "Dr. L. Ight"
 	title = "Research and Development 101"
 
-dat = {"
+	dat = {"
 
 		<html><head>
 		</head>

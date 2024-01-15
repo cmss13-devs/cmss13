@@ -176,7 +176,7 @@
 	addtimer(CALLBACK(src, PROC_REF(release_gas), radius), warning_time)
 
 /obj/structure/pipes/vents/proc/release_gas(radius = 4)
-	radius = Clamp(radius, 1, 10)
+	radius = clamp(radius, 1, 10)
 	if(!gas_holder || welded)
 		return FALSE
 	playsound(loc, 'sound/effects/smoke.ogg', 25, 1, 4)

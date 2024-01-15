@@ -125,7 +125,7 @@
 			</html>
 			"}
 
-//need to solve bookcase first before removing it tottaly "/obj/structure/bookcase/manuals/research_and_development"
+
 /obj/item/book/manual/research_and_development
 	name = "Research and Development 101"
 	icon_state = "rdbook"

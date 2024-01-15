@@ -158,6 +158,9 @@
 /mob/living/carbon/xenomorph/facehugger/proc/handle_hug(mob/living/carbon/human/human)
 	var/obj/item/clothing/mask/facehugger/hugger = new /obj/item/clothing/mask/facehugger(loc, hivenumber)
 	var/did_hug = hugger.attach(human, TRUE, 1, src)
+	if(!did_hug)
+		qdel(hugger)
+		return
 	if(client)
 		client.player_data?.adjust_stat(PLAYER_STAT_FACEHUGS, STAT_CATEGORY_XENO, 1)
 	qdel(src)

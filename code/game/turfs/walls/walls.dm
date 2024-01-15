@@ -5,9 +5,11 @@
 	icon_state = "0"
 	opacity = TRUE
 	layer = WALL_LAYER
-	var/hull = 0 //1 = Can't be deconstructed by tools or thermite. Used for Sulaco walls
+	/// 1 = Can't be deconstructed by tools or thermite. Used for Sulaco walls
+	var/hull = 0
 	var/walltype = WALL_METAL
-	var/junctiontype //when walls smooth with one another, the type of junction each wall is.
+	/// when walls smooth with one another, the type of junction each wall is.
+	var/junctiontype 
 	var/thermite = 0
 	var/melting = FALSE
 	var/claws_minimum = CLAW_TYPE_SHARP
@@ -21,7 +23,8 @@
 	)
 
 	var/damage = 0
-	var/damage_cap = HEALTH_WALL //Wall will break down to girders if damage reaches this point
+	/// Wall will break down to girders if damage reaches this point
+	var/damage_cap = HEALTH_WALL 
 
 	var/damage_overlay
 	var/global/damage_overlays[8]
@@ -34,7 +37,8 @@
 
 	var/d_state = 0 //Normal walls are now as difficult to remove as reinforced walls
 
-	var/obj/effect/acid_hole/acided_hole //the acid hole inside the wall
+	/// the acid hole inside the wall
+	var/obj/effect/acid_hole/acided_hole 
 	var/acided_hole_dir = SOUTH
 
 	var/special_icon = 0

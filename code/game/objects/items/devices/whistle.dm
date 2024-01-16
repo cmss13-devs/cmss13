@@ -30,7 +30,7 @@
 
 /obj/item/device/whistle/proc/whistle_playsound(mob/user)
 	if(!COOLDOWN_FINISHED(src, spam_cooldown))
-		to_chat(user, SPAN_DANGER("\ You are out of breath after using [src]! Wait [COOLDOWN_SECONDSLEFT(src, spam_cooldown)] second(s)."))
+		to_chat(user, SPAN_DANGER("You are out of breath after using [src]! Wait [COOLDOWN_SECONDSLEFT(src, spam_cooldown)] second\s."))
 		return
 
 	user.visible_message(SPAN_WARNING("[user] blows into [src]!"))

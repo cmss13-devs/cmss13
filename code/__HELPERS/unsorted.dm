@@ -1559,10 +1559,10 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 	if(!step_count)
 		return line
 
-	//since the step_count and step size (1) are known, can pre-calculate a lerp step
+	//as step_count and step size (1) are known can pre-calculate a lerp step, tiny number (1e-5) for rounding consistency
 	var/step_fract = 1 / step_count
-	var/step_x = (end_turf.x - start_turf.x) * step_fract
-	var/step_y = (end_turf.y - start_turf.y) * step_fract
+	var/step_x = (end_turf.x - start_turf.x) * step_fract + 1e-5
+	var/step_y = (end_turf.y - start_turf.y) * step_fract + 1e-5
 
 	//locate() truncates the fraction, adding 0.5 so its effectively rounding to nearest coords for free
 	var/x = start_turf.x + 0.5

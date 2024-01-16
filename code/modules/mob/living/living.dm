@@ -401,9 +401,10 @@
 /mob/living/launch_towards(datum/launch_metadata/LM)
 	if(src)
 		SEND_SIGNAL(src, COMSIG_MOB_MOVE_OR_LOOK, TRUE, dir, dir)
-	if(!istype(LM) || !LM.target || !src || buckled)
-		LM.invoke_end_throw_callbacks(src)
+	if(!istype(LM) || !LM.target || !src)
 		return
+	if(buckled)
+		LM.invoke_end_throw_callbacks(src)
 	if(pulling)
 		stop_pulling() //being thrown breaks pulls.
 	if(pulledby)

@@ -52,3 +52,26 @@
 	icon = 'icons/obj/structures/doors/mineral_doors.dmi'
 	icon_state = "wood"
 	density = TRUE
+
+/obj/structure/interior_exit/fancy/attackby(obj/item/O, mob/M)
+	attack_hand(M)
+
+/obj/structure/interior_exit/fancy/attack_hand(mob/escapee)
+	var/obj/structure/closet/fancy/closet = find_closet()
+	if(istype(closet) && !closet.can_open())
+		to_chat(escapee, SPAN_WARNING("Something is blocking the exit!"))
+		return
+	..()
+
+/obj/structure/interior_exit/fancy/attack_alien(mob/living/carbon/xenomorph/escapee, dam_bonus)
+	var/obj/structure/closet/fancy/closet = find_closet()
+	if(istype(closet) && !closet.can_open())
+		to_chat(escapee, SPAN_XENOWARNING("Something is blocking the exit!"))
+		return
+	..()
+
+/obj/structure/interior_exit/fancy/proc/find_closet()
+	var/obj/structure/closet/fancy/possible_closet = interior.exterior
+	if(istype(possible_closet))
+		return possible_closet
+	return

@@ -405,6 +405,7 @@
 		return
 	if(buckled)
 		LM.invoke_end_throw_callbacks(src)
+		return
 	if(pulling)
 		stop_pulling() //being thrown breaks pulls.
 	if(pulledby)

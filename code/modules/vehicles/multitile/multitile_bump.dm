@@ -352,7 +352,9 @@
 	HMG.name = name
 	HMG.rounds = rounds
 	HMG.has_mount = TRUE
+	HMG.health = health
 	HMG.update_icon()
+	transfer_label_component(HMG)
 	playsound(V, 'sound/effects/metal_crash.ogg', 20)
 	visible_message(SPAN_DANGER("\The [V] drives over \the [src]!"))
 	qdel(src)

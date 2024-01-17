@@ -488,37 +488,77 @@
 // Marine MGs
 
 /obj/structure/machinery/m56d_hmg/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
-	if(charger_ability.momentum > CCA_MOMENTUM_LOSS_MIN)
-		CrusherImpact()
-		var/datum/effect_system/spark_spread/sparks = new
-		update_health(charger_ability.momentum * 15)
-		if(operator) operator.emote("pain")
-		sparks.set_up(1, 1, loc)
-		sparks.start()
-		xeno.visible_message(
-			SPAN_DANGER("[xeno] rams \the [src]!"),
-			SPAN_XENODANGER("You ram \the [src]!")
-		)
-		playsound(src, "sound/effects/metal_crash.ogg", 25, TRUE)
-		if(istype(src,/obj/structure/machinery/m56d_hmg/auto)) // we don't want to charge it to the point of downgrading it (:
-			var/obj/item/device/m2c_gun/HMG = new(src.loc)
-			HMG.health = src.health
-			transfer_label_component(HMG)
-			HMG.rounds = src.rounds //Inherent the amount of ammo we had.
-			HMG.update_icon()
-			qdel(src)
-		else
-			var/obj/item/device/m56d_gun/HMG = new(src.loc) // note: find a better way than a copy pasted else statement
-			HMG.health = src.health
-			transfer_label_component(HMG)
-			HMG.rounds = src.rounds //Inherent the amount of ammo we had.
-			HMG.has_mount = TRUE
-			HMG.update_icon()
-			qdel(src) //Now we clean up the constructed gun.
+	if(charger_ability.momentum <= CCA_MOMENTUM_LOSS_MIN)
+		charger_ability.stop_momentum()
+		return
+
+	CrusherImpact()
+	var/datum/effect_system/spark_spread/sparks = new
+	update_health(charger_ability.momentum * 15)
+	sparks.set_up(1, 1, loc)
+	sparks.start()
+	xeno.visible_message(
+		SPAN_DANGER("[xeno] rams \the [src]!"),
+		SPAN_XENODANGER("You ram \the [src]!")
+	)
+	playsound(src, "sound/effects/metal_crash.ogg", 25, TRUE)
+
 	if(QDELETED(src))
+		// The crash destroyed it
 		charger_ability.lose_momentum(CCA_MOMENTUM_LOSS_MIN) //Lose one turfs worth of speed
 		return XENO_CHARGE_TRY_MOVE
-	charger_ability.stop_momentum()
+
+	// Undeploy
+	if(istype(src, /obj/structure/machinery/m56d_hmg/auto)) // we don't want to charge it to the point of downgrading it (:
+		var/obj/item/device/m2c_gun/HMG = new(loc)
+		HMG.health = health
+		transfer_label_component(HMG)
+		HMG.rounds = rounds //Inherent the amount of ammo we had.
+		HMG.update_icon()
+		qdel(src)
+	else
+		var/obj/item/device/m56d_gun/HMG = new(loc) // note: find a better way than a copy pasted else statement
+		HMG.health = health
+		transfer_label_component(HMG)
+		HMG.rounds = rounds //Inherent the amount of ammo we had.
+		HMG.has_mount = TRUE
+		HMG.update_icon()
+		qdel(src) //Now we clean up the constructed gun.
+
+/obj/structure/machinery/m56d_post/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+	if(charger_ability.momentum <= CCA_MOMENTUM_LOSS_MIN)
+		charger_ability.stop_momentum()
+
+	var/datum/effect_system/spark_spread/sparks = new
+	update_health(charger_ability.momentum * 15)
+	sparks.set_up(1, 1, loc)
+	sparks.start()
+	xeno.visible_message(
+		SPAN_DANGER("[xeno] rams \the [src]!"),
+		SPAN_XENODANGER("You ram \the [src]!")
+	)
+	playsound(src, "sound/effects/metal_crash.ogg", 25, TRUE)
+
+	if(QDELETED(src))
+		// The crash destroyed it
+		charger_ability.lose_momentum(CCA_MOMENTUM_LOSS_MIN) //Lose one turfs worth of speed
+		return XENO_CHARGE_TRY_MOVE
+
+	// Undeploy
+	if(gun_mounted)
+		var/obj/item/device/m56d_gun/HMG = new(loc)
+		transfer_label_component(HMG)
+		HMG.rounds = gun_rounds //Inherent the amount of ammo we had.
+		HMG.has_mount = TRUE
+		if(gun_health)
+			HMG.health = gun_health
+		HMG.update_icon()
+		qdel(src) //Now we clean up the partially constructed gun.
+	else
+		var/obj/item/device/m56d_post/post = new(loc)
+		post.health = health
+		transfer_label_component(post)
+		qdel(src)
 
 // Prison Windows
 

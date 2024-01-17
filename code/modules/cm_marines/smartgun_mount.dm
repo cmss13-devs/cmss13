@@ -137,13 +137,14 @@
 			to_chat(user, SPAN_WARNING("This is too close to [machine]!"))
 			return
 
-	var/obj/structure/machinery/m56d_post/M = new /obj/structure/machinery/m56d_post(user.loc)
-	M.setDir(user.dir) // Make sure we face the right direction
-	M.gun_rounds = src.rounds //Inherit the amount of ammo we had.
-	M.gun_mounted = TRUE
-	M.anchored = TRUE
-	M.update_icon()
-	transfer_label_component(M)
+	var/obj/structure/machinery/m56d_post/post = new(user.loc)
+	post.setDir(user.dir) // Make sure we face the right direction
+	post.gun_rounds = src.rounds //Inherit the amount of ammo we had.
+	post.gun_mounted = TRUE
+	post.gun_health = health // retain damage
+	post.anchored = TRUE
+	post.update_icon()
+	transfer_label_component(post)
 	to_chat(user, SPAN_NOTICE("You deploy \the [src]."))
 	qdel(src)
 
@@ -223,8 +224,8 @@
 		return
 
 	to_chat(user, SPAN_NOTICE("You deploy \the [src]."))
-	var/obj/structure/machinery/m56d_post/M = new /obj/structure/machinery/m56d_post(user.loc)
-	transfer_label_component(M)
+	var/obj/structure/machinery/m56d_post/post = new(user.loc)
+	transfer_label_component(post)
 	qdel(src)
 
 
@@ -238,8 +239,12 @@
 	density = TRUE
 	layer = ABOVE_MOB_LAYER
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
-	var/gun_mounted = FALSE //Has the gun been mounted?
-	var/gun_rounds = 0 //Did the gun come with any ammo?
+	///Whether a gun is mounted
+	var/gun_mounted = FALSE
+	///Ammo amount of the mounted gun
+	var/gun_rounds = 0
+	///Health of the mounted gun
+	var/gun_health = 0
 	health = 50
 
 /obj/structure/machinery/m56d_post/initialize_pass_flags(datum/pass_flags_container/PF)
@@ -302,8 +307,9 @@
 			to_chat(user, SPAN_WARNING("\The [src] can't be folded while screwed to the floor. Unscrew it first."))
 			return
 		to_chat(user, SPAN_NOTICE("You fold [src]."))
-		var/obj/item/device/m56d_post/P = new(loc)
-		user.put_in_hands(P)
+		var/obj/item/device/m56d_post/post = new(loc)
+		transfer_label_component(post)
+		user.put_in_hands(post)
 		qdel(src)
 
 /obj/structure/machinery/m56d_post/attackby(obj/item/O, mob/user)
@@ -331,6 +337,8 @@
 			user.visible_message(SPAN_NOTICE("[user] installs [MG] into place."),SPAN_NOTICE("You install [MG] into place."))
 			gun_mounted = 1
 			gun_rounds = MG.rounds
+			gun_health = MG.health
+			MG.transfer_label_component(src)
 			update_icon()
 			user.temp_drop_inv_item(MG)
 			qdel(MG)
@@ -343,12 +351,19 @@
 		to_chat(user, "You begin dismounting [src]'s gun...")
 		if(do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && gun_mounted)
 			playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-			user.visible_message(SPAN_NOTICE("[user] removes [src]'s gun."),SPAN_NOTICE("You remove [src]'s gun."))
-			var/obj/item/device/m56d_gun/G = new(loc)
-			G.rounds = gun_rounds
-			G.update_icon()
+			user.visible_message(SPAN_NOTICE("[user] removes [src]'s gun."), SPAN_NOTICE("You remove [src]'s gun."))
+			var/obj/item/device/m56d_gun/HMG = new(loc)
+			HMG.rounds = gun_rounds
+			if(gun_health)
+				HMG.health = gun_health
+			HMG.update_icon()
+			transfer_label_component(HMG)
+			var/datum/component/label/label = GetComponent(/datum/component/label)
+			if(label)
+				label.remove_label()
 			gun_mounted = FALSE
 			gun_rounds = 0
+			gun_health = 0
 			update_icon()
 		return
 
@@ -389,13 +404,16 @@
 			var/disassemble_time = 30
 			if(do_after(user, disassemble_time * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
-				user.visible_message(SPAN_NOTICE("[user] screws the M56D into the mount."),SPAN_NOTICE("You finalize the M56D heavy machine gun."))
-				var/obj/structure/machinery/m56d_hmg/G = new(src.loc) //Here comes our new turret.
-				transfer_label_component(G)
-				G.visible_message("[icon2html(G, viewers(src))] <B>\The [G] is now complete!</B>") //finished it for everyone to
-				G.setDir(dir) //make sure we face the right direction
-				G.rounds = src.gun_rounds //Inherent the amount of ammo we had.
-				G.update_icon()
+				user.visible_message(SPAN_NOTICE("[user] screws the M56D into the mount."), SPAN_NOTICE("You finalize the M56D heavy machine gun."))
+				var/obj/structure/machinery/m56d_hmg/HMG = new(loc) //Here comes our new turret.
+				transfer_label_component(HMG)
+				HMG.visible_message("[icon2html(HMG, viewers(src))] <B>\The [HMG] is now complete!</B>") //finished it for everyone to
+				HMG.setDir(dir) //make sure we face the right direction
+				HMG.rounds = gun_rounds //Inherent the amount of ammo we had.
+				if(gun_health)
+					HMG.health = gun_health
+					HMG.update_damage_state()
+				HMG.update_icon()
 				qdel(src)
 		else
 			if(anchored)
@@ -582,6 +600,7 @@
 				transfer_label_component(HMG)
 				HMG.rounds = src.rounds //Inherent the amount of ammo we had.
 				HMG.has_mount = TRUE
+				HMG.health = health
 				HMG.update_icon()
 				qdel(src) //Now we clean up the constructed gun.
 				return
@@ -638,9 +657,9 @@
 	if(health <= 0)
 		var/destroyed = rand(0,1) //Ammo cooks off or something. Who knows.
 		playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
-		if(!destroyed) new /obj/structure/machinery/m56d_post(loc)
-		else
+		if(!destroyed)
 			var/obj/item/device/m56d_gun/HMG = new(loc)
+			transfer_label_component(HMG)
 			HMG.rounds = src.rounds //Inherent the amount of ammo we had.
 		qdel(src)
 		return
@@ -981,6 +1000,7 @@
 		to_chat(operator, SPAN_HIGHDANGER("You are knocked off the gun by the sheer force of the ram!"))
 		operator.unset_interaction()
 		operator.apply_effect(3, WEAKEN)
+		operator.emote("pain")
 
 /// Getter for burst_firing
 /obj/structure/machinery/m56d_hmg/proc/get_burst_firing()

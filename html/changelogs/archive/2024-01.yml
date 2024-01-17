@@ -145,3 +145,42 @@
   - bugfix: Fixed tunnels not showing on the minimap.
   Tsurupeta:
   - bugfix: Regular expressions in chat highlights work again.
+2024-01-12:
+  Vicacrov:
+  - bugfix: Placing flags now anchors the actual flag, not the stack of flags in your
+      hand.
+  Zenith, Steelpoint:
+  - rscadd: Updates Steelpoint's donor armour, replacing it with a new sprite, camouflage
+      options for all maps and new item descriptions that are lore friendly.
+  realforest2001:
+  - rscadd: Added the X17 Riot Breaching Charge.
+2024-01-15:
+  InsaneRed:
+  - qol: Moves "Banish, Re-admit and De-evolving" queen abilities into one list, making
+      the queen ui  less clutterier
+  Stakeyng:
+  - rscadd: Added the ability to combine prescription glasses with eyewear for varying
+      roles
+  private-tristan:
+  - bugfix: removed a light fixture being doubled on trijent
+  - maptweak: moved some trijent lights in marshals off windows
+  - maptweak: Alamayer PermaBrig Chairs face the right way
+2024-01-16:
+  Drathek:
+  - bugfix: Fix all hands on deck message not sending to those in cryopods
+  Huffie56:
+  - rscadd: Add the ability to build multi tile assembly from metal sheets.
+  ItsVyzo:
+  - balance: m56d loses burst fire
+  SabreML:
+  - bugfix: Fixed dead marines being able to man and fire the M56D.
+  TheGamerdk:
+  - bugfix: Overwatch now works on Whiskey Outpost again, not that you will use it.
+  Zonespace27:
+  - balance: 3 smartgun drums now spawn in the SG's equipment crate. Smartgun drums
+      cannot be purchased from the SG vendor.
+2024-01-17:
+  SabreML:
+  - bugfix: Fixed larvae sometimes spawning in space on Fiorina.
+  TheGamerdk:
+  - bugfix: The Kutjevo Refinery has been granted an additional SMES

@@ -366,9 +366,9 @@
 		if (behavior.rage == 0)
 			to_chat(xeno, SPAN_XENODANGER("We cannot eviscerate when we have 0 rage!"))
 			return
-		damage = damage_at_rage_levels[Clamp(behavior.rage, 1, behavior.max_rage)]
-		range = range_at_rage_levels[Clamp(behavior.rage, 1, behavior.max_rage)]
-		windup_reduction = windup_reduction_at_rage_levels[Clamp(behavior.rage, 1, behavior.max_rage)]
+		damage = damage_at_rage_levels[clamp(behavior.rage, 1, behavior.max_rage)]
+		range = range_at_rage_levels[clamp(behavior.rage, 1, behavior.max_rage)]
+		windup_reduction = windup_reduction_at_rage_levels[clamp(behavior.rage, 1, behavior.max_rage)]
 		behavior.decrement_rage(behavior.rage)
 
 		apply_cooldown()
@@ -420,7 +420,7 @@
 
 	// This is the heal
 	if(!xeno.on_fire)
-		xeno.gain_health(Clamp(valid_count * lifesteal_per_marine, 0, max_lifesteal))
+		xeno.gain_health(clamp(valid_count * lifesteal_per_marine, 0, max_lifesteal))
 
 	REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Eviscerate"))
 	xeno.anchored = FALSE

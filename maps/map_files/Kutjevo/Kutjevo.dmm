@@ -8549,6 +8549,12 @@
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_north)
+"lBu" = (
+/obj/structure/machinery/power/terminal{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/interior/power)
 "lBP" = (
 /obj/structure/window/framed/kutjevo/reinforced,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -25968,7 +25974,7 @@ uGd
 fkP
 vin
 pBV
-hQj
+lBu
 uBz
 cvm
 hQj
@@ -26135,7 +26141,7 @@ eyU
 dyU
 pyp
 pyp
-hQj
+sNp
 pyp
 xjY
 xjY

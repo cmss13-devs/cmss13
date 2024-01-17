@@ -528,6 +528,7 @@
 /obj/structure/machinery/m56d_post/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(charger_ability.momentum <= CCA_MOMENTUM_LOSS_MIN)
 		charger_ability.stop_momentum()
+		return
 
 	var/datum/effect_system/spark_spread/sparks = new
 	update_health(charger_ability.momentum * 15)

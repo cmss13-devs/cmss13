@@ -145,7 +145,7 @@
 	for(var/mob/T in targets)
 		if(isobserver(T))
 			continue
-		if(!ishuman(T) || isyautja(T) || !is_mainship_level(T.z))
+		if(!ishuman(T) || isyautja(T) || !is_mainship_level((get_turf(T))?.z))
 			targets.Remove(T)
 
 	log_ares_announcement("[title] Shipwide Update", message)

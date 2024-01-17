@@ -15516,6 +15516,9 @@
 	pixel_y = 24;
 	start_charge = 0
 	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/prison{
 	dir = 5;
 	icon_state = "red"
@@ -16765,17 +16768,11 @@
 	},
 /area/desert_dam/building/security/lobby)
 "aZt" = (
-/obj/structure/bed/chair{
+/obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "red"
-	},
-/area/desert_dam/building/security/lobby)
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/security/detective)
 "aZu" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -18109,9 +18106,6 @@
 "bdL" = (
 /obj/item/reagent_container/food/drinks/flask/detflask,
 /obj/item/clothing/head/det_hat,
-/obj/structure/machinery/light{
-	dir = 8
-	},
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/security/detective)
@@ -74482,7 +74476,7 @@ ceA
 act
 aVz
 aXD
-aZt
+aXD
 aXD
 aXD
 blY
@@ -74953,7 +74947,7 @@ aXE
 aZJ
 bdL
 bjI
-aXM
+aZt
 aVB
 boW
 bqy

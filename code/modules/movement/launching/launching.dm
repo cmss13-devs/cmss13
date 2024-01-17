@@ -164,7 +164,7 @@
 		animation_spin(5, 1 + min(1, LM.range/20))
 
 	var/old_speed = cur_speed
-	cur_speed = Clamp(LM.speed, MIN_SPEED, MAX_SPEED) // Sanity check, also ~1 sec delay between each launch move is not very reasonable
+	cur_speed = clamp(LM.speed, MIN_SPEED, MAX_SPEED) // Sanity check, also ~1 sec delay between each launch move is not very reasonable
 	var/delay = 10/cur_speed - 0.5 // scales delay back to deciseconds for when sleep is called
 	var/pass_flags = LM.pass_flags
 

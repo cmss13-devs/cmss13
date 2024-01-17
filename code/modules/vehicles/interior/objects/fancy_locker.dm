@@ -75,3 +75,56 @@
 	if(istype(possible_closet))
 		return possible_closet
 	return
+
+/obj/structure/closet/fancy/insane
+	name = "impossible box"
+
+	interior_map = /datum/map_template/interior/fancy_insanity
+	passengers_slots = 70
+	revivable_dead_slots = 25
+	xenos_slots = 50
+
+	icon = 'icons/obj/structures/crates.dmi'
+	icon_state = "closed_plastic"
+	icon_closed = "closed_plastic"
+	icon_opened = "open_plastic"
+
+/obj/structure/closet/fancy/insane/store_mobs(stored_units)
+	for(var/mob/M in loc)
+		var/succ = interior.enter(M, "insanity")
+		if(!succ)
+			break
+
+/obj/structure/closet/fancy/insane/verb/verb_climbinto()
+	set src in oview(1)
+	set category = "Object"
+	set name = "Climb Into"
+
+	var/mob/user = usr
+
+	if(isobserver(user))
+		interior.enter(user, "insanity")
+		return TRUE
+
+	if(user.is_mob_incapacitated())
+		return FALSE
+	if(!ishuman(user) && !isxeno(user))
+		return FALSE
+
+	if(!opened)
+		to_chat(user, SPAN_WARNING("You cannot climb into [src] while it's closed!"))
+		return FALSE
+
+	user.visible_message(SPAN_NOTICE("[user] begins climbing into [src]."), SPAN_NOTICE("You begin climbing into [src]."))
+	if(!do_after(user, 4 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE, src, INTERRUPT_OUT_OF_RANGE))
+		user.visible_message(SPAN_NOTICE("[user] stops climbing into [src]."), SPAN_NOTICE("You stop climbing into [src]."))
+		return FALSE
+	interior.enter(user, "insanity")
+	return TRUE
+
+/obj/structure/interior_exit/fancy/ladder
+	name = "very long ladder"
+	icon = 'icons/obj/structures/structures.dmi'
+	icon_state = "ladder10"
+	density = FALSE
+	layer = LADDER_LAYER

@@ -30,6 +30,10 @@
 	name = "Fancy Locker"
 	interior_id = "fancylocker"
 
+/datum/map_template/interior/fancy_insanity
+	name = "Fancy Insanity"
+	interior_id = "fancyinsanity"
+
 /datum/map_template/interior/tank
 	name = "Tank"
 	interior_id = "tank"

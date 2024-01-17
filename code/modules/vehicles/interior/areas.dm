@@ -31,3 +31,6 @@
 
 /area/interior/fancylocker
 	name = "closet interior"
+
+/area/interior/fancylocker/insane
+	name = "the impossible box"

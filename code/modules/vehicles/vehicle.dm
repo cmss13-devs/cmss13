@@ -18,15 +18,19 @@
 	var/maxhealth = 100
 	var/fire_dam_coeff = 1
 	var/brute_dam_coeff = 1
-	var/open = 0 //Maint panel
+	///Maint panel
+	var/open = 0
 	var/locked = TRUE
 	var/stat = 0
-	var/powered = 0 //set if vehicle is powered and should use fuel when moving
-	var/move_delay = 1 //set this to limit the speed of the vehicle
+	///set if vehicle is powered and should use fuel when moving
+	var/powered = 0
+	///set this to limit the speed of the vehicle
+	var/move_delay = 1
 	var/buckling_y = 0
 
 	var/obj/item/cell/cell
-	var/charge_use = 5 //set this to adjust the amount of power the vehicle uses per move
+	///set this to adjust the amount of power the vehicle uses per move
+	var/charge_use = 5
 	can_block_movement = TRUE
 
 //-------------------------------------------

@@ -80,8 +80,8 @@
 	..()
 
 /datum/equipment_preset/survivor/uscm/solaris
-	name = "Survivor - Solaris United States Colonial Marines Corps Recruiter"
-	assignment = "USCMC Recruiter"
+	name = "Survivor - Solaris United States Colonial Marine Corps Recruiter"
+	assignment = "USCM Recruiter"
 	paygrade = PAY_SHORT_ME5
 
 /datum/equipment_preset/survivor/uscm/solaris/load_gear(mob/living/carbon/human/new_human)

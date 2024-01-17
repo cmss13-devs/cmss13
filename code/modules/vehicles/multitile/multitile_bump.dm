@@ -341,10 +341,24 @@
 	return TRUE
 
 /obj/structure/machinery/m56d_post/handle_vehicle_bump(obj/vehicle/multitile/V)
-	new /obj/item/device/m56d_post(loc)
 	playsound(V, 'sound/effects/metal_crash.ogg', 20)
 	visible_message(SPAN_DANGER("\The [V] drives over \the [src]!"))
-	qdel(src)
+
+	if(gun_mounted)
+		var/obj/item/device/m56d_gun/HMG = new(loc)
+		transfer_label_component(HMG)
+		HMG.rounds = gun_rounds //Inherent the amount of ammo we had.
+		HMG.has_mount = TRUE
+		if(gun_health)
+			HMG.health = gun_health
+		HMG.update_icon()
+		qdel(src) //Now we clean up the partially constructed gun.
+	else
+		var/obj/item/device/m56d_post/post = new(loc)
+		post.health = health
+		transfer_label_component(post)
+		qdel(src)
+
 	return TRUE
 
 /obj/structure/machinery/m56d_hmg/handle_vehicle_bump(obj/vehicle/multitile/V)

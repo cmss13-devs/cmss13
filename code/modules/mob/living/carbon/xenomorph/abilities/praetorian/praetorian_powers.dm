@@ -738,7 +738,9 @@
 	if (!X.check_state() || X.action_busy)
 		return
 
-	if (!action_cooldown_check() && check_and_use_plasma_owner())
+	if (!action_cooldown_check())
+		return
+	if (!check_and_use_plasma_owner())
 		return
 
 	var/turf/current_turf = get_turf(X)
@@ -750,8 +752,6 @@
 		to_chat(X, SPAN_XENODANGER("We cancel our acid ball."))
 		return
 
-	if (!action_cooldown_check())
-		return
 
 	apply_cooldown()
 

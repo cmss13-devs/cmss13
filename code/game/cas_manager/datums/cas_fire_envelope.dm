@@ -267,6 +267,7 @@
 			relative_dir = 0
 		else
 			relative_dir = Get_Compass_Dir(mob, target_turf)
+		relative_dir = uppertext(dir2text(relative_dir))
 
 		var/ds_identifier = "LARGE BIRD"
 		var/fm_identifier = "SPIT FIRE"

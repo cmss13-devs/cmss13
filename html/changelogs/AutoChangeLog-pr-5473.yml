@@ -1,0 +1,5 @@
+author: "SabreML"
+delete-after: True
+changes:
+  - rscadd: "Added a 'balloon alert' when toggling Crest Defense as a Defender."
+  - code_imp: "Made balloon alerts centre themselves on xeno sprites."

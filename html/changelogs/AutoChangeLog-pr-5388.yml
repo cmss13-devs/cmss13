@@ -1,0 +1,4 @@
+author: "SabreML"
+delete-after: True
+changes:
+  - qol: "Made open TGUI windows transfer over when a xeno player evolves."

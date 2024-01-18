@@ -31,8 +31,6 @@
 			dat += "<a href='byond://?src=\ref[src];add=1'>+</a><BR><BR>"
 	else if(toner)
 		dat += "Please insert paper to copy.<BR><BR>"
-	if(istype(user,/mob/living/silicon))
-		dat += "<a href='byond://?src=\ref[src];aipic=1'>Print photo from database</a><BR><BR>"
 	dat += "Current toner level: [toner]"
 	if(!toner)
 		dat +="<BR>Please insert a new toner cartridge!"
@@ -82,8 +80,6 @@
 				p.update_icon()
 				p.icon_state = "paper_words"
 				p.name = bundle.name
-				p.pixel_y = rand(-8, 8)
-				p.pixel_x = rand(-9, 9)
 				sleep(15*j)
 			updateUsrDialog()
 	else if(href_list["remove"])
@@ -113,27 +109,6 @@
 		if(copies < maxcopies)
 			copies++
 			updateUsrDialog()
-	else if(href_list["aipic"])
-		if(!istype(usr,/mob/living/silicon)) return
-		if(toner >= 5)
-			var/mob/living/silicon/tempAI = usr
-			var/obj/item/device/camera/siliconcam/camera = tempAI.aiCamera
-
-			if(!camera)
-				return
-			var/datum/picture/selection = camera.selectpicture()
-			if (!selection)
-				return
-
-			var/obj/item/photo/p = new /obj/item/photo (src.loc)
-			p.construct(selection)
-			if (p.desc == "")
-				p.desc += "Copied by [tempAI.name]"
-			else
-				p.desc += " - Copied by [tempAI.name]"
-			toner -= 5
-			sleep(15)
-		updateUsrDialog()
 
 /obj/structure/machinery/photocopier/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/paper))

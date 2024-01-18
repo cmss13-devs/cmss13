@@ -28,7 +28,7 @@
 /datum/flameshape/default/handle_fire_spread(obj/flamer_fire/F, fire_spread_amount, burn_dam, fuel_pressure = 1)
 	var/turf/T
 	var/turf/source_turf = get_turf(F.loc)
-	for(var/dirn in cardinal)
+	for(var/dirn in GLOB.cardinals)
 		T = get_step(source_turf, dirn)
 		if(istype(T, /turf/open/space))
 			continue
@@ -64,7 +64,7 @@
 	id = FLAMESHAPE_STAR
 
 /datum/flameshape/star/proc/dirs_to_use()
-	return alldirs
+	return GLOB.alldirs
 
 /datum/flameshape/star/handle_fire_spread(obj/flamer_fire/F, fire_spread_amount, burn_dam, fuel_pressure = 1)
 	fire_spread_amount = Floor(fire_spread_amount * 1.5) // branch 'length'
@@ -102,9 +102,9 @@
 
 /datum/flameshape/star/minor/dirs_to_use()
 	if(prob(50))
-		return cardinal
+		return GLOB.cardinals
 	else
-		return diagonals
+		return GLOB.diagonals
 
 /datum/flameshape/line
 	name = "Line"

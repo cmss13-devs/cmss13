@@ -23,13 +23,25 @@
 #define COMSIG_LIVING_SPEAK "living_speak"
 	#define COMPONENT_OVERRIDE_SPEAK (1<<0)
 
-#define COMSIG_LIVING_APPLY_EFFECT "living_apply_effect"
-#define COMSIG_LIVING_ADJUST_EFFECT "living_adjust_effect"
-#define COMSIG_LIVING_SET_EFFECT "living_set_effect"
-	#define COMPONENT_CANCEL_EFFECT (1<<0)
-
 /// From /obj/structure/proc/do_climb(var/mob/living/user, mods)
 #define COMSIG_LIVING_CLIMB_STRUCTURE "climb_over_structure"
 /// From /mob/living/Collide(): (atom/A)
 #define COMSIG_LIVING_PRE_COLLIDE "living_pre_collide"
 	#define COMPONENT_LIVING_COLLIDE_HANDLED (1<<0)
+
+/// From /mob/living/proc/do_ghost() : (mob/dead/observer/ghost)
+#define COMSIG_LIVING_GHOSTED "living_ghosted"
+
+/// From /mob/living/carbon/human/attack_hand() : (mob/living/carbon/human/attacked_mob)
+#define COMSIG_LIVING_ATTACKHAND_HUMAN "living_attackhand_human"
+
+/// From /obj/item/reagent_container/hypospray/attack() : (obj/item/reagent_container/hypospray/injector)
+#define COMSIG_LIVING_HYPOSPRAY_INJECTED "living_hypospray_injected"
+
+///from base of mob/living/set_buckled(): (new_buckled)
+#define COMSIG_LIVING_SET_BUCKLED "living_set_buckled"
+///from base of mob/living/set_body_position()
+#define COMSIG_LIVING_SET_BODY_POSITION  "living_set_body_position"
+
+/// from base of /mob/living/apply_status_effect(): (datum/status_effect/new_effect)
+#define COMSIG_LIVING_APPLY_EFFECT "living_apply_effect"

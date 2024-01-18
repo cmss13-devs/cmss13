@@ -94,4 +94,4 @@ BSQL_PROTECT_DATUM(/datum/entity/player_note)
 /// Returns all notes associated with a CKEY, structured as a list of strings.
 /proc/get_all_notes(player_ckey)
 	for(var/datum/view_record/note_view/note in DB_VIEW(/datum/view_record/note_view, DB_COMP("player_ckey", DB_EQUALS, player_ckey)))
-		LAZYADDASSOC(., "[note.note_category]", "\"[note.text]\", by [note.admin_ckey] ([note.admin_rank]) on [note.date] ([note.round_id])")
+		LAZYADDASSOCLIST(., "[note.note_category]", "\"[note.text]\", by [note.admin_ckey] ([note.admin_rank]) on [note.date] ([note.round_id])")

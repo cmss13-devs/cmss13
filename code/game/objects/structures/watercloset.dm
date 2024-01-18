@@ -8,6 +8,7 @@
 	density = FALSE
 	anchored = TRUE
 	can_buckle = TRUE
+	buckle_lying = 0
 	var/open = 0 //if the lid is up
 	var/cistern = 0 //if the cistern bit is open
 	var/w_items = 0 //the combined w_class of all the items in the cistern
@@ -150,7 +151,7 @@
 							GM.apply_damage(5, OXY)
 					swirlie = null
 				else
-					user.visible_message(SPAN_DANGER("[user] slams [GM.name] into the [src]!"), SPAN_NOTICE("You slam [GM.name] into the [src]!"))
+					user.visible_message(SPAN_DANGER("[user] slams [GM.name] into [src]!"), SPAN_NOTICE("You slam [GM.name] into [src]!"))
 					GM.apply_damage(8, BRUTE)
 			else
 				to_chat(user, SPAN_NOTICE("You need a tighter grip."))
@@ -188,7 +189,7 @@
 				if(!GM.loc == get_turf(src))
 					to_chat(user, SPAN_NOTICE("[GM.name] needs to be on the urinal."))
 					return
-				user.visible_message(SPAN_DANGER("[user] slams [GM.name] into the [src]!"), SPAN_NOTICE("You slam [GM.name] into the [src]!"))
+				user.visible_message(SPAN_DANGER("[user] slams [GM.name] into [src]!"), SPAN_NOTICE("You slam [GM.name] into [src]!"))
 				GM.apply_damage(8, BRUTE)
 			else
 				to_chat(user, SPAN_NOTICE("You need a tighter grip."))
@@ -492,11 +493,7 @@
 				user.apply_effect(10, STUN)
 				user.stuttering = 10
 				user.apply_effect(10, WEAKEN)
-				if(isrobot(user))
-					var/mob/living/silicon/robot/R = user
-					R.cell.charge -= 20
-				else
-					B.deductcharge(B.hitcost)
+				B.deductcharge(B.hitcost)
 				user.visible_message( \
 					SPAN_DANGER("[user] was stunned by \his wet [O]!"), \
 					SPAN_DANGER("You were stunned by your wet [O]!"))

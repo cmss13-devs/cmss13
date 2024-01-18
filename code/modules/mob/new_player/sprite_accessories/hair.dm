@@ -734,3 +734,29 @@
 /datum/sprite_accessory/hair/croft
 	name = "Croft"
 	icon_state = "hair_croft"
+
+/datum/sprite_accessory/hair/aviator
+	name = "Aviator"
+	icon_state = "hair_aviator"
+
+/datum/sprite_accessory/hair/gantleponytail
+	name = "Gentle Ponytail"
+	icon_state = "hair_gantleponytail"
+	gender = FEMALE
+
+/datum/sprite_accessory/hair/edgar
+	name = "Edgar"
+	icon_state = "hair_edgar"
+
+/datum/sprite_accessory/hair/emobun
+	name = "Emo Little Bun"
+	icon_state = "hair_emobun"
+
+/datum/sprite_accessory/hair/taper
+	name = "Taper"
+	icon_state = "hair_taper"
+
+/datum/sprite_accessory/hair/gentlebraid
+	name = "Gentle Braid"
+	icon_state = "hair_braid3"
+	gender = FEMALE

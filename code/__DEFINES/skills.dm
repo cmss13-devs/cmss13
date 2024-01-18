@@ -8,6 +8,7 @@
 #define SKILL_ENGINEER "engineer"
 #define SKILL_CONSTRUCTION "construction"
 #define SKILL_LEADERSHIP "leadership"
+#define SKILL_OVERWATCH "overwatch"
 #define SKILL_MEDICAL "medical"
 #define SKILL_SURGERY "surgery"
 #define SKILL_RESEARCH "research"
@@ -41,6 +42,8 @@
 #define SKILL_SPEC_DEFAULT 0
 /// Is trained to use specialist gear, but hasn't picked a kit.
 #define SKILL_SPEC_TRAINED 1
+/// Is trained to use specialist gear & HAS picked a kit. (Functionally same as SPEC_ROCKET)
+#define SKILL_SPEC_KITTED 2
 /// Can use RPG
 #define SKILL_SPEC_ROCKET 2
 /// Can use thermal cloaks and custom M4RA rifle
@@ -134,13 +137,17 @@
 #define SKILL_POWERLOADER_MASTER 2 //Pilot, CT, Req, OT, CE
 #define SKILL_POWERLOADER_MAX 2
 
-
 //leadership skill
 #define SKILL_LEAD_NOVICE 0 //Anyone but the above. Using SL items is possible but painfully slow
 #define SKILL_LEAD_TRAINED 1 //SL
 #define SKILL_LEAD_EXPERT 2 //SOs
 #define SKILL_LEAD_MASTER 3 //XO, CO
 #define SKILL_LEAD_MAX 3
+
+//overwatch skill
+#define SKILL_OVERWATCH_DEFAULT 0
+#define SKILL_OVERWATCH_TRAINED 1 //Allows use of overwatch consoles
+#define SKILL_OVERWATCH_MAX 1
 
 
 //JTAC skill

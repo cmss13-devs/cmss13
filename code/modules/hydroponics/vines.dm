@@ -124,7 +124,6 @@
 			if(V && (V.stat != DEAD) && (V.buckled != src)) // If mob exists and is not dead or captured.
 				V.buckled = src
 				V.forceMove(src.loc)
-				V.update_canmove()
 				src.buckled_mob = V
 				to_chat(V, SPAN_DANGER("The vines [pick("wind", "tangle", "tighten")] around you!"))
 
@@ -168,10 +167,10 @@
 
 	// Update bioluminescence.
 	if(seed.biolum)
-		SetLuminosity(1+round(seed.potency/10))
+		set_light(1+round(seed.potency/10))
 		return
 	else
-		SetLuminosity(0)
+		set_light(0)
 
 	// Update flower/product overlay.
 	overlays.Cut()
@@ -182,18 +181,18 @@
 
 		if(harvest)
 			var/image/fruit_overlay = image('icons/obj/structures/machinery/hydroponics.dmi',"")
-			if(seed.product_colour)
-				fruit_overlay.color = seed.product_colour
+			if(seed.product_color)
+				fruit_overlay.color = seed.product_color
 			overlays += fruit_overlay
 
 		if(seed.flowers)
 			var/image/flower_overlay = image('icons/obj/structures/machinery/hydroponics.dmi',"[seed.flower_icon]")
-			if(seed.flower_colour)
-				flower_overlay.color = seed.flower_colour
+			if(seed.flower_color)
+				flower_overlay.color = seed.flower_color
 			overlays += flower_overlay
 
 /obj/effect/plantsegment/proc/spread()
-	var/direction = pick(cardinal)
+	var/direction = pick(GLOB.cardinals)
 	var/step = get_step(src,direction)
 	if(istype(step,/turf/open/floor))
 		var/turf/open/floor/F = step
@@ -252,11 +251,7 @@
 
 	var/area/A = T.loc
 	if(A)
-		var/light_available
-		if(A.lighting_use_dynamic)
-			light_available = max(0,min(10,T.lighting_lumcount)-5)
-		else
-			light_available =  5
+		var/light_available = max(0,min(10,T.dynamic_lumcount)-5)
 		if(abs(light_available - seed.ideal_light) > seed.light_tolerance)
 			die()
 			return

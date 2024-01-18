@@ -32,7 +32,7 @@
 
 	for(var/mob/living/carbon/xenomorph/X as anything in GLOB.living_xeno_list)
 		var/area/A = get_area(X)
-		if(is_admin_level(X.z) && (!A || !(A.flags_area & AREA_ALLOW_XENO_JOIN)) || X.aghosted) continue //xenos on admin z level and aghosted ones don't count
+		if(should_block_game_interaction(X) && (!A || !(A.flags_area & AREA_ALLOW_XENO_JOIN)) || X.aghosted) continue //xenos on admin z level and aghosted ones don't count
 		if(istype(X) && !X.client)
 			if((X.away_timer >= XENO_LEAVE_TIMER) || (islarva(X) && X.away_timer >= XENO_LEAVE_TIMER_LARVA))
 				available_xenos += X
@@ -52,12 +52,12 @@
 	if(!xeno_candidate)
 		return FALSE
 
-	if(RoleAuthority.castes_by_name[userInput])
+	if(GLOB.RoleAuthority.castes_by_name[userInput])
 		if(!(userInput in xeno_pool))
 			to_chat(xeno_candidate, SPAN_WARNING("The caste type you chose was occupied by someone else."))
 			return FALSE
 		var/spawn_loc = pick(xeno_spawns)
-		var/xeno_type = RoleAuthority.get_caste_by_text(userInput)
+		var/xeno_type = GLOB.RoleAuthority.get_caste_by_text(userInput)
 		var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(spawn_loc)
 		if(new_xeno.hive.construction_allowed == NORMAL_XENO)
 			new_xeno.hive.construction_allowed = XENO_QUEEN

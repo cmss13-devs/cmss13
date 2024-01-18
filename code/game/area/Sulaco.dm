@@ -117,7 +117,7 @@
 //DISTRESS SHUTTLES
 
 /area/shuttle/distress
-	lighting_use_dynamic = FALSE
+	base_lighting_alpha = 255
 	unique = TRUE
 
 /area/shuttle/distress/start

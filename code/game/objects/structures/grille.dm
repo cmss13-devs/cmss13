@@ -101,12 +101,12 @@
 
 
 /obj/structure/grille/BlockedPassDirs(atom/movable/mover, target_dir)
-	if(istype(mover, /obj/item/projectile) && prob(90))
+	if(istype(mover, /obj/projectile) && prob(90))
 		return NO_BLOCKED_MOVEMENT
 
 	return ..()
 
-/obj/structure/grille/bullet_act(obj/item/projectile/Proj)
+/obj/structure/grille/bullet_act(obj/projectile/Proj)
 
 	//Tasers and the like should not damage grilles.
 	if(Proj.ammo.damage_type == HALLOSS)
@@ -166,7 +166,7 @@
 			if (ST.use(1))
 				var/obj/structure/window/WD = new wtype(loc)
 				WD.set_constructed_window(dir_to_set)
-				to_chat(user, SPAN_NOTICE("You place the [WD] on [src]."))
+				to_chat(user, SPAN_NOTICE("You place [WD] on [src]."))
 		return
 //window placing end
 

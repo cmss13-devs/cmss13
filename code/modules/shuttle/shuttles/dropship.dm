@@ -1,6 +1,10 @@
 /obj/docking_port/mobile/marine_dropship
 	width = 11
 	height = 21
+
+	dwidth = 5
+	dheight = 10
+
 	preferred_direction = SOUTH
 	callTime = DROPSHIP_TRANSIT_DURATION
 	rechargeTime = SHUTTLE_RECHARGE
@@ -26,6 +30,7 @@
 	var/automated_delay
 	var/automated_timer
 
+
 /obj/docking_port/mobile/marine_dropship/Initialize(mapload)
 	. = ..()
 	door_control = new()
@@ -39,14 +44,27 @@
 				if("aft_door")
 					door_control.add_door(air, "aft")
 
+	RegisterSignal(src, COMSIG_DROPSHIP_ADD_EQUIPMENT, PROC_REF(add_equipment))
+	RegisterSignal(src, COMSIG_DROPSHIP_REMOVE_EQUIPMENT, PROC_REF(remove_equipment))
+
 /obj/docking_port/mobile/marine_dropship/Destroy(force)
 	. = ..()
 	qdel(door_control)
+	UnregisterSignal(src, COMSIG_DROPSHIP_ADD_EQUIPMENT)
+	UnregisterSignal(src, COMSIG_DROPSHIP_REMOVE_EQUIPMENT)
 
 /obj/docking_port/mobile/marine_dropship/proc/send_for_flyby()
 	in_flyby = TRUE
 	var/obj/docking_port/stationary/dockedAt = get_docked()
 	SSshuttle.moveShuttle(src.id, dockedAt.id, TRUE)
+
+/obj/docking_port/mobile/marine_dropship/proc/add_equipment(obj/docking_port/mobile/marine_dropship/dropship, obj/structure/dropship_equipment/equipment)
+	SIGNAL_HANDLER
+	equipments += equipment
+
+/obj/docking_port/mobile/marine_dropship/proc/remove_equipment(obj/docking_port/mobile/marine_dropship/dropship, obj/structure/dropship_equipment/equipment)
+	SIGNAL_HANDLER
+	equipments -= equipment
 
 /obj/docking_port/mobile/marine_dropship/proc/get_door_data()
 	return door_control.get_data()
@@ -96,17 +114,19 @@
 
 			var/name = "Unidentified Lifesigns"
 			var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
-			shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg')
+			shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg', ares_logging = ARES_LOG_SECURITY)
 			set_security_level(SEC_LEVEL_RED)
 			return
 
 /obj/docking_port/mobile/marine_dropship/alamo
 	name = "Alamo"
 	id = DROPSHIP_ALAMO
+	preferred_direction = SOUTH
 
 /obj/docking_port/mobile/marine_dropship/normandy
 	name = "Normandy"
 	id = DROPSHIP_NORMANDY
+	preferred_direction = SOUTH
 
 /obj/docking_port/mobile/marine_dropship/check()
 	. = ..()
@@ -157,7 +177,9 @@
 	dir = NORTH
 	width = 11
 	height = 21
-	dwidth = 1
+	dwidth = 5
+	dheight = 10
+
 	var/list/landing_lights = list()
 	var/auto_open = FALSE
 	var/landing_lights_on = FALSE
@@ -228,8 +250,8 @@
 /obj/docking_port/stationary/marine_dropship/on_departure(obj/docking_port/mobile/departing_shuttle)
 	. = ..()
 	turn_off_landing_lights()
-	var/obj/docking_port/mobile/marine_dropship/shuttle = departing_shuttle
-	for(var/obj/structure/dropship_equipment/eq as anything in shuttle.equipments)
+	var/obj/docking_port/mobile/marine_dropship/dropship = departing_shuttle
+	for(var/obj/structure/dropship_equipment/eq as anything in dropship.equipments)
 		eq.on_launch()
 
 /obj/docking_port/stationary/marine_dropship/lz1
@@ -256,7 +278,6 @@
 
 /obj/docking_port/stationary/marine_dropship/crash_site
 	auto_open = TRUE
-	dwidth = 1
 
 /obj/docking_port/stationary/marine_dropship/crash_site/on_prearrival(obj/docking_port/mobile/arriving_shuttle)
 	. = ..()
@@ -279,6 +300,7 @@
 			affected_mob.apply_effect(3, WEAKEN)
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_HIJACK_LANDED)
 
 /datum/map_template/shuttle/alamo
 	name = "Alamo"

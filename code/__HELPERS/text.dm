@@ -30,6 +30,11 @@
 		text = replacetext(text, char, repl_chars[char])
 	return text
 
+///Helper for only alphanumeric characters plus common punctuation, spaces, underscore and hyphen _ -.
+/proc/replace_non_alphanumeric_plus(text)
+	var/regex/alphanumeric = regex(@{"[^a-z0-9 ,.?!\-_&]"}, "gi")
+	return alphanumeric.Replace(text, "")
+
 /proc/readd_quotes(text)
 	var/list/repl_chars = list("&#34;" = "\"", "&#39;" = "'")
 	for(var/char in repl_chars)
@@ -341,8 +346,8 @@
 	// ---Begin URL caching.
 	var/list/urls = list()
 	var/i = 1
-	while (url_find_lazy.Find_char(message))
-		urls["\ref[urls]-[i]"] = url_find_lazy.match
+	while (GLOB.url_find_lazy.Find_char(message))
+		urls["\ref[urls]-[i]"] = GLOB.url_find_lazy.match
 		i++
 
 	for (var/ref in urls)
@@ -350,9 +355,9 @@
 	// ---End URL caching
 
 	var/regex/tag_markup
-	for (var/tag in (markup_tags - ignore_tags))
-		tag_markup = markup_regex[tag]
-		message = tag_markup.Replace_char(message, "$2[markup_tags[tag][1]]$3[markup_tags[tag][2]]$5")
+	for (var/tag in (GLOB.markup_tags - ignore_tags))
+		tag_markup = GLOB.markup_regex[tag]
+		message = tag_markup.Replace_char(message, "$2[GLOB.markup_tags[tag][1]]$3[GLOB.markup_tags[tag][2]]$5")
 
 	// ---Unload URL cache
 	for (var/ref in urls)

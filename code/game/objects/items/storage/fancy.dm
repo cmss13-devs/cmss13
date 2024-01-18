@@ -71,7 +71,7 @@
 	storage_slots = 5
 	throwforce = 2
 	flags_equip_slot = SLOT_WAIST
-
+	can_hold = list(/obj/item/tool/candle)
 
 /obj/item/storage/fancy/candle_box/fill_preset_inventory()
 	for(var/i=1; i <= storage_slots; i++)
@@ -103,11 +103,11 @@
 	overlays = list() //resets list
 	overlays += image('icons/obj/items/crayons.dmi',"crayonbox")
 	for(var/obj/item/toy/crayon/crayon in contents)
-		overlays += image('icons/obj/items/crayons.dmi',crayon.colourName)
+		overlays += image('icons/obj/items/crayons.dmi',crayon.colorName)
 
 /obj/item/storage/fancy/crayons/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/toy/crayon))
-		switch(W:colourName)
+		switch(W:colorName)
 			if("mime")
 				to_chat(usr, "This crayon is too sad to be contained in this box.")
 				return
@@ -302,7 +302,7 @@
 		if(istype(W) && !W.heat_source && !W.burnt)
 			if(prob(burn_chance))
 				to_chat(user, SPAN_WARNING("\The [W] lights, but you burn your hand in the process! Ouch!"))
-				user.apply_damage(3, BRUTE, pick("r_hand", "l_hand"))
+				user.apply_damage(3, BURN, pick("r_hand", "l_hand"))
 				if((user.pain.feels_pain) && prob(25))
 					user.emote("scream")
 				W.light_match()

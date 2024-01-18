@@ -34,7 +34,7 @@
 		var/datum/internal_organ/brain/sponge = internal_organs_by_name["brain"]
 		if(sponge)
 			sponge.take_damage(amount)
-			sponge.damage = Clamp(sponge.damage, 0, maxHealth*2)
+			sponge.damage = clamp(sponge.damage, 0, maxHealth*2)
 			brainloss = sponge.damage
 		else
 			brainloss = 200
@@ -49,7 +49,7 @@
 	if(species.has_organ["brain"])
 		var/datum/internal_organ/brain/sponge = internal_organs_by_name["brain"]
 		if(sponge)
-			sponge.damage = Clamp(amount, 0, maxHealth*2)
+			sponge.damage = clamp(amount, 0, maxHealth*2)
 			brainloss = sponge.damage
 		else
 			brainloss = 200
@@ -287,7 +287,6 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 		apply_damage(burn, BURN, picked, sharp, edge)
 	UpdateDamageIcon()
 	updatehealth()
-	speech_problem_flag = TRUE
 
 
 //Heal MANY limbs, in random order
@@ -308,7 +307,7 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 
 		parts -= picked
 	updatehealth()
-	speech_problem_flag = TRUE
+
 	if(update) UpdateDamageIcon()
 
 // damage MANY limbs, in random order
@@ -372,7 +371,7 @@ This function restores all limbs.
 /mob/living/carbon/human/get_limb(zone)
 	RETURN_TYPE(/obj/limb)
 	zone = check_zone(zone)
-	return (locate(limb_types_by_name[zone]) in limbs)
+	return (locate(GLOB.limb_types_by_name[zone]) in limbs)
 
 
 /mob/living/carbon/human/apply_armoured_damage(damage = 0, armour_type = ARMOR_MELEE, damage_type = BRUTE, def_zone = null, penetration = 0, armour_break_pr_pen = 0, armour_break_flat = 0)
@@ -514,11 +513,3 @@ This function restores all limbs.
 		damage_to_deal *= 0.25 // Massively reduced effectiveness
 
 	stamina.apply_damage(damage_to_deal)
-
-/mob/living/carbon/human/knocked_out_start()
-	..()
-	sound_environment_override = SOUND_ENVIRONMENT_PSYCHOTIC
-
-/mob/living/carbon/human/knocked_out_callback()
-	. = ..()
-	sound_environment_override = SOUND_ENVIRONMENT_NONE

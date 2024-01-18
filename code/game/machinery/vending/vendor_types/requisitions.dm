@@ -8,7 +8,7 @@
 	icon_state = "req_guns"
 	req_access = list(ACCESS_MARINE_CARGO)
 	vendor_theme = VENDOR_THEME_USCM
-	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND | VEND_LOAD_AMMO_BOXES
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND | VEND_LOAD_AMMO_BOXES | VEND_STOCK_DYNAMIC
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/vend_fail()
 	return
@@ -19,23 +19,23 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/populate_product_list(scale)
 	listed_products = list(
 		list("PRIMARY FIREARMS", -1, null, null),
-		list("M37A2 Pump Shotgun", round(scale * 10), /obj/item/weapon/gun/shotgun/pump, VENDOR_ITEM_REGULAR),
-		list("M39 Submachinegun", round(scale * 15), /obj/item/weapon/gun/smg/m39, VENDOR_ITEM_REGULAR),
-		list("M41A Pulse Rifle MK2", round(scale * 20), /obj/item/weapon/gun/rifle/m41a, VENDOR_ITEM_REGULAR),
+		list("M37A2 Pump Shotgun", round(scale * 30), /obj/item/weapon/gun/shotgun/pump, VENDOR_ITEM_REGULAR),
+		list("M39 Submachinegun", round(scale * 60), /obj/item/weapon/gun/smg/m39, VENDOR_ITEM_REGULAR),
+		list("M41A Pulse Rifle MK2", round(scale * 60), /obj/item/weapon/gun/rifle/m41a, VENDOR_ITEM_REGULAR),
 		list("M4RA Battle Rifle", round(scale * 20), /obj/item/weapon/gun/rifle/m4ra, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARMS", -1, null, null),
-		list("88 Mod 4 Combat Pistol", round(scale * 15), /obj/item/weapon/gun/pistol/mod88, VENDOR_ITEM_REGULAR),
-		list("M44 Combat Revolver", round(scale * 10), /obj/item/weapon/gun/revolver/m44, VENDOR_ITEM_REGULAR),
-		list("M4A3 Service Pistol", round(scale * 20), /obj/item/weapon/gun/pistol/m4a3, VENDOR_ITEM_REGULAR),
-		list("M82F Flare Gun", round(scale * 8), /obj/item/weapon/gun/flare, VENDOR_ITEM_REGULAR),
+		list("88 Mod 4 Combat Pistol", round(scale * 50), /obj/item/weapon/gun/pistol/mod88, VENDOR_ITEM_REGULAR),
+		list("M44 Combat Revolver", round(scale * 50), /obj/item/weapon/gun/revolver/m44, VENDOR_ITEM_REGULAR),
+		list("M4A3 Service Pistol", round(scale * 50), /obj/item/weapon/gun/pistol/m4a3, VENDOR_ITEM_REGULAR),
+		list("M82F Flare Gun", round(scale * 20), /obj/item/weapon/gun/flare, VENDOR_ITEM_REGULAR),
 
 		list("RESTRICTED FIREARMS", -1, null, null),
 		list("VP78 Pistol", round(scale * 4), /obj/item/storage/box/guncase/vp78, VENDOR_ITEM_REGULAR),
 		list("SU-6 Smart Pistol", round(scale * 3), /obj/item/storage/box/guncase/smartpistol, VENDOR_ITEM_REGULAR),
 		list("MOU-53 Shotgun", round(scale * 2), /obj/item/storage/box/guncase/mou53, VENDOR_ITEM_REGULAR),
 		list("XM88 Heavy Rifle", round(scale * 3), /obj/item/storage/box/guncase/xm88, VENDOR_ITEM_REGULAR),
-		list("M41AE2 Heavy Pulse Rifle", round(scale * 2.5), /obj/item/storage/box/guncase/lmg, VENDOR_ITEM_REGULAR),
+		list("M41AE2 Heavy Pulse Rifle", 2.5, /obj/item/storage/box/guncase/lmg, VENDOR_ITEM_REGULAR),
 		list("M41A Pulse Rifle MK1", round(scale * 3), /obj/item/storage/box/guncase/m41aMK1, VENDOR_ITEM_REGULAR),
 		list("M56D Heavy Machine Gun", round(scale * 2), /obj/item/storage/box/guncase/m56d, VENDOR_ITEM_REGULAR),
 		list("M2C Heavy Machine Gun", round(scale * 2), /obj/item/storage/box/guncase/m2c, VENDOR_ITEM_REGULAR),
@@ -50,7 +50,7 @@
 		list("M40 HPDP White Phosphorus Smoke Grenade", round(scale * 4), /obj/item/explosive/grenade/phosphorus, VENDOR_ITEM_REGULAR),
 		list("M40 HSDP Smoke Grenade", round(scale * 5), /obj/item/explosive/grenade/smokebomb, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-Frag Airburst Grenade", round(scale * 4), /obj/item/explosive/grenade/high_explosive/airburst, VENDOR_ITEM_REGULAR),
-		list("M74 AGM-Icendiary Airburst Grenade", round(scale * 4), /obj/item/explosive/grenade/incendiary/airburst, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-Incendiary Airburst Grenade", round(scale * 4), /obj/item/explosive/grenade/incendiary/airburst, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-Smoke Airburst Grenade", round(scale * 4), /obj/item/explosive/grenade/smokebomb/airburst, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-Star Shell", round(scale * 2), /obj/item/explosive/grenade/high_explosive/airburst/starshell, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-Hornet Shell", round(scale * 4), /obj/item/explosive/grenade/high_explosive/airburst/hornet_shell, VENDOR_ITEM_REGULAR),
@@ -91,9 +91,8 @@
 		list("Rappel Harness", round(scale * 20), /obj/item/rappel_harness, VENDOR_ITEM_REGULAR),
 
 		list("POUCHES", -1, null, null),
-		list("Autoinjector Pouch", round(scale * 2), /obj/item/storage/pouch/autoinjector, VENDOR_ITEM_REGULAR),
-		list("Medkit Pouch", round(scale * 2), /obj/item/storage/pouch/medkit, VENDOR_ITEM_REGULAR),
-		list("Medical Pouch", round(scale * 2), /obj/item/storage/pouch/medical, VENDOR_ITEM_REGULAR),
+		list("Autoinjector Pouch", round(scale * 1), /obj/item/storage/pouch/autoinjector, VENDOR_ITEM_REGULAR),
+		list("Medical Kit Pouch", round(scale * 2), /obj/item/storage/pouch/medkit, VENDOR_ITEM_REGULAR),
 		list("First-Aid Pouch (Full)", round(scale * 5), /obj/item/storage/pouch/firstaid/full, VENDOR_ITEM_REGULAR),
 		list("First Responder Pouch", round(scale * 2), /obj/item/storage/pouch/first_responder, VENDOR_ITEM_REGULAR),
 		list("Syringe Pouch", round(scale * 2), /obj/item/storage/pouch/syringe, VENDOR_ITEM_REGULAR),
@@ -104,7 +103,7 @@
 		list("Flare Pouch (Full)", round(scale * 5), /obj/item/storage/pouch/flare/full, VENDOR_ITEM_REGULAR),
 		list("Document Pouch", round(scale * 2), /obj/item/storage/pouch/document/small, VENDOR_ITEM_REGULAR),
 		list("Sling Pouch", round(scale * 2), /obj/item/storage/pouch/sling, VENDOR_ITEM_REGULAR),
-		list("Machete Pouch (Full)", round(scale * 4), /obj/item/storage/pouch/machete/full, VENDOR_ITEM_REGULAR),
+		list("Machete Pouch (Full)", 1, /obj/item/storage/pouch/machete/full, VENDOR_ITEM_REGULAR),
 		list("Bayonet Pouch", round(scale * 2), /obj/item/storage/pouch/bayonet, VENDOR_ITEM_REGULAR),
 		list("Medium General Pouch", round(scale * 2), /obj/item/storage/pouch/general/medium, VENDOR_ITEM_REGULAR),
 		list("Magazine Pouch", round(scale * 5), /obj/item/storage/pouch/magazine, VENDOR_ITEM_REGULAR),
@@ -112,9 +111,9 @@
 		list("Sidearm Pouch", round(scale * 5), /obj/item/storage/pouch/pistol, VENDOR_ITEM_REGULAR),
 		list("Large Pistol Magazine Pouch", round(scale * 5), /obj/item/storage/pouch/magazine/pistol/large, VENDOR_ITEM_REGULAR),
 		list("Fuel Tank Strap Pouch", round(scale * 4), /obj/item/storage/pouch/flamertank, VENDOR_ITEM_REGULAR),
-		list("Large General Pouch", round(scale * 2), /obj/item/storage/pouch/general/large, VENDOR_ITEM_REGULAR),
-		list("Large Magazine Pouch", round(scale * 2), /obj/item/storage/pouch/magazine/large, VENDOR_ITEM_REGULAR),
-		list("Large Shotgun Shell Pouch", round(scale * 2), /obj/item/storage/pouch/shotgun/large, VENDOR_ITEM_REGULAR),
+		list("Large General Pouch", round(scale * 1), /obj/item/storage/pouch/general/large, VENDOR_ITEM_REGULAR),
+		list("Large Magazine Pouch", round(scale * 1), /obj/item/storage/pouch/magazine/large, VENDOR_ITEM_REGULAR),
+		list("Large Shotgun Shell Pouch", round(scale * 1), /obj/item/storage/pouch/shotgun/large, VENDOR_ITEM_REGULAR),
 
 		list("MISCELLANEOUS", -1, null, null),
 		list("Combat Flashlight", round(scale * 5), /obj/item/device/flashlight/combat, VENDOR_ITEM_REGULAR),
@@ -136,7 +135,7 @@
 		list("Sentry Gun Network Laptop", 4, /obj/item/device/sentry_computer, VENDOR_ITEM_REGULAR),
 		list("JTAC Pamphlet", round(scale * 1), /obj/item/pamphlet/skill/jtac, VENDOR_ITEM_REGULAR),
 		list("Engineering Pamphlet", round(scale * 1), /obj/item/pamphlet/skill/engineer, VENDOR_ITEM_REGULAR),
-		list("Powerloader Certification", round(scale * 0.1) + 1, /obj/item/pamphlet/skill/powerloader, VENDOR_ITEM_REGULAR),
+		list("Powerloader Certification", 0.75, /obj/item/pamphlet/skill/powerloader, VENDOR_ITEM_REGULAR),
 		list("Spare PDT/L Battle Buddy Kit", round(scale * 4), /obj/item/storage/box/pdt_kit, VENDOR_ITEM_REGULAR),
 		list("W-Y brand rechargeable mini-battery", round(scale * 3), /obj/item/cell/crap, VENDOR_ITEM_REGULAR)
 		)
@@ -175,25 +174,11 @@
 
 //Special cargo-specific vendor with vending offsets
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo
-	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_LOAD_AMMO_BOXES //We want to vend to turf not hand, since we are in requisitions
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_LOAD_AMMO_BOXES | VEND_STOCK_DYNAMIC //We want to vend to turf not hand, since we are in requisitions
+	vend_dir = WEST
+	vend_dir_whitelist = list(NORTH, SOUTH)
 
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo/get_appropriate_vend_turf(mob/living/carbon/human/H)
-	var/turf/turf_to_vent_to
-	if(vend_x_offset != 0 || vend_y_offset != 0) //this will allow to avoid code below that suits only Almayer.
-		turf_to_vent_to = locate(x + vend_x_offset, y + vend_y_offset, z)
-	else
-		turf_to_vent_to = get_turf(get_step(src, NORTH))
-		if(H.loc == turf_to_vent_to)
-			turf_to_vent_to = get_turf(get_step(H.loc, WEST))
-		else
-			turf_to_vent_to = get_turf(get_step(src, SOUTH))
-			if(H.loc == turf_to_vent_to)
-				turf_to_vent_to = get_turf(get_step(H.loc, WEST))
-			else
-				turf_to_vent_to = H.loc
-	return turf_to_vent_to
-
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/blend
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo/blend
 	icon_state = "req_guns_wall"
 	tiles_with = list(
 		/obj/structure/window/framed/almayer,
@@ -209,7 +194,9 @@
 	icon_state = "req_ammo"
 	req_access = list(ACCESS_MARINE_CARGO)
 	vendor_theme = VENDOR_THEME_USCM
-	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND | VEND_LOAD_AMMO_BOXES
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND | VEND_LOAD_AMMO_BOXES | VEND_STOCK_DYNAMIC
+	vend_dir = WEST
+	vend_dir_whitelist = list(SOUTHWEST, NORTHWEST)
 
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/vend_fail()
 	return
@@ -220,48 +207,48 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/populate_product_list(scale)
 	listed_products = list(
 		list("REGULAR AMMUNITION", -1, null, null),
-		list("Box Of Buckshot Shells", round(scale * 2), /obj/item/ammo_magazine/shotgun/buckshot, VENDOR_ITEM_REGULAR),
-		list("Box Of Flechette Shells", round(scale * 2), /obj/item/ammo_magazine/shotgun/flechette, VENDOR_ITEM_REGULAR),
-		list("Box Of Shotgun Slugs", round(scale * 2), /obj/item/ammo_magazine/shotgun/slugs, VENDOR_ITEM_REGULAR),
-		list("M4RA Magazine (10x24mm)", round(scale * 20.8), /obj/item/ammo_magazine/rifle/m4ra, VENDOR_ITEM_REGULAR),
-		list("M41A MK2 Magazine (10x24mm)", round(scale * 18), /obj/item/ammo_magazine/rifle, VENDOR_ITEM_REGULAR),
-		list("M39 HV Magazine (10x20mm)", round(scale * 17.1), /obj/item/ammo_magazine/smg/m39, VENDOR_ITEM_REGULAR),
-		list("M44 Speed Loader (.44)", round(scale * 18.1), /obj/item/ammo_magazine/revolver, VENDOR_ITEM_REGULAR),
-		list("M4A3 Magazine (9mm)", round(scale * 20.5), /obj/item/ammo_magazine/pistol, VENDOR_ITEM_REGULAR),
+		list("Box Of Buckshot Shells", round(scale * 20), /obj/item/ammo_magazine/shotgun/buckshot, VENDOR_ITEM_REGULAR),
+		list("Box Of Flechette Shells", round(scale * 8), /obj/item/ammo_magazine/shotgun/flechette, VENDOR_ITEM_REGULAR),
+		list("Box Of Shotgun Slugs", round(scale * 20), /obj/item/ammo_magazine/shotgun/slugs, VENDOR_ITEM_REGULAR),
+		list("M4RA Magazine (10x24mm)", round(scale * 30), /obj/item/ammo_magazine/rifle/m4ra, VENDOR_ITEM_REGULAR),
+		list("M41A MK2 Magazine (10x24mm)", round(scale * 50), /obj/item/ammo_magazine/rifle, VENDOR_ITEM_REGULAR),
+		list("M39 HV Magazine (10x20mm)", round(scale * 50), /obj/item/ammo_magazine/smg/m39, VENDOR_ITEM_REGULAR),
+		list("M44 Speed Loader (.44)", round(scale * 40), /obj/item/ammo_magazine/revolver, VENDOR_ITEM_REGULAR),
+		list("M4A3 Magazine (9mm)", round(scale * 50), /obj/item/ammo_magazine/pistol, VENDOR_ITEM_REGULAR),
 
 		list("ARMOR-PIERCING AMMUNITION", -1, null, null),
-		list("88 Mod 4 AP Magazine (9mm)", round(scale * 16.7), /obj/item/ammo_magazine/pistol/mod88, VENDOR_ITEM_REGULAR),
-		list("M4RA AP Magazine (10x24mm)", round(scale * 15.7), /obj/item/ammo_magazine/rifle/m4ra/ap, VENDOR_ITEM_REGULAR),
-		list("M39 AP Magazine (10x20mm)", round(scale * 11.9), /obj/item/ammo_magazine/smg/m39/ap, VENDOR_ITEM_REGULAR),
-		list("M41A MK2 AP Magazine (10x24mm)", round(scale * 10.5), /obj/item/ammo_magazine/rifle/ap, VENDOR_ITEM_REGULAR),
+		list("88 Mod 4 AP Magazine (9mm)", round(scale * 50), /obj/item/ammo_magazine/pistol/mod88, VENDOR_ITEM_REGULAR),
+		list("M4RA AP Magazine (10x24mm)", round(scale * 16), /obj/item/ammo_magazine/rifle/m4ra/ap, VENDOR_ITEM_REGULAR),
+		list("M39 AP Magazine (10x20mm)", round(scale * 12), /obj/item/ammo_magazine/smg/m39/ap, VENDOR_ITEM_REGULAR),
+		list("M41A MK2 AP Magazine (10x24mm)", round(scale * 10), /obj/item/ammo_magazine/rifle/ap, VENDOR_ITEM_REGULAR),
 		list("M4A3 AP Magazine (9mm)", round(scale * 2), /obj/item/ammo_magazine/pistol/ap, VENDOR_ITEM_REGULAR),
 
 		list("EXTENDED AMMUNITION", -1, null, null),
-		list("M39 Extended Magazine (10x20mm)", round(scale * 9.5) + 3, /obj/item/ammo_magazine/smg/m39/extended, VENDOR_ITEM_REGULAR),
-		list("M41A MK2 Extended Magazine (10x24mm)", round(scale * 8.1), /obj/item/ammo_magazine/rifle/extended, VENDOR_ITEM_REGULAR),
+		list("M39 Extended Magazine (10x20mm)", round(scale * 10), /obj/item/ammo_magazine/smg/m39/extended, VENDOR_ITEM_REGULAR),
+		list("M41A MK2 Extended Magazine (10x24mm)", round(scale * 8), /obj/item/ammo_magazine/rifle/extended, VENDOR_ITEM_REGULAR),
 
 		list("SPECIAL AMMUNITION", -1, null, null),
-		list("M56 Battery", 4, /obj/item/smartgun_battery, VENDOR_ITEM_REGULAR),
+		list("M56 DV9 Battery", 4, /obj/item/smartgun_battery, VENDOR_ITEM_REGULAR),
 		list("M56 Smartgun Drum", 4, /obj/item/ammo_magazine/smartgun, VENDOR_ITEM_REGULAR),
-		list("M44 Heavy Speed Loader (.44)", round(scale * 10.5), /obj/item/ammo_magazine/revolver/heavy, VENDOR_ITEM_REGULAR),
-		list("M44 Marksman Speed Loader (.44)", round(scale * 5.7), /obj/item/ammo_magazine/revolver/marksman, VENDOR_ITEM_REGULAR),
+		list("M44 Heavy Speed Loader (.44)", 10, /obj/item/ammo_magazine/revolver/heavy, VENDOR_ITEM_REGULAR),
+		list("M44 Marksman Speed Loader (.44)", 6, /obj/item/ammo_magazine/revolver/marksman, VENDOR_ITEM_REGULAR),
 		list("M4A3 HP Magazine (9mm)", round(scale * 2), /obj/item/ammo_magazine/pistol/hp, VENDOR_ITEM_REGULAR),
 		list("M41AE2 Holo Target Rounds (10x24mm)", round(scale * 2), /obj/item/ammo_magazine/rifle/lmg/holo_target, VENDOR_ITEM_REGULAR),
 
 		list("RESTRICTED FIREARM AMMUNITION", -1, null, null),
-		list("VP78 Magazine", round(scale * 11.2), /obj/item/ammo_magazine/pistol/vp78, VENDOR_ITEM_REGULAR),
-		list("SU-6 Smartpistol Magazine (.45)", round(scale * 12,8), /obj/item/ammo_magazine/pistol/smart, VENDOR_ITEM_REGULAR),
+		list("VP78 Magazine", 11, /obj/item/ammo_magazine/pistol/vp78, VENDOR_ITEM_REGULAR),
+		list("SU-6 Smartpistol Magazine (.45)", 13, /obj/item/ammo_magazine/pistol/smart, VENDOR_ITEM_REGULAR),
 		list("M240 Incinerator Tank", round(scale * 3), /obj/item/ammo_magazine/flamer_tank, VENDOR_ITEM_REGULAR),
 		list("M41AE2 Box Magazine (10x24mm)", round(scale * 3), /obj/item/ammo_magazine/rifle/lmg, VENDOR_ITEM_REGULAR),
-		list("M41A MK1 Magazine (10x24mm)", round(scale * 4.5), /obj/item/ammo_magazine/rifle/m41aMK1, VENDOR_ITEM_REGULAR),
+		list("M41A MK1 Magazine (10x24mm)", 4.5, /obj/item/ammo_magazine/rifle/m41aMK1, VENDOR_ITEM_REGULAR),
 		list("M41A MK1 AP Magazine (10x24mm)", round(scale * 2), /obj/item/ammo_magazine/rifle/m41aMK1/ap, VENDOR_ITEM_REGULAR),
 		list("M56D Drum Magazine", round(scale * 2), /obj/item/ammo_magazine/m56d, VENDOR_ITEM_REGULAR),
 		list("M2C Box Magazine", round(scale * 2), /obj/item/ammo_magazine/m2c, VENDOR_ITEM_REGULAR),
 
 		list("SHOTGUN SHELL BOXES", -1, null, null),
-		list("Shotgun Shell Box (Buckshot x 100)", round(scale * 1), /obj/item/ammo_box/magazine/shotgun/buckshot, VENDOR_ITEM_REGULAR),
-		list("Shotgun Shell Box (Flechette x 100)", round(scale * 1), /obj/item/ammo_box/magazine/shotgun/flechette, VENDOR_ITEM_REGULAR),
-		list("Shotgun Shell Box (Slugs x 100)", round(scale * 1), /obj/item/ammo_box/magazine/shotgun, VENDOR_ITEM_REGULAR),
+		list("Shotgun Shell Box (Buckshot x 100)", round(scale * 2), /obj/item/ammo_box/magazine/shotgun/buckshot, VENDOR_ITEM_REGULAR),
+		list("Shotgun Shell Box (Flechette x 100)", round(scale * 2), /obj/item/ammo_box/magazine/shotgun/flechette, VENDOR_ITEM_REGULAR),
+		list("Shotgun Shell Box (Slugs x 100)", round(scale * 2), /obj/item/ammo_box/magazine/shotgun, VENDOR_ITEM_REGULAR),
 		)
 
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/stock(obj/item/item_to_stock, mob/user)
@@ -297,7 +284,7 @@
 			updateUsrDialog()
 			return //We found our item, no reason to go on.
 
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/blend
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo/blend
 		icon_state = "req_ammo_wall"
 		tiles_with = list(
 			/obj/structure/window/framed/almayer,
@@ -306,23 +293,7 @@
 
 //Special cargo-specific vendor with vending offsets
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo
-	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_LOAD_AMMO_BOXES //We want to vend to turf not hand, since we are in requisitions
-
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo/get_appropriate_vend_turf(mob/living/carbon/human/H)
-	var/turf/turf_to_vent_to
-	if(vend_x_offset != 0 || vend_y_offset != 0) //this will allow to avoid code below that suits only Almayer.
-		turf_to_vent_to = locate(x + vend_x_offset, y + vend_y_offset, z)
-	else
-		turf_to_vent_to = get_turf(get_step(src, NORTHWEST))
-		if(H.loc == turf_to_vent_to)
-			turf_to_vent_to = get_turf(get_step(H.loc, WEST))
-		else
-			turf_to_vent_to = get_turf(get_step(src, SOUTHWEST))
-			if(H.loc == turf_to_vent_to)
-				turf_to_vent_to = get_turf(get_step(H.loc, WEST))
-			else
-				turf_to_vent_to = H.loc
-	return turf_to_vent_to
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_LOAD_AMMO_BOXES | VEND_STOCK_DYNAMIC //We want to vend to turf not hand, since we are in requisitions
 
 //------------ATTACHMENTS VENDOR---------------
 
@@ -332,6 +303,9 @@
 	req_access = list(ACCESS_MARINE_CARGO)
 	vendor_theme = VENDOR_THEME_USCM
 	icon_state = "req_attach"
+	vend_dir = WEST
+	vend_dir_whitelist = list(SOUTHEAST, NORTHEAST)
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_STOCK_DYNAMIC //We want to vend to turf not hand, since we are in requisitions
 
 /obj/structure/machinery/cm_vending/sorted/attachments/vend_fail()
 	return
@@ -342,59 +316,43 @@
 /obj/structure/machinery/cm_vending/sorted/attachments/populate_product_list(scale)
 	listed_products = list(
 		list("BARREL", -1, null, null),
-		list("Extended Barrel", round(scale * 6.5), /obj/item/attachable/extended_barrel, VENDOR_ITEM_REGULAR),
-		list("M5 Bayonet", round(scale * 10.5), /obj/item/attachable/bayonet, VENDOR_ITEM_REGULAR),
-		list("Recoil Compensator", round(scale * 6.5), /obj/item/attachable/compensator, VENDOR_ITEM_REGULAR),
-		list("Suppressor", round(scale * 6.5), /obj/item/attachable/suppressor, VENDOR_ITEM_REGULAR),
+		list("Extended Barrel", 6.5, /obj/item/attachable/extended_barrel, VENDOR_ITEM_REGULAR),
+		list("M5 Bayonet", 10.5, /obj/item/attachable/bayonet, VENDOR_ITEM_REGULAR),
+		list("Recoil Compensator", 6.5, /obj/item/attachable/compensator, VENDOR_ITEM_REGULAR),
+		list("Suppressor", 6.5, /obj/item/attachable/suppressor, VENDOR_ITEM_REGULAR),
 
 		list("RAIL", -1, null, null),
-		list("B8 Smart-Scope", round(scale * 3.5), /obj/item/attachable/scope/mini_iff, VENDOR_ITEM_REGULAR),
-		list("Magnetic Harness", round(scale * 8.5), /obj/item/attachable/magnetic_harness, VENDOR_ITEM_REGULAR),
-		list("Rail Flashlight", round(scale * 10.5), /obj/item/attachable/flashlight, VENDOR_ITEM_REGULAR),
-		list("S4 2x Telescopic Mini-Scope", round(scale * 4.5), /obj/item/attachable/scope/mini, VENDOR_ITEM_REGULAR),
-		list("S5 Red-Dot Sight", round(scale * 9.5), /obj/item/attachable/reddot, VENDOR_ITEM_REGULAR),
-		list("S6 Reflex Sight", round(scale * 9.5), /obj/item/attachable/reflex, VENDOR_ITEM_REGULAR),
-		list("S8 4x Telescopic Scope", round(scale * 4.5), /obj/item/attachable/scope, VENDOR_ITEM_REGULAR),
+		list("B8 Smart-Scope", 3.5, /obj/item/attachable/scope/mini_iff, VENDOR_ITEM_REGULAR),
+		list("Magnetic Harness", 8.5, /obj/item/attachable/magnetic_harness, VENDOR_ITEM_REGULAR),
+		list("Rail Flashlight", 10.5, /obj/item/attachable/flashlight, VENDOR_ITEM_REGULAR),
+		list("S4 2x Telescopic Mini-Scope", 4.5, /obj/item/attachable/scope/mini, VENDOR_ITEM_REGULAR),
+		list("S5 Red-Dot Sight", 9.5, /obj/item/attachable/reddot, VENDOR_ITEM_REGULAR),
+		list("S6 Reflex Sight", 9.5, /obj/item/attachable/reflex, VENDOR_ITEM_REGULAR),
+		list("S8 4x Telescopic Scope", 4.5, /obj/item/attachable/scope, VENDOR_ITEM_REGULAR),
 
 		list("UNDERBARREL", -1, null, null),
-		list("Angled Grip", round(scale * 6.5), /obj/item/attachable/angledgrip, VENDOR_ITEM_REGULAR),
-		list("Bipod", round(scale * 6.5), /obj/item/attachable/bipod, VENDOR_ITEM_REGULAR),
-		list("Burst Fire Assembly", round(scale * 4.5), /obj/item/attachable/burstfire_assembly, VENDOR_ITEM_REGULAR),
-		list("Gyroscopic Stabilizer", round(scale * 4.5), /obj/item/attachable/gyro, VENDOR_ITEM_REGULAR),
-		list("Laser Sight", round(scale * 9.5), /obj/item/attachable/lasersight, VENDOR_ITEM_REGULAR),
-		list("Mini Flamethrower", round(scale * 4.5), /obj/item/attachable/attached_gun/flamer, VENDOR_ITEM_REGULAR),
-		list("XM-VESG-1 Flamer Nozzle", round(scale * 4.5), /obj/item/attachable/attached_gun/flamer_nozzle, VENDOR_ITEM_REGULAR),
-		list("U7 Underbarrel Shotgun", round(scale * 4.5), /obj/item/attachable/attached_gun/shotgun, VENDOR_ITEM_REGULAR),
-		list("Underbarrel Extinguisher", round(scale * 4.5), /obj/item/attachable/attached_gun/extinguisher, VENDOR_ITEM_REGULAR),
-		list("Underbarrel Flashlight Grip", round(scale * 9.5), /obj/item/attachable/flashlight/grip, VENDOR_ITEM_REGULAR),
-		list("Underslung Grenade Launcher", round(scale * 9.5), /obj/item/attachable/attached_gun/grenade, VENDOR_ITEM_REGULAR),
-		list("Vertical Grip", round(scale * 9.5), /obj/item/attachable/verticalgrip, VENDOR_ITEM_REGULAR),
+		list("Angled Grip", 6.5, /obj/item/attachable/angledgrip, VENDOR_ITEM_REGULAR),
+		list("Bipod", 6.5, /obj/item/attachable/bipod, VENDOR_ITEM_REGULAR),
+		list("Burst Fire Assembly", 4.5, /obj/item/attachable/burstfire_assembly, VENDOR_ITEM_REGULAR),
+		list("Gyroscopic Stabilizer", 4.5, /obj/item/attachable/gyro, VENDOR_ITEM_REGULAR),
+		list("Laser Sight", 9.5, /obj/item/attachable/lasersight, VENDOR_ITEM_REGULAR),
+		list("Mini Flamethrower", 4.5, /obj/item/attachable/attached_gun/flamer, VENDOR_ITEM_REGULAR),
+		list("XM-VESG-1 Flamer Nozzle", 4.5, /obj/item/attachable/attached_gun/flamer_nozzle, VENDOR_ITEM_REGULAR),
+		list("U7 Underbarrel Shotgun", 4.5, /obj/item/attachable/attached_gun/shotgun, VENDOR_ITEM_REGULAR),
+		list("Underbarrel Extinguisher", 4.5, /obj/item/attachable/attached_gun/extinguisher, VENDOR_ITEM_REGULAR),
+		list("Underbarrel Flashlight Grip", 9.5, /obj/item/attachable/flashlight/grip, VENDOR_ITEM_REGULAR),
+		list("Underslung Grenade Launcher", 9.5, /obj/item/attachable/attached_gun/grenade, VENDOR_ITEM_REGULAR),
+		list("Vertical Grip", 9.5, /obj/item/attachable/verticalgrip, VENDOR_ITEM_REGULAR),
 
 		list("STOCK", -1, null, null),
-		list("M37 Wooden Stock", round(scale * 4.5), /obj/item/attachable/stock/shotgun, VENDOR_ITEM_REGULAR),
-		list("M39 Arm Brace", round(scale * 4.5), /obj/item/attachable/stock/smg/collapsible/brace, VENDOR_ITEM_REGULAR),
-		list("M39 Folding Stock", round(scale * 4.5), /obj/item/attachable/stock/smg/collapsible, VENDOR_ITEM_REGULAR),
-		list("M39 Stock", round(scale * 4.5), /obj/item/attachable/stock/smg, VENDOR_ITEM_REGULAR),
-		list("M41A Solid Stock", round(scale * 4.5), /obj/item/attachable/stock/rifle, VENDOR_ITEM_REGULAR),
-		list("M41A Folding Stock", round(scale * 4.5), /obj/item/attachable/stock/rifle/collapsible, VENDOR_ITEM_REGULAR),
-		list("M44 Magnum Sharpshooter Stock", round(scale * 4.5), /obj/item/attachable/stock/revolver, VENDOR_ITEM_REGULAR)
+		list("M37 Wooden Stock", 4.5, /obj/item/attachable/stock/shotgun, VENDOR_ITEM_REGULAR),
+		list("M39 Arm Brace", 4.5, /obj/item/attachable/stock/smg/collapsible/brace, VENDOR_ITEM_REGULAR),
+		list("M39 Folding Stock", 4.5, /obj/item/attachable/stock/smg/collapsible, VENDOR_ITEM_REGULAR),
+		list("M39 Stock", 4.5, /obj/item/attachable/stock/smg, VENDOR_ITEM_REGULAR),
+		list("M41A Solid Stock", 4.5, /obj/item/attachable/stock/rifle, VENDOR_ITEM_REGULAR),
+		list("M41A Folding Stock", 4.5, /obj/item/attachable/stock/rifle/collapsible, VENDOR_ITEM_REGULAR),
+		list("M44 Magnum Sharpshooter Stock", 4.5, /obj/item/attachable/stock/revolver, VENDOR_ITEM_REGULAR)
 		)
-
-/obj/structure/machinery/cm_vending/sorted/attachments/get_appropriate_vend_turf(mob/living/carbon/human/H)
-	var/turf/turf_to_vent_to
-	if(vend_x_offset != 0 || vend_y_offset != 0) //this will allow to avoid code below that suits only Almayer.
-		turf_to_vent_to = locate(x + vend_x_offset, y + vend_y_offset, z)
-	else
-		turf_to_vent_to = get_turf(get_step(src, NORTHEAST))
-		if(H.loc == turf_to_vent_to)
-			turf_to_vent_to = get_turf(get_step(H.loc, WEST))
-		else
-			turf_to_vent_to = get_turf(get_step(src, SOUTHEAST))
-			if(H.loc == turf_to_vent_to)
-				turf_to_vent_to = get_turf(get_step(H.loc, WEST))
-			else
-				turf_to_vent_to = loc
-	return turf_to_vent_to
 
 /obj/structure/machinery/cm_vending/sorted/attachments/blend
 	icon_state = "req_attach_wall"
@@ -403,7 +361,6 @@
 		/obj/structure/machinery/door/airlock,
 		/turf/closed/wall/almayer,
 	)
-	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY //We want to vend to turf not hand, since we are in requisitions
 
 //------------UNIFORM VENDOR---------------
 
@@ -428,11 +385,11 @@
 		list("M10 Pattern Marine Helmet", 20, /obj/item/clothing/head/helmet/marine, VENDOR_ITEM_REGULAR),
 		list("M10 Pattern Technician Helmet", 20, /obj/item/clothing/head/helmet/marine/tech, VENDOR_ITEM_REGULAR),
 		list("M10 Pattern Corpman Helmet", 20, /obj/item/clothing/head/helmet/marine/medic, VENDOR_ITEM_REGULAR),
-		list("M3 Pattern Carrier Marine Armor", 20, /obj/item/clothing/suit/storage/marine/carrier, VENDOR_ITEM_REGULAR),
-		list("M3 Pattern Padded Marine Armor", 20, /obj/item/clothing/suit/storage/marine/padded, VENDOR_ITEM_REGULAR),
-		list("M3 Pattern Padless Marine Armor", 20, /obj/item/clothing/suit/storage/marine/padless, VENDOR_ITEM_REGULAR),
-		list("M3 Pattern Ridged Marine Armor", 20, /obj/item/clothing/suit/storage/marine/padless_lines, VENDOR_ITEM_REGULAR),
-		list("M3 Pattern Skull Marine Armor", 20, /obj/item/clothing/suit/storage/marine/skull, VENDOR_ITEM_REGULAR),
+		list("M3 Pattern Carrier Marine Armor", 20, /obj/item/clothing/suit/storage/marine/medium/carrier, VENDOR_ITEM_REGULAR),
+		list("M3 Pattern Padded Marine Armor", 20, /obj/item/clothing/suit/storage/marine/medium/padded, VENDOR_ITEM_REGULAR),
+		list("M3 Pattern Padless Marine Armor", 20, /obj/item/clothing/suit/storage/marine/medium/padless, VENDOR_ITEM_REGULAR),
+		list("M3 Pattern Ridged Marine Armor", 20, /obj/item/clothing/suit/storage/marine/medium/padless_lines, VENDOR_ITEM_REGULAR),
+		list("M3 Pattern Skull Marine Armor", 20, /obj/item/clothing/suit/storage/marine/medium/skull, VENDOR_ITEM_REGULAR),
 		list("M3-EOD Pattern Heavy Armor", 10, /obj/item/clothing/suit/storage/marine/heavy, VENDOR_ITEM_REGULAR),
 		list("M3-L Pattern Light Armor", 10, /obj/item/clothing/suit/storage/marine/light, VENDOR_ITEM_REGULAR),
 
@@ -456,6 +413,9 @@
 		list("MASKS", -1, null, null, null),
 		list("Gas Mask", 20, /obj/item/clothing/mask/gas, VENDOR_ITEM_REGULAR),
 		list("Heat Absorbent Coif", 10, /obj/item/clothing/mask/rebreather/scarf, VENDOR_ITEM_REGULAR),
+
+		list("MISCELLANEOUS", -1, null, null),
+		list("Bedroll", 30, /obj/item/roller/bedroll, VENDOR_ITEM_REGULAR),
 		)
 
 /obj/structure/machinery/cm_vending/sorted/uniform_supply/ui_state(mob/user)

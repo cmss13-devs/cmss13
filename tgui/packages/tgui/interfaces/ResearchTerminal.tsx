@@ -96,8 +96,8 @@ const PurchaseDocs = (_, context) => {
 };
 
 interface ConfirmationProps extends BoxProps {
-  onConfirm: () => any;
-  onCancel: () => any;
+  readonly onConfirm: () => any;
+  readonly onCancel: () => any;
 }
 
 const ConfirmationDialogue = (props: ConfirmationProps, context) => {
@@ -130,8 +130,8 @@ const NoCompoundsDetected = (_, context) => {
 };
 
 interface CompoundRecordProps extends BoxProps {
-  compound: CompoundData;
-  canPrint: boolean;
+  readonly compound: CompoundData;
+  readonly canPrint: boolean;
 }
 
 const CompoundRecord = (props: CompoundRecordProps, context) => {
@@ -153,9 +153,15 @@ const CompoundRecord = (props: CompoundRecordProps, context) => {
       </TableCell>
 
       <TableCell className="chemical-td">
-        <span className="compound_label">
-          {compound.type.document.split(' ')[2]}
-        </span>
+        {compound.type.document.split(' ')[0] === 'Simulation' ? (
+          <span className="compound_label">
+            {compound.type.document.split(' ')[3]}
+          </span>
+        ) : (
+          <span className="compound_label">
+            {compound.type.document.split(' ')[2]}
+          </span>
+        )}
       </TableCell>
 
       <TableCell>
@@ -254,9 +260,9 @@ const ResearchReportTable = (_, context) => {
 };
 
 export interface CompoundTableProps extends BoxProps {
-  docs: DocumentRecord[];
-  timeLabel: string;
-  canPrint: boolean;
+  readonly docs: DocumentRecord[];
+  readonly timeLabel: string;
+  readonly canPrint: boolean;
 }
 
 export const CompoundTable = (props: CompoundTableProps, context) => {

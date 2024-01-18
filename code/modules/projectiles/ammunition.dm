@@ -18,6 +18,8 @@ They're all essentially identical when it comes to getting the job done.
 	w_class = SIZE_SMALL
 	throw_speed = SPEED_SLOW
 	throw_range = 6
+	ground_offset_x = 7
+	ground_offset_y = 6
 	var/default_ammo = /datum/ammo/bullet
 	var/caliber = null // This is used for matching handfuls to each other or whatever the mag is. Examples are" "12g" ".44" ".357" etc.
 	var/current_rounds = -1 //Set this to something else for it not to start with different initial counts.
@@ -50,8 +52,7 @@ They're all essentially identical when it comes to getting the job done.
 		if(0)
 			icon_state += "_e" //In case it spawns empty instead.
 			item_state += "_e"
-	pixel_y = rand(-6, 6)
-	pixel_x = rand(-7, 7)
+
 	if(ammo_band_color && ammo_band_icon)
 		update_ammo_band()
 
@@ -198,7 +199,7 @@ They're all essentially identical when it comes to getting the job done.
 		var/severity = round(current_rounds / 50)
 		//the more ammo inside, the faster and harder it cooks off
 		if(severity > 0)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(explosion), loc, -1, ((severity > 4) ? 0 : -1), Clamp(severity, 0, 1), Clamp(severity, 0, 2), 1, 0, 0, flame_cause_data), max(5 - severity, 2))
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(explosion), loc, -1, ((severity > 4) ? 0 : -1), clamp(severity, 0, 1), clamp(severity, 0, 2), 1, 0, 0, flame_cause_data), max(5 - severity, 2))
 
 	if(!QDELETED(src))
 		qdel(src)

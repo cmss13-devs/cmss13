@@ -7,7 +7,7 @@
 	desc = "A Flashlight designed to be held in the hand, or attached to a rifle"
 	icon_state = "flashlight"
 	item_state = "flashlight"
-	brightness_on = 5 //Pretty luminous, but still a flashlight that fits in a pocket
+	light_range = 5 //Pretty luminous, but still a flashlight that fits in a pocket
 
 //MARINE SNIPER TARPS
 
@@ -149,15 +149,6 @@
 		return FALSE
 	. = ..()
 	handle_cloaking()
-
-/obj/item/coin/marine
-	name = "marine specialist weapon token"
-	desc = "Insert this into a specialist vendor in order to access a single highly dangerous weapon."
-	icon_state = "coin_platinum"
-
-/obj/item/coin/marine/attackby(obj/item/W as obj, mob/user as mob) //To remove attaching a string functionality
-	return
-
 /obj/structure/broken_apc
 	name = "\improper M577 armored personnel carrier"
 	desc = "A large, armored behemoth capable of ferrying marines around. \nThis one is sitting nonfunctional."

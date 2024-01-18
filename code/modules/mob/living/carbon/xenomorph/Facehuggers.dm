@@ -14,7 +14,7 @@
 	flags_inventory = COVEREYES|ALLOWINTERNALS|COVERMOUTH|ALLOWREBREATH|CANTSTRIP
 	flags_armor_protection = BODY_FLAG_FACE|BODY_FLAG_EYES
 	flags_atom = NO_FLAGS
-	flags_item = NOBLUDGEON|NOTABLEMERGE
+	flags_item = NOBLUDGEON
 	throw_range = 1
 	layer = FACEHUGGER_LAYER
 	black_market_value = 20
@@ -116,8 +116,8 @@
 			attack_hand(user)//Not a carrier, or already full? Just pick it up.
 		return XENO_NO_DELAY_ACTION
 
-/obj/item/clothing/mask/facehugger/attack(mob/M, mob/user)
-	if(!can_hug(M, hivenumber) || !(M.is_mob_incapacitated() || M.lying || M.buckled && !isyautja(M)))
+/obj/item/clothing/mask/facehugger/attack(mob/living/M, mob/user)
+	if(!can_hug(M, hivenumber) || !(M.is_mob_incapacitated() || M.body_position == LYING_DOWN || M.buckled && !isyautja(M)))
 		to_chat(user, SPAN_WARNING("The facehugger refuses to attach."))
 		..()
 		return
@@ -130,7 +130,7 @@
 		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, M, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			return
 
-		if(!can_hug(M, hivenumber) || !(M.is_mob_incapacitated() || M.lying || M.buckled))
+		if(!can_hug(M, hivenumber) || !(M.is_mob_incapacitated() || M.body_position == LYING_DOWN || M.buckled))
 			return
 
 	attach(M)
@@ -159,7 +159,7 @@
 		return
 	die()
 
-/obj/item/clothing/mask/facehugger/bullet_act(obj/item/projectile/P)
+/obj/item/clothing/mask/facehugger/bullet_act(obj/projectile/P)
 	..()
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ammo_flags & (AMMO_XENO))
@@ -284,17 +284,15 @@
 	var/area/hug_area = get_area(src)
 	var/name = hugger ? "[hugger]" : "\a [src]"
 	if(hug_area)
-		for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
-			to_chat(observer, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[name]</b> at \the <b>[hug_area]</b> [OBSERVER_JMP(observer, human)]"))
+		notify_ghosts(header = "Hugged", message = "[human] has been hugged by [name] at [hug_area]!", source = human, action = NOTIFY_ORBIT)
 		to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[name]</b> at \the <b>[hug_area]</b>"))
 	else
-		for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
-			to_chat(observer, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[name]</b> [OBSERVER_JMP(observer, human)]"))
+		notify_ghosts(header = "Hugged", message = "[human] has been hugged by [name]!", source = human, action = NOTIFY_ORBIT)
 		to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[name]</b>"))
 	if(hug_area)
-		xeno_message(SPAN_XENOMINORWARNING("You sense that [name] has facehugged a host at \the [hug_area]!"), 1, hivenumber)
+		xeno_message(SPAN_XENOMINORWARNING("We sense that [name] has facehugged a host at \the [hug_area]!"), 1, hivenumber)
 	else
-		xeno_message(SPAN_XENOMINORWARNING("You sense that [name] has facehugged a host!"), 1, hivenumber)
+		xeno_message(SPAN_XENOMINORWARNING("We sense that [name] has facehugged a host!"), 1, hivenumber)
 
 	addtimer(CALLBACK(src, PROC_REF(impregnate), human, hugger?.client?.ckey), rand(MIN_IMPREGNATION_TIME, MAX_IMPREGNATION_TIME))
 
@@ -331,8 +329,8 @@
 	else
 		target.visible_message(SPAN_DANGER("[src] violates [target]'s face!"))
 
-	if(round_statistics && ishuman(target))
-		round_statistics.total_huggers_applied++
+	if(GLOB.round_statistics && ishuman(target))
+		GLOB.round_statistics.total_huggers_applied++
 
 /obj/item/clothing/mask/facehugger/proc/go_active()
 	if(stat == DEAD)
@@ -525,9 +523,9 @@
 
 /datum/species/yautja/handle_hugger_attachment(mob/living/carbon/human/target, obj/item/clothing/mask/facehugger/hugger)
 	var/catch_chance = 50
-	if(target.dir == reverse_dir[hugger.dir])
+	if(target.dir == GLOB.reverse_dir[hugger.dir])
 		catch_chance += 20
-	if(target.lying)
+	if(target.body_position == LYING_DOWN)
 		catch_chance -= 50
 	catch_chance -= ((target.maxHealth - target.health) / 3)
 	if(target.get_active_hand())

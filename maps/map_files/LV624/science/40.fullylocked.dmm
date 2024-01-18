@@ -329,7 +329,6 @@
 /obj/structure/surface/table,
 /obj/structure/machinery/cell_charger,
 /obj/item/tool/crowbar,
-/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -367,7 +366,6 @@
 /area/lv624/lazarus/research)
 "bm" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -419,17 +417,6 @@
 "bF" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/central_jungle)
-"gu" = (
-/obj/structure/machinery/door_control{
-	id = "secure_inner_blast";
-	name = "Secure Inner Doors";
-	pixel_x = -25;
-	pixel_y = 5
-	},
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/lv624/lazarus/research)
 "ky" = (
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -438,9 +425,9 @@
 /area/lv624/lazarus/research)
 "oe" = (
 /obj/structure/transmitter/colony_net{
-	pixel_y = 24;
 	phone_category = "Lazarus Landing";
-	phone_id = "Research Dome"
+	phone_id = "Research Dome";
+	pixel_y = 24
 	},
 /turf/open/floor{
 	dir = 5;
@@ -603,14 +590,14 @@ ab
 "}
 (7,1,1) = {"
 ac
-bn
+Tz
 aq
 ay
 ay
 au
 aQ
 Kl
-gu
+ak
 au
 bp
 ay
@@ -715,7 +702,7 @@ bb
 ay
 ab
 bn
-bn
+Tz
 aj
 ac
 bE

@@ -256,7 +256,7 @@ Contains most of the procs that are called when a mob is attacked by something
 					add_blood(get_blood_color(), BLOOD_BODY)
 
 	//Melee weapon embedded object code.
-	if (I.damtype == BRUTE && !I.is_robot_module() && !(I.flags_item & (NODROP|DELONDROP)))
+	if (I.damtype == BRUTE && !(I.flags_item & (NODROP|DELONDROP)))
 		damage = I.force
 		if(damage > 40) damage = 40  //Some sanity, mostly for yautja weapons. CONSTANT STICKY ICKY
 		if (weapon_sharp && prob(3) && !isyautja(user)) // make yautja less likely to get their weapon stuck
@@ -346,16 +346,15 @@ Contains most of the procs that are called when a mob is attacked by something
 	//thrown weapon embedded object code.
 	if (dtype == BRUTE && istype(O,/obj/item))
 		var/obj/item/I = O
-		if (!I.is_robot_module())
-			var/sharp = is_sharp(I)
-			//blunt objects should really not be embedding in things unless a huge amount of force is involved
-			var/embed_chance = sharp? damage/I.w_class : damage/(I.w_class*3)
-			var/embed_threshold = sharp? 5*I.w_class : 15*I.w_class
+		var/sharp = is_sharp(I)
+		//blunt objects should really not be embedding in things unless a huge amount of force is involved
+		var/embed_chance = sharp? damage/I.w_class : damage/(I.w_class*3)
+		var/embed_threshold = sharp? 5*I.w_class : 15*I.w_class
 
-			//Sharp objects will always embed if they do enough damage.
-			//Thrown sharp objects have some momentum already and have a small chance to embed even if the damage is below the threshold
-			if (!isyautja(src) && ((sharp && prob(damage/(10*I.w_class)*100)) || (damage > embed_threshold && prob(embed_chance))))
-				affecting.embed(I)
+		//Sharp objects will always embed if they do enough damage.
+		//Thrown sharp objects have some momentum already and have a small chance to embed even if the damage is below the threshold
+		if (!isyautja(src) && ((sharp && prob(damage/(10*I.w_class)*100)) || (damage > embed_threshold && prob(embed_chance))))
+			affecting.embed(I)
 
 /mob/living/carbon/human/proc/get_id_faction_group()
 	var/obj/item/card/id/C = wear_id

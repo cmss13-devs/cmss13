@@ -273,8 +273,6 @@
 
 
 /mob/living/carbon/human/show_inv(mob/living/user)
-	if(ismaintdrone(user))
-		return
 	var/obj/item/clothing/under/suit = null
 	if(istype(w_uniform, /obj/item/clothing/under))
 		suit = w_uniform
@@ -694,10 +692,6 @@
 						var/mob/living/carbon/human/U = usr
 						new_comment["created_by"]["name"] = U.get_authentification_name()
 						new_comment["created_by"]["rank"] = U.get_assignment()
-					else if(istype(usr,/mob/living/silicon/robot))
-						var/mob/living/silicon/robot/U = usr
-						new_comment["created_by"]["name"] = U.name
-						new_comment["created_by"]["rank"] = "[U.modtype] [U.braintype]"
 					if(!islist(R.fields["comments"]))
 						R.fields["comments"] = list("1" = new_comment)
 					else
@@ -731,9 +725,6 @@
 										spawn()
 											if(istype(usr,/mob/living/carbon/human))
 												var/mob/living/carbon/human/U = usr
-												U.handle_regular_hud_updates()
-											if(istype(usr,/mob/living/silicon/robot))
-												var/mob/living/silicon/robot/U = usr
 												U.handle_regular_hud_updates()
 
 			if(!modified)
@@ -818,9 +809,6 @@
 									if(istype(usr,/mob/living/carbon/human))
 										var/mob/living/carbon/human/U = usr
 										R.fields[text("com_[counter]")] = text("Made by [U.get_authentification_name()] ([U.get_assignment()]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [GLOB.game_year]<BR>[t1]")
-									if(istype(usr,/mob/living/silicon/robot))
-										var/mob/living/silicon/robot/U = usr
-										R.fields[text("com_[counter]")] = text("Made by [U.name] ([U.modtype] [U.braintype]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [GLOB.game_year]<BR>[t1]")
 
 	if(href_list["medholocard"])
 		if(!skillcheck(usr, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))

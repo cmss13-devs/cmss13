@@ -177,9 +177,6 @@
 		return FALSE
 	return prob(max(30,(100.0*health)/maxhealth))
 
-/obj/structure/barricade/attack_robot(mob/user as mob)
-	return attack_hand(user)
-
 /obj/structure/barricade/attack_animal(mob/user as mob)
 	return attack_alien(user)
 

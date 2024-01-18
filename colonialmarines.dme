@@ -135,6 +135,7 @@
 #include "code\__DEFINES\dcs\signals\atom\signals_obj.dm"
 #include "code\__DEFINES\dcs\signals\atom\signals_projectile.dm"
 #include "code\__DEFINES\dcs\signals\atom\signals_turf.dm"
+#include "code\__DEFINES\dcs\signals\atom\mob\signals_mind.dm"
 #include "code\__DEFINES\dcs\signals\atom\mob\signals_mob.dm"
 #include "code\__DEFINES\dcs\signals\atom\mob\living\signals_human.dm"
 #include "code\__DEFINES\dcs\signals\atom\mob\living\signals_living.dm"

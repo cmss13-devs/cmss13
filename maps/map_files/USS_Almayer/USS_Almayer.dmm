@@ -11147,11 +11147,11 @@
 /area/almayer/engineering/lower/engine_core)
 "aSl" = (
 /obj/structure/machinery/light,
-/obj/structure/machinery/cm_vending/sorted/medical,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/structure/machinery/cm_vending/sorted/medical/bolted,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_corner"
@@ -17942,7 +17942,7 @@
 	},
 /area/almayer/squads/bravo)
 "bET" = (
-/obj/structure/machinery/cm_vending/sorted/medical,
+/obj/structure/machinery/cm_vending/sorted/medical/bolted,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -32345,7 +32345,7 @@
 	},
 /area/almayer/command/cic)
 "fvJ" = (
-/obj/structure/machinery/cm_vending/sorted/medical,
+/obj/structure/machinery/cm_vending/sorted/medical/bolted,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"
@@ -37277,11 +37277,11 @@
 	},
 /area/almayer/shipboard/starboard_point_defense)
 "hrJ" = (
-/obj/structure/machinery/cm_vending/sorted/medical,
 /obj/structure/sign/safety/autodoc{
 	pixel_x = 20;
 	pixel_y = -32
 	},
+/obj/structure/machinery/cm_vending/sorted/medical/bolted,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -41610,7 +41610,7 @@
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "jbO" = (
-/obj/structure/machinery/cm_vending/sorted/medical,
+/obj/structure/machinery/cm_vending/sorted/medical/bolted,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -58040,7 +58040,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cells)
 "pnC" = (
-/obj/structure/machinery/cm_vending/sorted/medical/blood,
+/obj/structure/machinery/cm_vending/sorted/medical/blood/bolted,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -69401,11 +69401,11 @@
 	},
 /area/almayer/hull/upper_hull/u_a_p)
 "tzx" = (
-/obj/structure/machinery/cm_vending/sorted/medical/blood,
 /obj/structure/machinery/light{
 	unacidable = 1;
 	unslashable = 1
 	},
+/obj/structure/machinery/cm_vending/sorted/medical/blood/bolted,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -71305,7 +71305,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/machinery/cm_vending/sorted/medical,
+/obj/structure/machinery/cm_vending/sorted/medical/bolted,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"
@@ -79322,10 +79322,10 @@
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/chief_mp_office)
 "xgJ" = (
-/obj/structure/machinery/cm_vending/sorted/medical/blood,
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/machinery/cm_vending/sorted/medical/blood/bolted,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"

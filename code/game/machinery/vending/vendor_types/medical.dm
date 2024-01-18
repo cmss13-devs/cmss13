@@ -220,6 +220,10 @@
 /obj/structure/machinery/cm_vending/sorted/medical/no_access
 	req_access = list()
 
+/obj/structure/machinery/cm_vending/sorted/medical/bolted
+	req_access = list()
+	wrenchable = FALSE
+
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry/no_access
 	req_access = list()
 
@@ -294,6 +298,10 @@
 	healthscan = FALSE
 	chem_refill = null
 	stack_refill = null
+
+/obj/structure/machinery/cm_vending/sorted/medical/blood/bolted
+	req_access = list()
+	wrenchable = FALSE
 
 /obj/structure/machinery/cm_vending/sorted/medical/blood/populate_product_list(scale)
 	return

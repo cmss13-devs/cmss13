@@ -22,8 +22,33 @@
 	containername = "medical crate"
 	group = "Medical"
 
+/datum/supply_packs/pillbottle
+	name = "pill bottle crate (x2 each)"
+	contains = list(
+		/obj/item/storage/pill_bottle/inaprovaline,
+		/obj/item/storage/pill_bottle/antitox,
+		/obj/item/storage/pill_bottle/bicaridine,
+		/obj/item/storage/pill_bottle/dexalin,
+		/obj/item/storage/pill_bottle/kelotane,
+		/obj/item/storage/pill_bottle/tramadol,
+		/obj/item/storage/pill_bottle/peridaxon,
+		/obj/item/storage/pill_bottle/inaprovaline,
+		/obj/item/storage/pill_bottle/antitox,
+		/obj/item/storage/pill_bottle/bicaridine,
+		/obj/item/storage/pill_bottle/dexalin,
+		/obj/item/storage/pill_bottle/kelotane,
+		/obj/item/storage/pill_bottle/tramadol,
+		/obj/item/storage/pill_bottle/peridaxon,
+		/obj/item/storage/box/pillbottles,
+		/obj/item/storage/box/pillbottles,
+	)
+	cost = 20
+	containertype = /obj/structure/closet/crate/medical
+	containername = "medical crate"
+	group = "Medical"
+
 /datum/supply_packs/firstaid
-	name = "first aid kit crate (2x each)"
+	name = "first aid kit crate (x2 each)"
 	contains = list(
 		/obj/item/storage/firstaid/regular,
 		/obj/item/storage/firstaid/regular,
@@ -36,7 +61,7 @@
 		/obj/item/storage/firstaid/adv,
 		/obj/item/storage/firstaid/adv,
 	)
-	cost = 20
+	cost = 16
 	containertype = /obj/structure/closet/crate/medical
 	containername = "medical crate"
 	group = "Medical"
@@ -49,7 +74,7 @@
 		/obj/item/storage/box/bodybags,
 		/obj/item/storage/box/bodybags,
 	)
-	cost = 20
+	cost = 12
 	containertype = /obj/structure/closet/crate/medical
 	containername = "body bag crate"
 	group = "Medical"
@@ -61,7 +86,7 @@
 		/obj/item/bodybag/cryobag,
 		/obj/item/bodybag/cryobag,
 	)
-	cost = 40
+	cost = 20
 	containertype = /obj/structure/closet/crate/medical
 	containername = "stasis bag crate"
 	group = "Medical"

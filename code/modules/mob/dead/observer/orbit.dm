@@ -48,6 +48,7 @@
 /datum/orbit_menu/ui_static_data(mob/user)
 	var/list/data = list()
 
+	var/list/boxers = list()
 	var/list/humans = list()
 	var/list/marines = list()
 	var/list/survivors = list()
@@ -106,6 +107,8 @@
 
 		if(M.ckey == null)
 			npcs += list(serialized)
+			if(istype(get_area(M), /area/corsat))
+				boxers += list(serialized)
 			continue
 
 		if(isliving(M))
@@ -119,6 +122,8 @@
 					serialized["caste"] = caste.caste_type
 					serialized["icon"] = caste.minimap_icon
 				xenos += list(serialized)
+				if(istype(get_area(player), /area/corsat))
+					boxers += list(serialized)
 				continue
 
 			if(ishuman(player))
@@ -139,6 +144,8 @@
 				else
 					serialized["background_color"] = human.assigned_equipment_preset?.minimap_background
 
+				if(istype(get_area(human), /area/corsat))
+					boxers += list(serialized)
 				if(SSticker.mode.is_in_endgame == TRUE && !is_mainship_level(M.z) && !(human.faction in FACTION_LIST_ERT))
 					escaped += list(serialized)
 				else if(human.faction in FACTION_LIST_WY)
@@ -178,6 +185,7 @@
 		else if(isAI(M))
 			humans += list(serialized)
 
+	data["boxers"] = boxers
 	data["humans"] = humans
 	data["marines"] = marines
 	data["survivors"] = survivors

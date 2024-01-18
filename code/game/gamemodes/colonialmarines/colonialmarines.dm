@@ -1,5 +1,5 @@
 #define HIJACK_EXPLOSION_COUNT 5
-#define MARINE_MAJOR_ROUND_END_DELAY 3 MINUTES
+#define MARINE_MAJOR_ROUND_END_DELAY 2 MINUTES
 
 /datum/game_mode/colonialmarines
 	name = "Distress Signal"

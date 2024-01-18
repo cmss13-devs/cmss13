@@ -1,4 +1,0 @@
-author: "Vicacrov"
-delete-after: True
-changes:
-  - bugfix: "Fixes an issue where player-controlled facehuggers would ghost out when smashing against anti-hugging headgear like the B18 helmet."

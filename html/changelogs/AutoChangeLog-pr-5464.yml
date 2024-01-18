@@ -1,4 +1,0 @@
-author: "Birdtalon"
-delete-after: True
-changes:
-  - bugfix: "Fixed buckled mobs unable to move after being thrown by a xeno."

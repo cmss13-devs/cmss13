@@ -184,3 +184,14 @@
   - bugfix: Fixed larvae sometimes spawning in space on Fiorina.
   TheGamerdk:
   - bugfix: The Kutjevo Refinery has been granted an additional SMES
+2024-01-18:
+  Birdtalon:
+  - bugfix: Fixed buckled mobs unable to move after being thrown by a xeno.
+  Drathek:
+  - code_imp: Cleaned up some oversights in attachment Detatch logic
+  SabreML:
+  - rscadd: Added a 'balloon alert' when toggling Crest Defense as a Defender.
+  - code_imp: Made balloon alerts centre themselves on xeno sprites.
+  Vicacrov:
+  - bugfix: Fixes an issue where player-controlled facehuggers would ghost out when
+      smashing against anti-hugging headgear like the B18 helmet.

@@ -5118,11 +5118,6 @@
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar/id)
-"atV" = (
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
-/area/corsat/gamma/airlock/south)
 "atW" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
@@ -7206,7 +7201,7 @@
 "azR" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
-	icon_state = "marked"
+	icon_state = "retrosquares"
 	},
 /area/corsat/gamma/airlock/south)
 "azT" = (
@@ -29218,12 +29213,6 @@
 	icon_state = "darkgreen"
 	},
 /area/corsat/gamma/rnr)
-"clN" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
-/area/corsat/gamma/airlock/south)
 "cmk" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -38688,14 +38677,6 @@
 	icon_state = "purple"
 	},
 /area/corsat/omega/hallways)
-"lqK" = (
-/obj/structure/pipes/vents/pump{
-	dir = 1
-	},
-/turf/open/floor/corsat{
-	icon_state = "retrosquares"
-	},
-/area/corsat/gamma/airlock/south)
 "lqR" = (
 /obj/structure/surface/table/gamblingtable,
 /obj/item/toy/deck/uno,
@@ -38711,15 +38692,6 @@
 	icon_state = "plate"
 	},
 /area/corsat/sigma/cargo)
-"lrQ" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile/open{
-	id = "GammaSouthS";
-	name = "Gamma South Airlock"
-	},
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
-/area/corsat/gamma/airlock/south)
 "lsc" = (
 /turf/open/floor/corsat{
 	dir = 4;
@@ -42007,16 +41979,6 @@
 	icon_state = "blue"
 	},
 /area/corsat/theta/airlock/control)
-"ozp" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile/open{
-	id = "GammaSouthN";
-	name = "Gamma South Airlock"
-	},
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
-/area/corsat/gamma/airlock/south)
 "ozH" = (
 /turf/open/floor/corsat{
 	icon_state = "bluegrey"
@@ -49964,13 +49926,6 @@
 	icon_state = "purplewhite"
 	},
 /area/corsat/gamma/sigmaremote)
-"vVU" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
-/area/corsat/gamma/airlock/south)
 "vWM" = (
 /obj/structure/machinery/light,
 /turf/open/floor/corsat{
@@ -60022,10 +59977,10 @@ bKS
 bKS
 bKS
 bKS
-ozp
+ast
 aBa
 aGr
-lrQ
+aGr
 tEJ
 azf
 pkh
@@ -60224,10 +60179,10 @@ bKS
 bKS
 bKS
 bKS
-vVU
-lqK
+ast
 ahG
-atV
+ahG
+ahG
 agQ
 azf
 agQ
@@ -60426,7 +60381,7 @@ bKS
 bKS
 bKS
 bKS
-clN
+ast
 ahG
 bZP
 azR
@@ -60628,10 +60583,10 @@ bKS
 bKS
 bKS
 bKS
-clN
+ast
 aBa
 aGr
-atV
+aGr
 tEJ
 azf
 lEb

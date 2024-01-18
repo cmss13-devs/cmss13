@@ -78,7 +78,7 @@
 
 /obj/structure/closet/fancy/insane
 	name = "impossible box"
-	desc = "You cannot comprehend the depths..."
+	desc = "<span class='red'>You cannot comprehend the depths...</span>"
 
 	interior_map = /datum/map_template/interior/fancy_insanity
 	passengers_slots = 70

@@ -863,6 +863,14 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 	display_name = "Lighter, zippo"
 	path = /obj/item/tool/lighter/zippo
 
+/datum/gear/smoking/zippo/black
+	display_name = "Black lighter, zippo"
+	path = /obj/item/tool/lighter/zippo/black
+
+/datum/gear/smoking/zippo/blue
+	display_name = "Blue lighter, zippo"
+	path = /obj/item/tool/lighter/zippo/blue
+
 /datum/gear/smoking/electronic_cigarette
 	display_name = "Electronic cigarette"
 	path = /obj/item/clothing/mask/electronic_cigarette
@@ -891,7 +899,7 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 /datum/gear/misc/facepaint_skull
 	display_name = "Facepaint, skull"
 	path = /obj/item/facepaint/skull
-	cost = 3 
+	cost = 3
 
 /datum/gear/misc/facepaint_body
 	display_name = "Fullbody paint"

@@ -59,7 +59,7 @@ const useTargetFiremissionSelect = (context) => {
   };
 };
 
-const useTargetOffset = (context, panelId: string) => {
+export const useTargetOffset = (context, panelId: string) => {
   const [data, set] = useLocalState(context, `${panelId}_targetOffset`, 0);
   return {
     targetOffset: data,
@@ -79,7 +79,7 @@ const useTargetSubmenu = (context, panelId: string) => {
   };
 };
 
-const TargetLines = (props: { panelId: string }, context) => {
+export const TargetLines = (props: { panelId: string }, context) => {
   const { data } = useBackend<
     EquipmentContext & FiremissionContext & TargetContext
   >(context);
@@ -140,6 +140,34 @@ const leftButtonGenerator = (context, panelId: string) => {
     useTargetFiremissionSelect(context);
   const { weaponSelected, setWeaponSelected } = useWeaponSelectedState(context);
   const weapons = data.equipment_data.filter((x) => x.is_weapon);
+  const [fmOffset] = useLocalState(
+    context,
+    `${panelId}_fm_strike_select_offset`,
+    0
+  );
+  const firemission_mapper = (x: number) => {
+    if (x === 0) {
+      return {
+        children: 'CANCEL',
+        onClick: () => {
+          setFiremissionSelected(undefined);
+          setStrikeMode(undefined);
+          setLeftButtonMode(undefined);
+        },
+      };
+    }
+    x -= 1;
+    const firemission =
+      data.firemission_data.length > x ? data.firemission_data[x] : undefined;
+    return {
+      children: firemission ? <div>FM {x + 1}</div> : undefined,
+      onClick: () => {
+        setFiremissionSelected(data.firemission_data[x]);
+        setLeftButtonMode(undefined);
+      },
+    };
+  };
+
   if (leftButtonMode === undefined) {
     return [
       {
@@ -154,26 +182,30 @@ const leftButtonGenerator = (context, panelId: string) => {
   }
   if (leftButtonMode === 'STRIKE') {
     if (strikeMode === 'weapon' && weaponSelected === undefined) {
-      return weapons.map((x) => {
-        return {
-          children: x.shorthand,
+      const cancelButton = [
+        {
+          children: 'CANCEL',
           onClick: () => {
-            setWeaponSelected(x.mount_point);
+            setFiremissionSelected(undefined);
+            setStrikeMode(undefined);
             setLeftButtonMode(undefined);
           },
-        };
-      });
+        },
+      ];
+      return cancelButton.concat(
+        weapons.map((x) => {
+          return {
+            children: x.shorthand,
+            onClick: () => {
+              setWeaponSelected(x.eqp_tag);
+              setLeftButtonMode(undefined);
+            },
+          };
+        })
+      );
     }
     if (strikeMode === 'firemission' && firemissionSelected === undefined) {
-      return data.firemission_data.map((x) => {
-        return {
-          children: x.name,
-          onClick: () => {
-            setFiremissionSelected(x);
-            setLeftButtonMode(undefined);
-          },
-        };
-      });
+      return range(fmOffset, fmOffset + 5).map(firemission_mapper);
     }
     return [
       { children: 'CANCEL', onClick: () => setLeftButtonMode(undefined) },
@@ -230,7 +262,7 @@ const leftButtonGenerator = (context, panelId: string) => {
   return [];
 };
 
-const lazeMapper = (context, offset) => {
+export const lazeMapper = (context, offset) => {
   const { act, data } = useBackend<TargetContext>(context);
   const { setSelectedTarget } = useLazeTarget(context);
 
@@ -271,6 +303,21 @@ const lazeMapper = (context, offset) => {
   };
 };
 
+export const getLastTargetName = (data) => {
+  const target = data.targets_data[data.targets_data.length - 1] ?? undefined;
+  const isDebug = target?.target_name.includes('debug');
+  if (isDebug) {
+    return 'debug ' + target.target_name.split(' ')[3];
+  }
+  const label = target?.target_name.split(' ')[0] ?? '';
+  const squad = label[0] ?? undefined;
+  const number = label.split('-')[1] ?? undefined;
+
+  return squad !== undefined && number !== undefined
+    ? `${squad}-${number}`
+    : target?.target_name;
+};
+
 export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
   const { panelStateId } = props;
 
@@ -288,44 +335,36 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
     context,
     panelStateId
   );
+  const [fmOffset, setFmOffset] = useLocalState(
+    context,
+    `${props.panelStateId}_fm_strike_select_offset`,
+    0
+  );
+  const { leftButtonMode } = useTargetSubmenu(context, props.panelStateId);
 
   const { fmXOffsetValue } = useFiremissionXOffsetValue(context);
   const { fmYOffsetValue } = useFiremissionYOffsetValue(context);
 
-  const lazes = range(0, 5).map((x) =>
-    x > data.targets_data.length ? undefined : data.targets_data[x]
-  );
-
   const strikeConfigLabel =
     strikeMode === 'weapon'
-      ? data.equipment_data.find((x) => x.mount_point === weaponSelected)?.name
+      ? data.equipment_data.find((x) => x.eqp_tag === weaponSelected)?.name
       : firemissionSelected !== undefined
         ? data.firemission_data.find(
           (x) => x.mission_tag === firemissionSelected.mission_tag
         )?.name
         : 'NONE';
 
-  const lazeIndex = lazes.findIndex((x) => x?.target_tag === selectedTarget);
-  const strikeReady = strikeMode !== undefined && lazeIndex !== -1;
+  const strikeReady =
+    selectedTarget !== undefined &&
+    strikeDirection !== undefined &&
+    ((strikeMode === 'weapon' &&
+      weaponSelected !== undefined &&
+      data.equipment_data.find((x) => x.eqp_tag === weaponSelected)) ||
+      (strikeMode === 'firemission' && firemissionSelected !== undefined));
 
   const targets = range(targetOffset, targetOffset + 5).map((x) =>
     lazeMapper(context, x)
   );
-
-  const getLastName = () => {
-    const target = data.targets_data[data.targets_data.length - 1] ?? undefined;
-    const isDebug = target?.target_name.includes('debug');
-    if (isDebug) {
-      return 'debug ' + target.target_name.split(' ')[3];
-    }
-    const label = target?.target_name.split(' ')[0] ?? '';
-    const squad = label[0] ?? undefined;
-    const number = label.split('-')[1] ?? undefined;
-
-    return squad !== undefined && number !== undefined
-      ? `${squad}-${number}`
-      : target?.target_name;
-  };
 
   if (
     selectedTarget &&
@@ -361,7 +400,20 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
             }
           },
         },
-        {},
+        {
+          children:
+            leftButtonMode === 'STRIKE' &&
+            strikeMode === 'firemission' &&
+            firemissionSelected === undefined &&
+            fmOffset > 0 ? (
+              <Icon name="arrow-up" />
+            ) : undefined,
+          onClick: () => {
+            if (fmOffset > 0) {
+              setFmOffset(fmOffset - 1);
+            }
+          },
+        },
         {},
         {},
         {
@@ -378,16 +430,29 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
           children: 'EXIT',
           onClick: () => setPanelState(''),
         },
-        {},
+        {
+          children:
+            leftButtonMode === 'STRIKE' &&
+            strikeMode === 'firemission' &&
+            firemissionSelected === undefined &&
+            fmOffset + 4 < data.firemission_data?.length ? (
+              <Icon name="arrow-down" />
+            ) : undefined,
+          onClick: () => {
+            if (fmOffset + 4 < data.firemission_data?.length) {
+              setFmOffset(fmOffset + 1);
+            }
+          },
+        },
         {},
         {},
         {
           children:
-            targetOffset < lazes.length ? (
+            targetOffset + 5 < data.targets_data?.length ? (
               <Icon name="arrow-down" />
             ) : undefined,
           onClick: () => {
-            if (targetOffset < lazes.length) {
+            if (targetOffset + 5 < data.targets_data?.length) {
               setTargetOffset(targetOffset + 1);
             }
           },
@@ -443,8 +508,9 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
               <Stack.Item className="TargetText">
                 <h3>
                   Target selected:{' '}
-                  {lazes.find((x) => x?.target_tag === selectedTarget)
-                    ?.target_name ?? 'NONE'}
+                  {data.targets_data.find(
+                    (x) => x?.target_tag === selectedTarget
+                  )?.target_name ?? 'NONE'}
                 </h3>
               </Stack.Item>
               <Stack.Item>
@@ -502,7 +568,7 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
                           LATEST
                         </tspan>
                         <tspan x={40} dy="1.2em">
-                          {getLastName()}
+                          {getLastTargetName(data)}
                         </tspan>
                       </>
                     )}

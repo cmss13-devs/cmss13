@@ -13,6 +13,7 @@ export interface MfdProps {
   rightButtons?: Array<ButtonProps>;
   bottomButtons?: Array<ButtonProps>;
   children?: InfernoNode;
+  otherPanelStateId?: string;
 }
 
 export const MfdButton = (props: ButtonProps, context) => {

@@ -45,7 +45,7 @@
 	///How many rounds are in the weapon. This is useful if we break down our guns.
 	var/rounds = 0
 	///Indicates whether the M56D will come with its folding mount already attached
-	var/has_mount = FALSE 
+	var/has_mount = FALSE
 	///The distance this has to be away from other m56d_hmg and m56d_post to be placed.
 	var/defense_check_range = 5
 
@@ -476,7 +476,6 @@
 	/// What firemodes this gun has
 	var/static/list/gun_firemodes = list(
 		GUN_FIREMODE_SEMIAUTO,
-		GUN_FIREMODE_BURSTFIRE,
 		GUN_FIREMODE_AUTOMATIC,
 	)
 	/// A multiplier for how slow this gun should fire in automatic as opposed to burst. 1 is normal, 1.2 is 20% slower, 0.8 is 20% faster, etc.
@@ -812,83 +811,116 @@
 	I.flick_overlay(src, 3)
 
 /obj/structure/machinery/m56d_hmg/MouseDrop(over_object, src_location, over_location) //Drag the MG to us to man it.
-	if(!ishuman(usr) || usr.stat)
+	// If the gun sprite wasn't dragged onto the user, or the user isn't adjacent.
+	if(over_object != usr || !in_range(src, usr))
 		return
-	var/mob/living/carbon/human/user = usr //this is us
+	// If the user is already manning the gun.
+	if(operator == usr)
+		// Exit the gun.
+		usr.unset_interaction()
+	else
+		// Try to man the gun
+		try_mount_gun(usr)
 
-	var/user_turf = get_turf(user)
+/obj/structure/machinery/m56d_hmg/proc/try_mount_gun(mob/living/carbon/human/user)
+	// If the user isn't a human.
+	if(!istype(user))
+		return
+	// If the user is unconscious or dead.
+	if(user.stat)
+		return
 
-	for(var/opp_dir in reverse_nearby_direction(src.dir))
-		if(get_step(src, opp_dir) == user_turf) //Players must be behind, or left or right of that back tile
-			src.add_fingerprint(usr)
-			if((over_object == user && (in_range(src, user) || locate(src) in user))) //Make sure its on ourselves
-				if(user.interactee == src)
-					user.unset_interaction()
-					user.visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("[user] lets go of \the [src].")]", SPAN_NOTICE("You let go of \the [src]."))
-					return
-				if(operator) //If there is already a operator then they're manning it.
-					if(operator.interactee == null)
-						operator = null //this shouldn't happen, but just in case
-					else
-						to_chat(user, "Someone's already controlling it.")
-						return
-				else
-					if(user.interactee) //Make sure we're not manning two guns at once, tentacle arms.
-						to_chat(user, "You're already manning something!")
-						return
-					if(user.get_active_hand() != null)
-						to_chat(user, SPAN_WARNING("You need a free hand to man \the [src]."))
+	// If the user isn't actually allowed to use guns.
+	if(!user.allow_gun_usage)
+		to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
+		return
 
-					if(!user.allow_gun_usage)
-						to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
-						return
-					else
-						ADD_TRAIT(user, TRAIT_IMMOBILIZED, INTERACTION_TRAIT)
-						user.set_interaction(src)
-						give_action(user, /datum/action/human_action/mg_exit)
+	// If the user is invisible.
+	if(user.alpha <= 60)
+		to_chat(user, SPAN_WARNING("You can't use [src] while cloaked!"))
+		return
 
+	// Make sure we're not manning two guns at once, tentacle arms.
+	if(user.interactee)
+		to_chat(user, SPAN_WARNING("You're already manning something!"))
+		return
+
+	// Check the directions opposite of where the gun is facing.
+	var/found_user = FALSE
+	var/turf/user_turf = get_turf(user)
+	for(var/opposite_dir in reverse_nearby_direction(src.dir))
+		if(get_step(src, opposite_dir) == user_turf)
+			found_user = TRUE
+			break
+	// If the user isn't standing behind or on top of the gun.
+	if(!found_user && user_turf != get_turf(src))
+		to_chat(user, SPAN_WARNING("You are too far from the handles to man [src]!"))
+		return
+
+	// If there's already someone manning it.
+	if(operator)
+		// This shouldn't happen, but just in case.
+		if(operator.interactee == null)
+			operator = null
 		else
-			to_chat(usr, SPAN_NOTICE("You are too far from the handles to man [src]!"))
+			to_chat(user, SPAN_WARNING("Someone's already controlling [src]!"))
+			return
+
+	// If both hands aren't empty.
+	if(user.get_active_hand() || user.get_inactive_hand())
+		to_chat(user, SPAN_WARNING("You need both hands free to grab the handles!"))
+		return
+
+	// Man the gun!
+	user.set_interaction(src)
 
 /obj/structure/machinery/m56d_hmg/on_set_interaction(mob/user)
-	RegisterSignal(user, list(COMSIG_MOB_MG_EXIT, COMSIG_MOB_RESISTED, COMSIG_MOB_DEATH, COMSIG_LIVING_SET_BODY_POSITION), PROC_REF(exit_interaction))
-	flags_atom |= RELAY_CLICK
+	ADD_TRAIT(user, TRAIT_IMMOBILIZED, INTERACTION_TRAIT)
+	give_action(user, /datum/action/human_action/mg_exit)
+	user.forceMove(src.loc)
+	user.setDir(dir)
+	user.reset_view(src)
 	user.status_flags |= IMMOBILE_ACTION
-	user.visible_message(SPAN_NOTICE("[user] mans \the [src]."),SPAN_NOTICE("You man \the [src], locked and loaded!"))
+	user.visible_message(SPAN_NOTICE("[user] mans [src]."), SPAN_NOTICE("You man [src], locked and loaded!"))
+	user_old_x = user.pixel_x
+	user_old_y = user.pixel_y
+	update_pixels(user)
+
+	RegisterSignal(user, list(COMSIG_MOB_MG_EXIT, COMSIG_MOB_RESISTED, COMSIG_MOB_DEATH, COMSIG_LIVING_SET_BODY_POSITION), PROC_REF(exit_interaction))
 	RegisterSignal(user, COMSIG_MOB_MOUSEDOWN, PROC_REF(start_fire))
 	RegisterSignal(user, COMSIG_MOB_MOUSEDRAG, PROC_REF(change_target))
 	RegisterSignal(user, COMSIG_MOB_MOUSEUP, PROC_REF(stop_fire))
-	user.forceMove(src.loc)
-	user.setDir(dir)
-	user_old_x = user.pixel_x
-	user_old_y = user.pixel_y
-	user.reset_view(src)
-	update_pixels(user)
-	operator = user
 
-/obj/structure/machinery/m56d_hmg/on_unset_interaction(mob/living/user)
-	flags_atom &= ~RELAY_CLICK
-	SEND_SIGNAL(src, COMSIG_GUN_INTERRUPT_FIRE)
-	user.status_flags &= ~IMMOBILE_ACTION
-	user.visible_message(SPAN_NOTICE("[user] lets go of \the [src]."),SPAN_NOTICE("You let go of \the [src], letting the gun rest."))
+	operator = user
+	flags_atom |= RELAY_CLICK
+
+/obj/structure/machinery/m56d_hmg/on_unset_interaction(mob/user)
 	REMOVE_TRAIT(user, TRAIT_IMMOBILIZED, INTERACTION_TRAIT)
-	UnregisterSignal(user, list(COMSIG_MOB_MOUSEUP, COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEDRAG))
-	user.reset_view(null)
-	user.remove_temp_pass_flags(PASS_MOB_THRU) // this is necessary because being knocked over while using the gun makes you incorporeal
+	remove_action(user, /datum/action/human_action/mg_exit)
 	user.Move(get_step(src, reverse_direction(src.dir)))
 	user.setDir(dir) //set the direction of the player to the direction the gun is facing
+	user.reset_view(null)
+	user.status_flags &= ~IMMOBILE_ACTION
+	user.visible_message(SPAN_NOTICE("[user] lets go of [src]."), SPAN_NOTICE("You let go of [src], letting the gun rest."))
 	user_old_x = 0 //reset our x
 	user_old_y = 0 //reset our y
 	update_pixels(user, FALSE)
-	if(operator == user) //We have no operator now
-		operator = null
-	remove_action(user, /datum/action/human_action/mg_exit)
+	user.remove_temp_pass_flags(PASS_MOB_THRU) // this is necessary because being knocked over while using the gun makes you incorporeal
+
+	SEND_SIGNAL(src, COMSIG_GUN_INTERRUPT_FIRE)
 	UnregisterSignal(user, list(
 		COMSIG_MOB_MG_EXIT,
 		COMSIG_MOB_RESISTED,
 		COMSIG_MOB_DEATH,
 		COMSIG_LIVING_SET_BODY_POSITION,
+		COMSIG_MOB_MOUSEUP,
+		COMSIG_MOB_MOUSEDOWN,
+		COMSIG_MOB_MOUSEDRAG,
 	))
+
+	if(operator == user) //We have no operator now
+		operator = null
+	flags_atom &= ~RELAY_CLICK
 
 
 /obj/structure/machinery/m56d_hmg/proc/update_pixels(mob/user, mounting = TRUE)

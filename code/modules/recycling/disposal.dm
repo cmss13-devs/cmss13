@@ -1371,7 +1371,7 @@
 //Expel the contents of the holder object, then delete it. Called when the holder exits the outlet
 /obj/structure/disposaloutlet/proc/expel(obj/structure/disposalholder/H)
 
-	flick("outlet-open", src)
+	flick("[icon_state]-open", src)
 	playsound(src, 'sound/machines/warning-buzzer.ogg', 25, 0)
 	sleep(20) //Wait until correct animation frame
 	playsound(src, 'sound/machines/hiss.ogg', 25, 0)

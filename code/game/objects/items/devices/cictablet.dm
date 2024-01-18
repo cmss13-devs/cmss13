@@ -123,7 +123,7 @@
 		if("award")
 			if(announcement_faction != FACTION_MARINE)
 				return
-			print_medal(usr, src)
+			open_medal_panel(usr, src)
 			. = TRUE
 
 		if("mapview")

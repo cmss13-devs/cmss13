@@ -235,7 +235,7 @@
 			log_announcement("[key_name(usr)] has announced the following: [input]")
 
 		if("award")
-			print_medal(usr, src)
+			open_medal_panel(usr, src)
 
 		if("selectlz")
 			if(SSticker.mode.active_lz)

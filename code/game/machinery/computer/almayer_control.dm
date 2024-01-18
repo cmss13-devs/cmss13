@@ -110,7 +110,7 @@
 		return
 	switch(action)
 		if("award")
-			print_medal(usr, src)
+			open_medal_panel(usr, src)
 			. = TRUE
 
 		// evac stuff start \\

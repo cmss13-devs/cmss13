@@ -1091,7 +1091,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 
 	//if the chance was not set by what called fracture(), the endurance check is done instead
 	if(bonebreak_probability == null) //bone break chance is based on endurance, 25% for survivors, erts, 100% for most everyone else.
-		bonebreak_probability = 100 / Clamp(owner.skills?.get_skill_level(SKILL_ENDURANCE)-1,1,100) //can't be zero
+		bonebreak_probability = 100 / clamp(owner.skills?.get_skill_level(SKILL_ENDURANCE)-1,1,100) //can't be zero
 
 	var/list/bonebreak_data = list("bonebreak_probability" = bonebreak_probability)
 	SEND_SIGNAL(owner, COMSIG_HUMAN_BONEBREAK_PROBABILITY, bonebreak_data)

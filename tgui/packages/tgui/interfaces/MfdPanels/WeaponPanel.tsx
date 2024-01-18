@@ -1,10 +1,11 @@
 import { range } from 'common/collections';
 import { useBackend } from '../../backend';
-import { Box, Stack } from '../../components';
+import { Box, Icon, Stack } from '../../components';
 import { DropshipEquipment } from '../DropshipWeaponsConsole';
 import { MfdProps, MfdPanel } from './MultifunctionDisplay';
 import { mfdState, useWeaponState } from './stateManagers';
 import { LazeTarget } from './types';
+import { getLastTargetName, lazeMapper, TargetLines, useTargetOffset } from './TargetAquisition';
 
 const EmptyWeaponPanel = (props, context) => {
   return <div>Nothing Listed</div>;
@@ -14,30 +15,12 @@ interface EquipmentContext {
   targets_data: Array<LazeTarget>;
 }
 
-const getLazeButtonProps = (context) => {
-  const { act, data } = useBackend<EquipmentContext>(context);
-  const lazes = range(0, 5).map((x) =>
-    x > data.targets_data.length ? undefined : data.targets_data[x]
-  );
-  const get_laze = (index: number) => {
-    const laze = lazes.find((_, i) => i === index);
-    if (laze === undefined) {
-      return {
-        children: '',
-        onClick: () => act('set-camera', { equipment_id: null }),
-      };
-    }
-    return {
-      children: laze?.target_name.split(' ')[0] ?? 'NONE',
-      onClick: laze
-        ? () => act('set-camera', { 'equipment_id': laze.target_tag })
-        : undefined,
-    };
-  };
-  return [get_laze(0), get_laze(1), get_laze(2), get_laze(3), get_laze(4)];
-};
+const WeaponPanel = (
+  props: { panelId: string; equipment: DropshipEquipment },
+  context
+) => {
+  const { data } = useBackend<EquipmentContext>(context);
 
-const WeaponPanel = (props: { equipment: DropshipEquipment }, context) => {
   return (
     <Stack>
       <Stack.Item>
@@ -45,7 +28,7 @@ const WeaponPanel = (props: { equipment: DropshipEquipment }, context) => {
           <text stroke="#00e94e" x={60} y={230} text-anchor="start">
             ACTIONS
           </text>
-          {false && (
+          {true && (
             <path
               fill-opacity="0"
               stroke="#00e94e"
@@ -101,41 +84,47 @@ const WeaponPanel = (props: { equipment: DropshipEquipment }, context) => {
         </Box>
       </Stack.Item>
       <Stack.Item>
-        <svg height="501" width="100">
-          <text stroke="#00e94e" x={20} y={210} text-anchor="end">
-            <tspan x={40} dy="1.2em">
-              SELECT
-            </tspan>
-            <tspan x={40} dy="1.2em">
-              TARGETS
-            </tspan>
-          </text>
-          <path
-            fill-opacity="0"
-            stroke="#00e94e"
-            d="M 50 210 l 20 0 l 20 -180 l 40 0"
-          />
-          <path
-            fill-opacity="0"
-            stroke="#00e94e"
-            d="M 50 220 l 25 0 l 15 -90 l 40 0"
-          />
-          <path
-            fill-opacity="0"
-            stroke="#00e94e"
-            d="M 50 230 l 20 0 l 20 0 l 40 0"
-          />
-
-          <path
-            fill-opacity="0"
-            stroke="#00e94e"
-            d="M 50 240 l 25 0 l 15 90 l 40 0"
-          />
-          <path
-            fill-opacity="0"
-            stroke="#00e94e"
-            d="M 50 250 l 20 0 l 20 180 l 40 0"
-          />
+        <svg width="50px" height="500px">
+          <g transform="translate(-10)">
+            {data.targets_data.length === 0 && (
+              <text
+                stroke="#00e94e"
+                x={-20}
+                y={210}
+                text-anchor="end"
+                transform="rotate(-90 20 210)"
+                fontSize="2em">
+                <tspan x={50} y={250} dy="1.2em">
+                  NO TARGETS
+                </tspan>
+              </text>
+            )}
+            {data.targets_data.length > 0 && (
+              <text stroke="#00e94e" x={20} y={190} text-anchor="end">
+                <tspan x={40} dy="1.2em">
+                  SELECT
+                </tspan>
+                <tspan x={40} dy="1.2em">
+                  TARGETS
+                </tspan>
+                <tspan x={40} dy="1.2em">
+                  {Math.min(5, data.targets_data.length)} of{' '}
+                  {data.targets_data.length}
+                </tspan>
+                {data.targets_data.length > 0 && (
+                  <>
+                    <tspan x={40} dy="1.2em">
+                      LATEST
+                    </tspan>
+                    <tspan x={40} dy="1.2em">
+                      {getLastTargetName(data)}
+                    </tspan>
+                  </>
+                )}
+              </text>
+            )}
+            <TargetLines panelId={props.panelId} />
+          </g>
         </svg>
       </Stack.Item>
     </Stack>
@@ -146,7 +135,14 @@ export const WeaponMfdPanel = (props: MfdProps, context) => {
   const { setPanelState } = mfdState(context, props.panelStateId);
   const { weaponState } = useWeaponState(context, props.panelStateId);
   const { data, act } = useBackend<EquipmentContext>(context);
+  const { targetOffset, setTargetOffset } = useTargetOffset(
+    context,
+    props.panelStateId
+  );
   const weap = data.equipment_data.find((x) => x.mount_point === weaponState);
+  const targets = range(targetOffset, targetOffset + 5).map((x) =>
+    lazeMapper(context, x)
+  );
 
   return (
     <MfdPanel
@@ -163,16 +159,41 @@ export const WeaponMfdPanel = (props: MfdProps, context) => {
           onClick: () => setPanelState(''),
         },
         {},
-      ]}
-      topButtons={[
+        {},
+        {},
         {
-          children: 'EQUIP',
-          onClick: () => setPanelState('equipment'),
+          children:
+            targetOffset + 5 < data.targets_data?.length ? (
+              <Icon name="arrow-down" />
+            ) : undefined,
+          onClick: () => {
+            if (targetOffset + 5 < data.targets_data?.length) {
+              setTargetOffset(targetOffset + 1);
+            }
+          },
         },
       ]}
-      rightButtons={getLazeButtonProps(context)}>
+      topButtons={[
+        { children: 'EQUIP', onClick: () => setPanelState('equipment') },
+        {},
+        {},
+        {},
+        {
+          children: targetOffset > 0 ? <Icon name="arrow-up" /> : undefined,
+          onClick: () => {
+            if (targetOffset > 0) {
+              setTargetOffset(targetOffset - 1);
+            }
+          },
+        },
+      ]}
+      rightButtons={targets}>
       <Box className="NavigationMenu">
-        {weap ? <WeaponPanel equipment={weap} /> : <EmptyWeaponPanel />}
+        {weap ? (
+          <WeaponPanel equipment={weap} panelId={props.panelStateId} />
+        ) : (
+          <EmptyWeaponPanel />
+        )}
       </Box>
     </MfdPanel>
   );

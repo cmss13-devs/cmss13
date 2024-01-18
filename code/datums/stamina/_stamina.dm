@@ -34,7 +34,7 @@
 	if(!has_stamina)
 		return
 
-	current_stamina = Clamp(current_stamina - amount, 0, max_stamina)
+	current_stamina = clamp(current_stamina - amount, 0, max_stamina)
 
 	if(current_stamina < max_stamina)
 		START_PROCESSING(SSobj, src)

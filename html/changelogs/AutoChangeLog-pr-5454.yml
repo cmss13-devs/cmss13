@@ -1,0 +1,4 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - bugfix: "lowers volume of neurohalucination from 100 (no outher sounds are so laud) to 65 (just about under queen screech level)."

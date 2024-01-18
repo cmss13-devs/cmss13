@@ -1,0 +1,12 @@
+author: "fira"
+delete-after: True
+changes:
+  - rscdel: "Removed AIs."
+  - rscdel: "Removed Cyborgs."
+  - rscdel: "Removed Maintenance Drones."
+  - rscdel: "Removed Camera chunking for AIs, and all associated dynamic updates."
+  - rscdel: "Removed Robotic equipment items."
+  - rscdel: "Removed Robotic and AI transformation tools."
+  - rscdel: "Removed Robotic Transformation Disease."
+  - rscdel: "Removed Nanites. Roburgers are now all safe to eat."
+  - rscdel: "Removed functionality from AI machinery and AI card. They're props now."

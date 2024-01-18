@@ -128,6 +128,9 @@
 	interior.enter(user, "insanity[entry_num]")
 	return TRUE
 
+/obj/structure/closet/fancy/insane/bullet_act(obj/projectile/Proj)
+	return TRUE
+
 /obj/structure/interior_exit/fancy/ladder
 	name = "very long ladder"
 	icon = 'icons/obj/structures/structures.dmi'

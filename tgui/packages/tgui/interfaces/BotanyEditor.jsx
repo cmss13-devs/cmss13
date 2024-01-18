@@ -1,10 +1,10 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend } from '../backend';
 import { Section, Button, Stack, LabeledList, NoticeBox } from '../components';
 import { Window } from '../layouts';
 
-export const BotanyEditor = (_props, context) => {
-  const { act, data } = useBackend(context);
+export const BotanyEditor = () => {
+  const { act, data } = useBackend();
 
   const { disk, seed, degradation, sourceName, locus } = data;
 
@@ -36,7 +36,7 @@ export const BotanyEditor = (_props, context) => {
           </Stack>
         </Section>
         <Section title="Buffered Genetic Data">
-          <Fragment>
+          <>
             {!disk && (
               <NoticeBox danger>
                 No disk! Genetic data cannot be applied.
@@ -45,7 +45,7 @@ export const BotanyEditor = (_props, context) => {
             {!seed && (
               <NoticeBox danger>No seeds to apply genetic data to!</NoticeBox>
             )}
-          </Fragment>
+          </>
           {!!disk && (
             <LabeledList>
               <LabeledList.Item label="Source">{sourceName}</LabeledList.Item>

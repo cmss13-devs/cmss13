@@ -31,8 +31,8 @@ interface ShutteManipulatorData {
   existing_shuttle?: ShuttleData;
 }
 
-export const ShuttleManipulator = (props, context) => {
-  const [tab, setTab] = useLocalState(context, 'tab', 1);
+export const ShuttleManipulator = (props) => {
+  const [tab, setTab] = useLocalState('tab', 1);
   return (
     <Window title="Shuttle Manipulator" width={800} height={600} theme="admin">
       <Window.Content scrollable>
@@ -55,8 +55,8 @@ export const ShuttleManipulator = (props, context) => {
   );
 };
 
-const ShuttleManipulatorStatus = (props, context) => {
-  const { act, data } = useBackend<ShutteManipulatorData>(context);
+const ShuttleManipulatorStatus = (props) => {
+  const { act, data } = useBackend<ShutteManipulatorData>();
   const shuttles = data.shuttles ?? [];
   return (
     <Section>
@@ -144,12 +144,11 @@ const ShuttleManipulatorStatus = (props, context) => {
   );
 };
 
-const ShuttleManipulatorTemplates = (props, context) => {
-  const { act, data } = useBackend<ShutteManipulatorData>(context);
+const ShuttleManipulatorTemplates = (props) => {
+  const { act, data } = useBackend<ShutteManipulatorData>();
   const templateObject = data.template_data;
   const selected = data.selected;
   const [selectedTemplateId, setSelectedTemplateId] = useLocalState(
-    context,
     'templateId',
     templateObject[0]?.shuttle_id ?? 0
   );
@@ -210,8 +209,8 @@ const ShuttleManipulatorTemplates = (props, context) => {
   );
 };
 
-const ShuttleManipulatorModification = (props, context) => {
-  const { act, data } = useBackend<ShutteManipulatorData>(context);
+const ShuttleManipulatorModification = (props) => {
+  const { act, data } = useBackend<ShutteManipulatorData>();
   const selected = data.selected;
   const existingShuttle = data.existing_shuttle;
   return (

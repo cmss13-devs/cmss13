@@ -9,12 +9,12 @@ import { SpotlightMfdPanel } from './SpotlightPanel';
 import { EquipmentContext } from './types';
 import { mfdState, useEquipmentState } from './stateManagers';
 
-export const SupportMfdPanel = (props: MfdProps, context) => {
-  const { equipmentState } = useEquipmentState(context, props.panelStateId);
+export const SupportMfdPanel = (props: MfdProps) => {
+  const { equipmentState } = useEquipmentState(props.panelStateId);
 
-  const { setPanelState } = mfdState(context, props.panelStateId);
+  const { setPanelState } = mfdState(props.panelStateId);
 
-  const { data } = useBackend<EquipmentContext>(context);
+  const { data } = useBackend<EquipmentContext>();
   const result = data.equipment_data.find(
     (x) => x.mount_point === equipmentState
   );

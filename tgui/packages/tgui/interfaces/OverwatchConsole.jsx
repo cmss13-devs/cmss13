@@ -2,8 +2,8 @@ import { useBackend, useLocalState, useSharedState } from '../backend';
 import { Button, Section, Stack, Tabs, Table, Box, Input, NumberInput, LabeledControls, Divider, Collapsible } from '../components';
 import { Window } from '../layouts';
 
-export const OverwatchConsole = (props, context) => {
-  const { act, data } = useBackend(context);
+export const OverwatchConsole = (props) => {
+  const { act, data } = useBackend();
 
   return (
     <Window
@@ -17,8 +17,8 @@ export const OverwatchConsole = (props, context) => {
   );
 };
 
-const HomePanel = (props, context) => {
-  const { act, data } = useBackend(context);
+const HomePanel = (props) => {
+  const { act, data } = useBackend();
 
   // Buttons don't seem to support hexcode colors, so we'll have to do this manually, sadly
   const squadColorMap = {
@@ -57,10 +57,10 @@ const HomePanel = (props, context) => {
   );
 };
 
-const SquadPanel = (props, context) => {
-  const { act, data } = useBackend(context);
+const SquadPanel = (props) => {
+  const { act, data } = useBackend();
 
-  const [category, setCategory] = useLocalState(context, 'selected', 'monitor');
+  const [category, setCategory] = useLocalState('selected', 'monitor');
 
   return (
     <>
@@ -106,8 +106,8 @@ const SquadPanel = (props, context) => {
   );
 };
 
-const MainDashboard = (props, context) => {
-  const { act, data } = useBackend(context);
+const MainDashboard = (props) => {
+  const { act, data } = useBackend();
 
   let { current_squad, primary_objective, secondary_objective } = data;
 
@@ -194,8 +194,8 @@ const MainDashboard = (props, context) => {
   );
 };
 
-const RoleTable = (props, context) => {
-  const { act, data } = useBackend(context);
+const RoleTable = (props) => {
+  const { act, data } = useBackend();
 
   const {
     squad_leader,
@@ -290,8 +290,8 @@ const RoleTable = (props, context) => {
   );
 };
 
-const SquadMonitor = (props, context) => {
-  const { act, data } = useBackend(context);
+const SquadMonitor = (props) => {
+  const { act, data } = useBackend();
 
   const sortByRole = (a, b) => {
     a = a.role;
@@ -326,27 +326,20 @@ const SquadMonitor = (props, context) => {
   let { marines, squad_leader } = data;
 
   const [hidden_marines, setHiddenMarines] = useLocalState(
-    context,
     'hidden_marines',
     []
   );
 
   const [showHiddenMarines, setShowHiddenMarines] = useLocalState(
-    context,
     'showhidden',
     false
   );
   const [showDeadMarines, setShowDeadMarines] = useLocalState(
-    context,
     'showdead',
     false
   );
 
-  const [marineSearch, setMarineSearch] = useLocalState(
-    context,
-    'marinesearch',
-    null
-  );
+  const [marineSearch, setMarineSearch] = useLocalState('marinesearch', null);
 
   let determine_status_color = (status) => {
     let conscious = status.includes('Conscious');
@@ -548,11 +541,11 @@ const SquadMonitor = (props, context) => {
   );
 };
 
-const SupplyDrop = (props, context) => {
-  const { act, data } = useBackend(context);
+const SupplyDrop = (props) => {
+  const { act, data } = useBackend();
 
-  const [supplyX, setSupplyX] = useSharedState(context, 'supplyx', 0);
-  const [supplyY, setSupplyY] = useSharedState(context, 'supply', 0);
+  const [supplyX, setSupplyX] = useSharedState('supplyx', 0);
+  const [supplyY, setSupplyY] = useSharedState('supply', 0);
 
   let crate_status = 'Crate Loaded';
   let crate_color = 'green';
@@ -619,11 +612,11 @@ const SupplyDrop = (props, context) => {
   );
 };
 
-const OrbitalBombardment = (props, context) => {
-  const { act, data } = useBackend(context);
+const OrbitalBombardment = (props) => {
+  const { act, data } = useBackend();
 
-  const [OBX, setOBX] = useSharedState(context, 'obx', 0);
-  const [OBY, setOBY] = useSharedState(context, 'oby', 0);
+  const [OBX, setOBX] = useSharedState('obx', 0);
+  const [OBY, setOBY] = useSharedState('oby', 0);
 
   let ob_status = 'Ready';
   let ob_color = 'green';
@@ -689,13 +682,13 @@ const OrbitalBombardment = (props, context) => {
   );
 };
 
-const SavedCoordinates = (props, context) => {
-  const { act, data } = useBackend(context);
+const SavedCoordinates = (props) => {
+  const { act, data } = useBackend();
 
-  const [OBX, setOBX] = useSharedState(context, 'obx', 0);
-  const [OBY, setOBY] = useSharedState(context, 'oby', 0);
-  const [supplyX, setSupplyX] = useSharedState(context, 'supplyx', 0);
-  const [supplyY, setSupplyY] = useSharedState(context, 'supply', 0);
+  const [OBX, setOBX] = useSharedState('obx', 0);
+  const [OBY, setOBY] = useSharedState('oby', 0);
+  const [supplyX, setSupplyX] = useSharedState('supplyx', 0);
+  const [supplyY, setSupplyY] = useSharedState('supply', 0);
 
   const { forOB, forSupply } = props;
 

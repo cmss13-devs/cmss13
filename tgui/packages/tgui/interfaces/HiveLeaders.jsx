@@ -3,8 +3,8 @@ import { useBackend } from '../backend';
 import { Section, Table, Icon } from '../components';
 import { Window } from '../layouts';
 
-export const HiveLeaders = (props, context) => {
-  const { act, data } = useBackend(context);
+export const HiveLeaders = (props) => {
+  const { act, data } = useBackend();
   const { queens, leaders } = data;
   return (
     <Window

@@ -2,8 +2,8 @@ import { useBackend } from '../backend';
 import { Button, Section, ProgressBar, Dimmer, Icon, NoticeBox, Box, Collapsible, Divider } from '../components';
 import { Window } from '../layouts';
 
-export const OrbitalCannonConsole = (_props, context) => {
-  const { act, data } = useBackend(context);
+export const OrbitalCannonConsole = () => {
+  const { act, data } = useBackend();
 
   const timeLeft = data.nextchambertime - data.worldtime;
   const timeLeftPct = timeLeft / data.chamber_cooldown;

@@ -1,6 +1,6 @@
 import { classes } from 'common/react';
 import { createSearch } from 'common/string';
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend, useLocalState } from '../backend';
 import { Input, Button, Flex, Divider, Collapsible, Icon, NumberInput, Table } from '../components';
 import { Window } from '../layouts';
@@ -77,8 +77,8 @@ const getFilter = (data) => {
   };
 };
 
-export const HiveStatus = (props, context) => {
-  const { data } = useBackend(context);
+export const HiveStatus = (props) => {
+  const { data } = useBackend();
   const { hive_name } = data;
 
   return (
@@ -105,8 +105,8 @@ export const HiveStatus = (props, context) => {
   );
 };
 
-const GeneralInformation = (props, context) => {
-  const { data } = useBackend(context);
+const GeneralInformation = (props) => {
+  const { data } = useBackend();
   const {
     queen_location,
     hive_location,
@@ -152,8 +152,8 @@ const GeneralInformation = (props, context) => {
   );
 };
 
-const XenoCounts = (props, context) => {
-  const { data } = useBackend(context);
+const XenoCounts = (props) => {
+  const { data } = useBackend();
   const { xeno_counts, tier_slots, hive_color } = data;
 
   return (
@@ -245,15 +245,15 @@ const XenoCounts = (props, context) => {
   );
 };
 
-const XenoList = (props, context) => {
-  const { act, data } = useBackend(context);
-  const [searchKey, setSearchKey] = useLocalState(context, 'searchKey', '');
-  const [searchFilters, setSearchFilters] = useLocalState(
-    context,
-    'searchFilters',
-    { name: true, strain: true, location: true }
-  );
-  const [maxHealth, setMaxHealth] = useLocalState(context, 'maxHealth', 100);
+const XenoList = (props) => {
+  const { act, data } = useBackend();
+  const [searchKey, setSearchKey] = useLocalState('searchKey', '');
+  const [searchFilters, setSearchFilters] = useLocalState('searchFilters', {
+    name: true,
+    strain: true,
+    location: true,
+  });
+  const [maxHealth, setMaxHealth] = useLocalState('maxHealth', 100);
   const { xeno_keys, xeno_vitals, xeno_info, user_ref, is_in_ovi, hive_color } =
     data;
   const xeno_entries = filterXenos({
@@ -365,7 +365,7 @@ const XenoList = (props, context) => {
               {entry.health < 30 ? (
                 <b style={redFont}>{entry.health}%</b>
               ) : (
-                <Fragment>{entry.health}%</Fragment>
+                <>{entry.health}%</>
               )}
             </Table.Cell>
             <Table.Cell className="noPadCell" textAlign="center">
@@ -399,7 +399,7 @@ const XenoList = (props, context) => {
   );
 };
 
-const StatusIcon = (props, context) => {
+const StatusIcon = (props) => {
   const { entry } = props;
   const { is_ssd, is_leader, is_queen } = entry;
 
@@ -414,8 +414,8 @@ const StatusIcon = (props, context) => {
   }
 };
 
-const XenoCollapsible = (props, context) => {
-  const { data } = useBackend(context);
+const XenoCollapsible = (props) => {
+  const { data } = useBackend();
   const { title, children } = props;
   const { hive_color } = data;
 
@@ -430,12 +430,12 @@ const XenoCollapsible = (props, context) => {
   );
 };
 
-const QueenOviButtons = (props, context) => {
-  const { act, data } = useBackend(context);
+const QueenOviButtons = (props) => {
+  const { act, data } = useBackend();
   const { target_ref } = props;
 
   return (
-    <Fragment>
+    <>
       <Flex.Item>
         <Button
           content="Heal"
@@ -458,6 +458,6 @@ const QueenOviButtons = (props, context) => {
           }
         />
       </Flex.Item>
-    </Fragment>
+    </>
   );
 };

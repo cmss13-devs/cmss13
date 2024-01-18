@@ -2,8 +2,8 @@ import { useBackend } from '../backend';
 import { Section, NoticeBox, Button } from '../components';
 import { Window } from '../layouts';
 
-export const FiltrationControl = (_props, context) => {
-  const { act, data } = useBackend(context);
+export const FiltrationControl = () => {
+  const { act, data } = useBackend();
 
   const FiltOn = data.filt_on;
 

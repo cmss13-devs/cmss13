@@ -2,8 +2,8 @@ import { useBackend } from '../backend';
 import { Button, Section, Flex, NoticeBox } from '../components';
 import { Window } from '../layouts';
 
-export const ResearchDoorDisplay = (_props, context) => {
-  const { act, data } = useBackend(context);
+export const ResearchDoorDisplay = () => {
+  const { act, data } = useBackend();
 
   return (
     <Window width={350} height={170}>

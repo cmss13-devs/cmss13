@@ -10,10 +10,9 @@ interface DemoSimData {
   detonation_cooldown: number;
 }
 
-export const DemoSim = (_props, context) => {
-  const { act, data } = useBackend<DemoSimData>(context);
+export const DemoSim = () => {
+  const { act, data } = useBackend<DemoSimData>();
   const [simulationView, setSimulationView] = useLocalState(
-    context,
     'simulation_view',
     false
   );

@@ -2,8 +2,8 @@ import { useBackend } from '../backend';
 import { Button, Flex, Section, Box } from '../components';
 import { Window } from '../layouts';
 
-export const TechControl = (props, context) => {
-  const { act, data } = useBackend(context);
+export const TechControl = (props) => {
+  const { act, data } = useBackend();
   data.leader_data = data.leader_data || {
     'name': 'Unassigned',
     'job': 'N/A',
@@ -88,7 +88,7 @@ export const TechControl = (props, context) => {
   );
 };
 
-export const Label = (props, context) => {
+export const Label = (props) => {
   const { label, content, ...rest } = props;
 
   return (

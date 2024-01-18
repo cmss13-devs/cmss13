@@ -3,8 +3,8 @@ import { Window } from '../layouts';
 import { classes } from 'common/react';
 import { NoticeBox, Section, Box, Button, Stack, Flex } from '../components';
 
-export const IcMedalsPanel = (props, context) => {
-  const { act, data } = useBackend(context);
+export const IcMedalsPanel = (props) => {
+  const { act, data } = useBackend();
 
   const CONDUCT_MEDAL = 'distinguished conduct medal';
   const BRONZE_HEART_MEDAL = 'bronze heart medal';
@@ -12,7 +12,6 @@ export const IcMedalsPanel = (props, context) => {
   const HEROISM_MEDAL = 'medal of exceptional heroism';
 
   const [recommendationMedalTypes, setRecommendationMedalTypes] = useLocalState(
-    context,
     'recommendation_types',
     []
   );

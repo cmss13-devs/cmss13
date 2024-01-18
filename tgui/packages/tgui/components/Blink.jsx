@@ -1,4 +1,4 @@
-import { Component } from 'inferno';
+import { Component } from 'react';
 
 const DEFAULT_BLINKING_INTERVAL = 1000;
 const DEFAULT_BLINKING_TIME = 1000;

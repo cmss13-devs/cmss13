@@ -2,8 +2,8 @@ import { useBackend } from '../backend';
 import { Section, Flex, Button, Box, Input, NoticeBox } from '../components';
 import { Window } from '../layouts';
 
-export const Centrifuge = (_props, context) => {
-  const { act, data } = useBackend(context);
+export const Centrifuge = () => {
+  const { act, data } = useBackend();
 
   return (
     <Window width={300} height={270} theme="weyland">

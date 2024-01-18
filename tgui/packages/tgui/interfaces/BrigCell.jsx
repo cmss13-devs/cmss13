@@ -3,8 +3,8 @@ import { addZeros } from 'common/math';
 import { Window } from '../layouts';
 import { Box, ColorBox, NoticeBox, Flex, ProgressBar, Button, LabeledList, Divider } from '../components';
 
-export const BrigCell = (props, context) => {
-  const { data, act } = useBackend(context);
+export const BrigCell = (props) => {
+  const { data, act } = useBackend();
   const { viewing_incident, incidents, bit_active } = data;
 
   return (
@@ -90,8 +90,8 @@ const getTimeLeft = function (data) {
   return Math.max(0, timeLeft);
 };
 
-const IncidentDetails = (props, context) => {
-  const { data, act } = useBackend(context);
+const IncidentDetails = (props) => {
+  const { data, act } = useBackend();
   const {
     suspect,
     can_pardon,

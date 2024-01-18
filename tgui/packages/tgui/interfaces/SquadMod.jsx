@@ -2,8 +2,8 @@ import { useBackend } from '../backend';
 import { Button, Stack, Section, NoticeBox } from '../components';
 import { Window } from '../layouts';
 
-export const SquadMod = (props, context) => {
-  const { act, data } = useBackend(context);
+export const SquadMod = (props) => {
+  const { act, data } = useBackend();
   const { squads = [], human, id_name, has_id } = data;
   return (
     <Window width={400} height={300}>

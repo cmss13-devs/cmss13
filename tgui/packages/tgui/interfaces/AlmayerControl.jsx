@@ -1,10 +1,10 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend } from '../backend';
 import { Button, Section, Flex, NoticeBox, Collapsible, Divider, Box } from '../components';
 import { Window } from '../layouts';
 
-export const AlmayerControl = (_props, context) => {
-  const { act, data } = useBackend(context);
+export const AlmayerControl = (_props) => {
+  const { act, data } = useBackend();
 
   const worldTime = data.worldtime;
   const messages = data.messages;
@@ -225,7 +225,7 @@ export const AlmayerControl = (_props, context) => {
           </Flex>
         </Section>
         {messages && (
-          <Fragment>
+          <>
             <Divider />
             <Collapsible title="Messages">
               <Flex>
@@ -251,7 +251,7 @@ export const AlmayerControl = (_props, context) => {
                 })}
               </Flex>
             </Collapsible>
-          </Fragment>
+          </>
         )}
       </Window.Content>
     </Window>

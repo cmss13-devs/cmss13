@@ -10,8 +10,8 @@ interface EscapePodProps {
   launch_without_evac: number;
 }
 
-export const EscapePodConsole = (_props, context) => {
-  const { act, data } = useBackend<EscapePodProps>(context);
+export const EscapePodConsole = () => {
+  const { act, data } = useBackend<EscapePodProps>();
 
   let statusMessage = 'ERROR';
   let buttonColor = 'bad';

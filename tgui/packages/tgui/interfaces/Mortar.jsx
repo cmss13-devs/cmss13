@@ -2,25 +2,17 @@ import { useBackend, useLocalState } from '../backend';
 import { Button, LabeledList, NumberInput, Section } from '../components';
 import { Window } from '../layouts';
 
-export const Mortar = (props, context) => {
-  const { act, data } = useBackend(context);
+export const Mortar = (props) => {
+  const { act, data } = useBackend();
   const { data_target_x, data_target_y, data_dial_x, data_dial_y } = data;
 
-  const [target_x, setTargetX] = useLocalState(
-    context,
-    'target_x',
-    data_target_x
-  );
+  const [target_x, setTargetX] = useLocalState('target_x', data_target_x);
 
-  const [target_y, setTargetY] = useLocalState(
-    context,
-    'target_y',
-    data_target_y
-  );
+  const [target_y, setTargetY] = useLocalState('target_y', data_target_y);
 
-  const [dial_x, setDialX] = useLocalState(context, 'dial_x', data_dial_x);
+  const [dial_x, setDialX] = useLocalState('dial_x', data_dial_x);
 
-  const [dial_y, setDialY] = useLocalState(context, 'dial_y', data_dial_y);
+  const [dial_y, setDialY] = useLocalState('dial_y', data_dial_y);
 
   return (
     <Window width={245} height={220}>

@@ -6,14 +6,14 @@
  */
 
 import { classes } from 'common/react';
-import { Component, createRef } from 'inferno';
+import { Component, createRef } from 'react';
 import { Box } from './Box';
 import { toInputValue } from './Input';
 import { KEY_ENTER, KEY_ESCAPE, KEY_TAB } from 'common/keycodes';
 
 export class TextArea extends Component {
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
     this.textareaRef = props.innerRef || createRef();
     this.state = {
       editing: false,

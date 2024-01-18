@@ -1,10 +1,10 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend } from '../backend';
 import { Button, Flex, Icon, Section, NoticeBox, Stack, Box } from '../components';
 import { Window } from '../layouts';
 
-export const FaxMachine = (_props, context) => {
-  const { act, data } = useBackend(context);
+export const FaxMachine = () => {
+  const { act, data } = useBackend();
   const { idcard } = data;
   const body = idcard ? <FaxMain /> : <FaxEmpty />;
   const windowWidth = idcard ? 600 : 400;
@@ -17,7 +17,7 @@ export const FaxMachine = (_props, context) => {
   );
 };
 
-const FaxMain = (props, context) => {
+const FaxMain = (props) => {
   return (
     <>
       <FaxId />
@@ -26,8 +26,8 @@ const FaxMain = (props, context) => {
   );
 };
 
-const FaxId = (props, context) => {
-  const { act, data } = useBackend(context);
+const FaxId = (props) => {
+  const { act, data } = useBackend();
   const { department, network, idcard, authenticated } = data;
   return (
     <Section title="Authentication">
@@ -59,8 +59,8 @@ const FaxId = (props, context) => {
   );
 };
 
-const FaxSelect = (props, context) => {
-  const { act, data } = useBackend(context);
+const FaxSelect = (props) => {
+  const { act, data } = useBackend();
   const {
     paper,
     paper_name,
@@ -131,8 +131,8 @@ const FaxSelect = (props, context) => {
   );
 };
 
-const FaxEmpty = (props, context) => {
-  const { act, data } = useBackend(context);
+const FaxEmpty = (props) => {
+  const { act, data } = useBackend();
   const { paper, paper_name } = data;
   return (
     <Section textAlign="center" flexGrow="1" fill>

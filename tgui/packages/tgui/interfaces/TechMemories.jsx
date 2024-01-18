@@ -2,13 +2,9 @@ import { useBackend, useLocalState } from '../backend';
 import { Button, Flex, Section, Box, Tabs, Fragment, LabeledList } from '../components';
 import { Window } from '../layouts';
 
-export const TechMemories = (props, context) => {
-  const { act, data } = useBackend(context);
-  const [clueCategory, setClueCategory] = useLocalState(
-    context,
-    'clueCategory',
-    0
-  );
+export const TechMemories = (props) => {
+  const { act, data } = useBackend();
+  const [clueCategory, setClueCategory] = useLocalState('clueCategory', 0);
 
   const { tech_points, theme, clue_categories } = data;
 
@@ -46,7 +42,7 @@ export const TechMemories = (props, context) => {
   );
 };
 
-const CluesAdvanced = (props, context) => {
+const CluesAdvanced = (props) => {
   const { clues } = props;
 
   return (
@@ -90,8 +86,8 @@ const CluesAdvanced = (props, context) => {
   );
 };
 
-const Objectives = (props, context) => {
-  const { data } = useBackend(context);
+const Objectives = (props) => {
+  const { data } = useBackend();
 
   return (
     <Section

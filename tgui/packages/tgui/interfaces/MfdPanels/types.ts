@@ -1,8 +1,8 @@
-import { InfernoNode } from 'inferno';
+import { ReactNode } from 'react';
 import { DropshipEquipment } from '../DropshipWeaponsConsole';
 
 export interface ButtonProps {
-  children?: InfernoNode;
+  children?: ReactNode;
   onClick?: () => void;
 }
 

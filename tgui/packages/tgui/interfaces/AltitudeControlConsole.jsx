@@ -2,8 +2,8 @@ import { useBackend } from '../backend';
 import { Button, ProgressBar, Box, Section } from '../components';
 import { Window } from '../layouts';
 import { createLogger } from '../logging';
-export const AltitudeControlConsole = (_props, context) => {
-  const { act, data } = useBackend(context);
+export const AltitudeControlConsole = () => {
+  const { act, data } = useBackend();
   const logger = createLogger('Debug');
   logger.warn(data);
   return (

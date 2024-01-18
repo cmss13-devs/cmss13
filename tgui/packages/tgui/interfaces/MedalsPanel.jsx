@@ -17,11 +17,11 @@ const PAGES = [
   },
 ];
 
-export const MedalsPanel = (props, context) => {
-  const { data } = useBackend(context);
+export const MedalsPanel = (props) => {
+  const { data } = useBackend();
   const { uscm_awards, uscm_award_ckeys, xeno_awards, xeno_award_ckeys } = data;
 
-  const [pageIndex, setPageIndex] = useLocalState(context, 'pageIndex', 1);
+  const [pageIndex, setPageIndex] = useLocalState('pageIndex', 1);
 
   const PageComponent = PAGES[pageIndex].component();
 
@@ -69,8 +69,8 @@ export const MedalsPanel = (props, context) => {
   );
 };
 
-const MedalsPage = (props, context) => {
-  const { act } = useBackend(context);
+const MedalsPage = (props) => {
+  const { act } = useBackend();
   const { awards, ckeys, isMarineMedal } = props;
 
   return (

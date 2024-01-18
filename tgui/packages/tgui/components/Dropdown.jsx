@@ -5,7 +5,7 @@
  */
 
 import { classes } from 'common/react';
-import { Component } from 'inferno';
+import { Component } from 'react';
 import { Box } from './Box';
 import { Icon } from './Icon';
 

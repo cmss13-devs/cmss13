@@ -1,11 +1,11 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend } from '../backend';
 import { Section, Box, Button, Divider } from '../components';
 import { Window } from '../layouts';
 import { capitalize } from 'common/string';
 
-export const LanguageMenu = (props, context) => {
-  const { act, data } = useBackend(context);
+export const LanguageMenu = (props) => {
+  const { act, data } = useBackend();
   const { languages } = data;
 
   const height = 20 + languages.length * 95;
@@ -21,8 +21,8 @@ export const LanguageMenu = (props, context) => {
   );
 };
 
-const LanguagesView = (props, context) => {
-  const { act, data } = useBackend(context);
+const LanguagesView = (props) => {
+  const { act, data } = useBackend();
   const { languages } = data;
   return languages.map((lang, index) => (
     <Fragment key={index}>

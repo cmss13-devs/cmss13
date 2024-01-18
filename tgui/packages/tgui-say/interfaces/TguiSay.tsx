@@ -3,7 +3,7 @@ import { CHANNELS, WINDOW_SIZES } from '../constants';
 import { Dragzone } from '../components/dragzone';
 import { eventHandlerMap } from '../handlers';
 import { getCss, getTheme, timers } from '../helpers';
-import { Component, createRef } from 'inferno';
+import { Component, createRef } from 'react';
 import { Modal, State } from '../types';
 
 /** Primary class for the TGUI say modal. */
@@ -52,15 +52,15 @@ export class TguiSay extends Component<{}, State> {
     const theme = getTheme(lightMode, radioPrefix, channel, availableChannels);
 
     return (
-      <div className={getCss('modal', theme, size)} $HasKeyedChildren>
+      <div className={getCss('modal', theme, size)}>
         <Dragzone theme={theme} top />
-        <div className="modal__content" $HasKeyedChildren>
+        <div className="modal__content">
           <Dragzone theme={theme} left />
           {!!theme && (
             <button
               key="options"
               className={getCss('button', theme)}
-              onclick={onClick}
+              onClick={onClick}
               type="submit">
               {buttonContent}
             </button>
@@ -82,9 +82,9 @@ export class TguiSay extends Component<{}, State> {
             <button
               key="escape"
               className={getCss('button', theme)}
-              onclick={onEscape}
+              onClick={onEscape}
               type="submit"
-              style={{ 'width': '2rem', 'margin-right': '5px' }}>
+              style={{ 'width': '2rem', 'marginRight': '5px' }}>
               X
             </button>
           )}

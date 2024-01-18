@@ -1,6 +1,6 @@
 import { classes } from 'common/react';
 import { clamp } from 'common/math';
-import { Component, createRef } from 'inferno';
+import { Component, createRef } from 'react';
 import { Box } from './Box';
 import { KEY_ESCAPE, KEY_ENTER } from 'common/keycodes';
 

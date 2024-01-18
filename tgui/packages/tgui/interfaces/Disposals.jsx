@@ -2,8 +2,8 @@ import { useBackend } from '../backend';
 import { Section, ProgressBar, Button, Box } from '../components';
 import { Window } from '../layouts';
 
-export const Disposals = (_props, context) => {
-  const { act, data } = useBackend(context);
+export const Disposals = () => {
+  const { act, data } = useBackend();
 
   const { pressure, mode, flush } = data;
 

@@ -2,8 +2,8 @@ import { useBackend } from '../backend';
 import { Button, Section, NoticeBox, Dimmer, Icon, Stack } from '../components';
 import { Window } from '../layouts';
 
-export const NuclearBomb = (_props, context) => {
-  const { act, data } = useBackend(context);
+export const NuclearBomb = () => {
+  const { act, data } = useBackend();
 
   const cantNuke = (!data.anchor, !!data.safety, !data.decryption_complete);
   const cantDecrypt = (!data.anchor, data.decryption_complete);

@@ -13,8 +13,8 @@ const PAGES = {
   'access_tickets': () => AccessTickets,
   'id_access': () => AccessID,
 };
-export const WorkingJoe = (props, context) => {
-  const { data } = useBackend(context);
+export const WorkingJoe = (props) => {
+  const { data } = useBackend();
   const { current_menu } = data;
   const PageComponent = PAGES[current_menu]();
 
@@ -27,8 +27,8 @@ export const WorkingJoe = (props, context) => {
   );
 };
 
-const Login = (props, context) => {
-  const { act } = useBackend(context);
+const Login = (props) => {
+  const { act } = useBackend();
 
   return (
     <Flex
@@ -61,8 +61,8 @@ const Login = (props, context) => {
   );
 };
 
-const MainMenu = (props, context) => {
-  const { data, act } = useBackend(context);
+const MainMenu = (props) => {
+  const { data, act } = useBackend();
   const { logged_in, access_text, last_page, current_menu, access_level } =
     data;
   let can_request_access = 'Yes';
@@ -223,8 +223,8 @@ const MainMenu = (props, context) => {
   );
 };
 
-const ApolloLog = (props, context) => {
-  const { data, act } = useBackend(context);
+const ApolloLog = (props) => {
+  const { data, act } = useBackend();
   const { logged_in, access_text, last_page, current_menu, apollo_log } = data;
 
   return (
@@ -279,8 +279,8 @@ const ApolloLog = (props, context) => {
   );
 };
 
-const LoginRecords = (props, context) => {
-  const { data, act } = useBackend(context);
+const LoginRecords = (props) => {
+  const { data, act } = useBackend();
   const { logged_in, access_text, last_page, current_menu, access_log } = data;
 
   return (
@@ -335,8 +335,8 @@ const LoginRecords = (props, context) => {
   );
 };
 
-const MaintReports = (props, context) => {
-  const { data, act } = useBackend(context);
+const MaintReports = (props) => {
+  const { data, act } = useBackend();
   const {
     logged_in,
     access_text,
@@ -484,8 +484,8 @@ const MaintReports = (props, context) => {
     </>
   );
 };
-const MaintManagement = (props, context) => {
-  const { data, act } = useBackend(context);
+const MaintManagement = (props) => {
+  const { data, act } = useBackend();
   const {
     logged_in,
     access_text,
@@ -635,8 +635,8 @@ const MaintManagement = (props, context) => {
     </>
   );
 };
-const AccessRequests = (props, context) => {
-  const { data, act } = useBackend(context);
+const AccessRequests = (props) => {
+  const { data, act } = useBackend();
   const {
     logged_in,
     access_text,
@@ -794,8 +794,8 @@ const AccessRequests = (props, context) => {
   );
 };
 
-const AccessTickets = (props, context) => {
-  const { data, act } = useBackend(context);
+const AccessTickets = (props) => {
+  const { data, act } = useBackend();
   const { logged_in, access_text, last_page, current_menu, access_tickets } =
     data;
 

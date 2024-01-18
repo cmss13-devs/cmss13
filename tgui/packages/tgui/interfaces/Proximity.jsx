@@ -2,8 +2,8 @@ import { useBackend } from '../backend';
 import { Button, Knob, LabeledList, Section, Slider, Tooltip } from '../components';
 import { Window } from '../layouts';
 
-export const Proximity = (props, context) => {
-  const { act, data } = useBackend(context);
+export const Proximity = (props) => {
+  const { act, data } = useBackend();
   const { max_time, min_time, max_range, min_range, max_delay, min_delay } =
     data;
 

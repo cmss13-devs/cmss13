@@ -1,4 +1,3 @@
-import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
 import { Button, Flex, Section, Tabs, Box, Input, Slider } from '../components';
 import { KEY_CTRL, KEY_SHIFT } from 'common/keycodes';
@@ -19,10 +18,10 @@ const PAGES = [
   },
 ];
 
-export const VoxPanel = (props, context) => {
-  const { data } = useBackend(context);
+export const VoxPanel = (props) => {
+  const { data } = useBackend();
 
-  const [pageIndex, setPageIndex] = useLocalState(context, 'pageIndex', 0);
+  const [pageIndex, setPageIndex] = useLocalState('pageIndex', 0);
 
   const PageComponent = PAGES[pageIndex].component();
 
@@ -53,8 +52,8 @@ export const VoxPanel = (props, context) => {
   );
 };
 
-const SendVOX = (props, context) => {
-  const { act, data } = useBackend(context);
+const SendVOX = (props) => {
+  const { act, data } = useBackend();
   const { glob_vox_types, factions } = data;
 
   const voxRegexes = {};
@@ -68,19 +67,17 @@ const SendVOX = (props, context) => {
     voxRegexes[key] = new RegExp(regexString, 'g');
   }
 
-  const [voxRegex, setVoxRegex] = useLocalState(context, 'voxRegex', null);
+  const [voxRegex, setVoxRegex] = useLocalState('voxRegex', null);
 
-  const [voxType, setVoxType] = useLocalState(context, 'voxType', null);
+  const [voxType, setVoxType] = useLocalState('voxType', null);
 
-  const [message, setMessage] = useLocalState(context, 'message', '');
+  const [message, setMessage] = useLocalState('message', '');
 
-  const [volume, setVolume] = useLocalState(context, 'volume', 100);
+  const [volume, setVolume] = useLocalState('volume', 100);
 
-  const [currentFaction, setCurrentFaction] = useLocalState(
-    context,
-    'currentFaction',
-    { [factions[0]]: true }
-  );
+  const [currentFaction, setCurrentFaction] = useLocalState('currentFaction', {
+    [factions[0]]: true,
+  });
 
   const handleFactionSet = (val, keysDown) => {
     if (keysDown[KEY_CTRL]) {
@@ -128,7 +125,7 @@ const SendVOX = (props, context) => {
     }
   };
 
-  const [validWords, setValidWords] = useLocalState(context, 'valid_words', []);
+  const [validWords, setValidWords] = useLocalState('valid_words', []);
 
   const handleSetMessage = (msg) => {
     setMessage(msg);
@@ -141,7 +138,7 @@ const SendVOX = (props, context) => {
   };
 
   return (
-    <Fragment>
+    <>
       <Flex direction="row">
         <Flex.Item grow={1}>
           <Section
@@ -243,21 +240,17 @@ const SendVOX = (props, context) => {
           </Flex.Item>
         </Section>
       </Flex>
-    </Fragment>
+    </>
   );
 };
 
-const SoundList = (props, context) => {
-  const { act, data } = useBackend(context);
+const SoundList = (props) => {
+  const { act, data } = useBackend();
   const { glob_vox_types } = data;
 
-  const [voxType, setVoxType] = useLocalState(context, 'voxFilesType', null);
+  const [voxType, setVoxType] = useLocalState('voxFilesType', null);
 
-  const [currentSearch, setCurrentSearch] = useLocalState(
-    context,
-    'current_search',
-    ''
-  );
+  const [currentSearch, setCurrentSearch] = useLocalState('current_search', '');
 
   return (
     <Flex direction="column">
@@ -303,7 +296,7 @@ const SoundList = (props, context) => {
   );
 };
 
-export const ComboBox = (props, context) => {
+export const ComboBox = (props) => {
   const {
     onSelected,
     selected,

@@ -6,15 +6,14 @@ import { range } from 'common/collections';
 import { Icon } from '../../components';
 import { FultonProps } from './types';
 
-export const FultonMfdPanel = (props: MfdProps, context) => {
-  const { data, act } = useBackend<FultonProps>(context);
+export const FultonMfdPanel = (props: MfdProps) => {
+  const { data, act } = useBackend<FultonProps>();
   const [fulltonOffset, setFultonOffset] = useLocalState(
-    context,
     `${props.panelStateId}_fultonoffset`,
     0
   );
-  const { setPanelState } = mfdState(context, props.panelStateId);
-  const { equipmentState } = useEquipmentState(context, props.panelStateId);
+  const { setPanelState } = mfdState(props.panelStateId);
+  const { equipmentState } = useEquipmentState(props.panelStateId);
 
   const fultons = [...data.fulton_targets];
   const regex = /(\d+)/;

@@ -2,8 +2,8 @@ import { useBackend } from '../backend';
 import { Button, LabeledList, Section, Slider, Flex, Box } from '../components';
 import { Window } from '../layouts';
 
-export const AcidVest = (_props, context) => {
-  const { act, data } = useBackend(context);
+export const AcidVest = (_props) => {
+  const { act, data } = useBackend();
 
   const damageList = data.configList.Damage;
   const vitalsList = data.configList.Vitals;

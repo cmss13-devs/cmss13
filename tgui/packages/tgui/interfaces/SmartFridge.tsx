@@ -26,10 +26,10 @@ interface StorageItem {
   category: string;
 }
 
-const ContentsTable = (
-  props: { readonly isLocal: boolean; readonly items: StorageItem[] },
-  context
-) => {
+const ContentsTable = (props: {
+  readonly isLocal: boolean;
+  readonly items: StorageItem[];
+}) => {
   return (
     <Table className="ContentsTable">
       {props.items
@@ -43,16 +43,12 @@ const ContentsTable = (
   );
 };
 
-const Contents = (
-  props: {
-    readonly isLocal: boolean;
-    readonly items: StorageItem[];
-    readonly title: string;
-  },
-  context
-) => {
+const Contents = (props: {
+  readonly isLocal: boolean;
+  readonly items: StorageItem[];
+  readonly title: string;
+}) => {
   const [tabIndex, setTabIndex] = useLocalState(
-    context,
     `contentsTab_${props.isLocal}`,
     'all'
   );
@@ -109,11 +105,11 @@ const Contents = (
   );
 };
 
-const ContentItem = (
-  props: { readonly isLocal: boolean; readonly item: StorageItem },
-  context
-) => {
-  const { data, act } = useBackend<SmartFridgeData>(context);
+const ContentItem = (props: {
+  readonly isLocal: boolean;
+  readonly item: StorageItem;
+}) => {
+  const { data, act } = useBackend<SmartFridgeData>();
   const { item } = props;
   const itemref = { 'index': item.index, 'amount': 1, isLocal: props.isLocal };
   return (
@@ -149,8 +145,8 @@ const ContentItem = (
   );
 };
 
-export const SmartFridge = (_, context) => {
-  const { data } = useBackend<SmartFridgeData>(context);
+export const SmartFridge = () => {
+  const { data } = useBackend<SmartFridgeData>();
   return (
     <Window theme="weyland" width={400} height={600}>
       <Window.Content className="SmartFridge" scrollable>

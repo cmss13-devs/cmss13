@@ -6,7 +6,6 @@
 	density = TRUE
 
 	damage_cap = HEALTH_WALL_REINFORCED
-	max_temperature = 6000
 
 	walltype = WALL_REINFORCED
 

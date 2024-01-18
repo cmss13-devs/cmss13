@@ -1,0 +1,4 @@
+author: "iloveloopers"
+delete-after: True
+changes:
+  - balance: "Being immune to bonebreaks now makes you immune to delimbs."

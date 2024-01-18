@@ -327,3 +327,33 @@ Class Procs:
 
 /obj/structure/machinery/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_state
+
+//made into "prop" from an old destilery project abandon 9 year ago.
+
+/obj/structure/machinery/mill
+	name = "\improper Mill"
+	desc = "It is a machine that grinds produce."
+	icon_state = "autolathe"
+	density = TRUE
+	anchored = TRUE
+
+/obj/structure/machinery/fermenter
+	name = "\improper Fermenter"
+	desc = "It is a machine that ferments produce into alcoholic drinks."
+	icon_state = "autolathe"
+	density = TRUE
+	anchored = TRUE
+
+/obj/structure/machinery/still
+	name = "\improper Still"
+	desc = "It is a machine that produces hard liquor from alcoholic drinks."
+	icon_state = "autolathe"
+	density = TRUE
+	anchored = TRUE
+
+/obj/structure/machinery/squeezer
+	name = "\improper Squeezer"
+	desc = "It is a machine that squeezes extracts from produce."
+	icon_state = "autolathe"
+	density = TRUE
+	anchored = TRUE

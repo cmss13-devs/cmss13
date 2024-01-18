@@ -1,0 +1,7 @@
+author: "mullenpaul"
+delete-after: True
+changes:
+  - refactor: "upgraded root tgui files to typescript to closer align with tg"
+  - refactor: "upgraded typescript to 4.9.4"
+  - refactor: "upgraded yarn to 3.3.1"
+  - refactor: "upgraded a bunch of tgui tooling"

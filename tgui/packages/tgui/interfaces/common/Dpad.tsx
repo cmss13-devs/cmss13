@@ -3,7 +3,7 @@ import { Box, Button, Stack } from '../../components';
 import { useFiremissionXOffsetValue, useFiremissionYOffsetValue, useLazeTarget } from '../MfdPanels/stateManagers';
 
 const SvgButton = (
-  props: { transform?: string; onClick?: (e: any) => void },
+  props: { readonly transform?: string; readonly onClick?: (e: any) => void },
   context
 ) => {
   return (

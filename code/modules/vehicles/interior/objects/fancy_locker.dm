@@ -47,6 +47,9 @@
 /obj/structure/closet/fancy/ex_act(severity)
 	return
 
+/obj/structure/closet/fancy/bullet_act(obj/projectile/Proj)
+	return TRUE
+
 /obj/structure/interior_exit/fancy
 	name = "fancy wooden door"
 	icon = 'icons/obj/structures/doors/mineral_doors.dmi'
@@ -126,9 +129,6 @@
 		user.visible_message(SPAN_NOTICE("[user] stops climbing into [src]."), SPAN_NOTICE("You stop climbing into [src]."))
 		return FALSE
 	interior.enter(user, "insanity[entry_num]")
-	return TRUE
-
-/obj/structure/closet/fancy/insane/bullet_act(obj/projectile/Proj)
 	return TRUE
 
 /obj/structure/interior_exit/fancy/ladder

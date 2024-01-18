@@ -779,7 +779,12 @@
 		spawning_area = pick(totalXenos) // FUCK IT JUST GO ANYWHERE
 	var/list/turf_list
 	for(var/turf/open/open_turf in orange(3, spawning_area))
+		if(istype(open_turf, /turf/open/space))
+			continue
 		LAZYADD(turf_list, open_turf)
+	// just on the off-chance
+	if(!LAZYLEN(turf_list))
+		return FALSE
 	var/turf/open/spawning_turf = pick(turf_list)
 
 	var/mob/living/carbon/xenomorph/larva/new_xeno = spawn_hivenumber_larva(spawning_turf, hivenumber)

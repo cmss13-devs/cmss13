@@ -81,7 +81,7 @@ export const getRoutedComponent = (store) => {
   ];
   let esModule;
   while (!esModule && interfacePathBuilders.length > 0) {
-    const interfacePathBuilder = interfacePathBuilders.shift();
+    const interfacePathBuilder = interfacePathBuilders.shift()!;
     const interfacePath = interfacePathBuilder(name);
     try {
       esModule = requireInterface(interfacePath);

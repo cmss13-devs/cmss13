@@ -12,7 +12,9 @@ import { KEY_ALT, KEY_CTRL, KEY_F1, KEY_F12, KEY_SHIFT } from 'common/keycodes';
 export const globalEvents = new EventEmitter();
 let ignoreWindowFocus = false;
 
-export const setupGlobalEvents = (options = {}) => {
+export const setupGlobalEvents = (
+  options: { ignoreWindowFocus?: boolean } = {}
+): void => {
   ignoreWindowFocus = !!options.ignoreWindowFocus;
 };
 
@@ -22,8 +24,8 @@ export const setupGlobalEvents = (options = {}) => {
 let windowFocusTimeout;
 let windowFocused = true;
 
-const setWindowFocus = (value, delayed) => {
-  // Pretend to always be in focus.
+// Pretend to always be in focus.
+const setWindowFocus = (value: boolean, delayed?: boolean) => {
   if (ignoreWindowFocus) {
     windowFocused = true;
     return;
@@ -46,14 +48,14 @@ const setWindowFocus = (value, delayed) => {
 // Focus stealing
 // --------------------------------------------------------
 
-let focusStolenBy = null;
+let focusStolenBy: HTMLElement | null = null;
 
 export const canStealFocus = (node) => {
   const tag = String(node.tagName).toLowerCase();
   return tag === 'input' || tag === 'textarea';
 };
 
-const stealFocus = (node) => {
+const stealFocus = (node: HTMLElement) => {
   releaseStolenFocus();
   focusStolenBy = node;
   focusStolenBy.addEventListener('blur', releaseStolenFocus);
@@ -69,15 +71,15 @@ const releaseStolenFocus = () => {
 // Focus follows the mouse
 // --------------------------------------------------------
 
-let focusedNode = null;
-let lastVisitedNode = null;
-const trackedNodes = [];
+let focusedNode: HTMLElement | null = null;
+let lastVisitedNode: HTMLElement | null = null;
+const trackedNodes: HTMLElement[] = [];
 
-export const addScrollableNode = (node) => {
+export const addScrollableNode = (node: HTMLElement) => {
   trackedNodes.push(node);
 };
 
-export const removeScrollableNode = (node) => {
+export const removeScrollableNode = (node: HTMLElement) => {
   const index = trackedNodes.indexOf(node);
   if (index >= 0) {
     trackedNodes.splice(index, 1);
@@ -104,7 +106,7 @@ const focusNearestTrackedParent = (node) => {
 };
 
 window.addEventListener('mousemove', (e) => {
-  const node = e.target;
+  const node = e.target as HTMLElement;
   if (node !== lastVisitedNode) {
     lastVisitedNode = node;
     focusNearestTrackedParent(node);
@@ -116,10 +118,10 @@ window.addEventListener('mousemove', (e) => {
 
 window.addEventListener('focusin', (e) => {
   lastVisitedNode = null;
-  focusedNode = e.target;
+  focusedNode = e.target as HTMLElement;
   setWindowFocus(true);
-  if (canStealFocus(e.target)) {
-    stealFocus(e.target);
+  if (canStealFocus(e.target as HTMLElement)) {
+    stealFocus(e.target as HTMLElement);
     return;
   }
 });
@@ -144,10 +146,19 @@ window.addEventListener('beforeunload', (e) => {
 const keyHeldByCode = {};
 
 export class KeyEvent {
-  constructor(e, type, repeat) {
+  event: KeyboardEvent;
+  type: 'keydown' | 'keyup';
+  code: number;
+  ctrl: boolean;
+  shift: boolean;
+  alt: boolean;
+  repeat: boolean;
+  _str?: string;
+
+  constructor(e: KeyboardEvent, type: 'keydown' | 'keyup', repeat?: boolean) {
     this.event = e;
     this.type = type;
-    this.code = window.event ? e.which : e.keyCode;
+    this.code = e.keyCode;
     this.ctrl = e.ctrlKey;
     this.shift = e.shiftKey;
     this.alt = e.altKey;
@@ -159,10 +170,9 @@ export class KeyEvent {
   }
 
   isModifierKey() {
-    // prettier-ignore
-    return this.code === KEY_CTRL
-      || this.code === KEY_SHIFT
-      || this.code === KEY_ALT;
+    return (
+      this.code === KEY_CTRL || this.code === KEY_SHIFT || this.code === KEY_ALT
+    );
   }
 
   isDown() {

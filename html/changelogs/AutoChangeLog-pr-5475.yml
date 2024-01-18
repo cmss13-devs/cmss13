@@ -1,0 +1,4 @@
+author: "Vicacrov"
+delete-after: True
+changes:
+  - bugfix: "Special xeno structures no longer layer below the Alamo and Normandy's equipment attach points."

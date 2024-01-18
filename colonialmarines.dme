@@ -1691,7 +1691,6 @@
 #include "code\modules\desert_dam\filtration\floodgates.dm"
 #include "code\modules\desert_dam\filtration\structures.dm"
 #include "code\modules\desert_dam\motion_sensor\sensortower.dm"
-#include "code\modules\destilery\main.dm"
 #include "code\modules\discord\discord_embed.dm"
 #include "code\modules\droppod\container_droppod.dm"
 #include "code\modules\droppod\droppod_ui.dm"

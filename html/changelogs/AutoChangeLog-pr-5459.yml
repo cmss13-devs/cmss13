@@ -1,0 +1,5 @@
+author: "Huffie56"
+delete-after: True
+changes:
+  - rscdel: "Remove all the manuals that were nothing to do with CM lore. (cloning, particle_accelerator, singularity_safety, robotics_cyborgs)"
+  - code_imp: "Updated research manual."

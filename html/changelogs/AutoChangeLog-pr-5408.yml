@@ -1,0 +1,4 @@
+author: "DelineFortune"
+delete-after: True
+changes:
+  - code_imp: "Changed value of metal you are getting for recycling attachments via autolathe."

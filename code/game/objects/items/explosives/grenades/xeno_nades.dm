@@ -15,3 +15,42 @@
 	create_shrapnel(loc, shrapnel_count, , ,shrapnel_type, cause_data)
 	qdel(src)
 	..()
+
+
+
+/obj/item/explosive/grenade/xeno_weed_grenade
+	name = "Node Ball"
+	desc = "a small resin node pulsating and turning in itself."
+	icon_state = "neuro_nade"
+	det_time = 1 SECONDS
+	item_state = "neuro_nade"
+
+	rebounds = FALSE
+
+/obj/item/explosive/grenade/xeno_weed_grenade/prime()
+
+
+	var/turf/current_turf = get_turf(src)
+	var/obj/effect/alien/weeds/weed = locate() in current_turf
+
+	if((locate(/obj/effect/alien/weeds/node) in current_turf))
+		qdel(src)
+		return
+	if(weed && weed.weed_strength >= WEED_LEVEL_HIVE)
+		qdel(src)
+		return
+	else
+		new /obj/effect/alien/weeds/node(current_turf)
+		qdel(src)
+
+
+
+
+
+
+
+
+
+
+
+

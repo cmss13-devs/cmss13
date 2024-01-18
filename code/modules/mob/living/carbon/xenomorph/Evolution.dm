@@ -324,6 +324,8 @@
 			xeno_type = /mob/living/carbon/xenomorph/defender
 		if(XENO_CASTE_BURROWER)
 			xeno_type = /mob/living/carbon/xenomorph/burrower
+		if(XENO_CASTE_REAPER)
+			xeno_type = /mob/living/carbon/xenomorph/reaper
 
 	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(src), src)
 

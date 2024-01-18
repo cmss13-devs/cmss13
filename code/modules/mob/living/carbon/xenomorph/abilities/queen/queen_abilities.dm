@@ -175,21 +175,6 @@
 	SIGNAL_HANDLER
 	hide_from(Q)
 
-
-/datum/action/xeno_action/activable/blockade
-	name = "Place Blockade"
-	action_icon_state = "place_blockade"
-	ability_name = "place blockade"
-	plasma_cost = 300
-	action_type = XENO_ACTION_CLICK
-
-	var/obj/effect/alien/resin/resin_pillar/pillar_type = /obj/effect/alien/resin/resin_pillar
-	var/time_taken = 6 SECONDS
-	charges = 0
-
-	var/brittle_time = 45 SECONDS
-	var/decay_time = 45 SECONDS
-
 /datum/action/xeno_action/activable/blockade/give_to(mob/living/carbon/xenomorph/queen/Q)
 	. = ..()
 	if(!Q.ovipositor)

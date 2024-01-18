@@ -635,65 +635,6 @@
 	return TRUE
 
 
-/datum/action/xeno_action/activable/blockade/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/queen/Q = owner
-	if(!Q.check_state())
-		return FALSE
-
-	if(!action_cooldown_check())
-		return FALSE
-
-	if(Q.action_busy)
-		return FALSE
-
-	var/width = initial(pillar_type.width)
-	var/height = initial(pillar_type.height)
-
-	var/turf/T = get_turf(A)
-	if(T.density)
-		to_chat(Q, SPAN_XENOWARNING("You can only construct this blockade in open areas!"))
-		return FALSE
-
-	if(T.z != owner.z)
-		to_chat(Q, SPAN_XENOWARNING("That's too far away!"))
-		return FALSE
-
-	if(!T.weeds)
-		to_chat(Q, SPAN_XENOWARNING("You can only construct this blockade on weeds!"))
-		return FALSE
-
-	if(!Q.check_plasma(plasma_cost))
-		return
-
-	var/list/alerts = list()
-	for(var/i in RANGE_TURFS(Floor(width/2), T))
-		alerts += new /obj/effect/warning/alien(i)
-
-	if(!do_after(Q, time_taken, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-		QDEL_NULL_LIST(alerts)
-		return FALSE
-	QDEL_NULL_LIST(alerts)
-
-	if(!check_turf(Q, T))
-		return FALSE
-
-	if(!check_and_use_plasma_owner())
-		return
-
-	var/turf/new_turf = locate(max(T.x - Floor(width/2), 1), max(T.y - Floor(height/2), 1), T.z)
-	to_chat(Q, SPAN_XENONOTICE("You raise a blockade!"))
-	var/obj/effect/alien/resin/resin_pillar/RP = new pillar_type(new_turf)
-	RP.start_decay(brittle_time, decay_time)
-
-	return ..()
-
-/datum/action/xeno_action/activable/blockade/proc/check_turf(mob/living/carbon/xenomorph/queen/Q, turf/T)
-	if(T.density)
-		to_chat(Q, SPAN_XENOWARNING("You can't place a blockade here."))
-		return FALSE
-
-	return TRUE
-
 /mob/living/carbon/xenomorph/proc/xeno_tacmap()
 	set name = "View Xeno Tacmap"
 	set desc = "This opens a tactical map, where you can see where every xenomorph is."

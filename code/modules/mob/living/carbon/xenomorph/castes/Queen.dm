@@ -308,8 +308,7 @@
 		/datum/action/xeno_action/onclick/banish,
 		/datum/action/xeno_action/onclick/readmit,
 		/datum/action/xeno_action/onclick/queen_award,
-		/datum/action/xeno_action/activable/info_marker/queen,
-	)
+		/datum/action/xeno_action/activable/info_marker/queen,	)
 
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/claw_toggle,

@@ -15,7 +15,7 @@
 	build_time_mult = BUILD_TIME_MULT_BUILDER
 
 	caste_desc = "A builder of hives. Only drones may evolve into Queens."
-	evolves_to = list(XENO_CASTE_QUEEN, XENO_CASTE_BURROWER, XENO_CASTE_CARRIER, XENO_CASTE_HIVELORD) //Add more here separated by commas
+	evolves_to = list(XENO_CASTE_QUEEN, XENO_CASTE_BURROWER, XENO_CASTE_CARRIER, XENO_CASTE_HIVELORD, XENO_CASTE_REAPER) //Add more here separated by commas
 	deevolves_to = list("Larva")
 	can_hold_facehuggers = 1
 	can_hold_eggs = CAN_HOLD_TWO_HANDS

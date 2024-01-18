@@ -3,6 +3,7 @@
 
 #define isxeno_human(A) (isxeno(A) || ishuman(A))
 //ask walter if i should turn into castechecks
+#define isravager(A) (istype(A, /mob/living/carbon/xenomorph/reaper))
 #define isboiler(A) (istype(A, /mob/living/carbon/xenomorph/boiler))
 #define iscarrier(A) (istype(A, /mob/living/carbon/xenomorph/carrier))
 #define iscrusher(A) (istype(A, /mob/living/carbon/xenomorph/crusher))

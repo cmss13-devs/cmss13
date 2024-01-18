@@ -701,9 +701,9 @@
 	icon_state = "resin_pillar"
 	invisibility = INVISIBILITY_MAXIMUM
 	var/width = 3
-	var/height = 3
-	var/time_to_brittle = 45 SECONDS
-	var/time_to_collapse = 45 SECONDS
+	var/height = 1
+	var/time_to_brittle = 5 SECONDS
+	var/time_to_collapse = 5 SECONDS
 
 	var/turf_icon = WALL_THICKRESIN
 	var/brittle_turf_icon = WALL_MEMBRANE

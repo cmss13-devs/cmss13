@@ -372,6 +372,10 @@
 #define PRAETORIAN_WARDEN   "Warden"
 #define PRAETORIAN_OPPRESSOR  "Oppressor"
 
+// Reaper strain flags
+
+#define REAPER_NORMAL "Normal"
+
 // Hellhound strain flags
 #define HELLHOUND_NORMAL "Normal"
 

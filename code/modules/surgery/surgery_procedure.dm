@@ -69,10 +69,12 @@
 
 ///Used on attackby and attackhand; TRUE means it stops the attack there, FALSE means it performs an item/open hand attack. CHECK OPENHAND ATTACK IS BLOCKED PROPERLY
 /datum/surgery/proc/attempt_next_step(mob/user, obj/item/tool, repeating)
+	to_chat(user, "-1")
 	if(step_in_progress)
 		if(!user.action_busy) //Otherwise, assume it's the same person.
 			to_chat(user, SPAN_WARNING("Someone is already performing surgery on [target]'s [affected_limb.display_name]!"))
 			return FALSE
+
 		return TRUE //So that you don't poke them with a tool you're already using.
 
 	if(user.action_busy)
@@ -88,12 +90,13 @@
 			to_chat(user, SPAN_WARNING("You need to set [target] down before you can operate on \him!"))
 		else
 			to_chat(user, SPAN_WARNING("You can't operate on [target], \he is being carried by [target.pulledby]!"))
+		to_chat(user, "we are here 222")
 		return FALSE
 
 	if(lying_required && !target.lying)
 		to_chat(user, SPAN_WARNING("[user == target ? "You need" : "[target] needs"] to be lying down for this operation!"))
 		return FALSE
-
+	to_chat(user, "we are here")
 	if(user == target)
 		if(!self_operable)
 			to_chat(user, SPAN_WARNING("You can't perform this operation on yourself!"))
@@ -102,14 +105,16 @@
 			to_chat(user, SPAN_WARNING("You can't perform surgery on the same \
 				[user.zone_selected == "r_hand"||user.zone_selected == "l_hand" ? "hand":"arm"] you're using!"))
 			return FALSE
-
+	to_chat(user, "2")
 	var/datum/surgery_step/current_step = GLOB.surgery_step_list[steps[status]]
 	if(current_step)
+		to_chat(user, "we are hersteasae")
 		if(current_step.attempt_step(user, target, user.zone_selected, tool, src, repeating)) //First, try this step.
 			return TRUE
 		var/datum/surgery_step/next_step
 		if(current_step.skip_step_criteria(user, target, user.zone_selected, tool, src) && status < length(steps)) //If that doesn't work but the step is optional and not the last in the list, try the next step.
 			next_step = GLOB.surgery_step_list[steps[status + 1]]
+			to_chat(user, "we are her12312312312313131231kkakkake")
 			if(next_step.attempt_step(user, target, user.zone_selected, tool, src, skipped = TRUE))
 				return TRUE
 		if(tool && is_surgery_tool(tool)) //Just because you used the wrong tool doesn't mean you meant to whack the patient with it...
@@ -117,6 +122,8 @@
 				to_chat(user, SPAN_WARNING("You can't [current_step.desc] with \the [tool], or [next_step.desc]."))
 			else
 				to_chat(user, SPAN_WARNING("You can't [current_step.desc] with \the [tool]."))
+			to_chat(user, "we are here 22")
 			return FALSE //...but you might be wanting to use it on them anyway. If on help intent, the help-intent safety will apply for this attack.
+	to_chat(user, "we are here 2")
 	return FALSE
 

@@ -256,6 +256,9 @@
 	var/life_daze_reduction = -1.5
 	var/life_slow_reduction = -1.5
 
+	//Research organ harvesting.
+	var/organ_removed = FALSE
+
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -690,6 +693,8 @@
 
 	if(iff_tag)
 		. += SPAN_NOTICE("It has an IFF tag sticking out of its carapace.")
+	if(organ_removed)
+		. += "It seems to have its organ removed."
 
 /mob/living/carbon/xenomorph/Destroy()
 	GLOB.living_xeno_list -= src

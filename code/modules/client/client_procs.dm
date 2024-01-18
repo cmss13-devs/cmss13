@@ -878,8 +878,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(CONFIG_GET(flag/no_localhost_rank))
 		return FALSE
 
-	deadmin()
-
 	var/static/list/localhost_addresses = list("127.0.0.1", "::1")
 	if(isnull(address) || (address in localhost_addresses))
 		return TRUE

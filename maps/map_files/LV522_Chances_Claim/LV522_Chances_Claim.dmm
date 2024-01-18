@@ -15298,7 +15298,7 @@
 "gEA" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 8;
-	name = "\improper Marshall Head Office"
+	name = "\improper Marshal Head Office"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -28010,7 +28010,7 @@
 /area/lv522/outdoors/colony_streets/north_west_street)
 "lea" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
-	name = "\improper Marshall Office Interrogation";
+	name = "\improper Marshal Office Interrogation";
 	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -63196,7 +63196,7 @@
 /area/lv522/landing_zone_2/ceiling)
 "yat" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
-	name = "\improper Marshall Office Armory"
+	name = "\improper Marshal Office Armory"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4

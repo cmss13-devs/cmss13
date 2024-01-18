@@ -49,10 +49,10 @@
 					backpack.open(M)
 					return
 			if(stat == DEAD)
-				M.visible_message(SPAN_WARNING("\The [M] pokes \the [src], but nothing happens.DED"), \
+				M.visible_message(SPAN_WARNING("\The [M] pokes \the [src], but nothing happens."), \
 				SPAN_WARNING("You poke \the [src], but nothing happens."), null, 5, CHAT_TYPE_FLUFF_ACTION)
 			else
-				M.visible_message(SPAN_WARNING("\The [M] pokes \the [src].WA"), \
+				M.visible_message(SPAN_WARNING("\The [M] pokes \the [src]."), \
 				SPAN_WARNING("You poke \the [src]."), null, 5, CHAT_TYPE_FLUFF_ACTION)
 
 		if(INTENT_GRAB)

@@ -66,25 +66,10 @@
 	if(!(user in viewers(M, null)))
 		showname = "."
 
-	if(isxeno(M) && M.stat == DEAD)
-		var/datum/surgery/current_surgery = M.active_surgeries[user.zone_selected]
-		if(current_surgery)
-			to_chat(user, "we are here000000")
-			if(current_surgery.attempt_next_step(user, src))
-				to_chat(user, "we are here 2oh")
-				return FALSE //Cancel attack.
-			to_chat(user, "we are here 2uh")
-		else
-			to_chat(user, "we are here 2")
-			if(initiate_surgery_moment(src, M, "head" , user))
-				to_chat(user, "got true")
-				return FALSE
-			to_chat(user, "got false")
-
 	if (user.a_intent == INTENT_HELP && ((user.client?.prefs && user.client?.prefs?.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY) || (user.mob_flags & SURGERY_MODE_ON)))
 		playsound(loc, 'sound/effects/pop.ogg', 25, 1)
 		user.visible_message(SPAN_NOTICE("[M] has been poked with [src][showname]"),\
-			SPAN_NOTICE("You poke [M == user ? "yourself":M] with [src].LORD"), null, 4)
+			SPAN_NOTICE("You poke [M == user ? "yourself":M] with [src]."), null, 4)
 
 		return FALSE
 

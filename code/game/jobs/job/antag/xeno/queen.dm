@@ -18,8 +18,11 @@
 	to_chat(new_queen, "<B>You should start by building a hive core.</B>")
 	to_chat(new_queen, "Talk in Hivemind using <strong>;</strong> (e.g. ';Hello my children!')")
 
+/*
 AddTimelock(/datum/job/antag/xenos/queen, list(
 	JOB_XENO_ROLES = 3 HOURS,
 	JOB_DRONE_ROLES = 1 HOURS,
 	JOB_T3_ROLES = 1 HOURS,
 ))
+*/
+

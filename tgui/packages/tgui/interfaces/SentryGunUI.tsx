@@ -40,7 +40,11 @@ interface SentryData {
 }
 
 const SelectionGroup = (
-  props: { data: SelectionState; sentry_index: number; selected?: string },
+  props: {
+    readonly data: SelectionState;
+    readonly sentry_index: number;
+    readonly selected?: string;
+  },
   context
 ) => {
   const { act } = useBackend<SentryData>(context);
@@ -68,7 +72,7 @@ const SelectionGroup = (
   );
 };
 
-const SelectionMenu = (props: { data: SentrySpec }, context) => {
+const SelectionMenu = (props: { readonly data: SentrySpec }, context) => {
   const getSelected = (category: string) => {
     const output = props.data.selection_state.find((x) => x[0] === category);
     return output === undefined ? undefined : output[1];
@@ -96,7 +100,7 @@ const getSanitisedName = (name: string) =>
 const sanitiseArea = (name: string) =>
   name.substring(name.includes('the') ? 4 : 0).trim();
 
-const TitleSection = (props: { data: SentrySpec }, context) => {
+const TitleSection = (props: { readonly data: SentrySpec }, context) => {
   return (
     <Stack vertical className="TitleContainer">
       <Stack.Item className="TitleText">
@@ -118,7 +122,7 @@ const TitleSection = (props: { data: SentrySpec }, context) => {
   );
 };
 
-const GunMenu = (props: { data: SentrySpec }, context) => {
+const GunMenu = (props: { readonly data: SentrySpec }, context) => {
   const { data, act } = useBackend<SentryData>(context);
   const isEngaged = props.data.engaged !== undefined && props.data.engaged > 1;
   const iff_info = props.data.selection_state.find(
@@ -262,10 +266,10 @@ const EmptyDisplay = (_, context) => {
 
 const InputGroup = (
   props: {
-    index: number;
-    label: string;
-    category: string;
-    startingValue: string;
+    readonly index: number;
+    readonly label: string;
+    readonly category: string;
+    readonly startingValue: string;
   },
   context
 ) => {
@@ -302,7 +306,10 @@ const InputGroup = (
   );
 };
 
-const SentryGunConfiguration = (props: { data: SentrySpec }, context) => {
+const SentryGunConfiguration = (
+  props: { readonly data: SentrySpec },
+  context
+) => {
   const [_, setShowConfig] = useSharedState(context, 'showConf', true);
   return (
     <Stack vertical>
@@ -338,7 +345,7 @@ const SentryGunConfiguration = (props: { data: SentrySpec }, context) => {
   );
 };
 
-const SentryGunStatus = (props: { data: SentrySpec }, context) => {
+const SentryGunStatus = (props: { readonly data: SentrySpec }, context) => {
   const [_, setShowConfig] = useSharedState(context, 'showConf', true);
   return (
     <Stack vertical>
@@ -362,7 +369,7 @@ const SentryGunStatus = (props: { data: SentrySpec }, context) => {
   );
 };
 
-const ShowSingleSentry = (props: { data: SentrySpec }, context) => {
+const ShowSingleSentry = (props: { readonly data: SentrySpec }, context) => {
   const [showConfig] = useSharedState(context, 'showConf', true);
   return (
     <>
@@ -372,7 +379,7 @@ const ShowSingleSentry = (props: { data: SentrySpec }, context) => {
   );
 };
 
-const ShowSentryCard = (props: { data: SentrySpec }, context) => {
+const ShowSentryCard = (props: { readonly data: SentrySpec }, context) => {
   const displayName =
     props.data.nickname.length === 0 ? props.data.index : props.data.nickname;
   return (
@@ -389,7 +396,7 @@ const ShowSentryCard = (props: { data: SentrySpec }, context) => {
   );
 };
 
-const ShowAllSentry = (props: { data: SentrySpec[] }, _) => {
+const ShowAllSentry = (props: { readonly data: SentrySpec[] }, _) => {
   return (
     <Flex align="space-between" wrap>
       {props.data.map((x) => (
@@ -403,7 +410,7 @@ const ShowAllSentry = (props: { data: SentrySpec[] }, _) => {
 
 const SentryCamera = (
   props: {
-    sentry_data: SentrySpec[];
+    readonly sentry_data: SentrySpec[];
   },
   context
 ) => {
@@ -466,9 +473,9 @@ const SentryCamera = (
 
 const SentryTabMenu = (
   props: {
-    sentrySpecs: SentrySpec[];
-    selected?: number;
-    setSelected: (d) => void;
+    readonly sentrySpecs: SentrySpec[];
+    readonly selected?: number;
+    readonly setSelected: (d) => void;
   },
   context
 ) => {

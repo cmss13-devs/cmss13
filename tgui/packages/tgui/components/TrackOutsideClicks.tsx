@@ -1,7 +1,7 @@
 import { Component, createRef } from 'inferno';
 
 type Props = {
-  onOutsideClick: () => void;
+  readonly onOutsideClick: () => void;
 };
 
 export class TrackOutsideClicks extends Component<Props> {

@@ -115,7 +115,7 @@
 		if (ishuman(speaker))
 			var/mob/living/carbon/human/H = speaker
 
-			if((H.wear_id && istype(H.wear_id,/obj/item/card/id/syndicate)) && (H.wear_mask && istype(H.wear_mask,/obj/item/clothing/mask/gas/voice)))
+			if((H.wear_id && istype(H.wear_id,/obj/item/card/id/adaptive)) && (H.wear_mask && istype(H.wear_mask,/obj/item/clothing/mask/gas/voice)))
 
 				changed_voice = 1
 				var/mob/living/carbon/human/I = locate(speaker_name)

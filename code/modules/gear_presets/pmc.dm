@@ -1848,6 +1848,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		idtype = /obj/item/card/id/pmc
 		assignment = JOB_PMC_SYNTH
 		rank = JOB_PMC_SYNTH
+		paygrade = PAY_SHORT_SYN
 		role_comm_title = "WY Syn"
 		headset_type = /obj/item/device/radio/headset/distress/pmc/command
 

@@ -134,3 +134,64 @@
       for more than 25%.
   private-tristan:
   - spellcheck: Changed a tip related to runner pounce to be more accurate
+2024-01-08:
+  realforest2001:
+  - bugfix: Yautja scimitars no longer bypass attack delay.
+2024-01-09:
+  private-tristan:
+  - bugfix: Tunnels are now converted to forsaken on evac.
+2024-01-10:
+  SabreML:
+  - bugfix: Fixed tunnels not showing on the minimap.
+  Tsurupeta:
+  - bugfix: Regular expressions in chat highlights work again.
+2024-01-12:
+  Vicacrov:
+  - bugfix: Placing flags now anchors the actual flag, not the stack of flags in your
+      hand.
+  Zenith, Steelpoint:
+  - rscadd: Updates Steelpoint's donor armour, replacing it with a new sprite, camouflage
+      options for all maps and new item descriptions that are lore friendly.
+  realforest2001:
+  - rscadd: Added the X17 Riot Breaching Charge.
+2024-01-15:
+  InsaneRed:
+  - qol: Moves "Banish, Re-admit and De-evolving" queen abilities into one list, making
+      the queen ui  less clutterier
+  Stakeyng:
+  - rscadd: Added the ability to combine prescription glasses with eyewear for varying
+      roles
+  private-tristan:
+  - bugfix: removed a light fixture being doubled on trijent
+  - maptweak: moved some trijent lights in marshals off windows
+  - maptweak: Alamayer PermaBrig Chairs face the right way
+2024-01-16:
+  Drathek:
+  - bugfix: Fix all hands on deck message not sending to those in cryopods
+  Huffie56:
+  - rscadd: Add the ability to build multi tile assembly from metal sheets.
+  ItsVyzo:
+  - balance: m56d loses burst fire
+  SabreML:
+  - bugfix: Fixed dead marines being able to man and fire the M56D.
+  TheGamerdk:
+  - bugfix: Overwatch now works on Whiskey Outpost again, not that you will use it.
+  Zonespace27:
+  - balance: 3 smartgun drums now spawn in the SG's equipment crate. Smartgun drums
+      cannot be purchased from the SG vendor.
+2024-01-17:
+  SabreML:
+  - bugfix: Fixed larvae sometimes spawning in space on Fiorina.
+  TheGamerdk:
+  - bugfix: The Kutjevo Refinery has been granted an additional SMES
+2024-01-18:
+  Birdtalon:
+  - bugfix: Fixed buckled mobs unable to move after being thrown by a xeno.
+  Drathek:
+  - code_imp: Cleaned up some oversights in attachment Detatch logic
+  SabreML:
+  - rscadd: Added a 'balloon alert' when toggling Crest Defense as a Defender.
+  - code_imp: Made balloon alerts centre themselves on xeno sprites.
+  Vicacrov:
+  - bugfix: Fixes an issue where player-controlled facehuggers would ghost out when
+      smashing against anti-hugging headgear like the B18 helmet.

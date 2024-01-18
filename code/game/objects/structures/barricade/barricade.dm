@@ -341,7 +341,7 @@
 
 /obj/structure/barricade/update_health(damage, nomessage)
 	health -= damage
-	health = Clamp(health, 0, maxhealth)
+	health = clamp(health, 0, maxhealth)
 
 	if(!health)
 		if(!nomessage)

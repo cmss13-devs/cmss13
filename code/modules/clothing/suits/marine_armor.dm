@@ -190,7 +190,7 @@
 	if(. != CHECKS_PASSED)
 		return
 	set_light_range(initial(light_range))
-	set_light_power(FLOOR(initial(light_power) * 0.5, 1))
+	set_light_power(Floor(initial(light_power) * 0.5))
 	set_light_on(toggle_on)
 	flags_marine_armor ^= ARMOR_LAMP_ON
 
@@ -1011,7 +1011,7 @@
 	if(camo_active)
 		if(current_camo < full_camo_alpha)
 			current_camo = full_camo_alpha
-		current_camo = Clamp(current_camo + incremental_shooting_camo_penalty, full_camo_alpha, 255)
+		current_camo = clamp(current_camo + incremental_shooting_camo_penalty, full_camo_alpha, 255)
 		H.alpha = current_camo
 		addtimer(CALLBACK(src, PROC_REF(fade_out_finish), H), camouflage_break, TIMER_OVERRIDE|TIMER_UNIQUE)
 		animate(H, alpha = full_camo_alpha + 5, time = camouflage_break, easing = LINEAR_EASING, flags = ANIMATION_END_NOW)

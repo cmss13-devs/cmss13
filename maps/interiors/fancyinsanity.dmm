@@ -1195,11 +1195,6 @@
 	icon_state = "warnplate"
 	},
 /area/corsat/sigma/hangar)
-"afR" = (
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
-/area/corsat/gamma/airlock/north)
 "afS" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 4
@@ -6908,15 +6903,6 @@
 	icon_state = "bluegreycorner"
 	},
 /area/corsat/sigma/airlock/east)
-"aza" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile/open{
-	id = "GammaNorthN";
-	name = "Gamma North Airlock"
-	},
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
-/area/corsat/gamma/airlock/north)
 "azb" = (
 /turf/open/floor/corsat{
 	icon_state = "officesquares"
@@ -10268,18 +10254,6 @@
 "aIv" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/corsat/omega/hangar/office)
-"aIy" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile/open{
-	id = "GammaNorthS";
-	name = "Gamma North Airlock"
-	},
-/obj/structure/machinery/door/poddoor/two_tile/four_tile/secure{
-	id = "map_lockdown";
-	name = "Gamma Lockdown";
-	use_power = 0
-	},
-/turf/closed/wall/r_wall/biodome/biodome_unmeltable,
-/area/corsat/gamma/airlock/north)
 "aIz" = (
 /obj/structure/closet/crate/science,
 /obj/item/storage/fancy/vials/random,
@@ -13791,7 +13765,7 @@
 "aVG" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
-	icon_state = "marked"
+	icon_state = "retrosquares"
 	},
 /area/corsat/gamma/airlock/north)
 "aVH" = (
@@ -20894,14 +20868,6 @@
 	icon_state = "yellowcorner"
 	},
 /area/corsat/sigma/south/engineering)
-"bwc" = (
-/obj/structure/surface/rack,
-/obj/item/device/chameleon,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "purplewhite"
-	},
-/area/corsat/sigma/south/complex)
 "bwe" = (
 /obj/structure/filingcabinet/filingcabinet,
 /turf/open/floor/corsat{
@@ -21940,9 +21906,6 @@
 	},
 /area/corsat/omega/complex)
 "byX" = (
-/obj/item/xeno_egg,
-/obj/item/xeno_egg,
-/obj/item/xeno_egg,
 /obj/structure/closet/crate/science{
 	density = 0;
 	icon_state = "open_science";
@@ -23211,7 +23174,6 @@
 /area/corsat/gamma/rnr/library)
 "bCj" = (
 /obj/structure/surface/rack,
-/obj/item/clothing/glasses/thermal,
 /obj/structure/machinery/door/window/eastright{
 	name = "Prototype Racks";
 	req_access_txt = "103"
@@ -24025,15 +23987,11 @@
 	icon_state = "yellow"
 	},
 /area/corsat/gamma/residential/maint)
-"bFR" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/closed/wall/r_wall/biodome/biodome_unmeltable,
-/area/corsat/gamma/airlock/north)
 "bFW" = (
 /obj/effect/landmark/interior/spawn/entrance/step_toward{
 	dir = 1;
 	exit_type = /obj/structure/interior_exit/fancy/ladder;
-	tag = "insanity"
+	tag = "insanity1"
 	},
 /turf/open/floor/corsat{
 	dir = 10;
@@ -33139,6 +33097,17 @@
 	icon_state = "squares"
 	},
 /area/corsat/sigma/hangar)
+"geu" = (
+/obj/structure/pipes/vents/pump,
+/obj/effect/landmark/interior/spawn/entrance/step_toward{
+	dir = 1;
+	exit_type = /obj/structure/interior_exit/fancy/ladder;
+	tag = "insanity4"
+	},
+/turf/open/floor/corsat{
+	icon_state = "lightplate"
+	},
+/area/corsat/theta/biodome/hydroeast)
 "gew" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -35492,6 +35461,16 @@
 	icon_state = "plate"
 	},
 /area/corsat/gamma/hydroponics)
+"iaq" = (
+/obj/effect/landmark/interior/spawn/entrance/step_toward{
+	dir = 1;
+	exit_type = /obj/structure/interior_exit/fancy/ladder;
+	tag = "insanity5"
+	},
+/turf/open/floor/almayer/research/containment/floor2{
+	dir = 1
+	},
+/area/corsat/omega/containment)
 "ibe" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
@@ -37222,6 +37201,17 @@
 	icon_state = "darkgreen"
 	},
 /area/corsat/sigma/north)
+"jWN" = (
+/obj/effect/landmark/interior/spawn/entrance/step_toward{
+	dir = 1;
+	exit_type = /obj/structure/interior_exit/fancy/ladder;
+	tag = "insanity2"
+	},
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "corsat_teleporter_static"
+	},
+/area/corsat/sigma/south/complex/teleporter)
 "jXg" = (
 /turf/open/floor/corsat{
 	dir = 8;
@@ -37517,6 +37507,17 @@
 	icon_state = "asteroidfloor"
 	},
 /area/corsat/sigma/biodome/scrapyard)
+"knc" = (
+/obj/effect/landmark/interior/spawn/entrance/step_toward{
+	dir = 1;
+	exit_type = /obj/structure/interior_exit/fancy/ladder;
+	tag = "insanity3"
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/corsat/sigma/biodome/testgrounds)
 "knx" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -41024,14 +41025,6 @@
 	icon_state = "plate"
 	},
 /area/corsat/gamma/hallwaysouth)
-"nxI" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 6
-	},
-/turf/open/floor/corsat{
-	icon_state = "retrosquares"
-	},
-/area/corsat/gamma/airlock/north)
 "nxN" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -52127,14 +52120,6 @@
 	},
 /turf/open/gm/dirt,
 /area/corsat/theta/biodome)
-"yfQ" = (
-/obj/structure/pipes/vents/pump{
-	dir = 8
-	},
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/corsat/gamma/airlock/north)
 "ygy" = (
 /obj/structure/pipes/standard/simple/hidden/universal,
 /turf/open/floor/corsat{
@@ -59995,11 +59980,11 @@ aem
 vbW
 akH
 ahP
-aza
+tUR
 vVI
 aiT
 tUR
-aIy
+awb
 bKS
 bKS
 bKS
@@ -60263,7 +60248,7 @@ anG
 atF
 aBk
 olY
-aBk
+iaq
 lOW
 aLX
 jKy
@@ -60399,11 +60384,11 @@ bhi
 vbW
 aec
 aec
-afR
 aqh
 aqh
-nxI
-bFR
+aqh
+aqh
+awb
 bKS
 bKS
 bKS
@@ -60601,10 +60586,10 @@ aem
 vbW
 akH
 ahP
-afR
+tUR
 tUR
 aiT
-yfQ
+tUR
 awb
 bKS
 bKS
@@ -79261,7 +79246,7 @@ bdP
 aKy
 bsP
 aKG
-vTr
+geu
 ker
 bko
 rCE
@@ -88935,7 +88920,7 @@ ahu
 nJC
 aje
 akd
-bwc
+rhu
 aHZ
 lHI
 bTW
@@ -89303,7 +89288,7 @@ bhg
 bhh
 bhh
 bhh
-bhh
+knc
 bhh
 bhh
 bhg
@@ -92177,7 +92162,7 @@ sip
 aiC
 aiC
 aiC
-aiC
+jWN
 aiC
 egZ
 anx

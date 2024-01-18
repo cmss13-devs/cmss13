@@ -91,7 +91,8 @@
 
 /obj/structure/closet/fancy/insane/store_mobs(stored_units)
 	for(var/mob/M in loc)
-		var/succ = interior.enter(M, "insanity")
+		var/entry_num = rand(1,5)
+		var/succ = interior.enter(M, "insanity[entry_num]")
 		if(!succ)
 			break
 
@@ -102,8 +103,9 @@
 
 	var/mob/user = usr
 
+	var/entry_num = rand(1,5)
 	if(isobserver(user))
-		interior.enter(user, "insanity")
+		interior.enter(user, "insanity[entry_num]")
 		return TRUE
 
 	if(user.is_mob_incapacitated())
@@ -119,7 +121,7 @@
 	if(!do_after(user, 4 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE, src, INTERRUPT_OUT_OF_RANGE))
 		user.visible_message(SPAN_NOTICE("[user] stops climbing into [src]."), SPAN_NOTICE("You stop climbing into [src]."))
 		return FALSE
-	interior.enter(user, "insanity")
+	interior.enter(user, "insanity[entry_num]")
 	return TRUE
 
 /obj/structure/interior_exit/fancy/ladder

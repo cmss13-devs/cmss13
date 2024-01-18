@@ -78,6 +78,7 @@
 
 /obj/structure/closet/fancy/insane
 	name = "impossible box"
+	desc = "You cannot comprehend the depths..."
 
 	interior_map = /datum/map_template/interior/fancy_insanity
 	passengers_slots = 70
@@ -88,6 +89,9 @@
 	icon_state = "closed_plastic"
 	icon_closed = "closed_plastic"
 	icon_opened = "open_plastic"
+
+	open_sound = 'sound/effects/ghost.ogg'
+	close_sound = 'sound/effects/ghost2.ogg'
 
 /obj/structure/closet/fancy/insane/store_mobs(stored_units)
 	for(var/mob/M in loc)

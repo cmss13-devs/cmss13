@@ -58,7 +58,7 @@
 		/datum/action/xeno_action/onclick/plant_weeds, //first macro
 		/datum/action/xeno_action/onclick/choose_resin, //second macro
 		/datum/action/xeno_action/activable/secrete_resin, //third macro
-				/datum/action/xeno_action/activable/queen_give_plasma, //fourth macro
+		/datum/action/xeno_action/activable/queen_give_plasma, //fourth macro
 		/datum/action/xeno_action/onclick/tacmap,
 		/datum/action/xeno_action/activable/blockade,
 		/datum/action/xeno_action/activable/weed_nade,
@@ -72,6 +72,11 @@
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
 	mutation_type = REAPER_NORMAL
+
+/datum/caste_datum/Reaper/New()
+	. = ..()
+
+	resin_build_order = GLOB.resin_build_order_reaper
 
 
 

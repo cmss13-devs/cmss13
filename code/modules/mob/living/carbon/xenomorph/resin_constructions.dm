@@ -281,6 +281,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	construction_name = "shield pillar"
 	cost = XENO_RESIN_SHIELD_PILLAR_COST
 	max_per_xeno = 1
+	build_overlay_icon = /obj/effect/warning/alien/weak
 
 	build_path = /obj/effect/alien/resin/shield_pillar
 	build_time = 12 SECONDS

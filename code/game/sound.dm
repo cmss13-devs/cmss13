@@ -100,8 +100,8 @@
 
 
 //This is the replacement for playsound_local. Use this for sending sounds directly to a client
-/proc/playsound_client(client/C, soundin, atom/origin, vol = 100, random_freq, vol_cat = VOLUME_SFX, channel = 0, status, list/echo, y_s_offset, x_s_offset)
-	if(!istype(C) || !C.soundOutput) return FALSE
+/proc/playsound_client(client/client, soundin, atom/origin, vol = 100, random_freq, vol_cat = VOLUME_SFX, channel = 0, status, list/echo, y_s_offset, x_s_offset)
+	if(!istype(client) || !client.soundOutput) return FALSE
 	var/datum/sound_template/S = new()
 	if(origin)
 		var/turf/T = get_turf(origin)
@@ -126,7 +126,7 @@
 	S.echo = echo
 	S.y_s_offset = y_s_offset
 	S.x_s_offset = x_s_offset
-	SSsound.queue(S, list(C))
+	SSsound.queue(S, list(client))
 
 /// Plays sound to all mobs that are map-level contents of an area
 /proc/playsound_area(area/A, soundin, vol = 100, channel = 0, status, vol_cat = VOLUME_SFX, list/echo, y_s_offset, x_s_offset)

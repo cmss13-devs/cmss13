@@ -67,11 +67,7 @@ const FiremissionMfdHomePage = (props: MfdProps, context) => {
     const firemission =
       data.firemission_data.length > x ? data.firemission_data[x] : undefined;
     return {
-      children: firemission ? (
-        <div>
-          FM {x + 1} <br /> {firemission?.name}
-        </div>
-      ) : undefined,
+      children: firemission ? <div>FM {x + 1}</div> : undefined,
       onClick: () => setSelectedFm(firemission?.name),
     };
   };
@@ -97,7 +93,6 @@ const FiremissionMfdHomePage = (props: MfdProps, context) => {
       topButtons={[
         {},
         {},
-        {},
         fmName
           ? {
             children: 'SAVE',
@@ -110,10 +105,11 @@ const FiremissionMfdHomePage = (props: MfdProps, context) => {
             },
           }
           : {},
+        {},
         {
-          children: <Icon name="arrow-up" />,
+          children: fmOffset > 0 ? <Icon name="arrow-up" /> : undefined,
           onClick: () => {
-            if (fmOffset >= 1) {
+            if (fmOffset > 0) {
               setFmOffset(fmOffset - 1);
             }
           },
@@ -128,9 +124,12 @@ const FiremissionMfdHomePage = (props: MfdProps, context) => {
         {},
         {},
         {
-          children: <Icon name="arrow-down" />,
+          children:
+            fmOffset + 10 < data.firemission_data?.length ? (
+              <Icon name="arrow-down" />
+            ) : undefined,
           onClick: () => {
-            if (fmOffset + 8 < data.firemission_data.length) {
+            if (fmOffset + 10 < data.firemission_data?.length) {
               setFmOffset(fmOffset + 1);
             }
           },
@@ -163,7 +162,7 @@ interface GimbalInfo {
 }
 
 const ViewFiremissionMfdPanel = (
-  props: MfdProps & { firemission: CasFiremission },
+  props: MfdProps & { readonly firemission: CasFiremission },
   context
 ) => {
   const { data, act } = useBackend<DropshipProps>(context);
@@ -212,7 +211,10 @@ const ViewFiremissionMfdPanel = (
       bottomButtons={[
         {
           children: 'EXIT',
-          onClick: () => setPanelState(''),
+          onClick: () => {
+            setSelectedFm(undefined);
+            setPanelState('');
+          },
         },
       ]}
       rightButtons={editFm === true ? rightButtons : []}>
@@ -246,7 +248,10 @@ const ViewFiremissionMfdPanel = (
   );
 };
 
-const FiremissionView = (props: MfdProps & { fm: CasFiremission }, context) => {
+const FiremissionView = (
+  props: MfdProps & { readonly fm: CasFiremission },
+  context
+) => {
   const { data } = useBackend<DropshipProps & FiremissionContext>(context);
 
   const { editFm } = fmEditState(context, props.panelStateId);
@@ -331,7 +336,10 @@ const gimbals: GimbalInfo[] = [
 ];
 
 const OffsetOverview = (
-  props: MfdProps & { fm: CasFiremission; equipment: DropshipEquipment }
+  props: MfdProps & {
+    readonly fm: CasFiremission;
+    readonly equipment: DropshipEquipment;
+  }
 ) => {
   const weaponFm = props.fm.records.find(
     (x) => x.weapon === props.equipment.mount_point
@@ -359,8 +367,8 @@ const OffsetOverview = (
 
 const OffsetDetailed = (
   props: MfdProps & {
-    fm: CasFiremission;
-    equipment: DropshipEquipment;
+    readonly fm: CasFiremission;
+    readonly equipment: DropshipEquipment;
   }
 ) => {
   const availableGimbals = gimbals[props.equipment.mount_point];
@@ -397,9 +405,9 @@ const OffsetDetailed = (
 
 const FMOffsetError = (
   props: MfdProps & {
-    fm: CasFiremission;
-    equipment: DropshipEquipment;
-    displayDetail?: boolean;
+    readonly fm: CasFiremission;
+    readonly equipment: DropshipEquipment;
+    readonly displayDetail?: boolean;
   }
 ) => {
   return (
@@ -432,9 +440,9 @@ const FMOffsetError = (
 
 const FMOffsetStack = (
   props: MfdProps & {
-    fm: CasFiremission;
-    equipment: DropshipEquipment;
-    displayDetail?: boolean;
+    readonly fm: CasFiremission;
+    readonly equipment: DropshipEquipment;
+    readonly displayDetail?: boolean;
   },
   context
 ) => {

@@ -58,9 +58,8 @@
 	SStgui.close_uis(src)
 	QDEL_NULL(current)
 	QDEL_NULL(cam_screen)
-	qdel(cam_screen)
 	QDEL_NULL(cam_background)
-	qdel(cam_background)
+	QDEL_NULL_LIST(cam_plane_masters)
 	last_camera_turf = null
 	concurrent_users = null
 	return ..()
@@ -226,7 +225,7 @@
 // Returns the list of cameras accessible from this computer
 /obj/structure/machinery/computer/cameras/proc/get_available_cameras()
 	var/list/D = list()
-	for(var/obj/structure/machinery/camera/C in GLOB.cameranet.cameras)
+	for(var/obj/structure/machinery/camera/C in GLOB.all_cameras)
 		if(!C.network)
 			stack_trace("Camera in a cameranet has no camera network")
 			continue

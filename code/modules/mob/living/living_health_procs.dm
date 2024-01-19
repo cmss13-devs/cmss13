@@ -127,20 +127,56 @@
 		S = apply_status_effect(/datum/status_effect/incapacitating/stun, amount)
 	return S
 
+/* DAZE (Light incapacitation) */
+/// Overridable handler to adjust the numerical value of status effects. Expand as needed
+/mob/living/proc/GetDazeDuration(amount)
+	return amount * GLOBAL_STATUS_MULTIPLIER
+
+/mob/living/proc/IsDaze() //If we're stunned
+	return has_status_effect(/datum/status_effect/incapacitating/dazed)
+
+/mob/living/proc/AmountDaze() //How many deciseconds remains
+	var/datum/status_effect/incapacitating/dazed/dazed = IsDaze()
+	if(dazed)
+		return dazed.get_duration_left() / GLOBAL_STATUS_MULTIPLIER
+	return 0
+
 /mob/living/proc/Daze(amount)
-	if(status_flags & CANDAZE)
-		dazed = max(max(dazed,amount),0)
-	return
+	if(!(status_flags & CANDAZE))
+		return
+	amount = GetDazeDuration(amount)
+	var/datum/status_effect/incapacitating/dazed/dazed = IsDaze()
+	if(dazed)
+		dazed.update_duration(amount, increment = TRUE)
+	else if(amount > 0)
+		dazed = apply_status_effect(/datum/status_effect/incapacitating/dazed, amount)
+	return dazed
 
-/mob/living/proc/SetDaze(amount)
-	if(status_flags & CANDAZE)
-		dazed = max(amount,0)
-	return
+/mob/living/proc/SetDaze(amount, ignore_canstun = FALSE) //Sets remaining duration
+	if(!(status_flags & CANDAZE))
+		return
+	amount = GetDazeDuration(amount)
+	var/datum/status_effect/incapacitating/dazed/dazed = IsDaze()
+	if(amount <= 0)
+		if(dazed)
+			qdel(dazed)
+	else
+		if(dazed)
+			dazed.update_duration(amount)
+		else
+			dazed = apply_status_effect(/datum/status_effect/incapacitating/dazed, amount)
+	return dazed
 
-/mob/living/proc/AdjustDaze(amount)
-	if(status_flags & CANDAZE)
-		dazed = max(dazed + amount,0)
-	return
+/mob/living/proc/AdjustDaze(amount, ignore_canstun = FALSE) //Adds to remaining duration
+	if(!(status_flags & CANDAZE))
+		return
+	amount = GetStunDuration(amount)
+	var/datum/status_effect/incapacitating/dazed/dazed = IsDaze()
+	if(dazed)
+		dazed.adjust_duration(amount)
+	else if(amount > 0)
+		dazed = apply_status_effect(/datum/status_effect/incapacitating/dazed, amount)
+	return dazed
 
 /mob/living/proc/Slow(amount)
 	if(status_flags & CANSLOW)
@@ -323,7 +359,7 @@
 
 	switch(client.prefs?.pain_overlay_pref_level)
 		if(PAIN_OVERLAY_IMPAIR)
-			overlay_fullscreen("eye_blur", /atom/movable/screen/fullscreen/impaired, CEILING(clamp(eye_blurry * 0.3, 1, 6), 1))
+			overlay_fullscreen("eye_blur", /atom/movable/screen/fullscreen/impaired, Ceiling(clamp(eye_blurry * 0.3, 1, 6)))
 		if(PAIN_OVERLAY_LEGACY)
 			overlay_fullscreen("eye_blur", /atom/movable/screen/fullscreen/blurry)
 		else // PAIN_OVERLAY_BLURRY
@@ -378,11 +414,16 @@
 
 /mob/living/proc/on_deafness_gain()
 	to_chat(src, SPAN_WARNING("You notice you can't hear anything... you're deaf!"))
+	// We should apply deafness here instead of in handle_regular_status_updates
 	SEND_SIGNAL(src, COMSIG_MOB_DEAFENED)
 
 /mob/living/proc/on_deafness_loss()
 	to_chat(src, SPAN_WARNING("You start hearing things again!"))
 	SEND_SIGNAL(src, COMSIG_MOB_REGAINED_HEARING)
+	// Consider moving this to a signal on soundOutput. This is a fallback as handle_regular_status_updates SHOULD do the job.
+	if(!ear_deaf && (client?.soundOutput?.status_flags & EAR_DEAF_MUTE))
+		client.soundOutput.status_flags ^= EAR_DEAF_MUTE
+		client.soundOutput.apply_status()
 
 // heal ONE limb, organ gets randomly selected from damaged ones.
 /mob/living/proc/heal_limb_damage(brute, burn)

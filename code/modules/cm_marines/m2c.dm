@@ -131,20 +131,21 @@
 	if(!check_can_setup(user, rotate_check, OT, ACR))
 		return
 
-	var/obj/structure/machinery/m56d_hmg/auto/M =  new /obj/structure/machinery/m56d_hmg/auto(user.loc)
-	transfer_label_component(M)
-	M.setDir(user.dir) // Make sure we face the right direction
-	M.anchored = TRUE
-	playsound(M, 'sound/items/m56dauto_setup.ogg', 75, TRUE)
-	to_chat(user, SPAN_NOTICE("You deploy [M]."))
-	if((rounds > 0) && !user.get_inactive_hand())
-		user.set_interaction(M)
-		give_action(user, /datum/action/human_action/mg_exit)
-	M.rounds = rounds
-	M.overheat_value = overheat_value
-	M.health = health
-	M.update_icon()
+	var/obj/structure/machinery/m56d_hmg/auto/HMG = new(user.loc)
+	transfer_label_component(HMG)
+	HMG.setDir(user.dir) // Make sure we face the right direction
+	HMG.anchored = TRUE
+	playsound(HMG, 'sound/items/m56dauto_setup.ogg', 75, TRUE)
+	to_chat(user, SPAN_NOTICE("You deploy [HMG]."))
+	HMG.rounds = rounds
+	HMG.overheat_value = overheat_value
+	HMG.health = health
+	HMG.update_damage_state()
+	HMG.update_icon()
 	qdel(src)
+
+	if(HMG.rounds > 0)
+		HMG.try_mount_gun(user)
 
 /obj/item/device/m2c_gun/attackby(obj/item/O as obj, mob/user as mob)
 	if(!ishuman(user))
@@ -313,12 +314,13 @@
 	if(health <= 0)
 		playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 		visible_message(SPAN_WARNING("[src] has broken down completely!"))
-		var/obj/item/device/m2c_gun/HMG = new(src.loc)
+		var/obj/item/device/m2c_gun/HMG = new(loc)
 		HMG.rounds = rounds
 		HMG.broken_gun = TRUE
 		HMG.unacidable = FALSE
 		HMG.health = 0
 		HMG.update_icon()
+		transfer_label_component(HMG)
 		qdel(src)
 		return
 
@@ -446,39 +448,20 @@
 //ATTACK WITH BOTH HANDS COMBO
 
 /obj/structure/machinery/m56d_hmg/auto/attack_hand(mob/living/user)
-	..()
+	if(..())
+		return TRUE
 
-	var/turf/user_turf = get_turf(user)
-	for(var/opp_dir in reverse_nearby_direction(src.dir))
-		if(get_step(src, opp_dir) == user_turf)
-			if(operator) //If there is already a operator then they're manning it.
-				if(operator.interactee == null)
-					operator = null //this shouldn't happen, but just in case
-				else
-					to_chat(user, "Someone's already controlling it.")
-					return
-			if(!(user.alpha > 60))
-				to_chat(user, SPAN_WARNING("You aren't going to be setting up while cloaked."))
-				return
-			else
-				if(user.interactee) //Make sure we're not manning two guns at once, tentacle arms.
-					to_chat(user, "You're already manning something!")
-					return
-
-			if(user.get_active_hand() == null && user.get_inactive_hand() == null)
-				ADD_TRAIT(user, TRAIT_IMMOBILIZED, INTERACTION_TRAIT)
-				user.set_interaction(src)
-				give_action(user, /datum/action/human_action/mg_exit)
-			else
-				to_chat(usr, SPAN_NOTICE("Your hands are too busy holding things to grab the handles!"))
-		else
-			to_chat(usr, SPAN_NOTICE("You are too far from the handles to man [src]!"))
+	try_mount_gun(user)
 
 // DISASSEMBLY
 
 /obj/structure/machinery/m56d_hmg/auto/MouseDrop(over_object, src_location, over_location)
-	if(!ishuman(usr)) return
+	if(!ishuman(usr))
+		return
 	var/mob/living/carbon/human/user = usr
+	// If the user is unconscious or dead.
+	if(user.stat)
+		return
 
 	if(over_object == user && in_range(src, user))
 		if((rounds > 0) && (user.a_intent & (INTENT_GRAB)))
@@ -494,10 +477,10 @@
 				return
 			user.visible_message(SPAN_NOTICE("[user] disassembles [src]."),SPAN_NOTICE("You fold up the tripod for [src], disassembling it."))
 			playsound(src.loc, 'sound/items/m56dauto_setup.ogg', 75, 1)
-			var/obj/item/device/m2c_gun/HMG = new(src.loc)
+			var/obj/item/device/m2c_gun/HMG = new(loc)
 			transfer_label_component(HMG)
-			HMG.rounds = src.rounds
-			HMG.overheat_value = round(0.5 * src.overheat_value)
+			HMG.rounds = rounds
+			HMG.overheat_value = round(0.5 * overheat_value)
 			if (HMG.overheat_value <= 10)
 				HMG.overheat_value = 0
 			HMG.update_icon()
@@ -515,7 +498,6 @@
 	..()
 	ADD_TRAIT(user, TRAIT_OVERRIDE_CLICKDRAG, TRAIT_SOURCE_WEAPON)
 	RegisterSignal(user, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(disable_interaction))
-	RegisterSignal(user, COMSIG_LIVING_SET_BODY_POSITION, PROC_REF(body_position_changed))
 
 // DISMOUNT THE MG
 
@@ -599,12 +581,6 @@
 	SIGNAL_HANDLER
 
 	if(user.body_position != STANDING_UP || get_dist(user,src) > 0 || user.is_mob_incapacitated() || !user.client)
-		user.unset_interaction()
-
-/obj/structure/machinery/m56d_hmg/auto/proc/body_position_changed(mob/living/user, body_position, old_body_position)
-	SIGNAL_HANDLER
-
-	if(body_position != STANDING_UP)
 		user.unset_interaction()
 
 /obj/structure/machinery/m56d_hmg/auto/proc/handle_rotating_gun(mob/user)

@@ -18,7 +18,7 @@ interface PlaytimeData {
   stored_other_playtime: PlaytimeRecord[];
 }
 
-const PlaytimeRow = (props: { data: PlaytimeRecord }, context) => {
+const PlaytimeRow = (props: { readonly data: PlaytimeRecord }, context) => {
   return (
     <>
       <TableCell className="AwardCell">
@@ -42,7 +42,7 @@ const PlaytimeRow = (props: { data: PlaytimeRecord }, context) => {
   );
 };
 
-const PlaytimeTable = (props: { data: PlaytimeRecord[] }, context) => {
+const PlaytimeTable = (props: { readonly data: PlaytimeRecord[] }, context) => {
   return (
     <Table>
       {props.data

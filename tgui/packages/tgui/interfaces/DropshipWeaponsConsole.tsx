@@ -11,6 +11,7 @@ import { SupportMfdPanel } from './MfdPanels/SupportPanel';
 import { FiremissionMfdPanel } from './MfdPanels/FiremissionPanel';
 import { TargetAquisitionMfdPanel } from './MfdPanels/TargetAquisition';
 import { mfdState } from './MfdPanels/stateManagers';
+import { otherMfdState } from './MfdPanels/stateManagers';
 import { Dpad } from './common/Dpad';
 
 export interface DropshipProps {
@@ -87,7 +88,7 @@ const DrawShipOutline = () => {
   );
 };
 
-const DrawWeapon = (props: { weapon: DropshipEquipment }, context) => {
+const DrawWeapon = (props: { readonly weapon: DropshipEquipment }, context) => {
   const { data, act } = useBackend<DropshipProps>(context);
   const position = props.weapon.mount_point;
   const index = position - 1;
@@ -118,8 +119,8 @@ const DrawWeapon = (props: { weapon: DropshipEquipment }, context) => {
 };
 
 const WeaponStatsPanel = (props: {
-  slot: number;
-  weapon?: DropshipEquipment;
+  readonly slot: number;
+  readonly weapon?: DropshipEquipment;
 }) => {
   if (props.weapon === undefined) {
     return <EmptyWeaponStatsPanel slot={props.slot} />;
@@ -144,7 +145,7 @@ const WeaponStatsPanel = (props: {
   );
 };
 
-const EmptyWeaponStatsPanel = (props: { slot: number }) => {
+const EmptyWeaponStatsPanel = (props: { readonly slot: number }) => {
   return (
     <Stack vertical className="PanelTextBox">
       <Stack.Item>Bay {props.slot} is empty</Stack.Item>
@@ -153,7 +154,7 @@ const EmptyWeaponStatsPanel = (props: { slot: number }) => {
 };
 
 const DropshipWeaponsPanel = (props: {
-  equipment: Array<DropshipEquipment>;
+  readonly equipment: Array<DropshipEquipment>;
 }) => {
   const weapons = props.equipment.filter((x) => x.is_weapon === 1);
   const support = props.equipment.filter((x) => x.is_weapon === 0);
@@ -271,6 +272,7 @@ const WeaponsMfdPanel = (props, context) => {
 
 const BaseMfdPanel = (props: MfdProps, context) => {
   const { setPanelState } = mfdState(context, props.panelStateId);
+  const { otherPanelState } = otherMfdState(context, props.otherPanelStateId);
 
   return (
     <MfdPanel
@@ -289,8 +291,14 @@ const BaseMfdPanel = (props: MfdProps, context) => {
       ]}
       bottomButtons={[
         {},
-        { children: 'MAPS', onClick: () => setPanelState('map') },
-        { children: 'CAMS', onClick: () => setPanelState('camera') },
+        {
+          children: otherPanelState !== 'map' ? 'MAPS' : undefined,
+          onClick: () => setPanelState('map'),
+        },
+        {
+          children: otherPanelState !== 'camera' ? 'CAMS' : undefined,
+          onClick: () => setPanelState('camera'),
+        },
       ]}>
       <Box className="NavigationMenu">
         <div className="welcome-page">
@@ -337,7 +345,10 @@ export const DropshipWeaponsConsole = () => {
         <Box className="WeaponsConsoleBackground">
           <Stack horizontal className="WeaponsConsole">
             <Stack.Item>
-              <PrimaryPanel panelStateId="left-screen" />
+              <PrimaryPanel
+                panelStateId="left-screen"
+                otherPanelStateId="right-screen"
+              />
             </Stack.Item>
             <Stack.Item>
               <Stack vertical>
@@ -356,7 +367,10 @@ export const DropshipWeaponsConsole = () => {
             </Stack.Item>
 
             <Stack.Item>
-              <PrimaryPanel panelStateId="right-screen" />
+              <PrimaryPanel
+                panelStateId="right-screen"
+                otherPanelStateId="left-screen"
+              />
             </Stack.Item>
           </Stack>
         </Box>

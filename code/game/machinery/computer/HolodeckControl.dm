@@ -77,9 +77,6 @@
 		to_chat(user, "It's a holotable!  There are no bolts!")
 		return
 
-	if(isborg(user))
-		return
-
 	..()
 
 /obj/structure/surface/table/holotable/wood

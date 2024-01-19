@@ -209,9 +209,9 @@ const ObservableContent = (props, context) => {
  */
 const ObservableSection = (
   props: {
-    color?: string;
-    section: Array<Observable>;
-    title: string;
+    readonly color?: string;
+    readonly section: Array<Observable>;
+    readonly title: string;
   },
   context
 ) => {
@@ -251,7 +251,7 @@ const ObservableSection = (
 
 /** Renders an observable button that has tooltip info for living Observables*/
 const ObservableItem = (
-  props: { color?: string; item: Observable },
+  props: { readonly color?: string; readonly item: Observable },
   context
 ) => {
   const { act } = useBackend<OrbitData>(context);
@@ -294,7 +294,7 @@ const ObservableItem = (
 };
 
 /** Displays some info on the mob as a tooltip. */
-const ObservableTooltip = (props: { item: Observable }) => {
+const ObservableTooltip = (props: { readonly item: Observable }) => {
   const {
     item: { caste, health, job, full_name, icon, background_color },
   } = props;
@@ -333,8 +333,8 @@ const ObservableTooltip = (props: { item: Observable }) => {
 /** Generates a small icon for buttons based on ICONMAP */
 const ObservableIcon = (
   props: {
-    icon: Observable['icon'];
-    background_color: Observable['background_color'];
+    readonly icon: Observable['icon'];
+    readonly background_color: Observable['background_color'];
   },
   context
 ) => {

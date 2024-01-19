@@ -187,31 +187,6 @@
 	if(G.lighting_alpha < lighting_alpha)
 		lighting_alpha = G.lighting_alpha
 
-/mob/living/carbon/human/handle_silent()
-	if(..())
-		speech_problem_flag = TRUE
-	return silent
-
-/mob/living/carbon/human/handle_slurring()
-	if(..())
-		speech_problem_flag = TRUE
-	return slurring
-
-/mob/living/carbon/human/handle_dazed()
-	if(dazed)
-		var/skill_resistance = skills ? (skills.get_skill_level(SKILL_ENDURANCE)-1)*0.1 : 0
-
-		var/final_reduction = skill_resistance + 1
-		adjust_effect(-final_reduction, DAZE, EFFECT_FLAG_LIFE)
-	if(dazed)
-		speech_problem_flag = TRUE
-	return dazed
-
-/mob/living/carbon/human/handle_stuttering()
-	if(..())
-		speech_problem_flag = TRUE
-	return stuttering
-
 #define HUMAN_TIMER_TO_EFFECT_CONVERSION (0.05) //(1/20) //once per 2 seconds, with effect equal to endurance, which is used later
 
 /mob/living/carbon/human/GetStunDuration(amount)
@@ -231,6 +206,13 @@
 	var/skill_resistance = skills ? (skills.get_skill_level(SKILL_ENDURANCE)-1)*0.08 : 0
 	var/final_reduction = (1 - skill_resistance) / species.knock_out_reduction
 	return . * final_reduction
+
+/mob/living/carbon/human/GetDazeDuration(amount)
+	. = ..()
+	var/skill_resistance = skills ? (skills.get_skill_level(SKILL_ENDURANCE)-1)*0.08 : 0
+	var/final_reduction = (1 - skill_resistance)
+	return . * final_reduction
+
 
 /mob/living/carbon/human/proc/handle_revive()
 	SEND_SIGNAL(src, COMSIG_HUMAN_REVIVED)

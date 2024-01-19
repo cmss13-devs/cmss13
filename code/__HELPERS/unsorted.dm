@@ -40,11 +40,11 @@
 #define skillcheckexplicit(user, skill, req_level) ((!user.skills || user.skills.is_skilled(skill, req_level, TRUE)))
 
 // Ensure the frequency is within bounds of what it should be sending/receiving at
-// Sets f within bounds via `Clamp(round(f), 1441, 1489)`
+// Sets f within bounds via `clamp(round(f), 1441, 1489)`
 // If f is even, adds 1 to its value to make it odd
-#define sanitize_frequency(f) ((Clamp(round(f), 1441, 1489) % 2) == 0 ? \
-									Clamp(round(f), 1441, 1489) + 1 : \
-									Clamp(round(f), 1441, 1489) \
+#define sanitize_frequency(f) ((clamp(round(f), 1441, 1489) % 2) == 0 ? \
+									clamp(round(f), 1441, 1489) + 1 : \
+									clamp(round(f), 1441, 1489) \
 								)
 
 //Turns 1479 into 147.9
@@ -324,56 +324,17 @@
 	if(!newname) //we'll stick with the oldname then
 		return
 
-	if(cmptext("ai",role))
-		if(isAI(src))
-			var/mob/living/silicon/ai/A = src
-			oldname = null//don't bother with the records update crap
-			A.SetName(newname)
-
 	fully_replace_character_name(oldname,newname)
-
-
-
-//When a borg is activated, it can choose which AI it wants to be slaved to
-/proc/active_ais()
-	. = list()
-	for(var/mob/living/silicon/ai/A in GLOB.alive_mob_list)
-		if(A.stat == DEAD)
-			continue
-		if(A.control_disabled == 1)
-			continue
-		. += A
-	return .
-
-//Find an active ai with the least borgs. VERBOSE PROCNAME HUH!
-/proc/select_active_ai_with_fewest_borgs()
-	var/mob/living/silicon/ai/selected
-	var/list/active = active_ais()
-	for(var/mob/living/silicon/ai/A in active)
-		if(!selected || (selected.connected_robots > A.connected_robots))
-			selected = A
-
-	return selected
-
-/proc/select_active_ai(mob/user)
-	var/list/ais = active_ais()
-	if(ais.len)
-		if(user) . = tgui_input_list(usr,"AI signals detected:", "AI selection", ais)
-		else . = pick(ais)
-	return .
 
 /proc/get_sorted_mobs()
 	var/list/old_list = getmobs()
-	var/list/AI_list = list()
 	var/list/Dead_list = list()
 	var/list/keyclient_list = list()
 	var/list/key_list = list()
 	var/list/logged_list = list()
 	for(var/named in old_list)
 		var/mob/M = old_list[named]
-		if(isSilicon(M))
-			AI_list |= M
-		else if(isobserver(M) || M.stat == 2)
+		if(isobserver(M) || M.stat == 2)
 			Dead_list |= M
 		else if(M.key && M.client)
 			keyclient_list |= M
@@ -383,7 +344,6 @@
 			logged_list |= M
 		old_list.Remove(named)
 	var/list/new_list = list()
-	new_list += AI_list
 	new_list += keyclient_list
 	new_list += key_list
 	new_list += logged_list
@@ -933,86 +893,103 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 		if(!GLOB.busy_indicator_clock)
 			GLOB.busy_indicator_clock = image('icons/mob/mob.dmi', null, "busy_generic", "pixel_y" = 22)
 			GLOB.busy_indicator_clock.layer = FLY_LAYER
+			GLOB.busy_indicator_clock.plane = ABOVE_GAME_PLANE
 		return GLOB.busy_indicator_clock
 	else if(busy_type == BUSY_ICON_MEDICAL)
 		if(!GLOB.busy_indicator_medical)
 			GLOB.busy_indicator_medical = image('icons/mob/mob.dmi', null, "busy_medical", "pixel_y" = 0) //This shows directly on top of the mob, no offset!
 			GLOB.busy_indicator_medical.layer = FLY_LAYER
+			GLOB.busy_indicator_medical.plane = ABOVE_GAME_PLANE
 		return GLOB.busy_indicator_medical
 	else if(busy_type == BUSY_ICON_BUILD)
 		if(!GLOB.busy_indicator_build)
 			GLOB.busy_indicator_build = image('icons/mob/mob.dmi', null, "busy_build", "pixel_y" = 22)
 			GLOB.busy_indicator_build.layer = FLY_LAYER
+			GLOB.busy_indicator_build.plane = ABOVE_GAME_PLANE
 		return GLOB.busy_indicator_build
 	else if(busy_type == BUSY_ICON_FRIENDLY)
 		if(!GLOB.busy_indicator_friendly)
 			GLOB.busy_indicator_friendly = image('icons/mob/mob.dmi', null, "busy_friendly", "pixel_y" = 22)
 			GLOB.busy_indicator_friendly.layer = FLY_LAYER
+			GLOB.busy_indicator_friendly.plane = ABOVE_GAME_PLANE
 		return GLOB.busy_indicator_friendly
 	else if(busy_type == BUSY_ICON_HOSTILE)
 		if(!GLOB.busy_indicator_hostile)
 			GLOB.busy_indicator_hostile = image('icons/mob/mob.dmi', null, "busy_hostile", "pixel_y" = 22)
 			GLOB.busy_indicator_hostile.layer = FLY_LAYER
+			GLOB.busy_indicator_hostile.plane = ABOVE_GAME_PLANE
 		return GLOB.busy_indicator_hostile
 	else if(busy_type == EMOTE_ICON_HIGHFIVE)
 		if(!GLOB.emote_indicator_highfive)
 			GLOB.emote_indicator_highfive = image('icons/mob/mob.dmi', null, "emote_highfive", "pixel_y" = 22)
 			GLOB.emote_indicator_highfive.layer = FLY_LAYER
+			GLOB.emote_indicator_highfive.plane = ABOVE_GAME_PLANE
 		return GLOB.emote_indicator_highfive
 	else if(busy_type == EMOTE_ICON_FISTBUMP)
 		if(!GLOB.emote_indicator_fistbump)
 			GLOB.emote_indicator_fistbump = image('icons/mob/mob.dmi', null, "emote_fistbump", "pixel_y" = 22)
 			GLOB.emote_indicator_fistbump.layer = FLY_LAYER
+			GLOB.emote_indicator_fistbump.plane = ABOVE_GAME_PLANE
 		return GLOB.emote_indicator_fistbump
 	else if(busy_type == EMOTE_ICON_ROCK_PAPER_SCISSORS)
 		if(!GLOB.emote_indicator_rock_paper_scissors)
 			GLOB.emote_indicator_rock_paper_scissors = image('icons/mob/mob.dmi', null, "emote_rps", "pixel_y" = 22)
 			GLOB.emote_indicator_rock_paper_scissors.layer = FLY_LAYER
+			GLOB.emote_indicator_rock_paper_scissors.plane = ABOVE_GAME_PLANE
 		return GLOB.emote_indicator_rock_paper_scissors
 	else if(busy_type == EMOTE_ICON_ROCK)
 		if(!GLOB.emote_indicator_rock)
 			GLOB.emote_indicator_rock = image('icons/mob/mob.dmi', null, "emote_rock", "pixel_y" = 22)
 			GLOB.emote_indicator_rock.layer = FLY_LAYER
+			GLOB.emote_indicator_rock.plane = ABOVE_GAME_PLANE
 		return GLOB.emote_indicator_rock
 	else if(busy_type == EMOTE_ICON_PAPER)
 		if(!GLOB.emote_indicator_paper)
 			GLOB.emote_indicator_paper = image('icons/mob/mob.dmi', null, "emote_paper", "pixel_y" = 22)
 			GLOB.emote_indicator_paper.layer = FLY_LAYER
+			GLOB.emote_indicator_paper.plane = ABOVE_GAME_PLANE
 		return GLOB.emote_indicator_paper
 	else if(busy_type == EMOTE_ICON_SCISSORS)
 		if(!GLOB.emote_indicator_scissors)
 			GLOB.emote_indicator_scissors = image('icons/mob/mob.dmi', null, "emote_scissors", "pixel_y" = 22)
 			GLOB.emote_indicator_scissors.layer = FLY_LAYER
+			GLOB.emote_indicator_scissors.plane = ABOVE_GAME_PLANE
 		return GLOB.emote_indicator_scissors
 	else if(busy_type == EMOTE_ICON_HEADBUTT)
 		if(!GLOB.emote_indicator_headbutt)
 			GLOB.emote_indicator_headbutt = image('icons/mob/mob.dmi', null, "emote_headbutt", "pixel_y" = 22)
 			GLOB.emote_indicator_headbutt.layer = FLY_LAYER
+			GLOB.emote_indicator_headbutt.plane = ABOVE_GAME_PLANE
 		return GLOB.emote_indicator_headbutt
 	else if(busy_type == EMOTE_ICON_TAILSWIPE)
 		if(!GLOB.emote_indicator_tailswipe)
 			GLOB.emote_indicator_tailswipe = image('icons/mob/mob.dmi', null, "emote_tailswipe", "pixel_y" = 22)
 			GLOB.emote_indicator_tailswipe.layer = FLY_LAYER
+			GLOB.emote_indicator_tailswipe.plane = ABOVE_GAME_PLANE
 		return GLOB.emote_indicator_tailswipe
 	else if(busy_type == ACTION_RED_POWER_UP)
 		if(!GLOB.action_red_power_up)
 			GLOB.action_red_power_up = image('icons/effects/effects.dmi', null, "anger", "pixel_x" = 16)
 			GLOB.action_red_power_up.layer = FLY_LAYER
+			GLOB.action_red_power_up.plane = ABOVE_GAME_PLANE
 		return GLOB.action_red_power_up
 	else if(busy_type == ACTION_GREEN_POWER_UP)
 		if(!GLOB.action_green_power_up)
 			GLOB.action_green_power_up = image('icons/effects/effects.dmi', null, "vitality", "pixel_x" = 16)
 			GLOB.action_green_power_up.layer = FLY_LAYER
+			GLOB.action_green_power_up.plane = ABOVE_GAME_PLANE
 		return GLOB.action_green_power_up
 	else if(busy_type == ACTION_BLUE_POWER_UP)
 		if(!GLOB.action_blue_power_up)
 			GLOB.action_blue_power_up = image('icons/effects/effects.dmi', null, "shock", "pixel_x" = 16)
 			GLOB.action_blue_power_up.layer = FLY_LAYER
+			GLOB.action_blue_power_up.plane = ABOVE_GAME_PLANE
 		return GLOB.action_blue_power_up
 	else if(busy_type == ACTION_PURPLE_POWER_UP)
 		if(!GLOB.action_purple_power_up)
 			GLOB.action_purple_power_up = image('icons/effects/effects.dmi', null, "pain", "pixel_x" = 16)
 			GLOB.action_purple_power_up.layer = FLY_LAYER
+			GLOB.action_purple_power_up.plane = ABOVE_GAME_PLANE
 		return GLOB.action_purple_power_up
 
 
@@ -1125,7 +1102,7 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_DAZED && busy_user.dazed)
+		if(user_flags & INTERRUPT_DAZED && HAS_TRAIT(busy_user, TRAIT_DAZED))
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_EMOTE && !busy_user.flags_emote)
@@ -1616,7 +1593,7 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 	. = 0
 	var/i = DS2TICKS(initial_delay)
 	do
-		. += CEILING(i*DELTA_CALC, 1)
+		. += Ceiling(i*DELTA_CALC)
 		sleep(i*world.tick_lag*DELTA_CALC)
 		i *= 2
 	while (TICK_USAGE > min(TICK_LIMIT_TO_RUN, Master.current_ticklimit))

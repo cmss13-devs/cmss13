@@ -349,6 +349,10 @@
 	else if(hivenumber)
 		src.hivenumber = hivenumber
 
+	var/obj/item/organ/heart/xeno/organ = new() //give
+	organ.forceMove(src)
+	organ.research_value = tier
+
 	var/datum/hive_status/hive = GLOB.hive_datum[src.hivenumber]
 
 	if(hive)

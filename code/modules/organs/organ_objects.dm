@@ -120,6 +120,7 @@
 	icon_state = "heart-on"
 	organ_tag = "heart"
 	black_market_value = 60
+	var/research_value = 1 //depending on the size and tier
 
 //These are here so they can be printed out via the fabricator.
 /obj/item/organ/heart/prosthetic

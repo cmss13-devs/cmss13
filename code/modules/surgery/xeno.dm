@@ -189,9 +189,8 @@
 			user.apply_damage(15, BURN, "l_hand")
 		else
 			user.apply_damage(15, BURN, "r_hand")
-	//spawn organ here, hm, maybe a good idea to give all benos organs on init instead of spawning it here out of thin air
 	target.organ_removed = TRUE
-	var/obj/item/organ/heart/xeno/organ = new()
+	var/obj/item/organ/heart/xeno/organ = locate() in target
 	organ.forceMove(target.loc)
 
 /datum/surgery_step/xenomorph/remove_organ/failure(mob/living/carbon/human/user, mob/living/carbon/xenomorph/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

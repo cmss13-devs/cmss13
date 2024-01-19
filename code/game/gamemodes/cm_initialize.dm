@@ -1002,7 +1002,7 @@ Additional game mode variables.
 			to_chat(joe_candidate, SPAN_WARNING("Something went wrong!"))
 		return
 
-	if(!(joe_client.check_whitelist_status(WHITELIST_JOE) || joe_client.check_whitelist_status(WHITELIST_SYNTHETIC)))
+	if(!joe_job.check_whitelist_status(joe_candidate))
 		if(show_warning)
 			to_chat(joe_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a synth."))
 		return

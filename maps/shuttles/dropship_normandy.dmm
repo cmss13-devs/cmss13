@@ -96,7 +96,7 @@
 	},
 /area/shuttle/drop2/sulaco)
 "hn" = (
-/obj/effect/attach_point/crew_weapon/dropship2{
+/obj/effect/attach_point/crew_weapon/dropship2/floor{
 	attach_id = 8
 	},
 /turf/open/shuttle/dropship{
@@ -326,7 +326,7 @@
 	},
 /area/shuttle/drop2/sulaco)
 "Bg" = (
-/obj/effect/attach_point/crew_weapon/dropship2{
+/obj/effect/attach_point/crew_weapon/dropship2/floor{
 	attach_id = 7
 	},
 /turf/open/shuttle/dropship{
@@ -478,7 +478,7 @@
 /turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "MA" = (
-/obj/effect/attach_point/crew_weapon/dropship2{
+/obj/effect/attach_point/crew_weapon/dropship2/floor{
 	attach_id = 9
 	},
 /turf/open/shuttle/dropship{

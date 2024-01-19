@@ -416,7 +416,7 @@
 	},
 /area/shuttle/drop1/sulaco)
 "Kk" = (
-/obj/effect/attach_point/crew_weapon/dropship1{
+/obj/effect/attach_point/crew_weapon/dropship1/floor{
 	attach_id = 7
 	},
 /turf/open/shuttle/dropship{
@@ -450,7 +450,7 @@
 	},
 /area/shuttle/drop1/sulaco)
 "Nv" = (
-/obj/effect/attach_point/crew_weapon/dropship1{
+/obj/effect/attach_point/crew_weapon/dropship1/floor{
 	attach_id = 8
 	},
 /turf/open/shuttle/dropship{
@@ -507,7 +507,7 @@
 	},
 /area/shuttle/drop1/sulaco)
 "PV" = (
-/obj/effect/attach_point/crew_weapon/dropship1{
+/obj/effect/attach_point/crew_weapon/dropship1/floor{
 	attach_id = 9
 	},
 /turf/open/shuttle/dropship{

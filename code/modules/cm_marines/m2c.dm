@@ -477,10 +477,10 @@
 				return
 			user.visible_message(SPAN_NOTICE("[user] disassembles [src]."),SPAN_NOTICE("You fold up the tripod for [src], disassembling it."))
 			playsound(src.loc, 'sound/items/m56dauto_setup.ogg', 75, 1)
-			var/obj/item/device/m2c_gun/HMG = new(src.loc)
+			var/obj/item/device/m2c_gun/HMG = new(loc)
 			transfer_label_component(HMG)
-			HMG.rounds = src.rounds
-			HMG.overheat_value = round(0.5 * src.overheat_value)
+			HMG.rounds = rounds
+			HMG.overheat_value = round(0.5 * overheat_value)
 			if (HMG.overheat_value <= 10)
 				HMG.overheat_value = 0
 			HMG.update_icon()

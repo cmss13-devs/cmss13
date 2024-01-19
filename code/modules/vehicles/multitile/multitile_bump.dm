@@ -347,12 +347,12 @@
 	if(gun_mounted)
 		var/obj/item/device/m56d_gun/HMG = new(loc)
 		transfer_label_component(HMG)
-		HMG.rounds = gun_rounds //Inherent the amount of ammo we had.
+		HMG.rounds = gun_rounds
 		HMG.has_mount = TRUE
 		if(gun_health)
 			HMG.health = gun_health
 		HMG.update_icon()
-		qdel(src) //Now we clean up the partially constructed gun.
+		qdel(src)
 	else
 		var/obj/item/device/m56d_post/post = new(loc)
 		post.health = health

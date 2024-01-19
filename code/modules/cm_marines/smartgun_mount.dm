@@ -139,13 +139,13 @@
 
 	var/obj/structure/machinery/m56d_post/post = new(user.loc)
 	post.setDir(user.dir) // Make sure we face the right direction
-	post.gun_rounds = src.rounds //Inherit the amount of ammo we had.
+	post.gun_rounds = rounds
 	post.gun_mounted = TRUE
 	post.gun_health = health // retain damage
 	post.anchored = TRUE
 	post.update_icon()
 	transfer_label_component(post)
-	to_chat(user, SPAN_NOTICE("You deploy \the [src]."))
+	to_chat(user, SPAN_NOTICE("You deploy [src]."))
 	qdel(src)
 
 
@@ -405,11 +405,11 @@
 			if(do_after(user, disassemble_time * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] screws the M56D into the mount."), SPAN_NOTICE("You finalize the M56D heavy machine gun."))
-				var/obj/structure/machinery/m56d_hmg/HMG = new(loc) //Here comes our new turret.
+				var/obj/structure/machinery/m56d_hmg/HMG = new(loc)
 				transfer_label_component(HMG)
-				HMG.visible_message("[icon2html(HMG, viewers(src))] <B>\The [HMG] is now complete!</B>") //finished it for everyone to
-				HMG.setDir(dir) //make sure we face the right direction
-				HMG.rounds = gun_rounds //Inherent the amount of ammo we had.
+				HMG.visible_message("[icon2html(HMG, viewers(src))] <B>\The [HMG] is now complete!</B>")
+				HMG.setDir(dir)
+				HMG.rounds = gun_rounds
 				if(gun_health)
 					HMG.health = gun_health
 					HMG.update_damage_state()
@@ -580,7 +580,7 @@
 			return
 		else
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-			user.visible_message("[user] rotates \the [src].","You rotate \the [src].")
+			user.visible_message("[user] rotates [src].", "You rotate [src].")
 			setDir(turn(dir, -90))
 			if(operator)
 				update_pixels(operator)
@@ -594,15 +594,15 @@
 
 			var/disassemble_time = 30
 			if(do_after(user, disassemble_time * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				user.visible_message(SPAN_NOTICE(" [user] disassembles [src]! "),SPAN_NOTICE(" You disassemble [src]!"))
+				user.visible_message(SPAN_NOTICE("[user] disassembles [src]!"), SPAN_NOTICE("You disassemble [src]!"))
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-				var/obj/item/device/m56d_gun/HMG = new(src.loc) //Here we generate our disassembled mg.
+				var/obj/item/device/m56d_gun/HMG = new(loc)
 				transfer_label_component(HMG)
-				HMG.rounds = src.rounds //Inherent the amount of ammo we had.
+				HMG.rounds = rounds
 				HMG.has_mount = TRUE
 				HMG.health = health
 				HMG.update_icon()
-				qdel(src) //Now we clean up the constructed gun.
+				qdel(src)
 				return
 
 	if(istype(O, /obj/item/ammo_magazine/m56d)) // RELOADING DOCTOR FREEMAN.
@@ -614,7 +614,7 @@
 			if(user.action_busy) return
 			if(!do_after(user, 25 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 				return
-		user.visible_message(SPAN_NOTICE("[user] loads [src]! "),SPAN_NOTICE("You load [src]!"))
+		user.visible_message(SPAN_NOTICE("[user] loads [src]!"), SPAN_NOTICE("You load [src]!"))
 		playsound(loc, 'sound/weapons/gun_minigun_cocked.ogg', 25, 1)
 		if(rounds)
 			var/obj/item/ammo_magazine/m56d/D = new(user.loc)
@@ -660,7 +660,7 @@
 		if(!destroyed)
 			var/obj/item/device/m56d_gun/HMG = new(loc)
 			transfer_label_component(HMG)
-			HMG.rounds = src.rounds //Inherent the amount of ammo we had.
+			HMG.rounds = rounds
 		qdel(src)
 		return
 

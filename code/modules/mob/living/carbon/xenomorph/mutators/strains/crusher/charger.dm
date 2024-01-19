@@ -346,8 +346,8 @@
 	take_overall_armored_damage(charger_ability.momentum * momentum_mult, ARMOR_MELEE, BRUTE, 60, 13) // Giving AP because this spreads damage out and then applies armor to them
 	apply_armoured_damage(charger_ability.momentum * momentum_mult/4, ARMOR_MELEE, BRUTE,"chest")
 	xeno.visible_message(
-		SPAN_DANGER("[xeno] rams \the [src]!"),
-		SPAN_XENODANGER("You ram \the [src]!")
+		SPAN_DANGER("[xeno] rams [src]!"),
+		SPAN_XENODANGER("You ram [src]!")
 	)
 	var/knockdown = 1
 	if(charger_ability.momentum == charger_ability.max_momentum)
@@ -417,8 +417,8 @@
 		momentum_mult = 8
 	take_overall_damage(charger_ability.momentum * momentum_mult)
 	xeno.visible_message(
-		SPAN_DANGER("[xeno] rams \the [src]!"),
-		SPAN_XENODANGER("You ram \the [src]!")
+		SPAN_DANGER("[xeno] rams [src]!"),
+		SPAN_XENODANGER("You ram [src]!")
 	)
 	var/knockdown = 1
 	if(charger_ability.momentum == charger_ability.max_momentum)
@@ -470,8 +470,8 @@
 	var/datum/effect_system/spark_spread/sparks = new
 	sparks.set_up(5, 1, loc)
 	xeno.visible_message(
-		SPAN_DANGER("[xeno] rams \the [src]!"),
-		SPAN_XENODANGER("You ram \the [src]!")
+		SPAN_DANGER("[xeno] rams [src]!"),
+		SPAN_XENODANGER("You ram [src]!")
 	)
 	if(health <= CHARGER_DAMAGE_SENTRY)
 		new /obj/effect/spawner/gibspawner/robot(src.loc) // if we goin down ,we going down with a show.
@@ -493,13 +493,13 @@
 		return
 
 	CrusherImpact()
-	var/datum/effect_system/spark_spread/sparks = new
 	update_health(charger_ability.momentum * 15)
+	var/datum/effect_system/spark_spread/sparks = new
 	sparks.set_up(1, 1, loc)
 	sparks.start()
 	xeno.visible_message(
-		SPAN_DANGER("[xeno] rams \the [src]!"),
-		SPAN_XENODANGER("You ram \the [src]!")
+		SPAN_DANGER("[xeno] rams [src]!"),
+		SPAN_XENODANGER("You ram [src]!")
 	)
 	playsound(src, "sound/effects/metal_crash.ogg", 25, TRUE)
 
@@ -513,14 +513,14 @@
 		var/obj/item/device/m2c_gun/HMG = new(loc)
 		HMG.health = health
 		transfer_label_component(HMG)
-		HMG.rounds = rounds //Inherent the amount of ammo we had.
+		HMG.rounds = rounds
 		HMG.update_icon()
 		qdel(src)
 	else
-		var/obj/item/device/m56d_gun/HMG = new(loc) // note: find a better way than a copy pasted else statement
+		var/obj/item/device/m56d_gun/HMG = new(loc)
 		HMG.health = health
 		transfer_label_component(HMG)
-		HMG.rounds = rounds //Inherent the amount of ammo we had.
+		HMG.rounds = rounds
 		HMG.has_mount = TRUE
 		HMG.update_icon()
 		qdel(src) //Now we clean up the constructed gun.
@@ -530,13 +530,13 @@
 		charger_ability.stop_momentum()
 		return
 
-	var/datum/effect_system/spark_spread/sparks = new
 	update_health(charger_ability.momentum * 15)
+	var/datum/effect_system/spark_spread/sparks = new
 	sparks.set_up(1, 1, loc)
 	sparks.start()
 	xeno.visible_message(
-		SPAN_DANGER("[xeno] rams \the [src]!"),
-		SPAN_XENODANGER("You ram \the [src]!")
+		SPAN_DANGER("[xeno] rams [src]!"),
+		SPAN_XENODANGER("You ram [src]!")
 	)
 	playsound(src, "sound/effects/metal_crash.ogg", 25, TRUE)
 
@@ -549,12 +549,12 @@
 	if(gun_mounted)
 		var/obj/item/device/m56d_gun/HMG = new(loc)
 		transfer_label_component(HMG)
-		HMG.rounds = gun_rounds //Inherent the amount of ammo we had.
+		HMG.rounds = gun_rounds
 		HMG.has_mount = TRUE
 		if(gun_health)
 			HMG.health = gun_health
 		HMG.update_icon()
-		qdel(src) //Now we clean up the partially constructed gun.
+		qdel(src)
 	else
 		var/obj/item/device/m56d_post/post = new(loc)
 		post.health = health
@@ -590,8 +590,8 @@
 		charger_ability.stop_momentum()
 		return
 	xeno.visible_message(
-		SPAN_DANGER("[xeno] rams \the [src]!"),
-		SPAN_XENODANGER("You ram \the [src]!")
+		SPAN_DANGER("[xeno] rams [src]!"),
+		SPAN_XENODANGER("You ram [src]!")
 	)
 	playsound(src, "sound/effects/metalhit.ogg", 25, TRUE)
 	qdel(src)
@@ -610,8 +610,8 @@
 		charger_ability.stop_momentum()
 		return
 	xeno.visible_message(
-		SPAN_DANGER("[xeno] rams \the [src]!"),
-		SPAN_XENODANGER("You ram \the [src]!")
+		SPAN_DANGER("[xeno] rams [src]!"),
+		SPAN_XENODANGER("You ram [src]!")
 	)
 	playsound(src, "sound/effects/metalhit.ogg", 25, TRUE)
 	qdel(src)

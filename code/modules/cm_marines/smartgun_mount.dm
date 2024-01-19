@@ -45,7 +45,7 @@
 	///How many rounds are in the weapon. This is useful if we break down our guns.
 	var/rounds = 0
 	///Indicates whether the M56D will come with its folding mount already attached
-	var/has_mount = FALSE 
+	var/has_mount = FALSE
 	///The distance this has to be away from other m56d_hmg and m56d_post to be placed.
 	var/defense_check_range = 5
 
@@ -476,7 +476,6 @@
 	/// What firemodes this gun has
 	var/static/list/gun_firemodes = list(
 		GUN_FIREMODE_SEMIAUTO,
-		GUN_FIREMODE_BURSTFIRE,
 		GUN_FIREMODE_AUTOMATIC,
 	)
 	/// A multiplier for how slow this gun should fire in automatic as opposed to burst. 1 is normal, 1.2 is 20% slower, 0.8 is 20% faster, etc.
@@ -826,6 +825,9 @@
 /obj/structure/machinery/m56d_hmg/proc/try_mount_gun(mob/living/carbon/human/user)
 	// If the user isn't a human.
 	if(!istype(user))
+		return
+	// If the user is unconscious or dead.
+	if(user.stat)
 		return
 
 	// If the user isn't actually allowed to use guns.

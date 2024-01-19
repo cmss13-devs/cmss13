@@ -9,11 +9,10 @@ GLOBAL_LIST_INIT(sqrtTable, list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4,
 // MATH DEFINES
 
 #define Ceiling(x) (-round(-x))
-#define Clamp(val, min_val, max_val) (max(min_val, min(val, max_val)))
 #define CLAMP01(x) (clamp(x, 0, 1))
 
 // cotangent
-#define Cot(x) (1 / Tan(x))
+#define Cot(x) (1 / tan(x))
 
 // cosecant
 #define Csc(x) (1 / sin(x))
@@ -21,18 +20,11 @@ GLOBAL_LIST_INIT(sqrtTable, list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4,
 #define Default(a, b) (a ? a : b)
 #define Floor(x) (round(x))
 
-//Finds nearest integer to x, above or below
-//something.5 or higher, round up, else round down
-#define roundNearest(x) (((Ceiling(x) - x) <= (x - Floor(x))) ? Ceiling(x) : Floor(x))
-
 // Greatest Common Divisor - Euclid's algorithm
 #define Gcd(a, b) (b ? Gcd(b, a % b) : a)
 
 #define Inverse(x) (1 / x)
 #define IsEven(x) (x % 2 == 0)
-
-// Returns true if val is from min to max, inclusive.
-#define IsInRange(val, min, max) (min <= val && val <= max)
 
 #define IsInteger(x) (Floor(x) == x)
 #define IsOdd(x) (!IsEven(x))
@@ -46,9 +38,6 @@ GLOBAL_LIST_INIT(sqrtTable, list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4,
 
 // secant
 #define Sec(x) (1 / cos(x))
-
-// tangent
-#define Tan(x) (sin(x) / cos(x))
 
 // 57.2957795 = 180 / Pi
 #define ToDegrees(radians) (radians * 57.2957795)
@@ -84,11 +73,6 @@ GLOBAL_LIST_INIT(sqrtTable, list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4,
 	rotated_point[2] = rotated_point[2] + axis[2]
 
 	return rotated_point
-
-// Round up
-/proc/n_ceil(num)
-	if(isnum(num))
-		return round(num)+1
 
 ///Format a power value in W, kW, MW, or GW.
 /proc/display_power(powerused)

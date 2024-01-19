@@ -40,11 +40,11 @@
 #define skillcheckexplicit(user, skill, req_level) ((!user.skills || user.skills.is_skilled(skill, req_level, TRUE)))
 
 // Ensure the frequency is within bounds of what it should be sending/receiving at
-// Sets f within bounds via `Clamp(round(f), 1441, 1489)`
+// Sets f within bounds via `clamp(round(f), 1441, 1489)`
 // If f is even, adds 1 to its value to make it odd
-#define sanitize_frequency(f) ((Clamp(round(f), 1441, 1489) % 2) == 0 ? \
-									Clamp(round(f), 1441, 1489) + 1 : \
-									Clamp(round(f), 1441, 1489) \
+#define sanitize_frequency(f) ((clamp(round(f), 1441, 1489) % 2) == 0 ? \
+									clamp(round(f), 1441, 1489) + 1 : \
+									clamp(round(f), 1441, 1489) \
 								)
 
 //Turns 1479 into 147.9
@@ -324,56 +324,17 @@
 	if(!newname) //we'll stick with the oldname then
 		return
 
-	if(cmptext("ai",role))
-		if(isAI(src))
-			var/mob/living/silicon/ai/A = src
-			oldname = null//don't bother with the records update crap
-			A.SetName(newname)
-
 	fully_replace_character_name(oldname,newname)
-
-
-
-//When a borg is activated, it can choose which AI it wants to be slaved to
-/proc/active_ais()
-	. = list()
-	for(var/mob/living/silicon/ai/A in GLOB.alive_mob_list)
-		if(A.stat == DEAD)
-			continue
-		if(A.control_disabled == 1)
-			continue
-		. += A
-	return .
-
-//Find an active ai with the least borgs. VERBOSE PROCNAME HUH!
-/proc/select_active_ai_with_fewest_borgs()
-	var/mob/living/silicon/ai/selected
-	var/list/active = active_ais()
-	for(var/mob/living/silicon/ai/A in active)
-		if(!selected || (selected.connected_robots > A.connected_robots))
-			selected = A
-
-	return selected
-
-/proc/select_active_ai(mob/user)
-	var/list/ais = active_ais()
-	if(ais.len)
-		if(user) . = tgui_input_list(usr,"AI signals detected:", "AI selection", ais)
-		else . = pick(ais)
-	return .
 
 /proc/get_sorted_mobs()
 	var/list/old_list = getmobs()
-	var/list/AI_list = list()
 	var/list/Dead_list = list()
 	var/list/keyclient_list = list()
 	var/list/key_list = list()
 	var/list/logged_list = list()
 	for(var/named in old_list)
 		var/mob/M = old_list[named]
-		if(isSilicon(M))
-			AI_list |= M
-		else if(isobserver(M) || M.stat == 2)
+		if(isobserver(M) || M.stat == 2)
 			Dead_list |= M
 		else if(M.key && M.client)
 			keyclient_list |= M
@@ -383,7 +344,6 @@
 			logged_list |= M
 		old_list.Remove(named)
 	var/list/new_list = list()
-	new_list += AI_list
 	new_list += keyclient_list
 	new_list += key_list
 	new_list += logged_list
@@ -1633,7 +1593,7 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 	. = 0
 	var/i = DS2TICKS(initial_delay)
 	do
-		. += CEILING(i*DELTA_CALC, 1)
+		. += Ceiling(i*DELTA_CALC)
 		sleep(i*world.tick_lag*DELTA_CALC)
 		i *= 2
 	while (TICK_USAGE > min(TICK_LIMIT_TO_RUN, Master.current_ticklimit))

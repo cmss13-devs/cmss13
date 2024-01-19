@@ -60,7 +60,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	if(..(user))
 		return
 
-	if(!allowed(user) || ismaintdrone(user))
+	if(!allowed(user))
 		to_chat(user, SPAN_WARNING("Access denied."))
 		return 1
 

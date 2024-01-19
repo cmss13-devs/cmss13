@@ -32,10 +32,6 @@
 	add_fingerprint(user)
 
 /obj/item/weapon/stunprod/attack(mob/living/M, mob/user)
-	if(isrobot(M))
-		..()
-		return
-
 	if(user.a_intent == INTENT_HARM)
 		return
 	else if(!status)

@@ -22,6 +22,9 @@ endmap
 map khami_barrens
 endmap
 
+map dockred
+endmap
+
 map prison_station_fop
 endmap
 

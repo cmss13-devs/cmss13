@@ -91,6 +91,11 @@
 	html_link = "images/0/0d/Kutjevo_a1.jpg" // PLACEHOLDER, REPLACE WHEN WIKI LINK IS MADE
 	color = "red"
 
+/obj/item/map/dock_red_map
+	name = "\improper Dock Red Map"
+	desc = "A censored blueprint of the Dock Red spaceport"
+	html_link = "https://user-images.githubusercontent.com/43476573/281118799-0e6e4ec5-e082-4b3e-a6af-7051eb8a7bd8.png"
+
 /obj/item/map/FOP_map
 	name = "\improper Fiorina Orbital Penitentiary Map"
 	desc = "A labelled interior scan of Fiorina Orbital Penitentiary"
@@ -149,6 +154,7 @@ GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 		MAP_WHISKEY_OUTPOST = new /obj/item/map/whiskey_outpost_map(),
 		MAP_BIG_RED = new /obj/item/map/big_red_map(),
 		MAP_KHAMI_BARRENS = new /obj/item/map/khami_barrens(),
+		MAP_DOCK_RED = new /obj/item/map/dock_red_map(),
 		MAP_PRISON_STATION = new /obj/item/map/FOP_map(),
 		MAP_PRISON_STATION_V3 = new /obj/item/map/FOP_map_v3(),
 		MAP_DESERT_DAM = new /obj/item/map/desert_dam(),

@@ -22293,13 +22293,6 @@
 	icon_state = "purplewhitecorner"
 	},
 /area/corsat/omega/complex)
-"bzU" = (
-/obj/structure/surface/table/almayer,
-/obj/item/book/manual/robotics_cyborgs,
-/turf/open/floor/corsat{
-	icon_state = "yellow"
-	},
-/area/corsat/sigma/south/robotics)
 "bzV" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/robotanalyzer,
@@ -89329,7 +89322,7 @@ auK
 bxJ
 byb
 aMi
-bzU
+ydU
 auR
 ylo
 ylo

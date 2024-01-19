@@ -114,6 +114,13 @@
 	organ_tag = "liver"
 	organ_type = /datum/internal_organ/liver
 
+/obj/item/organ/heart/xeno
+	name = "Acidic Heart"
+	desc = "Acidic heart removed from a xenomorph. It spews droplets of acid every so often. Definetly not human heart."
+	icon_state = "heart-on"
+	organ_tag = "heart"
+	black_market_value = 60
+
 //These are here so they can be printed out via the fabricator.
 /obj/item/organ/heart/prosthetic
 	name = "circulatory pump"

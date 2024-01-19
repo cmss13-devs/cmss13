@@ -395,6 +395,7 @@
 
 	mutators.xeno = src
 
+
 	//Set caste stuff
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
 		caste = GLOB.xeno_datum_list[caste_type]

@@ -993,7 +993,6 @@ Additional game mode variables.
 
 	if(!joe_candidate.client)
 		return
-	var/client/joe_client = joe_candidate.client
 
 	var/datum/job/joe_job = GLOB.RoleAuthority.roles_by_name[JOB_WORKING_JOE]
 

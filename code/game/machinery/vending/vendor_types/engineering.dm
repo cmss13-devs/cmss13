@@ -96,6 +96,7 @@
 		list("Arcade", 2, /obj/item/circuitboard/computer/arcade, VENDOR_ITEM_REGULAR),
 		list("Atmospheric Monitor", 2, /obj/item/circuitboard/computer/air_management, VENDOR_ITEM_REGULAR),
 	)
+
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage/antag
 	req_one_access = list(ACCESS_ILLEGAL_PIRATE, ACCESS_UPP_GENERAL, ACCESS_CLF_GENERAL)
 	req_access = null

@@ -63,7 +63,7 @@
 				if(affecting.status & LIMB_DESTROYED)
 					continue
 			else
-				if(ishuman(target))
+				if(ishuman(target))//otherwise breaks when trying to op xeno
 					if(!(affecting.status & LIMB_DESTROYED) && ishuman(target))
 						continue
 					if(affecting.parent && affecting.parent.status & LIMB_DESTROYED && ishuman(target))

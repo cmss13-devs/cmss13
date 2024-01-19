@@ -40,8 +40,8 @@
 	else
 		user.affected_message(target,
 			SPAN_NOTICE("You start to [pick("smash", "crack", "break")] [target.caste_type] carapace apart using \the [tool], Recklessly, with acid splashing on you!"),
-			SPAN_NOTICE("[user] starts to [pick("smash", "crack", "break")] Your carapace apart using \the [tool], Recklessly, with acid splashing on you!"),
-			SPAN_NOTICE("[user] starts to [pick("smash", "crack", "break")] [target.caste_type] carapace with \the [tool], Recklessly, with acid splashing him!"))
+			SPAN_NOTICE("[user] starts to [pick("smash", "crack", "break")] Your carapace apart using \the [tool], Recklessly, with acid splashing all of the place!"),
+			SPAN_NOTICE("[user] starts to [pick("smash", "crack", "break")] [target.caste_type] carapace with \the [tool], Recklessly, with acid splashing them!"))
 		if(user.head && !(user.head.flags_inventory & COVEREYES))
 			var/datum/internal_organ/eyes/user_eye = user.internal_organs_by_name["eyes"]
 			user_eye.take_damage(rand(3,5), FALSE)
@@ -197,6 +197,6 @@
 	if(tool)
 		user.affected_message(target,
 			SPAN_NOTICE("You fail to pull the [target.caste_type] organ out using \the [tool]"),
-			SPAN_NOTICE("[user] pulled Your organ out using \the [tool]"),
-			SPAN_NOTICE("[user] pulled the [target.caste_type] organ out using \the [tool]"))
+			SPAN_NOTICE("[user] fails to pull Your organ out using \the [tool]"),
+			SPAN_NOTICE("[user] fails to pull the [target.caste_type] organ out using \the [tool]"))
 

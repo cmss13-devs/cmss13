@@ -31,7 +31,8 @@ const PlayerList = (props, context) => {
         <Flex.Item mr="1rem">
           <Button
             icon="clipboard"
-            tooltip="Add Key"
+            content="Search"
+            tooltip="Add new player, or find an existing one."
             onClick={() => act('add_player')}
           />
         </Flex.Item>

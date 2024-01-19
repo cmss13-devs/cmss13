@@ -894,7 +894,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	return player_data.check_whitelist_status(flag_to_check)
 
-/client/proc/check_whitelist_status_list(flags_to_check)
+/client/proc/check_whitelist_status_list(flags_to_check) /// Logical OR list, not match all.
 	var/success = FALSE
 	if(!player_data)
 		load_player_data()

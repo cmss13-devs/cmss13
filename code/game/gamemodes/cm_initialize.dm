@@ -993,6 +993,7 @@ Additional game mode variables.
 
 	if(!joe_candidate.client)
 		return
+	var/client/joe_client = joe_candidate.client
 
 	var/datum/job/joe_job = GLOB.RoleAuthority.roles_by_name[JOB_WORKING_JOE]
 
@@ -1001,7 +1002,7 @@ Additional game mode variables.
 			to_chat(joe_candidate, SPAN_WARNING("Something went wrong!"))
 		return
 
-	if(!(joe_candidate.client.check_whitelist_status(WHITELIST_JOE)))
+	if(!(joe_client.check_whitelist_status(WHITELIST_JOE) || joe_client.check_whitelist_status(WHITELIST_SYNTHETIC)))
 		if(show_warning)
 			to_chat(joe_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a synth."))
 		return

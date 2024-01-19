@@ -48,8 +48,10 @@
 	if(resin_trap)
 		qdel(resin_trap)
 
-		if(hivenumber == XENO_HIVE_NORMAL)
-			RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
+	if(hivenumber == XENO_HIVE_NORMAL)
+		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
+
+	SSminimaps.add_marker(src, z, get_minimap_flag_for_faction(hivenumber), "xenotunnel")
 
 /obj/structure/tunnel/proc/forsaken_handling()
 	SIGNAL_HANDLER
@@ -61,8 +63,6 @@
 		hive.tunnels += src
 
 	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
-
-	SSminimaps.add_marker(src, z, get_minimap_flag_for_faction(hivenumber), "xenotunnel")
 
 /obj/structure/tunnel/Destroy()
 	if(hive)
@@ -144,15 +144,17 @@
 	if(!istype(X) || X.is_mob_incapacitated(TRUE) || !isfriendly(X) || !hive)
 		return FALSE
 	if(X in contents)
-		var/list/tunnels = list()
-		for(var/obj/structure/tunnel/T in hive.tunnels)
+		var/list/input_tunnels = list()
+
+		var/list/sorted_tunnels = sort_list_dist(hive.tunnels, get_turf(X))
+		for(var/obj/structure/tunnel/T in sorted_tunnels)
 			if(T == src)
 				continue
 			if(!is_ground_level(T.z))
 				continue
 
-			tunnels += list(T.tunnel_desc = T)
-		var/pick = tgui_input_list(usr, "Which tunnel would you like to move to?", "Tunnel", tunnels, theme="hive_status")
+			input_tunnels += list(T.tunnel_desc = T)
+		var/pick = tgui_input_list(usr, "Which tunnel would you like to move to?", "Tunnel", input_tunnels, theme="hive_status")
 		if(!pick)
 			return FALSE
 
@@ -173,7 +175,7 @@
 		if(!do_after(X, tunnel_time, INTERRUPT_NO_NEEDHAND, 0))
 			return FALSE
 
-		var/obj/structure/tunnel/T = tunnels[pick]
+		var/obj/structure/tunnel/T = input_tunnels[pick]
 
 		if(T.contents.len > 2)// max 3 xenos in a tunnel
 			to_chat(X, SPAN_WARNING("The tunnel is too crowded, wait for others to exit!"))

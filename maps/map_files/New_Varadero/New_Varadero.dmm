@@ -6074,10 +6074,7 @@
 	pixel_x = -7;
 	pixel_y = 8
 	},
-/obj/item/tool/lighter/zippo{
-	icon_off = "blackzippo";
-	icon_on = "blackzippoon";
-	icon_state = "blackzippo";
+/obj/item/tool/lighter/zippo/black{
 	pixel_x = -5;
 	pixel_y = 7
 	},
@@ -34890,10 +34887,6 @@
 	icon_state = "blue"
 	},
 /area/varadero/interior/administration)
-"wjd" = (
-/obj/item/book/manual/robotics_cyborgs,
-/turf/open/floor/carpet,
-/area/varadero/interior/library)
 "wjf" = (
 /obj/structure/machinery/washing_machine,
 /obj/structure/machinery/washing_machine{
@@ -53826,7 +53819,7 @@ pjn
 mCY
 jzZ
 mCY
-wjd
+jzZ
 mRq
 xWY
 hvO

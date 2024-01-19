@@ -36,3 +36,4 @@ As a Ravager your abilities become greatly enhanced when you empower with three 
 Resisting on a water tile will immediately put out fires. Make sure you're alone though - It's usually better to let a friendly Xenomorph pat you out than it is to expose yourself to open water.
 You can filter out the Xenomorphs displayed in hive status by health, allowing you to look only for wounded sisters.
 Each xeno has their own ‘tackle counter’ on a marine. The range to successfully tackle can be anywhere from two to six tackles based on caste. If a marine gets stunned or knocked over by other means it will reset everyone's tackle counters and they may get up!
+As a Xenomorph, the list of available tunnels is sorted by their distance to the player!

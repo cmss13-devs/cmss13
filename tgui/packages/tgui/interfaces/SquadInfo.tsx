@@ -47,7 +47,10 @@ interface SquadProps {
   objective: { primary?: string; secondary?: string };
 }
 
-const FireTeamLeadLabel = (props: { ftl: SquadMarineEntry }, context) => {
+const FireTeamLeadLabel = (
+  props: { readonly ftl: SquadMarineEntry },
+  context
+) => {
   const { data } = useBackend<SquadProps>(context);
   const { ftl } = props;
   return (
@@ -73,7 +76,7 @@ const FireTeamLeadLabel = (props: { ftl: SquadMarineEntry }, context) => {
 };
 
 const FireTeamLead = (
-  props: { fireteam: FireTeamEntry; ft: string },
+  props: { readonly fireteam: FireTeamEntry; readonly ft: string },
   context
 ) => {
   const { data, act } = useBackend<SquadProps>(context);
@@ -107,8 +110,8 @@ const FireTeamLead = (
 };
 
 interface FireteamBoxProps extends BoxProps {
-  name: string;
-  isEmpty: boolean;
+  readonly name: string;
+  readonly isEmpty: boolean;
 }
 
 const FireteamBox = (props: FireteamBoxProps, context) => {
@@ -120,7 +123,7 @@ const FireteamBox = (props: FireteamBoxProps, context) => {
   );
 };
 
-const FireTeam = (props: { ft: string }, context) => {
+const FireTeam = (props: { readonly ft: string }, context) => {
   const { data, act } = useBackend<SquadProps>(context);
   const fireteam: FireTeamEntry = data.fireteams[props.ft];
 
@@ -191,7 +194,11 @@ const FireTeam = (props: { ft: string }, context) => {
 };
 
 const FireTeamMember = (
-  props: { member: SquadMarineEntry; team: string; fireteam?: FireTeamEntry },
+  props: {
+    readonly member: SquadMarineEntry;
+    readonly team: string;
+    readonly fireteam?: FireTeamEntry;
+  },
   context
 ) => {
   const { data, act } = useBackend<SquadProps>(context);

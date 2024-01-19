@@ -520,8 +520,7 @@
 		return
 	if(user.is_mob_incapacitated())
 		return
-	if(ismaintdrone(usr) || \
-		istype(usr, /mob/living/carbon/xenomorph))
+	if(istype(usr, /mob/living/carbon/xenomorph))
 		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return
 	if(working)

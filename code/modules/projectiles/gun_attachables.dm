@@ -31,7 +31,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/pixel_shift_y = 16 //Uses the bottom left corner of the item.
 
 	flags_atom =  FPRINT|CONDUCT
-	matter = list("metal" = 2000)
+	matter = list("metal" = 100)
 	w_class = SIZE_SMALL
 	force = 1
 	var/slot = null //"muzzle", "rail", "under", "stock", "special"
@@ -168,7 +168,8 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/proc/Detach(mob/user, obj/item/weapon/gun/detaching_gub)
 	if(!istype(detaching_gub)) return //Guns only
 
-	detaching_gub.on_detach(user)
+	if(user)
+		detaching_gub.on_detach(user, src)
 
 	if(flags_attach_features & ATTACH_ACTIVATION)
 		activate_attachment(detaching_gub, null, TRUE)

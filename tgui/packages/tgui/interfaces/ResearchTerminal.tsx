@@ -96,8 +96,8 @@ const PurchaseDocs = (_, context) => {
 };
 
 interface ConfirmationProps extends BoxProps {
-  onConfirm: () => any;
-  onCancel: () => any;
+  readonly onConfirm: () => any;
+  readonly onCancel: () => any;
 }
 
 const ConfirmationDialogue = (props: ConfirmationProps, context) => {
@@ -130,8 +130,8 @@ const NoCompoundsDetected = (_, context) => {
 };
 
 interface CompoundRecordProps extends BoxProps {
-  compound: CompoundData;
-  canPrint: boolean;
+  readonly compound: CompoundData;
+  readonly canPrint: boolean;
 }
 
 const CompoundRecord = (props: CompoundRecordProps, context) => {
@@ -260,9 +260,9 @@ const ResearchReportTable = (_, context) => {
 };
 
 export interface CompoundTableProps extends BoxProps {
-  docs: DocumentRecord[];
-  timeLabel: string;
-  canPrint: boolean;
+  readonly docs: DocumentRecord[];
+  readonly timeLabel: string;
+  readonly canPrint: boolean;
 }
 
 export const CompoundTable = (props: CompoundTableProps, context) => {

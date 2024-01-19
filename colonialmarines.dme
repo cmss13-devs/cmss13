@@ -2393,6 +2393,7 @@
 #include "code\modules\unit_tests\_unit_tests.dm"
 #include "code\modules\vehicles\cargo_train.dm"
 #include "code\modules\vehicles\powerloader.dm"
+#include "code\modules\vehicles\souto_mobile.dm"
 #include "code\modules\vehicles\train.dm"
 #include "code\modules\vehicles\vehicle.dm"
 #include "code\modules\vehicles\vehicle_misc_objects.dm"

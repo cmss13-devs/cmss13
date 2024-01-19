@@ -156,7 +156,7 @@
 // dense and opaque, but easy to break
 
 #define FOAMED_METAL_FIRE_ACT_DMG 50
-#define FOAMED_METAL_XENO_SLASH 0.8
+#define FOAMED_METAL_XENO_SLASH 2.5
 #define FOAMED_METAL_ITEM_MELEE 2
 #define FOAMED_METAL_BULLET_DMG 2
 #define FOAMED_METAL_EXPLOSION_DMG 1

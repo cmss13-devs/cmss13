@@ -25,13 +25,17 @@
 	if(isSenator(src))
 		add_verb(src, /client/proc/whitelist_panel)
 
+/client
+	var/datum/whitelist_panel/wl_panel
+
 /client/proc/whitelist_panel()
 	set name = "Whitelist Panel"
 	set category = "Admin.Panels"
 
-	GLOB.WhitelistPanel.tgui_interact(mob)
-
-GLOBAL_DATUM_INIT(WhitelistPanel, /datum/whitelist_panel, new)
+	if(wl_panel)
+		qdel(wl_panel)
+	wl_panel = new
+	wl_panel.tgui_interact(mob)
 
 #define WL_PANEL_RIGHT_CO (1<<0)
 #define WL_PANEL_RIGHT_SYNTH (1<<1)
@@ -44,7 +48,6 @@ GLOBAL_DATUM_INIT(WhitelistPanel, /datum/whitelist_panel, new)
 /datum/whitelist_panel
 	var/viewed_player = list()
 	var/current_menu = "Panel"
-	var/used_by
 	var/user_rights = 0
 	var/target_rights = 0
 	var/new_rights = 0
@@ -77,13 +80,8 @@ GLOBAL_DATUM_INIT(WhitelistPanel, /datum/whitelist_panel, new)
 
 /datum/whitelist_panel/ui_close(mob/user)
 	. = ..()
-	if(used_by)
-		used_by = null
-	viewed_player = list()
-	user_rights = 0
-	current_menu = "Panel"
-	target_rights = 0
-	new_rights = 0
+	if(user?.client.wl_panel)
+		qdel(user.client.wl_panel)
 
 /datum/whitelist_panel/vv_edit_var(var_name, var_value)
 	return FALSE
@@ -148,9 +146,6 @@ GLOBAL_LIST_INIT(misc_flags, list(
 	if(.)
 		return
 	var/mob/user = ui.user
-	if(used_by && (used_by != user.ckey))
-		to_chat(user, SPAN_ALERTWARNING("You are not the current user. [used_by] is editing this player."))
-		return
 	switch(action)
 		if("go_back")
 			go_back()
@@ -173,8 +168,8 @@ GLOBAL_LIST_INIT(misc_flags, list(
 			to_chat(user, SPAN_HELPFUL("Whitelists for [player_key] updated."))
 			message_admins("Whitelists for [player_key] updated by [key_name(user)]. Reason: '[reason]'.")
 			log_admin("WHITELISTS: Flags for [player_key] changed from [target_rights] to [new_rights]. Reason: '[reason]'.")
-			update_static_data(user, ui)
 			go_back()
+			update_static_data(user, ui)
 			return
 		if("refresh_data")
 			update_static_data(user, ui)
@@ -186,12 +181,6 @@ GLOBAL_LIST_INIT(misc_flags, list(
 		return PROC_BLOCKED
 	if(!target_key)
 		return FALSE
-
-	if(used_by && (used_by != user.ckey))
-		to_chat(user, SPAN_ALERTWARNING("Panel already in use by [used_by]"))
-		var/override_option = tgui_alert(user, "The Whitelist Panel is in use by [used_by]. Do you want to override?", "Use Panel", list("Override", "Cancel"))
-		if(override_option != "Override")
-			return FALSE
 
 	if(target_key == TRUE)
 		var/new_player = tgui_input_text(user, "Enter the new ckey you wish to add. Do not include spaces or special characters.", "New Whitelistee")
@@ -209,12 +198,9 @@ GLOBAL_LIST_INIT(misc_flags, list(
 	viewed_player = current_player
 	current_menu = "Update"
 	user_rights = get_user_rights(user)
-	used_by = user.ckey
 	return
 
 /datum/whitelist_panel/proc/go_back()
-	if(used_by)
-		used_by = null
 	viewed_player = list()
 	user_rights = 0
 	current_menu = "Panel"

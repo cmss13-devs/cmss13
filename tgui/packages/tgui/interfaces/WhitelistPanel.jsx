@@ -118,6 +118,7 @@ const StatusUpdate = (props, context) => {
                 width="100%"
                 height="100%"
                 color={isWhitelisted ? 'purple' : 'blue'}
+                tooltip={isWhitelisted ? 'Whitelisted' : 'Not Whitelisted'}
                 content={bit.name}
               />
             );
@@ -158,6 +159,7 @@ const StatusUpdate = (props, context) => {
                 width="100%"
                 height="100%"
                 color={isWhitelisted ? 'purple' : 'blue'}
+                tooltip={isWhitelisted ? 'Whitelisted' : 'Not Whitelisted'}
                 content={bit.name}
               />
             );
@@ -198,6 +200,7 @@ const StatusUpdate = (props, context) => {
                 width="100%"
                 height="100%"
                 color={isWhitelisted ? 'purple' : 'blue'}
+                tooltip={isWhitelisted ? 'Whitelisted' : 'Not Whitelisted'}
                 content={bit.name}
               />
             );
@@ -238,6 +241,7 @@ const StatusUpdate = (props, context) => {
                 width="100%"
                 height="100%"
                 color={isWhitelisted ? 'purple' : 'blue'}
+                tooltip={isWhitelisted ? 'Whitelisted' : 'Not Whitelisted'}
                 content={bit.name}
               />
             );

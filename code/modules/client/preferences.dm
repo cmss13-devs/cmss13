@@ -684,7 +684,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 		if(jobban_isbanned(user, job.title))
 			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='center'></td><td><b>BANNED</b></td></tr>"
 			continue
-		else if(job.flags_startup_parameters & ROLE_WHITELISTED && !user.client.check_whitelist_status(job.flags_whitelist))
+		else if(!job.check_whitelist_status(user))
 			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='center'></td><td>WHITELISTED</td></tr>"
 			continue
 		else if(!job.can_play_role(user.client))
@@ -796,7 +796,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 		if(jobban_isbanned(user, job.title))
 			HTML += "<b><del>[job.disp_title]</del></b></td><td width='60%'><b>BANNED</b></td></tr>"
 			continue
-		else if(job.flags_startup_parameters & ROLE_WHITELISTED && !user.client.check_whitelist_status(job.flags_whitelist))
+		else if(!job.check_whitelist_status(user))
 			HTML += "<b><del>[job.disp_title]</del></b></td><td width='60%'>WHITELISTED</td></tr>"
 			continue
 		else if(!job.can_play_role(user.client))

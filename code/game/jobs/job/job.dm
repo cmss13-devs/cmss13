@@ -311,3 +311,10 @@
 /// Intended to be overwritten to handle any requirements for specific job variations that can be selected
 /datum/job/proc/filter_job_option(mob/job_applicant)
 	return job_options
+
+/datum/job/proc/check_whitelist_status(mob/user)
+	if(!(flags_startup_parameters & ROLE_WHITELISTED))
+		return TRUE
+
+	if(user.client.check_whitelist_status(flags_whitelist))
+		return TRUE

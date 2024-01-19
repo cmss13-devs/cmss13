@@ -19,6 +19,9 @@ endmap
 map bigredv2
 endmap
 
+map khami_barrens
+endmap
+
 map prison_station_fop
 endmap
 

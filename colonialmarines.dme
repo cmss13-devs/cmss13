@@ -2538,6 +2538,7 @@
 #include "fray-marines\code\modules\vehicles\walker_vendor.dm"
 #include "fray-marines\code\modules\vehicles\hardpoints\holder\tank_turret.dm"
 #include "fray-marines\code\modules\vehicles\hardpoints\support\smoke.dm"
+#include "fray-marines\maps\doctoralex\KhamiBarrens\KhamiBarrens.dm"
 #include "interface\fonts.dm"
 #include "interface\interface.dm"
 #include "interface\skin.dmf"

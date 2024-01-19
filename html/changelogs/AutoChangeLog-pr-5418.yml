@@ -1,4 +1,0 @@
-author: "Birdtalon"
-delete-after: True
-changes:
-  - code_imp: "INTERRUPT_ALL define now includes resting."

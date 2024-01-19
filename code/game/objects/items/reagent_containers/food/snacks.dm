@@ -829,13 +829,6 @@
 	reagents.add_reagent("iron", 3)
 	bitesize = 2
 
-/// Vanilla roburger - the nanites turn people into cyborgs
-/obj/item/reagent_container/food/snacks/roburger/unsafe
-/obj/item/reagent_container/food/snacks/roburger/unsafe/Initialize(mapload, ...)
-	. = ..()
-	if(prob(5))
-		reagents.add_reagent("nanites", 2)
-
 /obj/item/reagent_container/food/snacks/roburgerbig
 	name = "roburger"
 	desc = "This massive patty looks like poison. Beep."
@@ -845,7 +838,6 @@
 
 /obj/item/reagent_container/food/snacks/roburgerbig/Initialize()
 	. = ..()
-	reagents.add_reagent("nanites", 100)
 	bitesize = 0.1
 
 /obj/item/reagent_container/food/snacks/xenoburger

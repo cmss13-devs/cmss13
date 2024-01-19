@@ -754,9 +754,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 	for(var/turf/turf in locs)
 		for(var/mob/living/M in turf)
-			if(isborg(M))
-				M.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
-			else if(HAS_TRAIT(M, TRAIT_SUPER_STRONG))
+			if(HAS_TRAIT(M, TRAIT_SUPER_STRONG))
 				M.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
 			else
 				M.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)

@@ -75,9 +75,6 @@
 		H.updatehealth()
 		return 1
 
-	else if(isAI(src))
-		return 0
-
 /mob/living/proc/adjustBodyTemp(actual, desired, incrementboost)
 	var/temperature = actual
 	var/difference = abs(actual-desired) //get difference

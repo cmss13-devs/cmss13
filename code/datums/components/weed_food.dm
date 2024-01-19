@@ -90,6 +90,7 @@
 	RegisterSignal(parent_mob, COMSIG_MOVABLE_MOVED, PROC_REF(on_move))
 	RegisterSignal(parent_mob, list(COMSIG_LIVING_REJUVENATED, COMSIG_HUMAN_REVIVED), PROC_REF(on_rejuv))
 	RegisterSignal(parent_mob, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(on_update))
+	RegisterSignal(parent_mob, COMSIG_LIVING_PREIGNITION, PROC_REF(on_preignition))
 	RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(on_forsaken))
 	if(parent_turf)
 		RegisterSignal(parent_turf, COMSIG_WEEDNODE_GROWTH, PROC_REF(on_update))
@@ -101,6 +102,7 @@
 			COMSIG_LIVING_REJUVENATED,
 			COMSIG_HUMAN_REVIVED,
 			COMSIG_HUMAN_SET_UNDEFIBBABLE,
+			COMSIG_LIVING_PREIGNITION,
 			))
 	if(absorbing_weeds)
 		UnregisterSignal(absorbing_weeds, COMSIG_PARENT_QDELETING)
@@ -193,6 +195,13 @@
 
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_FORSAKEN]
 	weed_appearance.color = hive.color
+
+/// SIGNAL_HANDLER for COMSIG_LIVING_PREIGNITION of weeds
+/datum/component/weed_food/proc/on_preignition()
+	SIGNAL_HANDLER
+
+	if(merged)
+		return COMPONENT_CANCEL_IGNITION
 
 /**
  * Try to start the process to turn into weeds
@@ -304,6 +313,7 @@
 	if(!parent_nest)
 		parent_mob.plane = FLOOR_PLANE
 	parent_mob.remove_from_all_mob_huds()
+	parent_mob.ExtinguishMob()
 
 	if(!weed_appearance) // Make a new sprite if we aren't re-merging
 		var/is_flipped = parent_mob.transform.b == -1 // Technically we should check if d is 1 too, but corpses can only be rotated 90 or 270 (1/-1 or -1/1)

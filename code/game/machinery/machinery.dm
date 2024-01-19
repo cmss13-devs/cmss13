@@ -247,13 +247,7 @@ Class Procs:
 	return (user.IsAdvancedToolUser(user) || isRemoteControlling(user))
 
 /obj/structure/machinery/attack_remote(mob/user as mob)
-	if(isrobot(user))
-		// For some reason attack_robot doesn't work
-		// This is to stop robots from using cameras to remotely control machines.
-		if(user.client && user.client.eye == user)
-			return src.attack_hand(user)
-	else
-		return src.attack_hand(user)
+	return src.attack_hand(user)
 
 /obj/structure/machinery/attack_hand(mob/living/user as mob)
 	if(inoperable(MAINT))

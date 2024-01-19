@@ -182,9 +182,6 @@
 			if(isanimal(player))
 				animals += list(serialized)
 
-		else if(isAI(M))
-			humans += list(serialized)
-
 	data["boxers"] = boxers
 	data["humans"] = humans
 	data["marines"] = marines

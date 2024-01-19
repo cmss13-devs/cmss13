@@ -35,10 +35,6 @@ GLOBAL_LIST_INIT(reverse_dir, list(2, 1, 3, 8, 10, 9, 11, 4, 6, 5, 7, 12, 14, 13
 GLOBAL_VAR(join_motd)
 GLOBAL_VAR(current_tms)
 
-GLOBAL_LIST_INIT(BorgWireColorToFlag, RandomBorgWires())
-GLOBAL_LIST(BorgIndexToFlag)
-GLOBAL_LIST(BorgIndexToWireColor)
-GLOBAL_LIST(BorgWireColorToIndex)
 GLOBAL_LIST_INIT(AAlarmWireColorToFlag, RandomAAlarmWires())
 GLOBAL_LIST(AAlarmIndexToFlag)
 GLOBAL_LIST(AAlarmIndexToWireColor)

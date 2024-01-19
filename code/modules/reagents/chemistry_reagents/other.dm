@@ -9,7 +9,7 @@
 	description = "Blood is classified as a connective tissue and consists of two main components: Plasma, which is a clear extracellular fluid. Formed elements, which are made up of the blood cells and platelets."
 	reagent_state = LIQUID
 	color = "#A10808"
-	data_properties = new/list("blood_type"=null,"blood_colour"= "#A10808","viruses"=null,"resistances"=null)
+	data_properties = new/list("blood_type"=null,"blood_color"= "#A10808","viruses"=null,"resistances"=null)
 	chemclass = CHEM_CLASS_RARE
 
 
@@ -584,18 +584,6 @@
 	chemclass = CHEM_CLASS_RARE
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 	flags = REAGENT_NO_GENERATION
-
-/datum/reagent/nanites
-	name = "Nanomachines"
-	id = "nanites"
-	description = "Microscopic construction robots."
-	reagent_state = LIQUID
-	color = "#535E66" // rgb: 83, 94, 102
-
-/datum/reagent/nanites/reaction_mob(mob/M, method=TOUCH, volume)
-	src = null
-	if((prob(10) && method==TOUCH) || method==INGEST)
-		M.contract_disease(new /datum/disease/robotic_transformation(0),1)
 
 /datum/reagent/xenomicrobes
 	name = "Xenomicrobes"

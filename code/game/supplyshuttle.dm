@@ -752,7 +752,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	if(..())
 		return
 
-	if( isturf(loc) && (in_range(src, usr) || ishighersilicon(usr)) )
+	if( isturf(loc) && (in_range(src, usr) || isSilicon(usr)) )
 		usr.set_interaction(src)
 
 	if(href_list["order"])
@@ -802,7 +802,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			var/mob/living/carbon/human/H = usr
 			idname = H.get_authentification_name()
 			idrank = H.get_assignment()
-		else if(ishighersilicon(usr))
+		else if(isSilicon(usr))
 			idname = usr.real_name
 
 		GLOB.supply_controller.ordernum++
@@ -924,10 +924,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	if(..())
 		return
 
-	if(ismaintdrone(usr))
-		return
-
-	if(isturf(loc) && ( in_range(src, usr) || ishighersilicon(usr) ) )
+	if(isturf(loc) && in_range(src, usr) )
 		usr.set_interaction(src)
 
 	//Calling the shuttle
@@ -1449,10 +1446,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		to_chat(usr, SPAN_WARNING("The elevator needs to be in the cargo bay dock to call a vehicle up. Ask someone to send it away."))
 		return
 
-	if(ismaintdrone(usr))
-		return
-
-	if(isturf(loc) && ( in_range(src, usr) || ishighersilicon(usr) ) )
+	if(isturf(loc) && ( in_range(src, usr) || isSilicon(usr) ) )
 		usr.set_interaction(src)
 
 	if(href_list["get_vehicle"])

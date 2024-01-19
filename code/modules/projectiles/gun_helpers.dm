@@ -526,12 +526,7 @@ DEFINES in setup.dm, referenced here.
 
 	return FALSE
 
-//For the holster hotkey
-/mob/living/silicon/robot/verb/holster_verb(unholster_number_offset = 1 as num)
-	set name = "holster"
-	set hidden = TRUE
-	uneq_active()
-
+///For the holster hotkey
 /mob/living/carbon/human/verb/holster_verb(unholster_number_offset = 1 as num)
 	set name = "holster"
 	set hidden = TRUE

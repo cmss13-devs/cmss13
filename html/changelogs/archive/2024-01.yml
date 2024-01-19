@@ -195,3 +195,65 @@
   Vicacrov:
   - bugfix: Fixes an issue where player-controlled facehuggers would ghost out when
       smashing against anti-hugging headgear like the B18 helmet.
+2024-01-19:
+  BadAtThisGame302:
+  - rscadd: Added the Wey-Yu lighter to the CLs briefcase instead of a normal one
+  BeagleGaming1:
+  - bugfix: Floor floodlights use correct sprites
+  Birdtalon:
+  - bugfix: Bedrolls no longer give metal when wrenched.
+  - code_imp: INTERRUPT_ALL define now includes resting.
+  DelineFortune:
+  - code_imp: Changed value of metal you are getting for recycling attachments via
+      autolathe.
+  Huffie56:
+  - rscdel: deleting machinery called centrifuge in distillery/main.dm and deleted
+      the distellery/main.dm file and folder.
+  - refactor: move all the machinery of distillery/main.dm into machinery.dm and remove
+      all their added functionality.
+  - rscdel: Remove all the manuals that were nothing to do with CM lore. (cloning,
+      particle_accelerator, singularity_safety, robotics_cyborgs)
+  - code_imp: Updated research manual.
+  - refactor: refactor to reduce the number variable using colour in them instead
+      of color.
+  - rscdel: deleting a var called "max_temperature" that created in Walls.dm and didn't
+      do anything code wise.
+  InsaneRed:
+  - bugfix: Fixes praetorian acid ball eating up plasma if its on cooldown
+  SabreML:
+  - qol: Made open TGUI windows transfer over when a xeno player evolves.
+  - rscadd: Made xeno tunnel lists sort by distance to the player.
+  TheGamerdk:
+  - rscadd: Groundside Operations console now shows ASL status
+  - bugfix: FTL is sorted correctly in Groundside Operations console
+  Vicacrov:
+  - bugfix: Special xeno structures no longer layer below the Alamo and Normandy's
+      equipment attach points.
+  blackdragonTOW:
+  - soundadd: added unique sound for minimap updates
+  - soundadd: added unique fax sound for fax announcements.
+  cuberound:
+  - bugfix: lowers volume of neurohalucination from 100 (no outher sounds are so laud)
+      to 65 (just about under queen screech level).
+  fira:
+  - rscdel: Removed AIs.
+  - rscdel: Removed Cyborgs.
+  - rscdel: Removed Maintenance Drones.
+  - rscdel: Removed Camera chunking for AIs, and all associated dynamic updates.
+  - rscdel: Removed Robotic equipment items.
+  - rscdel: Removed Robotic and AI transformation tools.
+  - rscdel: Removed Robotic Transformation Disease.
+  - rscdel: Removed Nanites. Roburgers are now all safe to eat.
+  - rscdel: Removed functionality from AI machinery and AI card. They're props now.
+  iloveloopers:
+  - balance: Being immune to bonebreaks now makes you immune to delimbs.
+  mullenpaul:
+  - refactor: upgraded root tgui files to typescript to closer align with tg
+  - refactor: upgraded typescript to 4.9.4
+  - refactor: upgraded yarn to 3.3.1
+  - refactor: upgraded a bunch of tgui tooling
+  realforest2001:
+  - bugfix: Mutated facehuggers are no longer invisible.
+  - bugfix: Fancy closet now works as desired and runtime free.
+  - rscadd: Added an area for the closet to use instead of APC interior.
+  - code_imp: Repathed /area/vehicle to /area/interior/vehicle.

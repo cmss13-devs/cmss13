@@ -3,9 +3,9 @@ import { ArgumentsOf } from 'common/types';
 import { Component, findDOMfromVNode, InfernoNode, render } from 'inferno';
 
 type PopperProps = {
-  popperContent: InfernoNode;
-  options?: ArgumentsOf<typeof createPopper>[2];
-  additionalStyles?: CSSProperties;
+  readonly popperContent: InfernoNode;
+  readonly options?: ArgumentsOf<typeof createPopper>[2];
+  readonly additionalStyles?: CSSProperties;
 };
 
 export class Popper extends Component<PopperProps> {

@@ -368,7 +368,7 @@
 	var/unspooled = FALSE
 	var/list/icons_available = list()
 	var/radial_icon_file = 'icons/mob/radial_tape.dmi'
-	var/list/cassette_colours = list("blue", "gray", "green", "orange", "pink_stripe", "purple", "rainbow", "red_black", "red_stripe", "camo", "rising_sun", "orange", "blue", "ocean", "aesthetic")
+	var/list/cassette_colors = list("blue", "gray", "green", "orange", "pink_stripe", "purple", "rainbow", "red_black", "red_stripe", "camo", "rising_sun", "orange", "blue", "ocean", "aesthetic")
 	var/list/cassette_map_themes = list("solaris", "ice", "lz", "dam", "worstmap")
 	inherent_traits = list(TRAIT_ITEM_RENAME_SPECIAL) //used to make the rename component work specially.
 	///used to store the tape's name for one side and the other side
@@ -501,7 +501,7 @@
 	icon_state = "cassette_rainbow"
 
 /obj/item/tape/random/Initialize(mapload)
-	icon_state = "cassette_[pick(cassette_colours)]"
+	icon_state = "cassette_[pick(cassette_colors)]"
 	. = ..()
 
 /obj/item/tape/regulation

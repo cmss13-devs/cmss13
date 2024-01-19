@@ -16,7 +16,7 @@ interface EquipmentContext {
 }
 
 const WeaponPanel = (
-  props: { panelId: string; equipment: DropshipEquipment },
+  props: { readonly panelId: string; readonly equipment: DropshipEquipment },
   context
 ) => {
   const { data } = useBackend<EquipmentContext>(context);

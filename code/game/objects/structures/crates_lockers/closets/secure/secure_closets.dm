@@ -90,7 +90,7 @@
 				else
 					to_chat(user, SPAN_NOTICE("The locker is too small to stuff [W:affecting] into!"))
 			return
-		if(isrobot(user) || iszombie(user))
+		if(iszombie(user))
 			return
 		user.drop_inv_item_to_loc(W, loc)
 	else if(istype(W, /obj/item/packageWrap) || istype(W, /obj/item/explosive/plastic))

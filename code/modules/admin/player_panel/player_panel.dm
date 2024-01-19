@@ -206,12 +206,7 @@
 				else
 					M_job = "Carbon-based"
 			else if(isSilicon(M)) //silicon
-				if(isAI(M))
-					M_job = "AI"
-				else if(isrobot(M))
-					M_job = "Cyborg"
-				else
-					M_job = "Silicon-based"
+				M_job = "Silicon-based"
 			else if(isanimal(M)) //simple animals
 				if(iscorgi(M))
 					M_job = "Corgi"
@@ -292,10 +287,8 @@
 
 		dat += "<tr><td>[(M.client ? "[M.client]" : "No client")]</td>"
 		dat += "<td><a href='?src=\ref[usr];priv_msg=[M.ckey]'>[M.name]</a></td>"
-		if(isAI(M))
+		if(isSilicon(M))
 			dat += "<td>AI</td>"
-		else if(isrobot(M))
-			dat += "<td>Cyborg</td>"
 		else if(ishuman(M))
 			dat += "<td>[M.real_name]</td>"
 		else if(istype(M, /mob/new_player))

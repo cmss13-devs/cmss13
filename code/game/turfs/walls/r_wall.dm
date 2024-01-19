@@ -15,10 +15,6 @@
 	if(hull)
 		return
 
-	if (!(istype(user, /mob/living/carbon/human) || isrobot(user) || SSticker) && SSticker.mode.name != "monkey")
-		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
-		return
-
 	//get the user's location
 	if( !istype(user.loc, /turf) ) return //can't do this stuff whilst inside objects and such
 

@@ -1,4 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - rscdel: "deleting a var called \"max_temperature\" that created in Walls.dm and didn't do anything code wise."

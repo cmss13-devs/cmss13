@@ -619,7 +619,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	mind.transfer_to(mind.original, TRUE)
-	SStgui.on_transfer(src, mind.current)
 	qdel(src)
 	return TRUE
 

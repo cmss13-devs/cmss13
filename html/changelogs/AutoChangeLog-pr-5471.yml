@@ -1,6 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - bugfix: "Fancy closet now works as desired and runtime free."
-  - rscadd: "Added an area for the closet to use instead of APC interior."
-  - code_imp: "Repathed /area/vehicle to /area/interior/vehicle."

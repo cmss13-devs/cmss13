@@ -6,7 +6,6 @@
 	density = TRUE
 
 	damage_cap = HEALTH_WALL_REINFORCED
-	max_temperature = 6000
 
 	walltype = WALL_REINFORCED
 
@@ -14,10 +13,6 @@
 
 /turf/closed/wall/r_wall/attackby(obj/item/W, mob/user)
 	if(hull)
-		return
-
-	if (!(istype(user, /mob/living/carbon/human) || isrobot(user) || SSticker) && SSticker.mode.name != "monkey")
-		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return
 
 	//get the user's location

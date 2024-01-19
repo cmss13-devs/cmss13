@@ -14605,7 +14605,6 @@
 /area/kutjevo/interior/power)
 "tEV" = (
 /obj/structure/surface/rack,
-/obj/item/book/manual/engineering_particle_accelerator,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 10

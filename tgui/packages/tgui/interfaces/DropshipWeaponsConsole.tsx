@@ -88,7 +88,7 @@ const DrawShipOutline = () => {
   );
 };
 
-const DrawWeapon = (props: { weapon: DropshipEquipment }, context) => {
+const DrawWeapon = (props: { readonly weapon: DropshipEquipment }, context) => {
   const { data, act } = useBackend<DropshipProps>(context);
   const position = props.weapon.mount_point;
   const index = position - 1;
@@ -119,8 +119,8 @@ const DrawWeapon = (props: { weapon: DropshipEquipment }, context) => {
 };
 
 const WeaponStatsPanel = (props: {
-  slot: number;
-  weapon?: DropshipEquipment;
+  readonly slot: number;
+  readonly weapon?: DropshipEquipment;
 }) => {
   if (props.weapon === undefined) {
     return <EmptyWeaponStatsPanel slot={props.slot} />;
@@ -145,7 +145,7 @@ const WeaponStatsPanel = (props: {
   );
 };
 
-const EmptyWeaponStatsPanel = (props: { slot: number }) => {
+const EmptyWeaponStatsPanel = (props: { readonly slot: number }) => {
   return (
     <Stack vertical className="PanelTextBox">
       <Stack.Item>Bay {props.slot} is empty</Stack.Item>
@@ -154,7 +154,7 @@ const EmptyWeaponStatsPanel = (props: { slot: number }) => {
 };
 
 const DropshipWeaponsPanel = (props: {
-  equipment: Array<DropshipEquipment>;
+  readonly equipment: Array<DropshipEquipment>;
 }) => {
   const weapons = props.equipment.filter((x) => x.is_weapon === 1);
   const support = props.equipment.filter((x) => x.is_weapon === 0);

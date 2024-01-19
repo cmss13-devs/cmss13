@@ -181,14 +181,14 @@
 
 		if(harvest)
 			var/image/fruit_overlay = image('icons/obj/structures/machinery/hydroponics.dmi',"")
-			if(seed.product_colour)
-				fruit_overlay.color = seed.product_colour
+			if(seed.product_color)
+				fruit_overlay.color = seed.product_color
 			overlays += fruit_overlay
 
 		if(seed.flowers)
 			var/image/flower_overlay = image('icons/obj/structures/machinery/hydroponics.dmi',"[seed.flower_icon]")
-			if(seed.flower_colour)
-				flower_overlay.color = seed.flower_colour
+			if(seed.flower_color)
+				flower_overlay.color = seed.flower_color
 			overlays += flower_overlay
 
 /obj/effect/plantsegment/proc/spread()

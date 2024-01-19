@@ -1,4 +1,0 @@
-author: "InsaneRed"
-delete-after: True
-changes:
-  - bugfix: "Fixes praetorian acid ball eating up plasma if its on cooldown"

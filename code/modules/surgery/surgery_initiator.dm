@@ -105,7 +105,6 @@
 					to_chat(user, SPAN_WARNING("You don't know of any operations you could perform in the [target.incision_depths[target_zone]] incision on [limbname]."))
 				else
 					to_chat(user, SPAN_WARNING("You don't know of any operations you could begin on [limbname]."))
-				to_chat(user, SPAN_WARNING("You can't perform surgery here!"))
 				return FALSE
 			var/hint_msg
 			for(var/datum/surgery_step/current_step as anything in valid_steps)
@@ -117,7 +116,6 @@
 				else
 					hint_msg = "You can't [current_step.desc] with \the [tool]"
 			to_chat(user, SPAN_WARNING("[hint_msg]."))
-		to_chat(user, SPAN_WARNING("You can't perform surgery here!"))
 		return FALSE
 
 	var/datum/surgery/surgeryinstance

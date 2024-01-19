@@ -6,7 +6,7 @@
 	var/mob/living/carbon/xenomorph/starting_xenomorph_type = /mob/living/carbon/xenomorph/drone
 	///Reference to the actual xenomorph mob
 	var/mob/living/carbon/xenomorph/xeno
-	///If TRUERemove all actions from the tutorial xenomorph. If FALSE none will be removed. You can give actions back in the tutorial with give_action()
+	///If TRUE remove all actions from the tutorial xenomorph. If FALSE none will be removed. You can give actions back in the tutorial with give_action()
 	var/remove_all_actions = TRUE
 
 /datum/tutorial/xenomorph/init_mob()

@@ -131,20 +131,21 @@
 	if(!check_can_setup(user, rotate_check, OT, ACR))
 		return
 
-	var/obj/structure/machinery/m56d_hmg/auto/M =  new /obj/structure/machinery/m56d_hmg/auto(user.loc)
-	transfer_label_component(M)
-	M.setDir(user.dir) // Make sure we face the right direction
-	M.anchored = TRUE
-	playsound(M, 'sound/items/m56dauto_setup.ogg', 75, TRUE)
-	to_chat(user, SPAN_NOTICE("You deploy [M]."))
-	M.rounds = rounds
-	M.overheat_value = overheat_value
-	M.health = health
-	M.update_icon()
+	var/obj/structure/machinery/m56d_hmg/auto/HMG = new(user.loc)
+	transfer_label_component(HMG)
+	HMG.setDir(user.dir) // Make sure we face the right direction
+	HMG.anchored = TRUE
+	playsound(HMG, 'sound/items/m56dauto_setup.ogg', 75, TRUE)
+	to_chat(user, SPAN_NOTICE("You deploy [HMG]."))
+	HMG.rounds = rounds
+	HMG.overheat_value = overheat_value
+	HMG.health = health
+	HMG.update_damage_state()
+	HMG.update_icon()
 	qdel(src)
 
-	if(M.rounds > 0)
-		M.try_mount_gun(user)
+	if(HMG.rounds > 0)
+		HMG.try_mount_gun(user)
 
 /obj/item/device/m2c_gun/attackby(obj/item/O as obj, mob/user as mob)
 	if(!ishuman(user))
@@ -313,12 +314,13 @@
 	if(health <= 0)
 		playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 		visible_message(SPAN_WARNING("[src] has broken down completely!"))
-		var/obj/item/device/m2c_gun/HMG = new(src.loc)
+		var/obj/item/device/m2c_gun/HMG = new(loc)
 		HMG.rounds = rounds
 		HMG.broken_gun = TRUE
 		HMG.unacidable = FALSE
 		HMG.health = 0
 		HMG.update_icon()
+		transfer_label_component(HMG)
 		qdel(src)
 		return
 
@@ -454,8 +456,12 @@
 // DISASSEMBLY
 
 /obj/structure/machinery/m56d_hmg/auto/MouseDrop(over_object, src_location, over_location)
-	if(!ishuman(usr)) return
+	if(!ishuman(usr))
+		return
 	var/mob/living/carbon/human/user = usr
+	// If the user is unconscious or dead.
+	if(user.stat)
+		return
 
 	if(over_object == user && in_range(src, user))
 		if((rounds > 0) && (user.a_intent & (INTENT_GRAB)))
@@ -471,10 +477,10 @@
 				return
 			user.visible_message(SPAN_NOTICE("[user] disassembles [src]."),SPAN_NOTICE("You fold up the tripod for [src], disassembling it."))
 			playsound(src.loc, 'sound/items/m56dauto_setup.ogg', 75, 1)
-			var/obj/item/device/m2c_gun/HMG = new(src.loc)
+			var/obj/item/device/m2c_gun/HMG = new(loc)
 			transfer_label_component(HMG)
-			HMG.rounds = src.rounds
-			HMG.overheat_value = round(0.5 * src.overheat_value)
+			HMG.rounds = rounds
+			HMG.overheat_value = round(0.5 * overheat_value)
 			if (HMG.overheat_value <= 10)
 				HMG.overheat_value = 0
 			HMG.update_icon()

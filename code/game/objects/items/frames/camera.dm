@@ -103,12 +103,7 @@
 				C.assembly = src
 
 				C.auto_turn()
-
 				C.network = uniquelist(tempnetwork)
-				tempnetwork = difflist(C.network,GLOB.RESTRICTED_CAMERA_NETWORKS)
-				if(!tempnetwork.len)//Camera isn't on any open network - remove its chunk from AI visibility.
-					GLOB.cameranet.removeCamera(C)
-
 				C.c_tag = input
 
 				for(var/i = 5; i >= 0; i -= 1)

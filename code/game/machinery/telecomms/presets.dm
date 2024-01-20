@@ -91,7 +91,7 @@
 		return // Leave the poor thing alone
 
 	health -= damage
-	health = Clamp(health, 0, initial(health))
+	health = clamp(health, 0, initial(health))
 
 	if(health <= 0)
 		toggled = FALSE // requires flipping on again once repaired
@@ -147,7 +147,7 @@
 	else return ..()
 
 /obj/structure/machinery/telecomms/relay/preset/tower/attack_hand(mob/user)
-	if(ishighersilicon(user))
+	if(isSilicon(user))
 		return ..()
 	if(on)
 		to_chat(user, SPAN_WARNING("\The [src.name] blinks and beeps incomprehensibly as it operates, better not touch this..."))

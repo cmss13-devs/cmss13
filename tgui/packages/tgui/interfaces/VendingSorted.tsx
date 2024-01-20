@@ -40,11 +40,11 @@ interface VendingData {
 }
 
 interface VenableItem {
-  record: VendingRecord;
+  readonly record: VendingRecord;
 }
 
 interface RecordNameProps extends BoxProps {
-  record: VendingRecord;
+  readonly record: VendingRecord;
 }
 
 const DescriptionTooltip = (props: RecordNameProps, context) => {
@@ -78,10 +78,10 @@ const DescriptionTooltip = (props: RecordNameProps, context) => {
 };
 
 interface VendButtonProps extends BoxProps {
-  isRecommended: boolean;
-  isMandatory: boolean;
-  available: boolean;
-  onClick: () => any;
+  readonly isRecommended: boolean;
+  readonly isMandatory: boolean;
+  readonly available: boolean;
+  readonly onClick: () => any;
 }
 
 const VendButton = (props: VendButtonProps, _) => {
@@ -150,7 +150,7 @@ const VendableItemRow = (props: VenableItem, context) => {
 };
 
 const VendableClothingItemRow = (
-  props: { record: VendingRecord; hasCost: boolean },
+  props: { readonly record: VendingRecord; readonly hasCost: boolean },
   context
 ) => {
   const { data, act } = useBackend<VendingData>(context);
@@ -201,14 +201,14 @@ const VendableClothingItemRow = (
 };
 
 interface VendingCategoryProps {
-  category: VendingCategory;
+  readonly category: VendingCategory;
 }
 
 interface DescriptionProps {
-  desc: string;
-  name: string;
-  isMandatory: boolean;
-  isRecommended: boolean;
+  readonly desc: string;
+  readonly name: string;
+  readonly isMandatory: boolean;
+  readonly isRecommended: boolean;
 }
 
 const ItemDescriptionViewer = (props: DescriptionProps, _) => {

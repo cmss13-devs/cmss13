@@ -1,0 +1,4 @@
+author: "Huffie56"
+delete-after: True
+changes:
+  - rscadd: "Add some boards to the board vendor in engi on almayer(Air Alarm Electronics, Security Camera Monitor,\nStation Alerts, Arcade, Atmospheric Monitor)."

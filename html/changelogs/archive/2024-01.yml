@@ -257,3 +257,15 @@
   - bugfix: Fancy closet now works as desired and runtime free.
   - rscadd: Added an area for the closet to use instead of APC interior.
   - code_imp: Repathed /area/vehicle to /area/interior/vehicle.
+2024-01-20:
+  Drathek:
+  - bugfix: The M56D and the M2C now retain their labels when disassembled
+  - bugfix: The M56D can now be charger crushed when not fully assembled
+  - bugfix: The M56D being run over by a vehicle now undeploys the gun correctly (so
+      it retains the gun if it had a gun)
+  - bugfix: Fix an edge case that could duplicate the M56D when charger crushed
+  - balance: The M56D now retains the health of the gun through all of its different
+      disassembled states
+  - bugfix: Fixed mobs merged with weeds remaining ignited
+  SabreML:
+  - bugfix: Fixed the 'busy' circle icon being drawn above darkness and screen effects.

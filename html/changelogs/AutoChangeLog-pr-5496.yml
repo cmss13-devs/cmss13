@@ -1,0 +1,4 @@
+author: "SabreML"
+delete-after: True
+changes:
+  - rscadd: "Made larvae and facehuggers able to use custom emotes."

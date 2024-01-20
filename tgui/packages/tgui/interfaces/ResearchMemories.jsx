@@ -2,8 +2,8 @@ import { useBackend, useLocalState } from '../backend';
 import { Flex, Section, Box, Tabs, LabeledList } from '../components';
 import { Window } from '../layouts';
 
-export const ResearchMemories = (props) => {
-  const { act, data } = useBackend(cotext);
+export const ResearchMemories = () => {
+  const { data } = useBackend();
   const [clueCategory, setClueCategory] = useLocalState('clueCategory', 0);
 
   const { clearance, research_credits, theme, clue_categories } = data;

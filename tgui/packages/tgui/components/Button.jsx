@@ -273,7 +273,7 @@ export class ButtonInput extends Component {
           className="NumberInput__input"
           style={{
             'display': !this.state.inInput ? 'none' : undefined,
-            'text-align': 'left',
+            'textAlign': 'left',
           }}
           onBlur={(e) => {
             if (!this.state.inInput) {

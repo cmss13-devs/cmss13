@@ -322,7 +322,7 @@
 	if(!admin_holder)
 		return
 
-	var/list/options = list("Weyland-Yutani", "High Command", "Provost", "Press", "CMB", "Other", "Cancel")
+	var/list/options = list("Weyland-Yutani", "High Command", "Provost", "Press", "CMB", "UPP", "TWE", "CLF", "Other", "Cancel")
 	var/answer = tgui_input_list(src, "Which kind of faxes would you like to see?", "Faxes", options)
 	switch(answer)
 		if("Weyland-Yutani")
@@ -334,6 +334,7 @@
 
 			body += "<br><br></body>"
 			show_browser(src, body, "Faxes to Weyland-Yutani", "wyfaxviewer", "size=300x600")
+
 		if("High Command")
 			var/body = "<body>"
 
@@ -343,6 +344,7 @@
 
 			body += "<br><br></body>"
 			show_browser(src, body, "Faxes to High Command", "uscmfaxviewer", "size=300x600")
+
 		if("Provost")
 			var/body = "<body>"
 
@@ -363,7 +365,7 @@
 			body += "<br><br></body>"
 			show_browser(src, body, "Faxes to Press organizations", "otherfaxviewer", "size=300x600")
 
-		if("CMB")
+		if("Colonial Marshal Bureau")
 			var/body = "<body>"
 
 			for(var/text in GLOB.CMBFaxes)
@@ -372,6 +374,30 @@
 
 			body += "<br><br></body>"
 			show_browser(src, body, "Faxes to the Colonial Marshal Bureau", "cmbfaxviewer", "size=300x600")
+
+		if("Union of Progressive Peoples")
+			var/body = "<body>"
+
+			for(var/text in GLOB.UPPFaxes)
+				body += text
+				body += "<br><br>"
+
+			body += "<br><br></body>"
+			show_browser(src, body, "Faxes to the Union of Progressive Peoples", "uppfaxviewer", "size=300x600")
+
+			for(var/text in GLOB.TWEFaxes)
+				body += text
+				body += "<br><br>"
+
+			body += "<br><br></body>"
+			show_browser(src, body, "Faxes to the Three World Empire", "twefaxviewer", "size=300x600")
+
+			for(var/text in GLOB.CLFFaxes)
+				body += text
+				body += "<br><br>"
+
+			body += "<br><br></body>"
+			show_browser(src, body, "Faxes to the Colonial Liberation Front", "clffaxviewer", "size=300x600")
 
 		if("Other")
 			var/body = "<body>"

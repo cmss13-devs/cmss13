@@ -273,12 +273,14 @@ SUBSYSTEM_DEF(vote)
 				question = "Gamemode vote"
 				randomize_entries = TRUE
 				for(var/mode_type in config.gamemode_cache)
-					var/datum/game_mode/M = mode_type
-					if(initial(M.config_tag))
-						var/vote_cycle_met = !initial(M.vote_cycle) || (text2num(SSperf_logging?.round?.id) % initial(M.vote_cycle) == 0)
-						var/min_players_met = length(GLOB.clients) >= M.required_players
-						if(initial(M.votable) && vote_cycle_met && min_players_met)
-							choices += initial(M.config_tag)
+					var/datum/game_mode/cur_mode = mode_type
+					if(initial(cur_mode.config_tag))
+						cur_mode = new mode_type
+						var/vote_cycle_met = !initial(cur_mode.vote_cycle) || (text2num(SSperf_logging?.round?.id) % initial(cur_mode.vote_cycle) == 0)
+						var/min_players_met = length(GLOB.clients) >= cur_mode.required_players
+						if(initial(cur_mode.votable) && vote_cycle_met && min_players_met)
+							choices += initial(cur_mode.config_tag)
+						qdel(cur_mode)
 			if("groundmap")
 				question = "Ground map vote"
 				vote_sound = 'sound/voice/start_your_voting.ogg'

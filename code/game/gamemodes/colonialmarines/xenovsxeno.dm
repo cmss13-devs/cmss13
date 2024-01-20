@@ -24,14 +24,14 @@
 	votable = FALSE // broken
 
 /* Pre-pre-startup */
-/datum/game_mode/xenovs/can_start()
+/datum/game_mode/xenovs/can_start(bypass_checks = FALSE)
 	for(var/hivename in SSmapping.configs[GROUND_MAP].xvx_hives)
 		if(GLOB.readied_players > SSmapping.configs[GROUND_MAP].xvx_hives[hivename])
 			hives += hivename
 	xeno_starting_num = GLOB.readied_players
-	if(!initialize_starting_xenomorph_list(hives, TRUE))
+	if(!initialize_starting_xenomorph_list(hives, bypass_checks))
 		hives.Cut()
-		return
+		return FALSE
 	return TRUE
 
 /datum/game_mode/xenovs/announce()

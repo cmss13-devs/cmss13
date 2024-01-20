@@ -45,9 +45,9 @@
 		if(transform_survivor(survivor) == 1)
 			survivors -= survivor
 
-/datum/game_mode/infection/can_start()
+/datum/game_mode/infection/can_start(bypass_checks = FALSE)
 	initialize_starting_survivor_list()
-	return 1
+	return TRUE
 
 //We don't actually need survivors to play, so long as aliens are present.
 /datum/game_mode/infection/proc/initialize_starting_survivor_list()

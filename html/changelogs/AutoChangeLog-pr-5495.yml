@@ -1,0 +1,4 @@
+author: "Vicacrov"
+delete-after: True
+changes:
+  - bugfix: "Fixes engine/weapon attach points layering below the dropship walls."

@@ -5,29 +5,26 @@
 	desc = "A warm, soothing light source that pulsates with a faint hum."
 	icon_state = "recovery"
 	health = 400
-	var/heal_amount = 10
-	var/heal_cooldown = 5 SECONDS
-	var/last_healed
+	var/recovery_pheromone_range = 2
+	var/warding_pheromone_range = 8
+	var/recovery_strenght = 2.5
+	var/warding_strenght = 1
+
 
 /obj/effect/alien/resin/special/recovery/get_examine_text(mob/user)
 	. = ..()
 	if((isxeno(user) || isobserver(user)) && linked_hive)
-		. += "Recovers the health of adjacent Xenomorphs."
+		. += "Emits pheromons to nerby xenomorphs"
 
 /obj/effect/alien/resin/special/recovery/process()
-	if(last_healed && world.time < last_healed + heal_cooldown)
-		return
-	var/list/heal_candidates = list()
-	for(var/mob/living/carbon/xenomorph/X in orange(src, 1))
-		if(X.health >= X.maxHealth || !X.resting || X.hivenumber != linked_hive.hivenumber)
+	for(var/mob/living/carbon/xenomorph/xenomorph in range(recovery_pheromone_range, loc))
+		if(xenomorph.ignores_pheromones)
 			continue
-		heal_candidates += X
-	last_healed = world.time
-	if(!heal_candidates.len)
-		return
-	var/mob/living/carbon/xenomorph/picked_candidate = pick(heal_candidates)
-	picked_candidate.visible_message(SPAN_HELPFUL("\The [picked_candidate] glows as a warm aura envelops them."), \
-				SPAN_HELPFUL("You feel a warm aura envelop you."))
-	if(!do_after(picked_candidate, heal_cooldown, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
-		return
-	picked_candidate.gain_health(heal_amount)
+		if(recovery_strenght > xenomorph.recovery_new)
+			xenomorph.recovery_new = recovery_strenght
+
+	for(var/mob/living/carbon/xenomorph/xenomorph in range(warding_pheromone_range, loc))
+		if(xenomorph.ignores_pheromones)
+			continue
+		if(warding_strenght > xenomorph.warding_new)
+			xenomorph.recovery_new = warding_strenght

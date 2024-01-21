@@ -90,6 +90,11 @@
 		list("Research Data Terminal", 2, /obj/item/circuitboard/computer/research_terminal, VENDOR_ITEM_REGULAR),
 		list("P.A.C.M.A.N Generator", 1, /obj/item/circuitboard/machine/pacman, VENDOR_ITEM_REGULAR),
 		list("Auxiliar Power Storage Unit", 2, /obj/item/circuitboard/machine/ghettosmes, VENDOR_ITEM_REGULAR),
+		list("Air Alarm Electronics", 2, /obj/item/circuitboard/airalarm, VENDOR_ITEM_REGULAR),
+		list("Security Camera Monitor", 2, /obj/item/circuitboard/computer/cameras, VENDOR_ITEM_REGULAR),
+		list("Station Alerts", 2, /obj/item/circuitboard/computer/stationalert, VENDOR_ITEM_REGULAR),
+		list("Arcade", 2, /obj/item/circuitboard/computer/arcade, VENDOR_ITEM_REGULAR),
+		list("Atmospheric Monitor", 2, /obj/item/circuitboard/computer/air_management, VENDOR_ITEM_REGULAR),
 	)
 
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage/antag

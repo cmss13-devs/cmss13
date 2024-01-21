@@ -220,7 +220,13 @@
 	return
 
 /mob/living/carbon/xenomorph/facehugger/emote(act, m_type, message, intentional, force_silence)
+	// Custom emote
+	if(act == "me")
+		return ..()
+
+	// Otherwise, ""roar""!
 	playsound(loc, "alien_roar_larva", 15)
+	return TRUE
 
 /mob/living/carbon/xenomorph/facehugger/get_status_tab_items()
 	. = ..()

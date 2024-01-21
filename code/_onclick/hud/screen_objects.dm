@@ -211,9 +211,6 @@
 		update_icon(user)
 	return 1
 
-/atom/movable/screen/zone_sel/robot
-	icon = 'icons/mob/hud/screen1_robot.dmi'
-
 /atom/movable/screen/clicked(mob/user)
 	if(!user)
 		return TRUE
@@ -230,42 +227,6 @@
 
 		if("Reset Machine")
 			user.unset_interaction()
-			return 1
-
-		if("module")
-			if(isSilicon(user))
-				if(user:module)
-					return 1
-				user:pick_module()
-			return 1
-
-		if("radio")
-			if(isSilicon(user))
-				user:radio_menu()
-			return 1
-		if("panel")
-			if(isSilicon(user))
-				user:installed_modules()
-			return 1
-
-		if("store")
-			if(isSilicon(user))
-				user:uneq_active()
-			return 1
-
-		if("module1")
-			if(isrobot(user))
-				user:toggle_module(1)
-			return 1
-
-		if("module2")
-			if(isrobot(user))
-				user:toggle_module(2)
-			return 1
-
-		if("module3")
-			if(isrobot(user))
-				user:toggle_module(3)
 			return 1
 
 		if("Activate weapon attachment")

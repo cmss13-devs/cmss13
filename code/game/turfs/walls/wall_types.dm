@@ -12,8 +12,6 @@
 	damage = 0
 	damage_cap = HEALTH_WALL //Wall will break down to girders if damage reaches this point
 
-	max_temperature = 18000 //K, walls will take damage if they're next to a fire hotter than this
-
 	opacity = TRUE
 	density = TRUE
 
@@ -225,14 +223,12 @@
 	hull = 0 //Can't be deconstructed
 
 	damage_cap = HEALTH_WALL
-	max_temperature = 28000 //K, walls will take damage if they're next to a fire hotter than this
 	walltype = WALL_SULACO //Changes all the sprites and icons.
 
 /turf/closed/wall/sulaco/hull
 	name = "outer hull"
 	desc = "A reinforced outer hull, probably to prevent breaches"
 	hull = 1
-	max_temperature = 50000 // Nearly impossible to melt
 	walltype = WALL_SULACO
 
 
@@ -240,7 +236,6 @@
 	name = "outer hull"
 	desc = "A reinforced outer hull, probably to prevent breaches"
 	hull = 1
-	max_temperature = 50000 // Nearly impossible to melt
 	walltype = WALL_SULACO
 
 
@@ -550,7 +545,6 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	desc = "A thick and chunky metal wall covered in jagged ribs."
 	walltype = WALL_STRATA_OUTPOST_RIBBED
 	damage_cap = HEALTH_WALL_REINFORCED
-	max_temperature = 28000
 
 /turf/closed/wall/strata_outpost
 	name = "bare outpost walls"
@@ -565,7 +559,6 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	desc = "A thick and chunky metal wall covered in jagged ribs."
 	walltype = WALL_STRATA_OUTPOST_RIBBED
 	damage_cap = HEALTH_WALL_REINFORCED
-	max_temperature = 28000
 
 /turf/closed/wall/strata_outpost/reinforced/hull
 	hull = 1
@@ -586,7 +579,6 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	icon_state = "solaris_interior_r"
 	walltype = WALL_SOLARISR
 	damage_cap = HEALTH_WALL_REINFORCED
-	max_temperature = 28000
 
 /turf/closed/wall/solaris/reinforced/hull
 	name = "heavy reinforced colony wall"
@@ -619,7 +611,6 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	desc = "Just like in the orange box! This one is reinforced"
 	walltype = WALL_DEVWALL_R
 	damage_cap = HEALTH_WALL_REINFORCED
-	max_temperature = 28000
 
 /turf/closed/wall/dev/reinforced/hull
 	name = "greybox hull wall"
@@ -653,7 +644,6 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	desc = "Dusty worn down walls that were once built to last. This one is reinforced"
 	walltype = WALL_KUTJEVO_COLONYR
 	damage_cap = HEALTH_WALL_REINFORCED
-	max_temperature = 28000
 
 /turf/closed/wall/kutjevo/colony/reinforced/hull
 	icon_state = "colonyh"

@@ -18,21 +18,6 @@
 	usr.show_message(t, SHOW_MESSAGE_VISIBLE)
 
 
-/client/proc/cmd_admin_robotize(mob/M in GLOB.mob_list)
-	set category = null
-	set name = "Make Robot"
-
-	if(!SSticker.mode)
-		alert("Wait until the game starts")
-		return
-	if(istype(M, /mob/living/carbon/human))
-		log_admin("[key_name(src)] has robotized [M.key].")
-		spawn(10)
-			M:Robotize()
-
-	else
-		alert("Invalid mob")
-
 /client/proc/cmd_admin_animalize(mob/M in GLOB.mob_list)
 	set category = null
 	set name = "Make Simple Animal"

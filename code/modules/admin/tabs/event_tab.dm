@@ -385,6 +385,9 @@
 			body += "<br><br></body>"
 			show_browser(src, body, "Faxes to the Union of Progressive Peoples", "uppfaxviewer", "size=300x600")
 
+		if("Three World Empire")
+			var/body = "<body>"
+
 			for(var/text in GLOB.TWEFaxes)
 				body += text
 				body += "<br><br>"

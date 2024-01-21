@@ -457,7 +457,7 @@ const SquadMonitor = (props, context) => {
                   }>
                   {squad_leader.name}
                 </Button>
-              )) || <Box color="yellow">{squad_leader.name} (NO HELMET)</Box>}
+              )) || <Box color="yellow">{squad_leader.name} (NO CAMERA)</Box>}
             </Table.Cell>
             <Table.Cell p="2px">{squad_leader.role}</Table.Cell>
             <Table.Cell
@@ -505,7 +505,7 @@ const SquadMonitor = (props, context) => {
                         }>
                         {marine.name}
                       </Button>
-                    )) || <Box color="yellow">{marine.name} (NO HELMET)</Box>}
+                    )) || <Box color="yellow">{marine.name} (NO CAMERA)</Box>}
                   </Table.Cell>
                   <Table.Cell p="2px">{marine.role}</Table.Cell>
                   <Table.Cell

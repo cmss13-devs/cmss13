@@ -217,7 +217,7 @@
 				if(DEAD)
 					mob_state = "Dead"
 
-			if(!istype(marine_human.head, /obj/item/clothing/head/helmet/marine))
+			if(!marine_has_camera(marine_human))
 				has_helmet = FALSE
 
 			if(!marine_human.key || !marine_human.client)
@@ -619,13 +619,27 @@
 		cam = null
 		user.reset_view(null)
 
-//returns the helmet camera the human is wearing
-/obj/structure/machinery/computer/overwatch/proc/get_camera_from_target(mob/living/carbon/human/H)
+/// checks if the human has an overwatch camera at all
+/obj/structure/machinery/computer/overwatch/proc/marine_has_camera(mob/living/carbon/human/marine)
+	if(istype(marine.head, /obj/item/clothing/head/helmet/marine))
+		return TRUE
+	if(istype(marine.wear_l_ear, /obj/item/device/overwatch_camera) || istype(marine.wear_r_ear, /obj/item/device/overwatch_camera))
+		return TRUE
+	return FALSE
+/// returns the overwatch camera the human is wearing
+/obj/structure/machinery/computer/overwatch/proc/get_camera_from_target(mob/living/carbon/human/marine)
 	if(current_squad)
-		if(H && istype(H) && istype(H.head, /obj/item/clothing/head/helmet/marine))
-			var/obj/item/clothing/head/helmet/marine/helm = H.head
-			return helm.camera
-
+		if(marine && istype(marine))
+			if(istype(marine.head, /obj/item/clothing/head/helmet/marine))
+				var/obj/item/clothing/head/helmet/marine/helm = marine.head
+				return helm.camera
+			var/obj/item/device/overwatch_camera/cam_gear
+			if(istype(marine.wear_l_ear, /obj/item/device/overwatch_camera))
+				cam_gear = marine.wear_l_ear
+				return cam_gear.camera
+			if(istype(marine.wear_r_ear, /obj/item/device/overwatch_camera))
+				cam_gear = marine.wear_r_ear
+				return cam_gear.camera
 
 // Alerts all groundside marines about the incoming OB
 /obj/structure/machinery/computer/overwatch/proc/alert_ob(turf/target)

@@ -394,7 +394,7 @@
 	id = "ironlfoam"
 	result = null
 	required_reagents = list("iron" = 3, "foaming_agent" = 1, "pacid" = 1)
-	result_amount = 5
+	result_amount = 3
 
 /datum/chemical_reaction/ironfoam/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
@@ -403,6 +403,8 @@
 		to_chat(M, SPAN_WARNING("The solution spews out a metallic dull foam!"))
 
 	var/datum/effect_system/foam_spread/s = new()
+	if (created_volume > 300)
+		created_volume = 300
 	s.set_up(created_volume, location, holder, 2)
 	s.start()
 

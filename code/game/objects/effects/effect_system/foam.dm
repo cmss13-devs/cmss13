@@ -156,7 +156,7 @@
 // dense and opaque, but easy to break
 
 #define FOAMED_METAL_FIRE_ACT_DMG 50
-#define FOAMED_METAL_XENO_SLASH 2.5
+#define FOAMED_METAL_XENO_SLASH 1.75
 #define FOAMED_METAL_ITEM_MELEE 2
 #define FOAMED_METAL_BULLET_DMG 2
 #define FOAMED_METAL_EXPLOSION_DMG 1
@@ -173,7 +173,7 @@
 
 /obj/structure/foamed_metal/iron
 	icon_state = "ironfoam"
-	health = 85
+	health = 70
 	name = "foamed iron"
 	desc = "A slightly stronger lightweight foamed iron wall."
 

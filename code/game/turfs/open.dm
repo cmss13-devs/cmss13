@@ -959,3 +959,258 @@
 	name = "floor"
 	icon_state = "dark_sterile"
 	supports_surgery = TRUE
+
+
+
+// Hybrisa tiles
+
+
+/turf/open/hybrisa
+	name = "floor"
+	icon = 'icons/turf/floors/hybrisafloors.dmi'
+	icon_state = "hybrisa"
+
+
+/turf/open/floor/hybrisa
+	name = "floor"
+	icon = 'icons/turf/floors/hybrisafloors.dmi'
+	icon_state = "hybrisa"
+
+
+// Street
+
+
+/turf/open/hybrisa/street
+	name = "floor"
+	icon = 'icons/turf/floors/hybrisafloors.dmi'
+	icon_state = "cement1"
+	baseturfs = /turf/open/asphalt
+
+
+/turf/open/hybrisa/street/cement1
+	icon_state = "cement1"
+/turf/open/hybrisa/street/cement2
+	icon_state = "cement2"
+/turf/open/hybrisa/street/cement3
+	icon_state = "cement3"
+/turf/open/hybrisa/street/asphalt
+	icon_state = "asphalt_old"
+/turf/open/hybrisa/street/sidewalk
+	icon_state = "sidewalk"
+/turf/open/hybrisa/street/sidewalkfull
+	icon_state = "sidewalkfull"
+
+
+// Carpet
+
+
+/turf/open/floor/hybrisa/carpet
+	name = "floor"
+	icon = 'icons/turf/floors/hybrisafloors.dmi'
+	icon_state = "carpetred"
+
+
+/turf/open/floor/hybrisa/carpet/carpetfadedred
+	icon_state = "carpetfadedred"
+/turf/open/floor/hybrisa/carpet/carpetgreen
+	icon_state = "carpetgreen"
+/turf/open/floor/hybrisa/carpet/carpetbeige
+	icon_state = "carpetbeige"
+/turf/open/floor/hybrisa/carpet/carpetblack
+	icon_state = "carpetblack"
+/turf/open/floor/hybrisa/carpet/carpetred
+	icon_state = "carpetred"
+/turf/open/floor/hybrisa/carpet/carpetdarkerblue
+	icon_state = "carpetdarkerblue"
+/turf/open/floor/hybrisa/carpet/carpetorangered
+	icon_state = "carpetorangered"
+/turf/open/floor/hybrisa/carpet/carpetblue
+	icon_state = "carpetblue"
+/turf/open/floor/hybrisa/carpet/carpetpatternblue
+	icon_state = "carpetpatternblue"
+/turf/open/floor/hybrisa/carpet/carpetpatternbrown
+	icon_state = "carpetpatternbrown"
+
+
+// Tile
+
+/turf/open/floor/hybrisa/tile
+	name = "floor"
+	icon = 'icons/turf/floors/hybrisafloors.dmi'
+	icon_state = "supermartfloor1"
+
+
+/turf/open/floor/hybrisa/tile/supermartfloor1
+	icon_state = "supermartfloor1"
+/turf/open/floor/hybrisa/tile/supermartfloor2
+	icon_state = "supermartfloor2"
+/turf/open/floor/hybrisa/tile/cuppajoesfloor
+	icon_state = "cuppafloor"
+/turf/open/floor/hybrisa/tile/tilered
+	icon_state = "tilered"
+/turf/open/floor/hybrisa/tile/tileblue
+	icon_state = "tileblue"
+/turf/open/floor/hybrisa/tile/tilegreen
+	icon_state = "tilegreen"
+/turf/open/floor/hybrisa/tile/tileblackcheckered
+	icon_state = "tileblack"
+/turf/open/floor/hybrisa/tile/tilewhitecheckered
+	icon_state = "tilewhitecheck"
+/turf/open/floor/hybrisa/tile/tilelightbeige
+	icon_state = "tilelightbeige"
+/turf/open/floor/hybrisa/tile/tilebeigecheckered
+	icon_state = "tilebeigecheck"
+/turf/open/floor/hybrisa/tile/tilebeige
+	icon_state = "tilebeige"
+/turf/open/floor/hybrisa/tile/tilewhite
+	icon_state = "tilewhite"
+/turf/open/floor/hybrisa/tile/tilegrey
+	icon_state = "tilegrey"
+/turf/open/floor/hybrisa/tile/tileblack
+	icon_state = "tileblack2"
+/turf/open/floor/hybrisa/tile/beigetileshiny
+	icon_state = "beigetileshiny"
+/turf/open/floor/hybrisa/tile/blacktileshiny
+	icon_state = "blacktileshiny"
+/turf/open/floor/hybrisa/tile/cementflat
+	icon_state = "cementflat"
+
+
+// Wood
+
+/turf/open/floor/hybrisa/wood
+	name = "floor"
+	icon = 'icons/turf/floors/hybrisafloors.dmi'
+	icon_state = "darkerwood"
+
+
+/turf/open/floor/hybrisa/wood/greywood
+	icon_state = "greywood"
+/turf/open/floor/hybrisa/wood/blackwood
+	icon_state = "blackwood"
+/turf/open/floor/hybrisa/wood/darkerwood
+	icon_state = "darkerwood"
+/turf/open/floor/hybrisa/wood/redwood
+	icon_state = "redwood"
+
+
+// Metal
+
+
+/turf/open/floor/hybrisa/metal
+	name = "floor"
+	icon = 'icons/turf/floors/hybrisafloors.dmi'
+	icon_state = "bluemetal1"
+
+
+/turf/open/floor/hybrisa/metal/bluemetal1
+	icon_state = "bluemetal1"
+/turf/open/floor/hybrisa/metal/bluemetalfull
+	icon_state = "bluemetalfull"
+/turf/open/floor/hybrisa/metal/bluemetalcorner
+	icon_state = "bluemetalcorner"
+/turf/open/floor/hybrisa/metal/orangelinecorner
+	icon_state = "orangelinecorner"
+/turf/open/floor/hybrisa/metal/orangeline
+	icon_state = "orangeline"
+/turf/open/floor/hybrisa/metal/orangefloor1
+	icon_state = "zorangefloor1"
+/turf/open/floor/hybrisa/metal/orangefloorfull
+	icon_state = "zorangefloorfull1"
+/turf/open/floor/hybrisa/metal/orangefloorcorner
+	icon_state = "zorangefloorcorner1"
+/turf/open/floor/hybrisa/metal/darkblackmetal1
+	icon_state = "darkblackmetal1"
+/turf/open/floor/hybrisa/metal/darkblackmetal2
+	icon_state = "darkblackmetal2"
+/turf/open/floor/hybrisa/metal/darkredfull2
+	icon_state = "darkredfull2"
+/turf/open/floor/hybrisa/metal/redcorner
+	icon_state = "zredcorner"
+
+
+// Misc
+
+/turf/open/floor/hybrisa/misc
+	name = "floor"
+	icon = 'icons/turf/floors/hybrisafloors.dmi'
+	icon_state = "marshallsemblem"
+
+
+/turf/open/floor/hybrisa/misc/marshallsemblem
+    icon_state = "marshallsemblem"
+/turf/open/floor/hybrisa/misc/wybiglogo
+	name = "Weyland-Yutani corp. - bulding better worlds."
+	icon_state = "big8x8wylogo"
+/turf/open/floor/hybrisa/misc/wysmallleft
+	icon_state = "weylandyutanismall1"
+/turf/open/floor/hybrisa/misc/wysmallright
+	icon_state = "weylandyutanismall2"
+/turf/open/floor/hybrisa/misc/spaceport1
+	icon_state = "spaceport1"
+/turf/open/floor/hybrisa/misc/spaceport2
+	icon_state = "spaceport2"
+
+
+// Dropship
+
+
+/turf/open/hybrisa/dropship
+	name = "floor"
+	icon = 'icons/turf/floors/hybrisafloors.dmi'
+	icon_state = "dropshipfloor1"
+
+/turf/open/hybrisa/dropship/dropship1
+	icon_state = "dropshipfloor1"
+/turf/open/hybrisa/dropship/dropship2
+	icon_state = "dropshipfloor2"
+/turf/open/hybrisa/dropship/dropship3
+	icon_state = "dropshipfloor2"
+/turf/open/hybrisa/dropship/dropship3
+	icon_state = "dropshipfloor3"
+/turf/open/hybrisa/dropship/dropship4
+	icon_state = "dropshipfloor4"
+/turf/open/hybrisa/dropship/dropshipfloorcorner1
+	icon_state = "dropshipfloorcorner1"
+/turf/open/hybrisa/dropship/dropshipfloorcorner2
+	icon_state = "dropshipfloorcorner2"
+/turf/open/hybrisa/dropship/dropshipfloorfull
+	icon_state = "dropshipfloorfull"
+
+// Engineer tiles
+
+/turf/open/engineership
+	name = "floor"
+	desc = "A strange metal floor, unlike any metal you've seen before."
+	icon = 'icons/turf/floors/engineership.dmi'
+	icon_state = "hybrisa"
+	baseturfs = /turf/open/asphalt
+
+/turf/open/engineership/engineer_floor1
+	icon_state = "engineer_metalfloor_3"
+/turf/open/engineership/engineer_floor2
+	icon_state = "engineer_floor_4"
+/turf/open/engineership/engineer_floor3
+	icon_state = "engineer_metalfloor_2"
+/turf/open/engineership/engineer_floor4
+	icon_state = "engineer_metalfloor_1"
+/turf/open/engineership/engineer_floor5
+	icon_state = "engineerlight"
+/turf/open/engineership/engineer_floor6
+	icon_state = "engineer_floor_2"
+/turf/open/engineership/engineer_floor7
+	icon_state = "engineer_floor_1"
+/turf/open/engineership/engineer_floor8
+	icon_state = "engineer_floor_5"
+/turf/open/engineership/engineer_floor9
+	icon_state = "engineer_metalfloor_4"
+/turf/open/engineership/engineer_floor10
+	icon_state = "engineer_floor_corner1"
+/turf/open/engineership/engineer_floor11
+	icon_state = "engineer_floor_corner2"
+/turf/open/engineership/engineer_floor12
+	icon_state = "engineerwallfloor1"
+/turf/open/engineership/engineer_floor13
+	icon_state = "outerhull_dir"
+/turf/open/engineership/engineer_floor14
+	icon_state = "engineer_floor_corner3"

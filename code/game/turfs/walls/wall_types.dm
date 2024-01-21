@@ -1292,3 +1292,11 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	color = "#c5beb4"
 	desc = "Ancient beyond measure, these walls make up the hull of a vessel of non human origin. Despite this, they can be felled with plastic explosives like any other opaque blocker."
 	hull = 0
+
+/turf/closed/wall/engineership
+	name = "engineer wall"
+	desc = "Nigh indestructible walls that make up the hull of an unknown ancient ship."
+	icon = 'icons/turf/walls/engineership.dmi'
+	icon_state = "metal"//DMI specific name
+	walltype = WALL_HUNTERSHIP
+	hull = 1

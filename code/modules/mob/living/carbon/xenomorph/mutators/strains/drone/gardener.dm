@@ -1,6 +1,6 @@
 /datum/xeno_mutator/gardener
 	name = "STRAIN: Drone - Gardener"
-	description = "You trade your choice of resin secretions, your corrosive acid, and your ability to transfer plasma for a tiny bit of extra health regeneration on weeds and several new abilities, including the ability to plant hardier weeds, temporarily reinforce structures with your plasma, and to plant up to six potent resin fruits for your sisters by secreting your vital fluids at the cost of a bit of your health for each fruit you shape."
+	description = "You trade your choice of resin secretions, your corrosive acid, and your ability to transfer plasma for a tiny bit of extra health regeneration on weeds and several new abilities, including the ability to plant hardier weeds, temporarily reinforce structures with your plasma, and to plant up to six potent resin fruits for your sisters by secreting your vital fluids at the cost of a bit of your health for each fruit you shape. You can use Resin Surge to speed up the growth of your fruits."
 	flavor_description = "The glory of gardening: hands in the weeds, head in the dark, heart with resin."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE

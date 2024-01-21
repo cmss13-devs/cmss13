@@ -20,11 +20,11 @@
 	for(var/mob/living/carbon/xenomorph/xenomorph in range(recovery_pheromone_range, loc))
 		if(xenomorph.ignores_pheromones)
 			continue
-		if(recovery_strenght > xenomorph.recovery_new)
+		if(recovery_strenght > xenomorph.recovery_new && linked_hive == xenomorph.hivenumber)
 			xenomorph.recovery_new = recovery_strenght
 
 	for(var/mob/living/carbon/xenomorph/xenomorph in range(warding_pheromone_range, loc))
 		if(xenomorph.ignores_pheromones)
 			continue
-		if(warding_strenght > xenomorph.warding_new)
+		if(warding_strenght > xenomorph.warding_new && linked_hive == xenomorph.hivenumber)
 			xenomorph.recovery_new = warding_strenght

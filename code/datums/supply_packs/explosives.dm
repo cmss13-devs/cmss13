@@ -12,8 +12,8 @@
 		/obj/item/explosive/grenade/high_explosive/m15,
 		/obj/item/explosive/grenade/high_explosive/pmc,
 		/obj/item/explosive/grenade/high_explosive/pmc,
-		/obj/item/explosive/grenade/metal_foam
-		/obj/item/explosive/grenade/metal_foam
+		/obj/item/explosive/grenade/metal_foam,
+		/obj/item/explosive/grenade/metal_foam,
 	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/explosives

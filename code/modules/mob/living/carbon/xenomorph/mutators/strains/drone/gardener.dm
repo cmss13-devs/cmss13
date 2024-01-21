@@ -92,7 +92,7 @@
 		to_chat(xeno, SPAN_XENOWARNING("This location is too close to a resin hole!"))
 		return
 
-	if(locate(/obj/effect/alien/resin/fruit) in range(1, target_turf))
+	if(locate(/obj/effect/alien/resin/fruit) in target_turf)
 		to_chat(xeno, SPAN_XENOWARNING("This location is too close to another fruit!"))
 		return
 

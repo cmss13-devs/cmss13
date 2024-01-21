@@ -360,7 +360,7 @@
 	pixel_y = 0
 
 /obj/item/reagent_container/food/snacks/resin_fruit/proc/link_xeno(mob/living/carbon/xenomorph/X)
-	to_chat(X, SPAN_XENOWARNING("One of our resin fruits has been picked."))
+	to_chat(X, SPAN_XENOHIGHDANGER("One of our resin fruits has been picked."))
 	X.current_fruits.Add(src)
 	bound_xeno = X
 	RegisterSignal(X, COMSIG_PARENT_QDELETING, PROC_REF(handle_xeno_qdel))

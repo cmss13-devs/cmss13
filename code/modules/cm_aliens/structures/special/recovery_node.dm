@@ -14,7 +14,7 @@
 /obj/effect/alien/resin/special/recovery/get_examine_text(mob/user)
 	. = ..()
 	if((isxeno(user) || isobserver(user)) && linked_hive)
-		. += "Emits pheromons to nerby xenomorphs"
+		. += "Emits pheromones to nearby Xenomorphs."
 
 /obj/effect/alien/resin/special/recovery/process()
 	for(var/mob/living/carbon/xenomorph/xenomorph in range(recovery_pheromone_range, loc))

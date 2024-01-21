@@ -284,7 +284,7 @@
 		return
 	if (usr.stat)
 		return
-	if ((in_range(src, usr) && istype(src.loc, /turf)) || (ishighersilicon(usr)))
+	if ((in_range(src, usr) && istype(src.loc, /turf)) || (isSilicon(usr)))
 		usr.set_interaction(src)
 
 		switch(href_list["op"])
@@ -756,13 +756,10 @@
 	if(!(wires & WIRE_MOBAVOID)) //usually just bumps, but if avoidance disabled knock over mobs
 		var/mob/M = A
 		if(ismob(M))
-			if(isborg(M))
-				src.visible_message(SPAN_DANGER("[src] bumps into [M]!"))
-			else
-				src.visible_message(SPAN_DANGER("[src] knocks over [M]!"))
-				M.stop_pulling()
-				M.apply_effect(8, STUN)
-				M.apply_effect(5, WEAKEN)
+			src.visible_message(SPAN_DANGER("[src] knocks over [M]!"))
+			M.stop_pulling()
+			M.apply_effect(8, STUN)
+			M.apply_effect(5, WEAKEN)
 	..()
 
 /obj/structure/machinery/bot/mulebot/alter_health()

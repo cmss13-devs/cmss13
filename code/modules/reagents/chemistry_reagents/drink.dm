@@ -222,7 +222,7 @@
 	name = "Cherry Souto"
 	id = "souto_cherry"
 	description = "A cherry flavored soda that's canned in Havanna"
-	color = "#800000"
+	color = COLOR_MAROON
 
 /datum/reagent/drink/souto/lime
 	name = "Lime Souto"
@@ -494,7 +494,7 @@
 	name = "Lemonade"
 	description = "Oh the nostalgia..."
 	id = "lemonade"
-	color = "#FFFF00" // rgb: 255, 255, 0
+	color = COLOR_YELLOW
 
 //*****************************************************************************************************/
 //***************************************Remove When Safe**********************************************/

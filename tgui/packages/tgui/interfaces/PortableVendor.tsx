@@ -20,7 +20,7 @@ interface PortableVendorProps {
 }
 
 interface RecordEntryProps {
-  record: PortableVendorProduct;
+  readonly record: PortableVendorProduct;
 }
 
 const PointCounter = (props, context) => {

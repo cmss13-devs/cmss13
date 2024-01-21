@@ -493,11 +493,7 @@
 				user.apply_effect(10, STUN)
 				user.stuttering = 10
 				user.apply_effect(10, WEAKEN)
-				if(isrobot(user))
-					var/mob/living/silicon/robot/R = user
-					R.cell.charge -= 20
-				else
-					B.deductcharge(B.hitcost)
+				B.deductcharge(B.hitcost)
 				user.visible_message( \
 					SPAN_DANGER("[user] was stunned by \his wet [O]!"), \
 					SPAN_DANGER("You were stunned by your wet [O]!"))

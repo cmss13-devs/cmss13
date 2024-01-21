@@ -87,19 +87,21 @@ const SquadPanel = (props, context) => {
             Supply Drop
           </Tabs.Tab>
         )}
-        <Tabs.Tab
-          selected={category === 'ob'}
-          icon="bomb"
-          onClick={() => setCategory('ob')}>
-          Orbital Bombardment
-        </Tabs.Tab>
+        {!!data.can_launch_obs && (
+          <Tabs.Tab
+            selected={category === 'ob'}
+            icon="bomb"
+            onClick={() => setCategory('ob')}>
+            Orbital Bombardment
+          </Tabs.Tab>
+        )}
         <Tabs.Tab icon="map" onClick={() => act('tacmap_unpin')}>
           Tactical Map
         </Tabs.Tab>
       </Tabs>
       {category === 'monitor' && <SquadMonitor />}
       {category === 'supply' && data.can_launch_crates && <SupplyDrop />}
-      {category === 'ob' && <OrbitalBombardment />}
+      {category === 'ob' && data.can_launch_obs && <OrbitalBombardment />}
     </>
   );
 };

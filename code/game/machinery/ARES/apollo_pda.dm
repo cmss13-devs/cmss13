@@ -19,6 +19,9 @@
 	/// The last person to login.
 	var/last_login
 
+	/// Notification sound
+	var/notify_sounds =  TRUE
+
 
 /obj/item/device/working_joe_pda/proc/link_systems(datum/ares_link/new_link = GLOB.ares_link, override)
 	if(link && !override)
@@ -34,6 +37,16 @@
 /obj/item/device/working_joe_pda/Initialize(mapload, ...)
 	link_systems(override = FALSE)
 	. = ..()
+
+/obj/item/device/working_joe_pda/proc/notify()
+	if(notify_sounds)
+		playsound(src, 'sound/machines/pda_ping.ogg', 25, 0)
+
+/obj/item/device/working_joe_pda/proc/send_notifcation()
+	for(var/obj/item/device/working_joe_pda/ticketer as anything in link.ticket_computers)
+		if(ticketer == src)
+			continue
+		ticketer.notify()
 
 /obj/item/device/working_joe_pda/proc/delink()
 	if(link)
@@ -248,6 +261,8 @@
 					link.tickets_maintenance += maint_ticket
 					if(priority_report)
 						ares_apollo_talk("Priority Maintenance Report: [maint_type] - ID [maint_ticket.ticket_id]. Seek and resolve.")
+					else
+						send_notifcation()
 					log_game("ARES: Maintenance Ticket '\ref[maint_ticket]' created by [key_name(operator)] as [last_login] with Category '[maint_type]' and Details of '[details]'.")
 					return TRUE
 			return FALSE
@@ -286,6 +301,8 @@
 			ticket.ticket_status = TICKET_CANCELLED
 			if(ticket.ticket_priority)
 				ares_apollo_talk("Priority [ticket.ticket_type] [ticket.ticket_id] has been cancelled.")
+			else
+				send_notifcation()
 			return TRUE
 
 		if("mark_ticket")
@@ -305,6 +322,8 @@
 					return FALSE
 			if(ticket.ticket_priority)
 				ares_apollo_talk("Priority [ticket.ticket_type] [ticket.ticket_id] has been [choice] by [last_login].")
+			else
+				send_notifcation()
 			to_chat(usr, SPAN_NOTICE("[ticket.ticket_type] [ticket.ticket_id] marked as [choice]."))
 			return TRUE
 
@@ -412,6 +431,15 @@
 			access_ticket.ticket_status = TICKET_REJECTED
 			to_chat(usr, SPAN_NOTICE("[access_ticket.ticket_type] [access_ticket.ticket_id] marked as rejected."))
 			ares_apollo_talk("Access Ticket [access_ticket.ticket_id]: [access_ticket.ticket_submitter] was rejected access by [last_login].")
+			for(var/obj/item/card/id/identification in link.waiting_ids)
+				if(!istype(identification))
+					continue
+				if(identification.registered_gid != access_ticket.user_id_num)
+					continue
+				var/mob/living/carbon/human/id_owner = identification.registered_ref?.resolve()
+				if(id_owner)
+					to_chat(id_owner, SPAN_WARNING("AI visitation access rejected."))
+					playsound_client(id_owner?.client, 'sound/machines/pda_ping.ogg', src, 25, 0)
 			return TRUE
 
 	if(playsound)

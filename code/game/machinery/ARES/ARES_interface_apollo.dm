@@ -18,6 +18,9 @@
 	/// The last person to login.
 	var/last_login
 
+	/// Notification sound
+	var/notify_sounds =  TRUE
+
 
 /obj/structure/machinery/computer/working_joe/proc/link_systems(datum/ares_link/new_link = GLOB.ares_link, override)
 	if(link && !override)
@@ -33,6 +36,16 @@
 /obj/structure/machinery/computer/working_joe/Initialize(mapload, ...)
 	link_systems(override = FALSE)
 	. = ..()
+
+/obj/structure/machinery/computer/working_joe/proc/notify()
+	if(notify_sounds)
+		playsound(src, 'sound/machines/pda_ping.ogg', 25, 0)
+
+/obj/structure/machinery/computer/working_joe/proc/send_notifcation()
+	for(var/obj/structure/machinery/computer/working_joe/ticketer as anything in link.ticket_computers)
+		if(ticketer == src)
+			continue
+		ticketer.notify()
 
 /obj/structure/machinery/computer/working_joe/proc/delink()
 	if(link)
@@ -223,6 +236,8 @@
 					link.tickets_maintenance += maint_ticket
 					if(priority_report)
 						ares_apollo_talk("Priority Maintenance Report: [maint_type] - ID [maint_ticket.ticket_id]. Seek and resolve.")
+					else
+						send_notifcation()
 					log_game("ARES: Maintenance Ticket '\ref[maint_ticket]' created by [key_name(operator)] as [last_login] with Category '[maint_type]' and Details of '[details]'.")
 					return TRUE
 			return FALSE
@@ -261,6 +276,8 @@
 			ticket.ticket_status = TICKET_CANCELLED
 			if(ticket.ticket_priority)
 				ares_apollo_talk("Priority [ticket.ticket_type] [ticket.ticket_id] has been cancelled.")
+			else
+				send_notifcation()
 			return TRUE
 
 		if("mark_ticket")
@@ -280,6 +297,8 @@
 					return FALSE
 			if(ticket.ticket_priority)
 				ares_apollo_talk("Priority [ticket.ticket_type] [ticket.ticket_id] has been [choice] by [last_login].")
+			else
+				send_notifcation()
 			to_chat(usr, SPAN_NOTICE("[ticket.ticket_type] [ticket.ticket_id] marked as [choice]."))
 			return TRUE
 
@@ -387,17 +406,26 @@
 			access_ticket.ticket_status = TICKET_REJECTED
 			to_chat(usr, SPAN_NOTICE("[access_ticket.ticket_type] [access_ticket.ticket_id] marked as rejected."))
 			ares_apollo_talk("Access Ticket [access_ticket.ticket_id]: [access_ticket.ticket_submitter] was rejected access by [last_login].")
+			for(var/obj/item/card/id/identification in link.waiting_ids)
+				if(!istype(identification))
+					continue
+				if(identification.registered_gid != access_ticket.user_id_num)
+					continue
+				var/mob/living/carbon/human/id_owner = identification.registered_ref?.resolve()
+				if(id_owner)
+					to_chat(id_owner, SPAN_WARNING("AI visitation access rejected."))
+					playsound_client(id_owner?.client, 'sound/machines/pda_ping.ogg', src, 25, 0)
 			return TRUE
 
 	if(playsound)
 		playsound(src, "keyboard_alt", 15, 1)
 
-/obj/item/card/id/proc/handle_ares_access(logged_in, mob/user)
+/obj/item/card/id/proc/handle_ares_access(logged_in = MAIN_AI_SYSTEM, mob/user)
 	var/operator = key_name(user)
 	var/datum/ares_link/link = GLOB.ares_link
 	if(logged_in == MAIN_AI_SYSTEM)
 		if(!user)
-			operator = "[MAIN_AI_SYSTEM] (Sensor Trip)"
+			operator = "[MAIN_AI_SYSTEM] (Automated)"
 		else
 			operator = "[user.ckey]/([MAIN_AI_SYSTEM])"
 	if(ACCESS_MARINE_AI_TEMP in access)
@@ -405,10 +433,18 @@
 		link.active_ids -= src
 		modification_log += "Temporary AI access revoked by [operator]"
 		to_chat(user, SPAN_NOTICE("Access revoked from [registered_name]."))
+		var/mob/living/carbon/human/id_owner = registered_ref?.resolve()
+		if(id_owner)
+			to_chat(id_owner, SPAN_WARNING("AI visitation access revoked."))
+			playsound_client(id_owner?.client, 'sound/machines/pda_ping.ogg', src, 25, 0)
 	else
 		access += ACCESS_MARINE_AI_TEMP
 		modification_log += "Temporary AI access granted by [operator]"
 		to_chat(user, SPAN_NOTICE("Access granted to [registered_name]."))
 		link.waiting_ids -= src
 		link.active_ids += src
+		var/mob/living/carbon/human/id_owner = registered_ref?.resolve()
+		if(id_owner)
+			to_chat(id_owner, SPAN_HELPFUL("AI visitation access granted."))
+			playsound_client(id_owner?.client, 'sound/machines/pda_ping.ogg', src, 25, 0)
 	return TRUE

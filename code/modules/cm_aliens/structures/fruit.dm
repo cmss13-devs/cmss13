@@ -148,7 +148,7 @@
 	mature = FALSE
 	icon_state = consumed_icon_state
 	update_icon()
-	QDEL_IN(src, 3 SECONDS)
+	QDEL_IN(src, 1 SECONDS)
 
 /obj/effect/alien/resin/fruit/attack_alien(mob/living/carbon/xenomorph/affected_xeno)
 	if(picked)

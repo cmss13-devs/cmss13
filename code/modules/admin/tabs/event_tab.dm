@@ -395,6 +395,9 @@
 			body += "<br><br></body>"
 			show_browser(src, body, "Faxes to the Three World Empire", "twefaxviewer", "size=300x600")
 
+		if("Colonial Liberation Front")
+			var/body = "<body>"
+
 			for(var/text in GLOB.CLFFaxes)
 				body += text
 				body += "<br><br>"

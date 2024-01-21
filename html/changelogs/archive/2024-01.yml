@@ -269,3 +269,17 @@
   - bugfix: Fixed mobs merged with weeds remaining ignited
   SabreML:
   - bugfix: Fixed the 'busy' circle icon being drawn above darkness and screen effects.
+2024-01-21:
+  ClairionCM:
+  - qol: made whistles less spammy
+  Huffie56:
+  - rscadd: 'Add some boards to the board vendor in engi on almayer(Air Alarm Electronics,
+      Security Camera Monitor,
+
+      Station Alerts, Arcade, Atmospheric Monitor).'
+  Releasethesea:
+  - rscadd: adds prescription variants of the orange, black, and M1A1 goggles
+  SabreML:
+  - rscadd: Made larvae and facehuggers able to use custom emotes.
+  Vicacrov:
+  - bugfix: Fixes engine/weapon attach points layering below the dropship walls.

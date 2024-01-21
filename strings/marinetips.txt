@@ -85,7 +85,7 @@ Any marine can perform CPR. On dead marines, this will increase the time they ha
 If you've been pounced on and your squad is unloading into the target, you can hit the 'rest' button to stay down so you don't get filled with lead after getting up.
 You can check the landing zone as a marine in the status panel.
 The Colonial Marshals may come to crack down on too heavy of a Black Market usage.
-Functioning night vision goggles can be recharged with batteries. Broken night vision goggles can be repaired by an Engineer with a screwdriver. Not the loadout ones though, those cannot be fixed.
+A night vision HUD optic can be recharged by removing it with a screwdriver, then placing it into a recharger.
 You can put a pistol belt on your suit slot. (Just grab a rifle instead.)
 Alt-clicking the Squad Leader tracker lets you track your fireteam leader instead.
 Armor has a randomized reduction in effectiveness, and does not protect the digits. Take the wiki damage values as a best-case scenario.

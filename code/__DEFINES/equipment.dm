@@ -194,11 +194,11 @@
 
 //===========================================================================================
 //Marine armor only, use for flags_marine_armor.
-#define ARMOR_SQUAD_OVERLAY 1
-#define ARMOR_LAMP_OVERLAY 2
-#define ARMOR_LAMP_ON 4
-#define ARMOR_IS_REINFORCED 8
-#define SYNTH_ALLOWED 16
+#define ARMOR_SQUAD_OVERLAY (1<<0)
+#define ARMOR_LAMP_OVERLAY (1<<1)
+#define ARMOR_LAMP_ON (1<<2)
+#define ARMOR_IS_REINFORCED (1<<3)
+#define SYNTH_ALLOWED (1<<4)
 //===========================================================================================
 
 //===========================================================================================

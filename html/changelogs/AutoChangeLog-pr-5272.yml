@@ -1,5 +1,0 @@
-author: "poltava, ihatethisengine"
-delete-after: True
-changes:
-  - rscadd: "added intel chestrig"
-  - imageadd: "added sprites for intel chestrig"

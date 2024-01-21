@@ -374,7 +374,7 @@
 	if(total_volume + amount > maximum_volume)
 		amount = maximum_volume - total_volume //Doesnt fit in. Make it disappear. Shouldnt happen. Will happen.
 
-	var/new_data = list("blood_type" = null, "blood_colour" = "#A10808", "viruses" = null, "resistances" = null, "last_source_mob" = null)
+	var/new_data = list("blood_type" = null, "blood_color" = "#A10808", "viruses" = null, "resistances" = null, "last_source_mob" = null)
 	if(data)
 		for(var/index in data)
 			new_data[index] = data[index]

@@ -25,13 +25,16 @@
 	. = ..()
 	map_name = "camera_manager_[REF(src)]_map"
 	cam_screen = new
+	cam_screen.icon = null
 	cam_screen.name = "screen"
 	cam_screen.assigned_map = map_name
 	cam_screen.del_on_map_removal = FALSE
 	cam_screen.screen_loc = "[map_name]:1,1"
+	cam_screen.appearance_flags |= TILE_BOUND
 	cam_background = new
 	cam_background.assigned_map = map_name
 	cam_background.del_on_map_removal = FALSE
+	cam_background.appearance_flags |= TILE_BOUND
 
 	cam_plane_masters = list()
 	for(var/plane in subtypesof(/atom/movable/screen/plane_master) - /atom/movable/screen/plane_master/blackness)
@@ -42,14 +45,17 @@
 	. = ..()
 	range_turfs = null
 	current_area = null
-	cam_plane_masters = null
+	QDEL_LIST_ASSOC_VAL(cam_plane_masters)
 	QDEL_NULL(cam_background)
 	QDEL_NULL(cam_screen)
 	if(current)
 		UnregisterSignal(current, COMSIG_PARENT_QDELETING)
+	current = null
+	last_camera_turf = null
 
 /datum/component/camera_manager/proc/add_plane(atom/movable/screen/plane_master/instance)
 	instance.assigned_map = map_name
+	instance.appearance_flags |= TILE_BOUND
 	instance.del_on_map_removal = FALSE
 	if(instance.blend_mode_override)
 		instance.blend_mode = instance.blend_mode_override
@@ -61,8 +67,8 @@
 	var/client/user_client = user.client
 	if(!user_client)
 		return
-	user_client.register_map_obj(cam_background)
 	user_client.register_map_obj(cam_screen)
+	user_client.register_map_obj(cam_background)
 	for(var/plane_id in cam_plane_masters)
 		user_client.register_map_obj(cam_plane_masters[plane_id])
 
@@ -71,14 +77,10 @@
 	var/client/user_client = user.client
 	if(!user_client)
 		return
-	user_client.clear_map(cam_background)
-	user_client.clear_map(cam_screen)
-	for(var/plane_id in cam_plane_masters)
-		user_client.clear_map(cam_plane_masters[plane_id])
+	user_client.clear_map(map_name)
 
 /datum/component/camera_manager/RegisterWithParent()
 	. = ..()
-	START_PROCESSING(SSdcs, src)
 	SEND_SIGNAL(parent, COMSIG_CAMERA_MAPNAME_ASSIGNED, map_name)
 	RegisterSignal(parent, COMSIG_CAMERA_REGISTER_UI, PROC_REF(register))
 	RegisterSignal(parent, COMSIG_CAMERA_UNREGISTER_UI, PROC_REF(unregister))
@@ -90,8 +92,6 @@
 
 /datum/component/camera_manager/UnregisterFromParent()
 	. = ..()
-	STOP_PROCESSING(SSdcs, src)
-
 	UnregisterSignal(parent, COMSIG_CAMERA_REGISTER_UI)
 	UnregisterSignal(parent, COMSIG_CAMERA_UNREGISTER_UI)
 	UnregisterSignal(parent, COMSIG_CAMERA_SET_NVG)
@@ -134,6 +134,8 @@
 	target_x = x
 	target_y = y
 	target_z = z
+	target_width = w
+	target_height = h
 	update_area_camera()
 
 /datum/component/camera_manager/proc/enable_nvg(source, power, matrixcol)
@@ -152,10 +154,10 @@
 
 /datum/component/camera_manager/proc/sync_lighting_plane_alpha(lighting_alpha)
 	var/atom/movable/screen/plane_master/lighting/lighting = cam_plane_masters["[LIGHTING_PLANE]"]
-	if (lighting)
+	if(lighting)
 		lighting.alpha = lighting_alpha
 	var/atom/movable/screen/plane_master/lighting/exterior_lighting = cam_plane_masters["[EXTERIOR_LIGHTING_PLANE]"]
-	if (exterior_lighting)
+	if(exterior_lighting)
 		exterior_lighting.alpha = min(GLOB.minimum_exterior_lighting_alpha, lighting_alpha)
 
 /**
@@ -215,7 +217,7 @@
 	var/turf/target = locate(current_area.center_x, current_area.center_y, target_z)
 
 	var/list/visible_things = isXRay ? range("[x_size]x[y_size]", target) : view("[x_size]x[y_size]", target)
-	src.render_objects(visible_things)
+	render_objects(visible_things)
 
 /datum/component/camera_manager/proc/render_objects(list/visible_things)
 	var/list/visible_turfs = list()

@@ -22,7 +22,7 @@ interface ElevatorContext {
 }
 
 const InfoBox = (
-  props: { title?: string; text: string | number },
+  props: { readonly title?: string; readonly text: string | number },
   contenxt
 ) => {
   return (
@@ -86,9 +86,9 @@ const ElevatorPanel = (props, context) => {
 };
 
 interface ElevatorButtonProps {
-  id: string;
-  name: string;
-  onClick: () => void;
+  readonly id: string;
+  readonly name: string;
+  readonly onClick: () => void;
 }
 
 const ElevatorButton = (props: ElevatorButtonProps, context) => {

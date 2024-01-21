@@ -60,6 +60,17 @@ export const mfdState = (context, panelId: string) => {
   };
 };
 
+export const otherMfdState = (context, otherPanelId: string | undefined) => {
+  const [data] = useSharedState<string>(
+    context,
+    `${otherPanelId}_panelstate`,
+    ''
+  );
+  return {
+    otherPanelState: data,
+  };
+};
+
 export const useWeaponState = (context, panelId: string) => {
   const [data, set] = useSharedState<number | undefined>(
     context,

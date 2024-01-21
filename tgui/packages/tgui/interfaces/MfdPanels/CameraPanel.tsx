@@ -11,9 +11,9 @@ export const CameraMfdPanel = (props: MfdProps, context) => {
   return (
     <MfdPanel
       panelStateId={props.panelStateId}
-      topButtons={[
-        { children: 'nvgon', onClick: () => act('nvg-enable') },
-        { children: 'nvgoff', onClick: () => act('nvg-disable') },
+      leftButtons={[
+        { children: 'NV-ON', onClick: () => act('nvg-enable') },
+        { children: 'NV-OFF', onClick: () => act('nvg-disable') },
       ]}
       bottomButtons={[{ children: 'EXIT', onClick: () => setPanelState('') }]}>
       <CameraPanel />

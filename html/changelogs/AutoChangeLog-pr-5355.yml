@@ -1,4 +1,0 @@
-author: "SabreML"
-delete-after: True
-changes:
-  - bugfix: "Fixed custom xeno ERTs sending a distress beacon announcement when it shouldn't."

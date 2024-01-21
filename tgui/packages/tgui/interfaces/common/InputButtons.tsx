@@ -7,8 +7,8 @@ type InputButtonsData = {
 };
 
 type InputButtonsProps = {
-  input: string | number;
-  message?: string;
+  readonly input: string | number;
+  readonly message?: string;
 };
 
 export const InputButtons = (props: InputButtonsProps, context) => {

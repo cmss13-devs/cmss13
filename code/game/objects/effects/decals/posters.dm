@@ -160,14 +160,14 @@
 	icon_state = "poster3"
 
 /obj/structure/sign/poster/music/Initialize()
-	serial_number = pick(3,5,25,26,29,38,39)
+	serial_number = pick(3,5,25,26,38,39)
 	.=..()
 
 /obj/structure/sign/poster/pinup
 	icon_state = "poster12"
 
 /obj/structure/sign/poster/pinup/Initialize()
-	serial_number = pick(12,16,17)
+	serial_number = pick(12,16,17,29)
 	.=..()
 
 /obj/structure/sign/poster/propaganda

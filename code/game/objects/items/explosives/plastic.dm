@@ -321,6 +321,8 @@
 	penetration = 0.60
 	deploying_time = 10
 	var/shrapnel_volume = 40
+	var/shrapnel_type = /datum/ammo/bullet/shrapnel/metal
+	var/explosion_strength = 60
 
 /obj/item/explosive/plastic/breaching_charge/can_place(mob/user, atom/target)
 	if(!is_type_in_list(target, breachable))//only items on the list are allowed
@@ -347,12 +349,20 @@
 
 /obj/item/explosive/plastic/breaching_charge/handle_explosion(turf/target_turf, dir, cause_data)
 	var/explosion_target = get_step(target_turf, dir)
-	create_shrapnel(explosion_target, shrapnel_volume, dir, angle,/datum/ammo/bullet/shrapnel/metal, cause_data)
+	create_shrapnel(explosion_target, shrapnel_volume, dir, angle, shrapnel_type, cause_data)
 	addtimer(CALLBACK(src, PROC_REF(trigger_explosion), target_turf, dir, cause_data), 1)
 
 /obj/item/explosive/plastic/breaching_charge/proc/trigger_explosion(turf/target_turf, dir, cause_data)
-	cell_explosion(target_turf, 60, 60, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, dir, cause_data)
+	cell_explosion(target_turf, explosion_strength, explosion_strength, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, dir, cause_data)
 	qdel(src)
+
+/obj/item/explosive/plastic/breaching_charge/rubber
+	name = "X17 riot charge"
+	desc = "An explosive device used to break into areas while protecting the user from the blast. Unlike the standard breaching charge, the X17 deploys a cone spray of rubber pellets to incapacitate rather than kill."
+	icon_state = "riot-charge"
+	overlay_image = "riot-active"
+	shrapnel_volume = 20
+	shrapnel_type = /datum/ammo/bullet/shrapnel/rubber
 
 /obj/item/explosive/plastic/breaching_charge/plasma
 	name = "plasma charge"
@@ -367,6 +377,8 @@
 	deploying_time = 10
 	flags_item = NOBLUDGEON|ITEM_PREDATOR
 	shrapnel_volume = 10
+	shrapnel_type = /datum/ammo/bullet/shrapnel/plasma
+	explosion_strength = 90
 
 /obj/item/explosive/plastic/breaching_charge/plasma/can_place(mob/user, atom/target)
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
@@ -374,11 +386,3 @@
 		return FALSE
 	. = ..()
 
-/obj/item/explosive/plastic/breaching_charge/plasma/handle_explosion(turf/target_turf, dir, cause_data)
-	var/explosion_target = get_step(target_turf, dir)
-	create_shrapnel(explosion_target, shrapnel_volume, dir, angle,/datum/ammo/bullet/shrapnel/plasma, cause_data)
-	addtimer(CALLBACK(src, PROC_REF(trigger_explosion), target_turf, dir, cause_data), 1)
-
-/obj/item/explosive/plastic/breaching_charge/plasma/trigger_explosion(turf/target_turf, dir, cause_data)
-	cell_explosion(target_turf, 90, 90, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, dir, cause_data)
-	qdel(src)

@@ -250,6 +250,10 @@ GLOBAL_LIST_INIT(admin_verbs_color, list(
 	/client/proc/set_ooc_color_self
 ))
 
+GLOBAL_LIST_INIT(admin_verbs_stealth, list(
+	/client/proc/toggle_admin_stealth
+))
+
 GLOBAL_LIST_INIT(admin_mob_event_verbs_hideable, list(
 	/client/proc/hide_event_mob_verbs,
 	/client/proc/cmd_admin_select_mob_rank,
@@ -341,6 +345,8 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 		add_verb(src, GLOB.admin_verbs_sounds)
 	if(CLIENT_HAS_RIGHTS(src, R_SPAWN))
 		add_verb(src, GLOB.admin_verbs_spawn)
+	if(CLIENT_HAS_RIGHTS(src, R_STEALTH))
+		add_verb(src, GLOB.admin_verbs_stealth)
 	if(GLOB.RoleAuthority && (GLOB.RoleAuthority.roles_whitelist[ckey] & WHITELIST_YAUTJA_LEADER))
 		add_verb(src, GLOB.clan_verbs)
 
@@ -370,6 +376,7 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 		GLOB.admin_mob_event_verbs_hideable,
 		GLOB.admin_verbs_hideable,
 		GLOB.debug_verbs,
+		GLOB.admin_verbs_stealth,
 	))
 
 /client/proc/jobbans()
@@ -595,6 +602,14 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 	else
 		to_chat(usr, SPAN_BOLDNOTICE("You will no longer hear an audio cue for ARES and Prayer messages."))
 
+/client/proc/toggle_admin_stealth()
+	set name = "Toggle Admin Stealth"
+	set category = "Preferences"
+	prefs.toggles_admin ^= ADMIN_STEALTHMODE
+	if(prefs.toggles_admin & ADMIN_STEALTHMODE)
+		to_chat(usr, SPAN_BOLDNOTICE("You enabled admin stealth mode."))
+	else
+		to_chat(usr, SPAN_BOLDNOTICE("You disabled admin stealth mode."))
 
 #undef MAX_WARNS
 #undef AUTOBANTIME

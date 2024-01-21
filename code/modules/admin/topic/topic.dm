@@ -1226,7 +1226,7 @@
 						return
 				else
 					return
-				var/message_body = input(src.owner, "Enter Message Body, use <p></p> for paragraphs", "Outgoing message from Weyland USCM", "") as message|null
+				var/message_body = input(src.owner, "Enter Message Body, use <p></p> for paragraphs", "Outgoing message from USCM", "") as message|null
 				if(!message_body)
 					return
 				var/sent_by = input(src.owner, "Enter the name and rank you are sending from.", "Outgoing message from USCM", "") as message|null
@@ -1358,6 +1358,249 @@
 						P.stamped += /obj/item/tool/stamp
 						P.overlays += stampoverlay
 						P.stamps += "<HR><i>This paper has been stamped and encrypted by the Weyland-Yutani Quantum Relay (tm).</i>"
+
+				to_chat(src.owner, "Message reply to transmitted successfully.")
+				message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]"), 1)
+				return
+		to_chat(src.owner, "/red Unable to locate fax!")
+
+	else if(href_list["TWEFaxReply"])
+		var/mob/living/carbon/human/H = locate(href_list["TWEFaxReply"])
+		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
+
+		var/template_choice = tgui_input_list(usr, "Use the template or roll your own?", "Fax Template", list("Template", "Custom"))
+		if(!template_choice) return
+		var/datum/fax/fax_message
+		switch(template_choice)
+			if("Custom")
+				var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from TWE", "") as message|null
+				if(!input)
+					return
+				fax_message = new(input)
+			if("Template")
+				var/subject = input(src.owner, "Enter subject line", "Outgoing message from TWE", "") as message|null
+				if(!subject)
+					return
+				var/addressed_to = ""
+				var/address_option = tgui_input_list(usr, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
+				if(address_option == "Sender")
+					addressed_to = "[H.real_name]"
+				else if(address_option == "Custom")
+					addressed_to = input(src.owner, "Enter Addressee Line", "Outgoing message from TWE", "") as message|null
+					if(!addressed_to)
+						return
+				else
+					return
+				var/message_body = input(src.owner, "Enter Message Body, use <p></p> for paragraphs", "Outgoing message from TWE", "") as message|null
+				if(!message_body)
+					return
+				var/sent_by = input(src.owner, "Enter JUST the name you are sending this from", "Outgoing message from TWE", "") as message|null
+				if(!sent_by)
+					return
+				fax_message = new(generate_templated_fax(0, "THREE WORLD EMPIRE - ROYAL MILITARY COMMAND", subject, addressed_to, message_body, sent_by, "Office of Military Communications", "Three World Empire"))
+		show_browser(usr, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF TWE FAX", "size=500x400")
+		var/send_choice = tgui_input_list(usr, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
+		if(send_choice != "Send")
+			return
+		GLOB.fax_contents += fax_message // save a copy
+
+		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
+		if(!customname)
+			return
+
+		GLOB.TWEFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
+
+		var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>THREE WORLD EMPIRE FAX REPLY: </font></b> ")
+		msg_ghost += "Transmitting '[customname]' via secure connection ... "
+		msg_ghost += "<a href='?FaxView=\ref[fax_message]'>view message</a>"
+		announce_fax( ,msg_ghost)
+
+		for(var/obj/structure/machinery/faxmachine/F in GLOB.machines)
+			if(F == fax)
+				if(!(F.inoperable()))
+
+					// animate! it's alive!
+					flick("faxreceive", F)
+
+					// give the sprite some time to flick
+					spawn(20)
+						var/obj/item/paper/P = new /obj/item/paper( F.loc )
+						P.name = "Three World Empire - [customname]"
+						P.info = fax_message.data
+						P.update_icon()
+
+						playsound(F.loc, "sound/machines/fax.ogg", 15)
+
+						// Stamps
+						var/image/stampoverlay = image('icons/obj/items/paper.dmi')
+						stampoverlay.icon_state = "paper_stamp-twe"
+						if(!P.stamped)
+							P.stamped = new
+						P.stamped += /obj/item/tool/stamp
+						P.overlays += stampoverlay
+						P.stamps += "<HR><i>This paper has been stamped by the Three World Empire Quantum Relay (tm).</i>"
+
+				to_chat(src.owner, "Message reply to transmitted successfully.")
+				message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]"), 1)
+				return
+		to_chat(src.owner, "/red Unable to locate fax!")
+
+	else if(href_list["UPPFaxReply"])
+		var/mob/living/carbon/human/H = locate(href_list["UPPFaxReply"])
+		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
+
+		var/template_choice = tgui_input_list(usr, "Use the template or roll your own?", "Fax Template", list("Template", "Custom"))
+		if(!template_choice) return
+		var/datum/fax/fax_message
+		switch(template_choice)
+			if("Custom")
+				var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from UPP", "") as message|null
+				if(!input)
+					return
+				fax_message = new(input)
+			if("Template")
+				var/subject = input(src.owner, "Enter subject line", "Outgoing message from UPP", "") as message|null
+				if(!subject)
+					return
+				var/addressed_to = ""
+				var/address_option = tgui_input_list(usr, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
+				if(address_option == "Sender")
+					addressed_to = "[H.real_name]"
+				else if(address_option == "Custom")
+					addressed_to = input(src.owner, "Enter Addressee Line", "Outgoing message from UPP", "") as message|null
+					if(!addressed_to)
+						return
+				else
+					return
+				var/message_body = input(src.owner, "Enter Message Body, use <p></p> for paragraphs", "Outgoing message from UPP", "") as message|null
+				if(!message_body)
+					return
+				var/sent_by = input(src.owner, "Enter JUST the name you are sending this from", "Outgoing message from UPP", "") as message|null
+				if(!sent_by)
+					return
+				fax_message = new(generate_templated_fax(0, "UNION OF PROGRESSIVE PEOPLES - MILITARY HIGH KOMMAND", subject, addressed_to, message_body, sent_by, "Military High Kommand", "Union of Progressive Peoples"))
+		show_browser(usr, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF UPP FAX", "size=500x400")
+		var/send_choice = tgui_input_list(usr, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
+		if(send_choice != "Send")
+			return
+		GLOB.fax_contents += fax_message // save a copy
+
+		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
+		if(!customname)
+			return
+
+		GLOB.UPPFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
+
+		var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>UNION OF PROGRESSIVE PEOPLES FAX REPLY: </font></b> ")
+		msg_ghost += "Transmitting '[customname]' via secure connection ... "
+		msg_ghost += "<a href='?FaxView=\ref[fax_message]'>view message</a>"
+		announce_fax( ,msg_ghost)
+
+		for(var/obj/structure/machinery/faxmachine/F in GLOB.machines)
+			if(F == fax)
+				if(!(F.inoperable()))
+
+					// animate! it's alive!
+					flick("faxreceive", F)
+
+					// give the sprite some time to flick
+					spawn(20)
+						var/obj/item/paper/P = new /obj/item/paper( F.loc )
+						P.name = "Union of Progressive Peoples - [customname]"
+						P.info = fax_message.data
+						P.update_icon()
+
+						playsound(F.loc, "sound/machines/fax.ogg", 15)
+
+						// Stamps
+						var/image/stampoverlay = image('icons/obj/items/paper.dmi')
+						stampoverlay.icon_state = "paper_stamp-upp"
+						if(!P.stamped)
+							P.stamped = new
+						P.stamped += /obj/item/tool/stamp
+						P.overlays += stampoverlay
+						P.stamps += "<HR><i>This paper has been stamped by the Union of Progressive Peoples Quantum Relay (tm).</i>"
+
+				to_chat(src.owner, "Message reply to transmitted successfully.")
+				message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]"), 1)
+				return
+		to_chat(src.owner, "/red Unable to locate fax!")
+
+	else if(href_list["CLFFaxReply"])
+		var/mob/living/carbon/human/H = locate(href_list["CLFFaxReply"])
+		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
+
+		var/template_choice = tgui_input_list(usr, "Use the template or roll your own?", "Fax Template", list("Template", "Custom"))
+		if(!template_choice) return
+		var/datum/fax/fax_message
+		switch(template_choice)
+			if("Custom")
+				var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from CLF", "") as message|null
+				if(!input)
+					return
+				fax_message = new(input)
+			if("Template")
+				var/subject = input(src.owner, "Enter subject line", "Outgoing message from CLF", "") as message|null
+				if(!subject)
+					return
+				var/addressed_to = ""
+				var/address_option = tgui_input_list(usr, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
+				if(address_option == "Sender")
+					addressed_to = "[H.real_name]"
+				else if(address_option == "Custom")
+					addressed_to = input(src.owner, "Enter Addressee Line", "Outgoing message from CLF", "") as message|null
+					if(!addressed_to)
+						return
+				else
+					return
+				var/message_body = input(src.owner, "Enter Message Body, use <p></p> for paragraphs", "Outgoing message from CLF", "") as message|null
+				if(!message_body)
+					return
+				var/sent_by = input(src.owner, "Enter JUST the name you are sending this from", "Outgoing message from CLF", "") as message|null
+				if(!sent_by)
+					return
+				fax_message = new(generate_templated_fax(0, "COLONIAL LIBERATION FRONT - COLONIAL COUNCIL OF LIBERATION", subject, addressed_to, message_body, sent_by, "Guerilla Forces Command", "Colonial Liberation Front"))
+		show_browser(usr, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF CLF FAX", "size=500x400")
+		var/send_choice = tgui_input_list(usr, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
+		if(send_choice != "Send")
+			return
+		GLOB.fax_contents += fax_message // save a copy
+
+		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
+		if(!customname)
+			return
+
+		GLOB.CLFFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
+
+		var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>COLONIAL LIBERATION FRONT FAX REPLY: </font></b> ")
+		msg_ghost += "Transmitting '[customname]' via secure connection ... "
+		msg_ghost += "<a href='?FaxView=\ref[fax_message]'>view message</a>"
+		announce_fax( ,msg_ghost)
+
+		for(var/obj/structure/machinery/faxmachine/F in GLOB.machines)
+			if(F == fax)
+				if(!(F.inoperable()))
+
+					// animate! it's alive!
+					flick("faxreceive", F)
+
+					// give the sprite some time to flick
+					spawn(20)
+						var/obj/item/paper/P = new /obj/item/paper( F.loc )
+						P.name = "Colonial Liberation Front - [customname]"
+						P.info = fax_message.data
+						P.update_icon()
+
+						playsound(F.loc, "sound/machines/fax.ogg", 15)
+
+						// Stamps
+						var/image/stampoverlay = image('icons/obj/items/paper.dmi')
+						stampoverlay.icon_state = "paper_stamp-clf"
+						if(!P.stamped)
+							P.stamped = new
+						P.stamped += /obj/item/tool/stamp
+						P.overlays += stampoverlay
+						P.stamps += "<HR><i>This paper has been stamped and encrypted by the Colonial Liberation Front Quantum Relay (tm).</i>"
 
 				to_chat(src.owner, "Message reply to transmitted successfully.")
 				message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]"), 1)

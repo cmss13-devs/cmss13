@@ -4,15 +4,15 @@ import { Box, Button, Flex, Stack, Icon, Section, ProgressBar } from '../compone
 import { Window } from '../layouts';
 
 type ScopeData = {
-  offset_x: Number;
-  offset_y: Number;
+  offset_x: number;
+  offset_y: number;
   valid_offset_dirs: Array<String>;
   valid_adjust_dirs: Array<String>;
   scope_cooldown: BooleanLike;
   breath_cooldown: BooleanLike;
-  breath_recharge: Number;
-  current_scope_drift: Number;
-  time_to_fire_remaining: Number;
+  breath_recharge: number;
+  current_scope_drift: number;
+  time_to_fire_remaining: number;
 };
 
 enum Direction {

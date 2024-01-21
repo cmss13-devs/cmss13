@@ -116,6 +116,8 @@
 	data["apollo_log"] = list()
 	data["apollo_log"] += datacore.apollo_log
 
+	data["notify_sounds"] = notify_sounds
+
 	var/list/logged_maintenance = list()
 	for(var/datum/ares_ticket/maintenance/maint_ticket as anything in link.tickets_maintenance)
 		if(!istype(maint_ticket))
@@ -235,6 +237,9 @@
 		if("page_maintenance")
 			last_menu = current_menu
 			current_menu = "maint_claim"
+
+		if("toggle_sound")
+			notify_sounds = !notify_sounds
 
 		if("new_report")
 			var/priority_report = FALSE

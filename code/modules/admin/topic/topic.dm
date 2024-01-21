@@ -1199,6 +1199,7 @@
 				message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]"), 1)
 				return
 		to_chat(src.owner, "/red Unable to locate fax!")
+
 	else if(href_list["USCMFaxReply"])
 		var/mob/living/carbon/human/H = locate(href_list["USCMFaxReply"])
 		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])

@@ -322,7 +322,11 @@
 	if(!admin_holder)
 		return
 
-	var/list/options = list("Weyland-Yutani", "High Command", "Provost", "Press", "CMB", "UPP", "TWE", "CLF", "Other", "Cancel")
+	var/list/options = list(
+		"Weyland-Yutani", "High Command", "Provost", "Press",
+		"Colonial Marshal Bureau", "Union of Progressive Peoples",
+		"Three World Empire", "Colonial Liberation Front",
+		"Other", "Cancel")
 	var/answer = tgui_input_list(src, "Which kind of faxes would you like to see?", "Faxes", options)
 	switch(answer)
 		if("Weyland-Yutani")
@@ -363,7 +367,7 @@
 				body += "<br><br>"
 
 			body += "<br><br></body>"
-			show_browser(src, body, "Faxes to Press organizations", "otherfaxviewer", "size=300x600")
+			show_browser(src, body, "Faxes to Press organizations", "pressfaxviewer", "size=300x600")
 
 		if("Colonial Marshal Bureau")
 			var/body = "<body>"

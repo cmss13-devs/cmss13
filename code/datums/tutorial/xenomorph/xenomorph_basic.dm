@@ -174,9 +174,9 @@
 
 /datum/tutorial/xenomorph/basic/proc/nest_cap_phase_two()
 
-	new /turf/closed/wall/resin/tutorial(loc_from_corner(8,0))
-	new /turf/closed/wall/resin/tutorial(loc_from_corner(8,1))
-	new /turf/closed/wall/resin/tutorial(loc_from_corner(9,1))
+	loc_from_corner(8,0).ChangeTurf(/turf/closed/wall/resin/tutorial)
+	loc_from_corner(8,1).ChangeTurf(/turf/closed/wall/resin/tutorial)
+	loc_from_corner(9,1).ChangeTurf(/turf/closed/wall/resin/tutorial)
 
 	addtimer(CALLBACK(src, PROC_REF(nest_cap_phase_three)), 5 SECONDS)
 

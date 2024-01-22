@@ -15,3 +15,15 @@
 	icon_state = "newspaper"
 	w_class = SIZE_TINY //Let's make it fit in trashbags!
 	attack_verb = list("bapped")
+
+// apparently i need to put back those here... if we don't want code to die.
+/datum/feed_channel
+	var/channel_name=""
+	var/list/datum/feed_message/messages = list()
+	//var/message_count = 0
+	var/locked=0
+	var/author=""
+	var/backup_author=""
+	var/censored=0
+	var/is_admin_channel=0
+	//var/page = null //For newspapers

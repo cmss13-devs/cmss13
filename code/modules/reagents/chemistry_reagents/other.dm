@@ -9,7 +9,7 @@
 	description = "Blood is classified as a connective tissue and consists of two main components: Plasma, which is a clear extracellular fluid. Formed elements, which are made up of the blood cells and platelets."
 	reagent_state = LIQUID
 	color = "#A10808"
-	data_properties = new/list("blood_type"=null,"blood_color"= "#A10808","viruses"=null,"resistances"=null)
+	data_properties = new/list("blood_type"=null,"blood_colour"= "#A10808","viruses"=null,"resistances"=null)
 	chemclass = CHEM_CLASS_RARE
 
 
@@ -394,7 +394,7 @@
 	power = 0.5
 	falloff_modifier = 1
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_FUELING = 7, PROPERTY_OXIDIZING = 5, PROPERTY_VISCOUS = 4, PROPERTY_CORROSIVE = 2)
+	properties = list(PROPERTY_FUELING = 5, PROPERTY_OXIDIZING = 3, PROPERTY_VISCOUS = 4, PROPERTY_CORROSIVE = 2)
 
 /datum/reagent/thermite/reaction_turf(turf/T, volume)
 	src = null
@@ -483,18 +483,12 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemfiresupp = TRUE
-	//------------------//
-	intensityfire = BURN_LEVEL_TIER_1
-	durationfire = BURN_TIME_TIER_1
-	burn_sprite = "red"
-	rangefire = 4
-	//------------------//
 	explosive = TRUE
 	power = 0.12
 	falloff_modifier = -0.1
 	burncolor = "#ff9900"
 	chemclass = CHEM_CLASS_RARE
-	properties = list(PROPERTY_FUELING = 5, PROPERTY_OXIDIZING = 3, PROPERTY_VISCOUS = 4, PROPERTY_TOXIC = 1)
+	properties = list(PROPERTY_FLOWING = 4,PROPERTY_FUELING = 6, PROPERTY_OXIDIZING = 4, PROPERTY_VISCOUS = 4, PROPERTY_TOXIC = 1)
 
 /datum/reagent/space_cleaner
 	name = "Space cleaner"
@@ -584,6 +578,18 @@
 	chemclass = CHEM_CLASS_RARE
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 	flags = REAGENT_NO_GENERATION
+
+/datum/reagent/nanites
+	name = "Nanomachines"
+	id = "nanites"
+	description = "Microscopic construction robots."
+	reagent_state = LIQUID
+	color = "#535E66" // rgb: 83, 94, 102
+
+/datum/reagent/nanites/reaction_mob(mob/M, method=TOUCH, volume)
+	src = null
+	if((prob(10) && method==TOUCH) || method==INGEST)
+		M.contract_disease(new /datum/disease/robotic_transformation(0),1)
 
 /datum/reagent/xenomicrobes
 	name = "Xenomicrobes"
@@ -688,7 +694,7 @@
 	chemfiresupp = TRUE
 	burncolor = "#D05006"
 	burn_sprite = "red"
-	properties = list(PROPERTY_OXIDIZING = 6, PROPERTY_FUELING = 7, PROPERTY_FLOWING = 1)
+	properties = list(PROPERTY_OXIDIZING = 4, PROPERTY_FUELING = 5, PROPERTY_FLOWING = 1)
 
 // This is the regular flamer fuel and pyro regular flamer fuel.
 /datum/reagent/napalm/ut

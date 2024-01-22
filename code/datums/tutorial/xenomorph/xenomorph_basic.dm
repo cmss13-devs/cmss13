@@ -226,4 +226,4 @@
 // END OF SCRIPTING
 
 /datum/tutorial/xenomorph/basic/init_map()
-	new /turf/closed/wall/resin/tutorial(loc_from_corner(9,0))
+	loc_from_corner(9,0).ChangeTurf(/turf/closed/wall/resin/tutorial)

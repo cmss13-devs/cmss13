@@ -130,10 +130,11 @@
 	var/weed_level = WEED_LEVEL_STANDARD
 	var/acid_level = 0
 
-	// Mutator-related and other important vars
-	var/mutation_icon_state = null
-	var/mutation_type = null
-	var/datum/mutator_set/individual_mutators/mutators = new
+	// Strain-related vars
+	/// A list of strain typepaths that the xeno is able to choose.
+	var/list/available_strains = list()
+	/// The xeno's strain, if they've taken one.
+	var/datum/xeno_strain/chosen_strain = null
 
 	// Hive-related vars
 	var/datum/hive_status/hive
@@ -388,8 +389,6 @@
 	if(hive)
 		for(var/trait in hive.hive_inherant_traits)
 			ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
-
-	mutators.xeno = src
 
 	//Set caste stuff
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
@@ -661,8 +660,8 @@
 			. += "It appears to belong to [hive?.name ? "the [hive.name]" : "a different hive"]."
 
 	if(isxeno(user) || isobserver(user))
-		if(mutation_type != "Normal")
-			. += "It has specialized into a [mutation_type]."
+		if(chosen_strain)
+			. += "It has specialized into a [chosen_strain.name]."
 
 	if(iff_tag)
 		. += SPAN_NOTICE("It has an IFF tag sticking out of its carapace.")
@@ -693,7 +692,7 @@
 	selected_ability = null
 	queued_action = null
 
-	QDEL_NULL(mutators)
+	QDEL_NULL(chosen_strain)
 	QDEL_NULL(behavior_delegate)
 
 	built_structures = null
@@ -709,17 +708,10 @@
 	if(hardcore)
 		attack_log?.Cut() // Completely clear out attack_log to limit mem usage if we fail to delete
 
-	. = ..()
-
-	// Everything below fits the "we have to clear by principle it but i dont wanna break stuff" bill
-	mutators = null
-
-
+	return ..()
 
 /mob/living/carbon/xenomorph/slip(slip_source_name, stun_level, weaken_level, run_only, override_noslip, slide_steps)
 	return FALSE
-
-
 
 /mob/living/carbon/xenomorph/start_pulling(atom/movable/AM, lunge, no_msg)
 	if(SEND_SIGNAL(AM, COMSIG_MOVABLE_XENO_START_PULLING, src) & COMPONENT_ALLOW_PULL)
@@ -823,10 +815,10 @@
 
 
 //*********************************************************//
-//********************Mutator functions********************//
+// ******************** Strain Procs **********************//
 //*********************************************************//
 
-//Call this function when major changes happen - evolutions, upgrades, mutators getting removed
+//Call this proc when major changes happen - evolutions, upgrades, mutators getting removed
 /mob/living/carbon/xenomorph/proc/recalculate_everything()
 	recalculate_stats()
 	recalculate_actions()
@@ -1043,7 +1035,8 @@
 		handle_ghost_message()
 
 /mob/living/carbon/xenomorph/proc/handle_ghost_message()
-	notify_ghosts("[src] ([mutation_type] [caste_type]) has ghosted and their body is up for grabs!", source = src)
+	var/strain_name = chosen_strain ? chosen_strain.name : "Normal"
+	notify_ghosts("[src] ([strain_name] [caste_type]) has ghosted and their body is up for grabs!", source = src)
 
 /mob/living/carbon/xenomorph/larva/handle_ghost_message()
 	if(locate(/obj/effect/alien/resin/special/pylon/core) in range(2, get_turf(src)))

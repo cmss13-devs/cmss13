@@ -17,6 +17,17 @@
 	attack_verb = list("bapped")
 
 // apparently i need to put back those here... if we don't want code to die.
+/datum/feed_message
+	var/author =""
+	var/body =""
+	var/message_type ="Story"
+	//var/parent_channel
+	var/backup_body =""
+	var/backup_author =""
+	var/is_admin_message = 0
+	var/icon/img = null
+	var/icon/backup_img
+
 /datum/feed_channel
 	var/channel_name=""
 	var/list/datum/feed_message/messages = list()
@@ -27,3 +38,24 @@
 	var/censored=0
 	var/is_admin_channel=0
 	//var/page = null //For newspapers
+
+/datum/feed_message/proc/clear()
+	src.author = ""
+	src.body = ""
+	src.backup_body = ""
+	src.backup_author = ""
+	src.img = null
+	src.backup_img = null
+
+/datum/feed_channel/proc/clear()
+	src.channel_name = ""
+	src.messages = list()
+	src.locked = 0
+	src.author = ""
+	src.backup_author = ""
+	src.censored = 0
+	src.is_admin_channel = 0
+
+/datum/feed_network
+	var/list/datum/feed_channel/network_channels = list()
+	var/datum/feed_message/wanted_issue

@@ -1550,6 +1550,7 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 /proc/get_line(atom/start_atom, atom/end_atom, include_start_atom = TRUE)
 	var/turf/start_turf = get_turf(start_atom)
 	var/turf/end_turf = get_turf(end_atom)
+	var/start_z = start_turf.z
 
 	var/list/line = list()
 	if(include_start_atom)
@@ -1560,18 +1561,16 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 		return line
 
 	//as step_count and step size (1) are known can pre-calculate a lerp step, tiny number (1e-5) for rounding consistency
-	var/step_fract = 1 / step_count
-	var/step_x = (end_turf.x - start_turf.x) * step_fract + 1e-5
-	var/step_y = (end_turf.y - start_turf.y) * step_fract + 1e-5
+	var/step_x = (end_turf.x - start_turf.x) / step_count + 1e-5
+	var/step_y = (end_turf.y - start_turf.y) / step_count + 1e-5
 
 	//locate() truncates the fraction, adding 0.5 so its effectively rounding to nearest coords for free
 	var/x = start_turf.x + 0.5
 	var/y = start_turf.y + 0.5
-	var/z = start_turf.z
-	for(var/step in 0 to (step_count - 2)) //increment then locate() skips start_turf (-1), since end_turf is known can skip that step too (-2)
+	for(var/step in 1 to (step_count - 1)) //increment then locate() skips start_turf (in 1), since end_turf is known can skip that step too (step_count - 1)
 		x += step_x
 		y += step_y
-		line += locate(x, y, z)
+		line += locate(x, y, start_z)
 
 	line += end_turf
 

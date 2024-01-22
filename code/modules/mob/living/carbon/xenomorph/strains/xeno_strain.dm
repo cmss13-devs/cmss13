@@ -21,7 +21,7 @@
 /datum/xeno_strain/proc/apply_strain(mob/living/carbon/xenomorph/xeno)
 	SHOULD_CALL_PARENT(TRUE)
 
-	xeno.chosen_strain = src
+	xeno.strain = src
 	update_actions(xeno)
 	register_signals(xeno)
 	apply_behavior_holder(xeno)

@@ -359,7 +359,7 @@ const XenoList = (props) => {
               <StatusIcon entry={entry} />
             </Table.Cell>
             <Table.Cell>{entry.name}</Table.Cell>
-            <Table.Cell>{entry.strain}</Table.Cell>
+            <Table.Cell>{entry.strain}</Table.Cell> // TODO make sure this still works
             <Table.Cell>{entry.location}</Table.Cell>
             <Table.Cell>
               {entry.health < 30 ? (

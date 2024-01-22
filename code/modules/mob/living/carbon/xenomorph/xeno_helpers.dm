@@ -34,6 +34,15 @@
 		return 100
 	return round(armor_integrity * 100 / armor_integrity_max)
 
+/**
+ * Returns the custom icon state from the xeno's strain, if it has one.
+ *
+ * If that isn't available, returns "Normal"
+ */
+/mob/living/carbon/xenomorph/proc/get_strain_sprite()
+	return strain?.xeno_icon_state || "Normal"
+	// TODO: Go through xeno/xenoid sprites and remove "Normal", so that this isn't needed.
+
 //These don't do much currently. Or anything? Only around for legacy code.
 /mob/living/carbon/xenomorph/is_mob_restrained()
 	return 0
@@ -58,4 +67,4 @@
 	return caste.fire_intensity_resistance
 
 /mob/living/carbon/xenomorph/alter_ghost(mob/dead/observer/ghost)
-	ghost.icon_state = "[mutation_type] [caste.caste_type] Running"
+	ghost.icon_state = "[get_strain_sprite()] [caste.caste_type] Running"

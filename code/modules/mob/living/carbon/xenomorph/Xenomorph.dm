@@ -134,7 +134,7 @@
 	/// A list of strain typepaths that the xeno is able to choose.
 	var/list/available_strains = list()
 	/// The xeno's strain, if they've taken one.
-	var/datum/xeno_strain/chosen_strain = null
+	var/datum/xeno_strain/strain = null
 
 	// Hive-related vars
 	var/datum/hive_status/hive
@@ -660,8 +660,8 @@
 			. += "It appears to belong to [hive?.name ? "the [hive.name]" : "a different hive"]."
 
 	if(isxeno(user) || isobserver(user))
-		if(chosen_strain)
-			. += "It has specialized into a [chosen_strain.name]."
+		if(strain)
+			. += "It has specialized into a [strain.name]."
 
 	if(iff_tag)
 		. += SPAN_NOTICE("It has an IFF tag sticking out of its carapace.")
@@ -692,7 +692,7 @@
 	selected_ability = null
 	queued_action = null
 
-	QDEL_NULL(chosen_strain)
+	QDEL_NULL(strain)
 	QDEL_NULL(behavior_delegate)
 
 	built_structures = null
@@ -842,8 +842,6 @@
 	tackle_min = caste.tackle_min
 	tackle_max = caste.tackle_max
 	tackle_chance = caste.tackle_chance + tackle_chance_modifier
-	tacklestrength_min = caste.tacklestrength_min + mutators.tackle_strength_bonus + hive.mutators.tackle_strength_bonus
-	tacklestrength_max = caste.tacklestrength_max + mutators.tackle_strength_bonus + hive.mutators.tackle_strength_bonus
 
 /mob/living/carbon/xenomorph/proc/recalculate_health()
 	var/new_max_health = nocrit ? health_modifier + maxHealth : health_modifier + caste.max_health
@@ -899,18 +897,8 @@
 /mob/living/carbon/xenomorph/proc/recalculate_actions()
 	recalculate_acid()
 	recalculate_weeds()
-	pull_multiplier = mutators.pull_multiplier
-	if(isrunner(src))
-		//Xeno runners need a small nerf to dragging speed mutator
-		pull_multiplier = 1 - (1 - mutators.pull_multiplier) * 0.85
-		if(is_zoomed)
-			zoom_out()
-	if(iscarrier(src))
-		var/mob/living/carbon/xenomorph/carrier/carrier = src
-		carrier.huggers_max = caste.huggers_max
-		carrier.eggs_max = caste.eggs_max
-	need_weeds = mutators.need_weeds
-
+	// Modified on subtypes
+	pull_multiplier = initial(pull_multiplier)
 
 /mob/living/carbon/xenomorph/proc/recalculate_acid()
 	if(caste)
@@ -1035,7 +1023,7 @@
 		handle_ghost_message()
 
 /mob/living/carbon/xenomorph/proc/handle_ghost_message()
-	var/strain_name = chosen_strain ? chosen_strain.name : "Normal"
+	var/strain_name = strain ? strain.name : "Normal"
 	notify_ghosts("[src] ([strain_name] [caste_type]) has ghosted and their body is up for grabs!", source = src)
 
 /mob/living/carbon/xenomorph/larva/handle_ghost_message()

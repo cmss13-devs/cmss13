@@ -75,7 +75,6 @@
 		/mob/living/carbon/xenomorph/proc/rename_tunnel,
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
-	mutation_type = CARRIER_NORMAL
 
 	icon_xenonid = 'icons/mob/xenonids/carrier.dmi'
 
@@ -206,6 +205,11 @@
 
 		if(eggs_dropped) //Checks whether or not to announce egg drop.
 			xeno_message(SPAN_XENOANNOUNCE("[src] has dropped some precious eggs!"), 2, hive.hivenumber)
+
+/mob/living/carbon/xenomorph/carrier/recalculate_actions()
+	. = ..()
+	huggers_max = caste.huggers_max
+	eggs_max = caste.eggs_max
 
 /mob/living/carbon/xenomorph/carrier/get_status_tab_items()
 	. = ..()

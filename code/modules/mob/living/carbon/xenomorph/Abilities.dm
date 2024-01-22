@@ -226,8 +226,8 @@
 	return ..()
 
 /datum/action/xeno_action/onclick/psychic_whisper/can_use_action()
-	var/mob/living/carbon/xenomorph/X = owner
-	if(X && !X.is_mob_incapacitated())
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(xeno && !xeno.is_mob_incapacitated())
 		return TRUE
 	return FALSE
 
@@ -271,8 +271,8 @@
 	return ..()
 
 /datum/action/xeno_action/onclick/psychic_radiance/can_use_action()
-	var/mob/living/carbon/xenomorph/X = owner
-	if(X && !X.is_mob_incapacitated())
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(xeno && !xeno.is_mob_incapacitated())
 		return TRUE
 	return FALSE
 

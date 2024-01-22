@@ -283,3 +283,8 @@
   - rscadd: Made larvae and facehuggers able to use custom emotes.
   Vicacrov:
   - bugfix: Fixes engine/weapon attach points layering below the dropship walls.
+2024-01-22:
+  cuberound:
+  - balance: AP rocket applies 3 weaken and 3 paralyze no matter if you hit the mob
+      directly(from 2), at max range (from 2) or tile under it (from 4)
+  - balance: indirect AP rocket does the same damage to walls and mobs

@@ -2,7 +2,7 @@
 	name = "emergency floodlight"
 	desc = "A powerful light usually stationed near landing zones to provide better visibility."
 	icon = 'icons/obj/structures/machinery/floodlight.dmi'
-	icon_state = "flood00"
+	icon_state = "flood_0"
 	density = TRUE
 	anchored = TRUE
 	light_power = 2
@@ -11,13 +11,14 @@
 	idle_power_usage = 0
 	active_power_usage = 100
 
+	///How far the light will go when the floodlight is on
 	var/on_light_range = 6
-
 	///Whether or not the floodlight can be toggled on or off
 	var/toggleable = TRUE
-
 	///Whether or not the floodlight is turned on, disconnected from whether it has power or is lit
 	var/turned_on = FALSE
+	///base state
+	var/base_icon_state = "flood"
 
 /obj/structure/machinery/floodlight/Initialize(mapload, ...)
 	. = ..()
@@ -60,7 +61,7 @@
 
 /obj/structure/machinery/floodlight/update_icon()
 	. = ..()
-	icon_state = "flood0[light_on]"
+	icon_state = "[base_icon_state]_[light_on]"
 
 /obj/structure/machinery/floodlight/power_change(area/master_area = null)
 	. = ..()
@@ -71,7 +72,7 @@
 /obj/structure/machinery/floodlight/landing
 	name = "landing light"
 	desc = "A powerful light usually stationed near landing zones to provide better visibility. This one seems to have been bolted down and is unable to be moved."
-	icon_state = "flood01"
+	icon_state = "flood_1"
 	use_power = USE_POWER_NONE
 	needs_power = FALSE
 	unslashable = TRUE
@@ -81,5 +82,6 @@
 	turned_on = TRUE
 
 /obj/structure/machinery/floodlight/landing/floor
-	icon_state = "floor_flood01"
+	icon_state = "floor_flood_1"
+	base_icon_state = "floor_flood"
 	density = FALSE

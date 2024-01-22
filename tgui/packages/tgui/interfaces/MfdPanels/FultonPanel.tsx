@@ -55,7 +55,7 @@ export const FultonMfdPanel = (props: MfdProps, context) => {
         {
           children: <Icon name="arrow-up" />,
           onClick: () => {
-            if (fulltonOffset >= 1) {
+            if (fulltonOffset > 0) {
               setFultonOffset(fulltonOffset - 1);
             }
           },
@@ -69,6 +69,9 @@ export const FultonMfdPanel = (props: MfdProps, context) => {
             }
           },
         },
+      ]}
+      topButtons={[
+        { children: 'EQUIP', onClick: () => setPanelState('equipment') },
       ]}
       bottomButtons={[
         {

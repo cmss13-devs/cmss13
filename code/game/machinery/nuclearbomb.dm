@@ -396,45 +396,39 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	playsound(src, 'sound/machines/Alarm.ogg', 75, 0, 30)
 	world << pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')
 
-	var/list/alive_mobs = list() //Everyone who will be destroyed on the zlevel(s).
-	var/list/dead_mobs = list() //Everyone who only needs to see the cinematic.
 	for(var/mob/current_mob as anything in GLOB.mob_list)
-		if(!current_mob?.loc)
-			continue
-		if(current_mob.stat == DEAD)
-			dead_mobs |= current_mob
-			continue
 		var/turf/current_turf = get_turf(current_mob)
-		if(z == current_turf.z)
-			alive_mobs |= current_mob
+		if(current_turf?.z == z && current_mob.stat != DEAD)
 			shake_camera(current_mob, 110, 4)
 
+	sleep(10 SECONDS)
+
+	var/list/mob/alive_mobs = list() //Everyone who will be destroyed on the zlevel(s).
+	var/list/mob/dead_mobs = list() //Everyone that needs embryos cleared
+	for(var/mob/current_mob as anything in GLOB.mob_list)
+		var/turf/current_turf = get_turf(current_mob)
+		if(current_turf?.z == z)
+			if(current_mob.stat == DEAD)
+				dead_mobs |= current_mob
+				continue
+			alive_mobs |= current_mob
+
 	for(var/mob/current_mob in alive_mobs)
-		if(current_mob && current_mob.loc)
-			var/turf/current_mob_turf = get_turf(current_mob)
-			if(z == current_mob_turf.z)
-				if(istype(current_mob.loc, /obj/structure/closet/secure_closet/freezer/fridge))
-					continue
-				current_mob.death(create_cause_data("nuclear explosion"))
+		if(istype(current_mob.loc, /obj/structure/closet/secure_closet/freezer/fridge))
+			continue
+		current_mob.death(create_cause_data("nuclear explosion"))
 
-	for(var/mob/current_mob in (alive_mobs + dead_mobs))
-		if(current_mob && current_mob.loc)
-			var/turf/current_mob_turf = get_turf(current_mob)
-			if(z == current_mob_turf.z)
-				if(istype(current_mob.loc, /obj/structure/closet/secure_closet/freezer/fridge))
-					continue
-				for(var/obj/item/alien_embryo/embryo in current_mob)
-					qdel(embryo)
+	for(var/mob/living/current_mob in (alive_mobs + dead_mobs))
+		if(istype(current_mob.loc, /obj/structure/closet/secure_closet/freezer/fridge))
+			continue
+		for(var/obj/item/alien_embryo/embryo in current_mob)
+			qdel(embryo)
 
-	sleep(100)
 	cell_explosion(loc, 500, 150, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name)))
 	qdel(src)
 	return TRUE
 
 /obj/structure/machinery/nuclearbomb/Destroy()
-	if(timing != -1)
-		message_admins("\The [src] has been unexpectedly deleted at ([x],[y],[x]). [ADMIN_JMP(src)]")
-		log_game("\The [src] has been unexpectedly deleted at ([x],[y],[x]).")
 	GLOB.bomb_set = FALSE
 	SSminimaps.remove_marker(src)
 	return ..()

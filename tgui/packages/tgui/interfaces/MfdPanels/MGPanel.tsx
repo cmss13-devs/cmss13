@@ -7,6 +7,7 @@ import { EquipmentContext, MGSpec } from './types';
 
 const MgPanel = (props: DropshipEquipment) => {
   const mgData = props.data as MGSpec;
+
   return (
     <Stack>
       <Stack.Item width="100px">
@@ -44,6 +45,8 @@ export const MgMfdPanel = (props: MfdProps, context) => {
   const { setPanelState } = mfdState(context, props.panelStateId);
   const { equipmentState } = useEquipmentState(context, props.panelStateId);
   const mg = data.equipment_data.find((x) => x.mount_point === equipmentState);
+  const deployLabel = (mg?.data?.deployed ?? 0) === 1 ? 'RETRACT' : 'DEPLOY';
+
   return (
     <MfdPanel
       panelStateId={props.panelStateId}
@@ -52,7 +55,7 @@ export const MgMfdPanel = (props: MfdProps, context) => {
       ]}
       leftButtons={[
         {
-          children: 'DEPLOY',
+          children: deployLabel,
           onClick: () =>
             act('deploy-equipment', { equipment_id: mg?.mount_point }),
         },

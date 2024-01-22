@@ -660,10 +660,6 @@
 /area/adminlevel/chinook/offices)
 "cr" = (
 /obj/structure/surface/table/reinforced/black,
-/obj/item/book/manual/robotics_cyborgs{
-	pixel_x = -8;
-	pixel_y = 7
-	},
 /obj/item/storage/fancy/cigar,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)

@@ -323,21 +323,6 @@
 		return
 	return ..()
 
-/datum/action/xeno_action/onclick/queen_award
-	name = "Give Royal Jelly (500)"
-	action_icon_state = "queen_award"
-	plasma_cost = 500
-
-/datum/action/xeno_action/onclick/queen_award/use_ability(atom/target)
-	var/mob/living/carbon/xenomorph/queen/xeno = owner
-	if(!xeno.check_state())
-		return
-	if(!xeno.check_plasma(plasma_cost))
-		return
-	if(give_jelly_award(xeno.hive))
-		xeno.use_plasma(plasma_cost)
-		return ..()
-
 /datum/action/xeno_action/onclick/queen_word
 	name = "Word of the Queen (50)"
 	action_icon_state = "queen_word"

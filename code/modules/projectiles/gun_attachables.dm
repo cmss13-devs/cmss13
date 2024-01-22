@@ -31,7 +31,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/pixel_shift_y = 16 //Uses the bottom left corner of the item.
 
 	flags_atom =  FPRINT|CONDUCT
-	matter = list("metal" = 2000)
+	matter = list("metal" = 100)
 	w_class = SIZE_SMALL
 	force = 1
 	var/slot = null //"muzzle", "rail", "under", "stock", "special"
@@ -168,7 +168,8 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/proc/Detach(mob/user, obj/item/weapon/gun/detaching_gub)
 	if(!istype(detaching_gub)) return //Guns only
 
-	detaching_gub.on_detach(user)
+	if(user)
+		detaching_gub.on_detach(user, src)
 
 	if(flags_attach_features & ATTACH_ACTIVATION)
 		activate_attachment(detaching_gub, null, TRUE)
@@ -341,6 +342,10 @@ Defined in conflicts.dm of the #defines folder.
 	throw_speed = SPEED_REALLY_FAST
 	throw_range = 7
 	pry_delay = 1 SECONDS
+
+/obj/item/attachable/bayonet/van_bandolier
+	name = "\improper Fairbairn-Sykes fighting knife"
+	desc = "This isn't for dressing game or performing camp chores. It's almost certainly not an original. Almost."
 
 /obj/item/attachable/bayonet/co2/update_icon()
 	icon_state = "co2_knife[filled ? "-f" : ""]"
@@ -1582,7 +1587,7 @@ Defined in conflicts.dm of the #defines folder.
 	scoper.clear_fullscreen("vulture")
 	scoper.client.remove_from_screen(scope_element)
 	scoper.see_in_dark -= darkness_view
-	scoper.lighting_alpha = 127
+	scoper.lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 	scoper.sync_lighting_plane_alpha()
 	QDEL_NULL(scope_element)
 	recalculate_scope_pos()

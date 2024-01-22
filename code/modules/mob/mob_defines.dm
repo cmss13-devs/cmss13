@@ -174,7 +174,7 @@
 
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
 
-	var/status_flags = CANKNOCKDOWN|CANPUSH|STATUS_FLAGS_DEBILITATE //bitflags defining which status effects can be inflicted (replaces canweaken, canstun, etc)
+	var/status_flags = DEFAULT_MOB_STATUS_FLAGS //bitflags defining which status effects can be inflicted (replaces canweaken, canstun, etc)
 
 	var/area/lastarea = null
 	var/obj/control_object //Used by admins to possess objects. All mobs should have this var
@@ -366,10 +366,6 @@
 		switch(type)
 			if(/mob/living/carbon/human)
 				possibleverbs += typesof(/mob/living/carbon/proc,/mob/living/carbon/verb,/mob/living/carbon/human/verb,/mob/living/carbon/human/proc)
-			if(/mob/living/silicon/robot)
-				possibleverbs += typesof(/mob/living/silicon/proc,/mob/living/silicon/robot/proc,/mob/living/silicon/robot/verb)
-			if(/mob/living/silicon/ai)
-				possibleverbs += typesof(/mob/living/silicon/proc,/mob/living/silicon/ai/proc)
 		possibleverbs -= verbs
 		possibleverbs += "Cancel" // ...And one for the bottom
 

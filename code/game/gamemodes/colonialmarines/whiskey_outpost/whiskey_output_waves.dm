@@ -32,7 +32,7 @@
 
 	for(var/mob/living/carbon/xenomorph/X as anything in GLOB.living_xeno_list)
 		var/area/A = get_area(X)
-		if(is_admin_level(X.z) && (!A || !(A.flags_area & AREA_ALLOW_XENO_JOIN)) || X.aghosted) continue //xenos on admin z level and aghosted ones don't count
+		if(should_block_game_interaction(X) && (!A || !(A.flags_area & AREA_ALLOW_XENO_JOIN)) || X.aghosted) continue //xenos on admin z level and aghosted ones don't count
 		if(istype(X) && !X.client)
 			if((X.away_timer >= XENO_LEAVE_TIMER) || (islarva(X) && X.away_timer >= XENO_LEAVE_TIMER_LARVA))
 				available_xenos += X

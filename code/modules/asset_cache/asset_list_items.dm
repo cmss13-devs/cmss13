@@ -378,6 +378,22 @@
 		Insert("[icon_name]_big", iconBig)
 	return ..()
 
+/datum/asset/spritesheet/tutorial
+	name = "tutorial"
+
+/datum/asset/spritesheet/tutorial/register()
+	for(var/icon_state in icon_states('icons/misc/tutorial.dmi'))
+		var/icon/icon_sprite = icon('icons/misc/tutorial.dmi', icon_state)
+		icon_sprite.Scale(128, 128)
+		Insert(icon_state, icon_sprite)
+
+	var/icon/retrieved_icon = icon('icons/mob/hud/human_dark.dmi', "intent_all")
+	retrieved_icon.Scale(128, 128)
+	Insert("intents", retrieved_icon)
+
+	return ..()
+
+
 /datum/asset/spritesheet/gun_lineart
 	name = "gunlineart"
 

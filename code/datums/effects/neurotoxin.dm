@@ -150,7 +150,7 @@
 			victim.hallucination = 3
 			victim.druggy = 3
 		if(70 to 100) // sound based hallucination
-			playsound_client(victim.client,pick('sound/voice/alien_distantroar_3.ogg','sound/voice/xenos_roaring.ogg','sound/voice/alien_queen_breath1.ogg', 'sound/voice/4_xeno_roars.ogg','sound/misc/notice2.ogg',"bone_break","gun_pulse","metalbang","pry","shatter"))
+			playsound_client(client = victim.client, soundin = pick('sound/voice/alien_distantroar_3.ogg','sound/voice/xenos_roaring.ogg','sound/voice/alien_queen_breath1.ogg', 'sound/voice/4_xeno_roars.ogg','sound/misc/notice2.ogg',"bone_break","gun_pulse","metalbang","pry","shatter"),vol = 65)
 
 
 

@@ -17,6 +17,8 @@
 
 	if(xeno.crest_defense)
 		to_chat(xeno, SPAN_XENOWARNING("We lower our crest."))
+		xeno.balloon_alert(xeno, "crest lowered")
+
 		xeno.ability_speed_modifier += speed_debuff
 		xeno.armor_deflection_buff += armor_buff
 		xeno.mob_size = MOB_SIZE_BIG //knockback immune
@@ -24,6 +26,8 @@
 		xeno.update_icons()
 	else
 		to_chat(xeno, SPAN_XENOWARNING("We raise our crest."))
+		xeno.balloon_alert(xeno, "crest raised")
+
 		xeno.ability_speed_modifier -= speed_debuff
 		xeno.armor_deflection_buff -= armor_buff
 		xeno.mob_size = MOB_SIZE_XENO //no longer knockback immune
@@ -85,20 +89,12 @@
 
 	var/facing = get_dir(fendy, carbone)
 	var/headbutt_distance = 1 + (fendy.crest_defense * 2) + (fendy.fortify * 2)
-	var/turf/thrown_turf = get_turf(fendy)
-	var/turf/temp = get_turf(fendy)
-
-	for(var/x in 0 to headbutt_distance)
-		temp = get_step(thrown_turf, facing)
-		if(!temp)
-			break
-		thrown_turf = temp
 
 	// Hmm today I will kill a marine while looking away from them
 	fendy.face_atom(carbone)
 	fendy.animation_attack_on(carbone)
 	fendy.flick_attack_overlay(carbone, "punch")
-	carbone.throw_atom(thrown_turf, headbutt_distance, SPEED_SLOW, src)
+	fendy.throw_carbon(carbone, facing, headbutt_distance, SPEED_SLOW, shake_camera = FALSE, immobilize = FALSE)
 	playsound(carbone,'sound/weapons/alien_claw_block.ogg', 50, 1)
 	apply_cooldown()
 	return ..()
@@ -321,4 +317,3 @@
 
 /datum/action/xeno_action/onclick/soak/proc/remove_enrage()
 	owner.remove_filter("steelcrest_enraged")
-

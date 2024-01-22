@@ -111,7 +111,7 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 	if(alt_pressed && shift_pressed)
 		if(istype(target, /mob/living/carbon/xenomorph))
 			var/mob/living/carbon/xenomorph/xeno = target
-			if(!QDELETED(xeno) && xeno.stat != DEAD && !is_admin_level(xeno.z) && xeno.check_state(TRUE) && xeno.hivenumber == hivenumber)
+			if(!QDELETED(xeno) && xeno.stat != DEAD && !should_block_game_interaction(xeno) && xeno.check_state(TRUE) && xeno.hivenumber == hivenumber)
 				overwatch(xeno)
 				next_move = world.time + 3 // Some minimal delay so this isn't crazy spammy
 				return TRUE

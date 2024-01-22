@@ -9,7 +9,7 @@
 	description = "Blood is classified as a connective tissue and consists of two main components: Plasma, which is a clear extracellular fluid. Formed elements, which are made up of the blood cells and platelets."
 	reagent_state = LIQUID
 	color = "#A10808"
-	data_properties = new/list("blood_type"=null,"blood_color"= "#A10808","viruses"=null,"resistances"=null)
+	data_properties = new/list("blood_type"=null,"blood_colour"= "#A10808","viruses"=null,"resistances"=null)
 	chemclass = CHEM_CLASS_RARE
 
 
@@ -393,6 +393,9 @@
 	explosive = TRUE
 	power = 0.5
 	falloff_modifier = 1
+	intensitymod = 0.3
+	radiusmod = -0.08
+	durationmod = 0.9
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_FUELING = 5, PROPERTY_OXIDIZING = 3, PROPERTY_VISCOUS = 4, PROPERTY_CORROSIVE = 2)
 
@@ -486,6 +489,9 @@
 	explosive = TRUE
 	power = 0.12
 	falloff_modifier = -0.1
+	intensitymod = 0.1
+	radiusmod = -0.08
+	durationmod = 0.7
 	burncolor = "#ff9900"
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_FLOWING = 4,PROPERTY_FUELING = 6, PROPERTY_OXIDIZING = 4, PROPERTY_VISCOUS = 4, PROPERTY_TOXIC = 1)
@@ -681,6 +687,9 @@
 	color = "#ffb300"
 	chemfiresupp = TRUE
 	burncolor = "#D05006"
+	intensitymod = 0.45
+	radiusmod = 0.06
+	durationmod = 0.75
 	burn_sprite = "red"
 	properties = list(PROPERTY_OXIDIZING = 4, PROPERTY_FUELING = 5, PROPERTY_FLOWING = 1)
 
@@ -793,6 +802,9 @@
 	custom_metabolism = 100
 	chemfiresupp = TRUE
 	burncolor = "#ff9300"
+	intensitymod = 1.6
+	radiusmod = -0.08
+	durationmod = -0.8
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_CORROSIVE = 8, PROPERTY_TOXIC = 6, PROPERTY_OXIDIZING = 9)
 

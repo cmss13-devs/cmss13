@@ -17,6 +17,7 @@
 	attack_verb = list("bapped")
 
 // apparently i need to put back those here... if we don't want code to die.
+// those are very still used in other files so would need to move remove them in another PR...
 /datum/feed_message
 	var/author =""
 	var/body =""
@@ -59,3 +60,7 @@
 /datum/feed_network
 	var/list/datum/feed_channel/network_channels = list()
 	var/datum/feed_message/wanted_issue
+
+GLOBAL_DATUM_INIT(news_network, /datum/feed_network, new()) //The global news-network, which is coincidentally a global list.
+
+GLOBAL_LIST_INIT_TYPED(allCasters, /obj/structure/machinery/newscaster, list()) //Global list that will contain reference to all newscasters in existence.

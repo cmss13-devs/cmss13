@@ -162,7 +162,6 @@
 	max_range = 5
 	fuel_pressure = 1
 	max_duration = 40
-	max_intensity = 40
 
 /obj/item/ammo_magazine/flamer_tank/custom/verb/set_fuel_pressure()
 	set name = "Change Fuel Pressure"

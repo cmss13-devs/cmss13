@@ -8,7 +8,10 @@ import { EquipmentContext } from './types';
 const equipment_xs = [140, 160, 320, 340, 180, 300, 240, 240, 240, 140, 340];
 const equipment_ys = [120, 100, 100, 120, 100, 100, 260, 300, 340, 320, 320];
 
-const DrawWeapon = (props: { x: number; y: number }, context) => {
+const DrawWeapon = (
+  props: { readonly x: number; readonly y: number },
+  context
+) => {
   return (
     <path
       fill-opacity="1"
@@ -19,7 +22,10 @@ const DrawWeapon = (props: { x: number; y: number }, context) => {
   );
 };
 
-const DrawEquipmentBox = (props: { x: number; y: number }, context) => {
+const DrawEquipmentBox = (
+  props: { readonly x: number; readonly y: number },
+  context
+) => {
   return (
     <path
       fill-opacity="1"
@@ -36,10 +42,10 @@ const equipment_text_xs = [
 const equipment_text_ys = [120, 60, 60, 120, 20, 20, 240, 280, 320, 320, 320];
 
 const DrawWeaponText = (props: {
-  x: number;
-  y: number;
-  desc: string;
-  sub_desc?: string;
+  readonly x: number;
+  readonly y: number;
+  readonly desc: string;
+  readonly sub_desc?: string;
 }) => {
   return (
     <text stroke="#00e94e" x={props.x} y={props.y} text-anchor="middle">
@@ -314,16 +320,6 @@ export const EquipmentMfdPanel = (props: MfdProps, context) => {
   return (
     <MfdPanel
       panelStateId={props.panelStateId}
-      topButtons={[
-        {},
-        {},
-        {
-          children: 'F-MISS',
-          onClick: () => setPanelState('firemission'),
-        },
-        {},
-        {},
-      ]}
       leftButtons={[
         weap2 ? generateButton(weap2) : {},
         weap1 ? generateButton(weap1) : {},

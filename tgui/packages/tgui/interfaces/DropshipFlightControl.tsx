@@ -142,11 +142,11 @@ export const DropshipDestinationSelection = (_, context) => {
 };
 
 interface DestinationProps {
-  options: DockingPort[];
-  onClick: (value: string) => void;
-  selected?: string;
-  applyFilter?: boolean;
-  availableOnly?: boolean;
+  readonly options: DockingPort[];
+  readonly onClick: (value: string) => void;
+  readonly selected?: string;
+  readonly applyFilter?: boolean;
+  readonly availableOnly?: boolean;
 }
 
 const DestinationSelector = (props: DestinationProps, context) => {

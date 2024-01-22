@@ -14,6 +14,7 @@
 	speed = XENO_SPEED_TIER_2
 	heal_standing = 0.66
 
+	available_strains = list(/datum/xeno_strain/charger)
 	behavior_delegate_type = /datum/behavior_delegate/crusher_base
 
 	minimum_evolve_time = 15 MINUTES
@@ -63,7 +64,6 @@
 	)
 
 	claw_type = CLAW_TYPE_VERY_SHARP
-	available_strains = list(/datum/xeno_strain/charger)
 
 	icon_xeno = 'icons/mob/xenos/crusher.dmi'
 	icon_xenonid = 'icons/mob/xenonids/crusher.dmi'

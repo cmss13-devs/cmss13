@@ -14,6 +14,8 @@
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_4
 
+	available_strains = list(/datum/xeno_strain/eggsac)
+
 	evolution_allowed = FALSE
 	deevolves_to = list(XENO_CASTE_DRONE)
 	throwspeed = SPEED_AVERAGE
@@ -75,7 +77,6 @@
 		/mob/living/carbon/xenomorph/proc/rename_tunnel,
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
-	available_strains = list(/datum/xeno_strain/eggsac)
 
 	icon_xenonid = 'icons/mob/xenonids/carrier.dmi'
 

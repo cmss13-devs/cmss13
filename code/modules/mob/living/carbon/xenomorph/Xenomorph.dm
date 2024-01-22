@@ -130,9 +130,6 @@
 	var/weed_level = WEED_LEVEL_STANDARD
 	var/acid_level = 0
 
-	// Strain-related vars
-	/// A list of strain typepaths that the xeno is able to choose.
-	var/list/available_strains = list()
 	/// The xeno's strain, if they've taken one.
 	var/datum/xeno_strain/strain = null
 

@@ -13,6 +13,8 @@
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_2
 
+	available_strains = list(/datum/xeno_strain/resin_whisperer)
+
 	evolution_allowed = FALSE
 	caste_desc = "A builder of really big hives."
 	deevolves_to = list(XENO_CASTE_DRONE)
@@ -75,8 +77,6 @@
 		/mob/living/carbon/xenomorph/proc/rename_tunnel,
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
-
-	available_strains = list(/datum/xeno_strain/resin_whisperer)
 
 	icon_xeno = 'icons/mob/xenos/hivelord.dmi'
 	icon_xenonid = 'icons/mob/xenonids/hivelord.dmi'

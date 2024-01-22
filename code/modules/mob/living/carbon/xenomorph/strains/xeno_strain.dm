@@ -90,7 +90,7 @@
 		log_strain("[name] purchased strain '[strain_instance.type]'")
 
 /mob/living/carbon/xenomorph/proc/can_take_strain()
-	if(!length(available_strains) || !check_state(TRUE))
+	if(!length(caste.available_strains) || !check_state(TRUE))
 		return FALSE
 
 	if(is_ventcrawling)

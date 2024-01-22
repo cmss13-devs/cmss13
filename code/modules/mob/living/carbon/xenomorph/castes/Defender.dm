@@ -18,6 +18,7 @@
 	deevolves_to = list("Larva")
 	can_vent_crawl = 0
 
+	available_strains = list(/datum/xeno_strain/steel_crest)
 	behavior_delegate_type = /datum/behavior_delegate/defender_base
 
 	tackle_min = 2
@@ -50,8 +51,6 @@
 		/datum/action/xeno_action/activable/fortify,
 		/datum/action/xeno_action/onclick/tacmap,
 	)
-
-	available_strains = list(/datum/xeno_strain/steel_crest)
 
 	icon_xeno = 'icons/mob/xenos/defender.dmi'
 	icon_xenonid = 'icons/mob/xenonids/defender.dmi'

@@ -13,6 +13,7 @@
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_3
 
+	available_strains = list(/datum/xeno_strain/trapper)
 	behavior_delegate_type = /datum/behavior_delegate/boiler_base
 
 	evolution_allowed = FALSE
@@ -53,7 +54,6 @@
 	spit_delay  = 30 SECONDS
 	tileoffset = 3
 	viewsize = 7
-	available_strains = list(/datum/xeno_strain/trapper)
 
 	icon_xeno = 'icons/mob/xenos/boiler.dmi'
 	icon_xenonid = 'icons/mob/xenonids/boiler.dmi'

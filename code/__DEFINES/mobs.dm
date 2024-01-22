@@ -306,48 +306,6 @@
 #define CAN_HOLD_TWO_HANDS 1
 #define CAN_HOLD_ONE_HAND 2
 
-// ------------ //
-// STRAIN FLAGS //
-// ------------ //
-
-// Facehugger strain flags
-#define FACEHUGGER_WATCHER "Watcher"
-
-// Drone strain flags
-#define DRONE_HEALER "Healer"
-#define DRONE_GARDENER "Gardener"
-
-// Hivelord strain flags
-#define HIVELORD_RESIN_WHISPERER "Resin Whisperer"
-
-// Carrier strain flags
-#define CARRIER_EGGSAC "Eggsac"
-
-// Boiler strain flags
-#define BOILER_TRAPPER "Trapper"
-
-// Runner strain flags
-#define RUNNER_ACIDER "Acider"
-
-// Lurker strain flags
-#define LURKER_VAMPIRE "Vampire"
-
-// Ravager strain flags
-#define RAVAGER_HEDGEHOG "Hedgehog"
-#define RAVAGER_BERSERKER "Berserker"
-
-// Defender strain flags
-#define DEFENDER_STEELCREST "Steelcrest"
-
-// Crusher strain flags
-#define CRUSHER_CHARGER "Charger"
-
-// Praetorian strain flags
-#define PRAETORIAN_VANGUARD "Vanguard"
-#define PRAETORIAN_DANCER "Dancer"
-#define PRAETORIAN_WARDEN "Warden"
-#define PRAETORIAN_OPPRESSOR"Oppressor"
-
 GLOBAL_LIST_INIT(default_onmob_icons, list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_0.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_0.dmi',

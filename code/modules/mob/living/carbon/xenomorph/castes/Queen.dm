@@ -350,8 +350,6 @@
 		/datum/action/xeno_action/activable/xeno_spit/queen_macro, //third macro
 		/datum/action/xeno_action/onclick/shift_spits, //second macro
 	)
-	mutation_icon_state = QUEEN_NORMAL
-	mutation_type = QUEEN_NORMAL
 	claw_type = CLAW_TYPE_VERY_SHARP
 
 	var/queen_aged = FALSE

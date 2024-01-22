@@ -354,8 +354,7 @@
 			current_storage.attempt_item_insertion(equipping_item, disable_warning, src)
 			back.update_icon()
 		if(WEAR_IN_SHOES)
-			shoes.attempt_insert_item(src, equipping_item, TRUE)
-			shoes.update_icon()
+			shoes.attempt_insert_item(src, equipping_item)
 		if(WEAR_IN_SCABBARD)
 			var/obj/item/storage/current_storage = back
 			current_storage.attempt_item_insertion(equipping_item, disable_warning, src)
@@ -495,7 +494,8 @@
 	/// Multiplier for how quickly the user can strip things.
 	var/user_speed = user.get_skill_duration_multiplier(SKILL_CQC)
 	/// The total skill level of CQC & Police
-	var/target_skills = (target.skills.get_skill_level(SKILL_CQC) + target.skills.get_skill_level(SKILL_POLICE))
+	var/target_skills = 0
+	target_skills += (target.skills?.get_skill_level(SKILL_CQC) + target.skills?.get_skill_level(SKILL_POLICE))
 
 	/// Delay then gets + 0.5s per skill level, so long as not dead or cuffed.
 	if(!(target.stat || target.handcuffed))
@@ -571,5 +571,3 @@
 /mob/living/carbon/human/drop_inv_item_on_ground(obj/item/I, nomoveupdate, force)
 	remember_dropped_object(I)
 	return ..()
-
-

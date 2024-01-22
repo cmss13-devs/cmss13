@@ -330,7 +330,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	admin_holder = GLOB.admin_datums[ckey]
 	if(admin_holder)
 		admin_holder.associate(src)
-	notify_login()
 
 	add_pref_verbs()
 	//preferences datum - also holds some persistent data for the client (because we may as well keep these datums to a minimum)
@@ -342,6 +341,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	prefs.last_ip = address //these are gonna be used for banning
 	prefs.last_id = computer_id //these are gonna be used for banning
 	fps = prefs.fps
+
+	notify_login()
 
 	load_xeno_name()
 
@@ -476,7 +477,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	SSping.currentrun -= src
 
 	log_access("Logout: [key_name(src)]")
-	if(CLIENT_IS_STAFF(src))
+	if(CLIENT_IS_STAFF(src) && !CLIENT_IS_STEALTHED(src))
 		message_admins("Admin logout: [key_name(src)]")
 
 		var/list/adm = get_admin_counts(R_MOD)
@@ -493,7 +494,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 /// Handles login-related logging and associated notifications
 /client/proc/notify_login()
 	log_access("Login: [key_name(src)] from [address ? address : "localhost"]-[computer_id] || BYOND v[byond_version].[byond_build]")
-	if(CLIENT_IS_STAFF(src))
+	if(CLIENT_IS_STAFF(src) && !CLIENT_IS_STEALTHED(src))
 		message_admins("Admin login: [key_name(src)]")
 
 		var/list/adm = get_admin_counts(R_MOD)
@@ -848,3 +849,32 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		total_t3_playtime += get_job_playtime(src, caste_name)
 
 	return total_t3_playtime
+
+/client/verb/action_hide_menu()
+	set name = "Show/Hide Actions"
+	set category = "IC"
+
+	var/mob/user = usr
+
+	var/list/actions_list = list()
+	for(var/datum/action/action as anything in user.actions)
+		var/action_name = action.name
+		if(action.player_hidden)
+			action_name += " (Hidden)"
+		actions_list[action_name] += action
+
+	if(!LAZYLEN(actions_list))
+		to_chat(user, SPAN_WARNING("You have no actions available."))
+		return
+
+	var/selected_action_name = tgui_input_list(user, "Show or hide selected action", "Show/Hide Actions", actions_list, 30 SECONDS)
+	if(!selected_action_name)
+		to_chat(user, SPAN_WARNING("You did not select an action."))
+		return
+
+	var/datum/action/selected_action = actions_list[selected_action_name]
+	selected_action.player_hidden = !selected_action.player_hidden
+	user.update_action_buttons()
+
+	if(!selected_action.player_hidden && selected_action.hidden) //Inform the player that even if they are unhiding it, itll still not be visible
+		to_chat(user, SPAN_NOTICE("[selected_action] is forcefully hidden, bypassing player unhiding."))

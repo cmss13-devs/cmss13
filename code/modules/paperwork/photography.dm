@@ -17,6 +17,10 @@
 	item_state = "electropack"
 	w_class = SIZE_TINY
 
+/** Picture metadata */
+/datum/picture
+	var/name = "image"
+	var/list/fields = list()
 
 /*
 * photo *
@@ -46,7 +50,7 @@
 	..()
 
 /obj/item/photo/get_examine_text(mob/user)
-	if(in_range(user, src))
+	if(in_range(user, src) || isobserver(user))
 		show(user)
 		return list(desc)
 	else

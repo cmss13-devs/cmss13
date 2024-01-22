@@ -73,6 +73,8 @@
 		for(var/mob/living/occupant in interior_area)
 			occupant_count++
 		for(var/obj/structure/machinery/cryopod/evacuation/cryotube in interior_area)
+			if(cryotube.occupant)
+				occupant_count++
 			cryos += list(cryotube)
 	if (occupant_count > max_capacity)
 		playsound(src,'sound/effects/escape_pod_warmup.ogg', 50, 1)

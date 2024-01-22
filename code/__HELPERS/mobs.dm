@@ -73,6 +73,7 @@
 /mob/proc/change_real_name(mob/M, new_name)
 	if(!new_name)
 		return FALSE
+	var/old_name = M.real_name
 
 	M.real_name = new_name
 	M.name = new_name
@@ -83,6 +84,7 @@
 	// If we are humans, we need to update our voice as well
 	M.change_mob_voice(new_name)
 
+	SEND_SIGNAL(src, COMSIG_MOB_REAL_NAME_CHANGED, old_name, new_name)
 	return TRUE
 
 /mob/proc/change_mind_name(new_mind_name)

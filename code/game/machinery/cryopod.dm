@@ -519,7 +519,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		if(mob.client)
 			to_chat(mob, SPAN_NOTICE("You feel cool air surround you. You go numb as your senses turn inward."))
 			to_chat(mob, SPAN_BOLDNOTICE("If you log out or close your client now, your character will permanently removed from the round in 10 minutes. If you ghost, timer will be decreased to 2 minutes."))
-			if(!is_admin_level(src.z)) // Set their queue time now because the client has to actually leave to despawn and at that point the client is lost
+			if(!should_block_game_interaction(src)) // Set their queue time now because the client has to actually leave to despawn and at that point the client is lost
 				mob.client.player_details.larva_queue_time = max(mob.client.player_details.larva_queue_time, world.time)
 		var/area/location = get_area(src)
 		if(mob.job != GET_MAPPED_ROLE(JOB_SQUAD_MARINE))
@@ -536,6 +536,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	icon_state = "body_scanner_open"
 	set_light(0)
 	playsound(src, 'sound/machines/pod_open.ogg', 30)
+	SEND_SIGNAL(src, COMSIG_CRYOPOD_GO_OUT)
 
 #ifdef OBJECTS_PROXY_SPEECH
 // Transfers speech to occupant
@@ -554,3 +555,40 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		return
 
 	move_inside(target)
+
+
+/obj/structure/machinery/cryopod/tutorial
+	silent_exit = TRUE
+
+/obj/structure/machinery/cryopod/tutorial/process()
+	return
+
+/obj/structure/machinery/cryopod/tutorial/go_in_cryopod(mob/mob, silent = FALSE, del_them = TRUE)
+	if(occupant)
+		return
+	mob.forceMove(src)
+	occupant = mob
+	icon_state = "body_scanner_closed"
+	set_light(2)
+	time_entered = world.time
+	if(del_them)
+		despawn_occupant()
+
+/obj/structure/machinery/cryopod/tutorial/despawn_occupant()
+	SSminimaps.remove_marker(occupant)
+
+	if(ishuman(occupant))
+		var/mob/living/carbon/human/man = occupant
+		man.species.handle_cryo(man)
+
+	icon_state = "body_scanner_open"
+	set_light(0)
+
+
+	var/mob/new_player/new_player = new
+
+	if(!occupant.mind)
+		occupant.mind_initialize()
+
+	occupant.mind.transfer_to(new_player)
+	SEND_SIGNAL(occupant, COMSIG_MOB_END_TUTORIAL)

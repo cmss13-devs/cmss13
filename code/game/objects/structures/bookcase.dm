@@ -71,7 +71,6 @@
 
 /obj/structure/bookcase/manuals/medical/Initialize()
 	. = ..()
-	new /obj/item/book/manual/medical_cloning(src)
 	new /obj/item/book/manual/medical_diagnostics_manual(src)
 	new /obj/item/book/manual/medical_diagnostics_manual(src)
 	new /obj/item/book/manual/medical_diagnostics_manual(src)
@@ -84,11 +83,9 @@
 /obj/structure/bookcase/manuals/engineering/Initialize()
 	. = ..()
 	new /obj/item/book/manual/engineering_construction(src)
-	new /obj/item/book/manual/engineering_particle_accelerator(src)
 	new /obj/item/book/manual/engineering_hacking(src)
 	new /obj/item/book/manual/engineering_guide(src)
 	new /obj/item/book/manual/atmospipes(src)
-	new /obj/item/book/manual/engineering_singularity_safety(src)
 	new /obj/item/book/manual/evaguide(src)
 	update_icon()
 

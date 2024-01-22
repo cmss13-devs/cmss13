@@ -512,7 +512,7 @@
 
 /datum/action/xeno_action/onclick/xenohide/proc/unhide_on_stat(mob/living/carbon/xenomorph/source, new_stat, old_stat)
 	SIGNAL_HANDLER
-	if(new_stat >= UNCONSCIOUS && old_stat <= UNCONSCIOUS)
+	if(!QDELETED(source) && (new_stat >= UNCONSCIOUS && old_stat <= UNCONSCIOUS))
 		post_attack()
 
 /datum/action/xeno_action/onclick/place_trap/use_ability(atom/A)

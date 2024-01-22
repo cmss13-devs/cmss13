@@ -36,6 +36,9 @@ export const SupportMfdPanel = (props: MfdProps, context) => {
   return (
     <MfdPanel
       panelStateId={props.panelStateId}
+      topButtons={[
+        { children: 'EQUIP', onClick: () => setPanelState('equipment') },
+      ]}
       bottomButtons={[
         {
           children: 'EXIT',

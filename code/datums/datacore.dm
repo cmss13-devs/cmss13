@@ -206,8 +206,8 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 			sleep(40)
 
 		var/list/jobs_to_check = GLOB.ROLES_CIC + GLOB.ROLES_AUXIL_SUPPORT + GLOB.ROLES_MISC + GLOB.ROLES_POLICE + GLOB.ROLES_ENGINEERING + GLOB.ROLES_REQUISITION + GLOB.ROLES_MEDICAL + GLOB.ROLES_MARINES
-		for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
-			if(is_admin_level(H.z))
+		for(var/mob/living/carbon/human/H as anything in GLOB.human_mob_list)
+			if(should_block_game_interaction(H))
 				continue
 			if(H.job in jobs_to_check)
 				manifest_inject(H)

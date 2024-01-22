@@ -317,7 +317,7 @@
 		WEAR_WAIST = /obj/item/storage/belt/marine,
 		WEAR_HANDS = /obj/item/clothing/gloves/marine/veteran,
 		WEAR_R_HAND = /obj/item/storage/pouch/flare/full,
-		WEAR_FEET = /obj/item/clothing/shoes/marine/upp,
+		WEAR_FEET = /obj/item/clothing/shoes/marine/upp/knife,
 		WEAR_L_HAND = /obj/item/storage/large_holster/katana/full
 	)
 

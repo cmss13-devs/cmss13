@@ -1,10 +1,8 @@
-//
 // Specific momentum based damage defines
 
 #define CHARGER_DESTROY charger_ability.momentum * 40
 #define CHARGER_DAMAGE_CADE charger_ability.momentum * 22
 #define CHARGER_DAMAGE_SENTRY charger_ability.momentum * 9
-#define CHARGER_DAMAGE_MG charger_ability.momentum * 15
 
 
 // Momentum loss defines. 8 is maximum momentum
@@ -14,34 +12,28 @@
 #define CCA_MOMENTUM_LOSS_MIN 1
 
 
-/datum/xeno_mutator/charger
-	name = "STRAIN: Crusher - Charger"
+/datum/xeno_strain/charger
+	name = CRUSHER_CHARGER
 	description = "In exchange for your shield, a little bit of your armor and damage, your slowdown resist from autospitters, your influence under frenzy pheromones, your stomp no longer knocking down talls, and your ability to lock your direction, you gain a considerable amount of health, some speed, your stomp does extra damage when stomping over a grounded tall, and your charge is now manually-controlled and momentum-based; the further you go, the more damage and speed you will gain until you achieve maximum momentum, indicated by your roar. In addition, your armor is now directional, being the toughest on the front, weaker on the sides, and weakest from the back. In return, you gain an ability to tumble to pass through talls and avoid enemy fire, and an ability to forcefully move enemies via ramming into them."
 	flavor_description = "We're just getting started. Nothing stops this train. Nothing."
-	cost = MUTATOR_COST_EXPENSIVE
-	individual_only = TRUE
-	caste_whitelist = list(XENO_CASTE_CRUSHER)
-	mutator_actions_to_remove = list (
+
+	actions_to_remove = list(
 		/datum/action/xeno_action/activable/pounce/crusher_charge,
 		/datum/action/xeno_action/onclick/crusher_stomp,
 		/datum/action/xeno_action/onclick/crusher_shield,
 	)
-	mutator_actions_to_add = list(
+	actions_to_add = list(
 		/datum/action/xeno_action/onclick/charger_charge,
 		/datum/action/xeno_action/activable/tumble,
 		/datum/action/xeno_action/onclick/crusher_stomp/charger,
 		/datum/action/xeno_action/activable/fling/charger,
 	)
-	keystone = TRUE
+
 	behavior_delegate_type = /datum/behavior_delegate/crusher_charger
 
-/datum/xeno_mutator/charger/apply_mutator(datum/mutator_set/individual_mutators/mutator_set)
+/datum/xeno_strain/charger/apply_strain(mob/living/carbon/xenomorph/crusher/crusher)
 	. = ..()
-	if (. == 0)
-		return
 
-	var/mob/living/carbon/xenomorph/crusher/crusher = mutator_set.xeno
-	crusher.mutation_type = CRUSHER_CHARGER
 	crusher.small_explosives_stun = FALSE
 	crusher.health_modifier += XENO_HEALTH_MOD_LARGE
 	crusher.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
@@ -49,11 +41,8 @@
 	crusher.damage_modifier -= XENO_DAMAGE_MOD_SMALL
 	crusher.ignore_aura = "frenzy" // no funny crushers going 7 morbillion kilometers per second
 	crusher.phero_modifier = -crusher.caste.aura_strength
-	crusher.recalculate_pheromones()
-	mutator_update_actions(crusher)
-	mutator_set.recalculate_actions(description, flavor_description)
-	apply_behavior_holder(crusher)
 	crusher.recalculate_everything()
+	return TRUE
 
 /datum/behavior_delegate/crusher_charger
 	name = "Charger Crusher Behavior Delegate"
@@ -83,7 +72,7 @@
 
 /datum/behavior_delegate/crusher_charger/on_update_icons()
 	if(HAS_TRAIT(bound_xeno, TRAIT_CHARGING) && bound_xeno.body_position == STANDING_UP)
-		bound_xeno.icon_state = "[bound_xeno.mutation_icon_state || bound_xeno.mutation_type] Crusher Charging"
+		bound_xeno.icon_state = "[bound_xeno.get_strain_icon()] Crusher Charging"
 		return TRUE
 
 // Fallback proc for shit that doesn't have a collision def
@@ -643,3 +632,12 @@
 		return XENO_CHARGE_TRY_MOVE
 
 	charger_ability.stop_momentum()
+
+
+#undef CHARGER_DESTROY
+#undef CHARGER_DAMAGE_CADE
+#undef CHARGER_DAMAGE_SENTRY
+#undef CCA_MOMENTUM_LOSS_HALF
+#undef CCA_MOMENTUM_LOSS_THIRD
+#undef CCA_MOMENTUM_LOSS_QUARTER
+#undef CCA_MOMENTUM_LOSS_MIN

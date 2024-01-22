@@ -1,37 +1,30 @@
-/datum/xeno_mutator/acider
-	name = "STRAIN: Runner - Acider"
+/datum/xeno_strain/acider
+	name = RUNNER_ACIDER
 	description = "At the cost of a little bit of your speed and all of your current abilities, you gain a considerable amount of health, some armor, and a new organ that fills with volatile acid over time. Your Tail Stab and slashes apply acid to living lifeforms that slowly burns them, and slashes against targets with acid stacks fill your acid glands. You also gain Corrosive Acid equivalent to that of a boiler that you can deploy more quickly than any other caste, at the cost of a chunk of your acid reserves with each use. Finally, after a twenty second windup, you can force your body to explode, covering everything near you with acid. The more acid you have stored, the more devastating the explosion will be, but during those twenty seconds before detonation you are slowed and give off several warning signals which give talls an opportunity to end you before you can detonate. If you successfully explode, you will reincarnate as a larva again!"
 	flavor_description = "Burn their walls, maim their faces! Your life, for The Hive!"
-	cost = MUTATOR_COST_EXPENSIVE
-	individual_only = TRUE
-	caste_whitelist = list(XENO_CASTE_RUNNER)
-	keystone = TRUE
-	behavior_delegate_type = /datum/behavior_delegate/runner_acider
-	mutator_actions_to_remove = list(
+	xeno_icon_state = RUNNER_ACIDER
+
+	actions_to_remove = list(
 		/datum/action/xeno_action/activable/pounce/runner,
 		/datum/action/xeno_action/activable/runner_skillshot,
 		/datum/action/xeno_action/onclick/toggle_long_range/runner,
 	)
-	mutator_actions_to_add = list(
+	actions_to_add = list(
 		/datum/action/xeno_action/activable/acider_acid,
 		/datum/action/xeno_action/activable/acider_for_the_hive,
 	)
 
-/datum/xeno_mutator/acider/apply_mutator(datum/mutator_set/individual_mutators/mutator_set)
-	. = ..()
-	if (. == 0)
-		return
+	behavior_delegate_type = /datum/behavior_delegate/runner_acider
 
-	var/mob/living/carbon/xenomorph/runner/runner = mutator_set.xeno
-	runner.mutation_icon_state = RUNNER_ACIDER
-	runner.mutation_type = RUNNER_ACIDER
+/datum/xeno_strain/acider/apply_strain(mob/living/carbon/xenomorph/runner/runner)
+	. = ..()
+
 	runner.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
 	runner.armor_modifier += XENO_ARMOR_MOD_MED
 	runner.health_modifier += XENO_HEALTH_MOD_ACIDER
-	apply_behavior_holder(runner)
-	mutator_update_actions(runner)
+
 	runner.recalculate_everything()
-	mutator_set.recalculate_actions(description, flavor_description)
+
 
 /datum/behavior_delegate/runner_acider
 	var/acid_amount = 0

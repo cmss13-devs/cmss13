@@ -76,7 +76,7 @@
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
 
-	mutation_type = HIVELORD_NORMAL
+	available_strains = list(/datum/xeno_strain/resin_whisperer)
 
 	icon_xeno = 'icons/mob/xenos/hivelord.dmi'
 	icon_xenonid = 'icons/mob/xenonids/hivelord.dmi'

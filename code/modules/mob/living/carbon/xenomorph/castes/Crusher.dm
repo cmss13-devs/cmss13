@@ -63,8 +63,7 @@
 	)
 
 	claw_type = CLAW_TYPE_VERY_SHARP
-	mutation_icon_state = CRUSHER_NORMAL
-	mutation_type = CRUSHER_NORMAL
+	available_strains = list(/datum/xeno_strain/charger)
 
 	icon_xeno = 'icons/mob/xenos/crusher.dmi'
 	icon_xenonid = 'icons/mob/xenonids/crusher.dmi'

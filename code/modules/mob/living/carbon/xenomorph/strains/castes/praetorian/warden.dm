@@ -1,45 +1,33 @@
-/datum/xeno_mutator/praetorian_warden
+/datum/xeno_strain/warden
 	// i mean so basically im braum
-	name = "STRAIN: Praetorian - Warden"
+	name = PRAETORIAN_WARDEN
 	description = "You trade your acid ball, acid spray, dash, and a small bit of your slash damage and speed to become an effective medic. You gain the ability to emit strong pheromones, an ability that retrieves endangered, knocked-down or sitting allies and pulls them to your location, and you gain an internal hitpoint pool that fills with every slash against your enemies, which can be spent to aid your allies and yourself by healing them or curing their ailments."
 	flavor_description = "Only in death does your sisters' service to the Queen end. They will be untouched by plague or disease; no sickness will blight them."
-	cost = MUTATOR_COST_EXPENSIVE
-	individual_only = TRUE
-	caste_whitelist = list(XENO_CASTE_PRAETORIAN) // Only bae
-	mutator_actions_to_remove = list(
+	xeno_icon_state = PRAETORIAN_WARDEN
+
+	actions_to_remove = list(
 		/datum/action/xeno_action/activable/pounce/base_prae_dash,
 		/datum/action/xeno_action/activable/prae_acid_ball,
 		/datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid,
 	)
-	mutator_actions_to_add = list(
+	actions_to_add = list(
 		/datum/action/xeno_action/activable/spray_acid/prae_warden,
 		/datum/action/xeno_action/activable/warden_heal,
 		/datum/action/xeno_action/activable/prae_retrieve,
 		/datum/action/xeno_action/onclick/prae_switch_heal_type,
 		/datum/action/xeno_action/onclick/emit_pheromones,
 	)
+
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_warden
-	keystone = TRUE
 
-/datum/xeno_mutator/praetorian_warden/apply_mutator(datum/mutator_set/individual_mutators/mutator_set)
+/datum/xeno_strain/warden/apply_strain(mob/living/carbon/xenomorph/praetorian/prae)
 	. = ..()
-	if (. == 0)
-		return
-
-	var/mob/living/carbon/xenomorph/praetorian/praetorian = mutator_set.xeno
 
 	// Make a 'halftank'
-	praetorian.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
-	praetorian.damage_modifier -= XENO_DAMAGE_MOD_SMALL
+	prae.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
+	prae.damage_modifier -= XENO_DAMAGE_MOD_SMALL
 
-	mutator_update_actions(praetorian)
-	mutator_set.recalculate_actions(description, flavor_description)
-
-	praetorian.recalculate_everything()
-
-	apply_behavior_holder(praetorian)
-	praetorian.mutation_icon_state = PRAETORIAN_WARDEN
-	praetorian.mutation_type = PRAETORIAN_WARDEN
+	prae.recalculate_everything()
 
 /datum/behavior_delegate/praetorian_warden
 	name = "Praetorian Warden Behavior Delegate"

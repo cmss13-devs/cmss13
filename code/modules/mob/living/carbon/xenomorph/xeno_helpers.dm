@@ -39,7 +39,7 @@
  *
  * If that isn't available, returns "Normal"
  */
-/mob/living/carbon/xenomorph/proc/get_strain_sprite()
+/mob/living/carbon/xenomorph/proc/get_strain_icon()
 	return strain?.xeno_icon_state || "Normal"
 	// TODO: Go through xeno/xenoid sprites and remove "Normal", so that this isn't needed.
 
@@ -67,4 +67,4 @@
 	return caste.fire_intensity_resistance
 
 /mob/living/carbon/xenomorph/alter_ghost(mob/dead/observer/ghost)
-	ghost.icon_state = "[get_strain_sprite()] [caste.caste_type] Running"
+	ghost.icon_state = "[get_strain_icon()] [caste.caste_type] Running"

@@ -51,8 +51,7 @@
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 
-	mutation_icon_state = DEFENDER_NORMAL
-	mutation_type = DEFENDER_NORMAL
+	available_strains = list(/datum/xeno_strain/steel_crest)
 
 	icon_xeno = 'icons/mob/xenos/defender.dmi'
 	icon_xenonid = 'icons/mob/xenonids/defender.dmi'

@@ -46,7 +46,12 @@
 	mob_size = MOB_SIZE_BIG
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 3
-	mutation_type = PRAETORIAN_NORMAL
+	available_strains = list(
+		/datum/xeno_strain/dancer,
+		/datum/xeno_strain/oppressor,
+		/datum/xeno_strain/vanguard,
+		/datum/xeno_strain/warden,
+	)
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,

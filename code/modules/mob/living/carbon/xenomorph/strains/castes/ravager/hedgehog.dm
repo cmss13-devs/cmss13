@@ -1,40 +1,28 @@
-/datum/xeno_mutator/hedgehog
-	name = "STRAIN: Ravager - Hedgehog"
+/datum/xeno_strain/hedgehog
+	name = RAVAGER_HEDGEHOG
 	description = "You lose your empower, charge, scissor cut and some slash damage, for a bit more explosive resistance, immunity to small explosions, and you gain several new abilities that allow you to become a spiky tank. You build up shards internally over time and also when taking damage that increase your armor's resilience. You can use these shards to power three new abilities: Spike Shield, which gives you a temporary shield that spits bone shards around you when damaged, Fire Spikes, which launches spikes at your target that slows them and does extra damage if they move, and finally, Spike Shed, which launches spikes all around yourself and gives you a temporary speed boost as an escape plan at the cost of all your stored shards and being unable to gain shards for thirty seconds."
 	flavor_description = "They will be of iron will and steely muscle. In great armor shall they be clad, and with the mightiest spikes will they be armed."
-	cost = MUTATOR_COST_EXPENSIVE
-	individual_only = TRUE
-	caste_whitelist = list(XENO_CASTE_RAVAGER) // Only Ravager.
-	mutator_actions_to_remove = list(
+
+	actions_to_remove = list(
 		/datum/action/xeno_action/onclick/empower,
 		/datum/action/xeno_action/activable/pounce/charge,
 		/datum/action/xeno_action/activable/scissor_cut,
 	)
-	mutator_actions_to_add = list(
+	actions_to_add = list(
 		/datum/action/xeno_action/onclick/spike_shield,
 		/datum/action/xeno_action/activable/rav_spikes,
 		/datum/action/xeno_action/onclick/spike_shed,
 	)
+
 	behavior_delegate_type = /datum/behavior_delegate/ravager_hedgehog
-	keystone = TRUE
 
-/datum/xeno_mutator/hedgehog/apply_mutator(datum/mutator_set/individual_mutators/mutator_set)
+/datum/xeno_strain/hedgehog/apply_strain(mob/living/carbon/xenomorph/ravager/ravager)
 	. = ..()
-	if (. == 0)
-		return
 
-	var/mob/living/carbon/xenomorph/ravager/ravager = mutator_set.xeno
-
-	ravager.mutation_type = RAVAGER_HEDGEHOG
 	ravager.plasma_max = 0
 	ravager.small_explosives_stun = FALSE
 	ravager.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_SMALL
 	ravager.damage_modifier -= XENO_DAMAGE_MOD_SMALL
-
-	apply_behavior_holder(ravager)
-
-	mutator_update_actions(ravager)
-	mutator_set.recalculate_actions(description, flavor_description)
 
 	ravager.recalculate_everything()
 

@@ -69,7 +69,10 @@
 		/mob/living/carbon/xenomorph/proc/rename_tunnel,
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
-	mutation_type = DRONE_NORMAL
+	available_strains = list(
+		/datum/xeno_strain/gardener,
+		/datum/xeno_strain/healer,
+	)
 
 	icon_xeno = 'icons/mob/xenos/drone.dmi'
 	icon_xenonid = 'icons/mob/xenonids/drone.dmi'

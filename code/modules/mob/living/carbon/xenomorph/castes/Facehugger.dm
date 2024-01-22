@@ -55,7 +55,7 @@
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
-	mutation_type = "Normal"
+	available_strains = list(/datum/xeno_strain/watcher)
 
 	icon_xeno = 'icons/mob/xenos/facehugger.dmi'
 	icon_xenonid = 'icons/mob/xenonids/facehugger.dmi'
@@ -234,35 +234,3 @@
 		. += "Lifetime Hugs: [total_facehugs] / [next_facehug_goal]"
 	else
 		. += "Lifetime Hugs: [total_facehugs]"
-
-
-/datum/xeno_mutator/watcher
-	name = "STRAIN: Facehugger - Watcher"
-	description = "You lose your ability to hide in exchange to see further and the ability to no longer take damage outside of weeds. This enables you to stalk your host from a distance and wait for the perfect oppertunity to strike."
-	flavor_description = "No need to hide when you can see the danger."
-	individual_only = TRUE
-	caste_whitelist = list(XENO_CASTE_FACEHUGGER)
-	mutator_actions_to_remove = list(
-		/datum/action/xeno_action/onclick/xenohide,
-	)
-	mutator_actions_to_add = list(
-		/datum/action/xeno_action/onclick/toggle_long_range/runner,
-	)
-
-	cost = 1
-
-	keystone = TRUE
-
-/datum/xeno_mutator/watcher/apply_mutator(datum/mutator_set/individual_mutators/mutator_set)
-	. = ..()
-	if(!.)
-		return
-
-	var/mob/living/carbon/xenomorph/facehugger/facehugger = mutator_set.xeno
-
-	facehugger.viewsize = 10
-	facehugger.layer = MOB_LAYER
-
-	facehugger.mutation_type = FACEHUGGER_WATCHER
-	mutator_update_actions(facehugger)
-	mutator_set.recalculate_actions(description, flavor_description)

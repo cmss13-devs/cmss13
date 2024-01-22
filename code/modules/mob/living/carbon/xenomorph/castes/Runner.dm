@@ -62,6 +62,7 @@
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
+	available_strains = list(/datum/xeno_strain/acider)
 
 	icon_xeno = 'icons/mob/xenos/runner.dmi'
 	icon_xenonid = 'icons/mob/xenonids/runner.dmi'

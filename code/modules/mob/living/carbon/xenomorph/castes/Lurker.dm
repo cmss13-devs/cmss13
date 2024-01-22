@@ -50,7 +50,7 @@
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
-	mutation_type = LURKER_NORMAL
+	available_strains = list(/datum/xeno_strain/vampire)
 	claw_type = CLAW_TYPE_SHARP
 
 	tackle_min = 2

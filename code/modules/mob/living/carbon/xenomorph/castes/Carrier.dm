@@ -75,6 +75,7 @@
 		/mob/living/carbon/xenomorph/proc/rename_tunnel,
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
+	available_strains = list(/datum/xeno_strain/eggsac)
 
 	icon_xenonid = 'icons/mob/xenonids/carrier.dmi'
 

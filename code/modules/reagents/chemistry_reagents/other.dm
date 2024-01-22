@@ -393,9 +393,8 @@
 	explosive = TRUE
 	power = 0.5
 	falloff_modifier = 1
-	intensitymod = 0.3
-	radiusmod = -0.08
-	durationmod = 0.9
+	intensitymod = 0.2
+	durationmod = 0.2
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_FUELING = 5, PROPERTY_OXIDIZING = 3, PROPERTY_VISCOUS = 4, PROPERTY_CORROSIVE = 2)
 
@@ -489,9 +488,6 @@
 	explosive = TRUE
 	power = 0.12
 	falloff_modifier = -0.1
-	intensitymod = 0.1
-	radiusmod = -0.08
-	durationmod = 0.7
 	burncolor = "#ff9900"
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_FLOWING = 4,PROPERTY_FUELING = 6, PROPERTY_OXIDIZING = 4, PROPERTY_VISCOUS = 4, PROPERTY_TOXIC = 1)
@@ -687,9 +683,8 @@
 	color = "#ffb300"
 	chemfiresupp = TRUE
 	burncolor = "#D05006"
-	intensitymod = 0.45
-	radiusmod = 0.06
-	durationmod = 0.75
+	intensitymod = 0.15
+	durationmod = 0.15
 	burn_sprite = "red"
 	properties = list(PROPERTY_OXIDIZING = 4, PROPERTY_FUELING = 5, PROPERTY_FLOWING = 1)
 
@@ -802,9 +797,6 @@
 	custom_metabolism = 100
 	chemfiresupp = TRUE
 	burncolor = "#ff9300"
-	intensitymod = 1.6
-	radiusmod = -0.08
-	durationmod = -0.8
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_CORROSIVE = 8, PROPERTY_TOXIC = 6, PROPERTY_OXIDIZING = 9)
 

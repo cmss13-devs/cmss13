@@ -427,7 +427,7 @@
 	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/maint/lower/constr
-	name = "\improper Lower Deck Constr Site"
+	name = "\improper Lower Deck Construction Site"
 
 /area/almayer/maint/lower/s_bow
 	name = "\improper Lower Deck Starboard-Bow Maintenance"

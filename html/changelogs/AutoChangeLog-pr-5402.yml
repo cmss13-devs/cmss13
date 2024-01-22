@@ -1,0 +1,6 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Added Whitelist Panel for whitelist senators to manage their own whitelists."
+  - refactor: "Whitelist.txt is no longer functional, owing to the new system."
+  - rscdel: "Removed \"Alien Whitelist\" checks regarding base SS13 races."

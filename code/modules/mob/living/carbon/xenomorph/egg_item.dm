@@ -113,7 +113,7 @@
 		to_chat(user, SPAN_XENOWARNING("[src] can only be planted on [lowertext(hive.prefix)]hive weeds."))
 		return
 
-	if(istype(get_area(T), /area/vehicle))
+	if(istype(get_area(T), /area/interior))
 		to_chat(user, SPAN_XENOWARNING("[src] cannot be planted inside a vehicle."))
 		return
 

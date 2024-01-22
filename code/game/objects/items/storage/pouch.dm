@@ -976,7 +976,7 @@
 		to_chat(user, SPAN_WARNING("[O] is empty!"))
 		return
 
-	var/amt_to_remove = Clamp(O.reagents.total_volume, 0, inner.volume)
+	var/amt_to_remove = clamp(O.reagents.total_volume, 0, inner.volume)
 	if(!amt_to_remove)
 		to_chat(user, SPAN_WARNING("[O] is empty!"))
 		return
@@ -989,7 +989,7 @@
 		fill_autoinjector(contents[1])
 
 	//Top up our inner reagent canister after filling up the injector
-	amt_to_remove = Clamp(O.reagents.total_volume, 0, inner.volume)
+	amt_to_remove = clamp(O.reagents.total_volume, 0, inner.volume)
 	if(amt_to_remove)
 		O.reagents.trans_to(inner, amt_to_remove)
 

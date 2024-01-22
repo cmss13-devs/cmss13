@@ -6,7 +6,7 @@ import { Icon } from '../../components';
 import { mfdState, useEquipmentState } from './stateManagers';
 import { MedevacContext, MedevacTargets } from './types';
 
-const MedevacOccupant = (props: { data: MedevacTargets }) => (
+const MedevacOccupant = (props: { readonly data: MedevacTargets }) => (
   <Box>
     <Flex justify="space-between" direction="horizontal">
       <Flex.Item grow>

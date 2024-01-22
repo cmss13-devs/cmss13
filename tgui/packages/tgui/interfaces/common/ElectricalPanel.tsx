@@ -87,7 +87,10 @@ const ElectricalPanelClosed = (props: BoxProps, context) => {
   );
 };
 
-const WireControl = (props: { wire: WireSpec; index: number }, context) => {
+const WireControl = (
+  props: { readonly wire: WireSpec; readonly index: number },
+  context
+) => {
   const { data, act } = useBackend<ElectricalData>(context);
   const target = props.index + 1;
   let boxColor = 'green';

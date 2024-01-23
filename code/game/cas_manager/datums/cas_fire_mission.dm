@@ -190,7 +190,10 @@
 			SPAN_HIGHDANGER("A [ds_identifier] FLIES [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
 			SPAN_HIGHDANGER("YOU HEAR SOMETHING GO [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
 		)
-	
+
+	// Xenos have time to react to the first message
+	sleep(1.5 SECONDS)
+
 	for(var/mob/mob in range(15, initial_turf))
 		if(get_turf(mob) == initial_turf)
 			relative_dir = 0

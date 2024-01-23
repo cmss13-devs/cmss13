@@ -288,3 +288,8 @@
   - balance: AP rocket applies 3 weaken and 3 paralyze no matter if you hit the mob
       directly(from 2), at max range (from 2) or tile under it (from 4)
   - balance: indirect AP rocket does the same damage to walls and mobs
+2024-01-23:
+  realforest2001:
+  - rscadd: Added Whitelist Panel for whitelist senators to manage their own whitelists.
+  - refactor: Whitelist.txt is no longer functional, owing to the new system.
+  - rscdel: Removed "Alien Whitelist" checks regarding base SS13 races.

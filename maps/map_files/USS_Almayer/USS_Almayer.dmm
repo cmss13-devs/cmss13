@@ -80720,7 +80720,7 @@
 	},
 /area/almayer/hull/upper_hull/u_m_p)
 "xHS" = (
-/obj/structure/reagent_dispensers/oxygentank{
+/obj/structure/reagent_dispensers/fueltank/oxygentank{
 	anchored = 1
 	},
 /obj/effect/decal/warning_stripes{

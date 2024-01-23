@@ -23,8 +23,6 @@
 	behavior_delegate_type = /datum/behavior_delegate/oppressor_praetorian
 
 /datum/xeno_strain/oppressor/apply_strain(mob/living/carbon/xenomorph/praetorian/prae)
-	. = ..()
-
 	prae.damage_modifier -= XENO_DAMAGE_MOD_SMALL
 	prae.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_SMALL
 	prae.small_explosives_stun = FALSE

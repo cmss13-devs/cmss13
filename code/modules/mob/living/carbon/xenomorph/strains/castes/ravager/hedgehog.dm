@@ -17,8 +17,6 @@
 	behavior_delegate_type = /datum/behavior_delegate/ravager_hedgehog
 
 /datum/xeno_strain/hedgehog/apply_strain(mob/living/carbon/xenomorph/ravager/ravager)
-	. = ..()
-
 	ravager.plasma_max = 0
 	ravager.small_explosives_stun = FALSE
 	ravager.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_SMALL

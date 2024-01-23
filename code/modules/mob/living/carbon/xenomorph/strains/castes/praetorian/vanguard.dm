@@ -21,8 +21,6 @@
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_vanguard
 
 /datum/xeno_strain/vanguard/apply_strain(mob/living/carbon/xenomorph/praetorian/prae)
-	. = ..()
-
 	prae.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
 	prae.health_modifier -= XENO_HEALTH_MOD_MED
 	prae.claw_type = CLAW_TYPE_SHARP

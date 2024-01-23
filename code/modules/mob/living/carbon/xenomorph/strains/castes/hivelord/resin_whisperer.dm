@@ -17,8 +17,6 @@
 	)
 
 /datum/xeno_strain/resin_whisperer/apply_strain(mob/living/carbon/xenomorph/hivelord/hivelord)
-	. = ..()
-
 	hivelord.plasmapool_modifier = 0.8 // -20% plasma pool
 	hivelord.extra_build_dist = 12 // 1 + 12 = 13 tile build range
 	hivelord.can_stack_builds = TRUE

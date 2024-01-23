@@ -20,8 +20,6 @@
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_dancer
 
 /datum/xeno_strain/dancer/apply_strain(mob/living/carbon/xenomorph/praetorian/prae)
-	. = ..()
-
 	prae.armor_modifier -= XENO_ARMOR_MOD_VERY_SMALL
 	prae.speed_modifier += XENO_SPEED_FASTMOD_TIER_5
 	prae.plasma_types = list(PLASMA_CATECHOLAMINE)

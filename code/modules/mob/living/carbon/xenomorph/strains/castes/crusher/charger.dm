@@ -32,8 +32,6 @@
 	behavior_delegate_type = /datum/behavior_delegate/crusher_charger
 
 /datum/xeno_strain/charger/apply_strain(mob/living/carbon/xenomorph/crusher/crusher)
-	. = ..()
-
 	crusher.small_explosives_stun = FALSE
 	crusher.health_modifier += XENO_HEALTH_MOD_LARGE
 	crusher.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
@@ -42,7 +40,6 @@
 	crusher.ignore_aura = "frenzy" // no funny crushers going 7 morbillion kilometers per second
 	crusher.phero_modifier = -crusher.caste.aura_strength
 	crusher.recalculate_everything()
-	return TRUE
 
 /datum/behavior_delegate/crusher_charger
 	name = "Charger Crusher Behavior Delegate"

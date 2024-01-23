@@ -19,8 +19,6 @@
 	behavior_delegate_type = /datum/behavior_delegate/drone_gardener
 
 /datum/xeno_strain/gardener/apply_strain(mob/living/carbon/xenomorph/drone/drone)
-	. = ..()
-
 	drone.available_fruits = list(
 		/obj/effect/alien/resin/fruit/greater,
 		/obj/effect/alien/resin/fruit/unstable,

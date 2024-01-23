@@ -21,11 +21,11 @@
  *
  * Returns a bool indicating if the strain was successfully applied.
  */
-/datum/xeno_strain/proc/apply_strain(mob/living/carbon/xenomorph/xeno)
-	SHOULD_CALL_PARENT(TRUE)
+/datum/xeno_strain/proc/_add_to_xeno(mob/living/carbon/xenomorph/xeno)
+	// Override `apply_changes()`, not this! (Unless you know what you're doing.)
+	SHOULD_NOT_OVERRIDE(TRUE)
 
 	xeno.strain = src
-	register_signals(xeno)
 
 	// Update the xeno's actions.
 	for(var/action_path in actions_to_remove)
@@ -41,17 +41,24 @@
 		xeno.behavior_delegate.bound_xeno = xeno
 		xeno.behavior_delegate.add_to_xeno()
 
+	apply_strain()
+
 	xeno.update_icons()
 	xeno.hive.hive_ui.update_xeno_info()
 
-	// Give them all the info about the strain.
+	// Give them all of the info about the strain.
 	to_chat(xeno, SPAN_XENOANNOUNCE(description))
 	if(flavor_description)
 		to_chat(xeno, SPAN_XENOLEADER(flavor_description))
 	return TRUE
 
-/// TODO: documentation
-/datum/xeno_strain/proc/register_signals(mob/living/carbon/xenomorph/xeno)
+/**
+ * Adds any special modifiers/changes from this strain to `xeno`.
+ *
+ * Called when the strain is first added to the player.
+ */
+/datum/xeno_strain/proc/apply_strain(mob/living/carbon/xenomorph/xeno)
+	// Override with custom behaviour.
 	return
 
 
@@ -85,7 +92,7 @@
 
 	// Create the strain datum and apply it to the xeno.
 	var/datum/xeno_strain/strain_instance = new chosen_strain()
-	if(strain_instance.apply_strain(src))
+	if(strain_instance._add_to_xeno(src))
 		xeno_jitter(1.5 SECONDS)
 		// If it applied successfully, add it to the logs.
 		log_strain("[name] purchased strain '[strain_instance.type]'")

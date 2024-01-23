@@ -21,8 +21,6 @@
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_warden
 
 /datum/xeno_strain/warden/apply_strain(mob/living/carbon/xenomorph/praetorian/prae)
-	. = ..()
-
 	// Make a 'halftank'
 	prae.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
 	prae.damage_modifier -= XENO_DAMAGE_MOD_SMALL

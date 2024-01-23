@@ -17,7 +17,6 @@
 	behavior_delegate_type = /datum/behavior_delegate/carrier_eggsac
 
 /datum/xeno_strain/eggsac/apply_strain(mob/living/carbon/xenomorph/carrier/carrier)
-	. = ..()
 
 	carrier.plasma_types = list(PLASMA_EGG)
 	carrier.phero_modifier += XENO_PHERO_MOD_LARGE // praetorian level pheremones
@@ -32,7 +31,6 @@
 	carrier.eggs_max = 12
 	carrier.egg_planting_range = 2
 	carrier.update_eggsac_overlays()
-	return TRUE
 
 #define EGGSAC_OFF_WEED_EGGCAP 4
 #define EGGSAC_EGG_SUSTAIN_DISTANCE 14

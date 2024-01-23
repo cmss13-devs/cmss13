@@ -17,14 +17,11 @@
 	behavior_delegate_type = /datum/behavior_delegate/runner_acider
 
 /datum/xeno_strain/acider/apply_strain(mob/living/carbon/xenomorph/runner/runner)
-	. = ..()
-
 	runner.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
 	runner.armor_modifier += XENO_ARMOR_MOD_MED
 	runner.health_modifier += XENO_HEALTH_MOD_ACIDER
 
 	runner.recalculate_everything()
-
 
 /datum/behavior_delegate/runner_acider
 	var/acid_amount = 0

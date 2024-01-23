@@ -20,7 +20,6 @@
 	behavior_delegate_type = /datum/behavior_delegate/boiler_trapper
 
 /datum/xeno_strain/trapper/apply_strain(mob/living/carbon/xenomorph/boiler/boiler)
-	. = ..()
 	if(!istype(boiler))
 		return FALSE
 
@@ -35,7 +34,6 @@
 
 	boiler.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5 // compensating for base buffs
 	boiler.recalculate_everything()
-	return TRUE
 
 /datum/behavior_delegate/boiler_trapper
 	name = "Boiler Trapper Behavior Delegate"

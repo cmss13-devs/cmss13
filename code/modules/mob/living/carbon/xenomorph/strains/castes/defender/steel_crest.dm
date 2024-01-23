@@ -18,8 +18,6 @@
 	behavior_delegate_type = /datum/behavior_delegate/defender_steel_crest
 
 /datum/xeno_strain/steel_crest/apply_strain(mob/living/carbon/xenomorph/defender/defender)
-	. = ..()
-
 	defender.damage_modifier -= XENO_DAMAGE_MOD_VERY_SMALL
 	if(defender.fortify)
 		defender.ability_speed_modifier += 2.5

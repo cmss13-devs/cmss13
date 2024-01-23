@@ -454,8 +454,12 @@
 // DISASSEMBLY
 
 /obj/structure/machinery/m56d_hmg/auto/MouseDrop(over_object, src_location, over_location)
-	if(!ishuman(usr)) return
+	if(!ishuman(usr))
+		return
 	var/mob/living/carbon/human/user = usr
+	// If the user is unconscious or dead.
+	if(user.stat)
+		return
 
 	if(over_object == user && in_range(src, user))
 		if((rounds > 0) && (user.a_intent & (INTENT_GRAB)))

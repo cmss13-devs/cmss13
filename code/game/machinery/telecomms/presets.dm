@@ -91,7 +91,7 @@
 		return // Leave the poor thing alone
 
 	health -= damage
-	health = Clamp(health, 0, initial(health))
+	health = clamp(health, 0, initial(health))
 
 	if(health <= 0)
 		toggled = FALSE // requires flipping on again once repaired

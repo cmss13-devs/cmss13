@@ -325,7 +325,7 @@
 /datum/cas_fire_envelope/uscm_dropship
 	fire_length = 12
 	grace_period = 50 //5 seconds
-	flyto_period = 50 //five seconds
+	flyto_period = 40 //four seconds, sleep in the FM itself has been increased by one more second
 	flyoff_period = 50 //FIVE seconds
 	cooldown_period = 100 //f~ I mean, 10 seconds
 	soundeffect = 'sound/weapons/dropship_sonic_boom.ogg' //BOOM~WOOOOOSH~HSOOOOOW~BOOM

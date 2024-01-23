@@ -275,8 +275,8 @@
 			fm_identifier = "FIRE"
 
 		mob.show_message( \
-			SPAN_HIGHDANGER("YOU HEAR THE [ds_identifier] ROAR AS IT PREPARES TO [fm_identifier] [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
-			SPAN_HIGHDANGER("YOU HEAR SOMETHING FLYING CLOSER [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
+			SPAN_HIGHDANGER("YOU HEAR THE [ds_identifier] ROAR AS IT PREPARES TO [fm_identifier] NEAR YOU!, \
+			SPAN_HIGHDANGER("YOU HEAR SOMETHING FLYING CLOSER TO YOU! , SHOW_MESSAGE_AUDIBLE \
 		)
 
 	sleep(flyto_period)

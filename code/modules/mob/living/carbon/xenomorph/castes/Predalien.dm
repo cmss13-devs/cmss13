@@ -119,3 +119,11 @@ You must still listen to the queen.
 
 	return original_damage + kills * 2.5
 
+/mob/living/carbon/xenomorph/predalien/get_examine_text(mob/user)
+	. = ..()
+	var/datum/behavior_delegate/predalien_base/predalienkills = behavior_delegate
+	var/kills = predalienkills.kills
+	. += "It has [kills] kills to its name!"
+
+
+

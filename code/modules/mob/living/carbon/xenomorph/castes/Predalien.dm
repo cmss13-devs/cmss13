@@ -11,6 +11,7 @@
 	armor_deflection = XENO_ARMOR_TIER_3
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_7
+	claw_type = CLAW_TYPE_VERY_SHARP
 
 	evolution_allowed = FALSE
 	minimum_evolve_time = 0

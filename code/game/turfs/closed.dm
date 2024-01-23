@@ -377,5 +377,5 @@
 
 /turf/closed/shuttle/dropship2/WY/StarGlider
 	name = "\improper WY-LWI StarGlider SG-200"
-	desc = "The WY-LWI StarGlider SG-200, a product of the collaborative ingenuity between Weyland Yutani and Lunnar-Welsun Industries, is a small dropship is designed for short-range commercial transport."
+	desc = "The WY-LWI StarGlider SG-200, a product of the collaborative ingenuity between Weyland Yutani and Lunnar-Welsun Industries, This small dropship is designed for short-range commercial transport."
 	icon = 'icons/turf/dropship4.dmi'

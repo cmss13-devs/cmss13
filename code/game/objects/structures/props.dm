@@ -1419,6 +1419,7 @@
 	icon = 'icons/obj/structures/props/boulder_small.dmi'
 	unslashable = TRUE
 	unacidable = TRUE
+	density = TRUE
 /obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark1
 	icon_state = "bouldersmalldark1"
 /obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark2
@@ -1490,12 +1491,28 @@
 /obj/structure/prop/hybrisa/vehicles/suvdamaged
     name = "heavily damaged SUV"
     desc = "A shell of a vehicle, broken down beyond repair."
+
 /obj/structure/prop/hybrisa/vehicles/suvdamaged/suv_damaged0
 	icon_state = "SUV_damaged"
+	bound_height = 64
+	bound_width = 64
+	unslashable = TRUE
+	unacidable = TRUE
+	density = TRUE
 /obj/structure/prop/hybrisa/vehicles/suvdamaged/suv_damaged1
 	icon_state = "SUV1_damaged"
+	bound_height = 64
+	bound_width = 64
+	unslashable = TRUE
+	unacidable = TRUE
+	density = TRUE
 /obj/structure/prop/hybrisa/vehicles/suvdamaged/suv_damaged2
 	icon_state = "SUV2_damaged"
+	bound_height = 64
+	bound_width = 64
+	unslashable = TRUE
+	unacidable = TRUE
+	density = TRUE
 
 // small trucks
 
@@ -1681,14 +1698,29 @@
 	name = "van"
 	desc = "A shell of a vehicle, broken down beyond repair."
 	icon_state = "greyvan_damaged"
+	bound_height = 64
+	bound_width = 64
+	unslashable = TRUE
+	unacidable = TRUE
+	density = TRUE
 /obj/structure/prop/hybrisa/vehicles/van/vanpizza
 	name = "pizza delivery van"
 	desc = "Seems to be broken down."
 	icon_state = "pizzavan"
+	bound_height = 64
+	bound_width = 64
+	unslashable = TRUE
+	unacidable = TRUE
+	density = TRUE
 /obj/structure/prop/hybrisa/vehicles/van/vanmining
 	name = "Kelland Mining van"
 	desc = "Seems to be broken down."
 	icon_state = "kellandminingvan"
+	bound_height = 64
+	bound_width = 64
+	unslashable = TRUE
+	unacidable = TRUE
+	density = TRUE
 
 /obj/structure/prop/hybrisa/vehicles/crashedcarsleft
 	name = "car pileup"
@@ -1700,6 +1732,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	density = TRUE
+	layer = 5
 /obj/structure/prop/hybrisa/vehicles/crashedcarsright
 	name = "car pileup"
 	desc = "Burned out wrecked vehicles block your path."
@@ -1710,6 +1743,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	density = TRUE
+	layer = 5
 
 // Supermart
 
@@ -1718,6 +1752,7 @@
 	icon_state = "longrack1"
 	desc = "A long shelf filled with various foodstuffs"
 	icon = 'icons/obj/structures/props/supermart.dmi'
+	density = TRUE
 
 /obj/structure/prop/hybrisa/supermart/rack/longrackempty
 	name = "shelf"
@@ -1880,6 +1915,8 @@
 	density = TRUE
 	climbable = TRUE
 	breakable = TRUE
+	bound_height = 32
+	bound_width = 64
 	debris = list(/obj/item/stack/sheet/metal)
 /obj/structure/prop/hybrisa/furniture/tables/tablepool
 	name = "pool table"
@@ -1887,6 +1924,8 @@
 	icon = 'icons/obj/structures/props/zenithtables.dmi'
 	icon_state = "table_pool"
 	density = TRUE
+	bound_height = 32
+	bound_width = 64
 	climbable = TRUE
 	breakable = TRUE
 	debris = list(/obj/item/stack/sheet/wood)
@@ -1896,6 +1935,8 @@
 	icon = 'icons/obj/structures/props/zenithtables.dmi'
 	icon_state = "table_cards"
 	density = TRUE
+	bound_height = 32
+	bound_width = 64
 	climbable = TRUE
 	breakable = TRUE
 	debris = list(/obj/item/stack/sheet/wood)
@@ -1981,48 +2022,57 @@
 /obj/structure/prop/hybrisa/xenobiology
 	icon = 'icons/obj/structures/props/zenithxenocryogenics.dmi'
 	icon_state = "xenocellemptyon"
+	layer = ABOVE_MOB_LAYER
+
 
 /obj/structure/prop/hybrisa/xenobiology/small/empty
 	name = "specimen containment cell"
 	desc = "It's empty."
 	icon = 'icons/obj/structures/props/zenithxenocryogenics.dmi'
 	icon_state = "xenocellemptyon"
+	density = TRUE
 /obj/structure/prop/hybrisa/xenobiology/small/offempty
 	name = "specimen containment cell"
 	desc = "It's turned off and empty."
 	icon = 'icons/obj/structures/props/zenithxenocryogenics.dmi'
 	icon_state = "xenocellemptyoff"
+	density = TRUE
 /obj/structure/prop/hybrisa/xenobiology/small/larva
 	name = "specimen containment cell"
 	desc = "There is something worm-like inside..."
 	icon = 'icons/obj/structures/props/zenithxenocryogenics.dmi'
 	icon_state = "xenocelllarva"
+	density = TRUE
 /obj/structure/prop/hybrisa/xenobiology/small/egg
 	name = "specimen containment cell"
 	desc = "There is, what looks like some sort of egg inside..."
 	icon = 'icons/obj/structures/props/zenithxenocryogenics.dmi'
 	icon_state = "xenocellegg"
+	density = TRUE
 /obj/structure/prop/hybrisa/xenobiology/small/hugger
 	name = "specimen containment cell"
 	desc = "There's something spider-like inside..."
 	icon = 'icons/obj/structures/props/zenithxenocryogenics.dmi'
 	icon_state = "xenocellhugger"
+	density = TRUE
 /obj/structure/prop/hybrisa/xenobiology/small/cracked1
 	name = "specimen containment cell"
 	desc = "Looks like something broke it...from the inside."
 	icon = 'icons/obj/structures/props/zenithxenocryogenics.dmi'
 	icon_state = "xenocellcrackedempty"
+	density = TRUE
 /obj/structure/prop/hybrisa/xenobiology/small/cracked2
 	name = "specimen containment cell"
 	desc = "Looks like something broke it...from the inside."
 	icon = 'icons/obj/structures/props/zenithxenocryogenics.dmi'
 	icon_state = "xenocellcrackedempty2"
+	density = TRUE
 /obj/structure/prop/hybrisa/xenobiology/small/crackedegg
 	name = "specimen containment cell"
 	desc = "Looks like something broke it, there's a giant empty egg inside."
 	icon = 'icons/obj/structures/props/zenithxenocryogenics.dmi'
 	icon_state = "xenocellcrackedegg"
-
+	density = TRUE
 /obj/structure/prop/hybrisa/xenobiology/big
 	name = "specimen containment cell"
 	desc = "A giant tube with a hulking monstrosity inside, is this thing alive?"
@@ -2035,17 +2085,21 @@
 /obj/structure/prop/hybrisa/xenobiology/big/bigleft
 	icon = 'icons/obj/structures/props/zenithxenocryogenics2.dmi'
 	icon_state = "bigqueencryo1"
+	layer = ABOVE_MOB_LAYER
 /obj/structure/prop/hybrisa/xenobiology/big/bigright
 	icon = 'icons/obj/structures/props/zenithxenocryogenics2.dmi'
 	icon_state = "bigqueencryo2"
+	layer = ABOVE_MOB_LAYER
 /obj/structure/prop/hybrisa/xenobiology/big/bigbottomleft
 	icon = 'icons/obj/structures/props/zenithxenocryogenics2.dmi'
 	icon_state = "bigqueencryo3"
 	density = TRUE
+	layer = ABOVE_MOB_LAYER
 /obj/structure/prop/hybrisa/xenobiology/big/bigbottomright
 	icon = 'icons/obj/structures/props/zenithxenocryogenics2.dmi'
 	icon_state = "bigqueencryo4"
 	density = TRUE
+	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/xenobiology/misc
 	name = "strange egg"
@@ -2053,6 +2107,7 @@
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "inertegg"
 	unslashable = TRUE
+	indestructible = TRUE
 	layer = 2
 
 // Engineer
@@ -2165,36 +2220,43 @@
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "dropshipfrontwhite1"
 	indestructible = TRUE
+	layer = ABOVE_MOB_LAYER
 /obj/structure/prop/hybrisa/airport/dropshipwingleft
 	name = "wing"
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "dropshipwingtop1"
 	indestructible = TRUE
+	layer = ABOVE_MOB_LAYER
 /obj/structure/prop/hybrisa/airport/dropshipwingright
 	name = "wing"
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "dropshipwingtop2"
 	indestructible = TRUE
+	layer = ABOVE_MOB_LAYER
 /obj/structure/prop/hybrisa/airport/dropshipvent1left
 	name = "vent"
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "dropshipvent1"
 	indestructible = TRUE
+	layer = ABOVE_MOB_LAYER
 /obj/structure/prop/hybrisa/airport/dropshipvent2right
 	name = "vent"
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "dropshipvent2"
 	indestructible = TRUE
+	layer = ABOVE_MOB_LAYER
 /obj/structure/prop/hybrisa/airport/dropshipventleft
 	name = "vent"
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "dropshipvent3"
 	indestructible = TRUE
+	layer = ABOVE_MOB_LAYER
 /obj/structure/prop/hybrisa/airport/dropshipventright
 	name = "vent"
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "dropshipvent4"
 	indestructible = TRUE
+	layer = ABOVE_MOB_LAYER
 
 // Dropship damage
 
@@ -2207,6 +2269,8 @@
 	bound_width = 96
 	unslashable = TRUE
 	unacidable = TRUE
+	indestructible = TRUE
+
 /obj/structure/prop/hybrisa/airport/dropshipenginedamagenofire
 	name = "dropship damage"
 	desc = "the engine appears to have severe damage."
@@ -2216,6 +2280,7 @@
 	bound_width = 96
 	unslashable = TRUE
 	unacidable = TRUE
+	indestructible = TRUE
 
 /obj/structure/prop/hybrisa/airport/refuelinghose
 	name = "refueling hose"
@@ -2417,6 +2482,7 @@
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "slotmachine"
 
+
 /obj/structure/prop/hybrisa/misc/coffeestuff/coffeemachine1
 	name = "coffee machine"
 	desc = "A coffee machine."
@@ -2609,6 +2675,7 @@
 	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
+	layer = 5
 
 /obj/structure/prop/hybrisa/containersextended/blueleft
 	name = "cargo container"
@@ -2740,15 +2807,44 @@
 /obj/structure/prop/hybrisa/fakeplatforms/platform1
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "engineer_platform"
+	unslashable = TRUE
+	unacidable = TRUE
+	indestructible = TRUE
 /obj/structure/prop/hybrisa/fakeplatforms/platform2
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "engineer_platform_platformcorners"
+	unslashable = TRUE
+	unacidable = TRUE
+	indestructible = TRUE
 /obj/structure/prop/hybrisa/fakeplatforms/platform3
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "platform"
+	unslashable = TRUE
+	unacidable = TRUE
+	indestructible = TRUE
 /obj/structure/prop/hybrisa/fakeplatforms/platform4
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "zenithplatform3"
+	unslashable = TRUE
+	unacidable = TRUE
+	indestructible = TRUE
+
+/// Medical Details breakable
+
+/obj/structure/prop/hybrisa/decal/medical
+	name = "medical decal"
+	icon = 'icons/effects/medical_decals.dmi'
+	icon_state = "cryotop"
+	layer = 1
+
+
+// Grille
+
+/obj/structure/prop/hybrisa/misc/electricgrille
+	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
+	icon_state = "grille"
+
+
 
 // To replace
 /obj/structure/prop/zenith/roadbarrier

@@ -341,7 +341,7 @@
 /obj/item/clothing/glasses/disco_fever/proc/apply_discovision(mob/user)
 	//Caramelldansen HUD overlay.
 	//Use of this filter in armed conflict is in direct contravention of the Geneva Suggestions (2120 revision)
-	//Colours are based on a bit of the music video. Original version was a rainbow with #c20000 and #db6c03 as well.
+	//Colors are based on a bit of the music video. Original version was a rainbow with #c20000 and #db6c03 as well.
 
 	//Animate the obj and onmob in sync with the client.
 	for(var/I in list(obj_glass_overlay, mob_glass_overlay))
@@ -361,35 +361,35 @@
 	if(!user.client) //Shouldn't happen but can't hurt to check.
 		return
 
-	var/base_colour
+	var/base_colors
 	if(!user.client.color) //No set client color.
-		base_colour = color_matrix_saturation(1.35) //Crank up the saturation and get ready to party.
+		base_colors = color_matrix_saturation(1.35) //Crank up the saturation and get ready to party.
 	else if(istext(user.client.color)) //Hex color string.
-		base_colour = color_matrix_multiply(color_matrix_from_string(user.client.color), color_matrix_saturation(1.35))
-	else //Colour matrix.
-		base_colour = color_matrix_multiply(user.client.color, color_matrix_saturation(1.35))
+		base_colors = color_matrix_multiply(color_matrix_from_string(user.client.color), color_matrix_saturation(1.35))
+	else //Color matrix.
+		base_colors = color_matrix_multiply(user.client.color, color_matrix_saturation(1.35))
 
 	var/list/colours = list(
-		"yellow" = color_matrix_multiply(base_colour, color_matrix_from_string("#d4c218")),
-		"green" = color_matrix_multiply(base_colour, color_matrix_from_string("#2dc404")),
-		"cyan" = color_matrix_multiply(base_colour, color_matrix_from_string("#2ac1db")),
-		"blue" = color_matrix_multiply(base_colour, color_matrix_from_string("#005BF7")),
-		"indigo" = color_matrix_multiply(base_colour, color_matrix_from_string("#b929f7"))
+		"yellow" = color_matrix_multiply(base_colors, color_matrix_from_string("#d4c218")),
+		"green" = color_matrix_multiply(base_colors, color_matrix_from_string("#2dc404")),
+		"cyan" = color_matrix_multiply(base_colors, color_matrix_from_string("#2ac1db")),
+		"blue" = color_matrix_multiply(base_colors, color_matrix_from_string("#005BF7")),
+		"indigo" = color_matrix_multiply(base_colors, color_matrix_from_string("#b929f7"))
 		)
 
 	//Animate the victim's client.
 	animate(user.client, color = colours["indigo"], time = 0.3 SECONDS, loop = -1)
-	animate(color = base_colour, time = 0.3 SECONDS)
+	animate(color = base_colors, time = 0.3 SECONDS)
 	animate(color = colours["cyan"], time = 0.3 SECONDS)
-	animate(color = base_colour, time = 0.3 SECONDS)
+	animate(color = base_colors, time = 0.3 SECONDS)
 	animate(color = colours["yellow"], time = 0.3 SECONDS)
-	animate(color = base_colour, time = 0.3 SECONDS)
+	animate(color = base_colors, time = 0.3 SECONDS)
 	animate(color = colours["green"], time = 0.3 SECONDS)
-	animate(color = base_colour, time = 0.3 SECONDS)
+	animate(color = base_colors, time = 0.3 SECONDS)
 	animate(color = colours["blue"], time = 0.3 SECONDS)
-	animate(color = base_colour, time = 0.3 SECONDS)
+	animate(color = base_colors, time = 0.3 SECONDS)
 	animate(color = colours["yellow"], time = 0.3 SECONDS)
-	animate(color = base_colour, time = 0.3 SECONDS)
+	animate(color = base_colors, time = 0.3 SECONDS)
 
 /obj/item/clothing/glasses/disco_fever/dropped(mob/living/carbon/human/user)
 	. = ..()
@@ -434,6 +434,14 @@
 	active_icon_state = "mgogglesblk_down"
 	inactive_icon_state = "mgogglesblk"
 
+/obj/item/clothing/glasses/mgoggles/black/prescription
+	name = "prescription black marine ballistic goggles"
+	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has black tinted lenses. ntop of that, these ones contain prescription lenses."
+	icon_state = "mgogglesblk"
+	active_icon_state = "mgogglesblk_down"
+	inactive_icon_state = "mgogglesblk"
+	prescription = TRUE
+
 /obj/item/clothing/glasses/mgoggles/orange
 	name = "orange marine ballistic goggles"
 	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has amber colored day lenses."
@@ -441,12 +449,28 @@
 	active_icon_state = "mgogglesorg_down"
 	inactive_icon_state = "mgogglesorg"
 
+/obj/item/clothing/glasses/mgoggles/orange/prescription
+	name = "prescription orange marine ballistic goggles"
+	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has amber colored day lenses."
+	icon_state = "mgogglesorg"
+	active_icon_state = "mgogglesorg_down"
+	inactive_icon_state = "mgogglesorg"
+	prescription = TRUE
+
 /obj/item/clothing/glasses/mgoggles/v2
 	name = "M1A1 marine ballistic goggles"
 	desc = "Newer issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This version has larger lenses."
 	icon_state = "mgoggles2"
 	active_icon_state = "mgoggles2_down"
 	inactive_icon_state = "mgoggles2"
+
+/obj/item/clothing/glasses/mgoggles/v2/prescription
+	name = "prescription M1A1 marine ballistic goggles"
+	desc = "Newer issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This version has larger lenses."
+	icon_state = "mgoggles2"
+	active_icon_state = "mgoggles2_down"
+	inactive_icon_state = "mgoggles2"
+	prescription = TRUE
 
 /obj/item/clothing/glasses/mgoggles/on_enter_storage(obj/item/storage/internal/S)
 	..()

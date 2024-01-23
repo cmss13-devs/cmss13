@@ -16,6 +16,7 @@
 		/datum/action/xeno_action/activable/resin_surge, // third macro
 		/datum/action/xeno_action/onclick/plant_resin_fruit/greater, // fourth macro
 		/datum/action/xeno_action/onclick/change_fruit,
+		/datum/action/xeno_action/activable/transfer_plasma,
 	)
 	keystone = TRUE
 	behavior_delegate_type = /datum/behavior_delegate/drone_gardener

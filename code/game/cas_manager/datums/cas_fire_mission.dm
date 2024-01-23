@@ -177,7 +177,7 @@
 
 	var/relative_dir
 	for(var/mob/mob in range(15, initial_turf))
-		if(get_turfmob) == initial_turf)
+		if(get_turf(mob)) == initial_turf)
 			relative_dir = 0
 		else
 			relative_dir = Get_Compass_Dir(mob, initial_turf)

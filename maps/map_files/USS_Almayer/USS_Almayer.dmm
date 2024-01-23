@@ -79268,7 +79268,7 @@
 	},
 /area/almayer/medical/lower_medical_lobby)
 "xgm" = (
-/obj/structure/reagent_dispensers/oxygentank,
+/obj/structure/reagent_dispensers/fueltank/oxygentank,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},

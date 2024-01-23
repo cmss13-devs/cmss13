@@ -66,23 +66,23 @@
 	log_debug("Nightmare Mapload: Loaded map file but could not initialize: '[filepath]' at ([target_turf.x], [target_turf.y], [target_turf.z])")
 	return TRUE
 
-/// Initialize atoms/areas in bounds
+/// Initialize atoms/areas in bounds - basically a Nightmare version of [/datum/map_template/initTemplateBounds]
 /datum/nmtask/mapload/proc/initialize_boundary_contents()
-	//TODO update this eventually for lighting/contents and such, taking inspiration from initTemplatedBounds()
 	var/list/bounds = parsed.bounds
 	if(length(bounds) < 6)
 		return
-	var/list/TT = block( locate(bounds[MAP_MINX], bounds[MAP_MINY], bounds[MAP_MINZ]),
+	var/list/turf_block = block( locate(bounds[MAP_MINX], bounds[MAP_MINY], bounds[MAP_MINZ]),
 							locate(bounds[MAP_MAXX], bounds[MAP_MAXY], bounds[MAP_MAXZ]))
 	var/list/area/arealist = list()
 	var/list/atom/atomlist = list()
-	for(var/turf/T as anything in TT)
-		atomlist |= T
-		if(T.loc) arealist |= T.loc
-		for(var/A in T)
-			atomlist |= A
-	SSmapping.reg_in_areas_in_z(arealist)
-	SSatoms.InitializeAtoms(atomlist)
-	// We still defer lighting, area sorting, etc
+	for(var/turf/turf as anything in turf_block)
+		atomlist += turf
+		if(turf.loc)
+			arealist |= turf.loc
+		for(var/atom/movable/movable as anything in turf)
+			atomlist += movable // Much like initTemplateBounds() this only recurses content once. Never been an issue so far, but keep it in mind.
+	SSmapping.reg_in_areas_in_z(arealist) // Legacy. Not sure this is needed as it should already be carried out through area Initialize.
+	SSatoms.InitializeAtoms(atomlist + arealist)
+	// We still defer lighting, area sorting, etc, to be done all in one go!
 	SEND_SIGNAL(src, COMSIG_NIGHTMARE_TAINTED_BOUNDS, bounds)
 	return TRUE

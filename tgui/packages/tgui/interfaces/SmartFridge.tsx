@@ -27,7 +27,7 @@ interface StorageItem {
 }
 
 const ContentsTable = (
-  props: { isLocal: boolean; items: StorageItem[] },
+  props: { readonly isLocal: boolean; readonly items: StorageItem[] },
   context
 ) => {
   return (
@@ -44,7 +44,11 @@ const ContentsTable = (
 };
 
 const Contents = (
-  props: { isLocal: boolean; items: StorageItem[]; title: string },
+  props: {
+    readonly isLocal: boolean;
+    readonly items: StorageItem[];
+    readonly title: string;
+  },
   context
 ) => {
   const [tabIndex, setTabIndex] = useLocalState(
@@ -106,7 +110,7 @@ const Contents = (
 };
 
 const ContentItem = (
-  props: { isLocal: boolean; item: StorageItem },
+  props: { readonly isLocal: boolean; readonly item: StorageItem },
   context
 ) => {
   const { data, act } = useBackend<SmartFridgeData>(context);

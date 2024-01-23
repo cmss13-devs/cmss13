@@ -17,6 +17,12 @@
 	job_options = list(STANDARD_VARIANT = "JOE", HAZMAT_VARIANT = "HAZ")
 	var/standard = TRUE
 
+/datum/job/civilian/working_joe/check_whitelist_status(mob/user)
+	if(user.client.check_whitelist_status(WHITELIST_SYNTHETIC))
+		return TRUE
+
+	return ..()
+
 /datum/job/civilian/working_joe/handle_job_options(option)
 	if(option != HAZMAT_VARIANT)
 		standard = TRUE

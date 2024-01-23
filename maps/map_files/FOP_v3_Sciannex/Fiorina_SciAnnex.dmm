@@ -17641,9 +17641,6 @@
 /area/fiorina/station/lowsec)
 "kIe" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/book/manual/engineering_particle_accelerator{
-	pixel_y = 6
-	},
 /obj/structure/prop/souto_land/pole{
 	dir = 1
 	},

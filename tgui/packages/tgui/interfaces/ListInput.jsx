@@ -9,7 +9,7 @@ import { clamp01 } from 'common/math';
 import { useBackend, useLocalState } from '../backend';
 import { Box, Button, Section, Input, Stack } from '../components';
 import { Window } from '../layouts';
-import { globalEvents } from '../events.js';
+import { globalEvents } from '../events';
 
 let lastScrollTime = 0;
 

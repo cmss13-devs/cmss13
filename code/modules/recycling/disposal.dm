@@ -172,8 +172,6 @@
 			return TRUE
 		return FALSE
 
-	if(isrobot(user))
-		return
 	if(!I)
 		return
 
@@ -503,10 +501,6 @@
 		if(istype(AM, /obj/item/smallDelivery) && !hasmob)
 			var/obj/item/smallDelivery/T = AM
 			destinationTag = T.sortTag
-		//Drones can mail themselves through maint.
-		if(istype(AM, /mob/living/silicon/robot/drone))
-			var/mob/living/silicon/robot/drone/drone = AM
-			destinationTag = drone.mail_destination
 
 //Start the movement process
 //Argument is the disposal unit the holder started in

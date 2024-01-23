@@ -102,7 +102,7 @@
 /obj/structure/machinery/telecomms/attack_hand(mob/user as mob)
 
 	// You need a multitool to use this, or be silicon
-	if(!ishighersilicon(user))
+	if(!isSilicon(user))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You stare at \the [src] cluelessly..."))
 			return
@@ -181,24 +181,6 @@
 		src.listening_level = TELECOMM_GROUND_Z
 		return 1
 	return 0
-
-// Returns a multitool from a user depending on their mobtype.
-
-/obj/structure/machinery/telecomms/proc/get_multitool(mob/user as mob)
-
-	var/obj/item/device/multitool/P = null
-	// Let's double check
-	var/obj/item/held_item = user.get_active_hand()
-	if(!ishighersilicon(user) && held_item && HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
-		P = user.get_active_hand()
-	else if(isAI(user))
-		var/mob/living/silicon/ai/U = user
-		P = U.aiMulti
-	else if(isborg(user) && in_range(user, src))
-		var/obj/item/borg_held_item = user.get_active_hand()
-		if(held_item && HAS_TRAIT(borg_held_item, TRAIT_TOOL_MULTITOOL))
-			P = user.get_active_hand()
-	return P
 
 // Additional Options for certain GLOB.machines. Use this when you want to add an option to a specific machine.
 // Example of how to use below.
@@ -279,7 +261,7 @@
 	. = ..()
 	if(.)
 		return
-	if(!ishighersilicon(usr))
+	if(!isSilicon(usr))
 		var/obj/item/held_item = usr.get_held_item()
 		if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
 			return

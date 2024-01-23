@@ -365,7 +365,7 @@ GLOBAL_LIST_EMPTY(alldepartments)
 				to_chat(C, msg_admin)
 			else
 				to_chat(C, msg_ghost)
-			C << 'sound/effects/sos-morse-code.ogg'
+			C << 'sound/effects/incoming-fax.ogg'
 	if(msg_ghost)
 		for(var/i in GLOB.observer_list)
 			var/mob/dead/observer/g = i
@@ -376,7 +376,7 @@ GLOBAL_LIST_EMPTY(alldepartments)
 				if((R_ADMIN|R_MOD) & C.admin_holder.rights) //staff don't need to see the fax twice
 					continue
 			to_chat(C, msg_ghost)
-			C << 'sound/effects/sos-morse-code.ogg'
+			C << 'sound/effects/incoming-fax.ogg'
 
 
 /obj/structure/machinery/faxmachine/proc/send_fax(datum/fax/faxcontents)

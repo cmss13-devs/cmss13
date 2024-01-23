@@ -2,7 +2,7 @@ import { Component } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
 import { Button, Flex, Section, Box, Input, Dropdown } from '../components';
 import { Window } from '../layouts';
-import { globalEvents } from '../events.js';
+import { globalEvents } from '../events';
 
 const KEY_MODS = {
   'SHIFT': true,

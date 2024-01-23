@@ -732,15 +732,6 @@ GLOBAL_LIST_INIT_TYPED(allCasters, /obj/structure/machinery/newscaster, list()) 
 	if(istype(PH))
 		if(user.drop_inv_item_to_loc(photo, src))
 			photo = PH
-	else if(istype(user,/mob/living/silicon))
-		var/mob/living/silicon/tempAI = user
-		var/datum/picture/selection = tempAI.GetPicture()
-		if (!selection)
-			return
-
-		var/obj/item/photo/P = new/obj/item/photo()
-		P.construct(selection)
-		photo = P
 
 
 //########################################################################################################################

@@ -79,7 +79,7 @@ const useTargetSubmenu = (context, panelId: string) => {
   };
 };
 
-export const TargetLines = (props: { panelId: string }, context) => {
+export const TargetLines = (props: { readonly panelId: string }, context) => {
   const { data } = useBackend<
     EquipmentContext & FiremissionContext & TargetContext
   >(context);

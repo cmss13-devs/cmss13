@@ -166,7 +166,7 @@ nanoui is used to open and update nano browser uis
 		set_status(STATUS_INTERACTIVE, push_update) // interactive (green visibility)
 	else if (allowed_user_stat == -1 || user == src_object)
 		set_status(STATUS_INTERACTIVE, push_update) // interactive (green visibility)
-	else if (isrobot(user))
+	else if (isSilicon(user))
 		if (src_object in view(7, user)) // robots can see and interact with things they can see within 7 tiles
 			set_status(STATUS_INTERACTIVE, push_update) // interactive (green visibility)
 		else

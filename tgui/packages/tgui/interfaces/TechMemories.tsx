@@ -1,15 +1,41 @@
 import { useBackend, useLocalState } from '../backend';
-import { Button, Flex, Section, Box, Tabs, Fragment, LabeledList } from '../components';
+import { Button, Flex, Section, Box, Tabs, LabeledList } from '../components';
 import { Window } from '../layouts';
 
-export const TechMemories = (props, context) => {
-  const { act, data } = useBackend(context);
-  const [clueCategory, setClueCategory] = useLocalState(
-    context,
-    'clueCategory',
-    0
-  );
+type Clue = {
+  text: string;
+  itemID: string;
+  location: string;
+  color?: string;
+  color_name?: string;
+  key?: string;
+  key_text?: string;
+};
 
+type ClueCategory = {
+  name: string;
+  icon: string;
+  clues: Array<Clue>;
+};
+
+type ObjectiveData = {
+  label: string;
+  content_credits: string;
+  content: string;
+  content_color: string;
+};
+
+type TechProps = {
+  clue_categories: Array<ClueCategory>;
+  tech_points: number;
+  total_tech_points: number;
+  objectives: Array<ObjectiveData>;
+  theme: string;
+};
+
+export const TechMemories = () => {
+  const { config, data } = useBackend<TechProps>();
+  const [clueCategory, setClueCategory] = useLocalState('clueCategory', 0);
   const { tech_points, theme, clue_categories } = data;
 
   return (
@@ -46,7 +72,7 @@ export const TechMemories = (props, context) => {
   );
 };
 
-const CluesAdvanced = (props, context) => {
+const CluesAdvanced = (props: { readonly clues: Array<Clue> }) => {
   const { clues } = props;
 
   return (
@@ -73,12 +99,12 @@ const CluesAdvanced = (props, context) => {
                   </Box>
                 )}
                 {!!clue.key && (
-                  <Fragment>
+                  <>
                     {clue.key_text}
                     <Box inline bold>
                       {clue.key}
                     </Box>
-                  </Fragment>
+                  </>
                 )}
               </Flex.Item>
               <Flex.Item>{clue.location}</Flex.Item>
@@ -90,8 +116,8 @@ const CluesAdvanced = (props, context) => {
   );
 };
 
-const Objectives = (props, context) => {
-  const { data } = useBackend(context);
+const Objectives = (props) => {
+  const { data } = useBackend<TechProps>();
 
   return (
     <Section

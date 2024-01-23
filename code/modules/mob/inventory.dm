@@ -228,7 +228,7 @@
 //Remove an item on a mob's inventory.  It does not change the item's loc, just unequips it from the mob.
 //Used just before you want to delete the item, or moving it afterwards.
 /mob/proc/temp_drop_inv_item(obj/item/I, force)
-	return u_equip(I, null, force)
+	return u_equip(I, null, TRUE, force)
 
 
 //Outdated but still in use apparently. This should at least be a human proc.

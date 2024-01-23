@@ -30,12 +30,7 @@
 			if(!istype(behavior))
 				continue
 			new /datum/effects/xeno_buff(carbon, xeno, ttl = (0.25 SECONDS * behavior.kills + 3 SECONDS), bonus_damage = bonus_damage_scale * behavior.kills, bonus_speed = (bonus_speed_scale * behavior.kills))
-
-
-	for(var/mob/M in view(xeno))
-		if(M && M.client)
-			shake_camera(M, 10, 1)
-
+			
 	apply_cooldown()
 	return ..()
 
@@ -87,7 +82,7 @@
 					playsound(get_turf(human), "alien_claw_flesh", 30, 1)
 
 				human.apply_armoured_damage(get_xeno_damage_slash(human, base_damage_aoe + damage_scale_aoe * predalienbehavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
-			playsound(owner, 'sound/voice/predalien_growl.ogg', 75, 0, status = 0)
+			playsound(owner, 'sound/voice/predalien_death.ogg', 75, 0, status = 0)
 		REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Eviscerate"))
 		xeno.anchored = FALSE
 		apply_cooldown()
@@ -112,7 +107,7 @@
 			return
 		ADD_TRAIT(carbon, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Devastate"))
 		apply_cooldown()
-		
+
 		ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Devastate"))
 		xeno.anchored = TRUE
 

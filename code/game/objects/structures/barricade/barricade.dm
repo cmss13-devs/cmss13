@@ -177,9 +177,6 @@
 		return FALSE
 	return prob(max(30,(100.0*health)/maxhealth))
 
-/obj/structure/barricade/attack_robot(mob/user as mob)
-	return attack_hand(user)
-
 /obj/structure/barricade/attack_animal(mob/user as mob)
 	return attack_alien(user)
 
@@ -341,7 +338,7 @@
 
 /obj/structure/barricade/update_health(damage, nomessage)
 	health -= damage
-	health = Clamp(health, 0, maxhealth)
+	health = clamp(health, 0, maxhealth)
 
 	if(!health)
 		if(!nomessage)

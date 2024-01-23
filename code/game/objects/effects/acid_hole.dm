@@ -40,7 +40,7 @@
 
 
 /obj/effect/acid_hole/attack_alien(mob/living/carbon/xenomorph/user)
-	if (!holed_wall)
+	if(!holed_wall)
 		qdel(src) //no wall?! then cease existence...
 		return
 
@@ -48,6 +48,9 @@
 		if(user.mob_size >= MOB_SIZE_BIG)
 			expand_hole(user)
 			return XENO_NO_DELAY_ACTION
+
+/obj/effect/acid_hole/attack_larva(mob/living/carbon/xenomorph/larva/M)
+	attack_alien(M)
 
 /obj/effect/acid_hole/proc/expand_hole(mob/living/carbon/xenomorph/user)
 	if(user.action_busy || user.is_mob_incapacitated())

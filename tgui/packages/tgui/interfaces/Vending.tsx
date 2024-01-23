@@ -154,7 +154,7 @@ export const UserDetails = (props, context) => {
 /** Displays  products in a section, with user balance at top */
 const ProductDisplay = (
   props: {
-    selectedCategory: string | null;
+    readonly selectedCategory: string | null;
   },
   context
 ) => {
@@ -283,9 +283,9 @@ const CATEGORY_COLORS = {
 };
 
 const CategorySelector = (props: {
-  categories: Record<string, Category>;
-  selectedCategory: string;
-  onSelect: (category: string) => void;
+  readonly categories: Record<string, Category>;
+  readonly selectedCategory: string;
+  readonly onSelect: (category: string) => void;
 }) => {
   const { categories, selectedCategory, onSelect } = props;
 

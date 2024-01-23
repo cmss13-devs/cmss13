@@ -16,51 +16,43 @@
 	/// Typepath of the [/datum/behavior_delegate] to add.
 	var/behavior_delegate_type
 
-/// TODO: documentation
-/// Returns a bool indicating if the strain was successfully applied.
+/**
+ * Add this strain to `xeno`, replacing their actions and behavior holder.
+ *
+ * Returns a bool indicating if the strain was successfully applied.
+ */
 /datum/xeno_strain/proc/apply_strain(mob/living/carbon/xenomorph/xeno)
 	SHOULD_CALL_PARENT(TRUE)
 
 	xeno.strain = src
-	update_actions(xeno)
 	register_signals(xeno)
-	apply_behavior_holder(xeno)
-	update_mob(xeno)
 
-	xeno.hive.hive_ui.update_xeno_info()
-
-	to_chat(xeno, SPAN_XENOANNOUNCE(description))
-	if(flavor_description)
-		to_chat(xeno, SPAN_XENOLEADER(flavor_description))
-	return TRUE
-
-/// Update the `xeno`'s action buttons based on [/datum/xeno_strain/var/actions_to_remove] and [/datum/xeno_strain/var/actions_to_add].
-/datum/xeno_strain/proc/update_actions(mob/living/carbon/xenomorph/xeno)
+	// Update the xeno's actions.
 	for(var/action_path in actions_to_remove)
 		remove_action(xeno, action_path)
 	for(var/action_path in actions_to_add)
 		give_action(xeno, action_path)
 
+	// Update the xeno's behavior delegate.
+	if(behavior_delegate_type)
+		if(xeno.behavior_delegate)
+			qdel(xeno.behavior_delegate)
+		xeno.behavior_delegate = new behavior_delegate_type()
+		xeno.behavior_delegate.bound_xeno = xeno
+		xeno.behavior_delegate.add_to_xeno()
+
+	xeno.update_icons()
+	xeno.hive.hive_ui.update_xeno_info()
+
+	// Give them all the info about the strain.
+	to_chat(xeno, SPAN_XENOANNOUNCE(description))
+	if(flavor_description)
+		to_chat(xeno, SPAN_XENOLEADER(flavor_description))
+	return TRUE
+
 /// TODO: documentation
 /datum/xeno_strain/proc/register_signals(mob/living/carbon/xenomorph/xeno)
 	return
-
-/// TODO: documentation
-/datum/xeno_strain/proc/apply_behavior_holder(mob/living/carbon/xenomorph/xeno)
-	if(!behavior_delegate_type)
-		// don't need to do anything
-		return
-
-	if(xeno.behavior_delegate)
-		qdel(xeno.behavior_delegate)
-	xeno.behavior_delegate = new behavior_delegate_type()
-	xeno.behavior_delegate.bound_xeno = xeno
-	xeno.behavior_delegate.add_to_xeno()
-
-/// TODO: documentation
-/datum/xeno_strain/proc/update_mob(mob/living/carbon/xenomorph/xeno)
-	xeno.xeno_jitter(1.5 SECONDS)
-	xeno.update_icons()
 
 
 /mob/living/carbon/xenomorph/verb/purchase_strain()
@@ -68,27 +60,37 @@
 	set desc = "Purchase a strain for yourself"
 	set category = "Alien"
 
+	// Firstly, make sure the xeno is actually able to take a strain.
 	if(!can_take_strain())
 		return
 
-	var/strain_choice = tgui_input_list(usr, "Which strain would you like to take?", "Choose Strain", GLOB.xeno_strain_list, theme = "hive_status")
-	var/datum/xeno_strain/strain_path = GLOB.xeno_strain_list[strain_choice]
-	// Check again after the user has picked one.
+	// Make an assoc list of {name: typepath} from the strains available to the xeno's caste.
+	var/list/strain_list = list()
+	for(var/datum/xeno_strain/strain_type as anything in caste.available_strains)
+		strain_list[initial(strain_type.name)] = strain_type
+
+	// Ask the user which strain they want.
+	var/strain_choice = tgui_input_list(usr, "Which strain would you like to take?", "Choose Strain", strain_list, theme = "hive_status")
+	var/datum/xeno_strain/chosen_strain = strain_list[strain_choice]
+
+	// Check again after the user picks one, in case anything changed.
 	if(!can_take_strain())
 		return
 	// Show the user the strain's description, and double check that they want it.
-	if(alert(usr, "[initial(strain_path.description)]\n\nConfirm mutation?", "Choose Strain", "Yes", "No") != "Yes")
+	if(alert(usr, "[initial(chosen_strain.description)]\n\nConfirm mutation?", "Choose Strain", "Yes", "No") != "Yes")
 		return
 	// One more time after they confirm.
 	if(!can_take_strain())
 		return
 
-	var/datum/xeno_strain/strain_instance = new strain_path()
-	// Apply the strain to the xeno.
+	// Create the strain datum and apply it to the xeno.
+	var/datum/xeno_strain/strain_instance = new chosen_strain()
 	if(strain_instance.apply_strain(src))
-		// And log it if it was successful.
+		xeno_jitter(1.5 SECONDS)
+		// If it applied successfully, add it to the logs.
 		log_strain("[name] purchased strain '[strain_instance.type]'")
 
+/// Is this xeno currently able to take a strain?
 /mob/living/carbon/xenomorph/proc/can_take_strain()
 	if(!length(caste.available_strains) || !check_state(TRUE))
 		return FALSE

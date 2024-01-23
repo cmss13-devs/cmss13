@@ -63098,6 +63098,10 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_m_p)
+"rix" = (
+/obj/structure/prop/invuln/joey,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_s)
 "riE" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/warning_stripes{
@@ -118718,7 +118722,7 @@ uRM
 ipe
 ehR
 nsY
-aLf
+rix
 aLf
 tRc
 qEW

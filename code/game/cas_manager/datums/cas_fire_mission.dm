@@ -177,6 +177,21 @@
 
 	var/relative_dir
 	for(var/mob/mob in range(15, initial_turf))
+		if(get_turfmob) == initial_turf)
+			relative_dir = 0
+		else
+			relative_dir = Get_Compass_Dir(mob, initial_turf)
+
+		var/ds_identifier = "LARGE BIRD"
+		if (mob.mob_flags & KNOWS_TECHNOLOGY)
+			ds_identifier = "DROPSHIP"
+
+		mob.show_message( \
+			SPAN_HIGHDANGER("A [ds_identifier] FLIES [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
+			SPAN_HIGHDANGER("YOU HEAR SOMETHING GO [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
+		)
+	
+	for(var/mob/mob in range(15, initial_turf))
 		if(get_turf(mob) == initial_turf)
 			relative_dir = 0
 		else

@@ -257,3 +257,39 @@
   - bugfix: Fancy closet now works as desired and runtime free.
   - rscadd: Added an area for the closet to use instead of APC interior.
   - code_imp: Repathed /area/vehicle to /area/interior/vehicle.
+2024-01-20:
+  Drathek:
+  - bugfix: The M56D and the M2C now retain their labels when disassembled
+  - bugfix: The M56D can now be charger crushed when not fully assembled
+  - bugfix: The M56D being run over by a vehicle now undeploys the gun correctly (so
+      it retains the gun if it had a gun)
+  - bugfix: Fix an edge case that could duplicate the M56D when charger crushed
+  - balance: The M56D now retains the health of the gun through all of its different
+      disassembled states
+  - bugfix: Fixed mobs merged with weeds remaining ignited
+  SabreML:
+  - bugfix: Fixed the 'busy' circle icon being drawn above darkness and screen effects.
+2024-01-21:
+  ClairionCM:
+  - qol: made whistles less spammy
+  Huffie56:
+  - rscadd: 'Add some boards to the board vendor in engi on almayer(Air Alarm Electronics,
+      Security Camera Monitor,
+
+      Station Alerts, Arcade, Atmospheric Monitor).'
+  Releasethesea:
+  - rscadd: adds prescription variants of the orange, black, and M1A1 goggles
+  SabreML:
+  - rscadd: Made larvae and facehuggers able to use custom emotes.
+  Vicacrov:
+  - bugfix: Fixes engine/weapon attach points layering below the dropship walls.
+2024-01-22:
+  cuberound:
+  - balance: AP rocket applies 3 weaken and 3 paralyze no matter if you hit the mob
+      directly(from 2), at max range (from 2) or tile under it (from 4)
+  - balance: indirect AP rocket does the same damage to walls and mobs
+2024-01-23:
+  realforest2001:
+  - rscadd: Added Whitelist Panel for whitelist senators to manage their own whitelists.
+  - refactor: Whitelist.txt is no longer functional, owing to the new system.
+  - rscdel: Removed "Alien Whitelist" checks regarding base SS13 races.

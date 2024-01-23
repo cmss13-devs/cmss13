@@ -280,5 +280,5 @@
 
 /datum/behavior_delegate/crusher_base/on_update_icons()
 	if(bound_xeno.throwing || is_charging) //Let it build up a bit so we're not changing icons every single turf
-		bound_xeno.icon_state = "[bound_xeno.mutation_icon_state || bound_xeno.mutation_type] Crusher Charging"
+		bound_xeno.icon_state = "[bound_xeno.get_strain_icon()] Crusher Charging"
 		return TRUE

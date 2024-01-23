@@ -111,13 +111,14 @@
 		to_chat(src, SPAN_XENOWARNING("[target_xeno] is already at max health!"))
 		return
 
-///Tiny xenos (Larva and Facehuggers), don't need as much health so don't cost as much.
-	if(target_xeno.mob_size == 0)
+	//Tiny xenos (Larva and Facehuggers), don't need as much health so don't cost as much.
+	if(target_xeno.mob_size == MOB_SIZE_SMALL)
 		amount = amount * 0.15
 		damage_taken_mod = 1
 
-//Forces an equivalent exchange of health between healers so they do not spam heal each other to full health.
-	if(target_xeno.mutation_type == DRONE_HEALER)
+	//Forces an equivalent exchange of health between healers so they do not spam heal each other to full health.
+	var/target_is_healer = istype(target_xeno.strain, /datum/xeno_strain/healer)
+	if(target_is_healer)
 		damage_taken_mod = 1
 
 	face_atom(target_xeno)
@@ -132,7 +133,7 @@
 	playsound(src, "alien_drool", 25)
 	var/datum/behavior_delegate/drone_healer/healer_delegate = behavior_delegate
 	healer_delegate.salve_applied_recently = TRUE
-	if(target_xeno.mutation_type != DRONE_HEALER && !isfacehugger(target_xeno)) // no cheap grinding
+	if(!target_is_healer && !isfacehugger(target_xeno)) // no cheap grinding
 		healer_delegate.modify_transferred(amount * damage_taken_mod)
 	update_icons()
 	addtimer(CALLBACK(healer_delegate, /datum/behavior_delegate/drone_healer/proc/un_salve), 10 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)

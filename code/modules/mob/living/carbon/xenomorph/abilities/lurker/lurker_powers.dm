@@ -1,3 +1,35 @@
+/datum/action/xeno_action/activable/pounce/lurker/additional_effects_always()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!istype(xeno))
+		return
+
+	var/found = FALSE
+	for(var/mob/living/carbon/human/human in get_turf(xeno))
+		if(human.stat == DEAD)
+			continue
+		found = TRUE
+		break
+
+	if(found)
+		var/datum/action/xeno_action/onclick/lurker_invisibility/lurker_invis = get_xeno_action_by_type(xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
+		if(istype(lurker_invis))
+			lurker_invis.invisibility_off()
+
+/datum/action/xeno_action/activable/pounce/lurker/additional_effects(mob/living/living_mob)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!istype(xeno))
+		return
+
+	RegisterSignal(xeno, COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF, PROC_REF(remove_freeze), TRUE) // Suppresses runtime ever we pounce again before slashing
+
+/datum/action/xeno_action/activable/pounce/lurker/proc/remove_freeze(mob/living/carbon/xenomorph/xeno)
+	SIGNAL_HANDLER
+
+	var/datum/behavior_delegate/lurker_base/behaviour_del = xeno.behavior_delegate
+	if(istype(behaviour_del))
+		UnregisterSignal(xeno, COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF)
+		end_pounce_freeze()
+
 /datum/action/xeno_action/onclick/lurker_invisibility/use_ability(atom/targeted_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
 
@@ -16,9 +48,8 @@
 	xeno.speed_modifier -= speed_buff
 	xeno.recalculate_speed()
 
-	if (xeno.mutation_type == LURKER_NORMAL)
-		var/datum/behavior_delegate/lurker_base/behavior = xeno.behavior_delegate
-		behavior.on_invisibility()
+	var/datum/behavior_delegate/lurker_base/behavior = xeno.behavior_delegate
+	behavior.on_invisibility()
 
 	// if we go off early, this also works fine.
 	invis_timer_id = addtimer(CALLBACK(src, PROC_REF(invisibility_off)), duration, TIMER_STOPPABLE)
@@ -45,10 +76,9 @@
 		xeno.speed_modifier += speed_buff
 		xeno.recalculate_speed()
 
-		if (xeno.mutation_type == LURKER_NORMAL)
-			var/datum/behavior_delegate/lurker_base/behavior = xeno.behavior_delegate
-			if (istype(behavior))
-				behavior.on_invisibility_off()
+		var/datum/behavior_delegate/lurker_base/behavior = xeno.behavior_delegate
+		if (istype(behavior))
+			behavior.on_invisibility_off()
 
 /datum/action/xeno_action/onclick/lurker_invisibility/ability_cooldown_over()
 	to_chat(owner, SPAN_XENOHIGHDANGER("We are ready to use our invisibility again!"))
@@ -64,9 +94,6 @@
 		return
 
 	if (!check_and_use_plasma_owner())
-		return
-
-	if (xeno.mutation_type != LURKER_NORMAL)
 		return
 
 	var/datum/behavior_delegate/lurker_base/behavior = xeno.behavior_delegate

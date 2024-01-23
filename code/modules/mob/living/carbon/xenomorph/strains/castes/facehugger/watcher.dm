@@ -10,9 +10,15 @@
 		/datum/action/xeno_action/onclick/toggle_long_range/runner,
 	)
 
+	behavior_delegate_type = /datum/behavior_delegate/facehugger_watcher
+
 /datum/xeno_strain/watcher/apply_strain(mob/living/carbon/xenomorph/facehugger/huggy)
 	. = ..()
 
 	huggy.viewsize = 10
 	huggy.layer = initial(huggy.layer)
 	return TRUE
+
+// This has no special effects, it's just here to skip `/datum/behavior_delegate/facehugger_base/on_life()`.
+/datum/behavior_delegate/facehugger_watcher
+	name = "Watcher Facehugger Behavior Delegate"

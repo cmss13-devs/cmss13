@@ -5,9 +5,13 @@
 	xeno_icon_state = DEFENDER_STEELCREST
 
 	actions_to_remove = list(
+		/datum/action/xeno_action/activable/headbutt,
+		/datum/action/xeno_action/activable/fortify,
 		/datum/action/xeno_action/onclick/tail_sweep,
 	)
 	actions_to_add = list(
+		/datum/action/xeno_action/activable/headbutt/steel_crest,
+		/datum/action/xeno_action/activable/fortify/steel_crest,
 		/datum/action/xeno_action/onclick/soak,
 	)
 

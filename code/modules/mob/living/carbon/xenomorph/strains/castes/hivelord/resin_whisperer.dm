@@ -58,12 +58,9 @@
 	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/activable/secrete_resin/remote/use_ability(atom/target_atom, mods)
-	var/mob/living/carbon/xenomorph/xeno_owner = owner
-	if(xeno_owner.mutation_type == HIVELORD_RESIN_WHISPERER)
-		var/mob/living/carbon/xenomorph/hivelord/hivelord_mob = owner
-		if(!hivelord_mob.on_weeds()) // There is a chance that queen can't place down buildings in ovi build view so we place the rein whisperer check here.
-			to_chat(owner, SPAN_XENONOTICE("We must be standing on weeds to establish a connection to the resin."))
-			return
+	if(!can_remote_build())
+		to_chat(owner, SPAN_XENONOTICE("We must be standing on weeds to establish a connection to the resin."))
+		return
 
 	if(!action_cooldown_check())
 		return
@@ -103,6 +100,12 @@
 	target_turf.visible_message(SPAN_XENONOTICE("The weeds begin pulsating wildly and secrete resin in the shape of \a [resing_construction.construction_name]!"), null, 5)
 	to_chat(owner, SPAN_XENONOTICE("We focus our plasma into the weeds below us and force the weeds to secrete resin in the shape of \a [resing_construction.construction_name]."))
 	playsound(target_turf, "alien_resin_build", 25)
+	return TRUE
+
+// By default, the xeno must be on a weed tile in order to build from a distance.
+/datum/action/xeno_action/activable/secrete_resin/remote/proc/can_remote_build()
+	if(!locate(/obj/effect/alien/weeds) in get_turf(owner))
+		return FALSE
 	return TRUE
 
 /datum/action/xeno_action/verb/verb_coerce_resin()

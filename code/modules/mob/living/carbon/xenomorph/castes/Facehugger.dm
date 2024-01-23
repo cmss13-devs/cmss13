@@ -58,6 +58,8 @@
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
 
+	behavior_delegate = /datum/behavior_delegate/facehugger_base
+
 	icon_xeno = 'icons/mob/xenos/facehugger.dmi'
 	icon_xenonid = 'icons/mob/xenonids/facehugger.dmi'
 
@@ -75,34 +77,16 @@
 	if(stat == DEAD)
 		return ..()
 
-	if(body_position == STANDING_UP && !(mutation_type == FACEHUGGER_WATCHER) && !(locate(/obj/effect/alien/weeds) in get_turf(src)))
-		adjustBruteLoss(1)
-		return ..()
-
 	if(!client && !aghosted && away_timer > XENO_FACEHUGGER_LEAVE_TIMER)
 		// Become a npc once again
 		new /obj/item/clothing/mask/facehugger(loc, hivenumber)
 		qdel(src)
 	return ..()
 
-/mob/living/carbon/xenomorph/facehugger/update_icons(is_pouncing)
-	if(!caste)
-		return
-
-	if(stat == DEAD)
-		icon_state = "[mutation_type] [caste.caste_type] Dead"
-	else if(body_position == LYING_DOWN)
-		if(!HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED))
-			icon_state = "[mutation_type] [caste.caste_type] Sleeping"
-		else
-			icon_state = "[mutation_type] [caste.caste_type] Knocked Down"
-	else if(is_pouncing)
-		icon_state = "[mutation_type] [caste.caste_type] Thrown"
-	else
-		icon_state = "[mutation_type] [caste.caste_type] Running"
-
-	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
-	update_wounds()
+/mob/living/carbon/xenomorph/facehugger/update_icons()
+	. = ..()
+	if(throwing)
+		icon_state = "[get_strain_icon()] [caste.caste_type] Thrown"
 
 /mob/living/carbon/xenomorph/facehugger/start_pulling(atom/movable/AM)
 	return
@@ -235,3 +219,10 @@
 		. += "Lifetime Hugs: [total_facehugs] / [next_facehug_goal]"
 	else
 		. += "Lifetime Hugs: [total_facehugs]"
+
+/datum/behavior_delegate/facehugger_base
+	name = "Base Facehugger Behavior Delegate"
+
+/datum/behavior_delegate/facehugger_base/on_life()
+	if(bound_xeno.body_position == STANDING_UP && !(locate(/obj/effect/alien/weeds) in get_turf(src)))
+		bound_xeno.adjustBruteLoss(1)

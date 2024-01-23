@@ -50,6 +50,10 @@
 	. = list()
 	. += "Eggs sustained: [length(eggs_sustained)] / [egg_sustain_cap]"
 
+/datum/behavior_delegate/carrier_eggsac/on_update_icons()
+	var/mob/living/carbon/xenomorph/carrier/bound_carrier = bound_xeno
+	bound_carrier.update_eggsac_overlays()
+
 /datum/behavior_delegate/carrier_eggsac/on_life()
 	if(length(eggs_sustained) > egg_sustain_cap)
 		var/obj/effect/alien/egg/carrier_egg/my_egg = eggs_sustained[1]
@@ -64,6 +68,10 @@
 			my_egg.last_refreshed = world.time
 		else
 			my_egg.check_decay()
+
+/datum/behavior_delegate/carrier_eggsac/handle_death(mob/M)
+	M.visible_message(SPAN_XENOWARNING("[M] throes as its eggsac bursts into a mess of acid!"))
+	playsound(M.loc, 'sound/effects/alien_egg_burst.ogg', 25, TRUE)
 
 ///Remove owner of egg
 /datum/behavior_delegate/carrier_eggsac/proc/remove_egg_owner(obj/effect/alien/egg/carrier_egg/egg)

@@ -78,6 +78,8 @@
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
 
+	behavior_delegate = /datum/behavior_delegate/carrier_base
+
 	icon_xenonid = 'icons/mob/xenonids/carrier.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
@@ -96,17 +98,8 @@
 	var/eggs_max = 0
 	var/laid_egg = 0
 
-/mob/living/carbon/xenomorph/carrier/update_icons()
-	. = ..()
-	if (mutation_type == CARRIER_NORMAL)
-		update_hugger_overlays()
-	if (mutation_type == CARRIER_EGGSAC)
-		update_eggsac_overlays()
-
 /mob/living/carbon/xenomorph/carrier/proc/update_hugger_overlays()
 	if(!hugger_overlays_icon)
-		return
-	if(mutation_type != CARRIER_NORMAL)
 		return
 
 	overlays -= hugger_overlays_icon
@@ -147,8 +140,6 @@
 /mob/living/carbon/xenomorph/carrier/proc/update_eggsac_overlays()
 	if(!eggsac_overlays_icon)
 		return
-	if(mutation_type != CARRIER_EGGSAC)
-		return
 
 	overlays -= eggsac_overlays_icon
 	eggsac_overlays_icon.overlays.Cut()
@@ -185,9 +176,6 @@
 	. = ..(cause, gibbed)
 	if(.)
 		var/chance = 75 //75% to drop an egg or hugger.
-		if(mutation_type == CARRIER_EGGSAC)
-			visible_message(SPAN_XENOWARNING("[src] throes as its eggsac bursts into a mess of acid!"))
-			playsound(src.loc, 'sound/effects/alien_egg_burst.ogg', 25, 1)
 
 		if(huggers_cur)
 			//Hugger explosion, like an egg morpher
@@ -403,3 +391,10 @@
 		return
 	GLOB.hive_datum[hivenumber].spawn_as_hugger(user, src)
 	huggers_cur--
+
+/datum/behavior_delegate/carrier_base
+	name = "Base Carrier Behavior Delegate"
+
+/datum/behavior_delegate/carrier_base/on_update_icons()
+	var/mob/living/carbon/xenomorph/carrier/bound_carrier = bound_xeno
+	bound_carrier.update_hugger_overlays()

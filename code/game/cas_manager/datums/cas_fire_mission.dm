@@ -194,7 +194,7 @@
 	// Xenos have time to react to the first message
 	sleep(1.5 SECONDS)
 
-	for(var/mob/mob in range(15, initial_turf))
+	for(var/mob/mob in range(10, initial_turf))
 		if(get_turf(mob) == initial_turf)
 			relative_dir = 0
 		else

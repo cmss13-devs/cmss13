@@ -277,11 +277,15 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 	if(used > amount) //If it's larger than what we have, no go.
 		return FALSE
 	amount -= used
-	update_icon()
 	if(amount <= 0)
-		if(usr && loc == usr)
-			usr.temp_drop_inv_item(src)
+		if(loc == usr)
+			usr?.temp_drop_inv_item(src)
+		else if(isstorage(loc))
+			var/obj/item/storage/storage = loc
+			storage.remove_from_storage(src)
 		qdel(src)
+	else
+		update_icon()
 	return TRUE
 
 /obj/item/stack/proc/add(extra)

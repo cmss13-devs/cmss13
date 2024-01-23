@@ -261,13 +261,7 @@
 	change_current_loc(target_turf)
 	playsound(source = target_turf, soundin = soundeffect, vol = 70, vary = TRUE, sound_range = 50, falloff = 8)
 
-	var/relative_dir
 	for(var/mob/mob in range(15, target_turf))
-		if(get_turf(mob) == target_turf)
-			relative_dir = 0
-		else
-			relative_dir = Get_Compass_Dir(mob, target_turf)
-
 		var/ds_identifier = "LARGE BIRD"
 		var/fm_identifier = "SPIT FIRE"
 		if (mob.mob_flags & KNOWS_TECHNOLOGY)

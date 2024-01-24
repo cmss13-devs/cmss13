@@ -98,7 +98,7 @@
 /area/corsat/gamma/sigmaremote)
 "aat" = (
 /obj/structure/surface/rack,
-/obj/structure/prop/mech/drill,
+/obj/structure/prop_mech/drill,
 /turf/open/floor/corsat{
 	icon_state = "yellow"
 	},
@@ -25983,7 +25983,7 @@
 	},
 /area/corsat/omega/containment)
 "buY" = (
-/obj/structure/prop/mech/drill,
+/obj/structure/prop_mech/drill,
 /turf/open/floor/corsat,
 /area/corsat/sigma/south/robotics)
 "buZ" = (
@@ -26688,7 +26688,7 @@
 /area/corsat/gamma/sigmaremote)
 "bxm" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/prop/mech/tesla_energy_relay,
+/obj/structure/prop_mech/tesla_energy_relay,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "yellow"
@@ -26721,7 +26721,7 @@
 	},
 /area/corsat/sigma/south/robotics)
 "bxr" = (
-/obj/structure/prop/mech/parts/part/durand_head,
+/obj/structure/prop_mech/parts/part/durand_head,
 /turf/open/floor/corsat{
 	icon_state = "arrow_north"
 	},
@@ -26736,20 +26736,20 @@
 /area/corsat/sigma/south/robotics)
 "bxt" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/prop/mech/armor_booster,
+/obj/structure/prop_mech/armor_booster,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "yellow"
 	},
 /area/corsat/sigma/south/robotics)
 "bxu" = (
-/obj/structure/prop/mech/parts/part/durand_right_arm,
+/obj/structure/prop_mech/parts/part/durand_right_arm,
 /turf/open/floor/corsat{
 	icon_state = "arrow_west"
 	},
 /area/corsat/sigma/south/robotics)
 "bxv" = (
-/obj/structure/prop/mech/parts/part/durand_torso,
+/obj/structure/prop_mech/parts/part/durand_torso,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},
@@ -26779,7 +26779,7 @@
 	},
 /area/corsat/sigma/south/robotics)
 "bxA" = (
-/obj/structure/prop/mech/parts/part/durand_left_leg,
+/obj/structure/prop_mech/parts/part/durand_left_leg,
 /turf/open/floor/corsat{
 	icon_state = "arrow_east"
 	},
@@ -26790,7 +26790,7 @@
 /area/corsat/sigma/south/robotics)
 "bxC" = (
 /obj/structure/surface/rack,
-/obj/structure/prop/mech/hydralic_clamp,
+/obj/structure/prop_mech/hydralic_clamp,
 /turf/open/floor/corsat{
 	dir = 10;
 	icon_state = "yellow"
@@ -55516,7 +55516,7 @@
 	},
 /area/corsat/gamma/hallwaysouth)
 "qLz" = (
-/obj/structure/prop/mech/tesla_energy_relay,
+/obj/structure/prop_mech/tesla_energy_relay,
 /turf/open/floor/corsat,
 /area/corsat/sigma/south/robotics)
 "qLE" = (

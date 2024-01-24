@@ -4669,7 +4669,7 @@
 	},
 /area/lv624/lazarus/robotics)
 "axk" = (
-/obj/structure/prop/mech/armor_booster,
+/obj/structure/prop_mech/armor_booster,
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/plating{
 	icon_state = "platebot"
@@ -5168,7 +5168,7 @@
 	},
 /area/lv624/lazarus/robotics)
 "azb" = (
-/obj/structure/prop/mech/parts/part/gygax_torso,
+/obj/structure/prop_mech/parts/part/gygax_torso,
 /turf/open/floor{
 	icon_state = "vault"
 	},
@@ -5516,7 +5516,7 @@
 	},
 /area/lv624/lazarus/robotics)
 "aAk" = (
-/obj/structure/prop/mech/parts/chassis/gygax,
+/obj/structure/prop_mech/parts/chassis/gygax,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "vault"
@@ -5867,7 +5867,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
 "aBp" = (
-/obj/structure/prop/mech/tesla_energy_relay{
+/obj/structure/prop_mech/tesla_energy_relay{
 	layer = 2.5
 	},
 /obj/structure/largecrate/random,
@@ -5878,7 +5878,7 @@
 /area/lv624/lazarus/robotics)
 "aBq" = (
 /obj/structure/largecrate,
-/obj/structure/prop/mech/repair_droid{
+/obj/structure/prop_mech/repair_droid{
 	layer = 2;
 	pixel_y = -10
 	},
@@ -6032,7 +6032,7 @@
 /area/lv624/ground/jungle/central_jungle)
 "aBR" = (
 /obj/structure/largecrate,
-/obj/structure/prop/mech/parts/part/gygax_armor{
+/obj/structure/prop_mech/parts/part/gygax_armor{
 	layer = 1
 	},
 /turf/open/floor/plating{
@@ -7462,7 +7462,7 @@
 /area/lv624/lazarus/toilet)
 "aGK" = (
 /obj/structure/surface/table,
-/obj/structure/prop/mech/drill,
+/obj/structure/prop_mech/drill,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
@@ -7564,7 +7564,7 @@
 	dir = 4
 	},
 /obj/structure/surface/table,
-/obj/structure/prop/mech/hydralic_clamp,
+/obj/structure/prop_mech/hydralic_clamp,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/plating{
 	icon_state = "platebot"
@@ -12243,7 +12243,7 @@
 /area/lv624/lazarus/comms)
 "aZL" = (
 /obj/structure/surface/rack,
-/obj/structure/prop/mech/drill,
+/obj/structure/prop_mech/drill,
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
 "aZM" = (

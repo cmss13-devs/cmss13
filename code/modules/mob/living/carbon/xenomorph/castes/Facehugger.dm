@@ -10,6 +10,7 @@
 	speed = XENO_SPEED_TIER_8
 
 	available_strains = list(/datum/xeno_strain/watcher)
+	behavior_delegate_type = /datum/behavior_delegate/facehugger_base
 
 	evolution_allowed = FALSE
 	can_be_revived = FALSE
@@ -57,8 +58,6 @@
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
-
-	behavior_delegate = /datum/behavior_delegate/facehugger_base
 
 	icon_xeno = 'icons/mob/xenos/facehugger.dmi'
 	icon_xenonid = 'icons/mob/xenonids/facehugger.dmi'

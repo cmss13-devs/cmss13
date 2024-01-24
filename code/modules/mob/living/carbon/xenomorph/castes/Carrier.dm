@@ -15,6 +15,7 @@
 	speed = XENO_SPEED_TIER_4
 
 	available_strains = list(/datum/xeno_strain/eggsac)
+	behavior_delegate_type = /datum/behavior_delegate/carrier_base
 
 	evolution_allowed = FALSE
 	deevolves_to = list(XENO_CASTE_DRONE)
@@ -77,8 +78,6 @@
 		/mob/living/carbon/xenomorph/proc/rename_tunnel,
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
-
-	behavior_delegate = /datum/behavior_delegate/carrier_base
 
 	icon_xenonid = 'icons/mob/xenonids/carrier.dmi'
 

@@ -102,6 +102,10 @@
 	if(!length(caste.available_strains) || !check_state(TRUE))
 		return FALSE
 
+	if(strain)
+		to_chat(src, SPAN_WARNING("We have already chosen a strain."))
+		return FALSE
+
 	if(is_ventcrawling)
 		to_chat(src, SPAN_WARNING("This place is too constraining to take a strain."))
 		return FALSE

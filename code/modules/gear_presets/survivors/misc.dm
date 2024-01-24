@@ -297,6 +297,8 @@ Everything below isn't used or out of place.
 
 // ----- Hostile Survivors
 
+/// used in Shivas Snowball
+
 /datum/equipment_preset/survivor/clf/cold
 
 //children of spawn rebel shoes proc

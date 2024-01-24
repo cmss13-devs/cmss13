@@ -552,7 +552,7 @@
 	user.overwatch(user.hive.living_xeno_queen)
 
 // Reset to the defaults
-/atom/movable/screen/queen_locator/proc/stop_tracking()
+/atom/movable/screen/queen_locator/proc/reset_tracking()
 	icon_state = "trackoff"
 	tracking_ref = null
 	tracker_type = TRACKER_QUEEN

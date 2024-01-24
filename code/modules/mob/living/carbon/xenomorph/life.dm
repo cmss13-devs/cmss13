@@ -396,7 +396,7 @@ Make sure their actual health updates immediately.*/
 
 	var/atom/movable/screen/queen_locator/locator = hud_used.locate_leader
 	if(!loc || !hive)
-		locator.stop_tracking()
+		locator.reset_tracking()
 		return
 
 	var/atom/tracking_atom
@@ -413,8 +413,17 @@ Make sure their actual health updates immediately.*/
 		if(TRACKER_TUNNEL)
 			tracking_atom = locator.tracking_ref?.resolve()
 
+	// If the atom can't be found/has been deleted.
 	if(!tracking_atom)
-		locator.stop_tracking()
+		var/already_tracking_queen = (locator.tracker_type == TRACKER_QUEEN)
+
+		// Reset the tracker back to the queen.
+		locator.reset_tracking()
+
+		// If it wasn't the queen that couldn't be found above, try again with her as the target.
+		// (There's no risk of an infinite loop here since `locator.tracker_type` just got set to `TRACKER_QUEEN`.)
+		if(!already_tracking_queen)
+			queen_locator()
 		return
 
 	if(tracking_atom.loc.z != loc.z || get_dist(src, tracking_atom) < 1 || src == tracking_atom)

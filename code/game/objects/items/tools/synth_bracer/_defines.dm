@@ -18,7 +18,7 @@
 
 /// Synth self-repair
 #define SIMI_ABILITY_REPAIR "repair"
-#define SIMI_REPAIR_COST 100
+#define SIMI_REPAIR_COST 50
 
 /// Synth fortify, enforced stationary
 #define SIMI_ABILITY_ANCHOR "anchor"

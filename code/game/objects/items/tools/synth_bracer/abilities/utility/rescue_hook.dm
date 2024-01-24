@@ -2,7 +2,7 @@
 	name = "Rescue Hook"
 	action_icon_state = "hook"
 	cooldown = 5 SECONDS
-	charge_cost = 90
+	charge_cost = 65
 
 	handles_cooldown = TRUE
 	handles_charge_cost = TRUE

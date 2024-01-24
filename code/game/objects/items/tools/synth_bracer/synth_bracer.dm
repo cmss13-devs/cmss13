@@ -353,6 +353,9 @@
 	if(!do_after(user, 6 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		stop_charging(user)
 		return
+	if(!user.Adjacent(apc) || (user.gloves != src))
+		stop_charging(user)
+		return
 
 	playsound(apc.loc, 'sound/effects/sparks2.ogg', 25, 1)
 

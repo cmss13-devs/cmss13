@@ -816,6 +816,8 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 					if(!do_after(grabber, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 						return
+					if(!grabber.Adjacent(src) || (grabber.back != s_pack))
+						return
 
 					playsound(src.loc, 'sound/effects/sparks2.ogg', 25, 1)
 

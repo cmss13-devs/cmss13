@@ -18,7 +18,7 @@
 	set_active(category, SIMI_ABILITY_REPAIR)
 	synth.visible_message(SPAN_WARNING("[synth_bracer.name] beeps, \"Engaging the repairing process.\""), SPAN_WARNING("[synth_bracer.name] beeps, \"Beginning to carefully examine your sustained damage.\""))
 	playsound(synth.loc, 'sound/mecha/mechmove04.ogg', 25, TRUE)
-	if(!do_after(synth, 5 SECONDS, INTERRUPT_INCAPACITATED|INTERRUPT_CLICK, BUSY_ICON_FRIENDLY))
+	if(!do_after(synth, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		to_chat(synth, SPAN_DANGER("[synth_bracer.name] beeps, \"Repair process was cancelled.\""))
 		set_inactive(category)
 		return

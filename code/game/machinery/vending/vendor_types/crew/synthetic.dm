@@ -350,6 +350,7 @@ GLOBAL_LIST_INIT(cm_vending_synth_tools, list(
 	list("PK-130 Protection Mode", 7, /obj/item/device/simi_chip/protect, null, VENDOR_ITEM_REGULAR),
 	list("PK-130 Anchor Mode", 7, /obj/item/device/simi_chip/anchor, null, VENDOR_ITEM_REGULAR),
 	list("PK-130 Motion Detector", 7, /obj/item/device/simi_chip/motion_detector, null, VENDOR_ITEM_REGULAR),
+	list("PK-130 Recovery Hook", 15, /obj/item/device/simi_chip/rescue_hook, null, VENDOR_ITEM_REGULAR),
 
 	list("UTILITY & SELF DEFENSE TOOLS", 0, null, null, null),
 	list("Telescopic Baton", 15, /obj/item/weapon/telebaton, null, VENDOR_ITEM_REGULAR),

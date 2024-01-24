@@ -1,0 +1,4 @@
+author: "TheGamerdk"
+delete-after: True
+changes:
+  - rscadd: "A hive collapse (No new Queen) while at 3 xenos or below is now a marine major, instead of a minor."

@@ -676,7 +676,7 @@
 	if(iff_tag)
 		. += SPAN_NOTICE("It has an IFF tag sticking out of its carapace.")
 	if(organ_removed)
-		. += "It seems to have its organ removed."
+		. += "It seems to have its carapace cut open."
 
 /mob/living/carbon/xenomorph/Destroy()
 	GLOB.living_xeno_list -= src

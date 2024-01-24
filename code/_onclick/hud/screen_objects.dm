@@ -519,15 +519,12 @@
 		return FALSE
 	if(mods["alt"])
 		var/list/options = list()
-		/* ---- Queen ---- */
 		if(user.hive.living_xeno_queen)
 			options["Queen"] = list(TRACKER_QUEEN, 0)
 
-		/* ---- Hive Core ---- */
 		if(user.hive.hive_location)
 			options["Hive Core"] = list(TRACKER_HIVE, 0)
 
-		/* ---- Leaders ---- */
 		var/xeno_leader_index = 1
 		for(var/xeno in user.hive.xeno_leader_list)
 			var/mob/living/carbon/xenomorph/xeno_lead = user.hive.xeno_leader_list[xeno_leader_index]
@@ -535,22 +532,11 @@
 				options["Xeno Leader [xeno_lead]"] = list(TRACKER_LEADER, xeno_leader_index)
 			xeno_leader_index++
 
-		/* ---- Tunnels ---- */
-		// Assoc list of '{tunnel: the tunnel's index in `hive.tunnels`}'.
-		var/list/tunnel_to_index = list()
-		for(var/I in 1 to length(user.hive.tunnels))
-			tunnel_to_index[user.hive.tunnels[I]] = I
-
-		// A copy of `hive.tunnels`, but sorted by each tunnel's distance to the user.
 		var/list/sorted_tunnels = sort_list_dist(user.hive.tunnels, get_turf(user))
-
-		// The `tunnel_to_index` assoc list, but in the order of `sorted_tunnels`.
-		var/list/sorted_tunnel_to_index = list()
-		for(var/tunnel in sorted_tunnels)
-			sorted_tunnel_to_index[tunnel] = tunnel_to_index[tunnel]
-
-		for(var/obj/structure/tunnel/tunnel in sorted_tunnel_to_index)
-			options["Tunnel [tunnel.tunnel_desc]"] = list(TRACKER_TUNNEL, sorted_tunnel_to_index[tunnel])
+		var/tunnel_index = 1
+		for(var/obj/structure/tunnel/tunnel in sorted_tunnels)
+			options["Tunnel [tunnel.tunnel_desc]"] = list(TRACKER_TUNNEL, tunnel_index)
+			tunnel_index++
 
 		var/selected = tgui_input_list(user, "Select what you want the locator to track.", "Locator Options", options)
 		if(selected)

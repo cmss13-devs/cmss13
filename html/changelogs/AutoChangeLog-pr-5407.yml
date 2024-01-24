@@ -1,5 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Psychic Whisper now broadcasts to deadchat too."
-  - bugfix: "Psychic Whisper can now be used while lying down."

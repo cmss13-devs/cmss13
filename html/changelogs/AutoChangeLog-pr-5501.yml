@@ -1,6 +1,0 @@
-author: "private-tristan"
-delete-after: True
-changes:
-  - rscadd: "Added a new xeno tip about where to target."
-  - spellcheck: "changed a few tips' wording."
-  - rscdel: "Removed an outdated xeno tip about slashing NVGs"

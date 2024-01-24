@@ -1,10 +1,9 @@
-import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
 import { Button, LabeledList, Section, NoticeBox } from '../components';
 import { Window } from '../layouts';
 
-export const Wires = (props, context) => {
-  const { act, data } = useBackend(context);
+export const Wires = (props) => {
+  const { act, data } = useBackend();
   const { proper_name } = data;
   const wires = data.wires || [];
   return (
@@ -23,7 +22,7 @@ export const Wires = (props, context) => {
                 className="candystripe"
                 label={data.wire_descs[wire.number - 1]}
                 buttons={
-                  <Fragment>
+                  <>
                     <Button
                       width="60px"
                       color={wire.cut ? 'green' : 'red'}
@@ -53,7 +52,7 @@ export const Wires = (props, context) => {
                         })
                       }
                     />
-                  </Fragment>
+                  </>
                 }>
                 {!!wire.wire && <i>({wire.wire})</i>}
               </LabeledList.Item>

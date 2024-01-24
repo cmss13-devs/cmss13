@@ -14,7 +14,7 @@ import { setupHotReloading } from 'tgui-dev-server/link/client.cjs';
 import { setupGlobalEvents } from 'tgui/events';
 import { captureExternalLinks } from 'tgui/links';
 import { createRenderer } from 'tgui/renderer';
-import { configureStore, StoreProvider } from 'tgui/store';
+import { configureStore } from 'tgui/store';
 import { audioMiddleware, audioReducer } from './audio';
 import { chatMiddleware, chatReducer } from './chat';
 import { gameMiddleware, gameReducer } from './game';
@@ -22,6 +22,7 @@ import { setupPanelFocusHacks } from './panelFocus';
 import { pingMiddleware, pingReducer } from './ping';
 import { settingsMiddleware, settingsReducer } from './settings';
 import { telemetryMiddleware } from './telemetry';
+import { setGlobalStore } from 'tgui/backend';
 
 perf.mark('inception', window.performance?.timing?.navigationStart);
 perf.mark('init');
@@ -47,12 +48,10 @@ const store = configureStore({
 });
 
 const renderApp = createRenderer(() => {
+  setGlobalStore(store);
+
   const { Panel } = require('./Panel');
-  return (
-    <StoreProvider store={store}>
-      <Panel />
-    </StoreProvider>
-  );
+  return <Panel />;
 });
 
 const setupApp = () => {

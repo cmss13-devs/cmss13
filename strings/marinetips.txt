@@ -80,15 +80,15 @@ You can shoot through tents, but they won't protect you much in return.
 Reqs doesn't have an infinite budget.
 Good Reqs can land supplies anywhere outside - given coords - and sometimes in a minimal amount of time.
 A ‘point blank’ or ‘PB’ is a type of attack with a firearm where you click directly on a mob next to you. These attacks are not effected by accuracy allowing you to quickly fire with weapons like a shotgun to great effect.
-Intel Officers can be put in a squad by going to CIC and requesting it.
+Intel Officers can be put in a different squad by going to CIC and requesting it.
 Any marine can perform CPR. On dead marines, this will increase the time they have until they become unrevivable.
 If you've been pounced on and your squad is unloading into the target, you can hit the 'rest' button to stay down so you don't get filled with lead after getting up.
 You can check the landing zone as a marine in the status panel.
 The Colonial Marshals may come to crack down on too heavy of a Black Market usage.
-Functioning night vision goggles can be recharged with batteries. Broken night vision goggles can be repaired by an Engineer with a screwdriver. Not the loadout ones though, those cannot be fixed.
+A night vision HUD optic can be recharged by removing it with a screwdriver, then placing it into a recharger.
 You can put a pistol belt on your suit slot. (Just grab a rifle instead.)
 Alt-clicking the Squad Leader tracker lets you track your fireteam leader instead.
-Armor has a randomized reduction in effectiveness, and does not protect the digits. Take the wiki damage values as a best-case scenario.
+Armor consistently protects you from damage to your chest, arms, and legs, but does not protect hands and feet. Take the wiki damage values as a best-case scenario.
 You can click on your Security Access Tuner (multitool) in your hand to locate the area's APC if there is one.
 Need help learning the game and these tips aren't enough? Use MentorHelp or try to get ahold of your ship's Senior Enlisted Advisor.
 Clicking on your sprite with help intent will let you check your body, seeing where your fractures and other wounds are.

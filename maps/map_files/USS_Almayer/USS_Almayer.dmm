@@ -12293,19 +12293,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/stern_hallway)
-"aYm" = (
-/obj/structure/sign/safety/med_life_support{
-	pixel_x = 15;
-	pixel_y = 32
-	},
-/obj/structure/sign/safety/hazard{
-	pixel_y = 32
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "sterile_green_side"
-	},
-/area/almayer/medical/lower_medical_medbay)
 "aYn" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -12611,15 +12598,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hallways/hangar)
-"aZM" = (
-/obj/structure/surface/rack,
-/obj/item/storage/firstaid/adv/empty,
-/obj/item/storage/firstaid/adv/empty,
-/obj/item/storage/firstaid/adv/empty,
-/turf/open/floor/almayer{
-	icon_state = "sterile_green_corner"
-	},
-/area/almayer/medical/lower_medical_medbay)
 "aZO" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo,
 /turf/open/floor/almayer{
@@ -13828,10 +13806,7 @@
 /obj/structure/machinery/photocopier{
 	anchored = 0
 	},
-/obj/structure/sign/poster{
-	desc = "A large piece of cheap printed paper. This one proudly demands that you REMEMBER IO!";
-	icon_state = "poster14";
-	name = "propaganda poster";
+/obj/structure/sign/poster/art{
 	pixel_y = 32
 	},
 /turf/open/floor/wood/ship,
@@ -17731,11 +17706,9 @@
 	},
 /area/almayer/squads/req)
 "bEt" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/structure/sign/safety/commline_connection{
-	pixel_y = 32
+/obj/structure/noticeboard{
+	pixel_x = -10;
+	pixel_y = 31
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -17960,10 +17933,6 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/weapon_room)
-"bFb" = (
-/obj/structure/foamed_metal,
-/turf/open/floor/plating,
-/area/almayer/medical/lower_medical_medbay)
 "bFj" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -21250,6 +21219,15 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/living/chapel)
+"bWF" = (
+/obj/structure/machinery/door/airlock/almayer/medical{
+	dir = 1;
+	name = "Medical Storage"
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "bWJ" = (
 /obj/structure/machinery/shower{
 	dir = 4
@@ -23184,17 +23162,6 @@
 	icon_state = "red"
 	},
 /area/almayer/hallways/port_hallway)
-"cjz" = (
-/obj/structure/bed/chair/bolted{
-	dir = 1
-	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/shipboard/brig/perma)
 "cjA" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -28870,13 +28837,8 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/structure/sign/poster{
-	desc = "Koorlander Golds, lovingly machine rolled for YOUR pleasure.";
-	icon_state = "poster10";
-	name = "Koorlander Gold Poster";
-	pixel_x = 29;
-	pixel_y = 6;
-	serial_number = 10
+/obj/structure/sign/poster/ad{
+	pixel_x = 30
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
@@ -30535,30 +30497,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_s)
-"eIT" = (
-/obj/structure/surface/table/almayer,
-/obj/item/book/manual/engineering_particle_accelerator,
-/obj/item/folder/yellow,
-/obj/structure/machinery/keycard_auth{
-	pixel_x = -8;
-	pixel_y = 25
-	},
-/obj/structure/sign/safety/high_rad{
-	pixel_x = 32;
-	pixel_y = -8
-	},
-/obj/structure/sign/safety/hazard{
-	pixel_x = 32;
-	pixel_y = 7
-	},
-/obj/structure/sign/safety/terminal{
-	pixel_x = 14;
-	pixel_y = 26
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/engineering/lower/workshop)
 "eJd" = (
 /obj/structure/platform_decoration{
 	dir = 4
@@ -30742,14 +30680,13 @@
 /turf/open/floor/almayer,
 /area/almayer/engineering/upper_engineering/port)
 "eNw" = (
-/obj/structure/machinery/atm{
-	name = "Weyland-Yutani Automatic Teller Machine";
-	pixel_y = 30
-	},
 /obj/structure/surface/table/almayer,
 /obj/item/spacecash/c1000/counterfeit,
 /obj/item/storage/box/drinkingglasses,
 /obj/item/storage/fancy/cigar,
+/obj/structure/machinery/atm{
+	pixel_y = 32
+	},
 /turf/open/floor/almayer,
 /area/almayer/command/corporateliaison)
 "eNx" = (
@@ -34663,19 +34600,6 @@
 	icon_state = "silvercorner"
 	},
 /area/almayer/command/cichallway)
-"gtA" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/transmitter{
-	dir = 8;
-	name = "Medical Telephone";
-	phone_category = "Almayer";
-	phone_id = "Medical Lower";
-	pixel_x = 16
-	},
-/turf/open/floor/almayer{
-	icon_state = "sterile_green"
-	},
-/area/almayer/medical/lockerroom)
 "gtU" = (
 /obj/structure/machinery/power/apc/almayer{
 	dir = 8
@@ -34821,6 +34745,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/storage/firstaid/regular,
 /obj/item/clipboard,
+/obj/item/tool/pen,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -36227,18 +36152,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_m_p)
-"gZr" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/device/camera_film{
-	pixel_x = 4;
-	pixel_y = -2
-	},
-/obj/item/device/camera/siliconcam{
-	pixel_x = -6;
-	pixel_y = 11
-	},
-/turf/open/floor/almayer,
-/area/almayer/squads/charlie_delta_shared)
 "gZw" = (
 /obj/structure/bed/sofa/vert/grey/bot,
 /turf/open/floor/almayer,
@@ -37220,14 +37133,11 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21"
 	},
-/obj/structure/sign/poster{
-	desc = "A large piece of cheap printed paper. This one proudly demands that you REMEMBER IO!";
-	icon_state = "poster14";
-	name = "propaganda poster";
-	pixel_y = 32
-	},
 /obj/structure/sign/safety/escapepod{
 	pixel_x = -17
+	},
+/obj/structure/sign/poster/hero/voteno{
+	pixel_y = 32
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
@@ -41181,6 +41091,10 @@
 /obj/structure/machinery/prop/almayer/computer/PC{
 	dir = 4
 	},
+/obj/item/tool/stamp/approved{
+	pixel_y = -11;
+	pixel_x = -3
+	},
 /turf/open/floor/almayer,
 /area/almayer/squads/req)
 "iVo" = (
@@ -41941,21 +41855,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_f_p)
-"jhB" = (
-/obj/structure/bookcase{
-	icon_state = "book-5";
-	name = "medical manuals bookcase";
-	opacity = 0
-	},
-/obj/item/book/manual/surgery,
-/obj/item/book/manual/research_and_development,
-/obj/item/book/manual/medical_diagnostics_manual,
-/obj/item/book/manual/medical_cloning,
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/wood/ship,
-/area/almayer/living/commandbunks)
 "jhD" = (
 /obj/structure/machinery/firealarm{
 	pixel_y = -28
@@ -42475,6 +42374,15 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/pilotbunks)
+"jrC" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/bed/chair/bolted,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/shipboard/brig/perma)
 "jrM" = (
 /obj/structure/machinery/camera/autoname/almayer/containment{
 	dir = 4
@@ -48294,6 +48202,7 @@
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/toolbox,
 /obj/item/clipboard,
+/obj/item/tool/pen,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "green"
@@ -48642,20 +48551,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/living/grunt_rnr)
-"lIa" = (
-/obj/item/robot_parts/arm/l_arm,
-/obj/item/robot_parts/leg/l_leg,
-/obj/item/robot_parts/arm/r_arm,
-/obj/item/robot_parts/leg/r_leg,
-/obj/structure/surface/rack,
-/obj/effect/decal/cleanable/cobweb{
-	dir = 8
-	},
-/obj/item/book/manual/robotics_cyborgs{
-	pixel_y = 8
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/synthcloset)
 "lIh" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -49412,6 +49307,22 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/medical/hydroponics)
+"mai" = (
+/obj/structure/surface/rack,
+/obj/item/storage/firstaid/adv/empty,
+/obj/item/storage/firstaid/adv/empty,
+/obj/item/storage/firstaid/adv/empty,
+/obj/structure/sign/safety/med_life_support{
+	pixel_x = 15;
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_y = 32
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_corner"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "maw" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/airlock/almayer/maint{
@@ -55666,6 +55577,20 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_medbay)
+"opc" = (
+/obj/structure/largecrate/supply/medicine/medivend{
+	pixel_x = 3
+	},
+/obj/structure/largecrate/random/mini/med{
+	pixel_x = 3;
+	pixel_y = 11;
+	density = 1
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "opC" = (
 /obj/structure/machinery/door/airlock/almayer/command/reinforced{
 	name = "\improper Combat Information Center"
@@ -56541,6 +56466,19 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/stern)
+"oGI" = (
+/obj/structure/bookcase{
+	icon_state = "book-5";
+	name = "medical manuals bookcase";
+	opacity = 0
+	},
+/obj/item/book/manual/surgery,
+/obj/item/book/manual/medical_diagnostics_manual,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/living/commandbunks)
 "oGJ" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
@@ -58897,6 +58835,12 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/lifeboat_pumps/south1)
+"pFe" = (
+/obj/structure/machinery/gel_refiller,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "pFM" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -59729,8 +59673,8 @@
 "pWA" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
-/obj/structure/sign/safety/storage{
-	pixel_x = -17
+/obj/structure/machinery/light{
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -60827,6 +60771,29 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/shipboard/brig/main_office)
+"qqJ" = (
+/obj/structure/surface/table/almayer,
+/obj/item/folder/yellow,
+/obj/structure/machinery/keycard_auth{
+	pixel_x = -8;
+	pixel_y = 25
+	},
+/obj/structure/sign/safety/high_rad{
+	pixel_x = 32;
+	pixel_y = -8
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = 32;
+	pixel_y = 7
+	},
+/obj/structure/sign/safety/terminal{
+	pixel_x = 14;
+	pixel_y = 26
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/engineering/lower/workshop)
 "qqK" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
@@ -63117,6 +63084,10 @@
 	icon_state = "plate"
 	},
 /area/almayer/hull/lower_hull/l_m_p)
+"rix" = (
+/obj/structure/prop/invuln/joey,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_m_s)
 "riE" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/warning_stripes{
@@ -65349,6 +65320,14 @@
 /obj/structure/pipes/vents/scrubber{
 	dir = 4
 	},
+/obj/structure/sign/safety/storage{
+	pixel_y = 7;
+	pixel_x = -17
+	},
+/obj/structure/sign/safety/commline_connection{
+	pixel_x = -17;
+	pixel_y = -7
+	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "green"
@@ -67222,6 +67201,38 @@
 	icon_state = "plate"
 	},
 /area/almayer/engineering/lower)
+"sKO" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/pill/happy{
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/obj/item/prop/helmetgarb/prescription_bottle{
+	pixel_x = 9
+	},
+/obj/item/tool/surgery/bonegel/empty{
+	pixel_y = 15;
+	pixel_x = 4
+	},
+/obj/item/tool/surgery/bonegel/empty{
+	pixel_y = 13;
+	pixel_x = -8
+	},
+/obj/item/tool/surgery/bonegel/empty{
+	pixel_y = 19;
+	pixel_x = -5;
+	layer = 3.01
+	},
+/obj/item/storage/box/gloves{
+	layer = 3.2;
+	pixel_x = -5;
+	pixel_y = 2
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_corner"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "sKY" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8;
@@ -67519,7 +67530,7 @@
 /area/almayer/command/cic)
 "sSP" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
+	icon_state = "pottedplant_29"
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
@@ -68351,6 +68362,30 @@
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/squads/alpha_bravo_shared)
+"thD" = (
+/obj/structure/surface/rack,
+/obj/effect/decal/cleanable/cobweb{
+	dir = 8;
+	plane = -6
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner"
+	},
+/obj/item/reagent_container/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner"
+	},
+/obj/item/reagent_container/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner"
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_corner"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "thL" = (
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/cells)
@@ -70165,17 +70200,12 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "tQM" = (
-/obj/structure/sign/poster{
-	desc = "One of those hot, tanned babes back the beaches of good ol' Earth.";
-	icon_state = "poster12";
-	name = "Beach Babe Pinup";
-	pixel_x = -30;
-	pixel_y = 6;
-	serial_number = 12
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
+	},
+/obj/structure/sign/poster/pinup{
+	pixel_x = -30
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
@@ -70387,6 +70417,17 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/upper_engineering/port)
+"tWm" = (
+/obj/item/robot_parts/arm/l_arm,
+/obj/item/robot_parts/leg/l_leg,
+/obj/item/robot_parts/arm/r_arm,
+/obj/item/robot_parts/leg/r_leg,
+/obj/structure/surface/rack,
+/obj/effect/decal/cleanable/cobweb{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/synthcloset)
 "tWY" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -70528,17 +70569,6 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
-"tYW" = (
-/obj/structure/bed/chair/bolted{
-	dir = 1
-	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/shipboard/brig/perma)
 "tYX" = (
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -71739,6 +71769,15 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/brig/cells)
+"uwg" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/bed/chair/bolted,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/shipboard/brig/perma)
 "uws" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -71931,6 +71970,23 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/upper_engineering/port)
+"uAo" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/transmitter{
+	dir = 8;
+	name = "Medical Telephone";
+	phone_category = "Almayer";
+	phone_id = "Medical Lower";
+	pixel_x = 16
+	},
+/obj/item/device/helmet_visor/medical/advanced,
+/obj/item/device/helmet_visor/medical/advanced,
+/obj/item/device/helmet_visor/medical/advanced,
+/obj/item/device/helmet_visor/medical/advanced,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
+/area/almayer/medical/lockerroom)
 "uAs" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -74476,6 +74532,56 @@
 	icon_state = "redcorner"
 	},
 /area/almayer/shipboard/weapon_room)
+"vvi" = (
+/obj/structure/surface/rack{
+	desc = "A bunch of metal shelves stacked on top of eachother. Excellent for storage purposes, less so as cover. One of the shelf legs is damaged, resulting in the rack being propped up by what appears to be circuit boards."
+	},
+/obj/structure/machinery/light/small{
+	dir = 4;
+	status = 3;
+	icon_state = "bulb-burned"
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/prop{
+	icon = 'icons/obj/items/bloodpack.dmi';
+	icon_state = "bloodpack";
+	name = "blood bag";
+	desc = "A blood bag with a hole in it. The rats must have gotten to it first."
+	},
+/obj/item/prop{
+	icon = 'icons/obj/items/bloodpack.dmi';
+	icon_state = "bloodpack";
+	name = "blood bag";
+	desc = "A blood bag with a hole in it. The rats must have gotten to it first."
+	},
+/obj/item/prop{
+	icon = 'icons/obj/items/bloodpack.dmi';
+	icon_state = "bloodpack";
+	name = "blood bag";
+	desc = "A blood bag with a hole in it. The rats must have gotten to it first."
+	},
+/obj/item/prop{
+	icon = 'icons/obj/items/circuitboards.dmi';
+	icon_state = "id_mod";
+	name = "circuit board";
+	desc = "The words \"Cloning Pod\" are scrawled onto it. It appears to be heavily damaged.";
+	layer = 2.78;
+	pixel_y = 10;
+	pixel_x = 8
+	},
+/obj/item/prop{
+	icon = 'icons/obj/items/circuitboards.dmi';
+	icon_state = "id_mod";
+	name = "circuit board";
+	desc = "The words \"Cloning Scanner\" are scrawled onto it. It appears to be heavily damaged.";
+	layer = 2.79;
+	pixel_y = 7;
+	pixel_x = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_corner"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "vvp" = (
 /obj/structure/pipes/vents/pump,
 /obj/structure/sign/safety/intercom{
@@ -75703,6 +75809,23 @@
 "vRz" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/hull/lower_hull/l_f_p)
+"vRE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/spiderling_remains{
+	pixel_x = 18;
+	pixel_y = -5
+	},
+/obj/effect/decal/cleanable/ash{
+	pixel_x = 11;
+	pixel_y = 25
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_corner"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "vRR" = (
 /obj/effect/step_trigger/clone_cleaner,
 /obj/effect/decal/warning_stripes{
@@ -78426,6 +78549,14 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/upper_engineering/port)
+"wPa" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/device/camera_film{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/turf/open/floor/almayer,
+/area/almayer/squads/charlie_delta_shared)
 "wPf" = (
 /obj/structure/sign/safety/reception{
 	pixel_x = 32;
@@ -90638,7 +90769,7 @@ cpf
 cHP
 naB
 pQr
-tYW
+uwg
 wvI
 vPf
 fvA
@@ -91044,7 +91175,7 @@ wcn
 tYB
 naB
 pQr
-cjz
+jrC
 wvI
 piK
 fvA
@@ -100985,7 +101116,7 @@ rIW
 oGx
 wvU
 yiX
-lIa
+tWm
 hyQ
 aic
 aov
@@ -104029,7 +104160,7 @@ hvH
 hvH
 iNY
 hvH
-jhB
+oGI
 mXj
 agj
 aic
@@ -108413,7 +108544,7 @@ qyD
 omo
 blZ
 bqN
-gtA
+uAo
 bqN
 bwR
 gfW
@@ -110630,10 +110761,10 @@ aLG
 aZi
 aLG
 kan
-bFb
-bFb
-kan
-aYm
+sKO
+vRE
+bWF
+opc
 rlZ
 buu
 rlZ
@@ -110833,10 +110964,10 @@ aLG
 aZi
 aLG
 kan
-bFb
-bFb
+vvi
+thD
 kan
-aZM
+mai
 soK
 gDW
 rlZ
@@ -112871,7 +113002,7 @@ vhX
 gDW
 rlZ
 rlZ
-pnC
+pFe
 dBH
 bky
 ryt
@@ -118733,7 +118864,7 @@ uRM
 ipe
 ehR
 nsY
-aLf
+rix
 aLf
 tRc
 qEW
@@ -121825,7 +121956,7 @@ bNE
 wDJ
 ivs
 nyQ
-gZr
+wPa
 vWB
 bSK
 nyQ
@@ -123626,7 +123757,7 @@ bdl
 lOr
 lOr
 iwI
-lOr
+bdl
 bdl
 bEt
 bNP
@@ -133981,7 +134112,7 @@ vZU
 elx
 jnI
 oJk
-eIT
+qqJ
 dPQ
 ams
 eni

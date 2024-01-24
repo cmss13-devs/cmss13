@@ -60,10 +60,6 @@
 		else
 			clear_fullscreen("blind")
 
-		if(dazed)
-			overlay_fullscreen("eye_blurry", /atom/movable/screen/fullscreen/impaired, 5)
-		else
-			clear_fullscreen("eye_blurry")
 		///Pain should override the SetEyeBlur(0) should the pain be painful enough to cause eyeblur in the first place. Also, peepers is essential to make sure eye damage isn't overriden.
 		var/datum/internal_organ/eyes/peepers = internal_organs_by_name["eyes"]
 		if((disabilities & NEARSIGHTED) && !HAS_TRAIT(src, TRAIT_NEARSIGHTED_EQUIPMENT) && pain.current_pain < 80 && peepers.organ_status == ORGAN_HEALTHY)
@@ -163,6 +159,12 @@
 			interactee.check_eye(src)
 	return TRUE
 
+/mob/living/carbon/human/on_dazed_trait_gain(datum/source)
+	. = ..()
+	overlay_fullscreen("eye_blurry", /atom/movable/screen/fullscreen/impaired, 5)
+/mob/living/carbon/human/on_dazed_trait_loss(datum/source)
+	. = ..()
+	clear_fullscreen("eye_blurry")
 
 /mob/living/carbon/human/proc/check_status_effects()
 	var/status_effect_placement = 1

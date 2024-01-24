@@ -155,6 +155,8 @@
 #define TRAIT_FORCED_STANDING "forcedstanding"
 /// Stuns preventing movement and using objects but without further impairement
 #define TRAIT_INCAPACITATED "incapacitated"
+/// Disoriented. Unable to talk properly, and unable to use some skills as Xeno
+#define TRAIT_DAZED "dazed"
 /// Apply this to identify a mob as merged with weeds
 #define TRAIT_MERGED_WITH_WEEDS "merged_with_weeds"
 
@@ -313,6 +315,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_IMMOBILIZED" = TRAIT_IMMOBILIZED,
 		"TRAIT_INCAPACITATED" = TRAIT_INCAPACITATED,
 		"TRAIT_FLOORED" = TRAIT_FLOORED,
+		"TRAIT_DAZED" = TRAIT_DAZED,
 		"TRAIT_UNDENSE" = TRAIT_UNDENSE,
 		"TRAIT_YAUTJA_TECH" = TRAIT_YAUTJA_TECH,
 		"TRAIT_SUPER_STRONG" = TRAIT_SUPER_STRONG,
@@ -339,6 +342,8 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_VULTURE_USER" = TRAIT_VULTURE_USER,
 		"TRAIT_CLOAKED" = TRAIT_CLOAKED,
 	),
+//	/mob/living/carbon/human = list(
+//	),
 	/mob/living/carbon/xenomorph = list(
 		"TRAIT_ABILITY_NO_PLASMA_TRANSFER" = TRAIT_ABILITY_NO_PLASMA_TRANSFER,
 		"TRAIT_ABILITY_OVIPOSITOR" = TRAIT_ABILITY_OVIPOSITOR,
@@ -416,6 +421,7 @@ GLOBAL_LIST(trait_name_map)
 #define TRAIT_SOURCE_ATTACHMENT(slot) "t_s_attachment_[slot]"
 ///Status trait coming from ability
 #define TRAIT_SOURCE_ABILITY(ability) "t_s_ability_[ability]"
+#define TRAIT_SOURCE_LIMB(limb) "t_s_limb_[limb]"
 ///Status trait forced by the xeno action charge
 #define TRAIT_SOURCE_XENO_ACTION_CHARGE "t_s_xeno_action_charge"
 ///Status trait coming from a xeno nest

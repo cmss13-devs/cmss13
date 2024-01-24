@@ -88,7 +88,7 @@
 		if (internal_hitpoints >= internal_hitpoints_max)
 			return
 		to_chat(bound_xeno, SPAN_XENODANGER("You feel your internal health reserves increase!"))
-	internal_hitpoints = Clamp(internal_hitpoints + amount, 0, internal_hitpoints_max)
+	internal_hitpoints = clamp(internal_hitpoints + amount, 0, internal_hitpoints_max)
 
 /datum/behavior_delegate/praetorian_warden/proc/remove_internal_hitpoints(amount)
 	add_internal_hitpoints(-1*amount)

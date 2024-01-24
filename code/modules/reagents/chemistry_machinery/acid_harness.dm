@@ -446,7 +446,7 @@
 	if(inject_conditions & ACID_SCAN_CONDITION_CONCUSSION && (HAS_TRAIT(src, TRAIT_KNOCKEDOUT) || HAS_TRAIT(src, TRAIT_FLOORED)))
 		condition_scan |= ACID_SCAN_CONDITION_CONCUSSION
 
-	if(inject_conditions & ACID_SCAN_CONDITION_INTOXICATION && (user.dazed || user.slowed || user.confused || user.drowsyness || user.dizziness || user.druggy))
+	if(inject_conditions & ACID_SCAN_CONDITION_INTOXICATION && (HAS_TRAIT(src, TRAIT_DAZED) || user.slowed || user.confused || user.drowsyness || user.dizziness || user.druggy))
 		condition_scan |= ACID_SCAN_CONDITION_INTOXICATION
 
 	//Compare

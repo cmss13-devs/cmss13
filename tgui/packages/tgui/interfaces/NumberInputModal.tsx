@@ -15,10 +15,10 @@ type NumberInputData = {
   title: string;
 };
 
-export const NumberInputModal = (props, context) => {
-  const { act, data } = useBackend<NumberInputData>(context);
+export const NumberInputModal = (props) => {
+  const { act, data } = useBackend<NumberInputData>();
   const { init_value, large_buttons, message = '', timeout, title } = data;
-  const [input, setInput] = useLocalState(context, 'input', init_value);
+  const [input, setInput] = useLocalState('input', init_value);
   const onChange = (value: number) => {
     if (value === input) {
       return;
@@ -69,8 +69,8 @@ export const NumberInputModal = (props, context) => {
 };
 
 /** Gets the user input and invalidates if there's a constraint. */
-const InputArea = (props, context) => {
-  const { act, data } = useBackend<NumberInputData>(context);
+const InputArea = (props) => {
+  const { act, data } = useBackend<NumberInputData>();
   const { min_value, max_value, init_value } = data;
   const { input, onClick, onChange } = props;
 

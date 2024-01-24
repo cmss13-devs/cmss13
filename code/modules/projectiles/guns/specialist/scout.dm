@@ -42,8 +42,6 @@
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/lasersight,
-		/obj/item/attachable/scope,
-		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/flashlight/grip,
 	)
 

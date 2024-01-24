@@ -1,4 +1,4 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend, useLocalState } from '../backend';
 import { Input, Button, Stack, Section, Tabs, Box, Dropdown, Slider, Tooltip } from '../components';
 import { Window } from '../layouts';
@@ -61,14 +61,10 @@ const hasPermission = (data, action) => {
   return !!(action_data.permissions_required & data.current_permissions);
 };
 
-export const PlayerPanel = (props, context) => {
-  const { act, data } = useBackend(context);
-  const [pageIndex, setPageIndex] = useLocalState(context, 'pageIndex', 0);
-  const [canModifyCkey, setModifyCkey] = useLocalState(
-    context,
-    'canModifyCkey',
-    false
-  );
+export const PlayerPanel = (props) => {
+  const { act, data } = useBackend();
+  const [pageIndex, setPageIndex] = useLocalState('pageIndex', 0);
+  const [canModifyCkey, setModifyCkey] = useLocalState('canModifyCkey', false);
   const PageComponent = PAGES[pageIndex].component();
   const { mob_name, mob_type, client_key, client_ckey, client_rank } = data;
 
@@ -213,8 +209,8 @@ export const PlayerPanel = (props, context) => {
   );
 };
 
-const GeneralActions = (props, context) => {
-  const { act, data } = useBackend(context);
+const GeneralActions = (props) => {
+  const { act, data } = useBackend();
 
   const { mob_sleeping, mob_frozen } = data;
   return (
@@ -341,8 +337,8 @@ const GeneralActions = (props, context) => {
   );
 };
 
-const PunishmentActions = (props, context) => {
-  const { act, data } = useBackend(context);
+const PunishmentActions = (props) => {
+  const { act, data } = useBackend();
   const { glob_mute_bits, client_muted } = data;
   return (
     <Section fill>
@@ -465,8 +461,8 @@ const PunishmentActions = (props, context) => {
   );
 };
 
-const TransformActions = (props, context) => {
-  const { act, data } = useBackend(context);
+const TransformActions = (props) => {
+  const { act, data } = useBackend();
   const { glob_pp_transformables } = data;
   return (
     <Section fill>
@@ -492,22 +488,20 @@ const TransformActions = (props, context) => {
   );
 };
 
-const FunActions = (props, context) => {
-  const { act, data } = useBackend(context);
+const FunActions = (props) => {
+  const { act, data } = useBackend();
   const { glob_span } = data;
   const [getSpanSetting, setSpanSetting] = useLocalState(
-    context,
     'span_setting',
     glob_span[0].span
   );
 
   const [lockExplode, setLockExplode] = useLocalState(
-    context,
     'explode_lock_toggle',
     true
   );
-  const [expPower, setExpPower] = useLocalState(context, 'exp_power', 50);
-  const [falloff, setFalloff] = useLocalState(context, 'falloff', 75);
+  const [expPower, setExpPower] = useLocalState('exp_power', 50);
+  const [falloff, setFalloff] = useLocalState('falloff', 75);
   return (
     <Section fill>
       {hasPermission(data, 'mob_narrate') && (
@@ -605,12 +599,11 @@ const FunActions = (props, context) => {
   );
 };
 
-const AntagActions = (props, context) => {
-  const { act, data } = useBackend(context);
+const AntagActions = (props) => {
+  const { act, data } = useBackend();
   const { glob_hives, is_xeno, is_human } = data;
 
   const [selectedHivenumber, setHivenumber] = useLocalState(
-    context,
     'selected_hivenumber',
     Object.keys(glob_hives)[0]
   );
@@ -654,7 +647,7 @@ const AntagActions = (props, context) => {
         }>
         <Stack align="right" grow={1} mt={1}>
           {!!is_human && (
-            <Fragment>
+            <>
               <Button
                 height="100%"
                 width="100%"
@@ -682,7 +675,7 @@ const AntagActions = (props, context) => {
                 }
                 content="Make Xeno Cultist Leader"
               />
-            </Fragment>
+            </>
           )}
           {!!is_xeno && (
             <Button
@@ -704,8 +697,8 @@ const AntagActions = (props, context) => {
   );
 };
 
-const PhysicalActions = (props, context) => {
-  const { act, data } = useBackend(context);
+const PhysicalActions = (props) => {
+  const { act, data } = useBackend();
   const {
     is_human,
     glob_limbs,
@@ -718,11 +711,7 @@ const PhysicalActions = (props, context) => {
   const limbs = Object.keys(glob_limbs);
   const limb_flags = limbs.map((_, i) => 1 << i);
 
-  const [delimbOption, setDelimbOption] = useLocalState(
-    context,
-    'delimb_flags',
-    0
-  );
+  const [delimbOption, setDelimbOption] = useLocalState('delimb_flags', 0);
   return (
     <Section fill>
       <Section level={2} title="Status Flags">

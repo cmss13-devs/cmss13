@@ -190,7 +190,6 @@ GLOBAL_LIST_INIT(admin_verbs_debug, list(
 	/client/proc/cmd_admin_delete,
 	/client/proc/cmd_debug_del_all,
 	/client/proc/reload_admins,
-	/client/proc/reload_whitelist,
 	/client/proc/restart_controller,
 	/client/proc/debug_controller,
 	/client/proc/cmd_debug_toggle_should_check_for_win,
@@ -243,7 +242,8 @@ GLOBAL_LIST_INIT(admin_verbs_possess, list(
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_permissions, list(
-	/client/proc/ToRban
+	/client/proc/ToRban,
+	/client/proc/whitelist_panel,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_color, list(
@@ -347,14 +347,8 @@ GLOBAL_LIST_INIT(roundstart_mod_verbs, list(
 		add_verb(src, GLOB.admin_verbs_spawn)
 	if(CLIENT_HAS_RIGHTS(src, R_STEALTH))
 		add_verb(src, GLOB.admin_verbs_stealth)
-	if(GLOB.RoleAuthority && (GLOB.RoleAuthority.roles_whitelist[ckey] & WHITELIST_YAUTJA_LEADER))
+	if(check_whitelist_status(WHITELIST_YAUTJA_LEADER))
 		add_verb(src, GLOB.clan_verbs)
-
-/client/proc/add_admin_whitelists()
-	if(CLIENT_IS_MENTOR(src))
-		GLOB.RoleAuthority.roles_whitelist[ckey] |= WHITELIST_MENTOR
-	if(CLIENT_IS_STAFF(src))
-		GLOB.RoleAuthority.roles_whitelist[ckey] |= WHITELIST_JOE
 
 /client/proc/remove_admin_verbs()
 	remove_verb(src, list(

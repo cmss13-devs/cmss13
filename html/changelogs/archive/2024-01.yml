@@ -269,3 +269,57 @@
   - bugfix: Fixed mobs merged with weeds remaining ignited
   SabreML:
   - bugfix: Fixed the 'busy' circle icon being drawn above darkness and screen effects.
+2024-01-21:
+  ClairionCM:
+  - qol: made whistles less spammy
+  Huffie56:
+  - rscadd: 'Add some boards to the board vendor in engi on almayer(Air Alarm Electronics,
+      Security Camera Monitor,
+
+      Station Alerts, Arcade, Atmospheric Monitor).'
+  Releasethesea:
+  - rscadd: adds prescription variants of the orange, black, and M1A1 goggles
+  SabreML:
+  - rscadd: Made larvae and facehuggers able to use custom emotes.
+  Vicacrov:
+  - bugfix: Fixes engine/weapon attach points layering below the dropship walls.
+2024-01-22:
+  cuberound:
+  - balance: AP rocket applies 3 weaken and 3 paralyze no matter if you hit the mob
+      directly(from 2), at max range (from 2) or tile under it (from 4)
+  - balance: indirect AP rocket does the same damage to walls and mobs
+2024-01-23:
+  realforest2001:
+  - rscadd: Added Whitelist Panel for whitelist senators to manage their own whitelists.
+  - refactor: Whitelist.txt is no longer functional, owing to the new system.
+  - rscdel: Removed "Alien Whitelist" checks regarding base SS13 races.
+2024-01-24:
+  BeagleGaming1:
+  - balance: Repairing bones with bone glue costs a portion of the bone glue's resources
+  - balance: Repairing bones with a screwdriver costs metal
+  - rscdel: Removed bone glue from the medilathe
+  - spellcheck: New description for bone glue
+  Ben10083:
+  - maptweak: Workin Joey has returned to the Maintenance Bar
+  Birdtalon:
+  - rscadd: Xenomorph basic tutorial.
+  SabreML:
+  - bugfix: Fixed being gibbed with the Ctrl or Alt key held sometimes breaking movement
+      as an observer.
+  SpartanBobby:
+  - maptweak: A bunch of edits to big red and big red nightmares for the following
+      areas, Northcaves, Medical Morgue, maint between cargo and general store, LZ2,
+      North Libary, EVA, dorms bathroom
+  VileBeggar:
+  - balance: M39 burst scatter multiplier reduced from 7 to 4.
+  fira:
+  - bugfix: Fixed an exploit involving playing cards.
+  mullenpaul:
+  - refactor: switched from infernojs to react
+  private-tristan:
+  - rscadd: Added a new xeno tip about where to target.
+  - spellcheck: changed a few tips' wording.
+  - rscdel: Removed an outdated xeno tip about slashing NVGs
+  realforest2001:
+  - rscadd: Psychic Whisper now broadcasts to deadchat too.
+  - bugfix: Psychic Whisper can now be used while lying down.

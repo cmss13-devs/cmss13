@@ -83,9 +83,8 @@
 //------------CLOTHING VENDOR---------------
 
 GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
-		list("EXPERIMENTAL TOOLS (TAKE ALL)", 0, null, null, null),
+		list("EXPERIMENTAL TOOL TOKEN", 0, null, null, null),
 		list("Experimental Tool Vendor Token", 0, /obj/item/coin/marine/synth, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
-		list("PK-130 SIMI Wrist-Mounted Computer", 0, /obj/item/clothing/gloves/synth, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 
 		list("RADIO (TAKE ALL)", 0, null, null, null),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/mcom/cdrcom, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
@@ -124,6 +123,11 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 		list("M3A1 Pattern Synthetic Utility Vest (UA Jungle)", 0, /obj/item/clothing/suit/storage/marine/light/synvest/jungle, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 		list("M3A1 Pattern Synthetic Utility Vest (UA Snow)", 0, /obj/item/clothing/suit/storage/marine/light/synvest/snow, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 		list("M3A1 Pattern Synthetic Utility Vest (UA Desert)", 0, /obj/item/clothing/suit/storage/marine/light/synvest/desert, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
+
+		list("GLOVES (CHOOSE 1)", 0, null, null, null),
+		list("Insulated Gloves", 0, /obj/item/clothing/gloves/yellow, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_RECOMMENDED),
+		list("Black Gloves", 0, /obj/item/clothing/gloves/black, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_REGULAR),
+		list("Latex Gloves", 0, /obj/item/clothing/gloves/latex, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_REGULAR),
 
 		list("BACKPACK (CHOOSE 1)", 0, null, null, null),
 		list("Logistics IMP Backpack", 0, /obj/item/storage/backpack/marine/satchel/big, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
@@ -285,6 +289,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_snowflake, list(
 	list("Backpack, USCM Medical", 12, /obj/item/storage/backpack/marine/medic, null, VENDOR_ITEM_REGULAR),
 	list("Chestrig, Technician", 12, /obj/item/storage/backpack/marine/satchel/tech, null, VENDOR_ITEM_REGULAR),
 	list("Satchel, USCM", 12, /obj/item/storage/backpack/marine/satchel, null, VENDOR_ITEM_REGULAR),
+	list("Satchel, USCM Medical", 12, /obj/item/storage/backpack/marine/satchel/medic, null, VENDOR_ITEM_REGULAR),
 	list("Satchel, Leather", 12, /obj/item/storage/backpack/satchel, null, VENDOR_ITEM_REGULAR),
 	list("Satchel, Medical", 12, /obj/item/storage/backpack/satchel/med, null, VENDOR_ITEM_REGULAR),
 	list("USCM RTO Pack", 12, /obj/item/storage/backpack/marine/satchel/rto, null, VENDOR_ITEM_REGULAR),
@@ -339,11 +344,12 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_snowflake, list(
 	return GLOB.cm_vending_synth_tools
 
 GLOBAL_LIST_INIT(cm_vending_synth_tools, list(
-	list("PK-130 CIRCUIT CHIPS", 0, null, null, null),
-	list("PK-130 Repair Mode", 15, /obj/item/device/simi_chip/repair, null, VENDOR_ITEM_RECOMMENDED),
-	list("PK-130 Protection Mode", 15, /obj/item/device/simi_chip/protect, null, VENDOR_ITEM_REGULAR),
-	list("PK-130 Anchor Mode", 15, /obj/item/device/simi_chip/anchor, null, VENDOR_ITEM_REGULAR),
-	list("PK-130 Motion Detector", 15, /obj/item/device/simi_chip/motion_detector, null, VENDOR_ITEM_REGULAR),
+	list("PK-130", 0, null, null, null),
+	list("PK-130 SIMI Wrist-Mounted Computer", 15, /obj/item/clothing/gloves/synth, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
+	list("PK-130 Repair Mode", 7, /obj/item/device/simi_chip/repair, null, VENDOR_ITEM_RECOMMENDED),
+	list("PK-130 Protection Mode", 7, /obj/item/device/simi_chip/protect, null, VENDOR_ITEM_REGULAR),
+	list("PK-130 Anchor Mode", 7, /obj/item/device/simi_chip/anchor, null, VENDOR_ITEM_REGULAR),
+	list("PK-130 Motion Detector", 7, /obj/item/device/simi_chip/motion_detector, null, VENDOR_ITEM_REGULAR),
 
 	list("UTILITY & SELF DEFENSE TOOLS", 0, null, null, null),
 	list("Telescopic Baton", 15, /obj/item/weapon/telebaton, null, VENDOR_ITEM_REGULAR),

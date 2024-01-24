@@ -23,6 +23,14 @@ const PAGES = {
   'maintenance_management': () => MaintManagement,
 };
 
+const { data } = useBackend();
+const { is_pda } = data;
+let remotelock = !is_pda;
+let remotetip = 'You cannot do this via remote console.';
+if (!remotelock) {
+  remotetip = '';
+}
+
 export const AresAdmin = (props, context) => {
   const { data } = useBackend(context);
   const { current_menu, sudo } = data;
@@ -311,13 +319,14 @@ const MainMenu = (props, context) => {
             <Stack.Item>
               <Button
                 content="Sudo Login"
-                tooltip="You cannot do this via remote console."
                 icon="user-secret"
                 ml="auto"
                 px="2rem"
                 width="25vw"
                 bold
-                disabled={access_text}
+                onClick={() => act('sudo')}
+                disabled={remotelock}
+                tooltip={remotetip}
               />
             </Stack.Item>
           )}
@@ -325,36 +334,39 @@ const MainMenu = (props, context) => {
             <Stack.Item>
               <Button
                 content="Sudo Logout"
-                tooltip="You cannot do this via remote console."
                 icon="user-secret"
                 ml="auto"
                 px="2rem"
                 width="25vw"
                 bold
-                disabled={access_text}
+                onClick={() => act('sudo_logout')}
+                disabled={remotelock}
+                tooltip={remotetip}
               />
             </Stack.Item>
           )}
         </Stack>
       </Section>
       <Section>
-        <Stack>
-          <Stack.Item grow>
-            <h3>Remote Admin</h3>
-          </Stack.Item>
-          <Stack.Item>
-            <Button
-              content="Remote Access Log"
-              tooltip="View which admins have been using ARES."
-              icon="user-secret"
-              ml="auto"
-              px="2rem"
-              width="25vw"
-              bold
-              onClick={() => act('page_admin_list')}
-            />
-          </Stack.Item>
-        </Stack>
+        {remotelock && (
+          <Stack>
+            <Stack.Item grow>
+              <h3>Remote Admin</h3>
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                content="Remote Access Log"
+                tooltip="View which admins have been using ARES."
+                icon="user-secret"
+                ml="auto"
+                px="2rem"
+                width="25vw"
+                bold
+                onClick={() => act('page_admin_list')}
+              />
+            </Stack.Item>
+          </Stack>
+        )}
         <Stack>
           <Stack.Item grow>
             <h3>ARES Actions</h3>
@@ -474,8 +486,9 @@ const AnnouncementLogs = (props, context) => {
               <Flex.Item ml="1rem">
                 <Button.Confirm
                   icon="trash"
-                  tooltip="You cannot do this via remote console."
-                  disabled={access_text}
+                  onClick={() => act('delete_record', { record: record.ref })}
+                  disabled={remotelock}
+                  tooltip={remotetip}
                 />
               </Flex.Item>
             </Flex>
@@ -571,8 +584,9 @@ const BioscanLogs = (props, context) => {
               <Flex.Item ml="1rem">
                 <Button.Confirm
                   icon="trash"
-                  tooltip="You cannot do this via remote console."
-                  disabled={access_text}
+                  onClick={() => act('delete_record', { record: record.ref })}
+                  disabled={remotelock}
+                  tooltip={remotetip}
                 />
               </Flex.Item>
             </Flex>
@@ -672,8 +686,9 @@ const BombardmentLogs = (props, context) => {
               <Flex.Item ml="1rem">
                 <Button.Confirm
                   icon="trash"
-                  tooltip="You cannot do this via remote console."
-                  disabled={access_text}
+                  onClick={() => act('delete_record', { record: record.ref })}
+                  disabled={remotelock}
+                  tooltip={remotetip}
                 />
               </Flex.Item>
             </Flex>
@@ -1459,8 +1474,9 @@ const Security = (props, context) => {
               <Flex.Item ml="1rem">
                 <Button.Confirm
                   icon="trash"
-                  tooltip="You cannot do this via remote console."
-                  disabled={access_text}
+                  onClick={() => act('delete_record', { record: record.ref })}
+                  disabled={remotelock}
+                  tooltip={remotetip}
                 />
               </Flex.Item>
             </Flex>
@@ -1473,8 +1489,80 @@ const Security = (props, context) => {
 
 const Emergency = (props, context) => {
   const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu, admin_login } = data;
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    admin_login,
+    alert_level,
+    worldtime,
+    distresstimelock,
+    distresstime,
+    quarterstime,
+    evac_status,
+    mission_failed,
+    nuketimelock,
+    nuke_available,
+  } = data;
 
+  const minimumEvacTime = worldtime > distresstimelock;
+  const distressCooldown = worldtime < distresstime;
+  const quartersCooldown = worldtime < quarterstime;
+  const canQuarters = !quartersCooldown;
+  let quarters_reason = 'Call for General Quarters.';
+  if (quartersCooldown) {
+    quarters_reason =
+      'It has not been long enough since the last General Quarters call.';
+  }
+  const canDistress =
+    alert_level === 2 && !distressCooldown && minimumEvacTime && !remotelock;
+  let distress_reason = 'Launch a Distress Beacon.';
+  if (remotelock) {
+    distress_reason = remotetip;
+  } else if (alert_level === 3) {
+    distress_reason = 'Self-destruct in progress. Beacon disabled.';
+  } else if (alert_level !== 2) {
+    distress_reason = 'Ship is not under an active emergency.';
+  } else if (distressCooldown) {
+    distress_reason = 'Beacon is currently on cooldown.';
+  } else if (!minimumEvacTime) {
+    distress_reason = "It's too early to launch a distress beacon.";
+  }
+
+  const canEvac = (evac_status === 0, alert_level >= 2) && !remotelock;
+  let evac_reason = 'Begin evacuation procedures. Authorise Lifeboats.';
+  if (remotelock) {
+    evac_reason = remotetip;
+  } else if (alert_level !== 2) {
+    evac_reason = 'Ship is not under an active emergency.';
+  } else if (evac_status === 1) {
+    evac_reason = 'Evacuation initiating.';
+  } else if (evac_status === 2) {
+    evac_reason = 'Evacuation in progress.';
+  } else if (evac_status === 3) {
+    evac_reason = 'Evacuation complete.';
+  }
+
+  const minimumNukeTime = worldtime > nuketimelock;
+  const canNuke =
+    (nuke_available, !mission_failed, evac_reason === 0, minimumNukeTime) &&
+    !remotelock;
+  let nuke_reason =
+    'Request a nuclear device to be authorized by USCM High Command.';
+  if (remotelock) {
+    nuke_reason = remotetip;
+  } else if (!nuke_available) {
+    nuke_reason =
+      'No nuclear ordnance is available during this operation, or one has already been provided.';
+  } else if (mission_failed) {
+    nuke_reason =
+      'You have already lost the objective, you cannot use a nuclear device aboard the ship!';
+  } else if (evac_status !== 0) {
+    nuke_reason = 'You cannot use a nuclear device while abandoning the ship!';
+  } else if (!minimumNukeTime) {
+    nuke_reason = 'It is too soon to use a nuclear device. Keep fighting!';
+  }
   return (
     <>
       <Section>
@@ -1518,7 +1606,6 @@ const Emergency = (props, context) => {
       <Flex align="center" justify="center" height="50%" direction="column">
         <Button.Confirm
           content="Call General Quarters"
-          tooltip="You cannot do this via remote console."
           icon="triangle-exclamation"
           color="red"
           width="40vw"
@@ -1527,11 +1614,12 @@ const Emergency = (props, context) => {
           p="1rem"
           mt="5rem"
           bold
-          disabled={access_text}
+          onClick={() => act('general_quarters')}
+          disabled={!canQuarters}
+          tooltip={quarters_reason}
         />
         <Button.Confirm
           content="Initiate Evacuation"
-          tooltip="You cannot do this via remote console."
           icon="shuttle-space"
           color="red"
           width="40vw"
@@ -1540,11 +1628,12 @@ const Emergency = (props, context) => {
           p="1rem"
           mt="5rem"
           bold
-          disabled={access_text}
+          onClick={() => act('evacuation_start')}
+          disabled={!canEvac}
+          tooltip={evac_reason}
         />
         <Button.Confirm
           content="Launch Distress Beacon"
-          tooltip="You cannot do this via remote console."
           icon="circle-exclamation"
           color="red"
           width="40vw"
@@ -1553,11 +1642,12 @@ const Emergency = (props, context) => {
           p="1rem"
           mt="5rem"
           bold
-          disabled={access_text}
+          onClick={() => act('distress')}
+          disabled={!canDistress}
+          tooltip={distress_reason}
         />
         <Button.Confirm
           content="Request Nuclear Device"
-          tooltip="You cannot do this via remote console."
           icon="circle-radiation"
           color="red"
           width="40vw"
@@ -1566,7 +1656,9 @@ const Emergency = (props, context) => {
           p="1rem"
           mt="5rem"
           bold
-          disabled={access_text}
+          onClick={() => act('nuclearbomb')}
+          disabled={!canNuke}
+          tooltip={nuke_reason}
         />
       </Flex>
     </>

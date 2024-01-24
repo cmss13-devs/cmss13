@@ -5,7 +5,7 @@
 	icon_state = "karnak_off"
 	unacidable = TRUE
 	indestructible = TRUE
-	req_one_access = list(ACCESS_MARINE_AI_TEMP, ACCESS_MARINE_AI, ACCESS_ARES_DEBUG)
+	req_access = list(ACCESS_ARES_DEBUG)
 
 	/// The ID used to link all devices.
 	var/datum/ares_link/link
@@ -58,7 +58,7 @@
 		icon_state = "karnak_on_anim"
 
 /obj/item/device/ai_tech_pda/attack_self(mob/user)
-	if(..() || !allowed(usr))
+	if(..() || !allowed(user))
 		return FALSE
 
 	if((last_menu == "off") && (current_menu == "login"))
@@ -72,9 +72,9 @@
 	if(!link.interface || !datacore)
 		to_chat(user, SPAN_WARNING("ARES DATA LINK FAILED"))
 		return FALSE
-	ui = SStgui.try_update_ui(user, GLOB.ares_link, ui)
+	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, GLOB.ares_link, "AresAdmin", name)
+		ui = new(user, src, "AresAdmin", name)
 		ui.open()
 
 /obj/item/device/ai_tech_pda/ui_data(mob/user)
@@ -82,6 +82,8 @@
 		to_chat(user, SPAN_WARNING("ARES ADMIN DATA LINK FAILED"))
 		return FALSE
 	var/list/data = list()
+
+	data["is_pda"] = TRUE
 
 	data["admin_login"] = "[logged_in], AI Service Technician"
 	data["admin_access_log"] = list()
@@ -271,17 +273,18 @@
 
 /obj/item/device/ai_tech_pda/ui_close(mob/user)
 	. = ..()
+	current_menu = "login"
+	last_menu = "off"
 	if(logged_in)
-		current_menu = "login"
-		last_menu = "off"
 		access_list += "[logged_in] logged out at [worldtime2text()]."
 		logged_in = null
+	update_icon()
 
 /obj/item/device/ai_tech_pda/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
-	var/mob/user = usr
+	var/mob/living/carbon/human/user = usr
 
 	switch(action)
 		if("go_back")
@@ -292,12 +295,12 @@
 			last_menu = temp_holder
 
 		if("login")
-			if(check_rights_for(user.client, R_MOD))
-				logged_in = user.real_name
-				access_list += "[logged_in] at [worldtime2text()]."
-			else
-				to_chat(user, SPAN_WARNING("You require staff identification to access this terminal!"))
+			var/obj/item/card/id/card = user.wear_id
+			if(!card || !card.check_biometrics(user))
+				to_chat(user, SPAN_WARNING("You require an authenticated ID card to access this device!"))
 				return FALSE
+			logged_in = user.real_name
+			access_list += "[logged_in] at [worldtime2text()]."
 			current_menu = "main"
 
 		// -- Page Changers -- //
@@ -358,6 +361,8 @@
 
 		// -- 1:1 Conversation -- //
 		if("new_conversation")
+			if(link.interface.last_login == "No User")
+				return FALSE
 			var/datum/ares_record/talk_log/convo = new(link.interface.last_login)
 			convo.conversation += "[MAIN_AI_SYSTEM] at [worldtime2text()], 'New 1:1 link initiated. Greetings, [link.interface.last_login].'"
 			datacore.records_talking += convo
@@ -400,8 +405,8 @@
 			var/claim = TRUE
 			var/assigned = ticket.ticket_assignee
 			if(assigned)
-				if(assigned == MAIN_AI_SYSTEM)
-					var/prompt = tgui_alert(user, "ARES already claimed this ticket! Do you wish to drop the claim?", "Unclaim ticket", list("Yes", "No"))
+				if(assigned == logged_in)
+					var/prompt = tgui_alert(user, "You already claimed this ticket! Do you wish to drop your claim?", "Unclaim ticket", list("Yes", "No"))
 					if(prompt != "Yes")
 						return FALSE
 					/// set ticket back to pending
@@ -412,7 +417,7 @@
 				if(choice != "Yes")
 					claim = FALSE
 			if(claim)
-				ticket.ticket_assignee = MAIN_AI_SYSTEM
+				ticket.ticket_assignee = logged_in
 				ticket.ticket_status = TICKET_ASSIGNED
 			return claim
 
@@ -425,7 +430,7 @@
 					continue
 				if(identification.registered_gid != access_ticket.user_id_num)
 					continue
-				identification.handle_ares_access(MAIN_AI_SYSTEM, user)
+				identification.handle_ares_access(logged_in, user)
 				access_ticket.ticket_status = TICKET_GRANTED
 				ares_apollo_talk("Access Ticket [access_ticket.ticket_id]: [access_ticket.ticket_submitter] granted core access.")
 				return TRUE
@@ -434,7 +439,7 @@
 					continue
 				if(identification.registered_gid != access_ticket.user_id_num)
 					continue
-				identification.handle_ares_access(MAIN_AI_SYSTEM, user)
+				identification.handle_ares_access(logged_in, user)
 				access_ticket.ticket_status = TICKET_REVOKED
 				ares_apollo_talk("Access Ticket [access_ticket.ticket_id]: core access for [access_ticket.ticket_submitter] revoked.")
 				return TRUE
@@ -469,20 +474,17 @@
 
 			var/confirm = alert(user, "Please confirm the submission of your maintenance report. \n\n Priority: [priority_report ? "Yes" : "No"]\n Category: '[maint_type]'\n Details: '[details]'\n\n Is this correct?", "Confirmation", "Yes", "No")
 			if(confirm == "Yes")
-				var/datum/ares_ticket/maintenance/maint_ticket = new(MAIN_AI_SYSTEM, maint_type, details, priority_report)
+				var/datum/ares_ticket/maintenance/maint_ticket = new("[logged_in] (AIST)", maint_type, details, priority_report)
 				link.tickets_maintenance += maint_ticket
 				if(priority_report)
 					ares_apollo_talk("Priority Maintenance Report: [maint_type] - ID [maint_ticket.ticket_id]. Seek and resolve.")
-				log_game("ARES: Maintenance Ticket '\ref[maint_ticket]' created by [key_name(user)] as [MAIN_AI_SYSTEM] with Category '[maint_type]' and Details of '[details]'.")
+				log_game("ARES: Maintenance Ticket '\ref[maint_ticket]' created by [key_name(user)] as AI-ST with Category '[maint_type]' and Details of '[details]'.")
 				return TRUE
 			return FALSE
 
 		if("cancel_ticket")
 			var/datum/ares_ticket/ticket = locate(params["ticket"])
 			if(!istype(ticket))
-				return FALSE
-			if(ticket.ticket_submitter != MAIN_AI_SYSTEM)
-				to_chat(user, SPAN_WARNING("You cannot cancel a ticket that does not belong to [MAIN_AI_SYSTEM]!"))
 				return FALSE
 			to_chat(user, SPAN_WARNING("[ticket.ticket_type] [ticket.ticket_id] has been cancelled."))
 			ticket.ticket_status = TICKET_CANCELLED
@@ -516,6 +518,37 @@
 				else
 					return FALSE
 			if(ticket.ticket_priority)
-				ares_apollo_talk("Priority [ticket.ticket_type] [ticket.ticket_id] has been [choice] by [MAIN_AI_SYSTEM].")
+				ares_apollo_talk("Priority [ticket.ticket_type] [ticket.ticket_id] has been [choice] by AI-ST [logged_in].")
 			to_chat(user, SPAN_NOTICE("[ticket.ticket_type] [ticket.ticket_id] marked as [choice]."))
 			return TRUE
+
+		if("delete_record")
+			var/datum/ares_record/record = locate(params["record"])
+			if(record.record_name == ARES_RECORD_DELETED)
+				return FALSE
+			var/datum/ares_record/deletion/new_delete = new
+			var/new_details = "Error"
+			var/new_title = "Error"
+			switch(record.record_name)
+				if(ARES_RECORD_ANNOUNCE)
+					new_title = "[record.title] at [record.time]"
+					new_details = record.details
+					datacore.records_announcement -= record
+				if(ARES_RECORD_SECURITY, ARES_RECORD_ANTIAIR)
+					new_title = "[record.title] at [record.time]"
+					new_details = record.details
+					datacore.records_security -= record
+				if(ARES_RECORD_BIOSCAN)
+					new_title = "[record.title] at [record.time]"
+					new_details = record.details
+					datacore.records_bioscan -= record
+				if(ARES_RECORD_BOMB)
+					new_title = "[record.title] at [record.time]"
+					new_details = "[record.details] Launched by [record.user]."
+					datacore.records_bombardment -= record
+
+			new_delete.details = new_details
+			new_delete.user = "[logged_in] (AIST)"
+			new_delete.title = new_title
+
+			datacore.records_deletion += new_delete

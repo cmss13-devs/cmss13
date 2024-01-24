@@ -50,6 +50,8 @@
 		return FALSE
 	var/list/data = list()
 
+	data["is_pda"] = FALSE
+
 	data["admin_login"] = "[admin_interface.logged_in], [user.client.admin_holder?.rank]"
 	data["admin_access_log"] = list()
 	data["admin_access_log"] += admin_interface.access_list

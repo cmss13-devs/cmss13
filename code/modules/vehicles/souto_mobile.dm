@@ -22,7 +22,6 @@
 	if(world.time > l_move_time + move_delay)
 		. = step(src, direction)
 
-
 /obj/vehicle/souto/super
 	desc = "The best ride in the universe, for the one-and-only Souto Man!"
 	health = 1000

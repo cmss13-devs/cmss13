@@ -96,10 +96,14 @@ also doesn't really matter. You can only reload them with handfuls.
 /obj/item/ammo_magazine/internal/shotgun
 	name = "shotgun tube"
 	desc = "An internal magazine. It is not supposed to be seen or removed."
-	default_ammo = /datum/ammo/bullet/shotgun/slug
+	default_ammo = /datum/ammo/bullet/shotgun/buckshot
 	caliber = "12g"
-	max_rounds = 9
+	max_rounds = 4
 	chamber_closed = 0
+
+/obj/item/ammo_magazine/internal/shotgun/combat
+	default_ammo = /datum/ammo/bullet/shotgun/buckshot
+	max_rounds = 9
 
 /obj/item/ammo_magazine/internal/shotgun/double //For a double barrel.
 	default_ammo = /datum/ammo/bullet/shotgun/buckshot

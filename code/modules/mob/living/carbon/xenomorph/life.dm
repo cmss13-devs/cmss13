@@ -405,8 +405,13 @@ Make sure their actual health updates immediately.*/
 			tracking_atom = hive.living_xeno_queen
 		if(TRACKER_HIVE)
 			tracking_atom = hive.hive_location
-		if(TRACKER_LEADER, TRACKER_TUNNEL)
-			tracking_atom = locator.tracking_ref.resolve()
+		if(TRACKER_LEADER)
+			var/atom/leader = locator.tracking_ref?.resolve()
+			// If the leader exists, and is actually in the leader list.
+			if(leader && (leader in hive.xeno_leader_list))
+				tracking_atom = leader
+		if(TRACKER_TUNNEL)
+			tracking_atom = locator.tracking_ref?.resolve()
 
 	if(!tracking_atom)
 		locator.stop_tracking()

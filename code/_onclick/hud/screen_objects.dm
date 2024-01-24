@@ -531,16 +531,16 @@
 			options["Hive Core"] = list(null, TRACKER_HIVE)
 
 		for(var/mob/living/carbon/xenomorph/leader in user.hive.xeno_leader_list)
-			options["Xeno Leader [leader]"] = list(WEAKREF(leader), TRACKER_LEADER)
+			options["Xeno Leader [leader]"] = list(leader, TRACKER_LEADER)
 
 		var/list/sorted_tunnels = sort_list_dist(user.hive.tunnels, get_turf(user))
 		for(var/obj/structure/tunnel/tunnel as anything in sorted_tunnels)
-			options["Tunnel [tunnel.tunnel_desc]"] = list(WEAKREF(tunnel), TRACKER_TUNNEL)
+			options["Tunnel [tunnel.tunnel_desc]"] = list(tunnel, TRACKER_TUNNEL)
 
 		var/list/selected = tgui_input_list(user, "Select what you want the locator to track.", "Locator Options", options)
 		if(selected)
 			var/selected_data = options[selected]
-			tracking_ref = selected_data[1] // Weakref to the tracked atom, or null
+			tracking_ref = WEAKREF(selected_data[1]) // Weakref to the tracked atom (or null)
 			tracker_type = selected_data[2] // Tracker category
 		return
 

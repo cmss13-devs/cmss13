@@ -31,7 +31,6 @@
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf
 	hostile = TRUE
 	equipment = /datum/equipment_preset/survivor/clf
-	synth_equipment = /datum/equipment_preset/clf/synth
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
@@ -45,7 +44,6 @@
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf_engineer
 	hostile = TRUE
 	equipment = /datum/equipment_preset/clf/engineer
-	synth_equipment = /datum/equipment_preset/clf/synth
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"You are NOT aware of the xenomorph threat.",\
 	"Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.")
@@ -59,7 +57,6 @@
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf_medic
 	hostile = TRUE
 	equipment = /datum/equipment_preset/clf/medic
-	synth_equipment = /datum/equipment_preset/clf/synth
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"You are NOT aware of the xenomorph threat.",\
 	"Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.")

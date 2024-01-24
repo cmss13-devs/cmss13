@@ -33,172 +33,143 @@
 	name="Mecha Chassis"
 	icon_state = "backbone"
 
+// ripley to turn into P-1000 an Older version of the P-5000 to anchor it more into the lore...
 /obj/structure/prop_mech/parts/chassis/ripley
-	name = "Ripley Chassis"
+	name = "P-1000 Chassis"
 	icon_state = "ripley_chassis"
-// /part isn't doing a damn thing and need to be remove...
-/obj/structure/prop_mech/parts/part/ripley_torso
-	name="Ripley Torso"
-	desc="A torso part of Ripley APLU. Contains power unit, processing core and life support systems."
-	icon_state = "ripley_harness"
-
-/obj/structure/prop_mech/parts/part/ripley_left_arm
-	name="Ripley Left Arm"
-	desc="A Ripley APLU left arm. Data and power sockets are compatible with most exosuit tools."
-	icon_state = "ripley_l_arm"
-
-/obj/structure/prop_mech/parts/part/ripley_right_arm
-	name="Ripley Right Arm"
-	desc="A Ripley APLU right arm. Data and power sockets are compatible with most exosuit tools."
-	icon_state = "ripley_r_arm"
-
-/obj/structure/prop_mech/parts/part/ripley_left_leg
-	name="Ripley Left Leg"
-	desc="A Ripley APLU left leg. Contains somewhat complex servodrives and balance maintaining systems."
-	icon_state = "ripley_l_leg"
-
-/obj/structure/prop_mech/parts/part/ripley_right_leg
-	name="Ripley Right Leg"
-	desc="A Ripley APLU right leg. Contains somewhat complex servodrives and balance maintaining systems."
-	icon_state = "ripley_r_leg"
-
-/obj/structure/prop_mech/parts/chassis/gygax
-	name = "Gygax Chassis"
-	icon_state = "gygax_chassis"
-
-/obj/structure/prop_mech/parts/part/gygax_torso
-	name="Gygax Torso"
-	desc="A torso part of Gygax. Contains power unit, processing core and life support systems. Has an additional equipment slot."
-	icon_state = "gygax_harness"
-
-/obj/structure/prop_mech/parts/part/gygax_head
-	name="Gygax Head"
-	desc="A Gygax head. Houses advanced surveilance and targeting sensors."
-	icon_state = "gygax_head"
-
-/obj/structure/prop_mech/parts/part/gygax_left_arm
-	name="Gygax Left Arm"
-	desc="A Gygax left arm. Data and power sockets are compatible with most exosuit tools and weapons."
-	icon_state = "gygax_l_arm"
-
-/obj/structure/prop_mech/parts/part/gygax_right_arm
-	name="Gygax Right Arm"
-	desc="A Gygax right arm. Data and power sockets are compatible with most exosuit tools and weapons."
-	icon_state = "gygax_r_arm"
-
-/obj/structure/prop_mech/parts/part/gygax_left_leg
-	name="Gygax Left Leg"
-	icon_state = "gygax_l_leg"
-
-/obj/structure/prop_mech/parts/part/gygax_right_leg
-	name="Gygax Right Leg"
-	icon_state = "gygax_r_leg"
-
-/obj/structure/prop_mech/parts/part/gygax_armor
-	name="Gygax Armor Plates"
-	icon_state = "gygax_armor"
-
-/obj/structure/prop_mech/parts/chassis/durand
-	name = "Durand Chassis"
-	icon_state = "durand_chassis"
-
-/obj/structure/prop_mech/parts/part/durand_torso
-	name="Durand Torso"
-	icon_state = "durand_harness"
-
-/obj/structure/prop_mech/parts/part/durand_head
-	name="Durand Head"
-	icon_state = "durand_head"
-
-/obj/structure/prop_mech/parts/part/durand_left_arm
-	name="Durand Left Arm"
-	icon_state = "durand_l_arm"
-
-/obj/structure/prop_mech/parts/part/durand_right_arm
-	name="Durand Right Arm"
-	icon_state = "durand_r_arm"
-
-/obj/structure/prop_mech/parts/part/durand_left_leg
-	name="Durand Left Leg"
-	icon_state = "durand_l_leg"
-
-/obj/structure/prop_mech/parts/part/durand_right_leg
-	name="Durand Right Leg"
-	icon_state = "durand_r_leg"
-
-/obj/structure/prop_mech/parts/part/durand_armor
-	name="Durand Armor Plates"
-	icon_state = "durand_armor"
-
 /obj/structure/prop_mech/parts/chassis/firefighter
 	name = "Firefighter Chassis"
 	icon_state = "ripley_chassis"
+/obj/structure/prop_mech/parts/ripley_torso
+	name="P-1000 Torso"
+	desc="A torso part of P-1000 APLU. Contains power unit, processing core and life support systems."
+	icon_state = "ripley_harness"
+/obj/structure/prop_mech/parts/ripley_left_arm
+	name="P-1000 Left Arm"
+	desc="A P-1000 APLU left arm. Data and power sockets are compatible with most exosuit tools."
+	icon_state = "ripley_l_arm"
+/obj/structure/prop_mech/parts/ripley_right_arm
+	name="P-1000 Right Arm"
+	desc="A P-1000 APLU right arm. Data and power sockets are compatible with most exosuit tools."
+	icon_state = "ripley_r_arm"
+/obj/structure/prop_mech/parts/ripley_left_leg
+	name="P-1000 Left Leg"
+	desc="A P-1000 APLU left leg. Contains somewhat complex servodrives and balance maintaining systems."
+	icon_state = "ripley_l_leg"
+/obj/structure/prop_mech/parts/ripley_right_leg
+	name="P-1000 Right Leg"
+	desc="A P-1000 APLU right leg. Contains somewhat complex servodrives and balance maintaining systems."
+	icon_state = "ripley_r_leg"
 
+//gygax turned into MAX (Mobile Assault Exo-Warrior)look like a gygax from afar
+/obj/structure/prop_mech/parts/chassis/gygax
+	name = "MAX Chassis"
+	icon_state = "gygax_chassis"
+/obj/structure/prop_mech/parts/gygax_torso
+	name="MAX Torso"
+	desc="A torso part of MAX. Contains power unit, processing core and life support systems. Has an additional equipment slot."
+	icon_state = "gygax_harness"
+/obj/structure/prop_mech/parts/gygax_head
+	name="MAX Head"
+	desc="A MAX head. Houses advanced surveilance and targeting sensors."
+	icon_state = "gygax_head"
+/obj/structure/prop_mech/parts/gygax_left_arm
+	name="MAX Left Arm"
+	desc="A MAX left arm. Data and power sockets are compatible with most exosuit tools and weapons."
+	icon_state = "gygax_l_arm"
+/obj/structure/prop_mech/parts/gygax_right_arm
+	name="MAX Right Arm"
+	desc="A MAX right arm. Data and power sockets are compatible with most exosuit tools and weapons."
+	icon_state = "gygax_r_arm"
+/obj/structure/prop_mech/parts/gygax_left_leg
+	name="MAX Left Leg"
+	icon_state = "gygax_l_leg"
+/obj/structure/prop_mech/parts/gygax_right_leg
+	name="MAX Right Leg"
+	icon_state = "gygax_r_leg"
+/obj/structure/prop_mech/parts/gygax_armor
+	name="MAX Armor Plates"
+	icon_state = "gygax_armor"
+
+// durand MOX (mobile offensive exo-warrior) look like a durand from afar.
+/obj/structure/prop_mech/parts/chassis/durand
+	name = "MOX Chassis"
+	icon_state = "durand_chassis"
+/obj/structure/prop_mech/parts/durand_torso
+	name="MOX Torso"
+	icon_state = "durand_harness"
+/obj/structure/prop_mech/parts/durand_head
+	name="MOX Head"
+	icon_state = "durand_head"
+/obj/structure/prop_mech/parts/durand_left_arm
+	name="MOX Left Arm"
+	icon_state = "durand_l_arm"
+/obj/structure/prop_mech/parts/durand_right_arm
+	name="MOX Right Arm"
+	icon_state = "durand_r_arm"
+/obj/structure/prop_mech/parts/durand_left_leg
+	name="MOX Left Leg"
+	icon_state = "durand_l_leg"
+/obj/structure/prop_mech/parts/durand_right_leg
+	name="MOX Right Leg"
+	icon_state = "durand_r_leg"
+/obj/structure/prop_mech/parts/durand_armor
+	name="MOX Armor Plates"
+	icon_state = "durand_armor"
+
+// phazon currently not in use. could  be deleted...
 /obj/structure/prop_mech/parts/chassis/phazon
 	name = "Phazon Chassis"
 	icon_state = "phazon_chassis"
-
-/obj/structure/prop_mech/parts/part/phazon_torso
+/obj/structure/prop_mech/parts/phazon_torso
 	name="Phazon Torso"
 	icon_state = "phazon_harness"
-
-/obj/structure/prop_mech/parts/part/phazon_head
+/obj/structure/prop_mech/parts/phazon_head
 	name="Phazon Head"
 	icon_state = "phazon_head"
-
-/obj/structure/prop_mech/parts/part/phazon_left_arm
+/obj/structure/prop_mech/parts/phazon_left_arm
 	name="Phazon Left Arm"
 	icon_state = "phazon_l_arm"
-
-/obj/structure/prop_mech/parts/part/phazon_right_arm
+/obj/structure/prop_mech/parts/phazon_right_arm
 	name="Phazon Right Arm"
 	icon_state = "phazon_r_arm"
-
-/obj/structure/prop_mech/parts/part/phazon_left_leg
+/obj/structure/prop_mech/parts/phazon_left_leg
 	name="Phazon Left Leg"
 	icon_state = "phazon_l_leg"
-
-/obj/structure/prop_mech/parts/part/phazon_right_leg
+/obj/structure/prop_mech/parts/phazon_right_leg
 	name="Phazon Right Leg"
 	icon_state = "phazon_r_leg"
-
-/obj/structure/prop_mech/parts/part/phazon_armor_plates
+/obj/structure/prop_mech/parts/phazon_armor_plates
 	name="Phazon Armor Plates"
 	icon_state = "phazon_armor"
 
+// odysseus currently not in use  could  be deleted...
 /obj/structure/prop_mech/parts/chassis/odysseus
 	name = "Odysseus Chassis"
 	icon_state = "odysseus_chassis"
-
-/obj/structure/prop_mech/parts/part/odysseus_head
+/obj/structure/prop_mech/parts/odysseus_head
 	name="Odysseus Head"
 	icon_state = "odysseus_head"
-
-/obj/structure/prop_mech/parts/part/odysseus_torso
+/obj/structure/prop_mech/parts/odysseus_torso
 	name="Odysseus Torso"
 	desc="A torso part of Odysseus. Contains power unit, processing core and life support systems."
 	icon_state = "odysseus_torso"
-
-/obj/structure/prop_mech/parts/part/odysseus_left_arm
+/obj/structure/prop_mech/parts/odysseus_left_arm
 	name="Odysseus Left Arm"
 	desc="An Odysseus left arm. Data and power sockets are compatible with most exosuit tools."
 	icon_state = "odysseus_l_arm"
-
-/obj/structure/prop_mech/parts/part/odysseus_right_arm
+/obj/structure/prop_mech/parts/odysseus_right_arm
 	name="Odysseus Right Arm"
 	desc="An Odysseus right arm. Data and power sockets are compatible with most exosuit tools."
 	icon_state = "odysseus_r_arm"
-
-/obj/structure/prop_mech/parts/part/odysseus_left_leg
+/obj/structure/prop_mech/parts/odysseus_left_leg
 	name="Odysseus Left Leg"
 	desc="An Odysseus left leg. Contains somewhat complex servodrives and balance maintaining systems."
 	icon_state = "odysseus_l_leg"
-
-/obj/structure/prop_mech/parts/part/odysseus_right_leg
+/obj/structure/prop_mech/parts/odysseus_right_leg
 	name="Odysseus Right Leg"
 	desc="A Odysseus right leg. Contains somewhat complex servodrives and balance maintaining systems."
 	icon_state = "odysseus_r_leg"
-
-/obj/structure/prop_mech/parts/part/odysseus_armor_plates
+/obj/structure/prop_mech/parts/odysseus_armor_plates
 	name="Odysseus Armor Plates"
 	icon_state = "odysseus_armor"

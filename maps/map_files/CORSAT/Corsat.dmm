@@ -26721,7 +26721,7 @@
 	},
 /area/corsat/sigma/south/robotics)
 "bxr" = (
-/obj/structure/prop_mech/parts/part/durand_head,
+/obj/structure/prop_mech/parts/durand_head,
 /turf/open/floor/corsat{
 	icon_state = "arrow_north"
 	},
@@ -26743,13 +26743,13 @@
 	},
 /area/corsat/sigma/south/robotics)
 "bxu" = (
-/obj/structure/prop_mech/parts/part/durand_right_arm,
+/obj/structure/prop_mech/parts/durand_right_arm,
 /turf/open/floor/corsat{
 	icon_state = "arrow_west"
 	},
 /area/corsat/sigma/south/robotics)
 "bxv" = (
-/obj/structure/prop_mech/parts/part/durand_torso,
+/obj/structure/prop_mech/parts/durand_torso,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},
@@ -26779,7 +26779,7 @@
 	},
 /area/corsat/sigma/south/robotics)
 "bxA" = (
-/obj/structure/prop_mech/parts/part/durand_left_leg,
+/obj/structure/prop_mech/parts/durand_left_leg,
 /turf/open/floor/corsat{
 	icon_state = "arrow_east"
 	},

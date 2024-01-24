@@ -13,7 +13,7 @@
 /obj/item/circuitboard/exosuit/peripherals
 	icon_state = "mcontroller"
 
-// P-1000 Older version of the P-1000
+// P-1000 Older version of the P-5000
 /obj/item/circuitboard/exosuit/main/work_loader
 	name = "Circuit board (P-1000 Central Control module)"
 /obj/item/circuitboard/exosuit/peripherals/work_loader

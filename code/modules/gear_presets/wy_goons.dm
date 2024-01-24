@@ -62,7 +62,7 @@
 	assignment = JOB_WY_GOON
 	rank = JOB_WY_GOON
 	paygrade = PAY_SHORT_CPO
-	skills = /datum/skills/MP
+	skills = /datum/skills/wy_goon
 
 /datum/equipment_preset/goon/standard/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
@@ -95,7 +95,7 @@
 	assignment = JOB_WY_GOON_LEAD
 	rank = JOB_WY_GOON_LEAD
 	paygrade = PAY_SHORT_CSPO
-	skills = /datum/skills/MP
+	skills = /datum/skills/wy_goon_lead
 
 /datum/equipment_preset/goon/lead/New()
 	. = ..()

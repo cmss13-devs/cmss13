@@ -26,7 +26,7 @@
 
 /// Damage reduced but incapable of self defense.
 #define SIMI_ABILITY_PROTECT "protect"
-#define SIMI_PROTECTIVE_COST 50
+#define SIMI_PROTECTIVE_COST 60
 
 // Secondary Abilities
 #define SIMI_SECONDARY_ACTION "secondary"

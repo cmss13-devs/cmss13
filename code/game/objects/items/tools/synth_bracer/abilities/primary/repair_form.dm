@@ -7,6 +7,7 @@
 	handles_charge_cost = TRUE
 	handles_cooldown = TRUE
 	category = SIMI_PRIMARY_ACTION
+	ability_tag = SIMI_ABILITY_REPAIR
 
 /datum/action/human_action/synth_bracer/repair_form/action_activate()
 	..()

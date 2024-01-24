@@ -10,6 +10,8 @@
 	/// What cateogry of action it is. Can only have one active action from each type.
 	var/category = SIMI_SECONDARY_ACTION
 	var/human_adaptable = FALSE
+	/// The tag to tell what ability is active.
+	var/ability_tag = SIMI_ACTIVE_NONE
 
 /datum/action/human_action/activable/synth_bracer/give_to(user)
 	/// never add a check to see if the synth has gloves on, because they shouldn't have these abilities while not wearing gloves. it should runtime to let us know
@@ -31,6 +33,12 @@
 	synth_bracer = null
 	return ..()
 
+/datum/action/human_action/activable/synth_bracer/action_activate()
+	if(is_active())
+		set_inactive(category)
+		return
+	..()
+
 /datum/action/human_action/activable/synth_bracer/use_ability(mob/M)
 	if(!can_use_action())
 		return FALSE
@@ -44,6 +52,9 @@
 	return TRUE
 
 /datum/action/human_action/activable/synth_bracer/can_use_action()
+	if(is_active())
+		set_inactive(category)
+		return FALSE
 	if(!issynth(owner) && !is_human_usable())
 		to_chat(owner, SPAN_WARNING("You have no idea how to use this!"))
 	if(owner.is_mob_incapacitated())
@@ -89,6 +100,16 @@
 
 /datum/action/human_action/activable/synth_bracer/proc/set_inactive(category = SIMI_SECONDARY_ACTION)
 	set_active(category, SIMI_ACTIVE_NONE)
+
+/datum/action/human_action/activable/synth_bracer/proc/is_active()
+	switch(category)
+		if(SIMI_PRIMARY_ACTION)
+			if(synth_bracer.active_ability == ability_tag)
+				return TRUE
+		if(SIMI_SECONDARY_ACTION)
+			if(synth_bracer.active_utility == ability_tag)
+				return TRUE
+	return FALSE
 /* -- ON-CLICK ACTIONS -- */
 
 /datum/action/human_action/synth_bracer
@@ -102,6 +123,8 @@
 	/// What cateogry of action it is. Can only have one active action from each type.
 	var/category = SIMI_SECONDARY_ACTION
 	var/human_adaptable = FALSE
+	/// The tag to tell what ability is active.
+	var/ability_tag = SIMI_ACTIVE_NONE
 
 /datum/action/human_action/synth_bracer/give_to(user)
 	synth = user
@@ -166,6 +189,9 @@
 	return ..()
 
 /datum/action/human_action/synth_bracer/action_activate()
+	if(is_active())
+		set_inactive(category)
+		return FALSE
 	if(!handles_cooldown && cooldown)
 		enter_cooldown()
 	if(!handles_charge_cost && charge_cost)
@@ -190,3 +216,13 @@
 
 /datum/action/human_action/synth_bracer/proc/set_inactive(category = SIMI_SECONDARY_ACTION)
 	set_active(category, SIMI_ACTIVE_NONE)
+
+/datum/action/human_action/synth_bracer/proc/is_active()
+	switch(category)
+		if(SIMI_PRIMARY_ACTION)
+			if(synth_bracer.active_ability == ability_tag)
+				return TRUE
+		if(SIMI_SECONDARY_ACTION)
+			if(synth_bracer.active_utility == ability_tag)
+				return TRUE
+	return FALSE

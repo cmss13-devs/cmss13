@@ -7,6 +7,7 @@
 	handles_charge_cost = TRUE
 	handles_cooldown = TRUE
 	category = SIMI_PRIMARY_ACTION
+	ability_tag = SIMI_ABILITY_PROTECT
 
 /datum/action/human_action/synth_bracer/protective_form/action_activate()
 	var/mob/living/carbon/human/user = owner

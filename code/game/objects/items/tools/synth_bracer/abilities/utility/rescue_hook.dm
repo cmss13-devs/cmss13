@@ -32,8 +32,8 @@
 	var/turf/temp = synth.loc
 	for(var/x in 0 to max_distance)
 		temp = get_step(T, facing)
-		if(facing in diagonals) // check if it goes through corners
-			var/reverse_face = reverse_dir[facing]
+		if(facing in GLOB.diagonals) // check if it goes through corners
+			var/reverse_face = GLOB.reverse_dir[facing]
 			var/turf/back_left = get_step(temp, turn(reverse_face, 45))
 			var/turf/back_right = get_step(temp, turn(reverse_face, -45))
 			if((!back_left || back_left.density) && (!back_right || back_right.density))
@@ -67,11 +67,10 @@
 
 	var/throw_target_turf = get_step(synth.loc, facing)
 	var/pre_frozen = FALSE
-	if(synth.frozen)
+	if(HAS_TRAIT(synth, TRAIT_IMMOBILIZED))
 		pre_frozen = TRUE
 	else
-		synth.frozen = TRUE
-		synth.update_canmove()
+		ADD_TRAIT(synth, TRAIT_IMMOBILIZED, TRAIT_SOURCE_EQUIPMENT(WEAR_HANDS))
 	if(!do_after(synth, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, null, null, FALSE, 1, FALSE, 1))
 		to_chat(synth, SPAN_WARNING("You cancel your launch."))
 
@@ -79,8 +78,7 @@
 			telegraph_atom_list -= XT
 			qdel(XT)
 		if(!pre_frozen)
-			synth.frozen = FALSE
-			synth.update_canmove()
+			REMOVE_TRAIT(synth, TRAIT_IMMOBILIZED, TRAIT_SOURCE_EQUIPMENT(WEAR_HANDS))
 		set_inactive(category)
 
 		return FALSE
@@ -89,8 +87,7 @@
 	synth_bracer.drain_charge(synth, charge_cost)
 
 	if(!pre_frozen)
-		synth.frozen = FALSE
-		synth.update_canmove()
+		REMOVE_TRAIT(synth, TRAIT_IMMOBILIZED, TRAIT_SOURCE_EQUIPMENT(WEAR_HANDS))
 
 	playsound(get_turf(synth), 'sound/items/rappel.ogg', 75, FALSE)
 

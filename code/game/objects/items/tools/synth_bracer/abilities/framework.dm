@@ -46,7 +46,7 @@
 /datum/action/human_action/activable/synth_bracer/can_use_action()
 	if(!issynth(owner) && !is_human_usable())
 		to_chat(owner, SPAN_WARNING("You have no idea how to use this!"))
-	if(owner.is_mob_incapacitated() || owner.dazed)
+	if(owner.is_mob_incapacitated())
 		to_chat(owner, SPAN_WARNING("You cannot use this action while incapacitated!"))
 		return FALSE
 
@@ -141,7 +141,7 @@
 /datum/action/human_action/synth_bracer/can_use_action()
 	if(!issynth(owner) && !is_human_usable())
 		to_chat(owner, SPAN_WARNING("You have no idea how to use this!"))
-	if(owner.is_mob_incapacitated() || owner.dazed)
+	if(owner.is_mob_incapacitated())
 		to_chat(owner, SPAN_WARNING("You cannot use this action while incapacitated!"))
 		return FALSE
 

@@ -34,13 +34,13 @@
 			synth_bracer.drain_charge(synth, charge_cost)
 			synth.status_flags &= ~CANPUSH
 			synth.anchored = TRUE
-			synth.freeze()
+			ADD_TRAIT(synth, TRAIT_IMMOBILIZED, TRAIT_SOURCE_EQUIPMENT(WEAR_HANDS))
 			to_chat(synth, SPAN_DANGER("[name] beeps, \"You are anchored in place and cannot be moved.\""))
 			synth.add_filter("synth_immobile_form", priority = 1, params = list("type" = "outline", "color" = "#2B719E", "size" = 1))
 		if(SIMI_ABILITY_ANCHOR)
 			synth.status_flags |= CANPUSH
 			synth.anchored = FALSE
-			synth.unfreeze()
+			REMOVE_TRAIT(synth, TRAIT_IMMOBILIZED, TRAIT_SOURCE_EQUIPMENT(WEAR_HANDS))
 			to_chat(synth, SPAN_DANGER("[name] beeps, \"You can now move again.\""))
 			set_inactive(category)
 			synth.remove_filter("synth_immobile_form")

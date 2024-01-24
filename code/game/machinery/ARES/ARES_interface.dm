@@ -9,10 +9,10 @@
 	var/current_menu = "login"
 	var/last_menu = ""
 
-	var/authentication = ARES_ACCESS_BASIC
+	var/authentication = ARES_ACCESS_LOGOUT
 
 	/// The last person to login.
-	var/last_login
+	var/last_login = "No User"
 	/// The person pretending to be last_login
 	var/sudo_holder
 
@@ -275,6 +275,8 @@
 				last_login = sudo_holder
 				sudo_holder = null
 			datacore.interface_access_list += "[last_login] logged out at [worldtime2text()]."
+			last_login = "No User"
+			authentication = ARES_ACCESS_LOGOUT
 
 		if("home")
 			last_menu = current_menu

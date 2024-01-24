@@ -1,0 +1,521 @@
+/obj/item/device/ai_tech_pda
+	icon = 'icons/obj/items/synth/wj_pda.dmi'
+	name = "KN5500 PDA"
+	desc = "A portable interface used by Working-Joes, capable of connecting to the local command AI to relay tasking information. Built to withstand a nuclear bomb."
+	icon_state = "karnak_off"
+	unacidable = TRUE
+	indestructible = TRUE
+	req_one_access = list(ACCESS_MARINE_AI_TEMP, ACCESS_MARINE_AI, ACCESS_ARES_DEBUG)
+
+	/// The ID used to link all devices.
+	var/datum/ares_link/link
+	/// The datacore storing all the information.
+	var/datum/ares_datacore/datacore
+
+	var/current_menu = "login"
+	var/last_menu = "off"
+
+	var/authentication = APOLLO_ACCESS_LOGOUT
+	/// The last person to login.
+	var/logged_in
+	/// A record of who logged in and when.
+	var/list/access_list = list()
+	var/list/deleted_1to1 = list()
+
+/obj/item/device/ai_tech_pda/proc/link_systems(datum/ares_link/new_link = GLOB.ares_link, override)
+	if(link && !override)
+		return FALSE
+	if(new_link)
+		new_link.ticket_computers += src
+		link = new_link
+		new_link.linked_systems += src
+	if(!datacore)
+		datacore = GLOB.ares_datacore
+	return TRUE
+
+/obj/item/device/ai_tech_pda/Initialize(mapload, ...)
+	link_systems(override = FALSE)
+	. = ..()
+
+/obj/item/device/ai_tech_pda/proc/delink()
+	if(link)
+		link.ticket_computers -= src
+		link.linked_systems -= src
+		link = null
+	datacore = null
+
+/obj/item/device/ai_tech_pda/Destroy()
+	delink()
+	return ..()
+
+/obj/item/device/ai_tech_pda/update_icon()
+	. = ..()
+	if(last_menu == "off")
+		icon_state = "karnak_off"
+	else if(current_menu == "login")
+		icon_state = "karnak_login_anim"
+	else
+		icon_state = "karnak_on_anim"
+
+/obj/item/device/ai_tech_pda/attack_self(mob/user)
+	if(..() || !allowed(usr))
+		return FALSE
+
+	if((last_menu == "off") && (current_menu == "login"))
+		last_menu = "main"
+		update_icon()
+
+	tgui_interact(user)
+	return TRUE
+
+/obj/item/device/ai_tech_pda/tgui_interact(mob/user, datum/tgui/ui)
+	if(!link.interface || !datacore)
+		to_chat(user, SPAN_WARNING("ARES DATA LINK FAILED"))
+		return FALSE
+	ui = SStgui.try_update_ui(user, GLOB.ares_link, ui)
+	if(!ui)
+		ui = new(user, GLOB.ares_link, "AresAdmin", name)
+		ui.open()
+
+/obj/item/device/ai_tech_pda/ui_data(mob/user)
+	if(!link.interface)
+		to_chat(user, SPAN_WARNING("ARES ADMIN DATA LINK FAILED"))
+		return FALSE
+	var/list/data = list()
+
+	data["admin_login"] = "[logged_in], AI Service Technician"
+	data["admin_access_log"] = list()
+	data["admin_access_log"] += access_list
+
+	data["current_menu"] = current_menu
+	data["last_page"] = last_menu
+
+	data["logged_in"] = link.interface.last_login
+	data["sudo"] = link.interface.sudo_holder ? TRUE : FALSE
+
+	data["access_text"] = "[link.interface.sudo_holder ? "(SUDO)," : ""] access level [link.interface.authentication], [link.interface.ares_auth_to_text(link.interface.authentication)]."
+	data["access_level"] = link.interface.authentication
+
+	data["alert_level"] = GLOB.security_level
+	data["evac_status"] = SShijack.evac_status
+	data["worldtime"] = world.time
+
+	data["access_log"] = list()
+	data["access_log"] += datacore.interface_access_list
+	data["apollo_log"] = list()
+	data["apollo_log"] += datacore.apollo_log
+
+	data["deleted_conversation"] = list()
+	data["deleted_conversation"] += deleted_1to1
+
+	data["distresstime"] = datacore.ares_distress_cooldown
+	data["distresstimelock"] = DISTRESS_TIME_LOCK
+	data["mission_failed"] = SSticker.mode.is_in_endgame
+	data["nuketimelock"] = NUCLEAR_TIME_LOCK
+	data["nuke_available"] = datacore.nuke_available
+
+	var/list/logged_announcements = list()
+	for(var/datum/ares_record/announcement/broadcast as anything in datacore.records_announcement)
+		var/list/current_broadcast = list()
+		current_broadcast["time"] = broadcast.time
+		current_broadcast["title"] = broadcast.title
+		current_broadcast["details"] = broadcast.details
+		current_broadcast["ref"] = "\ref[broadcast]"
+		logged_announcements += list(current_broadcast)
+	data["records_announcement"] = logged_announcements
+
+	var/list/logged_alerts = list()
+	for(var/datum/ares_record/security/security_alert as anything in datacore.records_security)
+		var/list/current_alert = list()
+		current_alert["time"] = security_alert.time
+		current_alert["title"] = security_alert.title
+		current_alert["details"] = security_alert.details
+		current_alert["ref"] = "\ref[security_alert]"
+		logged_alerts += list(current_alert)
+	data["records_security"] = logged_alerts
+
+	var/list/logged_flights = list()
+	for(var/datum/ares_record/flight/flight_log as anything in datacore.records_flight)
+		var/list/current_flight = list()
+		current_flight["time"] = flight_log.time
+		current_flight["title"] = flight_log.title
+		current_flight["details"] = flight_log.details
+		current_flight["user"] = flight_log.user
+		current_flight["ref"] = "\ref[flight_log]"
+		logged_flights += list(current_flight)
+	data["records_flight"] = logged_flights
+
+	var/list/logged_bioscans = list()
+	for(var/datum/ares_record/bioscan/scan as anything in datacore.records_bioscan)
+		var/list/current_scan = list()
+		current_scan["time"] = scan.time
+		current_scan["title"] = scan.title
+		current_scan["details"] = scan.details
+		current_scan["ref"] = "\ref[scan]"
+		logged_bioscans += list(current_scan)
+	data["records_bioscan"] = logged_bioscans
+
+	var/list/logged_bombs = list()
+	for(var/datum/ares_record/bombardment/bomb as anything in datacore.records_bombardment)
+		var/list/current_bomb = list()
+		current_bomb["time"] = bomb.time
+		current_bomb["title"] = bomb.title
+		current_bomb["details"] = bomb.details
+		current_bomb["user"] = bomb.user
+		current_bomb["ref"] = "\ref[bomb]"
+		logged_bombs += list(current_bomb)
+	data["records_bombardment"] = logged_bombs
+
+	var/list/logged_deletes = list()
+	for(var/datum/ares_record/deletion/deleted as anything in datacore.records_deletion)
+		if(!istype(deleted))
+			continue
+		var/list/current_delete = list()
+		current_delete["time"] = deleted.time
+		current_delete["title"] = deleted.title
+		current_delete["details"] = deleted.details
+		current_delete["user"] = deleted.user
+		current_delete["ref"] = "\ref[deleted]"
+		logged_deletes += list(current_delete)
+	data["records_deletion"] = logged_deletes
+
+	var/list/logged_discussions = list()
+	for(var/datum/ares_record/deleted_talk/deleted_convo as anything in datacore.records_deletion)
+		if(!istype(deleted_convo))
+			continue
+		var/list/deleted_disc = list()
+		deleted_disc["time"] = deleted_convo.time
+		deleted_disc["title"] = deleted_convo.title
+		deleted_disc["ref"] = "\ref[deleted_convo]"
+		logged_discussions += list(deleted_disc)
+	data["deleted_discussions"] = logged_discussions
+
+	var/list/logged_orders = list()
+	for(var/datum/ares_record/requisition_log/req_order as anything in datacore.records_asrs)
+		if(!istype(req_order))
+			continue
+		var/list/current_order = list()
+		current_order["time"] = req_order.time
+		current_order["details"] = req_order.details
+		current_order["title"] = req_order.title
+		current_order["user"] = req_order.user
+		current_order["ref"] = "\ref[req_order]"
+		logged_orders += list(current_order)
+	data["records_requisition"] = logged_orders
+
+	var/list/logged_convos = list()
+	var/list/active_convo = list()
+	var/active_ref
+	for(var/datum/ares_record/talk_log/log as anything in datacore.records_talking)
+		if(!istype(log))
+			continue
+		if(log.user == link.interface.last_login)
+			active_convo = log.conversation
+			active_ref = "\ref[log]"
+
+		var/list/current_convo = list()
+		current_convo["user"] = log.user
+		current_convo["ref"] = "\ref[log]"
+		current_convo["conversation"] = log.conversation
+		logged_convos += list(current_convo)
+
+	data["active_convo"] = active_convo
+	data["active_ref"] = active_ref
+	data["conversations"] = logged_convos
+
+	var/list/logged_maintenance = list()
+	for(var/datum/ares_ticket/maintenance/maint_ticket as anything in link.tickets_maintenance)
+		if(!istype(maint_ticket))
+			continue
+		var/lock_status = TICKET_OPEN
+		switch(maint_ticket.ticket_status)
+			if(TICKET_REJECTED, TICKET_CANCELLED, TICKET_COMPLETED)
+				lock_status = TICKET_CLOSED
+
+		var/list/current_maint = list()
+		current_maint["id"] = maint_ticket.ticket_id
+		current_maint["time"] = maint_ticket.ticket_time
+		current_maint["priority_status"] = maint_ticket.ticket_priority
+		current_maint["category"] = maint_ticket.ticket_name
+		current_maint["details"] = maint_ticket.ticket_details
+		current_maint["status"] = maint_ticket.ticket_status
+		current_maint["submitter"] = maint_ticket.ticket_submitter
+		current_maint["assignee"] = maint_ticket.ticket_assignee
+		current_maint["lock_status"] = lock_status
+		current_maint["ref"] = "\ref[maint_ticket]"
+		logged_maintenance += list(current_maint)
+	data["maintenance_tickets"] = logged_maintenance
+
+	var/list/logged_access = list()
+	for(var/datum/ares_ticket/access/access_ticket as anything in link.tickets_access)
+		var/lock_status = TICKET_OPEN
+		switch(access_ticket.ticket_status)
+			if(TICKET_REJECTED, TICKET_CANCELLED, TICKET_REVOKED)
+				lock_status = TICKET_CLOSED
+
+		var/list/current_ticket = list()
+		current_ticket["id"] = access_ticket.ticket_id
+		current_ticket["time"] = access_ticket.ticket_time
+		current_ticket["priority_status"] = access_ticket.ticket_priority
+		current_ticket["title"] = access_ticket.ticket_name
+		current_ticket["details"] = access_ticket.ticket_details
+		current_ticket["status"] = access_ticket.ticket_status
+		current_ticket["submitter"] = access_ticket.ticket_submitter
+		current_ticket["assignee"] = access_ticket.ticket_assignee
+		current_ticket["lock_status"] = lock_status
+		current_ticket["ref"] = "\ref[access_ticket]"
+		logged_access += list(current_ticket)
+	data["access_tickets"] = logged_access
+
+	return data
+
+/obj/item/device/ai_tech_pda/ui_close(mob/user)
+	. = ..()
+	if(logged_in)
+		current_menu = "login"
+		last_menu = "off"
+		access_list += "[logged_in] logged out at [worldtime2text()]."
+		logged_in = null
+
+/obj/item/device/ai_tech_pda/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+	var/mob/user = usr
+
+	switch(action)
+		if("go_back")
+			if(!last_menu)
+				return to_chat(user, SPAN_WARNING("Error, no previous page detected."))
+			var/temp_holder = current_menu
+			current_menu = last_menu
+			last_menu = temp_holder
+
+		if("login")
+			if(check_rights_for(user.client, R_MOD))
+				logged_in = user.real_name
+				access_list += "[logged_in] at [worldtime2text()]."
+			else
+				to_chat(user, SPAN_WARNING("You require staff identification to access this terminal!"))
+				return FALSE
+			current_menu = "main"
+
+		// -- Page Changers -- //
+		if("logout")
+			current_menu = "login"
+			last_menu = "login"
+			access_list += "[logged_in] logged out at [worldtime2text()]."
+			logged_in = null
+
+		if("home")
+			last_menu = current_menu
+			current_menu = "main"
+		if("page_1to1")
+			last_menu = current_menu
+			current_menu = "talking"
+		if("page_announcements")
+			last_menu = current_menu
+			current_menu = "announcements"
+		if("page_bioscans")
+			last_menu = current_menu
+			current_menu = "bioscans"
+		if("page_bombardments")
+			last_menu = current_menu
+			current_menu = "bombardments"
+		if("page_apollo")
+			last_menu = current_menu
+			current_menu = "apollo"
+		if("page_access")
+			last_menu = current_menu
+			current_menu = "access_log"
+		if("page_admin_list")
+			last_menu = current_menu
+			current_menu = "admin_access_log"
+		if("page_security")
+			last_menu = current_menu
+			current_menu = "security"
+		if("page_requisitions")
+			last_menu = current_menu
+			current_menu = "requisitions"
+		if("page_flight")
+			last_menu = current_menu
+			current_menu = "flight_log"
+		if("page_emergency")
+			last_menu = current_menu
+			current_menu = "emergency"
+		if("page_deleted")
+			last_menu = current_menu
+			current_menu = "delete_log"
+		if("page_deleted_1to1")
+			last_menu = current_menu
+			current_menu = "deleted_talks"
+		if("page_access_management")
+			last_menu = current_menu
+			current_menu = "access_management"
+		if("page_maint_management")
+			last_menu = current_menu
+			current_menu = "maintenance_management"
+
+		// -- 1:1 Conversation -- //
+		if("new_conversation")
+			var/datum/ares_record/talk_log/convo = new(link.interface.last_login)
+			convo.conversation += "[MAIN_AI_SYSTEM] at [worldtime2text()], 'New 1:1 link initiated. Greetings, [link.interface.last_login].'"
+			datacore.records_talking += convo
+
+		if("clear_conversation")
+			var/datum/ares_record/talk_log/conversation = locate(params["active_convo"])
+			if(!istype(conversation))
+				return FALSE
+			var/datum/ares_record/deleted_talk/deleted = new
+			deleted.title = conversation.title
+			deleted.conversation = conversation.conversation
+			deleted.user = MAIN_AI_SYSTEM
+			datacore.records_deletion += deleted
+			datacore.records_talking -= conversation
+
+		if("fake_message_ares")
+			var/message = tgui_input_text(user, "What do you wish to say to ARES?", "ARES Message", encode = FALSE)
+			if(message)
+				link.interface.message_ares(message, user, params["active_convo"], TRUE)
+		if("ares_reply")
+			var/message = tgui_input_text(user, "What do you wish to reply with?", "ARES Response", encode = FALSE)
+			if(message)
+				link.interface.response_from_ares(message, params["active_convo"])
+				var/datum/ares_record/talk_log/conversation = locate(params["active_convo"])
+				var/admin_log = SPAN_STAFF_IC("<b>ADMINS/MODS: [SPAN_RED("[key_name(user)] replied to [conversation.user]'s ARES message")] [SPAN_GREEN("via Remote link.interface")] with: [SPAN_BLUE(message)] </b>")
+				for(var/client/admin in GLOB.admins)
+					if((R_ADMIN|R_MOD) & admin.admin_holder.rights)
+						to_chat(admin, admin_log)
+
+		if("read_record")
+			var/datum/ares_record/deleted_talk/conversation = locate(params["record"])
+			deleted_1to1 = conversation.conversation
+			last_menu = current_menu
+			current_menu = "read_deleted"
+
+		if("claim_ticket")
+			var/datum/ares_ticket/ticket = locate(params["ticket"])
+			if(!istype(ticket))
+				return FALSE
+			var/claim = TRUE
+			var/assigned = ticket.ticket_assignee
+			if(assigned)
+				if(assigned == MAIN_AI_SYSTEM)
+					var/prompt = tgui_alert(user, "ARES already claimed this ticket! Do you wish to drop the claim?", "Unclaim ticket", list("Yes", "No"))
+					if(prompt != "Yes")
+						return FALSE
+					/// set ticket back to pending
+					ticket.ticket_assignee = null
+					ticket.ticket_status = TICKET_PENDING
+					return claim
+				var/choice = tgui_alert(user, "This ticket has already been claimed by [assigned]! Do you wish to override their claim?", "Claim Override", list("Yes", "No"))
+				if(choice != "Yes")
+					claim = FALSE
+			if(claim)
+				ticket.ticket_assignee = MAIN_AI_SYSTEM
+				ticket.ticket_status = TICKET_ASSIGNED
+			return claim
+
+		if("auth_access")
+			var/datum/ares_ticket/access/access_ticket = locate(params["ticket"])
+			if(!access_ticket)
+				return FALSE
+			for(var/obj/item/card/id/identification in link.waiting_ids)
+				if(!istype(identification))
+					continue
+				if(identification.registered_gid != access_ticket.user_id_num)
+					continue
+				identification.handle_ares_access(MAIN_AI_SYSTEM, user)
+				access_ticket.ticket_status = TICKET_GRANTED
+				ares_apollo_talk("Access Ticket [access_ticket.ticket_id]: [access_ticket.ticket_submitter] granted core access.")
+				return TRUE
+			for(var/obj/item/card/id/identification in link.active_ids)
+				if(!istype(identification))
+					continue
+				if(identification.registered_gid != access_ticket.user_id_num)
+					continue
+				identification.handle_ares_access(MAIN_AI_SYSTEM, user)
+				access_ticket.ticket_status = TICKET_REVOKED
+				ares_apollo_talk("Access Ticket [access_ticket.ticket_id]: core access for [access_ticket.ticket_submitter] revoked.")
+				return TRUE
+			return FALSE
+
+		if("reject_access")
+			var/datum/ares_ticket/access/access_ticket = locate(params["ticket"])
+			if(!istype(access_ticket))
+				return FALSE
+			access_ticket.ticket_status = TICKET_REJECTED
+			to_chat(user, SPAN_NOTICE("[access_ticket.ticket_type] [access_ticket.ticket_id] marked as rejected."))
+			ares_apollo_talk("Access Ticket [access_ticket.ticket_id] rejected.")
+			return TRUE
+
+		if("new_report")
+			var/priority_report = FALSE
+			var/maint_type = tgui_input_list(user, "What is the type of maintenance item you wish to report?", "Report Category", GLOB.maintenance_categories, 30 SECONDS)
+			switch(maint_type)
+				if("Major Structural Damage", "Fire", "Communications Failure",	"Power Generation Failure")
+					priority_report = TRUE
+
+			if(!maint_type)
+				return FALSE
+			var/details = tgui_input_text(user, "What are the details for this report?", "Ticket Details", encode = FALSE)
+			if(!details)
+				return FALSE
+
+			if(!priority_report)
+				var/is_priority = tgui_alert(user, "Is this a priority report?", "Priority designation", list("Yes", "No"))
+				if(is_priority == "Yes")
+					priority_report = TRUE
+
+			var/confirm = alert(user, "Please confirm the submission of your maintenance report. \n\n Priority: [priority_report ? "Yes" : "No"]\n Category: '[maint_type]'\n Details: '[details]'\n\n Is this correct?", "Confirmation", "Yes", "No")
+			if(confirm == "Yes")
+				var/datum/ares_ticket/maintenance/maint_ticket = new(MAIN_AI_SYSTEM, maint_type, details, priority_report)
+				link.tickets_maintenance += maint_ticket
+				if(priority_report)
+					ares_apollo_talk("Priority Maintenance Report: [maint_type] - ID [maint_ticket.ticket_id]. Seek and resolve.")
+				log_game("ARES: Maintenance Ticket '\ref[maint_ticket]' created by [key_name(user)] as [MAIN_AI_SYSTEM] with Category '[maint_type]' and Details of '[details]'.")
+				return TRUE
+			return FALSE
+
+		if("cancel_ticket")
+			var/datum/ares_ticket/ticket = locate(params["ticket"])
+			if(!istype(ticket))
+				return FALSE
+			if(ticket.ticket_submitter != MAIN_AI_SYSTEM)
+				to_chat(user, SPAN_WARNING("You cannot cancel a ticket that does not belong to [MAIN_AI_SYSTEM]!"))
+				return FALSE
+			to_chat(user, SPAN_WARNING("[ticket.ticket_type] [ticket.ticket_id] has been cancelled."))
+			ticket.ticket_status = TICKET_CANCELLED
+			if(ticket.ticket_priority)
+				ares_apollo_talk("Priority [ticket.ticket_type] [ticket.ticket_id] has been cancelled.")
+			return TRUE
+
+		if("mark_ticket")
+			var/datum/ares_ticket/ticket = locate(params["ticket"])
+			if(!istype(ticket))
+				return FALSE
+			var/options_list = list(TICKET_COMPLETED, TICKET_REJECTED)
+			if(ticket.ticket_priority)
+				options_list += TICKET_NON_PRIORITY
+			else
+				options_list += TICKET_PRIORITY
+			var/choice = tgui_alert(user, "What do you wish to mark the ticket as?", "Mark", options_list, 20 SECONDS)
+			switch(choice)
+				if(TICKET_PRIORITY)
+					ticket.ticket_priority = TRUE
+					ares_apollo_talk("[ticket.ticket_type] [ticket.ticket_id] upgraded to Priority.")
+					return TRUE
+				if(TICKET_NON_PRIORITY)
+					ticket.ticket_priority = FALSE
+					ares_apollo_talk("[ticket.ticket_type] [ticket.ticket_id] downgraded from Priority.")
+					return TRUE
+				if(TICKET_COMPLETED)
+					ticket.ticket_status = TICKET_COMPLETED
+				if(TICKET_REJECTED)
+					ticket.ticket_status = TICKET_REJECTED
+				else
+					return FALSE
+			if(ticket.ticket_priority)
+				ares_apollo_talk("Priority [ticket.ticket_type] [ticket.ticket_id] has been [choice] by [MAIN_AI_SYSTEM].")
+			to_chat(user, SPAN_NOTICE("[ticket.ticket_type] [ticket.ticket_id] marked as [choice]."))
+			return TRUE

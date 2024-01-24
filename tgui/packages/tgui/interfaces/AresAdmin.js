@@ -231,7 +231,7 @@ const MainMenu = (props, context) => {
             <h3>Access Level 5</h3>
           </Stack.Item>
           <Stack.Item>
-            <Button.Confirm
+            <Button
               content="Emergency Protocols"
               tooltip="Access emergency protocols."
               icon="shield"

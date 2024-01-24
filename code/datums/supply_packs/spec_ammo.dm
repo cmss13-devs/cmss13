@@ -162,8 +162,6 @@
 		/obj/item/ammo_magazine/rifle/m4ra/custom/incendiary,
 		/obj/item/ammo_magazine/rifle/m4ra/custom/incendiary,
 		/obj/item/ammo_magazine/rifle/m4ra/custom/incendiary,
-		/obj/item/ammo_magazine/rifle/m4ra/custom/incendiary,
-		/obj/item/ammo_magazine/rifle/m4ra/custom/incendiary,
 	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
@@ -173,8 +171,6 @@
 /datum/supply_packs/ammo_scout_impact
 	name = "M4RA Scout Impact Magazine Crate (x5)"
 	contains = list(
-		/obj/item/ammo_magazine/rifle/m4ra/custom/impact,
-		/obj/item/ammo_magazine/rifle/m4ra/custom/impact,
 		/obj/item/ammo_magazine/rifle/m4ra/custom/impact,
 		/obj/item/ammo_magazine/rifle/m4ra/custom/impact,
 		/obj/item/ammo_magazine/rifle/m4ra/custom/impact,

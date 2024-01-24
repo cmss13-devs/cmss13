@@ -530,11 +530,8 @@
 		if(user.hive.hive_location)
 			options["Hive Core"] = list(null, TRACKER_HIVE)
 
-		for(var/leader_slot in user.hive.xeno_leader_list)
-			var/mob/living/carbon/xenomorph/xeno_lead = user.hive.xeno_leader_list[leader_slot]
-			// If there's a leader assigned to the slot.
-			if(xeno_lead)
-				options["Xeno Leader [xeno_lead]"] = list(WEAKREF(xeno_lead), TRACKER_LEADER)
+		for(var/mob/living/carbon/xenomorph/leader in user.hive.xeno_leader_list)
+			options["Xeno Leader [leader]"] = list(WEAKREF(leader), TRACKER_LEADER)
 
 		var/list/sorted_tunnels = sort_list_dist(user.hive.tunnels, get_turf(user))
 		for(var/obj/structure/tunnel/tunnel as anything in sorted_tunnels)

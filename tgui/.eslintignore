@@ -3,4 +3,3 @@
 /**/*.bundle.*
 /**/*.chunk.*
 /**/*.hot-update.*
-/packages/inferno/**

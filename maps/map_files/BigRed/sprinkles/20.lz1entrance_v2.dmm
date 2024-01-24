@@ -428,15 +428,17 @@
 	},
 /area/bigredv2/outside/nw)
 "bo" = (
-/obj/structure/pipes/standard/simple/hidden/green,
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/nw)
 "bp" = (
+/obj/item/stack/sheet/metal,
+/obj/item/stack/rods,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
-	dir = 6;
 	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/nw)
@@ -447,8 +449,10 @@
 	},
 /area/bigredv2/outside/nw)
 "br" = (
+/obj/item/stack/rods,
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
-	dir = 6;
 	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/nw)
@@ -835,7 +839,7 @@ aE
 ak
 aW
 aW
-bm
+bG
 bv
 bv
 bF
@@ -856,7 +860,7 @@ aF
 aM
 aX
 aM
-bo
+bz
 bw
 bz
 bz
@@ -877,7 +881,7 @@ aG
 ab
 ab
 ab
-bp
+bS
 bx
 bx
 bG
@@ -919,7 +923,7 @@ aI
 aP
 aP
 ac
-br
+bn
 bl
 bu
 bE
@@ -940,7 +944,7 @@ aJ
 aQ
 aY
 ac
-bs
+bn
 bs
 bl
 bE
@@ -961,7 +965,7 @@ aA
 aR
 aZ
 ac
-bi
+bo
 bi
 bA
 bE
@@ -982,7 +986,7 @@ aw
 aK
 ba
 ai
-bi
+bX
 bi
 bA
 bE
@@ -1003,7 +1007,7 @@ aA
 aA
 bb
 ai
-bi
+bp
 bi
 bB
 bE
@@ -1024,7 +1028,7 @@ cc
 aw
 bc
 ai
-bi
+bn
 bi
 bB
 bE
@@ -1045,7 +1049,7 @@ aA
 aS
 bd
 ac
-bi
+br
 bi
 bB
 bE
@@ -1066,7 +1070,7 @@ aL
 aT
 be
 ac
-bi
+bX
 bi
 bB
 bE

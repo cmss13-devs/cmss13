@@ -47,11 +47,8 @@ interface SquadProps {
   objective: { primary?: string; secondary?: string };
 }
 
-const FireTeamLeadLabel = (
-  props: { readonly ftl: SquadMarineEntry },
-  context
-) => {
-  const { data } = useBackend<SquadProps>(context);
+const FireTeamLeadLabel = (props: { readonly ftl: SquadMarineEntry }) => {
+  const { data } = useBackend<SquadProps>();
   const { ftl } = props;
   return (
     <>
@@ -75,11 +72,11 @@ const FireTeamLeadLabel = (
   );
 };
 
-const FireTeamLead = (
-  props: { readonly fireteam: FireTeamEntry; readonly ft: string },
-  context
-) => {
-  const { data, act } = useBackend<SquadProps>(context);
+const FireTeamLead = (props: {
+  readonly fireteam: FireTeamEntry;
+  readonly ft: string;
+}) => {
+  const { data, act } = useBackend<SquadProps>();
   const fireteamLead = props.fireteam.tl;
   const isNotAssigned =
     fireteamLead === undefined ||
@@ -114,7 +111,7 @@ interface FireteamBoxProps extends BoxProps {
   readonly isEmpty: boolean;
 }
 
-const FireteamBox = (props: FireteamBoxProps, context) => {
+const FireteamBox = (props: FireteamBoxProps) => {
   return (
     <Box className={classes(['FireteamBox'])}>
       <div className="Title">{props.name}</div>
@@ -123,8 +120,8 @@ const FireteamBox = (props: FireteamBoxProps, context) => {
   );
 };
 
-const FireTeam = (props: { readonly ft: string }, context) => {
-  const { data, act } = useBackend<SquadProps>(context);
+const FireTeam = (props: { readonly ft: string }) => {
+  const { data, act } = useBackend<SquadProps>();
   const fireteam: FireTeamEntry = data.fireteams[props.ft];
 
   const members: SquadMarineEntry[] =
@@ -193,15 +190,12 @@ const FireTeam = (props: { readonly ft: string }, context) => {
   );
 };
 
-const FireTeamMember = (
-  props: {
-    readonly member: SquadMarineEntry;
-    readonly team: string;
-    readonly fireteam?: FireTeamEntry;
-  },
-  context
-) => {
-  const { data, act } = useBackend<SquadProps>(context);
+const FireTeamMember = (props: {
+  readonly member: SquadMarineEntry;
+  readonly team: string;
+  readonly fireteam?: FireTeamEntry;
+}) => {
+  const { data, act } = useBackend<SquadProps>();
   const assignFT1 = { target_ft: 'FT1', target_marine: props.member.name };
   const assignFT2 = { target_ft: 'FT2', target_marine: props.member.name };
   const assignFT3 = { target_ft: 'FT3', target_marine: props.member.name };
@@ -273,8 +267,8 @@ const FireTeamMember = (
   );
 };
 
-const SquadObjectives = (props, context) => {
-  const { data } = useBackend<SquadProps>(context);
+const SquadObjectives = (props) => {
+  const { data } = useBackend<SquadProps>();
   const primaryObjective = data.objective?.primary ?? 'Unset';
   const secondaryObjective = data.objective?.secondary ?? 'Unset';
   return (
@@ -289,8 +283,8 @@ const SquadObjectives = (props, context) => {
   );
 };
 
-export const SquadInfo = (_, context) => {
-  const { data } = useBackend<SquadProps>(context);
+export const SquadInfo = () => {
+  const { data } = useBackend<SquadProps>();
   const fireteams = ['FT1', 'FT2', 'FT3', 'Unassigned'];
 
   return (

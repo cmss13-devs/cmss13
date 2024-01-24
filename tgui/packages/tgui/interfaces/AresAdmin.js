@@ -231,7 +231,7 @@ const MainMenu = (props, context) => {
             <h3>Access Level 5</h3>
           </Stack.Item>
           <Stack.Item>
-            <Button.Confirm
+            <Button
               content="Emergency Protocols"
               tooltip="Access emergency protocols."
               icon="shield"
@@ -1000,6 +1000,7 @@ const ARESTalk = (props, context) => {
                 ml="auto"
                 px="2rem"
                 bold
+                tooltip="Send a message as if you were the person logged in at the interface."
                 onClick={() =>
                   act('fake_message_ares', { active_convo: active_ref })
                 }

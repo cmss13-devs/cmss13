@@ -323,3 +323,13 @@
   realforest2001:
   - rscadd: Psychic Whisper now broadcasts to deadchat too.
   - bugfix: Psychic Whisper can now be used while lying down.
+2024-01-25:
+  Drathek:
+  - bugfix: Fixed more item exploits
+  - bugfix: Fixed lingering overlays in inventories for metal stacks and cards
+  Huffie56:
+  - refactor: creating it's own file for souto mobile code instead of it being in
+      vehicle.dm.
+  TheGamerdk:
+  - rscadd: A hive collapse (No new Queen) while at 3 xenos or below is now a marine
+      major, instead of a minor.

@@ -1,0 +1,7 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Adds paygrade defines for PMCs, VAI, Mercenaries and TWE."
+  - code_imp: "Adds code to populate reference lists for certain paygrades."
+  - bugfix: "Fixes PMC synth not using the correct grade."
+  - rscadd: "Syndicate ID card repathed and works with paygrades."

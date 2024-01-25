@@ -1,0 +1,5 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - rscadd: "added messages when the CAS sonic boom is played"
+  - soundadd: "reduced volume falloff of CAS sonic boom"

@@ -89,6 +89,8 @@
 #define DAZE "daze"
 #define SLOW "slow"
 #define SUPERSLOW "superslow"
+#define ROOT "root"
+
 //=================================================
 
 //I hate adding defines like this but I'd much rather deal with bitflags than lists and string searches

@@ -376,6 +376,7 @@
 	generated_projectile.overlays += hook_overlay
 
 /datum/ammo/xeno/oppressor_tail/on_hit_mob(mob/target, obj/projectile/fired_proj)
+	var/root_duration = 1 SECONDS
 	var/mob/living/carbon/xenomorph/xeno_firer = fired_proj.firer
 	if(xeno_firer.can_not_harm(target))
 		return

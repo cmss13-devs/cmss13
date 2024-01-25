@@ -34,7 +34,7 @@ GLOBAL_LIST_INIT(sqrtTable, list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4,
 #define Lcm(a, b) (abs(a) / Gcd(a, b) * abs(b))
 
 // Returns the nth root of x.
-#define Root(n, x) (x ** (1 / n))
+#define NRoot(n, x) (x ** (1 / n))
 
 // secant
 #define Sec(x) (1 / cos(x))

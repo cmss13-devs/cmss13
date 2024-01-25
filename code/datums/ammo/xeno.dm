@@ -388,7 +388,11 @@
 
 	new /datum/effects/xeno_slow(target, fired_proj.firer, ttl = 0.5 SECONDS)
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	target.apply_effect(0.5, TRAIT_IMMOBILIZED)
+=======
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), target, TRAIT_SOURCE_ABILITY("Tail Seize")), get_xeno_stun_duration(target, root_duration))
+>>>>>>> Stashed changes
 =======
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), target, TRAIT_SOURCE_ABILITY("Tail Seize")), get_xeno_stun_duration(target, root_duration))
 >>>>>>> Stashed changes

@@ -7,5 +7,5 @@ fi
 
 git clone https://github.com/OpenDreamProject/OpenDream.git ~/OpenDream
 cd ~/OpenDream
-git checkout tags/v${OPENDREAM_VERSION}
+git checkout tags/${OPENDREAM_VERSION}
 git submodule update --init --recursive

@@ -35,9 +35,17 @@
 	return round(armor_integrity * 100 / armor_integrity_max)
 
 /**
+ * Returns the name of the xeno's strain, if it has one.
+ *
+ * If that can't be found, returns "Normal".
+ */
+/mob/living/carbon/xenomorph/proc/get_strain_name()
+	return strain?.name || "Normal"
+
+/**
  * Returns the custom icon state from the xeno's strain, if it has one.
  *
- * If that isn't available, returns "Normal"
+ * If that can't be found, returns "Normal"
  */
 /mob/living/carbon/xenomorph/proc/get_strain_icon()
 	return strain?.xeno_icon_state || "Normal"

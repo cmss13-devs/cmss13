@@ -1020,8 +1020,7 @@
 		handle_ghost_message()
 
 /mob/living/carbon/xenomorph/proc/handle_ghost_message()
-	var/strain_name = strain ? strain.name : "Normal"
-	notify_ghosts("[src] ([strain_name] [caste_type]) has ghosted and their body is up for grabs!", source = src)
+	notify_ghosts("[src] ([get_strain_name()] [caste_type]) has ghosted and their body is up for grabs!", source = src)
 
 /mob/living/carbon/xenomorph/larva/handle_ghost_message()
 	if(locate(/obj/effect/alien/resin/special/pylon/core) in range(2, get_turf(src)))

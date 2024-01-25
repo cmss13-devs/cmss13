@@ -41,7 +41,7 @@
 		xeno.behavior_delegate.bound_xeno = xeno
 		xeno.behavior_delegate.add_to_xeno()
 
-	apply_strain()
+	apply_strain(xeno)
 
 	xeno.update_icons()
 	xeno.hive.hive_ui.update_xeno_info()
@@ -78,6 +78,8 @@
 
 	// Ask the user which strain they want.
 	var/strain_choice = tgui_input_list(usr, "Which strain would you like to take?", "Choose Strain", strain_list, theme = "hive_status")
+	if(!strain_choice)
+		return
 	var/datum/xeno_strain/chosen_strain = strain_list[strain_choice]
 
 	// Check again after the user picks one, in case anything changed.

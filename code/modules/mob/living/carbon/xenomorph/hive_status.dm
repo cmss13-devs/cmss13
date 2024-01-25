@@ -514,7 +514,7 @@
 			xeno_name = "Larva ([X.nicknumber])"
 		xenos["[X.nicknumber]"] = list(
 			"name" = xeno_name,
-			"strain" = X.strain,
+			"strain" = X.get_strain_name(),
 			"ref" = "\ref[X]"
 		)
 

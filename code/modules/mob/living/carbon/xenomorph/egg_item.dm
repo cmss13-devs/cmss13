@@ -104,7 +104,7 @@
 		if(weed.weed_strength >= WEED_LEVEL_WEAK && weed.linked_hive.hivenumber == hivenumber) //check for ANY weeds
 			any_weeds = weed
 
-	// If the user isn't an eggsac carrier, they're only able to plant eggs on hive weeds.
+	// If the user isn't an eggsac carrier, then they can only  plant eggs on hive weeds.
 	var/needs_hive_weeds = !istype(user.strain, /datum/xeno_strain/eggsac)
 
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]

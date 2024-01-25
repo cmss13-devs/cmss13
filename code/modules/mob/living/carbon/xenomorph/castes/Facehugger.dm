@@ -223,5 +223,5 @@
 	name = "Base Facehugger Behavior Delegate"
 
 /datum/behavior_delegate/facehugger_base/on_life()
-	if(bound_xeno.body_position == STANDING_UP && !(locate(/obj/effect/alien/weeds) in get_turf(src)))
+	if(bound_xeno.body_position == STANDING_UP && !(locate(/obj/effect/alien/weeds) in get_turf(bound_xeno)))
 		bound_xeno.adjustBruteLoss(1)

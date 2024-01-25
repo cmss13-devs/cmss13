@@ -30,4 +30,5 @@
 	name = "Major"
 	prefix = "LDR."
 	pay_multiplier = 9
+	officer_grade = GRADE_OFFICER
 

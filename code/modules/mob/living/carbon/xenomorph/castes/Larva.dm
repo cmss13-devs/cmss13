@@ -157,7 +157,13 @@
 	return larva
 
 /mob/living/carbon/xenomorph/larva/emote(act, m_type, message, intentional, force_silence)
+	// Custom emote
+	if(act == "me")
+		return ..()
+
+	// Otherwise, ""roar""!
 	playsound(loc, "alien_roar_larva", 15)
+	return TRUE
 
 /mob/living/carbon/xenomorph/larva/is_xeno_grabbable()
 	return TRUE

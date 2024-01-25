@@ -4,15 +4,15 @@ import { Box, Button, Flex, Stack, Icon, Section, ProgressBar } from '../compone
 import { Window } from '../layouts';
 
 type ScopeData = {
-  offset_x: Number;
-  offset_y: Number;
+  offset_x: number;
+  offset_y: number;
   valid_offset_dirs: Array<String>;
   valid_adjust_dirs: Array<String>;
   scope_cooldown: BooleanLike;
   breath_cooldown: BooleanLike;
-  breath_recharge: Number;
-  current_scope_drift: Number;
-  time_to_fire_remaining: Number;
+  breath_recharge: number;
+  current_scope_drift: number;
+  time_to_fire_remaining: number;
 };
 
 enum Direction {
@@ -37,13 +37,13 @@ const DirectionAbbreviation: Record<Direction, string> = {
   [Direction.NorthWest]: 'NW',
 };
 
-const OffsetAdjuster = (props, context) => {
-  const { act, data } = useBackend<ScopeData>(context);
+const OffsetAdjuster = (props) => {
+  const { act, data } = useBackend<ScopeData>();
   return (
     <div
       style={{
         'flex': '1',
-        'margin-right': '20px',
+        'marginRight': '20px',
       }}>
       <Section title="Offset">
         <Box>
@@ -80,9 +80,9 @@ const OffsetAdjuster = (props, context) => {
   );
 };
 
-const OffsetDirection = (props, context) => {
+const OffsetDirection = (props) => {
   const { dir } = props;
-  const { data, act } = useBackend<ScopeData>(context);
+  const { data, act } = useBackend<ScopeData>();
   return (
     <Flex.Item grow={1} basis={0}>
       <Button
@@ -102,8 +102,8 @@ const OffsetDirection = (props, context) => {
   );
 };
 
-const PositionAdjuster = (props, context) => {
-  const { act, data } = useBackend<ScopeData>(context);
+const PositionAdjuster = (props) => {
+  const { act, data } = useBackend<ScopeData>();
   return (
     <div style={{ 'flex': '1' }}>
       <Section title="Position" textAlign="right">
@@ -141,9 +141,9 @@ const PositionAdjuster = (props, context) => {
   );
 };
 
-const ScopePosition = (props, context) => {
+const ScopePosition = (props) => {
   const { dir } = props;
-  const { data, act } = useBackend<ScopeData>(context);
+  const { data, act } = useBackend<ScopeData>();
   return (
     <Flex.Item grow={1} basis={0}>
       <Button
@@ -163,8 +163,8 @@ const ScopePosition = (props, context) => {
   );
 };
 
-const SecondarySection = (props, context) => {
-  const { data, act } = useBackend<ScopeData>(context);
+const SecondarySection = (props) => {
+  const { data, act } = useBackend<ScopeData>();
   return (
     <Section title="Breathing & Data" textAlign="center">
       <Flex.Item grow={1} basis={0}>
@@ -195,7 +195,7 @@ const SecondarySection = (props, context) => {
         </ProgressBar>
       </Flex.Item>
       <Flex.Item>
-        <div style={{ 'padding-top': '8px', 'padding-bottom': '8px' }}>
+        <div style={{ 'paddingTop': '8px', 'paddingBottom': '8px' }}>
           <ProgressBar
             minValue={0}
             maxValue={100}
@@ -226,8 +226,8 @@ const SecondarySection = (props, context) => {
   );
 };
 
-export const VultureScope = (props, context) => {
-  const { act, data } = useBackend<ScopeData>(context);
+export const VultureScope = (props) => {
+  const { act, data } = useBackend<ScopeData>();
   return (
     <Window title="Scope Configuration" width={325} height={400}>
       <Window.Content>

@@ -104,7 +104,7 @@
 /obj/item/weapon/baton/attack(mob/target, mob/user)
 	var/mob/living/carbon/human/real_user = user
 	var/mob/living/carbon/human/human_target = target
-	if(!skillcheck(real_user, SKILL_POLICE, SKILL_POLICE_SKILLED) && status)
+	if(has_user_lock && !skillcheck(real_user, SKILL_POLICE, SKILL_POLICE_SKILLED) && status)
 		if(prob(60))
 			to_chat(real_user, SPAN_WARNING("You hit yourself with the [src] during the struggle..."))
 			real_user.apply_damage(force, BRUTE, def_zone=pick("r_hand","l_hand"), no_limb_loss=TRUE)

@@ -421,6 +421,7 @@ Make sure their actual health updates immediately.*/
 		locator.reset_tracking()
 
 		// If it wasn't the queen that couldn't be found above, try again with her as the target.
+		// This is just to avoid the tracker going blank for one life tick.
 		// (There's no risk of an infinite loop here since `locator.tracker_type` just got set to `TRACKER_QUEEN`.)
 		if(!already_tracking_queen)
 			queen_locator()

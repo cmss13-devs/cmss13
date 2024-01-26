@@ -23,7 +23,7 @@
 
 	That's it. There are some special rules, though, namely:
 
-		* If the explosion occured in a wall, the wave is strengthened
+		* If the explosion occurred in a wall, the wave is strengthened
 		with power *= reflection_multiplier and reflected back in the
 		direction it came from
 

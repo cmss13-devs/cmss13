@@ -3414,8 +3414,8 @@
 	},
 /area/almayer/medical/upper_medical)
 "aot" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
+/obj/structure/machinery/cm_vending/clothing/senior_officer{
+	pixel_y = 0
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -9567,6 +9567,7 @@
 /area/almayer/medical/containment/cell)
 "aOi" = (
 /obj/effect/landmark/start/nurse,
+/obj/effect/landmark/late_join/nurse,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices)
 "aOq" = (
@@ -10084,6 +10085,7 @@
 /area/almayer/living/offices)
 "aQI" = (
 /obj/effect/landmark/start/researcher,
+/obj/effect/landmark/late_join/researcher,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices)
 "aQL" = (
@@ -36527,6 +36529,7 @@
 /area/almayer/living/commandbunks)
 "hvQ" = (
 /obj/effect/landmark/start/professor,
+/obj/effect/landmark/late_join/cmo,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices)
 "hwd" = (
@@ -42350,7 +42353,8 @@
 /obj/structure/machinery/alarm/almayer{
 	dir = 1
 	},
-/obj/effect/landmark/start/doctor,
+/obj/effect/landmark/start/nurse,
+/obj/effect/landmark/late_join/nurse,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices)
 "jKn" = (
@@ -42991,6 +42995,10 @@
 	},
 /obj/structure/machinery/light{
 	dir = 1
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_10";
+	pixel_y = 16
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -47869,6 +47877,7 @@
 /obj/structure/sign/safety/maint{
 	pixel_y = 26
 	},
+/obj/effect/landmark/late_join/doctor,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices)
 "lHk" = (
@@ -57116,6 +57125,7 @@
 /area/almayer/command/cic)
 "pbb" = (
 /obj/effect/landmark/start/doctor,
+/obj/effect/landmark/late_join/doctor,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices)
 "pbo" = (
@@ -81599,10 +81609,6 @@
 /obj/item/bedsheet/green,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
-	},
-/obj/structure/machinery/cm_vending/clothing/senior_officer{
-	density = 0;
-	pixel_y = 30
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -111585,7 +111591,7 @@ rlZ
 hBc
 hzs
 hzs
-kDj
+hzs
 aZK
 rlZ
 hYn
@@ -115824,7 +115830,7 @@ bwG
 aQI
 aQI
 aQI
-hcZ
+aNr
 pQY
 aWD
 bll

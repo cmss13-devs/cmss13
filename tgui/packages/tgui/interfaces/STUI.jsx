@@ -2,23 +2,15 @@ import { useBackend, useLocalState } from '../backend';
 import { Tabs, Section, Box, Flex, Input, Slider, LabeledList } from '../components';
 import { Window } from '../layouts';
 
-export const STUI = (props, context) => {
-  const { act, data } = useBackend(context);
+export const STUI = (props) => {
+  const { act, data } = useBackend();
   const tabs = data.tabs || ['Attack'];
-  const [selectedTab, setSelectedTab] = useLocalState(
-    context,
-    'progress',
-    tabs[0]
-  );
+  const [selectedTab, setSelectedTab] = useLocalState('progress', tabs[0]);
   const logs = data.logs[selectedTab].length ? data.logs[selectedTab] : [''];
 
-  const [searchTerm, setSearchTerm] = useLocalState(context, 'searchTerm', '');
+  const [searchTerm, setSearchTerm] = useLocalState('searchTerm', '');
 
-  const [logsfontnumber, setLogsFontSize] = useLocalState(
-    context,
-    'logsfontnumber',
-    7
-  );
+  const [logsfontnumber, setLogsFontSize] = useLocalState('logsfontnumber', 7);
   const logsfontsize = logsfontnumber + 'pt';
 
   const bigfontnumber = logsfontnumber + 5;
@@ -86,14 +78,10 @@ export const STUI = (props, context) => {
   );
 };
 
-const STUItabs = (props, context) => {
-  const { act, data } = useBackend(context);
+const STUItabs = (props) => {
+  const { act, data } = useBackend();
   const tabs = data.tabs || ['Attack'];
-  const [selectedTab, setSelectedTab] = useLocalState(
-    context,
-    'progress',
-    tabs[0]
-  );
+  const [selectedTab, setSelectedTab] = useLocalState('progress', tabs[0]);
   return (
     <Tabs fluid textAlign="center">
       <Tabs.Tab

@@ -1,11 +1,11 @@
 import { capitalizeAll } from 'common/string';
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend } from '../backend';
 import { Section, Box, ProgressBar, Slider, NoticeBox, Button } from '../components';
 import { Window } from '../layouts';
 
-export const SkillsMenu = (props, context) => {
-  const { act, data } = useBackend(context);
+export const SkillsMenu = (props) => {
+  const { act, data } = useBackend();
   const { skillset_name, skills, owner, admin } = data;
 
   return (
@@ -37,8 +37,8 @@ export const SkillsMenu = (props, context) => {
   );
 };
 
-const SkillsView = (props, context) => {
-  const { act, data } = useBackend(context);
+const SkillsView = (props) => {
+  const { act, data } = useBackend();
   const { skillset_name, skills, owner, admin } = data;
   return skills.map((skill, index) => (
     <Fragment key={index}>
@@ -50,8 +50,8 @@ const SkillsView = (props, context) => {
   ));
 };
 
-const SkillsEdit = (props, context) => {
-  const { act, data } = useBackend(context);
+const SkillsEdit = (props) => {
+  const { act, data } = useBackend();
   const { skillset_name, skills, owner, admin } = data;
   return skills.map((skill, index) => (
     <Fragment key={index}>

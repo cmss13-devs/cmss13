@@ -78,6 +78,7 @@
 
 	playsound(xeno.loc, "alien_resin_build", 25)
 	apply_cooldown()
+	SEND_SIGNAL(xeno, COMSIG_XENO_PLANT_RESIN_NODE)
 	return ..()
 
 /mob/living/carbon/xenomorph/lay_down()
@@ -363,6 +364,7 @@
 		current_aura = pheromone
 		visible_message(SPAN_XENOWARNING("\The [src] begins to emit strange-smelling pheromones."), \
 		SPAN_XENOWARNING("We begin to emit '[pheromone]' pheromones."), null, 5)
+		SEND_SIGNAL(src, COMSIG_XENO_START_EMIT_PHEROMONES, pheromone)
 		playsound(loc, "alien_drool", 25)
 
 	if(isqueen(src) && hive && hive.xeno_leader_list.len && anchored)

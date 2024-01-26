@@ -170,7 +170,7 @@
 	},
 /area/template_noop)
 "H" = (
-/obj/structure/reagent_dispensers/oxygentank,
+/obj/structure/reagent_dispensers/fueltank/oxygentank,
 /turf/open/space,
 /area/template_noop)
 "I" = (

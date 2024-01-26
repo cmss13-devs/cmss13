@@ -1,0 +1,4 @@
+author: "Contrabang"
+delete-after: True
+changes:
+  - bugfix: "Dchat is no longer notified of hugs from tutorials"

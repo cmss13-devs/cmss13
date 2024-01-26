@@ -1,147 +1,73 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"ab" = (
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/north,
-/area/lv624/ground/river/west_river)
-"ac" = (
-/obj/effect/landmark/hunter_primary,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_west_barrens)
 "ad" = (
 /turf/open/gm/coast/west,
-/area/lv624/ground/river/west_river)
-"ae" = (
-/obj/structure/flora/bush/ausbushes/grassybush,
-/turf/open/gm/river,
 /area/lv624/ground/river/west_river)
 "af" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/river,
 /area/lv624/ground/river/west_river)
-"ag" = (
-/obj/effect/alien/weeds/node,
-/obj/structure/flora/bush/ausbushes/grassybush,
+"al" = (
+/obj/effect/landmark/hunter_secondary,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_west_barrens)
-"ah" = (
-/obj/structure/flora/jungle/alienplant1,
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/river,
-/area/lv624/ground/river/west_river)
-"ai" = (
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/coast/beachcorner/north_west,
-/area/lv624/ground/river/west_river)
-"aj" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/turf/open/gm/river,
-/area/lv624/ground/river/west_river)
-"al" = (
-/obj/structure/flora/bush/ausbushes/palebush,
-/turf/open/gm/river,
-/area/lv624/ground/river/west_river)
-"am" = (
-/obj/structure/flora/bush/ausbushes/var3/sunnybush,
-/turf/open/gm/river,
-/area/lv624/ground/river/west_river)
 "ao" = (
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/lv624/ground/river/west_river)
 "aq" = (
 /turf/open/gm/coast/beachcorner/south_west,
 /area/lv624/ground/river/west_river)
-"ar" = (
-/turf/open/gm/coast/beachcorner/south_east,
-/area/lv624/ground/river/west_river)
 "as" = (
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/gm/river,
+/area/lv624/ground/river/west_river)
+"at" = (
+/obj/effect/decal/grass_overlay/grass1/inner{
+	dir = 4
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_west_barrens)
+"au" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/barrens/south_west_barrens)
+"ax" = (
+/obj/structure/flora/bush/ausbushes/var3/sunnybush,
+/obj/effect/decal/grass_overlay/grass1/inner{
+	dir = 4
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_west_barrens)
+"az" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/west_jungle)
-"at" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
-/area/lv624/ground/river/west_river)
-"au" = (
-/turf/open/gm/dirtgrassborder/south,
-/area/lv624/ground/jungle/west_jungle)
-"av" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
-/area/lv624/ground/jungle/west_jungle)
-"aw" = (
-/obj/structure/flora/bush/ausbushes/reedbush,
-/turf/open/gm/coast/beachcorner/south_west,
-/area/lv624/ground/jungle/west_jungle)
-"ax" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
-/area/lv624/ground/jungle/west_jungle)
-"ay" = (
-/obj/structure/flora/bush/ausbushes/ausbush,
-/turf/open/gm/grass/grass2,
-/area/lv624/ground/jungle/west_jungle)
-"az" = (
-/turf/open/gm/grass/grass2,
-/area/lv624/ground/jungle/west_jungle)
-"aA" = (
-/obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/turf/open/gm/grass/grass2,
-/area/lv624/ground/jungle/west_jungle)
-"aB" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
-/area/lv624/ground/jungle/west_jungle)
 "aC" = (
-/obj/structure/flora/jungle/vines/light_2,
-/turf/open/gm/grass/grass2,
+/obj/structure/flora/bush/ausbushes/palebush,
+/turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/jungle/west_jungle)
 "aD" = (
-/obj/structure/flora/jungle/vines/light_1,
-/turf/open/gm/grass/grass2,
+/turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/jungle/west_jungle)
 "aE" = (
-/obj/structure/flora/bush/ausbushes/pointybush,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/west_jungle)
-"aF" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 6
+/obj/effect/decal/grass_overlay/grass1/inner{
+	dir = 4
 	},
-/turf/open/gm/grass/grass2,
-/area/lv624/ground/jungle/west_jungle)
-"aG" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 10
-	},
-/turf/open/gm/grass/grass2,
-/area/lv624/ground/jungle/west_jungle)
-"aH" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/west_jungle)
-"aI" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 10
-	},
-/turf/open/gm/grass/grass1,
+/turf/open/gm/dirt,
 /area/lv624/ground/jungle/west_jungle)
 "aJ" = (
-/obj/structure/flora/bush/ausbushes/var3/leafybush,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/west_jungle)
-"aK" = (
-/turf/open/gm/dirtgrassborder/west,
-/area/lv624/ground/jungle/west_jungle)
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/gm/coast/south,
+/area/lv624/ground/river/west_river)
 "aU" = (
-/turf/closed/wall/strata_ice/jungle,
-/area/lv624/ground/river/west_river)
-"aV" = (
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/west_jungle)
-"aX" = (
-/turf/open/gm/coast/beachcorner2/south_east,
-/area/lv624/ground/river/west_river)
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/barrens/south_west_barrens)
 "bc" = (
 /turf/open/gm/river,
 /area/lv624/ground/river/west_river)
 "bf" = (
-/obj/structure/flora/bush/ausbushes/grassybush,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_west_barrens)
 "bh" = (
@@ -157,8 +83,10 @@
 "bt" = (
 /turf/open/gm/coast/south,
 /area/lv624/ground/river/west_river)
-"bx" = (
-/obj/effect/alien/weeds/node,
+"bw" = (
+/obj/effect/decal/grass_overlay/grass1/inner{
+	dir = 6
+	},
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_west_barrens)
 "bz" = (
@@ -171,87 +99,131 @@
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/river,
 /area/lv624/ground/river/west_river)
-"bV" = (
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder/south,
-/area/lv624/ground/jungle/west_jungle)
-"gX" = (
-/turf/closed/wall/rock/brown,
-/area/lv624/ground/river/west_river)
-"kE" = (
-/turf/open/gm/coast/beachcorner2/south_west,
-/area/lv624/ground/jungle/west_jungle)
-"qG" = (
-/obj/structure/flora/bush/ausbushes/reedbush,
+"dO" = (
+/obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirt,
-/area/lv624/ground/river/west_river)
-"ve" = (
+/area/lv624/ground/barrens/south_west_barrens)
+"eP" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/obj/effect/decal/grass_overlay/grass1/inner{
+	dir = 9
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_west_barrens)
+"gX" = (
+/obj/effect/decal/grass_overlay/grass1/inner{
+	dir = 1
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_west_barrens)
+"iR" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno/up,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/barrens/south_west_barrens)
+"je" = (
+/obj/effect/decal/grass_overlay/grass1/inner,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_west_barrens)
+"lT" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/turf/open/gm/river,
-/area/lv624/ground/jungle/west_jungle)
+/obj/effect/decal/grass_overlay/grass1/inner{
+	dir = 6
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_west_barrens)
+"tV" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/decal/grass_overlay/grass1/inner{
+	dir = 1
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_west_barrens)
+"yn" = (
+/obj/item/stack/sheet/metal{
+	pixel_x = 16;
+	pixel_y = -10
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/barrens/south_west_barrens)
 "zW" = (
-/turf/open/gm/coast/west,
-/area/lv624/ground/jungle/west_jungle)
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast/south,
+/area/lv624/ground/river/west_river)
 "Dw" = (
-/turf/closed/wall/strata_ice/jungle,
+/obj/effect/landmark/nightmare{
+	insert_tag = "lv-leftsidepass"
+	},
+/turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/jungle/west_jungle)
 "ES" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/barrens/south_west_barrens)
+"Il" = (
+/obj/effect/landmark/hunter_secondary,
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
 /turf/open/gm/dirt,
-/area/lv624/ground/river/west_river)
-"FJ" = (
-/obj/structure/flora/bush/ausbushes/reedbush,
-/turf/open/gm/river,
-/area/lv624/ground/river/west_river)
+/area/lv624/ground/barrens/south_west_barrens)
 "JC" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/south_west_caves)
-"KD" = (
-/turf/open/gm/river,
-/area/lv624/ground/jungle/west_jungle)
-"Ms" = (
-/turf/open/gm/coast/south,
-/area/lv624/ground/jungle/west_jungle)
+"Kx" = (
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/barrens/south_west_barrens)
 "Ok" = (
 /obj/structure/flora/jungle/alienplant1,
 /turf/open/gm/river,
 /area/lv624/ground/river/west_river)
-"Oz" = (
-/turf/closed/wall/rock/brown,
+"PV" = (
+/obj/item/ammo_casing/bullet{
+	icon_state = "cartridge_6_1"
+	},
+/turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/barrens/south_west_barrens)
-"VA" = (
-/obj/effect/alien/weeds/node,
-/turf/open/gm/dirt,
+"Qw" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast/north,
 /area/lv624/ground/river/west_river)
+"RL" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno/up,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_west_barrens)
 "Za" = (
-/turf/closed/wall/rock/brown,
-/area/lv624/ground/jungle/west_jungle)
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_west_barrens)
 
 (1,1,1) = {"
 JC
 JC
 JC
 JC
-Oz
-Oz
+bi
+bi
 gX
+Kx
+Kx
 aU
-aU
-aU
-aU
-Dw
+Kx
+Kx
 Dw
 "}
 (2,1,1) = {"
 JC
 JC
 JC
-JC
 bi
 bi
-ES
-ES
-VA
-ES
+Il
+eP
+Kx
+Kx
+PV
 ES
 au
 aC
@@ -261,27 +233,27 @@ JC
 JC
 bi
 bi
-ag
 bi
-ES
-ES
-ES
-ES
-qG
-au
+gX
+Kx
+iR
+PV
+Kx
+Kx
+Kx
 aD
 "}
 (4,1,1) = {"
 JC
+JC
 bi
-bh
+RL
 bi
-bi
-bi
-ai
-ad
-ad
-aq
+tV
+Kx
+Kx
+yn
+bw
 at
 ax
 aE
@@ -291,148 +263,148 @@ JC
 bi
 bi
 bi
-bz
-ad
-bm
-bc
-bc
-bt
-au
-ay
+gX
+Kx
+Kx
+Kx
+Kx
+je
+bi
+bi
 az
 "}
 (6,1,1) = {"
+JC
 bi
 bi
 bi
+gX
+Kx
+Kx
+Kx
+lT
 bi
-bL
-bc
-aj
-bc
-bc
-bt
-au
+bi
 Za
-aV
+az
 "}
 (7,1,1) = {"
+JC
 bi
 bi
-bx
 bi
-bL
-bc
-bc
-Ok
-FJ
-bt
-bV
-Za
-aF
+gX
+Kx
+Kx
+Kx
+je
+bi
+bi
+bi
+az
 "}
 (8,1,1) = {"
+JC
 bi
 bi
-bh
 bi
-bL
-bc
-bc
-bc
-am
-bt
-au
+bi
+at
+at
+at
+bi
+bi
+bi
+bi
 az
-aG
 "}
 (9,1,1) = {"
-bx
+JC
+bi
+bi
+bi
+bi
+bi
 bi
 bi
 bz
-bm
-bc
-bc
-bc
-bc
-bt
-au
-aA
-aH
+ad
+aq
+bh
+bi
 "}
 (10,1,1) = {"
 bf
 bi
-ac
+bi
+bi
+bi
+bi
+al
+bi
 bL
 bc
-Ok
-al
-bc
-aX
-ar
-bV
-aV
-aF
+ao
+aq
+bi
 "}
 (11,1,1) = {"
 bi
+bi
+bi
+dO
+bi
+bi
+bi
 bz
-ad
 bm
-bc
-bN
-bc
-bc
-bt
 as
-av
-aB
-aI
+bc
+ao
+aq
 "}
 (12,1,1) = {"
 bi
+bi
+bi
+bi
+bi
+bi
+bi
 bL
 bc
 bc
 bc
 bc
-bN
-bc
-ao
-zW
-aw
-au
 aJ
 "}
 (13,1,1) = {"
-bx
-bL
-ae
+bi
+bi
+bi
+bi
+bi
+bi
+bz
+bm
+Ok
 bc
+bN
 bc
-bc
-bc
-bc
-bc
-ve
-Ms
-av
-aK
+bt
 "}
 (14,1,1) = {"
 bi
-ab
+bi
+bi
+bi
+bi
+bi
+Qw
 af
 af
 af
-ah
 af
 af
-KD
-KD
-kE
-zW
 zW
 "}

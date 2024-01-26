@@ -1,4 +1,0 @@
-author: "cuberound"
-delete-after: True
-changes:
-  - bugfix: "allows custom flamethrower tanks to be filled directly from oxygentank"

@@ -1,7 +1,0 @@
-author: "LTNTS"
-delete-after: True
-changes:
-  - rscadd: "bolted version of blood and medical vendors"
-  - rscadd: "pill bottle crate"
-  - balance: "cheaper medical crates from req"
-  - balance: "less items in med vendors, mainly pill bottles"

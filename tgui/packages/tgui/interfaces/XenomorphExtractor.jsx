@@ -1,13 +1,11 @@
 import { useBackend } from '../backend';
-import { Section, Button, Stack, LabeledList, NoticeBox } from '../components';
+import { Section, Button, Stack, NoticeBox, Box, Flex, LabeledList } from '../components';
 import { Window } from '../layouts';
 
 export const XenomorphExtractor = (_props, context) => {
   const { act, data } = useBackend(context);
 
-  const { organ, points } = data;
-
-  const degraded = degradation >= 100;
+  const { organ, points, upgrades } = data;
 
   return (
     <Window width={400} height={650} theme="weyland">
@@ -27,12 +25,13 @@ export const XenomorphExtractor = (_props, context) => {
               <Button
                 fluid
                 icon="eject"
-                content={'Process Organ'}
+                content={'Process Biomass'}
                 disabled={!organ}
                 onClick={() => act('process_organ')}
               />
             </Stack.Item>
           </Stack>
+          <Section>Biological Buffer: {points}</Section>
         </Section>
         <Section title="Biological Material">
           {!organ && (
@@ -40,36 +39,49 @@ export const XenomorphExtractor = (_props, context) => {
               Recepticle is empty, analyzing is impossible!
             </NoticeBox>
           )}
-          {!!disk && (
-            <LabeledList>
-              <LabeledList.Item label="Source">{sourceName}</LabeledList.Item>
-              <LabeledList.Item label="Locus">{locus}</LabeledList.Item>
-            </LabeledList>
-          )}
         </Section>
-        {!!seed && (
+        <Flex.Item>
+          <Box height="5px" />
+          <UpgradesDropdown />
+        </Flex.Item>
+        {!!organ && (
           <Section title="Source Material">
-            {degraded && (
-              <NoticeBox danger>Genetic data too degraded to edit!</NoticeBox>
-            )}
-            <LabeledList>
-              <LabeledList.Item label="Target">{seed}</LabeledList.Item>
-              <LabeledList.Item label="Gene Decay">
-                {!degraded ? degradation + '%' : '#!ERROR%'}
-              </LabeledList.Item>
-              <LabeledList.Item>
-                <Button
-                  fluid
-                  icon="download"
-                  content="Apply gene mods"
-                  disabled={!seed || degraded}
-                  onClick={() => act('apply_gene')}
-                />
-              </LabeledList.Item>
-            </LabeledList>
+            <NoticeBox>Biomass detected, Ready to process</NoticeBox>
           </Section>
         )}
       </Window.Content>
     </Window>
   );
+};
+
+const UpgradesDropdown = (props, context) => {
+  const { act, data } = useBackend(context);
+  const { upgrades } = data;
+  <Section title="upgrades">
+    <LabeledList>
+      {upgrades.map((upgrades) => (
+        <LabeledList.Item
+          key={upgrades.name}
+          label={upgrades.name}
+          className="underline"
+          buttons={
+            <Button
+              content={'Print  (' + upgrades.cost * upgrades.vari + ')'}
+              icon="print"
+              tooltip={upgrades.desc}
+              tooltipPosition="left"
+              onClick={() =>
+                act(
+                  'produce'
+                  //  path: upgrades.path,
+                  //  cost: Equipment.cost,
+                )
+              }
+            />
+          }
+        />
+      ))}
+    </LabeledList>
+    ;
+  </Section>;
 };

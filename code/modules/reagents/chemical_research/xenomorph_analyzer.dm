@@ -10,6 +10,16 @@
 	idle_power_usage = 40
 	var/biomass_points = 0 //most important thing in this
 	var/obj/item/organ/heart/xeno/organ = null
+	var/list/unlocked_tech = list()
+
+/obj/structure/machinery/xenoanalyzer/attack_hand(mob/user as mob)
+	tgui_interact(user)
+
+/obj/structure/machinery/xenoanalyzer/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "XenomorphExtractor", name)
+		ui.open()
 
 /obj/structure/machinery/xenoanalyzer/attackby(obj/item/W, mob/user)
 	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
@@ -27,7 +37,6 @@
 
 /obj/structure/machinery/xenoanalyzer/ui_data(mob/user)
 	var/list/data = list()
-
 	data["points"] = biomass_points
 
 	if(organ)
@@ -36,6 +45,27 @@
 		data["organ"] = FALSE
 	return data
 
+/obj/structure/machinery/xenoanalyzer/ui_static_data(mob/user)
+	to_world("Oof")
+	var/list/static_data = list()
+	static_data["upgrades"] = list()
+	for(var/upgrade_type in typesof(/obj/item/research_upgrades))
+		var/obj/item/research_upgrades/upgrade = upgrade_type
+		var/upgrade_name = initial(upgrade.name)
+		var/upgrade_variations = initial(upgrade.value)
+		var/upgrade_price = initial(upgrade.price)
+		for(var/iteration in 1 to upgrade_variations)
+			to_world("loor")
+			to_world(upgrade_name)
+			to_world(iteration)
+			if(upgrade.value)
+				static_data["upgrades"] += list(list(
+						"name" = (capitalize_first_letters(upgrade_name) + " ([iteration])"),
+						"desc" = (upgrade.desc + upgrade.get_upgrade_desc(iteration)),
+						"vari" = iteration,
+						"cost" = upgrade_price
+				))
+	return static_data
 
 /obj/structure/machinery/xenoanalyzer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()

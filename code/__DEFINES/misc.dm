@@ -160,6 +160,12 @@
 #define MATRIX_NVG 1
 #define MATRIX_WIDE 2
 
+//autodoc upgrade via research
+#define AUTODOC_UPGRADE_IB 1
+#define AUTODOC_UPGRADE_BONEBREAK 2
+#define AUTODOC_UPGRADE_ORGAN 3
+#define AUTODOC_UPGRADE_LARVA 4
+
 // Statistics defines
 #define STATISTIC_XENO "xeno"
 #define STATISTIC_HUMAN "human"

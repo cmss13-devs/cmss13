@@ -333,3 +333,28 @@
   TheGamerdk:
   - rscadd: A hive collapse (No new Queen) while at 3 xenos or below is now a marine
       major, instead of a minor.
+2024-01-26:
+  Huffie56:
+  - bugfix: corrected the name of an area from "Lower Deck Starboard Hull" to "Lower
+      Deck Starboard-Aft Hull".
+  - bugfix: added apc's to area that where missing one.
+  - maptweak: added some areas to almayers (constr site, Starboard-Bow Maintenance,
+      Bow Hull(port and starboard),cryo maintenance.
+  Johannes2262:
+  - rscadd: Added three more magazines to each of the MP's handgun cases
+  LTNTS:
+  - rscadd: bolted version of blood and medical vendors
+  - rscadd: pill bottle crate
+  - balance: cheaper medical crates from req
+  - balance: less items in med vendors, mainly pill bottles
+  cuberound:
+  - rscadd: added messages when the CAS sonic boom is played
+  - soundadd: reduced volume falloff of CAS sonic boom
+  - bugfix: allows custom flamethrower tanks to be filled directly from oxygentank
+  realforest2001:
+  - rscadd: Adds paygrade defines for PMCs, VAI, Mercenaries and TWE.
+  - code_imp: Adds code to populate reference lists for certain paygrades.
+  - bugfix: Fixes PMC synth not using the correct grade.
+  - rscadd: Syndicate ID card repathed and works with paygrades.
+  - spellcheck: The latejoin menu marine category title is now Marines instead of
+      Squad Riflemen, as this was an inaccuracy.

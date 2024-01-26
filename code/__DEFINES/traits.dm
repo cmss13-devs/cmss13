@@ -169,7 +169,7 @@
 #define TRAIT_FOREIGN_BIO "t_foreign_bio"
 /// Eye color changes on intent. (G1 Synths and WJs)
 #define TRAIT_INTENT_EYES "t_intent_eyes"
-/// Masked synthetic biology. Basic medHUDs will percieve the mob as human. (Infiltrator Synths)
+/// Masked synthetic biology. Basic medHUDs will perceive the mob as human. (Infiltrator Synths)
 #define TRAIT_INFILTRATOR_SYNTH "t_infiltrator_synth"
 /// Makes it impossible to strip the inventory of this mob.
 #define TRAIT_UNSTRIPPABLE "t_unstrippable"

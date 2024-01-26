@@ -1,0 +1,4 @@
+author: "SabreML"
+delete-after: True
+changes:
+  - bugfix: "Fixed the xeno 'queen locator' giving the wrong location when a tunnel was selected."

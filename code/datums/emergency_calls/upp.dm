@@ -35,7 +35,7 @@
 	else
 		to_chat(M, SPAN_BOLD("You were brought online in a UPP engineering facility, knowing only your engineers for the first few weeks for your pseudo-life."))
 		to_chat(M, SPAN_BOLD("You were programmed with all of the medical and combat experience a military fighting force support asset required."))
-		to_chat(M, SPAN_BOLD("Throughout your career, your engineers, and later, your UPP compatriots, treated you like [pick(75;"a tool, and only that.", 25;"a person, despite your purpose")]"))
+		to_chat(M, SPAN_BOLD("Throughout your career, your engineers, and later, your UPP compatriots, treated you like [pick(75;"a tool, and only that.", 25;"a person, despite your purpose.")]"))
 		to_chat(M, SPAN_BOLD("Some weeks after your unit integration, you were assigned to the 17th 'Smoldering Sons' battalion (six hundred strong) under the command of Colonel Ganbaatar."))
 	to_chat(M, SPAN_BOLD("You were shipped off with the battalion to one of the UPP's most remote territories, a gas giant designated MV-35 in the Anglo-Japanese Arm, in the Neroid Sector."))
 	to_chat(M, SPAN_BOLD("For the past 14 months, you and the rest of the Smoldering Sons have been stationed at MV-35's only facility, the helium refinery, Altai Station."))

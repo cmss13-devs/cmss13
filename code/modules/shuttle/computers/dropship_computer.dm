@@ -168,7 +168,7 @@
 	override_being_removed = FALSE
 	if(dropship_control_lost)
 		remove_door_lock()
-		to_chat(user, SPAN_NOTICE("You succesfully removed the lockout!"))
+		to_chat(user, SPAN_NOTICE("You successfully removed the lockout!"))
 		playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
 
 	if(!shuttle.is_hijacked)

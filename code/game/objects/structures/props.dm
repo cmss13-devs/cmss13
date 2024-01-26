@@ -1391,6 +1391,7 @@
 	desc = "A large rock. It's not cooking anything."
 	icon = 'icons/obj/structures/props/boulder_largedark.dmi'
 	icon_state = "boulder_largedark1"
+	density = TRUE
 	bound_height = 64
 	bound_width = 64
 	unslashable = TRUE
@@ -1405,6 +1406,7 @@
 	desc = "A large rock. It's not cooking anything."
 	icon = 'icons/obj/structures/props/boulder_widedark.dmi'
 	icon_state = "boulderwidedark"
+	density = TRUE
 	bound_height = 32
 	bound_width = 64
 	unslashable = TRUE
@@ -1869,27 +1871,28 @@
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "bigroller_body1up"
 	density = TRUE
-
+	wrenchable = TRUE
 /obj/structure/prop/hybrisa/hospital/hospitalbedrollerbody1
 	name = "hospital bed"
 	desc = "A hospital bed, there's a body under the cloth..."
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "bigroller_body2up"
 	density = TRUE
-
+	wrenchable = TRUE
 /obj/structure/prop/hybrisa/hospital/hospitalbedrollerbody2
 	name = "hospital bed"
 	desc = "A hospital bed, there's a body under the cloth..."
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "bigroller_body3up"
 	density = TRUE
-
+	wrenchable = TRUE
 /obj/structure/prop/hybrisa/hospital/hospitalbedrollerbody3
 	name = "hospital bed"
 	desc = "A hospital bed, there's a body under the cloth..."
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "bigroller_body4up"
 	density = TRUE
+	wrenchable = TRUE
 
 /obj/structure/prop/hybrisa/hospital/hospitaldivider
 	name = "hospital divider"
@@ -2438,14 +2441,28 @@
 	name = "fire"
 	icon = 'icons/obj/structures/props/64x96-zenithrandomprops.dmi'
 	icon_state = "zfire_smoke"
+	layer = 5
+	light_on = TRUE
+	light_power = 2
+	light_range = 3
+
 /obj/structure/prop/hybrisa/misc/fire/fire2
 	name = "fire"
 	icon = 'icons/obj/structures/props/64x96-zenithrandomprops.dmi'
 	icon_state = "zfire_smoke2"
+	layer = 5
+	light_on = TRUE
+	light_power = 2
+	light_range = 3
+
 /obj/structure/prop/hybrisa/misc/fire/firebarrel
 	name = "barrel"
 	icon = 'icons/obj/structures/props/64x96-zenithrandomprops.dmi'
 	icon_state = "zbarrelfireon"
+	layer = 5
+	light_on = TRUE
+	light_power = 2
+	light_range = 3
 
 // Misc
 
@@ -2481,7 +2498,6 @@
 	desc = "A slot machine."
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "slotmachine"
-
 
 /obj/structure/prop/hybrisa/misc/coffeestuff/coffeemachine1
 	name = "coffee machine"
@@ -2843,6 +2859,60 @@
 /obj/structure/prop/hybrisa/misc/electricgrille
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "grille"
+
+
+// Grille
+
+/obj/structure/prop/hybrisa/misc/buildinggreeblies
+	name = "machinery"
+	icon = 'icons/obj/structures/props/64x64 zenithrandomprops.dmi'
+	icon_state = "buildingventbig1"
+	bound_width = 64
+	bound_height = 32
+	density = TRUE
+	health = 200
+	opacity = TRUE
+	anchored = TRUE
+	layer = 5
+/obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble1
+	icon_state = "buildingventbig2"
+/obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble2
+	icon_state = "buildingventbig3"
+/obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble3
+	icon_state = "buildingventbig4"
+/obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble4
+	icon_state = "buildingventbig5"
+/obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble5
+	icon_state = "buildingventbig6"
+/obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble6
+	icon_state = "buildingventbig7"
+/obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble7
+	icon_state = "buildingventbig8"
+/obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble8
+	icon_state = "buildingventbig9"
+/obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble9
+	icon_state = "buildingventbig10"
+/obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble10
+	icon_state = "buildingventbig11"
+
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall
+	name = "machinery"
+	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
+	icon_state = "smallwallvent1"
+	density = TRUE
+
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/computer
+	name = "machinery"
+	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
+	icon_state = "zcomputermachine"
+	density = TRUE
+
+/obj/structure/prop/hybrisa/misc/metergreen
+	name = "meter"
+	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
+	icon_state = "biggreenmeter1"
+
+
 
 
 

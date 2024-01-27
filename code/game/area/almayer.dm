@@ -423,7 +423,7 @@
 
 /area/almayer/maint/lower
 	name = "\improper Lower Deck Maintenance"
-	icon_state = "lowerhull"//tempory until i get a proper one.
+	icon_state = "lowerhull"
 	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/maint/lower/constr
@@ -434,6 +434,18 @@
 
 /area/almayer/maint/lower/cryo_cells
 	name = "\improper Lower Deck Cryo Cells Maintenance"
+
+// Upper maintainance areas
+/area/almayer/maint/upper
+	name = "\improper Upper Deck Maintenance"
+	icon_state = "upperhull"
+	fake_zlevel = 1 // upperdeck
+
+/area/almayer/maint/upper/mess
+	name = "\improper Upper Deck Mess Maintenance"
+
+/area/almayer/maint/upper
+
 
 // hull areas
 
@@ -479,6 +491,18 @@
 	name = "\improper Upper Deck Hull"
 	icon_state = "upperhull"
 	fake_zlevel = 1 // upperdeck
+
+/area/almayer/maint/hull/upper/p_bow
+	name = "\improper Upper Deck Port-Bow Hull"
+
+/area/almayer/maint/hull/upper/s_bow
+	name = "\improper Upper Deck Starboard-Bow Hull"
+
+/area/almayer/maint/hull/upper/p_stern
+	name = "\improper Upper Deck Port-Stern Hull"
+
+/area/almayer/maint/hull/upper/s_stern
+	name = "\improper Upper Deck Starboard-Stern Hull"
 
 /area/almayer/maint/hull/upper/u_f_s
 	name = "\improper Upper Deck Fore-Starboard Hull"

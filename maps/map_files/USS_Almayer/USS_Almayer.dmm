@@ -33862,7 +33862,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/toy/deck,
 /turf/open/floor/almayer{
-	dir = 10;
+	dir = 8;
 	icon_state = "silver"
 	},
 /area/almayer/shipboard/brig/cic_hallway)
@@ -38555,7 +38555,8 @@
 	dir = 8
 	},
 /obj/structure/disposalpipe/junction{
-	dir = 1
+	dir = 4;
+	icon_state = "pipe-y"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cic_hallway)
@@ -68236,8 +68237,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cells)
 "teH" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/sign/safety/maint{
 	pixel_y = 32
 	},
@@ -116646,8 +116645,8 @@ lka
 kpj
 kpj
 mQY
-aLG
-aYO
+aem
+mUa
 aLG
 tda
 mng
@@ -116850,7 +116849,7 @@ bdd
 bdd
 bdd
 teH
-mUa
+aYO
 xNB
 bdd
 vuA

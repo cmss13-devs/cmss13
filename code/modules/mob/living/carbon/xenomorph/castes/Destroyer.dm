@@ -8,10 +8,10 @@
 	melee_damage_upper = XENO_DAMAGE_TIER_8
 	melee_vehicle_damage = XENO_DAMAGE_TIER_5
 	max_health = XENO_HEALTH_DESTROYER
-	plasma_gain = XENO_PLASMA_GAIN_TIER_9
+	plasma_gain = XENO_PLASMA_GAIN_TIER_3
 	plasma_max = XENO_PLASMA_TIER_10
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_7
-	armor_deflection = XENO_ARMOR_FACTOR_TIER_10
+	armor_deflection = XENO_ARMOR_FACTOR_TIER_5
 	speed = XENO_SPEED_TIER_1
 
 	evolves_to = null
@@ -43,8 +43,9 @@
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/onclick/rend,
+		/datum/action/xeno_action/activable/unstoppable_force,
 		/datum/action/xeno_action/activable/doom,
-		/datum/action/xeno_action/activable/destroy,
+		/datum/action/xeno_action/activable/destroy
 	)
 
 	//Change these

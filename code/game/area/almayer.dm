@@ -444,19 +444,24 @@
 /area/almayer/maint/upper/mess
 	name = "\improper Upper Deck Mess Maintenance"
 
-/area/almayer/maint/upper
+/area/almayer/maint/upper/u_m_p
+	name = "\improper Upper Deck Port-Midship Maintenance"
 
+/area/almayer/maint/upper/u_m_s
+	name = "\improper Upper Deck Starboard-Midship Maintenance"
 
 // hull areas
-
 /area/almayer/maint/hull
 
 // lower deck hull areas
-
 /area/almayer/maint/hull/lower
 	name = "\improper Lower Deck Hull"
 	icon_state = "lowerhull"
 	fake_zlevel = 2 // lowerdeck
+// stairs.
+
+/area/almayer/maint/hull/lower/stairs
+	name = "\improper Lower Deck Stairs Hull"
 
 /area/almayer/maint/hull/lower/stern
 	name = "\improper Lower Deck Stern Hull"
@@ -491,6 +496,10 @@
 	name = "\improper Upper Deck Hull"
 	icon_state = "upperhull"
 	fake_zlevel = 1 // upperdeck
+
+// Stairs.
+/area/almayer/maint/hull/upper/stairs
+	name = "\improper Upper Deck Stairs Hull"
 
 /area/almayer/maint/hull/upper/p_bow
 	name = "\improper Upper Deck Port-Bow Hull"

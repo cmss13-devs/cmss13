@@ -1549,12 +1549,6 @@
 	},
 /turf/open/floor/bluegrid,
 /area/fiorina/station)
-"atb" = (
-/obj/structure/window/framed/hangar/reinforced,
-/turf/open/floor/strata{
-	icon_state = "multi_tiles"
-	},
-/area/fiorina/station)
 "atr" = (
 /obj/item/stack/rods,
 /obj/item/shard,
@@ -13855,13 +13849,6 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/hybrisa/street/asphalt,
-/area/fiorina/station)
-"dvF" = (
-/obj/structure/window/framed/hangar/reinforced,
-/turf/open/floor/strata{
-	dir = 6;
-	icon_state = "multi_tiles"
-	},
 /area/fiorina/station)
 "dvH" = (
 /obj/structure/prop/hybrisa/decal/road/lines4,
@@ -32300,16 +32287,6 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison,
-/area/fiorina/station)
-"hSk" = (
-/obj/structure/prop/invuln/minecart_tracks{
-	desc = "A pipe.";
-	dir = 4;
-	icon = 'icons/obj/pipes/pipes.dmi';
-	icon_state = "intact";
-	name = "Pipe"
-	},
-/turf/open/hybrisa/street/cement3,
 /area/fiorina/station)
 "hSo" = (
 /obj/structure/closet/crate/construction,
@@ -69773,6 +69750,15 @@
 /obj/structure/platform/hybrisa/metalplatform1{
 	dir = 1
 	},
+/obj/item/trash/c_tube{
+	pixel_x = -4;
+	pixel_y = 6;
+	name = "trash bag";
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon_state = "ztrashbag";
+	layer = 7
+	},
 /turf/open/floor/prison{
 	icon_state = "ramptop";
 	dir = 4
@@ -71684,12 +71670,6 @@
 /obj/item/ammo_magazine/rifle/mar40,
 /obj/item/ammo_magazine/rifle/mar40,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/fiorina/station)
-"rhV" = (
-/obj/structure/window/framed/hangar/reinforced,
-/turf/closed/wall/hangar{
-	name = "reinforced metal wall"
-	},
 /area/fiorina/station)
 "rii" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -75890,14 +75870,6 @@
 	icon_state = "platingdmg1"
 	},
 /area/fiorina/station)
-"sfH" = (
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/obj/structure/machinery/shower,
-/turf/open/floor/plating/plating_catwalk,
-/area/fiorina/station)
 "sfJ" = (
 /obj/structure/platform_decoration/strata/metal{
 	dir = 8
@@ -76588,9 +76560,15 @@
 /turf/open/floor/bluegrid,
 /area/fiorina/station)
 "sol" = (
-/obj/structure/machinery/disposal/delivery,
+/obj/structure/machinery/disposal/delivery{
+	layer = 4
+	},
 /obj/effect/decal/strata_decals/grime/grime4,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/trash/buritto,
+/obj/structure/platform/hybrisa/metalplatform1{
+	dir = 1
+	},
 /obj/item/trash/c_tube{
 	pixel_x = -3;
 	pixel_y = 6;
@@ -76598,10 +76576,6 @@
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
 	icon_state = "ztrashbag"
-	},
-/obj/item/trash/buritto,
-/obj/structure/platform/hybrisa/metalplatform1{
-	dir = 1
 	},
 /turf/open/floor/prison{
 	icon_state = "ramptop";
@@ -102771,7 +102745,7 @@ inH
 ivW
 eTm
 iCG
-atb
+wHK
 paG
 fbI
 prD
@@ -103023,7 +102997,7 @@ tMG
 cTy
 wGQ
 oWs
-dvF
+wHK
 paG
 fbI
 iIe
@@ -104283,7 +104257,7 @@ uRF
 uRF
 uRF
 bZW
-rhV
+wHK
 hAG
 fbI
 fbI
@@ -104533,8 +104507,8 @@ wJD
 wHK
 wHK
 wJD
-rhV
-rhV
+wHK
+wHK
 rTC
 jAJ
 fbI
@@ -124475,7 +124449,7 @@ awd
 jEF
 jEF
 wJD
-uzI
+hbz
 cId
 jEF
 eiu
@@ -136584,7 +136558,7 @@ kVg
 pws
 kgx
 bfn
-hSk
+iMA
 bRZ
 sMv
 hEg
@@ -149404,7 +149378,7 @@ sqX
 wJD
 wJD
 wJD
-sfH
+rbL
 hii
 hHg
 wHK
@@ -149656,7 +149630,7 @@ gRO
 iaK
 yjV
 wJD
-sfH
+rbL
 hii
 czS
 wHK
@@ -149908,7 +149882,7 @@ jKb
 iPG
 tTq
 wJD
-sfH
+rbL
 hii
 czS
 wHK

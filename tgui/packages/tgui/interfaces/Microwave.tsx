@@ -16,8 +16,8 @@ type BackendContext = {
   ingredients: Ingredient[];
 };
 
-export const Microwave = (props, context) => {
-  const { data, act } = useBackend<BackendContext>(context);
+export const Microwave = (props) => {
+  const { data, act } = useBackend<BackendContext>();
   const { operating, broken, dirty, ingredients } = data;
 
   return (

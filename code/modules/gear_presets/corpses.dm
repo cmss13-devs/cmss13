@@ -758,7 +758,7 @@
 	faction = FACTION_PMC
 	faction_group = FACTION_LIST_WY
 	rank = JOB_PMC_STANDARD
-	paygrade = "PMC-OP"
+	paygrade = PAY_SHORT_PMC_OP
 	idtype = /obj/item/card/id/pmc
 	skills = /datum/skills/civilian/survivor/pmc
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)

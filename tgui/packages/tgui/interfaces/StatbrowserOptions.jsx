@@ -2,14 +2,10 @@ import { useBackend, useLocalState } from '../backend';
 import { Flex, NumberInput, Section } from '../components';
 import { Window } from '../layouts';
 
-export const StatbrowserOptions = (props, context) => {
-  const { act, data } = useBackend(context);
+export const StatbrowserOptions = (props) => {
+  const { act, data } = useBackend();
   const { current_fontsize } = data;
-  const [fontsize, setFontsize] = useLocalState(
-    context,
-    'fontsize',
-    current_fontsize
-  );
+  const [fontsize, setFontsize] = useLocalState('fontsize', current_fontsize);
 
   return (
     <Window title="Statbrowser Options" width={300} height={120}>
@@ -33,7 +29,7 @@ export const StatbrowserOptions = (props, context) => {
   );
 };
 
-const Options = (props, context) => {
+const Options = (props) => {
   const { children } = props;
 
   return (
@@ -49,7 +45,7 @@ const Options = (props, context) => {
   );
 };
 
-const Option = (props, context) => {
+const Option = (props) => {
   const { category, input } = props;
 
   return (
@@ -60,7 +56,7 @@ const Option = (props, context) => {
   );
 };
 
-const NumberOption = (props, context) => {
+const NumberOption = (props) => {
   const { category, ...rest } = props;
 
   return <Option category={category} input={<NumberInput {...rest} />} />;

@@ -40,10 +40,10 @@ const MgPanel = (props: DropshipEquipment) => {
   );
 };
 
-export const MgMfdPanel = (props: MfdProps, context) => {
-  const { act, data } = useBackend<EquipmentContext>(context);
-  const { setPanelState } = mfdState(context, props.panelStateId);
-  const { equipmentState } = useEquipmentState(context, props.panelStateId);
+export const MgMfdPanel = (props: MfdProps) => {
+  const { act, data } = useBackend<EquipmentContext>();
+  const { setPanelState } = mfdState(props.panelStateId);
+  const { equipmentState } = useEquipmentState(props.panelStateId);
   const mg = data.equipment_data.find((x) => x.mount_point === equipmentState);
   const deployLabel = (mg?.data?.deployed ?? 0) === 1 ? 'RETRACT' : 'DEPLOY';
 

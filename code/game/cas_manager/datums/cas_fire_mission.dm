@@ -160,7 +160,7 @@
 		return "Weapon [weapon_string] has not enough ammunition to complete this Fire Mission"
 	return "Unknown Error"
 
-/datum/cas_fire_mission/proc/execute_firemission(obj/structure/machinery/computer/dropship_weapons/linked_console, turf/initial_turf, direction = NORTH, steps = 12, step_delay = 3, datum/cas_fire_envelope/envelope = null)
+/datum/cas_fire_mission/proc/execute_firemission(obj/structure/machinery/computer/dropship_weapons/linked_console, turf/initial_turf, direction = NORTH, steps = 12, step_delay = 2.5, datum/cas_fire_envelope/envelope = null)
 	if(initial_turf == null || check(linked_console) != FIRE_MISSION_ALL_GOOD)
 		return FIRE_MISSION_NOT_EXECUTABLE
 

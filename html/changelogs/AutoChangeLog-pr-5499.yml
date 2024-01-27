@@ -1,4 +1,0 @@
-author: "SabreML"
-delete-after: True
-changes:
-  - bugfix: "Fixed being gibbed with the Ctrl or Alt key held sometimes breaking movement as an observer."

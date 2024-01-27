@@ -1,7 +1,0 @@
-author: "BeagleGaming1"
-delete-after: True
-changes:
-  - balance: "Repairing bones with bone glue costs a portion of the bone glue's resources"
-  - balance: "Repairing bones with a screwdriver costs metal"
-  - rscdel: "Removed bone glue from the medilathe"
-  - spellcheck: "New description for bone glue"

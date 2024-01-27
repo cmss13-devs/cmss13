@@ -24439,7 +24439,7 @@
 /area/fiorina/tumor/ice_lab)
 "oIg" = (
 /obj/structure/platform,
-/obj/structure/reagent_dispensers/oxygentank{
+/obj/structure/reagent_dispensers/fueltank/oxygentank{
 	layer = 2.6
 	},
 /turf/open/floor/prison,

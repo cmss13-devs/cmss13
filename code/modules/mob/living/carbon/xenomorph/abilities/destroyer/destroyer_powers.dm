@@ -26,19 +26,25 @@
 	var/mob/living/carbon/xenomorph/xeno = owner
 	XENO_ACTION_CHECK(xeno)
 
+	playsound(xeno.loc, 'sound/voice/alien_queen_screech.ogg', 50, 0, status = 0)
+	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits an ear-splitting guttural roar!"))
+	xeno.create_shriekwave() //Adds the visual effect. Wom wom wom
+
 	addtimer(CALLBACK(src, PROC_REF(extinguish_lights), 1), 1 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(extinguish_lights), 3), 2 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(extinguish_lights), 5), 3 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(extinguish_lights), 7), 4 SECONDS)
-	for(var/mob/living/carbon/carbon in orange(2, owner))
+
+	for(var/mob/living/carbon/carbon in orange(3, owner))
 		carbon.Daze(1)
+		shake_camera(carbon, 6, 1)
 
 	apply_cooldown()
 	..()
 
 /datum/action/xeno_action/activable/doom/proc/extinguish_lights(range)
-	for(var/obj/item/device/flashlight/flight in orange(range, owner))
-		flight.turn_off_light()
+	for(var/obj/item/device/flashlight/flare/flare in orange(range, owner))
+		flare.burn_out()
 
 /*
 	DESTROY ABILITY
@@ -55,6 +61,8 @@
 
 	var/mob/living/carbon/xenomorph/xeno = owner
 	XENO_ACTION_CHECK(xeno)
+
+	var/turf/target_turf = get_turf(target)
 
 	to_chat(xeno, SPAN_XENONOTICE("Our muscles tense as we prepare ourself for a giant leap."))
 	if(!do_after(xeno, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
@@ -81,7 +89,8 @@
 	owner.emote("roar")
 
 	//Initial visual
-	var/obj/effect/temp_visual/destroyer_leap/F = new /obj/effect/temp_visual/destroyer_leap(owner.loc, negative, owner.dir)
+	var/obj/effect/temp_visual/destroyer_leap/F = new(owner.loc, negative, owner.dir)
+	new /obj/effect/xenomorph/xeno_telegraph/destroyer_leap_template(get_step(target_turf, SOUTHWEST), 20)
 
 	negative = !negative //invert it for the swoop down later
 
@@ -102,8 +111,6 @@
 	owner.status_flags |= GODMODE
 	//SEND_SIGNAL(owner, COMSIG_SWOOP_INVULNERABILITY_STARTED)
 
-	new /obj/effect/xenomorph/xeno_telegraph(get_turf(target), 2 SECONDS)
-
 	owner.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	SLEEP_CHECK_DEATH(7, owner)
 
@@ -113,7 +120,7 @@
 
 	animate(owner, alpha = 100, transform = matrix()*0.7, time = 7)
 	// Ash drake flies onto its target and rains fire down upon them
-	var/descentTime = 15
+	var/descentTime = 5
 
 	//ensure swoop direction continuity.
 	if(negative)
@@ -127,8 +134,8 @@
 	new /obj/effect/temp_visual/destroyer_leap/end(owner.loc, negative, owner.dir)
 
 
-	animate(owner, alpha = 255, transform = oldtransform, descentTime)
 	SLEEP_CHECK_DEATH(descentTime, owner)
+	animate(owner, alpha = 255, transform = oldtransform, descentTime)
 	owner.mouse_opacity = initial(owner.mouse_opacity)
 	//Sounds
 	//playsound(owner.loc, 'sound/effects/meteorimpact.ogg', 200, TRUE)
@@ -136,16 +143,24 @@
 
 	/// Actual Damaging Effects - Add stuff for cades - NEED TELEGRAPHS NEED EFFECTS
 
-	for(var/mob/living/L in orange(1, owner) - owner)
-		L.adjustBruteLoss(75)
-		if(!QDELETED(L)) // Some mobs are deleted on death
-			var/throw_dir = get_dir(owner, L)
-			if(L.loc == owner.loc)
+	for(var/mob/living/carbon/carbon in orange(1, owner) - owner)
+		carbon.adjustBruteLoss(75)
+		if(!QDELETED(carbon)) // Some mobs are deleted on death
+			var/throw_dir = get_dir(owner, carbon)
+			if(carbon.loc == owner.loc)
 				throw_dir = pick(GLOB.alldirs)
 			var/throwtarget = get_edge_target_turf(owner, throw_dir)
-			L.throw_atom(throwtarget, 2, SPEED_REALLY_FAST, owner, TRUE)
-			L.KnockDown(0.5)
-			owner.visible_message(SPAN_WARNING("[L] is thrown clear of [owner]!"))
+			carbon.throw_atom(throwtarget, 2, SPEED_REALLY_FAST, owner, TRUE)
+			carbon.KnockDown(0.5)
+			xeno.visible_message(SPAN_WARNING("[carbon] is thrown clear of [owner]!"))
+
+	for(var/obj/item/item in orange(1, owner))
+		if(!QDELETED(item))
+			var/throw_dir = get_dir(owner, item)
+			if(item.loc == owner.loc)
+				throw_dir = pick(GLOB.alldirs)
+			var/throwtarget = get_edge_target_turf(owner, throw_dir)
+			item.throw_atom(throwtarget, 2, SPEED_REALLY_FAST, owner, TRUE)
 
 	/// DAMAGING CADES HERE
 
@@ -202,3 +217,8 @@
 		animate(src, pixel_x = -16, pixel_z = 0, time = 5)
 	else
 		animate(src, pixel_x = -16, pixel_z = 0, time = 5)
+
+/obj/effect/xenomorph/xeno_telegraph/destroyer_leap_template
+	icon = 'icons/effects/96x96.dmi'
+	icon_state = "xenolandingpink"
+	layer = BELOW_MOB_LAYER

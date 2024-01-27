@@ -45,7 +45,7 @@
 		leader = H
 		to_chat(H, SPAN_ROLE_HEADER("You are a Cell Leader of the local resistance group, the Colonial Liberation Front!"))
 		arm_equipment(H, /datum/equipment_preset/clf/leader, TRUE, TRUE)
-	else if(synths < max_synths && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SYNTH) && GLOB.RoleAuthority.roles_whitelist[H.ckey] & WHITELIST_SYNTHETIC)
+	else if(synths < max_synths && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SYNTH) && H.client.check_whitelist_status(WHITELIST_SYNTHETIC))
 		synths++
 		to_chat(H, SPAN_ROLE_HEADER("You are a Multi-Purpose Synthetic for the local resistance group, the Colonial Liberation Front!"))
 		arm_equipment(H, /datum/equipment_preset/clf/synth, TRUE, TRUE)

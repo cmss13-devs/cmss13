@@ -240,7 +240,7 @@
 
 /datum/equipment_preset/fun/santa
 	name = "Fun - Santa"
-	paygrade = PAY_SHORT_CIV
+	paygrade = PAY_SHORT_CDNM
 	flags = EQUIPMENT_PRESET_EXTRA
 	skills = /datum/skills/everything
 	faction = FACTION_MARINE
@@ -289,6 +289,7 @@
 /datum/equipment_preset/upp/ivan
 	name = "Fun - Ivan"
 	flags = EQUIPMENT_PRESET_EXTRA
+	paygrade = PAY_SHORT_UE6
 	skills = /datum/skills/everything
 	assignment = "UPP Armsmaster"
 	rank = "UPP Armsmaster"

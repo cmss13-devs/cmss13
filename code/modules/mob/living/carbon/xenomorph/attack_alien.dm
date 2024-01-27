@@ -209,6 +209,7 @@
 				KnockDown(strength) // Purely for knockdown visuals. All the heavy lifting is done by Stun
 				M.visible_message(SPAN_DANGER("[M] tackles down [src]!"), \
 				SPAN_DANGER("We tackle down [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+				SEND_SIGNAL(src, COMSIG_MOB_TACKLED_DOWN, M)
 			else
 				playsound(loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
 				if (body_position == LYING_DOWN)

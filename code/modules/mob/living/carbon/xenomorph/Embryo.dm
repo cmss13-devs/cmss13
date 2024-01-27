@@ -78,6 +78,9 @@
 	process_growth(delta_time)
 
 /obj/item/alien_embryo/proc/process_growth(delta_time)
+	//Tutorial embryos do not progress.
+	if(hivenumber == XENO_HIVE_TUTORIAL)
+		return
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	//Low temperature seriously hampers larva growth (as in, way below livable), so does stasis
 	if(!hive.hardcore) // Cannot progress if the hive has entered hardcore mode.

@@ -27,8 +27,10 @@ const { data } = useBackend();
 const { is_pda } = data;
 let remotelock = !is_pda;
 let remotetip = 'You cannot do this via remote console.';
+let deletetip = remotetip;
 if (!remotelock) {
   remotetip = '';
+  deletetip = 'Delete Record';
 }
 
 export const AresAdmin = (props, context) => {
@@ -325,8 +327,8 @@ const MainMenu = (props, context) => {
                 width="25vw"
                 bold
                 onClick={() => act('sudo')}
-                disabled={remotelock}
-                tooltip={remotetip}
+                disabled={admin_login}
+                tooltip="You cannot do this via remote terminal."
               />
             </Stack.Item>
           )}
@@ -340,8 +342,8 @@ const MainMenu = (props, context) => {
                 width="25vw"
                 bold
                 onClick={() => act('sudo_logout')}
-                disabled={remotelock}
-                tooltip={remotetip}
+                disabled={!sudo}
+                tooltip="Sudo Logout"
               />
             </Stack.Item>
           )}
@@ -488,7 +490,7 @@ const AnnouncementLogs = (props, context) => {
                   icon="trash"
                   onClick={() => act('delete_record', { record: record.ref })}
                   disabled={remotelock}
-                  tooltip={remotetip}
+                  tooltip={deletetip}
                 />
               </Flex.Item>
             </Flex>
@@ -586,7 +588,7 @@ const BioscanLogs = (props, context) => {
                   icon="trash"
                   onClick={() => act('delete_record', { record: record.ref })}
                   disabled={remotelock}
-                  tooltip={remotetip}
+                  tooltip={deletetip}
                 />
               </Flex.Item>
             </Flex>
@@ -688,7 +690,7 @@ const BombardmentLogs = (props, context) => {
                   icon="trash"
                   onClick={() => act('delete_record', { record: record.ref })}
                   disabled={remotelock}
-                  tooltip={remotetip}
+                  tooltip={deletetip}
                 />
               </Flex.Item>
             </Flex>
@@ -1377,9 +1379,9 @@ const FlightLogs = (props, context) => {
               <Flex.Item ml="1rem">
                 <Button.Confirm
                   icon="trash"
-                  tooltip="Delete Record"
-                  disabled={access_level < 4}
                   onClick={() => act('delete_record', { record: record.ref })}
+                  disabled={remotelock}
+                  tooltip={deletetip}
                 />
               </Flex.Item>
             </Flex>
@@ -1476,7 +1478,7 @@ const Security = (props, context) => {
                   icon="trash"
                   onClick={() => act('delete_record', { record: record.ref })}
                   disabled={remotelock}
-                  tooltip={remotetip}
+                  tooltip={deletetip}
                 />
               </Flex.Item>
             </Flex>

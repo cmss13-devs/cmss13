@@ -1,7 +1,7 @@
 /obj/item/device/ai_tech_pda
 	icon = 'icons/obj/items/synth/wj_pda.dmi'
-	name = "KN5500 PDA"
-	desc = "A portable interface used by Working-Joes, capable of connecting to the local command AI to relay tasking information. Built to withstand a nuclear bomb."
+	name = "T411 AIDT"
+	desc = "Artifical Intelligence Diagnostic Tablet model T411. Built to withstand a nuclear bomb."
 	icon_state = "karnak_off"
 	unacidable = TRUE
 	indestructible = TRUE
@@ -57,8 +57,9 @@
 	else
 		icon_state = "karnak_on_anim"
 
-/obj/item/device/ai_tech_pda/attack_self(mob/user)
+/obj/item/device/ai_tech_pda/attack_self(mob/living/carbon/human/user)
 	if(..() || !allowed(user))
+		to_chat(user, SPAN_WARNING("Access Denied!"))
 		return FALSE
 
 	if((last_menu == "off") && (current_menu == "login"))
@@ -285,6 +286,7 @@
 	if(.)
 		return
 	var/mob/living/carbon/human/user = usr
+	var/playsound = TRUE
 
 	switch(action)
 		if("go_back")
@@ -298,6 +300,7 @@
 			var/obj/item/card/id/card = user.wear_id
 			if(!card || !card.check_biometrics(user))
 				to_chat(user, SPAN_WARNING("You require an authenticated ID card to access this device!"))
+				playsound(src, 'sound/machines/terminal_error.ogg', 15, TRUE)
 				return FALSE
 			logged_in = user.real_name
 			access_list += "[logged_in] at [worldtime2text()]."
@@ -422,6 +425,7 @@
 			return claim
 
 		if("auth_access")
+			playsound = FALSE
 			var/datum/ares_ticket/access/access_ticket = locate(params["ticket"])
 			if(!access_ticket)
 				return FALSE
@@ -432,6 +436,7 @@
 					continue
 				identification.handle_ares_access(logged_in, user)
 				access_ticket.ticket_status = TICKET_GRANTED
+				playsound(src, 'sound/machines/chime.ogg', 15, TRUE)
 				ares_apollo_talk("Access Ticket [access_ticket.ticket_id]: [access_ticket.ticket_submitter] granted core access.")
 				return TRUE
 			for(var/obj/item/card/id/identification in link.active_ids)
@@ -441,6 +446,7 @@
 					continue
 				identification.handle_ares_access(logged_in, user)
 				access_ticket.ticket_status = TICKET_REVOKED
+				playsound(src, 'sound/machines/chime.ogg', 15, TRUE)
 				ares_apollo_talk("Access Ticket [access_ticket.ticket_id]: core access for [access_ticket.ticket_submitter] revoked.")
 				return TRUE
 			return FALSE
@@ -523,6 +529,7 @@
 			return TRUE
 
 		if("delete_record")
+			playsound = FALSE
 			var/datum/ares_record/record = locate(params["record"])
 			if(record.record_name == ARES_RECORD_DELETED)
 				return FALSE
@@ -552,3 +559,8 @@
 			new_delete.title = new_title
 
 			datacore.records_deletion += new_delete
+			playsound(src, 'sound/machines/terminal_error.ogg', 15, TRUE)
+
+	if(playsound)
+		var/sound = pick('sound/machines/pda_button1.ogg', 'sound/machines/pda_button2.ogg')
+		playsound(src, sound, 15, TRUE)

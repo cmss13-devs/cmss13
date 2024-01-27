@@ -153,7 +153,7 @@
 			// Whiskey Outpost
 			if(JOB_WO_CO)
 				marine_rk = "wo_co"
-			if(JOB_WO_XO)
+			if(JOB_WO_XO, JOB_AI_TECH)
 				marine_rk = "wo_xo"
 			if(JOB_WO_CHIEF_POLICE)
 				marine_rk = "hgsl"

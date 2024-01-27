@@ -6,14 +6,19 @@
 /datum/action/xeno_action/onclick/rend/use_ability()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	XENO_ACTION_CHECK(xeno)
+
 	xeno.spin_circle()
+	xeno.emote("hiss")
 	for(var/mob/living/carbon/carbon in orange(1, xeno) - xeno)
-		carbon.apply_armoured_damage(25)
+		carbon.apply_armoured_damage(damage)
 		xeno.flick_attack_overlay(carbon, "slash")
 		to_chat(carbon, SPAN_DANGER("[xeno] slices into you with its razor sharp talons"))
 
+	playsound(get_turf(xeno), 'sound/weapons/alien_claw_flesh3.ogg', 30, TRUE)
 	xeno.visible_message(SPAN_DANGER("[xeno] slices around itself!"), SPAN_NOTICE("We slice around ourself!"))
+	apply_cooldown()
 	..()
+
 
 
 /*
@@ -36,7 +41,10 @@
 	addtimer(CALLBACK(src, PROC_REF(extinguish_lights), 7), 4 SECONDS)
 
 	for(var/mob/living/carbon/carbon in orange(3, owner))
-		carbon.Daze(1)
+		carbon.EyeBlur(daze_legnth_seconds)
+		carbon.Daze(daze_length_seconds)
+		carbon.Slow(slow_length_seconds)
+		to_chat(carbon, SPAN_HIGHDANGER("[xeno]'s shriek overwhelms your entire being!"))
 		shake_camera(carbon, 6, 1)
 
 	apply_cooldown()
@@ -45,6 +53,19 @@
 /datum/action/xeno_action/activable/doom/proc/extinguish_lights(range)
 	for(var/obj/item/device/flashlight/flare/flare in orange(range, owner))
 		flare.burn_out()
+
+/*
+	UNSTOPPABLE FORCE ABILITY- SIMILAR TO CRUSHER CHARGE
+	Medium cooldown gap closer pushes things out of the way and does damage.
+*/
+
+/datum/action/xeno_action/activable/unstoppable_force/use_ability(atom/target)
+
+	var/mob/living/carbon/xenomorph/xeno = owner
+	XENO_ACTION_CHECK(xeno)
+
+	apply_cooldown()
+	..()
 
 /*
 	DESTROY ABILITY
@@ -63,6 +84,7 @@
 	XENO_ACTION_CHECK(xeno)
 
 	var/turf/target_turf = get_turf(target)
+	var/turf/template_turf = get_step(target_turf, SOUTHWEST)
 
 	to_chat(xeno, SPAN_XENONOTICE("Our muscles tense as we prepare ourself for a giant leap."))
 	if(!do_after(xeno, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
@@ -90,7 +112,7 @@
 
 	//Initial visual
 	var/obj/effect/temp_visual/destroyer_leap/F = new(owner.loc, negative, owner.dir)
-	new /obj/effect/xenomorph/xeno_telegraph/destroyer_leap_template(get_step(target_turf, SOUTHWEST), 20)
+	new /obj/effect/xenomorph/xeno_telegraph/destroyer_leap_template(template_turf, 20)
 
 	negative = !negative //invert it for the swoop down later
 
@@ -138,8 +160,16 @@
 	animate(owner, alpha = 255, transform = oldtransform, descentTime)
 	owner.mouse_opacity = initial(owner.mouse_opacity)
 	//Sounds
-	//playsound(owner.loc, 'sound/effects/meteorimpact.ogg', 200, TRUE)
-
+	playsound(owner.loc, 'sound/effects/meteorimpact.ogg', 200, TRUE)
+	new /obj/effect/temp_visual/heavy_impact(owner.loc)
+	new /obj/effect/temp_visual/heavy_impact(get_step(owner.loc, NORTH))
+	new /obj/effect/temp_visual/heavy_impact(get_step(owner.loc, EAST))
+	new /obj/effect/temp_visual/heavy_impact(get_step(owner.loc, WEST))
+	new /obj/effect/temp_visual/heavy_impact(get_step(owner.loc, SOUTH))
+	new /obj/effect/temp_visual/heavy_impact(get_step(owner.loc, SOUTHEAST))
+	new /obj/effect/temp_visual/heavy_impact(get_step(owner.loc, SOUTHWEST))
+	new /obj/effect/temp_visual/heavy_impact(get_step(owner.loc, NORTHWEST))
+	new /obj/effect/temp_visual/heavy_impact(get_step(owner.loc, NORTHEAST))
 
 	/// Actual Damaging Effects - Add stuff for cades - NEED TELEGRAPHS NEED EFFECTS
 
@@ -179,6 +209,9 @@
 	owner.status_flags &= ~GODMODE
 	apply_cooldown()
 	..()
+
+/datum/action/xeno_action/activable/destroy/proc/second_template(turf/template_turf)
+	new /obj/effect/xenomorph/xeno_telegraph/destroyer_leap_template/pink(template_turf, 10)
 
 /obj/effect/temp_visual/destroyer_leap
 	icon = 'icons/mob/xenos/destroyer.dmi'

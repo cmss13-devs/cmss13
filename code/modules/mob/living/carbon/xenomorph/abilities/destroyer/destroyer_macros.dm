@@ -18,3 +18,10 @@
 	set hidden = TRUE
 	var/action_name = "Doom"
 	handle_xeno_macro(src, action_name)
+
+/datum/action_xeno_action/verb/unstoppable_force()
+	set category = "Alien"
+	set name = "Unstoppable Force"
+	set hidden = TRUE
+	var/action_name = "Unstoppable Force"
+	handle_xeno_macro(src, action_name)

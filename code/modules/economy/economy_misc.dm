@@ -71,6 +71,14 @@ GLOBAL_VAR_INIT(num_financial_terminals, 1)
 GLOBAL_LIST_EMPTY(all_money_accounts)
 GLOBAL_VAR_INIT(economy_init, FALSE)
 
+//from newscaster.dm this is necessary to make this file work properly since it use news_network.
+
+/// The global news-network, which is coincidentally a global list.
+GLOBAL_DATUM_INIT(news_network, /datum/feed_network, new())
+
+/datum/feed_network
+	var/list/datum/feed_channel/network_channels = list()// in used above.
+
 /proc/setup_economy()
 	if(GLOB.economy_init)
 		return 2
@@ -154,14 +162,8 @@ GLOBAL_VAR_INIT(economy_init, FALSE)
 
 	GLOB.department_accounts[department] = department_account
 
-//from newscaster.dm this is necessary to make this file work properly...
-
-/datum/feed_network
-	var/list/datum/feed_channel/network_channels = list()// in used above.
-
-GLOBAL_DATUM_INIT(news_network, /datum/feed_network, new()) //The global news-network, which is coincidentally a global list.
-
 // those datum come from newscaster.dm and are necessary to make this file and holder2.dm work properly.
+// no idea how to refactor this.(seem like a tottaly different PR to me... and way more difficult that i can manage)
 
 /datum/feed_message
 	var/author =""

@@ -158,12 +158,8 @@ GLOBAL_VAR_INIT(economy_init, FALSE)
 
 /datum/feed_network
 	var/list/datum/feed_channel/network_channels = list()// in used above.
-	var/datum/feed_message/wanted_issue//wanted // not in used
 
 GLOBAL_DATUM_INIT(news_network, /datum/feed_network, new()) //The global news-network, which is coincidentally a global list.
-
-//this global seem not in use after newscaster modification. will test deleting it...
-GLOBAL_LIST_INIT_TYPED(allCasters, /obj/structure/machinery/newscaster, list()) //Global list that will contain reference to all newscasters in existence.
 
 // those datum come from newscaster.dm and are necessary to make this file and holder2.dm work properly.
 
@@ -171,7 +167,6 @@ GLOBAL_LIST_INIT_TYPED(allCasters, /obj/structure/machinery/newscaster, list()) 
 	var/author =""
 	var/body =""
 	var/message_type ="Story"
-	//var/parent_channel
 	var/backup_body =""
 	var/backup_author =""
 	var/is_admin_message = 0
@@ -181,13 +176,11 @@ GLOBAL_LIST_INIT_TYPED(allCasters, /obj/structure/machinery/newscaster, list()) 
 /datum/feed_channel
 	var/channel_name=""
 	var/list/datum/feed_message/messages = list()
-	//var/message_count = 0
 	var/locked=0
 	var/author=""
 	var/backup_author=""
 	var/censored=0
 	var/is_admin_channel=0
-	//var/page = null //For newspapers
 
 /datum/feed_message/proc/clear()
 	src.author = ""

@@ -1275,6 +1275,7 @@
 #include "code\game\objects\structures\musician.dm"
 #include "code\game\objects\structures\noticeboard.dm"
 #include "code\game\objects\structures\platforms.dm"
+#include "code\game\objects\structures\prop_mech.dm"
 #include "code\game\objects\structures\props.dm"
 #include "code\game\objects\structures\reagent_dispensers.dm"
 #include "code\game\objects\structures\safe.dm"

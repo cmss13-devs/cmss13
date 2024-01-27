@@ -17,5 +17,5 @@ map rumayer
 endmap
 
 map almayer
-	voteweight 0
+	disabled
 endmap

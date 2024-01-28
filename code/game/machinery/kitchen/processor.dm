@@ -20,14 +20,13 @@
 /datum/food_processor_process/process(loc, what)
 	if (src.output && loc)
 		var/obj/item/reagent_container/food/snacks/created_food = new src.output(loc)
-		if (istype(created_food, /obj/item/reagent_container/food/snacks/meat/xenomeat))
-			var/obj/item/reagent_container/food/snacks/meat/original_food = what
+		var/obj/item/reagent_container/food/snacks/original_food = what
+		if(original_food.made_from_player)
 			created_food.made_from_player = original_food.made_from_player
-			created_food.name = ("processed " + created_food.made_from_player + created_food.name)
-			created_food.reagents.remove_reagent("xenoblood", 6)
-		else if (istype(created_food, /obj/item/reagent_container/food/snacks/carpmeat))
-			created_food.name = "processed carp fillet"
-			created_food.reagents.remove_reagent("carpotoxin", 6)
+			created_food.name = (created_food.made_from_player + created_food.name)
+	if (what)
+		qdel(what)
+
 	if (what)
 		qdel(what)
 

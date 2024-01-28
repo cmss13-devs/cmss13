@@ -6772,9 +6772,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgury/dark_grey,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "dio" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -7185,9 +7183,7 @@
 /obj/structure/platform{
 	dir = 8
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgury/light_grey_middle,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "dqr" = (
 /obj/item/weapon/gun/rifle/m41a{
@@ -10157,6 +10153,9 @@
 	icon_state = "marked"
 	},
 /area/lv522/atmos/east_reactor)
+"eAa" = (
+/turf/open/shuttle/dropship/can_surgury/light_grey_single_wide_up_to_down,
+/area/lv522/landing_zone_forecon/UD6_Typhoon)
 "eAg" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -10573,6 +10572,10 @@
 	},
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor)
+"eJQ" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/shuttle/dropship/can_surgury/dark_grey,
+/area/lv522/landing_zone_forecon/UD6_Typhoon)
 "eJR" = (
 /turf/open/floor/prison,
 /area/lv522/outdoors/colony_streets/windbreaker/observation)
@@ -13462,9 +13465,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_full"
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgury/light_grey_middle,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "fTs" = (
 /turf/open/floor/corsat{
@@ -18168,9 +18169,7 @@
 	},
 /area/lv522/indoors/c_block/mining)
 "hFm" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin4"
-	},
+/turf/open/shuttle/dropship/can_surgury/light_grey_bottom_left,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "hFu" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -21479,9 +21478,7 @@
 /turf/open/auto_turf/shale/layer2,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "iSu" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin8"
-	},
+/turf/open/shuttle/dropship/can_surgury/light_grey_bottom_right,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "iSx" = (
 /obj/structure/girder,
@@ -27018,6 +27015,9 @@
 	icon_state = "blue_plate"
 	},
 /area/lv522/indoors/a_block/admin)
+"kMT" = (
+/turf/open/shuttle/dropship/can_surgury/dark_grey,
+/area/lv522/landing_zone_forecon/UD6_Typhoon)
 "kNe" = (
 /obj/item/shard{
 	icon_state = "medium"
@@ -27052,8 +27052,7 @@
 "kNM" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
-	name = "\improper Dormitories";
-	welded = null
+	name = "\improper Dormitories"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -40023,9 +40022,7 @@
 	pixel_x = -9;
 	pixel_y = 4
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgury/dark_grey,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "pJb" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -40607,9 +40604,7 @@
 /area/lv522/indoors/a_block/dorms)
 "pTH" = (
 /obj/structure/machinery/door/airlock/hatch/cockpit/two,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgury/dark_grey,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "pTO" = (
 /obj/effect/decal/cleanable/dirt,
@@ -41448,9 +41443,7 @@
 	name = "????";
 	stat = 2
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgury/light_grey_single_wide_up_to_down,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "qkw" = (
 /obj/structure/prop/invuln/remote_console_pod,
@@ -41664,9 +41657,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood/splatter,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin6"
-	},
+/turf/open/shuttle/dropship/can_surgury/light_grey_top_left,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "qnY" = (
 /obj/structure/surface/table/almayer,
@@ -41706,9 +41697,7 @@
 	},
 /area/lv522/atmos/sewer)
 "qpg" = (
-/turf/open/shuttle/dropship{
-	icon_state = "floor8"
-	},
+/turf/open/shuttle/dropship/can_surgury/light_grey_single_wide_left_to_right,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "qpq" = (
 /obj/structure/surface/table/almayer,
@@ -41867,9 +41856,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin7"
-	},
+/turf/open/shuttle/dropship/can_surgury/light_grey_top_right,
 /area/lv522/outdoors/w_rockies)
 "qqW" = (
 /obj/structure/surface/rack,
@@ -42926,9 +42913,7 @@
 /obj/item/clothing/suit/storage/RO{
 	name = "\improper UA jacket"
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgury/light_grey_single_wide_up_to_down,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "qJy" = (
 /obj/structure/largecrate/random,
@@ -43645,9 +43630,7 @@
 	layer = 3.1;
 	pixel_y = -15
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgury/dark_grey,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "qUf" = (
 /obj/item/ammo_magazine/rifle/m4ra/ext{
@@ -43710,9 +43693,7 @@
 	pixel_x = 1;
 	pixel_y = 4
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgury/dark_grey,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "qUL" = (
 /turf/open/floor/plating,
@@ -44534,9 +44515,7 @@
 /obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgury/light_grey_single_wide_up_to_down,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "rii" = (
 /turf/closed/shuttle/dropship2/tornado{
@@ -44641,9 +44620,7 @@
 /obj/structure/barricade/deployable{
 	dir = 4
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgury/dark_grey,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "rkV" = (
 /obj/effect/decal/cleanable/dirt,
@@ -44971,9 +44948,7 @@
 /area/lv522/indoors/a_block/dorms/glass)
 "rrB" = (
 /obj/vehicle/powerloader,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgury/light_grey_single_wide_up_to_down,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "rrI" = (
 /obj/structure/bed/chair/comfy{
@@ -45554,9 +45529,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgury/dark_grey,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "rCu" = (
 /turf/open/floor/prison{
@@ -45605,9 +45578,7 @@
 /area/lv522/outdoors/colony_streets/north_street)
 "rDb" = (
 /obj/item/device/m56d_post,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgury/light_grey_single_wide_up_to_down,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "rDu" = (
 /obj/structure/machinery/door_control{
@@ -45622,9 +45593,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgury/dark_grey,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "rDM" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -46908,9 +46877,7 @@
 	dir = 8;
 	pixel_y = -5
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgury/dark_grey,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "scw" = (
 /obj/item/ammo_magazine/rifle/heap{
@@ -46928,9 +46895,7 @@
 	dir = 4;
 	pixel_y = -5
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgury/dark_grey,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "scM" = (
 /obj/structure/surface/table/almayer,
@@ -48451,15 +48416,11 @@
 "sGT" = (
 /obj/structure/barricade/deployable,
 /obj/effect/decal/cleanable/blood/splatter,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin4"
-	},
+/turf/open/shuttle/dropship/can_surgury/light_grey_bottom_left,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "sGY" = (
 /obj/structure/barricade/deployable,
-/turf/open/shuttle/dropship{
-	icon_state = "floor8"
-	},
+/turf/open/shuttle/dropship/can_surgury/light_grey_single_wide_left_to_right,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "sHb" = (
 /obj/structure/platform_decoration{
@@ -48482,9 +48443,7 @@
 /area/lv522/landing_zone_1/tunnel)
 "sHg" = (
 /obj/structure/barricade/deployable,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin8"
-	},
+/turf/open/shuttle/dropship/can_surgury/light_grey_bottom_right,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "sHk" = (
 /obj/structure/curtain/red,
@@ -49382,6 +49341,10 @@
 	icon_state = "blue_plate"
 	},
 /area/lv522/indoors/a_block/hallway)
+"sVX" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/shuttle/dropship/can_surgury/light_grey_single_wide_up_to_down,
+/area/lv522/landing_zone_forecon/UD6_Typhoon)
 "sWn" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/wall/strata_outpost/reinforced,
@@ -50557,9 +50520,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgury/dark_grey,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "tti" = (
 /obj/structure/platform_decoration{
@@ -50854,9 +50815,7 @@
 	dir = 4;
 	pixel_y = -5
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgury/dark_grey,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "tzz" = (
 /obj/structure/largecrate/random/secure,
@@ -50964,9 +50923,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/central_streets)
 "tBM" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin6"
-	},
+/turf/open/shuttle/dropship/can_surgury/light_grey_top_left,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "tBQ" = (
 /obj/structure/prop/ice_colony/ground_wire{
@@ -51034,9 +50991,7 @@
 /turf/closed/wall/strata_ice/dirty,
 /area/lv522/outdoors/colony_streets/south_east_street)
 "tCR" = (
-/turf/open/shuttle/dropship{
-	icon_state = "floor8"
-	},
+/turf/open/shuttle/dropship/can_surgury/light_grey_single_wide_left_to_right,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "tCX" = (
 /turf/open/floor/corsat{
@@ -51051,9 +51006,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/central_streets)
 "tDm" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin7"
-	},
+/turf/open/shuttle/dropship/can_surgury/light_grey_top_right,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "tDu" = (
 /obj/structure/machinery/computer/operating,
@@ -51346,9 +51299,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgury/dark_grey,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "tIM" = (
 /obj/structure/prop/vehicles/crawler{
@@ -51667,9 +51618,7 @@
 /area/lv522/indoors/lone_buildings/storage_blocks)
 "tNT" = (
 /obj/structure/prop/vehicles/crawler{
-	icon_state = "crawler_covered_bed";
-	unacidable = 0;
-	unslashable = 0
+	icon_state = "crawler_covered_bed"
 	},
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -53792,9 +53741,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgury/dark_grey,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "uDP" = (
 /obj/structure/bed/chair/comfy{
@@ -54261,9 +54208,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
 "uKQ" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgury/light_grey_single_wide_up_to_down,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "uKR" = (
 /obj/structure/barricade/wooden{
@@ -54993,9 +54938,7 @@
 	},
 /area/lv522/landing_zone_2/ceiling)
 "uXj" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgury/dark_grey,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "uXp" = (
 /obj/item/weapon/twohanded/folded_metal_chair,
@@ -55142,9 +55085,7 @@
 /obj/structure/platform{
 	dir = 4
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgury/light_grey_middle,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "vbm" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -55628,9 +55569,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgury/dark_grey,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "vju" = (
 /obj/effect/decal/cleanable/dirt,
@@ -59389,9 +59328,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgury/dark_grey,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "wBx" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
@@ -61044,9 +60981,7 @@
 	dir = 8;
 	pixel_y = -5
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgury/dark_grey,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "xkr" = (
 /obj/effect/landmark/objective_landmark/medium,
@@ -62425,9 +62360,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgury/dark_grey,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "xNG" = (
 /obj/structure/machinery/computer/crew/colony{
@@ -66687,8 +66620,8 @@ pRM
 qnk
 qHA
 qTO
-rhB
-qJl
+kMT
+eJQ
 rCp
 scv
 rCp
@@ -66912,12 +66845,12 @@ pxY
 pIu
 nbO
 qnV
-rjP
-rjP
+eAa
+eAa
 rig
-rjP
+eAa
 rDb
-rjP
+eAa
 sGT
 tdS
 tzA
@@ -67367,10 +67300,10 @@ qst
 gTM
 qqS
 qJw
-rjP
-rjP
-rus
-rjP
+eAa
+eAa
+sVX
+eAa
 rig
 sHg
 teL

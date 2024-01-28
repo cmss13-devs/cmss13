@@ -108,24 +108,28 @@
 /area/bigredv2/caves_north)
 "aR" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin6"
+	icon_state = "rasputin6";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/general_offices)
 "aS" = (
 /turf/open/shuttle/dropship{
-	icon_state = "floor8"
+	icon_state = "floor8";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/general_offices)
 "aT" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin7"
+	icon_state = "rasputin7";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/general_offices)
 "aU" = (
 /obj/structure/surface/rack,
 /obj/item/map/big_red_map,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/general_offices)
 "aV" = (
@@ -197,7 +201,8 @@
 /area/bigredv2/outside/general_offices)
 "bh" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/general_offices)
 "bi" = (
@@ -206,18 +211,21 @@
 	icon_state = "u_psycopath_l"
 	},
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
+	icon_state = "rasputin3";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/general_offices)
 "bj" = (
 /obj/structure/bed/chair/dropship/passenger,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/general_offices)
 "bk" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
+	icon_state = "rasputin3";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/general_offices)
 "bl" = (
@@ -250,7 +258,8 @@
 "bq" = (
 /obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/general_offices)
 "br" = (
@@ -263,20 +272,23 @@
 	dir = 4
 	},
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/general_offices)
 "bt" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
+	icon_state = "rasputin3";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/general_offices)
 "bu" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/general_offices)
 "bv" = (
@@ -288,7 +300,8 @@
 	icon_state = "gib6"
 	},
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/general_offices)
 "bw" = (
@@ -340,7 +353,8 @@
 	icon_state = "gib6"
 	},
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
+	icon_state = "rasputin3";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/general_offices)
 "bG" = (
@@ -482,23 +496,27 @@
 /obj/structure/surface/rack,
 /obj/item/restraints,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/general_offices)
 "cc" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin4"
+	icon_state = "rasputin4";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/general_offices)
 "cd" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin8"
+	icon_state = "rasputin8";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/general_offices)
 "ce" = (
 /obj/structure/surface/rack,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/general_offices)
 "cf" = (
@@ -547,7 +565,8 @@
 /obj/effect/spawner/gibspawner/human,
 /obj/effect/decal/cleanable/blood,
 /turf/open/shuttle/dropship{
-	icon_state = "floor8"
+	icon_state = "floor8";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/general_offices)
 "cn" = (
@@ -587,7 +606,8 @@
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/remains,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/general_offices)
 "cv" = (
@@ -1105,7 +1125,8 @@
 /obj/structure/bed/chair/dropship/passenger,
 /obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/general_offices)
 

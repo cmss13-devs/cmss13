@@ -258,12 +258,14 @@
 /obj/structure/surface/rack,
 /obj/item/restraints,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "aV" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "aW" = (
@@ -271,7 +273,8 @@
 	dir = 1
 	},
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
+	icon_state = "rasputin3";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "aX" = (
@@ -312,7 +315,8 @@
 /area/bigredv2/outside/office_complex)
 "bc" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
+	icon_state = "rasputin3";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "bd" = (
@@ -357,22 +361,26 @@
 /area/bigredv2/outside/office_complex)
 "bl" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin6"
+	icon_state = "rasputin6";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "bm" = (
 /turf/open/shuttle/dropship{
-	icon_state = "floor8"
+	icon_state = "floor8";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "bn" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin13"
+	icon_state = "rasputin13";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "bo" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin7"
+	icon_state = "rasputin7";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "bp" = (
@@ -380,7 +388,8 @@
 	dir = 8
 	},
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "bq" = (
@@ -422,7 +431,8 @@
 /obj/structure/surface/rack,
 /obj/effect/landmark/crap_item,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "bw" = (
@@ -755,12 +765,14 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "cv" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin10"
+	icon_state = "rasputin10";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "cw" = (
@@ -769,7 +781,8 @@
 	name = "smashed NSG 23 assault rifle"
 	},
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin12"
+	icon_state = "rasputin12";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "cx" = (
@@ -778,7 +791,8 @@
 /obj/item/limb/leg/l_leg,
 /obj/item/limb/hand/r_hand,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin8"
+	icon_state = "rasputin8";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "cy" = (
@@ -1114,7 +1128,8 @@
 "dz" = (
 /obj/effect/spawner/gibspawner/human,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
+	icon_state = "rasputin3";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "dA" = (
@@ -1123,13 +1138,15 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "dB" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
+	icon_state = "rasputin3";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "dC" = (
@@ -1151,7 +1168,8 @@
 	icon_state = "gib6"
 	},
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
+	icon_state = "rasputin3";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "dF" = (
@@ -1160,7 +1178,8 @@
 	icon_state = "gib6"
 	},
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin4"
+	icon_state = "rasputin4";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "dG" = (
@@ -1169,14 +1188,16 @@
 	icon_state = "gib6"
 	},
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin10"
+	icon_state = "rasputin10";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "dH" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/shuttle/dropship{
-	icon_state = "floor8"
+	icon_state = "floor8";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "dI" = (
@@ -1184,7 +1205,8 @@
 /obj/item/ammo_magazine/rifle/nsg23,
 /obj/item/ammo_magazine/rifle/nsg23/extended,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "dJ" = (
@@ -1192,7 +1214,8 @@
 	icon_state = "gib6"
 	},
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
+	icon_state = "rasputin3";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "dK" = (
@@ -1205,13 +1228,15 @@
 /obj/structure/surface/rack,
 /obj/item/device/binoculars,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "dM" = (
 /obj/structure/surface/rack,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "dN" = (
@@ -1221,7 +1246,8 @@
 /obj/item/ammo_magazine/pistol/rubber,
 /obj/item/ammo_magazine/pistol/rubber,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "dO" = (
@@ -1235,7 +1261,8 @@
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tech_supply,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "dQ" = (
@@ -1245,28 +1272,32 @@
 /obj/effect/decal/cleanable/blood,
 /obj/effect/spawner/gibspawner/human,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "dR" = (
 /obj/structure/surface/rack,
 /obj/item/map/big_red_map,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "dS" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "dT" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "dU" = (
@@ -1413,7 +1444,8 @@
 	},
 /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "fG" = (
@@ -1422,7 +1454,8 @@
 	},
 /obj/item/device/radio/headset/distress/pmc/hvh,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "hN" = (
@@ -1431,7 +1464,8 @@
 	},
 /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_medic,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "id" = (
@@ -1440,7 +1474,8 @@
 	},
 /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "jx" = (
@@ -1450,7 +1485,8 @@
 	},
 /obj/item/limb/leg/l_leg,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
+	icon_state = "rasputin3";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "oF" = (
@@ -1459,7 +1495,8 @@
 	},
 /obj/item/clothing/under/marine/veteran/pmc,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "qX" = (
@@ -1480,7 +1517,8 @@
 /obj/item/clothing/under/marine/veteran/pmc,
 /obj/item/clothing/head/helmet/marine/veteran/pmc,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "rK" = (
@@ -1490,19 +1528,22 @@
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "si" = (
 /obj/item/clothing/head/helmet/marine/veteran/pmc,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
+	icon_state = "rasputin3";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "sR" = (
 /obj/item/storage/firstaid,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
+	icon_state = "rasputin3";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "uC" = (
@@ -1512,19 +1553,22 @@
 	name = "battered M41A pulse rifle Mk2"
 	},
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
+	icon_state = "rasputin3";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "uL" = (
 /obj/item/weapon/gun/rifle/nsg23/no_lock,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
+	icon_state = "rasputin3";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "vw" = (
 /obj/item/limb/arm/l_arm,
 /turf/open/shuttle/dropship{
-	icon_state = "floor8"
+	icon_state = "floor8";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "yS" = (
@@ -1532,7 +1576,8 @@
 	dir = 4
 	},
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "AB" = (
@@ -1546,7 +1591,8 @@
 	},
 /obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "Bu" = (
@@ -1556,7 +1602,8 @@
 /obj/item/limb/leg/l_leg,
 /obj/item/limb/hand/r_hand,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
+	icon_state = "rasputin3";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "EE" = (
@@ -1565,7 +1612,8 @@
 	},
 /obj/item/limb/hand/l_hand,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "GG" = (
@@ -1574,7 +1622,8 @@
 	name = "battered M41A pulse rifle Mk2"
 	},
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
+	icon_state = "rasputin3";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "Ha" = (
@@ -1590,7 +1639,8 @@
 	},
 /obj/item/device/radio/headset/distress/pmc/hvh,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "NK" = (
@@ -1599,7 +1649,8 @@
 /obj/item/ammo_magazine/rifle/rubber,
 /obj/item/ammo_magazine/rifle/rubber,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "PR" = (
@@ -1614,13 +1665,15 @@
 	},
 /obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "Vg" = (
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/shuttle/dropship{
-	icon_state = "floor8"
+	icon_state = "floor8";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 "XH" = (
@@ -1629,7 +1682,8 @@
 	},
 /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_engineer,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/bigredv2/outside/office_complex)
 

@@ -587,7 +587,7 @@
 		to_chat(src, SPAN_DANGER("You cannot send Announcements (muted)."))
 		return
 	if(health <= 0)
-		to_chat(src, SPAN_WARNING("You can't do that while unconcious."))
+		to_chat(src, SPAN_WARNING("You can't do that while unconscious."))
 		return FALSE
 	if(!check_plasma(50))
 		return FALSE

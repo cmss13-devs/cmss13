@@ -1621,8 +1621,8 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 /proc/explosive_antigrief_check(obj/item/explosive/explosive, mob/user)
 	var/turf/Turf = get_turf(explosive)
 	if(!(Turf.loc.type in GLOB.explosive_antigrief_exempt_areas))
-		var/crash_occured = (SSticker?.mode?.is_in_endgame)
-		if((Turf.z in SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_RESERVED))) && (GLOB.security_level < SEC_LEVEL_RED) && !crash_occured)
+		var/crash_occurred = (SSticker?.mode?.is_in_endgame)
+		if((Turf.z in SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_RESERVED))) && (GLOB.security_level < SEC_LEVEL_RED) && !crash_occurred)
 			switch(CONFIG_GET(number/explosive_antigrief))
 				if(ANTIGRIEF_DISABLED)
 					return FALSE

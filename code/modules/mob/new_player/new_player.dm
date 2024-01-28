@@ -42,6 +42,7 @@
 	var/output = "<div align='center'>Welcome,"
 	output +="<br><b>[(client.prefs && client.prefs.real_name) ? client.prefs.real_name : client.key]</b>"
 	output +="<br><b>[xeno_text]</b>"
+	output += "<p><a href='byond://?src=\ref[src];lobby_choice=tutorial'>Tutorial</A></p>"
 	output += "<p><a href='byond://?src=\ref[src];lobby_choice=show_preferences'>Setup Character</A></p>"
 
 	output += "<p><a href='byond://?src=\ref[src];lobby_choice=show_playtimes'>View Playtimes</A></p>"
@@ -63,7 +64,7 @@
 	output += "</div>"
 	if (refresh)
 		close_browser(src, "playersetup")
-	show_browser(src, output, null, "playersetup", "size=240x[round_start ? 360 : 460];can_close=0;can_minimize=0")
+	show_browser(src, output, null, "playersetup", "size=240x[round_start ? 500 : 610];can_close=0;can_minimize=0")
 	return
 
 /mob/new_player/Topic(href, href_list[])
@@ -162,14 +163,9 @@
 				to_chat(src, SPAN_WARNING("Sorry, you cannot late join during [SSticker.mode.name]. You have to start at the beginning of the round. You may observe or try to join as an alien, if possible."))
 				return
 
-			if(client.prefs.species != "Human")
-				if(!is_alien_whitelisted(src, client.prefs.species) && CONFIG_GET(flag/usealienwhitelist))
-					to_chat(src, "You are currently not whitelisted to play [client.prefs.species].")
-					return
-
-				var/datum/species/S = GLOB.all_species[client.prefs.species]
-				if(!(S.flags & IS_WHITELISTED))
-					to_chat(src, alert("Your current species,[client.prefs.species], is not available for play on the station."))
+			if(client.player_data?.playtime_loaded && (client.get_total_human_playtime() < CONFIG_GET(number/notify_new_player_age)) && !length(client.prefs.completed_tutorials))
+				if(tgui_alert(src, "You have little playtime and haven't completed any tutorials. Would you like to go to the tutorial menu?", "Tutorial", list("Yes", "No")) == "Yes")
+					tutorial_menu()
 					return
 
 			LateChoices()
@@ -211,21 +207,30 @@
 				to_chat(usr, SPAN_WARNING("There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)"))
 				return
 
-			if(client.prefs.species != "Human")
-				if(!is_alien_whitelisted(src, client.prefs.species) && CONFIG_GET(flag/usealienwhitelist))
-					to_chat(src, alert("You are currently not whitelisted to play [client.prefs.species]."))
-					return 0
-
-				var/datum/species/S = GLOB.all_species[client.prefs.species]
-				if(!(S.flags & IS_WHITELISTED))
-					to_chat(src, alert("Your current species,[client.prefs.species], is not available for play on the station."))
-					return 0
-
 			AttemptLateSpawn(href_list["job_selected"])
 			return
 
+		if("tutorial")
+			tutorial_menu()
+
 		else
 			new_player_panel()
+
+/mob/new_player/proc/tutorial_menu()
+	if(SSticker.current_state <= GAME_STATE_SETTING_UP)
+		to_chat(src, SPAN_WARNING("Please wait for the round to start before entering a tutorial."))
+		return
+
+	if(SSticker.current_state == GAME_STATE_FINISHED)
+		to_chat(src, SPAN_WARNING("The round has ended. Please wait for the next round to enter a tutorial."))
+		return
+
+	if(SSticker.tutorial_disabled)
+		to_chat(src, SPAN_WARNING("Tutorials are currently disabled because something broke, sorry!"))
+		return
+
+	var/datum/tutorial_menu/menu = new(src)
+	menu.ui_interact(src)
 
 /mob/new_player/proc/AttemptLateSpawn(rank)
 	var/datum/job/player_rank = GLOB.RoleAuthority.roles_for_mode[rank]
@@ -280,7 +285,7 @@
 			var/client/client = character.client
 			if(client.player_data && client.player_data.playtime_loaded && length(client.player_data.playtimes) == 0)
 				msg_admin_niche("NEW PLAYER: <b>[key_name(character, 1, 1, 0)]</b>. IP: [character.lastKnownIP], CID: [character.computer_id]")
-			if(client.player_data && client.player_data.playtime_loaded && ((round(client.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1)) <= 5))
+			if(client.player_data && client.player_data.playtime_loaded && ((round(client.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1)) <= CONFIG_GET(number/notify_new_player_age)))
 				msg_sea("NEW PLAYER: <b>[key_name(character, 0, 1, 0)]</b> only has [(round(client.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1))] hours as a human. Current role: [get_actual_job_name(character)] - Current location: [get_area(character)]")
 
 	character.client.init_verbs()
@@ -342,7 +347,7 @@
 			roles_show ^= FLAG_SHOW_MEDICAL
 
 		else if(roles_show & FLAG_SHOW_MARINES && GLOB.ROLES_MARINES.Find(J.title))
-			dat += "<hr>Squad Riflemen:<br>"
+			dat += "<hr>Marines:<br>"
 			roles_show ^= FLAG_SHOW_MARINES
 
 		dat += "<a href='byond://?src=\ref[src];lobby_choice=SelectedJob;job_selected=[J.title]'>[J.disp_title] ([J.current_positions]) (Active: [active])</a><br>"
@@ -357,43 +362,13 @@
 
 	var/mob/living/carbon/human/new_character
 
-	var/datum/species/chosen_species
-	if(client.prefs.species)
-		chosen_species = GLOB.all_species[client.prefs.species]
-	if(chosen_species)
-		// Have to recheck admin due to no usr at roundstart. Latejoins are fine though.
-		if(is_species_whitelisted(chosen_species) || has_admin_rights())
-			new_character = new(loc, client.prefs.species)
-
 	if(!new_character)
 		new_character = new(loc)
 
 	new_character.lastarea = get_area(loc)
 
-	client.prefs.copy_all_to(new_character, job, is_late_join)
+	setup_human(new_character, src, is_late_join)
 
-	if (client.prefs.be_random_body)
-		var/datum/preferences/TP = new()
-		TP.randomize_appearance(new_character)
-
-	if(mind)
-		mind_initialize()
-		mind.active = 0 //we wish to transfer the key manually
-		mind.original = new_character
-		mind.transfer_to(new_character) //won't transfer key since the mind is not active
-		mind.setup_human_stats()
-
-	new_character.job = job
-	new_character.name = real_name
-	new_character.voice = real_name
-
-	// Update the character icons
-	// This is done in set_species when the mob is created as well, but
-	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, regenerate_icons))
-	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, update_body), 1, 0)
-	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, update_hair))
-
-	new_character.key = key //Manually transfer the key to log them in
 	new_character.client?.change_view(GLOB.world_view_size)
 
 	return new_character
@@ -452,26 +427,6 @@
 			if(ui.allowed_user_stat == -1)
 				ui.close()
 				continue
-
-/mob/new_player/proc/has_admin_rights()
-	return client.admin_holder.rights & R_ADMIN
-
-/mob/new_player/proc/is_species_whitelisted(datum/species/S)
-	if(!S) return 1
-	return is_alien_whitelisted(src, S.name) || !CONFIG_GET(flag/usealienwhitelist) || !(S.flags & IS_WHITELISTED)
-
-/mob/new_player/get_species()
-	var/datum/species/chosen_species
-	if(client.prefs.species)
-		chosen_species = GLOB.all_species[client.prefs.species]
-
-	if(!chosen_species)
-		return "Human"
-
-	if(is_species_whitelisted(chosen_species) || has_admin_rights())
-		return chosen_species.name
-
-	return "Human"
 
 /mob/new_player/get_gender()
 	if(!client || !client.prefs) ..()

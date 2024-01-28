@@ -15781,7 +15781,6 @@
 /area/strata/ag/interior/outpost/canteen/bar)
 "aXj" = (
 /obj/structure/surface/rack,
-/obj/item/book/manual/engineering_singularity_safety,
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
@@ -15799,7 +15798,6 @@
 /obj/structure/surface/rack,
 /obj/item/book/manual/orbital_cannon_manual,
 /obj/item/book/manual/research_and_development,
-/obj/item/book/manual/supermatter_engine,
 /turf/open/floor/strata{
 	icon_state = "orange_cover"
 	},
@@ -16973,7 +16971,6 @@
 "bbE" = (
 /obj/structure/surface/rack,
 /obj/item/book/manual/engineering_guide,
-/obj/item/book/manual/engineering_particle_accelerator,
 /turf/open/floor/strata{
 	icon_state = "orange_cover"
 	},
@@ -29295,7 +29292,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/item/book/manual/engineering_particle_accelerator,
+/obj/item/book/manual/detective,
 /turf/open/floor/strata,
 /area/strata/ag/interior/dorms)
 "ctF" = (

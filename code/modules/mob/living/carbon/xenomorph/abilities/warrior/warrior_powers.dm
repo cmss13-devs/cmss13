@@ -86,23 +86,14 @@
 		if(carbon.slowed < slowdown)
 			carbon.apply_effect(slowdown, SLOW)
 	carbon.last_damage_data = create_cause_data(initial(xeno.caste_type), xeno)
-	shake_camera(carbon, 2, 1)
 
 	var/facing = get_dir(xeno, carbon)
-	var/turf/throw_turf = xeno.loc
-	var/turf/temp = xeno.loc
-
-	for (var/step in 0 to fling_distance-1)
-		temp = get_step(throw_turf, facing)
-		if (!temp)
-			break
-		throw_turf = temp
 
 	// Hmm today I will kill a marine while looking away from them
 	xeno.face_atom(carbon)
 	xeno.animation_attack_on(carbon)
 	xeno.flick_attack_overlay(carbon, "disarm")
-	carbon.throw_atom(throw_turf, fling_distance, SPEED_VERY_FAST, xeno, TRUE)
+	xeno.throw_carbon(carbon, facing, fling_distance, SPEED_VERY_FAST, shake_camera = TRUE, immobilize = TRUE)
 
 	apply_cooldown()
 	return ..()

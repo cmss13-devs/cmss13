@@ -329,10 +329,13 @@
 		var/datum/hive_status/HS
 		for(var/HN in GLOB.hive_datum)
 			HS = GLOB.hive_datum[HN]
-			if(HS.living_xeno_queen && !is_admin_level(HS.living_xeno_queen.loc.z))
+			if(HS.living_xeno_queen && !should_block_game_interaction(HS.living_xeno_queen.loc))
 				//Some Queen is alive, we shouldn't end the game yet
 				return
-		round_finished = MODE_INFESTATION_M_MINOR
+		if (HS.totalXenos <= 3)
+			round_finished = MODE_INFESTATION_M_MAJOR
+		else
+			round_finished = MODE_INFESTATION_M_MINOR
 
 ///////////////////////////////
 //Checks if the round is over//

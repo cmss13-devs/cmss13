@@ -78,6 +78,9 @@
 	process_growth(delta_time)
 
 /obj/item/alien_embryo/proc/process_growth(delta_time)
+	//Tutorial embryos do not progress.
+	if(hivenumber == XENO_HIVE_TUTORIAL)
+		return
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	//Low temperature seriously hampers larva growth (as in, way below livable), so does stasis
 	if(!hive.hardcore) // Cannot progress if the hive has entered hardcore mode.
@@ -160,7 +163,7 @@
 /obj/item/alien_embryo/proc/become_larva()
 	// We do not allow chest bursts on the Centcomm Z-level, to prevent
 	// stranded players from admin experiments and other issues
-	if(!affected_mob || is_admin_level(affected_mob.z))
+	if(!affected_mob || should_block_game_interaction(affected_mob))
 		return
 
 	stage = 6 // Increase the stage value to prevent this proc getting repeated

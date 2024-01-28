@@ -248,7 +248,6 @@
 	var/pounce_distance = 0
 
 	// Life reduction variables.
-	var/life_daze_reduction = -1.5
 	var/life_slow_reduction = -1.5
 
 	//////////////////////////////////////////////////////////////////
@@ -432,6 +431,9 @@
 	if(mob_size < MOB_SIZE_BIG)
 		mob_flags |= SQUEEZE_UNDER_VEHICLES
 
+	GLOB.living_xeno_list += src
+	GLOB.xeno_mob_list += src
+
 	// More setup stuff for names, abilities etc
 	update_icon_source()
 	generate_name()
@@ -453,16 +455,13 @@
 	//Begin SStracking
 	SStracking.start_tracking("hive_[src.hivenumber]", src)
 
-	GLOB.living_xeno_list += src
-	GLOB.xeno_mob_list += src
-
 	//WO GAMEMODE
 	if(SSticker?.mode?.hardcore)
 		hardcore = 1 //Prevents healing and queen evolution
 	time_of_birth = world.time
 
 	//Minimap
-	if(z)
+	if(z && hivenumber != XENO_HIVE_TUTORIAL)
 		INVOKE_NEXT_TICK(src, PROC_REF(add_minimap_marker))
 
 	//Sight
@@ -476,7 +475,7 @@
 		lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 
 	// Only handle free slots if the xeno is not in tdome
-	if(hive && !is_admin_level(z))
+	if(hive && !should_block_game_interaction(src))
 		var/selected_caste = GLOB.xeno_datum_list[caste_type]?.type
 		hive.used_slots[selected_caste]++
 
@@ -731,8 +730,6 @@
 	if(!isliving(AM))
 		return FALSE
 	var/mob/living/L = AM
-	if(issynth(L) && L.health < 0) // no pulling critted or dead synths
-		return FALSE
 	if(L.buckled)
 		return FALSE //to stop xeno from pulling marines on roller beds.
 	if(!L.is_xeno_grabbable())
@@ -1042,7 +1039,7 @@
 
 /mob/living/carbon/xenomorph/ghostize(can_reenter_corpse = TRUE, aghosted = FALSE)
 	. = ..()
-	if(. && !can_reenter_corpse && stat != DEAD && !QDELETED(src) && !is_admin_level(z))
+	if(. && !can_reenter_corpse && stat != DEAD && !QDELETED(src) && !should_block_game_interaction(src))
 		handle_ghost_message()
 
 /mob/living/carbon/xenomorph/proc/handle_ghost_message()
@@ -1098,3 +1095,12 @@
 	else
 		//If we somehow use all 999 numbers fallback on 0
 		nicknumber = 0
+
+/proc/setup_xenomorph(mob/living/carbon/xenomorph/target, mob/new_player/new_player, is_late_join = FALSE)
+	new_player.spawning = TRUE
+	new_player.close_spawn_windows()
+	new_player.client.prefs.copy_all_to(target, new_player.job, is_late_join = FALSE)
+
+	if(new_player.mind)
+		new_player.mind_initialize()
+		new_player.mind.transfer_to(target, TRUE)

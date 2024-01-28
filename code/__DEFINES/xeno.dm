@@ -177,6 +177,20 @@
 /// The time until you can re-corrupt a comms relay after the last pylon was destroyed
 #define XENO_PYLON_DESTRUCTION_DELAY (5 MINUTES)
 
+/// Evolution boost during hijack
+#define XENO_HIJACK_EVILUTION_BUFF 10
+
+/// For how long the buff lasts
+#define XENO_HIJACK_EVILUTION_TIME (3 MINUTES)
+
+/// If this is marine to xeno ratio during hijack, xenos see marines on tacmap
+#define HIJACK_RATIO_FOR_TACMAP 0.8
+
+/// Xenos need to have their number to marines ratio lower than this to get larvae from pylons
+#define ENDGAME_LARVA_CAP_MULTIPLIER 0.5
+
+/// What percent of their numbers xeno get from pylons
+#define LARVA_ADDITION_MULTIPLIER 0.10
 
 /// The time against away_timer when an AFK xeno larva can be replaced
 #define XENO_LEAVE_TIMER_LARVA 80 //80 seconds

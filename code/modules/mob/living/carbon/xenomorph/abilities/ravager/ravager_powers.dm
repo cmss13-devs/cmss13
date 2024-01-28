@@ -132,16 +132,8 @@
 	human.attack_alien(xeno, rand(xeno.melee_damage_lower, xeno.melee_damage_upper))
 
 	var/facing = get_dir(xeno, human)
-	var/turf/turf = xeno.loc
-	var/turf/temp = xeno.loc
 
-	for(var/step in 0 to behavior.fling_distance-1)
-		temp = get_step(turf, facing)
-		if (!temp)
-			break
-		turf = temp
-
-	human.throw_atom(turf, behavior.fling_distance, SPEED_VERY_FAST, xeno, TRUE)
+	xeno.throw_carbon(human, facing, behavior.fling_distance, SPEED_VERY_FAST, shake_camera = FALSE, immobilize = TRUE)
 
 /datum/action/xeno_action/activable/scissor_cut/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/ravager_user = owner
@@ -348,7 +340,7 @@
 
 	// Negative stat effects
 	if (debilitate)
-		carbon.dazed += daze_amount
+		carbon.AdjustDaze(daze_amount)
 
 	apply_cooldown()
 	return ..()
@@ -374,9 +366,9 @@
 		if (behavior.rage == 0)
 			to_chat(xeno, SPAN_XENODANGER("We cannot eviscerate when we have 0 rage!"))
 			return
-		damage = damage_at_rage_levels[Clamp(behavior.rage, 1, behavior.max_rage)]
-		range = range_at_rage_levels[Clamp(behavior.rage, 1, behavior.max_rage)]
-		windup_reduction = windup_reduction_at_rage_levels[Clamp(behavior.rage, 1, behavior.max_rage)]
+		damage = damage_at_rage_levels[clamp(behavior.rage, 1, behavior.max_rage)]
+		range = range_at_rage_levels[clamp(behavior.rage, 1, behavior.max_rage)]
+		windup_reduction = windup_reduction_at_rage_levels[clamp(behavior.rage, 1, behavior.max_rage)]
 		behavior.decrement_rage(behavior.rage)
 
 		apply_cooldown()
@@ -428,7 +420,7 @@
 
 	// This is the heal
 	if(!xeno.on_fire)
-		xeno.gain_health(Clamp(valid_count * lifesteal_per_marine, 0, max_lifesteal))
+		xeno.gain_health(clamp(valid_count * lifesteal_per_marine, 0, max_lifesteal))
 
 	REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Eviscerate"))
 	xeno.anchored = FALSE

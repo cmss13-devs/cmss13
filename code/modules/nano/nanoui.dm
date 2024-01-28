@@ -57,8 +57,8 @@ nanoui is used to open and update nano browser uis
 	// the current status/visibility of the ui
 	var/status = STATUS_INTERACTIVE
 
-	// Only allow users with a certain user.stat to get updates. Defaults to 0 (concious)
-	var/allowed_user_stat = 0 // -1 = ignore, 0 = alive, 1 = unconcious or alive, 2 = dead concious or alive
+	// Only allow users with a certain user.stat to get updates. Defaults to 0 (conscious)
+	var/allowed_user_stat = 0 // -1 = ignore, 0 = alive, 1 = unconscious or alive, 2 = dead conscious or alive
 
 /**
 * Create a new nanoui instance.
@@ -166,7 +166,7 @@ nanoui is used to open and update nano browser uis
 		set_status(STATUS_INTERACTIVE, push_update) // interactive (green visibility)
 	else if (allowed_user_stat == -1 || user == src_object)
 		set_status(STATUS_INTERACTIVE, push_update) // interactive (green visibility)
-	else if (isrobot(user))
+	else if (isSilicon(user))
 		if (src_object in view(7, user)) // robots can see and interact with things they can see within 7 tiles
 			set_status(STATUS_INTERACTIVE, push_update) // interactive (green visibility)
 		else

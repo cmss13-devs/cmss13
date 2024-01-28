@@ -46,7 +46,7 @@
 	return attack_hand(user)
 
 /obj/structure/machinery/computer/cameras/attack_hand(mob/user)
-	if(!admin_console && is_admin_level(z))
+	if(!admin_console && should_block_game_interaction(src))
 		to_chat(user, SPAN_DANGER("<b>Unable to establish a connection</b>: \black You're too far away from the ship!"))
 		return
 	if(inoperable())
@@ -158,7 +158,7 @@
 // Returns the list of cameras accessible from this computer
 /obj/structure/machinery/computer/cameras/proc/get_available_cameras()
 	var/list/D = list()
-	for(var/obj/structure/machinery/camera/C in GLOB.cameranet.cameras)
+	for(var/obj/structure/machinery/camera/C in GLOB.all_cameras)
 		if(!C.network)
 			stack_trace("Camera in a cameranet has no camera network")
 			continue

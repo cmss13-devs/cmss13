@@ -57,7 +57,7 @@
 
 /obj/item/reagent_container/food/snacks/meat/xenomeat/Initialize()
 	. = ..()
-	reagents.add_reagent("xenoblood", 3)
+	reagents.add_reagent("xenoblood", 6)
 	src.bitesize = 6
 
 //fishable atoms meat

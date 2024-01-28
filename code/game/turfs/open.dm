@@ -914,6 +914,61 @@
 	name = "floor"
 	icon_state = "rasputin1"
 
+/turf/open/shuttle/dropship/can_surgury
+	name = "floor"
+	icon_state = "rasputin1"
+	supports_surgery = 1
+
+/turf/open/shuttle/dropship/can_surgury/light_grey_middle
+	name = "floor"
+	icon_state = "rasputin13"
+	supports_surgery = 1
+
+/turf/open/shuttle/dropship/can_surgury/light_grey_top
+	name = "floor"
+	icon_state = "rasputin10"
+	supports_surgery = 1
+
+/turf/open/shuttle/dropship/can_surgury/light_grey_single_wide_left_to_right
+	name = "floor"
+	icon_state = "floor8"
+	supports_surgery = 1
+
+/*same two but helps with finding if you think top to bottom or up to down*/
+/turf/open/shuttle/dropship/can_surgury/light_grey_single_wide_up_to_down
+	name = "floor"
+	icon_state = "rasputin3"
+	supports_surgery = 1
+/turf/open/shuttle/dropship/can_surgury/light_grey_single_wide_top_to_bottom
+	name = "floor"
+	icon_state = "rasputin3"
+	supports_surgery = 1
+
+/turf/open/shuttle/dropship/can_surgury/light_grey_top_left
+	name = "floor"
+	icon_state = "rasputin6"
+	supports_surgery = 1
+
+/turf/open/shuttle/dropship/can_surgury/light_grey_bottom_left
+	name = "floor"
+	icon_state = "rasputin4"
+	supports_surgery = 1
+
+/turf/open/shuttle/dropship/can_surgury/light_grey_top_right
+	name = "floor"
+	icon_state = "rasputin7"
+	supports_surgery = 1
+
+/turf/open/shuttle/dropship/can_surgury/light_grey_bottom_right
+	name = "floor"
+	icon_state = "rasputin8"
+	supports_surgery = 1
+
+/turf/open/shuttle/dropship/can_surgury/dark_grey
+	name = "floor"
+	icon_state = "rasputin15"
+	supports_surgery = 1
+
 /turf/open/shuttle/predship
 	name = "ship floor"
 	icon_state = "floor6"

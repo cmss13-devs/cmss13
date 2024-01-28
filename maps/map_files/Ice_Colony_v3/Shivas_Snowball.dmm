@@ -6021,7 +6021,7 @@
 /obj/structure/bed/chair/dropship/pilot{
 	dir = 1
 	},
-/turf/open/shuttle/can_surgury/black,
+/turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "aUz" = (
 /turf/closed/shuttle/ert{
@@ -6030,7 +6030,7 @@
 /area/shiva/interior/aerodrome)
 "aUA" = (
 /obj/structure/girder/reinforced,
-/turf/open/shuttle/can_surgury/black,
+/turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "aUM" = (
 /turf/open/floor/shiva{
@@ -6155,7 +6155,7 @@
 	icon_state = "equip_base";
 	name = "shuttle attachment point"
 	},
-/turf/open/shuttle/can_surgury/black,
+/turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "aVF" = (
 /obj/structure/surface/table,
@@ -6167,11 +6167,11 @@
 	},
 /area/shiva/interior/colony/medseceng)
 "aVL" = (
-/turf/open/shuttle/can_surgury/black,
+/turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "aVM" = (
 /obj/item/weapon/gun/pistol/holdout,
-/turf/open/shuttle/can_surgury/black,
+/turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "aVN" = (
 /turf/closed/shuttle/ert{
@@ -6218,7 +6218,7 @@
 /area/shiva/interior/aerodrome)
 "aVU" = (
 /obj/item/stack/sheet/metal,
-/turf/open/shuttle/can_surgury/black,
+/turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "aWb" = (
 /obj/structure/foamed_metal,
@@ -6298,14 +6298,14 @@
 	},
 /area/shiva/interior/aerodrome)
 "aWS" = (
-/turf/open/shuttle/dropship/can_surgury/medium_grey_single_wide_left_to_right,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_left_to_right,
 /area/shiva/interior/aerodrome)
 "aWT" = (
 /obj/item/ammo_magazine/pistol/holdout{
 	pixel_x = 6;
 	pixel_y = -4
 	},
-/turf/open/shuttle/dropship/can_surgury/medium_grey_single_wide_left_to_right,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_left_to_right,
 /area/shiva/interior/aerodrome)
 "aWU" = (
 /turf/closed/shuttle/ert{
@@ -6582,13 +6582,13 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/can_surgury/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/shiva/interior/aerodrome)
 "bbg" = (
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/can_surgury/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/shiva/interior/aerodrome)
 "bbh" = (
 /turf/closed/shuttle/ert{
@@ -6930,7 +6930,7 @@
 /area/shiva/interior/colony/research_hab)
 "bqN" = (
 /obj/structure/machinery/door/airlock/almayer/generic,
-/turf/open/shuttle/can_surgury/black,
+/turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "bqO" = (
 /obj/effect/decal/cleanable/blood,
@@ -7361,7 +7361,7 @@
 /area/shiva/interior/lz2_habs)
 "bOh" = (
 /obj/effect/landmark/survivor_spawner,
-/turf/open/shuttle/can_surgury/black,
+/turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "bPu" = (
 /obj/item/bodybag,
@@ -7558,7 +7558,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/shuttle/can_surgury/black,
+/turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "bYS" = (
 /obj/structure/machinery/light/double,
@@ -7595,7 +7595,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/shuttle/can_surgury/black,
+/turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "cbt" = (
 /obj/structure/surface/table,
@@ -7745,7 +7745,7 @@
 /area/shiva/interior/colony/research_hab)
 "clp" = (
 /obj/item/tool/weldingtool,
-/turf/open/shuttle/can_surgury/black,
+/turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "clz" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage{
@@ -9751,7 +9751,7 @@
 /area/shiva/interior/colony/n_admin)
 "eHL" = (
 /obj/item/tool/wrench,
-/turf/open/shuttle/can_surgury/black,
+/turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "eHY" = (
 /obj/item/lightstick/red/spoke/planted{
@@ -10289,7 +10289,7 @@
 	name = "shuttle attachment point"
 	},
 /obj/item/storage/firstaid/fire,
-/turf/open/shuttle/can_surgury/black,
+/turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "fpF" = (
 /obj/structure/stairs/perspective/ice{
@@ -10912,7 +10912,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/shuttle/can_surgury/black,
+/turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "fXr" = (
 /obj/item/lightstick/red/spoke/planted{
@@ -22206,7 +22206,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/can_surgury/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/shiva/interior/aerodrome)
 "rNO" = (
 /obj/structure/prop/ice_colony/soil_net,
@@ -22241,7 +22241,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/can_surgury/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/shiva/interior/aerodrome)
 "rRb" = (
 /obj/structure/surface/rack,
@@ -26326,7 +26326,7 @@
 /area/shiva/exterior/lz2_fortress)
 "vVq" = (
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/shuttle/dropship/can_surgury/medium_grey_single_wide_left_to_right,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_left_to_right,
 /area/shiva/interior/aerodrome)
 "vWf" = (
 /obj/item/handcuffs,
@@ -27519,7 +27519,7 @@
 	name = "shuttle attachment point"
 	},
 /obj/item/storage/firstaid/adv,
-/turf/open/shuttle/can_surgury/black,
+/turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "xzo" = (
 /obj/item/lightstick/red/spoke/planted{

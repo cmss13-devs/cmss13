@@ -182,12 +182,6 @@
 	pixel_x = 8;
 	pixel_y = -4
 	},
-/obj/structure/machinery/door_control{
-	id = "secure_inner_blast";
-	name = "Secure Inner Doors";
-	pixel_x = 25;
-	pixel_y = 5
-	},
 /turf/open/floor{
 	icon_state = "cult"
 	},

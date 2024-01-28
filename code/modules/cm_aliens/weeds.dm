@@ -58,9 +58,9 @@
 	if(spread_on_semiweedable && weed_strength < WEED_LEVEL_HIVE)
 		if(color)
 			var/list/RGB = ReadRGB(color)
-			RGB[1] = Clamp(RGB[1] + 35, 0, 255)
-			RGB[2] = Clamp(RGB[2] + 35, 0, 255)
-			RGB[3] = Clamp(RGB[3] + 35, 0, 255)
+			RGB[1] = clamp(RGB[1] + 35, 0, 255)
+			RGB[2] = clamp(RGB[2] + 35, 0, 255)
+			RGB[3] = clamp(RGB[3] + 35, 0, 255)
 			color = rgb(RGB[1], RGB[2], RGB[3])
 		else
 			color = "#a1a1a1"
@@ -186,7 +186,7 @@
 	SEND_SIGNAL(crossing_mob, COMSIG_MOB_WEED_SLOWDOWN, slowdata, src)
 	var/final_slowdown = slowdata["movement_slowdown"]
 
-	crossing_mob.next_move_slowdown += POSITIVE(final_slowdown)
+	crossing_mob.next_move_slowdown = max(crossing_mob.next_move_slowdown, POSITIVE(final_slowdown))
 
 // Uh oh, we might be dying!
 // I know this is bad proc naming but it was too good to pass on and it's only used in this file anyways
@@ -196,7 +196,7 @@
 	var/parent_type = /obj/effect/alien/weeds/node
 	if(weed_strength >= WEED_LEVEL_HIVE)
 		parent_type = /obj/effect/alien/weeds/node/pylon
-		
+
 	var/obj/effect/alien/weeds/node/found = locate(parent_type) in orange(node_range, get_turf(src))
 	if(found)
 		found.add_child(src)
@@ -216,7 +216,7 @@
 		return
 
 	var/list/weeds = list()
-	for(var/dirn in cardinal)
+	for(var/dirn in GLOB.cardinals)
 		var/turf/T = get_step(src, dirn)
 		if(!istype(T))
 			continue
@@ -282,7 +282,7 @@
 
 		if(istype(O, /obj/structure/barricade)) //cades on tile we're trying to expand to
 			var/obj/structure/barricade/to_blocking_cade = O
-			if(to_blocking_cade.density && to_blocking_cade.dir == reverse_dir[direction] && to_blocking_cade.health >= (to_blocking_cade.maxhealth / 4))
+			if(to_blocking_cade.density && to_blocking_cade.dir == GLOB.reverse_dir[direction] && to_blocking_cade.health >= (to_blocking_cade.maxhealth / 4))
 				return FALSE
 
 		if(istype(O, /obj/structure/window/framed))
@@ -299,7 +299,7 @@
 	if(!U)
 		U = loc
 	if(istype(U))
-		for(var/dirn in cardinal)
+		for(var/dirn in GLOB.cardinals)
 			var/turf/T = get_step(U, dirn)
 
 			if(!istype(T))
@@ -313,7 +313,7 @@
 	overlays.Cut()
 
 	var/my_dir = 0
-	for(var/check_dir in cardinal)
+	for(var/check_dir in GLOB.cardinals)
 		var/turf/check = get_step(src, check_dir)
 
 		if(!istype(check))

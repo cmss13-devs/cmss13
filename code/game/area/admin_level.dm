@@ -144,3 +144,22 @@
 /area/misc/testroom
 	requires_power = FALSE
 	name = "Test Room"
+
+/area/misc/tutorial
+	name = "Tutorial Zone"
+	icon_state = "tutorial"
+	requires_power = FALSE
+	flags_area = AREA_NOTUNNEL|AREA_AVOID_BIOSCAN
+	statistic_exempt = TRUE
+	ceiling = CEILING_METAL
+	block_game_interaction = TRUE
+	unique = TRUE
+
+	base_lighting_alpha = 255
+
+/area/misc/tutorial/Initialize(mapload, ...)
+	. = ..()
+	update_base_lighting()
+
+/area/misc/tutorial/no_baselight
+	base_lighting_alpha = 0

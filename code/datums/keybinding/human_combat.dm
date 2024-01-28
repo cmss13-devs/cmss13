@@ -190,3 +190,20 @@
 		var/obj/item/weapon/gun/rifle/m46c/COgun = held_item
 		COgun.toggle_iff(human)
 		return TRUE
+
+/datum/keybinding/human/combat/toggle_shotgun_tube
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "toggle_shotgun_tube"
+	full_name = "Toggle Shotgun Tube"
+	keybind_signal = COMSIG_KB_HUMAN_WEAPON_SHOTGUN_TUBE
+
+/datum/keybinding/human/combat/toggle_shotgun_tube/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/human/human = user.mob
+	var/obj/item/weapon/gun/shotgun/pump/dual_tube/held_item = human.get_held_item()
+	if(istype(held_item))
+		held_item.toggle_tube()
+		return TRUE

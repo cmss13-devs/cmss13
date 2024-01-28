@@ -12,7 +12,6 @@
  * Other things
  */
 
-
 //recreational items
 
 /obj/item/toy
@@ -22,7 +21,6 @@
 	throw_range = 20
 	force = 0
 	black_market_value = 5
-
 
 /*
  * Balloons
@@ -44,7 +42,7 @@
 	if(!proximity) return
 	if (istype(A, /obj/structure/reagent_dispensers/watertank) && get_dist(src,A) <= 1)
 		A.reagents.trans_to(src, 10)
-		to_chat(user, SPAN_NOTICE(" You fill the balloon with the contents of [A]."))
+		to_chat(user, SPAN_NOTICE("You fill the balloon with the contents of [A]."))
 		src.desc = "A translucent balloon with some form of liquid sloshing around in it."
 		src.update_icon()
 	return
@@ -53,22 +51,22 @@
 	if(istype(O, /obj/item/reagent_container/glass))
 		if(O.reagents)
 			if(O.reagents.total_volume < 1)
-				to_chat(user, "The [O] is empty.")
+				to_chat(user, SPAN_WARNING("[O] is empty."))
 			else if(O.reagents.total_volume >= 1)
 				if(O.reagents.has_reagent("pacid", 1))
-					to_chat(user, "The acid chews through the balloon!")
+					to_chat(user, SPAN_WARNING("The acid chews through the balloon!"))
 					O.reagents.reaction(user)
 					qdel(src)
 				else
 					src.desc = "A translucent balloon with some form of liquid sloshing around in it."
-					to_chat(user, SPAN_NOTICE(" You fill the balloon with the contents of [O]."))
+					to_chat(user, SPAN_NOTICE("You fill the balloon with the contents of [O]."))
 					O.reagents.trans_to(src, 10)
 	src.update_icon()
 	return
 
 /obj/item/toy/balloon/launch_impact(atom/hit_atom)
 	if(src.reagents.total_volume >= 1)
-		src.visible_message(SPAN_DANGER("The [src] bursts!"),"You hear a pop and a splash.")
+		src.visible_message(SPAN_DANGER("[src] bursts!"),"You hear a pop and a splash.")
 		src.reagents.reaction(get_turf(hit_atom))
 		for(var/atom/A in get_turf(hit_atom))
 			src.reagents.reaction(A)
@@ -118,24 +116,24 @@
 	icon_state = "singularity_s1"
 
 
-
 /*
  * Crayons
  */
 
 /obj/item/toy/crayon
 	name = "crayon"
-	desc = "A colourful crayon. Please refrain from eating it or putting it in your nose."
+	desc = "A colorful crayon. Please refrain from eating it or putting it in your nose."
 	icon = 'icons/obj/items/crayons.dmi'
 	icon_state = "crayonred"
 	w_class = SIZE_TINY
-	attack_verb = list("attacked", "coloured")
+	attack_verb = list("attacked", "colored")
 	black_market_value = 5
-	var/crayon_color = "#FF0000" //RGB
-	var/shadeColour = "#220000" //RGB
-	var/uses = 30 //0 for unlimited uses
+	var/crayon_color = COLOR_RED
+	var/shade_color = "#220000"
+	/// 0 for unlimited uses
+	var/uses = 30
 	var/instant = 0
-	var/colourName = "red" //for updateIcon purposes
+	var/colorName = "red" //for updateIcon purposes
 
 /*
  * Snap pops
@@ -235,7 +233,6 @@
 /obj/item/toy/waterflower/get_examine_text(mob/user)
 	. = ..()
 	. += "[reagents.total_volume] units of water left!"
-
 
 
 /*
@@ -553,15 +550,15 @@
 	///Hexadecimal 0-F (0-15)
 	var/static/list/hexadecimal = list("0", "1", "2", "3" , "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F")
 
-/obj/item/toy/plush/therapy/random_color/New(loc, ...)
+/obj/item/toy/plush/therapy/random_color/Initialize(mapload, ...)
 	. = ..()
 	var/color_code = "#[pick(hexadecimal)][pick(hexadecimal)][pick(hexadecimal)][pick(hexadecimal)][pick(hexadecimal)][pick(hexadecimal)]" //This is dumb and I hope theres a better way I'm missing
 	color = color_code
-	desc = "A custom therapy plush, in a unique color. This one is labeled with \"#[color_code]\"."
+	desc = "A custom therapy plush, in a unique color."
 
 /obj/item/toy/plush/random_plushie //Not using an effect so it can fit into storage from loadout
 	name = "random plush"
-	desc = "You should not be seeing this"
+	desc = "This plush looks awfully standard and bland. Is it actually yours?"
 	/// Standard plushies for the spawner to pick from
 	var/list/plush_list = list(
 		/obj/item/toy/plush/farwa,
@@ -587,22 +584,32 @@
 	. = ..()
 	if(mapload) //Placed in mapping, will be randomized instantly on spawn
 		create_plushie()
-		return
-	RegisterSignal(src, COMSIG_POST_SPAWN_UPDATE, PROC_REF(create_plushie))
+		return INITIALIZE_HINT_QDEL
+
+/obj/item/toy/plush/random_plushie/pickup(mob/user, silent)
+	. = ..()
+	RegisterSignal(user, COMSIG_POST_SPAWN_UPDATE, PROC_REF(create_plushie), override = TRUE)
 
 ///The randomizer picking and spawning a plushie on either the ground or in the humans backpack. Needs var/source due to signals
-/obj/item/toy/plush/random_plushie/proc/create_plushie(source = src, mob/living/user)
-	UnregisterSignal(src, COMSIG_POST_SPAWN_UPDATE)
+/obj/item/toy/plush/random_plushie/proc/create_plushie(datum/source)
+	SIGNAL_HANDLER
+	if(source)
+		UnregisterSignal(source, COMSIG_POST_SPAWN_UPDATE)
+	var/turf/spawn_location = get_turf(src)
 	var/plush_list_variety = pick(60; plush_list, 40; therapy_plush_list)
 	var/random_plushie = pick(plush_list_variety)
-	var/obj/item/toy/plush/plush = new random_plushie(get_turf(src)) //Starts on floor by default
+	var/obj/item/toy/plush/plush = new random_plushie(spawn_location) //Starts on floor by default
+	var/mob/living/carbon/human/user = source
 
 	if(!user) //If it didn't spawn on a humanoid
 		qdel(src)
 		return
+
 	var/obj/item/storage/backpack/storage = locate() in user //If the user has a backpack, put it there
 	if(storage?.can_be_inserted(plush, user, stop_messages = TRUE))
 		storage.attempt_item_insertion(plush, TRUE, user)
+	if(plush.loc == spawn_location) // Still on the ground
+		user.put_in_hands(plush, drop_on_fail = TRUE)
 	qdel(src)
 
 //Admin plushies

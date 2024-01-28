@@ -100,8 +100,8 @@
 
 
 //This is the replacement for playsound_local. Use this for sending sounds directly to a client
-/proc/playsound_client(client/C, soundin, atom/origin, vol = 100, random_freq, vol_cat = VOLUME_SFX, channel = 0, status, list/echo, y_s_offset, x_s_offset)
-	if(!istype(C) || !C.soundOutput) return FALSE
+/proc/playsound_client(client/client, soundin, atom/origin, vol = 100, random_freq, vol_cat = VOLUME_SFX, channel = 0, status, list/echo, y_s_offset, x_s_offset)
+	if(!istype(client) || !client.soundOutput) return FALSE
 	var/datum/sound_template/S = new()
 	if(origin)
 		var/turf/T = get_turf(origin)
@@ -126,7 +126,7 @@
 	S.echo = echo
 	S.y_s_offset = y_s_offset
 	S.x_s_offset = x_s_offset
-	SSsound.queue(S, list(C))
+	SSsound.queue(S, list(client))
 
 /// Plays sound to all mobs that are map-level contents of an area
 /proc/playsound_area(area/A, soundin, vol = 100, channel = 0, status, vol_cat = VOLUME_SFX, list/echo, y_s_offset, x_s_offset)
@@ -344,7 +344,7 @@
 				S = pick('sound/voice/alien_queen_command.ogg','sound/voice/alien_queen_command2.ogg','sound/voice/alien_queen_command3.ogg')
 			// Human
 			if("male_scream")
-				S = pick('sound/voice/human_male_scream_1.ogg','sound/voice/human_male_scream_2.ogg','sound/voice/human_male_scream_3.ogg','sound/voice/human_male_scream_4.ogg',5;'sound/voice/human_male_scream_5.ogg',5;'sound/voice/human_jackson_scream.ogg',5;'sound/voice/human_ack_scream.ogg')
+				S = pick('sound/voice/human_male_scream_1.ogg','sound/voice/human_male_scream_2.ogg','sound/voice/human_male_scream_3.ogg','sound/voice/human_male_scream_4.ogg',5;'sound/voice/human_male_scream_5.ogg',5;'sound/voice/human_jackson_scream.ogg',5;'sound/voice/human_ack_scream.ogg','sound/voice/human_male_scream_6.ogg')
 			if("male_pain")
 				S = pick('sound/voice/human_male_pain_1.ogg','sound/voice/human_male_pain_2.ogg','sound/voice/human_male_pain_3.ogg',5;'sound/voice/tomscream.ogg',5;'sound/voice/human_bobby_pain.ogg',5;'sound/voice/human_tantrum_scream.ogg', 5;'sound/voice/human_male_pain_rare_1.ogg')
 			if("male_fragout")

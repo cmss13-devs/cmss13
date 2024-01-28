@@ -30,7 +30,7 @@
 /obj/item/reagent_container/glass/bottle/Initialize()
 	. = ..()
 	if(!icon_state)
-		icon_state = "bottle-[rand(1.4)]"
+		icon_state = "bottle-[rand(1,4)]"
 
 /obj/item/reagent_container/glass/bottle/update_icon()
 	overlays.Cut()

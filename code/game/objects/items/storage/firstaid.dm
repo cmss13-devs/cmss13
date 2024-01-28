@@ -650,19 +650,19 @@
 	if(!idlock)
 		return TRUE
 
-	var/mob/living/carbon/human/H = user
+	var/mob/living/carbon/human/human_user = user
 
-	if(!allowed(user))
+	if(!allowed(human_user))
 		to_chat(user, SPAN_NOTICE("It must have some kind of ID lock..."))
 		return FALSE
 
-	var/obj/item/card/id/I = H.wear_id
-	if(!istype(I)) //not wearing an ID
-		to_chat(H, SPAN_NOTICE("It must have some kind of ID lock..."))
+	var/obj/item/card/id/idcard = human_user.wear_id
+	if(!istype(idcard)) //not wearing an ID
+		to_chat(human_user, SPAN_NOTICE("It must have some kind of ID lock..."))
 		return FALSE
 
-	if(I.registered_name != H.real_name)
-		to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
+	if(!idcard.check_biometrics(human_user))
+		to_chat(human_user, SPAN_WARNING("Wrong ID card owner detected."))
 		return FALSE
 
 	return TRUE

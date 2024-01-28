@@ -43,7 +43,7 @@
 			continue
 
 		//Lying and self-surgery checks.
-		if(surgeryloop.lying_required && !target.lying)
+		if(surgeryloop.lying_required && target.body_position != LYING_DOWN)
 			continue
 		if(!surgeryloop.self_operable && target == user)
 			continue
@@ -134,7 +134,7 @@
 				[target_zone == "r_hand"||target_zone == "l_hand" ? "hand":"arm"] you're using!"))
 			return TRUE
 
-		if(surgeryinstance.lying_required && !target.lying)
+		if(surgeryinstance.lying_required && target.body_position != LYING_DOWN)
 			return TRUE
 
 		if(surgery_limb)

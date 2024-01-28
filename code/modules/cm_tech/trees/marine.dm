@@ -161,7 +161,7 @@ GLOBAL_LIST_EMPTY(tech_controls_marine)
 	if(!powered())
 		to_chat(user, SPAN_WARNING("This computer has no power!"))
 		return FALSE
-	if(!intel_system)
+	if(!GLOB.intel_system)
 		to_chat(user, SPAN_WARNING("The computer doesn't seem to be connected to anything..."))
 		return FALSE
 	if(user.action_busy)

@@ -109,7 +109,7 @@
 		survivor.power += dying.power
 
 	// Two waves travling towards each other weakens the explosion
-	if(survivor.direction == reverse_dir[dying.direction])
+	if(survivor.direction == GLOB.reverse_dir[dying.direction])
 		survivor.power -= dying.power
 
 	return is_stronger
@@ -120,11 +120,11 @@
 
 	// If the cell is the epicenter, propagate in all directions
 	if(isnull(direction))
-		return alldirs
+		return GLOB.alldirs
 
-	var/dir = reflected ? reverse_dir[direction] : direction
+	var/dir = reflected ? GLOB.reverse_dir[direction] : direction
 
-	if(dir in cardinal)
+	if(dir in GLOB.cardinals)
 		propagation_dirs += list(dir, turn(dir, 45), turn(dir, -45))
 	else
 		propagation_dirs += dir
@@ -180,7 +180,7 @@
 	for(var/dir in to_spread)
 		// Diagonals are longer, that should be reflected in the power falloff
 		var/dir_falloff = 1
-		if(dir in diagonals)
+		if(dir in GLOB.diagonals)
 			dir_falloff = 1.414
 
 		if(isnull(direction))
@@ -210,7 +210,7 @@
 			// Set the direction the explosion is traveling in
 			E.direction = dir
 			//Diagonal cells have a small delay when branching off the center. This helps the explosion look circular
-			if(!direction && (dir in diagonals))
+			if(!direction && (dir in GLOB.diagonals))
 				E.delay = 1
 
 			setup_new_cell(E)

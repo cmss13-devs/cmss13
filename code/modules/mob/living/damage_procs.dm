@@ -65,13 +65,12 @@
 //#define EFFECT_FLAG_XENOMORPH
 //#define EFFECT_FLAG_CHEMICAL
 
+/// Legacy wrapper for effects, DO NOT USE and migrate all code to USING THE STATUS PROCS DIRECTLY
 /mob/proc/apply_effect()
 	return FALSE
 
+// Legacy wrapper for effects, DO NOT USE and migrate all code to USING THE BELOW PROCS DIRECTLY
 /mob/living/apply_effect(effect = 0, effect_type = STUN, effect_flags = EFFECT_FLAG_DEFAULT)
-
-	if(SEND_SIGNAL(src, COMSIG_LIVING_APPLY_EFFECT, effect, effect_type, effect_flags) & COMPONENT_CANCEL_EFFECT)
-		return
 
 	if(!effect)
 		return FALSE
@@ -106,9 +105,6 @@
 
 /mob/living/adjust_effect(effect = 0, effect_type = STUN, effect_flags = EFFECT_FLAG_DEFAULT)
 
-	if(SEND_SIGNAL(src, COMSIG_LIVING_ADJUST_EFFECT, effect, effect_type, effect_flags) & COMPONENT_CANCEL_EFFECT)
-		return
-
 	if(!effect)
 		return FALSE
 
@@ -141,9 +137,6 @@
 	return FALSE
 
 /mob/living/set_effect(effect = 0, effect_type = STUN, effect_flags = EFFECT_FLAG_DEFAULT)
-
-	if(SEND_SIGNAL(src, COMSIG_LIVING_SET_EFFECT, effect, effect_type, effect_flags) & COMPONENT_CANCEL_EFFECT)
-		return
 
 	switch(effect_type)
 		if(STUN)

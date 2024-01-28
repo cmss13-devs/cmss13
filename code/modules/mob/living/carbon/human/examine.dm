@@ -5,6 +5,10 @@
 	if(user.sdisabilities & DISABILITY_BLIND || user.blinded || user.stat==UNCONSCIOUS)
 		return list(SPAN_NOTICE("Something is there but you can't see it."))
 
+	var/mob/dead/observer/observer
+	if(isobserver(user))
+		observer = user
+
 	if(isxeno(user))
 		var/msg = "<span class='info'>This is "
 
@@ -125,7 +129,7 @@
 	if(gloves && !skipgloves)
 		msg += "[t_He] [t_has] [gloves.get_examine_line(user)] [gloves.get_examine_location(src, user, WEAR_HANDS, t_He, t_his, t_him, t_has, t_is)].\n"
 	else if(hands_blood_color)
-		msg += SPAN_WARNING("[t_He] [t_has] [(hands_blood_color != "#030303") ? "blood" : "oil"]-stained hands!\n")
+		msg += SPAN_WARNING("[t_He] [t_has] [(hands_blood_color != COLOR_OIL) ? "blood" : "oil"]-stained hands!\n")
 
 	//belt
 	if(belt)
@@ -135,7 +139,7 @@
 	if(shoes && !skipshoes)
 		msg += "[t_He] [t_is] wearing [shoes.get_examine_line(user)] [shoes.get_examine_location(src, user, WEAR_FEET, t_He, t_his, t_him, t_has, t_is)].\n"
 	else if(feet_blood_color)
-		msg += SPAN_WARNING("[t_He] [t_has] [(feet_blood_color != "#030303") ? "blood" : "oil"]-stained feet!\n")
+		msg += SPAN_WARNING("[t_He] [t_has] [(feet_blood_color != COLOR_OIL) ? "blood" : "oil"]-stained feet!\n")
 
 	//mask
 	if(wear_mask && !skipmask)
@@ -435,7 +439,7 @@
 	for(var/implant in get_visible_implants())
 		msg += SPAN_WARNING("<b>[t_He] has \a [implant] sticking out of [t_his] flesh!\n")
 
-	if(hasHUD(user,"security"))
+	if(hasHUD(user,"security") || (observer && observer.HUD_toggled["Security HUD"]))
 		var/perpref
 
 
@@ -450,9 +454,17 @@
 						if(R.fields["id"] == E.fields["id"])
 							criminal = R.fields["criminal"]
 
-			msg += "<span class = 'deptradio'>Criminal status:</span> <a href='?src=\ref[src];criminal=1'>\[[criminal]\]</a>\n"
-			msg += "<span class = 'deptradio'>Security records:</span> <a href='?src=\ref[src];secrecord=1'>\[View\]</a>  <a href='?src=\ref[src];secrecordadd=1'>\[Add comment\]</a>\n"
+			msg += "<span class = 'deptradio'>Criminal status:</span>"
+			if(!observer)
+				msg += "<a href='?src=\ref[src];criminal=1'>\[[criminal]\]</a>\n"
+			else
+				msg += "\[[criminal]\]\n"
 
+			msg += "<span class = 'deptradio'>Security records:</span> <a href='?src=\ref[src];secrecord=1'>\[View\]</a>"
+			if(!observer)
+				msg += " <a href='?src=\ref[src];secrecordadd=1'>\[Add comment\]</a>\n"
+			else
+				msg += "\n"
 	if(hasHUD(user,"medical"))
 		var/cardcolor = holo_card_color
 		if(!cardcolor) cardcolor = "none"
@@ -516,32 +528,23 @@
 	if(istype(passed_mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/passed_human = passed_mob
 		if (issynth(passed_human))
-			return 1
+			return TRUE
 		switch(hudtype)
 			if("security")
 				if(skillcheck(passed_human, SKILL_POLICE, SKILL_POLICE_SKILLED))
-					var/datum/mob_hud/sec_hud = huds[MOB_HUD_SECURITY_ADVANCED]
-					if(locate(passed_mob) in sec_hud.hudusers)
+					var/datum/mob_hud/sec_hud = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
+					if(sec_hud.hudusers[passed_human])
 						return TRUE
 			if("medical")
 				if(skillcheck(passed_human, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-					var/datum/mob_hud/med_hud = huds[MOB_HUD_MEDICAL_ADVANCED]
-					if(locate(passed_mob) in med_hud.hudusers)
+					var/datum/mob_hud/med_hud = GLOB.huds[MOB_HUD_MEDICAL_ADVANCED]
+					if(med_hud.hudusers[passed_human])
 						return TRUE
 			if("squadleader")
-				var/datum/mob_hud/faction_hud = huds[MOB_HUD_FACTION_USCM]
-				if(passed_human.mind && passed_human.assigned_squad && passed_human.assigned_squad.squad_leader == passed_human && locate(passed_mob) in faction_hud.hudusers)
+				var/datum/mob_hud/faction_hud = GLOB.huds[MOB_HUD_FACTION_USCM]
+				if(passed_human.mind && passed_human.assigned_squad && passed_human.assigned_squad.squad_leader == passed_human && faction_hud.hudusers[passed_mob])
 					return TRUE
 			else
-				return 0
-	else if(isrobot(passed_mob))
-		var/mob/living/silicon/robot/R = passed_mob
-		switch(hudtype)
-			if("security")
-				return istype(R.module_state_1, /obj/item/robot/sight/hud/sec) || istype(R.module_state_2, /obj/item/robot/sight/hud/sec) || istype(R.module_state_3, /obj/item/robot/sight/hud/sec)
-			if("medical")
-				return istype(R.module_state_1, /obj/item/robot/sight/hud/med) || istype(R.module_state_2, /obj/item/robot/sight/hud/med) || istype(R.module_state_3, /obj/item/robot/sight/hud/med)
-			else
-				return 0
+				return FALSE
 	else
-		return 0
+		return FALSE

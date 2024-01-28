@@ -150,7 +150,7 @@
 		far_sight = FALSE
 		if(user)
 			if(user.client)
-				user.client.change_view(world_view_size, src)
+				user.client.change_view(GLOB.world_view_size, src)
 		STOP_PROCESSING(SSobj, src)
 
 	var/datum/action/item_action/m56_goggles/far_sight/FT = locate(/datum/action/item_action/m56_goggles/far_sight) in actions

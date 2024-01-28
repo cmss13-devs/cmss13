@@ -5,9 +5,9 @@
 /proc/RandomAAlarmWires()
 	//to make this not randomize the wires, just set index to 1 and increment it in the flag for loop (after doing everything else).
 	var/list/AAlarmwires = list(0, 0, 0, 0, 0)
-	AAlarmIndexToFlag = list(0, 0, 0, 0, 0)
-	AAlarmIndexToWireColor = list(0, 0, 0, 0, 0)
-	AAlarmWireColorToIndex = list(0, 0, 0, 0, 0)
+	GLOB.AAlarmIndexToFlag = list(0, 0, 0, 0, 0)
+	GLOB.AAlarmIndexToWireColor = list(0, 0, 0, 0, 0)
+	GLOB.AAlarmWireColorToIndex = list(0, 0, 0, 0, 0)
 	var/flagIndex = 1
 	for (var/flag=1, flag<32, flag+=flag)
 		var/valid = 0
@@ -16,9 +16,9 @@
 			if (AAlarmwires[colorIndex]==0)
 				valid = 1
 				AAlarmwires[colorIndex] = flag
-				AAlarmIndexToFlag[flagIndex] = flag
-				AAlarmIndexToWireColor[flagIndex] = colorIndex
-				AAlarmWireColorToIndex[colorIndex] = flagIndex
+				GLOB.AAlarmIndexToFlag[flagIndex] = flag
+				GLOB.AAlarmIndexToWireColor[flagIndex] = colorIndex
+				GLOB.AAlarmWireColorToIndex[colorIndex] = flagIndex
 		flagIndex+=1
 	return AAlarmwires
 
@@ -379,24 +379,24 @@
 //HACKING//
 ///////////
 /obj/structure/machinery/alarm/proc/isWireColorCut(wireColor)
-	var/wireFlag = AAlarmWireColorToFlag[wireColor]
+	var/wireFlag = GLOB.AAlarmWireColorToFlag[wireColor]
 	return ((AAlarmwires & wireFlag) == 0)
 
 /obj/structure/machinery/alarm/proc/isWireCut(wireIndex)
-	var/wireFlag = AAlarmIndexToFlag[wireIndex]
+	var/wireFlag = GLOB.AAlarmIndexToFlag[wireIndex]
 	return ((AAlarmwires & wireFlag) == 0)
 
 /obj/structure/machinery/alarm/proc/allWiresCut()
 	var/i = 1
 	while(i<=5)
-		if(AAlarmwires & AAlarmIndexToFlag[i])
+		if(AAlarmwires & GLOB.AAlarmIndexToFlag[i])
 			return 0
 		i++
 	return 1
 
 /obj/structure/machinery/alarm/proc/cut(wireColor)
-	var/wireFlag = AAlarmWireColorToFlag[wireColor]
-	var/wireIndex = AAlarmWireColorToIndex[wireColor]
+	var/wireFlag = GLOB.AAlarmWireColorToFlag[wireColor]
+	var/wireIndex = GLOB.AAlarmWireColorToIndex[wireColor]
 	AAlarmwires &= ~wireFlag
 	switch(wireIndex)
 		if(AALARM_WIRE_IDSCAN)
@@ -427,8 +427,8 @@
 	return
 
 /obj/structure/machinery/alarm/proc/mend(wireColor)
-	var/wireFlag = AAlarmWireColorToFlag[wireColor]
-	var/wireIndex = AAlarmWireColorToIndex[wireColor] //not used in this function
+	var/wireFlag = GLOB.AAlarmWireColorToFlag[wireColor]
+	var/wireIndex = GLOB.AAlarmWireColorToIndex[wireColor] //not used in this function
 	AAlarmwires |= wireFlag
 	switch(wireIndex)
 		if(AALARM_WIRE_POWER)
@@ -445,7 +445,7 @@
 
 /obj/structure/machinery/alarm/proc/pulse(wireColor)
 	//var/wireFlag = AAlarmWireColorToFlag[wireColor] //not used in this function
-	var/wireIndex = AAlarmWireColorToIndex[wireColor]
+	var/wireIndex = GLOB.AAlarmWireColorToIndex[wireColor]
 	switch(wireIndex)
 		if(AALARM_WIRE_IDSCAN) //unlocks for 30 seconds, if you have a better way to hack I'm all ears
 			locked = 0
@@ -527,7 +527,7 @@
 			"Black" = 5,
 		)
 		for(var/wiredesc in wirecolors)
-			var/is_uncut = AAlarmwires & AAlarmWireColorToFlag[wirecolors[wiredesc]]
+			var/is_uncut = AAlarmwires & GLOB.AAlarmWireColorToFlag[wirecolors[wiredesc]]
 			t1 += "[wiredesc] wire: "
 			if(!is_uncut)
 				t1 += "<a href='?src=\ref[src];AAlarmwires=[wirecolors[wiredesc]]'>Mend</a>"

@@ -21,33 +21,36 @@ Humans will take continuous damage instead.
 	src.healing_reduction_dissipation = healing_reduction_dissipation
 	src.max_buildup = max_buildup
 
-/datum/component/healing_reduction/InheritComponent(datum/component/healing_reduction/C, i_am_original, healing_reduction)
+/datum/component/healing_reduction/InheritComponent(datum/component/healing_reduction/inherit_component, i_am_original, healing_reduction)
 	. = ..()
-	if(!C)
+	if(!inherit_component)
 		src.healing_reduction += healing_reduction
 	else
-		src.healing_reduction += C.healing_reduction
+		src.healing_reduction += inherit_component.healing_reduction
 
 	src.healing_reduction = min(src.healing_reduction, max_buildup)
 
 /datum/component/healing_reduction/process(delta_time)
 	if(!parent)
 		qdel(src)
-	healing_reduction = max(healing_reduction - healing_reduction_dissipation * delta_time, 0)
+		return
 
-	if(ishuman(parent)) //deals brute to humans
-		var/mob/living/carbon/human/H = parent
-		H.apply_damage(healing_reduction_dissipation * delta_time, BRUTE)
+	healing_reduction = max(healing_reduction - healing_reduction_dissipation * delta_time, 0)
 
 	if(healing_reduction <= 0)
 		qdel(src)
+		return
+
+	if(ishuman(parent)) //deals brute to humans
+		var/mob/living/carbon/human/human_parent = parent
+		human_parent.apply_damage(healing_reduction_dissipation * delta_time, BRUTE)
 
 	var/color = GLOW_COLOR
 	var/intensity = healing_reduction/max_buildup
 	color += num2text(MAX_ALPHA*intensity, 2, 16)
 
-	var/atom/A = parent
-	A.add_filter("healing_reduction", 2, list("type" = "outline", "color" = color, "size" = 1))
+	var/atom/parent_atom = parent
+	parent_atom.add_filter("healing_reduction", 2, list("type" = "outline", "color" = color, "size" = 1))
 
 /datum/component/healing_reduction/RegisterWithParent()
 	START_PROCESSING(SSdcs, src)
@@ -64,14 +67,14 @@ Humans will take continuous damage instead.
 		COMSIG_XENO_ON_HEAL_WOUNDS,
 		COMSIG_XENO_APPEND_TO_STAT
 	))
-	var/atom/A = parent
-	A.remove_filter("healing_reduction")
+	var/atom/parent_atom = parent
+	parent_atom.remove_filter("healing_reduction")
 
-/datum/component/healing_reduction/proc/stat_append(mob/M, list/L)
+/datum/component/healing_reduction/proc/stat_append(mob/target_mob, list/stat_list)
 	SIGNAL_HANDLER
-	L += "Healing Reduction: [healing_reduction]/[max_buildup]"
+	stat_list += "Healing Reduction: [healing_reduction]/[max_buildup]"
 
-/datum/component/healing_reduction/proc/apply_healing_reduction(mob/living/carbon/xenomorph/X, list/healing)
+/datum/component/healing_reduction/proc/apply_healing_reduction(mob/living/carbon/xenomorph/xeno, list/healing)
 	SIGNAL_HANDLER
 	healing["healing"] -= healing_reduction
 

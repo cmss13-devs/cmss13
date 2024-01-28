@@ -5,7 +5,7 @@
 	set waitfor = 0
 	var/areaname = replacetext(A.name, "\improper", "") //The \improper flickers "ÿ" briefly
 
-	var/text = "[worldtime2text("hhmm")], [time2text(REALTIMEOFDAY, "DD-MMM-[game_year]")]\n[station_name], [areaname]"
+	var/text = "[worldtime2text("hhmm")], [time2text(REALTIMEOFDAY, "DD-MMM-[GLOB.game_year]")]\n[MAIN_SHIP_NAME], [areaname]"
 
 	show_blurb(targets, duration, text, TRUE)
 
@@ -14,13 +14,13 @@ exempt_ztraits = trait or list of traits of zlevels where any marines don't see 
 shouldn't see the ship marines' drop message. Ex. ZTRAIT_GROUND by default.
 unit = the unit the marines are from. FF, Dust Raiders etc. Military crew see this.
 base = the base the marines are staging from. The ship, Whiskey Outpost etc. Noncombat crew see this.**/
-/proc/show_blurb_uscm(list/exempt_ztraits = ZTRAIT_GROUND, unit = "2nd Bat. 'Falling Falcons'", base = station_name)
+/proc/show_blurb_uscm(list/exempt_ztraits = ZTRAIT_GROUND, unit = "2nd Bat. 'Falling Falcons'", base = MAIN_SHIP_NAME)
 	if(!islist(exempt_ztraits))
 		exempt_ztraits = list(exempt_ztraits)
 	var/list/exempt_zlevels = SSmapping.levels_by_any_trait(exempt_ztraits)
 
-	var/base_text = "<b>[uppertext(round_statistics.round_name)]</b>\n\
-						[worldtime2text("hhmm hrs")], [uppertext(time2text(REALTIMEOFDAY, "DD-MMM-[game_year]"))]\n\
+	var/base_text = "<b>[uppertext(GLOB.round_statistics.round_name)]</b>\n\
+						[worldtime2text("hhmm hrs")], [uppertext(time2text(REALTIMEOFDAY, "DD-MMM-[GLOB.game_year]"))]\n\
 						[SSmapping.configs[GROUND_MAP].map_name]"
 
 	var/list/post_text = list("combat" = "\n[unit]",

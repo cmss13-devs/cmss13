@@ -455,7 +455,7 @@
 	if(prob(10 * delta_time))
 		to_chat(M, SPAN_WARNING("You feel like you have the worst brain freeze ever!"))
 	M.apply_effect(20, PARALYZE)
-	M.stunned = max(M.stunned,21)
+	M.apply_effect(20, STUN)
 
 /datum/chem_property/positive/neurocryogenic/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.bodytemperature = max(M.bodytemperature - 2.5 * potency * delta_time,0)
@@ -647,7 +647,7 @@
 		return
 	H.chem_effect_flags |= CHEM_EFFECT_RESIST_NEURO
 	to_chat(M, SPAN_NOTICE("Your skull feels incredibly thick."))
-	M.dazed = 0
+	M.SetDaze(0)
 
 /datum/chem_property/positive/neuroshielding/process_overdose(mob/living/M, potency = 1, delta_time)
 	if(!ishuman(M))

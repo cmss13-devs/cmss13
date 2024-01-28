@@ -190,7 +190,7 @@
 	smoke.start()
 	playsound(src, 'sound/weapons/gun_rocketlauncher.ogg', 100, TRUE, 10)
 	for(var/mob/living/carbon/C in backblast_loc)
-		if(!C.lying && !HAS_TRAIT(C, TRAIT_EAR_PROTECTION)) //Have to be standing up to get the fun stuff
+		if(C.body_position == STANDING_UP && !HAS_TRAIT(C, TRAIT_EAR_PROTECTION)) //Have to be standing up to get the fun stuff
 			C.apply_damage(15, BRUTE) //The shockwave hurts, quite a bit. It can knock unarmored targets unconscious in real life
 			C.apply_effect(4, STUN) //For good measure
 			C.apply_effect(6, STUTTER)
@@ -362,7 +362,7 @@
 	smoke.start()
 	playsound(src, 'sound/weapons/gun_rocketlauncher.ogg', 100, TRUE, 10)
 	for(var/mob/living/carbon/C in backblast_loc)
-		if(!C.lying && !HAS_TRAIT(C, TRAIT_EAR_PROTECTION)) //Have to be standing up to get the fun stuff
+		if(C.body_position == STANDING_UP && !HAS_TRAIT(C, TRAIT_EAR_PROTECTION)) //Have to be standing up to get the fun stuff
 			C.apply_damage(15, BRUTE) //The shockwave hurts, quite a bit. It can knock unarmored targets unconscious in real life
 			C.apply_effect(4, STUN) //For good measure
 			C.apply_effect(6, STUTTER)

@@ -157,7 +157,7 @@
 	if(!T)
 		return FALSE
 
-	if(direction == reverse_dir[T.dir] || direction == T.dir)
+	if(direction == GLOB.reverse_dir[T.dir] || direction == T.dir)
 		return FALSE
 
 	T.user_rotation(user, turning_angle(T.dir, direction))
@@ -189,6 +189,8 @@
 	handle_direction(TANK)
 	TANK.update_icon()
 
+	return TANK
+
 /obj/effect/vehicle_spawner/tank/load_hardpoints(obj/vehicle/multitile/tank/V)
 	V.add_hardpoint(new /obj/item/hardpoint/holder/tank_turret)
 
@@ -200,6 +202,12 @@
 //PRESET: no hardpoints
 /obj/effect/vehicle_spawner/tank/hull/load_hardpoints(obj/vehicle/multitile/tank/V)
 	return
+
+//Just the hull and it's broken TOO, you get the full experience
+/obj/effect/vehicle_spawner/tank/hull/broken/spawn_vehicle()
+	var/obj/vehicle/multitile/tank/tonk = ..()
+	load_damage(tonk)
+	tonk.update_icon()
 
 //PRESET: default hardpoints, destroyed
 /obj/effect/vehicle_spawner/tank/decrepit/spawn_vehicle()

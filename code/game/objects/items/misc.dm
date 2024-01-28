@@ -134,7 +134,7 @@
 					return
 				stored_item = object
 				mobber.drop_inv_item_to_loc(object, src)
-				to_chat(mobber, SPAN_NOTICE("You slide the [object] into [src]."))
+				to_chat(mobber, SPAN_NOTICE("You slide [object] into [src]."))
 				playsound(mobber, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 				update_icon()
 				break

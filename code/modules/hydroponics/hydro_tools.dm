@@ -19,11 +19,11 @@
 		return ..()
 	else if(istype(target,/obj/item/reagent_container/food/snacks/grown))
 		var/obj/item/reagent_container/food/snacks/grown/G = target
-		grown_seed = seed_types[G.plantname]
+		grown_seed = GLOB.seed_types[G.plantname]
 		grown_reagents = G.reagents
 	else if(istype(target,/obj/item/grown))
 		var/obj/item/grown/G = target
-		grown_seed = seed_types[G.plantname]
+		grown_seed = GLOB.seed_types[G.plantname]
 		grown_reagents = G.reagents
 	else if(istype(target,/obj/item/seeds))
 		var/obj/item/seeds/S = target
@@ -138,9 +138,9 @@
 		dat += "<br>It will periodically alter the local temperature by [grown_seed.alter_temp] degrees Kelvin."
 
 	if(grown_seed.biolum)
-		dat += "<br>It is [grown_seed.biolum_colour ? "<font color='[grown_seed.biolum_colour]'>bio-luminescent</font>" : "bio-luminescent"]."
+		dat += "<br>It is [grown_seed.biolum_color ? "<font color='[grown_seed.biolum_color]'>bio-luminescent</font>" : "bio-luminescent"]."
 	if(grown_seed.flowers)
-		dat += "<br>It has [grown_seed.flower_colour ? "<font color='[grown_seed.flower_colour]'>flowers</font>" : "flowers"]."
+		dat += "<br>It has [grown_seed.flower_color ? "<font color='[grown_seed.flower_color]'>flowers</font>" : "flowers"]."
 
 	if(dat)
 		show_browser(user, dat, "Plant Analysis", "plant_analyzer")

@@ -946,6 +946,7 @@
 /*same two but helps with finding if you think top to bottom or up to down*/
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down
 	icon_state = "rasputin3"
+
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_top_to_bottom
 	icon_state = "rasputin3"
 

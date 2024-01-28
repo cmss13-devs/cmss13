@@ -6,7 +6,8 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
+	icon_state = "rasputin3";
+	supports_surgery = 1
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "bz" = (
@@ -85,7 +86,8 @@
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
+	icon_state = "rasputin3";
+	supports_surgery = 1
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "fp" = (
@@ -174,7 +176,8 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
+	icon_state = "rasputin3";
+	supports_surgery = 1
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "jX" = (
@@ -221,7 +224,8 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
+	icon_state = "rasputin3";
+	supports_surgery = 1
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "mw" = (
@@ -298,19 +302,22 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin4"
+	icon_state = "rasputin4";
+	supports_surgery = 1
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "os" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin5"
+	icon_state = "rasputin5";
+	supports_surgery = 1
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "oL" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
+	icon_state = "rasputin3";
+	supports_surgery = 1
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "oX" = (
@@ -458,7 +465,8 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "xE" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin7"
+	icon_state = "rasputin7";
+	supports_surgery = 1
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "xK" = (
@@ -476,7 +484,8 @@
 "xP" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin5"
+	icon_state = "rasputin5";
+	supports_surgery = 1
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "yl" = (
@@ -873,7 +882,8 @@
 "OG" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
+	icon_state = "rasputin3";
+	supports_surgery = 1
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "OJ" = (
@@ -924,13 +934,15 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "Rq" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin6"
+	icon_state = "rasputin6";
+	supports_surgery = 1
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "Ry" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin8"
+	icon_state = "rasputin8";
+	supports_surgery = 1
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "RG" = (
@@ -975,7 +987,8 @@
 /obj/effect/spawner/gibspawner/human,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin5"
+	icon_state = "rasputin5";
+	supports_surgery = 1
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "SV" = (
@@ -1015,7 +1028,8 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+	icon_state = "rasputin15";
+	supports_surgery = 1
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "UB" = (
@@ -1060,7 +1074,8 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "Wy" = (
 /turf/open/shuttle/dropship{
-	icon_state = "rasputin5"
+	icon_state = "rasputin5";
+	supports_surgery = 1
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
 "WU" = (

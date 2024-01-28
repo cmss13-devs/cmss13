@@ -919,7 +919,7 @@
 
 /turf/open/shuttle/can_surgury/red
 	name = "floor"
-	icon_state = "floor"
+	icon_state = "floor6"
 	icon = 'icons/turf/shuttle.dmi'
 	allow_construction = TRUE
 	supports_surgery = TRUE

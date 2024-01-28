@@ -499,7 +499,7 @@
 		tod = null
 		timeofdeath = 0
 
-	// restore us to conciousness
+	// restore us to consciousness
 	set_stat(CONSCIOUS)
 	regenerate_all_icons()
 

@@ -1,0 +1,8 @@
+author: "BadAtThisGame302"
+delete-after: True
+changes:
+  - rscadd: "Added a Researcher on Trijent."
+  - rscadd: "Added a CMB Deputy on Trijent."
+  - rscadd: "Added a second RD uniform."
+  - code_imp: "changed the Trijent Security Guard to not use a USCM MP Hat and trenchcoat."
+  - code_imp: "changed a not used \"synthetic service uniform\" to it's before shamelessly taken RD Variant."

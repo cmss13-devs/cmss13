@@ -644,6 +644,16 @@
 	reagents.add_reagent("carpotoxin", 6)
 	src.bitesize = 6
 
+/obj/item/reagent_container/food/snacks/carpmeat/processed
+	name = "processed carp fillet"
+	desc = "A fillet of spess carp meat. This one has been processed to remove carpotoxin."
+	icon_state = "fishfillet"
+	filling_color = "#FFDEFE"
+
+/obj/item/reagent_container/food/snacks/carpmeat/processed/Initialize()
+	. = ..()
+	reagents.remove_reagent("carpotoxin", 6)
+
 /obj/item/reagent_container/food/snacks/fishfingers
 	name = "Fish Fingers"
 	desc = "A finger of fish."

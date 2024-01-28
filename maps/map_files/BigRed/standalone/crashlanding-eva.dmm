@@ -195,10 +195,7 @@
 /area/bigredv2/outside/general_offices)
 "bj" = (
 /obj/structure/bed/chair/dropship/passenger,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	supports_surgery = 1
-	},
+/turf/open/shuttle/dropship/can_surgury/dark_grey,
 /area/bigredv2/outside/general_offices)
 "bk" = (
 /turf/open/shuttle/dropship/can_surgury/light_grey_single_wide_up_to_down,
@@ -1061,10 +1058,7 @@
 "Zt" = (
 /obj/structure/bed/chair/dropship/passenger,
 /obj/effect/landmark/corpsespawner/wygoon,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15";
-	supports_surgery = 1
-	},
+/turf/open/shuttle/dropship/can_surgury/dark_grey,
 /area/bigredv2/outside/general_offices)
 
 (1,1,1) = {"

@@ -19723,23 +19723,17 @@
 /obj/structure/shuttle/diagonal{
 	icon_state = "swall_f9"
 	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgury/red,
 /area/desert_dam/interior/dam_interior/hanger)
 "bjb" = (
 /obj/structure/computerframe,
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgury/red,
 /area/desert_dam/interior/dam_interior/hanger)
 "bjc" = (
 /obj/structure/shuttle/diagonal{
 	icon_state = "swall_f5"
 	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgury/red,
 /area/desert_dam/interior/dam_interior/hanger)
 "bjd" = (
 /obj/structure/machinery/light{
@@ -19794,14 +19788,10 @@
 /area/desert_dam/interior/dam_interior/hanger)
 "bjl" = (
 /obj/structure/machinery/light,
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgury/red,
 /area/desert_dam/interior/dam_interior/hanger)
 "bjm" = (
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgury/red,
 /area/desert_dam/interior/dam_interior/hanger)
 "bjn" = (
 /obj/structure/machinery/light,
@@ -19883,9 +19873,7 @@
 /area/desert_dam/interior/dam_interior/hanger)
 "bjA" = (
 /obj/structure/machinery/door/unpowered/shuttle,
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgury/red,
 /area/desert_dam/interior/dam_interior/hanger)
 "bjB" = (
 /turf/closed/shuttle{
@@ -20043,9 +20031,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgury/red,
 /area/desert_dam/interior/dam_interior/hanger)
 "bke" = (
 /obj/structure/machinery/light{
@@ -20054,9 +20040,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgury/red,
 /area/desert_dam/interior/dam_interior/hanger)
 "bkf" = (
 /turf/open/desert/dirt{
@@ -20115,17 +20099,13 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgury/red,
 /area/desert_dam/interior/dam_interior/hanger)
 "bkp" = (
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgury/red,
 /area/desert_dam/interior/dam_interior/hanger)
 "bkt" = (
 /turf/open/desert/dirt{
@@ -20967,17 +20947,13 @@
 /obj/structure/shuttle/diagonal{
 	icon_state = "swall_f10"
 	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgury/red,
 /area/desert_dam/interior/dam_interior/hanger)
 "bne" = (
 /obj/structure/shuttle/diagonal{
 	icon_state = "swall_f6"
 	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgury/red,
 /area/desert_dam/interior/dam_interior/hanger)
 "bnf" = (
 /obj/structure/shuttle/diagonal{

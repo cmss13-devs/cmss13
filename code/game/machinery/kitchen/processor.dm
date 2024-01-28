@@ -34,7 +34,7 @@
 
 /datum/food_processor_process/xenomeat
 	input = /obj/item/reagent_container/food/snacks/meat/xenomeat
-	output = /obj/item/reagent_container/food/snacks/meat/xenomeat
+	output = /obj/item/reagent_container/food/snacks/meat/xenomeat/processed
 
 /datum/food_processor_process/meat
 	input = /obj/item/reagent_container/food/snacks/meat
@@ -43,7 +43,7 @@
 
 /datum/food_processor_process/carpmeat
 	input = /obj/item/reagent_container/food/snacks/carpmeat
-	output = /obj/item/reagent_container/food/snacks/carpmeat
+	output = /obj/item/reagent_container/food/snacks/carpmeat/processed
 
 /datum/food_processor_process/potato
 	input = /obj/item/reagent_container/food/snacks/grown/potato

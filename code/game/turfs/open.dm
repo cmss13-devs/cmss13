@@ -911,9 +911,6 @@
 	supports_surgery = FALSE
 
 /turf/open/shuttle/can_surgury
-	name = "floor"
-	icon_state = "floor"
-	icon = 'icons/turf/shuttle.dmi'
 	allow_construction = TRUE
 	supports_surgery = TRUE
 
@@ -921,92 +918,57 @@
 	name = "floor"
 	icon_state = "floor"
 	icon = 'icons/turf/shuttle.dmi'
-	allow_construction = TRUE
-	supports_surgery = TRUE
 
 /turf/open/shuttle/can_surgury/red
-	name = "floor"
 	icon_state = "floor6"
-	icon = 'icons/turf/shuttle.dmi'
-	allow_construction = TRUE
-	supports_surgery = TRUE
 
 /turf/open/shuttle/can_surgury/black
-	name = "floor"
 	icon_state = "floor7"
-	icon = 'icons/turf/shuttle.dmi'
-	allow_construction = TRUE
-	supports_surgery = TRUE
 
 /turf/open/shuttle/dropship
 	name = "floor"
 	icon_state = "rasputin1"
 
 /turf/open/shuttle/dropship/can_surgury
-	name = "floor"
 	icon_state = "rasputin1"
 	allow_construction = TRUE
 	supports_surgery = TRUE
 
 /turf/open/shuttle/dropship/can_surgury/light_grey_middle
-	name = "floor"
 	icon_state = "rasputin13"
-	allow_construction = TRUE
-	supports_surgery = TRUE
 
 /turf/open/shuttle/dropship/can_surgury/light_grey_top
-	name = "floor"
 	icon_state = "rasputin10"
-	allow_construction = TRUE
-	supports_surgery = TRUE
 
 /turf/open/shuttle/dropship/can_surgury/light_grey_single_wide_left_to_right
-	name = "floor"
 	icon_state = "floor8"
-	allow_construction = TRUE
-	supports_surgery = TRUE
 
 /*same two but helps with finding if you think top to bottom or up to down*/
 /turf/open/shuttle/dropship/can_surgury/light_grey_single_wide_up_to_down
-	name = "floor"
 	icon_state = "rasputin3"
-	allow_construction = TRUE
-	supports_surgery = TRUE
 /turf/open/shuttle/dropship/can_surgury/light_grey_single_wide_top_to_bottom
-	name = "floor"
 	icon_state = "rasputin3"
-	allow_construction = TRUE
-	supports_surgery = TRUE
 
 /turf/open/shuttle/dropship/can_surgury/light_grey_top_left
-	name = "floor"
 	icon_state = "rasputin6"
-	allow_construction = TRUE
-	supports_surgery = TRUE
 
 /turf/open/shuttle/dropship/can_surgury/light_grey_bottom_left
-	name = "floor"
 	icon_state = "rasputin4"
-	allow_construction = TRUE
-	supports_surgery = TRUE
 
 /turf/open/shuttle/dropship/can_surgury/light_grey_top_right
-	name = "floor"
 	icon_state = "rasputin7"
-	allow_construction = TRUE
-	supports_surgery = TRUE
 
 /turf/open/shuttle/dropship/can_surgury/light_grey_bottom_right
-	name = "floor"
 	icon_state = "rasputin8"
-	allow_construction = TRUE
-	supports_surgery = TRUE
+
+/turf/open/shuttle/dropship/can_surgury/medium_grey_single_wide_left_to_right
+	icon_state = "rasputin14"
+
+/turf/open/shuttle/dropship/can_surgury/medium_grey_single_wide_up_to_down
+	icon_state = "rasputin15"
 
 /turf/open/shuttle/dropship/can_surgury/dark_grey
-	name = "floor"
 	icon_state = "rasputin15"
-	allow_construction = TRUE
-	supports_surgery = TRUE
 
 /turf/open/shuttle/predship
 	name = "ship floor"

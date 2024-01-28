@@ -379,7 +379,7 @@
 	if(A.z != M.z)
 		return FALSE
 
-	var/list/turf/path = getline2(M, A, include_from_atom = FALSE)
+	var/list/turf/path = get_line(M, A, include_start_atom = FALSE)
 	var/distance = 0
 	for(var/turf/T in path)
 		if(distance >= max_distance)

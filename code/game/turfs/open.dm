@@ -910,6 +910,13 @@
 	allow_construction = FALSE
 	supports_surgery = FALSE
 
+/turf/open/shuttle/can_surgury
+	name = "floor"
+	icon_state = "floor"
+	icon = 'icons/turf/shuttle.dmi'
+	allow_construction = TRUE
+	supports_surgery = TRUE
+
 /turf/open/shuttle/can_surgury/blue
 	name = "floor"
 	icon_state = "floor"

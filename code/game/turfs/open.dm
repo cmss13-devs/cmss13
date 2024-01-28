@@ -924,6 +924,13 @@
 	allow_construction = TRUE
 	supports_surgery = TRUE
 
+/turf/open/shuttle/can_surgury/black
+	name = "floor"
+	icon_state = "floor7"
+	icon = 'icons/turf/shuttle.dmi'
+	allow_construction = TRUE
+	supports_surgery = TRUE
+
 /turf/open/shuttle/dropship
 	name = "floor"
 	icon_state = "rasputin1"

@@ -35,17 +35,16 @@
 	icon = 'icons/obj/items/disk.dmi'
 	icon_state = "datadisk1"
 	var/value = 0 //technology stored on this disk, goes through one to whatever levels of upgrades there are,
-	var/price = 1000 // initial price, multiplied by * price_increase at final checkout if there are better version
-	var/price_increase
+	var/list/price = list(1000) // initial price, multiplied by * price_increase at final checkout if there are better version
 
-/obj/item/research_upgrades/proc/get_upgrade_desc(val) //we have to differ them SOMEHOW, so we do that, called if there are more versions of upgrades than one, basically a copypaste of examine text
-	return "This technology contains unknown data and forever will be..."
+/obj/item/research_upgrades/proc/get_upgrade_desc(val, short = TRUE) //needed for those special cases like one below. only needed in cases where single disk can be many upgrades, otherwise use desc and name.
+	return "ERROR"
 
 /obj/item/research_upgrades/autodoc
-	name = "Research upgrade (AutoDoc)"
-	desc = "Research upgrade for AutoDoc, insert it in the recepticle located underneath certified AutoDoc Pod"
+	name = "Research upgrade "
+	desc = "Research upgrade for AutoDoc, Technology on this disk is used "
 	value = AUTODOC_UPGRADE_LARVA
-	price = 3000
+	price = list(3000, 5000, 8000, 10000)
 	//starting at internal bleeding repair, 2 for bone repair, 3 for organ repair/etc, and 4 for larva removal. They are not exclusive, that means if you get level 4, you still dont have level 2 and 3 & 1.
 	//set to final upgrade to show the amount of upgrades
 
@@ -54,27 +53,45 @@
 	switch(value)
 
 		if(AUTODOC_UPGRADE_IB)
-			. += "Labeling indicates that this disk contains data and statictics for stopping internal bleedings."
+			. += "for stopping internal bleedings."
 		if(AUTODOC_UPGRADE_BONEBREAK)
-			. += "Labeling indicates that this disk contains data and statictics for fixating and mending broken bones."
+			. += "for fixating and mending broken bones."
 		if(AUTODOC_UPGRADE_ORGAN)
-			. += "Labeling indicates that this disk contains data and statictics for treating damaged organs."
+			. += "for treating damaged organs."
 		if(AUTODOC_UPGRADE_LARVA)
-			. += "Labeling indicates that this disk contains data and statictics for extracting unknown parasites."
+			. += "for extracting unknown parasites."
 
-/obj/item/research_upgrades/autodoc/get_upgrade_desc(val)
-	switch(val)
-
-		if(AUTODOC_UPGRADE_IB)
-			. += "Labeling indicates that this disk contains data and statictics for stopping internal bleedings."
-		if(AUTODOC_UPGRADE_BONEBREAK)
-			. += "Labeling indicates that this disk contains data and statictics for fixating and mending broken bones."
-		if(AUTODOC_UPGRADE_ORGAN)
-			. += "Labeling indicates that this disk contains data and statictics for treating damaged organs."
-		if(AUTODOC_UPGRADE_LARVA)
-			. += "Labeling indicates that this disk contains data and statictics for extracting unknown parasites."
+/obj/item/research_upgrades/autodoc/get_upgrade_desc(val, short = TRUE)
+	if(short)
+		switch(val)
+			if(AUTODOC_UPGRADE_IB)
+				. += "(Internal Bleedings)"
+			if(AUTODOC_UPGRADE_BONEBREAK)
+				. += "(Broken Bones)"
+			if(AUTODOC_UPGRADE_ORGAN)
+				. += "(Organ Treating)"
+			if(AUTODOC_UPGRADE_LARVA)
+				. += "(Unknown Parasites)"
+	else
+		switch(val)
+			if(AUTODOC_UPGRADE_IB)
+				. += "for stopping internal bleedings."
+			if(AUTODOC_UPGRADE_BONEBREAK)
+				. += "for fixating and mending broken bones."
+			if (AUTODOC_UPGRADE_ORGAN)
+				. += "for treating damaged organs"
+			if (AUTODOC_UPGRADE_LARVA)
+				. += "for extracting unknown parasites"
 	return
 
+/obj/item/research_upgrades/sleeper
+	name = "Research upgrade (Sleeper)"
+	desc = "Research upgrade for Sleeper system, Technology on this disk is used on a sleeper to allow wider spectrum of chemicals to be administered "
+	value = 1
+	price = list(4000)
+
+/obj/item/research_upgrades/sleeper/get_upgrade_desc(val, short = TRUE)
+	return
 
 
 

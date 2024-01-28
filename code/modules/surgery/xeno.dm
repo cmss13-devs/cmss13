@@ -18,7 +18,7 @@
 	requires_bodypart = FALSE
 
 /datum/surgery/xenomorph/can_start(mob/user, mob/living/carbon/xenomorph/patient, obj/limb/L, obj/item/tool)
-	if(patient.stat == DEAD && !patient.organ_removed)
+	if(patient.stat == DEAD && !patient.organ_removed && !islarva(patient))
 		return TRUE
 	return FALSE
 

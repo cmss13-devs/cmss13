@@ -352,6 +352,7 @@
 	var/obj/item/organ/heart/xeno/organ = new() //give
 	organ.forceMove(src)
 	organ.research_value = tier
+	organ.caste_origin = src.caste_type
 
 	var/datum/hive_status/hive = GLOB.hive_datum[src.hivenumber]
 

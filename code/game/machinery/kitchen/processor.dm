@@ -19,14 +19,32 @@
 
 /datum/food_processor_process/process(loc, what)
 	if (src.output && loc)
-		new src.output(loc)
+		var/obj/item/reagent_container/food/snacks/created_food = new src.output(loc)
+		if (istype(created_food, /obj/item/reagent_container/food/snacks/meat/xenomeat))
+			var/obj/item/reagent_container/food/snacks/meat/original_food = what
+			created_food.made_from_player = original_food.made_from_player
+			created_food.name = ("processed " + created_food.made_from_player + created_food.name)
+			created_food.reagents.remove_reagent("xenoblood", 6)
+		else if (istype(created_food, /obj/item/reagent_container/food/snacks/carpmeat))
+			created_food.name = "processed carp fillet"
+			created_food.reagents.remove_reagent("carpotoxin", 6)
 	if (what)
 		qdel(what)
 
 	/* objs */
+
+/datum/food_processor_process/xenomeat
+	input = /obj/item/reagent_container/food/snacks/meat/xenomeat
+	output = /obj/item/reagent_container/food/snacks/meat/xenomeat
+
 /datum/food_processor_process/meat
 	input = /obj/item/reagent_container/food/snacks/meat
 	output = /obj/item/reagent_container/food/snacks/rawmeatball
+
+
+/datum/food_processor_process/carpmeat
+	input = /obj/item/reagent_container/food/snacks/carpmeat
+	output = /obj/item/reagent_container/food/snacks/carpmeat
 
 /datum/food_processor_process/potato
 	input = /obj/item/reagent_container/food/snacks/grown/potato
@@ -87,6 +105,9 @@
 	var/datum/food_processor_process/P = select_recipe(what)
 	if (!P)
 		to_chat(user, SPAN_DANGER("That probably won't blend."))
+		return 1
+	if ((istype(P,/datum/food_processor_process/xenomeat) || istype(P,/datum/food_processor_process/carpmeat)) && !skillcheck(user, SKILL_DOMESTIC, SKILL_DOMESTIC_MASTER))
+		to_chat(user, SPAN_DANGER("You aren't trained to remove dangerous substances from food"))
 		return 1
 	user.visible_message("[user] put [what] into [src].", \
 		"You put [what] into [src].")

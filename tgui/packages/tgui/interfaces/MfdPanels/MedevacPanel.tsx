@@ -6,7 +6,7 @@ import { Icon } from '../../components';
 import { mfdState, useEquipmentState } from './stateManagers';
 import { MedevacContext, MedevacTargets } from './types';
 
-const MedevacOccupant = (props: { data: MedevacTargets }) => (
+const MedevacOccupant = (props: { readonly data: MedevacTargets }) => (
   <Box>
     <Flex justify="space-between" direction="horizontal">
       <Flex.Item grow>
@@ -47,15 +47,14 @@ const MedevacOccupant = (props: { data: MedevacTargets }) => (
   </Box>
 );
 
-export const MedevacMfdPanel = (props: MfdProps, context) => {
-  const { data, act } = useBackend<MedevacContext>(context);
+export const MedevacMfdPanel = (props: MfdProps) => {
+  const { data, act } = useBackend<MedevacContext>();
   const [medevacOffset, setMedevacOffset] = useLocalState(
-    context,
     `${props.panelStateId}_medevacoffset`,
     0
   );
-  const { setPanelState } = mfdState(context, props.panelStateId);
-  const { equipmentState } = useEquipmentState(context, props.panelStateId);
+  const { setPanelState } = mfdState(props.panelStateId);
+  const { equipmentState } = useEquipmentState(props.panelStateId);
 
   const result = data.equipment_data.find(
     (x) => x.mount_point === equipmentState

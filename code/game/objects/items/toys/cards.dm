@@ -30,6 +30,10 @@
 	. = ..()
 	populate_deck()
 
+/obj/item/toy/deck/Destroy(force)
+	. = ..()
+	QDEL_NULL_LIST(cards)
+
 /obj/item/toy/deck/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("There are <b>[length(cards)]</b> cards remaining in the deck.")
@@ -75,6 +79,7 @@
 		var/obj/item/toy/handcard/H = O
 		for(var/datum/playing_card/P as anything in H.cards)
 			cards += P
+			H.cards -= P
 		update_icon()
 		qdel(O)
 		user.visible_message(SPAN_NOTICE("<b>[user]</b> places their cards on the bottom of \the [src]."), SPAN_NOTICE("You place your cards on the bottom of the deck."))
@@ -271,6 +276,10 @@
 	if(!concealed)
 		. += " ([length(cards)] card\s)"
 
+/obj/item/toy/handcard/Destroy(force)
+	. = ..()
+	QDEL_NULL_LIST(cards)
+
 /obj/item/toy/handcard/aceofspades
 	icon_state = "spades_ace"
 	desc = "An Ace of Spades"
@@ -315,6 +324,9 @@
 
 	//fuck any qsorts and merge sorts. This needs to be brutally easy
 	var/cards_length = length(cards)
+	if(cards_length >= 200)
+		to_chat(usr, SPAN_WARNING("Your hand is too big to sort. Remove some cards."))
+		return
 	for(var/i = 1 to cards_length)
 		for(var/k = 2 to cards_length)
 			if(cards[i].sort_index > cards[k].sort_index)
@@ -331,6 +343,7 @@
 		var/cards_length = length(H.cards)
 		for(var/datum/playing_card/P in H.cards)
 			cards += P
+			H.cards -= P
 		qdel(O)
 		if(pile_state)
 			if(concealed)
@@ -339,6 +352,9 @@
 				user.visible_message(SPAN_NOTICE("\The [user] adds [cards_length > 1 ? "their hand" : "<b>[cards[length(cards)].name]</b>"] to \the [src]."), SPAN_NOTICE("You add [cards_length > 1 ? "your hand" : "<b>[cards[length(cards)].name]</b>"] to \the [src]."))
 		else
 			if(loc != user)
+				if(isstorage(loc))
+					var/obj/item/storage/storage = loc
+					storage.remove_from_storage(src)
 				user.put_in_hands(src)
 		update_icon()
 		return
@@ -390,6 +406,12 @@
 /obj/item/toy/handcard/MouseDrop(atom/over)
 	if(usr != over || !Adjacent(usr))
 		return
+	if(ismob(loc))
+		return
+
+	if(isstorage(loc))
+		var/obj/item/storage/storage = loc
+		storage.remove_from_storage(src)
 	usr.put_in_hands(src)
 
 /obj/item/toy/handcard/get_examine_text(mob/user)
@@ -422,6 +444,12 @@
 		else
 			name = "a playing card"
 			desc = "A playing card."
+
+	if(length(cards) >= 200)
+		// BYOND will flat out choke when using thousands of cards for some unknown reason,
+		// possibly due to the transformed overlay stacking below. Nobody's gonna see the
+		// difference past 40 or so anyway.
+		return
 
 	overlays.Cut()
 

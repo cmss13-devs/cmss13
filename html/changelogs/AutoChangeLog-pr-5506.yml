@@ -1,0 +1,6 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - rscadd: "The game will now change game mode to default and initiate a map vote if a game mode fails to start twice and there are no admins online."
+  - bugfix: "Fixed a runtime during game mode voting"
+  - admin: "Admins can now use the Start Round verb to bypass a gamemode's checks"

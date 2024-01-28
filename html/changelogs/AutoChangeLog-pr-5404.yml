@@ -1,4 +1,0 @@
-author: "Tsurupeta"
-delete-after: True
-changes:
-  - bugfix: "Regular expressions in chat highlights work again."

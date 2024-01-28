@@ -2,8 +2,8 @@ import { useBackend } from '../backend';
 import { Section, Button, Box, LabeledList, ProgressBar, NoticeBox, Divider } from '../components';
 import { Window } from '../layouts';
 
-export const BioSyntheticPrinter = (_props, context) => {
-  const { act, data } = useBackend(context);
+export const BioSyntheticPrinter = () => {
+  const { act, data } = useBackend();
 
   const Working = data.working;
 

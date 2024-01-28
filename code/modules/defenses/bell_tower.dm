@@ -110,7 +110,7 @@
 	if(M.get_target_lock(faction))
 		return
 
-	var/list/turf/path = getline2(src, linked_bell, include_from_atom = TRUE)
+	var/list/turf/path = get_line(src, linked_bell)
 	for(var/turf/PT in path)
 		if(PT.density)
 			return
@@ -210,7 +210,7 @@
 	if(turned_on)
 		if(cloak_alpha_current < cloak_alpha_max)
 			cloak_alpha_current = cloak_alpha_max
-		cloak_alpha_current = Clamp(cloak_alpha_current + incremental_ring_camo_penalty, cloak_alpha_max, 255)
+		cloak_alpha_current = clamp(cloak_alpha_current + incremental_ring_camo_penalty, cloak_alpha_max, 255)
 		cloakebelltower.alpha = cloak_alpha_current
 		addtimer(CALLBACK(src, PROC_REF(cloaker_fade_out_finish), cloakebelltower), camouflage_break, TIMER_OVERRIDE|TIMER_UNIQUE)
 		animate(cloakebelltower, alpha = cloak_alpha_max, time = camouflage_break, easing = LINEAR_EASING, flags = ANIMATION_END_NOW)

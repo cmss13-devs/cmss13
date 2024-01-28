@@ -17641,9 +17641,6 @@
 /area/fiorina/station/lowsec)
 "kIe" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/book/manual/engineering_particle_accelerator{
-	pixel_y = 6
-	},
 /obj/structure/prop/souto_land/pole{
 	dir = 1
 	},
@@ -24442,7 +24439,7 @@
 /area/fiorina/tumor/ice_lab)
 "oIg" = (
 /obj/structure/platform,
-/obj/structure/reagent_dispensers/oxygentank{
+/obj/structure/reagent_dispensers/fueltank/oxygentank{
 	layer = 2.6
 	},
 /turf/open/floor/prison,

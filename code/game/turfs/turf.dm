@@ -79,8 +79,6 @@
 
 	levelupdate()
 
-	visibilityChanged()
-
 	pass_flags = GLOB.pass_flags_cache[type]
 	if (isnull(pass_flags))
 		pass_flags = new()
@@ -127,7 +125,6 @@
 		for(var/I in B.vars)
 			B.vars[I] = null
 		return
-	visibilityChanged()
 	flags_atom &= ~INITIALIZED
 	..()
 

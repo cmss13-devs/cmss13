@@ -1,0 +1,4 @@
+author: "Contrabang"
+delete-after: True
+changes:
+  - spellcheck: "Fixed a few uncommon typos across the entire codebase"

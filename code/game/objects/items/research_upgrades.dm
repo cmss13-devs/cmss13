@@ -41,7 +41,7 @@
 	return "ERROR"
 
 /obj/item/research_upgrades/autodoc
-	name = "Research Upgrade "
+	name = "Research Upgrade (AutoDoc)"
 	desc = "Research upgrade for AutoDoc, Technology on this disk is used "
 	value = AUTODOC_UPGRADE_LARVA
 	price = list(3000, 5000, 8000, 10000)
@@ -97,11 +97,11 @@
 	name =	"Research Market (Credits)"
 	desc =	"Research points disk for chemical synthesis, insert this into research computer to acquire two points" //need to balance this out somehow. either nerf passive income or remove grants from groundside
 	value = 1
-	price = list(3000)
+	price = list(1000)
 
 /obj/item/research_upgrades/packet
 	name = "Research Packet"
-	desc = "A sealed opaque packet containing whatever research marvel the nerds upstairs were brewing, you shouldnt be able to see this!"
+	desc = " A plastic sealed opaque packet containing whatever research marvel the nerds upstairs were brewing, you shouldnt be able to see this!"
 	value = 0
 	//icon = ***
 	//icon_state = ***
@@ -131,6 +131,7 @@
 	price = list(2000)
 	value = 1
 	contains = list()//need to add actual attachments(sprites ;-;) too, so many shit todo holy shit.
+	//also, no idea what kinda of attachments were looking at in future
 
 /obj/item/research_upgrades/packet/attachment/attack_self(mob/user)
 	. = ..()

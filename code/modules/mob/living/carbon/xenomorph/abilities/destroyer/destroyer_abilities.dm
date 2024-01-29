@@ -35,7 +35,7 @@
 	var/slow_length_seconds = 2
 
 /// Leap ability, crashing down dealing major damage to mobs and structures in the area.
-	/datum/action/xeno_action/activable/destroy
+/datum/action/xeno_action/activable/destroy
 	name = "Destroy"
 	action_icon_state = "crest_defense"
 	ability_name = "destroy"

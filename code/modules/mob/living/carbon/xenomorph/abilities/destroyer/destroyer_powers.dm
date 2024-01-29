@@ -41,7 +41,7 @@
 	addtimer(CALLBACK(src, PROC_REF(extinguish_lights), 7), 4 SECONDS)
 
 	for(var/mob/living/carbon/carbon in orange(3, owner))
-		carbon.EyeBlur(daze_legnth_seconds)
+		carbon.EyeBlur(daze_length_seconds)
 		carbon.Daze(daze_length_seconds)
 		carbon.Slow(slow_length_seconds)
 		to_chat(carbon, SPAN_HIGHDANGER("[xeno]'s shriek overwhelms your entire being!"))
@@ -211,7 +211,7 @@
 	..()
 
 /datum/action/xeno_action/activable/destroy/proc/second_template(turf/template_turf)
-	new /obj/effect/xenomorph/xeno_telegraph/destroyer_leap_template/pink(template_turf, 10)
+	new /obj/effect/xenomorph/xeno_telegraph/destroyer_leap_template(template_turf, 10)
 
 /obj/effect/temp_visual/destroyer_leap
 	icon = 'icons/mob/xenos/destroyer.dmi'

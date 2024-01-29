@@ -165,7 +165,7 @@
 	damage = 40
 	accuracy = -HIT_ACCURACY_TIER_2
 	scatter = -SCATTER_AMOUNT_TIER_8
-	penetration = ARMOR_PENETRATION_TIER_2
+	penetration = ARMOR_PENETRATION_TIER_3
 	shell_speed = AMMO_SPEED_TIER_6
 
 /datum/ammo/bullet/rifle/m4ra/impact/on_hit_mob(mob/M, obj/projectile/P)

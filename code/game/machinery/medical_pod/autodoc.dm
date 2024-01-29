@@ -392,6 +392,22 @@
 								H.sdisabilities &= ~DISABILITY_BLIND
 								E.heal_damage(E.damage)
 								E.eye_surgery_stage = 0
+					if("larva")
+						if(prob(99)) visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b>beeps: Removing unknown parasites.");
+						if(!locate(/obj/item/alien_embryo) in occupant)
+							sleep(UNNEEDED_DELAY)
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary."); // >:)
+							surgery_todo_list -= S
+							continue
+						sleep(SCALPEL_MAX_DURATION + HEMOSTAT_MAX_DURATION + REMOVE_OBJECT_MAX_DURATION)
+						var/obj/item/alien_embryo/A = locate() in occupant
+						var/mob/living/carbon/xenomorph/larva/L = locate() in occupant
+						if(L)
+							L.forceMove(get_turf(occupant)) //funny stealth larva bursts incoming
+							qdel(A)
+						else
+							A.forceMove(get_turf(occupant))
+							occupant.status_flags &= ~XENO_HOST
 
 
 			if(LIMB_SURGERY)
@@ -518,22 +534,7 @@
 						if(prob(30)) visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b>croaks: Closing surgical incision.");
 						close_encased(H,S.limb_ref)
 						close_incision(H,S.limb_ref)
-					if("larva")
-						if(prob(30)) visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b>beeps: Removing unknown parasites.");
-						if(!locate(/obj/item/alien_embryo) in occupant)
-							sleep(UNNEEDED_DELAY)
-							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary."); // >:)
-							surgery_todo_list -= S
-							continue
-						sleep(SCALPEL_MAX_DURATION + HEMOSTAT_MAX_DURATION + REMOVE_OBJECT_MAX_DURATION)
-						var/obj/item/alien_embryo/A = locate() in occupant
-						var/mob/living/carbon/xenomorph/larva/L = locate() in occupant
-						if(L)
-							L.forceMove(occupant.loc) //funny stealth larva bursts incoming
-							qdel(A)
-						else
-							A.forceMove(occupant.loc)
-							occupant.status_flags &= ~XENO_HOST
+
 
 		if(prob(30)) visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure complete.");
 		surgery_todo_list -= S
@@ -657,6 +658,7 @@
 			return
 		to_chat(user, SPAN_NOTICE("You insert the data into the console, and the drive whirrs to life, reading the data"))
 		upgrades += upgrd.value
+		to_chat(user, upgrades)
 
 /obj/structure/machinery/autodoc_console/attack_hand(mob/living/user)
 	if(..())
@@ -776,10 +778,12 @@
 				if(isnull(surgeryqueue["toxin"]))
 					dat += "<a href='?src=\ref[src];toxin=1'>Bloodstream Toxin Removal</a><br>"
 				dat += "<br>"
+				to_chat(user, "here")
 				if(upgrades.len > 0)
 					dat += "<b>Orthopedic Surgeries</b>"
-					dat += "<br>"
 						for(var/iter in upgrades)
+							to_chat(user, iter)
+							to_chat(upgrades.len)
 							switch(iter)
 								if(AUTODOC_UPGRADE_BONEBREAK)
 									if(isnull(surgeryqueue["broken"]))
@@ -792,7 +796,7 @@
 										dat += "<a href='?src=\ref[src];organdamage=1'>Organ Damage Treatment</a><br>"
 								if(AUTODOC_UPGRADE_LARVA)
 									if(isnull(surgeryqueue["larva"]))
-										dat += "<a href='?src=\ref[src];organdamage=1'>Experimental Parasite Exctraction</a><br>"
+										dat += "<a href='?src=\ref[src];larva=1'>Experimental Parasite Exctraction</a><br>"
 		else
 			dat += "The autodoc is empty."
 	dat += text("<a href='?src=\ref[];mach_close=sleeper'>Close</a>", user)
@@ -848,9 +852,7 @@
 					N.fields["autodoc_manual"] += create_autodoc_surgery(null,ORGAN_SURGERY,"damage",1)
 				updateUsrDialog()
 			if(href_list["larva"])
-				if(locate(/obj/item/alien_embryo) in connected.occupant)
-					N.fields["autodoc_manual"] += create_autodoc_surgery("chest",ORGAN_SURGERY,"damage",0)
-
+				N.fields["autodoc_manual"] += create_autodoc_surgery("chest",ORGAN_SURGERY,"larva",0)
 			if(href_list["internal"])
 				for(var/obj/limb/L in connected.occupant.limbs)
 					if(L)

@@ -5,6 +5,7 @@
 	icon_state = null
 	w_class = SIZE_TINY
 	garbage = TRUE
+	slot = ACCESSORY_SLOT_HELM_C
 
 /obj/item/prop/helmetgarb/Initialize(mapload, ...)
 	. = ..()

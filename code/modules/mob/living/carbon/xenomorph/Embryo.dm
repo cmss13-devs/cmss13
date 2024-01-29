@@ -245,6 +245,9 @@
 	else
 		new_xeno = new(affected_mob)
 
+	if(HAS_TRAIT(affected_mob, TRAIT_DOUBLE_BURST))
+		hive.stored_larva++
+
 	if(hive)
 		hive.add_xeno(new_xeno)
 		if(!affected_mob.first_xeno && hive.hive_location)

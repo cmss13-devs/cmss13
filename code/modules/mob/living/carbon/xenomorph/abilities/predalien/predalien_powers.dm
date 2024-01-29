@@ -30,7 +30,7 @@
 			if(!istype(behavior))
 				continue
 			new /datum/effects/xeno_buff(carbon, xeno, ttl = (0.25 SECONDS * behavior.kills + 3 SECONDS), bonus_damage = bonus_damage_scale * behavior.kills, bonus_speed = (bonus_speed_scale * behavior.kills))
-			
+
 	apply_cooldown()
 	return ..()
 
@@ -142,17 +142,20 @@
 	if (!istype(predatoralien) || !predatoralien.check_state())
 		return
 
-	if (buffs_active)
+	if (armor_buff && speed_buff)
 		to_chat(predatoralien, SPAN_XENOHIGHDANGER("We cannot stack this!"))
 		return
 
 	if (!check_and_use_plasma_owner())
 		return
 
-	addtimer(CALLBACK(src, PROC_REF(remove_rush_effects)), duration)
+
+	addtimer(CALLBACK(src, PROC_REF(remove_rush_effects)), speed_duration)
+	addtimer(CALLBACK(src, PROC_REF(remove_armor_effects)), armor_duration) // calculate armor and speed differently, so it's a bit more armored while trying to get out
 	predatoralien.add_filter("predalien_toughen", 1, list("type" = "outline", "color" = "#421313", "size" = 1))
 	to_chat(predatoralien, SPAN_XENOWARNING("We feel our muscles tense as our speed and armor increase!"))
-	buffs_active = TRUE
+	speed_buff = TRUE
+	armor_buff = TRUE
 	predatoralien.speed_modifier -= speed_buff_amount
 	predatoralien.armor_modifier += armor_buff_amount
 	predatoralien.recalculate_speed()
@@ -164,15 +167,24 @@
 /datum/action/xeno_action/onclick/feralrush/proc/remove_rush_effects()
 	SIGNAL_HANDLER
 	var/mob/living/carbon/xenomorph/predatoralien = owner
-	if (buffs_active == TRUE)
-		to_chat(predatoralien, SPAN_XENOWARNING("Our muscles relax as we feel our speed wane, we are no longer armored."))
+	if (speed_buff == TRUE)
+		to_chat(predatoralien, SPAN_XENOWARNING("Our muscles relax as we feel our speed wane."))
 		predatoralien.remove_filter("predalien_toughen")
 		predatoralien.speed_modifier += speed_buff_amount
-		predatoralien.armor_modifier -= armor_buff_amount
 		predatoralien.recalculate_speed()
-		predatoralien.recalculate_armor()
-		buffs_active = FALSE
+		speed_buff = FALSE
 		remove_rush_effects()
+
+/datum/action/xeno_action/onclick/feralrush/proc/remove_armor_effects()
+	SIGNAL_HANDLER
+	var/mob/living/carbon/xenomorph/predatoralien = owner
+	if (armor_buff == TRUE)
+		to_chat(predatoralien, SPAN_XENOWARNING("We are no longer armored."))
+		predatoralien.armor_modifier -= armor_buff_amount
+		predatoralien.recalculate_armor()
+		armor_buff = FALSE
+		remove_armor_effects()
+
 
 /datum/action/xeno_action/onclick/toggle_gut_targetting/use_ability(atom/A)
 
@@ -198,3 +210,24 @@
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)
 	return ..()
+
+
+
+
+
+
+/datum/action/xeno_action/activable/tail_stab/predalien_tailstab/use_ability(atom/targetted_atom)
+	var/mob/living/carbon/xenomorph/predalien_tailstab = owner
+
+
+	if(!action_cooldown_check())
+		return FALSE
+
+	if(!predalien_tailstab.check_state())
+		return FALSE
+
+	if (world.time <= predalien_tailstab.next_move)
+		return FALSE
+
+
+

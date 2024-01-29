@@ -56,10 +56,18 @@
 	xeno_cooldown = 12 SECONDS
 
 	// Config
-	var/duration = 3 SECONDS
+	var/speed_duration = 3 SECONDS
+	var/armor_duration = 6 SECONDS
 	var/speed_buff_amount = 0.8 // Go from shit slow to kindafast
 	var/armor_buff_amount = 10 // hopefully-minor buff so they can close the distance
 
-	var/buffs_active = FALSE
+	var/speed_buff = FALSE
+	var/armor_buff = FALSE
+/datum/action/xeno_action/activable/tail_stab/harvest
+	name = "Predalien Tailstab"
+	ability_name = "Predalien Tailstab"
+	xeno_cooldown = 5 MINUTES
+
+	harvest_stab = TRUE
 
 

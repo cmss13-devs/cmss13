@@ -159,6 +159,8 @@
 #define TRAIT_DAZED "dazed"
 /// Apply this to identify a mob as merged with weeds
 #define TRAIT_MERGED_WITH_WEEDS "merged_with_weeds"
+/// This will double burst the target, mainly used for predalien tailstab.
+#define TRAIT_DOUBLE_BURST "doubleburst"
 
 // SPECIES TRAITS
 /// Knowledge of Yautja technology
@@ -227,6 +229,7 @@
 #define TRAIT_IN_TUTORIAL "t_IN_TUTORIAL"
 /// If the mob is cloaked in any form
 #define TRAIT_CLOAKED "t_cloaked"
+
 
 // -- ability traits --
 /// Xenos with this trait cannot have plasma transfered to them

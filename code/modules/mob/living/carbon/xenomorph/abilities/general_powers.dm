@@ -979,6 +979,7 @@
 
 	var/result = ability_act(stabbing_xeno, target, limb)
 
+
 	apply_cooldown()
 	xeno_attack_delay(stabbing_xeno)
 	..()
@@ -998,6 +999,10 @@
 
 	var/stab_overlay
 
+	if(harvest_stab)
+		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] embeds it's tail into [target]'s chest."), SPAN_XENOWARNING("We embed our tail into [target]'s chest and inject it full of chemicals"))
+		playsound(target, "alien_bite", 50, TRUE)
+		ADD_TRAIT(target, TRAIT_DOUBLE_BURST, TRAIT_SOURCE_ABILITY("Predalien Tailstab"))
 	if(blunt_stab)
 		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] swipes its tail into [target]'s [limb ? limb.display_name : "chest"], bashing it!"), SPAN_XENOWARNING("We swipe our tail into [target]'s [limb? limb.display_name : "chest"], bashing it!"))
 		if(prob(1))

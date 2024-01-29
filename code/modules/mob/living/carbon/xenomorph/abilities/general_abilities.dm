@@ -472,6 +472,8 @@
 	ability_primacy = XENO_TAIL_STAB
 	/// Used for defender's tail 'stab'.
 	var/blunt_stab = FALSE
+	/// Used for predalien's tail 'stab'.
+	var/harvest_stab = FALSE
 
 /datum/action/xeno_action/onclick/evolve
 	name = "Evolve"

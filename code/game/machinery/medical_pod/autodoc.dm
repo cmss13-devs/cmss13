@@ -658,7 +658,6 @@
 			return
 		to_chat(user, SPAN_NOTICE("You insert the data into the console, and the drive whirrs to life, reading the data"))
 		upgrades += upgrd.value
-		to_chat(user, upgrades)
 
 /obj/structure/machinery/autodoc_console/attack_hand(mob/living/user)
 	if(..())
@@ -782,8 +781,6 @@
 				if(upgrades.len > 0)
 					dat += "<b>Orthopedic Surgeries</b>"
 						for(var/iter in upgrades)
-							to_chat(user, iter)
-							to_chat(upgrades.len)
 							switch(iter)
 								if(AUTODOC_UPGRADE_BONEBREAK)
 									if(isnull(surgeryqueue["broken"]))

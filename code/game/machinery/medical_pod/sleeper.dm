@@ -59,6 +59,20 @@
 
 // tgui \\
 
+/obj/structure/machinery/sleep_console/attackby(obj/item/with, mob/user)
+	if(!istype(with, /obj/item/research_upgrades/sleeper))
+		return
+	if(connected.upgraded)
+		return
+	if(!user.drop_inv_item_to_loc(with, src))
+		return
+	to_chat(user, SPAN_NOTICE("You insert the data into the console, and the drive whirrs to life, reading the data"))
+	connected.upgraded = TRUE
+	connected.available_chemicals = connected.upgraded_chemicals
+	connected.emergency_chems = connected.upgraded_emergency_chems
+	connected.reagent_removed_per_second = connected.reagent_removed_per_second_upgraded
+
+
 /obj/structure/machinery/sleep_console/attack_hand(mob/living/user)
 	if(..())
 		return
@@ -236,7 +250,9 @@
 	entry_timer = 2 SECONDS
 
 	var/available_chemicals = list("inaprovaline", "paracetamol", "anti_toxin", "dexalin", "tricordrazine")
+	var/upgraded_chemicals = list("inaprovaline", "tramadol", "anti_toxin", "dexalinp", "tricordrazine", "alkysine", "imidazoline")
 	var/emergency_chems = list("inaprovaline", "paracetamol", "anti_toxin", "dexalin", "tricordrazine", "oxycodone", "bicaridine", "kelotane")
+	var/upgraded_emergency_chems = list("inaprovaline", "tramadol", "anti_toxin", "dexalinp", "tricordrazine", "oxycodone", "bicaridine", "kelotane", "meralyne", "dermaline", "alkysine", "imidazoline")
 	var/amounts = list(5, 10)
 	var/filtering = FALSE
 	var/obj/structure/machinery/sleep_console/connected
@@ -244,7 +260,9 @@
 	var/max_chem = 40
 	var/auto_eject_dead = FALSE
 	var/reagent_removed_per_second = AMOUNT_PER_TIME(3, 1 SECONDS)
+	var/reagent_removed_per_second_upgraded = AMOUNT_PER_TIME(8, 1 SECONDS)
 	var/dialysis_started_reagent_vol = null // how many reagents the occupant had in them when we STARTED dialysis
+	var/upgraded = FALSE //research disk upgrade
 
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 15

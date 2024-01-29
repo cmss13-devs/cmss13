@@ -1,6 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - bugfix: "corrected the name of an area from \"Lower Deck Starboard Hull\" to \"Lower Deck Starboard-Aft Hull\"."
-  - bugfix: "added apc's to area that where missing one."
-  - maptweak: "added some areas to almayers (constr site, Starboard-Bow Maintenance, Bow Hull(port and starboard),cryo maintenance."

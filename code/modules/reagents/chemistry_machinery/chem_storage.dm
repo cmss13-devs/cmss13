@@ -57,4 +57,4 @@
 	if(energy >= max_energy)
 		return
 	energy = min(energy + recharge_rate, max_energy)
-	use_power(1500) // This thing uses up alot of power (this is still low as shit for creating reagents from thin air)
+	use_power(1500) // This thing uses up a lot of power (this is still low as shit for creating reagents from thin air)

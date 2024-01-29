@@ -1,0 +1,10 @@
+author: "Huffie56"
+delete-after: True
+changes:
+  - bugfix: "fix upper deck having disposal pipes west of CIC going on a loop."
+  - bugfix: "fix south of alpha briefing having disconnected pipes and disposal from the main loops."
+  - bugfix: "fix south shooting range having is disposal outside and disposal pipe east going over vents."
+  - bugfix: "fix pipes in req rest room going in the walls or windows."
+  - bugfix: "fix pipes in control tower in hangar going bellow the windows instead of the doors."
+  - refactor: "added a few maintenance areas(mess, Port and starboard Midship) ,a few other hull areas( lower and upper stair hull, Port and starboard stern and bow hull)"
+  - maptweak: "corrected a colored tile west of CIC being the wrong sprite."

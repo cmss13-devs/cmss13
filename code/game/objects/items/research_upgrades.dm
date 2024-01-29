@@ -95,7 +95,7 @@
 
 /obj/item/research_upgrades/credits
 	name =	"Research Market (Credits)"
-	desc =	"Research points disk for chemical synthesis, insert this into research computer to acquire two points" //need to balance this out somehow. either nerf passive income or remove grants from groundside
+	desc =	"Research points disk for chemical synthesis, insert this into research computer in order to sell the data and acquire two points" //need to balance this out somehow. either nerf passive income or remove grants from groundside
 	value = 1
 	price = list(1000)
 
@@ -106,18 +106,20 @@
 	//icon = ***
 	//icon_state = ***
 	price = list(1000)
-	var/list/contains = null //the item(s) the packet inside has.
+	var/list/could_contain = null //the item(s) the packet inside has.
 	var/is_opened = FALSE //ripped open or not
+	var/amount = 1 // how much items in packet(how many times to spawn the could_contain).
+	var/random = TRUE //should the items in packets be randomly given or exactly to what could_contain says
 
 /obj/item/research_upgrades/packet/attack_self(mob/user)
 	. = ..()
 	playsound(src, "rip", 15, TRUE, 6)
-	if(isnull(contains) && !is_opened)
+	if(isnull(could_contain) && !is_opened)
 		to_chat(user, SPAN_WARNING("The packet was empty, so you throw it out."))
 		qdel(src)
 		return
 	if(!is_opened)
-		var/thing_to_spawn = pick(contains)
+		var/thing_to_spawn = pick(could_contain)
 		var/obj/item/spawn_item = new thing_to_spawn
 		spawn_item.forceMove(get_turf(user))
 		is_opened = TRUE
@@ -130,7 +132,7 @@
 	desc = "An opaque sealed packet containing one random experimental gun attachment"
 	price = list(2000)
 	value = 1
-	contains = list()//need to add actual attachments(sprites ;-;) too, so many shit todo holy shit.
+	could_contain = list()//need to add actual attachments(sprites ;-;) too, so many shit todo holy shit.
 	//also, no idea what kinda of attachments were looking at in future
 
 /obj/item/research_upgrades/packet/attachment/attack_self(mob/user)
@@ -138,7 +140,23 @@
 	//icon_state = insert torn packet here
 	return
 
+/obj/item/research_upgrades/packet/ammo_x//replace with actually initialls of ammo once sure which ammo to add
+	name = "Research Packet (Ammo)"
+	desc = "Contains a handfull of X ammo. Handle with care"
+	price = list(250, 200)
+	value = 2 // one for m41 cal and second for m39 cal
+	could_contain = list()//replace with a path to actuall ammo when done
+	amount = 3
 
+
+
+/obj/item/research_upgrades/packet/magazine
+	name = "Research Packet (Mag)"
+	desc = "Contains a single magazine for . Handle with care"
+	price = list(250, 200, 250)
+	value = 3 // m39, m41, m4ra defines to come.
+	could_contain = list()//replace with a path to actuall ammo when done
+	amount = 3
 
 
 

@@ -78,7 +78,7 @@
 
 	crosser.pixel_z = 300
 	crosser.forceMove(target)
-	crosser.visible_message(SPAN_WARNING("[crosser] falls out of the sky."), SPAN_HIGHDANGER("As you fall out of [dropship_name], you plummet towards the ground."))
+	crosser.visible_message(SPAN_WARNING("[crosser] falls out of the sky."), SPAN_HIGHDANGER("As you fall out of the [dropship_name], you plummet towards the ground."))
 	animate(crosser, time = 5, pixel_z = 0, flags = ANIMATION_PARALLEL)
 
 	REMOVE_TRAIT(crosser, TRAIT_IMMOBILIZED, TRAIT_SOURCE_DROPSHIP_INTERACTION)

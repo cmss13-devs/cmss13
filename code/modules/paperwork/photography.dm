@@ -17,6 +17,10 @@
 	item_state = "electropack"
 	w_class = SIZE_TINY
 
+/** Picture metadata */
+/datum/picture
+	var/name = "image"
+	var/list/fields = list()
 
 /*
 * photo *

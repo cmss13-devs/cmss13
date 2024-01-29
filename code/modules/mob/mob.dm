@@ -761,7 +761,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 	recalculate_move_delay = TRUE
 
 	if(usr.stat)
-		to_chat(usr, "You are unconcious and cannot do that!")
+		to_chat(usr, "You are unconscious and cannot do that!")
 		return
 
 	if(usr.is_mob_restrained())
@@ -843,14 +843,8 @@ note dizziness decrements automatically in the mob's Life() proc.
 	handle_silent()
 	handle_drugged()
 	handle_slurring()
-	handle_dazed()
 	handle_slowed()
 	handle_superslowed()
-
-/mob/living/proc/handle_dazed()
-	if(dazed)
-		adjust_effect(-1, DAZE)
-	return dazed
 
 /mob/living/proc/handle_slowed()
 	if(slowed)

@@ -168,16 +168,6 @@
 					tutorial_menu()
 					return
 
-			if(client.prefs.species != "Human")
-				if(!is_alien_whitelisted(src, client.prefs.species) && CONFIG_GET(flag/usealienwhitelist))
-					to_chat(src, "You are currently not whitelisted to play [client.prefs.species].")
-					return
-
-				var/datum/species/S = GLOB.all_species[client.prefs.species]
-				if(!(S.flags & IS_WHITELISTED))
-					to_chat(src, alert("Your current species,[client.prefs.species], is not available for play on the station."))
-					return
-
 			LateChoices()
 
 		if("late_join_xeno")
@@ -216,16 +206,6 @@
 			if(!GLOB.enter_allowed)
 				to_chat(usr, SPAN_WARNING("There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)"))
 				return
-
-			if(client.prefs.species != "Human")
-				if(!is_alien_whitelisted(src, client.prefs.species) && CONFIG_GET(flag/usealienwhitelist))
-					to_chat(src, alert("You are currently not whitelisted to play [client.prefs.species]."))
-					return 0
-
-				var/datum/species/S = GLOB.all_species[client.prefs.species]
-				if(!(S.flags & IS_WHITELISTED))
-					to_chat(src, alert("Your current species,[client.prefs.species], is not available for play on the station."))
-					return 0
 
 			AttemptLateSpawn(href_list["job_selected"])
 			return
@@ -367,7 +347,7 @@
 			roles_show ^= FLAG_SHOW_MEDICAL
 
 		else if(roles_show & FLAG_SHOW_MARINES && GLOB.ROLES_MARINES.Find(J.title))
-			dat += "<hr>Squad Riflemen:<br>"
+			dat += "<hr>Marines:<br>"
 			roles_show ^= FLAG_SHOW_MARINES
 
 		dat += "<a href='byond://?src=\ref[src];lobby_choice=SelectedJob;job_selected=[J.title]'>[J.disp_title] ([J.current_positions]) (Active: [active])</a><br>"
@@ -381,14 +361,6 @@
 	close_spawn_windows()
 
 	var/mob/living/carbon/human/new_character
-
-	var/datum/species/chosen_species
-	if(client.prefs.species)
-		chosen_species = GLOB.all_species[client.prefs.species]
-	if(chosen_species)
-		// Have to recheck admin due to no usr at roundstart. Latejoins are fine though.
-		if(is_species_whitelisted(chosen_species) || has_admin_rights())
-			new_character = new(loc, client.prefs.species)
 
 	if(!new_character)
 		new_character = new(loc)
@@ -455,26 +427,6 @@
 			if(ui.allowed_user_stat == -1)
 				ui.close()
 				continue
-
-/mob/new_player/proc/has_admin_rights()
-	return client.admin_holder.rights & R_ADMIN
-
-/mob/new_player/proc/is_species_whitelisted(datum/species/S)
-	if(!S) return 1
-	return is_alien_whitelisted(src, S.name) || !CONFIG_GET(flag/usealienwhitelist) || !(S.flags & IS_WHITELISTED)
-
-/mob/new_player/get_species()
-	var/datum/species/chosen_species
-	if(client.prefs.species)
-		chosen_species = GLOB.all_species[client.prefs.species]
-
-	if(!chosen_species)
-		return "Human"
-
-	if(is_species_whitelisted(chosen_species) || has_admin_rights())
-		return chosen_species.name
-
-	return "Human"
 
 /mob/new_player/get_gender()
 	if(!client || !client.prefs) ..()

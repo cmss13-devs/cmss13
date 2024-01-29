@@ -247,13 +247,7 @@ Class Procs:
 	return (user.IsAdvancedToolUser(user) || isRemoteControlling(user))
 
 /obj/structure/machinery/attack_remote(mob/user as mob)
-	if(isrobot(user))
-		// For some reason attack_robot doesn't work
-		// This is to stop robots from using cameras to remotely control machines.
-		if(user.client && user.client.eye == user)
-			return src.attack_hand(user)
-	else
-		return src.attack_hand(user)
+	return src.attack_hand(user)
 
 /obj/structure/machinery/attack_hand(mob/living/user as mob)
 	if(inoperable(MAINT))
@@ -327,3 +321,33 @@ Class Procs:
 
 /obj/structure/machinery/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_state
+
+//made into "prop" from an old destilery project abandon 9 year ago.
+
+/obj/structure/machinery/mill
+	name = "\improper Mill"
+	desc = "It is a machine that grinds produce."
+	icon_state = "autolathe"
+	density = TRUE
+	anchored = TRUE
+
+/obj/structure/machinery/fermenter
+	name = "\improper Fermenter"
+	desc = "It is a machine that ferments produce into alcoholic drinks."
+	icon_state = "autolathe"
+	density = TRUE
+	anchored = TRUE
+
+/obj/structure/machinery/still
+	name = "\improper Still"
+	desc = "It is a machine that produces hard liquor from alcoholic drinks."
+	icon_state = "autolathe"
+	density = TRUE
+	anchored = TRUE
+
+/obj/structure/machinery/squeezer
+	name = "\improper Squeezer"
+	desc = "It is a machine that squeezes extracts from produce."
+	icon_state = "autolathe"
+	density = TRUE
+	anchored = TRUE

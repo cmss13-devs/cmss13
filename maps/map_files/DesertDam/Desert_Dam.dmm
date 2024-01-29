@@ -9512,14 +9512,6 @@
 	icon_state = "desert_transition_edge1"
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
-"aCH" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
-/turf/open/floor/interior/wood/alt,
-/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aCI" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood/alt,
@@ -15524,6 +15516,9 @@
 	pixel_y = 24;
 	start_charge = 0
 	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/prison{
 	dir = 5;
 	icon_state = "red"
@@ -16773,17 +16768,11 @@
 	},
 /area/desert_dam/building/security/lobby)
 "aZt" = (
-/obj/structure/bed/chair{
+/obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "red"
-	},
-/area/desert_dam/building/security/lobby)
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/security/detective)
 "aZu" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -18117,9 +18106,6 @@
 "bdL" = (
 /obj/item/reagent_container/food/drinks/flask/detflask,
 /obj/item/clothing/head/det_hat,
-/obj/structure/machinery/light{
-	dir = 8
-	},
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/security/detective)
@@ -25382,17 +25368,6 @@
 /obj/structure/window/reinforced,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/security/courtroom)
-"bBU" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -30;
-	start_charge = 0
-	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "darkred2"
-	},
-/area/desert_dam/building/security/southern_hallway)
 "bBV" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -74501,7 +74476,7 @@ ceA
 act
 aVz
 aXD
-aZt
+aXD
 aXD
 aXD
 blY
@@ -74972,7 +74947,7 @@ aXE
 aZJ
 bdL
 bjI
-aXM
+aZt
 aVB
 boW
 bqy
@@ -76387,7 +76362,7 @@ bsS
 bvy
 bsS
 bsS
-bBU
+bsS
 bFr
 aQH
 bIX
@@ -86410,7 +86385,7 @@ dTs
 dTs
 dTs
 aEa
-aCH
+aCJ
 aCI
 aDh
 aCJ

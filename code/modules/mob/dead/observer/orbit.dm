@@ -110,7 +110,7 @@
 
 		if(isliving(M))
 			var/mob/living/player = M
-			serialized["health"] = FLOOR((player.health / player.maxHealth * 100), 1)
+			serialized["health"] = Floor(player.health / player.maxHealth * 100)
 
 			if(isxeno(player))
 				var/mob/living/carbon/xenomorph/xeno = player
@@ -126,7 +126,7 @@
 				var/obj/item/card/id/id_card = human.get_idcard()
 				var/datum/species/human_species = human.species
 				var/max_health = human_species.total_health != human.maxHealth ? human_species.total_health : human.maxHealth
-				serialized["health"] = FLOOR((player.health / max_health * 100), 1)
+				serialized["health"] = Floor(player.health / max_health * 100)
 
 				serialized["job"] = id_card?.assignment ? id_card.assignment : human.job
 				serialized["nickname"] = human.real_name
@@ -174,9 +174,6 @@
 				continue
 			if(isanimal(player))
 				animals += list(serialized)
-
-		else if(isAI(M))
-			humans += list(serialized)
 
 	data["humans"] = humans
 	data["marines"] = marines

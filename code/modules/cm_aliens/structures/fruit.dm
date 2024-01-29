@@ -239,7 +239,7 @@
 
 /obj/effect/alien/resin/fruit/unstable/consume_effect(mob/living/carbon/xenomorph/recipient, do_consume = TRUE)
 	if(mature && recipient && !QDELETED(recipient))
-		recipient.add_xeno_shield(Clamp(overshield_amount, 0, recipient.maxHealth * 0.3), XENO_SHIELD_SOURCE_GARDENER, duration = shield_duration, decay_amount_per_second = shield_decay)
+		recipient.add_xeno_shield(clamp(overshield_amount, 0, recipient.maxHealth * 0.3), XENO_SHIELD_SOURCE_GARDENER, duration = shield_duration, decay_amount_per_second = shield_decay)
 		to_chat(recipient, SPAN_XENONOTICE("We feel our defense being bolstered, and begin to regenerate rapidly."))
 		// Every seconds, heal him for 5.
 		new /datum/effects/heal_over_time(recipient, regeneration_amount_total, regeneration_ticks, 1)
@@ -403,7 +403,8 @@
 	if(cant_consume)
 		user.affected_message(affected_xeno,
 			SPAN_HELPFUL("You <b>fail to [user == affected_xeno ? "eat" : "feed [affected_xeno]"] [current_fruit]</b>."),
-			SPAN_HELPFUL("[user] <b>fails to feed</b> you <b>[current_fruit]</b>."))
+			SPAN_HELPFUL("[user] <b>fails to feed</b> you <b>[current_fruit]</b>."),
+			SPAN_NOTICE("[user] fails to [user == affected_xeno ? "eat" : "feed [affected_xeno]"] [current_fruit]."))
 		return
 	user.affected_message(affected_xeno,
 		SPAN_HELPFUL("You <b>start [user == affected_xeno ? "eating" : "feeding [affected_xeno]"] [current_fruit]</b>."),
@@ -417,7 +418,8 @@
 	if(cant_consume) //Check again after the timer incase they ate another fruit
 		user.affected_message(affected_xeno,
 			SPAN_HELPFUL("You <b>fail to [user == affected_xeno ? "eat" : "feed [affected_xeno]"] [current_fruit]</b>."),
-			SPAN_HELPFUL("[user] <b>fails to feed</b> you <b>[current_fruit]</b>."))
+			SPAN_HELPFUL("[user] <b>fails to feed</b> you <b>[current_fruit]</b>."),
+			SPAN_NOTICE("[user] fails to [user == affected_xeno ? "eat" : "feed [affected_xeno]"] [current_fruit]."))
 		return
 
 	user.affected_message(affected_xeno,

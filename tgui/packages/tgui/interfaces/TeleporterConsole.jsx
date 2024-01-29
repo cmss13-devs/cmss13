@@ -2,8 +2,8 @@ import { useBackend } from '../backend';
 import { Button, Section, ProgressBar, NoticeBox, Box, Dimmer, Icon, Dropdown, LabeledList } from '../components';
 import { Window } from '../layouts';
 
-export const TeleporterConsole = (_props, context) => {
-  const { act, data } = useBackend(context);
+export const TeleporterConsole = () => {
+  const { act, data } = useBackend();
 
   const timeLeft = data.next_teleport_time - data.worldtime;
   const timeLeftPct = timeLeft / data.cooldown_length;

@@ -295,7 +295,7 @@
 /atom/movable/nvg_light
 	light_power = 0.5
 	light_range = 1
-	light_color = COLOUR_GREEN
+	light_color = COLOR_LIGHT_GREEN
 	light_system = MOVABLE_LIGHT
 	light_flags = LIGHT_ATTACHED
 

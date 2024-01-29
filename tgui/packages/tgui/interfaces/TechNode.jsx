@@ -2,8 +2,8 @@ import { useBackend } from '../backend';
 import { Stack, Section, LabeledList, Button } from '../components';
 import { Window } from '../layouts';
 
-export const TechNode = (props, context) => {
-  const { act, data } = useBackend(context);
+export const TechNode = (props) => {
+  const { act, data } = useBackend();
 
   const {
     total_points,

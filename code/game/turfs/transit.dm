@@ -79,7 +79,7 @@
 	crosser.pixel_z = 300
 	crosser.forceMove(target)
 	crosser.visible_message(SPAN_WARNING("[crosser] falls out of the sky."), SPAN_HIGHDANGER("As you fall out of [dropship_name], you plummet towards the ground."))
-	animate(crosser, time = 5, pixel_z = 0)
+	animate(crosser, time = 5, pixel_z = 0, flags = ANIMATION_PARALLEL)
 
 	REMOVE_TRAIT(crosser, TRAIT_IMMOBILIZED, TRAIT_SOURCE_DROPSHIP_INTERACTION)
 	if(isitem(crosser))
@@ -90,16 +90,26 @@
 	if(!isliving(crosser))
 		return // don't know how you got here, but you shouldnt be here.
 	var/mob/living/fallen_mob = crosser
+
+	playsound(target, "punch", rand(20, 70), TRUE)
+	playsound(target, "punch", rand(20, 70), TRUE)
+	playsound(target, "bone_break", rand(20, 70), TRUE)
+	playsound(target, "bone_break", rand(20, 70), TRUE)
+
 	fallen_mob.KnockDown(10) // 10 seconds
 	fallen_mob.Stun(3) // 3 seconds
 
+
 	if(ishuman(fallen_mob))
 		var/mob/living/carbon/human/human = fallen_mob
+		human.last_damage_data = create_cause_data("falling from [dropship_name]", human)
 		// I'd say falling from space is pretty much like getting hit by an explosion
-		human.take_overall_armored_damage(250, ARMOR_BOMB, limb_damage_chance = 100)
+		human.take_overall_armored_damage(300, ARMOR_BOMB, limb_damage_chance = 100)
 		// but just in case, you will still take a ton of damage.
-		human.take_overall_damage(100, used_weapon = "falling", limb_damage_chance = 100)
-		playsound(human, "bone_break", 45, TRUE)
+		human.take_overall_damage(200, used_weapon = "falling", limb_damage_chance = 100)
+		if(human.stat != DEAD)
+			human.death(create_cause_data("falling from [dropship_name]", human))
+		fallen_mob.status_flags |= PERMANENTLY_DEAD
 		return
 	// take a little bit more damage otherwise
 	fallen_mob.take_overall_damage(400, used_weapon = "falling", limb_damage_chance = 100)

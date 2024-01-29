@@ -1,0 +1,5 @@
+author: "mullenpaul"
+delete-after: True
+changes:
+  - code_imp: "fixes sticky messages in STUI"
+  - refactor: "STUI is now a TSX component"

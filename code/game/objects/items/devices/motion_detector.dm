@@ -191,6 +191,13 @@
 	if(ishuman(A.loc))
 		return A.loc
 
+/obj/item/device/motiondetector/xm4
+
+/obj/item/device/motiondetector/xm4/get_user()
+	var/atom/A = loc
+	if(ishuman(A.loc))
+		return A.loc
+
 /obj/item/device/motiondetector/proc/apply_debuff(mob/M)
 	return
 

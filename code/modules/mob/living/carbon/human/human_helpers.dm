@@ -248,6 +248,22 @@
 				TMD.update_icon()
 				sg.motion_detector()
 
+	for(var/i in cont)
+		if(istype(i, /obj/item/device/assembly/prox_sensor))
+			var/obj/item/device/assembly/prox_sensor/prox = i
+			if(prox.scanning)
+				prox.toggle_scan()
+		if(istype(i, /obj/item/device/motiondetector))
+			var/obj/item/device/motiondetector/md = i
+			md.toggle_active(src, old_active = TRUE, forced = TRUE)
+		if(istype(i, /obj/item/clothing/suit/storage/marine/medium/rto/intel))
+			var/obj/item/clothing/suit/storage/marine/medium/rto/intel/xm4 = i
+			if(xm4.motion_detector)
+				xm4.motion_detector = FALSE
+				var/datum/action/item_action/intel/toggle_motion_detector/TMD = locate(/datum/action/item_action/intel/toggle_motion_detector) in xm4.actions
+				TMD.update_icon()
+				xm4.motion_detector()
+
 /mob/living/carbon/human/proc/disable_headsets()
 	//Disable all radios to reduce radio spam for dead people
 	var/list/cont = contents_recursive()

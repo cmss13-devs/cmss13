@@ -34,7 +34,7 @@
 	desc = "Somehow you got this, you shouldnt be able to, consider yourself special."
 	icon = 'icons/obj/items/disk.dmi'
 	icon_state = "datadisk1"
-	var/value = 0 //technology stored on this disk, goes through one to whatever levels of upgrades there are. 0 Excludes it from buying menu.
+	var/value = ITEM_EXCLUDE_BUY //technology stored on this disk, goes through one to whatever levels of upgrades there are. 0 Excludes it from buying menu.
 	var/list/price = list(1000) // initial price, multiplied by * price_increase at final checkout if there are better version
 
 /obj/item/research_upgrades/proc/get_upgrade_desc(val, short = TRUE) //needed for those special cases like one below. only needed in cases where single disk can be many upgrades, otherwise use desc and name.
@@ -102,7 +102,7 @@
 /obj/item/research_upgrades/packet
 	name = "Research Packet"
 	desc = " A plastic sealed opaque packet containing whatever research marvel the nerds upstairs were brewing, you shouldnt be able to see this!"
-	value = 0
+	value = ITEM_EXCLUDE_BUY
 	//icon = ***
 	//icon_state = ***
 	price = list(1000)

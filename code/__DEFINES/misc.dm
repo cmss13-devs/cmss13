@@ -155,16 +155,24 @@
 #define ASSEMBLY_UNLOCKED 1
 #define ASSEMBLY_LOCKED 2
 
+// RESEARCH UPGRADES DEFINES //
+
 // Matrix CAS Upgrades
 #define MATRIX_DEFAULT 0
 #define MATRIX_NVG 1
 #define MATRIX_WIDE 2
 
-//autodoc upgrade via research
+//autodoc upgrade
 #define AUTODOC_UPGRADE_IB 1
 #define AUTODOC_UPGRADE_BONEBREAK 2
 #define AUTODOC_UPGRADE_ORGAN 3
 #define AUTODOC_UPGRADE_LARVA 4
+
+//Value define, read research_upgrades.dm for more info'
+#define ITEM_EXCLUDE_BUY 0
+
+
+// RESEARCH UPGRADES DEFINES END
 
 // Statistics defines
 #define STATISTIC_XENO "xeno"

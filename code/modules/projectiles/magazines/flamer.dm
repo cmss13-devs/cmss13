@@ -19,7 +19,7 @@
 
 	var/max_intensity = 40
 	var/max_range = 5
-	var/max_duration = 30
+	var/max_duration = 40
 
 	var/fuel_pressure = 1 //How much fuel is used per tile fired
 	var/max_pressure = 10

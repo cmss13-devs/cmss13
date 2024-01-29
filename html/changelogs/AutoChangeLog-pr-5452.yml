@@ -1,4 +1,0 @@
-author: "Doubleumc"
-delete-after: True
-changes:
-  - refactor: "projectile paths are the same in both directions, A->B and B->A"

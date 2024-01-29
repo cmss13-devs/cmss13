@@ -518,6 +518,22 @@
 						if(prob(30)) visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b>croaks: Closing surgical incision.");
 						close_encased(H,S.limb_ref)
 						close_incision(H,S.limb_ref)
+					if("larva")
+						if(prob(30)) visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b>beeps: Removing unknown parasites.");
+						if(!locate(/obj/item/alien_embryo) in occupant)
+							sleep(UNNEEDED_DELAY)
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary."); // >:)
+							surgery_todo_list -= S
+							continue
+						sleep(SCALPEL_MAX_DURATION + HEMOSTAT_MAX_DURATION + REMOVE_OBJECT_MAX_DURATION)
+						var/obj/item/alien_embryo/A = locate() in occupant
+						var/mob/living/carbon/xenomorph/larva/L = locate() in occupant
+						if(L)
+							L.forceMove(occupant.loc) //funny stealth larva bursts incoming
+							qdel(A)
+						else
+							A.forceMove(occupant.loc)
+							occupant.status_flags &= ~XENO_HOST
 
 		if(prob(30)) visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure complete.");
 		surgery_todo_list -= S
@@ -590,6 +606,7 @@
 	unslashable = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 40
+	var/list/upgrades = list() // lists what kind of op we can get
 
 /obj/structure/machinery/autodoc_console/Initialize()
 	. = ..()
@@ -628,6 +645,18 @@
 
 /obj/structure/machinery/autodoc_console/process()
 	updateUsrDialog()
+
+/obj/structure/machinery/autodoc_console/attackby(obj/item/with, mob/user)
+	if(istype(with, /obj/item/research_upgrades/autodoc))
+		var/obj/item/research_upgrades/autodoc/upgrd = with
+		for(var/iter in upgrades)
+			if(iter == upgrd.value)
+				to_chat(user, SPAN_NOTICE("This data is already present in the [src]!"))
+				return
+		if(!user.drop_inv_item_to_loc(with, src))
+			return
+		to_chat(user, SPAN_NOTICE("You insert the data into the console, and the drive whirrs to life, reading the data"))
+		upgrades += upgrd.value
 
 /obj/structure/machinery/autodoc_console/attack_hand(mob/living/user)
 	if(..())
@@ -700,6 +729,9 @@
 								if("eyes")
 									surgeryqueue["eyes"] = 1
 									dat += "Corrective Eye Surgery"
+								if("larva")
+									surgeryqueue["larva"] = 1
+									dat += "Experimental Parasite Surgery"
 						if(LIMB_SURGERY)
 							switch(A.surgery_procedure)
 								if("internal")
@@ -720,6 +752,7 @@
 								if("open")
 									surgeryqueue["open"] = 1
 									dat += "Close Open Incisions"
+
 					dat += "<br>"
 
 			dat += "<hr><a href='?src=\ref[src];surgery=1'>Begin Surgery</a> - <a href='?src=\ref[src];refresh=1'>Refresh Menu</a> - <a href='?src=\ref[src];clear=1'>Clear Queue</a><hr>"
@@ -743,6 +776,23 @@
 				if(isnull(surgeryqueue["toxin"]))
 					dat += "<a href='?src=\ref[src];toxin=1'>Bloodstream Toxin Removal</a><br>"
 				dat += "<br>"
+				if(upgrades.len > 0)
+					dat += "<b>Orthopedic Surgeries</b>"
+					dat += "<br>"
+						for(var/iter in upgrades)
+							switch(iter)
+								if(AUTODOC_UPGRADE_BONEBREAK)
+									if(isnull(surgeryqueue["broken"]))
+										dat += "<a href='?src=\ref[src];broken=1'>Broken Bone Surgery</a><br>"
+								if(AUTODOC_UPGRADE_IB)
+									if(isnull(surgeryqueue["internal"]))
+										dat += "<a href='?src=\ref[src];internal=1'>Internal Bleeding Surgery</a><br>"
+								if(AUTODOC_UPGRADE_ORGAN)
+									if(isnull(surgeryqueue["organdamage"]))
+										dat += "<a href='?src=\ref[src];organdamage=1'>Organ Damage Treatment</a><br>"
+								if(AUTODOC_UPGRADE_LARVA)
+									if(isnull(surgeryqueue["larva"]))
+										dat += "<a href='?src=\ref[src];organdamage=1'>Experimental Parasite Exctraction</a><br>"
 		else
 			dat += "The autodoc is empty."
 	dat += text("<a href='?src=\ref[];mach_close=sleeper'>Close</a>", user)
@@ -797,6 +847,9 @@
 				if(!needed)
 					N.fields["autodoc_manual"] += create_autodoc_surgery(null,ORGAN_SURGERY,"damage",1)
 				updateUsrDialog()
+			if(href_list["larva"])
+				if(locate(/obj/item/alien_embryo) in connected.occupant)
+					N.fields["autodoc_manual"] += create_autodoc_surgery("chest",ORGAN_SURGERY,"damage",0)
 
 			if(href_list["internal"])
 				for(var/obj/limb/L in connected.occupant.limbs)

@@ -1,4 +1,0 @@
-author: "SabreML"
-delete-after: True
-changes:
-  - spellcheck: "Made observers see the marine version of CAS warnings, rather than the xeno one."

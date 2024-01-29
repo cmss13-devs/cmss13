@@ -1,4 +1,0 @@
-author: "private-tristan"
-delete-after: True
-changes:
-  - bugfix: "Civilian survs will now spawn with snow gear on snow maps."

@@ -353,7 +353,12 @@
 	set category = "Object"
 	set src in oview(1)
 
-	if(!can_touch(usr) || ismouse(usr))
+	if(!can_touch(usr))
+		return
+
+	// Small regular mob, or very small xeno.
+	if(usr.mob_size == MOB_SIZE_SMALL || usr.mob_size == MOB_SIZE_XENO_VERY_SMALL)
+		to_chat(usr, SPAN_WARNING("[isxeno(usr) ? "We are" : "You're"] too small to flip [src]."))
 		return
 
 	if(usr.a_intent != INTENT_HARM)

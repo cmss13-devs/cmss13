@@ -1,4 +1,19 @@
 /*
+* TO ADD
+*
+* CAN NOT HARM CHECKS / DEAD CHECKS?
+* PLASMA CHECKS
+* STATUS CHECKS
+* LOGS
+* EARLY RETURNS?
+* ATTACK VISUALS FOR ALL ABILITIES
+* SOUNDS FOR ALL ABILITIES
+* LAST DAMAGE DATA = cause_data
+*/
+
+
+
+/*
 	REND ABILITY
 	3x3 aoe damage centred on the destroyer. Basic ability, spammable, low damage.
 */
@@ -59,13 +74,37 @@
 	Medium cooldown gap closer pushes things out of the way and does damage.
 */
 
-/datum/action/xeno_action/activable/unstoppable_force/use_ability(atom/target)
-
+/datum/action/xeno_action/activable/pounce/unstoppable_force/additional_effects_always()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	XENO_ACTION_CHECK(xeno)
+	var/turf/current_turf = get_turf(xeno)
 
-	apply_cooldown()
-	..()
+	new /obj/effect/xenomorph/xeno_telegraph/destroyer_attack_template/yellow(get_step(current_turf, SOUTHWEST), 10)
+
+	for(var/mob/living/carbon/carbon in orange(1, current_turf))
+		if(xeno.can_not_harm(carbon))
+			continue
+
+		to_chat(carbon, SPAN_XENODANGER("[xeno] tears into you at great speed."))
+		carbon.apply_armoured_damage(end_charge_damage)
+
+/datum/action/xeno_action/activable/pounce/unstoppable_force/additional_effects(mob/living/living_mob)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	var/facing = xeno.dir
+
+	if(!iscarbon(living_mob))
+		return
+
+	var/mob/living/carbon/carbon = living_mob
+
+	carbon.apply_armoured_damage(direct_hit_damage)
+
+	xeno.throw_carbon(carbon, facing, throw_distance, throw_speed)
+
+/datum/action/xeno_action/activable/pounce/unstoppable_force/pre_windup_effects()
+	var/mob/living/carbon/xenomorph/xeno = owner
+
+	xeno.Shake()
+
 
 /*
 	DESTROY ABILITY
@@ -111,8 +150,8 @@
 	owner.emote("roar")
 
 	//Initial visual
-	var/obj/effect/temp_visual/destroyer_leap/F = new(owner.loc, negative, owner.dir)
-	new /obj/effect/xenomorph/xeno_telegraph/destroyer_leap_template(template_turf, 20)
+	var/obj/effect/temp_visual/destroyer_leap/leap_visual = new(owner.loc, negative, owner.dir)
+	new /obj/effect/xenomorph/xeno_telegraph/destroyer_attack_template(template_turf, 20)
 
 	negative = !negative //invert it for the swoop down later
 
@@ -124,7 +163,7 @@
 		if(QDELETED(owner) || owner.stat == DEAD) //we got hit and died, rip us
 
 			//Initial effect
-			qdel(F)
+			qdel(leap_visual)
 
 			if(owner.stat == DEAD)
 				leaping = FALSE
@@ -198,8 +237,8 @@
 		cade.add_filter("cluster_stacks", 2, list("type" = "outline", "color" = COLOR_RED, "size" = 1))
 		cade.take_damage(250)
 
-	for(var/mob/M in range(7, owner))
-		shake_camera(M, 15, 1)
+	for(var/mob/living in range(7, owner))
+		shake_camera(living, 15, 1)
 
 	REMOVE_TRAIT(owner, TRAIT_UNDENSE, "Destroy")
 	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, "Destroy")
@@ -211,7 +250,7 @@
 	..()
 
 /datum/action/xeno_action/activable/destroy/proc/second_template(turf/template_turf)
-	new /obj/effect/xenomorph/xeno_telegraph/destroyer_leap_template(template_turf, 10)
+	new /obj/effect/xenomorph/xeno_telegraph/destroyer_attack_template(template_turf, 10)
 
 /obj/effect/temp_visual/destroyer_leap
 	icon = 'icons/mob/xenos/destroyer.dmi'
@@ -251,7 +290,10 @@
 	else
 		animate(src, pixel_x = -16, pixel_z = 0, time = 5)
 
-/obj/effect/xenomorph/xeno_telegraph/destroyer_leap_template
+/obj/effect/xenomorph/xeno_telegraph/destroyer_attack_template
 	icon = 'icons/effects/96x96.dmi'
 	icon_state = "xenolandingpink"
 	layer = BELOW_MOB_LAYER
+
+/obj/effect/xenomorph/xeno_telegraph/destroyer_attack_template/yellow
+	icon_state = "xenolandingyellow"

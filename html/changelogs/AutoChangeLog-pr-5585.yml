@@ -1,0 +1,4 @@
+author: "Oyu07"
+delete-after: True
+changes:
+  - bugfix: "Widens Dropship fabricator UI. Points for ammo are no longer cut off"

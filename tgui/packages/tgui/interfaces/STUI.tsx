@@ -1,20 +1,45 @@
+import { useEffect, useState } from 'react';
 import { useBackend, useLocalState } from '../backend';
 import { Tabs, Section, Box, Flex, Input, Slider, LabeledList } from '../components';
 import { Window } from '../layouts';
 
-export const STUI = (props) => {
-  const { act, data } = useBackend();
-  const tabs = data.tabs || ['Attack'];
-  const [selectedTab, setSelectedTab] = useLocalState('progress', tabs[0]);
-  const logs = data.logs[selectedTab].length ? data.logs[selectedTab] : [''];
+type STUIData = {
+  tabs: Array<string>;
+  logs: Map<string, Array<string>>;
+};
 
+const useSearchTerm = () => {
   const [searchTerm, setSearchTerm] = useLocalState('searchTerm', '');
+  return { searchTerm, setSearchTerm };
+};
 
+const useLogFont = () => {
   const [logsfontnumber, setLogsFontSize] = useLocalState('logsfontnumber', 7);
-  const logsfontsize = logsfontnumber + 'pt';
+  return {
+    logsfontnumber,
+    setLogsFontSize,
+  };
+};
 
-  const bigfontnumber = logsfontnumber + 5;
-  const bigfontsize = bigfontnumber + 'pt';
+const useTabs = () => {
+  const [selectedTab, setSelectedTab] = useLocalState('progress', 'Attack');
+  return {
+    selectedTab,
+    setSelectedTab,
+  };
+};
+
+export const STUI = () => {
+  const { data } = useBackend<STUIData>();
+  const { selectedTab } = useTabs();
+  const { searchTerm, setSearchTerm } = useSearchTerm();
+  const { logsfontnumber, setLogsFontSize } = useLogFont();
+
+  const [logs, setLogs] = useState<Array<string>>([]);
+
+  useEffect(() => {
+    setLogs(data.logs[selectedTab].length ? data.logs[selectedTab] : []);
+  }, [data.logs, selectedTab]);
 
   return (
     <Window width={900} height={700}>
@@ -50,27 +75,7 @@ export const STUI = (props) => {
             </LabeledList>
           </Flex.Item>
           <Flex.Item mt={1} grow={1} basis={0}>
-            <Section fill scrollable>
-              {logs.map((log) => {
-                if (!log.toLowerCase().match(searchTerm)) {
-                  return;
-                }
-                return (
-                  <Box fontSize={logsfontsize} key={log}>
-                    {log}
-                  </Box>
-                );
-              })}
-              {(logs.length > 1 && (
-                <Box align="center" fontSize={bigfontsize}>
-                  --- End of Logs --
-                </Box>
-              )) || (
-                <Box align="center" fontSize={bigfontsize}>
-                  --- No Logs --
-                </Box>
-              )}
-            </Section>
+            <RenderLogs logs={logs} />
           </Flex.Item>
         </Flex>
       </Window.Content>
@@ -78,10 +83,39 @@ export const STUI = (props) => {
   );
 };
 
-const STUItabs = (props) => {
-  const { act, data } = useBackend();
-  const tabs = data.tabs || ['Attack'];
-  const [selectedTab, setSelectedTab] = useLocalState('progress', tabs[0]);
+const RenderLogs = (props: { readonly logs: Array<string> }) => {
+  const { searchTerm } = useSearchTerm();
+  const { logs } = props;
+  const { logsfontnumber } = useLogFont();
+  const bigfontsize = logsfontnumber + 5 + 'pt';
+  return (
+    <Section fill scrollable>
+      {logs
+        .filter((x) => x.toLowerCase().match(searchTerm) !== null)
+        .map((log, i) => (
+          <RenderLog log={log} key={i} />
+        ))}
+      <Box align="center" fontSize={bigfontsize}>
+        {logs.length > 1 ? '--- End of Logs --' : '--- No Logs --'}
+      </Box>
+    </Section>
+  );
+};
+
+const RenderLog = (props: { readonly log: string }) => {
+  const { logsfontnumber } = useLogFont();
+  const logsfontsize = logsfontnumber + 'pt';
+  return (
+    <Box fontSize={logsfontsize} key={props.log}>
+      {props.log}
+    </Box>
+  );
+};
+
+const STUItabs = () => {
+  const { act, data } = useBackend<STUIData>();
+  const tabs = data.tabs ?? [''];
+  const { selectedTab, setSelectedTab } = useTabs();
   return (
     <Tabs fluid textAlign="center">
       <Tabs.Tab

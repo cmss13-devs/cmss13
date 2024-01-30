@@ -1321,7 +1321,7 @@
 
 /obj/item/clothing/shoes/marine/fluff/steelpoint //CKEY=steelpoint (UNIQUE)
 	name = "M4-X Boot"
-	desc = "Standard issue boots issued alongside M4-X armor, features a special coating of acid-resistant layering to allow its operator to move through acid-dretched enviroments safely. This prototype version lacks that feature.  DONOR ITEM"
+	desc = "Standard issue boots issued alongside M4-X armor, features a special coating of acid-resistant layering to allow its operator to move through acid-dretched environments safely. This prototype version lacks that feature.  DONOR ITEM"
 	icon_state = "marine"
 	item_state = "marine"
 

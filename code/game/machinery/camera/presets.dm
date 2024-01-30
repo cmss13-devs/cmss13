@@ -70,21 +70,7 @@
 // AUTONAME
 
 /obj/structure/machinery/camera/autoname
-	var/number = 0 //camera number in area
-
-//This camera type automatically sets it's name to whatever the area that it's in is called.
-/obj/structure/machinery/camera/autoname/Initialize(mapload, ...)
-	. = ..()
-	number = 1
-	var/area/A = get_area(src)
-	if(A)
-		for(var/obj/structure/machinery/camera/autoname/C in GLOB.machines)
-			if(C == src) continue
-			var/area/CA = get_area(C)
-			if(CA.type == A.type)
-				if(C.number)
-					number = max(number, C.number+1)
-		c_tag = "[A.name] #[number]"
+	autoname = TRUE
 
 //cameras installed inside the dropships, accessible via both cockpit monitor and Almayer camera computers
 /obj/structure/machinery/camera/autoname/almayer/dropship_one

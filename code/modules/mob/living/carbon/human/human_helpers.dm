@@ -247,15 +247,6 @@
 				var/datum/action/item_action/smartgun/toggle_motion_detector/TMD = locate(/datum/action/item_action/smartgun/toggle_motion_detector) in sg.actions
 				TMD.update_icon()
 				sg.motion_detector()
-
-	for(var/i in cont)
-		if(istype(i, /obj/item/device/assembly/prox_sensor))
-			var/obj/item/device/assembly/prox_sensor/prox = i
-			if(prox.scanning)
-				prox.toggle_scan()
-		if(istype(i, /obj/item/device/motiondetector))
-			var/obj/item/device/motiondetector/md = i
-			md.toggle_active(src, old_active = TRUE, forced = TRUE)
 		if(istype(i, /obj/item/clothing/suit/storage/marine/medium/rto/intel))
 			var/obj/item/clothing/suit/storage/marine/medium/rto/intel/xm4 = i
 			if(xm4.motion_detector)

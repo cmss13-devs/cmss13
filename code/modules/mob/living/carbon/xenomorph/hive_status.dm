@@ -133,6 +133,12 @@
 
 	var/list/available_nicknumbers = list()
 
+
+	/// Hive buffs
+	///List of hive buffs used by the hive
+	var/list/active_hivebuffs = list()
+	var/list/used_hivebuffs = list()
+
 	/*Stores the image()'s for the xeno evolution radial menu
 	To add an image for your caste - add an icon to icons/mob/xenos/radial_xenos.dmi
 	Icon size should be 32x32, to make them fit within the radial menu border size your icon 22x22 and leave 10px transparent border.
@@ -1426,3 +1432,25 @@
 	name = "Attack"
 	desc = "Attack the enemy here!"
 	icon_state = "attack"
+
+/// Hive buffs
+
+/mob/living/carbon/xenomorph/proc/choose_hivebuff()
+	var/list/buffs = list()
+	var/list/names = list()
+	for(var/datum/hivebuff/buff as anything in typesof(/datum/hivebuff))
+		var/buffname = initial(buff.name)
+		names += buffname
+		buffs[buffname] = buff
+
+	var/input = tgui_input_list(src, "Pick a buff.", "Select Buff",names)
+	if(!buffs[input])
+		to_chat(world, "Invalid selection.")
+		return
+
+	src.hive.apply_hivebuff(buffs[input])
+
+/datum/hive_status/proc/apply_hivebuff(datum/hivebuff/hivebuff)
+	var/datum/hivebuff/new_buff = new hivebuff(src)
+	if(!new_buff.on_engage())
+		return FALSE

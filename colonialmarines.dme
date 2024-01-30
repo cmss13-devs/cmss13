@@ -1614,6 +1614,7 @@
 #include "code\modules\cm_aliens\Ovipositor.dm"
 #include "code\modules\cm_aliens\weeds.dm"
 #include "code\modules\cm_aliens\XenoStructures.dm"
+#include "code\modules\cm_aliens\hivebuffs\hivebuff.dm"
 #include "code\modules\cm_aliens\structures\construction_node.dm"
 #include "code\modules\cm_aliens\structures\egg.dm"
 #include "code\modules\cm_aliens\structures\fruit.dm"

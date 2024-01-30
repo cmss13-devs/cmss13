@@ -44,15 +44,19 @@
 
 /obj/structure/barricade/metal/attackby(obj/item/item, mob/user)
 	if(iswelder(item))
+		// to eliminate the use of the ME3 hand welder can't go in attackby_welder because the other don't use item...
 		if(!HAS_TRAIT(item, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
 
-		attackby_welder()// the idea is to replace a bunch of repetitive task with a prop
+		attackby_welder(user)// the idea is to replace a bunch of repetitive task with a prop
 
+
+
+		// this is to prepare for weld_cade...
 		var/obj/item/tool/weldingtool/welder = item
-
 		weld_cade(welder, user)
+
 		return
 
 	if(try_nailgun_usage(item, user))

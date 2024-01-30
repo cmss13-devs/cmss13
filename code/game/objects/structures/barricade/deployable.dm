@@ -29,13 +29,10 @@
 		if(!HAS_TRAIT(item, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
-		if(user.action_busy)
-			return
-		var/obj/item/tool/weldingtool/welder = item
-		if(health == maxhealth)
-			to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
-			return
 
+		attackby_welder(user)// the idea is to replace a bunch of repetitive task with a prop
+
+		var/obj/item/tool/weldingtool/welder = item
 		weld_cade(welder, user)
 		return
 

@@ -4,13 +4,14 @@
 	icon_state = "sink_emptied_animation"
 	desc = "A sink used for washing one's hands and face."
 	anchored = TRUE
-	var/busy = FALSE //Something's being washed at the moment
+	/// if something's being washed at the moment
+	var/busy = FALSE
+
 
 /obj/structure/sink/Initialize()
 	. = ..()
 	if(prob(50))
 		icon_state = "sink_emptied"
-
 
 
 /obj/structure/sink/proc/stop_flow() //sets sink animation to normal sink (without running water)
@@ -20,7 +21,6 @@
 	else
 		icon_state = "sink_emptied"
 	flick("sink_animation_empty", src)
-
 
 
 /obj/structure/sink/attack_hand(mob/user)
@@ -109,10 +109,12 @@
 	name = "puddle"
 	icon_state = "puddle"
 
+
 /obj/structure/sink/puddle/attack_hand(mob/M as mob)
 	icon_state = "puddle-splash"
 	..()
 	icon_state = "puddle"
+
 
 /obj/structure/sink/puddle/attackby(obj/item/O as obj, mob/user as mob)
 	icon_state = "puddle-splash"

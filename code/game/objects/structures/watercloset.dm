@@ -1,5 +1,3 @@
-//todo: toothbrushes, and some sort of "toilet-filthinator" for the hos
-
 /obj/structure/toilet
 	name = "toilet"
 	desc = "The HT-451, a torque rotation-based, waste disposal unit for small matter. This one seems remarkably clean."
@@ -9,14 +7,17 @@
 	anchored = TRUE
 	can_buckle = TRUE
 	buckle_lying = 0
-	var/open = 0 //if the lid is up
-	var/cistern = 0 //if the cistern bit is open
-	var/w_items = 0 //the combined w_class of all the items in the cistern
-	var/mob/living/swirlie = null //the mob being given a swirlie
+	/// if the lid is up
+	var/open = 0
+	/// if the cistern bit is open
+	var/cistern = 0
+	/// the combined w_class of all the items in the cistern
+	var/w_items = 0
+	/// the mob being given a swirlie
+	var/mob/living/swirlie = null
 	var/list/buckling_y = list("north" = 1, "south" = 4, "east" = 0, "west" = 0)
 	var/list/buckling_x = list("north" = 0, "south" = 0, "east" = -5, "west" = 4)
 	var/atom/movable/overlay/cistern_overlay
-
 
 
 /obj/structure/toilet/Initialize()
@@ -28,6 +29,7 @@
 	cistern_overlay.vis_flags = VIS_INHERIT_DIR|VIS_INHERIT_ID
 	vis_contents += cistern_overlay
 	update_icon()
+
 
 /obj/structure/toilet/attack_hand(mob/living/user as mob)
 	if(buckled_mob)
@@ -69,7 +71,6 @@
 			flick("cistern[cistern]_flush", cistern_overlay)
 
 
-
 /obj/structure/toilet/send_buckling_message(mob/M, mob/user)
 	if (M == user)
 		to_chat(M, SPAN_NOTICE("You seat yourself onto the toilet"))
@@ -77,9 +78,9 @@
 		to_chat(user, SPAN_NOTICE("[M] has been seated onto the toilet by [user]."))
 		to_chat(M, SPAN_NOTICE("You have been seated onto the toilet by [user]."))
 
+
 /obj/structure/toilet/afterbuckle(mob/M)
 	. = ..()
-
 
 	if(. && buckled_mob == M)
 		var/direction = dir2text(dir)
@@ -106,7 +107,6 @@
 				M.overlays -= image("toilet00")
 
 
-
 /obj/structure/toilet/verb/flip_lid()
 	set name = "Flip lid"
 	set category = "Object"
@@ -116,10 +116,10 @@
 	update_icon()
 
 
-
 /obj/structure/toilet/update_icon()
 	icon_state = "toilet[open][cistern]"
 	cistern_overlay.icon_state = "cistern[cistern]"
+
 
 /obj/structure/toilet/attackby(obj/item/I, mob/living/user)
 	if(HAS_TRAIT(I, TRAIT_TOOL_CROWBAR))

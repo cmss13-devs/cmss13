@@ -8,9 +8,12 @@
 	use_power = USE_POWER_NONE
 	var/on = 0
 	var/obj/effect/mist/mymist = null
-	var/ismist = 0 //needs a var so we can make it linger~
-	var/watertemp = "normal" //freezing, normal, or boiling
-	var/mobpresent = 0 //true if there is a mob on the shower's loc, this is to ease process()
+	/// needs a var so we can make it linger~
+	var/ismist = 0
+	/// freezing, normal, or boiling
+	var/watertemp = "normal"
+	/// true if there is a mob on the shower's loc, this is to ease process()
+	var/mobpresent = 0
 	var/is_washing = 0
 
 /obj/structure/machinery/shower/Initialize()
@@ -27,6 +30,7 @@
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
+
 /obj/structure/machinery/shower/attack_hand(mob/M as mob)
 	on = !on
 	update_icon()
@@ -39,6 +43,7 @@
 			G.clean_blood()
 	else
 		stop_processing()
+
 
 /obj/structure/machinery/shower/attackby(obj/item/I as obj, mob/user as mob)
 	if(I.type == /obj/item/device/analyzer)
@@ -55,6 +60,7 @@
 					watertemp = "normal"
 			user.visible_message(SPAN_NOTICE("[user] adjusts the shower with \the [I]."), SPAN_NOTICE("You adjust the shower with \the [I]."))
 			add_fingerprint(user)
+
 
 /obj/structure/machinery/shower/update_icon() //this is terribly unreadable, but basically it makes the shower mist up
 	overlays.Cut() //once it's been on for a while, in addition to handling the water overlay.
@@ -80,12 +86,14 @@
 				QDEL_NULL(mymist)
 				ismist = 0
 
+
 /obj/structure/machinery/shower/Crossed(atom/movable/O)
 	..()
 	wash(O)
 	if(ismob(O))
 		mobpresent++
 		check_heat(O)
+
 
 /obj/structure/machinery/shower/Uncrossed(atom/movable/O)
 	if(ismob(O))
@@ -177,12 +185,14 @@
 			if(istype(E,/obj/effect/decal/cleanable) || istype(E,/obj/effect/overlay))
 				qdel(E)
 
+
 /obj/structure/machinery/shower/process()
 	if(!on) return
 	wash_floor()
 	if(!mobpresent) return
 	for(var/mob/living/carbon/C in loc)
 		check_heat(C)
+
 
 /obj/structure/machinery/shower/proc/wash_floor()
 	if(!ismist && is_washing)
@@ -192,6 +202,7 @@
 // reagents.add_reagent("water", 2)
 	T.clean(src)
 	addtimer(VARSET_CALLBACK(src, is_washing, FALSE), 10 SECONDS)
+
 
 /obj/structure/machinery/shower/proc/check_heat(mob/M as mob)
 	if(!on || watertemp == "normal") return

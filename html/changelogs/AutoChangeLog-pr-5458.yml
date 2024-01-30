@@ -1,0 +1,7 @@
+author: "LC4492"
+delete-after: True
+changes:
+  - rscadd: "Adds a variation of the chef's apron, \"Medical's apron\", to be used by medical personnel, mainly nurses."
+  - bugfix: "Fixed the code in the prep vendors to make things of different groups not act like they are of the same group, like how you couldn't take a labcoat and a snowcoat, only one of both, which does not make sense."
+  - code_imp: "Update of the medical's vendor preps. Exclusion of most part of medical's equipment when waking up from cryo. Addition of latejoin landmarks to the same place where they usually wake up as firstjoiners."
+  - maptweak: "Added the landmarks to the map and changed the CMO's vendor to an unused space in his room to improve on item grabbing, because the items were being covered by the bed's sheet, and making player's life to take things from it more difficult. Also re-added a bedsheet in the medical's area that some old PR somehow removed."

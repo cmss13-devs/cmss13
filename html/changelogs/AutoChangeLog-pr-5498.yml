@@ -1,4 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - refactor: "creating it's own file for souto mobile code instead of it being in vehicle.dm."

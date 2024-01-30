@@ -1,0 +1,10 @@
+author: "private-tristan"
+delete-after: True
+changes:
+  - balance: "Xenos do greatly increased damage to metal foam (0.8x to 1.75x)"
+  - balance: "Iron metal foam hp decreased from 85 to 75, meaning that all T3s other than boiler can instantly break it."
+  - balance: "Metal foam grenades now create iron foam."
+  - balance: "Aluminum foam reactions are now cap'd at 300u"
+  - balance: "amount of metal foam grenades in req doubled."
+  - balance: "Surplus explosive pack now contains 2 metal foam grenades"
+  - rscdel: "metal foam is no longer able to be created in chemistry"

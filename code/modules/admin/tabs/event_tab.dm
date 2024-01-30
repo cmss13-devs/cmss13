@@ -23,7 +23,7 @@
 	faction = temp_list[faction]
 
 	if(!GLOB.custom_event_info_list[faction])
-		to_chat(usr, "Error has occured, [faction] category is not found.")
+		to_chat(usr, "Error has occurred, [faction] category is not found.")
 		return
 
 	var/datum/custom_event_info/CEI = GLOB.custom_event_info_list[faction]

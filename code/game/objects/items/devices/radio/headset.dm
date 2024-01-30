@@ -383,7 +383,7 @@
 
 /obj/item/device/radio/headset/ai_integrated/receive_range(freq, level)
 	if (disabledAi)
-		return -1 //Transciever Disabled.
+		return -1 //Transceiver Disabled.
 	return ..(freq, level, 1)
 
 //MARINE HEADSETS

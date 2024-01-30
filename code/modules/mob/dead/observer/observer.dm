@@ -32,6 +32,7 @@
 	plane = GHOST_PLANE
 	layer = ABOVE_FLY_LAYER
 	stat = DEAD
+	mob_flags = KNOWS_TECHNOLOGY
 	var/adminlarva = FALSE
 	var/ghostvision = TRUE
 	var/can_reenter_corpse

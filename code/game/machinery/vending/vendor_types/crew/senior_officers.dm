@@ -287,7 +287,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_cmo, list(
 	))
 
 
-/obj/effect/essentials_set/medical/doctor/CMO
+/obj/effect/essentials_set/medical/doctor/cmo
 	spawned_gear_list = list(
 		/obj/item/device/defibrillator,
 		/obj/item/storage/firstaid/adv,

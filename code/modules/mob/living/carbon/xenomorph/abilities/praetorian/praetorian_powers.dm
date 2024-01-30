@@ -13,7 +13,7 @@
 		return
 
 	//X = xeno user, A = target atom
-	var/list/turf/target_turfs = getline2(source_xeno, targetted_atom, include_from_atom = FALSE)
+	var/list/turf/target_turfs = get_line(source_xeno, targetted_atom, include_start_atom = FALSE)
 	var/length_of_line = LAZYLEN(target_turfs)
 	if(length_of_line > 3)
 		target_turfs = target_turfs.Copy(1, 4)
@@ -738,7 +738,9 @@
 	if (!X.check_state() || X.action_busy)
 		return
 
-	if (!action_cooldown_check() && check_and_use_plasma_owner())
+	if (!action_cooldown_check())
+		return
+	if (!check_and_use_plasma_owner())
 		return
 
 	var/turf/current_turf = get_turf(X)
@@ -750,8 +752,6 @@
 		to_chat(X, SPAN_XENODANGER("We cancel our acid ball."))
 		return
 
-	if (!action_cooldown_check())
-		return
 
 	apply_cooldown()
 

@@ -154,3 +154,239 @@
       options for all maps and new item descriptions that are lore friendly.
   realforest2001:
   - rscadd: Added the X17 Riot Breaching Charge.
+2024-01-15:
+  InsaneRed:
+  - qol: Moves "Banish, Re-admit and De-evolving" queen abilities into one list, making
+      the queen ui  less clutterier
+  Stakeyng:
+  - rscadd: Added the ability to combine prescription glasses with eyewear for varying
+      roles
+  private-tristan:
+  - bugfix: removed a light fixture being doubled on trijent
+  - maptweak: moved some trijent lights in marshals off windows
+  - maptweak: Alamayer PermaBrig Chairs face the right way
+2024-01-16:
+  Drathek:
+  - bugfix: Fix all hands on deck message not sending to those in cryopods
+  Huffie56:
+  - rscadd: Add the ability to build multi tile assembly from metal sheets.
+  ItsVyzo:
+  - balance: m56d loses burst fire
+  SabreML:
+  - bugfix: Fixed dead marines being able to man and fire the M56D.
+  TheGamerdk:
+  - bugfix: Overwatch now works on Whiskey Outpost again, not that you will use it.
+  Zonespace27:
+  - balance: 3 smartgun drums now spawn in the SG's equipment crate. Smartgun drums
+      cannot be purchased from the SG vendor.
+2024-01-17:
+  SabreML:
+  - bugfix: Fixed larvae sometimes spawning in space on Fiorina.
+  TheGamerdk:
+  - bugfix: The Kutjevo Refinery has been granted an additional SMES
+2024-01-18:
+  Birdtalon:
+  - bugfix: Fixed buckled mobs unable to move after being thrown by a xeno.
+  Drathek:
+  - code_imp: Cleaned up some oversights in attachment Detatch logic
+  SabreML:
+  - rscadd: Added a 'balloon alert' when toggling Crest Defense as a Defender.
+  - code_imp: Made balloon alerts centre themselves on xeno sprites.
+  Vicacrov:
+  - bugfix: Fixes an issue where player-controlled facehuggers would ghost out when
+      smashing against anti-hugging headgear like the B18 helmet.
+2024-01-19:
+  BadAtThisGame302:
+  - rscadd: Added the Wey-Yu lighter to the CLs briefcase instead of a normal one
+  BeagleGaming1:
+  - bugfix: Floor floodlights use correct sprites
+  Birdtalon:
+  - bugfix: Bedrolls no longer give metal when wrenched.
+  - code_imp: INTERRUPT_ALL define now includes resting.
+  DelineFortune:
+  - code_imp: Changed value of metal you are getting for recycling attachments via
+      autolathe.
+  Huffie56:
+  - rscdel: deleting machinery called centrifuge in distillery/main.dm and deleted
+      the distellery/main.dm file and folder.
+  - refactor: move all the machinery of distillery/main.dm into machinery.dm and remove
+      all their added functionality.
+  - rscdel: Remove all the manuals that were nothing to do with CM lore. (cloning,
+      particle_accelerator, singularity_safety, robotics_cyborgs)
+  - code_imp: Updated research manual.
+  - refactor: refactor to reduce the number variable using colour in them instead
+      of color.
+  - rscdel: deleting a var called "max_temperature" that created in Walls.dm and didn't
+      do anything code wise.
+  InsaneRed:
+  - bugfix: Fixes praetorian acid ball eating up plasma if its on cooldown
+  SabreML:
+  - qol: Made open TGUI windows transfer over when a xeno player evolves.
+  - rscadd: Made xeno tunnel lists sort by distance to the player.
+  TheGamerdk:
+  - rscadd: Groundside Operations console now shows ASL status
+  - bugfix: FTL is sorted correctly in Groundside Operations console
+  Vicacrov:
+  - bugfix: Special xeno structures no longer layer below the Alamo and Normandy's
+      equipment attach points.
+  blackdragonTOW:
+  - soundadd: added unique sound for minimap updates
+  - soundadd: added unique fax sound for fax announcements.
+  cuberound:
+  - bugfix: lowers volume of neurohalucination from 100 (no outher sounds are so laud)
+      to 65 (just about under queen screech level).
+  fira:
+  - rscdel: Removed AIs.
+  - rscdel: Removed Cyborgs.
+  - rscdel: Removed Maintenance Drones.
+  - rscdel: Removed Camera chunking for AIs, and all associated dynamic updates.
+  - rscdel: Removed Robotic equipment items.
+  - rscdel: Removed Robotic and AI transformation tools.
+  - rscdel: Removed Robotic Transformation Disease.
+  - rscdel: Removed Nanites. Roburgers are now all safe to eat.
+  - rscdel: Removed functionality from AI machinery and AI card. They're props now.
+  iloveloopers:
+  - balance: Being immune to bonebreaks now makes you immune to delimbs.
+  mullenpaul:
+  - refactor: upgraded root tgui files to typescript to closer align with tg
+  - refactor: upgraded typescript to 4.9.4
+  - refactor: upgraded yarn to 3.3.1
+  - refactor: upgraded a bunch of tgui tooling
+  realforest2001:
+  - bugfix: Mutated facehuggers are no longer invisible.
+  - bugfix: Fancy closet now works as desired and runtime free.
+  - rscadd: Added an area for the closet to use instead of APC interior.
+  - code_imp: Repathed /area/vehicle to /area/interior/vehicle.
+2024-01-20:
+  Drathek:
+  - bugfix: The M56D and the M2C now retain their labels when disassembled
+  - bugfix: The M56D can now be charger crushed when not fully assembled
+  - bugfix: The M56D being run over by a vehicle now undeploys the gun correctly (so
+      it retains the gun if it had a gun)
+  - bugfix: Fix an edge case that could duplicate the M56D when charger crushed
+  - balance: The M56D now retains the health of the gun through all of its different
+      disassembled states
+  - bugfix: Fixed mobs merged with weeds remaining ignited
+  SabreML:
+  - bugfix: Fixed the 'busy' circle icon being drawn above darkness and screen effects.
+2024-01-21:
+  ClairionCM:
+  - qol: made whistles less spammy
+  Huffie56:
+  - rscadd: 'Add some boards to the board vendor in engi on almayer(Air Alarm Electronics,
+      Security Camera Monitor,
+
+      Station Alerts, Arcade, Atmospheric Monitor).'
+  Releasethesea:
+  - rscadd: adds prescription variants of the orange, black, and M1A1 goggles
+  SabreML:
+  - rscadd: Made larvae and facehuggers able to use custom emotes.
+  Vicacrov:
+  - bugfix: Fixes engine/weapon attach points layering below the dropship walls.
+2024-01-22:
+  cuberound:
+  - balance: AP rocket applies 3 weaken and 3 paralyze no matter if you hit the mob
+      directly(from 2), at max range (from 2) or tile under it (from 4)
+  - balance: indirect AP rocket does the same damage to walls and mobs
+2024-01-23:
+  realforest2001:
+  - rscadd: Added Whitelist Panel for whitelist senators to manage their own whitelists.
+  - refactor: Whitelist.txt is no longer functional, owing to the new system.
+  - rscdel: Removed "Alien Whitelist" checks regarding base SS13 races.
+2024-01-24:
+  BeagleGaming1:
+  - balance: Repairing bones with bone glue costs a portion of the bone glue's resources
+  - balance: Repairing bones with a screwdriver costs metal
+  - rscdel: Removed bone glue from the medilathe
+  - spellcheck: New description for bone glue
+  Ben10083:
+  - maptweak: Workin Joey has returned to the Maintenance Bar
+  Birdtalon:
+  - rscadd: Xenomorph basic tutorial.
+  SabreML:
+  - bugfix: Fixed being gibbed with the Ctrl or Alt key held sometimes breaking movement
+      as an observer.
+  SpartanBobby:
+  - maptweak: A bunch of edits to big red and big red nightmares for the following
+      areas, Northcaves, Medical Morgue, maint between cargo and general store, LZ2,
+      North Libary, EVA, dorms bathroom
+  VileBeggar:
+  - balance: M39 burst scatter multiplier reduced from 7 to 4.
+  fira:
+  - bugfix: Fixed an exploit involving playing cards.
+  mullenpaul:
+  - refactor: switched from infernojs to react
+  private-tristan:
+  - rscadd: Added a new xeno tip about where to target.
+  - spellcheck: changed a few tips' wording.
+  - rscdel: Removed an outdated xeno tip about slashing NVGs
+  realforest2001:
+  - rscadd: Psychic Whisper now broadcasts to deadchat too.
+  - bugfix: Psychic Whisper can now be used while lying down.
+2024-01-25:
+  Drathek:
+  - bugfix: Fixed more item exploits
+  - bugfix: Fixed lingering overlays in inventories for metal stacks and cards
+  Huffie56:
+  - refactor: creating it's own file for souto mobile code instead of it being in
+      vehicle.dm.
+  TheGamerdk:
+  - rscadd: A hive collapse (No new Queen) while at 3 xenos or below is now a marine
+      major, instead of a minor.
+2024-01-26:
+  Huffie56:
+  - bugfix: corrected the name of an area from "Lower Deck Starboard Hull" to "Lower
+      Deck Starboard-Aft Hull".
+  - bugfix: added apc's to area that where missing one.
+  - maptweak: added some areas to almayers (constr site, Starboard-Bow Maintenance,
+      Bow Hull(port and starboard),cryo maintenance.
+  Johannes2262:
+  - rscadd: Added three more magazines to each of the MP's handgun cases
+  LTNTS:
+  - rscadd: bolted version of blood and medical vendors
+  - rscadd: pill bottle crate
+  - balance: cheaper medical crates from req
+  - balance: less items in med vendors, mainly pill bottles
+  cuberound:
+  - rscadd: added messages when the CAS sonic boom is played
+  - soundadd: reduced volume falloff of CAS sonic boom
+  - bugfix: allows custom flamethrower tanks to be filled directly from oxygentank
+  realforest2001:
+  - rscadd: Adds paygrade defines for PMCs, VAI, Mercenaries and TWE.
+  - code_imp: Adds code to populate reference lists for certain paygrades.
+  - bugfix: Fixes PMC synth not using the correct grade.
+  - rscadd: Syndicate ID card repathed and works with paygrades.
+  - spellcheck: The latejoin menu marine category title is now Marines instead of
+      Squad Riflemen, as this was an inaccuracy.
+2024-01-27:
+  Contrabang:
+  - bugfix: Dchat is no longer notified of hugs from tutorials
+  SabreML:
+  - bugfix: Fixed the xeno 'queen locator' giving the wrong location when a tunnel
+      was selected.
+2024-01-29:
+  BadAtThisGame302:
+  - rscadd: Added a Researcher on Trijent.
+  - rscadd: Added a CMB Deputy on Trijent.
+  - rscadd: Added a second RD uniform.
+  - code_imp: changed the Trijent Security Guard to not use a USCM MP Hat and trenchcoat.
+  - code_imp: changed a not used "synthetic service uniform" to it's before shamelessly
+      taken RD Variant.
+  Contrabang:
+  - spellcheck: Fixed a few uncommon typos across the entire codebase
+  Doubleumc:
+  - refactor: projectile paths are the same in both directions, A->B and B->A
+  Drathek:
+  - rscadd: The game will now change game mode to default and initiate a map vote
+      if a game mode fails to start twice and there are no admins online.
+  - bugfix: Fixed a runtime during game mode voting
+  - admin: Admins can now use the Start Round verb to bypass a gamemode's checks
+  SabreML:
+  - spellcheck: Made observers see the marine version of CAS warnings, rather than
+      the xeno one.
+  private-tristan:
+  - bugfix: Civilian survs will now spawn with snow gear on snow maps.
+  realforest2001:
+  - rscadd: Added biometric checks to command announcements.
+  - code_imp: Security camera autoname is now determined by a variable rather than
+      hardcode.

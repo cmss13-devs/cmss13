@@ -393,7 +393,8 @@
 
 /obj/item/clothing/accessory/poncho/Initialize()
 	. = ..()
-	select_gamemode_skin(type)
+	// Only do this for the base type '/obj/item/clothing/accessory/poncho'.
+	select_gamemode_skin(/obj/item/clothing/accessory/poncho)
 	inv_overlay = image("icon" = 'icons/obj/items/clothing/ties_overlay.dmi', "icon_state" = "[icon_state]")
 	update_icon()
 

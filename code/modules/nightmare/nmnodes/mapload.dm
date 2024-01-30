@@ -100,7 +100,7 @@
 		if(!matcher.Find(filename))
 			continue
 #if !defined(UNIT_TESTS)
-		var/fprob = Clamp(text2num(matcher.group[1]) / 100, 0, 1)
+		var/fprob = clamp(text2num(matcher.group[1]) / 100, 0, 1)
 		if(fprob < rand())
 			continue
 #endif // Remove the possibility of chance for testing

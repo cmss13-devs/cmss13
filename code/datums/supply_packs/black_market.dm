@@ -642,7 +642,7 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	. = ..()
 	var/obj/item/paper/nope = new(src)
 	nope.name = "automated ASRS note"
-	nope.info = "Sorry! Your requested order of <b>USCM PONCHO (X2)</b> was not succesfully delivered because: 'No items of that type found in storage.'"
+	nope.info = "Sorry! Your requested order of <b>USCM PONCHO (X2)</b> was not successfully delivered because: 'No items of that type found in storage.'"
 	nope.color = "green"
 	nope.update_icon()
 
@@ -656,7 +656,7 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	. = ..()
 	var/obj/item/paper/nope = new(src)
 	nope.name = "automated ASRS note"
-	nope.info = "Sorry! Your requested order of <b> HIGH-EXPLOSIVE ARMOR-PIERCING M41A MAGAZINE (X3)</b> was not succesfully delivered because: 'ERROR: UNABLE TO ENTER COMPARTMENT EXIT CODE 2342: EXPLOSION HAZARD'"
+	nope.info = "Sorry! Your requested order of <b> HIGH-EXPLOSIVE ARMOR-PIERCING M41A MAGAZINE (X3)</b> was not successfully delivered because: 'ERROR: UNABLE TO ENTER COMPARTMENT EXIT CODE 2342: EXPLOSION HAZARD'"
 	nope.color = "green"
 	nope.update_icon()
 

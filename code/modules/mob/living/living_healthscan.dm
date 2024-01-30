@@ -76,7 +76,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 
 	var/total_mob_damage = target_mob.getBruteLoss() + target_mob.getFireLoss() + target_mob.getToxLoss() + target_mob.getCloneLoss()
 
-	// Fake death will make the scanner think they died of oxygen damage, thus it returns enough damage to kill minus already recieved damage.
+	// Fake death will make the scanner think they died of oxygen damage, thus it returns enough damage to kill minus already received damage.
 	return round(POSITIVE(200 - total_mob_damage))
 
 /datum/health_scan/proc/get_health_value(mob/living/target_mob)

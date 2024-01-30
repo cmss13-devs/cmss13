@@ -78,6 +78,7 @@
 
 	playsound(xeno.loc, "alien_resin_build", 25)
 	apply_cooldown()
+	SEND_SIGNAL(xeno, COMSIG_XENO_PLANT_RESIN_NODE)
 	return ..()
 
 /mob/living/carbon/xenomorph/lay_down()
@@ -363,6 +364,7 @@
 		current_aura = pheromone
 		visible_message(SPAN_XENOWARNING("\The [src] begins to emit strange-smelling pheromones."), \
 		SPAN_XENOWARNING("We begin to emit '[pheromone]' pheromones."), null, 5)
+		SEND_SIGNAL(src, COMSIG_XENO_START_EMIT_PHEROMONES, pheromone)
 		playsound(loc, "alien_drool", 25)
 
 	if(isqueen(src) && hive && hive.xeno_leader_list.len && anchored)
@@ -481,7 +483,7 @@
 
 	// Build our list of target turfs based on
 	if (spray_type == ACID_SPRAY_LINE)
-		X.do_acid_spray_line(getline2(X, A, include_from_atom = FALSE), spray_effect_type, spray_distance)
+		X.do_acid_spray_line(get_line(X, A, include_start_atom = FALSE), spray_effect_type, spray_distance)
 
 	else if (spray_type == ACID_SPRAY_CONE)
 		X.do_acid_spray_cone(get_turf(A), spray_effect_type, spray_distance)
@@ -927,7 +929,7 @@
 	if(distance > 2)
 		return FALSE
 
-	var/list/turf/path = getline2(stabbing_xeno, targetted_atom, include_from_atom = FALSE)
+	var/list/turf/path = get_line(stabbing_xeno, targetted_atom, include_start_atom = FALSE)
 	for(var/turf/path_turf as anything in path)
 		if(path_turf.density)
 			to_chat(stabbing_xeno, SPAN_WARNING("There's something blocking our strike!"))

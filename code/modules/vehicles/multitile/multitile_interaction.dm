@@ -507,7 +507,7 @@
 
 	var/success = interior.enter(dragged_atom, entrance_used)
 	if(success)
-		to_chat(user, SPAN_NOTICE("You succesfully fit [dragged_atom] inside \the [src]."))
+		to_chat(user, SPAN_NOTICE("You successfully fit [dragged_atom] inside \the [src]."))
 	else
 		to_chat(user, SPAN_WARNING("You fail to fit [dragged_atom] inside \the [src]! It's either too big or vehicle is out of space!"))
 	return

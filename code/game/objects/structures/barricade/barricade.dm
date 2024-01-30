@@ -470,7 +470,9 @@
 // testing making a prop
 
 /obj/structure/barricade/proc/attackby_welder(obj/item/item, mob/user)
-
+	if(!HAS_TRAIT(item, TRAIT_TOOL_BLOWTORCH))
+		to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+		return
 
 	if(health == maxhealth)
 		to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))

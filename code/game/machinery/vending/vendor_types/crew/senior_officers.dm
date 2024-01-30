@@ -211,7 +211,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_req_officer, list(
 GLOBAL_LIST_INIT(cm_vending_clothing_cmo, list(
 
 		list("MEDICAL SET (MANDATORY)", 0, null, null, null),
-		list("Essential Medical Set", 0, /obj/effect/essentials_set/medical/doctor/CMO, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("Essential Medical Set", 0, /obj/effect/essentials_set/medical/doctor/cmo, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
 		list("STANDARD EQUIPMENT", 0, null, null, null),
 		list("Gloves", 0, /obj/item/clothing/gloves/latex, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),

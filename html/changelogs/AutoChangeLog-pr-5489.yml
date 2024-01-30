@@ -1,0 +1,6 @@
+author: "LTNTS"
+delete-after: True
+changes:
+  - bugfix: "removed the tiny square in the MP beret to stop it looking like a french mime's beret"
+  - refactor: "reorganized cm_hats and cm_suits for easier spriter usage"
+  - spellcheck: "fixed area typo Marshall to Marshal"

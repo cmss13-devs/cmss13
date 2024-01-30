@@ -172,7 +172,27 @@ SUBSYSTEM_DEF(ticker)
 
 	CHECK_TICK
 	if(!mode.can_start(bypass_checks))
-		to_chat(world, "Reverting to pre-game lobby.")
+		to_chat(world, "Requirements to start [GLOB.master_mode] not met. Reverting to pre-game lobby.")
+		// Make only one more attempt
+		if(world.time - 2 * wait > CONFIG_GET(number/lobby_countdown) SECONDS)
+			flash_clients()
+			delay_start = TRUE
+			var/active_admins = 0
+			for(var/client/admin_client in GLOB.admins)
+				if(!admin_client.is_afk() && check_client_rights(admin_client, R_SERVER, FALSE))
+					active_admins = TRUE
+					break
+			if(active_admins)
+				to_chat(world, SPAN_CENTERBOLD("The game start has been delayed."))
+				message_admins(SPAN_ADMINNOTICE("Alert: Insufficent players ready to start [GLOB.master_mode].\nEither change mode and map or start round and bypass checks."))
+			else
+				var/fallback_mode = CONFIG_GET(string/gamemode_default)
+				SSticker.save_mode(fallback_mode)
+				GLOB.master_mode = fallback_mode
+				to_chat(world, SPAN_BOLDNOTICE("Notice: The Gamemode for next round has been set to [fallback_mode]"))
+				handle_map_reboot()
+		else
+			to_chat(world, "Attempting again...")
 		QDEL_NULL(mode)
 		GLOB.RoleAuthority.reset_roles()
 		return FALSE

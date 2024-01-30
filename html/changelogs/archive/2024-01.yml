@@ -364,3 +364,51 @@
   SabreML:
   - bugfix: Fixed the xeno 'queen locator' giving the wrong location when a tunnel
       was selected.
+2024-01-29:
+  BadAtThisGame302:
+  - rscadd: Added a Researcher on Trijent.
+  - rscadd: Added a CMB Deputy on Trijent.
+  - rscadd: Added a second RD uniform.
+  - code_imp: changed the Trijent Security Guard to not use a USCM MP Hat and trenchcoat.
+  - code_imp: changed a not used "synthetic service uniform" to it's before shamelessly
+      taken RD Variant.
+  Contrabang:
+  - spellcheck: Fixed a few uncommon typos across the entire codebase
+  Doubleumc:
+  - refactor: projectile paths are the same in both directions, A->B and B->A
+  Drathek:
+  - rscadd: The game will now change game mode to default and initiate a map vote
+      if a game mode fails to start twice and there are no admins online.
+  - bugfix: Fixed a runtime during game mode voting
+  - admin: Admins can now use the Start Round verb to bypass a gamemode's checks
+  SabreML:
+  - spellcheck: Made observers see the marine version of CAS warnings, rather than
+      the xeno one.
+  private-tristan:
+  - bugfix: Civilian survs will now spawn with snow gear on snow maps.
+  realforest2001:
+  - rscadd: Added biometric checks to command announcements.
+  - code_imp: Security camera autoname is now determined by a variable rather than
+      hardcode.
+2024-01-30:
+  Huffie56:
+  - bugfix: fix upper deck having disposal pipes west of CIC going on a loop.
+  - bugfix: fix south of alpha briefing having disconnected pipes and disposal from
+      the main loops.
+  - bugfix: fix south shooting range having is disposal outside and disposal pipe
+      east going over vents.
+  - bugfix: fix pipes in req rest room going in the walls or windows.
+  - bugfix: fix pipes in control tower in hangar going bellow the windows instead
+      of the doors.
+  - refactor: added a few maintenance areas(mess, Port and starboard Midship) ,a few
+      other hull areas( lower and upper stair hull, Port and starboard stern and bow
+      hull)
+  - maptweak: corrected a colored tile west of CIC being the wrong sprite.
+  InsaneRed:
+  - balance: You now only need 1 burrowed larva to trade it for evolution as Queen
+      instead of 3 burrowed larva.
+  SabreML:
+  - bugfix: Fixed ponchos not having icon states on specific maps.
+  mullenpaul:
+  - code_imp: fixes sticky messages in STUI
+  - refactor: STUI is now a TSX component

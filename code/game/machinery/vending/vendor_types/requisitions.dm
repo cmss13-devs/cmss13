@@ -385,6 +385,7 @@
 		list("M10 Pattern Marine Helmet", 20, /obj/item/clothing/head/helmet/marine, VENDOR_ITEM_REGULAR),
 		list("M10 Pattern Technician Helmet", 20, /obj/item/clothing/head/helmet/marine/tech, VENDOR_ITEM_REGULAR),
 		list("M10 Pattern Corpman Helmet", 20, /obj/item/clothing/head/helmet/marine/medic, VENDOR_ITEM_REGULAR),
+		list("Squad Optic", 10, /obj/item/device/helmet_visor, VENDOR_ITEM_REGULAR),
 		list("M3 Pattern Carrier Marine Armor", 20, /obj/item/clothing/suit/storage/marine/medium/carrier, VENDOR_ITEM_REGULAR),
 		list("M3 Pattern Padded Marine Armor", 20, /obj/item/clothing/suit/storage/marine/medium/padded, VENDOR_ITEM_REGULAR),
 		list("M3 Pattern Padless Marine Armor", 20, /obj/item/clothing/suit/storage/marine/medium/padless, VENDOR_ITEM_REGULAR),

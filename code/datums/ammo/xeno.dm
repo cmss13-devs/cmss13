@@ -376,7 +376,6 @@
 	generated_projectile.overlays += hook_overlay
 
 /datum/ammo/xeno/oppressor_tail/on_hit_mob(mob/target, obj/projectile/fired_proj)
-	var/root_duration = 1 SECONDS
 	var/mob/living/carbon/xenomorph/xeno_firer = fired_proj.firer
 	if(xeno_firer.can_not_harm(target))
 		return
@@ -388,7 +387,7 @@
 
 	new /datum/effects/xeno_slow(target, fired_proj.firer, ttl = 0.5 SECONDS)
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), target, TRAIT_SOURCE_ABILITY("Tail Seize")), get_xeno_stun_duration(target, root_duration))
+	target.apply_effect(0.5, ROOT)
 	INVOKE_ASYNC(target, TYPE_PROC_REF(/atom/movable, throw_atom), fired_proj.firer, get_dist(fired_proj.firer, target)-1, SPEED_VERY_FAST)
 
 	qdel(tail_beam)

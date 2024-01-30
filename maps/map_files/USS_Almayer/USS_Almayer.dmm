@@ -3122,7 +3122,7 @@
 	pixel_y = 10
 	},
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/prop_mech/hydralic_clamp,
+/obj/structure/prop/mech/hydralic_clamp,
 /turf/open/floor/almayer,
 /area/almayer/hallways/repair_bay)
 "alR" = (

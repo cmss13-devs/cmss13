@@ -557,7 +557,7 @@
 	},
 /area/varadero/interior/administration)
 "atM" = (
-/obj/structure/prop_mech/drill,
+/obj/structure/prop/mech/drill,
 /turf/open/shuttle{
 	icon_state = "floor6"
 	},

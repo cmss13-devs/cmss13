@@ -25,6 +25,8 @@
 
 	minimap_icon = "defender"
 
+	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE
+
 /mob/living/carbon/xenomorph/destroyer
 	caste_type = XENO_CASTE_DESTROYER
 	name = XENO_CASTE_DESTROYER
@@ -79,9 +81,9 @@
 		if(isxeno(carbon))
 			var/mob/living/carbon/xenomorph/xeno = carbon
 			if(xeno.hivenumber == bound_xeno.hivenumber)
-				xeno.KnockDown((2 DECISECONDS) / GLOBAL_STATUS_MULTIPLIER)
-			else
 				xeno.KnockDown((5 DECISECONDS) / GLOBAL_STATUS_MULTIPLIER)
+			else
+				xeno.KnockDown((1 SECONDS) / GLOBAL_STATUS_MULTIPLIER)
 		else
 			//Review damage and knockdown
 			carbon.apply_armoured_damage(10)

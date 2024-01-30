@@ -293,3 +293,122 @@
   - rscadd: Added Whitelist Panel for whitelist senators to manage their own whitelists.
   - refactor: Whitelist.txt is no longer functional, owing to the new system.
   - rscdel: Removed "Alien Whitelist" checks regarding base SS13 races.
+2024-01-24:
+  BeagleGaming1:
+  - balance: Repairing bones with bone glue costs a portion of the bone glue's resources
+  - balance: Repairing bones with a screwdriver costs metal
+  - rscdel: Removed bone glue from the medilathe
+  - spellcheck: New description for bone glue
+  Ben10083:
+  - maptweak: Workin Joey has returned to the Maintenance Bar
+  Birdtalon:
+  - rscadd: Xenomorph basic tutorial.
+  SabreML:
+  - bugfix: Fixed being gibbed with the Ctrl or Alt key held sometimes breaking movement
+      as an observer.
+  SpartanBobby:
+  - maptweak: A bunch of edits to big red and big red nightmares for the following
+      areas, Northcaves, Medical Morgue, maint between cargo and general store, LZ2,
+      North Libary, EVA, dorms bathroom
+  VileBeggar:
+  - balance: M39 burst scatter multiplier reduced from 7 to 4.
+  fira:
+  - bugfix: Fixed an exploit involving playing cards.
+  mullenpaul:
+  - refactor: switched from infernojs to react
+  private-tristan:
+  - rscadd: Added a new xeno tip about where to target.
+  - spellcheck: changed a few tips' wording.
+  - rscdel: Removed an outdated xeno tip about slashing NVGs
+  realforest2001:
+  - rscadd: Psychic Whisper now broadcasts to deadchat too.
+  - bugfix: Psychic Whisper can now be used while lying down.
+2024-01-25:
+  Drathek:
+  - bugfix: Fixed more item exploits
+  - bugfix: Fixed lingering overlays in inventories for metal stacks and cards
+  Huffie56:
+  - refactor: creating it's own file for souto mobile code instead of it being in
+      vehicle.dm.
+  TheGamerdk:
+  - rscadd: A hive collapse (No new Queen) while at 3 xenos or below is now a marine
+      major, instead of a minor.
+2024-01-26:
+  Huffie56:
+  - bugfix: corrected the name of an area from "Lower Deck Starboard Hull" to "Lower
+      Deck Starboard-Aft Hull".
+  - bugfix: added apc's to area that where missing one.
+  - maptweak: added some areas to almayers (constr site, Starboard-Bow Maintenance,
+      Bow Hull(port and starboard),cryo maintenance.
+  Johannes2262:
+  - rscadd: Added three more magazines to each of the MP's handgun cases
+  LTNTS:
+  - rscadd: bolted version of blood and medical vendors
+  - rscadd: pill bottle crate
+  - balance: cheaper medical crates from req
+  - balance: less items in med vendors, mainly pill bottles
+  cuberound:
+  - rscadd: added messages when the CAS sonic boom is played
+  - soundadd: reduced volume falloff of CAS sonic boom
+  - bugfix: allows custom flamethrower tanks to be filled directly from oxygentank
+  realforest2001:
+  - rscadd: Adds paygrade defines for PMCs, VAI, Mercenaries and TWE.
+  - code_imp: Adds code to populate reference lists for certain paygrades.
+  - bugfix: Fixes PMC synth not using the correct grade.
+  - rscadd: Syndicate ID card repathed and works with paygrades.
+  - spellcheck: The latejoin menu marine category title is now Marines instead of
+      Squad Riflemen, as this was an inaccuracy.
+2024-01-27:
+  Contrabang:
+  - bugfix: Dchat is no longer notified of hugs from tutorials
+  SabreML:
+  - bugfix: Fixed the xeno 'queen locator' giving the wrong location when a tunnel
+      was selected.
+2024-01-29:
+  BadAtThisGame302:
+  - rscadd: Added a Researcher on Trijent.
+  - rscadd: Added a CMB Deputy on Trijent.
+  - rscadd: Added a second RD uniform.
+  - code_imp: changed the Trijent Security Guard to not use a USCM MP Hat and trenchcoat.
+  - code_imp: changed a not used "synthetic service uniform" to it's before shamelessly
+      taken RD Variant.
+  Contrabang:
+  - spellcheck: Fixed a few uncommon typos across the entire codebase
+  Doubleumc:
+  - refactor: projectile paths are the same in both directions, A->B and B->A
+  Drathek:
+  - rscadd: The game will now change game mode to default and initiate a map vote
+      if a game mode fails to start twice and there are no admins online.
+  - bugfix: Fixed a runtime during game mode voting
+  - admin: Admins can now use the Start Round verb to bypass a gamemode's checks
+  SabreML:
+  - spellcheck: Made observers see the marine version of CAS warnings, rather than
+      the xeno one.
+  private-tristan:
+  - bugfix: Civilian survs will now spawn with snow gear on snow maps.
+  realforest2001:
+  - rscadd: Added biometric checks to command announcements.
+  - code_imp: Security camera autoname is now determined by a variable rather than
+      hardcode.
+2024-01-30:
+  Huffie56:
+  - bugfix: fix upper deck having disposal pipes west of CIC going on a loop.
+  - bugfix: fix south of alpha briefing having disconnected pipes and disposal from
+      the main loops.
+  - bugfix: fix south shooting range having is disposal outside and disposal pipe
+      east going over vents.
+  - bugfix: fix pipes in req rest room going in the walls or windows.
+  - bugfix: fix pipes in control tower in hangar going bellow the windows instead
+      of the doors.
+  - refactor: added a few maintenance areas(mess, Port and starboard Midship) ,a few
+      other hull areas( lower and upper stair hull, Port and starboard stern and bow
+      hull)
+  - maptweak: corrected a colored tile west of CIC being the wrong sprite.
+  InsaneRed:
+  - balance: You now only need 1 burrowed larva to trade it for evolution as Queen
+      instead of 3 burrowed larva.
+  SabreML:
+  - bugfix: Fixed ponchos not having icon states on specific maps.
+  mullenpaul:
+  - code_imp: fixes sticky messages in STUI
+  - refactor: STUI is now a TSX component

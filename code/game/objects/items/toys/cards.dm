@@ -352,6 +352,9 @@
 				user.visible_message(SPAN_NOTICE("\The [user] adds [cards_length > 1 ? "their hand" : "<b>[cards[length(cards)].name]</b>"] to \the [src]."), SPAN_NOTICE("You add [cards_length > 1 ? "your hand" : "<b>[cards[length(cards)].name]</b>"] to \the [src]."))
 		else
 			if(loc != user)
+				if(isstorage(loc))
+					var/obj/item/storage/storage = loc
+					storage.remove_from_storage(src)
 				user.put_in_hands(src)
 		update_icon()
 		return
@@ -405,6 +408,10 @@
 		return
 	if(ismob(loc))
 		return
+
+	if(isstorage(loc))
+		var/obj/item/storage/storage = loc
+		storage.remove_from_storage(src)
 	usr.put_in_hands(src)
 
 /obj/item/toy/handcard/get_examine_text(mob/user)

@@ -538,22 +538,6 @@
 		var/time_left = time2text(timeleft(queen_age_timer_id) + 1 MINUTES, "mm") // We add a minute so that it basically ceilings the value.
 		. += "Maturity: [time_left == 1? "[time_left] minute" : "[time_left] minutes"] remaining"
 
-//Custom bump for crushers. This overwrites normal bumpcode from carbon.dm
-/mob/living/carbon/xenomorph/queen/Collide(atom/A)
-	set waitfor = 0
-
-	if(stat || !istype(A) || A == src)
-		return FALSE
-
-	if(now_pushing)
-		return FALSE//Just a plain ol turf, let's return.
-
-	var/turf/T = get_step(src, dir)
-	if(!T || !get_step_to(src, T)) //If it still exists, try to push it.
-		return ..()
-
-	return TRUE
-
 /mob/living/carbon/xenomorph/queen/proc/set_orders()
 	set category = "Alien"
 	set name = "Set Hive Orders (50)"
@@ -587,7 +571,7 @@
 		to_chat(src, SPAN_DANGER("You cannot send Announcements (muted)."))
 		return
 	if(health <= 0)
-		to_chat(src, SPAN_WARNING("You can't do that while unconcious."))
+		to_chat(src, SPAN_WARNING("You can't do that while unconscious."))
 		return FALSE
 	if(!check_plasma(50))
 		return FALSE

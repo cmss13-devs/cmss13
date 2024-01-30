@@ -169,8 +169,10 @@
 	set name = "Start Round"
 	set desc = "Start the round RIGHT NOW"
 	set category = "Server.Round"
-	if (alert("Are you sure you want to start the round early?",,"Yes","No") != "Yes")
-		return
+	var/response = tgui_alert(usr, "Are you sure you want to start the round early?", "Force Start Round", list("Yes", "Bypass Checks", "No"), 30 SECONDS)
+	if (response != "Yes" && response != "Bypass Checks")
+		return FALSE
+	SSticker.bypass_checks = response == "Bypass Checks"
 	if (SSticker.current_state == GAME_STATE_STARTUP)
 		message_admins("Game is setting up and will launch as soon as it is ready.")
 		message_admins(SPAN_ADMINNOTICE("[usr.key] has started the process to start the game when loading is finished."))

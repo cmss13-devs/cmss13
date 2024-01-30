@@ -259,10 +259,10 @@ Additional game mode variables.
 
 //If we are selecting xenomorphs, we NEED them to play the round. This is the expected behavior.
 //If this is an optional behavior, just override this proc or make an override here.
-/datum/game_mode/proc/initialize_starting_xenomorph_list(list/hives = list(XENO_HIVE_NORMAL), force_xenos = FALSE)
+/datum/game_mode/proc/initialize_starting_xenomorph_list(list/hives = list(XENO_HIVE_NORMAL), bypass_checks = FALSE)
 	var/list/datum/mind/possible_xenomorphs = get_players_for_role(JOB_XENOMORPH)
 	var/list/datum/mind/possible_queens = get_players_for_role(JOB_XENOMORPH_QUEEN)
-	if(possible_xenomorphs.len < xeno_required_num) //We don't have enough aliens, we don't consider people rolling for only Queen.
+	if(possible_xenomorphs.len < xeno_required_num && !bypass_checks) //We don't have enough aliens, we don't consider people rolling for only Queen.
 		to_world("<h2 style=\"color:red\">Not enough players have chosen to be a xenomorph in their character setup. <b>Aborting</b>.</h2>")
 		return
 
@@ -325,11 +325,11 @@ Additional game mode variables.
 	Our list is empty. This can happen if we had someone ready as alien and predator, and predators are picked first.
 	So they may have been removed from the list, oh well.
 	*/
-	if(LAZYLEN(xenomorphs) < xeno_required_num && LAZYLEN(picked_queens) != LAZYLEN(hives))
+	if(LAZYLEN(xenomorphs) < xeno_required_num && LAZYLEN(picked_queens) != LAZYLEN(hives) && !bypass_checks)
 		to_world("<h2 style=\"color:red\">Could not find any candidates after initial alien list pass. <b>Aborting</b>.</h2>")
 		return
 
-	return 1
+	return TRUE
 
 // Helper proc to set some constants
 /proc/setup_new_xeno(datum/mind/new_xeno)

@@ -26,6 +26,7 @@
 
 # Zonespace
 
-/code/modules/gear_presets/survivors.dm @zonespace27
+/code/datums/tutorial/ @zonespace27
+/maps/tutorial/
 
 # MULTIPLE OWNERS

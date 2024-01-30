@@ -466,3 +466,21 @@
 	nailgun.in_chamber = null
 	nailgun.load_into_chamber()
 	return TRUE
+
+// testing making a prop
+
+/obj/structure/barricade/metal/proc/attackby_welder()
+	if(damage_state == BARRICADE_DMG_HEAVY)
+		to_chat(user, SPAN_WARNING("[src] has sustained too much structural damage to be repaired."))
+		return
+
+	if(health == maxhealth)
+		to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
+		return
+
+	if(user.action_busy)
+		return
+
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+		to_chat(user, SPAN_WARNING("You're not trained to repair [src]..."))
+		return

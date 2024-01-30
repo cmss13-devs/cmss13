@@ -437,17 +437,13 @@
 /obj/structure/machinery/chem_simulator/proc/calculate_creation_cost()
 	creation_cost = 0
 	min_creation_cost = 5 //min cost of 5
-	var/exempt_properties = list(PROPERTY_OXIDIZING, PROPERTY_FUELING, PROPERTY_FLOWING) // these properties are exempt from the penalty that is added above level 5
 	var/slots_used = LAZYLEN(creation_template)
 	creation_cost += slots_used * 3 - 6 //3 cost for each slot after the 2nd
 	min_creation_cost += slots_used - 2
 	for(var/datum/chem_property/P in creation_template)
 		creation_cost += max(abs(P.value), 1) * P.level
 		if(P.level > 5) // a penalty is added at each level above 5 (+1 at 6, +2 at 7, +4 at 8, +5 at 9, +7 at 10)
-			if(P.name in exempt_properties) // except for certain properties
-				creation_cost += 0
-			else
-				creation_cost += P.level - 6 + Ceiling((P.level - 5) / 2)
+			creation_cost += P.level - 6 + Ceiling((P.level - 5) / 2)
 	creation_cost += ((new_od_level - 10) / 5) * 3 //3 cost for every 5 units above 10
 	for(var/rarity in creation_complexity)
 		switch(rarity)
@@ -646,7 +642,10 @@
 	C.properties = list()
 	C.custom_metabolism = REAGENTS_METABOLISM
 	C.color = text("#[][][]",num2hex(rand(0,255)),num2hex(rand(0,255)),num2hex(rand(0,255)))
-	C.burncolor = C.color
+	if(prob(50))
+		C.burncolor = "#ff33cc"
+	else
+		C.burncolor = "#ffffff"
 	for(var/datum/chem_property/P in creation_template)
 		C.insert_property(P.name, P.level)
 	creation_name = "" //reset it

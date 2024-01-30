@@ -241,6 +241,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_cmo, list(
 
 		list("HEADWEAR (CHOOSE 1)", 0, null, null, null),
 		list("Chief Medical Officer's Peaked Cap", 0, /obj/item/clothing/head/cmo, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_RECOMMENDED),
+		list("Surgical Cap, Orange", 0, /obj/item/clothing/head/surgery/orange, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 		list("Surgical Cap, Blue", 0, /obj/item/clothing/head/surgery/blue, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 		list("Surgical Cap, Purple", 0, /obj/item/clothing/head/surgery/purple, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 		list("Surgical Cap, Green", 0, /obj/item/clothing/head/surgery/green, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),

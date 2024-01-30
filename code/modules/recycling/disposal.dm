@@ -652,7 +652,7 @@
 /obj/structure/disposalpipe/proc/nextdir(fromdir)
 	return dpdir & (~turn(fromdir, 180))
 
-//Transfer the holder through this pipe segment, overriden for special behaviour
+//Transfer the holder through this pipe segment, overridden for special behaviour
 /obj/structure/disposalpipe/proc/transfer(obj/structure/disposalholder/H)
 	var/nextdir = nextdir(H.dir)
 	H.setDir(nextdir)

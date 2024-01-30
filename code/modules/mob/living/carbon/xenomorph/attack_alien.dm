@@ -309,7 +309,7 @@
 		return FALSE // leave the dead alone
 
 //This proc is here to prevent Xenomorphs from picking up objects (default attack_hand behaviour)
-//Note that this is overriden by every proc concerning a child of obj unless inherited
+//Note that this is overridden by every proc concerning a child of obj unless inherited
 /obj/item/attack_alien(mob/living/carbon/xenomorph/M)
 	return
 

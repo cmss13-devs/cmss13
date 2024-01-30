@@ -38,6 +38,10 @@
 	/// If this camera should have innate EMP-proofing
 	var/emp_proof = FALSE
 
+	///Autonaming
+	var/autoname = FALSE
+	var/autonumber = 0 //camera number in area
+
 GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 /obj/structure/machinery/camera/Initialize(mapload, ...)
 	. = ..()
@@ -59,6 +63,24 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 
 	set_pixel_location()
 	update_icon()
+
+	//This camera automatically sets it's name to whatever the area that it's in is called.
+	if(autoname)
+		autonumber = 1
+		var/area/my_area = get_area(src)
+		if(my_area)
+			for(var/obj/structure/machinery/camera/autoname/current_camera in GLOB.machines)
+				if(current_camera == src) 
+					continue
+				var/area/current_camera_area = get_area(current_camera)
+				if(current_camera_area.type != my_area.type)
+					continue
+
+				if(!current_camera.autonumber)
+					continue
+
+				autonumber = max(autonumber, current_camera.autonumber + 1)
+			c_tag = "[my_area.name] #[autonumber]"
 
 /obj/structure/machinery/camera/Destroy()
 	GLOB.all_cameras -= src

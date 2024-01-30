@@ -469,7 +469,7 @@
 
 // testing making a prop
 
-/obj/structure/barricade/proc/attackby_welder(mob/user)
+/obj/structure/barricade/proc/attackby_welder(obj/item/item, mob/user)
 
 
 	if(health == maxhealth)

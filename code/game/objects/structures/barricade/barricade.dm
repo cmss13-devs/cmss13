@@ -469,7 +469,7 @@
 
 // testing making a prop
 
-/obj/structure/barricade/metal/proc/attackby_welder()
+/obj/structure/barricade/proc/attackby_welder(mob/user)
 	if(damage_state == BARRICADE_DMG_HEAVY)
 		to_chat(user, SPAN_WARNING("[src] has sustained too much structural damage to be repaired."))
 		return

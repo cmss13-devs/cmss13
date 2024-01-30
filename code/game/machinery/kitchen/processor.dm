@@ -27,9 +27,6 @@
 	if (what)
 		qdel(what)
 
-	if (what)
-		qdel(what)
-
 	/* objs */
 
 /datum/food_processor_process/xenomeat

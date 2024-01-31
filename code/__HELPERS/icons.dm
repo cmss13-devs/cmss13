@@ -14,8 +14,7 @@ CHANGING ICONS
 
 Several new procs have been added to the /icon datum to simplify working with icons. To use them,
 remember you first need to setup an /icon var like so:
-
-var/icon/my_icon = new('iconfile.dmi')
+	var/icon/my_icon = new('iconfile.dmi')
 
 icon/ChangeOpacity(amount = 1)
 	A very common operation in DM is to try to make an icon more or less transparent. Making an icon more
@@ -35,7 +34,7 @@ icon/MinColors(icon)
 icon/MaxColors(icon)
 	The icon is blended with a second icon where the maximum of each RGB pixel is the result.
 	Opacity may increase, as if the icons were blended with ICON_OR. You may supply a color in place of an icon.
-icon/Opaque(background = "#000000")
+icon/Opaque(background = COLOR_BLACK)
 	All alpha values are set to 255 throughout the icon. Transparent pixels become black, or whatever background color you specify.
 icon/BecomeAlphaMask()
 	You can convert a simple grayscale icon into an alpha mask to use with other icons very easily with this proc.
@@ -247,7 +246,7 @@ world
 
 /icon/proc/AddAlphaMask(mask)
 	var/icon/M = new(mask)
-	M.Blend("#ffffff", ICON_SUBTRACT)
+	M.Blend(COLOR_WHITE, ICON_SUBTRACT)
 	// apply mask
 	Blend(M, ICON_ADD)
 
@@ -545,13 +544,13 @@ world
 	return flat_icon
 
 /proc/adjust_brightness(color, value)
-	if (!color) return "#FFFFFF"
+	if (!color) return COLOR_WHITE
 	if (!value) return color
 
 	var/list/RGB = ReadRGB(color)
-	RGB[1] = Clamp(RGB[1]+value,0,255)
-	RGB[2] = Clamp(RGB[2]+value,0,255)
-	RGB[3] = Clamp(RGB[3]+value,0,255)
+	RGB[1] = clamp(RGB[1]+value,0,255)
+	RGB[2] = clamp(RGB[2]+value,0,255)
+	RGB[3] = clamp(RGB[3]+value,0,255)
 	return rgb(RGB[1],RGB[2],RGB[3])
 
 /proc/sort_atoms_by_layer(list/atoms)
@@ -582,7 +581,7 @@ world
 	if(A)
 		A.overlays.Remove(src)
 
-/mob/proc/flick_heal_overlay(time, color = "#00FF00") //used for warden and queen healing
+/mob/proc/flick_heal_overlay(time, color = COLOR_GREEN) //used for warden and queen healing
 	var/image/I = image('icons/mob/mob.dmi', src, "heal_overlay")
 	switch(icon_size)
 		if(48)
@@ -682,8 +681,9 @@ world
  * * moving - whether or not to use a moving state for the given icon
  * * sourceonly - if TRUE, only generate the asset and send back the asset url, instead of tags that display the icon to players
  * * extra_clases - string of extra css classes to use when returning the icon string
+ * * keyonly - if TRUE, only returns the asset key to use get_asset_url manually. Overrides sourceonly.
  */
-/proc/icon2html(atom/thing, client/target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE, extra_classes = null)
+/proc/icon2html(atom/thing, client/target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE, extra_classes = null, keyonly = FALSE)
 	if (!thing)
 		return
 
@@ -714,6 +714,8 @@ world
 				SSassets.transport.register_asset(name, thing)
 			for (var/thing2 in targets)
 				SSassets.transport.send_assets(thing2, name)
+			if(keyonly)
+				return name
 			if(sourceonly)
 				return SSassets.transport.get_asset_url(name)
 			return "<img class='[extra_classes] icon icon-misc' src='[SSassets.transport.get_asset_url(name)]'>"
@@ -756,6 +758,8 @@ world
 		SSassets.transport.register_asset(key, rsc_ref, file_hash, icon_path)
 	for (var/client_target in targets)
 		SSassets.transport.send_assets(client_target, key)
+	if(keyonly)
+		return key
 	if(sourceonly)
 		return SSassets.transport.get_asset_url(key)
 	return "<img class='[extra_classes] icon icon-[icon_state]' src='[SSassets.transport.get_asset_url(key)]'>"

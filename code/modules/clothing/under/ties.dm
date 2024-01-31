@@ -79,6 +79,22 @@
 	name = "red tie"
 	icon_state = "redtie"
 
+/obj/item/clothing/accessory/green
+	name = "green tie"
+	icon_state = "greentie"
+
+/obj/item/clothing/accessory/black
+	name = "black tie"
+	icon_state = "blacktie"
+
+/obj/item/clothing/accessory/gold
+	name = "gold tie"
+	icon_state = "goldtie"
+
+/obj/item/clothing/accessory/purple
+	name = "purple tie"
+	icon_state = "purpletie"
+
 /obj/item/clothing/accessory/horrible
 	name = "horrible tie"
 	desc = "A neosilk clip-on tie. This one is disgusting."
@@ -377,7 +393,8 @@
 
 /obj/item/clothing/accessory/poncho/Initialize()
 	. = ..()
-	select_gamemode_skin(type)
+	// Only do this for the base type '/obj/item/clothing/accessory/poncho'.
+	select_gamemode_skin(/obj/item/clothing/accessory/poncho)
 	inv_overlay = image("icon" = 'icons/obj/items/clothing/ties_overlay.dmi', "icon_state" = "[icon_state]")
 	update_icon()
 
@@ -440,8 +457,8 @@
 	return hold.attackby(W, user)
 
 /obj/item/clothing/accessory/storage/emp_act(severity)
+	. = ..()
 	hold.emp_act(severity)
-	..()
 
 /obj/item/clothing/accessory/storage/hear_talk(mob/M, msg)
 	hold.hear_talk(M, msg)
@@ -539,13 +556,27 @@
 	desc = "A stylish black waistcoat with plenty of discreet pouches, to be both utilitarian and fashionable without compromising looks."
 	icon_state = "waistcoat"
 
-/obj/item/clothing/accessory/storage/black_vest/tool_webbing
-	hold = /obj/item/storage/internal/accessory/black_vest/tool_webbing
+/obj/item/clothing/accessory/storage/tool_webbing
+	name = "Tool Webbing"
+	desc = "A brown synthcotton webbing that is similar in function to civilian tool aprons, but is more durable for field usage."
+	hold = /obj/item/storage/internal/accessory/tool_webbing
 
-/obj/item/storage/internal/accessory/black_vest/tool_webbing
+/obj/item/storage/internal/accessory/tool_webbing
 	storage_slots = 7
+	can_hold = list(
+		/obj/item/tool/screwdriver,
+		/obj/item/tool/wrench,
+		/obj/item/tool/weldingtool,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/wirecutters,
+		/obj/item/stack/cable_coil,
+		/obj/item/device/multitool,
+	)
 
-/obj/item/storage/internal/accessory/black_vest/tool_webbing/fill_preset_inventory()
+/obj/item/clothing/accessory/storage/tool_webbing/equipped
+	hold = /obj/item/storage/internal/accessory/tool_webbing/equipped
+
+/obj/item/storage/internal/accessory/tool_webbing/equipped/fill_preset_inventory()
 	new /obj/item/tool/screwdriver(src)
 	new /obj/item/tool/wrench(src)
 	new /obj/item/tool/weldingtool(src)

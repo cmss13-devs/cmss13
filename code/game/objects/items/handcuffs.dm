@@ -29,20 +29,6 @@
 	if(!C.handcuffed)
 		place_handcuffs(C, user)
 
-/obj/item/handcuffs/obj/structure/MouseDrop(mob/living/carbon/human/H)
-	var/mob/living/carbon/human/user = usr
-	if (!istype(user))
-		return
-	if (user.stat || get_dist(user, src) > 1 || get_dist(user, H) > 1 || H.lying)
-		return
-	if (!istype(H))
-		return
-
-	if(!do_after(user, cuff_delay, INTERRUPT_ALL, BUSY_ICON_HOSTILE, H, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
-		return
-
-	// TODO: apply handcuffs
-
 /obj/item/handcuffs/get_mob_overlay(mob/user_mob, slot)
 	var/image/ret = ..()
 
@@ -130,7 +116,7 @@
 	color = "#00DDDD"
 
 /obj/item/handcuffs/cable/white
-	color = "#FFFFFF"
+	color = COLOR_WHITE
 
 /obj/item/handcuffs/cable/attackby(obj/item/I, mob/user as mob)
 	..()

@@ -54,6 +54,8 @@
 #define SHOCK 8
 #define SAFE 16
 
+#define CLOSED 2
+
 //metal, glass, rod stacks
 #define MAX_STACK_AMOUNT_METAL 50
 #define MAX_STACK_AMOUNT_GLASS 50
@@ -77,14 +79,14 @@
 #define GETPULSE_HAND 0 //less accurate (hand)
 #define GETPULSE_TOOL 1 //more accurate (med scanner, sleeper, etc)
 
-var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accessed by preexisting terminals. AIs and new terminals can't use them.
+GLOBAL_LIST_INIT(RESTRICTED_CAMERA_NETWORKS, list( //Those networks can only be accessed by preexisting terminals. AIs and new terminals can't use them.)
 	"thunder",
 	"ERT",
 	"NUKE",
 	CAMERA_NET_LADDER,
 	CAMERA_NET_COLONY,
 	CAMERA_NET_OVERWATCH,
-	)
+	))
 
 #define STASIS_IN_BAG 1
 #define STASIS_IN_CRYO_CELL 2

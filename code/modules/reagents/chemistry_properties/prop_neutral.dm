@@ -29,7 +29,7 @@
 		return list(REAGENT_CANCEL = TRUE)
 	var/effectiveness = 1
 	if(M.stat != DEAD)
-		effectiveness = Clamp(max(M.oxyloss / 10, (BLOOD_VOLUME_NORMAL - M.blood_volume) / BLOOD_VOLUME_NORMAL) * 0.1 * level, 0.1, 1)
+		effectiveness = clamp(max(M.oxyloss / 10, (BLOOD_VOLUME_NORMAL - M.blood_volume) / BLOOD_VOLUME_NORMAL) * 0.1 * level, 0.1, 1)
 	return list(REAGENT_FORCE = TRUE, REAGENT_EFFECT = effectiveness)
 
 /datum/chem_property/neutral/excreting
@@ -199,8 +199,8 @@
 	M.druggy = min(M.druggy + 0.5 * potency * delta_time, potency * 10)
 
 /datum/chem_property/neutral/hallucinogenic/process_overdose(mob/living/M, potency = 1, delta_time)
-	if(isturf(M.loc) && !istype(M.loc, /turf/open/space) && M.canmove && !M.is_mob_restrained())
-		step(M, pick(cardinal))
+	if(isturf(M.loc) && !istype(M.loc, /turf/open/space) && (M.mobility_flags & MOBILITY_MOVE) && !M.is_mob_restrained())
+		step(M, pick(GLOB.cardinals))
 	M.hallucination += 10
 	M.make_jittery(5)
 

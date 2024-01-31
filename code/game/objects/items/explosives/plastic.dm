@@ -26,7 +26,7 @@
 
 /obj/item/explosive/plastic/Destroy()
 	disarm()
-	. = ..()
+	return ..()
 
 /obj/item/explosive/plastic/explosion_throw(severity, direction, scatter_multiplier)
 	if(active)
@@ -156,7 +156,9 @@
 		plant_target.overlays -= overlay
 		qdel(overlay)
 		plant_target.contents -= src
-		forceMove(get_turf(plant_target))
+		var/turf/plant_turf = get_turf(plant_target)
+		if(plant_turf)
+			forceMove(plant_turf)
 	plant_target = null
 	if(customizable)
 		if(active) //deactivate
@@ -182,7 +184,7 @@
 
 	//vehicle interior stuff checks
 	if(SSinterior.in_interior(target))
-		to_chat(user, SPAN_WARNING("It's too cramped in here to deploy \the [src]."))
+		to_chat(user, SPAN_WARNING("It's too cramped in here to deploy [src]."))
 		return FALSE
 
 	if(istype(target, /obj/effect) || istype(target, /obj/structure/machinery))
@@ -193,7 +195,7 @@
 	if(istype(target, /turf/closed/wall))
 		var/turf/closed/wall/W = target
 		if(W.hull)
-			to_chat(user, SPAN_WARNING("You are unable to stick \the [src] to the [W]!"))
+			to_chat(user, SPAN_WARNING("You are unable to stick [src] to [W]!"))
 			return FALSE
 
 	if(istype(target, /obj/structure/window))
@@ -299,7 +301,7 @@
 	prime(TRUE)
 
 /obj/item/explosive/plastic/custom
-	name = "Custom plastic explosive"
+	name = "custom plastic explosive"
 	desc = "A custom plastic explosive."
 	icon_state = "custom_plastic_explosive"
 	overlay_image = "custom_plastic_explosive_sensing"
@@ -319,6 +321,8 @@
 	penetration = 0.60
 	deploying_time = 10
 	var/shrapnel_volume = 40
+	var/shrapnel_type = /datum/ammo/bullet/shrapnel/metal
+	var/explosion_strength = 60
 
 /obj/item/explosive/plastic/breaching_charge/can_place(mob/user, atom/target)
 	if(!is_type_in_list(target, breachable))//only items on the list are allowed
@@ -345,12 +349,20 @@
 
 /obj/item/explosive/plastic/breaching_charge/handle_explosion(turf/target_turf, dir, cause_data)
 	var/explosion_target = get_step(target_turf, dir)
-	create_shrapnel(explosion_target, shrapnel_volume, dir, angle,/datum/ammo/bullet/shrapnel/metal, cause_data)
+	create_shrapnel(explosion_target, shrapnel_volume, dir, angle, shrapnel_type, cause_data)
 	addtimer(CALLBACK(src, PROC_REF(trigger_explosion), target_turf, dir, cause_data), 1)
 
 /obj/item/explosive/plastic/breaching_charge/proc/trigger_explosion(turf/target_turf, dir, cause_data)
-	cell_explosion(target_turf, 60, 60, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, dir, cause_data)
+	cell_explosion(target_turf, explosion_strength, explosion_strength, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, dir, cause_data)
 	qdel(src)
+
+/obj/item/explosive/plastic/breaching_charge/rubber
+	name = "X17 riot charge"
+	desc = "An explosive device used to break into areas while protecting the user from the blast. Unlike the standard breaching charge, the X17 deploys a cone spray of rubber pellets to incapacitate rather than kill."
+	icon_state = "riot-charge"
+	overlay_image = "riot-active"
+	shrapnel_volume = 20
+	shrapnel_type = /datum/ammo/bullet/shrapnel/rubber
 
 /obj/item/explosive/plastic/breaching_charge/plasma
 	name = "plasma charge"
@@ -365,6 +377,8 @@
 	deploying_time = 10
 	flags_item = NOBLUDGEON|ITEM_PREDATOR
 	shrapnel_volume = 10
+	shrapnel_type = /datum/ammo/bullet/shrapnel/plasma
+	explosion_strength = 90
 
 /obj/item/explosive/plastic/breaching_charge/plasma/can_place(mob/user, atom/target)
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
@@ -372,11 +386,3 @@
 		return FALSE
 	. = ..()
 
-/obj/item/explosive/plastic/breaching_charge/plasma/handle_explosion(turf/target_turf, dir, cause_data)
-	var/explosion_target = get_step(target_turf, dir)
-	create_shrapnel(explosion_target, shrapnel_volume, dir, angle,/datum/ammo/bullet/shrapnel/plasma, cause_data)
-	addtimer(CALLBACK(src, PROC_REF(trigger_explosion), target_turf, dir, cause_data), 1)
-
-/obj/item/explosive/plastic/breaching_charge/plasma/trigger_explosion(turf/target_turf, dir, cause_data)
-	cell_explosion(target_turf, 90, 90, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, dir, cause_data)
-	qdel(src)

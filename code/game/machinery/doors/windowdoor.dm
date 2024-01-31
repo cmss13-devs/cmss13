@@ -11,7 +11,6 @@
 	flags_atom = ON_BORDER
 	opacity = FALSE
 	var/obj/item/circuitboard/airlock/electronics = null
-	air_properties_vary_with_direction = 1
 
 /obj/structure/machinery/door/window/Initialize()
 	. = ..()
@@ -296,12 +295,12 @@
 
 /obj/structure/machinery/door/window/ultra/Initialize(mapload, ...)
 	. = ..()
-	GLOB.hijack_deletable_windows += src
-
-/obj/structure/machinery/door/window/ultra/Destroy()
-	GLOB.hijack_deletable_windows -= src
-	return ..()
+	if(is_mainship_level(z))
+		RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_IMPACTED, PROC_REF(impact))
 
 // No damage taken.
 /obj/structure/machinery/door/window/ultra/attackby(obj/item/I, mob/user)
 	return try_to_activate_door(user)
+
+/obj/structure/machinery/door/window/ultra/proc/impact()
+	qdel(src)

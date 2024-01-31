@@ -1,13 +1,13 @@
 
 
 /*
-everything bellow isn't used or out of place.
+Everything below isn't used or out of place.
 
 */
 
 
-// ----- Prisioner Survivors
-// after double check prisoner isn't being used anywhere.
+// ----- Prisoner Survivors
+// Used in Fiorina Science Annex.
 /datum/equipment_preset/survivor/prisoner
 	name = "Survivor - Prisoner"
 	assignment = "Prisoner"
@@ -29,7 +29,7 @@ everything bellow isn't used or out of place.
 	add_survivor_weapon_civilian(new_human)
 	..()
 
-// after double check gangleader isn't being used anywhere.
+// Used in Fiorina Science Annex.
 /datum/equipment_preset/survivor/gangleader
 	name = "Survivor - Gang Leader"
 	assignment = "Gang Leader"
@@ -51,7 +51,7 @@ everything bellow isn't used or out of place.
 
 // ----- Civilian Survivor
 
-// after double check civilian isn't being used anywhere.
+// Used in LV-624, Solaris Ridge, Trijent Dam, Fiorina Science Annex and Kutjevo Refinery.
 /datum/equipment_preset/survivor/civilian
 	name = "Survivor - Civilian"
 	assignment = "Civilian"
@@ -60,6 +60,8 @@ everything bellow isn't used or out of place.
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/survivor/civilian/load_gear(mob/living/carbon/human/new_human)
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		add_ice_colony_survivor_equipment(new_human)
 	var/random_gear = rand(0, 3)
 	switch(random_gear)
 		if(0) // Normal Colonist
@@ -89,8 +91,6 @@ everything bellow isn't used or out of place.
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/apron(new_human), WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 			new_human.equip_to_slot_or_del(new /obj/item/tool/hatchet(new_human.back), WEAR_IN_BACK)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general(new_human), WEAR_R_STORE)
 	add_survivor_weapon_civilian(new_human)
@@ -109,7 +109,7 @@ everything bellow isn't used or out of place.
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/survivor/salesman/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/brown(new_human), WEAR_BODY)
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/wcoat(new_human), WEAR_JACKET)
@@ -122,7 +122,7 @@ everything bellow isn't used or out of place.
 
 // ----- Roughneck Survivor
 
-// after double check roughneck isn't being used anywhere.
+// Used in Trijent Dam.
 /datum/equipment_preset/survivor/roughneck
 	name = "Survivor - Roughneck"
 	assignment = "Roughneck"
@@ -147,7 +147,7 @@ everything bellow isn't used or out of place.
 
 // ----- Bum Survivor
 
-// after double check beachbum isn't being used anywhere.
+// Used in New Varadero.
 /datum/equipment_preset/survivor/beachbum
 	name = "Survivor - Beach Bum"
 	assignment = "Beach Bum"
@@ -173,12 +173,12 @@ everything bellow isn't used or out of place.
 
 // ----- WY Survivors
 
-// after double check goon isn't being used anywhere.
+// Used in LV-624.
 /datum/equipment_preset/survivor/goon
 	name = "Survivor - Corporate Security Goon"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = JOB_WY_GOON
-	paygrade = "WEY-GOON"
+	paygrade = PAY_SHORT_CPO
 	idtype = /obj/item/card/id/silver/cl
 	skills = /datum/skills/civilian/survivor/goon
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
@@ -242,7 +242,7 @@ everything bellow isn't used or out of place.
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/freelancer, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/freelancer, WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)
 	spawn_merc_helmet(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_L_EAR)
@@ -252,12 +252,12 @@ everything bellow isn't used or out of place.
 
 	..()
 
-// after double check /new_varadero/commander isn't being used anywhere.
+// New Varadero CO Survivor.
 /datum/equipment_preset/survivor/new_varadero/commander
 	name = "Survivor - USASF Commander"
 	assignment = "USASF Commander"
 	skills = /datum/skills/commander
-	paygrade = "NO5"
+	paygrade = PAY_SHORT_NO5
 	idtype = /obj/item/card/id/gold
 	role_comm_title = "USASF CDR"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -297,17 +297,7 @@ everything bellow isn't used or out of place.
 
 // ----- Hostile Survivors
 
-/*
-
-datum/equipment_preset/survivor/clf/cold is never used
-and as a three proc attach to it that are defacto never used eitheir.
-
-handled proc in datum/equipment_preset/survivor/clf/cold:
-spawn_rebel_suit
-spawn_rebel_helmet
-spawn_rebel_shoes
-
-*/
+/// used in Shivas Snowball
 
 /datum/equipment_preset/survivor/clf/cold
 

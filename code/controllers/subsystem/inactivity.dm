@@ -17,7 +17,7 @@ SUBSYSTEM_DEF(inactivity)
 		return
 
 	for(var/client/current as anything in GLOB.clients)
-		if(current.admin_holder && current.admin_holder.rights & R_ADMIN) //Skip admins.
+		if(current.admin_holder && current.admin_holder.rights & R_MOD) //Skip admins.
 			continue
 		if(current.is_afk(INACTIVITY_KICK))
 			if(!istype(current.mob, /mob/dead))

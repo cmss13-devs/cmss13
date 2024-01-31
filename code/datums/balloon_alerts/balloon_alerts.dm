@@ -37,20 +37,15 @@
 	if (isnull(viewer_client))
 		return
 
-	var/bound_width = world.icon_size
-	if (ismovable(src))
-		var/atom/movable/movable_source = src
-		bound_width = movable_source.bound_width
-
 	var/image/balloon_alert = image(loc = get_atom_on_turf(src), layer = ABOVE_MOB_LAYER)
 	balloon_alert.plane = RUNECHAT_PLANE
 	balloon_alert.alpha = 0
 	balloon_alert.color = text_color
 	balloon_alert.appearance_flags = NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR|RESET_TRANSFORM|RESET_ALPHA
 	balloon_alert.maptext = MAPTEXT("<span class='center langchat'>[text]</span>")
-	balloon_alert.maptext_x = (BALLOON_TEXT_WIDTH - bound_width) * -0.5
 	balloon_alert.maptext_height = WXH_TO_HEIGHT(viewer_client?.MeasureText(text, null, BALLOON_TEXT_WIDTH))
 	balloon_alert.maptext_width = BALLOON_TEXT_WIDTH
+	balloon_alert.maptext_x = get_maxptext_x_offset(balloon_alert)
 	if(appearance_flags & PIXEL_SCALE)
 		balloon_alert.appearance_flags |= PIXEL_SCALE
 	//"<span style='text-align: center; -dm-text-outline: 1px #0005'>[text]</span>"

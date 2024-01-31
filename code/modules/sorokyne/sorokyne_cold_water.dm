@@ -48,13 +48,13 @@
 	var/dam_amount = COLD_WATER_DAMAGE
 	if(issynth(M) || isyautja(M))
 		dam_amount -= 0.5
-	if(M.lying)
-		M.apply_damage(5*dam_amount,BURN)
-	else
+	if(M.body_position == STANDING_UP)
 		M.apply_damage(dam_amount,BURN,"l_leg")
 		M.apply_damage(dam_amount,BURN,"l_foot")
 		M.apply_damage(dam_amount,BURN,"r_leg")
 		M.apply_damage(dam_amount,BURN,"r_foot")
+	else
+		M.apply_damage(5*dam_amount,BURN)
 
 	if (ishuman(M))
 		if (M.bodytemperature > MINIMUM_TEMP)

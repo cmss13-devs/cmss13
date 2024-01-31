@@ -24,7 +24,7 @@
 
 	/*A bunch of this stuff really needs to go under their own defines instead of being globally attached to mob.
 	A variable should only be globally attached to turfs/obj/whatever, when it is in fact needed as such.
-	The current method unnecessarily clusters up the variable list, especially for humans (although rearranging won't really clean it up a lot but the difference will be noticable for other mobs).
+	The current method unnecessarily clusters up the variable list, especially for humans (although rearranging won't really clean it up a lot but the difference will be noticeable for other mobs).
 	I'll make some notes on where certain variable defines should probably go.
 	Changing this around would probably require a good look-over the pre-existing code.
 	*/
@@ -65,22 +65,14 @@
 	var/dizziness = 0//Carbon
 	var/jitteriness = 0//Carbon
 	var/floatiness = 0
-	var/knocked_out = 0
-	var/stunned = 0
-	var/frozen = 0
-	var/knocked_down = 0
 	var/losebreath = 0.0//Carbon
-	var/dazed = 0
-	var/slowed = 0 // X_SLOW_AMOUNT
-	var/superslowed = 0 // X_SUPERSLOW_AMOUNT
 	var/shakecamera = 0
 
 	// bool status effects \\
 
 	/// bool that tracks if blind
 	var/blinded = FALSE
-	var/sleeping = 0 //Carbon
-	var/resting = 0 //Carbon
+	var/resting = 0
 	var/is_floating = 0
 	var/is_dizzy = 0
 	var/is_jittery = 0
@@ -95,9 +87,6 @@
 	var/exploit_record = ""
 
 	var/gibbing = FALSE
-	var/lying = FALSE
-	var/lying_prev = 0
-	var/canmove = 1
 	var/lastpuke = 0
 	unacidable = FALSE
 	var/mob_size = MOB_SIZE_HUMAN
@@ -185,7 +174,7 @@
 
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
 
-	var/status_flags = CANKNOCKDOWN|CANPUSH|STATUS_FLAGS_DEBILITATE //bitflags defining which status effects can be inflicted (replaces canweaken, canstun, etc)
+	var/status_flags = DEFAULT_MOB_STATUS_FLAGS //bitflags defining which status effects can be inflicted (replaces canweaken, canstun, etc)
 
 	var/area/lastarea = null
 	var/obj/control_object //Used by admins to possess objects. All mobs should have this var
@@ -377,10 +366,6 @@
 		switch(type)
 			if(/mob/living/carbon/human)
 				possibleverbs += typesof(/mob/living/carbon/proc,/mob/living/carbon/verb,/mob/living/carbon/human/verb,/mob/living/carbon/human/proc)
-			if(/mob/living/silicon/robot)
-				possibleverbs += typesof(/mob/living/silicon/proc,/mob/living/silicon/robot/proc,/mob/living/silicon/robot/verb)
-			if(/mob/living/silicon/ai)
-				possibleverbs += typesof(/mob/living/silicon/proc,/mob/living/silicon/ai/proc)
 		possibleverbs -= verbs
 		possibleverbs += "Cancel" // ...And one for the bottom
 

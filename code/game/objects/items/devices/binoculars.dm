@@ -123,7 +123,7 @@
 			to_chat(user, SPAN_WARNING("INVALID TARGET: target must be on the surface."))
 			return FALSE
 		if(user.sight & SEE_TURFS)
-			var/list/turf/path = getline2(user, targeted_atom, include_from_atom = FALSE)
+			var/list/turf/path = get_line(user, targeted_atom, include_start_atom = FALSE)
 			for(var/turf/T in path)
 				if(T.opacity)
 					to_chat(user, SPAN_WARNING("There is something in the way of the laser!"))
@@ -215,7 +215,7 @@
 
 /obj/item/device/binoculars/range/designator/Initialize()
 	. = ..()
-	tracking_id = ++cas_tracking_id_increment
+	tracking_id = ++GLOB.cas_tracking_id_increment
 
 /obj/item/device/binoculars/range/designator/Destroy()
 	QDEL_NULL(laser)
@@ -422,7 +422,7 @@
 	if(!(GLOB.character_traits[/datum/character_trait/skills/spotter] in human.traits))
 		to_chat(human, SPAN_WARNING("You have no idea how to use this!"))
 		return FALSE
-	if(istype(human) && !human.is_mob_incapacitated() && !human.lying && (holder_item == human.r_hand || holder_item || human.l_hand))
+	if(istype(human) && !human.is_mob_incapacitated() && (holder_item == human.r_hand || holder_item || human.l_hand))
 		return TRUE
 
 /datum/action/item_action/specialist/spotter_target/proc/use_ability(atom/targeted_atom)

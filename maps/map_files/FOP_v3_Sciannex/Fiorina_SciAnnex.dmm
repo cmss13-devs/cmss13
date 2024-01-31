@@ -6510,7 +6510,7 @@
 /area/fiorina/station/disco)
 "dYp" = (
 /obj/docking_port/stationary/marine_dropship/lz1{
-	name = "Hangar Landing Zone"
+	name = "LZ1: Hangar Landing Zone"
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
@@ -17641,9 +17641,6 @@
 /area/fiorina/station/lowsec)
 "kIe" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/book/manual/engineering_particle_accelerator{
-	pixel_y = 6
-	},
 /obj/structure/prop/souto_land/pole{
 	dir = 1
 	},
@@ -24442,7 +24439,7 @@
 /area/fiorina/tumor/ice_lab)
 "oIg" = (
 /obj/structure/platform,
-/obj/structure/reagent_dispensers/oxygentank{
+/obj/structure/reagent_dispensers/fueltank/oxygentank{
 	layer = 2.6
 	},
 /turf/open/floor/prison,
@@ -27301,7 +27298,7 @@
 	},
 /area/fiorina/station/research_cells)
 "qBS" = (
-/obj/item/circuitboard/mecha/gygax/targeting,
+/obj/item/circuitboard/exosuit/peripherals/max/targeting,
 /obj/structure/surface/rack,
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
@@ -31053,7 +31050,7 @@
 	},
 /area/fiorina/station/park)
 "sRv" = (
-/obj/item/clothing/shoes/marine/upp_knife,
+/obj/item/clothing/shoes/marine/upp/knife,
 /turf/open/floor/prison,
 /area/fiorina/station/lowsec)
 "sRE" = (
@@ -73029,7 +73026,7 @@ nZB
 nZB
 iTt
 wQN
-wSm
+xnU
 wSm
 wSm
 wSm
@@ -73047,7 +73044,7 @@ wSm
 wSm
 wSm
 wSm
-wSm
+xnU
 wQN
 eAM
 wSm
@@ -73242,7 +73239,6 @@ nZB
 gBe
 wSm
 wSm
-xnU
 wSm
 wSm
 wSm
@@ -73258,7 +73254,8 @@ wSm
 wSm
 wSm
 wSm
-xnU
+wSm
+wSm
 wSm
 wSm
 eSF
@@ -74938,7 +74935,6 @@ nZB
 gBe
 wSm
 wSm
-xnU
 wSm
 wSm
 wSm
@@ -74954,7 +74950,8 @@ wSm
 wSm
 wSm
 wSm
-xnU
+wSm
+wSm
 wSm
 wSm
 eSF
@@ -75149,7 +75146,7 @@ nZB
 nZB
 bne
 wQN
-wSm
+xnU
 wSm
 wSm
 wSm
@@ -75167,7 +75164,7 @@ wSm
 wSm
 wSm
 wSm
-wSm
+xnU
 wQN
 xrH
 wSm
@@ -88846,7 +88843,7 @@ qaL
 nGZ
 uNs
 iOa
-xeO
+cCx
 xeO
 xeO
 xeO
@@ -88864,7 +88861,7 @@ xeO
 xeO
 xeO
 xeO
-xeO
+cCx
 iOa
 eLB
 uYi
@@ -89059,7 +89056,6 @@ pYD
 ehy
 xeO
 xeO
-cCx
 xeO
 xeO
 xeO
@@ -89075,7 +89071,8 @@ xeO
 xeO
 xeO
 xeO
-cCx
+xeO
+xeO
 xeO
 xeO
 oGR
@@ -90755,7 +90752,6 @@ pqY
 ehy
 doA
 xeO
-cCx
 xeO
 xeO
 xeO
@@ -90771,7 +90767,8 @@ xeO
 xeO
 xeO
 xeO
-cCx
+xeO
+xeO
 xeO
 xeO
 kIh
@@ -90966,7 +90963,7 @@ qaL
 nGZ
 aTe
 iOa
-xeO
+cCx
 xeO
 xeO
 xeO
@@ -90984,7 +90981,7 @@ xeO
 xeO
 xeO
 xeO
-xeO
+cCx
 iOa
 rrD
 uYi

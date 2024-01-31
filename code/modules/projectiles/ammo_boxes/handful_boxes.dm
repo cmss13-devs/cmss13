@@ -48,6 +48,15 @@
 /obj/item/ammo_box/magazine/shotgun/incendiary/empty
 	empty = TRUE
 
+/obj/item/ammo_box/magazine/shotgun/incendiarybuck
+	name = "\improper shotgun shell box (Incendiary buckshot x 100)"
+	icon_state = "base_incbuck"
+	overlay_content = "_incenbuck"
+	magazine_type = /obj/item/ammo_magazine/shotgun/incendiarybuck
+
+/obj/item/ammo_box/magazine/shotgun/incendiarybuck/empty
+	empty = TRUE
+
 /obj/item/ammo_box/magazine/shotgun/beanbag
 	name = "\improper shotgun shell box (Beanbag x 100)"
 	icon_state = "base_bean"

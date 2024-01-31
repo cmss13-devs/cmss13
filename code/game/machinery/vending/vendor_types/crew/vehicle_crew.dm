@@ -26,12 +26,12 @@
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/Initialize(mapload, ...)
 	. = ..()
 	RegisterSignal(SSdcs, COMSIG_GLOB_VEHICLE_ORDERED, PROC_REF(populate_products))
-	if(!VehicleGearConsole)
-		VehicleGearConsole = src
+	if(!GLOB.VehicleGearConsole)
+		GLOB.VehicleGearConsole = src
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/Destroy()
 	UnregisterSignal(SSdcs, COMSIG_GLOB_VEHICLE_ORDERED)
-	VehicleGearConsole = null
+	GLOB.VehicleGearConsole = null
 	return ..()
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/get_appropriate_vend_turf(mob/living/carbon/human/H)
@@ -55,8 +55,10 @@
 	SIGNAL_HANDLER
 	UnregisterSignal(SSdcs, COMSIG_GLOB_VEHICLE_ORDERED)
 
-	selected_vehicle = "APC"
-	available_categories &= ~(VEHICLE_ARMOR_AVAILABLE|VEHICLE_INTEGRAL_AVAILABLE) //APC lacks these, so we need to remove these flags to be able to access spare parts section
+	if(!selected_vehicle)
+		selected_vehicle = "APC" // The whole thing seems to be based upon the assumption you unlock tank as an override, defaulting to APC
+	if(selected_vehicle == "APC")
+		available_categories &= ~(VEHICLE_ARMOR_AVAILABLE|VEHICLE_INTEGRAL_AVAILABLE) //APC lacks these, so we need to remove these flags to be able to access spare parts section
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/get_listed_products(mob/user)
 	var/list/display_list = list()
@@ -85,9 +87,9 @@
 	. = list()
 	. += ui_static_data(user)
 
-	if(supply_controller.tank_points) //we steal points from supply_controller, meh-he-he. Solely to be able to modify amount of points in vendor if needed by just changing one var.
-		available_points_to_display = supply_controller.tank_points
-		supply_controller.tank_points = 0
+	if(GLOB.supply_controller.tank_points) //we steal points from GLOB.supply_controller, meh-he-he. Solely to be able to modify amount of points in vendor if needed by just changing one var.
+		available_points_to_display = GLOB.supply_controller.tank_points
+		GLOB.supply_controller.tank_points = 0
 	.["current_m_points"] = available_points_to_display
 
 	var/list/ui_listed_products = get_listed_products(user)

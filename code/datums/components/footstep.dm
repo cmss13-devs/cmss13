@@ -47,7 +47,7 @@
 	if(!T)
 		return
 	var/mob/living/parent_mob = parent
-	if(parent_mob.lying && (isfile(drag_sounds) || istext(drag_sounds)))
+	if(parent_mob.body_position == LYING_DOWN && (isfile(drag_sounds) || istext(drag_sounds)))
 		playsound(T, drag_sounds, volume, rand(20000, 25000), range, falloff = falloff)
 	else if(isfile(footstep_sounds) || istext(footstep_sounds))
 		playsound(T, footstep_sounds, volume, rand(20000, 25000), range, falloff = falloff)

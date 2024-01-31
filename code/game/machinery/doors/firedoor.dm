@@ -1,7 +1,4 @@
 // Door open and close constants
-/var/const
-	CLOSED = 2
-
 #define FIREDOOR_MAX_PRESSURE_DIFF 25 // kPa
 #define FIREDOOR_MAX_TEMP 50 // °C
 #define FIREDOOR_MIN_TEMP 0
@@ -57,7 +54,7 @@
 	A.all_doors.Add(src)
 	areas_added = list(A)
 
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinals)
 		A = get_area(get_step(src,direction))
 		if(istype(A) && !(A in areas_added))
 			A.all_doors.Add(src)
@@ -135,7 +132,7 @@
 	"Would you like to [density ? "open" : "close"] this [src.name]?[ alarmed && density ? "\nNote that by doing so, you acknowledge any damages from opening this\n[src.name] as being your own fault, and you will be held accountable under the law." : ""]",\
 	"\The [src]", list("Yes", "No")) != "Yes")
 		return
-	if(user.is_mob_incapacitated() || (!user.canmove && !isRemoteControlling(user)) || (get_dist(src, user) > 1  && !isRemoteControlling(user)))
+	if(user.is_mob_incapacitated() || (get_dist(src, user) > 1  && !isRemoteControlling(user)))
 		to_chat(user, "Sorry, you must remain able bodied and close to \the [src] in order to use it.")
 		return
 	if(density && (inoperable())) //can still close without power
@@ -277,7 +274,7 @@
 			overlays += "palert"
 		if(dir_alerts)
 			for(var/d=1;d<=4;d++)
-				var/cdir = cardinal[d]
+				var/cdir = GLOB.cardinals[d]
 				for(var/i=1;i<=ALERT_STATES.len;i++)
 					if(dir_alerts[d] & (1<<(i-1)))
 						overlays += new/icon(icon,"alert_[ALERT_STATES[i]]", dir=cdir)

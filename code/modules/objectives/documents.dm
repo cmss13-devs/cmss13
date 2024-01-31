@@ -129,7 +129,7 @@
 
 /obj/item/document_objective/Initialize(mapload, ...)
 	. = ..()
-	label = "[pick(alphabet_uppercase)][rand(100,999)]"
+	label = "[pick(GLOB.alphabet_uppercase)][rand(100,999)]"
 	objective = new objective_type(src)
 	retrieve_objective = new /datum/cm_objective/retrieve_item/document(src)
 	LAZYADD(objective.enables_objectives, retrieve_objective)

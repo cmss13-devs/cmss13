@@ -77,7 +77,7 @@
 				lower_railings()
 				return
 		else //at centcom
-			supply_controller.buy()
+			GLOB.supply_controller.buy()
 
 		//We pretend it's a long_jump by making the shuttle stay at centcom for the "in-transit" period.
 		var/area/away_area = get_location_area(away_location)
@@ -137,14 +137,14 @@
 			recharging = 0
 
 /datum/shuttle/ferry/supply/proc/handle_sell()
-	supply_controller.sell()
+	GLOB.supply_controller.sell()
 
 // returns 1 if the supply shuttle should be prevented from moving because it contains forbidden atoms
 /datum/shuttle/ferry/supply/proc/forbidden_atoms_check()
 	if (!at_station())
 		return 0 //if badmins want to send mobs or a nuke on the supply shuttle from centcom we don't care
 
-	return supply_controller.forbidden_atoms_check(get_location_area())
+	return GLOB.supply_controller.forbidden_atoms_check(get_location_area())
 
 /datum/shuttle/ferry/supply/proc/at_station()
 	return (!location)
@@ -155,7 +155,7 @@
 
 /datum/shuttle/ferry/supply/proc/raise_railings()
 	var/effective = 0
-	for(var/obj/structure/machinery/door/poddoor/M in machines)
+	for(var/obj/structure/machinery/door/poddoor/M in GLOB.machines)
 		if(M.id == railing_id && !M.density)
 			effective = 1
 			spawn()
@@ -165,7 +165,7 @@
 
 /datum/shuttle/ferry/supply/proc/lower_railings()
 	var/effective = 0
-	for(var/obj/structure/machinery/door/poddoor/M in machines)
+	for(var/obj/structure/machinery/door/poddoor/M in GLOB.machines)
 		if(M.id == railing_id && M.density)
 			effective = 1
 			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/door, open))
@@ -173,14 +173,14 @@
 		playsound(locate(Elevator_x,Elevator_y,Elevator_z), 'sound/machines/elevator_openclose.ogg', 50, 0)
 
 /datum/shuttle/ferry/supply/proc/start_gears(direction = 1)
-	for(var/obj/structure/machinery/gear/M in machines)
+	for(var/obj/structure/machinery/gear/M in GLOB.machines)
 		if(M.id == gear_id)
 			spawn()
 				M.icon_state = "gear_moving"
 				M.setDir(direction)
 
 /datum/shuttle/ferry/supply/proc/stop_gears()
-	for(var/obj/structure/machinery/gear/M in machines)
+	for(var/obj/structure/machinery/gear/M in GLOB.machines)
 		if(M.id == gear_id)
 			spawn()
 				M.icon_state = "gear"

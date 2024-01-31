@@ -6,11 +6,11 @@
 
 /obj/structure/machinery/cm_vending/clothing/dress/proc/get_listed_products_for_role(list/role_specific_uniforms)
 	. = list()
-	for(var/category_type in uniform_categories)
+	for(var/category_type in GLOB.uniform_categories)
 		var/display_category = FALSE
-		if(!uniform_categories[category_type])
+		if(!GLOB.uniform_categories[category_type])
 			continue
-		for(var/category in uniform_categories[category_type])
+		for(var/category in GLOB.uniform_categories[category_type])
 			if((category in role_specific_uniforms) && role_specific_uniforms[category])
 				display_category = TRUE
 				break
@@ -19,7 +19,7 @@
 		. += list(
 			list(category_type, 0, null, null, null)
 		)
-		for(var/object_type in uniform_categories[category_type])
+		for(var/object_type in GLOB.uniform_categories[category_type])
 			if(!role_specific_uniforms[object_type])
 				continue
 			for(var/uniform_path in role_specific_uniforms[object_type])
@@ -52,11 +52,11 @@
 	if(istype(id_card))
 		role_specific_uniforms = id_card.uniform_sets
 		vended_items = id_card.vended_items
-	for(var/category_type in uniform_categories)
+	for(var/category_type in GLOB.uniform_categories)
 		var/display_category = FALSE
-		if(!uniform_categories[category_type])
+		if(!GLOB.uniform_categories[category_type])
 			continue
-		for(var/category in uniform_categories[category_type])
+		for(var/category in GLOB.uniform_categories[category_type])
 			if((category in role_specific_uniforms) && role_specific_uniforms[category])
 				display_category = TRUE
 				break
@@ -65,7 +65,7 @@
 		display_list += list(
 			list(category_type, 0, null, null, null)
 		)
-		for(var/object_type in uniform_categories[category_type])
+		for(var/object_type in GLOB.uniform_categories[category_type])
 			if(!role_specific_uniforms[object_type])
 				continue
 			for(var/uniform_path in role_specific_uniforms[object_type])
@@ -134,10 +134,10 @@
 				to_chat(H, SPAN_WARNING("This machine isn't for you."))
 				return
 
-			for(var/category in uniform_categories) // Very Hacky fix
+			for(var/category in GLOB.uniform_categories) // Very Hacky fix
 				if(!exploiting)
 					break
-				for(var/specific_category in uniform_categories[category])
+				for(var/specific_category in GLOB.uniform_categories[category])
 					if(!exploiting)
 						break
 					if(!(specific_category in id_card.uniform_sets))

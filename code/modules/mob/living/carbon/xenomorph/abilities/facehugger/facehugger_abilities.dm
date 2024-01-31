@@ -5,7 +5,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_pounce
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	xeno_cooldown = 30
+	xeno_cooldown = 3 SECONDS
 	plasma_cost = 0
 
 	// Config options

@@ -21,10 +21,10 @@ interface ElevatorContext {
   is_call_button: 0 | 1;
 }
 
-const InfoBox = (
-  props: { title?: string; text: string | number },
-  contenxt
-) => {
+const InfoBox = (props: {
+  readonly title?: string;
+  readonly text: string | number;
+}) => {
   return (
     <Box className="InfoBox">
       {props.title && (
@@ -40,8 +40,8 @@ const InfoBox = (
   );
 };
 
-const ElevatorPanel = (props, context) => {
-  const { data } = useBackend<ElevatorContext>(context);
+const ElevatorPanel = (props) => {
+  const { data } = useBackend<ElevatorContext>();
   const is_stationary =
     data.mode === 'idle' ||
     data.mode === 'igniting' ||
@@ -86,13 +86,13 @@ const ElevatorPanel = (props, context) => {
 };
 
 interface ElevatorButtonProps {
-  id: string;
-  name: string;
-  onClick: () => void;
+  readonly id: string;
+  readonly name: string;
+  readonly onClick: () => void;
 }
 
-const ElevatorButton = (props: ElevatorButtonProps, context) => {
-  const { data } = useBackend<ElevatorContext>(context);
+const ElevatorButton = (props: ElevatorButtonProps) => {
+  const { data } = useBackend<ElevatorContext>();
   return (
     <Flex align="center" className="ButtonContainer">
       <Flex.Item>
@@ -112,8 +112,8 @@ const ElevatorButton = (props: ElevatorButtonProps, context) => {
   );
 };
 
-export const ElevatorControl = (props, context) => {
-  const { data, act } = useBackend<ElevatorContext>(context);
+export const ElevatorControl = (props) => {
+  const { data, act } = useBackend<ElevatorContext>();
   return (
     <Window width={600} height={170}>
       <Window.Content className="ElevatorPanel">

@@ -137,7 +137,7 @@
 
 /obj/item/device/assembly/infra/Topic(href, href_list)
 	..()
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !in_range(loc, usr))
+	if(usr.is_mob_incapacitated() || !in_range(loc, usr))
 		close_browser(usr, "infra")
 		return
 

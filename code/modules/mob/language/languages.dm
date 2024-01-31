@@ -196,12 +196,6 @@
 			continue
 		M.show_message("<i><span class='game say'><span class='name'>synthesised voice</span> <span class='message'>beeps, \"beep beep beep\"</span></span></i>",2)
 
-	//robot binary xmitter component power usage
-	if (isrobot(speaker))
-		var/mob/living/silicon/robot/R = speaker
-		var/datum/robot_component/C = R.components["comms"]
-		R.cell_use_power(C.active_usage)
-
 /datum/language/event_hivemind
 	name = LANGUAGE_TELEPATH
 	desc = "An event only language that provides a hivemind for its users."

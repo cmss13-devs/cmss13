@@ -139,7 +139,7 @@ explosion resistance exactly as much as their health
 
 		//spread in each ordinal direction
 		var/direction_angle = dir2angle(direction)
-		for(var/spread_direction in alldirs)
+		for(var/spread_direction in GLOB.alldirs)
 			var/spread_power = power
 
 			if(direction) //false if, for example, this turf was the explosion source
@@ -325,7 +325,7 @@ explosion resistance exactly as much as their health
 		return
 
 	if(!direction)
-		direction = pick(alldirs)
+		direction = pick(GLOB.alldirs)
 	var/range = min(round(severity/src.w_class * 0.2, 1), 14)
 	if(!direction)
 		range = round( range/2 ,1)

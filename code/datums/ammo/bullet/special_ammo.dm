@@ -108,6 +108,9 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
 	))
 
+/datum/ammo/bullet/machinegun/doorgun
+	flags_ammo_behavior = AMMO_BALLISTIC | AMMO_IGNORE_COVER
+
 /datum/ammo/bullet/machinegun/auto // for M2C, automatic variant for M56D, stats for bullet should always be moderately overtuned to fulfill its ultra-offense + flank-push purpose
 	name = "heavy machinegun bullet"
 

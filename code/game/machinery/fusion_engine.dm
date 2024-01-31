@@ -15,6 +15,7 @@
 	unacidable = TRUE   //NOPE.jpg
 	anchored = TRUE
 	density = TRUE
+	power_machine = TRUE
 
 	var/power_gen_percent = 0 //50,000W at full capacity
 	var/buildstate = 0 //What state of building it are we on, 0-3, 1 is "broken", the default
@@ -24,7 +25,8 @@
 
 	var/obj/item/fuelCell/fusion_cell = new //Starts with a fuel cell loaded in.  Maybe replace with the plasma tanks in the future and have it consume plasma?  Possibly remove this later if it's irrelevent...
 	var/fuel_rate = 0 //Rate at which fuel is used.  Based mostly on how long the generator has been running.
-	power_machine = TRUE
+	/// If the generator is overloaded. Only possible during hijack once fuel is at 100%.
+	var/overloaded = FALSE
 
 /obj/structure/machinery/power/fusion_engine/Initialize(mapload, ...)
 	. = ..()
@@ -35,11 +37,25 @@
 
 /obj/structure/machinery/power/fusion_engine/Destroy()
 	QDEL_NULL(fusion_cell)
-	. = ..()
+	return ..()
 
+/obj/structure/machinery/power/fusion_engine/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(!overloaded)
+		to_chat(xeno, SPAN_WARNING("You see no reason to attack [src]."))
+		return XENO_NO_DELAY_ACTION
+
+	xeno.animation_attack_on(src)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	xeno.visible_message(SPAN_DANGER("[xeno] [xeno.slashes_verb] [src], stopping its overload process!"), \
+	SPAN_DANGER("You [xeno.slash_verb] [src], stopping its overload process!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	set_overloading(FALSE)
+	return XENO_ATTACK_ACTION
 
 /obj/structure/machinery/power/fusion_engine/power_change()
-	return
+	. = ..()
+	if(overloaded)
+		set_overloading(FALSE)
+		visible_message("[icon2html(src, viewers(src))] <b>[src]</b>'s overload suddenly ceases as primary power is lost.")
 
 /obj/structure/machinery/power/fusion_engine/process()
 	if(!is_on || buildstate || !anchored || !powernet || !fusion_cell) //Default logic checking
@@ -60,9 +76,18 @@
 		stop_processing()
 		return FALSE
 
-	if(!check_failure())
+	if(overloaded && prob(1)) // up to 18 generators at 1% every 3.5 seconds means that every ~21 seconds or so, one generator will make noise assuming all are overloaded
+		switch(rand(1, 2))
+			if(1)
+				visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> loudly hums.")]")
+				playsound(src, 'sound/machines/resource_node/node_idle.ogg', 60, TRUE)
+			if(2)
+				visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> makes a worrying hiss.")]")
+				playsound(src, 'sound/machines/hiss.ogg', 60, TRUE)
 
-		if(power_gen_percent < 100) power_gen_percent++
+	if(!check_failure())
+		if(power_gen_percent < 100)
+			power_gen_percent++
 
 		switch(power_gen_percent) //Flavor text!
 			if(10)
@@ -96,6 +121,10 @@
 			to_chat(user, SPAN_NOTICE("Use a wrench to repair it."))
 			return FALSE
 	if(is_on)
+		if(overloaded)
+			to_chat(user, SPAN_WARNING("You can't shut off [src] while it's overloaded!"))
+			return
+
 		visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("<b>[src]</b> beeps softly and the humming stops as [usr] shuts off the generator.")]")
 		is_on = 0
 		power_gen_percent = 0
@@ -127,13 +156,13 @@
 /obj/structure/machinery/power/fusion_engine/attackby(obj/item/O, mob/user)
 	if(istype(O, /obj/item/fuelCell))
 		if(is_on)
-			to_chat(user, SPAN_WARNING("The [src] needs to be turned off first."))
+			to_chat(user, SPAN_WARNING("[src] needs to be turned off first."))
 			return TRUE
 		if(!fusion_cell)
 			if(user.drop_inv_item_to_loc(O, src))
 				fusion_cell = O
 				update_icon()
-				to_chat(user, SPAN_NOTICE("You load the [src] with the [O]."))
+				to_chat(user, SPAN_NOTICE("You load [src] with [O]."))
 			return TRUE
 		else
 			to_chat(user, SPAN_WARNING("You need to remove the fuel cell from [src] first."))
@@ -208,11 +237,18 @@
 		if(buildstate)
 			to_chat(user, SPAN_WARNING("You must repair the generator before working with its fuel cell."))
 			return
+
+		if(overloaded)
+			to_chat(user, SPAN_WARNING("You must restore the safeties on the generator before working with its fuel cell."))
+			return
+
 		if(is_on)
 			to_chat(user, SPAN_WARNING("You must turn off the generator before working with its fuel cell."))
 			return
+
 		if(!fusion_cell)
 			to_chat(user, SPAN_WARNING("There is no cell to remove."))
+
 		else
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				user.visible_message(SPAN_WARNING("[user] fumbles around figuring out [src]'s fuel receptacle."),
@@ -232,22 +268,72 @@
 				fusion_cell = null
 				update_icon()
 				return TRUE
+
+	else if(HAS_TRAIT(O, TRAIT_TOOL_MULTITOOL))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			to_chat(user, SPAN_WARNING("You have no idea what to do with [src]."))
+			return
+
+		if(!overloaded)
+			if(!SShijack.sd_unlocked)
+				to_chat(user, SPAN_WARNING("You consider overloading [src]'s safeties, but you decide against it."))
+				return
+
+			if(inoperable())
+				to_chat(user, SPAN_WARNING("[src] needs to be working and have external power in order to overload it!"))
+				return
+
+			to_chat(user, SPAN_WARNING("You start overloading the safeties on [src]..."))
+			if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				return
+
+			if(inoperable())
+				return
+
+			to_chat(user, SPAN_WARNING("You finish overloading the safeties on [src]."))
+			set_overloading(TRUE)
+			log_game("[key_name(user)] has overloaded a generator.")
+
+		else
+			to_chat(user, SPAN_WARNING("You start restoring the safeties on [src]..."))
+			if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				return
+
+			if(inoperable())
+				return
+
+			to_chat(user, SPAN_WARNING("You finish restoring the safeties on [src]."))
+			log_game("[key_name(user)] has restored the safeties of a generator.")
+			set_overloading(FALSE)
+
+		return TRUE
+
 	else
 		return ..()
 
 /obj/structure/machinery/power/fusion_engine/get_examine_text(mob/user)
 	. = ..()
-	if(ishuman(user))
+	if(isxeno(user))
+		if(overloaded)
+			. += SPAN_INFO("You could <b>attack</b> this to stop the overload process.")
+
+	else if(ishuman(user))
 		if(buildstate)
 			. += SPAN_INFO("It's broken.")
 			switch(buildstate)
 				if(1)
-					. += SPAN_INFO("Use a blowtorch, then wirecutters, then wrench to repair it.")
+					. += SPAN_INFO("Use a <b>blowtorch</b>, then <b>wirecutters</b>, then <b>wrench</b> to repair it.")
 				if(2)
-					. += SPAN_INFO("Use a wirecutters, then wrench to repair it.")
+					. += SPAN_INFO("Use a <b>wirecutters</b>, then <b>wrench</b> to repair it.")
 				if(3)
-					. += SPAN_INFO("Use a wrench to repair it.")
+					. += SPAN_INFO("Use a <b>wrench</b> to repair it.")
 			return FALSE
+
+		if(SShijack.sd_unlocked && skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!overloaded)
+				. += SPAN_INFO("You could overload this with a <b>multitool</b>.")
+			else
+				. += SPAN_INFO("You could restore its safeties with a <b>multitool</b>.")
 
 		if(!is_on)
 			. += SPAN_INFO("It looks offline.")
@@ -270,22 +356,30 @@
 		else
 			. += SPAN_INFO("There is no fuel cell in the receptacle.")
 
+/obj/structure/machinery/power/fusion_engine/ex_act(severity)
+	if(overloaded && severity >= EXPLOSION_THRESHOLD_MLOW)
+		set_overloading(FALSE)
+	return
+
 /obj/structure/machinery/power/fusion_engine/update_icon()
 	switch(buildstate)
 		if(0)
 			if(fusion_cell)
-				var/pstatus = is_on ? "on" : "off"
-				switch(fusion_cell.get_fuel_percent())
-					if(0 to 10)
-						icon_state = "[pstatus]-10"
-					if(10 to 25)
-						icon_state = "[pstatus]-25"
-					if(25 to 50)
-						icon_state = "[pstatus]-50"
-					if(50 to 75)
-						icon_state = "[pstatus]-75"
-					if(75 to INFINITY)
-						icon_state = "[pstatus]-100"
+				if(overloaded)
+					icon_state = "overloaded"
+				else
+					var/pstatus = is_on ? "on" : "off"
+					switch(fusion_cell.get_fuel_percent())
+						if(0 to 10)
+							icon_state = "[pstatus]-10"
+						if(10 to 25)
+							icon_state = "[pstatus]-25"
+						if(25 to 50)
+							icon_state = "[pstatus]-50"
+						if(50 to 75)
+							icon_state = "[pstatus]-75"
+						if(75 to INFINITY)
+							icon_state = "[pstatus]-100"
 			else
 				icon_state = "off"
 
@@ -317,9 +411,13 @@
 	else
 		return 0
 
+/obj/structure/machinery/power/fusion_engine/proc/set_overloading(new_overloading)
+	if(overloaded == new_overloading)
+		return
 
-
-
+	overloaded = new_overloading
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_GENERATOR_SET_OVERLOADING, overloaded)
+	update_icon()
 
 
 

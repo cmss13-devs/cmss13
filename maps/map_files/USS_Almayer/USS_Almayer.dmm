@@ -28574,7 +28574,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/pipes/vents/pump/no_boom{
+/obj/structure/pipes/vents/pump/no_boom/gas{
 	dir = 1
 	},
 /turf/open/floor/almayer/no_build{
@@ -59443,7 +59443,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/pipes/vents/pump/no_boom{
+/obj/structure/pipes/vents/pump/no_boom/gas{
 	dir = 8
 	},
 /turf/open/floor/almayer/no_build{
@@ -77510,10 +77510,7 @@
 /obj/structure/bed/chair/comfy/ares{
 	dir = 1
 	},
-/obj/structure/pipes/vents/pump/no_boom{
-	desc = "Has a valve and pump attached to it, connected to multiple gas tanks.";
-	name = "Security Vent"
-	},
+/obj/structure/pipes/vents/pump/no_boom/gas,
 /turf/open/floor/almayer/no_build{
 	icon_state = "plating"
 	},
@@ -82695,7 +82692,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/pipes/vents/pump/no_boom{
+/obj/structure/pipes/vents/pump/no_boom/gas{
 	dir = 1
 	},
 /turf/open/floor/almayer/no_build{

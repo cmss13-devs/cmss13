@@ -203,6 +203,21 @@
 	data["active_ref"] = active_ref
 	data["conversations"] = logged_convos
 
+	var/list/security_vents = list()
+	for(var/obj/structure/pipes/vents/pump/no_boom/gas/vent as anything in link.linked_vents)
+		if(!istype(vent))
+			continue
+		if(!vent.vent_tag)
+			vent.vent_tag = "Security Vent #[link.tag_num]"
+			link.tag_num++
+
+		var/list/current_vent = list()
+		current_vent["vent_tag"] = vent.vent_tag
+		current_vent["ref"] = "\ref[vent]"
+		security_vents += list(current_vent)
+
+	data["security_vents"] = security_vents
+
 	return data
 
 /obj/structure/machinery/computer/ares_console/ui_status(mob/user, datum/ui_state/state)

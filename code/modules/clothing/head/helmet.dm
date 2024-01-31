@@ -670,8 +670,15 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		for(var/hud_type in total_visors)
 			if(hud_type == active_visor)
 				if(length(total_visors) > iterator)
-					active_visor = total_visors[(iterator + 1)]
-					toggle_visor(user, total_visors[iterator], TRUE)
+					var/obj/item/device/helmet_visor/current_visor = total_visors[iterator]
+					var/obj/item/device/helmet_visor/next_visor = total_visors[iterator + 1]
+
+					if(!isnull(GLOB.huds[next_visor.hud_type].hudusers[user]))
+						iterator++
+						continue
+
+					active_visor = next_visor
+					toggle_visor(user, current_visor, silent = TRUE) // disables the old visor
 					toggle_visor(user)
 					return active_visor
 				else
@@ -680,14 +687,14 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 					return FALSE
 			iterator++
 
-	if(total_visors[1])
-		active_visor = total_visors[1]
+	for(var/obj/item/device/helmet_visor/new_visor in total_visors)
+
+		if(!isnull(GLOB.huds[new_visor.hud_type].hudusers[user]))
+			continue
+
+		active_visor = new_visor
 		toggle_visor(user)
 		return active_visor
-
-	active_visor = null
-	recalculate_visors(user)
-	return FALSE
 
 /datum/action/item_action/cycle_helmet_huds/New(Target, obj/item/holder)
 	. = ..()

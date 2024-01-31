@@ -3390,14 +3390,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/upper_medical)
-"aot" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
-	},
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/medical/upper_medical)
 "aov" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -5718,11 +5710,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/command/cic)
-"awM" = (
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/medical/upper_medical)
 "awQ" = (
 /obj/structure/surface/table/almayer,
 /obj/item/cell/high{
@@ -9548,10 +9535,6 @@
 	dir = 1
 	},
 /area/almayer/medical/containment/cell)
-"aOi" = (
-/obj/effect/landmark/start/nurse,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/offices)
 "aOq" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/extinguisher,
@@ -10064,10 +10047,6 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/living/offices)
-"aQI" = (
-/obj/effect/landmark/start/researcher,
-/turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices)
 "aQL" = (
 /turf/closed/wall/almayer,
@@ -23947,6 +23926,14 @@
 	icon_state = "cargo"
 	},
 /area/almayer/engineering/lower/engine_core)
+"cGp" = (
+/obj/structure/machinery/cm_vending/clothing/senior_officer{
+	pixel_y = 0
+	},
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/medical/upper_medical)
 "cGr" = (
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -24369,6 +24356,57 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/starboard_hallway)
+"cOY" = (
+/obj/item/clothing/under/blackskirt{
+	desc = "A stylish skirt, in a business-black and red colour scheme.";
+	name = "liaison's skirt"
+	},
+/obj/item/clothing/under/suit_jacket/charcoal{
+	desc = "A professional black suit and blue tie. A combination popular among government agents and corporate Yes-Men alike.";
+	name = "liaison's black suit"
+	},
+/obj/item/clothing/under/suit_jacket/navy{
+	desc = "A navy suit and red tie, intended for the Almayer's finest. And accountants.";
+	name = "liaison's navy suit"
+	},
+/obj/item/clothing/under/suit_jacket/trainee,
+/obj/item/clothing/under/liaison_suit/charcoal,
+/obj/item/clothing/under/liaison_suit/blazer,
+/obj/item/clothing/suit/storage/snow_suit/liaison,
+/obj/item/clothing/gloves/black,
+/obj/item/clothing/gloves/marine/dress,
+/obj/item/clothing/glasses/sunglasses/big,
+/obj/item/clothing/accessory/blue,
+/obj/item/clothing/accessory/red,
+/obj/structure/machinery/status_display{
+	pixel_x = -32
+	},
+/obj/item/clothing/accessory/black,
+/obj/item/clothing/accessory/green,
+/obj/item/clothing/accessory/gold,
+/obj/item/clothing/accessory/purple,
+/obj/item/clothing/under/liaison_suit/corporate_formal,
+/obj/item/clothing/under/liaison_suit/field,
+/obj/item/clothing/under/liaison_suit/ivy,
+/obj/item/clothing/under/liaison_suit/blue,
+/obj/item/clothing/under/liaison_suit/brown,
+/obj/item/clothing/under/liaison_suit/black,
+/obj/item/clothing/suit/storage/jacket/marine/vest,
+/obj/item/clothing/suit/storage/jacket/marine/vest/grey,
+/obj/item/clothing/suit/storage/jacket/marine/vest/tan,
+/obj/item/clothing/suit/storage/jacket/marine/bomber,
+/obj/item/clothing/suit/storage/jacket/marine/bomber/red,
+/obj/item/clothing/suit/storage/jacket/marine/bomber/grey,
+/obj/item/clothing/suit/storage/jacket/marine/corporate,
+/obj/item/clothing/suit/storage/jacket/marine/corporate/black,
+/obj/item/clothing/suit/storage/jacket/marine/corporate/blue,
+/obj/item/clothing/suit/storage/jacket/marine/corporate/brown,
+/obj/item/clothing/suit/storage/jacket/marine/corporate/formal,
+/obj/structure/closet/cabinet{
+	storage_capacity = 35
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/command/corporateliaison)
 "cPg" = (
 /obj/structure/sign/safety/north{
 	pixel_x = 32;
@@ -35404,9 +35442,6 @@
 	icon_state = "cargo"
 	},
 /area/almayer/squads/delta)
-"hcZ" = (
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/offices)
 "hdd" = (
 /turf/open/floor/almayer{
 	dir = 9;
@@ -36533,10 +36568,6 @@
 "hvH" = (
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
-"hvQ" = (
-/obj/effect/landmark/start/professor,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/offices)
 "hwd" = (
 /obj/item/fuelCell,
 /obj/item/fuelCell,
@@ -40335,6 +40366,11 @@
 	icon_state = "silver"
 	},
 /area/almayer/hallways/aft_hallway)
+"iWQ" = (
+/obj/effect/landmark/start/researcher,
+/obj/effect/landmark/late_join/researcher,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/offices)
 "iWR" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
@@ -42361,13 +42397,6 @@
 	icon_state = "green"
 	},
 /area/almayer/hallways/starboard_hallway)
-"jKh" = (
-/obj/structure/machinery/alarm/almayer{
-	dir = 1
-	},
-/obj/effect/landmark/start/doctor,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/offices)
 "jKn" = (
 /turf/open/floor/almayer{
 	dir = 5;
@@ -42992,17 +43021,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/engineering/lower/workshop)
-"jUG" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/medical/upper_medical)
 "jUM" = (
 /obj/structure/machinery/camera/autoname/almayer/containment{
 	dir = 8
@@ -44855,13 +44873,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_a_s)
-"kDj" = (
-/obj/structure/bed,
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "sterile_green_side"
-	},
-/area/almayer/medical/lower_medical_medbay)
 "kDk" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
@@ -46748,6 +46759,13 @@
 	icon_state = "orange"
 	},
 /area/almayer/hallways/hangar)
+"lmi" = (
+/obj/structure/bed,
+/obj/item/bedsheet/green,
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/medical/upper_medical)
 "lml" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 1;
@@ -47908,13 +47926,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/starboard_hallway)
-"lHc" = (
-/obj/effect/landmark/start/doctor,
-/obj/structure/sign/safety/maint{
-	pixel_y = 26
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/offices)
 "lHk" = (
 /obj/structure/closet/firecloset,
 /obj/effect/decal/warning_stripes{
@@ -57165,10 +57176,6 @@
 	dir = 1
 	},
 /area/almayer/command/cic)
-"pbb" = (
-/obj/effect/landmark/start/doctor,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/offices)
 "pbo" = (
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/floor/almayer{
@@ -58579,6 +58586,14 @@
 	icon_state = "plate"
 	},
 /area/almayer/maint/hull/lower/l_a_s)
+"pGG" = (
+/obj/effect/landmark/start/doctor,
+/obj/structure/sign/safety/maint{
+	pixel_y = 26
+	},
+/obj/effect/landmark/late_join/doctor,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/offices)
 "pGK" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -58757,6 +58772,14 @@
 	dir = 4
 	},
 /area/almayer/command/airoom)
+"pKh" = (
+/obj/structure/machinery/alarm/almayer{
+	dir = 1
+	},
+/obj/effect/landmark/start/nurse,
+/obj/effect/landmark/late_join/nurse,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/offices)
 "pKB" = (
 /obj/structure/surface/rack,
 /obj/item/circuitboard/firealarm,
@@ -65084,6 +65107,11 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/cells)
+"rUq" = (
+/obj/effect/landmark/start/nurse,
+/obj/effect/landmark/late_join/nurse,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/offices)
 "rUs" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -65329,6 +65357,11 @@
 	icon_state = "plate"
 	},
 /area/almayer/shipboard/starboard_point_defense)
+"sab" = (
+/obj/effect/landmark/start/doctor,
+/obj/effect/landmark/late_join/doctor,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/offices)
 "saL" = (
 /obj/structure/machinery/door/airlock/almayer/generic/corporate{
 	name = "Corporate Liaison's Closet"
@@ -68791,6 +68824,11 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/stern)
+"tmX" = (
+/obj/effect/landmark/start/professor,
+/obj/effect/landmark/late_join/cmo,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/offices)
 "tnb" = (
 /obj/structure/bed/chair/comfy/black,
 /turf/open/floor/almayer{
@@ -71384,12 +71422,6 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/upper_engineering/starboard)
-"umC" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/medical/upper_medical)
 "umS" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8
@@ -75900,23 +75932,6 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/shipboard/brig/perma)
-"vPj" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/device/flashlight/lamp{
-	pixel_y = 8
-	},
-/obj/structure/pipes/vents/pump{
-	dir = 4
-	},
-/obj/item/clothing/glasses/science{
-	pixel_x = 3;
-	pixel_y = -3
-	},
-/obj/item/device/flash,
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/medical/upper_medical)
 "vPm" = (
 /obj/item/stack/cable_coil,
 /turf/open/floor/plating/plating_catwalk,
@@ -76488,6 +76503,18 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/engineering/lower)
+"vXv" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_10";
+	pixel_y = 14
+	},
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/medical/upper_medical)
 "vYi" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
@@ -77507,6 +77534,20 @@
 	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
+"wpu" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/device/flashlight/lamp{
+	pixel_y = 8
+	},
+/obj/item/clothing/glasses/science{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/item/device/flash,
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/medical/upper_medical)
 "wpw" = (
 /obj/structure/bed/chair/comfy/ares{
 	dir = 1
@@ -77781,6 +77822,14 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/chief_mp_office)
+"wub" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/medical/upper_medical)
 "wuc" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper Brig Medbay";
@@ -78256,39 +78305,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/squads/alpha)
-"wEe" = (
-/obj/structure/closet/cabinet,
-/obj/item/clothing/under/liaison_suit/formal,
-/obj/item/clothing/under/liaison_suit,
-/obj/item/clothing/under/liaison_suit/outing,
-/obj/item/clothing/under/liaison_suit/suspenders,
-/obj/item/clothing/under/blackskirt{
-	desc = "A stylish skirt, in a business-black and red colour scheme.";
-	name = "liaison's skirt"
-	},
-/obj/item/clothing/under/suit_jacket/charcoal{
-	desc = "A professional black suit and blue tie. A combination popular among government agents and corporate Yes-Men alike.";
-	name = "liaison's black suit"
-	},
-/obj/item/clothing/under/suit_jacket/navy{
-	desc = "A navy suit and red tie, intended for the Almayer's finest. And accountants.";
-	name = "liaison's navy suit"
-	},
-/obj/item/clothing/under/suit_jacket/trainee,
-/obj/item/clothing/under/liaison_suit/charcoal,
-/obj/item/clothing/under/liaison_suit/outing/red,
-/obj/item/clothing/under/liaison_suit/blazer,
-/obj/item/clothing/suit/storage/snow_suit/liaison,
-/obj/item/clothing/gloves/black,
-/obj/item/clothing/gloves/marine/dress,
-/obj/item/clothing/glasses/sunglasses/big,
-/obj/item/clothing/accessory/blue,
-/obj/item/clothing/accessory/red,
-/obj/structure/machinery/status_display{
-	pixel_x = -32
-	},
-/turf/open/floor/wood/ship,
-/area/almayer/command/corporateliaison)
 "wEg" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "agentshuttle";
@@ -79778,6 +79794,14 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/briefing)
+"xgP" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
+	},
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/medical/upper_medical)
 "xgS" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -81709,20 +81733,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/maint/hull/upper/p_stern)
-"xRh" = (
-/obj/structure/bed,
-/obj/item/bedsheet/green,
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 10
-	},
-/obj/structure/machinery/cm_vending/clothing/senior_officer{
-	density = 0;
-	pixel_y = 30
-	},
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/medical/upper_medical)
 "xRj" = (
 /obj/structure/bed/chair{
 	dir = 8;
@@ -111199,8 +111209,8 @@ fnA
 jZY
 jZY
 sqf
-vPj
-aot
+wpu
+cGp
 ajl
 ajl
 ajl
@@ -111402,8 +111412,8 @@ eDo
 eDo
 eDo
 sqf
-jUG
-awM
+vXv
+wub
 gXl
 ajl
 wqW
@@ -111605,8 +111615,8 @@ xsz
 jTj
 jTj
 sqf
-xRh
-umC
+lmi
+xgP
 dwA
 wJo
 cyU
@@ -111709,7 +111719,7 @@ rlZ
 hBc
 hzs
 hzs
-kDj
+hzs
 aZK
 rlZ
 hYn
@@ -113509,10 +113519,10 @@ kyw
 deq
 cGY
 bwG
-aNr
-aOi
-pbb
-pbb
+rUq
+rUq
+sab
+sab
 izk
 aWD
 cWr
@@ -113712,8 +113722,8 @@ kyw
 deq
 veq
 bwG
-jKh
-pbb
+pKh
+sab
 rDv
 bmW
 jWu
@@ -114122,7 +114132,7 @@ aQF
 aQF
 aPH
 xIQ
-hvQ
+tmX
 aWD
 rrK
 aRy
@@ -114524,8 +114534,8 @@ kyw
 deq
 sJa
 bwG
-lHc
-pbb
+pGG
+sab
 izk
 hds
 aQF
@@ -115340,7 +115350,7 @@ aQF
 aQF
 sPc
 xIQ
-pbb
+sab
 aWD
 olM
 aRy
@@ -115742,8 +115752,8 @@ kyw
 byt
 lfx
 bwG
-aQI
-aQI
+iWQ
+iWQ
 uFd
 mUq
 qwt
@@ -115945,10 +115955,10 @@ kyw
 jNo
 lfx
 bwG
-aQI
-aQI
-aQI
-hcZ
+iWQ
+iWQ
+sab
+aNr
 pQY
 aWD
 bll
@@ -116703,7 +116713,7 @@ jDO
 pBG
 aYH
 cHG
-wEe
+cOY
 pBG
 mSM
 mRU

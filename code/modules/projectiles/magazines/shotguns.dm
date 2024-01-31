@@ -218,7 +218,7 @@ GLOBAL_LIST_INIT(shotgun_handfuls_12g, list(
 	. = ..()
 	icon_state = "shell_greyscale" + "_[current_rounds]"
 	var/image/I = image(icon, src, "+shell_base_[src.current_rounds]")
-	I.color = "#ffffff"
+	I.color = COLOR_WHITE
 	I.appearance_flags = RESET_COLOR|KEEP_APART
 	overlays += I
 

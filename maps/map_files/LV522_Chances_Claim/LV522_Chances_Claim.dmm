@@ -15295,23 +15295,6 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/north_street)
-"gEA" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
-	dir = 8;
-	name = "\improper Marshall Head Office"
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer/open{
-	dir = 4;
-	id = "Sec-Kitchen-Lockdown";
-	name = "\improper Storm Shutters"
-	},
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
-/area/lv522/indoors/a_block/security)
 "gEB" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -17672,6 +17655,23 @@
 	icon_state = "floor_plate"
 	},
 /area/lv522/outdoors/nw_rockies)
+"hvZ" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass{
+	dir = 8;
+	name = "\improper Marshal Head Office"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
+	id = "Sec-Kitchen-Lockdown";
+	name = "\improper Storm Shutters"
+	},
+/turf/open/floor/corsat{
+	icon_state = "marked"
+	},
+/area/lv522/indoors/a_block/security)
 "hwa" = (
 /obj/structure/platform/stair_cut{
 	icon_state = "platform_stair_alt"
@@ -18404,14 +18404,6 @@
 	icon_state = "floor_marked"
 	},
 /area/lv522/indoors/lone_buildings/outdoor_bot)
-"hKz" = (
-/obj/item/clothing/under/liaison_suit/suspenders{
-	pixel_x = -4;
-	pixel_y = 9
-	},
-/obj/item/clothing/accessory/red,
-/turf/open/floor/carpet,
-/area/lv522/indoors/a_block/executive)
 "hKE" = (
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 4
@@ -19019,18 +19011,6 @@
 	},
 /turf/open/floor/prison,
 /area/lv522/atmos/cargo_intake)
-"hVh" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/fancy/cigarettes/wypacket{
-	pixel_x = 5;
-	pixel_y = 6
-	},
-/obj/item/clothing/under/liaison_suit/suspenders,
-/turf/open/floor/strata{
-	dir = 4;
-	icon_state = "white_cyan1"
-	},
-/area/lv522/indoors/a_block/corpo/glass)
 "hVk" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor{
@@ -28008,26 +27988,6 @@
 	},
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_west_street)
-"lea" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
-	name = "\improper Marshall Office Interrogation";
-	req_access = null
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer/open{
-	dir = 4;
-	id = "Sec-Kitchen-Lockdown";
-	name = "\improper Storm Shutters"
-	},
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
-/area/lv522/indoors/a_block/security)
 "leg" = (
 /turf/open/floor/prison{
 	dir = 10;
@@ -29022,6 +28982,26 @@
 	icon_state = "marked"
 	},
 /area/lv522/indoors/a_block/dorms)
+"lzn" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass{
+	name = "\improper Marshal Office Interrogation";
+	req_access = null
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
+	id = "Sec-Kitchen-Lockdown";
+	name = "\improper Storm Shutters"
+	},
+/turf/open/floor/corsat{
+	icon_state = "marked"
+	},
+/area/lv522/indoors/a_block/security)
 "lzw" = (
 /obj/structure/prop/ice_colony/ground_wire,
 /turf/open/auto_turf/shale/layer1,
@@ -29133,6 +29113,21 @@
 	icon_state = "plate"
 	},
 /area/lv522/atmos/east_reactor/south)
+"lAM" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass{
+	name = "\improper Marshal Office Armory"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "Sec-Armoury-Lockdown"
+	},
+/turf/open/floor/corsat{
+	icon_state = "marked"
+	},
+/area/lv522/indoors/a_block/security)
 "lAS" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
@@ -50414,6 +50409,14 @@
 	icon_state = "brown"
 	},
 /area/lv522/atmos/east_reactor/south)
+"tqT" = (
+/obj/item/clothing/accessory/red,
+/obj/item/clothing/under/liaison_suit/field{
+	pixel_y = 9;
+	pixel_x = -4
+	},
+/turf/open/floor/carpet,
+/area/lv522/indoors/a_block/executive)
 "tqU" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
@@ -61543,6 +61546,18 @@
 /obj/effect/spider/spiderling/nogrow,
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/t_comm)
+"xvy" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/fancy/cigarettes/wypacket{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/obj/item/clothing/suit/storage/jacket/marine/corporate,
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "white_cyan1"
+	},
+/area/lv522/indoors/a_block/corpo/glass)
 "xvB" = (
 /obj/structure/window/framed/strata/reinforced,
 /turf/open/floor/corsat{
@@ -63194,21 +63209,6 @@
 	icon_state = "floor3"
 	},
 /area/lv522/landing_zone_2/ceiling)
-"yat" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
-	name = "\improper Marshall Office Armory"
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "Sec-Armoury-Lockdown"
-	},
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
-/area/lv522/indoors/a_block/security)
 "yaw" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1
@@ -83282,7 +83282,7 @@ xlU
 sjy
 sjy
 sjy
-lea
+lzn
 sjy
 tpa
 tpa
@@ -83745,7 +83745,7 @@ sjy
 sjy
 uqx
 sjy
-yat
+lAM
 sjy
 uqx
 sjy
@@ -86225,7 +86225,7 @@ wcp
 wwM
 jYZ
 hlH
-hVh
+xvy
 jtZ
 lvX
 lvX
@@ -88741,7 +88741,7 @@ gwR
 sjy
 sjy
 sjy
-gEA
+hvZ
 sjy
 sjy
 cBs
@@ -90310,7 +90310,7 @@ xjF
 vSc
 xjF
 gCO
-hKz
+tqT
 wgW
 wgW
 jRT

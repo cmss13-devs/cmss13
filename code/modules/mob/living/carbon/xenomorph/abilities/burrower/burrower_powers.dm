@@ -103,10 +103,6 @@
 		to_chat(src, SPAN_XENOWARNING("There's no way to surface here!!"))
 		return
 
-	if(!burrow)
-		to_chat(src, SPAN_NOTICE("We must be burrowed to do this."))
-		return
-
 	if(tunnel)
 		tunnel = FALSE
 		to_chat(src, SPAN_NOTICE("We stop tunneling."))

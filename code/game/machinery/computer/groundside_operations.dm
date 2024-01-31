@@ -25,7 +25,11 @@
 		add_pmcs = FALSE
 	else if(SSticker.current_state < GAME_STATE_PLAYING)
 		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, PROC_REF(disable_pmc))
-	tacmap = new(src, minimap_type)
+	if(announcement_faction == FACTION_MARINE)
+		tacmap = new /datum/tacmap/drawing(src, minimap_type)
+	else
+		tacmap = new(src, minimap_type) // Non-drawing version
+
 	return ..()
 
 /obj/structure/machinery/computer/groundside_operations/Destroy()
@@ -55,7 +59,7 @@
 	dat += "<BR><A HREF='?src=\ref[src];operation=announce'>[is_announcement_active ? "Make An Announcement" : "*Unavailable*"]</A>"
 	dat += "<BR><A href='?src=\ref[src];operation=mapview'>Tactical Map</A>"
 	dat += "<BR><hr>"
-	var/datum/squad/marine/echo/echo_squad = locate() in RoleAuthority.squads
+	var/datum/squad/marine/echo/echo_squad = locate() in GLOB.RoleAuthority.squads
 	if(!echo_squad.active && faction == FACTION_MARINE)
 		dat += "<BR><A href='?src=\ref[src];operation=activate_echo'>Designate Echo Squad</A>"
 		dat += "<BR><hr>"
@@ -104,6 +108,7 @@
 		dat += "No Squad selected!<BR>"
 	else
 		var/leader_text = ""
+		var/tl_text = ""
 		var/spec_text = ""
 		var/medic_text = ""
 		var/engi_text = ""
@@ -160,11 +165,15 @@
 				if(!H.key || !H.client)
 					SSD_count++
 					continue
+			if(H == current_squad.squad_leader && role != JOB_SQUAD_LEADER)
+				act_sl = "(ASL)"
 
 			var/marine_infos = "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[H]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td></tr>"
 			switch(role)
 				if(JOB_SQUAD_LEADER)
 					leader_text += marine_infos
+				if(JOB_SQUAD_TEAM_LEADER)
+					tl_text += marine_infos
 				if(JOB_SQUAD_SPECIALIST)
 					spec_text += marine_infos
 				if(JOB_SQUAD_MEDIC)
@@ -183,7 +192,7 @@
 		dat += "<center><b>Search:</b> <input type='text' id='filter' value='' onkeyup='updateSearch();' style='width:300px;'></center>"
 		dat += "<table id='marine_list' border='2px' style='width: 100%; border-collapse: collapse;' align='center'><tr>"
 		dat += "<th>Name</th><th>Role</th><th>State</th><th>Location</th></tr>"
-		dat += leader_text + spec_text + medic_text + engi_text + smart_text + marine_text + misc_text
+		dat += leader_text + tl_text + spec_text + medic_text + engi_text + smart_text + marine_text + misc_text
 		dat += "</table>"
 	dat += "<br><hr>"
 	dat += "<A href='?src=\ref[src];operation=refresh'>Refresh</a><br>"
@@ -201,6 +210,19 @@
 			return
 
 		if("announce")
+			var/mob/living/carbon/human/human_user = usr
+			var/obj/item/card/id/idcard = human_user.get_active_hand()
+			var/bio_fail = FALSE
+			if(!istype(idcard))
+				idcard = human_user.wear_id
+			if(!istype(idcard))
+				bio_fail = TRUE
+			else if(!idcard.check_biometrics(human_user))
+				bio_fail = TRUE
+			if(bio_fail)
+				to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
+				return FALSE
+
 			if(usr.client.prefs.muted & MUTE_IC)
 				to_chat(usr, SPAN_DANGER("You cannot send Announcements (muted)."))
 				return
@@ -231,7 +253,7 @@
 			log_announcement("[key_name(usr)] has announced the following: [input]")
 
 		if("award")
-			print_medal(usr, src)
+			open_medal_panel(usr, src)
 
 		if("selectlz")
 			if(SSticker.mode.active_lz)
@@ -247,7 +269,7 @@
 
 		if("pick_squad")
 			var/list/squad_list = list()
-			for(var/datum/squad/S in RoleAuthority.squads)
+			for(var/datum/squad/S in GLOB.RoleAuthority.squads)
 				if(S.active && S.faction == faction)
 					squad_list += S.name
 
@@ -276,7 +298,7 @@
 					usr.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 					cam = null
 					usr.reset_view(null)
-				else if(usr.client.view != world_view_size)
+				else if(usr.client.view != GLOB.world_view_size)
 					to_chat(usr, SPAN_WARNING("You're too busy peering through binoculars."))
 				else
 					if(cam)
@@ -286,11 +308,24 @@
 					usr.RegisterSignal(cam, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_observer_view_on_deletion))
 
 		if("activate_echo")
+			var/mob/living/carbon/human/human_user = usr
+			var/obj/item/card/id/idcard = human_user.get_active_hand()
+			var/bio_fail = FALSE
+			if(!istype(idcard))
+				idcard = human_user.wear_id
+			if(!istype(idcard))
+				bio_fail = TRUE
+			else if(!idcard.check_biometrics(human_user))
+				bio_fail = TRUE
+			if(bio_fail)
+				to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
+				return FALSE
+
 			var/reason = strip_html(input(usr, "What is the purpose of Echo Squad?", "Activation Reason"))
 			if(!reason)
 				return
 			if(alert(usr, "Confirm activation of Echo Squad for [reason]", "Confirm Activation", "Yes", "No") != "Yes") return
-			var/datum/squad/marine/echo/echo_squad = locate() in RoleAuthority.squads
+			var/datum/squad/marine/echo/echo_squad = locate() in GLOB.RoleAuthority.squads
 			if(!echo_squad)
 				visible_message(SPAN_BOLDNOTICE("ERROR: Unable to locate Echo Squad database."))
 				return

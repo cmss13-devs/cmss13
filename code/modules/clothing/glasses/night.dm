@@ -150,7 +150,7 @@
 		far_sight = FALSE
 		if(user)
 			if(user.client)
-				user.client.change_view(world_view_size, src)
+				user.client.change_view(GLOB.world_view_size, src)
 		STOP_PROCESSING(SSobj, src)
 
 	var/datum/action/item_action/m56_goggles/far_sight/FT = locate(/datum/action/item_action/m56_goggles/far_sight) in actions
@@ -187,7 +187,7 @@
 	if(target)
 		var/obj/item/clothing/glasses/night/m56_goggles/G = target
 		G.set_far_sight(owner, !G.far_sight)
-		to_chat(owner, SPAN_NOTICE("You [G.far_sight ? "enable" : "disable"] \the [src]'s far sight system."))
+		to_chat(owner, SPAN_NOTICE("You [G.far_sight ? "enable" : "disable"] \the [G]'s far sight system."))
 
 /datum/action/item_action/m56_goggles/far_sight/update_button_icon()
 	if(!target)

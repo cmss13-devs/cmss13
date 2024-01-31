@@ -101,7 +101,7 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 			new /obj/item/clothing/head/helmet/marine/veteran/UPP(src)
 			new /obj/item/clothing/under/marine/veteran/UPP(src)
 			new /obj/item/clothing/suit/storage/marine/faction/UPP(src)
-			new /obj/item/clothing/shoes/marine/upp(src)
+			new /obj/item/clothing/shoes/marine/upp/knife(src)
 			new /obj/item/clothing/gloves/marine/veteran(src)
 			new /obj/item/storage/backpack/lightpack/five_slot(src)
 		if(5) //freelancer
@@ -127,70 +127,42 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 	spawn_guns() //the crate gives 2 guns
 
 /obj/structure/largecrate/black_market/confiscated_weaponry/proc/spawn_guns()
-	switch(rand(1,6))
+	switch(rand(1, 5))
 		if(1) //pmc
-			if(prob(50))
-				new /obj/item/weapon/gun/rifle/nsg23/no_lock(src)
-				new /obj/item/ammo_magazine/rifle/nsg23(src)
-				new /obj/item/ammo_magazine/rifle/nsg23(src)
-				new /obj/item/ammo_magazine/rifle/nsg23/ap(src)
-				new /obj/item/ammo_magazine/rifle/nsg23/extended(src)
-			else
-				new /obj/item/weapon/gun/smg/fp9000(src)
-				new /obj/item/ammo_magazine/smg/fp9000(src)
-				new /obj/item/ammo_magazine/smg/fp9000(src)
-				new /obj/item/ammo_magazine/smg/fp9000(src)
-				new /obj/item/ammo_magazine/smg/fp9000(src)
+			new /obj/item/weapon/gun/smg/fp9000(src)
+			new /obj/item/ammo_magazine/smg/fp9000(src)
+			new /obj/item/ammo_magazine/smg/fp9000(src)
+			new /obj/item/ammo_magazine/smg/fp9000(src)
+			new /obj/item/ammo_magazine/smg/fp9000(src)
 		if(2) //pizza
 			new /obj/item/weapon/gun/pistol/holdout(src)
 			new /obj/item/ammo_magazine/pistol/holdout(src)
 		if(3) //clf
-			switch(rand(1, 3))
+			switch(rand(1, 2))
 				if(1)
-					new /obj/item/weapon/twohanded/lungemine/damaged(src)
-				if(2)
 					new /obj/item/weapon/gun/smg/uzi(src)
 					new /obj/item/ammo_magazine/smg/uzi/extended(src)
 					new /obj/item/ammo_magazine/smg/uzi(src)
 					new /obj/item/ammo_magazine/smg/uzi(src)
-				if(3)
+				if(2)
 					new /obj/item/weapon/gun/smg/mac15(src)
 					new /obj/item/ammo_magazine/smg/mac15/extended(src)
 					new /obj/item/ammo_magazine/smg/mac15(src)
 					new /obj/item/ammo_magazine/smg/mac15(src)
 		if(4) //upp
-			if(prob(50))
-				new /obj/item/weapon/gun/rifle/type71(src)
-				new /obj/item/ammo_magazine/rifle/type71/ap(src)
-				new /obj/item/ammo_magazine/rifle/type71(src)
-				new /obj/item/ammo_magazine/rifle/type71(src)
-			else
-				new /obj/item/weapon/gun/shotgun/type23/riot_control(src)
-				new /obj/item/ammo_magazine/handful/shotgun/heavy/beanbag(src)
-				new /obj/item/ammo_magazine/handful/shotgun/heavy/beanbag(src)
-				new /obj/item/ammo_magazine/handful/shotgun/heavy/flechette(src)
-				new /obj/item/ammo_magazine/handful/shotgun/heavy/flechette(src)
-				new /obj/item/ammo_magazine/handful/shotgun/heavy/slug(src)
-				new /obj/item/ammo_magazine/handful/shotgun/heavy/slug(src) //NO buckshot!
+			new /obj/item/weapon/gun/shotgun/type23/riot_control(src)
+			new /obj/item/ammo_magazine/handful/shotgun/heavy/beanbag(src)
+			new /obj/item/ammo_magazine/handful/shotgun/heavy/beanbag(src)
+			new /obj/item/ammo_magazine/handful/shotgun/heavy/flechette(src)
+			new /obj/item/ammo_magazine/handful/shotgun/heavy/flechette(src)
+			new /obj/item/ammo_magazine/handful/shotgun/heavy/slug(src)
+			new /obj/item/ammo_magazine/handful/shotgun/heavy/slug(src) //NO buckshot!
 		if(5) //freelancer
-			if(prob(80))
-				new /obj/item/weapon/gun/rifle/mar40(src)
-				new /obj/item/ammo_magazine/rifle/mar40/extended(src)
-				new /obj/item/ammo_magazine/rifle/mar40(src)
-				new /obj/item/ammo_magazine/rifle/mar40(src)
-			else
-				new /obj/item/weapon/gun/rifle/mar40/lmg(src)
-				new /obj/item/ammo_magazine/rifle/mar40/lmg(src)
-		if(6) //VAIPO
-			if(prob(50))
-				new /obj/item/weapon/gun/rifle/mar40/tactical(src)
-				new /obj/item/ammo_magazine/rifle/mar40/extended(src)
-				new /obj/item/ammo_magazine/rifle/mar40/extended(src)
-				new /obj/item/ammo_magazine/rifle/mar40(src)
-			else
-				new /obj/item/weapon/gun/rifle/mar40/lmg(src)
-				new /obj/item/ammo_magazine/rifle/mar40/lmg(src)
-				new /obj/item/ammo_magazine/rifle/mar40/lmg(src)
+			new /obj/item/weapon/gun/rifle/mar40(src)
+			new /obj/item/ammo_magazine/rifle/mar40/extended(src)
+			new /obj/item/ammo_magazine/rifle/mar40(src)
+			new /obj/item/ammo_magazine/rifle/mar40(src)
+
 
 /* Misc. Individual Guns */
 
@@ -448,7 +420,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/small
-	name = "S&W revolver (x6 magazines included)"
+	name = "Smith and Wesson revolver (x6 magazines included)"
 	contains = list(
 		/obj/item/weapon/gun/revolver/small,
 		/obj/item/ammo_magazine/revolver/small,
@@ -561,10 +533,6 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/reagent_container/food/snacks/egg/random,
 		/obj/item/reagent_container/food/snacks/egg/random, //not a dupe
 		/obj/item/reagent_container/food/snacks/xemeatpie,
-		/obj/item/reagent_container/food/snacks/monkeycube,
-		/obj/item/reagent_container/food/snacks/monkeycube/farwacube,
-		/obj/item/reagent_container/food/snacks/monkeycube/stokcube,
-		/obj/item/reagent_container/food/snacks/monkeycube/yirencube,
 		/obj/item/reagent_container/food/snacks/upp,
 		/obj/item/reagent_container/food/snacks/mre_pack/xmas1,
 		/obj/item/reagent_container/food/snacks/mre_pack/xmas2,
@@ -617,7 +585,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/storage/box/packet/hefa/toy,
 		/obj/item/toy/inflatable_duck,
 		/obj/item/toy/beach_ball,
-		/obj/item/toy/farwadoll,
+		/obj/item/toy/plush/farwa,
 		/obj/item/toy/waterflower,
 		/obj/item/toy/spinningtoy,
 		/obj/item/storage/box/snappops,
@@ -674,7 +642,7 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	. = ..()
 	var/obj/item/paper/nope = new(src)
 	nope.name = "automated ASRS note"
-	nope.info = "Sorry! Your requested order of <b>USCM PONCHO (X2)</b> was not succesfully delivered because: 'No items of that type found in storage.'"
+	nope.info = "Sorry! Your requested order of <b>USCM PONCHO (X2)</b> was not successfully delivered because: 'No items of that type found in storage.'"
 	nope.color = "green"
 	nope.update_icon()
 
@@ -688,7 +656,7 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	. = ..()
 	var/obj/item/paper/nope = new(src)
 	nope.name = "automated ASRS note"
-	nope.info = "Sorry! Your requested order of <b> HIGH-EXPLOSIVE ARMOR-PIERCING M41A MAGAZINE (X3)</b> was not succesfully delivered because: 'ERROR: UNABLE TO ENTER COMPARTMENT EXIT CODE 2342: EXPLOSION HAZARD'"
+	nope.info = "Sorry! Your requested order of <b> HIGH-EXPLOSIVE ARMOR-PIERCING M41A MAGAZINE (X3)</b> was not successfully delivered because: 'ERROR: UNABLE TO ENTER COMPARTMENT EXIT CODE 2342: EXPLOSION HAZARD'"
 	nope.color = "green"
 	nope.update_icon()
 
@@ -720,13 +688,6 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 		/obj/item/ammo_magazine/shotgun/beanbag,
 	)
 	dollar_cost = 50
-	containertype = /obj/structure/largecrate/black_market
-
-/datum/supply_packs/contraband/surplus/surplus_m4ra_extended
-	name = "surplus magazine box (Ext M4RA x 12)"
-	contains = list(/obj/item/ammo_box/magazine/m4ra/ext)
-	dollar_cost = 45
-	crate_heat = 3
 	containertype = /obj/structure/largecrate/black_market
 
 /* - Misc. USCM weaponry - */
@@ -788,8 +749,8 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
-/datum/supply_packs/contraband/deep_storage/xm42b_pipe
-	name = "10x99mm XM42B casing"
+/datum/supply_packs/contraband/deep_storage/xm43e1_pipe
+	name = "10x99mm XM43E1 casing"
 	contains = list(/obj/item/prop/helmetgarb/bullet_pipe)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
@@ -1108,7 +1069,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			new /obj/item/ammo_magazine/smg/mac15/extended(loc)
 			new /obj/item/ammo_magazine/smg/mac15/extended(loc)
 			loot_message = SPAN_NOTICE("It's some CLF SMG armaments.")
-		if(21 to 25)
+		if(21 to 29)
 			// Discovered Yautja ruins.. (None of these will trigger any alarms. They are far too old, degraded, and useless for any Yautja to care.)
 			new /obj/item/clothing/mask/yautja_flavor(loc)
 			new /obj/item/clothing/suit/armor/yautja_flavor(loc)
@@ -1116,13 +1077,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			new /obj/item/weapon/twohanded/yautja/glaive/damaged(loc)
 			new /obj/item/stack/yautja_rope(loc)
 			loot_message = SPAN_NOTICE("It's some strange ancient gear...?")
-		if(26 to 30)
-		// Damaged lunge mines, don't let the marines near these. Not even *close* to effective against even a runner.
-			new /obj/item/weapon/twohanded/lungemine/damaged(loc)
-			new /obj/item/weapon/twohanded/lungemine/damaged(loc)
-			new /obj/item/weapon/twohanded/lungemine/damaged(loc)
-			loot_message = SPAN_NOTICE("It's a bunch of lunge mines..?")
-		if(31 to 35)
+		if(30 to 35)
 		// CLF nades!
 			loot_message = SPAN_NOTICE("It's a package of assorted CLF grenades!")
 			var/list/nades_to_pick = list(

@@ -44,7 +44,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	//If you don't specify a bodypart, it checks ALL your bodyparts for protection, and averages out the values
 	for(var/X in limbs)
 		var/obj/limb/E = X
-		var/weight = organ_rel_size[E.name]
+		var/weight = GLOB.organ_rel_size[E.name]
 		armorval += getarmor_organ(E, type) * weight
 		total += weight
 	return (armorval/max(total, 1))
@@ -155,6 +155,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	return FALSE
 
 /mob/living/carbon/human/emp_act(severity)
+	. = ..()
 	for(var/obj/O in src)
 		if(!O)
 			continue
@@ -167,7 +168,6 @@ Contains most of the procs that are called when a mob is attacked by something
 			if(I.robotic == FALSE)
 				continue
 			I.emp_act(severity)
-	..()
 
 
 //Returns 1 if the attack hit, 0 if it missed.
@@ -256,7 +256,7 @@ Contains most of the procs that are called when a mob is attacked by something
 					add_blood(get_blood_color(), BLOOD_BODY)
 
 	//Melee weapon embedded object code.
-	if (I.damtype == BRUTE && !I.is_robot_module() && !(I.flags_item & (NODROP|DELONDROP)))
+	if (I.damtype == BRUTE && !(I.flags_item & (NODROP|DELONDROP)))
 		damage = I.force
 		if(damage > 40) damage = 40  //Some sanity, mostly for yautja weapons. CONSTANT STICKY ICKY
 		if (weapon_sharp && prob(3) && !isyautja(user)) // make yautja less likely to get their weapon stuck
@@ -335,10 +335,10 @@ Contains most of the procs that are called when a mob is attacked by something
 			if (M.faction == faction)
 				M.track_friendly_fire(initial(O.name))
 		if (assailant)
-			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been hit with a [O], thrown by [key_name(M)]</font>")
+			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been hit with \a [O], thrown by [key_name(M)]</font>")
 			M.attack_log += text("\[[time_stamp()]\] <font color='red'>Hit [key_name(src)] with a thrown [O]</font>")
 			if(!istype(src,/mob/living/simple_animal/mouse))
-				msg_admin_attack("[key_name(src)] was hit by a [O], thrown by [key_name(M)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+				msg_admin_attack("[key_name(src)] was hit by \a [O], thrown by [key_name(M)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 
 	if(last_damage_source)
 		last_damage_data = create_cause_data(last_damage_source, last_damage_mob)
@@ -346,16 +346,15 @@ Contains most of the procs that are called when a mob is attacked by something
 	//thrown weapon embedded object code.
 	if (dtype == BRUTE && istype(O,/obj/item))
 		var/obj/item/I = O
-		if (!I.is_robot_module())
-			var/sharp = is_sharp(I)
-			//blunt objects should really not be embedding in things unless a huge amount of force is involved
-			var/embed_chance = sharp? damage/I.w_class : damage/(I.w_class*3)
-			var/embed_threshold = sharp? 5*I.w_class : 15*I.w_class
+		var/sharp = is_sharp(I)
+		//blunt objects should really not be embedding in things unless a huge amount of force is involved
+		var/embed_chance = sharp? damage/I.w_class : damage/(I.w_class*3)
+		var/embed_threshold = sharp? 5*I.w_class : 15*I.w_class
 
-			//Sharp objects will always embed if they do enough damage.
-			//Thrown sharp objects have some momentum already and have a small chance to embed even if the damage is below the threshold
-			if (!isyautja(src) && ((sharp && prob(damage/(10*I.w_class)*100)) || (damage > embed_threshold && prob(embed_chance))))
-				affecting.embed(I)
+		//Sharp objects will always embed if they do enough damage.
+		//Thrown sharp objects have some momentum already and have a small chance to embed even if the damage is below the threshold
+		if (!isyautja(src) && ((sharp && prob(damage/(10*I.w_class)*100)) || (damage > embed_threshold && prob(embed_chance))))
+			affecting.embed(I)
 
 /mob/living/carbon/human/proc/get_id_faction_group()
 	var/obj/item/card/id/C = wear_id
@@ -377,16 +376,6 @@ Contains most of the procs that are called when a mob is attacked by something
 
 	var/list/overlap = compare_group & access_to_check
 	return length(overlap)
-
-/mob/living/carbon/human/freeze()
-	. = ..()
-	if(.)
-		update_xeno_hostile_hud()
-
-/mob/living/carbon/human/unfreeze()
-	. = ..()
-	if(.)
-		update_xeno_hostile_hud()
 
 /mob/living/carbon/human/get_target_lock(access_to_check)
 	if(isnull(access_to_check))

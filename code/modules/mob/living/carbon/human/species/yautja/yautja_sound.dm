@@ -65,6 +65,6 @@
 		return
 
 	for(var/mob/current_mob as anything in get_mobs_in_z_level_range(get_turf(user), 18) - user)
-		var/relative_dir = get_dir(current_mob, user)
+		var/relative_dir = Get_Compass_Dir(current_mob, user)
 		var/final_dir = dir2text(relative_dir)
 		to_chat(current_mob, SPAN_HIGHDANGER("You hear a loud roar coming from [final_dir ? "the [final_dir]" : "nearby"]!"))

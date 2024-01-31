@@ -5,7 +5,17 @@
 #define MINIMAP_FLAG_UPP (1<<3)
 #define MINIMAP_FLAG_CLF (1<<4)
 #define MINIMAP_FLAG_YAUTJA (1<<5)
-#define MINIMAP_FLAG_ALL (1<<6) - 1
+#define MINIMAP_FLAG_XENO_CORRUPTED (1<<6)
+#define MINIMAP_FLAG_XENO_ALPHA (1<<7)
+#define MINIMAP_FLAG_XENO_BRAVO (1<<8)
+#define MINIMAP_FLAG_XENO_CHARLIE (1<<9)
+#define MINIMAP_FLAG_XENO_DELTA (1<<10)
+#define MINIMAP_FLAG_XENO_FERAL (1<<11)
+#define MINIMAP_FLAG_XENO_TAMED (1<<12)
+#define MINIMAP_FLAG_XENO_MUTATED (1<<13)
+#define MINIMAP_FLAG_XENO_FORSAKEN (1<<14)
+#define MINIMAP_FLAG_XENO_RENEGADE (1<<15)
+#define MINIMAP_FLAG_ALL (1<<16) - 1
 
 ///Converts the overworld x and y to minimap x and y values
 #define MINIMAP_SCALE 2
@@ -52,6 +62,7 @@ GLOBAL_LIST_INIT(all_minimap_flags, bitfield2list(MINIMAP_FLAG_ALL))
 #define MINIMAP_SQUAD_ECHO "#00b043"
 #define MINIMAP_SQUAD_FOXTROT "#fe7b2e"
 #define MINIMAP_SQUAD_SOF "#400000"
+#define MINIMAP_SQUAD_INTEL "#053818"
 
 #define MINIMAP_ICON_BACKGROUND_CIVILIAN "#7D4820"
 #define MINIMAP_ICON_BACKGROUND_CIC "#3f3f3f"
@@ -60,7 +71,6 @@ GLOBAL_LIST_INIT(all_minimap_flags, bitfield2list(MINIMAP_FLAG_ALL))
 
 #define MINIMAP_ICON_COLOR_COMMANDER "#c6fcfc"
 #define MINIMAP_ICON_COLOR_HEAD "#F0C542"
-#define MINIMAP_ICON_COLOR_SILVER "#c0c0c0"
 #define MINIMAP_ICON_COLOR_BRONZE "#eb9545"
 
 #define MINIMAP_ICON_COLOR_DOCTOR "#b83737"
@@ -76,9 +86,3 @@ GLOBAL_LIST_INIT(all_minimap_flags, bitfield2list(MINIMAP_FLAG_ALL))
 
 #define TACMAP_BASE_OCCLUDED "Occluded"
 #define TACMAP_BASE_OPEN "Open"
-
-#define TACMAP_DEFAULT "Default"
-#define TACMAP_XENO "Xeno"
-#define TACMAP_YAUTJA "Yautja"
-#define TACMAP_FACTION "Faction"
-

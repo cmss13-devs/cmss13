@@ -287,16 +287,11 @@
 /obj/item/weapon/gun/Destroy()
 	in_chamber = null
 	ammo = null
-	current_mag = null
+	QDEL_NULL(current_mag)
 	target = null
 	last_moved_mob = null
 	if(flags_gun_features & GUN_FLASHLIGHT_ON)//Handle flashlight.
 		flags_gun_features &= ~GUN_FLASHLIGHT_ON
-		if(ismob(loc))
-			for(var/slot in attachments)
-				var/obj/item/attachable/potential_attachment = attachments[slot]
-				if(!potential_attachment)
-					continue
 	attachments = null
 	attachable_overlays = null
 	QDEL_NULL(active_attachable)
@@ -485,6 +480,7 @@
 
 
 /obj/item/weapon/gun/emp_act(severity)
+	. = ..()
 	for(var/obj/O in contents)
 		O.emp_act(severity)
 
@@ -492,12 +488,12 @@
 Note: pickup and dropped on weapons must have both the ..() to update zoom AND twohanded,
 As sniper rifles have both and weapon mods can change them as well. ..() deals with zoom only.
 */
-/obj/item/weapon/gun/equipped(mob/user, slot)
+/obj/item/weapon/gun/equipped(mob/living/user, slot)
 	if(flags_item & NODROP) return
 
 	unwield(user)
 	pull_time = world.time + wield_delay
-	if(user.dazed)
+	if(HAS_TRAIT(user, TRAIT_DAZED))
 		pull_time += 3
 	guaranteed_delay_time = world.time + WEAPON_GUARANTEED_DELAY
 
@@ -523,6 +519,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	var/delay_left = (last_fired + fire_delay + additional_fire_group_delay) - world.time
 	if(fire_delay_group && delay_left > 0)
 		LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
+
+	for(var/obj/item/attachable/stock/smg/collapsible/brace/current_stock in contents) //SMG armbrace folds to stop it getting stuck on people
+		if(current_stock.stock_activated)
+			current_stock.activate_attachment(src, user, turn_off = TRUE)
 
 	unwield(user)
 	set_gun_user(null)
@@ -732,7 +732,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 // END TGUI \\
 
-/obj/item/weapon/gun/wield(mob/user)
+/obj/item/weapon/gun/wield(mob/living/user)
 
 	if(!(flags_item & TWOHANDED) || flags_item & WIELDED)
 		return
@@ -759,7 +759,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	slowdown = initial(slowdown) + aim_slowdown
 	place_offhand(user, initial(name))
 	wield_time = world.time + wield_delay
-	if(user.dazed)
+	if(HAS_TRAIT(user, TRAIT_DAZED))
 		wield_time += 5
 	guaranteed_delay_time = world.time + WEAPON_GUARANTEED_DELAY
 	//slower or faster wield delay depending on skill.
@@ -843,6 +843,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 				to_chat(user, SPAN_WARNING("Your reload was interrupted!"))
 				return
 		replace_magazine(user, magazine)
+		SEND_SIGNAL(user, COMSIG_MOB_RELOADED_GUN, src)
 	else
 		current_mag = magazine
 		magazine.forceMove(src)
@@ -1048,6 +1049,7 @@ and you're good to go.
 						user.swap_hand()
 					unload(user, TRUE, drop_to_ground) // We want to quickly autoeject the magazine. This proc does the rest based on magazine type. User can be passed as null.
 					playsound(src, empty_sound, 25, 1)
+					SEND_SIGNAL(user, COMSIG_MOB_GUN_EMPTY, src)
 		else // Just fired a chambered bullet with no magazine in the gun
 			update_icon()
 
@@ -1109,20 +1111,24 @@ and you're good to go.
 		if(PB_burst_bullets_fired) //Has a burst been carried over from a PB?
 			PB_burst_bullets_fired = 0 //Don't need this anymore. The torch is passed.
 
+	var/fired_by_akimbo = FALSE
+	if(dual_wield)
+		fired_by_akimbo = TRUE
+
 	//Dual wielding. Do we have a gun in the other hand and is it the same category?
 	var/obj/item/weapon/gun/akimbo = user.get_inactive_hand()
 	if(!reflex && !dual_wield && user)
 		if(istype(akimbo) && akimbo.gun_category == gun_category && !(akimbo.flags_gun_features & GUN_WIELDED_FIRING_ONLY))
 			dual_wield = TRUE //increases recoil, increases scatter, and reduces accuracy.
 
-	var/fire_return = handle_fire(target, user, params, reflex, dual_wield, check_for_attachment_fire, akimbo)
+	var/fire_return = handle_fire(target, user, params, reflex, dual_wield, check_for_attachment_fire, akimbo, fired_by_akimbo)
 	if(!fire_return)
 		return fire_return
 
 	flags_gun_features &= ~GUN_BURST_FIRING // We always want to turn off bursting when we're done, mainly for when we break early mid-burstfire.
 	return AUTOFIRE_CONTINUE
 
-/obj/item/weapon/gun/proc/handle_fire(atom/target, mob/living/user, params, reflex = FALSE, dual_wield, check_for_attachment_fire, akimbo)
+/obj/item/weapon/gun/proc/handle_fire(atom/target, mob/living/user, params, reflex = FALSE, dual_wield, check_for_attachment_fire, akimbo, fired_by_akimbo)
 	var/turf/curloc = get_turf(user) //In case the target or we are expired.
 	var/turf/targloc = get_turf(target)
 
@@ -1209,11 +1215,12 @@ and you're good to go.
 
 		shots_fired++
 
-		if(dual_wield)
-			if(user?.client?.prefs?.toggle_prefs & TOGGLE_ALTERNATING_DUAL_WIELD)
-				user.swap_hand()
-			else
-				INVOKE_ASYNC(akimbo, PROC_REF(Fire), target, user, params, 0, TRUE)
+		if(dual_wield && !fired_by_akimbo)
+			switch(user?.client?.prefs?.dual_wield_pref)
+				if(DUAL_WIELD_FIRE)
+					INVOKE_ASYNC(akimbo, PROC_REF(Fire), target, user, params, 0, TRUE)
+				if(DUAL_WIELD_SWAP)
+					user.swap_hand()
 
 	else
 		return TRUE
@@ -1352,6 +1359,10 @@ and you're good to go.
 		else
 			active_attachable.activate_attachment(src, null, TRUE)//No way.
 
+	var/fired_by_akimbo = FALSE
+	if(dual_wield)
+		fired_by_akimbo = TRUE
+
 	//Dual wielding. Do we have a gun in the other hand and is it the same category?
 	var/obj/item/weapon/gun/akimbo = user.get_inactive_hand()
 	if(!dual_wield && user)
@@ -1391,7 +1402,7 @@ and you're good to go.
 
 		var/damage_buff = BASE_BULLET_DAMAGE_MULT
 		//if target is lying or unconscious - add damage bonus
-		if(attacked_mob.lying == TRUE || attacked_mob.stat == UNCONSCIOUS)
+		if(!(attacked_mob.mobility_flags & MOBILITY_STAND) || attacked_mob.stat == UNCONSCIOUS)
 			damage_buff += BULLET_DAMAGE_MULT_TIER_4
 		projectile_to_fire.damage *= damage_buff //Multiply the damage for point blank.
 		if(bullets_fired == 1) //First shot gives the PB message.
@@ -1415,7 +1426,7 @@ and you're good to go.
 				projectile_to_fire.give_bullet_traits(BP)
 				if(bullets_fired > 1)
 					BP.original = attacked_mob //original == the original target of the projectile. If the target is downed and this isn't set, the projectile will try to fly over it. Of course, it isn't going anywhere, but it's the principle of the thing. Very embarrassing.
-					if(!BP.handle_mob(attacked_mob) && attacked_mob.lying) //This is the 'handle impact' proc for a flying projectile, including hit RNG, on_hit_mob and bullet_act. If it misses, it doesn't go anywhere. We'll pretend it slams into the ground or punches a hole in the ceiling, because trying to make it bypass the xeno or shoot from the tile beyond it is probably more spaghet than my life is worth.
+					if(!BP.handle_mob(attacked_mob) && attacked_mob.body_position == LYING_DOWN) //This is the 'handle impact' proc for a flying projectile, including hit RNG, on_hit_mob and bullet_act. If it misses, it doesn't go anywhere. We'll pretend it slams into the ground or punches a hole in the ceiling, because trying to make it bypass the xeno or shoot from the tile beyond it is probably more spaghet than my life is worth.
 						if(BP.ammo.sound_bounce)
 							playsound(attacked_mob.loc, BP.ammo.sound_bounce, 35, 1)
 						attacked_mob.visible_message(SPAN_AVOIDHARM("[BP] slams into [get_turf(attacked_mob)]!"), //Managing to miss an immobile target flat on the ground deserves some recognition, don't you think?
@@ -1428,7 +1439,7 @@ and you're good to go.
 
 		if(bullets_fired > 1)
 			projectile_to_fire.original = attacked_mob
-			if(!projectile_to_fire.handle_mob(attacked_mob) && attacked_mob.lying)
+			if(!projectile_to_fire.handle_mob(attacked_mob) && attacked_mob.body_position == LYING_DOWN)
 				if(projectile_to_fire.ammo.sound_bounce)
 					playsound(attacked_mob.loc, projectile_to_fire.ammo.sound_bounce, 35, 1)
 				attacked_mob.visible_message(SPAN_AVOIDHARM("[projectile_to_fire] slams into [get_turf(attacked_mob)]!"),
@@ -1447,11 +1458,12 @@ and you're good to go.
 
 		SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
 
-		if(dual_wield)
-			if(user?.client?.prefs?.toggle_prefs & TOGGLE_ALTERNATING_DUAL_WIELD)
-				user.swap_hand()
-			else
-				INVOKE_ASYNC(akimbo, PROC_REF(attack), attacked_mob, user, TRUE)
+		if(dual_wield && !fired_by_akimbo)
+			switch(user?.client?.prefs?.dual_wield_pref)
+				if(DUAL_WIELD_FIRE)
+					INVOKE_ASYNC(akimbo, PROC_REF(attack), attacked_mob, user, TRUE)
+				if(DUAL_WIELD_SWAP)
+					user.swap_hand()
 
 		if(EXECUTION_CHECK) //Continue execution if on the correct intent. Accounts for change via the earlier do_after
 			user.visible_message(SPAN_DANGER("[user] has executed [attacked_mob] with [src]!"), SPAN_DANGER("You have executed [attacked_mob] with [src]!"), message_flags = CHAT_TYPE_WEAPON_USE)
@@ -1528,6 +1540,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 		if(flags_gun_features & GUN_TRIGGER_SAFETY)
 			to_chat(user, SPAN_WARNING("The safety is on!"))
+			gun_user.balloon_alert(gun_user, "safety on")
 			return
 		if(active_attachable)
 			if(active_attachable.flags_attach_features & ATTACH_PROJECTILE)
@@ -1923,8 +1936,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	if(gun_user.client?.prefs?.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && (gun_user.a_intent == INTENT_HELP))
 		if(world.time % 3) // Limits how often this message pops up, saw this somewhere else and thought it was clever
-			//Absolutely SCREAM this at people so they don't get killed by it
-			to_chat(gun_user, SPAN_HIGHDANGER("Help intent safety is on! Switch to another intent to fire your weapon."))
+			to_chat(gun_user, SPAN_DANGER("Help intent safety is on! Switch to another intent to fire your weapon."))
+			gun_user.balloon_alert(gun_user, "help intent safety")
 			click_empty(gun_user)
 		return FALSE
 
@@ -1949,6 +1962,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 /// Setter proc for fa_firing
 /obj/item/weapon/gun/proc/set_auto_firing(auto = FALSE)
+	SIGNAL_HANDLER
 	fa_firing = auto
 
 /// Getter for gun_user

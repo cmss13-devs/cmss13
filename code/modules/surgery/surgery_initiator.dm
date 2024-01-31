@@ -27,6 +27,13 @@
 				to_chat(user, SPAN_WARNING("You can't perform surgery under these bad conditions!"))
 			return FALSE
 
+	var/obj/limb/surgery_limb = target.get_limb(target_zone)
+	if(surgery_limb)
+		var/obj/item/blocker = target.get_sharp_obj_blocker(surgery_limb)
+		if(blocker)
+			to_chat(user, SPAN_WARNING("[blocker] [target] is wearing restricts your access to the surgical site, take it off!"))
+			return
+
 	if(user.action_busy) //already doing an action
 		return FALSE
 
@@ -36,7 +43,7 @@
 			continue
 
 		//Lying and self-surgery checks.
-		if(surgeryloop.lying_required && !target.lying)
+		if(surgeryloop.lying_required && target.body_position != LYING_DOWN)
 			continue
 		if(!surgeryloop.self_operable && target == user)
 			continue
@@ -127,8 +134,14 @@
 				[target_zone == "r_hand"||target_zone == "l_hand" ? "hand":"arm"] you're using!"))
 			return TRUE
 
-		if(surgeryinstance.lying_required && !target.lying)
+		if(surgeryinstance.lying_required && target.body_position != LYING_DOWN)
 			return TRUE
+
+		if(surgery_limb)
+			var/obj/item/blocker = target.get_sharp_obj_blocker(surgery_limb)
+			if(blocker)
+				to_chat(user, SPAN_WARNING("[blocker] [target] is wearing restricts your access to the surgical site, take it off!"))
+				return
 
 		if(affecting)
 			if(surgeryinstance.requires_bodypart)

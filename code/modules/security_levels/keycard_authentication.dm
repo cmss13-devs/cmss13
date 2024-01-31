@@ -108,7 +108,7 @@
 
 /obj/structure/machinery/keycard_auth/proc/broadcast_request()
 	icon_state = "auth_on"
-	for(var/obj/structure/machinery/keycard_auth/KA in machines)
+	for(var/obj/structure/machinery/keycard_auth/KA in GLOB.machines)
 		if(KA == src || KA.channel != channel) continue
 		KA.reset()
 		INVOKE_ASYNC(KA, TYPE_PROC_REF(/obj/structure/machinery/keycard_auth, receive_request), src)
@@ -149,14 +149,14 @@
 	if(CONFIG_GET(flag/ert_admin_call_only)) return 1
 	return SSticker.mode && SSticker.mode.ert_disabled
 
-var/global/maint_all_access = 1
+GLOBAL_VAR_INIT(maint_all_access, TRUE)
 
 /proc/make_maint_all_access()
-	maint_all_access = 1
+	GLOB.maint_all_access = TRUE
 	ai_announcement("The maintenance access requirement has been removed on all airlocks.")
 
 /proc/revoke_maint_all_access()
-	maint_all_access = 0
+	GLOB.maint_all_access = FALSE
 	ai_announcement("The maintenance access requirement has been added on all airlocks.")
 
 // Keycard reader at the CORSAT locks
@@ -209,7 +209,7 @@ var/global/maint_all_access = 1
 
 /obj/structure/machinery/keycard_auth/lockdown/broadcast_request()
 	icon_state = "auth_on"
-	for(var/obj/structure/machinery/keycard_auth/lockdown/KA in machines)
+	for(var/obj/structure/machinery/keycard_auth/lockdown/KA in GLOB.machines)
 		if(KA == src || KA.channel != channel)
 			continue
 		KA.reset()
@@ -249,7 +249,7 @@ var/global/maint_all_access = 1
 
 /obj/structure/machinery/keycard_auth/lockdown/proc/timed_countdown(timeleft = 0)
 	if(!timeleft)
-		for(var/obj/structure/machinery/door/poddoor/M in machines)
+		for(var/obj/structure/machinery/door/poddoor/M in GLOB.machines)
 			if(M.id == podlock_id && M.density)
 				INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 		return

@@ -138,7 +138,6 @@
 	opacity = 0
 	assembly_type = /obj/structure/airlock_assembly/airlock_assembly_research
 	glass = 1
-	heat_proof = 1
 	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
 
 /obj/structure/machinery/door/airlock/glass_mining/colony

@@ -31,7 +31,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/pixel_shift_y = 16 //Uses the bottom left corner of the item.
 
 	flags_atom =  FPRINT|CONDUCT
-	matter = list("metal" = 2000)
+	matter = list("metal" = 100)
 	w_class = SIZE_SMALL
 	force = 1
 	var/slot = null //"muzzle", "rail", "under", "stock", "special"
@@ -168,7 +168,8 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/proc/Detach(mob/user, obj/item/weapon/gun/detaching_gub)
 	if(!istype(detaching_gub)) return //Guns only
 
-	detaching_gub.on_detach(user)
+	if(user)
+		detaching_gub.on_detach(user, src)
 
 	if(flags_attach_features & ATTACH_ACTIVATION)
 		activate_attachment(detaching_gub, null, TRUE)
@@ -342,6 +343,10 @@ Defined in conflicts.dm of the #defines folder.
 	throw_range = 7
 	pry_delay = 1 SECONDS
 
+/obj/item/attachable/bayonet/van_bandolier
+	name = "\improper Fairbairn-Sykes fighting knife"
+	desc = "This isn't for dressing game or performing camp chores. It's almost certainly not an original. Almost."
+
 /obj/item/attachable/bayonet/co2/update_icon()
 	icon_state = "co2_knife[filled ? "-f" : ""]"
 	attach_icon = "co2_bayonet[filled ? "-f" : ""]_a"
@@ -350,16 +355,16 @@ Defined in conflicts.dm of the #defines folder.
 	if(istype(W, /obj/item/co2_cartridge))
 		if(!filled)
 			filled = TRUE
-			user.visible_message(SPAN_NOTICE("[user] slots a CO2 cartridge into [src]. A second later, \he apparently looks dismayed."), SPAN_WARNING("You slot a fresh CO2 cartridge into [src] and snap the slot cover into place. Only then do you realize \the [W]'s valve broke inside \the [src]. Fuck."))
+			user.visible_message(SPAN_NOTICE("[user] slots a CO2 cartridge into [src]. A second later, \he apparently looks dismayed."), SPAN_WARNING("You slot a fresh CO2 cartridge into [src] and snap the slot cover into place. Only then do you realize [W]'s valve broke inside [src]. Fuck."))
 			playsound(src, 'sound/machines/click.ogg')
 			qdel(W)
 			update_icon()
 			return
 		else
-			user.visible_message(SPAN_WARNING("[user] fiddles with \the [src]. \He looks frustrated."), SPAN_NOTICE("No way man! You can't seem to pry the existing container out of \the [src]... try a screwdriver?"))
+			user.visible_message(SPAN_WARNING("[user] fiddles with [src]. \He looks frustrated."), SPAN_NOTICE("No way man! You can't seem to pry the existing container out of [src]... try a screwdriver?"))
 			return
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
-		user.visible_message(SPAN_WARNING("[user] screws with \the [src], using \a [W]. \He looks very frustrated."), SPAN_NOTICE("You try to pry the cartridge out of the [src], but it's stuck damn deep. Piece of junk..."))
+		user.visible_message(SPAN_WARNING("[user] screws with [src], using \a [W]. \He looks very frustrated."), SPAN_NOTICE("You try to pry the cartridge out of [src], but it's stuck damn deep. Piece of junk..."))
 		return
 	..()
 
@@ -450,7 +455,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/f90_dmr_barrel
 	name = "f90 barrel"
-	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
 	icon_state = "aug_dmr_barrel_a"
 	attach_icon = "aug_dmr_barrel_a"
 	slot = "muzzle"
@@ -461,7 +466,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/f90_shotgun_barrel
 	name = "f90 barrel"
-	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
 	icon_state = "aug_mkey_barrel_a"
 	attach_icon = "aug_mkey_barrel_a"
 	slot = "muzzle"
@@ -472,7 +477,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/l56a2_smartgun
 	name = "l56a2 barrel"
-	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
 	icon_state = "magsg_barrel_a"
 	attach_icon = "magsg_barrel_a"
 	slot = "muzzle"
@@ -491,6 +496,20 @@ Defined in conflicts.dm of the #defines folder.
 	hud_offset_mod = -3
 
 /obj/item/attachable/sniperbarrel/New()
+	..()
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
+	scatter_mod = -SCATTER_AMOUNT_TIER_8
+
+/obj/item/attachable/pmc_sniperbarrel
+	name = "sniper barrel"
+	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
+	icon_state = "pmc_sniperbarrel"
+	desc = "A heavy barrel. CANNOT BE REMOVED."
+	slot = "muzzle"
+	flags_attach_features = NO_FLAGS
+	hud_offset_mod = -3
+
+/obj/item/attachable/pmc_sniperbarrel/New()
 	..()
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
 	scatter_mod = -SCATTER_AMOUNT_TIER_8
@@ -1217,9 +1236,9 @@ Defined in conflicts.dm of the #defines folder.
 	/// If the gun should experience scope drift
 	var/scope_drift = TRUE
 	/// % chance for the scope to drift on process with a spotter using their scope
-	var/spotted_drift_chance = 33
+	var/spotted_drift_chance = 25
 	/// % chance for the scope to drift on process without a spotter using their scope
-	var/unspotted_drift_chance = 100
+	var/unspotted_drift_chance = 90
 	/// If the scope should use do_afters for adjusting and moving the sight
 	var/slow_use = TRUE
 	/// Cooldown for interacting with the scope's adjustment or position
@@ -1238,6 +1257,8 @@ Defined in conflicts.dm of the #defines folder.
 	var/darkness_view = 12
 	/// If there is currently a spotter using the linked spotting scope
 	var/spotter_spotting = FALSE
+	/// How much time it takes to adjust the position of the scope. Adjusting the offset will take half of this time
+	var/adjust_delay = 1 SECONDS
 
 /obj/item/attachable/vulture_scope/Initialize(mapload, ...)
 	. = ..()
@@ -1281,7 +1302,7 @@ Defined in conflicts.dm of the #defines folder.
 	switch(action)
 		if("adjust_dir")
 			var/direction = params["offset_dir"]
-			if(!(direction in alldirs) || !scoping || !scope_user)
+			if(!(direction in GLOB.alldirs) || !scoping || !scope_user)
 				return
 
 			var/mob/scoper = scope_user.resolve()
@@ -1289,8 +1310,8 @@ Defined in conflicts.dm of the #defines folder.
 				if(!COOLDOWN_FINISHED(src, scope_interact_cd))
 					return
 				to_chat(scoper, SPAN_NOTICE("You begin adjusting [src]..."))
-				COOLDOWN_START(src, scope_interact_cd, 0.5 SECONDS)
-				if(!do_after(scoper, 0.5 SECONDS))
+				COOLDOWN_START(src, scope_interact_cd, adjust_delay / 2)
+				if(!do_after(scoper, 0.4 SECONDS))
 					return
 
 			adjust_offset(direction)
@@ -1298,7 +1319,7 @@ Defined in conflicts.dm of the #defines folder.
 
 		if("adjust_position")
 			var/direction = params["position_dir"]
-			if(!(direction in alldirs) || !scoping || !scope_user)
+			if(!(direction in GLOB.alldirs) || !scoping || !scope_user)
 				return
 
 			var/mob/scoper = scope_user.resolve()
@@ -1307,8 +1328,8 @@ Defined in conflicts.dm of the #defines folder.
 					return
 
 				to_chat(scoper, SPAN_NOTICE("You begin moving [src]..."))
-				COOLDOWN_START(src, scope_interact_cd, 1 SECONDS)
-				if(!do_after(scoper, 1 SECONDS))
+				COOLDOWN_START(src, scope_interact_cd, adjust_delay)
+				if(!do_after(scoper, 0.8 SECONDS))
 					return
 
 			adjust_position(direction)
@@ -1365,7 +1386,7 @@ Defined in conflicts.dm of the #defines folder.
 	return TRUE
 
 /obj/item/attachable/vulture_scope/proc/get_offset_dirs()
-	var/list/possible_dirs = alldirs.Copy()
+	var/list/possible_dirs = GLOB.alldirs.Copy()
 	if(scope_offset_x >= scope_drift_max)
 		possible_dirs -= list(NORTHEAST, EAST, SOUTHEAST)
 	else if(scope_offset_x <= -scope_drift_max)
@@ -1382,7 +1403,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/vulture_scope/proc/get_adjust_dirs()
 	if(!scoping)
 		return list()
-	var/list/possible_dirs = alldirs.Copy()
+	var/list/possible_dirs = GLOB.alldirs.Copy()
 	var/turf/current_turf = get_turf(src)
 	var/turf/scope_tile = locate(scope_x, scope_y, current_turf.z)
 	var/mob/scoper = scope_user.resolve()
@@ -1535,7 +1556,7 @@ Defined in conflicts.dm of the #defines folder.
 	recalculate_scope_pos()
 	gun_user.overlay_fullscreen("vulture", /atom/movable/screen/fullscreen/vulture)
 	scope_element = new(src)
-	gun_user.client.screen += scope_element
+	gun_user.client.add_to_screen(scope_element)
 	gun_user.see_in_dark += darkness_view
 	gun_user.lighting_alpha = 127
 	gun_user.sync_lighting_plane_alpha()
@@ -1564,9 +1585,9 @@ Defined in conflicts.dm of the #defines folder.
 	stop_holding_breath()
 	scope_user_initial_dir = null
 	scoper.clear_fullscreen("vulture")
-	scoper.client.screen -= scope_element
+	scoper.client.remove_from_screen(scope_element)
 	scoper.see_in_dark -= darkness_view
-	scoper.lighting_alpha = 127
+	scoper.lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 	scoper.sync_lighting_plane_alpha()
 	QDEL_NULL(scope_element)
 	recalculate_scope_pos()
@@ -2176,7 +2197,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/m4ra_barrel
 	name = "M4RA barrel"
-	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
 	icon_state = "m4ra_barrel"
 	attach_icon = "m4ra_barrel"
 	slot = "special"
@@ -2202,7 +2223,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/m4ra_barrel_custom
 	name = "custom M4RA barrel"
-	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
 	icon_state = "m4ra_custom_barrel"
 	attach_icon = "m4ra_custom_barrel"
 	slot = "special"
@@ -2228,7 +2249,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/upp_rpg_breech
 	name = "HJRA-12 Breech"
-	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
 	icon = 'icons/obj/items/weapons/guns/attachments/stock.dmi'
 	icon_state = "hjra_breech"
 	attach_icon = "hjra_breech"
@@ -2240,7 +2261,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/pkpbarrel
 	name = "QYJ-72 Barrel"
-	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
 	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "uppmg_barrel"
 	attach_icon = "uppmg_barrel"
@@ -2252,7 +2273,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/pkpstock
 	name = "QYJ-72 Stock"
-	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
 	icon = 'icons/obj/items/weapons/guns/attachments/stock.dmi'
 	icon_state = "uppmg_stock"
 	attach_icon = "uppmg_stock"
@@ -2264,7 +2285,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/type88_barrel
 	name = "Type-88 Barrel"
-	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
 	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "type88_barrel"
 	attach_icon = "type88_barrel"
@@ -2276,7 +2297,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/type73suppressor
 	name = "Type 73 Integrated Suppressor"
-	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
 	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "type73_suppressor"
 	attach_icon = "type73_suppressor"
@@ -2288,7 +2309,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/type71
 	name = "Type 71 Stock"
-	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
 	icon = 'icons/obj/items/weapons/guns/attachments/stock.dmi'
 	icon_state = "type71_stock"
 	attach_icon = "type71_stock"
@@ -2669,7 +2690,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/attached_gun/grenade/unique_action(mob/user)
 	if(!ishuman(usr))
 		return
-	if(!user.canmove || user.stat || user.is_mob_restrained() || !user.loc || !isturf(usr.loc))
+	if(user.is_mob_incapacitated() || !isturf(usr.loc))
 		to_chat(user, SPAN_WARNING("Not right now."))
 		return
 
@@ -2920,7 +2941,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/attached_gun/flamer/proc/unleash_flame(atom/target, mob/living/user)
 	set waitfor = 0
-	var/list/turf/turfs = getline2(user,target)
+	var/list/turf/turfs = get_line(user,target)
 	var/distance = 0
 	var/turf/prev_T
 	var/stop_at_turf = FALSE
@@ -3055,9 +3076,6 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/attached_gun/extinguisher/fire_attachment(atom/target, obj/item/weapon/gun/gun, mob/living/user)
 	if(!internal_extinguisher)
-		return
-	if(!(gun.flags_item & WIELDED))
-		to_chat(user, SPAN_WARNING("You must wield [gun] to fire [src]!"))
 		return
 	if(..())
 		return internal_extinguisher.afterattack(target, user)
@@ -3244,6 +3262,8 @@ Defined in conflicts.dm of the #defines folder.
 	attachment_action_type = /datum/action/item_action/toggle
 	var/initial_mob_dir = NORTH // the dir the mob faces the moment it deploys the bipod
 	var/bipod_deployed = FALSE
+	/// If this should anchor the user while in use
+	var/heavy_bipod = FALSE
 
 /obj/item/attachable/bipod/New()
 	..()
@@ -3309,6 +3329,9 @@ Defined in conflicts.dm of the #defines folder.
 	if(G.flags_gun_features & GUN_SUPPORT_PLATFORM)
 		G.remove_firemode(GUN_FIREMODE_AUTOMATIC)
 
+	if(heavy_bipod)
+		user.anchored = FALSE
+
 	if(!QDELETED(G))
 		playsound(user,'sound/items/m56dauto_rotate.ogg', 55, 1)
 		update_icon()
@@ -3347,6 +3370,9 @@ Defined in conflicts.dm of the #defines folder.
 
 				if(G.flags_gun_features & GUN_SUPPORT_PLATFORM)
 					G.add_firemode(GUN_FIREMODE_AUTOMATIC)
+
+				if(heavy_bipod)
+					user.anchored = TRUE
 
 			else
 				to_chat(user, SPAN_NOTICE("You retract [src]."))
@@ -3396,6 +3422,7 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "A set of rugged telescopic poles to keep a weapon stabilized during firing."
 	icon_state = "bipod_m60"
 	attach_icon = "vulture_bipod"
+	heavy_bipod = TRUE
 
 /obj/item/attachable/burstfire_assembly
 	name = "burst fire assembly"
@@ -3425,4 +3452,3 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_5
 	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_5
 	damage_mod -= BULLET_DAMAGE_MULT_TIER_4
-

@@ -16,11 +16,10 @@ type BackendContext = {
   on_cooldown: BooleanLike;
 };
 
-const EmoteTab = (props, context) => {
-  const { data, act } = useBackend<BackendContext>(context);
+const EmoteTab = (props) => {
+  const { data, act } = useBackend<BackendContext>();
   const { categories, emotes, on_cooldown } = data;
   const [categoryIndex, setCategoryIndex] = useLocalState(
-    context,
     'category_index',
     'Farewell'
   );
@@ -58,7 +57,7 @@ const EmoteTab = (props, context) => {
                 <Stack>
                   <span
                     style={{
-                      'vertical-align': 'middle',
+                      'verticalAlign': 'middle',
                     }}
                   />{' '}
                   <Stack.Item>
@@ -68,7 +67,7 @@ const EmoteTab = (props, context) => {
                       width="32px"
                       style={{
                         '-ms-interpolation-mode': 'nearest-neighbor',
-                        'vertical-align': 'middle',
+                        'verticalAlign': 'middle',
                       }}
                     />
                   </Stack.Item>
@@ -95,7 +94,7 @@ const EmoteTab = (props, context) => {
   );
 };
 
-export const JoeEmotes = (props, context) => {
+export const JoeEmotes = (props) => {
   return (
     <Window
       width={750}

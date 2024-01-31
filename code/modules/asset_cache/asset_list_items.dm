@@ -147,6 +147,7 @@
 		"cmblogo.png" = 'html/images/cmblogo.png',
 		"faxwylogo.png" = 'html/images/faxwylogo.png',
 		"faxbackground.jpg" = 'html/images/faxbackground.jpg',
+		"colonialspacegruntsEZ.png" = 'html/images/colonialspacegruntsEZ.png',
 	)
 
 /datum/asset/spritesheet/chat
@@ -285,7 +286,7 @@
 		list("SL", "hudsquad_leader"),
 	)
 
-	for(var/datum/squad/marine/squad in RoleAuthority.squads)
+	for(var/datum/squad/marine/squad in GLOB.RoleAuthority.squads)
 		var/color = squad.equipment_color
 		for(var/iref in icon_data)
 			var/list/iconref = iref
@@ -314,14 +315,16 @@
 			log_debug("not atom! [item]")
 			continue
 
-		if (sprites[icon_file])
+		var/imgid = replacetext(replacetext("[k]", "/obj/item/", ""), "/", "-")
+
+		if(sprites[imgid])
 			continue
 
 		if(icon_state in icon_states(icon_file))
 			I = icon(icon_file, icon_state, SOUTH)
 			var/c = initial(item.color)
-			if (!isnull(c) && c != "#FFFFFF")
-				I.Blend(initial(c), ICON_MULTIPLY)
+			if (!isnull(c) && c != COLOR_WHITE)
+				I.Blend(c, ICON_MULTIPLY)
 		else
 			if (ispath(k, /obj/effect/essentials_set))
 				var/obj/effect/essentials_set/es_set = new k()
@@ -338,7 +341,6 @@
 				item = new k()
 				I = icon(item.icon, item.icon_state, SOUTH)
 				qdel(item)
-		var/imgid = replacetext(replacetext("[k]", "/obj/item/", ""), "/", "-")
 
 		Insert(imgid, I)
 	return ..()
@@ -375,6 +377,22 @@
 		iconBig.Scale(iconNormal.Width()*2, iconNormal.Height()*2)
 		Insert("[icon_name]_big", iconBig)
 	return ..()
+
+/datum/asset/spritesheet/tutorial
+	name = "tutorial"
+
+/datum/asset/spritesheet/tutorial/register()
+	for(var/icon_state in icon_states('icons/misc/tutorial.dmi'))
+		var/icon/icon_sprite = icon('icons/misc/tutorial.dmi', icon_state)
+		icon_sprite.Scale(128, 128)
+		Insert(icon_state, icon_sprite)
+
+	var/icon/retrieved_icon = icon('icons/mob/hud/human_dark.dmi', "intent_all")
+	retrieved_icon.Scale(128, 128)
+	Insert("intents", retrieved_icon)
+
+	return ..()
+
 
 /datum/asset/spritesheet/gun_lineart
 	name = "gunlineart"

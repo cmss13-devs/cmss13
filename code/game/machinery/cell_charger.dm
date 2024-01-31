@@ -80,11 +80,11 @@
 	return
 
 /obj/structure/machinery/cell_charger/emp_act(severity)
+	. = ..()
 	if(inoperable())
 		return
 	if(charging)
 		charging.emp_act(severity)
-	..(severity)
 
 
 /obj/structure/machinery/cell_charger/process()

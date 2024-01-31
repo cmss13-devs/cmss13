@@ -169,10 +169,7 @@
 	if(sender == author)
 		message_title = "MentorHelp"
 		// If there's a mentor, let them mark it. If not, let them unmark it
-		if(mentor)
-			message_sender_options = " (<a href='?src=\ref[src];action=unmark'>Unmark</a>"
-		else
-			message_sender_options = " (<a href='?src=\ref[src];action=mark'>Mark</a>"
+		message_sender_options = " (<a href='?src=\ref[src];action=mark'>Mark/Unmark</a>"
 		message_sender_options += " | <a href='?src=\ref[src];action=close'>Close</a> | <a href='?src=\ref[src];action=autorespond'>AutoResponse</a>)"
 
 	var/message_header = SPAN_MENTORHELP("<span class='prefix'>[message_title] from [message_sender_key]:</span> <span class='message'>[message_sender_options]</span><br>")
@@ -274,9 +271,10 @@
 		if("autorespond")
 			autoresponse(C)
 		if("mark")
-			mark(C)
-		if("unmark")
-			unmark(C)
+			if(!mentor)
+				mark(C)
+			else
+				unmark(C)
 		if("close")
 			if(C == author || C == mentor || CLIENT_IS_STAFF(C))
 				close(C)
@@ -327,13 +325,13 @@
 	var/msg = SPAN_MENTORSAY("<span class='prefix'>Autoresponse:</span> <span class='message'>[choice]</span>")
 	switch(choice)
 		if("L: Discord")
-			msg += "You can join our Discord server by using <a href='https://discordapp.com/invite/TByu8b5'>this link</a>!"
+			msg += "You can join our Discord server by using <a href='[CONFIG_GET(string/discordurl)]'>this link</a>!"
 		if("L: Xeno Quickstart Guide")
-			msg += "Your answer can be found on the Xeno Quickstart Guide on our wiki. <a href='[URL_WIKI_XENO_QUICKSTART]'>Check it out here.</a>"
+			msg += "Your answer can be found on the Xeno Quickstart Guide on our wiki. <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_XENO_QUICKSTART]'>Check it out here.</a>"
 		if("L: Marine Quickstart Guide")
-			msg += "Your answer can be found on the Marine Quickstart Guide on our wiki. <a href='[URL_WIKI_MARINE_QUICKSTART]'>Check it out here.</a>"
+			msg += "Your answer can be found on the Marine Quickstart Guide on our wiki. <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_MARINE_QUICKSTART]'>Check it out here.</a>"
 		if("L: Current Map")
-			msg += "If you need a map overview of the current round, use Current Map verb in OOC tab to check name of the map. Then open our <a href='[URL_WIKI_LANDING]'>wiki front page</a> and look for the map overview in the 'Maps' section. If the map is not listed, it's a new or rare map and the overview hasn't been finished yet."
+			msg += "If you need a map overview of the current round, use Current Map verb in OOC tab to check name of the map. Then open our <a href='[CONFIG_GET(string/wikiurl)]'>wiki front page</a> and look for the map overview in the 'Maps' section. If the map is not listed, it's a new or rare map and the overview hasn't been finished yet."
 		if("A: No plasma regen")
 			msg += "If you have low/no plasma regen, it's most likely because you are off weeds or are currently using a passive ability, such as the Runner's 'Hide' or emitting a pheromone."
 		if("A: Devour as Xeno")
@@ -351,9 +349,9 @@
 		if("L: Leaving the server")
 			msg += "If you need to leave the server as a marine, either go to cryo or ask someone to cryo you before leaving. If you are a xenomorph, find a safe place to rest and ghost before leaving, that will instantly unlock your xeno for observers to join."
 		if("M: Macros")
-			msg += "This <a href='[URL_WIKI_MACROS]'>guide</a> explains how to set up macros including examples of most common and useful ones."
+			msg += "This <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_MACROS]'>guide</a> explains how to set up macros including examples of most common and useful ones."
 		if("C: Changelog")
-			msg += "The answer to your question can be found in the changelog. Click the changelog button at the top-right of the screen to view it in-game, or visit <a href='[URL_CHANGELOG]'>changelog page</a> on our wiki instead."
+			msg += "The answer to your question can be found in the changelog. Click the changelog button at the top-right of the screen to view it in-game."
 		if("H: Clear Cache")
 			msg += "In order to clear cache, you need to click on gear icon located in upper-right corner of your BYOND client and select preferences. Switch to Games tab and click Clear Cache button. In some cases you need to manually delete cache. To do that, select Advanced tab and click Open User Directory and delete \"cache\" folder there."
 		if("O: Combat Click-Drag Override")

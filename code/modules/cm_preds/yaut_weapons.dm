@@ -128,6 +128,7 @@
 	attack_speed = 5
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
 	force = MELEE_FORCE_TIER_5
+	has_speed_bonus = FALSE
 
 /*#########################################
 ########### One Handed Weapons ############
@@ -248,14 +249,16 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("speared", "stabbed", "impaled")
 
-	var/on = 1
-	var/charged
+	var/on = TRUE
+	var/charged = FALSE
 
 	var/force_wielded = MELEE_FORCE_TIER_6
 	var/force_unwielded = MELEE_FORCE_TIER_2
 	var/force_storage = MELEE_FORCE_TIER_1
 	/// Ref to the tether effect when thrown
 	var/datum/effects/tethering/chain
+	///The mob the chain is linked to
+	var/mob/living/linked_to
 
 /obj/item/weapon/yautja/combistick/Destroy()
 	cleanup_chain()
@@ -273,11 +276,13 @@
 	charged = FALSE
 	remove_filter("combistick_charge")
 	unwield(user) //Otherwise stays wielded even when thrown
-	if(on)
-		setup_chain(user)
 	return TRUE
 
 /obj/item/weapon/yautja/combistick/proc/setup_chain(mob/living/user)
+	give_action(user, /datum/action/predator_action/bracer/combistick)
+	add_verb(user, /mob/living/carbon/human/proc/call_combi)
+	linked_to = user
+
 	var/list/tether_effects = apply_tether(user, src, range = 6, resistable = FALSE)
 	chain = tether_effects["tetherer_tether"]
 	RegisterSignal(chain, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_chain))
@@ -293,6 +298,10 @@
 /// Clean up the chain, deleting/nulling/unregistering as needed
 /obj/item/weapon/yautja/combistick/proc/cleanup_chain()
 	SIGNAL_HANDLER
+	if(linked_to)
+		remove_action(linked_to, /datum/action/predator_action/bracer/combistick)
+		remove_verb(linked_to, /mob/living/carbon/human/proc/call_combi)
+
 	if(!QDELETED(chain))
 		QDEL_NULL(chain)
 
@@ -337,11 +346,12 @@
 /obj/item/weapon/yautja/combistick/IsShield()
 	return on
 
-/obj/item/weapon/yautja/combistick/verb/use_unique_action()
+/obj/item/weapon/yautja/combistick/verb/fold_combistick()
 	set category = "Weapons"
-	set name = "Unique Action"
-	set desc = "Activate or deactivate the combistick."
-	set src in usr
+	set name = "Collapse Combi-stick"
+	set desc = "Collapse or extend the combistick."
+	set src = usr.contents
+
 	unique_action(usr)
 
 /obj/item/weapon/yautja/combistick/attack_self(mob/user)
@@ -954,12 +964,15 @@
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_WARNING("You have no idea how this thing works!"))
 		return
+	if(charge_time < 7)
+		to_chat(user, SPAN_WARNING("The rifle does not have enough power remaining!"))
+		return
 
 	return ..()
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/load_into_chamber()
 	ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/rifle/bolt]
-	charge_time -= 10
+	charge_time -= 7
 	var/obj/projectile/projectile = create_bullet(ammo, initial(name))
 	projectile.set_light(1)
 	in_chamber = projectile
@@ -974,7 +987,8 @@
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
-	if(refund) charge_time *= 2
+	if(refund)
+		charge_time += 7
 	return TRUE
 
 #define FIRE_MODE_STANDARD "Standard"
@@ -1164,15 +1178,15 @@
 			switch(strength)
 				if("low power stun bolts")
 					strength = "high power stun bolts"
-					charge_cost = 100
-					set_fire_delay(FIRE_DELAY_TIER_6 * 3)
+					charge_cost = 50
+					set_fire_delay(FIRE_DELAY_TIER_1)
 					fire_sound = 'sound/weapons/pred_lasercannon.ogg'
 					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
 					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/bolt/stun]
 				if("high power stun bolts")
 					strength = "plasma immobilizers"
-					charge_cost = 300
-					set_fire_delay(FIRE_DELAY_TIER_6 * 20)
+					charge_cost = 200
+					set_fire_delay(FIRE_DELAY_TIER_2 * 8)
 					fire_sound = 'sound/weapons/pulse.ogg'
 					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
 					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/sphere/stun]
@@ -1187,8 +1201,8 @@
 			switch(strength)
 				if("plasma bolts")
 					strength = "plasma spheres"
-					charge_cost = 1200
-					set_fire_delay(FIRE_DELAY_TIER_6 * 20)
+					charge_cost = 1000
+					set_fire_delay(FIRE_DELAY_TIER_2 * 12)
 					fire_sound = 'sound/weapons/pulse.ogg'
 					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
 					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/sphere]
@@ -1233,6 +1247,13 @@
 /obj/item/weapon/gun/energy/yautja/plasma_caster/dropped(mob/living/carbon/human/M)
 	playsound(M, 'sound/weapons/pred_plasmacaster_off.ogg', 15, 1)
 	to_chat(M, SPAN_NOTICE("You deactivate your plasma caster."))
+
+	var/datum/action/predator_action/bracer/caster/caster_action
+	for(caster_action as anything in M.actions)
+		if(istypestrict(caster_action, /datum/action/predator_action/bracer/caster))
+			caster_action.update_button_icon(FALSE)
+			break
+
 	if(source)
 		forceMove(source)
 		source.caster_deployed = FALSE

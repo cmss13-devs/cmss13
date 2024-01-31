@@ -1,30 +1,29 @@
-//these are probably broken
-
 /obj/structure/machinery/floodlight
-	name = "Emergency Floodlight"
+	name = "emergency floodlight"
+	desc = "A powerful light usually stationed near landing zones to provide better visibility."
 	icon = 'icons/obj/structures/machinery/floodlight.dmi'
-	icon_state = "flood00"
+	icon_state = "flood_0"
 	density = TRUE
 	anchored = TRUE
-	var/obj/item/cell/cell = null
-	var/use = 0
-	var/unlocked = 0
-	var/open = 0
 	light_power = 2
-	unslashable = TRUE
-	unacidable = TRUE
+	wrenchable = TRUE
+	use_power = USE_POWER_IDLE
+	idle_power_usage = 0
+	active_power_usage = 100
 
+	///How far the light will go when the floodlight is on
 	var/on_light_range = 6
+	///Whether or not the floodlight can be toggled on or off
+	var/toggleable = TRUE
+	///Whether or not the floodlight is turned on, disconnected from whether it has power or is lit
+	var/turned_on = FALSE
+	///base state
+	var/base_icon_state = "flood"
 
 /obj/structure/machinery/floodlight/Initialize(mapload, ...)
 	. = ..()
-	cell = new /obj/item/cell(src)
-	if(light_on)
-		set_light(on_light_range)
 
-/obj/structure/machinery/floodlight/Destroy()
-	QDEL_NULL(cell)
-	return ..()
+	turn_light(toggle_on = (operable() && turned_on))
 
 /obj/structure/machinery/floodlight/turn_light(mob/user, toggle_on)
 	. = ..()
@@ -36,101 +35,53 @@
 	else
 		set_light(0)
 
+	update_icon()
 
-/obj/structure/machinery/floodlight/proc/updateicon()
-	icon_state = "flood[open ? "o" : ""][open && cell ? "b" : ""]0[light_on]"
-
-/obj/structure/machinery/floodlight/attack_hand(mob/user as mob)
-	if(open && cell)
-		if(ishuman(user))
-			if(!user.get_active_hand())
-				user.put_in_hands(cell)
-				cell.forceMove(user.loc)
-		else
-			cell.forceMove(loc)
-
-		cell.add_fingerprint(user)
-		cell.update_icon()
-
-		src.cell = null
-		to_chat(user, "You remove the power cell.")
-		updateicon()
+/obj/structure/machinery/floodlight/attack_hand(mob/living/user)
+	if(!toggleable)
+		to_chat(user, SPAN_NOTICE("[src] doesn't seem to have a switch to toggle the light."))
 		return
 
-	if(light_on)
-		to_chat(user, SPAN_NOTICE("You turn off the light."))
-		turn_light(user, toggle_on = FALSE)
-		unslashable = TRUE
-		unacidable = TRUE
-	else
-		if(!cell)
-			return
-		if(cell.charge <= 0)
-			return
-		to_chat(user, SPAN_NOTICE("You turn on the light."))
-		turn_light(user, toggle_on = TRUE)
-		unacidable = FALSE
-
-	updateicon()
-
-
-/obj/structure/machinery/floodlight/attackby(obj/item/W as obj, mob/user as mob)
-	if(!ishuman(user))
+	if(user.is_mob_incapacitated())
 		return
 
-	if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
-		if (!anchored)
-			anchored = TRUE
-			to_chat(user, "You anchor the [src] in place.")
-		else
-			anchored = FALSE
-			to_chat(user, "You remove the bolts from the [src].")
+	if(!is_valid_user(user))
+		to_chat(user, SPAN_NOTICE("You don't have the dexterity to do this."))
+		return
 
-	if (HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
-		if (!open)
-			if(unlocked)
-				unlocked = 0
-				to_chat(user, "You screw the battery panel in place.")
-			else
-				unlocked = 1
-				to_chat(user, "You unscrew the battery panel.")
+	turned_on = !turned_on
 
-	if (HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
-		if(unlocked)
-			if(open)
-				open = 0
-				overlays = null
-				to_chat(user, "You crowbar the battery panel in place.")
-			else
-				if(unlocked)
-					open = 1
-					to_chat(user, "You remove the battery panel.")
+	if(inoperable())
+		to_chat(user, SPAN_NOTICE("You turn [turned_on ? "on" : "off"] the floodlight. It seems to be inoperable."))
+		return
 
-	if (istype(W, /obj/item/cell))
-		if(open)
-			if(cell)
-				to_chat(user, "There is a power cell already installed.")
-			else
-				if(user.drop_inv_item_to_loc(W, src))
-					cell = W
-					to_chat(user, "You insert the power cell.")
-	updateicon()
+	to_chat(user, SPAN_NOTICE("You turn [turned_on ? "on" : "off"] the light."))
+	turn_light(user, toggle_on = turned_on)
+	update_use_power(turned_on ? USE_POWER_ACTIVE : USE_POWER_IDLE)
+
+/obj/structure/machinery/floodlight/update_icon()
+	. = ..()
+	icon_state = "[base_icon_state]_[light_on]"
+
+/obj/structure/machinery/floodlight/power_change(area/master_area = null)
+	. = ..()
+
+	turn_light(toggle_on = (!(stat & NOPOWER) && turned_on))
 
 //Magical floodlight that cannot be destroyed or interacted with.
 /obj/structure/machinery/floodlight/landing
-	name = "Landing Light"
-	desc = "A powerful light stationed near landing zones to provide better visibility."
-	icon_state = "flood01"
-	light_on = TRUE
-	in_use = 1
+	name = "landing light"
+	desc = "A powerful light usually stationed near landing zones to provide better visibility. This one seems to have been bolted down and is unable to be moved."
+	icon_state = "flood_1"
 	use_power = USE_POWER_NONE
-
-/obj/structure/machinery/floodlight/landing/attack_hand()
-	return
-
-/obj/structure/machinery/floodlight/landing/attackby()
-	return
+	needs_power = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+	wrenchable = FALSE
+	toggleable = FALSE
+	turned_on = TRUE
 
 /obj/structure/machinery/floodlight/landing/floor
-	icon_state = "floor_flood01"
+	icon_state = "floor_flood_1"
+	base_icon_state = "floor_flood"
 	density = FALSE

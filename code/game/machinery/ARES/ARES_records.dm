@@ -102,6 +102,7 @@
 	var/ref_holder = "\ref[src]"
 	var/pos = length(ref_holder)
 	var/new_id = "#[copytext("\ref[src]", pos - 4, pos)]"
+	new_id = uppertext(new_id)
 
 	ticket_time = worldtime2text()
 	ticket_submitter = user
@@ -115,17 +116,18 @@
 
 /datum/ares_ticket/access
 	ticket_type = ARES_RECORD_ACCESS
+	ticket_name = ARES_RECORD_ACCESS
 	var/user_id_num
 
-/datum/ares_ticket/access/New(user, name, details, priority, global_id_num)
+/datum/ares_ticket/access/New(user, details, priority, global_id_num)
 	var/ref_holder = "\ref[src]"
 	var/pos = length(ref_holder)
 	var/new_id = "#[copytext("\ref[src]", pos - 4, pos)]"
+	new_id = uppertext(new_id)
 
 	ticket_time = worldtime2text()
 	ticket_submitter = user
 	ticket_details = details
-	ticket_name = name
 	ticket_priority = priority
 	ticket_id = new_id
 	user_id_num = global_id_num

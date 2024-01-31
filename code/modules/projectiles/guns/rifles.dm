@@ -357,6 +357,8 @@
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
 	scatter_unwielded = SCATTER_AMOUNT_TIER_4
 
+/obj/item/weapon/gun/rifle/m41a/elite/xm40/ap
+	current_mag = /obj/item/ammo_magazine/rifle/xm40
 //-------------------------------------------------------
 //M41A TRUE AND ORIGINAL
 
@@ -435,6 +437,7 @@
 
 	accepted_ammo = list(
 		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/rifle/rubber,
 		/obj/item/ammo_magazine/rifle/extended,
 		/obj/item/ammo_magazine/rifle/ap,
 		/obj/item/ammo_magazine/rifle/incendiary,

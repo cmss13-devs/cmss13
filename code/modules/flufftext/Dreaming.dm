@@ -21,7 +21,7 @@
 		for(var/i = rand(1,4),i > 0, i--)
 			to_chat(src, SPAN_NOTICE("<i>... [pick(POSSIBLE_DREAM_TOPICS)] ...</i>"))
 			sleep(rand(40,70))
-			if(knocked_out <= 0)
+			if(!stat)
 				dreaming = 0
 				return
 		dreaming = 0

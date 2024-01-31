@@ -17,7 +17,7 @@
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
 	var/random_name
-	random_name = capitalize(pick(new_human.gender == MALE ? first_names_male : first_names_female)) + " " + capitalize(pick(last_names))
+	random_name = capitalize(pick(new_human.gender == MALE ? GLOB.first_names_male : GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))
 	new_human.change_real_name(new_human, random_name)
 	new_human.name = new_human.real_name
 	new_human.age = rand(22,45)
@@ -58,7 +58,7 @@
 
 /datum/equipment_preset/cmb/standard
 	name = "CMB - Colonial Marshal Deputy"
-	paygrade = "GS-9"
+	paygrade = PAY_SHORT_CMBD
 	role_comm_title = "CMB DEP"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "CMB Deputy"
@@ -141,7 +141,7 @@
 
 /datum/equipment_preset/cmb/leader
 	name = "CMB - The Colonial Marshal"
-	paygrade = "GS-13"
+	paygrade = PAY_SHORT_CMBM
 	idtype = /obj/item/card/id/marshal
 	role_comm_title = "CMB MAR"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -185,7 +185,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/holdout, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/m15/rubber, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/cmb, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/handheld_distress_beacon/cmb, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/camera, WEAR_IN_BACK)
@@ -195,7 +195,7 @@
 //*****************************************************************************************************/
 /datum/equipment_preset/cmb/synth
 	name = "CMB - Colonial Marshal Investigative Synthetic"
-	paygrade = "GS-C.9"
+	paygrade = PAY_SHORT_CMBS
 	idtype = /obj/item/card/id/deputy
 	role_comm_title = "CMB Syn"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -214,9 +214,9 @@
 	A.randomize_appearance(new_human)
 	var/random_name
 	if(new_human.gender == MALE)
-		random_name = "[pick(first_names_male)]"
+		random_name = "[pick(GLOB.first_names_male)]"
 	else
-		random_name = "[pick(first_names_female)]"
+		random_name = "[pick(GLOB.first_names_female)]"
 
 	if(new_human.gender == MALE)
 		new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
@@ -298,7 +298,7 @@
 
 /datum/equipment_preset/cmb/liaison
 	name = "CMB - ICC Liaison"
-	paygrade = "GS-6"
+	paygrade = PAY_SHORT_ICCL
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "ICC Rep."
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -312,7 +312,7 @@
 
 	//clothes
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CMB/ICC, WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/formal, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/black, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/mod88, WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/mod88, WEAR_IN_ACCESSORY)
@@ -357,7 +357,7 @@
 
 /datum/equipment_preset/cmb/observer
 	name = "CMB - Interstellar Human Rights Observer"
-	paygrade = "GS-3"
+	paygrade = PAY_SHORT_IHRO
 	idtype = /obj/item/card/id/lanyard
 	role_comm_title = "OBS"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -372,7 +372,7 @@
 	//clothes
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/pen, WEAR_R_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/suspenders, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/blue, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/health/ceramic_plate, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight, WEAR_J_STORE)
@@ -416,7 +416,7 @@
 
 	assignment = "Anchorpoint Station Marine Rifleman"
 	rank = JOB_SQUAD_MARINE
-	paygrade = "ME2"
+	paygrade = PAY_SHORT_ME2
 	role_comm_title = "A-RFN"
 	skills = /datum/skills/pfc/crafty
 	faction = FACTION_MARSHAL
@@ -425,12 +425,6 @@
 /datum/equipment_preset/uscm/cmb/load_status(mob/living/carbon/human/new_human)
 	. = ..()
 	new_human.nutrition = rand(NUTRITION_MAX, NUTRITION_NORMAL)
-
-/datum/equipment_preset/uscm/cmb/load_rank(mob/living/carbon/human/new_human)
-	if(new_human.client)
-		if(get_job_playtime(new_human.client, rank) < JOB_PLAYTIME_TIER_1)
-			return "ME1"
-	return paygrade
 
 /datum/equipment_preset/uscm/cmb/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine, WEAR_BODY)
@@ -472,7 +466,7 @@
 
 	assignment = "Anchorpoint Station Marine Team Leader"
 	rank = JOB_SQUAD_LEADER
-	paygrade = "ME6"
+	paygrade = PAY_SHORT_ME6
 	role_comm_title = "A-TL"
 	minimum_age = 25
 	skills = /datum/skills/SL
@@ -492,7 +486,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/emergency, WEAR_IN_HELMET)
 	new_human.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack, WEAR_IN_HELMET)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/cryo/lead, WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/leader, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/medium/leader, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator, WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/m15, WEAR_IN_JACKET)
@@ -517,7 +511,7 @@
 
 	assignment = "Anchorpoint Station Marine Technical Specialist"
 	rank = JOB_SQUAD_TEAM_LEADER
-	paygrade = "ME4"
+	paygrade = PAY_SHORT_ME4
 	role_comm_title = "A-TS"
 	skills = /datum/skills/tl
 
@@ -535,7 +529,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack, WEAR_IN_HELMET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding/superior, WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/cryo/tl, WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/rto, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/medium/rto, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1/ap, WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1/ap, WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator, WEAR_IN_JACKET)
@@ -553,8 +547,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full, WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_L_STORE)
 
-	new_human.back.pickup()
-
 //Anchorpoint Station Corpsman
 /datum/equipment_preset/uscm/cmb/medic
 	name = "USCM Anchorpoint Station Corpsman"
@@ -564,7 +556,7 @@
 
 	assignment = "Anchorpoint Station Hospital Corpsman"
 	rank = JOB_SQUAD_MEDIC
-	paygrade = "ME3"
+	paygrade = PAY_SHORT_ME3
 	role_comm_title = "A-HM"
 	skills = /datum/skills/combat_medic
 
@@ -625,7 +617,7 @@
 
 	assignment = "Anchorpoint Station Marine Smartgunner"
 	rank = JOB_SQUAD_SMARTGUN
-	paygrade = "ME3"
+	paygrade = PAY_SHORT_ME3
 	role_comm_title = "A-SG"
 	skills = /datum/skills/smartgunner
 

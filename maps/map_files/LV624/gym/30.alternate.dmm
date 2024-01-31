@@ -69,11 +69,10 @@
 /obj/structure/surface/rack,
 /obj/item/clothing/shoes/black,
 /obj/item/clothing/shoes/orange{
+	name = "running shoes";
 	pixel_x = -5;
-	pixel_y = -9;
-	name = "running shoes"
+	pixel_y = -9
 	},
-/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whitepurplecorner"
@@ -373,7 +372,6 @@
 "DH" = (
 /obj/structure/closet/lasertag/blue,
 /obj/item/tool/crowbar,
-/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whitepurplecorner"
@@ -646,7 +644,6 @@
 	id = "lv_gym_1";
 	name = "treadmill"
 	},
-/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whitepurplecorner"

@@ -92,13 +92,13 @@
 	if(mover in mobs_under) //can't collide with the thing you're buckled to
 		return NO_BLOCKED_MOVEMENT
 
-	if(ismob(mover))
-		var/mob/M = mover
+	if(isliving(mover))
+		var/mob/living/M = mover
 		if(M.mob_flags & SQUEEZE_UNDER_VEHICLES)
 			add_under_van(M)
 			return NO_BLOCKED_MOVEMENT
 
-		if(M.lying)
+		if(M.body_position == LYING_DOWN)
 			return NO_BLOCKED_MOVEMENT
 
 		if(M.mob_size >= MOB_SIZE_IMMOBILE && next_push < world.time)

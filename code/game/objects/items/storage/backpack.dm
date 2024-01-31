@@ -12,6 +12,12 @@
 	max_w_class = SIZE_MEDIUM
 	storage_slots = null
 	max_storage_space = 21
+	cant_hold = list(/obj/item/storage/firstaid, /obj/item/storage/toolkit)
+	can_hold_skill = list(
+		/obj/item/storage/firstaid = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/storage/toolkit = list(SKILL_ENGINEER, SKILL_ENGINEER_ENGI),
+		)
+	drop_sound = "armorequip"
 	var/worn_accessible = FALSE //whether you can access its content while worn on the back
 	var/obj/item/card/id/locking_id = null
 	var/is_id_lockable = FALSE
@@ -67,9 +73,9 @@
 		return FALSE
 
 	// Create their vis object if needed
-	if(!xeno.backpack_icon_carrier)
-		xeno.backpack_icon_carrier = new(null, xeno)
-		xeno.vis_contents += xeno.backpack_icon_carrier
+	if(!xeno.backpack_icon_holder)
+		xeno.backpack_icon_holder = new(null, xeno)
+		xeno.vis_contents += xeno.backpack_icon_holder
 
 	target_mob.put_in_back(src)
 	return FALSE
@@ -405,7 +411,7 @@
 	has_gamemode_skin = FALSE
 	storage_slots = 3
 	icon_state = "ammo_pack_0"
-	can_hold = list(/obj/item/ammo_box)
+	can_hold = list(/obj/item/ammo_box, /obj/item/stack/folding_barricade)
 	max_w_class = SIZE_MASSIVE
 	throw_range = 0
 	xeno_types = null
@@ -453,6 +459,12 @@
 	name = "\improper USCM lightweight expedition pack"
 	desc = "A heavy-duty IMP based backpack that can be slung around the front or to the side, and can quickly be accessed with only one hand. Usually issued to USCM intelligence officers."
 	icon_state = "marinebigsatch"
+	max_storage_space = 20
+
+/obj/item/storage/backpack/marine/satchel/intel/chestrig
+	name = "\improper USCM expedition chestrig"
+	desc = "A heavy-duty IMP based chestrig, can quickly be accessed with only one hand. Usually issued to USCM intelligence officers."
+	icon_state = "intel_chestrig"
 	max_storage_space = 20
 
 /obj/item/storage/backpack/marine/satchel
@@ -561,6 +573,18 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 /obj/item/storage/backpack/marine/satchel/rto/pickup(mob/user)
 	. = ..()
+	autoset_phone_id(user)
+
+/obj/item/storage/backpack/marine/satchel/rto/equipped(mob/user, slot)
+	. = ..()
+	autoset_phone_id(user)
+
+/// Automatically sets the phone_id based on the current or updated user
+/obj/item/storage/backpack/marine/satchel/rto/proc/autoset_phone_id(mob/user)
+	if(!user)
+		internal_transmitter.phone_id = "[src]"
+		internal_transmitter.enabled = FALSE
+		return
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.comm_title)
@@ -574,13 +598,11 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 			internal_transmitter.phone_id += " ([H.assigned_squad.name])"
 	else
 		internal_transmitter.phone_id = "[user]"
-
 	internal_transmitter.enabled = TRUE
 
 /obj/item/storage/backpack/marine/satchel/rto/dropped(mob/user)
 	. = ..()
-	internal_transmitter.phone_id = "[src]"
-	internal_transmitter.enabled = FALSE
+	autoset_phone_id(null) // Disable phone when dropped
 
 /obj/item/storage/backpack/marine/satchel/rto/proc/use_phone(mob/user)
 	internal_transmitter.attack_hand(user)
@@ -675,6 +697,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	icon_state = "g8pouch"
 	item_state = "g8pouch"
 	has_gamemode_skin = TRUE
+	can_hold_skill = list()
 
 /obj/item/storage/backpack/general_belt/equipped(mob/user, slot)
 	switch(slot)
@@ -739,8 +762,10 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 	RegisterSignal(H, COMSIG_GRENADE_PRE_PRIME, PROC_REF(cloak_grenade_callback))
 	RegisterSignal(H, COMSIG_HUMAN_EXTINGUISH, PROC_REF(wrapper_fizzle_camouflage))
+	RegisterSignal(H, COMSIG_MOB_EFFECT_CLOAK_CANCEL, PROC_REF(deactivate_camouflage))
 
 	camo_active = TRUE
+	ADD_TRAIT(H, TRAIT_CLOAKED, TRAIT_SOURCE_EQUIPMENT(WEAR_BACK))
 	H.visible_message(SPAN_DANGER("[H] vanishes into thin air!"), SPAN_NOTICE("You activate your cloak's camouflage."), max_distance = 4)
 	playsound(H.loc, 'sound/effects/cloak_scout_on.ogg', 15, TRUE)
 	H.unset_interaction()
@@ -749,9 +774,9 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	H.FF_hit_evade = 1000
 	H.allow_gun_usage = allow_gun_usage
 
-	var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
+	var/datum/mob_hud/security/advanced/SA = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 	SA.remove_from_hud(H)
-	var/datum/mob_hud/xeno_infection/XI = huds[MOB_HUD_XENO_INFECTION]
+	var/datum/mob_hud/xeno_infection/XI = GLOB.huds[MOB_HUD_XENO_INFECTION]
 	XI.remove_from_hud(H)
 
 	anim(H.loc, H, 'icons/mob/mob.dmi', null, "cloak", null, H.dir)
@@ -767,27 +792,30 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	deactivate_camouflage(wearer, TRUE, TRUE)
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/proc/deactivate_camouflage(mob/living/carbon/human/H, anim = TRUE, forced)
+	SIGNAL_HANDLER
 	if(!istype(H))
 		return FALSE
 
 	UnregisterSignal(H, list(
 	COMSIG_GRENADE_PRE_PRIME,
-	COMSIG_HUMAN_EXTINGUISH
+	COMSIG_HUMAN_EXTINGUISH,
+	COMSIG_MOB_EFFECT_CLOAK_CANCEL,
 	))
 
 	if(forced)
 		cloak_cooldown = world.time + 10 SECONDS
 
 	camo_active = FALSE
+	REMOVE_TRAIT(H, TRAIT_CLOAKED, TRAIT_SOURCE_EQUIPMENT(WEAR_BACK))
 	H.visible_message(SPAN_DANGER("[H] shimmers into existence!"), SPAN_WARNING("Your cloak's camouflage has deactivated!"), max_distance = 4)
 	playsound(H.loc, 'sound/effects/cloak_scout_off.ogg', 15, TRUE)
 
 	H.alpha = initial(H.alpha)
 	H.FF_hit_evade = initial(H.FF_hit_evade)
 
-	var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
+	var/datum/mob_hud/security/advanced/SA = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 	SA.add_to_hud(H)
-	var/datum/mob_hud/xeno_infection/XI = huds[MOB_HUD_XENO_INFECTION]
+	var/datum/mob_hud/xeno_infection/XI = GLOB.huds[MOB_HUD_XENO_INFECTION]
 	XI.add_to_hud(H)
 
 	if(anim)
@@ -821,7 +849,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 /datum/action/item_action/specialist/toggle_cloak/can_use_action()
 	var/mob/living/carbon/human/H = owner
-	if(istype(H) && !H.is_mob_incapacitated() && !H.lying && holder_item == H.back)
+	if(istype(H) && !H.is_mob_incapacitated() && holder_item == H.back)
 		return TRUE
 
 /datum/action/item_action/specialist/toggle_cloak/action_activate()
@@ -1105,6 +1133,10 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 	max_storage_space = 21
 	camo_alpha = 10
+
+/obj/item/storage/backpack/marine/satchel/scout_cloak/upp/weak
+	desc = "A thermo-optic camouflage cloak commonly used by UPP commando units. This one is less effective than normal."
+	actions_types = null
 
 //----------TWE SECTION----------
 /obj/item/storage/backpack/rmc

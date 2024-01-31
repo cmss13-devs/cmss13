@@ -119,8 +119,6 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			deconstruct(FALSE)
 			return
-		else
-	return
 
 /obj/structure/reagent_dispensers/attack_hand()
 	if(!reagents || reagents.locked)
@@ -149,13 +147,6 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "ammoniatank"
 	chemical = "ammonia"
-
-/obj/structure/reagent_dispensers/oxygentank
-	name = "oxygentank"
-	desc = "An oxygen tank"
-	icon = 'icons/obj/objects.dmi'
-	icon_state = "oxygentank"
-	chemical = "oxygen"
 
 /obj/structure/reagent_dispensers/acidtank
 	name = "sulfuric acid tank"
@@ -395,6 +386,13 @@
 	desc = "A hydrogen tank"
 	icon_state = "hydrogentank"
 	chemical = "hydrogen"
+
+/obj/structure/reagent_dispensers/fueltank/oxygentank
+	name = "oxygentank"
+	desc = "An oxygen tank"
+	icon = 'icons/obj/objects.dmi'
+	icon_state = "oxygentank"
+	chemical = "oxygen"
 
 /obj/structure/reagent_dispensers/fueltank/custom
 	name = "reagent tank"

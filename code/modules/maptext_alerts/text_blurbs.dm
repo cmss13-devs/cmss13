@@ -5,7 +5,7 @@
 	set waitfor = 0
 	var/areaname = replacetext(A.name, "\improper", "") //The \improper flickers "ÿ" briefly
 
-	var/text = "[worldtime2text("hhmm")], [time2text(REALTIMEOFDAY, "DD-MMM-[game_year]")]\n[station_name], [areaname]"
+	var/text = "[worldtime2text("hhmm")], [time2text(REALTIMEOFDAY, "DD-MMM-[GLOB.game_year]")]\n[MAIN_SHIP_NAME], [areaname]"
 
 	show_blurb(targets, duration, text, TRUE)
 
@@ -14,13 +14,13 @@ exempt_ztraits = trait or list of traits of zlevels where any marines don't see 
 shouldn't see the ship marines' drop message. Ex. ZTRAIT_GROUND by default.
 unit = the unit the marines are from. FF, Dust Raiders etc. Military crew see this.
 base = the base the marines are staging from. The ship, Whiskey Outpost etc. Noncombat crew see this.**/
-/proc/show_blurb_uscm(list/exempt_ztraits = ZTRAIT_GROUND, unit = "2nd Bat. 'Falling Falcons'", base = station_name)
+/proc/show_blurb_uscm(list/exempt_ztraits = ZTRAIT_GROUND, unit = "2nd Bat. 'Falling Falcons'", base = MAIN_SHIP_NAME)
 	if(!islist(exempt_ztraits))
 		exempt_ztraits = list(exempt_ztraits)
 	var/list/exempt_zlevels = SSmapping.levels_by_any_trait(exempt_ztraits)
 
-	var/base_text = "<b>[uppertext(round_statistics.round_name)]</b>\n\
-						[worldtime2text("hhmm hrs")], [uppertext(time2text(REALTIMEOFDAY, "DD-MMM-[game_year]"))]\n\
+	var/base_text = "<b>[uppertext(GLOB.round_statistics.round_name)]</b>\n\
+						[worldtime2text("hhmm hrs")], [uppertext(time2text(REALTIMEOFDAY, "DD-MMM-[GLOB.game_year]"))]\n\
 						[SSmapping.configs[GROUND_MAP].map_name]"
 
 	var/list/post_text = list("combat" = "\n[unit]",
@@ -90,7 +90,7 @@ blurb_key = a key used for specific blurb types so they are not shown repeatedly
 ignore_key = used to skip key checks. Ex. a USCM ERT member shouldn't see the normal USCM drop message,
 but should see their own spawn message even if the player already dropped as USCM.**/
 /proc/show_blurb(list/mob/targets, duration = 3 SECONDS, message, scroll_down, screen_position = "LEFT+0:16,BOTTOM+1:16",\
-	text_alignment = "left", text_color = "#FFFFFF", blurb_key, ignore_key = FALSE, speed = 1)
+	text_alignment = "left", text_color = COLOR_WHITE, blurb_key, ignore_key = FALSE, speed = 1)
 	set waitfor = 0
 	if(!islist(targets))
 		targets = list(targets)
@@ -136,7 +136,7 @@ but should see their own spawn message even if the player already dropped as USC
 			if(!ignore_key && (M.key in GLOB.blurb_witnesses[blurb_key]))
 				continue
 			LAZYDISTINCTADD(GLOB.blurb_witnesses[blurb_key], M.key)
-		M.client?.screen += T
+		M.client?.add_to_screen(T)
 
 	for(var/i in 1 to length(message) + 1)
 		if(i in linebreaks)
@@ -154,5 +154,5 @@ but should see their own spawn message even if the player already dropped as USC
 	animate(T, alpha = 0, time = 0.5 SECONDS)
 	sleep(5)
 	for(var/mob/M as anything in targets)
-		M.client?.screen -= T
+		M.client?.remove_from_screen(T)
 	qdel(T)

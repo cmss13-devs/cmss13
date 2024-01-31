@@ -21,6 +21,8 @@
 	var/darkness_view = 12
 	/// The maximum distance this can be from the sniper scope
 	var/max_sniper_distance = 7
+	/// If this requires the vulture_user trait to use
+	var/skillless = FALSE
 
 /obj/structure/vulture_spotter_tripod/Initialize(mapload)
 	. = ..()
@@ -36,7 +38,10 @@
 /obj/structure/vulture_spotter_tripod/deconstruct(disassembled)
 	. = ..()
 	if(scope_attached && bound_rifle)
-		new /obj/item/device/vulture_spotter_scope(get_turf(src), bound_rifle)
+		if(skillless)
+			new /obj/item/device/vulture_spotter_scope/skillless(get_turf(src), bound_rifle)
+		else
+			new /obj/item/device/vulture_spotter_scope(get_turf(src), bound_rifle)
 	new /obj/item/device/vulture_spotter_tripod(get_turf(src))
 
 /obj/structure/vulture_spotter_tripod/get_examine_text(mob/user)
@@ -63,7 +68,7 @@
 		return
 	var/mob/living/carbon/human/user = usr //this is us
 
-	if(!HAS_TRAIT(user, TRAIT_VULTURE_USER))
+	if(!HAS_TRAIT(user, TRAIT_VULTURE_USER) && !skillless)
 		to_chat(user, SPAN_WARNING("You don't know how to use this!"))
 		return
 
@@ -73,7 +78,7 @@
 
 	try_scope(user)
 
-/obj/structure/vulture_spotter_tripod/on_set_interaction(mob/user)
+/obj/structure/vulture_spotter_tripod/on_set_interaction(mob/living/user)
 	var/obj/item/attachable/vulture_scope/scope = get_vulture_scope()
 	scope.spotter_spotting = TRUE
 	to_chat(scope.scope_user, SPAN_NOTICE("You notice that [scope] drifts less."))
@@ -87,7 +92,7 @@
 	user.lighting_alpha = 127
 	user.sync_lighting_plane_alpha()
 	user.overlay_fullscreen("vulture_spotter", /atom/movable/screen/fullscreen/vulture/spotter)
-	user.freeze()
+	ADD_TRAIT(user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Vulture spotter"))
 	user.status_flags |= IMMOBILE_ACTION
 	user.visible_message(SPAN_NOTICE("[user] looks through [src]."),SPAN_NOTICE("You look through [src], ready to go!"))
 	user.forceMove(loc)
@@ -97,13 +102,13 @@
 	give_action(user, /datum/action/vulture_tripod_unscope, null, null, src)
 	set_scope_loc(user, scope)
 
-/obj/structure/vulture_spotter_tripod/on_unset_interaction(mob/user)
+/obj/structure/vulture_spotter_tripod/on_unset_interaction(mob/living/user)
 	user.status_flags &= ~IMMOBILE_ACTION
 	user.visible_message(SPAN_NOTICE("[user] looks up from [src]."),SPAN_NOTICE("You look up from [src]."))
-	user.unfreeze()
+	REMOVE_TRAIT(user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Vulture spotter"))
 	user.reset_view(null)
 	user.Move(get_step(src, reverse_direction(src.dir)))
-	user.client?.change_view(world_view_size, src)
+	user.client?.change_view(GLOB.world_view_size, src)
 	user.setDir(dir) //set the direction of the player to the direction the gun is facing
 	update_pixels(FALSE)
 	remove_action(user, /datum/action/vulture_tripod_unscope)
@@ -153,9 +158,12 @@
 		user.pixel_y = 0
 
 /// Handler for when the scope is being attached to the tripod
-/obj/structure/vulture_spotter_tripod/proc/on_scope_attach(mob/user, obj/structure/vulture_spotter_tripod/scope)
+/obj/structure/vulture_spotter_tripod/proc/on_scope_attach(mob/user, obj/item/device/vulture_spotter_scope/scope)
 	if(scope_attached)
 		return
+
+	if(istype(scope, /obj/item/device/vulture_spotter_scope/skillless))
+		skillless = TRUE
 
 	user.visible_message(SPAN_NOTICE("[user] attaches [scope] to [src]."), SPAN_NOTICE("You attach [scope] to [src]."))
 	icon_state = "vulture_scope"
@@ -230,7 +238,7 @@
 		user.pixel_x = 0
 		user.pixel_y = 0
 		if(user.client)
-			user.client.change_view(world_view_size, src)
+			user.client.change_view(GLOB.world_view_size, src)
 			user.client.pixel_x = 0
 			user.client.pixel_y = 0
 			UnregisterSignal(user.client, COMSIG_PARENT_QDELETING)

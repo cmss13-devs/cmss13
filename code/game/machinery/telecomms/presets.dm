@@ -1,8 +1,5 @@
 // ### Preset machines  ###
 
-
-//var/list/freq_listening = list()  USE THIS FOR NEW RELAY STUFF WHEN I GET THIS - APOPHIS
-
 //Relay
 /obj/structure/machinery/telecomms/relay/preset
 	network = "tcommsat"
@@ -94,7 +91,7 @@
 		return // Leave the poor thing alone
 
 	health -= damage
-	health = Clamp(health, 0, initial(health))
+	health = clamp(health, 0, initial(health))
 
 	if(health <= 0)
 		toggled = FALSE // requires flipping on again once repaired
@@ -150,7 +147,7 @@
 	else return ..()
 
 /obj/structure/machinery/telecomms/relay/preset/tower/attack_hand(mob/user)
-	if(ishighersilicon(user))
+	if(isSilicon(user))
 		return ..()
 	if(on)
 		to_chat(user, SPAN_WARNING("\The [src.name] blinks and beeps incomprehensibly as it operates, better not touch this..."))
@@ -218,11 +215,19 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	/// Held image for the current overlay on the tower from xeno corruption
 	var/image/corruption_image
 
+	/// Holds the delay for when a cluster can recorrupt the comms tower after a pylon has been destroyed
+	COOLDOWN_DECLARE(corruption_delay)
+
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/Initialize()
 	. = ..()
 
 	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(register_with_turf))
 	register_with_turf()
+
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/get_examine_text(mob/user)
+	. = ..()
+	if(isxeno(user) && !COOLDOWN_FINISHED(src, corruption_delay))
+		. += SPAN_XENO("Corruption cooldown: [(COOLDOWN_TIMELEFT(src, corruption_delay) / (1 SECONDS))] seconds.")
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/attack_hand(mob/user)
 	if(user.action_busy)
@@ -323,6 +328,10 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 		addtimer(CALLBACK(src, PROC_REF(handle_xeno_acquisition), weeded_turf), (XENO_COMM_ACQUISITION_TIME - ROUND_TIME))
 		return
 
+	if(!COOLDOWN_FINISHED(src, corruption_delay))
+		addtimer(CALLBACK(src, PROC_REF(handle_xeno_acquisition), weeded_turf), (COOLDOWN_TIMELEFT(src, corruption_delay)))
+		return
+
 	var/obj/effect/alien/weeds/node/pylon/cluster/parent_node = weeded_turf.weeds.parent
 
 	var/obj/effect/alien/resin/special/cluster/cluster_parent = parent_node.resin_parent
@@ -361,6 +370,8 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	corrupted = FALSE
 
 	overlays -= corruption_image
+
+	COOLDOWN_START(src, corruption_delay, XENO_PYLON_DESTRUCTION_DELAY)
 
 /// Handles moving the overlay from growing to idle
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/switch_to_idle_corruption()
@@ -435,8 +446,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	id = "CentComm Receiver"
 	network = "tcommsat"
 	autolinkers = list("receiverCent")
-	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ)
-
+	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ)
 
 //Buses
 
@@ -455,7 +465,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 /obj/structure/machinery/telecomms/bus/preset_three
 	id = "Bus 3"
 	network = "tcommsat"
-	freq_listening = list(SEC_FREQ, COMM_FREQ, WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ)
+	freq_listening = list(SEC_FREQ, COMM_FREQ, WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ)
 	autolinkers = list("processor3", "security", "command", "JTAC")
 
 /obj/structure/machinery/telecomms/bus/preset_four
@@ -471,7 +481,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 /obj/structure/machinery/telecomms/bus/preset_cent
 	id = "CentComm Bus"
 	network = "tcommsat"
-	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ)
+	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ)
 	autolinkers = list("processorCent", "centcomm")
 
 //Processors
@@ -536,7 +546,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 /obj/structure/machinery/telecomms/server/presets/command
 	id = "Command Server"
-	freq_listening = list(COMM_FREQ, WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ)
+	freq_listening = list(COMM_FREQ, WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ)
 	autolinkers = list("command")
 
 /obj/structure/machinery/telecomms/server/presets/engineering
@@ -551,9 +561,8 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 /obj/structure/machinery/telecomms/server/presets/centcomm
 	id = "CentComm Server"
-	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ)
+	freq_listening = list(WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ)
 	autolinkers = list("centcomm")
-
 
 //Broadcasters
 

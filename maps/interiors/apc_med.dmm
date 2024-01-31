@@ -14,7 +14,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "dark_sterile_green_11"
 	},
-/area/vehicle/apc/med)
+/area/interior/vehicle/apc/med)
 "c" = (
 /obj/effect/decal/medical_decals/permanent{
 	icon_state = "docdecal2";
@@ -27,7 +27,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "dark_sterile_green_5"
 	},
-/area/vehicle/apc/med)
+/area/interior/vehicle/apc/med)
 "d" = (
 /obj/effect/decal/medical_decals/permanent{
 	icon_state = "triagedecalbottom"
@@ -38,7 +38,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "dark_sterile_green_14"
 	},
-/area/vehicle/apc/med)
+/area/interior/vehicle/apc/med)
 "e" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "rear_1"
@@ -70,7 +70,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3"
 	},
-/area/vehicle/apc/med)
+/area/interior/vehicle/apc/med)
 "j" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "rear_6"
@@ -105,7 +105,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "dark_sterile_green_7"
 	},
-/area/vehicle/apc/med)
+/area/interior/vehicle/apc/med)
 "n" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "wheel_back_top_1";
@@ -179,7 +179,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "dark_sterile_green_8"
 	},
-/area/vehicle/apc/med)
+/area/interior/vehicle/apc/med)
 "x" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "wall";
@@ -204,7 +204,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_11"
 	},
-/area/vehicle/apc/med)
+/area/interior/vehicle/apc/med)
 "z" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "wheel_front_top_1";
@@ -223,7 +223,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3"
 	},
-/area/vehicle/apc/med)
+/area/interior/vehicle/apc/med)
 "B" = (
 /obj/structure/machinery/iv_drip{
 	anchored = 1
@@ -236,7 +236,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "dark_sterile_green_12"
 	},
-/area/vehicle/apc/med)
+/area/interior/vehicle/apc/med)
 "C" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "front_wheel_L";
@@ -253,7 +253,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "dark_sterile"
 	},
-/area/vehicle/apc/med)
+/area/interior/vehicle/apc/med)
 "E" = (
 /obj/structure/vehicle_locker{
 	pixel_y = 28
@@ -264,7 +264,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_8_1"
 	},
-/area/vehicle/apc/med)
+/area/interior/vehicle/apc/med)
 "F" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "front_2"
@@ -293,7 +293,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_9_1"
 	},
-/area/vehicle/apc/med)
+/area/interior/vehicle/apc/med)
 "J" = (
 /obj/structure/bed/chair/comfy{
 	dir = 4
@@ -301,7 +301,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "dark_sterile_green_6"
 	},
-/area/vehicle/apc/med)
+/area/interior/vehicle/apc/med)
 "K" = (
 /obj/effect/landmark/interior/spawn/entrance{
 	alpha = 50;
@@ -317,12 +317,12 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_12"
 	},
-/area/vehicle/apc/med)
+/area/interior/vehicle/apc/med)
 "L" = (
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_14"
 	},
-/area/vehicle/apc/med)
+/area/interior/vehicle/apc/med)
 "M" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "corner_inverse_L";
@@ -355,7 +355,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "dark_sterile_green_13"
 	},
-/area/vehicle/apc/med)
+/area/interior/vehicle/apc/med)
 "P" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "door_back"
@@ -366,13 +366,13 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_6"
 	},
-/area/vehicle/apc/med)
+/area/interior/vehicle/apc/med)
 "R" = (
 /obj/effect/landmark/interior/spawn/weapons_loader,
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_6"
 	},
-/area/vehicle/apc/med)
+/area/interior/vehicle/apc/med)
 "S" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "front_4"
@@ -383,7 +383,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_3_3"
 	},
-/area/vehicle/apc/med)
+/area/interior/vehicle/apc/med)
 "U" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "front_1"
@@ -402,7 +402,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_13"
 	},
-/area/vehicle/apc/med)
+/area/interior/vehicle/apc/med)
 "W" = (
 /obj/structure/bed/chair/vehicle{
 	pixel_x = -8
@@ -422,7 +422,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_13"
 	},
-/area/vehicle/apc/med)
+/area/interior/vehicle/apc/med)
 "Y" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "rear_4"

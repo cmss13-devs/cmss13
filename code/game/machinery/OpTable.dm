@@ -19,7 +19,7 @@
 	active_power_usage = 5
 	var/strapped = 0
 	can_buckle = TRUE
-	buckle_lying = TRUE
+	buckle_lying = 90
 	var/buckling_y = -4
 	surgery_duration_multiplier = SURGERY_SURFACE_MULT_IDEAL //Ideal surface for surgery.
 	var/patient_exam = 0
@@ -59,8 +59,6 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			deconstruct(FALSE)
 			return
-		else
-	return
 
 /obj/structure/machinery/optable/get_examine_text(mob/user)
 	. = ..()

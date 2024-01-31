@@ -15,10 +15,10 @@
 		return
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		if(!ooc_allowed) //Send to LOOC instead
+		if(!GLOB.ooc_allowed) //Send to LOOC instead
 			looc(msg)
 			return
-		if(!dooc_allowed && (mob.stat == DEAD || isobserver(mob)))
+		if(!GLOB.dooc_allowed && (mob.stat == DEAD || isobserver(mob)))
 			to_chat(usr, SPAN_DANGER("OOC for dead mobs has been turned off."))
 			return
 		if(prefs.muted & MUTE_OOC)
@@ -108,10 +108,10 @@
 		return
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		if(!looc_allowed)
+		if(!GLOB.looc_allowed)
 			to_chat(src, SPAN_DANGER("LOOC is globally muted"))
 			return
-		if(!dlooc_allowed && (mob.stat != CONSCIOUS || isobserver(mob)))
+		if(!GLOB.dlooc_allowed && (mob.stat != CONSCIOUS || isobserver(mob)))
 			to_chat(usr, SPAN_DANGER("Sorry, you cannot utilize LOOC while dead or incapacitated."))
 			return
 		if(prefs.muted & MUTE_OOC)
@@ -150,7 +150,7 @@
 		if(C.prefs.toggles_chat & CHAT_LOOC)
 			to_chat(C, "<font color='#f557b8'><span class='ooc linkify'><span class='prefix'>LOOC:</span> <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></font>")
 
-	if(mob.looc_overhead || ooc_allowed)
+	if(mob.looc_overhead || GLOB.ooc_allowed)
 		var/transmit_language = isxeno(mob) ? LANGUAGE_XENOMORPH : LANGUAGE_ENGLISH
 		mob.langchat_speech(msg, heard, GLOB.all_languages[transmit_language], "#ff47d7")
 

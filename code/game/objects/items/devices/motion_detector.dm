@@ -220,7 +220,6 @@
 		var/mob/living/M = A //do this to skip the unnecessary istype() check; everything in ping_candidate is a mob already
 		if(M == loc) continue //device user isn't detected
 		if(world.time > M.l_move_time + 20) continue //hasn't moved recently
-		if(isrobot(M)) continue
 		if(M.get_target_lock(iff_signal))
 			continue
 
@@ -280,13 +279,13 @@
 			DB.icon_state = "[blip_icon]_blip"
 			DB.setDir(initial(DB.dir))
 
-		DB.screen_loc = "[Clamp(c_view + 1 - view_x_offset + (target.x - user.x), 1, 2*c_view+1)],[Clamp(c_view + 1 - view_y_offset + (target.y - user.y), 1, 2*c_view+1)]"
-		user.client.screen += DB
+		DB.screen_loc = "[clamp(c_view + 1 - view_x_offset + (target.x - user.x), 1, 2*c_view+1)],[clamp(c_view + 1 - view_y_offset + (target.y - user.y), 1, 2*c_view+1)]"
+		user.client.add_to_screen(DB)
 		addtimer(CALLBACK(src, PROC_REF(clear_pings), user, DB), 1 SECONDS)
 
 /obj/item/device/motiondetector/proc/clear_pings(mob/user, obj/effect/detector_blip/DB)
 	if(user.client)
-		user.client.screen -= DB
+		user.client.remove_from_screen(DB)
 
 /obj/item/device/motiondetector/m717
 	name = "M717 pocket motion detector"

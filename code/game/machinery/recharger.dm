@@ -11,7 +11,7 @@
 	black_market_value = 35
 	var/obj/item/charging = null
 	var/percent_charge_complete = 0
-	var/list/allowed_devices = list(/obj/item/weapon/baton, /obj/item/cell, /obj/item/weapon/gun/energy, /obj/item/device/defibrillator, /obj/item/tool/portadialysis, /obj/item/clothing/suit/auto_cpr, /obj/item/smartgun_battery)
+	var/list/allowed_devices = list(/obj/item/weapon/baton, /obj/item/cell, /obj/item/weapon/gun/energy, /obj/item/device/defibrillator, /obj/item/tool/portadialysis, /obj/item/clothing/suit/auto_cpr, /obj/item/smartgun_battery, /obj/item/device/helmet_visor/night_vision)
 
 	var/charge_amount = 1000
 
@@ -181,6 +181,21 @@
 			update_icon()
 			return
 
+		if(istype(charging, /obj/item/device/helmet_visor/night_vision))
+			var/obj/item/device/helmet_visor/night_vision/charging_night_vision_visor = charging
+			if(charging_night_vision_visor.power_cell)
+				if(!charging_night_vision_visor.power_cell.fully_charged())
+					charging_night_vision_visor.power_cell.give(charge_amount)
+					percent_charge_complete = charging_night_vision_visor.power_cell.percent()
+					update_use_power(USE_POWER_ACTIVE)
+					update_icon()
+					return
+
+			percent_charge_complete = 100
+			update_use_power(USE_POWER_IDLE)
+			update_icon()
+			return
+
 		/* Disable defib recharging
 		if(istype(charging, /obj/item/device/defibrillator))
 			var/obj/item/device/defibrillator/D = charging
@@ -203,20 +218,14 @@
 	update_icon()
 
 /obj/structure/machinery/recharger/emp_act(severity)
+	. = ..()
 	if(inoperable() || !anchored)
-		..(severity)
 		return
-/*
-	if(istype(charging,  /obj/item/weapon/gun/energy))
-		var/obj/item/weapon/gun/energy/E = charging
-		if(E.power_supply)
-			E.power_supply.emp_act(severity)
-*/
+
 	if(istype(charging, /obj/item/weapon/baton))
 		var/obj/item/weapon/baton/B = charging
 		if(B.bcell)
 			B.bcell.charge = 0
-	..(severity)
 
 /obj/structure/machinery/recharger/update_icon() //we have an update_icon() in addition to the stuff in process to make it feel a tiny bit snappier.
 	src.overlays = 0

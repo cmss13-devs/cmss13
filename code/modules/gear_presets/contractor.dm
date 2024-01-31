@@ -4,7 +4,7 @@
 	rank = JOB_CONTRACTOR
 	idtype = /obj/item/card/id/data
 	faction = FACTION_CONTRACTOR
-	faction_group = FACTION_LIST_ERT
+	faction_group = list(FACTION_CONTRACTOR)
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_SPANISH, LANGUAGE_RUSSIAN)
 	var/human_versus_human = FALSE
 	var/headset_type = /obj/item/device/radio/headset/distress/contractor
@@ -19,7 +19,7 @@
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
 	var/random_name
-	random_name = capitalize(pick(new_human.gender == MALE ? first_names_male : first_names_female)) + " " + capitalize(pick(last_names))
+	random_name = capitalize(pick(new_human.gender == MALE ? GLOB.first_names_male : GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))
 	new_human.change_real_name(new_human, random_name)
 	new_human.name = new_human.real_name
 	new_human.age = rand(22,45)
@@ -61,7 +61,7 @@
 
 /datum/equipment_preset/contractor/duty/standard
 	name = "Military Contractor (Standard)"
-	paygrade = "VAI"
+	paygrade = PAY_SHORT_VAI_S
 	role_comm_title = "Merc"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "VAIPO Mercenary"
@@ -87,7 +87,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/m15, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/m15, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular/response, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/smoke, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/MRE,WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical, WEAR_IN_BACK)
@@ -160,7 +160,7 @@
 
 /datum/equipment_preset/contractor/duty/heavy
 	name = "Military Contractor (Machinegunner)"
-	paygrade = "VAI-G"
+	paygrade = PAY_SHORT_VAI_G
 	role_comm_title = "MG"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -192,7 +192,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_R_STORE)
 	//backpack and stuff in it
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular/response, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/smoke, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/MRE,WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical, WEAR_IN_BACK)
@@ -205,7 +205,7 @@
 //*****************************************************************************************************/
 /datum/equipment_preset/contractor/duty/engi
 	name = "Military Contractor (Engineer)"
-	paygrade = "VAI-E"
+	paygrade = PAY_SHORT_VAI_E
 
 	role_comm_title = "Eng"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -217,7 +217,7 @@
 
 /datum/equipment_preset/contractor/duty/engi/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/w_br, WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest/tool_webbing, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/tool_webbing/equipped, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/holobadge/cord, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light/vest, WEAR_JACKET)
@@ -244,7 +244,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/large_stack, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/plasteel/large_stack, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/defenses/handheld/sentry/mini, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular/response, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/attachments(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/m15, WEAR_IN_BACK)
 
@@ -252,7 +252,7 @@
 
 /datum/equipment_preset/contractor/duty/medic
 	name = "Military Contractor (Medic)"
-	paygrade = "VAI-M"
+	paygrade = PAY_SHORT_VAI_M
 	role_comm_title = "Med"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -298,7 +298,7 @@
 
 /datum/equipment_preset/contractor/duty/leader
 	name = "Military Contractor (Leader)"
-	paygrade = "VAI-L"
+	paygrade = PAY_SHORT_VAI_L
 	role_comm_title = "TL"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -339,7 +339,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/m15, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/m15, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular/response, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/smoke, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717/hacked/contractor, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical, WEAR_IN_BACK)
@@ -348,7 +348,7 @@
 //*****************************************************************************************************/
 /datum/equipment_preset/contractor/duty/synth
 	name = "Military Contractor (Synthetic)"
-	paygrade = "VAI-S"
+	paygrade = PAY_SHORT_VAI_SN
 	role_comm_title = "Syn"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -367,9 +367,9 @@
 	A.randomize_appearance(new_human)
 	var/random_name
 	if(new_human.gender == MALE)
-		random_name = "[pick(first_names_male)]"
+		random_name = "[pick(GLOB.first_names_male)]"
 	else
-		random_name = "[pick(first_names_female)]"
+		random_name = "[pick(GLOB.first_names_female)]"
 
 	if(new_human.gender == MALE)
 		new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
@@ -439,7 +439,7 @@
 
 /datum/equipment_preset/contractor/covert/standard
 	name = "Military Contractor (Covert Standard)"
-	paygrade = "VAI"
+	paygrade = PAY_SHORT_VAI_S
 	role_comm_title = "Merc"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -468,7 +468,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/m15, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/m15, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular/response, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/smoke, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/MRE,WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical, WEAR_IN_BACK)
@@ -540,7 +540,7 @@
 
 /datum/equipment_preset/contractor/covert/heavy
 	name = "Military Contractor (Covert Machinegunner)"
-	paygrade = "VAI-G"
+	paygrade = PAY_SHORT_VAI_G
 	role_comm_title = "MG"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -574,7 +574,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_R_STORE)
 	//backpack and stuff in it
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular/response, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/smoke, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/MRE,WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical, WEAR_IN_BACK)
@@ -587,7 +587,7 @@
 //*****************************************************************************************************/
 /datum/equipment_preset/contractor/covert/engi
 	name = "Military Contractor (Covert Engineer)"
-	paygrade = "VAI-E"
+	paygrade = PAY_SHORT_VAI_E
 
 	role_comm_title = "Eng"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -599,7 +599,7 @@
 
 /datum/equipment_preset/contractor/covert/engi/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/wy_davisone, WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest/tool_webbing, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/tool_webbing/equipped, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/holobadge/cord, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light/vest, WEAR_JACKET)
@@ -627,7 +627,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/large_stack, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/plasteel/large_stack, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/defenses/handheld/sentry/mini, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular/response, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/attachments(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/m15, WEAR_IN_BACK)
 
@@ -635,7 +635,7 @@
 
 /datum/equipment_preset/contractor/covert/medic
 	name = "Military Contractor (Covert Medic)"
-	paygrade = "VAI-M"
+	paygrade = PAY_SHORT_VAI_M
 	role_comm_title = "Med"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -682,7 +682,7 @@
 
 /datum/equipment_preset/contractor/covert/leader
 	name = "Military Contractor (Covert Leader)"
-	paygrade = "VAI-L"
+	paygrade = PAY_SHORT_VAI_L
 	role_comm_title = "TL"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -724,7 +724,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/m15, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/m15, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular/response, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/smoke, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717/hacked/contractor, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical, WEAR_IN_BACK)
@@ -733,7 +733,7 @@
 //*****************************************************************************************************/
 /datum/equipment_preset/contractor/covert/synth
 	name = "Military Contractor (Covert Synthetic)"
-	paygrade = "VAI-S"
+	paygrade = PAY_SHORT_VAI_SN
 	role_comm_title = "Syn"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -753,9 +753,9 @@
 	A.randomize_appearance(new_human)
 	var/random_name
 	if(new_human.gender == MALE)
-		random_name = "[pick(first_names_male)]"
+		random_name = "[pick(GLOB.first_names_male)]"
 	else
-		random_name = "[pick(first_names_female)]"
+		random_name = "[pick(GLOB.first_names_female)]"
 
 	if(new_human.gender == MALE)
 		new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")

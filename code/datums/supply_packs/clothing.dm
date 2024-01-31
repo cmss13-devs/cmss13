@@ -113,7 +113,7 @@
 		/obj/item/clothing/under/rank/qm_suit,
 		/obj/item/clothing/under/marine/officer/bridge,
 		/obj/item/clothing/under/marine/officer/bridge,
-		/obj/item/clothing/under/marine/officer/exec,
+		/obj/item/clothing/under/marine/dress,
 		/obj/item/clothing/under/marine/officer/ce,
 	)
 	name = "officer outfit crate"

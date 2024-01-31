@@ -33,7 +33,7 @@
 	if(contents.len)
 		var/obj/item/book/choice = input("Which book would you like to remove from the shelf?") as null|obj in contents
 		if(choice)
-			if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !in_range(loc, usr))
+			if(usr.is_mob_incapacitated() || !in_range(loc, usr))
 				return
 			if(ishuman(user))
 				if(!user.get_active_hand())
@@ -58,8 +58,6 @@
 			contents_explosion(severity)
 			deconstruct(FALSE)
 			return
-		else
-	return
 
 /obj/structure/bookcase/update_icon()
 	if(contents.len < 5)
@@ -73,7 +71,6 @@
 
 /obj/structure/bookcase/manuals/medical/Initialize()
 	. = ..()
-	new /obj/item/book/manual/medical_cloning(src)
 	new /obj/item/book/manual/medical_diagnostics_manual(src)
 	new /obj/item/book/manual/medical_diagnostics_manual(src)
 	new /obj/item/book/manual/medical_diagnostics_manual(src)
@@ -86,11 +83,9 @@
 /obj/structure/bookcase/manuals/engineering/Initialize()
 	. = ..()
 	new /obj/item/book/manual/engineering_construction(src)
-	new /obj/item/book/manual/engineering_particle_accelerator(src)
 	new /obj/item/book/manual/engineering_hacking(src)
 	new /obj/item/book/manual/engineering_guide(src)
 	new /obj/item/book/manual/atmospipes(src)
-	new /obj/item/book/manual/engineering_singularity_safety(src)
 	new /obj/item/book/manual/evaguide(src)
 	update_icon()
 

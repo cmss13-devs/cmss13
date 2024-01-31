@@ -52,9 +52,6 @@
 			turfs += T
 	return turfs
 
-
-//var/debug_mob = 0
-
 // Will recursively loop through an atom's contents and check for mobs, then it will loop through every atom in that atom's contents.
 // It will keep doing this until it checks every content possible. This will fix any problems with mobs, that are inside objects,
 // being unable to hear people due to being in a box within a bag.
@@ -154,16 +151,6 @@
 	var/list/speaker_coverage = list()
 	for(var/obj/item/device/radio/R in radios)
 		if(R)
-			//Cyborg checks. Receiving message uses a bit of cyborg's charge.
-			var/obj/item/device/radio/borg/BR = R
-			if(istype(BR) && BR.myborg)
-				var/mob/living/silicon/robot/borg = BR.myborg
-				var/datum/robot_component/CO = borg.get_component("radio")
-				if(!CO)
-					continue //No radio component (Shouldn't happen)
-				if(!borg.is_component_functioning("radio") || !borg.cell_use_power(CO.active_usage))
-					continue //No power.
-
 			var/turf/speaker = get_turf(R)
 			if(speaker)
 				for(var/turf/T in hear(R.canhear_range,speaker))
@@ -294,6 +281,8 @@
 	if(sorted && length(candidates))
 		candidates = sort_list(candidates, GLOBAL_PROC_REF(cmp_obs_larvaqueuetime_asc))
 
+	GLOB.xeno_queue_candidate_count = length(candidates)
+
 	return candidates
 
 /**
@@ -309,11 +298,11 @@
 		var/mob/dead/observer/cur_obs = candidates[i]
 
 		// Generate the messages
-		var/cached_message = SPAN_XENONOTICE("You are currently [i-dequeued]\th in the larva queue.")
+		var/cached_message = "You are currently [i-dequeued]\th in the larva queue."
 		cur_obs.larva_queue_cached_message = cached_message
 		if(!cache_only)
 			var/chat_message = dequeued ? replacetext(cached_message, "currently", "now") : cached_message
-			to_chat(candidates[i], chat_message)
+			to_chat(candidates[i], SPAN_XENONOTICE(chat_message))
 
 /proc/convert_k2c(temp)
 	return ((temp - T0C))

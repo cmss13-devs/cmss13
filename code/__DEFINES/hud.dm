@@ -23,3 +23,5 @@
 #define NOTIFY_ATTACK "attack"
 #define NOTIFY_ORBIT "orbit"
 #define NOTIFY_JOIN_XENO "join_xeno"
+#define NOTIFY_XENO_TACMAP "xeno_tacmap"
+#define NOTIFY_USCM_TACMAP "uscm_tacmap"

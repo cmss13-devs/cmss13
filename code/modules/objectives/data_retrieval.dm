@@ -14,7 +14,7 @@
 
 /datum/cm_objective/retrieve_data/New()
 	. = ..()
-	decryption_password = "[pick(alphabet_uppercase)][rand(100,999)][pick(alphabet_uppercase)][rand(10,99)]"
+	decryption_password = "[pick(GLOB.alphabet_uppercase)][rand(100,999)][pick(GLOB.alphabet_uppercase)][rand(10,99)]"
 
 /datum/cm_objective/retrieve_data/pre_round_start()
 	SSobjectives.statistics["data_retrieval_total_instances"]++
@@ -177,6 +177,8 @@
 	var/datum/cm_objective/retrieve_item/document/retrieve_objective
 	var/display_color = "white"
 	var/disk_color = "White"
+	ground_offset_x = 9
+	ground_offset_y = 8
 
 /obj/item/disk/objective/Initialize(mapload, ...)
 	. = ..()
@@ -206,12 +208,10 @@
 			disk_color = "Bloodied blue"
 			display_color = "#5296e3"
 
-	label = "[pick(greek_letters)]-[rand(100,999)]"
+	label = "[pick(GLOB.greek_letters)]-[rand(100,999)]"
 	name = "[disk_color] computer disk [label]"
 	objective = new /datum/cm_objective/retrieve_data/disk(src)
 	retrieve_objective = new /datum/cm_objective/retrieve_item/document(src)
-	pixel_y = rand(-8, 8)
-	pixel_x = rand(-9, 9)
 	w_class = SIZE_TINY
 
 /obj/item/disk/objective/Destroy()
@@ -237,7 +237,7 @@
 
 /obj/structure/machinery/computer/objective/Initialize()
 	. = ..()
-	label = "[pick(greek_letters)]-[rand(100,999)]"
+	label = "[pick(GLOB.greek_letters)]-[rand(100,999)]"
 	name = "data terminal [label]"
 	objective = new /datum/cm_objective/retrieve_data/terminal(src)
 

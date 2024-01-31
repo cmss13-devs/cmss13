@@ -14,8 +14,7 @@ CHANGING ICONS
 
 Several new procs have been added to the /icon datum to simplify working with icons. To use them,
 remember you first need to setup an /icon var like so:
-
-var/icon/my_icon = new('iconfile.dmi')
+	var/icon/my_icon = new('iconfile.dmi')
 
 icon/ChangeOpacity(amount = 1)
 	A very common operation in DM is to try to make an icon more or less transparent. Making an icon more
@@ -35,7 +34,7 @@ icon/MinColors(icon)
 icon/MaxColors(icon)
 	The icon is blended with a second icon where the maximum of each RGB pixel is the result.
 	Opacity may increase, as if the icons were blended with ICON_OR. You may supply a color in place of an icon.
-icon/Opaque(background = "#000000")
+icon/Opaque(background = COLOR_BLACK)
 	All alpha values are set to 255 throughout the icon. Transparent pixels become black, or whatever background color you specify.
 icon/BecomeAlphaMask()
 	You can convert a simple grayscale icon into an alpha mask to use with other icons very easily with this proc.
@@ -247,7 +246,7 @@ world
 
 /icon/proc/AddAlphaMask(mask)
 	var/icon/M = new(mask)
-	M.Blend("#ffffff", ICON_SUBTRACT)
+	M.Blend(COLOR_WHITE, ICON_SUBTRACT)
 	// apply mask
 	Blend(M, ICON_ADD)
 
@@ -329,7 +328,8 @@ world
 /// appearance system (overlays/underlays, etc.) is not available.
 ///
 /// Only the first argument is required.
-/proc/getFlatIcon(image/appearance, defdir, deficon, defstate, defblend, start = TRUE, no_anim = FALSE)
+/// appearance_flags indicates whether appearance_flags should be respected (at the cost of about 10-20% perf)
+/proc/getFlatIcon(image/appearance, defdir, deficon, defstate, defblend, start = TRUE, no_anim = FALSE, appearance_flags = FALSE)
 	// Loop through the underlays, then overlays, sorting them into the layers list
 	#define PROCESS_OVERLAYS_OR_UNDERLAYS(flat, process, base_layer) \
 		for (var/i in 1 to process.len) { \
@@ -435,11 +435,21 @@ world
 			if(layer_image.alpha == 0)
 				continue
 
+			// variables only relevant when accounting for appearance_flags:
+			var/apply_color = TRUE
+			var/apply_alpha = TRUE
+
 			if(layer_image == copy) // 'layer_image' is an /image based on the object being flattened.
 				curblend = BLEND_OVERLAY
 				add = icon(layer_image.icon, layer_image.icon_state, base_icon_dir)
 			else // 'I' is an appearance object.
-				add = getFlatIcon(image(layer_image), curdir, curicon, curstate, curblend, FALSE, no_anim)
+				var/image/layer_as_image = image(layer_image)
+				if(appearance_flags)
+					if(layer_as_image.appearance_flags & RESET_COLOR)
+						apply_color = FALSE
+					if(layer_as_image.appearance_flags & RESET_ALPHA)
+						apply_alpha = FALSE
+				add = getFlatIcon(layer_as_image, curdir, curicon, curstate, curblend, FALSE, no_anim, appearance_flags)
 			if(!add)
 				continue
 
@@ -451,9 +461,9 @@ world
 
 			if (
 				addX1 != flatX1 \
-				&& addX2 != flatX2 \
-				&& addY1 != flatY1 \
-				&& addY2 != flatY2 \
+				|| addX2 != flatX2 \
+				|| addY1 != flatY1 \
+				|| addY2 != flatY2 \
 			)
 				// Resize the flattened icon so the new icon fits
 				flat.Crop(
@@ -464,21 +474,34 @@ world
 				)
 
 				flatX1 = addX1
-				flatX2 = addY1
-				flatY1 = addX2
+				flatX2 = addX2
+				flatY1 = addY1
 				flatY2 = addY2
+
+			if(appearance_flags)
+				// apply parent's color/alpha to the added layers if the layer didn't opt
+				if(apply_color && appearance.color)
+					if(islist(appearance.color))
+						add.MapColors(arglist(appearance.color))
+					else
+						add.Blend(appearance.color, ICON_MULTIPLY)
+
+				if(apply_alpha && appearance.alpha < 255)
+					add.Blend(rgb(255, 255, 255, appearance.alpha), ICON_MULTIPLY)
 
 			// Blend the overlay into the flattened icon
 			flat.Blend(add, blendMode2iconMode(curblend), layer_image.pixel_x + 2 - flatX1, layer_image.pixel_y + 2 - flatY1)
 
-		if(appearance.color)
-			if(islist(appearance.color))
-				flat.MapColors(arglist(appearance.color))
-			else
-				flat.Blend(appearance.color, ICON_MULTIPLY)
+		if(!appearance_flags)
+			// If we didn't apply parent colors individually per layer respecting appearance_flags, then do it just the one time now
+			if(appearance.color)
+				if(islist(appearance.color))
+					flat.MapColors(arglist(appearance.color))
+				else
+					flat.Blend(appearance.color, ICON_MULTIPLY)
 
-		if(appearance.alpha < 255)
-			flat.Blend(rgb(255, 255, 255, appearance.alpha), ICON_MULTIPLY)
+			if(appearance.alpha < 255)
+				flat.Blend(rgb(255, 255, 255, appearance.alpha), ICON_MULTIPLY)
 
 		if(no_anim)
 			//Clean up repeated frames
@@ -521,13 +544,13 @@ world
 	return flat_icon
 
 /proc/adjust_brightness(color, value)
-	if (!color) return "#FFFFFF"
+	if (!color) return COLOR_WHITE
 	if (!value) return color
 
 	var/list/RGB = ReadRGB(color)
-	RGB[1] = Clamp(RGB[1]+value,0,255)
-	RGB[2] = Clamp(RGB[2]+value,0,255)
-	RGB[3] = Clamp(RGB[3]+value,0,255)
+	RGB[1] = clamp(RGB[1]+value,0,255)
+	RGB[2] = clamp(RGB[2]+value,0,255)
+	RGB[3] = clamp(RGB[3]+value,0,255)
 	return rgb(RGB[1],RGB[2],RGB[3])
 
 /proc/sort_atoms_by_layer(list/atoms)
@@ -558,7 +581,7 @@ world
 	if(A)
 		A.overlays.Remove(src)
 
-/mob/proc/flick_heal_overlay(time, color = "#00FF00") //used for warden and queen healing
+/mob/proc/flick_heal_overlay(time, color = COLOR_GREEN) //used for warden and queen healing
 	var/image/I = image('icons/mob/mob.dmi', src, "heal_overlay")
 	switch(icon_size)
 		if(48)
@@ -658,8 +681,9 @@ world
  * * moving - whether or not to use a moving state for the given icon
  * * sourceonly - if TRUE, only generate the asset and send back the asset url, instead of tags that display the icon to players
  * * extra_clases - string of extra css classes to use when returning the icon string
+ * * keyonly - if TRUE, only returns the asset key to use get_asset_url manually. Overrides sourceonly.
  */
-/proc/icon2html(atom/thing, client/target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE, extra_classes = null)
+/proc/icon2html(atom/thing, client/target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE, extra_classes = null, keyonly = FALSE)
 	if (!thing)
 		return
 
@@ -690,6 +714,8 @@ world
 				SSassets.transport.register_asset(name, thing)
 			for (var/thing2 in targets)
 				SSassets.transport.send_assets(thing2, name)
+			if(keyonly)
+				return name
 			if(sourceonly)
 				return SSassets.transport.get_asset_url(name)
 			return "<img class='[extra_classes] icon icon-misc' src='[SSassets.transport.get_asset_url(name)]'>"
@@ -708,11 +734,12 @@ world
 		if (isnull(dir))
 			dir = thing.dir
 
-		if (ishuman(thing)) // Shitty workaround for a BYOND issue.
+		// Commented out because this is seemingly our source of bad icon operations
+		/* if (ishuman(thing)) // Shitty workaround for a BYOND issue.
 			var/icon/temp = icon2collapse
 			icon2collapse = icon()
 			icon2collapse.Insert(temp, dir = SOUTH)
-			dir = SOUTH
+			dir = SOUTH*/
 	else
 		if (isnull(dir))
 			dir = SOUTH
@@ -731,6 +758,8 @@ world
 		SSassets.transport.register_asset(key, rsc_ref, file_hash, icon_path)
 	for (var/client_target in targets)
 		SSassets.transport.send_assets(client_target, key)
+	if(keyonly)
+		return key
 	if(sourceonly)
 		return SSassets.transport.get_asset_url(key)
 	return "<img class='[extra_classes] icon icon-[icon_state]' src='[SSassets.transport.get_asset_url(key)]'>"
@@ -852,22 +881,93 @@ world
 	return image_to_center
 
 //For creating consistent icons for human looking simple animals
-/proc/get_flat_human_icon(icon_id, datum/equipment_preset/preset, datum/preferences/prefs, dummy_key, showDirs = GLOB.cardinals, outfit_override)
+/proc/get_flat_human_icon(icon_id, equipment_preset_dresscode, datum/preferences/prefs, dummy_key, showDirs = GLOB.cardinals, outfit_override)
 	var/static/list/humanoid_icon_cache = list()
 	if(!icon_id || !humanoid_icon_cache[icon_id])
 		var/mob/living/carbon/human/dummy/body = generate_or_wait_for_human_dummy(dummy_key)
+
 		if(prefs)
 			prefs.copy_all_to(body)
-		arm_equipment(body, preset)
+			body.update_body()
+			body.update_hair()
+
+		// Assumption: Is a list
+		if(outfit_override)
+			for(var/obj/item/cur_item as anything in outfit_override)
+				body.equip_to_appropriate_slot(cur_item)
+
+		// Assumption: Is a string or path
+		if(equipment_preset_dresscode)
+			arm_equipment(body, equipment_preset_dresscode)
 
 		var/icon/out_icon = icon('icons/effects/effects.dmi', "nothing")
-		for(var/D in showDirs)
-			body.setDir(D)
+		for(var/dir in showDirs)
+			body.setDir(dir)
 			var/icon/partial = getFlatIcon(body)
-			out_icon.Insert(partial, dir = D)
+			out_icon.Insert(partial, dir = dir)
 
 		humanoid_icon_cache[icon_id] = out_icon
 		dummy_key ? unset_busy_human_dummy(dummy_key) : qdel(body)
 		return out_icon
 	else
 		return humanoid_icon_cache[icon_id]
+
+/proc/get_flat_human_copy_icon(mob/living/carbon/human/original, equipment_preset_dresscode, showDirs = GLOB.cardinals, outfit_override)
+	var/mob/living/carbon/human/dummy/body = generate_or_wait_for_human_dummy(null)
+
+	if(original)
+		// From /datum/preferences/proc/copy_appearance_to
+		body.age = original.age
+		body.gender = original.gender
+		body.ethnicity = original.ethnicity
+		body.body_type = original.body_type
+
+		body.r_eyes = original.r_eyes
+		body.g_eyes = original.g_eyes
+		body.b_eyes = original.b_eyes
+
+		body.r_hair = original.r_hair
+		body.g_hair = original.g_hair
+		body.b_hair = original.b_hair
+
+		body.r_gradient = original.r_gradient
+		body.g_gradient = original.g_gradient
+		body.b_gradient = original.b_gradient
+		body.grad_style = original.grad_style
+
+		body.r_facial = original.r_facial
+		body.g_facial = original.g_facial
+		body.b_facial = original.b_facial
+
+		body.r_skin = original.r_skin
+		body.g_skin = original.g_skin
+		body.b_skin = original.b_skin
+
+		body.h_style = original.h_style
+		body.f_style = original.f_style
+
+		body.underwear = original.underwear
+		body.undershirt = original.undershirt
+
+		body.update_body()
+		body.update_hair()
+
+	// Assumption: Is a list
+	if(outfit_override)
+		for(var/obj/item/cur_item as anything in outfit_override)
+			body.equip_to_appropriate_slot(cur_item)
+
+	// Assumption: Is a string or path
+	if(equipment_preset_dresscode)
+		arm_equipment(body, equipment_preset_dresscode)
+
+	var/icon/out_icon = icon('icons/effects/effects.dmi', "nothing")
+	for(var/dir in showDirs)
+		body.setDir(dir)
+		var/icon/partial = getFlatIcon(body)
+		out_icon.Insert(partial, dir = dir)
+
+	// log_debug("get_flat_human_copy_icon called on ref=[REF(original)], instance=[original], type=[original.type], with [length(original.overlays)] overlays reduced to [length(body.overlays)] overlays")
+
+	qdel(body)
+	return out_icon

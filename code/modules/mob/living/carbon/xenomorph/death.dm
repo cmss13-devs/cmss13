@@ -26,7 +26,7 @@
 			hud_used.alien_plasma_display.icon_state = "power_display_empty"
 		update_icons()
 
-	if(!is_admin_level(z)) //so xeno players don't get death messages from admin tests
+	if(!should_block_game_interaction(src)) //so xeno players don't get death messages from admin tests
 		if(isqueen(src))
 			var/mob/living/carbon/xenomorph/queen/XQ = src
 			playsound(loc, 'sound/voice/alien_queen_died.ogg', 75, 0)
@@ -109,23 +109,22 @@
 
 	if(hardcore)
 		QDEL_IN(src, 3 SECONDS)
-	//else if(!gibbed)  // At the moment we only support humans
-		//AddComponent(/datum/component/weed_food)
+	else if(!gibbed)
+		AddComponent(/datum/component/weed_food)
 
 	if(hive)
 		hive.remove_xeno(src)
 		// Finding the last xeno for anti-delay.
 		if(SSticker.mode && SSticker.current_state != GAME_STATE_FINISHED)
-			if((last_ares_callout + 2 MINUTES) > world.time)
+			if((GLOB.last_ares_callout + 2 MINUTES) > world.time)
 				return
 			if(hive.hivenumber == XENO_HIVE_NORMAL && (LAZYLEN(hive.totalXenos) == 1))
 				var/mob/living/carbon/xenomorph/X = LAZYACCESS(hive.totalXenos, 1)
-				last_ares_callout = world.time
+				GLOB.last_ares_callout = world.time
 				// Tell the marines where the last one is.
 				var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
 				var/input = "Bioscan complete.\n\nSensors indicate one remaining unknown lifeform signature in [get_area(X)]."
-				var/datum/ares_link/link = GLOB.ares_link
-				link.log_ares_bioscan(name, input)
+				log_ares_bioscan(name, input)
 				marine_announcement(input, name, 'sound/AI/bioscan.ogg', logging = ARES_LOG_NONE)
 				// Tell the xeno she is the last one.
 				if(X.client)
@@ -133,6 +132,7 @@
 				notify_ghosts(header = "Last Xenomorph", message = "There is only one Xenomorph left: [X.name].", source = X, action = NOTIFY_ORBIT)
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_DEATH, src, gibbed)
+	give_action(src, /datum/action/ghost/xeno)
 
 /mob/living/carbon/xenomorph/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	var/obj/effect/decal/remains/xeno/remains = new(get_turf(src))

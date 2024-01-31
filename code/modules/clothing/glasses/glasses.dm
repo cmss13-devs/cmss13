@@ -68,7 +68,7 @@
 			update_clothing_icon()
 
 			if(hud_type)
-				var/datum/mob_hud/MH = huds[hud_type]
+				var/datum/mob_hud/MH = GLOB.huds[hud_type]
 				if(active)
 					MH.add_hud_to(H, src)
 					playsound(H, 'sound/handling/hud_on.ogg', 25, 1)
@@ -87,6 +87,36 @@
 		if(istype(A, /datum/action/item_action/toggle))
 			A.update_button_icon()
 
+/obj/item/clothing/glasses/proc/try_make_offhand_prescription(mob/user)
+	if(!prescription)
+		return FALSE
+
+	var/obj/item/clothing/glasses/offhand = user.get_inactive_hand()
+	if(istype(offhand) && !offhand.prescription)
+		if(tgui_alert(user, "Do you wish to take out the prescription lenses and put them in [offhand]?", "Insert Prescription Lenses", list("Yes", "No")) == "Yes")
+			if(QDELETED(src) || offhand != user.get_inactive_hand())
+				return FALSE
+			offhand.prescription = TRUE
+			offhand.AddElement(/datum/element/poor_eyesight_correction)
+			offhand.desc += " Fitted with prescription lenses."
+			user.visible_message(SPAN_DANGER("[user] takes the lenses out of [src] and puts them in [offhand]."), SPAN_NOTICE("You take the lenses out of [src] and put them in [offhand]."))
+			qdel(src)
+			return TRUE
+
+	return FALSE
+
+/obj/item/clothing/glasses/sunglasses/prescription/attack_self(mob/user)
+	if(try_make_offhand_prescription(user))
+		return
+
+	return ..()
+
+/obj/item/clothing/glasses/regular/attack_self(mob/user)
+	if(try_make_offhand_prescription(user))
+		return
+
+	return ..()
+
 /obj/item/clothing/glasses/equipped(mob/user, slot)
 	if(active && slot == WEAR_EYES)
 		if(!can_use_active_effect(user))
@@ -94,7 +124,7 @@
 			to_chat(user, SPAN_WARNING("You have no idea what any of the data means and power it off before it makes you nauseated."))
 
 		else if(hud_type)
-			var/datum/mob_hud/MH = huds[hud_type]
+			var/datum/mob_hud/MH = GLOB.huds[hud_type]
 			MH.add_hud_to(user, src)
 	user.update_sight()
 	..()
@@ -102,7 +132,7 @@
 /obj/item/clothing/glasses/dropped(mob/living/carbon/human/user)
 	if(hud_type && active && istype(user))
 		if(src == user.glasses) //dropped is called before the inventory reference is updated.
-			var/datum/mob_hud/H = huds[hud_type]
+			var/datum/mob_hud/H = GLOB.huds[hud_type]
 			H.remove_hud_from(user, src)
 			user.glasses = null
 			user.update_inv_glasses()
@@ -142,7 +172,7 @@
 
 /obj/item/clothing/glasses/science/prescription
 	name = "prescription reagent scanner HUD goggles"
-	desc = "These goggles are probably of use to someone who isn't holding a rifle and actively seeking to lower their combat life expectancy. Contains prescription lenses." 
+	desc = "These goggles are probably of use to someone who isn't holding a rifle and actively seeking to lower their combat life expectancy. Contains prescription lenses."
 	prescription = TRUE
 
 /obj/item/clothing/glasses/science/get_examine_text(mob/user)
@@ -225,7 +255,7 @@
 	desc = "The Corps may call them Regulation Prescription Glasses but you know them as Rut Prevention Glasses. These ones actually have a proper prescribed lens."
 	icon_state = "mBCG"
 	item_state = "mBCG"
-	prescription = 1
+	prescription = TRUE
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/m42_goggles
@@ -311,7 +341,7 @@
 /obj/item/clothing/glasses/disco_fever/proc/apply_discovision(mob/user)
 	//Caramelldansen HUD overlay.
 	//Use of this filter in armed conflict is in direct contravention of the Geneva Suggestions (2120 revision)
-	//Colours are based on a bit of the music video. Original version was a rainbow with #c20000 and #db6c03 as well.
+	//Colors are based on a bit of the music video. Original version was a rainbow with #c20000 and #db6c03 as well.
 
 	//Animate the obj and onmob in sync with the client.
 	for(var/I in list(obj_glass_overlay, mob_glass_overlay))
@@ -331,35 +361,35 @@
 	if(!user.client) //Shouldn't happen but can't hurt to check.
 		return
 
-	var/base_colour
+	var/base_colors
 	if(!user.client.color) //No set client color.
-		base_colour = color_matrix_saturation(1.35) //Crank up the saturation and get ready to party.
+		base_colors = color_matrix_saturation(1.35) //Crank up the saturation and get ready to party.
 	else if(istext(user.client.color)) //Hex color string.
-		base_colour = color_matrix_multiply(color_matrix_from_string(user.client.color), color_matrix_saturation(1.35))
-	else //Colour matrix.
-		base_colour = color_matrix_multiply(user.client.color, color_matrix_saturation(1.35))
+		base_colors = color_matrix_multiply(color_matrix_from_string(user.client.color), color_matrix_saturation(1.35))
+	else //Color matrix.
+		base_colors = color_matrix_multiply(user.client.color, color_matrix_saturation(1.35))
 
 	var/list/colours = list(
-		"yellow" = color_matrix_multiply(base_colour, color_matrix_from_string("#d4c218")),
-		"green" = color_matrix_multiply(base_colour, color_matrix_from_string("#2dc404")),
-		"cyan" = color_matrix_multiply(base_colour, color_matrix_from_string("#2ac1db")),
-		"blue" = color_matrix_multiply(base_colour, color_matrix_from_string("#005BF7")),
-		"indigo" = color_matrix_multiply(base_colour, color_matrix_from_string("#b929f7"))
+		"yellow" = color_matrix_multiply(base_colors, color_matrix_from_string("#d4c218")),
+		"green" = color_matrix_multiply(base_colors, color_matrix_from_string("#2dc404")),
+		"cyan" = color_matrix_multiply(base_colors, color_matrix_from_string("#2ac1db")),
+		"blue" = color_matrix_multiply(base_colors, color_matrix_from_string("#005BF7")),
+		"indigo" = color_matrix_multiply(base_colors, color_matrix_from_string("#b929f7"))
 		)
 
 	//Animate the victim's client.
 	animate(user.client, color = colours["indigo"], time = 0.3 SECONDS, loop = -1)
-	animate(color = base_colour, time = 0.3 SECONDS)
+	animate(color = base_colors, time = 0.3 SECONDS)
 	animate(color = colours["cyan"], time = 0.3 SECONDS)
-	animate(color = base_colour, time = 0.3 SECONDS)
+	animate(color = base_colors, time = 0.3 SECONDS)
 	animate(color = colours["yellow"], time = 0.3 SECONDS)
-	animate(color = base_colour, time = 0.3 SECONDS)
+	animate(color = base_colors, time = 0.3 SECONDS)
 	animate(color = colours["green"], time = 0.3 SECONDS)
-	animate(color = base_colour, time = 0.3 SECONDS)
+	animate(color = base_colors, time = 0.3 SECONDS)
 	animate(color = colours["blue"], time = 0.3 SECONDS)
-	animate(color = base_colour, time = 0.3 SECONDS)
+	animate(color = base_colors, time = 0.3 SECONDS)
 	animate(color = colours["yellow"], time = 0.3 SECONDS)
-	animate(color = base_colour, time = 0.3 SECONDS)
+	animate(color = base_colors, time = 0.3 SECONDS)
 
 /obj/item/clothing/glasses/disco_fever/dropped(mob/living/carbon/human/user)
 	. = ..()
@@ -404,12 +434,43 @@
 	active_icon_state = "mgogglesblk_down"
 	inactive_icon_state = "mgogglesblk"
 
+/obj/item/clothing/glasses/mgoggles/black/prescription
+	name = "prescription black marine ballistic goggles"
+	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has black tinted lenses. ntop of that, these ones contain prescription lenses."
+	icon_state = "mgogglesblk"
+	active_icon_state = "mgogglesblk_down"
+	inactive_icon_state = "mgogglesblk"
+	prescription = TRUE
+
 /obj/item/clothing/glasses/mgoggles/orange
 	name = "orange marine ballistic goggles"
 	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has amber colored day lenses."
 	icon_state = "mgogglesorg"
 	active_icon_state = "mgogglesorg_down"
 	inactive_icon_state = "mgogglesorg"
+
+/obj/item/clothing/glasses/mgoggles/orange/prescription
+	name = "prescription orange marine ballistic goggles"
+	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has amber colored day lenses."
+	icon_state = "mgogglesorg"
+	active_icon_state = "mgogglesorg_down"
+	inactive_icon_state = "mgogglesorg"
+	prescription = TRUE
+
+/obj/item/clothing/glasses/mgoggles/v2
+	name = "M1A1 marine ballistic goggles"
+	desc = "Newer issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This version has larger lenses."
+	icon_state = "mgoggles2"
+	active_icon_state = "mgoggles2_down"
+	inactive_icon_state = "mgoggles2"
+
+/obj/item/clothing/glasses/mgoggles/v2/prescription
+	name = "prescription M1A1 marine ballistic goggles"
+	desc = "Newer issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This version has larger lenses."
+	icon_state = "mgoggles2"
+	active_icon_state = "mgoggles2_down"
+	inactive_icon_state = "mgoggles2"
+	prescription = TRUE
 
 /obj/item/clothing/glasses/mgoggles/on_enter_storage(obj/item/storage/internal/S)
 	..()
@@ -500,38 +561,40 @@
 	set name = "Adjust welding goggles"
 	set src in usr
 
-	if(usr.canmove && !usr.stat && !usr.is_mob_restrained())
-		if(active)
-			active = 0
-			vision_impair = vision_impair_off
-			flags_inventory &= ~COVEREYES
-			flags_inv_hide &= ~HIDEEYES
-			flags_armor_protection &= ~BODY_FLAG_EYES
-			update_icon()
-			eye_protection = EYE_PROTECTION_NONE
-			to_chat(usr, "You push [src] up out of your face.")
-		else
-			active = 1
-			vision_impair = vision_impair_on
-			flags_inventory |= COVEREYES
-			flags_inv_hide |= HIDEEYES
-			flags_armor_protection |= BODY_FLAG_EYES
-			update_icon()
-			eye_protection = initial(eye_protection)
-			to_chat(usr, "You flip [src] down to protect your eyes.")
+	if(usr.is_mob_incapacitated())
+		return
+
+	if(active)
+		active = 0
+		vision_impair = vision_impair_off
+		flags_inventory &= ~COVEREYES
+		flags_inv_hide &= ~HIDEEYES
+		flags_armor_protection &= ~BODY_FLAG_EYES
+		update_icon()
+		eye_protection = EYE_PROTECTION_NONE
+		to_chat(usr, "You push [src] up out of your face.")
+	else
+		active = 1
+		vision_impair = vision_impair_on
+		flags_inventory |= COVEREYES
+		flags_inv_hide |= HIDEEYES
+		flags_armor_protection |= BODY_FLAG_EYES
+		update_icon()
+		eye_protection = initial(eye_protection)
+		to_chat(usr, "You flip [src] down to protect your eyes.")
 
 
-		if(ishuman(loc))
-			var/mob/living/carbon/human/H = loc
-			if(H.glasses == src)
-				H.update_tint()
+	if(ishuman(loc))
+		var/mob/living/carbon/human/H = loc
+		if(H.glasses == src)
+			H.update_tint()
 
-		update_clothing_icon()
+	update_clothing_icon()
 
-		for(var/X in actions)
-			var/datum/action/A = X
-			if(istype(A, /datum/action/item_action/toggle))
-				A.update_button_icon()
+	for(var/X in actions)
+		var/datum/action/A = X
+		if(istype(A, /datum/action/item_action/toggle))
+			A.update_button_icon()
 
 /obj/item/clothing/glasses/welding/superior
 	name = "superior welding goggles"
@@ -542,6 +605,12 @@
 	vision_impair_on = VISION_IMPAIR_WEAK
 	vision_impair_off = VISION_IMPAIR_NONE
 
+/obj/item/clothing/glasses/welding/superior/alt
+	desc = "Welding goggles made from more expensive materials."
+
+/obj/item/clothing/glasses/welding/superior/prescription
+	desc = "Welding goggles made from more expensive materials. There are barely visible prescription lenses connected to the frame, allowing vision even when the goggles are raised."
+	prescription = TRUE
 //sunglasses
 
 /obj/item/clothing/glasses/sunglasses

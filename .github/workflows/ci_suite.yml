@@ -60,6 +60,34 @@ jobs:
         with:
           outputFile: output-annotations.txt
 
+
+  odlint:
+    name: Lint with OpenDream
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+      - name: Get OpenDream Version
+        run: |
+          source dependencies.sh
+          echo "OPENDREAM_VERSION=$OPENDREAM_VERSION" >> $GITHUB_ENV
+      - name: Restore OpenDream cache
+        uses: actions/cache@v3
+        id: cache-od
+        with:
+          path: ~/OpenDream
+          key: ${{ runner.os }}-opendream-${{ env.OPENDREAM_VERSION }}
+      - name: Download OpenDream
+        if: steps.cache-od.outputs.cache-hit != 'true'
+        run: |
+          bash tools/ci/download_od.sh
+      - name: Setup OpenDream
+        if: steps.cache-od.outputs.cache-hit != 'true'
+        run: |
+          bash tools/ci/setup_od.sh
+      - name: Run OpenDream
+        run: |
+          bash tools/ci/run_od.sh
+
   compile_all_maps:
     if: "!contains(github.event.head_commit.message, '[ci skip]')"
     name: Compile Maps

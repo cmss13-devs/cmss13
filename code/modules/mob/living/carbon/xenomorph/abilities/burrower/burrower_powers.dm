@@ -66,11 +66,6 @@
 
 /mob/living/carbon/xenomorph/proc/burrow_off()
 
-	var/area/current_area = get_area(current_turf)
-	if(current_area.flags_area & AREA_NOTUNNEL)
-		to_chat(src, SPAN_XENOWARNING("There's no way to surface here!"))
-		return
-
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
 		caste = GLOB.xeno_datum_list[caste_type]
 	to_chat(src, SPAN_NOTICE("You resurface."))
@@ -106,6 +101,11 @@
 
 /mob/living/carbon/xenomorph/proc/tunnel(turf/T)
 	if(!check_state())
+		return
+
+	var/area/current_area = get_area(T)
+	if(current_area.flags_area & AREA_NOTUNNEL)
+		to_chat(src, SPAN_XENOWARNING("There's no way to surface here!!"))
 		return
 
 	if(!burrow)

@@ -26,7 +26,7 @@
 /obj/structure/barricade/deployable/attackby(obj/item/item, mob/user)
 
 	if(iswelder(item))
-		attackby_welder(item, user)// the idea is to replace a bunch of repetitive task with a prop
+		attackby_welder(item, user)
 
 		var/obj/item/tool/weldingtool/welder = item
 		weld_cade(welder, user)

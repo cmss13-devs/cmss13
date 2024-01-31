@@ -46,7 +46,7 @@
 
 /obj/structure/barricade/metal/attackby(obj/item/item, mob/user)
 	if(iswelder(item))
-		attackby_welder(item, user)// the idea is to replace a bunch of repetitive task with a prop
+		attackby_welder(item, user)
 
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You're not trained to repair [src]..."))

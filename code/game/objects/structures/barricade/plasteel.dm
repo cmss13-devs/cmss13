@@ -20,8 +20,10 @@
 	repair_materials = list("plasteel" = 0.3)
 
 	var/build_state = BARRICADE_BSTATE_SECURED //Look at __game.dm for barricade defines
-	var/tool_cooldown = 0 //Delay to apply tools to prevent spamming
-	var/busy = FALSE //Standard busy check
+	/// Delay to apply tools to prevent spamming
+	var/tool_cooldown = 0
+	/// Standard busy check
+	var/busy = FALSE
 	var/linked = 0
 	var/recentlyflipped = FALSE
 	var/hasconnectionoverlay = TRUE
@@ -65,7 +67,7 @@
 
 /obj/structure/barricade/plasteel/attackby(obj/item/item, mob/user)
 	if(iswelder(item))
-		attackby_welder(item, user)// the idea is to replace a bunch of repetitive test that return.
+		attackby_welder(item, user)
 
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You're not trained to repair [src]..."))

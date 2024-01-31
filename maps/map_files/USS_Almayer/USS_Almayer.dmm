@@ -49890,7 +49890,7 @@
 "mza" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 2;
-	id = "firearm_storage_armory";
+	id = "bot_armory";
 	name = "\improper Armory Shutters"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{

@@ -1,0 +1,5 @@
+author: "BadAtThisGame302, AmoryBlaine"
+delete-after: True
+changes:
+  - rscadd: "Added new brown laceups, adds new ties and tweaks current ones, as well as new suit, bomber, vest, and corporate clothes to the game. Sprites by AmoryBlaine."
+  - imageadd: "added six new Corporate clothes sprites (Casual/Ivy/Formal/Black/Brown/Blue), three suit vest sprites (Brown/Tan/Grey), three bomber jacket sprites (Khaki/Red/Grey), and five suit jacket sprites (Khaki/Formal/Black/Brown/Blue)."

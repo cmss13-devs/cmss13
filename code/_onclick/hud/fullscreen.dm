@@ -212,13 +212,13 @@
 /atom/movable/screen/fullscreen/lighting_backdrop/lit_secondary
 	invisibility = INVISIBILITY_LIGHTING
 	layer = BACKGROUND_LAYER + LIGHTING_PRIMARY_DIMMER_LAYER
-	color = "#000"
+	color = COLOR_BLACK
 	alpha = 60
 
 /atom/movable/screen/fullscreen/lighting_backdrop/backplane
 	invisibility = INVISIBILITY_LIGHTING
 	layer = LIGHTING_BACKPLANE_LAYER
-	color = "#000"
+	color = COLOR_BLACK
 	blend_mode = BLEND_ADD
 
 /atom/movable/screen/fullscreen/see_through_darkness

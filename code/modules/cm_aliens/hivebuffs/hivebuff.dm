@@ -16,6 +16,10 @@ GLOBAL_LIST_INIT(all_hivebuffs, list(/datum/hivebuff/extra_larva))
 /datum/hivebuff
 	/// Timer id to call on_cease() if neccessary to end the effects.
 	var/_timer_id
+	/// The hive that this buff is applied to.
+	var/datum/hive_status/hive
+	/// The pylon sustaining this hive buff
+	var/obj/effect/alien/resin/special/pylon/sustained_pylon
 	///Name of the buff, short and to the point
 	var/name = "Hivebuff"
 	/// Description of what the buff does.
@@ -28,8 +32,6 @@ GLOBAL_LIST_INIT(all_hivebuffs, list(/datum/hivebuff/extra_larva))
 
 	/// Minor or Major buff.
 	var/tier = HIVEBUFF_TIER_MINOR
-	/// The hive that this buff is applied to.
-	var/datum/hive_status/hive
 
 
 	///If this buff can be used with others
@@ -57,6 +59,17 @@ GLOBAL_LIST_INIT(all_hivebuffs, list(/datum/hivebuff/extra_larva))
 	hive = null
 	. = ..()
 
+/// If the pylon sustaining this hive buff is destroyed for any reason
+/datum/hivebuff/proc/_on_inturrupt(obj/effect/alien/resin/special/pylon/sustained_pylon)
+	SIGNAL_HANDLER
+	if(_timer_id)
+		deltimer(_timer_id)
+	announce_buff_loss(sustained_pylon)
+	qdel(src)
+
+/datum/hivebuff/proc/announce_buff_loss(obj/effect/alien/resin/special/pylon/sustained_pylon)
+	xeno_announcement("Our pylon at [sustained_pylon.loc] has been destroyed!! Our hive buff [name] has waned!", hive.hivenumber, "Hive Buff Wanes!")
+
 ///Wrapper for on_engage(), handles adding buff to the active_hivebuffs and used_hivebuffs for the hive.
 /datum/hivebuff/proc/_on_engage()
 	if(!on_engage())
@@ -67,9 +80,7 @@ GLOBAL_LIST_INIT(all_hivebuffs, list(/datum/hivebuff/extra_larva))
 
 	announce_buff_engage()
 
-	if(!duration)
-		on_cease()
-	else
+	if(duration)
 		_timer_id = addtimer(CALLBACK(src, PROC_REF(_on_cease)), duration)
 	return TRUE
 
@@ -96,7 +107,7 @@ GLOBAL_LIST_INIT(all_hivebuffs, list(/datum/hivebuff/extra_larva))
 	for(var/mob/xenomorph as anything in hive.totalXenos)
 		if(!xenomorph.client)
 			return
-		xenomorph.play_screen_text(engage_flavourmessage, override_color = "#4e0044")
+		xenomorph.play_screen_text(engage_flavourmessage, override_color = "#740064")
 		if(tier <= HIVEBUFF_TIER_MINOR)
 			to_chat(xenomorph, SPAN_XENO(engage_flavourmessage))
 
@@ -104,7 +115,7 @@ GLOBAL_LIST_INIT(all_hivebuffs, list(/datum/hivebuff/extra_larva))
 	for(var/mob/living/xenomorph as anything in hive.totalXenos)
 		if(!xenomorph.client)
 			return
-		xenomorph.play_screen_text(cease_flavourmessage, override_color = "#4e0044")
+		xenomorph.play_screen_text(cease_flavourmessage, override_color = "#740064")
 		to_chat(xenomorph, SPAN_XENO(cease_flavourmessage))
 
 
@@ -143,3 +154,12 @@ GLOBAL_LIST_INIT(all_hivebuffs, list(/datum/hivebuff/extra_larva))
 	for(var/mob/living/carbon/xenomorph/xeno as anything in hive.totalXenos)
 		xeno.maxHealth = initial(xeno.caste.max_health)
 	return TRUE
+
+/datum/hivebuff/game_ender_caste
+	name = "Boom of Destruction"
+	desc = "A huge behemoth of a Xenomorph which can tear its way through defences and flesh alike."
+	tier = HIVEBUFF_TIER_MAJOR
+	unique = TRUE
+	reusable = FALSE
+
+/datum/hivebuff/game_ender_caste/on_engage()

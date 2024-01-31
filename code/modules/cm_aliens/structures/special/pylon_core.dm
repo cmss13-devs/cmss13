@@ -195,6 +195,30 @@
 	linked_hive.convert_partial_larva_to_full_larva()
 	linked_hive.hive_ui.update_burrowed_larva()
 
+/// APPLYING HIVE BUFFS ///
+
+/obj/effect/alien/resin/special/pylon/endgame/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(!damaged && health == maxhealth && xeno.a_intent == INTENT_HELP && xeno.hivenumber == linked_hive.hivenumber && IS_XENO_LEADER(xeno))
+		choose_hivebuff(xeno)
+	else
+		..()
+
+/// To choose a hivebuff
+/obj/effect/alien/resin/special/pylon/endgame/proc/choose_hivebuff(mob/living/carbon/xenomorph/xeno)
+	var/list/buffs = list()
+	var/list/names = list()
+	for(var/datum/hivebuff/buff as anything in typesof(/datum/hivebuff))
+		var/buffname = initial(buff.name)
+		names += buffname
+		buffs[buffname] = buff
+
+	var/input = tgui_input_list(xeno, "Pick a buff.", "Select Buff", names)
+	if(!buffs[input])
+		to_chat(world, "Invalid selection.")
+		return
+
+	linked_hive.apply_hivebuff(buffs[input])
+
 //Hive Core - Generates strong weeds, supports other buildings
 /obj/effect/alien/resin/special/pylon/core
 	name = XENO_STRUCTURE_CORE

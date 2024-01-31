@@ -1,0 +1,5 @@
+author: "Huffie56"
+delete-after: True
+changes:
+  - rscdel: "Removed \"security robot module\" from robot_module.dm"
+  - refactor: "change the name of Ripley in game to P-1000, gygax to MAX, Durand to MOX, Odysseus to Alice to be more in line with the lore."

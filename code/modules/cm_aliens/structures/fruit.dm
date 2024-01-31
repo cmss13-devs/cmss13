@@ -146,6 +146,7 @@
 /obj/effect/alien/resin/fruit/proc/finish_consume(mob/living/carbon/xenomorph/recipient)
 	playsound(loc, 'sound/voice/alien_drool1.ogg', 50, 1)
 	mature = FALSE
+	picked = TRUE
 	icon_state = consumed_icon_state
 	update_icon()
 	QDEL_IN(src, 1 SECONDS)
@@ -213,6 +214,7 @@
 	if(recipient && !QDELETED(recipient))
 		recipient.gain_health(heal_amount)
 		to_chat(recipient, SPAN_XENONOTICE("We recover a bit from our injuries, and begin to regenerate rapidly."))
+		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("One of our picked resin fruits has been consumed."))
 		// Every second, heal him for 15.
 		new /datum/effects/heal_over_time(recipient, regeneration_amount_total, regeneration_ticks, 1)
 	if(do_consume)

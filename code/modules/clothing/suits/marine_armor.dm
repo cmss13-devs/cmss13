@@ -282,7 +282,7 @@
 	name = "\improper XM4 pattern intelligence officer armor"
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/qm_suit, /obj/item/clothing/under/marine/officer/intel)
 	specialty = "XM4 pattern intel"
-	desc = "The XM4 armor is custom made for Intelligence Officers. It includes an experimental integrated motion detector. This took the R&D team a whole weekend to make."
+	desc = "The XM4 armor is custom made for Intelligence Officers, it has an experimental integrated motion detector attached. The R&D team spent an entire weekend designing this armor."
 	/// XM4 Integral Motion Detector Ability
 	actions_types = list(/datum/action/item_action/toggle, /datum/action/item_action/intel/toggle_motion_detector)
 	var/motion_detector = FALSE

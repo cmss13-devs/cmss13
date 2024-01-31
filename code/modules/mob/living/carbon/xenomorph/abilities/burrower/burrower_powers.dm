@@ -61,7 +61,6 @@
 		addtimer(CALLBACK(src, PROC_REF(process_burrow)), 1 SECONDS)
 
 /mob/living/carbon/xenomorph/proc/burrow_off()
-
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
 		caste = GLOB.xeno_datum_list[caste_type]
 	to_chat(src, SPAN_NOTICE("You resurface."))

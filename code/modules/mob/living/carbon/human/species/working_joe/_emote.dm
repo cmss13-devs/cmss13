@@ -6,3 +6,5 @@
 	var/category = ""
 	/// Override text for the emote to be displayed in the WJ emote panel
 	var/override_say = ""
+	/// Is used by Hazard Joes.
+	var/hazard = FALSE

@@ -492,13 +492,32 @@
 	rank = JOB_WORKING_JOE
 	skills = /datum/skills/working_joe
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_APOLLO, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_GERMAN, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
+	var/species_type = SYNTH_WORKING_JOE
 
 /datum/equipment_preset/synth/working_joe/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_GLOBAL)
 
 /datum/equipment_preset/synth/working_joe/load_race(mob/living/carbon/human/new_human)
-	new_human.set_species(SYNTH_WORKING_JOE)
+	. = ..()
+	new_human.set_species(species_type)
+	new_human.h_style = "Bald"
+	new_human.f_style = "Shaved"
+	if(prob(5))
+		new_human.grad_style = "None" //No gradients for Working Joes
+		new_human.h_style = "Shoulder-length Hair" //Added the chance of hair as per Monkeyfist lore accuracy
+	new_human.r_eyes = 0
+	new_human.g_eyes = 0
+	new_human.b_eyes = 0
+	new_human.r_hair = 100
+	new_human.g_hair = 88
+	new_human.b_hair = 74
+	new_human.r_facial = 255
+	new_human.g_facial = 255
+	new_human.b_facial = 255
+
+/datum/equipment_preset/synth/working_joe/load_name(mob/living/carbon/human/new_human, randomise)
+	new_human.change_real_name(new_human, "Working Joe #[rand(100)][rand(100)]")
 
 /datum/equipment_preset/synth/working_joe/load_vanity(mob/living/carbon/human/new_human)
 	return
@@ -531,6 +550,7 @@
 
 /datum/equipment_preset/synth/working_joe/engi
 	name = "Synthetic - Hazmat Joe"
+	species_type = SYNTH_HAZARD_JOE
 
 /datum/equipment_preset/synth/working_joe/engi/load_gear(mob/living/carbon/human/new_human)
 	var/choice = rand(1,2)
@@ -559,25 +579,10 @@
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/large_stack(new_human.back), WEAR_IN_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/glass/reinforced/large_stack(new_human.back), WEAR_IN_R_STORE)
 
-/datum/equipment_preset/synth/working_joe/load_race(mob/living/carbon/human/new_human)
-	. = ..()
-	new_human.h_style = "Bald"
-	new_human.f_style = "Shaved"
-	if(prob(5))
-		new_human.grad_style = "None" //No gradients for Working Joes
-		new_human.h_style = "Shoulder-length Hair" //Added the chance of hair as per Monkeyfist lore accuracy
-	new_human.r_eyes = 0
-	new_human.g_eyes = 0
-	new_human.b_eyes = 0
-	new_human.r_hair = 100
-	new_human.g_hair = 88
-	new_human.b_hair = 74
-	new_human.r_facial = 255
-	new_human.g_facial = 255
-	new_human.b_facial = 255
 
-/datum/equipment_preset/synth/working_joe/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.change_real_name(new_human, "Working Joe #[rand(100)][rand(100)]")
+
+/datum/equipment_preset/synth/working_joe/load_race(mob/living/carbon/human/new_human)
+	new_human.set_species(SYNTH_WORKING_JOE)
 
 //*****************************************************************************************************/
 

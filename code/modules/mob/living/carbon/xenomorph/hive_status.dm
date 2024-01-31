@@ -1452,5 +1452,5 @@
 
 /datum/hive_status/proc/apply_hivebuff(datum/hivebuff/hivebuff)
 	var/datum/hivebuff/new_buff = new hivebuff(src)
-	if(!new_buff.on_engage())
+	if(!new_buff._on_engage())
 		return FALSE

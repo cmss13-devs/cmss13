@@ -94,11 +94,10 @@
 	if(!check_state())
 		return
 
-
 	if(!HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		to_chat(src, SPAN_NOTICE("We must be burrowed to do this."))
   
-  var/area/current_area = get_area(T)
+  	var/area/current_area = get_area(T)
 	if(current_area.flags_area & AREA_NOTUNNEL)
 		to_chat(src, SPAN_XENOWARNING("There's no way to surface here!!"))
 		return

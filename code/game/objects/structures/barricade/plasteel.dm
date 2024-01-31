@@ -26,6 +26,7 @@
 	var/recentlyflipped = FALSE
 	var/hasconnectionoverlay = TRUE
 	var/linkable = TRUE
+	welder_fix = BARRICADE_DMG_HEAVY
 
 /obj/structure/barricade/plasteel/update_icon()
 	..()
@@ -64,11 +65,8 @@
 
 /obj/structure/barricade/plasteel/attackby(obj/item/item, mob/user)
 	if(iswelder(item))
-		attackby_welder(item, user)// the idea is to replace a bunch of repetitive task with a prop
+		attackby_welder(item, user)// the idea is to replace a bunch of repetitive test that return.
 
-		if(damage_state == BARRICADE_DMG_HEAVY)
-			to_chat(user, SPAN_WARNING("[src] has sustained too much structural damage to be repaired."))
-			return
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You're not trained to repair [src]..."))
 			return

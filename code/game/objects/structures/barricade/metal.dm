@@ -19,6 +19,8 @@
 	var/build_state = BARRICADE_BSTATE_SECURED //Look at __game.dm for barricade defines
 	var/upgrade = null
 
+	welder_fix = BARRICADE_DMG_HEAVY
+
 /obj/structure/barricade/metal/update_icon()
 	. = ..()
 	if(dir > 2)
@@ -46,9 +48,6 @@
 	if(iswelder(item))
 		attackby_welder(item, user)// the idea is to replace a bunch of repetitive task with a prop
 
-		if(damage_state == BARRICADE_DMG_HEAVY)
-			to_chat(user, SPAN_WARNING("[src] has sustained too much structural damage to be repaired."))
-			return
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You're not trained to repair [src]..."))
 			return

@@ -35,6 +35,8 @@
 	var/burn_flame_multiplier = 1
 	var/repair_materials = list()
 	var/metallic = TRUE
+	/// var that say what state a barricade can't be fix by welder. null mean it can be repair no matter the state.
+	var/welder_fix
 
 /obj/structure/barricade/Initialize(mapload, mob/user)
 	. = ..()
@@ -479,4 +481,8 @@
 		return
 
 	if(user.action_busy)
+		return
+
+	if(damage_state == welder_fix && damage_state != null)
+		to_chat(user, SPAN_WARNING("[src] has sustained too much structural damage to be repaired."))
 		return

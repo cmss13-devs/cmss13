@@ -1,4 +1,0 @@
-author: "blackdragonTOW"
-delete-after: True
-changes:
-  - soundadd: "brought dropship_crash down from 0db to -6db"

@@ -106,7 +106,7 @@
 				var/mob/living/carbon/human/H = AM
 				if(issynth(H) || isyautja(H))
 					return
-				if(H.stat == DEAD || H.lying)
+				if(H.stat == DEAD || H.body_position == LYING_DOWN)
 					return
 				if(H.ally_of_hivenumber(hivenumber))
 					return
@@ -145,7 +145,7 @@
 	clear_tripwires()
 	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == hivenumber)
-			to_chat(X, SPAN_XENOMINORWARNING("You sense one of your Hive's facehugger traps at [A.name] has been burnt!"))
+			to_chat(X, SPAN_XENOMINORWARNING("We sense one of our Hive's facehugger traps at [A.name] has been burnt!"))
 
 /obj/effect/alien/resin/trap/proc/get_spray_type(level)
 	switch(level)
@@ -199,9 +199,9 @@
 	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == hivenumber)
 			if(destroyed)
-				to_chat(X, SPAN_XENOMINORWARNING("You sense one of your Hive's [trap_type_name] traps at [A.name] has been destroyed!"))
+				to_chat(X, SPAN_XENOMINORWARNING("We sense one of our Hive's [trap_type_name] traps at [A.name] has been destroyed!"))
 			else
-				to_chat(X, SPAN_XENOMINORWARNING("You sense one of your Hive's [trap_type_name] traps at [A.name] has been triggered!"))
+				to_chat(X, SPAN_XENOMINORWARNING("We sense one of our Hive's [trap_type_name] traps at [A.name] has been triggered!"))
 
 /obj/effect/alien/resin/trap/proc/clear_tripwires()
 	QDEL_NULL_LIST(tripwires)

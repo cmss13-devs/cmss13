@@ -165,8 +165,8 @@
 	return
 
 /obj/structure/machinery/computer/arcade/emp_act(severity)
+	. = ..()
 	if(inoperable())
-		..(severity)
 		return
 	var/empprize = null
 	var/num_of_prizes = 0
@@ -178,5 +178,3 @@
 	for(num_of_prizes; num_of_prizes > 0; num_of_prizes--)
 		empprize = pickweight(prizes)
 		new empprize(src.loc)
-
-	..(severity)

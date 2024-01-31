@@ -25,10 +25,10 @@
 //Items that use internal storage have the option of calling this to emulate default storage MouseDrop behaviour.
 //Returns 1 if the master item's parent's MouseDrop() should be called, 0 otherwise. It's strange, but no other way of
 //Doing it without the ability to call another proc's parent, really.
-/obj/item/storage/internal/proc/handle_mousedrop(mob/user as mob, obj/over_object as obj)
+/obj/item/storage/internal/proc/handle_mousedrop(mob/living/carbon/human/user, obj/over_object as obj)
 	if(ishuman(user))
 
-		if(user.lying) //Can't use your inventory when lying
+		if(user.body_position == LYING_DOWN) //Can't use your inventory when lying //what about stuns? don't argue
 			return
 
 		if(QDELETED(master_object))
@@ -84,8 +84,8 @@
 //Items that use internal storage have the option of calling this to emulate default storage attack_hand behaviour.
 //Returns 1 if the master item's parent's attack_hand() should be called, 0 otherwise.
 //It's strange, but no other way of doing it without the ability to call another proc's parent, really.
-/obj/item/storage/internal/proc/handle_attack_hand(mob/user as mob, mods)
-	if(user.lying)
+/obj/item/storage/internal/proc/handle_attack_hand(mob/living/user as mob, mods)
+	if(user.body_position == LYING_DOWN) // what about stuns? huh?
 		return FALSE
 
 	if(ishuman(user))

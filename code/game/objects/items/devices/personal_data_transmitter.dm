@@ -122,7 +122,7 @@
 		return
 
 	var/dist = get_dist(self_turf, bracelet_turf)
-	var/direction = dir2text_short(get_dir(self_turf, bracelet_turf))
+	var/direction = dir2text_short(Get_Compass_Dir(self_turf, bracelet_turf))
 	if(dist > 1)
 		to_chat(user, SPAN_BOLDNOTICE("The display on \the [src] lights up: <b>[dist]-[direction]</b>"))
 	else

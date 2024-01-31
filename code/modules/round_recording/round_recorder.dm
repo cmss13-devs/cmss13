@@ -31,8 +31,8 @@
 	game_start = time2text(world.realtime, "DD.MM.YYYY@hh:mm:ss")
 
 	map = SSmapping.configs[GROUND_MAP].map_name
-	gamemode = master_mode
-	round_name = round_statistics.name
+	gamemode = GLOB.master_mode
+	round_name = GLOB.round_statistics.name
 
 // Record the end time of the game and export the game history
 /datum/round_recorder/proc/end_game()

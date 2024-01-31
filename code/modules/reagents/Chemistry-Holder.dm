@@ -25,7 +25,7 @@
 	maximum_volume = maximum
 
 #ifdef UNIT_TESTS
-	if(!chemical_reagents_list || !chemical_reactions_filtered_list || !chemical_properties_list)
+	if(!GLOB.chemical_reagents_list || !GLOB.chemical_reactions_filtered_list || !GLOB.chemical_properties_list)
 		CRASH("Chemistry reagents are not set up!")
 #endif
 
@@ -226,9 +226,9 @@
 	if(!my_atom) return
 	if(my_atom.flags_atom & NOREACT) return //Yup, no reactions here. No siree.
 
-	var/reaction_occured = 0
+	var/reaction_occurred = 0
 	do
-		reaction_occured = 0
+		reaction_occurred = 0
 		for(var/datum/reagent/R in reagent_list) // Usually a small list
 			if(R.original_id) //Prevent synthesised chem variants from being mixed
 				for(var/datum/reagent/O in reagent_list)
@@ -240,7 +240,7 @@
 						O.volume += R.volume
 						qdel(R)
 						break
-			for(var/reaction in chemical_reactions_filtered_list[R.id]) // Was a big list but now it should be smaller since we filtered it with our reagent id
+			for(var/reaction in GLOB.chemical_reactions_filtered_list[R.id]) // Was a big list but now it should be smaller since we filtered it with our reagent id
 
 				if(!reaction)
 					continue
@@ -309,10 +309,10 @@
 					playsound(get_turf(my_atom), 'sound/effects/bubbles.ogg', 15, 1)
 
 					C.on_reaction(src, created_volume)
-					reaction_occured = 1
+					reaction_occurred = 1
 					break
 
-	while(reaction_occured)
+	while(reaction_occurred)
 	if(trigger_volatiles)
 		handle_volatiles()
 	if(exploded) //clear reagents only when everything has reacted
@@ -374,7 +374,7 @@
 	if(total_volume + amount > maximum_volume)
 		amount = maximum_volume - total_volume //Doesnt fit in. Make it disappear. Shouldnt happen. Will happen.
 
-	var/new_data = list("blood_type" = null, "blood_colour" = "#A10808", "viruses" = null, "resistances" = null, "last_source_mob" = null)
+	var/new_data = list("blood_type" = null, "blood_color" = "#A10808", "viruses" = null, "resistances" = null, "last_source_mob" = null)
 	if(data)
 		for(var/index in data)
 			new_data[index] = data[index]
@@ -417,10 +417,10 @@
 				handle_reactions()
 			return FALSE
 
-	var/datum/reagent/D = chemical_reagents_list[reagent]
+	var/datum/reagent/D = GLOB.chemical_reagents_list[reagent]
 	if(D)
 		if(!istype(D, /datum/reagent))
-			CRASH("Not REAGENT - [reagent] - chemical_reagents_list[reagent]")
+			CRASH("Not REAGENT - [reagent] - GLOB.chemical_reagents_list[reagent]")
 
 		var/datum/reagent/R = new D.type()
 		if(D.type == /datum/reagent/generated)
@@ -713,5 +713,6 @@
 // Convenience proc to create a reagents holder for an atom
 // Max vol is maximum volume of holder
 /atom/proc/create_reagents(max_vol)
+	QDEL_NULL(reagents)
 	reagents = new/datum/reagents(max_vol)
 	reagents.my_atom = src

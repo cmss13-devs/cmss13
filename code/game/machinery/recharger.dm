@@ -218,20 +218,14 @@
 	update_icon()
 
 /obj/structure/machinery/recharger/emp_act(severity)
+	. = ..()
 	if(inoperable() || !anchored)
-		..(severity)
 		return
-/*
-	if(istype(charging,  /obj/item/weapon/gun/energy))
-		var/obj/item/weapon/gun/energy/E = charging
-		if(E.power_supply)
-			E.power_supply.emp_act(severity)
-*/
+
 	if(istype(charging, /obj/item/weapon/baton))
 		var/obj/item/weapon/baton/B = charging
 		if(B.bcell)
 			B.bcell.charge = 0
-	..(severity)
 
 /obj/structure/machinery/recharger/update_icon() //we have an update_icon() in addition to the stuff in process to make it feel a tiny bit snappier.
 	src.overlays = 0

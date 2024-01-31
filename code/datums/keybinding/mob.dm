@@ -2,16 +2,6 @@
 	category = CATEGORY_HUMAN
 	weight = WEIGHT_MOB
 
-/datum/keybinding/mob/down(client/user)
-	. = ..()
-	if(isobserver(user.mob))
-		return TRUE
-
-/datum/keybinding/mob/up(client/user)
-	. = ..()
-	if(isobserver(user.mob))
-		return TRUE
-
 /datum/keybinding/mob/stop_pulling
 	hotkey_keys = list("H", "Delete")
 	classic_keys = list("Delete")

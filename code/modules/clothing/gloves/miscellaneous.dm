@@ -88,7 +88,7 @@
 					playsound(loc, knockout_sound, 50, FALSE)
 					M.show_message(FONT_SIZE_LARGE(SPAN_WARNING("KNOCKOUT!")), SHOW_MESSAGE_VISIBLE)
 					return 1
-				if (L.lying == 1 || L.stat == UNCONSCIOUS)//Can't beat 'em while they're down.
+				if (L.body_position == LYING_DOWN || L.stat == UNCONSCIOUS)//Can't beat 'em while they're down.
 					to_chat(M, SPAN_WARNING("You can't box with [A], they're already down!"))
 					return 1
 				M.visible_message(SPAN_DANGER("[M] [boxing_verb] [A]!"))

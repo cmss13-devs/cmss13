@@ -103,8 +103,8 @@
 	icon_state = "shrapnel_plasma"
 	damage_type = BURN
 
-/datum/ammo/bullet/shrapnel/plasma/on_hit_mob(mob/hit_mob, obj/projectile/hit_projectile)
-	hit_mob.apply_effect(2, WEAKEN)
+/datum/ammo/bullet/shrapnel/plasma/on_hit_mob(mob/living/hit_mob, obj/projectile/hit_projectile)
+	hit_mob.Stun(2)
 
 /datum/ammo/energy/yautja/caster
 	name = "root caster bolt"
@@ -141,12 +141,8 @@
 		log_attack("[key_name(C)] was stunned by a high power stun bolt from [key_name(P.firer)] at [get_area(P)]")
 
 		if(ishuman(C))
-			var/mob/living/carbon/human/H = C
 			stun_time++
-			H.apply_effect(stun_time, WEAKEN)
-		else
-			M.apply_effect(stun_time, WEAKEN)
-
+		C.apply_effect(stun_time, WEAKEN)
 		C.apply_effect(stun_time, STUN)
 	..()
 
@@ -217,12 +213,7 @@
 			continue
 		to_chat(M, SPAN_DANGER("A powerful electric shock ripples through your body, freezing you in place!"))
 		M.apply_effect(stun_time, STUN)
-
-		if (ishuman(M))
-			var/mob/living/carbon/human/H = M
-			H.apply_effect(stun_time, WEAKEN)
-		else
-			M.apply_effect(stun_time, WEAKEN)
+		M.apply_effect(stun_time, WEAKEN)
 
 /datum/ammo/energy/yautja/rifle/bolt
 	name = "plasma rifle bolt"

@@ -9,7 +9,6 @@
 	max_health = XENO_HEALTH_TIER_6
 	plasma_gain = XENO_PLASMA_GAIN_TIER_8
 	plasma_max = XENO_PLASMA_TIER_6
-	crystal_max = XENO_CRYSTAL_LOW
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_4
 	armor_deflection = XENO_ARMOR_TIER_2
 	evasion = XENO_EVASION_NONE
@@ -80,35 +79,32 @@
 	icon_xeno = 'icons/mob/xenos/burrower.dmi'
 	icon_xenonid = 'icons/mob/xenonids/burrower.dmi'
 
+	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
+	weed_food_states = list("Burrower_1","Burrower_2","Burrower_3")
+	weed_food_states_flipped = list("Burrower_1","Burrower_2","Burrower_3")
+
 /mob/living/carbon/xenomorph/burrower/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
 	. = ..()
 	sight |= SEE_TURFS
 
-/mob/living/carbon/xenomorph/burrower/update_canmove()
-	. = ..()
-	if(burrow)
-		density = FALSE
-		canmove = FALSE
-		return canmove
-
 /mob/living/carbon/xenomorph/burrower/ex_act(severity)
-	if(burrow)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		return
 	..()
 
 /mob/living/carbon/xenomorph/burrower/attack_hand()
-	if(burrow)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		return
 	..()
 
 /mob/living/carbon/xenomorph/burrower/attackby()
-	if(burrow)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		return
 	..()
 
 /mob/living/carbon/xenomorph/burrower/get_projectile_hit_chance()
 	. = ..()
-	if(burrow)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		return 0
 
 /datum/behavior_delegate/burrower_base
@@ -118,6 +114,6 @@
 	if(bound_xeno.stat == DEAD)
 		return
 
-	if(bound_xeno.burrow)
+	if(HAS_TRAIT(bound_xeno, TRAIT_ABILITY_BURROWED))
 		bound_xeno.icon_state = "[bound_xeno.mutation_icon_state] Burrower Burrowed"
 		return TRUE

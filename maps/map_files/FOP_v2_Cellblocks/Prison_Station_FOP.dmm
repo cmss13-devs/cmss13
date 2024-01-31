@@ -5305,7 +5305,7 @@
 /area/prison/hanger/research)
 "aoj" = (
 /obj/docking_port/stationary/marine_dropship/lz2{
-	name = "Research Landing Zone"
+	name = "LZ2: Research Landing Zone"
 	},
 /turf/open/floor/plating,
 /area/prison/hanger/research)
@@ -19201,7 +19201,7 @@
 /area/prison/hanger/main)
 "bcF" = (
 /obj/docking_port/stationary/marine_dropship/lz1{
-	name = "Hangar Landing Zone"
+	name = "LZ1: Hangar Landing Zone"
 	},
 /turf/open/floor/plating,
 /area/prison/hanger/main)

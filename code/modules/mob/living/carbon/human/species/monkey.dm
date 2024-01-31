@@ -46,8 +46,8 @@
 /datum/species/monkey/handle_npc(mob/living/carbon/human/H)
 	if(H.stat != CONSCIOUS)
 		return
-	if(prob(33) && isturf(H.loc) && !H.pulledby && !H.lying && !H.is_mob_restrained()) //won't move if being pulled
-		step(H, pick(cardinal))
+	if(prob(33) && isturf(H.loc) && !H.pulledby && (H.mobility_flags & MOBILITY_MOVE) && !H.is_mob_restrained()) //won't move if being pulled
+		step(H, pick(GLOB.cardinals))
 
 	var/obj/held = H.get_active_hand()
 	if(held && prob(1))

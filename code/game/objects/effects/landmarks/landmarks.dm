@@ -402,6 +402,24 @@
 	name = "working joe late join"
 	job = JOB_WORKING_JOE
 
+
+/obj/effect/landmark/late_join/cmo
+	name = "Chief Medical Officer late join"
+	job = JOB_CMO
+
+/obj/effect/landmark/late_join/researcher
+	name = "Researcher late join"
+	job = JOB_RESEARCHER
+
+/obj/effect/landmark/late_join/doctor
+	name = "Doctor late join"
+	job = JOB_DOCTOR
+
+/obj/effect/landmark/late_join/nurse
+	name = "Nurse late join"
+	job = JOB_NURSE
+
+
 /obj/effect/landmark/late_join/Initialize(mapload, ...)
 	. = ..()
 	if(squad)
@@ -508,3 +526,7 @@
 /// In landmarks.dm and not unit_test.dm so it is always active in the mapping tools.
 /obj/effect/landmark/unit_test_top_right
 	name = "unit test zone top right"
+
+/// Marks the bottom left of the tutorial zone.
+/obj/effect/landmark/tutorial_bottom_left
+	name = "tutorial bottom left"

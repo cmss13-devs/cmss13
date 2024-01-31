@@ -109,6 +109,7 @@
 #define SHOES_SLOWDOWN -1
 
 #define SLOWDOWN_ARMOR_NONE 0
+#define SLOWDOWN_ARMOR_SUPER_LIGHT 0.10
 #define SLOWDOWN_ARMOR_VERY_LIGHT 0.20
 #define SLOWDOWN_ARMOR_LIGHT 0.35
 #define SLOWDOWN_ARMOR_MEDIUM 0.55
@@ -140,8 +141,8 @@
 #define WIELD_DELAY_VERY_SLOW 10
 #define WIELD_DELAY_HORRIBLE 12
 
-///This is how long you must wait after throwing something to throw again
-#define THROW_DELAY (0.4 SECONDS)
+///This is how long you must wait to throw again after throwing two things
+#define THROW_DELAY (1.5 SECONDS)
 
 //Explosion level thresholds. Upper bounds
 #define EXPLOSION_THRESHOLD_VLOW 50

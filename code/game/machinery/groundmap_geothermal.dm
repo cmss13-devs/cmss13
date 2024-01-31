@@ -223,7 +223,7 @@
 
 /obj/structure/machinery/colony_floodlight_switch/LateInitialize()
 	. = ..()
-	for(var/obj/structure/machinery/colony_floodlight/F in machines)
+	for(var/obj/structure/machinery/colony_floodlight/F in GLOB.machines)
 		floodlist += F
 		F.fswitch = src
 	start_processing()

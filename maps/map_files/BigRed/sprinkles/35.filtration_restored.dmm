@@ -7,7 +7,9 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/bigredv2/outside/filtration_plant)
 "ad" = (
 /obj/effect/decal/cleanable/dirt,
@@ -17,12 +19,16 @@
 /obj/structure/pipes/vents/pump,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/bigredv2/outside/filtration_plant)
 "af" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/bigredv2/outside/filtration_plant)
 "ah" = (
 /obj/structure/window/framed/solaris,
@@ -36,13 +42,19 @@
 /area/bigredv2/caves)
 "ak" = (
 /obj/structure/closet/wardrobe/atmospherics_yellow,
-/turf/open/floor,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "darkyellow2"
+	},
 /area/bigredv2/outside/filtration_plant)
 "al" = (
 /obj/structure/surface/table,
 /obj/item/tool/lighter/random,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkyellow2"
+	},
 /area/bigredv2/outside/filtration_plant)
 "am" = (
 /turf/open/floor{
@@ -53,43 +65,59 @@
 "an" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/bigredv2/outside/filtration_plant)
 "ap" = (
 /obj/structure/reagent_dispensers/watertank,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "darkyellow2"
+	},
 /area/bigredv2/outside/filtration_plant)
 "aq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
-/turf/open/floor,
+/turf/open/floor{
+	dir = 10;
+	icon_state = "darkyellow2"
+	},
 /area/bigredv2/outside/filtration_plant)
 "ar" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/bigredv2/outside/filtration_plant)
 "as" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "darkyellow2"
+	},
 /area/bigredv2/outside/filtration_plant)
 "at" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/bigredv2/outside/filtration_plant)
 "au" = (
 /obj/structure/machinery/computer/atmos_alert{
 	dir = 8
 	},
 /obj/structure/surface/table,
-/turf/open/floor,
+/turf/open/floor{
+	dir = 6;
+	icon_state = "darkyellow2"
+	},
 /area/bigredv2/outside/filtration_plant)
 "av" = (
 /obj/item/tool/warning_cone,
@@ -123,8 +151,8 @@
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "\improper Atmospherics Condenser Storage"
 	},
-/turf/open/floor{
-	icon_state = "delivery"
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
 	},
 /area/bigredv2/outside/filtration_plant)
 "aB" = (
@@ -132,8 +160,8 @@
 	dir = 1;
 	name = "\improper Atmospherics Condenser"
 	},
-/turf/open/floor{
-	icon_state = "delivery"
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
 	},
 /area/bigredv2/outside/filtration_plant)
 "aC" = (
@@ -141,7 +169,9 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/bigredv2/outside/filtration_plant)
 "aD" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
@@ -149,14 +179,16 @@
 	name = "\improper Atmospherics Condenser"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "delivery"
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
 	},
 /area/bigredv2/outside/filtration_plant)
 "aE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/device/radio/headset,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/bigredv2/outside/filtration_plant)
 "aF" = (
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/chan,
@@ -173,7 +205,9 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/bigredv2/outside/filtration_plant)
 "aJ" = (
 /turf/open/floor{
@@ -187,39 +221,49 @@
 /area/bigredv2/outside/se)
 "aL" = (
 /obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
 	},
 /area/bigredv2/outside/filtration_plant)
 "aM" = (
 /obj/structure/reagent_dispensers/watertank,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
 	},
 /area/bigredv2/outside/filtration_plant)
 "aN" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/bigredv2/outside/filtration_plant)
 "aO" = (
 /obj/structure/pipes/vents/pump,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/bigredv2/outside/filtration_plant)
 "aP" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/bigredv2/outside/filtration_plant)
 "aQ" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/good_item,
-/turf/open/floor,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "darkyellow2"
+	},
 /area/bigredv2/outside/filtration_plant)
 "aR" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
-/turf/open/floor,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "darkyellow2"
+	},
 /area/bigredv2/outside/filtration_plant)
 "aS" = (
 /turf/open/floor{
@@ -229,9 +273,8 @@
 /area/bigredv2/outside/filtration_plant)
 "aT" = (
 /obj/structure/dispenser/oxygen,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
 	},
 /area/bigredv2/outside/filtration_plant)
 "aV" = (
@@ -239,24 +282,34 @@
 	icon_state = "U-N"
 	},
 /obj/structure/machinery/computer3/server/rack,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/bigredv2/outside/filtration_plant)
 "aW" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/bigredv2/outside/filtration_plant)
 "aX" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/bigredv2/outside/filtration_plant)
 "aY" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/filtration_plant)
 "aZ" = (
 /obj/structure/machinery/computer/general_air_control,
-/turf/open/floor,
+/obj/structure/surface/table,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "darkyellow2"
+	},
 /area/bigredv2/outside/filtration_plant)
 "bb" = (
 /obj/structure/surface/table,
@@ -264,23 +317,34 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "darkyellow2"
+	},
 /area/bigredv2/outside/filtration_plant)
 "bc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "darkyellow2"
+	},
 /area/bigredv2/outside/filtration_plant)
 "bd" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
-/turf/open/floor,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "darkyellow2"
+	},
 /area/bigredv2/outside/filtration_plant)
 "be" = (
 /obj/structure/surface/table,
 /obj/item/circuitboard/solar_tracker,
-/turf/open/floor,
+/turf/open/floor{
+	dir = 6;
+	icon_state = "darkyellow2"
+	},
 /area/bigredv2/outside/filtration_plant)
 "bf" = (
 /obj/structure/machinery/light{
@@ -293,34 +357,53 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "U-S"
 	},
-/turf/open/floor,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkyellow2"
+	},
 /area/bigredv2/outside/filtration_plant)
 "bh" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "U-S"
 	},
 /obj/structure/machinery/computer3/server/rack,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/bigredv2/outside/filtration_plant)
 "bj" = (
 /obj/structure/surface/rack,
 /obj/item/tank/air,
 /obj/item/tool/pickaxe,
-/turf/open/floor,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkyellow2"
+	},
 /area/bigredv2/outside/filtration_plant)
 "bk" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
 /obj/structure/machinery/light,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "darkyellow2"
+	},
 /area/bigredv2/outside/filtration_plant)
 "bl" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
 	name = "\improper Filtration Facility"
 	},
-/turf/open/floor{
-	icon_state = "delivery"
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
 	},
 /area/bigredv2/outside/filtration_plant)
 "bm" = (
@@ -329,34 +412,42 @@
 	name = "\improper Filtration Facility"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	icon_state = "delivery"
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
 	},
 /area/bigredv2/outside/filtration_plant)
 "bn" = (
-/obj/structure/closet/firecloset/full,
 /obj/structure/sign/safety/distribution_pipes{
 	pixel_x = 32
 	},
-/turf/open/floor,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "darkyellow2"
+	},
 /area/bigredv2/outside/filtration_plant)
 "bo" = (
 /obj/item/tank/air,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/bigredv2/outside/filtration_plant)
 "bp" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/bigredv2/outside/filtration_plant)
 "bq" = (
 /obj/effect/landmark/crap_item,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/bigredv2/outside/filtration_plant)
 "br" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
@@ -365,8 +456,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "delivery"
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
 	},
 /area/bigredv2/outside/filtration_plant)
 "bt" = (
@@ -378,7 +469,9 @@
 	dir = 4
 	},
 /obj/item/frame/table,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/bigredv2/outside/filtration_plant)
 "bv" = (
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/chan,
@@ -393,7 +486,9 @@
 	dir = 9
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/bigredv2/outside/filtration_plant)
 "bz" = (
 /obj/effect/decal/cleanable/dirt,
@@ -413,7 +508,10 @@
 /obj/structure/machinery/computer/atmos_alert{
 	dir = 4
 	},
-/turf/open/floor,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkyellow2"
+	},
 /area/bigredv2/outside/filtration_plant)
 "bD" = (
 /obj/structure/window/framed/solaris/reinforced/hull,
@@ -435,11 +533,20 @@
 /area/bigredv2/outside/filtration_plant)
 "bG" = (
 /obj/structure/surface/table,
-/turf/open/floor,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "darkyellow2"
+	},
 /area/bigredv2/outside/filtration_plant)
 "bH" = (
-/obj/structure/machinery/computer/area_atmos/area,
-/turf/open/floor,
+/obj/structure/machinery/computer/area_atmos/area{
+	dir = 8
+	},
+/obj/structure/surface/table,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "darkyellow2"
+	},
 /area/bigredv2/outside/filtration_plant)
 "bI" = (
 /obj/structure/window_frame/solaris/reinforced,
@@ -450,7 +557,10 @@
 /area/bigredv2/outside/filtration_plant)
 "bJ" = (
 /obj/item/weapon/twohanded/fireaxe,
-/turf/open/floor,
+/turf/open/floor{
+	dir = 10;
+	icon_state = "darkyellow2"
+	},
 /area/bigredv2/outside/filtration_plant)
 "bK" = (
 /turf/open/mars,
@@ -458,7 +568,10 @@
 "bN" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
-/turf/open/floor,
+/turf/open/floor{
+	dir = 10;
+	icon_state = "darkyellow2"
+	},
 /area/bigredv2/outside/filtration_plant)
 "bO" = (
 /turf/open/mars_cave{
@@ -475,29 +588,36 @@
 /obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
 /obj/structure/machinery/light,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "darkyellow2"
+	},
 /area/bigredv2/outside/filtration_plant)
 "bS" = (
 /obj/item/frame/table,
 /obj/structure/machinery/light,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "darkyellow2"
+	},
 /area/bigredv2/outside/filtration_plant)
 "bT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/frame/table,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/bigredv2/outside/filtration_plant)
 "bU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table,
-/turf/open/floor,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkyellow2"
+	},
 /area/bigredv2/outside/filtration_plant)
 "bW" = (
-/obj/structure/largecrate/random,
 /turf/open/floor{
-	dir = 1;
-	icon_state = "bot"
+	icon_state = "dark"
 	},
 /area/bigredv2/outside/filtration_plant)
 "bX" = (
@@ -519,7 +639,9 @@
 	pixel_x = -32
 	},
 /obj/structure/machinery/light,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "darkyellow2"
+	},
 /area/bigredv2/outside/filtration_plant)
 "ce" = (
 /obj/structure/machinery/light,
@@ -533,8 +655,8 @@
 	id = "FiltrationShutters";
 	name = "\improper Airlock Shutters"
 	},
-/turf/open/floor{
-	icon_state = "delivery"
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
 	},
 /area/bigredv2/outside/filtration_plant)
 "cg" = (
@@ -559,7 +681,10 @@
 /area/bigredv2/outside/filtration_cave_cas)
 "cj" = (
 /obj/item/tool/pickaxe,
-/turf/open/floor,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "bot"
+	},
 /area/bigredv2/outside/filtration_plant)
 "ck" = (
 /obj/effect/decal/warning_stripes{
@@ -581,13 +706,61 @@
 	icon_state = "delivery"
 	},
 /area/bigredv2/outside/filtration_plant)
+"cO" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/bigredv2/outside/filtration_plant)
+"et" = (
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/bigredv2/outside/filtration_plant)
+"eL" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor{
+	dir = 5;
+	icon_state = "darkyellow2"
+	},
+/area/bigredv2/outside/filtration_plant)
+"ff" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/filtration_plant)
+"gt" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "darkyellow2"
+	},
+/area/bigredv2/outside/filtration_plant)
+"hk" = (
+/turf/open/floor{
+	dir = 1;
+	icon_state = "darkyellow2"
+	},
+/area/bigredv2/outside/filtration_plant)
 "jh" = (
 /obj/structure/machinery/light,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "ka" = (
 /obj/structure/closet/firecloset/full,
-/turf/open/floor,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "darkyellow2"
+	},
+/area/bigredv2/outside/filtration_plant)
+"kE" = (
+/obj/structure/machinery/light,
+/turf/open/floor{
+	dir = 6;
+	icon_state = "darkyellow2"
+	},
 /area/bigredv2/outside/filtration_plant)
 "nk" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -597,23 +770,152 @@
 /obj/item/tank/air,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
+"oE" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/filtration_plant)
+"qi" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/closet/firecloset/full,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "bot"
+	},
+/area/bigredv2/outside/filtration_plant)
+"ti" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "bot"
+	},
+/area/bigredv2/outside/filtration_plant)
+"tp" = (
+/obj/structure/largecrate/random,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "darkyellow2"
+	},
+/area/bigredv2/outside/filtration_plant)
+"tz" = (
+/turf/open/floor{
+	dir = 9;
+	icon_state = "darkyellow2"
+	},
+/area/bigredv2/outside/filtration_plant)
 "tB" = (
 /obj/effect/landmark/crap_item,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2"
 	},
 /area/bigredv2/outside/filtration_cave_cas)
+"vK" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkyellow2"
+	},
+/area/bigredv2/outside/filtration_plant)
+"xd" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "darkyellow2"
+	},
+/area/bigredv2/outside/filtration_plant)
+"yi" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "darkyellow2"
+	},
+/area/bigredv2/outside/filtration_plant)
+"yZ" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkyellowcorners2"
+	},
+/area/bigredv2/outside/filtration_plant)
 "zu" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_7"
 	},
 /area/bigredv2/outside/filtration_cave_cas)
+"Ap" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "darkyellowcorners2"
+	},
+/area/bigredv2/outside/filtration_plant)
+"AD" = (
+/turf/open/floor{
+	icon_state = "darkyellow2"
+	},
+/area/bigredv2/outside/filtration_plant)
+"Ee" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkyellow2"
+	},
+/area/bigredv2/outside/filtration_plant)
+"FI" = (
+/turf/open/floor{
+	dir = 4;
+	icon_state = "darkyellow2"
+	},
+/area/bigredv2/outside/filtration_plant)
+"FK" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/filtration_plant)
+"Jy" = (
+/obj/structure/closet/firecloset/full,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "bot"
+	},
+/area/bigredv2/outside/filtration_plant)
+"Kp" = (
+/obj/structure/surface/table,
+/turf/open/floor{
+	dir = 10;
+	icon_state = "darkyellow2"
+	},
+/area/bigredv2/outside/filtration_plant)
 "Ms" = (
 /obj/structure/machinery/computer3/server/rack,
 /obj/effect/decal/warning_stripes{
 	icon_state = "U-N"
 	},
-/turf/open/floor,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkyellow2"
+	},
 /area/bigredv2/outside/filtration_plant)
 "Qx" = (
 /obj/effect/decal/cleanable/dirt,
@@ -623,6 +925,12 @@
 	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/filtration_plant)
+"QJ" = (
+/turf/open/floor{
+	dir = 10;
+	icon_state = "darkyellow2"
+	},
+/area/bigredv2/outside/filtration_plant)
 "Rv" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
@@ -630,11 +938,36 @@
 	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/filtration_plant)
+"Sj" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	dir = 1;
+	name = "\improper Filtration Facility"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/bigredv2/outside/filtration_plant)
+"Sk" = (
+/obj/structure/machinery/light,
+/obj/structure/largecrate/random,
+/turf/open/floor{
+	dir = 6;
+	icon_state = "darkyellow2"
+	},
+/area/bigredv2/outside/filtration_plant)
+"TC" = (
+/obj/structure/machinery/light,
+/turf/open/floor{
+	icon_state = "darkyellow2"
+	},
+/area/bigredv2/outside/filtration_plant)
 "TX" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/bigredv2/outside/filtration_plant)
 "UH" = (
 /obj/effect/decal/warning_stripes{
@@ -656,12 +989,34 @@
 	icon_state = "bot"
 	},
 /area/bigredv2/outside/filtration_plant)
+"Wc" = (
+/turf/open/floor{
+	dir = 1;
+	icon_state = "darkyellowcorners2"
+	},
+/area/bigredv2/outside/filtration_plant)
+"Wz" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "darkyellow2"
+	},
+/area/bigredv2/outside/filtration_plant)
 "WD" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2"
 	},
 /area/bigredv2/outside/filtration_cave_cas)
+"Xx" = (
+/obj/structure/surface/table,
+/obj/effect/spawner/random/technology_scanner,
+/turf/open/floor{
+	icon_state = "darkyellow2"
+	},
+/area/bigredv2/outside/filtration_plant)
 "XC" = (
 /obj/structure/cargo_container/grant/right,
 /turf/open/floor{
@@ -710,12 +1065,12 @@ TX
 ap
 aa
 aL
-aS
+et
 aL
 aL
 aa
-az
-az
+tz
+vK
 bJ
 bw
 bw
@@ -734,16 +1089,16 @@ bw
 (3,1,1) = {"
 ak
 TX
-jh
+TC
 aa
-bf
-az
-az
-az
+oE
+FK
+FK
+FK
 bl
-az
+bW
 bp
-az
+AD
 bw
 bw
 bw
@@ -761,19 +1116,19 @@ aY
 (4,1,1) = {"
 ak
 TX
-az
+AD
 aa
 aT
 aM
 aT
-aS
+et
 aa
-az
+hk
 TX
-az
+yZ
 bU
 bB
-bG
+Kp
 aY
 cg
 az
@@ -795,17 +1150,17 @@ aa
 aa
 aa
 aa
-bf
+Wz
 bq
-az
-az
-az
+bW
+bW
+bW
 cb
 aY
 bf
 ad
-ad
-ad
+ti
+ti
 az
 aS
 aS
@@ -817,22 +1172,22 @@ al
 ac
 aq
 aa
-az
+tz
 bg
 Ms
-az
+QJ
 aa
-az
+hk
 TX
-aS
-aS
-aS
-az
+bW
+bW
+bW
+bW
 cf
 az
 ad
-ad
-az
+ti
+aS
 az
 aS
 VW
@@ -840,21 +1195,21 @@ az
 bw
 "}
 (7,1,1) = {"
-ad
+ff
 aC
 ar
 aB
-az
-az
-az
-az
-bl
-az
-TX
-aL
 bW
-aS
-az
+bW
+bW
+bW
+Sj
+bW
+TX
+bW
+bW
+bW
+bW
 cf
 az
 az
@@ -871,22 +1226,22 @@ an
 ae
 as
 ah
-az
+hk
 bh
 aV
-ad
+gt
 ah
-ad
+xd
 TX
-aS
-aS
 bW
-az
+bW
+bW
+bW
 cf
 az
 az
-az
-az
+aS
+aS
 az
 aS
 XC
@@ -901,19 +1256,19 @@ aD
 aN
 aN
 ar
-az
+AD
 ah
-az
+hk
 TX
-aS
-aS
-aS
-az
+bW
+bW
+bW
+bW
 cf
 az
 az
-az
-az
+aS
+aS
 np
 bz
 aS
@@ -921,25 +1276,25 @@ jh
 aY
 "}
 (10,1,1) = {"
-ad
+ff
 aE
 at
 aa
-bf
-az
+Wz
+bW
 ac
 bk
 aa
-bf
+eL
 TX
-az
-az
-az
-jh
+FI
+yi
+tp
+Sk
 aY
 bf
 az
-az
+aS
 cj
 az
 aS
@@ -980,11 +1335,11 @@ ah
 ah
 aa
 ka
-az
+bW
 TX
-az
+AD
 aa
-az
+tz
 TX
 bN
 bw
@@ -1013,7 +1368,7 @@ aN
 bm
 aN
 aW
-bN
+Xx
 bt
 bF
 bF
@@ -1034,11 +1389,11 @@ ai
 ai
 aa
 bb
-az
-az
-jh
+bW
+bW
+TC
 ay
-bf
+Wz
 TX
 bQ
 bw
@@ -1065,9 +1420,9 @@ aR
 aQ
 be
 aa
-az
+hk
 TX
-bN
+Xx
 bw
 bF
 bF
@@ -1092,9 +1447,9 @@ aa
 ay
 aa
 aa
-az
+hk
 TX
-az
+AD
 bw
 bD
 bD
@@ -1116,10 +1471,10 @@ am
 am
 am
 aY
-bf
+Ee
 bj
 bj
-az
+Wc
 TX
 bS
 aa
@@ -1142,14 +1497,14 @@ am
 am
 am
 am
-US
-az
-az
-az
-az
+et
+bW
+bW
+bW
+bW
 bu
-ad
-cn
+ff
+cO
 WD
 bO
 bO
@@ -1169,14 +1524,14 @@ am
 am
 am
 am
-US
-az
-az
+et
+bW
+bW
 aP
 aO
 by
-az
-US
+bW
+et
 WD
 bO
 bO
@@ -1196,14 +1551,14 @@ am
 am
 am
 am
-US
-az
-az
-ad
+et
+FI
+FI
+Ap
 bo
-az
+bW
 bT
-US
+et
 WD
 bO
 bO
@@ -1224,12 +1579,12 @@ am
 aG
 aG
 aY
-bf
-ka
+qi
+Jy
 bn
-az
-az
-jh
+FI
+FI
+kE
 bX
 WD
 bO

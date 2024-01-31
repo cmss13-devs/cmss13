@@ -18,7 +18,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_12"
 	},
-/area/vehicle/tank)
+/area/interior/vehicle/tank)
 "c" = (
 /obj/structure/prop/tank{
 	icon_state = "prop2";
@@ -39,7 +39,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_3"
 	},
-/area/vehicle/tank)
+/area/interior/vehicle/tank)
 "e" = (
 /obj/effect/landmark/interior/spawn/vehicle_gunner_seat/armor{
 	dir = 4
@@ -47,7 +47,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_13"
 	},
-/area/vehicle/tank)
+/area/interior/vehicle/tank)
 "f" = (
 /obj/structure/prop/tank{
 	pixel_x = 0
@@ -55,7 +55,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_1_1"
 	},
-/area/vehicle/tank)
+/area/interior/vehicle/tank)
 "g" = (
 /obj/structure/interior_wall/tank{
 	alpha = 50;
@@ -102,7 +102,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_8"
 	},
-/area/vehicle/tank)
+/area/interior/vehicle/tank)
 "v" = (
 /obj/structure/interior_wall/tank{
 	layer = 2
@@ -158,7 +158,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_7"
 	},
-/area/vehicle/tank)
+/area/interior/vehicle/tank)
 "H" = (
 /obj/structure/interior_wall/tank{
 	icon_state = "exterior_3";
@@ -175,7 +175,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_4"
 	},
-/area/vehicle/tank)
+/area/interior/vehicle/tank)
 "T" = (
 /obj/structure/prop/tank{
 	icon_state = "prop1";
@@ -184,7 +184,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_9"
 	},
-/area/vehicle/tank)
+/area/interior/vehicle/tank)
 "Z" = (
 /obj/structure/vehicle_locker/tank{
 	pixel_y = 11
@@ -201,7 +201,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_11"
 	},
-/area/vehicle/tank)
+/area/interior/vehicle/tank)
 
 (1,1,1) = {"
 j

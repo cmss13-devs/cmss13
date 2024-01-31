@@ -5,6 +5,9 @@
 	var/last_known_ip
 	var/last_known_cid
 
+	var/whitelist_status
+	var/whitelist_flags
+
 	var/discord_link_id
 
 	var/last_login
@@ -63,6 +66,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		"is_permabanned" = DB_FIELDTYPE_INT,
 		"permaban_reason" = DB_FIELDTYPE_STRING_MAX,
 		"permaban_date" = DB_FIELDTYPE_STRING_LARGE,
+		"whitelist_status" = DB_FIELDTYPE_STRING_MAX,
 		"discord_link_id" = DB_FIELDTYPE_BIGINT,
 		"permaban_admin_id" = DB_FIELDTYPE_BIGINT,
 		"is_time_banned" = DB_FIELDTYPE_INT,
@@ -93,7 +97,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 			notes_add(ckey, note_text, admin.mob)
 	else
 		// notes_add already sends a message
-		message_admins("[key_name_admin(admin.mob)] has edited [ckey]'s [note_categories[note_category]] notes: [sanitize(note_text)]")
+		message_admins("[key_name_admin(admin.mob)] has edited [ckey]'s [GLOB.note_categories[note_category]] notes: [sanitize(note_text)]")
 	if(!is_confidential && note_category == NOTE_ADMIN && owning_client)
 		to_chat_immediate(owning_client, SPAN_WARNING(FONT_SIZE_LARGE("You have been noted by [key_name_admin(admin.mob, FALSE)].")))
 		to_chat_immediate(owning_client, SPAN_WARNING(FONT_SIZE_BIG("The note is : [sanitize(note_text)]")))
@@ -235,7 +239,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 			if(job_bans[safe_rank])
 				continue
 			var/old_rank = check_jobban_path(safe_rank)
-			jobban_keylist[old_rank][ckey] = ban_text
+			GLOB.jobban_keylist[old_rank][ckey] = ban_text
 			jobban_savebanfile()
 
 	add_note("Banned from [total_rank] - [ban_text]", FALSE, NOTE_ADMIN, TRUE, duration) // it is ban related note
@@ -321,20 +325,6 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 			value.delete()
 			job_bans -= value
 
-/datum/entity/player/proc/load_refs()
-	if(refs_loaded)
-		return
-	while(!notes_loaded || !jobbans_loaded)
-		stoplag()
-	for(var/key in job_bans)
-		var/datum/entity/player_job_ban/value = job_bans[key]
-		if(istype(value))
-			value.load_refs()
-	for(var/datum/entity/player_note/note in notes)
-		if(istype(note))
-			note.load_refs()
-	refs_loaded = TRUE
-
 /datum/entity_meta/player/on_read(datum/entity/player/player)
 	player.job_bans = list()
 	player.notes = list()
@@ -391,7 +381,12 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(discord_link_id)
 		discord_link = DB_ENTITY(/datum/entity/discord_link, discord_link_id)
 
+	if(whitelist_status)
+		var/list/whitelists = splittext(whitelist_status, "|")
 
+		for(var/whitelist in whitelists)
+			if(whitelist in GLOB.bitfields["whitelist_status"])
+				whitelist_flags |= GLOB.bitfields["whitelist_status"]["[whitelist]"]
 
 /datum/entity/player/proc/on_read_notes(list/datum/entity/player_note/_notes)
 	notes_loaded = TRUE
@@ -570,33 +565,33 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	save()
 
 /datum/entity/player/proc/migrate_bans()
-	if(!Banlist) // if Banlist cannot be located for some reason
+	if(!GLOB.Banlist) // if GLOB.Banlist cannot be located for some reason
 		LoadBans() // try to load the bans
-		if(!Banlist) // uh oh, can't find bans!
+		if(!GLOB.Banlist) // uh oh, can't find bans!
 			return
 
 	var/reason
 	var/expiration
 	var/banned_by
 
-	Banlist.cd = "/base"
+	GLOB.Banlist.cd = "/base"
 
-	for (var/A in Banlist.dir)
-		Banlist.cd = "/base/[A]"
+	for (var/A in GLOB.Banlist.dir)
+		GLOB.Banlist.cd = "/base/[A]"
 
-		if(ckey != Banlist["key"])
+		if(ckey != GLOB.Banlist["key"])
 			continue
 
-		if(Banlist["temp"])
-			if (!GetExp(Banlist["minutes"]))
+		if(GLOB.Banlist["temp"])
+			if (!GetExp(GLOB.Banlist["minutes"]))
 				return
 
-		if(expiration > Banlist["minutes"])
+		if(expiration > GLOB.Banlist["minutes"])
 			return // found longer ban
 
-		reason = Banlist["reason"]
-		banned_by = Banlist["bannedby"]
-		expiration = Banlist["minutes"]
+		reason = GLOB.Banlist["reason"]
+		banned_by = GLOB.Banlist["bannedby"]
+		expiration = GLOB.Banlist["minutes"]
 
 	migrated_bans = TRUE
 	save()
@@ -619,13 +614,13 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 /datum/entity/player/proc/migrate_jobbans()
 	if(!job_bans)
 		job_bans = list()
-	for(var/name in RoleAuthority.roles_for_mode)
+	for(var/name in GLOB.RoleAuthority.roles_for_mode)
 		var/safe_job_name = ckey(name)
-		if(!jobban_keylist[safe_job_name])
+		if(!GLOB.jobban_keylist[safe_job_name])
 			continue
 		if(!safe_job_name)
 			continue
-		var/reason = jobban_keylist[safe_job_name][ckey]
+		var/reason = GLOB.jobban_keylist[safe_job_name][ckey]
 		if(!reason)
 			continue
 
@@ -657,6 +652,23 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		stat.stat_number += num
 	stat.save()
 
+/datum/entity/player/proc/check_whitelist_status(flag_to_check)
+	if(whitelist_flags & flag_to_check)
+		return TRUE
+
+	return FALSE
+
+/datum/entity/player/proc/set_whitelist_status(field_to_set)
+	whitelist_flags = field_to_set
+
+	var/list/output = list()
+	for(var/bitfield in GLOB.bitfields["whitelist_status"])
+		if(field_to_set & GLOB.bitfields["whitelist_status"]["[bitfield]"])
+			output += bitfield
+	whitelist_status = output.Join("|")
+
+	save()
+
 /datum/entity_link/player_to_banning_admin
 	parent_entity = /datum/entity/player
 	child_entity = /datum/entity/player
@@ -685,6 +697,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	var/last_known_cid
 	var/last_known_ip
 	var/discord_link_id
+	var/whitelist_status
 
 /datum/entity_view_meta/players
 	root_record_type = /datum/entity/player
@@ -702,4 +715,5 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		"last_known_ip",
 		"last_known_cid",
 		"discord_link_id",
+		"whitelist_status"
 		)

@@ -149,15 +149,6 @@
 		return FALSE
 	. = ..()
 	handle_cloaking()
-
-/obj/item/coin/marine
-	name = "marine specialist weapon token"
-	desc = "Insert this into a specialist vendor in order to access a single highly dangerous weapon."
-	icon_state = "coin_platinum"
-
-/obj/item/coin/marine/attackby(obj/item/W as obj, mob/user as mob) //To remove attaching a string functionality
-	return
-
 /obj/structure/broken_apc
 	name = "\improper M577 armored personnel carrier"
 	desc = "A large, armored behemoth capable of ferrying marines around. \nThis one is sitting nonfunctional."

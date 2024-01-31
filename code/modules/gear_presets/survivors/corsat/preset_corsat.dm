@@ -35,11 +35,11 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(new_human), WEAR_FEET)
 	..()
 
-/datum/equipment_preset/survivor/interstellar_commerce_commission_liason/corsat
+/datum/equipment_preset/survivor/interstellar_commerce_commission_liaison/corsat
 	name = "Survivor - Interstellar Commerce Commission Liaison CORSAT"
 	assignment = "Interstellar Commerce Commission Corporate Liaison"
 
-/datum/equipment_preset/survivor/interstellar_commerce_commission_liason/corsat/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/interstellar_commerce_commission_liaison/corsat/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/formal(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CMB/limited(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat/white(new_human), WEAR_HEAD)

@@ -5,7 +5,7 @@
 	rank = JOB_MARINE
 	access = list(ACCESS_MARINE_PREP)
 	minimum_age = 18
-	paygrade = "ME2"
+	paygrade = PAY_SHORT_ME2
 	role_comm_title = "Mar"
 	skills = /datum/skills/pfc
 
@@ -25,13 +25,13 @@
 
 /datum/equipment_preset/uscm_event/dress/lcpl
 	name = "Dress Blues - (E-3) Lance Corporal"
-	paygrade = "ME3"
+	paygrade = PAY_SHORT_ME3
 
 //NCOs/SNCOs//
 
 /datum/equipment_preset/uscm_event/dress/nco
 	name = "Dress Blues - (E-4) Corporal"
-	paygrade = "ME4"
+	paygrade = PAY_SHORT_ME4
 	skills = /datum/skills/SL
 
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
@@ -44,11 +44,11 @@
 
 /datum/equipment_preset/uscm_event/dress/nco/sgt
 	name = "Dress Blues - (E-5) Sergeant"
-	paygrade = "ME5"
+	paygrade = PAY_SHORT_ME5
 
 /datum/equipment_preset/uscm_event/dress/nco/snco
 	name = "Dress Blues - (E-6) Staff Sergeant"
-	paygrade = "ME6"
+	paygrade = PAY_SHORT_ME6
 	skills = /datum/skills/SEA
 	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP)
 
@@ -58,29 +58,29 @@
 
 /datum/equipment_preset/uscm_event/dress/nco/snco/gysgt
 	name = "Dress Blues - (E-7) Gunnery Sergeant"
-	paygrade = "ME7"
+	paygrade = PAY_SHORT_ME7
 
 /datum/equipment_preset/uscm_event/dress/nco/snco/msgt
 	name = "Dress Blues - (E-8) Master Sergeant"
-	paygrade = "ME8"
+	paygrade = PAY_SHORT_ME8
 
 /datum/equipment_preset/uscm_event/dress/nco/snco/firstsgt
 	name = "Dress Blues - (E-8E) First Sergeant"
-	paygrade = "ME8E"
+	paygrade = PAY_SHORT_ME8E
 
 /datum/equipment_preset/uscm_event/dress/nco/snco/mgysgt
 	name = "Dress Blues - (E-9) Master Gunnery Sergeant"
-	paygrade = "ME9"
+	paygrade = PAY_SHORT_ME9
 
 /datum/equipment_preset/uscm_event/dress/nco/snco/sgtmaj
 	name = "Dress Blues - (E-9E) Sergeant Major"
-	paygrade = "ME9E"
+	paygrade = PAY_SHORT_ME9E
 
 //FIELD OFFICERS//
 
 /datum/equipment_preset/uscm_event/dress/officer
 	name = "Dress Blues - (O-1) 2nd Lieutenant"
-	paygrade = "MO1"
+	paygrade = PAY_SHORT_MO1
 	idtype = /obj/item/card/id/silver
 	skills = /datum/skills/SO
 	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_DATABASE, ACCESS_MARINE_MEDBAY)
@@ -100,11 +100,11 @@
 
 /datum/equipment_preset/uscm_event/dress/officer/firstlt
 	name = "Dress Blues - (O-2) 1st Lieutenant"
-	paygrade = "MO2"
+	paygrade = PAY_SHORT_MO2
 
 /datum/equipment_preset/uscm_event/dress/officer/capt
 	name = "Dress Blues - (O-3) Captain"
-	paygrade = "MO3"
+	paygrade = PAY_SHORT_MO3
 	idtype = /obj/item/card/id/gold
 	skills = /datum/skills/XO
 
@@ -115,7 +115,7 @@
 
 /datum/equipment_preset/uscm_event/dress/officer/co
 	name = "Dress Blues - (O-4) Major"
-	paygrade = "MO4"
+	paygrade = PAY_SHORT_MO4
 	idtype = /obj/item/card/id/gold
 	skills = /datum/skills/commander
 
@@ -125,19 +125,19 @@
 
 /datum/equipment_preset/uscm_event/dress/officer/co/ltcol
 	name = "Dress Blues - (O-5) Lieutenant Colonel"
-	paygrade = "MO5"
+	paygrade = PAY_SHORT_MO5
 	idtype = /obj/item/card/id/gold/council
 
 /datum/equipment_preset/uscm_event/dress/officer/co/col
 	name = "Dress Blues - (O-6) Colonel"
-	paygrade = "MO6"
+	paygrade = PAY_SHORT_MO6
 	idtype = /obj/item/card/id/general
 
 //GENERAL OFFICERS//
 
 /datum/equipment_preset/uscm_event/dress/officer/general
 	name = "Dress Blues - (O-8) Major General"
-	paygrade = "MO8"
+	paygrade = PAY_SHORT_MO8
 	idtype = /obj/item/card/id/general
 	skills = /datum/skills/general
 
@@ -155,8 +155,8 @@
 
 /datum/equipment_preset/uscm_event/dress/officer/general/ltgen
 	name = "Dress Blues - (O-9) Lieutenant General"
-	paygrade = "MO9"
+	paygrade = PAY_SHORT_MO9
 
 /datum/equipment_preset/uscm_event/dress/officer/general/gen
 	name = "Dress Blues - (O-10) General"
-	paygrade = "MO10"
+	paygrade = PAY_SHORT_MO10

@@ -1,8 +1,8 @@
-var/list/admin_ranks = list() //list of all ranks with associated rights
+GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 
 //load our rank - > rights associations
 /proc/load_admin_ranks()
-	admin_ranks.Cut()
+	GLOB.admin_ranks.Cut()
 
 	var/previous_rights = 0
 
@@ -46,19 +46,19 @@ var/list/admin_ranks = list() //list of all ranks with associated rights
 				if("host") rights |= RL_HOST
 				if("everything") rights |= RL_EVERYTHING
 
-		admin_ranks[rank] = rights
+		GLOB.admin_ranks[rank] = rights
 		previous_rights = rights
 
 	#ifdef TESTING
 	var/msg = "Permission Sets Built:\n"
-	for(var/rank in admin_ranks)
-		msg += "\t[rank] - [admin_ranks[rank]]\n"
+	for(var/rank in GLOB.admin_ranks)
+		msg += "\t[rank] - [GLOB.admin_ranks[rank]]\n"
 	testing(msg)
 	#endif
 
 /proc/load_admins()
 	//clear the datums references
-	admin_datums.Cut()
+	GLOB.admin_datums.Cut()
 	for(var/client/C in GLOB.admins)
 		C.remove_admin_verbs()
 		C.admin_holder = null
@@ -78,9 +78,9 @@ var/list/admin_ranks = list() //list of all ranks with associated rights
 
 	#ifdef TESTING
 	var/msg = "Admins Built:\n"
-	for(var/ckey in admin_datums)
+	for(var/ckey in GLOB.admin_datums)
 		var/rank
-		var/datum/admins/D = admin_datums[ckey]
+		var/datum/admins/D = GLOB.admin_datums[ckey]
 		if(D) rank = D.rank
 		msg += "\t[ckey] - [rank]\n"
 	testing(msg)
@@ -115,7 +115,7 @@ var/list/admin_ranks = list() //list of all ranks with associated rights
 			return
 
 	//load permissions associated with this rank
-	var/rights = admin_ranks[rank]
+	var/rights = GLOB.admin_ranks[rank]
 
 	//create the admin datum and store it for later use
 	var/datum/admins/D = new /datum/admins(rank, rights, ckey, extra_titles)

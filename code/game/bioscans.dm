@@ -111,7 +111,7 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 
 /datum/bioscan_data/proc/ares_can_bioscan()
 	var/datum/ares_link/link = GLOB.ares_link
-	if(!istype(link))
+	if(!istype(link) || !ares_is_active())
 		return FALSE
 	if(link.processor_bioscan && !link.processor_bioscan.inoperable())
 		return TRUE
@@ -123,8 +123,8 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 		message_admins("An ARES Bioscan has failed.")
 		var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
 		var/input = "Bioscan failed. \n\nInvestigation into Bioscan subsystem recommended."
-		log_ares_bioscan(name, input)
-		if(ares_can_interface())
+		log_ares_bioscan(name, input, forced)
+		if(ares_can_interface() || forced)
 			marine_announcement(input, name, 'sound/misc/interference.ogg', logging = ARES_LOG_NONE)
 		return
 	//Adjust the randomness there so everyone gets the same thing

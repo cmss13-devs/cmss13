@@ -81,7 +81,7 @@
 		junction = 0
 		if(anchored)
 			var/turf/TU
-			for(var/dirn in cardinal)
+			for(var/dirn in GLOB.cardinals)
 				TU = get_step(src, dirn)
 				var/obj/structure/window/W = locate() in TU
 				if(W && W.anchored && W.density && W.legacy_full) //Only counts anchored, non-destroyed, legacy full-tile windows.
@@ -353,7 +353,7 @@
 //This proc is used to update the icons of nearby windows.
 /obj/structure/window/proc/update_nearby_icons()
 	update_icon()
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinals)
 		for(var/obj/structure/window/W in get_step(src, direction))
 			W.update_icon()
 
@@ -455,11 +455,8 @@
 
 /obj/structure/window/reinforced/ultra/Initialize()
 	. = ..()
-	GLOB.hijack_bustable_windows += src
-
-/obj/structure/window/reinforced/ultra/Destroy()
-	GLOB.hijack_bustable_windows -= src
-	return ..()
+	if(is_mainship_level(z))
+		RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_IMPACTED, PROC_REF(deconstruct))
 
 /obj/structure/window/reinforced/full
 	flags_atom = FPRINT
@@ -585,11 +582,9 @@
 
 /obj/structure/window/framed/almayer/hull/hijack_bustable/Initialize()
 	. = ..()
-	GLOB.hijack_bustable_windows += src
+	if(is_mainship_level(z))
+		RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_IMPACTED, PROC_REF(deconstruct))
 
-/obj/structure/window/framed/almayer/hull/hijack_bustable/Destroy()
-	GLOB.hijack_bustable_windows -= src
-	return ..()
 /obj/structure/window/framed/almayer/white
 	icon_state = "white_rwindow0"
 	basestate = "white_rwindow"
@@ -865,7 +860,7 @@
 		return
 
 	triggered = TRUE
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinals)
 		if(direction == from_dir)
 			continue //doesn't check backwards
 		for(var/obj/structure/window/framed/prison/reinforced/hull/W in get_step(src,direction) )
@@ -958,7 +953,7 @@
 		return
 
 	triggered = 1
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinals)
 		if(direction == from_dir)
 			continue //doesn't check backwards
 

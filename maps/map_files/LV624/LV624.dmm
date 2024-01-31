@@ -5168,7 +5168,7 @@
 	},
 /area/lv624/lazarus/robotics)
 "azb" = (
-/obj/structure/prop/mech/mech_parts/part/gygax_torso,
+/obj/structure/prop/mech/parts/gygax_torso,
 /turf/open/floor{
 	icon_state = "vault"
 	},
@@ -5516,7 +5516,7 @@
 	},
 /area/lv624/lazarus/robotics)
 "aAk" = (
-/obj/structure/prop/mech/mech_parts/chassis/gygax,
+/obj/structure/prop/mech/parts/chassis/gygax,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "vault"
@@ -6032,7 +6032,7 @@
 /area/lv624/ground/jungle/central_jungle)
 "aBR" = (
 /obj/structure/largecrate,
-/obj/structure/prop/mech/mech_parts/part/gygax_armor{
+/obj/structure/prop/mech/parts/gygax_armor{
 	layer = 1
 	},
 /turf/open/floor/plating{

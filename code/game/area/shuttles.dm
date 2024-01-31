@@ -82,3 +82,4 @@
 	icon = 'icons/turf/area_almayer.dmi'
 	icon_state = "lifeboat"
 	flags_atom = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL

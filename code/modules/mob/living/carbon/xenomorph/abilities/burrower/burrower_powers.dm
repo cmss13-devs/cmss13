@@ -12,7 +12,7 @@
 		return
 
 	var/area/current_area = get_area(current_turf)
-	if(current_area.flags_area && AREA_NOTUNNEL)
+	if(current_area.flags_area & AREA_NOTUNNEL)
 		to_chat(src, SPAN_XENOWARNING("There's no way to burrow here."))
 		return
 

@@ -149,6 +149,8 @@
 	picked = TRUE
 	icon_state = consumed_icon_state
 	update_icon()
+	if(!QDELETED(bound_xeno))
+		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("One of our picked resin fruits has been consumed."))
 	QDEL_IN(src, 1 SECONDS)
 
 /obj/effect/alien/resin/fruit/attack_alien(mob/living/carbon/xenomorph/affected_xeno)

@@ -663,11 +663,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	// weapon info
 
-	data["icon"] = SSassets.transport.get_asset_url("no_name.png")
-
-	if(SSassets.cache["[base_gun_icon].png"])
-		data["icon"] = SSassets.transport.get_asset_url("[base_gun_icon].png")
-
+	data["icon"] = base_gun_icon
 	data["name"] = name
 	data["desc"] = desc
 	data["two_handed_only"] = (flags_gun_features & GUN_WIELDED_FIRING_ONLY)
@@ -727,8 +723,8 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 /obj/item/weapon/gun/ui_assets(mob/user)
 	. = ..() || list()
-	. += get_asset_datum(/datum/asset/simple/firemodes)
-	//. += get_asset_datum(/datum/asset/spritesheet/gun_lineart)
+	. += get_asset_datum(/datum/asset/spritesheet/gun_lineart_modes)
+	. += get_asset_datum(/datum/asset/spritesheet/gun_lineart)
 
 // END TGUI \\
 

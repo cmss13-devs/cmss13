@@ -61,32 +61,8 @@
 		"nano/templates/",
 	)
 
-/datum/asset/directory/nanoui/weapons
-	common_dirs = list(
-		"nano/images/weapons/",
-	)
-
-	uncommon_dirs = list()
-
-/datum/asset/directory/nanoui/weapons/send(client)
-	if(!client)
-		log_debug("Warning! Tried to send nanoui weapon data with a null client! (asset_list_items.dm line 93)")
-		return
-	SSassets.transport.send_assets(client, common)
-
-
 /datum/asset/simple/nanoui_images
 	keep_local_name = TRUE
-
-	assets = list(
-		"auto.png" = 'nano/images/weapons/auto.png',
-		"burst.png" = 'nano/images/weapons/burst.png',
-		"single.png" = 'nano/images/weapons/single.png',
-		"disabled_automatic.png" = 'nano/images/weapons/disabled_automatic.png',
-		"disabled_burst.png" = 'nano/images/weapons/disabled_burst.png',
-		"disabled_single.png" = 'nano/images/weapons/disabled_single.png',
-		"no_name.png" = 'nano/images/weapons/no_name.png',
-	)
 
 	var/list/common_dirs = list(
 		"nano/images/",
@@ -401,6 +377,12 @@
 	InsertAll("", 'icons/obj/items/weapons/guns/lineart.dmi')
 	..()
 
+/datum/asset/spritesheet/gun_lineart_modes
+	name = "gunlineartmodes"
+
+/datum/asset/spritesheet/gun_lineart_modes/register()
+	InsertAll("", 'icons/obj/items/weapons/guns/lineart_modes.dmi')
+	..()
 
 /datum/asset/simple/orbit
 	assets = list(
@@ -413,17 +395,6 @@
 		"ntosradarpointer.png" = 'icons/images/ui_images/ntosradar_pointer.png',
 		"ntosradarpointerS.png" = 'icons/images/ui_images/ntosradar_pointer_S.png'
 	)
-
-/datum/asset/simple/firemodes
-	assets = list(
-		"auto.png" = 'html/images/auto.png',
-		"disabled_auto.png" = 'html/images/disabled_automatic.png',
-		"burst.png" = 'html/images/burst.png',
-		"disabled_burst.png" = 'html/images/disabled_burst.png',
-		"single.png" = 'html/images/single.png',
-		"disabled_single.png" = 'html/images/disabled_single.png',
-	)
-
 
 /datum/asset/simple/particle_editor
 	assets = list(

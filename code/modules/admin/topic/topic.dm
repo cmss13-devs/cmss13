@@ -229,6 +229,178 @@
 			alert(usr, "This ban has already been lifted / does not exist.", "Error", "Ok")
 		unbanpanel()
 
+	else if(href_list["unban_perma"])
+		var/datum/entity/player/unban_player = get_player_from_key(href_list["unban_perma"])
+		if(!(tgui_alert(owner, "Do you want to unban [unban_player.ckey]? They are currently permabanned for: [unban_player.permaban_reason], since [unban_player.permaban_date].", "Unban Player", list("Yes", "No")) == "Yes"))
+			return
+
+		if(!unban_player.is_permabanned)
+			to_chat(owner, "The player is not currently permabanned.")
+
+		unban_player.is_permabanned = FALSE
+		unban_player.permaban_admin_id = null
+		unban_player.permaban_date = null
+		unban_player.permaban_reason = null
+
+		unban_player.save()
+
+		log_and_message_admins("[key_name_admin(owner)] has removed the permanent ban on [unban_player.ckey].")
+
+	else if(href_list["sticky"])
+		if(href_list["new_sticky"])
+			var/identifier = tgui_input_text(owner, "Name of the primary CKEY you are adding a stickyban to.", "BuildABan")
+			var/reason = tgui_input_text(owner, "What's the reason for the ban? This is shown internally, and not displayed in notes and ban messages.", "BuildABan")
+			var/message = tgui_input_text(owner, "What message should be given to the impacted users?", "BuildABan")
+
+			var/datum/entity/stickyban/new_sticky = SSstickyban.add_stickyban(identifier, reason, message)
+
+			if(new_sticky)
+				var/list/impacted_ckeys = splittext(tgui_input_text(owner, "Which CKEYs should be impacted by this ban? Include the primary ckey, separated by semicolons.", "BuildABan", "player1;player2;player3"), ";")
+
+				for(var/ckey in impacted_ckeys)
+					SSstickyban.add_matched_ckey(new_sticky.id, ckey)
+
+				var/list/impacted_cids = splittext(tgui_input_text(owner, "Which CIDs should be impacted by this ban? Separate with semicolons.", "BuildABan", "12345678;87654321"), ";")
+				for(var/cid in impacted_cids)
+					SSstickyban.add_matched_cid(new_sticky.id, cid)
+
+				var/list/impacted_ips = splittext(tgui_input_text(owner, "Which IPs should be impacted by this ban? Separate with semicolons.", "BuildABan", "1.1.1.1;8.8.8.8"), ";")
+				for(var/ip in impacted_ips)
+					SSstickyban.add_matched_ip(new_sticky.id, ip)
+
+			return
+
+		if(href_list["view_all_ckeys"])
+			var/list/datum/view_record/stickyban_matched_ckey/all_ckeys = DB_VIEW(/datum/view_record/stickyban_matched_ckey,
+				DB_COMP("linked_stickyban", DB_EQUALS, href_list["sticky"])
+			)
+
+			var/list/keys = list()
+			for(var/datum/view_record/stickyban_matched_ckey/match as anything in all_ckeys)
+				keys += match.ckey
+
+			show_browser(owner, english_list(keys), "Stickyban Keys", "stickykeys")
+			return
+
+		if(href_list["view_all_cids"])
+			var/list/datum/view_record/stickyban_matched_cid/all_cids = DB_VIEW(/datum/view_record/stickyban_matched_cid,
+				DB_COMP("linked_stickyban", DB_EQUALS, href_list["sticky"])
+			)
+
+			var/list/cids = list()
+			for(var/datum/view_record/stickyban_matched_cid/match as anything in all_cids)
+				cids += match.cid
+
+			show_browser(owner, english_list(cids), "Stickyban CIDs", "stickycids")
+			return
+
+		if(href_list["view_all_ips"])
+			var/list/datum/view_record/stickyban_matched_ip/all_ips = DB_VIEW(/datum/view_record/stickyban_matched_ip,
+				DB_COMP("linked_stickyban", DB_EQUALS, href_list["sticky"])
+			)
+
+			var/list/ips = list()
+			for(var/datum/view_record/stickyban_matched_ip/match as anything in all_ips)
+				ips += match.ip
+
+			show_browser(owner, english_list(ips), "Stickyban IPs", "stickycips")
+			return
+
+		var/datum/entity/stickyban/sticky = DB_ENTITY(/datum/entity/stickyban, href_list["sticky"])
+		if(!sticky)
+			return
+
+		sticky.sync()
+
+		if(href_list["whitelist_ckey"])
+			var/ckey_to_whitelist = ckey(tgui_input_text(owner, "What CKEY should be whitelisted? Editing stickyban: [sticky.identifier]"))
+			if(!ckey_to_whitelist)
+				return
+
+			SSstickyban.whitelist_ckey(sticky.id, ckey_to_whitelist)
+
+		if(href_list["add"])
+			var/option = tgui_input_list(owner, "What do you want to add?", "AddABan", list("CID", "CKEY", "IP"))
+			if(!option)
+				return
+
+			var/to_add = tgui_input_text(owner, "Provide the [option] to add to the stickyban.", "AddABan")
+			if(!to_add)
+				return
+
+			switch(option)
+				if("CID")
+					SSstickyban.add_matched_cid(sticky.id, to_add)
+				if("CKEY")
+					SSstickyban.add_matched_ckey(sticky.id, to_add)
+				if("IP")
+					SSstickyban.add_matched_ip(sticky.id, to_add)
+
+
+		if(href_list["remove"])
+			var/option = tgui_input_list(owner, "What do you want to remove?", "DelABan", list("Entire Stickyban", "CID", "CKEY", "IP"))
+			switch(option)
+				if("Entire Stickyban")
+					if(!(tgui_alert(owner, "Are you sure you want to remove this stickyban? Identifier: [sticky.identifier] Reason: [sticky.reason]", "Confirm", list("Yes", "No")) == "Yes"))
+						return
+
+					sticky.active = FALSE
+					sticky.save()
+
+				if("CID")
+					var/list/datum/view_record/stickyban_matched_cid/all_cids = DB_VIEW(/datum/view_record/stickyban_matched_cid,
+						DB_COMP("linked_stickyban", DB_EQUALS, sticky.id)
+					)
+
+					var/list/cid_to_record_id = list()
+					for(var/datum/view_record/stickyban_matched_cid/match in all_cids)
+						cid_to_record_id["[match.cid]"] = match.id
+
+					var/picked = tgui_input_list(owner, "Which CID to remove?", "DelABan", cid_to_record_id)
+					if(!picked)
+						return
+
+					picked = cid_to_record_id[picked]
+
+					var/datum/entity/stickyban_matched_cid/sticky_cid = DB_ENTITY(/datum/entity/stickyban_matched_cid, picked)
+					sticky_cid.delete()
+
+				if("CKEY")
+					var/list/datum/view_record/stickyban_matched_ckey/all_ckeys = DB_VIEW(/datum/view_record/stickyban_matched_ckey,
+						DB_COMP("linked_stickyban", DB_EQUALS, sticky.id)
+					)
+
+					var/list/ckey_to_record_id = list()
+					for(var/datum/view_record/stickyban_matched_ckey/match in all_ckeys)
+						ckey_to_record_id["[match.ckey]"] = match.id
+
+					var/picked = tgui_input_list(owner, "Which CKEY to remove?", "DelABan", ckey_to_record_id)
+					if(!picked)
+						return
+
+					picked = ckey_to_record_id[picked]
+
+					var/datum/entity/stickyban_matched_ckey/sticky_ckey = DB_ENTITY(/datum/entity/stickyban_matched_ckey, picked)
+					sticky_ckey.delete()
+
+				if("IP")
+					var/list/datum/view_record/stickyban_matched_ip/all_ips = DB_VIEW(/datum/view_record/stickyban_matched_ip,
+						DB_COMP("linked_stickyban", DB_EQUALS, sticky.id)
+					)
+
+					var/list/ip_to_record_id = list()
+					for(var/datum/view_record/stickyban_matched_ip/match in all_ips)
+						ip_to_record_id["[match.ip]"] = match.id
+
+					var/picked = tgui_input_list(owner, "Which IP to remove?", "DelABan", ip_to_record_id)
+					if(!picked)
+						return
+
+					picked = ip_to_record_id[picked]
+
+					var/datum/entity/stickyban_matched_ip/sticky_ip = DB_ENTITY(/datum/entity/stickyban_matched_ip, picked)
+					sticky_ip.delete()
+
 	else if(href_list["warn"])
 		usr.client.warn(href_list["warn"])
 

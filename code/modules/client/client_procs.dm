@@ -299,6 +299,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(!(connection in list("seeker", "web"))) //Invalid connection type.
 		return null
 
+//	if(world.IsBanned(key, address, computer_id))
+//		qdel(src, TRUE)
+
 	GLOB.clients += src
 	GLOB.directory[ckey] = src
 

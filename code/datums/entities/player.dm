@@ -458,43 +458,27 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 /datum/entity/player/proc/check_ban(computer_id, address)
 	. = list()
 
-	var/list/linked_bans = check_for_sticky_ban(address, computer_id)
-	if(islist(linked_bans))
-		var/datum/view_record/stickyban_list_view/SLW = LAZYACCESS(linked_bans, 1)
-		if(SLW)
-			var/reason = ""
+	var/list/datum/view_record/stickyban/all_stickies = check_for_sticky_ban(ckey, address, computer_id)
+	if(islist(all_stickies))
+		var/datum/view_record/stickyban/sticky = all_stickies[1]
 
-			if(SLW.address == address)
-				reason += "IP Address Matches; "
-			if(SLW.computer_id == computer_id)
-				reason += "CID Matches; "
-			if(SLW.ckey == ckey)
-				reason += "Ckey Matches; "
+		log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Stickybanned (Reason: [sticky.reason])")
+		message_admins("Failed Login: [ckey] (IP: [last_known_ip], CID: [last_known_cid]) - Stickybanned (Reason: [sticky.reason])")
 
-			var/source_id = SLW.linked_stickyban
-			var/source_reason = SLW.linked_reason
-			var/source_ckey = SLW.linked_ckey
-			if(!source_id)
-				source_id = "[SLW.entry_id]"
-				source_reason = SLW.reason
-				source_ckey = SLW.ckey
+		var/appeal
+		if(CONFIG_GET(string/banappeals))
+			appeal = "\nFor more information on your ban, or to appeal, head to <a href='[CONFIG_GET(string/banappeals)]'>[CONFIG_GET(string/banappeals)]</a>"
 
-			log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Stickybanned (Linked to [source_ckey]; Reason: [source_reason])")
-			message_admins("Failed Login: [ckey] (IP: [last_known_ip], CID: [last_known_cid]) - Stickybanned (Linked to ckey [source_ckey]; Reason: [source_reason])")
+		.["desc"] = "\nReason: Stickybanned - [sticky.reason]\n[appeal]"
+		.["reason"] = "ckey/id"
 
-			DB_FILTER(/datum/entity/player_sticky_ban,
-				DB_AND(
-					DB_COMP("ckey", DB_EQUALS, ckey),
-					DB_COMP("address", DB_EQUALS, address),
-					DB_COMP("computer_id", DB_EQUALS, computer_id)
-				), CALLBACK(src, PROC_REF(process_stickyban), address, computer_id, source_id, reason, null))
+		SSstickyban.match_sticky(sticky.id, ckey, address, computer_id)
+		return
 
-			.["desc"] = "\nReason: Stickybanned\nExpires: PERMANENT"
-			.["reason"] = "ckey/id"
-			return .
 
 	if(!is_time_banned && !is_permabanned)
 		return null
+
 	var/appeal
 	if(CONFIG_GET(string/banappeals))
 		appeal = "\nFor more information on your ban, or to appeal, head to <a href='[CONFIG_GET(string/banappeals)]'>[CONFIG_GET(string/banappeals)]</a>"

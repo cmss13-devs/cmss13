@@ -3,8 +3,6 @@ SUBSYSTEM_DEF(stickyban)
 	init_order = SS_INIT_STICKY
 	flags = SS_NO_FIRE
 
-	var/list/active_sticky
-
 /datum/controller/subsystem/stickyban/Initialize()
 	set waitfor = FALSE
 
@@ -21,6 +19,110 @@ SUBSYSTEM_DEF(stickyban)
 
 		world.SetConfig("ban", existing_ban, null)
 
+/datum/controller/subsystem/stickyban/proc/match_sticky(existing_ban_id, ckey, address, computer_id)
+	if(!existing_ban_id)
+		return
+
+	if(ckey)
+		var/datum/view_record/stickyban_matched_ckey/matched_ckey = DB_VIEW(/datum/view_record/stickyban_matched_ckey,
+			DB_AND(
+				DB_COMP("linked_stickyban", DB_EQUALS, existing_ban_id),
+				DB_COMP("ckey", DB_EQUALS, ckey)
+			)
+		)
+
+		if(!length(matched_ckey))
+			add_matched_ckey(existing_ban_id, ckey)
+
+	if(address)
+		var/datum/view_record/stickyban_matched_ip/matched_ip = DB_VIEW(/datum/view_record/stickyban_matched_ip,
+			DB_AND(
+				DB_COMP("linked_stickyban", DB_EQUALS, existing_ban_id),
+				DB_COMP("ip", DB_EQUALS, address)
+			)
+		)
+
+		if(!length(matched_ip))
+			add_matched_ip(existing_ban_id, address)
+
+	if(computer_id)
+		var/datum/view_record/stickyban_matched_cid/matched_cid = DB_VIEW(/datum/view_record/stickyban_matched_cid,
+			DB_AND(
+				DB_COMP("linked_stickyban", DB_EQUALS, existing_ban_id),
+				DB_COMP("cid", DB_EQUALS, computer_id)
+			)
+		)
+
+		if(!length(matched_cid))
+			add_matched_ip(existing_ban_id, computer_id)
+
+/datum/controller/subsystem/stickyban/proc/add_stickyban(identifier, reason, message, datum/entity/player/banning_admin, override_date)
+	var/datum/entity/stickyban/new_sticky = DB_ENTITY(/datum/entity/stickyban)
+	new_sticky.identifier = identifier
+
+	new_sticky.reason = reason
+	new_sticky.message = message
+
+	if(banning_admin)
+		new_sticky.adminid = banning_admin.id
+
+	new_sticky.date = override_date ? override_date : "[time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")]"
+	new_sticky.save()
+
+	return new_sticky
+
+
+/datum/controller/subsystem/stickyban/proc/add_matched_ckey(existing_ban_id, key)
+	var/datum/entity/stickyban_matched_ckey/matched_ckey = DB_ENTITY(/datum/entity/stickyban_matched_ckey)
+
+	matched_ckey.ckey = ckey(key)
+	matched_ckey.linked_stickyban = existing_ban_id
+
+	matched_ckey.save()
+
+/datum/controller/subsystem/stickyban/proc/add_matched_ip(existing_ban_id, ip)
+	var/datum/entity/stickyban_matched_ip/matched_ip = DB_ENTITY(/datum/entity/stickyban_matched_ip)
+
+	matched_ip.ip = ip
+	matched_ip.linked_stickyban = existing_ban_id
+
+	matched_ip.save()
+
+/datum/controller/subsystem/stickyban/proc/add_matched_cid(existing_ban_id, cid)
+	var/datum/entity/stickyban_matched_cid/matched_cid = DB_ENTITY(/datum/entity/stickyban_matched_cid)
+
+	matched_cid.cid = cid
+	matched_cid.linked_stickyban = existing_ban_id
+
+	matched_cid.save()
+
+/datum/controller/subsystem/stickyban/proc/whitelist_ckey(existing_ban_id, key)
+	key = ckey(key)
+
+	if(!key)
+		return
+
+	var/id_to_select
+
+	var/list/datum/view_record/stickyban_matched_ckey/existing_matches = DB_VIEW(/datum/view_record/stickyban_matched_ckey,
+		DB_AND(
+			DB_COMP("linked_stickyban", DB_EQUALS, existing_ban_id),
+			DB_COMP("ckey", DB_EQUALS, key)
+		)
+	)
+
+	if(length(existing_matches))
+		var/datum/view_record/stickyban_matched_ckey/match = existing_matches[1]
+		id_to_select = match.id
+
+	var/datum/entity/stickyban_matched_ckey/whitelisted_ckey = DB_ENTITY(/datum/entity/stickyban_matched_ckey, id_to_select)
+
+	whitelisted_ckey.ckey = key
+	whitelisted_ckey.linked_stickyban = existing_ban_id
+	whitelisted_ckey.whitelisted = TRUE
+
+	whitelisted_ckey.save()
+
 /datum/controller/subsystem/stickyban/proc/import_sticky(identifier, list/ban_data)
 	if(ban_data["type"] != "sticky")
 		handle_old_perma(identifier, ban_data)
@@ -29,63 +131,33 @@ SUBSYSTEM_DEF(stickyban)
 	if(!ban_data["message"])
 		ban_data["message"] = "Evasion"
 
-	var/datum/entity/stickyban/new_sticky = DB_ENTITY(/datum/entity/stickyban)
-	new_sticky.identifier = identifier
-
-	new_sticky.reason = ban_data["reason"]
-	new_sticky.message = ban_data["message"]
-
-	new_sticky.date = "LEGACY"
-	new_sticky.save()
-	new_sticky.detach()
+	add_stickyban(identifier, ban_data["reason"], ban_data["message"], override_date = "LEGACY")
 
 /datum/entity_meta/stickyban/on_insert(datum/entity/stickyban/new_sticky)
 	var/list/ban_data = params2list(world.GetConfig("ban", new_sticky.identifier))
 
+	if(!length(ban_data))
+		return
+
 	if(ban_data["keys"])
 		var/list/keys = splittext(ban_data["keys"], ",")
 		for(var/key in keys)
-			var/datum/entity/stickyban_matched_ckey/matched_ckey = DB_ENTITY(/datum/entity/stickyban_matched_ckey)
-
-			matched_ckey.ckey = ckey(key)
-			matched_ckey.linked_stickyban = new_sticky.id
-
-			matched_ckey.save()
-			matched_ckey.detach()
+			SSstickyban.add_matched_ckey(new_sticky.id, key)
 
 	if(ban_data["whitelist"])
 		var/list/keys = splittext(ban_data["whitelist"], ",")
 		for(var/key in keys)
-			var/datum/entity/stickyban_matched_ckey/whitelisted_ckey = DB_ENTITY(/datum/entity/stickyban_matched_ckey)
-
-			whitelisted_ckey.ckey = ckey(key)
-			whitelisted_ckey.linked_stickyban = new_sticky.id
-			whitelisted_ckey.whitelisted = TRUE
-
-			whitelisted_ckey.save()
-			whitelisted_ckey.detach()
+			SSstickyban.whitelist_ckey(new_sticky.id, key)
 
 	if(ban_data["computer_id"])
 		var/list/cids = splittext(ban_data["computer_id"], ",")
 		for(var/cid in cids)
-			var/datum/entity/stickyban_matched_cid/matched_cid = DB_ENTITY(/datum/entity/stickyban_matched_cid)
-
-			matched_cid.cid = cid
-			matched_cid.linked_stickyban = new_sticky.id
-
-			matched_cid.save()
-			matched_cid.detach()
+			SSstickyban.add_matched_cid(new_sticky.id, cid)
 
 	if(ban_data["IP"])
 		var/list/ips = splittext(ban_data["IP"], ",")
 		for(var/ip in ips)
-			var/datum/entity/stickyban_matched_ip/matched_ip = DB_ENTITY(/datum/entity/stickyban_matched_ip)
-
-			matched_ip.ip = ip
-			matched_ip.linked_stickyban = new_sticky.id
-
-			matched_ip.save()
-			matched_ip.detach()
+			SSstickyban.add_matched_ip(new_sticky.id, ip)
 
 	world.SetConfig("ban", new_sticky.identifier, null)
 

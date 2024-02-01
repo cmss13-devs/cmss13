@@ -168,7 +168,7 @@
 			target.apply_armoured_damage(get_xeno_damage_slash(target, xeno.caste.melee_damage_upper), ARMOR_MELEE, BRUTE, rand_zone())
 			playsound(get_turf(target), 'sound/weapons/alien_claw_flesh4.ogg', 30, TRUE)
 			xeno.flick_heal_overlay(1 SECONDS, "#00B800")
-			xeno.gain_health(30)
+			xeno.gain_health(get_xeno_damage_slash(target, xeno.caste.melee_damage_upper))
 			xeno.animation_attack_on(target)
 
 	xeno.emote("roar")
@@ -189,7 +189,7 @@
 	if(distance > 2)
 		return
 
-	var/list/turf/path = get_line(xeno, hit_target, include_start_atom = FALSE)
+	var/list/turf/path = get_line(xeno, targeted_atom, include_start_atom = FALSE)
 	for(var/turf/path_turf as anything in path)
 		if(path_turf.density)
 			to_chat(xeno, SPAN_WARNING("There's something blocking us from striking!"))
@@ -212,6 +212,14 @@
 				to_chat(xeno, SPAN_WARNING("There's something blocking us from striking!"))
 				return
 
+	for(var/mob/living/carbon/carbonara in get_turf(targeted_atom))
+		hit_target = carbonara
+		to_chat(xeno, SPAN_XENODANGER("We attack [hit_target] with our tail, throwing it back after stabbing it with our tail!"))
+
+	if(targeted_atom == hit_target) //reward for a direct hit
+		to_chat(xeno, SPAN_XENOHIGHDANGER("We directly slam [hit_target] with our tail, throwing it back after impaling it on our tail!"))
+		hit_target.apply_armoured_damage(15, ARMOR_MELEE, BRUTE, "chest")
+
 	if(!isxeno_human(hit_target) || xeno.can_not_harm(hit_target) || hit_target.stat == DEAD)
 		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] swipes their tail through the air!"), SPAN_XENOWARNING("We swipe our tail through the air!"))
 		apply_cooldown(cooldown_modifier = 0.2)
@@ -221,11 +229,8 @@
 	// FX
 	var/stab_direction
 
-	to_chat(xeno, SPAN_XENOHIGHDANGER("We directly slam [hit_target] with our tail, throwing it back after impaling it on our tail!"))
+	stab_direction = turn(get_dir(xeno, targeted_atom), 180)
 	playsound(hit_target,'sound/weapons/alien_tail_attack.ogg', 50, TRUE)
-
-	stab_direction = turn(get_dir(xeno, hit_target), 180)
-
 	if(hit_target.mob_size < MOB_SIZE_BIG)
 		step_away(hit_target, xeno)
 

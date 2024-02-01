@@ -79,9 +79,7 @@
 	dir = 5
 	},
 /obj/effect/spawner/gibspawner/human,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin6"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_top_left,
 /area/desert_dam/building/bar/bar)
 "bC" = (
 /obj/structure/barricade/sandbags/wired{
@@ -133,9 +131,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "cu" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "cH" = (
 /obj/item/stack/sheet/metal,
@@ -156,9 +152,7 @@
 	network = null;
 	pixel_y = 21
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/dark_grey,
 /area/desert_dam/building/bar/bar)
 "cR" = (
 /obj/effect/landmark/crap_item,
@@ -211,9 +205,7 @@
 /obj/item/ammo_box/rounds/type71{
 	bullet_amount = 129
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/dark_grey,
 /area/desert_dam/building/bar/bar)
 "ee" = (
 /obj/effect/decal/warning_stripes{
@@ -285,9 +277,7 @@
 	icon_state = "paper_words";
 	item_state = "paper_words"
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/dark_grey,
 /area/desert_dam/building/bar/bar)
 "fk" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -328,9 +318,7 @@
 "fP" = (
 /obj/structure/bed/bedroll,
 /obj/item/bedsheet/brown,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "fR" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -431,9 +419,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/survivor_spawner/upp_medic,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "hH" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -639,9 +625,7 @@
 "kp" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/prop/almayer/flight_recorder/colony,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "kB" = (
 /obj/structure/barricade/sandbags/wired{
@@ -776,9 +760,7 @@
 "ny" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/prop/almayer/comp_closed,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "nz" = (
 /obj/effect/decal/cleanable/dirt,
@@ -790,9 +772,7 @@
 /area/desert_dam/building/bar/bar)
 "nB" = (
 /obj/effect/landmark/survivor_spawner/upp/soldier,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin5"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
 /area/desert_dam/building/bar/bar)
 "nC" = (
 /obj/effect/decal/cleanable/dirt,
@@ -905,9 +885,7 @@
 	dir = 2;
 	name = "\improper Fulcrum Airlock"
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "pA" = (
 /obj/effect/decal/cleanable/dirt,
@@ -920,9 +898,7 @@
 "pM" = (
 /obj/structure/bed/chair/dropship/passenger,
 /obj/item/storage/belt/medical/lifesaver/upp,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/dark_grey,
 /area/desert_dam/building/bar/bar)
 "pO" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -1015,7 +991,7 @@
 /area/desert_dam/building/bar/bar)
 "se" = (
 /obj/item/trash/semki,
-/turf/open/shuttle/dropship,
+/turf/open/shuttle/dropship/can_surgery,
 /area/desert_dam/building/bar/bar)
 "sn" = (
 /obj/structure/barricade/sandbags/wired{
@@ -1057,9 +1033,7 @@
 	dir = 4;
 	pixel_y = -5
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin7"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_top_right,
 /area/desert_dam/building/bar/bar)
 "sH" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1088,15 +1062,11 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "tu" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin8"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_bottom_right,
 /area/desert_dam/building/bar/bar)
 "tA" = (
 /obj/item/tool/wrench,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "tE" = (
 /obj/structure/flora/grass/desert/heavygrass_3,
@@ -1151,9 +1121,7 @@
 	pixel_y = 7;
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/dark_grey,
 /area/desert_dam/building/bar/bar)
 "uF" = (
 /turf/open/desert/dirt{
@@ -1163,9 +1131,7 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "uZ" = (
 /obj/item/roller,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "vk" = (
 /obj/structure/flora/grass/desert/lightgrass_9,
@@ -1301,9 +1267,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S-corner"
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/dark_grey,
 /area/desert_dam/building/bar/bar)
 "xg" = (
 /obj/structure/prop/dam/boulder/boulder1,
@@ -1454,7 +1418,7 @@
 /obj/item/ammo_magazine/rifle/type71/heap{
 	current_rounds = 0
 	},
-/turf/open/shuttle/dropship,
+/turf/open/shuttle/dropship/can_surgery,
 /area/desert_dam/building/bar/bar)
 "yG" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -1598,9 +1562,7 @@
 /obj/structure/machinery/light/double{
 	dir = 8
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin6"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_top_left,
 /area/desert_dam/building/bar/bar)
 "Bu" = (
 /obj/effect/decal/sand_overlay/sand1,
@@ -1626,9 +1588,7 @@
 /obj/item/ammo_magazine/rifle/type71/heap{
 	current_rounds = 0
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/dark_grey,
 /area/desert_dam/building/bar/bar)
 "BB" = (
 /turf/closed/shuttle/ert{
@@ -1716,9 +1676,7 @@
 /area/desert_dam/building/bar/bar)
 "Cn" = (
 /obj/effect/landmark/survivor_spawner/upp/soldier,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "Cx" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1814,9 +1772,7 @@
 "DB" = (
 /obj/structure/bed/bedroll,
 /obj/item/trash/cheesie,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin7"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_top_right,
 /area/desert_dam/building/bar/bar)
 "DD" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -1935,9 +1891,7 @@
 /area/desert_dam/building/bar/bar)
 "Fh" = (
 /obj/item/storage/belt/utility,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "Fl" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
@@ -2005,9 +1959,7 @@
 	current_rounds = 0
 	},
 /obj/effect/decal/cleanable/blood/oil/streak,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "GP" = (
 /obj/item/prop/colony/used_flare,
@@ -2018,9 +1970,7 @@
 "GY" = (
 /obj/item/trash/used_stasis_bag,
 /obj/effect/landmark/survivor_spawner/squad_leader,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin5"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
 /area/desert_dam/building/bar/bar)
 "GZ" = (
 /obj/item/stack/barbed_wire/small_stack,
@@ -2099,9 +2049,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/dark_grey,
 /area/desert_dam/building/bar/bar)
 "IU" = (
 /obj/item/tool/shovel,
@@ -2208,9 +2156,7 @@
 "Lo" = (
 /obj/effect/landmark/survivor_spawner/upp/soldier,
 /obj/effect/decal/cleanable/blood/oil/streak,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "Lu" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -2292,9 +2238,7 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/spawner/gibspawner/human,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "MW" = (
 /obj/effect/decal/sand_overlay/sand1,
@@ -2310,9 +2254,7 @@
 	icon_state = "S-corner"
 	},
 /obj/effect/decal/cleanable/blood/oil/streak,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "Nh" = (
 /obj/structure/flora/grass/desert/lightgrass_4,
@@ -2351,9 +2293,7 @@
 	pixel_y = -5
 	},
 /obj/effect/landmark/survivor_spawner/upp_sapper,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "NK" = (
 /obj/effect/decal/cleanable/dirt,
@@ -2475,9 +2415,7 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/dark_grey,
 /area/desert_dam/building/bar/bar)
 "PS" = (
 /obj/effect/decal/sand_overlay/sand1,
@@ -2574,9 +2512,7 @@
 	bullet_amount = 0
 	},
 /obj/effect/decal/cleanable/blood/oil/streak,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin4"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_bottom_left,
 /area/desert_dam/building/bar/bar)
 "Rl" = (
 /obj/structure/closet/crate/supply,
@@ -2590,9 +2526,7 @@
 /obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
 /obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
 /obj/item/ammo_box/magazine/misc/flares,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/dark_grey,
 /area/desert_dam/building/bar/bar)
 "Ro" = (
 /obj/structure/flora/grass/desert/lightgrass_11,
@@ -2617,9 +2551,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S-corner"
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "Sb" = (
 /obj/effect/decal/warning_stripes{
@@ -2861,9 +2793,7 @@
 	dir = 1
 	},
 /obj/effect/landmark/survivor_spawner/upp_specialist,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin5"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
 /area/desert_dam/building/bar/bar)
 "VA" = (
 /obj/item/shard{

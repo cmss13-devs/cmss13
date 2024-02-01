@@ -696,7 +696,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		toggle_visor(user)
 		return active_visor
 
-		return FALSE
+	return FALSE
 /datum/action/item_action/cycle_helmet_huds/New(Target, obj/item/holder)
 	. = ..()
 	name = "Cycle helmet HUD"

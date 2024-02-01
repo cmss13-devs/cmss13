@@ -19,6 +19,61 @@ SUBSYSTEM_DEF(stickyban)
 
 		world.SetConfig("ban", existing_ban, null)
 
+/datum/controller/subsystem/stickyban/proc/check_for_sticky_ban(ckey, address, computer_id)
+	var/list/stickyban_ids = list()
+
+	var/list/datum/view_record/stickyban_matched_ckey/ckeys = DB_VIEW(/datum/view_record/stickyban_matched_ckey,
+		DB_AND(
+			DB_COMP("ckey", DB_EQUALS, ckey),
+			DB_COMP("whitelisted", DB_EQUALS, FALSE)
+		)
+	)
+
+	for(var/datum/view_record/stickyban_matched_ckey/matched_ckey as anything in ckeys)
+		stickyban_ids += matched_ckey.linked_stickyban
+
+	var/list/datum/view_record/stickyban_matched_cid/cids = DB_VIEW(/datum/view_record/stickyban_matched_cid,
+		DB_COMP("cid", DB_EQUALS, computer_id)
+	)
+
+	for(var/datum/view_record/stickyban_matched_cid/matched_cid as anything in cids)
+		stickyban_ids += matched_cid.linked_stickyban
+
+	var/list/datum/view_record/stickyban_matched_cid/ips = DB_VIEW(/datum/view_record/stickyban_matched_ip,
+		DB_COMP("ip", DB_EQUALS, address)
+	)
+
+	for(var/datum/view_record/stickyban_matched_ip/matched_ip as anything in ips)
+		stickyban_ids += matched_ip.linked_stickyban
+
+	if(!length(stickyban_ids))
+		return FALSE
+
+	var/list/datum/view_record/stickyban/stickies = DB_VIEW(/datum/view_record/stickyban,
+		DB_AND(
+			DB_COMP("id", DB_IN, stickyban_ids),
+			DB_COMP("active", DB_EQUALS, TRUE)
+		)
+	)
+
+	for(var/datum/view_record/stickyban/current_sticky in stickies)
+		var/list/datum/view_record/stickyban_matched_ckey/whitelisted_ckeys = DB_VIEW(/datum/view_record/stickyban_matched_ckey,
+			DB_AND(
+				DB_COMP("linked_stickyban", DB_EQUALS, current_sticky.id),
+				DB_COMP("ckey", DB_EQUALS, ckey),
+				DB_COMP("whitelisted", DB_EQUALS, TRUE),
+			)
+		)
+
+		if(length(whitelisted_ckeys))
+			stickies -= current_sticky
+
+	if(!length(stickies))
+		return FALSE
+
+	return stickies
+
+
 /datum/controller/subsystem/stickyban/proc/match_sticky(existing_ban_id, ckey, address, computer_id)
 	if(!existing_ban_id)
 		return

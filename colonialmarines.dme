@@ -1395,7 +1395,6 @@
 #include "code\modules\admin\NewBan.dm"
 #include "code\modules\admin\player_notes.dm"
 #include "code\modules\admin\server_verbs.dm"
-#include "code\modules\admin\stickyban.dm"
 #include "code\modules\admin\STUI.dm"
 #include "code\modules\admin\tag.dm"
 #include "code\modules\admin\ToRban.dm"

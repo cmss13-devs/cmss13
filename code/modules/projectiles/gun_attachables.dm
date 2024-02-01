@@ -3264,6 +3264,10 @@ Defined in conflicts.dm of the #defines folder.
 	var/bipod_deployed = FALSE
 	/// If this should anchor the user while in use
 	var/heavy_bipod = FALSE
+	// Are switching to full auto when deploying the bipod
+	var/full_auto_switch = FALSE
+	// Store our old firemode so we can switch to it when undeploying the bipod
+	var/old_firemode = null
 
 /obj/item/attachable/bipod/New()
 	..()
@@ -3276,6 +3280,15 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/bipod/Attach(obj/item/weapon/gun/G)
 	..()
+
+	if((GUN_FIREMODE_AUTOMATIC in G.gun_firemode_list) || (G.flags_gun_features & GUN_SUPPORT_PLATFORM))
+		var/mob/user
+		var/given_action = FALSE
+		if(user && (G == user.l_hand || G == user.r_hand))
+			give_action(user, /datum/action/item_action/bipod/toggle_full_auto_switch, src, G)
+			given_action = TRUE
+		if(!given_action)
+			new /datum/action/item_action/bipod/toggle_full_auto_switch(src, G)
 
 	RegisterSignal(G, COMSIG_ITEM_DROPPED, PROC_REF(handle_drop))
 
@@ -3297,8 +3310,9 @@ Defined in conflicts.dm of the #defines folder.
 	if(istype(loc, /obj/item/weapon/gun))
 		var/obj/item/weapon/gun/gun = loc
 		gun.update_attachable(slot)
-		for(var/datum/action/A as anything in gun.actions)
-			A.update_button_icon()
+		for(var/datum/action/item_action as anything in gun.actions)
+			if(!istype(item_action, /datum/action/item_action/bipod/toggle_full_auto_switch))
+				item_action.update_button_icon()
 
 /obj/item/attachable/bipod/proc/handle_drop(obj/item/weapon/gun/G, mob/living/carbon/human/user)
 	SIGNAL_HANDLER
@@ -3331,6 +3345,9 @@ Defined in conflicts.dm of the #defines folder.
 
 	if(heavy_bipod)
 		user.anchored = FALSE
+
+	if(full_auto_switch && G.gun_firemode != old_firemode)
+		G.do_toggle_firemode(user, null, old_firemode)
 
 	if(!QDELETED(G))
 		playsound(user,'sound/items/m56dauto_rotate.ogg', 55, 1)
@@ -3374,6 +3391,10 @@ Defined in conflicts.dm of the #defines folder.
 				if(heavy_bipod)
 					user.anchored = TRUE
 
+				if(full_auto_switch && G.gun_firemode != GUN_FIREMODE_AUTOMATIC)
+					old_firemode = G.gun_firemode
+					G.do_toggle_firemode(user, null, GUN_FIREMODE_AUTOMATIC)
+
 			else
 				to_chat(user, SPAN_NOTICE("You retract [src]."))
 				undeploy_bipod(G)
@@ -3407,6 +3428,31 @@ Defined in conflicts.dm of the #defines folder.
 		if(O2.throwpass && O2.density)
 			return O2
 	return 0
+
+//item actions for handling deployment to full auto.
+/datum/action/item_action/bipod/toggle_full_auto_switch/New(Target, obj/item/holder)
+	. = ..()
+	name = "Toggle Full Auto Switch"
+	action_icon_state = "iff_toggle_off"
+	button.name = name
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+/datum/action/item_action/bipod/toggle_full_auto_switch/action_activate()
+	var/obj/item/weapon/gun/holder_gun = holder_item
+	var/obj/item/attachable/bipod/attached_bipod = holder_gun.attachments["under"]
+
+	attached_bipod.full_auto_switch = !attached_bipod.full_auto_switch
+	to_chat(usr, SPAN_NOTICE("[icon2html(holder_gun, usr)] You will [attached_bipod.full_auto_switch? "<B>start</b>" : "<B>stop</b>"] switching to full auto when deploying the bipod."))
+	playsound(usr, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
+
+	if(attached_bipod.full_auto_switch)
+		action_icon_state = "iff_toggle_on"
+	else
+		action_icon_state = "iff_toggle_off"
+
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 
 /obj/item/attachable/bipod/m60

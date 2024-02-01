@@ -45,6 +45,42 @@
 
 	return TRUE
 
+/datum/player_action/permanent_ban
+	action_tag = "permanent_ban"
+	name = "Permanent Ban"
+	permissions_required = R_BAN
+
+/datum/player_action/permanent_ban/act(client/user, mob/target, list/params)
+	var/reason = tgui_input_text(user, "Why are you permanently banning this user?", "Permanent Ban")
+	if(!reason)
+		return
+
+	var/datum/entity/player/target_entity = target.client?.player_data
+	if(!target_entity)
+		target_entity = get_player_from_key(target.ckey || target.persistent_ckey)
+
+	if(!target_entity)
+		return
+
+	target_entity.add_perma_ban(reason, user.player_data)
+
+/datum/player_action/sticky_ban
+	action_tag = "sticky_ban"
+	name = "Sticky Ban"
+	permissions_required = R_BAN
+
+/datum/player_action/sticky_ban/act(client/user, mob/target, list/params)
+	var/persistent_ip = target.client?.address
+	var/persistent_cid = target.client?.computer_id
+
+	if(!persistent_cid || !persistent_ip)
+		var/datum/entity/player/player = get_player_from_key(target.persistent_ckey)
+		persistent_cid = player.last_known_cid
+		persistent_ip = player.last_known_ip
+
+
+	user.cmd_admin_do_stickyban(target.ckey, impacted_ckeys = list(target.ckey), impacted_cids = list(persistent_cid), impacted_ips = list(persistent_ip))
+
 /datum/player_action/mute
 	action_tag = "mob_mute"
 	name = "Mute"

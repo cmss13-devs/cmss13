@@ -252,7 +252,7 @@
 			var/reason = tgui_input_text(owner, "What's the reason for the ban? This is shown internally, and not displayed in notes and ban messages.", "BuildABan")
 			var/message = tgui_input_text(owner, "What message should be given to the impacted users?", "BuildABan")
 
-			var/datum/entity/stickyban/new_sticky = SSstickyban.add_stickyban(identifier, reason, message)
+			var/datum/entity/stickyban/new_sticky = SSstickyban.add_stickyban(identifier, reason, message, owner.player_data)
 
 			if(new_sticky)
 				var/list/impacted_ckeys = splittext(tgui_input_text(owner, "Which CKEYs should be impacted by this ban? Include the primary ckey, separated by semicolons.", "BuildABan", "player1;player2;player3"), ";")
@@ -267,6 +267,10 @@
 				var/list/impacted_ips = splittext(tgui_input_text(owner, "Which IPs should be impacted by this ban? Separate with semicolons.", "BuildABan", "1.1.1.1;8.8.8.8"), ";")
 				for(var/ip in impacted_ips)
 					SSstickyban.add_matched_ip(new_sticky.id, ip)
+
+				log_admin("STICKYBAN: Identifier: [identifier] Reason: [reason] Message: [message] CKEYs: [english_list(impacted_ckeys)] IPs: [english_list(impacted_ips)] CIDs: [english_list(impacted_cids)]")
+
+			log_and_message_admins("[key_name_admin(owner)] has added a new stickyban with the identifier '[identifier]'.")
 
 			return
 
@@ -318,6 +322,7 @@
 				return
 
 			SSstickyban.whitelist_ckey(sticky.id, ckey_to_whitelist)
+			log_and_message_admins("[key_name_admin(owner)] has whitelisted [ckey_to_whitelist] against stickyban [sticky.identifier].")
 
 		if(href_list["add"])
 			var/option = tgui_input_list(owner, "What do you want to add?", "AddABan", list("CID", "CKEY", "IP"))
@@ -336,6 +341,8 @@
 				if("IP")
 					SSstickyban.add_matched_ip(sticky.id, to_add)
 
+			log_and_message_admins("[key_name_admin(owner)] has added a [option] ([to_add]) to stickyban [sticky.identifier].")
+
 
 		if(href_list["remove"])
 			var/option = tgui_input_list(owner, "What do you want to remove?", "DelABan", list("Entire Stickyban", "CID", "CKEY", "IP"))
@@ -346,6 +353,8 @@
 
 					sticky.active = FALSE
 					sticky.save()
+
+					log_and_message_admins("[key_name_admin(owner)] has deactivated stickyban [sticky.identifier].")
 
 				if("CID")
 					var/list/datum/view_record/stickyban_matched_cid/all_cids = DB_VIEW(/datum/view_record/stickyban_matched_cid,
@@ -360,10 +369,12 @@
 					if(!picked)
 						return
 
-					picked = cid_to_record_id[picked]
+					var/selected = cid_to_record_id[picked]
 
-					var/datum/entity/stickyban_matched_cid/sticky_cid = DB_ENTITY(/datum/entity/stickyban_matched_cid, picked)
+					var/datum/entity/stickyban_matched_cid/sticky_cid = DB_ENTITY(/datum/entity/stickyban_matched_cid, selected)
 					sticky_cid.delete()
+
+					log_and_message_admins("[key_name_admin(owner)] has removed a CID ([picked]) from stickyban [sticky.identifier].")
 
 				if("CKEY")
 					var/list/datum/view_record/stickyban_matched_ckey/all_ckeys = DB_VIEW(/datum/view_record/stickyban_matched_ckey,
@@ -378,10 +389,12 @@
 					if(!picked)
 						return
 
-					picked = ckey_to_record_id[picked]
+					var/selected = ckey_to_record_id[picked]
 
-					var/datum/entity/stickyban_matched_ckey/sticky_ckey = DB_ENTITY(/datum/entity/stickyban_matched_ckey, picked)
+					var/datum/entity/stickyban_matched_ckey/sticky_ckey = DB_ENTITY(/datum/entity/stickyban_matched_ckey, selected)
 					sticky_ckey.delete()
+
+					log_and_message_admins("[key_name_admin(owner)] has removed a CID ([picked]) from stickyban [sticky.identifier].")
 
 				if("IP")
 					var/list/datum/view_record/stickyban_matched_ip/all_ips = DB_VIEW(/datum/view_record/stickyban_matched_ip,
@@ -396,10 +409,12 @@
 					if(!picked)
 						return
 
-					picked = ip_to_record_id[picked]
+					var/selected = ip_to_record_id[picked]
 
-					var/datum/entity/stickyban_matched_ip/sticky_ip = DB_ENTITY(/datum/entity/stickyban_matched_ip, picked)
+					var/datum/entity/stickyban_matched_ip/sticky_ip = DB_ENTITY(/datum/entity/stickyban_matched_ip, selected)
 					sticky_ip.delete()
+
+					log_and_message_admins("[key_name_admin(owner)] has removed an IP ([picked]) from stickyban [sticky.identifier].")
 
 	else if(href_list["warn"])
 		usr.client.warn(href_list["warn"])

@@ -348,7 +348,7 @@ const PunishmentActions = (props) => {
             width="100%"
             icon="gavel"
             color="red"
-            content="Ban"
+            content="Timed Ban"
             disabled={!hasPermission(data, 'mob_ban')}
             onClick={() => act('mob_ban')}
           />
@@ -368,6 +368,27 @@ const PunishmentActions = (props) => {
             content="Job-ban"
             disabled={!hasPermission(data, 'mob_jobban')}
             onClick={() => act('mob_jobban')}
+          />
+        </Stack>
+      </Section>
+
+      <Section level={2} title="Permanent Banishment">
+        <Stack align="right" grow>
+          <Button.Confirm
+            width="100%"
+            icon="gavel"
+            color="red"
+            content="Permanent Ban"
+            disabled={!hasPermission(data, 'permanent_ban')}
+            onClick={() => act('permanent_ban')}
+          />
+          <Button.Confirm
+            width="100%"
+            icon="gavel"
+            color="red"
+            content="Sticky Ban"
+            disabled={!hasPermission(data, 'sticky_ban')}
+            onClick={() => act('sticky_ban')}
           />
         </Stack>
       </Section>

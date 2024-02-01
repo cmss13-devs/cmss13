@@ -310,8 +310,16 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	permaban_date = "[time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")]"
 	permaban_reason = reason
 
+	log_and_message_admins("[key_name_admin(banner.owning_client)] has permanently banned [ckey] for [reason].")
+
+	add_note("Permanently banned | [reason].", FALSE, NOTE_ADMIN, TRUE)
+
+	if(owning_client)
+		to_chat_forced(owning_client, SPAN_LARGE("<big><b>You have been permanently banned by [banner.ckey].\nReason: [reason].</b></big>"))
+		to_chat_forced(owning_client, SPAN_LARGE("This is a permanent ban. It will not be removed."))
+		QDEL_NULL(owning_client)
+
 	save()
-	sync()
 
 /datum/entity/player/proc/auto_unban()
 	if(!is_time_banned)

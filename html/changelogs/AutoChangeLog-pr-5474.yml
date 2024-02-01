@@ -1,0 +1,7 @@
+author: "BadAtThisGame302"
+delete-after: True
+changes:
+  - rscadd: "Added a USCMC Recruiter to the Solaris surv pool."
+  - rscadd: "Added a USCM Survivor template anycase anyone wants to add USCM Survivors to other maps."
+  - bugfix: "Every other surv has no 'Ridge' next to Solaris in their assignments, only the CL. Fixes this."
+  - spellcheck: "Embellished the Solaris Ridge announce text, to make it so the Company and more fluff about it's actual role like the wiki states."

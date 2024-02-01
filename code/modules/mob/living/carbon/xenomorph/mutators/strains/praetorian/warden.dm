@@ -58,8 +58,6 @@
 	var/internal_hitpoints = 0
 	var/transferred_healing = 0
 
-/datum/behavior_delegate/praetorian_warden/proc/modify_transferred(heal_amount)
-	transferred_healing += heal_amount
 
 /datum/behavior_delegate/praetorian_warden/append_to_stat()
 	. = list()

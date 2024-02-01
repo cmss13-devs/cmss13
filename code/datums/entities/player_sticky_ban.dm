@@ -97,7 +97,7 @@ BSQL_PROTECT_DATUM(/datum/entity/stickyban)
 	fields = list(
 		"id",
 		"cid",
-		"linked_stickyban"
+		"linked_stickyban",
 	)
 
 
@@ -124,5 +124,5 @@ BSQL_PROTECT_DATUM(/datum/entity/stickyban)
 	fields = list(
 		"id",
 		"ip",
-		"linked_stickyban"
+		"linked_stickyban",
 	)

@@ -374,7 +374,14 @@
 	name = "gunlineart"
 
 /datum/asset/spritesheet/gun_lineart/register()
-	InsertAll("", 'icons/obj/items/weapons/guns/lineart.dmi')
+	var/icon_file = 'icons/obj/items/weapons/guns/lineart.dmi'
+	InsertAll("", icon_file)
+
+	for(var/obj/item/weapon/gun/current_gun as anything in subtypesof(/obj/item/weapon/gun))
+		var/icon_state = initial(current_gun.base_gun_icon)
+		if(icon_state && isnull(sprites[icon_state]))
+			stack_trace("[current_gun] does not have a valid lineart icon state, icon=[icon_file], icon_state=[json_encode(icon_state)](\ref[icon_state])")
+
 	..()
 
 /datum/asset/spritesheet/gun_lineart_modes

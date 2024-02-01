@@ -1,0 +1,13 @@
+2024-02-01:
+  BadAtThisGame302:
+  - bugfix: fixed the CMB Trijent Survivor
+  BadAtThisGame302, AmoryBlaine:
+  - rscadd: Added new brown laceups, adds new ties and tweaks current ones, as well
+      as new suit, bomber, vest, and corporate clothes to the game. Sprites by AmoryBlaine.
+  - imageadd: added six new Corporate clothes sprites (Casual/Ivy/Formal/Black/Brown/Blue),
+      three suit vest sprites (Brown/Tan/Grey), three bomber jacket sprites (Khaki/Red/Grey),
+      and five suit jacket sprites (Khaki/Formal/Black/Brown/Blue).
+  Huffie56:
+  - rscdel: Removed "security robot module" from robot_module.dm
+  - refactor: change the name of Ripley in game to P-1000, gygax to MAX, Durand to
+      MOX, Odysseus to Alice to be more in line with the lore.

@@ -18,6 +18,7 @@ const PAGES = {
   'security': () => Security,
   'requisitions': () => Requisitions,
   'emergency': () => Emergency,
+  'core_security': () => CoreSec,
 };
 
 export const AresInterface = (props) => {
@@ -277,6 +278,19 @@ const MainMenu = (props) => {
                 width="25vw"
                 bold
                 onClick={() => act('page_access')}
+              />
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                content="Core Security Protocols"
+                tooltip="Utilise the AI Core security features."
+                icon="shield"
+                color="red"
+                ml="auto"
+                px="2rem"
+                width="27vw"
+                bold
+                onClick={() => act('page_core_sec')}
               />
             </Stack.Item>
           </Stack>
@@ -1538,6 +1552,76 @@ const Emergency = (props) => {
           disabled={!canNuke}
         />
       </Flex>
+    </>
+  );
+};
+
+const CoreSec = (props) => {
+  const { data, act } = useBackend();
+  const {
+    logged_in,
+    access_text,
+    access_level,
+    last_page,
+    current_menu,
+    security_vents,
+  } = data;
+
+  return (
+    <>
+      <Section>
+        <Flex align="center">
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={last_page === current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+            />
+          </Box>
+
+          <h3>
+            {logged_in}, {access_text}
+          </h3>
+
+          <Button.Confirm
+            content="Logout"
+            icon="circle-user"
+            ml="auto"
+            px="2rem"
+            bold
+            onClick={() => act('logout')}
+          />
+        </Flex>
+      </Section>
+
+      <Section>
+        <h1 align="center">Core Security Protocols</h1>
+      </Section>
+      <Section>
+        <h1 align="center">Nerve Gas Release</h1>
+        {security_vents.map((vent, i) => {
+          return (
+            <Button.Confirm
+              key={i}
+              content={vent.vent_tag}
+              icon="wind"
+              tooltip="Release Gas"
+              disabled={access_level < 5}
+              onClick={() => act('trigger_vent', { vent: vent.ref })}
+            />
+          );
+        })}
+      </Section>
     </>
   );
 };

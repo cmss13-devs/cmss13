@@ -26,6 +26,7 @@
 	name = "Security Air Vent"
 	var/datum/ares_link/link
 	var/vent_tag
+	COOLDOWN_DECLARE(vent_trigger_cooldown)
 
 /obj/structure/pipes/vents/pump/no_boom/gas/Initialize()
 	link_systems(override = FALSE)

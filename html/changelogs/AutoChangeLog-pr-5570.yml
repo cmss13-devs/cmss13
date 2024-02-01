@@ -1,0 +1,4 @@
+author: "private-tristan"
+delete-after: True
+changes:
+  - balance: "Burrower can no longer spawn as part of the feral xeno ERT"

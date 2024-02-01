@@ -1,0 +1,5 @@
+author: "blackdragonTOW"
+delete-after: True
+changes:
+  - imageadd: "altered the turret flag to the UA flag, from generic orange"
+  - bugfix: "Flag turrets now correct reference the destroyed state"

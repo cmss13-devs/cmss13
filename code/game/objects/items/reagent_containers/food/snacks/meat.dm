@@ -32,7 +32,7 @@
 	name = "synthetic flesh"
 	desc = "A slab of artificial, inorganic 'flesh' that resembles human meat. Probably came from a synth."
 	icon_state = "synthmeat"
-	filling_color = "#ffffff"
+	filling_color = COLOR_WHITE
 
 /obj/item/reagent_container/food/snacks/meat/synthmeat/synthetic/Initialize()
 	. = ..()

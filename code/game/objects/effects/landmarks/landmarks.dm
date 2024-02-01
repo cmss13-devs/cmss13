@@ -420,6 +420,15 @@
 	job = JOB_NURSE
 
 
+/obj/effect/landmark/late_join/pilot
+	name = "Pilot Officer late join"
+	job = JOB_PILOT
+
+/obj/effect/landmark/late_join/crewchief
+	name = "Dropship Crew Chief late join"
+	job = JOB_DROPSHIP_CREW_CHIEF
+
+
 /obj/effect/landmark/late_join/Initialize(mapload, ...)
 	. = ..()
 	if(squad)

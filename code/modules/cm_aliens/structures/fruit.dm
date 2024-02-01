@@ -216,7 +216,6 @@
 	if(recipient && !QDELETED(recipient))
 		recipient.gain_health(heal_amount)
 		to_chat(recipient, SPAN_XENONOTICE("We recover a bit from our injuries, and begin to regenerate rapidly."))
-		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("One of our picked resin fruits has been consumed."))
 		// Every second, heal him for 15.
 		new /datum/effects/heal_over_time(recipient, regeneration_amount_total, regeneration_ticks, 1)
 	if(do_consume)

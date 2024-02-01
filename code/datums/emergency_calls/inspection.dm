@@ -188,16 +188,16 @@
 	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, list(JOB_SQUAD_LEADER), time_required_for_job))
 		leader = H
 		arm_equipment(H, /datum/equipment_preset/wy/exec_supervisor/lawyer, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland Yutani PMC Inspector!"))
-		to_chat(H, SPAN_ROLE_BODY("While officially your outfit does mundane security work for Weyland-Yutani, in practice you serve as both official and unofficial investigators into conduct of Company personnel. You are being dispatched to the [MAIN_SHIP_NAME] to make sure that the local Liaison has not forgotten their priorities or worse, thought to bite the hand that feeds them."))
-		to_chat(H, SPAN_ROLE_BODY("Remember the USCM personnel on the ship may not appreciate your presence there. Should the Liaison be in jail, you are not to act as legal counsel in any way unless instructed to do so by Dispatch. Your basic duty is to make a detailed report of anything involving the Liaison and any other WY personnel on board the ship."))
-		to_chat(H, SPAN_WARNING("Unless ordered otherwise by Dispatch, you are to avoid open conflict with the Marines. Retreat and make a report if they are outright hostile. Ahelp if you have any more questions or wish to release this character for other players."))
+		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani Chief Attorney!"))
+		to_chat(H, SPAN_ROLE_BODY("While officially the Corporate Affairs Division does mundane paperwork for Weyland-Yutani, in practice you serve as both official and unofficial investigators into conduct of Company and non-Company personnel. You are being dispatched to the [MAIN_SHIP_NAME] to make sure that the USCM abides by it's signed contracts provided by the local Liaison and that they have not forgotten the real hand that feeds them."))
+		to_chat(H, SPAN_ROLE_BODY("Remember the USCM personnel on the ship may not appreciate your presence there. Should the Liaison be in jail, you are to act as legal counsel in any way. Your basic duty is to make a detailed report of anything involving the Liaison, any other WY personnel and of course any contract violations on board the ship."))
+		to_chat(H, SPAN_WARNING("You are to avoid open conflict with the Marines. Retreat and make a report if they are outright hostile. Ahelp if you have any more questions or wish to release this character for other players."))
 	else
 		arm_equipment(H, /datum/equipment_preset/wy/exec_spec/lawyer, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are part of a Weyland-Yutani PMC Investigation Team!"))
-		to_chat(H, SPAN_ROLE_BODY("While officially your outfit does mundane security work for Weyland-Yutani, in practice you serve as both official and unofficial investigators into conduct of Company personnel. The Lead Investigator is in charge, your duty is to provide backup, counsel and any other form of assistance you can render to make sure their mission is a success."))
-		to_chat(H, SPAN_ROLE_BODY("Remember that the USCM, or at least some parts of it, may be hostile towards your presence on the ship. Unless ordered otherwise by Dispatch, you and your Team Leader are to avoid open conflict with the Marines. Your main priority is making sure that your Lead survives to write the report they are due."))
-		to_chat(H, SPAN_WARNING("Unless ordered otherwise by Dispatch, you are to avoid open conflict with the Marines. Your priority is the safety of your team, if the ship gets to hot, your best bet is evacuation. Ahelp if you have any more questions or wish to release this character for other players."))
+		to_chat(H, SPAN_ROLE_HEADER("You are part of a Weyland-Yutani Lawyer Team!"))
+		to_chat(H, SPAN_ROLE_BODY("While officially the Corporate Affairs Division does mundane paperwork for Weyland-Yutani, in practice you serve as both official and unofficial investigators into conduct of Company and non-Company personnel. The Chief Attorney is in charge, your duty is to provide counsel and any other form of assistance you can render to make sure your mission is a success."))
+		to_chat(H, SPAN_ROLE_BODY("Remember that the USCM, or at least some parts of it, may be hostile towards your presence on the ship. You and your fellow lawyer are to avoid open conflict with the Marines. Your main priority is making sure that you both survive to write the report the Company is due."))
+		to_chat(H, SPAN_WARNING("You are to avoid open conflict with the Marines. Retreat and make a report if they are outright hostile. Ahelp if you have any more questions or wish to release this character for other players."))
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
 
 

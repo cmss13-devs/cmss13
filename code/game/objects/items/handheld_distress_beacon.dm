@@ -72,7 +72,7 @@
 
 	beacon_type = "Lawyer beacon"
 	recipient = "the Corporate Affairs Division"
-	ert_full_name = list("Inspection - Corporate")
+	ert_full_name = list("Lawyers - Corporate")
 	ert_short_name = list("SEND LAWYERS")
 
 // Corporate Security Bodyguard beacon available for 50 points at the CLs briefcase

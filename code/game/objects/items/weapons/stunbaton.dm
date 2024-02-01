@@ -104,12 +104,17 @@
 /obj/item/weapon/baton/attack(mob/target, mob/user)
 	var/mob/living/carbon/human/real_user = user
 	var/mob/living/carbon/human/human_target = target
-	if(has_user_lock && !skillcheck(real_user, SKILL_POLICE, SKILL_POLICE_SKILLED) && status)
-		if(prob(50))
+	if(has_user_lock && !skillcheck(real_user, SKILL_POLICE, SKILL_POLICE_SKILLED))
+		if(prob(70) && status)
 			to_chat(real_user, SPAN_WARNING("You hit yourself with the [src] during the struggle..."))
 			real_user.drop_held_item()
 			real_user.apply_effect(1,STUN)
 			human_target = real_user
+		if(prob(20) && !status) //a relatively reliable melee weapon when turned off.
+			to_chat(real_user, SPAN_WARNING("You grab the [src] incorrectly twisting your hand in the process."))
+			real_user.drop_held_item()
+			real_user.apply_effect(1,STUN)
+			real_user.apply_damage(force, BRUTE, pick("l_hand","r_hand"), no_limb_loss = TRUE)
 
 	var/target_zone = check_zone(user.zone_selected)
 	if(user.a_intent == INTENT_HARM)

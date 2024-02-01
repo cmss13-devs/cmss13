@@ -54,10 +54,6 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 
 	init_global_referenced_datums()
 
-	#if defined(AUTOWIKI) || defined(UNIT_TESTS)
-	running_tests = TRUE
-	#endif
-
 	if(!GLOB.RoleAuthority)
 		GLOB.RoleAuthority = new /datum/authority/branch/role()
 		to_world(SPAN_DANGER("\b Job setup complete"))

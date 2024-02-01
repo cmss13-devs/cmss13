@@ -167,7 +167,7 @@
 /datum/emergency_call/inspection_wy/lawyer
 	name = "Lawyers - Corporate"
 	mob_max = 2
-	mob_min = 2
+	mob_min = 1
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc
 	item_spawn = /obj/effect/landmark/ert_spawns/distress_pmc/item
 	probability = 0

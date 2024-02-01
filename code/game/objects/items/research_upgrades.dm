@@ -34,16 +34,17 @@
 	desc = "Somehow you got this, you shouldnt be able to, consider yourself special."
 	icon = 'icons/obj/items/disk.dmi'
 	icon_state = "datadisk1"
-	var/value = ITEM_EXCLUDE_BUY //technology stored on this disk, goes through one to whatever levels of upgrades there are. 0 Excludes it from buying menu.
-	var/list/price = list(1000) // initial price, multiplied by * price_increase at final checkout if there are better version
+	///technology stored on this disk, goes through one to whatever levels of upgrades there are. 0 Excludes it from buying menu.
+	var/value = ITEM_EXCLUDE_BUY
+	///price of the upgrade, if a signle disk could mean many upgrades, use list in sync with upgrades to set its prices
+	var/list/price = list(1000)
 
 /obj/item/research_upgrades/proc/get_upgrade_desc(val, short = TRUE) //needed for those special cases like one below. only needed in cases where single disk can be many upgrades, otherwise use desc and name.
-	return "ERROR"
-
+	return
 /obj/item/research_upgrades/autodoc
 	name = "Research Upgrade (AutoDoc)"
 	desc = "Research upgrade for AutoDoc, Technology on this disk is used "
-	value = AUTODOC_UPGRADE_LARVA
+	value = UPGRADE_TIER_4
 	price = list(3000, 5000, 8000, 10000)
 	//starting at internal bleeding repair, 2 for bone repair, 3 for organ repair/etc, and 4 for larva removal. They are not exclusive, that means if you get level 4, you still dont have level 2 and 3 & 1.
 	//set to final upgrade to show the amount of upgrades
@@ -52,42 +53,42 @@
 	. = ..()
 	switch(value)
 
-		if(AUTODOC_UPGRADE_IB)
+		if(UPGRADE_TIER_1)
 			. += "for stopping internal bleedings."
-		if(AUTODOC_UPGRADE_BONEBREAK)
+		if(UPGRADE_TIER_2)
 			. += "for fixating and mending broken bones."
-		if(AUTODOC_UPGRADE_ORGAN)
+		if(UPGRADE_TIER_3)
 			. += "for treating damaged organs."
-		if(AUTODOC_UPGRADE_LARVA)
+		if(UPGRADE_TIER_4)
 			. += "for extracting unknown parasites."
 
 /obj/item/research_upgrades/autodoc/get_upgrade_desc(val, short = TRUE)
 	if(short)
 		switch(val)
-			if(AUTODOC_UPGRADE_IB)
+			if(UPGRADE_TIER_1)
 				. += "(Internal Bleedings)"
-			if(AUTODOC_UPGRADE_BONEBREAK)
+			if(UPGRADE_TIER_2)
 				. += "(Broken Bones)"
-			if(AUTODOC_UPGRADE_ORGAN)
+			if(UPGRADE_TIER_3)
 				. += "(Organ Treating)"
-			if(AUTODOC_UPGRADE_LARVA)
+			if(UPGRADE_TIER_4)
 				. += "(Unknown Parasites)"
 	else
 		switch(val)
-			if(AUTODOC_UPGRADE_IB)
+			if(UPGRADE_TIER_1)
 				. += "for stopping internal bleedings."
-			if(AUTODOC_UPGRADE_BONEBREAK)
+			if(UPGRADE_TIER_2)
 				. += "for fixating and mending broken bones."
-			if (AUTODOC_UPGRADE_ORGAN)
+			if (UPGRADE_TIER_3)
 				. += "for treating damaged organs"
-			if (AUTODOC_UPGRADE_LARVA)
+			if (UPGRADE_TIER_4)
 				. += "for extracting unknown parasites"
 	return
 
 /obj/item/research_upgrades/sleeper
 	name = "Research Upgrade (Sleeper)"
 	desc = "Research upgrade for Sleeper system, Technology on this disk is used on a sleeper to allow wider spectrum of chemicals to be administered"
-	value = 1
+	value = UPGRADE_TIER_1
 	price = list(4000)
 
 /obj/item/research_upgrades/sleeper/get_upgrade_desc(val, short = TRUE)
@@ -96,9 +97,24 @@
 /obj/item/research_upgrades/credits
 	name =	"Research Market (Credits)"
 	desc =	"Research points disk for chemical synthesis, insert this into research computer in order to sell the data and acquire two points" //need to balance this out somehow. either nerf passive income or remove grants from groundside
-	value = 1
+	value = UPGRADE_TIER_1
 	price = list(1000)
 
+/obj/item/research_upgrades/property
+	name = "Research Market (Propety)"
+	desc = "Research points disk for chemical synthesis, insert this into research computer in order to sell the data and acquire one random chemical property of your choice."
+	value = UPGRADE_TIER_3
+	price = list(2000, 4000, 8000)
+
+/obj/item/research_upgrades/property/get_upgrade_desc(val, short = TRUE)
+	switch(val)
+		if(UPGRADE_TIER_1)
+			. += "(Uncommon)"
+		if(UPGRADE_TIER_2)
+			. += "(Rare)"
+		if(UPGRADE_TIER_3)
+			. += "(Legendary)"
+	return
 /obj/item/research_upgrades/packet
 	name = "Research Packet"
 	desc = " A plastic sealed opaque packet containing whatever research marvel the nerds upstairs were brewing, you shouldnt be able to see this!"
@@ -106,10 +122,14 @@
 	//icon = ***
 	//icon_state = ***
 	price = list(1000)
-	var/list/could_contain = null //the item(s) the packet inside has.
-	var/is_opened = FALSE //ripped open or not
-	var/amount = 1 // how much items in packet(how many times to spawn the could_contain).
-	var/random = TRUE //should the items in packets be randomly given or exactly to what could_contain says
+	///What packet contains
+	var/list/could_contain = null
+	///is the packet open
+	var/is_opened = FALSE
+	///How many times to spawn the could_contain item(s
+	var/amount = 1
+	///How does a packet use could_contain list, 3 types of behavior - _EXACT gives user exactly what is in could_contain, _RANDOM gives user a thing from could contain on random basis, and _VALUE makes it follow value var(spawns second thing in the list if value is two)
+	var/behavior = PACKET_BEHAVIOR_EXACT
 
 /obj/item/research_upgrades/packet/attack_self(mob/user)
 	. = ..()
@@ -119,10 +139,22 @@
 		qdel(src)
 		return
 	if(!is_opened)
-		var/thing_to_spawn = pick(could_contain)
-		var/obj/item/spawn_item = new thing_to_spawn
-		spawn_item.forceMove(get_turf(user))
+		for(var/iteration in 1 to amount)
+			switch(behavior)
+				if(PACKET_BEHAVIOR_RANDOM)
+					var/thing_to_spawn = pick(could_contain)
+					var/obj/item/spawn_item = new thing_to_spawn
+					spawn_item.forceMove(get_turf(user))
+				if(PACKET_BEHAVIOR_EXACT)
+					for(var/newthing in could_contain)
+						var/obj/item/spawn_item = new newthing
+						spawn_item.forceMove(get_turf(user))
+				if(PACKET_BEHAVIOR_VALUE)
+					var/thing_to_spawn = could_contain[value]
+					var/obj/item/spawn_item = new thing_to_spawn
+					spawn_item.forceMove(get_turf(user))
 		is_opened = TRUE
+		//icon_state = x
 		desc += "This one seems to be already opened"
 	return
 
@@ -131,32 +163,19 @@
 	name = "Research Packet (Attachment)"
 	desc = "An opaque sealed packet containing one random experimental gun attachment"
 	price = list(2000)
-	value = 1
+	value = UPGRADE_TIER_1
 	could_contain = list()//need to add actual attachments(sprites ;-;) too, so many shit todo holy shit.
 	//also, no idea what kinda of attachments were looking at in future
 
-/obj/item/research_upgrades/packet/attachment/attack_self(mob/user)
-	. = ..()
-	//icon_state = insert torn packet here
-	return
-
-/obj/item/research_upgrades/packet/ammo_x//replace with actually initialls of ammo once sure which ammo to add
-	name = "Research Packet (Ammo)"
-	desc = "Contains a handfull of X ammo. Handle with care"
-	price = list(250, 200)
-	value = 2 // one for m41 cal and second for m39 cal
-	could_contain = list()//replace with a path to actuall ammo when done
-	amount = 3
+/obj/item/research_upgrades/packet/armor_buff
+	name = "Research Packet (Armor)"
+	desc = "An opaque sealed packet containing one armor reinforcment compatible with M3 Marine armor."
+	price = list(2000, 4000, 8000)
+	value = UPGRADE_TIER_3
+	behavior = PACKET_BEHAVIOR_VALUE
+	could_contain = list() //omygod
 
 
-
-/obj/item/research_upgrades/packet/magazine
-	name = "Research Packet (Mag)"
-	desc = "Contains a single magazine for . Handle with care"
-	price = list(250, 200, 250)
-	value = 3 // m39, m41, m4ra defines to come.
-	could_contain = list()//replace with a path to actuall ammo when done
-	amount = 3
 
 
 

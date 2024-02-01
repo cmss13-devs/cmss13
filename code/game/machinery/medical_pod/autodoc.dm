@@ -780,20 +780,20 @@
 				to_chat(user, "here")
 				if(upgrades.len > 0)
 					dat += "<b>Orthopedic Surgeries</b>"
-						for(var/iter in upgrades)
-							switch(iter)
-								if(AUTODOC_UPGRADE_BONEBREAK)
-									if(isnull(surgeryqueue["broken"]))
-										dat += "<a href='?src=\ref[src];broken=1'>Broken Bone Surgery</a><br>"
-								if(AUTODOC_UPGRADE_IB)
-									if(isnull(surgeryqueue["internal"]))
-										dat += "<a href='?src=\ref[src];internal=1'>Internal Bleeding Surgery</a><br>"
-								if(AUTODOC_UPGRADE_ORGAN)
-									if(isnull(surgeryqueue["organdamage"]))
-										dat += "<a href='?src=\ref[src];organdamage=1'>Organ Damage Treatment</a><br>"
-								if(AUTODOC_UPGRADE_LARVA)
-									if(isnull(surgeryqueue["larva"]))
-										dat += "<a href='?src=\ref[src];larva=1'>Experimental Parasite Exctraction</a><br>"
+					for(var/iter in upgrades)
+						switch(iter)
+							if(UPGRADE_TIER_2)
+								if(isnull(surgeryqueue["broken"]))
+									dat += "<a href='?src=\ref[src];broken=1'>Broken Bone Surgery</a><br>"
+							if(UPGRADE_TIER_1)
+								if(isnull(surgeryqueue["internal"]))
+									dat += "<a href='?src=\ref[src];internal=1'>Internal Bleeding Surgery</a><br>"
+							if(UPGRADE_TIER_3)
+								if(isnull(surgeryqueue["organdamage"]))
+									dat += "<a href='?src=\ref[src];organdamage=1'>Organ Damage Treatment</a><br>"
+							if(UPGRADE_TIER_4)
+								if(isnull(surgeryqueue["larva"]))
+									dat += "<a href='?src=\ref[src];larva=1'>Experimental Parasite Exctraction</a><br>"
 		else
 			dat += "The autodoc is empty."
 	dat += text("<a href='?src=\ref[];mach_close=sleeper'>Close</a>", user)

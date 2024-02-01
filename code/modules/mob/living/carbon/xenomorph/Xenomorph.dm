@@ -348,11 +348,13 @@
 		src.hivenumber = old_xeno.hivenumber
 	else if(hivenumber)
 		src.hivenumber = hivenumber
-
-	var/obj/item/organ/heart/xeno/organ = new() //give
-	organ.forceMove(src)
-	organ.research_value = tier
-	organ.caste_origin = src.caste_type
+	if(!islarva(src))
+		var/obj/item/organ/heart/xeno/organ = new() //give
+		organ.forceMove(src)
+		organ.research_value = tier
+		if(isqueen(src)) //queens have tier 0
+			organ.research_value = 7 //queen is EXPENSIVE
+		organ.caste_origin = src.caste_type
 
 	var/datum/hive_status/hive = GLOB.hive_datum[src.hivenumber]
 

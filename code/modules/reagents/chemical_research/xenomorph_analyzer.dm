@@ -107,8 +107,7 @@
 		return
 	playsound(src.loc, 'sound/machines/blender.ogg', 25, 1)
 	biomass_points += organ.research_value * 1000 //inflatizng values less goo
-	qdel(organ)
-	organ = null
+	QDEL_NULL(organ)
 
 /obj/structure/machinery/xenoanalyzer/proc/start_print_upgrade(produce_path, cost, mob/user, variation)
 	if (stat & NOPOWER)

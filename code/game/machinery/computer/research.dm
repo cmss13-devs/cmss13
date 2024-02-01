@@ -53,6 +53,12 @@
 		var/obj/item/paper/research_report/CR = P.convert_to_chem_report()
 		GLOB.chemical_data.save_document(CR, response, CR.name)
 		return
+	//biomass credits rewards
+	if(istype(B, /obj/item/research_upgrades/credits))
+		var/obj/item/research_upgrades/credits/cred = B
+		GLOB.chemical_data.update_credits(2)
+		visible_message(SPAN_NOTICE("[user] inserts [cred.name] in [src], collecting 2 points from sales."))
+		qdel(cred)
 	//Clearance Updating
 	if(!istype(B, /obj/item/card/id))
 		return

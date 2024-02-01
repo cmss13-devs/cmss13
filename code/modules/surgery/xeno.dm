@@ -1,10 +1,10 @@
 
-//Research stuff to extract stuff from xenomorphs for goodies. In other words, to extract usefull material that could be used to upgrade marines and etc. doesnt add anything of kind
+//Research stuff to extract stuff from xenomorphs for goodies. In other words, to extract usefull material that could be used to upgrade marines and etc.
 
 /datum/surgery/xenomorph
 	name = "Experimental Harvesting Surgery"
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
-	required_surgery_skill = SKILL_SURGERY_NOVICE
+	required_surgery_skill = SKILL_SURGERY_TRAINED
 	possible_locs = list("head")
 	target_mobtypes = list(/mob/living/carbon/xenomorph)
 	steps = list(
@@ -44,10 +44,11 @@
 			SPAN_NOTICE("[user] starts to [pick("smash", "crack", "break")] [target.caste_type] carapace with \the [tool], Recklessly, with acid splashing them!"))
 		if(user.head && !(user.head.flags_inventory & COVEREYES))
 			var/datum/internal_organ/eyes/user_eye = user.internal_organs_by_name["eyes"]
-			user_eye.take_damage(rand(3,5), FALSE)
+			user_eye.take_damage(rand(3,5), TRUE)
 			to_chat(user, SPAN_DANGER("Lots of acid gets into your eyes and on your skin!"))
 			user.emote("pain")
 		user.apply_damage(rand(10,25),BURN)
+		//we dont really need log interact since we're working with dead body... I hope
 
 /datum/surgery_step/xenomorph/cut_exoskeleton/success(mob/living/carbon/human/user, mob/living/carbon/xenomorph/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(tool_type == /obj/item/tool/surgery/circular_saw)
@@ -72,6 +73,7 @@
 			SPAN_WARNING("Your hand slips, failing to destroy [target.caste_type] carapace into bits and pieces apart using \the [tool]."),
 			SPAN_WARNING("[user] hand slips, failing to destroy Your carapace into bits and pieces using \the [tool]."),
 			SPAN_WARNING("[user] hand slips, failing to destroy [target.caste_type] carapace into bits and pieces using \the [tool]."))
+	return FALSE
 
 /datum/surgery_step/xenomorph/open_exoskeleton
 	name = "Pry exoskeleton open"
@@ -101,11 +103,12 @@
 			SPAN_NOTICE("[user] starts to open [target.caste_type] carapace with \the [tool] very carefully"))
 
 /datum/surgery_step/xenomorph/open_exoskeleton/failure(mob/living/carbon/human/user, mob/living/carbon/xenomorph/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-		user.affected_message(target,
-			SPAN_WARNING("Your hand slips, letting go of [target.caste_type] carapace and exoskeleton, slaming it back into place and splashing acid everywhere!"),
-			SPAN_WARNING("[user] hand slips, letting go of [target.caste_type] carapace and exoskeleton, slaming it back into place and splashing acid everywhere!"),
-			SPAN_WARNING("[user] hand slips, letting go of [target.caste_type] carapace and exoskeleton, slaming it back into place and splashing acid everywhere!"))
-		user.apply_damage(rand(5, 15), BURN)
+	user.affected_message(target,
+		SPAN_WARNING("Your hand slips, letting go of [target.caste_type] carapace and exoskeleton, slaming it back into place and splashing acid everywhere!"),
+		SPAN_WARNING("[user] hand slips, letting go of [target.caste_type] carapace and exoskeleton, slaming it back into place and splashing acid everywhere!"),
+		SPAN_WARNING("[user] hand slips, letting go of [target.caste_type] carapace and exoskeleton, slaming it back into place and splashing acid everywhere!"))
+	user.apply_damage(rand(15, 45), BURN)
+	return FALSE
 
 /datum/surgery_step/xenomorph/severe_connections
 	name = "Severe organ connections"
@@ -145,7 +148,8 @@
 			SPAN_WARNING("Your hand slips, damaging one of [target.caste_type] [pick("arteries", "viens")], gushing acid blood everywhere!"),
 			SPAN_WARNING("[user] hand slips, damaging one of Your [pick("arteries", "viens")], gushing acid blood everywhere!"),
 			SPAN_WARNING("[user] hand slips, damaging one of [target.caste_type] [pick("arteries", "viens")], gushing acid blood everywhere!"))
-		user.apply_damage(rand(5, 15), BURN)
+		user.apply_damage(rand(15, 45), BURN)
+		return FALSE
 
 /datum/surgery_step/xenomorph/remove_organ
 	name = "Take out the organ"
@@ -199,4 +203,5 @@
 			SPAN_NOTICE("You fail to pull the [target.caste_type] organ out using \the [tool]"),
 			SPAN_NOTICE("[user] fails to pull Your organ out using \the [tool]"),
 			SPAN_NOTICE("[user] fails to pull the [target.caste_type] organ out using \the [tool]"))
+	return FALSE
 

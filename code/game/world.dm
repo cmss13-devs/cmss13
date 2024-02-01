@@ -87,17 +87,6 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 		if(CONFIG_GET(flag/ToRban))
 			ToRban_autoupdate()
 
-	// If the server's configured for local testing, get everything set up ASAP.
-	// Shamelessly stolen from the test manager's host_tests() proc
-	if(testing_locally)
-		GLOB.master_mode = "Extended"
-
-		// Wait for the game ticker to initialize
-		while(!SSticker.initialized)
-			sleep(10)
-
-		// Start the game ASAP
-		SSticker.request_start()
 	return
 
 /proc/start_logging()

@@ -305,6 +305,14 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 
 	return TRUE
 
+/datum/entity/player/proc/add_perma_ban(reason, datum/entity/player/banner)
+	is_permabanned = TRUE
+	permaban_date = "[time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")]"
+	permaban_reason = reason
+
+	save()
+	sync()
+
 /datum/entity/player/proc/auto_unban()
 	if(!is_time_banned)
 		return

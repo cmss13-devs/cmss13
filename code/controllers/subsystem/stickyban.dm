@@ -6,19 +6,23 @@ SUBSYSTEM_DEF(stickyban)
 	var/list/active_sticky
 
 /datum/controller/subsystem/stickyban/Initialize()
+	set waitfor = FALSE
+
+	WAIT_DB_READY
+
 	var/list/all_bans = world.GetConfig("ban")
 	for(var/existing_ban in all_bans)
 
 		var/list/ban_data = params2list(world.GetConfig("ban", existing_ban))
 
 		if(!ban_data["database_ban"])
-			import_sticky(existing_ban, ban_data)
+			INVOKE_ASYNC(src, PROC_REF(import_sticky), existing_ban, ban_data)
 			continue
 
 		world.SetConfig("ban", existing_ban, null)
 
 /datum/controller/subsystem/stickyban/proc/import_sticky(identifier, list/ban_data)
-	if(ban_data["type"] == "sticky")
+	if(ban_data["type"] != "sticky")
 		handle_old_perma(identifier, ban_data)
 		return
 
@@ -43,7 +47,7 @@ SUBSYSTEM_DEF(stickyban)
 		for(var/key in keys)
 			var/datum/entity/stickyban_matched_ckey/matched_ckey = DB_ENTITY(/datum/entity/stickyban_matched_ckey)
 
-			matched_ckey.ckey = key
+			matched_ckey.ckey = ckey(key)
 			matched_ckey.linked_stickyban = new_sticky.id
 
 			matched_ckey.save()
@@ -54,7 +58,7 @@ SUBSYSTEM_DEF(stickyban)
 		for(var/key in keys)
 			var/datum/entity/stickyban_matched_ckey/whitelisted_ckey = DB_ENTITY(/datum/entity/stickyban_matched_ckey)
 
-			whitelisted_ckey.ckey = key
+			whitelisted_ckey.ckey = ckey(key)
 			whitelisted_ckey.linked_stickyban = new_sticky.id
 			whitelisted_ckey.whitelisted = TRUE
 
@@ -92,14 +96,13 @@ SUBSYSTEM_DEF(stickyban)
 
 	var/list/keys = splittext(ban_data["whitelist"], ",")
 	for(var/key in keys)
-		keys_to_ban -= key
+		keys_to_ban -= ckey(key)
 
 	for(var/key in keys_to_ban)
 		var/datum/entity/player/player_entity = get_player_from_key(key)
-		if(player_entity)
+		if(!player_entity)
 			continue
 
-		player_entity.is_permabanned = TRUE
-		player_entity.permaban_admin = "AdminBot"
-		player_entity.permaban_date = "IMPORT"
-		player_entity.permaban_reason = ban_data["message"]
+		INVOKE_ASYNC(player_entity, TYPE_PROC_REF(/datum/entity/player, add_perma_ban), ban_data["message"])
+
+	world.SetConfig("ban", identifier, null)

@@ -12417,9 +12417,6 @@
 /area/almayer/squads/alpha)
 "bdw" = (
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
-/obj/structure/machinery/camera/autoname/almayer{
-	name = "ship-grade camera"
-	},
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "red"
@@ -40912,10 +40909,6 @@
 /area/almayer/squads/req)
 "jeQ" = (
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
-	name = "ship-grade camera"
-	},
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "red"
@@ -61139,14 +61132,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/maint/hull/lower/p_bow)
-"qzN" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/hallways/port_hallway)
 "qAs" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -68499,6 +68484,9 @@
 /obj/structure/sign/safety/maint{
 	pixel_x = 32
 	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/starboard_hallway)
 "tfw" = (
@@ -73383,8 +73371,9 @@
 	},
 /area/almayer/shipboard/brig/cic_hallway)
 "uVD" = (
-/obj/structure/machinery/light{
-	dir = 4
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -131357,7 +131346,7 @@ cHl
 bTb
 beB
 aYT
-bzY
+beB
 bbs
 cdp
 cdp
@@ -131379,7 +131368,7 @@ fJO
 fJO
 fJO
 bbs
-qzN
+bJz
 rrV
 bJz
 xSw
@@ -131761,7 +131750,7 @@ ksp
 rou
 ksp
 aQL
-pGM
+aLG
 aZl
 tzf
 mRS

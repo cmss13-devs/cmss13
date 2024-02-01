@@ -34,7 +34,7 @@
 	desc = "Somehow you got this, you shouldnt be able to, consider yourself special."
 	icon = 'icons/obj/items/disk.dmi'
 	icon_state = "datadisk1"
-	///technology stored on this disk, goes through one to whatever levels of upgrades there are, set it to . 0 Excludes it from buying menu.
+	///technology stored on this disk, goes through one to whatever levels of upgrades there are, set it to last upgrade in your line. 0 Excludes it from buying menu.
 	var/value = ITEM_EXCLUDE_BUY
 	///price of the upgrade, if a single disk could mean many upgrades, use list in sync with upgrades to set its prices
 	var/list/price = list(1000)

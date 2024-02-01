@@ -36179,10 +36179,10 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
 	access_modified = 1;
 	name = "\improper Flight Crew Quarters";
-	req_one_access = "19;27;22"
+	req_one_access_txt = "19;22"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -45853,11 +45853,11 @@
 /area/almayer/hallways/hangar)
 "kUh" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
 	access_modified = 1;
+	dir = 1;
 	name = "\improper Flight Crew Quarters";
-	req_one_access = "19;27;22";
-	dir = 2
+	req_one_access_txt = "19;22"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"

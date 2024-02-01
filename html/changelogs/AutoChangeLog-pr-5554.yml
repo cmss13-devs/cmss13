@@ -1,0 +1,6 @@
+author: "Diegoflores31"
+delete-after: True
+changes:
+  - rscadd: "Disabler bolts now deal a little oxygen damage on each hit."
+  - rscadd: "Replaces Skill lock system on stunbatons with a high chance of hiting yourself"
+  - qol: "adds jittery and sway to Stunbaton and Disabler beams"

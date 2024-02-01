@@ -133,12 +133,13 @@
 
 /obj/item/research_upgrades/packet/attack_self(mob/user)
 	. = ..()
-	playsound(src, "rip", 15, TRUE, 6)
 	if(isnull(could_contain) && !is_opened)
+		playsound(src, "rip", 15, TRUE, 6)
 		to_chat(user, SPAN_WARNING("The packet was empty, so you throw it out."))
 		qdel(src)
 		return
 	if(!is_opened)
+		playsound(src, "rip", 15, TRUE, 6)
 		for(var/iteration in 1 to amount)
 			switch(behavior)
 				if(PACKET_BEHAVIOR_RANDOM)

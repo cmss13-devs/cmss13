@@ -1397,7 +1397,6 @@
 #include "code\modules\admin\stickyban.dm"
 #include "code\modules\admin\STUI.dm"
 #include "code\modules\admin\tag.dm"
-#include "code\modules\admin\ToRban.dm"
 #include "code\modules\admin\medal_panel\medals_panel.dm"
 #include "code\modules\admin\medal_panel\medals_panel_tgui.dm"
 #include "code\modules\admin\player_panel\player_action.dm"

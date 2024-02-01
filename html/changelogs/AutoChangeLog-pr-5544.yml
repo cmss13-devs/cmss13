@@ -1,0 +1,4 @@
+author: "InsaneRed"
+delete-after: True
+changes:
+  - balance: "Oppressor tailstab no longer ignores armor, and it now roots instead of stunning."

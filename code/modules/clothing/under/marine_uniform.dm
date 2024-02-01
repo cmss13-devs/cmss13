@@ -510,6 +510,9 @@
 	has_sensor = UNIFORM_NO_SENSORS
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine/veteran/bear)
 
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/uniform_1.dmi',
+	)
 
 /obj/item/clothing/under/marine/veteran/UPP
 	name = "\improper UPP fatigues"
@@ -804,6 +807,42 @@
 	desc = "A stiff but casual blue blazer. Similar can be found in any Weyland-Yutani office. Only the finest wear for the galaxy's most cunning."
 	icon_state = "liaison_blue_blazer"
 	worn_state = "liaison_blue_blazer"
+
+/obj/item/clothing/under/liaison_suit/field
+	name = "corporate casual"
+	desc = "A pair of dark brown slacks paired with a dark blue button-down shirt. A popular look among those in the corporate world that conduct the majority of their business from night clubs."
+	icon_state = "corporate_field"
+	worn_state = "corporate_field"
+
+/obj/item/clothing/under/liaison_suit/ivy
+	name = "country club outfit"
+	desc = "A pair of khaki slacks paired with a light blue button-down shirt. A popular look with those in the corporate world that conduct the majority of their business from country clubs."
+	icon_state = "corporate_ivy"
+	worn_state = "corporate_ivy"
+
+/obj/item/clothing/under/liaison_suit/corporate_formal
+	name = "white suit pants"
+	desc = "A pair of ivory slacks paired with a white shirt. A popular pairing for formal corporate events."
+	icon_state = "corporate_formal"
+	worn_state = "corporate_formal"
+
+/obj/item/clothing/under/liaison_suit/black
+	name = "black suit pants"
+	desc = "A pair of black slacks paired with a white shirt. The most common pairing among corporate workers."
+	icon_state = "corporate_black"
+	worn_state = "corporate_black"
+
+/obj/item/clothing/under/liaison_suit/brown
+	name = "brown suit pants"
+	desc = "A pair of brown slacks paired with a white shirt. A common pairing among corporate workers."
+	icon_state = "corporate_brown"
+	worn_state = "corporate_brown"
+
+/obj/item/clothing/under/liaison_suit/blue
+	name = "blue suit pants"
+	desc = "A pair of blue slacks paired with a white shirt. A common pairing among corporate workers."
+	icon_state = "corporate_blue"
+	worn_state = "corporate_blue"
 
 /obj/item/clothing/under/marine/reporter
 	name = "combat correspondent uniform"

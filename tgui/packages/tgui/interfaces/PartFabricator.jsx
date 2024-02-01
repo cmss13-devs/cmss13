@@ -5,7 +5,7 @@ import { Window } from '../layouts';
 export const PartFabricator = (props) => {
   const { act, data } = useBackend();
   return (
-    <Window width={775} height={450}>
+    <Window width={900} height={450}>
       <Window.Content>
         <GeneralPanel />
       </Window.Content>

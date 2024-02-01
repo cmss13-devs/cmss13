@@ -1,0 +1,6 @@
+author: "Huffie56"
+delete-after: True
+changes:
+  - maptweak: "added warning stripe bellow doors that didn't have them."
+  - maptweak: "Removed a bed sheet in medical to restore the lore of the unknown alpha that stole it."
+  - maptweak: "Reconnect the CIC armory to one of the brig door armory allowing them to open it at a distance."

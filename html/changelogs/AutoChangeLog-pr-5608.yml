@@ -1,0 +1,4 @@
+author: "SabreML"
+delete-after: True
+changes:
+  - bugfix: "Fixed lesser drones not being able to flip tables."

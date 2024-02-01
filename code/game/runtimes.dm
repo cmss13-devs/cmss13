@@ -28,7 +28,7 @@ GLOBAL_REAL_VAR(total_runtimes)
 	if(!full_init_runtimes)
 		full_init_runtimes = list()
 
-	// If this occured during early init, we store the full error to write it to world.log when it's available
+	// If this occurred during early init, we store the full error to write it to world.log when it's available
 	if(!runtime_logging_ready)
 		full_init_runtimes += E.desc
 

@@ -34,15 +34,15 @@
 	desc = "Somehow you got this, you shouldnt be able to, consider yourself special."
 	icon = 'icons/obj/items/disk.dmi'
 	icon_state = "datadisk1"
-	///technology stored on this disk, goes through one to whatever levels of upgrades there are. 0 Excludes it from buying menu.
+	///technology stored on this disk, goes through one to whatever levels of upgrades there are, set it to . 0 Excludes it from buying menu.
 	var/value = ITEM_EXCLUDE_BUY
-	///price of the upgrade, if a signle disk could mean many upgrades, use list in sync with upgrades to set its prices
+	///price of the upgrade, if a single disk could mean many upgrades, use list in sync with upgrades to set its prices
 	var/list/price = list(1000)
 
 /obj/item/research_upgrades/proc/get_upgrade_desc(val, short = TRUE) //needed for those special cases like one below. only needed in cases where single disk can be many upgrades, otherwise use desc and name.
 	return
 /obj/item/research_upgrades/autodoc
-	name = "Research Upgrade (AutoDoc)"
+	name = "Research Upgrade(AutoDoc)"
 	desc = "Research upgrade for AutoDoc, Technology on this disk is used "
 	value = UPGRADE_TIER_4
 	price = list(3000, 5000, 8000, 10000)
@@ -154,7 +154,8 @@
 					var/obj/item/spawn_item = new thing_to_spawn
 					spawn_item.forceMove(get_turf(user))
 		is_opened = TRUE
-		//icon_state = x
+		//icon_state = x //sprites will come sprites will come sprites will come sprites will come
+		//man above is coping ^^^
 		desc += "This one seems to be already opened"
 	return
 

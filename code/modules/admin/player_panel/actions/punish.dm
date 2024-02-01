@@ -78,7 +78,6 @@
 		persistent_cid = player.last_known_cid
 		persistent_ip = player.last_known_ip
 
-
 	user.cmd_admin_do_stickyban(target.ckey, impacted_ckeys = list(target.ckey), impacted_cids = list(persistent_cid), impacted_ips = list(persistent_ip))
 
 /datum/player_action/mute

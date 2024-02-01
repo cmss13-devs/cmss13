@@ -247,33 +247,6 @@
 		log_and_message_admins("[key_name_admin(owner)] has removed the permanent ban on [unban_player.ckey].")
 
 	else if(href_list["sticky"])
-		if(href_list["new_sticky"])
-			var/identifier = tgui_input_text(owner, "Name of the primary CKEY you are adding a stickyban to.", "BuildABan")
-			var/reason = tgui_input_text(owner, "What's the reason for the ban? This is shown internally, and not displayed in notes and ban messages.", "BuildABan")
-			var/message = tgui_input_text(owner, "What message should be given to the impacted users?", "BuildABan")
-
-			var/datum/entity/stickyban/new_sticky = SSstickyban.add_stickyban(identifier, reason, message, owner.player_data)
-
-			if(new_sticky)
-				var/list/impacted_ckeys = splittext(tgui_input_text(owner, "Which CKEYs should be impacted by this ban? Include the primary ckey, separated by semicolons.", "BuildABan", "player1;player2;player3"), ";")
-
-				for(var/ckey in impacted_ckeys)
-					SSstickyban.add_matched_ckey(new_sticky.id, ckey)
-
-				var/list/impacted_cids = splittext(tgui_input_text(owner, "Which CIDs should be impacted by this ban? Separate with semicolons.", "BuildABan", "12345678;87654321"), ";")
-				for(var/cid in impacted_cids)
-					SSstickyban.add_matched_cid(new_sticky.id, cid)
-
-				var/list/impacted_ips = splittext(tgui_input_text(owner, "Which IPs should be impacted by this ban? Separate with semicolons.", "BuildABan", "1.1.1.1;8.8.8.8"), ";")
-				for(var/ip in impacted_ips)
-					SSstickyban.add_matched_ip(new_sticky.id, ip)
-
-				log_admin("STICKYBAN: Identifier: [identifier] Reason: [reason] Message: [message] CKEYs: [english_list(impacted_ckeys)] IPs: [english_list(impacted_ips)] CIDs: [english_list(impacted_cids)]")
-
-			log_and_message_admins("[key_name_admin(owner)] has added a new stickyban with the identifier '[identifier]'.")
-
-			return
-
 		if(href_list["view_all_ckeys"])
 			var/list/datum/view_record/stickyban_matched_ckey/all_ckeys = DB_VIEW(/datum/view_record/stickyban_matched_ckey,
 				DB_COMP("linked_stickyban", DB_EQUALS, href_list["sticky"])
@@ -308,6 +281,13 @@
 				ips += match.ip
 
 			show_browser(owner, english_list(ips), "Stickyban IPs", "stickycips")
+			return
+
+		if(!check_rights_for(owner, R_BAN))
+			return
+
+		if(href_list["new_sticky"])
+			owner.cmd_admin_do_stickyban()
 			return
 
 		var/datum/entity/stickyban/sticky = DB_ENTITY(/datum/entity/stickyban, href_list["sticky"])

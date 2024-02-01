@@ -282,7 +282,8 @@
 	name = "\improper XM4 pattern intelligence officer armor"
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/qm_suit, /obj/item/clothing/under/marine/officer/intel)
 	specialty = "XM4 pattern intel"
-	desc = "The XM4 armor is custom made for Intelligence Officers, it has an experimental integrated motion detector attached. The R&D team spent an entire weekend designing this armor."
+	desc = "Tougher than steel, quieter than whispers, the XM4 Intel Armor provides capable protection combined with integrated compact motion detection sensors. It took an R&D team a weekend to develop and costs more than Chinook Station... probably."
+	desc_lore = "ARMAT Perfection. The XM4 Soldier Awareness System mixes M4-style hard armor and a distributed series of sensors around the breastplate. When connected to any HUD optic, it replicates the effects of an M134 Motion Detector unit, increasing user situational awareness. It is currently undergoing field trials by intelligence operatives."
 	/// XM4 Integral Motion Detector Ability
 	actions_types = list(/datum/action/item_action/toggle, /datum/action/item_action/intel/toggle_motion_detector)
 	var/motion_detector = FALSE
@@ -312,14 +313,14 @@
 
 /datum/action/item_action/intel/toggle_motion_detector/action_activate()
 	. = ..()
-	var/obj/item/clothing/suit/storage/marine/medium/rto/intel/armor = holder_item
-	armor.toggle_motion_detector(usr)
+	var/obj/item/clothing/suit/storage/marine/medium/rto/intel/recon = holder_item
+	recon.toggle_motion_detector(usr)
 
 /datum/action/item_action/intel/toggle_motion_detector/proc/update_icon()
 	if(!holder_item)
 		return
-	var/obj/item/clothing/suit/storage/marine/medium/rto/intel/armor = holder_item
-	if(armor.motion_detector)
+	var/obj/item/clothing/suit/storage/marine/medium/rto/intel/recon = holder_item
+	if(recon.motion_detector)
 		button.icon_state = "template_on"
 	else
 		button.icon_state = "template"

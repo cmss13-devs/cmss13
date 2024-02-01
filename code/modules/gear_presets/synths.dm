@@ -579,11 +579,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/large_stack(new_human.back), WEAR_IN_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/glass/reinforced/large_stack(new_human.back), WEAR_IN_R_STORE)
 
-
-
-/datum/equipment_preset/synth/working_joe/load_race(mob/living/carbon/human/new_human)
-	new_human.set_species(SYNTH_WORKING_JOE)
-
 //*****************************************************************************************************/
 
 /datum/equipment_preset/synth/survivor/cultist_synth

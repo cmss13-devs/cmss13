@@ -71,7 +71,7 @@
 	if(!length(wj_emotes))
 		var/list/emotes_to_add = list()
 		for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in subtypesof(/datum/emote/living/carbon/human/synthetic/working_joe))
-			if(!initial(emote.key) || !initial(emote.say_message))
+			if(initial(emote.hazard) || !initial(emote.key) || !initial(emote.say_message))
 				continue
 
 			if(!(initial(emote.category) in wj_categories))

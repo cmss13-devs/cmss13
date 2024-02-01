@@ -1,34 +1,16 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"ab" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/prop/almayer/computer/PC{
-	dir = 8;
-	pixel_y = 5
-	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
-/area/space)
-"an" = (
-/obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "0,5"
-	},
-/turf/open/space/basic,
-/area/space)
-"ay" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "sterile_green_corner"
-	},
-/area/space)
 "az" = (
 /obj/structure/platform{
 	dir = 4
 	},
 /turf/open/shuttle/dropship,
+/area/space)
+"aA" = (
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/turf/open/floor/plating,
 /area/space)
 "aG" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -39,25 +21,41 @@
 	icon_state = "test_floor4"
 	},
 /area/space)
-"aW" = (
+"aL" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/crew/alt{
+/obj/structure/machinery/computer/secure_data{
 	dir = 4
 	},
-/obj/structure/transmitter/rotary/no_dnd{
-	name = "Brig Cells Telephone";
-	phone_category = "MP Dept.";
-	phone_id = "Brig Cells";
-	pixel_x = 16
+/obj/structure/sign/safety/terminal{
+	pixel_x = 3;
+	pixel_y = 27
+	},
+/obj/structure/sign/safety/rewire{
+	pixel_x = 15;
+	pixel_y = 27
 	},
 /turf/open/floor/almayer{
-	dir = 10;
+	dir = 8;
 	icon_state = "red"
 	},
 /area/space)
 "aY" = (
 /turf/open/floor/almayer{
 	icon_state = "blue"
+	},
+/area/space)
+"bf" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner"
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_corner"
 	},
 /area/space)
 "bg" = (
@@ -77,21 +75,6 @@
 /obj/structure/window/framed/prison/reinforced/hull,
 /turf/open/shuttle/dropship,
 /area/space)
-"bt" = (
-/obj/structure/bed/chair{
-	dir = 8;
-	pixel_y = 3
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "sterile_green_side"
-	},
-/area/space)
-"bv" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "1,1"
-	},
-/area/space)
 "bB" = (
 /obj/structure/bed/chair/dropship/pilot{
 	dir = 8
@@ -104,24 +87,21 @@
 	},
 /turf/open/shuttle/dropship,
 /area/space)
-"bW" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "6,5"
-	},
-/area/space)
 "bY" = (
 /obj/effect/landmark/corpsespawner/ua_riot,
 /turf/open/shuttle/dropship,
 /area/space)
-"cd" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/sentencing{
-	dir = 4
+"cc" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "23,6"
 	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "red"
+/area/space)
+"cg" = (
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
+	dir = 4;
+	name = "pilot seat"
 	},
+/turf/open/shuttle/lifeboat,
 /area/space)
 "cw" = (
 /obj/structure/surface/table/almayer,
@@ -133,10 +113,25 @@
 	icon_state = "blue"
 	},
 /area/space)
-"cB" = (
-/turf/closed/shuttle/ert{
-	icon_state = "T4";
-	name = "Buran"
+"cy" = (
+/obj/structure/machinery/power/apc/almayer{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "red"
+	},
+/area/space)
+"cz" = (
+/obj/structure/machinery/door_control{
+	id = "or2privacyshutter";
+	name = "Privacy Shutters";
+	pixel_y = 25
+	},
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side"
 	},
 /area/space)
 "cC" = (
@@ -150,12 +145,6 @@
 	dir = 4
 	},
 /turf/open/shuttle/dropship,
-/area/space)
-"cF" = (
-/obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "25,6"
-	},
-/turf/open/space/basic,
 /area/space)
 "cL" = (
 /obj/structure/window/reinforced/tinted,
@@ -177,11 +166,6 @@
 "cU" = (
 /turf/open/floor/almayer,
 /area/space)
-"cV" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "2,5"
-	},
-/area/space)
 "cX" = (
 /obj/structure/machinery/landinglight/ds1/delayone,
 /turf/open/shuttle/dropship,
@@ -191,16 +175,9 @@
 /obj/structure/machinery/computer/cameras,
 /turf/open/shuttle/dropship,
 /area/space)
-"dg" = (
-/obj/structure/window/framed/almayer/white,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or2privacyshutter";
-	name = "\improper Privacy Shutters"
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/turf/open/floor/plating,
+"de" = (
+/obj/item/weapon/gun/pistol/mod88/flashlight,
+/turf/open/shuttle/dropship,
 /area/space)
 "dm" = (
 /obj/effect/decal/warning_stripes{
@@ -216,11 +193,6 @@
 	icon_state = "plate"
 	},
 /area/space)
-"dt" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "2,4"
-	},
-/area/space)
 "dv" = (
 /obj/structure/filtration/machine_64x96{
 	icon_state = "filtration_machine_A_1"
@@ -228,31 +200,6 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull"
-	},
-/area/space)
-"dz" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/structure/sink{
-	pixel_y = -10;
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
-/area/space)
-"dA" = (
-/obj/structure/sink{
-	pixel_y = 32
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "sterile_green_side"
 	},
 /area/space)
 "dC" = (
@@ -274,15 +221,27 @@
 	icon_state = "plate"
 	},
 /area/space)
-"dI" = (
-/turf/closed/shuttle/ert{
-	icon_state = "T7";
-	name = "Buran"
+"dN" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 1;
+	name = "Bathroom"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
 	},
 /area/space)
-"dK" = (
+"dQ" = (
 /turf/closed/shuttle/lifeboat{
-	icon_state = "23,1"
+	icon_state = "24,6"
 	},
 /area/space)
 "dS" = (
@@ -297,15 +256,18 @@
 /obj/structure/bed/chair/comfy/black,
 /turf/open/shuttle/dropship,
 /area/space)
-"dX" = (
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/space)
-"dY" = (
-/obj/structure/machinery/cm_vending/sorted/medical,
+"dW" = (
+/obj/structure/machinery/iv_drip,
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	dir = 1;
-	icon_state = "sterile_green_corner"
+	icon_state = "sterile_green_side"
 	},
+/area/space)
+"dX" = (
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/space)
 "dZ" = (
 /obj/effect/decal/warning_stripes{
@@ -327,17 +289,6 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/space)
-"ea" = (
-/obj/structure/window/framed/almayer/white,
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/turf/open/floor/plating,
-/area/space)
-"ed" = (
-/obj/structure/machinery/door/airlock/almayer/research/glass/autoname{
-	dir = 2
-	},
-/turf/open/shuttle/dropship,
 /area/space)
 "el" = (
 /obj/structure/machinery/landinglight/ds1/delaythree,
@@ -366,17 +317,21 @@
 	icon_state = "plate"
 	},
 /area/space)
-"eL" = (
-/obj/structure/surface/table/almayer,
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
+"eK" = (
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
+	icon_state = "0,0"
 	},
+/turf/open/space/basic,
 /area/space)
-"eT" = (
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 8
+"eS" = (
+/obj/structure/machinery/door/window/brigdoor/southright{
+	id = "Cell 1";
+	name = "Cell 1"
 	},
-/turf/open/shuttle/dropship,
+/obj/structure/sign/safety/one{
+	pixel_x = -17
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/space)
 "eW" = (
 /obj/structure/machinery/cm_vending/clothing/medic/delta,
@@ -404,24 +359,6 @@
 	icon_state = "plate"
 	},
 /area/space)
-"fd" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "18,0"
-	},
-/area/space)
-"fg" = (
-/obj/structure/machinery/door/airlock/almayer/medical{
-	dir = 1;
-	id_tag = "or02";
-	name = "Operating Theatre 2"
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/space)
 "fi" = (
 /obj/structure/machinery/cryopod/right,
 /obj/structure/machinery/light{
@@ -431,9 +368,10 @@
 	icon_state = "cargo"
 	},
 /area/space)
-"fm" = (
-/turf/closed/shuttle/lifeboat/transparent{
-	icon_state = "25,4"
+"fk" = (
+/turf/open/floor/almayer{
+	dir = 6;
+	icon_state = "sterile_green_side"
 	},
 /area/space)
 "fo" = (
@@ -446,11 +384,6 @@
 	icon_state = "plate"
 	},
 /area/space)
-"fr" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "24,0"
-	},
-/area/space)
 "fs" = (
 /obj/structure/bed/sofa/vert/grey/top,
 /turf/open/shuttle/dropship,
@@ -459,6 +392,19 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "cargo_arrow"
+	},
+/area/space)
+"fB" = (
+/obj/structure/machinery/door/airlock/almayer/medical{
+	dir = 1;
+	id_tag = "or01";
+	name = "Operating Theatre 1"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
 	},
 /area/space)
 "fC" = (
@@ -479,9 +425,9 @@
 /turf/open/shuttle/dropship,
 /area/space)
 "fI" = (
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "sterile_green_corner"
+/turf/closed/shuttle/ert{
+	icon_state = "upp5";
+	name = "Buran"
 	},
 /area/space)
 "fM" = (
@@ -497,23 +443,47 @@
 	icon_state = "plate"
 	},
 /area/space)
-"fS" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
+"fR" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/recharger,
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile"
+	icon_state = "red"
 	},
 /area/space)
-"fU" = (
-/turf/closed/shuttle/ert{
-	icon_state = "T17";
-	name = "Buran"
+"fY" = (
+/obj/structure/machinery/door/window/brigdoor/southright{
+	id = "Cell 2";
+	name = "Cell 2"
 	},
+/obj/structure/sign/safety/two{
+	pixel_x = -17
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/space)
+"gd" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 4;
+	pixel_y = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/space)
+"gf" = (
+/obj/structure/machinery/shower{
+	dir = 8
+	},
+/obj/item/toy/inflatable_duck,
+/obj/structure/window/reinforced,
+/turf/open/floor/plating/plating_catwalk,
 /area/space)
 "gg" = (
 /obj/structure/disposalpipe/segment{
@@ -528,12 +498,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/space)
-"gs" = (
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "cell_stripe"
-	},
-/area/space)
 "gv" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -543,11 +507,39 @@
 	icon_state = "bluecorner"
 	},
 /area/space)
+"gy" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/faxmachine/uscm/brig,
+/obj/structure/machinery/status_display{
+	pixel_y = 30
+	},
+/turf/open/floor/almayer{
+	icon_state = "redfull"
+	},
+/area/space)
+"gz" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/book/manual/surgery,
+/obj/structure/sign/safety/biohazard{
+	pixel_x = -17
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_side"
+	},
+/area/space)
 "gF" = (
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "red"
 	},
+/area/space)
+"gH" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
+	id = "Boat2-D4";
+	throw_dir = 2
+	},
+/turf/open/shuttle/lifeboat,
 /area/space)
 "gL" = (
 /obj/item/device/radio/intercom{
@@ -560,6 +552,19 @@
 	icon_state = "red"
 	},
 /area/space)
+"gO" = (
+/obj/structure/machinery/computer3/server/rack{
+	density = 0;
+	pixel_y = 16
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "floor_marked"
+	},
+/area/space)
 "gR" = (
 /obj/structure/machinery/cm_vending/clothing/marine/alpha{
 	density = 0;
@@ -570,17 +575,43 @@
 	icon_state = "cargo_arrow"
 	},
 /area/space)
-"ha" = (
-/obj/structure/machinery/shower{
-	dir = 8
+"gV" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/crew/alt{
+	dir = 4
 	},
-/obj/structure/window/reinforced,
-/obj/item/tool/soap,
-/turf/open/floor/plating/plating_catwalk,
+/obj/structure/transmitter/rotary/no_dnd{
+	name = "Brig Cells Telephone";
+	phone_category = "MP Dept.";
+	phone_id = "Brig Cells";
+	pixel_x = 16
+	},
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "red"
+	},
 /area/space)
-"hf" = (
-/obj/structure/cargo_container/wy/right,
-/turf/open/shuttle/dropship,
+"gY" = (
+/turf/closed/shuttle/escapepod{
+	icon_state = "wall3"
+	},
+/area/space)
+"gZ" = (
+/obj/structure/window/framed/almayer/white,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/space)
+"hb" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/closet/secure_closet/surgical{
+	pixel_y = -30
+	},
+/obj/item/book/manual/surgery,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side"
+	},
 /area/space)
 "hl" = (
 /obj/structure/surface/table/almayer,
@@ -590,40 +621,36 @@
 	},
 /turf/open/floor/almayer,
 /area/space)
-"hn" = (
-/obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "0,4"
+"hs" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "24,5"
 	},
-/turf/open/space/basic,
-/area/space)
-"hx" = (
-/obj/structure/machinery/cm_vending/sorted/supplies/lifeboat{
-	pixel_x = -12;
-	pixel_y = 27
-	},
-/turf/open/shuttle/lifeboat,
 /area/space)
 "hy" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/tool/hand_labeler{
-	pixel_x = 7
-	},
-/obj/item/paper_bin/uscm{
-	pixel_y = 5
-	},
-/obj/item/tool/pen,
-/obj/structure/machinery/computer/working_joe{
-	dir = 8;
-	pixel_x = 17
-	},
-/turf/open/floor/almayer{
-	icon_state = "sterile_green_side"
+/turf/closed/shuttle/lifeboat{
+	icon_state = "6,5"
 	},
 /area/space)
-"hA" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/cameras/almayer/vehicle,
-/turf/open/shuttle/lifeboat,
+"hB" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/space)
+"hC" = (
+/obj/structure/machinery/door_control{
+	id = "or01";
+	name = "Surgery Door Release";
+	normaldoorcontrol = 1;
+	pixel_x = 23
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_side"
+	},
 /area/space)
 "hD" = (
 /obj/effect/landmark/corpsespawner/ua_riot/burst,
@@ -646,14 +673,19 @@
 	icon_state = "test_floor4"
 	},
 /area/space)
-"hR" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine/uscm/brig,
-/obj/structure/machinery/status_display{
-	pixel_y = 30
+"hX" = (
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
+	dir = 8
 	},
-/turf/open/floor/almayer{
-	icon_state = "redfull"
+/turf/open/shuttle/dropship,
+/area/space)
+"hY" = (
+/obj/structure/cargo_container/wy/mid,
+/turf/open/shuttle/dropship,
+/area/space)
+"hZ" = (
+/turf/closed/shuttle/escapepod{
+	icon_state = "wall6"
 	},
 /area/space)
 "ie" = (
@@ -668,8 +700,19 @@
 	},
 /turf/open/floor/grass,
 /area/space)
+"ii" = (
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
+	icon_state = "25,6"
+	},
+/turf/open/space/basic,
+/area/space)
 "ik" = (
 /turf/closed/wall/almayer,
+/area/space)
+"io" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "11,0"
+	},
 /area/space)
 "ip" = (
 /obj/structure/machinery/light{
@@ -681,25 +724,25 @@
 	icon_state = "red"
 	},
 /area/space)
-"it" = (
-/obj/structure/lattice,
-/turf/open/shuttle/dropship,
-/area/space)
-"ix" = (
-/obj/structure/machinery/door_control{
-	id = "or2privacyshutter";
-	name = "Privacy Shutters";
-	pixel_y = 25
+"iq" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "2,3"
 	},
-/obj/structure/machinery/iv_drip,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "sterile_green_side"
+/area/space)
+"iu" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "25,1"
 	},
 /area/space)
 "iz" = (
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
+	},
+/area/space)
+"iB" = (
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "cell_stripe"
 	},
 /area/space)
 "iI" = (
@@ -728,16 +771,30 @@
 /obj/structure/bed/sofa/vert/grey,
 /turf/open/shuttle/dropship,
 /area/space)
-"iT" = (
-/obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "0,0"
-	},
-/turf/open/space/basic,
-/area/space)
 "iX" = (
 /obj/structure/window/reinforced/tinted,
 /obj/structure/window/reinforced/tinted,
 /turf/open/shuttle/dropship,
+/area/space)
+"jd" = (
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
+	icon_state = "1,0"
+	},
+/turf/open/space/basic,
+/area/space)
+"je" = (
+/turf/closed/shuttle/lifeboat/transparent{
+	icon_state = "25,2"
+	},
+/area/space)
+"jf" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_corner"
+	},
 /area/space)
 "jh" = (
 /obj/structure/bed/chair{
@@ -746,6 +803,11 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "blue"
+	},
+/area/space)
+"jk" = (
+/turf/closed/shuttle/escapepod{
+	icon_state = "wall7"
 	},
 /area/space)
 "jl" = (
@@ -793,6 +855,11 @@
 	icon_state = "cargo"
 	},
 /area/space)
+"jC" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "18,0"
+	},
+/area/space)
 "jD" = (
 /obj/structure/filtration/machine_64x128{
 	icon_state = "filtration_1"
@@ -800,6 +867,15 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull"
+	},
+/area/space)
+"jG" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
 	},
 /area/space)
 "jI" = (
@@ -811,15 +887,11 @@
 	},
 /area/space)
 "jN" = (
-/obj/structure/filingcabinet/filingcabinet,
-/obj/item/clipboard,
-/obj/item/clipboard,
-/obj/item/folder/black,
-/obj/item/folder/black,
-/obj/item/folder/white,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "sterile_green_corner"
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	dir = 1
+	},
+/turf/open/floor/corsat{
+	icon_state = "marked"
 	},
 /area/space)
 "jQ" = (
@@ -828,11 +900,14 @@
 	},
 /turf/open/shuttle/dropship,
 /area/space)
-"jS" = (
-/turf/closed/shuttle/ert{
-	icon_state = "T7";
-	name = "Buran";
-	opacity = 0
+"jR" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_x = -1;
+	pixel_y = 2
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
 	},
 /area/space)
 "jT" = (
@@ -871,6 +946,12 @@
 	},
 /turf/open/shuttle/dropship,
 /area/space)
+"ke" = (
+/obj/structure/machinery/light/double{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/space)
 "kg" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/condiment/hotsauce/franks{
@@ -878,6 +959,12 @@
 	pixel_y = 10
 	},
 /turf/open/floor/plating/plating_catwalk,
+/area/space)
+"ki" = (
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
+	icon_state = "26,1"
+	},
+/turf/open/space/basic,
 /area/space)
 "kj" = (
 /turf/closed/shuttle/ert{
@@ -897,12 +984,6 @@
 	icon_state = "bluecorner"
 	},
 /area/space)
-"kr" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp5";
-	name = "Buran"
-	},
-/area/space)
 "ks" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 8
@@ -912,7 +993,11 @@
 	},
 /turf/open/shuttle/dropship,
 /area/space)
-"ku" = (
+"kv" = (
+/obj/structure/tunnel,
+/turf/open/shuttle/dropship,
+/area/space)
+"kw" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	dir = 2;
 	id_tag = "tc02";
@@ -922,16 +1007,22 @@
 	icon_state = "dark_sterile"
 	},
 /area/space)
-"kv" = (
-/obj/structure/tunnel,
-/turf/open/shuttle/dropship,
-/area/space)
 "kA" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/shuttle/lifeboat{
-	dir = 8
+/turf/closed/shuttle/lifeboat{
+	icon_state = "7,6"
 	},
-/turf/open/shuttle/lifeboat,
+/area/space)
+"kB" = (
+/turf/open/shuttle/lifeboat{
+	icon_state = "test_floor4"
+	},
+/area/space)
+"kD" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_corner"
+	},
 /area/space)
 "kE" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
@@ -946,19 +1037,18 @@
 	},
 /area/space)
 "kI" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/communications,
-/turf/open/shuttle/lifeboat,
+/obj/structure/machinery/firealarm{
+	dir = 8;
+	pixel_y = -24
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side"
+	},
 /area/space)
 "kN" = (
 /obj/structure/machinery/door/airlock/almayer/marine/delta/sl,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
-	},
-/area/space)
-"kO" = (
-/turf/closed/shuttle/lifeboat/transparent{
-	icon_state = "25,2"
 	},
 /area/space)
 "kQ" = (
@@ -968,6 +1058,19 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "redcorner"
+	},
+/area/space)
+"kS" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 25
+	},
+/obj/structure/bed/chair/bolted,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "red"
 	},
 /area/space)
 "kT" = (
@@ -989,13 +1092,19 @@
 	icon_state = "plate"
 	},
 /area/space)
-"ln" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 2.5
+"lm" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/crew/alt{
+	dir = 1
 	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_corner"
+	},
+/area/space)
+"ln" = (
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
 	},
 /area/space)
 "lo" = (
@@ -1007,38 +1116,36 @@
 	icon_state = "plate"
 	},
 /area/space)
-"lp" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1";
-	opacity = 0;
-	name = "Buran"
-	},
-/area/space)
 "lv" = (
 /obj/structure/sign/nosmoking_1,
 /turf/closed/wall/almayer,
 /area/space)
 "lx" = (
-/turf/closed/shuttle/ert{
-	icon_state = "T19";
-	name = "Buran"
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
 	},
-/area/space)
-"ly" = (
-/obj/structure/bed,
-/obj/structure/machinery/flasher{
-	id = "Cell 1";
-	pixel_x = -24
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
 	},
 /turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "red"
+	icon_state = "dark_sterile"
 	},
 /area/space)
 "lF" = (
 /obj/structure/machinery/door/airlock/almayer/marine/alpha/engineer,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
+	},
+/area/space)
+"lQ" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 8;
+	pixel_y = 5
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
 	},
 /area/space)
 "lR" = (
@@ -1055,24 +1162,11 @@
 	},
 /turf/open/floor/almayer,
 /area/space)
-"lZ" = (
-/obj/structure/fence,
-/turf/open/shuttle/dropship,
-/area/space)
-"mj" = (
-/obj/structure/machinery/light{
-	dir = 8
+"mi" = (
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
+	dir = 4
 	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "sterile_green_side"
-	},
-/area/space)
-"mk" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp16";
-	name = "Fulcrum"
-	},
+/turf/open/shuttle/lifeboat,
 /area/space)
 "mm" = (
 /obj/structure/bed/chair{
@@ -1083,30 +1177,38 @@
 	icon_state = "blue"
 	},
 /area/space)
-"mo" = (
-/obj/structure/pipes/vents/pump{
-	dir = 8;
-	id_tag = "mining_outpost_pump"
+"mu" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
+	id = "Boat2-D2";
+	throw_dir = 1
 	},
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
-/area/space)
-"ms" = (
-/turf/closed/shuttle/ert{
-	icon_state = "T5";
-	name = "Fulcrum"
+/turf/open/shuttle/lifeboat{
+	icon_state = "test_floor4"
 	},
 /area/space)
-"mA" = (
+"mz" = (
 /turf/closed/shuttle/lifeboat{
-	icon_state = "3,5"
+	icon_state = "23,0"
 	},
+/area/space)
+"mD" = (
+/turf/closed/shuttle/escapepod,
 /area/space)
 "mF" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/floor/grass,
+/area/space)
+"mH" = (
+/obj/structure/barricade/deployable{
+	dir = 4
+	},
+/turf/open/shuttle/dropship,
+/area/space)
+"mI" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/cameras/almayer/vehicle,
+/turf/open/shuttle/lifeboat,
 /area/space)
 "mL" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -1117,6 +1219,16 @@
 	dir = 8
 	},
 /turf/open/shuttle/dropship,
+/area/space)
+"mM" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_y = 3
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_side"
+	},
 /area/space)
 "mP" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/marine/alpha{
@@ -1155,9 +1267,13 @@
 /obj/item/stack/rods,
 /turf/open/floor/almayer,
 /area/space)
-"mZ" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "2,1"
+"nb" = (
+/obj/structure/prop/server_equipment/yutani_server{
+	density = 0
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "floor_marked"
 	},
 /area/space)
 "nf" = (
@@ -1172,17 +1288,6 @@
 	icon_state = "plate"
 	},
 /area/space)
-"nn" = (
-/obj/structure/machinery/disposal,
-/obj/structure/machinery/firealarm{
-	dir = 8;
-	pixel_x = -24
-	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "sterile_green_corner"
-	},
-/area/space)
 "no" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 4
@@ -1192,6 +1297,18 @@
 	},
 /turf/open/shuttle/dropship,
 /area/space)
+"ns" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass/reinforced{
+	dir = 1;
+	name = "\improper Holding Cell"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/space)
 "nv" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 4
@@ -1199,15 +1316,11 @@
 /obj/structure/machinery/landinglight/ds1/delayone,
 /turf/open/shuttle/dropship,
 /area/space)
-"nx" = (
-/obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/firedoor/border_only/almayer{
+"nM" = (
+/obj/structure/machinery/door/airlock/almayer/research/glass/autoname{
 	dir = 2
 	},
-/turf/open/floor/plating,
-/area/space)
-"nJ" = (
-/turf/closed/shuttle/lifeboat,
+/turf/open/shuttle/dropship,
 /area/space)
 "nT" = (
 /obj/structure/machinery/light,
@@ -1226,11 +1339,6 @@
 	icon_state = "red"
 	},
 /area/space)
-"oe" = (
-/turf/open/shuttle/lifeboat{
-	icon_state = "test_floor4"
-	},
-/area/space)
 "ok" = (
 /obj/structure/prop/almayer/computers/sensor_computer1{
 	name = "computer"
@@ -1242,11 +1350,6 @@
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
-/area/space)
-"om" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/shuttle/lifeboat,
-/turf/open/shuttle/lifeboat,
 /area/space)
 "oo" = (
 /obj/structure/shuttle/engine/heater{
@@ -1303,6 +1406,17 @@
 	icon_state = "plate"
 	},
 /area/space)
+"oF" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp20";
+	name = "Buran"
+	},
+/area/space)
+"oJ" = (
+/turf/closed/shuttle/lifeboat/transparent{
+	icon_state = "25,3"
+	},
+/area/space)
 "oM" = (
 /obj/structure/machinery/cm_vending/sorted/marine_food,
 /turf/open/shuttle/dropship,
@@ -1323,13 +1437,6 @@
 	icon_state = "red"
 	},
 /area/space)
-"oV" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_2";
-	opacity = 0;
-	name = "Buran"
-	},
-/area/space)
 "oX" = (
 /obj/effect/landmark/corpsespawner/wy,
 /turf/open/shuttle/dropship,
@@ -1338,9 +1445,9 @@
 /obj/effect/landmark/static_comms/net_one,
 /turf/open/shuttle/dropship,
 /area/space)
-"pa" = (
+"pb" = (
 /obj/structure/extinguisher_cabinet/lifeboat{
-	pixel_x = 8;
+	pixel_x = 15;
 	pixel_y = 27
 	},
 /turf/open/shuttle/lifeboat,
@@ -1379,40 +1486,24 @@
 	},
 /turf/open/shuttle/dropship,
 /area/space)
-"px" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/belt/medical/lifesaver/full,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/device/radio/marine,
-/obj/item/clothing/accessory/storage/surg_vest,
-/obj/item/tool/portadialysis,
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "sterile_green_side"
+"pz" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "24,0"
 	},
 /area/space)
-"pA" = (
-/obj/structure/window/framed/prison/reinforced/hull,
-/turf/closed/wall/r_wall/prison_unmeltable,
-/area/space)
-"pB" = (
-/obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "0,6"
-	},
-/turf/open/space/basic,
-/area/space)
-"pE" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "sterile_green_side"
+"pG" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "23,1"
 	},
 /area/space)
 "pP" = (
 /obj/structure/machinery/vending/cola,
 /turf/open/shuttle/dropship,
+/area/space)
+"pQ" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "25,5"
+	},
 /area/space)
 "pT" = (
 /obj/structure/window/framed/almayer,
@@ -1423,11 +1514,6 @@
 "pU" = (
 /obj/docking_port/stationary/marine_dropship/lz1,
 /turf/open/shuttle/dropship,
-/area/space)
-"pX" = (
-/turf/open/shuttle/escapepod{
-	icon_state = "floor8"
-	},
 /area/space)
 "qd" = (
 /obj/structure/machinery/cryopod/right{
@@ -1444,11 +1530,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
-	},
-/area/space)
-"qg" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "7,0"
 	},
 /area/space)
 "qi" = (
@@ -1472,12 +1553,28 @@
 	icon_state = "red"
 	},
 /area/space)
-"qo" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
-	id = "Boat2-D3";
-	throw_dir = 2
+"qk" = (
+/obj/structure/foamed_metal,
+/turf/open/shuttle/dropship,
+/area/space)
+"qn" = (
+/obj/structure/machinery/door/airlock/almayer/medical{
+	dir = 1;
+	id_tag = "or02";
+	name = "Operating Theatre 2"
 	},
-/turf/open/shuttle/lifeboat,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/space)
+"qp" = (
+/turf/open/shuttle/lifeboat{
+	dir = 1;
+	icon_state = "plating_striped"
+	},
 /area/space)
 "qr" = (
 /obj/structure/pipes/vents/scrubber{
@@ -1496,13 +1593,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
-	},
-/area/space)
-"qu" = (
-/turf/closed/shuttle/ert{
-	icon_state = "T1";
-	name = "Buran";
-	opacity = 0
 	},
 /area/space)
 "qv" = (
@@ -1525,11 +1615,9 @@
 	icon_state = "blue"
 	},
 /area/space)
-"qy" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/recharger,
-/turf/open/floor/almayer{
-	icon_state = "red"
+"qz" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "1,5"
 	},
 /area/space)
 "qA" = (
@@ -1538,12 +1626,6 @@
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
-/area/space)
-"qC" = (
-/obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "0,2"
-	},
-/turf/open/space/basic,
 /area/space)
 "qH" = (
 /obj/structure/monorail{
@@ -1556,6 +1638,15 @@
 	icon_state = "stan5"
 	},
 /area/space)
+"qR" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side"
+	},
+/area/space)
 "qS" = (
 /obj/structure/machinery/cm_vending/clothing/marine/delta{
 	density = 0;
@@ -1566,11 +1657,6 @@
 	icon_state = "cargo_arrow"
 	},
 /area/space)
-"qV" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "1,4"
-	},
-/area/space)
 "qZ" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 4
@@ -1578,35 +1664,14 @@
 /turf/open/shuttle/dropship,
 /area/space)
 "rf" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_2";
-	opacity = 0;
-	name = "Buran"
+/turf/closed/shuttle/lifeboat{
+	icon_state = "2,4"
 	},
 /area/space)
 "rg" = (
 /obj/structure/machinery/door/airlock/almayer/marine/delta/engineer,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
-	},
-/area/space)
-"rh" = (
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 1
-	},
-/turf/open/shuttle/dropship,
-/area/space)
-"rl" = (
-/obj/structure/window/framed/almayer/white,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or2privacyshutter";
-	name = "\improper Privacy Shutters"
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
 	},
 /area/space)
 "rn" = (
@@ -1634,19 +1699,6 @@
 	icon_state = "test_floor4"
 	},
 /area/space)
-"rw" = (
-/obj/structure/machinery/computer3/server/rack{
-	density = 0;
-	pixel_y = 16
-	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_marked"
-	},
-/area/space)
 "ry" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -1663,11 +1715,15 @@
 /obj/structure/prop/server_equipment/yutani_server,
 /turf/open/shuttle/dropship,
 /area/space)
-"sa" = (
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 4
+"rI" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp25";
+	name = "Buran"
 	},
-/turf/open/shuttle/lifeboat,
+/area/space)
+"rW" = (
+/obj/item/stack/folding_barricade,
+/turf/open/shuttle/dropship,
 /area/space)
 "se" = (
 /obj/structure/machinery/power/apc/weak{
@@ -1681,9 +1737,32 @@
 	icon_state = "red"
 	},
 /area/space)
-"sg" = (
-/obj/structure/prop/server_equipment/yutani_server{
-	density = 0
+"sh" = (
+/obj/structure/machinery/atm,
+/turf/open/shuttle/dropship,
+/area/space)
+"sn" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_side"
+	},
+/area/space)
+"so" = (
+/obj/structure/machinery/optable,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/space)
+"sq" = (
+/obj/structure/machinery/computer3/server/rack{
+	density = 0;
+	pixel_y = 1
+	},
+/obj/structure/machinery/light{
+	dir = 4
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -1699,19 +1778,9 @@
 	icon_state = "plate"
 	},
 /area/space)
-"sw" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "sterile_green_side"
-	},
-/area/space)
-"sB" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "17,5"
-	},
+"sz" = (
+/obj/structure/girder,
+/turf/open/floor/plating,
 /area/space)
 "sH" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -1739,13 +1808,11 @@
 "sM" = (
 /turf/closed/wall/mineral/gold,
 /area/space)
-"sQ" = (
-/obj/structure/bed/chair/bolted{
-	dir = 8
-	},
+"sP" = (
+/obj/structure/machinery/cm_vending/sorted/medical/blood,
 /turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "redcorner"
+	dir = 1;
+	icon_state = "sterile_green_side"
 	},
 /area/space)
 "sR" = (
@@ -1782,12 +1849,6 @@
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
-"th" = (
-/turf/open/shuttle/lifeboat{
-	dir = 1;
-	icon_state = "plating_striped"
-	},
-/area/space)
 "ti" = (
 /obj/structure/window/reinforced/tinted,
 /obj/item/storage/briefcase,
@@ -1810,14 +1871,25 @@
 	},
 /area/space)
 "tn" = (
-/obj/structure/machinery/light/double{
-	dir = 8
+/turf/closed/shuttle/ert{
+	icon_state = "T9";
+	name = "Buran"
 	},
-/turf/open/floor/plating,
 /area/space)
-"tq" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "23,5"
+"tr" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/sink{
+	pixel_y = -10;
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
 	},
 /area/space)
 "tt" = (
@@ -1831,6 +1903,31 @@
 /obj/structure/machinery/vending/snack/packaged,
 /turf/open/shuttle/dropship,
 /area/space)
+"tv" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "2,2"
+	},
+/area/space)
+"tw" = (
+/obj/structure/bed,
+/obj/structure/machinery/flasher{
+	id = "Cell 3";
+	pixel_x = -24
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "red"
+	},
+/area/space)
+"tE" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "1,1"
+	},
+/area/space)
+"tH" = (
+/obj/structure/machinery/cryopod/evacuation,
+/turf/open/shuttle/escapepod,
+/area/space)
 "tI" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/box/masks,
@@ -1838,24 +1935,20 @@
 	icon_state = "blue"
 	},
 /area/space)
-"tQ" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "6,6"
+"tN" = (
+/obj/structure/surface/table/almayer,
+/obj/item/paper_bin{
+	pixel_x = 7;
+	pixel_y = 7
+	},
+/obj/item/tool/pen/blue/clicky,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
 	},
 /area/space)
 "tS" = (
 /obj/structure/window/framed/prison/reinforced,
 /turf/open/shuttle/dropship,
-/area/space)
-"tT" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/closet/secure_closet/surgical{
-	pixel_y = -30
-	},
-/obj/item/book/manual/surgery,
-/turf/open/floor/almayer{
-	icon_state = "sterile_green_side"
-	},
 /area/space)
 "tU" = (
 /obj/structure/machinery/cm_vending/clothing/leader/delta,
@@ -1914,9 +2007,17 @@
 /turf/open/floor/grass,
 /area/space)
 "uv" = (
-/turf/closed/shuttle/ert{
-	icon_state = "T14";
-	name = "Buran"
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_corner"
+	},
+/area/space)
+"uw" = (
+/obj/structure/pipes/vents/scrubber{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
 	},
 /area/space)
 "uy" = (
@@ -1927,23 +2028,20 @@
 	icon_state = "test_floor4"
 	},
 /area/space)
-"uA" = (
-/obj/structure/extinguisher_cabinet/lifeboat{
-	pixel_x = 15;
-	pixel_y = 27
+"uz" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8;
+	id_tag = "mining_outpost_pump"
 	},
-/turf/open/shuttle/lifeboat,
-/area/space)
-"uE" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "3,6"
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
 	},
 /area/space)
-"uL" = (
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 1
+"uT" = (
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
+	icon_state = "0,1"
 	},
-/turf/open/shuttle/lifeboat,
+/turf/open/space/basic,
 /area/space)
 "uV" = (
 /turf/open/floor/almayer{
@@ -1967,17 +2065,6 @@
 /obj/item/prop/colony/used_flare,
 /turf/open/shuttle/dropship,
 /area/space)
-"vm" = (
-/obj/structure/surface/table/almayer,
-/obj/item/paper_bin{
-	pixel_x = 7;
-	pixel_y = 7
-	},
-/obj/item/tool/pen/blue/clicky,
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
-/area/space)
 "vq" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -1993,29 +2080,16 @@
 	icon_state = "plate"
 	},
 /area/space)
-"vu" = (
-/turf/closed/shuttle/ert{
-	icon_state = "T5";
-	name = "Buran"
-	},
-/area/space)
-"vy" = (
-/obj/structure/closet/secure_closet/medical2,
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "sterile_green_corner"
-	},
-/area/space)
-"vz" = (
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 4
-	},
-/turf/open/shuttle/dropship,
-/area/space)
 "vA" = (
 /obj/structure/surface/table/almayer,
 /obj/item/facepaint/black,
 /turf/open/floor/plating/plating_catwalk,
+/area/space)
+"vC" = (
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "cell_stripe"
+	},
 /area/space)
 "vD" = (
 /obj/structure/barricade/handrail/type_b{
@@ -2023,19 +2097,21 @@
 	},
 /turf/open/floor/plating/prison,
 /area/space)
-"vP" = (
-/obj/structure/machinery/bioprinter{
-	stored_metal = 125
-	},
-/turf/open/floor/almayer{
-	icon_state = "sterile_green_corner"
-	},
+"vL" = (
+/obj/structure/foamed_metal/iron,
+/turf/open/shuttle/dropship,
 /area/space)
-"vR" = (
-/obj/structure/toilet{
-	dir = 4
+"vO" = (
+/obj/structure/machinery/door_control{
+	id = "or1privacyshutter";
+	name = "Privacy Shutters";
+	pixel_y = 25
 	},
-/turf/open/floor/plating/plating_catwalk,
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side"
+	},
 /area/space)
 "vX" = (
 /obj/item/reagent_container/glass/bucket/mopbucket,
@@ -2044,11 +2120,23 @@
 	},
 /turf/open/shuttle/dropship,
 /area/space)
+"vY" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "1,3"
+	},
+/area/space)
 "wa" = (
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "redcorner"
 	},
+/area/space)
+"wc" = (
+/obj/item/ammo_magazine/pistol/mod88{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/turf/open/shuttle/dropship,
 /area/space)
 "we" = (
 /obj/structure/machinery/light{
@@ -2059,22 +2147,14 @@
 	icon_state = "red"
 	},
 /area/space)
-"wm" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/roller/surgical,
-/obj/item/roller/surgical,
-/obj/item/roller/surgical,
-/obj/item/reagent_container/spray/cleaner{
-	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
-	name = "Surgery Cleaner"
+"wk" = (
+/obj/structure/prop/server_equipment/yutani_server{
+	density = 0;
+	pixel_y = 16
 	},
-/obj/item/folded_tent/med{
-	pixel_x = -8;
-	pixel_y = 14
-	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "sterile_green_corner"
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "floor_marked"
 	},
 /area/space)
 "wn" = (
@@ -2093,15 +2173,6 @@
 	icon_state = "cargo"
 	},
 /area/space)
-"ws" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "sterile_green_side"
-	},
-/area/space)
 "wu" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -2118,9 +2189,52 @@
 	icon_state = "red"
 	},
 /area/space)
+"wA" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/tool/hand_labeler{
+	pixel_x = 7
+	},
+/obj/item/paper_bin/uscm{
+	pixel_y = 5
+	},
+/obj/item/tool/pen,
+/obj/structure/machinery/computer/working_joe{
+	dir = 8;
+	pixel_x = 17
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side"
+	},
+/area/space)
+"wD" = (
+/obj/structure/machinery/cm_vending/sorted/medical,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_corner"
+	},
+/area/space)
 "wF" = (
 /obj/structure/window/reinforced/tinted,
 /turf/open/shuttle/dropship,
+/area/space)
+"wK" = (
+/obj/structure/machinery/disposal,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_corner"
+	},
+/area/space)
+"wO" = (
+/obj/structure/bed/chair/dropship/pilot{
+	dir = 1
+	},
+/obj/structure/machinery/computer/cameras{
+	desc = "The flight controls for a Mi-220 Attack Dropship. these controls look pretty banged up, and there's some blood covering the screen..";
+	name = "\improper 'Buran' flight controls";
+	network = null;
+	pixel_y = 21
+	},
+/turf/open/floor/plating,
 /area/space)
 "wP" = (
 /obj/structure/machinery/cm_vending/clothing/smartgun/alpha,
@@ -2128,20 +2242,30 @@
 	icon_state = "plate"
 	},
 /area/space)
-"wR" = (
+"wS" = (
 /turf/closed/shuttle/lifeboat{
-	icon_state = "1,3"
+	icon_state = "22,0"
 	},
 /area/space)
-"wS" = (
-/obj/structure/machinery/door/window/brigdoor/southright{
-	id = "Cell 1";
-	name = "Cell 1"
+"wZ" = (
+/obj/structure/window/framed/almayer/white,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "or2privacyshutter";
+	name = "\improper Privacy Shutters"
 	},
-/obj/structure/sign/safety/one{
-	pixel_x = -17
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/space)
+"xi" = (
+/turf/closed/shuttle/ert{
+	icon_state = "rightengine_2";
+	opacity = 0;
+	name = "Buran"
+	},
 /area/space)
 "xl" = (
 /obj/effect/decal/warning_stripes{
@@ -2153,15 +2277,6 @@
 	icon_state = "plate"
 	},
 /area/space)
-"xr" = (
-/obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "1,6"
-	},
-/turf/open/space/basic,
-/area/space)
-"xt" = (
-/turf/closed/shuttle/lifeboat/transparent,
-/area/space)
 "xx" = (
 /obj/effect/decal/cleanable/generic,
 /obj/item/stack/rods,
@@ -2169,15 +2284,6 @@
 	dir = 4;
 	icon_state = "red"
 	},
-/area/space)
-"xE" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "11,0"
-	},
-/area/space)
-"xM" = (
-/obj/structure/window/framed/corsat,
-/turf/open/floor/corsat,
 /area/space)
 "xN" = (
 /obj/structure/surface/table/almayer,
@@ -2197,9 +2303,24 @@
 "xW" = (
 /turf/open/floor/plating/prison,
 /area/space)
+"yg" = (
+/turf/closed/shuttle/ert{
+	icon_state = "T7";
+	name = "Buran";
+	opacity = 0
+	},
+/area/space)
 "ym" = (
 /obj/structure/bed/chair/office/light,
 /turf/open/shuttle/dropship,
+/area/space)
+"yq" = (
+/obj/structure/bed/chair/comfy{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
 /area/space)
 "yu" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
@@ -2238,14 +2359,43 @@
 /obj/structure/machinery/hologram/holopad,
 /turf/open/space/basic,
 /area/space)
+"yA" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/box/gloves{
+	pixel_x = 5;
+	pixel_y = 12
+	},
+/obj/item/storage/box/masks{
+	pixel_x = 5
+	},
+/obj/structure/closet/secure_closet/surgical{
+	pixel_y = 30
+	},
+/obj/item/reagent_container/glass/minitank{
+	pixel_x = -7;
+	pixel_y = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_corner"
+	},
+/area/space)
 "yB" = (
-/turf/closed/shuttle/lifeboat/transparent{
-	icon_state = "24,2"
+/obj/structure/sink{
+	pixel_y = 32
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side"
 	},
 /area/space)
 "yD" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic/solid,
 /turf/open/shuttle/dropship,
+/area/space)
+"yG" = (
+/turf/closed/shuttle/lifeboat/transparent{
+	icon_state = "24,2"
+	},
 /area/space)
 "yH" = (
 /obj/effect/decal/cleanable/ash,
@@ -2256,14 +2406,22 @@
 	icon_state = "redcorner"
 	},
 /area/space)
+"yN" = (
+/turf/open/shuttle/lifeboat,
+/area/space)
+"yO" = (
+/obj/structure/barricade/deployable{
+	dir = 8
+	},
+/turf/open/shuttle/dropship,
+/area/space)
+"yS" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "1,4"
+	},
+/area/space)
 "yU" = (
 /obj/structure/lattice,
-/turf/open/space/basic,
-/area/space)
-"yV" = (
-/obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "26,5"
-	},
 /turf/open/space/basic,
 /area/space)
 "za" = (
@@ -2275,20 +2433,9 @@
 	icon_state = "cargo_arrow"
 	},
 /area/space)
-"zh" = (
-/obj/structure/machinery/door/airlock/almayer/medical{
-	id_tag = "or03";
-	name = "Lobby"
-	},
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
-/area/space)
-"zi" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp25";
-	name = "Buran"
-	},
+"zc" = (
+/obj/structure/window/framed/corsat,
+/turf/open/floor/corsat,
 /area/space)
 "zj" = (
 /obj/structure/bed/chair{
@@ -2303,23 +2450,9 @@
 	icon_state = "redfull"
 	},
 /area/space)
-"zp" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
-	id = "Boat2-D1";
-	throw_dir = 1
-	},
-/turf/open/shuttle/lifeboat{
-	icon_state = "test_floor4"
-	},
-/area/space)
-"zr" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "12,0"
-	},
-/area/space)
-"zu" = (
-/turf/open/floor/almayer{
-	icon_state = "sterile_green"
+"zq" = (
+/turf/closed/shuttle/lifeboat/transparent{
+	icon_state = "24,3"
 	},
 /area/space)
 "zw" = (
@@ -2328,16 +2461,24 @@
 	icon_state = "test_floor4"
 	},
 /area/space)
-"zE" = (
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 4;
-	name = "pilot seat"
-	},
-/turf/open/shuttle/lifeboat,
-/area/space)
 "zG" = (
 /turf/open/floor/almayer{
 	icon_state = "plate"
+	},
+/area/space)
+"zI" = (
+/turf/closed/shuttle/ert{
+	icon_state = "T4";
+	name = "Buran"
+	},
+/area/space)
+"zP" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_side"
 	},
 /area/space)
 "zT" = (
@@ -2346,25 +2487,39 @@
 	icon_state = "test_floor4"
 	},
 /area/space)
-"zW" = (
-/obj/structure/machinery/door_control{
-	id = "or01";
-	name = "Surgery Door Release";
-	normaldoorcontrol = 1;
-	pixel_x = 23
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "sterile_green_side"
+"zX" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "17,1"
 	},
 /area/space)
 "Ad" = (
 /obj/structure/inflatable,
 /turf/open/shuttle/dropship,
 /area/space)
-"Ag" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "2,3"
+"Ae" = (
+/turf/closed/shuttle/ert{
+	icon_state = "rightengine_1";
+	opacity = 0;
+	name = "Buran"
+	},
+/area/space)
+"Af" = (
+/obj/structure/machinery/cryopod/evacuation,
+/obj/structure/sign/safety/cryo{
+	pixel_x = 8;
+	pixel_y = -35
+	},
+/turf/open/shuttle/escapepod,
+/area/space)
+"Ak" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp16";
+	name = "Fulcrum"
+	},
+/area/space)
+"Al" = (
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side"
 	},
 /area/space)
 "An" = (
@@ -2396,62 +2551,41 @@
 	},
 /turf/open/shuttle/dropship,
 /area/space)
-"Au" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	pixel_x = 1;
-	pixel_y = 1
-	},
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1;
-	name = "Bathroom"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/space)
 "Av" = (
 /obj/structure/ladder,
 /turf/open/shuttle/dropship,
 /area/space)
-"AD" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "17,1"
+"AR" = (
+/turf/closed/shuttle/escapepod{
+	icon_state = "wall4"
 	},
 /area/space)
-"AX" = (
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair,
-/turf/open/shuttle/lifeboat,
+"Ba" = (
+/obj/structure/bed/chair/bolted,
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "red"
+	},
 /area/space)
 "Bb" = (
 /turf/open/nostromowater,
 /area/space)
-"Bj" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat{
-	pixel_x = -5;
-	pixel_y = 27
-	},
-/obj/structure/machinery/cm_vending/sorted/supplies/lifeboat{
-	pixel_x = 10;
-	pixel_y = 27
-	},
-/turf/open/shuttle/lifeboat,
-/area/space)
-"Bl" = (
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "red"
+"Be" = (
+/turf/closed/shuttle/lifeboat/transparent{
+	icon_state = "26,2"
 	},
 /area/space)
-"Bm" = (
-/obj/structure/closet/secure_closet/medical2,
+"Bp" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -2
+	},
 /turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "sterile_green_corner"
+	icon_state = "plate"
 	},
 /area/space)
 "Bs" = (
@@ -2461,23 +2595,41 @@
 	},
 /turf/open/floor/almayer,
 /area/space)
-"Bv" = (
+"Bu" = (
 /turf/closed/shuttle/lifeboat{
-	icon_state = "1,5"
+	icon_state = "6,1"
 	},
 /area/space)
-"BF" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/reagent_container/spray/cleaner{
-	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
-	name = "Surgery Cleaner"
-	},
-/obj/structure/machinery/light{
-	dir = 1
+"Bv" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/sentencing{
+	dir = 4
 	},
 /turf/open/floor/almayer{
-	dir = 1;
+	dir = 8;
+	icon_state = "red"
+	},
+/area/space)
+"Bx" = (
+/turf/closed/shuttle/lifeboat/transparent{
+	icon_state = "26,3"
+	},
+/area/space)
+"BC" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "1,2"
+	},
+/area/space)
+"BD" = (
+/obj/structure/closet/secure_closet/medical2,
+/turf/open/floor/almayer{
+	dir = 4;
 	icon_state = "sterile_green_corner"
+	},
+/area/space)
+"BK" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "2,1"
 	},
 /area/space)
 "BP" = (
@@ -2486,36 +2638,21 @@
 	},
 /turf/open/shuttle/dropship,
 /area/space)
-"BR" = (
-/obj/structure/girder,
-/turf/open/floor/plating,
+"BS" = (
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
+/turf/open/shuttle/dropship,
 /area/space)
-"BZ" = (
-/turf/closed/shuttle/lifeboat/transparent{
-	icon_state = "26,4"
+"BU" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/shuttle/lifeboat{
+	dir = 8
 	},
-/area/space)
-"Cb" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass/reinforced{
-	dir = 1;
-	name = "\improper Holding Cell"
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/shuttle/lifeboat,
 /area/space)
 "Cc" = (
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer{
 	icon_state = "blue"
-	},
-/area/space)
-"Cd" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "25,1"
 	},
 /area/space)
 "Cg" = (
@@ -2525,25 +2662,35 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/space)
+"Ci" = (
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
+	dir = 4
+	},
+/turf/open/shuttle/dropship,
+/area/space)
 "Cj" = (
 /obj/item/stack/sheet/metal/med_small_stack,
 /turf/open/shuttle/dropship,
 /area/space)
-"Cm" = (
-/obj/structure/sign/safety/three{
-	pixel_x = -17
+"Co" = (
+/obj/structure/machinery/door/airlock/almayer/medical{
+	id_tag = "or03";
+	name = "Lobby"
 	},
-/obj/structure/machinery/door/window/brigdoor/southright{
-	id = "Cell 3";
-	name = "Cell 3"
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
 	},
-/turf/open/floor/plating/plating_catwalk,
 /area/space)
 "Cq" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/autoname{
 	icon_state = "door_open"
 	},
 /turf/open/shuttle/dropship,
+/area/space)
+"Cr" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "3,0"
+	},
 /area/space)
 "Cu" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -2574,6 +2721,19 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/space)
+"Cx" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/shuttle/ert{
+	icon_state = "upp21";
+	name = "Buran"
+	},
+/area/space)
+"CB" = (
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
+	icon_state = "26,5"
+	},
+/turf/open/space/basic,
+/area/space)
 "CC" = (
 /obj/structure/machinery/cryopod,
 /obj/structure/machinery/light{
@@ -2583,9 +2743,31 @@
 	icon_state = "cargo"
 	},
 /area/space)
+"CF" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
+	id = "Boat2-D3";
+	throw_dir = 2
+	},
+/turf/open/shuttle/lifeboat,
+/area/space)
 "CG" = (
 /obj/structure/surface/rack,
 /turf/open/shuttle/dropship,
+/area/space)
+"CL" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/door/window/eastright{
+	dir = 8;
+	req_access_txt = "8"
+	},
+/obj/structure/machinery/door/window/eastleft{
+	req_access_txt = "8"
+	},
+/obj/item/book/manual/medical_diagnostics_manual,
+/obj/item/device/megaphone,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green"
+	},
 /area/space)
 "CM" = (
 /obj/structure/machinery/door/window/eastright{
@@ -2599,10 +2781,6 @@
 	},
 /turf/open/shuttle/dropship,
 /area/space)
-"CV" = (
-/obj/structure/girder/displaced,
-/turf/open/floor/plating,
-/area/space)
 "CW" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 4;
@@ -2615,12 +2793,25 @@
 	},
 /turf/closed/wall/mineral/bone_resin,
 /area/space)
-"Dc" = (
-/obj/structure/machinery/iv_drip,
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "sterile_green_corner"
+"Dg" = (
+/turf/closed/shuttle/lifeboat/transparent{
+	icon_state = "24,4"
 	},
+/area/space)
+"Dn" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "2,6"
+	},
+/area/space)
+"DB" = (
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
+	icon_state = "1,6"
+	},
+/turf/open/space/basic,
+/area/space)
+"DD" = (
+/obj/vehicle/train/cargo/engine,
+/turf/open/shuttle/dropship,
 /area/space)
 "DF" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
@@ -2655,27 +2846,17 @@
 /obj/structure/prop/vehicles,
 /turf/open/shuttle/dropship,
 /area/space)
-"DT" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "16,0"
-	},
-/area/space)
-"DU" = (
-/obj/structure/machinery/door/window/brigdoor/southright{
-	id = "Cell 2";
-	name = "Cell 2"
-	},
-/obj/structure/sign/safety/two{
-	pixel_x = -17
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/space)
 "DV" = (
 /obj/item/stack/rods,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red"
 	},
+/area/space)
+"DX" = (
+/obj/structure/window/framed/almayer/white,
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/turf/open/floor/plating,
 /area/space)
 "DZ" = (
 /obj/structure/machinery/door/airlock/almayer/marine/delta/spec,
@@ -2689,16 +2870,6 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
-	},
-/area/space)
-"Eh" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/structure/machinery/cm_vending/sorted/medical/bolted,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "sterile_green_side"
 	},
 /area/space)
 "Eu" = (
@@ -2726,6 +2897,10 @@
 	icon_state = "bluecorner"
 	},
 /area/space)
+"EE" = (
+/obj/structure/cargo_container/wy/right,
+/turf/open/shuttle/dropship,
+/area/space)
 "EF" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -2750,28 +2925,6 @@
 	icon_state = "red"
 	},
 /area/space)
-"EP" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_1";
-	opacity = 0;
-	name = "Buran"
-	},
-/area/space)
-"EQ" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "24,6"
-	},
-/area/space)
-"ET" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/sign/safety/biohazard{
-	pixel_y = -24;
-	pixel_x = -1
-	},
-/turf/open/floor/almayer{
-	icon_state = "sterile_green_side"
-	},
-/area/space)
 "EU" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -2781,26 +2934,37 @@
 	icon_state = "blue"
 	},
 /area/space)
-"Ff" = (
-/turf/open/shuttle/lifeboat{
-	icon_state = "plate"
+"Fe" = (
+/obj/structure/sign/safety/three{
+	pixel_x = -17
 	},
+/obj/structure/machinery/door/window/brigdoor/southright{
+	id = "Cell 3";
+	name = "Cell 3"
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/space)
-"Fg" = (
-/obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "1,0"
+"Fo" = (
+/obj/structure/machinery/light{
+	dir = 4
 	},
-/turf/open/space/basic,
+/obj/structure/machinery/cm_vending/sorted/medical/bolted,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side"
+	},
 /area/space)
 "Fp" = (
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
 /area/space)
-"Fs" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "25,5"
+"Fq" = (
+/obj/item/ammo_magazine/pistol/mod88{
+	pixel_x = -4;
+	pixel_y = 1
 	},
+/turf/open/shuttle/dropship,
 /area/space)
 "Fx" = (
 /obj/structure/bed/chair{
@@ -2808,11 +2972,42 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/space)
+"FB" = (
+/obj/structure/window/framed/almayer/white,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "or2privacyshutter";
+	name = "\improper Privacy Shutters"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/turf/open/floor/plating,
+/area/space)
+"FC" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
+	id = "Boat2-D1";
+	throw_dir = 1
+	},
+/turf/open/shuttle/lifeboat{
+	icon_state = "test_floor4"
+	},
+/area/space)
 "FJ" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	icon_state = "blue"
 	},
+/area/space)
+"FL" = (
+/obj/structure/window/framed/almayer/white,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "or1privacyshutter";
+	name = "\improper Privacy Shutters"
+	},
+/turf/open/floor/plating,
 /area/space)
 "FN" = (
 /obj/structure/surface/table/almayer,
@@ -2821,6 +3016,16 @@
 	pixel_y = 7
 	},
 /turf/open/floor/plating/plating_catwalk,
+/area/space)
+"FQ" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/closet/secure_closet/surgical{
+	pixel_x = -30
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_side"
+	},
 /area/space)
 "FT" = (
 /obj/structure/bed/chair{
@@ -2832,14 +3037,11 @@
 	icon_state = "blue"
 	},
 /area/space)
-"Gk" = (
-/obj/structure/bed/chair/bolted{
-	dir = 4
+"Ga" = (
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
+	icon_state = "0,2"
 	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "red"
-	},
+/turf/open/space/basic,
 /area/space)
 "Gm" = (
 /obj/structure/window/framed/prison/reinforced,
@@ -2857,14 +3059,6 @@
 	icon_state = "plate"
 	},
 /area/space)
-"Go" = (
-/obj/structure/bed/chair/comfy{
-	dir = 8
-	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
-/area/space)
 "Gs" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
@@ -2880,6 +3074,11 @@
 	icon_state = "plate"
 	},
 /area/space)
+"GB" = (
+/turf/closed/shuttle/lifeboat/transparent{
+	icon_state = "window2"
+	},
+/area/space)
 "GC" = (
 /obj/structure/bed/sofa/vert/grey/bot,
 /turf/open/shuttle/dropship,
@@ -2890,11 +3089,24 @@
 	icon_state = "red"
 	},
 /area/space)
-"GH" = (
-/obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "26,1"
+"GE" = (
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_2";
+	opacity = 0;
+	name = "Buran"
 	},
-/turf/open/space/basic,
+/area/space)
+"GI" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "24,1"
+	},
+/area/space)
+"GL" = (
+/turf/closed/shuttle/ert{
+	icon_state = "T1";
+	name = "Buran";
+	opacity = 0
+	},
 /area/space)
 "Ha" = (
 /obj/structure/disposalpipe/segment{
@@ -2912,6 +3124,16 @@
 /obj/structure/prop/server_equipment,
 /turf/open/shuttle/dropship,
 /area/space)
+"Hj" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/sign/safety/biohazard{
+	pixel_y = -24;
+	pixel_x = -1
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side"
+	},
+/area/space)
 "Hk" = (
 /obj/structure/prop/almayer/computers/sensor_computer1{
 	name = "computer"
@@ -2924,33 +3146,16 @@
 	icon_state = "plate"
 	},
 /area/space)
-"HF" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "6,0"
-	},
-/area/space)
-"HG" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "24,1"
-	},
-/area/space)
 "HI" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 8
 	},
 /turf/open/shuttle/dropship,
 /area/space)
-"HM" = (
-/obj/structure/bed/chair/dropship/pilot{
-	dir = 1
+"HJ" = (
+/turf/closed/shuttle/escapepod{
+	icon_state = "wall11"
 	},
-/obj/structure/machinery/computer/cameras{
-	desc = "The flight controls for a Mi-220 Attack Dropship. these controls look pretty banged up, and there's some blood covering the screen..";
-	name = "\improper 'Buran' flight controls";
-	network = null;
-	pixel_y = 21
-	},
-/turf/open/floor/plating,
 /area/space)
 "HQ" = (
 /obj/structure/machinery/door/airlock/almayer/generic/autoname{
@@ -2967,15 +3172,6 @@
 	req_one_access = null
 	},
 /turf/open/shuttle/dropship,
-/area/space)
-"HV" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/prop/almayer/computer/PC{
-	dir = 4
-	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
 /area/space)
 "HX" = (
 /obj/structure/bed/chair{
@@ -3004,44 +3200,10 @@
 	icon_state = "red"
 	},
 /area/space)
-"IB" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/book/manual/surgery,
-/obj/structure/sign/safety/biohazard{
-	pixel_x = -17
-	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "sterile_green_side"
-	},
-/area/space)
-"IC" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/cameras/almayer/vehicle{
-	dir = 8
-	},
-/turf/open/shuttle/lifeboat,
-/area/space)
 "IE" = (
 /obj/structure/machinery/cryopod,
 /turf/open/floor/almayer{
 	icon_state = "cargo"
-	},
-/area/space)
-"IH" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/crew/alt{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "sterile_green_corner"
-	},
-/area/space)
-"IL" = (
-/turf/closed/shuttle/ert{
-	icon_state = "T9";
-	name = "Buran"
 	},
 /area/space)
 "IR" = (
@@ -3052,9 +3214,19 @@
 	icon_state = "darkredfull2"
 	},
 /area/space)
-"IU" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "6,1"
+"IS" = (
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
+	access_modified = 1;
+	dir = 2;
+	name = "\improper Field Surgery Equipment";
+	req_access_txt = "20";
+	req_one_access = null
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
 	},
 /area/space)
 "IX" = (
@@ -3063,42 +3235,52 @@
 	icon_state = "plate"
 	},
 /area/space)
-"Ji" = (
-/obj/structure/machinery/firealarm{
-	dir = 8;
-	pixel_y = -24
-	},
-/turf/open/floor/almayer{
-	icon_state = "sterile_green_side"
-	},
-/area/space)
 "Jm" = (
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
 	},
 /area/space)
-"Jv" = (
-/turf/closed/shuttle/lifeboat/transparent{
-	icon_state = "window2"
+"Jn" = (
+/obj/structure/bed/chair/comfy{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "cell_stripe"
 	},
 /area/space)
-"JB" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
-	id = "Boat2-D2";
-	throw_dir = 1
-	},
-/turf/open/shuttle/lifeboat{
-	icon_state = "test_floor4"
+"Jt" = (
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_1";
+	opacity = 0;
+	name = "Buran"
 	},
 /area/space)
 "JC" = (
 /turf/open/floor/almayer{
-	dir = 1;
+	dir = 4;
 	icon_state = "sterile_green_side"
 	},
 /area/space)
 "JE" = (
 /turf/closed/wall/prison,
+/area/space)
+"JF" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat{
+	pixel_x = -5;
+	pixel_y = 27
+	},
+/obj/structure/machinery/cm_vending/sorted/supplies/lifeboat{
+	pixel_x = 10;
+	pixel_y = 27
+	},
+/turf/open/shuttle/lifeboat,
+/area/space)
+"JH" = (
+/turf/closed/shuttle/ert{
+	icon_state = "T17";
+	name = "Buran"
+	},
 /area/space)
 "JI" = (
 /obj/structure/machinery/vending/coffee/simple,
@@ -3111,25 +3293,37 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/space)
+"JT" = (
+/obj/item/weapon/gun/shotgun/pump,
+/turf/open/shuttle/dropship,
+/area/space)
 "JY" = (
 /obj/structure/machinery/cm_vending/sorted/marine_food,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
 /area/space)
+"JZ" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "6,0"
+	},
+/area/space)
+"Ke" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/belt/medical/lifesaver/full,
+/obj/item/clothing/glasses/hud/health,
+/obj/item/device/radio/marine,
+/obj/item/clothing/accessory/storage/surg_vest,
+/obj/item/tool/portadialysis,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_side"
+	},
+/area/space)
 "Kf" = (
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/almayer{
 	icon_state = "plate"
-	},
-/area/space)
-"Ki" = (
-/obj/structure/bed/chair/bolted{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "red"
 	},
 /area/space)
 "Kl" = (
@@ -3144,45 +3338,35 @@
 	},
 /turf/open/shuttle/dropship,
 /area/space)
-"Kr" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp27";
-	name = "Buran";
-	opacity = 0
+"Kq" = (
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "red"
 	},
 /area/space)
-"Ku" = (
-/obj/structure/machinery/computer3/server/rack{
-	density = 0;
-	pixel_y = 1
-	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_marked"
-	},
-/area/space)
-"Kv" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/communications{
+"Kt" = (
+/obj/structure/bed/chair/comfy{
 	dir = 8
 	},
-/turf/open/shuttle/lifeboat,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
 /area/space)
-"KF" = (
-/obj/structure/machinery/door/airlock/almayer/medical{
-	dir = 1;
-	id_tag = "or01";
-	name = "Operating Theatre 1"
+"KA" = (
+/obj/structure/toilet{
+	dir = 4
 	},
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
+/turf/open/floor/plating/plating_catwalk,
+/area/space)
+"KK" = (
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
+	icon_state = "25,0"
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/space/basic,
 /area/space)
 "KL" = (
 /obj/structure/disposalpipe/segment{
@@ -3204,24 +3388,14 @@
 	icon_state = "plate"
 	},
 /area/space)
-"KZ" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/turf/open/floor/prison{
-	icon_state = "cell_stripe"
+"KY" = (
+/turf/open/shuttle/escapepod{
+	icon_state = "floor8"
 	},
 /area/space)
 "Lc" = (
 /obj/structure/broken_apc,
 /turf/open/shuttle/dropship,
-/area/space)
-"Li" = (
-/turf/open/floor/almayer{
-	dir = 6;
-	icon_state = "sterile_green_side"
-	},
 /area/space)
 "Lk" = (
 /obj/structure/machinery/door/airlock/almayer/marine/alpha/sl,
@@ -3248,13 +3422,6 @@
 	},
 /turf/open/shuttle/dropship,
 /area/space)
-"Lw" = (
-/obj/structure/machinery/cm_vending/sorted/medical/blood,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "sterile_green_side"
-	},
-/area/space)
 "Lx" = (
 /turf/open/floor/almayer{
 	dir = 9;
@@ -3275,17 +3442,19 @@
 	},
 /turf/open/shuttle/dropship,
 /area/space)
-"LC" = (
-/obj/structure/machinery/door/airlock/almayer/engineering/colony{
-	dir = 1
-	},
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
+"LE" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/communications,
+/turf/open/shuttle/lifeboat,
 /area/space)
 "LH" = (
 /obj/structure/bed/chair/bolted,
 /turf/open/shuttle/dropship,
+/area/space)
+"LI" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "16,0"
+	},
 /area/space)
 "LJ" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/autoname{
@@ -3293,9 +3462,49 @@
 	},
 /turf/open/shuttle/dropship,
 /area/space)
-"Mc" = (
-/turf/open/shuttle/lifeboat{
-	icon_state = "plating_striped"
+"LT" = (
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
+	icon_state = "0,5"
+	},
+/turf/open/space/basic,
+/area/space)
+"LZ" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "7,0"
+	},
+/area/space)
+"Ma" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_side"
+	},
+/area/space)
+"Mg" = (
+/turf/open/floor/almayer{
+	allow_construction = 0
+	},
+/area/space)
+"Mn" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp4";
+	name = "Buran"
+	},
+/area/space)
+"Mo" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "cell_stripe"
+	},
+/area/space)
+"Mp" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "23,5"
 	},
 /area/space)
 "Ms" = (
@@ -3315,21 +3524,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/space)
-"Mz" = (
-/turf/closed/shuttle/lifeboat/transparent{
-	icon_state = "24,3"
-	},
-/area/space)
-"MB" = (
-/obj/structure/prop/server_equipment/yutani_server{
-	density = 0;
-	pixel_y = 16
-	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_marked"
-	},
-/area/space)
 "MG" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -3339,11 +3533,43 @@
 	icon_state = "red"
 	},
 /area/space)
+"MH" = (
+/obj/structure/machinery/power/apc/almayer{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side"
+	},
+/area/space)
+"MM" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner"
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_corner"
+	},
+/area/space)
 "MP" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 8
 	},
 /turf/open/shuttle/dropship,
+/area/space)
+"MX" = (
+/turf/closed/wall/almayer/white,
+/area/space)
+"MZ" = (
+/turf/closed/shuttle/ert{
+	icon_state = "T5";
+	name = "Fulcrum"
+	},
 /area/space)
 "Nc" = (
 /obj/structure/machinery/vending/cigarette/colony,
@@ -3351,31 +3577,10 @@
 	icon_state = "darkredfull2"
 	},
 /area/space)
-"Ni" = (
-/obj/structure/machinery/optable,
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
-/area/space)
 "Nj" = (
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "red"
-	},
-/area/space)
-"Nl" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/door/window/eastright{
-	dir = 8;
-	req_access_txt = "8"
-	},
-/obj/structure/machinery/door/window/eastleft{
-	req_access_txt = "8"
-	},
-/obj/item/book/manual/medical_diagnostics_manual,
-/obj/item/device/megaphone,
-/turf/open/floor/almayer{
-	icon_state = "sterile_green"
 	},
 /area/space)
 "Np" = (
@@ -3386,14 +3591,6 @@
 /turf/closed/shuttle/ert{
 	icon_state = "stan_rightengine"
 	},
-/area/space)
-"Nw" = (
-/obj/structure/machinery/shower{
-	dir = 8
-	},
-/obj/item/toy/inflatable_duck,
-/obj/structure/window/reinforced,
-/turf/open/floor/plating/plating_catwalk,
 /area/space)
 "NA" = (
 /obj/structure/machinery/cm_vending/clothing/specialist/alpha,
@@ -3407,18 +3604,19 @@
 	icon_state = "blue"
 	},
 /area/space)
-"NF" = (
-/obj/structure/bed/chair/comfy{
-	dir = 8
-	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "cell_stripe"
-	},
-/area/space)
 "NH" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass,
 /turf/open/shuttle/dropship,
+/area/space)
+"NI" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "12,0"
+	},
+/area/space)
+"NN" = (
+/turf/closed/shuttle/lifeboat/transparent{
+	icon_state = "26,4"
+	},
 /area/space)
 "NQ" = (
 /obj/structure/machinery/vending/cigarette{
@@ -3428,6 +3626,15 @@
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "blue"
+	},
+/area/space)
+"NR" = (
+/turf/closed/wall/mineral/bone_resin,
+/area/space)
+"NT" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side"
 	},
 /area/space)
 "NX" = (
@@ -3445,9 +3652,10 @@
 	},
 /area/space)
 "Oa" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "22,0"
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
+	dir = 1
 	},
+/turf/open/shuttle/dropship,
 /area/space)
 "Oc" = (
 /turf/open/floor/almayer{
@@ -3460,10 +3668,23 @@
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/floor/grass,
 /area/space)
+"Oh" = (
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_corner"
+	},
+/area/space)
 "Oi" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/floor/grass,
+/area/space)
+"Oj" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/communications{
+	dir = 8
+	},
+/turf/open/shuttle/lifeboat,
 /area/space)
 "Ol" = (
 /obj/structure/machinery/door/airlock/almayer/marine/alpha/smart,
@@ -3471,11 +3692,10 @@
 	icon_state = "test_floor4"
 	},
 /area/space)
-"Op" = (
-/obj/structure/bed/chair/bolted,
+"On" = (
 /turf/open/floor/almayer{
 	dir = 9;
-	icon_state = "red"
+	icon_state = "sterile_green_side"
 	},
 /area/space)
 "Ot" = (
@@ -3500,11 +3720,16 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/shuttle/dropship,
 /area/space)
-"OE" = (
-/obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "25,0"
+"OB" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "17,5"
 	},
-/turf/open/space/basic,
+/area/space)
+"OE" = (
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
+	dir = 1
+	},
+/turf/open/shuttle/lifeboat,
 /area/space)
 "OG" = (
 /obj/effect/decal/warning_stripes{
@@ -3525,12 +3750,9 @@
 	icon_state = "blue"
 	},
 /area/space)
-"OM" = (
-/obj/structure/window/framed/almayer/white,
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 1
-	},
-/turf/open/floor/plating,
+"OJ" = (
+/obj/structure/window/framed/prison/reinforced/hull,
+/turf/closed/wall/r_wall/prison_unmeltable,
 /area/space)
 "ON" = (
 /obj/structure/window/reinforced/tinted,
@@ -3539,15 +3761,16 @@
 	},
 /turf/open/shuttle/dropship,
 /area/space)
-"OV" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "23,0"
+"Pd" = (
+/obj/structure/extinguisher_cabinet/lifeboat{
+	pixel_x = 8;
+	pixel_y = 27
 	},
+/turf/open/shuttle/lifeboat,
 /area/space)
-"Pb" = (
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "sterile_green_side"
+"Pe" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "17,6"
 	},
 /area/space)
 "Pi" = (
@@ -3567,18 +3790,14 @@
 	icon_state = "bluecorner"
 	},
 /area/space)
-"Po" = (
+"Pn" = (
 /turf/closed/shuttle/ert{
-	icon_state = "upp4";
+	icon_state = "T19";
 	name = "Buran"
 	},
 /area/space)
 "Pp" = (
 /obj/structure/closet/secure_closet/freezer/fridge/full,
-/turf/open/shuttle/dropship,
-/area/space)
-"Pt" = (
-/obj/vehicle/train/cargo/engine,
 /turf/open/shuttle/dropship,
 /area/space)
 "Pv" = (
@@ -3611,6 +3830,14 @@
 	icon_state = "redcorner"
 	},
 /area/space)
+"PF" = (
+/obj/structure/machinery/shower{
+	dir = 8
+	},
+/obj/structure/window/reinforced,
+/obj/item/tool/soap,
+/turf/open/floor/plating/plating_catwalk,
+/area/space)
 "PG" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -3619,34 +3846,8 @@
 	icon_state = "red"
 	},
 /area/space)
-"PM" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "1,2"
-	},
-/area/space)
-"PT" = (
-/obj/structure/cargo_container/wy/left,
-/turf/open/shuttle/dropship,
-/area/space)
-"PV" = (
-/turf/open/floor/almayer{
-	allow_construction = 0
-	},
-/area/space)
 "PW" = (
 /turf/closed/shuttle/ert,
-/area/space)
-"Qd" = (
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "cell_stripe"
-	},
-/area/space)
-"Qf" = (
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
-/turf/open/floor/plating/plating_catwalk,
 /area/space)
 "Qi" = (
 /obj/structure/surface/table/almayer,
@@ -3662,53 +3863,30 @@
 	},
 /turf/open/shuttle/dropship,
 /area/space)
-"Qn" = (
-/obj/structure/machinery/iv_drip,
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "sterile_green_side"
+"Qm" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "3,1"
 	},
 /area/space)
 "Qp" = (
 /obj/structure/window_frame/prison,
 /turf/open/shuttle/dropship,
 /area/space)
-"Qs" = (
-/turf/closed/shuttle/lifeboat/transparent{
-	icon_state = "26,2"
+"Qw" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "2,5"
 	},
 /area/space)
-"QJ" = (
-/obj/structure/bed/chair/comfy{
-	dir = 8
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
+"QE" = (
+/obj/docking_port/mobile/crashable/escape_shuttle/n,
+/turf/closed/shuttle/escapepod{
+	icon_state = "wall9"
 	},
 /area/space)
-"QL" = (
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "sterile_green_side"
-	},
-/area/space)
-"QM" = (
-/obj/structure/machinery/door_control{
-	id = "or1privacyshutter";
-	name = "Privacy Shutters";
-	pixel_y = 25
-	},
-/obj/structure/machinery/iv_drip,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "sterile_green_side"
+"QQ" = (
+/turf/closed/shuttle/ert{
+	icon_state = "T10";
+	name = "Buran"
 	},
 /area/space)
 "QT" = (
@@ -3716,9 +3894,11 @@
 	icon_state = "dark_sterile"
 	},
 /area/space)
-"QU" = (
-/turf/closed/shuttle/lifeboat/transparent{
-	icon_state = "24,4"
+"QV" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp27";
+	name = "Buran";
+	opacity = 0
 	},
 /area/space)
 "QY" = (
@@ -3733,17 +3913,8 @@
 	icon_state = "blue"
 	},
 /area/space)
-"Rd" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "2,6"
-	},
-/area/space)
 "Rf" = (
 /obj/structure/machinery/hologram/holopad,
-/turf/open/shuttle/dropship,
-/area/space)
-"Rj" = (
-/obj/structure/cargo_container/wy/mid,
 /turf/open/shuttle/dropship,
 /area/space)
 "Rk" = (
@@ -3756,22 +3927,22 @@
 /obj/structure/machinery/vending/snack,
 /turf/open/shuttle/dropship,
 /area/space)
-"Ru" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "17,0"
+"Rp" = (
+/obj/structure/girder/displaced,
+/turf/open/floor/plating,
+/area/space)
+"Rs" = (
+/obj/structure/bed/chair/bolted{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "red"
 	},
 /area/space)
 "Rx" = (
-/obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "0,3"
-	},
-/turf/open/space/basic,
-/area/space)
-"Rz" = (
-/obj/structure/bed/chair/bolted,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "red"
+/turf/open/shuttle/lifeboat{
+	icon_state = "plate"
 	},
 /area/space)
 "RD" = (
@@ -3781,47 +3952,13 @@
 /obj/structure/lattice,
 /turf/open/space,
 /area/space)
-"RF" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/prop/almayer/computer/PC{
-	dir = 4;
-	pixel_y = -1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	pixel_y = 1
-	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
-/area/space)
-"RK" = (
-/obj/structure/bed/chair/office/light{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "sterile_green_side"
-	},
-/area/space)
 "RP" = (
 /obj/structure/prop/power_transformer,
 /turf/open/shuttle/dropship,
 /area/space)
-"RQ" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/toilet{
-	dir = 4
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/space)
-"RX" = (
-/turf/closed/wall/mineral/bone_resin,
+"RZ" = (
+/obj/structure/cargo_container/wy/left,
+/turf/open/shuttle/dropship,
 /area/space)
 "Se" = (
 /obj/structure/reagent_dispensers/water_cooler/stacks{
@@ -3833,14 +3970,10 @@
 	icon_state = "blue"
 	},
 /area/space)
-"Sk" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	pixel_x = -1;
-	pixel_y = 2
-	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
+"Sm" = (
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_side"
 	},
 /area/space)
 "So" = (
@@ -3874,6 +4007,12 @@
 "Sy" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/space)
+"SC" = (
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
+	icon_state = "0,4"
+	},
+/turf/open/space/basic,
+/area/space)
 "SE" = (
 /obj/structure/machinery/shower{
 	pixel_y = 16
@@ -3888,11 +4027,23 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/space)
+"SJ" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/cameras/almayer/vehicle{
+	dir = 8
+	},
+/turf/open/shuttle/lifeboat,
+/area/space)
 "SM" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
 /turf/open/floor/almayer,
+/area/space)
+"SR" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/shuttle/lifeboat,
+/turf/open/shuttle/lifeboat,
 /area/space)
 "SS" = (
 /obj/structure/cargo_container/kelland/right,
@@ -3901,29 +4052,12 @@
 	icon_state = "floor_marked"
 	},
 /area/space)
-"SW" = (
-/obj/structure/closet/secure_closet/guncabinet/red/mp_armory_shotgun,
-/turf/open/floor/plating/plating_catwalk,
-/area/space)
 "SX" = (
 /obj/structure/bed/chair{
 	dir = 8;
 	pixel_y = 3
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/space)
-"Ta" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = 25
-	},
-/obj/structure/bed/chair/bolted,
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "red"
-	},
 /area/space)
 "Tb" = (
 /obj/structure/surface/table/almayer,
@@ -3960,33 +4094,34 @@
 	icon_state = "plate"
 	},
 /area/space)
-"Tq" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "23,6"
+"Tu" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
 	},
 /area/space)
-"Tw" = (
-/obj/structure/machinery/door_control{
-	id = "or02";
-	name = "Surgery Door Release";
-	normaldoorcontrol = 1;
-	pixel_x = 23
+"TA" = (
+/obj/structure/bed,
+/obj/structure/machinery/flasher{
+	id = "Cell 2";
+	pixel_x = -24
 	},
 /turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "sterile_green_side"
+	dir = 10;
+	icon_state = "red"
 	},
 /area/space)
-"TH" = (
-/obj/structure/machinery/disposal,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "sterile_green_corner"
-	},
+"TM" = (
+/turf/closed/shuttle/lifeboat,
 /area/space)
 "TN" = (
 /obj/item/stack/rods,
 /turf/open/floor/plating/plating_catwalk,
+/area/space)
+"TO" = (
+/turf/open/shuttle/lifeboat{
+	icon_state = "plating_striped"
+	},
 /area/space)
 "TP" = (
 /turf/closed/wall/almayer{
@@ -4007,18 +4142,20 @@
 	icon_state = "plate"
 	},
 /area/space)
-"TY" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "2,2"
-	},
-/area/space)
-"Ue" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 1
+"TU" = (
+/obj/structure/bed,
+/obj/structure/machinery/flasher{
+	id = "Cell 1";
+	pixel_x = -24
 	},
 /turf/open/floor/almayer{
-	dir = 4;
+	dir = 10;
 	icon_state = "red"
+	},
+/area/space)
+"Uh" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "6,6"
 	},
 /area/space)
 "Ui" = (
@@ -4027,24 +4164,16 @@
 	icon_state = "blue"
 	},
 /area/space)
-"Ul" = (
-/turf/closed/shuttle/ert{
-	icon_state = "upp20";
-	name = "Buran"
-	},
-/area/space)
 "Um" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname,
 /turf/open/shuttle/dropship,
 /area/space)
+"Uq" = (
+/turf/closed/shuttle/lifeboat/transparent,
+/area/space)
 "Ur" = (
 /turf/open/floor/corsat{
 	icon_state = "plate"
-	},
-/area/space)
-"Uw" = (
-/turf/open/floor/almayer{
-	icon_state = "sterile_green_side"
 	},
 /area/space)
 "UC" = (
@@ -4065,25 +4194,14 @@
 	icon_state = "dark_sterile"
 	},
 /area/space)
-"UG" = (
-/turf/open/floor/plating,
-/area/space)
-"UK" = (
-/obj/structure/bed,
-/obj/structure/machinery/flasher{
-	id = "Cell 2";
-	pixel_x = -24
+"UI" = (
+/obj/structure/bed/chair/bolted{
+	dir = 8
 	},
 /turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "red"
+	dir = 4;
+	icon_state = "redcorner"
 	},
-/area/space)
-"UM" = (
-/obj/structure/prop/invuln/dropship_parts/lifeboat{
-	icon_state = "0,1"
-	},
-/turf/open/space/basic,
 /area/space)
 "UO" = (
 /obj/structure/machinery/light{
@@ -4099,11 +4217,14 @@
 	},
 /turf/open/floor/plating/prison,
 /area/space)
-"UX" = (
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "sterile_green_corner"
+"UV" = (
+/obj/structure/machinery/light{
+	dir = 8
 	},
+/obj/structure/toilet{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/space)
 "UZ" = (
 /obj/structure/machinery/cm_vending/clothing/marine/alpha{
@@ -4115,6 +4236,12 @@
 	pixel_x = 32
 	},
 /turf/open/floor/almayer,
+/area/space)
+"Va" = (
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
+	icon_state = "0,6"
+	},
+/turf/open/space/basic,
 /area/space)
 "Vc" = (
 /obj/structure/flora/pottedplant{
@@ -4135,45 +4262,28 @@
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/floor/grass,
 /area/space)
-"Vo" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "3,0"
-	},
-/area/space)
-"Vp" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
-	access_modified = 1;
-	dir = 2;
-	name = "\improper Field Surgery Equipment";
-	req_access_txt = "20";
-	req_one_access = null
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 1
+"Vt" = (
+/obj/structure/machinery/bioprinter{
+	stored_metal = 125
 	},
 /turf/open/floor/almayer{
-	icon_state = "test_floor4"
+	icon_state = "sterile_green_corner"
 	},
 /area/space)
-"VF" = (
-/obj/structure/machinery/atm,
-/turf/open/shuttle/dropship,
-/area/space)
-"VJ" = (
-/obj/structure/pipes/vents/scrubber{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile"
-	},
-/area/space)
-"VN" = (
+"VE" = (
 /turf/closed/shuttle/lifeboat/transparent{
-	icon_state = "26,3"
+	icon_state = "25,4"
 	},
 /area/space)
-"VO" = (
-/turf/closed/wall/almayer/white,
+"VH" = (
+/turf/closed/shuttle/ert{
+	icon_state = "T5";
+	name = "Buran"
+	},
+/area/space)
+"VI" = (
+/obj/vehicle/train/cargo/trolley,
+/turf/open/shuttle/dropship,
 /area/space)
 "VU" = (
 /obj/structure/curtain/red,
@@ -4201,9 +4311,30 @@
 	icon_state = "plate"
 	},
 /area/space)
-"Wb" = (
-/obj/vehicle/train/cargo/trolley,
-/turf/open/shuttle/dropship,
+"Wa" = (
+/obj/structure/machinery/cm_vending/sorted/supplies/lifeboat{
+	pixel_x = -12;
+	pixel_y = 27
+	},
+/turf/open/shuttle/lifeboat,
+/area/space)
+"Wg" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/space)
+"Wh" = (
+/obj/structure/filingcabinet/filingcabinet,
+/obj/item/clipboard,
+/obj/item/clipboard,
+/obj/item/folder/black,
+/obj/item/folder/black,
+/obj/item/folder/white,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_corner"
+	},
 /area/space)
 "Wj" = (
 /turf/open/floor/almayer{
@@ -4219,6 +4350,10 @@
 	},
 /turf/open/floor/almayer,
 /area/space)
+"Wt" = (
+/obj/structure/closet/secure_closet/guncabinet/red/mp_armory_shotgun,
+/turf/open/floor/plating/plating_catwalk,
+/area/space)
 "Wx" = (
 /obj/item/stack/rods,
 /turf/open/shuttle/dropship,
@@ -4229,21 +4364,22 @@
 	icon_state = "plate"
 	},
 /area/space)
-"WA" = (
-/turf/closed/shuttle/lifeboat/transparent{
-	icon_state = "25,3"
+"WC" = (
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "sterile_green_side"
 	},
 /area/space)
-"WD" = (
-/obj/structure/window/framed/almayer/white,
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
+"WG" = (
+/turf/closed/shuttle/ert{
+	icon_state = "T7";
+	name = "Buran"
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "or1privacyshutter";
-	name = "\improper Privacy Shutters"
+/area/space)
+"WI" = (
+/turf/open/shuttle/escapepod{
+	icon_state = "floor9"
 	},
-/turf/open/floor/plating,
 /area/space)
 "WM" = (
 /obj/structure/machinery/cm_vending/sorted/marine_food{
@@ -4257,14 +4393,10 @@
 	icon_state = "plate"
 	},
 /area/space)
-"WP" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/reagent_container/spray/cleaner{
-	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
-	name = "Surgery Cleaner"
-	},
+"WN" = (
+/obj/structure/closet/secure_closet/medical2,
 /turf/open/floor/almayer{
-	dir = 4;
+	dir = 8;
 	icon_state = "sterile_green_corner"
 	},
 /area/space)
@@ -4285,6 +4417,16 @@
 "Xb" = (
 /obj/structure/lattice,
 /obj/item/stack/sheet/metal/med_small_stack,
+/turf/open/space/basic,
+/area/space)
+"Xc" = (
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair,
+/turf/open/shuttle/lifeboat,
+/area/space)
+"Xd" = (
+/obj/structure/prop/invuln/dropship_parts/lifeboat{
+	icon_state = "0,3"
+	},
 /turf/open/space/basic,
 /area/space)
 "Xj" = (
@@ -4309,53 +4451,30 @@
 	icon_state = "red"
 	},
 /area/space)
-"Xq" = (
-/obj/structure/bed,
-/obj/structure/machinery/flasher{
-	id = "Cell 3";
-	pixel_x = -24
-	},
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "red"
-	},
-/area/space)
 "Xt" = (
 /obj/structure/prop/turbine,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/space)
-"XC" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
-	id = "Boat2-D4";
-	throw_dir = 2
-	},
-/turf/open/shuttle/lifeboat,
+"XH" = (
+/obj/structure/lattice,
+/turf/open/shuttle/dropship,
 /area/space)
-"XK" = (
-/obj/structure/machinery/light{
-	dir = 1
+"XN" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/roller/surgical,
+/obj/item/roller/surgical,
+/obj/item/roller/surgical,
+/obj/item/reagent_container/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner"
 	},
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/secure_data{
-	dir = 4
-	},
-/obj/structure/sign/safety/terminal{
-	pixel_x = 3;
-	pixel_y = 27
-	},
-/obj/structure/sign/safety/rewire{
-	pixel_x = 15;
-	pixel_y = 27
+/obj/item/folded_tent/med{
+	pixel_x = -8;
+	pixel_y = 14
 	},
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "red"
-	},
-/area/space)
-"XN" = (
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "sterile_green_side"
+	icon_state = "sterile_green_corner"
 	},
 /area/space)
 "XR" = (
@@ -4366,6 +4485,17 @@
 	pixel_x = -18
 	},
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
+/area/space)
+"XW" = (
+/turf/closed/shuttle/ert{
+	icon_state = "T14";
+	name = "Buran"
+	},
+/area/space)
+"XX" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "17,0"
+	},
 /area/space)
 "XY" = (
 /obj/structure/machinery/cm_vending/clothing/marine/alpha{
@@ -4392,6 +4522,10 @@
 /obj/item/stack/sheet/metal,
 /turf/open/shuttle/dropship,
 /area/space)
+"Yc" = (
+/obj/structure/fence,
+/turf/open/shuttle/dropship,
+/area/space)
 "Yj" = (
 /obj/structure/flora/pottedplant{
 	desc = "It is made of Fiberbush(tm). It contains asbestos.";
@@ -4405,9 +4539,13 @@
 	},
 /area/space)
 "Yk" = (
-/turf/closed/shuttle/ert{
-	icon_state = "T10";
-	name = "Buran"
+/turf/closed/shuttle/escapepod{
+	icon_state = "wall2"
+	},
+/area/space)
+"Yn" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "3,5"
 	},
 /area/space)
 "Yo" = (
@@ -4426,28 +4564,36 @@
 /turf/open/shuttle/dropship,
 /area/space)
 "Ys" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/closet/secure_closet/surgical{
-	pixel_x = -30
+/obj/structure/machinery/disposal,
+/obj/structure/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
 	},
 /turf/open/floor/almayer{
 	dir = 8;
-	icon_state = "sterile_green_side"
+	icon_state = "sterile_green_corner"
 	},
 /area/space)
 "Yv" = (
 /obj/structure/machinery/door/airlock/almayer/generic/autoname,
 /turf/open/shuttle/dropship,
 /area/space)
-"YA" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "3,1"
-	},
-/area/space)
 "YE" = (
 /obj/structure/machinery/cm_vending/gear/engi,
 /turf/open/floor/almayer{
 	icon_state = "plate"
+	},
+/area/space)
+"YF" = (
+/obj/structure/machinery/door_control{
+	id = "or02";
+	name = "Surgery Door Release";
+	normaldoorcontrol = 1;
+	pixel_x = 23
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_side"
 	},
 /area/space)
 "YG" = (
@@ -4456,11 +4602,6 @@
 	pixel_x = 32
 	},
 /turf/open/floor/almayer,
-/area/space)
-"YJ" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "24,5"
-	},
 /area/space)
 "YL" = (
 /obj/effect/decal/warning_stripes{
@@ -4471,16 +4612,6 @@
 	icon_state = "bluefull"
 	},
 /area/space)
-"YP" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/closed/shuttle/ert{
-	icon_state = "upp21";
-	name = "Buran"
-	},
-/area/space)
-"YU" = (
-/turf/open/shuttle/lifeboat,
-/area/space)
 "YY" = (
 /obj/structure/machinery/cryopod{
 	pixel_y = 6
@@ -4489,22 +4620,16 @@
 	icon_state = "cargo"
 	},
 /area/space)
+"YZ" = (
+/obj/structure/bed/chair/bolted,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "red"
+	},
+/area/space)
 "Zb" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan27"
-	},
-/area/space)
-"Zc" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 2
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -2
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
 	},
 /area/space)
 "Zk" = (
@@ -4524,24 +4649,21 @@
 	icon_state = "test_floor4"
 	},
 /area/space)
-"Zn" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/box/gloves{
-	pixel_x = 5;
-	pixel_y = 12
-	},
-/obj/item/storage/box/masks{
-	pixel_x = 5
-	},
-/obj/structure/closet/secure_closet/surgical{
+"Zs" = (
+/obj/structure/machinery/computer/shuttle/escape_pod_panel{
 	pixel_y = 30
 	},
-/obj/item/reagent_container/glass/minitank{
-	pixel_x = -7;
-	pixel_y = 4
+/turf/open/shuttle/escapepod{
+	icon_state = "floor7"
+	},
+/area/space)
+"Zz" = (
+/obj/structure/bed/chair/bolted{
+	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_state = "sterile_green_corner"
+	dir = 4;
+	icon_state = "red"
 	},
 /area/space)
 "ZB" = (
@@ -4553,12 +4675,6 @@
 	icon_state = "dark_sterile"
 	},
 /area/space)
-"ZC" = (
-/turf/open/floor/almayer{
-	dir = 9;
-	icon_state = "sterile_green_side"
-	},
-/area/space)
 "ZE" = (
 /turf/open/shuttle/dropship,
 /area/space)
@@ -4566,14 +4682,17 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/marine,
 /turf/open/shuttle/dropship,
 /area/space)
-"ZN" = (
-/turf/closed/shuttle/lifeboat{
-	icon_state = "17,6"
+"ZP" = (
+/turf/closed/shuttle/escapepod{
+	icon_state = "wall1"
 	},
 /area/space)
-"ZW" = (
+"ZU" = (
+/turf/open/floor/plating,
+/area/space)
+"ZZ" = (
 /turf/closed/shuttle/lifeboat{
-	icon_state = "7,6"
+	icon_state = "3,6"
 	},
 /area/space)
 
@@ -43026,12 +43145,12 @@ iI
 iI
 iI
 JE
-pA
-pA
-pA
-pA
-pA
-pA
+OJ
+OJ
+OJ
+OJ
+OJ
+OJ
 kE
 yU
 yU
@@ -43413,9 +43532,9 @@ ZE
 ZE
 ZE
 ZE
-ed
+nM
 ZE
-ed
+nM
 ZE
 ZE
 ZE
@@ -49462,7 +49581,7 @@ ZE
 ZE
 ZE
 ZE
-ZE
+qk
 ZE
 iI
 uX
@@ -49863,7 +49982,7 @@ JE
 ZE
 ZE
 ZE
-ZE
+qk
 ZE
 uX
 uX
@@ -50264,7 +50383,7 @@ JE
 JE
 ZE
 ZE
-ZE
+vL
 ZE
 uX
 yU
@@ -50649,11 +50768,11 @@ ZE
 ZE
 ZE
 ZE
-lZ
+Yc
 ZE
 ZE
-PT
-lZ
+RZ
+Yc
 ZE
 ZE
 ZE
@@ -50667,7 +50786,7 @@ ZE
 ZE
 ZE
 ZE
-ZE
+vL
 uX
 uX
 uX
@@ -51051,11 +51170,11 @@ ZE
 ZE
 ZE
 ZE
-lZ
+Yc
 ZE
 ZE
-Rj
-lZ
+hY
+Yc
 ZE
 ZE
 ZE
@@ -51453,11 +51572,11 @@ ZE
 ZE
 ZE
 ZE
-lZ
+Yc
 ZE
 ZE
-hf
-lZ
+EE
+Yc
 ZE
 ZE
 ZE
@@ -51855,24 +51974,24 @@ ZE
 ZE
 ZE
 ZE
-lZ
+Yc
 ZE
 ZE
 ZE
-lZ
+Yc
 ZE
 ZE
 ZE
 ZE
 JE
+yO
+yO
 ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
+yO
+mD
+HJ
+HJ
+QE
 uX
 uX
 uX
@@ -52269,16 +52388,16 @@ ZE
 JE
 ZE
 ZE
-ZE
-ZE
-JE
-JE
-JE
-JE
+de
+wc
+ZP
+Zs
+tH
+jk
 uX
 ZE
-So
-JE
+ZE
+ZE
 ZE
 ZE
 ZE
@@ -52670,13 +52789,13 @@ ZE
 ZE
 JE
 ZE
+rW
 ZE
 ZE
-ZE
-JE
-ZE
-ZE
-ZE
+iz
+KY
+Af
+jk
 ZE
 ZE
 ZE
@@ -53071,14 +53190,14 @@ ZE
 ZE
 ZE
 JE
+BS
 ZE
 ZE
-ZE
-ZE
-JE
-ZE
-ZE
-ZE
+Fq
+Yk
+WI
+tH
+jk
 ZE
 ZE
 ZE
@@ -53477,10 +53596,10 @@ ZE
 ZE
 ZE
 ZE
-JE
-ZE
-ZE
-ZE
+gY
+AR
+AR
+hZ
 ZE
 ZE
 ZE
@@ -53868,16 +53987,16 @@ ZE
 ZE
 ZE
 ZE
-PT
+RZ
 ZE
 ZE
 ZE
 ZE
 ZE
 JE
+JT
 ZE
-ZE
-ZE
+rW
 ZE
 JE
 ZE
@@ -54270,7 +54389,7 @@ ZE
 ZE
 ZE
 ZE
-Rj
+hY
 ZE
 ZE
 ZE
@@ -54278,9 +54397,9 @@ ZE
 ZE
 JE
 ZE
+mH
 ZE
-ZE
-ZE
+mH
 JE
 ZE
 ZE
@@ -54672,7 +54791,7 @@ ZE
 ZE
 ZE
 ZE
-hf
+EE
 ZE
 ZE
 ZE
@@ -55474,11 +55593,11 @@ ZE
 ZE
 ZE
 ZE
-Wb
-Wb
+VI
+VI
 ZE
 ZE
-Pt
+DD
 ZE
 ZE
 ZE
@@ -55876,11 +55995,11 @@ ZE
 ZE
 ZE
 ZE
-Pt
+DD
 ZE
 ZE
 ZE
-Wb
+VI
 ZE
 ZE
 ZE
@@ -56282,7 +56401,7 @@ ZE
 ZE
 ZE
 ZE
-Wb
+VI
 ZE
 ZE
 ZE
@@ -56290,7 +56409,7 @@ JE
 ZE
 ZE
 ZE
-ZE
+qk
 JE
 ZE
 ZE
@@ -56684,7 +56803,7 @@ ZE
 ZE
 ZE
 ZE
-Wb
+VI
 ZE
 ZE
 ZE
@@ -57094,7 +57213,7 @@ JE
 ZE
 ZE
 ZE
-ZE
+vL
 JE
 ZE
 ZE
@@ -57486,7 +57605,7 @@ ZE
 ZE
 ZE
 ZE
-PT
+RZ
 ZE
 ZE
 ZE
@@ -57888,7 +58007,7 @@ ZE
 ZE
 ZE
 ZE
-Rj
+hY
 ZE
 ZE
 ZE
@@ -58290,14 +58409,14 @@ ZE
 ZE
 ZE
 ZE
-hf
+EE
 ZE
 ZE
 ZE
 ZE
 ZE
 JE
-ZE
+qk
 ZE
 ZE
 ZE
@@ -59100,8 +59219,8 @@ ZE
 ZE
 ZE
 ZE
-ZE
-ZE
+qk
+qk
 ZE
 ZE
 ZE
@@ -67228,7 +67347,7 @@ ZE
 ZE
 ZE
 ZE
-it
+XH
 ZE
 ZE
 ZE
@@ -67557,11 +67676,11 @@ ZE
 ZE
 ZE
 ZE
-VO
-ea
-Nl
-ea
-VO
+MX
+DX
+CL
+DX
+MX
 QT
 QT
 ZE
@@ -67959,11 +68078,11 @@ ZE
 ZE
 ZE
 ZE
-OM
-jN
-RK
-IH
-OM
+gZ
+Wh
+Ma
+lm
+gZ
 QT
 QT
 ZE
@@ -68361,11 +68480,11 @@ ZE
 ZE
 ZE
 ZE
-OM
-Eh
+gZ
+Fo
 QT
-hy
-OM
+wA
+gZ
 QT
 QT
 ZE
@@ -68400,8 +68519,8 @@ ZE
 ZE
 ZE
 JE
-Gk
-Ki
+Rs
+Zz
 GD
 wa
 wn
@@ -68431,11 +68550,11 @@ ZE
 ZE
 ZE
 ZE
-it
+XH
 ZE
 ZE
 ZE
-it
+XH
 ZE
 ZE
 ZE
@@ -68755,23 +68874,23 @@ ZE
 ZE
 ZE
 ZE
-VO
-VO
-VO
-VO
-VO
-VO
-VO
-VO
-VO
-VO
-zh
-VO
-VO
+MX
+MX
+MX
+MX
+MX
+MX
+MX
+MX
+MX
+MX
+Co
+MX
+MX
 QT
-ku
-VO
-VO
+kw
+MX
+MX
 ZE
 ZE
 ZE
@@ -68802,9 +68921,9 @@ ZE
 ZE
 ZE
 JE
-XK
-cd
-aW
+aL
+Bv
+gV
 sf
 wn
 JE
@@ -68830,9 +68949,9 @@ ZE
 ZE
 ZE
 ZE
-it
-it
-it
+XH
+XH
+XH
 ZE
 ZE
 Yb
@@ -69157,23 +69276,23 @@ ZE
 ZE
 ZE
 ZE
-VO
-VO
-VO
-VO
-VO
-VO
-ay
-QL
-QL
-QL
+MX
+MX
+MX
+MX
+MX
+MX
+jf
+Sm
+Sm
+Sm
 QT
-QL
-QL
+Sm
+Sm
 QT
 QT
-fI
-VO
+uv
+MX
 ZE
 ZE
 ZE
@@ -69204,14 +69323,14 @@ ZE
 ZE
 ZE
 JE
-Ue
-sQ
-qy
+cy
+UI
+fR
 sf
 wn
 JE
-RQ
-vR
+UV
+KA
 JE
 ZE
 ZE
@@ -69231,7 +69350,7 @@ ZE
 ZE
 ZE
 ZE
-it
+XH
 ZE
 ZE
 ZE
@@ -69559,13 +69678,13 @@ ZE
 ZE
 ZE
 ZE
-VO
-BF
+MX
+MM
+FQ
+gz
 Ys
-IB
-nn
-WD
-JC
+FL
+NT
 QT
 QT
 QT
@@ -69574,8 +69693,8 @@ QT
 QT
 QT
 QT
-Uw
-VO
+Al
+MX
 ZE
 ZE
 ZE
@@ -69606,14 +69725,14 @@ ZE
 ZE
 ZE
 JE
-hR
+gy
 sf
-PV
-PV
-PV
-Au
-fS
-dz
+Mg
+Mg
+Mg
+dN
+lx
+tr
 JE
 ZE
 ZE
@@ -69632,9 +69751,9 @@ ik
 ZE
 ZE
 ZE
-it
+XH
 ZE
-it
+XH
 ZE
 ZE
 ZE
@@ -69646,7 +69765,7 @@ ZE
 ZE
 ZE
 ZE
-it
+XH
 ZE
 ZE
 ZE
@@ -69961,23 +70080,23 @@ ZE
 ZE
 ZE
 ZE
-VO
-dA
+MX
+yB
 QT
-VJ
-Uw
-WD
-ZC
+uw
+Al
+FL
+On
 QT
-XN
-QT
-QT
+JC
 QT
 QT
-XN
 QT
-Uw
-VO
+QT
+JC
+QT
+Al
+MX
 ZE
 ZE
 ZE
@@ -70014,8 +70133,8 @@ JE
 sf
 wn
 JE
-Nw
-ha
+gf
+PF
 JE
 ZE
 ZE
@@ -70041,7 +70160,7 @@ ZE
 ZE
 ZE
 Yb
-it
+XH
 ZE
 ZE
 ZE
@@ -70363,23 +70482,23 @@ ZE
 ZE
 ZE
 ZE
-VO
-QM
-Ni
+MX
+vO
+so
 QT
 QT
-KF
+fB
 QT
-Uw
-zu
-JC
+Al
+ln
+NT
 QT
 QT
-Uw
-zu
-JC
-Uw
-VO
+Al
+ln
+NT
+Al
+MX
 ZE
 ZE
 ZE
@@ -70410,8 +70529,8 @@ ZE
 ZE
 ZE
 JE
-Op
-Bl
+Ba
+Kq
 JE
 sf
 wn
@@ -70451,8 +70570,8 @@ ZE
 ZE
 ZE
 ZE
-qu
-cB
+GL
+zI
 ZE
 ZE
 ZE
@@ -70765,23 +70884,23 @@ ZE
 ZE
 ZE
 ZE
-VO
-pE
+MX
+MH
 QT
-mo
-Uw
-WD
-Pb
+uz
+Al
+FL
+WC
 QT
-QL
-QT
-QT
+Sm
 QT
 QT
-QL
 QT
-Uw
-VO
+QT
+Sm
+QT
+Al
+MX
 ZE
 ZE
 ZE
@@ -70812,14 +70931,14 @@ ZE
 ZE
 ZE
 JE
-Rz
-PV
-nx
+YZ
+Mg
+aA
 sf
 wn
 JE
-Bl
-ly
+Kq
+TU
 JE
 ZE
 ZE
@@ -70852,9 +70971,9 @@ ZE
 ZE
 ZE
 ZE
-qu
-jS
-ms
+GL
+yg
+MZ
 ZE
 ZE
 ZE
@@ -71167,13 +71286,13 @@ ZE
 ZE
 ZE
 ZE
-VO
-vP
-sw
-zW
-vy
-WD
-JC
+MX
+Vt
+zP
+hC
+BD
+FL
+NT
 QT
 QT
 QT
@@ -71182,8 +71301,8 @@ QT
 QT
 QT
 QT
-Uw
-VO
+Al
+MX
 ZE
 ZE
 ZE
@@ -71214,14 +71333,14 @@ ZE
 ZE
 ZE
 JE
-Rz
-PV
-Cb
+YZ
+Mg
+ns
 sf
-PV
-wS
+Mg
+eS
 em
-Qf
+Wg
 JE
 ZE
 ZE
@@ -71244,7 +71363,7 @@ Yb
 ZE
 ZE
 ZE
-it
+XH
 ZE
 ZE
 ZE
@@ -71254,10 +71373,10 @@ ZE
 ZE
 ZE
 Lc
-jS
-IL
-oV
-lp
+yg
+tn
+GE
+Jt
 ZE
 ZE
 ZE
@@ -71569,13 +71688,13 @@ ZE
 ZE
 ZE
 ZE
-VO
-VO
-VO
-VO
-VO
-VO
-Qn
+MX
+MX
+MX
+MX
+MX
+MX
+dW
 QT
 QT
 QT
@@ -71584,8 +71703,8 @@ QT
 QT
 QT
 QT
-Uw
-VO
+Al
+MX
 ZE
 ZE
 ZE
@@ -71616,9 +71735,9 @@ ZE
 ZE
 ZE
 JE
-Ta
+kS
 GD
-nx
+aA
 sf
 wn
 JE
@@ -71651,15 +71770,15 @@ ZE
 ZE
 ZE
 ZE
-it
+XH
 ZE
 ZE
 ZE
 ZE
-jS
-Yk
-rf
-EP
+yg
+QQ
+xi
+Ae
 ZE
 ZE
 ZE
@@ -71971,13 +72090,13 @@ ZE
 ZE
 ZE
 ZE
-VO
-dY
-mj
-px
-wm
-OM
-ZC
+MX
+wD
+sn
+Ke
+XN
+gZ
+On
 QT
 QT
 QT
@@ -71986,8 +72105,8 @@ QT
 QT
 QT
 QT
-Uw
-VO
+Al
+MX
 ZE
 ZE
 ZE
@@ -72024,8 +72143,8 @@ JE
 sf
 wn
 JE
-Bl
-UK
+Kq
+TA
 JE
 ZE
 ZE
@@ -72043,7 +72162,7 @@ gR
 ik
 ZE
 ZE
-it
+XH
 ZE
 ZE
 ZE
@@ -72058,7 +72177,7 @@ ZE
 ZE
 ZE
 ZE
-it
+XH
 ZE
 ZE
 ZE
@@ -72373,23 +72492,23 @@ ZE
 ZE
 ZE
 ZE
-VO
-Lw
+MX
+sP
 QT
 QT
 QT
-Vp
-QT
-QT
-QT
-QT
+IS
 QT
 QT
 QT
 QT
 QT
-Uw
-VO
+QT
+QT
+QT
+QT
+Al
+MX
 ZE
 ZE
 ZE
@@ -72405,7 +72524,7 @@ ZE
 Yp
 ZE
 ZE
-VF
+sh
 ZE
 ZE
 Yp
@@ -72420,14 +72539,14 @@ ZE
 ZE
 ZE
 JE
-SW
-Zc
-Cb
+Wt
+Bp
+ns
 sf
-PV
-DU
+Mg
+fY
 em
-Qf
+Wg
 JE
 ZE
 ZE
@@ -72453,12 +72572,12 @@ ZE
 ZE
 ZE
 ZE
-Ul
-Po
-Po
-Po
-cB
-UG
+oF
+Mn
+Mn
+Mn
+zI
+ZU
 ZE
 ZE
 ZE
@@ -72775,23 +72894,23 @@ ZE
 ZE
 ZE
 ZE
-VO
-Zn
-sw
-bt
-Dc
-OM
-Pb
+MX
+yA
+zP
+mM
+kD
+gZ
+WC
 QT
 QT
-Li
-XN
-XN
+fk
+JC
+JC
 QT
-XN
-XN
-UX
-VO
+JC
+JC
+Oh
+MX
 ZE
 ZE
 ZE
@@ -72822,9 +72941,9 @@ ZE
 ZE
 ZE
 JE
-SW
-Zc
-nx
+Wt
+Bp
+aA
 sf
 wn
 JE
@@ -72855,17 +72974,17 @@ ZE
 ZE
 ZE
 ZE
-Kr
-UG
-tn
-UG
-UG
-UG
+QV
+ZU
+ke
+ZU
+ZU
+ZU
 ZE
 ZE
 ZE
 ZE
-it
+XH
 ZE
 ZE
 ZE
@@ -73177,23 +73296,23 @@ ZE
 ZE
 ZE
 ZE
-VO
-VO
-VO
-VO
-VO
-VO
-Qn
+MX
+MX
+MX
+MX
+MX
+MX
+dW
 QT
 QT
-Uw
-rl
-rl
-fg
-dg
-dg
-VO
-VO
+Al
+wZ
+wZ
+qn
+FB
+FB
+MX
+MX
 ZE
 ZE
 ZE
@@ -73224,14 +73343,14 @@ ZE
 ZE
 ZE
 JE
-SW
-Zc
-nx
+Wt
+Bp
+aA
 sf
 wn
 JE
-Bl
-Xq
+Kq
+tw
 JE
 ZE
 ZE
@@ -73259,7 +73378,7 @@ ZE
 ZE
 ZE
 Lc
-it
+XH
 ZE
 ZE
 ZE
@@ -73579,23 +73698,23 @@ ZE
 ZE
 ZE
 ZE
-VO
-BF
+MX
+MM
+FQ
+gz
 Ys
-IB
-nn
-dg
-JC
+FB
+NT
 QT
 QT
-Uw
-VO
-TH
+Al
+MX
+wK
 QT
-QL
-Bm
-VO
-VO
+Sm
+WN
+MX
+MX
 ZE
 ZE
 ZE
@@ -73626,14 +73745,14 @@ ZE
 ZE
 ZE
 JE
-SW
-Zc
-Cb
+Wt
+Bp
+ns
 sf
-PV
-Cm
+Mg
+Fe
 em
-Qf
+Wg
 JE
 ZE
 ZE
@@ -73654,7 +73773,7 @@ ZE
 Yb
 ZE
 ZE
-it
+XH
 ZE
 ZE
 ZE
@@ -73981,23 +74100,23 @@ ZE
 ZE
 ZE
 ZE
-VO
-dA
+MX
+yB
 QT
-VJ
-Uw
-dg
-ZC
+uw
+Al
+FB
+On
 QT
 QT
-Uw
-VO
-dA
+Al
+MX
+yB
 QT
-VJ
-Ji
-VO
-VO
+uw
+kI
+MX
+MX
 ZE
 ZE
 ZE
@@ -74066,7 +74185,7 @@ ZE
 ZE
 ZE
 ZE
-it
+XH
 ZE
 ZE
 ZE
@@ -74383,23 +74502,23 @@ ZE
 ZE
 ZE
 ZE
-VO
-ix
-Ni
+MX
+cz
+so
 QT
 QT
-fg
+qn
 QT
 QT
 QT
-Uw
-VO
-ix
-Ni
+Al
+MX
+cz
+so
 QT
-ET
-VO
-VO
+Hj
+MX
+MX
 ZE
 ZE
 ZE
@@ -74785,23 +74904,23 @@ ZE
 ZE
 ZE
 ZE
-VO
-pE
+MX
+MH
 QT
-mo
-Uw
-dg
-Pb
+uz
+Al
+FB
+WC
 QT
 QT
-Uw
-VO
-pE
+Al
+MX
+MH
 QT
-mo
-tT
-VO
-VO
+uz
+hb
+MX
+MX
 ZE
 ZE
 ZE
@@ -74861,10 +74980,10 @@ ZE
 ZE
 ZE
 ZE
-Ul
-Po
-mk
-Po
+oF
+Mn
+Ak
+Mn
 ZE
 ZE
 ZE
@@ -74875,7 +74994,7 @@ ZE
 Yb
 ZE
 ZE
-it
+XH
 ZE
 ZE
 ZE
@@ -75187,23 +75306,23 @@ ZE
 ZE
 ZE
 ZE
-VO
-vP
-sw
-Tw
-vy
-dg
-JC
+MX
+Vt
+zP
+YF
+BD
+FB
+NT
 QT
 QT
-Uw
-VO
-vP
-sw
-Tw
-WP
-VO
-VO
+Al
+MX
+Vt
+zP
+YF
+bf
+MX
+MX
 ZE
 ZE
 ZE
@@ -75263,10 +75382,10 @@ ZE
 ZE
 ZE
 ZE
-Kr
-HM
-YP
-HM
+QV
+wO
+Cx
+wO
 ZE
 ZE
 ZE
@@ -75279,9 +75398,9 @@ ZE
 ZE
 ZE
 ZE
-lx
-oV
-lp
+Pn
+GE
+Jt
 uX
 uX
 uX
@@ -75589,23 +75708,23 @@ ZE
 ZE
 ZE
 ZE
-VO
-VO
-VO
-VO
-VO
-VO
-ws
+MX
+MX
+MX
+MX
+MX
+MX
+qR
 QT
 QT
-Uw
-VO
-VO
-VO
-VO
-VO
-VO
-VO
+Al
+MX
+MX
+MX
+MX
+MX
+MX
+MX
 ZE
 ZE
 ZE
@@ -75665,25 +75784,25 @@ ZE
 ZE
 ZE
 ZE
-Kr
-UG
-UG
-UG
+QV
+ZU
+ZU
+ZU
 ZE
 ZE
 ZE
 ZE
 ZE
-it
+XH
 ZE
 ZE
 ZE
 ZE
 ZE
 ZE
-fU
-rf
-EP
+JH
+xi
+Ae
 yU
 uX
 uX
@@ -75991,23 +76110,23 @@ ZE
 ZE
 ZE
 ZE
-VO
-VO
-VO
-VO
-VO
-VO
+MX
+MX
+MX
+MX
+MX
+MX
 QT
-ku
+kw
 QT
-ku
-VO
-VO
-VO
-VO
-VO
-VO
-VO
+kw
+MX
+MX
+MX
+MX
+MX
+MX
+MX
 ZE
 ZE
 ZE
@@ -76067,24 +76186,24 @@ ZE
 ZE
 ZE
 ZE
-zi
-kr
-BR
-CV
+rI
+fI
+sz
+Rp
 ZE
 ZE
-it
-ZE
-ZE
-ZE
+XH
 ZE
 ZE
 ZE
 ZE
 ZE
 ZE
-dI
-vu
+ZE
+ZE
+ZE
+WG
+VH
 ZE
 yU
 yU
@@ -76399,10 +76518,10 @@ ZE
 ZE
 ZE
 ZE
-JC
+NT
 QT
 QT
-Uw
+Al
 ZE
 ZE
 ZE
@@ -76485,8 +76604,8 @@ ZE
 ZE
 ZE
 ZE
-zi
-uv
+rI
+XW
 ZE
 uX
 uX
@@ -76801,10 +76920,10 @@ ZE
 ZE
 ZE
 ZE
-JC
+NT
 QT
 QT
-Uw
+Al
 ZE
 ZE
 ZE
@@ -79123,13 +79242,13 @@ uX
 uX
 uX
 uX
-pB
-an
-hn
-Rx
-qC
-UM
-iT
+Va
+LT
+SC
+Xd
+Ga
+uT
+eK
 uX
 uX
 uX
@@ -79525,13 +79644,13 @@ uX
 uX
 uX
 uX
-xr
-Bv
-qV
-wR
-PM
-bv
-Fg
+DB
+qz
+yS
+vY
+BC
+tE
+jd
 uX
 uX
 uX
@@ -79927,13 +80046,13 @@ uX
 uX
 uX
 uX
-Rd
-cV
-dt
-Ag
-TY
-mZ
-nJ
+Dn
+Qw
+rf
+iq
+tv
+BK
+TM
 uX
 uX
 uX
@@ -80329,13 +80448,13 @@ uX
 uX
 uX
 uX
-uE
-mA
-sa
-sa
-sa
-YA
-Vo
+ZZ
+Yn
+mi
+mi
+mi
+Qm
+Cr
 uX
 uX
 uX
@@ -80731,13 +80850,13 @@ uX
 uX
 uX
 uX
-Jv
-AX
-YU
-pX
-YU
-uL
-xt
+GB
+Xc
+yN
+KY
+yN
+OE
+Uq
 uX
 uX
 uX
@@ -81133,13 +81252,13 @@ uX
 uX
 uX
 uX
-Jv
-AX
-YU
-pX
-YU
-uL
-xt
+GB
+Xc
+yN
+KY
+yN
+OE
+Uq
 uX
 uX
 uX
@@ -81535,13 +81654,13 @@ uX
 uX
 uX
 uX
-tQ
-bW
-pa
-Ff
-YU
-IU
-HF
+Uh
+hy
+Pd
+Rx
+yN
+Bu
+JZ
 uX
 uX
 uX
@@ -81937,13 +82056,13 @@ uX
 uX
 uX
 uX
-ZW
-mA
-hx
-Ff
-YU
-YA
-qg
+kA
+Yn
+Wa
+Rx
+yN
+Qm
+LZ
 uX
 uX
 uX
@@ -82339,13 +82458,13 @@ uX
 uX
 uX
 uX
-zp
-th
-YU
-pX
-YU
-Mc
-qo
+FC
+qp
+yN
+KY
+yN
+TO
+CF
 uX
 uX
 uX
@@ -82503,7 +82622,7 @@ ZE
 ZE
 ZE
 ZE
-PT
+RZ
 ZE
 ZE
 ZE
@@ -82741,13 +82860,13 @@ uX
 uX
 uX
 uX
-oe
-th
-YU
-pX
-YU
-Mc
-YU
+kB
+qp
+yN
+KY
+yN
+TO
+yN
 uX
 uX
 uX
@@ -82905,7 +83024,7 @@ ZE
 ZE
 ZE
 ZE
-Rj
+hY
 ZE
 ZE
 ZE
@@ -83143,13 +83262,13 @@ uX
 uX
 uX
 uX
-oe
-th
-YU
-pX
-YU
-Mc
-YU
+kB
+qp
+yN
+KY
+yN
+TO
+yN
 uX
 uX
 uX
@@ -83307,7 +83426,7 @@ ZE
 ZE
 ZE
 ZE
-hf
+EE
 ZE
 ZE
 ZE
@@ -83545,13 +83664,13 @@ uX
 uX
 uX
 uX
-tQ
-bW
-YU
-Ff
-YU
-IU
-xE
+Uh
+hy
+yN
+Rx
+yN
+Bu
+io
 uX
 uX
 uX
@@ -83947,13 +84066,13 @@ uX
 uX
 uX
 uX
-ZW
-mA
-YU
-Ff
-YU
-YA
-zr
+kA
+Yn
+yN
+Rx
+yN
+Qm
+NI
 uX
 uX
 uX
@@ -84349,13 +84468,13 @@ uX
 uX
 uX
 uX
-JB
-th
-YU
-pX
-YU
-Mc
-XC
+mu
+qp
+yN
+KY
+yN
+TO
+gH
 uX
 uX
 uX
@@ -84751,13 +84870,13 @@ uX
 uX
 uX
 uX
-oe
-th
-YU
-pX
-YU
-Mc
-YU
+kB
+qp
+yN
+KY
+yN
+TO
+yN
 uX
 uX
 uX
@@ -85153,13 +85272,13 @@ uX
 uX
 uX
 uX
-oe
-th
-YU
-pX
-YU
-Mc
-YU
+kB
+qp
+yN
+KY
+yN
+TO
+yN
 uX
 uX
 uX
@@ -85555,13 +85674,13 @@ uX
 uX
 uX
 uX
-tQ
-bW
-uA
-Ff
-YU
-IU
-DT
+Uh
+hy
+pb
+Rx
+yN
+Bu
+LI
 uX
 uX
 uX
@@ -85957,13 +86076,13 @@ uX
 uX
 uX
 uX
-ZN
-sB
-Bj
-Ff
-YU
-AD
-Ru
+Pe
+OB
+JF
+Rx
+yN
+zX
+XX
 uX
 uX
 uX
@@ -86359,13 +86478,13 @@ uX
 uX
 uX
 uX
-ZW
-mA
-YU
-Ff
-YU
-YA
-fd
+kA
+Yn
+yN
+Rx
+yN
+Qm
+jC
 uX
 uX
 uX
@@ -86761,13 +86880,13 @@ uX
 uX
 uX
 uX
-Jv
-AX
-YU
-pX
-YU
-uL
-xt
+GB
+Xc
+yN
+KY
+yN
+OE
+Uq
 uX
 uX
 uX
@@ -87163,13 +87282,13 @@ uX
 uX
 uX
 uX
-Jv
-AX
-YU
-pX
-YU
-uL
-xt
+GB
+Xc
+yN
+KY
+yN
+OE
+Uq
 uX
 uX
 uX
@@ -87258,29 +87377,29 @@ ZE
 ZE
 sM
 sM
-fd
-fd
-fd
-Mz
-Mz
-Mz
-ZW
-ZW
-ZW
-oe
-oe
-oe
-ZW
-ZW
-oe
-oe
-oe
-ZW
-ZW
-Mz
-Mz
-uE
-Rd
+jC
+jC
+jC
+zq
+zq
+zq
+kA
+kA
+kA
+kB
+kB
+kB
+kA
+kA
+kB
+kB
+kB
+kA
+kA
+zq
+zq
+ZZ
+Dn
 sM
 sM
 uX
@@ -87565,13 +87684,13 @@ uX
 uX
 uX
 uX
-Jv
-AX
-YU
-pX
-YU
-uL
-xt
+GB
+Xc
+yN
+KY
+yN
+OE
+Uq
 uX
 uX
 uX
@@ -87660,29 +87779,29 @@ ZE
 ZE
 sM
 sM
-ZW
-ZW
-mA
-vz
-vz
-vz
-YA
-ZW
-mA
+kA
+kA
+Yn
+Ci
+Ci
+Ci
+Qm
+kA
+Yn
 ZE
 ZE
 ZE
-YA
-mA
+Qm
+Yn
 ZE
 ZE
 ZE
-YA
-mA
-vz
-vz
-YA
-ZW
+Qm
+Yn
+Ci
+Ci
+Qm
+kA
 sM
 sM
 uX
@@ -87967,48 +88086,104 @@ uX
 uX
 uX
 uX
-tQ
-bW
-zE
-zE
-zE
-IU
+Uh
+hy
+cg
+cg
+cg
+Bu
+wS
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+uX
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+Wx
+Wx
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+sM
+sM
+GB
+mI
 Oa
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
-uX
 ZE
 ZE
 ZE
@@ -88027,64 +88202,8 @@ ZE
 ZE
 ZE
 ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-Wx
-Wx
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-sM
-sM
-Jv
-hA
-rh
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-rh
-ZW
+Oa
+kA
 sM
 sM
 uX
@@ -88369,13 +88488,13 @@ uX
 uX
 uX
 uX
-Tq
-tq
-IC
-kA
-Kv
-dK
-OV
+cc
+Mp
+SJ
+BU
+Oj
+pG
+mz
 uX
 uX
 uX
@@ -88464,9 +88583,9 @@ ZE
 ZE
 sM
 sM
-Jv
-om
-rh
+GB
+SR
+Oa
 ZE
 ZE
 ZE
@@ -88485,8 +88604,8 @@ ZE
 ZE
 ZE
 ZE
-rh
-ZW
+Oa
+kA
 sM
 sM
 uX
@@ -88771,22 +88890,22 @@ uX
 uX
 uX
 uX
-EQ
-YJ
-QU
-Mz
-yB
-HG
-fr
+dQ
+hs
+Dg
+zq
+yG
+GI
+pz
 uX
 uX
-cF
-Fs
-fm
-WA
-kO
-Cd
-OE
+ii
+pQ
+VE
+oJ
+je
+iu
+KK
 uX
 uX
 uX
@@ -88866,9 +88985,9 @@ ZE
 ZE
 sM
 sM
-Jv
-kI
-rh
+GB
+LE
+Oa
 ZE
 ZE
 ZE
@@ -88887,8 +89006,8 @@ ZE
 ZE
 ZE
 ZE
-rh
-ZW
+Oa
+kA
 sM
 sM
 uX
@@ -89173,21 +89292,21 @@ uX
 uX
 uX
 uX
-cF
-Fs
-fm
-WA
-kO
-Cd
-OE
+ii
+pQ
+VE
+oJ
+je
+iu
+KK
 uX
 uX
 uX
-yV
-BZ
-VN
-Qs
-GH
+CB
+NN
+Bx
+Be
+ki
 uX
 uX
 uX
@@ -89268,29 +89387,29 @@ ZE
 ZE
 sM
 sM
-ZW
-ZW
-bW
-eT
-eT
-eT
-IU
-ZW
-bW
+kA
+kA
+hy
+hX
+hX
+hX
+Bu
+kA
+hy
 ZE
 ZE
 ZE
-IU
-bW
+Bu
+hy
 ZE
 ZE
 ZE
-IU
-bW
-eT
-eT
-IU
-ZW
+Bu
+hy
+hX
+hX
+Bu
+kA
 sM
 sM
 uX
@@ -89576,11 +89695,11 @@ uX
 uX
 uX
 uX
-yV
-BZ
-VN
-Qs
-GH
+CB
+NN
+Bx
+Be
+ki
 uX
 uX
 uX
@@ -89670,29 +89789,29 @@ ZE
 ZE
 sM
 sM
-ZW
-ZW
-ZW
-Mz
-Mz
-Mz
-ZW
-ZW
-ZW
-oe
-oe
-oe
-ZW
-ZW
-oe
-oe
-oe
-ZW
-ZW
-Mz
-Mz
-ZW
-ZW
+kA
+kA
+kA
+zq
+zq
+zq
+kA
+kA
+kA
+kB
+kB
+kB
+kA
+kA
+kB
+kB
+kB
+kA
+kA
+zq
+zq
+kA
+kA
 sM
 sM
 uX
@@ -92119,14 +92238,14 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
@@ -92521,14 +92640,14 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
@@ -92850,7 +92969,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -92923,14 +93042,14 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
@@ -93251,9 +93370,9 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -93318,21 +93437,21 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -93651,12 +93770,12 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -93720,21 +93839,21 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -94052,14 +94171,14 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -94122,21 +94241,21 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -94454,14 +94573,14 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -94524,21 +94643,21 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -94857,12 +94976,12 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -94902,13 +95021,13 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -94926,29 +95045,29 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -95260,9 +95379,9 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -95305,11 +95424,11 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -95328,29 +95447,29 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -95707,11 +95826,11 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -95730,29 +95849,29 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -96110,9 +96229,9 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -96132,29 +96251,29 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -96503,39 +96622,18 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
+NR
+NR
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-RX
-RX
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -96553,10 +96651,31 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
+ZE
+ZE
+NR
+NR
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -96894,28 +97013,20 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-RX
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -96923,21 +97034,7 @@ ZE
 ZE
 ZE
 ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-RX
-RX
+NR
 ZE
 ZE
 ZE
@@ -96955,10 +97052,32 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
+ZE
+ZE
+ZE
+NR
+NR
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -97295,28 +97414,22 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -97357,10 +97470,16 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -97670,7 +97789,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -97696,24 +97815,24 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -97759,10 +97878,10 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -98072,7 +98191,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -98098,24 +98217,24 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -98128,9 +98247,9 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -98161,10 +98280,10 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -98473,8 +98592,8 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
@@ -98483,56 +98602,41 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -98542,6 +98646,12 @@ ZE
 ZE
 ZE
 ZE
+ZE
+ZE
+ZE
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -98563,10 +98673,19 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -98875,7 +98994,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -98885,69 +99004,41 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-RX
-RX
-RX
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-RX
-RX
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -98960,15 +99051,43 @@ ZE
 ZE
 ZE
 ZE
+NR
+NR
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+NR
+NR
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+ZE
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -99277,7 +99396,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -99298,30 +99417,30 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -99334,9 +99453,9 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -99348,8 +99467,8 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
@@ -99367,10 +99486,10 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -99671,14 +99790,14 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -99700,30 +99819,30 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -99736,9 +99855,9 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -99749,9 +99868,9 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -99767,19 +99886,19 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -100073,22 +100192,22 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
+NR
+NR
+NR
 ZE
 ZE
-RX
-RX
-RX
+NR
+NR
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
@@ -100102,19 +100221,19 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -100122,10 +100241,10 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -100138,9 +100257,9 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -100151,34 +100270,34 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -100197,7 +100316,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -100477,10 +100596,10 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -100489,8 +100608,8 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
@@ -100504,8 +100623,8 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
@@ -100514,8 +100633,8 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
@@ -100524,10 +100643,10 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -100540,9 +100659,9 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -100553,34 +100672,34 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -100599,7 +100718,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -100891,8 +101010,8 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
@@ -100926,13 +101045,13 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -100955,39 +101074,34 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-ZE
-ZE
-ZE
-ZE
-ZE
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -101001,7 +101115,12 @@ ZE
 ZE
 ZE
 ZE
-RX
+ZE
+ZE
+ZE
+ZE
+ZE
+NR
 ZE
 ZE
 ZE
@@ -101293,8 +101412,8 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
@@ -101325,10 +101444,10 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -101357,39 +101476,34 @@ ZE
 Kp
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-ZE
-ZE
-ZE
-ZE
-ZE
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -101403,7 +101517,12 @@ ZE
 ZE
 ZE
 ZE
-RX
+ZE
+ZE
+ZE
+ZE
+ZE
+NR
 ZE
 ZE
 ZE
@@ -101695,8 +101814,8 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
@@ -101759,7 +101878,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -101769,14 +101888,14 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
@@ -101786,7 +101905,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -101805,12 +101924,12 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -102161,7 +102280,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -102171,29 +102290,24 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-RX
+NR
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
+ZE
+ZE
+ZE
+ZE
+NR
 ZE
 ZE
 ZE
@@ -102207,12 +102321,17 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
+ZE
+ZE
+ZE
+ZE
+ZE
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -102563,7 +102682,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -102573,29 +102692,24 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-RX
+NR
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
+ZE
+ZE
+ZE
+ZE
+NR
 ZE
 ZE
 ZE
@@ -102609,12 +102723,17 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
+ZE
+ZE
+ZE
+ZE
+ZE
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -102918,7 +103037,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -102956,8 +103075,8 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
@@ -102965,7 +103084,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -102975,14 +103094,14 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
@@ -102992,7 +103111,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -103011,12 +103130,12 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -103320,9 +103439,9 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -103367,7 +103486,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -103395,30 +103514,30 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -103722,11 +103841,11 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -103754,9 +103873,9 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -103769,7 +103888,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -103815,7 +103934,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -104124,12 +104243,12 @@ dX
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -104156,9 +104275,9 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -104171,7 +104290,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -104206,8 +104325,8 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
@@ -104217,7 +104336,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -104526,16 +104645,16 @@ dX
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -104558,9 +104677,9 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
+NR
+NR
+NR
 dX
 dX
 Xt
@@ -104573,7 +104692,7 @@ Xt
 dX
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -104608,8 +104727,8 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
@@ -104928,17 +105047,17 @@ Sy
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -104975,7 +105094,7 @@ Sy
 dX
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -105302,12 +105421,12 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -105330,16 +105449,16 @@ dX
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -105377,7 +105496,7 @@ Sy
 Sy
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -105704,12 +105823,12 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -105732,12 +105851,12 @@ dX
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -105747,7 +105866,7 @@ ZE
 Ur
 JE
 JE
-xM
+zc
 JE
 JE
 Ur
@@ -105761,7 +105880,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -105779,7 +105898,7 @@ Sy
 dX
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -106106,12 +106225,12 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -106148,9 +106267,9 @@ ZE
 ZE
 JE
 JE
-RF
-vm
-HV
+gd
+tN
+jG
 JE
 JE
 ZE
@@ -106163,7 +106282,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -106195,7 +106314,7 @@ ZE
 Ur
 JE
 JE
-xM
+zc
 JE
 JE
 Ur
@@ -106513,8 +106632,8 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
@@ -106550,9 +106669,9 @@ ZE
 ZE
 JE
 Jm
-QJ
-Qd
-Go
+Kt
+iB
+yq
 Jm
 JE
 ZE
@@ -106565,7 +106684,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -106596,9 +106715,9 @@ ZE
 ZE
 JE
 JE
-RF
-vm
-HV
+gd
+tN
+jG
 JE
 JE
 ZE
@@ -106915,7 +107034,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -106950,11 +107069,11 @@ ZE
 ZE
 ZE
 ZE
-LC
+jN
 Jm
-KZ
+Mo
 dX
-gs
+vC
 Jm
 JE
 ZE
@@ -106967,7 +107086,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -106997,10 +107116,10 @@ ZE
 ZE
 ZE
 JE
-rw
-QJ
-Qd
-Go
+gO
+Kt
+iB
+yq
 Jm
 JE
 ZE
@@ -107317,7 +107436,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -107352,12 +107471,12 @@ ZE
 ZE
 ZE
 ZE
-xM
+zc
 Jm
-Sk
-NF
+jR
+Jn
 Jm
-Ku
+sq
 JE
 ZE
 ZE
@@ -107369,7 +107488,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -107387,24 +107506,24 @@ dX
 dX
 ZE
 ZE
-RX
+NR
 ZE
 ZE
-RX
+NR
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
 JE
-MB
-KZ
+wk
+Mo
 dX
-gs
+vC
 Jm
-LC
+jN
 ZE
 ZE
 ZE
@@ -107709,10 +107828,10 @@ uX
 uX
 ZE
 ZE
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -107757,9 +107876,9 @@ ZE
 JE
 Jm
 Jm
-ab
-eL
-sg
+lQ
+Tu
+nb
 JE
 ZE
 ZE
@@ -107771,14 +107890,14 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
 ZE
 dX
-RX
-RX
+NR
+NR
 Fp
 Fp
 Ur
@@ -107789,31 +107908,31 @@ Fp
 dX
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
 JE
-ln
-Sk
-NF
+hB
+jR
+Jn
 Jm
 Jm
-xM
+zc
 ZE
 ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
@@ -107835,7 +107954,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -108111,14 +108230,14 @@ uX
 uX
 ZE
 ZE
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
@@ -108149,9 +108268,9 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -108159,7 +108278,7 @@ ZE
 JE
 JE
 JE
-xM
+zc
 JE
 JE
 JE
@@ -108173,14 +108292,14 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
 ZE
 Hx
-RX
-RX
+NR
+NR
 Ur
 Ur
 Ur
@@ -108191,7 +108310,7 @@ Ur
 Hx
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -108205,8 +108324,8 @@ ZE
 JE
 Jm
 Jm
-ab
-eL
+lQ
+Tu
 Jm
 JE
 ZE
@@ -108214,8 +108333,8 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
@@ -108237,7 +108356,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -108513,18 +108632,18 @@ uX
 uX
 ZE
 ZE
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
@@ -108551,9 +108670,9 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -108575,14 +108694,14 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
 ZE
 dX
-RX
-RX
+NR
+NR
 Fp
 Fp
 Ur
@@ -108593,7 +108712,7 @@ Fp
 dX
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -108607,7 +108726,7 @@ ZE
 JE
 JE
 JE
-xM
+zc
 JE
 JE
 JE
@@ -108639,7 +108758,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -108915,18 +109034,18 @@ uX
 uX
 ZE
 ZE
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
@@ -108952,10 +109071,10 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -108969,15 +109088,15 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -108995,7 +109114,7 @@ dX
 dX
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -109041,7 +109160,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -109327,8 +109446,8 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
@@ -109354,11 +109473,11 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -109371,15 +109490,15 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -109443,12 +109562,12 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -109729,8 +109848,8 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
@@ -109756,12 +109875,12 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -109781,7 +109900,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -109845,12 +109964,12 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -110131,8 +110250,8 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
@@ -110159,10 +110278,10 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -110183,7 +110302,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -110247,12 +110366,12 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -110533,8 +110652,8 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
@@ -110561,10 +110680,10 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -110585,7 +110704,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -110649,12 +110768,12 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -110963,9 +111082,9 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -111051,12 +111170,12 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -111407,7 +111526,7 @@ Sy
 dX
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -111453,13 +111572,13 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -111794,9 +111913,9 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
+NR
+NR
+NR
 dX
 dX
 Xt
@@ -111809,7 +111928,7 @@ Xt
 dX
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -112196,9 +112315,9 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -112211,7 +112330,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -112598,9 +112717,9 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -112613,7 +112732,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -112937,11 +113056,11 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -113000,9 +113119,9 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -113015,7 +113134,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -113061,12 +113180,12 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -113342,8 +113461,8 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
@@ -113417,7 +113536,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -113463,12 +113582,12 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -113744,8 +113863,8 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
@@ -113819,7 +113938,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -114146,8 +114265,8 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
@@ -114194,10 +114313,10 @@ Eu
 Eu
 ZE
 ZE
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -114221,7 +114340,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -114545,20 +114664,16 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
-RX
-RX
-ZE
-ZE
-ZE
-ZE
+NR
+NR
 ZE
 ZE
 ZE
@@ -114596,10 +114711,14 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
+ZE
+ZE
+ZE
+ZE
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -114607,13 +114726,6 @@ ZE
 ZE
 ZE
 ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-ZE
-Kp
 ZE
 ZE
 ZE
@@ -114623,7 +114735,14 @@ ZE
 Kp
 ZE
 ZE
-RX
+ZE
+ZE
+ZE
+ZE
+Kp
+ZE
+ZE
+NR
 ZE
 ZE
 ZE
@@ -114947,16 +115066,16 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
@@ -114998,10 +115117,10 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -115025,7 +115144,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -115070,13 +115189,13 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -115357,8 +115476,8 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
@@ -115400,10 +115519,10 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -115427,7 +115546,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -115472,13 +115591,13 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -115802,10 +115921,10 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -115874,13 +115993,13 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -116204,10 +116323,10 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -116261,9 +116380,9 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -116276,13 +116395,13 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -116566,8 +116685,8 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
@@ -116606,10 +116725,10 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -116663,28 +116782,28 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
+NR
+NR
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -116965,11 +117084,11 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -117065,28 +117184,28 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
+NR
+NR
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -117367,11 +117486,11 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -117467,28 +117586,28 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
+NR
+NR
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -117769,9 +117888,9 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -117864,33 +117983,33 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -118171,9 +118290,9 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -118266,23 +118385,23 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -118573,9 +118692,9 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -118668,23 +118787,23 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -118697,8 +118816,8 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 uX
@@ -118975,9 +119094,9 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -119070,23 +119189,23 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -119099,8 +119218,8 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
+NR
+NR
 ZE
 ZE
 uX
@@ -119377,9 +119496,9 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -119485,10 +119604,10 @@ ZE
 ZE
 ZE
 ZE
-RX
-RX
-RX
-RX
+NR
+NR
+NR
+NR
 ZE
 ZE
 ZE
@@ -119501,7 +119620,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE
@@ -119903,7 +120022,7 @@ ZE
 ZE
 ZE
 ZE
-RX
+NR
 ZE
 ZE
 ZE

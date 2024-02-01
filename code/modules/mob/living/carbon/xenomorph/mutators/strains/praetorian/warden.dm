@@ -7,16 +7,20 @@
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_PRAETORIAN) // Only bae
 	mutator_actions_to_remove = list(
+		/datum/action/xeno_action/activable/xeno_spit,
 		/datum/action/xeno_action/activable/pounce/base_prae_dash,
 		/datum/action/xeno_action/activable/prae_acid_ball,
 		/datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid,
+		/datum/action/xeno_action/onclick/tacmap,
 	)
 	mutator_actions_to_add = list(
+		/datum/action/xeno_action/onclick/emit_pheromones,
+		/datum/action/xeno_action/activable/xeno_spit,
 		/datum/action/xeno_action/activable/spray_acid/prae_warden,
 		/datum/action/xeno_action/activable/warden_heal,
 		/datum/action/xeno_action/activable/prae_retrieve,
 		/datum/action/xeno_action/onclick/prae_switch_heal_type,
-		/datum/action/xeno_action/onclick/emit_pheromones,
+		/datum/action/xeno_action/onclick/tacmap,
 	)
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_warden
 	keystone = TRUE
@@ -60,7 +64,7 @@
 /datum/behavior_delegate/praetorian_warden/append_to_stat()
 	. = list()
 	. += "Energy Reserves: [internal_hitpoints]/[internal_hitpoints_max]"
-	. += "Transferred health amount: [transferred_healing]"
+	. += "Healing Done: [transferred_healing]"
 
 /datum/behavior_delegate/praetorian_warden/on_life()
 	internal_hitpoints = min(internal_hitpoints_max, internal_hitpoints + internal_hp_per_life)

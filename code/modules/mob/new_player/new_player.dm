@@ -347,7 +347,7 @@
 			roles_show ^= FLAG_SHOW_MEDICAL
 
 		else if(roles_show & FLAG_SHOW_MARINES && GLOB.ROLES_MARINES.Find(J.title))
-			dat += "<hr>Squad Riflemen:<br>"
+			dat += "<hr>Marines:<br>"
 			roles_show ^= FLAG_SHOW_MARINES
 
 		dat += "<a href='byond://?src=\ref[src];lobby_choice=SelectedJob;job_selected=[J.title]'>[J.disp_title] ([J.current_positions]) (Active: [active])</a><br>"

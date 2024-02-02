@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - balance: "Compared to originally, corpsmen now have access to medbay vendors, and chemistry only requires chemistry access."
-  - bugfix: "Fixed unintended change to medbay vendors access:"

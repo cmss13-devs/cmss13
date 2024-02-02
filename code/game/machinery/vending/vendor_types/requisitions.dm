@@ -41,6 +41,7 @@
 		list("M2C Heavy Machine Gun", round(scale * 2), /obj/item/storage/box/guncase/m2c, VENDOR_ITEM_REGULAR),
 		list("M240 Incinerator Unit", round(scale * 2), /obj/item/storage/box/guncase/flamer, VENDOR_ITEM_REGULAR),
 		list("M79 Grenade Launcher", round(scale * 3), /obj/item/storage/box/guncase/m79, VENDOR_ITEM_REGULAR),
+		list("XM51 Breaching Scattergun", round(scale * 3), /obj/item/storage/box/guncase/xm51, VENDOR_ITEM_REGULAR),
 
 		list("EXPLOSIVES", -1, null, null),
 		list("M15 Fragmentation Grenade", round(scale * 2), /obj/item/explosive/grenade/high_explosive/m15, VENDOR_ITEM_REGULAR),
@@ -244,11 +245,13 @@
 		list("M41A MK1 AP Magazine (10x24mm)", round(scale * 2), /obj/item/ammo_magazine/rifle/m41aMK1/ap, VENDOR_ITEM_REGULAR),
 		list("M56D Drum Magazine", round(scale * 2), /obj/item/ammo_magazine/m56d, VENDOR_ITEM_REGULAR),
 		list("M2C Box Magazine", round(scale * 2), /obj/item/ammo_magazine/m2c, VENDOR_ITEM_REGULAR),
+		list("XM51 Magazine (16g)", round(scale * 3), /obj/item/ammo_magazine/rifle/xm51, VENDOR_ITEM_REGULAR),
 
 		list("SHOTGUN SHELL BOXES", -1, null, null),
 		list("Shotgun Shell Box (Buckshot x 100)", round(scale * 2), /obj/item/ammo_box/magazine/shotgun/buckshot, VENDOR_ITEM_REGULAR),
 		list("Shotgun Shell Box (Flechette x 100)", round(scale * 2), /obj/item/ammo_box/magazine/shotgun/flechette, VENDOR_ITEM_REGULAR),
 		list("Shotgun Shell Box (Slugs x 100)", round(scale * 2), /obj/item/ammo_box/magazine/shotgun, VENDOR_ITEM_REGULAR),
+		list("Shotgun Shell Box (16g) (Breaching x 120)", 1, /obj/item/ammo_box/magazine/shotgun/light/breaching, VENDOR_ITEM_REGULAR),
 		)
 
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/stock(obj/item/item_to_stock, mob/user)

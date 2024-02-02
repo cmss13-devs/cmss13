@@ -212,8 +212,12 @@
 			link.tag_num++
 
 		var/list/current_vent = list()
+		var/is_available = TRUE
+		if(!COOLDOWN_FINISHED(vent, vent_trigger_cooldown))
+			is_available = FALSE
 		current_vent["vent_tag"] = vent.vent_tag
 		current_vent["ref"] = "\ref[vent]"
+		current_vent["available"] = is_available
 		security_vents += list(current_vent)
 
 	data["security_vents"] = security_vents
@@ -493,12 +497,17 @@
 			var/obj/structure/pipes/vents/pump/no_boom/gas/sec_vent = locate(params["vent"])
 			if(!istype(sec_vent) || sec_vent.welded)
 				to_chat(user, SPAN_WARNING("ERROR: Gas release failure."))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 			if(!COOLDOWN_FINISHED(sec_vent, vent_trigger_cooldown))
+				to_chat(user, SPAN_WARNING("ERROR: Insufficient gas reserve for this vent."))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
+			to_chat(user, SPAN_WARNING("Initiating gas release from [sec_vent.vent_tag]."))
+			playsound(src, 'sound/machines/chime.ogg', 15, 1)
 			COOLDOWN_START(sec_vent, vent_trigger_cooldown, COOLDOWN_ARES_VENT)
 			log_ares_security("Nerve Gas Release", "[last_login] released Nerve Gas from Vent '[sec_vent.vent_tag]'.")
-			sec_vent.create_gas(VENT_GAS_CN20_XENO, 4, 5 SECONDS)
+			sec_vent.create_gas(VENT_GAS_CN20_XENO, 6, 5 SECONDS)
 			log_admin("[key_name(user)] released nerve gas from Vent '[sec_vent.vent_tag]' via ARES.")
 
 	if(playsound)

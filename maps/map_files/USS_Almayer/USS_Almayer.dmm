@@ -28575,7 +28575,8 @@
 	dir = 8
 	},
 /obj/structure/pipes/vents/pump/no_boom/gas{
-	dir = 1
+	dir = 1;
+	vent_tag = "Operations - Observation"
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"
@@ -59444,7 +59445,8 @@
 	dir = 4
 	},
 /obj/structure/pipes/vents/pump/no_boom/gas{
-	dir = 8
+	dir = 8;
+	vent_tag = "Access Corridor"
 	},
 /turf/open/floor/almayer/no_build{
 	dir = 4;
@@ -77510,7 +77512,9 @@
 /obj/structure/bed/chair/comfy/ares{
 	dir = 1
 	},
-/obj/structure/pipes/vents/pump/no_boom/gas,
+/obj/structure/pipes/vents/pump/no_boom/gas{
+	vent_tag = "Core Chamber"
+	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "plating"
 	},
@@ -82693,7 +82697,8 @@
 	dir = 4
 	},
 /obj/structure/pipes/vents/pump/no_boom/gas{
-	dir = 1
+	dir = 1;
+	vent_tag = "Operations - Records"
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "ai_floors"

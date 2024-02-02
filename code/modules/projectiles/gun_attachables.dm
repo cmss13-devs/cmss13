@@ -3294,7 +3294,9 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/bipod/Detach(mob/user, obj/item/weapon/gun/detaching_gub)
 	UnregisterSignal(detaching_gub, COMSIG_ITEM_DROPPED)
 
+	//clear out anything related to full auto switching
 	full_auto_switch = FALSE
+	old_firemode = null
 	for(var/item_action in detaching_gub.actions)
 		var/datum/action/item_action/bipod/toggle_full_auto_switch/target_action = item_action
 		if(target_action.target == src)

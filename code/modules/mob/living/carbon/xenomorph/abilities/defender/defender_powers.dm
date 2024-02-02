@@ -174,12 +174,12 @@
 	playsound(get_turf(xeno), 'sound/effects/stonedoor_openclose.ogg', 30, 1)
 
 	if(!xeno.fortify)
-		RegisterSignal(owner, COMSIG_MOB_DEATH, PROC_REF(death_check))
+		RegisterSignal(owner, COMSIG_XENO_GET_INTO_CRIT, PROC_REF(crit_check))
 		fortify_switch(xeno, TRUE)
 		if(xeno.selected_ability != src)
 			button.icon_state = "template_active"
 	else
-		UnregisterSignal(owner, COMSIG_MOB_DEATH)
+		UnregisterSignal(owner, COMSIG_XENO_GET_INTO_CRIT)
 		fortify_switch(xeno, FALSE)
 		if(xeno.selected_ability != src)
 			button.icon_state = "template"
@@ -249,10 +249,10 @@
 		else
 			damagedata["armor"] += frontal_armor
 
-/datum/action/xeno_action/activable/fortify/proc/death_check()
+/datum/action/xeno_action/activable/fortify/proc/crit_check()
 	SIGNAL_HANDLER
 
-	UnregisterSignal(owner, COMSIG_MOB_DEATH)
+	UnregisterSignal(owner, COMSIG_XENO_GET_INTO_CRIT)
 	fortify_switch(owner, FALSE)
 
 /datum/action/xeno_action/onclick/soak/use_ability(atom/A)

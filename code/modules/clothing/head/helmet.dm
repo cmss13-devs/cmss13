@@ -666,24 +666,26 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		return FALSE
 
 	if(active_visor)
+		var/visor_to_deactivate = active_visor
+		var/skipped_hud = FALSE
 		var/iterator = 1
-		for(var/hud_type in total_visors)
-			if(hud_type == active_visor)
+		for(var/obj/item/device/helmet_visor/current_visor as anything in total_visors)
+			if(current_visor == active_visor || skipped_hud)
 				if(length(total_visors) > iterator)
-					var/obj/item/device/helmet_visor/current_visor = total_visors[iterator]
 					var/obj/item/device/helmet_visor/next_visor = total_visors[iterator + 1]
 
 					if(!isnull(GLOB.huds[next_visor.hud_type].hudusers[user]))
 						iterator++
+						skipped_hud = TRUE
 						continue
 
 					active_visor = next_visor
-					toggle_visor(user, current_visor, silent = TRUE) // disables the old visor
+					toggle_visor(user, visor_to_deactivate, silent = TRUE) // disables the old visor
 					toggle_visor(user)
 					return active_visor
 				else
 					active_visor = null
-					toggle_visor(user, total_visors[iterator], FALSE)
+					toggle_visor(user, visor_to_deactivate, FALSE)
 					return FALSE
 			iterator++
 

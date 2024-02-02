@@ -141,7 +141,15 @@
 	cover_range = WEED_RANGE_CORE
 	var/activated = FALSE
 
+	/// Listed players here are on cooldown from trying to purchase a buff to prevent spam. Each leader can attempt only once every 5 minutes.
+	var/list/players_on_buff_cooldown
+
+/obj/effect/alien/resin/special/pylon/endgame/Initialize(mapload, mob/builder)
+	. = ..()
+	LAZYINITLIST(players_on_buff_cooldown)
+
 /obj/effect/alien/resin/special/pylon/endgame/Destroy()
+	players_on_buff_cooldown = null
 	if(activated)
 		activated = FALSE
 
@@ -161,6 +169,13 @@
 				xeno_announcement(SPAN_XENOANNOUNCE("Another hive has lost control of the tall's communication relay at [get_area(src)]."), hivenumber, XENO_GENERAL_ANNOUNCE)
 		linked_hive.hive_ui.update_pylon_status()
 	return ..()
+
+/// Handle Qdeleted player remove their ref from the list
+/obj/effect/alien/resin/special/pylon/endgame/proc/remove_qdel_player_from_list(mob/player)
+	SIGNAL_HANDLER
+	to_chat(world, "Removed [player].")
+	UnregisterSignal(player, COMSIG_PARENT_QDELETING)
+	LAZYREMOVE(players_on_buff_cooldown, player)
 
 /// Checks if all comms towers are connected and then starts end game content on all pylons if they are
 /obj/effect/alien/resin/special/pylon/endgame/proc/comms_relay_connection()
@@ -198,11 +213,14 @@
 /// APPLYING HIVE BUFFS ///
 
 /obj/effect/alien/resin/special/pylon/endgame/attack_alien(mob/living/carbon/xenomorph/xeno)
-	if(!damaged && health == maxhealth && xeno.a_intent == INTENT_HELP && xeno.hivenumber == linked_hive.hivenumber && IS_XENO_LEADER(xeno))
+	choose_hivebuff(xeno)
+	return
+	/*if(!damaged && health == maxhealth && xeno.a_intent == INTENT_HELP && xeno.hivenumber == linked_hive.hivenumber && IS_XENO_LEADER(xeno))
 		choose_hivebuff(xeno)
+		return
 	else
 		..()
-
+	*/
 /// To choose a hivebuff
 /obj/effect/alien/resin/special/pylon/endgame/proc/choose_hivebuff(mob/living/carbon/xenomorph/xeno)
 	var/list/buffs = list()
@@ -217,7 +235,22 @@
 		to_chat(world, "Invalid selection.")
 		return
 
-	linked_hive.apply_hivebuff(buffs[input])
+	linked_hive.attempt_apply_hivebuff(buffs[input], xeno, src)
+	apply_player_buff_cooldown(xeno)
+
+/// Apply cooldown to the player attempting to purchase a buff.
+/obj/effect/alien/resin/special/pylon/endgame/proc/apply_player_buff_cooldown(mob/living/carbon/xenomorph/xeno)
+	LAZYADD(players_on_buff_cooldown, xeno)
+	addtimer(CALLBACK(src, PROC_REF(on_buff_cooldown_expire), xeno), 5 MINUTES)
+
+	RegisterSignal(xeno, COMSIG_PARENT_QDELETING, PROC_REF(remove_qdel_player_from_list))
+
+/// Remove the player from the cooldown list.
+/obj/effect/alien/resin/special/pylon/endgame/proc/on_buff_cooldown_expire(mob/living/carbon/xenomorph/xeno)
+	if(QDELETED(xeno))
+		return
+
+	LAZYREMOVE(players_on_buff_cooldown, xeno)
 
 //Hive Core - Generates strong weeds, supports other buildings
 /obj/effect/alien/resin/special/pylon/core

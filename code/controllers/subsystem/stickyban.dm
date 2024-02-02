@@ -4,21 +4,17 @@ SUBSYSTEM_DEF(stickyban)
 	flags = SS_NO_FIRE
 
 /datum/controller/subsystem/stickyban/Initialize()
-	set waitfor = FALSE
-
-	WAIT_DB_READY
-
 	var/list/all_bans = world.GetConfig("ban")
+
 	for(var/existing_ban in all_bans)
-
 		var/list/ban_data = params2list(world.GetConfig("ban", existing_ban))
+		INVOKE_ASYNC(src, PROC_REF(import_sticky), existing_ban, ban_data)
 
-		if(!ban_data["database_ban"])
-			INVOKE_ASYNC(src, PROC_REF(import_sticky), existing_ban, ban_data)
-			continue
+	return SS_INIT_SUCCESS
 
-		world.SetConfig("ban", existing_ban, null)
-
+/**
+ * Returns a list of [/datum/view_record/stickyban]s, or null, if no stickybans are found. All arguments are optional, but you should pass at least one if you want any results.
+ */
 /datum/controller/subsystem/stickyban/proc/check_for_sticky_ban(ckey, address, computer_id)
 	var/list/stickyban_ids = list()
 
@@ -73,7 +69,15 @@ SUBSYSTEM_DEF(stickyban)
 
 	return stickies
 
-
+/**
+ * Associates an existing stickyban with a new match, either of a ckey, address, or computer_id. Or all three.
+ *
+ * Arguments:
+ * - existing_ban_id, int, required
+ * - ckey, string, optional
+ * - address, string, optional
+ * - computer_id, string, optional
+ */
 /datum/controller/subsystem/stickyban/proc/match_sticky(existing_ban_id, ckey, address, computer_id)
 	if(!existing_ban_id)
 		return
@@ -111,10 +115,12 @@ SUBSYSTEM_DEF(stickyban)
 		if(!length(matched_cid))
 			add_matched_cid(existing_ban_id, computer_id)
 
+/**
+ * Adds a new tracked stickyban, and returns a [/datum/entity/stickyban] if it was successful.
+ */
 /datum/controller/subsystem/stickyban/proc/add_stickyban(identifier, reason, message, datum/entity/player/banning_admin, override_date)
 	var/datum/entity/stickyban/new_sticky = DB_ENTITY(/datum/entity/stickyban)
 	new_sticky.identifier = identifier
-
 	new_sticky.reason = reason
 	new_sticky.message = message
 
@@ -127,7 +133,7 @@ SUBSYSTEM_DEF(stickyban)
 
 	return new_sticky
 
-
+/// Adds a ckey match to the specified sticky ban.
 /datum/controller/subsystem/stickyban/proc/add_matched_ckey(existing_ban_id, key)
 	if(length(DB_VIEW(/datum/view_record/stickyban_matched_ckey,
 		DB_AND(
@@ -144,6 +150,7 @@ SUBSYSTEM_DEF(stickyban)
 
 	matched_ckey.save()
 
+/// Adds an IP match to the specified stickyban.
 /datum/controller/subsystem/stickyban/proc/add_matched_ip(existing_ban_id, ip)
 	if(length(DB_VIEW(/datum/view_record/stickyban_matched_ip,
 		DB_AND(
@@ -160,6 +167,7 @@ SUBSYSTEM_DEF(stickyban)
 
 	matched_ip.save()
 
+/// Adds a CID match to the specified stickyban.
 /datum/controller/subsystem/stickyban/proc/add_matched_cid(existing_ban_id, cid)
 	if(length(DB_VIEW(/datum/view_record/stickyban_matched_cid,
 		DB_AND(
@@ -177,6 +185,7 @@ SUBSYSTEM_DEF(stickyban)
 
 	matched_cid.save()
 
+/// Whitelists a specific CKEY to the specified stickyban, which will allow connection, even with matching CIDs and IPs.
 /datum/controller/subsystem/stickyban/proc/whitelist_ckey(existing_ban_id, key)
 	key = ckey(key)
 
@@ -204,7 +213,10 @@ SUBSYSTEM_DEF(stickyban)
 
 	whitelisted_ckey.save()
 
+/// Legacy import from pager bans to database bans.
 /datum/controller/subsystem/stickyban/proc/import_sticky(identifier, list/ban_data)
+	WAIT_DB_READY
+
 	if(ban_data["type"] != "sticky")
 		handle_old_perma(identifier, ban_data)
 		return
@@ -214,21 +226,26 @@ SUBSYSTEM_DEF(stickyban)
 
 	add_stickyban(identifier, ban_data["reason"], ban_data["message"], override_date = "LEGACY")
 
+/**
+ * We abuse the on_insert from ndatabase here to ensure we have the synced ID of the new stickyban when applying a *lot* of associated bans. If we don't have a matching pager ban with the new sticky's identifier, we stop.
+ */
 /datum/entity_meta/stickyban/on_insert(datum/entity/stickyban/new_sticky)
 	var/list/ban_data = params2list(world.GetConfig("ban", new_sticky.identifier))
 
 	if(!length(ban_data))
 		return
 
+	var/list/whitelisted = list()
+	if(ban_data["whitelist"])
+		whitelisted = splittext(ban_data["whitelist"], ",")
+		for(var/key in whitelisted)
+			SSstickyban.whitelist_ckey(new_sticky.id, key)
+
 	if(ban_data["keys"])
 		var/list/keys = splittext(ban_data["keys"], ",")
+		keys -= whitelisted
 		for(var/key in keys)
 			SSstickyban.add_matched_ckey(new_sticky.id, key)
-
-	if(ban_data["whitelist"])
-		var/list/keys = splittext(ban_data["whitelist"], ",")
-		for(var/key in keys)
-			SSstickyban.whitelist_ckey(new_sticky.id, key)
 
 	if(ban_data["computer_id"])
 		var/list/cids = splittext(ban_data["computer_id"], ",")
@@ -242,7 +259,8 @@ SUBSYSTEM_DEF(stickyban)
 
 	world.SetConfig("ban", new_sticky.identifier, null)
 
-/proc/handle_old_perma(identifier, list/ban_data)
+/// Imports permabans from the old ban.txt, and does *not* ban people that have been whitelisted.
+/datum/controller/subsystem/stickyban/proc/handle_old_perma(identifier, list/ban_data)
 	var/list/keys_to_ban = list()
 
 	keys_to_ban += splittext(ban_data["keys"], ",")

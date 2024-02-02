@@ -128,6 +128,14 @@ SUBSYSTEM_DEF(stickyban)
 
 
 /datum/controller/subsystem/stickyban/proc/add_matched_ckey(existing_ban_id, key)
+	if(length(DB_VIEW(/datum/view_record/stickyban_matched_ckey,
+		DB_AND(
+			DB_COMP("linked_stickyban", DB_EQUALS, existing_ban_id),
+			DB_COMP("ckey", DB_EQUALS, key)
+		)
+	)))
+		return
+
 	var/datum/entity/stickyban_matched_ckey/matched_ckey = DB_ENTITY(/datum/entity/stickyban_matched_ckey)
 
 	matched_ckey.ckey = ckey(key)
@@ -136,6 +144,14 @@ SUBSYSTEM_DEF(stickyban)
 	matched_ckey.save()
 
 /datum/controller/subsystem/stickyban/proc/add_matched_ip(existing_ban_id, ip)
+	if(length(DB_VIEW(/datum/view_record/stickyban_matched_ip,
+		DB_AND(
+			DB_COMP("linked_stickyban", DB_EQUALS, existing_ban_id),
+			DB_COMP("ip", DB_EQUALS, ip)
+		)
+	)))
+		return
+
 	var/datum/entity/stickyban_matched_ip/matched_ip = DB_ENTITY(/datum/entity/stickyban_matched_ip)
 
 	matched_ip.ip = ip
@@ -144,6 +160,15 @@ SUBSYSTEM_DEF(stickyban)
 	matched_ip.save()
 
 /datum/controller/subsystem/stickyban/proc/add_matched_cid(existing_ban_id, cid)
+	if(length(DB_VIEW(/datum/view_record/stickyban_matched_cid,
+		DB_AND(
+			DB_COMP("linked_stickyban", DB_EQUALS, existing_ban_id),
+			DB_COMP("cid", DB_EQUALS, cid)
+		)
+	)))
+		return
+
+
 	var/datum/entity/stickyban_matched_cid/matched_cid = DB_ENTITY(/datum/entity/stickyban_matched_cid)
 
 	matched_cid.cid = cid

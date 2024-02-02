@@ -109,7 +109,7 @@ SUBSYSTEM_DEF(stickyban)
 		)
 
 		if(!length(matched_cid))
-			add_matched_ip(existing_ban_id, computer_id)
+			add_matched_cid(existing_ban_id, computer_id)
 
 /datum/controller/subsystem/stickyban/proc/add_stickyban(identifier, reason, message, datum/entity/player/banning_admin, override_date)
 	var/datum/entity/stickyban/new_sticky = DB_ENTITY(/datum/entity/stickyban)

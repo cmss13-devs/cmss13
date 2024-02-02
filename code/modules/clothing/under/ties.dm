@@ -361,7 +361,7 @@
 /obj/item/clothing/accessory/armband/nurse
 	name = "nurse armband"
 	desc = "An armband, worn by the rookie nurses to display they are still not doctors. This one is dark red."
-	icon_state = "medgreen"
+	icon_state = "nurse"
 
 //patches
 /obj/item/clothing/accessory/patch

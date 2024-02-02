@@ -93,13 +93,13 @@
 	name = "\improper blue trucker hat"
 	desc = "It's a blue trucker hat."
 	icon_state = "truckercap_bluesoft"
-	cap_color = "blue"
+	cap_color = "truckercap_blue"
 
 /obj/item/clothing/head/soft/trucker/red
 	name = "\improper red trucker hat"
 	desc = "It's a red trucker hat."
 	icon_state = "truckercap_redsoft"
-	cap_color = "red"
+	cap_color = "truckercap_red"
 
 /obj/item/clothing/head/soft/sec
 	name = "security cap"

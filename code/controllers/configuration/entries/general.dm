@@ -533,6 +533,8 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /datum/config_entry/string/round_results_webhook_url
 
+/datum/config_entry/string/important_log_channel
+
 /// InfluxDB v2 Host to connect to for sending statistics (over HTTP API)
 /datum/config_entry/string/influxdb_host
 /// InfluxDB v2 Bucket to send staistics to

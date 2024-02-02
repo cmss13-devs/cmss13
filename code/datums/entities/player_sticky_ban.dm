@@ -27,7 +27,7 @@ BSQL_PROTECT_DATUM(/datum/entity/stickyban)
 	var/message
 	var/date
 	var/active
-	var/adminid
+	var/admin
 
 /datum/entity_view_meta/stickyban
 	root_record_type = /datum/entity/stickyban
@@ -39,9 +39,14 @@ BSQL_PROTECT_DATUM(/datum/entity/stickyban)
 		"message",
 		"date",
 		"active",
-		"adminid",
+		"admin" = "stickybanning_admin.ckey"
 	)
 
+/datum/entity_link/stickyban_to_banning_admin
+	parent_entity = /datum/entity/player
+	child_entity = /datum/entity/stickyban
+	child_field = "adminid"
+	parent_name = "stickybanning_admin"
 
 /datum/entity/stickyban_matched_ckey
 	var/ckey

@@ -186,7 +186,7 @@ GLOBAL_DATUM(Banlist, /savefile)
 		else
 			unban_link = "<A href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];unbanf=[ban.ckey]'>(UT)</A>"
 
-		dat += "<tr><td>[unban_link] Key: <B>[ban.ckey]</B></td><td>ComputerID: <B>[ban.last_known_cid]</B></td><td>IP: <B>[ban.last_known_ip]</B></td><td> [expiry]</td><td>(By: [ban.admin])</td><td>(Reason: [ban.reason])</td></tr>"
+		dat += "<tr><td>[unban_link] Key: <B>[ban.ckey]</B></td><td>ComputerID: <B>[ban.last_known_cid]</B></td><td>IP: <B>[ban.last_known_ip]</B></td><td> [expiry]</td><td>(By: [ban.admin ? ban.admin : "AdminBot"])</td><td>(Reason: [ban.reason])</td></tr>"
 
 	dat += "</table>"
 	var/dat_header = "<HR><B>Bans:</B> <span class='[INTERFACE_BLUE]'>(UP) = Unban Perma (UT) = Unban Timed"

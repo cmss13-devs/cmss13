@@ -253,10 +253,14 @@
 			)
 
 			var/list/keys = list()
+			var/list/whitelisted = list()
 			for(var/datum/view_record/stickyban_matched_ckey/match as anything in all_ckeys)
-				keys += match.ckey
+				if(match.whitelisted)
+					whitelisted += match.ckey
+				else
+					keys += match.ckey
 
-			show_browser(owner, english_list(keys), "Stickyban Keys", "stickykeys")
+			show_browser(owner, "Impacted: [english_list(keys)]<br><br>Whitelisted: [english_list(whitelisted)]", "Stickyban Keys", "stickykeys")
 			return
 
 		if(href_list["view_all_cids"])

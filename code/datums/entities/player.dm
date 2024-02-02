@@ -310,9 +310,10 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	permaban_date = "[time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")]"
 	permaban_reason = reason
 
-	log_and_message_admins("[key_name_admin(banner.owning_client)] has permanently banned [ckey] for [reason].")
-
-	add_note("Permanently banned | [reason].", FALSE, NOTE_ADMIN, TRUE)
+	if(banner)
+		permaban_admin_id = banner.id
+		log_and_message_admins("[key_name_admin(banner.owning_client)] has permanently banned [ckey] for [reason].")
+		add_note("Permanently banned | [reason].", FALSE, NOTE_ADMIN, TRUE)
 
 	if(owning_client)
 		to_chat_forced(owning_client, SPAN_LARGE("<big><b>You have been permanently banned by [banner.ckey].\nReason: [reason].</b></big>"))
@@ -463,7 +464,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	record_login_triplet(player.ckey, address, computer_id)
 	player_data.sync()
 
-/datum/entity/player/proc/check_ban(computer_id, address)
+/datum/entity/player/proc/check_ban(computer_id, address, match_sticky)
 	. = list()
 
 	var/list/datum/view_record/stickyban/all_stickies = SSstickyban.check_for_sticky_ban(ckey, address, computer_id)
@@ -480,7 +481,8 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		.["desc"] = "\nReason: Stickybanned - [sticky.message]\n[appeal]"
 		.["reason"] = "ckey/id"
 
-		SSstickyban.match_sticky(sticky.id, ckey, address, computer_id)
+		if(match_sticky)
+			SSstickyban.match_sticky(sticky.id, ckey, address, computer_id)
 		return
 
 
@@ -681,7 +683,6 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	parent_entity = /datum/entity/player
 	child_entity = /datum/entity/player
 	child_field = "permaban_admin_id"
-
 	parent_name = "permabanning_admin"
 
 /datum/view_record/players

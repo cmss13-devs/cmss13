@@ -83,40 +83,16 @@ SUBSYSTEM_DEF(stickyban)
 		return
 
 	if(ckey)
-		var/datum/view_record/stickyban_matched_ckey/matched_ckey = DB_VIEW(/datum/view_record/stickyban_matched_ckey,
-			DB_AND(
-				DB_COMP("linked_stickyban", DB_EQUALS, existing_ban_id),
-				DB_COMP("ckey", DB_EQUALS, ckey)
-			)
-		)
-
-		if(!length(matched_ckey))
-			add_matched_ckey(existing_ban_id, ckey)
+		add_matched_ckey(existing_ban_id, ckey)
 
 	if(address)
-		var/datum/view_record/stickyban_matched_ip/matched_ip = DB_VIEW(/datum/view_record/stickyban_matched_ip,
-			DB_AND(
-				DB_COMP("linked_stickyban", DB_EQUALS, existing_ban_id),
-				DB_COMP("ip", DB_EQUALS, address)
-			)
-		)
-
-		if(!length(matched_ip))
-			add_matched_ip(existing_ban_id, address)
+		add_matched_ip(existing_ban_id, address)
 
 	if(computer_id)
-		var/datum/view_record/stickyban_matched_cid/matched_cid = DB_VIEW(/datum/view_record/stickyban_matched_cid,
-			DB_AND(
-				DB_COMP("linked_stickyban", DB_EQUALS, existing_ban_id),
-				DB_COMP("cid", DB_EQUALS, computer_id)
-			)
-		)
-
-		if(!length(matched_cid))
-			add_matched_cid(existing_ban_id, computer_id)
+		add_matched_cid(existing_ban_id, computer_id)
 
 /**
- * Adds a new tracked stickyban, and returns a [/datum/entity/stickyban] if it was successful.
+ * Adds a new tracked stickyban, and returns a [/datum/entity/stickyban] if it was successful. Blocking, sleeps.
  */
 /datum/controller/subsystem/stickyban/proc/add_stickyban(identifier, reason, message, datum/entity/player/banning_admin, override_date)
 	var/datum/entity/stickyban/new_sticky = DB_ENTITY(/datum/entity/stickyban)

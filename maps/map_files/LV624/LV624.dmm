@@ -5167,12 +5167,6 @@
 	icon_state = "vault"
 	},
 /area/lv624/lazarus/robotics)
-"azb" = (
-/obj/structure/prop/mech/mech_parts/part/gygax_torso,
-/turf/open/floor{
-	icon_state = "vault"
-	},
-/area/lv624/lazarus/robotics)
 "azc" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
@@ -5512,13 +5506,6 @@
 "aAj" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor{
-	icon_state = "vault"
-	},
-/area/lv624/lazarus/robotics)
-"aAk" = (
-/obj/structure/prop/mech/mech_parts/chassis/gygax,
-/turf/open/floor{
-	dir = 8;
 	icon_state = "vault"
 	},
 /area/lv624/lazarus/robotics)
@@ -6030,15 +6017,6 @@
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
-"aBR" = (
-/obj/structure/largecrate,
-/obj/structure/prop/mech/mech_parts/part/gygax_armor{
-	layer = 1
-	},
-/turf/open/floor/plating{
-	icon_state = "platebot"
-	},
-/area/lv624/lazarus/robotics)
 "aBS" = (
 /obj/structure/barricade/wooden{
 	dir = 8
@@ -12612,6 +12590,13 @@
 "bvj" = (
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/east_caves)
+"bvq" = (
+/obj/structure/prop/mech/parts/chassis/gygax,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "vault"
+	},
+/area/lv624/lazarus/robotics)
 "bvS" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -14167,6 +14152,12 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/south_medbay_road)
+"eot" = (
+/obj/structure/prop/mech/parts/gygax_torso,
+/turf/open/floor{
+	icon_state = "vault"
+	},
+/area/lv624/lazarus/robotics)
 "eoM" = (
 /turf/open/floor{
 	dir = 4;
@@ -16665,6 +16656,15 @@
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
+"jIr" = (
+/obj/structure/largecrate,
+/obj/structure/prop/mech/parts/gygax_armor{
+	layer = 1
+	},
+/turf/open/floor/plating{
+	icon_state = "platebot"
+	},
+/area/lv624/lazarus/robotics)
 "jJg" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -19559,6 +19559,18 @@
 "paJ" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
+/area/lv624/lazarus/corporate_dome)
+"paQ" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/fancy/cigarettes/wypacket{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/obj/item/clothing/under/liaison_suit/blue,
+/turf/open/floor{
+	dir = 6;
+	icon_state = "whiteyellow"
+	},
 /area/lv624/lazarus/corporate_dome)
 "pba" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
@@ -23463,18 +23475,6 @@
 /obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_west_caves)
-"wtK" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/fancy/cigarettes/wypacket{
-	pixel_x = 5;
-	pixel_y = 6
-	},
-/obj/item/clothing/under/liaison_suit/suspenders,
-/turf/open/floor{
-	dir = 6;
-	icon_state = "whiteyellow"
-	},
-/area/lv624/lazarus/corporate_dome)
 "wvO" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
 /turf/open/gm/grass/grass1,
@@ -35735,7 +35735,7 @@ axi
 axj
 avH
 aBp
-aBR
+jIr
 aCk
 ado
 aXX
@@ -36872,7 +36872,7 @@ aym
 axi
 aza
 azG
-aAk
+bvq
 axi
 aBr
 axi
@@ -37098,7 +37098,7 @@ axj
 axj
 axj
 ayG
-azb
+eot
 axi
 axj
 axj
@@ -38950,7 +38950,7 @@ gnx
 gnx
 fzg
 pyG
-wtK
+paQ
 wJA
 wMk
 wMk

@@ -182,7 +182,7 @@ SUBSYSTEM_DEF(minimaps)
  * the raw lists are to speed up the Fire() of the subsystem so we dont have to filter through
  * WARNING!
  * There is a byond bug: http://www.byond.com/forum/post/2661309
- * That that forces us to use a seperate list ref when accessing the lists of this datum
+ * That that forces us to use a separate list ref when accessing the lists of this datum
  * Yea it hurts me too
  */
 /datum/hud_displays

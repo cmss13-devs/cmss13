@@ -1,6 +1,6 @@
 /datum/xeno_mutator/gardener
 	name = "STRAIN: Drone - Gardener"
-	description = "You trade your choice of resin secretions, your corrosive acid, and your ability to transfer plasma for a tiny bit of extra health regeneration on weeds and several new abilities, including the ability to plant hardier weeds, temporarily reinforce structures with your plasma, and to plant up to six potent resin fruits for your sisters by secreting your vital fluids at the cost of a bit of your health for each fruit you shape."
+	description = "You trade your choice of resin secretions, your corrosive acid, and your ability to transfer plasma for a tiny bit of extra health regeneration on weeds and several new abilities, including the ability to plant hardier weeds, temporarily reinforce structures with your plasma, and to plant up to six potent resin fruits for your sisters by secreting your vital fluids at the cost of a bit of your health for each fruit you shape. You can use Resin Surge to speed up the growth of your fruits."
 	flavor_description = "The glory of gardening: hands in the weeds, head in the dark, heart with resin."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
@@ -16,6 +16,7 @@
 		/datum/action/xeno_action/activable/resin_surge, // third macro
 		/datum/action/xeno_action/onclick/plant_resin_fruit/greater, // fourth macro
 		/datum/action/xeno_action/onclick/change_fruit,
+		/datum/action/xeno_action/activable/transfer_plasma,
 	)
 	keystone = TRUE
 	behavior_delegate_type = /datum/behavior_delegate/drone_gardener
@@ -92,7 +93,7 @@
 		to_chat(xeno, SPAN_XENOWARNING("This location is too close to a resin hole!"))
 		return
 
-	if(locate(/obj/effect/alien/resin/fruit) in range(1, target_turf))
+	if(locate(/obj/effect/alien/resin/fruit) in target_turf)
 		to_chat(xeno, SPAN_XENOWARNING("This location is too close to another fruit!"))
 		return
 

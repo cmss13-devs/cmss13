@@ -90,19 +90,19 @@
 	xeno_announcement("Our pylon at [sustained_pylon.loc] has been destroyed!! Our hive buff [name] has waned...", hive.hivenumber, "Hive Buff Wanes!")
 
 ///Wrapper for on_engage(), handles checking if the buff can be actually purchased as well as adding buff to the active_hivebuffs and used_hivebuffs for the hive.
-/datum/hivebuff/proc/_on_engage(mob/living/purchasing_mob, obj/effect/alien/resin/special/pylon/endgame/purchased_pylon)
+/datum/hivebuff/proc/_on_engage(mob/living/carbon/xenomorph/purchasing_mob, obj/effect/alien/resin/special/pylon/endgame/purchased_pylon)
 
 	if(!check_can_afford_buff())
 		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive cannot afford [name]! [hive.buff_points] / [cost] points."))
-		return
+		return FALSE
 
 	if(!check_pass_active())
 		to_chat(purchasing_mob, SPAN_XENONOTICE("[name] is already active in our hive!"))
-		return
+		return FALSE
 
 	if(!check_pass_reusable())
 		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive has already used [name] and cannot use it again!"))
-		return
+		return FALSE
 
 	if(!check_pass_unique())
 		var/active_buffs = ""
@@ -110,13 +110,17 @@
 			active_buffs += buff + " "
 		active_buffs = trim_right(active_buffs)
 		to_chat(purchasing_mob, SPAN_XENONOTICE("[name] cannot be used with other active buffs! Wait for those to end first. Active buffs: [active_buffs]"))
-		return
+		return FALSE
 
 	log_admin("[purchasing_mob] of [hive.hivenumber] is attempting to purchase a hive buff: [name].")
 
 	if(!seek_queen_approval(purchasing_mob))
 		to_chat(purchasing_mob, SPAN_XENONOTICE("Our queen has not approved the purchase of [name]."))
-		return
+		return FALSE
+
+	// seek_queen_approval() includes a 20 second timeout so we check that everything still exists that we need.
+	if(QDELETED(purchased_pylon) || QDELETED(purchasing_mob) && !purchasing_mob.check_state())
+		return FALSE
 
 	// Actually process the buff and apply effects - If the buff succeeds engage_message will return TRUE otherwise it will return a string which will get passed to the purchaser and the queen.
 	if(!on_engage())
@@ -134,13 +138,19 @@
 	purchase_and_deduct()
 	log_admin("[purchasing_mob] and [hive.living_xeno_queen] of [hive.hivenumber] have purchased a hive buff: [name].")
 
+	// Add to the relevant hive lists.
 	LAZYADD(hive.used_hivebuffs, name)
 	LAZYADDASSOC(hive.active_hivebuffs, name, src)
 	sustained_pylon = purchased_pylon
+
+	// Register signal to check if the pylon is ever destroyed.
 	RegisterSignal(sustained_pylon, COMSIG_PARENT_QDELETING, PROC_REF(on_pylon_deletion))
 
+	// Announce to our hive that we've completed.
 	announce_buff_engage()
 
+	// If we need a timer to call _on_cease() we add it here and store the id, used for deleting the timer if we Destroy().
+	// If we have no duration to the buff then we call _on_cease() immediately.
 	if(duration)
 		_timer_id = addtimer(CALLBACK(src, PROC_REF(_on_cease)), duration, TIMER_STOPPABLE)
 	else
@@ -281,6 +291,9 @@
 	is_reusable = FALSE
 
 /datum/hivebuff/game_ender_caste/on_engage()
+
+	/// CODE FOR SPAWNING OF THE DESTROYER HERE.
+	return
 
 
 

@@ -1376,6 +1376,15 @@
 	if(!length(personal_allies))
 		return
 	clear_personal_allies(TRUE)
+/// Hive buffs
+
+/datum/hive_status/proc/attempt_apply_hivebuff(datum/hivebuff/hivebuff, mob/living/purchasing_player, obj/effect/alien/resin/special/pylon/endgame/purchased_pylon)
+	var/datum/hivebuff/new_buff = new hivebuff(src)
+	if(!new_buff._on_engage(purchasing_player, purchased_pylon))
+		qdel(new_buff)
+		return FALSE
+	return TRUE
+
 
 //Xeno Resin Mark Shit, the very best place for it too :0)
 //Defines at the bottom of this list here will show up at the top in the mark menu
@@ -1438,24 +1447,3 @@
 	desc = "Attack the enemy here!"
 	icon_state = "attack"
 
-/// Hive buffs
-
-/mob/living/carbon/xenomorph/proc/choose_hivebuff()
-	var/list/buffs = list()
-	var/list/names = list()
-	for(var/datum/hivebuff/buff as anything in typesof(/datum/hivebuff))
-		var/buffname = initial(buff.name)
-		names += buffname
-		buffs[buffname] = buff
-
-	var/input = tgui_input_list(src, "Pick a buff.", "Select Buff",names)
-	if(!buffs[input])
-		to_chat(world, "Invalid selection.")
-		return
-
-	src.hive.attempt_apply_hivebuff(buffs[input])
-
-/datum/hive_status/proc/attempt_apply_hivebuff(datum/hivebuff/hivebuff, mob/living/purchasing_player, obj/effect/alien/resin/special/pylon/endgame/purchased_pylon)
-	var/datum/hivebuff/new_buff = new hivebuff(src)
-	if(!new_buff._on_engage(purchasing_player, purchased_pylon))
-		return FALSE

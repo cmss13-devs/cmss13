@@ -215,12 +215,17 @@
 /obj/effect/alien/resin/special/pylon/endgame/attack_alien(mob/living/carbon/xenomorph/xeno)
 	choose_hivebuff(xeno)
 	return
-	/*if(!damaged && health == maxhealth && xeno.a_intent == INTENT_HELP && xeno.hivenumber == linked_hive.hivenumber && IS_XENO_LEADER(xeno))
-		choose_hivebuff(xeno)
-		return
+
+	if(!damaged && health == maxhealth && xeno.a_intent == INTENT_HELP && xeno.hivenumber == linked_hive.hivenumber && IS_XENO_LEADER(xeno))
+		if(!LAZYISIN(players_on_buff_cooldown, xeno))
+			choose_hivebuff(xeno)
+			return
+		else
+			to_chat(xeno, SPAN_XENONOTICE("We cannot choose a hive buff just yet. Try again later."))
+			return ..()
 	else
 		..()
-	*/
+
 /// To choose a hivebuff
 /obj/effect/alien/resin/special/pylon/endgame/proc/choose_hivebuff(mob/living/carbon/xenomorph/xeno)
 	var/list/buffs = list()
@@ -230,18 +235,20 @@
 		names += buffname
 		buffs[buffname] = buff
 
+	// BIRDTALON: REPLACE THIS WITH A RADIAL MENU
 	var/input = tgui_input_list(xeno, "Pick a buff.", "Select Buff", names)
 	if(!buffs[input])
 		to_chat(world, "Invalid selection.")
 		return
 
-	linked_hive.attempt_apply_hivebuff(buffs[input], xeno, src)
-	apply_player_buff_cooldown(xeno)
+	if(!linked_hive.attempt_apply_hivebuff(buffs[input], xeno, src))
+		apply_player_buff_cooldown(xeno, 3 MINUTE)
+		return
 
 /// Apply cooldown to the player attempting to purchase a buff.
-/obj/effect/alien/resin/special/pylon/endgame/proc/apply_player_buff_cooldown(mob/living/carbon/xenomorph/xeno)
+/obj/effect/alien/resin/special/pylon/endgame/proc/apply_player_buff_cooldown(mob/living/carbon/xenomorph/xeno, time)
 	LAZYADD(players_on_buff_cooldown, xeno)
-	addtimer(CALLBACK(src, PROC_REF(on_buff_cooldown_expire), xeno), 5 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(on_buff_cooldown_expire), xeno), time)
 
 	RegisterSignal(xeno, COMSIG_PARENT_QDELETING, PROC_REF(remove_qdel_player_from_list))
 

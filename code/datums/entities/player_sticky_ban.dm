@@ -39,7 +39,7 @@ BSQL_PROTECT_DATUM(/datum/entity/stickyban)
 		"message",
 		"date",
 		"active",
-		"admin" = "stickybanning_admin.ckey"
+		"admin" = DB_CASE(DB_COMP("adminid", DB_ISNOT), "stickybanning_admin.ckey", DB_CONST("AdminBot"))
 	)
 
 /datum/entity_link/stickyban_to_banning_admin

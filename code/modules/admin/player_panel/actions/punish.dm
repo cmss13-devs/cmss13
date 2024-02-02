@@ -70,15 +70,20 @@
 	permissions_required = R_BAN
 
 /datum/player_action/sticky_ban/act(client/user, mob/target, list/params)
-	var/persistent_ip = target.client?.address
-	var/persistent_cid = target.client?.computer_id
+	var/datum/entity/player/player = get_player_from_key(target.ckey || target.persistent_ckey)
 
-	if(!persistent_cid || !persistent_ip)
-		var/datum/entity/player/player = get_player_from_key(target.ckey || target.persistent_ckey)
-		persistent_cid = player.last_known_cid
-		persistent_ip = player.last_known_ip
+	var/persistent_ip = target.client?.address || player.last_known_cid
+	var/persistent_cid = target.client?.computer_id || player.last_known_ip
 
-	user.cmd_admin_do_stickyban(target.ckey, impacted_ckeys = list(target.ckey), impacted_cids = list(persistent_cid), impacted_ips = list(persistent_ip))
+	var/reason = tgui_input_text("What message should be given to the impacted users?", "BuildABan")
+	if(!reason)
+		return
+
+	user.cmd_admin_do_stickyban(target.ckey, reason, impacted_ckeys = list(target.ckey), impacted_cids = list(persistent_cid), impacted_ips = list(persistent_ip))
+	player.add_note("Stickybanned | [reason]")
+
+	if(target.client)
+		qdel(target.client)
 
 /datum/player_action/mute
 	action_tag = "mob_mute"

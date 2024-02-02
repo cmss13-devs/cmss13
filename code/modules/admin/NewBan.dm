@@ -211,7 +211,7 @@ GLOBAL_DATUM(Banlist, /savefile)
 		var/impacted_ip_link = "<a href='?src=\ref[src];[HrefToken()];sticky=[current_sticky.id];view_all_ips=1'>IPs</a>"
 		var/impacted_cid_link = "<a href='?src=\ref[src];[HrefToken()];sticky=[current_sticky.id];view_all_cids=1'>CIDs</a>"
 
-		data += "<tr><td>[whitelist_link][remove_sticky_link][add_to_sticky_link]</td><td>Identifier: [current_sticky.identifier]</td><td>Reason: [current_sticky.reason]</td><td>Message: [current_sticky.message]</td> <td>View: [impacted_ckey_link][impacted_ip_link][impacted_cid_link]</td></tr>"
+		data += "<tr><td>[whitelist_link][remove_sticky_link][add_to_sticky_link]</td><td>Identifier: [current_sticky.identifier]</td><td>Reason: [current_sticky.reason]</td><td>Message: [current_sticky.message]</td> <td>Admin: [current_sticky.admin]</td> <td>View: [impacted_ckey_link][impacted_ip_link][impacted_cid_link]</td></tr>"
 
 	data += "</table>"
 
@@ -324,6 +324,4 @@ GLOBAL_DATUM(Banlist, /savefile)
 		SSstickyban.add_matched_ip(new_sticky.id, ip)
 
 	log_admin("STICKYBAN: Identifier: [identifier] Reason: [reason] Message: [message] CKEYs: [english_list(impacted_ckeys)] IPs: [english_list(impacted_ips)] CIDs: [english_list(impacted_cids)]")
-
-
 	log_and_message_admins("[key_name_admin(src)] has added a new stickyban with the identifier '[identifier]'.")

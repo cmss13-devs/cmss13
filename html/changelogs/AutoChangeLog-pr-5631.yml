@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - ui: "Refactored backend for Weapon Stats panel to use spritesheets instead."

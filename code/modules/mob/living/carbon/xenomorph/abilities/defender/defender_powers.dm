@@ -174,13 +174,13 @@
 	playsound(get_turf(xeno), 'sound/effects/stonedoor_openclose.ogg', 30, 1)
 
 	if(!xeno.fortify)
-		RegisterSignal(owner, COMSIG_ENTER_CRIT, PROC_REF(unconscious_check))
+		RegisterSignal(owner, COMSIG_XENO_ENTER_CRIT, PROC_REF(unconscious_check))
 		RegisterSignal(owner, COMSIG_MOB_DEATH, PROC_REF(unconscious_check))
 		fortify_switch(xeno, TRUE)
 		if(xeno.selected_ability != src)
 			button.icon_state = "template_active"
 	else
-		UnregisterSignal(owner, COMSIG_ENTER_CRIT)
+		UnregisterSignal(owner, COMSIG_XENO_ENTER_CRIT)
 		UnregisterSignal(owner, COMSIG_MOB_DEATH)
 		fortify_switch(xeno, FALSE)
 		if(xeno.selected_ability != src)
@@ -257,7 +257,7 @@
 	if(QDELETED(owner))
 		return
 
-	UnregisterSignal(owner, COMSIG_ENTER_CRIT)
+	UnregisterSignal(owner, COMSIG_XENO_ENTER_CRIT)
 	UnregisterSignal(owner, COMSIG_MOB_DEATH)
 	fortify_switch(owner, FALSE)
 

@@ -73,4 +73,4 @@
 #define COMSIG_XENO_TAKE_HUGGER_FROM_MORPHER "xeno_take_hugger_from_morpher"
 
 /// From /mob/living/carbon/xenomorph/proc/handle_crit()
-#define COMSIG_ENTER_CRIT "xeno_entering_critical"
+#define COMSIG_XENO_ENTER_CRIT "xeno_entering_critical"

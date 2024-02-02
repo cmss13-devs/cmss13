@@ -190,7 +190,6 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 				"missing" = (limb.status & LIMB_DESTROYED),
 				"limb_status" = null,
 				"bleeding" = bleeding_check,
-				"open_incision" = limb.get_incision_depth(),
 				"implant" = implant,
 				"internal_bleeding" = internal_bleeding_check
 			)
@@ -247,6 +246,24 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 				limb_type = "Synthskin"
 			if(limb_type)
 				current_list["limb_type"] = limb_type
+
+			//checking for open incisions, but since eyes and mouths incisions are "head incisions" but not "head surgeries" gotta do some snowflake
+			if(limb.name == "head")
+				if(human_target_mob.active_surgeries["head"])
+					current_list["open_incision"] = TRUE
+
+				var/zone
+				if(human_target_mob.active_surgeries["eyes"])
+					zone = "eyes"
+				if(human_target_mob.active_surgeries["mouth"])
+					if(zone)
+						zone = "eyes and mouth"
+					else
+						zone = "mouth"
+				current_list["open_zone_incision"] = capitalize(zone)
+
+			else
+				current_list["open_incision"] = limb.get_incision_depth()
 
 			limb_data_lists["[limb.name]"] = current_list
 

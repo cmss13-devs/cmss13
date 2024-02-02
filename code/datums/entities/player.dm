@@ -313,7 +313,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(banner)
 		permaban_admin_id = banner.id
 		important_log_and_message_admins("[key_name_admin(banner.owning_client)] has permanently banned [ckey] for [reason].")
-		add_note("Permanently banned | [reason].", FALSE, NOTE_ADMIN, TRUE)
+		add_note("Permanently banned | [reason]", FALSE, NOTE_ADMIN, TRUE)
 
 	if(owning_client)
 		to_chat_forced(owning_client, SPAN_LARGE("<big><b>You have been permanently banned by [banner.ckey].\nReason: [reason].</b></big>"))
@@ -493,10 +493,13 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(CONFIG_GET(string/banappeals))
 		appeal = "\nFor more information on your ban, or to appeal, head to <a href='[CONFIG_GET(string/banappeals)]'>[CONFIG_GET(string/banappeals)]</a>"
 	if(is_permabanned)
-		permaban_admin.sync()
+		var/banner = "Host"
+		if(permaban_admin_id)
+			var/datum/view_record/players/banning_admin = locate() in DB_VIEW(/datum/view_record/players, DB_COMP("id", DB_EQUALS, permaban_admin_id))
+			banner = banning_admin.ckey
 		log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Banned [permaban_reason]")
 		message_admins("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [permaban_reason]")
-		.["desc"] = "\nReason: [permaban_reason]\nExpires: <B>PERMANENT</B>\nBy: [permaban_admin.ckey][appeal]"
+		.["desc"] = "\nReason: [permaban_reason]\nExpires: <B>PERMANENT</B>\nBy: [banner][appeal]"
 		.["reason"] = "ckey/id"
 		return .
 	if(is_time_banned)

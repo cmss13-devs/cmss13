@@ -506,6 +506,7 @@
 			to_chat(user, SPAN_WARNING("Initiating gas release from [sec_vent.vent_tag]."))
 			playsound(src, 'sound/machines/chime.ogg', 15, 1)
 			COOLDOWN_START(sec_vent, vent_trigger_cooldown, COOLDOWN_ARES_VENT)
+			ares_apollo_talk("Nerve Gas release imminent from [sec_vent.vent_tag].")
 			log_ares_security("Nerve Gas Release", "[last_login] released Nerve Gas from Vent '[sec_vent.vent_tag]'.")
 			sec_vent.create_gas(VENT_GAS_CN20_XENO, 6, 5 SECONDS)
 			log_admin("[key_name(user)] released nerve gas from Vent '[sec_vent.vent_tag]' via ARES.")

@@ -1,7 +1,7 @@
 /datum/hud/human
 	var/list/gear = list()
 
-/datum/hud/human/New(mob/living/carbon/human/owner, datum/custom_hud/hud_type, ui_color = "#ffffff", ui_alpha = 255)
+/datum/hud/human/New(mob/living/carbon/human/owner, datum/custom_hud/hud_type, ui_color = COLOR_WHITE, ui_alpha = 255)
 	..()
 	ui_datum = hud_type
 	if(!istype(ui_datum))

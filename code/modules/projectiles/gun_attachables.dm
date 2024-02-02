@@ -2105,6 +2105,43 @@ Defined in conflicts.dm of the #defines folder.
 	flags_attach_features = NO_FLAGS
 	hud_offset_mod = 2
 
+/obj/item/attachable/stock/xm51
+	name = "\improper XM51 stock"
+	desc = "A specialized stock designed for XM51 breaching shotguns. Helps the user absorb the recoil of the weapon while also reducing scatter. Integrated mechanisms inside the stock allow use of a devastating two-shot burst. This comes at a cost of the gun becoming too unwieldy to holster, worse handling and mobility."
+	icon_state = "xm51_stock"
+	attach_icon = "xm51_stock_a"
+	wield_delay_mod = WIELD_DELAY_FAST
+	hud_offset_mod = 3
+	melee_mod = 10
+
+/obj/item/attachable/stock/xm51/Initialize(mapload, ...)
+	. = ..()
+	select_gamemode_skin(type)
+	//it makes stuff much better when two-handed
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
+	recoil_mod = -RECOIL_AMOUNT_TIER_4
+	scatter_mod = -SCATTER_AMOUNT_TIER_8
+	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_4
+	//and allows for burst-fire
+	burst_mod = BURST_AMOUNT_TIER_2
+	//but it makes stuff much worse when one handed
+	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_5
+	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_5
+	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_6
+	//and makes you slower
+	aim_speed_mod = CONFIG_GET(number/slowdown_med)
+
+/obj/item/attachable/stock/xm51/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	var/new_attach_icon
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("snow")
+			attach_icon = new_attach_icon ? new_attach_icon : "s_" + attach_icon
+		if("desert")
+			attach_icon = new_attach_icon ? new_attach_icon : "d_" + attach_icon
+		if("classic")
+			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
+
 /obj/item/attachable/stock/mod88
 	name = "\improper Mod 88 burst stock"
 	desc = "Increases the fire rate and burst amount on the Mod 88. Some versions act as a holster for the weapon when un-attached. This is a test item and should not be used in normal gameplay (yet)."

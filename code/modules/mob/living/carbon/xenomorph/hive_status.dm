@@ -135,9 +135,11 @@
 
 
 	/// Hive buffs
+	var/buff_points = HIVE_STARTING_BUFFPOINTS
+
 	///List of hive buffs used by the hive
-	var/list/active_hivebuffs = list()
-	var/list/used_hivebuffs = list()
+	var/list/active_hivebuffs
+	var/list/used_hivebuffs
 
 	/*Stores the image()'s for the xeno evolution radial menu
 	To add an image for your caste - add an icon to icons/mob/xenos/radial_xenos.dmi
@@ -156,6 +158,9 @@
 		internal_faction = name
 	for(var/number in 1 to 999)
 		available_nicknumbers += number
+	LAZYINITLIST(active_hivebuffs)
+	LAZYINITLIST(used_hivebuffs)
+
 	if(hivenumber != XENO_HIVE_NORMAL)
 		return
 
@@ -1448,9 +1453,9 @@
 		to_chat(world, "Invalid selection.")
 		return
 
-	src.hive.apply_hivebuff(buffs[input])
+	src.hive.attempt_apply_hivebuff(buffs[input])
 
-/datum/hive_status/proc/apply_hivebuff(datum/hivebuff/hivebuff)
+/datum/hive_status/proc/attempt_apply_hivebuff(datum/hivebuff/hivebuff, mob/living/purchasing_player, obj/effect/alien/resin/special/pylon/endgame/purchased_pylon)
 	var/datum/hivebuff/new_buff = new hivebuff(src)
-	if(!new_buff._on_engage())
+	if(!new_buff._on_engage(purchasing_player, purchased_pylon))
 		return FALSE

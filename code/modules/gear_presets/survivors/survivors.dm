@@ -452,3 +452,30 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	add_random_cl_survivor_loot(new_human)
 
 	..()
+
+// ----- USCM Survivor
+
+// Used for Solaris Ridge.
+/datum/equipment_preset/survivor/uscm
+	name = "Survivor - USCM Remnant"
+	assignment = "USCM Survivor"
+	skills = /datum/skills/civilian/survivor/marshal
+	idtype = /obj/item/card/id/dogtag
+	paygrade = PAY_SHORT_ME2
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	access = list(ACCESS_CIVILIAN_PUBLIC)
+
+/datum/equipment_preset/survivor/uscm/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		add_ice_colony_survivor_equipment(new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/ranks/marine/e2(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/flare(new_human), WEAR_R_STORE)
+	add_survivor_weapon_security(new_human)
+	..()
+

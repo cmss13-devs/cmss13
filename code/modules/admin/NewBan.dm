@@ -283,12 +283,18 @@ GLOBAL_DATUM(Banlist, /savefile)
 /client/proc/cmd_admin_do_stickyban(identifier, reason, message, list/impacted_ckeys, list/impacted_cids, list/impacted_ips)
 	if(!identifier)
 		identifier = tgui_input_text(src, "Name of the primary CKEY you are adding a stickyban to.", "BuildABan")
+	if(!identifier)
+		return
 
 	if(!reason)
 		reason = tgui_input_text(src, "What's the reason for the ban? This is shown internally, and not displayed in notes and ban messages.", "BuildABan")
+	if(!reason)
+		return
 
 	if(!message)
 		message = tgui_input_text(src, "What message should be given to the impacted users?", "BuildABan")
+	if(!message)
+		return
 
 	var/datum/entity/stickyban/new_sticky = SSstickyban.add_stickyban(identifier, reason, message, player_data)
 

@@ -123,6 +123,7 @@ SUBSYSTEM_DEF(stickyban)
 
 	new_sticky.date = override_date ? override_date : "[time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")]"
 	new_sticky.save()
+	new_sticky.sync()
 
 	return new_sticky
 

@@ -74,7 +74,7 @@
 	var/persistent_cid = target.client?.computer_id
 
 	if(!persistent_cid || !persistent_ip)
-		var/datum/entity/player/player = get_player_from_key(target.persistent_ckey)
+		var/datum/entity/player/player = get_player_from_key(target.ckey || target.persistent_ckey)
 		persistent_cid = player.last_known_cid
 		persistent_ip = player.last_known_ip
 

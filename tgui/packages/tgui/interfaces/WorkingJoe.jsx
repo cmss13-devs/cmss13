@@ -220,24 +220,26 @@ const MainMenu = (props) => {
           </Stack>
         )}
       </Section>
-      <Section>
-        <h1 align="center">Core Security Protocols</h1>
-        <Stack>
-          <Stack.Item grow>
-            <Button
-              content="Nerve Gas Control"
-              tooltip="Release stored CN20-X nerve gas from security vents."
-              icon="wind"
-              color="red"
-              ml="auto"
-              px="2rem"
-              width="33vw"
-              bold
-              onClick={() => act('page_core_gas')}
-            />
-          </Stack.Item>
-        </Stack>
-      </Section>
+      {access_level >= 5 && (
+        <Section>
+          <h1 align="center">Core Security Protocols</h1>
+          <Stack>
+            <Stack.Item grow>
+              <Button
+                content="Nerve Gas Control"
+                tooltip="Release stored CN20-X nerve gas from security vents."
+                icon="wind"
+                color="red"
+                ml="auto"
+                px="2rem"
+                width="33vw"
+                bold
+                onClick={() => act('page_core_gas')}
+              />
+            </Stack.Item>
+          </Stack>
+        </Section>
+      )}
     </>
   );
 };

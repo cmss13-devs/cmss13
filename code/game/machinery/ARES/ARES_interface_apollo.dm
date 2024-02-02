@@ -127,6 +127,25 @@
 			requesting_access += access_ticket.ticket_name
 	data["access_tickets"] = logged_access
 
+	var/list/security_vents = list()
+	for(var/obj/structure/pipes/vents/pump/no_boom/gas/vent as anything in link.linked_vents)
+		if(!istype(vent))
+			continue
+		if(!vent.vent_tag)
+			vent.vent_tag = "Security Vent #[link.tag_num]"
+			link.tag_num++
+
+		var/list/current_vent = list()
+		var/is_available = TRUE
+		if(!COOLDOWN_FINISHED(vent, vent_trigger_cooldown))
+			is_available = FALSE
+		current_vent["vent_tag"] = vent.vent_tag
+		current_vent["ref"] = "\ref[vent]"
+		current_vent["available"] = is_available
+		security_vents += list(current_vent)
+
+	data["security_vents"] = security_vents
+
 	return data
 
 /obj/structure/machinery/computer/working_joe/ui_status(mob/user, datum/ui_state/state)

@@ -12,6 +12,7 @@ const PAGES = {
   'access_requests': () => AccessRequests,
   'access_tickets': () => AccessTickets,
   'id_access': () => AccessID,
+  'core_security_gas': () => CoreSecGas,
 };
 export const WorkingJoe = (props) => {
   const { data } = useBackend();
@@ -218,6 +219,24 @@ const MainMenu = (props) => {
             </Stack.Item>
           </Stack>
         )}
+      </Section>
+      <Section>
+        <h1 align="center">Core Security Protocols</h1>
+        <Stack>
+          <Stack.Item grow>
+            <Button
+              content="Nerve Gas Control"
+              tooltip="Release stored CN20-X nerve gas from security vents."
+              icon="wind"
+              color="red"
+              ml="auto"
+              px="2rem"
+              width="33vw"
+              bold
+              onClick={() => act('page_core_gas')}
+            />
+          </Stack.Item>
+        </Stack>
       </Section>
     </>
   );
@@ -941,6 +960,73 @@ const AccessTickets = (props) => {
                 )}
               </Flex.Item>
             </Flex>
+          );
+        })}
+      </Section>
+    </>
+  );
+};
+
+const CoreSecGas = (props) => {
+  const { data, act } = useBackend();
+  const {
+    logged_in,
+    access_text,
+    access_level,
+    last_page,
+    current_menu,
+    security_vents,
+  } = data;
+
+  return (
+    <>
+      <Section>
+        <Flex align="center">
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={last_page === current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+            />
+          </Box>
+
+          <h3>
+            {logged_in}, {access_text}
+          </h3>
+
+          <Button.Confirm
+            content="Logout"
+            icon="circle-user"
+            ml="auto"
+            px="2rem"
+            bold
+            onClick={() => act('logout')}
+          />
+        </Flex>
+      </Section>
+
+      <Section>
+        <h1 align="center">Nerve Gas Release</h1>
+        {security_vents.map((vent, i) => {
+          return (
+            <Button.Confirm
+              key={i}
+              content={vent.vent_tag}
+              icon="wind"
+              tooltip="Release Gas"
+              disabled={access_level < 5 || !vent.available}
+              onClick={() => act('trigger_vent', { vent: vent.ref })}
+            />
           );
         })}
       </Section>

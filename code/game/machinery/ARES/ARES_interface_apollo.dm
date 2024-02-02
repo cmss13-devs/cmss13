@@ -197,6 +197,9 @@
 		if("page_maintenance")
 			last_menu = current_menu
 			current_menu = "maint_claim"
+		if("page_core_gas")
+			last_menu = current_menu
+			current_menu = "core_security_gas"
 
 		if("new_report")
 			var/priority_report = FALSE
@@ -382,12 +385,30 @@
 			if(!istype(access_ticket))
 				return FALSE
 			if(access_ticket.ticket_assignee != last_login && access_ticket.ticket_assignee) //must be claimed by you or unclaimed.)
-				to_chat(usr, SPAN_WARNING("You cannot update a ticket that is not assigned to you!"))
+				to_chat(operator, SPAN_WARNING("You cannot update a ticket that is not assigned to you!"))
 				return FALSE
 			access_ticket.ticket_status = TICKET_REJECTED
-			to_chat(usr, SPAN_NOTICE("[access_ticket.ticket_type] [access_ticket.ticket_id] marked as rejected."))
+			to_chat(operator, SPAN_NOTICE("[access_ticket.ticket_type] [access_ticket.ticket_id] marked as rejected."))
 			ares_apollo_talk("Access Ticket [access_ticket.ticket_id]: [access_ticket.ticket_submitter] was rejected access by [last_login].")
 			return TRUE
+
+		if("trigger_vent")
+			playsound = FALSE
+			var/obj/structure/pipes/vents/pump/no_boom/gas/sec_vent = locate(params["vent"])
+			if(!istype(sec_vent) || sec_vent.welded)
+				to_chat(operator, SPAN_WARNING("ERROR: Gas release failure."))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
+			if(!COOLDOWN_FINISHED(sec_vent, vent_trigger_cooldown))
+				to_chat(operator, SPAN_WARNING("ERROR: Insufficient gas reserve for this vent."))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
+			to_chat(operator, SPAN_WARNING("Initiating gas release from [sec_vent.vent_tag]."))
+			playsound(src, 'sound/machines/chime.ogg', 15, 1)
+			COOLDOWN_START(sec_vent, vent_trigger_cooldown, COOLDOWN_ARES_VENT)
+			log_ares_security("Nerve Gas Release", "[last_login] released Nerve Gas from Vent '[sec_vent.vent_tag]'.")
+			sec_vent.create_gas(VENT_GAS_CN20_XENO, 6, 5 SECONDS)
+			log_admin("[key_name(operator)] released nerve gas from Vent '[sec_vent.vent_tag]' via ARES.")
 
 	if(playsound)
 		playsound(src, "keyboard_alt", 15, 1)

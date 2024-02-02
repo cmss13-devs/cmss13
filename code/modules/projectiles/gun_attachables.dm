@@ -3282,10 +3282,9 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 
 	if((GUN_FIREMODE_AUTOMATIC in G.gun_firemode_list) || (G.flags_gun_features & GUN_SUPPORT_PLATFORM))
-		var/mob/user
 		var/given_action = FALSE
-		if(user && (G == user.l_hand || G == user.r_hand))
-			give_action(user, /datum/action/item_action/bipod/toggle_full_auto_switch, src, G)
+		if(usr && (G == usr.l_hand || G == usr.r_hand))
+			give_action(usr, /datum/action/item_action/bipod/toggle_full_auto_switch, src, G)
 			given_action = TRUE
 		if(!given_action)
 			new /datum/action/item_action/bipod/toggle_full_auto_switch(src, G)
@@ -3294,6 +3293,13 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/bipod/Detach(mob/user, obj/item/weapon/gun/detaching_gub)
 	UnregisterSignal(detaching_gub, COMSIG_ITEM_DROPPED)
+
+	full_auto_switch = FALSE
+	for(var/item_action in detaching_gub.actions)
+		var/datum/action/item_action/bipod/toggle_full_auto_switch/target_action = item_action
+		if(target_action.target == src)
+			qdel(item_action)
+			break
 
 	if(bipod_deployed)
 		undeploy_bipod(detaching_gub)
@@ -3332,6 +3338,11 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_mod = RECOIL_AMOUNT_TIER_5
 	burst_scatter_mod = 0
 	delay_mod = FIRE_DELAY_TIER_12
+
+	//if we are no longer on fullauto, don't bother switching back to the old firemode
+	if(full_auto_switch && G.gun_firemode == GUN_FIREMODE_AUTOMATIC)
+		G.do_toggle_firemode(usr, null, old_firemode)
+
 	G.recalculate_attachment_bonuses()
 	G.stop_fire()
 	var/mob/living/user
@@ -3345,9 +3356,6 @@ Defined in conflicts.dm of the #defines folder.
 
 	if(heavy_bipod)
 		user.anchored = FALSE
-
-	if(full_auto_switch && G.gun_firemode != old_firemode)
-		G.do_toggle_firemode(user, null, old_firemode)
 
 	if(!QDELETED(G))
 		playsound(user,'sound/items/m56dauto_rotate.ogg', 55, 1)
@@ -3433,7 +3441,7 @@ Defined in conflicts.dm of the #defines folder.
 /datum/action/item_action/bipod/toggle_full_auto_switch/New(Target, obj/item/holder)
 	. = ..()
 	name = "Toggle Full Auto Switch"
-	action_icon_state = "iff_toggle_off"
+	action_icon_state = "full_auto_switch"
 	button.name = name
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
@@ -3447,9 +3455,9 @@ Defined in conflicts.dm of the #defines folder.
 	playsound(usr, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
 
 	if(attached_bipod.full_auto_switch)
-		action_icon_state = "iff_toggle_on"
+		button.icon_state = "template_on"
 	else
-		action_icon_state = "iff_toggle_off"
+		button.icon_state = "template"
 
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)

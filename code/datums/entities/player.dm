@@ -477,7 +477,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		if(CONFIG_GET(string/banappeals))
 			appeal = "\nFor more information on your ban, or to appeal, head to <a href='[CONFIG_GET(string/banappeals)]'>[CONFIG_GET(string/banappeals)]</a>"
 
-		.["desc"] = "\nReason: Stickybanned - [sticky.reason]\n[appeal]"
+		.["desc"] = "\nReason: Stickybanned - [sticky.message]\n[appeal]"
 		.["reason"] = "ckey/id"
 
 		SSstickyban.match_sticky(sticky.id, ckey, address, computer_id)

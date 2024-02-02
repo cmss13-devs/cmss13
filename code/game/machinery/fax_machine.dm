@@ -287,7 +287,7 @@ GLOBAL_LIST_EMPTY(alldepartments)
 	. = ..()
 	. += "<option value>-----FAX-----</option>"
 	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[usr];originfax=\ref[src]'>Send USCM fax message</option>"
-	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[usr];originfax=\ref[src]'>Send CL fax message</option>"
+	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];WYFaxReply=\ref[usr];originfax=\ref[src]'>Send CL fax message</option>"
 	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CMBFaxReply=\ref[usr];originfax=\ref[src]'>Send CMB fax message</option>"
 	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];PressFaxReply=\ref[usr];originfax=\ref[src]'>Send Press fax message</option>"
 	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];UPPFaxReply=\ref[usr];originfax=\ref[src]'>Send UPP fax message</option>"
@@ -352,8 +352,8 @@ GLOBAL_LIST_EMPTY(alldepartments)
 			GLOB.CMBFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\['[original_fax.name]' from [key_name(usr)], [scan] at [time2text(world.timeofday, "hh:mm:ss")]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CMBFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
 			msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CMBFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
 		if(DEPARTMENT_WY)
-			GLOB.WYFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\['[original_fax.name]' from [key_name(usr)], [scan] at [time2text(world.timeofday, "hh:mm:ss")]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
-			msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
+			GLOB.WYFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\['[original_fax.name]' from [key_name(usr)], [scan] at [time2text(world.timeofday, "hh:mm:ss")]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];WYFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
+			msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];WYFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
 		if(DEPARTMENT_PRESS)
 			GLOB.PressFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\['[original_fax.name]' from [key_name(usr)], [scan] at [time2text(world.timeofday, "hh:mm:ss")]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];PressFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
 			msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];PressFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
@@ -367,7 +367,7 @@ GLOBAL_LIST_EMPTY(alldepartments)
 			GLOB.CLFFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\['[original_fax.name]' from [key_name(usr)], [scan] at [time2text(world.timeofday, "hh:mm:ss")]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
 			msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
 		else
-			GLOB.GeneralFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\['[original_fax.name]' from [key_name(usr)], [scan] at [time2text(world.timeofday, "hh:mm:ss")]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
+			GLOB.GeneralFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\['[original_fax.name]' from [key_name(usr)], [scan] at [time2text(world.timeofday, "hh:mm:ss")]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];WYFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
 			msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
 
 	msg_admin += SPAN_STAFF_IC("Receiving fax via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>")

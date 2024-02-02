@@ -1163,7 +1163,7 @@
 		GLOB.fax_contents += fax_message // save a copy
 		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
 
-		GLOB.USCMFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>")
+		GLOB.PressFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view '[customname]' from [key_name(usr)] at [time2text(world.timeofday, "hh:mm:ss")]\]</a>")
 
 		var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>PRESS REPLY: </font></b> ")
 		msg_ghost += "Transmitting '[customname]' via secure connection ... "
@@ -1283,8 +1283,8 @@
 				return
 		to_chat(src.owner, "/red Unable to locate fax!")
 
-	else if(href_list["CLFaxReply"])
-		var/mob/living/carbon/human/H = locate(href_list["CLFaxReply"])
+	else if(href_list["WYFaxReply"])
+		var/mob/living/carbon/human/H = locate(href_list["WYFaxReply"])
 		var/obj/structure/machinery/faxmachine/fax = locate(href_list["originfax"])
 
 		var/template_choice = tgui_input_list(usr, "Use the template or roll your own?", "Fax Template", list("Template", "Custom"))

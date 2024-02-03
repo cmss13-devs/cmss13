@@ -64,7 +64,7 @@
 	uses_ethnicity = FALSE
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES)
 
-	hair_color = COLOR_BLACK
+	hair_color = "#000000"
 	icobase = 'icons/mob/humans/species/r_synthetic.dmi'
 	deform = 'icons/mob/humans/species/r_synthetic.dmi'
 
@@ -99,7 +99,7 @@
 	uses_ethnicity = FALSE
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES)
 	//sets colonial_gen_one synth's hair to black
-	hair_color = COLOR_BLACK
+	hair_color = "#000000"
 	//sets colonial_gen_one synth's icon to WJ sprite
 	icobase = 'icons/mob/humans/species/r_synthetic.dmi'
 	deform = 'icons/mob/humans/species/r_synthetic.dmi'
@@ -114,7 +114,7 @@
 	burn_mod = 0.6 //made for combat
 	total_health = 250 //made for combat
 
-	hair_color = COLOR_BLACK
+	hair_color = "#000000"
 	icobase = 'icons/mob/humans/species/r_synthetic.dmi'
 	deform = 'icons/mob/humans/species/r_synthetic.dmi'
 

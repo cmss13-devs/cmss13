@@ -4,10 +4,10 @@
 	icon_state = "stunbaton"
 	item_state = "baton"
 	flags_equip_slot = SLOT_WAIST
-	force = 20
+	force = 15
+	throwforce = 7
 	sharp = FALSE
 	edge = FALSE
-	throwforce = 10
 	w_class = SIZE_MEDIUM
 
 	attack_verb = list("beaten")

@@ -26,7 +26,7 @@
 	} while (FALSE)
 
 //For debugging use when we want to know if a turf is being affected multiple times
-//#define DEBUG_HIGHLIGHT(x, y, colour) do{var/turf/T=locate(x,y,2);if(T){switch(T.color){if(COLOR_RED){T.color = COLOR_GREEN}if(COLOR_GREEN){T.color=COLOR_BLUE}else{T.color=COLOR_RED}}}}while(0)
+//#define DEBUG_HIGHLIGHT(x, y, colour) do{var/turf/T=locate(x,y,2);if(T){switch(T.color){if("#ff0000"){T.color = "#00ff00"}if("#00ff00"){T.color="#0000ff"}else{T.color="#ff0000"}}}}while(0)
 #define DO_SOMETHING_IF_DEBUGGING_SHADOWS(something) something
 #else
 #define DEBUG_HIGHLIGHT(x, y, colour)
@@ -148,7 +148,7 @@
 			//At this point we no longer care about
 			//the atom itself, only the position values
 			COORD_LIST_ADD(opaque_atoms_in_view, thing.x, thing.y)
-			DEBUG_HIGHLIGHT(thing.x, thing.y, COLOR_BLUE)
+			DEBUG_HIGHLIGHT(thing.x, thing.y, "#0000FF")
 
 	//We are too small to consider shadows on, luminsoty has been considered at least.
 	if(radius < 2)
@@ -213,7 +213,7 @@
 
 			shadow.icon = LIGHTING_ICON_BIG
 			shadow.icon_state = "triangle"
-			shadow.color = COLOR_BLACK
+			shadow.color = "#000"
 			shadow.transform = triangle_matrix
 			shadow.render_target = SHADOW_RENDER_TARGET
 			shadow.blend_mode = BLEND_OVERLAY
@@ -639,18 +639,18 @@
 				if(length(group) == 1)
 					//Add the element in group to horizontal
 					COORD_LIST_ADD(horizontal_atoms, pointer, text2num(x_key))
-					DEBUG_HIGHLIGHT(text2num(x_key), pointer, COLOR_YELLOW)
+					DEBUG_HIGHLIGHT(text2num(x_key), pointer, "#FFFF00")
 				else
 					//Add the group to the output
 					. += list(group)
 				group = list()
 			group += list(list(text2num(x_key), next))
-			DEBUG_HIGHLIGHT(text2num(x_key), next, COLOR_RED)
+			DEBUG_HIGHLIGHT(text2num(x_key), next, "#FF0000")
 			pointer = next
 		if(length(group) == 1)
 			//Add the element in group to horizontal
 			COORD_LIST_ADD(horizontal_atoms, pointer, text2num(x_key))
-			DEBUG_HIGHLIGHT(text2num(x_key), pointer, COLOR_YELLOW)
+			DEBUG_HIGHLIGHT(text2num(x_key), pointer, "#FFFF00")
 		else
 			//Add the group to the output
 			. += list(group)
@@ -666,7 +666,7 @@
 				. += list(group)
 				group = list()
 			group += list(list(next, text2num(y_key)))
-			DEBUG_HIGHLIGHT(next, text2num(y_key), COLOR_GREEN)
+			DEBUG_HIGHLIGHT(next, text2num(y_key), "#00FF00")
 			pointer = next
 		. += list(group)
 

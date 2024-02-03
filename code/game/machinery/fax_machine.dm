@@ -6,7 +6,10 @@ GLOBAL_LIST_EMPTY(alldepartments)
 #define DEPARTMENT_CMB "CMB Incident Command Center, Local Operations"
 #define DEPARTMENT_PROVOST "USCM Provost Office"
 #define DEPARTMENT_PRESS "Various Press Organizations"
-#define HIGHCOM_DEPARTMENTS list(DEPARTMENT_WY, DEPARTMENT_HC, DEPARTMENT_CMB, DEPARTMENT_PROVOST, DEPARTMENT_PRESS)
+#define DEPARTMENT_TWE "Three World Empire"
+#define DEPARTMENT_UPP "Union of Progress Peoples"
+#define DEPARTMENT_CLF "Colonial Liberation Front"
+#define HIGHCOM_DEPARTMENTS list(DEPARTMENT_WY, DEPARTMENT_HC, DEPARTMENT_CMB, DEPARTMENT_PROVOST, DEPARTMENT_PRESS, DEPARTMENT_TWE, DEPARTMENT_UPP, DEPARTMENT_CLF)
 
 /obj/structure/machinery/faxmachine // why not fax_machine?
 	name = "\improper General Purpose Fax Machine"
@@ -138,6 +141,13 @@ GLOBAL_LIST_EMPTY(alldepartments)
 		GLOB.alldepartments += DEPARTMENT_CMB
 	if(!(DEPARTMENT_PRESS in GLOB.alldepartments))
 		GLOB.alldepartments += DEPARTMENT_PRESS
+	if(!(DEPARTMENT_TWE in GLOB.alldepartments))
+		GLOB.alldepartments += DEPARTMENT_TWE
+	if(!(DEPARTMENT_UPP in GLOB.alldepartments))
+		GLOB.alldepartments += DEPARTMENT_UPP
+	if(!(DEPARTMENT_CLF in GLOB.alldepartments))
+		GLOB.alldepartments += DEPARTMENT_CLF
+
 // TGUI SHIT \\
 
 /obj/structure/machinery/faxmachine/tgui_interact(mob/user, datum/tgui/ui)
@@ -277,9 +287,12 @@ GLOBAL_LIST_EMPTY(alldepartments)
 	. = ..()
 	. += "<option value>-----FAX-----</option>"
 	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[usr];originfax=\ref[src]'>Send USCM fax message</option>"
-	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[usr];originfax=\ref[src]'>Send CL fax message</option>"
+	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];WYFaxReply=\ref[usr];originfax=\ref[src]'>Send CL fax message</option>"
 	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CMBFaxReply=\ref[usr];originfax=\ref[src]'>Send CMB fax message</option>"
 	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];PressFaxReply=\ref[usr];originfax=\ref[src]'>Send Press fax message</option>"
+	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];UPPFaxReply=\ref[usr];originfax=\ref[src]'>Send UPP fax message</option>"
+	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFFaxReply=\ref[usr];originfax=\ref[src]'>Send CLF fax message</option>"
+	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];TWEFaxReply=\ref[usr];originfax=\ref[src]'>Send TWE fax message</option>"
 
 // converting whatever type the fax is into a single paper with all the information on it.
 /obj/structure/machinery/faxmachine/proc/copy_fax_paper(mob/living/user)
@@ -339,13 +352,22 @@ GLOBAL_LIST_EMPTY(alldepartments)
 			GLOB.CMBFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\['[original_fax.name]' from [key_name(usr)], [scan] at [time2text(world.timeofday, "hh:mm:ss")]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CMBFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
 			msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CMBFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
 		if(DEPARTMENT_WY)
-			GLOB.WYFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\['[original_fax.name]' from [key_name(usr)], [scan] at [time2text(world.timeofday, "hh:mm:ss")]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
-			msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
+			GLOB.WYFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\['[original_fax.name]' from [key_name(usr)], [scan] at [time2text(world.timeofday, "hh:mm:ss")]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];WYFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
+			msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];WYFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
 		if(DEPARTMENT_PRESS)
 			GLOB.PressFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\['[original_fax.name]' from [key_name(usr)], [scan] at [time2text(world.timeofday, "hh:mm:ss")]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];PressFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
 			msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];PressFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
+		if(DEPARTMENT_TWE)
+			GLOB.TWEFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\['[original_fax.name]' from [key_name(usr)], [scan] at [time2text(world.timeofday, "hh:mm:ss")]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];TWEFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
+			msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];TWEFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
+		if(DEPARTMENT_UPP)
+			GLOB.UPPFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\['[original_fax.name]' from [key_name(usr)], [scan] at [time2text(world.timeofday, "hh:mm:ss")]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];UPPFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
+			msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];UPPFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
+		if(DEPARTMENT_CLF)
+			GLOB.CLFFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\['[original_fax.name]' from [key_name(usr)], [scan] at [time2text(world.timeofday, "hh:mm:ss")]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
+			msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
 		else
-			GLOB.GeneralFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\['[original_fax.name]' from [key_name(usr)], [scan] at [time2text(world.timeofday, "hh:mm:ss")]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CLFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
+			GLOB.GeneralFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\['[original_fax.name]' from [key_name(usr)], [scan] at [time2text(world.timeofday, "hh:mm:ss")]\]</a> <a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];WYFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
 			msg_admin += "(<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];USCMFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
 
 	msg_admin += SPAN_STAFF_IC("Receiving fax via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>")
@@ -416,6 +438,30 @@ GLOBAL_LIST_EMPTY(alldepartments)
 							P.stamped += /obj/item/tool/stamp
 							P.overlays += stampoverlay
 							P.stamps += "<HR><i>This paper has been stamped and encrypted by the Weyland-Yutani Quantum Relay (tm).</i>"
+						if("TWE Royal Marines Commando Quantum Relay")
+							var/image/stampoverlay = image('icons/obj/items/paper.dmi')
+							stampoverlay.icon_state = "paper_stamp-twe"
+							if(!P.stamped)
+								P.stamped = new
+							P.stamped += /obj/item/tool/stamp
+							P.overlays += stampoverlay
+							P.stamps += "<HR><i>This paper has been stamped by the TWE Royal Marines Commando Quantum Relay.</i>"
+						if("UPP High Kommand Quantum Relay")
+							var/image/stampoverlay = image('icons/obj/items/paper.dmi')
+							stampoverlay.icon_state = "paper_stamp-upp"
+							if(!P.stamped)
+								P.stamped = new
+							P.stamped += /obj/item/tool/stamp
+							P.overlays += stampoverlay
+							P.stamps += "<HR><i>This paper has been stamped by the UPP High Kommand Quantum Relay.</i>"
+						if("CLF Gureilla Command Quantum Relay")
+							var/image/stampoverlay = image('icons/obj/items/paper.dmi')
+							stampoverlay.icon_state = "paper_stamp-clf"
+							if(!P.stamped)
+								P.stamped = new
+							P.stamped += /obj/item/tool/stamp
+							P.overlays += stampoverlay
+							P.stamps += "<HR><i>This paper has been stamped and encrypted by the CLF Gureilla Command Quantum Relay.</i>"
 
 					playsound(F.loc, "sound/items/polaroid1.ogg", 15, 1)
 		qdel(faxcontents)

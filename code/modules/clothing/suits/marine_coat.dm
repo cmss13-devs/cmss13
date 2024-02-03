@@ -295,6 +295,7 @@
 	desc = "A casual brown vest."
 	icon_state = "vest_brown"
 	item_state = "vest_brown"
+	flags_atom = NO_SNOW_TYPE
 	has_buttons = FALSE
 
 /obj/item/clothing/suit/storage/jacket/marine/vest/tan
@@ -316,6 +317,7 @@
 	desc = "A khaki suit jacket."
 	icon_state = "corporate_ivy"
 	item_state = "corporate_ivy"
+	flags_atom = NO_SNOW_TYPE
 	has_buttons = FALSE
 
 /obj/item/clothing/suit/storage/jacket/marine/corporate/formal
@@ -351,6 +353,7 @@
 	desc = "A khaki bomber jacket popular among stationeers and blue-collar workers everywhere."
 	icon_state = "jacket_khaki"
 	item_state = "jacket_khaki"
+	flags_atom = NO_SNOW_TYPE
 	has_buttons = FALSE
 
 /obj/item/clothing/suit/storage/jacket/marine/bomber/red

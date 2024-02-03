@@ -5,7 +5,7 @@
 	desc = "A warm, soothing light source that pulsates with a faint hum."
 	icon_state = "recovery"
 	health = 400
-	var/heal_amount = 40
+	var/heal_amount = 20
 	var/heal_cooldown = 5 SECONDS
 	var/last_healed
 
@@ -30,4 +30,4 @@
 				SPAN_HELPFUL("You feel a warm aura envelop you."))
 	if(!do_after(picked_candidate, heal_cooldown, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 		return
-	picked_candidate.gain_health(heal_amount)
+	picked_candidate.gain_health(heal_amount*picked_candidate.heal_resting)

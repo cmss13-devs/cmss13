@@ -103,6 +103,8 @@ SUBSYSTEM_DEF(stickyban)
 
 /// Adds a ckey match to the specified sticky ban.
 /datum/controller/subsystem/stickyban/proc/add_matched_ckey(existing_ban_id, key)
+	key = ckey(key)
+
 	if(length(DB_VIEW(/datum/view_record/stickyban_matched_ckey,
 		DB_AND(
 			DB_COMP("linked_stickyban", DB_EQUALS, existing_ban_id),
@@ -113,7 +115,7 @@ SUBSYSTEM_DEF(stickyban)
 
 	var/datum/entity/stickyban_matched_ckey/matched_ckey = DB_ENTITY(/datum/entity/stickyban_matched_ckey)
 
-	matched_ckey.ckey = ckey(key)
+	matched_ckey.ckey = key
 	matched_ckey.linked_stickyban = existing_ban_id
 
 	matched_ckey.save()

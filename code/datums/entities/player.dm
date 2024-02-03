@@ -468,7 +468,8 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	. = list()
 
 	var/list/datum/view_record/stickyban/all_stickies = SSstickyban.check_for_sticky_ban(ckey, address, computer_id)
-	if(islist(all_stickies))
+
+	if(length(all_stickies))
 		var/datum/view_record/stickyban/sticky = all_stickies[1]
 
 		if(!is_telemetry)

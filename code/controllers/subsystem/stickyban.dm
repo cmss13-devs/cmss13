@@ -53,15 +53,7 @@ SUBSYSTEM_DEF(stickyban)
 	)
 
 	for(var/datum/view_record/stickyban/current_sticky in stickies)
-		var/list/datum/view_record/stickyban_matched_ckey/whitelisted_ckeys = DB_VIEW(/datum/view_record/stickyban_matched_ckey,
-			DB_AND(
-				DB_COMP("linked_stickyban", DB_EQUALS, current_sticky.id),
-				DB_COMP("ckey", DB_EQUALS, ckey),
-				DB_COMP("whitelisted", DB_EQUALS, TRUE),
-			)
-		)
-
-		if(length(whitelisted_ckeys))
+		if(length(get_whitelisted_ckey_records(current_sticky.id, ckey)))
 			stickies -= current_sticky
 
 	if(!length(stickies))
@@ -188,6 +180,20 @@ SUBSYSTEM_DEF(stickyban)
 	whitelisted_ckey.whitelisted = TRUE
 
 	whitelisted_ckey.save()
+
+/**
+ * Returns a [/list] of [/datum/view_record/stickyban_matched_ckey] which have been manually whitelisted by an admin and  matches the provided existing_ban_id and key.
+ */
+/datum/controller/subsystem/stickyban/proc/get_whitelisted_ckey_records(existing_ban_id, key)
+	key = ckey(key)
+
+	return DB_VIEW(/datum/view_record/stickyban_matched_ckey,
+		DB_AND(
+			DB_COMP("linked_stickyban", DB_EQUALS, existing_ban_id),
+			DB_COMP("ckey", DB_EQUALS, key),
+			DB_COMP("whitelisted", DB_EQUALS, TRUE),
+		)
+	)
 
 /// Legacy import from pager bans to database bans.
 /datum/controller/subsystem/stickyban/proc/import_sticky(identifier, list/ban_data)

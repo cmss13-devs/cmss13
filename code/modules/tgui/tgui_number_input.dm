@@ -158,11 +158,13 @@
 		return
 	switch(action)
 		if("submit")
-			if(!isnum(params["entry"]))
-				CRASH("A non number was input into tgui input number by [usr]")
 			var/choice = params["entry"]
+			if(!isnum(choice))
+				CRASH("A non number was input into tgui input number by [usr]")
+			if(choice != choice) //isnan
+				CRASH("A NaN was input into tgui input number by [usr]")
 			if(integer_only)
-				choice = round(params["entry"])
+				choice = round(choice)
 			if(choice > max_value)
 				CRASH("A number greater than the max value was input into tgui input number by [usr]")
 			if(choice < min_value)

@@ -58,3 +58,6 @@
   - refactor: camera consoles now use camera manager component
   private-tristan:
   - balance: Burrower can no longer spawn as part of the feral xeno ERT
+2024-02-03:
+  Drathek:
+  - ui: Refactored backend for Weapon Stats panel to use spritesheets instead.

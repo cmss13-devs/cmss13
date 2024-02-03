@@ -29,12 +29,14 @@
 		user.put_in_hands(iff_tag)
 		iff_tag = null
 		user.visible_message(SPAN_NOTICE("[user] removes \the [src]'s IFF tag."), SPAN_NOTICE("You remove \the [src]'s IFF tag."), max_distance = 3)
+		if(hive.hivenumber == XENO_HIVE_RENEGADE) //it's important to know their IFF settings for renegade
+			to_chat(src, SPAN_NOTICE("With the removal of the device, your instincts have returned to normal."))
 		return
 	return ..()
 
 /mob/living/carbon/xenomorph/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0)
 
-	if(lying)
+	if(body_position == LYING_DOWN)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 
 	if(severity >= 30)
@@ -79,6 +81,7 @@
 		powerfactor_value = min(powerfactor_value,20)
 		if(powerfactor_value > 0 && small_explosives_stun)
 			KnockDown(powerfactor_value/5)
+			Stun(powerfactor_value/5) // Due to legacy knockdown being considered an impairement
 			if(mob_size < MOB_SIZE_BIG)
 				Slow(powerfactor_value)
 				Superslow(powerfactor_value/2)
@@ -272,7 +275,7 @@
 				SPAN_DANGER("You are splattered with sizzling blood! IT BURNS!"))
 				if(prob(60) && !victim.stat && victim.pain.feels_pain)
 					INVOKE_ASYNC(victim, TYPE_PROC_REF(/mob, emote), "scream") //Topkek
-				victim.take_limb_damage(0, dmg["damage"]) //Sizzledam! This automagically burns a random existing body part.
+				victim.apply_armoured_damage(dmg["damage"], ARMOR_BIO, BURN) //Sizzledam! This automagically burns a random existing body part.
 				victim.add_blood(get_blood_color(), BLOOD_BODY)
 				acid_splash_last = world.time
 				handle_blood_splatter(get_dir(src, victim), 1 SECONDS)
@@ -296,7 +299,7 @@
 	. = ..()
 	switch(fire.fire_variant)
 		if(FIRE_VARIANT_TYPE_B)
-			if(!armor_deflection_debuff) //Only adds another reset timer if the debuff is currently on 0, so at the start or after a reset has recently occured.
+			if(!armor_deflection_debuff) //Only adds another reset timer if the debuff is currently on 0, so at the start or after a reset has recently occurred.
 				reset_xeno_armor_debuff_after_time(src, delta_time*10)
 			fire.type_b_debuff_xeno_armor(src) //Always reapplies debuff each time to minimize gap.
 
@@ -310,4 +313,4 @@
 			fire.set_on_fire(src) //Deals an extra proc of fire when you're crossing it. 30 damage per tile crossed, plus 15 per Process().
 			next_move_slowdown = next_move_slowdown + (SLOWDOWN_AMT_GREENFIRE * resist_modifier)
 			if(resist_modifier > 0)
-				to_chat(src, SPAN_DANGER("You feel pieces of your exoskeleton fusing with the viscous fluid below and tearing off as you struggle to move through the flames!"))
+				to_chat(src, SPAN_DANGER("We feel pieces of our exoskeleton fusing with the viscous fluid below and tearing off as we struggle to move through the flames!"))

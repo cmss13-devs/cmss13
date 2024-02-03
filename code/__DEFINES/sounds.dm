@@ -21,12 +21,13 @@
 #define ITEM_EQUIP_VOLUME 50
 
 //Reserved channels
+#define SOUND_CHANNEL_NOTIFY 1016
 #define SOUND_CHANNEL_VOX    1017
 #define SOUND_CHANNEL_MUSIC 1018
 #define SOUND_CHANNEL_AMBIENCE 1019
 #define SOUND_CHANNEL_WALKMAN 1020
 #define SOUND_CHANNEL_SOUNDSCAPE 1021
-#define SOUND_CHANNEL_ADMIN_MIDI 1022
+//#define SOUND_CHANNEL_ADMIN_MIDI 1022
 #define SOUND_CHANNEL_LOBBY 1023
 #define SOUND_CHANNEL_Z 1024
 
@@ -71,6 +72,7 @@
 #define AMBIENCE_ALMAYER 'sound/ambience/almayerambience.ogg'
 #define AMBIENCE_LV624 'sound/ambience/ambienceLV624.ogg'
 #define AMBIENCE_BIGRED 'sound/ambience/desert.ogg'
+#define AMBIENCE_NV 'sound/ambience/ambienceNV.ogg'
 #define AMBIENCE_PRISON 'sound/ambience/shipambience.ogg'
 #define AMBIENCE_TRIJENT 'sound/ambience/desert.ogg'
 

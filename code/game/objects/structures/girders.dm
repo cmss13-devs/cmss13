@@ -173,6 +173,14 @@
 			return do_reinforced_wall(W, user)
 		if(STATE_DISPLACED)
 			if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
+				var/turf/open/floor = loc
+				if(!floor.allow_construction)
+					to_chat(user, SPAN_WARNING("The girder must be secured on a proper surface!"))
+					return
+				var/obj/structure/tunnel/tunnel = locate(/obj/structure/tunnel) in loc
+				if(tunnel)
+					to_chat(user, SPAN_WARNING("The girder cannot be secured on a tunnel!"))
+					return
 				playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE("Now securing the girder..."))
 				if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -316,7 +324,7 @@
 
 	return FALSE
 
-/obj/structure/girder/bullet_act(obj/item/projectile/P)
+/obj/structure/girder/bullet_act(obj/projectile/P)
 	//Tasers and the like should not damage girders.
 	if(P.ammo.damage_type == HALLOSS || P.ammo.damage_type == TOX || P.ammo.damage_type == CLONE || P.damage == 0)
 		return FALSE

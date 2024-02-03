@@ -3,7 +3,7 @@
 */
 
 /mob/living/carbon/xenomorph/UnarmedAttack(atom/target, proximity, click_parameters, tile_attack = FALSE, ignores_resin = FALSE)
-	if(lying || burrow) //No attacks while laying down
+	if(body_position == LYING_DOWN || HAS_TRAIT(src, TRAIT_ABILITY_BURROWED)) //No attacks while laying down
 		return FALSE
 	var/mob/alt
 
@@ -21,7 +21,7 @@
 
 			if (!L.is_xeno_grabbable() || L == src) //Xenos never attack themselves.
 				continue
-			if (L.lying)
+			if (L.body_position == LYING_DOWN)
 				alt = L
 				continue
 			target = L
@@ -73,10 +73,10 @@
 				playsound(loc, 'sound/weapons/alien_claw_swipe.ogg', 10, 1) //Quiet to limit spam/nuisance.
 				if(firepatted)
 					src.visible_message(SPAN_DANGER("\The [src] pats at the fire!"), \
-					SPAN_DANGER("You pat the fire!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+					SPAN_DANGER("We pat the fire!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				else
 					src.visible_message(SPAN_DANGER("\The [src] swipes at \the [target]!"), \
-					SPAN_DANGER("You swipe at \the [target]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+					SPAN_DANGER("We swipe at \the [target]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return TRUE
 
 /mob/living/carbon/xenomorph/RangedAttack(atom/A)
@@ -88,7 +88,7 @@
 		return UnarmedAttack(get_step(src, Get_Compass_Dir(src, A)), tile_attack = TRUE, ignores_resin = TRUE)
 	return FALSE
 
-/**The parent proc, will default to UnarmedAttack behaviour unless overriden
+/**The parent proc, will default to UnarmedAttack behaviour unless overridden
 Return XENO_ATTACK_ACTION if it does something and the attack should have full attack delay.
 Return XENO_NONCOMBAT_ACTION if it did something and should have some delay.
 Return XENO_NO_DELAY_ACTION if it gave an error message or should have no delay at all, ex. "You can't X that, it's Y!"
@@ -99,46 +99,38 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 /atom/proc/attack_alien(mob/user as mob)
 	return
 
-/mob/living/carbon/xenomorph/click(atom/A, list/mods)
-	if (queued_action)
-		handle_queued_action(A)
+/mob/living/carbon/xenomorph/click(atom/target, list/mods)
+	if(queued_action)
+		handle_queued_action(target)
 		return TRUE
 
-	if (mods["alt"] && mods["shift"])
-		if (istype(A, /mob/living/carbon/xenomorph))
-			var/mob/living/carbon/xenomorph/X = A
+	var/alt_pressed = mods["alt"] == "1"
+	var/shift_pressed = mods["shift"] == "1"
+	var/middle_pressed = mods["middle"] == "1"
 
-			if (X && !QDELETED(X) && X != observed_xeno && X.stat != DEAD && !is_admin_level(X.z) && X.check_state(1) && X.hivenumber == hivenumber)
-				if (caste && istype(caste, /datum/caste_datum/queen))
-					var/mob/living/carbon/xenomorph/oldXeno = observed_xeno
-					overwatch(X, FALSE)
-
-					if (oldXeno)
-						oldXeno.hud_set_queen_overwatch()
-					if (X && !QDELETED(X))
-						X.hud_set_queen_overwatch()
-
-				else
-					overwatch(X)
-
+	if(alt_pressed && shift_pressed)
+		if(istype(target, /mob/living/carbon/xenomorph))
+			var/mob/living/carbon/xenomorph/xeno = target
+			if(!QDELETED(xeno) && xeno.stat != DEAD && !should_block_game_interaction(xeno) && xeno.check_state(TRUE) && xeno.hivenumber == hivenumber)
+				overwatch(xeno)
 				next_move = world.time + 3 // Some minimal delay so this isn't crazy spammy
-				return 1
+				return TRUE
 
-	if(mods["shift"] && !mods["middle"])
-		if(selected_ability && client && client.prefs && !(client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK))
-			selected_ability.use_ability_wrapper(A, mods)
-			return TRUE
-
-	if(mods["middle"] && !mods["shift"])
-		if(selected_ability && client && client.prefs && client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK)
-			selected_ability.use_ability_wrapper(A, mods)
+	var/middle_pref = client.prefs && (client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK) != 0 // client is already tested to be non-null by caller
+	if(selected_ability && shift_pressed == !middle_pref && middle_pressed == middle_pref)
+		if(istype(target, /atom/movable/screen))
+			// Click through the UI: Currently this won't attempt to sprite click any mob there, just the turf
+			var/turf/turf = params2turf(mods["screen-loc"], get_turf(client.eye), client)
+			if(turf)
+				target = turf
+		if(selected_ability.use_ability_wrapper(target, mods))
 			return TRUE
 
 	if(next_move >= world.time)
-		return TRUE
+		return FALSE
 
 	return ..()
 
-//Larva attack, will default to attack_alien behaviour unless overriden
+//Larva attack, will default to attack_alien behaviour unless overridden
 /atom/proc/attack_larva(mob/living/carbon/xenomorph/larva/user)
 	return attack_alien(user)

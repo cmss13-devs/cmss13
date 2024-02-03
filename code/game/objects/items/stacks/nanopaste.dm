@@ -15,17 +15,6 @@
 /obj/item/stack/nanopaste/attack(mob/living/M as mob, mob/user as mob)
 	if (!istype(M) || !istype(user))
 		return 0
-	if (isrobot(M)) //Repairing cyborgs
-		var/mob/living/silicon/robot/R = M
-		if (R.getBruteLoss() || R.getFireLoss() )
-			R.apply_damage(-15, BRUTE)
-			R.apply_damage(-15, BURN)
-			R.updatehealth()
-			use(1)
-			user.visible_message(SPAN_NOTICE("\The [user] applied some [src] at [R]'s damaged areas."),\
-				SPAN_NOTICE("You apply some [src] at [R]'s damaged areas."))
-		else
-			to_chat(user, SPAN_NOTICE("All [R]'s systems are nominal."))
 
 	if (istype(M,/mob/living/carbon/human)) //Repairing robolimbs
 		var/mob/living/carbon/human/H = M
@@ -40,7 +29,7 @@
 				H.pain.recalculate_pain()
 				H.updatehealth()
 				use(1)
-				var/others_msg = "\The [user] applies some nanite paste at[user != M ? " \the [M]'s" : " \the"] [S.display_name] with \the [src]." // Needs to create vars for these messages because macro doesn't work otherwise
+				var/others_msg = "\The [user] applies some nanite paste at[user != M ? " \the [M]'s" : " the"] [S.display_name] with \the [src]." // Needs to create vars for these messages because macro doesn't work otherwise
 				var/user_msg = "You apply some nanite paste at [user == M ? "your" : "[M]'s"] [S.display_name]."
 				user.visible_message(SPAN_NOTICE("[others_msg]"),\
 					SPAN_NOTICE("[user_msg]"))

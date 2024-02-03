@@ -131,13 +131,17 @@ GUEST_BAN
 FORUMURL https://forum.cm-ss13.com/
 
 ## Wiki address
-WIKIURL https://cm-ss13/wiki/
+WIKIURL https://cm-ss13.com/w
+WIKIARTICLEURL https://cm-ss13.com/wiki
 
 ## Rules address
 RULESURL https://cm-ss13.com/viewtopic.php?f=57&t=5094
 
 ## Ban appeals URL - usually for a forum or wherever people should go to contact your admins.
 BANAPPEALS https://cm-ss13.com/viewforum.php?f=76
+
+## Discord URL - uncomment and add a valid Discord invite link (remember to make it a permanent one, since it does not default to it) to make the Discord button work properly.
+## DISCORDURL
 
 ## In-game features
 ## Remove the # to show a popup 'reply to' window to every non-admin that recieves an adminPM.
@@ -234,8 +238,8 @@ AUTOOOCMUTE
 ## The default value assumes youtube-dl is in your system PATH
 # INVOKE_YOUTUBEDL youtube-dl
 
-## Rounds needed before a gamemode vote is casted. Set to -1 to disable
-GAMEMODE_ROUNDS_NEEDED 5
-
 ## Default gamemode to auto-switch back to after a round has concluded
-GAMEMODE_DEFAULT extended
+GAMEMODE_DEFAULT Extended
+
+## How long the mob will take to chestburst, in seconds
+#EMBRYO_BURST_TIMER 450

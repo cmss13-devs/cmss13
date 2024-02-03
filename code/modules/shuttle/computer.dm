@@ -281,37 +281,85 @@
 	icon_state = "terminal"
 	req_access = list()
 	breakable = FALSE
+	///If true, the lifeboat is in the process of launching, and so the code will not allow another launch.
+	var/launch_initiated = FALSE
 
 /obj/structure/machinery/computer/shuttle/lifeboat/attack_hand(mob/user)
 	. = ..()
-	var/obj/docking_port/mobile/lifeboat/lifeboat = SSshuttle.getShuttle(shuttleId)
+	var/obj/docking_port/mobile/crashable/lifeboat/lifeboat = SSshuttle.getShuttle(shuttleId)
 	if(lifeboat.status == LIFEBOAT_LOCKED)
-		to_chat(user, SPAN_WARNING("\The [src] flickers with error messages."))
+		to_chat(user, SPAN_WARNING("[src] flickers with error messages."))
 	else if(lifeboat.status == LIFEBOAT_INACTIVE)
-		to_chat(user, SPAN_NOTICE("\The [src]'s screen says \"Awaiting evacuation order\"."))
+		to_chat(user, SPAN_NOTICE("[src]'s screen says \"Awaiting evacuation order\"."))
 	else if(lifeboat.status == LIFEBOAT_ACTIVE)
 		switch(lifeboat.mode)
 			if(SHUTTLE_IDLE)
-				to_chat(user, SPAN_NOTICE("\The [src]'s screen says \"Awaiting confirmation of the evacuation order\"."))
+				if(!istype(user, /mob/living/carbon/human))
+					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unauthorized access. Please inform your supervisor\"."))
+					return
+
+				var/mob/living/carbon/human/human_user = user
+				if(!(ACCESS_MARINE_SENIOR in human_user.wear_id?.access) && !(ACCESS_MARINE_DROPSHIP in human_user.wear_id?.access))
+					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unauthorized access. Please inform your supervisor\"."))
+					return
+
+				if(SShijack.current_progress < SShijack.early_launch_required_progress)
+					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unable to launch, fuel insufficient\"."))
+					return
+
+				if(launch_initiated)
+					to_chat(user, SPAN_NOTICE("[src]'s screen blinks and says \"Launch sequence already initiated\"."))
+					return
+
+				var/response = tgui_alert(user, "Launch the lifeboat?", "Confirm", list("Yes", "No", "Emergency Launch"), 10 SECONDS)
+				if(launch_initiated)
+					to_chat(user, SPAN_NOTICE("[src]'s screen blinks and says \"Launch sequence already initiated\"."))
+					return
+				switch(response)
+					if ("Yes")
+						launch_initiated = TRUE
+						to_chat(user, "[src]'s screen blinks and says \"Launch command accepted\".")
+						shipwide_ai_announcement("Launch command received. [lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "Port" : "Starboard"] Lifeboat doors will close in 10 seconds.")
+						addtimer(CALLBACK(lifeboat, TYPE_PROC_REF(/obj/docking_port/mobile/crashable/lifeboat, evac_launch)), 10 SECONDS)
+						lifeboat.alarm_sound_loop.start()
+						lifeboat.playing_launch_announcement_alarm = TRUE
+						return
+
+					if ("Emergency Launch")
+						launch_initiated = TRUE
+						to_chat(user, "[src]'s screen blinks and says \"Emergency Launch command accepted\".")
+						lifeboat.evac_launch()
+						shipwide_ai_announcement("Emergency Launch command received. Launching [lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "Port" : "Starboard"] Lifeboat.")
+						return
+
 			if(SHUTTLE_IGNITING)
-				to_chat(user, SPAN_NOTICE("\The [src]'s screen says \"Engines firing\"."))
+				to_chat(user, SPAN_NOTICE("[src]'s screen says \"Engines firing\"."))
 			if(SHUTTLE_CALL)
-				to_chat(user, SPAN_NOTICE("\The [src] has flight information scrolling across the screen. The autopilot is working correctly."))
+				to_chat(user, SPAN_NOTICE("[src] has flight information scrolling across the screen. The autopilot is working correctly."))
 
 /obj/structure/machinery/computer/shuttle/lifeboat/attack_alien(mob/living/carbon/xenomorph/xeno)
 	if(xeno.caste && xeno.caste.is_intelligent)
-		var/obj/docking_port/mobile/lifeboat/lifeboat = SSshuttle.getShuttle(shuttleId)
+		var/obj/docking_port/mobile/crashable/lifeboat/lifeboat = SSshuttle.getShuttle(shuttleId)
 		if(lifeboat.status == LIFEBOAT_LOCKED)
 			to_chat(xeno, SPAN_WARNING("We already wrested away control of this metal bird."))
+			return XENO_NO_DELAY_ACTION
+		if(lifeboat.mode == SHUTTLE_CALL)
+			to_chat(xeno, SPAN_WARNING("Too late, you cannot stop the metal bird mid-flight."))
 			return XENO_NO_DELAY_ACTION
 
 		xeno_attack_delay(xeno)
 		if(do_after(usr, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			if(lifeboat.status != LIFEBOAT_LOCKED)
-				lifeboat.status = LIFEBOAT_LOCKED
-				lifeboat.available = FALSE
-				lifeboat.set_mode(SHUTTLE_IDLE)
-				xeno_message(SPAN_XENOANNOUNCE("We have wrested away control of one of the metal birds! They shall not escape!"), 3, xeno.hivenumber)
+			if(lifeboat.status == LIFEBOAT_LOCKED)
+				return XENO_NO_DELAY_ACTION
+			if(lifeboat.mode == SHUTTLE_CALL)
+				to_chat(xeno, SPAN_WARNING("Too late, you cannot stop the metal bird mid-flight."))
+				return XENO_NO_DELAY_ACTION
+			lifeboat.status = LIFEBOAT_LOCKED
+			lifeboat.available = FALSE
+			lifeboat.set_mode(SHUTTLE_IDLE)
+			var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock = lifeboat.get_docked()
+			lifeboat_dock.open_dock()
+			xeno_message(SPAN_XENOANNOUNCE("We have wrested away control of one of the metal birds! They shall not escape!"), 3, xeno.hivenumber)
 		return XENO_NO_DELAY_ACTION
 	else
 		return ..()

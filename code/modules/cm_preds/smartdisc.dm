@@ -163,7 +163,7 @@
 /mob/living/simple_animal/hostile/smartdisc/Collided(atom/movable/AM)
 	return
 
-/mob/living/simple_animal/hostile/smartdisc/bullet_act(obj/item/projectile/Proj)
+/mob/living/simple_animal/hostile/smartdisc/bullet_act(obj/projectile/Proj)
 	if(prob(60 - Proj.damage))
 		return 0
 

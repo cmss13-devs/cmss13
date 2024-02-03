@@ -14,11 +14,11 @@
 	. = ..()
 
 	begin_decay_time = world.timeofday + QUEEN_OVIPOSITOR_DECAY_TIME
-	START_PROCESSING(SSeffects, src) // Process every second
+	START_PROCESSING(SSoldeffects, src) // Process every second
 
 /obj/ovipositor/Destroy()
 	if(!decayed && !destroyed)
-		STOP_PROCESSING(SSeffects, src)
+		STOP_PROCESSING(SSoldeffects, src)
 
 	return ..()
 
@@ -32,7 +32,7 @@
 
 /obj/ovipositor/proc/do_decay()
 	decayed = TRUE
-	STOP_PROCESSING(SSeffects, src)
+	STOP_PROCESSING(SSoldeffects, src)
 
 	icon_state = "ovipositor_molted"
 	flick("ovipositor_decay", src)
@@ -46,7 +46,7 @@
 
 /obj/ovipositor/proc/explode()
 	destroyed = TRUE
-	STOP_PROCESSING(SSeffects, src)
+	STOP_PROCESSING(SSoldeffects, src)
 
 	icon_state = "ovipositor_gibbed"
 	flick("ovipositor_explosion", src)
@@ -89,9 +89,9 @@
 	SPAN_DANGER("You nudge your head against [src]."))
 
 // Density override
-/obj/ovipositor/get_projectile_hit_boolean(obj/item/projectile/P)
+/obj/ovipositor/get_projectile_hit_boolean(obj/projectile/P)
 	return TRUE
 
-/obj/ovipositor/bullet_act(obj/item/projectile/Proj)
+/obj/ovipositor/bullet_act(obj/projectile/Proj)
 	health -= Proj.damage
 	return 1

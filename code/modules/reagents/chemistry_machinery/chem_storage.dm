@@ -31,11 +31,11 @@
 
 /obj/structure/machinery/chem_storage/Initialize()
 	. = ..()
-	chemical_data.add_chem_storage(src)
+	GLOB.chemical_data.add_chem_storage(src)
 	start_processing()
 
 /obj/structure/machinery/chem_storage/Destroy()
-	chemical_data.remove_chem_storage(src)
+	GLOB.chemical_data.remove_chem_storage(src)
 	return ..()
 
 /obj/structure/machinery/chem_storage/get_examine_text(mob/user)
@@ -57,4 +57,4 @@
 	if(energy >= max_energy)
 		return
 	energy = min(energy + recharge_rate, max_energy)
-	use_power(1500) // This thing uses up alot of power (this is still low as shit for creating reagents from thin air)
+	use_power(1500) // This thing uses up a lot of power (this is still low as shit for creating reagents from thin air)

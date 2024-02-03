@@ -8,8 +8,8 @@
 	//When we get into galloping mode, we stay there until both runs win less often than MIN_GALLOP consecutive times.
 #define MIN_GALLOP 7
 
-	//This is a global instance to allow much of this code to be reused. The interfaces are kept separately
-var/datum/sortInstance/sortInstance = new()
+//This is a global instance to allow much of this code to be reused. The interfaces are kept separately
+GLOBAL_DATUM_INIT(sortInstance, /datum/sortInstance, new())
 /datum/sortInstance
 	//The array being sorted.
 	var/list/L
@@ -393,7 +393,7 @@ var/datum/sortInstance/sortInstance = new()
 			var/count1 = 0 //# of times in a row that first run won
 			var/count2 = 0 // " " " " " "  second run won
 
-			//do the straightfoward thin until one run starts winning consistently
+			//do the straightforward thin until one run starts winning consistently
 
 			do
 				//ASSERT(len1 > 1 && len2 > 0)
@@ -493,7 +493,7 @@ var/datum/sortInstance/sortInstance = new()
 			var/count1 = 0 //# of times in a row that first run won
 			var/count2 = 0 // " " " " " "  second run won
 
-			//do the straightfoward thing until one run starts winning consistently
+			//do the straightforward thing until one run starts winning consistently
 			do
 				//ASSERT(len1 > 0 && len2 > 1)
 				if(call(cmp)(fetchElement(L,cursor2), fetchElement(L,cursor1)) < 0)

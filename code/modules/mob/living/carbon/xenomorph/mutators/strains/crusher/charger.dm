@@ -82,7 +82,7 @@
 				return
 
 /datum/behavior_delegate/crusher_charger/on_update_icons()
-	if(HAS_TRAIT(bound_xeno, TRAIT_CHARGING) && !bound_xeno.lying)
+	if(HAS_TRAIT(bound_xeno, TRAIT_CHARGING) && bound_xeno.body_position == STANDING_UP)
 		bound_xeno.icon_state = "[bound_xeno.mutation_icon_state || bound_xeno.mutation_type] Crusher Charging"
 		return TRUE
 
@@ -346,8 +346,8 @@
 	take_overall_armored_damage(charger_ability.momentum * momentum_mult, ARMOR_MELEE, BRUTE, 60, 13) // Giving AP because this spreads damage out and then applies armor to them
 	apply_armoured_damage(charger_ability.momentum * momentum_mult/4, ARMOR_MELEE, BRUTE,"chest")
 	xeno.visible_message(
-		SPAN_DANGER("[xeno] rams \the [src]!"),
-		SPAN_XENODANGER("You ram \the [src]!")
+		SPAN_DANGER("[xeno] rams [src]!"),
+		SPAN_XENODANGER("You ram [src]!")
 	)
 	var/knockdown = 1
 	if(charger_ability.momentum == charger_ability.max_momentum)
@@ -385,8 +385,8 @@
 		if(HAS_TRAIT(src, TRAIT_CHARGING))
 			apply_effect(2, WEAKEN)
 			xeno.apply_effect(2, WEAKEN)
-			src.throw_atom(pick(cardinal),1,3,xeno,TRUE)
-			xeno.throw_atom(pick(cardinal),1,3,xeno,TRUE)
+			src.throw_atom(pick(GLOB.cardinals),1,3,xeno,TRUE)
+			xeno.throw_atom(pick(GLOB.cardinals),1,3,xeno,TRUE)
 			charger_ability.stop_momentum() // We assume the other crusher'sparks handle_charge_collision() kicks in and stuns us too.
 			playsound(get_turf(xeno), 'sound/effects/bang.ogg', 25, 0)
 			return
@@ -417,8 +417,8 @@
 		momentum_mult = 8
 	take_overall_damage(charger_ability.momentum * momentum_mult)
 	xeno.visible_message(
-		SPAN_DANGER("[xeno] rams \the [src]!"),
-		SPAN_XENODANGER("You ram \the [src]!")
+		SPAN_DANGER("[xeno] rams [src]!"),
+		SPAN_XENODANGER("You ram [src]!")
 	)
 	var/knockdown = 1
 	if(charger_ability.momentum == charger_ability.max_momentum)
@@ -470,8 +470,8 @@
 	var/datum/effect_system/spark_spread/sparks = new
 	sparks.set_up(5, 1, loc)
 	xeno.visible_message(
-		SPAN_DANGER("[xeno] rams \the [src]!"),
-		SPAN_XENODANGER("You ram \the [src]!")
+		SPAN_DANGER("[xeno] rams [src]!"),
+		SPAN_XENODANGER("You ram [src]!")
 	)
 	if(health <= CHARGER_DAMAGE_SENTRY)
 		new /obj/effect/spawner/gibspawner/robot(src.loc) // if we goin down ,we going down with a show.
@@ -488,37 +488,78 @@
 // Marine MGs
 
 /obj/structure/machinery/m56d_hmg/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
-	if(charger_ability.momentum > CCA_MOMENTUM_LOSS_MIN)
-		CrusherImpact()
-		var/datum/effect_system/spark_spread/sparks = new
-		update_health(charger_ability.momentum * 15)
-		if(operator) operator.emote("pain")
-		sparks.set_up(1, 1, loc)
-		sparks.start()
-		xeno.visible_message(
-			SPAN_DANGER("[xeno] rams \the [src]!"),
-			SPAN_XENODANGER("You ram \the [src]!")
-		)
-		playsound(src, "sound/effects/metal_crash.ogg", 25, TRUE)
-		if(istype(src,/obj/structure/machinery/m56d_hmg/auto)) // we don't want to charge it to the point of downgrading it (:
-			var/obj/item/device/m2c_gun/HMG = new(src.loc)
-			HMG.health = src.health
-			transfer_label_component(HMG)
-			HMG.rounds = src.rounds //Inherent the amount of ammo we had.
-			HMG.update_icon()
-			qdel(src)
-		else
-			var/obj/item/device/m56d_gun/HMG = new(src.loc) // note: find a better way than a copy pasted else statement
-			HMG.health = src.health
-			transfer_label_component(HMG)
-			HMG.rounds = src.rounds //Inherent the amount of ammo we had.
-			HMG.has_mount = TRUE
-			HMG.update_icon()
-			qdel(src) //Now we clean up the constructed gun.
+	if(charger_ability.momentum <= CCA_MOMENTUM_LOSS_MIN)
+		charger_ability.stop_momentum()
+		return
+
+	CrusherImpact()
+	update_health(charger_ability.momentum * 15)
+	var/datum/effect_system/spark_spread/sparks = new
+	sparks.set_up(1, 1, loc)
+	sparks.start()
+	xeno.visible_message(
+		SPAN_DANGER("[xeno] rams [src]!"),
+		SPAN_XENODANGER("You ram [src]!")
+	)
+	playsound(src, "sound/effects/metal_crash.ogg", 25, TRUE)
+
 	if(QDELETED(src))
+		// The crash destroyed it
 		charger_ability.lose_momentum(CCA_MOMENTUM_LOSS_MIN) //Lose one turfs worth of speed
 		return XENO_CHARGE_TRY_MOVE
-	charger_ability.stop_momentum()
+
+	// Undeploy
+	if(istype(src, /obj/structure/machinery/m56d_hmg/auto)) // we don't want to charge it to the point of downgrading it (:
+		var/obj/item/device/m2c_gun/HMG = new(loc)
+		HMG.health = health
+		transfer_label_component(HMG)
+		HMG.rounds = rounds
+		HMG.update_icon()
+		qdel(src)
+	else
+		var/obj/item/device/m56d_gun/HMG = new(loc)
+		HMG.health = health
+		transfer_label_component(HMG)
+		HMG.rounds = rounds
+		HMG.has_mount = TRUE
+		HMG.update_icon()
+		qdel(src) //Now we clean up the constructed gun.
+
+/obj/structure/machinery/m56d_post/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+	if(charger_ability.momentum <= CCA_MOMENTUM_LOSS_MIN)
+		charger_ability.stop_momentum()
+		return
+
+	update_health(charger_ability.momentum * 15)
+	var/datum/effect_system/spark_spread/sparks = new
+	sparks.set_up(1, 1, loc)
+	sparks.start()
+	xeno.visible_message(
+		SPAN_DANGER("[xeno] rams [src]!"),
+		SPAN_XENODANGER("You ram [src]!")
+	)
+	playsound(src, "sound/effects/metal_crash.ogg", 25, TRUE)
+
+	if(QDELETED(src))
+		// The crash destroyed it
+		charger_ability.lose_momentum(CCA_MOMENTUM_LOSS_MIN) //Lose one turfs worth of speed
+		return XENO_CHARGE_TRY_MOVE
+
+	// Undeploy
+	if(gun_mounted)
+		var/obj/item/device/m56d_gun/HMG = new(loc)
+		transfer_label_component(HMG)
+		HMG.rounds = gun_rounds
+		HMG.has_mount = TRUE
+		if(gun_health)
+			HMG.health = gun_health
+		HMG.update_icon()
+		qdel(src)
+	else
+		var/obj/item/device/m56d_post/post = new(loc)
+		post.health = health
+		transfer_label_component(post)
+		qdel(src)
 
 // Prison Windows
 
@@ -549,8 +590,8 @@
 		charger_ability.stop_momentum()
 		return
 	xeno.visible_message(
-		SPAN_DANGER("[xeno] rams \the [src]!"),
-		SPAN_XENODANGER("You ram \the [src]!")
+		SPAN_DANGER("[xeno] rams [src]!"),
+		SPAN_XENODANGER("You ram [src]!")
 	)
 	playsound(src, "sound/effects/metalhit.ogg", 25, TRUE)
 	qdel(src)
@@ -569,8 +610,8 @@
 		charger_ability.stop_momentum()
 		return
 	xeno.visible_message(
-		SPAN_DANGER("[xeno] rams \the [src]!"),
-		SPAN_XENODANGER("You ram \the [src]!")
+		SPAN_DANGER("[xeno] rams [src]!"),
+		SPAN_XENODANGER("You ram [src]!")
 	)
 	playsound(src, "sound/effects/metalhit.ogg", 25, TRUE)
 	qdel(src)

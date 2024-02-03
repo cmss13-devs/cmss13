@@ -9,7 +9,7 @@ SUBSYSTEM_DEF(atoms)
 	flags = SS_NO_FIRE
 
 	var/old_initialized
-	/// A count of how many initalize changes we've made. We want to prevent old_initialize being overriden by some other value, breaking init code
+	/// A count of how many initalize changes we've made. We want to prevent old_initialize being overridden by some other value, breaking init code
 	var/initialized_changed = 0
 	var/init_start_time
 	var/processing_late_loaders = FALSE
@@ -131,7 +131,7 @@ SUBSYSTEM_DEF(atoms)
 
 	switch(result)
 		if (INITIALIZE_HINT_NORMAL)
-			// pass
+			pass()
 		if(INITIALIZE_HINT_LATELOAD)
 			if(arguments[1]) //mapload
 				late_loaders += A
@@ -183,7 +183,7 @@ SUBSYSTEM_DEF(atoms)
 /datum/controller/subsystem/atoms/proc/map_loader_stop()
 	clear_tracked_initalize()
 
-/// Use this to set initialized to prevent error states where old_initialized is overriden. It keeps happening and it's cheesing me off
+/// Use this to set initialized to prevent error states where old_initialized is overridden. It keeps happening and it's cheesing me off
 /datum/controller/subsystem/atoms/proc/set_tracked_initalized(value)
 	if(!initialized_changed)
 		old_initialized = initialized

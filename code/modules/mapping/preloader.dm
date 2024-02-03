@@ -22,10 +22,12 @@ GLOBAL_DATUM_INIT(_preloader, /datum/map_preloader, new)
 			value = deepCopyList(value)
 		what.vars[attribute] = value
 
+/// Area passthrough: do not instanciate a new area, reuse the current one
 /area/template_noop
 	name = "Area Passthrough"
 	icon_state = "noop"
 
+/// Turf passthrough: do not instanciate a new turf, reuse the current one
 /turf/template_noop
 	name = "Turf Passthrough"
 	icon_state = "noop"

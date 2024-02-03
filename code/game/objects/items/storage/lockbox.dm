@@ -51,14 +51,13 @@
 
 /obj/item/storage/lockbox/loyalty
 	name = "\improper Wey-Yu equipment lockbox"
-	req_access = list(ACCESS_WY_CORPORATE)
+	req_access = null
+	req_one_access = list(ACCESS_WY_EXEC, ACCESS_WY_SECURITY)
 
 /obj/item/storage/lockbox/loyalty/fill_preset_inventory()
-	new /obj/item/ammo_magazine/pistol/mod88(src)
-	new /obj/item/ammo_magazine/pistol/mod88(src)
-	new /obj/item/ammo_magazine/pistol/mod88/rubber(src)
-	new /obj/item/ammo_magazine/pistol/mod88/rubber(src)
-
+	new /obj/item/ammo_magazine/pistol/es4(src)
+	new /obj/item/ammo_magazine/pistol/es4(src)
+	new /obj/item/ammo_magazine/pistol/es4(src)
 
 /obj/item/storage/lockbox/cluster
 	name = "lockbox of cluster flashbangs"

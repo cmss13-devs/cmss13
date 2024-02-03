@@ -23,9 +23,8 @@ export interface NavigationProps {
   locked_down: 0 | 1;
 }
 
-export const CancelLaunchButton = (_, context) => {
+export const CancelLaunchButton = () => {
   const [siteselection, setSiteSelection] = useSharedState<string | undefined>(
-    context,
     'target_site',
     undefined
   );
@@ -39,10 +38,9 @@ export const CancelLaunchButton = (_, context) => {
   );
 };
 
-export const LaunchButton = (_, context) => {
-  const { act } = useBackend<NavigationProps>(context);
-  const [siteselection] = useSharedState<string | undefined>(
-    context,
+export const LaunchButton = () => {
+  const { act } = useBackend<NavigationProps>();
+  const [siteselection, setSiteSelection] = useSharedState<string | undefined>(
     'target_site',
     undefined
   );
@@ -50,16 +48,18 @@ export const LaunchButton = (_, context) => {
     <Button
       icon="rocket"
       disabled={siteselection === undefined}
-      onClick={() => act('move', { target: siteselection })}>
+      onClick={() => {
+        act('move', { target: siteselection });
+        setSiteSelection(undefined);
+      }}>
       Launch
     </Button>
   );
 };
 
-export const DestionationSelection = (_, context) => {
-  const { data, act } = useBackend<NavigationProps>(context);
+export const DestionationSelection = () => {
+  const { data, act } = useBackend<NavigationProps>();
   const [siteselection, setSiteSelection] = useSharedState<string | undefined>(
-    context,
     'target_site',
     undefined
   );
@@ -106,8 +106,8 @@ export const DestionationSelection = (_, context) => {
   );
 };
 
-export const ShuttleRecharge = (_, context) => {
-  const { data } = useBackend<NavigationProps>(context);
+export const ShuttleRecharge = () => {
+  const { data } = useBackend<NavigationProps>();
   return (
     <Section title="Refueling in progress">
       <div className="LaunchCountdown">
@@ -130,8 +130,8 @@ export const ShuttleRecharge = (_, context) => {
   );
 };
 
-export const LaunchCountdown = (_, context) => {
-  const { data } = useBackend<NavigationProps>(context);
+export const LaunchCountdown = () => {
+  const { data } = useBackend<NavigationProps>();
   return (
     <Section title="Launch in progress">
       <div className="LaunchCountdown">
@@ -155,10 +155,16 @@ export const LaunchCountdown = (_, context) => {
   );
 };
 
-export const InFlightCountdown = (_, context) => {
-  const { data } = useBackend<NavigationProps>(context);
+export const InFlightCountdown = () => {
+  const { data, act } = useBackend<NavigationProps>();
   return (
-    <Section title={`In flight: ${data.target_destination}`}>
+    <Section
+      title={`In flight: ${data.target_destination}`}
+      buttons={
+        data.target_destination === 'Flyby' && (
+          <Button onClick={() => act('cancel-flyby')}>Cancel</Button>
+        )
+      }>
       <div className="InFlightCountdown">
         <Stack vertical>
           <Stack.Item>
@@ -179,8 +185,8 @@ export const InFlightCountdown = (_, context) => {
   );
 };
 
-const DoorControls = (_, context) => {
-  const { data, act } = useBackend<NavigationProps>(context);
+const DoorControls = () => {
+  const { data, act } = useBackend<NavigationProps>();
   const in_flight = data.shuttle_mode === 'called';
   const disable_door_controls = in_flight;
   const disable_normal_control = data.locked_down === 1;
@@ -229,7 +235,7 @@ const DoorControls = (_, context) => {
   );
 };
 
-export const DisabledScreen = (props, context) => {
+export const DisabledScreen = (props) => {
   return (
     <Box className="DisabledScreen">
       <div>
@@ -242,8 +248,8 @@ export const DisabledScreen = (props, context) => {
   );
 };
 
-const RenderScreen = (props, context) => {
-  const { data } = useBackend<NavigationProps>(context);
+const RenderScreen = (props) => {
+  const { data } = useBackend<NavigationProps>();
   return (
     <>
       {data.shuttle_mode === 'idle' && <DestionationSelection />}
@@ -255,8 +261,8 @@ const RenderScreen = (props, context) => {
   );
 };
 
-export const NavigationShuttle = (props, context) => {
-  const { data } = useBackend<NavigationProps>(context);
+export const NavigationShuttle = (props) => {
+  const { data } = useBackend<NavigationProps>();
   return (
     <Window theme="crtgreen" height={500} width={700}>
       <Window.Content className="NavigationMenu">

@@ -18,7 +18,7 @@
 	unslashable = TRUE
 	indestructible = TRUE
 
-/obj/structure/interior_wall/get_projectile_hit_boolean(obj/item/projectile/P)
+/obj/structure/interior_wall/get_projectile_hit_boolean(obj/projectile/P)
 	return FALSE
 
 /obj/structure/interior_wall/ex_act()
@@ -41,7 +41,7 @@
 
 	alpha = 80
 
-/obj/effect/vehicle_roof/get_projectile_hit_boolean(obj/item/projectile/P)
+/obj/effect/vehicle_roof/get_projectile_hit_boolean(obj/projectile/P)
 	return FALSE
 
 /obj/effect/vehicle_roof/ex_act()

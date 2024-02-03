@@ -1,4 +1,4 @@
-var/list/datum/decorator/manual/admin_runtime/admin_runtime_decorators = list()
+GLOBAL_LIST_INIT_TYPED(admin_runtime_decorators, /datum/decorator/manual/admin_runtime, list())
 
 /client/proc/set_autoreplacer()
 	set category = "Admin.Events"
@@ -30,9 +30,9 @@ var/list/datum/decorator/manual/admin_runtime/admin_runtime_decorators = list()
 		if("No")
 			return
 
-	admin_runtime_decorators.Add(SSdecorator.add_decorator(/datum/decorator/manual/admin_runtime, types, subtypes, field, value))
+	GLOB.admin_runtime_decorators.Add(SSdecorator.add_decorator(/datum/decorator/manual/admin_runtime, types, subtypes, field, value))
 
-	log_and_message_admins("[src] activated new decorator id: [admin_runtime_decorators.len] set for [hint_text] `[types]` for field `[field]` set value `[value]`")
+	log_and_message_admins("[src] activated new decorator id: [GLOB.admin_runtime_decorators.len] set for [hint_text] `[types]` for field `[field]` set value `[value]`")
 
 /client/proc/deactivate_autoreplacer()
 	set category = "Admin.Events"
@@ -47,7 +47,7 @@ var/list/datum/decorator/manual/admin_runtime/admin_runtime_decorators = list()
 	if(!num_value)
 		return
 
-	admin_runtime_decorators[num_value].enabled = FALSE
+	GLOB.admin_runtime_decorators[num_value].enabled = FALSE
 
 	log_and_message_admins("[src] deactivated decorator id: [num_value]")
 

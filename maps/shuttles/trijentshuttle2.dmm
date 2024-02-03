@@ -43,6 +43,17 @@
 	},
 /turf/open/shuttle/escapepod,
 /area/shuttle/trijent_shuttle/elevator)
+"n" = (
+/obj/structure/machinery/power/apc{
+	dir = 1;
+	pixel_y = 26;
+	start_charge = 0
+	},
+/obj/item/tool/wirecutters{
+	pixel_y = -7
+	},
+/turf/open/floor/plating,
+/area/shuttle/trijent_shuttle/elevator)
 "o" = (
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 1
@@ -55,6 +66,14 @@
 /area/shuttle/trijent_shuttle/elevator)
 "q" = (
 /turf/closed/shuttle/elevator/freight,
+/area/shuttle/trijent_shuttle/elevator)
+"r" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/shuttle/escapepod,
 /area/shuttle/trijent_shuttle/elevator)
 "s" = (
 /turf/closed/shuttle/elevator{
@@ -79,6 +98,17 @@
 	dir = 8
 	},
 /area/shuttle/trijent_shuttle/elevator)
+"w" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/tool/screwdriver{
+	layer = 3.6;
+	pixel_x = 9;
+	pixel_y = 8
+	},
+/turf/open/shuttle/escapepod{
+	icon_state = "floor11"
+	},
+/area/shuttle/trijent_shuttle/elevator)
 "A" = (
 /turf/closed/shuttle/elevator{
 	dir = 9
@@ -91,6 +121,17 @@
 	},
 /turf/open/shuttle/escapepod,
 /area/shuttle/trijent_shuttle/elevator)
+"I" = (
+/obj/item/tool/crowbar/red{
+	pixel_x = -13;
+	pixel_y = -13
+	},
+/obj/item/stack/cable_coil{
+	pixel_x = 1;
+	pixel_y = 10
+	},
+/turf/open/shuttle/escapepod,
+/area/shuttle/trijent_shuttle/elevator)
 "J" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 4;
@@ -99,6 +140,18 @@
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
 	},
+/area/shuttle/trijent_shuttle/elevator)
+"O" = (
+/obj/item/limb/hand/r_hand,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/shuttle/escapepod,
+/area/shuttle/trijent_shuttle/elevator)
+"P" = (
+/obj/item/storage/toolbox/mechanical/green{
+	pixel_y = 8
+	},
+/obj/item/circuitboard/apc,
+/turf/open/shuttle/escapepod,
 /area/shuttle/trijent_shuttle/elevator)
 "Q" = (
 /turf/open/shuttle/escapepod{
@@ -123,11 +176,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	dir = 1
-	},
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 26;
-	start_charge = 0
 	},
 /turf/open/shuttle/escapepod,
 /area/shuttle/trijent_shuttle/elevator)
@@ -158,30 +206,30 @@ h
 (2,1,1) = {"
 d
 R
-l
+r
 l
 t
 s
 "}
 (3,1,1) = {"
 k
-a
+I
 W
 c
-a
+O
 s
 "}
 (4,1,1) = {"
 q
-a
-Q
+n
+w
 Y
 a
 s
 "}
 (5,1,1) = {"
 u
-a
+P
 Q
 b
 a

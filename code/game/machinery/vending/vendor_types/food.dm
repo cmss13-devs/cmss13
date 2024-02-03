@@ -25,6 +25,27 @@
 		list("W-Y Flask", 5, /obj/item/reagent_container/food/drinks/flask/weylandyutani, VENDOR_ITEM_REGULAR)
 	)
 
+/obj/structure/machinery/cm_vending/sorted/marine_food/tutorial
+	hackable = FALSE
+	wrenchable = FALSE
+	req_access = list(ACCESS_TUTORIAL_LOCKED)
+
+/obj/structure/machinery/cm_vending/sorted/marine_food/tutorial/populate_product_list(scale)
+	listed_products = list(
+		list("PREPARED MEALS", -1, null, null),
+		list("USCM Prepared Meal (Chicken)", 0, /obj/item/reagent_container/food/snacks/mre_pack/meal5, VENDOR_ITEM_REGULAR),
+		list("USCM Prepared Meal (Cornbread)", 0, /obj/item/reagent_container/food/snacks/mre_pack/meal1, VENDOR_ITEM_REGULAR),
+		list("USCM Prepared Meal (Pasta)", 0, /obj/item/reagent_container/food/snacks/mre_pack/meal3, VENDOR_ITEM_REGULAR),
+		list("USCM Prepared Meal (Pizza)", 0, /obj/item/reagent_container/food/snacks/mre_pack/meal4, VENDOR_ITEM_REGULAR),
+		list("USCM Prepared Meal (Pork)", 0, /obj/item/reagent_container/food/snacks/mre_pack/meal2, VENDOR_ITEM_REGULAR),
+		list("USCM Prepared Meal (Tofu)", 0, /obj/item/reagent_container/food/snacks/mre_pack/meal6, VENDOR_ITEM_REGULAR),
+		list("USCM Protein Bar", 1, /obj/item/reagent_container/food/snacks/protein_pack, VENDOR_ITEM_RECOMMENDED),
+		list("FLASKS", -1, null, null),
+		list("Canteen", 0, /obj/item/reagent_container/food/drinks/flask/canteen, VENDOR_ITEM_REGULAR),
+		list("Metal Flask", 0, /obj/item/reagent_container/food/drinks/flask, VENDOR_ITEM_REGULAR),
+		list("USCM Flask", 0, /obj/item/reagent_container/food/drinks/flask/marine, VENDOR_ITEM_REGULAR),
+		list("W-Y Flask", 0, /obj/item/reagent_container/food/drinks/flask/weylandyutani, VENDOR_ITEM_REGULAR)
+	)
 //------------BOOZE-O-MAT VENDOR---------------
 
 /obj/structure/machinery/cm_vending/sorted/boozeomat
@@ -38,8 +59,8 @@
 	unslashable = FALSE
 	wrenchable = TRUE
 
-/obj/structure/machinery/cm_vending/sorted/boozeomat/get_listed_products(mob/user)
-	return list(
+/obj/structure/machinery/cm_vending/sorted/boozeomat/populate_product_list(scale)
+	listed_products = list(
 		list("ALCOHOL", -1, null, null),
 		list("Ale", 6, /obj/item/reagent_container/food/drinks/cans/ale, VENDOR_ITEM_REGULAR),
 		list("Beer", 6, /obj/item/reagent_container/food/drinks/cans/beer, VENDOR_ITEM_REGULAR),
@@ -97,8 +118,8 @@
 	unslashable = FALSE
 	wrenchable = TRUE
 
-/obj/structure/machinery/cm_vending/sorted/boozeomat/chess/get_listed_products(mob/user)
-	return list(
+/obj/structure/machinery/cm_vending/sorted/boozeomat/chess/populate_product_list(scale)
+	listed_products = list(
 		list("White Pieces", -1, null, null),
 		list("Pawn", 2, /obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_pawn, VENDOR_ITEM_REGULAR),
 		list("Bishop", 2, /obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_bishop, VENDOR_ITEM_REGULAR),

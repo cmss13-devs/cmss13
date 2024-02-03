@@ -4,6 +4,8 @@
 
 /// From /obj/effect/alien/weeds/Initialize()
 #define COMSIG_WEEDNODE_GROWTH_COMPLETE "weednode_growth_complete"
+/// From /obj/effect/alien/weeds/Initialize()
+#define COMSIG_WEEDNODE_GROWTH "weednode_growth"
 /// From /obj/effect/alien/weeds/proc/on_weed_expand()
 #define COMSIG_WEEDNODE_CANNOT_EXPAND_FURTHER "weednode_cannot_expand_further"
 
@@ -22,3 +24,22 @@
 
 /// from /obj/structure/transmitter/update_icon()
 #define COMSIG_TRANSMITTER_UPDATE_ICON "transmitter_update_icon"
+
+#define COMSIG_TENT_COLLAPSING "tent_collapsing"
+
+/// from /obj/proc/afterbuckle()
+#define COSMIG_OBJ_AFTER_BUCKLE "signal_obj_after_buckle"
+
+/// from /obj/structure/machinery/cryopod/go_out()
+#define COMSIG_CRYOPOD_GO_OUT "cryopod_go_out"
+
+/// from /proc/vendor_successful_vend() : (obj/structure/machinery/cm_vending/vendor, list/itemspec, mob/living/carbon/human/user)
+#define COMSIG_VENDOR_SUCCESSFUL_VEND "vendor_successful_vend"
+
+/// from /obj/limb/proc/remove_all_bleeding() : (external, internal)
+#define COMSIG_LIMB_STOP_BLEEDING "limb_stop_bleeding"
+
+#define COMSIG_DROPSHIP_ADD_EQUIPMENT "dropship_add_equipment"
+#define COMSIG_DROPSHIP_REMOVE_EQUIPMENT "dropship_remove_equipment"
+
+#define COMSIG_STRUCTURE_CRATE_SQUAD_LAUNCHED "structure_crate_squad_launched"

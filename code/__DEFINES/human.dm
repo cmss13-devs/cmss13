@@ -116,14 +116,15 @@
 #define ORDER_FOCUS_MAX_LEVEL   50
 
 //Human Overlays Indexes used in update_icons/////////
-#define UNDERWEAR_LAYER 41
-#define UNDERSHIRT_LAYER 40
-#define MUTANTRACE_LAYER 39
+#define BODYPARTS_LAYER 42
+#define DAMAGE_LAYER 41
+
+#define UNDERWEAR_LAYER 40
+#define UNDERSHIRT_LAYER 39
+#define MUTANTRACE_LAYER 38
 
 /// For use by Hunter Flay
-#define FLAY_LAYER 38
-
-#define DAMAGE_LAYER 37
+#define FLAY_LAYER 37
 #define UNIFORM_LAYER 36
 
 /// bs12 specific. this hack is probably gonna come back to haunt me
@@ -176,7 +177,7 @@
 /// If you're hit by an acid DoT
 #define EFFECTS_LAYER 1
 
-#define TOTAL_LAYERS 41
+#define TOTAL_LAYERS 42
 //////////////////////////////////
 
 //Synthetic Defines
@@ -213,8 +214,3 @@
 #define RELIGION_AGNOSTICISM "Agnostic"
 
 #define MAXIMUM_DROPPED_OBJECTS_REMEMBERED 2
-
-///////////////////MISC HUMAN FLAGS (LINKED TO VAR: FLAGS_HUMAN_MISC)///////////////////
-
-#define HUMAN_FLAG_CHANGED (1<<0)
-

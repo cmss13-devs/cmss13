@@ -1,5 +1,7 @@
 GLOBAL_LIST_INIT(damage_boost_turfs, typecacheof(/turf))
 
+GLOBAL_LIST_INIT(damage_boost_turfs_xeno, typecacheof(/turf/closed/wall/resin))
+
 GLOBAL_LIST_INIT(damage_boost_breaching, typecacheof(list(
 	/obj/structure/machinery/door,
 	/obj/structure/mineral_door,
@@ -44,7 +46,7 @@ GLOBAL_LIST_INIT(damage_boost_vehicles, typecacheof(/obj/vehicle/multitile))
  */
 /datum/element/bullet_trait_damage_boost/Attach(datum/target, damage_mult, list/damage_boosted_atoms)
 	. = ..()
-	if(!istype(target, /obj/item/projectile))
+	if(!istype(target, /obj/projectile))
 		return ELEMENT_INCOMPATIBLE
 
 	src.damage_mult = damage_mult
@@ -66,7 +68,7 @@ GLOBAL_LIST_INIT(damage_boost_vehicles, typecacheof(/obj/vehicle/multitile))
 	//add more cases for other interactions (switch doesn't seem to work with istype)
 	else return 0
 
-/datum/element/bullet_trait_damage_boost/proc/handle_bullet(obj/item/projectile/P, atom/A)
+/datum/element/bullet_trait_damage_boost/proc/handle_bullet(obj/projectile/P, atom/A)
 	SIGNAL_HANDLER
 
 	atom_type = check_type(A)

@@ -33,5 +33,3 @@
 	if(!typestr)
 		typestr = /datum/db/connection_settings/native
 	return new typestr(config)
-
-var/global/datum/db/connection_settings/connection_settings

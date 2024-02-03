@@ -52,7 +52,6 @@
 	},
 /area/bigredv2/outside/chapel)
 "aj" = (
-/obj/item/changestone,
 /turf/open/floor{
 	icon_state = "darkish"
 	},

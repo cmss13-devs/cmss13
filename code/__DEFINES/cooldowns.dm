@@ -1,7 +1,9 @@
 #define COOLDOWN_MOB_AUDIO "mob_audio_cooldown"
 #define COOLDOWN_IDLOCK_TEXTALERT "mob_idlock_textalert"
 #define COOLDOWN_HIJACK_BARRAGE "gamemode_explosive_barrage"
+#define COOLDOWN_HIJACK_GROUND_CHECK "gamemode_ground_check"
 #define COOLDOWN_ITEM_HOOD_SOUND "item_hood_sound"
+#define COOLDOWN_LIGHT "cooldown_light"
 
 //Define for ship alt
 #define COOLDOWN_ALTITUDE_CHANGE "altitude_change"

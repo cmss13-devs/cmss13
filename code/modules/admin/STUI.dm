@@ -40,7 +40,7 @@ GLOBAL_DATUM_INIT(STUI, /datum/STUI, new)
 
 /datum/STUI/New()
 	. = ..()
-	if(length(stui_init_runtimes)) // Report existing errors that might have occured during static initializers
+	if(length(stui_init_runtimes)) // Report existing errors that might have occurred during static initializers
 		runtime = stui_init_runtimes.Copy()
 
 /datum/STUI/Topic(href, href_list)

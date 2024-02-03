@@ -19,6 +19,7 @@
 
 	movement_force = list("KNOCKDOWN" = 0, "THROW" = 0)
 	var/datum/door_controller/aggregate/door_control
+	var/elevator_network
 
 /obj/docking_port/mobile/trijent_elevator/Initialize(mapload, ...)
 	. = ..()
@@ -36,6 +37,12 @@
 	. = ..()
 	door_control.control_doors("force-lock-launch", "all", force=TRUE)
 
+/obj/docking_port/mobile/trijent_elevator/linkup(datum/map_template/shuttle/template, obj/docking_port/stationary/dock)
+	..()
+	var/datum/map_template/shuttle/trijent_elevator/elev = template
+	elevator_network = elev.elevator_network
+	log_debug("Adding network [elev.elevator_network] to [id]")
+
 /obj/docking_port/stationary/trijent_elevator
 	dir=NORTH
 	width=7
@@ -43,6 +50,7 @@
 	// shutters to clear the area
 	var/airlock_area
 	var/airlock_exit
+	var/elevator_network
 
 /obj/docking_port/stationary/trijent_elevator/proc/get_doors()
 	. = list()
@@ -74,6 +82,17 @@
 	door_control.control_doors("force-lock-launch")
 	qdel(door_control)
 
+/obj/docking_port/stationary/trijent_elevator/occupied
+	name = "occupied"
+	id = STAT_TRIJENT_OCCUPIED
+	airlock_exit = "west"
+	roundstart_template = /datum/map_template/shuttle/trijent_elevator
+
+/obj/docking_port/stationary/trijent_elevator/empty
+	name = "empty"
+	id = STAT_TRIJENT_EMPTY
+	airlock_exit = "west"
+
 /obj/docking_port/stationary/trijent_elevator/lz1
 	name="Lz1 Elevator"
 	id=STAT_TRIJENT_LZ1
@@ -98,7 +117,3 @@
 	id=STAT_TRIJENT_OMEGA
 	airlock_area=/area/shuttle/trijent_shuttle/omega
 	airlock_exit="east"
-
-/datum/map_template/shuttle/trijent_elevator
-	name = "Trijent Elevator"
-	shuttle_id = MOBILE_TRIJENT_ELEVATOR

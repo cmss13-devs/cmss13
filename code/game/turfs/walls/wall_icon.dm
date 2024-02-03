@@ -19,6 +19,8 @@
 		icon_state = "blank"
 		var/image/I
 
+		flags_atom |= HTML_USE_INITAL_ICON
+
 		if(!density)
 			I = image(icon, "[walltype]fwall_open")
 			overlays += I
@@ -84,7 +86,7 @@
 				break
 
 		if(success)
-			if(get_dir(src, T) in cardinal)
+			if(get_dir(src, T) in GLOB.cardinals)
 				wall_dirs += get_dir(src, T)
 
 	for(var/neighbor in wall_dirs)

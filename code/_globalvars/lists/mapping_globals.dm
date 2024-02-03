@@ -27,6 +27,7 @@ GLOBAL_LIST_EMPTY(latewhiskey)
 
 GLOBAL_LIST_EMPTY(latejoin)
 GLOBAL_LIST_EMPTY(latejoin_by_squad)
+GLOBAL_LIST_EMPTY(latejoin_by_job)
 
 GLOBAL_LIST_EMPTY(zombie_landmarks)
 

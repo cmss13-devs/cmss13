@@ -323,12 +323,24 @@
 	item_state = "syn_breacher"
 	force_wielded = MELEE_FORCE_VERY_STRONG
 	really_heavy = TRUE
+	var/move_delay_addition = 1.5
 
 /obj/item/weapon/twohanded/breacher/synth/pickup(mob/user)
 	if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG)))
-		to_chat(user, SPAN_WARNING("You barely manage to lift \the [src] above your knees. This thing will probably be useless to you."))
+		to_chat(user, SPAN_HIGHDANGER("You barely manage to lift [src] above your knees. This thing will probably be useless to you."))
+		user.apply_effect(3, EYE_BLUR)
+		RegisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY, PROC_REF(handle_movedelay))
+
 		return
 	..()
+
+/obj/item/weapon/twohanded/breacher/synth/proc/handle_movedelay(mob/living/M, list/movedata)
+	SIGNAL_HANDLER
+	movedata["move_delay"] += move_delay_addition
+
+/obj/item/weapon/twohanded/breacher/synth/dropped(mob/user, silent)
+	. = ..()
+	UnregisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY)
 
 /obj/item/weapon/twohanded/breacher/synth/attack(target as mob, mob/living/user as mob)
 	if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))

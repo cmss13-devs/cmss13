@@ -15008,6 +15008,22 @@
 	icon_state = "silver"
 	},
 /area/almayer/command/computerlab)
+"btn" = (
+/obj/item/device/camera{
+	pixel_x = 4;
+	pixel_y = 8
+	},
+/obj/structure/surface/table/almayer,
+/obj/item/device/camera_film{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/obj/item/device/camera_film,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "red"
+	},
+/area/almayer/shipboard/brig/main_office)
 "btp" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
@@ -78128,16 +78144,7 @@
 	},
 /area/almayer/hallways/upper/starboard)
 "wDp" = (
-/obj/structure/surface/table/almayer,
-/obj/item/device/camera{
-	pixel_x = 4;
-	pixel_y = 8
-	},
-/obj/item/device/camera_film{
-	pixel_x = 4;
-	pixel_y = -2
-	},
-/obj/item/device/camera_film,
+/obj/structure/machinery/photocopier,
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "red"
@@ -92275,7 +92282,7 @@ vBm
 lOI
 pJv
 jLM
-tak
+btn
 cMb
 rbi
 wDp

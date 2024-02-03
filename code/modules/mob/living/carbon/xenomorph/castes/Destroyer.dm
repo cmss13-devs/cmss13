@@ -53,7 +53,6 @@
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/onclick/rend,
-		/datum/action/xeno_action/activable/pounce/unstoppable_force,
 		/datum/action/xeno_action/activable/doom,
 		/datum/action/xeno_action/activable/destroy
 	)

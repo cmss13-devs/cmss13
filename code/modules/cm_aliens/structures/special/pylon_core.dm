@@ -215,7 +215,8 @@
 /obj/effect/alien/resin/special/pylon/endgame/attack_alien(mob/living/carbon/xenomorph/xeno)
 	choose_hivebuff(xeno)
 	return
-
+	///BIRDTALON: REVERT TO THIS AFTER TESTING
+	/*
 	if(!damaged && health == maxhealth && xeno.a_intent == INTENT_HELP && xeno.hivenumber == linked_hive.hivenumber && IS_XENO_LEADER(xeno))
 		if(!LAZYISIN(players_on_buff_cooldown, xeno))
 			choose_hivebuff(xeno)
@@ -224,7 +225,7 @@
 			to_chat(xeno, SPAN_XENONOTICE("We cannot choose a hive buff just yet. Try again later."))
 			return ..()
 	else
-		..()
+		..() */
 
 /// To choose a hivebuff
 /obj/effect/alien/resin/special/pylon/endgame/proc/choose_hivebuff(mob/living/carbon/xenomorph/xeno)
@@ -242,7 +243,7 @@
 		return
 
 	if(!linked_hive.attempt_apply_hivebuff(buffs[input], xeno, src))
-		apply_player_buff_cooldown(xeno, 3 MINUTE)
+		apply_player_buff_cooldown(xeno, 3 MINUTES)
 		return
 
 /// Apply cooldown to the player attempting to purchase a buff.

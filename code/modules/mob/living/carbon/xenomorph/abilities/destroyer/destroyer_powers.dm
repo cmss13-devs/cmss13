@@ -27,9 +27,10 @@
 	for(var/mob/living/carbon/carbon in orange(1, xeno) - xeno)
 		carbon.apply_armoured_damage(damage)
 		xeno.flick_attack_overlay(carbon, "slash")
-		to_chat(carbon, SPAN_DANGER("[xeno] slices into you with its razor sharp talons"))
+		to_chat(carbon, SPAN_DANGER("[xeno] slices into you with its razor sharp talons."))
+		log_attack("[key_name(xeno)] hit [key_name(carbon)] with [name]")
+		playsound(carbon, 'sound/weapons/alien_claw_flesh3.ogg', 30, TRUE)
 
-	playsound(get_turf(xeno), 'sound/weapons/alien_claw_flesh3.ogg', 30, TRUE)
 	xeno.visible_message(SPAN_DANGER("[xeno] slices around itself!"), SPAN_NOTICE("We slice around ourself!"))
 	apply_cooldown()
 	..()
@@ -50,10 +51,8 @@
 	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits an ear-splitting guttural roar!"))
 	xeno.create_shriekwave() //Adds the visual effect. Wom wom wom
 
-	addtimer(CALLBACK(src, PROC_REF(extinguish_lights), 1), 1 SECONDS)
-	addtimer(CALLBACK(src, PROC_REF(extinguish_lights), 3), 2 SECONDS)
-	addtimer(CALLBACK(src, PROC_REF(extinguish_lights), 5), 3 SECONDS)
-	addtimer(CALLBACK(src, PROC_REF(extinguish_lights), 7), 4 SECONDS)
+	extinguish_lights()
+
 
 	for(var/mob/living/carbon/carbon in orange(3, owner))
 		carbon.EyeBlur(daze_length_seconds)
@@ -65,46 +64,32 @@
 	apply_cooldown()
 	..()
 
-/datum/action/xeno_action/activable/doom/proc/extinguish_lights(range)
-	for(var/obj/item/device/flashlight/flare/flare in orange(range, owner))
-		flare.burn_out()
+/// Extinguishes lights within the range defined in /datum/action/xeno_action/activable/doom
+/datum/action/xeno_action/activable/doom/proc/extinguish_lights()
+	for(var/obj/item/device/potential_lightsource in orange(extinguish_light_range, owner))
+		//Time to extinguish is based on distance in tiles in seconds
+		var/time_to_extinguish = get_dist(owner, potential_lightsource) SECONDS
+
+		//Flares
+		if(istype(potential_lightsource, /obj/item/device/flashlight/flare))
+			var/obj/item/device/flashlight/flare/flare = potential_lightsource
+			addtimer(CALLBACK(flare, TYPE_PROC_REF(/obj/item/device/flashlight/flare/, burn_out)), time_to_extinguish)
+
+		//Flashlights
+		if(istype(potential_lightsource, /obj/item/device/flashlight))
+			var/obj/item/device/flashlight/flashlight = potential_lightsource
+			addtimer(CALLBACK(flashlight, TYPE_PROC_REF(/obj/item/device/flashlight, turn_off_light)), time_to_extinguish)
+
+		//Armour lights
+		if(istype(potential_lightsource, /obj/item/clothing/suit/storage/marine))
+			var/obj/item/clothing/suit/storage/marine/marinearmour = potential_lightsource
+			addtimer(CALLBACK(marinearmour, TYPE_PROC_REF(/obj/item/clothing/suit/storage/marine, turn_light), null, FALSE), time_to_extinguish)
+
 
 /*
 	UNSTOPPABLE FORCE ABILITY- SIMILAR TO CRUSHER CHARGE
 	Medium cooldown gap closer pushes things out of the way and does damage.
 */
-
-/datum/action/xeno_action/activable/pounce/unstoppable_force/additional_effects_always()
-	var/mob/living/carbon/xenomorph/xeno = owner
-	var/turf/current_turf = get_turf(xeno)
-
-	new /obj/effect/xenomorph/xeno_telegraph/destroyer_attack_template/yellow(get_step(current_turf, SOUTHWEST), 10)
-
-	for(var/mob/living/carbon/carbon in orange(1, current_turf))
-		if(xeno.can_not_harm(carbon))
-			continue
-
-		to_chat(carbon, SPAN_XENODANGER("[xeno] tears into you at great speed."))
-		carbon.apply_armoured_damage(end_charge_damage)
-
-/datum/action/xeno_action/activable/pounce/unstoppable_force/additional_effects(mob/living/living_mob)
-	var/mob/living/carbon/xenomorph/xeno = owner
-	var/facing = xeno.dir
-
-	if(!iscarbon(living_mob))
-		return
-
-	var/mob/living/carbon/carbon = living_mob
-
-	carbon.apply_armoured_damage(direct_hit_damage)
-
-	xeno.throw_carbon(carbon, facing, throw_distance, throw_speed)
-
-/datum/action/xeno_action/activable/pounce/unstoppable_force/pre_windup_effects()
-	var/mob/living/carbon/xenomorph/xeno = owner
-
-	xeno.Shake()
-
 
 /*
 	DESTROY ABILITY

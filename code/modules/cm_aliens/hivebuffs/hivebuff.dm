@@ -84,7 +84,7 @@
 	UnregisterSignal(sustained_pylon, COMSIG_PARENT_QDELETING)
 	announce_buff_loss(sustained_pylon)
 	sustained_pylon = null
-		_on_cease()
+	_on_cease()
 
 /datum/hivebuff/proc/announce_buff_loss()
 	xeno_announcement("Our pylon at [sustained_pylon.loc] has been destroyed!! Our hive buff [name] has waned...", hive.hivenumber, "Hive Buff Wanes!")

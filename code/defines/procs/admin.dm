@@ -10,7 +10,7 @@
 		embed.title = "Important Log"
 		embed.description = message
 		embed.timestamp = time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")
-		embed.color = "#ED2939"
+		embed.colour = "#ED2939"
 
 		to_send.embed = embed
 

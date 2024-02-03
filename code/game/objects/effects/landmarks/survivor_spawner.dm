@@ -70,6 +70,28 @@
 
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
 
+//Weyland-Yutani Survivors//
+
+/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_cl
+	equipment = /datum/equipment_preset/survivor/wy/executive
+	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
+	intro_text = list("<h2>You are the last alive Executive of Lazarus Landing!</h2>",\
+	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
+	story_text = "You are a Corporate Liaison stationed on LV-624 from Weyland-Yutani. You were tipped off about some very peculiar looking eggs recovered from the alien temple North-East of the colony. Being the smart Executive the Company hired you to be, you decided to prepare your office for the worst when the first 'facehugger' was born in the vats of the Research Dome. Turned out, you were right, everyone who called you crazy and called these the new 'synthetics' is now dead, you along with your Corporate Security detail are the only survivors due to your paranoia. You must survive and find a way to contact Weyland-Yutani."
+
+	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
+
+/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon
+	equipment = /datum/equipment_preset/survivor/goon
+	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
+	intro_text = list("<h2>You are a Corporate Security Officer!</h2>",\
+	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
+	story_text = "You are a Corporate Security Officer stationed on LV-624 from Weyland-Yutani. Suddenly one day you were pulled aside by the Corporate Liaison and told to bring supplies from both Engineering and the Marshals Offices to their office, and fast. You began fortifying the Corporate Dome and was told by the Executive that something big will ravage the entire colony, excluding you. Turns out, the Liaison was right, these so called 'xenomorphs' broke containment from the Research Dome and began destroying the entire colony, while you sat protecting the asset. The Liaison said they will soon find a way to contact Weyland-Yutani and to remain steadfast until rescue arrives."
+
+	spawn_priority = SPAWN_PRIORITY_HIGH
+
 /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc
 	equipment = /datum/equipment_preset/survivor/pmc
 	synth_equipment = /datum/equipment_preset/synth/survivor/pmc

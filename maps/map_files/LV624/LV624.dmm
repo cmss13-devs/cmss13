@@ -15851,6 +15851,15 @@
 "hSn" = (
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/west_nexus_road)
+"hSp" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/obj/effect/landmark/nightmare{
+	insert_tag = "corporatedome"
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/colony/west_tcomms_road)
 "hSz" = (
 /obj/effect/landmark/hunter_secondary,
 /turf/open/gm/grass/grass1,
@@ -34624,7 +34633,7 @@ aXh
 wTC
 kjp
 kjp
-ply
+hSp
 efp
 efp
 uSq

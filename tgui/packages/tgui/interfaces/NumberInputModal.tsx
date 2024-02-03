@@ -15,7 +15,7 @@ type NumberInputData = {
   title: string;
 };
 
-export const NumberInputModal = (props) => {
+export const NumberInputModal = () => {
   const { act, data } = useBackend<NumberInputData>();
   const { init_value, large_buttons, message = '', timeout, title } = data;
   const [input, setInput] = useLocalState('input', init_value);

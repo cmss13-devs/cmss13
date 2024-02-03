@@ -103,7 +103,7 @@
 			continue
 		*/
 
-		if (world.IsBanned(row["ckey"], row["address"], row["computer_id"], real_bans_only = TRUE, match_sticky = FALSE))
+		if (world.IsBanned(row["ckey"], row["address"], row["computer_id"], real_bans_only = TRUE, is_telemetry = TRUE))
 			found = row
 			break
 

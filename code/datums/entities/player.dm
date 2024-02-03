@@ -464,15 +464,16 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	record_login_triplet(player.ckey, address, computer_id)
 	player_data.sync()
 
-/datum/entity/player/proc/check_ban(computer_id, address, match_sticky)
+/datum/entity/player/proc/check_ban(computer_id, address, is_telemetry)
 	. = list()
 
 	var/list/datum/view_record/stickyban/all_stickies = SSstickyban.check_for_sticky_ban(ckey, address, computer_id)
 	if(islist(all_stickies))
 		var/datum/view_record/stickyban/sticky = all_stickies[1]
 
-		log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Stickybanned (Reason: [sticky.reason])")
-		message_admins("Failed Login: [ckey] (IP: [last_known_ip], CID: [last_known_cid]) - Stickybanned (Reason: [sticky.reason])")
+		if(!is_telemetry)
+			log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Stickybanned (Reason: [sticky.reason])")
+			message_admins("Failed Login: [ckey] (IP: [last_known_ip], CID: [last_known_cid]) - Stickybanned (Reason: [sticky.reason])")
 
 		var/appeal
 		if(CONFIG_GET(string/banappeals))
@@ -481,7 +482,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		.["desc"] = "\nReason: Stickybanned - [sticky.message]\n[appeal]"
 		.["reason"] = "ckey/id"
 
-		if(match_sticky)
+		if(!is_telemetry)
 			SSstickyban.match_sticky(sticky.id, ckey, address, computer_id)
 		return
 
@@ -497,8 +498,9 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		if(permaban_admin_id)
 			var/datum/view_record/players/banning_admin = locate() in DB_VIEW(/datum/view_record/players, DB_COMP("id", DB_EQUALS, permaban_admin_id))
 			banner = banning_admin.ckey
-		log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Banned [permaban_reason]")
-		message_admins("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [permaban_reason]")
+		if(!is_telemetry)
+			log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Banned [permaban_reason]")
+			message_admins("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [permaban_reason]")
 		.["desc"] = "\nReason: [permaban_reason]\nExpires: <B>PERMANENT</B>\nBy: [banner][appeal]"
 		.["reason"] = "ckey/id"
 		return .
@@ -514,8 +516,9 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 			timeleftstring = "[round(time_left / 60, 0.1)] Hours"
 		else
 			timeleftstring = "[time_left] Minutes"
-		log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Banned [time_ban_reason]")
-		message_admins("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [time_ban_reason]")
+		if(!is_telemetry)
+			log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Banned [time_ban_reason]")
+			message_admins("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [time_ban_reason]")
 		.["desc"] = "\nReason: [time_ban_reason]\nExpires: [timeleftstring]\nBy: [time_ban_admin.ckey][appeal]"
 		.["reason"] = "ckey/id"
 		return .

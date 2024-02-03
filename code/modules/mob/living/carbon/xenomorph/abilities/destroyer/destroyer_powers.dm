@@ -25,11 +25,16 @@
 	xeno.spin_circle()
 	xeno.emote("hiss")
 	for(var/mob/living/carbon/carbon in orange(1, xeno) - xeno)
+
+		if(carbon.stat == DEAD)
+			continue
+		if(xeno.can_not_harm(carbon))
+			continue
 		carbon.apply_armoured_damage(damage)
 		xeno.flick_attack_overlay(carbon, "slash")
 		to_chat(carbon, SPAN_DANGER("[xeno] slices into you with its razor sharp talons."))
 		log_attack("[key_name(xeno)] hit [key_name(carbon)] with [name]")
-		playsound(carbon, 'sound/weapons/alien_claw_flesh3.ogg', 30, TRUE)
+		playsound(carbon, pick(slash_sounds), 30, TRUE)
 
 	xeno.visible_message(SPAN_DANGER("[xeno] slices around itself!"), SPAN_NOTICE("We slice around ourself!"))
 	apply_cooldown()
@@ -51,23 +56,10 @@
 	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits an ear-splitting guttural roar!"))
 	xeno.create_shriekwave() //Adds the visual effect. Wom wom wom
 
-	extinguish_lights()
 
-
-	for(var/mob/living/carbon/carbon in orange(3, owner))
-		carbon.EyeBlur(daze_length_seconds)
-		carbon.Daze(daze_length_seconds)
-		carbon.Slow(slow_length_seconds)
-		to_chat(carbon, SPAN_HIGHDANGER("[xeno]'s shriek overwhelms your entire being!"))
-		shake_camera(carbon, 6, 1)
-
-	apply_cooldown()
-	..()
-
-/// Extinguishes lights within the range defined in /datum/action/xeno_action/activable/doom
-/datum/action/xeno_action/activable/doom/proc/extinguish_lights()
+	// Turn off lights for items in the area dependant on distance.
 	for(var/obj/item/device/potential_lightsource in orange(extinguish_light_range, owner))
-		//Time to extinguish is based on distance in tiles in seconds
+
 		var/time_to_extinguish = get_dist(owner, potential_lightsource) SECONDS
 
 		//Flares
@@ -83,13 +75,31 @@
 		//Armour lights
 		if(istype(potential_lightsource, /obj/item/clothing/suit/storage/marine))
 			var/obj/item/clothing/suit/storage/marine/marinearmour = potential_lightsource
-			addtimer(CALLBACK(marinearmour, TYPE_PROC_REF(/obj/item/clothing/suit/storage/marine, turn_light), null, FALSE), time_to_extinguish)
+			addtimer(CALLBACK(marinearmour, TYPE_PROC_REF(/atom, turn_light), null, FALSE), time_to_extinguish)
 
+	// "Confuse" and slow humans in the area and turn off their armour lights.
+	for(var/mob/living/carbon/human/human in orange(extinguish_light_range, owner))
+		human.EyeBlur(daze_length_seconds)
+		human.Daze(daze_length_seconds)
+		human.Superslow(slow_length_seconds)
+		to_chat(human, SPAN_HIGHDANGER("[xeno]'s shriek overwhelms your entire being!"))
+		shake_camera(human, 6, 1)
+
+		var/time_to_extinguish = get_dist(owner, human) SECONDS
+		var/obj/item/clothing/suit/suit = human.get_item_by_slot(WEAR_JACKET)
+		if(istype(suit, /obj/item/clothing/suit/storage/marine))
+			var/obj/item/clothing/suit/storage/marine/armour = suit
+			addtimer(CALLBACK(armour, TYPE_PROC_REF(/atom, turn_light), null, FALSE), time_to_extinguish)
+
+	apply_cooldown()
+	..()
 
 /*
 	UNSTOPPABLE FORCE ABILITY- SIMILAR TO CRUSHER CHARGE
 	Medium cooldown gap closer pushes things out of the way and does damage.
 */
+
+
 
 /*
 	DESTROY ABILITY

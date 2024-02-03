@@ -45,9 +45,9 @@
 		if(transform_survivor(survivor) == 1)
 			survivors -= survivor
 
-/datum/game_mode/infection/can_start()
+/datum/game_mode/infection/can_start(bypass_checks = FALSE)
 	initialize_starting_survivor_list()
-	return 1
+	return TRUE
 
 //We don't actually need survivors to play, so long as aliens are present.
 /datum/game_mode/infection/proc/initialize_starting_survivor_list()
@@ -61,7 +61,7 @@
 			possible_synth_survivors -= A
 			continue
 
-		if(GLOB.RoleAuthority.roles_whitelist[ckey(A.key)] & WHITELIST_SYNTHETIC)
+		if(A.current.client?.check_whitelist_status(WHITELIST_SYNTHETIC))
 			if(A in possible_survivors)
 				continue //they are already applying to be a survivor
 			else

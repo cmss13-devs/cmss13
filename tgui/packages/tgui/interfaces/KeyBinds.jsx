@@ -1,8 +1,8 @@
-import { Component } from 'inferno';
+import { Component } from 'react';
 import { useBackend, useLocalState } from '../backend';
 import { Button, Flex, Section, Box, Input, Dropdown } from '../components';
 import { Window } from '../layouts';
-import { globalEvents } from '../events.js';
+import { globalEvents } from '../events';
 
 const KEY_MODS = {
   'SHIFT': true,
@@ -16,17 +16,13 @@ const getAllKeybinds = (glob_keybinds) => {
   return all_keybinds;
 };
 
-export const KeyBinds = (props, context) => {
-  const { act, data } = useBackend(context);
+export const KeyBinds = (props) => {
+  const { act, data } = useBackend();
   const { glob_keybinds } = data;
 
-  const [selectedTab, setSelectedTab] = useLocalState(
-    context,
-    'progress',
-    'ALL'
-  );
+  const [selectedTab, setSelectedTab] = useLocalState('progress', 'ALL');
 
-  const [searchTerm, setSearchTerm] = useLocalState(context, 'searchTerm', '');
+  const [searchTerm, setSearchTerm] = useLocalState('searchTerm', '');
 
   const keybinds_to_use =
     searchTerm.length || selectedTab === 'ALL'
@@ -110,16 +106,12 @@ export const KeyBinds = (props, context) => {
   );
 };
 
-const KeybindsDropdown = (props, context) => {
-  const { act, data } = useBackend(context);
+const KeybindsDropdown = (props) => {
+  const { act, data } = useBackend();
   const { glob_keybinds } = data;
-  const [selectedTab, setSelectedTab] = useLocalState(
-    context,
-    'progress',
-    'ALL'
-  );
+  const [selectedTab, setSelectedTab] = useLocalState('progress', 'ALL');
 
-  const [searchTerm, setSearchTerm] = useLocalState(context, 'searchTerm', '');
+  const [searchTerm, setSearchTerm] = useLocalState('searchTerm', '');
 
   const dropdownOptions = ['ALL', ...Object.keys(glob_keybinds)];
 
@@ -134,8 +126,8 @@ const KeybindsDropdown = (props, context) => {
   );
 };
 
-export const KeybindElement = (props, context) => {
-  const { act, data } = useBackend(context);
+export const KeybindElement = (props) => {
+  const { act, data } = useBackend();
   const { keybind } = props;
   const { keybinds } = data;
 

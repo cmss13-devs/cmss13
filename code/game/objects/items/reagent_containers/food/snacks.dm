@@ -503,7 +503,7 @@
 /obj/item/reagent_container/food/snacks/egg/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype( W, /obj/item/toy/crayon ))
 		var/obj/item/toy/crayon/C = W
-		var/clr = C.colourName
+		var/clr = C.colorName
 
 		if(!(clr in list("blue","green","mime","orange","purple","rainbow","red","yellow")))
 			to_chat(usr, SPAN_NOTICE(" The egg refuses to take on this color!"))
@@ -829,13 +829,6 @@
 	reagents.add_reagent("iron", 3)
 	bitesize = 2
 
-/// Vanilla roburger - the nanites turn people into cyborgs
-/obj/item/reagent_container/food/snacks/roburger/unsafe
-/obj/item/reagent_container/food/snacks/roburger/unsafe/Initialize(mapload, ...)
-	. = ..()
-	if(prob(5))
-		reagents.add_reagent("nanites", 2)
-
 /obj/item/reagent_container/food/snacks/roburgerbig
 	name = "roburger"
 	desc = "This massive patty looks like poison. Beep."
@@ -845,7 +838,6 @@
 
 /obj/item/reagent_container/food/snacks/roburgerbig/Initialize()
 	. = ..()
-	reagents.add_reagent("nanites", 100)
 	bitesize = 0.1
 
 /obj/item/reagent_container/food/snacks/xenoburger

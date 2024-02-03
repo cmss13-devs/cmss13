@@ -2,8 +2,8 @@ import { useBackend } from '../backend';
 import { Section, ProgressBar, Box, Flex, NoticeBox, Button, LabeledList, NumberInput } from '../components';
 import { Window } from '../layouts';
 
-export const Autodispenser = (_props, context) => {
-  const { act, data } = useBackend(context);
+export const Autodispenser = () => {
+  const { act, data } = useBackend();
   const {
     energy,
     status,

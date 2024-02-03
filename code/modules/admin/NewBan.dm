@@ -296,29 +296,26 @@ GLOBAL_DATUM(Banlist, /savefile)
 	if(!message)
 		return
 
+	if(!length(impacted_ckeys))
+		impacted_ckeys = splittext(tgui_input_text(src, "Which CKEYs should be impacted by this ban? Include the primary ckey, separated by semicolons.", "BuildABan", "player1;player2;player3"), ";")
+
+	if(!length(impacted_cids))
+		impacted_cids = splittext(tgui_input_text(src, "Which CIDs should be impacted by this ban? Separate with semicolons.", "BuildABan", "12345678;87654321"), ";")
+
+	if(!length(impacted_ips))
+		impacted_ips = splittext(tgui_input_text(src, "Which IPs should be impacted by this ban? Separate with semicolons.", "BuildABan", "1.1.1.1;8.8.8.8"), ";")
+
 	var/datum/entity/stickyban/new_sticky = SSstickyban.add_stickyban(identifier, reason, message, player_data)
 
 	if(!new_sticky)
 		to_chat(src, SPAN_ADMIN("Failed to apply stickyban."))
 		return
 
-	if(!length(impacted_ckeys))
-		impacted_ckeys = splittext(tgui_input_text(src, "Which CKEYs should be impacted by this ban? Include the primary ckey, separated by semicolons.", "BuildABan", "player1;player2;player3"), ";")
-
 	for(var/ckey in impacted_ckeys)
 		SSstickyban.add_matched_ckey(new_sticky.id, ckey)
 
-	if(!length(impacted_cids))
-		impacted_cids = splittext(tgui_input_text(src, "Which CIDs should be impacted by this ban? Separate with semicolons.", "BuildABan", "12345678;87654321"), ";")
-
 	for(var/cid in impacted_cids)
 		SSstickyban.add_matched_cid(new_sticky.id, cid)
-
-	if(!length(impacted_ips))
-		impacted_ips = splittext(tgui_input_text(src, "Which IPs should be impacted by this ban? Separate with semicolons.", "BuildABan", "1.1.1.1;8.8.8.8"), ";")
-
-	if(!impacted_ips)
-		return
 
 	for(var/ip in impacted_ips)
 		SSstickyban.add_matched_ip(new_sticky.id, ip)

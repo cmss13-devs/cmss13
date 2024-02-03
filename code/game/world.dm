@@ -54,6 +54,14 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 
 	init_global_referenced_datums()
 
+	var/testing_locally = (world.params && world.params["local_test"])
+	var/running_tests = (world.params && world.params["run_tests"])
+	#if defined(AUTOWIKI) || defined(UNIT_TESTS)
+	running_tests = TRUE
+	#endif
+	// Only do offline sleeping when the server isn't running unit tests or hosting a local dev test
+	sleep_offline = (!running_tests && !testing_locally)
+
 	if(!GLOB.RoleAuthority)
 		GLOB.RoleAuthority = new /datum/authority/branch/role()
 		to_world(SPAN_DANGER("\b Job setup complete"))
@@ -83,6 +91,17 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 		if(CONFIG_GET(flag/ToRban))
 			ToRban_autoupdate()
 
+	// If the server's configured for local testing, get everything set up ASAP.
+	// Shamelessly stolen from the test manager's host_tests() proc
+	if(testing_locally)
+		GLOB.master_mode = "Extended"
+
+		// Wait for the game ticker to initialize
+		while(!SSticker.initialized)
+			sleep(10)
+
+		// Start the game ASAP
+		SSticker.request_start()
 	return
 
 /proc/start_logging()

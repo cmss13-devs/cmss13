@@ -416,6 +416,10 @@
 	name = "bonesetter"
 	path = /obj/item/tool/surgery/bonesetter
 
+/datum/autolathe/recipe/medilathe/bonegel
+	name = "bone gel"
+	path = /obj/item/tool/surgery/bonegel
+
 /datum/autolathe/recipe/medilathe/fixovein
 	name = "FixOVein"
 	path = /obj/item/tool/surgery/FixOVein

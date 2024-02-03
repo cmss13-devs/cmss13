@@ -390,7 +390,7 @@ DEFINES in setup.dm, referenced here.
 			user.visible_message(SPAN_NOTICE("[user] attaches [attachment] to [src]."),
 			SPAN_NOTICE("You attach [attachment] to [src]."), null, 4)
 			user.temp_drop_inv_item(attachment)
-			attachment.Attach(src)
+			attachment.Attach(src, user)
 			update_attachable(attachment.slot)
 			playsound(user, 'sound/handling/attachment_add.ogg', 15, 1, 4)
 			return TRUE

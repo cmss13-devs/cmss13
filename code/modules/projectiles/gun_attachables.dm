@@ -3278,13 +3278,13 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_mod = SCATTER_AMOUNT_TIER_9
 	recoil_mod = RECOIL_AMOUNT_TIER_5
 
-/obj/item/attachable/bipod/Attach(obj/item/weapon/gun/gun)
+/obj/item/attachable/bipod/Attach(obj/item/weapon/gun/gun, mob/user)
 	..()
 
 	if((GUN_FIREMODE_AUTOMATIC in gun.gun_firemode_list) || (gun.flags_gun_features & GUN_SUPPORT_PLATFORM))
 		var/given_action = FALSE
-		if(usr && (gun == usr.l_hand || gun == usr.r_hand))
-			give_action(usr, /datum/action/item_action/bipod/toggle_full_auto_switch, src, gun)
+		if(user && (gun == user.l_hand || gun == user.r_hand))
+			give_action(user, /datum/action/item_action/bipod/toggle_full_auto_switch, src, gun)
 			given_action = TRUE
 		if(!given_action)
 			new /datum/action/item_action/bipod/toggle_full_auto_switch(src, gun)
@@ -3304,7 +3304,7 @@ Defined in conflicts.dm of the #defines folder.
 			break
 
 	if(bipod_deployed)
-		undeploy_bipod(detaching_gub)
+		undeploy_bipod(detaching_gub, user)
 	..()
 
 /obj/item/attachable/bipod/update_icon()
@@ -3328,11 +3328,11 @@ Defined in conflicts.dm of the #defines folder.
 	UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
 
 	if(bipod_deployed)
-		undeploy_bipod(gun)
+		undeploy_bipod(gun, user)
 		user.apply_effect(1, SUPERSLOW)
 		user.apply_effect(2, SLOW)
 
-/obj/item/attachable/bipod/proc/undeploy_bipod(obj/item/weapon/gun/gun)
+/obj/item/attachable/bipod/proc/undeploy_bipod(obj/item/weapon/gun/gun, mob/user)
 	REMOVE_TRAIT(gun, TRAIT_GUN_BIPODDED, "attached_bipod")
 	bipod_deployed = FALSE
 	accuracy_mod = -HIT_ACCURACY_MULT_TIER_5
@@ -3340,18 +3340,14 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_mod = RECOIL_AMOUNT_TIER_5
 	burst_scatter_mod = 0
 	delay_mod = FIRE_DELAY_TIER_12
-
-	//if we are no longer on fullauto, don't bother switching back to the old firemode
+	//if we are no longer on full auto, don't bother switching back to the old firemode
 	if(full_auto_switch && gun.gun_firemode == GUN_FIREMODE_AUTOMATIC)
-		gun.do_toggle_firemode(usr, null, old_firemode)
+		gun.do_toggle_firemode(user, null, old_firemode)
 
 	gun.recalculate_attachment_bonuses()
 	gun.stop_fire()
-	var/mob/living/user
-	if(isliving(gun.loc))
-		user = gun.loc
-		SEND_SIGNAL(user, COMSIG_MOB_UNDEPLOYED_BIPOD)
-		UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
+	SEND_SIGNAL(user, COMSIG_MOB_UNDEPLOYED_BIPOD)
+	UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
 
 	if(gun.flags_gun_features & GUN_SUPPORT_PLATFORM)
 		gun.remove_firemode(GUN_FIREMODE_AUTOMATIC)
@@ -3366,7 +3362,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/bipod/activate_attachment(obj/item/weapon/gun/gun, mob/living/user, turn_off)
 	if(turn_off)
 		if(bipod_deployed)
-			undeploy_bipod(gun)
+			undeploy_bipod(gun, user)
 	else
 		var/obj/support = check_bipod_support(gun, user)
 		if(!support&&!bipod_deployed)
@@ -3407,7 +3403,7 @@ Defined in conflicts.dm of the #defines folder.
 
 			else
 				to_chat(user, SPAN_NOTICE("You retract [src]."))
-				undeploy_bipod(gun)
+				undeploy_bipod(gun, user)
 
 	update_icon()
 
@@ -3453,8 +3449,8 @@ Defined in conflicts.dm of the #defines folder.
 	var/obj/item/attachable/bipod/attached_bipod = holder_gun.attachments["under"]
 
 	attached_bipod.full_auto_switch = !attached_bipod.full_auto_switch
-	to_chat(usr, SPAN_NOTICE("[icon2html(holder_gun, usr)] You will [attached_bipod.full_auto_switch? "<B>start</b>" : "<B>stop</b>"] switching to full auto when deploying the bipod."))
-	playsound(usr, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
+	to_chat(owner, SPAN_NOTICE("[icon2html(holder_gun, owner)] You will [attached_bipod.full_auto_switch? "<B>start</b>" : "<B>stop</b>"] switching to full auto when deploying the bipod."))
+	playsound(owner, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
 
 	if(attached_bipod.full_auto_switch)
 		button.icon_state = "template_on"

@@ -86,7 +86,7 @@
 
 		// Check for a malformed history object
 		if (!row || row.len < 3 || (!row["ckey"] || !row["address"] || !row["computer_id"]))
-			return
+			continue
 
 		/* TODO - Reintroduce this when we get a proper round ID tracking,
 			and we want to log it to database

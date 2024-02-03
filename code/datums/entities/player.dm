@@ -313,7 +313,8 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 
 	if(banner)
 		permaban_admin_id = banner.id
-		important_log_and_message_admins("[key_name_admin(banner.owning_client)] has permanently banned [ckey] for [reason].")
+		log_and_message_admins("[key_name_admin(banner.owning_client)] has permanently banned [ckey] for '[reason]'.")
+		important_message_external("[banner.owning_client] has permanently banned [ckey] for '[reason].")
 		add_note("Permanently banned | [reason]", FALSE, NOTE_ADMIN, TRUE)
 
 	if(owning_client)

@@ -321,4 +321,5 @@ GLOBAL_DATUM(Banlist, /savefile)
 		SSstickyban.add_matched_ip(new_sticky.id, ip)
 
 	log_admin("STICKYBAN: Identifier: [identifier] Reason: [reason] Message: [message] CKEYs: [english_list(impacted_ckeys)] IPs: [english_list(impacted_ips)] CIDs: [english_list(impacted_cids)]")
-	important_log_and_message_admins("[key_name_admin(src)] has added a new stickyban with the identifier '[identifier]'.")
+	log_and_message_admins("[key_name_admin(src)] has added a new stickyban with the identifier '[identifier]'.")
+	important_message_external("[src] has added a new stickyban with the identifier '[identifier]'.")

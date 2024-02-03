@@ -77,10 +77,10 @@
 
 // Corporate Security Bodyguard beacon available for 50 points at the CLs briefcase
 /obj/item/handheld_distress_beacon/bodyguard
-	name = "\improper PMC Dispatch Division handheld beacon"
-	desc = "An standard Corporate Security beacon. This one is branded with the Weyland-Yutani slogan, 'Building Better Worlds since 2099'. This one is branded with the PMC Dispatch Division symbol and provided to Executives stationed in very dangerous sites across the entire Galaxy."
+	name = "\improper Corporate Security Division handheld beacon"
+	desc = "An standard Corporate Security beacon. This one is branded with the Weyland-Yutani slogan, 'Building Better Worlds since 2099'. This one is branded with the Corporate Security Division symbol and provided to Executives stationed in very dangerous sites across the entire Galaxy."
 
 	beacon_type = "Bodyguard beacon"
-	recipient = "the PMC Dispatch Division"
+	recipient = "the Corporate Security Division"
 	ert_full_name = list("Weyland-Yutani Goon (Executive Bodyguard Detail)")
 	ert_short_name = list("SEND BODYGUARD")

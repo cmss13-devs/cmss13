@@ -8,7 +8,7 @@ GLOBAL_LIST_INIT(sqrtTable, list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4,
 
 // MATH DEFINES
 
-#define Ceiling(x) (-round(-x))
+#define Ceiling(x) (-round(-(x)))
 #define CLAMP01(x) (clamp(x, 0, 1))
 
 // cotangent

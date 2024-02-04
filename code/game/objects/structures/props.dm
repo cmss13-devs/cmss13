@@ -1869,28 +1869,28 @@
 	name = "hospital bed"
 	desc = "A hospital bed, there's a body under the cloth..."
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
-	icon_state = "bigroller_body1up"
+	icon_state = "bigrollerbody_up"
 	density = TRUE
 	wrenchable = TRUE
 /obj/structure/prop/hybrisa/hospital/hospitalbedrollerbody1
 	name = "hospital bed"
 	desc = "A hospital bed, there's a body under the cloth..."
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
-	icon_state = "bigroller_body2up"
+	icon_state = "bigrollerbody2_up"
 	density = TRUE
 	wrenchable = TRUE
 /obj/structure/prop/hybrisa/hospital/hospitalbedrollerbody2
 	name = "hospital bed"
 	desc = "A hospital bed, there's a body under the cloth..."
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
-	icon_state = "bigroller_body3up"
+	icon_state = "bigrollerbodybloodalt_up"
 	density = TRUE
 	wrenchable = TRUE
 /obj/structure/prop/hybrisa/hospital/hospitalbedrollerbody3
 	name = "hospital bed"
-	desc = "A hospital bed, there's a body under the cloth..."
+	desc = "A hospital bed, there's blood on the surface..."
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
-	icon_state = "bigroller_body4up"
+	icon_state = "bigrolleremptyblood_up"
 	density = TRUE
 	wrenchable = TRUE
 
@@ -2006,19 +2006,19 @@
 	name = "hospital bed"
 	desc = "A mattress seated on a rectangular metallic frame with wheels. This is used to support a lying person in a comfortable manner."
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
-	icon_state = "bigroller_up"
+	icon_state = "bigrollerempty2_up"
 
 /obj/structure/bed/hybrisa/hospitalbeds/hospitalbed2
 	name = "hospital bed"
 	desc = "A mattress seated on a rectangular metallic frame with wheels. This is used to support a lying person in a comfortable manner."
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
-	icon_state = "bigroller_up2"
+	icon_state = "bigrollerempty_up"
 
 /obj/structure/bed/hybrisa/hospitalbeds/hospitalbed3
 	name = "hospital bed"
 	desc = "A mattress seated on a rectangular metallic frame with wheels. This is used to support a lying person in a comfortable manner."
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
-	icon_state = "bigroller_up3"
+	icon_state = "bigrollerempty3_up"
 
 // Xenobiology
 
@@ -2912,7 +2912,17 @@
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "biggreenmeter1"
 
-
+/obj/structure/prop/hybrisa/misc/stoneplanterseats
+	name = "concrete seated planter"
+	desc = "A decorative concrete planter with seating attached."
+	icon = 'icons/obj/structures/props/64x64 zenithrandomprops.dmi'
+	icon_state = "planterseats"
+	bound_width = 64
+	bound_height = 64
+	density = TRUE
+	health = 200
+	opacity = TRUE
+	anchored = TRUE
 
 
 

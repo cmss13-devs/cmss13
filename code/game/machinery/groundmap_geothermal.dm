@@ -461,6 +461,18 @@
 		else if(!is_lit)
 			. += SPAN_INFO("It doesn't seem powered.")
 
+/obj/structure/machinery/colony_floodlight/street
+	name = "Colony Streetlight"
+	icon_state = "street_off"
+
+/obj/structure/machinery/colony_floodlight/street/update_icon()
+	if(damaged)
+		icon_state = "street_dmg"
+	else if(is_lit)
+		icon_state = "street_on"
+	else
+		icon_state = "street_off"
+
 #undef FLOODLIGHT_REPAIR_UNSCREW
 #undef FLOODLIGHT_REPAIR_CROWBAR
 #undef FLOODLIGHT_REPAIR_WELD

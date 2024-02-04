@@ -722,6 +722,7 @@
 #include "code\game\area\kutjevo.dm"
 #include "code\game\area\LV522_Chances_Claim.dm"
 #include "code\game\area\LV624.dm"
+#include "code\game\area\LV759_Hybrisa.dm"
 #include "code\game\area\prison.dm"
 #include "code\game\area\Prison_Station_FOP.dm"
 #include "code\game\area\prison_v3_fiorina.dm"

@@ -2,8 +2,8 @@ import { useBackend } from '../backend';
 import { Button, Section, LabeledList, ProgressBar, Divider, NumberInput, NoticeBox, Box, Tabs } from '../components';
 import { Window } from '../layouts';
 
-export const SupplyDropConsole = (_props, context) => {
-  const { act, data } = useBackend(context);
+export const SupplyDropConsole = () => {
+  const { act, data } = useBackend();
 
   const can_pick_squad = data.can_pick_squad;
 

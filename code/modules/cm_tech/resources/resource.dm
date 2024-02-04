@@ -82,7 +82,7 @@
 	update_icon()
 
 /obj/structure/resource_node/proc/take_damage(damage)
-	health = Clamp(health - damage, 0, max_health)
+	health = clamp(health - damage, 0, max_health)
 	healthcheck()
 
 /obj/structure/resource_node/bullet_act(obj/projectile/P)

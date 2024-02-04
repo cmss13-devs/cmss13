@@ -52,15 +52,6 @@ export const shallowDiffers = (a: object, b: object) => {
 };
 
 /**
- * Default inferno hooks for pure components.
- */
-export const pureComponentHooks = {
-  onComponentShouldUpdate: (lastProps, nextProps) => {
-    return shallowDiffers(lastProps, nextProps);
-  },
-};
-
-/**
  * A helper to determine whether the object is renderable by React.
  */
 export const canRender = (value: unknown) => {

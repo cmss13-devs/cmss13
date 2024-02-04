@@ -71,6 +71,8 @@
 	/// If hit limit of larva from pylons
 	var/hit_larva_pylon_limit = FALSE
 
+	var/see_humans_on_tacmap = FALSE
+
 	var/list/hive_inherant_traits
 
 	// Cultist Info
@@ -735,7 +737,7 @@
 		if(is_mainship_level(turf?.z))
 			shipside_humans_weighted_count += GLOB.RoleAuthority.calculate_role_weight(job)
 	hijack_burrowed_surge = TRUE
-	hijack_burrowed_left = max(n_ceil(shipside_humans_weighted_count * 0.5) - xenos_count, 5)
+	hijack_burrowed_left = max(Ceiling(shipside_humans_weighted_count * 0.5) - xenos_count, 5)
 	hivecore_cooldown = FALSE
 	xeno_message(SPAN_XENOBOLDNOTICE("The weeds have recovered! A new hive core can be built!"),3,hivenumber)
 
@@ -777,7 +779,12 @@
 		spawning_area = pick(totalXenos) // FUCK IT JUST GO ANYWHERE
 	var/list/turf_list
 	for(var/turf/open/open_turf in orange(3, spawning_area))
+		if(istype(open_turf, /turf/open/space))
+			continue
 		LAZYADD(turf_list, open_turf)
+	// just on the off-chance
+	if(!LAZYLEN(turf_list))
+		return FALSE
 	var/turf/open/spawning_turf = pick(turf_list)
 
 	var/mob/living/carbon/xenomorph/larva/new_xeno = spawn_hivenumber_larva(spawning_turf, hivenumber)
@@ -1076,6 +1083,29 @@
 	need_round_end_check = TRUE
 
 /datum/hive_status/forsaken/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
+	return FALSE
+
+/datum/hive_status/tutorial
+	name = "Tutorial Hive"
+	reporting_id = "tutorial"
+	hivenumber = XENO_HIVE_TUTORIAL
+	prefix = "Inquisitive "
+	latejoin_burrowed = FALSE
+
+	dynamic_evolution = FALSE
+	allow_queen_evolve = TRUE
+	evolution_without_ovipositor = FALSE
+	allow_no_queen_actions = TRUE
+
+	///Can have many tutorials going at once.
+	hive_structures_limit = list(
+		XENO_STRUCTURE_CORE = 999,
+		XENO_STRUCTURE_CLUSTER = 999,
+		XENO_STRUCTURE_EGGMORPH = 999,
+		XENO_STRUCTURE_RECOVERY = 999,
+	)
+
+/datum/hive_status/tutorial/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
 	return FALSE
 
 /datum/hive_status/yautja

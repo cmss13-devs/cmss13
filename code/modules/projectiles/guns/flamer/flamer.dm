@@ -205,16 +205,16 @@
 	var/flameshape = R.flameshape
 	var/fire_type = R.fire_type
 
-	R.intensityfire = Clamp(R.intensityfire, current_mag.reagents.min_fire_int, current_mag.reagents.max_fire_int)
-	R.durationfire = Clamp(R.durationfire, current_mag.reagents.min_fire_dur, current_mag.reagents.max_fire_dur)
-	R.rangefire = Clamp(R.rangefire, current_mag.reagents.min_fire_rad, current_mag.reagents.max_fire_rad)
+	R.intensityfire = clamp(R.intensityfire, current_mag.reagents.min_fire_int, current_mag.reagents.max_fire_int)
+	R.durationfire = clamp(R.durationfire, current_mag.reagents.min_fire_dur, current_mag.reagents.max_fire_dur)
+	R.rangefire = clamp(R.rangefire, current_mag.reagents.min_fire_rad, current_mag.reagents.max_fire_rad)
 	var/max_range = R.rangefire
 	if (max_range < fuel_pressure) //Used for custom tanks, allows for higher ranges
-		max_range = Clamp(fuel_pressure, 0, current_mag.reagents.max_fire_rad)
+		max_range = clamp(fuel_pressure, 0, current_mag.reagents.max_fire_rad)
 	if(R.rangefire == -1)
 		max_range = current_mag.reagents.max_fire_rad
 
-	var/turf/temp[] = getline2(get_turf(user), get_turf(target))
+	var/turf/temp[] = get_line(get_turf(user), get_turf(target))
 
 	var/turf/to_fire = temp[2]
 

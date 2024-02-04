@@ -1,4 +1,4 @@
-import { Component, createRef } from 'inferno';
+import { Component, createRef } from 'react';
 import { resolveAsset } from '../assets';
 import { Box } from './Box';
 
@@ -54,9 +54,9 @@ const bodyZonePixelToZone = (x: number, y: number): BodyZone | null => {
 };
 
 type BodyZoneSelectorProps = {
-  onClick?: (zone: BodyZone) => void;
-  scale?: number;
-  selectedZone: BodyZone | null;
+  readonly onClick?: (zone: BodyZone) => void;
+  readonly scale?: number;
+  readonly selectedZone: BodyZone | null;
 };
 
 type BodyZoneSelectorState = {

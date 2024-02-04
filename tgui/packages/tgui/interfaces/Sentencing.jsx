@@ -8,8 +8,8 @@ const PAGES = {
   'new_charge': () => NewCharge,
 };
 
-export const Sentencing = (props, context) => {
-  const { data } = useBackend(context);
+export const Sentencing = (props) => {
+  const { data } = useBackend();
   const { current_menu } = data;
   const PageComponent = PAGES[current_menu]();
 
@@ -22,8 +22,8 @@ export const Sentencing = (props, context) => {
   );
 };
 
-const MainMenu = (props, context) => {
-  const { act } = useBackend(context);
+const MainMenu = (props) => {
+  const { act } = useBackend();
 
   return (
     <Flex
@@ -61,8 +61,8 @@ const MainMenu = (props, context) => {
   );
 };
 
-const NewReport = (props, context) => {
-  const { data, act } = useBackend(context);
+const NewReport = (props) => {
+  const { data, act } = useBackend();
   const { suspect_name, summary, sentence, current_charges } = data;
   const canExport = suspect_name && current_charges.length;
 
@@ -123,11 +123,10 @@ const NewReport = (props, context) => {
   );
 };
 
-const NewCharge = (props, context) => {
-  const { data, act } = useBackend(context);
+const NewCharge = (props) => {
+  const { data, act } = useBackend();
   const { laws } = data;
   const [chargeCategory, setChargeCategory] = useLocalState(
-    context,
     'chargeCategory',
     0
   );
@@ -188,8 +187,8 @@ const NewCharge = (props, context) => {
   );
 };
 
-const Charges = (props, context) => {
-  const { data, act } = useBackend(context);
+const Charges = (props) => {
+  const { data, act } = useBackend();
   const { current_charges } = data;
 
   return (
@@ -253,8 +252,8 @@ const Charges = (props, context) => {
   );
 };
 
-const Evidence = (props, context) => {
-  const { data, act } = useBackend(context);
+const Evidence = (props) => {
+  const { data, act } = useBackend();
   const { witnesses, evidence } = data;
 
   return (

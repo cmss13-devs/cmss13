@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - code_imp: "Add missing bitfield definitions for variable viewer (VV)"

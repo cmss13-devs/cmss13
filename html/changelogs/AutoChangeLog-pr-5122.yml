@@ -1,5 +1,0 @@
-author: "ihatethisengine"
-delete-after: True
-changes:
-  - balance: "Pylons give larva only up to 50% of groundside (weighted) marines, instead of 40% of all humans."
-  - balance: "Xenos get major boost to evo speed for 3 minutes after hijack. Hijacking resets ovi cooldown."

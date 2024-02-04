@@ -32,6 +32,7 @@
 	plane = GHOST_PLANE
 	layer = ABOVE_FLY_LAYER
 	stat = DEAD
+	mob_flags = KNOWS_TECHNOLOGY
 	var/adminlarva = FALSE
 	var/ghostvision = TRUE
 	var/can_reenter_corpse
@@ -136,8 +137,6 @@
 	for(var/path in subtypesof(/datum/action/observer_action))
 		var/datum/action/observer_action/new_action = new path()
 		new_action.give_to(src)
-
-	RegisterSignal(SSdcs, COMSIG_GLOB_PREDATOR_ROUND_TOGGLED, PROC_REF(toggle_predator_action))
 
 	if(SSticker.mode && SSticker.mode.flags_round_type & MODE_PREDATOR)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, "<span style='color: red;'>This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!</span>"), 2 SECONDS)
@@ -262,6 +261,9 @@
 	var/mob/living/carbon/human/human_target = target
 
 	client.eye = human_target
+	observe_target_mob = human_target
+	RegisterSignal(observe_target_mob, COMSIG_PARENT_QDELETING, PROC_REF(clean_observe_target))
+	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(observer_move_react))
 
 	if(!human_target.hud_used)
 		return
@@ -290,19 +292,14 @@
 
 		break
 
-	observe_target_mob = human_target
-	RegisterSignal(observe_target_mob, COMSIG_PARENT_QDELETING, PROC_REF(clean_observe_target))
 	RegisterSignal(observe_target_mob, COMSIG_MOB_GHOSTIZE, PROC_REF(observe_target_ghosting))
 	RegisterSignal(observe_target_mob, COMSIG_MOB_NEW_MIND, PROC_REF(observe_target_new_mind))
 	RegisterSignal(observe_target_mob, COMSIG_MOB_LOGIN, PROC_REF(observe_target_login))
-
-	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(observer_move_react))
 
 	if(human_target.client)
 		observe_target_client = human_target.client
 		RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_ADD, PROC_REF(observe_target_screen_add))
 		RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_REMOVE, PROC_REF(observe_target_screen_remove))
-		return
 
 /mob/dead/observer/reset_perspective(atom/A)
 	if(observe_target_mob)
@@ -321,7 +318,9 @@
 /mob/dead/observer/Login()
 	..()
 
-	toggle_predator_action()
+	if(client.check_whitelist_status(WHITELIST_PREDATOR))
+		RegisterSignal(SSdcs, COMSIG_GLOB_PREDATOR_ROUND_TOGGLED, PROC_REF(toggle_predator_action))
+		toggle_predator_action()
 
 	client.move_delay = MINIMAL_MOVEMENT_INTERVAL
 
@@ -621,7 +620,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	mind.transfer_to(mind.original, TRUE)
-	SStgui.on_transfer(src, mind.current)
 	qdel(src)
 	return TRUE
 
@@ -1285,9 +1283,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	var/key_to_use = ckey || persistent_ckey
 
 	if(!key_to_use)
-		return
-
-	if(!(GLOB.RoleAuthority.roles_whitelist[key_to_use] & WHITELIST_PREDATOR))
 		return
 
 	if(!SSticker.mode)

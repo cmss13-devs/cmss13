@@ -71,9 +71,11 @@
 
 /datum/player_action/sticky_ban/act(client/user, mob/target, list/params)
 	var/datum/entity/player/player = get_player_from_key(target.ckey || target.persistent_ckey)
+	if(!player)
+		return
 
-	var/persistent_ip = target.client?.address || player.last_known_cid
-	var/persistent_cid = target.client?.computer_id || player.last_known_ip
+	var/persistent_ip = target.client?.address || player.last_known_ip
+	var/persistent_cid = target.client?.computer_id || player.last_known_cid
 
 	var/reason = tgui_input_text(user, "What message should be given to the impacted users?", "BuildABan")
 	if(!reason)

@@ -1865,11 +1865,6 @@
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "hospital"
 
-
-#define STATE_UP "up"
-#define STATE_DOWN "down"
-#define STATE_BODY "body"
-
 /obj/structure/prop/hybrisa/hospital/hospitalbedrollerbody
 	name = "hospital bed"
 	desc = "A hospital bed, there's a body under the cloth..."
@@ -1877,30 +1872,6 @@
 	icon_state = "bigroller_body1up"
 	density = TRUE
 	wrenchable = TRUE
-
-	var/state = STATE_UP
-
-/obj/structure/prop/hybrisa/hospital/hospitalbedrollerbody/attack_hand(mob/user)
-	switch(state)
-		if(STATE_UP)
-			state = STATE_DOWN
-			update_icon()
-		if(STATE_DOWN)
-			drop_body()
-		if(STATE_BODY)
-			..()
-
-/obj/structure/prop/hybrisa/hospital/hospitalbedrollerbody/proc/drop_body()
-	var/mob/living/carbon/human/corpse = new(get_turf(src))
-	state = STATE_BODY
-	update_icon()
-
-/obj/structure/prop/hybrisa/hospital/hospitalbedrollerbody/update_icon()
-	if(state == STATE_UP)
-		icon_state = "bigroller_body1up"
-	else
-		icon_state = "bigroller_body1down"
-
 /obj/structure/prop/hybrisa/hospital/hospitalbedrollerbody1
 	name = "hospital bed"
 	desc = "A hospital bed, there's a body under the cloth..."

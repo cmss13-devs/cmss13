@@ -450,7 +450,8 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 	update_icon()
 
 /obj/structure/bed/roller/hospital/Destroy()
-	QDEL_NULL(body)
+	if(body)
+		QDEL_NULL(body)
 	return ..()
 
 /obj/structure/bed/roller/hospital/attackby()

@@ -18,6 +18,9 @@
 	var/made_from_player = ""
 	center_of_mass = "x=15;y=15"
 
+	//var from TGMC
+	var/list/tastes // for example list("crisps" = 2, "salt" = 1)
+
 //testing trying to port TGMC way of init reagent in snack
 // /datum/reagent/consumable/nutriment
 // is changed to /datum/reagent/nutriment
@@ -25,7 +28,7 @@
 
 //this proc is also totally seperated
 /obj/item/reagent_container/food/snacks/create_reagents_snack(max_vol, new_flags, list/init_reagents, data)
-	if(!length(init_reagents))
+	if(!length(tastes) || !length(init_reagents))
 		return ..()
 	if(reagents)
 		qdel(reagents)
@@ -34,7 +37,7 @@
 	for(var/rid in init_reagents)
 		var/amount = list_reagents[rid]
 		if(rid == /datum/reagent/nutriment)// using the path for nutriment (could cause some issues?)
-			reagents.add_reagent(rid, amount())
+			reagents.add_reagent(rid, amount, tastes.Copy())
 		else
 			reagents.add_reagent(rid, amount, data)
 

@@ -14604,7 +14604,7 @@
 	},
 /area/lv522/indoors/c_block/cargo)
 "gpu" = (
-/obj/item/fuelCell{
+/obj/item/fuel_cell{
 	pixel_x = -8;
 	pixel_y = -2
 	},
@@ -15628,7 +15628,7 @@
 	},
 /area/lv522/landing_zone_1)
 "gKD" = (
-/obj/item/fuelCell{
+/obj/item/fuel_cell{
 	pixel_x = 6;
 	pixel_y = 4
 	},
@@ -38967,12 +38967,12 @@
 	},
 /area/lv522/landing_zone_1)
 "pnu" = (
-/obj/item/fuelCell{
+/obj/item/fuel_cell{
 	layer = 3.1;
 	pixel_x = 3;
 	pixel_y = 15
 	},
-/obj/item/fuelCell{
+/obj/item/fuel_cell{
 	layer = 3.1;
 	pixel_x = -10;
 	pixel_y = 18
@@ -56431,7 +56431,7 @@
 	},
 /area/lv522/indoors/a_block/medical)
 "vzc" = (
-/obj/structure/machinery/power/geothermal{
+/obj/structure/machinery/power/reactor/colony{
 	fail_rate = 5
 	},
 /turf/open/floor/plating,

@@ -1303,7 +1303,7 @@
 	},
 /area/ice_colony/surface/engineering/generator)
 "aex" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor{
 	icon_state = "platebot"
 	},
@@ -2027,7 +2027,7 @@
 	},
 /area/ice_colony/surface/engineering/generator)
 "ags" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -20104,7 +20104,7 @@
 	},
 /area/ice_colony/underground/hangar)
 "biw" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
 "bix" = (
@@ -23959,7 +23959,7 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/exterior/underground/caves)
 "buh" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/plating,
 /area/ice_colony/exterior/underground/caves)
 "bui" = (
@@ -24466,7 +24466,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/bball)
 "bvD" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -24838,11 +24838,11 @@
 	},
 /area/ice_colony/underground/engineering/substation)
 "bwA" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/plating,
 /area/ice_colony/underground/engineering/substation)
 "bwB" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /obj/structure/machinery/light/small,
 /turf/open/floor/plating,
 /area/ice_colony/underground/engineering/substation)

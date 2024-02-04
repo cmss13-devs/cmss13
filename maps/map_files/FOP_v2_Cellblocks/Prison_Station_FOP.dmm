@@ -31581,7 +31581,7 @@
 /turf/open/floor/wood,
 /area/prison/library)
 "bOa" = (
-/obj/structure/machinery/power/geothermal{
+/obj/structure/machinery/power/reactor/colony{
 	desc = "A thermoelectric generator fueled by searing hot uranium!";
 	fail_rate = 5;
 	name = "thermoelectric generator"

@@ -4393,7 +4393,7 @@
 /turf/open/floor/plating,
 /area/varadero/interior/administration)
 "cNC" = (
-/obj/item/fuelCell{
+/obj/item/fuel_cell{
 	pixel_x = 4;
 	pixel_y = 22
 	},
@@ -29523,7 +29523,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance)
 "sLi" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -31420,7 +31420,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/maintenance/south)
 "ubK" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -36402,7 +36402,7 @@
 	},
 /area/varadero/interior/cargo)
 "xjp" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /obj/structure/machinery/light/small,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"

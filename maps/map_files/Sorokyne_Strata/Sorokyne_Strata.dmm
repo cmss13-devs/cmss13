@@ -265,7 +265,7 @@
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/cabin_area)
 "aaV" = (
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "aaW" = (
@@ -461,7 +461,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
 "abG" = (
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "abH" = (
@@ -675,7 +675,7 @@
 /obj/structure/platform_decoration/strata/metal{
 	dir = 4
 	},
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /turf/open/floor/strata{
 	icon_state = "red2"
 	},
@@ -860,7 +860,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /turf/open/floor/strata{
 	icon_state = "red2"
 	},
@@ -1899,7 +1899,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
 "afB" = (
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/structure/machinery/light/small{
 	dir = 1;
@@ -1911,7 +1911,7 @@
 	},
 /area/strata/ag/interior/dorms/hive)
 "afC" = (
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/structure/barricade/handrail/strata,
 /turf/open/floor/strata{
@@ -3362,7 +3362,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/engi)
 "ajP" = (
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -5686,7 +5686,7 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/cabin_area)
 "arg" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
 	},
@@ -6115,7 +6115,7 @@
 	},
 /area/strata/ag/interior/outpost/engi)
 "asr" = (
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
@@ -6525,7 +6525,7 @@
 	},
 /area/strata/ag/interior/dorms)
 "ats" = (
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /obj/structure/barricade/handrail/strata{
 	dir = 1
 	},
@@ -8329,7 +8329,7 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/north_outpost)
 "ayP" = (
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
@@ -11121,7 +11121,7 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/interior/outpost/engi)
 "aHw" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi)
 "aHy" = (
@@ -18160,7 +18160,7 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/admin)
 "bfZ" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -19270,7 +19270,7 @@
 /area/strata/ag/exterior/vanyard)
 "bjT" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "bjU" = (
@@ -28580,7 +28580,7 @@
 	},
 /area/strata/ag/interior/dorms/flight_control)
 "coc" = (
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/structure/barricade/handrail/strata{
 	dir = 8
@@ -29756,7 +29756,7 @@
 	},
 /area/strata/ug/interior/outpost/jung/dorms/admin1)
 "cIQ" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "floor3"
@@ -30611,7 +30611,7 @@
 /turf/open/auto_turf/ice/layer0,
 /area/strata/ag/exterior/marsh)
 "elE" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/strata{
 	dir = 4;
@@ -31035,7 +31035,7 @@
 	},
 /area/strata/ag/interior/landingzone_checkpoint)
 "eUe" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "floor3"
@@ -41647,7 +41647,7 @@
 	},
 /area/strata/ag/interior/landingzone_checkpoint)
 "wVU" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "floor3"

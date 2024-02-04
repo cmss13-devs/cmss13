@@ -10437,7 +10437,7 @@
 	},
 /area/lv624/lazarus/comms)
 "aTo" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /obj/structure/lattice{
 	layer = 2.9
 	},
@@ -10918,7 +10918,7 @@
 /obj/structure/lattice{
 	layer = 2.9
 	},
-/obj/structure/machinery/power/geothermal{
+/obj/structure/machinery/power/reactor/colony{
 	fail_rate = 5
 	},
 /turf/open/floor/plating{
@@ -10936,7 +10936,7 @@
 /obj/structure/lattice{
 	layer = 2.9
 	},
-/obj/structure/machinery/power/geothermal{
+/obj/structure/machinery/power/reactor/colony{
 	fail_rate = 5
 	},
 /turf/open/floor/plating{
@@ -10948,7 +10948,7 @@
 /obj/structure/lattice{
 	layer = 2.9
 	},
-/obj/structure/machinery/power/geothermal{
+/obj/structure/machinery/power/reactor/colony{
 	fail_rate = 5
 	},
 /turf/open/floor/plating{
@@ -11225,7 +11225,7 @@
 	},
 /area/lv624/lazarus/engineering)
 "aWg" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /obj/structure/lattice{
 	layer = 2.9
 	},
@@ -16717,7 +16717,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/machinery/power/geothermal{
+/obj/structure/machinery/power/reactor/colony{
 	fail_rate = 5
 	},
 /turf/open/floor/plating{
@@ -17629,7 +17629,7 @@
 /obj/structure/lattice{
 	layer = 2.9
 	},
-/obj/structure/machinery/power/geothermal{
+/obj/structure/machinery/power/reactor/colony{
 	fail_rate = 5
 	},
 /turf/open/floor/plating{
@@ -21679,7 +21679,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_central_caves)
 "tem" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /obj/structure/lattice{
 	layer = 2.9
 	},

@@ -24177,7 +24177,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_room)
 "bxE" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/engine_room)
 "bxF" = (
@@ -24185,7 +24185,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/warehouse/breakroom)
 "bxH" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/greengrid,
 /area/desert_dam/interior/dam_interior/engine_room)
 "bxJ" = (
@@ -24481,14 +24481,14 @@
 	},
 /area/desert_dam/building/administration/hallway)
 "byG" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /obj/structure/lattice{
 	layer = 2.9
 	},
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/engine_room)
 "byJ" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /obj/structure/lattice{
 	layer = 2.9
 	},

@@ -1889,7 +1889,7 @@
 	},
 /area/adminlevel/bunker01/engineering)
 "eB" = (
-/obj/structure/machinery/power/geothermal{
+/obj/structure/machinery/power/reactor/colony{
 	buildstate = 4;
 	icon_state = "on100";
 	is_on = 1
@@ -1902,7 +1902,7 @@
 /obj/structure/machinery/light/small{
 	pixel_y = 0
 	},
-/obj/structure/machinery/power/geothermal{
+/obj/structure/machinery/power/reactor/colony{
 	buildstate = 4;
 	icon_state = "on100";
 	is_on = 1

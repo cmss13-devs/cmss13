@@ -1923,7 +1923,7 @@
 	},
 /area/fiorina/tumor/ice_lab)
 "bhf" = (
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /obj/structure/surface/rack,
 /turf/open/floor/prison,
 /area/fiorina/maintenance)
@@ -3706,7 +3706,7 @@
 /obj/structure/platform{
 	dir = 1
 	},
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/lowsec)
 "ckA" = (
@@ -16965,7 +16965,7 @@
 /obj/structure/platform{
 	dir = 1
 	},
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /obj/structure/platform{
 	dir = 4
 	},
@@ -17214,7 +17214,7 @@
 	},
 /area/fiorina/station/chapel)
 "kwL" = (
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /obj/structure/platform,
 /obj/structure/machinery/light/double/blue{
 	dir = 8;
@@ -19954,7 +19954,7 @@
 /area/fiorina/tumor/servers)
 "mbH" = (
 /obj/structure/platform,
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /obj/structure/machinery/light/double/blue{
 	dir = 4;
 	pixel_x = 10;
@@ -23439,7 +23439,7 @@
 /turf/open/space,
 /area/fiorina/oob)
 "ogs" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
 "ogM" = (
@@ -24259,7 +24259,7 @@
 /obj/structure/closet/crate/bravo,
 /obj/item/stack/sheet/metal/medium_stack,
 /obj/item/stack/sheet/metal/medium_stack,
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /obj/item/stack/sheet/plasteel,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison{
@@ -26310,7 +26310,7 @@
 	},
 /area/fiorina/station/flight_deck)
 "pWl" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "bluecorner"
@@ -32889,7 +32889,7 @@
 /obj/structure/closet/crate/bravo,
 /obj/item/stack/sheet/metal/medium_stack,
 /obj/item/stack/sheet/metal/medium_stack,
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /obj/item/stack/sheet/plasteel,
 /turf/open/floor/prison{
 	icon_state = "bluefull"
@@ -39045,7 +39045,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/transit_hub)
 "xNw" = (
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /turf/open/floor/prison,
 /area/fiorina/tumor/aux_engi)
 "xNG" = (

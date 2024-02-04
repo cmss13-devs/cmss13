@@ -1253,7 +1253,7 @@
 	},
 /area/adminlevel/chinook/offices)
 "eA" = (
-/obj/structure/machinery/power/fusion_engine,
+/obj/structure/machinery/power/reactor,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -1302,7 +1302,7 @@
 	},
 /area/adminlevel/chinook/medical)
 "eG" = (
-/obj/structure/machinery/power/fusion_engine,
+/obj/structure/machinery/power/reactor,
 /obj/structure/platform{
 	dir = 4
 	},
@@ -2772,7 +2772,7 @@
 "jK" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/device/multitool,
-/obj/item/fuelCell{
+/obj/item/fuel_cell{
 	pixel_x = 5;
 	pixel_y = 7
 	},
@@ -4593,7 +4593,7 @@
 /turf/open/floor/kutjevo,
 /area/adminlevel/chinook/event)
 "pT" = (
-/obj/structure/machinery/power/fusion_engine,
+/obj/structure/machinery/power/reactor,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -7274,7 +7274,7 @@
 /turf/closed/wall/almayer/reinforced,
 /area/adminlevel/chinook/engineering)
 "zX" = (
-/obj/structure/machinery/power/fusion_engine,
+/obj/structure/machinery/power/reactor,
 /obj/structure/platform,
 /turf/open/floor/almayer{
 	dir = 5;
@@ -7537,7 +7537,7 @@
 	},
 /area/adminlevel/chinook/shuttle/unpowered)
 "AV" = (
-/obj/structure/machinery/power/fusion_engine,
+/obj/structure/machinery/power/reactor,
 /obj/structure/platform{
 	dir = 8
 	},
@@ -7843,7 +7843,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "plating_striped"
@@ -9094,7 +9094,7 @@
 	},
 /area/adminlevel/chinook/engineering)
 "Hn" = (
-/obj/structure/machinery/power/fusion_engine,
+/obj/structure/machinery/power/reactor,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating"
@@ -11624,7 +11624,7 @@
 /area/adminlevel/chinook/cargo)
 "Ri" = (
 /obj/structure/surface/table/almayer,
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /turf/open/floor/almayer{
 	icon_state = "orange"
 	},
@@ -11682,7 +11682,7 @@
 	},
 /area/adminlevel/chinook/sec)
 "Rt" = (
-/obj/structure/machinery/power/fusion_engine,
+/obj/structure/machinery/power/reactor,
 /obj/structure/platform{
 	dir = 8
 	},
@@ -11735,7 +11735,7 @@
 	},
 /area/adminlevel/chinook/sec)
 "RD" = (
-/obj/structure/machinery/power/fusion_engine,
+/obj/structure/machinery/power/reactor,
 /obj/structure/machinery/light,
 /obj/structure/platform,
 /turf/open/floor/almayer{
@@ -13579,7 +13579,7 @@
 "Yi" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/effect/spawner/random/tool,
-/obj/item/fuelCell{
+/obj/item/fuel_cell{
 	pixel_y = 10
 	},
 /turf/open/floor/almayer{

@@ -15561,14 +15561,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lockerroom)
-"bqP" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 5"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/engineering/lower/engine_core)
 "bqR" = (
 /turf/open/floor/almayer{
 	dir = 6;
@@ -25169,8 +25161,8 @@
 /area/almayer/medical/lower_medical_medbay)
 "cGe" = (
 /obj/structure/surface/table/almayer,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
@@ -27915,9 +27907,7 @@
 	},
 /area/almayer/hull/upper_hull/u_f_s)
 "dKc" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 9"
-	},
+/obj/structure/machinery/power/reactor,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -27984,14 +27974,6 @@
 	icon_state = "silver"
 	},
 /area/almayer/command/cichallway)
-"dLi" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 4"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/engineering/lower/engine_core)
 "dLt" = (
 /obj/structure/sign/safety/hazard{
 	pixel_x = -17;
@@ -28762,9 +28744,9 @@
 /area/almayer/living/briefing)
 "ebt" = (
 /obj/structure/surface/table/almayer,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
 /obj/structure/machinery/alarm/almayer{
 	dir = 1
 	},
@@ -31463,9 +31445,9 @@
 /area/almayer/medical/upper_medical)
 "fbH" = (
 /obj/structure/surface/table/almayer,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
@@ -32461,14 +32443,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/shipboard/weapon_room)
-"fyd" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 1"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/engineering/lower/engine_core)
 "fyp" = (
 /obj/structure/machinery/cryopod{
 	layer = 3.1;
@@ -34154,14 +34128,6 @@
 /obj/effect/landmark/start/liaison,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_m_p)
-"ghX" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 14"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/engineering/lower/engine_core)
 "gio" = (
 /obj/structure/closet/emcloset,
 /obj/structure/sign/safety/restrictedarea{
@@ -35775,9 +35741,9 @@
 /area/almayer/hull/lower_hull/l_m_p)
 "gNG" = (
 /obj/structure/surface/table/almayer,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 1;
 	name = "ship-grade camera"
@@ -36675,17 +36641,6 @@
 	icon_state = "green"
 	},
 /area/almayer/living/grunt_rnr)
-"hgV" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 15"
-	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/engineering/lower/engine_core)
 "hgZ" = (
 /obj/structure/machinery/door_control{
 	dir = 1;
@@ -37459,11 +37414,11 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices)
 "hwd" = (
-/obj/item/fuelCell,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
 /obj/structure/surface/table/almayer,
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
@@ -44067,12 +44022,10 @@
 	},
 /area/almayer/medical/upper_medical)
 "kag" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 16"
-	},
 /obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
+/obj/structure/machinery/power/reactor,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -45839,13 +45792,11 @@
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "kJn" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 17"
-	},
 /obj/structure/sign/safety/rad_haz{
 	pixel_x = 8;
 	pixel_y = 32
 	},
+/obj/structure/machinery/power/reactor,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -52213,14 +52164,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/living/gym)
-"nbv" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 3"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/engineering/lower/engine_core)
 "ncf" = (
 /obj/structure/machinery/cryopod/right{
 	layer = 3.1;
@@ -53035,8 +52978,8 @@
 /area/almayer/engineering/starboard_atmos)
 "npn" = (
 /obj/structure/surface/table/almayer,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
 /obj/structure/machinery/camera/autoname/almayer{
 	name = "ship-grade camera"
 	},
@@ -53520,12 +53463,10 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "nxZ" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 10"
-	},
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/structure/machinery/power/reactor,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -53947,14 +53888,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha_bravo_shared)
-"nFM" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 18"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/engineering/lower/engine_core)
 "nFV" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
@@ -55486,14 +55419,6 @@
 	icon_state = "outerhull_dir"
 	},
 /area/space)
-"okQ" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 12"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/engineering/lower/engine_core)
 "olM" = (
 /obj/structure/bed/chair{
 	can_buckle = 0;
@@ -55921,14 +55846,6 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/lower/workshop)
-"osM" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 8"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/engineering/lower/engine_core)
 "osT" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/prop/ice_colony/hula_girl{
@@ -62531,14 +62448,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hallways/hangar)
-"qYo" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 6"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/engineering/lower/engine_core)
 "qYq" = (
 /turf/open/floor/almayer{
 	dir = 5;
@@ -64215,13 +64124,11 @@
 	},
 /area/almayer/engineering/lower/workshop)
 "rDB" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 13"
-	},
 /obj/structure/sign/safety/rad_haz{
 	pixel_x = 8;
 	pixel_y = -32
 	},
+/obj/structure/machinery/power/reactor,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -71487,14 +71394,6 @@
 /obj/effect/landmark/late_join/charlie,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/charlie)
-"urW" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 7"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/engineering/lower/engine_core)
 "usi" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer{
@@ -75992,9 +75891,9 @@
 /area/almayer/medical/lower_medical_lobby)
 "vVX" = (
 /obj/structure/surface/table/almayer,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
 /obj/item/device/radio/intercom{
 	freerange = 1;
 	name = "General Listening Channel";
@@ -80220,14 +80119,6 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
-"xxl" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 2"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/engineering/lower/engine_core)
 "xxm" = (
 /obj/structure/bed{
 	can_buckle = 0
@@ -80825,14 +80716,6 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/brig/processing)
-"xIO" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 11"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/engineering/lower/engine_core)
 "xIQ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -134386,12 +134269,12 @@ shL
 uXk
 mlF
 hsy
-hgV
-osM
-ghX
+nxZ
+dKc
+dKc
 dTS
-okQ
-xIO
+dKc
+dKc
 nxZ
 hsy
 tos
@@ -134997,9 +134880,9 @@ rae
 jIV
 pzM
 mtZ
-bqP
-fyd
-qYo
+dKc
+dKc
+dKc
 fQn
 pzM
 nac
@@ -135201,7 +135084,7 @@ uSW
 kzO
 vaZ
 kYL
-dLi
+dKc
 sCV
 rjO
 suY
@@ -135404,7 +135287,7 @@ uXk
 hmw
 gSa
 mtZ
-nbv
+dKc
 fQn
 wSV
 ulp
@@ -135607,7 +135490,7 @@ hsy
 kag
 fQn
 mtZ
-xxl
+dKc
 fQn
 mtZ
 dKc
@@ -136010,13 +135893,13 @@ hsy
 ylh
 mlF
 hsy
-nFM
+dKc
 eZp
 kzO
 pzM
 hip
 ptZ
-urW
+dKc
 hsy
 tos
 ylh

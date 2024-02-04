@@ -12037,7 +12037,7 @@
 	},
 /area/shiva/interior/colony/medseceng)
 "hgx" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
 "hgI" = (
@@ -15884,7 +15884,7 @@
 	},
 /area/shiva/interior/colony/research_hab)
 "kTN" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "yellowfull"
@@ -22150,7 +22150,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
 "rHQ" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/shiva{
 	dir = 1
 	},

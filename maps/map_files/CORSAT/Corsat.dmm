@@ -10040,7 +10040,7 @@
 	},
 /area/corsat/theta/airlock/east)
 "aCR" = (
-/obj/structure/machinery/power/geothermal{
+/obj/structure/machinery/power/reactor/colony{
 	desc = "A high-tech thermoelectric generator fueled by a superheated uranium rod.";
 	fail_rate = 4;
 	name = "\improper G-17 Thermoelectric Generator"
@@ -10654,7 +10654,7 @@
 	},
 /area/corsat/omega/airlocknorth)
 "aEp" = (
-/obj/structure/machinery/power/geothermal{
+/obj/structure/machinery/power/reactor/colony{
 	desc = "A high-tech thermoelectric generator fueled by a superheated uranium rod.";
 	fail_rate = 4;
 	name = "\improper G-17 Thermoelectric Generator"
@@ -10676,7 +10676,7 @@
 /turf/open/floor/plating,
 /area/corsat/gamma/cargo/lobby)
 "aEs" = (
-/obj/structure/machinery/power/geothermal{
+/obj/structure/machinery/power/reactor/colony{
 	desc = "A high-tech thermoelectric generator fueled by a superheated uranium rod.";
 	fail_rate = 4;
 	name = "\improper G-17 Thermoelectric Generator"
@@ -10725,7 +10725,7 @@
 	},
 /area/corsat/gamma/hangar/monorail)
 "aEA" = (
-/obj/structure/machinery/power/geothermal{
+/obj/structure/machinery/power/reactor/colony{
 	desc = "A high-tech thermoelectric generator fueled by a superheated uranium rod.";
 	fail_rate = 4;
 	name = "\improper G-17 Thermoelectric Generator"

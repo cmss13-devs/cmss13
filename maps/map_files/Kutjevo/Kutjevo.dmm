@@ -2595,7 +2595,7 @@
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/colony_South/power2)
 "dux" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 1
 	},
@@ -7117,7 +7117,7 @@
 	},
 /area/kutjevo/interior/colony_South/power2)
 "jxR" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
 "jxS" = (
@@ -10128,7 +10128,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/kutjevo/exterior/scrubland)
 "nEE" = (
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /obj/structure/surface/rack,
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1
@@ -12052,7 +12052,7 @@
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
 "qdj" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/power)
 "qev" = (
@@ -13916,7 +13916,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/power)
 "sJj" = (
@@ -15947,7 +15947,7 @@
 	},
 /area/kutjevo/interior/complex/med)
 "vnL" = (
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /obj/structure/surface/rack,
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1

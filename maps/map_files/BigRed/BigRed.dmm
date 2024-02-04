@@ -21556,7 +21556,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/c)
 "biX" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
 "biY" = (
@@ -30487,7 +30487,7 @@
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves)
 "gOf" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/plating,
 /area/bigredv2/caves/eta/storage)
 "gOr" = (
@@ -35395,7 +35395,7 @@
 	},
 /area/bigredv2/caves_sw)
 "pIh" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -39169,7 +39169,7 @@
 	},
 /area/bigredv2/caves/mining)
 "vVz" = (
-/obj/structure/machinery/power/geothermal{
+/obj/structure/machinery/power/reactor/colony{
 	name = "Reactor Turbine";
 	power_generation_max = 100000
 	},

@@ -5447,7 +5447,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/mortar_pit)
 "tt" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate"
@@ -5486,7 +5486,7 @@
 	},
 /area/whiskey_outpost/inside/supply)
 "ty" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /obj/structure/machinery/light/small,
 /turf/open/floor/prison{
 	dir = 10;

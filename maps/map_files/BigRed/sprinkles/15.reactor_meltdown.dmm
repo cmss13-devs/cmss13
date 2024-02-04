@@ -916,7 +916,7 @@
 	},
 /area/bigredv2/outside/engineering)
 "dy" = (
-/obj/structure/machinery/power/geothermal{
+/obj/structure/machinery/power/reactor/colony{
 	name = "Reactor Turbine";
 	power_generation_max = 1e+006
 	},

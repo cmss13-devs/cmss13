@@ -19,7 +19,7 @@
 
 	//part of tgmc port.
 	var/list/list_reagents
-	var/reagent_flags
+	var/init_reagent_flags
 
 // part of TGMC port
 /obj/item/reagent_container/verb/set_APTFT_tgmc()

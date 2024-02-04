@@ -455,5 +455,5 @@
 	if(action_start_message)
 		to_chat(owner, SPAN_NOTICE(action_start_message))
 
-#define XENO_ACTION_CHECK(X) if(!X.check_state() || !action_cooldown_check() || check_plasma_owner(src.plasma_cost)) return
+#define XENO_ACTION_CHECK(X) if(!X.check_state() || !action_cooldown_check() || !check_plasma_owner(src.plasma_cost)) return
 #define XENO_ACTION_CHECK_USE_PLASMA(X) if(!X.check_state() || !action_cooldown_check() || !check_and_use_plasma_owner(src.plasma_cost)) return

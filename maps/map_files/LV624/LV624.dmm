@@ -10686,6 +10686,7 @@
 /obj/effect/spawner/random/toolbox,
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/spawner/random/powercell,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -11284,9 +11285,7 @@
 	pixel_x = 7;
 	pixel_y = -32
 	},
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/tool/extinguisher,
-/obj/effect/spawner/random/powercell,
+/obj/structure/machinery/fuelcell_recycler/full,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -15041,6 +15040,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/spawner/random/powercell,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/item/tool/extinguisher,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -15657,9 +15657,7 @@
 /obj/structure/lattice{
 	layer = 2.9
 	},
-/obj/structure/machinery/power/reactor/colony{
-	fail_rate = 5
-	},
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/plating{
 	dir = 4;
 	icon_state = "warnplate"
@@ -18332,9 +18330,7 @@
 /obj/structure/lattice{
 	layer = 2.9
 	},
-/obj/structure/machinery/power/reactor/colony{
-	fail_rate = 5
-	},
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/plating{
 	icon_state = "warnplate"
 	},
@@ -18844,9 +18840,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/machinery/power/reactor/colony{
-	fail_rate = 5
-	},
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "warnplate"
@@ -23091,9 +23085,7 @@
 /obj/structure/lattice{
 	layer = 2.9
 	},
-/obj/structure/machinery/power/reactor/colony{
-	fail_rate = 5
-	},
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "warnplate"
@@ -24117,9 +24109,7 @@
 /obj/structure/lattice{
 	layer = 2.9
 	},
-/obj/structure/machinery/power/reactor/colony{
-	fail_rate = 5
-	},
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/plating{
 	dir = 6;
 	icon_state = "warnplate"

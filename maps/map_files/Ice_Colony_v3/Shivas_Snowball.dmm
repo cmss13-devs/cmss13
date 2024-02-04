@@ -14733,6 +14733,13 @@
 /obj/structure/flora/tree/dead/tree_4,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard)
+"jXF" = (
+/obj/structure/machinery/fuelcell_recycler/full,
+/turf/open/floor/shiva{
+	dir = 6;
+	icon_state = "yellow"
+	},
+/area/shiva/interior/garage)
 "jXM" = (
 /obj/structure/machinery/light/double{
 	dir = 8;
@@ -18680,6 +18687,17 @@
 /obj/item/lightstick/variant/planted,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
+"nUD" = (
+/obj/structure/surface/rack,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/turf/open/floor/shiva{
+	dir = 10;
+	icon_state = "yellow"
+	},
+/area/shiva/interior/garage)
 "nVn" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -20935,6 +20953,14 @@
 	dir = 1
 	},
 /area/shiva/interior/colony/central)
+"qnf" = (
+/obj/structure/surface/rack,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/turf/open/floor/shiva{
+	icon_state = "yellow"
+	},
+/area/shiva/interior/garage)
 "qng" = (
 /obj/structure/machinery/light/double{
 	dir = 4;
@@ -22186,6 +22212,12 @@
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
+"rQH" = (
+/obj/structure/machinery/fuelcell_recycler/full,
+/turf/open/floor/shiva{
+	icon_state = "yellow"
+	},
+/area/shiva/interior/garage)
 "rRb" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/ice_axe,
@@ -53184,7 +53216,7 @@ ver
 ver
 ver
 fEO
-oDM
+nUD
 ktd
 bFg
 bIV
@@ -53346,7 +53378,7 @@ ver
 ver
 ver
 ver
-pSD
+qnf
 ktd
 cZk
 bIV
@@ -54156,7 +54188,7 @@ aAh
 ver
 ver
 ver
-pSD
+rQH
 ktd
 cZk
 bFg
@@ -54318,7 +54350,7 @@ ver
 ver
 ver
 pNf
-aCA
+jXF
 ktd
 gJo
 lTc

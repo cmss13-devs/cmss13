@@ -11235,6 +11235,9 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/structure/surface/rack,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "yellow"
@@ -14986,6 +14989,10 @@
 /turf/open/floor/plating,
 /area/corsat/gamma/engineering/lobby)
 "aPX" = (
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/structure/surface/rack,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "yellow"
@@ -18803,6 +18810,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/machinery/fuelcell_recycler/full,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -36728,6 +36736,7 @@
 /obj/structure/machinery/camera/autoname{
 	network = list("gamma")
 	},
+/obj/structure/machinery/fuelcell_recycler/full,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "yellow"
@@ -37367,7 +37376,6 @@
 "drE" = (
 /obj/structure/machinery/power/reactor/colony{
 	desc = "A high-tech thermoelectric generator fueled by a superheated uranium rod.";
-	fail_rate = 4;
 	name = "\improper G-17 Thermoelectric Generator"
 	},
 /obj/structure/cable/yellow{
@@ -38101,6 +38109,17 @@
 	icon_state = "bluegreycorner"
 	},
 /area/corsat/gamma/hangar/flightcontrol)
+"dSc" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/item/fuel_cell,
+/obj/structure/surface/rack,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "yellow"
+	},
+/area/corsat/gamma/engineering/core)
 "dSi" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
@@ -43682,7 +43701,6 @@
 "hNL" = (
 /obj/structure/machinery/power/reactor/colony{
 	desc = "A high-tech thermoelectric generator fueled by a superheated uranium rod.";
-	fail_rate = 4;
 	name = "\improper G-17 Thermoelectric Generator"
 	},
 /obj/structure/cable/yellow{
@@ -52898,6 +52916,15 @@
 	icon_state = "squares"
 	},
 /area/corsat/omega/complex)
+"oNi" = (
+/obj/structure/surface/rack,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/corsat/sigma/southeast/generator)
 "oNI" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -53447,6 +53474,18 @@
 	icon_state = "squares"
 	},
 /area/corsat/omega/security)
+"phl" = (
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/structure/surface/rack,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "yellow"
+	},
+/area/corsat/gamma/engineering/core)
 "phK" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
@@ -56452,6 +56491,13 @@
 	icon_state = "squares"
 	},
 /area/corsat/sigma/hangar/security)
+"ryn" = (
+/obj/structure/machinery/fuelcell_recycler/full,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "yellow"
+	},
+/area/corsat/gamma/engineering/core)
 "ryE" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/corsat{
@@ -57404,7 +57450,6 @@
 "sgN" = (
 /obj/structure/machinery/power/reactor/colony{
 	desc = "A high-tech thermoelectric generator fueled by a superheated uranium rod.";
-	fail_rate = 4;
 	name = "\improper G-17 Thermoelectric Generator"
 	},
 /obj/structure/cable/yellow{
@@ -65374,6 +65419,14 @@
 	icon_state = "squares"
 	},
 /area/corsat/sigma/cargo)
+"yhI" = (
+/obj/structure/surface/rack,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/corsat/sigma/southeast/generator)
 "yhK" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -65417,7 +65470,6 @@
 "ykJ" = (
 /obj/structure/machinery/power/reactor/colony{
 	desc = "A high-tech thermoelectric generator fueled by a superheated uranium rod.";
-	fail_rate = 4;
 	name = "\improper G-17 Thermoelectric Generator"
 	},
 /obj/structure/cable/yellow{
@@ -94930,7 +94982,7 @@ aEq
 aEq
 agK
 apI
-aPX
+ryn
 aqa
 aqa
 hKc
@@ -95420,7 +95472,7 @@ ouk
 bqM
 buz
 apI
-aFY
+dSc
 aqa
 aqa
 hNL
@@ -95665,7 +95717,7 @@ oUz
 boV
 bOc
 apI
-aPX
+phl
 aqa
 aqa
 aPS
@@ -122716,7 +122768,7 @@ alw
 alw
 alw
 atl
-aCz
+oNi
 unf
 sgN
 aCz
@@ -122961,7 +123013,7 @@ auU
 avf
 asX
 ati
-aCz
+yhI
 apz
 dFP
 dFP

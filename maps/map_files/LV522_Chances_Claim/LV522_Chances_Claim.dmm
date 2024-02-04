@@ -1958,9 +1958,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
 "bbi" = (
-/obj/structure/machinery/power/reactor/colony{
-	fail_rate = 5
-	},
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/plating,
 /area/lv522/indoors/lone_buildings/engineering)
 "bbk" = (
@@ -4131,7 +4129,14 @@
 /turf/open/asphalt/cement,
 /area/lv522/outdoors/colony_streets/east_central_street)
 "cfd" = (
-/obj/structure/closet/wardrobe/engineering_yellow,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/structure/surface/rack,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellowfull2"
@@ -55469,10 +55474,10 @@
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "vir" = (
-/obj/structure/closet/wardrobe/engineering_yellow,
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out"
 	},
+/obj/structure/machinery/fuelcell_recycler/full,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellowfull2"

@@ -7233,6 +7233,20 @@
 /obj/item/stack/sheet/wood,
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/power/comms)
+"jGo" = (
+/obj/structure/surface/rack,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 6
+	},
+/area/kutjevo/interior/power)
 "jGX" = (
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor/kutjevo/colors,
@@ -8941,6 +8955,12 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/oob)
+"mcA" = (
+/obj/structure/machinery/fuelcell_recycler/full,
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 6
+	},
+/area/kutjevo/interior/power)
 "mcZ" = (
 /obj/structure/bed/chair{
 	pixel_y = 8
@@ -12709,6 +12729,13 @@
 "raN" = (
 /turf/closed/wall/kutjevo/colony/reinforced,
 /area/kutjevo/exterior/runoff_bridge)
+"raV" = (
+/obj/structure/machinery/light,
+/obj/structure/surface/rack,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/turf/open/floor/almayer/research/containment/floor1,
+/area/kutjevo/interior/power)
 "rbu" = (
 /obj/structure/machinery/light,
 /turf/open/floor/kutjevo/colors/cyan/edge,
@@ -14593,6 +14620,21 @@
 	},
 /turf/open/floor/kutjevo/colors/green/tile,
 /area/kutjevo/interior/complex/botany)
+"tEj" = (
+/obj/structure/surface/rack,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 6
+	},
+/area/kutjevo/interior/power)
 "tEK" = (
 /obj/structure/bed/sofa/vert/grey/bot{
 	pixel_y = 4
@@ -25478,7 +25520,7 @@ cvm
 hQj
 hQj
 hQj
-cvm
+mcA
 rwj
 uZT
 uZT
@@ -25645,7 +25687,7 @@ cvm
 hQj
 hQj
 hQj
-cvm
+mcA
 aHW
 aHW
 aHW
@@ -25812,7 +25854,7 @@ cvm
 kdY
 kdY
 kdY
-cvm
+tEj
 rwj
 muG
 muG
@@ -25979,7 +26021,7 @@ cvm
 hQj
 hQj
 hQj
-cvm
+jGo
 rwj
 wMw
 wMw
@@ -26146,7 +26188,7 @@ xjY
 xjY
 bbL
 xjY
-voy
+raV
 rwj
 uZT
 uZT

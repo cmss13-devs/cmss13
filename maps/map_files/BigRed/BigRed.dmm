@@ -27625,6 +27625,10 @@
 /obj/item/tool/pickaxe,
 /turf/open/mars,
 /area/bigredv2/outside/filtration_plant)
+"dmO" = (
+/obj/structure/machinery/fuelcell_recycler,
+/turf/open/floor/plating,
+/area/bigredv2/caves/eta/storage)
 "dnV" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -28824,6 +28828,13 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
+"eYy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/fuelcell_recycler/full,
+/turf/open/floor{
+	icon_state = "darkyellow2"
+	},
+/area/bigredv2/outside/engineering)
 "eYH" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -33064,8 +33075,7 @@
 /area/bigredv2/caves/mining)
 "lCt" = (
 /obj/structure/machinery/power/reactor/colony{
-	name = "Reactor Turbine";
-	power_generation_max = 100000
+	name = "Reactor Turbine"
 	},
 /turf/open/floor{
 	icon_state = "delivery"
@@ -33440,6 +33450,18 @@
 	icon_state = "freezerfloor"
 	},
 /area/bigredv2/outside/general_offices)
+"mfQ" = (
+/obj/structure/surface/rack,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/turf/open/floor{
+	dir = 10;
+	icon_state = "darkyellow2"
+	},
+/area/bigredv2/outside/engineering)
 "mhF" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -55203,7 +55225,7 @@ bnr
 bok
 bnr
 bpi
-kVT
+mfQ
 ayr
 nPz
 nVq
@@ -56503,7 +56525,7 @@ bmV
 ayr
 bnV
 tTI
-cKu
+eYy
 ayZ
 bpF
 slG
@@ -56720,7 +56742,7 @@ ayr
 ayr
 xAX
 tTI
-cKu
+eYy
 ayZ
 nPz
 tTI
@@ -63713,7 +63735,7 @@ byM
 ycP
 rTq
 aBE
-bww
+dmO
 bww
 bww
 hkv

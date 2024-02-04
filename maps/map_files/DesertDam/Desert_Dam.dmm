@@ -25176,6 +25176,7 @@
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "bBI" = (
+/obj/structure/machinery/fuelcell_recycler/full,
 /turf/open/floor/prison{
 	icon_state = "darkyellow2"
 	},
@@ -27258,6 +27259,15 @@
 	},
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "bIz" = (
+/obj/structure/surface/rack,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
 /turf/open/floor/prison{
 	icon_state = "green"
 	},

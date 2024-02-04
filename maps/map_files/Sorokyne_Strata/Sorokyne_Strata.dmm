@@ -8213,6 +8213,12 @@
 	dir = 1;
 	pixel_y = 20
 	},
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/structure/surface/rack,
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -39545,6 +39551,12 @@
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/paths/north_outpost)
+"tuV" = (
+/obj/structure/machinery/fuelcell_recycler/full,
+/turf/open/floor/strata{
+	icon_state = "floor3"
+	},
+/area/strata/ag/interior/outpost/engi)
 "tvk" = (
 /obj/structure/platform/strata/metal{
 	dir = 1
@@ -63425,7 +63437,7 @@ oBn
 oBn
 avP
 oKo
-aIV
+tuV
 aAn
 aBR
 aCW

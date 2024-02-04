@@ -307,6 +307,9 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 
 /// Permanently bans this user, with the provided reason. The banner ([/datum/entity/player]) argument is optional, as this can be done without admin intervention.
 /datum/entity/player/proc/add_perma_ban(reason, datum/entity/player/banner)
+	if(is_permabanned)
+		return FALSE
+
 	is_permabanned = TRUE
 	permaban_date = "[time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")]"
 	permaban_reason = reason
@@ -323,6 +326,8 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		QDEL_NULL(owning_client)
 
 	save()
+
+	return TRUE
 
 /datum/entity/player/proc/auto_unban()
 	if(!is_time_banned)

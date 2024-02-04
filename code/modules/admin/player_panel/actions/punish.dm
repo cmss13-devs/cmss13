@@ -62,7 +62,8 @@
 	if(!target_entity)
 		return
 
-	target_entity.add_perma_ban(reason, user.player_data)
+	if(!target_entity.add_perma_ban(reason, user.player_data))
+		to_chat(user, SPAN_ADMIN("The user is already permabanned! If necessary, you can remove the permaban, and place a new one."))
 
 /datum/player_action/sticky_ban
 	action_tag = "sticky_ban"

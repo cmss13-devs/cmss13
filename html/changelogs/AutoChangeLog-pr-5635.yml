@@ -1,0 +1,4 @@
+author: "Poltava"
+delete-after: True
+changes:
+  - imageadd: "updated intel expedition chestrig sprite"

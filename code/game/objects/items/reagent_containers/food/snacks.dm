@@ -328,11 +328,8 @@
 	trash = /obj/item/trash/candy
 	filling_color = "#7D5F46"
 	w_class = SIZE_TINY
-
-/obj/item/reagent_container/food/snacks/candy/Initialize()
-	. = ..()
-	reagents.add_reagent("nutriment", 1)
-	reagents.add_reagent("sugar", 3)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/sugar = 3)
+	tastes = list("candy" = 1)
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/candy/donor
@@ -399,13 +396,10 @@
 	desc = "Such sweet, fattening food."
 	icon_state = "chocolatebar"
 	filling_color = "#7D5F46"
-
-/obj/item/reagent_container/food/snacks/chocolatebar/Initialize()
-	. = ..()
-	reagents.add_reagent("nutriment", 2)
-	reagents.add_reagent("sugar", 2)
-	reagents.add_reagent("coco", 2)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/sugar = 2, /datum/reagent/consumable/coco = 2)
 	bitesize = 2
+	tastes = list("chocolate" = 1)
+
 
 /obj/item/reagent_container/food/snacks/chocolateegg
 	name = "Chocolate Egg"

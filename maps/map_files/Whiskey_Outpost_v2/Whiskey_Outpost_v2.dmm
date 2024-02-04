@@ -9973,10 +9973,6 @@
 	},
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/northwest)
-"KQ" = (
-/turf/closed/wall/rock/brown,
-/turf/closed/wall/r_wall,
-/area/whiskey_outpost/inside/engineering)
 "KR" = (
 /obj/structure/platform{
 	dir = 8
@@ -19604,12 +19600,12 @@ ak
 ak
 ak
 nK
-KQ
-KQ
-KQ
-KQ
-KQ
-KQ
+nK
+nK
+nK
+nK
+nK
+nK
 mT
 mT
 mT
@@ -19811,7 +19807,7 @@ rq
 fG
 rq
 PR
-KQ
+nK
 mT
 mT
 mT

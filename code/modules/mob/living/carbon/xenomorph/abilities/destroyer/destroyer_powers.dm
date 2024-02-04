@@ -20,7 +20,7 @@
 
 /datum/action/xeno_action/onclick/rend/use_ability()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	XENO_ACTION_CHECK(xeno)
+	XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
 	xeno.spin_circle()
 	xeno.emote("hiss")
@@ -50,12 +50,11 @@
 
 /datum/action/xeno_action/activable/doom/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
-	XENO_ACTION_CHECK(xeno)
+	XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
-	playsound(xeno.loc, 'sound/voice/deep_alien_screech2.ogg', 50, 0, status = 0)
-	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits an ear-splitting guttural roar!"))
-	xeno.create_shriekwave() //Adds the visual effect. Wom wom wom
-
+	playsound(xeno.loc, 'sound/voice/deep_alien_screech2.ogg', 75, 0, status = 0)
+	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits an raspy guttural roar!"))
+	xeno.create_shriekwave(color = COLOR_RED) //Adds the visual effect. Wom wom wom
 
 	// Turn off lights for items in the area dependant on distance.
 	for(var/obj/item/device/potential_lightsource in orange(extinguish_light_range, owner))
@@ -82,7 +81,7 @@
 		human.EyeBlur(daze_length_seconds)
 		human.Daze(daze_length_seconds)
 		human.Superslow(slow_length_seconds)
-		to_chat(human, SPAN_HIGHDANGER("[xeno]'s shriek overwhelms your entire being!"))
+		to_chat(human, SPAN_HIGHDANGER("[xeno]'s roar overwhelms your entire being!"))
 		shake_camera(human, 6, 1)
 
 		var/time_to_extinguish = get_dist(owner, human) SECONDS
@@ -96,21 +95,25 @@
 
 /*
 	BULWARK ABILITY - AoE shield
-	Medium cooldown gap closer pushes things out of the way and does damage.
+	Long cooldown defensive ability, provides a shield which caps damage taken to 10% of the xeno's max health per individual source of damage.
 */
 
 /datum/action/xeno_action/onclick/destroyer_shield/use_ability()
 	var/mob/living/carbon/xenomorph/xeno = owner
 
-	XENO_ACTION_CHECK(xeno)
+	XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
 
 	playsound(xeno.loc, 'sound/voice/deep_alien_screech.ogg', 50, 0, status = 0)
 	// Add our shield
 	start_shield(xeno)
 
-	// Add other xeno's shields
-	for(var/mob/living/carbon/xenomorph/xeno_in_aoe in range(6, xeno))
+	// Add other xeno's shields in AoE range
+	for(var/mob/living/carbon/xenomorph/xeno_in_aoe in range(area_of_effect, xeno))
+		if(xeno_in_aoe.stat == DEAD)
+			continue
+		if(xeno_in_aoe.hivenumber != xeno.hivenumber)
+			continue
 		start_shield(xeno_in_aoe)
 		xeno.beam(xeno_in_aoe, "purple_lightning", time = 4 SECONDS)
 
@@ -127,26 +130,46 @@
 	var/datum/xeno_shield/shield = xeno.add_xeno_shield(600, XENO_SHIELD_SOURCE_DESTROYER_LEGIONSPELL, /datum/xeno_shield/destroyer_shield)
 	xeno.create_shield(shield.duration, "purple_animated_shield_full")
 
-#define LEAP_HEIGHT 210 //how high up swoops go, in pixels
+#define LEAP_HEIGHT 210 //how high up leaps go, in pixels
 #define LEAP_DIRECTION_CHANGE_RANGE 5 //the range our x has to be within to not change the direction we slam from
 
 /datum/action/xeno_action/activable/destroy/use_ability(atom/target)
-
 	// TODO: Make sure we're not targetting a space tile or a wall etc!!!
 
 	var/mob/living/carbon/xenomorph/xeno = owner
 	XENO_ACTION_CHECK(xeno)
 
+	if(get_dist(owner, target) > range)
+		to_chat(xeno, SPAN_XENONOTICE("We cannot leap that far!"))
+		return
+
 	var/turf/target_turf = get_turf(target)
+
+	if(istype(target_turf, /turf/closed))
+		to_chat(xeno, SPAN_XENONOTICE("We cannot jump into that area!"))
+		return
+
+	if(istype(target_turf, /turf/open/space))
+		to_chat(xeno, SPAN_XENONOTICE("It would not be wise to try to leap there..."))
+		return
+
+	var/list/leap_line = getline2(xeno, target)
+	for(var/turf/jump_turf in leap_line)
+		if(istype(jump_turf, /turf/closed))
+			to_chat(xeno, SPAN_XENONOTICE("We don't have a clear path to leap to that location!"))
+			return
+
+	if(!check_and_use_plasma_owner())
 	var/turf/template_turf = get_step(target_turf, SOUTHWEST)
 
 	to_chat(xeno, SPAN_XENONOTICE("Our muscles tense as we prepare ourself for a giant leap."))
+	xeno.make_jittery(2 SECONDS)
 	if(!do_after(xeno, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		to_chat(xeno, SPAN_XENONOTICE("We relax our muslces and end our leap."))
 		return
 	if(leaping || !target)
 		return
-	// stop swooped target movement
+	// stop target movement
 	leaping = TRUE
 	ADD_TRAIT(owner, TRAIT_UNDENSE, "Destroy")
 	ADD_TRAIT(owner, TRAIT_IMMOBILIZED, "Destroy")
@@ -154,7 +177,7 @@
 
 	var/negative
 	var/initial_x = owner.x
-	if(target.x < initial_x) //if the target's x is lower than ours, swoop to the left
+	if(target.x < initial_x) //if the target's x is lower than ours, go to the left
 		negative = TRUE
 	else if(target.x > initial_x)
 		negative = FALSE
@@ -168,7 +191,7 @@
 	var/obj/effect/temp_visual/destroyer_leap/leap_visual = new(owner.loc, negative, owner.dir)
 	new /obj/effect/xenomorph/xeno_telegraph/destroyer_attack_template(template_turf, 20)
 
-	negative = !negative //invert it for the swoop down later
+	negative = !negative //invert it for the descent later
 
 	var/oldtransform = owner.transform
 	owner.alpha = 255
@@ -185,7 +208,6 @@
 				animate(owner, alpha = 255, transform = oldtransform, time = 0, flags = ANIMATION_END_NOW) //reset immediately
 			return
 	owner.status_flags |= GODMODE
-	//SEND_SIGNAL(owner, COMSIG_SWOOP_INVULNERABILITY_STARTED)
 
 	owner.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	SLEEP_CHECK_DEATH(7, owner)
@@ -195,10 +217,8 @@
 		SLEEP_CHECK_DEATH(0.5, owner)
 
 	animate(owner, alpha = 100, transform = matrix()*0.7, time = 7)
-	// Ash drake flies onto its target and rains fire down upon them
 	var/descentTime = 5
 
-	//ensure swoop direction continuity.
 	if(negative)
 		if(ISINRANGE(owner.x, initial_x + 1, initial_x + LEAP_DIRECTION_CHANGE_RANGE))
 			negative = FALSE
@@ -215,6 +235,8 @@
 	owner.mouse_opacity = initial(owner.mouse_opacity)
 	//Sounds
 	playsound(owner.loc, 'sound/effects/meteorimpact.ogg', 200, TRUE)
+
+	/// BIRDTALON: MAKE THIS A FOR?
 	new /obj/effect/temp_visual/heavy_impact(owner.loc)
 	new /obj/effect/temp_visual/heavy_impact(get_step(owner.loc, NORTH))
 	new /obj/effect/temp_visual/heavy_impact(get_step(owner.loc, EAST))

@@ -80,7 +80,7 @@
 		return
 
 	user.cmd_admin_do_stickyban(target.ckey, reason, impacted_ckeys = list(target.ckey), impacted_cids = list(persistent_cid), impacted_ips = list(persistent_ip))
-	player.add_note("Stickybanned | [reason]")
+	player.add_note("Stickybanned | [reason]", FALSE, NOTE_ADMIN, TRUE)
 
 	if(target.client)
 		qdel(target.client)

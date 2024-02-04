@@ -21,7 +21,9 @@
 //testing trying to port TGMC way of init reagent in snack
 // /datum/reagent/consumable/nutriment
 // is changed to /datum/reagent/nutriment
+// what variable have been created and are seperated from CM code: var/list/list_reagents
 
+//this proc is also totally seperated
 /obj/item/reagent_container/food/snacks/create_reagents_snack(max_vol, new_flags, list/init_reagents, data)
 	if(!length(init_reagents))
 		return ..()
@@ -31,7 +33,7 @@
 	reagents.my_atom = WEAKREF(src)
 	for(var/rid in init_reagents)
 		var/amount = list_reagents[rid]
-		if(rid == /datum/reagent/nutriment)
+		if(rid == /datum/reagent/nutriment)// using the path for nutriment (could cause some issues?)
 			reagents.add_reagent(rid, amount())
 		else
 			reagents.add_reagent(rid, amount, data)
@@ -39,11 +41,12 @@
 // for some reason in TGMC reagent_container is called reagent_containers
 // changing it in bellow keeping the verb seperate for now...
 
-/obj/item/reagent_container/Initialize(mapload)
+// this is calling CM code (could cause issues?)
+/obj/item/reagent_container/Initialize(mapload)//most initialize i saw don't have (mapload)might cause issues?
 	. = ..()
-	create_reagents_snack(volume, init_reagent_flags, list_reagents)
-	if(!possible_transfer_amounts)
-		verbs -= /obj/item/reagent_container/verb/set_APTFT_tgmc
+	create_reagents_snack(volume, init_reagent_flags, list_reagents)//volume come from CM code.
+	if(!possible_transfer_amounts)//possible_transfer_amounts called CM code but is the same as TGMC
+		verbs -= /obj/item/reagent_container/verb/set_APTFT_tgmc//this verb is seperateed from the on in TGMC.
 
 
 

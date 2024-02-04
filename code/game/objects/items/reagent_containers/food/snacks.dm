@@ -328,7 +328,7 @@
 	trash = /obj/item/trash/candy
 	filling_color = "#7D5F46"
 	w_class = SIZE_TINY
-	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/sugar = 3)
+	list_reagents = list(/datum/reagent/nutriment = 1, /datum/reagent/sugar = 3)
 	tastes = list("candy" = 1)
 	bitesize = 2
 
@@ -396,7 +396,7 @@
 	desc = "Such sweet, fattening food."
 	icon_state = "chocolatebar"
 	filling_color = "#7D5F46"
-	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/sugar = 2, /datum/reagent/consumable/coco = 2)
+	list_reagents = list(/datum/reagent/nutriment = 2, /datum/reagent/sugar = 2, /datum/reagent/coco = 2)
 	bitesize = 2
 	tastes = list("chocolate" = 1)
 

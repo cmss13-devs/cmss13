@@ -917,8 +917,7 @@
 /area/bigredv2/outside/engineering)
 "dy" = (
 /obj/structure/machinery/power/reactor/colony{
-	name = "Reactor Turbine";
-	
+	name = "Reactor Turbine"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)

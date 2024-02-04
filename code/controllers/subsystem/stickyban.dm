@@ -249,6 +249,9 @@ SUBSYSTEM_DEF(stickyban)
 
 	keys_to_ban += splittext(ban_data["keys"], ",")
 
+	for(var/x in 1 to length(keys_to_ban))
+		keys_to_ban[x] = ckey(keys_to_ban[x])
+
 	var/list/keys = splittext(ban_data["whitelist"], ",")
 	for(var/key in keys)
 		keys_to_ban -= ckey(key)

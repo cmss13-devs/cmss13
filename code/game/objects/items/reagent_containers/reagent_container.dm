@@ -17,6 +17,10 @@
 	ground_offset_x = 7
 	ground_offset_y = 7
 
+	//part of tgmc port.
+	var/list/list_reagents
+	var/possible_transfer_amounts = list(5,10,15,25,30)
+
 /obj/item/reagent_container/Initialize()
 	if(!possible_transfer_amounts)
 		actions_types -= /datum/action/item_action/reagent_container/set_transfer_amount

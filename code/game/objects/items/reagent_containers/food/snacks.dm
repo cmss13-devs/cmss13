@@ -31,7 +31,7 @@
 	for(var/rid in init_reagents)
 		var/amount = list_reagents[rid]
 		if(rid == /datum/reagent/consumable/nutriment)
-			reagents.add_reagent(rid, amount, tastes.Copy())
+			reagents.add_reagent(rid, amount())
 		else
 			reagents.add_reagent(rid, amount, data)
 

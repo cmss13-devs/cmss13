@@ -30,4 +30,4 @@
 				SPAN_HELPFUL("You feel a warm aura envelop you."))
 	if(!do_after(picked_candidate, heal_cooldown, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 		return
-	picked_candidate.gain_health(heal_amount*picked_candidate.caste.heal_resting)
+	picked_candidate.gain_health(heal_amount)

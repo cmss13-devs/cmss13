@@ -18,6 +18,32 @@
 	var/made_from_player = ""
 	center_of_mass = "x=15;y=15"
 
+//testing trying to port TGMC way of init reagent in snack
+
+
+/obj/item/reagent_containers/food/snacks/create_reagents_snack(max_vol, new_flags, list/init_reagents, data)
+	if(!length(init_reagents))
+		return ..()
+	if(reagents)
+		qdel(reagents)
+	reagents = new (max_vol, new_flags)
+	reagents.my_atom = WEAKREF(src)
+	for(var/rid in init_reagents)
+		var/amount = list_reagents[rid]
+		if(rid == /datum/reagent/consumable/nutriment)
+			reagents.add_reagent(rid, amount, tastes.Copy())
+		else
+			reagents.add_reagent(rid, amount, data)
+
+/obj/item/reagent_containers/Initialize(mapload)
+	. = ..()
+	create_reagents_snack(volume, init_reagent_flags, list_reagents)
+	if(!possible_transfer_amounts)
+		verbs -= /obj/item/reagent_containers/verb/set_APTFT
+
+
+
+
 	//Placeholder for effect that trigger on eating that aren't tied to reagents.
 /obj/item/reagent_container/food/snacks/proc/On_Consume(mob/M)
 	SEND_SIGNAL(src, COMSIG_SNACK_EATEN, M)

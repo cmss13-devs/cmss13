@@ -716,3 +716,17 @@
 	QDEL_NULL(reagents)
 	reagents = new/datum/reagents(max_vol)
 	reagents.my_atom = src
+
+// porting part of TGMC so better separate them by giving them different name for now
+// i don't think new_flags is something CM as also max_vol could be different here...
+// replace qdel by QDEL_NULL
+// stuff that need to be check out : max_vol , new flags, list/init_reagents , data
+// reagents
+
+/atom/proc/create_reagents_snack(max_vol, new_flags, list/init_reagents, data)
+	if(reagents)
+		QDEL_NULL(reagents)
+	reagents = new (max_vol, new_flags)
+	reagents.my_atom = WEAKREF(src)
+	if(init_reagents)
+		reagents.add_reagent_list(init_reagents, data)

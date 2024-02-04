@@ -21,7 +21,7 @@
 
 /datum/action_xeno_action/verb/destroyer_shield()
 	set category = "Alien"
-	set name = "Legion Shield"
+	set name = "Bulwark"
 	set hidden = TRUE
-	var/action_name = "Legion Shield"
+	var/action_name = "Bulwark"
 	handle_xeno_macro(src, action_name)

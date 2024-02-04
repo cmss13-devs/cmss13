@@ -52,7 +52,7 @@
 	var/mob/living/carbon/xenomorph/xeno = owner
 	XENO_ACTION_CHECK(xeno)
 
-	playsound(xeno.loc, 'sound/voice/alien_queen_screech.ogg', 50, 0, status = 0)
+	playsound(xeno.loc, 'sound/voice/deep_alien_screech2.ogg', 50, 0, status = 0)
 	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits an ear-splitting guttural roar!"))
 	xeno.create_shriekwave() //Adds the visual effect. Wom wom wom
 
@@ -95,17 +95,37 @@
 	..()
 
 /*
-	UNSTOPPABLE FORCE ABILITY- SIMILAR TO CRUSHER CHARGE
+	BULWARK ABILITY - AoE shield
 	Medium cooldown gap closer pushes things out of the way and does damage.
 */
 
+/datum/action/xeno_action/onclick/destroyer_shield/use_ability()
+	var/mob/living/carbon/xenomorph/xeno = owner
 
+	XENO_ACTION_CHECK(xeno)
+
+
+	playsound(xeno.loc, 'sound/voice/deep_alien_screech.ogg', 50, 0, status = 0)
+	// Add our shield
+	start_shield(xeno)
+
+	// Add other xeno's shields
+	for(var/mob/living/carbon/xenomorph/xeno_in_aoe in range(6, xeno))
+		start_shield(xeno_in_aoe)
+		xeno.beam(xeno_in_aoe, "purple_lightning", time = 4 SECONDS)
+
+	apply_cooldown()
+	return ..()
 
 /*
 	DESTROY ABILITY
 	Destroyer leaps into the air and crashes down damaging cades and mobs in a 3x3 area centred on him.
 	Long cooldown high damage ability, massive damage against cades, highly telegraphed.
 */
+
+/datum/action/xeno_action/onclick/destroyer_shield/proc/start_shield(mob/living/carbon/xenomorph/xeno)
+	var/datum/xeno_shield/shield = xeno.add_xeno_shield(600, XENO_SHIELD_SOURCE_DESTROYER_LEGIONSPELL, /datum/xeno_shield/destroyer_shield)
+	xeno.create_shield(shield.duration, "purple_animated_shield_full")
 
 #define LEAP_HEIGHT 210 //how high up swoops go, in pixels
 #define LEAP_DIRECTION_CHANGE_RANGE 5 //the range our x has to be within to not change the direction we slam from

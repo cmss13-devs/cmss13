@@ -19,9 +19,9 @@
 	var/action_name = "Doom"
 	handle_xeno_macro(src, action_name)
 
-/datum/action_xeno_action/verb/unstoppable_force()
+/datum/action_xeno_action/verb/destroyer_shield()
 	set category = "Alien"
-	set name = "Unstoppable Force"
+	set name = "Legion Shield"
 	set hidden = TRUE
-	var/action_name = "Unstoppable Force"
+	var/action_name = "Legion Shield"
 	handle_xeno_macro(src, action_name)

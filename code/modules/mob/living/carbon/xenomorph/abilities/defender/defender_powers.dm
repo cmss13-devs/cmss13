@@ -17,6 +17,8 @@
 
 	if(xeno.crest_defense)
 		to_chat(xeno, SPAN_XENOWARNING("We lower our crest."))
+		xeno.balloon_alert(xeno, "crest lowered")
+
 		xeno.ability_speed_modifier += speed_debuff
 		xeno.armor_deflection_buff += armor_buff
 		xeno.mob_size = MOB_SIZE_BIG //knockback immune
@@ -24,6 +26,8 @@
 		xeno.update_icons()
 	else
 		to_chat(xeno, SPAN_XENOWARNING("We raise our crest."))
+		xeno.balloon_alert(xeno, "crest raised")
+
 		xeno.ability_speed_modifier -= speed_debuff
 		xeno.armor_deflection_buff -= armor_buff
 		xeno.mob_size = MOB_SIZE_XENO //no longer knockback immune
@@ -313,4 +317,3 @@
 
 /datum/action/xeno_action/onclick/soak/proc/remove_enrage()
 	owner.remove_filter("steelcrest_enraged")
-

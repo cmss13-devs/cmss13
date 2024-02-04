@@ -576,7 +576,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_PYRO)
 									specialist_assignment = "Pyro"
 								else
-									to_chat(user, SPAN_WARNING("<b>Something bad occured with [src], tell a Dev.</b>"))
+									to_chat(user, SPAN_WARNING("<b>Something bad occurred with [src], tell a Dev.</b>"))
 									vend_fail()
 									return FALSE
 							ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + JOB_SQUAD_SPECIALIST + " ([specialist_assignment])")

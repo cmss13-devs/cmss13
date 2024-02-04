@@ -173,7 +173,7 @@
 
 /obj/item/storage/firstaid/synth
 	name = "synthetic repair kit"
-	desc = "Contains equipment to repair a damaged synthetic. A tag on the back reads: 'Does not contain a shocking tool to repair disabled synthetics, nor a scanning device to detect specific damage; pack seperately.' With medical training you can fit this in a backpack."
+	desc = "Contains equipment to repair a damaged synthetic. A tag on the back reads: 'Does not contain a shocking tool to repair disabled synthetics, nor a scanning device to detect specific damage; pack separately.' With medical training you can fit this in a backpack."
 	icon_state = "bezerk"
 	item_state = "firstaid-advanced"
 	can_hold = list(

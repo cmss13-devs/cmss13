@@ -3,11 +3,11 @@ import { Section, Flex, ProgressBar, Box, Button, Tabs, Stack, Input } from '../
 import { capitalize } from 'common/string';
 import { Window } from '../layouts';
 import { ElectricalPanel } from './common/ElectricalPanel';
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { createLogger } from '../logging';
 
-export const Autolathe = (_props, context) => {
-  const { act, data } = useBackend(context);
+export const Autolathe = () => {
+  const { act, data } = useBackend();
 
   const {
     materials,
@@ -30,8 +30,8 @@ export const Autolathe = (_props, context) => {
   );
 };
 
-const MaterialsData = (props, context) => {
-  const { act, data } = useBackend(context);
+const MaterialsData = (props) => {
+  const { act, data } = useBackend();
   const {
     materials,
     capacity,
@@ -63,8 +63,8 @@ const MaterialsData = (props, context) => {
   );
 };
 
-const CurrentlyMaking = (props, context) => {
-  const { act, data } = useBackend(context);
+const CurrentlyMaking = (props) => {
+  const { act, data } = useBackend();
   const { currently_making } = data;
 
   const MakingName =
@@ -82,8 +82,8 @@ const CurrentlyMaking = (props, context) => {
   );
 };
 
-const QueueList = (props, context) => {
-  const { act, data } = useBackend(context);
+const QueueList = (props) => {
+  const { act, data } = useBackend();
   const {
     materials,
     capacity,
@@ -132,8 +132,8 @@ const QueueList = (props, context) => {
 };
 
 // the below all has to be in one section due to the categories and search params
-const PrintablesSection = (props, context) => {
-  const { act, data } = useBackend(context);
+const PrintablesSection = (props) => {
+  const { act, data } = useBackend();
 
   const logger = createLogger('autolathe');
 
@@ -146,11 +146,7 @@ const PrintablesSection = (props, context) => {
     queuemax,
   } = data;
 
-  const [currentSearch, setSearch] = useLocalState(
-    context,
-    'current_search',
-    ''
-  );
+  const [currentSearch, setSearch] = useLocalState('current_search', '');
 
   const categories = [];
   printables
@@ -158,7 +154,6 @@ const PrintablesSection = (props, context) => {
     .map((x) => x.recipe_category);
 
   const [currentCategory, setCategory] = useLocalState(
-    context,
     'current_category',
     'All'
   );
@@ -226,7 +221,7 @@ const PrintablesSection = (props, context) => {
                     </Flex.Item>
 
                     {(val.has_multipliers && (
-                      <Fragment>
+                      <>
                         <Box width="2.5px" />
                         <Flex.Item>
                           <Flex direction="row">
@@ -250,7 +245,7 @@ const PrintablesSection = (props, context) => {
                             )}
                           </Flex>
                         </Flex.Item>
-                      </Fragment>
+                      </>
                     )) ||
                       null}
                   </Flex>

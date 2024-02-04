@@ -2,8 +2,8 @@ import { useBackend } from '../backend';
 import { Section, Box } from '../components';
 import { Window } from '../layouts';
 
-export const Binoculars = (_props, context) => {
-  const { data } = useBackend(context);
+export const Binoculars = () => {
+  const { data } = useBackend();
 
   const x_coord = data.xcoord;
   const y_coord = data.ycoord;

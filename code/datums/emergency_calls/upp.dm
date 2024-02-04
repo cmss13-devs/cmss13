@@ -35,13 +35,16 @@
 	else
 		to_chat(M, SPAN_BOLD("You were brought online in a UPP engineering facility, knowing only your engineers for the first few weeks for your pseudo-life."))
 		to_chat(M, SPAN_BOLD("You were programmed with all of the medical and combat experience a military fighting force support asset required."))
-		to_chat(M, SPAN_BOLD("Throughout your career, your engineers, and later, your UPP compatriots, treated you like a tool, and only that."))
+		to_chat(M, SPAN_BOLD("Throughout your career, your engineers, and later, your UPP compatriots, treated you like [pick(75;"a tool, and only that.", 25;"a person, despite your purpose.")]"))
 		to_chat(M, SPAN_BOLD("Some weeks after your unit integration, you were assigned to the 17th 'Smoldering Sons' battalion (six hundred strong) under the command of Colonel Ganbaatar."))
 	to_chat(M, SPAN_BOLD("You were shipped off with the battalion to one of the UPP's most remote territories, a gas giant designated MV-35 in the Anglo-Japanese Arm, in the Neroid Sector."))
 	to_chat(M, SPAN_BOLD("For the past 14 months, you and the rest of the Smoldering Sons have been stationed at MV-35's only facility, the helium refinery, Altai Station."))
 	to_chat(M, SPAN_BOLD("As MV-35 and Altai Station are the only UPP-held zones in the Neroid Sector for many lightyears, you have spent most of your military career holed up in crammed quarters in near darkness, waiting for supply shipments and transport escort deployments."))
-	to_chat(M, SPAN_BOLD("With the recent arrival of the enemy USCM battalion the 'Falling Falcons' and their flagship, the [MAIN_SHIP_NAME], the UPP has felt threatened in the sector."))
-	to_chat(M, SPAN_BOLD("In an effort to protect the vulnerable MV-35 from the encroaching UA/USCM imperialists, the leadership of your battalion has opted this to be the best opportunity to strike at the Falling Falcons to catch them off guard."))
+	to_chat(M, SPAN_BOLD("With the recent arrival of the USCM battalion the 'Falling Falcons' and their flagship, the [MAIN_SHIP_NAME], the UPP has felt threatened in the sector."))
+	if(hostility)
+		to_chat(M, SPAN_BOLD("In an effort to protect the vulnerable MV-35 from the encroaching UA/USCM imperialists, the leadership of your battalion has opted this to be the best opportunity to strike at the Falling Falcons to catch them off guard."))
+	else
+		to_chat(M, SPAN_BOLD("Despite this, the leadership of your battalion questions what may have prompted the distress signal from their rivals. Your squad is to find out why and to render aid to the beleaguered UA forces."))
 	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to Colonel Ganbaatar.")))
 	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to the Smoldering Sons.")))
 	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to the UPP.")))
@@ -61,7 +64,7 @@
 		leader = H
 		arm_equipment(H, /datum/equipment_preset/upp/leader, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are an Officer of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
-	else if(synths < max_synths && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SYNTH) && GLOB.RoleAuthority.roles_whitelist[H.ckey] & WHITELIST_SYNTHETIC)
+	else if(synths < max_synths && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SYNTH) && H.client.check_whitelist_status(WHITELIST_SYNTHETIC))
 		synths++
 		to_chat(H, SPAN_ROLE_HEADER("You are a Combat Synthetic of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
 		arm_equipment(H, /datum/equipment_preset/upp/synth, TRUE, TRUE)

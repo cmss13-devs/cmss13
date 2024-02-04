@@ -5167,12 +5167,6 @@
 	icon_state = "vault"
 	},
 /area/lv624/lazarus/robotics)
-"azb" = (
-/obj/structure/prop/mech/mech_parts/part/gygax_torso,
-/turf/open/floor{
-	icon_state = "vault"
-	},
-/area/lv624/lazarus/robotics)
 "azc" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
@@ -5512,13 +5506,6 @@
 "aAj" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor{
-	icon_state = "vault"
-	},
-/area/lv624/lazarus/robotics)
-"aAk" = (
-/obj/structure/prop/mech/mech_parts/chassis/gygax,
-/turf/open/floor{
-	dir = 8;
 	icon_state = "vault"
 	},
 /area/lv624/lazarus/robotics)
@@ -6030,15 +6017,6 @@
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
-"aBR" = (
-/obj/structure/largecrate,
-/obj/structure/prop/mech/mech_parts/part/gygax_armor{
-	layer = 1
-	},
-/turf/open/floor/plating{
-	icon_state = "platebot"
-	},
-/area/lv624/lazarus/robotics)
 "aBS" = (
 /obj/structure/barricade/wooden{
 	dir = 8
@@ -10436,15 +10414,6 @@
 	icon_state = "brown"
 	},
 /area/lv624/lazarus/comms)
-"aTo" = (
-/obj/structure/machinery/power/reactor/colony,
-/obj/structure/lattice{
-	layer = 2.9
-	},
-/turf/open/floor/plating{
-	icon_state = "warnplate"
-	},
-/area/lv624/lazarus/engineering)
 "aTq" = (
 /obj/structure/foamed_metal,
 /turf/open/floor{
@@ -10914,43 +10883,7 @@
 	icon_state = "brown"
 	},
 /area/lv624/lazarus/comms)
-"aVd" = (
-/obj/structure/lattice{
-	layer = 2.9
-	},
-/obj/structure/machinery/power/reactor/colony{
-	fail_rate = 5
-	},
-/turf/open/floor/plating{
-	dir = 6;
-	icon_state = "warnplate"
-	},
-/area/lv624/lazarus/engineering)
 "aVe" = (
-/turf/open/floor/plating{
-	dir = 4;
-	icon_state = "warnplate"
-	},
-/area/lv624/lazarus/engineering)
-"aVf" = (
-/obj/structure/lattice{
-	layer = 2.9
-	},
-/obj/structure/machinery/power/reactor/colony{
-	fail_rate = 5
-	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "warnplate"
-	},
-/area/lv624/lazarus/engineering)
-"aVg" = (
-/obj/structure/lattice{
-	layer = 2.9
-	},
-/obj/structure/machinery/power/reactor/colony{
-	fail_rate = 5
-	},
 /turf/open/floor/plating{
 	dir = 4;
 	icon_state = "warnplate"
@@ -11222,16 +11155,6 @@
 /obj/structure/foamed_metal,
 /turf/open/floor{
 	icon_state = "dark"
-	},
-/area/lv624/lazarus/engineering)
-"aWg" = (
-/obj/structure/machinery/power/reactor/colony,
-/obj/structure/lattice{
-	layer = 2.9
-	},
-/turf/open/floor/plating{
-	dir = 10;
-	icon_state = "warnplate"
 	},
 /area/lv624/lazarus/engineering)
 "aWh" = (
@@ -12750,6 +12673,15 @@
 	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/medbay)
+"bHF" = (
+/obj/structure/machinery/power/reactor/colony,
+/obj/structure/lattice{
+	layer = 2.9
+	},
+/turf/open/floor/plating{
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/engineering)
 "bIO" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 8
@@ -15721,6 +15653,18 @@
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/colony/west_nexus_road)
+"hFy" = (
+/obj/structure/lattice{
+	layer = 2.9
+	},
+/obj/structure/machinery/power/reactor/colony{
+	fail_rate = 5
+	},
+/turf/open/floor/plating{
+	dir = 4;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/engineering)
 "hFO" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
@@ -16710,21 +16654,6 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_west_caves)
-"jMk" = (
-/obj/structure/lattice{
-	layer = 2.9
-	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/structure/machinery/power/reactor/colony{
-	fail_rate = 5
-	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "warnplate"
-	},
-/area/lv624/lazarus/engineering)
 "jMD" = (
 /obj/effect/decal/grass_overlay/grass1/inner{
 	dir = 6
@@ -17079,6 +17008,19 @@
 "kyc" = (
 /turf/open/gm/coast/beachcorner/north_east,
 /area/lv624/ground/river/central_river)
+"kyq" = (
+/obj/structure/machinery/power/reactor/colony,
+/obj/structure/lattice{
+	layer = 2.9
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plating{
+	dir = 4;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/engineering)
 "kyt" = (
 /obj/effect/decal/grass_overlay/grass1/inner,
 /obj/effect/decal/grass_overlay/grass1/inner{
@@ -17625,17 +17567,6 @@
 	icon_state = "dark"
 	},
 /area/lv624/lazarus/corporate_dome)
-"lHc" = (
-/obj/structure/lattice{
-	layer = 2.9
-	},
-/obj/structure/machinery/power/reactor/colony{
-	fail_rate = 5
-	},
-/turf/open/floor/plating{
-	icon_state = "warnplate"
-	},
-/area/lv624/lazarus/engineering)
 "lHL" = (
 /obj/effect/landmark/hunter_primary,
 /turf/open/gm/grass/grass1,
@@ -18397,6 +18328,17 @@
 	icon_state = "asteroidwarning"
 	},
 /area/lv624/lazarus/landing_zones/lz2)
+"ndh" = (
+/obj/structure/lattice{
+	layer = 2.9
+	},
+/obj/structure/machinery/power/reactor/colony{
+	fail_rate = 5
+	},
+/turf/open/floor/plating{
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/engineering)
 "ndk" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -18895,6 +18837,21 @@
 	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/west_caves)
+"nRZ" = (
+/obj/structure/lattice{
+	layer = 2.9
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/machinery/power/reactor/colony{
+	fail_rate = 5
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/engineering)
 "nSg" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor{
@@ -21349,6 +21306,13 @@
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/river,
 /area/lv624/ground/barrens/east_barrens)
+"syI" = (
+/obj/structure/prop/mech/parts/chassis/gygax,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "vault"
+	},
+/area/lv624/lazarus/robotics)
 "szy" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/north,
@@ -21678,19 +21642,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_central_caves)
-"tem" = (
-/obj/structure/machinery/power/reactor/colony,
-/obj/structure/lattice{
-	layer = 2.9
-	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/plating{
-	dir = 4;
-	icon_state = "warnplate"
-	},
-/area/lv624/lazarus/engineering)
 "teJ" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/closed/wall/strata_ice/jungle,
@@ -21716,6 +21667,18 @@
 	icon_state = "warning"
 	},
 /area/lv624/lazarus/landing_zones/lz1)
+"tgB" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/fancy/cigarettes/wypacket{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/obj/item/clothing/under/liaison_suit/blue,
+/turf/open/floor{
+	dir = 6;
+	icon_state = "whiteyellow"
+	},
+/area/lv624/lazarus/corporate_dome)
 "tgL" = (
 /mob/living/simple_animal/bat,
 /turf/open/gm/dirt,
@@ -22267,6 +22230,15 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/caves/sand_temple)
+"ugb" = (
+/obj/structure/largecrate,
+/obj/structure/prop/mech/parts/gygax_armor{
+	layer = 1
+	},
+/turf/open/floor/plating{
+	icon_state = "platebot"
+	},
+/area/lv624/lazarus/robotics)
 "ugk" = (
 /obj/structure/flora/jungle/vines/light_3,
 /obj/structure/flora/jungle/vines/heavy,
@@ -23115,6 +23087,18 @@
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_jungle)
+"vLm" = (
+/obj/structure/lattice{
+	layer = 2.9
+	},
+/obj/structure/machinery/power/reactor/colony{
+	fail_rate = 5
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/engineering)
 "vLO" = (
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/lazarus/quartstorage/outdoors)
@@ -23463,18 +23447,6 @@
 /obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_west_caves)
-"wtK" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/fancy/cigarettes/wypacket{
-	pixel_x = 5;
-	pixel_y = 6
-	},
-/obj/item/clothing/under/liaison_suit/suspenders,
-/turf/open/floor{
-	dir = 6;
-	icon_state = "whiteyellow"
-	},
-/area/lv624/lazarus/corporate_dome)
 "wvO" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
 /turf/open/gm/grass/grass1,
@@ -23524,6 +23496,16 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
+"wEc" = (
+/obj/structure/machinery/power/reactor/colony,
+/obj/structure/lattice{
+	layer = 2.9
+	},
+/turf/open/floor/plating{
+	dir = 10;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/engineering)
 "wEO" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -24013,6 +23995,12 @@
 	icon_state = "whiteyellow"
 	},
 /area/lv624/lazarus/corporate_dome)
+"xye" = (
+/obj/structure/prop/mech/parts/gygax_torso,
+/turf/open/floor{
+	icon_state = "vault"
+	},
+/area/lv624/lazarus/robotics)
 "xyH" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -24125,6 +24113,18 @@
 /obj/item/storage/box/lights/mixed,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
+"xLQ" = (
+/obj/structure/lattice{
+	layer = 2.9
+	},
+/obj/structure/machinery/power/reactor/colony{
+	fail_rate = 5
+	},
+/turf/open/floor/plating{
+	dir = 6;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/engineering)
 "xLT" = (
 /turf/open/floor/plating{
 	icon_state = "platingdmg1"
@@ -35735,7 +35735,7 @@ axi
 axj
 avH
 aBp
-aBR
+ugb
 aCk
 ado
 aXX
@@ -36872,7 +36872,7 @@ aym
 axi
 aza
 azG
-aAk
+syI
 axi
 aBr
 axi
@@ -37098,7 +37098,7 @@ axj
 axj
 axj
 ayG
-azb
+xye
 axi
 axj
 axj
@@ -38950,7 +38950,7 @@ gnx
 gnx
 fzg
 pyG
-wtK
+tgB
 wJA
 wMk
 wMk
@@ -43744,9 +43744,9 @@ aQo
 aIO
 aSL
 aSL
-aVg
-tem
-aVd
+hFy
+kyq
+xLQ
 aTM
 aTq
 aZG
@@ -43971,7 +43971,7 @@ aQr
 aQo
 aSi
 aSL
-aTo
+bHF
 ogR
 aUs
 nwR
@@ -44655,7 +44655,7 @@ aQr
 aQo
 aSi
 aSL
-lHc
+ndh
 gKg
 aVe
 jwW
@@ -44884,9 +44884,9 @@ aGk
 aQo
 aSL
 aSL
-aVf
-jMk
-aWg
+vLm
+nRZ
+wEc
 aTM
 aTM
 aWF

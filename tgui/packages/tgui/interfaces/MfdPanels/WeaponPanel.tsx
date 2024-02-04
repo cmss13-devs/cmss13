@@ -7,7 +7,7 @@ import { mfdState, useWeaponState } from './stateManagers';
 import { LazeTarget } from './types';
 import { getLastTargetName, lazeMapper, TargetLines, useTargetOffset } from './TargetAquisition';
 
-const EmptyWeaponPanel = (props, context) => {
+const EmptyWeaponPanel = (props) => {
   return <div>Nothing Listed</div>;
 };
 interface EquipmentContext {
@@ -15,11 +15,11 @@ interface EquipmentContext {
   targets_data: Array<LazeTarget>;
 }
 
-const WeaponPanel = (
-  props: { panelId: string; equipment: DropshipEquipment },
-  context
-) => {
-  const { data } = useBackend<EquipmentContext>(context);
+const WeaponPanel = (props: {
+  readonly panelId: string;
+  readonly equipment: DropshipEquipment;
+}) => {
+  const { data } = useBackend<EquipmentContext>();
 
   return (
     <Stack>
@@ -131,17 +131,14 @@ const WeaponPanel = (
   );
 };
 
-export const WeaponMfdPanel = (props: MfdProps, context) => {
-  const { setPanelState } = mfdState(context, props.panelStateId);
-  const { weaponState } = useWeaponState(context, props.panelStateId);
-  const { data, act } = useBackend<EquipmentContext>(context);
-  const { targetOffset, setTargetOffset } = useTargetOffset(
-    context,
-    props.panelStateId
-  );
+export const WeaponMfdPanel = (props: MfdProps) => {
+  const { setPanelState } = mfdState(props.panelStateId);
+  const { weaponState } = useWeaponState(props.panelStateId);
+  const { data, act } = useBackend<EquipmentContext>();
+  const { targetOffset, setTargetOffset } = useTargetOffset(props.panelStateId);
   const weap = data.equipment_data.find((x) => x.mount_point === weaponState);
   const targets = range(targetOffset, targetOffset + 5).map((x) =>
-    lazeMapper(context, x)
+    lazeMapper(x)
   );
 
   return (

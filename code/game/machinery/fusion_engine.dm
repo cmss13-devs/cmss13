@@ -102,7 +102,7 @@
 
 	switch(buildstate)
 		if(BUILDSTATE_DAMAGE_WELD)
-			. += SPAN_BOLDINFO(SPAN_BOLD("Use a blowtorch to repair it."))
+			. += SPAN_INFO(SPAN_BOLD("Use a blowtorch to repair it."))
 		if(BUILDSTATE_DAMAGE_WIRE)
 			. += SPAN_INFO(SPAN_BOLD("Use wirecutters to repair it."))
 		if(BUILDSTATE_DAMAGE_WRENCH)

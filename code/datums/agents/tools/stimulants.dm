@@ -6,7 +6,6 @@
 	pill_type_to_fill = /obj/item/reagent_container/pill/stimulant
 
 	req_access = null
-	req_role = null
 
 /obj/item/storage/pill_bottle/ultrazine/antag/id_check(mob/user)
 	if(!skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))

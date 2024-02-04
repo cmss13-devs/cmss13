@@ -3,7 +3,7 @@
 //Thrall subtypes are located in /code/modules/cm_preds/thrall_items.dm
 
 /proc/add_to_missing_pred_gear(obj/item/W)
-	if(!is_admin_level(W.z))
+	if(!should_block_game_interaction(W))
 		GLOB.loose_yautja_gear |= W
 
 /proc/remove_from_missing_pred_gear(obj/item/W)
@@ -61,48 +61,46 @@
 	fire_intensity_resistance = 10
 	black_market_value = 100
 
-/obj/item/clothing/suit/armor/yautja/Initialize(mapload, armor_number = rand(1,7), armor_material = "ebony", elder_restricted = 0)
+/obj/item/clothing/suit/armor/yautja/Initialize(mapload, armor_number = rand(1,7), armor_material = "ebony", legacy = "None")
 	. = ..()
 	if(thrall)
 		return
-	if(elder_restricted)
-		switch(armor_number)
-			if(1341)
-				name = "\improper 'Armor of the Dragon'"
-				icon_state = "halfarmor_elder_tr"
-				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_tr")
-			if(7128)
-				name = "\improper 'Armor of the Swamp Horror'"
-				icon_state = "halfarmor_elder_joshuu"
-				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_joshuu")
-			if(9867)
-				name = "\improper 'Armor of the Enforcer'"
-				icon_state = "halfarmor_elder_feweh"
-				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_feweh")
-			if(4879)
-				name = "\improper 'Armor of the Ambivalent Collector'"
-				icon_state = "halfarmor_elder_n"
-				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_n")
-			else
-				name = "clan elder's armor"
-				icon_state = "halfarmor_elder"
-				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder")
-	else
-		if(armor_number > 7)
-			armor_number = 1
-		if(armor_number) //Don't change full armor number
-			icon_state = "halfarmor[armor_number]_[armor_material]"
-			LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor[armor_number]_[armor_material]")
-
 	flags_cold_protection = flags_armor_protection
 	flags_heat_protection = flags_armor_protection
+
+	if(legacy != "None")
+		switch(legacy)
+			if("dragon")
+				icon_state = "halfarmor_elder_tr"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_tr")
+				return
+			if("swamp")
+				icon_state = "halfarmor_elder_joshuu"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_joshuu")
+				return
+			if("enforcer")
+				icon_state = "halfarmor_elder_feweh"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_feweh")
+				return
+			if("collector")
+				icon_state = "halfarmor_elder_n"
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_n")
+				return
+
+	if(armor_number > 7)
+		armor_number = 1
+	if(armor_number) //Don't change full armor number
+		icon_state = "halfarmor[armor_number]_[armor_material]"
+		LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor[armor_number]_[armor_material]")
+
+
 
 /obj/item/clothing/suit/armor/yautja/hunter
 	name = "clan armor"
 	desc = "A suit of armor with light padding. It looks old, yet functional."
 
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bomb = CLOTHING_ARMOR_HIGH
@@ -213,13 +211,13 @@
 	unacidable = TRUE
 	permeability_coefficient = 0.01
 	flags_inventory = NOSLIPPING
-	flags_armor_protection = BODY_FLAG_FEET|BODY_FLAG_LEGS|BODY_FLAG_GROIN
+	flags_armor_protection = BODY_FLAG_FEET|BODY_FLAG_LEGS
 	flags_item = ITEM_PREDATOR
 
 	siemens_coefficient = 0.2
 	min_cold_protection_temperature = SHOE_MIN_COLD_PROT
 	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
-	items_allowed = list(
+	allowed_items_typecache = list(
 		/obj/item/weapon/yautja/knife,
 		/obj/item/weapon/gun/energy/yautja/plasmapistol,
 	)
@@ -252,7 +250,7 @@
 	name = "clan greaves"
 	desc = "A pair of armored, perfectly balanced boots. Perfect for running through the jungle."
 
-	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
@@ -261,10 +259,9 @@
 	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 
-/obj/item/clothing/shoes/yautja/hunter/knife/New()
-	..()
-	stored_item = new /obj/item/weapon/yautja/knife(src)
-	update_icon()
+/obj/item/clothing/shoes/yautja/hunter/knife
+	spawn_item_type = /obj/item/weapon/yautja/knife
+
 /obj/item/clothing/under/chainshirt
 	name = "ancient alien mesh suit"
 	desc = "A strange alloy weave in the form of a vest. It feels cold with an alien weight."
@@ -275,6 +272,7 @@
 		WEAR_BODY = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
 	)
 
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS|BODY_FLAG_FEET|BODY_FLAG_HANDS //Does not cover the head though.
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS|BODY_FLAG_FEET|BODY_FLAG_HANDS
 	flags_item = ITEM_PREDATOR
@@ -283,8 +281,8 @@
 	siemens_coefficient = 0.9
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
-	armor_melee = CLOTHING_ARMOR_MEDIUM
-	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_MEDIUM
 	armor_energy = CLOTHING_ARMOR_MEDIUM
 	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
@@ -296,8 +294,8 @@
 	name = "body mesh"
 	desc = "A set of very fine chainlink in a meshwork for comfort and utility."
 
-	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bomb = CLOTHING_ARMOR_HIGH
@@ -326,6 +324,7 @@
 	unacidable = TRUE
 	ignore_z = TRUE
 	black_market_value = 100
+	flags_item = ITEM_PREDATOR
 
 /obj/item/device/radio/headset/yautja/talk_into(mob/living/M as mob, message, channel, verb = "commands", datum/language/speaking)
 	if(!isyautja(M)) //Nope.
@@ -336,9 +335,6 @@
 		if(!hellhound.stat)
 			to_chat(hellhound, "\[Radio\]: [M.real_name] [verb], '<B>[message]</b>'.")
 	..()
-
-/obj/item/device/radio/headset/yautja/attackby()
-	return
 
 /obj/item/device/radio/headset/yautja/elder //primarily for use in another MR
 	name = "\improper Elder Communicator"
@@ -395,9 +391,9 @@
 		return
 
 	var/mob/living/carbon/human/H = user
-	var/ship_to_tele = list("Public" = -1, "Human Ship" = "Human")
+	var/ship_to_tele = list("Yautja Ship" = -1, "Human Ship" = "Human")
 
-	if(!HAS_TRAIT(H, TRAIT_YAUTJA_TECH) || is_admin_level(H.z))
+	if(!HAS_TRAIT(H, TRAIT_YAUTJA_TECH) || should_block_game_interaction(H))
 		to_chat(user, SPAN_WARNING("You fiddle with it, but nothing happens!"))
 		return
 
@@ -433,10 +429,12 @@
 
 	if(do_after(user, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		// Display fancy animation for you and the person you might be pulling (Legacy)
+		SEND_SIGNAL(user, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
 		user.visible_message(SPAN_WARNING("[icon2html(user, viewers(src))][user] disappears!"))
 		var/tele_time = animation_teleport_quick_out(user)
 		var/mob/living/M = user.pulling
 		if(istype(M)) // Pulled person
+			SEND_SIGNAL(M, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
 			M.visible_message(SPAN_WARNING("[icon2html(M, viewers(src))][M] disappears!"))
 			animation_teleport_quick_out(M)
 
@@ -505,7 +503,7 @@
 
 	var/variant = rand(1, 4) //Random sprite variant.
 	icon_state = "scalp_[variant]"
-	blood_color =  "#A10808" //So examine describes it as 'bloody'. Synths can't be scalped so it'll always be human blood.
+	blood_color =  BLOOD_COLOR_HUMAN //So examine describes it as 'bloody'. Synths can't be scalped so it'll always be human blood.
 	flags_atom = FPRINT|NOBLOODY //Don't want the ugly item blood overlay ending up on this. We'll use our own blood overlay.
 
 	var/image/blood_overlay = image('icons/obj/items/hunter/pred_gear.dmi', "scalp_[variant]_blood")
@@ -696,6 +694,7 @@
 	var/tether_range = 5
 	var/mob/trapped_mob
 	layer = LOWER_ITEM_LAYER
+	flags_item = ITEM_PREDATOR
 
 /obj/item/hunting_trap/Destroy()
 	cleanup_tether()
@@ -888,10 +887,30 @@
 	desc = "A complex cypher chip embedded within a set of clan bracers."
 	icon = 'icons/obj/items/radio.dmi'
 	icon_state = "upp_key"
+	access = list(ACCESS_YAUTJA_SECURE)
 	w_class = SIZE_TINY
 	flags_equip_slot = SLOT_ID
 	flags_item = ITEM_PREDATOR|DELONDROP|NODROP
 	paygrade = null
+
+/obj/item/card/id/bracer_chip/set_user_data(mob/living/carbon/human/human_user)
+	if(!istype(human_user))
+		return
+
+	registered_name = human_user.real_name
+	registered_ref = WEAKREF(human_user)
+	registered_gid = human_user.gid
+	blood_type = human_user.blood_type
+
+	var/list/new_access = list(ACCESS_YAUTJA_SECURE)
+	var/obj/item/clothing/gloves/yautja/hunter/bracer = loc
+	if(istype(bracer) && bracer.owner_rank)
+		switch(bracer.owner_rank)
+			if(CLAN_RANK_ELDER_INT, CLAN_RANK_LEADER_INT)
+				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELDER)
+			if(CLAN_RANK_ADMIN_INT)
+				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_ANCIENT)
+	access = new_access
 
 /obj/item/storage/medicomp
 	name = "medicomp"
@@ -970,7 +989,7 @@
 	desc = "A bone from a human."
 	icon = 'icons/obj/items/skeleton.dmi'
 	accessory_icons = list(WEAR_BODY = 'icons/mob/humans/onmob/hunter/pred_gear.dmi')
-	icon_state = "head"
+	icon_state = null
 	///Has it been cleaned by a polishing rag?
 	var/polished = FALSE
 /obj/item/clothing/accessory/limb/skeleton/l_arm

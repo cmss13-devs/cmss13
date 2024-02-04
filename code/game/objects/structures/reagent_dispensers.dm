@@ -38,6 +38,11 @@
 		. += SPAN_NOTICE(" Nothing.")
 	if(reagents)
 		. += SPAN_NOTICE("Total volume: [reagents.total_volume] / [reagents.maximum_volume].")
+	if(dispensing)
+		. += SPAN_NOTICE("\nTransfer mode: Dispensing")
+	else
+		. += SPAN_NOTICE("\nTransfer mode: Filling")
+	. += SPAN_NOTICE("Transfer rate: [amount_per_transfer_from_this] units")
 
 /obj/structure/reagent_dispensers/Destroy()
 	playsound(src.loc, 'sound/effects/slosh.ogg', 50, 1, 3)
@@ -63,7 +68,7 @@
 	if(health <= 0)
 		deconstruct(FALSE)
 
-/obj/structure/reagent_dispensers/bullet_act(obj/item/projectile/Proj)
+/obj/structure/reagent_dispensers/bullet_act(obj/projectile/Proj)
 	health -= Proj.damage
 	if(Proj.firer)
 		msg_admin_niche("[key_name_admin(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]) [ADMIN_JMP(loc)].")
@@ -114,8 +119,6 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			deconstruct(FALSE)
 			return
-		else
-	return
 
 /obj/structure/reagent_dispensers/attack_hand()
 	if(!reagents || reagents.locked)
@@ -144,13 +147,6 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "ammoniatank"
 	chemical = "ammonia"
-
-/obj/structure/reagent_dispensers/oxygentank
-	name = "oxygentank"
-	desc = "An oxygen tank"
-	icon = 'icons/obj/objects.dmi'
-	icon_state = "oxygentank"
-	chemical = "oxygen"
 
 /obj/structure/reagent_dispensers/acidtank
 	name = "sulfuric acid tank"
@@ -291,7 +287,7 @@
 	return ..()
 
 
-/obj/structure/reagent_dispensers/fueltank/bullet_act(obj/item/projectile/Proj)
+/obj/structure/reagent_dispensers/fueltank/bullet_act(obj/projectile/Proj)
 	if(exploding) return 0
 	if(ismob(Proj.firer))
 		source_mob = WEAKREF(Proj.firer)
@@ -390,6 +386,13 @@
 	desc = "A hydrogen tank"
 	icon_state = "hydrogentank"
 	chemical = "hydrogen"
+
+/obj/structure/reagent_dispensers/fueltank/oxygentank
+	name = "oxygentank"
+	desc = "An oxygen tank"
+	icon = 'icons/obj/objects.dmi'
+	icon_state = "oxygentank"
+	chemical = "oxygen"
 
 /obj/structure/reagent_dispensers/fueltank/custom
 	name = "reagent tank"

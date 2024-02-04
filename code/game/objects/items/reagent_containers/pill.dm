@@ -23,6 +23,8 @@
 	w_class = SIZE_TINY
 	volume = 60
 	reagent_desc_override = TRUE //it has a special examining mechanic
+	ground_offset_x = 7
+	ground_offset_y = 7
 	var/identificable = TRUE //can medically trained people tell what's in it?
 	var/pill_desc = "An unknown pill." // The real description of the pill, shown when examined by a medically trained person
 	var/pill_icon_class = "random" // Pills with the same icon class share icons
@@ -165,10 +167,6 @@
 	pill_desc = null//so even non medics can see what this pill is.
 	pill_initial_reagents = list("cyanide" = 50)
 	pill_icon_class = "tox"
-
-/obj/item/reagent_container/pill/adminordrazine
-	pill_desc = "An Adminordrazine pill. It's magic. We don't have to explain it."
-	pill_initial_reagents = list("adminordrazine" = 50)
 
 /obj/item/reagent_container/pill/stox
 	pill_desc = "A sleeping pill commonly used to treat insomnia."

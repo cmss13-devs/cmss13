@@ -26,10 +26,10 @@
 	..()
 	if ( !(stat & NOPOWER) )
 		icon_state = "[base_state]1"
-// src.sd_SetLuminosity(2)
+// src.sd_set_light(2)
 	else
 		icon_state = "[base_state]1-p"
-// src.sd_SetLuminosity(0)
+// src.sd_set_light(0)
 
 //Don't want to render prison breaks impossible
 /obj/structure/machinery/flasher/attackby(obj/item/W as obj, mob/user as mob)
@@ -60,7 +60,7 @@
 	src.last_flash = world.time
 	use_power(1500)
 
-	for (var/mob/O in viewers(src, null))
+	for (var/mob/living/O in viewers(src, null))
 		if (get_dist(src, O) > src.range)
 			continue
 
@@ -72,7 +72,9 @@
 		if (istype(O, /mob/living/carbon/xenomorph))//So aliens don't get flashed (they have no external eyes)/N
 			continue
 
-		O.apply_effect(strength, WEAKEN)
+		O.KnockDown(strength)
+		O.Stun(strength)
+
 		if (istype(O, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = O
 			var/datum/internal_organ/eyes/E = H.internal_organs_by_name["eyes"]
@@ -84,12 +86,11 @@
 
 
 /obj/structure/machinery/flasher/emp_act(severity)
+	. = ..()
 	if(inoperable())
-		..(severity)
 		return
 	if(prob(75/severity))
 		flash()
-	..(severity)
 
 /obj/structure/machinery/flasher/portable/HasProximity(atom/movable/AM as mob|obj)
 	if ((src.disable) || (src.last_flash && world.time < src.last_flash + 150))
@@ -134,7 +135,7 @@
 	active = 1
 	icon_state = "launcheract"
 
-	for(var/obj/structure/machinery/flasher/M in machines)
+	for(var/obj/structure/machinery/flasher/M in GLOB.machines)
 		if(M.id == src.id)
 			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/flasher, flash))
 

@@ -139,7 +139,7 @@
 /obj/item/device/assembly/signaller/proc/set_frequency(new_frequency)
 	SSradio.remove_object(src, frequency)
 	frequency = new_frequency
-	radio_connection = SSradio.add_object(src, frequency, RADIO_CHAT)
+	radio_connection = SSradio.add_object(src, frequency, RADIO_SIGNALS)
 
 /obj/item/device/assembly/signaller/Destroy()
 	SSradio.remove_object(src, frequency)

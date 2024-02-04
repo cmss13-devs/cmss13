@@ -33,7 +33,7 @@
 
 /obj/item/weapon/gun/revolver/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_5
+	set_fire_delay(FIRE_DELAY_TIER_5)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_3
 	scatter = SCATTER_AMOUNT_TIER_8
@@ -182,7 +182,7 @@
 		rotate_cylinder()
 		return 1
 
-/obj/item/weapon/gun/revolver/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
+/obj/item/weapon/gun/revolver/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
 	if(refund && current_mag)
 		current_mag.current_rounds++
@@ -318,7 +318,7 @@
 
 /obj/item/weapon/gun/revolver/m44/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_7
+	set_fire_delay(FIRE_DELAY_TIER_7)
 	accuracy_mult = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_8
 	damage_mult = BASE_BULLET_DAMAGE_MULT
@@ -375,7 +375,7 @@
 	..()
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
-	fire_delay = FIRE_DELAY_TIER_9
+	set_fire_delay(FIRE_DELAY_TIER_11)
 
 /obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049
 	name = "\improper M2049 Blaster"
@@ -414,9 +414,9 @@
 	..()
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
-	fire_delay = FIRE_DELAY_TIER_9
-	burst_amount = BURST_AMOUNT_TIER_2
-	burst_delay = FIRE_DELAY_TIER_10
+	set_fire_delay(FIRE_DELAY_TIER_11)
+	set_burst_amount(BURST_AMOUNT_TIER_2)
+	set_burst_delay(FIRE_DELAY_TIER_12)
 
 
 /obj/item/weapon/gun/revolver/m44/custom/webley //Van Bandolier's Webley.
@@ -440,14 +440,20 @@
 //-------------------------------------------------------
 //RUSSIAN REVOLVER //Based on the 7.62mm Russian revolvers.
 
-/obj/item/weapon/gun/revolver/nagant
-	name = "\improper N-Y 7.62mm revolver"
-	desc = "The Nagant-Yamasaki 7.62 is an effective killing machine designed by a consortion of shady Not-Americans. It is frequently found in the hands of criminals or mercenaries."
+/obj/item/weapon/gun/revolver/upp
+	name = "\improper ZHNK-72 revolver"
+	desc = "The ZHNK-72 is a UPP designed revolver. The ZHNK-72 is used by the UPP armed forces in a policing role as well as limited numbers in the hands of SNCOs."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
-	icon_state = "ny762"
-	item_state = "ny762"
+	icon_state = "zhnk72"
+	item_state = "zhnk72"
 
-	fire_sound = 'sound/weapons/gun_pistol_medium.ogg'
+	fire_sound = "gun_pkd" //sounds stolen from bladerunner revolvers bc they arent used and sound awesome
+	fire_rattle = 'sound/weapons/gun_pkd_fire01_rattle.ogg'
+	reload_sound = 'sound/weapons/handling/pkd_speed_load.ogg'
+	cocked_sound = 'sound/weapons/handling/pkd_cock.wav'
+	unload_sound = 'sound/weapons/handling/pkd_open_chamber.ogg'
+	chamber_close_sound = 'sound/weapons/handling/pkd_close_chamber.ogg'
+	hand_reload_sound = 'sound/weapons/gun_revolver_load3.ogg'
 	current_mag = /obj/item/ammo_magazine/internal/revolver/upp
 	force = 8
 	attachable_allowed = list(
@@ -460,23 +466,22 @@
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/extended_barrel,
-		/obj/item/attachable/compensator,
 		/obj/item/attachable/lasersight, // Underbarrel
 		)
 
-/obj/item/weapon/gun/revolver/nagant/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 21,"rail_x" = 14, "rail_y" = 23, "under_x" = 24, "under_y" = 19, "stock_x" = 24, "stock_y" = 19)
+/obj/item/weapon/gun/revolver/upp/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 21,"rail_x" = 14, "rail_y" = 23, "under_x" = 19, "under_y" = 17, "stock_x" = 24, "stock_y" = 19)
 
-/obj/item/weapon/gun/revolver/nagant/set_gun_config_values()
+/obj/item/weapon/gun/revolver/upp/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_8
+	set_fire_delay(FIRE_DELAY_TIER_9)
 	accuracy_mult = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_1
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
 	recoil = 0
 	recoil_unwielded = 0
 
-/obj/item/weapon/gun/revolver/nagant/shrapnel
+/obj/item/weapon/gun/revolver/upp/shrapnel
 	current_mag = /obj/item/ammo_magazine/internal/revolver/upp/shrapnel
 	random_spawn_chance = 100
 	random_under_chance = 100
@@ -504,7 +509,7 @@
 
 /obj/item/weapon/gun/revolver/small/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_6
+	set_fire_delay(FIRE_DELAY_TIER_6)
 	accuracy_mult = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_5
@@ -561,9 +566,10 @@
 	unacidable = TRUE
 	black_market_value = 100
 	var/is_locked = TRUE
+	var/can_change_barrel = TRUE
 
 /obj/item/weapon/gun/revolver/mateba/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/weapon/mateba_key))
+	if(istype(I, /obj/item/weapon/mateba_key) && can_change_barrel)
 		if(attachments["special"])
 			var/obj/item/attachable/R = attachments["special"]
 			visible_message(SPAN_NOTICE("[user] begins stripping [R] from [src]."),
@@ -585,7 +591,7 @@
 			update_icon()
 	else if(istype(I, /obj/item/attachable))
 		var/obj/item/attachable/A = I
-		if(A.slot == "muzzle" && !attachments["special"])
+		if(A.slot == "muzzle" && !attachments["special"] && can_change_barrel)
 			to_chat(user, SPAN_WARNING("You need to attach a barrel first!"))
 			return
 	. = ..()
@@ -596,9 +602,9 @@
 
 /obj/item/weapon/gun/revolver/mateba/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_2
-	burst_amount = BURST_AMOUNT_TIER_3
-	burst_delay = FIRE_DELAY_TIER_7
+	set_fire_delay(FIRE_DELAY_TIER_3)
+	set_burst_amount(BURST_AMOUNT_TIER_3)
+	set_burst_delay(FIRE_DELAY_TIER_8)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_2
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
 	scatter = SCATTER_AMOUNT_TIER_7
@@ -662,6 +668,29 @@
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
 	map_specific_decoration = TRUE
 
+/obj/item/weapon/gun/revolver/mateba/special
+	name = "\improper Mateba autorevolver special"
+	desc = "An old, heavily modified version of the Mateba Autorevolver. It sports a smooth wooden grip, and a much larger barrel to it's unmodified counterpart. It's clear that this weapon has been cared for over a long period of time."
+	icon_state = "cmateba_special"
+	item_state = "cmateba_special"
+	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
+	attachable_allowed = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/compensator,
+	)
+	starting_attachment_types = list()
+	can_change_barrel = FALSE
+
+/obj/item/weapon/gun/revolver/mateba/special/set_gun_config_values()
+	..()
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
+
+/obj/item/weapon/gun/revolver/mateba/special/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 23,"rail_x" = 9, "rail_y" = 24, "under_x" = 19, "under_y" = 17, "stock_x" = 19, "stock_y" = 17, "special_x" = 23, "special_y" = 22)
+
 //-------------------------------------------------------
 //MARSHALS REVOLVER //Spearhead exists in Alien cannon.
 
@@ -699,14 +728,14 @@
 
 /obj/item/weapon/gun/revolver/cmb/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
 	playsound('sound/weapons/gun_cmb_bass.ogg') // badass shooting bass
-	. = ..()
+	return ..()
 
 /obj/item/weapon/gun/revolver/cmb/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 22,"rail_x" = 11, "rail_y" = 25, "under_x" = 20, "under_y" = 18, "stock_x" = 20, "stock_y" = 18)
 
 /obj/item/weapon/gun/revolver/cmb/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_6
+	set_fire_delay(FIRE_DELAY_TIER_6)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
 	scatter = SCATTER_AMOUNT_TIER_7

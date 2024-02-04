@@ -14,6 +14,7 @@
 #define islarva(A) (istype(A, /mob/living/carbon/xenomorph/larva))
 #define ispredalienlarva(A) (istype(A, /mob/living/carbon/xenomorph/larva/predalien))
 #define isfacehugger(A) (istype(A, /mob/living/carbon/xenomorph/facehugger))
+#define islesserdrone(A) (istype(A, /mob/living/carbon/xenomorph/lesser_drone))
 #define ispraetorian(A) (istype(A, /mob/living/carbon/xenomorph/praetorian))
 #define isqueen(A) (istype(A, /mob/living/carbon/xenomorph/queen))
 #define isravager(A) (istype(A, /mob/living/carbon/xenomorph/ravager))
@@ -35,6 +36,10 @@
 
 	if(!hive)
 		return FALSE
+
+	if(hivenumber == XENO_HIVE_RENEGADE)
+		var/datum/hive_status/corrupted/renegade/renegade_hive = hive
+		return renegade_hive.iff_protection_check(src, attempt_harm_mob)
 
 	return hive.is_ally(attempt_harm_mob)
 

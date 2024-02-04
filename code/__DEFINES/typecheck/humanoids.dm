@@ -25,7 +25,7 @@
 #define isspeciessynth(A) (A.species?.group == SPECIES_SYNTHETIC)
 
 //Size checks for carbon to use instead of typechecks. (Hellhounds are deprecated)
-#define iscarbonsizexeno(A) (A.mob_size >= MOB_SIZE_XENO_SMALL)
+#define iscarbonsizexeno(A) (A.mob_size >= MOB_SIZE_XENO_VERY_SMALL)
 #define iscarbonsizehuman(A) (A.mob_size <= MOB_SIZE_HUMAN)
 
 //job/role helpers

@@ -44,7 +44,7 @@
 	health = 50
 	var/deflated = FALSE
 
-/obj/structure/inflatable/bullet_act(obj/item/projectile/Proj)
+/obj/structure/inflatable/bullet_act(obj/projectile/Proj)
 	health -= Proj.damage
 	..()
 	if(health <= 0 && !deflated)
@@ -179,9 +179,6 @@
 /obj/structure/inflatable/door/attack_remote(mob/user as mob) //those aren't machinery, they're just big fucking slabs of a mineral
 	if(isRemoteControlling(user)) //so the AI can't open it
 		return
-	else if(isrobot(user)) //but cyborgs can
-		if(get_dist(user,src) <= 1) //not remotely though
-			return TryToSwitchState(user)
 
 /obj/structure/inflatable/door/attack_hand(mob/user as mob)
 	return TryToSwitchState(user)

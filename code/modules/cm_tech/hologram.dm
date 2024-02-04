@@ -1,11 +1,10 @@
-GLOBAL_LIST_EMPTY(hologram_list)
+GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 
 /mob/hologram
 	name = "Hologram"
 	desc = "It seems to be a visual projection of someone" //jinkies!
 	icon = 'icons/mob/mob.dmi'
 	icon_state = "hologram"
-	canmove = TRUE
 	blinded = FALSE
 
 	invisibility = INVISIBILITY_OBSERVER
@@ -15,7 +14,10 @@ GLOBAL_LIST_EMPTY(hologram_list)
 	var/action_icon_state = "hologram_exit"
 
 	var/mob/linked_mob
+	var/initial_leave_button = /datum/action/leave_hologram
 	var/datum/action/leave_hologram/leave_button
+	///If can be detected on motion detectors.
+	var/motion_sensed = FALSE
 
 /mob/hologram/movement_delay()
 	. = -2 // Very fast speed, so they can navigate through easily, they can't ever have movement delay whilst as a hologram
@@ -44,7 +46,7 @@ GLOBAL_LIST_EMPTY(hologram_list)
 
 	name = "[initial(name)] ([M.name])"
 
-	leave_button = new(null, action_icon_state)
+	leave_button = new initial_leave_button(null, action_icon_state)
 	leave_button.linked_hologram = src
 	leave_button.give_to(M)
 

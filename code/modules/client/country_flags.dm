@@ -26,10 +26,10 @@
 	else //null response, ratelimited most likely. Try again in 60s
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(ip2country), ipaddr, origin), 60 SECONDS)
 
-var/list/countries = icon_states('icons/flags.dmi')
+GLOBAL_LIST_INIT(countries, icon_states('icons/flags.dmi'))
 
 /proc/country2chaticon(country_code, targets)
-	if(countries.Find(country_code))
+	if(GLOB.countries.Find(country_code))
 		return "[icon2html('icons/flags.dmi', targets, country_code)]"
 	else
 		return "[icon2html('icons/flags.dmi', targets, "unknown")]"

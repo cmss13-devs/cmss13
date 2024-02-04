@@ -76,7 +76,7 @@
 	},
 /area/shuttle/escape_pod)
 "U" = (
-/obj/docking_port/mobile/escape_shuttle/s,
+/obj/docking_port/mobile/crashable/escape_shuttle/s,
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall9"
 	},

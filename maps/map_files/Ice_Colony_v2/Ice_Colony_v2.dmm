@@ -124,11 +124,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/clearing/north)
 "aaA" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/clearing/north)
 "aaB" = (
@@ -546,11 +542,7 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
 "acl" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/northwest)
 "acm" = (
@@ -753,11 +745,7 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
 "acV" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /obj/structure/machinery/power/apc{
 	dir = 1;
 	pixel_y = 24;
@@ -790,11 +778,7 @@
 	},
 /area/ice_colony/surface/requesitions)
 "ada" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /obj/structure/machinery/computer/shuttle_control/ice_colony/elevator4{
 	pixel_y = 30
 	},
@@ -869,7 +853,6 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
-	locked = 0;
 	name = "Colony Requesitions Storage Pod"
 	},
 /turf/open/floor/plating/icefloor,
@@ -1325,11 +1308,7 @@
 	},
 /area/ice_colony/surface/engineering/generator)
 "aey" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/valley/northwest)
 "aez" = (
@@ -1353,7 +1332,6 @@
 "aeC" = (
 /obj/structure/machinery/door/airlock{
 	id_tag = "st_5";
-	locked = 0;
 	name = "Storage Unit";
 	req_one_access_txt = "100;101;102;103"
 	},
@@ -1375,11 +1353,7 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
 "aeF" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -1814,11 +1788,7 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
 "afN" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -1993,11 +1963,7 @@
 /turf/closed/wall,
 /area/ice_colony/surface/engineering)
 "agj" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/valley/northwest)
 "agk" = (
@@ -2116,11 +2082,7 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
 "agA" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
 "agB" = (
@@ -2348,19 +2310,11 @@
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/clearing/north)
 "ahh" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/clearing/north)
 "ahi" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/clearing/north)
 "ahj" = (
@@ -2382,11 +2336,7 @@
 	},
 /area/ice_colony/surface/engineering/generator)
 "ahn" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/clearing/north)
 "aho" = (
@@ -2521,11 +2471,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/surface/hydroponics/north)
 "ahJ" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/clearing/north)
 "ahK" = (
@@ -2712,10 +2658,10 @@
 /area/ice_colony/surface/hydroponics/north)
 "aig" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/north)
 "aih" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/north)
 "aii" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -2858,11 +2804,7 @@
 	},
 /area/ice_colony/surface/substation/smes)
 "aiC" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/north)
 "aiD" = (
@@ -2951,7 +2893,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/north)
 "aiO" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -3069,11 +3011,7 @@
 	},
 /area/ice_colony/surface/substation/smes)
 "ajf" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/clearing/north)
 "ajg" = (
@@ -3084,11 +3022,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/northeast)
 "ajj" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/northeast)
 "ajl" = (
@@ -3272,7 +3206,7 @@
 /area/ice_colony/surface/substation/smes)
 "ajF" = (
 /obj/item/disk/botany,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/north)
 "ajG" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -3319,11 +3253,7 @@
 	},
 /area/ice_colony/surface/engineering)
 "ajM" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/clearing/north)
@@ -3617,11 +3547,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/clearing/north)
 "akB" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -3991,11 +3917,7 @@
 /turf/open/ice,
 /area/ice_colony/surface/mining)
 "alI" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/southeast)
 "alJ" = (
@@ -4189,11 +4111,7 @@
 	},
 /area/ice_colony/surface/dorms/restroom_e)
 "aml" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/valley/southeast)
 "amm" = (
@@ -4219,11 +4137,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/southeast)
 "amq" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/north)
 "amr" = (
@@ -5065,11 +4979,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/pass)
 "aoK" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/clearing/pass)
 "aoL" = (
@@ -5705,7 +5615,7 @@
 /area/ice_colony/exterior/surface/valley/west)
 "aqt" = (
 /obj/item/storage/bag/plants,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/north)
 "aqu" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -6676,11 +6586,7 @@
 	},
 /area/ice_colony/surface/dorms)
 "asV" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/pass)
 "asW" = (
@@ -7050,11 +6956,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/clearing/south)
 "atW" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/clearing/south)
 "atX" = (
@@ -7162,14 +7064,14 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/lobby)
 "auk" = (
 /mob/living/simple_animal/cow,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/lobby)
 "aul" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/lobby)
 "aum" = (
 /obj/structure/bed/chair{
@@ -7237,11 +7139,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/dorms)
 "auu" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/south)
 "auw" = (
@@ -7277,13 +7175,13 @@
 /area/ice_colony/surface/clinic/lobby)
 "auA" = (
 /obj/effect/landmark/monkey_spawn,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/lobby)
 "auB" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/lobby)
 "auC" = (
 /obj/structure/flora/pottedplant,
@@ -7402,11 +7300,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/clearing/south)
 "auQ" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/southwest)
 "auR" = (
@@ -7464,7 +7358,7 @@
 /obj/item/stack/rods{
 	amount = 25
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/lobby)
 "auZ" = (
 /turf/open/floor{
@@ -7665,11 +7559,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/clearing/south)
 "avx" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/valley/southwest)
 "avy" = (
@@ -7809,11 +7699,7 @@
 	},
 /area/ice_colony/surface/hydroponics/lobby)
 "avO" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/valley/southwest)
 "avP" = (
@@ -7943,11 +7829,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/southwest)
 "awd" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/clearing/south)
 "awe" = (
@@ -8100,7 +7982,7 @@
 /area/ice_colony/exterior/surface/valley/southeast)
 "awA" = (
 /obj/structure/machinery/light,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/lobby)
 "awB" = (
 /obj/structure/bed/chair{
@@ -8156,11 +8038,7 @@
 	},
 /area/ice_colony/surface/hydroponics/lobby)
 "awJ" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/auto_turf/snow/layer1,
@@ -8240,11 +8118,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/clearing/south)
 "awY" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/clearing/south)
 "awZ" = (
@@ -8608,11 +8482,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/southwest)
 "ayb" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/southwest)
 "ayc" = (
@@ -8620,11 +8490,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/southwest)
 "ayd" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/auto_turf/snow/layer1,
@@ -8747,11 +8613,7 @@
 	},
 /area/ice_colony/surface/dorms/lavatory)
 "ayv" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/south)
 "ayw" = (
@@ -8772,11 +8634,7 @@
 	},
 /area/ice_colony/surface/dorms/canteen)
 "ayy" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/southwest)
 "ayz" = (
@@ -8823,11 +8681,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/south)
 "ayF" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -8837,11 +8691,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/south)
 "ayG" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/valley/south)
 "ayH" = (
@@ -9077,11 +8927,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/valley/south)
 "azp" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/valley/south)
 "azq" = (
@@ -9117,10 +8963,10 @@
 /area/ice_colony/surface/disposals)
 "azw" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/south)
 "azx" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/south)
 "azy" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -9172,11 +9018,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/valley/south)
 "azH" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/south)
 "azI" = (
@@ -9206,7 +9048,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/south)
 "azM" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
@@ -9535,11 +9377,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "aAE" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "aAF" = (
@@ -9964,11 +9802,7 @@
 	},
 /area/ice_colony/surface/garage/repair)
 "aBM" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "aBN" = (
@@ -11092,7 +10926,7 @@
 /area/ice_colony/exterior/surface/valley/southeast)
 "aED" = (
 /obj/item/tool/hatchet,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/south)
 "aEE" = (
 /obj/structure/disposalpipe/segment,
@@ -12125,7 +11959,6 @@
 "aHB" = (
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
 	id = "st_17";
-	locked = 0;
 	name = "Power Storage Unit"
 	},
 /turf/open/floor{
@@ -12570,7 +12403,6 @@
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
 	dir = 2;
 	id = "st_18";
-	locked = 0;
 	name = "Disposals Storage Unit"
 	},
 /turf/open/floor{
@@ -13861,7 +13693,6 @@
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
 	dir = 2;
 	id = "st_19";
-	locked = 0;
 	name = "Research Storage Unit"
 	},
 /turf/open/floor{
@@ -14023,7 +13854,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
 "aOC" = (
-/obj/item/weapon/gun/shotgun/double/with_stock,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6"
 	},
@@ -14425,7 +14256,7 @@
 /area/ice_colony/surface/bar/bar)
 "aPy" = (
 /obj/structure/surface/table/woodentable,
-/obj/structure/machinery/chem_dispenser/beer,
+/obj/structure/machinery/chem_dispenser/soda/beer,
 /obj/structure/machinery/alarm{
 	dir = 1;
 	pixel_y = -24
@@ -14709,7 +14540,6 @@
 "aQm" = (
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
 	id = "research_entrance";
-	locked = 0;
 	name = "Omicron Research Dome"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -14775,23 +14605,17 @@
 /obj/structure/shuttle/diagonal{
 	icon_state = "swall_f9"
 	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgery/red,
 /area/ice_colony/surface/hangar/alpha)
 "aQC" = (
 /obj/structure/computerframe,
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgery/red,
 /area/ice_colony/surface/hangar/alpha)
 "aQD" = (
 /obj/structure/shuttle/diagonal{
 	icon_state = "swall_f5"
 	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgery/red,
 /area/ice_colony/surface/hangar/alpha)
 "aQE" = (
 /obj/structure/disposalpipe/segment{
@@ -14855,23 +14679,17 @@
 /obj/structure/shuttle/diagonal{
 	icon_state = "swall_f9"
 	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgery/red,
 /area/ice_colony/surface/hangar/beta)
 "aQL" = (
 /obj/structure/computerframe,
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgery/red,
 /area/ice_colony/surface/hangar/beta)
 "aQM" = (
 /obj/structure/shuttle/diagonal{
 	icon_state = "swall_f5"
 	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgery/red,
 /area/ice_colony/surface/hangar/beta)
 "aQN" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -15115,17 +14933,13 @@
 /area/ice_colony/surface/hangar/alpha)
 "aRz" = (
 /obj/structure/machinery/light,
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgery/red,
 /area/ice_colony/surface/hangar/alpha)
 "aRA" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgery/red,
 /area/ice_colony/surface/hangar/alpha)
 "aRB" = (
 /obj/structure/machinery/light{
@@ -15150,25 +14964,19 @@
 /area/ice_colony/surface/hangar/beta)
 "aRF" = (
 /obj/structure/machinery/light,
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgery/red,
 /area/ice_colony/surface/hangar/beta)
 "aRG" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
 /obj/effect/landmark/survivor_spawner,
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgery/red,
 /area/ice_colony/surface/hangar/beta)
 "aRH" = (
 /obj/structure/machinery/light,
 /obj/item/weapon/gun/pistol/holdout,
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgery/red,
 /area/ice_colony/surface/hangar/beta)
 "aRI" = (
 /obj/structure/surface/table,
@@ -15405,9 +15213,7 @@
 /area/ice_colony/surface/hangar/alpha)
 "aSi" = (
 /obj/structure/machinery/door/unpowered/shuttle,
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgery/red,
 /area/ice_colony/surface/hangar/alpha)
 "aSj" = (
 /turf/closed/shuttle{
@@ -15449,9 +15255,7 @@
 /area/ice_colony/surface/hangar/beta)
 "aSr" = (
 /obj/structure/machinery/door/unpowered/shuttle,
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgery/red,
 /area/ice_colony/surface/hangar/beta)
 "aSs" = (
 /turf/closed/shuttle{
@@ -15692,14 +15496,10 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgery/red,
 /area/ice_colony/surface/hangar/alpha)
 "aSV" = (
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgery/red,
 /area/ice_colony/surface/hangar/alpha)
 "aSW" = (
 /obj/structure/machinery/light{
@@ -15708,9 +15508,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgery/red,
 /area/ice_colony/surface/hangar/alpha)
 "aSY" = (
 /obj/structure/machinery/light{
@@ -15719,14 +15517,10 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgery/red,
 /area/ice_colony/surface/hangar/beta)
 "aSZ" = (
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgery/red,
 /area/ice_colony/surface/hangar/beta)
 "aTa" = (
 /obj/structure/machinery/light{
@@ -15735,9 +15529,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgery/red,
 /area/ice_colony/surface/hangar/beta)
 "aTb" = (
 /turf/open/floor{
@@ -15913,33 +15705,25 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgery/red,
 /area/ice_colony/surface/hangar/alpha)
 "aTA" = (
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgery/red,
 /area/ice_colony/surface/hangar/alpha)
 "aTD" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgery/red,
 /area/ice_colony/surface/hangar/beta)
 "aTE" = (
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgery/red,
 /area/ice_colony/surface/hangar/beta)
 "aTH" = (
 /obj/structure/machinery/power/apc{
@@ -16287,9 +16071,7 @@
 	pixel_x = 6;
 	pixel_y = -4
 	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgery/red,
 /area/ice_colony/surface/hangar/beta)
 "aUN" = (
 /obj/structure/ice/thin/end{
@@ -16403,11 +16185,7 @@
 	},
 /area/ice_colony/exterior/surface/cliff)
 "aVf" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/ice,
 /area/ice_colony/exterior/surface/landing_pad_external)
 "aVg" = (
@@ -16750,17 +16528,13 @@
 /obj/structure/shuttle/diagonal{
 	icon_state = "swall_f10"
 	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgery/red,
 /area/ice_colony/surface/hangar/alpha)
 "aWd" = (
 /obj/structure/shuttle/diagonal{
 	icon_state = "swall_f6"
 	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgery/red,
 /area/ice_colony/surface/hangar/alpha)
 "aWe" = (
 /obj/structure/shuttle/diagonal{
@@ -16820,17 +16594,13 @@
 /obj/structure/shuttle/diagonal{
 	icon_state = "swall_f10"
 	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgery/red,
 /area/ice_colony/surface/hangar/beta)
 "aWm" = (
 /obj/structure/shuttle/diagonal{
 	icon_state = "swall_f6"
 	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
+/turf/open/shuttle/can_surgery/red,
 /area/ice_colony/surface/hangar/beta)
 "aWn" = (
 /obj/structure/shuttle/diagonal{
@@ -16853,12 +16623,6 @@
 	},
 /area/ice_colony/exterior/surface/landing_pad)
 "aWp" = (
-/turf/open/floor/plating,
-/area/ice_colony/exterior/surface/landing_pad)
-"aWq" = (
-/obj/docking_port/stationary/marine_dropship/lz1{
-	name = "Hangar Landing Zone"
-	},
 /turf/open/floor/plating,
 /area/ice_colony/exterior/surface/landing_pad)
 "aWr" = (
@@ -17794,11 +17558,7 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/exterior/surface/container_yard)
 "aZt" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/exterior/surface/container_yard)
 "aZu" = (
@@ -19855,7 +19615,6 @@
 /area/ice_colony/underground/maintenance/north)
 "bgR" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	locked = 0;
 	name = "\improper Underground Maintenance"
 	},
 /turf/open/floor/plating,
@@ -20022,12 +19781,6 @@
 	icon_state = "dark2"
 	},
 /area/ice_colony/underground/requesition/lobby)
-"bhs" = (
-/obj/docking_port/stationary/marine_dropship/lz2,
-/turf/open/floor/plating/icefloor{
-	icon_state = "warnplate"
-	},
-/area/ice_colony/underground/hangar)
 "bht" = (
 /turf/open/floor/plating/icefloor{
 	icon_state = "warnplate"
@@ -20586,7 +20339,6 @@
 "bjz" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 1;
-	locked = 0;
 	name = "\improper Underground Maintenance";
 	req_access_txt = "100"
 	},
@@ -23915,7 +23667,6 @@
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
 	dir = 2;
 	id = "engine_electrical_maintenance";
-	locked = 0;
 	name = "Underground Power Substation"
 	},
 /turf/open/floor{
@@ -25154,7 +24905,6 @@
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
 	dir = 2;
 	id = "engine_electrical_maintenance";
-	locked = 0;
 	name = "Underground Power Substation"
 	},
 /turf/open/floor/plating,
@@ -27028,7 +26778,7 @@
 /area/ice_colony/underground/storage/highsec)
 "bCS" = (
 /obj/structure/safe,
-/obj/item/weapon/katana/replica,
+/obj/item/weapon/sword/katana/replica,
 /obj/item/reagent_container/food/drinks/bottle/absinthe,
 /turf/open/floor{
 	dir = 1;
@@ -28142,7 +27892,7 @@
 /area/ice_colony/surface/bar/canteen)
 "bFZ" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/toy/farwadoll,
+/obj/item/toy/plush/farwa,
 /turf/open/floor{
 	icon_state = "darkblue2"
 	},
@@ -28293,7 +28043,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
 	dir = 2;
-	locked = 0;
 	name = "Underground Secure Technical Storage"
 	},
 /turf/open/floor{
@@ -34678,6 +34427,10 @@
 	icon_state = "dark2"
 	},
 /area/ice_colony/surface/research)
+"cEG" = (
+/obj/docking_port/stationary/marine_dropship/lz2,
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/underground/hangar)
 "cVM" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -35021,6 +34774,7 @@
 "qEB" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
 "qRy" = (
@@ -35048,6 +34802,7 @@
 /area/ice_colony/exterior/surface/valley/northwest)
 "rAm" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor{
 	icon_state = "dark2"
 	},
@@ -35080,6 +34835,12 @@
 	icon_state = "darkbrown2"
 	},
 /area/ice_colony/surface/hangar/alpha)
+"sto" = (
+/obj/docking_port/stationary/marine_dropship/lz1{
+	name = "LZ1: Hangar Landing Zone"
+	},
+/turf/open/floor/plating,
+/area/ice_colony/exterior/surface/landing_pad)
 "sKH" = (
 /obj/structure/surface/table,
 /obj/item/device/analyzer,
@@ -35130,6 +34891,7 @@
 /area/ice_colony/underground/hangar)
 "tEG" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /obj/effect/landmark/queen_spawn,
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
@@ -35193,10 +34955,12 @@
 "uUv" = (
 /obj/effect/alien/weeds/node,
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
 "vcU" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
 "vhS" = (
@@ -35265,6 +35029,7 @@
 /area/ice_colony/surface/tcomms)
 "xWm" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/ice,
 /area/ice_colony/exterior/surface/landing_pad_external)
 "ygw" = (
@@ -52642,7 +52407,7 @@ aZW
 bcy
 bbc
 aZW
-bhs
+bht
 bhG
 bht
 aZW
@@ -53760,7 +53525,7 @@ aZW
 aZW
 aZW
 aZW
-aZW
+cEG
 aZW
 aZW
 aZW
@@ -89566,7 +89331,7 @@ aWp
 aWp
 aWp
 aWQ
-aWq
+aWp
 bbl
 aUP
 aUP
@@ -90684,7 +90449,7 @@ aWp
 aWp
 aWp
 aWp
-aWp
+sto
 aWp
 aWp
 aWp

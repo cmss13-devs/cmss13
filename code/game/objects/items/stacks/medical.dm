@@ -21,7 +21,7 @@
 		to_chat(user, SPAN_DANGER("\The [src] cannot be applied to [M]!"))
 		return 1
 
-	if(!ishuman(user) && !isrobot(user))
+	if(!ishuman(user))
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return 1
 
@@ -95,6 +95,9 @@
 				to_chat(user, SPAN_WARNING("There are no wounds on [possessive] [affecting.display_name]."))
 				return TRUE
 
+/obj/item/stack/medical/bruise_pack/two
+	amount = 2
+
 /obj/item/stack/medical/ointment
 	name = "ointment"
 	desc = "Used to treat burns, infected wounds, and relieve itching in unusual places."
@@ -142,9 +145,9 @@
 				return TRUE
 
 /obj/item/stack/medical/advanced/bruise_pack
-	name = "advanced trauma kit"
-	singular_name = "advanced trauma kit"
-	desc = "An advanced trauma kit for severe injuries."
+	name = "trauma kit"
+	singular_name = "trauma kit"
+	desc = "A trauma kit for severe injuries."
 	icon_state = "traumakit"
 	heal_brute = 12
 
@@ -209,13 +212,13 @@
 	stack_id = "soothing herbs"
 	alien = TRUE
 /obj/item/stack/medical/advanced/ointment
-	name = "advanced burn kit"
-	singular_name = "advanced burn kit"
-	desc = "An advanced treatment kit for severe burns."
+	name = "burn kit"
+	singular_name = "burn kit"
+	desc = "A treatment kit for severe burns."
 	icon_state = "burnkit"
 	heal_burn = 12
 
-	stack_id = "advanced burn kit"
+	stack_id = "burn kit"
 
 /obj/item/stack/medical/advanced/ointment/attack(mob/living/carbon/M as mob, mob/user as mob)
 	if(..())

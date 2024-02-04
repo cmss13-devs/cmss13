@@ -47,7 +47,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/ammo_magazine/smg/mp27,
 /obj/item/ammo_magazine/smg/mp27,
-/obj/item/weapon/gun/shotgun/double/with_stock{
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
 	pixel_y = -4
 	},
 /obj/item/weapon/gun/smg/mp27{

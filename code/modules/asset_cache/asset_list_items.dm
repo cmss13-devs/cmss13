@@ -61,32 +61,8 @@
 		"nano/templates/",
 	)
 
-/datum/asset/directory/nanoui/weapons
-	common_dirs = list(
-		"nano/images/weapons/",
-	)
-
-	uncommon_dirs = list()
-
-/datum/asset/directory/nanoui/weapons/send(client)
-	if(!client)
-		log_debug("Warning! Tried to send nanoui weapon data with a null client! (asset_list_items.dm line 93)")
-		return
-	SSassets.transport.send_assets(client, common)
-
-
 /datum/asset/simple/nanoui_images
 	keep_local_name = TRUE
-
-	assets = list(
-		"auto.png" = 'nano/images/weapons/auto.png',
-		"burst.png" = 'nano/images/weapons/burst.png',
-		"single.png" = 'nano/images/weapons/single.png',
-		"disabled_automatic.png" = 'nano/images/weapons/disabled_automatic.png',
-		"disabled_burst.png" = 'nano/images/weapons/disabled_burst.png',
-		"disabled_single.png" = 'nano/images/weapons/disabled_single.png',
-		"no_name.png" = 'nano/images/weapons/no_name.png',
-	)
 
 	var/list/common_dirs = list(
 		"nano/images/",
@@ -143,8 +119,11 @@
 	assets = list(
 		"wylogo.png" = 'html/images/wylogo.png',
 		"uscmlogo.png" = 'html/images/uscmlogo.png',
+		"upplogo.png" = 'html/images/upplogo.png',
+		"cmblogo.png" = 'html/images/cmblogo.png',
 		"faxwylogo.png" = 'html/images/faxwylogo.png',
 		"faxbackground.jpg" = 'html/images/faxbackground.jpg',
+		"colonialspacegruntsEZ.png" = 'html/images/colonialspacegruntsEZ.png',
 	)
 
 /datum/asset/spritesheet/chat
@@ -204,10 +183,10 @@
 
 /datum/asset/spritesheet/playtime_rank/register()
 	var/icon_file = 'icons/mob/hud/hud.dmi'
-	var/tier1_state = "hudxenoupgrade1"
-	var/tier2_state = "hudxenoupgrade2"
-	var/tier3_state = "hudxenoupgrade3"
-	var/tier4_state = "hudxenoupgrade4"
+	var/tier1_state = "hudxenoupgrade2"
+	var/tier2_state = "hudxenoupgrade3"
+	var/tier3_state = "hudxenoupgrade4"
+	var/tier4_state = "hudxenoupgrade5"
 
 	var/icon/tier1_icon = icon(icon_file, tier1_state, SOUTH)
 	var/icon/tier2_icon = icon(icon_file, tier2_state, SOUTH)
@@ -271,7 +250,6 @@
 
 /datum/asset/spritesheet/ranks/register()
 	var/icon_file = 'icons/mob/hud/marine_hud.dmi'
-	var/list/squads = list("Alpha", "Bravo", "Charlie", "Delta", "Foxtrot", "Cryo")
 
 	var/list/icon_data = list(
 		list("Mar", null),
@@ -284,10 +262,8 @@
 		list("SL", "hudsquad_leader"),
 	)
 
-	var/i
-	for(i = 1; i < length(squads); i++)
-		var/squad = squads[i]
-		var/color = squad_colors[i]
+	for(var/datum/squad/marine/squad in GLOB.RoleAuthority.squads)
+		var/color = squad.equipment_color
 		for(var/iref in icon_data)
 			var/list/iconref = iref
 			var/icon/background = icon('icons/mob/hud/marine_hud.dmi', "hudsquad", SOUTH)
@@ -315,14 +291,16 @@
 			log_debug("not atom! [item]")
 			continue
 
-		if (sprites[icon_file])
+		var/imgid = replacetext(replacetext("[k]", "/obj/item/", ""), "/", "-")
+
+		if(sprites[imgid])
 			continue
 
 		if(icon_state in icon_states(icon_file))
 			I = icon(icon_file, icon_state, SOUTH)
 			var/c = initial(item.color)
 			if (!isnull(c) && c != "#FFFFFF")
-				I.Blend(initial(c), ICON_MULTIPLY)
+				I.Blend(c, ICON_MULTIPLY)
 		else
 			if (ispath(k, /obj/effect/essentials_set))
 				var/obj/effect/essentials_set/es_set = new k()
@@ -339,7 +317,6 @@
 				item = new k()
 				I = icon(item.icon, item.icon_state, SOUTH)
 				qdel(item)
-		var/imgid = replacetext(replacetext("[k]", "/obj/item/", ""), "/", "-")
 
 		Insert(imgid, I)
 	return ..()
@@ -377,13 +354,42 @@
 		Insert("[icon_name]_big", iconBig)
 	return ..()
 
+/datum/asset/spritesheet/tutorial
+	name = "tutorial"
+
+/datum/asset/spritesheet/tutorial/register()
+	for(var/icon_state in icon_states('icons/misc/tutorial.dmi'))
+		var/icon/icon_sprite = icon('icons/misc/tutorial.dmi', icon_state)
+		icon_sprite.Scale(128, 128)
+		Insert(icon_state, icon_sprite)
+
+	var/icon/retrieved_icon = icon('icons/mob/hud/human_dark.dmi', "intent_all")
+	retrieved_icon.Scale(128, 128)
+	Insert("intents", retrieved_icon)
+
+	return ..()
+
+
 /datum/asset/spritesheet/gun_lineart
 	name = "gunlineart"
 
 /datum/asset/spritesheet/gun_lineart/register()
-	InsertAll("", 'icons/obj/items/weapons/guns/lineart.dmi')
+	var/icon_file = 'icons/obj/items/weapons/guns/lineart.dmi'
+	InsertAll("", icon_file)
+
+	for(var/obj/item/weapon/gun/current_gun as anything in subtypesof(/obj/item/weapon/gun))
+		var/icon_state = initial(current_gun.base_gun_icon)
+		if(icon_state && isnull(sprites[icon_state]))
+			stack_trace("[current_gun] does not have a valid lineart icon state, icon=[icon_file], icon_state=[json_encode(icon_state)](\ref[icon_state])")
+
 	..()
 
+/datum/asset/spritesheet/gun_lineart_modes
+	name = "gunlineartmodes"
+
+/datum/asset/spritesheet/gun_lineart_modes/register()
+	InsertAll("", 'icons/obj/items/weapons/guns/lineart_modes.dmi')
+	..()
 
 /datum/asset/simple/orbit
 	assets = list(
@@ -396,17 +402,6 @@
 		"ntosradarpointer.png" = 'icons/images/ui_images/ntosradar_pointer.png',
 		"ntosradarpointerS.png" = 'icons/images/ui_images/ntosradar_pointer_S.png'
 	)
-
-/datum/asset/simple/firemodes
-	assets = list(
-		"auto.png" = 'html/images/auto.png',
-		"disabled_auto.png" = 'html/images/disabled_automatic.png',
-		"burst.png" = 'html/images/burst.png',
-		"disabled_burst.png" = 'html/images/disabled_burst.png',
-		"single.png" = 'html/images/single.png',
-		"disabled_single.png" = 'html/images/disabled_single.png',
-	)
-
 
 /datum/asset/simple/particle_editor
 	assets = list(

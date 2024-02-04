@@ -30,6 +30,10 @@
 /atom/movable/screen/inventory
 	var/slot_id //The indentifier for the slot. It has nothing to do with ID cards.
 
+/atom/movable/screen/inventory/Initialize(mapload, ...)
+	. = ..()
+
+	RegisterSignal(src, COMSIG_ATOM_DROPPED_ON, PROC_REF(handle_dropped_on))
 
 /atom/movable/screen/close
 	name = "close"
@@ -37,6 +41,8 @@
 
 
 /atom/movable/screen/close/clicked(mob/user)
+	if(isobserver(user))
+		return TRUE
 	if(master)
 		if(isstorage(master))
 			var/obj/item/storage/master_storage = master
@@ -132,121 +138,6 @@
 			else
 				color = null
 
-
-
-/atom/movable/screen/gun
-	name = "gun"
-	dir = SOUTH
-	var/gun_click_time = -100
-
-/atom/movable/screen/gun/move
-	name = "Allow Walking"
-	icon_state = "no_walk0"
-
-/atom/movable/screen/gun/move/update_icon(mob/user)
-	if(user.gun_mode)
-		if(user.target_can_move)
-			icon_state = "no_walk1"
-			name = "Disallow Walking"
-		else
-			icon_state = "no_walk0"
-			name = "Allow Walking"
-		screen_loc = initial(screen_loc)
-		return
-	screen_loc = null
-
-/atom/movable/screen/gun/move/clicked(mob/user)
-	if (..())
-		return 1
-
-	if(gun_click_time > world.time - 30) //give them 3 seconds between mode changes.
-		return 1
-	if(!isgun(user.get_held_item()))
-		to_chat(user, "You need your gun in your active hand to do that!")
-		return 1
-	user.AllowTargetMove()
-	gun_click_time = world.time
-	return 1
-
-
-/atom/movable/screen/gun/run
-	name = "Allow Running"
-	icon_state = "no_run0"
-
-/atom/movable/screen/gun/run/update_icon(mob/user)
-	if(user.gun_mode)
-		if(user.target_can_move)
-			if(user.target_can_run)
-				icon_state = "no_run1"
-				name = "Disallow Running"
-			else
-				icon_state = "no_run0"
-				name = "Allow Running"
-			screen_loc = initial(screen_loc)
-			return
-	screen_loc = null
-
-/atom/movable/screen/gun/run/clicked(mob/user)
-	if (..())
-		return 1
-
-	if(gun_click_time > world.time - 30) //give them 3 seconds between mode changes.
-		return 1
-	if(!isgun(user.get_held_item()))
-		to_chat(user, "You need your gun in your active hand to do that!")
-		return 1
-	user.AllowTargetRun()
-	gun_click_time = world.time
-	return 1
-
-
-/atom/movable/screen/gun/item
-	name = "Allow Item Use"
-	icon_state = "no_item0"
-
-/atom/movable/screen/gun/item/update_icon(mob/user)
-	if(user.gun_mode)
-		if(user.target_can_click)
-			icon_state = "no_item1"
-			name = "Allow Item Use"
-		else
-			icon_state = "no_item0"
-			name = "Disallow Item Use"
-		screen_loc = initial(screen_loc)
-		return
-	screen_loc = null
-
-/atom/movable/screen/gun/item/clicked(mob/user)
-	if (..())
-		return 1
-
-	if(gun_click_time > world.time - 30) //give them 3 seconds between mode changes.
-		return 1
-	if(!isgun(user.get_held_item()))
-		to_chat(user, "You need your gun in your active hand to do that!")
-		return 1
-	user.AllowTargetClick()
-	gun_click_time = world.time
-	return 1
-
-
-/atom/movable/screen/gun/mode
-	name = "Toggle Gun Mode"
-	icon_state = "gun0"
-
-/atom/movable/screen/gun/mode/update_icon(mob/user)
-	if(user.gun_mode)
-		icon_state = "gun1"
-	else
-		icon_state = "gun0"
-
-/atom/movable/screen/gun/mode/clicked(mob/user)
-	if (..())
-		return 1
-	user.ToggleGunMode()
-	return 1
-
-
 /atom/movable/screen/zone_sel
 	name = "damage zone"
 	icon_state = "zone_sel"
@@ -259,7 +150,7 @@
 
 /atom/movable/screen/zone_sel/clicked(mob/user, list/mods)
 	if (..())
-		return 1
+		return TRUE
 
 	var/icon_x = text2num(mods["icon-x"])
 	var/icon_y = text2num(mods["icon-y"])
@@ -320,11 +211,12 @@
 		update_icon(user)
 	return 1
 
-/atom/movable/screen/zone_sel/robot
-	icon = 'icons/mob/hud/screen1_robot.dmi'
-
 /atom/movable/screen/clicked(mob/user)
-	if(!user) return 1
+	if(!user)
+		return TRUE
+
+	if(isobserver(user))
+		return TRUE
 
 	switch(name)
 		if("equip")
@@ -335,42 +227,6 @@
 
 		if("Reset Machine")
 			user.unset_interaction()
-			return 1
-
-		if("module")
-			if(isSilicon(user))
-				if(user:module)
-					return 1
-				user:pick_module()
-			return 1
-
-		if("radio")
-			if(isSilicon(user))
-				user:radio_menu()
-			return 1
-		if("panel")
-			if(isSilicon(user))
-				user:installed_modules()
-			return 1
-
-		if("store")
-			if(isSilicon(user))
-				user:uneq_active()
-			return 1
-
-		if("module1")
-			if(isrobot(user))
-				user:toggle_module(1)
-			return 1
-
-		if("module2")
-			if(isrobot(user))
-				user:toggle_module(2)
-			return 1
-
-		if("module3")
-			if(isrobot(user))
-				user:toggle_module(3)
 			return 1
 
 		if("Activate weapon attachment")
@@ -433,6 +289,22 @@
 				user.update_inv_r_hand(0)
 				return 1
 	return 0
+
+/atom/movable/screen/inventory/proc/handle_dropped_on(atom/dropped_on, atom/dropping, client/user)
+	SIGNAL_HANDLER
+
+	if(slot_id != WEAR_L_HAND && slot_id != WEAR_R_HAND)
+		return
+
+	if(!isstorage(dropping.loc))
+		return
+
+	if(!user.mob.Adjacent(dropping))
+		return
+
+	var/obj/item/storage/store = dropping.loc
+	store.remove_from_storage(dropping, get_turf(user.mob))
+	user.mob.put_in_active_hand(dropping)
 
 /atom/movable/screen/throw_catch
 	name = "throw/catch"
@@ -612,19 +484,19 @@
 		if(user.observed_xeno == user.tracked_marker)
 			user.overwatch(user.tracked_marker, TRUE) //passing in an obj/effect into a proc that expects mob/xenomorph B)
 		else
-			to_chat(user, SPAN_XENONOTICE("You psychically observe the [user.tracked_marker.mark_meaning.name] resin mark in [get_area_name(user.tracked_marker)]."))
+			to_chat(user, SPAN_XENONOTICE("We psychically observe the [user.tracked_marker.mark_meaning.name] resin mark in [get_area_name(user.tracked_marker)]."))
 			user.overwatch(user.tracked_marker) //this is so scuffed, sorry if this causes errors
 		return
 	if(mods["alt"] && user.tracked_marker)
 		user.stop_tracking_resin_mark()
 		return
 	if(!user.hive)
-		to_chat(user, SPAN_WARNING("You don't belong to a hive!"))
+		to_chat(user, SPAN_WARNING("We don't belong to a hive!"))
 		return FALSE
 	if(!user.hive.living_xeno_queen)
-		to_chat(user, SPAN_WARNING("Without a queen your psychic link is broken!"))
+		to_chat(user, SPAN_WARNING("Without a queen our psychic link is broken!"))
 		return FALSE
-	if(user.burrow || user.is_mob_incapacitated() || user.buckled)
+	if(HAS_TRAIT(user, TRAIT_ABILITY_BURROWED) || user.is_mob_incapacitated() || user.buckled)
 		return FALSE
 	user.hive.mark_ui.update_all_data()
 	user.hive.mark_ui.open_mark_menu(user)
@@ -633,40 +505,57 @@
 	name = "queen locator"
 	icon = 'icons/mob/hud/alien_standard.dmi'
 	icon_state = "trackoff"
-	var/track_state = TRACKER_QUEEN
+	/// A weak reference to the atom currently being tracked.
+	/// (Note: This is null for `TRACKER_QUEEN` and `TRACKER_HIVE`, as those are accessed through the user's hive datum.)
+	var/datum/weakref/tracking_ref = null
+	/// The 'category' of the atom currently being tracked. (Defaults to `TRACKER_QUEEN`)
+	var/tracker_type = TRACKER_QUEEN
 
 /atom/movable/screen/queen_locator/clicked(mob/living/carbon/xenomorph/user, mods)
 	if(!istype(user))
 		return FALSE
 	if(mods["shift"])
 		var/area/current_area = get_area(user)
-		to_chat(user, SPAN_NOTICE("You are currently at: <b>[current_area.name]</b>."))
+		to_chat(user, SPAN_NOTICE("We are currently at: <b>[current_area.name]</b>."))
 		return
 	if(!user.hive)
-		to_chat(user, SPAN_WARNING("You don't belong to a hive!"))
+		to_chat(user, SPAN_WARNING("We don't belong to a hive!"))
 		return FALSE
 	if(mods["alt"])
 		var/list/options = list()
 		if(user.hive.living_xeno_queen)
-			options["Queen"] = TRACKER_QUEEN
+			// Don't need weakrefs to this or the hive core, since there's only one possible target.
+			options["Queen"] = list(null, TRACKER_QUEEN)
+
 		if(user.hive.hive_location)
-			options["Hive Core"] = TRACKER_HIVE
-		var/xeno_leader_index = 1
-		for(var/xeno in user.hive.xeno_leader_list)
-			var/mob/living/carbon/xenomorph/xeno_lead = user.hive.xeno_leader_list[xeno_leader_index]
-			if(xeno_lead)
-				options["Xeno Leader [xeno_lead]"] = "[xeno_leader_index]"
-			xeno_leader_index++
-		var/selected = tgui_input_list(user, "Select what you want the locator to track.", "Locator Options", options)
+			options["Hive Core"] = list(null, TRACKER_HIVE)
+
+		for(var/mob/living/carbon/xenomorph/leader in user.hive.xeno_leader_list)
+			options["Xeno Leader [leader]"] = list(leader, TRACKER_LEADER)
+
+		var/list/sorted_tunnels = sort_list_dist(user.hive.tunnels, get_turf(user))
+		for(var/obj/structure/tunnel/tunnel as anything in sorted_tunnels)
+			options["Tunnel [tunnel.tunnel_desc]"] = list(tunnel, TRACKER_TUNNEL)
+
+		var/list/selected = tgui_input_list(user, "Select what you want the locator to track.", "Locator Options", options)
 		if(selected)
-			track_state = options[selected]
+			var/selected_data = options[selected]
+			tracking_ref = WEAKREF(selected_data[1]) // Weakref to the tracked atom (or null)
+			tracker_type = selected_data[2] // Tracker category
 		return
+
 	if(!user.hive.living_xeno_queen)
-		to_chat(user, SPAN_WARNING("Your hive doesn't have a living queen!"))
+		to_chat(user, SPAN_WARNING("Our hive doesn't have a living queen!"))
 		return FALSE
-	if(user.burrow || user.is_mob_incapacitated() || user.buckled)
+	if(HAS_TRAIT(user, TRAIT_ABILITY_BURROWED) || user.is_mob_incapacitated() || user.buckled)
 		return FALSE
 	user.overwatch(user.hive.living_xeno_queen)
+
+// Reset to the defaults
+/atom/movable/screen/queen_locator/proc/reset_tracking()
+	icon_state = "trackoff"
+	tracking_ref = null
+	tracker_type = TRACKER_QUEEN
 
 /atom/movable/screen/xenonightvision
 	icon = 'icons/mob/hud/alien_standard.dmi'
@@ -715,10 +604,10 @@
 	if(user && user.hud_used)
 		if(user.hud_used.inventory_shown)
 			user.hud_used.inventory_shown = 0
-			user.client.screen -= user.hud_used.toggleable_inventory
+			user.client.remove_from_screen(user.hud_used.toggleable_inventory)
 		else
 			user.hud_used.inventory_shown = 1
-			user.client.screen += user.hud_used.toggleable_inventory
+			user.client.add_to_screen(user.hud_used.toggleable_inventory)
 
 		user.hud_used.hidden_inventory_update()
 	return 1
@@ -746,3 +635,7 @@
 /atom/movable/screen/rotate/alt
 	dir = WEST
 	rotate_amount = -90
+
+/atom/movable/screen/vulture_scope // The part of the vulture's scope that drifts over time
+	icon_state = "vulture_unsteady"
+	screen_loc = "CENTER,CENTER"

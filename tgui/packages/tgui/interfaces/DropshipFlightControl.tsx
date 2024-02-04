@@ -18,16 +18,17 @@ interface DropshipNavigationProps extends NavigationProps {
   door_status: Array<DoorStatus>;
   has_flight_optimisation?: 0 | 1;
   is_flight_optimised?: 0 | 1;
-  flight_configuration: 'flyby' | 'ferry';
   can_fly_by?: 0 | 1;
   can_set_automated?: 0 | 1;
   primary_lz?: string;
   automated_control: AutomatedControl;
   has_flyby_skill: 0 | 1;
+
+  playing_launch_announcement_alarm: boolean;
 }
 
-const DropshipDoorControl = (_, context) => {
-  const { data, act } = useBackend<DropshipNavigationProps>(context);
+const DropshipDoorControl = () => {
+  const { data, act } = useBackend<DropshipNavigationProps>();
   const in_flight =
     data.shuttle_mode === 'called' || data.shuttle_mode === 'pre-arrival';
   const disable_door_controls = in_flight;
@@ -43,7 +44,10 @@ const DropshipDoorControl = (_, context) => {
               <Button
                 disabled={disable_door_controls}
                 onClick={() =>
-                  act('door-control', { interaction: 'lock', location: 'all' })
+                  act('door-control', {
+                    interaction: 'force-lock',
+                    location: 'all',
+                  })
                 }
                 icon="triangle-exclamation">
                 Lockdown
@@ -77,7 +81,7 @@ const DropshipDoorControl = (_, context) => {
                     <Button
                       onClick={() =>
                         act('door-control', {
-                          interaction: 'lock',
+                          interaction: 'force-lock',
                           location: x.id,
                         })
                       }
@@ -107,16 +111,15 @@ const DropshipDoorControl = (_, context) => {
   );
 };
 
-export const DropshipDestinationSelection = (_, context) => {
-  const { data, act } = useBackend<DropshipNavigationProps>(context);
+export const DropshipDestinationSelection = () => {
+  const { data, act } = useBackend<DropshipNavigationProps>();
   const [siteselection, setSiteSelection] = useSharedState<string | undefined>(
-    context,
     'target_site',
     undefined
   );
   return (
     <Section
-      title="Ferry Controls"
+      title="Flight Controls"
       buttons={
         <>
           <CancelLaunchButton />
@@ -138,15 +141,15 @@ export const DropshipDestinationSelection = (_, context) => {
 };
 
 interface DestinationProps {
-  options: DockingPort[];
-  onClick: (value: string) => void;
-  selected?: string;
-  applyFilter?: boolean;
-  availableOnly?: boolean;
+  readonly options: DockingPort[];
+  readonly onClick: (value: string) => void;
+  readonly selected?: string;
+  readonly applyFilter?: boolean;
+  readonly availableOnly?: boolean;
 }
 
-const DestinationSelector = (props: DestinationProps, context) => {
-  const { data } = useBackend<DropshipNavigationProps>(context);
+const DestinationSelector = (props: DestinationProps) => {
+  const { data } = useBackend<DropshipNavigationProps>();
   return (
     <>
       {props.options
@@ -182,43 +185,8 @@ const DestinationSelector = (props: DestinationProps, context) => {
   );
 };
 
-const FlybyControl = (props, context) => {
-  const { act, data } = useBackend<DropshipNavigationProps>(context);
-  return (
-    <Section
-      title="Flight Controls"
-      className="flybyControl"
-      buttons={
-        <>
-          {data.flight_configuration === 'flyby' && (
-            <Button icon="road" onClick={() => act('set-ferry')}>
-              Set ferry
-            </Button>
-          )}
-          {data.has_flyby_skill === 1 && data.flight_configuration === 'ferry' && (
-            <Button icon="jet-fighter" onClick={() => act('set-flyby')}>
-              Set flyby
-            </Button>
-          )}
-          {data.has_flyby_skill === 1 && data.shuttle_mode === 'called' && (
-            <Button onClick={() => act('cancel-flyby')}>cancel flyby</Button>
-          )}
-          {data.has_flyby_skill === 1 && data.shuttle_mode === 'idle' && (
-            <Button
-              icon="rocket"
-              disabled={data.flight_configuration === 'ferry'}
-              onClick={() => act('move')}>
-              Launch
-            </Button>
-          )}
-        </>
-      }
-    />
-  );
-};
-
-export const TouchdownCooldown = (_, context) => {
-  const { data } = useBackend<NavigationProps>(context);
+export const TouchdownCooldown = () => {
+  const { data } = useBackend<NavigationProps>();
   return (
     <Section title={`Final Approach: ${data.target_destination}`}>
       <div className="InFlightCountdown">
@@ -241,13 +209,12 @@ export const TouchdownCooldown = (_, context) => {
   );
 };
 
-const AutopilotConfig = (props, context) => {
-  const { data, act } = useBackend<DropshipNavigationProps>(context);
+const AutopilotConfig = (props) => {
+  const { data, act } = useBackend<DropshipNavigationProps>();
   const [automatedHangar, setAutomatedHangar] = useSharedState<
     string | undefined
-  >(context, 'autopilot_hangar', undefined);
+  >('autopilot_hangar', undefined);
   const [automatedLZ, setAutomatedLZ] = useSharedState<string | undefined>(
-    context,
     'autopilot_groundside',
     undefined
   );
@@ -312,19 +279,58 @@ const AutopilotConfig = (props, context) => {
   );
 };
 
-const RenderScreen = (props, context) => {
-  const { data } = useBackend<DropshipNavigationProps>(context);
+const StopLaunchAnnouncementAlarm = () => {
+  const { act } = useBackend<NavigationProps>();
+  return (
+    <Button
+      icon="ban"
+      onClick={() => {
+        act('stop_playing_launch_announcement_alarm');
+      }}>
+      Stop Alarm
+    </Button>
+  );
+};
+
+const PlayLaunchAnnouncementAlarm = () => {
+  const { act } = useBackend<NavigationProps>();
+  return (
+    <Button
+      icon="rocket"
+      onClick={() => {
+        act('play_launch_announcement_alarm');
+      }}>
+      Start Alarm
+    </Button>
+  );
+};
+
+const LaunchAnnouncementAlarm = () => {
+  const { data, act } = useBackend<DropshipNavigationProps>();
+  const [siteselection, setSiteSelection] = useSharedState<string | undefined>(
+    'target_site',
+    undefined
+  );
+  return (
+    <Section
+      title="Launch Announcement Alarm"
+      buttons={
+        !data.playing_launch_announcement_alarm ? (
+          <PlayLaunchAnnouncementAlarm />
+        ) : (
+          <StopLaunchAnnouncementAlarm />
+        )
+      }
+    />
+  );
+};
+
+const RenderScreen = (props) => {
+  const { data } = useBackend<DropshipNavigationProps>();
   return (
     <>
       {data.can_set_automated === 1 && <AutopilotConfig />}
-      {data.can_fly_by === 1 &&
-        (data.shuttle_mode === 'idle' || data.shuttle_mode === 'called') && (
-          <FlybyControl />
-        )}
-      {data.shuttle_mode === 'idle' &&
-        data.flight_configuration !== 'flyby' && (
-          <DropshipDestinationSelection />
-        )}
+      {data.shuttle_mode === 'idle' && <DropshipDestinationSelection />}
       {data.shuttle_mode === 'igniting' && <LaunchCountdown />}
       {data.shuttle_mode === 'pre-arrival' && <TouchdownCooldown />}
       {data.shuttle_mode === 'recharging' && <ShuttleRecharge />}
@@ -335,12 +341,13 @@ const RenderScreen = (props, context) => {
         <DropshipDestinationSelection />
       )}
       {data.door_status.length > 0 && <DropshipDoorControl />}
+      {<LaunchAnnouncementAlarm />}
     </>
   );
 };
 
-export const DropshipFlightControl = (props, context) => {
-  const { data } = useBackend<DropshipNavigationProps>(context);
+export const DropshipFlightControl = (props) => {
+  const { data } = useBackend<DropshipNavigationProps>();
   return (
     <Window theme="crtgreen" height={500} width={700}>
       <Window.Content className="NavigationMenu">

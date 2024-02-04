@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - imageadd: "Changed green fire sprites to work better with lights"

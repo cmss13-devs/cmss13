@@ -11,7 +11,7 @@
 	w_class = SIZE_SMALL
 	item_state = "gas_alt"
 	gas_transfer_coefficient = 0.01
-	permeability_coefficient = 0.01
+	permeability_coefficient = 0.9
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -145,3 +145,11 @@
 	unacidable = TRUE
 // flags_item = NODROP|DELONDROP
 	flags_inventory = CANTSTRIP|COVEREYES|COVERMOUTH|ALLOWINTERNALS|ALLOWREBREATH|BLOCKGASEFFECT|ALLOWCPR|BLOCKSHARPOBJ
+
+//=ROYAL MARINES=\\
+
+/obj/item/clothing/mask/gas/pmc/royal_marine
+	name = "\improper L7 gasmask"
+	desc = "The L7 Gasmask used by members of the three world empires royal marines commando."
+	icon_state = "rmc_mask"
+	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE

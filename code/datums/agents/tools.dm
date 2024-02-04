@@ -7,28 +7,28 @@
 	req_access = list()
 	req_role = null
 	listed_products = list(
-		list("<h2>WEAPONS</h2>", -1, null, null, null),
+		list("WEAPONS", 0, null, null, null),
 		list("Configured Stunbaton", 25, /obj/item/weapon/baton/antag, "white", "A stun baton with more charge, tuned to work only for agents."),
 		list("Tranquilizer Gun", 25, /obj/item/weapon/gun/pistol/tranquilizer, "white", "A tranquilizer gun. Comes with 5 darts. Deals no damage, knockout guaranteed."),
 		list("Chloroform Cloth", 18, /obj/item/weapon/chloroform, "white", "A cloth dosed with chloroform. Has 8 effective uses and can only be used whilst behind a target. You must be in disarm intent to use."),
 
-		list("<h2>ONE-USE TOOLS</h2>", -1, null, null, null),
+		list("ONE-USE TOOLS", 0, null, null, null),
 		list("Experimental Stimulant Pills", 20, /obj/item/storage/pill_bottle/ultrazine/antag, "white", "Useful stimulants that allow you to resist stamina damage. Lasts for approximately 2 minutes. Take only 1 pill. Use with care."),
 		list("Decoy", 14, /obj/item/explosive/grenade/decoy, "white", "A decoy grenade. Emits a loud explosion that can be heard from very far away, keep away from ears. Can be used 3 times."),
 
-		list("<h2>UTILITY</h2>", -1, null, null, null),
+		list("UTILITY", 0, null, null, null),
 		list("Security Access Tuner v2", 25, /obj/item/device/multitool/antag, "white", "An upgraded access tuner, able to rapidly hack various machinery. Disguised as a regular multitool"),
 		list("OoI Tracker", 20, /obj/item/device/tracker, "white", "A tracker that tracks different objects of interest in a nearby range."),
 
-		list("<h2>KITS</h2>", -1, null, null, null),
+		list("KITS", 0, null, null, null),
 		list("Badass Kit", 12, /obj/item/storage/box/badass_kit, "white", "Contains MP private comms encryption key, for snooping into enemy communications and sunglasses that protect you from flashbangs"),
 		list("Tools Kit", 15, /obj/item/storage/toolbox/antag, "white", "A toolbox containing general tools and an engineering pamphlet to help you break into places of interest."),
 		list("Hacking Kit", 15, /obj/item/storage/box/antag_signaller, "white", "A box containing a screwdriver, a multi-tool and an engineering pamphlet, as well as 5 signallers to help you hack doors."),
 
-		list("<h2>TRANSFER POINTS</h2>", -1, null, null, "A method of transferring points between agents."),
-		list("1 point", 1, /obj/item/stack/points/p1, "white", null),
-		list("5 points", 5, /obj/item/stack/points/p5, "white", null),
-		list("20 points", 20, /obj/item/stack/points/p20, "white", null),
+		list("TRANSFER POINTS", 0, null, null, null),
+		list("1 point", 1, /obj/item/stack/points/p1, "white", "A method of transferring points between agents."),
+		list("5 points", 5, /obj/item/stack/points/p5, "white", "A method of transferring points between agents."),
+		list("20 points", 20, /obj/item/stack/points/p20, "white", "A method of transferring points between agents."),
 	)
 
 	points = 40

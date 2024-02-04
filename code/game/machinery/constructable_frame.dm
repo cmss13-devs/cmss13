@@ -114,7 +114,7 @@
 				A.amount = 5
 
 		if(CONSTRUCTION_STATE_FINISHED)
-			if(istype(P, /obj/item/tool/crowbar))
+			if(HAS_TRAIT(P, TRAIT_TOOL_CROWBAR))
 				if(!skillcheck(user, SKILL_ENGINEER, required_dismantle_skill))
 					to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
 					return

@@ -176,8 +176,24 @@
 			SPAN_NOTICE("[user] clamps bleeders in your [parse_zone(target_zone)]."),
 			SPAN_NOTICE("[user] clamps bleeders in [target]'s [parse_zone(target_zone)]."))
 
-	surgery.affected_limb.remove_all_bleeding(TRUE, FALSE)
 	log_interact(user, target, "[key_name(user)] clamped bleeders in [key_name(target)]'s [surgery.affected_limb.display_name], possibly ending [surgery].")
+
+	var/surface_modifier = target.buckled?.surgery_duration_multiplier
+	if(!surface_modifier)
+		surface_modifier = SURGERY_SURFACE_MULT_AWFUL
+		for(var/obj/surface in get_turf(target))
+			if(surface_modifier > surface.surgery_duration_multiplier)
+				surface_modifier = surface.surgery_duration_multiplier
+
+	if(surface_modifier == SURGERY_SURFACE_MULT_IDEAL)
+		surgery.affected_limb.remove_all_bleeding(TRUE, FALSE)
+		return
+
+	var/bleeding_multiplier_bad_surface = surface_modifier - 1
+	for(var/datum/effects/bleeding/external/external_bleed in surgery.affected_limb.bleeding_effects_list)
+		external_bleed.blood_loss *= bleeding_multiplier_bad_surface
+		to_chat(user, SPAN_WARNING("Stopping blood loss is less effective in these conditions."))
+
 
 /datum/surgery_step/clamp_bleeders_step/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
@@ -374,7 +390,7 @@
 		/obj/item/tool/surgery/circular_saw = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/attachable/bayonet = SURGERY_TOOL_MULT_SUBOPTIMAL,
 		/obj/item/weapon/twohanded/fireaxe = SURGERY_TOOL_MULT_SUBSTITUTE,
-		/obj/item/weapon/claymore/mercsword/machete = SURGERY_TOOL_MULT_SUBSTITUTE,
+		/obj/item/weapon/sword/machete = SURGERY_TOOL_MULT_SUBSTITUTE,
 		/obj/item/tool/hatchet = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
 		/obj/item/tool/kitchen/knife/butcher = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
 	)
@@ -557,6 +573,24 @@
 	success_sound = 'sound/handling/bandage.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 
+//Use materials to mend bones, same as /datum/surgery_step/mend_bones
+/datum/surgery_step/mend_encased/extra_checks(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, repeating, skipped)
+	. = ..()
+	if(istype(tool, /obj/item/tool/surgery/bonegel)) //If bone gel, use some of the gel
+		var/obj/item/tool/surgery/bonegel/gel = tool
+		if(!gel.use_gel(gel.mend_bones_fix_cost))
+			to_chat(user, SPAN_BOLDWARNING("[gel] is empty!"))
+			return FALSE
+
+	else //Otherwise, use metal rods
+		var/obj/item/stack/rods/rods = user.get_inactive_hand()
+		if(!istype(rods))
+			to_chat(user, SPAN_BOLDWARNING("You need metal rods in your offhand to mend [target]'s [surgery.affected_limb.display_name] with [tool]."))
+			return FALSE
+		if(!rods.use(2)) //Refunded on failure
+			to_chat(user, SPAN_BOLDWARNING("You need more metal rods to mend [target]'s [surgery.affected_limb.display_name] with [tool]."))
+			return FALSE
+
 /datum/surgery_step/mend_encased/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(tool_type == /obj/item/tool/surgery/bonegel)
 		user.affected_message(target,
@@ -610,6 +644,11 @@
 	target.apply_damage(10, BRUTE, target_zone)
 	log_interact(user, target, "[key_name(user)] failed to mend [key_name(target)]'s [surgery.affected_limb.encased].")
 
+	if(tool_type != /obj/item/tool/surgery/bonegel)
+		to_chat(user, SPAN_NOTICE("The metal rods used on [target]'s [surgery.affected_limb.display_name] fall loose from their [surgery.affected_limb]."))
+		var/obj/item/stack/rods/rods = new /obj/item/stack/rods(get_turf(target))
+		rods.amount = 2 //Refund 2 rods on failure
+		rods.update_icon()
 
 /*Proof of concept. Functions but does nothing useful.
 If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointless processing to have live without any surgeries for it to use.*/

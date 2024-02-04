@@ -62,12 +62,12 @@
 		//remove complex/simple -u- glide final_syllables
 		if(initial.initial_sound_flags & SIMPLE_U_ONLY)
 			for(var/datum/chinese_sound/final_syllable/final_syllable as anything in possible_final_syllables)
-				if(initial(initial(final_syllable.vowel_class)) == VOWEL_CLASS_BACK_CLOSE)
+				if(initial(final_syllable.vowel_class) == VOWEL_CLASS_BACK_CLOSE)
 					possible_final_syllables -= final_syllable
 			possible_final_syllables += /datum/chinese_sound/final_syllable/u
 		else if(initial.initial_sound_flags & HALF_U)
 			for(var/datum/chinese_sound/final_syllable/final_syllable as anything in possible_final_syllables)
-				if(initial(initial(final_syllable.vowel_class)) == VOWEL_CLASS_BACK_CLOSE && initial(final_syllable.final_syllable_sound_flags) & U_GROUP_FULL)
+				if(initial(final_syllable.vowel_class) == VOWEL_CLASS_BACK_CLOSE && initial(final_syllable.final_syllable_sound_flags) & U_GROUP_FULL)
 					possible_final_syllables -= final_syllable
 
 		//check for if the sound is alveolo-palatal or sibilant/retroflex - then remove or keep front close vowels accordingly

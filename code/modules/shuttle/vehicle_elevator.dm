@@ -20,10 +20,10 @@
 /obj/docking_port/mobile/vehicle_elevator/register()
 	. = ..()
 	SSshuttle.vehicle_elevator = src
-	for(var/obj/structure/machinery/gear/G in machines)
+	for(var/obj/structure/machinery/gear/G in GLOB.machines)
 		if(G.id == "vehicle_elevator_gears")
 			gears += G
-	for(var/obj/structure/machinery/door/poddoor/railing/R in machines)
+	for(var/obj/structure/machinery/door/poddoor/railing/R in GLOB.machines)
 		if(R.id == "vehicle_elevator_railing")
 			railings += R
 

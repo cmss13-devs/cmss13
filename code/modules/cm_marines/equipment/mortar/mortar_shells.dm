@@ -6,11 +6,9 @@
 	w_class = SIZE_HUGE
 	flags_atom = FPRINT|CONDUCT
 	var/datum/cause_data/cause_data
+	ground_offset_x = 7
+	ground_offset_y = 6
 
-/obj/item/mortar_shell/Initialize(mapload, ...)
-	. = ..()
-	pixel_y = rand(-6, 6)
-	pixel_x = rand(-7, 7)
 
 /obj/item/mortar_shell/Destroy()
 	. = ..()

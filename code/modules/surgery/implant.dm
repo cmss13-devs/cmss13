@@ -106,6 +106,8 @@
 	if(.)
 		if(is_surgery_tool(tool)) //Make sure you still have all your tools after a surgery.
 			return FALSE
+		if(HAS_TRAIT(tool, TRAIT_ITEM_NOT_IMPLANTABLE))
+			return FALSE
 		if(tool.w_class > get_max_wclass(surgery))
 			to_chat(user, SPAN_WARNING("[tool] is too big to implant into [surgery.target]'s [surgery.affected_limb.cavity]!"))
 			return FALSE

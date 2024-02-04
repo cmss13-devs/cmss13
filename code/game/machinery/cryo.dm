@@ -2,6 +2,7 @@
 
 /obj/structure/machinery/cryo_cell
 	name = "cryo cell"
+	desc = "A donation from the old A.W. project, using cryogenic technology. It slowly heals whoever is inside the tube."
 	icon = 'icons/obj/structures/machinery/cryogenics2.dmi'
 	icon_state = "cell"
 	density = FALSE

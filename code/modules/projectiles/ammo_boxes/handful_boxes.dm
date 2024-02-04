@@ -48,6 +48,15 @@
 /obj/item/ammo_box/magazine/shotgun/incendiary/empty
 	empty = TRUE
 
+/obj/item/ammo_box/magazine/shotgun/incendiarybuck
+	name = "\improper shotgun shell box (Incendiary buckshot x 100)"
+	icon_state = "base_incbuck"
+	overlay_content = "_incenbuck"
+	magazine_type = /obj/item/ammo_magazine/shotgun/incendiarybuck
+
+/obj/item/ammo_box/magazine/shotgun/incendiarybuck/empty
+	empty = TRUE
+
 /obj/item/ammo_box/magazine/shotgun/beanbag
 	name = "\improper shotgun shell box (Beanbag x 100)"
 	icon_state = "base_bean"
@@ -57,6 +66,20 @@
 
 
 /obj/item/ammo_box/magazine/shotgun/beanbag/empty
+	empty = TRUE
+
+
+//-----------------------16 GAUGE SHOTGUN SHELL BOXES-----------------------
+
+/obj/item/ammo_box/magazine/shotgun/light/breaching
+	name = "\improper 16-gauge shotgun shell box (Breaching x 120)"
+	icon_state = "base_breach"
+	overlay_content = "_breach"
+	magazine_type = /obj/item/ammo_magazine/shotgun/light/breaching
+	num_of_magazines = 120 //10 full mag reloads.
+	can_explode = FALSE
+
+/obj/item/ammo_box/magazine/shotgun/light/breaching/empty
 	empty = TRUE
 
 //-----------------------R4T Lever-action rifle handfuls box-----------------------

@@ -1,13 +1,5 @@
 {
     "recommendations": [
-        "gbasood.byond-dm-language-support",
-        "platymuus.dm-langclient",
-        "arcanis.vscode-zipfs",
-        "EditorConfig.EditorConfig",
-        "stylemistake.auto-comment-blocks",
-        "anturk.dmi-editor",
-        "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode",
-        "donkie.vscode-tgstation-test-adapter"
+        "cmss13-devs.cm-extpack"
     ]
 }

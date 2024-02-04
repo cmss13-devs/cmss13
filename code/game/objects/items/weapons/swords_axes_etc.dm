@@ -45,7 +45,7 @@
 	w_class = SIZE_SMALL
 	force = MELEE_FORCE_WEAK
 	var/on = 0
-	var/stunforce = 60
+	var/stun_force = 10
 
 /obj/item/weapon/telebaton/attack(mob/living/carbon/human/target, mob/living/user)
 	if(!istype(target) || !on)
@@ -67,6 +67,7 @@
 		item_state = "telebaton_1"
 		w_class = SIZE_MEDIUM
 		force = MELEE_FORCE_VERY_STRONG
+		stun_force = 40
 		attack_verb = list("smacked", "struck", "slapped", "beat")
 	else
 		user.visible_message(SPAN_NOTICE("Using a smooth, practiced movement, [user] collapses \his [src]."),\
@@ -75,7 +76,8 @@
 		icon_state = "telebaton_0"
 		item_state = "telebaton_0"
 		w_class = SIZE_SMALL
-		force = MELEE_FORCE_WEAK//not so robust now
+		force = MELEE_FORCE_WEAK
+		stun_force = initial(stun_force)
 		attack_verb = list("hit", "punched")
 
 	if(istype(user,/mob/living/carbon/human))
@@ -100,8 +102,17 @@
 	user.flick_attack_overlay(target, "punch")
 	log_interact(user, target, "[key_name(user)] stunned [key_name(target)] with \the [src]")
 	// Hit 'em
+	var/final_stun_force = stun_force
+	var/datum/skills/user_skills = user.skills
+	if(user_skills)
+		switch(user_skills.get_skill_level(SKILL_POLICE))
+			if(SKILL_POLICE_FLASH)
+				final_stun_force *= 1.5
+			if(SKILL_POLICE_SKILLED)
+				final_stun_force *= 3
+
 	var/target_zone = check_zone(user.zone_selected)
-	target.apply_stamina_damage(stunforce, target_zone, ARMOR_MELEE)
+	target.apply_stamina_damage(final_stun_force, target_zone, ARMOR_MELEE)
 	if(target.stamina.current_stamina <= 0)
 		user.visible_message(SPAN_DANGER("[user] knocks down [target] with \the [src]!"),\
 							SPAN_WARNING("You knock down [target] with \the [src]!"))

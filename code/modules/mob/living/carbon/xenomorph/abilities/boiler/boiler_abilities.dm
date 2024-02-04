@@ -13,7 +13,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_acid_lance
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	xeno_cooldown = 190
+	xeno_cooldown = 19 SECONDS
 
 	// Config
 	var/stack_time = 10
@@ -52,7 +52,7 @@
 	name = "Bombard"
 	ability_name = "Bombard"
 	action_icon_state = "bombard"
-	cooldown_message = "Your belly fills with another gas glob. You are are ready to bombard again."
+	cooldown_message = "Our belly fills with another gas glob. We are ready to bombard again."
 	sound_to_play = 'sound/effects/blobattack.ogg'
 	aim_turf = TRUE
 	/// These are actions that will be placed on cooldown for the cooldown_duration when activates. Added acid shroud for now because it can be abused
@@ -68,7 +68,7 @@
 	ability_name = "Acid Shroud"
 	action_icon_state = "acid_shroud"
 	action_type = XENO_ACTION_ACTIVATE
-	ability_primacy = XENO_PRIMARY_ACTION_4
+	ability_primacy = XENO_PRIMARY_ACTION_5
 	plasma_cost = 10
 	macro_path = /datum/action/xeno_action/verb/verb_acid_shroud
 	/// Allows the sound to play. Flipped to false when sound is triggered and true after a timer. This prevents soundspam
@@ -86,30 +86,6 @@
 	/// Duration for the cooldown of abilities affected by acid shroud
 	var/cooldown_duration = 30 SECONDS
 
-/datum/action/xeno_action/onclick/dump_acid
-	name = "Dump Acid"
-	ability_name = "dump acid"
-	action_icon_state = "dump_acid"
-	plasma_cost = 10
-	macro_path = /datum/action/xeno_action/verb/verb_dump_acid
-	action_type = XENO_ACTION_ACTIVATE
-	ability_primacy = XENO_PRIMARY_ACTION_4
-	xeno_cooldown = 34 SECONDS
-
-	var/buffs_duration = 6 SECONDS
-	var/cooldown_duration = 30 SECONDS
-
-	var/speed_buff_amount = 0.5
-	var/movespeed_buff_applied = FALSE
-
-	/// List of types of actions to place on 20-second CD,if you ever want to subtype this for a strain or whatever, just change this var on the subtype
-	var/action_types_to_cd = list(
-		/datum/action/xeno_action/activable/xeno_spit/bombard,
-		/datum/action/xeno_action/onclick/dump_acid,
-		/datum/action/xeno_action/onclick/toggle_long_range/boiler,
-		/datum/action/xeno_action/activable/spray_acid/boiler,
-	)
-
 //////////////////////////// Trapper boiler abilities
 
 /datum/action/xeno_action/activable/boiler_trap
@@ -120,7 +96,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_boiler_trap
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	xeno_cooldown = 205
+	xeno_cooldown = 20.5 SECONDS
 
 	/// Config
 	var/trap_ttl = 100
@@ -136,7 +112,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_acid_mine
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	xeno_cooldown = 55
+	xeno_cooldown = 5.5 SECONDS
 
 	var/empowered = FALSE
 
@@ -151,7 +127,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_acid_shotgun
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	xeno_cooldown = 130
+	xeno_cooldown = 13 SECONDS
 
 	var/ammo_type = /datum/ammo/xeno/acid_shotgun
 

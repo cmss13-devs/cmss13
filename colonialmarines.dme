@@ -711,6 +711,7 @@
 #include "code\datums\weather\weather_map_holders\sorokyne.dm"
 #include "code\datums\xeno_shields\xeno_shield.dm"
 #include "code\datums\xeno_shields\shield_types\crusher_shield.dm"
+#include "code\datums\xeno_shields\shield_types\destroyer_shield.dm"
 #include "code\datums\xeno_shields\shield_types\hedgehog_shield.dm"
 #include "code\datums\xeno_shields\shield_types\vanguard_shield.dm"
 #include "code\defines\procs\admin.dm"

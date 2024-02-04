@@ -19,9 +19,10 @@
 	center_of_mass = "x=15;y=15"
 
 //testing trying to port TGMC way of init reagent in snack
+// /datum/reagent/consumable/nutriment
+// is changed to /datum/reagent/nutriment
 
-
-/obj/item/reagent_containers/food/snacks/create_reagents_snack(max_vol, new_flags, list/init_reagents, data)
+/obj/item/reagent_container/food/snacks/create_reagents_snack(max_vol, new_flags, list/init_reagents, data)
 	if(!length(init_reagents))
 		return ..()
 	if(reagents)
@@ -30,16 +31,19 @@
 	reagents.my_atom = WEAKREF(src)
 	for(var/rid in init_reagents)
 		var/amount = list_reagents[rid]
-		if(rid == /datum/reagent/consumable/nutriment)
+		if(rid == /datum/reagent/nutriment)
 			reagents.add_reagent(rid, amount())
 		else
 			reagents.add_reagent(rid, amount, data)
 
-/obj/item/reagent_containers/Initialize(mapload)
+// for some reason in TGMC reagent_container is called reagent_containers
+// changing it in bellow keeping the verb seperate for now...
+
+/obj/item/reagent_container/Initialize(mapload)
 	. = ..()
 	create_reagents_snack(volume, init_reagent_flags, list_reagents)
 	if(!possible_transfer_amounts)
-		verbs -= /obj/item/reagent_containers/verb/set_APTFT
+		verbs -= /obj/item/reagent_container/verb/set_APTFT_tgmc
 
 
 

@@ -19,7 +19,18 @@
 
 	//part of tgmc port.
 	var/list/list_reagents
-	var/possible_transfer_amounts = list(5,10,15,25,30)
+
+// part of TGMC port
+/obj/item/reagent_container/verb/set_APTFT_tgmc()
+	set name = "Set transfer amount"
+	set category = "Object"
+	set src in view(1)
+
+	var/N = tgui_input_list(usr, "Amount per transfer from this:", "[src]", possible_transfer_amounts)
+	if(!N)
+		return
+
+	amount_per_transfer_from_this = N
 
 /obj/item/reagent_container/Initialize()
 	if(!possible_transfer_amounts)

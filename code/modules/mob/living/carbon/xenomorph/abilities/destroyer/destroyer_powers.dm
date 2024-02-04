@@ -139,6 +139,13 @@
 	var/mob/living/carbon/xenomorph/xeno = owner
 	XENO_ACTION_CHECK(xeno)
 
+	if(!xeno.check_state())
+		return
+	if(!action_cooldown_check())
+		return
+	if(!check_plasma_owner(src.plasma_cost))
+		return
+
 	if(get_dist(owner, target) > range)
 		to_chat(xeno, SPAN_XENONOTICE("We cannot leap that far!"))
 		return
@@ -158,8 +165,15 @@
 		if(istype(jump_turf, /turf/closed))
 			to_chat(xeno, SPAN_XENONOTICE("We don't have a clear path to leap to that location!"))
 			return
+		var/atom/barrier = jump_turf.handle_barriers(A = xeno , pass_flags = (PASS_OVER|PASS_MOB_IS))
+		if(barrier != jump_turf)
+			to_chat(xeno, SPAN_XENONOTICE("There's something blocking us from leaping!"))
+			return
 
 	if(!check_and_use_plasma_owner())
+		to_chat(xeno, SPAN_XENONOTICE("We don't have enough plasma to use [name]."))
+		return
+
 	var/turf/template_turf = get_step(target_turf, SOUTHWEST)
 
 	to_chat(xeno, SPAN_XENONOTICE("Our muscles tense as we prepare ourself for a giant leap."))

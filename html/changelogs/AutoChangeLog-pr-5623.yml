@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - balance: "Reduced how many fire stacks a flaregun shot provides"
-  - balance: "Reduced starshell's damage, but fixed the application of the incend bullet trait."

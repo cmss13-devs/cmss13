@@ -9203,10 +9203,6 @@
 "dYp" = (
 /turf/closed/wall/shiva/ice,
 /area/shiva/interior/bar)
-"dYw" = (
-/obj/structure/machinery/defenses/sentry/premade,
-/turf/open/auto_turf/snow/layer0,
-/area/shiva/exterior/junkyard)
 "dZb" = (
 /obj/structure/closet/secure_closet/guncabinet,
 /obj/structure/machinery/firealarm{
@@ -45631,7 +45627,7 @@ kyD
 tHd
 pDr
 tHd
-dYw
+kyD
 kyD
 kyD
 kyD
@@ -45793,7 +45789,7 @@ tHd
 kyD
 pDr
 kyD
-dYw
+kyD
 kyD
 kyD
 kyD

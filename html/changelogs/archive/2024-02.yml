@@ -61,3 +61,42 @@
 2024-02-03:
   Drathek:
   - ui: Refactored backend for Weapon Stats panel to use spritesheets instead.
+2024-02-04:
+  BadAtThisGame302:
+  - bugfix: fixed the CL jackets/vests/bomber jackets sprites.
+  Drathek:
+  - imageadd: Changed green fire sprites to work better with lights
+  - balance: Reduced how many fire stacks a flaregun shot provides
+  - balance: Reduced starshell's damage, but fixed the application of the incend bullet
+      trait.
+  - balance: Reverted damage changes to tazers and batons.
+  Huffie56:
+  - bugfix: 'revert PR #5553 as it is causing issues with color on atmo pipe.'
+  LTNTS:
+  - imageadd: stamp sprites for TWE, UPP and CLF
+  - code_imp: added TWE, UPP and CLF channels
+  MistChristmas:
+  - maptweak: Add Brig Photocopier
+  Segrain:
+  - bugfix: Some cases of calculations for "time remaining until something" no longer
+      display incorrect results.
+  Stakeyng:
+  - qol: Removes the need to cycle through helmet visors that contain HUD effects
+      that are already active on your character.
+  cuberound:
+  - balance: increases flare pouch storage slots from 8 to 16
+2024-02-05:
+  Drathek:
+  - bugfix: Added more null testing to helmet visors.
+  Poltava:
+  - imageadd: updated intel expedition chestrig sprite
+  SpartanBobby:
+  - maptweak: Fixes the two gauss sentry guns that were boxxed in by a mapper over
+      a year ago on ice 3
+  Warfan1815:
+  - bugfix: Open surgical incisions now show up on a health scanner even if there
+      is nothing else wrong.
+  - bugfix: Open surgical incisions in the head "zones" (mouth and eyes) now show
+      up independently on health scanner
+  cuberound:
+  - balance: increases healing node heal from 10hp every 5 sec to 20 hp every 5 sec

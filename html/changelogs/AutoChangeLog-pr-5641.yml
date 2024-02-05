@@ -1,0 +1,4 @@
+author: "Vicacrov"
+delete-after: True
+changes:
+  - bugfix: "Fixes Defenders staying Fortified in critical state - Fortify now automatically toggles itself off upon the Defender getting critted."

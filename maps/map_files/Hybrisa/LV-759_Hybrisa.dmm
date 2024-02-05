@@ -431,7 +431,7 @@
 /area/lv759/landing_zone_2/ceiling)
 "aeK" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
-	name = "\improper Medical"
+	name = "\improper Hospital Triage"
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white"
@@ -692,7 +692,8 @@
 /area/lv759/power_plant/telecomms)
 "ahB" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
-	dir = 2
+	dir = 2;
+	name = "\improper Hospital Medical Storage"
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white"
@@ -2874,7 +2875,8 @@
 /area/lv759/outdoors/colony_streets/north_west_street)
 "aGD" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic2/autoname{
-	dir = 1
+	dir = 1;
+	name = "\improper Hospital Medical Research"
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -4920,7 +4922,8 @@
 /area/lv759/indoors/weyyu_office/vip)
 "beX" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
-	dir = 2
+	dir = 2;
+	name = "\improper Hospital Lobby"
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white"
@@ -7427,6 +7430,7 @@
 /area/lv759/outdoors)
 "bLe" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+	name = "\improper Hospital Patients Observations";
 	dir = 2
 	},
 /turf/open/floor/prison{
@@ -15156,7 +15160,9 @@
 	},
 /area/lv759/outdoors)
 "dsn" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass/colony,
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
+	name = "\improper Hospital Lobby"
+	},
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean2"
@@ -18484,10 +18490,10 @@
 /area/lv759/indoors/weyyu_office/vip)
 "efJ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
-	name = "\improper Medical"
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+	name = "\improper Hospital"
+	},
 /turf/open/floor/plating,
 /area/lv759/indoors/hospital/east_hallway)
 "efL" = (
@@ -20798,7 +20804,7 @@
 /area/lv759/outdoors/colony_streets/south_east_street)
 "eFF" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
-	name = "\improper Medical"
+	name = "\improper Hospital Lobby"
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white"
@@ -23728,7 +23734,7 @@
 /area/lv759/indoors/spaceport/engineering)
 "fkq" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
-	name = "\improper Observation"
+	name = "\improper Surgery Observation"
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -27064,7 +27070,7 @@
 	dir = 1;
 	name = "\improper A-Block - Colony Operations Centre Airlock"
 	},
-/turf/open/space/basic,
+/turf/open/floor/prison,
 /area/lv759/indoors/bar/recroom)
 "fXf" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -35887,7 +35893,7 @@
 /area/lv759/outdoors)
 "hPq" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
-	name = "\improper Medical"
+	name = "\improper Hospital Triage"
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -35903,10 +35909,10 @@
 	},
 /area/lv759/power_plant/fusion_generators)
 "hPC" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
-	name = "\improper Medical"
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+	name = "\improper Hospital Patients Observations"
+	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white"
 	},
@@ -36380,6 +36386,14 @@
 	icon_state = "wy14"
 	},
 /area/lv759/outdoors)
+"hUP" = (
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
+	name = "\improper Observation Room 1"
+	},
+/turf/open/floor/prison{
+	dir = 10
+	},
+/area/lv759/indoors/hospital/virology)
 "hUY" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/head/hardhat{
@@ -40375,7 +40389,7 @@
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
-/area/lv759/outdoors)
+/area/lv759/landing_zone/landing_zone_3)
 "iPG" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/gibs/robot,
@@ -49213,7 +49227,7 @@
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
-/area/lv759/outdoors)
+/area/lv759/landing_zone/landing_zone_3)
 "kGX" = (
 /obj/structure/curtain/open/shower,
 /obj/effect/decal/strata_decals/grime/grime3{
@@ -49580,6 +49594,14 @@
 	icon_state = "whitered"
 	},
 /area/lv759/indoors/hospital/icu)
+"kKu" = (
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
+	name = "\improper Observation Room 3"
+	},
+/turf/open/floor/prison{
+	dir = 10
+	},
+/area/lv759/indoors/hospital/virology)
 "kKw" = (
 /obj/structure/showcase,
 /turf/open/floor/strata{
@@ -54925,7 +54947,9 @@
 	},
 /area/lv759/outdoors/colony_streets/north_street)
 "lQk" = (
-/obj/structure/machinery/door/airlock/almayer/generic,
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Hospital Intensive Care"
+	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white"
 	},
@@ -55143,7 +55167,7 @@
 /area/lv759/colonial_marshals/press_room)
 "lSD" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
-	name = "\improper CMO's Officer"
+	name = "\improper Observation Room 2"
 	},
 /turf/open/floor/prison{
 	dir = 10
@@ -55962,7 +55986,7 @@
 "mbw" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
-	name = "\improper Medical Office"
+	name = "\improper Hospital Patients Observations"
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white"
@@ -66910,7 +66934,7 @@
 /area/lv759/outdoors/colony_streets/north_east_street)
 "owm" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
-	name = "\improper Observation"
+	name = "\improper Surgery Observation"
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -67122,7 +67146,8 @@
 /area/lv759/outdoors)
 "oyU" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	dir = 2
+	dir = 2;
+	name = "\improper Maintenance Storage"
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/hospital/cryo_room)
@@ -68165,7 +68190,9 @@
 /obj/effect/landmark/objective_landmark/close{
 	layer = 5
 	},
-/turf/open/floor/plating,
+/turf/open/floor/prison{
+	icon_state = "bright_clean2"
+	},
 /area/lv759/indoors/spaceport/cuppajoes)
 "oJC" = (
 /obj/effect/decal/cleanable/dirt,
@@ -68384,6 +68411,7 @@
 /area/lv759/outdoors/colony_streets/south_west_street)
 "oLt" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+	name = "\improper Hospital Triage";
 	dir = 2
 	},
 /turf/open/floor/prison{
@@ -75484,7 +75512,8 @@
 "qlc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	dir = 2
+	dir = 2;
+	name = "\improper Storage Closet"
 	},
 /obj/structure/sign/safety/storage{
 	pixel_x = 32
@@ -75658,7 +75687,9 @@
 	pixel_y = 8
 	},
 /obj/structure/window/reinforced/toughened,
-/turf/open/floor/plating,
+/turf/open/floor/prison{
+	icon_state = "bright_clean2"
+	},
 /area/lv759/indoors/spaceport/cuppajoes)
 "qns" = (
 /obj/structure/largecrate/random/case/small,
@@ -79387,11 +79418,11 @@
 	},
 /area/lv759/landing_zone/landing_zone_4)
 "qYF" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
-	dir = 2;
-	name = "\improper Medical Lobby"
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+	name = "\improper Hospital Triage";
+	dir = 2
+	},
 /turf/open/floor/plating,
 /area/lv759/indoors/hospital/paramedics_garage)
 "qYK" = (
@@ -79689,6 +79720,14 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/hybrisa/tile/cementflat,
 /area/lv759/outdoors)
+"rcf" = (
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
+	name = "\improper Observation Room 4"
+	},
+/turf/open/floor/prison{
+	dir = 10
+	},
+/area/lv759/indoors/hospital/virology)
 "rcj" = (
 /obj/structure/machinery/disposal,
 /turf/open/floor/prison{
@@ -81300,7 +81339,7 @@
 /area/lv759/outdoors/colony_streets/north_west_street)
 "rvo" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
-	name = "\improper Medical"
+	name = "\improper Hospital"
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white"
@@ -81563,7 +81602,8 @@
 /area/lv759/outdoors)
 "rxy" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
-	dir = 2
+	dir = 2;
+	id = "\improper Hospital Power Storage"
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/hospital/maintenance)
@@ -83152,10 +83192,10 @@
 /turf/open/floor/prison,
 /area/lv759/indoors/weymart_backrooms)
 "rLK" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
-	name = "\improper Medical"
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+	name = "\improper Hospital"
+	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white"
 	},
@@ -87785,6 +87825,7 @@
 /area/lv759/outdoors)
 "sKK" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+	name = "\improper Hospital Hallway";
 	dir = 2
 	},
 /turf/open/floor/prison{
@@ -89870,10 +89911,10 @@
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/outdoors)
 "thW" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
-	name = "\improper Medical"
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+	name = "\improper Hospital Hallway"
+	},
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "whitegreen"
@@ -90844,7 +90885,8 @@
 /area/lv759/outdoors/colony_streets/central_streets)
 "tsM" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic2/autoname{
-	dir = 1
+	dir = 1;
+	name = "\improper Hospital Medical Research"
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/hospital/virology)
@@ -94273,7 +94315,7 @@
 /area/lv759/indoors/weyyu_office)
 "uex" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
-	name = "\improper Medical"
+	name = "\improper Hospital Triage"
 	},
 /turf/open/floor/prison{
 	dir = 8;
@@ -101727,6 +101769,15 @@
 	icon_state = "plate"
 	},
 /area/lv759/outdoors)
+"vGv" = (
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
+	dir = 1;
+	name = "\improper Pharmaceutical Development"
+	},
+/turf/open/floor/prison{
+	icon_state = "sterile_white"
+	},
+/area/lv759/indoors/hospital/pharmacy)
 "vGB" = (
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
@@ -106211,7 +106262,7 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/hospital/cryo_room)
 "wCg" = (
-/turf/open/space/basic,
+/turf/open/floor/prison,
 /area/lv759/indoors/bar/recroom)
 "wCh" = (
 /obj/structure/machinery/vending/cigarette/colony,
@@ -106682,7 +106733,7 @@
 /area/lv759/oob)
 "wGJ" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "\improper Lab Maintenance"
+	name = "\improper Hospital"
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/hospital/central_hallway)
@@ -107210,7 +107261,7 @@
 /area/lv759/indoors/weyyu_office/floor)
 "wLU" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
-	name = "\improper Medical"
+	name = "\improper Hospital Hallway"
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -108085,7 +108136,9 @@
 	},
 /area/lv759/power_plant/workers_canteen)
 "wVL" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
+	name = "\improper Morgue"
+	},
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -109533,7 +109586,7 @@
 /area/lv759/outdoors)
 "xln" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "\improper Lab Maintenance"
+	name = "\improper Janitor Closet"
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/hospital/virology)
@@ -110130,7 +110183,7 @@
 /area/lv759/outdoors/colony_streets/central_streets)
 "xrk" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
-	name = "\improper Medical"
+	name = "\improper Hospital Hallway"
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/hospital/east_hallway)
@@ -110314,7 +110367,9 @@
 	},
 /area/lv759/outdoors)
 "xtp" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2/autoname,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2/autoname{
+	name = "\improper Hospital Medical Research"
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/hospital/virology)
 "xtq" = (
@@ -111556,7 +111611,9 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/central_streets)
 "xDI" = (
-/obj/structure/machinery/door/airlock/almayer/generic,
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Hospital Medical Research"
+	},
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "2"
 	},
@@ -112437,10 +112494,14 @@
 	},
 /area/lv759/indoors/spaceport/administration/west)
 "xNK" = (
-/obj/structure/window/framed/colony/reinforced,
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating,
-/area/lv759/indoors/hospital/medical_storage)
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+	name = "\improper Hospital Observation"
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean2"
+	},
+/area/lv759/indoors/hospital/operation)
 "xNM" = (
 /obj/item/trash/cigbutt{
 	pixel_x = -10;
@@ -113534,7 +113595,9 @@
 	pixel_y = 4;
 	pixel_x = 6
 	},
-/turf/open/floor/plating,
+/turf/open/floor/prison{
+	icon_state = "bright_clean2"
+	},
 /area/lv759/indoors/spaceport/cuppajoes)
 "yaE" = (
 /obj/structure/prop/hybrisa/containersextended/blackwyright,
@@ -123407,7 +123470,7 @@ qBM
 otP
 tcR
 cqH
-pzG
+vLr
 iOU
 fNP
 qVH
@@ -125171,7 +125234,7 @@ gSP
 nhW
 hyA
 mnv
-pzG
+vLr
 kGV
 efT
 tnS
@@ -152927,7 +152990,7 @@ oph
 xmL
 vOF
 jrl
-wEQ
+vGv
 fbw
 ced
 ddI
@@ -153179,7 +153242,7 @@ hgC
 hKK
 wsj
 dBD
-hgC
+wEQ
 qBp
 fod
 rBb
@@ -159711,7 +159774,7 @@ biy
 vPl
 rwI
 hDJ
-owm
+xNK
 dVe
 teC
 gAK
@@ -159730,7 +159793,7 @@ qzn
 jwt
 vqI
 thg
-xNK
+tTm
 rMi
 jEy
 wdb
@@ -163250,16 +163313,16 @@ kBk
 ngb
 ngb
 kBk
-lSD
+hUP
 ngb
 kBk
 lSD
 ngb
 kBk
-lSD
+kKu
 ngb
 kBk
-lSD
+rcf
 ngb
 kBk
 kBk

@@ -56,6 +56,8 @@
 		return
 
 	var/internal_reason = tgui_input_text(user, "What's the reason for the ban? This is shown internally, and not displayed in public notes and ban messages. Include as much detail as necessary.", "Permanent Ban", multiline = TRUE, encode = FALSE)
+	if(!internal_reason)
+		return
 
 	var/datum/entity/player/target_entity = target.client?.player_data
 	if(!target_entity)

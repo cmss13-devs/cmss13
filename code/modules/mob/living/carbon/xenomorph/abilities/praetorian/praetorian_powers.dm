@@ -853,9 +853,7 @@
 		targetXeno.visible_message(SPAN_BOLDNOTICE("[X] places its claws on [targetXeno], and its wounds are quickly sealed!")) //marines probably should know if a xeno gets healed
 		X.gain_health(heal_amount*0.5 + bonus_heal*0.5)
 		X.flick_heal_overlay(3 SECONDS, "#00B800")
-		if(X.mutation_type == PRAETORIAN_WARDEN)
-			var/datum/behavior_delegate/praetorian_warden/warden_delegate = X.behavior_delegate
-			warden_delegate.transferred_healing += heal_amount
+		BD.transferred_healing += heal_amount
 		use_plasma = TRUE //it's already hard enough to gauge health without hp showing on the mob
 		targetXeno.flick_heal_overlay(3 SECONDS, "#00B800")//so the visible_message and recovery overlay will warn marines and possibly predators that the xenomorph has been healed!
 

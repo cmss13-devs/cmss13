@@ -219,7 +219,7 @@
 	storage_slots = 4
 
 /obj/item/storage/fancy/cigarettes/trading_card
-	name = "\improper Weyland-Yutani Gold Military Trading Card packet"
+	name = "\improper WeyYu Gold Military Trading Card packet"
 	desc = "Gotta collect 'em all, and smoke 'em all! This fancy military trading card version of Weyland Yutani Gold cigarette packs has one card that is apart of the 3 available 5-card sets."
 	icon_state = "collectpacket"
 	item_state = "collectpacket"
@@ -453,7 +453,7 @@
 // Trading Card Pack
 
 /obj/item/storage/fancy/trading_card
-	name = "pack of Red Weyland Yutani Military Trading Cards"
+	name = "pack of Red WeyYu Military Trading Cards"
 	desc = "A 5 pack of Red Weyland Yutani Military Trading Cards."
 	icon = 'icons/obj/items/playing_cards.dmi'
 	icon_state = "trading_red_pack_closed"
@@ -470,7 +470,7 @@
 
 	. = ..()
 
-	name = "pack of [capitalize(collection_color)] Weyland Yutani Military Trading Cards"
+	name = "pack of [capitalize(collection_color)] WeyYu Military Trading Cards"
 	desc = "A 5 pack of [capitalize(collection_color)] Weyland Yutani Military Trading Cards."
 	icon_state = "trading_[collection_color]_pack_closed"
 

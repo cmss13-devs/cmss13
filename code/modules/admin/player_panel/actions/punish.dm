@@ -88,7 +88,7 @@
 	if(!message)
 		return
 
-	user.cmd_admin_do_stickyban(target.ckey, reason, impacted_ckeys = list(target.ckey), impacted_cids = list(persistent_cid), impacted_ips = list(persistent_ip))
+	user.cmd_admin_do_stickyban(target.ckey, reason, message, impacted_ckeys = list(target.ckey), impacted_cids = list(persistent_cid), impacted_ips = list(persistent_ip))
 	player.add_note("Stickybanned | [message]", FALSE, NOTE_ADMIN, TRUE)
 	player.add_note("Internal reason: [reason]", TRUE, NOTE_ADMIN)
 

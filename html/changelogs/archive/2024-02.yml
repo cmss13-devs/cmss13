@@ -85,3 +85,18 @@
       that are already active on your character.
   cuberound:
   - balance: increases flare pouch storage slots from 8 to 16
+2024-02-05:
+  Drathek:
+  - bugfix: Added more null testing to helmet visors.
+  Poltava:
+  - imageadd: updated intel expedition chestrig sprite
+  SpartanBobby:
+  - maptweak: Fixes the two gauss sentry guns that were boxxed in by a mapper over
+      a year ago on ice 3
+  Warfan1815:
+  - bugfix: Open surgical incisions now show up on a health scanner even if there
+      is nothing else wrong.
+  - bugfix: Open surgical incisions in the head "zones" (mouth and eyes) now show
+      up independently on health scanner
+  cuberound:
+  - balance: increases healing node heal from 10hp every 5 sec to 20 hp every 5 sec

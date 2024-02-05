@@ -1,5 +1,0 @@
-author: "Warfan1815"
-delete-after: True
-changes:
-  - bugfix: "Open surgical incisions now show up on a health scanner even if there is nothing else wrong."
-  - bugfix: "Open surgical incisions in the head \"zones\" (mouth and eyes) now show up independently on health scanner"

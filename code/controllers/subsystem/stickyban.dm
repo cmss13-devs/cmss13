@@ -18,28 +18,13 @@ SUBSYSTEM_DEF(stickyban)
 /datum/controller/subsystem/stickyban/proc/check_for_sticky_ban(ckey, address, computer_id)
 	var/list/stickyban_ids = list()
 
-	var/list/datum/view_record/stickyban_matched_ckey/ckeys = DB_VIEW(/datum/view_record/stickyban_matched_ckey,
-		DB_AND(
-			DB_COMP("ckey", DB_EQUALS, ckey),
-			DB_COMP("whitelisted", DB_EQUALS, FALSE)
-		)
-	)
-
-	for(var/datum/view_record/stickyban_matched_ckey/matched_ckey as anything in ckeys)
+	for(var/datum/view_record/stickyban_matched_ckey/matched_ckey as anything in get_impacted_ckey_records(ckey))
 		stickyban_ids += matched_ckey.linked_stickyban
 
-	var/list/datum/view_record/stickyban_matched_cid/cids = DB_VIEW(/datum/view_record/stickyban_matched_cid,
-		DB_COMP("cid", DB_EQUALS, computer_id)
-	)
-
-	for(var/datum/view_record/stickyban_matched_cid/matched_cid as anything in cids)
+	for(var/datum/view_record/stickyban_matched_cid/matched_cid as anything in get_impacted_cid_records(computer_id))
 		stickyban_ids += matched_cid.linked_stickyban
 
-	var/list/datum/view_record/stickyban_matched_cid/ips = DB_VIEW(/datum/view_record/stickyban_matched_ip,
-		DB_COMP("ip", DB_EQUALS, address)
-	)
-
-	for(var/datum/view_record/stickyban_matched_ip/matched_ip as anything in ips)
+	for(var/datum/view_record/stickyban_matched_ip/matched_ip as anything in get_impacted_ip_records(address))
 		stickyban_ids += matched_ip.linked_stickyban
 
 	if(!length(stickyban_ids))
@@ -184,6 +169,21 @@ SUBSYSTEM_DEF(stickyban)
 	whitelisted_ckey.save()
 
 /**
+ * Returns a [/list] of [/datum/view_record/stickyban_matched_ckey] where the ckey provided has not been
+ * whitelisted from the stickyban, and would be prevented from joining - provided that the stickyban itself
+ * remains active.
+ */
+/datum/controller/subsystem/stickyban/proc/get_impacted_ckey_records(key)
+	key = ckey(key)
+
+	return DB_VIEW(/datum/view_record/stickyban_matched_ckey,
+			DB_AND(
+				DB_COMP("ckey", DB_EQUALS, key),
+				DB_COMP("whitelisted", DB_EQUALS, FALSE)
+			)
+		)
+
+/**
  * Returns a [/list] of [/datum/view_record/stickyban_matched_ckey] which have been manually whitelisted by an admin and  matches the provided existing_ban_id and key.
  */
 /datum/controller/subsystem/stickyban/proc/get_whitelisted_ckey_records(existing_ban_id, key)
@@ -195,6 +195,24 @@ SUBSYSTEM_DEF(stickyban)
 			DB_COMP("ckey", DB_EQUALS, key),
 			DB_COMP("whitelisted", DB_EQUALS, TRUE),
 		)
+	)
+
+/**
+ * Returns a [/list] of [/datum/view_record/stickyban_matched_cid] where the impacted CID matches the CID provided.
+ * Connections matching this CID will be blocked - provided the linked stickyban is active.
+ */
+/datum/controller/subsystem/stickyban/proc/get_impacted_cid_records(cid)
+	return DB_VIEW(/datum/view_record/stickyban_matched_cid,
+			DB_COMP("cid", DB_EQUALS, cid)
+		)
+
+/**
+ * Returns a [/list] of [/datum/view_record/stickyban_matched_ip] where the impacted IP matches the IP provided.
+ * Connections matchin this IP will be blocked - provided the linked stickyban is active.
+ */
+/datum/controller/subsystem/stickyban/proc/get_impacted_ip_records(ip)
+	return DB_VIEW(/datum/view_record/stickyban_matched_ip,
+		DB_COMP("ip", DB_EQUALS, ip)
 	)
 
 /// Legacy import from pager bans to database bans.

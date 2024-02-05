@@ -288,6 +288,23 @@
 			show_browser(owner, english_list(ips), "Stickyban IPs", "stickycips")
 			return
 
+		if(href_list["find_sticky"])
+			var/ckey = ckey(tgui_input_text(owner, "Which CKEY should we attempt to find stickybans for?", "FindABan"))
+			if(!ckey)
+				return
+
+			var/list/datum/view_record/stickyban/stickies = SSstickyban.check_for_sticky_ban(ckey)
+			if(!stickies)
+				to_chat(owner, SPAN_ADMIN("Could not locate any stickbans impacting [ckey]."))
+				return
+
+			var/list/impacting_stickies = list()
+
+			for(var/datum/view_record/stickyban/sticky as anything in stickies)
+				impacting_stickies += sticky.identifier
+
+			to_chat(owner, SPAN_ADMIN("Found the following stickybans for [ckey]: [english_list(impacting_stickies)]"))
+
 		if(!check_rights_for(owner, R_BAN))
 			return
 

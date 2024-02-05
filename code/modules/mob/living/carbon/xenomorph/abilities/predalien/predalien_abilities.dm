@@ -42,7 +42,6 @@
 	xeno_cooldown = 20 SECONDS
 	plasma_cost = 0
 
-
 	// Configurables
 	var/grab_range = 4
 	var/click_miss_cooldown = 15

@@ -96,6 +96,7 @@ You must still listen to the queen.
 <span class='role_body'>|______________________|</span>
 "})
 	emote("roar")
+var/smashing = FALSE
 /datum/behavior_delegate/predalien_base
 	name = "Base Predalien Behavior Delegate"
 

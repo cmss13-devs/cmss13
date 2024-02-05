@@ -281,7 +281,6 @@
 
 	return TRUE
 
-var/smashing = FALSE
 /mob/living/carbon/xenomorph/predalien/stop_pulling()
 	if(isliving(pulling) && smashing)
 		smashing = FALSE // To avoid extreme cases of stopping a lunge then quickly pulling and stopping to pull someone else

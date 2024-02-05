@@ -1,5 +1,5 @@
 /atom/var/langchat_height = 32 // abovetile usually
-/atom/var/langchat_color = COLOR_WHITE
+/atom/var/langchat_color = "#FFFFFF"
 /atom/var/langchat_styles = ""
 
 /mob/living/carbon/xenomorph/langchat_color = "#b491c8"

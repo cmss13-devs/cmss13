@@ -11,3 +11,92 @@
   - rscdel: Removed "security robot module" from robot_module.dm
   - refactor: change the name of Ripley in game to P-1000, gygax to MAX, Durand to
       MOX, Odysseus to Alice to be more in line with the lore.
+2024-02-02:
+  BadAtThisGame302:
+  - rscadd: Replaced the Political Survivor surv name with State Contractor
+  - rscadd: Added a USCMC Recruiter to the Solaris surv pool.
+  - rscadd: Added a USCM Survivor template anycase anyone wants to add USCM Survivors
+      to other maps.
+  - bugfix: Every other surv has no 'Ridge' next to Solaris in their assignments,
+      only the CL. Fixes this.
+  - spellcheck: Embellished the Solaris Ridge announce text, to make it so the Company
+      and more fluff about it's actual role like the wiki states.
+  Diegoflores31:
+  - rscadd: Disabler bolts now deal a little oxygen damage on each hit.
+  - rscadd: Replaces Skill lock system on stunbatons with a high chance of hiting
+      yourself
+  - qol: adds jittery and sway to Stunbaton and Disabler beams
+  Drathek:
+  - balance: Compared to originally, corpsmen now have access to medbay vendors, and
+      chemistry only requires chemistry access.
+  - bugfix: 'Fixed unintended change to medbay vendors access:'
+  Huffie56:
+  - maptweak: added warning stripe bellow doors that didn't have them.
+  - maptweak: Removed a bed sheet in medical to restore the lore of the unknown alpha
+      that stole it.
+  - maptweak: Reconnect the CIC armory to one of the brig door armory allowing them
+      to open it at a distance.
+  InsaneRed:
+  - balance: Oppressor tailstab no longer ignores armor, and it now roots instead
+      of stunning.
+  NervanCatos:
+  - qol: added M3-L Pattern Light Armor to IO Prep
+  SabreML:
+  - bugfix: Fixed lesser drones not being able to flip tables.
+  VileBeggar:
+  - rscadd: Added the XM51 breaching scattergun, available in small quantities as
+      a restricted weapon within Requisitions.
+  blackdragonTOW:
+  - imageadd: altered the turret flag to the UA flag, from generic orange
+  - bugfix: Flag turrets now correct reference the destroyed state
+  harryob:
+  - bugfix: medals should save more reliably
+  hislittlecuzingames:
+  - balance: Nightmare inserts of crashed ships on Solaris (big red) and Desert dam
+      can do surgury in them INSTANCE EDIT
+  mullenpaul:
+  - refactor: camera consoles now use camera manager component
+  private-tristan:
+  - balance: Burrower can no longer spawn as part of the feral xeno ERT
+2024-02-03:
+  Drathek:
+  - ui: Refactored backend for Weapon Stats panel to use spritesheets instead.
+2024-02-04:
+  BadAtThisGame302:
+  - bugfix: fixed the CL jackets/vests/bomber jackets sprites.
+  Drathek:
+  - imageadd: Changed green fire sprites to work better with lights
+  - balance: Reduced how many fire stacks a flaregun shot provides
+  - balance: Reduced starshell's damage, but fixed the application of the incend bullet
+      trait.
+  - balance: Reverted damage changes to tazers and batons.
+  Huffie56:
+  - bugfix: 'revert PR #5553 as it is causing issues with color on atmo pipe.'
+  LTNTS:
+  - imageadd: stamp sprites for TWE, UPP and CLF
+  - code_imp: added TWE, UPP and CLF channels
+  MistChristmas:
+  - maptweak: Add Brig Photocopier
+  Segrain:
+  - bugfix: Some cases of calculations for "time remaining until something" no longer
+      display incorrect results.
+  Stakeyng:
+  - qol: Removes the need to cycle through helmet visors that contain HUD effects
+      that are already active on your character.
+  cuberound:
+  - balance: increases flare pouch storage slots from 8 to 16
+2024-02-05:
+  Drathek:
+  - bugfix: Added more null testing to helmet visors.
+  Poltava:
+  - imageadd: updated intel expedition chestrig sprite
+  SpartanBobby:
+  - maptweak: Fixes the two gauss sentry guns that were boxxed in by a mapper over
+      a year ago on ice 3
+  Warfan1815:
+  - bugfix: Open surgical incisions now show up on a health scanner even if there
+      is nothing else wrong.
+  - bugfix: Open surgical incisions in the head "zones" (mouth and eyes) now show
+      up independently on health scanner
+  cuberound:
+  - balance: increases healing node heal from 10hp every 5 sec to 20 hp every 5 sec

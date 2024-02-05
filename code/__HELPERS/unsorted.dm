@@ -21,23 +21,23 @@
 #define between(low, middle, high) (max(min(middle, high), low))
 
 //Offuscate x for coord system
-#define obfuscate_x(x) (x + GLOB.obfs_x)
+#define obfuscate_x(x) ((x) + GLOB.obfs_x)
 
 //Offuscate y for coord system
-#define obfuscate_y(y) (y + GLOB.obfs_y)
+#define obfuscate_y(y) ((y) + GLOB.obfs_y)
 
 //Deoffuscate x for coord system
-#define deobfuscate_x(x) (x - GLOB.obfs_x)
+#define deobfuscate_x(x) ((x) - GLOB.obfs_x)
 
 //Deoffuscate y for coord system
-#define deobfuscate_y(y) (y - GLOB.obfs_y)
+#define deobfuscate_y(y) ((y) - GLOB.obfs_y)
 
 #define can_xeno_build(T) (!T.density && !(locate(/obj/structure/fence) in T) && !(locate(/obj/structure/tunnel) in T) && (locate(/obj/effect/alien/weeds) in T))
 
 // For the purpose of a skillcheck, not having a skillset counts as being skilled in everything (!user.skills check)
 // Note that is_skilled() checks if the skillset contains the skill internally, so a has_skill check is unnecessary
-#define skillcheck(user, skill, req_level) ((!user.skills || user.skills.is_skilled(skill, req_level)))
-#define skillcheckexplicit(user, skill, req_level) ((!user.skills || user.skills.is_skilled(skill, req_level, TRUE)))
+#define skillcheck(user, skill, req_level) ((!user.skills || user.skills.is_skilled((skill), (req_level))))
+#define skillcheckexplicit(user, skill, req_level) ((!user.skills || user.skills.is_skilled((skill), (req_level), TRUE)))
 
 // Ensure the frequency is within bounds of what it should be sending/receiving at
 // Sets f within bounds via `clamp(round(f), 1441, 1489)`
@@ -48,7 +48,7 @@
 								)
 
 //Turns 1479 into 147.9
-#define format_frequency(f) "[round(f / 10)].[f % 10]"
+#define format_frequency(f) "[round((f) / 10)].[(f) % 10]"
 
 #define reverse_direction(direction) ( \
 											( dir & (NORTH|SOUTH) ? ~dir & (NORTH|SOUTH) : 0 ) | \

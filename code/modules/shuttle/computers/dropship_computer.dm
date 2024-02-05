@@ -370,7 +370,6 @@
 
 	for(var/obj/docking_port/stationary/dock in compatible_landing_zones)
 		var/dock_reserved = FALSE
-		var/enabled = TRUE
 		for(var/obj/docking_port/mobile/other_shuttle in SSshuttle.mobile)
 			if(dock == other_shuttle.destination)
 				dock_reserved = TRUE
@@ -379,7 +378,7 @@
 		var/list/dockinfo = list(
 			"id" = dock.id,
 			"name" = dock.name,
-			"available" = can_dock == SHUTTLE_CAN_DOCK && !dock_reserved && enabled,
+			"available" = can_dock == SHUTTLE_CAN_DOCK && !dock_reserved,
 			"error" = can_dock,
 		)
 		.["destinations"] += list(dockinfo)

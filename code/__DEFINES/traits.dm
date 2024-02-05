@@ -228,7 +228,6 @@
 /// If the mob is cloaked in any form
 #define TRAIT_CLOAKED "t_cloaked"
 
-
 // -- ability traits --
 /// Xenos with this trait cannot have plasma transfered to them
 #define TRAIT_ABILITY_NO_PLASMA_TRANSFER "t_ability_no_plasma_transfer"

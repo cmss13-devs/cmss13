@@ -69,6 +69,7 @@
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Predalien_1","Predalien_2","Predalien_3")
 	weed_food_states_flipped = list("Predalien_1","Predalien_2","Predalien_3")
+	var/smashing = FALSE
 
 
 
@@ -96,7 +97,7 @@ You must still listen to the queen.
 <span class='role_body'>|______________________|</span>
 "})
 	emote("roar")
-var/smashing = FALSE
+
 /datum/behavior_delegate/predalien_base
 	name = "Base Predalien Behavior Delegate"
 

@@ -6,7 +6,7 @@
 
 	var/trading_card_number = "1"
 	var/picture_description = "barrel charger"
-	var/collection_color = "red"
+	var/collection_color
 	var/is_front = FALSE
 	var/back_name = "Red WeyYu Military Trading Card"
 	var/front_name = "Red WeyYu Military Trading Card Number One"

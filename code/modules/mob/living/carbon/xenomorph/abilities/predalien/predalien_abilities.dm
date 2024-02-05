@@ -46,7 +46,7 @@
 
 
 /datum/action/xeno_action/onclick/feralrush
-	name = "Feral Rush Up"
+	name = "Feral Rush"
 	action_icon_state = "charge_spit"
 	ability_name = "toughen up"
 	macro_path = /datum/action/xeno_action/verb/verb_feralrush
@@ -69,5 +69,23 @@
 	xeno_cooldown = 5 MINUTES
 
 	harvest_stab = TRUE
+
+
+/datum/action/xeno_action/activable/feral_smash
+	name = "Feral Smash"
+	ability_name = "Feral Smash"
+	action_icon_state = "lunge"
+	action_type = XENO_ACTION_CLICK
+	macro_path = /datum/action/xeno_action/verb/feral_smash
+	ability_primacy = XENO_PRIMARY_ACTION_4
+	xeno_cooldown = 20 SECONDS
+	plasma_cost = 0
+
+
+	// Configurables
+	var/grab_range = 4
+	var/click_miss_cooldown = 15
+	var/twitch_message_cooldown = 0 //apparently this is necessary for a tiny code that makes the lunge message on cooldown not be spammable, doesn't need to be big so 5 will do.
+
 
 

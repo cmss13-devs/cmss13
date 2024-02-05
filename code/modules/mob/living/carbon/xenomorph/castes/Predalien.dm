@@ -59,6 +59,7 @@
 		/datum/action/xeno_action/onclick/feralrush,
 		/datum/action/xeno_action/onclick/predalien_roar,
 		/datum/action/xeno_action/activable/feralfrenzy,
+		/datum/action/xeno_action/activable/feral_smash,
 		/datum/action/xeno_action/onclick/toggle_gut_targetting,
 		/datum/action/xeno_action/onclick/tacmap,
 	)
@@ -68,6 +69,7 @@
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Predalien_1","Predalien_2","Predalien_3")
 	weed_food_states_flipped = list("Predalien_1","Predalien_2","Predalien_3")
+	var/smashing = FALSE
 
 
 
@@ -95,6 +97,55 @@ You must still listen to the queen.
 <span class='role_body'>|______________________|</span>
 "})
 	emote("roar")
+
+/mob/living/carbon/xenomorph/predalien/stop_pulling()
+	if(isliving(pulling) && smashing)
+		smashing = FALSE // To avoid extreme cases of stopping a lunge then quickly pulling and stopping to pull someone else
+		var/mob/living/smashed = pulling
+		smashed.set_effect(0, STUN)
+		smashed.set_effect(0, WEAKEN)
+	return ..()
+
+/mob/living/carbon/xenomorph/predalien/start_pulling(atom/movable/movable_atom, feral_smash)
+	if (!check_state())
+		return FALSE
+
+	if(!isliving(movable_atom))
+		return FALSE
+	var/mob/living/living_mob = movable_atom
+	var/should_neckgrab = !(src.can_not_harm(living_mob)) && feral_smash
+
+	if(!QDELETED(living_mob) && !QDELETED(living_mob.pulledby) && living_mob != src ) //override pull of other mobs
+		visible_message(SPAN_WARNING("[src] has broken [living_mob.pulledby]'s grip on [living_mob]!"), null, null, 5)
+		living_mob.pulledby.stop_pulling()
+
+	. = ..(living_mob, feral_smash, should_neckgrab)
+
+	if(.) //successful pull
+		if(isxeno(living_mob))
+			var/mob/living/carbon/xenomorph/xeno = living_mob
+			if(xeno.tier >= 2) // Tier 2 castes or higher immune to warrior grab stuns
+				return
+
+		if(should_neckgrab && living_mob.mob_size < MOB_SIZE_BIG)
+			living_mob.drop_held_items()
+			var/duration = get_xeno_stun_duration(living_mob, 2)
+			living_mob.KnockDown(duration)
+			living_mob.Stun(duration)
+			if(living_mob.pulledby != src)
+				return // Grab was broken, probably as Stun side effect (eg. target getting knocked away from a manned M56D)
+			visible_message(SPAN_XENOWARNING("[src] grabs [living_mob] by the throat!"), \
+			SPAN_XENOWARNING("We grab [living_mob] by the throat!"))
+			smashing = TRUE
+			addtimer(CALLBACK(src, PROC_REF(stop_lunging)), get_xeno_stun_duration(living_mob, 2) SECONDS + 1 SECONDS)
+
+/mob/living/carbon/xenomorph/predalien/proc/stop_lunging(world_time)
+	smashing = FALSE
+
+/mob/living/carbon/xenomorph/predalien/hitby(atom/movable/movable_atom)
+	if(ishuman(movable_atom))
+		return
+	..()
 
 /datum/behavior_delegate/predalien_base
 	name = "Base Predalien Behavior Delegate"

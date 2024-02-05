@@ -231,3 +231,54 @@
 
 
 
+
+
+
+/datum/action/xeno_action/activable/feral_smash/use_ability(atom/affected_atom)
+	var/mob/living/carbon/xenomorph/predalien_smash = owner
+
+	if (!action_cooldown_check())
+		if(twitch_message_cooldown < world.time )
+			predalien_smash.visible_message(SPAN_XENOWARNING("[predalien_smash]'s muscles twitch."), SPAN_XENOWARNING("Our claws twitch as we try to grab onto the target but lack the strength. Wait a moment to try again."))
+			twitch_message_cooldown = world.time + 5 SECONDS
+		return //this gives a little feedback on why your lunge didn't hit other than the lunge button going grey. Plus, it might spook marines that almost got lunged if they know why the message appeared, and extra spookiness is always good.
+
+	if (!affected_atom)
+		return
+
+	if (!isturf(predalien_smash.loc))
+		to_chat(predalien_smash, SPAN_XENOWARNING("We can't lunge from here!"))
+		return
+
+	if (!predalien_smash.check_state() || predalien_smash.agility)
+		return
+
+	if(predalien_smash.can_not_harm(affected_atom) || !ismob(affected_atom))
+		apply_cooldown_override(click_miss_cooldown)
+		return
+
+	var/mob/living/carbon/carbon = affected_atom
+	if(carbon.stat == DEAD)
+		return
+
+	if (!check_and_use_plasma_owner())
+		return
+
+	apply_cooldown()
+	..()
+	predalien_smash.visible_message(SPAN_XENOWARNING("[predalien_smash] grabs [carbon]!"), SPAN_XENOWARNING("We grab [carbon]!"))
+
+	predalien_smash.throw_atom(get_step_towards(affected_atom, predalien_smash), grab_range, SPEED_FAST, predalien_smash)
+
+	if (predalien_smash.Adjacent(carbon))
+		predalien_smash.start_pulling(carbon,1)
+		if(ishuman(carbon))
+			INVOKE_ASYNC(carbon, TYPE_PROC_REF(/mob, emote), "scream")
+	else
+		predalien_smash.visible_message(SPAN_XENOWARNING("[predalien_smash]'s claws twitch."), SPAN_XENOWARNING("Our claws twitch as we lunge but are unable to grab onto our target. Wait a moment to try again."))
+
+	return TRUE
+
+
+
+

@@ -26,3 +26,10 @@
 	set hidden = TRUE
 	var/action_name = "Predalien Roar"
 	handle_xeno_macro(src, action_name)
+
+/datum/action/xeno_action/verb/feral_smash()
+	set category = "Alien"
+	set name = "Feral Smash"
+	set hidden = TRUE
+	var/action_name = "Feral Smash"
+	handle_xeno_macro(src, action_name)

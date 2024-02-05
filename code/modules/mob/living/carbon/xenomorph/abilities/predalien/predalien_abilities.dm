@@ -74,10 +74,3 @@
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_gut_targetting
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_5
-
-/datum/action/xeno_action/activable/tail_stab/harvest
-	name = "Predalien Tailstab"
-	ability_name = "Predalien Tailstab"
-	xeno_cooldown = 5 MINUTES
-
-	harvest_stab = TRUE

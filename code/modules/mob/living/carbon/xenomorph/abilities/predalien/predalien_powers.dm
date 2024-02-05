@@ -236,6 +236,7 @@
 
 /datum/action/xeno_action/activable/feral_smash/use_ability(atom/affected_atom)
 	var/mob/living/carbon/xenomorph/predalien_smash = owner
+	var/datum/behavior_delegate/predalien_base/predalienbehavior = predalien_smash.behavior_delegate
 
 	if (!action_cooldown_check())
 		if(twitch_message_cooldown < world.time )
@@ -274,10 +275,74 @@
 		predalien_smash.start_pulling(carbon,1)
 		if(ishuman(carbon))
 			INVOKE_ASYNC(carbon, TYPE_PROC_REF(/mob, emote), "scream")
+			carbon.apply_armoured_damage(get_xeno_damage_slash(carbon, smash_damage + smash_scale * predalienbehavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
 	else
-		predalien_smash.visible_message(SPAN_XENOWARNING("[predalien_smash]'s claws twitch."), SPAN_XENOWARNING("Our claws twitch as we lunge but are unable to grab onto our target. Wait a moment to try again."))
+		predalien_smash.visible_message(SPAN_XENOWARNING("[predalien_smash]'s claws twitch."), SPAN_XENOWARNING("We coulddn't grab our target. Wait a moment to try again."))
 
 	return TRUE
+
+var/smashing = FALSE
+/mob/living/carbon/xenomorph/predalien/stop_pulling()
+	if(isliving(pulling) && smashing)
+		smashing = FALSE // To avoid extreme cases of stopping a lunge then quickly pulling and stopping to pull someone else
+		var/mob/living/smashed = pulling
+		smashed.set_effect(0, STUN)
+		smashed.set_effect(0, WEAKEN)
+	return ..()
+
+/mob/living/carbon/xenomorph/predalien/start_pulling(atom/movable/movable_atom, feral_smash)
+	if (!check_state())
+		return FALSE
+
+	if(!isliving(movable_atom))
+		return FALSE
+	var/mob/living/living_mob = movable_atom
+	var/should_neckgrab = !(src.can_not_harm(living_mob)) && feral_smash
+
+	if(!QDELETED(living_mob) && !QDELETED(living_mob.pulledby) && living_mob != src ) //override pull of other mobs
+		visible_message(SPAN_WARNING("[src] has broken [living_mob.pulledby]'s grip on [living_mob]!"), null, null, 5)
+		living_mob.pulledby.stop_pulling()
+
+	. = ..(living_mob, feral_smash, should_neckgrab)
+
+	if(.) //successful pull
+		if(isxeno(living_mob))
+			var/mob/living/carbon/xenomorph/xeno = living_mob
+			if(xeno.tier >= 2) // Tier 2 castes or higher immune to warrior grab stuns
+				return
+
+		if(should_neckgrab && living_mob.mob_size < MOB_SIZE_BIG)
+			living_mob.drop_held_items()
+			var/duration = get_xeno_stun_duration(living_mob, 1)
+			living_mob.KnockDown(duration)
+			living_mob.Stun(duration)
+			playsound(living_mob.pulledby, 'sound/voice/predalien_growl.ogg', 75, 0, status = 0) // bang and roar for dramatic effect
+			playsound(get_turf(living_mob), 'sound/effects/bang.ogg', 25, 0)
+			var/turf/starting_turf = get_step(living_mob, NORTH) // move them one tile north
+			living_mob.forceMove(starting_turf)
+			sleep(4)
+			playsound(get_turf(living_mob), 'sound/effects/bang.ogg', 25, 0) // bang and bone break for dramatic damage effect
+			playsound(get_turf(living_mob),"slam", 50, 1)
+			playsound(get_turf(living_mob),'sound/effects/bone_break1.ogg', 100, 1)
+			var/turf/back_to_middle = get_step(living_mob, SOUTH) // move them back one tile south
+			living_mob.forceMove(back_to_middle)
+			INVOKE_ASYNC(living_mob, TYPE_PROC_REF(/mob, emote), "scream") // make them scream for dramatic falir
+			if(living_mob.pulledby != src)
+				return
+			visible_message(SPAN_XENOWARNING("[src] grabs [living_mob] by the back of their leg! and repeatedly slams them onto the ground!"), \
+			SPAN_XENOWARNING("We grab [living_mob] by the back of their leg! and repeatedly slam them onto the ground!")) // more flair
+			living_mob.pulledby.visible_message(SPAN_XENOHIGHDANGER("[living_mob.pulledby] grabs [living_mob] by the leg and repeatedly slams them to the ground!"))
+
+			smashing = TRUE
+			addtimer(CALLBACK(src, PROC_REF(stop_lunging)), get_xeno_stun_duration(living_mob, 1) SECONDS)
+
+/mob/living/carbon/xenomorph/predalien/proc/stop_lunging()
+	smashing = FALSE
+
+/mob/living/carbon/xenomorph/predalien/hitby(atom/movable/movable_atom)
+	if(ishuman(movable_atom))
+		return
+	..()
 
 
 

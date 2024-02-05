@@ -1,5 +1,7 @@
 /obj/item/toy/trading_card
+	name = "WeyYu Military Trading Card"
 	icon = 'icons/obj/items/playing_cards.dmi'
+	icon_state = "trading_red"
 	w_class = SIZE_TINY
 
 	var/trading_card_number = "1"

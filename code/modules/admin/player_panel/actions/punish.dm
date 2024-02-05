@@ -51,9 +51,11 @@
 	permissions_required = R_BAN
 
 /datum/player_action/permanent_ban/act(client/user, mob/target, list/params)
-	var/reason = tgui_input_text(user, "Why are you permanently banning this user?", "Permanent Ban")
+	var/reason = tgui_input_text(user, "What message should be given to the permabanned user?", "Permanent Ban", encode = FALSE)
 	if(!reason)
 		return
+
+	var/internal_reason = tgui_input_text(user, "What's the reason for the ban? This is shown internally, and not displayed in public notes and ban messages. Include as much detail as necessary.", "Permanent Ban", multiline = TRUE, encode = FALSE)
 
 	var/datum/entity/player/target_entity = target.client?.player_data
 	if(!target_entity)
@@ -62,7 +64,7 @@
 	if(!target_entity)
 		return
 
-	if(!target_entity.add_perma_ban(reason, user.player_data))
+	if(!target_entity.add_perma_ban(reason, internal_reason, user.player_data))
 		to_chat(user, SPAN_ADMIN("The user is already permabanned! If necessary, you can remove the permaban, and place a new one."))
 
 /datum/player_action/sticky_ban
@@ -78,12 +80,17 @@
 	var/persistent_ip = target.client?.address || player.last_known_ip
 	var/persistent_cid = target.client?.computer_id || player.last_known_cid
 
-	var/reason = tgui_input_text(user, "What message should be given to the impacted users?", "BuildABan")
+	var/reason = tgui_input_text(src, "What's the reason for the ban? This is shown internally, and not displayed in public notes and ban messages. Include as much detail as necessary.", "BuildABan", multiline = TRUE, encode = FALSE)
 	if(!reason)
 		return
 
+	var/message = tgui_input_text(src, "What message should be given to the impacted users?", "BuildABan", encode = FALSE)
+	if(!message)
+		return
+
 	user.cmd_admin_do_stickyban(target.ckey, reason, impacted_ckeys = list(target.ckey), impacted_cids = list(persistent_cid), impacted_ips = list(persistent_ip))
-	player.add_note("Stickybanned | [reason]", FALSE, NOTE_ADMIN, TRUE)
+	player.add_note("Stickybanned | [message]", FALSE, NOTE_ADMIN, TRUE)
+	player.add_note("Internal reason: [reason]", TRUE, NOTE_ADMIN)
 
 	if(target.client)
 		qdel(target.client)

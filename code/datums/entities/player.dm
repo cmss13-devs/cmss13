@@ -306,7 +306,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	return TRUE
 
 /// Permanently bans this user, with the provided reason. The banner ([/datum/entity/player]) argument is optional, as this can be done without admin intervention.
-/datum/entity/player/proc/add_perma_ban(reason, datum/entity/player/banner)
+/datum/entity/player/proc/add_perma_ban(reason, internal_reason, datum/entity/player/banner)
 	if(is_permabanned)
 		return FALSE
 
@@ -317,8 +317,11 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(banner)
 		permaban_admin_id = banner.id
 		log_and_message_admins("[key_name_admin(banner.owning_client)] has permanently banned [ckey] for '[reason]'.")
-		important_message_external("[banner.owning_client] has permanently banned [ckey] for '[reason]'.")
+		important_message_external("[banner.owning_client] has permanently banned [ckey] for '[reason]'.", "Permaban Placed")
+		important_message_external("[internal_reason]", "Permaban Reason")
 		add_note("Permanently banned | [reason]", FALSE, NOTE_ADMIN, TRUE)
+		if(internal_reason)
+			add_note("Internal reason: [internal_reason]", TRUE, NOTE_ADMIN)
 
 	if(owning_client)
 		to_chat_forced(owning_client, SPAN_LARGE("<big><b>You have been permanently banned by [banner.ckey].\nReason: [reason].</b></big>"))
@@ -487,7 +490,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		if(CONFIG_GET(string/banappeals))
 			appeal = "\nFor more information on your ban, or to appeal, head to <a href='[CONFIG_GET(string/banappeals)]'>[CONFIG_GET(string/banappeals)]</a>"
 
-		.["desc"] = "\nReason: Stickybanned - [sticky.message]\n[appeal]"
+		.["desc"] = "\nReason: Stickybanned - [sticky.message] Identifier: [sticky.identifier]\n[appeal]"
 		.["reason"] = "ckey/id"
 
 		if(!is_telemetry)

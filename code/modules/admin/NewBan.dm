@@ -287,12 +287,12 @@ GLOBAL_DATUM(Banlist, /savefile)
 		return
 
 	if(!reason)
-		reason = tgui_input_text(src, "What's the reason for the ban? This is shown internally, and not displayed in notes and ban messages.", "BuildABan")
+		reason = tgui_input_text(src, "What's the reason for the ban? This is shown internally, and not displayed in public notes and ban messages. Include as much detail as necessary.", "BuildABan", multiline = TRUE, encode = FALSE)
 	if(!reason)
 		return
 
 	if(!message)
-		message = tgui_input_text(src, "What message should be given to the impacted users?", "BuildABan")
+		message = tgui_input_text(src, "What message should be given to the impacted users?", "BuildABan", encode = FALSE)
 	if(!message)
 		return
 
@@ -322,4 +322,5 @@ GLOBAL_DATUM(Banlist, /savefile)
 
 	log_admin("STICKYBAN: Identifier: [identifier] Reason: [reason] Message: [message] CKEYs: [english_list(impacted_ckeys)] IPs: [english_list(impacted_ips)] CIDs: [english_list(impacted_cids)]")
 	log_and_message_admins("[key_name_admin(src)] has added a new stickyban with the identifier '[identifier]'.")
-	important_message_external("[src] has added a new stickyban with the identifier '[identifier]'.")
+	important_message_external("[src] has added a new stickyban with the identifier '[identifier]'.", "Stickyban Placed")
+	important_message_external("[reason]", "Stickyban Reason")

@@ -286,14 +286,14 @@ GLOBAL_DATUM(Banlist, /savefile)
 	if(!identifier)
 		return
 
-	if(!reason)
-		reason = tgui_input_text(src, "What's the reason for the ban? This is shown internally, and not displayed in public notes and ban messages. Include as much detail as necessary.", "BuildABan", multiline = TRUE, encode = FALSE)
-	if(!reason)
-		return
-
 	if(!message)
 		message = tgui_input_text(src, "What message should be given to the impacted users?", "BuildABan", encode = FALSE)
 	if(!message)
+		return
+
+	if(!reason)
+		reason = tgui_input_text(src, "What's the reason for the ban? This is shown internally, and not displayed in public notes and ban messages. Include as much detail as necessary.", "BuildABan", multiline = TRUE, encode = FALSE)
+	if(!reason)
 		return
 
 	if(!length(impacted_ckeys))

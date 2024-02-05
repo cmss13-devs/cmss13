@@ -80,12 +80,12 @@
 	var/persistent_ip = target.client?.address || player.last_known_ip
 	var/persistent_cid = target.client?.computer_id || player.last_known_cid
 
-	var/reason = tgui_input_text(user, "What's the reason for the ban? This is shown internally, and not displayed in public notes and ban messages. Include as much detail as necessary.", "BuildABan", multiline = TRUE, encode = FALSE)
-	if(!reason)
-		return
-
 	var/message = tgui_input_text(user, "What message should be given to the impacted users?", "BuildABan", encode = FALSE)
 	if(!message)
+		return
+
+	var/reason = tgui_input_text(user, "What's the reason for the ban? This is shown internally, and not displayed in public notes and ban messages. Include as much detail as necessary.", "BuildABan", multiline = TRUE, encode = FALSE)
+	if(!reason)
 		return
 
 	user.cmd_admin_do_stickyban(target.ckey, reason, message, impacted_ckeys = list(target.ckey), impacted_cids = list(persistent_cid), impacted_ips = list(persistent_ip))

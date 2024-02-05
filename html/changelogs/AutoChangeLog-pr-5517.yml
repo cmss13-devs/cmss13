@@ -1,4 +1,0 @@
-author: "cuberound"
-delete-after: True
-changes:
-  - balance: "increases healing node heal from 10hp every 5 sec to 20 hp every 5 sec"

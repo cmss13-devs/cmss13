@@ -1,4 +1,4 @@
-var/global/list/item_cleanup_list = list()
+GLOBAL_LIST_EMPTY(item_cleanup_list)
 
 SUBSYSTEM_DEF(item_cleanup)
 	name = "Item Cleanup"
@@ -34,9 +34,9 @@ SUBSYSTEM_DEF(item_cleanup)
 			break
 
 	//We transfer items from the global garbage list onto the next iteration list
-	while(!isnull(item_cleanup_list) && item_cleanup_list.len > 0)
-		addToListNoDupe(items_to_clean_up, item_cleanup_list[item_cleanup_list.len])
-		item_cleanup_list -= item_cleanup_list[item_cleanup_list.len]
+	while(!isnull(GLOB.item_cleanup_list) && GLOB.item_cleanup_list.len > 0)
+		addToListNoDupe(items_to_clean_up, GLOB.item_cleanup_list[GLOB.item_cleanup_list.len])
+		GLOB.item_cleanup_list -= GLOB.item_cleanup_list[GLOB.item_cleanup_list.len]
 
 	log_debug("item_cleanup deleted [deleted] garbage out of total [total_items]")
 
@@ -57,9 +57,9 @@ SUBSYSTEM_DEF(item_cleanup)
 			qdel(o)
 
 /proc/add_to_garbage(atom/a)
-	addToListNoDupe(item_cleanup_list, a)
+	addToListNoDupe(GLOB.item_cleanup_list, a)
 
 /proc/remove_from_garbage(atom/a)
-	item_cleanup_list -= a
+	GLOB.item_cleanup_list -= a
 	if(SSitem_cleanup)
 		SSitem_cleanup.items_to_clean_up -= a

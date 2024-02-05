@@ -1,3 +1,7 @@
+// placeholder strings to be replaced
+#define WIKI_PLACEHOLDER "%WIKIURL%"
+#define LAW_PLACEHOLDER "%LAWURL%"
+
 // ------ MISC WIKI LINKS ------ //
 #define URL_WIKI_LAW "Marine_Law"
 #define URL_WIKI_XENO_QUICKSTART "Xeno_Quickstart_Guide"

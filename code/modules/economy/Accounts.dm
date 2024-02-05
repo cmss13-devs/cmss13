@@ -32,7 +32,7 @@
 	T.purpose = "Account creation"
 	T.amount = starting_funds * id_paygrade.pay_multiplier
 	//set a random date, time and location some time over the past few decades
-	T.date = "[num2text(rand(1,31))] [pick("January","February","March","April","May","June","July","August","September","October","November","December")], [game_year - rand(0, 10)]"
+	T.date = "[num2text(rand(1,31))] [pick("January","February","March","April","May","June","July","August","September","October","November","December")], [GLOB.game_year - rand(0, 10)]"
 	T.time = "[rand(0,24)]:[rand(11,59)]"
 	T.source_terminal = "Weyland-Yutani Terminal #[rand(111,1111)]"
 	for(var/attempt in 1 to 100) // Make up to 100 attempts to get a unique account number
@@ -41,12 +41,12 @@
 			break // Account number is unique!
 	//add the account
 	M.transaction_log.Add(T)
-	all_money_accounts.Add(M)
+	GLOB.all_money_accounts.Add(M)
 
 	return M
 
 /proc/charge_to_account(attempt_account_number, source_name, purpose, terminal_id, amount)
-	for(var/datum/money_account/D in all_money_accounts)
+	for(var/datum/money_account/D in GLOB.all_money_accounts)
 		if(D.account_number == attempt_account_number && !D.suspended)
 			D.money += amount
 
@@ -58,7 +58,7 @@
 				T.amount = "([amount])"
 			else
 				T.amount = "[amount]"
-			T.date = current_date_string
+			T.date = GLOB.current_date_string
 			T.time = worldtime2text()
 			T.source_terminal = terminal_id
 			D.transaction_log.Add(T)
@@ -70,13 +70,13 @@
 
 //this returns the first account datum that matches the supplied accnum/pin combination, it returns null if the combination did not match any account
 /proc/attempt_account_access(attempt_account_number, attempt_pin_number, security_level_passed = 0)
-	for(var/datum/money_account/D in all_money_accounts)
+	for(var/datum/money_account/D in GLOB.all_money_accounts)
 		if(D.account_number == attempt_account_number)
 			if( D.security_level <= security_level_passed && (!D.security_level || D.remote_access_pin == attempt_pin_number) )
 				return D
 			break
 
 /proc/get_account(account_number)
-	for(var/datum/money_account/D in all_money_accounts)
+	for(var/datum/money_account/D in GLOB.all_money_accounts)
 		if(D.account_number == account_number)
 			return D

@@ -87,8 +87,14 @@
 /obj/effect/attach_point/crew_weapon/dropship1
 	ship_tag = DROPSHIP_ALAMO
 
+/obj/effect/attach_point/crew_weapon/dropship1/floor
+	plane = FLOOR_PLANE
+
 /obj/effect/attach_point/crew_weapon/dropship2
 	ship_tag = DROPSHIP_NORMANDY
+
+/obj/effect/attach_point/crew_weapon/dropship2/floor
+	plane = FLOOR_PLANE
 
 /obj/effect/attach_point/electronics
 	name = "electronic system attach point"

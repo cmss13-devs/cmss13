@@ -135,7 +135,7 @@
 
 /obj/effect/landmark/corpsespawner/wy/manager/burst
 	name = "Burst Corporate Supervisor"
-	equip_path = /datum/equipment_preset/corpse/ua_riot/burst
+	equip_path = /datum/equipment_preset/corpse/wy/manager/burst
 
 
 ///////////Faction Specific Corpses//////////////////////

@@ -26,7 +26,7 @@
 			found_turf.ChangeTurf(/turf/open/floor)
 
 	for(var/mob/current_mob as anything in get_mobs_in_z_level_range(destination.return_center_turf(), 18))
-		var/relative_dir = get_dir(current_mob, destination.return_center_turf())
+		var/relative_dir = Get_Compass_Dir(current_mob, destination.return_center_turf())
 		var/final_dir = dir2text(relative_dir)
 		to_chat(current_mob, SPAN_HIGHDANGER("You hear something crashing down from above [final_dir ? "to the [final_dir]" : "nearby"]!"))
 

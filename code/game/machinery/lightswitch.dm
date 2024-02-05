@@ -62,8 +62,7 @@
 		updateicon()
 
 /obj/structure/machinery/light_switch/emp_act(severity)
+	. = ..()
 	if(inoperable())
-		..(severity)
 		return
 	power_change()
-	..(severity)

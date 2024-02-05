@@ -100,10 +100,12 @@
 #define MOBILE_SHUTTLE_ID_ERT_BIG "ert_boarding_shuttle"
 
 #define MOBILE_TRIJENT_ELEVATOR "trijentshuttle2"
-#define STAT_TRIJENT_LZ1 "trigent_lz1"
-#define STAT_TRIJENT_LZ2 "trigent_lz2"
-#define STAT_TRIJENT_ENGI "trigent_engineering"
-#define STAT_TRIJENT_OMEGA "trigent_omega"
+#define STAT_TRIJENT_EMPTY "trijent_empty"
+#define STAT_TRIJENT_OCCUPIED "trijent_occupied"
+#define STAT_TRIJENT_LZ1 "trijent_lz1"
+#define STAT_TRIJENT_LZ2 "trijent_lz2"
+#define STAT_TRIJENT_ENGI "trijent_engineering"
+#define STAT_TRIJENT_OMEGA "trijent_omega"
 
 #define MOBILE_SHUTTLE_LIFEBOAT_PORT "lifeboat-port"
 #define MOBILE_SHUTTLE_LIFEBOAT_STARBOARD "lifeboat-starboard"

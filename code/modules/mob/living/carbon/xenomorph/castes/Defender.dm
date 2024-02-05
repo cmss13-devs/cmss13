@@ -38,6 +38,7 @@
 	pixel_x = -16
 	old_x = -16
 	tier = 1
+
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
@@ -49,10 +50,16 @@
 		/datum/action/xeno_action/activable/fortify,
 		/datum/action/xeno_action/onclick/tacmap,
 	)
+
 	mutation_icon_state = DEFENDER_NORMAL
 	mutation_type = DEFENDER_NORMAL
+
 	icon_xeno = 'icons/mob/xenos/defender.dmi'
 	icon_xenonid = 'icons/mob/xenonids/defender.dmi'
+
+	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
+	weed_food_states = list("Defender_1","Defender_2","Defender_3")
+	weed_food_states_flipped = list("Defender_1","Defender_2","Defender_3")
 
 /mob/living/carbon/xenomorph/defender/handle_special_state()
 	if(fortify)

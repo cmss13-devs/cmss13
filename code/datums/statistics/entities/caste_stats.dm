@@ -3,6 +3,10 @@
 	var/total_hits = 0
 	var/list/abilities_used = list() // types of /datum/entity/statistic, "tail sweep" = 10, "screech" = 2
 
+/datum/entity/player_stats/caste/Destroy(force)
+	. = ..()
+	QDEL_LIST_ASSOC_VAL(abilities_used)
+
 /datum/entity/player_stats/caste/proc/setup_ability(ability)
 	if(!ability)
 		return

@@ -14,7 +14,7 @@
 	var/current_menu = "login"
 	var/last_menu = ""
 
-	var/authentication = ARES_ACCESS_BASIC
+	var/authentication = APOLLO_ACCESS_LOGOUT
 	/// The last person to login.
 	var/last_login
 
@@ -70,7 +70,7 @@
 	data["access_text"] = "access level [authentication], [ares_auth_to_text(authentication)]."
 	data["access_level"] = authentication
 
-	data["alert_level"] = security_level
+	data["alert_level"] = GLOB.security_level
 	data["worldtime"] = world.time
 
 	data["access_log"] = list()

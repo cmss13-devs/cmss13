@@ -2502,7 +2502,7 @@
 /obj/structure/prop/wooden_cross{
 	pixel_y = 13
 	},
-/obj/item/toy/farwadoll,
+/obj/item/toy/plush/farwa,
 /turf/open/mars{
 	icon_state = "mars_dirt_5"
 	},

@@ -31,7 +31,7 @@
 		if(!the_disk)
 			icon_state = "pinonnull"
 			return
-	setDir(get_dir(src,the_disk))
+	setDir(Get_Compass_Dir(src,the_disk))
 	switch(get_dist(src,the_disk))
 		if(0)
 			icon_state = "pinondirect"
@@ -45,7 +45,7 @@
 
 /obj/item/device/pinpointer/get_examine_text(mob/user)
 	. = ..()
-	for(var/obj/structure/machinery/nuclearbomb/bomb in machines)
+	for(var/obj/structure/machinery/nuclearbomb/bomb in GLOB.machines)
 		if(bomb.timing)
 			. += "Extreme danger.  Arming signal detected.   Time remaining: [bomb.timeleft]"
 
@@ -80,7 +80,7 @@
 	if(!location)
 		icon_state = "pinonnull"
 		return
-	setDir(get_dir(src,location))
+	setDir(Get_Compass_Dir(src,location))
 	switch(get_dist(src,location))
 		if(0)
 			icon_state = "pinondirect"
@@ -99,7 +99,7 @@
 	if(!target)
 		icon_state = "pinonnull"
 		return
-	setDir(get_dir(src,target))
+	setDir(Get_Compass_Dir(src,target))
 	switch(get_dist(src,target))
 		if(0)
 			icon_state = "pinondirect"

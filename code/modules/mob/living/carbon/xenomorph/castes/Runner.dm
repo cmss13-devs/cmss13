@@ -67,11 +67,15 @@
 	icon_xeno = 'icons/mob/xenos/runner.dmi'
 	icon_xenonid = 'icons/mob/xenonids/runner.dmi'
 
+	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
+	weed_food_states = list("Runner_1","Runner_2","Runner_3")
+	weed_food_states_flipped = list("Runner_1","Runner_2","Runner_3")
 
-/mob/living/carbon/xenomorph/runner/initialize_pass_flags(datum/pass_flags_container/PF)
+
+/mob/living/carbon/xenomorph/runner/initialize_pass_flags(datum/pass_flags_container/pass_flags_container)
 	..()
-	if (PF)
-		PF.flags_pass |= PASS_FLAGS_CRAWLER
+	if (pass_flags_container)
+		pass_flags_container.flags_pass |= PASS_FLAGS_CRAWLER
 
 /datum/behavior_delegate/runner_base
 	name = "Base Runner Behavior Delegate"

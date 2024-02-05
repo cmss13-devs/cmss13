@@ -35,27 +35,27 @@
 // will get logs that are one big line if the system is Linux and they are using notepad.  This solves it by adding CR to every line ending
 // in the logs.  ascii character 13 = CR
 
-/var/global/log_end= world.system_type == UNIX ? ascii2text(13) : ""
+GLOBAL_VAR_INIT(log_end, world.system_type == UNIX ? ascii2text(13) : "")
 
 /proc/error(msg)
-	world.log << "## ERROR: [msg][log_end]"
+	world.log << "## ERROR: [msg][GLOB.log_end]"
 	GLOB.STUI.debug.Add("\[[time_stamp()]]DEBUG: [msg]")
 	GLOB.STUI.processing |= STUI_LOG_DEBUG
 #define WARNING(MSG) warning("[MSG] in [__FILE__] at line [__LINE__] src: [src] usr: [usr].")
 //print a warning message to world.log
 /proc/warning(msg)
-	world.log << "## WARNING: [msg][log_end]"
+	world.log << "## WARNING: [msg][GLOB.log_end]"
 	GLOB.STUI.debug.Add("\[[time_stamp()]]WARNING: [msg]")
 	GLOB.STUI.processing |= STUI_LOG_DEBUG
 //print a testing-mode debug message to world.log
 /proc/testing(msg)
-	world.log << "## TESTING: [msg][log_end]"
+	world.log << "## TESTING: [msg][GLOB.log_end]"
 	GLOB.STUI.debug.Add("\[[time_stamp()]]TESTING: [msg]")
 	GLOB.STUI.processing |= STUI_LOG_DEBUG
 
 /proc/log_admin(text)
 	var/time = time_stamp()
-	admin_log.Add(text)
+	GLOB.admin_log.Add(text)
 	if (CONFIG_GET(flag/log_admin))
 		WRITE_LOG(GLOB.world_game_log, "ADMIN: [text]")
 		LOG_REDIS("admin", "\[[time]\] [text]")
@@ -63,14 +63,14 @@
 	GLOB.STUI.processing |= STUI_LOG_ADMIN
 
 /proc/log_asset(text)
-	asset_log.Add(text)
+	GLOB.asset_log.Add(text)
 	if (CONFIG_GET(flag/log_asset))
 		var/time = time_stamp()
 		WRITE_LOG(GLOB.world_game_log, "ASSET: [text]")
 		LOG_REDIS("asset", "\[[time]\] [text]")
 
 /proc/log_adminpm(text)
-	admin_log.Add(text)
+	GLOB.admin_log.Add(text)
 	if (CONFIG_GET(flag/log_admin))
 		WRITE_LOG(GLOB.world_game_log, "ADMIN: [text]")
 	GLOB.STUI.staff.Add("\[[time_stamp()]]ADMIN: [text]")

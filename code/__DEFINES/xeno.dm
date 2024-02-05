@@ -177,6 +177,20 @@
 /// The time until you can re-corrupt a comms relay after the last pylon was destroyed
 #define XENO_PYLON_DESTRUCTION_DELAY (5 MINUTES)
 
+/// Evolution boost during hijack
+#define XENO_HIJACK_EVILUTION_BUFF 10
+
+/// For how long the buff lasts
+#define XENO_HIJACK_EVILUTION_TIME (3 MINUTES)
+
+/// If this is marine to xeno ratio during hijack, xenos see marines on tacmap
+#define HIJACK_RATIO_FOR_TACMAP 0.8
+
+/// Xenos need to have their number to marines ratio lower than this to get larvae from pylons
+#define ENDGAME_LARVA_CAP_MULTIPLIER 0.5
+
+/// What percent of their numbers xeno get from pylons
+#define LARVA_ADDITION_MULTIPLIER 0.10
 
 /// The time against away_timer when an AFK xeno larva can be replaced
 #define XENO_LEAVE_TIMER_LARVA 80 //80 seconds
@@ -249,11 +263,6 @@
 #define XENO_PLASMA_TIER_6 600 * XENO_UNIVERSAL_PLASMAMULT
 #define XENO_PLASMA_TIER_8 800 * XENO_UNIVERSAL_PLASMAMULT
 #define XENO_PLASMA_TIER_10 1000 * XENO_UNIVERSAL_PLASMAMULT
-
-// Resource stockpile bands
-#define XENO_CRYSTAL_LOW 50
-#define XENO_CRYSTAL_MEDIUM 100
-#define XENO_CRYSTAL_HIGH 150
 
 // Plasma gain bands
 #define XENO_PLASMA_GAIN_TIER_1 1
@@ -580,9 +589,7 @@
 #define XENO_STRUCTURE_CORE  "hive core"
 #define XENO_STRUCTURE_CLUSTER   "hive cluster"
 #define XENO_STRUCTURE_PYLON "hive pylon"
-#define XENO_STRUCTURE_POOL  "spawn pool"
 #define XENO_STRUCTURE_EGGMORPH  "egg morpher"
-#define XENO_STRUCTURE_EVOPOD    "evolution pod"
 #define XENO_STRUCTURE_RECOVERY  "recovery node"
 #define XENO_STRUCTURE_NEST  "thick resin nest"
 

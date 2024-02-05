@@ -18,7 +18,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_headbutt
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	xeno_cooldown = 40
+	xeno_cooldown = 4 SECONDS
 
 /datum/action/xeno_action/onclick/tail_sweep
 	name = "Tail Sweep"
@@ -28,7 +28,7 @@
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	plasma_cost = 10
-	xeno_cooldown = 110
+	xeno_cooldown = 11 SECONDS
 
 /datum/action/xeno_action/activable/fortify
 	name = "Fortify"

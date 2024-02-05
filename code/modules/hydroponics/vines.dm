@@ -124,7 +124,6 @@
 			if(V && (V.stat != DEAD) && (V.buckled != src)) // If mob exists and is not dead or captured.
 				V.buckled = src
 				V.forceMove(src.loc)
-				V.update_canmove()
 				src.buckled_mob = V
 				to_chat(V, SPAN_DANGER("The vines [pick("wind", "tangle", "tighten")] around you!"))
 
@@ -182,18 +181,18 @@
 
 		if(harvest)
 			var/image/fruit_overlay = image('icons/obj/structures/machinery/hydroponics.dmi',"")
-			if(seed.product_colour)
-				fruit_overlay.color = seed.product_colour
+			if(seed.product_color)
+				fruit_overlay.color = seed.product_color
 			overlays += fruit_overlay
 
 		if(seed.flowers)
 			var/image/flower_overlay = image('icons/obj/structures/machinery/hydroponics.dmi',"[seed.flower_icon]")
-			if(seed.flower_colour)
-				flower_overlay.color = seed.flower_colour
+			if(seed.flower_color)
+				flower_overlay.color = seed.flower_color
 			overlays += flower_overlay
 
 /obj/effect/plantsegment/proc/spread()
-	var/direction = pick(cardinal)
+	var/direction = pick(GLOB.cardinals)
 	var/step = get_step(src,direction)
 	if(istype(step,/turf/open/floor))
 		var/turf/open/floor/F = step

@@ -13,7 +13,6 @@
 
 /obj/structure/machinery/door/airlock/multi_tile/Initialize()
 	. = ..()
-	handle_multidoor()
 	update_icon()
 
 /obj/structure/machinery/door/airlock/multi_tile/glass
@@ -137,7 +136,6 @@
 		/obj/structure/window/framed/almayer,
 		/obj/structure/machinery/door/airlock,
 	)
-	var/multi_filler = list()
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/Initialize()
 	. = ..()
@@ -233,41 +231,6 @@
 	req_access = null
 	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
 
-/obj/structure/machinery/door/airlock/multi_tile/almayer/handle_multidoor(old_dir, new_dir)
-	if(!(width > 1)) return //Bubblewrap
-
-	update_filler_turfs()
-
-//We have to find these again since these doors are used on shuttles a lot so the turfs changes
-/obj/structure/machinery/door/airlock/multi_tile/almayer/proc/update_filler_turfs()
-	for(var/turf/T in multi_filler)
-		T.set_opacity(null)
-
-	multi_filler = list()
-	for(var/turf/T in get_filler_turfs())
-		T.set_opacity(opacity)
-		multi_filler += list(T)
-
-/obj/structure/machinery/door/airlock/multi_tile/proc/get_filler_turfs()
-	. = list()
-	for(var/i = 1, i < width, i++)
-		if(dir in list(NORTH, SOUTH))
-			var/turf/T = locate(x, y + i, z)
-			if(T)
-				. += list(T)
-		else if(dir in list(EAST, WEST))
-			var/turf/T = locate(x + i, y, z)
-			if(T)
-				. += list(T)
-
-/obj/structure/machinery/door/airlock/multi_tile/almayer/open()
-	. = ..()
-	update_filler_turfs()
-
-/obj/structure/machinery/door/airlock/multi_tile/almayer/close()
-	. = ..()
-	update_filler_turfs()
-
 //------Dropship Cargo Doors -----//
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear
@@ -304,83 +267,6 @@
 		open(1)
 		lock(TRUE)
 
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/handle_multidoor(old_dir, new_dir)
-	if(!(width > 1)) 
-		return //Bubblewrap
-	if(old_dir != new_dir)
-		var/adjust = width - 1
-		switch(old_dir)
-			if(NORTH)
-				switch(new_dir)
-					if(EAST)
-						Move(locate(x, y - adjust, z), dir)
-					if(WEST)
-						Move(locate(x, y, z), dir)
-					if(SOUTH)
-						Move(locate(x - adjust, y, z), dir)
-			if(EAST)
-				switch(new_dir)
-					if(NORTH)
-						Move(locate(x - adjust, y, z), dir)
-					if(WEST)
-						Move(locate(x, y - adjust, z), dir)
-					if(SOUTH)
-						Move(locate(x, y, z), dir)
-			if(WEST)
-				switch(new_dir)
-					if(NORTH)
-						Move(locate(x - adjust, y, z), dir)
-					if(EAST)
-						Move(locate(x, y - adjust, z), dir)
-					if(SOUTH)
-						Move(locate(x - adjust, y, z), dir)
-			if(SOUTH)
-				switch(new_dir)
-					if(NORTH)
-						Move(locate(x - adjust, y, z), dir)
-					if(EAST)
-						Move(locate(x, y, z), dir)
-					if(WEST)
-						Move(locate(x, y - adjust, z), dir)
-
-	update_filler_turfs()
-	if(dir in list(NORTH, SOUTH))
-		bound_height = world.icon_size * width
-		bound_width = world.icon_size
-	else if(dir in list(EAST, WEST))
-		bound_width = world.icon_size * width
-		bound_height = world.icon_size
-
-//We have to find these again since these doors are used on shuttles a lot so the turfs changes
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/update_filler_turfs()
-	for(var/turf/filler_turf as anything in multi_filler)
-		filler_turf.set_opacity(null)
-
-	multi_filler = list()
-	for(var/turf/filler_turf as anything in get_filler_turfs())
-		filler_turf.set_opacity(opacity)
-		multi_filler += list(filler_turf)
-
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/get_filler_turfs()
-	. = list()
-	for(var/i in 1 to width - 1)
-		if(dir == NORTH)
-			var/turf/T = locate(x, y + i, z)
-			if(T)
-				. += list(T)
-		if(dir == SOUTH)
-			var/turf/found_turf = locate(x, y - i, z)
-			if(found_turf)
-				. += list(found_turf)
-		if(dir == EAST)
-			var/turf/found_turf = locate(x + i, y, z)
-			if(found_turf)
-				. += list(found_turf)
-		if(dir == WEST)
-			var/turf/found_turf = locate(x - i, y, z)
-			if(found_turf)
-				. += list(found_turf)
-
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1
 	name = "\improper Alamo cargo door"
 	icon = 'icons/obj/structures/doors/dropship1_cargo.dmi'
@@ -388,6 +274,17 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds2
 	name = "\improper Normandy cargo door"
 	icon = 'icons/obj/structures/doors/dropship2_cargo.dmi'
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside
+	width = 2
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/ds1
+	name = "\improper Alamo crew hatch"
+	icon = 'icons/obj/structures/doors/dropship1_side2.dmi'
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/ds2
+	name = "\improper Normandy crew hatch"
+	icon = 'icons/obj/structures/doors/dropship2_side2.dmi'
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/blastdoor
 	name = "bulkhead blast door"
@@ -672,4 +569,3 @@
 	icon = 'icons/obj/structures/doors/2x1almayerdoor_glass.dmi'
 	opacity = FALSE
 	glass = TRUE
-

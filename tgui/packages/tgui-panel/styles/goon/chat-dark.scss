@@ -434,9 +434,9 @@ em {
   font-weight: bold;
 }
 
-.minorannounce {
+.bigannounce {
   font-weight: bold;
-  font-size: 185%;
+  font-size: 115%;
 }
 
 .greenannounce {
@@ -956,10 +956,6 @@ em {
   color: #844300;
 }
 
-.sentryradio {
-  color: #844300;
-}
-
 .medradio {
   color: #008160;
 }
@@ -1105,7 +1101,7 @@ em {
 
 .xenoboldnotice {
   color: #51a16c;
-  font-style: italic;
+  font-weight: bold;
 }
 
 .xenowarning {

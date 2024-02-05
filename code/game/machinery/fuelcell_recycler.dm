@@ -169,8 +169,8 @@
 
 /obj/structure/machinery/fuelcell_recycler/full/Initialize(mapload, ...)
 	. = ..()
-	cell_left = new
-	cell_right = new
+	cell_left = new(src)
+	cell_right = new(src)
 	update_icon()
 
 //reactor full cells
@@ -204,13 +204,16 @@
 	if(ishuman(user))
 		. += "The fuel indicator reads: [get_fuel_percent()]%"
 
+///Percentage of fuel left in the cell
 /obj/item/fuel_cell/proc/get_fuel_percent()
-	return round(100*fuel_amount/max_fuel_amount)
+	return round(100 * fuel_amount/max_fuel_amount)
 
+///Whether the fuel cell is full
 /obj/item/fuel_cell/proc/is_regenerated()
-	return(fuel_amount == max_fuel_amount)
+	return (fuel_amount == max_fuel_amount)
 
-/obj/item/fuel_cell/proc/modify_fuel(amount) //increase or decrease fuel as needed
+/// increase or decrease fuel, making sure it cannot go above the max
+/obj/item/fuel_cell/proc/modify_fuel(amount)
 	fuel_amount = clamp(fuel_amount + amount, 0, max_fuel_amount)
 
 /obj/item/fuel_cell/used

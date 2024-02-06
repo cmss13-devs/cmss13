@@ -71,11 +71,11 @@
 
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You're not trained to repair [src]..."))
-			return
+			return FALSE
 
-		tool_cooldown = world.time + 10
+		//tool_cooldown = world.time + 10 //comenting it out seem really not necessery to add some cooldown just for plasteel.
 
-		var/obj/item/tool/weldingtool/WT = item
+		//var/obj/item/tool/weldingtool/WT = item
 
 		weld_cade(WT, user)
 		return

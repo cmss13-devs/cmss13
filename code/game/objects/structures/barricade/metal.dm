@@ -50,10 +50,10 @@
 
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You're not trained to repair [src]..."))
-			return
+			return FALSE
 
 		// this is to prepare for weld_cade...
-		var/obj/item/tool/weldingtool/welder = item
+		//var/obj/item/tool/weldingtool/welder = item
 		weld_cade(welder, user)
 
 		return

@@ -482,16 +482,16 @@
 /obj/structure/barricade/proc/attackby_welder(obj/item/item, mob/user)
 	if(!HAS_TRAIT(item, TRAIT_TOOL_BLOWTORCH))
 		to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
-		return
+		return FALSE
 
 	if(health == maxhealth)
 		to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
-		return
-
+		return FALSE
+// if this block fixing multiple cades i should rework this.
 	if(user.action_busy)
 		to_chat(user, SPAN_WARNING("You are currently doing something else"))
-		return
+		return FALSE
 
-	if(damage_state == welder_fix && damage_state != null)
+	if(damage_state >= welder_fix && damage_state != null)
 		to_chat(user, SPAN_WARNING("[src] has sustained too much structural damage to be repaired."))
-		return
+		return FALSE

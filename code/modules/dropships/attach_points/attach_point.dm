@@ -57,6 +57,7 @@
 	PC.update_icon()
 	installed_equipment = SE
 	SE.ship_base = src
+	SE.plane = plane
 
 	for(var/obj/docking_port/mobile/marine_dropship/shuttle in SSshuttle.mobile)
 		if(shuttle.id == ship_tag)

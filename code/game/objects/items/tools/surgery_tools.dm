@@ -198,6 +198,7 @@
 	name = "bottle of bone gel"
 	desc = "A container for bone gel that often needs to be refilled from a specialized machine."
 	desc_lore = "Bone gel is a biological synthetic bone-analogue with the consistency of clay. It is capable of fixing hairline fractures and complex fractures alike. Bone gel should not be used to fix missing bone, as it does not replace the body's bone marrow. Overuse in a short period may cause acute immunodeficiency or anemia."
+	var/base_icon_state = "bone-gel"
 	icon_state = "bone-gel"
 	w_class = SIZE_SMALL
 	matter = list("plastic" = 7500)
@@ -214,6 +215,18 @@
 	var/fracture_fix_cost = 5
 	///How much bone gel is needed to mend bones
 	var/mend_bones_fix_cost = 5
+
+/obj/item/tool/surgery/bonegel/update_icon()
+	if(remaining_gel >= 100)
+		icon_state = "[base_icon_state]"
+	else if(remaining_gel > 50)
+		icon_state = "[base_icon_state]_75"
+	else if(remaining_gel > 25)
+		icon_state = "[base_icon_state]_50"
+	else if(remaining_gel > 0)
+		icon_state = "[base_icon_state]_25"
+	else
+		icon_state = "[base_icon_state]_0"
 
 /obj/item/tool/surgery/bonegel/get_examine_text(mob/user)
 	. = ..()
@@ -244,6 +257,7 @@
 		if(!do_after(user, time_per_refill, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, refilling_obj))
 			break
 		remaining_gel = clamp(remaining_gel + 10, 0, 100)
+		update_icon()
 		to_chat(user, SPAN_NOTICE("[refilling_obj] chimes, and displays \"[remaining_gel]% filled\"."))
 
 	refilling = FALSE
@@ -257,14 +271,17 @@
 	if(remaining_gel < gel_cost)
 		return FALSE
 	remaining_gel -= gel_cost
+	update_icon()
 	return TRUE
 
 /obj/item/tool/surgery/bonegel/empty
 	remaining_gel = 0
+	icon_state = "bone-gel_0"
 
 /obj/item/tool/surgery/bonegel/predatorbonegel
 	name = "gel gun"
 	desc = "Inside is a liquid that is similar in effect to bone gel, but requires much smaller quantities, allowing near infinite use from a single capsule."
+	base_icon_state = "predator_bone-gel"
 	icon_state = "predator_bone-gel"
 	unlimited_gel = TRUE
 

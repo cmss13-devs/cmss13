@@ -3341,7 +3341,7 @@ Defined in conflicts.dm of the #defines folder.
 	burst_scatter_mod = 0
 	delay_mod = FIRE_DELAY_TIER_12
 	//if we are no longer on full auto, don't bother switching back to the old firemode
-	if(full_auto_switch && gun.gun_firemode == GUN_FIREMODE_AUTOMATIC)
+	if(full_auto_switch && gun.gun_firemode == GUN_FIREMODE_AUTOMATIC && gun.gun_firemode != old_firemode)
 		gun.do_toggle_firemode(user, null, old_firemode)
 
 	gun.recalculate_attachment_bonuses()
@@ -3397,8 +3397,8 @@ Defined in conflicts.dm of the #defines folder.
 				if(heavy_bipod)
 					user.anchored = TRUE
 
+				old_firemode = gun.gun_firemode
 				if(full_auto_switch && gun.gun_firemode != GUN_FIREMODE_AUTOMATIC)
-					old_firemode = gun.gun_firemode
 					gun.do_toggle_firemode(user, null, GUN_FIREMODE_AUTOMATIC)
 
 			else

@@ -217,16 +217,20 @@
 	var/mend_bones_fix_cost = 5
 
 /obj/item/tool/surgery/bonegel/update_icon()
+	. = ..()
 	if(remaining_gel >= 100)
-		icon_state = "[base_icon_state]"
-	else if(remaining_gel > 50)
+		icon_state = base_icon_state
+		return
+	if(remaining_gel > 50)
 		icon_state = "[base_icon_state]_75"
-	else if(remaining_gel > 25)
+		return
+	if(remaining_gel > 25)
 		icon_state = "[base_icon_state]_50"
-	else if(remaining_gel > 0)
+		return
+	if(remaining_gel > 0)
 		icon_state = "[base_icon_state]_25"
-	else
-		icon_state = "[base_icon_state]_0"
+		return
+	icon_state = "[base_icon_state]_0"
 
 /obj/item/tool/surgery/bonegel/get_examine_text(mob/user)
 	. = ..()

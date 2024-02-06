@@ -198,10 +198,11 @@
 	name = "bottle of bone gel"
 	desc = "A container for bone gel that often needs to be refilled from a specialized machine."
 	desc_lore = "Bone gel is a biological synthetic bone-analogue with the consistency of clay. It is capable of fixing hairline fractures and complex fractures alike. Bone gel should not be used to fix missing bone, as it does not replace the body's bone marrow. Overuse in a short period may cause acute immunodeficiency or anemia."
-	var/base_icon_state = "bone-gel"
 	icon_state = "bone-gel"
 	w_class = SIZE_SMALL
 	matter = list("plastic" = 7500)
+	///base icon state for update_icon() to reference, fixes bonegel/empty
+	var/base_icon_state = "bone-gel"
 	///percent of gel remaining in container
 	var/remaining_gel = 100
 	///If gel is used when doing bone surgery

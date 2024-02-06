@@ -488,6 +488,7 @@
 		to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
 		return FALSE
 // if this block fixing multiple cades i should rework this.(doesn't seem to block anything)
+// maybe that's what cause some sort of delay in being able to launch a second cades being weld...?
 	if(user.action_busy)
 		to_chat(user, SPAN_WARNING("You are currently doing something else"))
 		return FALSE

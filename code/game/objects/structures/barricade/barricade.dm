@@ -476,8 +476,8 @@
 	nailgun.load_into_chamber()
 	return TRUE
 
-// testing making a prop the idea is to regroup all the check that would cancel a repair into this prop..
-// put it after iswelder check... for repair on installed cades...
+// This proc is to check a bunch of condition to cancel the action that a welder user is trying to do while giving
+// a explanation on why...
 
 /obj/structure/barricade/proc/attackby_welder(obj/item/item, mob/user)
 	if(!HAS_TRAIT(item, TRAIT_TOOL_BLOWTORCH))
@@ -487,12 +487,13 @@
 	if(health == maxhealth)
 		to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
 		return FALSE
-// if this block fixing multiple cades i should rework this.(doesn't seem to block anything)
-// maybe that's what cause some sort of delay in being able to launch a second cades being weld...?
+
+	//When this test get activated the weld_cade that i after still happen i don't know why...
 	if(user.action_busy)
 		to_chat(user, SPAN_WARNING("You are currently doing something else"))
 		return FALSE
 
+	//When this test get activated the weld_cade that i after still happen i don't know why...
 	if(damage_state >= welder_fix && damage_state != null && damage_state != null)
 		to_chat(user, SPAN_WARNING("[src] has sustained too much structural damage to be repaired."))
 		return FALSE

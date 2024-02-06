@@ -27,9 +27,7 @@
 
 	if(iswelder(item))
 		attackby_welder(item, user)
-//maybe bird is right would require some testing i am not really good at knowing that kind of stuff
-// the proc bellow seem to be turning what we give to
-		//var/obj/item/tool/weldingtool/welder = item
+
 		weld_cade(item, user)
 		return
 

@@ -487,11 +487,11 @@
 	if(health == maxhealth)
 		to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
 		return FALSE
-// if this block fixing multiple cades i should rework this.
+// if this block fixing multiple cades i should rework this.(doesn't seem to block anything)
 	if(user.action_busy)
 		to_chat(user, SPAN_WARNING("You are currently doing something else"))
 		return FALSE
 
-	if(damage_state >= welder_fix && damage_state != null)
+	if(damage_state >= welder_fix && damage_state != null && damage_state != null)
 		to_chat(user, SPAN_WARNING("[src] has sustained too much structural damage to be repaired."))
 		return FALSE

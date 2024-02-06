@@ -52,8 +52,6 @@
 			to_chat(user, SPAN_WARNING("You're not trained to repair [src]..."))
 			return FALSE
 
-		// this is to prepare for weld_cade...
-		//var/obj/item/tool/weldingtool/welder = item
 		weld_cade(item, user)
 
 		return

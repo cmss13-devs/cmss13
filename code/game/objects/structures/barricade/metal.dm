@@ -54,7 +54,7 @@
 
 		// this is to prepare for weld_cade...
 		//var/obj/item/tool/weldingtool/welder = item
-		weld_cade(welder, user)
+		weld_cade(item, user)
 
 		return
 

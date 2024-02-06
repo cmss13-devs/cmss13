@@ -30,7 +30,7 @@
 //maybe bird is right would require some testing i am not really good at knowing that kind of stuff
 // the proc bellow seem to be turning what we give to
 		//var/obj/item/tool/weldingtool/welder = item
-		weld_cade(welder, user)
+		weld_cade(item, user)
 		return
 
 	else if(HAS_TRAIT(item, TRAIT_TOOL_CROWBAR))

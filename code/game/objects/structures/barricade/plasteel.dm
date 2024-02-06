@@ -77,7 +77,7 @@
 
 		//var/obj/item/tool/weldingtool/WT = item
 
-		weld_cade(WT, user)
+		weld_cade(item, user)
 		return
 
 	if(try_nailgun_usage(item, user))

@@ -196,52 +196,52 @@
 	if(xeno.fortify)
 		button.icon_state = "template_active"
 
-/datum/action/xeno_action/activable/fortify/proc/fortify_switch(mob/living/carbon/xenomorph/X, fortify_state)
-	if(X.fortify == fortify_state)
+/datum/action/xeno_action/activable/fortify/proc/fortify_switch(mob/living/carbon/xenomorph/xeno, fortify_state)
+	if(xeno.fortify == fortify_state)
 		return
 
 	if(fortify_state)
-		to_chat(X, SPAN_XENOWARNING("We tuck ourself into a defensive stance."))
+		to_chat(xeno, SPAN_XENOWARNING("We tuck ourself into a defensive stance."))
 		RegisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, PROC_REF(check_directional_armor))
-		X.mob_size = MOB_SIZE_IMMOBILE //knockback immune
-		X.mob_flags &= ~SQUEEZE_UNDER_VEHICLES
-		X.fortify = TRUE
+		xeno.mob_size = MOB_SIZE_IMMOBILE //knockback immune
+		xeno.mob_flags &= ~SQUEEZE_UNDER_VEHICLES
+		xeno.fortify = TRUE
 	else
-		to_chat(X, SPAN_XENOWARNING("We resume our normal stance."))
-		REMOVE_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Fortify"))
-		X.anchored = FALSE
+		to_chat(xeno, SPAN_XENOWARNING("We resume our normal stance."))
+		REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Fortify"))
+		xeno.anchored = FALSE
 		UnregisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE)
-		X.mob_size = MOB_SIZE_XENO //no longer knockback immune
-		X.mob_flags |= SQUEEZE_UNDER_VEHICLES
-		X.fortify = FALSE
+		xeno.mob_size = MOB_SIZE_XENO //no longer knockback immune
+		xeno.mob_flags |= SQUEEZE_UNDER_VEHICLES
+		xeno.fortify = FALSE
 
-	apply_modifiers(X, fortify_state)
-	X.update_icons()
+	apply_modifiers(xeno, fortify_state)
+	xeno.update_icons()
 
-/datum/action/xeno_action/activable/fortify/proc/apply_modifiers(mob/living/carbon/xenomorph/X, fortify_state)
+/datum/action/xeno_action/activable/fortify/proc/apply_modifiers(mob/living/carbon/xenomorph/xeno, fortify_state)
 	if(fortify_state)
-		X.armor_deflection_buff += 30
-		X.armor_explosive_buff += 60
-		ADD_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Fortify"))
-		X.anchored = TRUE
-		X.small_explosives_stun = FALSE
+		xeno.armor_deflection_buff += 30
+		xeno.armor_explosive_buff += 60
+		ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Fortify"))
+		xeno.anchored = TRUE
+		xeno.small_explosives_stun = FALSE
 	else
-		X.armor_deflection_buff -= 30
-		X.armor_explosive_buff -= 60
-		X.small_explosives_stun = TRUE
+		xeno.armor_deflection_buff -= 30
+		xeno.armor_explosive_buff -= 60
+		xeno.small_explosives_stun = TRUE
 
 // Steel crest override
-/datum/action/xeno_action/activable/fortify/steel_crest/apply_modifiers(mob/living/carbon/xenomorph/X, fortify_state)
+/datum/action/xeno_action/activable/fortify/steel_crest/apply_modifiers(mob/living/carbon/xenomorph/xeno, fortify_state)
 	if(fortify_state)
-		X.armor_deflection_buff += 10
-		X.armor_explosive_buff += 60
-		X.ability_speed_modifier += 3
-		X.damage_modifier -= XENO_DAMAGE_MOD_SMALL
+		xeno.armor_deflection_buff += 10
+		xeno.armor_explosive_buff += 60
+		xeno.ability_speed_modifier += 3
+		xeno.damage_modifier -= XENO_DAMAGE_MOD_SMALL
 	else
-		X.armor_deflection_buff -= 10
-		X.armor_explosive_buff -= 60
-		X.ability_speed_modifier -= 3
-		X.damage_modifier += XENO_DAMAGE_MOD_SMALL
+		xeno.armor_deflection_buff -= 10
+		xeno.armor_explosive_buff -= 60
+		xeno.ability_speed_modifier -= 3
+		xeno.damage_modifier += XENO_DAMAGE_MOD_SMALL
 
 /datum/action/xeno_action/activable/fortify/proc/check_directional_armor(mob/living/carbon/xenomorph/defendy, list/damagedata)
 	SIGNAL_HANDLER

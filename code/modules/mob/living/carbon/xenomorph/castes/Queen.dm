@@ -934,7 +934,7 @@
 	var/mob/living/carbon/xenomorph/queen/Queen = bound_xeno
 	if(Queen.ovipositor)
 		Queen.icon = Queen.queen_ovipositor_icon
-		Queen.icon_state = "Normal Queen Ovipositor"
+		Queen.icon_state = "[Queen.get_strain_name()] Queen Ovipositor"
 		return TRUE
 
 	// Switch icon back and then let normal icon behavior happen

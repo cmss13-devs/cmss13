@@ -20,9 +20,9 @@
  * Add this strain to `xeno`, replacing their actions and behavior holder.
  *
  * Returns a bool indicating if the strain was successfully applied.
+ * **Override [/datum/xeno_strain/proc/apply_strain], not this! (Unless you know what you're doing.)**
  */
 /datum/xeno_strain/proc/_add_to_xeno(mob/living/carbon/xenomorph/xeno)
-	// Override `apply_changes()`, not this! (Unless you know what you're doing.)
 	SHOULD_NOT_OVERRIDE(TRUE)
 
 	xeno.strain = src

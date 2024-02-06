@@ -70,9 +70,9 @@
 		playsound(current_mob, 'sound/weapons/alien_tail_attack.ogg', 30, TRUE)
 
 	if (target_mobs.len >= shield_regen_threshold)
-		var/datum/behavior_delegate/praetorian_vanguard/BD = source_xeno.behavior_delegate
-		if (istype(BD))
-			BD.regen_shield()
+		var/datum/behavior_delegate/praetorian_vanguard/behavior = source_xeno.behavior_delegate
+		if (istype(behavior))
+			behavior.regen_shield()
 
 	apply_cooldown()
 	return ..()
@@ -134,9 +134,9 @@
 		playsound(get_turf(H), "alien_claw_flesh", 30, 1)
 
 	if (target_mobs.len >= shield_regen_threshold)
-		var/datum/behavior_delegate/praetorian_vanguard/BD = X.behavior_delegate
-		if (istype(BD))
-			BD.regen_shield()
+		var/datum/behavior_delegate/praetorian_vanguard/behavior = X.behavior_delegate
+		if (istype(behavior))
+			behavior.regen_shield()
 
 /datum/action/xeno_action/activable/cleave/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/vanguard_user = owner
@@ -794,15 +794,15 @@
 
 		var/bonus_shield = 0
 
-		var/datum/behavior_delegate/praetorian_warden/BD = X.behavior_delegate
-		if (!istype(BD))
+		var/datum/behavior_delegate/praetorian_warden/behavior = X.behavior_delegate
+		if (!istype(behavior))
 			return
 
-		if (!BD.use_internal_hp_ability(shield_cost))
+		if (!behavior.use_internal_hp_ability(shield_cost))
 			return
 
-		bonus_shield = BD.internal_hitpoints*0.5
-		if (!BD.use_internal_hp_ability(bonus_shield))
+		bonus_shield = behavior.internal_hitpoints*0.5
+		if (!behavior.use_internal_hp_ability(bonus_shield))
 			bonus_shield = 0
 
 		var/total_shield_amount = shield_amount + bonus_shield
@@ -836,15 +836,15 @@
 			return
 
 		var/bonus_heal = 0
-		var/datum/behavior_delegate/praetorian_warden/BD = X.behavior_delegate
-		if (!istype(BD))
+		var/datum/behavior_delegate/praetorian_warden/behavior = X.behavior_delegate
+		if (!istype(behavior))
 			return
 
-		if (!BD.use_internal_hp_ability(heal_cost))
+		if (!behavior.use_internal_hp_ability(heal_cost))
 			return
 
-		bonus_heal = BD.internal_hitpoints*0.5
-		if (!BD.use_internal_hp_ability(bonus_heal))
+		bonus_heal = behavior.internal_hitpoints*0.5
+		if (!behavior.use_internal_hp_ability(bonus_heal))
 			bonus_heal = 0
 
 		to_chat(X, SPAN_XENODANGER("We heal [targetXeno]!"))
@@ -853,7 +853,7 @@
 		targetXeno.visible_message(SPAN_BOLDNOTICE("[X] places its claws on [targetXeno], and its wounds are quickly sealed!")) //marines probably should know if a xeno gets healed
 		X.gain_health(heal_amount*0.5 + bonus_heal*0.5)
 		X.flick_heal_overlay(3 SECONDS, "#00B800")
-		BD.transferred_healing += heal_amount
+		behavior.transferred_healing += heal_amount
 		use_plasma = TRUE //it's already hard enough to gauge health without hp showing on the mob
 		targetXeno.flick_heal_overlay(3 SECONDS, "#00B800")//so the visible_message and recovery overlay will warn marines and possibly predators that the xenomorph has been healed!
 
@@ -862,11 +862,11 @@
 			to_chat(X, SPAN_XENOHIGHDANGER("We cannot rejuvenate targets through overwatch!"))
 			return
 
-		var/datum/behavior_delegate/praetorian_warden/BD = X.behavior_delegate
-		if (!istype(BD))
+		var/datum/behavior_delegate/praetorian_warden/behavior = X.behavior_delegate
+		if (!istype(behavior))
 			return
 
-		if (!BD.use_internal_hp_ability(debuff_cost))
+		if (!behavior.use_internal_hp_ability(debuff_cost))
 			return
 
 		to_chat(X, SPAN_XENODANGER("We rejuvenate [targetXeno]!"))
@@ -892,8 +892,8 @@
 	if(!istype(X))
 		return
 
-	var/datum/behavior_delegate/praetorian_warden/BD = X.behavior_delegate
-	if(!istype(BD))
+	var/datum/behavior_delegate/praetorian_warden/behavior = X.behavior_delegate
+	if(!istype(behavior))
 		return
 
 	if(X.observed_xeno != null)
@@ -936,7 +936,7 @@
 	if(!check_plasma_owner())
 		return
 
-	if(!BD.use_internal_hp_ability(retrieve_cost))
+	if(!behavior.use_internal_hp_ability(retrieve_cost))
 		return
 
 	if(!check_and_use_plasma_owner())

@@ -26,7 +26,8 @@
 /obj/structure/barricade/deployable/attackby(obj/item/item, mob/user)
 
 	if(iswelder(item))
-		attackby_welder(item, user)
+		if(!attackby_welder(item, user))
+			return FALSE
 
 		weld_cade(item, user)
 		return

@@ -488,12 +488,10 @@
 		to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
 		return FALSE
 
-	//When this test get activated the weld_cade that i after still happen i don't know why...
 	if(user.action_busy)
 		to_chat(user, SPAN_WARNING("You are currently doing something else"))
 		return FALSE
 
-	//When this test get activated the weld_cade that i after still happen i don't know why...
 	if(damage_state >= welder_fix && damage_state != null && damage_state != null)
 		to_chat(user, SPAN_WARNING("[src] has sustained too much structural damage to be repaired."))
 		return FALSE

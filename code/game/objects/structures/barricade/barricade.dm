@@ -487,10 +487,10 @@
 	if(health == maxhealth)
 		to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
 		return FALSE
-
+/* remove this check because we want people being able to weld multiple cades at the same time?
 	if(user.action_busy)
 		to_chat(user, SPAN_WARNING("You are currently doing something else"))
-		return FALSE
+		return FALSE*/
 
 	if(damage_state >= welder_fix && damage_state != null && welder_fix != null)
 		to_chat(user, SPAN_WARNING("[src] has sustained too much structural damage to be repaired."))

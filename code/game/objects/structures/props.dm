@@ -1400,7 +1400,8 @@
 	icon_state = "boulder_largedark1"
 /obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark2
 	icon_state = "boulder_largedark2"
-
+/obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark3
+	icon_state = "boulder_largedark3"
 /obj/structure/prop/hybrisa/boulders/wide_boulderdark
 	name = "boulder"
 	desc = "A large rock. It's not cooking anything."
@@ -1413,7 +1414,8 @@
 	unacidable = TRUE
 /obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder1
 	icon_state = "boulderwidedark"
-
+/obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder2
+	icon_state = "boulderwidedark2"
 /obj/structure/prop/hybrisa/boulders/smallboulderdark
 	name = "boulder"
 	icon_state = "bouldersmalldark1"
@@ -2648,12 +2650,21 @@
 /obj/structure/prop/hybrisa/misc/road/roadbarrierred
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "roadbarrier"
+/obj/structure/prop/hybrisa/misc/road/roadbarrierredlong
+	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
+	icon_state = "roadbarrier4"
 /obj/structure/prop/hybrisa/misc/road/roadbarrierblue
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "roadbarrier2"
+/obj/structure/prop/hybrisa/misc/road/roadbarrierbluelong
+	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
+	icon_state = "roadbarrier5"
 /obj/structure/prop/hybrisa/misc/road/roadbarrierwyblack
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "roadbarrier3"
+/obj/structure/prop/hybrisa/misc/road/roadbarrierwyblacklong
+	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
+	icon_state = "roadbarrier6"
 /obj/structure/prop/hybrisa/misc/road/roadbarrierwyblackjoined
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "roadbarrierjoined3"
@@ -2860,9 +2871,7 @@
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "grille"
 
-
-// Grille
-
+//
 /obj/structure/prop/hybrisa/misc/buildinggreeblies
 	name = "machinery"
 	icon = 'icons/obj/structures/props/64x64 zenithrandomprops.dmi'
@@ -2917,18 +2926,43 @@
 	desc = "A decorative concrete planter with seating attached."
 	icon = 'icons/obj/structures/props/64x64 zenithrandomprops.dmi'
 	icon_state = "planterseats"
-	bound_width = 64
+	bound_width = 32
 	bound_height = 64
 	density = TRUE
 	health = 200
 	opacity = TRUE
 	anchored = TRUE
 
+/obj/structure/prop/hybrisa/misc/stoneplanterseats/empty
+	icon_state = "planterempty"
 
-
-// To replace
-/obj/structure/prop/zenith/roadbarrier
-	name = "road barrier"
-	desc = "A barrier for blocking entry to restricted areas."
+/obj/structure/prop/hybrisa/misc/detonator
+	name = "inactive detonator"
+	desc = "A detonator for explosives, this one appears to be missing a vital component."
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
-	icon_state = "roadbarrier"
+	icon_state = "detonator"
+	density = TRUE
+	opacity = TRUE
+	anchored = TRUE
+
+/obj/structure/prop/hybrisa/misc/firehydrant
+	name = "fire hydrant"
+	desc = "A fire hydrant public water outlet, designed for quick access to water."
+	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
+	icon_state = "firehydrant"
+	density = TRUE
+	opacity = TRUE
+	anchored = TRUE
+/obj/structure/prop/hybrisa/misc/phonebox
+	name = "phonebox"
+	desc = "A phone-box, it doesn't seem to be working, the line must be down."
+	icon = 'icons/obj/structures/props/64x64 zenithrandomprops.dmi'
+	icon_state = "phonebox_closed"
+	bound_width = 32
+	bound_height = 64
+	density = TRUE
+	opacity = TRUE
+	anchored = TRUE
+/obj/structure/prop/hybrisa/misc/phonebox/broken
+	desc = "A phone-box, it doesn't seem to be working, the line must be down. The glass has been broken."
+	icon_state = "phonebox_closed_broken"

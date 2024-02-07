@@ -10340,6 +10340,7 @@
 	pixel_x = 1
 	},
 /obj/structure/machinery/cm_vending/sorted/medical/bolted,
+/obj/structure/medical_supply_link,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_corner"
@@ -16846,6 +16847,7 @@
 /area/almayer/squads/bravo)
 "bET" = (
 /obj/structure/machinery/cm_vending/sorted/medical/bolted,
+/obj/structure/medical_supply_link,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -23934,9 +23936,7 @@
 	},
 /area/almayer/engineering/lower/engine_core)
 "cGp" = (
-/obj/structure/machinery/cm_vending/clothing/senior_officer{
-	pixel_y = 0
-	},
+/obj/structure/machinery/cm_vending/clothing/senior_officer,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -31344,6 +31344,7 @@
 /area/almayer/command/cic)
 "fvJ" = (
 /obj/structure/machinery/cm_vending/sorted/medical/bolted,
+/obj/structure/medical_supply_link,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"
@@ -36343,6 +36344,7 @@
 	pixel_y = -32
 	},
 /obj/structure/machinery/cm_vending/sorted/medical/bolted,
+/obj/structure/medical_supply_link,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -40738,6 +40740,7 @@
 /area/almayer/living/commandbunks)
 "jbO" = (
 /obj/structure/machinery/cm_vending/sorted/medical/bolted,
+/obj/structure/medical_supply_link,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -45451,6 +45454,7 @@
 	pixel_y = -7
 	},
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry,
+/obj/structure/medical_supply_link,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -71506,6 +71510,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/cm_vending/sorted/medical/bolted,
+/obj/structure/medical_supply_link,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"
@@ -72150,6 +72155,7 @@
 /area/almayer/medical/containment/cell)
 "uyJ" = (
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry,
+/obj/structure/medical_supply_link,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},

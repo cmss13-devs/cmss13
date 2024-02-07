@@ -22,11 +22,9 @@
 	update_icon()
 
 /obj/structure/medical_supply_link/deconstruct(disassembled)
-	UnregisterSignal(src, COMSIG_STRUCTURE_WRENCHED)
-	UnregisterSignal(src, COMSIG_STRUCTURE_UNWRENCHED)
 	return ..()
 
-/obj/structure/medical_supply_link/proc/do_clamp_animation()
+/obj/structure/medical_supply_link/proc/do_clamp_animation() // clamp and unclamp animations for when vendor is wrench over supply link
 	flick("medlink_clamping", src)
 	addtimer(CALLBACK(src, PROC_REF(update_icon), 2.6 SECONDS))
 	update_icon()
@@ -58,7 +56,7 @@
 	vendor_theme = VENDOR_THEME_COMPANY
 	vend_delay = 0.5 SECONDS
 
-	var/requires_supply_link_port = TRUE
+	var/requires_supply_link_port = TRUE // sets vendor to require medlink to be able to resupply
 
 	var/datum/health_scan/last_health_display
 
@@ -106,7 +104,7 @@
 	if(healthscan)
 		. += SPAN_NOTICE("The [src.name] offers assisted medical scan, for ease of usage with minimal training. Present the target in front of the scanner to scan.")
 
-/obj/structure/machinery/cm_vending/sorted/medical/proc/get_supply_link()
+/obj/structure/machinery/cm_vending/sorted/medical/proc/get_supply_link() // checks supply link location in relation to medvendor
 	var/linkpoint = locate(/obj/structure/medical_supply_link) in loc
 	if(!linkpoint)
 		return FALSE
@@ -118,7 +116,7 @@
 			var/obj/item/reagent_container/container = item_to_stock
 			if(container.reagents.total_volume < container.reagents.maximum_volume)
 				if(user)
-					to_chat(user, SPAN_WARNING("\The [src] makes a buzzing noise as it rejects \the [container.name]. Looks like this vendor cannot refill these outside of a medical bay's supply link."))
+					to_chat(user, SPAN_WARNING("\The [src] makes a buzzing noise as it rejects [container.name]. Looks like this vendor cannot refill these outside of a medical bay's supply link."))
 					playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
 				return FALSE
 
@@ -128,7 +126,7 @@
 			var/obj/item/stack/restock_stack = item_to_stock
 			if(restock_stack.amount < restock_stack.max_amount) // if the stack is not full
 				if(user)
-					to_chat(user, SPAN_WARNING("\The [src] makes a buzzing noise as it rejects \the [restock_stack]. Looks like this vendor cannot restock non-full stacks outside of a medical bay's supply link."))
+					to_chat(user, SPAN_WARNING("\The [src] makes a buzzing noise as it rejects [restock_stack]. Looks like this vendor cannot restock non-full stacks outside of a medical bay's supply link."))
 					playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
 				return FALSE
 	return TRUE
@@ -154,7 +152,7 @@
 			return
 
 		if(requires_supply_link_port && !get_supply_link())
-			to_chat(user, SPAN_WARNING("\The [src] makes a buzzing noise as it rejects \the [C.name]. Looks like this vendor cannot refill these outside of a medical bay's supply link."))
+			to_chat(user, SPAN_WARNING("\The [src] makes a buzzing noise as it rejects [C.name]. Looks like this vendor cannot refill these outside of a medical bay's supply link."))
 			playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
 			return
 
@@ -183,7 +181,7 @@
 			return
 
 		if(requires_supply_link_port && !get_supply_link())
-			to_chat(user, SPAN_WARNING("\The [src] makes a buzzing noise as it rejects \the [S.name]. Looks like this vendor cannot restock non-full stacks outside of a medical bay's supply link."))
+			to_chat(user, SPAN_WARNING("\The [src] makes a buzzing noise as it rejects [S.name]. Looks like this vendor cannot restock non-full stacks outside of a medical bay's supply link."))
 			playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
 			return
 

@@ -178,7 +178,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 				bleeding_check = TRUE
 				break
 
-			if((!limb.brute_dam && !limb.burn_dam && !(limb.status & LIMB_DESTROYED)) && !bleeding_check && !internal_bleeding_check && !(implant && detail_level >= DETAIL_LEVEL_BODYSCAN ) && !(limb.status & LIMB_UNCALIBRATED_PROSTHETIC) && !(limb.status & LIMB_BROKEN) && !(limb.status & LIMB_SPLINTED) && !(limb.status & LIMB_SPLINTED_INDESTRUCTIBLE))
+			if((!limb.brute_dam && !limb.burn_dam && !(limb.status & LIMB_DESTROYED)) && !bleeding_check && !internal_bleeding_check && !(implant && detail_level >= DETAIL_LEVEL_BODYSCAN ) && !(limb.status & LIMB_UNCALIBRATED_PROSTHETIC) && !(limb.status & LIMB_BROKEN) && !(limb.status & LIMB_SPLINTED) && !(limb.status & LIMB_SPLINTED_INDESTRUCTIBLE) && !(limb.get_incision_depth()))
 				continue
 			var/list/core_body_parts = list("head", "chest", "groin")
 			var/list/current_list = list(
@@ -190,7 +190,6 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 				"missing" = (limb.status & LIMB_DESTROYED),
 				"limb_status" = null,
 				"bleeding" = bleeding_check,
-				"open_incision" = limb.get_incision_depth(),
 				"implant" = implant,
 				"internal_bleeding" = internal_bleeding_check
 			)
@@ -247,6 +246,24 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 				limb_type = "Synthskin"
 			if(limb_type)
 				current_list["limb_type"] = limb_type
+
+			//checking for open incisions, but since eyes and mouths incisions are "head incisions" but not "head surgeries" gotta do some snowflake
+			if(limb.name == "head")
+				if(human_target_mob.active_surgeries["head"])
+					current_list["open_incision"] = TRUE
+
+				var/zone
+				if(human_target_mob.active_surgeries["eyes"])
+					zone = "eyes"
+				if(human_target_mob.active_surgeries["mouth"])
+					if(zone)
+						zone = "eyes and mouth"
+					else
+						zone = "mouth"
+				current_list["open_zone_incision"] = capitalize(zone)
+
+			else
+				current_list["open_incision"] = limb.get_incision_depth()
 
 			limb_data_lists["[limb.name]"] = current_list
 

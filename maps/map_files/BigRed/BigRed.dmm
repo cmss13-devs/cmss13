@@ -7166,7 +7166,8 @@
 /area/bigredv2/caves/lambda/breakroom)
 "auw" = (
 /obj/structure/showcase{
-	icon_state = "mechfab1"
+	icon_state = "d_analyzer_la";
+	icon = 'icons/obj/structures/machinery/research.dmi'
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1

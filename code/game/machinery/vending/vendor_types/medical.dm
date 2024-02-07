@@ -10,7 +10,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	plane = FLOOR_PLANE
-	layer = 2.1 //It's the floor, man
+	layer = ABOVE_TURF_LAYER //It's the floor, man
 
 /obj/structure/medical_supply_link/ex_act(severity, direction)
 	return FALSE

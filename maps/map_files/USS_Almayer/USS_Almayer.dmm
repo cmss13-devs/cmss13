@@ -36896,6 +36896,13 @@
 	icon_state = "plate"
 	},
 /area/almayer/shipboard/brig/perma)
+"hDr" = (
+/obj/structure/machinery/photocopier,
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "red"
+	},
+/area/almayer/shipboard/brig/main_office)
 "hDw" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/emails{
@@ -65907,6 +65914,7 @@
 /area/almayer/shipboard/sea_office)
 "skq" = (
 /obj/structure/machinery/cm_vending/sorted/medical,
+/obj/structure/medical_supply_link,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"
@@ -92340,10 +92348,10 @@ vBm
 lOI
 pJv
 jLM
-tak
+wDp
 cMb
 rbi
-wDp
+hDr
 xys
 nkX
 iQB

@@ -71,14 +71,6 @@ GLOBAL_VAR_INIT(num_financial_terminals, 1)
 GLOBAL_LIST_EMPTY(all_money_accounts)
 GLOBAL_VAR_INIT(economy_init, FALSE)
 
-//from newscaster.dm this is necessary to make this file work properly since it use news_network.
-
-/// The global news-network, which is coincidentally a global list.
-GLOBAL_DATUM_INIT(news_network, /datum/feed_network, new())
-
-/datum/feed_network
-	var/list/datum/feed_channel/network_channels = list()// in used above.
-
 /proc/setup_economy()
 	if(GLOB.economy_init)
 		return 2

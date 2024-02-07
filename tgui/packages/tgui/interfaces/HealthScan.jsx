@@ -389,6 +389,11 @@ const ScannerLimbs = (props) => {
                       [Embedded Object]
                     </Box>
                   ) : null}
+                  {limb.open_zone_incision ? (
+                    <Box inline color={'red'} bold={1}>
+                      [Open Surgical Incision In {limb.open_zone_incision}]
+                    </Box>
+                  ) : null}
                 </Flex.Item>
               </>
             )}

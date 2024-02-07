@@ -1,4 +1,0 @@
-author: "Segrain"
-delete-after: True
-changes:
-  - bugfix: "Some cases of calculations for \"time remaining until something\" no longer display incorrect results."

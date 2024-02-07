@@ -677,7 +677,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 				if(length(total_visors) > iterator)
 					var/obj/item/device/helmet_visor/next_visor = total_visors[iterator + 1]
 
-					if(!isnull(GLOB.huds[next_visor.hud_type].hudusers[user]))
+					if(!isnull(GLOB.huds[next_visor.hud_type]?.hudusers[user]))
 						iterator++
 						skipped_hud = TRUE
 						continue
@@ -694,7 +694,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 	for(var/obj/item/device/helmet_visor/new_visor in total_visors)
 
-		if(!isnull(GLOB.huds[new_visor.hud_type].hudusers[user]))
+		if(!isnull(GLOB.huds[new_visor.hud_type]?.hudusers[user]))
 			continue
 
 		active_visor = new_visor

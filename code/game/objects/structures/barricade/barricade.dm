@@ -492,6 +492,6 @@
 		to_chat(user, SPAN_WARNING("You are currently doing something else"))
 		return FALSE
 
-	if(damage_state >= welder_fix && damage_state != null && damage_state != null)
+	if(damage_state >= welder_fix && damage_state != null && welder_fix != null)
 		to_chat(user, SPAN_WARNING("[src] has sustained too much structural damage to be repaired."))
 		return FALSE

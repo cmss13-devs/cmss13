@@ -28,6 +28,7 @@
 	if(iswelder(item))
 		if(!attackby_welder(item, user))
 			return FALSE
+		return TRUE
 
 		weld_cade(item, user)
 		return

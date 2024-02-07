@@ -17924,6 +17924,12 @@
 	},
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_colony_grounds)
+"nbs" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "panic_room"
+	},
+/turf/open/auto_turf/snow/layer3,
+/area/shiva/exterior/junkyard)
 "ncB" = (
 /obj/structure/surface/table/woodentable,
 /turf/open/floor/wood,
@@ -43636,7 +43642,7 @@ tHd
 tHd
 jMf
 tHd
-jMf
+nbs
 tHd
 jMf
 ofw

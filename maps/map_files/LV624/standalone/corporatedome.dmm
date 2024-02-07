@@ -198,13 +198,21 @@
 	},
 /area/lv624/lazarus/corporate_dome)
 "hc" = (
-/obj/structure/showcase,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
 /obj/structure/window/reinforced,
 /obj/structure/machinery/light{
 	dir = 4
+	},
+/obj/structure/showcase{
+	desc = "The display model for a Weyland Yutani generation one synthetic. It almost feels like the eyes on this one follow you.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Display synthetic"
+	},
+/obj/item/clothing/under/marine/veteran/pmc/corporate{
+	pixel_y = -2
 	},
 /turf/open/floor{
 	dir = 5;
@@ -245,10 +253,6 @@
 	dir = 8;
 	icon_state = "whitebluecorner"
 	},
-/area/lv624/lazarus/corporate_dome)
-"iS" = (
-/obj/item/stack/sheet/metal,
-/turf/open/floor/plating,
 /area/lv624/lazarus/corporate_dome)
 "iT" = (
 /obj/structure/filingcabinet,
@@ -318,10 +322,22 @@
 	icon_state = "whiteyellow"
 	},
 /area/lv624/lazarus/corporate_dome)
+"lX" = (
+/obj/structure/window_frame/colony/reinforced,
+/obj/item/shard,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/corporate_dome)
 "mg" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
 	icon_state = "white"
+	},
+/area/lv624/lazarus/corporate_dome)
+"mi" = (
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
 	},
 /area/lv624/lazarus/corporate_dome)
 "mp" = (
@@ -377,9 +393,18 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/structure/showcase,
 /obj/structure/machinery/light{
 	dir = 4
+	},
+/obj/structure/showcase{
+	desc = "The display model for a Weyland Yutani generation one synthetic. It almost feels like the eyes on this one follow you.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Display synthetic"
+	},
+/obj/item/clothing/under/liaison_suit/blazer,
+/obj/item/clothing/head/manager{
+	pixel_y = 13
 	},
 /turf/open/floor{
 	icon_state = "whiteblue"
@@ -401,17 +426,6 @@
 /obj/effect/landmark/corpsespawner/clf,
 /turf/open/floor{
 	icon_state = "dark"
-	},
-/area/lv624/lazarus/corporate_dome)
-"qC" = (
-/obj/item/storage/fancy/crayons{
-	pixel_x = 1;
-	pixel_y = 8
-	},
-/obj/structure/largecrate/supply/supplies/water,
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
 	},
 /area/lv624/lazarus/corporate_dome)
 "qH" = (
@@ -480,7 +494,15 @@
 "sH" = (
 /obj/structure/window_frame/colony/reinforced,
 /obj/item/stack/rods,
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/corporate_dome)
+"sX" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
 /area/lv624/lazarus/corporate_dome)
 "vf" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -548,6 +570,11 @@
 	icon_state = "asteroidwarning"
 	},
 /area/lv624/lazarus/landing_zones/lz2)
+"yJ" = (
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/lv624/lazarus/corporate_dome)
 "zm" = (
 /obj/structure/safe{
 	spawnkey = 0
@@ -598,10 +625,12 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
+/obj/structure/prop/invuln/pipe_water{
+	dir = 8;
+	pixel_y = -12;
+	pixel_x = 6
 	},
+/turf/open/floor/plating,
 /area/lv624/lazarus/corporate_dome)
 "AG" = (
 /obj/structure/barricade/wooden,
@@ -636,6 +665,12 @@
 	},
 /turf/open/floor{
 	icon_state = "white"
+	},
+/area/lv624/lazarus/corporate_dome)
+"Ct" = (
+/obj/structure/window_frame/colony/reinforced,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
 	},
 /area/lv624/lazarus/corporate_dome)
 "CF" = (
@@ -698,10 +733,10 @@
 	},
 /area/lv624/lazarus/corporate_dome)
 "Ez" = (
-/obj/structure/machinery/light{
+/obj/structure/machinery/light_construct{
 	dir = 4
 	},
-/obj/structure/largecrate/random/barrel/green,
+/obj/item/stack/cable_coil,
 /turf/open/floor{
 	dir = 6;
 	icon_state = "whiteyellow"
@@ -774,14 +809,11 @@
 	},
 /area/lv624/lazarus/corporate_dome)
 "Gt" = (
-/obj/structure/closet/secure_closet/engineering_personal,
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light_construct/small{
 	dir = 8
 	},
-/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
+	icon_state = "platingdmg1"
 	},
 /area/lv624/lazarus/corporate_dome)
 "GM" = (
@@ -800,11 +832,13 @@
 /obj/item/ammo_casing/bullet{
 	icon_state = "cartridge_9_1"
 	},
+/obj/effect/decal/cleanable/blood/gibs/xeno,
 /turf/open/floor{
 	icon_state = "white"
 	},
 /area/lv624/lazarus/corporate_dome)
 "Ho" = (
+/obj/structure/largecrate/random/barrel/green,
 /turf/open/floor{
 	icon_state = "whiteyellowcorner"
 	},
@@ -813,6 +847,7 @@
 /obj/effect/decal/cleanable/blood/drip,
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/fancy/cigar,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "whiteyellow"
@@ -915,6 +950,11 @@
 	icon_state = "white"
 	},
 /area/lv624/lazarus/corporate_dome)
+"LZ" = (
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/lv624/lazarus/corporate_dome)
 "Me" = (
 /turf/open/floor/plating{
 	dir = 1;
@@ -939,16 +979,14 @@
 /obj/item/stack/sheet/metal/med_small_stack,
 /obj/item/stack/sheet/plasteel/med_small_stack,
 /obj/item/stack/sandbags/small_stack,
+/obj/item/device/motiondetector/hacked/pmc,
 /turf/open/floor{
 	icon_state = "dark"
 	},
 /area/lv624/lazarus/corporate_dome)
 "Pa" = (
 /obj/structure/closet/toolcloset,
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/floor/plating,
 /area/lv624/lazarus/corporate_dome)
 "Pr" = (
 /obj/item/ammo_casing/bullet{
@@ -964,13 +1002,25 @@
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/corporate_dome)
 "Rn" = (
-/obj/structure/showcase,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
 /obj/structure/window/reinforced,
 /obj/structure/machinery/light{
 	dir = 8
+	},
+/obj/structure/showcase{
+	desc = "The display model for a Weyland Yutani generation one synthetic. It almost feels like the eyes on this one follow you.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Display synthetic"
+	},
+/obj/item/clothing/head/helmet/marine/veteran/pmc{
+	pixel_y = 11;
+	pixel_x = -1
+	},
+/obj/item/clothing/under/marine/veteran/pmc{
+	pixel_y = -2
 	},
 /turf/open/floor{
 	dir = 9;
@@ -1038,6 +1088,7 @@
 	},
 /area/lv624/lazarus/corporate_dome)
 "Uo" = (
+/obj/item/shard,
 /turf/open/floor/plating{
 	dir = 1;
 	icon_state = "asteroidfloor"
@@ -1076,12 +1127,6 @@
 	icon_state = "whiteyellowcorner"
 	},
 /area/lv624/lazarus/corporate_dome)
-"WL" = (
-/obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/lv624/lazarus/corporate_dome)
 "Xc" = (
 /obj/structure/barricade/metal{
 	dir = 4;
@@ -1091,6 +1136,12 @@
 	icon_state = "white"
 	},
 /area/lv624/lazarus/corporate_dome)
+"Xf" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/lv624/lazarus/corporate_dome)
 "Xp" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -1098,9 +1149,17 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/showcase,
 /obj/structure/machinery/light{
 	dir = 8
+	},
+/obj/structure/showcase{
+	desc = "The display model for a Weyland Yutani generation one synthetic. It almost feels like the eyes on this one follow you.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Display synthetic"
+	},
+/obj/item/clothing/under/colonist{
+	pixel_y = -2
 	},
 /turf/open/floor{
 	dir = 10;
@@ -1132,8 +1191,7 @@
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/corporate_dome)
 "Ye" = (
-/obj/structure/largecrate/random,
-/obj/item/device/motiondetector/hacked/pmc,
+/obj/structure/largecrate/supply/supplies/water,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whiteblue"
@@ -1149,16 +1207,8 @@
 	},
 /area/lv624/lazarus/corporate_dome)
 "Yv" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/tool/shovel/etool/folded,
-/obj/item/tool/soap/deluxe{
-	pixel_x = 4;
-	pixel_y = 13
-	},
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/obj/item/frame/table/reinforced,
+/turf/open/floor/plating,
 /area/lv624/lazarus/corporate_dome)
 "Yz" = (
 /obj/item/weapon/gun/rifle/m41a/corporate/no_lock{
@@ -1275,8 +1325,8 @@ he
 XG
 XG
 XG
-XG
-XG
+LZ
+yJ
 Xt
 Xt
 Xt
@@ -1297,8 +1347,8 @@ Bh
 XG
 Pa
 Gt
-qC
-XG
+LZ
+LZ
 Xt
 Xt
 Xt
@@ -1318,9 +1368,9 @@ Bh
 Bh
 qH
 Uo
-Uo
-Uo
-XG
+yJ
+LZ
+mi
 Xt
 Xt
 Xt
@@ -1337,11 +1387,11 @@ wW
 qn
 OH
 Bh
-WL
+Bh
 XG
 Yv
 Aj
-Uo
+mi
 XG
 Xt
 Xt
@@ -1583,7 +1633,7 @@ bA
 XC
 jJ
 iT
-oq
+Xf
 Xt
 Xt
 Xt
@@ -1665,7 +1715,7 @@ XG
 Tc
 dq
 dO
-iS
+Xf
 jH
 is
 pR
@@ -1685,12 +1735,12 @@ Xt
 Xt
 XG
 Li
-gx
-oq
+sX
+Ct
 Le
-gx
-zs
-gx
+sX
+lX
+sX
 SO
 Xt
 Xt

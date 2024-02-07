@@ -404,7 +404,7 @@
 				targets.Remove(A)
 				continue
 
-		var/list/turf/path = getline2(src, A, include_from_atom = FALSE)
+		var/list/turf/path = get_line(src, A, include_start_atom = FALSE)
 		if(!path.len || get_dist(src, A) > sentry_range)
 			if(A == target)
 				target = null

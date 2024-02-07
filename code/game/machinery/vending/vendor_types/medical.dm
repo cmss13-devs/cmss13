@@ -4,7 +4,7 @@
 	name = "\improper Wey-Med Plus"
 	desc = "Medical Pharmaceutical dispenser. Provided by Wey-Yu Pharmaceuticals Division(TM)."
 	icon_state = "med"
-	req_access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY)
+	req_access = list(ACCESS_MARINE_MEDBAY)
 
 	unacidable = TRUE
 	unslashable = FALSE
@@ -183,6 +183,7 @@
 	name = "\improper Wey-Chem Plus"
 	desc = "Medical chemistry dispenser. Provided by Wey-Yu Pharmaceuticals Division(TM)."
 	icon_state = "chem"
+	req_access = list(ACCESS_MARINE_CHEMISTRY)
 
 	healthscan = FALSE
 	chem_refill = list(
@@ -221,7 +222,6 @@
 	req_access = list()
 
 /obj/structure/machinery/cm_vending/sorted/medical/bolted
-	req_access = list()
 	wrenchable = FALSE
 
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry/no_access
@@ -300,7 +300,6 @@
 	stack_refill = null
 
 /obj/structure/machinery/cm_vending/sorted/medical/blood/bolted
-	req_access = list()
 	wrenchable = FALSE
 
 /obj/structure/machinery/cm_vending/sorted/medical/blood/populate_product_list(scale)

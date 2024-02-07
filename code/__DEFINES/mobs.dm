@@ -89,6 +89,8 @@
 #define DAZE "daze"
 #define SLOW "slow"
 #define SUPERSLOW "superslow"
+#define ROOT "root"
+
 //=================================================
 
 //I hate adding defines like this but I'd much rather deal with bitflags than lists and string searches
@@ -100,7 +102,7 @@
 
 //Bitflags defining which status effects could be or are inflicted on a mob
 
-#define STATUS_FLAGS_DEBILITATE (CANSTUN|CANKNOCKOUT|CANDAZE|CANSLOW)
+#define STATUS_FLAGS_DEBILITATE (CANSTUN|CANKNOCKOUT|CANDAZE|CANSLOW|CANROOT)
 
 #define CANSTUN (1<<0)
 #define CANKNOCKDOWN (1<<1)
@@ -108,6 +110,7 @@
 #define CANPUSH (1<<3)
 #define LEAPING (1<<4)
 #define PASSEMOTES (1<<5) //holders inside of mob that need to see emotes.
+#define CANROOT (1<<6)
 #define GODMODE (1<<12)
 #define FAKEDEATH (1<<13) //Replaces stuff like changeling.changeling_fakedeath
 #define DISFIGURED (1<<14) //I'll probably move this elsewhere if I ever get wround to writing a bitflag mob-damage system

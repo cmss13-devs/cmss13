@@ -162,13 +162,14 @@
 
 	var/list/leap_line = getline2(xeno, target)
 	for(var/turf/jump_turf in leap_line)
-		if(istype(jump_turf, /turf/closed))
+		if(jump_turf.density)
 			to_chat(xeno, SPAN_XENONOTICE("We don't have a clear path to leap to that location!"))
 			return
-		var/atom/barrier = jump_turf.handle_barriers(A = xeno , pass_flags = (PASS_OVER|PASS_MOB_IS))
-		if(barrier != jump_turf)
-			to_chat(xeno, SPAN_XENONOTICE("There's something blocking us from leaping!"))
-			return
+
+		for(var/obj/structure/possible_blocker in jump_turf)
+			if(!possible_blocker.throwpass)
+				to_chat(xeno, SPAN_XENONOTICE("There's something blocking us from leaping."))
+				return
 
 	if(!check_and_use_plasma_owner())
 		to_chat(xeno, SPAN_XENONOTICE("We don't have enough plasma to use [name]."))
@@ -221,7 +222,6 @@
 				leaping = FALSE
 				animate(owner, alpha = 255, transform = oldtransform, time = 0, flags = ANIMATION_END_NOW) //reset immediately
 			return
-	owner.status_flags |= GODMODE
 
 	owner.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	SLEEP_CHECK_DEATH(7, owner)
@@ -252,18 +252,16 @@
 
 	/// BIRDTALON: MAKE THIS A FOR?
 	new /obj/effect/temp_visual/heavy_impact(owner.loc)
-	new /obj/effect/temp_visual/heavy_impact(get_step(owner.loc, NORTH))
-	new /obj/effect/temp_visual/heavy_impact(get_step(owner.loc, EAST))
-	new /obj/effect/temp_visual/heavy_impact(get_step(owner.loc, WEST))
-	new /obj/effect/temp_visual/heavy_impact(get_step(owner.loc, SOUTH))
-	new /obj/effect/temp_visual/heavy_impact(get_step(owner.loc, SOUTHEAST))
-	new /obj/effect/temp_visual/heavy_impact(get_step(owner.loc, SOUTHWEST))
-	new /obj/effect/temp_visual/heavy_impact(get_step(owner.loc, NORTHWEST))
-	new /obj/effect/temp_visual/heavy_impact(get_step(owner.loc, NORTHEAST))
 
-	/// Actual Damaging Effects - Add stuff for cades - NEED TELEGRAPHS NEED EFFECTS
+	for(var/step in CARDINAL_ALL_DIRS)
+		new /obj/effect/temp_visual/heavy_impact(get_step(owner.loc, step))
 
+	// Actual Damaging Effects - Add stuff for cades - NEED TELEGRAPHS NEED EFFECTS
+
+	// Mobs first high damage and knockback away from centre
 	for(var/mob/living/carbon/carbon in orange(1, owner) - owner)
+		if(xeno.can_not_harm(carbon))
+			continue
 		carbon.adjustBruteLoss(75)
 		if(!QDELETED(carbon)) // Some mobs are deleted on death
 			var/throw_dir = get_dir(owner, carbon)
@@ -274,6 +272,7 @@
 			carbon.KnockDown(0.5)
 			xeno.visible_message(SPAN_WARNING("[carbon] is thrown clear of [owner]!"))
 
+	// Any items get thrown away
 	for(var/obj/item/item in orange(1, owner))
 		if(!QDELETED(item))
 			var/throw_dir = get_dir(owner, item)
@@ -282,12 +281,18 @@
 			var/throwtarget = get_edge_target_turf(owner, throw_dir)
 			item.throw_atom(throwtarget, 2, SPEED_REALLY_FAST, owner, TRUE)
 
-	/// DAMAGING CADES HERE
+	// Break windows in the aoe
 
+	for(var/obj/structure/window/window in range(1, owner))
+		window.shatter_window(create_debris = TRUE)
+		playsound(src, "windowshatter", 50, 1)
+
+
+	// Barricades suffer heavy damage
 	for(var/obj/structure/barricade/cade in orange(2, owner))
-		cade.add_filter("cluster_stacks", 2, list("type" = "outline", "color" = COLOR_RED, "size" = 1))
 		cade.take_damage(250)
 
+	// Shake the camera of any mobs in the vicinity
 	for(var/mob/living in range(7, owner))
 		shake_camera(living, 15, 1)
 
@@ -296,7 +301,6 @@
 
 	SLEEP_CHECK_DEATH(1, owner)
 	leaping = FALSE
-	owner.status_flags &= ~GODMODE
 	apply_cooldown()
 	..()
 

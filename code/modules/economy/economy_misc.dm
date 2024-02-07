@@ -83,27 +83,6 @@ GLOBAL_DATUM_INIT(news_network, /datum/feed_network, new())
 	if(GLOB.economy_init)
 		return 2
 
-	var/datum/feed_channel/newChannel = new /datum/feed_channel
-	newChannel.channel_name = "Public Station Announcements"
-	newChannel.author = "Automated Announcement Listing"
-	newChannel.locked = 1
-	newChannel.is_admin_channel = 1
-	GLOB.news_network.network_channels += newChannel
-
-	newChannel = new /datum/feed_channel
-	newChannel.channel_name = "Nyx Daily"
-	newChannel.author = "CentComm Minister of Information"
-	newChannel.locked = 1
-	newChannel.is_admin_channel = 1
-	GLOB.news_network.network_channels += newChannel
-
-	newChannel = new /datum/feed_channel
-	newChannel.channel_name = "The Gibson Gazette"
-	newChannel.author = "Editor Mike Hammers"
-	newChannel.locked = 1
-	newChannel.is_admin_channel = 1
-	GLOB.news_network.network_channels += newChannel
-
 	for(var/loc_type in typesof(/datum/trade_destination) - /datum/trade_destination)
 		var/datum/trade_destination/D = new loc_type
 		GLOB.weighted_randomevent_locations[D] = D.viable_random_events.len
@@ -161,42 +140,3 @@ GLOBAL_DATUM_INIT(news_network, /datum/feed_network, new())
 	GLOB.all_money_accounts.Add(department_account)
 
 	GLOB.department_accounts[department] = department_account
-
-// those datum come from newscaster.dm and are necessary to make this file and holder2.dm work properly.
-// no idea how to refactor this.(seem like a tottaly different PR to me... and way more difficult that i can manage)
-
-/datum/feed_message
-	var/author =""
-	var/body =""
-	var/message_type ="Story"
-	var/backup_body =""
-	var/backup_author =""
-	var/is_admin_message = 0
-	var/icon/img = null
-	var/icon/backup_img
-
-/datum/feed_channel
-	var/channel_name=""
-	var/list/datum/feed_message/messages = list()
-	var/locked=0
-	var/author=""
-	var/backup_author=""
-	var/censored=0
-	var/is_admin_channel=0
-
-/datum/feed_message/proc/clear()
-	src.author = ""
-	src.body = ""
-	src.backup_body = ""
-	src.backup_author = ""
-	src.img = null
-	src.backup_img = null
-
-/datum/feed_channel/proc/clear()
-	src.channel_name = ""
-	src.messages = list()
-	src.locked = 0
-	src.author = ""
-	src.backup_author = ""
-	src.censored = 0
-	src.is_admin_channel = 0

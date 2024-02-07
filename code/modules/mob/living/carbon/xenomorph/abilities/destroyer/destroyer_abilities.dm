@@ -45,7 +45,7 @@
 	plasma_cost = 0
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
-	var/range = 5
+	var/range = 7
 	var/leaping = FALSE
 
 /// Shield ability, limits the amount of damage from a single instance of damage to 10% of the xenomorph's max health.

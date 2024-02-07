@@ -1,7 +1,7 @@
 //------------SUPPLY LINK FOR MEDICAL VENDORS---------------
 
 /obj/structure/medical_supply_link
-	name = "medical supplies link port"
+	name = "medilink supply port"
 	desc = "A complex network of pipes and machinery, linking to large storage systems below the deck. Medical vendors linked to this port will be able to infinitely restock supplies."
 	icon = 'icons/effects/warning_stripes.dmi'
 	icon_state = "medlink_unclamped"

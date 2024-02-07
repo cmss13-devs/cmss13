@@ -282,8 +282,8 @@
 	name = "\improper XM4 pattern intelligence officer armor"
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/qm_suit, /obj/item/clothing/under/marine/officer/intel)
 	specialty = "XM4 pattern intel"
-	desc = "Tougher than steel, quieter than whispers, the XM4 Intel Armor provides capable protection combined with integrated compact motion detection sensors. It took an R&D team a weekend to develop and costs more than Chinook Station... probably."
-	desc_lore = "ARMAT Perfection. The XM4 Soldier Awareness System mixes M4-style hard armor and a distributed series of sensors around the breastplate. When connected to any HUD optic, it replicates the effects of an M134 Motion Detector unit, increasing user situational awareness. It is currently undergoing field trials by intelligence operatives."
+	desc = "Tougher than steel, quieter than whispers, the XM4 Intel Armor provides capable protection combined with an experimental integrated motion tracker. It took an R&D team a weekend to develop and costs more than the Chinook Station... probably."
+	desc_lore = "ARMAT Perfection. The XM4 Soldier Awareness System mixes M4-style hard armor and a distributed series of motion sensors around the breastplate. When connected to any HUD optic, it replicates the effects of an M314 Motion Detector unit, increasing user situational awareness. It is currently undergoing field trials by intelligence operatives."
 	/// XM4 Integral Motion Detector Ability
 	actions_types = list(/datum/action/item_action/toggle, /datum/action/item_action/intel/toggle_motion_detector)
 	var/motion_detector = FALSE

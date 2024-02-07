@@ -108,3 +108,10 @@
   Vicacrov:
   - bugfix: Fixes Defenders staying Fortified in critical state - Fortify now automatically
       toggles itself off upon the Defender getting critted.
+2024-02-07:
+  InsaneRed:
+  - balance: Scout specialist incin/high impact mag crates now only has 3 instead
+      of 5
+  Steelpoint:
+  - rscadd: USCM Chestrig has been added to squad prep vendors, alternative sprite
+      of a satchel, similar in appearance to the welder-chestrig.

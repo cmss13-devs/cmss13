@@ -1923,6 +1923,26 @@
 	bound_height = 32
 	bound_width = 64
 	debris = list(/obj/item/stack/sheet/metal)
+
+/obj/structure/prop/hybrisa/furniture/tables/tableblack/blacktablecomputer
+    icon = 'icons/obj/structures/props/zenithtables.dmi'
+    icon_state = "blackmetaltable_computer"
+
+/obj/structure/prop/hybrisa/furniture/tables/tablewood
+	name = "large wood table"
+	desc = "A large wooden table, looks very expensive."
+	icon_state = "brownlargetable"
+	density = TRUE
+	climbable = TRUE
+	breakable = TRUE
+	bound_height = 32
+	bound_width = 64
+	debris = list(/obj/item/stack/sheet/wood)
+
+/obj/structure/prop/hybrisa/furniture/tables/tablewood/woodtablecomputer
+    icon = 'icons/obj/structures/props/zenithtables.dmi'
+    icon_state = "brownlargetable_computer"
+
 /obj/structure/prop/hybrisa/furniture/tables/tablepool
 	name = "pool table"
 	desc = "A large table used for Pool."
@@ -2210,6 +2230,10 @@
 	name = "cuppa joe's sign"
 	icon = 'icons/obj/structures/props/zenith64x64_signs.dmi'
 	icon_state = "cuppajoes"
+/obj/structure/prop/hybrisa/signs/barsign
+	name = "bar sign"
+	icon = 'icons/obj/structures/props/zenith64x64_signs.dmi'
+	icon_state = "barsign_on"
 
 // Airport
 
@@ -2934,6 +2958,8 @@
 	anchored = TRUE
 
 /obj/structure/prop/hybrisa/misc/stoneplanterseats/empty
+	name = "concrete planter"
+	desc = "A decorative concrete planter."
 	icon_state = "planterempty"
 
 /obj/structure/prop/hybrisa/misc/detonator
@@ -2958,8 +2984,9 @@
 	desc = "A phone-box, it doesn't seem to be working, the line must be down."
 	icon = 'icons/obj/structures/props/64x64 zenithrandomprops.dmi'
 	icon_state = "phonebox_closed"
+	layer = ABOVE_MOB_LAYER
 	bound_width = 32
-	bound_height = 64
+	bound_height = 32
 	density = TRUE
 	opacity = TRUE
 	anchored = TRUE

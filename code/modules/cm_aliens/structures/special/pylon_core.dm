@@ -143,13 +143,18 @@
 
 	/// Listed players here are on cooldown from trying to purchase a buff to prevent spam. Each leader can attempt only once every 5 minutes.
 	var/list/players_on_buff_cooldown
+	/// Hivebuff being sustained by this pylon
+	var/datum/hivebuff/sustained_buff
 
 /obj/effect/alien/resin/special/pylon/endgame/Initialize(mapload, mob/builder)
 	. = ..()
 	LAZYINITLIST(players_on_buff_cooldown)
+	LAZYADD(linked_hive.active_endgame_pylons, src)
 
 /obj/effect/alien/resin/special/pylon/endgame/Destroy()
 	players_on_buff_cooldown = null
+	sustained_buff = null
+	LAZYREMOVE(linked_hive.active_endgame_pylons)
 	if(activated)
 		activated = FALSE
 

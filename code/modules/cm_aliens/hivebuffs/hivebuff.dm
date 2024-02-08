@@ -26,13 +26,16 @@
 	var/_timer_id
 	/// The hive that this buff is applied to.
 	var/datum/hive_status/hive
-	/// The pylon sustaining this hive buff
-	var/obj/effect/alien/resin/special/pylon/sustained_pylon
+	/// List of pylons sustaining the hive buff, can be one or two pylons
+	var/list/sustained_pylons
 	///Name of the buff, short and to the point
 	var/name = "Hivebuff"
 	/// Description of what the buff does.
 	var/desc = "Base hivebuff"
-
+	/// Round time before the buff becomes available to purchase
+	var/roundtime_to_enable = 1 HOUR
+	/// Number of pylons required to buy the buff
+	var/number_of_required_pylons = 1
 	/// Flavour message to announce to the hive on buff application. Narrated to all players in the hive.
 	var/engage_flavourmessage = "The qween has purchased a buff UwU!"
 	/// Flavour message to announce to the hive on buff expiry. Narrated to all players in the hive.
@@ -60,10 +63,13 @@
 	/// TRUE when buff has been ended via sustained_pylon Pylon qdeletion
 	var/ended_via_qdeletion = FALSE
 
+	/// Flavour message to give to the marines on buff engage
+	var/marine_flavourmessage
+
 
 /datum/hivebuff/New(datum/hive_status/xenohive)
 	. = ..()
-	if(!istype(xenohive))
+	if(!xenohive || !istype(xenohive))
 		stack_trace("Hivebuff created without correct hive_status passed.")
 		return FALSE
 	hive = xenohive
@@ -73,6 +79,7 @@
 /datum/hivebuff/Destroy(force, ...)
 	LAZYREMOVE(hive.active_hivebuffs, name)
 	hive = null
+	sustained_pylons = null
 	. = ..()
 
 /// If the pylon sustaining this hive buff is destroyed for any reason
@@ -83,7 +90,11 @@
 		deltimer(_timer_id)
 	UnregisterSignal(sustained_pylon, COMSIG_PARENT_QDELETING)
 	announce_buff_loss(sustained_pylon)
-	sustained_pylon = null
+	sustained_pylons =- src
+	// If this is also being sustained by the other pylon(s) clear any references to this
+	if(LAZYLEN(sustained_pylons)
+		for(var/obj/effect/alien/resin/special/pylon/pylon in sustained_pylons)
+			pylon.hivebuff.sustained_buff = null
 	_on_cease()
 
 /datum/hivebuff/proc/announce_buff_loss()
@@ -91,6 +102,10 @@
 
 ///Wrapper for on_engage(), handles checking if the buff can be actually purchased as well as adding buff to the active_hivebuffs and used_hivebuffs for the hive.
 /datum/hivebuff/proc/_on_engage(mob/living/carbon/xenomorph/purchasing_mob, obj/effect/alien/resin/special/pylon/endgame/purchased_pylon)
+
+	if(!check_num_required_pylons(purchased_pylon))
+		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive does not have the required number of active pylons! We require [number_of_required_pylons]"))
+		return FALSE
 
 	if(!check_can_afford_buff())
 		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive cannot afford [name]! [hive.buff_points] / [cost] points."))
@@ -168,8 +183,28 @@
 	if(cease_flavourmessage && !ended_via_qdeletion)
 		announce_buff_cease()
 	on_cease()
+	if(!ended_via_qdeletion)
+		for(var/obj/effect/alien/resin/special/pylon/endgame/pylon in sustained_pylons)
+			pylon.sustained_buff = null
 	qdel(src)
 
+/// Checks the number of pylons required and if the hive posesses them
+/datrum/hivebuff/proc/check_num_required_pylons(obj/effect/alien/resin/special/pylon/endgame/purchased_pylon)
+	var/list/viable_pylons = list()
+	if(number_of_required_pylons > 1)
+		for(var/obj/effect/alien/resin/special/pylon/endgame/potential_pylon in hive.active_endgame_pylons)
+			if(potential_pylon == purchased_pylon)
+				continue
+
+			// Pylons can only sustain one buff at a time
+			if(potential_pylon.sustained_buff)
+				continue
+			viable_pylons += potential_pylon
+
+		if(length(viable_pylons) >= number_of_required_pylons)
+			return TRUE
+		return FALSE
+	return TRUE
 
 /// Checks if the hive can afford to purchase the buff returns TRUE if they can purchase and FALSE if not.
 /datum/hivebuff/proc/check_can_afford_buff()
@@ -228,16 +263,17 @@
 	return
 
 /datum/hivebuff/proc/announce_buff_engage()
-	if(!engage_flavourmessage)
-		return
-	if(tier > HIVEBUFF_TIER_MINOR)
-		xeno_announcement(engage_flavourmessage, hive.hivenumber, "Buff Purchased")
-	for(var/mob/xenomorph as anything in hive.totalXenos)
-		if(!xenomorph.client)
-			continue
-		xenomorph.play_screen_text(engage_flavourmessage, override_color = "#740064")
-		if(tier <= HIVEBUFF_TIER_MINOR)
-			to_chat(xenomorph, SPAN_XENO(engage_flavourmessage))
+	if(engage_flavourmessage)
+		if(tier > HIVEBUFF_TIER_MINOR)
+			xeno_announcement(engage_flavourmessage, hive.hivenumber, "Buff Purchased")
+		for(var/mob/xenomorph as anything in hive.totalXenos)
+			if(!xenomorph.client)
+				continue
+			xenomorph.play_screen_text(engage_flavourmessage, override_color = "#740064")
+			if(tier <= HIVEBUFF_TIER_MINOR)
+				to_chat(xenomorph, SPAN_XENO(engage_flavourmessage))
+	if(marine_flavourmessage)
+		marine_announcement(marine_flavourmessage, COMMAND_ANNOUNCE, 'sound/AI/bioscan.ogg')
 
 /datum/hivebuff/proc/announce_buff_cease()
 	for(var/mob/living/xenomorph as anything in hive.totalXenos)

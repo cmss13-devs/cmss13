@@ -141,6 +141,8 @@
 	var/list/active_hivebuffs
 	var/list/used_hivebuffs
 
+	var/list/active_endgame_pylons
+
 	/*Stores the image()'s for the xeno evolution radial menu
 	To add an image for your caste - add an icon to icons/mob/xenos/radial_xenos.dmi
 	Icon size should be 32x32, to make them fit within the radial menu border size your icon 22x22 and leave 10px transparent border.
@@ -160,6 +162,7 @@
 		available_nicknumbers += number
 	LAZYINITLIST(active_hivebuffs)
 	LAZYINITLIST(used_hivebuffs)
+	LAZYINITLIST(active_endgame_pylons)
 
 	if(hivenumber != XENO_HIVE_NORMAL)
 		return
@@ -1377,6 +1380,37 @@
 		return
 	clear_personal_allies(TRUE)
 /// Hive buffs
+
+/// Get a list of hivebuffs which can be bought now.
+/datum/hive_status/proc/get_available_hivebuffs()
+	var/list/potential_hivebuffs = subtypesof(/datum/hivebuff)
+	var/roundtime = world.time
+	for(var/datum/hivebuff/possible_hivebuff in potential_hivebuffs)
+		// Round isn't old enough yet
+		if(initial(possible_hivebuff.roundtime_to_enable) < roundtime)
+			potential_hivebuffs -= possible_hivebuff
+			continue
+
+		if(initial(possible_hivebuff.is_unique) && active_hivebuffs)
+			var/found = FALSE
+			for(var/datum/hivebuff/active_buff in active_hivebuffs)
+				if(istype(active_buff, possible_hivebuff))
+					found = TRUE
+					break
+			if(found)
+				potential_hivebuffs -= possible_hivebuff
+				continue
+
+		if(!initial(possible_hivebuff.is_reusable) && used_hivebuffs)
+			var/found = FALSE
+			for(var/datum/hivebuff/used_buff in used_hivebuffs)
+				if(istype(used_buff, possible_hivebuff))
+					found = TRUE
+					break
+			if(found)
+				potential_hivebuffs -= possible_hivebuff
+				continue
+
 
 /datum/hive_status/proc/attempt_apply_hivebuff(datum/hivebuff/hivebuff, mob/living/purchasing_player, obj/effect/alien/resin/special/pylon/endgame/purchased_pylon)
 	var/datum/hivebuff/new_buff = new hivebuff(src)

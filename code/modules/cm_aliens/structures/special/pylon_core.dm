@@ -219,7 +219,7 @@
 
 /obj/effect/alien/resin/special/pylon/endgame/attack_alien(mob/living/carbon/xenomorph/xeno)
 	choose_hivebuff(xeno)
-	return
+	return XENO_NONCOMBAT_ACTION
 	///BIRDTALON: REVERT TO THIS AFTER TESTING
 	/*
 	if(!damaged && health == maxhealth && xeno.a_intent == INTENT_HELP && xeno.hivenumber == linked_hive.hivenumber && IS_XENO_LEADER(xeno))
@@ -236,7 +236,7 @@
 /obj/effect/alien/resin/special/pylon/endgame/proc/choose_hivebuff(mob/living/carbon/xenomorph/xeno)
 	var/list/buffs = list()
 	var/list/names = list()
-	for(var/datum/hivebuff/buff as anything in typesof(/datum/hivebuff))
+	for(var/datum/hivebuff/buff as anything in linked_hive.get_available_hivebuffs())
 		var/buffname = initial(buff.name)
 		names += buffname
 		buffs[buffname] = buff

@@ -1368,6 +1368,7 @@
 			potential_hivebuffs -= possible_hivebuff
 			continue
 
+		//If this buff is unique, check against other currently active hivebuffs
 		if(initial(possible_hivebuff.is_unique) && active_hivebuffs)
 			var/found = FALSE
 			for(var/datum/hivebuff/active_buff in active_hivebuffs)
@@ -1377,7 +1378,7 @@
 			if(found)
 				potential_hivebuffs -= possible_hivebuff
 				continue
-
+		// If the buff is not reusable check against used hivebuffs.
 		if(!initial(possible_hivebuff.is_reusable) && used_hivebuffs)
 			var/found = FALSE
 			for(var/datum/hivebuff/used_buff in used_hivebuffs)

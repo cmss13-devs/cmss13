@@ -100,3 +100,24 @@
       up independently on health scanner
   cuberound:
   - balance: increases healing node heal from 10hp every 5 sec to 20 hp every 5 sec
+2024-02-06:
+  InsaneRed:
+  - rscadd: Warden Praetorians can now see how much healing they've done.
+  - qol: Re-organizes the warden ''hotbar''
+  - bugfix: SO's M3 armor now has the proper description.
+  Vicacrov:
+  - bugfix: Fixes Defenders staying Fortified in critical state - Fortify now automatically
+      toggles itself off upon the Defender getting critted.
+2024-02-07:
+  InsaneRed:
+  - balance: Scout specialist incin/high impact mag crates now only has 3 instead
+      of 5
+  Steelpoint:
+  - rscadd: USCM Chestrig has been added to squad prep vendors, alternative sprite
+      of a satchel, similar in appearance to the welder-chestrig.
+2024-02-08:
+  Megaddd:
+  - imageadd: added 4 bone-gel fill level sprite states
+  SpartanBobby:
+  - maptweak: changes to LV624 Engineering and T-comms, mostly detailing but changes
+      some doors and object placement

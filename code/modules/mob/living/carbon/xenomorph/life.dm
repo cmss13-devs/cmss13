@@ -506,6 +506,7 @@ Make sure their actual health updates immediately.*/
 /mob/living/carbon/xenomorph/proc/handle_crit()
 	if(stat <= CONSCIOUS && !gibbing)
 		set_stat(UNCONSCIOUS)
+		SEND_SIGNAL(src, COMSIG_XENO_ENTER_CRIT)
 
 /mob/living/carbon/xenomorph/set_stat(new_stat)
 	. = ..()

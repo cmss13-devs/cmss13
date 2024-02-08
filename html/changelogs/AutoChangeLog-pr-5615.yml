@@ -1,5 +1,0 @@
-author: "InsaneRed"
-delete-after: True
-changes:
-  - rscadd: "Warden Praetorians can now see how much healing they've done."
-  - qol: "Re-organizes the warden ''hotbar''"

@@ -1592,7 +1592,6 @@
 	icon_state = "CMB_jacket_marshal"
 	item_state = "CMB_jacket_marshal"
 
-
 /obj/item/clothing/suit/storage/RO
 	name = "quartermaster jacket"
 	desc = "A green jacket worn by USCM personnel. The back has the flag of the United Americas on it."

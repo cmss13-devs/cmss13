@@ -154,7 +154,7 @@
 /obj/effect/alien/resin/special/pylon/endgame/Destroy()
 	players_on_buff_cooldown = null
 	sustained_buff = null
-	LAZYREMOVE(linked_hive.active_endgame_pylons)
+	LAZYREMOVE(linked_hive.active_endgame_pylons, src)
 	if(activated)
 		activated = FALSE
 

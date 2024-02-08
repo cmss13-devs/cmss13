@@ -33,7 +33,7 @@
 	/// Description of what the buff does.
 	var/desc = "Base hivebuff"
 	/// Round time before the buff becomes available to purchase
-	var/roundtime_to_enable = 1 HOUR
+	var/roundtime_to_enable = 1 HOURS
 	/// Number of pylons required to buy the buff
 	var/number_of_required_pylons = 1
 	/// Flavour message to announce to the hive on buff application. Narrated to all players in the hive.
@@ -92,12 +92,12 @@
 	announce_buff_loss(sustained_pylon)
 	sustained_pylons =- src
 	// If this is also being sustained by the other pylon(s) clear any references to this
-	if(LAZYLEN(sustained_pylons)
-		for(var/obj/effect/alien/resin/special/pylon/pylon in sustained_pylons)
-			pylon.hivebuff.sustained_buff = null
+	if(LAZYLEN(sustained_pylons))
+		for(var/obj/effect/alien/resin/special/pylon/endgame/pylon in sustained_pylons)
+			pylon.sustained_buff = null
 	_on_cease()
 
-/datum/hivebuff/proc/announce_buff_loss()
+/datum/hivebuff/proc/announce_buff_loss(obj/effect/alien/resin/special/pylon/sustained_pylon)
 	xeno_announcement("Our pylon at [sustained_pylon.loc] has been destroyed!! Our hive buff [name] has waned...", hive.hivenumber, "Hive Buff Wanes!")
 
 ///Wrapper for on_engage(), handles checking if the buff can be actually purchased as well as adding buff to the active_hivebuffs and used_hivebuffs for the hive.
@@ -156,10 +156,10 @@
 	// Add to the relevant hive lists.
 	LAZYADD(hive.used_hivebuffs, name)
 	LAZYADDASSOC(hive.active_hivebuffs, name, src)
-	sustained_pylon = purchased_pylon
+	LAZYADD(sustained_pylons, purchased_pylon)
 
 	// Register signal to check if the pylon is ever destroyed.
-	RegisterSignal(sustained_pylon, COMSIG_PARENT_QDELETING, PROC_REF(on_pylon_deletion))
+	RegisterSignal(purchased_pylon, COMSIG_PARENT_QDELETING, PROC_REF(on_pylon_deletion))
 
 	// Announce to our hive that we've completed.
 	announce_buff_engage()
@@ -189,7 +189,7 @@
 	qdel(src)
 
 /// Checks the number of pylons required and if the hive posesses them
-/datrum/hivebuff/proc/check_num_required_pylons(obj/effect/alien/resin/special/pylon/endgame/purchased_pylon)
+/datum/hivebuff/proc/check_num_required_pylons(obj/effect/alien/resin/special/pylon/endgame/purchased_pylon)
 	var/list/viable_pylons = list()
 	if(number_of_required_pylons > 1)
 		for(var/obj/effect/alien/resin/special/pylon/endgame/potential_pylon in hive.active_endgame_pylons)

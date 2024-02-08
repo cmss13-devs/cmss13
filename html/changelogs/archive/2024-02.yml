@@ -115,3 +115,9 @@
   Steelpoint:
   - rscadd: USCM Chestrig has been added to squad prep vendors, alternative sprite
       of a satchel, similar in appearance to the welder-chestrig.
+2024-02-08:
+  Megaddd:
+  - imageadd: added 4 bone-gel fill level sprite states
+  SpartanBobby:
+  - maptweak: changes to LV624 Engineering and T-comms, mostly detailing but changes
+      some doors and object placement

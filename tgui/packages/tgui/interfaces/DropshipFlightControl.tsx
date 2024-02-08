@@ -1,6 +1,6 @@
 import { useBackend, useSharedState } from '../backend';
 import { Window } from '../layouts';
-import { Box, Button, Flex, Icon, ProgressBar, Section, Stack } from '../components';
+import { Box, Button, Flex, Icon, ProgressBar, Section, Stack, Tooltip } from '../components';
 import { LaunchButton, CancelLaunchButton, DisabledScreen, InFlightCountdown, LaunchCountdown, NavigationProps, ShuttleRecharge, DockingPort } from './NavigationShuttle';
 
 interface DoorStatus {
@@ -69,6 +69,12 @@ const DropshipDoorControl = () => {
             )}
           </>
         ))}>
+      <Tooltip
+        position="bottom"
+        content="Aft - Rear ; Port - Left ; Starboard - Right">
+        <Box position="relative"> Info </Box>
+      </Tooltip>
+
       <Stack className="DoorControlStack">
         {data.door_status
           .filter((x) => x.id !== 'all')

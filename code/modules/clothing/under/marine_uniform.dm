@@ -697,7 +697,6 @@
 	desc = "A pair of black slacks and a short-sleeve grey workshirt. Standard uniform for Weyland Yutani employees working in colony operations and administration."
 	icon_state = "workwear_grey"
 	worn_state = "workwear_grey"
-	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/colonist/workwear/khaki
 	name = "khaki workwear"

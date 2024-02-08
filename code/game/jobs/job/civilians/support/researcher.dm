@@ -10,7 +10,7 @@
 	selection_class = "job_researcher"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = /datum/equipment_preset/uscm_ship/uscm_medical/researcher
-	entry_message_body = "You're a Weyland-Yutani Researcher contracted out by the Company to the USCMC for their own R&D Project which is still in it's infancy, you are not in the ship's chain of command. You are tasked with <a href='"+WIKI_PLACEHOLDER+"'>researching</a> and developing new medical treatments, helping your fellow doctors, and generally learning new things. Your role involves a lot of roleplaying, but you can perform the function of a regular doctor. Do not hand out things to Marines without getting permission from your supervisor."
+	entry_message_body = "You're a Weyland-Yutani Researcher contracted out by the Company to the USCMC for their own R&D Project which is still in it's infancy, you are not in the ship's chain of command. The Executive aboard the ship is not your boss and neither are you theirs, the Company wants all it's employees to work together. 'Building Better Worlds since 2099!' With that out of the way, you are tasked with <a href='"+WIKI_PLACEHOLDER+"'>researching</a> and developing new medical treatments, helping your fellow doctors, and work with the Liaison in an equivalent work environment. Your role involves a lot of roleplaying, but you can perform the function of a regular doctor. Do not hand out things to Marines without getting permission from your supervisor."
 
 /datum/job/civilian/researcher/set_spawn_positions(count)
 	spawn_positions = rsc_slot_formula(count)

@@ -1362,14 +1362,14 @@
 /datum/hive_status/proc/get_available_hivebuffs()
 	var/list/potential_hivebuffs = subtypesof(/datum/hivebuff)
 	var/roundtime = world.time
-	for(var/datum/hivebuff/possible_hivebuff in potential_hivebuffs)
+	for(var/datum/hivebuff/possible_hivebuff as anything in potential_hivebuffs)
 		// Round isn't old enough yet
 		if(initial(possible_hivebuff.roundtime_to_enable) < roundtime)
 			potential_hivebuffs -= possible_hivebuff
 			continue
 
-		//If this buff is unique, check against other currently active hivebuffs
-		if(initial(possible_hivebuff.is_unique) && active_hivebuffs)
+		//If this buff is already active, check against other currently active hivebuffs
+		if(LAZYLEN(active_hivebuffs))
 			var/found = FALSE
 			for(var/datum/hivebuff/active_buff in active_hivebuffs)
 				if(istype(active_buff, possible_hivebuff))
@@ -1378,6 +1378,12 @@
 			if(found)
 				potential_hivebuffs -= possible_hivebuff
 				continue
+
+		//If this buff is unique, check if any other hivebuffs are active
+		if(initial(possible_hivebuff.is_unique) && LAZYLEN(active_hivebuffs))
+			potential_hivebuffs -= possible_hivebuff
+			continue
+
 		// If the buff is not reusable check against used hivebuffs.
 		if(!initial(possible_hivebuff.is_reusable) && used_hivebuffs)
 			var/found = FALSE
@@ -1389,6 +1395,7 @@
 				potential_hivebuffs -= possible_hivebuff
 				continue
 
+	return potential_hivebuffs
 
 /datum/hive_status/proc/attempt_apply_hivebuff(datum/hivebuff/hivebuff, mob/living/purchasing_player, obj/effect/alien/resin/special/pylon/endgame/purchased_pylon)
 	var/datum/hivebuff/new_buff = new hivebuff(src)

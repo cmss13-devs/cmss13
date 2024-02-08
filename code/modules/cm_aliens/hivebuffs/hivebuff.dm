@@ -102,10 +102,24 @@
 
 ///Wrapper for on_engage(), handles checking if the buff can be actually purchased as well as adding buff to the active_hivebuffs and used_hivebuffs for the hive.
 /datum/hivebuff/proc/_on_engage(mob/living/carbon/xenomorph/purchasing_mob, obj/effect/alien/resin/special/pylon/endgame/purchased_pylon)
+	var/list/pylons_to_use = list()
 
 	if(!check_num_required_pylons(purchased_pylon))
-		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive does not have the required number of active pylons! We require [number_of_required_pylons]"))
+		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive does not have the required number of available pylons! We require [number_of_required_pylons]"))
 		return FALSE
+	//Add purchasing pylon to list of pylons to use.
+	pylons_to_use += purchased_pylon
+	//If we need more pylons then add them to the list to handle setting up the buffs later
+	if(number_of_required_pylons > 1)
+		for(var/obj/effect/alien/resin/special/pylon/endgame/potential_pylon in hive.active_endgame_pylons)
+			// Already in the list, move onto the next pylon
+			if(potential_pylon == purchased_pylon)
+				continue
+			// We have enough pylons already break the loop
+			if(length(pylons_to_use) == number_of_required_pylons)
+				break
+			// Add the pylon to the list
+			pylons_to_use += potential_pylon
 
 	if(!check_can_afford_buff())
 		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive cannot afford [name]! [hive.buff_points] / [cost] points."))
@@ -156,10 +170,13 @@
 	// Add to the relevant hive lists.
 	LAZYADD(hive.used_hivebuffs, name)
 	LAZYADDASSOC(hive.active_hivebuffs, name, src)
-	LAZYADD(sustained_pylons, purchased_pylon)
 
 	// Register signal to check if the pylon is ever destroyed.
-	RegisterSignal(purchased_pylon, COMSIG_PARENT_QDELETING, PROC_REF(on_pylon_deletion))
+
+	for(var/obj/effect/alien/resin/special/pylon/endgame/pylon_to_register in pylons_to_use)
+		LAZYADD(sustained_pylons, purchased_pylon)
+		pylon_to_register.sustained_buff = src
+		RegisterSignal(pylon_to_register, COMSIG_PARENT_QDELETING, PROC_REF(on_pylon_deletion))
 
 	// Announce to our hive that we've completed.
 	announce_buff_engage()
@@ -180,13 +197,15 @@
 
 /// Wrapper for on_cease(), calls qdel(src) after on_cease() behaviour.
 /datum/hivebuff/proc/_on_cease()
-	if(cease_flavourmessage && !ended_via_qdeletion)
-		announce_buff_cease()
+	announce_buff_cease()
+	/// Clear refernces to this buff and unregister signal
 	on_cease()
 	if(!ended_via_qdeletion)
-		for(var/obj/effect/alien/resin/special/pylon/endgame/pylon in sustained_pylons)
-			pylon.sustained_buff = null
-	qdel(src)
+		for(var/obj/effect/alien/resin/special/pylon/endgame/pylon_to_clear in sustained_pylons)
+			pylon_to_clear.sustained_buff = null
+			UnregisterSignal(pylon_to_clear, COMSIG_PARENT_QDELETING)
+		qdel(src)
+
 
 /// Checks the number of pylons required and if the hive posesses them
 /datum/hivebuff/proc/check_num_required_pylons(obj/effect/alien/resin/special/pylon/endgame/purchased_pylon)
@@ -201,7 +220,7 @@
 				continue
 			viable_pylons += potential_pylon
 
-		if(length(viable_pylons) >= number_of_required_pylons)
+		if(length(viable_pylons) >= (number_of_required_pylons - 1))
 			return TRUE
 		return FALSE
 	return TRUE
@@ -306,7 +325,9 @@
 	tier = HIVEBUFF_TIER_MAJOR
 
 	engage_flavourmessage = "The queen has imbued us with greater fortitude."
-	duration = 20 SECONDS
+	duration = 30 SECONDS
+	number_of_required_pylons = 2
+	roundtime_to_enable = 10 MINUTES
 
 
 /datum/hivebuff/extra_life/on_engage()

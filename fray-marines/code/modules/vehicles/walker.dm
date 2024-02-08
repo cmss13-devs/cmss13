@@ -33,8 +33,8 @@
 	var/acid_process_cooldown = null
 	var/list/dmg_multipliers = list(
 		"all" = 1.0, //for when you want to make it invincible
-		"acid" = 0.9,
-		"slash" = 0.6,
+		"acid" = 1.2,
+		"slash" = 0.85,
 		"bullet" = 0.2,
 		"explosive" = 5.0,
 		"blunt" = 0.1,
@@ -47,6 +47,28 @@
 	var/obj/item/walker_armor/armor_module = null
 	var/selected = GUN_LEFT
 
+	var/list/verb_list = list(
+				/obj/vehicle/walker/verb/get_out,
+				/obj/vehicle/walker/verb/toggle_lights,
+				/obj/vehicle/walker/verb/toggle_zoom,
+				/obj/vehicle/walker/verb/eject_magazines,
+				/obj/vehicle/walker/verb/select_weapon,
+				/obj/vehicle/walker/verb/get_stats,
+			)
+
+	var/list/step_sounds = list(
+		'fray-marines/sound/vehicle/walker/mecha_step1.ogg',
+		'fray-marines/sound/vehicle/walker/mecha_step2.ogg',
+		'fray-marines/sound/vehicle/walker/mecha_step3.ogg',
+		'fray-marines/sound/vehicle/walker/mecha_step4.ogg',
+		'fray-marines/sound/vehicle/walker/mecha_step5.ogg'
+	)
+	var/list/turn_sounds = list(
+		'fray-marines/sound/vehicle/walker/mecha_turn1.ogg',
+		'fray-marines/sound/vehicle/walker/mecha_turn2.ogg',
+		'fray-marines/sound/vehicle/walker/mecha_turn3.ogg',
+		'fray-marines/sound/vehicle/walker/mecha_turn4.ogg'
+	)
 	flags_atom = FPRINT|USES_HEARING
 
 /obj/vehicle/walker/Initialize()
@@ -133,16 +155,51 @@
 		if(dir != direction && GLOB.reverse_dir[dir] != direction)
 			l_move_time = world.time
 			dir = direction
-			pick(playsound(src.loc, 'sound/mecha/powerloader_turn.ogg', 25, 1), playsound(src.loc, 'sound/mecha/powerloader_turn2.ogg', 25, 1))
+			playsound(src.loc, pick(turn_sounds), 70, 1)
 			. = TRUE
 		else
 			var/oldDir = dir
 			. = step(src, direction)
 			setDir(oldDir)
 			if(.)
-				pick(playsound(loc, 'sound/mecha/powerloader_step.ogg', 25), playsound(loc, 'sound/mecha/powerloader_step2.ogg', 25))
+				playsound(src.loc, pick(step_sounds), 60, 1)
 
 /obj/vehicle/walker/Bump(atom/obstacle)
+	if(isxeno(obstacle))
+		var/mob/living/carbon/xenomorph/xeno = obstacle
+
+		if (xeno.mob_size >= MOB_SIZE_IMMOBILE)
+			xeno.visible_message(SPAN_DANGER("\The [xeno] digs it's claws into the ground, anchoring itself in place and halting \the [src] in it's tracks!"),
+				SPAN_DANGER("You dig your claws into the ground, stopping \the [src] in it's tracks!")
+			)
+			return
+
+		switch(xeno.tier)
+			if(1)
+				xeno.visible_message(
+					SPAN_DANGER("\The [src] smashes at [xeno], bringing him down!"),
+					SPAN_DANGER("You got smashed by walking metal box!")
+				)
+				xeno.AdjustKnockDown(0.5 SECONDS)
+				xeno.apply_damage(round((maxHealth / 100) * VEHICLE_TRAMPLE_DAMAGE_MIN), BRUTE)
+				xeno.last_damage_data = create_cause_data("[initial(name)] roadkill", seats[VEHICLE_DRIVER])
+				var/mob/living/driver = seats[VEHICLE_DRIVER]
+				log_attack("[key_name(xeno)] was rammed by [key_name(driver)] with [src].")
+			if(2)
+				xeno.visible_message(
+					SPAN_DANGER("\The [src] smashes at [xeno], shoving it away!"),
+					SPAN_DANGER("You got smashed by walking metal box!")
+				)
+				var/direction_taken = pick(45, 0, -45)
+				var/mob_moved = step(xeno, turn(last_move_dir, direction_taken))
+
+				if(!mob_moved)
+					mob_moved = step(xeno, turn(last_move_dir, -direction_taken))
+			if(3)
+				xeno.visible_message(SPAN_DANGER("\The [xeno] digs it's claws into the ground, anchoring itself in place and halting \the [src] in it's tracks!"),
+					SPAN_DANGER("You dig your claws into the ground, stopping \the [src] in it's tracks!")
+				)
+		return
 	if(istype(obstacle, /obj/structure/machinery/door))
 		var/obj/structure/machinery/door/door = obstacle
 		if(door.allowed(seats[VEHICLE_DRIVER]))
@@ -155,7 +212,7 @@
 		return
 
 	else if(istype(obstacle, /obj/structure/barricade))
-		pick(playsound(loc, 'sound/mecha/powerloader_step.ogg', 25), playsound(loc, 'sound/mecha/powerloader_step2.ogg', 25))
+		playsound(src.loc, pick(step_sounds), 60, 1)
 		var/obj/structure/barricade/cade = obstacle
 		var/new_dir = get_dir(src, cade) ? get_dir(src, cade) : cade.dir
 		var/turf/new_loc = get_step(loc, new_dir)
@@ -192,16 +249,6 @@
 	else
 		..()
 
-/obj/vehicle/walker/verb/enter_walker()
-	set category = "Object"
-	set name = "Enter Into Walker"
-	set src in oview(1)
-
-	if(usr.skills.get_skill_level(SKILL_POWERLOADER))
-		move_in(usr)
-	else
-		to_chat(usr, "How to operate it?")
-
 /obj/vehicle/walker/proc/move_in(mob/living/carbon/user)
 	set waitfor = FALSE
 	if(!ishuman(user))
@@ -210,23 +257,40 @@
 		to_chat(user, "There is someone occupying mecha right now.")
 		return
 	var/mob/living/carbon/human/H = user
+
+	if (!do_after(H, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED))
+		return
 	for(var/ID in list(H.wear_id, H.belt))
 		if(operation_allowed(ID))
-			seats[VEHICLE_DRIVER] = user
-			add_verb(seats[VEHICLE_DRIVER].client, list(
-				/obj/vehicle/walker/proc/eject,
-				/obj/vehicle/walker/proc/lights,
-				/obj/vehicle/walker/proc/zoom,
-				/obj/vehicle/walker/proc/select_weapon,
-				/obj/vehicle/walker/proc/deploy_magazine,
-				/obj/vehicle/walker/proc/get_stats,
+			seats[VEHICLE_DRIVER] = H
+			add_verb(H, list(
+				/obj/vehicle/walker/verb/get_out,
+				/obj/vehicle/walker/verb/toggle_lights,
+				/obj/vehicle/walker/verb/toggle_zoom,
+				/obj/vehicle/walker/verb/eject_magazines,
+				/obj/vehicle/walker/verb/select_weapon,
+				/obj/vehicle/walker/verb/get_stats,
 			))
 			user.loc = src
 			seats[VEHICLE_DRIVER].client.mouse_pointer_icon = file("icons/mecha/mecha_mouse.dmi")
 			seats[VEHICLE_DRIVER].set_interaction(src)
-			playsound_client(seats[VEHICLE_DRIVER].client, 'sound/mecha/powerup.ogg')
+			RegisterSignal(H, COMSIG_MOB_RESISTED, PROC_REF(move_out))
+			to_chat(seats[VEHICLE_DRIVER], SPAN_HELPFUL("Нажмите среднюю кнопку мыши чтобы менять оружие."))
+			to_chat(seats[VEHICLE_DRIVER], SPAN_HELPFUL("Нажмите Shift+MMB для сброса боеприпасов с основного орудия."))
+
+			if (selected) {
+				if (left && left.automatic) {
+					left.register_signals(user)
+				}
+			} else {
+				if (right && right.automatic) {
+					right.register_signals(user)
+				}
+			}
+
+			playsound_client(seats[VEHICLE_DRIVER].client, 'fray-marines/sound/vehicle/walker/mecha_start.ogg', 60)
 			update_icon()
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), seats[VEHICLE_DRIVER].client, 'sound/mecha/nominalsyndi.ogg'), 5 SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), seats[VEHICLE_DRIVER].client, 'fray-marines/sound/vehicle/walker/mecha_online.ogg', 60), 2 SECONDS)
 			return
 
 	to_chat(user, "Access denied.")
@@ -236,18 +300,19 @@
 		return TRUE
 	return FALSE
 
-/obj/vehicle/walker/proc/eject()
-	set name = "Eject"
-	set category = "Vehicle"
-	var/mob/M = usr
-	if(!M || !istype(M))
-		return
+// /obj/vehicle/walker/proc/eject()
+// 	set name = "Eject"
+// 	set category = "Vehicle"
+// 	var/mob/M = usr
 
-	var/obj/vehicle/walker/W = M.interactee
+// 	if(!M || !istype(M))
+// 		return
 
-	if(!W || !istype(W))
-		return
-	W.move_out()
+// 	var/obj/vehicle/walker/W = M.interactee
+
+// 	if(!W || !istype(W))
+// 		return
+// 	W.move_out()
 
 /obj/vehicle/walker/proc/move_out()
 	if(!seats[VEHICLE_DRIVER])
@@ -258,36 +323,44 @@
 		unzoom()
 	if(seats[VEHICLE_DRIVER].client)
 		seats[VEHICLE_DRIVER].client.mouse_pointer_icon = initial(seats[VEHICLE_DRIVER].client.mouse_pointer_icon)
-	seats[VEHICLE_DRIVER].unset_interaction()
-	seats[VEHICLE_DRIVER].loc = src.loc
-	seats[VEHICLE_DRIVER].reset_view(null)
-	remove_verb(seats[VEHICLE_DRIVER].client, list(
-				/obj/vehicle/walker/proc/eject,
-				/obj/vehicle/walker/proc/lights,
-				/obj/vehicle/walker/proc/zoom,
-				/obj/vehicle/walker/proc/select_weapon,
-				/obj/vehicle/walker/proc/deploy_magazine,
-				/obj/vehicle/walker/proc/get_stats,
+
+	var/mob/living/L = seats[VEHICLE_DRIVER]
+
+	if(!do_after(L, 1 SECONDS, INTERRUPT_ALL, null, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+		return
+
+	L.unset_interaction()
+	L.loc = src.loc
+	L.reset_view(null)
+	remove_verb(L, list(
+				/obj/vehicle/walker/verb/get_out,
+				/obj/vehicle/walker/verb/toggle_lights,
+				/obj/vehicle/walker/verb/toggle_zoom,
+				/obj/vehicle/walker/verb/eject_magazines,
+				/obj/vehicle/walker/verb/select_weapon,
+				/obj/vehicle/walker/verb/get_stats,
 			))
+	UnregisterSignal(L, COMSIG_MOB_RESISTED)
+
+	if (selected) {
+		if (left && left.automatic) {
+			left.unregister_signals(L)
+		}
+	} else {
+		if (right && right.automatic) {
+			right.unregister_signals(L)
+		}
+	}
 	seats[VEHICLE_DRIVER] = null
 	update_icon()
 	return TRUE
 
 /obj/vehicle/walker/proc/lights()
-	set name = "Lights on/off"
-	set category = "Vehicle"
-	var/mob/M = usr
+	var/mob/M = seats[VEHICLE_DRIVER]
+
 	if(!M || !istype(M))
 		return
 
-	var/obj/vehicle/walker/W = M.interactee
-
-
-	if(!W || !istype(W))
-		return
-	W.handle_lights()
-
-/obj/vehicle/walker/proc/handle_lights()
 	if(!lights)
 		lights = TRUE
 		set_light(lights_power)
@@ -297,11 +370,9 @@
 	seats[VEHICLE_DRIVER] << sound('sound/machines/click.ogg',volume=50)
 
 /obj/vehicle/walker/proc/deploy_magazine()
-	set name = "Deploy Magazine"
-	set category = "Vehicle"
-	var/mob/M = usr
+	var/mob/M = seats[VEHICLE_DRIVER]
 
-	var/obj/vehicle/walker/W = M.interactee
+	var/obj/vehicle/walker/W = src
 
 	if(!W || !istype(W))
 		return
@@ -323,24 +394,30 @@
 			to_chat(M, "<span class='warning'>WARNING! [W.right.name] ammo magazine deployed.</span>")
 			visible_message("[W.name]'s systems deployed used magazine.","")
 
-/obj/vehicle/walker/proc/get_stats()
-	set name = "Status Display"
-	set category = "Vehicle"
+// /obj/vehicle/walker/proc/get_stats()
+// 	set name = "Status Display"
+// 	set category = "Vehicle"
 
-	var/mob/M = usr
-	if(!M || !istype(M))
-		return
+// 	var/mob/M = usr
+// 	if(!M || !istype(M))
+// 		return
 
-	var/obj/vehicle/walker/W = M.interactee
+// 	var/obj/vehicle/walker/W = M.interactee
 
-	if(!W || !istype(W))
-		return
+// 	if(!W || !istype(W))
+// 		return
 
-	if(M != W.seats[VEHICLE_DRIVER])
-		return
-	W.statistics(M)
+// 	if(M != W.seats[VEHICLE_DRIVER])
+// 		return
+// 	W.statistics(M)
 
 /obj/vehicle/walker/proc/statistics(mob/user)
+	if(!user)
+		user = seats[VEHICLE_DRIVER]
+
+		if(!user)
+			return
+
 	to_chat(user, "<h2>[name] Interface</h2>")
 	to_chat(user, "<span class='notice'>Vehicle Status:</span><br>")
 
@@ -368,15 +445,14 @@
 	else
 		to_chat(user, "<span class='warning'>RIGHT HARDPOINT IS EMPTY!</span>")
 
-/obj/vehicle/walker/proc/select_weapon()
-	set name = "Select Weapon"
-	set category = "Vehicle"
+/obj/vehicle/walker/proc/cycle_weapons(mob/M)
+	if(!M)
+		M = seats[VEHICLE_DRIVER]
 
-	var/mob/M = usr
-	if(!M || !istype(M))
-		return
+		if(!M)
+			return
 
-	var/obj/vehicle/walker/W = M.interactee
+	var/obj/vehicle/walker/W = src
 
 	if(!W || !istype(W))
 		return
@@ -385,35 +461,69 @@
 		if(!W.right)
 			return
 		W.selected = !W.selected
+		W.right.register_signals(M)
+		W.left.unregister_signals(M)
 	else
 		if(!W.left)
 			return
 		W.selected = !W.selected
+		W.left.register_signals(M)
+		W.right.unregister_signals(M)
 	to_chat(M, "Selected [W.selected ? "[W.left]" : "[W.right]"]")
 
+/obj/vehicle/walker/proc/handle_click_mods(list/mods)
+	if (mods["middle"] && mods["shift"])
+		deploy_magazine()
+		return TRUE
+	if (mods["middle"])
+		cycle_weapons()
+		return TRUE
+
+	return !mods["left"]
+
 /obj/vehicle/walker/handle_click(mob/living/user, atom/A, list/mods)
+	var/special_click = handle_click_mods(mods)
+
+	if (special_click)
+		return
+
 	if(istype(A, /atom/movable/screen) || A.z != src.z)
 		return
 	if(!firing_arc(A))
+		if (left)
+			SEND_SIGNAL(left, COMSIG_GUN_STOP_FIRE)
+		if (right)
+			SEND_SIGNAL(right, COMSIG_GUN_STOP_FIRE)
 		var/newDir = get_cardinal_dir(src, A)
 		l_move_time = world.time
 		if(dir != newDir)
-			pick(playsound(src.loc, 'sound/mecha/powerloader_turn.ogg', 25, 1), playsound(src.loc, 'sound/mecha/powerloader_turn2.ogg', 25, 1))
+			playsound(src.loc, pick(turn_sounds), 70, 1)
 		dir = newDir
 		return
 	if(selected)
 		if(!left)
 			to_chat(usr, "<span class='warning'>WARNING! Hardpoint is empty.</span>")
 			return
-		left.active_effect(A)
+		if (left.automatic)
+			return
+		left.active_effect(A, user)
 	else
 		if(!right)
 			to_chat(usr, "<span class='warning'>WARNING! Hardpoint is empty.</span>")
 			return
-		right.active_effect(A)
+		if (right.automatic)
+			return
+		right.active_effect(A, user)
 
 /obj/vehicle/walker/proc/firing_arc(atom/A)
+	if (!A)
+		return FALSE
+
 	var/turf/T = get_turf(A)
+
+	if(!T)
+		return FALSE
+
 	var/dx = T.x - x
 	var/dy = T.y - y
 	var/deg = 0
@@ -431,21 +541,6 @@
 	if(nx < 0)
 		angle += 180
 	return abs(angle) <= max_angle
-
-/obj/vehicle/walker/proc/zoom()
-	set name = "Zoom on/off"
-	set category = "Vehicle"
-
-	var/mob/M = usr
-	if(!M || !istype(M))
-		return
-
-	var/obj/vehicle/walker/W = M.interactee
-
-	if(!W || !istype(W))
-		return
-
-	W.zoom_activate()
 
 /obj/vehicle/walker/proc/zoom_activate()
 	if (zoom)
@@ -625,25 +720,37 @@
 		to_chat(user, "Someone already reparing this vehicle.")
 		return
 	repair = TRUE
-	var/repair_time = 20 SECONDS
+	var/repair_time = 1 SECONDS
 
-	to_chat(user, "You start repairing broken part of [src.name]'s armor...")
-	if(do_after(user, repair_time, TRUE, 5, BUSY_ICON_BUILD))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
-			to_chat(user, "You haphazardly weld together chunks of broken armor.")
-			health += 100
+	to_chat(user, SPAN_NOTICE("You start repairing broken part of [src.name]'s armor..."))
+	playsound(src.loc, 'sound/items/weldingtool_weld.ogg', 25)
+
+	while (weld.get_fuel() > 1)
+		if(!(world.time % 3))
+			playsound(get_turf(user), 'sound/items/weldingtool_weld.ogg', 25)
+		if(!do_after(user, repair_time, INTERRUPT_ALL, BUSY_ICON_BUILD))
+			break
+		if(!skillcheckexplicit(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			to_chat(user, SPAN_NOTICE("You haphazardly weld together chunks of broken armor."))
+			health += 5
 			healthcheck()
 		else
-			health += 250
+			health += 25
 			healthcheck()
-			to_chat(user, "You repair broken part of the armor.")
-		playsound(src.loc, 'sound/items/weldingtool_weld.ogg', 25)
+			to_chat(user, SPAN_NOTICE("You repair broken part of the armor."))
 		if(seats[VEHICLE_DRIVER])
-			to_chat(seats[VEHICLE_DRIVER], "Notification.Armor partly restored.")
-		repair = FALSE
-		return
-	else
-		to_chat(user, "Repair has been interrupted.")
+			to_chat(seats[VEHICLE_DRIVER], SPAN_NOTICE("Notification.Armor partly restored."))
+
+		weld.remove_fuel(1, user)
+
+		if (health >= maxHealth)
+			health = maxHealth
+			to_chat(user, SPAN_NOTICE("You've finished repairing the walker"))
+			break
+
+		if(!weld.isOn())
+			break;
+
 	repair = FALSE
 
 
@@ -662,7 +769,7 @@
 	M.animation_attack_on(src)
 	playsound(loc, "alien_claw_metal", 25, 1)
 	M.visible_message(SPAN_DANGER("[M] slashes [src]!"), SPAN_DANGER("You slash [src]!"))
-	take_damage(M.melee_vehicle_damage + rand(-5,5), "slash")
+	take_damage(M.melee_vehicle_damage + rand(-5,5) + rand(5, 10) * (M.claw_type - 1), "slash")
 
 	return XENO_ATTACK_ACTION
 
@@ -673,7 +780,7 @@
 	if(health <= 0)
 		move_out()
 		new /obj/structure/walker_wreckage(src.loc)
-		playsound(loc, 'sound/effects/metal_crash.ogg', 75)
+		playsound(loc, 'fray-marines/sound/vehicle/walker/mecha_dead.ogg', 75)
 		qdel(src)
 
 /obj/vehicle/walker/bullet_act(obj/projectile/Proj)
@@ -700,14 +807,14 @@
 	if(!(damtype in list("explosive", "acid", "energy", "blunt", "slash", "bullet", "all", "abstract")))
 		return
 	var/damage = dam * dmg_multipliers[damtype]
-	if(damage <= 10)
+	if(damage <= 3)
 		to_chat(seats[VEHICLE_DRIVER], "<span class='danger'>ALERT! Hostile incursion detected. Deflected.</span>")
 		return
 
 	health -= damage
 	to_chat(seats[VEHICLE_DRIVER], "<span class='danger'>ALERT! Hostile incursion detected. Chassis taking damage.</span>")
 	if(seats[VEHICLE_DRIVER] && damage >= 50)
-		seats[VEHICLE_DRIVER] << sound('sound/mecha/critdestrsyndi.ogg',volume=50)
+		seats[VEHICLE_DRIVER] << sound('fray-marines/sound/vehicle/walker/mecha_alarm.ogg',volume=50)
 	healthcheck()
 
 /obj/vehicle/walker/Collided(atom/A)
@@ -720,8 +827,9 @@
 
 		if(health > 0)
 			take_damage(250, "abstract")
-			visible_message(SPAN_DANGER("\The [A] ramms \the [src]!"))
-		playsound(loc, 'sound/effects/metal_crash.ogg', 35)
+			visible_message(SPAN_DANGER("\The [A] rams \the [src]!"))
+			Move(get_step(src, A.dir))
+		playsound(loc, 'fray-marines/sound/vehicle/walker/mecha_crusher.ogg', 35)
 
 /obj/vehicle/walker/hear_talk(mob/living/M as mob, msg, verb="says", datum/language/speaking, italics = 0)
 	var/mob/driver = seats[VEHICLE_DRIVER]

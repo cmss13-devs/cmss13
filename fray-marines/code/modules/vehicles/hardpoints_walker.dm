@@ -20,11 +20,60 @@
 	var/muzzle_flash 	= "muzzle_flash"
 	var/muzzle_flash_lum = 3 //muzzle flash brightness
 	var/list/projectile_traits = list()
+	var/automatic = TRUE
+	var/shots_fired = 0
+	var/fa_firing = FALSE
+
+	var/atom/target = null
+	var/scatter_value = 5
+
+	var/autofire_slow_mult = 1
 
 /obj/item/walker_gun/Initialize()
 	. = ..()
 
 	ammo = new magazine_type()
+
+	if (automatic)
+		AddComponent(/datum/component/automatedfire/autofire, fire_delay, fire_delay, burst, GUN_FIREMODE_AUTOMATIC, autofire_slow_mult, CALLBACK(src, PROC_REF(set_bursting)), CALLBACK(src, PROC_REF(reset_fire)), CALLBACK(src, PROC_REF(fire_wrapper)), CALLBACK(src, PROC_REF(display_ammo)), CALLBACK(src, PROC_REF(set_auto_firing))) //This should go after handle_starting_attachment() and setup_firemodes() to get the proper values set.
+
+/obj/item/walker_gun/proc/register_signals(mob/user)
+	RegisterSignal(user, COMSIG_MOB_MOUSEDOWN, PROC_REF(start_fire))
+	RegisterSignal(user, COMSIG_MOB_MOUSEDRAG, PROC_REF(change_target))
+	RegisterSignal(user, COMSIG_MOB_MOUSEUP, PROC_REF(stop_fire))
+
+/obj/item/walker_gun/proc/unregister_signals(mob/user)
+	UnregisterSignal(user, list(COMSIG_MOB_MOUSEUP, COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEDRAG))
+
+/obj/item/walker_gun/proc/change_target(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
+	SIGNAL_HANDLER
+	set_target(get_turf_on_clickcatcher(over_object, owner.seats[VEHICLE_DRIVER], params))
+
+/obj/item/walker_gun/proc/start_fire(datum/source, atom/object, turf/location, control, params, bypass_checks = FALSE)
+	SIGNAL_HANDLER
+
+	var/list/modifiers = params2list(params)
+	if(modifiers["shift"] || modifiers["middle"] || modifiers["right"])
+		return
+
+	// Don't allow doing anything else if inside a container of some sort, like a locker.
+	if(!isturf(owner.loc))
+		return
+
+	if(istype(object, /atom/movable/screen))
+		return
+
+	if (!owner.firing_arc(object))
+		return
+
+	set_target(get_turf_on_clickcatcher(object, owner.seats[VEHICLE_DRIVER], params))
+
+	SEND_SIGNAL(src, COMSIG_GUN_FIRE)
+
+/obj/item/walker_gun/proc/stop_fire()
+	SIGNAL_HANDLER
+
+	reset_fire()
 
 /obj/item/walker_gun/proc/get_icon_image(hardpoint)
 	if(!owner)
@@ -32,32 +81,75 @@
 
 	return image(owner.icon, equip_state + hardpoint)
 
-/obj/item/walker_gun/proc/active_effect(atom/target)
-	if (!ammo)
-		to_chat(owner.seats[VEHICLE_DRIVER], "<span class='warning'>WARNING! System report: ammunition is depleted!</span>")
+/obj/item/walker_gun/proc/display_ammo(user)
+	to_chat(user , "<span class='warning'>[name] fired! [ammo.current_rounds]/[ammo.max_rounds] remaining!")
+
+/obj/item/walker_gun/proc/set_bursting(bursting = FALSE)
+	return
+
+/obj/item/walker_gun/proc/reset_fire()
+	shots_fired = 0//Let's clean everything
+	set_target(null)
+	set_auto_firing(FALSE)
+	SEND_SIGNAL(src, COMSIG_GUN_STOP_FIRE)
+
+/obj/item/walker_gun/proc/set_auto_firing(auto = FALSE)
+	fa_firing = auto
+
+/obj/item/walker_gun/proc/fire_wrapper(atom/target, mob/living/user, params, reflex = FALSE, dual_wield)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	if(!target)
+		target = src.target
+	if(!user)
+		user = owner.seats[VEHICLE_DRIVER]
+	if(!target || !user || !owner.firing_arc(target))
+		return NONE
+	return active_effect(target, user)
+
+/obj/item/walker_gun/proc/set_target(atom/object)
+	if(object == target || object == loc)
 		return
+	if(target)
+		UnregisterSignal(target, COMSIG_PARENT_QDELETING)
+	if (!owner.firing_arc(object) && object != null)
+		reset_fire()
+		return
+	target = object
+	if(target)
+		RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(clean_target))
+
+/obj/item/walker_gun/proc/clean_target()
+	SIGNAL_HANDLER
+	target = get_turf(target)
+
+/obj/item/walker_gun/proc/active_effect(atom/target, mob/living/user)
+	if (!ammo)
+		to_chat(user, "<span class='warning'>WARNING! System report: ammunition is depleted!</span>")
+		SEND_SIGNAL(src, COMSIG_GUN_STOP_FIRE)
+		return FALSE
 	if(ammo.current_rounds <= 0)
-		to_chat(owner.seats[VEHICLE_DRIVER], "<span class='warning'>WARNING! System report: ammunition is depleted!</span>")
+		to_chat(user, "<span class='warning'>WARNING! System report: ammunition is depleted!</span>")
 		ammo.loc = owner.loc
 		ammo = null
 		visible_message("[owner.name]'s systems deployed used magazine.","")
-		return
+		SEND_SIGNAL(src, COMSIG_GUN_STOP_FIRE)
+		return FALSE
 	if(world.time < last_fire + fire_delay)
-		to_chat(owner.seats[VEHICLE_DRIVER], "<span class='warning'>WARNING! System report: weapon is not ready to fire again!</span>")
-		return
+		to_chat(user, "<span class='warning'>WARNING! System report: weapon is not ready to fire again!</span>")
+		return FALSE
 	last_fire = world.time
 	var/obj/projectile/P
 	for(var/i = 1 to burst)
 		if(!owner.firing_arc(target))
 			if(i == 1)
 				return
-			to_chat(owner.seats[VEHICLE_DRIVER] , "<span class='warning'>[name] fired! [ammo.current_rounds]/[ammo.max_rounds] remaining!")
+			display_ammo(user)
 			visible_message("<span class='danger'>[owner.name] fires from [name]!</span>", "<span class='warning'>You hear [istype(P.ammo, /datum/ammo/bullet) ? "gunshot" : "blast"]!</span>")
-			return
+			return FALSE
 		P = new
 		P.generate_bullet(new ammo.default_ammo)
 		for (var/trait in projectile_traits)
-			GIVE_BULLET_TRAIT(P, /datum/element/bullet_trait_iff, FACTION_MARINE)
+			GIVE_BULLET_TRAIT(P, trait, FACTION_MARINE)
 		playsound(get_turf(owner), pick(fire_sound), 60)
 		target = simulate_scatter(target, P)
 		P.fire_at(target, owner, src, P.ammo.max_range, P.ammo.shell_speed)
@@ -68,7 +160,7 @@
 			visible_message("[owner.name]'s systems deployed used magazine.","")
 			break
 		sleep(3)
-	to_chat(owner.seats[VEHICLE_DRIVER] , "<span class='warning'>[name] fired! [ammo.current_rounds]/[ammo.max_rounds] remaining!")
+	display_ammo(user)
 	visible_message("<span class='danger'>[owner.name] fires from [name]!</span>", "<span class='warning'>You hear [istype(P.ammo, /datum/ammo/bullet) ? "gunshot" : "blast"]!</span>")
 
 	var/angle = round(Get_Angle(owner,target))
@@ -110,7 +202,7 @@
 
 /obj/item/walker_gun/proc/simulate_scatter(atom/target, obj/projectile/projectile_to_fire)
 	var/fire_angle = Get_Angle(owner.loc, get_turf(target))
-	var/total_scatter_angle = projectile_to_fire.scatter - rand(-5,5)
+	var/total_scatter_angle = projectile_to_fire.scatter - rand(-scatter_value,scatter_value)
 
 	//Not if the gun doesn't scatter at all, or negative scatter.
 	if(total_scatter_angle > 0)
@@ -119,17 +211,16 @@
 
 	return get_turf(target)
 
-
 /obj/item/walker_gun/smartgun
-	name = "M56 Double-Barrel Mounted Smartgun"
-	desc = "Modifyed version of standart USCM Smartgun System, mounted on military walkers"
+	name = "M56 High-Caliber Mounted Smartgun"
+	desc = "Modified version of standart USCM Smartgun System, mounted on military walkers"
 	icon_state = "mech_smartgun_parts"
 	equip_state = "redy_smartgun"
 	magazine_type = /obj/item/ammo_magazine/walker/smartgun
-	burst = 2
-	fire_delay = 13
+	burst = 3
+	fire_delay = 3
 
-	projectile_traits = list("iff")
+	projectile_traits = list(/datum/element/bullet_trait_iff)
 
 /obj/item/walker_gun/hmg
 	name = "M30 Machine Gun"
@@ -138,8 +229,11 @@
 	equip_state = "redy_minigun"
 	fire_sound = list('sound/weapons/gun_minigun.ogg')
 	magazine_type = /obj/item/ammo_magazine/walker/hmg
-	fire_delay = 20
+	fire_delay = 7
 	burst = 3
+	scatter_value = 25
+
+	projectile_traits = list()
 
 /obj/item/walker_gun/flamer
 	name = "F40 \"Hellfire\" Flamethower"
@@ -152,6 +246,8 @@
 	var/max_range = 9 //9 tiles, 7 is screen range, controlled by the type of napalm in the canister. We max at 9 since diagonal bullshit.
 	fire_delay = 4 SECONDS
 
+	automatic = FALSE
+
 /obj/item/walker_gun/flamer/proc/get_fire_sound()
 	var/list/fire_sounds = list(
 							'sound/weapons/gun_flamethrower1.ogg',
@@ -159,22 +255,22 @@
 							'sound/weapons/gun_flamethrower3.ogg')
 	return pick(fire_sounds)
 
-/obj/item/walker_gun/flamer/active_effect(atom/target)
+/obj/item/walker_gun/flamer/active_effect(atom/target, mob/living/user)
 	if (!ammo)
-		to_chat(owner.seats[VEHICLE_DRIVER], "<span class='warning'>WARNING! System report: ammunition is depleted!</span>")
+		to_chat(user, "<span class='warning'>WARNING! System report: ammunition is depleted!</span>")
 		return
 	if(ammo.current_rounds <= 0)
-		to_chat(owner.seats[VEHICLE_DRIVER], "<span class='warning'>WARNING! System report: ammunition is depleted!</span>")
+		to_chat(user, "<span class='warning'>WARNING! System report: ammunition is depleted!</span>")
 		ammo.loc = owner.loc
 		ammo = null
 		visible_message("[owner.name]'s systems deployed used magazine.","")
 		return
 	if(world.time < last_fire + fire_delay)
-		to_chat(owner.seats[VEHICLE_DRIVER], "<span class='warning'>WARNING! System report: weapon is not ready to fire again!</span>")
+		to_chat(user, "<span class='warning'>WARNING! System report: weapon is not ready to fire again!</span>")
 		return
 	last_fire = world.time
 	if(!ammo.reagents.reagent_list.len)
-		to_chat(owner.seats[VEHICLE_DRIVER], "<span class='warning'>WARNING! System report: ammunition is depleted!</span>")
+		to_chat(user, "<span class='warning'>WARNING! System report: ammunition is depleted!</span>")
 		ammo.loc = owner.loc
 		ammo = null
 		visible_message("[owner.name]'s systems deployed used magazine.")
@@ -205,10 +301,10 @@
 	playsound(to_fire, src.get_fire_sound(), 50, TRUE)
 	ammo.current_rounds = ammo.reagents.total_volume
 
-	new /obj/flamer_fire(to_fire, create_cause_data(initial(name), owner.seats[VEHICLE_DRIVER]), R, max_range, ammo.reagents, flameshape, target, CALLBACK(src, PROC_REF(show_percentage), owner.seats[VEHICLE_DRIVER]), fuel_pressure, fire_type)
+	new /obj/flamer_fire(to_fire, create_cause_data(initial(name), user), R, max_range, ammo.reagents, flameshape, target, CALLBACK(src, PROC_REF(show_percentage), user), fuel_pressure, fire_type)
 
 	if(ammo.current_rounds <= 0 || !ammo)
-		to_chat(owner.seats[VEHICLE_DRIVER], "<span class='warning'>WARNING! System report: ammunition is depleted!</span>")
+		to_chat(user, "<span class='warning'>WARNING! System report: ammunition is depleted!</span>")
 		ammo.loc = owner.loc
 		ammo = null
 		visible_message("[owner.name]'s systems deployed used magazine.","")
@@ -344,18 +440,20 @@
 	flags_ammo_behavior = AMMO_BALLISTIC
 
 	max_range = 24
+	accurate_range = 12
 	accuracy = HIT_ACCURACY_TIER_5
-	damage = 35
-	penetration = 0
+	damage = 20
+	penetration = ARMOR_PENETRATION_TIER_1
 
 /datum/ammo/bullet/walker/machinegun
 	name = "machinegun bullet"
 	icon_state = "bullet"
 
-	accurate_range = 12
+	accurate_range = 6
+	max_range = 12
 	damage = 45
-	penetration= ARMOR_PENETRATION_TIER_10
-	accuracy = HIT_ACCURACY_TIER_3
+	penetration= ARMOR_PENETRATION_TIER_5
+	accuracy = -HIT_ACCURACY_TIER_3
 
 ////////////////
 // MEGALODON HARDPOINTS // END

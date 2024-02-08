@@ -120,12 +120,12 @@
 
 //*****************************************************************************************************/
 /datum/equipment_preset/uscm_ship/uscm_medical/researcher
-	name = "USCM Researcher"
+	name = "W-Y Researcher"
 
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_RESEARCH, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_RESEARCHER
 	rank = JOB_RESEARCHER
-	paygrade = PAY_SHORT_MO1
+	paygrade = PAY_SHORT_CCMO
 	role_comm_title = "Rsr"
 	skills = /datum/skills/researcher
 

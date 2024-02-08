@@ -1536,9 +1536,10 @@
 	flags_inventory = BLOCKSHARPOBJ|SMARTGUN_HARNESS
 
 /obj/item/clothing/suit/storage/CMB
-	name = "\improper CMB jacket"
-	desc = "A black jacket worn by Colonial Marshals. The back is enscribed with the powerful letters of 'MARSHAL' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
+	name = "\improper CMB Deputy jacket"
+	desc = "A thick and stylish black leather jacket with a Marshal's Deputy badge pinned to it. The back is enscribed with the powerful letters of 'DEPUTY' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
 	icon_state = "CMB_jacket"
+	item_state = "CMB_jacket"
 	blood_overlay_type = "coat"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
@@ -1584,6 +1585,13 @@
 		/obj/item/ammo_magazine/sniper,
 	)
 	pockets.max_storage_space = 8
+
+/obj/item/clothing/suit/storage/CMB/marshal
+	name = "\improper CMB Marshal jacket"
+	desc = "A thick and stylish black leather jacket with a Marshal's badge pinned to it. The back is enscribed with the powerful letters of 'MARSHAL' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
+	icon_state = "CMB_jacket_marshal"
+	item_state = "CMB_jacket_marshal"
+
 
 /obj/item/clothing/suit/storage/RO
 	name = "quartermaster jacket"

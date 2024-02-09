@@ -6014,10 +6014,23 @@
 	icon_state = "stan22"
 	},
 /area/shiva/interior/aerodrome)
+"aUy" = (
+/obj/structure/computerframe{
+	pixel_y = 24
+	},
+/obj/structure/bed/chair/dropship/pilot{
+	dir = 1
+	},
+/turf/open/shuttle/can_surgery/black,
+/area/shiva/interior/aerodrome)
 "aUz" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan23"
 	},
+/area/shiva/interior/aerodrome)
+"aUA" = (
+/obj/structure/girder/reinforced,
+/turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "aUM" = (
 /turf/open/floor/shiva{
@@ -6135,6 +6148,15 @@
 "aVx" = (
 /turf/closed/shuttle/ert,
 /area/shiva/interior/aerodrome)
+"aVB" = (
+/obj/structure/prop/invuln{
+	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
+	icon = 'icons/obj/structures/props/almayer_props.dmi';
+	icon_state = "equip_base";
+	name = "shuttle attachment point"
+	},
+/turf/open/shuttle/can_surgery/black,
+/area/shiva/interior/aerodrome)
 "aVF" = (
 /obj/structure/surface/table,
 /obj/item/tool/crowbar/red,
@@ -6144,6 +6166,13 @@
 	icon_state = "yellow"
 	},
 /area/shiva/interior/colony/medseceng)
+"aVL" = (
+/turf/open/shuttle/can_surgery/black,
+/area/shiva/interior/aerodrome)
+"aVM" = (
+/obj/item/weapon/gun/pistol/holdout,
+/turf/open/shuttle/can_surgery/black,
+/area/shiva/interior/aerodrome)
 "aVN" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan5"
@@ -6186,6 +6215,10 @@
 	dir = 8;
 	icon_state = "bluefull"
 	},
+/area/shiva/interior/aerodrome)
+"aVU" = (
+/obj/item/stack/sheet/metal,
+/turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "aWb" = (
 /obj/structure/foamed_metal,
@@ -6263,6 +6296,16 @@
 /turf/closed/shuttle/ert{
 	icon_state = "stan8"
 	},
+/area/shiva/interior/aerodrome)
+"aWS" = (
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_left_to_right,
+/area/shiva/interior/aerodrome)
+"aWT" = (
+/obj/item/ammo_magazine/pistol/holdout{
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_left_to_right,
 /area/shiva/interior/aerodrome)
 "aWU" = (
 /turf/closed/shuttle/ert{
@@ -6534,6 +6577,18 @@
 	icon_state = "leftengine_2";
 	opacity = 0
 	},
+/area/shiva/interior/aerodrome)
+"baY" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/area/shiva/interior/aerodrome)
+"bbg" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/shiva/interior/aerodrome)
 "bbh" = (
 /turf/closed/shuttle/ert{
@@ -6873,6 +6928,10 @@
 	icon_state = "redfull"
 	},
 /area/shiva/interior/colony/research_hab)
+"bqN" = (
+/obj/structure/machinery/door/airlock/almayer/generic,
+/turf/open/shuttle/can_surgery/black,
+/area/shiva/interior/aerodrome)
 "bqO" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/asphalt/cement,
@@ -7201,16 +7260,12 @@
 /obj/item/device/motiondetector/hacked,
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
-"bIC" = (
-/obj/structure/prop/invuln{
-	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
-	icon = 'icons/obj/structures/props/almayer_props.dmi';
-	icon_state = "equip_base";
-	name = "shuttle attachment point"
+"bIP" = (
+/obj/structure/machinery/power/reactor/colony,
+/turf/open/floor/shiva{
+	dir = 1
 	},
-/obj/item/storage/firstaid/adv,
-/turf/open/shuttle/can_surgery/black,
-/area/shiva/interior/aerodrome)
+/area/shiva/interior/garage)
 "bIV" = (
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard/cp_bar)
@@ -7310,6 +7365,10 @@
 	icon_state = "floor3"
 	},
 /area/shiva/interior/lz2_habs)
+"bOh" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/shuttle/can_surgery/black,
+/area/shiva/interior/aerodrome)
 "bPu" = (
 /obj/item/bodybag,
 /turf/open/floor/plating,
@@ -7495,6 +7554,18 @@
 	icon_state = "multi_tiles"
 	},
 /area/shiva/interior/colony/research_hab)
+"bYO" = (
+/obj/structure/prop/invuln{
+	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
+	icon = 'icons/obj/structures/props/almayer_props.dmi';
+	icon_state = "equip_base";
+	name = "shuttle attachment point"
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/shuttle/can_surgery/black,
+/area/shiva/interior/aerodrome)
 "bYS" = (
 /obj/structure/machinery/light/double,
 /turf/open/floor/shiva{
@@ -7520,6 +7591,18 @@
 "caS" = (
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
 /area/shiva/exterior/lz2_fortress)
+"cbk" = (
+/obj/structure/prop/invuln{
+	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
+	icon = 'icons/obj/structures/props/almayer_props.dmi';
+	icon_state = "equip_base";
+	name = "shuttle attachment point"
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/shuttle/can_surgery/black,
+/area/shiva/interior/aerodrome)
 "cbt" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
@@ -7666,6 +7749,10 @@
 	icon_state = "multi_tiles"
 	},
 /area/shiva/interior/colony/research_hab)
+"clp" = (
+/obj/item/tool/weldingtool,
+/turf/open/shuttle/can_surgery/black,
+/area/shiva/interior/aerodrome)
 "clz" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage{
 	req_access_txt = "102"
@@ -7803,10 +7890,6 @@
 	icon_state = "redfull"
 	},
 /area/shiva/interior/colony/research_hab)
-"ctt" = (
-/obj/item/stack/sheet/metal,
-/turf/open/shuttle/can_surgery/black,
-/area/shiva/interior/aerodrome)
 "ctC" = (
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/shiva{
@@ -9126,10 +9209,6 @@
 "dYp" = (
 /turf/closed/wall/shiva/ice,
 /area/shiva/interior/bar)
-"dYw" = (
-/obj/structure/machinery/defenses/sentry/premade,
-/turf/open/auto_turf/snow/layer0,
-/area/shiva/exterior/junkyard)
 "dZb" = (
 /obj/structure/closet/secure_closet/guncabinet,
 /obj/structure/machinery/firealarm{
@@ -9251,10 +9330,6 @@
 	},
 /turf/open/auto_turf/ice/layer2,
 /area/shiva/interior/caves/cp_camp)
-"efy" = (
-/obj/item/tool/wrench,
-/turf/open/shuttle/can_surgery/black,
-/area/shiva/interior/aerodrome)
 "efD" = (
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/auto_turf/snow/layer1,
@@ -9676,6 +9751,10 @@
 	icon_state = "redfull"
 	},
 /area/shiva/interior/colony/n_admin)
+"eHL" = (
+/obj/item/tool/wrench,
+/turf/open/shuttle/can_surgery/black,
+/area/shiva/interior/aerodrome)
 "eHY" = (
 /obj/item/lightstick/red/spoke/planted{
 	layer = 2.99;
@@ -10204,6 +10283,16 @@
 /obj/item/storage/toolbox/electrical,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard/fortbiceps)
+"fof" = (
+/obj/structure/prop/invuln{
+	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
+	icon = 'icons/obj/structures/props/almayer_props.dmi';
+	icon_state = "equip_base";
+	name = "shuttle attachment point"
+	},
+/obj/item/storage/firstaid/fire,
+/turf/open/shuttle/can_surgery/black,
+/area/shiva/interior/aerodrome)
 "fpF" = (
 /obj/structure/stairs/perspective/ice{
 	dir = 8;
@@ -10679,6 +10768,14 @@
 /obj/structure/window/framed/shiva,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
+"fNR" = (
+/obj/structure/surface/rack,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/turf/open/floor/shiva{
+	icon_state = "yellow"
+	},
+/area/shiva/interior/garage)
 "fOa" = (
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = -11
@@ -10814,6 +10911,26 @@
 	icon_state = "floor3"
 	},
 /area/shiva/interior/aerodrome)
+"fWJ" = (
+/obj/structure/machinery/power/reactor/colony,
+/turf/open/floor/shiva{
+	dir = 8;
+	icon_state = "yellowfull"
+	},
+/area/shiva/interior/lz2_habs)
+"fXp" = (
+/obj/structure/prop/invuln{
+	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
+	icon = 'icons/obj/structures/props/almayer_props.dmi';
+	icon_state = "equip_base";
+	name = "shuttle attachment point"
+	},
+/obj/effect/landmark/objective_landmark/close,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/shuttle/can_surgery/black,
+/area/shiva/interior/aerodrome)
 "fXr" = (
 /obj/item/lightstick/red/spoke/planted{
 	layer = 3.1;
@@ -10822,9 +10939,6 @@
 	},
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/interior/caves/cp_camp)
-"fXv" = (
-/turf/open/shuttle/can_surgery/black,
-/area/shiva/interior/aerodrome)
 "fXB" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/asphalt/cement,
@@ -11139,10 +11253,6 @@
 	dir = 8;
 	icon_state = "bluefull"
 	},
-/area/shiva/interior/aerodrome)
-"gpP" = (
-/obj/structure/girder/reinforced,
-/turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "gpS" = (
 /obj/structure/flora/bush/snow{
@@ -11846,6 +11956,17 @@
 	dir = 1
 	},
 /area/shiva/interior/colony/central)
+"hat" = (
+/obj/structure/surface/rack,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/turf/open/floor/shiva{
+	dir = 10;
+	icon_state = "yellow"
+	},
+/area/shiva/interior/garage)
 "hbo" = (
 /obj/structure/platform/strata,
 /turf/open/auto_turf/ice/layer1,
@@ -11907,6 +12028,13 @@
 	icon_state = "wred"
 	},
 /area/shiva/interior/colony/medseceng)
+"hgk" = (
+/obj/structure/machinery/fuelcell_recycler/full,
+/turf/open/floor/shiva{
+	dir = 6;
+	icon_state = "yellow"
+	},
+/area/shiva/interior/garage)
 "hgI" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/auto_turf/snow/layer2,
@@ -13329,10 +13457,6 @@
 	icon_state = "floor3"
 	},
 /area/shiva/interior/colony/central)
-"iwE" = (
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_left_to_right,
-/area/shiva/interior/aerodrome)
 "ixo" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/effect/landmark/objective_landmark/medium,
@@ -13601,13 +13725,6 @@
 	icon_state = "red"
 	},
 /area/shiva/interior/colony/medseceng)
-"iKg" = (
-/obj/item/ammo_magazine/pistol/holdout{
-	pixel_x = 6;
-	pixel_y = -4
-	},
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_left_to_right,
-/area/shiva/interior/aerodrome)
 "iKW" = (
 /obj/structure/platform_decoration/shiva/catwalk{
 	dir = 4
@@ -14593,18 +14710,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating,
 /area/shiva/interior/bar)
-"jQd" = (
-/obj/structure/prop/invuln{
-	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
-	icon = 'icons/obj/structures/props/almayer_props.dmi';
-	icon_state = "equip_base";
-	name = "shuttle attachment point"
-	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/shuttle/can_surgery/black,
-/area/shiva/interior/aerodrome)
 "jQe" = (
 /obj/structure/largecrate/random/mini/med{
 	layer = 3.01;
@@ -14662,12 +14767,10 @@
 	icon_state = "floor3"
 	},
 /area/shiva/exterior/lz2_fortress)
-"jTt" = (
+"jTR" = (
 /obj/structure/machinery/power/reactor/colony,
-/turf/open/floor/shiva{
-	dir = 1
-	},
-/area/shiva/interior/garage)
+/turf/open/floor/plating,
+/area/shiva/interior/colony/medseceng)
 "jTT" = (
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 6
@@ -14733,13 +14836,6 @@
 /obj/structure/flora/tree/dead/tree_4,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard)
-"jXF" = (
-/obj/structure/machinery/fuelcell_recycler/full,
-/turf/open/floor/shiva{
-	dir = 6;
-	icon_state = "yellow"
-	},
-/area/shiva/interior/garage)
 "jXM" = (
 /obj/structure/machinery/light/double{
 	dir = 8;
@@ -15324,9 +15420,6 @@
 	dir = 1
 	},
 /area/shiva/interior/colony/s_admin)
-"kzq" = (
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_left_to_right,
-/area/shiva/interior/aerodrome)
 "kzr" = (
 /obj/structure/machinery/alarm{
 	dir = 4;
@@ -15935,15 +16028,6 @@
 	icon_state = "yellow"
 	},
 /area/shiva/interior/colony/medseceng)
-"lbx" = (
-/obj/structure/computerframe{
-	pixel_y = 24
-	},
-/obj/structure/bed/chair/dropship/pilot{
-	dir = 1
-	},
-/turf/open/shuttle/can_surgery/black,
-/area/shiva/interior/aerodrome)
 "lbF" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/microwave{
@@ -16603,15 +16687,6 @@
 	},
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_lz2)
-"lNS" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 8
-	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
-/area/shiva/interior/aerodrome)
 "lNV" = (
 /turf/open/auto_turf/snow/layer4,
 /area/shiva/interior/colony/medseceng)
@@ -18687,17 +18762,6 @@
 /obj/item/lightstick/variant/planted,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
-"nUD" = (
-/obj/structure/surface/rack,
-/obj/item/fuel_cell,
-/obj/item/fuel_cell,
-/obj/item/fuel_cell,
-/obj/item/fuel_cell,
-/turf/open/floor/shiva{
-	dir = 10;
-	icon_state = "yellow"
-	},
-/area/shiva/interior/garage)
 "nVn" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -19388,15 +19452,6 @@
 	dir = 1
 	},
 /area/shiva/interior/colony/medseceng)
-"oJz" = (
-/obj/structure/prop/invuln{
-	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
-	icon = 'icons/obj/structures/props/almayer_props.dmi';
-	icon_state = "equip_base";
-	name = "shuttle attachment point"
-	},
-/turf/open/shuttle/can_surgery/black,
-/area/shiva/interior/aerodrome)
 "oKc" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -20347,18 +20402,10 @@
 	dir = 1
 	},
 /area/shiva/interior/garage)
-"pKe" = (
-/obj/item/weapon/gun/pistol/holdout,
-/turf/open/shuttle/can_surgery/black,
-/area/shiva/interior/aerodrome)
 "pKf" = (
 /obj/item/stack/cable_coil/white,
 /turf/open/floor/interior/plastic,
 /area/shiva/interior/warehouse)
-"pKj" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/shuttle/can_surgery/black,
-/area/shiva/interior/aerodrome)
 "pKm" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/rifle/boltaction,
@@ -20529,10 +20576,6 @@
 	},
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
-"pPB" = (
-/obj/structure/machinery/door/airlock/almayer/generic,
-/turf/open/shuttle/can_surgery/black,
-/area/shiva/interior/aerodrome)
 "pPK" = (
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 8
@@ -20953,14 +20996,6 @@
 	dir = 1
 	},
 /area/shiva/interior/colony/central)
-"qnf" = (
-/obj/structure/surface/rack,
-/obj/item/fuel_cell,
-/obj/item/fuel_cell,
-/turf/open/floor/shiva{
-	icon_state = "yellow"
-	},
-/area/shiva/interior/garage)
 "qng" = (
 /obj/structure/machinery/light/double{
 	dir = 4;
@@ -22186,6 +22221,15 @@
 	icon_state = "purplefull"
 	},
 /area/shiva/interior/colony/research_hab)
+"rNx" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/area/shiva/interior/aerodrome)
 "rNO" = (
 /obj/structure/prop/ice_colony/soil_net,
 /turf/open/auto_turf/snow/layer2,
@@ -22212,12 +22256,15 @@
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
-"rQH" = (
-/obj/structure/machinery/fuelcell_recycler/full,
-/turf/open/floor/shiva{
-	icon_state = "yellow"
+"rPa" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
 	},
-/area/shiva/interior/garage)
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/area/shiva/interior/aerodrome)
 "rRb" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/ice_axe,
@@ -22737,10 +22784,6 @@
 	icon_state = "floor3"
 	},
 /area/shiva/interior/colony/deck)
-"srs" = (
-/obj/item/tool/weldingtool,
-/turf/open/shuttle/can_surgery/black,
-/area/shiva/interior/aerodrome)
 "srJ" = (
 /obj/structure/stairs/perspective/ice{
 	dir = 4;
@@ -23276,13 +23319,6 @@
 	icon_state = "floor3"
 	},
 /area/shiva/exterior/lz2_fortress)
-"sWC" = (
-/obj/structure/machinery/power/reactor/colony,
-/turf/open/floor/shiva{
-	dir = 8;
-	icon_state = "yellowfull"
-	},
-/area/shiva/interior/lz2_habs)
 "sXr" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/paper_bin{
@@ -23529,12 +23565,6 @@
 	icon_state = "bluefull"
 	},
 /area/shiva/interior/colony/s_admin)
-"tkc" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 8
-	},
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
-/area/shiva/interior/aerodrome)
 "tkm" = (
 /obj/structure/largecrate/random/case,
 /turf/open/asphalt/cement,
@@ -23968,12 +23998,6 @@
 /obj/structure/platform/strata,
 /turf/open/gm/river,
 /area/shiva/interior/warehouse/caves)
-"tFB" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 4
-	},
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
-/area/shiva/interior/aerodrome)
 "tGs" = (
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = 12;
@@ -25410,16 +25434,6 @@
 /mob/living/simple_animal/hostile/giant_spider/nurse,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/right_spiders)
-"uSZ" = (
-/obj/structure/prop/invuln{
-	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
-	icon = 'icons/obj/structures/props/almayer_props.dmi';
-	icon_state = "equip_base";
-	name = "shuttle attachment point"
-	},
-/obj/item/storage/firstaid/fire,
-/turf/open/shuttle/can_surgery/black,
-/area/shiva/interior/aerodrome)
 "uTu" = (
 /obj/structure/flora/tree/dead/tree_4,
 /turf/open/auto_turf/snow/layer2,
@@ -25491,10 +25505,6 @@
 	icon_state = "yellowfull"
 	},
 /area/shiva/interior/colony/research_hab)
-"uXw" = (
-/obj/structure/machinery/power/reactor/colony,
-/turf/open/floor/plating,
-/area/shiva/interior/colony/medseceng)
 "uXQ" = (
 /turf/open/floor/shiva{
 	icon_state = "yellow"
@@ -26336,6 +26346,10 @@
 "vUR" = (
 /turf/closed/wall/shiva/ice,
 /area/shiva/exterior/lz2_fortress)
+"vVq" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_left_to_right,
+/area/shiva/interior/aerodrome)
 "vWf" = (
 /obj/item/handcuffs,
 /turf/open/floor/shiva{
@@ -26781,19 +26795,6 @@
 /obj/structure/fence,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/valley)
-"wzf" = (
-/obj/structure/prop/invuln{
-	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
-	icon = 'icons/obj/structures/props/almayer_props.dmi';
-	icon_state = "equip_base";
-	name = "shuttle attachment point"
-	},
-/obj/effect/landmark/objective_landmark/close,
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/shuttle/can_surgery/black,
-/area/shiva/interior/aerodrome)
 "wAr" = (
 /obj/effect/landmark/static_comms/net_two,
 /turf/open/auto_turf/ice/layer1,
@@ -27030,18 +27031,6 @@
 	},
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/lz1_valley)
-"wOp" = (
-/obj/structure/prop/invuln{
-	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
-	icon = 'icons/obj/structures/props/almayer_props.dmi';
-	icon_state = "equip_base";
-	name = "shuttle attachment point"
-	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/shuttle/can_surgery/black,
-/area/shiva/interior/aerodrome)
 "wOq" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor/shiva{
@@ -27223,6 +27212,12 @@
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
+"wZO" = (
+/obj/structure/machinery/fuelcell_recycler/full,
+/turf/open/floor/shiva{
+	icon_state = "yellow"
+	},
+/area/shiva/interior/garage)
 "wZW" = (
 /obj/structure/bed,
 /turf/open/floor/wood,
@@ -27312,15 +27307,6 @@
 /obj/structure/window/reinforced,
 /turf/open/floor/wood,
 /area/shiva/interior/colony/central)
-"xfs" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 4
-	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
-/area/shiva/interior/aerodrome)
 "xgc" = (
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_s_research)
@@ -27553,6 +27539,16 @@
 	},
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_colony_grounds)
+"xyY" = (
+/obj/structure/prop/invuln{
+	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
+	icon = 'icons/obj/structures/props/almayer_props.dmi';
+	icon_state = "equip_base";
+	name = "shuttle attachment point"
+	},
+/obj/item/storage/firstaid/adv,
+/turf/open/shuttle/can_surgery/black,
+/area/shiva/interior/aerodrome)
 "xzo" = (
 /obj/item/lightstick/red/spoke/planted{
 	layer = 3.1;
@@ -35262,12 +35258,12 @@ oYH
 pvv
 pvv
 aUw
-oJz
+aVB
 aWQ
 aVN
 aVN
 aVN
-pPB
+bqN
 aVx
 dbH
 pvv
@@ -35424,13 +35420,13 @@ oYH
 pvv
 aTh
 aUx
-fXv
-kzq
-lNS
-tkc
-lNS
-kzq
-jQd
+aVL
+aWS
+rNx
+bbg
+rNx
+aWS
+bYO
 aWQ
 dbH
 fhv
@@ -35585,16 +35581,16 @@ aQg
 oYH
 pvv
 aTi
-lbx
-fXv
-iwE
-fXv
-fXv
-fXv
-kzq
-srs
-ctt
-gpP
+aUy
+aVL
+vVq
+aVL
+aVL
+aVL
+aWS
+clp
+aVU
+aUA
 gIQ
 fRg
 hGj
@@ -35748,13 +35744,13 @@ oYH
 pvv
 aTj
 aUz
-ctt
-kzq
-xfs
-tFB
-xfs
-kzq
-wOp
+aVU
+aWS
+rPa
+baY
+rPa
+aWS
+cbk
 aWU
 deV
 eVG
@@ -35909,13 +35905,13 @@ dtr
 oYH
 pvv
 fhv
-gpP
-oJz
+aUA
+aVB
 aWU
 aVx
 aVx
 aVx
-pPB
+bqN
 aVN
 deV
 dKR
@@ -37101,7 +37097,7 @@ puZ
 puZ
 puZ
 anc
-sWC
+fWJ
 mCn
 uRi
 xQJ
@@ -37425,7 +37421,7 @@ puZ
 puZ
 puZ
 anc
-sWC
+fWJ
 mCn
 cce
 xQJ
@@ -37749,7 +37745,7 @@ puZ
 puZ
 puZ
 anc
-sWC
+fWJ
 mCn
 cce
 xQJ
@@ -38988,12 +38984,12 @@ gxK
 pvv
 pvv
 aUw
-uSZ
+fof
 aWQ
 aVN
 aVN
 aVN
-pPB
+bqN
 aVN
 dbH
 wTz
@@ -39150,13 +39146,13 @@ fRg
 pvv
 aTh
 aUx
-pKe
-kzq
-lNS
-tkc
-lNS
-kzq
-jQd
+aVM
+aWS
+rNx
+bbg
+rNx
+aWS
+bYO
 aWQ
 dbH
 wvx
@@ -39311,15 +39307,15 @@ wUy
 fRg
 pvv
 aTi
-lbx
-fXv
-iKg
-fXv
-pKj
-fXv
-kzq
-fXv
-fXv
+aUy
+aVL
+aWT
+aVL
+bOh
+aVL
+aWS
+aVL
+aVL
 dCS
 eoH
 fRg
@@ -39474,13 +39470,13 @@ fRg
 pvv
 aTj
 cov
-efy
-kzq
-xfs
-tFB
-xfs
-kzq
-wzf
+eHL
+aWS
+rPa
+baY
+rPa
+aWS
+fXp
 aWU
 deV
 uyI
@@ -39636,13 +39632,13 @@ fRg
 pvv
 pvv
 aUw
-bIC
+xyY
 aWU
 aVx
 aVx
 aVx
-pPB
-gpP
+bqN
+aUA
 deV
 pti
 pvv
@@ -45663,7 +45659,7 @@ kyD
 tHd
 pDr
 tHd
-dYw
+kyD
 kyD
 kyD
 kyD
@@ -45825,7 +45821,7 @@ tHd
 kyD
 pDr
 kyD
-dYw
+kyD
 kyD
 kyD
 kyD
@@ -53216,7 +53212,7 @@ ver
 ver
 ver
 fEO
-nUD
+hat
 ktd
 bFg
 bIV
@@ -53378,7 +53374,7 @@ ver
 ver
 ver
 ver
-qnf
+fNR
 ktd
 cZk
 bIV
@@ -54188,7 +54184,7 @@ aAh
 ver
 ver
 ver
-rQH
+wZO
 ktd
 cZk
 bFg
@@ -54350,7 +54346,7 @@ ver
 ver
 ver
 pNf
-jXF
+hgk
 ktd
 gJo
 lTc
@@ -54991,11 +54987,11 @@ oQl
 oQl
 oQl
 ktd
-jTt
+bIP
 tXd
 aAh
 pSD
-jTt
+bIP
 ktd
 oQl
 oQl
@@ -55153,11 +55149,11 @@ oQl
 oQl
 oQl
 ktd
-jTt
+bIP
 ush
 vUL
 aCA
-jTt
+bIP
 ktd
 oQl
 oQl
@@ -55316,9 +55312,9 @@ oQl
 oQl
 ktd
 ktd
-jTt
-jTt
-jTt
+bIP
+bIP
+bIP
 ktd
 ktd
 oQl
@@ -58335,16 +58331,16 @@ acT
 qDT
 eAZ
 acT
-uXw
+jTR
 cso
 agh
-uXw
-uXw
-uXw
-uXw
+jTR
+jTR
+jTR
+jTR
 agh
 cso
-uXw
+jTR
 acT
 aii
 agh
@@ -58497,7 +58493,7 @@ aDn
 eAZ
 eAZ
 aDn
-uXw
+jTR
 cso
 agh
 cso
@@ -58506,7 +58502,7 @@ cso
 cso
 agh
 cso
-uXw
+jTR
 acT
 acT
 aii
@@ -58662,10 +58658,10 @@ aek
 eXL
 cso
 agh
-uXw
-uXw
-uXw
-uXw
+jTR
+jTR
+jTR
+jTR
 agh
 cso
 qdd

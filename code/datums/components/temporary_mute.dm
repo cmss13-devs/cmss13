@@ -5,9 +5,9 @@
 	/// A message to tell the user when they become no longer mute, if any
 	var/on_unmute_message = ""
 	/// How long after the component's initialization it should be deleted. -1 means it will never delete
-	var/time_until_unmute = 5 MINUTES
+	var/time_until_unmute = 3 MINUTES
 
-/datum/component/temporary_mute/Initialize(on_speak_message = "", on_unmute_message = "", time_until_unmute = 5 MINUTES)
+/datum/component/temporary_mute/Initialize(on_speak_message = "", on_unmute_message = "", time_until_unmute = 3 MINUTES)
 	. = ..()
 	if(!ismob(parent))
 		return COMPONENT_INCOMPATIBLE
@@ -17,7 +17,6 @@
 	src.time_until_unmute = time_until_unmute
 	if(time_until_unmute != -1)
 		QDEL_IN(src, time_until_unmute)
-
 
 /datum/component/temporary_mute/RegisterWithParent()
 	..()

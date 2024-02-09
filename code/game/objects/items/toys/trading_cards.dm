@@ -18,7 +18,7 @@
 									"4" = list("red" = "a UPPA officer", "green" = "General Diego Dellamarggio (the Commandant of the United States Colonial Marines)", "blue" = "the Independent Core System Colonies logo"),
 									"3" = list("red" = "a UPPA minigunner", "green" = "Generale d'armee Felix Couture (the Commandant of the Canadian Colonial Armed Forces)", "blue" = "the Three World Empire flag"),
 									"2" = list("red" = "a UPPA soldier", "green" = "Marechal-do-ar Enzo Gabriel Lurdes (the Chief of Naval Operations of the Latin American Colonial Navy)", "blue" = "the Union of Progressive Peoples flag"),
-									"1" = list("red" = "a fanatical colonial seditionist", "green" = "Almirante Joelle De La Cruz (the United Americas Secretary of Defense)", "blue" = "the United Americas flag")
+									"1" = list("red" = "a fanatical colonial seditionist", "green" = "Almirante Joelle De La Cruz (the United Americas Secretary of Defense)", "blue" = "the United Americas flag",)
 									)
 
 /obj/item/toy/trading_card/Initialize()

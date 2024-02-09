@@ -82,10 +82,9 @@
 	weed_food_icon = 'icons/mob/xenos/weeds.dmi'
 	weed_food_states = list("Lesser_Drone_1","Lesser_Drone_2","Lesser_Drone_3")
 	weed_food_states_flipped = list("Lesser_Drone_1","Lesser_Drone_2","Lesser_Drone_3")
-	/// The last ckey to have inhabited this mob
-	var/last_ckey_inhabited = ""
 
 /mob/living/carbon/xenomorph/lesser_drone/Login()
+	var/last_ckey_inhabited = persistent_ckey
 	. = ..()
 	if(ckey == last_ckey_inhabited)
 		return
@@ -96,7 +95,6 @@
 		"We feel old enough to be able to vocalize and speak to the hivemind.",\
 		3 MINUTES,\
 	)
-	last_ckey_inhabited = ckey
 
 /mob/living/carbon/xenomorph/lesser_drone/age_xeno()
 	if(stat == DEAD || !caste || QDELETED(src) || !client)

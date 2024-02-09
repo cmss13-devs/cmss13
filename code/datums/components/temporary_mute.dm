@@ -26,11 +26,13 @@
 /datum/component/temporary_mute/UnregisterFromParent()
 	..()
 	if(parent)
-		to_chat(parent, SPAN_NOTICE(on_unmute_message))
 		UnregisterSignal(parent, COMSIG_LIVING_SPEAK)
 		UnregisterSignal(parent, COMSIG_XENO_TRY_HIVEMIND_TALK)
+		if(on_unmute_message)
+			to_chat(parent, SPAN_NOTICE(on_unmute_message))
 
 /datum/component/temporary_mute/proc/on_speak(
+	mob/user,
 	message,
 	datum/language/speaking = null,
 	verb = "says",
@@ -42,10 +44,12 @@
 	nolog = FALSE,
 	message_mode = null
 )
-	var/mob/mob_parent = parent
+	SIGNAL_HANDLER
 
-	log_say("[mob_parent.name != "Unknown" ? mob_parent.name : "([mob_parent.real_name])"] attempted to say the following before their xenomorph spawn mute ended: [message] (CKEY: [mob_parent.key]) (JOB: [mob_parent.job])")
-	to_chat(parent, SPAN_BOLDNOTICE(on_speak_message))
+	if(!nolog)
+		log_say("[user.name != "Unknown" ? user.name : "([user.real_name])"] attempted to say the following before their spawn mute ended: [message] (CKEY: [user.key]) (JOB: [user.job])")
+	if(on_speak_message)
+		to_chat(parent, SPAN_BOLDNOTICE(on_speak_message))
 	return COMPONENT_OVERRIDE_SPEAK
 
 /datum/component/temporary_mute/proc/on_hivemind(mob/user, message)

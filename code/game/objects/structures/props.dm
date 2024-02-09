@@ -2217,10 +2217,6 @@
 /obj/structure/prop/hybrisa/signs/weymartsign
 	name = "weymart sign"
 	icon = 'icons/obj/structures/props/zenith64x64_signs.dmi'
-	icon_state = "weymartsign"
-/obj/structure/prop/hybrisa/signs/weymartsign2
-	name = "weymart sign"
-	icon = 'icons/obj/structures/props/zenith64x64_signs.dmi'
 	icon_state = "weymartsign2"
 /obj/structure/prop/hybrisa/signs/mechanicsign
 	name = "mechanic sign"
@@ -2752,6 +2748,14 @@
 	name = "cargo container"
 	icon = 'icons/obj/structures/props/containersextended2.dmi'
 	icon_state = "tanright"
+/obj/structure/prop/hybrisa/containersextended/redleft
+	name = "cargo container"
+	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon_state = "redleft"
+/obj/structure/prop/hybrisa/containersextended/redright
+	name = "cargo container"
+	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon_state = "redright"
 /obj/structure/prop/hybrisa/containersextended/greywyleft
 	name = "Weyland-Yutani cargo container"
 	icon = 'icons/obj/structures/props/containersextended2.dmi'
@@ -2785,8 +2789,54 @@
 	icon = 'icons/obj/structures/props/containersextended2.dmi'
 	icon_state = "whitewyright"
 
-
-
+/obj/structure/prop/hybrisa/containersextended/tanwywingsleft
+	name = "cargo container"
+	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon_state = "tanwywingsleft"
+/obj/structure/prop/hybrisa/containersextended/tanwywingsright
+	name = "cargo container"
+	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon_state = "tanwywingsright"
+/obj/structure/prop/hybrisa/containersextended/greenwywingsleft
+	name = "cargo container"
+	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon_state = "greenwywingsleft"
+/obj/structure/prop/hybrisa/containersextended/greenwywingsright
+	name = "cargo container"
+	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon_state = "greenwywingsright"
+/obj/structure/prop/hybrisa/containersextended/bluewywingsleft
+	name = "cargo container"
+	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon_state = "bluewywingsleft"
+/obj/structure/prop/hybrisa/containersextended/bluewywingsright
+	name = "cargo container"
+	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon_state = "bluewywingsright"
+/obj/structure/prop/hybrisa/containersextended/redwywingsleft
+	name = "cargo container"
+	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon_state = "redwywingsleft"
+/obj/structure/prop/hybrisa/containersextended/redwywingsright
+	name = "cargo container"
+	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon_state = "redwywingsright"
+/obj/structure/prop/hybrisa/containersextended/medicalleft
+	name = "medical cargo containers"
+	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon_state = "medicalleft"
+/obj/structure/prop/hybrisa/containersextended/medicalright
+	name = "medical cargo containers"
+	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon_state = "medicalright"
+/obj/structure/prop/hybrisa/containersextended/emptymedicalleft
+	name = "medical cargo container"
+	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon_state = "emptymedicalleft"
+/obj/structure/prop/hybrisa/containersextended/emptymedicalright
+	name = "medical cargo container"
+	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon_state = "emptymedicalright"
 // Decals
 
 
@@ -2927,6 +2977,10 @@
 	icon_state = "buildingventbig10"
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble10
 	icon_state = "buildingventbig11"
+/obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble11
+	icon_state = "buildingventbig12"
+/obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble12
+	icon_state = "buildingventbig13"
 
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall
 	name = "machinery"

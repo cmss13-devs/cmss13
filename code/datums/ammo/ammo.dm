@@ -237,18 +237,18 @@
 
 		P.fire_at(new_target, original_P.firer, original_P.shot_from, P.ammo.max_range, P.ammo.shell_speed, original_P.original) //Fire!
 
-/datum/ammo/proc/drop_flame(turf/T, datum/cause_data/cause_data) // ~Art updated fire 20JAN17
-	if(!istype(T))
+/datum/ammo/proc/drop_flame(turf/Turf, datum/cause_data/cause_data) // ~Art updated fire 20JAN17
+	if(!istype(Turf))
 		return
-	if(locate(/obj/flamer_fire) in T)
+	if(locate(/obj/flamer_fire) in Turf)
 		return
 
-	var/datum/reagent/ref = GLOB.chemical_reagents_list[flamer_reagent_id] //this is probably a bad way of doing this but it works
-	var/datum/reagent/P = new ref.type
-	P.intensityfire = ref.intensityfire
-	P.durationfire = ref.durationfire
-	P.burncolor = ref.burncolor
-	P.fire_penetrating = ref.fire_penetrating
-	P.burn_sprite = ref.burn_sprite
+	var/datum/reagent/reference = GLOB.chemical_reagents_list[flamer_reagent_id] //this is probably a bad way of doing this but it works
+	var/datum/reagent/chemical = new reference.type
+	chemical.intensityfire = reference.intensityfire
+	chemical.durationfire = reference.durationfire
+	chemical.burncolor = reference.burncolor
+	chemical.fire_penetrating = reference.fire_penetrating
+	chemical.burn_sprite = reference.burn_sprite
 
-	new /obj/flamer_fire(T, cause_data, P)
+	new /obj/flamer_fire(Turf, cause_data, chemical)

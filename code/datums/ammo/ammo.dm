@@ -84,7 +84,7 @@
 	/// that will be given to a projectile with the current ammo datum
 	var/list/list/traits_to_give
 
-	var/flamer_reagent_type = /datum/reagent/napalm/ut
+	var/flamer_reagent_id = "utnapthal"
 
 	/// The flicker that plays when a bullet hits a target. Usually red. Can be nulled so it doesn't show up at all.
 	var/hit_effect_color = "#FF0000"
@@ -243,5 +243,12 @@
 	if(locate(/obj/flamer_fire) in T)
 		return
 
-	var/datum/reagent/R = new flamer_reagent_type()
-	new /obj/flamer_fire(T, cause_data, R)
+	var/datum/reagent/ref = GLOB.chemical_reagents_list[flamer_reagent_id] //this is probably a bad way of doing this but it works
+	var/datum/reagent/P = new ref.type
+	P.intensityfire = ref.intensityfire
+	P.durationfire = ref.durationfire
+	P.burncolor = ref.burncolor
+	P.fire_penetrating = ref.fire_penetrating
+	P.burn_sprite = ref.burn_sprite
+
+	new /obj/flamer_fire(T, cause_data, P)

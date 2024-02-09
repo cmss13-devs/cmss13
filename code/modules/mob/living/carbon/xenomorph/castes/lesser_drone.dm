@@ -92,6 +92,7 @@
 	AddComponent(\
 		/datum/component/temporary_mute,\
 		"We aren't old enough to vocalize anything yet.",\
+		"We aren't old enough to communicate like this yet.",\
 		"We feel old enough to be able to vocalize and speak to the hivemind.",\
 		3 MINUTES,\
 	)

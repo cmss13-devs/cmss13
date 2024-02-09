@@ -229,7 +229,7 @@
 		/obj/item/clothing/mask/cigarette/ucigarette,
 		/obj/item/clothing/mask/cigarette/bcigarette,
 		/obj/item/tool/lighter,
-		/obj/item/toy/trading_card
+		/obj/item/toy/trading_card,
 	)
 	var/obj/item/toy/trading_card/trading_card
 

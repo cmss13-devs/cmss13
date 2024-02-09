@@ -121,3 +121,14 @@
   SpartanBobby:
   - maptweak: changes to LV624 Engineering and T-comms, mostly detailing but changes
       some doors and object placement
+2024-02-09:
+  Huffie56:
+  - refactor: turning newscasters into "props".
+  - qol: added two new section to replace ammunition section primary ammunition and
+      sidearm ammunition and rearranged it for team leader.
+  - balance: added the ability for comtech, medic, and squad leader to buy M4A3 (HP
+      and AP) and VP78 magazines for 3 points and M44 Heavy for 6 points.
+  - balance: added the ability for SG to buy M4A3 (HP and AP) and VP78 magazines for
+      5 points and M44 Heavy for 10 points.
+  - balance: added the ability for rifleman to buy M4A3 (HP and AP) and VP78 magazines
+      for 5 points.

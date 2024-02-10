@@ -93,22 +93,6 @@
 	qdel(src)
 	. = ..()
 
-/obj/effect/alien/resin/fruit/proc/delete_fruit()
-	//Notify and update the xeno count
-	if(!QDELETED(bound_xeno))
-		if(!picked)
-			to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We sense one of our fruit has been destroyed."))
-		bound_xeno.current_fruits.Remove(src)
-		var/datum/action/xeno_action/onclick/plant_resin_fruit/prf = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/plant_resin_fruit)
-		prf.update_button_icon()
-
-		if(picked) // No need to update the number, since the fruit still exists (just as a different item)
-			return
-		var/number_of_fruit = length(bound_xeno.current_fruits)
-		prf.button.set_maptext(SMALL_FONTS_COLOR(7, number_of_fruit, "#e69d00"), 19, 2)
-		prf.update_button_icon()
-		bound_xeno = null
-
 /obj/effect/alien/resin/fruit/proc/reduce_timer(maturity_increase)
 	if (mature || timer_id == TIMER_ID_NULL)
 		return
@@ -193,7 +177,19 @@
 	return FALSE
 
 /obj/effect/alien/resin/fruit/Destroy()
-	delete_fruit()
+	//Notify and update the xeno count
+	if(!QDELETED(bound_xeno))
+		if(!picked)
+			to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We sense one of our fruit has been destroyed."))
+		bound_xeno.current_fruits.Remove(src)
+
+		var/number_of_fruit = length(bound_xeno.current_fruits)
+		var/datum/action/xeno_action/onclick/plant_resin_fruit/plant_action = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/plant_resin_fruit)
+		plant_action.button.set_maptext(SMALL_FONTS_COLOR(7, number_of_fruit, "#e69d00"), 19, 2)
+		plant_action.update_button_icon()
+
+	bound_xeno = null
+
 	return ..()
 
 //Greater
@@ -281,9 +277,9 @@
 	..()
 	START_PROCESSING(SSobj, src)
 
-/obj/effect/alien/resin/fruit/spore/delete_fruit()
+/obj/effect/alien/resin/fruit/spore/Destroy()
 	STOP_PROCESSING(SSobj, src)
-	..()
+	return ..()
 
 /obj/effect/alien/resin/fruit/spore/process()
 	if(mature)

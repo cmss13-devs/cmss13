@@ -184,9 +184,9 @@
 		bound_xeno.current_fruits.Remove(src)
 
 		var/number_of_fruit = length(bound_xeno.current_fruits)
-		var/datum/action/xeno_action/onclick/plant_resin_fruit/prf = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/plant_resin_fruit)
-		prf.button.set_maptext(SMALL_FONTS_COLOR(7, number_of_fruit, "#e69d00"), 19, 2)
-		prf.update_button_icon()
+		var/datum/action/xeno_action/onclick/plant_resin_fruit/plant_action = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/plant_resin_fruit)
+		plant_action.button.set_maptext(SMALL_FONTS_COLOR(7, number_of_fruit, "#e69d00"), 19, 2)
+		plant_action.update_button_icon()
 
 	bound_xeno = null
 

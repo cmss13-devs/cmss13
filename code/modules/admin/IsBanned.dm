@@ -29,6 +29,10 @@
 
 
 	. = P.check_ban(computer_id, address)
+	if(.)
+		return .
+
+	return ..() //default pager ban stuff
 
 
 #endif

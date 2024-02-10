@@ -3,7 +3,8 @@
 	var/list/datum/cas_fire_mission/missions
 	var/fire_length
 	var/grace_period //how much time you have after initiating fire mission and before you can't change firemissions
-	var/flyto_period //how much time it takes from sound alarm start to first hit. CAS is vulnerable here
+	var/chat_warning
+	var/execution_start
 	var/flyoff_period //how much time it takes after shots fired to get off the map. CAS is vulnerable here
 	var/cooldown_period //how much time you have to wait before new Fire Mission run
 	var/soundeffect //what sound effect to play
@@ -38,7 +39,7 @@
 
 
 /datum/cas_fire_envelope/proc/get_total_duration()
-	return grace_period+flyto_period+flyoff_period
+	return cooldown_period
 
 /datum/cas_fire_envelope/proc/update_weapons(list/obj/structure/dropship_equipment/weapon/weapons)
 	for(var/datum/cas_fire_mission/mission in missions)
@@ -245,22 +246,12 @@
 /**
  * Execute firemission.
  */
-/datum/cas_fire_envelope/proc/execute_firemission_unsafe(datum/cas_signal/signal, turf/target_turf, dir, datum/cas_fire_mission/mission)
-	stat = FIRE_MISSION_STATE_IN_TRANSIT
-	to_chat(usr, SPAN_ALERT("Firemission underway!"))
-	sleep(grace_period)
+/datum/cas_fire_envelope/proc/play_sound(atom/target_turf)
 	stat = FIRE_MISSION_STATE_ON_TARGET
-	if(!target_turf)
-		stat = FIRE_MISSION_STATE_IDLE
-		mission_error = "Target Lost."
-		return
-	if(!target_turf || !check_firemission_loc(signal))
-		stat = FIRE_MISSION_STATE_IDLE
-		mission_error = "Target is off bounds or obstructed."
-		return
 	change_current_loc(target_turf)
-	playsound(source = target_turf, soundin = soundeffect, vol = 70, vary = TRUE, sound_range = 50, falloff = 8)
+	playsound(target_turf, 'sound/weapons/dropship_sonic_boom.ogg', vol = 70, vary = TRUE, sound_range = 50, falloff = 8)
 
+/datum/cas_fire_envelope/proc/warning(atom/target_turf)
 	for(var/mob/mob in range(15, target_turf))
 		var/ds_identifier = "LARGE BIRD"
 		var/fm_identifier = "SPIT FIRE"
@@ -273,14 +264,35 @@
 			SPAN_HIGHDANGER("YOU HEAR SOMETHING FLYING CLOSER TO YOU!") , SHOW_MESSAGE_AUDIBLE \
 		)
 
-	sleep(flyto_period)
+/datum/cas_fire_envelope/proc/open_fire(atom/target_turf,datum/cas_fire_mission/mission,dir)
 	stat = FIRE_MISSION_STATE_FIRING
 	mission.execute_firemission(linked_console, target_turf, dir, fire_length, step_delay, src)
 	stat = FIRE_MISSION_STATE_OFF_TARGET
-	sleep(flyoff_period)
+
+/datum/cas_fire_envelope/proc/flyoff()
 	stat = FIRE_MISSION_STATE_COOLDOWN
-	sleep(cooldown_period)
+
+/datum/cas_fire_envelope/proc/end_cooldown()
 	stat = FIRE_MISSION_STATE_IDLE
+
+
+/datum/cas_fire_envelope/proc/execute_firemission_unsafe(datum/cas_signal/signal, turf/target_turf, dir, datum/cas_fire_mission/mission)
+	stat = FIRE_MISSION_STATE_IN_TRANSIT
+	to_chat(usr, SPAN_ALERT("Firemission underway!"))
+	if(!target_turf)
+		stat = FIRE_MISSION_STATE_IDLE
+		mission_error = "Target Lost."
+		return
+	if(!target_turf || !check_firemission_loc(signal))
+		stat = FIRE_MISSION_STATE_IDLE
+		mission_error = "Target is off bounds or obstructed."
+		return
+
+	addtimer(CALLBACK( TYPE_PROC_REF(/datum/cas_fire_envelope, play_sound), target_turf), grace_period)
+	addtimer(CALLBACK( TYPE_PROC_REF(/datum/cas_fire_envelope, warning), target_turf), chat_warning)
+	addtimer(CALLBACK( TYPE_PROC_REF(/datum/cas_fire_envelope, open_fire), target_turf, mission,dir), execution_start)
+	addtimer(CALLBACK( TYPE_PROC_REF(/datum/cas_fire_envelope, flyoff)), flyoff_period)
+	addtimer(CALLBACK( TYPE_PROC_REF(/datum/cas_fire_envelope, end_cooldown)), cooldown_period)
 
 /**
  * Change attack vector for firemission
@@ -324,10 +336,11 @@
 
 /datum/cas_fire_envelope/uscm_dropship
 	fire_length = 12
-	grace_period = 5 SECONDS 
-	flyto_period = 4 SECONDS //sleep in the FM itself has been increased by one more second
-	flyoff_period = 5 SECONDS
-	cooldown_period = 10 SECONDS
+	grace_period = 5 SECONDS
+	chat_warning = 6.5 SECONDS
+	execution_start = 8.5 SECONDS
+	flyoff_period = 15 SECONDS
+	cooldown_period = 25 SECONDS
 	soundeffect = 'sound/weapons/dropship_sonic_boom.ogg' //BOOM~WOOOOOSH~HSOOOOOW~BOOM
 	step_delay = 3
 	max_offset = 12

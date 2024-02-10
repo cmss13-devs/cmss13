@@ -49,7 +49,7 @@
 						var/message = "You have been dead for [DisplayTimeText(deathtime)]."
 						message = SPAN_WARNING("[message]")
 						to_chat(src, message)
-						to_chat(src, SPAN_WARNING("You must wait atleast 2.5 minutes before rejoining the game!"))
+						to_chat(src, SPAN_WARNING("You must wait at least 2.5 minutes before rejoining the game!"))
 						do_observe(target)
 						return FALSE
 

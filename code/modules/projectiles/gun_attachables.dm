@@ -455,7 +455,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/f90_dmr_barrel
 	name = "f90 barrel"
-	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
 	icon_state = "aug_dmr_barrel_a"
 	attach_icon = "aug_dmr_barrel_a"
 	slot = "muzzle"
@@ -466,7 +466,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/f90_shotgun_barrel
 	name = "f90 barrel"
-	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
 	icon_state = "aug_mkey_barrel_a"
 	attach_icon = "aug_mkey_barrel_a"
 	slot = "muzzle"
@@ -477,7 +477,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/l56a2_smartgun
 	name = "l56a2 barrel"
-	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
 	icon_state = "magsg_barrel_a"
 	attach_icon = "magsg_barrel_a"
 	slot = "muzzle"
@@ -2105,6 +2105,43 @@ Defined in conflicts.dm of the #defines folder.
 	flags_attach_features = NO_FLAGS
 	hud_offset_mod = 2
 
+/obj/item/attachable/stock/xm51
+	name = "\improper XM51 stock"
+	desc = "A specialized stock designed for XM51 breaching shotguns. Helps the user absorb the recoil of the weapon while also reducing scatter. Integrated mechanisms inside the stock allow use of a devastating two-shot burst. This comes at a cost of the gun becoming too unwieldy to holster, worse handling and mobility."
+	icon_state = "xm51_stock"
+	attach_icon = "xm51_stock_a"
+	wield_delay_mod = WIELD_DELAY_FAST
+	hud_offset_mod = 3
+	melee_mod = 10
+
+/obj/item/attachable/stock/xm51/Initialize(mapload, ...)
+	. = ..()
+	select_gamemode_skin(type)
+	//it makes stuff much better when two-handed
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
+	recoil_mod = -RECOIL_AMOUNT_TIER_4
+	scatter_mod = -SCATTER_AMOUNT_TIER_8
+	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_4
+	//and allows for burst-fire
+	burst_mod = BURST_AMOUNT_TIER_2
+	//but it makes stuff much worse when one handed
+	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_5
+	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_5
+	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_6
+	//and makes you slower
+	aim_speed_mod = CONFIG_GET(number/slowdown_med)
+
+/obj/item/attachable/stock/xm51/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	var/new_attach_icon
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("snow")
+			attach_icon = new_attach_icon ? new_attach_icon : "s_" + attach_icon
+		if("desert")
+			attach_icon = new_attach_icon ? new_attach_icon : "d_" + attach_icon
+		if("classic")
+			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
+
 /obj/item/attachable/stock/mod88
 	name = "\improper Mod 88 burst stock"
 	desc = "Increases the fire rate and burst amount on the Mod 88. Some versions act as a holster for the weapon when un-attached. This is a test item and should not be used in normal gameplay (yet)."
@@ -2197,7 +2234,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/m4ra_barrel
 	name = "M4RA barrel"
-	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
 	icon_state = "m4ra_barrel"
 	attach_icon = "m4ra_barrel"
 	slot = "special"
@@ -2223,7 +2260,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/m4ra_barrel_custom
 	name = "custom M4RA barrel"
-	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
 	icon_state = "m4ra_custom_barrel"
 	attach_icon = "m4ra_custom_barrel"
 	slot = "special"
@@ -2249,7 +2286,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/upp_rpg_breech
 	name = "HJRA-12 Breech"
-	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
 	icon = 'icons/obj/items/weapons/guns/attachments/stock.dmi'
 	icon_state = "hjra_breech"
 	attach_icon = "hjra_breech"
@@ -2261,7 +2298,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/pkpbarrel
 	name = "QYJ-72 Barrel"
-	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
 	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "uppmg_barrel"
 	attach_icon = "uppmg_barrel"
@@ -2273,7 +2310,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/pkpstock
 	name = "QYJ-72 Stock"
-	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
 	icon = 'icons/obj/items/weapons/guns/attachments/stock.dmi'
 	icon_state = "uppmg_stock"
 	attach_icon = "uppmg_stock"
@@ -2285,7 +2322,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/type88_barrel
 	name = "Type-88 Barrel"
-	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
 	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "type88_barrel"
 	attach_icon = "type88_barrel"
@@ -2297,7 +2334,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/type73suppressor
 	name = "Type 73 Integrated Suppressor"
-	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
 	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "type73_suppressor"
 	attach_icon = "type73_suppressor"
@@ -2309,7 +2346,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/type71
 	name = "Type 71 Stock"
-	desc = "This isn't supposed to be seperated from the gun, how'd this happen?"
+	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
 	icon = 'icons/obj/items/weapons/guns/attachments/stock.dmi'
 	icon_state = "type71_stock"
 	attach_icon = "type71_stock"
@@ -2941,7 +2978,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/attached_gun/flamer/proc/unleash_flame(atom/target, mob/living/user)
 	set waitfor = 0
-	var/list/turf/turfs = getline2(user,target)
+	var/list/turf/turfs = get_line(user,target)
 	var/distance = 0
 	var/turf/prev_T
 	var/stop_at_turf = FALSE

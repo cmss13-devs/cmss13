@@ -52,7 +52,7 @@
 	var/is_unique = TRUE
 	///If this buff can be used more than once a round.
 	var/is_reusable = FALSE
-	///Cooldown before the buff can be used again.
+	///Cooldown before the buff can be used again. BIRDTALON: IMPLEMENT THIS
 	var/cooldown
 	/// Time that the buff is active for if it is a timed buff.
 	var/duration
@@ -85,7 +85,7 @@
 	. = ..()
 
 /// If the pylon sustaining this hive buff is destroyed for any reason
-/datum/hivebuff/proc/on_pylon_deletion(obj/effect/alien/resin/special/pylon/sustained_pylon)
+/datum/hivebuff/proc/_on_pylon_deletion(obj/effect/alien/resin/special/pylon/sustained_pylon)
 	SIGNAL_HANDLER
 	ended_via_qdeletion = TRUE
 	if(_timer_id)
@@ -106,11 +106,11 @@
 /datum/hivebuff/proc/_on_engage(mob/living/carbon/xenomorph/purchasing_mob, obj/effect/alien/resin/special/pylon/endgame/purchased_pylon)
 	var/list/pylons_to_use = list()
 
-	if(!roundtime_check())
+	if(!_roundtime_check())
 		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive is not mature enough yet to purchase this!"))
 		return
 
-	if(!check_num_required_pylons(purchased_pylon))
+	if(!_check_num_required_pylons(purchased_pylon))
 		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive does not have the required number of available pylons! We require [number_of_required_pylons]"))
 		return FALSE
 	//Add purchasing pylon to list of pylons to use.
@@ -127,19 +127,19 @@
 			// Add the pylon to the list
 			pylons_to_use += potential_pylon
 
-	if(!check_can_afford_buff())
+	if(!_check_can_afford_buff())
 		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive cannot afford [name]! [hive.buff_points] / [cost] points."))
 		return FALSE
 
-	if(!check_pass_active())
+	if(!_check_pass_active())
 		to_chat(purchasing_mob, SPAN_XENONOTICE("[name] is already active in our hive!"))
 		return FALSE
 
-	if(!check_pass_reusable())
+	if(!_check_pass_reusable())
 		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive has already used [name] and cannot use it again!"))
 		return FALSE
 
-	if(!check_pass_unique())
+	if(!_check_pass_unique())
 		var/active_buffs = ""
 		for(var/buff in hive.active_hivebuffs)
 			active_buffs += buff + " "
@@ -149,11 +149,11 @@
 
 	log_admin("[purchasing_mob] of [hive.hivenumber] is attempting to purchase a hive buff: [name].")
 
-	if(!seek_queen_approval(purchasing_mob))
+	if(!_seek_queen_approval(purchasing_mob))
 		to_chat(purchasing_mob, SPAN_XENONOTICE("Our queen has not approved the purchase of [name]."))
 		return FALSE
 
-	// seek_queen_approval() includes a 20 second timeout so we check that everything still exists that we need.
+	// _seek_queen_approval() includes a 20 second timeout so we check that everything still exists that we need.
 	if(QDELETED(purchased_pylon) || QDELETED(purchasing_mob) && !purchasing_mob.check_state())
 		return FALSE
 
@@ -170,7 +170,7 @@
 	// All checks have passed.
 
 	// Purchase and deduct funds only after we're sure the buff has engaged
-	purchase_and_deduct()
+	_purchase_and_deduct()
 	log_admin("[purchasing_mob] and [hive.living_xeno_queen] of [hive.hivenumber] have purchased a hive buff: [name].")
 
 	// Add to the relevant hive lists.
@@ -182,10 +182,10 @@
 	for(var/obj/effect/alien/resin/special/pylon/endgame/pylon_to_register in pylons_to_use)
 		LAZYADD(sustained_pylons, purchased_pylon)
 		pylon_to_register.sustained_buff = src
-		RegisterSignal(pylon_to_register, COMSIG_PARENT_QDELETING, PROC_REF(on_pylon_deletion))
+		RegisterSignal(pylon_to_register, COMSIG_PARENT_QDELETING, PROC_REF(_on_pylon_deletion))
 
 	// Announce to our hive that we've completed.
-	announce_buff_engage()
+	_announce_buff_engage()
 
 	// If we need a timer to call _on_cease() we add it here and store the id, used for deleting the timer if we Destroy().
 	// If we have no duration to the buff then we call _on_cease() immediately.
@@ -203,18 +203,18 @@
 
 /// Wrapper for on_cease(), calls qdel(src) after on_cease() behaviour.
 /datum/hivebuff/proc/_on_cease()
-	announce_buff_cease()
+	_announce_buff_cease()
 	/// Clear refernces to this buff and unregister signal
 	on_cease()
 	if(!ended_via_qdeletion)
 		for(var/obj/effect/alien/resin/special/pylon/endgame/pylon_to_clear in sustained_pylons)
 			pylon_to_clear.sustained_buff = null
 			UnregisterSignal(pylon_to_clear, COMSIG_PARENT_QDELETING)
-		qdel(src)
+	qdel(src)
 
 
 /// Checks the number of pylons required and if the hive posesses them
-/datum/hivebuff/proc/check_num_required_pylons(obj/effect/alien/resin/special/pylon/endgame/purchased_pylon)
+/datum/hivebuff/proc/_check_num_required_pylons(obj/effect/alien/resin/special/pylon/endgame/purchased_pylon)
 	var/list/viable_pylons = list()
 	if(number_of_required_pylons > 1)
 		for(var/obj/effect/alien/resin/special/pylon/endgame/potential_pylon in hive.active_endgame_pylons)
@@ -231,27 +231,28 @@
 		return FALSE
 	return TRUE
 
-/datum/hivebuff/proc/roundtime_check()
-	if(!(ROUND_TIME > SSticker.round_start_time + roundtime_to_enable))
+/datum/hivebuff/proc/_roundtime_check()
+	to_chat(world, "[ROUND_TIME] > [SSticker.round_start_time] +  [roundtime_to_enable]")
+	if(ROUND_TIME > (SSticker.round_start_time + roundtime_to_enable))
 		return TRUE
 	return FALSE
 
 /// Checks if the hive can afford to purchase the buff returns TRUE if they can purchase and FALSE if not.
-/datum/hivebuff/proc/check_can_afford_buff()
+/datum/hivebuff/proc/_check_can_afford_buff()
 	if(hive.buff_points < cost)
 		return FALSE
 
 	return TRUE
 
 /// Checks if this buff is already active in the hive. Returns TRUE if passed FALSE if not.
-/datum/hivebuff/proc/check_pass_active()
+/datum/hivebuff/proc/_check_pass_active()
 	if(LAZYISIN(hive.active_hivebuffs, name))
 		return FALSE
 
 	return TRUE
 
 /// Checks if the buff is unique if other buffs are already in use. Return TRUE if passed FALSE if not.
-/datum/hivebuff/proc/check_pass_unique()
+/datum/hivebuff/proc/_check_pass_unique()
 	if(!is_unique)
 		return TRUE
 
@@ -261,7 +262,7 @@
 	return TRUE
 
 /// Checks if the buff is reusable and if it's already been used. Returns TRUE if passed, FALSE if not.
-/datum/hivebuff/proc/check_pass_reusable()
+/datum/hivebuff/proc/_check_pass_reusable()
 	if(is_reusable)
 		return TRUE
 
@@ -271,12 +272,12 @@
 	return TRUE
 
 /// Deducts points from the hive buff points equal to the cost of the buff
-/datum/hivebuff/proc/purchase_and_deduct()
+/datum/hivebuff/proc/_purchase_and_deduct()
 
 	hive.buff_points -= cost
 	return TRUE
 
-/datum/hivebuff/proc/seek_queen_approval(mob/living/purchasing_mob)
+/datum/hivebuff/proc/_seek_queen_approval(mob/living/purchasing_mob)
 	if(!hive.living_xeno_queen)
 		return FALSE
 
@@ -292,7 +293,7 @@
 /datum/hivebuff/proc/on_cease()
 	return
 
-/datum/hivebuff/proc/announce_buff_engage()
+/datum/hivebuff/proc/_announce_buff_engage()
 	if(engage_flavourmessage)
 		if(tier > HIVEBUFF_TIER_MINOR)
 			xeno_announcement(engage_flavourmessage, hive.hivenumber, "Buff Purchased")
@@ -305,7 +306,7 @@
 	if(marine_flavourmessage)
 		marine_announcement(marine_flavourmessage, COMMAND_ANNOUNCE, 'sound/AI/bioscan.ogg')
 
-/datum/hivebuff/proc/announce_buff_cease()
+/datum/hivebuff/proc/_announce_buff_cease()
 	for(var/mob/living/xenomorph as anything in hive.totalXenos)
 		if(!xenomorph.client)
 			continue

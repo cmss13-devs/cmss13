@@ -752,9 +752,16 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	health -= dam
 	healthcheck(src)
 
-
 /obj/structure/flora/jungle/thickbush/jungle_plant
 	icon_state = "plant_1"
 	desc = "Looks like some of that fruit might be edible."
 	icon_tag = "plant"
 	variations  = 7
+
+/obj/structure/flora/jungle/hedge
+	name = "dense hedge"
+	desc = "Pretty thick hedge, it'll take something sharp and a lot of determination to clear away."
+	icon = 'icons/obj/structures/props/jungleplants.dmi'
+	layer = BUSH_LAYER
+	icon_state = "hedge"
+	health = 300

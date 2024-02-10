@@ -59,3 +59,9 @@
 	name = "Chigusa Shipyard Sign"
 	desc = "A large sign that reads 'Chigusa Shipyard - Subsidary of Weyland-Yutani Corporation'. Acid burns checker the sign like buckshot."
 	icon_state = "laz_sign" //TODO make unique icon.
+
+/obj/structure/lz_sign/isaacs_lament
+	name = "Isaacs Lament Sign"
+	desc = "A large sign for Isaacs Lament exhorting its values and organisations. it is smeared in blood and grafitti saying: liar."
+	icon = 'icons/obj/structures/props/landing_signs_128_64.dmi'
+	icon_state = "isaacs_lament"

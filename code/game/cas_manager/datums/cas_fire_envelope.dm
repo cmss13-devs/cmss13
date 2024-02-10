@@ -3,7 +3,9 @@
 	var/list/datum/cas_fire_mission/missions
 	var/fire_length
 	var/grace_period //how much time you have after initiating fire mission and before you can't change firemissions
-	var/chat_warning
+	var/first_warning
+	var/second_warning
+	var/third_warning
 	var/execution_start
 	var/flyoff_period //how much time it takes after shots fired to get off the map. CAS is vulnerable here
 	var/cooldown_period //how much time you have to wait before new Fire Mission run
@@ -249,9 +251,9 @@
 /datum/cas_fire_envelope/proc/play_sound(atom/target_turf)
 	stat = FIRE_MISSION_STATE_ON_TARGET
 	change_current_loc(target_turf)
-	playsound(target_turf, 'sound/weapons/dropship_sonic_boom.ogg', vol = 70, vary = TRUE, sound_range = 50, falloff = 8)
+	playsound(target_turf, soundeffect , vol = 70, vary = TRUE, sound_range = 50, falloff = 8)
 
-/datum/cas_fire_envelope/proc/warning(atom/target_turf)
+/datum/cas_fire_envelope/proc/first_chat_warning(atom/target_turf)
 	for(var/mob/mob in range(15, target_turf))
 		var/ds_identifier = "LARGE BIRD"
 		var/fm_identifier = "SPIT FIRE"
@@ -262,6 +264,40 @@
 		mob.show_message( \
 			SPAN_HIGHDANGER("YOU HEAR THE [ds_identifier] ROAR AS IT PREPARES TO [fm_identifier] NEAR YOU!"),SHOW_MESSAGE_VISIBLE, \
 			SPAN_HIGHDANGER("YOU HEAR SOMETHING FLYING CLOSER TO YOU!") , SHOW_MESSAGE_AUDIBLE \
+		)
+
+/datum/cas_fire_envelope/proc/second_chat_warning(atom/initial_turf)
+	var/relative_dir
+	for(var/mob/mob in range(15, initial_turf))
+		if(get_turf(mob) == initial_turf)
+			relative_dir = 0
+		else
+			relative_dir = Get_Compass_Dir(mob, initial_turf)
+
+		var/ds_identifier = "LARGE BIRD"
+		if (mob.mob_flags & KNOWS_TECHNOLOGY)
+			ds_identifier = "DROPSHIP"
+
+		mob.show_message( \
+			SPAN_HIGHDANGER("A [ds_identifier] FLIES [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
+			SPAN_HIGHDANGER("YOU HEAR SOMETHING GO [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
+		)
+
+/datum/cas_fire_envelope/proc/third_chat_warning(atom/initial_turf)
+	var/relative_dir
+	for(var/mob/mob in range(10, initial_turf))
+		if(get_turf(mob) == initial_turf)
+			relative_dir = 0
+		else
+			relative_dir = Get_Compass_Dir(mob, initial_turf)
+
+		var/ds_identifier = "LARGE BIRD"
+		if (mob.mob_flags & KNOWS_TECHNOLOGY)
+			ds_identifier = "DROPSHIP"
+
+		mob.show_message( \
+			SPAN_HIGHDANGER("A [ds_identifier] FIRES [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 1, \
+			SPAN_HIGHDANGER("YOU HEAR SOMETHING FIRE [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 2 \
 		)
 
 /datum/cas_fire_envelope/proc/open_fire(atom/target_turf,datum/cas_fire_mission/mission,dir)
@@ -288,8 +324,23 @@
 		mission_error = "Target is off bounds or obstructed."
 		return
 
+	var/obj/effect/firemission_effect = new(target_turf)
+
+	firemission_effect.icon = 'icons/obj/items/weapons/projectiles.dmi'
+	firemission_effect.icon_state = "laser_target2"
+	firemission_effect.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	firemission_effect.invisibility = INVISIBILITY_MAXIMUM
+	QDEL_IN(firemission_effect, 12 SECONDS)
+
+
+	notify_ghosts(header = "CAS Fire Mission", message = "[usr ? usr : "Someone"] is launching Fire Mission '[mission.name]' at [get_area(target_turf)].", source = firemission_effect)
+	msg_admin_niche("[usr ? key_name(usr) : "Someone"] is launching Fire Mission '[mission.name]' at ([target_turf.x],[target_turf.y],[target_turf.z]) [ADMIN_JMP(target_turf)]")
+
+
 	addtimer(CALLBACK(src, PROC_REF( play_sound), target_turf), grace_period)
-	addtimer(CALLBACK(src, PROC_REF( warning), target_turf), chat_warning)
+	addtimer(CALLBACK(src, PROC_REF( first_chat_warning), target_turf), first_warning)
+	addtimer(CALLBACK(src, PROC_REF( second_chat_warning), target_turf), second_warning)
+	addtimer(CALLBACK(src, PROC_REF( third_chat_warning), target_turf), third_warning)
 	addtimer(CALLBACK(src, PROC_REF( open_fire), target_turf, mission,dir), execution_start)
 	addtimer(CALLBACK(src, PROC_REF( flyoff)), flyoff_period)
 	addtimer(CALLBACK(src, PROC_REF( end_cooldown)), cooldown_period)
@@ -337,8 +388,10 @@
 /datum/cas_fire_envelope/uscm_dropship
 	fire_length = 12
 	grace_period = 5 SECONDS
-	chat_warning = 6.5 SECONDS
-	execution_start = 8.5 SECONDS
+	first_warning = 6.5 SECONDS
+	second_warning = 8.5 SECONDS
+	third_warning = 10 SECONDS
+	execution_start = 10 SECONDS
 	flyoff_period = 15 SECONDS
 	cooldown_period = 25 SECONDS
 	soundeffect = 'sound/weapons/dropship_sonic_boom.ogg' //BOOM~WOOOOOSH~HSOOOOOW~BOOM

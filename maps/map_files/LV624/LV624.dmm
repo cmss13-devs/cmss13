@@ -1405,9 +1405,7 @@
 /area/lv624/ground/barrens/central_barrens)
 "agF" = (
 /obj/item/ammo_casing,
-/obj/structure/machinery/floodlight/landing{
-	name = "bolted floodlight"
-	},
+/obj/structure/machinery/colony_floodlight,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agG" = (

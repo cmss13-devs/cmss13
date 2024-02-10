@@ -236,20 +236,56 @@
 /obj/effect/alien/resin/special/pylon/endgame/proc/choose_hivebuff(mob/living/carbon/xenomorph/xeno)
 	var/list/buffs = list()
 	var/list/names = list()
+	var/list/radial_images = list()
+	var/major_available = FALSE
 	for(var/datum/hivebuff/buff as anything in linked_hive.get_available_hivebuffs())
 		var/buffname = initial(buff.name)
 		names += buffname
 		buffs[buffname] = buff
+		if(!major_available)
+			if(initial(buff.tier) == HIVEBUFF_TIER_MAJOR)
+				major_available = TRUE
 
-	// BIRDTALON: REPLACE THIS WITH A RADIAL MENU
-	var/input = tgui_input_list(xeno, "Pick a buff.", "Select Buff", names)
-	if(!buffs[input])
-		to_chat(world, "Invalid selection.")
+
+	if(!length(buffs))
+		to_chat(xeno, SPAN_XENONOTICE("No boons are available to us!"))
 		return
 
-	if(!linked_hive.attempt_apply_hivebuff(buffs[input], xeno, src))
+	var/selection
+	var/list/radial_images_tiers = list(HIVEBUFF_TIER_MINOR = image('icons/ui_icons/hivebuff_radial.dmi', "minor"),
+										 HIVEBUFF_TIER_MAJOR = image('icons/ui_icons/hivebuff_radial.dmi', "major"))
+
+	if((xeno.client.prefs && xeno.client.prefs.no_radials_preference))
+		selection = tgui_input_list(xeno, "Pick a buff.", "Select Buff", names)
+	else
+		var/tier = HIVEBUFF_TIER_MINOR
+		if(major_available)
+			tier = show_radial_menu(xeno, src, radial_images_tiers, require_near = TRUE)
+
+		if(tier == HIVEBUFF_TIER_MAJOR)
+			for(var/filtered_buffname as anything in buffs)
+				var/datum/hivebuff/filtered_buff = buffs[filtered_buffname]
+				if(initial(filtered_buff.tier) == HIVEBUFF_TIER_MAJOR)
+					radial_images[initial(filtered_buff.name)] += image(initial(filtered_buff.hivebuff_radial_dmi), initial(filtered_buff.radial_icon))
+		else
+			for(var/filtered_buffname as anything in buffs)
+				var/datum/hivebuff/filtered_buff = buffs[filtered_buffname]
+				if(initial(filtered_buff.tier) == HIVEBUFF_TIER_MINOR)
+					radial_images[initial(filtered_buff.name)] += image(initial(filtered_buff.hivebuff_radial_dmi), initial(filtered_buff.radial_icon))
+
+		selection = show_radial_menu(xeno, src, radial_images, radius = 72, require_near = TRUE, tooltips = TRUE)
+	if(!selection || !Adjacent(xeno))
+		return
+
+	if(!buffs[selection])
+		to_chat(xeno, "This selection is impossible!")
+		return FALSE
+
+	if(!linked_hive.attempt_apply_hivebuff(buffs[selection], xeno, src))
 		apply_player_buff_cooldown(xeno, 3 MINUTES)
-		return
+		return FALSE
+	apply_player_buff_cooldown(xeno, 3 MINUTES)
+	return TRUE
 
 /// Apply cooldown to the player attempting to purchase a buff.
 /obj/effect/alien/resin/special/pylon/endgame/proc/apply_player_buff_cooldown(mob/living/carbon/xenomorph/xeno, time)

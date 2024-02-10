@@ -979,7 +979,6 @@
 
 	var/result = ability_act(stabbing_xeno, target, limb)
 
-
 	apply_cooldown()
 	xeno_attack_delay(stabbing_xeno)
 	..()

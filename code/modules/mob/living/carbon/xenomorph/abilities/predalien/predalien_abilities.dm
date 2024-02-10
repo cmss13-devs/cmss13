@@ -6,7 +6,6 @@
 	macro_path = /datum/action/xeno_action/verb/verb_feralrush
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	action_type = XENO_ACTION_ACTIVATE
-	plasma_cost = 0
 	xeno_cooldown = 12 SECONDS
 
 	// Config
@@ -27,8 +26,6 @@
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	macro_path = /datum/action/xeno_action/verb/verb_predalien_roar
 	xeno_cooldown = 25 SECONDS
-	plasma_cost = 0
-
 	var/predalien_roar = list("sound/voice/predalien_roar.ogg")
 	var/bonus_damage_scale = 2.5
 	var/bonus_speed_scale = 0.05
@@ -40,7 +37,6 @@
 	macro_path = /datum/action/xeno_action/verb/feral_smash
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	xeno_cooldown = 20 SECONDS
-	plasma_cost = 0
 
 	// Configurables
 	var/grab_range = 4
@@ -57,7 +53,6 @@
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	macro_path = /datum/action/xeno_action/verb/verb_feralfrenzy
 	xeno_cooldown = 15 SECONDS
-	plasma_cost = 0
 
 	var/activation_delay_aoe = 1 SECONDS
 	var/base_damage_aoe = 15

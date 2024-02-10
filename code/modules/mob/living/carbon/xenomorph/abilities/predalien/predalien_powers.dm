@@ -211,28 +211,18 @@
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)
 	return ..()
 
-
-
-
-
-
 /datum/action/xeno_action/activable/tail_stab/predalien_tailstab/use_ability(atom/targetted_atom)
 	var/mob/living/carbon/xenomorph/predalien_tailstab = owner
 
 
 	if(!action_cooldown_check())
-		return FALSE
+		return
 
 	if(!predalien_tailstab.check_state())
-		return FALSE
+		return
 
 	if (world.time <= predalien_tailstab.next_move)
-		return FALSE
-
-
-
-
-
+		return
 
 /datum/action/xeno_action/activable/feral_smash/use_ability(atom/affected_atom)
 	var/mob/living/carbon/xenomorph/predalien_smash = owner
@@ -266,7 +256,6 @@
 		return
 
 	apply_cooldown()
-	..()
 	predalien_smash.visible_message(SPAN_XENOWARNING("[predalien_smash] grabs [carbon]!"), SPAN_XENOWARNING("We grab [carbon]!"))
 
 	predalien_smash.throw_atom(get_step_towards(affected_atom, predalien_smash), grab_range, SPEED_FAST, predalien_smash)

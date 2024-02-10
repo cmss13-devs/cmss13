@@ -59,29 +59,29 @@
 			xeno.emote("roar")
 			xeno.spin_circle()
 
-			for (var/mob/living/carbon/human in orange(xeno, range))
-				if(!isxeno_human(human) || xeno.can_not_harm(human))
+			for (var/mob/living/carbon/carbon in orange(xeno, range))
+				if(!isxeno_carbon(carbon) || xeno.can_not_harm(carbon))
 					continue
 
-				if (human.stat == DEAD)
+				if (carbon.stat == DEAD)
 					continue
 
-				if(!check_clear_path_to_target(xeno, human))
+				if(!check_clear_path_to_target(xeno, carbon))
 					continue
 
 				if (range > 1)
-					xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] rips open the guts of [human]!"), SPAN_XENOHIGHDANGER("We rip open the guts of [human]!"))
-					human.spawn_gibs()
-					xeno.animation_attack_on(human)
+					xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] rips open the guts of [carbon]!"), SPAN_XENOHIGHDANGER("We rip open the guts of [carbon]!"))
+					carbon.spawn_gibs()
+					xeno.animation_attack_on(carbon)
 					xeno.spin_circle()
-					xeno.flick_attack_overlay(human, "tail")
-					playsound(get_turf(human), 'sound/effects/gibbed.ogg', 30, 1)
-					human.apply_effect(get_xeno_stun_duration(human, 1), WEAKEN)
+					xeno.flick_attack_overlay(carbon, "tail")
+					playsound(get_turf(carbon), 'sound/effects/gibbed.ogg', 30, 1)
+					carbon.apply_effect(get_xeno_stun_duration(carbon, 1), WEAKEN)
 				else
-					xeno.visible_message(SPAN_XENODANGER("[xeno] claws [human]!"), SPAN_XENODANGER("We claw [human]!"))
-					playsound(get_turf(human), "alien_claw_flesh", 30, 1)
+					xeno.visible_message(SPAN_XENODANGER("[xeno] claws [carbon]!"), SPAN_XENODANGER("We claw [carbon]!"))
+					playsound(get_turf(carbon), "alien_claw_flesh", 30, 1)
 
-				human.apply_armoured_damage(get_xeno_damage_slash(human, base_damage_aoe + damage_scale_aoe * predalienbehavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
+				carbon.apply_armoured_damage(get_xeno_damage_slash(carbon, base_damage_aoe + damage_scale_aoe * predalienbehavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
 			playsound(owner, 'sound/voice/predalien_death.ogg', 75, 0, status = 0)
 		REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Eviscerate"))
 		xeno.anchored = FALSE

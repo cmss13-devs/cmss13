@@ -1,4 +1,0 @@
-author: "blackdragonTOW"
-delete-after: True
-changes:
-  - admin: "added logging for 3rd party victory events"

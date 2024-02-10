@@ -1,5 +1,0 @@
-author: "private-tristan"
-delete-after: True
-changes:
-  - rscadd: "Pizza ERT is back, although incredibly unlikely to occur"
-  - bugfix: "UPP ERT no longer rolls 3 times (1 for random, 1 for friendly, and 1 for hostile), due to this, UPP comms will always be scrambled at the beginning, no way to tell intentions before meeting."

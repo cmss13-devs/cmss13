@@ -1,4 +1,0 @@
-author: "SabreML"
-delete-after: True
-changes:
-  - bugfix: "Fixed trash carts not being pick-uppable by the dropship's fulton recovery system."

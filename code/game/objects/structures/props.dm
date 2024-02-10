@@ -2976,10 +2976,13 @@
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble9
 	icon_state = "buildingventbig10"
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble10
+	density = FALSE
 	icon_state = "buildingventbig11"
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble11
+	density = FALSE
 	icon_state = "buildingventbig12"
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble12
+	density = FALSE
 	icon_state = "buildingventbig13"
 
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall
@@ -3015,6 +3018,20 @@
 	name = "concrete planter"
 	desc = "A decorative concrete planter."
 	icon_state = "planterempty"
+
+/obj/structure/prop/hybrisa/misc/concretestatue
+	name = "concrete statue"
+	desc = "A decorative statue with the Weyland-Yutani 'Wings' adorned on it, A corporate brutalist piece of art."
+	icon = 'icons/obj/structures/props/64x64 zenithrandomprops.dmi'
+	icon_state = "concretesculpture"
+	bound_width = 64
+	bound_height = 64
+	density = TRUE
+	opacity = TRUE
+	anchored = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	indestructible = TRUE
 
 /obj/structure/prop/hybrisa/misc/detonator
 	name = "inactive detonator"

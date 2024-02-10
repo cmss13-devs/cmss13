@@ -999,7 +999,14 @@
 	icon_state = "sidewalk"
 /turf/open/hybrisa/street/sidewalkfull
 	icon_state = "sidewalkfull"
-
+/turf/open/hybrisa/street/roadlines
+	icon_state = "asphalt_old_roadlines"
+/turf/open/hybrisa/street/roadlines2
+	icon_state = "asphalt_old_roadlines2"
+/turf/open/hybrisa/street/roadlines3
+	icon_state = "asphalt_old_roadlines3"
+/turf/open/hybrisa/street/roadlines4
+	icon_state = "asphalt_old_roadlines4"
 
 // Carpet
 

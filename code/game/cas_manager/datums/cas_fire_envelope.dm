@@ -39,7 +39,7 @@
 
 
 /datum/cas_fire_envelope/proc/get_total_duration()
-	return cooldown_period
+	return flyoff_period
 
 /datum/cas_fire_envelope/proc/update_weapons(list/obj/structure/dropship_equipment/weapon/weapons)
 	for(var/datum/cas_fire_mission/mission in missions)
@@ -288,11 +288,11 @@
 		mission_error = "Target is off bounds or obstructed."
 		return
 
-	addtimer(CALLBACK( TYPE_PROC_REF(/datum/cas_fire_envelope, play_sound), target_turf), grace_period)
-	addtimer(CALLBACK( TYPE_PROC_REF(/datum/cas_fire_envelope, warning), target_turf), chat_warning)
-	addtimer(CALLBACK( TYPE_PROC_REF(/datum/cas_fire_envelope, open_fire), target_turf, mission,dir), execution_start)
-	addtimer(CALLBACK( TYPE_PROC_REF(/datum/cas_fire_envelope, flyoff)), flyoff_period)
-	addtimer(CALLBACK( TYPE_PROC_REF(/datum/cas_fire_envelope, end_cooldown)), cooldown_period)
+	addtimer(CALLBACK(src, PROC_REF( play_sound), target_turf), grace_period)
+	addtimer(CALLBACK(src, PROC_REF( warning), target_turf), chat_warning)
+	addtimer(CALLBACK(src, PROC_REF( open_fire), target_turf, mission,dir), execution_start)
+	addtimer(CALLBACK(src, PROC_REF( flyoff)), flyoff_period)
+	addtimer(CALLBACK(src, PROC_REF( end_cooldown)), cooldown_period)
 
 /**
  * Change attack vector for firemission

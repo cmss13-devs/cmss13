@@ -1126,9 +1126,7 @@
 /area/lv624/ground/barrens/containers)
 "afu" = (
 /obj/item/ammo_casing,
-/obj/structure/machinery/floodlight/landing{
-	name = "bolted floodlight"
-	},
+/obj/structure/machinery/colony_floodlight,
 /turf/open/floor/plating{
 	dir = 9;
 	icon_state = "warnplate"
@@ -1162,9 +1160,7 @@
 	},
 /area/lv624/ground/barrens/central_barrens)
 "afy" = (
-/obj/structure/machinery/floodlight/landing{
-	name = "bolted floodlight"
-	},
+/obj/structure/machinery/colony_floodlight,
 /turf/open/floor/plating{
 	dir = 5;
 	icon_state = "warnplate"
@@ -1588,9 +1584,7 @@
 	},
 /area/lv624/ground/barrens/west_barrens/ceiling)
 "ahM" = (
-/obj/structure/machinery/floodlight/landing{
-	name = "bolted floodlight"
-	},
+/obj/structure/machinery/colony_floodlight,
 /turf/open/floor/plating{
 	dir = 10;
 	icon_state = "warnplate"
@@ -1630,9 +1624,7 @@
 	},
 /area/lv624/ground/barrens/central_barrens)
 "ahT" = (
-/obj/structure/machinery/floodlight/landing{
-	name = "bolted floodlight"
-	},
+/obj/structure/machinery/colony_floodlight,
 /turf/open/floor/plating{
 	dir = 6;
 	icon_state = "warnplate"

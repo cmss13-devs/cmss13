@@ -132,3 +132,17 @@
       5 points and M44 Heavy for 10 points.
   - balance: added the ability for rifleman to buy M4A3 (HP and AP) and VP78 magazines
       for 5 points.
+2024-02-10:
+  Drathek:
+  - bugfix: Fixed an oversight with burst point blank firing
+  SabreML:
+  - bugfix: Fixed trash carts not being pick-uppable by the dropship's fulton recovery
+      system.
+  blackdragonTOW:
+  - admin: added logging for 3rd party victory events
+  private-tristan:
+  - rscadd: Pizza ERT is back, although incredibly unlikely to occur
+  - bugfix: UPP ERT no longer rolls 3 times (1 for random, 1 for friendly, and 1 for
+      hostile), due to this, UPP comms will always be scrambled at the beginning,
+      no way to tell intentions before meeting.
+  - rscadd: Chem Goon Research Consultant now spawns with reagent scanner goggles.

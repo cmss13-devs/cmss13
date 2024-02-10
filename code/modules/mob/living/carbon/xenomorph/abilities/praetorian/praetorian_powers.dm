@@ -926,15 +926,15 @@
 		to_chat(X, SPAN_XENODANGER("We cannot retrieve ourself!"))
 		return
 
-	if(X.anchored)
-		to_chat(X, SPAN_XENODANGER("That sister cannot move!"))
-		return
-
 	if(!(A in view(7, X)))
 		to_chat(X, SPAN_XENODANGER("That sister is too far away!"))
 		return
 
 	var/mob/living/carbon/xenomorph/targetXeno = A
+
+	if(targetXeno.anchored)
+		to_chat(X, SPAN_XENODANGER("That sister cannot move!"))
+		return
 
 	if(!(targetXeno.resting || targetXeno.stat == UNCONSCIOUS))
 		if(targetXeno.mob_size > MOB_SIZE_BIG)

@@ -178,7 +178,7 @@
 /datum/action/xeno_action/onclick/feralrush/proc/remove_armor_effects()
 	SIGNAL_HANDLER
 	var/mob/living/carbon/xenomorph/predatoralien = owner
-	if (armor_buff == TRUE)
+	if (armor_buff)
 		to_chat(predatoralien, SPAN_XENOWARNING("We are no longer armored."))
 		predatoralien.armor_modifier -= armor_buff_amount
 		predatoralien.recalculate_armor()

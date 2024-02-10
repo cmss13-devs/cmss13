@@ -317,12 +317,12 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(banner)
 		permaban_admin_id = banner.id
 		message_admins("[key_name_admin(banner.owning_client)] has permanently banned [ckey] for '[reason]'.")
-		var/datum/tgs_chat_embed/field/reason
+		var/datum/tgs_chat_embed/field/reason_embed
 		if(internal_reason)
-			reason = new()
-			reason.name = "Permaban Reason"
-			reason.value = internal_reason
-		important_message_external("[banner.owning_client] has permanently banned [ckey] for '[reason]'.", "Permaban Placed", list(reason))
+			reason_embed = new()
+			reason_embed.name = "Permaban Reason"
+			reason_embed.value = internal_reason
+		important_message_external("[banner.owning_client] has permanently banned [ckey] for '[reason]'.", "Permaban Placed", reason ? list(reason_embed) : null)
 
 		add_note("Permanently banned | [reason]", FALSE, NOTE_ADMIN, TRUE)
 		if(internal_reason)

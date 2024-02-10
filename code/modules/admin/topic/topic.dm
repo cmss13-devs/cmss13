@@ -244,7 +244,7 @@
 
 		unban_player.save()
 
-		log_and_message_admins("[key_name_admin(owner)] has removed the permanent ban on [unban_player.ckey].")
+		message_admins("[key_name_admin(owner)] has removed the permanent ban on [unban_player.ckey].")
 		important_message_external("[owner] has removed the permanent ban on [unban_player.ckey].", "Permaban Removed")
 
 	else if(href_list["sticky"])
@@ -324,7 +324,7 @@
 				return
 
 			SSstickyban.whitelist_ckey(sticky.id, ckey_to_whitelist)
-			log_and_message_admins("[key_name_admin(owner)] has whitelisted [ckey_to_whitelist] against stickyban '[sticky.identifier]'.")
+			message_admins("[key_name_admin(owner)] has whitelisted [ckey_to_whitelist] against stickyban '[sticky.identifier]'.")
 			important_message_external("[owner] has whitelisted [ckey_to_whitelist] against stickyban '[sticky.identifier]'.", "CKEY Whitelisted")
 
 		if(href_list["add"])
@@ -344,7 +344,7 @@
 				if("IP")
 					SSstickyban.add_matched_ip(sticky.id, to_add)
 
-			log_and_message_admins("[key_name_admin(owner)] has added a [option] ([to_add]) to stickyban '[sticky.identifier]'.")
+			message_admins("[key_name_admin(owner)] has added a [option] ([to_add]) to stickyban '[sticky.identifier]'.")
 			important_message_external("[owner] has added a [option] ([to_add]) to stickyban '[sticky.identifier]'.", "[option] Added to Stickyban")
 
 		if(href_list["remove"])
@@ -357,7 +357,7 @@
 					sticky.active = FALSE
 					sticky.save()
 
-					log_and_message_admins("[key_name_admin(owner)] has deactivated stickyban '[sticky.identifier]'.")
+					message_admins("[key_name_admin(owner)] has deactivated stickyban '[sticky.identifier]'.")
 					important_message_external("[owner] has deactivated stickyban '[sticky.identifier]'.", "Stickyban Deactivated")
 
 				if("CID")
@@ -378,7 +378,7 @@
 					var/datum/entity/stickyban_matched_cid/sticky_cid = DB_ENTITY(/datum/entity/stickyban_matched_cid, selected)
 					sticky_cid.delete()
 
-					log_and_message_admins("[key_name_admin(owner)] has removed a CID ([picked]) from stickyban '[sticky.identifier]'.")
+					message_admins("[key_name_admin(owner)] has removed a CID ([picked]) from stickyban '[sticky.identifier]'.")
 					important_message_external("[owner] has removed a CID ([picked]) from stickyban '[sticky.identifier]'.", "CID Removed from Stickyban")
 
 				if("CKEY")
@@ -399,7 +399,7 @@
 					var/datum/entity/stickyban_matched_ckey/sticky_ckey = DB_ENTITY(/datum/entity/stickyban_matched_ckey, selected)
 					sticky_ckey.delete()
 
-					log_and_message_admins("[key_name_admin(owner)] has removed a CKEY ([picked]) from stickyban '[sticky.identifier]'.")
+					message_admins("[key_name_admin(owner)] has removed a CKEY ([picked]) from stickyban '[sticky.identifier]'.")
 					important_message_external("[owner] has removed a CKEY ([picked]) from stickyban '[sticky.identifier]'.", "CKEY Removed from Stickyban")
 
 				if("IP")
@@ -420,7 +420,7 @@
 					var/datum/entity/stickyban_matched_ip/sticky_ip = DB_ENTITY(/datum/entity/stickyban_matched_ip, selected)
 					sticky_ip.delete()
 
-					log_and_message_admins("[key_name_admin(owner)] has removed an IP ([picked]) from stickyban [sticky.identifier].")
+					message_admins("[key_name_admin(owner)] has removed an IP ([picked]) from stickyban [sticky.identifier].")
 					important_message_external("[owner] has removed an IP ([picked]) from stickyban '[sticky.identifier].", "IP Removed from Stickyban")
 
 	else if(href_list["warn"])

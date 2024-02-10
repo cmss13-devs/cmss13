@@ -41,13 +41,11 @@
 	if(!xeno.check_state())
 		return
 
-
-
-
 	var/datum/behavior_delegate/predalien_base/predalienbehavior = xeno.behavior_delegate
+	if(!istype(predalienbehavior))
+		return
 	if(targetting == AOETARGETGUT)
-		if(!istype(predalienbehavior))
-			return
+
 		if (range > 1)
 			xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] begins digging in for a massive strike!"), SPAN_XENOHIGHDANGER("We begin digging in for a massive strike!"))
 		else
@@ -103,8 +101,6 @@
 		to_chat(xeno, SPAN_XENOWARNING("[carbon] is dead, why would we want to touch them?"))
 		return
 	if(targetting == SINGLETARGETGUT) // single target
-		if(!istype(predalienbehavior))
-			return
 		ADD_TRAIT(carbon, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Devastate"))
 		apply_cooldown()
 

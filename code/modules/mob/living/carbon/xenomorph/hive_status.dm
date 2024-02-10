@@ -1384,10 +1384,14 @@
 /// Get a list of hivebuffs which can be bought now.
 /datum/hive_status/proc/get_available_hivebuffs()
 	var/list/potential_hivebuffs = subtypesof(/datum/hivebuff)
-	var/roundtime = world.time
+
 	for(var/datum/hivebuff/possible_hivebuff as anything in potential_hivebuffs)
 		// Round isn't old enough yet
-		if(initial(possible_hivebuff.roundtime_to_enable) < roundtime)
+		if(ROUND_TIME < SSticker.round_start_time + initial(possible_hivebuff.roundtime_to_enable))
+			potential_hivebuffs -= possible_hivebuff
+			continue
+
+		if(initial(possible_hivebuff.number_of_required_pylons) > LAZYLEN(active_endgame_pylons))
 			potential_hivebuffs -= possible_hivebuff
 			continue
 

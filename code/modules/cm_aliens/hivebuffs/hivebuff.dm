@@ -15,8 +15,8 @@
 
 ///LOCAL DEFINES///
 
-#define HIVEBUFF_TIER_MINOR 1
-#define HIVEBUFF_TIER_MAJOR 2
+#define HIVEBUFF_TIER_MINOR "Minor"
+#define HIVEBUFF_TIER_MAJOR "Major"
 
 
 /////////////////////////////
@@ -32,20 +32,22 @@
 	var/name = "Hivebuff"
 	/// Description of what the buff does.
 	var/desc = "Base hivebuff"
+	/// Path to .dmi with hivebuff radial icons
+	var/hivebuff_radial_dmi = 'icons/ui_icons/hivebuff_radial.dmi'
+	/// Image to display on radial menu
+	var/radial_icon = "health"
 	/// Round time before the buff becomes available to purchase
-	var/roundtime_to_enable = 1 HOURS
-	/// Number of pylons required to buy the buff
-	var/number_of_required_pylons = 1
+	var/roundtime_to_enable = 0 HOURS
+
 	/// Flavour message to announce to the hive on buff application. Narrated to all players in the hive.
 	var/engage_flavourmessage = "The qween has purchased a buff UwU!"
 	/// Flavour message to announce to the hive on buff expiry. Narrated to all players in the hive.
 	var/cease_flavourmessage = "Oh noes! =>.<= our buff has expired!!"
 
-	/// Minor or Major buff.
+	/// Minor or Major buff. Governs announcements made and importance.
 	var/tier = HIVEBUFF_TIER_MINOR
-
-	/// Time of the round  that the buff is available for purchase from
-	var/time_available_from
+	/// Number of pylons required to buy the buff
+	var/number_of_required_pylons = 1
 	///If this buff can be used with others
 	var/is_unique = TRUE
 	///If this buff can be used more than once a round.
@@ -55,7 +57,7 @@
 	/// Time that the buff is active for if it is a timed buff.
 	var/duration
 	/// Cost of the buff
-	var/cost = 0
+	var/cost = 1
 
 	/// Message to send to the user and queen if we fail for any reason during on_engage()
 	var/engage_failure_message
@@ -103,6 +105,10 @@
 ///Wrapper for on_engage(), handles checking if the buff can be actually purchased as well as adding buff to the active_hivebuffs and used_hivebuffs for the hive.
 /datum/hivebuff/proc/_on_engage(mob/living/carbon/xenomorph/purchasing_mob, obj/effect/alien/resin/special/pylon/endgame/purchased_pylon)
 	var/list/pylons_to_use = list()
+
+	if(!roundtime_check())
+		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive is not mature enough yet to purchase this!"))
+		return
 
 	if(!check_num_required_pylons(purchased_pylon))
 		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive does not have the required number of available pylons! We require [number_of_required_pylons]"))
@@ -225,6 +231,11 @@
 		return FALSE
 	return TRUE
 
+/datum/hivebuff/proc/roundtime_check()
+	if(!(ROUND_TIME > SSticker.round_start_time + roundtime_to_enable))
+		return TRUE
+	return FALSE
+
 /// Checks if the hive can afford to purchase the buff returns TRUE if they can purchase and FALSE if not.
 /datum/hivebuff/proc/check_can_afford_buff()
 	if(hive.buff_points < cost)
@@ -259,7 +270,7 @@
 
 	return TRUE
 
-/// Deducts points if the hive can purchase the buff, returns TRUE if succeeded and FALSE if not.
+/// Deducts points from the hive buff points equal to the cost of the buff
 /datum/hivebuff/proc/purchase_and_deduct()
 
 	hive.buff_points -= cost
@@ -310,6 +321,7 @@
 /datum/hivebuff/extra_larva
 	name = "Surge of Larva"
 	desc = "Provides 5 larva instantly to the hive."
+	radial_icon = "larba"
 
 	engage_flavourmessage = "The queen has purchased 5 extra larva to join the hive!"
 
@@ -322,17 +334,16 @@
 /datum/hivebuff/extra_life
 	name = "Boon of Plenty"
 	desc = "Increases all xenomorph health by 10% for 10 seconds"
-	tier = HIVEBUFF_TIER_MAJOR
+	tier = HIVEBUFF_TIER_MINOR
 
 	engage_flavourmessage = "The queen has imbued us with greater fortitude."
 	duration = 30 SECONDS
 	number_of_required_pylons = 2
-	roundtime_to_enable = 10 MINUTES
 
 
 /datum/hivebuff/extra_life/on_engage()
 	for(var/mob/living/carbon/xenomorph/xeno as anything in hive.totalXenos)
-		xeno.maxHealth *= 1.1
+		xeno.maxHealth *= 1.05
 	return TRUE
 
 /datum/hivebuff/extra_life/on_cease()
@@ -340,8 +351,29 @@
 		xeno.maxHealth = initial(xeno.caste.max_health)
 	return TRUE
 
+/datum/hivebuff/extra_life/major
+	name = "Major Boon of Plenty"
+	desc = "Increases all xenomorph health by 10% for 10 seconds"
+	tier = HIVEBUFF_TIER_MAJOR
+
+	engage_flavourmessage = "The queen has imbued us with greater fortitude."
+	duration = 10 MINUTES
+	number_of_required_pylons = 2
+	radial_icon = "health_m"
+
+
+/datum/hivebuff/extra_life/major/on_engage()
+	for(var/mob/living/carbon/xenomorph/xeno as anything in hive.totalXenos)
+		xeno.maxHealth *= 1.1
+	return TRUE
+
+/datum/hivebuff/extra_life/major/on_cease()
+	for(var/mob/living/carbon/xenomorph/xeno as anything in hive.totalXenos)
+		xeno.maxHealth = initial(xeno.caste.max_health)
+	return TRUE
+
 /datum/hivebuff/game_ender_caste
-	name = "Boom of Destruction"
+	name = "Boon of Destruction"
 	desc = "A huge behemoth of a Xenomorph which can tear its way through defences and flesh alike."
 	tier = HIVEBUFF_TIER_MAJOR
 	is_unique = TRUE
@@ -352,7 +384,42 @@
 	/// CODE FOR SPAWNING OF THE DESTROYER HERE.
 	return
 
+/datum/hivebuff/defence
+	name = "Boon of Defence"
+	desc = "Increases all xenomorph armour by 5% for 5 minutes"
+	tier = HIVEBUFF_TIER_MINOR
 
+	engage_flavourmessage = "The queen has imbued us with greater chitin."
+	duration = 5 MINUTES
+	number_of_required_pylons = 1
+	radial_icon = "shield"
 
-#undef HIVEBUFF_TIER_MINOR
-#undef HIVEBUFF_TIER_MAJOR
+/datum/hivebuff/defence/major
+	name = "Major Boon of Defence"
+	desc = "Increases all xenomorph armour by 10% for 10 minutes"
+	tier = HIVEBUFF_TIER_MAJOR
+
+	engage_flavourmessage = "The queen has imbued us with even greater chitin."
+	duration = 10 MINUTES
+	number_of_required_pylons = 2
+	radial_icon = "shield_m"
+
+/datum/hivebuff/attack
+	name = "Boon of Aggression"
+	desc = "Increases all xenomorph damage by 5% for 5 minutes"
+	tier = HIVEBUFF_TIER_MINOR
+
+	engage_flavourmessage = "The queen has imbued us with slarp claws."
+	duration = 5 MINUTES
+	number_of_required_pylons = 1
+	radial_icon = "slash"
+
+/datum/hivebuff/attack/major
+	name = "Major Boon of Aggression"
+	desc = "Increases all xenomorph damage by 10% for 10 minutes"
+	tier = HIVEBUFF_TIER_MAJOR
+
+	engage_flavourmessage = "The queen has imbued us with razer sharp claws."
+	duration = 10 MINUTES
+	number_of_required_pylons = 2
+	radial_icon = "slash_m"

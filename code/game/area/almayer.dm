@@ -345,17 +345,6 @@
 	name = "\improper Lower Deck Starboard Aft Hallway"
 	icon_state = "starboard"
 
-// to delete when replaced.
-/area/almayer/hallways/port_hallway
-	name = "\improper Lower Deck Port Hallway"
-	icon_state = "port"
-	fake_zlevel = 2 // lowerdeck
-
-/area/almayer/hallways/starboard_hallway
-	name = "\improper Lower Deck Starboard Hallway"
-	icon_state = "starboard"
-	fake_zlevel = 2 // lowerdeck
-
 /area/almayer/hallways/aft_hallway
 	name = "\improper Upper Deck Aft Hallway"
 	icon_state = "aft"

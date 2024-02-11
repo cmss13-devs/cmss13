@@ -1,10 +1,10 @@
 #define WAITING_HEALTH_THRESHOLD 300
 
 /datum/tutorial/xenomorph/basic
-	//name = "Xenomorph - Basic"
-	//desc = "A tutorial to get you acquainted with the very basics of how to play a xenomorph."
-	//icon_state = "xeno"
-	//tutorial_id = "xeno_basic_1"
+	name = "Xenomorph - Basic"
+	desc = "A tutorial to get you acquainted with the very basics of how to play a xenomorph."
+	icon_state = "xeno"
+	tutorial_id = "xeno_basic_1"
 	tutorial_template = /datum/map_template/tutorial/s12x12
 	starting_xenomorph_type = /mob/living/carbon/xenomorph/drone
 

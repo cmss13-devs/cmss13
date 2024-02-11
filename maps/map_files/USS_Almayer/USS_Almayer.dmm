@@ -1322,7 +1322,7 @@
 /area/almayer/living/offices/flight)
 "afz" = (
 /turf/open/floor/almayer/empty,
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "afB" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -1335,7 +1335,7 @@
 "afC" = (
 /obj/docking_port/stationary/vehicle_elevator/almayer,
 /turf/open/floor/almayer/empty,
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "afD" = (
 /turf/open/floor/almayer{
 	dir = 5;
@@ -1867,7 +1867,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "aic" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -13561,7 +13561,7 @@
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "bkE" = (
 /obj/structure/window/framed/almayer/white,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -15743,7 +15743,7 @@
 /area/almayer/medical/operating_room_four)
 "bzy" = (
 /turf/closed/wall/almayer,
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "bzz" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 4
@@ -15755,7 +15755,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "bzD" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "tcomms"
@@ -15770,7 +15770,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "bzI" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -15854,7 +15854,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "bAh" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cargo_container/wy/mid,
@@ -15869,7 +15869,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "bAs" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/shipboard/weapon_room)
@@ -16107,7 +16107,7 @@
 /area/almayer/shipboard/weapon_room)
 "bBB" = (
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "bBC" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -16681,7 +16681,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "bEA" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -17764,7 +17764,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "bKb" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -17814,7 +17814,7 @@
 /area/almayer/shipboard/navigation)
 "bKh" = (
 /turf/open/floor/almayer,
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "bKj" = (
 /obj/structure/machinery/gear{
 	id = "vehicle_elevator_gears"
@@ -17825,7 +17825,7 @@
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "bKm" = (
 /obj/structure/closet/crate/freezer{
 	desc = "A freezer crate. There is a note attached, it reads: Do not open, property of Pvt. Mendoza."
@@ -18089,7 +18089,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "bLu" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -18098,7 +18098,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "bLv" = (
 /obj/structure/machinery/door_control{
 	id = "ARES StairsLower";
@@ -18491,7 +18491,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "bNq" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/wirecutters,
@@ -18635,7 +18635,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "bOe" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -18651,7 +18651,7 @@
 	dir = 5;
 	icon_state = "plating"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "bOq" = (
 /obj/structure/prop/almayer/cannon_cables,
 /turf/open/floor/almayer{
@@ -18856,7 +18856,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "bPk" = (
 /obj/item/roller,
 /obj/item/roller,
@@ -19202,7 +19202,7 @@
 	},
 /obj/structure/machinery/light,
 /turf/open/floor/almayer,
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "bRz" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -19232,7 +19232,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "bRP" = (
 /obj/structure/machinery/body_scanconsole,
 /obj/structure/disposalpipe/segment{
@@ -19278,7 +19278,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "bRV" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -20131,7 +20131,7 @@
 	dir = 1
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "bXw" = (
 /obj/structure/machinery/bioprinter{
 	stored_metal = 125
@@ -20158,7 +20158,7 @@
 	dir = 8
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "bXY" = (
 /obj/structure/ladder{
 	height = 1;
@@ -20175,7 +20175,7 @@
 "bXZ" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer,
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "bYa" = (
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo/blend,
 /turf/open/floor/almayer{
@@ -20382,7 +20382,7 @@
 	name = "\improper Hangar Lockdown Blast Door"
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "bZO" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -20522,7 +20522,7 @@
 	name = "\improper Hangar Lockdown Blast Door"
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "cau" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/airlock/almayer/security/glass{
@@ -20576,7 +20576,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "caD" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
@@ -20586,7 +20586,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "caM" = (
 /obj/structure/largecrate/random/barrel/blue,
 /turf/open/floor/almayer{
@@ -23628,7 +23628,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "cBm" = (
 /obj/effect/projector{
 	name = "Almayer_AresUp";
@@ -27161,7 +27161,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "dRD" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/airlock/almayer/security{
@@ -27772,7 +27772,7 @@
 	dir = 5;
 	icon_state = "plating"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "ecS" = (
 /obj/structure/sign/safety/hvac_old{
 	pixel_x = 8;
@@ -27979,7 +27979,7 @@
 	pixel_x = -16
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "egt" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Chapel"
@@ -29445,7 +29445,7 @@
 	id = "vehicle_elevator_railing_aux"
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "eGh" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/surgery/scalpel{
@@ -31199,7 +31199,7 @@
 	dir = 5;
 	icon_state = "plating"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "fsp" = (
 /obj/structure/barricade/handrail{
 	dir = 1;
@@ -31252,7 +31252,7 @@
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "ftx" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
@@ -31276,7 +31276,7 @@
 	dir = 5;
 	icon_state = "plating"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "fuz" = (
 /obj/structure/machinery/cm_vending/clothing/pilot_officer,
 /turf/open/floor/almayer{
@@ -31594,7 +31594,7 @@
 	dir = 5;
 	icon_state = "plating"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "fBL" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment{
@@ -34145,7 +34145,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "gCu" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
@@ -35441,7 +35441,7 @@
 	dir = 1
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "hcw" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/item/explosive/grenade/high_explosive/training,
@@ -35479,7 +35479,7 @@
 	dir = 5;
 	icon_state = "plating"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "hds" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out"
@@ -37106,7 +37106,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "hHR" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
@@ -39421,7 +39421,7 @@
 	id = "vehicle_elevator_railing_aux"
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "iDk" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/almayer{
@@ -40382,7 +40382,7 @@
 	dir = 5;
 	icon_state = "plating"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "iWN" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -40656,7 +40656,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "jaM" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -41216,7 +41216,7 @@
 	id = "vehicle_elevator_railing_aux"
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "jjS" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -41250,7 +41250,7 @@
 	dir = 10;
 	icon_state = "cargo"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "jkd" = (
 /obj/structure/sign/safety/distribution_pipes{
 	pixel_x = 32
@@ -41896,7 +41896,7 @@
 	pixel_x = -1
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "jyb" = (
 /turf/open/floor/almayer{
 	dir = 6;
@@ -41962,7 +41962,7 @@
 /area/almayer/command/corporateliaison)
 "jAi" = (
 /turf/closed/wall/almayer/reinforced,
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "jAz" = (
 /obj/structure/platform,
 /obj/structure/platform{
@@ -43183,7 +43183,7 @@
 	dir = 5;
 	icon_state = "plating"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "jYc" = (
 /obj/item/bedsheet/blue{
 	layer = 3.2
@@ -43233,7 +43233,7 @@
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "jYm" = (
 /obj/item/reagent_container/food/snacks/wrapped/chunk,
 /obj/structure/surface/rack,
@@ -44007,7 +44007,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "kmp" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -44888,7 +44888,7 @@
 "kCS" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "kDd" = (
 /obj/structure/sign/safety/water{
 	pixel_x = 8;
@@ -50458,7 +50458,7 @@
 	pixel_y = 2
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "mIP" = (
 /obj/structure/pipes/vents/pump,
 /obj/effect/decal/warning_stripes{
@@ -51416,7 +51416,7 @@
 	dir = 5;
 	icon_state = "plating"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "mZb" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
@@ -52140,7 +52140,7 @@
 	dir = 1;
 	icon_state = "cargo_arrow"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "nkj" = (
 /obj/structure/sign/safety/hvac_old{
 	pixel_x = 8;
@@ -52547,7 +52547,7 @@
 	dir = 5;
 	icon_state = "plating"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "nrw" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -52643,7 +52643,7 @@
 	dir = 5;
 	icon_state = "plating"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "ntx" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	id = "Alpha_2";
@@ -57873,7 +57873,7 @@
 	dir = 5;
 	icon_state = "plating"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "pqX" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -60994,7 +60994,7 @@
 	dir = 5;
 	icon_state = "plating"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "qyG" = (
 /obj/structure/sign/safety/hazard{
 	desc = "A sign that warns of a hazardous environment nearby";
@@ -61579,7 +61579,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "qJS" = (
 /obj/structure/reagent_dispensers/water_cooler/stacks{
 	density = 0;
@@ -64203,7 +64203,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "rEv" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -69691,7 +69691,7 @@
 	dir = 5;
 	icon_state = "plating"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "tBF" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
@@ -72281,7 +72281,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo_arrow"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "uBw" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
@@ -72826,7 +72826,7 @@
 	dir = 5;
 	icon_state = "plating"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "uOi" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/lifeboat_pumps/south2)
@@ -78581,7 +78581,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "wJB" = (
 /obj/structure/machinery/cryopod/right,
 /turf/open/floor/almayer{
@@ -79777,7 +79777,7 @@
 	dir = 5;
 	icon_state = "plating"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "xgI" = (
 /obj/structure/closet/secure_closet/personal/cabinet{
 	req_access = null
@@ -80444,7 +80444,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "xtM" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
@@ -81625,7 +81625,7 @@
 	pixel_y = 2
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/vehiclehangar)
+/area/almayer/hallways/lower/vehiclehangar)
 "xOs" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";

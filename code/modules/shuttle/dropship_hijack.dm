@@ -198,7 +198,7 @@
 			turfs += get_area_turfs(/area/almayer/engineering/laundry)
 		if("Lower deck Foreship")
 			turfs += get_area_turfs(/area/almayer/hallways/hangar)
-			turfs += get_area_turfs(/area/almayer/hallways/vehiclehangar)
+			turfs += get_area_turfs(/area/almayer/hallways/lower/vehiclehangar)
 		if("Lower deck Midship")
 			turfs += get_area_turfs(/area/almayer/medical/chemistry)
 			turfs += get_area_turfs(/area/almayer/medical/lower_medical_lobby)

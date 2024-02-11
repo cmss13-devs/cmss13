@@ -323,10 +323,12 @@
 	soundscape_playlist = SCAPE_PL_HANGAR
 	soundscape_interval = 50
 
-/area/almayer/hallways/vehiclehangar
+/area/almayer/hallways/lower
+	fake_zlevel = 2 // lowerdeck
+
+/area/almayer/hallways/lower/vehiclehangar
 	name = "\improper Lower Deck Vehicle Storage"
 	icon_state = "exoarmor"
-	fake_zlevel = 2
 
 /area/almayer/squads/tankdeliveries
 	name = "\improper Lower Deck Vehicle ASRS"

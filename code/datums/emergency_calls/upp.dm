@@ -99,18 +99,20 @@
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
 
 
-/datum/emergency_call/upp/hostile
+/datum/emergency_call/upp/hostile //if admins want to specifically call in friendly ones
 	name = "UPP Naval Infantry (Squad) (Hostile)"
 	hostility = TRUE
+	probability = 0
 
 /datum/emergency_call/upp/hostile/New()
 	..()
 	arrival_message = "[MAIN_SHIP_NAME] t*is i* UP* d^sp^*ch`. STr*&e teaM, #*u are cLe*% for a*pr*%^h. Pr*mE a*l wE*p^ns and pR*epr# t% r@nd$r a(tD."
 	objectives = "Eliminate the UA Forces to ensure the UPP presence in this sector is continued. Listen to your superior officers and take over the [MAIN_SHIP_NAME] at all costs."
 
-/datum/emergency_call/upp/friendly
+/datum/emergency_call/upp/friendly //ditto
 	name = "UPP Naval Infantry (Squad) (Friendly)"
 	hostility = FALSE
+	probability = 0
 
 /datum/emergency_call/upp/friendly/New()
 	..()

@@ -75,7 +75,7 @@
 		spin_stage -= delta_stage / spindown_time
 	else
 		return
-	spin_stage = Clamp(spin_stage, 1, stage_rate_len)
+	spin_stage = clamp(spin_stage, 1, stage_rate_len)
 
 	var/old_stage_rate = stage_rate[Floor(old_spin_stage)]
 	var/new_stage_rate = stage_rate[Floor(spin_stage)]

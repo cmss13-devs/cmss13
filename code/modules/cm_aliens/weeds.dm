@@ -58,9 +58,9 @@
 	if(spread_on_semiweedable && weed_strength < WEED_LEVEL_HIVE)
 		if(color)
 			var/list/RGB = ReadRGB(color)
-			RGB[1] = Clamp(RGB[1] + 35, 0, 255)
-			RGB[2] = Clamp(RGB[2] + 35, 0, 255)
-			RGB[3] = Clamp(RGB[3] + 35, 0, 255)
+			RGB[1] = clamp(RGB[1] + 35, 0, 255)
+			RGB[2] = clamp(RGB[2] + 35, 0, 255)
+			RGB[3] = clamp(RGB[3] + 35, 0, 255)
 			color = rgb(RGB[1], RGB[2], RGB[3])
 		else
 			color = "#a1a1a1"

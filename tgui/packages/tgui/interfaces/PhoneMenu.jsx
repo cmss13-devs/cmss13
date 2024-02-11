@@ -2,8 +2,8 @@ import { useBackend, useLocalState } from '../backend';
 import { Stack, Section, Tabs, Input, Button } from '../components';
 import { Window } from '../layouts';
 
-export const PhoneMenu = (props, context) => {
-  const { act, data } = useBackend(context);
+export const PhoneMenu = (props) => {
+  const { act, data } = useBackend();
   return (
     <Window width={500} height={400}>
       <Window.Content>
@@ -13,22 +13,17 @@ export const PhoneMenu = (props, context) => {
   );
 };
 
-const GeneralPanel = (props, context) => {
-  const { act, data } = useBackend(context);
+const GeneralPanel = (props) => {
+  const { act, data } = useBackend();
   const { availability, last_caller } = data;
   const available_transmitters = Object.keys(data.available_transmitters);
   const transmitters = data.transmitters.filter((val1) =>
     available_transmitters.includes(val1.phone_id)
   );
 
-  const [currentSearch, setSearch] = useLocalState(
-    context,
-    'current_search',
-    ''
-  );
+  const [currentSearch, setSearch] = useLocalState('current_search', '');
 
   const [selectedPhone, setSelectedPhone] = useLocalState(
-    context,
     'selected_phone',
     null
   );
@@ -42,7 +37,6 @@ const GeneralPanel = (props, context) => {
   }
 
   const [currentCategory, setCategory] = useLocalState(
-    context,
     'current_category',
     categories[0]
   );

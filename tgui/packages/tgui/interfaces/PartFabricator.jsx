@@ -2,10 +2,10 @@ import { useBackend } from '../backend';
 import { Section, Button, LabeledList, Flex } from '../components';
 import { Window } from '../layouts';
 
-export const PartFabricator = (props, context) => {
-  const { act, data } = useBackend(context);
+export const PartFabricator = (props) => {
+  const { act, data } = useBackend();
   return (
-    <Window width={775} height={450}>
+    <Window width={900} height={450}>
       <Window.Content>
         <GeneralPanel />
       </Window.Content>
@@ -13,10 +13,10 @@ export const PartFabricator = (props, context) => {
   );
 };
 
+
 const GeneralPanel = (props, context) => {
   const { act, data } = useBackend(context);
   const { points, omnisentrygun_price, Equipment, Ammo } = data;
-
   return (
     <div>
       <Section>Points: {points}</Section>

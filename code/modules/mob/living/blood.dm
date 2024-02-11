@@ -128,7 +128,7 @@
 
 	blood_data["blood_type"] = get_blood_type()
 
-	blood_data["blood_colour"] = get_blood_color()
+	blood_data["blood_color"] = get_blood_color()
 	blood_data["viruses"] = list()
 
 	return blood_data

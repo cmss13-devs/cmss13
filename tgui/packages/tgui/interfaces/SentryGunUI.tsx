@@ -39,11 +39,12 @@ interface SentryData {
   camera_target?: string;
 }
 
-const SelectionGroup = (
-  props: { data: SelectionState; sentry_index: number; selected?: string },
-  context
-) => {
-  const { act } = useBackend<SentryData>(context);
+const SelectionGroup = (props: {
+  readonly data: SelectionState;
+  readonly sentry_index: number;
+  readonly selected?: string;
+}) => {
+  const { act } = useBackend<SentryData>();
   const comparisonstr = props.selected ?? '';
   return (
     <Flex direction="column" className="SelectionMenu" fill>
@@ -68,7 +69,7 @@ const SelectionGroup = (
   );
 };
 
-const SelectionMenu = (props: { data: SentrySpec }, context) => {
+const SelectionMenu = (props: { readonly data: SentrySpec }) => {
   const getSelected = (category: string) => {
     const output = props.data.selection_state.find((x) => x[0] === category);
     return output === undefined ? undefined : output[1];
@@ -96,7 +97,7 @@ const getSanitisedName = (name: string) =>
 const sanitiseArea = (name: string) =>
   name.substring(name.includes('the') ? 4 : 0).trim();
 
-const TitleSection = (props: { data: SentrySpec }, context) => {
+const TitleSection = (props: { readonly data: SentrySpec }) => {
   return (
     <Stack vertical className="TitleContainer">
       <Stack.Item className="TitleText">
@@ -118,15 +119,14 @@ const TitleSection = (props: { data: SentrySpec }, context) => {
   );
 };
 
-const GunMenu = (props: { data: SentrySpec }, context) => {
-  const { data, act } = useBackend<SentryData>(context);
+const GunMenu = (props: { readonly data: SentrySpec }) => {
+  const { data, act } = useBackend<SentryData>();
   const isEngaged = props.data.engaged !== undefined && props.data.engaged > 1;
   const iff_info = props.data.selection_state.find(
     (x) => x[0].localeCompare('IFF STATUS') === 0
   )?.[1];
 
   const [_, setSelectedSentry] = useSharedState<undefined | number>(
-    context,
     'selected',
     0
   );
@@ -241,7 +241,7 @@ const GunMenu = (props: { data: SentrySpec }, context) => {
   );
 };
 
-const EmptyDisplay = (_, context) => {
+const EmptyDisplay = () => {
   return (
     <Box className="EmptyDisplay">
       <Stack vertical>
@@ -260,18 +260,14 @@ const EmptyDisplay = (_, context) => {
   );
 };
 
-const InputGroup = (
-  props: {
-    index: number;
-    label: string;
-    category: string;
-    startingValue: string;
-  },
-  context
-) => {
-  const { act } = useBackend<SentryData>(context);
+const InputGroup = (props: {
+  readonly index: number;
+  readonly label: string;
+  readonly category: string;
+  readonly startingValue: string;
+}) => {
+  const { act } = useBackend<SentryData>();
   const [categoryValue, setCategoryValue] = useLocalState(
-    context,
     `${props.index} ${props.category}`,
     props.startingValue
   );
@@ -302,8 +298,8 @@ const InputGroup = (
   );
 };
 
-const SentryGunConfiguration = (props: { data: SentrySpec }, context) => {
-  const [_, setShowConfig] = useSharedState(context, 'showConf', true);
+const SentryGunConfiguration = (props: { readonly data: SentrySpec }) => {
+  const [_, setShowConfig] = useSharedState('showConf', true);
   return (
     <Stack vertical>
       <Stack.Item className="TitleBox">
@@ -338,8 +334,8 @@ const SentryGunConfiguration = (props: { data: SentrySpec }, context) => {
   );
 };
 
-const SentryGunStatus = (props: { data: SentrySpec }, context) => {
-  const [_, setShowConfig] = useSharedState(context, 'showConf', true);
+const SentryGunStatus = (props: { readonly data: SentrySpec }) => {
+  const [_, setShowConfig] = useSharedState('showConf', true);
   return (
     <Stack vertical>
       <Stack.Item className="TitleBox">
@@ -362,8 +358,8 @@ const SentryGunStatus = (props: { data: SentrySpec }, context) => {
   );
 };
 
-const ShowSingleSentry = (props: { data: SentrySpec }, context) => {
-  const [showConfig] = useSharedState(context, 'showConf', true);
+const ShowSingleSentry = (props: { readonly data: SentrySpec }) => {
+  const [showConfig] = useSharedState('showConf', true);
   return (
     <>
       {showConfig && <SentryGunConfiguration data={props.data} />}
@@ -372,7 +368,7 @@ const ShowSingleSentry = (props: { data: SentrySpec }, context) => {
   );
 };
 
-const ShowSentryCard = (props: { data: SentrySpec }, context) => {
+const ShowSentryCard = (props: { readonly data: SentrySpec }) => {
   const displayName =
     props.data.nickname.length === 0 ? props.data.index : props.data.nickname;
   return (
@@ -389,7 +385,7 @@ const ShowSentryCard = (props: { data: SentrySpec }, context) => {
   );
 };
 
-const ShowAllSentry = (props: { data: SentrySpec[] }, _) => {
+const ShowAllSentry = (props: { readonly data: SentrySpec[] }) => {
   return (
     <Flex align="space-between" wrap>
       {props.data.map((x) => (
@@ -401,13 +397,8 @@ const ShowAllSentry = (props: { data: SentrySpec[] }, _) => {
   );
 };
 
-const SentryCamera = (
-  props: {
-    sentry_data: SentrySpec[];
-  },
-  context
-) => {
-  const { data, act } = useBackend<SentryData>(context);
+const SentryCamera = (props: { readonly sentry_data: SentrySpec[] }) => {
+  const { data, act } = useBackend<SentryData>();
   const { sentry_data } = props;
   const sentry = sentry_data.find((x) => {
     const index = x.index?.toString(10) ?? '';
@@ -464,15 +455,12 @@ const SentryCamera = (
   );
 };
 
-const SentryTabMenu = (
-  props: {
-    sentrySpecs: SentrySpec[];
-    selected?: number;
-    setSelected: (d) => void;
-  },
-  context
-) => {
-  const { data, act } = useBackend<SentryData>(context);
+const SentryTabMenu = (props: {
+  readonly sentrySpecs: SentrySpec[];
+  readonly selected?: number;
+  readonly setSelected: (d) => void;
+}) => {
+  const { data, act } = useBackend<SentryData>();
   return (
     <Tabs fill>
       {props.sentrySpecs.map((x, index) => (
@@ -502,8 +490,8 @@ const SentryTabMenu = (
   );
 };
 
-const PowerLevel = (_, context) => {
-  const { data } = useBackend<SentryData>(context);
+const PowerLevel = () => {
+  const { data } = useBackend<SentryData>();
   return (
     <ProgressBar
       minValue={0}
@@ -515,8 +503,8 @@ const PowerLevel = (_, context) => {
   );
 };
 
-export const SentryGunUI = (_, context) => {
-  const { data, act } = useBackend<SentryData>(context);
+export const SentryGunUI = () => {
+  const { data, act } = useBackend<SentryData>();
   const sentrykeys =
     data.sentry.length === 0
       ? []
@@ -527,7 +515,7 @@ export const SentryGunUI = (_, context) => {
 
   const [selectedSentry, setSelectedSentry] = useSharedState<
     undefined | number
-  >(context, 'selected', sentrySpecs.length > 0 ? 0 : undefined);
+  >('selected', sentrySpecs.length > 0 ? 0 : undefined);
 
   const validSelection =
     sentrySpecs.length === 0

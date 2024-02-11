@@ -93,6 +93,7 @@
 	new /obj/item/clothing/gloves/latex(src)
 	new /obj/item/clothing/under/rank/medical/green(src)
 	new /obj/item/clothing/under/rank/medical/blue(src)
+	new /obj/item/clothing/under/rank/medical/lightblue(src)
 	new /obj/item/clothing/under/rank/medical/purple(src)
 	new /obj/item/clothing/head/surgery/green(src)
 	new /obj/item/clothing/head/surgery/blue(src)

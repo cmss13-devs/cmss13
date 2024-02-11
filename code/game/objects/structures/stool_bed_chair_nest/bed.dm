@@ -420,6 +420,8 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 	buckling_y = 0
 	foldabletype = /obj/item/roller/bedroll
 	accepts_bodybag = FALSE
+	debris = null
+	buildstacktype = null
 
 /obj/item/roller/bedroll
 	name = "folded bedroll"

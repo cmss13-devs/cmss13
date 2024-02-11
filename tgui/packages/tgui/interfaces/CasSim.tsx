@@ -3,17 +3,15 @@ import { Box, Button, Section, ProgressBar, NoticeBox, Stack } from '../componen
 
 interface CasSimData {
   configuration: any;
-  looking: 0 | 1;
   dummy_mode: string;
   worldtime: number;
   nextdetonationtime: number;
   detonation_cooldown: number;
 }
 
-export const CasSim = (_props, context) => {
-  const { act, data } = useBackend<CasSimData>(context);
+export const CasSim = () => {
+  const { act, data } = useBackend<CasSimData>();
   const [simulationView, setSimulationView] = useLocalState(
-    context,
     'simulation_view',
     false
   );
@@ -21,7 +19,7 @@ export const CasSim = (_props, context) => {
   const timeLeft = data.nextdetonationtime - data.worldtime;
   const timeLeftPct = timeLeft / data.detonation_cooldown;
 
-  const canDetonate = timeLeft < 0 && data.configuration && data.looking;
+  const canDetonate = timeLeft < 0 && data.configuration && simulationView;
 
   return (
     <Box className="CasSim">

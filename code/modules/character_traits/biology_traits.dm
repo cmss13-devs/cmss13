@@ -49,23 +49,20 @@
 	var/string_paygrade = preset.load_rank(target)
 	var/datum/paygrade/paygrade_datum = GLOB.paygrades[string_paygrade]
 	if(paygrade_datum?.ranking > maximum_ranking)
-		to_chat(target, SPAN_WARNING("Your paygrade is too high for you to be able to recieve the lisping trait."))
+		to_chat(target, SPAN_WARNING("Your paygrade is too high for you to be able to receive the lisping trait."))
 		return
 	if(target.job in inapplicable_roles)
-		to_chat(target, SPAN_WARNING("Your office is too high for you to be able to recieve the lisping trait."))
+		to_chat(target, SPAN_WARNING("Your office is too high for you to be able to receive the lisping trait."))
 		return
 	if(target.species.group in inapplicable_species)
-		to_chat(target, SPAN_WARNING("Your species is too sophisticated for you be able to recieve the lisping trait."))
+		to_chat(target, SPAN_WARNING("Your species is too sophisticated for you be able to receive the lisping trait."))
 		return
 
 	ADD_TRAIT(target, TRAIT_LISPING, ROUNDSTART_TRAIT)
-	target.speech_problem_flag = TRUE
-
 	..()
 
 /datum/character_trait/biology/lisp/unapply_trait(mob/living/carbon/human/target)
 	REMOVE_TRAIT(target, TRAIT_LISPING, ROUNDSTART_TRAIT)
-	target.speech_problem_flag = FALSE
 	..()
 
 /datum/character_trait/biology/bad_leg
@@ -92,10 +89,10 @@
 
 /datum/character_trait/biology/bad_leg/apply_trait(mob/living/carbon/human/target, datum/equipment_preset/preset)
 	if(target.job in inapplicable_roles)
-		to_chat(target, SPAN_WARNING("Your office is too combat-geared for you to be able to recieve the bad leg trait."))
+		to_chat(target, SPAN_WARNING("Your office is too combat-geared for you to be able to receive the bad leg trait."))
 		return
 	if(target.species.group in inapplicable_species)
-		to_chat(target, SPAN_WARNING("Your species is too sophisticated for you be able to recieve the bad leg trait."))
+		to_chat(target, SPAN_WARNING("Your species is too sophisticated for you be able to receive the bad leg trait."))
 		return
 
 	target.AddComponent(/datum/component/bad_leg)

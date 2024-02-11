@@ -306,19 +306,54 @@
 	name = "\improper Lower Deck Vehicle Storage"
 	icon_state = "exoarmor"
 
-/area/almayer/hallways/repair_bay
+/area/almayer/hallways/lower/repair_bay
 	name = "\improper Lower Deck Deployment Workshop"
 	icon_state = "dropshiprepair"
-	fake_zlevel = 2 // lowerdeck
 
-/area/almayer/hallways/starboard_umbilical
+/area/almayer/hallways/lower/starboard_umbilical
 	name = "\improper Lower Deck Starboard Umbilical Hallway"
 	icon_state = "starboardumbilical"
-	fake_zlevel = 2 // lowerdeck
 
-/area/almayer/hallways/port_umbilical
+/area/almayer/hallways/lower/port_umbilical
 	name = "\improper Lower Deck Port Umbilical Hallway"
 	icon_state = "portumbilical"
+
+//new halways area.
+//port
+/area/almayer/hallways/lower/port_fore_hallway
+	name = "\improper Lower Deck Port Fore Hallway"
+	icon_state = "port"
+
+/area/almayer/hallways/lower/port_midship_hallway
+	name = "\improper Lower Deck Port Midship Hallway"
+	icon_state = "port"
+
+/area/almayer/hallways/lower/port_aft_hallway
+	name = "\improper Lower Deck Port Aft Hallway"
+	icon_state = "port"
+
+//starboard
+/area/almayer/hallways/lower/starboard_fore_hallway
+	name = "\improper Lower Deck Starboard Fore Hallway"
+	icon_state = "starboard"
+
+/area/almayer/hallways/lower/starboard_midship_hallway
+	name = "\improper Lower Deck Starboard Midship Hallway"
+	icon_state = "starboard"
+
+/area/almayer/hallways/lower/starboard_aft_hallway
+	name = "\improper Lower Deck Starboard Aft Hallway"
+	icon_state = "starboard"
+
+// to delete when replaced.
+/area/almayer/hallways/port_hallway
+	name = "\improper Lower Deck Port Hallway"
+	icon_state = "port"
+	fake_zlevel = 2 // lowerdeck
+
+/area/almayer/hallways/starboard_hallway
+	name = "\improper Lower Deck Starboard Hallway"
+	icon_state = "starboard"
 	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/hallways/aft_hallway
@@ -331,15 +366,6 @@
 	icon_state = "stern"
 	fake_zlevel = 1 // upperdeck
 
-/area/almayer/hallways/port_hallway
-	name = "\improper Lower Deck Port Hallway"
-	icon_state = "port"
-	fake_zlevel = 2 // lowerdeck
-
-/area/almayer/hallways/starboard_hallway
-	name = "\improper Lower Deck Starboard Hallway"
-	icon_state = "starboard"
-	fake_zlevel = 2 // lowerdeck
 
 //new hallways areas
 

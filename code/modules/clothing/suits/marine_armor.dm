@@ -282,8 +282,9 @@
 	name = "\improper XM4 pattern intelligence officer armor"
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/qm_suit, /obj/item/clothing/under/marine/officer/intel)
 	specialty = "XM4 pattern intel"
-	desc = "Tougher than steel, quieter than whispers, the XM4 Intel Armor provides capable protection combined with an experimental integrated motion tracker. It took an R&D team a weekend to develop and costs more than the Chinook Station... probably."
-	desc_lore = "ARMAT Perfection. The XM4 Soldier Awareness System mixes M4-style hard armor and a distributed series of motion sensors around the breastplate. When connected to any HUD optic, it replicates the effects of an M314 Motion Detector unit, increasing user situational awareness. It is currently undergoing field trials by intelligence operatives."
+	desc = "Tougher than steel, quieter than whispers, the XM4 Intel Armor provides capable protection combined with an experimental integrated motion tracker. It took an R&D team a weekend to develop and costs more than the Chinook Station... probably. When worn, uniform accessories such as webbing cannot be attached due to the motion sensors occupying the clips."
+	desc_lore = "ARMAT Perfection. The XM4 Soldier Awareness System mixes M4-style hard armor and a distributed series of motion sensors clipped onto the breastplate. When connected to any HUD optic, it replicates the effects of an M314 Motion Detector unit, increasing user situational awareness. It is currently undergoing field trials by intelligence operatives."
+	storage_slots = 5
 	/// XM4 Integral Motion Detector Ability
 	actions_types = list(/datum/action/item_action/toggle, /datum/action/item_action/intel/toggle_motion_detector)
 	var/motion_detector = FALSE
@@ -355,6 +356,32 @@
 		START_PROCESSING(SSobj, src)
 	if(!motion_detector)
 		STOP_PROCESSING(SSobj, src)
+
+/obj/item/clothing/suit/storage/marine/medium/rto/intel/mob_can_equip(mob/living/carbon/human/user, slot, disable_warning) //Thanks to Drathek for the help on this part!
+	if(!..())
+		return FALSE
+
+	// Only equip if uniform doesn't already have a utility accessory slot equipped
+	var/obj/item/clothing/under/uniform = user.w_uniform
+	var/accessory = locate(/obj/item/clothing/accessory/storage) in uniform.accessories
+	if(accessory)
+		to_chat(user, SPAN_WARNING("[src] can't be worn with [accessory]."))
+		return FALSE
+
+	return TRUE
+
+/obj/item/clothing/suit/storage/marine/medium/rto/intel/equipped(mob/user, slot, silent) //When XM4 is equipped this removes ACCESSORY_SLOT_UTILITY as a valid accessory for the uniform
+	. = ..()
+	var/mob/living/carbon/human/human = user
+	var/obj/item/clothing/under/uniform = human.w_uniform
+	if(slot == WEAR_JACKET)
+		uniform?.valid_accessory_slots -= ACCESSORY_SLOT_UTILITY
+
+/obj/item/clothing/suit/storage/marine/medium/rto/intel/unequipped(mob/user, slot) //When unequipped this adds the ACCESSORY_SLOT_UTILITY back as a valid accessory
+	. = ..()
+	var/mob/living/carbon/human/human = user
+	var/obj/item/clothing/under/uniform = human.w_uniform
+	uniform?.valid_accessory_slots += ACCESSORY_SLOT_UTILITY
 
 /obj/item/clothing/suit/storage/marine/MP
 	name = "\improper M2 pattern MP armor"

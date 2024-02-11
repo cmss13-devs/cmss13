@@ -2989,7 +2989,7 @@
 	name = "machinery"
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "smallwallvent1"
-	density = TRUE
+	density = FALSE
 
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/computer
 	name = "machinery"

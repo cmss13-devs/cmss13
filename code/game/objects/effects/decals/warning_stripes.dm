@@ -113,3 +113,112 @@
 /obj/effect/decal/siding/wood_siding
 	name = "wood siding"
 	icon_state = "wood_siding1"
+
+
+
+
+/// Hybrisa Decals
+
+/obj/effect/hybrisa
+	icon = 'icons/effects/64x64hybrisa_decals.dmi'
+	icon_state = "weylandyutanilogo1"
+	layer = TURF_LAYER
+	plane = FLOOR_PLANE
+
+//Roadlines
+
+/obj/effect/hybrisa/decal/road
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "Z_W1"
+/obj/effect/hybrisa/decal/road/lines1
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "Z_W1"
+/obj/effect/hybrisa/decal/road/lines2
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "Z_N2"
+/obj/effect/hybrisa/decal/road/lines3
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "Z_S3"
+/obj/effect/hybrisa/decal/road/lines4
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "Z_E4"
+/obj/effect/hybrisa/decal/road/lines5
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "Z_M1"
+/obj/effect/hybrisa/decal/road/lines6
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "Z_M2"
+/obj/effect/hybrisa/decal/road/corner
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "Z_corner"
+
+
+// Dam Roadlines smaller
+/obj/effect/hybrisa/decal/road/road_edge
+	name = "road"
+	icon_state = "road_edge_decal1"
+/obj/effect/hybrisa/decal/road/road_stop
+	name = "road"
+	icon_state = "stop_decal1"
+
+// Double Roadlines
+/obj/effect/hybrisa/decal/doubleroad
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "ZD_W1"
+/obj/effect/hybrisa/decal/doubleroad/lines1
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "ZD_W1"
+/obj/effect/hybrisa/decal/doubleroad/lines2
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "ZD_N2"
+/obj/effect/hybrisa/decal/doubleroad/lines3
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "ZD_S3"
+/obj/effect/hybrisa/decal/doubleroad/lines4
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "ZD_E4"
+/obj/effect/hybrisa/decal/doubleroad/lines5
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "ZD_M1"
+/obj/effect/hybrisa/decal/doubleroad/lines6
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "ZD_M2"
+
+//Gold lines
+/obj/effect/hybrisa/decal/gold
+	name = "border"
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "Z_S"
+/obj/effect/hybrisa/decal/gold/line1
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "Z_S"
+/obj/effect/hybrisa/decal/gold/line2
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "Z_E"
+/obj/effect/hybrisa/decal/gold/line3
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "Z_N"
+/obj/effect/hybrisa/decal/gold/line4
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "Z_W"
+
+// Grate
+
+/obj/effect/hybrisa/decal/grate
+	name = "solid metal grate"
+	desc = "A metal grate."
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "zhalfgrate1"
+
+
+// 64x64 Decals
+
+/obj/effect/hybrisa/decal/WY/WY1
+	name = "Weyland-Yutani"
+	icon = 'icons/effects/64x64hybrisa_decals.dmi'
+	icon_state = "weylandyutanilogo1"
+
+/obj/effect/hybrisa/decal/WY/WYworn
+	name = "Weyland-Yutani"
+	icon = 'icons/effects/64x64hybrisa_decals.dmi'
+	icon_state = "weylandyutanilogo2"

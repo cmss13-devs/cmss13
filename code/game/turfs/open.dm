@@ -999,6 +999,8 @@
 	icon_state = "sidewalk"
 /turf/open/hybrisa/street/sidewalkfull
 	icon_state = "sidewalkfull"
+/turf/open/hybrisa/street/sidewalkcenter
+	icon_state = "sidewalkcenter"
 /turf/open/hybrisa/street/roadlines
 	icon_state = "asphalt_old_roadlines"
 /turf/open/hybrisa/street/roadlines2

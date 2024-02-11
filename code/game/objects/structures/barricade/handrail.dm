@@ -198,3 +198,64 @@
 
 /obj/structure/barricade/handrail/sandstone/b
 	icon_state = "hr_sandstone_b"
+
+// Hybrisa Barricades
+
+/obj/structure/barricade/handrail/hybrisa
+	icon_state = "plasticroadbarrierred"
+
+// Plastic
+/obj/structure/barricade/handrail/hybrisa/road/plastic
+	name = "plastic road barrier"
+	icon_state = "plasticroadbarrierred"
+	stack_type = /obj/item/stack/sheet/mineral/plastic
+	debris = list(/obj/item/stack/sheet/mineral/plastic)
+	barricade_hitsound = 'sound/effects/thud.ogg'
+
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red
+	name = "plastic road barrier"
+	icon_state = "plasticroadbarrierred"
+
+/obj/structure/barricade/handrail/hybrisa/road/plastic/blue
+	name = "plastic road barrier"
+	icon_state = "plasticroadbarrierblue"
+
+/obj/structure/barricade/handrail/hybrisa/road/plastic/black
+	name = "plastic road barrier"
+	icon_state = "plasticroadbarrierblack"
+
+//Wood
+
+/obj/structure/barricade/handrail/hybrisa/road/wood
+	name = "wood road barrier"
+	icon_state = "roadbarrierwood"
+	stack_type = /obj/item/stack/sheet/wood
+	debris = list(/obj/item/stack/sheet/wood)
+	stack_amount = 2
+	destroyed_stack_amount = 1
+	barricade_hitsound = 'sound/effects/woodhit.ogg'
+/obj/structure/barricade/handrail/hybrisa/road/wood/orange
+	name = "wood road barrier"
+	icon_state = "roadbarrierwood"
+/obj/structure/barricade/handrail/hybrisa/road/wood/blue
+	name = "wood road barrier"
+	icon_state = "roadbarrierpolice"
+
+// Metal
+/obj/structure/barricade/handrail/hybrisa/road/metal
+	name = "metal road barrier"
+	icon_state = "centerroadbarrier"
+	stack_type = /obj/item/stack/sheet/metal
+	debris = list(/obj/item/stack/sheet/metal)
+/obj/structure/barricade/handrail/hybrisa/road/metal/metaltan
+	name = "metal road barrier"
+	icon_state = "centerroadbarrier"
+/obj/structure/barricade/handrail/hybrisa/road/metal/metaldark
+	name = "metal road barrier"
+	icon_state = "centerroadbarrier2"
+/obj/structure/barricade/handrail/hybrisa/road/metal/metaldark2
+	name = "metal road barrier"
+	icon_state = "centerroadbarrier3"
+/obj/structure/barricade/handrail/hybrisa/road/metal/double
+	name = "metal road barrier"
+	icon_state = "centerroadbarrierdouble"

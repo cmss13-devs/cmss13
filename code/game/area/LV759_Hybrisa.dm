@@ -93,12 +93,12 @@
 	icon_state = "blue"
 	ceiling = CEILING_NONE
 
-/area/lv759/landing_zone/UD10M_Bentley
-	name = "Hybrisa - UD10M Bentley"
+/area/lv759/landing_zone/starglider
+	name = "Hybrisa - WY-LWI StarGlider SG-200"
 	requires_power = FALSE
 
-/area/lv759/landing_zone/UD8M_Rover
-	name = "Hybrisa - UD8M Rover"
+/area/lv759/landing_zone/horizon_runner
+	name = "Hybrisa - WY-LWI Horizon Runner HR-150"
 	requires_power = FALSE
 
 //Outdoors areas

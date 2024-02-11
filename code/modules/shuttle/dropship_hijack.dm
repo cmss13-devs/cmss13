@@ -191,7 +191,6 @@
 			turfs += get_area_turfs(/area/almayer/medical/containment)
 			turfs += get_area_turfs(/area/almayer/medical/containment/cell)
 			turfs += get_area_turfs(/area/almayer/medical/medical_science)
-			turfs += get_area_turfs(/area/almayer/medical/testlab)
 			turfs += get_area_turfs(/area/almayer/medical/hydroponics)
 		if("Upper deck Aftship")
 			turfs += get_area_turfs(/area/almayer/engineering/upper_engineering)

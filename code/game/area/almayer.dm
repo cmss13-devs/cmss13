@@ -29,26 +29,6 @@
 	if(hijack_evacuation_area)
 		SShijack.progress_areas[src] = power_equip
 
-/area/shuttle/almayer/elevator_maintenance/upperdeck
-	name = "\improper Upper Deck Maintenance Elevator"
-	icon_state = "shuttle"
-	fake_zlevel = 1
-
-/area/shuttle/almayer/elevator_maintenance/lowerdeck
-	name = "\improper Lower Deck Maintenance Elevator"
-	icon_state = "shuttle"
-	fake_zlevel = 2
-
-/area/shuttle/almayer/elevator_hangar/lowerdeck
-	name = "\improper Hangar Elevator"
-	icon_state = "shuttle"
-	fake_zlevel = 2 // lowerdeck
-
-/area/shuttle/almayer/elevator_hangar/underdeck
-	name = "\improper Hangar Elevator"
-	icon_state = "shuttle"
-	fake_zlevel = 3
-
 /obj/structure/machinery/computer/shuttle_control/almayer/hangar
 	name = "Elevator Console"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
@@ -312,10 +292,6 @@
 	icon_state = "firingrange"
 	fake_zlevel = 2 // lowerdeck
 
-/area/almayer/shipboard/sensors
-	name = "\improper Sensor Room"
-	icon_state = "sensor"
-
 /area/almayer/hallways/hangar
 	name = "\improper Hangar"
 	icon_state = "hangar"
@@ -330,24 +306,9 @@
 	name = "\improper Lower Deck Vehicle Storage"
 	icon_state = "exoarmor"
 
-/area/almayer/squads/tankdeliveries
-	name = "\improper Lower Deck Vehicle ASRS"
-	icon_state = "req"
-	fake_zlevel = 2
-
-/area/almayer/hallways/exoarmor
-	name = "\improper Lower Deck Vehicle Armor Storage"
-	icon_state = "exoarmor"
-	fake_zlevel = 2 // lowerdeck
-
 /area/almayer/hallways/repair_bay
 	name = "\improper Lower Deck Deployment Workshop"
 	icon_state = "dropshiprepair"
-	fake_zlevel = 2 // lowerdeck
-
-/area/almayer/hallways/mission_planner
-	name = "\improper Lower Deck Dropship Central Computer Room"
-	icon_state = "missionplanner"
 	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/hallways/starboard_umbilical
@@ -706,11 +667,6 @@
 	icon_state = "science"
 	fake_zlevel = 1 // upperdeck
 
-/area/almayer/medical/testlab
-	name = "\improper Medical Research workshop"
-	icon_state = "science"
-	fake_zlevel = 1 // upperdeck
-
 /area/almayer/medical/containment
 	name = "\improper Medical Research containment"
 	icon_state = "science"
@@ -825,11 +781,6 @@
 	name = "\improper Lifeboat Docking Port"
 	icon_state = "selfdestruct"
 	fake_zlevel = 1 // upperdeck
-
-/area/almayer/ert_port
-	name = "\improper ERT Docking Port"
-	icon_state = "lifeboat"
-	flags_area = AREA_NOTUNNEL
 
 /area/space/almayer/lifeboat_dock
 	name = "\improper Port Lifeboat Docking"

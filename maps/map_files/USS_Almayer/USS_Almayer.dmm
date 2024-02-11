@@ -157,7 +157,7 @@
 /turf/open/floor/almayer{
 	allow_construction = 0
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aay" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
@@ -188,7 +188,7 @@
 	dir = 10;
 	icon_state = "red"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aaF" = (
 /obj/structure/stairs{
 	dir = 1;
@@ -247,13 +247,13 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aaO" = (
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "red"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aaY" = (
 /obj/structure/lattice,
 /turf/open/space,
@@ -296,7 +296,7 @@
 /area/almayer/lifeboat_pumps/north1)
 "abg" = (
 /turf/open/floor/almayer,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "abh" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/lifeboat_pumps/north2)
@@ -327,7 +327,7 @@
 /area/almayer/lifeboat_pumps/north1)
 "abx" = (
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "abB" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -626,7 +626,7 @@
 /turf/open/floor/almayer{
 	icon_state = "red"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "acF" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -733,7 +733,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "acW" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -786,13 +786,13 @@
 /turf/open/floor/plating/almayer{
 	allow_construction = 0
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "adc" = (
 /obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/plating/almayer{
 	allow_construction = 0
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "add" = (
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -896,7 +896,7 @@
 	dir = 8;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "adO" = (
 /turf/closed/wall/almayer,
 /area/almayer/engineering/starboard_atmos)
@@ -1172,7 +1172,7 @@
 	dir = 4;
 	icon_state = "red"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aeW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
@@ -1308,7 +1308,7 @@
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "afx" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
@@ -1346,7 +1346,7 @@
 	dir = 5;
 	icon_state = "silver"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "afE" = (
 /obj/structure/machinery/vending/dinnerware,
 /obj/structure/machinery/firealarm{
@@ -1526,7 +1526,7 @@
 	dir = 9;
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "agq" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -1639,7 +1639,7 @@
 /turf/open/floor/almayer{
 	icon_state = "red"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "agK" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -1762,7 +1762,7 @@
 	dir = 1;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "ahr" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -1771,7 +1771,7 @@
 	dir = 1;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "ahy" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
@@ -1829,7 +1829,7 @@
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "ahN" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/floor/grass,
@@ -1924,7 +1924,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aij" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 8;
@@ -1943,13 +1943,13 @@
 /turf/open/floor/almayer{
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aim" = (
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "ain" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
@@ -1969,7 +1969,7 @@
 	dir = 8;
 	icon_state = "silver"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aiq" = (
 /turf/open/floor/almayer,
 /area/almayer/living/cafeteria_officer)
@@ -1990,7 +1990,7 @@
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aiw" = (
 /turf/open/floor/almayer,
 /area/almayer/engineering/starboard_atmos)
@@ -2006,10 +2006,10 @@
 	dir = 8;
 	icon_state = "orange"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aiC" = (
 /turf/open/floor/almayer,
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aiH" = (
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -2129,7 +2129,7 @@
 	dir = 1;
 	icon_state = "bluecorner"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "ajs" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -2146,7 +2146,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aju" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -2205,7 +2205,7 @@
 /turf/open/floor/almayer{
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "ajD" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/flora/pottedplant{
@@ -2228,7 +2228,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "ajG" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -2237,7 +2237,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "ajH" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
@@ -2287,7 +2287,7 @@
 	dir = 8;
 	icon_state = "orange"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "ajO" = (
 /obj/structure/stairs,
 /obj/effect/projector{
@@ -2302,13 +2302,13 @@
 "ajP" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "ajR" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "ajT" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -2327,7 +2327,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "ajX" = (
 /obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/plating/almayer{
@@ -2480,7 +2480,7 @@
 /turf/open/floor/almayer{
 	icon_state = "orange"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "akI" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -2492,7 +2492,7 @@
 	dir = 6;
 	icon_state = "orange"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "akJ" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/disposalpipe/segment{
@@ -2504,7 +2504,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "akK" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -2516,7 +2516,7 @@
 	dir = 8;
 	icon_state = "orange"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "akL" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -2572,7 +2572,7 @@
 	icon_state = "pipe-c"
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "akU" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -2581,7 +2581,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "akV" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/disposalpipe/segment{
@@ -2593,7 +2593,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "akW" = (
 /turf/open/floor/almayer{
 	dir = 8;
@@ -2647,7 +2647,7 @@
 	dir = 8;
 	icon_state = "bluecorner"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "alk" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
@@ -2664,27 +2664,27 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "alp" = (
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "silver"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "alq" = (
 /obj/structure/disposalpipe/junction,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "als" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "bluecorner"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "alw" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
@@ -2750,7 +2750,7 @@
 	dir = 4;
 	icon_state = "orangecorner"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "alI" = (
 /obj/item/stack/cable_coil{
 	pixel_x = 1;
@@ -2770,14 +2770,14 @@
 	dir = 4;
 	icon_state = "orangecorner"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "alK" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "orangecorner"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "alL" = (
 /turf/closed/wall/almayer,
 /area/almayer/command/telecomms)
@@ -2789,7 +2789,7 @@
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "alQ" = (
 /obj/item/tool/wrench{
 	pixel_x = -8;
@@ -2935,13 +2935,13 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "amD" = (
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "amE" = (
 /obj/item/clothing/suit/storage/marine/light/vest,
 /obj/item/clothing/suit/storage/marine/light/vest,
@@ -2979,7 +2979,7 @@
 	icon_state = "pipe-c"
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "amO" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -2988,7 +2988,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "amR" = (
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_full"
@@ -3021,7 +3021,7 @@
 	dir = 4;
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "amU" = (
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -3061,7 +3061,7 @@
 	dir = 8;
 	icon_state = "silvercorner"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "and" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -3080,7 +3080,7 @@
 /turf/open/floor/almayer{
 	icon_state = "silvercorner"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "ang" = (
 /obj/item/clothing/head/welding{
 	pixel_y = 6
@@ -3099,14 +3099,14 @@
 	dir = 6;
 	icon_state = "silver"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "ani" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "anm" = (
 /obj/structure/stairs{
 	icon_state = "ramptop"
@@ -3212,7 +3212,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "anD" = (
 /obj/structure/platform_decoration{
 	dir = 8
@@ -3227,7 +3227,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "anH" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -3240,7 +3240,7 @@
 	dir = 8;
 	icon_state = "orange"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "anJ" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -3249,7 +3249,7 @@
 	dir = 8;
 	icon_state = "orange"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "anK" = (
 /obj/structure/platform{
 	dir = 1
@@ -3286,7 +3286,7 @@
 	dir = 4;
 	icon_state = "red"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "anT" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -3342,7 +3342,7 @@
 	dir = 1;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aoe" = (
 /turf/closed/wall/almayer/white,
 /area/almayer/medical/morgue)
@@ -3410,7 +3410,7 @@
 /turf/open/floor/almayer{
 	icon_state = "bluecorner"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aoy" = (
 /obj/structure/sign/safety/fire_haz{
 	pixel_x = 8;
@@ -3442,7 +3442,7 @@
 	dir = 10;
 	icon_state = "orange"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aoC" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -3456,7 +3456,7 @@
 /turf/open/floor/almayer{
 	icon_state = "orangecorner"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aoE" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -3465,7 +3465,7 @@
 /turf/open/floor/almayer{
 	icon_state = "orange"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aoF" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -3485,7 +3485,7 @@
 /turf/open/floor/almayer{
 	icon_state = "orange"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aoH" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -3575,7 +3575,7 @@
 	dir = 6;
 	icon_state = "orange"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aoR" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -3587,7 +3587,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aoS" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -3599,7 +3599,7 @@
 	dir = 8;
 	icon_state = "orange"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aoT" = (
 /turf/open/floor/almayer{
 	icon_state = "orange"
@@ -3616,7 +3616,7 @@
 /turf/open/floor/almayer{
 	icon_state = "orangecorner"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aoV" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/effect/decal/cleanable/dirt,
@@ -3663,12 +3663,12 @@
 /turf/open/floor/almayer{
 	icon_state = "orangecorner"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "apd" = (
 /turf/open/floor/almayer{
 	icon_state = "orangecorner"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "ape" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -3683,7 +3683,7 @@
 /turf/open/floor/almayer{
 	icon_state = "orangecorner"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "apg" = (
 /turf/open/floor/almayer{
 	dir = 10;
@@ -3701,7 +3701,7 @@
 	dir = 10;
 	icon_state = "red"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "apk" = (
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_Down1";
@@ -3715,7 +3715,7 @@
 	dir = 9;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "apm" = (
 /obj/structure/machinery/line_nexter{
 	dir = 1;
@@ -3787,7 +3787,7 @@
 	dir = 1;
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "apz" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/door_control{
@@ -3827,13 +3827,13 @@
 	dir = 8;
 	icon_state = "silver"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "apK" = (
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "silver"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "apL" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/cell_charger,
@@ -4212,7 +4212,7 @@
 /turf/open/floor/almayer{
 	icon_state = "silvercorner"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "arg" = (
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin/uscm,
@@ -4474,7 +4474,7 @@
 	dir = 8;
 	icon_state = "silver"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "asl" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -4483,7 +4483,7 @@
 	dir = 1;
 	icon_state = "red"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "asm" = (
 /obj/structure/stairs{
 	dir = 4
@@ -4513,7 +4513,7 @@
 	dir = 1;
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "asr" = (
 /obj/structure/bed/chair/comfy/alpha{
 	dir = 8
@@ -4694,7 +4694,7 @@
 	dir = 8;
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "asX" = (
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
 /turf/open/floor/almayer{
@@ -4766,7 +4766,7 @@
 /turf/open/floor/almayer{
 	allow_construction = 0
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "atk" = (
 /obj/structure/machinery/door/airlock/almayer/secure/reinforced,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -4791,7 +4791,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "atm" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/telecomms)
@@ -4876,7 +4876,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "atI" = (
 /obj/structure/stairs{
 	dir = 8;
@@ -4890,7 +4890,7 @@
 /turf/open/floor/plating/almayer{
 	allow_construction = 0
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "atK" = (
 /turf/open/floor/almayer{
 	dir = 10;
@@ -4902,7 +4902,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "atM" = (
 /turf/open/floor/almayer{
 	dir = 9;
@@ -4973,7 +4973,7 @@
 	dir = 1;
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "atV" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
@@ -4984,7 +4984,7 @@
 	dir = 1;
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aub" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -5141,7 +5141,7 @@
 	dir = 4;
 	icon_state = "silver"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "auH" = (
 /obj/structure/machinery/door_control{
 	id = "tcomms_apc";
@@ -5270,19 +5270,19 @@
 /turf/open/floor/almayer{
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "avm" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "avn" = (
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "avo" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/powered/agent)
@@ -5330,7 +5330,7 @@
 "avD" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor/almayer,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "avF" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -5641,7 +5641,7 @@
 	dir = 8;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "awx" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -5876,7 +5876,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "axu" = (
 /obj/structure/machinery/computer/telecomms/server,
 /turf/open/floor/almayer{
@@ -6292,7 +6292,7 @@
 	dir = 1;
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "ayU" = (
 /obj/structure/machinery/power/apc/almayer{
 	dir = 1
@@ -6301,7 +6301,7 @@
 	dir = 1;
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "ayV" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
@@ -6355,7 +6355,7 @@
 	dir = 8;
 	icon_state = "cargo_arrow"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "azc" = (
 /obj/structure/machinery/computer/telecomms/traffic,
 /turf/open/floor/almayer{
@@ -6632,7 +6632,7 @@
 "azY" = (
 /obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "azZ" = (
 /obj/structure/machinery/keycard_auth,
 /obj/structure/surface/table/reinforced/black,
@@ -6650,7 +6650,7 @@
 	dir = 8;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aAd" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -6874,7 +6874,7 @@
 	dir = 8;
 	icon_state = "silver"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aAZ" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
@@ -7029,7 +7029,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aBr" = (
 /obj/structure/ladder{
 	height = 2;
@@ -7278,7 +7278,7 @@
 	dir = 8;
 	icon_state = "silver"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aCo" = (
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin/uscm,
@@ -7421,7 +7421,7 @@
 	dir = 1;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aDm" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
@@ -7458,7 +7458,7 @@
 	dir = 4;
 	icon_state = "silvercorner"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aDr" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -7502,7 +7502,7 @@
 	dir = 5;
 	icon_state = "orange"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aDB" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -7652,7 +7652,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aEe" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -7669,7 +7669,7 @@
 	},
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aEg" = (
 /turf/open/floor/almayer{
 	icon_state = "redfull"
@@ -7710,7 +7710,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aEr" = (
 /obj/structure/largecrate/random/barrel/yellow,
 /obj/effect/decal/warning_stripes{
@@ -7770,7 +7770,7 @@
 	dir = 1;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aEK" = (
 /obj/structure/machinery/status_display{
 	pixel_y = 30
@@ -7779,7 +7779,7 @@
 	dir = 5;
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aEM" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/computer/emails,
@@ -7824,7 +7824,7 @@
 	dir = 5;
 	icon_state = "red"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aEW" = (
 /turf/closed/wall/almayer,
 /area/almayer/living/numbertwobunks)
@@ -7833,7 +7833,7 @@
 	dir = 4;
 	icon_state = "bluecorner"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aEZ" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/box/gloves{
@@ -8029,7 +8029,7 @@
 	dir = 9;
 	icon_state = "red"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aFI" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
@@ -8060,7 +8060,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aFW" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 1
@@ -8068,7 +8068,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aGa" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
@@ -8104,7 +8104,7 @@
 	dir = 8;
 	icon_state = "greencorner"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aGg" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -8205,13 +8205,13 @@
 	dir = 1;
 	icon_state = "red"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aGD" = (
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "red"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aGH" = (
 /obj/structure/machinery/computer/ordercomp,
 /turf/open/floor/almayer{
@@ -8226,7 +8226,7 @@
 /turf/open/floor/almayer{
 	icon_state = "red"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aGP" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -8425,7 +8425,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aHR" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -8489,7 +8489,7 @@
 	dir = 5;
 	icon_state = "red"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aIf" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -8644,7 +8644,7 @@
 	dir = 1;
 	icon_state = "silver"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aIT" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -8807,7 +8807,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aJw" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -9224,7 +9224,7 @@
 	dir = 8;
 	icon_state = "silver"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aMm" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/crowbar,
@@ -9661,7 +9661,7 @@
 	dir = 1;
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aOQ" = (
 /obj/structure/closet/crate,
 /obj/item/storage/briefcase/inflatable,
@@ -9681,7 +9681,7 @@
 	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aOU" = (
 /obj/structure/platform{
 	dir = 4
@@ -9729,7 +9729,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aPe" = (
 /obj/structure/largecrate/random/case/double,
 /obj/structure/sign/safety/bulkhead_door{
@@ -9771,7 +9771,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aPn" = (
 /obj/structure/machinery/cm_vending/clothing/marine/bravo{
 	density = 0;
@@ -9941,7 +9941,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aQp" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/warning_stripes{
@@ -10420,7 +10420,7 @@
 	dir = 4;
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aSx" = (
 /obj/structure/machinery/vending/dinnerware,
 /obj/structure/sign/safety/maint{
@@ -10435,13 +10435,13 @@
 	dir = 9;
 	icon_state = "orange"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aSz" = (
 /obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aSA" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 4;
@@ -10457,7 +10457,7 @@
 	dir = 1;
 	icon_state = "orange"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aSC" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
@@ -10465,7 +10465,7 @@
 	dir = 1;
 	icon_state = "orange"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aSE" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -10685,7 +10685,7 @@
 	dir = 1;
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aTQ" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 8;
@@ -10699,13 +10699,13 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aTS" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aTT" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3";
@@ -11088,7 +11088,7 @@
 	dir = 4;
 	icon_state = "orange"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aWb" = (
 /obj/structure/machinery/computer/working_joe{
 	dir = 4;
@@ -11119,7 +11119,7 @@
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aWf" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -11131,7 +11131,7 @@
 	dir = 8;
 	icon_state = "orange"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aWg" = (
 /obj/structure/machinery/door_control{
 	id = "CMP Office Shutters";
@@ -11169,7 +11169,7 @@
 	dir = 8;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aWm" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -11277,7 +11277,7 @@
 /turf/open/floor/almayer{
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aWM" = (
 /obj/structure/machinery/status_display{
 	pixel_y = 30
@@ -11384,7 +11384,7 @@
 "aXE" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aXS" = (
 /obj/structure/machinery/alarm/almayer{
 	dir = 1
@@ -11402,7 +11402,7 @@
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aYd" = (
 /obj/structure/dropship_equipment/medevac_system,
 /turf/open/floor/almayer{
@@ -11414,14 +11414,14 @@
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aYn" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aYq" = (
 /turf/open/floor/almayer{
 	dir = 6;
@@ -11472,7 +11472,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aYE" = (
 /obj/structure/platform,
 /obj/structure/platform{
@@ -11675,7 +11675,7 @@
 "aZE" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "aZF" = (
 /obj/effect/step_trigger/teleporter_vector{
 	name = "Almayer_Down4";
@@ -11693,7 +11693,7 @@
 	icon_state = "pipe-c"
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "aZI" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/almayer{
@@ -11853,13 +11853,13 @@
 	dir = 8;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "baB" = (
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "silver"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "baG" = (
 /obj/structure/largecrate/random/barrel/blue,
 /turf/open/floor/almayer,
@@ -12092,7 +12092,7 @@
 	dir = 8;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "bbO" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -13255,7 +13255,7 @@
 	dir = 10;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "biu" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	access_modified = 1;
@@ -13415,7 +13415,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "bjL" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -13605,7 +13605,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "bkT" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -13646,7 +13646,7 @@
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "blf" = (
 /obj/structure/machinery/power/apc/almayer{
 	dir = 1
@@ -14126,7 +14126,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "bnF" = (
 /obj/structure/machinery/cryopod{
 	pixel_y = 6
@@ -17788,7 +17788,7 @@
 	icon_state = "pipe-c"
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "bKf" = (
 /turf/open/floor/almayer{
 	dir = 5;
@@ -19178,7 +19178,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "bRx" = (
 /obj/structure/machinery/door/poddoor/railing{
 	id = "vehicle_elevator_railing_aux"
@@ -19778,7 +19778,7 @@
 	dir = 4;
 	icon_state = "red"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "bUF" = (
 /turf/open/floor/almayer{
 	icon_state = "bluecorner"
@@ -20051,7 +20051,7 @@
 	dir = 4;
 	icon_state = "red"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "bWT" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -20169,19 +20169,19 @@
 "bYc" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "bYe" = (
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "bYh" = (
 /obj/structure/disposalpipe/junction,
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "bYn" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/engineering/upper_engineering/port)
@@ -20677,7 +20677,7 @@
 	dir = 4;
 	icon_state = "silvercorner"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "cbu" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	layer = 1.9
@@ -21455,7 +21455,7 @@
 	pixel_y = 28
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "cgO" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/emails{
@@ -21555,7 +21555,7 @@
 	dir = 1;
 	icon_state = "red"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "chv" = (
 /obj/structure/closet/secure_closet/guncabinet/red/mp_armory_shotgun,
 /turf/open/floor/plating/plating_catwalk,
@@ -21912,7 +21912,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "cjt" = (
 /turf/open/floor/almayer{
 	icon_state = "orange"
@@ -22766,7 +22766,7 @@
 	dir = 1;
 	icon_state = "silvercorner"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "cnE" = (
 /obj/structure/machinery/prop/almayer/computer{
 	dir = 4;
@@ -23042,7 +23042,7 @@
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "cpz" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
@@ -23152,7 +23152,7 @@
 	dir = 4;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "crh" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -23290,7 +23290,7 @@
 	dir = 4;
 	icon_state = "orange"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "ctT" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
@@ -23411,7 +23411,7 @@
 	dir = 10;
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "cwQ" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -23527,7 +23527,7 @@
 	pixel_y = 32
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "cAm" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
@@ -23877,7 +23877,7 @@
 	pixel_y = 25
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "cFh" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
@@ -23938,7 +23938,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "cGA" = (
 /obj/structure/sign/poster{
 	pixel_y = -32
@@ -24158,7 +24158,7 @@
 /turf/open/floor/almayer{
 	icon_state = "silver"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "cLl" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -24936,7 +24936,7 @@
 	dir = 1
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "cZp" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -25806,7 +25806,7 @@
 /turf/open/floor/almayer{
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "dqZ" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/chief_mp_office)
@@ -25871,7 +25871,7 @@
 	dir = 4;
 	icon_state = "orange"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "dsA" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/almayer{
@@ -25890,7 +25890,7 @@
 	dir = 1;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "dtZ" = (
 /obj/structure/platform_decoration{
 	dir = 4
@@ -26812,7 +26812,7 @@
 	dir = 5;
 	icon_state = "plating"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "dKp" = (
 /turf/open/floor/almayer/research/containment/corner{
 	dir = 4
@@ -26900,7 +26900,7 @@
 /turf/open/floor/almayer{
 	icon_state = "silver"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "dMf" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/photo_album{
@@ -27577,7 +27577,7 @@
 	dir = 10;
 	icon_state = "orange"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "dZr" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -28222,7 +28222,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "ejt" = (
 /turf/open/floor/almayer/uscm/directional{
 	dir = 4
@@ -28303,7 +28303,7 @@
 /turf/open/floor/almayer{
 	icon_state = "orange"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "elE" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -29106,7 +29106,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "eAU" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -29493,7 +29493,7 @@
 	dir = 4;
 	icon_state = "bluecorner"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "eGr" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/reinforced{
 	dir = 1;
@@ -30007,7 +30007,7 @@
 	dir = 10;
 	icon_state = "red"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "eUe" = (
 /obj/structure/sign/safety/hvac_old{
 	pixel_x = 8;
@@ -30349,7 +30349,7 @@
 /turf/open/floor/almayer{
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "fag" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -31630,7 +31630,7 @@
 	icon_state = "pipe-c"
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "fBO" = (
 /obj/structure/machinery/chem_master{
 	vial_maker = 1
@@ -32220,7 +32220,7 @@
 	dir = 8;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "fMU" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -32255,7 +32255,7 @@
 	dir = 8
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "fOk" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9
@@ -32665,7 +32665,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "fXE" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/emails{
@@ -33074,7 +33074,7 @@
 	dir = 4;
 	icon_state = "orangecorner"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "gfo" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 1;
@@ -33252,7 +33252,7 @@
 	dir = 1;
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "giR" = (
 /obj/structure/machinery/status_display{
 	pixel_y = -30
@@ -33964,7 +33964,7 @@
 	dir = 4;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "gyC" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 8;
@@ -34720,7 +34720,7 @@
 /turf/open/floor/almayer{
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "gMd" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clipboard,
@@ -34919,7 +34919,7 @@
 	dir = 6;
 	icon_state = "orange"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "gPS" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -35581,7 +35581,7 @@
 	dir = 4;
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "heo" = (
 /obj/structure/machinery/power/apc/almayer{
 	cell_type = /obj/item/cell/hyper;
@@ -36275,7 +36275,7 @@
 	dir = 1;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "hop" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -36748,7 +36748,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "hyk" = (
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -37266,7 +37266,7 @@
 	dir = 8;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "hJA" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/port_aft_hallway)
@@ -37486,7 +37486,7 @@
 	dir = 1;
 	icon_state = "orange"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "hPN" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/warning_stripes{
@@ -38542,7 +38542,7 @@
 	dir = 1;
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "iiZ" = (
 /obj/structure/machinery/cm_vending/sorted/marine_food,
 /turf/open/floor/almayer{
@@ -38789,7 +38789,7 @@
 	dir = 6;
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "ipa" = (
 /obj/effect/decal/cleanable/generic,
 /obj/effect/decal/warning_stripes{
@@ -39023,7 +39023,7 @@
 	dir = 1;
 	icon_state = "bluecorner"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "itf" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -39303,7 +39303,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "ixD" = (
 /obj/structure/machinery/light,
 /obj/effect/decal/warning_stripes{
@@ -39437,7 +39437,7 @@
 /turf/open/floor/almayer{
 	icon_state = "orange"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "iAE" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -40343,7 +40343,7 @@
 	dir = 4;
 	icon_state = "silver"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "iTQ" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -40466,7 +40466,7 @@
 	dir = 1
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "iWx" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out"
@@ -40509,7 +40509,7 @@
 	dir = 1;
 	icon_state = "silver"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "iWQ" = (
 /obj/effect/landmark/start/researcher,
 /obj/effect/landmark/late_join/researcher,
@@ -40606,7 +40606,7 @@
 	dir = 4;
 	icon_state = "red"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "iYm" = (
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/almayer{
@@ -41623,7 +41623,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "jnD" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -42317,7 +42317,7 @@
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "jFt" = (
 /obj/structure/machinery/light/small,
 /obj/effect/decal/warning_stripes{
@@ -42469,7 +42469,7 @@
 /turf/open/floor/almayer{
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "jHL" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -42636,7 +42636,7 @@
 	dir = 5;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "jLj" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -42759,7 +42759,7 @@
 	dir = 1;
 	icon_state = "orange"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "jML" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/wood/ship,
@@ -43534,7 +43534,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "kam" = (
 /obj/item/tool/screwdriver{
 	layer = 2.9;
@@ -43559,7 +43559,7 @@
 	dir = 4;
 	icon_state = "silver"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "kaB" = (
 /obj/structure/machinery/cm_vending/gear/tl{
 	density = 0;
@@ -43789,7 +43789,7 @@
 	dir = 10;
 	icon_state = "red"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "kfo" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -43964,7 +43964,7 @@
 	dir = 8;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "kio" = (
 /obj/structure/machinery/firealarm{
 	pixel_y = 28
@@ -45229,7 +45229,7 @@
 	icon_state = "S"
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "kGL" = (
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -45238,7 +45238,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "kGQ" = (
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
@@ -45283,7 +45283,7 @@
 	dir = 5;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "kHY" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
@@ -45419,7 +45419,7 @@
 	dir = 4;
 	icon_state = "red"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "kKk" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -45949,7 +45949,7 @@
 	},
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/almayer,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "kSN" = (
 /obj/structure/sign/safety/maint{
 	pixel_x = 32
@@ -45958,7 +45958,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "kSU" = (
 /obj/structure/transmitter/no_dnd{
 	name = "Requisition Telephone";
@@ -46240,7 +46240,7 @@
 	dir = 6;
 	icon_state = "red"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "kYU" = (
 /obj/structure/sign/safety/escapepod{
 	pixel_y = 32
@@ -46253,7 +46253,7 @@
 	dir = 1;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "kYV" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
@@ -47232,7 +47232,7 @@
 	pixel_y = -32
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "lqK" = (
 /obj/effect/decal/cleanable/ash,
 /obj/item/trash/cigbutt/ucigbutt{
@@ -47530,7 +47530,7 @@
 	pixel_y = 32
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "lwp" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
@@ -47701,7 +47701,7 @@
 	dir = 1;
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "lzq" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -48168,7 +48168,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "lII" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 1
@@ -48301,7 +48301,7 @@
 	dir = 5;
 	icon_state = "red"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "lKM" = (
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer,
@@ -48397,7 +48397,7 @@
 	dir = 6;
 	icon_state = "red"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "lNw" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -48991,7 +48991,7 @@
 /turf/open/floor/almayer{
 	icon_state = "greencorner"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "mcL" = (
 /obj/structure/machinery/vending/snack,
 /obj/structure/sign/safety/maint{
@@ -49078,7 +49078,7 @@
 	dir = 1;
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "meT" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
 	id = "Hangar Lockdown";
@@ -49533,7 +49533,7 @@
 	dir = 8;
 	icon_state = "orange"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "mnI" = (
 /turf/open/floor/almayer{
 	icon_state = "blue"
@@ -50657,7 +50657,7 @@
 	dir = 6;
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "mJa" = (
 /obj/structure/closet/crate/trashcart,
 /obj/item/trash/boonie,
@@ -50923,7 +50923,7 @@
 	dir = 6;
 	icon_state = "orange"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "mMP" = (
 /obj/effect/landmark/start/intel,
 /turf/open/floor/plating/plating_catwalk,
@@ -51032,7 +51032,7 @@
 	dir = 1;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "mOR" = (
 /obj/structure/surface/rack,
 /obj/item/roller,
@@ -51115,7 +51115,7 @@
 /turf/open/floor/almayer{
 	icon_state = "orange"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "mQc" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
@@ -51142,7 +51142,7 @@
 	dir = 5;
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "mQY" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1
@@ -51162,7 +51162,7 @@
 	dir = 4;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "mRn" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES Interior";
@@ -51298,7 +51298,7 @@
 	dir = 4;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "mTc" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/emails{
@@ -51862,7 +51862,7 @@
 	dir = 8;
 	icon_state = "orange"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "ndZ" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/device/flashlight/lamp,
@@ -51960,7 +51960,7 @@
 	},
 /obj/structure/machinery/light,
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "ngf" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
@@ -52450,7 +52450,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "nmD" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -53090,7 +53090,7 @@
 /turf/open/floor/almayer{
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "nxZ" = (
 /obj/structure/machinery/power/fusion_engine{
 	name = "\improper S-52 fusion reactor 10"
@@ -53159,7 +53159,7 @@
 	dir = 9;
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "nzD" = (
 /obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/almayer,
@@ -53258,7 +53258,7 @@
 	dir = 4;
 	icon_state = "red"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "nCf" = (
 /obj/effect/landmark/start/marine/tl/charlie,
 /obj/effect/landmark/late_join/charlie,
@@ -53456,7 +53456,7 @@
 	dir = 4;
 	icon_state = "greencorner"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "nFs" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -54097,7 +54097,7 @@
 "nQx" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "nQA" = (
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
@@ -54333,7 +54333,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "nVi" = (
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -54493,7 +54493,7 @@
 	pixel_x = -1
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "nYD" = (
 /obj/structure/closet/secure_closet/medical2,
 /turf/open/floor/almayer{
@@ -57203,7 +57203,7 @@
 /turf/open/floor/almayer{
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "oXp" = (
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor/wood/ship,
@@ -57764,7 +57764,7 @@
 /area/almayer/shipboard/panic)
 "pji" = (
 /turf/closed/wall/almayer,
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "pjj" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -57813,7 +57813,7 @@
 	dir = 4;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "pjR" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -58347,7 +58347,7 @@
 /turf/open/floor/almayer{
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "pvJ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -58636,7 +58636,7 @@
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "pCQ" = (
 /obj/structure/surface/table/almayer,
 /obj/item/attachable/lasersight,
@@ -59380,7 +59380,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "pRO" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -59427,7 +59427,7 @@
 	dir = 5;
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "pSQ" = (
 /obj/structure/reagent_dispensers/fueltank{
 	anchored = 1
@@ -60111,7 +60111,7 @@
 	icon_state = "pipe-c"
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "qgK" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/airlock/almayer/generic/press{
@@ -60156,7 +60156,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "qhx" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
@@ -61953,7 +61953,7 @@
 /turf/open/floor/almayer{
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "qLo" = (
 /obj/structure/machinery/light,
 /turf/open/floor/plating/plating_catwalk,
@@ -62005,7 +62005,7 @@
 	dir = 1;
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "qLS" = (
 /obj/structure/pipes/standard/manifold/hidden/supply/no_boom,
 /turf/open/floor/almayer/no_build{
@@ -63540,7 +63540,7 @@
 /turf/open/floor/almayer{
 	icon_state = "redfull"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "rpp" = (
 /obj/effect/landmark/start/executive,
 /turf/open/floor/plating/plating_catwalk,
@@ -63968,7 +63968,7 @@
 /turf/open/floor/almayer{
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "rxK" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
@@ -64539,7 +64539,7 @@
 	dir = 5;
 	icon_state = "orange"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "rGg" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
@@ -66322,7 +66322,7 @@
 	dir = 8;
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "snt" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor/almayer{
@@ -66819,7 +66819,7 @@
 "suV" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "suY" = (
 /obj/structure/platform_decoration,
 /turf/open/floor/almayer{
@@ -67194,7 +67194,7 @@
 	dir = 1;
 	icon_state = "silver"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "sDD" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
@@ -67983,7 +67983,7 @@
 	dir = 4;
 	icon_state = "orangecorner"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "sUO" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -68334,7 +68334,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "tan" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
@@ -69137,7 +69137,7 @@
 	pixel_y = 32
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "tnY" = (
 /obj/structure/machinery/cryopod{
 	pixel_y = 6
@@ -70236,7 +70236,7 @@
 /turf/open/floor/almayer{
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "tHk" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
@@ -70764,7 +70764,7 @@
 /turf/open/floor/almayer{
 	icon_state = "redfull"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "tSB" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -71626,7 +71626,7 @@
 	dir = 1;
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "ukC" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/almayer{
@@ -72599,7 +72599,7 @@
 	dir = 1;
 	icon_state = "orange"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "uBM" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
@@ -72794,7 +72794,7 @@
 	icon_state = "SE-out"
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "uGN" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/almayer,
@@ -72846,7 +72846,7 @@
 	dir = 9;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "uIv" = (
 /turf/open/floor/almayer{
 	icon_state = "orange"
@@ -72977,7 +72977,7 @@
 	pixel_y = 30
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "uLv" = (
 /obj/structure/sign/safety/distribution_pipes{
 	pixel_y = -32
@@ -73140,7 +73140,7 @@
 /turf/open/floor/almayer{
 	icon_state = "orangecorner"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "uPN" = (
 /obj/item/tool/wirecutters/clippers,
 /turf/open/floor/almayer{
@@ -73404,7 +73404,7 @@
 	dir = 1;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "uTZ" = (
 /obj/structure/machinery/light/small,
 /turf/open/floor/almayer{
@@ -73561,7 +73561,7 @@
 	dir = 9;
 	icon_state = "red"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "uWV" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -75956,7 +75956,7 @@
 	dir = 1;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "vIu" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -75975,7 +75975,7 @@
 	dir = 1;
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "vJg" = (
 /obj/structure/machinery/light/small,
 /turf/open/floor/almayer{
@@ -76062,7 +76062,7 @@
 /turf/open/floor/plating/almayer{
 	allow_construction = 0
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "vKI" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -77368,7 +77368,7 @@
 /turf/open/floor/almayer{
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "wgf" = (
 /obj/structure/sign/safety/nonpress_0g{
 	pixel_x = 32
@@ -77946,7 +77946,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "wqr" = (
 /obj/structure/sign/safety/terminal{
 	pixel_x = 7;
@@ -77965,7 +77965,7 @@
 	dir = 1;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "wqW" = (
 /obj/structure/closet/secure_closet/CMO,
 /obj/structure/machinery/light{
@@ -78055,7 +78055,7 @@
 	dir = 10;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "wsw" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -79148,7 +79148,7 @@
 	dir = 4;
 	icon_state = "orangecorner"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "wOt" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
@@ -79231,7 +79231,7 @@
 	dir = 1;
 	icon_state = "greencorner"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "wQA" = (
 /obj/structure/pipes/standard/simple/visible{
 	dir = 5
@@ -79298,7 +79298,7 @@
 /turf/open/floor/almayer{
 	icon_state = "orangecorner"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "wSm" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -79463,7 +79463,7 @@
 	pixel_y = 32
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "wUJ" = (
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/floor/almayer{
@@ -79571,7 +79571,7 @@
 /turf/open/floor/almayer{
 	icon_state = "silver"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "wWl" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/general_air_control/large_tank_control{
@@ -79764,7 +79764,7 @@
 /turf/open/floor/almayer{
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "wZN" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/fancy/cigarettes/lucky_strikes,
@@ -80688,7 +80688,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "xrt" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
@@ -80853,7 +80853,7 @@
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "xvE" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/marine/charlie{
@@ -81422,7 +81422,7 @@
 	dir = 5;
 	icon_state = "silver"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "xFP" = (
 /turf/open/floor/almayer{
 	dir = 5;
@@ -81455,7 +81455,7 @@
 	icon_state = "pipe-c"
 	},
 /turf/open/floor/almayer,
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "xGm" = (
 /obj/structure/platform_decoration{
 	dir = 8
@@ -81792,7 +81792,7 @@
 /turf/open/floor/plating/almayer{
 	allow_construction = 0
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "xMl" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -82168,7 +82168,7 @@
 	dir = 10;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "xSw" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -82239,7 +82239,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "xTu" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 1
@@ -82698,7 +82698,7 @@
 	dir = 1;
 	icon_state = "blue"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "ybm" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clothing/head/hardhat{
@@ -82960,7 +82960,7 @@
 	dir = 8;
 	icon_state = "green"
 	},
-/area/almayer/hallways/aft_hallway)
+/area/almayer/hallways/upper/aft_hallway)
 "yfw" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -83309,7 +83309,7 @@
 	dir = 4;
 	icon_state = "orangecorner"
 	},
-/area/almayer/hallways/stern_hallway)
+/area/almayer/hallways/upper/stern_hallway)
 "ymg" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";

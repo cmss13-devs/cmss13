@@ -318,7 +318,6 @@
 	name = "\improper Lower Deck Port Umbilical Hallway"
 	icon_state = "portumbilical"
 
-//new halways area.
 //port
 /area/almayer/hallways/lower/port_fore_hallway
 	name = "\improper Lower Deck Port Fore Hallway"
@@ -345,21 +344,16 @@
 	name = "\improper Lower Deck Starboard Aft Hallway"
 	icon_state = "starboard"
 
-/area/almayer/hallways/aft_hallway
-	name = "\improper Upper Deck Aft Hallway"
-	icon_state = "aft"
-	fake_zlevel = 1 // upperdeck
-
-/area/almayer/hallways/stern_hallway
-	name = "\improper Upper Deck Stern Hallway"
-	icon_state = "stern"
-	fake_zlevel = 1 // upperdeck
-
-
-//new hallways areas
-
 /area/almayer/hallways/upper
 	fake_zlevel = 1 // upperdeck
+
+/area/almayer/hallways/upper/aft_hallway
+	name = "\improper Upper Deck Aft Hallway"
+	icon_state = "aft"
+
+/area/almayer/hallways/upper/stern_hallway
+	name = "\improper Upper Deck Stern Hallway"
+	icon_state = "stern"
 
 /area/almayer/hallways/upper/port
 	name = "\improper Upper Deck Port Hallway"
@@ -369,6 +363,7 @@
 	name = "\improper Upper Deck Starboard Hallway"
 	icon_state = "starboard"
 
+//area that are used for transition between decks.
 /area/almayer/stair_clone
 	name = "\improper Lower Deck Stairs"
 	icon_state = "stairs_lowerdeck"

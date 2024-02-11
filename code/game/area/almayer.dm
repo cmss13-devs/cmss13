@@ -328,19 +328,6 @@
 	icon_state = "exoarmor"
 	fake_zlevel = 2
 
-/area/almayer/living
-	minimap_color = MINIMAP_AREA_COLONY
-
-/area/almayer/living/tankerbunks
-	name = "\improper Lower Deck Vehicle Crew Bunks"
-	icon_state = "livingspace"
-	fake_zlevel = 2
-
-/area/almayer/living/auxiliary_officer_office
-	name = "\improper Lower Deck Auxiliary Support Officer office"
-	icon_state = "livingspace"
-	fake_zlevel = 2
-
 /area/almayer/squads/tankdeliveries
 	name = "\improper Lower Deck Vehicle ASRS"
 	icon_state = "req"
@@ -530,6 +517,19 @@
 
 /area/almayer/maint/hull/upper/u_a_p
 	name = "\improper Upper Deck Port-Aft Hull"
+
+/area/almayer/living
+	minimap_color = MINIMAP_AREA_COLONY
+
+/area/almayer/living/tankerbunks
+	name = "\improper Lower Deck Vehicle Crew Bunks"
+	icon_state = "livingspace"
+	fake_zlevel = 2
+
+/area/almayer/living/auxiliary_officer_office
+	name = "\improper Lower Deck Auxiliary Support Officer office"
+	icon_state = "livingspace"
+	fake_zlevel = 2
 
 /area/almayer/living/cryo_cells
 	name = "\improper Lower Deck Cryo Cells"

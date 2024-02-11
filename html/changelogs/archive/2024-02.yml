@@ -146,3 +146,9 @@
       hostile), due to this, UPP comms will always be scrambled at the beginning,
       no way to tell intentions before meeting.
   - rscadd: Chem Goon Research Consultant now spawns with reagent scanner goggles.
+2024-02-11:
+  Drathek:
+  - bugfix: Fix gardener fruit count not always updating
+  Vicacrov:
+  - bugfix: Fixed Warden Praetorians being able to move around the ovipositored Queen
+      with their Retrieve ability.

@@ -724,6 +724,7 @@
 #include "code\game\area\Corsat.dm"
 #include "code\game\area\DesertDam.dm"
 #include "code\game\area\IceColony.dm"
+#include "code\game\area\Isaacs_Lament.dm"
 #include "code\game\area\kutjevo.dm"
 #include "code\game\area\LV522_Chances_Claim.dm"
 #include "code\game\area\LV624.dm"

@@ -213,7 +213,7 @@
 			to_chat(user, SPAN_WARNING("\The [sold_eqipment] is not fully loaded, and less points will be able to be refunded."))
 		else
 			recycle_points = sold_eqipment.point_cost
-			if(sold_eqipment==/obj/structure/ship_ammo/sentry)
+			if(istype(powerloader_clamp_used.loaded, /obj/structure/ship_ammo/sentry))
 				recycle_points = omnisentry_price - omnisentry_price_scale
 
 	if(!recycle_points)

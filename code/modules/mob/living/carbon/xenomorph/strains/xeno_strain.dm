@@ -6,7 +6,7 @@
 	/// (OPTIONAL) Flavor text to be shown on purchase. Semi-OOC
 	var/flavor_description
 	/// (OPTIONAL) A custom icon state prefix for xenos who have taken the strain.
-	var/xeno_icon_state
+	var/icon_state_prefix
 
 	/// A list of action typepaths which should be removed when a xeno takes the strain.
 	var/list/actions_to_remove

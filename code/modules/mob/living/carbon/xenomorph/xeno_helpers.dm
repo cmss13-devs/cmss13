@@ -48,7 +48,7 @@
  * If that can't be found, returns "Normal"
  */
 /mob/living/carbon/xenomorph/proc/get_strain_icon()
-	return strain?.xeno_icon_state || "Normal"
+	return strain?.icon_state_prefix || "Normal"
 	// TODO: Go through xeno/xenoid sprites and remove "Normal", so that this isn't needed.
 
 //These don't do much currently. Or anything? Only around for legacy code.

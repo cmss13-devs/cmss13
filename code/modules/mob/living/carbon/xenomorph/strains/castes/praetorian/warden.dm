@@ -3,7 +3,7 @@
 	name = PRAETORIAN_WARDEN
 	description = "You trade your acid ball, acid spray, dash, and a small bit of your slash damage and speed to become an effective medic. You gain the ability to emit strong pheromones, an ability that retrieves endangered, knocked-down or sitting allies and pulls them to your location, and you gain an internal hitpoint pool that fills with every slash against your enemies, which can be spent to aid your allies and yourself by healing them or curing their ailments."
 	flavor_description = "Only in death does your sisters' service to the Queen end. They will be untouched by plague or disease; no sickness will blight them."
-	xeno_icon_state = PRAETORIAN_WARDEN
+	icon_state_prefix = "Warden"
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/xeno_spit,

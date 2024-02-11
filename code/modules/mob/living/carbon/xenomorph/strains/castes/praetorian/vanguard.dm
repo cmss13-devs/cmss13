@@ -2,7 +2,7 @@
 	name = PRAETORIAN_VANGUARD
 	description = "You forfeit all of your acid-based abilities and some health for some extra speed and a rechargable shield that can block one attack. Use your Pierce from up to three paces away to stab through talls, while stabbing through several will completely recharge your shield. Use your charge to plow through enemies and use it again to unleash a powerful AoE slash that reaches up to three paces. You also have a Cleave ability, amplified by your shield, which you can toggle to either immobilize or fling a target away."
 	flavor_description = "They are my bulwark against the tallhosts. They are my Vanguard and they shall know no fear."
-	xeno_icon_state = PRAETORIAN_VANGUARD
+	icon_state_prefix = "Vanguard"
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/xeno_spit,

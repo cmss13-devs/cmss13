@@ -2,7 +2,7 @@
 	name = DEFENDER_STEELCREST
 	description = "You trade your tail sweep and a small amount of your slash damage for slightly increased headbutt knockback and damage and the ability to slowly move and headbutt while fortified. Along with this, you gain a unique ability to accumulate damage, and use it to recover a slight amount of health and refresh your tail slam."
 	flavor_description = "To handle yourself, use your head. To handle others, use your head."
-	xeno_icon_state = DEFENDER_STEELCREST
+	icon_state_prefix = "Steelcrest"
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/headbutt,

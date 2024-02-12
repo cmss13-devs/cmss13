@@ -58,127 +58,113 @@
 /area/lv553/indoors/bungalow_manager
 	name = "Isaac's Lament - Weyland Yutani Colonial Manager's Bungalow"
 	icon_state = "shed_1_ag" //because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
-	ceiling = CEILING_METAL
-	soundscape_playlist = SCAPE_PL_LV553_INDOORS
 
 /area/lv553/indoors/aerospace_control
 	name = "Isaac's Lament - Landing Zones' Aerospace Control"
 	icon_state = "outpost_gen_1" //because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
-	ceiling = CEILING_METAL
-	soundscape_playlist = SCAPE_PL_LV553_INDOORS
 	requires_power = FALSE
 
 /area/lv553/indoors/lz_sec_checkpoint
 	name = "Isaac's Lament - Landing Zones' Security Checkpoint"
 	icon_state = "outpost_sec_4" //because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
-	ceiling = CEILING_METAL
-	soundscape_playlist = SCAPE_PL_LV553_INDOORS
 
 /area/lv553/indoors/welcome_centre/offices
 	name = "Isaac's Lament - WeyYu Welcome Centre Offices"
 	icon_state = "offices" //because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
-	ceiling = CEILING_METAL
-	soundscape_playlist = SCAPE_PL_LV553_INDOORS
 
 /area/lv553/indoors/welcome_centre/lobby
 	name = "Isaac's Lament - WeyYu Welcome Centre Lobby"
 	icon_state = "dorms_lobby" //because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
-	ceiling = CEILING_METAL
-	soundscape_playlist = SCAPE_PL_LV553_INDOORS
 
 /area/lv553/indoors/welcome_centre/canteen
 	name = "Isaac's Lament - WeyYu Welcome Centre Canteen"
 	icon_state = "dorms_canteen" //because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
-	ceiling = CEILING_METAL
-	soundscape_playlist = SCAPE_PL_LV553_INDOORS
 
 /area/lv553/indoors/hospital/lobby
 	name = "Isaac's Lament - Jeppson's Memorial Hospital Hallway"
 	icon_state = "outpost_med_hall" //because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
-	ceiling = CEILING_METAL
-	soundscape_playlist = SCAPE_PL_LV553_INDOORS
 
 /area/lv553/indoors/hospital/reception
 	name = "Isaac's Lament - Jeppson's Memorial Hospital Reception"
 	icon_state = "outpost_med_recp" //because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
-	ceiling = CEILING_METAL
-	soundscape_playlist = SCAPE_PL_LV553_INDOORS
 
 /area/lv553/indoors/hospital/outpatients_and_icu
 	name = "Isaac's Lament - Jeppson's Memorial Hospital Intensive Care Unit and Outpatients"
 	icon_state = "outpost_med_recovery" //because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
-	ceiling = CEILING_METAL
-	soundscape_playlist = SCAPE_PL_LV553_INDOORS
 
 /area/lv553/indoors/hospital/storage_laundyroom_and_breakroom
 	name = "Isaac's Lament - Jeppson's Memorial Hospital Storage, Laundryoom and Breakroom"
 	icon_state = "outpost_med_stock" //because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
-	ceiling = CEILING_METAL
-	soundscape_playlist = SCAPE_PL_LV553_INDOORS
 
 /area/lv553/indoors/hospital/operating_rooms
 	name = "Isaac's Lament - Jeppson's Memorial Hospital Operating Rooms"
 	icon_state = "outpost_med_or" //because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
-	ceiling = CEILING_METAL
-	soundscape_playlist = SCAPE_PL_LV553_INDOORS
 
 /area/lv553/indoors/hospital/garage
 	name = "Isaac's Lament - Jeppson's Memorial Hospital Paramedics Garage"
 	icon_state = "garage" //because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
-	ceiling = CEILING_METAL
-	soundscape_playlist = SCAPE_PL_LV553_INDOORS
 
 /area/lv553/indoors/hospital/research/floor
 	name = "Isaac's Lament - Jeppson's Memorial Hospital Research Floor"
 	icon_state = "outpost_med_chem" //because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
-	ceiling = CEILING_METAL
-	soundscape_playlist = SCAPE_PL_LV553_INDOORS
 
 /area/lv553/indoors/hospital/research/toilets
 	name = "Isaac's Lament - Jeppson's Memorial Hospital Research Toilets"
 	icon_state = "outpost_med_chem" //because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
-	ceiling = CEILING_METAL
-	soundscape_playlist = SCAPE_PL_LV553_INDOORS
 
 /area/lv553/indoors/hospital/research/offices
 	name = "Isaac's Lament - Jeppson's Memorial Hospital Research Managers Offices"
 	icon_state = "outpost_med_chem" //because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
-	ceiling = CEILING_METAL
-	soundscape_playlist = SCAPE_PL_LV553_INDOORS
 
 /area/lv553/indoors/hospital/research/reception
 	name = "Isaac's Lament - Jeppson's Memorial Hospital Research Reception"
 	icon_state = "outpost_med_chem" //because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
-	ceiling = CEILING_METAL
-	soundscape_playlist = SCAPE_PL_LV553_INDOORS
 
 /area/lv553/indoors/gated_community/residence_bunkhouse
 	name = "Isaac's Lament - Jeppson's Memorial Hospital Staff Residence Bunkhouse"
 	icon_state = "outpost_med_closet" //because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
-	ceiling = CEILING_METAL
-	soundscape_playlist = SCAPE_PL_LV553_INDOORS
 
 /area/lv553/indoors/gated_community/head_of_corporate_engineering
 	name = "Isaac's Lament - Weyland Yutani Gated Community - Head of Engineering House"
 	icon_state = "outpost_med_closet" //because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
-	ceiling = CEILING_METAL
-	soundscape_playlist = SCAPE_PL_LV553_INDOORS
 
 /area/lv553/indoors/gated_community/head_of_corporate_security
 	name = "Isaac's Lament - Weyland Yutani Gated Community - Head of Security House"
 	icon_state = "outpost_med_closet" //because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
-	ceiling = CEILING_METAL
-	soundscape_playlist = SCAPE_PL_LV553_INDOORS
 
 /area/lv553/indoors/gated_community/director_of_corporate_research
 	name = "Isaac's Lament - Weyland Yutani Gated Community - Director of Research House"
 	icon_state = "outpost_med_closet" //because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
-	ceiling = CEILING_METAL
-	soundscape_playlist = SCAPE_PL_LV553_INDOORS
 
 /area/lv553/indoors/gated_community/director_of_coporate_relations
 	name = "Isaac's Lament - Weyland Yutani Gated Community - Director of Corporate Relations House"
 	icon_state = "outpost_med_closet" //because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
-	ceiling = CEILING_METAL
-	soundscape_playlist = SCAPE_PL_LV553_INDOORS
 
+/area/lv553/indoors/uscm_garrison/recruitment_office
+	name = "Isaac's Lament - USCM Garrison - Recruitment Office"
+	icon_state = "shed_1_ug" //because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
+
+/area/lv553/indoors/uscm_garrison/garrison_bunks
+	name = "Isaac's Lament - USCM Garrison - Garrison Bunks"
+	icon_state = "shed_2_ug" //because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
+
+/area/lv553/indoors/uscm_garrison/armory
+	name = "Isaac's Lament - USCM Garrison - Armory"
+	icon_state = "shed_3_ug" //because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
+
+
+/area/lv553/indoors/uscm_garrison/io_office
+	name = "Isaac's Lament - USCM Garrison - Third Fleet Intelligence Office"
+	icon_state = "shed_4_ug" //because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
+
+/area/lv553/indoors/flooded/weymart
+	name = "Isaac's Lament - Flooded Area - Weymart"
+	icon_state = "shed_4_ug" //because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
+
+/area/lv553/indoors/flooded/waste_station
+	name = "Isaac's Lament - Flooded Area - Waste Water Station"
+	icon_state = "outpost_engi_4" //because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
+
+/area/lv553/indoors/flooded/waste_silos
+	name = "Isaac's Lament - Flooded Area - Waste Water Silos"
+	icon_state = "disposal" //because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!

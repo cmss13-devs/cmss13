@@ -110,6 +110,10 @@
 /area/lv553/outdoors/colony_streets/northeast
 	name = "Isaac's Lament - Colony Streets North-East"
 
+/area/lv553/outdoors/lone_buildings/gas_n_gear
+	name = "Issac's Lament - Gas N' Gear Exterior"
+
+
 //Indoors
 
 /area/lv553/indoors/bungalow_manager
@@ -246,4 +250,12 @@
 
 /area/lv553/indoors/lone_buildings/liq_r_mart
 	name = "Issac's Lament - Liq-R-Mart"
-	icon_state = "shed_x_ag"
+	icon_state = "shed_8_ag"
+
+/area/lv553/indoors/lone_buildings/recruiter_house
+	name = "Issac's Lament - Recruiter's House"
+	icon_state = "shed_1_ag"
+
+/area/lv553/indoors/lone_buildings/gas_n_gear
+	name = "Issac's Lament - Gas N' Gear"
+	icon_state = "shed_1_ag"

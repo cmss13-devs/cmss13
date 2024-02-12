@@ -1,0 +1,4 @@
+author: "Huffie56"
+delete-after: True
+changes:
+  - refactor: "refactored watercloset.dm file."

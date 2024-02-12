@@ -58,3 +58,97 @@
   - refactor: camera consoles now use camera manager component
   private-tristan:
   - balance: Burrower can no longer spawn as part of the feral xeno ERT
+2024-02-03:
+  Drathek:
+  - ui: Refactored backend for Weapon Stats panel to use spritesheets instead.
+2024-02-04:
+  BadAtThisGame302:
+  - bugfix: fixed the CL jackets/vests/bomber jackets sprites.
+  Drathek:
+  - imageadd: Changed green fire sprites to work better with lights
+  - balance: Reduced how many fire stacks a flaregun shot provides
+  - balance: Reduced starshell's damage, but fixed the application of the incend bullet
+      trait.
+  - balance: Reverted damage changes to tazers and batons.
+  Huffie56:
+  - bugfix: 'revert PR #5553 as it is causing issues with color on atmo pipe.'
+  LTNTS:
+  - imageadd: stamp sprites for TWE, UPP and CLF
+  - code_imp: added TWE, UPP and CLF channels
+  MistChristmas:
+  - maptweak: Add Brig Photocopier
+  Segrain:
+  - bugfix: Some cases of calculations for "time remaining until something" no longer
+      display incorrect results.
+  Stakeyng:
+  - qol: Removes the need to cycle through helmet visors that contain HUD effects
+      that are already active on your character.
+  cuberound:
+  - balance: increases flare pouch storage slots from 8 to 16
+2024-02-05:
+  Drathek:
+  - bugfix: Added more null testing to helmet visors.
+  Poltava:
+  - imageadd: updated intel expedition chestrig sprite
+  SpartanBobby:
+  - maptweak: Fixes the two gauss sentry guns that were boxxed in by a mapper over
+      a year ago on ice 3
+  Warfan1815:
+  - bugfix: Open surgical incisions now show up on a health scanner even if there
+      is nothing else wrong.
+  - bugfix: Open surgical incisions in the head "zones" (mouth and eyes) now show
+      up independently on health scanner
+  cuberound:
+  - balance: increases healing node heal from 10hp every 5 sec to 20 hp every 5 sec
+2024-02-06:
+  InsaneRed:
+  - rscadd: Warden Praetorians can now see how much healing they've done.
+  - qol: Re-organizes the warden ''hotbar''
+  - bugfix: SO's M3 armor now has the proper description.
+  Vicacrov:
+  - bugfix: Fixes Defenders staying Fortified in critical state - Fortify now automatically
+      toggles itself off upon the Defender getting critted.
+2024-02-07:
+  InsaneRed:
+  - balance: Scout specialist incin/high impact mag crates now only has 3 instead
+      of 5
+  Steelpoint:
+  - rscadd: USCM Chestrig has been added to squad prep vendors, alternative sprite
+      of a satchel, similar in appearance to the welder-chestrig.
+2024-02-08:
+  Megaddd:
+  - imageadd: added 4 bone-gel fill level sprite states
+  SpartanBobby:
+  - maptweak: changes to LV624 Engineering and T-comms, mostly detailing but changes
+      some doors and object placement
+2024-02-09:
+  Huffie56:
+  - refactor: turning newscasters into "props".
+  - qol: added two new section to replace ammunition section primary ammunition and
+      sidearm ammunition and rearranged it for team leader.
+  - balance: added the ability for comtech, medic, and squad leader to buy M4A3 (HP
+      and AP) and VP78 magazines for 3 points and M44 Heavy for 6 points.
+  - balance: added the ability for SG to buy M4A3 (HP and AP) and VP78 magazines for
+      5 points and M44 Heavy for 10 points.
+  - balance: added the ability for rifleman to buy M4A3 (HP and AP) and VP78 magazines
+      for 5 points.
+2024-02-10:
+  Drathek:
+  - bugfix: Fixed an oversight with burst point blank firing
+  SabreML:
+  - bugfix: Fixed trash carts not being pick-uppable by the dropship's fulton recovery
+      system.
+  blackdragonTOW:
+  - admin: added logging for 3rd party victory events
+  private-tristan:
+  - rscadd: Pizza ERT is back, although incredibly unlikely to occur
+  - bugfix: UPP ERT no longer rolls 3 times (1 for random, 1 for friendly, and 1 for
+      hostile), due to this, UPP comms will always be scrambled at the beginning,
+      no way to tell intentions before meeting.
+  - rscadd: Chem Goon Research Consultant now spawns with reagent scanner goggles.
+2024-02-11:
+  Drathek:
+  - bugfix: Fix gardener fruit count not always updating
+  Vicacrov:
+  - bugfix: Fixed Warden Praetorians being able to move around the ovipositored Queen
+      with their Retrieve ability.

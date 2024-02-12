@@ -299,7 +299,7 @@
 	pixel_y = -2
 	},
 /turf/open/floor,
-/area/space)
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "ajW" = (
 /obj/structure/surface/table/gamblingtable,
 /obj/item/ashtray/glass,
@@ -320,7 +320,7 @@
 	dir = 8;
 	icon_state = "logo_c"
 	},
-/area/space)
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "alT" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/spawner/gibspawner/human,
@@ -415,30 +415,6 @@
 /obj/item/device/eftpos,
 /turf/open/floor,
 /area/space)
-"ard" = (
-/obj/structure/surface/rack,
-/obj/structure/barricade/sandbags{
-	dir = 8;
-	stack_amount = 10
-	},
-/obj/item/explosive/grenade/slug/baton{
-	pixel_x = 5;
-	pixel_y = 4
-	},
-/obj/item/explosive/grenade/slug/baton{
-	pixel_x = -3;
-	pixel_y = 4
-	},
-/obj/item/explosive/grenade/high_explosive/training{
-	pixel_y = -4;
-	pixel_x = -2
-	},
-/obj/item/explosive/grenade/high_explosive/training{
-	pixel_y = -4;
-	pixel_x = 5
-	},
-/turf/open/floor/almayer,
-/area/space)
 "arm" = (
 /obj/structure/surface/table/woodentable,
 /turf/open/floor,
@@ -451,6 +427,13 @@
 	},
 /turf/open/floor,
 /area/space)
+"arM" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/item/trash/uscm_mre,
+/turf/open/floor/almayer,
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "asb" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "west_nexus_garage";
@@ -516,6 +499,17 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/space)
+"avQ" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/paper_bin/uscm{
+	pixel_y = 6
+	},
+/obj/item/tool/pen/blue,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/lv553/indoors/uscm_garrison/io_office)
 "awf" = (
 /obj/item/spacecash/c20{
 	pixel_x = 8;
@@ -528,13 +522,6 @@
 /obj/effect/decal/cleanable/blood,
 /obj/item/clothing/head/soft/trucker,
 /obj/item/trash/cigbutt/cigarbutt,
-/turf/open/gm/dirt,
-/area/space)
-"axa" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "uscm_garrison";
-	name = "\improper gated community shutters"
-	},
 /turf/open/gm/dirt,
 /area/space)
 "axO" = (
@@ -652,7 +639,7 @@
 "aCw" = (
 /obj/structure/machinery/vending/cigarette,
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "aCG" = (
 /obj/structure/surface/table,
 /obj/item/storage/firstaid/regular,
@@ -823,6 +810,13 @@
 	},
 /turf/open/floor/interior/wood,
 /area/space)
+"aHe" = (
+/obj/structure/target,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "plating_striped"
+	},
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "aHg" = (
 /obj/item/stool{
 	pixel_x = -4;
@@ -904,6 +898,17 @@
 	icon_state = "redfull"
 	},
 /area/space)
+"aKx" = (
+/obj/structure/sign/safety/storage{
+	pixel_x = -24;
+	pixel_y = 6
+	},
+/obj/structure/sign/safety/north{
+	pixel_x = -24;
+	pixel_y = -6
+	},
+/turf/open/gm/grass,
+/area/space)
 "aKF" = (
 /obj/structure/prop/structure_lattice{
 	density = 0;
@@ -924,6 +929,16 @@
 	},
 /turf/open/floor/wood,
 /area/space)
+"aLn" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "1-4"
+	},
+/obj/structure/machinery/power/port_gen/pacman/super,
+/turf/open/asphalt/cement,
+/area/lv553/indoors/uscm_garrison/io_office)
 "aLE" = (
 /obj/structure/bed,
 /obj/item/bedsheet/captain,
@@ -964,19 +979,12 @@
 /obj/structure/machinery/light,
 /turf/open/floor/wood,
 /area/lv553/indoors/hospital/reception)
-"aMW" = (
-/obj/structure/bed/chair{
-	dir = 8
+"aMI" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "shower room door"
 	},
-/obj/structure/sign/safety/outpatient{
-	pixel_x = 32
-	},
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (EAST)"
-	},
-/area/lv553/indoors/hospital/reception)
+/turf/open/floor,
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "aNe" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/packaged_burger{
@@ -1096,13 +1104,6 @@
 	icon_state = "barber"
 	},
 /area/space)
-"aPV" = (
-/obj/structure/machinery/light{
-	dir = 1;
-	tag = "icon-tube1 (WEST)"
-	},
-/turf/open/floor/wood,
-/area/lv553/indoors/gated_community/head_of_corporate_engineering)
 "aQy" = (
 /obj/structure/bed/chair/comfy{
 	dir = 4
@@ -1129,6 +1130,15 @@
 	},
 /turf/open/floor,
 /area/lv553/indoors/gated_community/residence_bunkhouse)
+"aQV" = (
+/obj/item/clothing/mask/facehugger{
+	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
+	icon_state = "facehugger_impregnated";
+	name = "????";
+	stat = 2
+	},
+/turf/open/floor/almayer,
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "aRl" = (
 /obj/structure/machinery/washing_machine{
 	pixel_x = 12;
@@ -1176,17 +1186,6 @@
 	},
 /turf/open/asphalt/cement,
 /area/space)
-"aTT" = (
-/obj/structure/machinery/door_control{
-	desc = "A garage door opener.";
-	id = "gated_community";
-	name = "gate button";
-	pixel_x = -28;
-	pixel_y = 0;
-	req_one_access_txt = "2;3;12;19"
-	},
-/turf/open/gm/dirt,
-/area/lv553/indoors/gated_community/director_of_corporate_research)
 "aUt" = (
 /turf/open/asphalt/cement,
 /area/space)
@@ -1255,6 +1254,9 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/space)
+"aYk" = (
+/turf/open/floor,
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "aYL" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/chem_dispenser/soda/beer,
@@ -1326,9 +1328,6 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/space)
-"baZ" = (
-/turf/open/floor/almayer/uscm/directional,
-/area/space)
 "bbN" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
@@ -1365,6 +1364,9 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/space)
+"bdg" = (
+/turf/closed/wall,
+/area/lv553/indoors/gated_community/head_of_corporate_security)
 "bdt" = (
 /obj/structure/machinery/door_control{
 	desc = "A garage door opener.";
@@ -1435,12 +1437,6 @@
 	tag = "icon-sterile"
 	},
 /area/space)
-"bgB" = (
-/obj/structure/surface/table/woodentable,
-/obj/item/paper_bin,
-/obj/item/tool/pen/blue,
-/turf/open/floor,
-/area/space)
 "bho" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
@@ -1451,8 +1447,8 @@
 	},
 /area/lv553/indoors/welcome_centre/offices)
 "bhp" = (
-/turf/open/gm/grass,
-/area/lv553/indoors/welcome_centre/canteen)
+/turf/closed/wall/r_wall,
+/area/lv553/indoors/uscm_garrison/armory)
 "bhy" = (
 /obj/structure/surface/rack,
 /obj/item/device/cassette_tape/hiphop,
@@ -1478,7 +1474,7 @@
 "biZ" = (
 /obj/structure/filingcabinet/chestdrawer,
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "bjG" = (
 /obj/item/paper/crumpled{
 	pixel_x = 10;
@@ -1493,14 +1489,6 @@
 	},
 /turf/open/floor/interior/wood,
 /area/space)
-"bjN" = (
-/obj/structure/sign/safety/conference_room{
-	pixel_y = -32
-	},
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
-/area/space)
 "bjQ" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3";
@@ -1511,28 +1499,17 @@
 "bjS" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/flamer_tank{
-	pixel_x = 7
-	},
-/obj/item/ammo_magazine/flamer_tank{
 	pixel_x = -7
 	},
 /obj/item/ammo_magazine/flamer_tank{
-	pixel_x = 7;
+	pixel_x = 4;
 	pixel_y = 8
-	},
-/obj/item/ammo_magazine/flamer_tank{
-	pixel_x = -7;
-	pixel_y = 8
-	},
-/obj/item/ammo_magazine/flamer_tank,
-/obj/item/ammo_magazine/flamer_tank{
-	pixel_y = 7
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
-/area/space)
+/area/lv553/indoors/uscm_garrison/armory)
 "blf" = (
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/gm/river,
@@ -1672,18 +1649,6 @@
 /obj/item/toy/prize/durand,
 /turf/open/floor,
 /area/space)
-"bwd" = (
-/obj/structure/sign/safety/storage{
-	pixel_y = 32
-	},
-/obj/structure/sign/safety/opens_up{
-	pixel_x = 12;
-	pixel_y = 32
-	},
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
-/area/space)
 "bwp" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /obj/item/clipboard{
@@ -1701,6 +1666,16 @@
 	tag = "icon-sterile_green_side (NORTH)"
 	},
 /area/lv553/indoors/hospital/outpatients_and_icu)
+"byk" = (
+/obj/structure/closet/cabinet{
+	density = 0;
+	pixel_x = 1
+	},
+/obj/item/clothing/under/pj/red,
+/obj/item/storage/fancy/cigar,
+/obj/item/storage/fancy/cigar/matchbook/brown,
+/turf/open/floor/wood,
+/area/lv553/indoors/uscm_garrison/io_office)
 "byL" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/dirtgrassborder{
@@ -1713,7 +1688,7 @@
 /obj/structure/machinery/light,
 /obj/item/shard,
 /turf/open/gm/grass,
-/area/space)
+/area/lv553/indoors/welcome_centre/lobby)
 "bAE" = (
 /obj/structure/sign/poster/music{
 	pixel_y = 32
@@ -1926,7 +1901,7 @@
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
-/area/space)
+/area/lv553/indoors/uscm_garrison/armory)
 "bHf" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "hospital door"
@@ -1977,17 +1952,6 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "barber"
-	},
-/area/space)
-"bIL" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	density = 2;
-	dir = 1;
-	locked = 1;
-	name = "\improper gatehouse door"
-	},
-/turf/open/floor{
-	icon_state = "dark"
 	},
 /area/space)
 "bKp" = (
@@ -2054,6 +2018,12 @@
 	},
 /turf/open/gm/grass,
 /area/lv553/landing_zone_2)
+"bMd" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/paper_bin,
+/obj/item/tool/pen/blue,
+/turf/open/floor,
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "bMv" = (
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
@@ -2121,11 +2091,6 @@
 	icon_state = "warnplate"
 	},
 /area/space)
-"bNs" = (
-/turf/open/floor/almayer/uscm/directional{
-	dir = 6
-	},
-/area/space)
 "bNX" = (
 /obj/structure/surface/table,
 /obj/structure/window{
@@ -2191,7 +2156,7 @@
 	tag = "icon-tube1 (WEST)"
 	},
 /turf/open/gm/dirt,
-/area/space)
+/area/lv553/indoors/lz_sec_checkpoint)
 "bQg" = (
 /obj/structure/filingcabinet/chestdrawer{
 	pixel_x = -8;
@@ -2206,7 +2171,7 @@
 	},
 /obj/item/shard,
 /turf/open/floor/wood,
-/area/space)
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "bQJ" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2";
@@ -2229,17 +2194,18 @@
 /obj/item/clothing/ears/earmuffs,
 /turf/open/floor/plating,
 /area/space)
-"bRq" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/microwave,
-/turf/open/floor/wood,
-/area/lv553/indoors/gated_community/director_of_coporate_relations)
 "bRI" = (
 /obj/effect/decal/cleanable/blood{
 	pixel_y = 12
 	},
 /turf/open/floor/interior/wood,
 /area/space)
+"bRK" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/gm/grass,
+/area/lv553/indoors/lz_sec_checkpoint)
 "bSP" = (
 /turf/open/floor/almayer{
 	dir = 10;
@@ -2265,15 +2231,6 @@
 /obj/structure/largecrate/supply/supplies/mre,
 /turf/open/asphalt/cement,
 /area/space)
-"bTH" = (
-/obj/structure/sign/safety/storage{
-	pixel_x = 34;
-	pixel_y = 0
-	},
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/lv553/indoors/welcome_centre/offices)
 "bTR" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/spawner/gibspawner/xeno,
@@ -2422,14 +2379,6 @@
 	},
 /turf/open/floor/wood,
 /area/space)
-"bYh" = (
-/obj/item/trash/cigbutt,
-/turf/open/floor/wood,
-/area/lv553/indoors/gated_community/director_of_coporate_relations)
-"bYj" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/almayer,
-/area/space)
 "bYG" = (
 /turf/closed/wall,
 /area/lv553/indoors/welcome_centre/lobby)
@@ -2553,7 +2502,7 @@
 /obj/structure/surface/table/gamblingtable,
 /obj/item/reagent_container/food/drinks/flask/marine,
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "cep" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/ashtray/bronze{
@@ -2575,10 +2524,6 @@
 /obj/item/clothing/glasses/regular/hipster,
 /turf/open/floor/wood,
 /area/lv553/indoors/welcome_centre/offices)
-"ceS" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/wood,
-/area/lv553/indoors/gated_community/head_of_corporate_security)
 "cfA" = (
 /obj/effect/decal/cleanable/blood/splatter{
 	icon_state = "gib2"
@@ -2651,7 +2596,7 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv553/indoors/gated_community/head_of_corporate_engineering)
+/area/lv553/indoors/uscm_garrison/io_office)
 "ciM" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder{
@@ -2669,6 +2614,10 @@
 	icon_state = "barber"
 	},
 /area/space)
+"cjN" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/almayer,
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "ckn" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -2743,7 +2692,7 @@
 /turf/open/floor/almayer/uscm/directional{
 	dir = 1
 	},
-/area/space)
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "cnQ" = (
 /turf/open/gm/coast{
 	icon_state = "beachcorner"
@@ -2925,6 +2874,13 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/indoors/hospital/research/reception)
+"cvc" = (
+/obj/structure/sign/prop2{
+	pixel_y = 0;
+	pixel_x = 32
+	},
+/turf/open/floor/almayer,
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "cvU" = (
 /obj/structure/sign/poster{
 	pixel_y = 32
@@ -3074,6 +3030,24 @@
 	},
 /turf/open/floor/interior/wood,
 /area/space)
+"cAI" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/flamer_tank{
+	pixel_x = 7
+	},
+/obj/item/ammo_magazine/flamer_tank{
+	pixel_x = 7;
+	pixel_y = 8
+	},
+/obj/item/ammo_magazine/flamer_tank{
+	pixel_x = -7;
+	pixel_y = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/lv553/indoors/uscm_garrison/armory)
 "cCg" = (
 /obj/item/tool/wet_sign,
 /turf/open/floor/strata{
@@ -3138,6 +3112,12 @@
 	},
 /turf/open/asphalt/cement,
 /area/space)
+"cET" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/gated_community/head_of_corporate_engineering)
 "cEU" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
@@ -3240,8 +3220,13 @@
 	},
 /area/space)
 "cID" = (
-/turf/open/floor/wood,
-/area/lv553/indoors/gated_community/head_of_corporate_security)
+/obj/structure/barricade/plasteel/metal{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo"
+	},
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "cIJ" = (
 /obj/structure/surface/rack,
 /obj/item/prop/helmetgarb/helmet_gasmask{
@@ -3254,7 +3239,7 @@
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
-/area/space)
+/area/lv553/indoors/uscm_garrison/armory)
 "cIR" = (
 /obj/structure/filingcabinet,
 /obj/item/folder/black,
@@ -3278,10 +3263,6 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/gated_community/director_of_coporate_relations)
-"cKo" = (
-/obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor/almayer,
-/area/space)
 "cKK" = (
 /obj/structure/desertdam/decals/road_stop{
 	dir = 1;
@@ -3369,7 +3350,7 @@
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
-/area/space)
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "cNt" = (
 /obj/structure/platform/strata/metal{
 	dir = 4
@@ -3377,9 +3358,10 @@
 /turf/open/floor/wood,
 /area/space)
 "cPv" = (
-/obj/structure/machinery/power/port_gen/pacman,
-/turf/open/asphalt/cement,
-/area/space)
+/turf/open/floor/almayer{
+	icon_state = "plating_striped"
+	},
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "cPx" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3";
@@ -3404,6 +3386,14 @@
 	},
 /turf/open/gm/dirt,
 /area/space)
+"cRa" = (
+/obj/structure/barricade/metal{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo"
+	},
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "cRi" = (
 /obj/structure/surface/rack,
 /obj/item/prop/helmetgarb/prescription_bottle{
@@ -3557,6 +3547,15 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/gated_community/director_of_corporate_research)
+"cXp" = (
+/obj/structure/toilet{
+	pixel_y = 11;
+	tag = "icon-toilet00 (WEST)"
+	},
+/turf/open/floor{
+	icon_state = "freezerfloor"
+	},
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "cXL" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/handful/shotgun/incendiary,
@@ -3571,13 +3570,22 @@
 	pixel_x = 3
 	},
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "cYl" = (
 /obj/item/trash/kepler,
 /turf/open/floor{
 	icon_state = "white"
 	},
 /area/space)
+"cYn" = (
+/obj/structure/sign/safety/storage{
+	pixel_x = 34;
+	pixel_y = 0
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/welcome_centre/offices)
 "cYW" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor{
@@ -3665,7 +3673,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/space)
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "ddE" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 5
@@ -3727,6 +3735,15 @@
 	tag = "icon-sterile"
 	},
 /area/space)
+"deY" = (
+/obj/item/clothing/mask/facehugger{
+	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
+	icon_state = "facehugger_impregnated";
+	name = "????";
+	stat = 2
+	},
+/turf/open/asphalt/cement,
+/area/space)
 "dft" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan_r_w"
@@ -3741,6 +3758,16 @@
 	tag = "icon-sterile_green_corner (NORTH)"
 	},
 /area/lv553/indoors/hospital/outpatients_and_icu)
+"dgB" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/lv553/indoors/uscm_garrison/io_office)
 "dgU" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/prop/almayer/computer/PC{
@@ -3848,15 +3875,26 @@
 /obj/item/weapon/gun/rifle/m41aMK1{
 	pixel_y = -5
 	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
-/area/space)
+/area/lv553/indoors/uscm_garrison/armory)
 "djx" = (
 /turf/open/floor/almayer/uscm/directional{
 	dir = 4
 	},
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
+"djR" = (
+/obj/structure/prop/dam/truck,
+/obj/structure/largecrate/supply/ammo/m41a/half{
+	pixel_y = 26;
+	pixel_x = 17
+	},
+/turf/open/asphalt/cement,
 /area/space)
 "djV" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -3901,7 +3939,7 @@
 	name = "gate"
 	},
 /turf/open/gm/dirt,
-/area/space)
+/area/lv553/indoors/lz_sec_checkpoint)
 "dlb" = (
 /obj/structure/surface/table,
 /obj/item/ashtray/plastic,
@@ -3911,6 +3949,13 @@
 	},
 /turf/open/gm/dirt,
 /area/space)
+"dly" = (
+/obj/structure/machinery/door/airlock/almayer/secure{
+	dir = 1;
+	name = "\improper third fleet intelligence officer bunk"
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/uscm_garrison/io_office)
 "dlK" = (
 /obj/structure/bed/chair/wood/normal,
 /obj/item/shard,
@@ -3942,23 +3987,18 @@
 	tag = "icon-sterile"
 	},
 /area/space)
-"dmD" = (
-/obj/item/ammo_magazine/pistol/rubber{
-	current_rounds = 0
-	},
-/obj/item/weapon/gun/pistol/m4a3/training{
-	current_mag = null
-	},
-/obj/item/clothing/head/beanie,
-/obj/item/trash/cigbutt/ucigbutt,
-/turf/open/floor/wood,
-/area/space)
 "dmF" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/dirtgrassborder{
 	dir = 8
 	},
 /area/space)
+"dmG" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/gm/grass,
+/area/lv553/indoors/bungalow_manager)
 "dmJ" = (
 /obj/structure/largecrate/random/mini/med{
 	layer = 3.01;
@@ -4030,6 +4070,11 @@
 	},
 /turf/open/floor/interior/wood,
 /area/space)
+"dql" = (
+/obj/structure/window_frame/colony/reinforced,
+/obj/item/shard,
+/turf/open/floor/wood,
+/area/lv553/indoors/gated_community/director_of_coporate_relations)
 "dqS" = (
 /obj/item/prop/helmetgarb/spent_slug,
 /obj/effect/decal/cleanable/blood,
@@ -4065,6 +4110,25 @@
 	icon_state = "white"
 	},
 /area/lv553/indoors/welcome_centre/offices)
+"drC" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed,
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/turf/open/floor,
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "drD" = (
 /obj/item/prop{
 	color = "#FF0000";
@@ -4239,6 +4303,9 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/space)
+"dwT" = (
+/turf/closed/wall,
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "dxK" = (
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/asphalt/cement,
@@ -4257,7 +4324,7 @@
 /obj/item/explosive/grenade/slug/baton,
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/almayer/uscm/directional,
-/area/space)
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "dxS" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2";
@@ -4285,6 +4352,9 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/bungalow_manager)
+"dyk" = (
+/turf/open/floor/almayer/uscm/directional,
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "dyp" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/coffeecup{
@@ -4372,6 +4442,10 @@
 	},
 /turf/open/gm/river,
 /area/space)
+"dBK" = (
+/obj/structure/largecrate/black_market,
+/turf/open/asphalt/cement,
+/area/space)
 "dBR" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/hypospray/autoinjector/emergency{
@@ -4447,6 +4521,10 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/bungalow_manager)
+"dFr" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/wood,
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "dGd" = (
 /obj/structure/desertdam/decals/road_stop{
 	icon_state = "stop_decal5";
@@ -4478,15 +4556,6 @@
 	pixel_y = 4
 	},
 /turf/open/floor/wood,
-/area/space)
-"dId" = (
-/obj/structure/sign/safety/firingrange{
-	pixel_y = 32
-	},
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
 /area/space)
 "dIr" = (
 /obj/structure/sign/safety/medical{
@@ -4697,7 +4766,7 @@
 	pixel_y = -5
 	},
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "dSO" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3";
@@ -4829,14 +4898,6 @@
 	height = 1;
 	id = "tunnel1a";
 	pixel_y = 20
-	},
-/turf/open/asphalt/cement,
-/area/space)
-"dYO" = (
-/obj/structure/prop/dam/truck,
-/obj/structure/largecrate/supply/ammo/m41a/half{
-	pixel_y = 26;
-	pixel_x = 17
 	},
 /turf/open/asphalt/cement,
 /area/space)
@@ -5264,7 +5325,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "emv" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/snacks/kepler_crisps{
@@ -5344,19 +5405,6 @@
 	icon_state = "crawler_crate_alt2"
 	},
 /turf/open/gm/dirt,
-/area/space)
-"ero" = (
-/obj/structure/sign/safety/reception{
-	pixel_y = -32;
-	pixel_x = 1
-	},
-/obj/structure/sign/safety/south{
-	pixel_y = -32;
-	pixel_x = 13
-	},
-/turf/open/gm/dirtgrassborder{
-	dir = 4
-	},
 /area/space)
 "esb" = (
 /obj/item/shard,
@@ -5470,6 +5518,19 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv553/landing_zone_2)
+"ewg" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/rifle/m41a/training{
+	pixel_y = 6
+	},
+/obj/item/weapon/gun/rifle/m41a/training{
+	pixel_y = -2
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "red"
+	},
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "ewo" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/space)
@@ -5486,6 +5547,9 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/indoors/hospital/research/reception)
+"ewK" = (
+/turf/open/floor/wood,
+/area/lv553/indoors/gated_community/director_of_coporate_relations)
 "exa" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "research door"
@@ -5522,7 +5586,7 @@
 	pixel_y = -4
 	},
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "exL" = (
 /obj/structure/surface/rack,
 /turf/open/floor{
@@ -5604,7 +5668,7 @@
 /obj/structure/surface/table/gamblingtable,
 /obj/item/reagent_container/food/condiment/hotsauce/cholula,
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "eCc" = (
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -5666,6 +5730,21 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/gm/dirt,
 /area/lv553/landing_zone_2)
+"eIh" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
+"eIi" = (
+/obj/structure/urinal{
+	pixel_y = 21
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "eIC" = (
 /obj/structure{
 	dir = 4;
@@ -5791,8 +5870,10 @@
 	},
 /area/lv553/indoors/hospital/lobby)
 "eNt" = (
-/turf/closed/wall/r_wall,
-/area/lv553/indoors/gated_community/head_of_corporate_engineering)
+/obj/structure/window_frame/colony/reinforced,
+/obj/item/shard,
+/turf/open/floor/almayer,
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "eOb" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/grass,
@@ -5837,7 +5918,7 @@
 	stat = 2
 	},
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "ePt" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -5979,7 +6060,7 @@
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
-/area/space)
+/area/lv553/indoors/uscm_garrison/armory)
 "eXI" = (
 /obj/structure/machinery/cm_vending/sorted/walkman,
 /turf/open/floor{
@@ -6025,6 +6106,28 @@
 /obj/structure/machinery/landinglight/ds2/spoke,
 /turf/open/gm/dirt,
 /area/lv553/landing_zone_2)
+"eZt" = (
+/obj/structure/closet/secure_closet/guncabinet,
+/obj/item/ammo_magazine/shotgun/beanbag{
+	pixel_y = -7;
+	pixel_x = 7
+	},
+/obj/item/ammo_magazine/shotgun/slugs{
+	pixel_y = -7;
+	pixel_x = -9
+	},
+/obj/item/weapon/gun/shotgun/combat{
+	name = "\improper rusty MK221 tactical shotgun";
+	desc = "This is a rusty Weyland-Yutani MK221 Shotgun, a semi-automatic shotgun with a quick fire rate.";
+	damage_mult = 0.8;
+	accuracy_mult = 0.5;
+	accuracy_mult_unwielded = 0.5
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/lv553/indoors/uscm_garrison/io_office)
 "eZA" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/snacks/ricepudding,
@@ -6056,9 +6159,6 @@
 	},
 /turf/open/floor/carpet,
 /area/space)
-"fcz" = (
-/turf/closed/wall,
-/area/lv553/indoors/gated_community/director_of_corporate_research)
 "fcN" = (
 /obj/structure/reagent_dispensers/beerkeg,
 /obj/structure/machinery/light/small{
@@ -6132,6 +6232,13 @@
 	dir = 4
 	},
 /area/space)
+"fgp" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "bedroom door";
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/gated_community/head_of_corporate_security)
 "fgJ" = (
 /obj/structure/bed/chair/comfy/blue{
 	dir = 1
@@ -6167,7 +6274,7 @@
 "fhR" = (
 /obj/structure/bed/chair,
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "fia" = (
 /obj/item/clothing/mask/facehugger{
 	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing? It appears to have been impaled by the pen. What badass pencil pusher did this?";
@@ -6224,6 +6331,10 @@
 	},
 /turf/open/floor,
 /area/space)
+"fkp" = (
+/obj/structure/machinery/power/apc,
+/turf/open/floor/almayer,
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "fkA" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
@@ -6253,14 +6364,11 @@
 /obj/item/weapon/gun/flamer{
 	pixel_y = 2
 	},
-/obj/item/weapon/gun/flamer{
-	pixel_y = -5
-	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
-/area/space)
+/area/lv553/indoors/uscm_garrison/armory)
 "flk" = (
 /obj/structure/cargo_container{
 	icon_state = "WY 1,0";
@@ -6311,10 +6419,6 @@
 /obj/effect/spawner/gibspawner/human,
 /turf/open/gm/dirt,
 /area/lv553/landing_zone_2)
-"fna" = (
-/obj/item/explosive/grenade/slug/baton,
-/turf/open/floor/almayer,
-/area/space)
 "fnZ" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -6518,17 +6622,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer,
-/area/space)
-"fuS" = (
-/obj/structure/surface/rack,
-/obj/item/clothing/under/marine{
-	pixel_y = 4
-	},
-/obj/item/clothing/under/marine{
-	pixel_y = -5
-	},
-/turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "fuX" = (
 /obj/item/shard,
 /obj/item/trash/wy_chips_pepper,
@@ -6704,6 +6798,14 @@
 	},
 /turf/open/floor/interior/plastic,
 /area/space)
+"fEd" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "freezerfloor"
+	},
+/area/lv553/indoors/gated_community/head_of_corporate_security)
 "fEj" = (
 /obj/structure/machinery/door/window{
 	dir = 2
@@ -7052,12 +7154,26 @@
 /obj/structure/machinery/floodlight,
 /turf/open/gm/dirt,
 /area/space)
+"fOK" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-4"
+	},
+/obj/structure/machinery/telecomms/hub{
+	pixel_y = -1
+	},
+/turf/open/floor/almayer{
+	icon_state = "tcomms"
+	},
+/area/lv553/indoors/uscm_garrison/io_office)
 "fPi" = (
 /obj/structure/sign/poster/ad{
 	pixel_x = 32
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/welcome_centre/canteen)
+"fQl" = (
+/turf/closed/wall/r_wall,
+/area/lv553/indoors/gated_community/head_of_corporate_engineering)
 "fQt" = (
 /obj/item/spacecash/c10,
 /turf/open/gm/river,
@@ -7170,6 +7286,25 @@
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor,
 /area/space)
+"fUJ" = (
+/obj/structure/machinery/shower{
+	dir = 1
+	},
+/obj/structure/machinery/door/window{
+	dir = 1;
+	layer = 3.01
+	},
+/obj/structure/window{
+	dir = 4
+	},
+/obj/item/tool/soap{
+	pixel_y = 0
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "vault"
+	},
+/area/lv553/indoors/gated_community/head_of_corporate_engineering)
 "fUK" = (
 /obj/structure/window{
 	dir = 1;
@@ -7220,7 +7355,7 @@
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
-/area/space)
+/area/lv553/indoors/uscm_garrison/armory)
 "fWd" = (
 /obj/structure/morgue{
 	dir = 8
@@ -7245,9 +7380,6 @@
 	icon_state = "barber"
 	},
 /area/space)
-"fXb" = (
-/turf/closed/wall,
-/area/lv553/indoors/gated_community/head_of_corporate_engineering)
 "fXF" = (
 /obj/structure/bed,
 /obj/item/bedsheet/captain,
@@ -7255,6 +7387,10 @@
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
+/area/space)
+"fXW" = (
+/obj/item/shard,
+/turf/open/gm/dirt,
 /area/space)
 "fXY" = (
 /obj/item/reagent_container/food/snacks/cracker{
@@ -7357,7 +7493,7 @@
 	name = "gate"
 	},
 /turf/open/gm/dirtgrassborder,
-/area/space)
+/area/lv553/indoors/lz_sec_checkpoint)
 "gbb" = (
 /obj/item/trash/cigbutt/ucigbutt{
 	pixel_x = -17;
@@ -7458,6 +7594,13 @@
 	},
 /turf/open/floor,
 /area/space)
+"ggR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer,
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "ggW" = (
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/medium,
@@ -7467,6 +7610,20 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/indoors/hospital/research/floor)
+"ghD" = (
+/obj/structure/sign/safety/radio_rad{
+	pixel_x = -16;
+	pixel_y = -6
+	},
+/obj/structure/sign/safety/terminal{
+	pixel_x = -16;
+	pixel_y = 6
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/asphalt/cement,
+/area/lv553/indoors/uscm_garrison/io_office)
 "ghH" = (
 /obj/item/prop{
 	color = "#FF0000";
@@ -7819,8 +7976,9 @@
 /obj/structure/machinery/microwave{
 	pixel_y = 4
 	},
+/obj/structure/machinery/light,
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "gDr" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 1;
@@ -8021,6 +8179,15 @@
 	tag = "icon-sterile"
 	},
 /area/space)
+"gKg" = (
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (WEST)"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plating_striped"
+	},
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "gKh" = (
 /obj/structure/barricade/sandbags/wired{
 	dir = 4;
@@ -8156,22 +8323,12 @@
 	},
 /turf/open/gm/dirt,
 /area/space)
+"gPv" = (
+/turf/open/floor/wood,
+/area/lv553/indoors/gated_community/head_of_corporate_engineering)
 "gPw" = (
 /obj/structure/machinery/power/port_gen/pacman,
 /turf/open/floor,
-/area/space)
-"gPx" = (
-/obj/structure/sign/safety/south{
-	pixel_y = -32;
-	pixel_x = 1
-	},
-/obj/structure/sign/safety/reception{
-	pixel_y = -32;
-	pixel_x = 14
-	},
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
 /area/space)
 "gQI" = (
 /obj/structure/bed/chair/comfy{
@@ -8191,15 +8348,6 @@
 	icon_state = "dark"
 	},
 /area/lv553/indoors/bungalow_manager)
-"gRY" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1;
-	name = "bathroom door"
-	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
-/area/lv553/indoors/gated_community/director_of_coporate_relations)
 "gSS" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/structure/largecrate/random/mini/chest{
@@ -8312,6 +8460,24 @@
 	},
 /turf/open/asphalt/cement,
 /area/space)
+"gVH" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/wood,
+/area/lv553/indoors/gated_community/head_of_corporate_security)
+"gVP" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/rifle/l42a{
+	pixel_y = 1
+	},
+/obj/item/weapon/gun/rifle/l42a{
+	pixel_y = -8
+	},
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (WEST)"
+	},
+/turf/open/floor/almayer,
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "gVS" = (
 /obj/structure/surface/table,
 /obj/item/ammo_magazine/rifle/mar40/lmg,
@@ -8322,7 +8488,7 @@
 	name = "\improper USCM bunkroom door"
 	},
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "gWI" = (
 /obj/structure/sign/poster{
 	pixel_x = -32;
@@ -8417,6 +8583,9 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv553/indoors/welcome_centre/lobby)
+"hax" = (
+/turf/closed/wall/r_wall,
+/area/lv553/indoors/uscm_garrison/io_office)
 "hay" = (
 /obj/structure/bed,
 /obj/structure/bed{
@@ -8434,7 +8603,7 @@
 /area/space)
 "haZ" = (
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "hbn" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating{
@@ -8469,7 +8638,7 @@
 	tag = "icon-tube1 (WEST)"
 	},
 /turf/open/gm/dirt,
-/area/space)
+/area/lv553/indoors/lz_sec_checkpoint)
 "hcT" = (
 /obj/structure/flora/jungle/hedge,
 /turf/open/gm/grass,
@@ -8543,7 +8712,7 @@
 	dir = 8
 	},
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "hgU" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/paper_bin/wy{
@@ -8596,6 +8765,10 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/space)
+"hjO" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/wood,
+/area/lv553/indoors/gated_community/director_of_coporate_relations)
 "hjP" = (
 /turf/open/floor{
 	dir = 8;
@@ -8624,13 +8797,6 @@
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
-/area/space)
-"hmI" = (
-/obj/structure/bed/chair{
-	dir = 8
-	},
-/obj/item/trash/uscm_mre,
-/turf/open/floor/almayer,
 /area/space)
 "hmL" = (
 /obj/structure/surface/rack,
@@ -8859,6 +9025,12 @@
 	},
 /turf/open/floor/wood,
 /area/space)
+"hxX" = (
+/obj/structure/target,
+/turf/open/floor/almayer{
+	icon_state = "redfull"
+	},
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "hyN" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/microwave{
@@ -8891,6 +9063,26 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv553/landing_zone_1)
+"hzz" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/faxmachine/uscm{
+	pixel_y = 6
+	},
+/obj/item/newspaper{
+	pixel_y = -3;
+	name = "half-finished report on colonist disappearances and unknown hostile xeno species m7-2182";
+	pixel_x = -6
+	},
+/obj/item/newspaper{
+	pixel_y = -3;
+	name = "correspondence on understrength uscm garrison and increasing gang activity m6-2182";
+	pixel_x = 6
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/lv553/indoors/uscm_garrison/io_office)
 "hzA" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -8966,7 +9158,7 @@
 	},
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "hCM" = (
 /obj/structure/machinery/colony_floodlight{
 	pixel_x = 6
@@ -9019,6 +9211,11 @@
 	icon_state = "white"
 	},
 /area/space)
+"hEM" = (
+/turf/open/floor/almayer/uscm/directional{
+	dir = 5
+	},
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "hEU" = (
 /obj/structure/platform_decoration/strata/metal,
 /turf/open/gm/grass,
@@ -9126,18 +9323,6 @@
 	icon_state = "barber"
 	},
 /area/lv553/indoors/hospital/research/toilets)
-"hGu" = (
-/obj/structure/closet,
-/obj/item/clothing/under/pj/blue,
-/obj/item/clothing/under/pj/blue,
-/obj/item/clothing/under/pj/blue,
-/obj/item/clothing/under/pj/blue,
-/obj/item/clothing/under/pj/blue,
-/obj/item/clothing/under/pj/blue,
-/obj/item/clothing/under/pj/blue,
-/obj/item/clothing/under/pj/blue,
-/turf/open/floor/almayer,
-/area/space)
 "hGv" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -9156,7 +9341,7 @@
 	req_one_access_txt = "2;3;12;19"
 	},
 /turf/open/floor/wood,
-/area/space)
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "hGK" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/drinks/bottle/whiskey{
@@ -9239,12 +9424,34 @@
 	pixel_x = 6
 	},
 /turf/open/floor,
-/area/space)
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "hJL" = (
 /obj/structure/closet/secure_closet/security_empty,
 /obj/item/book/manual/security_space_law,
 /turf/open/floor/wood,
 /area/space)
+"hJS" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/reagent_container/food/drinks/bottle/absinthe{
+	pixel_y = 3;
+	pixel_x = -7
+	},
+/obj/item/device/flashlight/lamp{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	icon_state = "shotglass";
+	pixel_y = 4;
+	pixel_x = 8
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	icon_state = "shotglass";
+	pixel_y = 4;
+	pixel_x = 16
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/uscm_garrison/io_office)
 "hJX" = (
 /obj/structure/machinery/light,
 /obj/structure/machinery/disposal,
@@ -9317,6 +9524,25 @@
 	icon_state = "white"
 	},
 /area/lv553/indoors/welcome_centre/offices)
+"hNf" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "bedroom door"
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/gated_community/director_of_corporate_research)
+"hNq" = (
+/obj/structure/sign/safety/south{
+	pixel_y = -32;
+	pixel_x = 1
+	},
+/obj/structure/sign/safety/reception{
+	pixel_y = -32;
+	pixel_x = 14
+	},
+/turf/open/gm/dirtgrassborder{
+	dir = 8
+	},
+/area/space)
 "hNt" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/spawner/gibspawner/robot,
@@ -9399,13 +9625,6 @@
 	density = 2;
 	locked = 1;
 	name = "mechanic shop break room door"
-	},
-/turf/open/floor,
-/area/space)
-"hRO" = (
-/obj/structure/surface/table/woodentable,
-/obj/structure/machinery/prop/almayer/computer/PC{
-	dir = 1
 	},
 /turf/open/floor,
 /area/space)
@@ -9517,6 +9736,17 @@
 	icon_state = "warnplate"
 	},
 /area/space)
+"hWu" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/rifle/m41aMK1,
+/obj/item/ammo_magazine/rifle/m41aMK1{
+	pixel_x = -8
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/lv553/indoors/uscm_garrison/armory)
 "hWC" = (
 /turf/open/floor{
 	icon_state = "asteroid"
@@ -9591,26 +9821,6 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/space)
-"hZe" = (
-/obj/structure/surface/rack,
-/obj/item/explosive/grenade/incendiary/molotov{
-	pixel_y = 7;
-	pixel_x = -6
-	},
-/obj/item/explosive/grenade/incendiary/molotov{
-	pixel_y = -1;
-	pixel_x = -5
-	},
-/obj/item/explosive/grenade/incendiary/molotov{
-	pixel_y = 8;
-	pixel_x = 4
-	},
-/obj/item/explosive/grenade/incendiary/molotov{
-	pixel_y = -1;
-	pixel_x = 4
-	},
-/turf/open/floor/almayer,
 /area/space)
 "hZV" = (
 /obj/structure/flora/jungle/vines{
@@ -9801,6 +10011,9 @@
 /obj/item/trash/crushed_cup,
 /turf/open/gm/grass,
 /area/space)
+"igJ" = (
+/turf/open/floor/wood,
+/area/lv553/indoors/gated_community/director_of_corporate_research)
 "igM" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/grass,
@@ -9880,6 +10093,15 @@
 /obj/structure/machinery/door/window,
 /turf/open/floor/plating/plating_catwalk,
 /area/space)
+"imD" = (
+/obj/structure/toilet{
+	pixel_y = 16
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "imW" = (
 /obj/structure/cargo_container{
 	icon_state = "WY 0,0";
@@ -10125,6 +10347,17 @@
 	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/lv553/indoors/hospital/reception)
+"iuo" = (
+/obj/structure/closet,
+/obj/item/clothing/under/marine/officer/intel,
+/obj/item/clothing/suit/storage/marine/light,
+/obj/item/clothing/head/helmet/marine/jungle,
+/obj/item/storage/pouch/machete/full,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/lv553/indoors/uscm_garrison/io_office)
 "iuJ" = (
 /obj/structure/largecrate/supply/explosives/mortar_flare,
 /turf/open/floor/interior/wood,
@@ -10261,10 +10494,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/space)
-"izR" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/wood,
-/area/lv553/indoors/gated_community/director_of_corporate_research)
 "izY" = (
 /obj/structure/machinery/vending/cola,
 /turf/open/floor{
@@ -10559,6 +10788,26 @@
 /obj/item/weapon/baseballbat/metal,
 /turf/open/floor,
 /area/space)
+"iJZ" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/door/window{
+	dir = 8;
+	pixel_y = 0
+	},
+/obj/structure/machinery/door_control{
+	desc = "A garage door opener.";
+	id = "uscm_garrison";
+	name = "gate button";
+	pixel_y = 12;
+	req_one_access_txt = "2;3;12;19"
+	},
+/obj/item/device/taperecorder{
+	pixel_y = -5
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "iKd" = (
 /obj/item/stool,
 /turf/open/floor/prison{
@@ -10744,6 +10993,15 @@
 	tag = "icon-sterile"
 	},
 /area/space)
+"iSd" = (
+/obj/structure/machinery/computer/telecomms/monitor,
+/obj/structure/cable/heavyduty{
+	icon_state = "0-8"
+	},
+/turf/open/floor/almayer{
+	icon_state = "tcomms"
+	},
+/area/lv553/indoors/uscm_garrison/io_office)
 "iSj" = (
 /obj/item/stool{
 	pixel_y = 12
@@ -10947,7 +11205,7 @@
 /turf/open/floor{
 	icon_state = "redyellowfull"
 	},
-/area/space)
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "iZR" = (
 /obj/structure/sign/poster/pinup{
 	pixel_y = 32
@@ -11151,11 +11409,6 @@
 	},
 /turf/open/gm/dirt,
 /area/space)
-"jlN" = (
-/obj/structure/window_frame/colony/reinforced,
-/obj/item/shard,
-/turf/open/floor/wood,
-/area/lv553/indoors/gated_community/director_of_coporate_relations)
 "jma" = (
 /obj/structure/bed/chair,
 /turf/open/floor/wood,
@@ -11287,6 +11540,9 @@
 /obj/effect/alien/resin/spike,
 /turf/open/gm/dirt,
 /area/space)
+"jtE" = (
+/turf/open/floor/wood,
+/area/lv553/indoors/gated_community/head_of_corporate_security)
 "jtH" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/gm/grass,
@@ -11387,6 +11643,13 @@
 /obj/structure/machinery/light,
 /turf/open/floor,
 /area/lv553/indoors/gated_community/residence_bunkhouse)
+"jxt" = (
+/obj/structure/surface/table/woodentable,
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 1
+	},
+/turf/open/floor,
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "jxw" = (
 /obj/item/weapon/sword/machete{
 	pixel_x = 8
@@ -11557,17 +11820,6 @@
 	},
 /turf/open/floor/wood,
 /area/space)
-"jEk" = (
-/obj/structure/sign/safety/landingzone{
-	pixel_y = 32;
-	pixel_x = 1
-	},
-/obj/structure/sign/safety/north{
-	pixel_x = 14;
-	pixel_y = 32
-	},
-/turf/open/gm/dirtgrassborder,
-/area/lv553/landing_zone_2)
 "jEt" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -11680,6 +11932,11 @@
 	},
 /turf/open/floor/wood,
 /area/space)
+"jHS" = (
+/turf/open/floor/almayer/uscm/directional{
+	dir = 8
+	},
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "jHU" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/microwave{
@@ -11726,7 +11983,7 @@
 /turf/open/gm/dirtgrassborder{
 	dir = 1
 	},
-/area/space)
+/area/lv553/indoors/lz_sec_checkpoint)
 "jIn" = (
 /obj/item/trash/wy_chips_pepper,
 /turf/open/floor{
@@ -11816,6 +12073,23 @@
 /obj/effect/alien/weeds/node,
 /turf/open/floor,
 /area/space)
+"jLD" = (
+/obj/structure/surface/rack,
+/obj/item/prop/helmetgarb/helmet_gasmask{
+	pixel_x = 5
+	},
+/obj/item/prop/helmetgarb/helmet_gasmask{
+	pixel_x = -5
+	},
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (WEST)"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/lv553/indoors/uscm_garrison/armory)
 "jLV" = (
 /obj/structure/machinery/door_control{
 	desc = "A garage door opener.";
@@ -11828,7 +12102,7 @@
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
-/area/space)
+/area/lv553/indoors/uscm_garrison/armory)
 "jLY" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 6
@@ -11876,10 +12150,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/wood,
 /area/space)
-"jMZ" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/wood,
-/area/lv553/indoors/gated_community/head_of_corporate_engineering)
 "jOj" = (
 /obj/structure/platform_decoration/strata/metal{
 	dir = 1
@@ -12005,6 +12275,10 @@
 	tag = "icon-sterile_green_corner (NORTH)"
 	},
 /area/lv553/indoors/hospital/reception)
+"jSA" = (
+/obj/structure/bed/chair/office/light,
+/turf/open/floor,
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "jSC" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/reagent_container/food/drinks/coffee{
@@ -12065,6 +12339,9 @@
 	icon_state = "stan_leftengine"
 	},
 /area/space)
+"jTD" = (
+/turf/closed/wall/r_wall,
+/area/lv553/indoors/gated_community/director_of_coporate_relations)
 "jUb" = (
 /obj/item/trash/cigbutt{
 	pixel_y = -2
@@ -12111,12 +12388,21 @@
 	},
 /obj/structure/machinery/light,
 /turf/open/floor/wood,
-/area/space)
+/area/lv553/indoors/bungalow_manager)
 "jYr" = (
 /obj/structure/fence,
 /obj/structure/fence,
 /turf/open/asphalt/cement,
 /area/space)
+"jZg" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor,
+/area/lv553/indoors/uscm_garrison/recruitment_office)
+"jZp" = (
+/turf/open/floor/wood,
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "jZt" = (
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
@@ -12417,6 +12703,10 @@
 	},
 /turf/open/gm/dirt,
 /area/space)
+"kke" = (
+/obj/item/trash/cigbutt,
+/turf/open/floor/wood,
+/area/lv553/indoors/gated_community/director_of_coporate_relations)
 "kkE" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 4
@@ -12501,6 +12791,16 @@
 /obj/item/weapon/gun/rifle/sniper/svd,
 /turf/open/floor/interior/wood,
 /area/space)
+"knw" = (
+/obj/structure/sign/safety/landingzone{
+	pixel_x = 14;
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/north{
+	pixel_y = 32
+	},
+/turf/open/gm/dirtgrassborder,
+/area/lv553/landing_zone_1)
 "knY" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor{
@@ -12810,16 +13110,6 @@
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/gm/river,
 /area/space)
-"kEg" = (
-/obj/structure/surface/rack,
-/obj/item/weapon/gun/rifle/m41a/training{
-	pixel_y = 6
-	},
-/obj/item/weapon/gun/rifle/m41a/training{
-	pixel_y = -2
-	},
-/turf/open/floor/almayer,
-/area/space)
 "kEm" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "tunnel_garage_1"
@@ -12848,9 +13138,6 @@
 	},
 /turf/open/floor/wood,
 /area/space)
-"kEI" = (
-/turf/closed/wall/r_wall,
-/area/lv553/indoors/gated_community/head_of_corporate_security)
 "kFl" = (
 /obj/structure/largecrate/supply/generator,
 /turf/open/asphalt/cement,
@@ -12928,10 +13215,9 @@
 	dir = 8
 	},
 /area/lv553/landing_zone_2)
-"kKN" = (
-/obj/item/shard,
-/turf/open/gm/dirt,
-/area/space)
+"kKK" = (
+/turf/closed/wall,
+/area/lv553/indoors/gated_community/director_of_corporate_research)
 "kKO" = (
 /obj/item/prop{
 	color = "#FF0000";
@@ -13088,7 +13374,7 @@
 "kQl" = (
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "kQm" = (
 /obj/structure/curtain/red{
 	pixel_y = 32
@@ -13148,13 +13434,6 @@
 /obj/item/clothing/under/liaison_suit/outing,
 /turf/open/floor,
 /area/lv553/indoors/bungalow_manager)
-"kSk" = (
-/obj/structure/barricade/sandbags{
-	dir = 8;
-	stack_amount = 10
-	},
-/turf/open/floor/almayer,
-/area/space)
 "kTe" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
@@ -13352,6 +13631,23 @@
 	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/lv553/indoors/hospital/lobby)
+"kZu" = (
+/obj/structure/desertdam/decals/road_stop{
+	dir = 1;
+	icon_state = "stop_decal5";
+	pixel_y = 4
+	},
+/obj/structure/machinery/landinglight/ds1/spoke,
+/obj/structure/sign/safety/reception{
+	pixel_y = 0;
+	pixel_x = 33
+	},
+/obj/structure/sign/safety/south{
+	pixel_y = 0;
+	pixel_x = 46
+	},
+/turf/open/gm/dirt,
+/area/lv553/landing_zone_1)
 "lap" = (
 /obj/structure/largecrate,
 /turf/open/floor/interior/wood,
@@ -13503,16 +13799,15 @@
 	},
 /turf/open/gm/dirt,
 /area/space)
-"lfZ" = (
-/obj/structure/sign/safety/landingzone{
-	pixel_x = 14;
-	pixel_y = 32
+"lgp" = (
+/obj/structure/machinery/shower{
+	dir = 1
 	},
-/obj/structure/sign/safety/north{
-	pixel_y = 32
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
 	},
-/turf/open/gm/dirtgrassborder,
-/area/lv553/landing_zone_1)
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "lgw" = (
 /obj/structure/filingcabinet{
 	pixel_x = 8
@@ -13526,6 +13821,10 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/indoors/hospital/reception)
+"lgA" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor,
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "lgB" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/extinguisher_cabinet/alt{
@@ -13740,6 +14039,18 @@
 /obj/item/paper_bin,
 /turf/open/floor,
 /area/lv553/indoors/welcome_centre/offices)
+"loY" = (
+/obj/structure/sign/safety/storage{
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/opens_up{
+	pixel_x = 12;
+	pixel_y = 32
+	},
+/turf/open/gm/dirtgrassborder{
+	dir = 4
+	},
+/area/space)
 "lpa" = (
 /obj/item/trash/cigbutt,
 /turf/open/floor/wood,
@@ -13908,11 +14219,6 @@
 	icon_state = "dark"
 	},
 /area/lv553/indoors/aerospace_control)
-"lvz" = (
-/obj/item/clothing/head/beanie,
-/obj/item/trash/cigbutt/ucigbutt,
-/turf/open/asphalt/cement,
-/area/space)
 "lvL" = (
 /obj/structure/machinery/floodlight,
 /turf/open/floor/interior/wood,
@@ -14031,7 +14337,7 @@
 "lBa" = (
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "lBc" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4;
@@ -14085,11 +14391,6 @@
 	dir = 8
 	},
 /area/space)
-"lDg" = (
-/obj/structure/surface/rack,
-/obj/item/ammo_box/magazine/l42a,
-/turf/open/floor/almayer,
-/area/space)
 "lDk" = (
 /obj/structure/machinery/shower{
 	pixel_y = 17
@@ -14133,7 +14434,7 @@
 "lEw" = (
 /obj/structure/machinery/cm_vending/sorted/marine_food,
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "lFe" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/camera_film{
@@ -14415,6 +14716,9 @@
 	icon_state = "white_cyan1"
 	},
 /area/space)
+"lSd" = (
+/turf/closed/wall/r_wall,
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "lSp" = (
 /obj/structure/prop/dam/truck{
 	dir = 4
@@ -14483,6 +14787,15 @@
 /obj/item/weapon/gun/smg/fp9000,
 /turf/open/floor/wood,
 /area/lv553/indoors/gated_community/head_of_corporate_security)
+"lWn" = (
+/obj/structure/machinery/shower{
+	pixel_y = 17
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "lWO" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/pizzabox/vegetable,
@@ -14543,6 +14856,12 @@
 	icon_state = "warnplate"
 	},
 /area/space)
+"mam" = (
+/obj/structure/machinery/power/apc,
+/turf/open/gm/dirtgrassborder{
+	dir = 8
+	},
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "map" = (
 /obj/structure/sign/prop3{
 	pixel_y = 32
@@ -14557,10 +14876,7 @@
 /obj/item/clothing/head/beanie,
 /obj/item/trash/cigbutt/ucigbutt,
 /turf/open/floor/almayer,
-/area/space)
-"mar" = (
-/turf/open/floor/wood,
-/area/lv553/indoors/gated_community/director_of_coporate_relations)
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "maT" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
@@ -14718,6 +15034,11 @@
 	icon_state = "white"
 	},
 /area/space)
+"meZ" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_box/magazine/l42a,
+/turf/open/floor/almayer,
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "mfc" = (
 /obj/structure/machinery/shower{
 	pixel_y = 17
@@ -14761,34 +15082,6 @@
 	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/lv553/indoors/hospital/lobby)
-"mgV" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/door/window{
-	dir = 8;
-	pixel_y = 0
-	},
-/obj/structure/machinery/door_control{
-	desc = "A garage door opener.";
-	id = "uscm_garrison";
-	name = "gate button";
-	pixel_y = 12;
-	req_one_access_txt = "2;3;12;19"
-	},
-/obj/item/device/taperecorder{
-	pixel_y = -5
-	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/space)
-"mhc" = (
-/obj/structure/sign/safety/restrictedarea{
-	pixel_x = -24
-	},
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/lv553/indoors/welcome_centre/lobby)
 "mhu" = (
 /obj/item/prop{
 	color = "#FF0000";
@@ -14962,10 +15255,6 @@
 /obj/item/tool/kitchen/utensil/fork,
 /turf/open/floor/wood,
 /area/space)
-"mpi" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/wood,
-/area/lv553/indoors/gated_community/director_of_coporate_relations)
 "mpC" = (
 /turf/closed/wall/r_wall,
 /area/lv553/indoors/hospital/operating_rooms)
@@ -14997,7 +15286,7 @@
 	dir = 1
 	},
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "mqA" = (
 /obj/effect/spawner/gibspawner/xeno,
 /turf/open/floor{
@@ -15091,6 +15380,13 @@
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/wood,
 /area/lv553/indoors/bungalow_manager)
+"mtk" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "uscm_garrison";
+	name = "\improper gated community shutters"
+	},
+/turf/open/gm/dirt,
+/area/space)
 "mtt" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/computer/cameras/wooden_tv{
@@ -15113,6 +15409,12 @@
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/interior/plastic,
 /area/space)
+"mtz" = (
+/obj/structure/machinery/power/apc{
+	dir = 8
+	},
+/turf/open/asphalt/cement,
+/area/lv553/indoors/uscm_garrison/io_office)
 "mtG" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "hospital door"
@@ -15189,6 +15491,11 @@
 /obj/item/reagent_container/food/snacks/sandwich,
 /turf/open/floor/wood,
 /area/space)
+"mwu" = (
+/obj/item/clothing/head/beanie,
+/obj/item/trash/cigbutt/ucigbutt,
+/turf/open/asphalt/cement,
+/area/space)
 "mwD" = (
 /obj/structure/toilet{
 	tag = "icon-toilet00 (WEST)"
@@ -15208,6 +15515,10 @@
 	icon_state = "white"
 	},
 /area/lv553/indoors/welcome_centre/offices)
+"mxO" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/wood,
+/area/lv553/indoors/gated_community/head_of_corporate_engineering)
 "myE" = (
 /obj/structure/toilet{
 	dir = 4
@@ -15402,6 +15713,17 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/welcome_centre/canteen)
+"mGP" = (
+/obj/structure/toilet{
+	tag = "icon-toilet00 (WEST)"
+	},
+/obj/structure/window{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "freezerfloor"
+	},
+/area/lv553/indoors/uscm_garrison/io_office)
 "mHf" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/smg/nailgun,
@@ -15502,13 +15824,6 @@
 	tag = "icon-green 0,0"
 	},
 /turf/open/asphalt/cement,
-/area/space)
-"mMU" = (
-/obj/structure/sign/safety/restrictedarea{
-	pixel_x = 32;
-	pixel_y = 0
-	},
-/turf/open/gm/dirt,
 /area/space)
 "mMV" = (
 /turf/closed/shuttle/ert{
@@ -15643,12 +15958,6 @@
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/gm/river,
 /area/space)
-"mRw" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	name = "bedroom door"
-	},
-/turf/open/floor/wood,
-/area/lv553/indoors/gated_community/director_of_corporate_research)
 "mRy" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -15723,7 +16032,7 @@
 	},
 /obj/item/weapon/gun/pistol/m1911,
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "mWl" = (
 /obj/effect/decal/strata_decals/grime/grime1{
 	dir = 4
@@ -15745,24 +16054,9 @@
 	tag = "icon-sterile"
 	},
 /area/space)
-"mWU" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "uscm_garrison";
-	name = "\improper uscm garrison gate"
-	},
-/turf/open/gm/dirt,
-/area/space)
 "mXD" = (
 /obj/structure/surface/table/almayer,
 /turf/open/floor,
-/area/space)
-"mXM" = (
-/obj/structure/largecrate/supply/ammo/pistol/half,
-/obj/structure/largecrate/random/mini/ammo{
-	pixel_y = 6;
-	pixel_x = 3
-	},
-/turf/open/asphalt/cement,
 /area/space)
 "mXQ" = (
 /obj/structure/flora/jungle/vines{
@@ -15779,6 +16073,13 @@
 /obj/structure/reagent_dispensers/fueltank/gas,
 /turf/open/floor,
 /area/space)
+"mZd" = (
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (WEST)"
+	},
+/turf/open/asphalt/cement,
+/area/lv553/indoors/uscm_garrison/io_office)
 "mZm" = (
 /obj/structure/platform_decoration/strata/metal,
 /turf/open/floor/almayer{
@@ -15786,6 +16087,16 @@
 	tag = "icon-sterile"
 	},
 /area/space)
+"mZG" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 8;
+	layer = 3.25
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/lv553/indoors/uscm_garrison/io_office)
 "nax" = (
 /obj/structure/ladder{
 	height = 1;
@@ -15794,6 +16105,26 @@
 	},
 /turf/open/floor/wood,
 /area/space)
+"naR" = (
+/obj/structure/sign/safety/reception{
+	pixel_y = -32;
+	pixel_x = 1
+	},
+/obj/structure/sign/safety/south{
+	pixel_y = -32;
+	pixel_x = 13
+	},
+/turf/open/gm/dirtgrassborder{
+	dir = 4
+	},
+/area/space)
+"nbe" = (
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (WEST)"
+	},
+/turf/open/gm/dirtgrassborder,
+/area/lv553/indoors/welcome_centre/canteen)
 "nbg" = (
 /obj/structure/cargo_container{
 	icon_state = "HD_blue 0,0"
@@ -15817,6 +16148,10 @@
 	dir = 8;
 	icon_state = "barber"
 	},
+/area/space)
+"nbL" = (
+/obj/structure/flora/bush/ausbushes/palebush,
+/turf/open/gm/dirtgrassborder,
 /area/space)
 "ncw" = (
 /obj/item/toy/beach_ball,
@@ -15991,6 +16326,15 @@
 /obj/structure/sign/nosmoking_1,
 /turf/closed/wall/r_wall,
 /area/lv553/indoors/hospital/lobby)
+"nlq" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/obj/structure/machinery/light/small,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "nlE" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/dirtgrassborder{
@@ -16227,13 +16571,6 @@
 	},
 /turf/open/asphalt/cement,
 /area/space)
-"nwy" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	name = "bedroom door";
-	dir = 1
-	},
-/turf/open/floor/wood,
-/area/lv553/indoors/gated_community/head_of_corporate_security)
 "nwI" = (
 /obj/structure/machinery/telecomms/hub{
 	pixel_x = -6
@@ -16321,6 +16658,9 @@
 	icon_state = "barber"
 	},
 /area/lv553/indoors/lz_sec_checkpoint)
+"nAq" = (
+/turf/closed/wall/r_wall,
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "nAs" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/gm/dirtgrassborder,
@@ -16375,6 +16715,16 @@
 	icon_state = "white"
 	},
 /area/lv553/indoors/welcome_centre/lobby)
+"nBc" = (
+/obj/structure/sink{
+	dir = 1;
+	pixel_y = -8
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "nBw" = (
 /obj/structure/surface/table,
 /obj/item/stack/sheet/mineral/plastic{
@@ -16458,6 +16808,12 @@
 	icon_state = "white_cyan1"
 	},
 /area/space)
+"nDQ" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "plating_striped"
+	},
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "nEn" = (
 /obj/structure/barricade/sandbags/wired{
 	dir = 1;
@@ -16478,7 +16834,7 @@
 /obj/structure/surface/table/gamblingtable,
 /obj/item/toy/deck,
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "nFm" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/structure/machinery/microwave{
@@ -16584,6 +16940,13 @@
 	icon_state = "warnplate"
 	},
 /area/space)
+"nJQ" = (
+/obj/structure/machinery/power/apc,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/lv553/indoors/uscm_garrison/armory)
 "nJY" = (
 /obj/structure/flora/jungle/vines,
 /turf/open/gm/dirt,
@@ -16707,6 +17070,12 @@
 	},
 /turf/closed/wall/r_wall,
 /area/lv553/indoors/hospital/lobby)
+"nPC" = (
+/obj/structure/sign/safety/conference_room{
+	pixel_y = -32
+	},
+/turf/open/gm/dirt,
+/area/space)
 "nPJ" = (
 /obj/structure/curtain/medical,
 /turf/open/floor/almayer{
@@ -16755,7 +17124,7 @@
 /turf/open/floor/almayer/uscm/directional{
 	dir = 5
 	},
-/area/space)
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "nRV" = (
 /obj/structure/flora/pottedplant,
 /turf/open/floor/wood,
@@ -16898,16 +17267,7 @@
 	name = "gate"
 	},
 /turf/open/gm/dirt,
-/area/space)
-"nVD" = (
-/obj/structure/toilet{
-	pixel_y = 11;
-	tag = "icon-toilet00 (WEST)"
-	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
-/area/space)
+/area/lv553/indoors/lz_sec_checkpoint)
 "nVK" = (
 /obj/structure/surface/table,
 /obj/item/stack/sheet/metal/med_small_stack{
@@ -17015,6 +17375,17 @@
 	icon_state = "white"
 	},
 /area/lv553/indoors/welcome_centre/lobby)
+"nYW" = (
+/obj/structure/sign/safety/reception{
+	pixel_y = 32;
+	pixel_x = 7
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/lv553/indoors/hospital/lobby)
 "nZb" = (
 /obj/structure/surface/table/woodentable/poor,
 /turf/open/floor/almayer{
@@ -17022,12 +17393,6 @@
 	tag = "icon-sterile"
 	},
 /area/space)
-"nZf" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/wood,
-/area/lv553/indoors/gated_community/director_of_corporate_research)
 "nZp" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "bunkroom door"
@@ -17062,12 +17427,6 @@
 	dir = 1;
 	icon_state = "grassdirt_corner"
 	},
-/area/space)
-"oag" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor,
 /area/space)
 "oai" = (
 /obj/item/trash/cigbutt/bcigbutt,
@@ -17418,7 +17777,7 @@
 	},
 /obj/item/tool/pen/blue,
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "oog" = (
 /obj/item/ammo_magazine/pistol/skorpion{
 	pixel_x = 4
@@ -17449,6 +17808,16 @@
 "ooG" = (
 /turf/open/floor/prison/chapel_carpet,
 /area/space)
+"ooM" = (
+/obj/structure/machinery/light,
+/turf/open/gm/grass,
+/area/lv553/indoors/welcome_centre/canteen)
+"opw" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/gated_community/director_of_corporate_research)
 "opS" = (
 /obj/item/stool,
 /turf/open/floor/interior/wood,
@@ -17475,6 +17844,15 @@
 /obj/item/handcuffs,
 /turf/open/floor/wood,
 /area/space)
+"oqP" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/lv553/indoors/uscm_garrison/io_office)
 "ord" = (
 /obj/structure/sink{
 	dir = 8;
@@ -17719,6 +18097,17 @@
 	},
 /turf/open/floor/wood,
 /area/space)
+"oxC" = (
+/obj/item/ammo_magazine/pistol/rubber{
+	current_rounds = 0
+	},
+/obj/item/weapon/gun/pistol/m4a3/training{
+	current_mag = null
+	},
+/obj/item/clothing/head/beanie,
+/obj/item/trash/cigbutt/ucigbutt,
+/turf/open/floor/wood,
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "oxI" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/kitchen/utensil/fork,
@@ -17744,6 +18133,15 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/welcome_centre/offices)
+"oyu" = (
+/obj/structure/flora/jungle/hedge{
+	dir = 8
+	},
+/obj/structure/flora/jungle/hedge{
+	dir = 6
+	},
+/turf/open/gm/grass,
+/area/space)
 "oyw" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3";
@@ -17893,6 +18291,15 @@
 	},
 /turf/open/floor/wood,
 /area/space)
+"oCE" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/lv553/indoors/uscm_garrison/armory)
 "oCS" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/dirtgrassborder,
@@ -17902,6 +18309,17 @@
 	icon_state = "platebot"
 	},
 /area/space)
+"oDF" = (
+/obj/structure/machinery/door_control{
+	desc = "A garage door opener.";
+	id = "gated_community";
+	name = "gate button";
+	pixel_x = -28;
+	pixel_y = 0;
+	req_one_access_txt = "2;3;12;19"
+	},
+/turf/open/gm/dirt,
+/area/lv553/indoors/gated_community/director_of_corporate_research)
 "oEz" = (
 /obj/structure/bed/roller,
 /obj/effect/landmark/corpsespawner/colonist/burst,
@@ -17964,6 +18382,15 @@
 /obj/item/ammo_magazine/handful/shotgun/buckshot,
 /turf/open/floor/interior/wood,
 /area/space)
+"oHb" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "oHC" = (
 /obj/item/trash/cigbutt{
 	pixel_x = -6;
@@ -18145,6 +18572,10 @@
 	icon_state = "pwall"
 	},
 /area/space)
+"oNo" = (
+/obj/structure/machinery/vending/cola,
+/turf/open/floor/wood,
+/area/lv553/indoors/gated_community/director_of_coporate_relations)
 "oNp" = (
 /obj/structure/window_frame/colony/reinforced,
 /obj/item/shard,
@@ -18190,16 +18621,28 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/space)
 "oOk" = (
-/obj/structure/sign/safety/storage{
-	pixel_x = -24;
-	pixel_y = 6
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
 	},
-/obj/structure/sign/safety/north{
-	pixel_x = -24;
-	pixel_y = -6
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
 	},
-/turf/open/gm/grass,
-/area/space)
+/obj/structure/bed,
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (WEST)"
+	},
+/turf/open/floor,
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "oOl" = (
 /obj/structure/surface/table,
 /obj/item/device/cassette_tape/ocean,
@@ -18248,6 +18691,17 @@
 	},
 /turf/open/gm/dirt,
 /area/space)
+"oPS" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	density = 2;
+	dir = 1;
+	locked = 1;
+	name = "\improper gatehouse door"
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "oQs" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/drinks/cans/aspen{
@@ -18256,7 +18710,7 @@
 	},
 /obj/item/reagent_container/food/drinks/cans/aspen,
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "oQS" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/paper_bin/wy{
@@ -18481,7 +18935,7 @@
 /obj/item/shard,
 /obj/item/stack/sheet/wood,
 /turf/open/floor/wood,
-/area/space)
+/area/lv553/indoors/bungalow_manager)
 "oYW" = (
 /obj/item/reagent_container/food/drinks/cans/souto/grape{
 	pixel_x = 12;
@@ -18497,6 +18951,13 @@
 /obj/effect/spawner/random/powercell,
 /turf/open/floor/interior/wood,
 /area/space)
+"oYX" = (
+/obj/structure/bed{
+	icon_state = "psychbed"
+	},
+/obj/item/bedsheet,
+/turf/open/floor/wood,
+/area/lv553/indoors/uscm_garrison/io_office)
 "oZc" = (
 /obj/structure/bed/chair/office/light{
 	dir = 4
@@ -18602,6 +19063,12 @@
 /obj/structure/machinery/light/small,
 /turf/open/floor/wood,
 /area/space)
+"pbd" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor,
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "pbx" = (
 /obj/structure/filingcabinet,
 /obj/item/folder/blue,
@@ -18614,6 +19081,16 @@
 	},
 /turf/open/floor/wood,
 /area/space)
+"pdF" = (
+/obj/structure/machinery/door/airlock/almayer/secure{
+	dir = 8;
+	name = "\improper third fleet intelligence office door"
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/lv553/indoors/uscm_garrison/io_office)
 "pdI" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/secure_data{
@@ -18636,13 +19113,6 @@
 	icon_state = "dark"
 	},
 /area/lv553/indoors/welcome_centre/lobby)
-"pel" = (
-/obj/structure/target,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/space)
 "peo" = (
 /obj/structure/bed/chair,
 /turf/open/floor/almayer{
@@ -18656,17 +19126,6 @@
 	},
 /turf/open/floor,
 /area/space)
-"pfi" = (
-/obj/structure/sign/safety/reception{
-	pixel_y = 32;
-	pixel_x = 7
-	},
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
-	},
-/area/lv553/indoors/hospital/lobby)
 "pfn" = (
 /obj/structure/desertdam/decals/road_edge{
 	pixel_x = -12
@@ -18694,10 +19153,23 @@
 	},
 /turf/open/floor/interior/plastic,
 /area/space)
-"pfN" = (
-/obj/structure/largecrate/supply/ammo/m39/half,
-/turf/open/asphalt/cement,
-/area/space)
+"pfJ" = (
+/obj/structure/desertdam/decals/road_stop{
+	dir = 1;
+	icon_state = "stop_decal5";
+	pixel_y = 4
+	},
+/obj/structure/machinery/landinglight/ds2/spoke,
+/obj/structure/sign/safety/reception{
+	pixel_y = 0;
+	pixel_x = -18
+	},
+/obj/structure/sign/safety/south{
+	pixel_y = 0;
+	pixel_x = -31
+	},
+/turf/open/gm/dirt,
+/area/lv553/landing_zone_2)
 "pfX" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/gm/dirt,
@@ -18724,6 +19196,11 @@
 	icon_state = "white"
 	},
 /area/space)
+"pgp" = (
+/turf/open/floor/almayer{
+	icon_state = "redfull"
+	},
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "pgq" = (
 /obj/structure/closet/secure_closet/medical1,
 /turf/open/floor/almayer{
@@ -18902,8 +19379,11 @@
 /turf/open/floor/wood,
 /area/lv553/indoors/welcome_centre/offices)
 "pkE" = (
-/turf/closed/wall/r_wall,
-/area/lv553/indoors/gated_community/director_of_corporate_research)
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/lv553/indoors/uscm_garrison/io_office)
 "pkG" = (
 /obj/structure/closet/cabinet{
 	density = 0;
@@ -18928,6 +19408,9 @@
 	},
 /turf/open/floor/wood,
 /area/space)
+"pkQ" = (
+/turf/open/floor,
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "pkS" = (
 /obj/structure/surface/table/holotable,
 /obj/item/weapon/gun/revolver/cmb,
@@ -18998,23 +19481,19 @@
 /obj/item/storage/box/nade_box/airburst,
 /turf/open/floor/plating,
 /area/space)
+"poh" = (
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (WEST)"
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/gated_community/head_of_corporate_engineering)
 "poi" = (
 /obj/structure/xenoautopsy/tank/broken,
 /turf/open/floor{
 	icon_state = "dark"
 	},
 /area/lv553/indoors/hospital/research/offices)
-"pou" = (
-/obj/structure/sign/safety/radio_rad{
-	pixel_x = -16;
-	pixel_y = -6
-	},
-/obj/structure/sign/safety/terminal{
-	pixel_x = -16;
-	pixel_y = 6
-	},
-/turf/open/asphalt/cement,
-/area/space)
 "poz" = (
 /obj/structure/tunnel,
 /obj/effect/spawner/gibspawner/xeno,
@@ -19204,12 +19683,20 @@
 /area/lv553/indoors/hospital/research/offices)
 "ptG" = (
 /obj/structure/surface/rack,
-/obj/item/storage/box/nade_box,
+/obj/item/storage/box/packet/high_explosive{
+	pixel_y = 6
+	},
+/obj/item/storage/box/packet/high_explosive{
+	pixel_y = 2
+	},
+/obj/item/storage/box/packet/high_explosive{
+	pixel_y = -3
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
-/area/space)
+/area/lv553/indoors/uscm_garrison/armory)
 "ptU" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3";
@@ -19220,6 +19707,9 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/space)
+"puc" = (
+/turf/open/floor/wood,
+/area/lv553/indoors/uscm_garrison/io_office)
 "pug" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -19366,6 +19856,15 @@
 /obj/structure/machinery/floodlight/landing,
 /turf/open/gm/dirt,
 /area/lv553/landing_zone_2)
+"pzr" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 1;
+	name = "bathroom door"
+	},
+/turf/open/floor{
+	icon_state = "freezerfloor"
+	},
+/area/lv553/indoors/gated_community/director_of_coporate_relations)
 "pzw" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/explosive/grenade/custom/ied{
@@ -19423,6 +19922,9 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/indoors/hospital/operating_rooms)
+"pBX" = (
+/turf/open/floor/almayer,
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "pCk" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/cans/souto/lime{
@@ -19515,7 +20017,7 @@
 /turf/open/floor/almayer/uscm/directional{
 	dir = 10
 	},
-/area/space)
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "pFK" = (
 /obj/structure/sink{
 	pixel_x = -5;
@@ -19578,6 +20080,23 @@
 	icon_state = "dark"
 	},
 /area/lv553/indoors/bungalow_manager)
+"pKc" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/rifle/m41aMK1,
+/obj/item/ammo_magazine/rifle/m41aMK1{
+	pixel_x = -8
+	},
+/obj/item/ammo_magazine/rifle/m41aMK1{
+	pixel_x = 9
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/lv553/indoors/uscm_garrison/armory)
 "pKw" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/asphalt/cement,
@@ -19714,7 +20233,7 @@
 /turf/open/floor/almayer/uscm/directional{
 	dir = 9
 	},
-/area/space)
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "pOz" = (
 /turf/closed/wall/r_wall,
 /area/lv553/indoors/gated_community/residence_bunkhouse)
@@ -19883,7 +20402,7 @@
 	name = "Sergeant's office door"
 	},
 /turf/open/floor,
-/area/space)
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "pVB" = (
 /obj/structure/surface/rack,
 /obj/structure/sign/poster/safety{
@@ -19936,13 +20455,6 @@
 	dir = 8;
 	icon_state = "grassdirt_corner2"
 	},
-/area/space)
-"pWQ" = (
-/obj/structure/machinery/door/airlock/almayer/secure{
-	dir = 8;
-	name = "\improper third fleet intelligence office door"
-	},
-/turf/open/floor/almayer,
 /area/space)
 "pXv" = (
 /obj/structure/machinery/cm_vending/sorted/medical/bolted,
@@ -20030,7 +20542,7 @@
 /turf/open/floor/almayer/uscm/directional{
 	dir = 6
 	},
-/area/space)
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "qbK" = (
 /obj/structure/surface/rack,
 /obj/item/device/multitool,
@@ -20127,7 +20639,7 @@
 	},
 /obj/structure/surface/rack,
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "qfP" = (
 /obj/item/stool{
 	pixel_x = 9
@@ -20243,6 +20755,20 @@
 	icon_state = "freezerfloor"
 	},
 /area/space)
+"qhX" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "uscm_garrison";
+	name = "\improper uscm garrison gate"
+	},
+/turf/open/gm/dirt,
+/area/lv553/indoors/uscm_garrison/recruitment_office)
+"qim" = (
+/obj/structure/machinery/power/apc,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/lv553/indoors/uscm_garrison/io_office)
 "qjC" = (
 /obj/structure/machinery/colony_floodlight{
 	pixel_y = 9
@@ -20366,14 +20892,6 @@
 	icon_state = "white"
 	},
 /area/lv553/indoors/welcome_centre/offices)
-"qnn" = (
-/obj/structure/largecrate/random/barrel/red,
-/obj/item/explosive/grenade/high_explosive/training{
-	pixel_y = -4;
-	pixel_x = 5
-	},
-/turf/open/asphalt/cement,
-/area/space)
 "qnp" = (
 /obj/structure/flora/bush/ausbushes/ppflowers{
 	icon_state = "lavendergrass_1"
@@ -20492,9 +21010,6 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/indoors/hospital/research/offices)
-"qrY" = (
-/turf/open/floor/wood,
-/area/lv553/indoors/gated_community/head_of_corporate_engineering)
 "qsf" = (
 /obj/structure/bed,
 /obj/effect/landmark/xeno_spawn,
@@ -20599,6 +21114,26 @@
 	tag = "icon-sterile"
 	},
 /area/space)
+"qxi" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed,
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/structure/machinery/light,
+/turf/open/floor,
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "qxm" = (
 /obj/structure/sign/poster/pinup{
 	pixel_x = -6;
@@ -20683,12 +21218,12 @@
 	name = "gate"
 	},
 /turf/open/gm/dirtgrassborder,
-/area/space)
+/area/lv553/indoors/lz_sec_checkpoint)
 "qzb" = (
 /obj/item/storage/beer_pack,
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "qzf" = (
 /obj/structure/surface/table/gamblingtable,
 /obj/item/ashtray/glass,
@@ -20701,6 +21236,26 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/bungalow_manager)
+"qzC" = (
+/obj/structure/surface/rack,
+/obj/item/explosive/grenade/incendiary/molotov{
+	pixel_y = 7;
+	pixel_x = -6
+	},
+/obj/item/explosive/grenade/incendiary/molotov{
+	pixel_y = -1;
+	pixel_x = -5
+	},
+/obj/item/explosive/grenade/incendiary/molotov{
+	pixel_y = 8;
+	pixel_x = 4
+	},
+/obj/item/explosive/grenade/incendiary/molotov{
+	pixel_y = -1;
+	pixel_x = 4
+	},
+/turf/open/floor/almayer,
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "qzE" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/drinks/bottle/sake{
@@ -20777,7 +21332,7 @@
 "qDx" = (
 /obj/structure/largecrate/supply/supplies/water,
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "qDB" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
@@ -20810,10 +21365,13 @@
 	},
 /turf/open/gm/dirt,
 /area/space)
+"qEL" = (
+/turf/closed/wall,
+/area/lv553/indoors/uscm_garrison/io_office)
 "qFe" = (
 /obj/structure/machinery/computer/arcade,
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "qFk" = (
 /obj/structure/sign/safety/security{
 	pixel_x = 8;
@@ -20862,12 +21420,6 @@
 	icon_state = "white"
 	},
 /area/space)
-"qGF" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/turf/open/floor/wood,
-/area/lv553/indoors/gated_community/director_of_corporate_research)
 "qGP" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/paper/crumpled/bloody{
@@ -21091,6 +21643,14 @@
 	dir = 4
 	},
 /area/lv553/landing_zone_2)
+"qSQ" = (
+/obj/structure/largecrate/supply/ammo/pistol/half,
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_y = 6;
+	pixel_x = 3
+	},
+/turf/open/asphalt/cement,
+/area/space)
 "qTf" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
@@ -21302,7 +21862,7 @@
 	dir = 4
 	},
 /turf/open/floor/wood,
-/area/space)
+/area/lv553/indoors/bungalow_manager)
 "qZM" = (
 /obj/structure/sink{
 	dir = 4;
@@ -21457,6 +22017,9 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/indoors/hospital/operating_rooms)
+"riW" = (
+/turf/closed/wall/r_wall,
+/area/lv553/indoors/gated_community/head_of_corporate_security)
 "riY" = (
 /obj/structure/janitorialcart,
 /turf/open/gm/dirtgrassborder{
@@ -21492,7 +22055,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/space)
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "rko" = (
 /obj/structure/window_frame/colony/reinforced,
 /turf/open/floor{
@@ -21533,6 +22096,12 @@
 /obj/item/clothing/head/manager,
 /turf/open/floor/wood,
 /area/lv553/indoors/welcome_centre/offices)
+"rmk" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/asphalt/cement,
+/area/lv553/indoors/uscm_garrison/io_office)
 "rmu" = (
 /obj/structure/machinery/light{
 	dir = 1;
@@ -21571,6 +22140,10 @@
 	icon_state = "white"
 	},
 /area/space)
+"rpu" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/wood,
+/area/lv553/indoors/gated_community/director_of_corporate_research)
 "rpL" = (
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/flora/jungle/vines{
@@ -21581,7 +22154,7 @@
 "rpM" = (
 /obj/structure/machinery/light,
 /turf/open/asphalt/cement,
-/area/space)
+/area/lv553/indoors/bungalow_manager)
 "rrP" = (
 /obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor/almayer{
@@ -21672,12 +22245,12 @@
 	},
 /area/space)
 "rtE" = (
-/obj/structure/desertdam/decals/road_edge{
-	pixel_y = 0;
-	pixel_x = 2
+/obj/structure/bed/chair{
+	dir = 1
 	},
-/turf/open/gm/dirt,
-/area/space)
+/obj/item/trash/uscm_mre,
+/turf/open/floor/almayer,
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "rtG" = (
 /obj/structure/desertdam/decals/road_stop{
 	dir = 8;
@@ -21708,6 +22281,18 @@
 	},
 /turf/open/asphalt/cement,
 /area/space)
+"rux" = (
+/obj/structure/closet,
+/obj/item/clothing/under/pj/blue,
+/obj/item/clothing/under/pj/blue,
+/obj/item/clothing/under/pj/blue,
+/obj/item/clothing/under/pj/blue,
+/obj/item/clothing/under/pj/blue,
+/obj/item/clothing/under/pj/blue,
+/obj/item/clothing/under/pj/blue,
+/obj/item/clothing/under/pj/blue,
+/turf/open/floor/almayer,
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "ruF" = (
 /obj/structure/platform/strata/metal,
 /turf/open/asphalt/cement,
@@ -21807,20 +22392,6 @@
 "ryB" = (
 /turf/open/gm/grass,
 /area/lv553/landing_zone_2)
-"ryO" = (
-/obj/structure/sign/safety/fire_haz{
-	pixel_y = 32;
-	pixel_x = 1
-	},
-/obj/structure/sign/safety/north{
-	pixel_x = 14;
-	pixel_y = 32
-	},
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
-/area/space)
 "ryY" = (
 /obj/structure/reagent_dispensers/fueltank/gas,
 /obj/item/ashtray/plastic{
@@ -21864,6 +22435,9 @@
 /obj/item/trash/cigbutt/cigarbutt,
 /turf/open/gm/dirt,
 /area/space)
+"rAp" = (
+/turf/closed/wall,
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "rAr" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/machinery/door_control{
@@ -22004,7 +22578,7 @@
 /obj/structure/window_frame/colony/reinforced,
 /obj/item/shard,
 /turf/open/floor/wood,
-/area/space)
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "rFt" = (
 /obj/structure/toilet{
 	pixel_y = 13
@@ -22202,6 +22776,10 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv553/landing_zone_1)
+"rNy" = (
+/obj/structure/machinery/light,
+/turf/open/gm/grass,
+/area/lv553/indoors/welcome_centre/offices)
 "rNL" = (
 /obj/item/shard,
 /turf/open/floor/interior/wood,
@@ -22257,6 +22835,16 @@
 	},
 /turf/open/floor/wood,
 /area/space)
+"rPF" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/structure/sign/prop2{
+	pixel_y = 0;
+	pixel_x = -33
+	},
+/turf/open/floor/almayer,
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "rPK" = (
 /obj/structure/barricade/deployable,
 /turf/open/floor/wood,
@@ -22350,6 +22938,12 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/space)
+"rUL" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/gated_community/director_of_corporate_research)
 "rVc" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -22394,6 +22988,15 @@
 /obj/item/mortar_shell/he,
 /turf/open/floor/interior/wood,
 /area/space)
+"rWn" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "rWt" = (
 /obj/structure/machinery/microwave{
 	pixel_x = -4
@@ -22404,10 +23007,21 @@
 	},
 /turf/open/floor/interior/wood,
 /area/space)
+"rWM" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/almayer,
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "rWP" = (
 /obj/structure/prop/dam/truck/cargo,
 /turf/open/gm/dirt,
 /area/space)
+"rWT" = (
+/obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/wood,
+/area/lv553/indoors/uscm_garrison/io_office)
 "rWX" = (
 /obj/structure/machinery/disposal,
 /turf/open/floor{
@@ -22488,6 +23102,16 @@
 	},
 /turf/open/floor/wood,
 /area/space)
+"rZN" = (
+/obj/structure/tunnel,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "rZS" = (
 /turf/open/floor{
 	dir = 9;
@@ -22590,6 +23214,15 @@
 	opacity = 0
 	},
 /area/space)
+"sec" = (
+/turf/closed/wall,
+/area/lv553/indoors/gated_community/director_of_coporate_relations)
+"see" = (
+/obj/structure/machinery/power/apc{
+	dir = 8
+	},
+/turf/open/floor,
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "sex" = (
 /obj/structure/cargo_container{
 	icon_state = "WY 2,0";
@@ -22673,6 +23306,12 @@
 	icon_state = "freezerfloor"
 	},
 /area/space)
+"sht" = (
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "red"
+	},
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "sia" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "breakroom door"
@@ -22716,7 +23355,7 @@
 	pixel_y = 1
 	},
 /turf/open/floor,
-/area/space)
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "siC" = (
 /obj/item/tool/kitchen/utensil/fork,
 /turf/open/floor/prison{
@@ -22756,9 +23395,6 @@
 	icon_state = "leftengine_2"
 	},
 /area/space)
-"sjd" = (
-/turf/closed/wall,
-/area/lv553/indoors/gated_community/director_of_coporate_relations)
 "sji" = (
 /obj/item/stack/rods,
 /turf/open/floor/interior/plastic,
@@ -22773,6 +23409,19 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv553/indoors/welcome_centre/canteen)
+"sjT" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/rifle/m41aMK1{
+	pixel_x = -8
+	},
+/obj/item/ammo_magazine/rifle/m41aMK1{
+	pixel_x = 9
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/lv553/indoors/uscm_garrison/armory)
 "skc" = (
 /obj/structure/bed/chair/wheelchair,
 /obj/structure/sign/poster/clf{
@@ -22816,6 +23465,12 @@
 	},
 /turf/open/gm/dirt,
 /area/lv553/landing_zone_2)
+"skU" = (
+/obj/structure/target,
+/turf/open/floor/almayer{
+	icon_state = "plating_striped"
+	},
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "slO" = (
 /obj/item/toy/inflatable_duck,
 /turf/open/gm/river,
@@ -22852,6 +23507,19 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv553/indoors/gated_community/director_of_corporate_research)
+"snw" = (
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = 32;
+	pixel_y = 0
+	},
+/turf/open/gm/dirt,
+/area/space)
+"snz" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "soC" = (
 /obj/item/trash/uscm_mre,
 /obj/item/prop{
@@ -22994,7 +23662,7 @@
 	},
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/grass,
-/area/space)
+/area/lv553/indoors/bungalow_manager)
 "suE" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/dirtgrassborder{
@@ -23121,6 +23789,14 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/bungalow_manager)
+"szK" = (
+/obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/lv553/indoors/uscm_garrison/io_office)
 "szN" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "bedroom door";
@@ -23171,10 +23847,17 @@
 /obj/item/smartgun_battery,
 /turf/open/floor,
 /area/space)
-"sAY" = (
-/obj/structure/machinery/vending/cola,
-/turf/open/floor/wood,
-/area/lv553/indoors/gated_community/director_of_coporate_relations)
+"sBI" = (
+/obj/structure/sink{
+	pixel_y = 24
+	},
+/obj/structure/machinery/power/apc{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "freezerfloor"
+	},
+/area/lv553/indoors/gated_community/head_of_corporate_security)
 "sBN" = (
 /obj/item/stool,
 /obj/item/weapon/gun/revolver/cmb,
@@ -23270,15 +23953,9 @@
 	pixel_x = 7;
 	pixel_y = 1
 	},
-/obj/item/weapon/gun/shotgun/combat{
-	name = "\improper rusty MK221 tactical shotgun";
-	desc = "This is a rusty Weyland-Yutani MK221 Shotgun, a semi-automatic shotgun with a quick fire rate.";
-	damage_mult = 0.8;
-	accuracy_mult = 0.5;
-	accuracy_mult_unwielded = 0.5
-	},
+/obj/item/weapon/gun/shotgun/pump,
 /turf/open/floor,
-/area/space)
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "sFK" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor,
@@ -23329,7 +24006,7 @@
 	pixel_y = 2
 	},
 /turf/open/floor/wood,
-/area/space)
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "sGZ" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	density = 2;
@@ -23381,6 +24058,14 @@
 	icon_state = "white"
 	},
 /area/space)
+"sIc" = (
+/obj/structure/machinery/door/window{
+	layer = 3.01
+	},
+/turf/open/floor{
+	icon_state = "freezerfloor"
+	},
+/area/lv553/indoors/uscm_garrison/io_office)
 "sKV" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 1
@@ -23494,7 +24179,7 @@
 "sQd" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "sQq" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /obj/item/reagent_container/food/snacks/meat,
@@ -23545,6 +24230,14 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/space)
+"sRs" = (
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = -24
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/welcome_centre/lobby)
 "sRE" = (
 /obj/structure/machinery/vending/coffee,
 /obj/structure/sign/safety/coffee{
@@ -23566,6 +24259,12 @@
 	},
 /turf/open/gm/dirt,
 /area/space)
+"sRO" = (
+/obj/item/shard,
+/turf/open/floor/almayer/uscm/directional{
+	dir = 10
+	},
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "sRV" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3";
@@ -23604,6 +24303,11 @@
 	icon_state = "dark"
 	},
 /area/space)
+"sSb" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/microwave,
+/turf/open/floor/wood,
+/area/lv553/indoors/gated_community/director_of_coporate_relations)
 "sSj" = (
 /obj/item/ammo_magazine/handful/shotgun/slug,
 /turf/open/floor{
@@ -23646,7 +24350,7 @@
 	},
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/wood,
-/area/space)
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "sUG" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/drinks/cans/ale{
@@ -23655,17 +24359,6 @@
 	},
 /turf/open/floor,
 /area/space)
-"sUU" = (
-/obj/structure/sink{
-	pixel_y = 24
-	},
-/obj/structure/machinery/power/apc{
-	dir = 8
-	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
-/area/lv553/indoors/gated_community/head_of_corporate_security)
 "sVB" = (
 /obj/structure/flora/bush/ausbushes/ppflowers{
 	icon_state = "lavendergrass_1"
@@ -23867,15 +24560,6 @@
 "tbe" = (
 /obj/structure/girder,
 /turf/open/asphalt/cement,
-/area/space)
-"tbt" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
-/turf/open/floor/almayer,
 /area/space)
 "tbM" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
@@ -24089,10 +24773,12 @@
 	icon_state = "freezerfloor"
 	},
 /area/space)
-"tkV" = (
-/obj/structure/machinery/computer/telecomms/traffic,
-/turf/open/asphalt/cement,
-/area/space)
+"tlo" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/gm/grass,
+/area/lv553/indoors/welcome_centre/canteen)
 "tlw" = (
 /obj/item/weapon/broken_bottle,
 /obj/item/storage/pill_bottle/ultrazine/skillless{
@@ -24142,6 +24828,21 @@
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/wood,
 /area/space)
+"tna" = (
+/obj/structure/sign/safety/fire_haz{
+	pixel_y = 32;
+	pixel_x = 1
+	},
+/obj/structure/sign/safety/north{
+	pixel_x = 14;
+	pixel_y = 32
+	},
+/turf/open/gm/dirt,
+/area/space)
+"tnf" = (
+/obj/structure/machinery/vending/cola,
+/turf/open/floor/almayer,
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "tnm" = (
 /obj/item/shard,
 /turf/open/gm/dirtgrassborder{
@@ -24220,12 +24921,20 @@
 /area/lv553/indoors/hospital/reception)
 "tpf" = (
 /obj/structure/surface/rack,
-/obj/item/storage/box/nade_box/tear_gas,
+/obj/item/storage/box/packet/baton_slug{
+	pixel_y = 7
+	},
+/obj/item/storage/box/packet/baton_slug{
+	pixel_y = 2
+	},
+/obj/item/storage/box/packet/baton_slug{
+	pixel_y = -2
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
-/area/space)
+/area/lv553/indoors/uscm_garrison/armory)
 "tpi" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3"
@@ -24328,6 +25037,13 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass,
 /area/space)
+"tsc" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "gated_community";
+	name = "\improper gated community shutters"
+	},
+/turf/open/gm/dirt,
+/area/space)
 "tsB" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/glass/bucket{
@@ -24380,6 +25096,9 @@
 	},
 /turf/open/floor,
 /area/lv553/indoors/gated_community/residence_bunkhouse)
+"tuZ" = (
+/turf/closed/wall,
+/area/lv553/indoors/gated_community/head_of_corporate_engineering)
 "tvA" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -24465,6 +25184,12 @@
 	dir = 1
 	},
 /area/space)
+"txF" = (
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/lv553/indoors/uscm_garrison/armory)
 "tyw" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
@@ -24505,7 +25230,7 @@
 	},
 /obj/item/reagent_container/food/drinks/cans/souto/grape,
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "tza" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8
@@ -24601,12 +25326,21 @@
 /obj/item/ammo_box/magazine/nailgun/empty,
 /turf/open/floor,
 /area/space)
+"tCm" = (
+/obj/structure/largecrate/supply/ammo/m39/half,
+/turf/open/asphalt/cement,
+/area/space)
 "tCB" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/dirtgrassborder{
 	dir = 8
 	},
 /area/space)
+"tCC" = (
+/turf/open/floor/almayer/uscm/directional{
+	dir = 9
+	},
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "tCF" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -24638,13 +25372,6 @@
 "tDK" = (
 /obj/item/stack/medical/ointment,
 /turf/open/floor/interior/wood,
-/area/space)
-"tDN" = (
-/obj/structure/largecrate/random/mini/ammo{
-	pixel_y = 22;
-	pixel_x = 6
-	},
-/turf/open/asphalt/cement,
 /area/space)
 "tDP" = (
 /obj/structure/barricade/wooden,
@@ -24876,6 +25603,29 @@
 	icon_state = "barber"
 	},
 /area/space)
+"tOr" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/storage/fancy/cigar{
+	pixel_y = 15;
+	pixel_x = -4
+	},
+/obj/item/storage/fancy/cigar/matchbook/brown{
+	pixel_x = 9;
+	pixel_y = 15
+	},
+/obj/item/ashtray/bronze{
+	pixel_y = -14;
+	pixel_x = -1
+	},
+/obj/item/trash/cigbutt/cigarbutt{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/lv553/indoors/uscm_garrison/io_office)
 "tOE" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /obj/item/ammo_magazine/rifle/mar40/lmg,
@@ -24893,6 +25643,13 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/indoors/hospital/research/floor)
+"tPV" = (
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (WEST)"
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/uscm_garrison/io_office)
 "tQd" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/snacks/wy_chips/pepper{
@@ -24918,13 +25675,6 @@
 	name = "suspisious cable"
 	},
 /turf/open/floor/plating,
-/area/space)
-"tQx" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "gated_community";
-	name = "\improper gated community shutters"
-	},
-/turf/open/gm/dirt,
 /area/space)
 "tQJ" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -25073,6 +25823,10 @@
 	},
 /turf/open/asphalt/cement,
 /area/space)
+"tUx" = (
+/obj/structure/machinery/light,
+/turf/open/floor/almayer,
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "tVu" = (
 /obj/structure/machinery/vending/cola,
 /turf/open/floor,
@@ -25188,6 +25942,11 @@
 	},
 /turf/open/asphalt/cement,
 /area/space)
+"tZy" = (
+/turf/open/floor/almayer/uscm/directional{
+	dir = 1
+	},
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "uag" = (
 /obj/item/trash/burger,
 /turf/open/floor/almayer{
@@ -25252,7 +26011,7 @@
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
-/area/space)
+/area/lv553/indoors/uscm_garrison/armory)
 "ubj" = (
 /obj/item/trash/chunk,
 /turf/open/floor{
@@ -25348,15 +26107,6 @@
 /obj/effect/spawner/gibspawner/human,
 /turf/open/gm/dirt,
 /area/lv553/landing_zone_2)
-"uey" = (
-/obj/structure/largecrate/black_market,
-/turf/open/asphalt/cement,
-/area/space)
-"ueN" = (
-/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
-/obj/structure/flora/jungle/hedge,
-/turf/open/gm/grass,
-/area/space)
 "ueY" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/ammo_magazine/rifle/mar40{
@@ -25400,6 +26150,15 @@
 	},
 /turf/open/floor,
 /area/space)
+"ugs" = (
+/obj/item/clothing/mask/facehugger{
+	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
+	icon_state = "facehugger_impregnated";
+	name = "????";
+	stat = 2
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "ugV" = (
 /obj/structure/ladder{
 	height = 1;
@@ -25548,6 +26307,12 @@
 	},
 /turf/open/gm/dirt,
 /area/space)
+"unM" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer,
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "uob" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/storage/bible{
@@ -25561,6 +26326,10 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/bungalow_manager)
+"uoe" = (
+/obj/structure/machinery/computer/telecomms/traffic,
+/turf/open/asphalt/cement,
+/area/lv553/indoors/uscm_garrison/io_office)
 "uoz" = (
 /obj/structure/bed{
 	icon_state = "abed";
@@ -25598,6 +26367,32 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/indoors/hospital/research/floor)
+"uoI" = (
+/obj/structure/surface/rack,
+/obj/item/explosive/grenade/slug/baton{
+	pixel_x = 5;
+	pixel_y = 4
+	},
+/obj/item/explosive/grenade/slug/baton{
+	pixel_x = -3;
+	pixel_y = 4
+	},
+/obj/item/explosive/grenade/high_explosive/training{
+	pixel_y = -4;
+	pixel_x = -2
+	},
+/obj/item/explosive/grenade/high_explosive/training{
+	pixel_y = -4;
+	pixel_x = 5
+	},
+/obj/structure/barricade/metal{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "red"
+	},
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "uoR" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 8;
@@ -25685,13 +26480,6 @@
 	},
 /turf/open/floor/interior/plastic,
 /area/space)
-"usW" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/almayer,
-/area/space)
 "utg" = (
 /obj/structure/machinery/door/airlock/almayer/research{
 	locked = 1;
@@ -25732,14 +26520,6 @@
 "uuj" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/wood,
-/area/space)
-"uvg" = (
-/obj/structure/bed/chair/office/light{
-	dir = 8
-	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
 /area/space)
 "uwi" = (
 /obj/structure/extinguisher_cabinet/alt{
@@ -25783,6 +26563,10 @@
 /obj/item/weapon/gun/rifle/mar40/lmg,
 /turf/open/gm/dirt,
 /area/space)
+"uBp" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/almayer,
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "uBu" = (
 /obj/structure/machinery/computer/cameras/wooden_tv{
 	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW.";
@@ -26057,6 +26841,15 @@
 	},
 /turf/open/gm/dirt,
 /area/space)
+"uNR" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/lv553/indoors/uscm_garrison/io_office)
 "uNU" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/drinks/bottle/cognac{
@@ -26064,13 +26857,6 @@
 	pixel_y = 18
 	},
 /turf/open/floor,
-/area/space)
-"uOm" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	name = "\improper USCM bunkroom door";
-	dir = 1
-	},
-/turf/open/floor/almayer,
 /area/space)
 "uOv" = (
 /obj/structure/bed,
@@ -26188,6 +26974,17 @@
 	},
 /turf/open/floor,
 /area/space)
+"uWW" = (
+/turf/open/floor/almayer/uscm/directional{
+	dir = 6
+	},
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
+"uXa" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/gm/grass,
+/area/lv553/indoors/welcome_centre/offices)
 "uXU" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -26236,11 +27033,6 @@
 	},
 /turf/open/gm/dirt,
 /area/space)
-"uZo" = (
-/obj/structure/window_frame/colony/reinforced,
-/obj/item/shard,
-/turf/open/floor/almayer,
-/area/space)
 "uZH" = (
 /obj/structure/bed,
 /turf/open/gm/river,
@@ -26262,6 +27054,12 @@
 	},
 /turf/open/gm/dirt2,
 /area/space)
+"vao" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/gm/grass,
+/area/lv553/indoors/lz_sec_checkpoint)
 "vaN" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/tool/kitchen/utensil/pspoon{
@@ -26279,7 +27077,7 @@
 /obj/structure/flora/bush/ausbushes/grassybush,
 /obj/structure/machinery/light,
 /turf/open/gm/grass,
-/area/space)
+/area/lv553/indoors/welcome_centre/lobby)
 "vbp" = (
 /obj/structure/mineral_door/wood,
 /turf/open/floor/interior/wood,
@@ -26296,14 +27094,17 @@
 	},
 /turf/open/gm/dirt,
 /area/lv553/landing_zone_1)
-"vbX" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/wood,
-/area/lv553/indoors/gated_community/head_of_corporate_engineering)
 "vbZ" = (
 /turf/closed/wall/strata_ice/jungle,
+/area/space)
+"vcr" = (
+/obj/structure/sign/safety/firingrange{
+	pixel_y = 32
+	},
+/turf/open/gm/dirtgrassborder{
+	dir = 4;
+	icon_state = "grassdirt_corner2"
+	},
 /area/space)
 "vcs" = (
 /obj/structure/machinery/floodlight/landing,
@@ -26449,7 +27250,7 @@
 /turf/open/gm/dirtgrassborder{
 	dir = 1
 	},
-/area/space)
+/area/lv553/indoors/lz_sec_checkpoint)
 "vgM" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/book,
@@ -26575,16 +27376,6 @@
 	},
 /turf/open/asphalt/cement,
 /area/space)
-"vmj" = (
-/obj/structure/surface/rack,
-/obj/item/weapon/gun/rifle/l42a{
-	pixel_y = 1
-	},
-/obj/item/weapon/gun/rifle/l42a{
-	pixel_y = -8
-	},
-/turf/open/floor/almayer,
-/area/space)
 "vml" = (
 /obj/item/clothing/under/darkred{
 	pixel_x = -5;
@@ -26659,23 +27450,6 @@
 	tag = "icon-sterile"
 	},
 /area/space)
-"vpv" = (
-/obj/structure/desertdam/decals/road_stop{
-	dir = 1;
-	icon_state = "stop_decal5";
-	pixel_y = 4
-	},
-/obj/structure/machinery/landinglight/ds1/spoke,
-/obj/structure/sign/safety/reception{
-	pixel_y = 0;
-	pixel_x = 33
-	},
-/obj/structure/sign/safety/south{
-	pixel_y = 0;
-	pixel_x = 46
-	},
-/turf/open/gm/dirt,
-/area/lv553/landing_zone_1)
 "vpQ" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3";
@@ -26704,6 +27478,10 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/space)
+"vrM" = (
+/obj/item/explosive/grenade/slug/baton,
+/turf/open/floor/almayer,
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "vsi" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/snacks/baguette,
@@ -26714,7 +27492,7 @@
 "vsv" = (
 /obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "vtp" = (
 /obj/structure/machinery/iv_drip,
 /obj/item/reagent_container/blood/OPlus,
@@ -26846,6 +27624,16 @@
 	},
 /turf/open/floor/interior/wood,
 /area/space)
+"vzN" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 1;
+	name = "bathroom door"
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "vzU" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/emails{
@@ -26877,15 +27665,6 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/indoors/hospital/reception)
-"vBZ" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
-/turf/open/asphalt/cement,
-/area/space)
 "vCg" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/storage/fancy/egg_box,
@@ -26938,13 +27717,6 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/indoors/hospital/research/floor)
-"vEq" = (
-/obj/structure/machinery/door/airlock/almayer/secure{
-	dir = 1;
-	name = "\improper third fleet intelligence officer bunk"
-	},
-/turf/open/floor/wood,
-/area/space)
 "vEB" = (
 /obj/structure/toilet{
 	dir = 8;
@@ -27101,7 +27873,7 @@
 	pixel_y = -4
 	},
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "vJU" = (
 /obj/structure/surface/rack,
 /obj/item/toy/prize/deathripley,
@@ -27231,11 +28003,10 @@
 /turf/open/floor/wood,
 /area/lv553/indoors/welcome_centre/canteen)
 "vQt" = (
-/obj/structure/flora/jungle/hedge{
-	dir = 5
+/turf/open/floor/almayer/uscm/directional{
+	dir = 4
 	},
-/turf/open/gm/grass,
-/area/lv553/landing_zone_1)
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "vQD" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/ashtray/bronze{
@@ -27280,6 +28051,11 @@
 	dir = 8
 	},
 /turf/open/asphalt/cement,
+/area/space)
+"vRg" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/flora/jungle/hedge,
+/turf/open/gm/grass,
 /area/space)
 "vRj" = (
 /obj/structure/bed/chair,
@@ -27400,9 +28176,13 @@
 	icon_state = "white"
 	},
 /area/lv553/indoors/welcome_centre/offices)
-"vTK" = (
-/turf/closed/wall,
-/area/lv553/indoors/gated_community/head_of_corporate_security)
+"vTE" = (
+/obj/structure/largecrate/supply/supplies/mre,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/lv553/indoors/uscm_garrison/armory)
 "vTN" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 4
@@ -27419,7 +28199,7 @@
 	},
 /obj/item/clothing/head/helmet/marine,
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "vUd" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -27482,15 +28262,6 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/gated_community/director_of_coporate_relations)
-"vWh" = (
-/obj/structure/flora/jungle/hedge{
-	dir = 8
-	},
-/obj/structure/flora/jungle/hedge{
-	dir = 6
-	},
-/turf/open/gm/grass,
-/area/space)
 "vWz" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 8;
@@ -27529,6 +28300,13 @@
 	},
 /turf/open/gm/dirtgrassborder,
 /area/space)
+"vXF" = (
+/obj/effect/landmark/static_comms/net_one,
+/obj/structure/cable/heavyduty{
+	icon_state = "0-2"
+	},
+/turf/open/asphalt/cement,
+/area/lv553/indoors/uscm_garrison/io_office)
 "vXZ" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -27548,7 +28326,7 @@
 	},
 /obj/item/toy/crayon,
 /turf/open/floor,
-/area/space)
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "vYP" = (
 /obj/structure/machinery/shower{
 	dir = 1
@@ -27609,7 +28387,7 @@
 	},
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "wav" = (
 /obj/structure/machinery/door_control{
 	desc = "A garage door opener.";
@@ -27839,6 +28617,12 @@
 /obj/structure/flora/grass/tallgrass/jungle/corner,
 /turf/open/gm/grass,
 /area/space)
+"wkH" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "wlb" = (
 /obj/structure/fence,
 /turf/open/floor/plating,
@@ -27977,6 +28761,19 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor,
 /area/space)
+"wsa" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/structure/sign/safety/outpatient{
+	pixel_x = 32
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (EAST)"
+	},
+/area/lv553/indoors/hospital/reception)
 "wsO" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 4
@@ -28251,6 +29048,12 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/hospital/research/offices)
+"wFB" = (
+/turf/open/floor/almayer/uscm/directional{
+	dir = 8;
+	icon_state = "logo_c"
+	},
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "wFI" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/snacks/meat{
@@ -28320,7 +29123,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "wIx" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/item/clothing/mask/facehugger{
@@ -28338,7 +29141,7 @@
 	dir = 8
 	},
 /turf/open/floor/wood,
-/area/space)
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "wJu" = (
 /obj/structure/safe,
 /obj/item/storage/pill_bottle/happy{
@@ -28370,6 +29173,16 @@
 	},
 /turf/open/gm/dirtgrassborder,
 /area/space)
+"wJW" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/under/marine{
+	pixel_y = 4
+	},
+/obj/item/clothing/under/marine{
+	pixel_y = -5
+	},
+/turf/open/floor/almayer,
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "wKp" = (
 /obj/structure/bed/sofa/south/grey/right,
 /obj/item/clothing/mask/cigarette/weed,
@@ -28379,6 +29192,14 @@
 	pixel_y = 12
 	},
 /turf/open/floor/interior/wood,
+/area/space)
+"wKD" = (
+/obj/structure/largecrate/random/barrel/red,
+/obj/item/explosive/grenade/high_explosive/training{
+	pixel_y = -4;
+	pixel_x = 5
+	},
+/turf/open/asphalt/cement,
 /area/space)
 "wKZ" = (
 /obj/structure/surface/table/woodentable,
@@ -28430,14 +29251,9 @@
 	},
 /turf/open/floor/wood,
 /area/space)
-"wNy" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
-/turf/open/floor{
-	icon_state = "freezerfloor"
-	},
-/area/lv553/indoors/gated_community/head_of_corporate_security)
+"wNw" = (
+/turf/open/asphalt/cement,
+/area/lv553/indoors/uscm_garrison/io_office)
 "wNA" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/gm/grass,
@@ -28640,7 +29456,7 @@
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
-/area/space)
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "wTw" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "storage room door"
@@ -28668,6 +29484,12 @@
 /obj/item/weapon/gun/rifle/mar40/carbine,
 /turf/open/floor/wood,
 /area/space)
+"wTY" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/gm/dirt,
+/area/space)
 "wUA" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3";
@@ -28692,9 +29514,6 @@
 	tag = "icon-sterile_green_corner (WEST)"
 	},
 /area/lv553/indoors/hospital/reception)
-"wWi" = (
-/turf/closed/wall/r_wall,
-/area/lv553/indoors/gated_community/director_of_coporate_relations)
 "wWr" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -28847,12 +29666,6 @@
 	icon_state = "barber"
 	},
 /area/lv553/indoors/hospital/operating_rooms)
-"xea" = (
-/obj/item/shard,
-/turf/open/floor/almayer/uscm/directional{
-	dir = 10
-	},
-/area/space)
 "xei" = (
 /obj/item/toy/beach_ball,
 /obj/structure/prop/invuln{
@@ -28975,7 +29788,7 @@
 /turf/open/floor/almayer/uscm/directional{
 	dir = 8
 	},
-/area/space)
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "xiT" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/phone{
@@ -29081,23 +29894,6 @@
 /obj/item/storage/backpack/souto,
 /turf/open/asphalt/cement,
 /area/space)
-"xnb" = (
-/obj/structure/desertdam/decals/road_stop{
-	dir = 1;
-	icon_state = "stop_decal5";
-	pixel_y = 4
-	},
-/obj/structure/machinery/landinglight/ds2/spoke,
-/obj/structure/sign/safety/reception{
-	pixel_y = 0;
-	pixel_x = -18
-	},
-/obj/structure/sign/safety/south{
-	pixel_y = 0;
-	pixel_x = -31
-	},
-/turf/open/gm/dirt,
-/area/lv553/landing_zone_2)
 "xni" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
@@ -29107,6 +29903,10 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/indoors/hospital/research/floor)
+"xnp" = (
+/obj/item/weapon/pole/fancy_cane/this_is_a_knife/machete,
+/turf/open/floor/wood,
+/area/lv553/indoors/uscm_garrison/io_office)
 "xnz" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/dirtgrassborder{
@@ -29222,7 +30022,7 @@
 	name = "\improper USCMC Garrison Recruitment Center door"
 	},
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "xsy" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/a_gift{
@@ -29304,6 +30104,11 @@
 	},
 /turf/open/floor/interior/wood,
 /area/space)
+"xvb" = (
+/turf/open/floor{
+	icon_state = "freezerfloor"
+	},
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "xvh" = (
 /obj/structure/toilet{
 	dir = 4
@@ -29316,13 +30121,6 @@
 	icon_state = "barber"
 	},
 /area/lv553/indoors/lz_sec_checkpoint)
-"xvp" = (
-/obj/structure/tunnel,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "barber"
-	},
-/area/space)
 "xvJ" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3"
@@ -29383,6 +30181,13 @@
 /obj/structure/stairs/perspective{
 	dir = 1;
 	icon_state = "p_stair_full"
+	},
+/turf/open/asphalt/cement,
+/area/space)
+"xyj" = (
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_y = 22;
+	pixel_x = 6
 	},
 /turf/open/asphalt/cement,
 /area/space)
@@ -29468,6 +30273,17 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/gated_community/head_of_corporate_engineering)
+"xDf" = (
+/obj/structure/sign/safety/landingzone{
+	pixel_y = 32;
+	pixel_x = 1
+	},
+/obj/structure/sign/safety/north{
+	pixel_x = 14;
+	pixel_y = 32
+	},
+/turf/open/gm/dirtgrassborder,
+/area/lv553/landing_zone_2)
 "xDm" = (
 /obj/structure/surface/table,
 /obj/item/storage/fancy/cigarettes/lucky_strikes_4{
@@ -29578,7 +30394,7 @@
 /obj/item/trash/cigbutt/cigarbutt,
 /obj/item/clothing/head/beret/cm/black,
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "xGh" = (
 /obj/structure/filingcabinet{
 	pixel_x = 8
@@ -29600,6 +30416,13 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/indoors/hospital/reception)
+"xGn" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/turf/open/gm/dirt,
+/area/space)
 "xGu" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "bedroom door"
@@ -29620,6 +30443,20 @@
 	tag = "icon-sterile"
 	},
 /area/space)
+"xIr" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper USCM bunkroom door";
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "redcorner"
+	},
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
+"xIK" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor,
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "xIL" = (
 /obj/structure/surface/rack,
 /turf/open/gm/grass,
@@ -29674,12 +30511,8 @@
 	},
 /area/space)
 "xKq" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/obj/item/trash/uscm_mre,
-/turf/open/floor/almayer,
-/area/space)
+/turf/closed/wall/r_wall,
+/area/lv553/indoors/gated_community/director_of_corporate_research)
 "xKu" = (
 /obj/structure/bedsheetbin{
 	pixel_x = 6;
@@ -29703,7 +30536,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/box/uscm_mre,
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "xKS" = (
 /obj/structure/sink{
 	dir = 1;
@@ -29881,9 +30714,6 @@
 	},
 /turf/open/floor/wood,
 /area/space)
-"xUB" = (
-/turf/open/floor/wood,
-/area/lv553/indoors/gated_community/director_of_corporate_research)
 "xUY" = (
 /turf/closed/wall,
 /area/lv553/indoors/hospital/research/toilets)
@@ -29902,12 +30732,12 @@
 	},
 /area/lv553/indoors/hospital/research/offices)
 "xVg" = (
-/obj/structure/largecrate/supply/weapons/flamers,
+/obj/structure/largecrate/supply/supplies/flares,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
-/area/space)
+/area/lv553/indoors/uscm_garrison/armory)
 "xVs" = (
 /obj/structure/surface/rack,
 /obj/item/storage/firstaid/adv/empty,
@@ -30091,6 +30921,20 @@
 	icon_state = "white_cyan1"
 	},
 /area/space)
+"xZV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "0-8"
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "0-4"
+	},
+/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/port_gen/pacman/super,
+/turf/open/asphalt/cement,
+/area/lv553/indoors/uscm_garrison/io_office)
 "ybb" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/pistol/m1911{
@@ -30110,7 +30954,7 @@
 	pixel_y = 4
 	},
 /turf/open/floor/almayer,
-/area/space)
+/area/lv553/indoors/uscm_garrison/garrison_bunks)
 "ybm" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/wood,
@@ -30136,6 +30980,16 @@
 	},
 /turf/open/asphalt/cement,
 /area/space)
+"ybJ" = (
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (WEST)"
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/lv553/indoors/uscm_garrison/io_office)
 "ybR" = (
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
@@ -30258,6 +31112,13 @@
 	},
 /obj/item/spacecash/ewallet,
 /turf/open/floor/wood,
+/area/lv553/indoors/welcome_centre/lobby)
+"yik" = (
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (WEST)"
+	},
+/turf/open/gm/grass,
 /area/lv553/indoors/welcome_centre/lobby)
 "yiC" = (
 /obj/structure/machinery/light/small{
@@ -40280,19 +41141,19 @@ tfr
 sRY
 jxI
 jxI
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
+nAq
+nAq
+nAq
+nAq
+nAq
+nAq
+nAq
+nAq
+nAq
+nAq
+nAq
+nAq
+nAq
 jxI
 sRY
 jYr
@@ -40500,27 +41361,27 @@ eff
 nmG
 nRr
 dsE
-pCm
-pCm
-pCm
-pCm
-pCm
-spx
-slT
-xRU
-pCm
+nAq
+nAq
+nAq
+nAq
+nAq
+lWn
+oHb
+lgp
+dwT
 waf
 fuQ
-xKq
-haZ
-wIu
+rtE
+unM
+rPF
 wIu
 qfo
-pCm
+nAq
 jxI
 jxI
 bAZ
-vBZ
+deY
 aUt
 aUt
 aUt
@@ -40724,27 +41585,27 @@ eff
 nmG
 nRr
 dsE
-pCm
-rsg
-xvp
-qCJ
-pCm
-spx
-slT
-xRU
-pCm
+nAq
+imD
+rZN
+nBc
+dwT
+lWn
+snz
+lgp
+dwT
 hCv
-haZ
+pBX
 tyF
 fhR
 nFl
 eBX
-mqx
-pCm
+rWM
+nAq
 jxI
 jxI
 bAZ
-lvz
+mwu
 aUt
 aUt
 aUt
@@ -40948,23 +41809,23 @@ eff
 vWV
 nRr
 dsE
-pCm
-rsg
-slT
-qCJ
-pCm
-spx
+nAq
+imD
+snz
+nBc
+dwT
+lWn
 dda
-xRU
-pCm
+lgp
+dwT
 qzb
-haZ
-xKq
-haZ
+pBX
+rtE
+pBX
 vTO
 ceg
-mqx
-pCm
+rWM
+nAq
 jxI
 jxI
 bAZ
@@ -41172,36 +42033,36 @@ vWV
 nRr
 nRr
 dsE
-pCm
-rsg
-slT
-qCJ
-pCm
-pCm
+nAq
+imD
+snz
+nBc
+dwT
+dwT
 rkb
-pCm
-pCm
-hGu
-haZ
-haZ
-haZ
+dwT
+dwT
+rux
+pBX
+pBX
+pBX
 hgt
-hmI
-haZ
-pCm
+arM
+tUx
+nAq
 jxI
 jxI
 bAZ
-pfN
+tCm
 aUt
-dYO
+djR
 aUt
 fAW
 aUt
-eff
-eff
-eff
-eff
+rAp
+rAp
+rAp
+rAp
 sRY
 nmG
 nRr
@@ -41396,36 +42257,36 @@ nRr
 nRr
 gYk
 tfr
-pCm
-feC
-slT
-slT
-ezT
-haZ
-haZ
-haZ
-haZ
-haZ
-haZ
-haZ
-haZ
-haZ
-haZ
+nAq
+eIi
+snz
+snz
+vzN
+pBX
+pBX
+eIh
+pBX
+pBX
+eIh
+pBX
+pBX
+pBX
+pBX
 qFe
-pCm
+nAq
 jxI
 jxI
 bAZ
-mXM
+qSQ
 aUt
-tDN
+xyj
 aUt
 aUt
-uey
-eff
-nVD
+dBK
+rAp
+cXp
 wTr
-eff
+rAp
 jxI
 nmG
 nRr
@@ -41614,42 +42475,42 @@ lPH
 lPH
 frz
 eff
-qnn
+wKD
 aUt
 aUt
 eff
 jxI
 sRY
-pCm
-feC
-slT
-slT
-pCm
-pCm
-xiZ
-pCm
-pCm
-pCm
-pCm
+nAq
+eIi
+rWn
+snz
+dwT
+dwT
+aMI
+dwT
+dwT
+dwT
+dwT
 qDx
-haZ
-haZ
+pBX
+fkp
+dwT
+dwT
+nAq
 pCm
 pCm
-pCm
-pCm
-pCm
-pCm
+lSd
 rEY
-daq
-daq
-eff
-eff
-eff
-eff
+dFr
+dFr
+rAp
+rAp
+rAp
+rAp
 cMW
-eCc
-eff
+xvb
+rAp
 ncN
 nmG
 nRr
@@ -41844,36 +42705,36 @@ aUt
 eff
 sRY
 jxI
-pCm
-pCm
-pCm
-pCm
-pCm
-fYM
-izj
-fYM
-pCm
-fuS
-haZ
-haZ
-haZ
-haZ
+nAq
+dwT
+dwT
+dwT
+dwT
+drC
+aYk
+drC
+dwT
+wJW
+pBX
+pBX
+pBX
+pBX
 gDo
-pCm
+dwT
 jxI
 jxI
 sRY
-pCm
+rAp
 bQg
 wIM
 sGa
-eff
-kQl
+rAp
+tnf
 lBa
-eff
-eff
+rAp
+rAp
 iZp
-eff
+rAp
 aCa
 nmG
 nRr
@@ -42068,36 +42929,36 @@ aUt
 eff
 jxI
 jxI
-pCm
-pel
-pel
-pel
-pCm
+nAq
+skU
+hxX
+aHe
+dwT
 siq
-izj
+aYk
 ajU
-pCm
+dwT
 vJG
 dSE
-pOy
+tCC
 xiR
 pFz
 oQs
-bYj
+uBp
 jxI
 xaD
 jxI
-pCm
-qPb
+rAp
+ugs
 hGz
-aXt
-eff
+wkH
+rAp
 haZ
 haZ
-usW
+ggR
 haZ
 haZ
-eff
+rAp
 rUE
 vWV
 nRr
@@ -42292,36 +43153,36 @@ eff
 eff
 vbZ
 jxI
-pCm
-kWo
-kWo
-kWo
-pCm
-fYM
-izj
-fYM
-pCm
-vmj
-haZ
-cnN
-alH
-baZ
+nAq
+cPv
+pgp
+nDQ
+dwT
+oOk
+aYk
+qxi
+dwT
+gVP
+pBX
+tZy
+wFB
+dyk
 xKQ
-bYj
+uBp
 jxI
 jxI
 jxI
-pCm
-cTE
-dmD
-cTE
+rAp
+jZp
+oxC
+jZp
 sUh
-cKo
+cjN
 haZ
 exB
 xFr
 biZ
-eff
+rAp
 jiD
 nRr
 nRr
@@ -42516,37 +43377,37 @@ vbZ
 vbZ
 vbZ
 sRY
-pCm
-kWo
-kWo
-kWo
-pCm
+nAq
+gKg
+pgp
+nDQ
+dwT
 vXZ
-izj
-fYM
-pCm
-lDg
-haZ
-nRD
+aYk
+drC
+dwT
+meZ
+pBX
+hEM
 djx
-bNs
+uWW
 xKQ
-bYj
+uBp
 sRY
 gUi
 jxI
-pCm
-eff
-eff
-eff
-eff
+rAp
+rAp
+rAp
+rAp
+rAp
 haZ
 haZ
 cXO
 onY
 eOG
-eff
-kKN
+rAp
+fXW
 nRr
 nRr
 nRr
@@ -42740,36 +43601,36 @@ vbZ
 vbZ
 jxI
 jxI
-pCm
-ard
-kSk
-kSk
-pCm
-pCm
-uKK
-pCm
-pCm
+nAq
+uoI
+cID
+cRa
+dwT
+dwT
+lgA
+dwT
+dwT
 mVD
 ybb
-haZ
-haZ
-haZ
+pBX
+pBX
+pBX
 lEw
-pCm
+dwT
 jxI
 jxI
 jxI
-pCm
-izj
-oag
-izj
+rAp
+see
+pbd
+pkQ
 pVz
 haZ
 haZ
 pOy
-xiR
-xea
-uZo
+jHS
+sRO
+eNt
 nRr
 nRr
 nRr
@@ -42957,44 +43818,44 @@ lPH
 eff
 jxI
 jxI
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-kEg
-haZ
-haZ
-uOm
+bhp
+bhp
+bhp
+bhp
+bhp
+bhp
+bhp
+bhp
+ewg
+sht
+sht
+xIr
 nRr
 nRr
 huq
-pCm
-hZe
-haZ
-haZ
-haZ
-haZ
+dwT
+qzC
+pBX
+cvc
+eIh
+pBX
 kQl
-pCm
+dwT
 xaD
 sRY
 jxI
-pCm
-qyo
-hRO
-xuI
-eff
+rAp
+jSA
+jxt
+jZg
+rAp
 map
-tbt
+aQV
 cnN
 alH
 dxR
-uZo
-kKN
+eNt
+fXW
 gYk
 owM
 nRr
@@ -43181,43 +44042,43 @@ lPH
 eff
 sRY
 sRY
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-dId
+bhp
+bhp
+bhp
+bhp
+bhp
+bhp
+bhp
+bhp
+bhp
+bhp
+dwT
+dwT
+vcr
 nRr
 dsE
-pCm
-pCm
-pCm
-pCm
-pCm
+dwT
+dwT
+dwT
+nAq
+dwT
 gWk
-pCm
-pCm
+dwT
+dwT
 jxI
 jxI
 jxI
-pCm
+rAp
 hJG
-bgB
+bMd
 sFf
-btA
-fna
+xIK
+vrM
 haZ
 nRD
-djx
+vQt
 qbF
-uZo
+eNt
 nRr
 huq
 nmG
@@ -43405,16 +44266,16 @@ jFV
 eff
 jxI
 jxI
-pCm
-pCm
+bhp
+bhp
 eXl
 eXl
-eXl
-eXl
-pmH
-pCm
-pCm
-pCm
+pKc
+hWu
+hWu
+bhp
+bhp
+bhp
 sRY
 xaD
 nmG
@@ -43422,7 +44283,7 @@ nRr
 dsE
 jxI
 sRY
-oOk
+aKx
 qFQ
 owM
 nRr
@@ -43431,20 +44292,20 @@ xBF
 jxI
 jxI
 xaD
-pCm
-pCm
-eff
-eff
-eff
+rAp
+rAp
+rAp
+rAp
+rAp
 aCw
 vsv
 emj
 haZ
 mqx
 sQd
-kKN
-wof
-nmG
+fXW
+dsE
+ccg
 nRr
 nRr
 nRr
@@ -43629,17 +44490,17 @@ nfX
 eff
 gUi
 jxI
-pCm
-pCm
-eXl
-kWo
-kWo
-kWo
-kWo
-pCm
-pCm
-pCm
-bwd
+bhp
+bhp
+sjT
+txF
+txF
+txF
+nJQ
+bhp
+bhp
+bhp
+loY
 kkE
 vWV
 nRr
@@ -43656,16 +44517,16 @@ xBF
 jxI
 jxI
 jxI
-pCm
+lSd
 jxI
 ncN
-eff
-eff
-eff
-eff
+rAp
+rAp
+rAp
+rAp
 xsh
-eff
-eff
+rAp
+rAp
 nRr
 dsE
 nmG
@@ -43853,15 +44714,15 @@ eff
 eff
 vbZ
 sRY
-pCm
-pCm
+bhp
+bhp
 eXl
-kWo
-kWo
-kWo
-kWo
+txF
+txF
+txF
+txF
 bFP
-kWo
+txF
 bFP
 nRr
 nRr
@@ -43880,7 +44741,7 @@ vWz
 kkE
 kkE
 kkE
-pCm
+lSd
 kkE
 kkE
 vWV
@@ -44077,22 +44938,20 @@ vbZ
 vbZ
 vbZ
 vbZ
-pCm
-pCm
-cIJ
+bhp
+bhp
+jLD
 cIJ
 ptG
-kWo
-kWo
+vTE
+txF
 bFP
-kWo
+txF
 bFP
 nRr
-rtE
+wTY
 nRr
-rtE
-nRr
-nRr
+wTY
 nRr
 nRr
 nRr
@@ -44104,7 +44963,9 @@ nRr
 nRr
 nRr
 nRr
-mWU
+nRr
+nRr
+qhX
 nRr
 nRr
 nRr
@@ -44301,19 +45162,19 @@ sRY
 vbZ
 vbZ
 vbZ
-pCm
-pCm
+bhp
+bhp
 tpf
 tpf
 ptG
 xVg
-kWo
+txF
 bFP
-kWo
+txF
 bFP
 nRr
 nRr
-rtE
+wTY
 nRr
 nRr
 nRr
@@ -44328,7 +45189,7 @@ nRr
 nRr
 nRr
 nRr
-mWU
+qhX
 nRr
 nRr
 nRr
@@ -44525,16 +45386,17 @@ jxI
 jxI
 vbZ
 vbZ
-pCm
-pCm
+bhp
+bhp
 bjS
-kWo
-kWo
-kWo
-kWo
+txF
+txF
+txF
+txF
 bFP
-kWo
+oCE
 bFP
+nRr
 nRr
 nRr
 nRr
@@ -44550,11 +45412,10 @@ iwf
 iwf
 iwf
 iwf
-iwf
-iwf
-pCm
-mgV
-pCm
+mam
+lSd
+iJZ
+lSd
 iwf
 tfr
 jxI
@@ -44749,22 +45610,22 @@ qer
 pCm
 pCm
 pCm
-pCm
-pCm
-bjS
-kWo
-kWo
-kWo
+bhp
+bhp
+cAI
+txF
+txF
+txF
 jLV
-pCm
-pCm
-pCm
-ryO
-rtE
-rtE
-rtE
+bhp
+bhp
+bhp
+tna
+xGn
+xGn
+xGn
+nRr
 dsE
-jxI
 gUi
 xaD
 jxI
@@ -44776,9 +45637,9 @@ jxI
 jxI
 jxI
 jxI
-bIL
-uvg
-pCm
+oPS
+nlq
+lSd
 jxI
 jxI
 jxI
@@ -44973,23 +45834,21 @@ jxI
 vbZ
 vbZ
 jxI
-pCm
-pCm
+bhp
+bhp
 fkE
 ube
 djp
 fVH
 fVH
-pCm
-pCm
-pCm
-nmG
-rtE
-rtE
-rtE
-bjN
-pCm
-pCm
+bhp
+bhp
+bhp
+nRr
+xGn
+xGn
+xGn
+nPC
 pCm
 pCm
 pCm
@@ -45002,7 +45861,9 @@ pCm
 pCm
 pCm
 pCm
-pCm
+lSd
+lSd
+lSd
 qer
 qer
 qer
@@ -45197,21 +46058,21 @@ vbZ
 vbZ
 vbZ
 jxI
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-nmG
-rtE
-rtE
-rtE
-dsE
+bhp
+bhp
+bhp
+bhp
+bhp
+bhp
+bhp
+bhp
+bhp
+bhp
+nRr
+xGn
+xGn
+xGn
+nRr
 pCm
 fjE
 bLO
@@ -45421,21 +46282,21 @@ vbZ
 vbZ
 jxI
 jxI
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-gUi
-nmG
-rtE
-rtE
-rtE
-dsE
+bhp
+bhp
+bhp
+bhp
+bhp
+bhp
+bhp
+bhp
+hax
+nbL
+nRr
+xGn
+xGn
+xGn
+nRr
 pCm
 fTh
 fZL
@@ -45456,7 +46317,7 @@ jxI
 jxI
 fTh
 qer
-ueN
+vRg
 jxI
 jxI
 gOs
@@ -45650,38 +46511,38 @@ jxI
 jxI
 jxI
 jxI
-pCm
-tkV
-aUt
-pou
-kkE
+hax
+uoe
+mtz
+ghD
 vWV
-rtE
-rtE
-rtE
-dsE
+nRr
+xGn
+xGn
+xGn
+nRr
 pCm
 fTh
 jxI
 jxI
-kEI
-kEI
-kEI
-kEI
-kEI
-kEI
-kEI
-kEI
-qer
-pkE
-pkE
-pkE
-pkE
-pkE
-pkE
-pkE
-pkE
-pkE
+riW
+riW
+riW
+riW
+riW
+riW
+riW
+riW
+jxI
+xKq
+xKq
+xKq
+xKq
+xKq
+xKq
+xKq
+xKq
+xKq
 jxI
 jxI
 nmG
@@ -45874,38 +46735,38 @@ jxI
 jxI
 jxI
 jxI
-pCm
-aUt
-aUt
-aUt
+hax
+mZd
+wNw
+rmk
 nRr
 nRr
 nRr
 nRr
 nRr
-dsE
+gYk
 pCm
 yfC
 jxI
 fZL
-kEI
-sUU
-wNy
+riW
+sBI
+fEd
 jCJ
 lYn
 dJP
 dJP
-ceS
+gVH
 jxI
-izR
+rpu
 ufe
 jiv
 wKZ
 ods
-pkE
+xKq
 jSK
 snm
-pkE
+xKq
 fZL
 jxI
 nmG
@@ -46098,13 +46959,13 @@ vbZ
 sRY
 jxI
 jxI
-pCm
-aUt
-iXO
-aUt
+hax
+wNw
+vXF
+aLn
 iwf
 owM
-mMU
+snw
 nRr
 nRr
 dsE
@@ -46112,24 +46973,24 @@ pCm
 fTh
 jxI
 jxI
-kEI
+riW
 wFN
 qph
-kEI
-cID
+riW
+jtE
 dwr
 frI
-ceS
+gVH
 fZL
-izR
+rpu
 lqP
-xUB
-nZf
-xUB
-pkE
+igJ
+rUL
+igJ
+xKq
 jOV
 sDl
-pkE
+xKq
 jxI
 jxI
 nmG
@@ -46322,38 +47183,38 @@ vbZ
 vbZ
 jxI
 jxI
-pCm
-aUt
-aUt
-cPv
-pCm
-pCm
-pCm
-pWQ
-pCm
-pCm
-pCm
+hax
+wNw
+wNw
+xZV
+qEL
+qEL
+qEL
+pdF
+qEL
+qEL
+hax
 fTh
 jxI
 jxI
-kEI
-kEI
-kEI
-kEI
-cID
+riW
+riW
+riW
+riW
+jtE
 hen
 tcB
-vTK
+bdg
 jxI
-fcz
+kKK
 sZg
-xUB
-pkE
-mRw
-pkE
-pkE
+igJ
+xKq
+hNf
+xKq
+xKq
 xGu
-pkE
+xKq
 jxI
 fZL
 nmG
@@ -46546,38 +47407,38 @@ vbZ
 vbZ
 gUi
 jxI
-pCm
-pCm
-pCm
-pCm
-pCm
-haZ
-haZ
-haZ
-haZ
-haZ
-pCm
+hax
+qEL
+qEL
+qEL
+qEL
+fOK
+pkE
+pkE
+oqP
+pkE
+hax
 fTh
 jxI
 jxI
-kEI
+riW
 rwb
-cID
-nwy
-cID
-cID
+jtE
+fgp
+jtE
+jtE
 hQJ
-vTK
+bdg
 kkE
-pkE
-izR
-pkE
-pkE
-xUB
-xUB
-xUB
+xKq
+rpu
+xKq
+xKq
+igJ
+igJ
+igJ
 cWS
-pkE
+xKq
 jxI
 jxI
 nmG
@@ -46770,38 +47631,38 @@ vbZ
 vbZ
 jxI
 sRY
-pCm
-cTE
-cTE
-cTE
-pCm
-haZ
-haZ
-haZ
-haZ
-haZ
-pCm
+hax
+mGP
+sIc
+chQ
+qEL
+iSd
+pkE
+uNR
+pkE
+uNR
+hax
 fTh
 jxI
 jxI
-kEI
+riW
 lVQ
 qUL
-kEI
-kEI
-cID
+riW
+riW
+jtE
 tQd
-vTK
+bdg
 nRr
 nRr
 nRr
 rMT
-xUB
-xUB
-xUB
+igJ
+igJ
+igJ
 knf
 cVj
-pkE
+xKq
 jxI
 fZL
 nmG
@@ -46994,38 +47855,38 @@ vbZ
 jxI
 jxI
 jxI
-pCm
-cTE
-cTE
-cTE
-vEq
-haZ
-haZ
-haZ
-haZ
-haZ
-pCm
+hax
+rWT
+puc
+puc
+dly
+pkE
+pkE
+dgB
+tOr
+avQ
+hax
 fTh
 fZL
 jxI
-kEI
-cID
+riW
+jtE
 aFe
-cID
-kEI
+jtE
+riW
 lyq
-kEI
-kEI
+riW
+riW
 nRr
 nRr
 nRr
-pkE
+xKq
 dwu
 sNp
 hHQ
 afs
-qGF
-pkE
+opw
+xKq
 jxI
 ncN
 nmG
@@ -47218,38 +48079,38 @@ jxI
 sRY
 jxI
 gUi
-pCm
-cTE
-cTE
-cTE
-pCm
-haZ
-haZ
-haZ
-haZ
-haZ
-pCm
+hax
+tPV
+puc
+xnp
+hax
+ybJ
+pkE
+pkE
+mZG
+qim
+hax
 fTh
 jxI
 jxI
-kEI
+riW
 wbA
 sxe
 vgC
-ceS
+gVH
 nRr
 nRr
 nRr
 nRr
 nRr
 nRr
-pkE
-fcz
-fcz
-fcz
-fcz
-fcz
-pkE
+xKq
+kKK
+kKK
+kKK
+kKK
+kKK
+xKq
 pCm
 kkE
 vWV
@@ -47442,25 +48303,25 @@ jxI
 jxI
 jxI
 jxI
-pCm
-cTE
-cTE
-cTE
-pCm
-haZ
-haZ
-haZ
-haZ
-haZ
-pCm
+hax
+byk
+oYX
+hJS
+hax
+szK
+szK
+iuo
+eZt
+hzz
+hax
 fTh
 jxI
 jxI
-kEI
-vTK
+riW
+bdg
 oNp
-ceS
-kEI
+gVH
+riW
 nRr
 nRr
 nRr
@@ -47473,8 +48334,8 @@ nRr
 nRr
 nRr
 nRr
-aTT
-tQx
+oDF
+tsc
 nRr
 nRr
 nRr
@@ -47666,11 +48527,11 @@ qer
 qer
 qer
 pCm
-pCm
-pCm
-pCm
-pCm
-pCm
+hax
+hax
+hax
+hax
+hax
 vQU
 vQU
 vQU
@@ -47681,7 +48542,7 @@ fTh
 jxI
 jxI
 jxI
-qer
+jxI
 adY
 jxI
 nmG
@@ -47698,7 +48559,7 @@ nRr
 nRr
 nRr
 nRr
-axa
+mtk
 nRr
 nRr
 nRr
@@ -47905,24 +48766,24 @@ fTh
 jxI
 jxI
 jxI
-eNt
-fXb
-fXb
-fXb
-fXb
-fXb
-eNt
+fQl
+tuZ
+tuZ
+tuZ
+tuZ
+tuZ
+fQl
 nRr
 nRr
 nRr
 nRr
 nRr
 nRr
-wWi
-sjd
-mpi
-mpi
-wWi
+jTD
+sec
+hjO
+hjO
+jTD
 iwf
 owM
 nRr
@@ -48129,24 +48990,24 @@ fTh
 jxI
 jxI
 xSm
-eNt
+fQl
 nsb
 noc
 kVr
 lcl
 osK
-eNt
+fQl
 nRr
 nRr
 nRr
 nRr
 nRr
 nRr
-mpi
+hjO
 qgy
 hfD
 sYC
-wWi
+jTD
 ncN
 nmG
 nRr
@@ -48356,21 +49217,21 @@ jxI
 xCP
 nbA
 fia
-qrY
-qrY
-qrY
+gPv
+gPv
+gPv
 gMX
 nRr
 nRr
 nRr
-wWi
-wWi
+jTD
+jTD
 tbM
-wWi
-bYh
-mar
+jTD
+kke
+ewK
 gDV
-wWi
+jTD
 jxI
 nmG
 nRr
@@ -48577,24 +49438,24 @@ fTh
 jxI
 jxI
 jxI
-jMZ
-qrY
-qrY
-vbX
-qrY
-eNt
-eNt
-jMZ
-eNt
+mxO
+gPv
+gPv
+cET
+gPv
+fQl
+fQl
+mxO
+fQl
 nRr
-sjd
-bRq
-bYh
-wWi
-wWi
-mar
-sAY
-wWi
+sec
+sSb
+kke
+jTD
+jTD
+ewK
+oNo
+jTD
 jxI
 nmG
 nRr
@@ -48801,24 +49662,24 @@ fTh
 jxI
 jxI
 fZL
-eNt
+fQl
 bQL
-eNt
-eNt
+fQl
+fQl
 wSX
-eNt
-aPV
+fQl
+poh
 uBT
-fXb
+tuZ
 iwf
-sjd
+sec
 sOz
-mar
+ewK
 oLw
 szN
-mar
+ewK
 nRV
-wWi
+jTD
 fZL
 nmG
 nRr
@@ -49025,24 +49886,24 @@ fTh
 jxI
 jxI
 jxI
-eNt
+fQl
 bap
-chQ
-eNt
-qrY
-qrY
-qrY
+fUJ
+fQl
+gPv
+gPv
+gPv
 uLi
-jMZ
+mxO
 xSm
-mpi
+hjO
 sQq
 fom
 tFT
-wWi
-wWi
-wWi
-wWi
+jTD
+jTD
+jTD
+jTD
 jxI
 nmG
 nRr
@@ -49249,24 +50110,24 @@ hEI
 jxI
 fZL
 jxI
-eNt
+fQl
 tUe
 vhs
-eNt
+fQl
 iKl
 ppE
 ohN
 kXF
-jMZ
+mxO
 jxI
-jlN
+dql
 qTA
 gTv
 llj
-wWi
+jTD
 szS
 nlT
-wWi
+jTD
 jxI
 nmG
 nRr
@@ -49473,24 +50334,24 @@ dsE
 jxI
 jxI
 jxI
-eNt
-eNt
-eNt
-eNt
-eNt
-eNt
-eNt
-eNt
-eNt
+fQl
+fQl
+fQl
+fQl
+fQl
+fQl
+fQl
+fQl
+fQl
 jxI
-sjd
+sec
 kUB
 vVU
 cKa
-gRY
+pzr
 wpI
 qZM
-wWi
+jTD
 jxI
 nmG
 nRr
@@ -49683,7 +50544,7 @@ wgy
 wgy
 leB
 jHZ
-cTE
+wgy
 pXK
 nRr
 nRr
@@ -49707,14 +50568,14 @@ fZL
 jxI
 jxI
 jxI
-wWi
-wWi
-wWi
-wWi
-wWi
-wWi
-wWi
-wWi
+jTD
+jTD
+jTD
+jTD
+jTD
+jTD
+jTD
+jTD
 fZL
 nmG
 nRr
@@ -49907,7 +50768,7 @@ wgy
 wgy
 wgy
 wgy
-cTE
+wgy
 pXK
 nRr
 nRr
@@ -49932,7 +50793,7 @@ jxI
 jxI
 jxI
 jxI
-ueN
+vRg
 qer
 fTh
 jxI
@@ -50156,7 +51017,7 @@ bLO
 bLO
 bLO
 bLO
-vWh
+oyu
 qer
 fTh
 fZL
@@ -51044,11 +51905,11 @@ tSy
 jxI
 jxI
 jxI
-tSy
+uXa
 fZL
 jxI
 jxI
-tSy
+uXa
 jxI
 fZL
 jxI
@@ -51232,7 +52093,7 @@ wtp
 wtp
 wtp
 jxa
-hcT
+fTh
 jxI
 aUt
 skt
@@ -51456,7 +52317,7 @@ tnO
 tnO
 jxa
 jxa
-hcT
+fTh
 jxI
 aUt
 skt
@@ -51487,7 +52348,7 @@ fTh
 qer
 fTh
 jxI
-oMd
+rNy
 vLw
 vTA
 cFB
@@ -51680,7 +52541,7 @@ kIP
 kIP
 khI
 jxa
-hcT
+fTh
 fZL
 aUt
 skt
@@ -51904,7 +52765,7 @@ wtp
 wtp
 hcT
 tnO
-hcT
+fTh
 jxI
 aUt
 skt
@@ -52128,7 +52989,7 @@ wtp
 wtp
 hcT
 tnO
-hcT
+fTh
 jxI
 aUt
 skt
@@ -52352,7 +53213,7 @@ rci
 wtp
 hcT
 tnO
-hcT
+fTh
 jxI
 aUt
 mIV
@@ -52576,7 +53437,7 @@ wtp
 wtp
 hcT
 tnO
-hcT
+fTh
 jxI
 aUt
 aUt
@@ -52607,11 +53468,11 @@ fTh
 qer
 fTh
 fZL
-oMd
+rNy
 vLw
 cEU
 qCK
-bTH
+cYn
 ljw
 aJB
 qCK
@@ -52800,7 +53661,7 @@ wtp
 wtp
 hcT
 tnO
-hcT
+fTh
 jxI
 jxI
 jxI
@@ -52824,7 +53685,7 @@ nmG
 nRr
 nRr
 dsE
-tSy
+dmG
 jxI
 jxI
 fTh
@@ -53024,7 +53885,7 @@ niz
 wtp
 hcT
 jxa
-vQt
+oJK
 bLO
 bLO
 bLO
@@ -53715,12 +54576,12 @@ jxI
 jxI
 fZL
 jxI
-gOs
+bRK
 nmG
 nRr
 nRr
 dsE
-gOs
+bRK
 jxI
 jxI
 jxI
@@ -53731,16 +54592,16 @@ ucb
 ucb
 ucb
 ucb
-mhc
+sRs
 ucb
 ucb
-mhc
+sRs
 ucb
 wQk
 ucb
 ipf
 ipf
-mhc
+sRs
 bYG
 tAM
 mwM
@@ -54133,7 +54994,7 @@ bak
 bak
 bak
 rhj
-vpv
+kZu
 bBT
 kHS
 kHS
@@ -54363,7 +55224,7 @@ cgP
 cgP
 jni
 jni
-lfZ
+knw
 bak
 bak
 xRd
@@ -54866,7 +55727,7 @@ qLd
 qLd
 qLd
 qLd
-qQU
+yik
 ncN
 nmG
 nRr
@@ -55070,7 +55931,7 @@ kkE
 kkE
 kkE
 kkE
-ero
+naR
 qLd
 qky
 kmv
@@ -55111,7 +55972,7 @@ fgJ
 tSE
 lgw
 jPs
-pfi
+nYW
 nsw
 jIE
 rPY
@@ -55966,7 +56827,7 @@ iwf
 iwf
 iwf
 iwf
-gPx
+hNq
 qLd
 eXI
 izY
@@ -56210,7 +57071,7 @@ qLd
 qLd
 qLd
 qLd
-qQU
+yik
 ncN
 nmG
 nRr
@@ -56603,7 +57464,7 @@ nFY
 ezZ
 jni
 jni
-jEk
+xDf
 fmY
 qPA
 qPA
@@ -56821,7 +57682,7 @@ qPA
 qPA
 qPA
 bjQ
-xnb
+pfJ
 evu
 env
 env
@@ -57300,12 +58161,12 @@ toR
 vDu
 fTh
 jxI
-tSy
+vao
 nmG
 nRr
 nRr
 dsE
-tSy
+vao
 jxI
 jxI
 xaD
@@ -57348,9 +58209,9 @@ nAQ
 uXU
 oke
 uXU
-aMW
+wsa
 mPG
-aMW
+wsa
 uXU
 uXU
 dqf
@@ -57556,7 +58417,7 @@ jOX
 jOX
 jOX
 jOX
-dVf
+nbe
 nRr
 nRr
 dsE
@@ -57952,7 +58813,7 @@ aeX
 ryB
 aSC
 iXK
-ryB
+jxI
 jxI
 jxI
 jxI
@@ -58176,7 +59037,7 @@ ryB
 ryB
 aSC
 uqT
-ryB
+jxI
 jxI
 jxI
 jxI
@@ -58196,12 +59057,12 @@ alj
 jxI
 xaD
 sRY
-gOs
+bRK
 nmG
 nRr
 nRr
 dsE
-gOs
+bRK
 jxI
 jxI
 qer
@@ -58400,7 +59261,7 @@ ryB
 ryB
 aSC
 uqT
-ryB
+jxI
 jxI
 jxI
 sRY
@@ -58431,7 +59292,7 @@ jxI
 qer
 fTh
 jxI
-oMd
+ooM
 jOX
 ibx
 sHw
@@ -58452,7 +59313,7 @@ jOX
 jOX
 jOX
 jOX
-dVf
+nbe
 nRr
 nRr
 dsE
@@ -58624,7 +59485,7 @@ ryB
 ryB
 aSC
 uqT
-ryB
+jxI
 jxI
 sRY
 gUi
@@ -58848,7 +59709,7 @@ ryB
 ryB
 aSC
 uqT
-ryB
+jxI
 xaD
 jxI
 jxI
@@ -59072,7 +59933,7 @@ ryB
 ryB
 aSC
 uqT
-ryB
+jxI
 jxI
 jxI
 jxI
@@ -59296,7 +60157,7 @@ wly
 wly
 bLW
 iXK
-ryB
+jxI
 jxI
 jxI
 jxI
@@ -59348,7 +60209,7 @@ jOX
 jOX
 jOX
 jOX
-dVf
+nbe
 nRr
 nRr
 nRr
@@ -59551,7 +60412,7 @@ xaD
 qer
 fTh
 jxI
-oMd
+ooM
 jOX
 ibx
 xYh
@@ -59785,7 +60646,7 @@ oGo
 onV
 jOX
 jOX
-bhp
+jxI
 jxI
 fZL
 fTh
@@ -60001,13 +60862,13 @@ fTh
 fZL
 jxI
 jxI
-gOs
+tlo
 jxI
 fZL
-gOs
+tlo
 jxI
 xSm
-gOs
+tlo
 fZL
 jxI
 jxI

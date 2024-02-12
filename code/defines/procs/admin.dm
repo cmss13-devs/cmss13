@@ -7,7 +7,8 @@
 		embed.description = message
 		embed.timestamp = time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")
 		embed.colour = "#ED2939"
-		embed.fields = fields
+		if(length(fields))
+			embed.fields = fields
 
 		to_send.embed = embed
 

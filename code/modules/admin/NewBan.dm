@@ -323,7 +323,5 @@ GLOBAL_DATUM(Banlist, /savefile)
 
 	log_admin("STICKYBAN: Identifier: [identifier] Reason: [reason] Message: [message] CKEYs: [english_list(impacted_ckeys)] IPs: [english_list(impacted_ips)] CIDs: [english_list(impacted_cids)]")
 	message_admins("[key_name_admin(src)] has added a new stickyban with the identifier '[identifier]'.")
-	var/datum/tgs_chat_embed/field/reason_embed = new()
-	reason_embed.name = "Stickyban Reason"
-	reason_embed.value = reason
-	important_message_external("[src] has added a new stickyban with the identifier '[identifier]'.", "Stickyban Placed", list(reason))
+	var/datum/tgs_chat_embed/field/reason_embed = new("Stickyban Reason", reason)
+	important_message_external("[src] has added a new stickyban with the identifier '[identifier]'.", "Stickyban Placed", list(reason_embed))

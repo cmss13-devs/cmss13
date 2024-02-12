@@ -144,7 +144,9 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		list_recipes(usr, text2num(href_list["sublist"]))
 
 	if(href_list["make"])
-		if(amount < 1) qdel(src) //Never should happen
+		if(amount < 1)
+			qdel(src) //Never should happen
+			return
 
 		var/list/recipes_list = recipes
 		if(href_list["sublist"])
@@ -152,7 +154,11 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			recipes_list = srl.recipes
 		var/datum/stack_recipe/R = recipes_list[text2num(href_list["make"])]
 		var/multiplier = text2num(href_list["multiplier"])
-		if(!isnum(multiplier))
+		if(multiplier != multiplier) // isnan
+			message_admins("[key_name_admin(usr)] has attempted to multiply [src] with NaN")
+			return
+		if(!isnum(multiplier)) // this used to block nan...
+			message_admins("[key_name_admin(usr)] has attempted to multiply [src] with !isnum")
 			return
 		multiplier = round(multiplier)
 		if(multiplier < 1)
@@ -277,11 +283,15 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 	if(used > amount) //If it's larger than what we have, no go.
 		return FALSE
 	amount -= used
-	update_icon()
 	if(amount <= 0)
-		if(usr && loc == usr)
-			usr.temp_drop_inv_item(src)
+		if(loc == usr)
+			usr?.temp_drop_inv_item(src)
+		else if(isstorage(loc))
+			var/obj/item/storage/storage = loc
+			storage.remove_from_storage(src)
 		qdel(src)
+	else
+		update_icon()
 	return TRUE
 
 /obj/item/stack/proc/add(extra)

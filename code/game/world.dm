@@ -87,10 +87,6 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 	GLOB.obfs_x = rand(-500, 500) //A number between -100 and 100
 	GLOB.obfs_y = rand(-500, 500) //A number between -100 and 100
 
-	spawn(3000) //so we aren't adding to the round-start lag
-		if(CONFIG_GET(flag/ToRban))
-			ToRban_autoupdate()
-
 	// If the server's configured for local testing, get everything set up ASAP.
 	// Shamelessly stolen from the test manager's host_tests() proc
 	if(testing_locally)

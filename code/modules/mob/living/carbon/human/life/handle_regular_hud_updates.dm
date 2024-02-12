@@ -60,7 +60,7 @@
 		else
 			clear_fullscreen("blind")
 
-		///Pain should override the SetEyeBlur(0) should the pain be painful enough to cause eyeblur in the first place. Also, peepers is essential to make sure eye damage isn't overriden.
+		///Pain should override the SetEyeBlur(0) should the pain be painful enough to cause eyeblur in the first place. Also, peepers is essential to make sure eye damage isn't overridden.
 		var/datum/internal_organ/eyes/peepers = internal_organs_by_name["eyes"]
 		if((disabilities & NEARSIGHTED) && !HAS_TRAIT(src, TRAIT_NEARSIGHTED_EQUIPMENT) && pain.current_pain < 80 && peepers.organ_status == ORGAN_HEALTHY)
 			EyeBlur(2)

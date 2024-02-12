@@ -18,8 +18,8 @@ interface Medal {
   citation?: string;
 }
 
-export const MedalsViewer = (props, context) => {
-  const { data, act } = useBackend<MedalProps>(context);
+export const MedalsViewer = (props) => {
+  const { data, act } = useBackend<MedalProps>();
   const { medals } = data;
 
   return (

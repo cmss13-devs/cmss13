@@ -304,7 +304,8 @@
 		log_attack("[key_name(target)] was sliced by [key_name(user)] whirling their scythe.")
 
 	ability_charge -= ability_cost
-	remove_filter("scythe_ready")
+	if(ability_charge < ability_cost)
+		remove_filter("scythe_ready")
 	return TRUE
 
 /obj/item/weapon/yautja/scythe/alt

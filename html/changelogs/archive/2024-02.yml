@@ -152,3 +152,8 @@
   Vicacrov:
   - bugfix: Fixed Warden Praetorians being able to move around the ovipositored Queen
       with their Retrieve ability.
+2024-02-12:
+  Stakeyng:
+  - qol: Lets you put an extra accessory item in your helmet.
+  harryob:
+  - server: tor banning functionality is removed

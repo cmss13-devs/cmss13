@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - server: "tor banning functionality is removed"

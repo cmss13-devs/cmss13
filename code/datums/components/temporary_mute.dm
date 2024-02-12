@@ -75,7 +75,6 @@
 		return
 	if(!param && !istype(current_emote, /datum/emote/custom))
 		return
-		//message = current_emote.message
 
 	log_say("[user.name != "Unknown" ? user.name : "([user.real_name])"] attempted to emote the following before their spawn mute ended: [param] (CKEY: [user.key]) (JOB: [user.job])")
 	if(on_emote_message)

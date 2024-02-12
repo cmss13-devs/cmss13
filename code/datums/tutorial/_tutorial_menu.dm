@@ -81,3 +81,4 @@
 			path = new path
 			if(path.start_tutorial(usr))
 				ui.close()
+				return TRUE

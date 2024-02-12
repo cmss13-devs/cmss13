@@ -354,7 +354,7 @@
 /obj/item/clothing/suit/storage/marine/medium/rto/intel/proc/motion_detector()
 	if(motion_detector)
 		START_PROCESSING(SSobj, src)
-	if(!motion_detector)
+	else
 		STOP_PROCESSING(SSobj, src)
 
 /obj/item/clothing/suit/storage/marine/medium/rto/intel/mob_can_equip(mob/living/carbon/human/user, slot, disable_warning) //Thanks to Drathek for the help on this part!
@@ -372,16 +372,27 @@
 
 /obj/item/clothing/suit/storage/marine/medium/rto/intel/equipped(mob/user, slot, silent) //When XM4 is equipped this removes ACCESSORY_SLOT_UTILITY as a valid accessory for the uniform
 	. = ..()
-	var/mob/living/carbon/human/human = user
-	var/obj/item/clothing/under/uniform = human.w_uniform
 	if(slot == WEAR_JACKET)
-		uniform?.valid_accessory_slots -= ACCESSORY_SLOT_UTILITY
+		var/mob/living/carbon/human/human = user
+		var/obj/item/clothing/under/uniform = human.w_uniform
+		if(uniform?.valid_accessory_slots)
+			uniform?.valid_accessory_slots -= ACCESSORY_SLOT_UTILITY
 
 /obj/item/clothing/suit/storage/marine/medium/rto/intel/unequipped(mob/user, slot) //When unequipped this adds the ACCESSORY_SLOT_UTILITY back as a valid accessory
 	. = ..()
-	var/mob/living/carbon/human/human = user
-	var/obj/item/clothing/under/uniform = human.w_uniform
-	uniform?.valid_accessory_slots += ACCESSORY_SLOT_UTILITY
+	if(slot == WEAR_JACKET)
+		var/mob/living/carbon/human/human = user
+		var/obj/item/clothing/under/uniform = human.w_uniform
+		if(uniform)
+			// Figure out if the uniform originally allowed ACCESSORY_SLOT_UTILITY
+			var/obj/item/clothing/under/temp_uniform = new uniform.type
+			if(temp_uniform.valid_accessory_slots)
+				for(var/allowed in temp_uniform.valid_accessory_slots)
+					if(allowed == ACCESSORY_SLOT_UTILITY)
+						// It was allowed previously, now add it back
+						uniform.valid_accessory_slots += ACCESSORY_SLOT_UTILITY
+						break
+			qdel(temp_uniform)
 
 /obj/item/clothing/suit/storage/marine/MP
 	name = "\improper M2 pattern MP armor"

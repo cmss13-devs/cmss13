@@ -210,7 +210,6 @@
 	icon = 'icons/effects/hybrisa_decals.dmi'
 	icon_state = "zhalfgrate1"
 
-
 // 64x64 Decals
 
 /obj/effect/hybrisa/decal/WY/WY1

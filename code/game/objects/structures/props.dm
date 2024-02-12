@@ -2600,6 +2600,43 @@
 /obj/structure/prop/hybrisa/misc/machinery/screens/telescreenbrokespark
 	icon_state = "telescreenbspark"
 
+// Multi-Monitor
+
+//Green
+/obj/structure/prop/hybrisa/misc/machinery/screens/multimonitorsmall_off
+	icon_state = "multimonitorsmall_off"
+/obj/structure/prop/hybrisa/misc/machinery/screens/multimonitorsmall_on
+	icon_state = "multimonitorsmall_on"
+/obj/structure/prop/hybrisa/misc/machinery/screens/multimonitormedium_off
+	icon_state = "multimonitormedium_off"
+/obj/structure/prop/hybrisa/misc/machinery/screens/multimonitormedium_on
+	icon_state = "multimonitormedium_on"
+/obj/structure/prop/hybrisa/misc/machinery/screens/multimonitorbig_off
+	icon_state = "multimonitorbig_off"
+/obj/structure/prop/hybrisa/misc/machinery/screens/multimonitorbig_on
+	icon_state = "multimonitorbig_on"
+
+// Blue
+
+/obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitorsmall_off
+	icon_state = "bluemultimonitorsmall_off"
+/obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitorsmall_on
+	icon_state = "bluemultimonitorsmall_on"
+/obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitormedium_off
+	icon_state = "bluemultimonitormedium_off"
+/obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitormedium_on
+	icon_state = "bluemultimonitormedium_on"
+/obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitorbig_off
+	icon_state = "bluemultimonitorbig_off"
+/obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitorbig_on
+	icon_state = "bluemultimonitorbig_on"
+
+// Egg
+/obj/structure/prop/hybrisa/misc/machinery/screens/wallegg_off
+	icon_state = "wallegg_off"
+/obj/structure/prop/hybrisa/misc/machinery/screens/wallegg_on
+	icon_state = "wallegg_on"
+
 /obj/structure/prop/hybrisa/misc/fake/pipes
     name = "disposal pipe"
 

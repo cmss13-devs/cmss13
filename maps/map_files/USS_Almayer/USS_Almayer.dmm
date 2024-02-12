@@ -1568,7 +1568,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_state = "plate"
+	icon_state = "test_floor4"
 	},
 /area/almayer/squads/req)
 "agw" = (
@@ -14979,6 +14979,22 @@
 	icon_state = "silver"
 	},
 /area/almayer/command/computerlab)
+"btn" = (
+/obj/item/device/camera{
+	pixel_x = 4;
+	pixel_y = 8
+	},
+/obj/structure/surface/table/almayer,
+/obj/item/device/camera_film{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/obj/item/device/camera_film,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "red"
+	},
+/area/almayer/shipboard/brig/main_office)
 "btp" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
@@ -17248,6 +17264,13 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
+"bHg" = (
+/obj/structure/bed,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_side"
+	},
+/area/almayer/medical/lower_medical_medbay)
 "bHk" = (
 /turf/open/floor/almayer/research/containment/floor2{
 	dir = 1
@@ -43146,7 +43169,7 @@
 	name = "Lobby"
 	},
 /turf/open/floor/almayer{
-	icon_state = "dark_sterile"
+	icon_state = "test_floor4"
 	},
 /area/almayer/medical/lower_medical_medbay)
 "jXk" = (
@@ -49895,7 +49918,7 @@
 "mza" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 2;
-	id = "firearm_storage_armory";
+	id = "bot_armory";
 	name = "\improper Armory Shutters"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -59889,7 +59912,9 @@
 	dir = 1;
 	name = "\improper Combat Correspondent Room"
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
 /area/almayer/command/combat_correspondent)
 "qgN" = (
 /obj/structure/bed/chair{
@@ -63534,7 +63559,7 @@
 "rtj" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer{
-	icon_state = "plate"
+	icon_state = "test_floor4"
 	},
 /area/almayer/squads/req)
 "rtA" = (
@@ -66697,7 +66722,7 @@
 	name = "\improper Officer's Bunk"
 	},
 /turf/open/floor/almayer{
-	icon_state = "plate"
+	icon_state = "test_floor4"
 	},
 /area/almayer/living/bridgebunks)
 "sxE" = (
@@ -73435,7 +73460,7 @@
 	name = "Medical Storage"
 	},
 /turf/open/floor/almayer{
-	icon_state = "sterile_green"
+	icon_state = "test_floor4"
 	},
 /area/almayer/medical/lower_medical_medbay)
 "vaV" = (
@@ -78111,7 +78136,7 @@
 	req_one_access = null
 	},
 /turf/open/floor/almayer{
-	icon_state = "sterile_green"
+	icon_state = "test_floor4"
 	},
 /area/almayer/medical/lower_medical_medbay)
 "wAR" = (
@@ -78195,16 +78220,7 @@
 	},
 /area/almayer/hallways/upper/starboard)
 "wDp" = (
-/obj/structure/surface/table/almayer,
-/obj/item/device/camera{
-	pixel_x = 4;
-	pixel_y = 8
-	},
-/obj/item/device/camera_film{
-	pixel_x = 4;
-	pixel_y = -2
-	},
-/obj/item/device/camera_film,
+/obj/structure/machinery/photocopier,
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "red"
@@ -82069,7 +82085,7 @@
 	req_one_access_txt = "19;21"
 	},
 /turf/open/floor/almayer{
-	icon_state = "plate"
+	icon_state = "test_floor4"
 	},
 /area/almayer/squads/req)
 "xWp" = (
@@ -92325,7 +92341,7 @@ vBm
 lOI
 pJv
 jLM
-tak
+btn
 cMb
 rbi
 wDp
@@ -111718,7 +111734,7 @@ bJw
 rlZ
 hBc
 hzs
-hzs
+bHg
 hzs
 aZK
 rlZ

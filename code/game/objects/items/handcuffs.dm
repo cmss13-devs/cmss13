@@ -116,7 +116,7 @@
 	color = "#00DDDD"
 
 /obj/item/handcuffs/cable/white
-	color = COLOR_WHITE
+	color = "#FFFFFF"
 
 /obj/item/handcuffs/cable/attackby(obj/item/I, mob/user as mob)
 	..()

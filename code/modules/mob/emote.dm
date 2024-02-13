@@ -14,13 +14,15 @@
 			to_chat(src, SPAN_NOTICE("'[act]' emote does not exist. Say *help for a list."))
 		return FALSE
 	var/silenced = FALSE
-	for(var/datum/emote/P in key_emotes)
-		if(!P.check_cooldown(src, intentional))
+	for(var/datum/emote/current_emote in key_emotes)
+		if(!current_emote.check_cooldown(src, intentional))
 			silenced = TRUE
 			continue
-		if(P.run_emote(src, param, m_type, intentional))
-			SEND_SIGNAL(src, COMSIG_MOB_EMOTE, P, act, m_type, message, intentional)
-			SEND_SIGNAL(src, COMSIG_MOB_EMOTED(P.key))
+		if(SEND_SIGNAL(src, COMSIG_MOB_TRY_EMOTE, current_emote, act, m_type, param, intentional) & COMPONENT_OVERRIDE_EMOTE)
+			silenced = TRUE
+			continue
+		if(current_emote.run_emote(src, param, m_type, intentional))
+			SEND_SIGNAL(src, COMSIG_MOB_EMOTE, current_emote, act, m_type, message, intentional)
 			return TRUE
 	if(intentional && !silenced && !force_silence)
 		to_chat(src, SPAN_NOTICE("Unusable emote '[act]'. Say *help for a list."))

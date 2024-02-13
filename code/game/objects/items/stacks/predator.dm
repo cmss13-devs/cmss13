@@ -51,6 +51,8 @@
 			SPAN_NOTICE("You start hanging [victim] up by the rope..."))
 		if(!do_after(user, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
 			return
+		if(victim.anchored)
+			return // Just in case weed_food took them during this time
 		user.visible_message(SPAN_WARNING("[user] hangs [victim] from the ceiling!"), SPAN_NOTICE("You finish hanging [victim]."))
 		user.stop_pulling()
 		victim.get_hung()
@@ -106,4 +108,5 @@
 	apply_transform(A)
 	pixel_x = 0
 	pixel_y = 0
+	Moved(loc, NONE, TRUE) // Trigger any movement signals
 	return COMPONENT_CANCEL_ATTACK

@@ -51,8 +51,8 @@ type StockItem = {
   colorable: boolean;
 };
 
-const getInventory = (context) => {
-  const { data } = useBackend<VendingData>(context);
+const getInventory = () => {
+  const { data } = useBackend<VendingData>();
   const {
     product_records = [],
     coin_records = [],
@@ -67,17 +67,16 @@ const getInventory = (context) => {
   return [...product_records, ...coin_records];
 };
 
-export const Vending = (props, context) => {
-  const { data } = useBackend<VendingData>(context);
+export const Vending = (props) => {
+  const { data } = useBackend<VendingData>();
   const { categories } = data;
 
   const [selectedCategory, setSelectedCategory] = useLocalState<string>(
-    context,
     'selectedCategory',
     Object.keys(categories)[0]
   );
 
-  const inventory = getInventory(context);
+  const inventory = getInventory();
 
   const filteredCategories = Object.fromEntries(
     Object.entries(categories).filter(([categoryName]) => {
@@ -121,8 +120,8 @@ export const Vending = (props, context) => {
 };
 
 /** Displays user details if an ID is present and the user is on the station */
-export const UserDetails = (props, context) => {
-  const { data } = useBackend<VendingData>(context);
+export const UserDetails = (props) => {
+  const { data } = useBackend<VendingData>();
   const { user, checking_id } = data;
 
   if (!user) {
@@ -152,17 +151,14 @@ export const UserDetails = (props, context) => {
 };
 
 /** Displays  products in a section, with user balance at top */
-const ProductDisplay = (
-  props: {
-    selectedCategory: string | null;
-  },
-  context
-) => {
-  const { data } = useBackend<VendingData>(context);
+const ProductDisplay = (props: {
+  readonly selectedCategory: string | null;
+}) => {
+  const { data } = useBackend<VendingData>();
   const { selectedCategory } = props;
   const { stock, user, checking_id } = data;
 
-  const inventory = getInventory(context);
+  const inventory = getInventory();
 
   const display_value = user && checking_id;
 
@@ -203,8 +199,8 @@ const ProductDisplay = (
  * Uses a table layout. Labeledlist might be better,
  * but you cannot use item icons as labels currently.
  */
-const VendingRow = (props, context) => {
-  const { data } = useBackend<VendingData>(context);
+const VendingRow = (props) => {
+  const { data } = useBackend<VendingData>();
   const { product, productStock } = props;
   const { access, user, checking_id } = data;
   const remaining = productStock.amount;
@@ -256,8 +252,8 @@ const ProductStock = (props) => {
 };
 
 /** The main button to purchase an item. */
-const ProductButton = (props, context) => {
-  const { act, data } = useBackend<VendingData>(context);
+const ProductButton = (props) => {
+  const { act, data } = useBackend<VendingData>();
   const { denied, disabled, product } = props;
   const { checking_id } = data;
 
@@ -283,9 +279,9 @@ const CATEGORY_COLORS = {
 };
 
 const CategorySelector = (props: {
-  categories: Record<string, Category>;
-  selectedCategory: string;
-  onSelect: (category: string) => void;
+  readonly categories: Record<string, Category>;
+  readonly selectedCategory: string;
+  readonly onSelect: (category: string) => void;
 }) => {
   const { categories, selectedCategory, onSelect } = props;
 

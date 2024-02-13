@@ -1,5 +1,0 @@
-author: "Jackie_Estegado"
-delete-after: True
-changes:
-  - bugfix: "The Burrower's burrow ability will no longer be not cancelled just because you clicked on a tile that you wouldn't have been able to burrow to."
-  - bugfix: "Burrowing will no longer complete even though you cancelled it."

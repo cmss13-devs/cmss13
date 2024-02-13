@@ -46,7 +46,7 @@
 		connect_to_network()
 
 	dir_loop:
-		for(var/d in cardinal)
+		for(var/d in GLOB.cardinals)
 			var/turf/T = get_step(src, d)
 			for(var/obj/structure/machinery/power/terminal/term in T)
 				if(term && term.dir == turn(d, 180))
@@ -390,6 +390,7 @@
 
 
 /obj/structure/machinery/power/smes/emp_act(severity)
+	. = ..()
 	outputting = 0
 	inputting = 0
 	output_level = 0
@@ -400,7 +401,6 @@
 		output_level = initial(output_level)
 		inputting = initial(inputting)
 		outputting = initial(outputting)
-	..()
 
 
 

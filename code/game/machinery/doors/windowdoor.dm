@@ -11,7 +11,6 @@
 	flags_atom = ON_BORDER
 	opacity = FALSE
 	var/obj/item/circuitboard/airlock/electronics = null
-	air_properties_vary_with_direction = 1
 
 /obj/structure/machinery/door/window/Initialize()
 	. = ..()
@@ -123,7 +122,7 @@
 		qdel(src)
 		return
 
-/obj/structure/machinery/door/window/bullet_act(obj/item/projectile/Proj)
+/obj/structure/machinery/door/window/bullet_act(obj/projectile/Proj)
 	bullet_ping(Proj)
 	if(Proj.ammo.damage)
 		take_damage(round(Proj.ammo.damage / 2))
@@ -167,7 +166,7 @@
 		return
 
 	//If it's emagged, crowbar can pry electronics out.
-	if (src.operating == -1 && istype(I, /obj/item/tool/crowbar))
+	if (src.operating == -1 && HAS_TRAIT(I, TRAIT_TOOL_CROWBAR))
 		playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 		user.visible_message("[user] removes the electronics from the windoor.", "You start to remove electronics from the windoor.")
 		if (do_after(user, 40, INTERRUPT_ALL, BUSY_ICON_BUILD))
@@ -296,12 +295,12 @@
 
 /obj/structure/machinery/door/window/ultra/Initialize(mapload, ...)
 	. = ..()
-	GLOB.hijack_deletable_windows += src
-
-/obj/structure/machinery/door/window/ultra/Destroy()
-	GLOB.hijack_deletable_windows -= src
-	return ..()
+	if(is_mainship_level(z))
+		RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_IMPACTED, PROC_REF(impact))
 
 // No damage taken.
 /obj/structure/machinery/door/window/ultra/attackby(obj/item/I, mob/user)
 	return try_to_activate_door(user)
+
+/obj/structure/machinery/door/window/ultra/proc/impact()
+	qdel(src)

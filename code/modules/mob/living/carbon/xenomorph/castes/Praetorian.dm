@@ -58,10 +58,15 @@
 		/datum/action/xeno_action/activable/pounce/base_prae_dash,
 		/datum/action/xeno_action/activable/prae_acid_ball,
 		/datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid,
+		/datum/action/xeno_action/onclick/tacmap,
 	)
 
 	icon_xeno = 'icons/mob/xenos/praetorian.dmi'
 	icon_xenonid = 'icons/mob/xenonids/praetorian.dmi'
+
+	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
+	weed_food_states = list("Praetorian_1","Praetorian_2","Praetorian_3")
+	weed_food_states_flipped = list("Praetorian_1","Praetorian_2","Praetorian_3")
 
 /datum/behavior_delegate/praetorian_base
 	name = "Base Praetorian Behavior Delegate"

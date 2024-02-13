@@ -198,6 +198,9 @@
 	else
 		return ..() //Deal with everything else, like hitting with stuff
 
+/obj/structure/machinery/power/geothermal/ex_act(severity, direction)
+	return FALSE //gameplay-wise these should really never go away
+
 //Putting these here since it's power-related
 /obj/structure/machinery/colony_floodlight_switch
 	name = "Colony Floodlight Switch"
@@ -220,7 +223,7 @@
 
 /obj/structure/machinery/colony_floodlight_switch/LateInitialize()
 	. = ..()
-	for(var/obj/structure/machinery/colony_floodlight/F in machines)
+	for(var/obj/structure/machinery/colony_floodlight/F in GLOB.machines)
 		floodlist += F
 		F.fswitch = src
 	start_processing()
@@ -266,9 +269,9 @@
 			F.is_lit = !F.is_lit
 			if(!F.damaged)
 				if(F.is_lit) //Shut it down
-					F.SetLuminosity(F.lum_value)
+					F.set_light(F.lum_value)
 				else
-					F.SetLuminosity(0)
+					F.set_light(0)
 			F.update_icon()
 	return 0
 
@@ -312,7 +315,6 @@
 	health = 150
 
 /obj/structure/machinery/colony_floodlight/Destroy()
-	SetLuminosity(0)
 	if(fswitch)
 		fswitch.floodlist -= src
 		fswitch = null
@@ -359,7 +361,7 @@
 					user.visible_message(SPAN_NOTICE("[user] screws [src]'s maintenance hatch closed."), \
 					SPAN_NOTICE("You screw [src]'s maintenance hatch closed."))
 					if(is_lit)
-						SetLuminosity(lum_value)
+						set_light(lum_value)
 					update_icon()
 			return TRUE
 

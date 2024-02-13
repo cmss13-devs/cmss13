@@ -90,9 +90,9 @@
 		var/obj/structure/mineral_door/resin/resin_door = target_atom
 		resin_door.TryToSwitchState(owner)
 		if(resin_door.state)
-			to_chat(owner, SPAN_XENONOTICE("You focus your connection to the resin and remotely close the resin door."))
+			to_chat(owner, SPAN_XENONOTICE("We focus our connection to the resin and remotely close the resin door."))
 		else
-			to_chat(owner, SPAN_XENONOTICE("You focus your connection to the resin and remotely open the resin door."))
+			to_chat(owner, SPAN_XENONOTICE("We focus our connection to the resin and remotely open the resin door."))
 		return
 
 	// since actions are instanced per hivelord, and only one construction can be made at a time, tweaking the datum on the fly here is fine. you're going to have to figure something out if these conditions change, though
@@ -111,7 +111,7 @@
 
 	var/datum/resin_construction/resing_construction = GLOB.resin_constructions_list[hivelord.selected_resin]
 	target_turf.visible_message(SPAN_XENONOTICE("The weeds begin pulsating wildly and secrete resin in the shape of \a [resing_construction.construction_name]!"), null, 5)
-	to_chat(owner, SPAN_XENONOTICE("You focus your plasma into the weeds below you and force the weeds to secrete resin in the shape of \a [resing_construction.construction_name]."))
+	to_chat(owner, SPAN_XENONOTICE("We focus our plasma into the weeds below us and force the weeds to secrete resin in the shape of \a [resing_construction.construction_name]."))
 	playsound(target_turf, "alien_resin_build", 25)
 	return TRUE
 

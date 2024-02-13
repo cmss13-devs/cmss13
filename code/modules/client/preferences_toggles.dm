@@ -48,25 +48,10 @@
 	to_chat(src, "You will [(prefs.toggles_sound & SOUND_REBOOT) ? "now" : "no longer"] hear server reboot sounds.")
 
 /client/verb/togglemidis()
-	set name = "Silence Current Midi"
+	set name = "Silence Current Admin Sound"
 	set category = "Preferences.Sound"
-	set desc = "Toggles hearing sounds uploaded by admins"
-	// prefs.toggles_sound ^= SOUND_MIDI // Toggle on/off
-	// prefs.save_preferences() // We won't save the change - it'll be a temporary switch instead of permanent, but they can still make it permanent in character setup.
-	if(prefs.toggles_sound & SOUND_MIDI) // Not using && midi_playing here - since we can't tell how long an admin midi is, the user should always be able to turn it off at any time.
-		to_chat(src, SPAN_BOLDNOTICE("The currently playing midi has been silenced."))
-		var/sound/break_sound = sound(null, repeat = 0, wait = 0, channel = SOUND_CHANNEL_ADMIN_MIDI)
-		break_sound.priority = 250
-		src << break_sound //breaks the client's sound output on SOUND_CHANNEL_ADMIN_MIDI
-		if(src.mob.client.midi_silenced) return
-		if(midi_playing)
-			total_silenced++
-			message_admins("A player has silenced the currently playing midi. Total: [total_silenced] player(s).", 1)
-			src.mob.client.midi_silenced = 1
-			spawn(30 SECONDS) // Prevents message_admins() spam. Should match with the midi_playing_timer spawn() in playsound.dm
-				src.mob.client.midi_silenced = 0
-	else
-		to_chat(src, SPAN_BOLDNOTICE("You have 'Play Admin Midis' disabled in your Character Setup, so this verb is useless to you."))
+	set desc = "Stops the current admin sound. You can also use the STOP icon in the player above tgchat."
+	tgui_panel?.stop_music()
 
 /client/verb/togglechat()
 	set name = "Toggle Abovehead Chat"
@@ -205,7 +190,7 @@
 	set name = "Toggle SpecialRole Candidacy"
 	set category = "Preferences"
 	set desc = "Toggles which special roles you would like to be a candidate for, during events."
-	
+
 	var/list/be_special_flags = list(
 		"Xenomorph after unrevivable death" = BE_ALIEN_AFTER_DEATH,
 		"Agent" = BE_AGENT,
@@ -274,6 +259,7 @@
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_eject_to_hand'>Toggle 'Unload Weapon' Ejecting Magazines to Your Hands</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_automatic_punctuation'>Toggle Automatic Punctuation</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_middle_mouse_click'>Toggle Middle Mouse Ability Activation</a><br>",
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_ability_deactivation'>Toggle Ability Deactivation</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_clickdrag_override'>Toggle Combat Click-Drag Override</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_dualwield'>Toggle Alternate-Fire Dual Wielding</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_middle_mouse_swap_hands'>Toggle Middle Mouse Swapping Hands</a><br>",
@@ -287,7 +273,7 @@
 	for (var/pref_button in pref_buttons)
 		dat += "[pref_button]\n"
 
-	var/height = 50+22*length(pref_buttons)
+	var/height = 50+24*length(pref_buttons)
 
 	show_browser(src, dat, "Toggle Preferences", "togglepreferences", "size=475x[height]")
 
@@ -355,6 +341,14 @@
 		to_chat(src, SPAN_NOTICE("Your selected ability will now be activated with shift clicking."))
 	prefs.save_preferences()
 
+/client/proc/toggle_ability_deactivation() // Toggle whether the current ability can be deactivated when re-selected
+	prefs.toggle_prefs ^= TOGGLE_ABILITY_DEACTIVATION_OFF
+	if (prefs.toggle_prefs & TOGGLE_ABILITY_DEACTIVATION_OFF)
+		to_chat(src, SPAN_NOTICE("Your current ability can no longer be toggled off when re-selected."))
+	else
+		to_chat(src, SPAN_NOTICE("Your current ability can be toggled off when re-selected."))
+	prefs.save_preferences()
+
 /client/proc/toggle_clickdrag_override() //Toggle whether mousedown clicks immediately when on disarm or harm intent to prevent click-dragging from 'eating' attacks.
 	prefs.toggle_prefs ^= TOGGLE_COMBAT_CLICKDRAG_OVERRIDE
 	if(prefs.toggle_prefs & TOGGLE_COMBAT_CLICKDRAG_OVERRIDE)
@@ -363,12 +357,21 @@
 		to_chat(src,SPAN_BOLDNOTICE( "Click-dragging now blocks clicks from going through."))
 	prefs.save_preferences()
 
-/client/proc/toggle_dualwield() //Toggle whether dual-wielding fires both guns at once or swaps between them.
-	prefs.toggle_prefs ^= TOGGLE_ALTERNATING_DUAL_WIELD
-	if(prefs.toggle_prefs & TOGGLE_ALTERNATING_DUAL_WIELD)
-		to_chat(src, SPAN_BOLDNOTICE("Dual-wielding now switches between guns, as long as the other gun is loaded."))
+///Toggle whether dual-wielding fires both guns at once or swaps between them.
+/client/proc/toggle_dualwield()
+	if(prefs.dual_wield_pref < DUAL_WIELD_NONE)
+		prefs.dual_wield_pref++
 	else
-		to_chat(src, SPAN_BOLDNOTICE("Dual-wielding now fires both guns simultaneously."))
+		prefs.dual_wield_pref = DUAL_WIELD_FIRE
+
+	switch(prefs.dual_wield_pref)
+		if(DUAL_WIELD_FIRE)
+			to_chat(src, SPAN_BOLDNOTICE("Dual-wielding now fires both guns simultaneously."))
+		if(DUAL_WIELD_SWAP)
+			to_chat(src, SPAN_BOLDNOTICE("Dual-wielding now switches between guns, as long as the other gun is loaded."))
+		if(DUAL_WIELD_NONE)
+			to_chat(src, SPAN_BOLDNOTICE("Dual-wielding now has no effect on how you fire."))
+
 	prefs.save_preferences()
 
 /client/proc/toggle_middle_mouse_swap_hands() //Toggle whether middle click swaps your hands
@@ -544,7 +547,7 @@
 	set category = "Preferences"
 	set desc = "Shows ghost-related preferences."
 
-	add_verb(src, ghost_prefs_verbs)
+	add_verb(src, GLOB.ghost_prefs_verbs)
 	remove_verb(src, /client/proc/show_ghost_preferences)
 
 /client/proc/hide_ghost_preferences() // Hides ghost-related preferences.
@@ -552,7 +555,7 @@
 	set category = "Preferences"
 	set desc = "Hides ghost-related preferences."
 
-	remove_verb(src, ghost_prefs_verbs)
+	remove_verb(src, GLOB.ghost_prefs_verbs)
 	add_verb(src, /client/proc/show_ghost_preferences)
 
 /client/proc/toggle_ghost_hivemind()
@@ -599,6 +602,14 @@
 	to_chat(src,SPAN_BOLDNOTICE( "As a ghost, you will now [(prefs.toggles_chat & CHAT_GHOSTRADIO) ? "hear all radio chat in the world" : "only hear from nearby speakers"]."))
 	prefs.save_preferences()
 
+/client/proc/toggle_ghost_spyradio()
+	set name = "Toggle GhostSpyRadio"
+	set category = "Preferences.Ghost"
+	set desc = "Toggle between hearing listening devices or not."
+	prefs.toggles_chat ^= CHAT_LISTENINGBUG
+	to_chat(src,SPAN_BOLDNOTICE( "As a ghost, you will [(prefs.toggles_chat & CHAT_LISTENINGBUG) ? "now" : "no longer"] hear listening devices as a ghost."))
+	prefs.save_preferences()
+
 /client/proc/toggle_ghost_hud()
 	set name = "Toggle Ghost HUDs"
 	set category = "Preferences.Ghost"
@@ -614,31 +625,31 @@
 
 	if(!isobserver(usr))
 		return
-	var/mob/dead/observer/O = usr
+	var/mob/dead/observer/observer_user = usr
 	var/datum/mob_hud/H
 	switch(hud_choice)
 		if("Medical HUD")
-			H = huds[MOB_HUD_MEDICAL_OBSERVER]
+			H = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
 		if("Security HUD")
-			H = huds[MOB_HUD_SECURITY_ADVANCED]
+			H = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
 		if("Squad HUD")
-			H = huds[MOB_HUD_FACTION_OBSERVER]
+			H = GLOB.huds[MOB_HUD_FACTION_OBSERVER]
 		if("Xeno Status HUD")
-			H = huds[MOB_HUD_XENO_STATUS]
+			H = GLOB.huds[MOB_HUD_XENO_STATUS]
 		if("Faction UPP HUD")
-			H = huds[MOB_HUD_FACTION_UPP]
+			H = GLOB.huds[MOB_HUD_FACTION_UPP]
 		if("Faction Wey-Yu HUD")
-			H = huds[MOB_HUD_FACTION_WY]
+			H = GLOB.huds[MOB_HUD_FACTION_WY]
 		if("Faction TWE HUD")
-			H = huds[MOB_HUD_FACTION_TWE]
+			H = GLOB.huds[MOB_HUD_FACTION_TWE]
 		if("Faction CLF HUD")
-			H = huds[MOB_HUD_FACTION_CLF]
+			H = GLOB.huds[MOB_HUD_FACTION_CLF]
 
-	O.HUD_toggled[hud_choice] = prefs.observer_huds[hud_choice]
-	if(O.HUD_toggled[hud_choice])
-		H.add_hud_to(O)
+	observer_user.HUD_toggled[hud_choice] = prefs.observer_huds[hud_choice]
+	if(observer_user.HUD_toggled[hud_choice])
+		H.add_hud_to(observer_user, observer_user)
 	else
-		H.remove_hud_from(O)
+		H.remove_hud_from(observer_user, observer_user)
 
 /client/proc/toggle_ghost_health_scan()
 	set name = "Toggle Health Scan"
@@ -682,7 +693,7 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE, GHOST_ORBIT_TRIANGLE, GH
 	set name = "Show Combat Chat Prefs"
 	set desc = "Shows additional chat preferences for combat and ghost messages."
 
-	add_verb(src, combat_chat_prefs_verbs)
+	add_verb(src, GLOB.combat_chat_prefs_verbs)
 	remove_verb(src, /client/proc/show_combat_chat_preferences)
 
 /client/proc/hide_combat_chat_preferences() // Hides additional chat logs preferences.
@@ -690,7 +701,7 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE, GHOST_ORBIT_TRIANGLE, GH
 	set name = "Hide Combat Chat Prefs"
 	set desc = "Hides additional chat preferences for combat and ghost messages."
 
-	remove_verb(src, combat_chat_prefs_verbs)
+	remove_verb(src, GLOB.combat_chat_prefs_verbs)
 	add_verb(src, /client/proc/show_combat_chat_preferences)
 
 /client/proc/toggle_chat_shooting()
@@ -741,22 +752,23 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE, GHOST_ORBIT_TRIANGLE, GH
 	to_chat(src, SPAN_BOLDNOTICE("As a player, you will now [(prefs.chat_display_preferences & CHAT_TYPE_PAIN) ? "see you being in pain messages" : "never see you being in pain messages"]."))
 	prefs.save_preferences()
 
-var/list/combat_chat_prefs_verbs = list(
+GLOBAL_LIST_INIT(combat_chat_prefs_verbs, list(
 	/client/proc/toggle_chat_shooting,
 	/client/proc/toggle_chat_xeno_attack,
 	/client/proc/toggle_chat_xeno_armor,
 	/client/proc/toggle_chat_someone_hit,
 	/client/proc/toggle_chat_you_hit,
 	/client/proc/toggle_chat_you_pain,
-	/client/proc/hide_combat_chat_preferences)
+	/client/proc/hide_combat_chat_preferences))
 
-var/list/ghost_prefs_verbs = list(
+GLOBAL_LIST_INIT(ghost_prefs_verbs, list(
 	/client/proc/toggle_ghost_ears,
 	/client/proc/toggle_ghost_sight,
 	/client/proc/toggle_ghost_radio,
+	/client/proc/toggle_ghost_spyradio,
 	/client/proc/toggle_ghost_hivemind,
 	/client/proc/deadchat,
 	/client/proc/toggle_ghost_hud,
 	/client/proc/toggle_ghost_health_scan,
 	/client/proc/pick_ghost_orbit,
-	/client/proc/hide_ghost_preferences)
+	/client/proc/hide_ghost_preferences))

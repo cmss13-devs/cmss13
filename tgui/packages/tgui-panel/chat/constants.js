@@ -24,6 +24,7 @@ export const MESSAGE_TYPE_INTERNAL = 'internal';
 export const MESSAGE_TYPE_SYSTEM = 'system';
 export const MESSAGE_TYPE_LOCALCHAT = 'localchat';
 export const MESSAGE_TYPE_RADIO = 'radio';
+export const MESSAGE_TYPE_HIVEMIND = 'hivemind';
 export const MESSAGE_TYPE_INFO = 'info';
 export const MESSAGE_TYPE_WARNING = 'warning';
 export const MESSAGE_TYPE_HELPFUL = 'helpful';
@@ -62,7 +63,13 @@ export const MESSAGE_TYPES = [
     type: MESSAGE_TYPE_RADIO,
     name: 'Radio',
     description: 'All departments of radio messages',
-    selector: '.radio, .xeno, .xenoqueen, .xenoleader, .alert, .newscaster',
+    selector: '.radio, .alert, .newscaster',
+  },
+  {
+    type: MESSAGE_TYPE_HIVEMIND,
+    name: 'Hivemind',
+    description: 'Xenomorph hivemind messages',
+    selector: '.xeno, .xenoqueen, .xenoleader',
   },
   {
     type: MESSAGE_TYPE_INFO,
@@ -125,14 +132,8 @@ export const MESSAGE_TYPES = [
     type: MESSAGE_TYPE_ADMINCHAT,
     name: 'Admin Chat',
     description: 'ASAY messages',
-    selector: '.admin_channel, .adminsay, .headminsay',
-    admin: true,
-  },
-  {
-    type: MESSAGE_TYPE_MODCHAT,
-    name: 'Mod Chat',
-    description: 'MSAY messages',
-    selector: '.mod_channel, .mod, .adminmod, .staffsay',
+    selector:
+      '.admin_channel, .adminsay, .headminsay, .mod_channel, .mod, .adminmod, .staffsay',
     admin: true,
   },
   {

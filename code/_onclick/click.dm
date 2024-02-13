@@ -71,7 +71,9 @@
 		return
 
 	// Click handled elsewhere. (These clicks are not affected by the next_move cooldown)
-	if (click(A, mods) || A.clicked(src, mods, location, params))
+	if(click(A, mods))
+		return
+	if(A.clicked(src, mods, location, params))
 		return
 
 	// Default click functions from here on.
@@ -80,7 +82,7 @@
 		return
 
 	face_atom(A)
-	if(mods["middle"]) 
+	if(mods["middle"])
 		return
 	// Special type of click.
 	if (is_mob_restrained())
@@ -208,7 +210,7 @@
 		return TRUE
 
 	if (mods["ctrl"])
-		if (Adjacent(user))
+		if (Adjacent(user) && user.next_move < world.time)
 			user.start_pulling(src)
 		return TRUE
 	return FALSE
@@ -332,7 +334,7 @@
 	if(prefs.adaptive_zoom)
 		INVOKE_ASYNC(src, PROC_REF(adaptive_zoom))
 	else if(prefs.auto_fit_viewport)
-		INVOKE_ASYNC(src, .verb/fit_viewport)
+		INVOKE_ASYNC(src, VERB_REF(fit_viewport))
 
 /client/proc/get_adaptive_zoom_factor()
 	if(!prefs.adaptive_zoom)
@@ -355,7 +357,7 @@
 /client/proc/create_clickcatcher()
 	if(!void)
 		void = new()
-	screen += void
+	add_to_screen(void)
 
 /client/proc/apply_clickcatcher()
 	create_clickcatcher()
@@ -373,9 +375,9 @@
 	tX = tX[1]
 	var/shiftX = C.pixel_x / world.icon_size
 	var/shiftY = C.pixel_y / world.icon_size
-	var/list/actual_view = getviewsize(C ? C.view : world_view_size)
-	tX = Clamp(origin.x + text2num(tX) + shiftX - round(actual_view[1] / 2) - 1, 1, world.maxx)
-	tY = Clamp(origin.y + text2num(tY) + shiftY - round(actual_view[2] / 2) - 1, 1, world.maxy)
+	var/list/actual_view = getviewsize(C ? C.view : GLOB.world_view_size)
+	tX = clamp(origin.x + text2num(tX) + shiftX - round(actual_view[1] / 2) - 1, 1, world.maxx)
+	tY = clamp(origin.y + text2num(tY) + shiftY - round(actual_view[2] / 2) - 1, 1, world.maxy)
 	return locate(tX, tY, tZ)
 
 

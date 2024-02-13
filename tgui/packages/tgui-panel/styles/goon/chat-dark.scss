@@ -434,9 +434,9 @@ em {
   font-weight: bold;
 }
 
-.minorannounce {
+.bigannounce {
   font-weight: bold;
-  font-size: 185%;
+  font-size: 115%;
 }
 
 .greenannounce {
@@ -933,6 +933,9 @@ em {
 .hcradio {
   color: #318779;
 }
+.pvstradio {
+  color: #9b0612;
+}
 .cryoradio {
   color: #ad6d48;
 }
@@ -947,10 +950,6 @@ em {
 
 .engradio {
   color: #a66300;
-}
-
-.sentryradio {
-  color: #844300;
 }
 
 .sentryradio {
@@ -982,6 +981,10 @@ em {
 }
 
 .vairadio {
+  color: #e3580e;
+}
+
+.rmcradio {
   color: #e3580e;
 }
 
@@ -1098,7 +1101,7 @@ em {
 
 .xenoboldnotice {
   color: #51a16c;
-  font-style: italic;
+  font-weight: bold;
 }
 
 .xenowarning {

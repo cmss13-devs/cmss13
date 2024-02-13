@@ -122,16 +122,6 @@
 	containername = "\improper M39 AP magazines crate"
 	group = "Ammo"
 
-/datum/supply_packs/ammo_smg_mag_box_ext
-	name = "Magazine box (M39, 10x extended mags)"
-	contains = list(
-		/obj/item/ammo_box/magazine/m39/ext,
-	)
-	cost = 30
-	containertype = /obj/structure/closet/crate/ammo
-	containername = "\improper M39 extended magazines crate"
-	group = "Ammo"
-
 //------------------------For M4RA----------------
 
 /datum/supply_packs/ammo_m4ra_mag_box
@@ -250,6 +240,16 @@
 	containername = "\improper shotgun flechette crate"
 	group = "Ammo"
 
+/datum/supply_packs/ammo_shell_box_breaching
+	name = "Shell box (16g) (120x breaching shells)"
+	contains = list(
+		/obj/item/ammo_box/magazine/shotgun/light/breaching,
+	)
+	cost = 40
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper shotgun breaching crate"
+	group = "Ammo"
+
 //------------------------For 88M4 ----------------
 
 /datum/supply_packs/ammo_mod88_mag_box_ap
@@ -304,6 +304,18 @@
 	cost = 30
 	containertype = /obj/structure/closet/crate
 	containername = "\improper M41AE2 HPR holo-target magazines crate"
+	group = "Ammo"
+
+/datum/supply_packs/ammo_xm51
+	contains = list(
+		/obj/item/ammo_magazine/rifle/xm51,
+		/obj/item/ammo_magazine/rifle/xm51,
+		/obj/item/ammo_magazine/shotgun/light/breaching,
+	)
+	name = "XM51 Ammo (2x mags) (1x small breaching shell box)"
+	cost = 20
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper XM51 ammo crate"
 	group = "Ammo"
 
 //------------------------Smartgunner stuff----------------

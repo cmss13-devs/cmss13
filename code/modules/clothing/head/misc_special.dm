@@ -45,33 +45,35 @@
 	set name = "Adjust welding mask"
 	set src in usr
 
-	if(usr.canmove && !usr.stat && !usr.is_mob_restrained())
-		if(up)
-			vision_impair = VISION_IMPAIR_MAX
-			flags_inventory |= COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
-			flags_inv_hide |= HIDEEARS|HIDEEYES|HIDEFACE
-			icon_state = initial(icon_state)
-			eye_protection = initial(eye_protection)
-			to_chat(usr, "You flip the [src] down to protect your eyes.")
-		else
-			vision_impair = VISION_IMPAIR_NONE
-			flags_inventory &= ~(COVEREYES|COVERMOUTH|BLOCKSHARPOBJ)
-			flags_inv_hide &= ~(HIDEEARS|HIDEEYES|HIDEFACE)
-			icon_state = "[initial(icon_state)]up"
-			eye_protection = EYE_PROTECTION_NONE
-			to_chat(usr, "You push the [src] up out of your face.")
-		up = !up
+	if(usr.is_mob_incapacitated())
+		return
 
-		if(ishuman(loc))
-			var/mob/living/carbon/human/H = loc
-			if(H.head == src)
-				H.update_tint()
+	if(up)
+		vision_impair = VISION_IMPAIR_MAX
+		flags_inventory |= COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
+		flags_inv_hide |= HIDEEARS|HIDEEYES|HIDEFACE
+		icon_state = initial(icon_state)
+		eye_protection = initial(eye_protection)
+		to_chat(usr, SPAN_NOTICE("You flip [src] down to protect your eyes."))
+	else
+		vision_impair = VISION_IMPAIR_NONE
+		flags_inventory &= ~(COVEREYES|COVERMOUTH|BLOCKSHARPOBJ)
+		flags_inv_hide &= ~(HIDEEARS|HIDEEYES|HIDEFACE)
+		icon_state = "[initial(icon_state)]up"
+		eye_protection = EYE_PROTECTION_NONE
+		to_chat(usr, SPAN_NOTICE("You push [src] up out of your face."))
+	up = !up
 
-		update_clothing_icon() //so our mob-overlays update
+	if(ishuman(loc))
+		var/mob/living/carbon/human/H = loc
+		if(H.head == src)
+			H.update_tint()
 
-		for(var/X in actions)
-			var/datum/action/A = X
-			A.update_button_icon()
+	update_clothing_icon() //so our mob-overlays update
+
+	for(var/X in actions)
+		var/datum/action/A = X
+		A.update_button_icon()
 
 /*
  * Cakehat
@@ -137,25 +139,7 @@
 	icon_state = "hardhat[on]_pumpkin"
 
 	if(on)
-		user.SetLuminosity(brightness_on, FALSE, src)
+		set_light_range(brightness_on)
+		set_light_on(TRUE)
 	else
-		user.SetLuminosity(0, FALSE, src)
-
-/obj/item/clothing/head/pumpkinhead/pickup(mob/user)
-	..()
-	if(on)
-		user.SetLuminosity(brightness_on, FALSE, src)
-	SetLuminosity(0)
-
-/obj/item/clothing/head/pumpkinhead/dropped(mob/user)
-	..()
-	if(on)
-		user.SetLuminosity(0, FALSE, src)
-		SetLuminosity(brightness_on)
-
-/obj/item/clothing/head/pumpkinhead/Destroy()
-	if(ismob(src.loc))
-		src.loc.SetLuminosity(0, FALSE, src)
-	else
-		SetLuminosity(0)
-	return ..()
+		set_light_on(FALSE)

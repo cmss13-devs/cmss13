@@ -451,7 +451,7 @@
 /area/yautja)
 "bN" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/weapon/katana,
+/obj/item/weapon/sword/katana,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
@@ -1053,12 +1053,12 @@
 /area/yautja)
 "cZ" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/weapon/claymore/mercsword,
-/obj/item/weapon/claymore/mercsword,
-/obj/item/weapon/claymore/mercsword,
-/obj/item/weapon/claymore/mercsword,
-/obj/item/weapon/claymore/mercsword,
-/obj/item/weapon/claymore/mercsword,
+/obj/item/weapon/sword,
+/obj/item/weapon/sword,
+/obj/item/weapon/sword,
+/obj/item/weapon/sword,
+/obj/item/weapon/sword,
+/obj/item/weapon/sword,
 /turf/open/floor/holofloor{
 	dir = 2;
 	icon_state = "cult"

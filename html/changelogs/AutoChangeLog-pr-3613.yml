@@ -1,8 +1,0 @@
-author: "SpartanBobby"
-delete-after: True
-changes:
-  - bugfix: "fixes invisible walls on LV522"
-  - bugfix: "fixes unweedable tiles on LV522"
-  - bugfix: "fixes invisible windows on LV522 (if you spot any invisible windows send a picture of them to the SS13: CM discord #mapperchannel @spartanbobby"
-  - bugfix: "fixes LV522 OOB area in the W-Y vault"
-  - maptweak: "moves sandbags and a breaching charge on LV522"

@@ -27,9 +27,9 @@ type Target = {
   locx: number;
 };
 
-export const Radar = (props, context) => {
+export const Radar = (props) => {
   return (
-    <Window width={800} height={600} theme="ntos">
+    <Window width={965} height={600} theme="ntos">
       <Window.Content scrollable>
         <RadarContent />
       </Window.Content>
@@ -37,18 +37,18 @@ export const Radar = (props, context) => {
   );
 };
 
-export const RadarContent = (props, context) => {
+export const RadarContent = (props) => {
   return (
     <Stack fill>
-      <Stack.Item position="relative" width={20.5}>
+      <Stack.Item position="relative" width={35}>
         <ObjectDisplay />
       </Stack.Item>
       <Stack.Item
         style={{
-          'background-image':
+          'backgroundImage':
             'url("' + resolveAsset('ntosradarbackground.png') + '")',
-          'background-position': 'center',
-          'background-repeat': 'no-repeat',
+          'backgroundPosition': 'center',
+          'backgroundRepeat': 'no-repeat',
           'top': '20px',
         }}
         position="relative"
@@ -62,8 +62,8 @@ export const RadarContent = (props, context) => {
 };
 
 /** Returns object information */
-const ObjectDisplay = (props, context) => {
-  const { act, data } = useBackend<Data>(context);
+const ObjectDisplay = (props) => {
+  const { act, data } = useBackend<Data>();
   const { object = [], scanning, selected } = data;
 
   return (
@@ -101,8 +101,8 @@ const ObjectDisplay = (props, context) => {
 };
 
 /** Returns target information */
-const TargetDisplay = (props, context) => {
-  const { data } = useBackend<Data>(context);
+const TargetDisplay = (props) => {
+  const { data } = useBackend<Data>();
   const { selected, target } = data;
 
   if (!selected || !target) {

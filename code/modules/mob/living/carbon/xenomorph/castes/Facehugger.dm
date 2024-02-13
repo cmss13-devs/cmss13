@@ -50,6 +50,7 @@
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/onclick/xenohide,
 		/datum/action/xeno_action/activable/pounce/facehugger,
+		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
@@ -59,6 +60,10 @@
 	icon_xeno = 'icons/mob/xenos/facehugger.dmi'
 	icon_xenonid = 'icons/mob/xenonids/facehugger.dmi'
 
+	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
+	weed_food_states = list("Facehugger_1","Facehugger_2","Facehugger_3")
+	weed_food_states_flipped = list("Facehugger_1","Facehugger_2","Facehugger_3")
+
 /mob/living/carbon/xenomorph/facehugger/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
@@ -66,8 +71,17 @@
 		PF.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
 
 /mob/living/carbon/xenomorph/facehugger/Life(delta_time)
-	if(stat != DEAD && !lying && !(locate(/obj/effect/alien/weeds) in get_turf(src)))
+	if(stat == DEAD)
+		return ..()
+
+	if(body_position == STANDING_UP && !(mutation_type == FACEHUGGER_WATCHER) && !(locate(/obj/effect/alien/weeds) in get_turf(src)))
 		adjustBruteLoss(1)
+		return ..()
+
+	if(!client && !aghosted && away_timer > XENO_FACEHUGGER_LEAVE_TIMER)
+		// Become a npc once again
+		new /obj/item/clothing/mask/facehugger(loc, hivenumber)
+		qdel(src)
 	return ..()
 
 /mob/living/carbon/xenomorph/facehugger/update_icons(is_pouncing)
@@ -76,8 +90,8 @@
 
 	if(stat == DEAD)
 		icon_state = "[mutation_type] [caste.caste_type] Dead"
-	else if(lying)
-		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
+	else if(body_position == LYING_DOWN)
+		if(!HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED))
 			icon_state = "[mutation_type] [caste.caste_type] Sleeping"
 		else
 			icon_state = "[mutation_type] [caste.caste_type] Knocked Down"
@@ -100,8 +114,8 @@
 	if(!caste)
 		return FALSE
 
-	if(lying) //No attacks while laying down
-		return FALSE
+	if(body_position == LYING_DOWN) //No attacks while laying down
+		return FALSE // Yoooo replace this by a mobility_flag for attacks or something
 
 	if(istype(A, /obj/effect/alien/resin/special/eggmorph))
 		var/obj/effect/alien/resin/special/eggmorph/morpher = A
@@ -120,16 +134,16 @@
 
 	if(ishuman(A))
 		var/mob/living/carbon/human/human = A
-		if(!human.lying)
+		if(human.body_position != LYING_DOWN)
 			to_chat(src, SPAN_WARNING("You can't reach \the [human], they need to be lying down."))
 			return
 		if(!can_hug(human, hivenumber))
 			to_chat(src, SPAN_WARNING("You can't infect \the [human]..."))
 			return
 		visible_message(SPAN_WARNING("\The [src] starts climbing onto \the [human]'s face..."), SPAN_XENONOTICE("You start climbing onto \the [human]'s face..."))
-		if(!do_after(src, 6 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, human, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
+		if(!do_after(src, FACEHUGGER_WINDUP_DURATION, INTERRUPT_ALL, BUSY_ICON_HOSTILE, human, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			return
-		if(!human.lying)
+		if(human.body_position != LYING_DOWN)
 			to_chat(src, SPAN_WARNING("You can't reach \the [human], they need to be lying down."))
 			return
 		if(!can_hug(human, hivenumber))
@@ -143,23 +157,13 @@
 
 /mob/living/carbon/xenomorph/facehugger/proc/handle_hug(mob/living/carbon/human/human)
 	var/obj/item/clothing/mask/facehugger/hugger = new /obj/item/clothing/mask/facehugger(loc, hivenumber)
-	var/did_hug = hugger.attach(human, TRUE, 0.5)
+	var/did_hug = hugger.attach(human, TRUE, 1, src)
+	if(!did_hug)
+		qdel(hugger)
+		return
 	if(client)
-		client?.player_data?.adjust_stat(PLAYER_STAT_FACEHUGS, STAT_CATEGORY_XENO, 1)
-	var/area/hug_area = get_area(src)
-	if(hug_area)
-		for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
-			to_chat(observer, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b> at \the <b>[hug_area]</b>" + " [OBSERVER_JMP(observer, human)]"))
-		to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b> at \the <b>[hug_area]</b>"))
-	else
-		for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
-			to_chat(observer, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b>" + " [OBSERVER_JMP(observer, human)]"))
-		to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[src]</b>"))
+		client.player_data?.adjust_stat(PLAYER_STAT_FACEHUGS, STAT_CATEGORY_XENO, 1)
 	qdel(src)
-	if(hug_area)
-		xeno_message(SPAN_XENOMINORWARNING("You sense that [src] has facehugged a host at \the [hug_area]!"), 1, src.hivenumber)
-	else
-		xeno_message(SPAN_XENOMINORWARNING("You sense that [src] has facehugged a host!"), 1, src.hivenumber)
 	return did_hug
 
 /mob/living/carbon/xenomorph/facehugger/age_xeno()
@@ -215,24 +219,14 @@
 /mob/living/carbon/xenomorph/facehugger/add_xeno_shield(added_amount, shield_source, type = /datum/xeno_shield, duration = -1, decay_amount_per_second = 1, add_shield_on = FALSE, max_shield = 200)
 	return
 
-/mob/living/carbon/xenomorph/facehugger/proc/scuttle(obj/structure/current_structure)
-	var/move_dir = get_dir(src, loc)
-	for(var/atom/movable/atom in get_turf(current_structure))
-		if(atom != current_structure && atom.density && atom.BlockedPassDirs(src, move_dir))
-			to_chat(src, SPAN_WARNING("\The [atom] prevents you from squeezing under \the [current_structure]!"))
-			return
-	// Is it an airlock?
-	if(istype(current_structure, /obj/structure/machinery/door/airlock))
-		var/obj/structure/machinery/door/airlock/current_airlock = current_structure
-		if(current_airlock.locked || current_airlock.welded) //Can't pass through airlocks that have been bolted down or welded
-			to_chat(src, SPAN_WARNING("\The [current_airlock] is locked down tight. You can't squeeze underneath!"))
-			return
-	visible_message(SPAN_WARNING("\The [src] scuttles underneath \the [current_structure]!"), \
-	SPAN_WARNING("You squeeze and scuttle underneath \the [current_structure]."), null, 5)
-	forceMove(current_structure.loc)
-
 /mob/living/carbon/xenomorph/facehugger/emote(act, m_type, message, intentional, force_silence)
+	// Custom emote
+	if(act == "me")
+		return ..()
+
+	// Otherwise, ""roar""!
 	playsound(loc, "alien_roar_larva", 15)
+	return TRUE
 
 /mob/living/carbon/xenomorph/facehugger/get_status_tab_items()
 	. = ..()
@@ -240,3 +234,35 @@
 		. += "Lifetime Hugs: [total_facehugs] / [next_facehug_goal]"
 	else
 		. += "Lifetime Hugs: [total_facehugs]"
+
+
+/datum/xeno_mutator/watcher
+	name = "STRAIN: Facehugger - Watcher"
+	description = "You lose your ability to hide in exchange to see further and the ability to no longer take damage outside of weeds. This enables you to stalk your host from a distance and wait for the perfect oppertunity to strike."
+	flavor_description = "No need to hide when you can see the danger."
+	individual_only = TRUE
+	caste_whitelist = list(XENO_CASTE_FACEHUGGER)
+	mutator_actions_to_remove = list(
+		/datum/action/xeno_action/onclick/xenohide,
+	)
+	mutator_actions_to_add = list(
+		/datum/action/xeno_action/onclick/toggle_long_range/runner,
+	)
+
+	cost = 1
+
+	keystone = TRUE
+
+/datum/xeno_mutator/watcher/apply_mutator(datum/mutator_set/individual_mutators/mutator_set)
+	. = ..()
+	if(!.)
+		return
+
+	var/mob/living/carbon/xenomorph/facehugger/facehugger = mutator_set.xeno
+
+	facehugger.viewsize = 10
+	facehugger.layer = MOB_LAYER
+
+	facehugger.mutation_type = FACEHUGGER_WATCHER
+	mutator_update_actions(facehugger)
+	mutator_set.recalculate_actions(description, flavor_description)

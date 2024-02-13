@@ -1,0 +1,430 @@
+2023-10-01:
+  QuickLode:
+  - bugfix: Allows M46C prototype rifle to accept standard M41A MK2 rubber munitions
+2023-10-02:
+  Ben10083:
+  - bugfix: fixed a Working Joe voiceline from not working
+  Casper:
+  - ui: added microwave TGUI
+  Morrow:
+  - bugfix: Fixed fake incomplete surgeries
+  - bugfix: Fixed manual distress signal manual call options
+  - bugfix: Fixed a WO distress signal over announcing
+  Steelpoint:
+  - balance: Tool Pouch can now hold the same types of items that a toolbelt can hold.
+      It is still restricted to 4 inventory slots.
+  - balance: Eggs no longer are resistant to certain kinds of melee attacks. Making
+      them far easier to kill in melee.
+  realforest2001:
+  - balance: Reduces power cost for plasma caster use, and creation of thwei crystals/health
+      capsules.
+2023-10-03:
+  Drathek:
+  - rscadd: Add the last larva queue message to observer's status panel
+  Huffie56:
+  - qol: remove welding google from squad comtech vendor to avoid  him to waste point
+      since tool vendor have them for free.
+  JackieEstegado:
+  - bugfix: Fixed runtime that could happen when melleing an egg.
+  Morrow:
+  - balance: If a mob is on top of a reflective wall the wall no longer functions
+  - balance: Bullets will not longer get eaten by xeno special structures unless you
+      click directly on them
+  - bugfix: '"Fixed" missing window frame icon states'
+  Private Tristan:
+  - balance: all resin fruits now contain 30u of fruit resin along with their secondary
+      reagents.
+  - balance: Alacrit fruits now contain catecholamine plasma instead of pheromone
+      plasma.
+  Steelpoint:
+  - rscadd: Xenomorph hives can now form an alliance with Colonial Marshals.
+  Sulaboy, Hidgamer, Steelpoint:
+  - rscadd: Adds the surgical drop pouch item. It comes in green, blue and black.
+      Only available from the synthetic vendor currently.
+  - imageadd: Adds sprites for the surgical drop pouches.
+2023-10-04:
+  BeagleGaming1:
+  - rscadd: Added keybinds to allow inventory manipulation
+  Morrow:
+  - admin: Operation time logging
+  - balance: Underbarrel extinguisher no longer requires wield
+  - bugfix: Re-added previous UPP changes that were lost in soft conflict
+  - spellcheck: Removed some ambiguous text about loyalties for UPP survivors
+  - bugfix: Fixed storage depth for internal storages
+  - bugfix: Candle boxes can now only hold candles
+  blackdragonTOW:
+  - sounddel: removed 300+ ancient and unused Piano and Violin notes.
+2023-10-05:
+  Drathek:
+  - rscadd: Restore the stat panel options menu to change the stat panel font size
+  - bugfix: Fix getFlatIcon not resizing its template nor respect appearance_flags
+      of RESET_COLOR and RESET_ALPHA
+  Morrow:
+  - bugfix: Fixed req door accesses
+  - rscadd: Added NVG optics
+  - rscadd: Added a hotkey to cycle optics
+  - rscadd: Added special marine raider optic
+  - rscadd: Added examine text for optics
+  - rscadd: Added research publication to advanced medical optic
+  - rscdel: Removed functional tube NVGs from gameplay
+  - refactor: Moved some optics code around to make it less redundant
+  - bugfix: Fixed a bug with duplicate optic actions
+  - bugfix: Fixed a reported bug where HUDs would stay on forever with destruction
+      of a helmet
+  - balance: Comms relays now have a five minute cooldown to be re-pylon'd after a
+      pylon was destroyed
+  - bugfix: Pylons now account for stored larva
+  - bugfix: Fixed floodlight stacking to make mostly invincible walls
+  - refactor: Refactored 90% of the floodlight code
+  Steelpoint:
+  - ui: Added personnel job titles to the handheld crew monitor, to make it easier
+      to tell find out exactly what role's you are looking for. Also slightly expands
+      the default monitor screen size to accommodate the entire personnel text on
+      screen.
+2023-10-06:
+  blackdragonTOW:
+  - bugfix: fixed spider dead sprite to not have white space (is transparent instead)
+2023-10-08:
+  Kivts:
+  - rscadd: You can partially protect yourself from flu and other disease by wearing
+      a mask and other PPE. Doesnt affect Black Goo.
+  Steelpoint:
+  - rscadd: Black and white beret's have been added as loadout options for all characters
+      as headwear.
+  - rscadd: More cosmetic options are on offer for Synthetics. Includes white and
+      black berets, standard or darker engineering and mp uniforms and all camo options
+      for the poncho.
+  - rscadd: The Synth Councillor and Synth Utility uniforms can now roll their sleeves.
+  blackdragonTOW:
+  - spellcheck: Altered inconsistent dropship ammo names
+  irRegularGuy646:
+  - rscadd: Added new "M1A1" ballistic goggle reskin
+  kiVts:
+  - rscadd: Spades can now remove botany plants.
+  - rscadd: Plants now globally take more water to grow.
+  - code_imp: removed all mention of lighting in botany trays.
+  - bugfix: Research computer no longer shows "for" for every simulation result.
+  realforest2001:
+  - rscadd: Added a Do Not Disturb feature for MOST phones. (Overwatch and a couple
+      others excluded).
+  spartanbobby:
+  - maptweak: Fixes floating Cameras and Light in the maint tunnels north of south
+      of brig
+  - maptweak: Fixes incorrect Shower tiles in maint shower north of engineering
+  - maptweak: Fixes incorrect area in maint south of VC bunk
+  - maptweak: Removes Piano from USS Almayer upper lifeboat area
+2023-10-09:
+  SpartanBobby, esselnek:
+  - rscadd: tactical shotguns now come standard with their stock. Yes you can remove
+      it if you dont want it
+  - rscadd: new tactical shotgun stock sprite done by esselnek
+2023-10-10:
+  BeagleGaming1:
+  - code_imp: prop guns will copy attachments
+  CapCamIII:
+  - rscdel: XO can no longer take a sword as their personal weapon in their vendor.
+  realforest2001:
+  - rscadd: Added missing flight record for Queen dropship summon.
+  - code_imp: Added security record option for shipwide_ai_announcement.
+  - rscadd: Added security records for unidentified lifeforms announcement.
+2023-10-11:
+  BeagleGaming1:
+  - rscadd: Light floor can be examined to tell if it is on, off, or broken.
+  - code_imp: Light floor subtypes for easier mapping
+  Birdtalon:
+  - bugfix: You can now pick up paper bins
+  - bugfix: Campfires stop consuming wood when full
+  Zonespace27:
+  - rscdel: Predators can no longer see their or others cross-round honor count.
+  irRegularGuy646:
+  - bugfix: fixed new goggle's on helmet sprite
+2023-10-12:
+  QuickLode:
+  - rscadd: Adds a handheld distress beacon for the Colonial Marshal. They can use
+      this to signal distress which in turn allows reinforcements in the form of Anchorpoint
+      Marine QRF or nearby CMB teams. Admins do the final check.
+  - rscadd: Adds a CMB Patrol Team which responds to "Marshals in Distress" call.
+  - admin: headset admin response no longer specifies USCM origin(as this is used
+      for USCM, WY, and now CMB)
+  - spellcheck: fixes a CMB typo in response message. Also a miniscule change to HG
+      37-12 desc.
+  - spellcheck: fixes 2 misc typos in CMB Inspections
+  harryob:
+  - rscadd: origin descriptions are now displayed when selecting an origin
+  mullenpaul:
+  - ui: tweaked flyby controls to make them in line with other destinations
+2023-10-13:
+  Drathek:
+  - refactor: Refactored camera code to be less blocking, use typechecks less often,
+      and provide somewhat more fluid descriptions to photos.
+2023-10-14:
+  BeagleGaming1:
+  - bugfix: M39 arm brace disables when dropped
+  CapCamIII:
+  - bugfix: UPP Sapper/Medic survivor use their correct paygrade instead of UE3M/UE3S
+  QuickLode:
+  - rscadd: Colony Supervisor now has a guaranteed grant.
+  - balance: nerfs PMC Synthetic's gear
+  - bugfix: PMC Synthetic has corrected access(thx forest)
+  - bugfix: Colony Supervisor can now have access to his own colony(LOL).
+  mullenpaul:
+  - rscadd: adds weapon spawners for USCM, CLF, PMC and UPP
+2023-10-15:
+  Birdtalon:
+  - bugfix: Limb printer can no longer double print or print without metal.
+  Drathek:
+  - ui: Fixed a duplicate Options button
+  Lalipar:
+  - qol: Readable time for when a fax was sent in fax panel
+  - qol: Adds ckey/character name for faxes in fax panel
+  - qol: Adds fax subject to fax panel
+  - bugfix: Added CMB faxes to Fax Panel
+  fira:
+  - bugfix: Fix nuke explosion getting canceled in some very rare cases.
+  - bugfix: Xeno Name preference does not require a reconnection to apply anymore.
+      It still won't change your current Xenomorph's name however.
+  - bugfix: Fixed Tape Recorder failing to record when no language information is
+      present.
+  harryob:
+  - admin: administrators without R_DEBUG can now restart the server without starting
+      the round
+2023-10-16:
+  CapCamIII:
+  - balance: ERTs now have a variant of the standard medkit that has no storage lock.
+  - bugfix: Lots of ERTs now correctly have a medkit spawning in their gear
+  Drathek:
+  - bugfix: Fixed the hive surge join as xeno observer alert text link not actually
+      doing anything.
+  Twomoon:
+  - rscadd: Added new haircut
+  Waseemq1235:
+  - admin: Makes subtle messages more noticeable.
+  Zonespace, Wei (sprites):
+  - balance: Removed NSG, Type71, tactical Mar-40, and Mar-50 from the black market
+  - balance: Removed Ext. M4ra mags from the black market
+  - balance: Removed monkeycubes from the black market
+  - balance: Removed lunge mines from the black market
+  - balance: You now need a modified security access tuner to access the black market,
+      which can be found ship- and ground-side where scanners and radios can spawn.
+  fira:
+  - bugfix: The Turing Machine should now keep working as intended if its linked Smartfridge
+      is blown up.
+  - bugfix: Fixed xeno cultists always being created into normal hive, irrespective
+      of the selected hive.
+  - bugfix: Fixed 'Join as Freed Mob' verb crashing if freed mobs had previously been
+      deleted.
+  - bugfix: Fixed issues with turfs, notably lighting, arising when building it from
+      a sheets stack.
+2023-10-17:
+  VileBeggar:
+  - qol: The Queen's psychic messages now use a bigger font and are harder to miss.
+  Warfan1815:
+  - mapadd: New Squad Briefings south and north of normal briefing! Feel free to use
+      them to your heart's content.
+  - maptweak: Moved long-rest bunks further north and further south of where they
+      were originally
+2023-10-18:
+  mullenpaul:
+  - code_imp: resolves flyby issues by refactoring update_equipment logic
+  - refactor: removes unwanted code
+  realforest2001:
+  - code_imp: Moved most data storage from ARES Interface and APOLLO consoles to a
+      new ARES datacore datum.
+  - code_imp: Moved the two consoles to separate files for easier navigation, and
+      moved their respective UI data to the files.
+  - code_imp: Ares logging procs are now global procs with integrated can_log checks,
+      rather than requiring definition of ares_link for every use.
+  - rscadd: Added ares_can_log checks to all the places I could find missing them.
+  - bugfix: Fixed missing rejection button for access tickets.
+  - rscdel: Removed claim ticket button from Access Tickets.
+2023-10-19:
+  BeagleGaming1:
+  - refactor: Refactored handheld beacons and related code
+  CapCamIII:
+  - bugfix: Equipped marine presets spawn with full food on spawn
+  Huffie56:
+  - refactor: refactor ammo_datums file.
+  SpartanBobby:
+  - maptweak: fixes lack of warning stripes under doors in squad briefing areas and
+      newly added maint doors onboard USS Almayer
+  - maptweak: fixes incorrect tiles used under window frames in new squad briefing
+      areas onboard USS Almayer
+  - maptweak: fixes pipe sections under window frames in new squad briefing areas
+      onboard USS Almayer
+  - maptweak: fixes pipes that lead nowhere in new squad briefing areas onboard USS
+      Almayer
+  - maptweak: fixes button that was being hidden by light due to recent USS Almayer
+      changes
+  - maptweak: corrects strangely laid out vent sections due to recent USS Almayer
+      changes
+  - maptweak: makes USS Almayer Bunks consistent with the rest of the ship's shower
+      and bathrooms
+  - maptweak: updates "Dusty Beret" prop item to now be the RMC Beret it was originally
+      referencing (now that the RMC are ingame)
+  VileBeggar:
+  - qol: All squad uniform vendors have had their standard apparel condensed into
+      one button.
+  fira:
+  - bugfix: Fixed caps displaying contained items on character even without being
+      worn.
+  neeshacark:
+  - qol: MT, CT, and Nurses can now take the bad leg trait.
+2023-10-20:
+  Drathek:
+  - bugfix: Fixed a cause of bad icon operations
+  - bugfix: Bandaided a problem with nulls in GLOB.clients
+  IsProbablyCatto:
+  - qol: Medbelts pull from pillbottles as default
+  Kitsunemitsu:
+  - bugfix: fixed FTLs being demoted from SL erroneously having the tag TL in chat.
+  MrDas:
+  - bugfix: You can now disassemble wide airlocks. (You can't unwrench them though)
+  - spellcheck: Fixed a few typos in airlock assembly.
+  - imageadd: Added wide airlock assembly and generic solid wide airlock sprites.
+  SpartanBobby:
+  - maptweak: Removes stunprod from LV522
+  VileBeggar:
+  - rscadd: Dartboards are now functional and can be crafted with cardboard.
+  - bugfix: Fixed an issue with some deconstructed signs losing their icon.
+2023-10-21:
+  Birdtalon:
+  - rscadd: USCM Service Jacket to SEA Vendor
+  CapCamIII:
+  - balance: Crawling now only takes 1 second to move and no longer has an overhead
+      icon when doing it.
+  - balance: Timer on attempting to join ERT after death is now 30 seconds down from
+      1 minute
+  - spellcheck: UPP Synth Survivor on the Trijent Dam nightmare is now called a Support
+      Synthetic instead of a Combat Synthetic, as its not a combat synthetic
+  Drathek:
+  - bugfix: Fixed imaginary friends not initializing correctly and throwing a runtime
+  - ui: Tweaked the position of some ghost alerts
+  SpartanBobby:
+  - maptweak: Fixes incorrect DIR on fireshutters in memorial
+  - maptweak: Corrects lack of warning stripe tile under door in north brig maint
+  Steelpoint:
+  - rscadd: UPP ERT's have a chance to be neutral to the USCM.
+  fira:
+  - bugfix: Xeno and Megaphone abovehead chat speech should now properly be centered
+      horizontally.
+  - bugfix: Fixed Rangefinders/Designators preventing you from lazing if you looked
+      up/down them without moving.
+  - bugfix: Fixed Rangefinders/Designators forcing you to look up/down again if you
+      had moved while using them.
+  foxtrot1322:
+  - rscadd: Added splints to the survival pouch
+  - rscadd: Increased survival pouch storage space by 1
+  - spellcheck: Updates the survival pouch's description
+2023-10-22:
+  Drathek:
+  - bugfix: Fix incend and cluster OBs not respecting ceiling OB protections.
+  - bugfix: Disabled code in icon2html that is causing bad icon operations
+  Morrow:
+  - server: the rustg mysql driver is now properly compatible with mariadb
+  Zonespace27:
+  - rscadd: Mentors can now unmark mhelps
+  fira:
+  - bugfix: Removed redundant double binding for F1 to AdminHelp from default keybinds.
+      This does not affect existing users or their settings.
+  - rscadd: Stamping papers now makes a noise.
+  - bugfix: Fixed incorrect Reqs vendors visuals on the Almayer. They now blend in
+      with the walls again.
+  - bugfix: Re-fixed Megaphone above-head-chat drifting to the left.
+  harryob:
+  - admin: no more href token errors when changing the game mode via game panel
+  - bugfix: mentorhelp response no longer gives a dead discord link
+  - admin: view-target-records now allows you to note people properly
+  kiVts:
+  - rscadd: Ghosts get notified when they are being revived by DFB property
+  - balance: DFB property healing threshold lowered, You can create DFB property higher
+      than one.
+  realforest2001:
+  - rscadd: Added Discretionary Arrest to JAS.
+  - rscadd: Added a new category to JAS, Precautionary Charges. Moves Insanity and
+      POW to this category.
+2023-10-23:
+  QuickLode:
+  - balance: Nerfs synth surv pouch by removing 1 storage slot.
+  SpypigDev:
+  - rscadd: CIC Armory SO vendor
+  - balance: Moved most combat-themed gear from SO spawn vendors, to CIC Armory vendor
+  - balance: Made RTO pack a point-buy item in CIC Armory vendor for SOs
+  Steelpoint:
+  - balance: Revolver Heavy ammo no longer stuns targets it strikes, it will instead
+      knock them back and slow them down for a short time.
+  harryob:
+  - server: the server now respects /string/title for late joiners
+  stalkerino:
+  - balance: m39 is able to use vertigrip
+2023-10-24:
+  Segrain:
+  - bugfix: Slicing food once again works as intended.
+2023-10-25:
+  fira:
+  - bugfix: Fixed Ghosts and Queen Eye occasionally "eating" pounces in place of a
+      mob on the same turf.
+  - bugfix: Re-Re-Fixed Xeno Above Head Chat offsets, for real this time
+  - bugfix: Fixed people talking in radios all the time. Finally some quiet.
+  - bugfix: deadchat death messages should now display immediately rather than being
+      delayed a couple seconds.
+2023-10-26:
+  4hands44:
+  - rscadd: Added more attachments, and belts to the CO arsenal.
+  - rscadd: CO now has an Essentials Kit like other roles, containing his Designator,
+      and other useful tools.
+  - rscadd: Re-Adds Bridgecoat to some Officer Dress vendors. (Limited to CO(+) and
+      XO currently.)
+  - rscdel: Removed Laser Designator from CO spawn Preset.
+  - balance: CO can now vend welding Helmet visors.
+  - balance: Adds grenade packets to CO Vendor.
+  XDinka:
+  - rscadd: 'Added four new haircuts: gentle ponytail, edgar haircut, emo bun, taper
+      haircut.'
+2023-10-27:
+  Backsea:
+  - bugfix: Fixed the incorrectly placed shutters at req and that one light near CIC
+  Birdtalon:
+  - refactor: Refactored praetorian pierce ability
+  - bugfix: Praetorian vanguard can no longer pierce through windowed doors
+  SASoperative:
+  - rscadd: Added donator item and sprites
+  Zonespace27:
+  - rscdel: Re-removed CO/XO bridge coat
+  fira:
+  - rscadd: Added about 50 new tips.
+  - rscadd: Bloody footprints are now slightly offset to break long visual straight
+      lines.
+  - bugfix: Items do not align back to the center of turfs anymore when picked from
+      a surface (table or rack)
+  - rscadd: Some more items now have offsets on the map display, and they all can
+      be slightly offset.
+  - code_imp: Rewrote Xeno Acid ticking code.
+  - bugfix: Weather updates won't cause turfs to acid melt more rapidly anymore
+  - bugfix: Fixed various issues in the Networking between Turing machine and Smartfridges.
+  realforest2001:
+  - bugfix: Fixes custom ERT calling broadcasting when it should not.
+  - code_imp: Removes unused vars from ERT procs.
+  - code_imp: Renames the announce var in ERT procs to be more indicative of what
+      it does.
+  - rscadd: Added a setting on custom ERTs for announcing beacon was received.
+2023-10-29:
+  Segrain:
+  - bugfix: Incendiary OB once again spreads to intended size.
+  fira:
+  - bugfix: Sprite-click shots onto Xenos are no longer affected by limb-targeting
+      penalty, because it was an accuracy debuff when there is no inherent benefit
+      to targeting Xeno limbs.
+  realforest2001:
+  - imageadd: Added sprites for provost senior and marshal uniforms.
+  - spellcheck: Gave unique names to the provost armour subtypes.
+  - balance: Prevented most provost armour from being able to fit inside bags.
+  - balance: Returned provost armour to the same slowdowns as MP armour.
+  - code_imp: Removed a lot of duplicate code in Provost presets and uniform/suits.
+2023-10-31:
+  SASoperative:
+  - bugfix: Fixed sprite issue by disabling camo variant for donator item
+  fira:
+  - bugfix: Fixed Limbs and Organs deleting incorrectly on species change.
+  mullenpaul:
+  - refactor: reworked trijent elevators to be reusable on new maps
+  - maptweak: Trijent map now has two elevators, lz1 to engineering and lz2 to omega

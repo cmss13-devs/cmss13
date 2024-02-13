@@ -31,8 +31,9 @@
 	return 1
 
 /obj/structure/machinery/computer/emp_act(severity)
-	if(prob(20/severity)) set_broken()
-	..()
+	. = ..()
+	if(prob(20/severity))
+		set_broken()
 
 
 /obj/structure/machinery/computer/ex_act(severity)
@@ -53,10 +54,8 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			deconstruct(FALSE)
 			return
-		else
-	return
 
-/obj/structure/machinery/computer/bullet_act(obj/item/projectile/Proj)
+/obj/structure/machinery/computer/bullet_act(obj/projectile/Proj)
 	if(exproof)
 		visible_message("[Proj] ricochets off [src]!")
 		return 0

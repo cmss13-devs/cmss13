@@ -31,6 +31,7 @@
 	var/shuttles = list()
 
 	var/announce_text = ""
+	var/infection_announce_text = ""
 
 	var/squads_max_num = 4
 
@@ -64,7 +65,7 @@
 
 	var/nightmare_path
 
-	/// If truthy this is config for a round overriden map: search for override maps in data/, instead of using a path in maps/
+	/// If truthy this is config for a round overridden map: search for override maps in data/, instead of using a path in maps/
 	var/override_map
 
 /datum/map_config/New()
@@ -86,12 +87,14 @@
 		/datum/equipment_preset/synth/survivor/janitor_synth,
 		/datum/equipment_preset/synth/survivor/chef_synth,
 		/datum/equipment_preset/synth/survivor/teacher_synth,
+		/datum/equipment_preset/synth/survivor/freelancer_synth,
+		/datum/equipment_preset/synth/survivor/trucker_synth,
 		/datum/equipment_preset/synth/survivor/bartender_synth,
 		/datum/equipment_preset/synth/survivor/detective_synth,
 		/datum/equipment_preset/synth/survivor/cmb_synth,
-		/datum/equipment_preset/synth/survivor/security_synth,
-		/datum/equipment_preset/synth/survivor/protection_synth,
-		/datum/equipment_preset/synth/survivor/corporate_synth,
+		/datum/equipment_preset/synth/survivor/wy/security_synth,
+		/datum/equipment_preset/synth/survivor/wy/protection_synth,
+		/datum/equipment_preset/synth/survivor/wy/corporate_synth,
 		/datum/equipment_preset/synth/survivor/radiation_synth,
 	)
 
@@ -338,6 +341,9 @@
 
 	if(json["announce_text"])
 		announce_text = json["announce_text"]
+
+	if(json["infection_announce_text"])
+		infection_announce_text = json["infection_announce_text"]
 
 	if(json["weather_holder"])
 		weather_holder = text2path(json["weather_holder"])

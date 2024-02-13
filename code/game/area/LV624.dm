@@ -382,10 +382,12 @@
 /area/lv624/lazarus/engineering
 	name = "\improper Engineering"
 	icon_state = "engine_smes"
+	minimap_color = MINIMAP_AREA_ENGI
 
 /area/lv624/lazarus/comms
 	name = "\improper Communications Relay"
 	icon_state = "tcomsatcham"
+	minimap_color = MINIMAP_AREA_ENGI
 
 /area/lv624/lazarus/secure_storage
 	name = "\improper Secure Storage"
@@ -400,6 +402,7 @@
 /area/lv624/lazarus/research
 	name = "\improper Research Lab"
 	icon_state = "toxlab"
+	minimap_color = MINIMAP_AREA_RESEARCH
 
 /area/lv624/lazarus/fitness
 	name = "\improper Fitness Room"

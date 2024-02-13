@@ -26,7 +26,7 @@
 			icon_state = "[base_icon_state]0"
 			sleep(15)
 			density = FALSE
-			SetOpacity(0)
+			set_opacity(0)
 			operating = 0
 			return
 	return
@@ -46,7 +46,7 @@
 /obj/structure/machinery/door/poddoor/shutters/finish_open()
 	density = FALSE
 	layer = open_layer
-	SetOpacity(0)
+	set_opacity(0)
 
 	if(operating) //emag again
 		operating = FALSE
@@ -63,7 +63,7 @@
 	layer = closed_layer
 	density = TRUE
 	if(visible)
-		SetOpacity(1)
+		set_opacity(1)
 	playsound(loc, 'sound/machines/blastdoor.ogg', 25)
 
 	addtimer(CALLBACK(src, PROC_REF(finish_close)), openspeed)
@@ -86,6 +86,17 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer/Initialize()
 	. = ..()
 	relativewall_neighbours()
+
+/obj/structure/machinery/door/poddoor/shutters/almayer/yautja
+	name = "Armory Shutter"
+	id = "Yautja Armory"
+	needs_power = FALSE
+	unacidable = TRUE
+	indestructible = TRUE
+
+/obj/structure/machinery/door/poddoor/shutters/almayer/yautja/Initialize()
+	. = ..()
+	RegisterSignal(SSdcs, COMSIG_GLOB_YAUTJA_ARMORY_OPENED, PROC_REF(open))
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/containment
 	unacidable = TRUE
@@ -144,3 +155,44 @@
 	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR))
 		return
 	..()
+
+/obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/antitheft
+	name = "Anti-Theft Shutters"
+	desc = "Secure Storage shutters, they're reinforced against entry attempts."
+	var/req_level = SEC_LEVEL_RED
+
+/obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/antitheft/Initialize()
+	. = ..()
+	if(is_mainship_level(z))
+		RegisterSignal(SSdcs, COMSIG_GLOB_SECURITY_LEVEL_CHANGED, PROC_REF(sec_changed))
+
+/obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/antitheft/proc/sec_changed(datum/source, new_sec)
+	SIGNAL_HANDLER
+	if(new_sec < req_level)
+		if(density)
+			return
+		close()
+	else
+		if(!density)
+			return
+		open()
+
+//make a subtype for CL office so it as a proper name.
+/obj/structure/machinery/door/poddoor/shutters/almayer/cl
+		name = "\improper Corporate Liaison Privacy Shutters"
+//adding a subtype for CL office to use to secure access to cl office.
+/obj/structure/machinery/door/poddoor/shutters/almayer/cl/office
+/obj/structure/machinery/door/poddoor/shutters/almayer/cl/office/door
+	id = "cl_office_door"
+/obj/structure/machinery/door/poddoor/shutters/almayer/cl/office/window
+	id = "cl_office_windows"
+//adding a subtype for CL quarter to use to secure access to cl quarter.(including seperation with the office)
+/obj/structure/machinery/door/poddoor/shutters/almayer/cl/quarter
+/obj/structure/machinery/door/poddoor/shutters/almayer/cl/quarter/backdoor
+	id = "cl_quarter_maintenance"
+	dir = 4
+/obj/structure/machinery/door/poddoor/shutters/almayer/cl/quarter/door
+	id = "cl_quarter_door"
+	dir = 4
+/obj/structure/machinery/door/poddoor/shutters/almayer/cl/quarter/window
+	id = "cl_quarter_windows"

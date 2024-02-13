@@ -1,5 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - rscadd: "Added a Empty canister verb to the Pyrotechnician fuel tanks"
-  - bugfix: "prevent fuel backpacks to be filled via reagent tank with improper chemical(welding fuel)."

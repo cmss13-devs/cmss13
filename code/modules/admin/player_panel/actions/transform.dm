@@ -38,6 +38,11 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	name = "Facehugger",
 	key = /mob/living/carbon/xenomorph/facehugger,
 	color = "purple"
+	),
+	list(
+	name = "Lesser Drone",
+	key = /mob/living/carbon/xenomorph/lesser_drone,
+	color = "purple"
 	)
 	),
 
@@ -122,7 +127,7 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 
 	"Alien Tier 4" = list(
 	list(
-	name = XENO_CASTE_QUEEN+" (Young)",
+	name = XENO_CASTE_QUEEN+" (Immature)",
 	key = /mob/living/carbon/xenomorph/queen,
 	color = "purple"
 	),

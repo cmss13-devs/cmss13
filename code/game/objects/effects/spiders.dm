@@ -21,7 +21,7 @@
 	return
 
 /obj/effect/spider/attackby(obj/item/W, mob/user)
-	if(W.attack_verb.len)
+	if(LAZYLEN(W.attack_verb))
 		visible_message(SPAN_DANGER("<B>\The [src] have been [pick(W.attack_verb)] with \the [W][(user ? "by [user]." : ".")]"))
 	else
 		visible_message(SPAN_DANGER("<B>\The [src] have been attacked with \the [W][(user ? "by [user]." : ".")]"))
@@ -38,7 +38,7 @@
 	health -= damage
 	healthcheck()
 
-/obj/effect/spider/bullet_act(obj/item/projectile/Proj)
+/obj/effect/spider/bullet_act(obj/projectile/Proj)
 	..()
 	health -= Proj.ammo.damage
 	healthcheck()
@@ -67,7 +67,7 @@
 		if(prob(50))
 			to_chat(mover, SPAN_WARNING("You get stuck in [src] for a moment."))
 			return BLOCKED_MOVEMENT
-	else if(istype(mover, /obj/item/projectile))
+	else if(istype(mover, /obj/projectile))
 		if(prob(30))
 			return BLOCKED_MOVEMENT
 	return NO_BLOCKED_MOVEMENT

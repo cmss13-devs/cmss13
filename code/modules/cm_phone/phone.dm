@@ -24,18 +24,21 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	var/range = 7
 
 	var/enabled = TRUE
-	var/callable = TRUE
+	/// Whether or not the phone is receiving calls or not. Varies between on/off or forcibly on/off.
+	var/do_not_disturb = PHONE_DND_OFF
+	/// The Phone_ID of the last person to call this telephone.
+	var/last_caller
 
 	var/base_icon_state
 
 	var/timeout_timer_id
 	var/timeout_duration = 30 SECONDS
 
-	var/network_receive = FACTION_MARINE
+	var/list/networks_receive = list(FACTION_MARINE)
 	var/list/networks_transmit = list(FACTION_MARINE)
 
 /obj/structure/transmitter/hidden
-	callable = FALSE
+	do_not_disturb = PHONE_DND_FORCED
 
 /obj/structure/transmitter/Initialize(mapload, ...)
 	. = ..()
@@ -80,9 +83,18 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 	for(var/possible_phone in GLOB.transmitters)
 		var/obj/structure/transmitter/target_phone = possible_phone
-		if(TRANSMITTER_UNAVAILABLE(target_phone) || !target_phone.callable) // Phone not available
+		var/current_dnd = FALSE
+		switch(target_phone.do_not_disturb)
+			if(PHONE_DND_ON, PHONE_DND_FORCED)
+				current_dnd = TRUE
+		if(TRANSMITTER_UNAVAILABLE(target_phone) || current_dnd) // Phone not available
 			continue
-		if(!(target_phone.network_receive in networks_transmit))
+		var/net_link = FALSE
+		for(var/network in networks_transmit)
+			if(network in target_phone.networks_receive)
+				net_link = TRUE
+				continue
+		if(!net_link)
 			continue
 
 		var/id = target_phone.phone_id
@@ -119,8 +131,18 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 			call_phone(user, params["phone_id"])
 			. = TRUE
 			SStgui.close_uis(src)
+		if("toggle_dnd")
+			toggle_dnd(user)
 
 	update_icon()
+
+/obj/structure/transmitter/ui_data(mob/user)
+	var/list/data = list()
+
+	data["availability"] = do_not_disturb
+	data["last_caller"] = last_caller
+
+	return data
 
 /obj/structure/transmitter/ui_static_data(mob/user)
 	. = list()
@@ -156,6 +178,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 	calling = T
 	T.caller = src
+	T.last_caller = src.phone_id
 	T.update_icon()
 
 	to_chat(user, SPAN_PURPLE("[icon2html(src, user)] Dialing [calling_phone_id].."))
@@ -166,6 +189,18 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	START_PROCESSING(SSobj, T)
 
 	user.put_in_hands(attached_to)
+
+/obj/structure/transmitter/proc/toggle_dnd(mob/living/carbon/human/user)
+	switch(do_not_disturb)
+		if(PHONE_DND_ON)
+			do_not_disturb = PHONE_DND_OFF
+			to_chat(user, SPAN_NOTICE("Do Not Disturb has been disabled. You can now receive calls."))
+		if(PHONE_DND_OFF)
+			do_not_disturb = PHONE_DND_ON
+			to_chat(user, SPAN_WARNING("Do Not Disturb has been enabled. No calls will be received."))
+		else
+			return FALSE
+	return TRUE
 
 /obj/structure/transmitter/attack_hand(mob/user)
 	. = ..()
@@ -312,6 +347,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 	P.handle_hear(message, L, speaking)
 	attached_to.handle_hear(message, L, speaking)
+	log_say("TELEPHONE: [key_name(speaking)] on Phone '[phone_id]' to '[T.phone_id]' said '[message]'")
 
 /obj/structure/transmitter/attackby(obj/item/W, mob/user)
 	if(W == attached_to)
@@ -537,15 +573,8 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	UnregisterSignal(attached_to, COMSIG_MOVABLE_MOVED)
 	reset_tether()
 
-
-/obj/structure/transmitter/colony_net
-	network_receive = FACTION_COLONIST
-	networks_transmit = list(FACTION_COLONIST)
-
-/obj/structure/transmitter/colony_net/rotary
-	name = "rotary telephone"
-	icon_state = "rotary_phone"
-	desc = "The finger plate is a little stiff."
+/obj/structure/transmitter/no_dnd
+	do_not_disturb = PHONE_DND_FORBIDDEN
 
 //rotary desk phones (need a touch tone handset at some point)
 /obj/structure/transmitter/rotary
@@ -553,7 +582,46 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	icon_state = "rotary_phone"
 	desc = "The finger plate is a little stiff."
 
+/obj/structure/transmitter/rotary/no_dnd
+	do_not_disturb = PHONE_DND_FORBIDDEN
+
 /obj/structure/transmitter/touchtone
 	name = "touch-tone telephone"
 	icon_state = "rotary_phone"//placeholder
 	desc = "Ancient aliens, it's all true. I'm an expert just like you!"
+
+/obj/structure/transmitter/colony_net
+	networks_receive = list(FACTION_COLONIST)
+	networks_transmit = list(FACTION_COLONIST)
+
+/obj/structure/transmitter/colony_net/rotary
+	name = "rotary telephone"
+	icon_state = "rotary_phone"
+	desc = "The finger plate is a little stiff."
+
+/obj/structure/transmitter/upp_net
+	networks_receive = list(FACTION_UPP)
+	networks_transmit = list(FACTION_UPP)
+
+/obj/structure/transmitter/upp_net/rotary
+	name = "rotary telephone"
+	icon_state = "rotary_phone"
+	desc = "The finger plate is a little stiff."
+
+/obj/structure/transmitter/clf_net
+	networks_receive = list(FACTION_CLF)
+	networks_transmit = list(FACTION_CLF)
+
+/obj/structure/transmitter/clf_net/rotary
+	name = "rotary telephone"
+	icon_state = "rotary_phone"
+	desc = "The finger plate is a little stiff."
+
+/obj/structure/transmitter/wy_net
+	networks_receive = list(FACTION_WY)
+	networks_transmit = list(FACTION_WY)
+
+/obj/structure/transmitter/wy_net/rotary
+	name = "rotary telephone"
+	icon_state = "rotary_phone"
+	desc = "The finger plate is a little stiff."

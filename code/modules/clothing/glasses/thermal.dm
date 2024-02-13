@@ -70,6 +70,14 @@
 	item_state = "syringe_kit"
 	toggleable = FALSE
 
+/obj/item/clothing/glasses/thermal/jensenshades
+	name = "augmented shades"
+	gender = PLURAL
+	desc = "Polarized bioneural eyewear, designed to augment your vision. Why don't you try getting a job?"
+	icon_state = "jensenshades"
+	item_state = "jensenshades"
+	toggleable = FALSE
+
 /obj/item/clothing/glasses/thermal/empproof
 	desc = "Thermals in the shape of glasses. This one is EMP proof."
 	blinds_on_emp = FALSE

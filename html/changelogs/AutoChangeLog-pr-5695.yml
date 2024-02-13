@@ -1,6 +1,0 @@
-author: "SabreML"
-delete-after: True
-changes:
-  - ui: "Made the Tutorial Menu automatically close when a tutorial is started."
-  - code_imp: "Made the tutorial Xenomorph not inherit the user's 'age' prefix."
-  - code_imp: "Added a basic unit test for tutorials."

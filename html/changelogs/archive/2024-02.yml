@@ -146,3 +146,21 @@
       hostile), due to this, UPP comms will always be scrambled at the beginning,
       no way to tell intentions before meeting.
   - rscadd: Chem Goon Research Consultant now spawns with reagent scanner goggles.
+2024-02-11:
+  Drathek:
+  - bugfix: Fix gardener fruit count not always updating
+  Vicacrov:
+  - bugfix: Fixed Warden Praetorians being able to move around the ovipositored Queen
+      with their Retrieve ability.
+2024-02-12:
+  Stakeyng:
+  - qol: Lets you put an extra accessory item in your helmet.
+  harryob:
+  - server: tor banning functionality is removed
+2024-02-13:
+  Huffie56:
+  - refactor: refactored watercloset.dm file.
+  SabreML:
+  - ui: Made the Tutorial Menu automatically close when a tutorial is started.
+  - code_imp: Made the tutorial Xenomorph not inherit the user's 'age' prefix.
+  - code_imp: Added a basic unit test for tutorials.

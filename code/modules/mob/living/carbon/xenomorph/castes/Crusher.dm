@@ -18,9 +18,8 @@
 
 	minimum_evolve_time = 15 MINUTES
 
-	tackle_min = 2
+	tackle_min = 3
 	tackle_max = 6
-	tackle_chance = 25
 
 	evolution_allowed = FALSE
 	deevolves_to = list(XENO_CASTE_WARRIOR)

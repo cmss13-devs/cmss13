@@ -53,7 +53,7 @@
 	mutation_type = LURKER_NORMAL
 	claw_type = CLAW_TYPE_SHARP
 
-	tackle_min = 2
+	tackle_min = 4
 	tackle_max = 6
 
 	icon_xeno = 'icons/mob/xenos/lurker.dmi'

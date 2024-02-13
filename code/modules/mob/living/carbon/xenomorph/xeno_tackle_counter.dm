@@ -11,7 +11,7 @@
 	max_tackles = max
 
 #define TACKLE_HEALTH_CONSIDERATION_CAP 20
-#define TACKLE_DAMAGE_CONSIDERATION_MAX 80
+#define TACKLE_DAMAGE_CONSIDERATION_MAX 70
 
 /datum/tackle_counter/proc/attempt_tackle()
 	tackle_count++

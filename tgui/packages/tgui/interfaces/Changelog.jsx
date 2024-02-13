@@ -284,7 +284,7 @@ export class Changelog extends Component {
                                 'Changelog__Cell--Icon',
                               ])}>
                               <Tooltip
-                                position='right'
+                                position="right"
                                 content={changeType.desc}>
                                 <Icon
                                   color={changeType.color}

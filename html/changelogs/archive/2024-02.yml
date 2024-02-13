@@ -157,3 +157,10 @@
   - qol: Lets you put an extra accessory item in your helmet.
   harryob:
   - server: tor banning functionality is removed
+2024-02-13:
+  Huffie56:
+  - refactor: refactored watercloset.dm file.
+  SabreML:
+  - ui: Made the Tutorial Menu automatically close when a tutorial is started.
+  - code_imp: Made the tutorial Xenomorph not inherit the user's 'age' prefix.
+  - code_imp: Added a basic unit test for tutorials.

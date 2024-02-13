@@ -5,15 +5,11 @@ import { Window } from '../layouts';
 
 export const INFINITE_BUILD_AMOUNT = -1;
 
-export const ChooseResin = (props, context) => {
-  const { act, data } = useBackend(context);
+export const ChooseResin = (props) => {
+  const { act, data } = useBackend();
   const { constructions, selected_resin } = data;
 
-  const [compact, setCompact] = useLocalState(
-    context,
-    'chooseresin_compact',
-    false
-  );
+  const [compact, setCompact] = useLocalState('chooseresin_compact', false);
 
   let heightScale = 80;
   if (compact) heightScale = 45;

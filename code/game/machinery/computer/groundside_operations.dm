@@ -144,6 +144,7 @@
 		var/role = "unknown"
 		var/area_name = "<b>???</b>"
 		var/mob/living/carbon/human/H
+		var/act_sl = ""
 		if(ishuman(X))
 			H = X
 			mob_name = H.real_name
@@ -180,8 +181,11 @@
 			if(!H.key || !H.client)
 				SSD_count++
 				continue
+			if(current_squad)
+				if(H == current_squad.squad_leader && role != JOB_SQUAD_LEADER)
+					act_sl = " (ASL)"
 
-		var/marine_infos = "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[H]'>[mob_name]</a></td><td>[role]</td><td>[mob_state]</td><td>[area_name]</td></tr>"
+		var/marine_infos = "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[H]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td></tr>"
 		if(role in job_order)
 			job_order[role] += marine_infos
 		else
@@ -209,6 +213,19 @@
 			return
 
 		if("announce")
+			var/mob/living/carbon/human/human_user = usr
+			var/obj/item/card/id/idcard = human_user.get_active_hand()
+			var/bio_fail = FALSE
+			if(!istype(idcard))
+				idcard = human_user.wear_id
+			if(!istype(idcard))
+				bio_fail = TRUE
+			else if(!idcard.check_biometrics(human_user))
+				bio_fail = TRUE
+			if(bio_fail)
+				to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
+				return FALSE
+
 			if(usr.client.prefs.muted & MUTE_IC)
 				to_chat(usr, SPAN_DANGER("You cannot send Announcements (muted)."))
 				return
@@ -301,6 +318,19 @@
 					usr.RegisterSignal(cam, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_observer_view_on_deletion))
 
 		if("activate_echo")
+			var/mob/living/carbon/human/human_user = usr
+			var/obj/item/card/id/idcard = human_user.get_active_hand()
+			var/bio_fail = FALSE
+			if(!istype(idcard))
+				idcard = human_user.wear_id
+			if(!istype(idcard))
+				bio_fail = TRUE
+			else if(!idcard.check_biometrics(human_user))
+				bio_fail = TRUE
+			if(bio_fail)
+				to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
+				return FALSE
+
 			var/reason = strip_html(input(usr, "What is the purpose of Echo Squad?", "Activation Reason"))
 			if(!reason)
 				return

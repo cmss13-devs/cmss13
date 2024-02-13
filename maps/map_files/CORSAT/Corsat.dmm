@@ -26595,9 +26595,9 @@
 /area/corsat/sigma/south/robotics)
 "bwY" = (
 /obj/structure/surface/rack,
-/obj/item/circuitboard/mecha/gygax/main,
-/obj/item/circuitboard/mecha/gygax/targeting,
-/obj/item/circuitboard/mecha/gygax/peripherals,
+/obj/item/circuitboard/exosuit/main/max,
+/obj/item/circuitboard/exosuit/peripherals/max/targeting,
+/obj/item/circuitboard/exosuit/peripherals/max,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -26721,7 +26721,7 @@
 	},
 /area/corsat/sigma/south/robotics)
 "bxr" = (
-/obj/structure/prop/mech/mech_parts/part/durand_head,
+/obj/structure/prop/mech/parts/durand_head,
 /turf/open/floor/corsat{
 	icon_state = "arrow_north"
 	},
@@ -26743,13 +26743,13 @@
 	},
 /area/corsat/sigma/south/robotics)
 "bxu" = (
-/obj/structure/prop/mech/mech_parts/part/durand_right_arm,
+/obj/structure/prop/mech/parts/durand_right_arm,
 /turf/open/floor/corsat{
 	icon_state = "arrow_west"
 	},
 /area/corsat/sigma/south/robotics)
 "bxv" = (
-/obj/structure/prop/mech/mech_parts/part/durand_torso,
+/obj/structure/prop/mech/parts/durand_torso,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},
@@ -26779,7 +26779,7 @@
 	},
 /area/corsat/sigma/south/robotics)
 "bxA" = (
-/obj/structure/prop/mech/mech_parts/part/durand_left_leg,
+/obj/structure/prop/mech/parts/durand_left_leg,
 /turf/open/floor/corsat{
 	icon_state = "arrow_east"
 	},
@@ -27747,13 +27747,6 @@
 	icon_state = "purplewhitecorner"
 	},
 /area/corsat/omega/complex)
-"bzU" = (
-/obj/structure/surface/table/almayer,
-/obj/item/book/manual/robotics_cyborgs,
-/turf/open/floor/corsat{
-	icon_state = "yellow"
-	},
-/area/corsat/sigma/south/robotics)
 "bzV" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/robotanalyzer,
@@ -58837,8 +58830,8 @@
 /area/corsat/gamma/freezer)
 "thp" = (
 /obj/structure/surface/rack,
-/obj/item/circuitboard/mecha/ripley/peripherals,
-/obj/item/circuitboard/mecha/ripley/peripherals,
+/obj/item/circuitboard/exosuit/peripherals/work_loader,
+/obj/item/circuitboard/exosuit/peripherals/work_loader,
 /turf/open/floor/corsat{
 	icon_state = "yellow"
 	},
@@ -59871,8 +59864,8 @@
 /area/corsat/gamma/biodome)
 "tWD" = (
 /obj/structure/surface/rack,
-/obj/item/circuitboard/mecha/odysseus/peripherals,
-/obj/item/circuitboard/mecha/odysseus/main,
+/obj/item/circuitboard/exosuit/peripherals/alice,
+/obj/item/circuitboard/exosuit/main/alice,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "yellow"
@@ -110525,7 +110518,7 @@ auK
 bxJ
 byb
 aMi
-bzU
+ydU
 auR
 ylo
 ylo

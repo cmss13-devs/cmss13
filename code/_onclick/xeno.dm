@@ -88,7 +88,7 @@
 		return UnarmedAttack(get_step(src, Get_Compass_Dir(src, A)), tile_attack = TRUE, ignores_resin = TRUE)
 	return FALSE
 
-/**The parent proc, will default to UnarmedAttack behaviour unless overriden
+/**The parent proc, will default to UnarmedAttack behaviour unless overridden
 Return XENO_ATTACK_ACTION if it does something and the attack should have full attack delay.
 Return XENO_NONCOMBAT_ACTION if it did something and should have some delay.
 Return XENO_NO_DELAY_ACTION if it gave an error message or should have no delay at all, ex. "You can't X that, it's Y!"
@@ -131,6 +131,6 @@ so that it doesn't double up on the delays) so that it applies the delay immedia
 
 	return ..()
 
-//Larva attack, will default to attack_alien behaviour unless overriden
+//Larva attack, will default to attack_alien behaviour unless overridden
 /atom/proc/attack_larva(mob/living/carbon/xenomorph/larva/user)
 	return attack_alien(user)

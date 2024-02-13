@@ -1,0 +1,4 @@
+author: "Zonespace Drathek"
+delete-after: True
+changes:
+  - balance: "Lesser drones and Facehuggers cannot speak, custom emote, or point for 3 minutes after spawning"

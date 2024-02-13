@@ -13,7 +13,7 @@
 		return
 
 	//X = xeno user, A = target atom
-	var/list/turf/target_turfs = getline2(source_xeno, targetted_atom, include_from_atom = FALSE)
+	var/list/turf/target_turfs = get_line(source_xeno, targetted_atom, include_start_atom = FALSE)
 	var/length_of_line = LAZYLEN(target_turfs)
 	if(length_of_line > 3)
 		target_turfs = target_turfs.Copy(1, 4)
@@ -738,7 +738,9 @@
 	if (!X.check_state() || X.action_busy)
 		return
 
-	if (!action_cooldown_check() && check_and_use_plasma_owner())
+	if (!action_cooldown_check())
+		return
+	if (!check_and_use_plasma_owner())
 		return
 
 	var/turf/current_turf = get_turf(X)
@@ -750,8 +752,6 @@
 		to_chat(X, SPAN_XENODANGER("We cancel our acid ball."))
 		return
 
-	if (!action_cooldown_check())
-		return
 
 	apply_cooldown()
 
@@ -868,6 +868,9 @@
 		targetXeno.visible_message(SPAN_BOLDNOTICE("[X] places its claws on [targetXeno], and its wounds are quickly sealed!")) //marines probably should know if a xeno gets healed
 		X.gain_health(heal_amount*0.5 + bonus_heal*0.5)
 		X.flick_heal_overlay(3 SECONDS, "#00B800")
+		if(X.mutation_type == PRAETORIAN_WARDEN)
+			var/datum/behavior_delegate/praetorian_warden/warden_delegate = X.behavior_delegate
+			warden_delegate.transferred_healing += heal_amount
 		use_plasma = TRUE //it's already hard enough to gauge health without hp showing on the mob
 		targetXeno.flick_heal_overlay(3 SECONDS, "#00B800")//so the visible_message and recovery overlay will warn marines and possibly predators that the xenomorph has been healed!
 
@@ -923,15 +926,15 @@
 		to_chat(X, SPAN_XENODANGER("We cannot retrieve ourself!"))
 		return
 
-	if(X.anchored)
-		to_chat(X, SPAN_XENODANGER("That sister cannot move!"))
-		return
-
 	if(!(A in view(7, X)))
 		to_chat(X, SPAN_XENODANGER("That sister is too far away!"))
 		return
 
 	var/mob/living/carbon/xenomorph/targetXeno = A
+
+	if(targetXeno.anchored)
+		to_chat(X, SPAN_XENODANGER("That sister cannot move!"))
+		return
 
 	if(!(targetXeno.resting || targetXeno.stat == UNCONSCIOUS))
 		if(targetXeno.mob_size > MOB_SIZE_BIG)

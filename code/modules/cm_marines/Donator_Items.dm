@@ -1310,8 +1310,8 @@
 /obj/item/clothing/shoes/marine/fluff/vintage //CKEY=vintagepalmer
 	name = "Vintage Sandals"
 	desc = "Vintage Sandals, suitable for only the highest class of hipster.  DONOR ITEM"
-	icon_state = "wizard"
-	item_state = "wizard"
+	icon_state = "sandals"
+	item_state = "sandals"
 
 /obj/item/clothing/shoes/marine/fluff/feodrich //CKEY=feodrich (UNIQUE)
 	name = "Doom Shoes"
@@ -1321,7 +1321,7 @@
 
 /obj/item/clothing/shoes/marine/fluff/steelpoint //CKEY=steelpoint (UNIQUE)
 	name = "M4-X Boot"
-	desc = "Standard issue boots issued alongside M4-X armor, features a special coating of acid-resistant layering to allow its operator to move through acid-dretched enviroments safely. This prototype version lacks that feature.  DONOR ITEM"
+	desc = "Standard issue boots issued alongside M4-X armor, features a special coating of acid-resistant layering to allow its operator to move through acid-dretched environments safely. This prototype version lacks that feature.  DONOR ITEM"
 	icon_state = "marine"
 	item_state = "marine"
 

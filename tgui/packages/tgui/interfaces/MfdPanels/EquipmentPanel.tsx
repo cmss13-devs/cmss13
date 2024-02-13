@@ -8,7 +8,7 @@ import { EquipmentContext } from './types';
 const equipment_xs = [140, 160, 320, 340, 180, 300, 240, 240, 240, 140, 340];
 const equipment_ys = [120, 100, 100, 120, 100, 100, 260, 300, 340, 320, 320];
 
-const DrawWeapon = (props: { x: number; y: number }, context) => {
+const DrawWeapon = (props: { readonly x: number; readonly y: number }) => {
   return (
     <path
       fill-opacity="1"
@@ -19,7 +19,10 @@ const DrawWeapon = (props: { x: number; y: number }, context) => {
   );
 };
 
-const DrawEquipmentBox = (props: { x: number; y: number }, context) => {
+const DrawEquipmentBox = (props: {
+  readonly x: number;
+  readonly y: number;
+}) => {
   return (
     <path
       fill-opacity="1"
@@ -36,10 +39,10 @@ const equipment_text_xs = [
 const equipment_text_ys = [120, 60, 60, 120, 20, 20, 240, 280, 320, 320, 320];
 
 const DrawWeaponText = (props: {
-  x: number;
-  y: number;
-  desc: string;
-  sub_desc?: string;
+  readonly x: number;
+  readonly y: number;
+  readonly desc: string;
+  readonly sub_desc?: string;
 }) => {
   return (
     <text stroke="#00e94e" x={props.x} y={props.y} text-anchor="middle">
@@ -80,7 +83,7 @@ const DrawWeaponEquipment = (props: DropshipEquipment) => {
   );
 };
 
-const DrawMiscEquipment = (props: DropshipEquipment, context) => {
+const DrawMiscEquipment = (props: DropshipEquipment) => {
   return (
     <>
       <DrawEquipmentBox
@@ -97,8 +100,8 @@ const DrawMiscEquipment = (props: DropshipEquipment, context) => {
   );
 };
 
-const DrawEquipment = (props, context) => {
-  const { data } = useBackend<EquipmentContext>(context);
+const DrawEquipment = (props) => {
+  const { data } = useBackend<EquipmentContext>();
   return (
     <>
       {data.equipment_data.map((x) => {
@@ -266,13 +269,13 @@ const ShipOutline = () => {
   return <line x1={140} y1={140} x2={280} y2={280} />;
 };
 
-export const EquipmentMfdPanel = (props: MfdProps, context) => {
-  const { data } = useBackend<EquipmentContext>(context);
-  const { setPanelState } = mfdState(context, props.panelStateId);
+export const EquipmentMfdPanel = (props: MfdProps) => {
+  const { data } = useBackend<EquipmentContext>();
+  const { setPanelState } = mfdState(props.panelStateId);
 
-  const { setWeaponState } = useWeaponState(context, props.panelStateId);
+  const { setWeaponState } = useWeaponState(props.panelStateId);
 
-  const { setEquipmentState } = useEquipmentState(context, props.panelStateId);
+  const { setEquipmentState } = useEquipmentState(props.panelStateId);
 
   const weap1 = data.equipment_data.find((x) => x.mount_point === 1);
   const weap2 = data.equipment_data.find((x) => x.mount_point === 2);

@@ -76,7 +76,7 @@
 			dat += "Current Squad: <A href='?src=\ref[src];operation=pick_squad'>Command</A><BR>"
 		else
 			dat += "Current Squad: <A href='?src=\ref[src];operation=pick_squad'>[!isnull(current_squad) ? "[current_squad.name]" : "----------"]</A><BR>"
-		if(current_squad)
+		if(current_squad || show_command_squad)
 			dat += get_overwatch_info()
 
 	dat += "<BR><A HREF='?src=\ref[user];mach_close=groundside_operations'>Close</A>"
@@ -184,7 +184,6 @@
 			if(current_squad)
 				if(H == current_squad.squad_leader && role != JOB_SQUAD_LEADER)
 					act_sl = " (ASL)"
-
 		var/marine_infos = "<tr><td><A href='?src=\ref[src];operation=use_cam;cam_target=\ref[H]'>[mob_name]</a></td><td>[role][act_sl]</td><td>[mob_state]</td><td>[area_name]</td></tr>"
 		if(role in job_order)
 			job_order[role] += marine_infos
@@ -284,14 +283,15 @@
 			if(name_sel == COMMAND_SQUAD)
 				show_command_squad = TRUE
 				current_squad = null
-				return
+
 			else
 				show_command_squad = FALSE
-			var/datum/squad/selected = get_squad_by_name(name_sel)
-			if(selected)
-				current_squad = selected
-			else
-				to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Invalid input. Aborting.")]")
+
+				var/datum/squad/selected = get_squad_by_name(name_sel)
+				if(selected)
+					current_squad = selected
+				else
+					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Invalid input. Aborting.")]")
 
 		if("use_cam")
 			if(isRemoteControlling(usr))

@@ -273,7 +273,7 @@
 				prob(4);/obj/item/clothing/glasses/thermal/monocle,\
 				prob(4);/obj/item/clothing/glasses/thermal/eyepatch,\
 				prob(4);/obj/item/clothing/glasses/welding/superior,\
-				prob(4);/obj/item/clothing/glasses/hud/security/jensenshades,\
+				prob(4);/obj/item/clothing/glasses/thermal/jensenshades,\
 				prob(4);/obj/item/clothing/glasses/meson/refurbished,\
 				prob(4);/obj/item/clothing/glasses/science,\
 				prob(4);/obj/item/clothing/glasses/hud/sensor,\

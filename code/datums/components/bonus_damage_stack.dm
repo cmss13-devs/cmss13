@@ -46,11 +46,11 @@
 
 	var/color = COLOR_BONUS_DAMAGE
 	var/intensity = bonus_damage_stacks / (initial(bonus_damage_cap) * 2)
-	//	color += num2text(BONUS_DAMAGE_MAX_ALPHA * intensity, 1, 16)
-
+	//if intensity is too high of a value, the hex code will become invalid
+	color += num2text(BONUS_DAMAGE_MAX_ALPHA * clamp(intensity, 0, 0.5), 1, 16)
 	if(parent)
 		var/atom/A = parent
-		A.add_filter("bonus_damage_stacks", 2, list("type" = "outline", "color" = color, "size" = 1+round(intensity, 1)))
+		A.add_filter("bonus_damage_stacks", 2, list("type" = "outline", "color" = color, "size" = 1 + clamp(intensity, 0, 1)))
 
 /datum/component/bonus_damage_stack/RegisterWithParent()
 	START_PROCESSING(SSdcs, src)
@@ -72,7 +72,6 @@
 
 /datum/component/bonus_damage_stack/proc/get_bonus_damage(mob/M, list/damage_data) // 10% damage bonus in most instances
 	SIGNAL_HANDLER
-	var/bonu_damage = min(bonus_damage_stacks, bonus_damage_cap) / 1000
 	damage_data["bonus_damage"] = damage_data["damage"] * (min(bonus_damage_stacks, bonus_damage_cap) / 1000)
 
 #undef COLOR_BONUS_DAMAGE

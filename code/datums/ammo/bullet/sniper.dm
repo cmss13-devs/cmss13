@@ -141,16 +141,18 @@
 
 /datum/ammo/bullet/sniper/anti_materiel/vulture/holo_target
 	name = "holo-targetting anti-materiel sniper bullet"
-	damage = 80 //it's a big bullet but it's purpose is to support marines, not kill enemies by itself
-	var/bonus_damage_cap_increase = 400 // the result will be a 1.5 damage multiplier
-	var/holo_stacks = 500
+	damage = 60 //it's a big bullet but it's purpose is to support marines, not kill enemies by itself
+	var/bonus_damage_cap_increase = 233 // the result will be a 1.33 damage multiplier
+	var/holo_stacks = 333
 
 /datum/ammo/bullet/sniper/anti_materiel/vulture/holo_target/on_hit_mob(mob/hit_mob, obj/projectile/bullet)
-	. = ..()
 	hit_mob.AddComponent(/datum/component/bonus_damage_stack, holo_stacks, world.time, bonus_damage_cap_increase)
-	playsound(hit_mob, 'sound/effects/supercapacitors_charging.ogg', 75)
+	playsound(hit_mob, 'sound/weapons/gun_vulture_mark.ogg', 75)
 	to_chat(hit_mob, isxeno(hit_mob) ? SPAN_XENOHIGHDANGER("It feels as if we were MARKED FOR DEATH!") : SPAN_HIGHDANGER("It feels like you were MARKED FOR DEATH!"))
+	hit_mob.balloon_alert_to_viewers("marked for death!")
 
+// the effect should be limited to one target
+/datum/ammo/bullet/sniper/anti_materiel/vulture/holo_target/set_bullet_traits()
 
 /datum/ammo/bullet/sniper/elite
 	name = "supersonic sniper bullet"

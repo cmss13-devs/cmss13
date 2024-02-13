@@ -71,7 +71,7 @@
 	if(!owner)
 		return FALSE
 	var/mob/living/carbon/xenomorph/X = owner
-	if(X && !X.is_mob_incapacitated() && !X.dazed && X.body_position == STANDING_UP && !X.buckled && X.plasma_stored >= plasma_cost)
+	if(X && !X.is_mob_incapacitated() && !HAS_TRAIT(X, TRAIT_DAZED) && X.body_position == STANDING_UP && !X.buckled && X.plasma_stored >= plasma_cost)
 		return TRUE
 
 /datum/action/xeno_action/give_to(mob/living/L)
@@ -218,7 +218,7 @@
 	/*
 		Debug log disabled due to our historical inability at doing anything meaningful about it
 		And to make room for ones that matter more in regard to our ability to fix.
-		The whole of ability code is fucked up, the 'SHOULD NEVER BE OVERRIDEN' note above is
+		The whole of ability code is fucked up, the 'SHOULD NEVER BE OVERRIDDEN' note above is
 		completely ignored as about 20 procs override it ALREADY...
 		This is broken beyond repair and should just be reimplemented
 		log_debug("Xeno action [src] tried to go on cooldown while already on cooldown.")
@@ -231,7 +231,7 @@
 	if(!cooldown_to_apply)
 		return
 
-	cooldown_to_apply = cooldown_to_apply * (1 - Clamp(X.cooldown_reduction_percentage, 0, 0.5))
+	cooldown_to_apply = cooldown_to_apply * (1 - clamp(X.cooldown_reduction_percentage, 0, 0.5))
 
 	// Add a unique timer
 	cooldown_timer_id = addtimer(CALLBACK(src, PROC_REF(on_cooldown_end)), cooldown_to_apply, TIMER_UNIQUE|TIMER_STOPPABLE)
@@ -253,7 +253,7 @@
 
 	var/mob/living/carbon/xenomorph/X = owner
 	// Note: no check to see if we're already on CD. we just flat override whatever's there
-	cooldown_duration = cooldown_duration * (1 - Clamp(X.cooldown_reduction_percentage, 0, 0.5))
+	cooldown_duration = cooldown_duration * (1 - clamp(X.cooldown_reduction_percentage, 0, 0.5))
 	cooldown_timer_id = addtimer(CALLBACK(src, PROC_REF(on_cooldown_end)), cooldown_duration, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
 	current_cooldown_duration = cooldown_duration
 	current_cooldown_start_time = world.time
@@ -379,7 +379,7 @@
 	if(A.z != M.z)
 		return FALSE
 
-	var/list/turf/path = getline2(M, A, include_from_atom = FALSE)
+	var/list/turf/path = get_line(M, A, include_start_atom = FALSE)
 	var/distance = 0
 	for(var/turf/T in path)
 		if(distance >= max_distance)

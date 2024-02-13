@@ -6,7 +6,7 @@
 
 import { KEY_ENTER, KEY_ESCAPE, KEY_SPACE } from 'common/keycodes';
 import { classes, pureComponentHooks } from 'common/react';
-import { Component, createRef } from 'inferno';
+import { Component, createRef } from 'react';
 import { createLogger } from '../logging';
 import { Box, computeBoxClassName, computeBoxProps } from './Box';
 import { Icon } from './Icon';
@@ -273,7 +273,7 @@ export class ButtonInput extends Component {
           className="NumberInput__input"
           style={{
             'display': !this.state.inInput ? 'none' : undefined,
-            'text-align': 'left',
+            'textAlign': 'left',
           }}
           onBlur={(e) => {
             if (!this.state.inInput) {

@@ -58,13 +58,25 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 	display_name = "Ballistic goggles, black"
 	path = /obj/item/clothing/glasses/mgoggles/black
 
+/datum/gear/eyewear/goggles_black/prescription
+	display_name = "Prescription ballistic goggles, black"
+	path = /obj/item/clothing/glasses/mgoggles/black/prescription
+
 /datum/gear/eyewear/goggles_orange
 	display_name = "Ballistic goggles, orange"
 	path = /obj/item/clothing/glasses/mgoggles/orange
 
+/datum/gear/eyewear/goggles_orange/prescription
+	display_name = "Prescription ballistic goggles, orange"
+	path = /obj/item/clothing/glasses/mgoggles/orange/prescription
+
 /datum/gear/eyewear/goggles2
 	display_name = "Ballistic goggles, M1A1"
 	path = /obj/item/clothing/glasses/mgoggles/v2
+
+/datum/gear/eyewear/goggles2/prescription
+	display_name = "Prescription ballistic goggles, M1A1"
+	path = /obj/item/clothing/glasses/mgoggles/v2/prescription
 
 /datum/gear/eyewear/bimex_shades
 	display_name = "BiMex personal shades"
@@ -215,7 +227,7 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 
 /datum/gear/headwear/uscm/beret_green
 	display_name = "USCM beret, green"
-	path = /obj/item/clothing/head/beret/cm
+	path = /obj/item/clothing/head/beret/cm/green
 
 /datum/gear/headwear/uscm/beret_tan
 	display_name = "USCM beret, tan"
@@ -863,6 +875,14 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 	display_name = "Lighter, zippo"
 	path = /obj/item/tool/lighter/zippo
 
+/datum/gear/smoking/zippo/black
+	display_name = "Black lighter, zippo"
+	path = /obj/item/tool/lighter/zippo/black
+
+/datum/gear/smoking/zippo/blue
+	display_name = "Blue lighter, zippo"
+	path = /obj/item/tool/lighter/zippo/blue
+
 /datum/gear/smoking/electronic_cigarette
 	display_name = "Electronic cigarette"
 	path = /obj/item/clothing/mask/electronic_cigarette
@@ -891,7 +911,7 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 /datum/gear/misc/facepaint_skull
 	display_name = "Facepaint, skull"
 	path = /obj/item/facepaint/skull
-	cost = 3 
+	cost = 3
 
 /datum/gear/misc/facepaint_body
 	display_name = "Fullbody paint"

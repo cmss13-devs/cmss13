@@ -21,16 +21,14 @@ type BackendContext = {
   completed_tutorials: string[];
 };
 
-export const TutorialMenu = (props, context) => {
-  const { data, act } = useBackend<BackendContext>(context);
+export const TutorialMenu = (props) => {
+  const { data, act } = useBackend<BackendContext>();
   const { tutorial_categories, completed_tutorials } = data;
   const [chosenTutorial, setTutorial] = useLocalState<Tutorial | null>(
-    context,
     'tutorial',
     null
   );
   const [categoryIndex, setCategoryIndex] = useLocalState(
-    context,
     'category_index',
     'Space Station 13'
   );
@@ -66,7 +64,7 @@ export const TutorialMenu = (props, context) => {
                     tutorial_category.name === categoryIndex &&
                     tutorial_category.tutorials.map((tutorial) => (
                       <div
-                        style={{ 'padding-bottom': '12px' }}
+                        style={{ 'paddingBottom': '12px' }}
                         key={tutorial.id}>
                         <Button
                           fontSize="15px"
@@ -96,8 +94,8 @@ export const TutorialMenu = (props, context) => {
                       <div
                         style={{
                           'display': 'flex',
-                          'justify-content': 'center',
-                          'align-items': 'center',
+                          'justifyContent': 'center',
+                          'alignItems': 'center',
                         }}>
                         <Box key={chosenTutorial.id}>
                           <span
@@ -116,9 +114,9 @@ export const TutorialMenu = (props, context) => {
                       <Stack.Item
                         style={{
                           'color': '#5baa27',
-                          'padding-top': '4px',
-                          'padding-bottom': '4px',
-                          'text-align': 'center',
+                          'paddingTop': '4px',
+                          'paddingBottom': '4px',
+                          'textAlign': 'center',
                         }}>
                         Tutorial has been completed.
                       </Stack.Item>

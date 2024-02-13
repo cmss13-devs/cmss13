@@ -15,10 +15,13 @@
 	var/bonus_damage_cap = 100
 	/// Last world.time that the afflicted was hit by a holo-targeting round.
 	var/last_stack
+	/// extra cap limit added by more powerful bullets
+	var/bonus_damage_cap_increase = 0
 
-/datum/component/bonus_damage_stack/Initialize(bonus_damage_stacks, time)
+/datum/component/bonus_damage_stack/Initialize(bonus_damage_stacks, time, bonus_damage_cap_increase)
 	. = ..()
 	src.bonus_damage_stacks = bonus_damage_stacks
+	src.bonus_damage_cap = initial(bonus_damage_cap) + bonus_damage_cap_increase // this way it will never increase over the intended limit
 	if(!time)
 		time = world.time
 	src.last_stack = time
@@ -42,12 +45,12 @@
 		qdel(src)
 
 	var/color = COLOR_BONUS_DAMAGE
-	var/intensity = bonus_damage_stacks / (bonus_damage_cap * 2)
-	color += num2text(BONUS_DAMAGE_MAX_ALPHA * intensity, 2, 16)
+	var/intensity = bonus_damage_stacks / (initial(bonus_damage_cap) * 2)
+	//	color += num2text(BONUS_DAMAGE_MAX_ALPHA * intensity, 1, 16)
 
 	if(parent)
 		var/atom/A = parent
-		A.add_filter("bonus_damage_stacks", 2, list("type" = "outline", "color" = color, "size" = 1))
+		A.add_filter("bonus_damage_stacks", 2, list("type" = "outline", "color" = color, "size" = 1+round(intensity, 1)))
 
 /datum/component/bonus_damage_stack/RegisterWithParent()
 	START_PROCESSING(SSdcs, src)
@@ -67,8 +70,9 @@
 	SIGNAL_HANDLER
 	L += "Bonus Damage Taken: [bonus_damage_stacks * 0.1]%"
 
-/datum/component/bonus_damage_stack/proc/get_bonus_damage(mob/M, list/damage_data) // 10% damage bonus at most
+/datum/component/bonus_damage_stack/proc/get_bonus_damage(mob/M, list/damage_data) // 10% damage bonus in most instances
 	SIGNAL_HANDLER
+	var/bonu_damage = min(bonus_damage_stacks, bonus_damage_cap) / 1000
 	damage_data["bonus_damage"] = damage_data["damage"] * (min(bonus_damage_stacks, bonus_damage_cap) / 1000)
 
 #undef COLOR_BONUS_DAMAGE

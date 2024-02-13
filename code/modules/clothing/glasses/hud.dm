@@ -133,14 +133,3 @@
 	name = "\improper Prescription PatrolMate HUD"
 	desc = "A heads-up display that scans the humans in view and provides accurate data about their ID status and security records."
 	prescription = TRUE
-
-/obj/item/clothing/glasses/hud/security/jensenshades
-	name = "augmented shades"
-	gender = PLURAL
-	desc = "Polarized bioneural eyewear, designed to augment your vision. Why don't you try getting a job?"
-	icon_state = "jensenshades"
-	item_state = "jensenshades"
-	vision_flags = SEE_MOBS
-	invisa_view = 2
-	toggleable = FALSE
-	actions_types = list()

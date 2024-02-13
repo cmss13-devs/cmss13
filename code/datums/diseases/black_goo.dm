@@ -175,16 +175,21 @@
 		return FALSE
 	playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 5)
 
-	if(ishuman_strict(target))
-		var/mob/living/carbon/human/human = target
+	if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_ALLOW_ZOMBIES))
+		if(ishuman_strict(target))
+			var/mob/living/carbon/human/human = target
 
-		if(locate(/datum/disease/black_goo) in human.viruses)
-			to_chat(user, SPAN_XENOWARNING("<b>You sense your target is infected.</b>"))
-		else
-			var/bio_protected = max(CLOTHING_ARMOR_HARDCORE - human.getarmor(user.zone_selected, ARMOR_BIO), 0)
-			if(prob(bio_protected))
-				target.AddDisease(new /datum/disease/black_goo)
-				to_chat(user, SPAN_XENOWARNING("<b>You sense your target is now infected.</b>"))
+			if(locate(/datum/disease/black_goo) in human.viruses)
+				to_chat(user, SPAN_XENOWARNING("<b>You sense your target is infected.</b>"))
+			else
+				var/bio_protected = max(CLOTHING_ARMOR_HARDCORE - human.getarmor(user.zone_selected, ARMOR_BIO), 0)
+				if(prob(bio_protected))
+					target.AddDisease(new /datum/disease/black_goo)
+					to_chat(user, SPAN_XENOWARNING("<b>You sense your target is now infected.</b>"))
+	else
+		message_admins(SPAN_HIGHDANGER("[key_name(user)] [ADMIN_JMP(user)] tried to infect [key_name(target)] [ADMIN_JMP(target)] with black-goo!"))
+		return FALSE
+
 
 	target.apply_effect(2, SLOW)
 

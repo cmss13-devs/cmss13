@@ -298,7 +298,7 @@
 				to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Unable to override console camera viewer. Track with camera instead. ")]")
 				return
 
-			if(current_squad)
+			if(current_squad || show_command_squad)
 				var/mob/cam_target = locate(href_list["cam_target"])
 				var/obj/structure/machinery/camera/new_cam = get_camera_from_target(cam_target)
 				if(!new_cam || !new_cam.can_use())

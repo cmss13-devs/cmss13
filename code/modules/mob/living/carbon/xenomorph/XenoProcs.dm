@@ -559,7 +559,7 @@
 	if(!TC)
 		TC = new(tackled_mob, tackle_min + tackle_min_offset, tackle_max + tackle_max_offset)
 		LAZYSET(tackle_counter, tackled_mob, TC)
-		RegisterSignal(tackled_mob, COMSIG_MOB_KNOCKED_DOWN, PROC_REF(tackle_handle_lying_changed))
+		RegisterSignal(tackled_mob, COMSIG_LIVING_SET_BODY_POSITION, PROC_REF(tackle_handle_lying_changed))
 
 	if (TC.tackle_reset_id)
 		deltimer(TC.tackle_reset_id)

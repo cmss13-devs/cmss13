@@ -31586,7 +31586,8 @@
 /obj/structure/closet/firecloset/full,
 /turf/open/floor/almayer{
 	icon_state = "cargo"
-	})
+	},
+/area/almayer/shipboard/brig/starboard_hallway)
 "fBo" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -38864,7 +38865,8 @@
 /obj/structure/closet/emcloset/legacy,
 /turf/open/floor/almayer{
 	icon_state = "cargo"
-	})
+	},
+/area/almayer/shipboard/brig/starboard_hallway)
 "irS" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/structure/cable/heavyduty{

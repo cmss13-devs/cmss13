@@ -64,6 +64,20 @@
 	weed_food_states = list("Facehugger_1","Facehugger_2","Facehugger_3")
 	weed_food_states_flipped = list("Facehugger_1","Facehugger_2","Facehugger_3")
 
+/mob/living/carbon/xenomorph/facehugger/Login()
+	var/last_ckey_inhabited = persistent_ckey
+	. = ..()
+	if(ckey == last_ckey_inhabited)
+		return
+
+	AddComponent(\
+		/datum/component/temporary_mute,\
+		"We aren't old enough to vocalize anything yet.",\
+		"We aren't old enough to communicate like this yet.",\
+		"We feel old enough to be able to vocalize and speak to the hivemind.",\
+		3 MINUTES,\
+	)
+
 /mob/living/carbon/xenomorph/facehugger/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)

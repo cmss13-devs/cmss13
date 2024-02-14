@@ -7605,7 +7605,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "aDO" = (
 /turf/open/floor/almayer{
 	dir = 8;
@@ -14994,7 +14994,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "btp" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
@@ -15101,7 +15101,7 @@
 /turf/open/floor/almayer{
 	icon_state = "redcorner"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "buc" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer{
@@ -23482,7 +23482,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "cyo" = (
 /obj/structure/machinery/vending/cigarette,
 /turf/open/floor/almayer{
@@ -24244,7 +24244,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "cMl" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -24767,7 +24767,7 @@
 /turf/open/floor/almayer{
 	icon_state = "red"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "cWv" = (
 /turf/open/floor/almayer{
 	dir = 8;
@@ -24942,7 +24942,7 @@
 /turf/open/floor/almayer{
 	icon_state = "red"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "cZm" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -25453,7 +25453,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "diS" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -28266,7 +28266,7 @@
 	dir = 1;
 	icon_state = "red"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "ekY" = (
 /obj/structure/machinery/door/airlock/almayer/generic/glass{
 	name = "\improper Memorial Room"
@@ -29914,7 +29914,7 @@
 /area/almayer/maint/hull/upper/u_a_s)
 "eRL" = (
 /turf/open/floor/almayer,
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "eRR" = (
 /obj/item/clothing/head/helmet/marine{
 	pixel_x = 16;
@@ -31586,8 +31586,7 @@
 /obj/structure/closet/firecloset/full,
 /turf/open/floor/almayer{
 	icon_state = "cargo"
-	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+	})
 "fBo" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -32817,7 +32816,7 @@
 	dir = 1;
 	icon_state = "red"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "gaJ" = (
 /turf/closed/wall/almayer,
 /area/almayer/shipboard/brig/cryo)
@@ -32936,7 +32935,7 @@
 	dir = 4;
 	icon_state = "red"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "gde" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 8;
@@ -33419,7 +33418,7 @@
 	dir = 1;
 	icon_state = "red"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "gof" = (
 /obj/structure/platform_decoration{
 	dir = 1
@@ -33559,7 +33558,7 @@
 "grF" = (
 /obj/structure/pipes/vents/scrubber,
 /turf/open/floor/almayer,
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "grG" = (
 /obj/structure/sign/safety/restrictedarea{
 	pixel_x = -17
@@ -36393,7 +36392,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "hsg" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -37247,7 +37246,7 @@
 	dir = 1;
 	icon_state = "red"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "hKO" = (
 /obj/structure/largecrate/random/barrel/green,
 /obj/structure/sign/safety/maint{
@@ -37348,7 +37347,7 @@
 	dir = 9;
 	icon_state = "red"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "hNw" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -38077,7 +38076,7 @@
 	dir = 1;
 	icon_state = "red"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "hZZ" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/plating/plating_catwalk,
@@ -38374,7 +38373,7 @@
 /turf/open/floor/almayer{
 	icon_state = "red"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "igw" = (
 /obj/structure/sign/poster/ad{
 	pixel_x = 30
@@ -38865,8 +38864,7 @@
 /obj/structure/closet/emcloset/legacy,
 /turf/open/floor/almayer{
 	icon_state = "cargo"
-	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+	})
 "irS" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/structure/cable/heavyduty{
@@ -42563,7 +42561,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "jLS" = (
 /obj/structure/bed/chair/comfy/charlie,
 /obj/effect/decal/cleanable/dirt,
@@ -46344,7 +46342,7 @@
 	dir = 1;
 	icon_state = "red"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "ldC" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
@@ -47434,7 +47432,7 @@
 	dir = 10
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "lwY" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Port Viewing Room"
@@ -47463,7 +47461,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "lxE" = (
 /obj/structure/machinery/cm_vending/clothing/commanding_officer,
 /turf/open/floor/almayer{
@@ -48323,7 +48321,7 @@
 	dir = 1;
 	icon_state = "red"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "lON" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
@@ -50749,7 +50747,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer,
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "mLN" = (
 /obj/structure/machinery/light/small,
 /obj/structure/disposalpipe/segment{
@@ -50800,7 +50798,7 @@
 	dir = 4;
 	icon_state = "red"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "mNm" = (
 /obj/structure/platform{
 	dir = 8
@@ -58119,7 +58117,7 @@
 	dir = 10;
 	icon_state = "red"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "puE" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/recharger,
@@ -58801,7 +58799,7 @@
 	dir = 8;
 	icon_state = "redcorner"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "pJD" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 1
@@ -59650,7 +59648,7 @@
 /area/almayer/living/briefing)
 "qbb" = (
 /turf/closed/wall/almayer/reinforced,
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "qbx" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
@@ -60281,7 +60279,7 @@
 	dir = 1;
 	icon_state = "red"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "qmk" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -60366,7 +60364,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "qmD" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
@@ -60607,7 +60605,7 @@
 	dir = 2
 	},
 /turf/open/floor/plating,
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "qqK" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
@@ -62583,7 +62581,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "rbp" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -62942,7 +62940,7 @@
 /turf/open/floor/almayer{
 	icon_state = "redcorner"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "rhm" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
@@ -63859,7 +63857,7 @@
 	dir = 1;
 	icon_state = "red"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "rAb" = (
 /turf/open/floor/almayer{
 	icon_state = "bluecorner"
@@ -63942,7 +63940,7 @@
 /turf/open/floor/almayer{
 	icon_state = "red"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "rBa" = (
 /obj/structure/machinery/cm_vending/clothing/synth,
 /obj/structure/prop/invuln/overhead_pipe{
@@ -65224,7 +65222,7 @@
 /turf/open/floor/almayer{
 	icon_state = "redcorner"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "rVN" = (
 /turf/open/floor/almayer{
 	dir = 8;
@@ -65899,7 +65897,7 @@
 "sjc" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "sjj" = (
 /obj/structure/machinery/keycard_auth{
 	pixel_x = -7;
@@ -66621,7 +66619,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "suy" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
@@ -66870,7 +66868,7 @@
 	pixel_y = 25
 	},
 /turf/open/floor/almayer,
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "szU" = (
 /obj/structure/toilet{
 	dir = 8
@@ -67037,7 +67035,7 @@
 /turf/open/floor/almayer{
 	icon_state = "red"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "sDZ" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/execution_storage)
@@ -67995,7 +67993,7 @@
 	dir = 1;
 	icon_state = "red"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "sYw" = (
 /obj/structure/platform{
 	dir = 8
@@ -68035,7 +68033,7 @@
 /turf/open/floor/almayer{
 	icon_state = "red"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "sYP" = (
 /obj/structure/reagent_dispensers/fueltank/custom,
 /turf/open/floor/almayer{
@@ -68142,7 +68140,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "tal" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -71282,7 +71280,7 @@
 /turf/open/floor/almayer{
 	icon_state = "red"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "ugZ" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/almayer{
@@ -71331,13 +71329,13 @@
 	dir = 1;
 	icon_state = "redcorner"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "uif" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	icon_state = "red"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "uiC" = (
 /obj/structure/machinery/alarm/almayer{
 	dir = 1
@@ -71736,7 +71734,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "uqA" = (
 /obj/structure/machinery/firealarm{
 	dir = 8;
@@ -72114,7 +72112,7 @@
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "uwZ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -72686,7 +72684,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer,
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "uJU" = (
 /obj/structure/machinery/cryopod/right{
 	pixel_y = 6
@@ -73999,7 +73997,7 @@
 	dir = 1;
 	icon_state = "red"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "vhe" = (
 /obj/structure/filingcabinet{
 	density = 0;
@@ -74804,7 +74802,7 @@
 	dir = 1;
 	icon_state = "red"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "vtG" = (
 /obj/structure/toilet{
 	dir = 4
@@ -77106,7 +77104,7 @@
 /turf/open/floor/almayer{
 	icon_state = "red"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "wfE" = (
 /turf/closed/wall/almayer,
 /area/almayer/living/gym)
@@ -78301,7 +78299,7 @@
 	dir = 10;
 	icon_state = "red"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "wDq" = (
 /obj/structure/largecrate/random/case/small,
 /obj/structure/machinery/light/small{
@@ -80460,7 +80458,7 @@
 "xsg" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "xsl" = (
 /obj/structure/machinery/alarm/almayer{
 	dir = 1
@@ -80834,7 +80832,7 @@
 /area/almayer/living/commandbunks)
 "xys" = (
 /turf/closed/wall/almayer,
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "xyt" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/toolbox/mechanical{
@@ -82118,7 +82116,7 @@
 /turf/open/floor/almayer{
 	allow_construction = 0
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "xVF" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -82295,7 +82293,7 @@
 /turf/open/floor/almayer{
 	icon_state = "red"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "xYZ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -82455,7 +82453,7 @@
 	dir = 6;
 	icon_state = "red"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "ybZ" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/transmitter{
@@ -82619,7 +82617,7 @@
 	dir = 1;
 	icon_state = "red"
 	},
-/area/almayer/shipboard/brig/brig_starboard_hallway)
+/area/almayer/shipboard/brig/starboard_hallway)
 "yeH" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,

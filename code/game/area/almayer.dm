@@ -263,7 +263,7 @@
 /area/almayer/shipboard/brig/mp_bunks
 	name = "\improper Brig MP Bunks"
 
-/area/almayer/shipboard/brig/brig_starboard_hallway
+/area/almayer/shipboard/brig/starboard_hallway
 	name = "\improper Brig Starboard Hallway"
 
 /area/almayer/shipboard/brig/perma

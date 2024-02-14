@@ -182,6 +182,21 @@
 	UnregisterSignal(player, COMSIG_PARENT_QDELETING)
 	LAZYREMOVE(players_on_buff_cooldown, player)
 
+/obj/effect/alien/resin/special/pylon/endgame/update_icon()
+	..()
+	if(sustained_buff)
+		icon_state = "[initial(icon_state)]_active"
+	else
+		icon_state = initial(icon_state)
+
+/obj/effect/alien/resin/special/pylon/endgame/proc/sustain_hivebuff(datum/hivebuff/buff)
+	sustained_buff = buff
+	update_icon()
+
+/obj/effect/alien/resin/special/pylon/endgame/proc/remove_hivebuff()
+	sustained_buff = null
+	update_icon()
+
 /// Checks if all comms towers are connected and then starts end game content on all pylons if they are
 /obj/effect/alien/resin/special/pylon/endgame/proc/comms_relay_connection()
 	marine_announcement("ALERT.\n\nIrregular build up of energy around communication relays at [get_area(src)], biological hazard detected.\n\nDANGER: Hazard is generating new xenomorph entities, advise urgent termination of hazard by ground forces.", "[MAIN_AI_SYSTEM] Biological Scanner")

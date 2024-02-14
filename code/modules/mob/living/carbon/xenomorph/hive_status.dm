@@ -139,10 +139,12 @@
 	/// Hive buffs
 	var/buff_points = HIVE_STARTING_BUFFPOINTS
 
-	///List of hive buffs used by the hive
+	/// List of references to the currently active hivebuffs
 	var/list/active_hivebuffs
+	/// List of references to used hivebuffs
 	var/list/used_hivebuffs
 
+	/// List of references to hive pylons active in the game world
 	var/list/active_endgame_pylons
 
 	/*Stores the image()'s for the xeno evolution radial menu
@@ -1362,6 +1364,15 @@
 /datum/hive_status/proc/get_available_hivebuffs()
 	var/list/potential_hivebuffs = subtypesof(/datum/hivebuff)
 
+	var/num_of_free_pylons = 0
+	// First check if we have available pylons which are capable of supporting hivebuffs
+	for(var/obj/effect/alien/resin/special/pylon/endgame/pylon in active_endgame_pylons)
+		if(!pylon.sustained_buff)
+			num_of_free_pylons++
+
+	if(!num_of_free_pylons)
+		return
+
 	for(var/datum/hivebuff/possible_hivebuff as anything in potential_hivebuffs)
 		// Round isn't old enough yet
 		if(ROUND_TIME < SSticker.round_start_time + initial(possible_hivebuff.roundtime_to_enable))
@@ -1372,9 +1383,9 @@
 			potential_hivebuffs -= possible_hivebuff
 			continue
 
-		//If this buff is already active, check against other currently active hivebuffs
+		//If this hive has buffs already active, check against other currently active hivebuffs
 		if(LAZYLEN(active_hivebuffs))
-			var/found = FALSE
+			var/found
 			for(var/datum/hivebuff/active_buff in active_hivebuffs)
 				if(istype(active_buff, possible_hivebuff))
 					found = TRUE
@@ -1389,8 +1400,8 @@
 			continue
 
 		// If the buff is not reusable check against used hivebuffs.
-		if(!initial(possible_hivebuff.is_reusable) && used_hivebuffs)
-			var/found = FALSE
+		if(!initial(possible_hivebuff.is_reusable) && LAZYLEN(used_hivebuffs))
+			var/found
 			for(var/datum/hivebuff/used_buff in used_hivebuffs)
 				if(istype(used_buff, possible_hivebuff))
 					found = TRUE

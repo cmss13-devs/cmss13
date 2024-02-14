@@ -52,8 +52,6 @@
 	var/is_unique = TRUE
 	///If this buff can be used more than once a round.
 	var/is_reusable = FALSE
-	///Cooldown before the buff can be used again. BIRDTALON: IMPLEMENT THIS
-	var/cooldown
 	/// Time that the buff is active for if it is a timed buff.
 	var/duration
 	/// Cost of the buff
@@ -63,7 +61,7 @@
 	var/engage_failure_message
 
 	/// TRUE when buff has been ended via sustained_pylon Pylon qdeletion
-	var/ended_via_qdeletion = FALSE
+	var/ended_via_pylon_qdeletion = FALSE
 
 	/// Flavour message to give to the marines on buff engage
 	var/marine_flavourmessage
@@ -79,7 +77,7 @@
 	return TRUE
 
 /datum/hivebuff/Destroy(force, ...)
-	LAZYREMOVE(hive.active_hivebuffs, name)
+	LAZYREMOVE(hive.active_hivebuffs, src)
 	hive = null
 	sustained_pylons = null
 	. = ..()
@@ -87,7 +85,7 @@
 /// If the pylon sustaining this hive buff is destroyed for any reason
 /datum/hivebuff/proc/_on_pylon_deletion(obj/effect/alien/resin/special/pylon/sustained_pylon)
 	SIGNAL_HANDLER
-	ended_via_qdeletion = TRUE
+	ended_via_pylon_qdeletion = TRUE
 	if(_timer_id)
 		deltimer(_timer_id)
 	UnregisterSignal(sustained_pylon, COMSIG_PARENT_QDELETING)
@@ -96,7 +94,7 @@
 	// If this is also being sustained by the other pylon(s) clear any references to this
 	if(LAZYLEN(sustained_pylons))
 		for(var/obj/effect/alien/resin/special/pylon/endgame/pylon in sustained_pylons)
-			pylon.sustained_buff = null
+			pylon.remove_hivebuff()
 	_on_cease()
 
 /datum/hivebuff/proc/announce_buff_loss(obj/effect/alien/resin/special/pylon/sustained_pylon)
@@ -174,14 +172,14 @@
 	log_admin("[purchasing_mob] and [hive.living_xeno_queen] of [hive.hivenumber] have purchased a hive buff: [name].")
 
 	// Add to the relevant hive lists.
-	LAZYADD(hive.used_hivebuffs, name)
-	LAZYADDASSOC(hive.active_hivebuffs, name, src)
+	LAZYADD(hive.used_hivebuffs, src)
+	LAZYADD(hive.active_hivebuffs, src)
 
 	// Register signal to check if the pylon is ever destroyed.
 
 	for(var/obj/effect/alien/resin/special/pylon/endgame/pylon_to_register in pylons_to_use)
 		LAZYADD(sustained_pylons, purchased_pylon)
-		pylon_to_register.sustained_buff = src
+		pylon_to_register.sustain_hivebuff(src)
 		RegisterSignal(pylon_to_register, COMSIG_PARENT_QDELETING, PROC_REF(_on_pylon_deletion))
 
 	// Announce to our hive that we've completed.
@@ -206,12 +204,10 @@
 	_announce_buff_cease()
 	/// Clear refernces to this buff and unregister signal
 	on_cease()
-	if(!ended_via_qdeletion)
+	if(!ended_via_pylon_qdeletion)
 		for(var/obj/effect/alien/resin/special/pylon/endgame/pylon_to_clear in sustained_pylons)
-			pylon_to_clear.sustained_buff = null
+			pylon_to_clear.remove_hivebuff()
 			UnregisterSignal(pylon_to_clear, COMSIG_PARENT_QDELETING)
-	qdel(src)
-
 
 /// Checks the number of pylons required and if the hive posesses them
 /datum/hivebuff/proc/_check_num_required_pylons(obj/effect/alien/resin/special/pylon/endgame/purchased_pylon)
@@ -246,8 +242,9 @@
 
 /// Checks if this buff is already active in the hive. Returns TRUE if passed FALSE if not.
 /datum/hivebuff/proc/_check_pass_active()
-	if(LAZYISIN(hive.active_hivebuffs, name))
-		return FALSE
+	for(var/datum/hivebuff/buff as anything in hive.active_hivebuffs)
+		if(src.type == buff.type)
+			return FALSE
 
 	return TRUE
 
@@ -266,8 +263,9 @@
 	if(is_reusable)
 		return TRUE
 
-	if(LAZYISIN(name, hive.used_hivebuffs))
-		return FALSE
+	for(var/datum/hivebuff/buff as anything in hive.used_hivebuffs)
+		if(src.type == buff.type)
+			return FALSE
 
 	return TRUE
 

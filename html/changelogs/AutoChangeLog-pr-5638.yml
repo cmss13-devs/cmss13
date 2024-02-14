@@ -1,0 +1,4 @@
+author: "VileBeggar"
+delete-after: True
+changes:
+  - qol: "Attaching the bipod to weapons that have full auto (HPR included) will give you a button toggle for immediately switching to full auto when deploying the bipod."

@@ -15,8 +15,7 @@
 		return
 
 	if(!istype(old_loc, /turf/open/space))
-		var/turf/near_turf = get_step(crosser.loc, get_step(crosser.loc, dir))
-		var/turf/projected = get_ranged_target_turf(near_turf, dir, 50)
+		var/turf/projected = get_ranged_target_turf(crosser.loc, dir, 10)
 
 		INVOKE_ASYNC(crosser, TYPE_PROC_REF(/atom/movable, throw_atom), projected, 50, SPEED_FAST, null, TRUE)
 
@@ -43,7 +42,7 @@
 	if(dropship.destination.id != DROPSHIP_LZ1 && dropship.destination.id != DROPSHIP_LZ2)
 		return ..() // we're not heading towards the LZs
 
-	// you just jumped out of a dropship heading towards the LZ, if you're lucky, maybe you'll live!
+	// you just jumped out of a dropship heading towards the LZ, have fun living on the way down!
 	var/list/ground_z_levels = SSmapping.levels_by_trait(ZTRAIT_GROUND)
 	if(!length(ground_z_levels))
 		return ..()
@@ -74,12 +73,14 @@
 	return ..() // they couldn't be dropped, just delete them
 
 /turf/open/space/transit/dropship/proc/handle_drop(atom/movable/crosser, turf/target, dropship_name)
+	if(QDELETED(crosser))
+		return
 	ADD_TRAIT(crosser, TRAIT_IMMOBILIZED, TRAIT_SOURCE_DROPSHIP_INTERACTION)
 
-	crosser.pixel_z = 300
+	crosser.pixel_z = 360
 	crosser.forceMove(target)
 	crosser.visible_message(SPAN_WARNING("[crosser] falls out of the sky."), SPAN_HIGHDANGER("As you fall out of the [dropship_name], you plummet towards the ground."))
-	animate(crosser, time = 5, pixel_z = 0, flags = ANIMATION_PARALLEL)
+	animate(crosser, time = 6, pixel_z = 0, flags = ANIMATION_PARALLEL)
 
 	REMOVE_TRAIT(crosser, TRAIT_IMMOBILIZED, TRAIT_SOURCE_DROPSHIP_INTERACTION)
 	if(isitem(crosser))
@@ -108,7 +109,7 @@
 		// but just in case, you will still take a ton of damage.
 		human.take_overall_damage(200, used_weapon = "falling", limb_damage_chance = 100)
 		if(human.stat != DEAD)
-			human.death(create_cause_data("falling from [dropship_name]", human))
+			human.death(human.last_damage_data)
 		fallen_mob.status_flags |= PERMANENTLY_DEAD
 		return
 	// take a little bit more damage otherwise

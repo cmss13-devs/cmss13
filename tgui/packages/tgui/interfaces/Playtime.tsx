@@ -18,7 +18,7 @@ interface PlaytimeData {
   stored_other_playtime: PlaytimeRecord[];
 }
 
-const PlaytimeRow = (props: { data: PlaytimeRecord }, context) => {
+const PlaytimeRow = (props: { readonly data: PlaytimeRecord }) => {
   return (
     <>
       <TableCell className="AwardCell">
@@ -42,7 +42,7 @@ const PlaytimeRow = (props: { data: PlaytimeRecord }, context) => {
   );
 };
 
-const PlaytimeTable = (props: { data: PlaytimeRecord[] }, context) => {
+const PlaytimeTable = (props: { readonly data: PlaytimeRecord[] }) => {
   return (
     <Table>
       {props.data
@@ -57,9 +57,9 @@ const PlaytimeTable = (props: { data: PlaytimeRecord[] }, context) => {
   );
 };
 
-export const Playtime = (props, context) => {
-  const { data } = useBackend<PlaytimeData>(context);
-  const [selected, setSelected] = useLocalState(context, 'selected', 'human');
+export const Playtime = (props) => {
+  const { data } = useBackend<PlaytimeData>();
+  const [selected, setSelected] = useLocalState('selected', 'human');
   const humanTime =
     data.stored_human_playtime.length > 0
       ? data.stored_human_playtime[0].playtime

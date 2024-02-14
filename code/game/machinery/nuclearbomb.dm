@@ -151,7 +151,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	data["command_lockout"] = command_lockout
 	data["allowed"] = allowed
 	data["being_used"] = being_used
-	data["decryption_complete"] = TRUE //this is overriden by techweb nuke UI_data later, this just makes it default to true
+	data["decryption_complete"] = TRUE //this is overridden by techweb nuke UI_data later, this just makes it default to true
 
 	return data
 

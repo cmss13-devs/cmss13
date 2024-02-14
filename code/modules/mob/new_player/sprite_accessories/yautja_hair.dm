@@ -1,7 +1,7 @@
 /datum/sprite_accessory/yautja_hair
 	icon = 'icons/mob/humans/yaut_hair.dmi'
 	species_allowed = list(SPECIES_YAUTJA)
-	do_colouration = FALSE
+	do_coloration = FALSE
 
 /datum/sprite_accessory/yautja_hair/standard
 	name = "Standard"

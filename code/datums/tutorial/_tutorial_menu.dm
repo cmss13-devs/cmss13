@@ -79,5 +79,6 @@
 				return
 
 			path = new path
-			path.start_tutorial(usr)
-			return TRUE
+			if(path.start_tutorial(usr))
+				ui.close()
+				return TRUE

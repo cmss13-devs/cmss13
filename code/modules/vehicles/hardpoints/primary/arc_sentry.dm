@@ -223,7 +223,7 @@
 				targets.Remove(living_mob)
 				continue
 
-		var/list/turf/path = getline2(get_turf(src), movable, include_from_atom = FALSE)
+		var/list/turf/path = get_line(get_turf(src), movable)
 		if(!length(path)|| get_dist(get_turf(src), movable) > turret_range)
 			if(movable == sentry_target)
 				sentry_target = null

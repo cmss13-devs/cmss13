@@ -1,4 +1,0 @@
-author: "SabreML"
-delete-after: True
-changes:
-  - bugfix: "Fixed crates and similar objects layering below the dropship's fulton recovery system."

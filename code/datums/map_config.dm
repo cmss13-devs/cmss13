@@ -65,7 +65,7 @@
 
 	var/nightmare_path
 
-	/// If truthy this is config for a round overriden map: search for override maps in data/, instead of using a path in maps/
+	/// If truthy this is config for a round overridden map: search for override maps in data/, instead of using a path in maps/
 	var/override_map
 
 /datum/map_config/New()

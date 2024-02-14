@@ -491,8 +491,6 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /datum/config_entry/flag/respawn
 
-/datum/config_entry/flag/ToRban
-
 /datum/config_entry/flag/ooc_country_flags
 
 /datum/config_entry/flag/record_rounds

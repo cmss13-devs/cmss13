@@ -294,7 +294,7 @@ Quick adjacency (to turf):
 
 	var/turf/curT = get_turf(A)
 	var/is_turf = isturf(A)
-	for(var/turf/T in getline2(A, src))
+	for(var/turf/T in get_line(A, src))
 		if(curT == T)
 			continue
 		if(T.density)

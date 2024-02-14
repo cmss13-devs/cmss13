@@ -1,4 +1,4 @@
-// our atom declaration should not be hardcoded for this SS existance.
+// our atom declaration should not be hardcoded for this SS existence.
 // if this subsystem is deleted, stuff still works
 // That's why we define this here
 /atom/proc/Decorate(deferable = FALSE)

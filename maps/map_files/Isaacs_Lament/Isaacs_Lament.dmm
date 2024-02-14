@@ -158,7 +158,8 @@
 /obj/structure/machinery/door_control{
 	pixel_x = 25;
 	pixel_y = 17;
-	id = "gasngear_garage"
+	id = "gasngear_garage";
+	name = "long rest storage shutter control"
 	},
 /turf/open/gm/dirt,
 /area/lv553/indoors/lone_buildings/gas_n_gear)
@@ -245,6 +246,19 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv553/outdoors/colony_streets/west)
+"agg" = (
+/obj/structure/surface/rack,
+/obj/item/storage/box/m94/signal{
+	pixel_y = 6
+	},
+/obj/item/storage/box/m94/signal{
+	pixel_y = 2
+	},
+/obj/item/storage/box/m94/signal{
+	pixel_y = -2
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "agz" = (
 /obj/structure/filingcabinet{
 	pixel_x = -8;
@@ -457,6 +471,11 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/indoors/hospital/research/floor)
+"amY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/shard,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/screenwriter_house)
 "anh" = (
 /obj/structure/prop/souto_land/pole{
 	dir = 8;
@@ -497,6 +516,14 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/oob)
+"aoR" = (
+/obj/structure/machinery/power/apc{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "freezerfloor"
+	},
+/area/lv553/indoors/lone_buildings/clf_house)
 "aph" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 4
@@ -549,6 +576,16 @@
 /obj/item/trash/uscm_mre,
 /turf/open/floor/almayer,
 /area/lv553/indoors/uscm_garrison/garrison_bunks)
+"arR" = (
+/obj/structure/closet/cabinet{
+	density = 0;
+	pixel_y = 0
+	},
+/obj/item/ammo_magazine/rifle/mar40/lmg,
+/obj/item/ammo_magazine/rifle/mar40/lmg,
+/obj/item/weapon/gun/rifle/mar40/carbine,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/clf_house)
 "asb" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "west_nexus_garage";
@@ -702,25 +739,29 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '1-2';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '2-6';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '2-10';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '9-10';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
@@ -754,7 +795,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '5-8';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
@@ -1134,6 +1176,22 @@
 /obj/structure/machinery/light,
 /turf/open/floor/wood,
 /area/lv553/indoors/hospital/reception)
+"aML" = (
+/obj/structure/closet/secure_closet/guncabinet,
+/obj/item/weapon/gun/pistol/m4a3{
+	name = "\improper M4A2 service pistol";
+	pixel_y = 4;
+	pixel_x = -2;
+	accuracy_mult_unwielded = 0.9
+	},
+/obj/item/weapon/gun/pistol/m4a3{
+	name = "\improper M4A2 service pistol";
+	pixel_y = -5;
+	pixel_x = -2;
+	accuracy_mult_unwielded = 0.9
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "aNe" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/packaged_burger{
@@ -1327,6 +1385,24 @@
 	},
 /turf/open/gm/dirt,
 /area/lv553/outdoors/colony_streets/east)
+"aSs" = (
+/obj/structure/machinery/door/window{
+	dir = 8
+	},
+/obj/structure/window{
+	pixel_y = 0;
+	layer = 3;
+	dir = 1
+	},
+/obj/structure/machinery/shower{
+	dir = 8;
+	tag = "icon-shower (EAST)"
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "vault"
+	},
+/area/lv553/indoors/lone_buildings/army_surplus)
 "aSx" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	density = 2;
@@ -1365,10 +1441,36 @@
 	icon_state = "warnplate"
 	},
 /area/lv553/oob)
+"aUT" = (
+/obj/structure/machinery/computer/cameras/wooden_tv{
+	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW.";
+	dir = 4;
+	layer = 3.2;
+	name = "Television set";
+	network = null;
+	pixel_x = -6;
+	pixel_y = 0
+	},
+/obj/structure/surface/table/woodentable/poor,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/pinup{
+	pixel_x = -32
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_alcoholic_house)
 "aVp" = (
 /obj/structure/bed/sofa/south/white/left,
 /turf/open/gm/dirt,
 /area/lv553/outdoors/colony_streets/south)
+"aVy" = (
+/obj/structure/toilet{
+	dir = 1;
+	tag = "icon-toilet00 (WEST)"
+	},
+/turf/open/floor{
+	icon_state = "freezerfloor"
+	},
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "aVH" = (
 /obj/structure/machinery/power/terminal{
 	dir = 1
@@ -1469,9 +1571,6 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv553/indoors/gated_community/head_of_corporate_engineering)
-"bas" = (
-/turf/open/gm/dirt,
-/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "bav" = (
 /obj/structure/window{
 	dir = 4
@@ -1497,9 +1596,15 @@
 /area/lv553/oob)
 "bbd" = (
 /obj/structure/filingcabinet,
-/obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/gm/river,
 /area/lv553/indoors/flooded/waste_station)
+"bbn" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/gas_n_gear)
 "bbo" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 10
@@ -1560,6 +1665,23 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv553/oob)
+"bdc" = (
+/obj/item/storage/toolbox/mechanical{
+	pixel_y = 13;
+	pixel_x = 11
+	},
+/obj/item/storage/toolbox/electrical{
+	pixel_y = 13;
+	pixel_x = -8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt,
+/obj/structure/curtain/red{
+	pixel_y = 0;
+	pixel_x = -32
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "bdg" = (
 /turf/closed/wall,
 /area/lv553/indoors/gated_community/head_of_corporate_security)
@@ -1589,6 +1711,10 @@
 /obj/item/clothing/head/hardhat,
 /turf/open/floor/wood,
 /area/lv553/indoors/hospital/reception)
+"beB" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/gm/grass,
+/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "beC" = (
 /obj/structure/machinery/camera/autoname/lz_camera,
 /obj/structure/desertdam/decals/road_edge{
@@ -1812,10 +1938,6 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/indoors/hospital/reception)
-"bot" = (
-/obj/structure/window/framed/colony,
-/turf/open/floor,
-/area/lv553/indoors/lone_buildings/gas_n_gear)
 "bov" = (
 /obj/structure/mineral_door/transparent,
 /turf/open/floor/wood,
@@ -1871,10 +1993,16 @@
 /turf/open/gm/grass,
 /area/lv553/oob)
 "btf" = (
-/obj/structure/surface/table,
-/obj/item/weapon/gun/rifle/mar40,
+/obj/structure/closet/cabinet{
+	density = 0;
+	pixel_y = 0
+	},
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/structure/sign/poster/clf{
+	pixel_x = -32
+	},
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/clf_house)
 "bti" = (
 /obj/structure/machinery/m56d_hmg/mg_turret,
 /turf/open/floor/interior/wood,
@@ -1910,6 +2038,10 @@
 	tag = "icon-sterile_green_corner (WEST)"
 	},
 /area/lv553/indoors/hospital/storage_laundyroom_and_breakroom)
+"bve" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/screenwriter_house)
 "bvT" = (
 /obj/structure/surface/rack,
 /obj/item/toy/prize/durand,
@@ -1930,10 +2062,18 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv553/outdoors/colony_streets/northeast)
+"bwE" = (
+/obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "bxl" = (
 /obj/structure/reagent_dispensers/fueltank/gas,
 /turf/open/asphalt/cement,
 /area/lv553/outdoors/colony_streets/northeast)
+"bxA" = (
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_alcoholic_house)
 "bxZ" = (
 /obj/structure/surface/table,
 /obj/item/clothing/accessory/stethoscope,
@@ -1953,6 +2093,12 @@
 /obj/item/storage/fancy/cigar/matchbook/brown,
 /turf/open/floor/wood,
 /area/lv553/indoors/uscm_garrison/io_office)
+"byH" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "byL" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/dirtgrassborder{
@@ -2023,13 +2169,15 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '2-6';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '2-10';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
@@ -2176,6 +2324,10 @@
 	},
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/liq_r_mart)
+"bFO" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/gm/dirt,
+/area/lv553/outdoors/colony_streets/west)
 "bFP" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "uscm_armory";
@@ -2371,11 +2523,10 @@
 /turf/open/floor/wood,
 /area/lv553/oob)
 "bMF" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 5
-	},
-/turf/open/gm/grass,
-/area/lv553/oob)
+/obj/effect/spawner/gibspawner/xeno,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/asphalt/cement,
+/area/lv553/outdoors/colony_streets/west)
 "bNf" = (
 /obj/structure/sign/poster/safety{
 	pixel_y = 32
@@ -2392,6 +2543,13 @@
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/grass,
 /area/lv553/outdoors/colony_streets/east)
+"bNS" = (
+/obj/structure/largecrate/random,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/gm/dirt,
+/area/lv553/indoors/lone_buildings/gas_n_gear)
 "bNX" = (
 /obj/structure/surface/table,
 /obj/structure/window{
@@ -2517,6 +2675,10 @@
 	},
 /turf/open/floor/interior/wood,
 /area/lv553/oob)
+"bRQ" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "bSP" = (
 /turf/open/floor/almayer{
 	dir = 10;
@@ -2538,10 +2700,29 @@
 	icon_state = "barber"
 	},
 /area/lv553/oob)
+"bTo" = (
+/obj/structure/surface/table,
+/obj/item/ashtray/plastic,
+/obj/item/trash/cigbutt{
+	pixel_y = 7
+	},
+/obj/item/trash/plate{
+	pixel_y = 13;
+	pixel_x = 1
+	},
+/obj/item/trash/plate{
+	pixel_y = 15;
+	pixel_x = 1
+	},
+/obj/item/reagent_container/food/snacks/donkpocket{
+	pixel_y = 14
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "bTt" = (
 /obj/structure/largecrate/supply/supplies/mre,
 /turf/open/asphalt/cement,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/army_surplus)
 "bTR" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/spawner/gibspawner/xeno,
@@ -2588,6 +2769,9 @@
 /area/lv553/oob)
 "bUT" = (
 /obj/structure/bed/chair,
+/obj/structure/machinery/light{
+	dir = 8
+	},
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/recruiter_house)
 "bVd" = (
@@ -2605,6 +2789,11 @@
 "bVn" = (
 /turf/open/asphalt/cement,
 /area/lv553/indoors/bungalow_manager)
+"bVG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "bVL" = (
 /obj/structure/cargo_container{
 	icon_state = "WY 2,0";
@@ -2823,10 +3012,6 @@
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/grass,
 /area/lv553/landing_zone_2)
-"ccD" = (
-/obj/structure/machinery/colony_floodlight,
-/turf/open/gm/grass,
-/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "cdu" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
@@ -2996,6 +3181,10 @@
 	icon_state = "vault"
 	},
 /area/lv553/indoors/uscm_garrison/io_office)
+"chZ" = (
+/obj/structure/window/framed/colony,
+/turf/open/gm/grass,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "ciM" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder{
@@ -3050,6 +3239,21 @@
 	dir = 1
 	},
 /area/lv553/indoors/gated_community/residence_bunkhouse)
+"ckJ" = (
+/obj/structure/toilet{
+	dir = 1;
+	tag = "icon-toilet00 (WEST)"
+	},
+/obj/structure/closet/walllocker{
+	pixel_x = -32
+	},
+/obj/effect/landmark/objective_landmark/close,
+/obj/item/folder,
+/obj/item/prop/magazine/book/spacebeast,
+/turf/open/floor{
+	icon_state = "freezerfloor"
+	},
+/area/lv553/indoors/lone_buildings/clf_house)
 "clL" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/snacks/grown/tomato,
@@ -3089,7 +3293,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '1-9';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
@@ -3156,10 +3361,6 @@
 	},
 /turf/open/floor/plating,
 /area/lv553/oob)
-"coK" = (
-/obj/structure/flora/bush/ausbushes/palebush,
-/turf/open/gm/grass,
-/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "cpi" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/drinks/dry_ramen{
@@ -3215,7 +3416,9 @@
 	name = "gas-n'-gear door";
 	dir = 1
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "white"
+	},
 /area/lv553/indoors/lone_buildings/gas_n_gear)
 "cre" = (
 /obj/structure/filingcabinet/chestdrawer{
@@ -3234,6 +3437,20 @@
 	},
 /turf/open/floor/interior/wood,
 /area/lv553/oob)
+"crE" = (
+/obj/structure/closet/secure_closet/guncabinet,
+/obj/item/weapon/gun/shotgun/pump{
+	pixel_y = 3;
+	name = "\improper M37A1 pump shotgun";
+	accuracy_mult = 1
+	},
+/obj/item/weapon/gun/shotgun/pump{
+	pixel_y = -6;
+	name = "\improper M37A1 pump shotgun";
+	accuracy_mult = 1
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "crK" = (
 /obj/structure/mineral_door/wood,
 /turf/open/space/basic,
@@ -3291,13 +3508,15 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '9-10';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '4-10';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
@@ -3348,7 +3567,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '0-1';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
@@ -3499,6 +3719,12 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/indoors/uscm_garrison/armory)
+"cBI" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/weapon/gun/rifle/m16,
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "cBV" = (
 /obj/item/bedsheet/captain,
 /turf/open/gm/river,
@@ -3549,25 +3775,29 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '2-10';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '2-6';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '1-2';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '2-5';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
@@ -3833,10 +4063,6 @@
 /obj/item/trash/hotdog,
 /turf/open/floor/wood,
 /area/lv553/oob)
-"cMA" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/turf/open/floor,
-/area/lv553/indoors/lone_buildings/gas_n_gear)
 "cMW" = (
 /obj/structure/sink{
 	pixel_y = 24
@@ -3880,6 +4106,9 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv553/oob)
+"cPO" = (
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/screenwriter_house)
 "cPQ" = (
 /obj/item/stack/sheet/wood,
 /turf/open/gm/river,
@@ -3893,11 +4122,15 @@
 /turf/open/floor/wood,
 /area/lv553/oob)
 "cQK" = (
-/obj/structure/prop/dam/crane/cargo{
-	dir = 4
+/obj/structure/surface/rack,
+/obj/item/storage/belt/marine{
+	pixel_y = 5
 	},
-/turf/open/gm/dirt,
-/area/lv553/outdoors/colony_streets/west)
+/obj/item/storage/belt/marine{
+	pixel_y = -5
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "cRa" = (
 /obj/structure/barricade/metal{
 	dir = 8
@@ -3983,6 +4216,10 @@
 	},
 /turf/open/gm/river,
 /area/lv553/indoors/flooded/west_slums)
+"cSG" = (
+/obj/structure/prop/dam/truck/mining,
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/multidoor_garage)
 "cSL" = (
 /obj/item/light_bulb/tube,
 /obj/item/light_bulb/tube,
@@ -3992,6 +4229,10 @@
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/asphalt/cement,
 /area/lv553/indoors/gated_community/residence_bunkhouse)
+"cSS" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/gm/dirt,
+/area/lv553/outdoors/colony_streets/west)
 "cTc" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/almayer{
@@ -4138,6 +4379,10 @@
 	},
 /turf/open/floor/almayer,
 /area/lv553/indoors/uscm_garrison/recruitment_office)
+"cYg" = (
+/obj/structure/machinery/colony_floodlight,
+/turf/open/gm/grass,
+/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "cYl" = (
 /obj/item/trash/kepler,
 /turf/open/floor{
@@ -4291,6 +4536,10 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/wood,
 /area/lv553/indoors/welcome_center/offices)
+"deh" = (
+/obj/structure/machinery/cm_vending/sorted/marine_food,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "deN" = (
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
@@ -4302,13 +4551,15 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '4-8';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '4-9';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
@@ -4338,13 +4589,24 @@
 	pixel_x = -5;
 	pixel_y = -2
 	},
-/turf/open/floor,
+/obj/structure/machinery/light,
+/turf/open/floor{
+	icon_state = "white"
+	},
 /area/lv553/indoors/lone_buildings/gas_n_gear)
 "dft" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan_r_w"
 	},
 /area/lv553/oob)
+"dfy" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/item/clothing/glasses/sunglasses/prescription,
+/obj/item/trash/cigbutt,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/screenwriter_house)
 "dfC" = (
 /obj/structure/surface/table,
 /obj/item/device/eftpos,
@@ -4354,6 +4616,12 @@
 	tag = "icon-sterile_green_corner (NORTH)"
 	},
 /area/lv553/indoors/hospital/outpatients_and_icu)
+"dgm" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/gas_n_gear)
 "dgw" = (
 /turf/open/gm/dirtgrassborder{
 	icon_state = "grassdirt_corner2"
@@ -4369,6 +4637,15 @@
 	icon_state = "plating"
 	},
 /area/lv553/indoors/uscm_garrison/io_office)
+"dgT" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt/cigarbutt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "dgU" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/prop/almayer/computer/PC{
@@ -4478,6 +4755,13 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/indoors/uscm_garrison/armory)
+"dju" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 1;
+	name = "bathroom door"
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "djx" = (
 /turf/open/floor/almayer/uscm/directional{
 	dir = 4
@@ -4573,6 +4857,14 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/indoors/hospital/research/floor)
+"dmw" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/spawner/gibspawner/robot,
+/obj/item/stack/sheet/metal,
+/obj/item/stack/cable_coil,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "dmB" = (
 /obj/structure/platform_decoration/strata/metal{
 	dir = 1
@@ -4634,6 +4926,11 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv553/outdoors/bungalow_manager_exterior)
+"dot" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "doU" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
@@ -4656,6 +4953,13 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
+"dqa" = (
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (WEST)"
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "dqf" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -4718,13 +5022,15 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '8-10';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '4-10';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
@@ -4804,6 +5110,15 @@
 	icon_state = "white"
 	},
 /area/lv553/indoors/welcome_center/lobby)
+"dug" = (
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (WEST)"
+	},
+/turf/open/floor{
+	icon_state = "freezerfloor"
+	},
+/area/lv553/indoors/lone_buildings/clf_house)
 "duB" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -5143,6 +5458,12 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv553/outdoors/hospital/break_garden)
+"dFu" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "freezerfloor"
+	},
+/area/lv553/indoors/lone_buildings/engineer_alcoholic_house)
 "dGd" = (
 /obj/structure/desertdam/decals/road_stop{
 	icon_state = "stop_decal5";
@@ -5179,10 +5500,31 @@
 /obj/structure/toilet{
 	tag = "icon-toilet00 (WEST)"
 	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
 /area/lv553/indoors/lone_buildings/recruiter_house)
+"dGO" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/prop/almayer/computer/PC{
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/storage/fancy/cigarettes/wypacket{
+	pixel_x = 7;
+	pixel_y = 9
+	},
+/obj/item/storage/fancy/cigar/matchbook/wy_gold{
+	pixel_x = 5
+	},
+/obj/item/shard,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/screenwriter_house)
 "dIr" = (
 /obj/structure/sign/safety/medical{
 	pixel_x = 8;
@@ -5256,6 +5598,13 @@
 "dJV" = (
 /turf/open/gm/grass,
 /area/lv553/indoors/lone_buildings/recruiter_house)
+"dKD" = (
+/obj/item/tool/weldingtool/simple,
+/obj/item/clothing/head/welding{
+	pixel_y = -5
+	},
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/multidoor_garage)
 "dKP" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/almayer{
@@ -5263,6 +5612,14 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/indoors/hospital/outpatients_and_icu)
+"dLq" = (
+/obj/structure/surface/table,
+/obj/item/storage/box/donkpockets{
+	pixel_y = 8
+	},
+/obj/item/reagent_container/food/snacks/donkpocket,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "dLu" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/gm/grass,
@@ -5325,16 +5682,21 @@
 	},
 /area/lv553/indoors/hospital/reception)
 "dOp" = (
-/obj/item/tool/wet_sign,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/glass/bucket/mopbucket,
+/obj/item/tool/mop,
+/obj/item/trash/cigbutt,
+/obj/structure/barricade/deployable{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/army_surplus)
 "dOQ" = (
 /obj/structure/filingcabinet{
 	pixel_y = 3
 	},
-/obj/effect/landmark/objective_landmark/close{
-	pixel_y = 2
-	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/gm/river,
 /area/lv553/indoors/flooded/west_apartments)
 "dOZ" = (
@@ -5594,7 +5956,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '8-10';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
@@ -5655,6 +6018,16 @@
 	icon_state = "dark"
 	},
 /area/lv553/indoors/hospital/research/offices)
+"ecQ" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = 16
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/gm/dirt,
+/area/lv553/indoors/lone_buildings/gas_n_gear)
 "ecZ" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 6
@@ -5821,19 +6194,22 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '0-1';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '2-6';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '2-10';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
@@ -5964,6 +6340,10 @@
 	dir = 1
 	},
 /area/lv553/outdoors/hospital/road_north_east)
+"ejI" = (
+/obj/structure/machinery/disposal,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "ejS" = (
 /turf/open/asphalt/cement,
 /area/lv553/indoors/gated_community/residence_bunkhouse)
@@ -6122,6 +6502,14 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv553/outdoors/colony_streets/southwest)
+"eoK" = (
+/obj/structure/surface/rack,
+/obj/structure/sign/poster/safety{
+	pixel_y = 30
+	},
+/obj/item/ammo_box/magazine/misc/mre,
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "epV" = (
 /obj/structure/prop/dam/truck/cargo{
 	dir = 8;
@@ -6133,10 +6521,6 @@
 /obj/structure/flora/jungle/hedge,
 /turf/open/gm/grass,
 /area/lv553/outdoors/hospital/road_north_east)
-"err" = (
-/obj/structure/fence,
-/turf/open/gm/grass,
-/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "esb" = (
 /obj/item/shard,
 /turf/open/floor/wood,
@@ -6227,7 +6611,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '0-8';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
@@ -6308,6 +6693,13 @@
 	icon_state = "bcarpet01"
 	},
 /area/lv553/oob)
+"exm" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/spawner/gibspawner/robot,
+/obj/item/stack/sheet/metal,
+/obj/item/stack/cable_coil,
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "exu" = (
 /obj/structure/machinery/power/apc{
 	dir = 8
@@ -6427,10 +6819,6 @@
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/wood,
 /area/lv553/oob)
-"eBA" = (
-/obj/structure/surface/rack,
-/turf/open/floor,
-/area/lv553/indoors/lone_buildings/gas_n_gear)
 "eBX" = (
 /obj/structure/surface/table/gamblingtable,
 /obj/item/reagent_container/food/condiment/hotsauce/cholula,
@@ -6654,19 +7042,22 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '4-9';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '2-6';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '0-1';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
@@ -6779,6 +7170,13 @@
 	icon_state = "redfull"
 	},
 /area/lv553/oob)
+"ePI" = (
+/obj/structure/surface/rack,
+/obj/item/stack/folding_barricade/three{
+	pixel_y = -3
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "eQQ" = (
 /obj/structure/prop/static_tank/water{
 	pixel_y = 18
@@ -6831,7 +7229,9 @@
 /obj/item/weapon/twohanded/folded_metal_chair{
 	pixel_y = 6
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "white"
+	},
 /area/lv553/indoors/lone_buildings/gas_n_gear)
 "eSC" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -7064,6 +7464,12 @@
 "faS" = (
 /turf/closed/wall,
 /area/lv553/outdoors/colony_streets/east)
+"fbA" = (
+/obj/structure/machinery/power/apc{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/screenwriter_house)
 "fcc" = (
 /obj/structure/bed/stool{
 	pixel_x = 9
@@ -7149,6 +7555,11 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv553/outdoors/landing_zones_disembark)
+"ffd" = (
+/obj/item/shard,
+/obj/structure/window_frame/colony,
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/screenwriter_house)
 "ffB" = (
 /obj/structure/flora/jungle/vines,
 /obj/structure/flora/jungle/vines{
@@ -7258,6 +7669,26 @@
 /obj/structure/bed/chair/comfy,
 /turf/open/floor,
 /area/lv553/oob)
+"fjc" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed,
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "fjE" = (
 /obj/structure/flora/jungle/hedge{
 	dir = 9
@@ -7289,17 +7720,18 @@
 	},
 /area/lv553/landing_zone_1)
 "fkD" = (
+/obj/item/prop{
+	color = "#FF0000";
+	icon = 'icons/obj/pipes/power_cond_white.dmi';
+	icon_state = '4-8';
+	name = "suspisious cable";
+	layer = 2.85
+	},
 /obj/structure/machinery/door/airlock/almayer/generic{
 	density = 2;
 	dir = 8;
 	locked = 1;
 	name = "\improper garage manway door"
-	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '4-8';
-	name = "suspisious cable"
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
@@ -7321,10 +7753,7 @@
 /turf/open/floor,
 /area/lv553/indoors/flooded/east_apartments)
 "flk" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 1,0";
-	tag = "icon-WY 1,0"
-	},
+/obj/structure/cargo_container/lockmart/mid,
 /turf/open/gm/dirt,
 /area/lv553/outdoors/colony_streets/west)
 "flK" = (
@@ -7509,6 +7938,13 @@
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
+"fsN" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "fsW" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
@@ -7672,6 +8108,11 @@
 /obj/structure/window/framed/wood,
 /turf/open/gm/dirt,
 /area/lv553/oob)
+"fyh" = (
+/obj/item/trash/cigbutt/cigarbutt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_alcoholic_house)
 "fyi" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder{
@@ -7687,7 +8128,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '4-8';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/floor/wood{
 	icon_state = "wood-broken4"
@@ -7733,6 +8175,16 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/oob)
+"fzQ" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_box/magazine/m4a3{
+	pixel_y = 6
+	},
+/obj/item/ammo_box/magazine/m4a3{
+	pixel_y = -2
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "fzT" = (
 /obj/structure/flora/jungle/hedge{
 	dir = 8
@@ -8095,13 +8547,15 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '4-10';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '2-6';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
@@ -8150,12 +8604,6 @@
 /obj/structure/window/framed/colony,
 /turf/open/gm/grass,
 /area/lv553/oob)
-"fMp" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner"
-	},
-/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "fMG" = (
 /obj/structure/prop/invuln/pipe_water,
 /obj/structure/prop/invuln/overhead_pipe{
@@ -8167,6 +8615,12 @@
 	icon_state = "dark"
 	},
 /area/lv553/indoors/bungalow_manager)
+"fMI" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/gm/dirt,
+/area/lv553/indoors/lone_buildings/gas_n_gear)
 "fMN" = (
 /obj/structure/sign/nosmoking_2,
 /turf/closed/wall,
@@ -8202,6 +8656,11 @@
 	},
 /turf/open/gm/dirt,
 /area/lv553/indoors/gated_community/residence_bunkhouse)
+"fNf" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/gm/dirt,
+/area/lv553/outdoors/colony_streets/west)
 "fNn" = (
 /obj/structure/surface/rack,
 /obj/item/storage/pouch/cassette,
@@ -8252,6 +8711,13 @@
 	icon_state = "tcomms"
 	},
 /area/lv553/indoors/uscm_garrison/io_office)
+"fOM" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/microwave{
+	pixel_y = 4
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "fPi" = (
 /obj/structure/sign/poster/ad{
 	pixel_x = 32
@@ -8277,6 +8743,19 @@
 /obj/item/stack/sheet/metal,
 /turf/open/gm/river,
 /area/lv553/indoors/flooded/west_apartments)
+"fQf" = (
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
+	},
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (WEST)"
+	},
+/turf/open/floor{
+	icon_state = "freezerfloor"
+	},
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "fQl" = (
 /turf/closed/wall/r_wall,
 /area/lv553/indoors/gated_community/head_of_corporate_engineering)
@@ -8289,10 +8768,26 @@
 /obj/item/trash/plate,
 /turf/open/gm/river,
 /area/lv553/indoors/flooded/weymart)
+"fQC" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "bunkhouse door"
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "fQL" = (
 /obj/structure/reagent_dispensers/fueltank/gas,
 /turf/open/asphalt/cement,
 /area/lv553/outdoors/colony_streets/east)
+"fRs" = (
+/obj/structure/machinery/door_control{
+	desc = "A garage door opener.";
+	id = "armysurplus_garage";
+	name = "garage door opener";
+	req_one_access_txt = "2;3;12;19";
+	pixel_y = 32
+	},
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "fRx" = (
 /obj/structure/surface/rack,
 /obj/item/storage/firstaid/regular,
@@ -8377,10 +8872,11 @@
 /obj/structure/machinery/door_control{
 	pixel_x = -24;
 	pixel_y = 17;
-	id = "gasngear_garage"
+	id = "gasngear_garage";
+	name = "long rest storage shutter control"
 	},
 /turf/open/gm/dirt,
-/area/lv553/outdoors/lone_buildings/gas_n_gear)
+/area/lv553/indoors/lone_buildings/gas_n_gear)
 "fTT" = (
 /obj/item/paper_bin{
 	pixel_y = 8;
@@ -8651,6 +9147,15 @@
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/grass,
 /area/lv553/outdoors/colony_streets/northeast)
+"fZM" = (
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (WEST)"
+	},
+/turf/open/floor{
+	icon_state = "freezerfloor"
+	},
+/area/lv553/indoors/lone_buildings/screenwriter_house)
 "fZU" = (
 /obj/effect/spawner/gibspawner/xeno,
 /turf/open/gm/dirt,
@@ -8703,9 +9208,6 @@
 	},
 /turf/open/floor/interior/wood,
 /area/lv553/oob)
-"gbw" = (
-/turf/open/asphalt/cement,
-/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "gbI" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/drinks/bottle/absinthe{
@@ -8808,6 +9310,22 @@
 	},
 /turf/open/floor,
 /area/lv553/oob)
+"ggE" = (
+/obj/structure/surface/rack,
+/obj/item/storage/belt/gun/flaregun{
+	pixel_y = 4
+	},
+/obj/item/storage/belt/gun/flaregun{
+	pixel_y = -4
+	},
+/obj/item/weapon/gun/flare{
+	pixel_y = 4
+	},
+/obj/item/weapon/gun/flare{
+	pixel_y = -4
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "ggR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
@@ -9000,9 +9518,9 @@
 	},
 /area/lv553/oob)
 "gpt" = (
-/obj/structure/largecrate/supply/supplies/flares,
+/obj/structure/machinery/power/apc,
 /turf/open/asphalt/cement,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/army_surplus)
 "gqy" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 32
@@ -9214,19 +9732,21 @@
 	},
 /area/lv553/oob)
 "gBv" = (
-/obj/item/stack/cable_coil,
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '1-6';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '1-10';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
+/obj/item/stack/cable_coil,
 /turf/open/asphalt/cement,
 /area/lv553/oob)
 "gBx" = (
@@ -9237,10 +9757,21 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv553/indoors/welcome_center/canteen)
+"gBB" = (
+/obj/effect/spawner/gibspawner/xeno,
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/clothing/mask/facehugger{
+	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
+	icon_state = "facehugger_impregnated";
+	name = "????";
+	stat = 2
+	},
+/turf/open/asphalt/cement,
+/area/lv553/outdoors/colony_streets/west)
 "gBD" = (
 /obj/vehicle/powerloader/ft,
 /turf/open/asphalt/cement,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/multidoor_garage)
 "gBJ" = (
 /obj/structure/sign/safety/synth_storage{
 	pixel_y = -32
@@ -9517,6 +10048,21 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv553/outdoors/uscm_garrison_exterior/fenced)
+"gJq" = (
+/obj/structure/surface/rack{
+	pixel_y = 0
+	},
+/obj/item/storage/box/m94{
+	pixel_y = 6
+	},
+/obj/item/storage/box/m94{
+	pixel_y = 2
+	},
+/obj/item/storage/box/m94{
+	pixel_y = -2
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "gJK" = (
 /obj/structure/platform/strata/metal,
 /turf/open/floor/almayer{
@@ -9664,6 +10210,26 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv553/oob)
+"gOb" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed,
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/item/prop/magazine/dirty/torn,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "gOo" = (
 /obj/item/ammo_magazine/pistol/skorpion,
 /turf/open/gm/dirt,
@@ -9719,11 +10285,6 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/oob)
-"gQO" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
-/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "gRs" = (
 /obj/structure/machinery/recharge_station,
 /turf/open/floor{
@@ -9736,6 +10297,16 @@
 	},
 /turf/open/gm/grass,
 /area/lv553/outdoors/hospital/road_north_west)
+"gRV" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_box/magazine/l42a{
+	pixel_y = 7
+	},
+/obj/item/ammo_box/magazine/l42a{
+	pixel_y = -2
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "gRZ" = (
 /turf/open/floor{
 	dir = 8;
@@ -9792,8 +10363,9 @@
 	pixel_y = 30;
 	req_one_access_txt = "2;3;12;19"
 	},
+/obj/structure/largecrate/random/barrel/true_random,
 /turf/open/asphalt/cement,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/multidoor_garage)
 "gUe" = (
 /obj/item/frame/table/almayer,
 /turf/open/gm/river,
@@ -9858,7 +10430,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '1-8';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
@@ -9869,7 +10442,7 @@
 "gVP" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/rifle/l42a{
-	pixel_y = 1
+	pixel_y = 5
 	},
 /obj/item/weapon/gun/rifle/l42a{
 	pixel_y = -8
@@ -9877,6 +10450,9 @@
 /obj/structure/machinery/light{
 	dir = 1;
 	tag = "icon-tube1 (WEST)"
+	},
+/obj/item/weapon/gun/rifle/l42a{
+	pixel_y = -2
 	},
 /turf/open/floor/almayer,
 /area/lv553/indoors/uscm_garrison/garrison_bunks)
@@ -9995,6 +10571,10 @@
 	icon_state = "barber"
 	},
 /area/lv553/indoors/lz_sec_checkpoint)
+"has" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/multidoor_garage)
 "hau" = (
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -10119,10 +10699,6 @@
 	pixel_x = -32
 	},
 /obj/item/trash/cigbutt,
-/obj/item/prop/magazine/book/spacebeast{
-	pixel_y = -2;
-	pixel_x = -3
-	},
 /turf/open/floor/wood,
 /area/lv553/indoors/gated_community/director_of_coporate_relations)
 "hgb" = (
@@ -10145,6 +10721,10 @@
 	},
 /turf/open/floor/almayer,
 /area/lv553/indoors/uscm_garrison/garrison_bunks)
+"hgu" = (
+/obj/structure/largecrate/random,
+/turf/open/gm/dirt,
+/area/lv553/indoors/lone_buildings/gas_n_gear)
 "hgU" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/paper_bin/wy{
@@ -10158,19 +10738,22 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '2-10';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '5-8';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '2-5';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
@@ -10229,6 +10812,14 @@
 "hkx" = (
 /turf/closed/wall/r_wall,
 /area/lv553/outdoors/colony_streets/south)
+"hkF" = (
+/obj/item/ammo_magazine/m60{
+	max_rounds = 0;
+	current_rounds = 0
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "hkN" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 1
@@ -10240,6 +10831,19 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
+"hlh" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/newspaper{
+	name = "half-finished screenplay - working title: invisible aliens hunt down army badasses in the 20th century";
+	pixel_y = 3
+	},
+/obj/item/paper_bin{
+	pixel_y = 4
+	},
+/obj/item/tool/pen,
+/obj/item/shard,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/screenwriter_house)
 "hlk" = (
 /obj/structure/toilet{
 	dir = 8;
@@ -10471,6 +11075,19 @@
 	dir = 4
 	},
 /area/lv553/outdoors/hospital/road_north_west)
+"hvi" = (
+/obj/item/weapon/gun/m60{
+	damage_mult = 0.5;
+	current_mag = null
+	},
+/obj/item/ammo_magazine/m60{
+	max_rounds = 0;
+	current_rounds = 0
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/clothing/head/militia/bucket,
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "hvw" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
@@ -10657,6 +11274,10 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
+"hBf" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "hBn" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor{
@@ -10791,7 +11412,7 @@
 	dir = 4;
 	icon_state = "grassdirt_corner"
 	},
-/area/lv553/oob)
+/area/lv553/outdoors/colony_streets/west)
 "hFr" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/chem_dispenser/soda/beer{
@@ -10967,13 +11588,10 @@
 /obj/item/tool/wet_sign,
 /turf/open/asphalt/cement,
 /area/lv553/oob)
-"hJb" = (
-/turf/open/floor,
-/area/lv553/indoors/lone_buildings/gas_n_gear)
 "hJC" = (
 /obj/item/tool/crowbar/red,
 /turf/open/asphalt/cement,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/multidoor_garage)
 "hJG" = (
 /obj/structure/filingcabinet/chestdrawer{
 	pixel_x = 7;
@@ -10987,6 +11605,7 @@
 	pixel_y = -7;
 	pixel_x = 6
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor,
 /area/lv553/indoors/uscm_garrison/recruitment_office)
 "hJL" = (
@@ -11221,6 +11840,12 @@
 	},
 /turf/open/floor,
 /area/lv553/oob)
+"hRQ" = (
+/obj/structure/barricade/deployable{
+	dir = 8
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "hRR" = (
 /obj/structure/sign/safety/bathmens{
 	pixel_x = -25
@@ -11274,6 +11899,7 @@
 /obj/structure/sign/poster/safety{
 	pixel_y = 30
 	},
+/obj/structure/largecrate/random/barrel/true_random,
 /turf/open/asphalt/cement,
 /area/lv553/outdoors/colony_streets/west)
 "hUv" = (
@@ -11839,14 +12465,15 @@
 /turf/open/asphalt/cement,
 /area/lv553/indoors/lz_sec_checkpoint)
 "ini" = (
-/obj/structure/closet/cabinet{
-	density = 0;
-	pixel_x = 5;
-	pixel_y = 16
+/obj/structure/surface/table,
+/obj/item/storage/box/donkpockets{
+	pixel_y = 7
 	},
-/obj/item/ammo_magazine/rifle/mar40/lmg,
+/obj/item/storage/box/donkpockets{
+	pixel_y = 2
+	},
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/clf_house)
 "inn" = (
 /obj/item/stack/sheet/metal,
 /obj/item/stack/cable_coil,
@@ -11884,6 +12511,12 @@
 /obj/item/tool/kitchen/rollingpin,
 /turf/open/floor/wood,
 /area/lv553/oob)
+"inP" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "inZ" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor{
@@ -11893,7 +12526,9 @@
 "ioi" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "white"
+	},
 /area/lv553/indoors/lone_buildings/gas_n_gear)
 "ioF" = (
 /obj/structure/surface/table,
@@ -11911,6 +12546,25 @@
 	icon_state = "white"
 	},
 /area/lv553/indoors/welcome_center/lobby)
+"ipj" = (
+/obj/structure/reagent_dispensers/beerkeg,
+/obj/item/reagent_container/food/drinks/cans/beer{
+	pixel_y = 12
+	},
+/obj/item/reagent_container/food/drinks/cans/beer{
+	pixel_y = -8;
+	pixel_x = -5
+	},
+/obj/item/reagent_container/food/drinks/cans/beer{
+	pixel_y = -8;
+	pixel_x = 3
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/curtain/red{
+	pixel_y = -32
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "ipp" = (
 /obj/structure/bed,
 /obj/structure/bed{
@@ -12127,6 +12781,32 @@
 	icon_state = "dark"
 	},
 /area/lv553/indoors/aerospace_control)
+"ivi" = (
+/obj/structure/machinery/light,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/screenwriter_house)
+"ivL" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed,
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "ivV" = (
 /obj/structure/prop/dam/truck{
 	dir = 1
@@ -12187,28 +12867,45 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '4-5';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '4-8';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '2-6';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
+"iye" = (
+/obj/structure/machinery/colony_floodlight,
+/turf/open/asphalt/cement,
+/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "iyg" = (
 /obj/structure/platform_decoration/strata/metal{
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
+"iyl" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
+"iyI" = (
+/obj/structure/machinery/power/apc{
+	dir = 4
+	},
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/multidoor_garage)
 "iyT" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/asphalt/cement,
@@ -12310,7 +13007,7 @@
 "iAS" = (
 /obj/structure/machinery/vending/snack/packaged,
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/army_surplus)
 "iBd" = (
 /obj/structure/largecrate/random,
 /turf/open/asphalt/cement,
@@ -12402,6 +13099,16 @@
 	},
 /turf/open/gm/dirt,
 /area/lv553/oob)
+"iEh" = (
+/obj/structure/surface/rack,
+/obj/item/storage/belt/gun/m4a3{
+	pixel_y = 4
+	},
+/obj/item/storage/belt/gun/m4a3{
+	pixel_y = -5
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "iEw" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/weapon/gun/rifle/mar40{
@@ -12662,6 +13369,18 @@
 	icon_state = "blue_plate"
 	},
 /area/lv553/oob)
+"iKQ" = (
+/obj/structure/surface/rack,
+/obj/item/tool/shovel/etool/folded{
+	pixel_y = 2;
+	pixel_x = -2
+	},
+/obj/item/tool/shovel/etool/folded{
+	pixel_y = -6;
+	pixel_x = 5
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "iLL" = (
 /obj/vehicle/powerloader,
 /turf/open/gm/dirt,
@@ -12687,6 +13406,11 @@
 /obj/structure/flora/jungle/vines,
 /turf/open/gm/grass,
 /area/lv553/oob)
+"iNv" = (
+/obj/structure/surface/rack,
+/obj/item/storage/box/nade_box/training,
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "iOb" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor{
@@ -12740,11 +13464,24 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv553/indoors/flooded/east_apartments)
+"iPy" = (
+/obj/structure/bed,
+/obj/item/bedsheet/captain,
+/obj/item/trash/cigbutt,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/screenwriter_house)
 "iPM" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan1"
 	},
 /area/lv553/oob)
+"iPN" = (
+/obj/structure/closet/secure_closet/freezer/fridge/groceries,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "iQo" = (
 /obj/structure/bed/sofa/south/grey/right{
 	pixel_y = 8
@@ -12867,20 +13604,37 @@
 	icon_state = "barber"
 	},
 /area/lv553/indoors/uscm_garrison/garrison_bunks)
-"iTB" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner"
-	},
-/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "iTI" = (
 /obj/structure/fence,
 /obj/structure/fence,
 /turf/open/gm/grass,
 /area/lv553/outdoors/colony_streets/west)
+"iTO" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/obj/item/spacecash/c100{
+	pixel_y = 10
+	},
+/obj/item/toy/deck/uno{
+	pixel_y = 14
+	},
+/turf/open/asphalt/cement,
+/area/lv553/outdoors/colony_streets/west)
 "iTX" = (
 /turf/open/gm/dirt,
 /area/lv553/outdoors/bungalow_manager_exterior)
+"iVA" = (
+/obj/structure/closet/secure_closet/guncabinet,
+/obj/item/weapon/gun/rifle/m16{
+	pixel_y = 6
+	},
+/obj/item/weapon/gun/rifle/m16{
+	pixel_y = 0
+	},
+/obj/item/weapon/gun/rifle/m16{
+	pixel_y = -7
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "iWa" = (
 /obj/structure/machinery/floodlight,
 /turf/open/asphalt/cement,
@@ -13080,6 +13834,12 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv553/outdoors/colony_streets/northeast)
+"jbN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/tool/wet_sign,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "jcF" = (
 /obj/structure/fence,
 /turf/open/gm/grass,
@@ -13100,6 +13860,12 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/interior/wood,
 /area/lv553/oob)
+"jdw" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 8;
+	icon_state = "grassdirt_corner2"
+	},
+/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "jez" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
@@ -13158,12 +13924,6 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv553/outdoors/colony_streets/southwest)
-"jgU" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner2"
-	},
-/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "jgV" = (
 /turf/open/gm/grass,
 /area/lv553/outdoors/uscm_garrison_exterior/fenced)
@@ -13208,6 +13968,14 @@
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
+"jjz" = (
+/obj/structure/bed/chair,
+/obj/item/clothing/head/hardhat,
+/obj/item/trash/cigbutt/cigarbutt{
+	pixel_y = 3
+	},
+/turf/open/asphalt/cement,
+/area/lv553/outdoors/colony_streets/west)
 "jjZ" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor{
@@ -13284,6 +14052,9 @@
 	},
 /turf/open/gm/dirt,
 /area/lv553/oob)
+"jlE" = (
+/turf/open/gm/dirtgrassborder,
+/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "jlN" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/asphalt/cement,
@@ -13292,6 +14063,14 @@
 /obj/structure/bed/chair,
 /turf/open/floor/wood,
 /area/lv553/oob)
+"jmg" = (
+/obj/item/ammo_magazine/m60{
+	max_rounds = 0;
+	current_rounds = 0
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "jmk" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /turf/open/floor{
@@ -13401,6 +14180,12 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/oob)
+"jqZ" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 4;
+	icon_state = "grassdirt_corner2"
+	},
+/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "jrI" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/structure{
@@ -13460,19 +14245,16 @@
 /turf/open/gm/dirt,
 /area/lv553/landing_zone_1)
 "juy" = (
-/obj/structure/closet/cabinet{
-	density = 0;
-	pixel_x = 21;
-	pixel_y = 16
+/obj/structure/surface/table,
+/obj/structure/sign/poster/clf{
+	pixel_x = -32
 	},
-/obj/structure/closet/cabinet{
-	density = 0;
-	pixel_x = -3;
-	pixel_y = 16
+/obj/item/prop/magazine/book{
+	name = "The Coming Liberation - The Insurrectionists Manifesto";
+	desc = "This book appears to be battered and decomposing, it must have been carried in some very poor conditions over the years."
 	},
-/obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/clf_house)
 "jvu" = (
 /obj/structure/window_frame/colony/reinforced,
 /obj/item/shard,
@@ -13487,6 +14269,11 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv553/outdoors/colony_streets/northeast)
+"jvC" = (
+/obj/item/stack/sheet/wood,
+/obj/item/reagent_container/food/snacks/donkpocket,
+/turf/open/asphalt/cement,
+/area/lv553/outdoors/colony_streets/west)
 "jvP" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -13711,9 +14498,6 @@
 	},
 /turf/open/gm/grass,
 /area/lv553/oob)
-"jCr" = (
-/turf/closed/wall/r_wall,
-/area/lv553/indoors/lone_buildings/gas_n_gear)
 "jCs" = (
 /obj/structure/surface/table,
 /obj/item/storage/beer_pack{
@@ -13737,6 +14521,13 @@
 "jDg" = (
 /turf/open/gm/dirt,
 /area/lv553/outdoors/hospital/road_north_west)
+"jDt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/deployable{
+	dir = 8
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "jDG" = (
 /obj/structure/window{
 	dir = 4
@@ -13829,13 +14620,15 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '4-5';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '1-4';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/floor/wood{
 	icon_state = "wood-broken6"
@@ -13884,6 +14677,11 @@
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/gm/dirt,
 /area/lv553/outdoors/colony_streets/southwest)
+"jHO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "jHU" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/microwave{
@@ -13910,14 +14708,15 @@
 /turf/open/floor/wood,
 /area/lv553/indoors/bungalow_manager)
 "jIg" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	name = "bathroom door"
-	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '4-8';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.85
+	},
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "bathroom door"
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
@@ -13997,6 +14796,12 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv553/indoors/lone_buildings/gas_n_gear)
+"jJr" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 1;
+	icon_state = "grassdirt_corner2"
+	},
+/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "jJN" = (
 /obj/structure/toilet{
 	dir = 8;
@@ -14373,12 +15178,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/liq_r_mart)
-"jYk" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 1;
-	icon_state = "grassdirt_corner2"
-	},
-/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "jYr" = (
 /obj/structure/fence,
 /obj/structure/fence,
@@ -14638,6 +15437,14 @@
 	},
 /turf/open/floor/interior/wood,
 /area/lv553/oob)
+"khx" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_y = 0
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "khI" = (
 /obj/structure/flora/jungle/hedge{
 	dir = 10
@@ -14684,6 +15491,11 @@
 	icon_state = "barber"
 	},
 /area/lv553/indoors/gated_community/residence_bunkhouse)
+"kiP" = (
+/turf/open/floor{
+	icon_state = "freezerfloor"
+	},
+/area/lv553/indoors/lone_buildings/army_surplus)
 "kjt" = (
 /obj/structure/toilet{
 	dir = 1;
@@ -14703,10 +15515,7 @@
 /turf/open/gm/dirt,
 /area/lv553/outdoors/colony_streets/northeast)
 "kjX" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 0,0";
-	tag = "icon-WY 0,0"
-	},
+/obj/structure/cargo_container/lockmart/left,
 /turf/open/gm/dirt,
 /area/lv553/outdoors/colony_streets/west)
 "kke" = (
@@ -15029,7 +15838,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '2-5';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
@@ -15148,6 +15958,12 @@
 	},
 /turf/open/asphalt/cement,
 /area/lv553/indoors/bungalow_manager)
+"kAN" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "bathroom door"
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/clf_house)
 "kAZ" = (
 /obj/structure/closet/cabinet{
 	density = 0;
@@ -15180,6 +15996,12 @@
 	},
 /turf/open/floor/interior/wood,
 /area/lv553/oob)
+"kCt" = (
+/obj/structure/bed/chair/office/light,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/gas_n_gear)
 "kCM" = (
 /obj/structure/toilet{
 	tag = "icon-toilet00 (WEST)"
@@ -15216,7 +16038,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '1-4';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
@@ -15229,7 +16052,12 @@
 "kFl" = (
 /obj/structure/largecrate/supply/generator,
 /turf/open/asphalt/cement,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/army_surplus)
+"kFE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/secure_closet/freezer/fridge/full,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/screenwriter_house)
 "kFQ" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 9
@@ -15238,6 +16066,46 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv553/outdoors/colony_streets/west)
+"kFU" = (
+/obj/structure/flora/bush/ausbushes/palebush,
+/turf/open/gm/grass,
+/area/lv553/outdoors/lone_buildings/gas_n_gear)
+"kGe" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/rifle/m16{
+	pixel_y = 5;
+	pixel_x = -5
+	},
+/obj/item/ammo_magazine/rifle/m16{
+	pixel_y = 5;
+	pixel_x = -1
+	},
+/obj/item/ammo_magazine/rifle/m16{
+	pixel_y = 5;
+	pixel_x = 2
+	},
+/obj/item/ammo_magazine/rifle/m16{
+	pixel_y = 5;
+	pixel_x = 5
+	},
+/obj/item/ammo_magazine/rifle/m16{
+	pixel_y = -3;
+	pixel_x = -5
+	},
+/obj/item/ammo_magazine/rifle/m16{
+	pixel_y = -3;
+	pixel_x = -1
+	},
+/obj/item/ammo_magazine/rifle/m16{
+	pixel_y = -3;
+	pixel_x = 2
+	},
+/obj/item/ammo_magazine/rifle/m16{
+	pixel_y = -3;
+	pixel_x = 5
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "kGp" = (
 /obj/item/ammo_magazine/pistol/skorpion{
 	pixel_x = 11;
@@ -15336,7 +16204,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '9-10';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/structure/machinery/light/small,
 /turf/open/asphalt/cement,
@@ -15369,6 +16238,16 @@
 	tag = "icon-sterile_green_side (NORTH)"
 	},
 /area/lv553/indoors/hospital/lobby)
+"kMa" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/clothing/mask/facehugger{
+	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
+	icon_state = "facehugger_impregnated";
+	name = "????";
+	stat = 2
+	},
+/turf/open/gm/dirt,
+/area/lv553/outdoors/colony_streets/west)
 "kMq" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/drinks/bottle/wine{
@@ -15424,9 +16303,6 @@
 /obj/item/prop/colony/used_flare,
 /turf/open/gm/dirt,
 /area/lv553/landing_zone_1)
-"kOf" = (
-/turf/open/gm/dirt,
-/area/lv553/indoors/lone_buildings/gas_n_gear)
 "kOl" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_18";
@@ -15589,6 +16465,9 @@
 /obj/item/weapon/pole/fancy_cane/this_is_a_knife/machete,
 /obj/item/weapon/gun/revolver/small{
 	pixel_y = 6
+	},
+/obj/structure/machinery/light{
+	dir = 4
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/recruiter_house)
@@ -15786,6 +16665,14 @@
 "kYH" = (
 /turf/open/gm/dirt,
 /area/lv553/outdoors/colony_streets/east)
+"kZe" = (
+/obj/structure/sign/prop1{
+	pixel_y = 32
+	},
+/turf/open/gm/dirtgrassborder{
+	dir = 4
+	},
+/area/lv553/outdoors/uscm_garrison_exterior/entrance)
 "kZk" = (
 /turf/open/floor,
 /area/lv553/indoors/uscm_garrison/garrison_bunks)
@@ -15941,6 +16828,14 @@
 /obj/item/prop/helmetgarb/spent_slug,
 /turf/open/gm/dirt,
 /area/lv553/outdoors/landing_zones_disembark)
+"lex" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/item/trash/cigbutt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "leB" = (
 /obj/item/shard,
 /turf/open/floor/wood,
@@ -16071,9 +16966,23 @@
 /obj/structure/machinery/chem_dispenser/soda/beer,
 /turf/open/asphalt/cement,
 /area/lv553/oob)
+"ljs" = (
+/obj/structure/closet,
+/obj/item/clothing/head/hardhat,
+/obj/item/clothing/head/hardhat{
+	pixel_y = 7
+	},
+/obj/item/clothing/head/hardhat/orange{
+	pixel_y = -7
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "ljw" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "white"
+	},
 /area/lv553/indoors/lone_buildings/gas_n_gear)
 "ljz" = (
 /obj/structure/surface/table/woodentable,
@@ -16477,6 +17386,14 @@
 	icon_state = "plating"
 	},
 /area/lv553/oob)
+"lyc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table,
+/obj/structure/machinery/microwave{
+	pixel_y = 4
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/screenwriter_house)
 "lyq" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 8;
@@ -16636,10 +17553,18 @@
 	icon_state = "vault"
 	},
 /area/lv553/oob)
+"lDo" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 8;
+	icon_state = "grassdirt_corner"
+	},
+/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "lDF" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/metal/medium_stack,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "white"
+	},
 /area/lv553/indoors/lone_buildings/gas_n_gear)
 "lDU" = (
 /obj/structure/machinery/washing_machine{
@@ -16771,6 +17696,18 @@
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/wood,
 /area/lv553/oob)
+"lJx" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -14;
+	pixel_y = 18
+	},
+/obj/item/storage/toolbox/electrical{
+	pixel_x = 3;
+	pixel_y = 11
+	},
+/obj/item/shard,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_alcoholic_house)
 "lKM" = (
 /obj/structure/toilet,
 /obj/structure/sign/poster/art{
@@ -16824,6 +17761,15 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/oob)
+"lMv" = (
+/turf/closed/wall,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
+"lMw" = (
+/obj/structure/extinguisher_cabinet/alt{
+	pixel_y = 26
+	},
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/multidoor_garage)
 "lMJ" = (
 /turf/closed/wall,
 /area/lv553/indoors/welcome_center/canteen)
@@ -17031,10 +17977,6 @@
 	icon_state = "dark"
 	},
 /area/lv553/indoors/lz_sec_checkpoint)
-"lVu" = (
-/obj/structure/largecrate/random/barrel/green,
-/turf/open/asphalt/cement,
-/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "lVv" = (
 /obj/item/reagent_container/glass/bucket{
 	pixel_x = -9;
@@ -17083,12 +18025,6 @@
 /obj/item/pizzabox/vegetable,
 /turf/open/floor,
 /area/lv553/indoors/gated_community/residence_bunkhouse)
-"lXG" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner2"
-	},
-/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "lYn" = (
 /obj/structure/sign/poster/propaganda{
 	pixel_y = 0;
@@ -17146,6 +18082,15 @@
 /turf/open/floor/plating{
 	dir = 1;
 	icon_state = "warnplate"
+	},
+/area/lv553/oob)
+"maa" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "weyland-yutani hostel door";
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "white"
 	},
 /area/lv553/oob)
 "map" = (
@@ -17271,6 +18216,12 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/oob)
+"mcS" = (
+/obj/structure/machinery/light,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/gas_n_gear)
 "mde" = (
 /obj/structure/window/framed/colony/reinforced,
 /obj/structure/machinery/door/poddoor/almayer{
@@ -17309,6 +18260,12 @@
 /obj/item/clothing/head/hairflower,
 /turf/open/floor,
 /area/lv553/oob)
+"mep" = (
+/obj/item/trash/cigbutt/cigarbutt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/shard,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_alcoholic_house)
 "mex" = (
 /obj/structure/surface/table,
 /obj/item/tool/surgery/bonesetter{
@@ -17353,7 +18310,12 @@
 /area/lv553/outdoors/colony_streets/west)
 "meZ" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_box/magazine/l42a,
+/obj/item/ammo_box/magazine/l42a{
+	pixel_y = 7
+	},
+/obj/item/ammo_box/magazine/l42a{
+	pixel_y = -2
+	},
 /turf/open/floor/almayer,
 /area/lv553/indoors/uscm_garrison/garrison_bunks)
 "mfc" = (
@@ -17530,6 +18492,10 @@
 	},
 /turf/open/asphalt/cement,
 /area/lv553/outdoors/colony_streets/northeast)
+"mmi" = (
+/obj/structure/machinery/vending/cola,
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "mmm" = (
 /obj/structure/surface/rack,
 /turf/open/asphalt/cement,
@@ -17840,6 +18806,15 @@
 	icon_state = "dark"
 	},
 /area/lv553/indoors/welcome_center/offices)
+"muk" = (
+/obj/structure/sink{
+	pixel_y = 22
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "freezerfloor"
+	},
+/area/lv553/indoors/lone_buildings/engineer_alcoholic_house)
 "muq" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 1
@@ -17940,6 +18915,15 @@
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/wood,
 /area/lv553/indoors/gated_community/head_of_corporate_engineering)
+"myk" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	density = 2;
+	dir = 1;
+	locked = 1;
+	name = "\improper garage manway door"
+	},
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/multidoor_garage)
 "myw" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/reagent_container/food/snacks/meatsteak,
@@ -17969,6 +18953,9 @@
 	},
 /turf/open/gm/dirt,
 /area/lv553/outdoors/lone_buildings/gas_n_gear)
+"mzr" = (
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/clf_house)
 "mzV" = (
 /turf/open/gm/dirtgrassborder{
 	icon_state = "grassdirt_corner"
@@ -18004,10 +18991,6 @@
 	icon_state = "dark"
 	},
 /area/lv553/indoors/bungalow_manager)
-"mBI" = (
-/obj/structure/machinery/colony_floodlight,
-/turf/open/asphalt/cement,
-/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "mBJ" = (
 /obj/structure/flora/jungle/hedge{
 	dir = 9
@@ -18150,7 +19133,9 @@
 	pixel_x = 8;
 	pixel_y = 5
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "white"
+	},
 /area/lv553/indoors/lone_buildings/gas_n_gear)
 "mFP" = (
 /obj/structure/flora/jungle/vines{
@@ -18196,6 +19181,19 @@
 "mGm" = (
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/liq_r_mart)
+"mGt" = (
+/obj/structure/surface/rack,
+/obj/item/storage/box/MRE{
+	pixel_y = 8
+	},
+/obj/item/storage/box/MRE{
+	pixel_y = 3
+	},
+/obj/item/storage/box/MRE{
+	pixel_y = 0
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "mGv" = (
 /obj/structure/fence,
 /turf/open/gm/grass,
@@ -18228,7 +19226,9 @@
 "mHf" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/smg/nailgun,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "white"
+	},
 /area/lv553/indoors/lone_buildings/gas_n_gear)
 "mHl" = (
 /obj/structure/window_frame/colony,
@@ -18321,9 +19321,6 @@
 	icon_state = "redyellowfull"
 	},
 /area/lv553/oob)
-"mLh" = (
-/turf/closed/wall,
-/area/lv553/indoors/lone_buildings/gas_n_gear)
 "mLG" = (
 /obj/item/prop/helmetgarb/spacejam_tickets{
 	desc = "Hubba hubba.";
@@ -18394,19 +19391,22 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '2-8';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '1-6';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '1-9';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
@@ -18497,7 +19497,7 @@
 	icon_state = "seegson_m"
 	},
 /turf/open/asphalt/cement,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/multidoor_garage)
 "mQI" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/grass,
@@ -18531,6 +19531,10 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv553/outdoors/hospital/road_north_west)
+"mSh" = (
+/obj/structure/prop/dam/truck/damaged,
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/multidoor_garage)
 "mSl" = (
 /obj/structure/bed/chair/office/light{
 	dir = 4
@@ -18566,10 +19570,6 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv553/indoors/flooded/west_apartments)
-"mTP" = (
-/obj/structure/reagent_dispensers/fueltank/gas,
-/turf/open/asphalt/cement,
-/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "mUl" = (
 /obj/structure/curtain/open,
 /turf/open/gm/dirt,
@@ -18691,6 +19691,14 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
+"naB" = (
+/obj/structure/sink{
+	pixel_y = 22
+	},
+/turf/open/floor{
+	icon_state = "freezerfloor"
+	},
+/area/lv553/indoors/lone_buildings/screenwriter_house)
 "naR" = (
 /obj/structure/sign/safety/reception{
 	pixel_y = -32;
@@ -18717,6 +19725,12 @@
 	},
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/liq_r_mart)
+"nbi" = (
+/obj/structure/machinery/power/apc{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_alcoholic_house)
 "nbA" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -18748,6 +19762,10 @@
 /obj/item/toy/beach_ball,
 /turf/open/gm/river,
 /area/lv553/oob)
+"ncB" = (
+/obj/structure/surface/rack,
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "ncN" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass,
@@ -18806,6 +19824,9 @@
 /obj/item/storage/box/drinkingglasses,
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/liq_r_mart)
+"ngj" = (
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "ngt" = (
 /obj/structure/bed,
 /turf/open/floor/interior/wood,
@@ -19044,7 +20065,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '4-8';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/gm/grass,
 /area/lv553/outdoors/colony_streets/south)
@@ -19252,7 +20274,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '4-8';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/floor/wood{
 	icon_state = "wood-broken3"
@@ -19285,11 +20308,27 @@
 /turf/closed/wall,
 /area/lv553/oob)
 "nyC" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 8
+/obj/structure/closet/secure_closet/freezer/fridge,
+/obj/item/reagent_container/food/drinks/cans/beer{
+	pixel_x = 8
 	},
-/turf/open/gm/grass,
-/area/lv553/oob)
+/obj/item/reagent_container/food/drinks/cans/beer{
+	pixel_x = -8
+	},
+/obj/item/reagent_container/food/drinks/cans/beer{
+	pixel_x = -8;
+	pixel_y = -5
+	},
+/obj/item/reagent_container/food/drinks/cans/beer,
+/obj/item/reagent_container/food/drinks/cans/beer{
+	pixel_y = -5
+	},
+/obj/item/reagent_container/food/drinks/cans/beer{
+	pixel_y = -5;
+	pixel_x = 8
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_alcoholic_house)
 "nyF" = (
 /obj/structure/surface/table,
 /turf/open/floor{
@@ -19370,6 +20409,15 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/indoors/hospital/research/floor)
+"nBx" = (
+/obj/structure/toilet{
+	dir = 1;
+	tag = "icon-toilet00 (WEST)"
+	},
+/turf/open/floor{
+	icon_state = "freezerfloor"
+	},
+/area/lv553/indoors/lone_buildings/screenwriter_house)
 "nBC" = (
 /obj/structure/prop/dam/van/damaged,
 /turf/open/gm/dirt,
@@ -19417,6 +20465,25 @@
 	icon_state = "white"
 	},
 /area/lv553/indoors/welcome_center/offices)
+"nDq" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed,
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "nDu" = (
 /obj/structure/surface/table,
 /obj/item/tool/soap/nanotrasen,
@@ -19452,6 +20519,11 @@
 	icon_state = "plating_striped"
 	},
 /area/lv553/indoors/uscm_garrison/garrison_bunks)
+"nDZ" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 8
+	},
+/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "nEn" = (
 /obj/structure/barricade/sandbags/wired{
 	dir = 1;
@@ -19556,6 +20628,10 @@
 	},
 /turf/open/floor/interior/plastic,
 /area/lv553/oob)
+"nHK" = (
+/obj/structure/reagent_dispensers/fueltank/gas,
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/multidoor_garage)
 "nHV" = (
 /obj/structure/bed,
 /obj/item/bedsheet/captain,
@@ -19588,6 +20664,10 @@
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/grass,
 /area/lv553/outdoors/colony_streets/west)
+"nJp" = (
+/obj/structure/reagent_dispensers/fueltank/gas,
+/turf/open/asphalt/cement,
+/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "nJy" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/grass,
@@ -19947,6 +21027,19 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv553/outdoors/hospital/break_garden)
+"nUE" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
+"nUL" = (
+/obj/structure/closet/cabinet,
+/obj/item/storage/briefcase,
+/obj/effect/landmark/objective_landmark/close,
+/obj/item/clothing/under/suit_jacket/trainee,
+/obj/item/clothing/glasses/sunglasses/prescription,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/screenwriter_house)
 "nUX" = (
 /turf/closed/wall,
 /area/lv553/indoors/bungalow_manager)
@@ -20118,6 +21211,10 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
+"nZE" = (
+/obj/structure/closet/secure_closet/freezer/fridge/full,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "nZN" = (
 /obj/structure/window_frame/colony/reinforced,
 /obj/item/clothing/mask/facehugger{
@@ -20138,9 +21235,6 @@
 	icon_state = "white"
 	},
 /area/lv553/indoors/welcome_center/offices)
-"nZS" = (
-/turf/open/gm/dirtgrassborder,
-/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "oab" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = 1
@@ -20338,6 +21432,10 @@
 /obj/item/reagent_container/food/snacks/meat,
 /obj/item/reagent_container/food/snacks/meat,
 /obj/item/reagent_container/food/snacks/meat,
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (WEST)"
+	},
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/recruiter_house)
 "ofB" = (
@@ -20532,6 +21630,12 @@
 	dir = 8
 	},
 /area/lv553/oob)
+"onP" = (
+/turf/closed/wall/r_wall,
+/area/lv553/outdoors/lone_buildings/gas_n_gear)
+"onQ" = (
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/multidoor_garage)
 "onS" = (
 /obj/structure/surface/table/gamblingtable,
 /obj/item/ashtray/glass{
@@ -20737,7 +21841,9 @@
 	pixel_x = 4;
 	pixel_y = 3
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "white"
+	},
 /area/lv553/indoors/lone_buildings/gas_n_gear)
 "osY" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -20887,6 +21993,11 @@
 	icon_state = "redyellowfull"
 	},
 /area/lv553/oob)
+"oxg" = (
+/obj/item/shard,
+/obj/structure/window_frame/colony,
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/engineer_alcoholic_house)
 "oxn" = (
 /obj/structure/window/framed/colony/reinforced,
 /obj/item/stack/sheet/wood{
@@ -20973,10 +22084,15 @@
 /obj/item/device/walkman,
 /turf/open/floor/interior/wood,
 /area/lv553/oob)
+"oyJ" = (
+/turf/closed/wall,
+/area/lv553/indoors/lone_buildings/screenwriter_house)
 "oyP" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/wood/medium_stack,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "white"
+	},
 /area/lv553/indoors/lone_buildings/gas_n_gear)
 "ozq" = (
 /obj/structure/flora/jungle/vines,
@@ -21109,6 +22225,26 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/dirtgrassborder,
 /area/lv553/oob)
+"oDe" = (
+/obj/structure/surface/table/gamblingtable,
+/obj/item/spacecash/c20{
+	pixel_y = 4;
+	pixel_x = 5
+	},
+/obj/item/spacecash/c20{
+	pixel_y = 0
+	},
+/obj/item/ashtray/plastic{
+	pixel_y = 8;
+	pixel_x = -7
+	},
+/obj/item/trash/cigbutt/cigarbutt{
+	pixel_y = 19;
+	pixel_x = -2
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "oDi" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/drinks/cans/tonic{
@@ -21219,14 +22355,15 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/indoors/hospital/research/offices)
-"oGl" = (
-/obj/structure/largecrate/random,
-/turf/open/gm/dirt,
-/area/lv553/indoors/lone_buildings/gas_n_gear)
 "oGo" = (
 /obj/structure/window_frame/colony/reinforced,
 /turf/open/floor/wood,
 /area/lv553/indoors/welcome_center/canteen)
+"oGt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/disposal,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/screenwriter_house)
 "oGI" = (
 /obj/item/ammo_magazine/handful/shotgun/buckshot,
 /turf/open/floor/interior/wood,
@@ -21448,6 +22585,15 @@
 	icon_state = "white"
 	},
 /area/lv553/oob)
+"oNi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/power/apc{
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/gas_n_gear)
 "oNn" = (
 /turf/closed/shuttle{
 	dir = 1;
@@ -21627,6 +22773,11 @@
 	icon_state = "white_cyan1"
 	},
 /area/lv553/oob)
+"oSa" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "oSp" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "Neil's Arcade door"
@@ -21649,12 +22800,6 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/indoors/hospital/lobby)
-"oTy" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 4;
-	icon_state = "grassdirt_corner"
-	},
-/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "oUh" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/asphalt/cement,
@@ -21745,6 +22890,11 @@
 /obj/structure/machinery/landinglight/ds1/spoke,
 /turf/open/gm/dirt,
 /area/lv553/landing_zone_1)
+"oXG" = (
+/obj/item/trash/cigbutt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "oXQ" = (
 /obj/structure/reagent_dispensers/beerkeg/alt_dark{
 	pixel_x = -3;
@@ -21772,11 +22922,18 @@
 	},
 /area/lv553/outdoors/flooded_streets/waste_treatment)
 "oYl" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 9
+/obj/structure/closet/secure_closet/guncabinet,
+/obj/item/weapon/gun/rifle/l42a{
+	pixel_y = 4
 	},
-/turf/open/gm/grass,
-/area/lv553/oob)
+/obj/item/weapon/gun/rifle/l42a{
+	pixel_y = -3
+	},
+/obj/item/weapon/gun/rifle/l42a{
+	pixel_y = -11
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "oYw" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 8
@@ -21883,13 +23040,14 @@
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/liq_r_mart)
 "oZm" = (
-/obj/item/weapon/gun/rifle/mar40,
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '1-4';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
+/obj/item/weapon/gun/rifle/mar40,
 /turf/open/floor/wood{
 	icon_state = "wood-broken"
 	},
@@ -21998,6 +23156,10 @@
 	},
 /turf/open/gm/grass,
 /area/lv553/indoors/bungalow_manager)
+"pcN" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/screenwriter_house)
 "pdt" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
@@ -22050,6 +23212,9 @@
 	},
 /obj/item/storage/briefcase/stowaway,
 /obj/effect/landmark/objective_landmark/close,
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -22183,6 +23348,14 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
+"phA" = (
+/obj/item/weapon/gun/shotgun/merc/damaged,
+/obj/item/stack/sheet/metal{
+	layer = 3
+	},
+/obj/item/trash/cigbutt,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/clf_house)
 "phC" = (
 /obj/structure/prop/server_equipment/laptop/closed{
 	pixel_x = -7;
@@ -22199,7 +23372,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '2-10';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
@@ -22270,7 +23444,7 @@
 	icon_state = "seegson_l"
 	},
 /turf/open/asphalt/cement,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/multidoor_garage)
 "pjq" = (
 /obj/item/storage/briefcase{
 	pixel_x = -1
@@ -22289,19 +23463,22 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '1-9';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '2-8';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '8-10';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
@@ -22331,29 +23508,15 @@
 	},
 /area/lv553/indoors/uscm_garrison/io_office)
 "pkG" = (
-/obj/structure/closet/cabinet{
-	density = 0;
-	pixel_x = 13;
-	pixel_y = 16
+/obj/structure/surface/table,
+/obj/structure/machinery/light{
+	dir = 1
 	},
-/obj/item/ammo_magazine/rifle/mar40{
-	pixel_x = 11;
-	pixel_y = 22
-	},
-/obj/item/ammo_magazine/rifle/mar40{
-	pixel_x = 12;
-	pixel_y = 10
-	},
-/obj/item/ammo_magazine/rifle/mar40{
-	pixel_x = 10;
-	pixel_y = 14
-	},
-/obj/item/ammo_magazine/rifle/mar40{
-	pixel_x = 10;
-	pixel_y = 18
+/obj/structure/machinery/microwave{
+	pixel_y = 5
 	},
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/clf_house)
 "pkS" = (
 /obj/structure/surface/table/holotable,
 /obj/item/weapon/gun/revolver/cmb,
@@ -22370,6 +23533,10 @@
 	dir = 4
 	},
 /area/lv553/outdoors/colony_streets/east)
+"pla" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "plu" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/gm/dirt,
@@ -22730,8 +23897,12 @@
 	pixel_y = 8;
 	pixel_x = -6
 	},
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (WEST)"
+	},
 /turf/open/asphalt/cement,
-/area/lv553/outdoors/lone_buildings/gas_n_gear)
+/area/lv553/indoors/lone_buildings/gas_n_gear)
 "puz" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/window{
@@ -22814,6 +23985,12 @@
 	},
 /turf/open/gm/dirt,
 /area/lv553/outdoors/hospital/road_north_east)
+"pxw" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "pxC" = (
 /obj/structure/machinery/medical_pod/autodoc,
 /turf/open/floor/almayer{
@@ -22920,6 +24097,14 @@
 	},
 /turf/open/floor,
 /area/lv553/indoors/flooded/east_apartments)
+"pAV" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "armysurplus_garage";
+	name = "garage door"
+	},
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "pAX" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
@@ -23014,7 +24199,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '4-8';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/floor{
 	icon_state = "redyellowfull"
@@ -23169,7 +24355,12 @@
 /obj/item/stack/cable_coil/heavyduty{
 	pixel_y = -1
 	},
-/turf/open/floor,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
 /area/lv553/indoors/lone_buildings/gas_n_gear)
 "pKZ" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -23312,7 +24503,6 @@
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/liq_r_mart)
 "pNE" = (
-/obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/prop/server_equipment/laptop/closed{
 	pixel_y = 2
 	},
@@ -23320,9 +24510,11 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '5-6';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/structure/machinery/light/small,
+/obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/wood,
 /area/lv553/oob)
 "pNO" = (
@@ -23368,6 +24560,10 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv553/outdoors/hospital/road_north_west)
+"pPt" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/turf/open/gm/grass,
+/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "pPy" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 3
@@ -23488,10 +24684,14 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '1-4';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/gm/grass,
 /area/lv553/outdoors/colony_streets/south)
+"pTe" = (
+/turf/open/gm/dirt,
+/area/lv553/indoors/lone_buildings/gas_n_gear)
 "pTg" = (
 /obj/structure/machinery/vending/cola,
 /turf/open/floor{
@@ -23548,8 +24748,9 @@
 /obj/structure/sign/poster/safety{
 	pixel_y = 30
 	},
+/obj/item/ammo_box/magazine/shotgun/buckshot,
 /turf/open/asphalt/cement,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/army_surplus)
 "pVJ" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
@@ -23596,6 +24797,12 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv553/outdoors/colony_streets/west)
+"pWI" = (
+/obj/structure/surface/rack,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/gas_n_gear)
 "pXg" = (
 /obj/item/stack/sheet/wood,
 /turf/open/gm/river,
@@ -23621,6 +24828,14 @@
 	},
 /turf/open/gm/dirtgrassborder,
 /area/lv553/outdoors/bungalow_manager_exterior)
+"pXR" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/item/clothing/head/hardhat,
+/obj/item/trash/cigbutt,
+/turf/open/asphalt/cement,
+/area/lv553/outdoors/colony_streets/west)
 "pYa" = (
 /obj/structure/machinery/shower{
 	pixel_y = 17
@@ -23677,6 +24892,21 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv553/outdoors/flooded_streets/east)
+"pZP" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/storage/fancy/cigar{
+	pixel_y = 9
+	},
+/obj/item/storage/box/matches{
+	pixel_y = 4;
+	pixel_x = -3
+	},
+/obj/item/clothing/suit/storage/hazardvest/yellow,
+/obj/item/clothing/head/hardhat{
+	pixel_y = 8
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_alcoholic_house)
 "pZY" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 10
@@ -23723,6 +24953,9 @@
 	},
 /turf/open/gm/grass,
 /area/lv553/outdoors/colony_streets/west)
+"qbB" = (
+/turf/closed/wall,
+/area/lv553/indoors/lone_buildings/engineer_alcoholic_house)
 "qbF" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -23734,7 +24967,9 @@
 "qbK" = (
 /obj/structure/surface/rack,
 /obj/item/device/multitool,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "white"
+	},
 /area/lv553/indoors/lone_buildings/gas_n_gear)
 "qbM" = (
 /obj/structure/flora/jungle/vines{
@@ -23838,6 +25073,29 @@
 /obj/structure/fence,
 /turf/open/gm/grass,
 /area/lv553/oob)
+"qeJ" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed,
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/item/prop/magazine/dirty/torn/alt{
+	pixel_y = 14;
+	layer = 3.5
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "qeO" = (
 /obj/structure/prop/tower,
 /obj/structure/cable/heavyduty{
@@ -23955,10 +25213,7 @@
 /turf/open/floor/wood,
 /area/lv553/indoors/hospital/reception)
 "qgV" = (
-/obj/structure/cargo_container{
-	icon_state = "WY 2,0";
-	tag = "icon-WY 2,0"
-	},
+/obj/structure/cargo_container/lockmart/right,
 /turf/open/gm/dirt,
 /area/lv553/outdoors/colony_streets/west)
 "qgZ" = (
@@ -24013,6 +25268,14 @@
 	},
 /turf/open/gm/dirt,
 /area/lv553/indoors/uscm_garrison/recruitment_office)
+"qiY" = (
+/obj/structure/surface/table/reinforced{
+	flipped = 1;
+	icon_state = "reinfflip2"
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "qjk" = (
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -24597,6 +25860,12 @@
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
+"qAe" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "apartment door"
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/screenwriter_house)
 "qAu" = (
 /obj/structure/surface/table,
 /turf/open/floor/almayer{
@@ -24699,18 +25968,13 @@
 	pixel_x = 5
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/army_surplus)
 "qEi" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
 /turf/open/gm/dirt,
 /area/lv553/outdoors/colony_streets/east)
-"qEK" = (
-/turf/open/gm/dirtgrassborder{
-	dir = 8
-	},
-/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "qFe" = (
 /obj/structure/machinery/computer/arcade,
 /turf/open/floor/almayer,
@@ -24749,7 +26013,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '4-10';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
@@ -24828,6 +26093,10 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/indoors/hospital/research/floor)
+"qLa" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "qLd" = (
 /turf/closed/wall/r_wall,
 /area/lv553/indoors/welcome_center/lobby)
@@ -24908,6 +26177,9 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
+"qMP" = (
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "qNd" = (
 /obj/structure/machinery/shower{
 	dir = 1
@@ -24957,7 +26229,9 @@
 /obj/item/stack/cable_coil{
 	pixel_y = -4
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "white"
+	},
 /area/lv553/indoors/lone_buildings/gas_n_gear)
 "qPw" = (
 /turf/open/floor/prison/chapel_carpet,
@@ -25291,6 +26565,23 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv553/indoors/gated_community/director_of_coporate_relations)
+"qZO" = (
+/obj/structure/machinery/shower{
+	dir = 1
+	},
+/obj/structure/machinery/door/window{
+	dir = 1;
+	pixel_y = 18
+	},
+/obj/structure/window{
+	dir = 4
+	},
+/obj/item/tool/soap,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "vault"
+	},
+/area/lv553/indoors/lone_buildings/screenwriter_house)
 "qZQ" = (
 /obj/structure/machinery/vending/snack/packaged,
 /turf/open/floor/almayer{
@@ -25413,6 +26704,10 @@
 /obj/item/stack/cable_coil,
 /turf/open/gm/river,
 /area/lv553/indoors/flooded/west_apartments)
+"reC" = (
+/obj/item/shard,
+/turf/open/gm/dirt,
+/area/lv553/outdoors/colony_streets/west)
 "reO" = (
 /turf/open/gm/grass,
 /area/lv553/outdoors/colony_streets/south)
@@ -25568,6 +26863,15 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
+"rlo" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "bathroom door"
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/lone_buildings/army_surplus)
 "rlL" = (
 /obj/structure/flora/bush/ausbushes/palebush,
 /turf/open/gm/grass,
@@ -25634,6 +26938,29 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv553/outdoors/colony_streets/east)
+"roy" = (
+/obj/structure/closet,
+/obj/item/clothing/head/soft/trucker{
+	pixel_y = 4
+	},
+/obj/item/clothing/head/soft/trucker/red{
+	pixel_y = 1
+	},
+/obj/item/clothing/head/soft/trucker/red{
+	pixel_y = -2
+	},
+/obj/item/storage/fancy/cigar/tarbacks{
+	pixel_y = -4
+	},
+/obj/item/storage/fancy/cigar/matchbook/brown{
+	pixel_y = -4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/curtain/red{
+	pixel_y = -32
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "rpf" = (
 /obj/structure/machinery/door_control{
 	desc = "A garage door opener.";
@@ -25901,16 +27228,22 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '1-6';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '9-10';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
+"rxx" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/multidoor_garage)
 "ryg" = (
 /obj/structure/window{
 	pixel_y = 31
@@ -26138,13 +27471,13 @@
 /area/lv553/indoors/uscm_garrison/recruitment_office)
 "rFt" = (
 /obj/structure/toilet{
-	pixel_y = 13
+	pixel_y = 8;
+	dir = 8
 	},
 /turf/open/floor{
-	dir = 8;
-	icon_state = "barber"
+	icon_state = "freezerfloor"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/army_surplus)
 "rFU" = (
 /turf/open/gm/river,
 /area/lv553/indoors/flooded/west_apartments)
@@ -26338,9 +27671,6 @@
 "rMt" = (
 /turf/open/floor/plating,
 /area/lv553/landing_zone_1)
-"rMQ" = (
-/turf/open/gm/grass,
-/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "rMT" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "director of corporate research house door";
@@ -26367,6 +27697,13 @@
 /obj/item/shard,
 /turf/open/floor/interior/wood,
 /area/lv553/oob)
+"rNP" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "bunkhouse door";
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "rNU" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
@@ -26568,13 +27905,15 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '0-1';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '2-10';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
@@ -26709,15 +28048,27 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/indoors/hospital/research/floor)
-"rZL" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	name = "apartment door"
+"rZI" = (
+/obj/structure/bed,
+/obj/item/reagent_container/food/drinks/cans/beer,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/baseballbat,
+/obj/item/trash/cigbutt/cigarbutt{
+	pixel_y = 1;
+	pixel_x = -7
 	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_alcoholic_house)
+"rZL" = (
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '4-8';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.85
+	},
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "apartment door"
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
@@ -26826,7 +28177,7 @@
 	name = "garage door"
 	},
 /turf/open/asphalt/cement,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/multidoor_garage)
 "sco" = (
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/asphalt/cement,
@@ -26846,6 +28197,22 @@
 	icon_state = "warnplate"
 	},
 /area/lv553/oob)
+"scZ" = (
+/obj/item/storage/toolbox/mechanical{
+	pixel_y = 6
+	},
+/obj/item/storage/toolbox/electrical{
+	pixel_y = -7
+	},
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/multidoor_garage)
+"sdp" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2;
+	name = "apartment door"
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_alcoholic_house)
 "sdL" = (
 /turf/closed/shuttle/ert{
 	icon_state = "rightengine_1";
@@ -26869,6 +28236,17 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/gm/dirt,
 /area/lv553/landing_zone_2)
+"sfk" = (
+/obj/structure/sink{
+	pixel_y = 22
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "freezerfloor"
+	},
+/area/lv553/indoors/lone_buildings/army_surplus)
 "sfm" = (
 /obj/item/shard,
 /turf/open/gm/grass,
@@ -27141,7 +28519,9 @@
 /obj/item/storage/toolbox/electrical{
 	pixel_y = -3
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "white"
+	},
 /area/lv553/indoors/lone_buildings/gas_n_gear)
 "smj" = (
 /turf/open/floor/plating,
@@ -27200,7 +28580,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '4-8';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
@@ -27218,7 +28599,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '9-10';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
@@ -27360,6 +28742,10 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv553/outdoors/uscm_garrison_exterior/entrance)
+"sui" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "suE" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/dirtgrassborder{
@@ -27370,7 +28756,13 @@
 "suG" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/prop/cash_register/off,
-/turf/open/floor,
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (WEST)"
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
 /area/lv553/indoors/lone_buildings/gas_n_gear)
 "suL" = (
 /obj/structure/fence,
@@ -27410,10 +28802,6 @@
 	},
 /turf/open/gm/river,
 /area/lv553/oob)
-"svO" = (
-/obj/structure/bed/chair/office/light,
-/turf/open/floor,
-/area/lv553/indoors/lone_buildings/gas_n_gear)
 "swE" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "break room door"
@@ -27458,11 +28846,17 @@
 	},
 /area/lv553/oob)
 "syk" = (
-/obj/structure/flora/grass/tallgrass/jungle,
-/turf/open/gm/grass,
-/area/lv553/oob)
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/clothing/mask/facehugger{
+	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
+	icon_state = "facehugger_impregnated";
+	name = "????";
+	stat = 2
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "syw" = (
-/obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/microwave{
 	pixel_y = 14
 	},
@@ -27470,8 +28864,10 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '1-6';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
+/obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/wood,
 /area/lv553/oob)
 "syA" = (
@@ -27505,6 +28901,13 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/bungalow_manager)
+"szi" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "bunkhouse door";
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "szD" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
@@ -27573,6 +28976,11 @@
 /obj/item/smartgun_battery,
 /turf/open/floor,
 /area/lv553/oob)
+"sAE" = (
+/obj/structure/bed,
+/obj/item/bedsheet/captain,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/clf_house)
 "sBI" = (
 /obj/structure/sink{
 	pixel_y = 24
@@ -27682,7 +29090,9 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 32
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "white"
+	},
 /area/lv553/indoors/lone_buildings/gas_n_gear)
 "sDY" = (
 /turf/open/floor/almayer{
@@ -27720,6 +29130,9 @@
 "sFg" = (
 /turf/open/gm/coast,
 /area/lv553/outdoors/flooded_streets/west)
+"sFF" = (
+/turf/closed/wall,
+/area/lv553/indoors/lone_buildings/gas_n_gear)
 "sFK" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor,
@@ -27783,6 +29196,22 @@
 	icon_state = "barber"
 	},
 /area/lv553/indoors/lz_sec_checkpoint)
+"sHj" = (
+/obj/structure/machinery/shower{
+	dir = 1
+	},
+/obj/structure/machinery/door/window{
+	dir = 1;
+	pixel_y = 18
+	},
+/obj/structure/window{
+	dir = 8
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "vault"
+	},
+/area/lv553/indoors/lone_buildings/clf_house)
 "sHq" = (
 /obj/structure/desertdam/decals/road_stop{
 	dir = 8;
@@ -27860,7 +29289,7 @@
 "sLK" = (
 /obj/structure/reagent_dispensers/fueltank/gas,
 /turf/open/gm/dirt,
-/area/lv553/oob)
+/area/lv553/outdoors/colony_streets/west)
 "sLT" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 4
@@ -28021,6 +29450,13 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv553/oob)
+"sRq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/power/apc{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "sRs" = (
 /obj/structure/sign/safety/restrictedarea{
 	pixel_x = -24
@@ -28201,6 +29637,35 @@
 /obj/structure/largecrate/random/case/double,
 /turf/open/gm/dirtgrassborder,
 /area/lv553/oob)
+"sVN" = (
+/obj/structure/toilet{
+	dir = 1;
+	tag = "icon-toilet00 (WEST)"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "freezerfloor"
+	},
+/area/lv553/indoors/lone_buildings/engineer_alcoholic_house)
+"sWh" = (
+/obj/structure/surface/table/gamblingtable,
+/obj/item/toy/deck/uno{
+	pixel_x = 15;
+	pixel_y = 5
+	},
+/obj/item/spacecash/c20{
+	pixel_y = 4;
+	pixel_x = -5
+	},
+/obj/item/spacecash/c20{
+	pixel_y = 0
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "sWs" = (
 /obj/structure/machinery/washing_machine,
 /obj/structure/machinery/washing_machine{
@@ -28322,6 +29787,11 @@
 /obj/item/clothing/mask/cigarette/weed,
 /turf/open/floor/wood,
 /area/lv553/indoors/gated_community/director_of_coporate_relations)
+"sYV" = (
+/turf/open/floor{
+	icon_state = "freezerfloor"
+	},
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "sYX" = (
 /turf/open/asphalt/cement,
 /area/lv553/outdoors/flooded_streets/west)
@@ -28381,25 +29851,29 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '1-6';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '1-10';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '2-10';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '1-2';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
@@ -28787,6 +30261,17 @@
 	icon_state = "dark"
 	},
 /area/lv553/indoors/aerospace_control)
+"tmE" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/item/trash/cigbutt/cigarbutt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "tmT" = (
 /obj/structure/bed/chair/comfy{
 	dir = 4
@@ -28900,6 +30385,37 @@
 	tag = "icon-sterile_green_side (NORTH)"
 	},
 /area/lv553/indoors/hospital/reception)
+"tpb" = (
+/obj/structure/machinery/door/window{
+	dir = 1;
+	pixel_y = 18
+	},
+/obj/structure/window{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt/cigarbutt,
+/obj/item/tool/soap{
+	pixel_y = -10;
+	pixel_x = 7;
+	name = "dirty soap";
+	desc = "A cheap bar of soap. Doesn't smell. You imagine this hasn't been washed in a while."
+	},
+/obj/item/reagent_container/food/drinks/cans/beer{
+	pixel_y = -5;
+	pixel_x = 9
+	},
+/obj/structure/machinery/shower{
+	desc = "A fridge has been shoved into the emergency shower space.";
+	dir = 4;
+	pixel_y = 7;
+	layer = 3.21
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "vault"
+	},
+/area/lv553/indoors/lone_buildings/engineer_alcoholic_house)
 "tpf" = (
 /obj/structure/surface/rack,
 /obj/item/storage/box/packet/baton_slug{
@@ -28965,13 +30481,15 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '1-6';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '2-6';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
@@ -29250,6 +30768,12 @@
 /obj/structure/machinery/light,
 /turf/open/floor/carpet,
 /area/lv553/indoors/bungalow_manager)
+"tzp" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "tzz" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 1
@@ -29272,7 +30796,6 @@
 /obj/structure/holohoop{
 	pixel_y = 26
 	},
-/obj/item/toy/beach_ball/holoball,
 /turf/open/gm/dirt,
 /area/lv553/outdoors/hospital/road_north_west)
 "tzM" = (
@@ -29323,6 +30846,20 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/welcome_center/lobby)
+"tBm" = (
+/obj/structure/machinery/microwave{
+	pixel_y = 7
+	},
+/obj/item/storage/box/donkpockets{
+	pixel_x = -6
+	},
+/obj/item/reagent_container/food/snacks/donkpocket{
+	pixel_y = -5;
+	pixel_x = 6
+	},
+/obj/structure/surface/table/woodentable/poor,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_alcoholic_house)
 "tBp" = (
 /obj/structure/machinery/power/apc{
 	dir = 4
@@ -29346,7 +30883,12 @@
 "tCj" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_box/magazine/nailgun/empty,
-/turf/open/floor,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
 /area/lv553/indoors/lone_buildings/gas_n_gear)
 "tCm" = (
 /obj/structure/largecrate/supply/ammo/m39/half,
@@ -29860,6 +31402,9 @@
 /obj/structure/flora/bush/ausbushes/palebush,
 /turf/open/gm/grass,
 /area/lv553/outdoors/uscm_garrison_exterior/fenced)
+"tVg" = (
+/turf/open/gm/grass,
+/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "tVr" = (
 /obj/structure/machinery/power/apc/fully_broken/no_cell{
 	dir = 8
@@ -29969,19 +31514,22 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '1-6';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '1-10';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '2-10';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
@@ -30188,6 +31736,26 @@
 	dir = 1
 	},
 /area/lv553/outdoors/hospital/road_north_west)
+"ueo" = (
+/obj/structure/fence,
+/turf/open/gm/grass,
+/area/lv553/outdoors/lone_buildings/gas_n_gear)
+"ueM" = (
+/obj/item/reagent_container/food/drinks/cans/beer{
+	pixel_y = -8;
+	pixel_x = -4
+	},
+/obj/structure/reagent_dispensers/beerkeg,
+/obj/item/reagent_container/food/drinks/cans/beer{
+	pixel_y = -8;
+	pixel_x = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ashtray/plastic{
+	pixel_y = 7
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_alcoholic_house)
 "ueY" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/ammo_magazine/rifle/mar40{
@@ -30223,6 +31791,11 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
+"ufz" = (
+/obj/effect/spawner/gibspawner/xeno,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/gm/dirt,
+/area/lv553/outdoors/colony_streets/west)
 "ugc" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/device/radio{
@@ -30371,6 +31944,12 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/oob)
+"ula" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "bathroom door"
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/screenwriter_house)
 "ulC" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood/bolted,
 /turf/open/floor/almayer{
@@ -30379,6 +31958,16 @@
 	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/lv553/indoors/hospital/lobby)
+"ulD" = (
+/obj/structure/surface/rack,
+/obj/item/storage/box/packet/smoke{
+	pixel_y = 6
+	},
+/obj/item/storage/box/packet/smoke{
+	pixel_y = -2
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "ulR" = (
 /turf/open/gm/dirtgrassborder{
 	icon_state = "grassdirt_corner2"
@@ -30549,6 +32138,26 @@
 	dir = 8
 	},
 /area/lv553/outdoors/colony_streets/west)
+"uoQ" = (
+/obj/structure/surface/table,
+/obj/item/ashtray/plastic{
+	pixel_y = -5
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/plate{
+	pixel_y = 10;
+	pixel_x = 1
+	},
+/obj/item/trash/plate{
+	pixel_y = 12;
+	pixel_x = 1
+	},
+/obj/item/trash/cigbutt/cigarbutt{
+	pixel_y = 6;
+	pixel_x = 6
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "uoR" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 8;
@@ -30567,12 +32176,25 @@
 	},
 /turf/open/floor,
 /area/lv553/oob)
+"upx" = (
+/turf/closed/wall,
+/area/lv553/indoors/lone_buildings/multidoor_garage)
 "upy" = (
 /obj/structure/sink/kitchen{
 	pixel_y = 23
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
+"upD" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_box/magazine/shotgun{
+	pixel_y = 6
+	},
+/obj/item/ammo_box/magazine/shotgun/beanbag{
+	pixel_y = -2
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "upV" = (
 /obj/item/shard,
 /turf/open/floor/almayer{
@@ -30684,10 +32306,6 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/wood,
 /area/lv553/oob)
-"uvB" = (
-/obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/gm/grass,
-/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "uwi" = (
 /obj/structure/extinguisher_cabinet/alt{
 	pixel_y = 26
@@ -30921,6 +32539,10 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv553/outdoors/colony_streets/south)
+"uGI" = (
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/asphalt/cement,
+/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "uGK" = (
 /obj/item/trash/crushed_cup,
 /turf/open/gm/grass,
@@ -30932,6 +32554,9 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/interior/wood,
 /area/lv553/oob)
+"uHH" = (
+/turf/open/asphalt/cement,
+/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "uHX" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/chips{
@@ -31053,7 +32678,7 @@
 	icon_state = "seegson_r"
 	},
 /turf/open/asphalt/cement,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/multidoor_garage)
 "uMo" = (
 /obj/structure/sign/safety/rewire{
 	pixel_x = 40;
@@ -31158,11 +32783,18 @@
 	name = "garage door"
 	},
 /turf/open/asphalt/cement,
-/area/lv553/oob)
-"uPY" = (
-/obj/structure/prop/dam/truck/cargo{
-	icon_state = "crawler_crate_alt2"
+/area/lv553/indoors/lone_buildings/multidoor_garage)
+"uPK" = (
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (WEST)"
 	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/gas_n_gear)
+"uPY" = (
+/obj/structure/largecrate/random/barrel/true_random,
 /turf/open/asphalt/cement,
 /area/lv553/outdoors/colony_streets/west)
 "uQM" = (
@@ -31172,6 +32804,12 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
+"uQW" = (
+/obj/structure/prop/dam/crane/cargo{
+	dir = 4
+	},
+/turf/open/asphalt/cement,
+/area/lv553/outdoors/colony_streets/west)
 "uRc" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
@@ -31256,7 +32894,9 @@
 "uUN" = (
 /obj/structure/surface/rack,
 /obj/item/tool/weldingtool,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "white"
+	},
 /area/lv553/indoors/lone_buildings/gas_n_gear)
 "uVc" = (
 /obj/structure/machinery/colony_floodlight,
@@ -31292,6 +32932,13 @@
 	dir = 6
 	},
 /area/lv553/indoors/uscm_garrison/garrison_bunks)
+"uXs" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_alcoholic_house)
 "uXU" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -31352,6 +32999,11 @@
 	},
 /turf/open/gm/dirt,
 /area/lv553/oob)
+"uZf" = (
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/gas_n_gear)
 "uZA" = (
 /turf/open/gm/dirt,
 /area/lv553/outdoors/colony_streets/southwest)
@@ -31515,6 +33167,23 @@
 	icon_state = "leftengine_1"
 	},
 /area/lv553/oob)
+"vfW" = (
+/obj/structure/machinery/shower{
+	dir = 1
+	},
+/obj/structure/machinery/door/window{
+	dir = 1;
+	pixel_y = 18
+	},
+/obj/structure/window{
+	dir = 4
+	},
+/obj/item/tool/soap,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "vault"
+	},
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "vgd" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/drinks/bottle/kahlua{
@@ -31586,13 +33255,15 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '1-10';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '1-6';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
@@ -31677,6 +33348,12 @@
 	icon_state = "white"
 	},
 /area/lv553/indoors/welcome_center/lobby)
+"vjY" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 1;
+	icon_state = "grassdirt_corner"
+	},
+/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "vkk" = (
 /obj/structure/coatrack,
 /turf/open/floor/wood,
@@ -32073,9 +33750,6 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/oob)
-"vCR" = (
-/turf/closed/wall/r_wall,
-/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "vDk" = (
 /obj/structure/bed/stool,
 /turf/open/floor/carpet,
@@ -32334,6 +34008,11 @@
 	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/lv553/indoors/hospital/storage_laundyroom_and_breakroom)
+"vKX" = (
+/obj/effect/spawner/gibspawner/xeno,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "vLa" = (
 /turf/open/gm/river,
 /area/lv553/indoors/flooded/east_apartments)
@@ -32554,31 +34233,36 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '1-6';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '1-10';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '2-10';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '2-6';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '1-9';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
@@ -32716,6 +34400,13 @@
 	icon_state = "white_cyan1"
 	},
 /area/lv553/oob)
+"vVQ" = (
+/obj/structure/sign/prop3{
+	pixel_y = 0;
+	pixel_x = 31
+	},
+/turf/open/asphalt/cement,
+/area/lv553/outdoors/colony_streets/west)
 "vVU" = (
 /obj/structure/bed/chair{
 	dir = 8;
@@ -32863,6 +34554,15 @@
 /obj/item/trash/chunk,
 /turf/open/floor/interior/wood,
 /area/lv553/oob)
+"wae" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt/cigarbutt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "waf" = (
 /obj/item/toy/beach_ball{
 	pixel_x = -7;
@@ -33212,7 +34912,7 @@
 /area/lv553/landing_zone_1)
 "wmU" = (
 /obj/structure/machinery/power/port_gen/pacman{
-	pixel_y = -13
+	pixel_y = 0
 	},
 /turf/open/asphalt/cement,
 /area/lv553/outdoors/colony_streets/west)
@@ -33265,6 +34965,13 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/uscm_garrison/recruitment_office)
+"wps" = (
+/obj/structure/curtain/red{
+	pixel_y = 0;
+	pixel_x = -32
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "wpv" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 10
@@ -33388,6 +35095,12 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv553/indoors/gated_community/residence_bunkhouse)
+"wuw" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "bathroom door"
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_alcoholic_house)
 "wuC" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/dirtgrassborder{
@@ -33481,6 +35194,12 @@
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor,
 /area/lv553/oob)
+"wzK" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 4;
+	icon_state = "grassdirt_corner"
+	},
+/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "wAf" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/window{
@@ -33601,12 +35320,6 @@
 	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/lv553/indoors/hospital/outpatients_and_icu)
-"wEj" = (
-/obj/structure/machinery/power/apc{
-	dir = 1
-	},
-/turf/open/floor,
-/area/lv553/indoors/lone_buildings/gas_n_gear)
 "wEx" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/snacks/meat{
@@ -33651,10 +35364,6 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/hospital/research/offices)
-"wFk" = (
-/obj/structure/flora/bush/ausbushes/grassybush,
-/turf/open/gm/grass,
-/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "wFI" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/snacks/meat{
@@ -33813,6 +35522,16 @@
 /obj/item/storage/belt/marine,
 /turf/open/floor/almayer,
 /area/lv553/indoors/uscm_garrison/garrison_bunks)
+"wKf" = (
+/obj/structure/surface/rack,
+/obj/item/storage/belt/shotgun{
+	pixel_y = 5
+	},
+/obj/item/storage/belt/shotgun{
+	pixel_y = -4
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "wKp" = (
 /obj/structure/bed/sofa/south/grey/right,
 /obj/item/clothing/mask/cigarette/weed,
@@ -33858,12 +35577,19 @@
 /obj/structure/reagent_dispensers/fueltank/gas,
 /turf/open/asphalt/cement,
 /area/lv553/outdoors/colony_streets/south)
+"wLo" = (
+/obj/structure/sign/poster/ad{
+	pixel_x = 32
+	},
+/turf/open/asphalt/cement,
+/area/lv553/outdoors/colony_streets/west)
 "wLY" = (
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '2-8';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/gm/grass,
 /area/lv553/outdoors/colony_streets/south)
@@ -33977,7 +35703,8 @@
 /turf/open/floor/wood,
 /area/lv553/indoors/welcome_center/canteen)
 "wPQ" = (
-/obj/structure/largecrate/random/barrel/red,
+/obj/item/stack/sheet/wood,
+/obj/item/storage/belt/utility/full,
 /turf/open/asphalt/cement,
 /area/lv553/outdoors/colony_streets/west)
 "wPY" = (
@@ -34079,6 +35806,9 @@
 	icon_state = "dark"
 	},
 /area/lv553/indoors/aerospace_control)
+"wRC" = (
+/turf/open/gm/dirt,
+/area/lv553/outdoors/lone_buildings/gas_n_gear)
 "wRD" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
@@ -34097,6 +35827,14 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/indoors/hospital/research/offices)
+"wRR" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "weyland-yutani hostel door"
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/oob)
 "wSX" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "bedroom door";
@@ -34155,10 +35893,19 @@
 /turf/open/floor/wood,
 /area/lv553/oob)
 "wTX" = (
-/obj/structure/surface/table,
-/obj/item/weapon/gun/rifle/mar40/carbine,
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_y = 0;
+	pixel_x = -9
+	},
+/obj/structure/bed/chair{
+	dir = 4;
+	pixel_x = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light,
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "wTY" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -34220,6 +35967,11 @@
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
+"wXs" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/engineer_alcoholic_house)
 "wYu" = (
 /obj/structure/window_frame/colony,
 /turf/open/gm/river,
@@ -34363,6 +36115,9 @@
 	icon_state = "barber"
 	},
 /area/lv553/indoors/hospital/operating_rooms)
+"xdZ" = (
+/turf/closed/wall/r_wall,
+/area/lv553/indoors/lone_buildings/gas_n_gear)
 "xei" = (
 /obj/item/toy/beach_ball,
 /obj/structure/prop/invuln{
@@ -34470,7 +36225,9 @@
 "xhA" = (
 /obj/structure/surface/rack,
 /obj/item/tool/weldingtool/hugetank,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "white"
+	},
 /area/lv553/indoors/lone_buildings/gas_n_gear)
 "xhO" = (
 /obj/item/clothing/head/soft/blue,
@@ -34687,9 +36444,11 @@
 /turf/open/gm/dirt,
 /area/lv553/oob)
 "xoJ" = (
-/obj/structure/largecrate,
-/turf/open/asphalt/cement,
-/area/lv553/oob)
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/gibspawner/xeno,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "xoS" = (
 /obj/item/shard,
 /obj/item/clothing/mask/facehugger{
@@ -34759,6 +36518,15 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/recruiter_house)
+"xqO" = (
+/obj/structure/prop/cash_register/broken/open,
+/obj/item/spacecash/c20,
+/obj/structure/surface/table/reinforced{
+	flipped = 1;
+	icon_state = "reinfflip1+"
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "xrj" = (
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/asphalt/cement,
@@ -34808,6 +36576,9 @@
 	icon_state = "barber"
 	},
 /area/lv553/oob)
+"xtN" = (
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "xul" = (
 /turf/open/floor/wood{
 	icon_state = "wood-broken6"
@@ -34961,6 +36732,12 @@
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/asphalt/cement,
 /area/lv553/outdoors/colony_streets/northeast)
+"xyM" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "Army Surplus door"
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "xze" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 8;
@@ -35006,6 +36783,16 @@
 "xAV" = (
 /turf/open/gm/dirtgrassborder,
 /area/lv553/outdoors/colony_streets/south)
+"xBp" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_box/magazine/misc/flashlight{
+	pixel_y = 6
+	},
+/obj/item/ammo_box/magazine/misc/flashlight{
+	pixel_y = -2
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "xBF" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 8;
@@ -35172,6 +36959,9 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/bungalow_manager)
+"xEY" = (
+/turf/closed/wall,
+/area/lv553/indoors/lone_buildings/clf_house)
 "xFp" = (
 /obj/structure/mineral_door/transparent,
 /turf/open/asphalt/cement,
@@ -35414,7 +37204,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '4-8';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
@@ -35450,6 +37241,11 @@
 	icon_state = "white"
 	},
 /area/lv553/oob)
+"xQC" = (
+/obj/structure/surface/rack,
+/obj/item/folded_tent/big,
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "xQG" = (
 /obj/item/clothing/mask/facehugger{
 	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
@@ -35487,6 +37283,13 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/gm/dirt,
 /area/lv553/landing_zone_1)
+"xRE" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/spawner/gibspawner/robot,
+/obj/item/stack/sheet/metal,
+/obj/item/stack/cable_coil,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/clf_house)
 "xRP" = (
 /obj/structure/bed/chair/wheelchair{
 	dir = 4;
@@ -35508,6 +37311,9 @@
 	icon_state = "barber"
 	},
 /area/lv553/oob)
+"xSi" = (
+/turf/closed/wall,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "xSm" = (
 /obj/item/shard,
 /turf/open/gm/grass,
@@ -35818,19 +37624,22 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '1-6';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '1-10';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /obj/item/prop{
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '1-2';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
@@ -35869,9 +37678,19 @@
 	icon_state = "barber"
 	},
 /area/lv553/indoors/hospital/operating_rooms)
+"yct" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "bedroom door"
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/screenwriter_house)
 "ycu" = (
 /turf/open/gm/grass,
 /area/lv553/outdoors/colony_streets/southwest)
+"ycO" = (
+/obj/structure/machinery/light,
+/turf/open/asphalt/cement,
+/area/lv553/indoors/uscm_garrison/recruitment_office)
 "ydo" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "land office door"
@@ -36015,6 +37834,11 @@
 	},
 /turf/open/floor,
 /area/lv553/indoors/flooded/east_apartments)
+"yiy" = (
+/obj/structure/largecrate/supply/supplies/flares,
+/obj/structure/machinery/light,
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/army_surplus)
 "yiC" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -36120,7 +37944,9 @@
 /obj/effect/spawner/random/toolbox{
 	pixel_y = -3
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "white"
+	},
 /area/lv553/indoors/lone_buildings/gas_n_gear)
 "ylS" = (
 /turf/open/gm/coast{
@@ -39383,18 +41209,18 @@ bhp
 gUi
 bhp
 bhp
-jCr
-jCr
-jCr
-jCr
-jCr
-jCr
-jCr
-jCr
-jCr
-jCr
-jCr
-jCr
+xdZ
+xdZ
+xdZ
+xdZ
+xdZ
+xdZ
+xdZ
+xdZ
+xdZ
+xdZ
+xdZ
+xdZ
 bhp
 vbZ
 bhp
@@ -39607,18 +41433,18 @@ bhp
 sRY
 bhp
 bhp
-jCr
-oGl
+xdZ
+hgu
 xQO
-kOf
+fMI
 xQO
 qnK
 xQO
 cdz
-xQO
+ecQ
 xuC
-oGl
-jCr
+hgu
+xdZ
 bhp
 bhp
 bhp
@@ -39825,30 +41651,30 @@ eDV
 eDV
 eDV
 ekl
-vCR
-vCR
-err
-err
-err
-vCR
-jCr
-oGl
+onP
+onP
+ueo
+ueo
+ueo
+onP
+xdZ
+hgu
 xQO
-kOf
+pTe
 xQO
-kOf
+pTe
 xQO
 eKS
 xQO
 xuC
-oGl
-jCr
-vCR
-err
-err
-err
-vCR
-vCR
+hgu
+xdZ
+onP
+ueo
+ueo
+ueo
+onP
+onP
 pCm
 qer
 qer
@@ -40049,30 +41875,30 @@ rnz
 rnz
 rnz
 rnz
-err
-gbw
-gbw
-gbw
-gbw
-lVu
-jCr
-oGl
+ueo
+uHH
+uHH
+uHH
+uHH
+uGI
+xdZ
+hgu
 xQO
-kOf
+pTe
 xQO
-kOf
+pTe
 xQO
 uyd
 xQO
 xuC
-oGl
-jCr
-coK
-wFk
-rMQ
-rMQ
-wFk
-err
+hgu
+xdZ
+kFU
+beB
+tVg
+tVg
+beB
+ueo
 bhp
 bhp
 sRY
@@ -40273,30 +42099,30 @@ wsO
 wsO
 wsO
 tEt
-err
-gbw
+ueo
+uHH
 xMn
-gbw
-gbw
-lVu
-jCr
-oGl
-kOf
-kOf
-kOf
-kOf
+uHH
+uHH
+uGI
+xdZ
+hgu
+pTe
+pTe
+pTe
+pTe
 iLL
-kOf
-kOf
-kOf
-oGl
-jCr
-rMQ
-rMQ
-uvB
-rMQ
-rMQ
-err
+pTe
+pTe
+pTe
+hgu
+xdZ
+tVg
+tVg
+pPt
+tVg
+tVg
+ueo
 bhp
 bhp
 gUi
@@ -40497,30 +42323,30 @@ poy
 tOE
 poy
 bmF
-err
-gbw
-gbw
-gbw
-gbw
-gbw
-jCr
-oGl
-kOf
-kOf
-kOf
-kOf
+ueo
+uHH
+uHH
+uHH
+uHH
+uHH
+xdZ
+bNS
+pTe
+pTe
+pTe
+pTe
 afa
-kOf
-kOf
-kOf
-oGl
-jCr
-rMQ
-rMQ
-rMQ
-rMQ
-rMQ
-err
+pTe
+pTe
+pTe
+bNS
+xdZ
+tVg
+tVg
+tVg
+tVg
+tVg
+ueo
 bhp
 sRY
 bhp
@@ -40721,28 +42547,28 @@ poy
 poy
 poy
 bmF
-err
+ueo
 bzj
-mTP
-mTP
-gbw
-gbw
-jCr
-jCr
+nJp
+nJp
+uHH
+uHH
+xdZ
+xdZ
 kNs
 kNs
 kNs
-jCr
-jCr
+xdZ
+xdZ
 kNs
 kNs
 kNs
-jCr
-jCr
-rMQ
-rMQ
-rMQ
-wFk
+xdZ
+xdZ
+tVg
+tVg
+tVg
+beB
 pCm
 pCm
 pCm
@@ -40751,13 +42577,13 @@ pCm
 pCm
 pCm
 pCm
-nRr
-nRr
 nRr
 nRr
 nRr
 nRr
 gYk
+iwf
+iwf
 iwf
 iwf
 iwf
@@ -40945,28 +42771,28 @@ poy
 poy
 poy
 bmF
-mLh
-mLh
-mLh
-mLh
-bas
-bas
-bas
-bas
-bas
-bas
-bas
-bas
+sFF
+sFF
+sFF
+sFF
+wRC
+wRC
+wRC
+wRC
+wRC
+wRC
+wRC
+wRC
 fTP
-bas
-bas
-bas
-bas
-jgU
-fMp
-rMQ
-wFk
-rMQ
+wRC
+wRC
+wRC
+wRC
+jdw
+lDo
+tVg
+beB
+tVg
 pCm
 pCm
 pCm
@@ -40979,7 +42805,7 @@ nRr
 nRr
 nRr
 nRr
-nRr
+dsE
 eff
 eff
 eff
@@ -41169,28 +42995,28 @@ poy
 poy
 poy
 lSB
-mLh
+sFF
 peI
 jJh
-mLh
-bas
-bas
-bas
-bas
-bas
-bas
-bas
-bas
+sFF
+wRC
+wRC
+wRC
+wRC
+wRC
+wRC
+wRC
+wRC
 dPL
-bas
-bas
-bas
-bas
-bas
-jgU
-fMp
-ccD
-rMQ
+wRC
+wRC
+wRC
+wRC
+wRC
+jdw
+lDo
+cYg
+tVg
 pCm
 pCm
 bEu
@@ -41203,7 +43029,7 @@ nRr
 nRr
 nRr
 nRr
-gYk
+dsE
 eff
 spx
 slT
@@ -41392,29 +43218,29 @@ wpv
 mLT
 mLT
 lSB
-mLh
-mLh
-mLh
+sFF
+sFF
+sFF
 nyS
-mLh
-mLh
-mLh
-bas
-bas
-bas
-bas
-bas
+sFF
+sFF
+sFF
+wRC
+wRC
+wRC
+wRC
+wRC
 tQW
-bas
+wRC
 iQR
-bas
-bas
-bas
-bas
-bas
-jgU
-fMp
-uvB
+wRC
+wRC
+wRC
+wRC
+wRC
+jdw
+lDo
+pPt
 pCm
 pCm
 smj
@@ -41616,29 +43442,29 @@ cGV
 rnz
 fpl
 rnz
-mLh
+sFF
 ylL
 smc
 ljw
 tCj
 mHf
-mLh
+sFF
 puw
 dNa
-bas
-bas
-bas
-bas
-bas
-bas
-bas
-bas
-bas
-bas
-bas
-bas
-jgU
-fMp
+wRC
+wRC
+wRC
+wRC
+wRC
+wRC
+wRC
+wRC
+wRC
+wRC
+wRC
+wRC
+jdw
+lDo
 pCm
 pCm
 bEu
@@ -41665,7 +43491,7 @@ hqg
 hqg
 hqg
 eff
-hqg
+wRR
 eff
 eff
 eff
@@ -41840,29 +43666,29 @@ rnz
 rnz
 nIV
 rnz
-mLh
+sFF
 sDJ
-hJb
-hJb
-hJb
+uZf
+uZf
+uZf
 ljw
 cqM
-gbw
-gbw
-bas
-bas
+uHH
+uHH
+wRC
+wRC
 qvE
-mTP
-mBI
-mTP
-bas
-bas
-bas
-bas
-bas
-bas
-bas
-gQO
+nJp
+iye
+nJp
+wRC
+wRC
+wRC
+wRC
+wRC
+wRC
+wRC
+oSa
 pCm
 pCm
 smj
@@ -42064,29 +43890,29 @@ wIx
 wIx
 rnz
 cGV
-mLh
+sFF
 suG
-cMA
+bbn
 ljw
 osL
 deY
-mLh
+sFF
 sCS
 hOt
-bas
-bas
-bas
+wRC
+wRC
+wRC
 wox
-bas
+wRC
 mzg
-bas
-bas
-bas
-bas
-bas
-bas
-bas
-gQO
+wRC
+wRC
+wRC
+wRC
+wRC
+wRC
+wRC
+oSa
 pCm
 pCm
 bEu
@@ -42288,29 +44114,29 @@ lEt
 wIx
 rnz
 rnz
-mLh
-svO
-cMA
-hJb
-hJb
+sFF
+kCt
+bbn
+uZf
+uZf
 ljw
-bot
-qEK
-qEK
-lXG
-bas
-bas
-bas
-bas
-bas
-bas
-bas
-bas
-jYk
-lXG
-bas
-bas
-gQO
+dgm
+nDZ
+nDZ
+jqZ
+wRC
+wRC
+wRC
+wRC
+wRC
+wRC
+wRC
+wRC
+jJr
+jqZ
+wRC
+wRC
+oSa
 pCm
 pCm
 pCm
@@ -42324,7 +44150,7 @@ nRr
 nRr
 nRr
 nRr
-eff
+cYW
 hqg
 hqg
 hqg
@@ -42512,29 +44338,29 @@ jVS
 wIx
 rnz
 fpl
-mLh
-ljw
+sFF
+oNi
 mFh
-hJb
+uZf
 qbK
 ioi
-bot
-rMQ
-rMQ
-nZS
-bas
-bas
-bas
-bas
-bas
-bas
-bas
-jYk
-oTy
-nZS
-bas
-bas
-gQO
+dgm
+tVg
+tVg
+jlE
+wRC
+wRC
+wRC
+wRC
+wRC
+wRC
+wRC
+jJr
+wzK
+jlE
+wRC
+wRC
+oSa
 pCm
 pCm
 pCm
@@ -42548,7 +44374,7 @@ nRr
 nRr
 nRr
 nRr
-eff
+cYW
 hqg
 hqg
 hqg
@@ -42560,7 +44386,7 @@ hqg
 hqg
 hqg
 hqg
-hqg
+maa
 iJr
 izj
 iJr
@@ -42736,31 +44562,31 @@ wIx
 wIx
 nIV
 rnz
-mLh
-wEj
-hJb
+sFF
+uPK
+uZf
 ljw
-hJb
-hJb
-mLh
-rMQ
-rMQ
-iTB
-lXG
-bas
-bas
-bas
-bas
-bas
-bas
-gQO
-ccD
-nZS
-bas
-bas
-jgU
-fMp
-err
+uZf
+mcS
+sFF
+tVg
+tVg
+vjY
+jqZ
+wRC
+wRC
+wRC
+wRC
+wRC
+wRC
+oSa
+cYg
+jlE
+wRC
+wRC
+jdw
+lDo
+ueo
 bhp
 bhp
 bhp
@@ -42960,31 +44786,31 @@ iAM
 wIx
 rnz
 nIV
-mLh
-eBA
+sFF
+pWI
 ioi
-hJb
+uZf
 uUN
 xhA
-bot
-rMQ
-ccD
-rMQ
-iTB
-qEK
-qEK
-qEK
-qEK
-qEK
-qEK
-oTy
-rMQ
+dgm
+tVg
+cYg
+tVg
+vjY
+nDZ
+nDZ
+nDZ
+nDZ
+nDZ
+nDZ
+wzK
+tVg
 wlU
-bas
-bas
-bas
-gQO
-err
+wRC
+wRC
+wRC
+oSa
+ueo
 bhp
 xaD
 bhp
@@ -43184,31 +45010,31 @@ xqF
 fib
 rnz
 rnz
-mLh
-hJb
+sFF
+uZf
 ljw
-hJb
-hJb
+uZf
+uZf
 ljw
-bot
-rMQ
-rMQ
-uvB
-rMQ
-wFk
-rMQ
-rMQ
-uvB
-rMQ
-rMQ
-rMQ
-wFk
-iTB
-lXG
-bas
-bas
-gQO
-err
+dgm
+tVg
+tVg
+pPt
+tVg
+beB
+tVg
+tVg
+pPt
+tVg
+tVg
+tVg
+beB
+vjY
+jqZ
+wRC
+wRC
+oSa
+ueo
 bhp
 bhp
 bhp
@@ -43235,8 +45061,8 @@ hqg
 eff
 eff
 eff
-hqg
-hqg
+wRR
+eff
 eff
 eff
 uZA
@@ -43408,31 +45234,31 @@ qyc
 fib
 cGV
 rnz
-mLh
+sFF
 oyP
 eSw
 qPb
 pKO
 lDF
-mLh
-err
-err
-err
-vCR
-err
-err
-err
-vCR
-err
-err
-err
-vCR
-rMQ
-nZS
-bas
-bas
-gQO
-vCR
+sFF
+ueo
+ueo
+ueo
+onP
+ueo
+ueo
+ueo
+onP
+ueo
+ueo
+ueo
+onP
+tVg
+jlE
+wRC
+wRC
+oSa
+onP
 qer
 qer
 qer
@@ -43632,13 +45458,13 @@ cLF
 wIx
 rnz
 rnz
-mLh
-mLh
-mLh
-mLh
-mLh
-mLh
-mLh
+sFF
+sFF
+sFF
+sFF
+sFF
+sFF
+sFF
 rnz
 rnz
 rnz
@@ -44767,7 +46593,7 @@ wGn
 wNK
 wNK
 wNK
-wNK
+ufz
 wNK
 wNK
 wNK
@@ -44990,9 +46816,9 @@ wGn
 wNK
 wNK
 wNK
+fNf
 wNK
-wNK
-wNK
+cSS
 wNK
 wNK
 wNK
@@ -45215,8 +47041,8 @@ wNK
 wNK
 wNK
 wNK
-wNK
-wNK
+kMa
+bFO
 wNK
 wNK
 wNK
@@ -45438,8 +47264,8 @@ wNK
 wNK
 wNK
 wNK
-wNK
-wNK
+ufz
+ufz
 wNK
 wNK
 wNK
@@ -45663,7 +47489,7 @@ wNK
 wNK
 wNK
 wNK
-wNK
+bFO
 wNK
 ahf
 rjz
@@ -45885,10 +47711,10 @@ ahf
 rjz
 rjz
 bKm
-fwg
-fwg
-fwg
-fwg
+vVQ
+gBB
+bMF
+wLo
 gnS
 rnz
 rnz
@@ -46105,28 +47931,28 @@ wNK
 ahf
 bKm
 wNK
-eff
-eff
-eff
-eff
-eff
-izj
-izj
-eff
-eff
-fMc
-fMc
-fMc
-fMc
-eff
-eff
+xSi
+xSi
+xSi
+xSi
+xSi
+dmw
+exm
+xSi
+sui
+chZ
+chZ
+chZ
+xSi
+xSi
+xSi
 bnp
 ixY
 cGV
-eff
-eff
-eff
-eff
+qbB
+qbB
+qbB
+qbB
 kmJ
 rjz
 bKm
@@ -46323,34 +48149,34 @@ wNK
 wNK
 wNK
 wNK
-cQK
+wNK
 wNK
 wNK
 gnS
 rWq
 wNK
-eff
+xSi
 qDC
-izj
-aJk
-izj
-izj
-izj
-izj
-izj
-izj
-izj
-izj
-izj
-izj
-eff
+dot
+hBf
+inP
+iyl
+qLa
+inP
+iKQ
+gJq
+ulD
+mGt
+inP
+xQC
+xSi
 wNK
 sos
 ixY
-eff
-wgu
-qMb
-eff
+qbB
+dFu
+tpb
+qbB
 rnz
 xrS
 rWq
@@ -46553,29 +48379,29 @@ ahf
 afX
 rWq
 wNK
-eff
-tgz
-izj
-aJk
-izj
-izj
-izj
-izj
-tgz
-tgz
-tgz
-tgz
-tgz
-izj
-eff
+xSi
+ncB
+hkF
+qiY
+vKX
+ngj
+syk
+qLa
+ngj
+ngj
+ngj
+ngj
+ngj
+xBp
+xSi
 wNK
 kjX
 gnS
-eff
-wgu
-gLw
-eff
-rnz
+qbB
+muk
+sVN
+qbB
+aes
 rnz
 rWq
 wNK
@@ -46776,32 +48602,32 @@ wNK
 gnS
 ara
 fwg
-fwg
-eff
-tgz
-izj
-aJk
-izj
-izj
-izj
-izj
-izj
-izj
-izj
-izj
-izj
-izj
-eff
+uPY
+xSi
+bwE
+iyl
+xqO
+ngj
+xoJ
+jbN
+bVG
+ePI
+agg
+iNv
+mGt
+ngj
+upD
+xSi
 wNK
 flk
 gnS
-eff
-eUV
-eff
-eff
-daq
-daq
-eff
+qbB
+wuw
+qbB
+qbB
+oxg
+oxg
+qbB
 wNK
 wNK
 wNK
@@ -46986,7 +48812,7 @@ aiK
 djR
 aiK
 xcX
-aiK
+ycO
 qGR
 qGR
 qGR
@@ -47001,31 +48827,31 @@ gnS
 ara
 fwg
 uPY
-eff
-eff
-izj
-eff
-izj
-izj
+xSi
+xSi
+hkF
+xSi
+hRQ
+jDt
 dOp
-izj
-tgz
-tgz
-tgz
-tgz
-tgz
-izj
-eff
+ngj
+wKf
+ggE
+iEh
+cQK
+ngj
+fzQ
+xSi
 wNK
 qgV
 gnS
-eff
-cTE
-cTE
-cTE
-cTE
-cTE
-eff
+qbB
+fyh
+aUT
+pZP
+lJx
+mep
+qbB
 wNK
 wNK
 wNK
@@ -47223,33 +49049,33 @@ wNK
 wNK
 gnS
 ara
-fwg
-fwg
-eff
-tVu
-izj
-izj
-izj
-izj
-izj
-izj
-izj
-izj
-izj
-izj
-izj
-izj
-eff
+uPY
+uPY
+xSi
+mmi
+ngj
+pla
+pla
+hvi
+pla
+jmg
+ngj
+ngj
+ngj
+ngj
+ngj
+gRV
+xSi
 wNK
 wNK
 gnS
-eff
-cTE
-cTE
-cTE
-cTE
-cTE
-bbN
+qbB
+nbi
+wXs
+uXs
+bxA
+bxA
+sdp
 wNK
 wNK
 wNK
@@ -47447,33 +49273,33 @@ wNK
 ahf
 afX
 ara
-fwg
-fwg
-eff
+uPY
+uPY
+xSi
 iAS
-izj
-izj
-izj
-izj
-izj
-izj
-tgz
-tgz
-tgz
-tgz
-tgz
-tgz
-eff
+ngj
+ngj
+pxw
+ngj
+ngj
+pxw
+crE
+iVA
+aML
+oYl
+pxw
+kGe
+xSi
 wNK
 ahf
 afX
-eff
-cTE
-nfX
-eff
-cTE
-cTE
-eff
+qbB
+ueM
+rZI
+qbB
+tBm
+nyC
+qbB
 wNK
 wNK
 wNK
@@ -47672,32 +49498,32 @@ gnS
 rnz
 ara
 fwg
-fwg
-eff
-eff
-eff
-jQp
-eff
-eff
-izj
-eff
-eff
-eff
-eff
-eff
-eff
-eff
-eff
+uPY
+xSi
+xSi
+xSi
+rlo
+xSi
+xSi
+xyM
+xSi
+xSi
+xSi
+xSi
+xSi
+xSi
+xSi
+xSi
 rjz
 afX
 rnz
-eff
-eff
-eff
-eff
-eff
-eff
-eff
+qbB
+qbB
+qbB
+qbB
+qbB
+qbB
+qbB
 fwg
 fwg
 ara
@@ -47895,17 +49721,17 @@ wNK
 gnS
 xrS
 ara
+uPY
 fwg
-fwg
-fwg
-eff
-slT
-slT
-eff
-mmm
-aUt
-xoJ
-eff
+uQW
+xSi
+sfk
+kiP
+xSi
+cBI
+xtN
+kFl
+xSi
 vgz
 wGn
 wNK
@@ -47919,9 +49745,9 @@ ara
 fwg
 fwg
 fwg
-fwg
-fwg
-fwg
+jjz
+iTO
+pXR
 fwg
 fwg
 ara
@@ -48119,17 +49945,17 @@ wNK
 gnS
 rnz
 ara
+uPY
 fwg
 fwg
-fwg
-eff
+xSi
 rFt
-slT
-eff
-pVB
-aUt
-kFl
-eff
+aSs
+xSi
+eoK
+xtN
+bTt
+xSi
 rWq
 ahf
 bKm
@@ -48346,30 +50172,30 @@ ara
 ara
 ara
 ara
-eff
-eff
-eff
-eff
+xSi
+xSi
+xSi
+xSi
 pVB
-aUt
-bTt
-eff
+xtN
+yiy
+xSi
 rWq
 gnS
-eff
-eff
-eff
-eff
-qer
-qer
-qer
-eff
-eff
-eff
-eff
-eff
+oyJ
+oyJ
+oyJ
+oyJ
+eDV
+eDV
+eDV
+lMv
+bRQ
+bRQ
+bRQ
+lMv
 hUs
-fwg
+jvC
 wPQ
 fwg
 ara
@@ -48573,29 +50399,29 @@ poy
 poy
 poy
 kFQ
-eff
-mmm
-aUt
+xSi
+fRs
+xtN
 gpt
-eff
+xSi
 rWq
 gnS
-eff
-wgu
-qMb
-eff
-kkE
-xBF
-bhp
-eff
-cTE
-cTE
-cTE
-eff
-wPQ
-fwg
-fwg
-fwg
+oyJ
+fZM
+qZO
+oyJ
+bnp
+ixY
+rnz
+lMv
+fOM
+qMP
+fsN
+lMv
+uPY
+uPY
+uPY
+uPY
 ara
 cGV
 rWq
@@ -48797,30 +50623,30 @@ poy
 poy
 lSB
 rWq
-eff
-aUt
-aUt
-aUt
-eff
+xSi
+pAV
+pAV
+pAV
+xSi
 kmJ
 afX
-eff
-wgu
-gLw
-eff
+oyJ
+naB
+nBx
+oyJ
 sLK
-dsE
-sRY
-eff
-cTE
-cTE
-cTE
-eff
-eff
-eff
-eff
-eff
-eff
+gnS
+cGV
+lMv
+dLq
+nUE
+uoQ
+lMv
+lMv
+bRQ
+bRQ
+lMv
+lMv
 xrS
 kmJ
 bKm
@@ -49028,23 +50854,23 @@ fwg
 fwg
 ixY
 cGV
-eff
-eUV
-eff
-eff
-eff
+oyJ
+ula
+oyJ
+oyJ
+oyJ
 hFn
-bhp
-eff
-cTE
-cTE
-cTE
-eff
-cTE
-cTE
-cTE
-cTE
-eff
+rnz
+lMv
+deh
+qMP
+wTX
+lMv
+gOb
+bdc
+wps
+ivL
+lMv
 rnz
 rnz
 rWq
@@ -49252,23 +51078,23 @@ fwg
 fwg
 gnS
 rnz
-eff
-cTE
-cTE
-cTE
-eff
-syk
-bMF
-eff
-cTE
-cTE
-cTE
-eff
-cTE
-cTE
-cTE
-cTE
-eff
+oyJ
+cPO
+iPy
+nUL
+oyJ
+poy
+tEt
+lMv
+iPN
+qMP
+bTo
+lMv
+ljs
+qMP
+qMP
+roy
+bRQ
 rnz
 nIV
 rWq
@@ -49476,23 +51302,23 @@ wNK
 wNK
 sos
 ixY
-eff
-cTE
-cTE
-nfX
-eff
-syk
-syk
-eff
-cTE
-cTE
-cTE
-eff
-cTE
-cTE
-cTE
-cTE
-eff
+oyJ
+pcN
+fbA
+cPO
+oyJ
+poy
+poy
+lMv
+nZE
+qMP
+khx
+lMv
+qeJ
+qMP
+jHO
+nDq
+lMv
 rnz
 sOB
 rWq
@@ -49670,7 +51496,7 @@ qgw
 qgw
 qgw
 uHg
-wcJ
+kZe
 wcJ
 stx
 lhO
@@ -49700,23 +51526,23 @@ wNK
 wNK
 wNK
 sos
-eff
-npA
-eff
-eff
-eff
-syk
-syk
-eff
-eff
-npA
-eff
-eff
-eff
-cTE
-cTE
-cTE
-eff
+oyJ
+oyJ
+oyJ
+yct
+oyJ
+poy
+poy
+lMv
+lMv
+szi
+lMv
+lMv
+lMv
+dqa
+qMP
+ipj
+bRQ
 rnz
 kgh
 kmJ
@@ -49923,24 +51749,24 @@ wNK
 wNK
 wNK
 wNK
-wNK
-eff
-cTE
-cTE
-cTE
-eff
-syk
-syk
-eff
-cTE
-cTE
-cTE
-cTE
-rNU
-cTE
-cTE
-cTE
-eff
+reC
+ffd
+hlh
+amY
+pcN
+oyJ
+poy
+poy
+lMv
+wae
+qMP
+tzp
+sRq
+rNP
+nUE
+qMP
+fjc
+lMv
 rnz
 qbm
 rnz
@@ -50148,23 +51974,23 @@ bKm
 wNK
 wNK
 wNK
-eff
-cTE
-cTE
-cTE
-eff
-syk
-syk
-eff
-cTE
-cTE
-cTE
-cTE
-eff
-eff
-eff
-eff
-eff
+ffd
+dGO
+dfy
+cPO
+oyJ
+poy
+poy
+lMv
+sWh
+tmE
+qMP
+qMP
+lMv
+lMv
+lMv
+lMv
+lMv
 rnz
 rnz
 cGV
@@ -50372,22 +52198,22 @@ kmJ
 bKm
 wNK
 wNK
-eff
-cTE
-cTE
-cTE
-eff
-syk
-syk
-eff
-cTE
-cTE
-cTE
-cTE
-pAX
-wgu
-qMb
-eff
+bve
+kFE
+cPO
+ivi
+oyJ
+poy
+poy
+lMv
+oDe
+dgT
+qMP
+oXG
+dju
+sYV
+vfW
+lMv
 rnz
 rnz
 nIV
@@ -50596,22 +52422,22 @@ rnz
 kmJ
 bKm
 wNK
-eff
-cTE
-cTE
-cTE
-eff
-nyC
-oYl
-eff
-cTE
-cTE
-cTE
-cTE
-eff
-eJH
-gLw
-eff
+bve
+lyc
+cPO
+oGt
+oyJ
+mLT
+lSB
+lMv
+lex
+qMP
+byH
+ejI
+lMv
+fQf
+aVy
+lMv
 rnz
 nIV
 rnz
@@ -50820,22 +52646,22 @@ pOz
 rnz
 rWq
 wNK
-eff
-vmF
-eff
-eff
-eff
-xBF
-bhp
-eff
-eff
-vmF
-eff
-eff
-eff
-eff
-eff
-eff
+oyJ
+oyJ
+qAe
+oyJ
+oyJ
+ixY
+rnz
+lMv
+lMv
+fQC
+lMv
+lMv
+lMv
+lMv
+lMv
+lMv
 xrS
 rnz
 cGV
@@ -51270,7 +53096,7 @@ rWq
 wNK
 wNK
 wNK
-wNK
+cSS
 wNK
 wNK
 wNK
@@ -51493,9 +53319,9 @@ pOz
 rWq
 wNK
 wNK
-wNK
-wNK
-wNK
+cSS
+fNf
+cSS
 wNK
 wNK
 wNK
@@ -51716,25 +53542,25 @@ dmM
 ekj
 rWq
 wNK
-eff
-eff
-vmF
-eff
-eff
+xEY
+xEY
+xRE
+xEY
+xEY
 wNK
 wNK
 gnS
-eff
-eff
+upx
+upx
 scj
 scj
 scj
-eff
+upx
 uPB
 uPB
 uPB
-eff
-eff
+upx
+upx
 kmJ
 bKm
 uZA
@@ -51940,25 +53766,25 @@ jxm
 ekj
 kmJ
 rjz
-eff
+xEY
 juy
-cTE
+phA
 btf
-eff
+xEY
 wNK
 wNK
 sos
-eff
-guJ
-aUt
-aUt
-aUt
-aUt
-aUt
-aUt
-aUt
-aUt
-eff
+upx
+nHK
+onQ
+cSG
+onQ
+onQ
+onQ
+mSh
+onQ
+rxx
+upx
 cGV
 kmJ
 ruE
@@ -52164,25 +53990,25 @@ kch
 ekj
 rnz
 rnz
-eff
+xEY
 pkG
-cTE
-cyC
-eff
+mzr
+arR
+xEY
 wNK
 wNK
 wNK
-eff
-jiV
-hJC
-aUt
-aUt
-aUt
-aUt
-aUt
-aUt
-aUt
-eff
+upx
+lMw
+onQ
+onQ
+has
+onQ
+has
+has
+onQ
+rxx
+upx
 rnz
 xrS
 rOS
@@ -52388,25 +54214,25 @@ enb
 ekj
 fuK
 tEt
-eff
+xEY
 ini
-cTE
-wTX
-eff
+mzr
+sAE
+xEY
 wNK
 wNK
 wNK
-eff
-guJ
-aUt
-aUt
-aUt
-aUt
-aUt
-aUt
-aUt
-aUt
-eff
+upx
+nHK
+hJC
+has
+onQ
+dKD
+onQ
+has
+onQ
+rxx
+upx
 fpl
 cGV
 rOS
@@ -52612,25 +54438,25 @@ xLO
 ekj
 ljG
 poy
-eff
-eff
-eUV
-eff
-eff
+xEY
+xEY
+kAN
+xEY
+xEY
 wNK
 wNK
 wNK
-eff
-aUt
-aUt
+upx
+onQ
+onQ
 gBD
-aUt
-aUt
-aUt
-aUt
+onQ
+onQ
+onQ
+onQ
+onQ
 pjk
-aUt
-eff
+upx
 rnz
 rnz
 rOS
@@ -52837,24 +54663,24 @@ ekj
 ljG
 poy
 lSB
-eff
-wgu
-gLw
-eff
+xEY
+dug
+ckJ
+xEY
 wNK
 wNK
 wNK
-sPd
-aUt
-aUt
-aUt
-aUt
-aUt
-aUt
-aUt
+myk
+onQ
+onQ
+onQ
+onQ
+onQ
+onQ
+rxx
+onQ
 mQm
-aUt
-eff
+upx
 rnz
 rnz
 rOS
@@ -53061,24 +54887,24 @@ ekj
 ljG
 poy
 rnz
-eff
-wgu
-kbG
-eff
+xEY
+aoR
+sHj
+xEY
 wNK
 wNK
 wNK
-eff
+upx
 gTE
-aUt
-aUt
-aUt
-aUt
-aUt
-aUt
+rxx
+rxx
+onQ
+iyI
+scZ
+rxx
+onQ
 uMm
-aUt
-eff
+upx
 cGV
 nIV
 rOS
@@ -53285,24 +55111,24 @@ pOz
 ljG
 poy
 tEt
-eff
-eff
-eff
-eff
+xEY
+xEY
+xEY
+xEY
 tKk
 tKk
 tKk
-eff
-eff
-eff
-eff
-eff
-eff
-eff
-eff
-eff
-eff
-eff
+upx
+upx
+upx
+upx
+upx
+upx
+upx
+upx
+upx
+upx
+upx
 rnz
 rnz
 rOS

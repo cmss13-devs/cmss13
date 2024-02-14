@@ -296,8 +296,8 @@
 		user.visible_message(SPAN_HIGHDANGER("[user] slices open the guts of [target]!"), SPAN_HIGHDANGER("You slice open the guts of [target]!"))
 		target.spawn_gibs()
 		playsound(get_turf(target), 'sound/effects/gibbed.ogg', 30, 1)
-		target.apply_effect(get_xeno_stun_duration(target, 1), WEAKEN)
-		target.apply_armoured_damage(get_xeno_damage_slash(target, (force * 1.5)), ARMOR_MELEE, BRUTE, "chest", 40)
+		target.apply_effect(get_xeno_stun_duration(target, 3), SLOW)
+		target.apply_armoured_damage(get_xeno_damage_slash(target, (force * 1.3)), ARMOR_MELEE, BRUTE, "chest", 25)
 
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>[key_name(user)] sliced [key_name(target)] with their whirling scythe.</font>")
 		target.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(target)] was sliced by [key_name(user)] whirling their scythe.</font>")

@@ -24,8 +24,8 @@
 /obj/item/toy/trading_card/Initialize()
 	. = ..()
 
-	if(istype(src.loc, /obj/item/storage/fancy/trading_card))
-		var/obj/item/storage/fancy/trading_card/packet = src.loc
+	if(istype(loc, /obj/item/storage/fancy/trading_card))
+		var/obj/item/storage/fancy/trading_card/packet = loc
 		collection_color = packet.collection_color
 
 	if(!collection_color)

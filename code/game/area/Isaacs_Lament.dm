@@ -113,6 +113,8 @@
 /area/lv553/outdoors/lone_buildings/gas_n_gear
 	name = "Issac's Lament - Gas N' Gear Exterior"
 
+/area/lv553/outdoors/lone_buildings/weyyu_hostel
+	name = "Issac's Lament - Weyland-Yutani Hostel Exterior"
 
 //Indoors
 
@@ -249,13 +251,42 @@
 	icon_state = "shed_x_ag"
 
 /area/lv553/indoors/lone_buildings/liq_r_mart
-	name = "Issac's Lament - Liq-R-Mart"
+	name = "Issac's Lament - West - Liq-R-Mart"
 	icon_state = "shed_8_ag"
 
 /area/lv553/indoors/lone_buildings/recruiter_house
-	name = "Issac's Lament - Recruiter's House"
+	name = "Issac's Lament - West - Recruiter's House"
 	icon_state = "shed_1_ag"
 
 /area/lv553/indoors/lone_buildings/gas_n_gear
-	name = "Issac's Lament - Gas N' Gear"
+	name = "Issac's Lament - West - Gas N' Gear"
+	icon_state = "shed_2_ag"
+
+/area/lv553/indoors/lone_buildings/army_surplus
+	name = "Issac's Lament - West - Army Surplus"
+	icon_state = "shed_3_ag"
+
+/area/lv553/indoors/lone_buildings/engineer_alcoholic_house
+	name = "Issac's Lament - West - Engineer's House"
+	icon_state = "shed_4_ag"
+
+/area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse
+	name = "Issac's Lament - West - Bunkhouse"
+	icon_state = "shed_5_ag"
+
+/area/lv553/indoors/lone_buildings/screenwriter_house
+	name = "Issac's Lament - West - Screenwriter's House"
+	icon_state = "shed_6_ag"
+
+/area/lv553/indoors/lone_buildings/clf_house
+	name = "Issac's Lament - West - CLF Insurrectionist's House"
+	icon_state = "shed_7_ag"
+
+/area/lv553/indoors/lone_buildings/multidoor_garage
+	name = "Issac's Lament - West - Multi-Door Garage"
+	icon_state = "shed_8_ag"
+
+/area/lv553/indoors/lone_buildings/weyyu_hostel
+	name = "Issac's Lament - West - Weyland-Yutani Hostel"
 	icon_state = "shed_1_ag"
+

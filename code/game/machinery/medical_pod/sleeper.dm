@@ -209,7 +209,7 @@
 			if(!length(chemical) || amount <= 0)
 				return
 			if(!(chemical in connected.available_chemicals))
-				log_debug("[chemical] is not available to inject in a [src]!")
+				log_debug("[chemical] is not available to inject in [src]!")
 				return
 			if(connected.occupant.health > connected.min_health || (chemical in connected.emergency_chems))
 				connected.inject_chemical(usr, chemical, amount)

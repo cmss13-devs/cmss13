@@ -71511,10 +71511,6 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/upper_engineering/starboard)
-"umI" = (
-/turf/closed/wall/almayer/reinforced,
-/area/almayer/shipboard/brig/interrogation,
-/area/almayer/shipboard/brig/interrogation)
 "umS" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8
@@ -92410,11 +92406,11 @@ uDg
 xkc
 gkr
 ddn
-umI
+ddn
 sFC
 sFC
 sFC
-umI
+ddn
 lOI
 pJv
 jLM

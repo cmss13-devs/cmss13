@@ -1451,10 +1451,6 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		world.log << "## ERROR: Eek. The supply/elevator datum is missing somehow."
 		return
 
-	if(!should_block_game_interaction(SSshuttle.vehicle_elevator))
-		to_chat(usr, SPAN_WARNING("The elevator needs to be in the cargo bay dock to call a vehicle up. Ask someone to send it away."))
-		return
-
 	if(isturf(loc) && ( in_range(src, usr) || isSilicon(usr) ) )
 		usr.set_interaction(src)
 
@@ -1467,6 +1463,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		var/obj/vehicle/multitile/ordered_vehicle
 
 		var/datum/vehicle_order/VO = locate(href_list["get_vehicle"])
+		if(!(VO in vehicles))
+			return
 
 		if(VO?.has_vehicle_lock())
 			return

@@ -1461,7 +1461,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		usr.set_interaction(src)
 
 	if(href_list["get_vehicle"])
-		if(is_mainship_level(SSshuttle.vehicle_elevator.z))
+		if(is_mainship_level(SSshuttle.vehicle_elevator.z) || SSshuttle.vehicle_elevator.mode != SHUTTLE_IDLE)
 			return
 		// dunno why the +1 is needed but the vehicles spawn off-center
 		var/turf/middle_turf = get_turf(SSshuttle.vehicle_elevator)

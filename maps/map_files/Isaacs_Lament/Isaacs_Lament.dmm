@@ -236,6 +236,12 @@
 	},
 /turf/open/floor,
 /area/lv553/oob)
+"afO" = (
+/obj/structure/sign/poster/propaganda{
+	pixel_x = -32
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "afU" = (
 /obj/structure/fence,
 /turf/open/asphalt/cement,
@@ -638,12 +644,14 @@
 /area/lv553/outdoors/flooded_streets/waste_treatment)
 "avz" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "bunkroom door"
+	name = "bunkroom door";
+	welded = 1;
+	icon_state = "door_deny"
 	},
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "avJ" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /obj/item/weapon/baseballbat/metal,
@@ -1644,11 +1652,12 @@
 /obj/structure/urinal{
 	pixel_y = 21
 	},
+/obj/item/trash/cigbutt,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "bcI" = (
 /obj/structure/flora/jungle/hedge{
 	dir = 5
@@ -1765,12 +1774,9 @@
 	},
 /area/lv553/indoors/welcome_center/canteen)
 "bgk" = (
-/obj/structure/bed/chair/wood/normal,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/lv553/oob)
+/obj/structure/fence,
+/turf/open/gm/grass,
+/area/lv553/outdoors/lone_buildings/weyyu_hostel)
 "bhh" = (
 /turf/open/gm/coast{
 	dir = 1
@@ -1899,6 +1905,19 @@
 	},
 /turf/open/gm/grass,
 /area/lv553/outdoors/colony_streets/west)
+"bmS" = (
+/obj/structure/toilet{
+	pixel_y = 16;
+	name = "blocked toilet"
+	},
+/obj/item/paper/crumpled{
+	pixel_y = 18
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "bnf" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "shower room door"
@@ -1906,7 +1925,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "bnk" = (
 /obj/structure/machinery/power/port_gen/pacman/super{
 	desc = "A portable generator for emergency backup power. This one is still murmuring along."
@@ -1982,6 +2001,20 @@
 	icon_state = "white_cyan1"
 	},
 /area/lv553/oob)
+"brV" = (
+/obj/structure/curtain/red{
+	pixel_y = 0;
+	pixel_x = 32
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/hunk{
+	pixel_y = -32
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "bsa" = (
 /obj/effect/spawner/gibspawner/xeno,
 /turf/open/gm/dirtgrassborder{
@@ -2338,6 +2371,10 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/indoors/uscm_garrison/armory)
+"bGT" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/plating,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "bHf" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "hospital door"
@@ -2420,6 +2457,34 @@
 /obj/structure/flora/jungle/vines,
 /turf/open/gm/grass,
 /area/lv553/oob)
+"bKP" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/door/window{
+	pixel_y = 0
+	},
+/obj/structure/machinery/door_control{
+	desc = "A garage door opener.";
+	id = "wy_compound_gate";
+	name = "gate opener";
+	pixel_y = -10;
+	req_one_access_txt = "2;3;12;19"
+	},
+/obj/item/paper_bin{
+	pixel_y = 6;
+	pixel_x = -1
+	},
+/obj/item/tool/pen,
+/obj/structure/machinery/door_control{
+	desc = "A garage door opener.";
+	id = "wy_compound_storage";
+	name = "storage opener";
+	pixel_y = -17;
+	req_one_access_txt = "2;3;12;19"
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "bLf" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/glass/beaker/sulphuric{
@@ -2669,6 +2734,12 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv553/outdoors/gated_community_exterior)
+"bRf" = (
+/obj/structure/machinery/vending/cola,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "bRI" = (
 /obj/effect/decal/cleanable/blood{
 	pixel_y = 12
@@ -2679,6 +2750,11 @@
 /obj/structure/window/framed/colony,
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
+"bRR" = (
+/obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/plating,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "bSP" = (
 /turf/open/floor/almayer{
 	dir = 10;
@@ -2740,13 +2816,8 @@
 	},
 /area/lv553/landing_zone_2)
 "bUv" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
 /obj/effect/spawner/gibspawner/xeno,
+/obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -2872,11 +2943,11 @@
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 4;
 	id = "wy_compound_gate";
-	name = "exterior colony gate";
+	name = "Weyland-Yutani Hostel Gate";
 	use_power = 0
 	},
 /turf/open/gm/dirt,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "bXB" = (
 /obj/item/clothing/mask/facehugger{
 	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
@@ -2917,6 +2988,19 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/recruiter_house)
+"bYj" = (
+/obj/structure/sink{
+	dir = 1;
+	pixel_y = -8
+	},
+/obj/structure/mirror{
+	pixel_y = -32
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "bYG" = (
 /turf/closed/wall,
 /area/lv553/indoors/welcome_center/lobby)
@@ -3030,6 +3114,18 @@
 	},
 /turf/open/gm/dirt,
 /area/lv553/indoors/lone_buildings/gas_n_gear)
+"cdL" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/door/window{
+	pixel_y = 0
+	},
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "cdP" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8
@@ -3070,6 +3166,15 @@
 	},
 /turf/open/floor/interior/wood,
 /area/lv553/oob)
+"ceK" = (
+/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "ceR" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/clothing/glasses/regular/hipster,
@@ -3357,7 +3462,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '2-8';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/floor/plating,
 /area/lv553/oob)
@@ -3530,6 +3636,15 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/indoors/hospital/research/reception)
+"cuE" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "cvc" = (
 /obj/structure/sign/prop2{
 	pixel_y = 0;
@@ -3688,6 +3803,10 @@
 	},
 /turf/open/gm/dirt,
 /area/lv553/oob)
+"cAf" = (
+/obj/structure/machinery/power/port_gen/pacman/mrs,
+/turf/open/floor/plating,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "cAj" = (
 /obj/item/tool/kitchen/knife,
 /obj/item/clothing/head/chefhat,
@@ -3698,7 +3817,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '4-8';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/floor/interior/wood,
 /area/lv553/oob)
@@ -3719,12 +3839,29 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/indoors/uscm_garrison/armory)
+"cBG" = (
+/obj/structure/closet/secure_closet/freezer/fridge/full,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "cBI" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/rifle/m16,
 /obj/item/weapon/gun/rifle/m16,
 /turf/open/asphalt/cement,
 /area/lv553/indoors/lone_buildings/army_surplus)
+"cBN" = (
+/obj/structure/closet/secure_closet/freezer/fridge/full,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "cBV" = (
 /obj/item/bedsheet/captain,
 /turf/open/gm/river,
@@ -3770,6 +3907,14 @@
 	},
 /turf/open/asphalt/cement,
 /area/lv553/indoors/hospital/garage)
+"cEg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt/cigarbutt,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "cEn" = (
 /obj/item/prop{
 	color = "#FF0000";
@@ -4687,7 +4832,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '1-4';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/gm/dirt,
 /area/lv553/oob)
@@ -5060,6 +5206,30 @@
 	icon_state = "whiteyellowfull"
 	},
 /area/lv553/indoors/welcome_center/lobby)
+"dse" = (
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt{
+	pixel_y = 14;
+	pixel_x = -7
+	},
+/obj/item/trash/cigbutt{
+	pixel_y = 7;
+	pixel_x = 5
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -9;
+	pixel_y = 8
+	},
+/obj/item/trash/cigbutt{
+	pixel_y = -5;
+	pixel_x = -10
+	},
+/obj/item/trash/cigbutt{
+	pixel_y = -6;
+	pixel_x = 5
+	},
+/turf/open/asphalt/cement,
+/area/lv553/outdoors/colony_streets/southwest)
 "dsn" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	density = 2;
@@ -5384,14 +5554,8 @@
 /turf/open/floor,
 /area/lv553/oob)
 "dCQ" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
-/turf/open/floor/wood,
-/area/lv553/indoors/bungalow_manager)
+/turf/closed/wall,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "dCZ" = (
 /obj/item/ammo_magazine/shotgun/buckshot{
 	pixel_x = 6;
@@ -5692,6 +5856,15 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/army_surplus)
+"dOr" = (
+/obj/structure/machinery/shower{
+	dir = 1
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "dOQ" = (
 /obj/structure/filingcabinet{
 	pixel_y = 3
@@ -5730,6 +5903,17 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass,
 /area/lv553/outdoors/hospital/road_north_west)
+"dRH" = (
+/obj/structure/surface/table,
+/obj/item/trash/plate{
+	pixel_y = 7;
+	pixel_x = 1
+	},
+/obj/item/trash/cigbutt,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "dRS" = (
 /obj/structure/sink{
 	pixel_y = 22
@@ -5786,7 +5970,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "dUL" = (
 /obj/structure/platform_decoration/strata/metal{
 	dir = 8
@@ -5845,6 +6029,12 @@
 	icon_state = "warnplate"
 	},
 /area/lv553/oob)
+"dWo" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 8;
+	icon_state = "grassdirt_corner"
+	},
+/area/lv553/outdoors/lone_buildings/weyyu_hostel)
 "dWy" = (
 /obj/structure/window_frame/colony/reinforced,
 /obj/item/shard,
@@ -6241,6 +6431,14 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/oob)
+"ehE" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "ehY" = (
 /obj/structure/desertdam/decals/road_stop{
 	icon_state = "stop_decal5";
@@ -6484,6 +6682,13 @@
 	},
 /turf/open/gm/dirt,
 /area/lv553/outdoors/colony_streets/east)
+"enQ" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -9;
+	pixel_y = 8
+	},
+/turf/open/asphalt/cement,
+/area/lv553/outdoors/colony_streets/southwest)
 "eop" = (
 /turf/open/floor,
 /area/lv553/indoors/flooded/east_apartments)
@@ -6639,6 +6844,15 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv553/landing_zone_2)
+"evT" = (
+/obj/structure/machinery/shower{
+	pixel_y = 17
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "ewg" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/rifle/m41a/training{
@@ -6732,6 +6946,13 @@
 	dir = 8
 	},
 /area/lv553/outdoors/flooded_streets/west)
+"ezl" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder{
+	dir = 8;
+	icon_state = "grassdirt_corner"
+	},
+/area/lv553/outdoors/lone_buildings/weyyu_hostel)
 "ezn" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
@@ -6854,6 +7075,10 @@
 	dir = 9
 	},
 /area/lv553/indoors/uscm_garrison/garrison_bunks)
+"eDE" = (
+/obj/structure/largecrate/supply/supplies/tables_racks,
+/turf/open/floor/plating,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "eDV" = (
 /obj/structure/fence,
 /turf/open/gm/grass,
@@ -6987,6 +7212,18 @@
 	icon_state = "white"
 	},
 /area/lv553/oob)
+"eKa" = (
+/obj/structure/closet,
+/obj/item/storage/fancy/cigarettes/wypacket,
+/obj/item/storage/fancy/cigar/matchbook/wy_gold,
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (WEST)"
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "eKv" = (
 /obj/structure/surface/table/woodentable,
 /turf/open/floor{
@@ -7247,6 +7484,12 @@
 /obj/item/stack/cable_coil/orange,
 /turf/open/floor/interior/wood,
 /area/lv553/oob)
+"eUh" = (
+/obj/structure/prop/dam/truck/cargo{
+	dir = 4
+	},
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "eUI" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/machinery/faxmachine/corporate,
@@ -7597,7 +7840,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '2-6';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/floor/plating,
 /area/lv553/oob)
@@ -7619,15 +7863,8 @@
 /turf/open/floor/almayer,
 /area/lv553/indoors/uscm_garrison/garrison_bunks)
 "fia" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing? It appears to have been impaled by the pen. What badass pencil pusher did this?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2;
-	layer = 3
-	},
-/turf/open/floor/wood,
-/area/lv553/indoors/gated_community/head_of_corporate_engineering)
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "fib" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/wood,
@@ -7809,6 +8046,14 @@
 	},
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/liq_r_mart)
+"fmE" = (
+/obj/structure/sign/poster/propaganda{
+	pixel_x = -32
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "fmW" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/atmos_alert{
@@ -7828,6 +8073,10 @@
 /obj/effect/spawner/gibspawner/human,
 /turf/open/gm/dirt,
 /area/lv553/landing_zone_2)
+"fnb" = (
+/obj/structure/machinery/power/port_gen/pacman,
+/turf/open/floor/plating,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "fnZ" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -8023,6 +8272,12 @@
 /obj/item/device/eftpos,
 /turf/open/asphalt/cement,
 /area/lv553/oob)
+"fuw" = (
+/obj/structure/machinery/light,
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "fux" = (
 /obj/structure/prop/almayer/computers/sensor_computer1,
 /obj/structure/machinery/computer/cameras/wooden_tv{
@@ -8254,6 +8509,12 @@
 	},
 /turf/open/floor/plating,
 /area/lv553/oob)
+"fCl" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "weyland-yutani hostel door"
+	},
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "fCt" = (
 /obj/structure/bed/roller,
 /obj/effect/landmark/corpsespawner/colonist/burst,
@@ -8369,6 +8630,11 @@
 	icon_state = "dark"
 	},
 /area/lv553/indoors/aerospace_control)
+"fEW" = (
+/obj/structure/bed,
+/obj/item/bedsheet/captain,
+/turf/open/floor,
+/area/lv553/oob)
 "fEZ" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
@@ -8451,6 +8717,13 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
 /area/lv553/indoors/welcome_center/offices)
+"fIb" = (
+/obj/item/trash/cigbutt{
+	pixel_y = 7;
+	pixel_x = 5
+	},
+/turf/open/asphalt/cement,
+/area/lv553/outdoors/colony_streets/southwest)
 "fIh" = (
 /obj/item/frame/table/almayer,
 /obj/item/shard,
@@ -9096,8 +9369,10 @@
 	layer = 3.5;
 	pixel_y = 13
 	},
+/obj/item/prop/magazine/boots/n054,
+/obj/item/shard,
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "fYO" = (
 /obj/structure/prop/tower,
 /turf/open/asphalt/cement,
@@ -9361,7 +9636,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '1-8';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/gm/dirt,
 /area/lv553/oob)
@@ -9397,6 +9673,10 @@
 /obj/item/stack/cable_coil,
 /turf/open/gm/river,
 /area/lv553/indoors/flooded/west_apartments)
+"glf" = (
+/obj/structure/sign/poster/safety,
+/turf/closed/wall,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "glB" = (
 /obj/structure/platform/strata/metal{
 	dir = 4
@@ -9526,7 +9806,7 @@
 	pixel_y = 32
 	},
 /turf/open/asphalt/cement,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "gqI" = (
 /obj/structure/sign/poster/clf{
 	pixel_y = 32
@@ -9563,6 +9843,16 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv553/outdoors/uscm_garrison_exterior/fenced)
+"gtb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt/cigarbutt,
+/obj/item/prop/magazine/dirty/torn{
+	pixel_y = -32
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "gtJ" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3";
@@ -9674,6 +9964,10 @@
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
+"gys" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/turf/open/gm/grass,
+/area/lv553/outdoors/lone_buildings/weyyu_hostel)
 "gyV" = (
 /obj/item/clothing/mask/cigarette/cigar,
 /turf/open/gm/dirt,
@@ -9891,6 +10185,10 @@
 /obj/structure/surface/table,
 /turf/open/floor/interior/wood,
 /area/lv553/oob)
+"gEz" = (
+/obj/structure/machinery/light,
+/turf/open/gm/dirt,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "gFi" = (
 /obj/structure/surface/table,
 /obj/item/storage/box/masks{
@@ -11056,6 +11354,20 @@
 	dir = 1
 	},
 /area/lv553/outdoors/colony_streets/northeast)
+"hut" = (
+/obj/structure/filingcabinet,
+/obj/item/newspaper{
+	pixel_y = 0;
+	name = "hostel lodger list m7-2182"
+	},
+/obj/item/newspaper{
+	pixel_y = 0;
+	name = "hostel lodger list m6-2182"
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "huA" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/snacks/meat{
@@ -11718,6 +12030,10 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/indoors/hospital/research/reception)
+"hMT" = (
+/obj/structure/machinery/power/port_gen/pacman/super,
+/turf/open/floor/plating,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "hMY" = (
 /obj/structure/filingcabinet,
 /obj/item/folder,
@@ -11788,6 +12104,13 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv553/landing_zone_1)
+"hOT" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/gm/dirt,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "hPh" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 9;
@@ -11840,6 +12163,22 @@
 	},
 /turf/open/floor,
 /area/lv553/oob)
+"hRM" = (
+/obj/item/trash/cigbutt,
+/obj/structure/sign/poster/blacklight{
+	pixel_y = -32
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/tool/kitchen/knife,
+/obj/effect/decal/hefa_cult_decals/d96{
+	pixel_y = -17;
+	pixel_x = -14;
+	color = "#FF0000"
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "hRQ" = (
 /obj/structure/barricade/deployable{
 	dir = 8
@@ -11857,10 +12196,13 @@
 	height = 1;
 	id = "tunnel4a"
 	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "hTg" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/gm/dirtgrassborder{
@@ -12205,6 +12547,10 @@
 	},
 /turf/open/floor/interior/wood,
 /area/lv553/oob)
+"ics" = (
+/obj/item/trash/cigbutt,
+/turf/open/asphalt/cement,
+/area/lv553/outdoors/colony_streets/southwest)
 "icw" = (
 /obj/structure/desertdam/decals/road_edge{
 	pixel_x = -12
@@ -12490,6 +12836,16 @@
 "inu" = (
 /turf/closed/wall/r_wall,
 /area/lv553/outdoors/hospital/road_north_west)
+"iny" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "office door";
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "inA" = (
 /obj/structure/machinery/light_construct{
 	dir = 8
@@ -13109,6 +13465,19 @@
 	},
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/army_surplus)
+"iEj" = (
+/obj/structure/surface/rack,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/item/stack/sheet/plasteel/large_stack{
+	pixel_y = 8
+	},
+/obj/item/stack/sheet/plasteel/large_stack{
+	pixel_y = -1
+	},
+/turf/open/floor/plating,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "iEw" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/weapon/gun/rifle/mar40{
@@ -13275,7 +13644,7 @@
 	dir = 4;
 	icon_state = "whiteyellowfull"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "iJJ" = (
 /obj/structure/sign/safety/restrictedarea{
 	pixel_x = 8;
@@ -13866,6 +14235,12 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv553/outdoors/lone_buildings/gas_n_gear)
+"jeg" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "jez" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
@@ -13874,6 +14249,12 @@
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
+"jeQ" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 4;
+	icon_state = "grassdirt_corner2"
+	},
+/area/lv553/outdoors/lone_buildings/weyyu_hostel)
 "jfh" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/snacks/meat/synthmeat/synthflesh{
@@ -13918,6 +14299,13 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/bungalow_manager)
+"jgK" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/indoors/aerospace_control)
 "jgS" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 8;
@@ -13967,6 +14355,12 @@
 	name = "garage door"
 	},
 /turf/open/asphalt/cement,
+/area/lv553/oob)
+"jjy" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "bedroom door"
+	},
+/turf/open/floor,
 /area/lv553/oob)
 "jjz" = (
 /obj/structure/bed/chair,
@@ -14142,6 +14536,13 @@
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
+"jpI" = (
+/obj/structure/bed/chair,
+/obj/item/trash/cigbutt,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "jqa" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
@@ -14186,6 +14587,26 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv553/outdoors/lone_buildings/gas_n_gear)
+"jrH" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed,
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "jrI" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/structure{
@@ -14673,6 +15094,27 @@
 /obj/item/frame/table/wood/poor,
 /turf/open/gm/river,
 /area/lv553/indoors/flooded/west_slums)
+"jHE" = (
+/obj/item/tool/soap{
+	pixel_x = -11;
+	pixel_y = 10
+	},
+/obj/item/tool/soap{
+	pixel_x = -11;
+	pixel_y = 2
+	},
+/obj/item/tool/soap{
+	pixel_y = -6;
+	pixel_x = -11
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "jHF" = (
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/gm/dirt,
@@ -14720,6 +15162,15 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
+"jIl" = (
+/obj/item/trash/cigbutt{
+	pixel_y = 14;
+	pixel_x = -3
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "jIm" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
@@ -15929,6 +16380,10 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/gm/dirtgrassborder,
 /area/lv553/landing_zone_2)
+"kzd" = (
+/obj/item/trash/cigbutt,
+/turf/open/asphalt/cement,
+/area/lv553/outdoors/lone_buildings/weyyu_hostel)
 "kzA" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "The Pole Museum"
@@ -16403,6 +16858,20 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
+"kQC" = (
+/obj/structure/sink{
+	dir = 1;
+	pixel_y = -8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/mirror{
+	pixel_y = -32
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "kQK" = (
 /obj/effect/spawner/gibspawner/xeno,
 /obj/effect/decal/cleanable/blood/drip,
@@ -16706,7 +17175,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '1-6';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/floor/plating,
 /area/lv553/oob)
@@ -17092,6 +17562,7 @@
 /area/lv553/indoors/hospital/storage_laundyroom_and_breakroom)
 "lnK" = (
 /obj/item/trash/cigbutt,
+/obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -17236,6 +17707,18 @@
 /obj/structure/machinery/vending/dinnerware,
 /turf/open/gm/grass,
 /area/lv553/oob)
+"lsf" = (
+/obj/structure/flora/bush/ausbushes/palebush,
+/turf/open/gm/grass,
+/area/lv553/outdoors/lone_buildings/weyyu_hostel)
+"lsz" = (
+/obj/structure/prop/dam/truck/cargo{
+	dir = 4
+	},
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/lv553/outdoors/lone_buildings/weyyu_hostel)
 "lsB" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 1
@@ -17332,6 +17815,9 @@
 /obj/structure/machinery/floodlight,
 /turf/open/floor/interior/wood,
 /area/lv553/oob)
+"lwa" = (
+/turf/closed/wall/r_wall,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "lwo" = (
 /turf/open/gm/coast{
 	dir = 1;
@@ -17477,6 +17963,12 @@
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/almayer,
 /area/lv553/indoors/uscm_garrison/recruitment_office)
+"lBb" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/lv553/outdoors/lone_buildings/weyyu_hostel)
 "lBc" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4;
@@ -17533,6 +18025,27 @@
 "lCA" = (
 /turf/open/gm/dirt,
 /area/lv553/outdoors/hospital/break_garden)
+"lCF" = (
+/obj/structure/surface/table,
+/obj/item/storage/box/donkpockets{
+	pixel_x = 16;
+	pixel_y = 13
+	},
+/obj/item/storage/box/donkpockets{
+	pixel_x = 16;
+	pixel_y = 3
+	},
+/obj/item/trash/plate{
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/snacks/donkpocket{
+	pixel_y = 5;
+	pixel_x = -1
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "lDh" = (
 /obj/structure/bed/chair/office/light,
 /turf/open/floor,
@@ -17660,6 +18173,19 @@
 	},
 /turf/open/floor/interior/wood,
 /area/lv553/oob)
+"lGA" = (
+/obj/structure/surface/table,
+/obj/item/spacecash/c10{
+	pixel_y = 10
+	},
+/obj/item/ashtray/plastic{
+	pixel_x = 17;
+	pixel_y = -2
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "lGB" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/grass,
@@ -17674,6 +18200,10 @@
 "lHq" = (
 /turf/open/gm/grass,
 /area/lv553/outdoors/gated_community_exterior)
+"lHW" = (
+/obj/item/shard,
+/turf/open/gm/grass,
+/area/lv553/outdoors/colony_streets/southwest)
 "lIu" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21";
@@ -17740,6 +18270,11 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv553/outdoors/bungalow_manager_exterior)
+"lLz" = (
+/turf/open/gm/dirtgrassborder{
+	icon_state = "grassdirt_corner2"
+	},
+/area/lv553/outdoors/lone_buildings/weyyu_hostel)
 "lLE" = (
 /obj/item/toy/prize/odysseus{
 	pixel_x = 8;
@@ -17923,6 +18458,13 @@
 	icon_state = "white_cyan1"
 	},
 /area/lv553/oob)
+"lSi" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/microwave,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "lSp" = (
 /obj/structure/prop/dam/truck{
 	dir = 4
@@ -18011,6 +18553,12 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv553/indoors/flooded/east_apartments)
+"lVW" = (
+/obj/structure/machinery/power/apc,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "lWj" = (
 /obj/item/stack/sheet/metal,
 /obj/item/frame/table/almayer,
@@ -18092,7 +18640,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "map" = (
 /obj/structure/sign/prop3{
 	pixel_y = 32
@@ -18298,7 +18846,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "meE" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 5
@@ -18374,7 +18922,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '1-2';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/floor/plating,
 /area/lv553/oob)
@@ -18432,6 +18981,12 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv553/outdoors/colony_streets/east)
+"mjg" = (
+/obj/structure/closet/secure_closet/freezer/fridge/groceries,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "mjo" = (
 /obj/structure/window{
 	dir = 8
@@ -18618,6 +19173,15 @@
 /obj/item/trash/cigbutt/ucigbutt,
 /turf/open/gm/river,
 /area/lv553/outdoors/flooded_streets/west)
+"mqn" = (
+/obj/structure/curtain/red{
+	pixel_y = 0;
+	pixel_x = 32
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "mqx" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -18625,11 +19189,8 @@
 /turf/open/floor/almayer,
 /area/lv553/indoors/uscm_garrison/garrison_bunks)
 "mqA" = (
-/obj/effect/spawner/gibspawner/xeno,
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/lv553/indoors/aerospace_control)
+/turf/open/gm/dirt,
+/area/lv553/outdoors/lone_buildings/weyyu_hostel)
 "mqQ" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 8
@@ -18686,6 +19247,15 @@
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/gm/grass,
 /area/lv553/outdoors/colony_streets/east)
+"mrY" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "msd" = (
 /obj/structure/desertdam/decals/road_stop{
 	icon_state = "stop_decal5";
@@ -18942,6 +19512,15 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/oob)
+"myG" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/item/trash/cigbutt,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "myK" = (
 /turf/open/floor/almayer/uscm/directional{
 	dir = 1
@@ -19120,6 +19699,12 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/indoors/hospital/research/offices)
+"mEO" = (
+/obj/structure/machinery/vending/snack/packaged,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "mES" = (
 /obj/item/toy/plush/farwa{
 	desc = "A Farwa plush doll. Once soft and comforting now just really wet.";
@@ -19275,6 +19860,19 @@
 "mJv" = (
 /turf/open/asphalt/cement,
 /area/lv553/indoors/flooded/west_apartments)
+"mJK" = (
+/obj/structure/surface/table,
+/obj/item/spacecash/c10{
+	pixel_y = 0
+	},
+/obj/item/toy/deck{
+	pixel_y = 16;
+	pixel_x = -10
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "mJR" = (
 /obj/item/trash/pistachios,
 /obj/item/trash/cigbutt/bcigbutt,
@@ -19386,6 +19984,16 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass,
 /area/lv553/outdoors/flooded_streets/waste_treatment)
+"mOd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (WEST)"
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "mOf" = (
 /obj/item/prop{
 	color = "#FF0000";
@@ -19574,6 +20182,14 @@
 /obj/structure/curtain/open,
 /turf/open/gm/dirt,
 /area/lv553/oob)
+"mUn" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "mUv" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/packaged_burger{
@@ -19731,6 +20347,9 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/engineer_alcoholic_house)
+"nbj" = (
+/turf/open/gm/grass,
+/area/lv553/outdoors/lone_buildings/weyyu_hostel)
 "nbA" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -19848,6 +20467,20 @@
 /obj/effect/spawner/gibspawner/human,
 /turf/open/gm/dirt,
 /area/lv553/landing_zone_1)
+"nhg" = (
+/obj/structure/closet,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/storage/fancy/cigarettes/kpack,
+/obj/item/storage/fancy/cigar/matchbook/koorlander,
+/obj/effect/decal/cleanable/blood,
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (WEST)"
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "nhl" = (
 /obj/structure/machinery/door_control{
 	desc = "A garage door opener.";
@@ -19885,7 +20518,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '4-9';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/floor/plating,
 /area/lv553/oob)
@@ -20018,6 +20652,14 @@
 	dir = 4
 	},
 /area/lv553/outdoors/hospital/break_garden)
+"nnX" = (
+/obj/item/shard,
+/obj/structure/window_frame/colony,
+/obj/item/stack/sheet/mineral/plastic,
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "noc" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -20232,7 +20874,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '4-10';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/floor/interior/wood,
 /area/lv553/oob)
@@ -20281,6 +20924,14 @@
 	icon_state = "wood-broken3"
 	},
 /area/lv553/oob)
+"nxR" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "bunkroom door"
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "nyb" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
@@ -20422,6 +21073,29 @@
 /obj/structure/prop/dam/van/damaged,
 /turf/open/gm/dirt,
 /area/lv553/outdoors/colony_streets/west)
+"nBH" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed,
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/item/prop/magazine/book{
+	name = "The Coming Liberation - The Insurrectionists Manifesto";
+	desc = "This book appears to be battered and decomposing, it must have been carried in some very poor conditions over the years."
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "nBN" = (
 /obj/structure/bed/chair/comfy{
 	dir = 4
@@ -21254,6 +21928,7 @@
 /obj/effect/spawner/gibspawner/xeno,
 /obj/effect/spawner/gibspawner/xeno,
 /obj/item/trash/buritto,
+/obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -21499,6 +22174,12 @@
 	icon_state = "white"
 	},
 /area/lv553/indoors/welcome_center/lobby)
+"ohL" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "ohN" = (
 /obj/item/map{
 	name = "map of sewage treatment facilities";
@@ -21792,12 +22473,6 @@
 /obj/item/trash/cigbutt/cigarbutt,
 /obj/item/trash/hotdog,
 /obj/effect/spawner/gibspawner/human,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -21921,6 +22596,14 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/indoors/hospital/research/offices)
+"ovs" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "ovB" = (
 /obj/structure/machinery/light{
 	dir = 1;
@@ -21987,6 +22670,13 @@
 	icon_state = "barber"
 	},
 /area/lv553/oob)
+"owY" = (
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (WEST)"
+	},
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "oxa" = (
 /obj/structure/machinery/power/port_gen/pacman,
 /turf/open/floor{
@@ -22342,6 +23032,15 @@
 /obj/item/trash/kepler,
 /turf/open/floor/interior/wood,
 /area/lv553/oob)
+"oFS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "oFU" = (
 /obj/structure/curtain/medical{
 	pixel_y = -32
@@ -22607,13 +23306,6 @@
 "oNp" = (
 /obj/structure/window_frame/colony/reinforced,
 /obj/item/shard,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing? It appears to have been impaled by the pen. What badass pencil pusher did this?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2;
-	layer = 3
-	},
 /turf/open/floor/wood,
 /area/lv553/indoors/gated_community/head_of_corporate_security)
 "oNw" = (
@@ -22707,6 +23399,13 @@
 	icon_state = "stan3"
 	},
 /area/lv553/oob)
+"oOV" = (
+/turf/closed/wall/r_wall,
+/area/lv553/outdoors/lone_buildings/weyyu_hostel)
+"oPB" = (
+/obj/structure/machinery/colony_floodlight,
+/turf/open/gm/grass,
+/area/lv553/outdoors/lone_buildings/weyyu_hostel)
 "oPG" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
@@ -22783,6 +23482,12 @@
 	name = "Neil's Arcade door"
 	},
 /turf/open/floor/carpet,
+/area/lv553/oob)
+"oSx" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "apartment door"
+	},
+/turf/open/floor,
 /area/lv553/oob)
 "oSG" = (
 /obj/item/scalp,
@@ -23057,7 +23762,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '5-8';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/floor/plating,
 /area/lv553/oob)
@@ -23838,6 +24544,17 @@
 "ptt" = (
 /turf/open/floor/wood,
 /area/lv553/indoors/hospital/research/offices)
+"ptv" = (
+/obj/structure/machinery/shower{
+	pixel_y = 17
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "ptG" = (
 /obj/structure/surface/rack,
 /obj/item/storage/box/packet/high_explosive{
@@ -23883,6 +24600,11 @@
 	},
 /turf/open/gm/dirt,
 /area/lv553/landing_zone_2)
+"pun" = (
+/turf/open/gm/dirtgrassborder{
+	icon_state = "grassdirt_corner"
+	},
+/area/lv553/outdoors/lone_buildings/weyyu_hostel)
 "pup" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/reagent_container/food/snacks/meatsteak,
@@ -24156,6 +24878,10 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv553/outdoors/flooded_streets/west)
+"pCH" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/gm/dirt,
+/area/lv553/outdoors/lone_buildings/weyyu_hostel)
 "pCW" = (
 /obj/structure/flora/jungle/vines,
 /turf/open/gm/dirtgrassborder{
@@ -24167,14 +24893,14 @@
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 4;
 	id = "wy_compound_gate";
-	name = "exterior colony gate";
+	name = "Weyland-Yutani Hostel Gate";
 	use_power = 0
 	},
 /turf/open/gm/dirtgrassborder{
 	dir = 1;
 	icon_state = "grassdirt_corner2"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "pDY" = (
 /obj/structure/ladder{
 	height = 1;
@@ -24293,6 +25019,10 @@
 	},
 /turf/open/floor/interior/wood,
 /area/lv553/oob)
+"pJm" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/gm/grass,
+/area/lv553/outdoors/lone_buildings/weyyu_hostel)
 "pJD" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/microwave{
@@ -24554,6 +25284,15 @@
 	dir = 1
 	},
 /area/lv553/outdoors/hospital/break_garden)
+"pPd" = (
+/obj/structure/filingcabinet,
+/obj/item/folder/red,
+/obj/item/folder/yellow,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "pPh" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 8;
@@ -24751,6 +25490,30 @@
 /obj/item/ammo_box/magazine/shotgun/buckshot,
 /turf/open/asphalt/cement,
 /area/lv553/indoors/lone_buildings/army_surplus)
+"pVC" = (
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt{
+	pixel_y = 14;
+	pixel_x = -7
+	},
+/obj/item/trash/cigbutt{
+	pixel_y = 7;
+	pixel_x = 5
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -9;
+	pixel_y = 8
+	},
+/obj/item/trash/cigbutt{
+	pixel_y = -5;
+	pixel_x = -10
+	},
+/obj/item/trash/cigbutt{
+	pixel_y = -6;
+	pixel_x = 5
+	},
+/turf/open/asphalt/cement,
+/area/lv553/outdoors/lone_buildings/weyyu_hostel)
 "pVJ" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
@@ -24892,6 +25655,12 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv553/outdoors/flooded_streets/east)
+"pZL" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 1;
+	icon_state = "grassdirt_corner"
+	},
+/area/lv553/outdoors/lone_buildings/weyyu_hostel)
 "pZP" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/storage/fancy/cigar{
@@ -25364,6 +26133,10 @@
 /obj/item/stack/cable_coil,
 /turf/open/floor/wood,
 /area/lv553/oob)
+"qlD" = (
+/obj/structure/largecrate/supply/supplies/water,
+/turf/open/floor/plating,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "qlW" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/storage/donut_box/empty,
@@ -25617,6 +26390,18 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass,
 /area/lv553/outdoors/colony_streets/east)
+"quY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt,
+/obj/item/ammo_magazine/pistol/holdout{
+	current_rounds = 0
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/shard,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "qvl" = (
 /turf/closed/wall/wood,
 /area/lv553/indoors/bungalow_manager)
@@ -25986,6 +26771,9 @@
 	},
 /turf/open/gm/dirt,
 /area/lv553/outdoors/hospital/road_north_east)
+"qFs" = (
+/turf/closed/wall,
+/area/lv553/outdoors/lone_buildings/weyyu_hostel)
 "qFQ" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 1;
@@ -26028,6 +26816,14 @@
 	icon_state = "white"
 	},
 /area/lv553/oob)
+"qGF" = (
+/obj/structure/closet,
+/obj/item/storage/fancy/cigarettes/kpack,
+/obj/item/storage/fancy/cigar/matchbook,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "qGP" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/paper/crumpled/bloody{
@@ -26214,13 +27010,19 @@
 /turf/open/floor/wood,
 /area/lv553/indoors/bungalow_manager)
 "qOy" = (
-/obj/structure/bed/chair/office/dark{
-	dir = 4
+/obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/pistol/holdout{
+	current_mag = null
 	},
+/obj/item/ammo_magazine/pistol/holdout{
+	current_rounds = 1
+	},
+/obj/item/trash/cigbutt/cigarbutt,
+/obj/effect/landmark/corpsespawner/wygoon,
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "qPb" = (
 /obj/structure/surface/rack,
 /obj/item/stack/cable_coil{
@@ -26340,12 +27142,6 @@
 	},
 /obj/item/tool/pen/fountain,
 /obj/item/shard,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
 /turf/open/floor/wood,
 /area/lv553/indoors/gated_community/director_of_coporate_relations)
 "qTD" = (
@@ -26961,19 +27757,17 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
-"rpf" = (
-/obj/structure/machinery/door_control{
-	desc = "A garage door opener.";
-	id = "wy_compound_gate";
-	name = "gate opener";
-	pixel_x = 26;
-	pixel_y = -4;
-	req_one_access_txt = "2;3;12;19"
+"roO" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 1;
+	icon_state = "grassdirt_corner2"
 	},
+/area/lv553/outdoors/lone_buildings/weyyu_hostel)
+"rpf" = (
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "rpu" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/wood,
@@ -26989,6 +27783,10 @@
 /obj/structure/machinery/light,
 /turf/open/asphalt/cement,
 /area/lv553/outdoors/bungalow_manager_exterior)
+"rrF" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "rrP" = (
 /obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor/almayer{
@@ -27010,7 +27808,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "rsN" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 1;
@@ -27064,12 +27862,6 @@
 	icon_state = "stop_decal5";
 	dir = 4;
 	pixel_x = 4
-	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
 	},
 /obj/structure/barricade/handrail{
 	dir = 4;
@@ -27218,7 +28010,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '4-8';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/floor/plating,
 /area/lv553/oob)
@@ -27255,6 +28048,17 @@
 	icon_state = "white"
 	},
 /area/lv553/indoors/welcome_center/offices)
+"ryr" = (
+/obj/structure/machinery/shower{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "ryu" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/spawner/gibspawner/human,
@@ -27347,6 +28151,9 @@
 	pixel_y = -8
 	},
 /obj/item/clothing/head/beret/eng,
+/obj/item/ammo_magazine/pistol/m1911{
+	current_rounds = 0
+	},
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -27496,6 +28303,24 @@
 	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/lv553/indoors/hospital/reception)
+"rHy" = (
+/obj/item/trash/cigbutt{
+	pixel_y = -6;
+	pixel_x = 5
+	},
+/turf/open/asphalt/cement,
+/area/lv553/outdoors/colony_streets/southwest)
+"rIk" = (
+/obj/structure/curtain/red{
+	pixel_y = 0;
+	pixel_x = 32
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "rIG" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "bathroom door"
@@ -27599,6 +28424,13 @@
 /obj/item/shard,
 /turf/open/gm/river,
 /area/lv553/indoors/flooded/waste_station)
+"rLe" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/machinery/light,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "rLf" = (
 /obj/structure{
 	dir = 5;
@@ -27797,6 +28629,12 @@
 	},
 /turf/open/gm/river,
 /area/lv553/indoors/flooded/waste_station)
+"rQP" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 8;
+	icon_state = "grassdirt_corner2"
+	},
+/area/lv553/outdoors/lone_buildings/weyyu_hostel)
 "rRh" = (
 /turf/open/gm/grass,
 /area/lv553/outdoors/uscm_garrison_exterior/entrance)
@@ -27826,6 +28664,14 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv553/indoors/flooded/west_apartments)
+"rSF" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	id = "wy_compound_storage";
+	name = "Weyland-Yutani Hostel Storage Shutter";
+	use_power = 0
+	},
+/turf/open/floor/plating,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "rSH" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
 /turf/open/gm/dirt2,
@@ -27863,6 +28709,13 @@
 	icon_state = "white"
 	},
 /area/lv553/indoors/welcome_center/lobby)
+"rUz" = (
+/obj/item/trash/cigbutt{
+	pixel_y = -6;
+	pixel_x = 5
+	},
+/turf/open/asphalt/cement,
+/area/lv553/outdoors/lone_buildings/weyyu_hostel)
 "rUA" = (
 /obj/structure/flora/jungle/vines,
 /turf/open/gm/dirtgrassborder{
@@ -28150,6 +29003,7 @@
 	icon_state = '1-8';
 	name = "suspisious cable"
 	},
+/obj/structure/surface/table/woodentable/poor,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -28275,6 +29129,14 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
+"sfR" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/faxmachine/corporate/liaison,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "sfW" = (
 /obj/structure/filingcabinet,
 /obj/item/newspaper{
@@ -28370,6 +29232,26 @@
 	},
 /turf/open/floor,
 /area/lv553/indoors/uscm_garrison/garrison_bunks)
+"siv" = (
+/obj/structure/surface/rack,
+/obj/item/cell/high{
+	pixel_y = 6;
+	pixel_x = -7
+	},
+/obj/item/cell/high{
+	pixel_y = 6;
+	pixel_x = 4
+	},
+/obj/item/cell/high{
+	pixel_y = -3;
+	pixel_x = -7
+	},
+/obj/item/cell/high{
+	pixel_y = -3;
+	pixel_x = 4
+	},
+/turf/open/floor/plating,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "siC" = (
 /obj/item/tool/kitchen/utensil/fork,
 /turf/open/floor/prison{
@@ -28404,6 +29286,16 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass,
 /area/lv553/oob)
+"siN" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -9;
+	pixel_y = 8
+	},
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "siR" = (
 /obj/item/light_bulb/tube,
 /turf/open/gm/river,
@@ -28682,6 +29574,15 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
+"srJ" = (
+/obj/item/trash/cigbutt{
+	pixel_y = 8;
+	pixel_x = -2
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "ssp" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 1
@@ -29130,6 +30031,31 @@
 "sFg" = (
 /turf/open/gm/coast,
 /area/lv553/outdoors/flooded_streets/west)
+"sFv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/ad{
+	pixel_x = -32
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
+"sFB" = (
+/obj/item/ammo_magazine/pistol/holdout{
+	current_rounds = 0
+	},
+/obj/item/weapon/gun/pistol/holdout{
+	current_mag = null
+	},
+/obj/item/clothing/head/cmcap,
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (WEST)"
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "sFF" = (
 /turf/closed/wall,
 /area/lv553/indoors/lone_buildings/gas_n_gear)
@@ -29184,6 +30110,19 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/uscm_garrison/recruitment_office)
+"sGs" = (
+/obj/structure/surface/rack,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/item/tool/weldingtool/hugetank{
+	pixel_x = -6
+	},
+/obj/item/tool/weldingtool/hugetank{
+	pixel_x = 3
+	},
+/turf/open/floor/plating,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "sGZ" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	density = 2;
@@ -29542,6 +30481,26 @@
 	icon_state = "barber"
 	},
 /area/lv553/indoors/lz_sec_checkpoint)
+"sTh" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed,
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/item/prop/magazine/dirty/torn/alt,
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "sTk" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/dirtgrassborder{
@@ -30547,6 +31506,21 @@
 	},
 /turf/open/gm/dirt,
 /area/lv553/indoors/gated_community/director_of_corporate_research)
+"tsl" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4
+	},
+/obj/item/weapon/gun/pistol/vp78{
+	current_mag = null
+	},
+/obj/item/ammo_magazine/pistol/vp78{
+	current_rounds = 0
+	},
+/obj/item/trash/cigbutt/cigarbutt,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "tss" = (
 /obj/structure/sink{
 	dir = 4;
@@ -30679,6 +31653,11 @@
 /obj/structure/reagent_dispensers/fueltank/gas,
 /turf/open/asphalt/cement,
 /area/lv553/indoors/gated_community/residence_bunkhouse)
+"twT" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 8
+	},
+/area/lv553/outdoors/lone_buildings/weyyu_hostel)
 "txf" = (
 /obj/item/trash/chips,
 /turf/open/floor{
@@ -30690,7 +31669,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '2-6';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/gm/dirt,
 /area/lv553/oob)
@@ -30730,7 +31710,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "tyE" = (
 /obj/structure/prop/structure_lattice{
 	density = 0;
@@ -31254,7 +32234,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '9-10';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/floor/plating,
 /area/lv553/oob)
@@ -31562,6 +32543,7 @@
 "uas" = (
 /obj/item/trash/cigbutt/bcigbutt,
 /obj/effect/spawner/gibspawner/xeno,
+/obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -31626,6 +32608,10 @@
 	icon_state = "white"
 	},
 /area/lv553/oob)
+"ubF" = (
+/obj/structure/reagent_dispensers/fueltank/gas,
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "ubL" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -31804,6 +32790,12 @@
 	},
 /turf/open/floor,
 /area/lv553/oob)
+"ugG" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "ugV" = (
 /obj/structure/ladder{
 	height = 1;
@@ -32324,6 +33316,20 @@
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
+"uxD" = (
+/obj/structure/surface/table,
+/obj/item/trash/cigbutt{
+	pixel_x = -13;
+	pixel_y = 5
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -17;
+	pixel_y = 5
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "uyd" = (
 /obj/structure/largecrate/random/barrel/true_random,
 /turf/open/gm/dirt,
@@ -32463,6 +33469,12 @@
 	},
 /turf/open/gm/dirt,
 /area/lv553/outdoors/landing_zones_disembark)
+"uDB" = (
+/obj/structure/sign/poster/safety{
+	pixel_y = 30
+	},
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "uDH" = (
 /obj/structure/surface/rack,
 /obj/structure/machinery/door/window{
@@ -32631,6 +33643,15 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/bungalow_manager)
+"uKi" = (
+/obj/structure/closet,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/storage/fancy/cigar/tarbacktube,
+/obj/item/storage/fancy/cigar/matchbook/brown,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "uKA" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 8;
@@ -32722,7 +33743,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '4-10';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/gm/dirt,
 /area/lv553/oob)
@@ -33281,6 +34303,12 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv553/indoors/gated_community/head_of_corporate_engineering)
+"vhM" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "vib" = (
 /turf/open/floor{
 	icon_state = "dark"
@@ -33348,6 +34376,20 @@
 	icon_state = "white"
 	},
 /area/lv553/indoors/welcome_center/lobby)
+"vjT" = (
+/obj/structure/surface/table,
+/obj/item/trash/plate{
+	pixel_y = 7;
+	pixel_x = 1
+	},
+/obj/item/reagent_container/food/snacks/donkpocket{
+	pixel_y = 5;
+	pixel_x = -1
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "vjY" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 1;
@@ -33520,6 +34562,12 @@
 /obj/structure/machinery/light/small,
 /turf/open/asphalt/cement,
 /area/lv553/oob)
+"vqx" = (
+/obj/structure/bed/chair,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "vqO" = (
 /obj/item/stack/sheet/metal,
 /turf/open/gm/dirtgrassborder{
@@ -33712,6 +34760,19 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/welcome_center/offices)
+"vzW" = (
+/obj/structure/surface/table,
+/obj/item/spacecash/c10{
+	pixel_y = 0
+	},
+/obj/item/toy/deck/uno{
+	pixel_y = 17;
+	pixel_x = 10
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "vAu" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2";
@@ -33871,6 +34932,12 @@
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/grass,
 /area/lv553/outdoors/flooded_streets/east)
+"vHg" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/gm/dirt,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "vHA" = (
 /obj/structure/prop/souto_land/streamer{
 	dir = 8;
@@ -34016,6 +35083,15 @@
 "vLa" = (
 /turf/open/gm/river,
 /area/lv553/indoors/flooded/east_apartments)
+"vLi" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
+"vLr" = (
+/turf/open/asphalt/cement,
+/area/lv553/outdoors/lone_buildings/weyyu_hostel)
 "vLw" = (
 /turf/closed/wall/r_wall,
 /area/lv553/indoors/welcome_center/offices)
@@ -34039,6 +35115,15 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv553/outdoors/colony_streets/southwest)
+"vNg" = (
+/obj/structure/filingcabinet,
+/obj/item/folder/black,
+/obj/item/folder/white,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "vOy" = (
 /obj/item/tool/mop{
 	desc = "Unlock the power of Mop-Fu!";
@@ -34224,7 +35309,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '4-10';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/floor/plating,
 /area/lv553/oob)
@@ -34762,6 +35848,21 @@
 	icon_state = "darkredfull2"
 	},
 /area/lv553/oob)
+"whA" = (
+/obj/item/trash/cigbutt{
+	pixel_y = 7;
+	pixel_x = 5
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = 6;
+	pixel_y = -1
+	},
+/turf/open/asphalt/cement,
+/area/lv553/outdoors/colony_streets/southwest)
 "whU" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/gm/dirtgrassborder{
@@ -34798,16 +35899,11 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
 /obj/effect/spawner/gibspawner/xeno,
 /obj/item/trash/burger{
 	pixel_y = -8
 	},
+/obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -35296,6 +36392,26 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
+"wCh" = (
+/obj/structure/surface/table,
+/obj/item/storage/box/donkpockets{
+	pixel_x = 16;
+	pixel_y = 10
+	},
+/obj/item/storage/box/donkpockets{
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/obj/item/trash/plate{
+	pixel_y = 7
+	},
+/obj/item/trash/cigbutt{
+	pixel_y = 3
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "wCK" = (
 /obj/item/storage/firstaid/adv/empty,
 /turf/open/asphalt/cement,
@@ -35336,7 +36452,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '4-8';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/gm/dirt,
 /area/lv553/oob)
@@ -35400,6 +36517,16 @@
 	},
 /turf/open/gm/grass,
 /area/lv553/outdoors/hospital/break_garden)
+"wGH" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/metal/large_stack{
+	pixel_y = 8
+	},
+/obj/item/stack/sheet/metal/large_stack{
+	pixel_y = -1
+	},
+/turf/open/floor/plating,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "wGQ" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/drinks/bottle/beer/craft{
@@ -35466,6 +36593,16 @@
 "wIx" = (
 /turf/closed/wall,
 /area/lv553/indoors/lone_buildings/recruiter_house)
+"wII" = (
+/obj/structure/surface/rack,
+/obj/item/storage/toolbox/mechanical{
+	pixel_y = 5
+	},
+/obj/item/storage/toolbox/electrical{
+	pixel_y = -3
+	},
+/turf/open/floor/plating,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "wIM" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/explosive/grenade/high_explosive/training,
@@ -35514,6 +36651,14 @@
 	},
 /turf/open/gm/dirtgrassborder,
 /area/lv553/oob)
+"wJS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/gibspawner/xeno,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "wJW" = (
 /obj/structure/surface/rack,
 /obj/item/storage/belt/marine{
@@ -35577,6 +36722,15 @@
 /obj/structure/reagent_dispensers/fueltank/gas,
 /turf/open/asphalt/cement,
 /area/lv553/outdoors/colony_streets/south)
+"wLk" = (
+/obj/structure/sign/poster/music{
+	pixel_x = -32
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "wLo" = (
 /obj/structure/sign/poster/ad{
 	pixel_x = 32
@@ -35834,7 +36988,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "wSX" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "bedroom door";
@@ -35929,6 +37083,13 @@
 	},
 /turf/open/floor/interior/wood,
 /area/lv553/oob)
+"wUO" = (
+/obj/item/trash/cigbutt{
+	pixel_y = 7;
+	pixel_x = 5
+	},
+/turf/open/asphalt/cement,
+/area/lv553/outdoors/lone_buildings/weyyu_hostel)
 "wVU" = (
 /turf/open/floor/almayer{
 	dir = 8;
@@ -35976,6 +37137,11 @@
 /obj/structure/window_frame/colony,
 /turf/open/gm/river,
 /area/lv553/indoors/flooded/west_apartments)
+"wYC" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 4
+	},
+/area/lv553/outdoors/lone_buildings/weyyu_hostel)
 "wYR" = (
 /obj/structure/reagent_dispensers/water_cooler{
 	pixel_x = -7;
@@ -36301,6 +37467,9 @@
 	},
 /turf/open/floor,
 /area/lv553/indoors/uscm_garrison/garrison_bunks)
+"xjd" = (
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "xjy" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/wood,
@@ -36416,6 +37585,14 @@
 	},
 /turf/open/gm/dirt,
 /area/lv553/outdoors/colony_streets/south)
+"xox" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/gm/dirtgrassborder{
+	dir = 8
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "xoy" = (
 /obj/item/stack/medical/bruise_pack{
 	pixel_x = -9;
@@ -36443,6 +37620,12 @@
 	},
 /turf/open/gm/dirt,
 /area/lv553/oob)
+"xoz" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "xoJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/gibspawner/xeno,
@@ -36685,6 +37868,7 @@
 /obj/item/trash/cigbutt,
 /obj/item/trash/cigbutt/cigarbutt,
 /obj/effect/spawner/gibspawner/xeno,
+/obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -36700,6 +37884,16 @@
 /obj/structure/platform_decoration/strata/metal,
 /turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
+"xxK" = (
+/obj/item/trash/cigbutt{
+	pixel_y = -5;
+	pixel_x = -10
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "xxO" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -36811,6 +38005,12 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv553/indoors/flooded/west_apartments)
+"xBI" = (
+/obj/structure/machinery/colony_floodlight,
+/turf/open/gm/dirtgrassborder{
+	dir = 4
+	},
+/area/lv553/outdoors/lone_buildings/weyyu_hostel)
 "xBK" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "office door"
@@ -36846,13 +38046,6 @@
 "xCP" = (
 /obj/item/shard,
 /obj/structure/window_frame/colony/reinforced,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing? It appears to have been impaled by the pen. What badass pencil pusher did this?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2;
-	layer = 3
-	},
 /turf/open/floor/wood,
 /area/lv553/indoors/gated_community/head_of_corporate_engineering)
 "xDf" = (
@@ -36948,7 +38141,8 @@
 	color = "#FF0000";
 	icon = 'icons/obj/pipes/power_cond_white.dmi';
 	icon_state = '2-8';
-	name = "suspisious cable"
+	name = "suspisious cable";
+	layer = 2.8
 	},
 /turf/open/gm/dirt,
 /area/lv553/oob)
@@ -37604,6 +38798,10 @@
 /obj/structure/machinery/power/port_gen/pacman/super,
 /turf/open/asphalt/cement,
 /area/lv553/indoors/uscm_garrison/io_office)
+"xZY" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "yax" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/dirtgrassborder{
@@ -37678,6 +38876,9 @@
 	icon_state = "barber"
 	},
 /area/lv553/indoors/hospital/operating_rooms)
+"ybW" = (
+/turf/open/floor/plating,
+/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "yct" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "bedroom door"
@@ -40801,12 +42002,12 @@ vbZ
 gUi
 bhp
 sRY
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
+lwa
+lwa
+lwa
+lwa
+lwa
+lwa
 bhp
 vbZ
 vbZ
@@ -41025,12 +42226,12 @@ bhp
 bhp
 xaD
 bhp
-pCm
-guJ
-aUt
-aUt
-aUt
-pCm
+lwa
+rrF
+rrF
+rrF
+rrF
+lwa
 bhp
 bhp
 vbZ
@@ -41249,12 +42450,12 @@ bhp
 bhp
 bhp
 bhp
-pCm
-guJ
-aUt
-aUt
-aUt
-pCm
+lwa
+fia
+fia
+rrF
+rrF
+lwa
 bhp
 xaD
 vbZ
@@ -41473,12 +42674,12 @@ bhp
 bhp
 sRY
 bhp
-pCm
-aUt
-aUt
-aUt
-aUt
-pCm
+lwa
+owY
+fia
+fia
+eUh
+lwa
 sRY
 bhp
 bhp
@@ -41674,40 +42875,40 @@ ueo
 ueo
 ueo
 onP
-onP
-pCm
-qer
-qer
-qer
-pCm
-pCm
-pCm
-qer
-qer
-qer
-pCm
-pCm
-pCm
-qer
-qer
-qer
-pCm
-pCm
-pCm
-qer
-qer
-qer
-pCm
-pnE
-aUt
-aUt
-aUt
-pCm
-qer
-qer
-qer
-pCm
-pCm
+oOV
+oOV
+bgk
+bgk
+bgk
+oOV
+oOV
+oOV
+bgk
+bgk
+bgk
+oOV
+oOV
+oOV
+bgk
+bgk
+bgk
+oOV
+oOV
+oOV
+bgk
+bgk
+bgk
+lwa
+uDB
+fia
+fia
+fia
+lwa
+bgk
+bgk
+bgk
+oOV
+oOV
 pCm
 qer
 qer
@@ -41898,40 +43099,40 @@ beB
 tVg
 tVg
 beB
-ueo
-bhp
-bhp
-sRY
-gUi
-bhp
-ncN
-bhp
-jrT
-kkE
-kkE
-kkE
-edV
-kkE
-kkE
-kkE
-kkE
-kkE
-edV
-kkE
-kkE
-kkE
-xBF
-pCm
-aUt
-aUt
-aUt
-aUt
-pCm
-bhp
-bhp
-bhp
-ncN
-qer
+bgk
+nbj
+nbj
+gys
+lsf
+nbj
+oPB
+nbj
+pun
+wYC
+wYC
+wYC
+xBI
+wYC
+wYC
+wYC
+wYC
+wYC
+xBI
+wYC
+wYC
+wYC
+dWo
+lwa
+ubF
+fia
+fia
+fia
+lwa
+nbj
+nbj
+nbj
+oPB
+bgk
 ycu
 ycu
 ycu
@@ -42122,40 +43323,40 @@ tVg
 pPt
 tVg
 tVg
-ueo
-bhp
-bhp
-gUi
-bhp
-bhp
-bhp
-jrT
-vWV
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-vWz
-pCm
-aUt
-aUt
-aUt
-aUt
-pCm
-xBF
-jrT
-kkE
-kkE
-ciM
+bgk
+nbj
+nbj
+lsf
+nbj
+nbj
+nbj
+pun
+lLz
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+rQP
+lwa
+ubF
+fia
+fia
+fia
+lwa
+dWo
+pun
+wYC
+wYC
+ezl
 ycu
 ycu
 ycu
@@ -42346,47 +43547,47 @@ tVg
 tVg
 tVg
 tVg
-ueo
-bhp
-sRY
-bhp
-bhp
-jrT
-kkE
-vWV
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-vWz
-vWV
-nRr
-nRr
-eff
-eff
-eff
-eff
-eff
-eff
-eff
-eff
+bgk
+nbj
+gys
+nbj
+nbj
+pun
+wYC
+lLz
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+rQP
+lLz
+mqA
+mqA
+qFs
+qFs
+dCQ
+dCQ
+dCQ
+dCQ
+dCQ
+dCQ
 msP
 uZA
 uZA
@@ -42569,48 +43770,48 @@ tVg
 tVg
 tVg
 beB
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-nRr
-nRr
-nRr
-nRr
-gYk
-iwf
-iwf
-iwf
-iwf
-iwf
-iwf
-iwf
-owM
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-eff
+lwa
+lwa
+lwa
+lwa
+lwa
+lwa
+lwa
+lwa
+mqA
+mqA
+mqA
+mqA
+roO
+twT
+twT
+twT
+twT
+xox
+twT
+twT
+jeQ
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+dCQ
 gqy
-aUt
-aUt
-aUt
-aUt
+fia
+vLi
+fia
+fia
 msP
 uZA
 uZA
@@ -42793,48 +43994,48 @@ lDo
 tVg
 beB
 tVg
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-nRr
-nRr
-nRr
-nRr
-dsE
-eff
-eff
-eff
-eff
-eff
-eff
-eff
-eff
-eff
-cYW
-cYW
-cYW
-eff
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-eff
-aUt
-aUt
-aUt
-aUt
-aUt
+lwa
+lwa
+lwa
+lwa
+lwa
+lwa
+lwa
+lwa
+mqA
+mqA
+mqA
+mqA
+lBb
+dCQ
+dCQ
+dCQ
+dCQ
+dCQ
+dCQ
+dCQ
+dCQ
+dCQ
+xoz
+xoz
+xoz
+dCQ
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+dCQ
+fia
+fia
+fia
+fia
+fia
 msP
 uZA
 uZA
@@ -43017,48 +44218,48 @@ jdw
 lDo
 cYg
 tVg
-pCm
-pCm
-bEu
-bEu
-bEu
-smj
-pCm
-pCm
-nRr
-nRr
-nRr
-nRr
-dsE
-eff
-spx
-slT
-xRU
-eff
+lwa
+lwa
+wII
+sGs
+bRR
+qlD
+lwa
+lwa
+hOT
+mqA
+mqA
+pCH
+lBb
+dCQ
+ptv
+jHE
+dOr
+dCQ
 rsg
-slT
-qCJ
-eff
-hqg
-qOy
-hqg
-eff
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-eff
-guJ
-guJ
-hUk
-hUk
-aUt
+mrY
+bYj
+dCQ
+jeg
+tsl
+lVW
+dCQ
+rUz
+wUO
+xxK
+vLr
+mqA
+mqA
+mqA
+mqA
+mqA
+mqA
+dCQ
+ubF
+ubF
+xZY
+xZY
+fia
 msP
 uZA
 uZA
@@ -43241,48 +44442,48 @@ wRC
 jdw
 lDo
 pPt
-pCm
-pCm
-smj
-smj
-smj
-smj
-smj
-smj
-nRr
-nRr
-nRr
-nRr
-dsE
-eff
-spx
-slT
-xRU
-eff
-rsg
-slT
-qCJ
-eff
-kKS
-kKS
-hqg
-eff
-aUt
-aUt
-aUt
-aUt
-aUt
-aUt
-nRr
-nRr
-nRr
-nRr
-eff
-eff
-eff
-eff
-eff
-eff
+lwa
+lwa
+bGT
+bGT
+bGT
+bGT
+ybW
+rSF
+mqA
+mqA
+mqA
+mqA
+lsz
+dCQ
+evT
+vhM
+dOr
+dCQ
+bmS
+cEg
+bYj
+dCQ
+sfR
+cuE
+rLe
+dCQ
+fCl
+dCQ
+dCQ
+pVC
+wUO
+kzd
+mqA
+mqA
+mqA
+mqA
+dCQ
+dCQ
+dCQ
+dCQ
+dCQ
+dCQ
 msP
 uZA
 uZA
@@ -43465,43 +44666,43 @@ wRC
 wRC
 jdw
 lDo
-pCm
-pCm
-bEu
-bEu
-bEu
-smj
-smj
-smj
-nRr
-nRr
-nRr
-nRr
-dsE
-eff
-spx
-slT
-xRU
-eff
+lwa
+lwa
+cAf
+hMT
+fnb
+bGT
+ybW
+rSF
+mqA
+mqA
+mqA
+mqA
+fuw
+dCQ
+evT
+vhM
+ryr
+dCQ
 bcB
-slT
-qCJ
-eff
-hqg
-hqg
-hqg
-eff
-wRR
-eff
-eff
-eff
-eff
-eff
-nRr
-nRr
-nRr
-nRr
-eff
+vhM
+kQC
+dCQ
+rpf
+wJS
+ugG
+iny
+rpf
+vNg
+dCQ
+dCQ
+dCQ
+dCQ
+mqA
+mqA
+mqA
+mqA
+dCQ
 ycu
 qLP
 tMo
@@ -43689,43 +44890,43 @@ wRC
 wRC
 wRC
 oSa
-pCm
-pCm
-smj
-smj
-smj
-smj
-smj
-smj
-nRr
-nRr
-nRr
-nRr
-vWz
-eff
-eff
+lwa
+lwa
+bGT
+bGT
+bGT
+ybW
+ybW
+rSF
+mqA
+mqA
+mqA
+mqA
+rQP
+dCQ
+dCQ
 bnf
-eff
-eff
-eff
+dCQ
+dCQ
+dCQ
 meC
-eff
-eff
-eff
+dCQ
+dCQ
+dCQ
 tyB
-eff
-eff
-hqg
-hqg
-hqg
-hqg
-hqg
-eff
-nRr
-nRr
-nRr
-nRr
-eff
+dCQ
+dCQ
+rpf
+rpf
+ehE
+jeg
+hut
+dCQ
+mqA
+mqA
+mqA
+mqA
+dCQ
 ycu
 oem
 dbH
@@ -43913,43 +45114,43 @@ wRC
 wRC
 wRC
 oSa
-pCm
-pCm
-bEu
-bEu
-bEu
-smj
-pCm
-pCm
-nRr
-nRr
-nRr
-nRr
-nRr
-eff
-hqg
-hqg
-hqg
-hqg
-hqg
-hqg
-hqg
-hqg
-hqg
-hqg
+lwa
+lwa
+wGH
+iEj
+siv
+eDE
+lwa
+lwa
+vHg
+mqA
+mqA
+mqA
+mqA
+dCQ
+cBN
+rpf
+rpf
+sFv
+rpf
+srJ
+rpf
+fmE
+rpf
+rpf
 hSx
-eff
+dCQ
 dUg
 rpf
 qOy
-hqg
-hqg
-eff
+mUn
+pPd
+dCQ
 bXk
 bXk
 bXk
 pDF
-eff
+dCQ
 dbH
 bVL
 uWq
@@ -44137,38 +45338,38 @@ jqZ
 wRC
 wRC
 oSa
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-nRr
-nRr
-nRr
-nRr
-nRr
-cYW
-hqg
-hqg
-hqg
-hqg
-hqg
-hqg
-hqg
-hqg
-hqg
-hqg
-hqg
-eff
-hqg
-kKS
-kKS
-kKS
-hqg
-eff
+lwa
+lwa
+lwa
+lwa
+lwa
+lwa
+lwa
+lwa
+mqA
+mqA
+mqA
+mqA
+mqA
+xoz
+cBG
+jIl
+wCh
+lSi
+lCF
+rpf
+vqx
+lGA
+vzW
+myG
+jeg
+dCQ
+wRR
+dCQ
+bKP
+cdL
+dCQ
+dCQ
 uZA
 uZA
 uZA
@@ -44361,38 +45562,38 @@ jlE
 wRC
 wRC
 oSa
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-nRr
-nRr
-nRr
-nRr
-nRr
-cYW
-hqg
-hqg
-hqg
-hqg
-hqg
-hqg
-hqg
-hqg
-hqg
-hqg
-hqg
+lwa
+lwa
+lwa
+lwa
+lwa
+lwa
+lwa
+lwa
+mqA
+mqA
+mqA
+mqA
+mqA
+maa
+rpf
+rpf
+vjT
+lSi
+dRH
+rpf
+jpI
+uxD
+mJK
+ovs
+rpf
 maa
 iJr
-izj
+afO
 iJr
-izj
-iJr
-cYW
+xjd
+wLk
+xoz
 uZA
 uZA
 uZA
@@ -44586,37 +45787,37 @@ wRC
 wRC
 jdw
 lDo
-ueo
-bhp
-bhp
-bhp
-sRY
-bhp
-qFQ
-iwf
-owM
-nRr
-nRr
-nRr
-eff
-hqg
-hqg
-hqg
-hqg
-hqg
-hqg
-hqg
-hqg
-hqg
-hqg
-hqg
-eff
-hqg
+bgk
+nbj
+nbj
+nbj
+gys
+nbj
+pZL
+twT
+jeQ
+mqA
+mqA
+mqA
+dCQ
+mjg
+jeg
+rpf
+rpf
+rpf
+oFS
+rpf
+rpf
+rpf
+rpf
+rpf
+glf
+rpf
 iJr
-izj
+xjd
 iJr
-hqg
-cYW
+rpf
+xoz
 uZA
 uZA
 uZA
@@ -44810,37 +46011,37 @@ wRC
 wRC
 wRC
 oSa
-ueo
-bhp
-xaD
-bhp
-bhp
-bhp
-sRY
-bhp
-qFQ
-owM
-nRr
-nRr
-eff
-eff
+bgk
+nbj
+pJm
+nbj
+nbj
+nbj
+gys
+nbj
+pZL
+jeQ
+mqA
+gEz
+dCQ
+dCQ
 avz
-eff
-avz
-eff
-eff
-eff
-avz
-eff
-avz
-eff
-eff
-hqg
-hqg
-hqg
-hqg
-hqg
-eff
+dCQ
+nxR
+dCQ
+dCQ
+dCQ
+nxR
+dCQ
+nxR
+dCQ
+dCQ
+mEO
+ohL
+rpf
+ceK
+bRf
+dCQ
 uZA
 uZA
 uZA
@@ -45034,37 +46235,37 @@ jqZ
 wRC
 wRC
 oSa
-ueo
-bhp
-bhp
-bhp
-bhp
-xaD
-bhp
-bhp
-bhp
-qFQ
-iwf
-iwf
-eff
-hqg
-hqg
-eff
-hqg
-hqg
-eff
-hqg
-hqg
-eff
-hqg
-hqg
-eff
-eff
-eff
+bgk
+nbj
+nbj
+nbj
+nbj
+pJm
+nbj
+nbj
+nbj
+pZL
+twT
+twT
+dCQ
+nhg
+hRM
+dCQ
+mOd
+qGF
+dCQ
+eKa
+gtb
+dCQ
+sFB
+uKi
+dCQ
+dCQ
+dCQ
 wRR
-eff
-eff
-eff
+dCQ
+dCQ
+dCQ
 uZA
 uZA
 uZA
@@ -45258,37 +46459,37 @@ jlE
 wRC
 wRC
 oSa
-onP
-qer
-qer
-qer
-pCm
-qer
-qer
-qer
-pCm
-qer
-qer
-qer
-eff
+oOV
+bgk
+bgk
+bgk
+oOV
+bgk
+bgk
+bgk
+oOV
+bgk
+bgk
+bgk
+dCQ
+jrH
+brV
+dCQ
+rIk
+nBH
+dCQ
+sTh
+mqn
+dCQ
+quY
 fYM
-hqg
-eff
-hqg
-fYM
-eff
-fYM
-hqg
-eff
-hqg
-fYM
-eff
-msP
-msP
-msP
-msP
-msP
-msP
+dCQ
+dse
+whA
+ics
+siN
+whA
+ics
 uZA
 uZA
 uZA
@@ -45494,23 +46695,23 @@ rnz
 rnz
 cGV
 rnz
-eff
-eff
-cYW
-eff
-cYW
-eff
-eff
-eff
-cYW
-eff
-cYW
-eff
-eff
-msP
-msP
-msP
-msP
+dCQ
+dCQ
+xoz
+dCQ
+xoz
+dCQ
+dCQ
+dCQ
+xoz
+dCQ
+nnX
+dCQ
+dCQ
+fIb
+enQ
+rHy
+ics
 msP
 msP
 uZA
@@ -45728,7 +46929,7 @@ ycu
 ycu
 ycu
 ycu
-ycu
+lHW
 ycu
 qBs
 hwR
@@ -48192,7 +49393,7 @@ wgu
 wgu
 eff
 eff
-dyY
+oSx
 eff
 eff
 eff
@@ -48415,12 +49616,12 @@ eff
 pYa
 wgu
 lFp
-kWo
-kWo
-kWo
+izj
+izj
+izj
 eff
-kWo
-kWo
+izj
+izj
 eff
 ycu
 ycu
@@ -48639,12 +49840,12 @@ eff
 eff
 eff
 eff
-dJQ
-kWo
-kWo
+aHi
+izj
+izj
 lFp
-kWo
-fXF
+izj
+fEW
 eff
 ycu
 ycu
@@ -48863,9 +50064,9 @@ ycu
 ycu
 szV
 eff
-kWo
-kWo
-kWo
+izj
+izj
+izj
 eff
 eff
 eff
@@ -49087,12 +50288,12 @@ kEO
 tMo
 ycu
 eff
-kWo
-kWo
-kWo
+izj
+izj
+izj
 lFp
-kWo
-kWo
+izj
+izj
 eff
 ycu
 szV
@@ -49311,12 +50512,12 @@ qcQ
 ycu
 tMo
 eff
-kWo
-kWo
-kWo
+izj
+izj
+izj
 eff
-kWo
-fXF
+izj
+fEW
 eff
 ycu
 ycu
@@ -49537,7 +50738,7 @@ ycu
 eff
 eff
 eff
-voY
+jjy
 eff
 eff
 eff
@@ -49759,10 +50960,10 @@ uZA
 qcQ
 szV
 eff
-kWo
-kWo
-kWo
-kWo
+izj
+izj
+izj
+izj
 eff
 szV
 ycu
@@ -49983,10 +51184,10 @@ uZA
 qcQ
 ucO
 eff
-kWo
-kWo
-kWo
-kWo
+izj
+izj
+izj
+izj
 eff
 ycu
 ycu
@@ -50207,10 +51408,10 @@ uZA
 jgS
 kEO
 eff
-kWo
-kWo
-kWo
-kWo
+izj
+izj
+izj
+izj
 eff
 ucO
 tMo
@@ -55822,8 +57023,8 @@ eff
 cVb
 kWo
 xHa
-bgk
-nZb
+kWo
+kWo
 eff
 eff
 eff
@@ -55970,7 +57171,7 @@ qMp
 lHq
 xCP
 nbA
-fia
+gPv
 gPv
 gPv
 gPv
@@ -56047,7 +57248,7 @@ xZj
 kWo
 sbF
 kWo
-jqL
+kWo
 eff
 ahU
 nCz
@@ -57070,7 +58271,7 @@ wgy
 wgy
 wgy
 wgy
-dCQ
+wgy
 wgy
 leB
 oXX
@@ -63094,8 +64295,8 @@ jov
 rJk
 adv
 wWJ
-bUv
-mqA
+wWJ
+wWJ
 nhs
 jni
 ryu
@@ -63543,8 +64744,8 @@ gMY
 mde
 fTT
 wZT
-bUv
 wWJ
+jgK
 jni
 qjC
 cyu
@@ -97525,7 +98726,7 @@ xle
 xle
 pCm
 fOB
-wEJ
+rwS
 smj
 smj
 pCm

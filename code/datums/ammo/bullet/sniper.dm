@@ -104,17 +104,17 @@
 
 	shrapnel_chance = 0 // This isn't leaving any shrapnel.
 	accuracy = HIT_ACCURACY_TIER_8
-	damage = 125
+	damage = 100
 	shell_speed = AMMO_SPEED_TIER_6
 
 /datum/ammo/bullet/sniper/anti_materiel/on_hit_mob(mob/M,obj/projectile/P)
 	if((P.projectile_flags & PROJECTILE_BULLSEYE) && M == P.original)
 		var/mob/living/L = M
-		var/size_damage_mod = 0.8
+		var/size_damage_mod = 0.2
 		if(isxeno(M))
 			var/mob/living/carbon/xenomorph/target = M
 			if(target.mob_size >= MOB_SIZE_XENO)
-				size_damage_mod += 0.6
+				size_damage_mod += 0.4
 			if(target.mob_size >= MOB_SIZE_BIG)
 				size_damage_mod += 0.6
 		L.apply_armoured_damage(damage*size_damage_mod, ARMOR_BULLET, BRUTE, null, penetration)

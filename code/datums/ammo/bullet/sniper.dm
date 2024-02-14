@@ -141,12 +141,13 @@
 
 /datum/ammo/bullet/sniper/anti_materiel/vulture/holo_target
 	name = "holo-targetting anti-materiel sniper bullet"
-	damage = 60 //it's a big bullet but it's purpose is to support marines, not kill enemies by itself
+	damage = 60 // it's a big bullet but its purpose is to support marines, not kill enemies by itself
 	var/bonus_damage_cap_increase = 233 // the result will be a 1.33 damage multiplier
-	var/holo_stacks = 333
+	var/holo_stacks = 333 // inflicts max holo stacks in one hit
+	var/stack_loss_multiplier = 2 // instead of taking 1 minute to wear off, it will now take 30 seconds
 
 /datum/ammo/bullet/sniper/anti_materiel/vulture/holo_target/on_hit_mob(mob/hit_mob, obj/projectile/bullet)
-	hit_mob.AddComponent(/datum/component/bonus_damage_stack, holo_stacks, world.time, bonus_damage_cap_increase)
+	hit_mob.AddComponent(/datum/component/bonus_damage_stack, holo_stacks, world.time, bonus_damage_cap_increase, stack_loss_multiplier)
 	playsound(hit_mob, 'sound/weapons/gun_vulture_mark.ogg', 75)
 	to_chat(hit_mob, isxeno(hit_mob) ? SPAN_XENOHIGHDANGER("It feels as if we were MARKED FOR DEATH!") : SPAN_HIGHDANGER("It feels like you were MARKED FOR DEATH!"))
 	hit_mob.balloon_alert_to_viewers("marked for death!")

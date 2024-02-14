@@ -17,10 +17,12 @@
 	var/last_stack
 	/// extra cap limit added by more powerful bullets
 	var/bonus_damage_cap_increase = 0
+	var/stack_loss_multiplier = 1
 
-/datum/component/bonus_damage_stack/Initialize(bonus_damage_stacks, time, bonus_damage_cap_increase)
+/datum/component/bonus_damage_stack/Initialize(bonus_damage_stacks, time, bonus_damage_cap_increase, stack_loss_multiplier)
 	. = ..()
 	src.bonus_damage_stacks = bonus_damage_stacks
+	src.stack_loss_multiplier = stack_loss_multiplier
 	src.bonus_damage_cap = initial(bonus_damage_cap) + bonus_damage_cap_increase // this way it will never increase over the intended limit
 	if(!time)
 		time = world.time
@@ -39,7 +41,7 @@
 
 /datum/component/bonus_damage_stack/process(delta_time)
 	if(last_stack + 5 SECONDS < world.time)
-		bonus_damage_stacks = bonus_damage_stacks - BONUS_DAMAGE_STACK_LOSS_PER_SECOND * delta_time
+		bonus_damage_stacks = bonus_damage_stacks - BONUS_DAMAGE_STACK_LOSS_PER_SECOND * stack_loss_multiplier * delta_time
 
 	if(bonus_damage_stacks <= 0)
 		qdel(src)

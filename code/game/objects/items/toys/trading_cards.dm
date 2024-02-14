@@ -53,7 +53,7 @@
 			icon_state = back_icon_state
 			is_front = FALSE
 		else
-			to_chat(user, "<span>You reveal the card. It has a picture of [picture_description] on it!</span>")
+			to_chat(user, SPAN_NOTICE("You reveal the card. It has a picture of [picture_description] on it!</span>"))
 			name = front_name
 			desc = front_description
 			icon_state = front_icon_state

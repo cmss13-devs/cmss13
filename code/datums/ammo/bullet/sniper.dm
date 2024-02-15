@@ -140,7 +140,7 @@
 	))
 
 /datum/ammo/bullet/sniper/anti_materiel/vulture/holo_target
-	name = "holo-targetting anti-materiel sniper bullet"
+	name = "holo-targeting anti-materiel sniper bullet"
 	damage = 60 // it's a big bullet but its purpose is to support marines, not to kill enemies by itself
 	var/holo_stacks = 333 // inflicts max holo stacks in one hit. this equates to a 33% damage bonus
 	var/bonus_damage_cap_increase = 233 // increases the default holo stack cap of 100 by 233, to 333 in total.

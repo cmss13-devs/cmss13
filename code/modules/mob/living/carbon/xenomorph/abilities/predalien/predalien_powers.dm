@@ -58,7 +58,7 @@
 			xeno.spin_circle()
 
 			for (var/mob/living/carbon/carbon in orange(xeno, range))
-				if(!isxeno(carbon) || xeno.can_not_harm(carbon))
+				if(!xeno.can_not_harm(carbon))
 					continue
 
 				if (carbon.stat == DEAD)

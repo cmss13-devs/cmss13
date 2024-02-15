@@ -1895,8 +1895,9 @@
 
 //proc that allow to repaint/change sprite for
 
-GLOBAL_LIST_INIT(armor_paints, list("padded" = "L1", "padless" = "L2", "padless_lines" = "L3", "carrier" = "L4", "skull" = "L5", "smooth" = "L6"))
-
+GLOBAL_LIST_INIT(armor_paints_light, list("padded" = "L1", "padless" = "L2", "padless_lines" = "L3", "carrier" = "L4", "skull" = "L5", "smooth" = "L6"))
+GLOBAL_LIST_INIT(armor_paints_medium, list("padded" = "1", "padless" = "2", "padless_lines" = "3", "carrier" = "4", "skull" = "5", "smooth" = "6"))
+GLOBAL_LIST_INIT(armor_paints_heavy, list("padded" = "H1", "padless" = "H2", "padless_lines" = "H3", "carrier" = "H4", "skull" = "H5", "smooth" = "H6"))
 /obj/item/device/armor_painter
 	name = "armor painter"
 	icon = 'icons/obj/items/paper.dmi'
@@ -1908,8 +1909,18 @@ GLOBAL_LIST_INIT(armor_paints, list("padded" = "L1", "padless" = "L2", "padless_
 /obj/item/device/armor_painter/New()
 	..()
 	modes = new()
-	for(var/C in GLOB.armor_paints)
-		modes += "[C]"
+	if(istype(A,/obj/item/clothing/suit/storage/marine/light))
+		to_chat(user, "it's an light armor.")
+		for(var/C in GLOB.armor_paints_light)
+			modes += "[C]"
+	if(istype(A,/obj/item/clothing/suit/storage/marine/medium))
+		to_chat(user, "it's an meduim armor.")
+		for(var/C in GLOB.armor_paints_medium)
+			modes += "[C]"
+	if(istype(A,/obj/item/clothing/suit/storage/marine/heavy))
+		to_chat(user, "it's an heavy armor.")
+		for(var/C in GLOB.armor_paints_heavy)
+			modes += "[C]"
 	mode = pick(modes)
 
 /obj/item/device/armor_painter/afterattack(atom/A, mob/user as mob, proximity)
@@ -1923,18 +1934,18 @@ GLOBAL_LIST_INIT(armor_paints, list("padded" = "L1", "padless" = "L2", "padless_
 
 	if(istype(A,/obj/item/clothing/suit/storage/marine/light))
 		to_chat(user, "it's an light armor.")
-		A.icon_state = (GLOB.armor_paints[mode])
+		A.icon_state = (GLOB.armor_paints_light[mode])
 		return
-/*
+
 	if(istype(A,/obj/item/clothing/suit/storage/marine/medium))
 		to_chat(user, "it's an meduim armor.")
-		P.change_color(GLOB.pipe_colors[mode])
+		A.icon_state = (GLOB.armor_paints_medium[mode])
 		return
 
 	if(istype(A,/obj/item/clothing/suit/storage/marine/heavy))
+		A.icon_state = (GLOB.armor_paints_heavy[mode])
 		to_chat(user, "it's an heavy armor.")
 		return
-*/
 
 /obj/item/device/armor_painter/attack_self(mob/user)
 	..()
@@ -1968,3 +1979,33 @@ GLOBAL_LIST_INIT(armor_paints, list("padded" = "L1", "padless" = "L2", "padless_
 /obj/item/clothing/suit/storage/marine/light/smooth
 	icon_state = "L6"
 	armor_variation = 0
+
+/obj/item/clothing/suit/storage/marine/medium/padded
+	name = "M3 pattern padded marine armor"
+	icon_state = "1"
+	specialty = "M3 pattern padded marine"
+
+/obj/item/clothing/suit/storage/marine/medium/padless
+	name = "M3 pattern padless marine armor"
+	icon_state = "2"
+	specialty = "M3 pattern padless marine"
+
+/obj/item/clothing/suit/storage/marine/medium/padless_lines
+	name = "M3 pattern ridged marine armor"
+	icon_state = "3"
+	specialty = "M3 pattern ridged marine"
+
+/obj/item/clothing/suit/storage/marine/medium/carrier
+	name = "M3 pattern carrier marine armor"
+	icon_state = "4"
+	specialty = "M3 pattern carrier marine"
+
+/obj/item/clothing/suit/storage/marine/medium/skull
+	name = "M3 pattern skull marine armor"
+	icon_state = "5"
+	specialty = "M3 pattern skull marine"
+
+/obj/item/clothing/suit/storage/marine/medium/smooth
+	name = "M3 pattern smooth marine armor"
+	icon_state = "6"
+	specialty = "M3 pattern smooth marine"

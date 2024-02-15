@@ -310,10 +310,7 @@
 			SPAN_XENOWARNING("We grab [living_mob] by the back of their leg! and repeatedly slam them onto the ground!")) // more flair
 
 			smashing = TRUE
-			addtimer(CALLBACK(src, PROC_REF(stop_lunging)), get_xeno_stun_duration(living_mob, 1) SECONDS)
-
-/mob/living/carbon/xenomorph/predalien/proc/stop_lunging()
-	smashing = FALSE
+			addtimer(VARSET_CALLBACK(src, smashing, FALSE), get_xeno_stun_duration(living_mob, 1) SECONDS)
 
 /mob/living/carbon/xenomorph/predalien/hitby(atom/movable/movable_atom)
 	if(ishuman(movable_atom))

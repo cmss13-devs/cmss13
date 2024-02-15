@@ -302,7 +302,6 @@
 			sleep(4)
 			playsound(get_turf(living_mob), 'sound/effects/bang.ogg', 25, 0) // bang and bone break for dramatic damage effect
 			playsound(get_turf(living_mob),"slam", 50, 1)
-			playsound(get_turf(living_mob),'sound/effects/bone_break1.ogg', 100, 1)
 			var/turf/back_to_middle = get_step(living_mob, SOUTH) // move them back one tile south
 			living_mob.forceMove(back_to_middle)
 			INVOKE_ASYNC(living_mob, TYPE_PROC_REF(/mob, emote), "scream") // make them scream for dramatic falir

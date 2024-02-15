@@ -2978,9 +2978,9 @@
 
 // Grille
 
-/obj/structure/prop/hybrisa/misc/electricgrille
+/obj/structure/prop/hybrisa/misc/highvoltagegrille
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
-	icon_state = "grille"
+	icon_state = "highvoltagegrille"
 
 //
 /obj/structure/prop/hybrisa/misc/buildinggreeblies

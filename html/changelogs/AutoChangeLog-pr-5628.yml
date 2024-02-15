@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - admin: "permanent and sticky bans are now handled in game, instead of being managed externally"

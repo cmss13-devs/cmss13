@@ -252,7 +252,6 @@
 		return
 
 	apply_cooldown()
-	predalien_smash.visible_message(SPAN_XENOWARNING("[predalien_smash] grabs [carbon]!"), SPAN_XENOWARNING("We grab [carbon]!"))
 
 	predalien_smash.throw_atom(get_step_towards(affected_atom, predalien_smash), grab_range, SPEED_FAST, predalien_smash)
 

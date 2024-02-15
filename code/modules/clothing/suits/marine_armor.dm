@@ -316,7 +316,7 @@
 /datum/action/item_action/intel/toggle_motion_detector/action_activate()
 	. = ..()
 	var/obj/item/clothing/suit/storage/marine/medium/rto/intel/recon = holder_item
-	recon.toggle_motion_detector(usr)
+	recon.toggle_motion_detector(owner)
 
 /datum/action/item_action/intel/toggle_motion_detector/proc/update_icon()
 	if(!holder_item)

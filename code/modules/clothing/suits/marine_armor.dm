@@ -1912,7 +1912,7 @@ GLOBAL_LIST_INIT(armor_paints_heavy, list("padded" = "H1", "padless" = "H2", "pa
 	..()
 
 	modes_light = new()
-	for(var/C in GLOB.armor_paints)
+	for(var/C in GLOB.armor_paints_light)
 		modes_light += "[C]"
 	mode = pick(modes_light)
 

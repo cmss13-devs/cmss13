@@ -283,9 +283,6 @@
 	var/mob/living/living_mob = movable_atom
 	var/should_neckgrab = !(src.can_not_harm(living_mob)) && feral_smash
 
-	if(!QDELETED(living_mob) && !QDELETED(living_mob.pulledby) && living_mob != src ) //override pull of other mobs
-		visible_message(SPAN_WARNING("[src] has broken [living_mob.pulledby]'s grip on [living_mob]!"), null, null, 5)
-		living_mob.pulledby.stop_pulling()
 
 	. = ..(living_mob, feral_smash, should_neckgrab)
 

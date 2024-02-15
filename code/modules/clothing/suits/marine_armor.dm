@@ -1892,3 +1892,79 @@
 	armor_bio = CLOTHING_ARMOR_GIGAHIGHPLUS
 	armor_rad = CLOTHING_ARMOR_GIGAHIGHPLUS
 	armor_internaldamage = CLOTHING_ARMOR_HIGHPLUS
+
+//proc that allow to repaint/change sprite for
+
+GLOBAL_LIST_INIT(armor_paints, list("padded" = L1, "padless" = L2, "padless_lines" = L3, "carrier" = L4, "skull" = L5, "smooth" = L6))
+
+/obj/item/device/armor_painter
+	name = "armor painter"
+	icon = 'icons/obj/items/paper.dmi'
+	icon_state = "labeler1"
+	item_state = "flight"
+	var/list/modes
+	var/mode
+
+/obj/item/device/armor_painter/New()
+	..()
+	modes = new()
+	for(var/C in GLOB.armor_paints)
+		modes += "[C]"
+	mode = pick(modes)
+
+/obj/item/device/armor_painter/afterattack(atom/A, mob/user as mob, proximity)
+	if(!proximity)
+		to_chat(user, "target isn't at proximity.")
+		return
+
+	if(!in_range(user, A))
+		to_chat(user, "target isn't in range.")
+		return
+
+	if(istype(A,/obj/item/clothing/suit/storage/marine/light))
+		to_chat(user, "it's an light armor.")
+		A.icon_state = (GLOB.armor_paints[mode])
+		return
+/*
+	if(istype(A,/obj/item/clothing/suit/storage/marine/medium))
+		to_chat(user, "it's an meduim armor.")
+		P.change_color(GLOB.pipe_colors[mode])
+		return
+
+	if(istype(A,/obj/item/clothing/suit/storage/marine/heavy))
+		to_chat(user, "it's an heavy armor.")
+		return
+*/
+
+/obj/item/device/armor_painter/attack_self(mob/user)
+	..()
+	mode = tgui_input_list(usr, "Which armor tag do you want to use?", "Armor painter", modes)
+
+/obj/item/device/armor_painter/get_examine_text(mob/user)
+	. = ..()
+	. += "It is in [mode] mode."
+
+
+/obj/item/clothing/suit/storage/marine/light/padded
+	icon_state = "L1"
+	armor_variation = 0
+
+/obj/item/clothing/suit/storage/marine/light/padless
+	icon_state = "L2"
+	armor_variation = 0
+
+/obj/item/clothing/suit/storage/marine/light/padless_lines
+	icon_state = "L3"
+	armor_variation = 0
+
+/obj/item/clothing/suit/storage/marine/light/carrier
+	icon_state = "L4"
+	armor_variation = 0
+
+/obj/item/clothing/suit/storage/marine/light/skull
+	icon_state = "L5"
+	armor_variation = 0
+
+/obj/item/clothing/suit/storage/marine/light/smooth
+	icon_state = "L6"
+	armor_variation = 0

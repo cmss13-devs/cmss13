@@ -44,7 +44,7 @@
 		src.bonus_damage_cap = initial(bonus_damage_cap) + src.bonus_damage_cap_increase
 
 	// however, if it has a worse stack_loss_multiplier, it will get applied instead.
-	// this way, if a weapon is meant to have a big bonus cap that rapidly depletes, it will not be messed up by a weapon that a low stack_loss_multiplier.
+	// this way, if a weapon is meant to have a big bonus cap but holo stacks that rapidly deplete, it will not be messed up by a weapon that a low stack_loss_multiplier.
 	if(src.stack_loss_multiplier < stack_loss_multiplier)
 		src.stack_loss_multiplier = stack_loss_multiplier
 

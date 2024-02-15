@@ -152,9 +152,11 @@
 	to_chat(hit_mob, isxeno(hit_mob) ? SPAN_XENOHIGHDANGER("It feels as if we were MARKED FOR DEATH!") : SPAN_HIGHDANGER("It feels as if you were MARKED FOR DEATH!"))
 	hit_mob.balloon_alert_to_viewers("marked for death!")
 
-// the effect should be limited to one target
+// the effect should be limited to one target, with IFF to compensate how hard it will be to hit these shots
 /datum/ammo/bullet/sniper/anti_materiel/vulture/holo_target/set_bullet_traits()
-	return
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
+	))
 
 /datum/ammo/bullet/sniper/elite
 	name = "supersonic sniper bullet"

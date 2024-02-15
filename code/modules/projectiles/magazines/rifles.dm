@@ -462,7 +462,7 @@
 
 /obj/item/ammo_magazine/rifle/boltaction/vulture/holo_target
 	name = "\improper M707 \"Vulture\" holo-target magazine (20x102mm)"
-	desc = "A magazine for the M707 \"Vulture\" anti-matieriel rifle. Contains up to 4 massively oversized holo-target rounds which excel at marking heavy targets for ground troops. The logistical requirements for such a capability have severely hampered the bullet's ballistic performance."
+	desc = "A magazine for the M707 \"Vulture\" anti-matieriel rifle. Contains up to 4 massively oversized <b>IFF-CAPABLE</b> holo-targeting rounds, which excel at marking heavy targets to be attacked by allied ground forces. The logistical requirements for such capabilities heavily hinder the performance and stopping power of this round."
 	default_ammo =  /datum/ammo/bullet/sniper/anti_materiel/vulture/holo_target
 	ammo_band_color = AMMO_BAND_COLOR_HOLOTARGETING
 

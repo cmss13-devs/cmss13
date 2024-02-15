@@ -312,7 +312,6 @@
 				return
 			visible_message(SPAN_XENOWARNING("[src] grabs [living_mob] by the back of their leg! and repeatedly slams them onto the ground!"), \
 			SPAN_XENOWARNING("We grab [living_mob] by the back of their leg! and repeatedly slam them onto the ground!")) // more flair
-			living_mob.pulledby.visible_message(SPAN_XENOHIGHDANGER("[living_mob.pulledby] grabs [living_mob] by the leg and repeatedly slams them to the ground!"))
 
 			smashing = TRUE
 			addtimer(CALLBACK(src, PROC_REF(stop_lunging)), get_xeno_stun_duration(living_mob, 1) SECONDS)

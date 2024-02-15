@@ -1924,7 +1924,7 @@ GLOBAL_LIST_INIT(armor_paints_heavy, list("padded" = "H1", "padless" = "H2", "pa
 
 	if(istype(A,/obj/item/clothing/suit/storage/marine/light))
 		to_chat(user, "it's an light armor.")
-		A.icon_state = (GLOB.armor_paints_light[mode])
+		A.icon_state = (GLOB.armor_paints[mode])
 		return
 
 	if(istype(A,/obj/item/clothing/suit/storage/marine/medium))

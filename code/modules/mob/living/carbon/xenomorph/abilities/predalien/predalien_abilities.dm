@@ -44,11 +44,12 @@
 	var/twitch_message_cooldown = 0 //apparently this is necessary for a tiny code that makes the lunge message on cooldown not be spammable, doesn't need to be big so 5 will do.
 	var/smash_damage = 20
 	var/smash_scale = 10
+	var/stun_duration = 2 SECONDS
 
 /datum/action/xeno_action/activable/feralfrenzy
 	name = "Feral Frenzy"
 	action_icon_state = "rav_eviscerate"
-	ability_name = "devastate"
+	ability_name = "Feral Frenzy"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	macro_path = /datum/action/xeno_action/verb/verb_feralfrenzy
@@ -65,7 +66,7 @@
 
 /datum/action/xeno_action/onclick/toggle_gut_targetting
 	name = "Toggle Gutting Type"
-	action_icon_state = "rav_scissor_cut" // default = heal
+	action_icon_state = "gut" // default = gut
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_gut_targetting
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_5

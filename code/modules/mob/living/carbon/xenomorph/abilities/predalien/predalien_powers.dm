@@ -45,12 +45,10 @@
 	if(!istype(predalienbehavior))
 		return
 	if(targetting == AOETARGETGUT)
-
 		if (range > 1)
 			xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] begins digging in for a massive strike!"), SPAN_XENOHIGHDANGER("We begin digging in for a massive strike!"))
 		else
 			xeno.visible_message(SPAN_XENODANGER("[xeno] begins digging in for a strike!"), SPAN_XENOHIGHDANGER("We begin digging in for a strike!"))
-
 		ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Eviscerate"))
 		xeno.anchored = TRUE
 		if (do_after(xeno, (activation_delay_aoe), INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
@@ -58,7 +56,7 @@
 			xeno.spin_circle()
 
 			for (var/mob/living/carbon/carbon in orange(xeno, range))
-				if(!isxeno(carbon) || xeno.can_not_harm(carbon))
+				if(!isliving(carbon) || xeno.can_not_harm(carbon))
 					continue
 
 				if (carbon.stat == DEAD)
@@ -66,7 +64,6 @@
 
 				if(!check_clear_path_to_target(xeno, carbon))
 					continue
-
 				if (range > 1)
 					xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] rips open the guts of [carbon]!"), SPAN_XENOHIGHDANGER("We rip open the guts of [carbon]!"))
 					carbon.spawn_gibs()
@@ -74,7 +71,7 @@
 					xeno.spin_circle()
 					xeno.flick_attack_overlay(carbon, "tail")
 					playsound(get_turf(carbon), 'sound/effects/gibbed.ogg', 30, 1)
-					carbon.apply_effect(get_xeno_stun_duration(carbon, 1), WEAKEN)
+					carbon.apply_effect(get_xeno_stun_duration(carbon, 0.5), WEAKEN)
 				else
 					xeno.visible_message(SPAN_XENODANGER("[xeno] claws [carbon]!"), SPAN_XENODANGER("We claw [carbon]!"))
 					playsound(get_turf(carbon), "alien_claw_flesh", 30, 1)
@@ -110,7 +107,7 @@
 		if (do_after(xeno, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 			xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] rips open the guts of [carbon]!"), SPAN_XENOHIGHDANGER("We rip open the guts of [carbon]!"))
 			carbon.spawn_gibs()
-			playsound(get_turf(carbon), 'sound/effects/gibbed.ogg', 75, 1)
+			playsound(get_turf(carbon), 'sound/effects/gibbed.ogg', 50, 1)
 			carbon.apply_effect(get_xeno_stun_duration(carbon, 0.5), WEAKEN)
 			carbon.apply_armoured_damage(get_xeno_damage_slash(carbon, base_damage + damage_scale * predalienbehavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
 
@@ -118,7 +115,7 @@
 			xeno.spin_circle()
 			xeno.flick_attack_overlay(carbon, "tail")
 
-		playsound(owner, 'sound/voice/predalien_growl.ogg', 75, 0, status = 0)
+		playsound(owner, 'sound/voice/predalien_growl.ogg', 50, 0, status = 0)
 
 		REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Devastate"))
 		xeno.anchored = FALSE
@@ -169,7 +166,7 @@
 		predatoralien.speed_modifier += speed_buff_amount
 		predatoralien.recalculate_speed()
 		speed_buff = FALSE
-		remove_rush_effects()
+
 
 /datum/action/xeno_action/onclick/feralrush/proc/remove_armor_effects()
 	SIGNAL_HANDLER
@@ -179,7 +176,6 @@
 		predatoralien.armor_modifier -= armor_buff_amount
 		predatoralien.recalculate_armor()
 		armor_buff = FALSE
-		remove_armor_effects()
 
 
 /datum/action/xeno_action/onclick/toggle_gut_targetting/use_ability(atom/A)
@@ -206,19 +202,6 @@
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)
 	return ..()
-
-/datum/action/xeno_action/activable/tail_stab/predalien_tailstab/use_ability(atom/targetted_atom)
-	var/mob/living/carbon/xenomorph/predalien_tailstab = owner
-
-
-	if(!action_cooldown_check())
-		return
-
-	if(!predalien_tailstab.check_state())
-		return
-
-	if (world.time <= predalien_tailstab.next_move)
-		return
 
 /datum/action/xeno_action/activable/feral_smash/use_ability(atom/affected_atom)
 	var/mob/living/carbon/xenomorph/predalien_smash = owner
@@ -257,8 +240,17 @@
 
 	if (predalien_smash.Adjacent(carbon))
 		predalien_smash.start_pulling(carbon,1)
-		if(ishuman(carbon))
-			INVOKE_ASYNC(carbon, TYPE_PROC_REF(/mob, emote), "scream")
+		if(isliving(carbon))
+			playsound(carbon.pulledby, 'sound/voice/predalien_growl.ogg', 75, 0, status = 0) // bang and roar for dramatic effect
+			playsound((carbon), 'sound/effects/bang.ogg', 25, 0)
+			var/turf/starting_turf = get_step(carbon, NORTH) // move them one tile north
+			carbon.forceMove(starting_turf)
+			sleep(4)
+			playsound((carbon), 'sound/effects/bang.ogg', 25, 0) // bang and bone break for dramatic damage effect
+			playsound((carbon),"slam", 50, 1)
+			playsound((carbon),'sound/effects/bone_break1.ogg', 100, 1)
+			var/turf/back_to_middle = get_step(carbon, SOUTH) // move them back one tile south
+			carbon.forceMove(back_to_middle)
 			carbon.apply_armoured_damage(get_xeno_damage_slash(carbon, smash_damage + smash_scale * predalienbehavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
 	else
 		predalien_smash.visible_message(SPAN_XENOWARNING("[predalien_smash]'s claws twitch."), SPAN_XENOWARNING("We coulddn't grab our target. Wait a moment to try again."))
@@ -274,7 +266,7 @@
 	return ..()
 
 /mob/living/carbon/xenomorph/predalien/start_pulling(atom/movable/movable_atom, feral_smash)
-	if (!check_state())
+	if(!check_state())
 		return FALSE
 
 	if(!isliving(movable_atom))
@@ -292,37 +284,16 @@
 				return
 
 		if(should_neckgrab && living_mob.mob_size < MOB_SIZE_BIG)
+			smashing = TRUE
 			living_mob.drop_held_items()
 			var/duration = get_xeno_stun_duration(living_mob, 1)
 			living_mob.KnockDown(duration)
 			living_mob.Stun(duration)
-			playsound(living_mob.pulledby, 'sound/voice/predalien_growl.ogg', 75, 0, status = 0) // bang and roar for dramatic effect
-			playsound(get_turf(living_mob), 'sound/effects/bang.ogg', 25, 0)
-			var/turf/starting_turf = get_step(living_mob, NORTH) // move them one tile north
-			living_mob.forceMove(starting_turf)
-			sleep(4)
-			playsound(get_turf(living_mob), 'sound/effects/bang.ogg', 25, 0) // bang and bone break for dramatic damage effect
-			playsound(get_turf(living_mob),"slam", 50, 1)
-			playsound(get_turf(living_mob),'sound/effects/bone_break1.ogg', 100, 1)
-			var/turf/back_to_middle = get_step(living_mob, SOUTH) // move them back one tile south
-			living_mob.forceMove(back_to_middle)
 			INVOKE_ASYNC(living_mob, TYPE_PROC_REF(/mob, emote), "scream") // make them scream for dramatic falir
-			if(living_mob.pulledby != src)
-				return
 			visible_message(SPAN_XENOWARNING("[src] grabs [living_mob] by the back of their leg! and repeatedly slams them onto the ground!"), \
 			SPAN_XENOWARNING("We grab [living_mob] by the back of their leg! and repeatedly slam them onto the ground!")) // more flair
 
-			smashing = TRUE
 			addtimer(CALLBACK(src, PROC_REF(stop_lunging)), get_xeno_stun_duration(living_mob, 1) SECONDS)
 
 /mob/living/carbon/xenomorph/predalien/proc/stop_lunging()
 	smashing = FALSE
-
-/mob/living/carbon/xenomorph/predalien/hitby(atom/movable/movable_atom)
-	if(ishuman(movable_atom))
-		return
-	..()
-
-
-
-

@@ -348,12 +348,16 @@
 		src.hivenumber = old_xeno.hivenumber
 	else if(hivenumber)
 		src.hivenumber = hivenumber
+	//putting the organ in for research
 	if(!islarva(src))
-		var/obj/item/organ/heart/xeno/organ = new() //give
+		var/obj/item/organ/xeno/organ = new() //give
 		organ.forceMove(src)
 		organ.research_value = tier
+		if(!isqueen(src) || !ispredalien(src))
+			organ.icon_state = "heart_t[src.tier]"
 		if(isqueen(src)) //queens have tier 0
 			organ.research_value = 7 //queen is EXPENSIVE
+			organ.icon_state = "heart_t3"
 		organ.caste_origin = src.caste_type
 
 	var/datum/hive_status/hive = GLOB.hive_datum[src.hivenumber]

@@ -70,7 +70,7 @@ to destroy them and players will be able to make replacements.
 	build_path = /obj/structure/machinery/xenoanalyzer
 	frame_desc = "Requires 2 Beakers, 2 Extracted Xenomorphic samples, and 5 Wire."
 	req_components = list(
-		/obj/item/organ/heart/xeno/ = 2,
+		/obj/item/organ/xeno/ = 2,
 		/obj/item/stack/cable_coil = 5,
 		/obj/item/reagent_container/glass/beaker = 2,
 

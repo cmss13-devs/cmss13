@@ -9,7 +9,7 @@
 	wrenchable = FALSE
 	idle_power_usage = 40
 	var/biomass_points = 0 //most important thing in this
-	var/obj/item/organ/heart/xeno/organ = null
+	var/obj/item/organ/xeno/organ = null
 	var/busy = FALSE
 	var/caste_of_organ = null
 	var/list/different_upgrades = list()// used for items that are not research_upgrades. eg ammo
@@ -27,7 +27,7 @@
 	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
 		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
 		return
-	if(!istype(W, /obj/item/organ/heart/xeno))
+	if(!istype(W, /obj/item/organ/xeno))
 		return
 	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		to_chat(user, SPAN_WARNING("You were interupted!"))

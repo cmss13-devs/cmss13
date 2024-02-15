@@ -18,8 +18,10 @@
 	requires_bodypart = FALSE
 
 /datum/surgery/xenomorph/can_start(mob/user, mob/living/carbon/xenomorph/patient, obj/limb/L, obj/item/tool)
-	if(patient.stat == DEAD && !patient.organ_removed && !islarva(patient))
+	if(patient.stat == DEAD && !patient.organ_removed && !islarva(patient) && !ispredalien(patient))
 		return TRUE
+	if(islarva(patient) || ispredalien(patient))
+		to_chat(user, SPAN_DANGER("You cant extract organ from [patient.caste_type] as there is none!"))
 	return FALSE
 
 /datum/surgery_step/xenomorph/cut_exoskeleton
@@ -86,7 +88,7 @@
 
 /datum/surgery_step/xenomorph/open_exoskeleton/preop(mob/living/carbon/human/user, mob/living/carbon/xenomorph/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 			user.affected_message(target,
-				SPAN_NOTICE("You start to pry [target.caste_type] carapace open using \the [tool], slowly"),
+				SPAN_NOTICE("You start to pry [target.caste_type] carapace open using \the [tool]"),
 				SPAN_NOTICE("[user] starts to pry Your carapace open with \the [tool] very carefully"),
 				SPAN_NOTICE("[user] starts to pry [target.caste_type] carapace open with \the [tool] very carefully"))
 
@@ -119,7 +121,7 @@
 		/obj/item/attachable/bayonet = SURGERY_TOOL_MULT_SUBSTITUTE,
 		/obj/item/tool/kitchen/knife = SURGERY_TOOL_MULT_SUBSTITUTE,
 		/obj/item/shard = SURGERY_TOOL_MULT_AWFUL,
-	) //shamelessly taken from embryo code
+	)
 	time = 4 SECONDS
 	preop_sound = 'sound/surgery/scalpel1.ogg'
 	success_sound = 'sound/surgery/scalpel2.ogg'
@@ -194,8 +196,9 @@
 		else
 			user.apply_damage(15, BURN, "r_hand")
 	target.organ_removed = TRUE
-	var/obj/item/organ/heart/xeno/organ = locate() in target
+	var/obj/item/organ/xeno/organ = locate() in target
 	organ.forceMove(target.loc)
+	target.update_wounds()
 
 /datum/surgery_step/xenomorph/remove_organ/failure(mob/living/carbon/human/user, mob/living/carbon/xenomorph/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(tool)

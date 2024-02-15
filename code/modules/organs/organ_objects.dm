@@ -114,10 +114,10 @@
 	organ_tag = "liver"
 	organ_type = /datum/internal_organ/liver
 
-/obj/item/organ/heart/xeno
+/obj/item/organ/xeno
 	name = "Acidic Heart"
-	desc = "Acidic heart removed from a xenomorph. It spews droplets of acid every so often. Definetly not human heart."
-	icon_state = "heart-on"
+	desc = "Acidic heart removed from a xenomorph. It spews droplets of acid every so often."
+	icon_state = "heart_t1"
 	organ_tag = "heart"
 	black_market_value = 60
 	var/research_value = 1 //depending on the size and tier

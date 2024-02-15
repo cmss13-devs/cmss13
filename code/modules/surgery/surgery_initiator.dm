@@ -8,7 +8,6 @@
 	if(!tool && !(affecting.status & LIMB_UNCALIBRATED_PROSTHETIC))
 		to_chat(user, SPAN_WARNING("You can't perform surgery here!"))
 		return FALSE
-	to_chat(user, tool)
 	var/target_zone = user.zone_selected
 	var/list/available_surgeries = list()
 	var/list/valid_steps = list() //Steps that could be performed, if we had the right tool.
@@ -47,7 +46,6 @@
 		if((target.mob_flags & EASY_SURGERY) ? !skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_NOVICE) : !skillcheck(user, SKILL_SURGERY, surgeryloop.required_surgery_skill))
 			to_chat(user, SPAN_WARNING("You can't perform surgery here!"))
 			continue
-		to_chat(user, surgeryloop)
 
 		//Lying and self-surgery checks.
 		if(surgeryloop.lying_required && target.body_position != LYING_DOWN)

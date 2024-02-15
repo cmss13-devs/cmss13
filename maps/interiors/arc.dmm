@@ -4,7 +4,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_12"
 	},
-/area/vehicle/arc)
+/area/interior/vehicle/arc)
 "be" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "door_back"
@@ -35,12 +35,12 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_9_1"
 	},
-/area/vehicle/arc)
+/area/interior/vehicle/arc)
 "jb" = (
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_11"
 	},
-/area/vehicle/arc)
+/area/interior/vehicle/arc)
 "ml" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "wall"
@@ -67,7 +67,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_6"
 	},
-/area/vehicle/arc)
+/area/interior/vehicle/arc)
 "tD" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "rear_6"
@@ -108,7 +108,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_8_1"
 	},
-/area/vehicle/arc)
+/area/interior/vehicle/arc)
 "CB" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "wall";
@@ -132,7 +132,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_10_1"
 	},
-/area/vehicle/arc)
+/area/interior/vehicle/arc)
 "Gy" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "front_1"
@@ -176,7 +176,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_5"
 	},
-/area/vehicle/arc)
+/area/interior/vehicle/arc)
 "Ol" = (
 /obj/effect/landmark/interior/spawn/entrance{
 	alpha = 50;
@@ -192,7 +192,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_12"
 	},
-/area/vehicle/arc)
+/area/interior/vehicle/arc)
 "Po" = (
 /obj/structure/surface/table/reinforced/prison{
 	pixel_y = -3
@@ -208,7 +208,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_8_1"
 	},
-/area/vehicle/arc)
+/area/interior/vehicle/arc)
 "Rb" = (
 /turf/open/void/vehicle,
 /area/space)
@@ -225,7 +225,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_8_1"
 	},
-/area/vehicle/arc)
+/area/interior/vehicle/arc)
 "ZF" = (
 /obj/effect/landmark/interior/spawn/interior_viewport{
 	dir = 8;
@@ -243,7 +243,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_11"
 	},
-/area/vehicle/arc)
+/area/interior/vehicle/arc)
 
 (1,1,1) = {"
 tD

@@ -1895,7 +1895,7 @@
 
 //proc that allow to repaint/change sprite for
 
-GLOBAL_LIST_INIT(armor_paints_light, list("padded" = "L1", "padless" = "L2", "padless_lines" = "L3", "carrier" = "L4", "skull" = "L5", "smooth" = "L6"))
+GLOBAL_LIST_INIT(armor_paints, list("padded" = "L1", "padless" = "L2", "padless_lines" = "L3", "carrier" = "L4", "skull" = "L5", "smooth" = "L6"))
 GLOBAL_LIST_INIT(armor_paints_medium, list("padded" = "1", "padless" = "2", "padless_lines" = "3", "carrier" = "4", "skull" = "5", "smooth" = "6"))
 GLOBAL_LIST_INIT(armor_paints_heavy, list("padded" = "H1", "padless" = "H2", "padless_lines" = "H3", "carrier" = "H4", "skull" = "H5", "smooth" = "H6"))
 /obj/item/device/armor_painter

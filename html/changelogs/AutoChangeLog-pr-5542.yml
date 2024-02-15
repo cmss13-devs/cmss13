@@ -1,0 +1,5 @@
+author: "SabreML"
+delete-after: True
+changes:
+  - refactor: "Refactored xeno strains."
+  - rscadd: "Added a keybind setting to open the 'Purchase Strain' window. (Also renamed the macro)"

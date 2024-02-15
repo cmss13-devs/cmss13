@@ -22,10 +22,12 @@
 	name = "holo-targeting rifle bullet"
 	damage = 30
 	var/holo_stacks = 10
+	var/bonus_damage_cap_increase = 0
+	var/stack_loss_multiplier = 1
 
-/datum/ammo/bullet/rifle/holo_target/on_hit_mob(mob/M, obj/projectile/P)
+/datum/ammo/bullet/rifle/holo_target/on_hit_mob(mob/hit_mob, obj/projectile/bullet)
 	. = ..()
-	M.AddComponent(/datum/component/bonus_damage_stack, holo_stacks, world.time)
+	hit_mob.AddComponent(/datum/component/bonus_damage_stack, holo_stacks, world.time, bonus_damage_cap_increase, stack_loss_multiplier)
 
 /datum/ammo/bullet/rifle/holo_target/hunting
 	name = "holo-targeting hunting bullet"

@@ -141,10 +141,10 @@
 
 /datum/ammo/bullet/sniper/anti_materiel/vulture/holo_target
 	name = "holo-targetting anti-materiel sniper bullet"
-	damage = 60 // it's a big bullet but its purpose is to support marines, not kill enemies by itself
-	var/bonus_damage_cap_increase = 233 // the result will be a 1.33 damage multiplier
-	var/holo_stacks = 333 // inflicts max holo stacks in one hit
-	var/stack_loss_multiplier = 2 // instead of taking 1 minute to wear off, it will now take 30 seconds
+	damage = 60 // it's a big bullet but its purpose is to support marines, not to kill enemies by itself
+	var/holo_stacks = 333 // inflicts max holo stacks in one hit. this equates to a 33% damage bonus
+	var/bonus_damage_cap_increase = 233 // increases the default holo stack cap of 100 by 233, to 333 in total.
+	var/stack_loss_multiplier = 2 // multiplies the default holo stack drain of 5 stacks per second to 10
 
 /datum/ammo/bullet/sniper/anti_materiel/vulture/holo_target/on_hit_mob(mob/hit_mob, obj/projectile/bullet)
 	hit_mob.AddComponent(/datum/component/bonus_damage_stack, holo_stacks, world.time, bonus_damage_cap_increase, stack_loss_multiplier)
@@ -154,6 +154,7 @@
 
 // the effect should be limited to one target
 /datum/ammo/bullet/sniper/anti_materiel/vulture/holo_target/set_bullet_traits()
+	return
 
 /datum/ammo/bullet/sniper/elite
 	name = "supersonic sniper bullet"

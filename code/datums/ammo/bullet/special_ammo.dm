@@ -48,10 +48,12 @@
 	damage = 30
 	///Stuff for the HRP holotargetting stacks
 	var/holo_stacks = 15
+	var/bonus_damage_cap_increase = 1
+	var/stack_loss_multiplier = 1
 
-/datum/ammo/bullet/smartgun/holo_target/on_hit_mob(mob/M, obj/projectile/P)
+/datum/ammo/bullet/smartgun/holo_target/on_hit_mob(mob/hit_mob, obj/projectile/bullet)
 	. = ..()
-	M.AddComponent(/datum/component/bonus_damage_stack, holo_stacks, world.time)
+	hit_mob.AddComponent(/datum/component/bonus_damage_stack, holo_stacks, world.time, bonus_damage_cap_increase, stack_loss_multiplier)
 
 /datum/ammo/bullet/smartgun/holo_target/ap
 	name = "armor-piercing smartgun bullet"

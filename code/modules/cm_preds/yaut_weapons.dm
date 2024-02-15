@@ -168,6 +168,7 @@
 	///The amount this weapon interrupts hivemind link on Xenomorphs.
 	var/xeno_interfere_amount = 30
 
+	var/has_ability = FALSE
 	///The amount of charges towards use of special abilities.
 	var/ability_charge = 0
 	var/ability_charge_max = ABILITY_MAX_DEFAULT
@@ -188,6 +189,9 @@
 	if((human_adapted || isspeciesyautja(user)) && isxeno(target))
 		var/mob/living/carbon/xenomorph/xenomorph = target
 		xenomorph.interference = xeno_interfere_amount
+
+	if(!has_ability)
+		return
 
 	if(target == user || target.stat == DEAD || isanimal(target))
 		to_chat(user, SPAN_DANGER("You think you're smart?")) //very funny
@@ -269,6 +273,7 @@
 	ability_cost = ABILITY_COST_SCYTHE
 	ability_charge_max = ABILITY_COST_SCYTHE
 	ability_charge_rate = ABILITY_CHARGE_NORMAL
+	has_ability = TRUE
 
 /obj/item/weapon/yautja/scythe/attack_self(mob/user)
 	..()
@@ -337,6 +342,7 @@
 	ability_cost = ABILITY_COST_DEFAULT
 	ability_charge_max = ABILITY_MAX_DEFAULT
 	ability_charge_rate = ABILITY_CHARGE_SMALL
+	has_ability = TRUE
 
 	var/on = TRUE
 
@@ -540,7 +546,6 @@
 	desc = "A viciously sharp dagger inscribed with ancient Yautja markings. Smells thickly of blood. Carried by some hunters."
 	icon_state = "predknife"
 	item_state = "knife"
-	flags_atom = FPRINT|CONDUCT
 	flags_item = ITEM_PREDATOR|CAN_DIG_SHRAPNEL
 	flags_equip_slot = SLOT_STORE
 	sharp = IS_SHARP_ITEM_ACCURATE
@@ -552,7 +557,6 @@
 	hitsound = 'sound/weapons/slash.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	actions_types = list(/datum/action/item_action)
-	unacidable = TRUE
 
 /obj/item/weapon/yautja/knife/attack(mob/living/target, mob/living/carbon/human/user)
 	if(target.stat != DEAD)

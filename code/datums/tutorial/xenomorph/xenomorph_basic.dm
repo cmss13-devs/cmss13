@@ -21,6 +21,7 @@
 	xeno.plasma_max = 0
 	xeno.melee_damage_lower = 40
 	xeno.melee_damage_upper = 40
+	xeno.lock_evolve = TRUE
 
 	message_to_player("Welcome to the Xenomorph basic tutorial. You are [xeno.name], a drone, the workhorse of the hive.")
 

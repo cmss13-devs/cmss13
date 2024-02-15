@@ -28,19 +28,18 @@
 	xeno.strain = src
 
 	// Update the xeno's actions.
-	if(!ishivelord(xeno)) // only skip these for hivelord so that it doesn't spam the error log
-		for(var/action_path in actions_to_remove)
-			remove_action(xeno, action_path)
-		for(var/action_path in actions_to_add)
-			give_action(xeno, action_path)
+	for(var/action_path in actions_to_remove)
+		remove_action(xeno, action_path)
+	for(var/action_path in actions_to_add)
+		give_action(xeno, action_path)
 
-//	// Update the xeno's behavior delegate.
-//	if(behavior_delegate_type)
-//		if(xeno.behavior_delegate)
-//			qdel(xeno.behavior_delegate)
-//		xeno.behavior_delegate = new behavior_delegate_type()
-//		xeno.behavior_delegate.bound_xeno = xeno
-//		xeno.behavior_delegate.add_to_xeno()
+	// Update the xeno's behavior delegate.
+	if(behavior_delegate_type)
+		if(xeno.behavior_delegate)
+			qdel(xeno.behavior_delegate)
+		xeno.behavior_delegate = new behavior_delegate_type()
+		xeno.behavior_delegate.bound_xeno = xeno
+		xeno.behavior_delegate.add_to_xeno()
 
 	apply_strain(xeno)
 

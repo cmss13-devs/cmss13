@@ -59,9 +59,6 @@
 	weed_food_states = list("Defender_1","Defender_2","Defender_3")
 	weed_food_states_flipped = list("Defender_1","Defender_2","Defender_3")
 
-/mob/living/carbon/xenomorph/defender/get_strain_icon()
-	return null
-
 /mob/living/carbon/xenomorph/defender/handle_special_state()
 	if(fortify)
 		return TRUE

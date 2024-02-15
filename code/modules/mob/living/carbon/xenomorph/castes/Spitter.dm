@@ -1,5 +1,5 @@
 /datum/caste_datum/spitter
-	caste_type = XENO_CASTE_SPITTER
+	//caste_type = XENO_CASTE_SPITTER
 	tier = 2
 
 	melee_damage_lower = XENO_DAMAGE_TIER_1

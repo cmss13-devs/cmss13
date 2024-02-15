@@ -1895,7 +1895,7 @@
 
 //proc that allow to repaint/change sprite for
 
-GLOBAL_LIST_INIT(armor_paints, list("padded" = L1, "padless" = L2, "padless_lines" = L3, "carrier" = L4, "skull" = L5, "smooth" = L6))
+GLOBAL_LIST_INIT(armor_paints, list("padded" = "L1", "padless" = "L2", "padless_lines" = "L3", "carrier" = "L4", "skull" = "L5", "smooth" = "L6"))
 
 /obj/item/device/armor_painter
 	name = "armor painter"

@@ -1,52 +1,39 @@
-
-/datum/xeno_mutator/trapper
-	name = "STRAIN: Boiler - Trapper"
+/datum/xeno_strain/trapper
+	name = BOILER_TRAPPER
 	description = "You trade your ability to bombard, lance, and dump your acid in order to gain some speed and the ability to create acid explosions and restrain talls within them. With your longer-range vision, set up traps that immobilize your opponents and place acid mines which deal damage to talls and barricades and reduce the cooldown of your trap deployment for every tall hit. Finally, hit talls with your Acid Shotgun ability which adds a stack of insight to empower the next trap you place once you reach a maximum of ten insight. A point-blank shot or a shot on a stunned target will instantly apply ten stacks."
 	flavor_description = "Hsss, I love the smell of burnin' tallhost flesh in the mornin'."
-	cost = MUTATOR_COST_EXPENSIVE
-	individual_only = TRUE
-	caste_whitelist = list(XENO_CASTE_BOILER) //Only boiler.
-	mutator_actions_to_remove = list(
+
+	actions_to_remove = list(
 		/datum/action/xeno_action/activable/xeno_spit/bombard,
 		/datum/action/xeno_action/onclick/shift_spits/boiler,
 		/datum/action/xeno_action/activable/spray_acid/boiler,
 		/datum/action/xeno_action/onclick/toggle_long_range/boiler,
 		/datum/action/xeno_action/onclick/acid_shroud,
 	)
-	mutator_actions_to_add = list(
+	actions_to_add = list(
 		/datum/action/xeno_action/activable/boiler_trap,
 		/datum/action/xeno_action/activable/acid_mine,
 		/datum/action/xeno_action/activable/acid_shotgun,
 		/datum/action/xeno_action/onclick/toggle_long_range/trapper,
 	)
-	keystone = TRUE
 
 	behavior_delegate_type = /datum/behavior_delegate/boiler_trapper
 
-/datum/xeno_mutator/trapper/apply_mutator(datum/mutator_set/individual_mutators/mutator_set)
-	. = ..()
-	if(. == 0)
-		return
+/datum/xeno_strain/trapper/apply_strain(mob/living/carbon/xenomorph/boiler/boiler)
+	if(!istype(boiler))
+		return FALSE
 
-	var/mob/living/carbon/xenomorph/boiler/boiler = mutator_set.xeno
 	if(boiler.is_zoomed)
 		boiler.zoom_out()
 
 	boiler.tileoffset = 0
 	boiler.viewsize = TRAPPER_VIEWRANGE
-	boiler.mutation_type = BOILER_TRAPPER
 	boiler.plasma_types -= PLASMA_NEUROTOXIN
 	boiler.armor_modifier -= XENO_ARMOR_MOD_LARGE // no armor
 	boiler.health_modifier -= XENO_HEALTH_MOD_MED
 
 	boiler.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5 // compensating for base buffs
 	boiler.recalculate_everything()
-
-	apply_behavior_holder(boiler)
-
-	mutator_update_actions(boiler)
-	mutator_set.recalculate_actions(description, flavor_description)
-
 
 /datum/behavior_delegate/boiler_trapper
 	name = "Boiler Trapper Behavior Delegate"

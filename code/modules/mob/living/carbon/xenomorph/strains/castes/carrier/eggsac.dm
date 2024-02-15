@@ -1,48 +1,36 @@
-/datum/xeno_mutator/eggsac
-	name = "STRAIN: Carrier - Eggsac"
+/datum/xeno_strain/eggsac
+	name = CARRIER_EGGSAC
 	description = "In exchange for your ability to store huggers and place traps, you gain larger plasma stores, strong pheromones, and the ability to lay eggs by using your plasma stores. In addition, you can now carry twelve eggs at once and can place eggs one pace further than normal. \n\nYou can also place a small number of fragile eggs on normal weeds. These eggs have a lifetime of five minutes while you remain within 14 tiles. Or one minute if you leave this range."
 	flavor_description = "An egg is always an adventure; the next one may be different."
-	cost = MUTATOR_COST_EXPENSIVE
-	individual_only = TRUE
-	caste_whitelist = list(XENO_CASTE_CARRIER)
-	mutator_actions_to_remove = list(
+	icon_state_prefix = "Eggsac"
+
+	actions_to_remove = list(
 		/datum/action/xeno_action/activable/throw_hugger,
 		/datum/action/xeno_action/onclick/place_trap,
 		/datum/action/xeno_action/activable/retrieve_egg, // readding it so it gets at the end of the ability list
 		/datum/action/xeno_action/onclick/set_hugger_reserve,
 	)
-	mutator_actions_to_add = list(
+	actions_to_add = list(
 		/datum/action/xeno_action/active_toggle/generate_egg,
 		/datum/action/xeno_action/activable/retrieve_egg, // readding it so it gets at the end of the ability list
 	)
-	behavior_delegate_type = /datum/behavior_delegate/carrier_eggsac
-	keystone = TRUE
 
-/datum/xeno_mutator/eggsac/apply_mutator(datum/mutator_set/individual_mutators/mutator_set)
-	. = ..()
-	if (!.)
-		return
-	var/mob/living/carbon/xenomorph/carrier/carrier = mutator_set.xeno
-	if(!istype(carrier))
-		return FALSE
+	behavior_delegate_type = /datum/behavior_delegate/carrier_eggsac
+
+/datum/xeno_strain/eggsac/apply_strain(mob/living/carbon/xenomorph/carrier/carrier)
 	carrier.plasma_types = list(PLASMA_EGG)
 	carrier.phero_modifier += XENO_PHERO_MOD_LARGE // praetorian level pheremones
-	carrier.plasmapool_modifier = 1.2
-	mutator_update_actions(carrier)
-	mutator_set.recalculate_actions(description, flavor_description)
-	carrier.recalculate_pheromones()
 	carrier.recalculate_plasma()
-	if(carrier.huggers_cur > 0)
-		playsound(carrier.loc, 'sound/voice/alien_facehugger_dies.ogg', 25, 1)
+	carrier.recalculate_pheromones()
+
+	if(carrier.huggers_cur)
+		playsound(carrier.loc, 'sound/voice/alien_facehugger_dies.ogg', 25, TRUE)
 	carrier.huggers_cur = 0
 	carrier.huggers_max = 0
 	carrier.update_hugger_overlays()
-	carrier.mutation_type = CARRIER_EGGSAC
-	carrier.update_eggsac_overlays()
 	carrier.eggs_max = 12
 	carrier.egg_planting_range = 2
-	apply_behavior_holder(carrier)
-	return TRUE
+	carrier.update_eggsac_overlays()
 
 #define EGGSAC_OFF_WEED_EGGCAP 4
 #define EGGSAC_EGG_SUSTAIN_DISTANCE 14
@@ -59,6 +47,10 @@
 /datum/behavior_delegate/carrier_eggsac/append_to_stat()
 	. = list()
 	. += "Eggs sustained: [length(eggs_sustained)] / [egg_sustain_cap]"
+
+/datum/behavior_delegate/carrier_eggsac/on_update_icons()
+	var/mob/living/carbon/xenomorph/carrier/bound_carrier = bound_xeno
+	bound_carrier.update_eggsac_overlays()
 
 /datum/behavior_delegate/carrier_eggsac/on_life()
 	if(length(eggs_sustained) > egg_sustain_cap)
@@ -86,6 +78,9 @@
 	for(var/obj/effect/alien/egg/carrier_egg/my_egg as anything in eggs_sustained)
 		remove_egg_owner(my_egg)
 		my_egg.start_unstoppable_decay()
+
+	M.visible_message(SPAN_XENOWARNING("[M] throes as its eggsac bursts into a mess of acid!"))
+	playsound(M.loc, 'sound/effects/alien_egg_burst.ogg', 25, TRUE)
 
 ///Remove all references to src in eggs_sustained
 /datum/behavior_delegate/carrier_eggsac/Destroy()

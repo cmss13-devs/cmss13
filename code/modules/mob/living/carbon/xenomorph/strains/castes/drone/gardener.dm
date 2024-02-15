@@ -1,45 +1,41 @@
-/datum/xeno_mutator/gardener
-	name = "STRAIN: Drone - Gardener"
+/datum/xeno_strain/gardener
+	name = DRONE_GARDENER
 	description = "You trade your choice of resin secretions, your corrosive acid, and your ability to transfer plasma for a tiny bit of extra health regeneration on weeds and several new abilities, including the ability to plant hardier weeds, temporarily reinforce structures with your plasma, and to plant up to six potent resin fruits for your sisters by secreting your vital fluids at the cost of a bit of your health for each fruit you shape. You can use Resin Surge to speed up the growth of your fruits."
 	flavor_description = "The glory of gardening: hands in the weeds, head in the dark, heart with resin."
-	cost = MUTATOR_COST_EXPENSIVE
-	individual_only = TRUE
-	caste_whitelist = list(XENO_CASTE_DRONE) //Only drone.
-	mutator_actions_to_remove = list(
+
+	actions_to_remove = list(
 		/datum/action/xeno_action/activable/secrete_resin,
 		/datum/action/xeno_action/onclick/choose_resin,
 		/datum/action/xeno_action/activable/corrosive_acid/weak,
 		/datum/action/xeno_action/activable/transfer_plasma,
 	)
-	mutator_actions_to_add = list(
+	actions_to_add = list(
 		/datum/action/xeno_action/onclick/plant_weeds/gardener, // second macro
 		/datum/action/xeno_action/activable/resin_surge, // third macro
 		/datum/action/xeno_action/onclick/plant_resin_fruit/greater, // fourth macro
 		/datum/action/xeno_action/onclick/change_fruit,
 		/datum/action/xeno_action/activable/transfer_plasma,
 	)
-	keystone = TRUE
+
 	behavior_delegate_type = /datum/behavior_delegate/drone_gardener
 
-/datum/xeno_mutator/gardener/apply_mutator(datum/mutator_set/individual_mutators/mutator_set)
-	. = ..()
-	if (. == 0)
-		return
-
-	var/mob/living/carbon/xenomorph/drone/drone = mutator_set.xeno
-	drone.mutation_type = DRONE_GARDENER
-	drone.available_fruits = list(/obj/effect/alien/resin/fruit/greater, /obj/effect/alien/resin/fruit/unstable, /obj/effect/alien/resin/fruit/spore, /obj/effect/alien/resin/fruit/speed, /obj/effect/alien/resin/fruit/plasma)
+/datum/xeno_strain/gardener/apply_strain(mob/living/carbon/xenomorph/drone/drone)
+	drone.available_fruits = list(
+		/obj/effect/alien/resin/fruit/greater,
+		/obj/effect/alien/resin/fruit/unstable,
+		/obj/effect/alien/resin/fruit/spore,
+		/obj/effect/alien/resin/fruit/speed,
+		/obj/effect/alien/resin/fruit/plasma
+	)
 	drone.selected_fruit = /obj/effect/alien/resin/fruit/greater
 	drone.max_placeable = 6
 	drone.regeneration_multiplier = XENO_REGEN_MULTIPLIER_TIER_1
-	mutator_update_actions(drone)
-	apply_behavior_holder(drone)
+
 	// Also change the primacy value for our place construction ability (because we want it in the same place but have another primacy ability)
 	for(var/datum/action/xeno_action/action in drone.actions)
 		if(istype(action, /datum/action/xeno_action/activable/place_construction))
 			action.ability_primacy = XENO_NOT_PRIMARY_ACTION
 			break // Don't need to keep looking
-	mutator_set.recalculate_actions(description, flavor_description)
 
 /datum/action/xeno_action/onclick/plant_resin_fruit
 	name = "Plant Resin Fruit (50)"
@@ -367,9 +363,6 @@
 	name = "Gardener Drone Behavior Delegate"
 
 	var/mutable_appearance/fruit_sac_overlay_icon
-
-/datum/behavior_delegate/drone_gardener/add_to_xeno()
-	on_update_icons()
 
 /datum/behavior_delegate/drone_gardener/on_update_icons()
 	if(!fruit_sac_overlay_icon)

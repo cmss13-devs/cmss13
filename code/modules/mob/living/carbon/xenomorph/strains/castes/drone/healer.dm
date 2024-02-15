@@ -1,18 +1,17 @@
-/datum/xeno_mutator/healer
-	name = "STRAIN: Drone - Healer"
+/datum/xeno_strain/healer
+	name = DRONE_HEALER
 	description = "You lose your choice of resin secretions, a chunk of your slash damage, and you will experience a slighty-increased difficulty in tackling tallhosts in exchange for strong pheromones, the ability to use a bit of your health to plant a maximum of three lesser resin fruits, and the ability to heal your sisters' wounds by secreting a regenerative resin salve by using your vital fluids and a fifth of your plasma. Be wary, this is a dangerous process; overexert yourself and you may exhaust yourself to unconsciousness, or die..."
 	flavor_description = "To the very last drop, your blood belongs to The Hive; share it with your sisters to keep them fighting."
-	cost = MUTATOR_COST_EXPENSIVE
-	individual_only = TRUE
-	caste_whitelist = list(XENO_CASTE_DRONE) //Only drone.
-	mutator_actions_to_remove = list(
+	icon_state_prefix = "Healer"
+
+	actions_to_remove = list(
 		/datum/action/xeno_action/activable/secrete_resin,
 		/datum/action/xeno_action/onclick/choose_resin,
 		/datum/action/xeno_action/activable/transfer_plasma,
 		/datum/action/xeno_action/activable/place_construction, // so it doesn't use fifth macro
 		/datum/action/xeno_action/onclick/plant_weeds, // so it doesn't break order
 	)
-	mutator_actions_to_add = list(
+	actions_to_add = list(
 		/datum/action/xeno_action/activable/place_construction/not_primary, // so it doesn't use fifth macro
 		/datum/action/xeno_action/onclick/plant_weeds, // so it doesn't break order
 		/datum/action/xeno_action/onclick/plant_resin_fruit, // Second macro. Resin fruits belong to Gardener, but Healer has a minor variant.
@@ -20,32 +19,20 @@
 		/datum/action/xeno_action/activable/transfer_plasma/healer, //Fourth macro, an improved plasma transfer.
 		/datum/action/xeno_action/activable/healer_sacrifice, //Fifth macro, the ultimate ability to sacrifice yourself
 	)
-	keystone = TRUE
+
 	behavior_delegate_type = /datum/behavior_delegate/drone_healer
 
-
-/datum/xeno_mutator/healer/apply_mutator(datum/mutator_set/individual_mutators/mutator_set)
-	. = ..()
-	if (. == 0)
-		return
-
-	var/mob/living/carbon/xenomorph/drone/drone = mutator_set.xeno
-	drone.mutation_type = DRONE_HEALER
+/datum/xeno_strain/healer/apply_strain(mob/living/carbon/xenomorph/drone/drone)
 	drone.phero_modifier += XENO_PHERO_MOD_LARGE
 	drone.plasma_types += PLASMA_PHEROMONE
 	drone.damage_modifier -= XENO_DAMAGE_MOD_VERY_SMALL
+	drone.tackle_chance_modifier -= 5
 
 	drone.max_placeable = 3
 	drone.available_fruits = list(/obj/effect/alien/resin/fruit)
 	drone.selected_fruit = /obj/effect/alien/resin/fruit
-	drone.tackle_chance_modifier -= 5
-	mutator_update_actions(drone)
-	apply_behavior_holder(drone)
-	mutator_set.recalculate_actions(description, flavor_description)
-	drone.recalculate_health()
-	drone.recalculate_damage()
-	drone.recalculate_pheromones()
-	drone.recalculate_tackle()
+
+	drone.recalculate_everything()
 
 /*
 	Improved Plasma Transfer
@@ -123,13 +110,14 @@
 		to_chat(src, SPAN_XENOWARNING("[target_xeno] is already at max health!"))
 		return
 
-///Tiny xenos (Larva and Facehuggers), don't need as much health so don't cost as much.
-	if(target_xeno.mob_size == 0)
+	//Tiny xenos (Larva and Facehuggers), don't need as much health so don't cost as much.
+	if(target_xeno.mob_size == MOB_SIZE_SMALL)
 		amount = amount * 0.15
 		damage_taken_mod = 1
 
-//Forces an equivalent exchange of health between healers so they do not spam heal each other to full health.
-	if(target_xeno.mutation_type == DRONE_HEALER)
+	//Forces an equivalent exchange of health between healers so they do not spam heal each other to full health.
+	var/target_is_healer = istype(target_xeno.strain, /datum/xeno_strain/healer)
+	if(target_is_healer)
 		damage_taken_mod = 1
 
 	face_atom(target_xeno)
@@ -144,7 +132,7 @@
 	playsound(src, "alien_drool", 25)
 	var/datum/behavior_delegate/drone_healer/healer_delegate = behavior_delegate
 	healer_delegate.salve_applied_recently = TRUE
-	if(target_xeno.mutation_type != DRONE_HEALER && !isfacehugger(target_xeno)) // no cheap grinding
+	if(!target_is_healer && !isfacehugger(target_xeno)) // no cheap grinding
 		healer_delegate.modify_transferred(amount * damage_taken_mod)
 	update_icons()
 	addtimer(CALLBACK(healer_delegate, /datum/behavior_delegate/drone_healer/proc/un_salve), 10 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
@@ -301,4 +289,3 @@
 		to_chat(xeno, SPAN_HIGHDANGER("Warning: [name] is a last measure skill. Using it will kill us."))
 	else
 		to_chat(xeno, SPAN_HIGHDANGER("Warning: [name] is a last measure skill. Using it will kill us, but new life will be granted for our hard work for the hive."))
-

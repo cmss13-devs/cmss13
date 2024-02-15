@@ -1,39 +1,28 @@
-/datum/xeno_mutator/berserker
-	name = "STRAIN: Ravager - Berserker"
+/datum/xeno_strain/berserker
+	name = RAVAGER_BERSERKER
 	description = "You lose your empower, charge, and scissor cut, decrease your health, and sacrifice a bit of your influence under frenzy pheromones to increase your movement speed, slightly increase your armor, and gain a new set of abilities that make you a terrifying melee monster. By slashing, you heal yourself and gain a stack of rage that increases your armor, movement speed, attack speed, and your heals per slash, to a maximum of six rage. Use your new Appehend ability to increase your movement speed and apply a slow on the next target you slash and use your Clothesline ability to fling your target to heal yourself, even more-so if you have a rage stack that will be used up. Finally, use your Eviscerate to unleash a devastating windmill attack that heals you for every host you hit after an immobilizing wind-up."
 	flavor_description = "They shall be my finest warriors. They will rend and tear, crush and butcher, and maim and rage until every tallhost falls."
-	cost = MUTATOR_COST_EXPENSIVE
-	individual_only = TRUE
-	caste_whitelist = list(XENO_CASTE_RAVAGER)
-	mutator_actions_to_remove = list(
+	icon_state_prefix = "Berserker"
+
+	actions_to_remove = list(
 		/datum/action/xeno_action/onclick/empower,
 		/datum/action/xeno_action/activable/pounce/charge,
 		/datum/action/xeno_action/activable/scissor_cut,
 	)
-	mutator_actions_to_add = list(
+	actions_to_add = list(
 		/datum/action/xeno_action/onclick/apprehend,
 		/datum/action/xeno_action/activable/clothesline,
 		/datum/action/xeno_action/activable/eviscerate,
 	)
-	keystone = TRUE
+
 	behavior_delegate_type = /datum/behavior_delegate/ravager_berserker
 
-/datum/xeno_mutator/berserker/apply_mutator(datum/mutator_set/individual_mutators/mutator_set)
-	. = ..()
-	if (. == 0)
-		return
-
-	var/mob/living/carbon/xenomorph/ravager/ravager = mutator_set.xeno
-	ravager.mutation_type = RAVAGER_BERSERKER
+/datum/xeno_strain/berserker/apply_strain(mob/living/carbon/xenomorph/ravager/ravager)
 	ravager.plasma_max = 0
 	ravager.health_modifier -= XENO_HEALTH_MOD_MED
 	ravager.armor_modifier += XENO_ARMOR_MOD_VERY_SMALL
 	ravager.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
 	ravager.received_phero_caps["frenzy"] = 2.9 // Moderate
-	mutator_update_actions(ravager)
-	mutator_set.recalculate_actions(description, flavor_description)
-
-	apply_behavior_holder(ravager)
 
 	ravager.recalculate_everything()
 

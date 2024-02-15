@@ -1072,6 +1072,18 @@
 	flags_atom = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE|NO_SNOW_TYPE
 	storage_slots = 4
 
+/obj/item/clothing/suit/storage/marine/light/vest/xm43e1_vest
+	name = "\improper XM-3VL pattern fire support vest"
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+	desc = "A modified smartgun rig designed to be lightweight, easy to use, and dampen the recoil of the XM43E1 without this armours recoil dampening arm youll be blown back atleast a foot by the rifle, for saftey of the user make sure you are equiped properly."
+	icon_state = "xm43e1_vest"
+	storage_slots = 3
+	uniform_restricted = list(/obj/item/clothing/under/marine)
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
+	unacidable = TRUE
+
 //=============================//pmcS\\==================================\\
 //=======================================================================\\
 

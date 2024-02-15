@@ -876,6 +876,14 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inventory = BLOCKSHARPOBJ
 	clothing_traits = list(TRAIT_EAR_PROTECTION)
 	unacidable = TRUE
+/obj/item/clothing/head/helmet/marine/xm43e1
+	name = "\improper XM-3VL experimental light helmet"
+	icon_state = "xm43e1_helmet"
+	item_state = "xm43e1_helmet"
+	specialty = "XM-3VL experimental light"
+	desc = "A custom helmet designed in tandem with the XM43E1s carrying rig, theres fancy gizmos and gadgets up top, a state of the art ballistics tracker... or thats what they tell you atleast, just seems like a flashing light to you."
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 
 /obj/item/clothing/head/helmet/marine/pilot
 	name = "\improper M30 tactical helmet"

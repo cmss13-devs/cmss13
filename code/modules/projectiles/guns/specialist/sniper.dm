@@ -394,7 +394,7 @@
 		//At 200 per shot it'll take 9 to break a Pylon (1800 HP). No Damage Boost vs other xeno structures yet, those will require a whole new list w/ the damage_boost trait.
 	))
 
-
+/*
 //Disabled until an identity is better defined. -Kaga
 /obj/item/weapon/gun/rifle/sniper/XM43E1/afterattack(atom/target, mob/user, flag)
 	if(able_to_fire(user))
@@ -402,7 +402,18 @@
 			to_chat(user, SPAN_WARNING("The [src.name] beeps, indicating that the target is within an unsafe proximity to the rifle, refusing to fire."))
 			return
 		else ..()
+// i cant figure this shit out and with the current state of the rifle it should be fine with this disabled, if someone somehow manages to make shit worse ill figure out how to make this work lol
+*/
 
+/obj/item/weapon/gun/rifle/sniper/XM43E1/simulate_recoil(total_recoil = 2, mob/user, atom/target)
+	. = ..()
+	if(.)
+		var/mob/living/carbon/human/xm43e1_vest = user
+		if(xm43e1_vest.body_position == STANDING_UP && !istype(xm43e1_vest.wear_suit,/obj/item/clothing/suit/storage/marine/light/vest/xm43e1_vest))
+			xm43e1_vest.visible_message(SPAN_WARNING("[xm43e1_vest] is blown backwards from the recoil of the [src.name]!"),SPAN_HIGHDANGER("You are knocked prone by the blowback!"))
+			step(xm43e1_vest,turn(xm43e1_vest.dir,180))
+			xm43e1_vest.KnockDown(1)
+			xm43e1_vest.Stun(1)
 
 /obj/item/weapon/gun/rifle/sniper/elite
 	name = "\improper M42C anti-tank sniper rifle"

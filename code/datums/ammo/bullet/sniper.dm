@@ -119,6 +119,7 @@
 				size_damage_mod += 0.6
 		L.apply_armoured_damage(damage*size_damage_mod, ARMOR_BULLET, BRUTE, null, penetration)
 		// 180% damage to all targets (225), 240% (300) against non-Runner xenos, and 300% against Big xenos (375). -Kaga
+		// keeping above for book keeping sake, damage isnt that high anymore, does way less, very similar to normal sniper
 		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
 
 /datum/ammo/bullet/sniper/anti_materiel/vulture

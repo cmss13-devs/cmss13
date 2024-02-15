@@ -30,12 +30,14 @@
 //XM43E1 Magazine
 /obj/item/ammo_magazine/sniper/anti_materiel
 	name = "\improper XM43E1 marksman magazine (10x99mm)"
-	desc = "A magazine of caseless 10x99mm anti-materiel rounds."
+	desc = "A magazine of caseless 10x99mm anti-materiel rounds, these rounds easily penetrate armour with little to no spall, be mindful of over penetration."
 	max_rounds = 8
 	caliber = "10x99mm"
 	default_ammo = /datum/ammo/bullet/sniper/anti_materiel
 	gun_type = /obj/item/weapon/gun/rifle/sniper/XM43E1
-
+	icon_state = "xm43e1"
+	ammo_band_icon = "+m42c_band"
+	ammo_band_icon_empty = "+m42c_band_e"
 //M42C magazine
 
 /obj/item/ammo_magazine/sniper/elite

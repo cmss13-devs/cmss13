@@ -51,7 +51,12 @@
 	kit_overlay = "sniper"
 
 /obj/item/storage/box/spec/sniper/fill_preset_inventory()
-	// sniper
+	new /obj/item/spec_kit/sniper_weapon_selector(src)
+	new /obj/item/weapon/gun/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+
+/obj/item/storage/box/spec/sniper/m42a/fill_preset_inventory()
 	new /obj/item/clothing/suit/storage/marine/ghillie(src)
 	new /obj/item/clothing/head/helmet/marine/ghillie(src)
 	new /obj/item/clothing/glasses/night/m42_night_goggles(src)
@@ -61,13 +66,18 @@
 	new /obj/item/ammo_magazine/sniper/flak(src)
 	new /obj/item/ammo_magazine/sniper/flak(src)
 	new /obj/item/storage/backpack/marine/smock(src)
-	new /obj/item/weapon/gun/pistol/vp78(src)
-	new /obj/item/ammo_magazine/pistol/vp78(src)
-	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/weapon/gun/rifle/sniper/M42A(src)
-	new /obj/item/facepaint/sniper(src)
 	// spotter
 	new /obj/item/storage/box/kit/spotter(src)
+
+/obj/item/storage/box/spec/sniper/antimaterial/fill_preset_inventory()
+	desc = "a large case containing a XM43E1 anti material rifle"
+	new /obj/item/clothing/suit/storage/marine/light/vest/xm43e1_vest(src)
+	new /obj/item/clothing/head/helmet/marine/xm43e1(src)
+	new /obj/item/weapon/gun/rifle/sniper/XM43E1(src)
+	new /obj/item/ammo_magazine/sniper/anti_materiel(src)
+	new /obj/item/ammo_magazine/sniper/anti_materiel(src)
+	new /obj/item/ammo_magazine/sniper/anti_materiel(src)
 
 /obj/item/storage/box/spec/scout
 	name = "\improper Scout equipment case"
@@ -278,6 +288,30 @@
 		return TRUE
 	return FALSE
 
+//Sniper weapon selector snowflake
+/obj/item/spec_kit/sniper_weapon_selector
+	name = "\improper Sniper weapon case"
+	desc = "A large case with the option of the M42A sniper rifle and the XM43E1 Anti-Material rifle."
+
+/obj/item/spec_kit/sniper_weapon_selector/can_use(mob/living/carbon/human/user)
+	return TRUE
+
+/obj/item/spec_kit/sniper_weapon_selector/select_and_spawn(mob/living/carbon/human/user)
+	var/sniper_selection = tgui_input_list(usr, "Select your weapon", "Weapon Selection", list("M42A sniper rifle", "XM43E1 Anti-Material rifle"))
+	if(!sniper_selection || QDELETED(src))
+		return FALSE
+	var/turf/T = get_turf(loc)
+	var/obj/item/storage/box/spec/weapon_box
+	switch(sniper_selection)
+		if("M42A sniper rifle")
+			weapon_box = new /obj/item/storage/box/spec/sniper/m42a(T)
+			user.put_in_hands(weapon_box)
+			return TRUE
+		if("XM43E1 Anti-Material rifle")
+			weapon_box = new /obj/item/storage/box/spec/sniper/antimaterial(T)
+			user.put_in_hands(weapon_box)
+			return TRUE
+	return FALSE
 
 //******************************************PFC Kits****************************************************************/
 

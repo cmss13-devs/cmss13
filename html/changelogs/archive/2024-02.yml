@@ -171,3 +171,14 @@
   Zonespace Drathek:
   - balance: Lesser drones and Facehuggers cannot speak, custom emote, or point for
       3 minutes after spawning
+2024-02-15:
+  InsaneRed:
+  - balance: Drop pouch now scales the same as normal webbing
+  SabreML:
+  - bugfix: Fixed some changelog icons being smaller than others.
+  Vicacrov:
+  - maptweak: LV-624 tfort's floodlights are now colony floodlights.
+  VileBeggar:
+  - qol: Attaching the bipod to weapons that have full auto (HPR included) will give
+      you a button toggle for immediately switching to full auto when deploying the
+      bipod.

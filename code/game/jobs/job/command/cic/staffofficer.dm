@@ -4,9 +4,10 @@
 	spawn_positions = 4
 	allow_additional = 1
 	scaled = FALSE
+	supervisors = "the acting commander"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = /datum/equipment_preset/uscm_ship/so
-	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>Your job is to monitor the Marines, man the CIC, and listen to your superior officers.</a> You are in charge of logistics and the overwatch system. You are also in line to take command after other eligible superior commissioned officers."
+	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>Your job is to monitor the Marines via overwatch, man the CIC, and listen to your Acting Commander.</a> You are in charge of managing one or many squads, or delegated duties handed out by the Acting Commander. You are 6th in line for Acting Commander, behind the Chief Medical Officer."
 
 /datum/job/command/bridge/set_spawn_positions(count)
 	spawn_positions = so_slot_formula(count)
@@ -27,8 +28,9 @@
 	return ..()
 
 AddTimelock(/datum/job/command/bridge, list(
-	JOB_SQUAD_LEADER = 1 HOURS,
-	JOB_HUMAN_ROLES = 15 HOURS
+	JOB_SQUAD_LEADER = 9 HOURS,
+	JOB_SQUAD_LEADERSHIP_ROLES = 12 HOURS,
+	JOB_HUMAN_ROLES = 24 HOURS
 ))
 
 /obj/effect/landmark/start/bridge

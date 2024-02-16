@@ -6,7 +6,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	selection_class = "job_cl"
-	supervisors = "the acting commanding officer"
+	supervisors = "the acting commander"
 	gear_preset = /datum/equipment_preset/uscm_ship/reporter
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	selection_class = "job_cl"
@@ -35,5 +35,5 @@ This could be the story of the sector! 'Brave Marines responding to dangerous di
 	job = /datum/job/civilian/reporter
 
 AddTimelock(/datum/job/civilian/reporter, list(
-	JOB_HUMAN_ROLES = 10 HOURS,
+	JOB_HUMAN_ROLES = 21 HOURS,
 ))

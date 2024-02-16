@@ -27,7 +27,7 @@
 	return positions
 
 AddTimelock(/datum/job/logistics/otech, list(
-	JOB_ENGINEER_ROLES = 1 HOURS
+	JOB_ENGINEER_ROLES = 3 HOURS
 ))
 
 /obj/effect/landmark/start/otech

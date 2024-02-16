@@ -142,9 +142,9 @@
 		SSticker.mode.survivors_by_type_amounts[preferred_variant] += 1
 
 AddTimelock(/datum/job/civilian/survivor, list(
-	JOB_SQUAD_ROLES = 5 HOURS,
-	JOB_ENGINEER_ROLES = 5 HOURS,
-	JOB_MEDIC_ROLES = 5 HOURS
+	JOB_SQUAD_ROLES = 6 HOURS,
+	JOB_ENGINEER_ROLES = 6 HOURS,
+	JOB_MEDIC_ROLES = 6 HOURS
 ))
 
 /datum/job/civilian/survivor/synth

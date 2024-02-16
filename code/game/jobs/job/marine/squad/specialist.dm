@@ -4,6 +4,7 @@
 	spawn_positions = 4
 	allow_additional = 1
 	scaled = 1
+	supervisors = "your squad leader, and assigned CIC personnel"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/uscm/spec
 	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>You are the very rare and valuable weapon expert</a>, trained to use special equipment. You can serve a variety of roles, so choose carefully."
@@ -30,7 +31,7 @@
 	gear_preset = /datum/equipment_preset/wo/marine/spec
 
 AddTimelock(/datum/job/marine/specialist, list(
-	JOB_SQUAD_ROLES = 5 HOURS
+	JOB_SQUAD_ROLES = 9 HOURS
 ))
 
 /obj/effect/landmark/start/marine/spec

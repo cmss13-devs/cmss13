@@ -4,13 +4,13 @@
 	spawn_positions = 2
 	allow_additional = TRUE
 	scaled = TRUE
-	supervisors = "the pilot officers"
+	supervisors = "the pilot officers and auxiliary support officer"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = /datum/equipment_preset/uscm_ship/dcc
-	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>Your job is to assist</a> the pilot officer maintain the ship's dropship. You have authority only on the dropship, but you are expected to maintain order, as not to disrupt the pilot."
+	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>Your job is to assist</a> your pilot officer maintain the ship's dropship. You have authority over your assigned dropship and personnel within its walls, as long as it does not conflict with Standard Operating Procedure, or Marine Law. You are expected to maintain order and assist with maintaining the dropship, as not to disrupt the pilot and increase efficiency."
 
 AddTimelock(/datum/job/command/crew_chief, list(
-	JOB_SQUAD_ROLES = 5 HOURS
+	JOB_SQUAD_ROLES = 9 HOURS
 ))
 
 /obj/effect/landmark/start/crew_chief

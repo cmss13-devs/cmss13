@@ -8,7 +8,7 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	supervisors = "the auxiliary support officer"
 	gear_preset = /datum/equipment_preset/uscm_ship/chef
-	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>Your job is to service the marines with excellent food</a>, drinks and entertaining the shipside crew when needed. You have a lot of freedom and it is up to you, to decide what to do with it. Good luck!"
+	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>Your job is to service the marines with excellent food</a> and drinks. You may entertain the shipside crew as needed. You have a lot of freedom and it is up to you, to decide what to do with it. If you choose to deploy to an operations area, you must remain in a safe area. Good luck!"
 
 /datum/job/civilian/chef/set_spawn_positions(count)
 	spawn_positions = mess_sergeant_slot_formula(count)
@@ -30,3 +30,7 @@
 	name = JOB_MESS_SERGEANT
 	icon_state = "chef_spawn"
 	job = /datum/job/civilian/chef
+
+AddTimelock(/datum/job/civilian/chef, list(
+	JOB_HUMAN_ROLES = 6 HOURS,
+))

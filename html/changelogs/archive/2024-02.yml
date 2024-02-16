@@ -182,3 +182,23 @@
   - qol: Attaching the bipod to weapons that have full auto (HPR included) will give
       you a button toggle for immediately switching to full auto when deploying the
       bipod.
+2024-02-16:
+  BadAtThisGame302:
+  - rscadd: Added two new beacons for the CL, Lawyer and Bodyguard.
+  - rscadd: Added an Executive Specialist and Executive Supervisor Lawyer preset.
+  - rscadd: Added a cyanide pill in the CLs briefcase for an easy way out.
+  - rscadd: Added a Wey-Yu Coffee Mug in the CLs briefcase as a souvenir sale.
+  Drathek:
+  - bugfix: Fixed xeno tutorial allowing evolution/de-evolution
+  - bugfix: Fixed some runtimes with tutorials
+  SabreML:
+  - bugfix: Fixed the 'Clear' button not resetting the number of keybind assignment
+      slots. (Keybinds menu)
+  - refactor: Refactored xeno strains.
+  - rscadd: Added a keybind setting to open the 'Purchase Strain' window. (Also renamed
+      the macro)
+  cuberound:
+  - balance: m4ra ammo looses about 1/5 of initial effect duration per 10 tiles traveled
+  harryob:
+  - admin: permanent and sticky bans are now handled in game, instead of being managed
+      externally

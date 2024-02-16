@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fixed xeno tutorial allowing evolution/de-evolution"
-  - bugfix: "Fixed some runtimes with tutorials"

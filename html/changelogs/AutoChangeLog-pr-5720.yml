@@ -1,4 +1,0 @@
-author: "SabreML"
-delete-after: True
-changes:
-  - bugfix: "Fixed the 'Clear' button not resetting the number of keybind assignment slots. (Keybinds menu)"

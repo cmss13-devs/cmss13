@@ -1901,7 +1901,7 @@ GLOBAL_LIST_INIT(armor_paints_heavy, list("padded" = "H1", "padless" = "H2", "pa
 /obj/item/device/armor_painter
 	name = "armor painter"
 	icon = 'icons/obj/items/paper.dmi'
-	icon_state = "labeler1"
+	icon_state = "camo"
 	item_state = "flight"
 	var/list/modes_light
 	var/list/modes_medium

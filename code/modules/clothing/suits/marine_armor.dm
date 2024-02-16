@@ -281,7 +281,7 @@
 
 /obj/item/clothing/suit/storage/marine/medium/rto/intel
 	name = "\improper XM4 pattern intelligence officer armor"
-	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/qm_suit, /obj/item/clothing/under/marine/officer/intel)
+	uniform_restricted = list(/obj/item/clothing/under/marine/officer/intel)
 	specialty = "XM4 pattern intel"
 	desc = "Tougher than steel, quieter than whispers, the XM4 Intel Armor provides capable protection combined with an experimental integrated motion tracker. It took an R&D team a weekend to develop and costs more than the Chinook Station... probably. When worn, uniform accessories such as webbing cannot be attached due to the motion sensors occupying the clips."
 	desc_lore = "ARMAT Perfection. The XM4 Soldier Awareness System mixes M4-style hard armor and a distributed series of motion sensors clipped onto the breastplate. When connected to any HUD optic, it replicates the effects of an M314 Motion Detector unit, increasing user situational awareness. It is currently undergoing field trials by intelligence operatives."
@@ -368,7 +368,10 @@
 	if(accessory)
 		to_chat(user, SPAN_WARNING("[src] can't be worn with [accessory]."))
 		return FALSE
-
+	// Only equip if user has expert intel skill level
+	if(!skillcheck(user, SKILL_INTEL, SKILL_INTEL_EXPERT))
+		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
+		return FALSE
 	return TRUE
 
 /obj/item/clothing/suit/storage/marine/medium/rto/intel/equipped(mob/user, slot, silent) //When XM4 is equipped this removes ACCESSORY_SLOT_UTILITY as a valid accessory for the uniform

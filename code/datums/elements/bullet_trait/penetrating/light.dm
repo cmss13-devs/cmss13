@@ -15,9 +15,9 @@
 	src.damage_lost_per_hit = damage_lost_per_hit
 
 /datum/element/bullet_trait_penetrating/light/handle_passthrough_movables(obj/projectile/bullet, atom/movable/hit_movable, did_hit)
-    if(did_hit)
-        bullet.distance_travelled += distance_loss_per_hit
-        if(ismob(hit_movable))
-            bullet.damage -= damage_lost_per_hit
+	if(did_hit)
+		bullet.distance_travelled += distance_loss_per_hit
+		if(ismob(hit_movable))
+			bullet.damage -= damage_lost_per_hit
 
-    return COMPONENT_BULLET_PASS_THROUGH
+	return COMPONENT_BULLET_PASS_THROUGH

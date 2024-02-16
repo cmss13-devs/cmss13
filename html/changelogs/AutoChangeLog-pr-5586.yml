@@ -1,0 +1,5 @@
+author: "MobiusWon"
+delete-after: True
+changes:
+  - rscadd: "Adds integral Motion Detector to XM4 IO Armor"
+  - balance: "Uniform utility accessories (I.E. Webbing) no longer can be equipped while the XM4 is worn. Armor slots increased to 5 to compensate."

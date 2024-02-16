@@ -61,18 +61,15 @@
 
 				if(!check_clear_path_to_target(xeno, carbon))
 					continue
-				if(range > 1)
-					xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] rips open the guts of [carbon]!"), SPAN_XENOHIGHDANGER("We rip open the guts of [carbon]!"))
-					carbon.spawn_gibs()
-					xeno.animation_attack_on(carbon)
-					xeno.spin_circle()
-					xeno.flick_attack_overlay(carbon, "tail")
-					playsound(get_turf(carbon), 'sound/effects/gibbed.ogg', 30, 1)
-					carbon.apply_effect(get_xeno_stun_duration(carbon, 0.5), WEAKEN)
-				else
-					xeno.visible_message(SPAN_XENODANGER("[xeno] claws [carbon]!"), SPAN_XENODANGER("We claw [carbon]!"))
-					playsound(get_turf(carbon), "alien_claw_flesh", 30, 1)
 
+				xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] rips open the guts of [carbon]!"), SPAN_XENOHIGHDANGER("We rip open the guts of [carbon]!"))
+				carbon.spawn_gibs()
+				xeno.animation_attack_on(carbon)
+				xeno.spin_circle()
+				xeno.flick_attack_overlay(carbon, "tail")
+				playsound(get_turf(carbon), 'sound/effects/gibbed.ogg', 30, 1)
+				carbon.apply_effect(get_xeno_stun_duration(carbon, 0.5), WEAKEN)
+				playsound(get_turf(carbon), "alien_claw_flesh", 30, 1)
 				carbon.apply_armoured_damage(get_xeno_damage_slash(carbon, base_damage_aoe + damage_scale_aoe * predalienbehavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
 			playsound(owner, 'sound/voice/predalien_death.ogg', 75, 0, status = 0)
 		REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Eviscerate"))
@@ -81,7 +78,7 @@
 		return ..()
 
 	//single target checks
-	if (!isxeno_human(target) || xeno.can_not_harm(target))
+	if (xeno.can_not_harm(target))
 		to_chat(xeno, SPAN_XENOWARNING("We must target a hostile!"))
 		return
 
@@ -242,7 +239,7 @@
 			playsound((carbon), 'sound/effects/bang.ogg', 25, 0)
 			animate(carbon, pixel_y = carbon.pixel_y + 32, time = 4, easing = SINE_EASING)
 			sleep(4)
-			playsound((carbon), 'sound/effects/bang.ogg', 25, 0) // bang and bone break for dramatic damage effect
+			playsound((carbon), 'sound/effects/bang.ogg', 25, 0) // bang for dramatic damage effect
 			playsound((carbon),"slam", 50, 1)
 			animate(carbon, pixel_y = 0, time = 4, easing = BOUNCE_EASING)
 			var/turf/back_to_middle = get_step(carbon, SOUTH) // move them back one tile south

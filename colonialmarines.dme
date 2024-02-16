@@ -1085,6 +1085,7 @@
 #include "code\game\objects\items\circuitboards\mecha.dm"
 #include "code\game\objects\items\circuitboards\robot_modules.dm"
 #include "code\game\objects\items\devices\aicard.dm"
+#include "code\game\objects\items\devices\armor_painter.dm"
 #include "code\game\objects\items\devices\autopsy_scanner.dm"
 #include "code\game\objects\items\devices\binoculars.dm"
 #include "code\game\objects\items\devices\cictablet.dm"

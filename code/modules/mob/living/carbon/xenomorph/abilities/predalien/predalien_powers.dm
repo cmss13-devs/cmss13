@@ -291,8 +291,7 @@
 			living_mob.Stun(duration)
 			playsound(living_mob.pulledby, 'sound/voice/predalien_growl.ogg', 75, 0, status = 0) // bang and roar for dramatic effect
 			playsound(get_turf(living_mob), 'sound/effects/bang.ogg', 25, 0)
-			var/turf/starting_turf = get_step(living_mob, NORTH) // move them one tile north
-			living_mob.forceMove(starting_turf)
+			animate(living_mob, pixel_y = living_mob.pixel_y + 32, time = 4, easing = SINE_EASING)
 			sleep(4)
 			playsound(get_turf(living_mob), 'sound/effects/bang.ogg', 25, 0) // bang and bone break for dramatic damage effect
 			playsound(get_turf(living_mob),"slam", 50, 1)

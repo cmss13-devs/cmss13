@@ -45,10 +45,7 @@
 	if(!istype(predalienbehavior))
 		return
 	if(targetting == AOETARGETGUT)
-		if (range > 1)
-			xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] begins digging in for a massive strike!"), SPAN_XENOHIGHDANGER("We begin digging in for a massive strike!"))
-		else
-			xeno.visible_message(SPAN_XENODANGER("[xeno] begins digging in for a strike!"), SPAN_XENOHIGHDANGER("We begin digging in for a strike!"))
+		xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] begins digging in for a massive strike!"), SPAN_XENOHIGHDANGER("We begin digging in for a massive strike!"))
 		ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Eviscerate"))
 		xeno.anchored = TRUE
 		if (do_after(xeno, (activation_delay_aoe), INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
@@ -64,7 +61,7 @@
 
 				if(!check_clear_path_to_target(xeno, carbon))
 					continue
-				if (range > 1)
+				if(range > 1)
 					xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] rips open the guts of [carbon]!"), SPAN_XENOHIGHDANGER("We rip open the guts of [carbon]!"))
 					carbon.spawn_gibs()
 					xeno.animation_attack_on(carbon)
@@ -290,29 +287,4 @@
 			var/duration = get_xeno_stun_duration(living_mob, 1)
 			living_mob.KnockDown(duration)
 			living_mob.Stun(duration)
-			playsound(living_mob.pulledby, 'sound/voice/predalien_growl.ogg', 75, 0, status = 0) // bang and roar for dramatic effect
-			playsound(get_turf(living_mob), 'sound/effects/bang.ogg', 25, 0)
-			animate(living_mob, pixel_y = living_mob.pixel_y + 32, time = 4, easing = SINE_EASING)
-			sleep(4)
-			playsound(get_turf(living_mob), 'sound/effects/bang.ogg', 25, 0) // bang and bone break for dramatic damage effect
-			playsound(get_turf(living_mob),"slam", 50, 1)
-			playsound(get_turf(living_mob),'sound/effects/bone_break1.ogg', 100, 1)
-			animate(living_mob, pixel_y = 0, time = 4, easing = BOUNCE_EASING)
-			INVOKE_ASYNC(living_mob, TYPE_PROC_REF(/mob, emote), "scream") // make them scream for dramatic falir
-			visible_message(SPAN_XENOWARNING("[src] grabs [living_mob] by the back of their leg! and repeatedly slams them onto the ground!"), \
-			SPAN_XENOWARNING("We grab [living_mob] by the back of their leg! and repeatedly slam them onto the ground!")) // more flair
-
-			smashing = TRUE
-			addtimer(CALLBACK(src, PROC_REF(stop_lunging)), get_xeno_stun_duration(living_mob, 1) SECONDS)
-
-/mob/living/carbon/xenomorph/predalien/proc/stop_lunging()
-	smashing = FALSE
-
-/mob/living/carbon/xenomorph/predalien/hitby(atom/movable/movable_atom)
-	if(ishuman(movable_atom))
-		return
-	..()
-
-
-
-
+			addtimer(VARSET_CALLBACK(src, smashing, FALSE), get_xeno_stun_duration(living_mob, 1) SECONDS)

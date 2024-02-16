@@ -243,17 +243,16 @@
 		if(isliving(carbon))
 			playsound(carbon.pulledby, 'sound/voice/predalien_growl.ogg', 75, 0, status = 0) // bang and roar for dramatic effect
 			playsound((carbon), 'sound/effects/bang.ogg', 25, 0)
-			var/turf/starting_turf = get_step(carbon, NORTH) // move them one tile north
-			carbon.forceMove(starting_turf)
+			animate(carbon, pixel_y = carbon.pixel_y + 32, time = 4, easing = SINE_EASING)
 			sleep(4)
 			playsound((carbon), 'sound/effects/bang.ogg', 25, 0) // bang and bone break for dramatic damage effect
 			playsound((carbon),"slam", 50, 1)
-			playsound((carbon),'sound/effects/bone_break1.ogg', 100, 1)
+			animate(carbon, pixel_y = 0, time = 4, easing = BOUNCE_EASING)
 			var/turf/back_to_middle = get_step(carbon, SOUTH) // move them back one tile south
 			carbon.forceMove(back_to_middle)
 			carbon.apply_armoured_damage(get_xeno_damage_slash(carbon, smash_damage + smash_scale * predalienbehavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
 	else
-		predalien_smash.visible_message(SPAN_XENOWARNING("[predalien_smash]'s claws twitch."), SPAN_XENOWARNING("We coulddn't grab our target. Wait a moment to try again."))
+		predalien_smash.visible_message(SPAN_XENOWARNING("[predalien_smash]'s claws twitch."), SPAN_XENOWARNING("We couldn't grab our target. Wait a moment to try again."))
 
 	return TRUE
 
@@ -284,34 +283,14 @@
 				return
 
 		if(should_neckgrab && living_mob.mob_size < MOB_SIZE_BIG)
+			visible_message(SPAN_XENOWARNING("[src] grabs [living_mob] by the back of their leg! and repeatedly slams them onto the ground!"), \
+			SPAN_XENOWARNING("We grab [living_mob] by the back of their leg! and repeatedly slam them onto the ground!")) // more flair
 			smashing = TRUE
 			living_mob.drop_held_items()
 			var/duration = get_xeno_stun_duration(living_mob, 1)
 			living_mob.KnockDown(duration)
 			living_mob.Stun(duration)
-			playsound(living_mob.pulledby, 'sound/voice/predalien_growl.ogg', 75, 0, status = 0) // bang and roar for dramatic effect
-			playsound(get_turf(living_mob), 'sound/effects/bang.ogg', 25, 0)
-			animate(living_mob, pixel_y = living_mob.pixel_y + 32, time = 4, easing = SINE_EASING)
-			sleep(4)
-			playsound(get_turf(living_mob), 'sound/effects/bang.ogg', 25, 0) // bang and bone break for dramatic damage effect
-			playsound(get_turf(living_mob),"slam", 50, 1)
-			playsound(get_turf(living_mob),'sound/effects/bone_break1.ogg', 100, 1)
-			animate(living_mob, pixel_y = 0, time = 4, easing = BOUNCE_EASING)
-			INVOKE_ASYNC(living_mob, TYPE_PROC_REF(/mob, emote), "scream") // make them scream for dramatic falir
-			visible_message(SPAN_XENOWARNING("[src] grabs [living_mob] by the back of their leg! and repeatedly slams them onto the ground!"), \
-			SPAN_XENOWARNING("We grab [living_mob] by the back of their leg! and repeatedly slam them onto the ground!")) // more flair
-
-			smashing = TRUE
 			addtimer(CALLBACK(src, PROC_REF(stop_lunging)), get_xeno_stun_duration(living_mob, 1) SECONDS)
 
 /mob/living/carbon/xenomorph/predalien/proc/stop_lunging()
 	smashing = FALSE
-
-/mob/living/carbon/xenomorph/predalien/hitby(atom/movable/movable_atom)
-	if(ishuman(movable_atom))
-		return
-	..()
-
-
-
-

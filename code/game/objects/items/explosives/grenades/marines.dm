@@ -541,8 +541,6 @@
 			var/mob/living/carbon/human/shocked_human = mob
 			if(shocked_human.species == /datum/species/synthetic) // Massive overvoltage to ungrounded robots is pretty bad
 				damage_applied = damage_applied * 2
-				spark.set_up(5, 1, shocked_human)
-				spark.start()
 				shocked_human.Stun(1)
 				to_chat(mob,SPAN_HIGHDANGER("All of your systems jam up as your main bus is overvolted by [damage_applied*2] volts."))
 			shocked_human.take_overall_armored_damage(damage_applied ,ARMOR_ENERGY,BURN, 90) // 90% chance to be on additional limbs
@@ -551,10 +549,15 @@
 			shocked_human.emote("pain")
 		else
 			mob.apply_damage(damage_applied, BURN)
+			spark.set_up(5, 1, mob)
+			spark.start()
 		if(mob_range < 1) // they are probably dead if human so no unique human stuff.
-			mob.KnockDown(2)
-			mob.Superslow(3)
+			mob.KnockDown(1)
+			mob.Superslow(5)
 			mob.eye_blurry = damage_applied/4
+		else if((mob_range < (range-1)) && (mob.mob_size < MOB_SIZE_XENO_VERY_SMALL))
+			mob.KnockDown((range/2)/mob_range)
+			mob.eye_blurry = damage_applied/8
 		else
 			mob.Slow(damage_applied/mob_range)
 			to_chat(mob,SPAN_HIGHDANGER("Your entire body seizes up as a powerful shock courses through it!"))

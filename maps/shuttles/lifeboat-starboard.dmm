@@ -95,6 +95,11 @@
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair,
 /turf/open/shuttle/lifeboat,
 /area/shuttle/lifeboat)
+"ly" = (
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/shuttle/lifeboat)
 "lK" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "22,0"
@@ -533,7 +538,7 @@ iP
 em
 kC
 ix
-XV
+ly
 OO
 zK
 Ow
@@ -542,7 +547,7 @@ Ow
 GA
 Td
 GQ
-XV
+ly
 OO
 GD
 ho

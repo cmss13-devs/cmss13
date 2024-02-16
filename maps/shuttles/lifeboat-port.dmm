@@ -239,6 +239,11 @@
 	},
 /turf/template_noop,
 /area/shuttle/lifeboat)
+"BZ" = (
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/shuttle/lifeboat)
 "Ct" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/computer/shuttle/lifeboat{
@@ -533,7 +538,7 @@ fr
 Rs
 Id
 jX
-nn
+BZ
 Ro
 iR
 vZ
@@ -542,7 +547,7 @@ vZ
 mB
 PU
 yf
-nn
+BZ
 Ro
 OX
 tI
@@ -603,7 +608,7 @@ xS
 "}
 (15,1,1) = {"
 Nm
-dt
+Ro
 Ro
 Jg
 Ro

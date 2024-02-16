@@ -386,7 +386,7 @@
 /obj/item/weapon/gun/rifle/sniper/XM43E1/set_bullet_traits()
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff),
-		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating),
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating/light),
 		BULLET_TRAIT_ENTRY_ID("turfs", /datum/element/bullet_trait_damage_boost, 3, GLOB.damage_boost_turfs),
 		BULLET_TRAIT_ENTRY_ID("breaching", /datum/element/bullet_trait_damage_boost, 3, GLOB.damage_boost_breaching),
 		//edited to take 5 shots for heavy resin and 3 for normal resin walls, since it wallbangs this shouldnt be a issue i dont think it would be an issue

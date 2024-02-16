@@ -486,6 +486,7 @@
 #include "code\datums\elements\bullet_trait\ignored_range.dm"
 #include "code\datums\elements\bullet_trait\incendiary.dm"
 #include "code\datums\elements\bullet_trait\penetrating\heavy.dm"
+#include "code\datums\elements\bullet_trait\penetrating\light.dm"
 #include "code\datums\elements\bullet_trait\penetrating\penetrating.dm"
 #include "code\datums\elements\traitbound\_traitbound.dm"
 #include "code\datums\elements\traitbound\crawler.dm"

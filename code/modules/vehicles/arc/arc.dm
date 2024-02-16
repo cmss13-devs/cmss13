@@ -23,9 +23,6 @@
 	entrances = list(
 		"left" = list(2, 0),
 		"right" = list(-2, 0),
-		"rear left" = list(1, 2),
-		"rear center" = list(0, 2),
-		"rear right" = list(-1, 2)
 	)
 
 	entrance_speed = 0.5 SECONDS

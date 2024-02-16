@@ -881,7 +881,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon_state = "xm43e1_helmet"
 	item_state = "xm43e1_helmet"
 	specialty = "XM-3VL experimental light"
-	desc = "A state of the art helmet designed in tandem with the XM43E1, this helmets equiped with all the gizmos and gadgets, barometer, astromy, wind elevation, proper escalation, everything you can think of it has... probably, thats why the helmets flashing.. probably."
+	desc = "A state of the art helmet designed in tandem with the XM43E1, this helmets equiped with all the gizmos and gadgets, ballistics tracker, astrology, wind elevation, proper escalation, everything you can think of it has... probably, thats why the helmets flashing.. probably."
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
 /obj/item/clothing/head/helmet/marine/pilot

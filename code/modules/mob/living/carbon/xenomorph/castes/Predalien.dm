@@ -91,7 +91,7 @@
 <span class='role_body'>|______________________|</span>
 <span class='role_header'>You are a yautja-alien hybrid!</span>
 <span class='role_body'>You are a xenomorph born from the body of your natural enemy, you are considered an abomination to all of the yautja race and they will do WHATEVER it takes to kill you.
-However, being born from one you also harbor their intelligence and strength. You are built to be able to take them on but that does not mean you are invincible. Stay with your hive and overwhelm them with your numbers, your sisters have sacrificed alot for you, do not just wander off and die.
+However, being born from one you also harbor their intelligence and strength. You are built to be able to take them on but that does not mean you are invincible. Stay with your hive and overwhelm them with your numbers. Your sisters have sacrificed a lot for you; Do not just wander off and die.
 You must still listen to the queen.
 </span>
 <span class='role_body'>|______________________|</span>

@@ -187,11 +187,11 @@
 	if (guttype.targetting == SINGLETARGETGUT)
 		action_icon_result = "rav_scissor_cut"
 		guttype.targetting = AOETARGETGUT
-		to_chat(xeno, SPAN_XENOWARNING("We will now attack everyone around us."))
+		to_chat(xeno, SPAN_XENOWARNING("We will now attack everyone around us during a Feral Frenzy."))
 	else
 		action_icon_result = "gut"
 		guttype.targetting = SINGLETARGETGUT
-		to_chat(xeno, SPAN_XENOWARNING("We will now focus our rage on one person!"))
+		to_chat(xeno, SPAN_XENOWARNING("We will now focus our Feral Frenzy on one person!"))
 
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)
@@ -232,18 +232,15 @@
 
 	predalien_smash.throw_atom(get_step_towards(affected_atom, predalien_smash), grab_range, SPEED_FAST, predalien_smash)
 
-	if (predalien_smash.Adjacent(carbon))
-		predalien_smash.start_pulling(carbon,1)
+	if(predalien_smash.Adjacent(carbon) && predalien_smash.start_pulling(carbon, TRUE))
 		if(isliving(carbon))
 			playsound(carbon.pulledby, 'sound/voice/predalien_growl.ogg', 75, 0, status = 0) // bang and roar for dramatic effect
-			playsound((carbon), 'sound/effects/bang.ogg', 25, 0)
+			playsound(carbon, 'sound/effects/bang.ogg', 25, 0)
 			animate(carbon, pixel_y = carbon.pixel_y + 32, time = 4, easing = SINE_EASING)
 			sleep(4)
-			playsound((carbon), 'sound/effects/bang.ogg', 25, 0) // bang for dramatic damage effect
-			playsound((carbon),"slam", 50, 1)
+			playsound(carbon, 'sound/effects/bang.ogg', 25, 0) // bang for dramatic damage effect
+			playsound(carbon, "slam", 50, 1)
 			animate(carbon, pixel_y = 0, time = 4, easing = BOUNCE_EASING)
-			var/turf/back_to_middle = get_step(carbon, SOUTH) // move them back one tile south
-			carbon.forceMove(back_to_middle)
 			carbon.apply_armoured_damage(get_xeno_damage_slash(carbon, smash_damage + smash_scale * predalienbehavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
 	else
 		predalien_smash.visible_message(SPAN_XENOWARNING("[predalien_smash]'s claws twitch."), SPAN_XENOWARNING("We couldn't grab our target. Wait a moment to try again."))
@@ -277,11 +274,11 @@
 				return
 
 		if(should_neckgrab && living_mob.mob_size < MOB_SIZE_BIG)
-			visible_message(SPAN_XENOWARNING("[src] grabs [living_mob] by the back of their leg! and repeatedly slams them onto the ground!"), \
-			SPAN_XENOWARNING("We grab [living_mob] by the back of their leg! and repeatedly slam them onto the ground!")) // more flair
+			visible_message(SPAN_XENOWARNING("[src] grabs [living_mob] by the back of their leg and slams them onto the ground!"), \
+			SPAN_XENOWARNING("We grab [living_mob] by the back of their leg and slam them onto the ground!")) // more flair
 			smashing = TRUE
 			living_mob.drop_held_items()
 			var/duration = get_xeno_stun_duration(living_mob, 1)
 			living_mob.KnockDown(duration)
 			living_mob.Stun(duration)
-			addtimer(VARSET_CALLBACK(src, smashing, FALSE), get_xeno_stun_duration(living_mob, 1) SECONDS)
+			addtimer(VARSET_CALLBACK(src, smashing, FALSE), duration)

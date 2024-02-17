@@ -29,6 +29,7 @@
 	var/predalien_roar = list("sound/voice/predalien_roar.ogg")
 	var/bonus_damage_scale = 2.5
 	var/bonus_speed_scale = 0.05
+
 /datum/action/xeno_action/activable/feral_smash
 	name = "Feral Smash"
 	ability_name = "Feral Smash"
@@ -60,13 +61,15 @@
 	var/damage_scale_aoe = 10
 	var/activation_delay = 1 SECONDS
 	var/base_damage = 25
-	var/damage_scale = 10 // How much it scales by every kill
+	/// How much it scales by every kill
+	var/damage_scale = 10
 	var/targetting = SINGLETARGETGUT
+	/// The orange used for a AOETARGETGUT
 	var/range = 2
 
 /datum/action/xeno_action/onclick/toggle_gut_targetting
 	name = "Toggle Gutting Type"
-	action_icon_state = "gut" // default = gut
+	action_icon_state = "gut" // starting targetting is SINGLETARGETGUT
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_gut_targetting
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_5

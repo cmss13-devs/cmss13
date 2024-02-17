@@ -9,7 +9,7 @@
 	var/hull = 0
 	var/walltype = WALL_METAL
 	/// when walls smooth with one another, the type of junction each wall is.
-	var/junctiontype 
+	var/junctiontype
 	var/thermite = 0
 	var/melting = FALSE
 	var/claws_minimum = CLAW_TYPE_SHARP
@@ -24,7 +24,7 @@
 
 	var/damage = 0
 	/// Wall will break down to girders if damage reaches this point
-	var/damage_cap = HEALTH_WALL 
+	var/damage_cap = HEALTH_WALL
 
 	var/damage_overlay
 	var/global/damage_overlays[8]
@@ -38,7 +38,7 @@
 	var/d_state = 0 //Normal walls are now as difficult to remove as reinforced walls
 
 	/// the acid hole inside the wall
-	var/obj/effect/acid_hole/acided_hole 
+	var/obj/effect/acid_hole/acided_hole
 	var/acided_hole_dir = SOUTH
 
 	var/special_icon = 0
@@ -553,7 +553,7 @@
 		to_chat(user, SPAN_WARNING("You need [amount_needed] sheets of material to fix this!"))
 		return FALSE
 
-	for(var/i = 1 to amount_needed)
+	for(var/i = 4 to amount_needed)
 		var/soundchannel = playsound(src, NG.repair_sound, 25, 1)
 		if(!do_after(user, NG.nailing_speed, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
 			playsound(src, null, channel = soundchannel)

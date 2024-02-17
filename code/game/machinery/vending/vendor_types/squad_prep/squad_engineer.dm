@@ -15,7 +15,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_engi, list(
 		list("Airlock Circuit Board", 2, /obj/item/circuitboard/airlock, null, VENDOR_ITEM_REGULAR),
 		list("APC Circuit Board", 2, /obj/item/circuitboard/apc, null, VENDOR_ITEM_REGULAR),
 		list("Entrenching Tool (ET)", 2, /obj/item/tool/shovel/etool, null, VENDOR_ITEM_REGULAR),
-		list("Nailgun",10, /obj/item/weapon/gun/smg/nailgun, null, VENDOR_ITEM_RECOMMENDED)
+		list("Nailgun",10, /obj/item/weapon/gun/smg/nailgun, null, VENDOR_ITEM_RECOMMENDED),
 		list("High-Capacity Power Cell", 3, /obj/item/cell/high, null, VENDOR_ITEM_REGULAR),
 		list("Metal x10", 5, /obj/item/stack/sheet/metal/small_stack, null, VENDOR_ITEM_RECOMMENDED),
 		list("Plasteel x10", 7, /obj/item/stack/sheet/plasteel/small_stack, null, VENDOR_ITEM_RECOMMENDED),

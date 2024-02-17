@@ -19,7 +19,6 @@
 	var/list/storage_capacity = list("metal" = 0, "glass" = 0)
 	var/list/printables = list() // data list of each printable item (for tgUI)
 	var/list/recipes
-	var/lathe_speed = 5 SECONDS //time required to print 1 item
 	var/list/categories
 	var/list/disabled_categories = AUTOLATHE_STANDARD_DISABLED_CATS_LIST
 	var/list/components = list(
@@ -420,11 +419,16 @@
 	)
 	SStgui.update_uis(src)
 
+	//Print speed based on w_class.
+	var/obj/item/item = making.path
+	var/size = initial(item.w_class)
+	var/print_speed = clamp(size, 2, 5) SECONDS
+
 	//Fancy autolathe animation.
 	icon_state = "[base_state]_n"
 
 	playsound(src, 'sound/machines/print.ogg', 25)
-	sleep(lathe_speed)
+	sleep(print_speed)
 	playsound(src, 'sound/machines/print_off.ogg', 25)
 	icon_state = "[base_state]"
 
@@ -604,7 +608,6 @@
 	disabled_categories = AUTOLATHE_MEDILATHE_DISABLED_CATS_LIST
 	make_loc = TRUE
 	tgui_theme = "weyland"
-	lathe_speed = 2 SECONDS
 
 /obj/structure/machinery/autolathe/medilathe/full
 	stored_material =  list("glass" = 20000, "plastic" = 40000) //20 plastic and 10 glass sheets

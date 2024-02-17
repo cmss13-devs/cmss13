@@ -114,7 +114,7 @@
 		REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Devastate"))
 		xeno.anchored = FALSE
 		unroot_human(carbon, TRAIT_SOURCE_ABILITY("Devastate"))
-		xeno.visible_message(SPAN_XENODANGER("We rapidly slices into [carbon]!"))
+		xeno.visible_message(SPAN_XENODANGER("We rapidly slice into [carbon]!"))
 
 		return ..()
 

@@ -1,10 +1,10 @@
 /datum/action/xeno_action/onclick/predalien_roar/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
-	if (!xeno.check_state())
+	if(!xeno.check_state())
 		return
 
 	if(!check_and_use_plasma_owner())
@@ -78,17 +78,17 @@
 		return ..()
 
 	//single target checks
-	if (xeno.can_not_harm(target))
+	if(xeno.can_not_harm(target))
 		to_chat(xeno, SPAN_XENOWARNING("We must target a hostile!"))
 		return
 
-	if (get_dist_sqrd(target, xeno) > 2)
+	if(get_dist_sqrd(target, xeno) > 2)
 		to_chat(xeno, SPAN_XENOWARNING("[target] is too far away!"))
 		return
 
 	var/mob/living/carbon/carbon = target
 
-	if (carbon.stat == DEAD)
+	if(carbon.stat == DEAD)
 		to_chat(xeno, SPAN_XENOWARNING("[carbon] is dead, why would we want to touch them?"))
 		return
 	if(targeting == SINGLETARGETGUT) // single target
@@ -98,7 +98,7 @@
 		ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Devastate"))
 		xeno.anchored = TRUE
 
-		if (do_after(xeno, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+		if(do_after(xeno, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 			xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] rips open the guts of [carbon]!"))
 			carbon.spawn_gibs()
 			playsound(get_turf(carbon), 'sound/effects/gibbed.ogg', 50, 1)
@@ -122,17 +122,17 @@
 /datum/action/xeno_action/onclick/feralrush/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/predatoralien = owner
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
-	if (!istype(predatoralien) || !predatoralien.check_state())
+	if(!istype(predatoralien) || !predatoralien.check_state())
 		return
 
-	if (armor_buff && speed_buff)
+	if(armor_buff && speed_buff)
 		to_chat(predatoralien, SPAN_XENOHIGHDANGER("We cannot stack this!"))
 		return
 
-	if (!check_and_use_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return
 
 
@@ -153,7 +153,7 @@
 /datum/action/xeno_action/onclick/feralrush/proc/remove_rush_effects()
 	SIGNAL_HANDLER
 	var/mob/living/carbon/xenomorph/predatoralien = owner
-	if (speed_buff == TRUE)
+	if(speed_buff == TRUE)
 		to_chat(predatoralien, SPAN_XENOWARNING("Our muscles relax as we feel our speed wane."))
 		predatoralien.remove_filter("predalien_toughen")
 		predatoralien.speed_modifier += speed_buff_amount
@@ -164,7 +164,7 @@
 /datum/action/xeno_action/onclick/feralrush/proc/remove_armor_effects()
 	SIGNAL_HANDLER
 	var/mob/living/carbon/xenomorph/predatoralien = owner
-	if (armor_buff)
+	if(armor_buff)
 		to_chat(predatoralien, SPAN_XENOWARNING("We are no longer armored."))
 		predatoralien.armor_modifier -= armor_buff_amount
 		predatoralien.recalculate_armor()
@@ -180,10 +180,10 @@
 		return
 
 	var/datum/action/xeno_action/activable/feralfrenzy/guttype = get_xeno_action_by_type(xeno, /datum/action/xeno_action/activable/feralfrenzy)
-	if (!guttype)
+	if(!guttype)
 		return
 
-	if (guttype.targeting == SINGLETARGETGUT)
+	if(guttype.targeting == SINGLETARGETGUT)
 		action_icon_result = "rav_scissor_cut"
 		guttype.targeting = AOETARGETGUT
 		to_chat(xeno, SPAN_XENOWARNING("We will now attack everyone around us."))
@@ -200,50 +200,52 @@
 	var/mob/living/carbon/xenomorph/predalien_smash = owner
 	var/datum/behavior_delegate/predalien_base/predalienbehavior = predalien_smash.behavior_delegate
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		if(twitch_message_cooldown < world.time )
 			predalien_smash.visible_message(SPAN_XENOWARNING("[predalien_smash]'s muscles twitch."), SPAN_XENOWARNING("Our claws twitch as we try to grab onto the target but lack the strength. Wait a moment to try again."))
 			twitch_message_cooldown = world.time + 5 SECONDS
 		return //this gives a little feedback on why your lunge didn't hit other than the lunge button going grey. Plus, it might spook marines that almost got lunged if they know why the message appeared, and extra spookiness is always good.
 
-	if (!affected_atom)
+	if(!affected_atom)
 		return
 
-	if (!isturf(predalien_smash.loc))
+	if(!isturf(predalien_smash.loc))
 		to_chat(predalien_smash, SPAN_XENOWARNING("We can't lunge from here!"))
 		return
 
-	if (!predalien_smash.check_state() || predalien_smash.agility)
+	if(!predalien_smash.check_state() || predalien_smash.agility)
 		return
 
 	if(predalien_smash.can_not_harm(affected_atom) || !ismob(affected_atom))
 		apply_cooldown_override(click_miss_cooldown)
 		return
 
+	if(!isliving(affected_atom))
+		return
+
 	var/mob/living/carbon/carbon = affected_atom
 	if(carbon.stat == DEAD)
 		return
 
-	if (!check_and_use_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return
 
 	apply_cooldown()
 
 	predalien_smash.throw_atom(get_step_towards(affected_atom, predalien_smash), grab_range, SPEED_FAST, predalien_smash)
 
-	if (predalien_smash.Adjacent(carbon))
+	if(predalien_smash.Adjacent(carbon))
 		predalien_smash.start_pulling(carbon,1)
-		if(isliving(carbon))
-			playsound(carbon.pulledby, 'sound/voice/predalien_growl.ogg', 75, 0, status = 0) // bang and roar for dramatic effect
-			playsound((carbon), 'sound/effects/bang.ogg', 25, 0)
-			animate(carbon, pixel_y = carbon.pixel_y + 32, time = 4, easing = SINE_EASING)
-			sleep(4)
-			playsound((carbon), 'sound/effects/bang.ogg', 25, 0) // bang for dramatic damage effect
-			playsound((carbon),"slam", 50, 1)
-			animate(carbon, pixel_y = 0, time = 4, easing = BOUNCE_EASING)
-			var/turf/back_to_middle = get_step(carbon, SOUTH) // move them back one tile south
-			carbon.forceMove(back_to_middle)
-			carbon.apply_armoured_damage(get_xeno_damage_slash(carbon, smash_damage + smash_scale * predalienbehavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
+		playsound(carbon.pulledby, 'sound/voice/predalien_growl.ogg', 75, 0, status = 0) // bang and roar for dramatic effect
+		playsound((carbon), 'sound/effects/bang.ogg', 25, 0)
+		animate(carbon, pixel_y = carbon.pixel_y + 32, time = 4, easing = SINE_EASING)
+		sleep(4)
+		playsound((carbon), 'sound/effects/bang.ogg', 25, 0) // bang for dramatic damage effect
+		playsound((carbon),"slam", 50, 1)
+		animate(carbon, pixel_y = 0, time = 4, easing = BOUNCE_EASING)
+		var/turf/back_to_middle = get_step(carbon, SOUTH) // move them back one tile south
+		carbon.forceMove(back_to_middle)
+		carbon.apply_armoured_damage(get_xeno_damage_slash(carbon, smash_damage + smash_scale * predalienbehavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
 	else
 		predalien_smash.visible_message(SPAN_XENOWARNING("[predalien_smash]'s claws twitch."), SPAN_XENOWARNING("We couldn't grab our target. Wait a moment to try again."))
 

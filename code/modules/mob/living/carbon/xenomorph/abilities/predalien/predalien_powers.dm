@@ -115,7 +115,7 @@
 		xeno.anchored = FALSE
 		unroot_human(carbon, TRAIT_SOURCE_ABILITY("Devastate"))
 
-		xeno.visible_message(SPAN_XENODANGER("[xeno] rapidly slices into [carbon]!"))
+		SPAN_XENODANGER("We rapidly slices into [carbon]!")
 
 		return ..()
 

@@ -71,7 +71,7 @@
 
 			path = text2path(params["tutorial_path"])
 
-			if(!path || !isnewplayer(usr))
+			if(!ispath(path, /datum/tutorial) || !isnewplayer(usr))
 				return
 
 			if(HAS_TRAIT(usr, TRAIT_IN_TUTORIAL) || istype(get_area(usr), /area/misc/tutorial))

@@ -60,6 +60,10 @@
 
 /obj/vehicle/multitile/arc/proc/finish_antenna_retract(obj/vehicle/multitile/arc/vehicle, mob/user)
 	var/obj/item/hardpoint/support/arc_antenna/antenna = locate() in vehicle.hardpoints
+	if(!antenna)
+		antenna.deploying = FALSE
+		return
+
 	STOP_PROCESSING(SSslowobj, vehicle)
 	to_chat(user, SPAN_NOTICE("You retract [antenna], enabling the ARC to move again."))
 	playsound(user, 'sound/machines/hydraulics_2.ogg', 80, TRUE)
@@ -70,6 +74,10 @@
 
 /obj/vehicle/multitile/arc/proc/finish_antenna_deploy(obj/vehicle/multitile/arc/vehicle, mob/user)
 	var/obj/item/hardpoint/support/arc_antenna/antenna = locate() in vehicle.hardpoints
+	if(!antenna)
+		antenna.deploying = FALSE
+		return
+
 	START_PROCESSING(SSslowobj, vehicle)
 	to_chat(user, SPAN_NOTICE("You extend [antenna], locking the ARC in place."))
 	playsound(user, 'sound/machines/hydraulics_2.ogg', 80, TRUE)

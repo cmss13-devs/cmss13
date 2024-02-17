@@ -1562,6 +1562,7 @@
 #include "code\modules\clothing\spacesuits\miscellaneous.dm"
 #include "code\modules\clothing\spacesuits\spacesuits.dm"
 #include "code\modules\clothing\spacesuits\void.dm"
+#include "code\modules\clothing\suits\marine_armor\_ert.dm"
 #include "code\modules\clothing\suits\marine_armor\_ghillie.dm"
 #include "code\modules\clothing\suits\marine_armor\_intel.dm"
 #include "code\modules\clothing\suits\marine_armor\_smartgunner.dm"

@@ -5,7 +5,7 @@ GLOBAL_LIST_INIT(armor_paints_medium, list("padded" = "1", "padless" = "2", "pad
 GLOBAL_LIST_INIT(armor_paints_heavy, list("padded" = "H1", "padless" = "H2", "padless_lines" = "H3", "carrier" = "H4", "skull" = "H5", "smooth" = "H6"))
 /obj/item/device/armor_painter
 	name = "armor painter"
-	icon = 'icons/obj/items/paper.dmi'
+	icon = 'icons/obj/items/items.dmi'
 	icon_state = "camo"
 	item_state = "flight"
 	var/list/modes_light

@@ -155,7 +155,7 @@
 		playsound(human.loc, 'sound/hallucinations/wail.ogg', 25, 1)
 		human.jitteriness = 0
 		human.set_species(SPECIES_ZOMBIE)
-		stage = 3
+		stage = 4
 		human.faction = FACTION_ZOMBIE
 		zombie_is_transforming = FALSE
 

@@ -244,6 +244,7 @@
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_YAUTJA_ARMORY_OPENED)
 	else
 		new_xeno = new(affected_mob)
+
 	if(hive)
 		hive.add_xeno(new_xeno)
 		if(!affected_mob.first_xeno && hive.hive_location)

@@ -63,7 +63,7 @@
 	var/base_damage = 25
 	/// How much it scales by every kill
 	var/damage_scale = 10
-	var/targetting = SINGLETARGETGUT
+	var/targeting = SINGLETARGETGUT
 	/// The orange used for a AOETARGETGUT
 	var/range = 2
 

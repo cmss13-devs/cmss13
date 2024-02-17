@@ -136,6 +136,7 @@
 				infected_mob.next_move_slowdown = max(infected_mob.next_move_slowdown, 2)
 
 		if(ZOMBIE_INFECTION_STAGE_FOUR)
+			return
 			//final stage of infection it's to avoid running the above test once your a zombie for now. maybe more later.
 
 /datum/disease/black_goo/proc/zombie_transform(mob/living/carbon/human/human)

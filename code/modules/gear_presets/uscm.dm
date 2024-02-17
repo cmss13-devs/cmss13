@@ -251,8 +251,6 @@
 /datum/equipment_preset/uscm/intel/full/load_gear(mob/living/carbon/human/new_human)
 
 	var/obj/item/clothing/under/marine/officer/intel/U = new(new_human)
-	var/obj/item/clothing/accessory/storage/webbing/W = new()
-	U.attach_accessory(new_human, W)
 	new_human.equip_to_slot_or_del(U, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/intel(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)

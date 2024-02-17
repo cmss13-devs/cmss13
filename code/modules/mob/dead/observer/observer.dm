@@ -316,7 +316,10 @@
 	hud_used.show_hud(hud_used.hud_version)
 
 /mob/dead/observer/Login()
-	..()
+	..() // This calls signals which might have resulted in our client getting deleted
+
+	if(!client)
+		return
 
 	if(client.check_whitelist_status(WHITELIST_PREDATOR))
 		RegisterSignal(SSdcs, COMSIG_GLOB_PREDATOR_ROUND_TOGGLED, PROC_REF(toggle_predator_action))

@@ -108,3 +108,107 @@
   Vicacrov:
   - bugfix: Fixes Defenders staying Fortified in critical state - Fortify now automatically
       toggles itself off upon the Defender getting critted.
+2024-02-07:
+  InsaneRed:
+  - balance: Scout specialist incin/high impact mag crates now only has 3 instead
+      of 5
+  Steelpoint:
+  - rscadd: USCM Chestrig has been added to squad prep vendors, alternative sprite
+      of a satchel, similar in appearance to the welder-chestrig.
+2024-02-08:
+  Megaddd:
+  - imageadd: added 4 bone-gel fill level sprite states
+  SpartanBobby:
+  - maptweak: changes to LV624 Engineering and T-comms, mostly detailing but changes
+      some doors and object placement
+2024-02-09:
+  Huffie56:
+  - refactor: turning newscasters into "props".
+  - qol: added two new section to replace ammunition section primary ammunition and
+      sidearm ammunition and rearranged it for team leader.
+  - balance: added the ability for comtech, medic, and squad leader to buy M4A3 (HP
+      and AP) and VP78 magazines for 3 points and M44 Heavy for 6 points.
+  - balance: added the ability for SG to buy M4A3 (HP and AP) and VP78 magazines for
+      5 points and M44 Heavy for 10 points.
+  - balance: added the ability for rifleman to buy M4A3 (HP and AP) and VP78 magazines
+      for 5 points.
+2024-02-10:
+  Drathek:
+  - bugfix: Fixed an oversight with burst point blank firing
+  SabreML:
+  - bugfix: Fixed trash carts not being pick-uppable by the dropship's fulton recovery
+      system.
+  blackdragonTOW:
+  - admin: added logging for 3rd party victory events
+  private-tristan:
+  - rscadd: Pizza ERT is back, although incredibly unlikely to occur
+  - bugfix: UPP ERT no longer rolls 3 times (1 for random, 1 for friendly, and 1 for
+      hostile), due to this, UPP comms will always be scrambled at the beginning,
+      no way to tell intentions before meeting.
+  - rscadd: Chem Goon Research Consultant now spawns with reagent scanner goggles.
+2024-02-11:
+  Drathek:
+  - bugfix: Fix gardener fruit count not always updating
+  Vicacrov:
+  - bugfix: Fixed Warden Praetorians being able to move around the ovipositored Queen
+      with their Retrieve ability.
+2024-02-12:
+  Stakeyng:
+  - qol: Lets you put an extra accessory item in your helmet.
+  harryob:
+  - server: tor banning functionality is removed
+2024-02-13:
+  Huffie56:
+  - refactor: refactored watercloset.dm file.
+  SabreML:
+  - ui: Made the Tutorial Menu automatically close when a tutorial is started.
+  - code_imp: Made the tutorial Xenomorph not inherit the user's 'age' prefix.
+  - code_imp: Added a basic unit test for tutorials.
+2024-02-14:
+  SabreML:
+  - bugfix: Fixed crates and similar objects layering below the dropship's fulton
+      recovery system.
+  Zonespace Drathek:
+  - balance: Lesser drones and Facehuggers cannot speak, custom emote, or point for
+      3 minutes after spawning
+2024-02-15:
+  InsaneRed:
+  - balance: Drop pouch now scales the same as normal webbing
+  SabreML:
+  - bugfix: Fixed some changelog icons being smaller than others.
+  Vicacrov:
+  - maptweak: LV-624 tfort's floodlights are now colony floodlights.
+  VileBeggar:
+  - qol: Attaching the bipod to weapons that have full auto (HPR included) will give
+      you a button toggle for immediately switching to full auto when deploying the
+      bipod.
+2024-02-16:
+  BadAtThisGame302:
+  - rscadd: Added two new beacons for the CL, Lawyer and Bodyguard.
+  - rscadd: Added an Executive Specialist and Executive Supervisor Lawyer preset.
+  - rscadd: Added a cyanide pill in the CLs briefcase for an easy way out.
+  - rscadd: Added a Wey-Yu Coffee Mug in the CLs briefcase as a souvenir sale.
+  Drathek:
+  - bugfix: Fixed xeno tutorial allowing evolution/de-evolution
+  - bugfix: Fixed some runtimes with tutorials
+  SabreML:
+  - bugfix: Fixed the 'Clear' button not resetting the number of keybind assignment
+      slots. (Keybinds menu)
+  - refactor: Refactored xeno strains.
+  - rscadd: Added a keybind setting to open the 'Purchase Strain' window. (Also renamed
+      the macro)
+  cuberound:
+  - balance: m4ra ammo looses about 1/5 of initial effect duration per 10 tiles traveled
+  harryob:
+  - admin: permanent and sticky bans are now handled in game, instead of being managed
+      externally
+2024-02-17:
+  MobiusWon:
+  - rscadd: Adds integral Motion Detector to XM4 IO Armor
+  - balance: Uniform utility accessories (I.E. Webbing) no longer can be equipped
+      while the XM4 is worn. Armor slots increased to 5 to compensate.
+  Steelpoint:
+  - balance: Royal Marine Commando's firearms now have a higher rate of fire, comparable
+      to the M41A.
+  mullenpaul:
+  - code_imp: rework logic of restrictedinput component to reduce checks

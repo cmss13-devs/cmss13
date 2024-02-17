@@ -202,3 +202,13 @@
   harryob:
   - admin: permanent and sticky bans are now handled in game, instead of being managed
       externally
+2024-02-17:
+  MobiusWon:
+  - rscadd: Adds integral Motion Detector to XM4 IO Armor
+  - balance: Uniform utility accessories (I.E. Webbing) no longer can be equipped
+      while the XM4 is worn. Armor slots increased to 5 to compensate.
+  Steelpoint:
+  - balance: Royal Marine Commando's firearms now have a higher rate of fire, comparable
+      to the M41A.
+  mullenpaul:
+  - code_imp: rework logic of restrictedinput component to reduce checks

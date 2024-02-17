@@ -1,4 +1,0 @@
-author: "mullenpaul"
-delete-after: True
-changes:
-  - code_imp: "rework logic of restrictedinput component to reduce checks"

@@ -99,7 +99,7 @@
 		xeno.anchored = TRUE
 
 		if(do_after(xeno, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
-			xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] rips open the guts of [carbon]!"))
+			xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] rips open the guts of [carbon]!"), SPAN_XENOHIGHDANGER("We rapidly slice into [carbon]!"))
 			carbon.spawn_gibs()
 			playsound(get_turf(carbon), 'sound/effects/gibbed.ogg', 50, 1)
 			carbon.apply_effect(get_xeno_stun_duration(carbon, 0.5), WEAKEN)
@@ -114,7 +114,6 @@
 		REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Devastate"))
 		xeno.anchored = FALSE
 		unroot_human(carbon, TRAIT_SOURCE_ABILITY("Devastate"))
-		xeno.visible_message(SPAN_XENODANGER("We rapidly slice into [carbon]!"))
 
 		return ..()
 
@@ -239,9 +238,9 @@
 		playsound(carbon, 'sound/effects/bang.ogg', 25, 0)
 		animate(carbon, pixel_y = carbon.pixel_y + 32, time = 4, easing = SINE_EASING)
 		sleep(4)
-		playsound(carbon, 'sound/effects/bang.ogg', 25, 0) // bang for dramatic damage effect
+		playsound(carbon, 'sound/effects/bang.ogg', 25, 0)
 		playsound(carbon,"slam", 50, 1)
-		animate(carbon, pixel_y = 0, time = 4, easing = BOUNCE_EASING)
+		animate(carbon, pixel_y = 0, time = 4, easing = BOUNCE_EASING) //animates the smash
 		carbon.apply_armoured_damage(get_xeno_damage_slash(carbon, smash_damage + smash_scale * predalienbehavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
 	else
 		predalien_smash.visible_message(SPAN_XENOWARNING("[predalien_smash]'s claws twitch."), SPAN_XENOWARNING("We couldn't grab our target. Wait a moment to try again."))

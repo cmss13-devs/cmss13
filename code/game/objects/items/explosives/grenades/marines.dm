@@ -474,8 +474,7 @@
 	det_time = 4 SECONDS
 	var/range = 5 // Maximum range of effect
 	var/damage = 120 // Generic Energy damage from 1.2 GV. Distance scaled
-	var/dam_range_mult = 15 // Range is multiplied by this, then damage is subracted by this
-	var/spark_count = 12 // Stylistic effect only
+	var/falloff_dam_reduction_mult = 12 // Factor to mutiply the effect range has on damage.
 
 /obj/item/explosive/grenade/sebb/examine(mob/user)
 	..()
@@ -519,8 +518,6 @@
 	var/list/full_range = oview(range,src) // Fill a list of stuff in the range so we won't have to spam it
 	new /obj/effect/overlay/sebb(get_turf(src))
 	playsound(src.loc, 'sound/effects/sebb_explode.ogg', 100, 0, 10)
-	create_shrapnel(loc, spark_count/2, , ,/datum/ammo/bullet/shrapnel/light/effect/ver1, cause_data)
-	create_shrapnel(loc, spark_count/2, , ,/datum/ammo/bullet/shrapnel/light/effect/ver2, cause_data)
 	for(var/obj/structure/machinery/defenses/sentry/sentry_stun in full_range)
 		sentry_stun.sentry_range = 0 // Temporarily "disable" the sentry by killing its range then setting it back.
 
@@ -533,10 +530,16 @@
 		if(prob(25))
 			spark.set_up(2, 1, turf)
 			spark.start()
-	for(var/mob/living/mob in full_range)
-		var/mob_range = get_dist(src,mob)
-		var/dam_factor = mob_range * dam_range_mult
-		var/damage_applied = damage - dam_factor  //divides damage
+	for(var/mob/living/carbon/mob in full_range) // no simplemob support
+		var/mob_dist = get_dist(src,mob)
+		var/falloff = mob_dist * falloff_dam_reduction_mult
+		// Damage equation: damage - (mob distance * falloff_dam_reduction_mult)
+		//  Example: A marine is 3 tiles out, the distance (3) is multiplied by falloff_dam_reduction_mult to get falloff.
+		// 	The raw damage is minused by falloff to get actual damage
+		var/damage_applied = damage - falloff
+		spark.set_up(5, 1, mob)
+		spark.start()
+
 		if(ishuman(mob))
 			var/mob/living/carbon/human/shocked_human = mob
 			if(shocked_human.species == /datum/species/synthetic) // Massive overvoltage to ungrounded robots is pretty bad
@@ -546,20 +549,20 @@
 			shocked_human.take_overall_armored_damage(damage_applied ,ARMOR_ENERGY,BURN, 90) // 90% chance to be on additional limbs
 			shocked_human.make_dizzy(damage_applied*3)
 			shocked_human.make_jittery(damage_applied*3)
+			mob.apply_stamina_damage(damage_applied*2) // REMOVETHIS REMOVETHIS TO TEST
 			shocked_human.emote("pain")
-		else
+		else //nonhuman damage + slow
 			mob.apply_damage(damage_applied, BURN)
-			spark.set_up(5, 1, mob)
-			spark.start()
-		if(mob_range < 1) // they are probably dead if human so no unique human stuff.
+			mob.Slow(damage_applied/mob_dist)
+
+		if(mob_dist < 1) // Range based stuff, standing ontop of the equivalent of a canned lighting bolt should mess you up.
 			mob.KnockDown(1)
 			mob.Superslow(5)
 			mob.eye_blurry = damage_applied/4
-		else if((mob_range < (range-1)) && (mob.mob_size < MOB_SIZE_XENO_VERY_SMALL))
-			mob.KnockDown((range/2)/mob_range)
+		else if((mob_dist < (range-1)) && (mob.mob_size < MOB_SIZE_XENO_VERY_SMALL)) // Flicker stun humans that are closer to the grenade and larvas too.
+			mob.KnockDown((range/2)/mob_dist) // half of the maximum range divided by the distance the mob is to the grenade
 			mob.eye_blurry = damage_applied/8
 		else
-			mob.Slow(damage_applied/mob_range)
 			to_chat(mob,SPAN_HIGHDANGER("Your entire body seizes up as a powerful shock courses through it!"))
 	qdel(src)
 

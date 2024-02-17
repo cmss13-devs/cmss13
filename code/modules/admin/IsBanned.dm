@@ -1,6 +1,6 @@
 #ifndef OVERRIDE_BAN_SYSTEM
 //Blocks an attempt to connect before even creating our client datum thing.
-/world/IsBanned(key,address,computer_id, type, real_bans_only=FALSE)
+/world/IsBanned(key,address,computer_id, type, real_bans_only=FALSE, is_telemetry = FALSE)
 	var/ckey = ckey(key)
 
 	// This is added siliently. Thanks to MSO for this fix. You will see it when/if we go OS
@@ -28,11 +28,7 @@
 	var/datum/entity/player/P = get_player_from_key(ckey)
 
 
-	. = P.check_ban(computer_id, address)
-	if(.)
-		return .
-
-	return ..() //default pager ban stuff
+	. = P.check_ban(computer_id, address, is_telemetry)
 
 
 #endif

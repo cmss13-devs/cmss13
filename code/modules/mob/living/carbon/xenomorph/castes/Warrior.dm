@@ -55,7 +55,6 @@
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 
-	mutation_type = WARRIOR_NORMAL
 	claw_type = CLAW_TYPE_SHARP
 
 	icon_xeno = 'icons/mob/xenos/warrior.dmi'

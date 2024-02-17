@@ -206,3 +206,18 @@
 	name = "evolve"
 	full_name = "Evolve"
 	keybind_signal = COMSIG_KB_XENO_EVOLVE
+
+/datum/keybinding/xenomorph/purchase_strain
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "purchase_strain"
+	full_name = "Purchase Strain"
+	keybind_signal = COMSIG_KB_XENO_PURCHASE_STRAIN
+
+/datum/keybinding/xenomorph/purchase_strain/down(client/user)
+	. = ..()
+	if(.)
+		return
+
+	var/mob/living/carbon/xenomorph/current_xeno = user?.mob
+	current_xeno.purchase_strain()

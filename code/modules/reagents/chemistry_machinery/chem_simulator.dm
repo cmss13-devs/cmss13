@@ -590,7 +590,7 @@
 	var/suffix = " "
 	for(var/datum/chem_property/P in C.properties)
 		suffix += P.code+"[P.level]"
-	return O.name + suffix
+	return O.name + " " + copytext(md5(suffix), 1, 12)
 
 /obj/structure/machinery/chem_simulator/proc/complexity_to_string_list()
 	var/list/L = list()

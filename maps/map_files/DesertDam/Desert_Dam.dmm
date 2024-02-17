@@ -11227,9 +11227,6 @@
 /obj/structure/flora/grass/desert/heavygrass_3,
 /turf/open/desert/dirt,
 /area/desert_dam/interior/caves/central_caves)
-"aHO" = (
-/turf/open/desert/rock/deep,
-/area/desert_dam/exterior/valley/valley_wilderness)
 "aHP" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt{
@@ -96349,7 +96346,7 @@ awC
 awC
 dTs
 dTs
-dTs
+aXv
 aPP
 aaC
 aXC
@@ -96582,8 +96579,8 @@ awd
 awd
 awd
 axl
-ahT
-aHO
+dTs
+dTs
 aPP
 aaB
 abZ
@@ -96817,7 +96814,7 @@ awf
 awD
 axl
 ahT
-aHO
+dTs
 aPP
 aXW
 aVZ

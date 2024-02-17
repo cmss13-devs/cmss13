@@ -64,3 +64,23 @@
 	recipient = "Anchorpoint Station"
 	ert_full_name = list("CMB - Patrol Team - Marshals in Distress (Friendly)", "CMB - Anchorpoint Station Colonial Marine QRF (Friendly)")
 	ert_short_name = list("SEND CMB", "SEND QRF")
+
+// Corporate Lawyer beacon available for 50 points at the CLs briefcase
+/obj/item/handheld_distress_beacon/lawyer
+	name = "\improper Corporate Affairs Division handheld beacon"
+	desc = "An encoded beacon. This one is branded with the Weyland-Yutani slogan, 'Building Better Worlds since 2099'. Etched in stencil on the side is 'FOR CONTRACT BREAKERS ONLY'. This one is branded with the Corporate Affairs Division symbol and provided to most Executives situated in UA or TWE space."
+
+	beacon_type = "Lawyer beacon"
+	recipient = "the Corporate Affairs Division"
+	ert_full_name = list("Lawyers - Corporate")
+	ert_short_name = list("SEND LAWYERS")
+
+// Corporate Security Bodyguard beacon available for 50 points at the CLs briefcase
+/obj/item/handheld_distress_beacon/bodyguard
+	name = "\improper Corporate Security Division handheld beacon"
+	desc = "An standard Corporate Security beacon. This one is branded with the Weyland-Yutani slogan, 'Building Better Worlds since 2099'. This one is branded with the Corporate Security Division symbol and provided to Executives stationed in very dangerous sites across the entire Galaxy."
+
+	beacon_type = "Bodyguard beacon"
+	recipient = "the Corporate Security Division"
+	ert_full_name = list("Weyland-Yutani Goon (Executive Bodyguard Detail)")
+	ert_short_name = list("SEND BODYGUARD")

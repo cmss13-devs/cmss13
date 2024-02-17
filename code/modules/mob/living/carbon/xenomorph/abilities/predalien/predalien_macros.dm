@@ -5,7 +5,7 @@
 	var/action_name = "Feral Frenzy"
 	handle_xeno_macro(src, action_name)
 
-/datum/action/xeno_action/verb/verb_toggle_gut_targetting()
+/datum/action/xeno_action/verb/verb_toggle_gut_targeting()
 	set category = "Alien"
 	set name = "Toggle Gutting Type"
 	set hidden = TRUE

@@ -16453,7 +16453,7 @@
 	access_modified = 1;
 	dir = 1;
 	name = "\improper Auxiliary Combat Support Secondary Preparations";
-	req_one_access = "19;27;22"
+	req_one_access_txt = "19;27;22"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -31893,7 +31893,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
 	access_modified = 1;
 	name = "\improper Requisitions Auxiliary Storage Room";
-	req_one_access = "19;21"
+	req_one_access_txt = "19;21"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"

@@ -419,20 +419,21 @@
 
 	var/obj/item/weapon/gun/smg/nailgun/nailgun = item
 
-	if(!nailgun.in_chamber || !nailgun.current_mag || nailgun.current_mag.current_rounds < 3)
-		to_chat(user, SPAN_WARNING("You require at least 4 nails to complete this task!"))
-		return FALSE
-
 	// Check if either hand has a metal stack by checking the weapon offhand
 	// Presume the material is a sheet until proven otherwise.
 	var/obj/item/stack/sheet/material = null
+	var/obj/item/weapon/gun/smg/nailgun/compact/tactical/mat_tac = 4 //Material needed to make a repair with a tactical compact nailgun.
 	if(user.l_hand == nailgun)
 		material = user.r_hand
 	else
 		material = user.l_hand
 
-	if(!istype(material, /obj/item/stack/sheet/))
-		to_chat(user, SPAN_WARNING("You'll need some adequate repair material in your other hand to patch up [src]!"))
+	if(istype(item,/obj/item/weapon/gun/smg/nailgun/compact/tactical) && !skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI)) //Skill lock for tactical compact nailgun
+		to_chat(user, SPAN_WARNING("You don't seem to know how to use [item]..."))
+		return FALSE
+
+	if(!nailgun.in_chamber || !nailgun.current_mag || nailgun.current_mag.current_rounds < 3)
+		to_chat(user, SPAN_WARNING("You require at least 4 nails to complete this task!"))
 		return FALSE
 
 	var/repair_value = 0
@@ -441,8 +442,20 @@
 			repair_value = repair_materials[validSheetType]
 			break
 
+	if(!istype(material, /obj/item/stack/sheet/))
+		to_chat(user, SPAN_WARNING("You'll need some adequate repair material in your other hand to patch up [src]!"))
+		return FALSE
+
 	if(repair_value == 0)
 		to_chat(user, SPAN_WARNING("You'll need some adequate repair material in your other hand to patch up [src]!"))
+		return FALSE
+
+	if(istype(item,/obj/item/weapon/gun/smg/nailgun/compact/tactical) && material.amount < mat_tac) //If less than [mat_tac] material is held, cancel repair.
+		to_chat(user, SPAN_WARNING("You need atleast [mat_tac] [material.singular_name]\s to patch up [src]!"))
+		return FALSE
+
+	if(!material || (material != user.l_hand && material != user.r_hand) || material.amount <= 0)
+		to_chat(user, SPAN_WARNING("You seem to have misplaced [material]!"))
 		return FALSE
 
 	var/soundchannel = playsound(src, nailgun.repair_sound, 25, 1)
@@ -450,19 +463,15 @@
 		playsound(src, null, channel = soundchannel)
 		return FALSE
 
-	if(!material || (material != user.l_hand && material != user.r_hand) || material.amount <= 0)
-		to_chat(user, SPAN_WARNING("You seems to have misplaced the repair material!"))
-		return FALSE
+	if(istype(item,/obj/item/weapon/gun/smg/nailgun/compact/tactical))
+		material.use(mat_tac) //Removes [mat_tac] from stack.
+	else
+		material.use(1)
 
-	if(!nailgun.in_chamber || !nailgun.current_mag || nailgun.current_mag.current_rounds < 3)
-		to_chat(user, SPAN_WARNING("You require at least 4 nails to complete this task!"))
-		return FALSE
-
-	update_health(-repair_value*maxhealth)
-	to_chat(user, SPAN_WARNING("You nail [material] to [src], restoring some of its integrity!"))
-	update_damage_state()
-	material.use(1)
 	nailgun.current_mag.current_rounds -= 3
 	nailgun.in_chamber = null
 	nailgun.load_into_chamber()
+	update_health(-repair_value*maxhealth)
+	to_chat(user, SPAN_WARNING("You nail [material] to [src], restoring some of its integrity!"))
+	update_damage_state()
 	return TRUE

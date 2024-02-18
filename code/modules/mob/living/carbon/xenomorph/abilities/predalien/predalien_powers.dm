@@ -82,7 +82,7 @@
 		to_chat(xeno, SPAN_XENOWARNING("We must target a hostile!"))
 		return
 
-	if(!isliving(affected_atom))
+	if(!isliving(target))
 		return
 
 	if(get_dist_sqrd(target, xeno) > 2)

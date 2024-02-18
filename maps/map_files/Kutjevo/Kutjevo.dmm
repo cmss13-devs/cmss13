@@ -8665,7 +8665,7 @@
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med)
 "lxi" = (
-/obj/structure/girder/reinforced,
+/obj/structure/girder,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/securestorage)
 "lxB" = (
@@ -8900,7 +8900,7 @@
 /area/kutjevo/exterior/Northwest_Colony)
 "lMv" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/fancy/cigarettes/wypacket,
+/obj/item/paper/crumpled,
 /turf/open/floor/plating,
 /area/kutjevo/exterior/securestorage)
 "lMS" = (
@@ -39789,7 +39789,7 @@ kKR
 ucV
 hXY
 vPD
-gcX
+lxi
 bkR
 bEH
 bkR

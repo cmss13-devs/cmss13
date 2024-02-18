@@ -82,6 +82,9 @@
 		to_chat(xeno, SPAN_XENOWARNING("We must target a hostile!"))
 		return
 
+	if(!isliving(affected_atom))
+		return
+
 	if(get_dist_sqrd(target, xeno) > 2)
 		to_chat(xeno, SPAN_XENOWARNING("[target] is too far away!"))
 		return

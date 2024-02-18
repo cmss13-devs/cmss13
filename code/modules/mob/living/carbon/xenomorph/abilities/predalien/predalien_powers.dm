@@ -222,11 +222,12 @@
 		apply_cooldown_override(click_miss_cooldown)
 		return
 
-	if(!isliving(affected_atom))
-		return
 
 	var/mob/living/carbon/carbon = affected_atom
 	if(carbon.stat == DEAD)
+		return
+
+	if(!isliving(affected_atom))
 		return
 
 	if(!check_and_use_plasma_owner())

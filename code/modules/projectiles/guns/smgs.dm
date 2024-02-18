@@ -690,7 +690,7 @@
 
 /obj/item/weapon/gun/smg/nailgun/compact/tactical
 	name = "tactical compact nailgun"
-	desc = "A carpentry tool, used to drive nails into tough surfaces. This one is military grade. Cannot fire nails as a projectile."
+	desc = "A carpentry tool, used to drive nails into tough surfaces. This one is military grade, it's olive drab and tacticool. Cannot fire nails as a projectile."
 	icon_state = "tnailgun"
 	item_state = "tnailgun"
 	w_class = SIZE_SMALL

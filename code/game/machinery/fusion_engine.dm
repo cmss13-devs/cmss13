@@ -58,7 +58,7 @@
 	if(is_mainship_level(z)) //Only ship reactors can overload
 		is_ship_reactor = TRUE
 
-	if(is_ground_level(z)) //Colony reactors start damaged
+	if(!buildstate && is_ground_level(z)) //Colony reactors start damaged
 		switch(rand(1, 6))
 			if(1 to 3) //50%
 				buildstate = BUILDSTATE_DAMAGE_WELD
@@ -161,7 +161,8 @@
 			fail_rate += 2.5
 
 	if(require_fusion_cell && (!fusion_cell || fusion_cell.fuel_amount <= 0)) //empty fuel
-		visible_message(SPAN_DANGER("[src] flashes that the fuel cell is [fusion_cell ? "empty" : "missing"] as the engine seizes."))
+		if(prob(20))
+			visible_message(SPAN_DANGER("[src] flashes that the fuel cell is [fusion_cell ? "empty" : "missing"] as the engine seizes."))
 		fail_rate += 2.5
 
 	if(overloaded && prob(1)) // up to 18 generators at 1% every 3.5 seconds means that every ~21 seconds or so, one generator will make noise assuming all are overloaded

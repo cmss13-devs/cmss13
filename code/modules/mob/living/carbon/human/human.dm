@@ -331,7 +331,7 @@
 			observer.client.add_to_screen(checked_storage.storage_continue)
 			observer.client.add_to_screen(checked_storage.storage_end)
 
-		// Players can only look in one inventory at a time, so skip any others.
+		// Players are only able to look in one inventory at a time, so skip any others.
 		break
 
 // called when something steps onto a human

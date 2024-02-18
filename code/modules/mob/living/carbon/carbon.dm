@@ -416,7 +416,11 @@
 	<BR>"}
 	show_browser(user, dat, name, "mob[name]")
 
-/// TODO: Documentation (also a better proc name)
+/**
+ * Called by [/mob/dead/observer/proc/do_observe] when a carbon mob is observed by a ghost with [/datum/preferences/var/auto_observe] enabled.
+ *
+ * Override with any extra behaviour on subtypes.
+ */
 /mob/living/carbon/proc/auto_observed(mob/dead/observer/observer)
 	SHOULD_CALL_PARENT(TRUE)
 

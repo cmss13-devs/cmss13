@@ -3754,7 +3754,7 @@
 	},
 /obj/structure/machinery/atm{
 	pixel_y = 6;
-	icon = 'icons/obj/structures/props/64x64zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi';
 	pixel_x = 3
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -16307,12 +16307,12 @@
 	},
 /area/lv759/outdoors)
 "dzt" = (
+/obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/atm{
 	pixel_y = 11;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi';
 	pixel_x = 6
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate"
@@ -18589,6 +18589,10 @@
 "dZo" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal2"
+	},
+/obj/effect/hybrisa/decal/road/roadmiddle{
+	dir = 8;
+	pixel_x = 16
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_street)
@@ -38075,7 +38079,7 @@
 "hYN" = (
 /obj/structure/machinery/atm{
 	pixel_y = 11;
-	icon = 'icons/obj/structures/props/64x64zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi';
 	pixel_x = 9
 	},
 /turf/open/floor/interior/wood,
@@ -42831,9 +42835,9 @@
 /area/lv759/outdoors)
 "iYM" = (
 /obj/structure/machinery/atm{
-	pixel_y = 14;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	pixel_x = 1
+	pixel_y = 15;
+	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi';
+	pixel_x = 3
 	},
 /turf/open/floor/prison{
 	icon_state = "red"
@@ -49389,7 +49393,7 @@
 "kqe" = (
 /obj/structure/machinery/atm{
 	pixel_y = 11;
-	icon = 'icons/obj/structures/props/64x64zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi';
 	pixel_x = 6
 	},
 /turf/open/floor/prison{
@@ -54931,7 +54935,7 @@
 "luP" = (
 /obj/structure/machinery/atm{
 	pixel_y = 11;
-	icon = 'icons/obj/structures/props/64x64zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi';
 	pixel_x = 11
 	},
 /turf/open/floor/corsat{
@@ -61106,15 +61110,6 @@
 	icon_state = "whitegreen"
 	},
 /area/lv759/indoors/hospital/cryo_room)
-"mIt" = (
-/obj/structure/machinery/atm{
-	pixel_y = 14;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	pixel_x = 1;
-	icon_state = "atmtop"
-	},
-/turf/closed/wall/r_wall/prison,
-/area/lv759/colonial_marshals/north_office)
 "mIu" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -69759,11 +69754,6 @@
 /area/lv759/power_plant/geothermal_generators)
 "oAR" = (
 /obj/effect/hybrisa/decal/road/road_edge,
-/obj/effect/hybrisa/decal/road/road_stop{
-	icon_state = "stop_decal5";
-	dir = 8;
-	pixel_x = -7
-	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_street)
 "oAX" = (
@@ -71350,6 +71340,11 @@
 	},
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red{
 	dir = 4
+	},
+/obj/structure/machinery/atm{
+	pixel_y = 11;
+	icon = 'icons/obj/structures/props/64x64zenithrandomprops.dmi';
+	pixel_x = 9
 	},
 /turf/open/hybrisa/street/sidewalk{
 	dir = 1
@@ -97988,7 +97983,7 @@
 "ugZ" = (
 /obj/structure/machinery/atm{
 	pixel_y = 11;
-	icon = 'icons/obj/structures/props/64x64zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi';
 	pixel_x = 6
 	},
 /turf/open/floor/almayer{
@@ -105020,7 +105015,7 @@
 "vBp" = (
 /obj/structure/machinery/atm{
 	pixel_y = 11;
-	icon = 'icons/obj/structures/props/64x64zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi';
 	pixel_x = 6
 	},
 /turf/open/hybrisa/street/cement1,
@@ -107943,17 +107938,6 @@
 	icon_state = "red"
 	},
 /area/lv759/colonial_marshals/armory)
-"wew" = (
-/obj/structure/machinery/atm{
-	pixel_y = 11;
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
-	pixel_x = 6;
-	icon_state = "atmtop"
-	},
-/turf/closed/wall/hangar{
-	name = "reinforced metal wall"
-	},
-/area/lv759/indoors/weyyu_office)
 "wez" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -113771,6 +113755,11 @@
 	dir = 1;
 	pixel_y = 9
 	},
+/obj/structure/machinery/atm{
+	pixel_y = 11;
+	icon = 'icons/obj/structures/props/64x64zenithrandomprops.dmi';
+	pixel_x = 9
+	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/south_east_street)
 "xmK" = (
@@ -117202,7 +117191,7 @@
 "xTL" = (
 /obj/structure/machinery/atm{
 	pixel_y = 11;
-	icon = 'icons/obj/structures/props/64x64zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi';
 	pixel_x = 3
 	},
 /obj/item/spacecash/c1{
@@ -140479,7 +140468,7 @@ efk
 lCH
 seA
 dZV
-wew
+pZw
 dzt
 skw
 gWQ
@@ -161460,7 +161449,7 @@ oPt
 lEg
 siw
 tYA
-mIt
+tYA
 iYM
 rEg
 rEg

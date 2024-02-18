@@ -2985,7 +2985,7 @@
 //
 /obj/structure/prop/hybrisa/misc/buildinggreeblies
 	name = "machinery"
-	icon = 'icons/obj/structures/props/64x64 zenithrandomprops.dmi'
+	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi'
 	icon_state = "buildingventbig1"
 	bound_width = 64
 	bound_height = 32
@@ -3042,7 +3042,7 @@
 /obj/structure/prop/hybrisa/misc/stoneplanterseats
 	name = "concrete seated planter"
 	desc = "A decorative concrete planter with seating attached."
-	icon = 'icons/obj/structures/props/64x64 zenithrandomprops.dmi'
+	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi'
 	icon_state = "planterseats"
 	bound_width = 32
 	bound_height = 64
@@ -3059,7 +3059,7 @@
 /obj/structure/prop/hybrisa/misc/concretestatue
 	name = "concrete statue"
 	desc = "A decorative statue with the Weyland-Yutani 'Wings' adorned on it, A corporate brutalist piece of art."
-	icon = 'icons/obj/structures/props/64x64 zenithrandomprops.dmi'
+	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi'
 	icon_state = "concretesculpture"
 	bound_width = 64
 	bound_height = 64
@@ -3090,7 +3090,7 @@
 /obj/structure/prop/hybrisa/misc/phonebox
 	name = "phonebox"
 	desc = "A phone-box, it doesn't seem to be working, the line must be down."
-	icon = 'icons/obj/structures/props/64x64 zenithrandomprops.dmi'
+	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi'
 	icon_state = "phonebox_closed"
 	layer = ABOVE_MOB_LAYER
 	bound_width = 32

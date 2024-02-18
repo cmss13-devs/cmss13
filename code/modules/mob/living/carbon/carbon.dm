@@ -416,6 +416,14 @@
 	<BR>"}
 	show_browser(user, dat, name, "mob[name]")
 
+/// TODO: Documentation (also a better proc name)
+/mob/living/carbon/proc/auto_observed(mob/dead/observer/observer)
+	SHOULD_CALL_PARENT(TRUE)
+
+	LAZYINITLIST(observers)
+	observers |= observer
+	hud_used.show_hud(hud_used.hud_version, observer)
+
 //generates realistic-ish pulse output based on preset levels
 /mob/living/carbon/proc/get_pulse(method) //method 0 is for hands, 1 is for machines, more accurate
 	var/temp = 0 //see setup.dm:694

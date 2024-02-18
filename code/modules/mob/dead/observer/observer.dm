@@ -256,48 +256,25 @@
 	ManualFollow(target)
 	reset_perspective()
 
-	if(!ishuman(target) || !client.prefs?.auto_observe)
+	if(!iscarbon(target) || !client.prefs?.auto_observe)
 		return
-	var/mob/living/carbon/human/human_target = target
-
-	client.eye = human_target
-	observe_target_mob = human_target
-	RegisterSignal(observe_target_mob, COMSIG_PARENT_QDELETING, PROC_REF(clean_observe_target))
-	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(observer_move_react))
-
-	if(!human_target.hud_used)
+	var/mob/living/carbon/carbon_target = target
+	if(!carbon_target.hud_used)
 		return
 
 	client.clear_screen()
-	LAZYINITLIST(human_target.observers)
-	human_target.observers |= src
-	human_target.hud_used.show_hud(human_target.hud_used.hud_version, src)
+	client.eye = carbon_target
+	observe_target_mob = carbon_target
+	carbon_target.auto_observed(src)
 
-	var/list/target_contents = human_target.get_contents()
-
-	//Handles any currently open storage containers the target is looking in when we observe
-	for(var/obj/item/storage/checked_storage in target_contents)
-		if(!(human_target in checked_storage.content_watchers))
-			continue
-
-		client.add_to_screen(checked_storage.closer)
-		client.add_to_screen(checked_storage.contents)
-
-		if(checked_storage.storage_slots)
-			client.add_to_screen(checked_storage.boxes)
-		else
-			client.add_to_screen(checked_storage.storage_start)
-			client.add_to_screen(checked_storage.storage_continue)
-			client.add_to_screen(checked_storage.storage_end)
-
-		break
-
+	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(observer_move_react))
+	RegisterSignal(observe_target_mob, COMSIG_PARENT_QDELETING, PROC_REF(clean_observe_target))
 	RegisterSignal(observe_target_mob, COMSIG_MOB_GHOSTIZE, PROC_REF(observe_target_ghosting))
 	RegisterSignal(observe_target_mob, COMSIG_MOB_NEW_MIND, PROC_REF(observe_target_new_mind))
 	RegisterSignal(observe_target_mob, COMSIG_MOB_LOGIN, PROC_REF(observe_target_login))
 
-	if(human_target.client)
-		observe_target_client = human_target.client
+	if(observe_target_mob.client)
+		observe_target_client = observe_target_mob.client
 		RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_ADD, PROC_REF(observe_target_screen_add))
 		RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_REMOVE, PROC_REF(observe_target_screen_remove))
 

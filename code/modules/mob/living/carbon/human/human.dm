@@ -311,6 +311,29 @@
 	<BR>"}
 	show_browser(user, dat, name, "mob[name]")
 
+/mob/living/carbon/human/auto_observed(mob/dead/observer/observer)
+	. = ..()
+
+	var/list/all_contents = get_contents()
+
+	// Handle any currently open storage containers `src` is looking at when observed.
+	for(var/obj/item/storage/checked_storage in all_contents)
+		if(!(src in checked_storage.content_watchers))
+			continue
+
+		observer.client.add_to_screen(checked_storage.closer)
+		observer.client.add_to_screen(checked_storage.contents)
+
+		if(checked_storage.storage_slots)
+			observer.client.add_to_screen(checked_storage.boxes)
+		else
+			observer.client.add_to_screen(checked_storage.storage_start)
+			observer.client.add_to_screen(checked_storage.storage_continue)
+			observer.client.add_to_screen(checked_storage.storage_end)
+
+		// Players can only look in one inventory at a time, so skip any others.
+		break
+
 // called when something steps onto a human
 // this handles mulebots and vehicles
 /mob/living/carbon/human/Crossed(atom/movable/AM)

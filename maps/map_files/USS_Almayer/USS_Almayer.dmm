@@ -52223,6 +52223,12 @@
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/living/briefing)
+"nlS" = (
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "cargo"
+	},
+/area/almayer/engineering/upper_engineering)
 "nlW" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/largecrate/random/barrel/green,
@@ -66697,8 +66703,7 @@
 /obj/structure/closet/secure_closet/engineering_personal,
 /obj/item/clothing/suit/storage/hazardvest/blue,
 /turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "cargo"
+	icon_state = "plate"
 	},
 /area/almayer/engineering/upper_engineering)
 "sxu" = (
@@ -67505,14 +67510,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/basketball)
-"sOx" = (
-/obj/structure/closet/secure_closet/engineering_personal,
-/obj/item/clothing/suit/storage/hazardvest/yellow,
-/turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "cargo"
-	},
-/area/almayer/engineering/upper_engineering)
 "sOy" = (
 /obj/structure/stairs/perspective{
 	dir = 1;
@@ -130304,7 +130301,7 @@ aYj
 apd
 hwC
 rcS
-amx
+nlS
 swN
 alO
 axL
@@ -130507,8 +130504,8 @@ aYj
 apd
 alR
 amA
-atq
-swN
+nlS
+alR
 alO
 alO
 cHc
@@ -130710,8 +130707,8 @@ aDZ
 apd
 alR
 amA
-atq
-sOx
+nlS
+alR
 alO
 axM
 amA
@@ -130913,8 +130910,8 @@ aDZ
 apd
 alR
 amA
-atq
-sOx
+nlS
+alR
 alO
 axN
 azq

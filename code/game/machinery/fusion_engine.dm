@@ -271,7 +271,7 @@
 	if(istype(attacking_item, /obj/item/fuel_cell))
 		var/obj/item/fuel_cell/cell = attacking_item
 		if(fusion_cell)
-			to_chat(user, SPAN_WARNING("[src] already has [fusion_cell]. Before you can replace it with [cell] you need to remove it with a wrench."))
+			to_chat(user, SPAN_WARNING("[src] already has [fusion_cell]. Before you can replace it with [cell] you need to remove it with a crowbar."))
 			return
 
 		to_chat(user, SPAN_NOTICE("You start inserting [cell] into [src]."))

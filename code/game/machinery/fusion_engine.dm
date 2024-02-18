@@ -465,7 +465,7 @@
 /obj/structure/machinery/power/reactor/colony
 	name = "\improper G-11 geothermal generator"
 	icon = 'icons/obj/structures/machinery/geothermal.dmi'
-	desc = "A thermoelectric generator sitting atop a plasma-filled borehole. This one is heavily damaged. Use a blowtorch, wirecutters, then wrench to repair it."
+	desc = "A thermoelectric generator sitting atop a plasma-filled borehole."
 
 	is_on = FALSE
 	power_generation_max = 100000 //100,000W at full capacity

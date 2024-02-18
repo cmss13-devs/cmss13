@@ -168,7 +168,7 @@
 			target.apply_armoured_damage(get_xeno_damage_slash(target, xeno.caste.melee_damage_upper), ARMOR_MELEE, BRUTE, rand_zone())
 			playsound(get_turf(target), 'sound/weapons/alien_claw_flesh4.ogg', 30, TRUE)
 			xeno.flick_heal_overlay(1 SECONDS, "#00B800")
-			xeno.gain_health(get_xeno_damage_slash(target, xeno.caste.melee_damage_upper))
+			xeno.gain_health(30)
 			xeno.animation_attack_on(target)
 
 	xeno.emote("roar")
@@ -216,7 +216,7 @@
 		hit_target = carbonara
 		to_chat(xeno, SPAN_XENODANGER("We attack [hit_target] with our tail, throwing it back after stabbing it with our tail!"))
 
-	if(targeted_atom == hit_target) //reward for a direct hit
+	if(targeted_atom == hit_target && iscarbon(targeted_atom)) //reward for a direct hit
 		to_chat(xeno, SPAN_XENOHIGHDANGER("We directly slam [hit_target] with our tail, throwing it back after impaling it on our tail!"))
 		hit_target.apply_armoured_damage(15, ARMOR_MELEE, BRUTE, "chest")
 

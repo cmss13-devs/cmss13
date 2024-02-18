@@ -305,6 +305,36 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 
 	return TRUE
 
+/// Permanently bans this user, with the provided reason. The banner ([/datum/entity/player]) argument is optional, as this can be done without admin intervention.
+/datum/entity/player/proc/add_perma_ban(reason, internal_reason, datum/entity/player/banner)
+	if(is_permabanned)
+		return FALSE
+
+	is_permabanned = TRUE
+	permaban_date = "[time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")]"
+	permaban_reason = reason
+
+	if(banner)
+		permaban_admin_id = banner.id
+		message_admins("[key_name_admin(banner.owning_client)] has permanently banned [ckey] for '[reason]'.")
+		var/datum/tgs_chat_embed/field/reason_embed
+		if(internal_reason)
+			reason_embed = new("Permaban Reason", internal_reason)
+		important_message_external("[banner.owning_client] has permanently banned [ckey] for '[reason]'.", "Permaban Placed", reason_embed ? list(reason_embed) : null)
+
+		add_note("Permanently banned | [reason]", FALSE, NOTE_ADMIN, TRUE)
+		if(internal_reason)
+			add_note("Internal reason: [internal_reason]", TRUE, NOTE_ADMIN)
+
+	if(owning_client)
+		to_chat_forced(owning_client, SPAN_LARGE("<big><b>You have been permanently banned by [banner.ckey].\nReason: [reason].</b></big>"))
+		to_chat_forced(owning_client, SPAN_LARGE("This is a permanent ban. It will not be removed."))
+		QDEL_NULL(owning_client)
+
+	save()
+
+	return TRUE
+
 /datum/entity/player/proc/auto_unban()
 	if(!is_time_banned)
 		return
@@ -447,54 +477,45 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	record_login_triplet(player.ckey, address, computer_id)
 	player_data.sync()
 
-/datum/entity/player/proc/check_ban(computer_id, address)
+/datum/entity/player/proc/check_ban(computer_id, address, is_telemetry)
 	. = list()
 
-	var/list/linked_bans = check_for_sticky_ban(address, computer_id)
-	if(islist(linked_bans))
-		var/datum/view_record/stickyban_list_view/SLW = LAZYACCESS(linked_bans, 1)
-		if(SLW)
-			var/reason = ""
+	var/list/datum/view_record/stickyban/all_stickies = SSstickyban.check_for_sticky_ban(ckey, address, computer_id)
 
-			if(SLW.address == address)
-				reason += "IP Address Matches; "
-			if(SLW.computer_id == computer_id)
-				reason += "CID Matches; "
-			if(SLW.ckey == ckey)
-				reason += "Ckey Matches; "
+	if(length(all_stickies))
+		var/datum/view_record/stickyban/sticky = all_stickies[1]
 
-			var/source_id = SLW.linked_stickyban
-			var/source_reason = SLW.linked_reason
-			var/source_ckey = SLW.linked_ckey
-			if(!source_id)
-				source_id = "[SLW.entry_id]"
-				source_reason = SLW.reason
-				source_ckey = SLW.ckey
+		if(!is_telemetry)
+			log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Stickybanned (Reason: [sticky.reason])")
+			message_admins("Failed Login: [ckey] (IP: [last_known_ip], CID: [last_known_cid]) - Stickybanned (Reason: [sticky.reason])")
 
-			log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Stickybanned (Linked to [source_ckey]; Reason: [source_reason])")
-			message_admins("Failed Login: [ckey] (IP: [last_known_ip], CID: [last_known_cid]) - Stickybanned (Linked to ckey [source_ckey]; Reason: [source_reason])")
+		var/appeal
+		if(CONFIG_GET(string/banappeals))
+			appeal = "\nFor more information on your ban, or to appeal, head to <a href='[CONFIG_GET(string/banappeals)]'>[CONFIG_GET(string/banappeals)]</a>"
 
-			DB_FILTER(/datum/entity/player_sticky_ban,
-				DB_AND(
-					DB_COMP("ckey", DB_EQUALS, ckey),
-					DB_COMP("address", DB_EQUALS, address),
-					DB_COMP("computer_id", DB_EQUALS, computer_id)
-				), CALLBACK(src, PROC_REF(process_stickyban), address, computer_id, source_id, reason, null))
+		.["desc"] = "\nReason: Stickybanned - [sticky.message] Identifier: [sticky.identifier]\n[appeal]"
+		.["reason"] = "ckey/id"
 
-			.["desc"] = "\nReason: Stickybanned\nExpires: PERMANENT"
-			.["reason"] = "ckey/id"
-			return .
+		if(!is_telemetry)
+			SSstickyban.match_sticky(sticky.id, ckey, address, computer_id)
+		return
+
 
 	if(!is_time_banned && !is_permabanned)
 		return null
+
 	var/appeal
 	if(CONFIG_GET(string/banappeals))
 		appeal = "\nFor more information on your ban, or to appeal, head to <a href='[CONFIG_GET(string/banappeals)]'>[CONFIG_GET(string/banappeals)]</a>"
 	if(is_permabanned)
-		permaban_admin.sync()
-		log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Banned [permaban_reason]")
-		message_admins("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [permaban_reason]")
-		.["desc"] = "\nReason: [permaban_reason]\nExpires: <B>PERMANENT</B>\nBy: [permaban_admin.ckey][appeal]"
+		var/banner = "Host"
+		if(permaban_admin_id)
+			var/datum/view_record/players/banning_admin = locate() in DB_VIEW(/datum/view_record/players, DB_COMP("id", DB_EQUALS, permaban_admin_id))
+			banner = banning_admin.ckey
+		if(!is_telemetry)
+			log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Banned [permaban_reason]")
+			message_admins("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [permaban_reason]")
+		.["desc"] = "\nReason: [permaban_reason]\nExpires: <B>PERMANENT</B>\nBy: [banner][appeal]"
 		.["reason"] = "ckey/id"
 		return .
 	if(is_time_banned)
@@ -509,8 +530,9 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 			timeleftstring = "[round(time_left / 60, 0.1)] Hours"
 		else
 			timeleftstring = "[time_left] Minutes"
-		log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Banned [time_ban_reason]")
-		message_admins("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [time_ban_reason]")
+		if(!is_telemetry)
+			log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Banned [time_ban_reason]")
+			message_admins("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [time_ban_reason]")
 		.["desc"] = "\nReason: [time_ban_reason]\nExpires: [timeleftstring]\nBy: [time_ban_admin.ckey][appeal]"
 		.["reason"] = "ckey/id"
 		return .
@@ -681,7 +703,6 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	parent_entity = /datum/entity/player
 	child_entity = /datum/entity/player
 	child_field = "permaban_admin_id"
-
 	parent_name = "permabanning_admin"
 
 /datum/view_record/players

@@ -15,6 +15,7 @@
 
 	attack_delay = 2 // VERY high slash damage, but attacks relatively slowly
 
+	available_strains = list(/datum/xeno_strain/vampire)
 	behavior_delegate_type = /datum/behavior_delegate/lurker_base
 
 	deevolves_to = list(XENO_CASTE_RUNNER)
@@ -50,7 +51,6 @@
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
-	mutation_type = LURKER_NORMAL
 	claw_type = CLAW_TYPE_SHARP
 
 	tackle_min = 2

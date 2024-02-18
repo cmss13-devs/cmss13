@@ -971,6 +971,7 @@
 #include "code\game\machinery\vending\vendor_types\antag\antag_guns_snowflake.dm"
 #include "code\game\machinery\vending\vendor_types\antag\antag_guns_sorted.dm"
 #include "code\game\machinery\vending\vendor_types\crew\commanding_officer.dm"
+#include "code\game\machinery\vending\vendor_types\crew\engineering.dm"
 #include "code\game\machinery\vending\vendor_types\crew\medical.dm"
 #include "code\game\machinery\vending\vendor_types\crew\mp.dm"
 #include "code\game\machinery\vending\vendor_types\crew\pilot_officer.dm"

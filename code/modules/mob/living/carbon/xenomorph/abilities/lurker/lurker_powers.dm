@@ -211,21 +211,23 @@
 			if(current_structure.density && !current_structure.throwpass)
 				to_chat(xeno, SPAN_WARNING("There's something blocking us from striking!"))
 				return
-
-	for(var/mob/living/carbon/carbonara in get_turf(targeted_atom))
-		hit_target = carbonara
-		to_chat(xeno, SPAN_XENODANGER("We attack [hit_target] with our tail, throwing it back after stabbing it with our tail!"))
-
-	if(targeted_atom == hit_target && iscarbon(targeted_atom)) //reward for a direct hit
-		to_chat(xeno, SPAN_XENOHIGHDANGER("We directly slam [hit_target] with our tail, throwing it back after impaling it on our tail!"))
-		hit_target.apply_armoured_damage(15, ARMOR_MELEE, BRUTE, "chest")
-
-	if(!isxeno_human(hit_target) || xeno.can_not_harm(hit_target) || hit_target.stat == DEAD)
+/// find a target in the target turf
+	if(!iscarbon(targeted_atom) || hit_target.stat == DEAD)
+		for(var/mob/living/carbon/carbonara in get_turf(targeted_atom))
+			hit_target = carbonara
+			if(!xeno.can_not_harm(hit_target) && hit_target.stat != DEAD)
+				break
+	if(iscarbon(hit_target) && !xeno.can_not_harm(hit_target) && hit_target.stat != DEAD)
+		if(targeted_atom == hit_target) //reward for a direct hit
+			to_chat(xeno, SPAN_XENOHIGHDANGER("We directly slam [hit_target] with our tail, throwing it back after impaling it on our tail!"))
+			hit_target.apply_armoured_damage(15, ARMOR_MELEE, BRUTE, "chest")
+		else
+			to_chat(xeno, SPAN_XENODANGER("We attack [hit_target] with our tail, throwing it back after stabbing it with our tail!"))
+	else
 		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] swipes their tail through the air!"), SPAN_XENOWARNING("We swipe our tail through the air!"))
 		apply_cooldown(cooldown_modifier = 0.2)
 		playsound(xeno, 'sound/effects/alien_tail_swipe1.ogg', 50, TRUE)
 		return
-
 	// FX
 	var/stab_direction
 

@@ -68,5 +68,5 @@ GLOBAL_LIST_INIT(cm_vending_clothing_maintenance_technician, list(
 		/obj/item/storage/bag/trash,
 		/obj/item/storage/toolbox/mechanical,
 		/obj/item/device/flashlight,
-		/obj/item/storage/backpack/industrial
+		/obj/item/storage/backpack/industrial,
 	)

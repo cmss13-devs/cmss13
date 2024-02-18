@@ -424,6 +424,10 @@
 	observers |= observer
 	hud_used.show_hud(hud_used.hud_version, observer)
 
+	for(var/datum/action/action as anything in actions)
+		// Add the action's button (not the action itself) to the observer's screen.
+		observer.client.add_to_screen(action.button)
+
 //generates realistic-ish pulse output based on preset levels
 /mob/living/carbon/proc/get_pulse(method) //method 0 is for hands, 1 is for machines, more accurate
 	var/temp = 0 //see setup.dm:694

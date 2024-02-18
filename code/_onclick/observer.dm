@@ -14,6 +14,10 @@
 	if(..())
 		return TRUE
 
+	// If the player is auto-observing someone, and they clicked on part of the target's UI.
+	if((observe_target_client || observe_target_mob) && istype(target, /atom/movable/screen))
+		return TRUE
+
 	if (mods["shift"] && mods["middle"])
 		point_to(target)
 		return TRUE

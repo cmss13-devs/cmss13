@@ -71,6 +71,10 @@
 	name = "Kutjevo - Southern Spring"
 	icon_state = "lz_river"
 
+/area/kutjevo/exterior/securestorage
+	name = "Kutjevo - Secure Storage"
+	icon_state = "construction"
+
 /area/kutjevo/exterior/scrubland
 	name = "Kutjevo - Scrubland"
 	icon_state = "scrubland"

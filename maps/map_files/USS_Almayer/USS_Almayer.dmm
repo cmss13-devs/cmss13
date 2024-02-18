@@ -66700,8 +66700,7 @@
 	},
 /area/almayer/lifeboat_pumps/south2)
 "swN" = (
-/obj/structure/closet/secure_closet/engineering_personal,
-/obj/item/clothing/suit/storage/hazardvest/blue,
+/obj/structure/machinery/cm_vending/clothing/maintenance_technician,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -130505,7 +130504,7 @@ apd
 alR
 amA
 nlS
-alR
+swN
 alO
 alO
 cHc
@@ -130708,7 +130707,7 @@ apd
 alR
 amA
 nlS
-alR
+swN
 alO
 axM
 amA
@@ -130911,7 +130910,7 @@ apd
 alR
 amA
 nlS
-alR
+swN
 alO
 axN
 azq

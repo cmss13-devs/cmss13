@@ -62,7 +62,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_maintenance_technician, list(
 /obj/structure/machinery/cm_vending/clothing/maintenance_technician/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_maintenance_technician
 
-	/obj/effect/essentials_set/maintenance
+/obj/effect/essentials_set/maintenance
 	spawned_gear_list = list(
 		/obj/item/device/lightreplacer,
 		/obj/item/device/demo_scanner,

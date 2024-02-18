@@ -151,6 +151,9 @@
 /obj/effect/hybrisa/decal/road/corner
 	icon = 'icons/effects/hybrisa_decals.dmi'
 	icon_state = "Z_corner"
+/obj/effect/hybrisa/decal/road/roadmiddle
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "roadlinesmiddle"
 
 
 // Dam Roadlines smaller
@@ -186,7 +189,6 @@
 
 //Gold lines
 /obj/effect/hybrisa/decal/gold
-	name = "border"
 	icon = 'icons/effects/hybrisa_decals.dmi'
 	icon_state = "Z_S"
 /obj/effect/hybrisa/decal/gold/line1
@@ -213,11 +215,13 @@
 // 64x64 Decals
 
 /obj/effect/hybrisa/decal/WY/WY1
-	name = "Weyland-Yutani"
 	icon = 'icons/effects/64x64hybrisa_decals.dmi'
 	icon_state = "weylandyutanilogo1"
 
 /obj/effect/hybrisa/decal/WY/WYworn
-	name = "Weyland-Yutani"
 	icon = 'icons/effects/64x64hybrisa_decals.dmi'
 	icon_state = "weylandyutanilogo2"
+
+/obj/effect/hybrisa/decal/roadcross
+	icon = 'icons/effects/64x64hybrisa_decals.dmi'
+	icon_state = "roadcross"

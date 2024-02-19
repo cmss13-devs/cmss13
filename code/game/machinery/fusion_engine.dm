@@ -50,8 +50,6 @@
 	var/require_fusion_cell = TRUE
 	///The reactors fuel cell, fail rate increases if empty
 	var/obj/item/fuel_cell/fusion_cell
-	///Rate fuel cells get used at
-	var/fuel_rate = 0
 
 /obj/structure/machinery/power/reactor/Initialize(mapload, ...)
 	. = ..()

@@ -29,7 +29,7 @@
 	gear_preset = /datum/equipment_preset/wo/marine/sg
 
 AddTimelock(/datum/job/marine/smartgunner, list(
-	JOB_SQUAD_ROLES = 5 HOURS
+	JOB_SQUAD_ROLES = 10 HOURS
 ))
 
 /obj/effect/landmark/start/marine/smartgunner

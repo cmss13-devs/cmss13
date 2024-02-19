@@ -26,6 +26,10 @@
 	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_XENO_FRENZY
 	attack_delay = -1
 
+	available_strains = list(
+		/datum/xeno_strain/berserker,
+		/datum/xeno_strain/hedgehog,
+	)
 	behavior_delegate_type = /datum/behavior_delegate/ravager_base
 
 	minimum_evolve_time = 15 MINUTES
@@ -45,7 +49,6 @@
 	tier = 3
 	pixel_x = -16
 	old_x = -16
-	mutation_type = RAVAGER_NORMAL
 	claw_type = CLAW_TYPE_VERY_SHARP
 
 	base_actions = list(

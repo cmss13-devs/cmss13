@@ -152,3 +152,69 @@
   Vicacrov:
   - bugfix: Fixed Warden Praetorians being able to move around the ovipositored Queen
       with their Retrieve ability.
+2024-02-12:
+  Stakeyng:
+  - qol: Lets you put an extra accessory item in your helmet.
+  harryob:
+  - server: tor banning functionality is removed
+2024-02-13:
+  Huffie56:
+  - refactor: refactored watercloset.dm file.
+  SabreML:
+  - ui: Made the Tutorial Menu automatically close when a tutorial is started.
+  - code_imp: Made the tutorial Xenomorph not inherit the user's 'age' prefix.
+  - code_imp: Added a basic unit test for tutorials.
+2024-02-14:
+  SabreML:
+  - bugfix: Fixed crates and similar objects layering below the dropship's fulton
+      recovery system.
+  Zonespace Drathek:
+  - balance: Lesser drones and Facehuggers cannot speak, custom emote, or point for
+      3 minutes after spawning
+2024-02-15:
+  InsaneRed:
+  - balance: Drop pouch now scales the same as normal webbing
+  SabreML:
+  - bugfix: Fixed some changelog icons being smaller than others.
+  Vicacrov:
+  - maptweak: LV-624 tfort's floodlights are now colony floodlights.
+  VileBeggar:
+  - qol: Attaching the bipod to weapons that have full auto (HPR included) will give
+      you a button toggle for immediately switching to full auto when deploying the
+      bipod.
+2024-02-16:
+  BadAtThisGame302:
+  - rscadd: Added two new beacons for the CL, Lawyer and Bodyguard.
+  - rscadd: Added an Executive Specialist and Executive Supervisor Lawyer preset.
+  - rscadd: Added a cyanide pill in the CLs briefcase for an easy way out.
+  - rscadd: Added a Wey-Yu Coffee Mug in the CLs briefcase as a souvenir sale.
+  Drathek:
+  - bugfix: Fixed xeno tutorial allowing evolution/de-evolution
+  - bugfix: Fixed some runtimes with tutorials
+  SabreML:
+  - bugfix: Fixed the 'Clear' button not resetting the number of keybind assignment
+      slots. (Keybinds menu)
+  - refactor: Refactored xeno strains.
+  - rscadd: Added a keybind setting to open the 'Purchase Strain' window. (Also renamed
+      the macro)
+  cuberound:
+  - balance: m4ra ammo looses about 1/5 of initial effect duration per 10 tiles traveled
+  harryob:
+  - admin: permanent and sticky bans are now handled in game, instead of being managed
+      externally
+2024-02-17:
+  MobiusWon:
+  - rscadd: Adds integral Motion Detector to XM4 IO Armor
+  - balance: Uniform utility accessories (I.E. Webbing) no longer can be equipped
+      while the XM4 is worn. Armor slots increased to 5 to compensate.
+  Steelpoint:
+  - balance: Royal Marine Commando's firearms now have a higher rate of fire, comparable
+      to the M41A.
+  mullenpaul:
+  - code_imp: rework logic of restrictedinput component to reduce checks
+2024-02-19:
+  Blundir:
+  - imageadd: updated many old/legacy sprites
+  Diegoflores31:
+  - balance: Tail Jab will now target enemies on the same tile it was targeted.
+  - balance: Aiming Tail Jab directly on a target will do an additional 15 damage

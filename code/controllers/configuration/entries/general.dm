@@ -491,8 +491,6 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /datum/config_entry/flag/respawn
 
-/datum/config_entry/flag/ToRban
-
 /datum/config_entry/flag/ooc_country_flags
 
 /datum/config_entry/flag/record_rounds
@@ -532,6 +530,8 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 /datum/config_entry/string/adminhelp_ahelp_link
 
 /datum/config_entry/string/round_results_webhook_url
+
+/datum/config_entry/string/important_log_channel
 
 /// InfluxDB v2 Host to connect to for sending statistics (over HTTP API)
 /datum/config_entry/string/influxdb_host

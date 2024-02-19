@@ -174,7 +174,8 @@
 	desc = "This appears to be the head of a synthetic, though it it is so destroyed there is no way in hell anyone is going to bring it back to even basic functionality.";
 	name = "shattered synthetic head";
 	pixel_x = 9;
-	pixel_y = 3
+	pixel_y = 3;
+	icon_state = "scandinavian_head_m"
 	},
 /obj/item/robot_parts/arm/l_arm,
 /turf/open/floor{

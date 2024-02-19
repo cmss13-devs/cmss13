@@ -1589,6 +1589,9 @@
 	dir = 1;
 	icon_state = "term"
 	},
+/obj/structure/closet/hydrant{
+	pixel_x = -32
+	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange"
@@ -1683,10 +1686,10 @@
 /turf/open/mars_cave,
 /area/adminlevel/bunker01/mainroom)
 "eg" = (
-/obj/structure/closet/firecloset,
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
+/obj/structure/machinery/fuelcell_recycler/full,
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "orange"
@@ -1801,7 +1804,6 @@
 /area/adminlevel/bunker01/mainroom)
 "et" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/clothing/gloves/yellow,
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
@@ -1813,6 +1815,9 @@
 	dir = 8;
 	pixel_x = -25
 	},
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange"
@@ -1884,16 +1889,13 @@
 /obj/structure/surface/table/reinforced,
 /obj/effect/spawner/random/toolbox,
 /obj/structure/disposalpipe/segment,
+/obj/item/clothing/gloves/yellow,
 /turf/open/floor/almayer{
 	icon_state = "orangefull"
 	},
 /area/adminlevel/bunker01/engineering)
 "eB" = (
-/obj/structure/machinery/power/geothermal{
-	buildstate = 4;
-	icon_state = "on100";
-	is_on = 1
-	},
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/almayer{
 	icon_state = "orangefull"
 	},
@@ -1902,11 +1904,7 @@
 /obj/structure/machinery/light/small{
 	pixel_y = 0
 	},
-/obj/structure/machinery/power/geothermal{
-	buildstate = 4;
-	icon_state = "on100";
-	is_on = 1
-	},
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/almayer{
 	icon_state = "orangefull"
 	},

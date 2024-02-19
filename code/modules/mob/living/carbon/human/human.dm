@@ -317,25 +317,22 @@
 /mob/living/carbon/human/auto_observed(mob/dead/observer/observer)
 	. = ..()
 
-	var/list/all_contents = get_contents()
+	// If `src` doesn't have an inventory open.
+	if(!s_active)
+		return
 
-	// Handle any currently open storage containers `src` is looking at when observed.
-	for(var/obj/item/storage/checked_storage in all_contents)
-		if(!(src in checked_storage.content_watchers))
-			continue
+	// Add the storage interface to `observer`'s screen.
+	observer.client.add_to_screen(s_active.closer)
+	observer.client.add_to_screen(s_active.contents)
 
-		observer.client.add_to_screen(checked_storage.closer)
-		observer.client.add_to_screen(checked_storage.contents)
-
-		if(checked_storage.storage_slots)
-			observer.client.add_to_screen(checked_storage.boxes)
-		else
-			observer.client.add_to_screen(checked_storage.storage_start)
-			observer.client.add_to_screen(checked_storage.storage_continue)
-			observer.client.add_to_screen(checked_storage.storage_end)
-
-		// Players are only able to look in one inventory at a time, so skip any others.
-		break
+	// If the storage has a set number of item slots.
+	if(s_active.storage_slots)
+		observer.client.add_to_screen(s_active.boxes)
+	// If the storage instead has a maximum combined item 'weight'.
+	else
+		observer.client.add_to_screen(s_active.storage_start)
+		observer.client.add_to_screen(s_active.storage_continue)
+		observer.client.add_to_screen(s_active.storage_end)
 
 // called when something steps onto a human
 // this handles mulebots and vehicles

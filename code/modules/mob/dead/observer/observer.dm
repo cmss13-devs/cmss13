@@ -188,37 +188,38 @@
 	clean_observe_target()
 
 /// When the observer target gets a screen, our observer gets a screen minus some game screens we don't want the observer to touch
-/mob/dead/observer/proc/observe_target_screen_add(observe_target_mob_client, add_to_screen)
+/mob/dead/observer/proc/observe_target_screen_add(observe_target_mob_client, screen_add)
 	SIGNAL_HANDLER
+
+	var/static/list/excluded_types = typecacheof(list(
+		/atom/movable/screen/fullscreen,
+		/atom/movable/screen/click_catcher,
+		/atom/movable/screen/escape_menu,
+		/atom/movable/screen/buildmode,
+		/obj/effect/detector_blip,
+	))
 
 	if(!client)
 		return
 
-	if(istype(add_to_screen, /atom/movable/screen/action_button))
-		return
+	// `screen_add` can sometimes be a list, so it's safest to just handle everything as one.
+	var/list/stuff_to_add = (islist(screen_add) ? screen_add : list(screen_add))
 
-	if(istype(add_to_screen, /atom/movable/screen/fullscreen))
-		return
+	for(var/item in stuff_to_add)
+		// Ignore anything that's in `excluded_types`.
+		if(is_type_in_typecache(item, excluded_types))
+			continue
 
-	if(istype(add_to_screen, /atom/movable/screen/click_catcher))
-		return
-
-	if(istype(add_to_screen, /atom/movable/screen/escape_menu))
-		return
-
-	if(istype(add_to_screen, /obj/effect/detector_blip))
-		return
-
-	client.add_to_screen(add_to_screen)
+		client.add_to_screen(screen_add)
 
 /// When the observer target loses a screen, our observer loses it as well
-/mob/dead/observer/proc/observe_target_screen_remove(observe_target_mob_client, remove_from_screen)
+/mob/dead/observer/proc/observe_target_screen_remove(observe_target_mob_client, screen_remove)
 	SIGNAL_HANDLER
 
 	if(!client)
 		return
 
-	client.remove_from_screen(remove_from_screen)
+	client.remove_from_screen(screen_remove)
 
 /// When the observe target ghosts our observer disconnect from their screen updates
 /mob/dead/observer/proc/observe_target_ghosting(mob/observer_target_mob)

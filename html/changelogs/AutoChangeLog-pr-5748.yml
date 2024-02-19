@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - rscdel: "Removed death messages for lesser drones and facehuggers that are still temporarily muted"

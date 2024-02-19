@@ -31581,9 +31581,8 @@
 /turf/open/floor/wood,
 /area/prison/library)
 "bOa" = (
-/obj/structure/machinery/power/geothermal{
+/obj/structure/machinery/power/reactor/colony{
 	desc = "A thermoelectric generator fueled by searing hot uranium!";
-	fail_rate = 5;
 	name = "thermoelectric generator"
 	},
 /turf/open/floor/plating,
@@ -34129,6 +34128,7 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
+/obj/structure/machinery/fuelcell_recycler/full,
 /turf/open/floor/plating,
 /area/prison/engineering)
 "bVS" = (
@@ -36112,6 +36112,12 @@
 /area/prison/engineering)
 "ccl" = (
 /obj/structure/machinery/light,
+/obj/structure/surface/rack,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
 /turf/open/floor/plating,
 /area/prison/engineering)
 "ccm" = (
@@ -44544,6 +44550,12 @@
 /obj/structure/largecrate/random/case,
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/south)
+"gXC" = (
+/obj/structure/surface/rack,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/turf/open/floor/plating,
+/area/prison/engineering)
 "gXQ" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -86370,7 +86382,7 @@ bXd
 bYe
 bVP
 bVP
-bVP
+gXC
 bRC
 ceG
 cfr

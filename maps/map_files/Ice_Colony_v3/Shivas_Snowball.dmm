@@ -7260,6 +7260,12 @@
 /obj/item/device/motiondetector/hacked,
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
+"bIP" = (
+/obj/structure/machinery/power/reactor/colony,
+/turf/open/floor/shiva{
+	dir = 1
+	},
+/area/shiva/interior/garage)
 "bIV" = (
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard/cp_bar)
@@ -10762,6 +10768,14 @@
 /obj/structure/window/framed/shiva,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
+"fNR" = (
+/obj/structure/surface/rack,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/turf/open/floor/shiva{
+	icon_state = "yellow"
+	},
+/area/shiva/interior/garage)
 "fOa" = (
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = -11
@@ -10897,6 +10911,13 @@
 	icon_state = "floor3"
 	},
 /area/shiva/interior/aerodrome)
+"fWJ" = (
+/obj/structure/machinery/power/reactor/colony,
+/turf/open/floor/shiva{
+	dir = 8;
+	icon_state = "yellowfull"
+	},
+/area/shiva/interior/lz2_habs)
 "fXp" = (
 /obj/structure/prop/invuln{
 	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
@@ -11935,6 +11956,17 @@
 	dir = 1
 	},
 /area/shiva/interior/colony/central)
+"hat" = (
+/obj/structure/surface/rack,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/turf/open/floor/shiva{
+	dir = 10;
+	icon_state = "yellow"
+	},
+/area/shiva/interior/garage)
 "hbo" = (
 /obj/structure/platform/strata,
 /turf/open/auto_turf/ice/layer1,
@@ -11996,10 +12028,13 @@
 	icon_state = "wred"
 	},
 /area/shiva/interior/colony/medseceng)
-"hgx" = (
-/obj/structure/machinery/power/geothermal,
-/turf/open/floor/plating,
-/area/shiva/interior/colony/medseceng)
+"hgk" = (
+/obj/structure/machinery/fuelcell_recycler/full,
+/turf/open/floor/shiva{
+	dir = 6;
+	icon_state = "yellow"
+	},
+/area/shiva/interior/garage)
 "hgI" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/auto_turf/snow/layer2,
@@ -14732,6 +14767,10 @@
 	icon_state = "floor3"
 	},
 /area/shiva/exterior/lz2_fortress)
+"jTR" = (
+/obj/structure/machinery/power/reactor/colony,
+/turf/open/floor/plating,
+/area/shiva/interior/colony/medseceng)
 "jTT" = (
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 6
@@ -15843,13 +15882,6 @@
 	icon_state = "yellowfull"
 	},
 /area/shiva/interior/colony/research_hab)
-"kTN" = (
-/obj/structure/machinery/power/geothermal,
-/turf/open/floor/shiva{
-	dir = 8;
-	icon_state = "yellowfull"
-	},
-/area/shiva/interior/lz2_habs)
 "kTP" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/auto_turf/snow/layer1,
@@ -22109,12 +22141,6 @@
 /obj/structure/largecrate/random,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
-"rHQ" = (
-/obj/structure/machinery/power/geothermal,
-/turf/open/floor/shiva{
-	dir = 1
-	},
-/area/shiva/interior/garage)
 "rIj" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/shiva{
@@ -27186,6 +27212,12 @@
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
+"wZO" = (
+/obj/structure/machinery/fuelcell_recycler/full,
+/turf/open/floor/shiva{
+	icon_state = "yellow"
+	},
+/area/shiva/interior/garage)
 "wZW" = (
 /obj/structure/bed,
 /turf/open/floor/wood,
@@ -37065,7 +37097,7 @@ puZ
 puZ
 puZ
 anc
-kTN
+fWJ
 mCn
 uRi
 xQJ
@@ -37389,7 +37421,7 @@ puZ
 puZ
 puZ
 anc
-kTN
+fWJ
 mCn
 cce
 xQJ
@@ -37713,7 +37745,7 @@ puZ
 puZ
 puZ
 anc
-kTN
+fWJ
 mCn
 cce
 xQJ
@@ -53180,7 +53212,7 @@ ver
 ver
 ver
 fEO
-oDM
+hat
 ktd
 bFg
 bIV
@@ -53342,7 +53374,7 @@ ver
 ver
 ver
 ver
-pSD
+fNR
 ktd
 cZk
 bIV
@@ -54152,7 +54184,7 @@ aAh
 ver
 ver
 ver
-pSD
+wZO
 ktd
 cZk
 bFg
@@ -54314,7 +54346,7 @@ ver
 ver
 ver
 pNf
-aCA
+hgk
 ktd
 gJo
 lTc
@@ -54955,11 +54987,11 @@ oQl
 oQl
 oQl
 ktd
-rHQ
+bIP
 tXd
 aAh
 pSD
-rHQ
+bIP
 ktd
 oQl
 oQl
@@ -55117,11 +55149,11 @@ oQl
 oQl
 oQl
 ktd
-rHQ
+bIP
 ush
 vUL
 aCA
-rHQ
+bIP
 ktd
 oQl
 oQl
@@ -55280,9 +55312,9 @@ oQl
 oQl
 ktd
 ktd
-rHQ
-rHQ
-rHQ
+bIP
+bIP
+bIP
 ktd
 ktd
 oQl
@@ -58299,16 +58331,16 @@ acT
 qDT
 eAZ
 acT
-hgx
+jTR
 cso
 agh
-hgx
-hgx
-hgx
-hgx
+jTR
+jTR
+jTR
+jTR
 agh
 cso
-hgx
+jTR
 acT
 aii
 agh
@@ -58461,7 +58493,7 @@ aDn
 eAZ
 eAZ
 aDn
-hgx
+jTR
 cso
 agh
 cso
@@ -58470,7 +58502,7 @@ cso
 cso
 agh
 cso
-hgx
+jTR
 acT
 acT
 aii
@@ -58626,10 +58658,10 @@ aek
 eXL
 cso
 agh
-hgx
-hgx
-hgx
-hgx
+jTR
+jTR
+jTR
+jTR
 agh
 cso
 qdd

@@ -13,11 +13,19 @@ type NumberInputData = {
   min_value: number | null;
   timeout: number;
   title: string;
+  integer_only: 0 | 1;
 };
 
-export const NumberInputModal = (props) => {
+export const NumberInputModal = () => {
   const { act, data } = useBackend<NumberInputData>();
-  const { init_value, large_buttons, message = '', timeout, title } = data;
+  const {
+    init_value,
+    large_buttons,
+    message = '',
+    timeout,
+    title,
+    integer_only,
+  } = data;
   const [input, setInput] = useLocalState('input', init_value);
   const onChange = (value: number) => {
     if (value === input) {
@@ -56,7 +64,12 @@ export const NumberInputModal = (props) => {
               <Box color="label">{message}</Box>
             </Stack.Item>
             <Stack.Item>
-              <InputArea input={input} onClick={onClick} onChange={onChange} />
+              <InputArea
+                input={input}
+                onClick={onClick}
+                onChange={onChange}
+                integer_only={integer_only}
+              />
             </Stack.Item>
             <Stack.Item>
               <InputButtons input={input} />
@@ -72,7 +85,7 @@ export const NumberInputModal = (props) => {
 const InputArea = (props) => {
   const { act, data } = useBackend<NumberInputData>();
   const { min_value, max_value, init_value } = data;
-  const { input, onClick, onChange } = props;
+  const { input, onClick, onChange, integer_only } = props;
 
   return (
     <Stack fill>
@@ -94,6 +107,7 @@ const InputArea = (props) => {
           onChange={(_, value) => onChange(value)}
           onEnter={(_, value) => act('submit', { entry: value })}
           value={input}
+          allowFloats={integer_only === 1 ? false : true}
         />
       </Stack.Item>
       <Stack.Item>

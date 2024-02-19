@@ -1,0 +1,4 @@
+author: "Vicacrov"
+delete-after: True
+changes:
+  - bugfix: "Fixes a missing examine text when you hit an exactly half-full ammo magazine against your helmet."

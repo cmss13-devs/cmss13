@@ -194,7 +194,7 @@
 	announce_xeno_wave(wave)
 	if(xeno_wave == 7)
 		//Wave when Marines get reinforcements!
-		get_specific_call("Marine Reinforcements (Squad)", FALSE, TRUE)
+		get_specific_call(/datum/emergency_call/wo, FALSE, TRUE) // "Marine Reinforcements (Squad)"
 	xeno_wave = min(xeno_wave + 1, WO_MAX_WAVE)
 
 

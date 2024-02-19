@@ -11,7 +11,7 @@
 
 AddTimelock(/datum/job/command/crew_chief, list(
 	JOB_SQUAD_ROLES = 5 HOURS,
-	JOB_SQUAD_MEDIC = 2 HOURS
+	JOB_MEDIC_ROLES = 2 HOURS
 ))
 
 /obj/effect/landmark/start/crew_chief

@@ -33,7 +33,7 @@
 	gear_preset = /datum/equipment_preset/wo/marine/engineer
 
 AddTimelock(/datum/job/marine/engineer, list(
-	JOB_SQUAD_ROLES = 1 HOURS
+	JOB_SQUAD_ROLES = 3 HOURS
 ))
 
 /obj/effect/landmark/start/marine/engineer

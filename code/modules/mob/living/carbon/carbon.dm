@@ -419,7 +419,10 @@
 /**
  * Called by [/mob/dead/observer/proc/do_observe] when a carbon mob is observed by a ghost with [/datum/preferences/var/auto_observe] enabled.
  *
- * Override with any extra behaviour on subtypes.
+ * Any HUD changes past this point are handled by [/mob/dead/observer/proc/observe_target_screen_add]
+ * and [/mob/dead/observer/proc/observe_target_screen_remove].
+ *
+ * Override on subtype mobs if they have any extra HUD elements/behaviour.
  */
 /mob/living/carbon/proc/auto_observed(mob/dead/observer/observer)
 	SHOULD_CALL_PARENT(TRUE)

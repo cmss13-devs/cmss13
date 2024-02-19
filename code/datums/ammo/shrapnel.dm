@@ -43,9 +43,9 @@
 	shrapnel_chance = 0
 	shell_speed = AMMO_SPEED_TIER_3//she fast af boi
 	penetration = ARMOR_PENETRATION_TIER_5
-	var/holo_stacks = 10
-	var/bonus_damage_cap_increase = 1
-	var/stack_loss_multiplier = 1
+	var/holo_stacks = 10 /// inflicts this many holo stacks per bullet hit
+	var/bonus_damage_cap_increase = 0 /// modifies the default cap limit of 100 by this amount
+	var/stack_loss_multiplier = 1 /// multiplies the default drain of 5 holo stacks per second by this amount
 
 /datum/ammo/bullet/shrapnel/hornet_rounds/on_hit_mob(mob/hit_mob, obj/projectile/bullet)
 	. = ..()

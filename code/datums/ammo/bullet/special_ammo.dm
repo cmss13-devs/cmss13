@@ -47,9 +47,9 @@
 	name = "holo-targeting smartgun bullet"
 	damage = 30
 	///Stuff for the HRP holotargetting stacks
-	var/holo_stacks = 15
-	var/bonus_damage_cap_increase = 1
-	var/stack_loss_multiplier = 1
+	var/holo_stacks = 15 /// inflicts this many holo stacks per bullet hit
+	var/bonus_damage_cap_increase = 0 /// modifies the default cap limit of 100 by this amount
+	var/stack_loss_multiplier = 1 /// multiplies the default drain of 5 holo stacks per second by this amount
 
 /datum/ammo/bullet/smartgun/holo_target/on_hit_mob(mob/hit_mob, obj/projectile/bullet)
 	. = ..()

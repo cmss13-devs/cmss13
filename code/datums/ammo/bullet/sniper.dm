@@ -142,13 +142,13 @@
 /datum/ammo/bullet/sniper/anti_materiel/vulture/holo_target
 	name = "holo-targeting anti-materiel sniper bullet"
 	damage = 60 // it's a big bullet but its purpose is to support marines, not to kill enemies by itself
-	var/holo_stacks = 333 // inflicts max holo stacks in one hit. this equates to a 33% damage bonus
-	var/bonus_damage_cap_increase = 233 // increases the default holo stack cap of 100 by 233, to 333 in total.
-	var/stack_loss_multiplier = 2 // multiplies the default holo stack drain of 5 stacks per second to 10
+	var/holo_stacks = 333 /// inflicts this many holo stacks per bullet hit
+	var/bonus_damage_cap_increase = 233 /// modifies the default cap limit of 100 by this amount
+	var/stack_loss_multiplier = 2 /// multiplies the default drain of 5 holo stacks per second by this amount
 
 /datum/ammo/bullet/sniper/anti_materiel/vulture/holo_target/on_hit_mob(mob/hit_mob, obj/projectile/bullet)
 	hit_mob.AddComponent(/datum/component/bonus_damage_stack, holo_stacks, world.time, bonus_damage_cap_increase, stack_loss_multiplier)
-	playsound(hit_mob, 'sound/weapons/gun_vulture_mark.ogg', 75)
+	playsound(hit_mob, 'sound/weapons/gun_vulture_mark.ogg', 40)
 	to_chat(hit_mob, isxeno(hit_mob) ? SPAN_XENOHIGHDANGER("It feels as if we were MARKED FOR DEATH!") : SPAN_HIGHDANGER("It feels as if you were MARKED FOR DEATH!"))
 	hit_mob.balloon_alert_to_viewers("marked for death!")
 

@@ -21,9 +21,9 @@
 /datum/ammo/bullet/rifle/holo_target
 	name = "holo-targeting rifle bullet"
 	damage = 30
-	var/holo_stacks = 10
-	var/bonus_damage_cap_increase = 0
-	var/stack_loss_multiplier = 1
+	var/holo_stacks = 10 /// inflicts this many holo stacks per bullet hit
+	var/bonus_damage_cap_increase = 0 /// modifies the default cap limit of 100 by this amount
+	var/stack_loss_multiplier = 1 /// multiplies the default drain of 5 holo stacks per second by this amount
 
 /datum/ammo/bullet/rifle/holo_target/on_hit_mob(mob/hit_mob, obj/projectile/bullet)
 	. = ..()

@@ -25,6 +25,12 @@
 	tackle_min = 3
 	tackle_max = 5
 
+	available_strains = list(
+		/datum/xeno_strain/dancer,
+		/datum/xeno_strain/oppressor,
+		/datum/xeno_strain/vanguard,
+		/datum/xeno_strain/warden,
+	)
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_base
 
 	minimum_evolve_time = 15 MINUTES
@@ -45,7 +51,6 @@
 	mob_size = MOB_SIZE_BIG
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 3
-	mutation_type = PRAETORIAN_NORMAL
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,

@@ -45,7 +45,7 @@
 	return ..()
 
 /mob/living/carbon/xenomorph/runner/corrosive_acid(atom/affected_atom, acid_type, plasma_cost)
-	if (mutation_type != RUNNER_ACIDER)
+	if(!istype(strain, /datum/xeno_strain/acider))
 		return ..()
 	if(!affected_atom.Adjacent(src))
 		if(istype(affected_atom,/obj/item/explosive/plastic))
@@ -157,9 +157,6 @@
 		return
 
 	if(!action_cooldown_check())
-		return
-
-	if(xeno.mutation_type != RUNNER_ACIDER)
 		return
 
 	var/datum/behavior_delegate/runner_acider/behavior_delegate = xeno.behavior_delegate

@@ -27,8 +27,7 @@
 	return ..()
 
 AddTimelock(/datum/job/command/bridge, list(
-	JOB_SQUAD_LEADER = 5 HOURS,
-	JOB_HUMAN_ROLES = 10 HOURS
+	JOB_SQUAD_LEADER = 5 HOURS
 ))
 
 /obj/effect/landmark/start/bridge

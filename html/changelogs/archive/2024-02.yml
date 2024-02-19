@@ -212,3 +212,9 @@
       to the M41A.
   mullenpaul:
   - code_imp: rework logic of restrictedinput component to reduce checks
+2024-02-19:
+  Blundir:
+  - imageadd: updated many old/legacy sprites
+  Diegoflores31:
+  - balance: Tail Jab will now target enemies on the same tile it was targeted.
+  - balance: Aiming Tail Jab directly on a target will do an additional 15 damage

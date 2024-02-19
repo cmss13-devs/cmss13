@@ -19,6 +19,7 @@
 
 AddTimelock(/datum/job/command/executive, list(
 	JOB_COMMAND_ROLES = 10 HOURS
+	JOB_POLICE_ROLES = 2 HOURS
 ))
 
 /obj/effect/landmark/start/executive

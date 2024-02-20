@@ -142,9 +142,12 @@
 /datum/ammo/bullet/sniper/anti_materiel/vulture/holo_target
 	name = "holo-targeting anti-materiel sniper bullet"
 	damage = 60 // it's a big bullet but its purpose is to support marines, not to kill enemies by itself
-	var/holo_stacks = 333 /// inflicts this many holo stacks per bullet hit
-	var/bonus_damage_cap_increase = 233 /// modifies the default cap limit of 100 by this amount
-	var/stack_loss_multiplier = 2 /// multiplies the default drain of 5 holo stacks per second by this amount
+	/// inflicts this many holo stacks per bullet hit
+	var/holo_stacks = 333
+	/// modifies the default cap limit of 100 by this amount
+	var/bonus_damage_cap_increase = 233
+	/// multiplies the default drain of 5 holo stacks per second by this amount
+	var/stack_loss_multiplier = 2
 
 /datum/ammo/bullet/sniper/anti_materiel/vulture/holo_target/on_hit_mob(mob/hit_mob, obj/projectile/bullet)
 	hit_mob.AddComponent(/datum/component/bonus_damage_stack, holo_stacks, world.time, bonus_damage_cap_increase, stack_loss_multiplier)

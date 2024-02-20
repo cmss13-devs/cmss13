@@ -321,28 +321,28 @@
 
 //port
 /area/almayer/hallways/lower/port_fore_hallway
-	name = "\improper Lower Deck Port Fore Hallway"
+	name = "\improper Lower Deck Port-Fore Hallway"
 	icon_state = "port"
 
 /area/almayer/hallways/lower/port_midship_hallway
-	name = "\improper Lower Deck Port Midship Hallway"
+	name = "\improper Lower Deck Port-Midship Hallway"
 	icon_state = "port"
 
 /area/almayer/hallways/lower/port_aft_hallway
-	name = "\improper Lower Deck Port Aft Hallway"
+	name = "\improper Lower Deck Port-Aft Hallway"
 	icon_state = "port"
 
 //starboard
 /area/almayer/hallways/lower/starboard_fore_hallway
-	name = "\improper Lower Deck Starboard Fore Hallway"
+	name = "\improper Lower Deck Starboard-Fore Hallway"
 	icon_state = "starboard"
 
 /area/almayer/hallways/lower/starboard_midship_hallway
-	name = "\improper Lower Deck Starboard Midship Hallway"
+	name = "\improper Lower Deck Starboard-Midship Hallway"
 	icon_state = "starboard"
 
 /area/almayer/hallways/lower/starboard_aft_hallway
-	name = "\improper Lower Deck Starboard Aft Hallway"
+	name = "\improper Lower Deck Starboard-Aft Hallway"
 	icon_state = "starboard"
 
 /area/almayer/hallways/upper
@@ -777,16 +777,16 @@
 	hijack_evacuation_type = EVACUATION_TYPE_ADDITIVE
 
 /area/almayer/lifeboat_pumps/north1
-	name = "Starboard Fore Lifeboat Fuel Pump"
+	name = "Starboard-Fore Lifeboat Fuel Pump"
 
 /area/almayer/lifeboat_pumps/north2
-	name = "Starboard Aft Lifeboat Fuel Pump"
+	name = "Starboard-Aft Lifeboat Fuel Pump"
 
 /area/almayer/lifeboat_pumps/south1
-	name = "Port Fore Lifeboat Fuel Pump"
+	name = "Port-Fore Lifeboat Fuel Pump"
 
 /area/almayer/lifeboat_pumps/south2
-	name = "Port Aft Lifeboat Fuel Pump"
+	name = "Port-Aft Lifeboat Fuel Pump"
 
 /area/almayer/command/lifeboat
 	name = "\improper Lifeboat Docking Port"

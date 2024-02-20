@@ -2356,6 +2356,7 @@
 #include "code\modules\tgui_input\text.dm"
 #include "code\modules\tgui_panel\audio.dm"
 #include "code\modules\tgui_panel\external.dm"
+#include "code\modules\tgui_panel\ping_relay.dm"
 #include "code\modules\tgui_panel\telemetry.dm"
 #include "code\modules\tgui_panel\tgui_panel.dm"
 #include "code\modules\tooltip\tooltip.dm"

@@ -6,11 +6,12 @@
 
 import { Color } from 'common/color';
 import { toFixed } from 'common/math';
-import { useSelector } from 'tgui/backend';
-import { Box } from 'tgui/components';
+import { useSelector, useBackend } from 'tgui/backend';
+import { Button, Box } from 'tgui/components';
 import { selectPing } from './selectors';
 
 export const PingIndicator = (props) => {
+  const { act } = useBackend();
   const ping = useSelector(selectPing);
   const color = Color.lookup(ping.networkQuality, [
     new Color(220, 40, 40),
@@ -19,9 +20,16 @@ export const PingIndicator = (props) => {
   ]);
   const roundtrip = ping.roundtrip ? toFixed(ping.roundtrip) : '--';
   return (
-    <div className="Ping">
+    <Button
+      lineHeight="15px"
+      width="50px"
+      className="Ping"
+      color="transparent"
+      tooltip="Ping relays"
+      tooltipPosition="bottom-start"
+      onClick={() => act('ping_relays')}>
       <Box className="Ping__indicator" backgroundColor={color} />
       {roundtrip}
-    </div>
+    </Button>
   );
 };

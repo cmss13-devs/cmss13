@@ -56,12 +56,13 @@
 	macro_path = /datum/action/xeno_action/verb/verb_feralfrenzy
 	xeno_cooldown = 15 SECONDS
 
+	//AOE
 	var/activation_delay_aoe = 1 SECONDS
 	var/base_damage_aoe = 15
 	var/damage_scale_aoe = 10
-	var/activation_delay = 1 SECONDS
+	var/activation_delay = 0.5 SECONDS
+	//SINGLE TARGET
 	var/base_damage = 25
-	/// How much it scales by every kill
 	var/damage_scale = 10
 	var/targeting = SINGLETARGETGUT
 	/// The orange used for a AOETARGETGUT

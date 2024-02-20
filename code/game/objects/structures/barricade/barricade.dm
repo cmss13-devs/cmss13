@@ -42,7 +42,7 @@
 	var/burn_flame_multiplier = 1
 	var/repair_materials = list()
 	var/metallic = TRUE
-	/// var that say what state a barricade can't be fix by welder. null mean it can be repair no matter the state.
+	/// Lower limit of damage beyond which the barricade cannot be fixed by welder. Compared to damage_state. If null it can be repaired at any damage_state.
 	var/welder_fix = null
 
 /obj/structure/barricade/Initialize(mapload, mob/user)

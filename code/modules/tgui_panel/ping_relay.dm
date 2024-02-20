@@ -8,7 +8,7 @@ GLOBAL_DATUM_INIT(relays_panel, /datum/ping_relay_tgui, new)
 	if(!ui)
 		ui = new(user, src, "PingRelaysPanel", "Relay Pings")
 		ui.open()
-		//ui.set_autoupdate(FALSE)
+		ui.set_autoupdate(FALSE)
 
 /datum/ping_relay_tgui/ui_state(mob/user)
 	return GLOB.always_state

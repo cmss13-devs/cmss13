@@ -47,8 +47,8 @@ for (let i = 0; i < 8; i++) {
 
 const startTest = function (desc, pingURL, connectURL) {
   logger.log('starting test for ' + desc); // TODO: Remove this
-  p.ping(`http://${pingURL}`, (err, data) => {
-    results[++currentIndex].update(desc, `byond://${connectURL}`, data);
+  p.ping('http://' + pingURL, (err, data) => {
+    results[++currentIndex].update(desc, 'byond://' + connectURL, data);
     logger.log('finished ' + currentIndex + ' ' + data + ' ' + err); // TODO: Remove this
   });
 };

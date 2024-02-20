@@ -1,0 +1,5 @@
+author: "private-tristan"
+delete-after: True
+changes:
+  - bugfix: "Forsaken and Feral xenos can now (correctly) use hive-status"
+  - spellcheck: "fixed a case where we/our wouldn't be used when attempting to access hive status with no queen"

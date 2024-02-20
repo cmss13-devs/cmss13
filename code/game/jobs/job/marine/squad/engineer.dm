@@ -34,7 +34,7 @@
 
 AddTimelock(/datum/job/marine/engineer, list(
 	JOB_SQUAD_ROLES = 2 HOURS,
-	JOB_ENGINEER_ROLES = 1 HOUR
+	JOB_ENGINEER_ROLES = 1 HOURS
 ))
 
 /obj/effect/landmark/start/marine/engineer

@@ -98,6 +98,11 @@ You must still listen to the queen.
 "})
 	emote("roar")
 
+
+/mob/living/carbon/xenomorph/predalien/resist_fire()
+		..()
+		SetKnockDown(0.1 SECONDS)
+
 /datum/behavior_delegate/predalien_base
 	name = "Base Predalien Behavior Delegate"
 

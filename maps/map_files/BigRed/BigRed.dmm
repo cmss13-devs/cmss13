@@ -16135,8 +16135,8 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	dir = 4;
-	id = "lambda";
-	name = "Lambda Lockdown"
+	id = "lambda-exterior";
+	name = "Lambda Checkpoint Exterior"
 	},
 /turf/open/floor{
 	icon_state = "delivery"
@@ -28915,6 +28915,19 @@
 	icon_state = "mars_dirt_6"
 	},
 /area/bigredv2/outside/space_port_lz2)
+"ftX" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	dir = 4;
+	id = "lambda-interior";
+	name = "Lambda Checkpoint Interior"
+	},
+/turf/open/floor{
+	icon_state = "delivery"
+	},
+/area/bigredv2/outside/lambda_cave_cas)
 "ftY" = (
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_7"
@@ -33745,6 +33758,15 @@
 	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/filtration_plant)
+"mKL" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/door_control{
+	id = "lambda-exterior";
+	name = "Lambda Checkpoint Exterior";
+	pixel_x = null
+	},
+/turf/open/floor,
+/area/bigredv2/outside/lambda_cave_cas)
 "mKM" = (
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_y = 6
@@ -35369,6 +35391,16 @@
 	icon_state = "mars_cave_6"
 	},
 /area/bigredv2/caves_research)
+"pjK" = (
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	dir = 4;
+	id = "lambda-interior";
+	name = "Lambda Checkpoint Interior"
+	},
+/turf/open/floor{
+	icon_state = "delivery"
+	},
+/area/bigredv2/caves_north)
 "plx" = (
 /obj/structure/machinery/power/apc{
 	dir = 4
@@ -37372,6 +37404,16 @@
 	icon_state = "asteroidwarning"
 	},
 /area/bigred/ground/garage_workshop)
+"sit" = (
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	dir = 4;
+	id = "lambda-interior";
+	name = "Lambda Checkpoint Interior"
+	},
+/turf/open/floor{
+	icon_state = "delivery"
+	},
+/area/bigredv2/outside/lambda_cave_cas)
 "siu" = (
 /turf/open/floor{
 	icon_state = "asteroidwarning"
@@ -37959,6 +38001,15 @@
 	icon_state = "asteroidfloor"
 	},
 /area/bigredv2/outside/n)
+"taW" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/door_control{
+	id = "lambda-interior";
+	name = "Lambda Checkpoint Interior";
+	pixel_x = null
+	},
+/turf/open/floor,
+/area/bigredv2/outside/lambda_cave_cas)
 "tbS" = (
 /obj/structure/morgue{
 	dir = 1
@@ -40556,8 +40607,8 @@
 "wNw" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	dir = 4;
-	id = "lambda";
-	name = "Lambda Lockdown"
+	id = "lambda-exterior";
+	name = "Lambda Checkpoint Exterior"
 	},
 /turf/open/floor{
 	icon_state = "delivery"
@@ -40757,13 +40808,13 @@
 	},
 /area/bigredv2/outside/telecomm/warehouse)
 "xdh" = (
-/obj/structure/machinery/door/poddoor/almayer/closed{
-	dir = 4;
-	id = "lambda";
-	name = "Lambda Lockdown"
-	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
+	},
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	dir = 4;
+	id = "lambda-exterior";
+	name = "Lambda Checkpoint Exterior"
 	},
 /turf/open/floor{
 	icon_state = "delivery"
@@ -73574,7 +73625,7 @@ aao
 tqS
 xWl
 xWl
-xWl
+pjK
 xWl
 xWl
 tqS
@@ -77103,7 +77154,7 @@ aDy
 aTq
 hXM
 gfv
-ufg
+mKL
 epu
 aXX
 aYy
@@ -78617,10 +78668,10 @@ aao
 aao
 aao
 apI
-wNw
-xdh
-wNw
-wNw
+sit
+ftX
+sit
+sit
 apI
 jeH
 dFW
@@ -78839,7 +78890,7 @@ pJq
 aMT
 tQw
 gfv
-ufg
+taW
 rma
 jFM
 aYy

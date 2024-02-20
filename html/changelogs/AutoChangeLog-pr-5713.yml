@@ -1,4 +1,0 @@
-author: "SabreML"
-delete-after: True
-changes:
-  - ui: "Added tooltips to entry icons in the changelog."

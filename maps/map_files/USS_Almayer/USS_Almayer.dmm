@@ -21226,6 +21226,18 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/bridgebunks)
+"ceO" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/machinery/power/apc/almayer,
+/turf/open/floor/almayer{
+	icon_state = "red"
+	},
+/area/almayer/shipboard/brig/starboard_hallway)
 "ceQ" = (
 /obj/structure/machinery/status_display{
 	pixel_y = 30
@@ -36632,6 +36644,10 @@
 	icon_state = "plate"
 	},
 /area/almayer/engineering/upper_engineering)
+"hwL" = (
+/obj/structure/machinery/power/apc/almayer,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/brig/warden_office)
 "hxe" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -42950,6 +42966,9 @@
 	},
 /area/almayer/squads/charlie)
 "jSs" = (
+/obj/structure/machinery/power/apc/almayer{
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red"
@@ -77456,6 +77475,9 @@
 /obj/structure/sign/safety/hazard{
 	pixel_y = -32
 	},
+/obj/structure/machinery/power/apc/almayer{
+	dir = 8
+	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/execution)
 "wlh" = (
@@ -93429,7 +93451,7 @@ nqe
 nqe
 tLa
 eRL
-igt
+ceO
 tpn
 rqS
 cak
@@ -96091,7 +96113,7 @@ qFR
 puE
 crp
 dco
-dqZ
+hwL
 qFR
 uxb
 oDh
@@ -96902,7 +96924,7 @@ lnh
 wIC
 rWn
 rWn
-wIC
+qFR
 qFR
 wHM
 qFR

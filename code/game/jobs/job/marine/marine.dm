@@ -21,3 +21,10 @@
 /datum/timelock/squad/New(name, time_required, list/roles)
 	. = ..()
 	src.roles = JOB_SQUAD_ROLES_LIST
+
+/datum/timelock/leaders
+	name = "Leaders"
+
+/datum/timelock/leaders/New(name, time_required, list/roles)
+	. = ..()
+	src.roles = JOB_SQUAD_LEADERS_LIST

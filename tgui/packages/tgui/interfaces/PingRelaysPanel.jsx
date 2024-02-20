@@ -1,7 +1,10 @@
-import { Stack } from '../components';
+import { Box, Stack } from '../components';
 import { Window } from '../layouts';
 import { Color } from 'common/color';
 import { Ping } from 'common/ping';
+import { createLogger } from '../logging'; // TODO: Remove this
+
+const logger = createLogger('pingRelays'); // TODO: Remove this
 
 const COLORS = [
   new Color(220, 40, 40), // red
@@ -37,11 +40,16 @@ export class PingResult {
 
 let p = new Ping();
 let currentIndex = 0;
-let results = Array(8).fill(new PingResult());
+let results = new Array(8);
+for (let i = 0; i < 8; i++) {
+  results[i] = new PingResult();
+}
 
 const startTest = function (desc, pingURL, connectURL) {
+  logger.log('starting test for ' + desc); // TODO: Remove this
   p.ping(`http://${pingURL}`, (err, data) => {
     results[++currentIndex].update(desc, `byond://${connectURL}`, data);
+    logger.log('finished ' + currentIndex + ' ' + data + ' ' + err); // TODO: Remove this
   });
 };
 
@@ -78,7 +86,7 @@ export const PingRelaysPanel = () => {
           {results.map((result, i) => (
             <Stack.Item key={i} basis="content" grow={0} pb={1}>
               {result.desc}: <a href={result.url}>{result.url}</a>{' '}
-              <span color={result.color}>({result.ping})</span>
+              <Box color={result.color}>({result.ping})</Box>
             </Stack.Item>
           ))}
         </Stack>

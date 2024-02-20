@@ -61,7 +61,6 @@
 	src.bitesize = 6
 
 /obj/item/reagent_container/food/snacks/meat/xenomeat/processed
-	name = "meat"
 	desc = "A slab of acrid smelling meat. This one has been processed to remove acid."
 
 /obj/item/reagent_container/food/snacks/meat/xenomeat/processed/Initialize()

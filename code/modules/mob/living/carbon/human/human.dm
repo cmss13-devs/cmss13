@@ -312,7 +312,7 @@
 	show_browser(user, dat, name, "mob[name]")
 
 /**
- * Handles any storage containers that `src` is looking inside when auto-observed.
+ * Handles any storage containers that the human is looking inside when auto-observed.
  */
 /mob/living/carbon/human/auto_observed(mob/dead/observer/observer)
 	. = ..()

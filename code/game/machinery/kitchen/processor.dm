@@ -27,20 +27,35 @@
 	if (what)
 		qdel(what)
 
+/datum/food_processor_process/proc/can_use(mob/user)
+	// By default, anyone can do it.
+	return TRUE
+
 	/* objs */
 
 /datum/food_processor_process/xenomeat
 	input = /obj/item/reagent_container/food/snacks/meat/xenomeat
 	output = /obj/item/reagent_container/food/snacks/meat/xenomeat/processed
 
+/datum/food_processor_process/xenomeat/can_use(mob/user)
+	if(!skillcheck(user, SKILL_DOMESTIC, SKILL_DOMESTIC_MASTER))
+		to_chat(user, SPAN_DANGER("You aren't trained to remove dangerous substances from food!"))
+		return FALSE
+	return TRUE	
+
 /datum/food_processor_process/meat
 	input = /obj/item/reagent_container/food/snacks/meat
 	output = /obj/item/reagent_container/food/snacks/rawmeatball
 
-
 /datum/food_processor_process/carpmeat
 	input = /obj/item/reagent_container/food/snacks/carpmeat
 	output = /obj/item/reagent_container/food/snacks/carpmeat/processed
+
+/datum/food_processor_process/carpmeat/can_use(mob/user)
+	if(!skillcheck(user, SKILL_DOMESTIC, SKILL_DOMESTIC_MASTER))
+		to_chat(user, SPAN_DANGER("You aren't trained to remove dangerous substances from food!"))
+		return FALSE
+	return TRUE	
 
 /datum/food_processor_process/potato
 	input = /obj/item/reagent_container/food/snacks/grown/potato

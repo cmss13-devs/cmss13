@@ -262,7 +262,6 @@
 	sound_environment = SOUND_ENVIRONMENT_ROOM
 	soundscape_playlist = list()
 	minimap_color = MINIMAP_AREA_RESEARCH
-	powernet_name = "lambda"
 
 /area/bigredv2/caves/lambda/virology
 	name = "\improper Lambda Virology"

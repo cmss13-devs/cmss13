@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - maptweak: "Fixed access for two doors on the Almayer"

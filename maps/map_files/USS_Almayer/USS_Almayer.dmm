@@ -9814,6 +9814,12 @@
 	icon_state = "silverfull"
 	},
 /area/almayer/living/cryo_cells)
+"aPv" = (
+/obj/structure/machinery/power/reactor,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/almayer/engineering/lower/engine_core)
 "aPw" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/command/lifeboat)
@@ -14556,14 +14562,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lockerroom)
-"bqP" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 5"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/engineering/lower/engine_core)
 "bqR" = (
 /turf/open/floor/almayer{
 	dir = 6;
@@ -16448,17 +16446,6 @@
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
-"bDL" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
-	access_modified = 1;
-	dir = 1;
-	name = "\improper Auxiliary Combat Support Secondary Preparations";
-	req_one_access = "19;27;22"
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/living/cryo_cells)
 "bDO" = (
 /turf/open/floor/almayer{
 	icon_state = "tcomms"
@@ -20889,6 +20876,17 @@
 	icon_state = "ai_floors"
 	},
 /area/almayer/command/airoom)
+"cco" = (
+/obj/structure/surface/table/almayer,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo"
+	},
+/area/almayer/engineering/lower/engine_core)
 "ccq" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -23941,14 +23939,6 @@
 "cGd" = (
 /turf/closed/wall/almayer,
 /area/almayer/maint/hull/upper/u_m_s)
-"cGe" = (
-/obj/structure/surface/table/almayer,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
-/turf/open/floor/almayer{
-	icon_state = "cargo"
-	},
-/area/almayer/engineering/lower/engine_core)
 "cGp" = (
 /obj/structure/machinery/cm_vending/clothing/senior_officer{
 	pixel_y = 0
@@ -25692,12 +25682,6 @@
 	icon_state = "plating_striped"
 	},
 /area/almayer/maint/hull/lower/l_a_p)
-"dod" = (
-/turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "cargo"
-	},
-/area/almayer/engineering/upper_engineering/port)
 "dof" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
 	name = "\improper Upper Engineering"
@@ -26689,6 +26673,16 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
+"dHB" = (
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/structure/surface/table/almayer,
+/obj/item/fuel_cell,
+/turf/open/floor/almayer{
+	icon_state = "cargo"
+	},
+/area/almayer/engineering/lower/engine_core)
 "dHV" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -26784,14 +26778,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/briefing)
-"dKc" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 9"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/engineering/lower/engine_core)
 "dKm" = (
 /obj/structure/machinery/power/apc/almayer{
 	dir = 4
@@ -26875,14 +26861,6 @@
 	icon_state = "silver"
 	},
 /area/almayer/command/cichallway)
-"dLi" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 4"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/engineering/lower/engine_core)
 "dLt" = (
 /obj/structure/sign/safety/hazard{
 	pixel_x = -17;
@@ -27698,18 +27676,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/briefing)
-"ebt" = (
-/obj/structure/surface/table/almayer,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
-/obj/structure/machinery/alarm/almayer{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	icon_state = "cargo"
-	},
-/area/almayer/engineering/lower/engine_core)
 "ebv" = (
 /obj/structure/machinery/light{
 	unacidable = 1;
@@ -27891,14 +27857,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/maint/hull/lower/stern)
-"eeH" = (
-/obj/structure/closet/secure_closet/engineering_personal,
-/obj/item/clothing/suit/storage/hazardvest/yellow,
-/turf/open/floor/almayer{
-	dir = 10;
-	icon_state = "cargo"
-	},
-/area/almayer/engineering/upper_engineering)
 "eeR" = (
 /obj/structure/surface/rack,
 /obj/item/frame/table,
@@ -30465,15 +30423,6 @@
 	icon_state = "orange"
 	},
 /area/almayer/maint/hull/lower/l_m_s)
-"fbH" = (
-/obj/structure/surface/table/almayer,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
-/turf/open/floor/almayer{
-	icon_state = "cargo"
-	},
-/area/almayer/engineering/lower/engine_core)
 "fbR" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -31464,14 +31413,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/shipboard/weapon_room)
-"fyd" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 1"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/engineering/lower/engine_core)
 "fyp" = (
 /obj/structure/machinery/cryopod{
 	layer = 3.1;
@@ -31895,16 +31836,6 @@
 /obj/effect/landmark/late_join/bravo,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/bravo)
-"fIX" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
-	access_modified = 1;
-	name = "\improper Requisitions Auxiliary Storage Room";
-	req_one_access = "19;21"
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/squads/req)
 "fIZ" = (
 /obj/structure/surface/table/almayer,
 /obj/item/prop/magazine/boots/n117{
@@ -33165,14 +33096,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/port_hallway)
-"ghX" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 14"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/engineering/lower/engine_core)
 "gio" = (
 /obj/structure/closet/emcloset,
 /obj/structure/sign/safety/restrictedarea{
@@ -34506,6 +34429,15 @@
 	icon_state = "green"
 	},
 /area/almayer/living/offices)
+"gJR" = (
+/obj/structure/surface/table/almayer,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/turf/open/floor/almayer{
+	icon_state = "cargo"
+	},
+/area/almayer/engineering/lower/engine_core)
 "gJY" = (
 /obj/structure/surface/table/almayer,
 /obj/item/circuitboard{
@@ -34754,19 +34686,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/squads/charlie_delta_shared)
-"gNG" = (
-/obj/structure/surface/table/almayer,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
-	name = "ship-grade camera"
-	},
-/turf/open/floor/almayer{
-	icon_state = "cargo"
-	},
-/area/almayer/engineering/lower/engine_core)
 "gNN" = (
 /obj/structure/bed/chair/office/dark,
 /turf/open/floor/plating/plating_catwalk,
@@ -35697,17 +35616,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/req)
-"hgV" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 15"
-	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/engineering/lower/engine_core)
 "hgZ" = (
 /obj/structure/machinery/door_control{
 	dir = 1;
@@ -36597,16 +36505,6 @@
 "hvH" = (
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
-"hwd" = (
-/obj/item/fuelCell,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
-/obj/structure/surface/table/almayer,
-/obj/item/fuelCell,
-/turf/open/floor/almayer{
-	icon_state = "cargo"
-	},
-/area/almayer/engineering/lower/engine_core)
 "hwC" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
@@ -38154,6 +38052,15 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/maint/hull/upper/u_f_s)
+"ick" = (
+/obj/structure/machinery/cm_vending/clothing/maintenance_technician,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/engineering/upper_engineering/port)
 "icp" = (
 /turf/open/floor/almayer{
 	dir = 8;
@@ -39111,6 +39018,16 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/lower)
+"iwi" = (
+/obj/structure/sign/safety/rad_haz{
+	pixel_x = 8;
+	pixel_y = -32
+	},
+/obj/structure/machinery/power/reactor,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/almayer/engineering/lower/engine_core)
 "iwB" = (
 /obj/structure/machinery/washing_machine,
 /obj/structure/machinery/washing_machine{
@@ -40693,6 +40610,16 @@
 /obj/effect/landmark/start/reporter,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/u_m_p)
+"jba" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
+	access_modified = 1;
+	name = "\improper Requisitions Auxiliary Storage Room";
+	req_one_access_txt = "19;21"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/squads/req)
 "jbq" = (
 /obj/structure/window/framed/almayer/hull,
 /turf/open/floor/plating,
@@ -43365,17 +43292,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/maint/hull/upper/s_bow)
-"kag" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 16"
-	},
-/obj/structure/machinery/status_display{
-	pixel_y = 30
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/engineering/lower/engine_core)
 "kaj" = (
 /obj/effect/step_trigger/clone_cleaner,
 /obj/effect/decal/warning_stripes{
@@ -44107,6 +44023,16 @@
 	icon_state = "plate"
 	},
 /area/almayer/squads/bravo)
+"koN" = (
+/obj/structure/sign/safety/rad_haz{
+	pixel_x = 8;
+	pixel_y = 32
+	},
+/obj/structure/machinery/power/reactor,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/almayer/engineering/lower/engine_core)
 "kpc" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/plating,
@@ -44405,6 +44331,15 @@
 	icon_state = "plate"
 	},
 /area/almayer/maint/hull/upper/u_m_p)
+"kuL" = (
+/obj/structure/machinery/status_display{
+	pixel_y = 30
+	},
+/obj/structure/machinery/power/reactor,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/almayer/engineering/lower/engine_core)
 "kvf" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 2;
@@ -45197,18 +45132,6 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
-"kJn" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 17"
-	},
-/obj/structure/sign/safety/rad_haz{
-	pixel_x = 8;
-	pixel_y = 32
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/engineering/lower/engine_core)
 "kJH" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -45383,6 +45306,14 @@
 	icon_state = "red"
 	},
 /area/almayer/hallways/upper/port)
+"kMq" = (
+/obj/structure/surface/table/almayer,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/turf/open/floor/almayer{
+	icon_state = "cargo"
+	},
+/area/almayer/engineering/lower/engine_core)
 "kMr" = (
 /obj/item/trash/uscm_mre,
 /obj/structure/prop/invuln/lattice_prop{
@@ -45825,6 +45756,15 @@
 	icon_state = "tcomms"
 	},
 /area/almayer/command/telecomms)
+"kTz" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/machinery/power/reactor,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/almayer/engineering/lower/engine_core)
 "kTN" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer{
@@ -45853,12 +45793,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/living/pilotbunks)
-"kUw" = (
-/obj/structure/machinery/cm_vending/clothing/maintenance_technician,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/engineering/upper_engineering/port)
 "kUL" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -51581,14 +51515,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/living/gym)
-"nbv" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 3"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/engineering/lower/engine_core)
 "ncf" = (
 /obj/structure/machinery/cryopod/right{
 	layer = 3.1;
@@ -52411,17 +52337,6 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/engineering/starboard_atmos)
-"npn" = (
-/obj/structure/surface/table/almayer,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
-/obj/structure/machinery/camera/autoname/almayer{
-	name = "ship-grade camera"
-	},
-/turf/open/floor/almayer{
-	icon_state = "cargo"
-	},
-/area/almayer/engineering/lower/engine_core)
 "npt" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
@@ -52904,17 +52819,6 @@
 	icon_state = "blue"
 	},
 /area/almayer/hallways/aft_hallway)
-"nxZ" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 10"
-	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/engineering/lower/engine_core)
 "nyj" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "docdecal2"
@@ -53306,14 +53210,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha_bravo_shared)
-"nFM" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 18"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/engineering/lower/engine_core)
 "nFV" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
@@ -53938,6 +53834,29 @@
 	icon_state = "plate"
 	},
 /area/almayer/maint/hull/upper/u_a_p)
+"nSn" = (
+/obj/structure/surface/table/almayer,
+/obj/item/cell/high{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/ashtray/plastic{
+	icon_state = "ashtray_full_bl";
+	pixel_x = 5;
+	pixel_y = 1
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -6;
+	pixel_y = -9
+	},
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/engineering/upper_engineering/port)
 "nSq" = (
 /obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12
@@ -54940,14 +54859,6 @@
 	icon_state = "outerhull_dir"
 	},
 /area/space)
-"okQ" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 12"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/engineering/lower/engine_core)
 "old" = (
 /obj/structure/machinery/light/small,
 /obj/structure/largecrate/random/case/double,
@@ -55437,14 +55348,6 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/lower/workshop)
-"osM" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 8"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/engineering/lower/engine_core)
 "osT" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/prop/ice_colony/hula_girl{
@@ -61418,6 +61321,15 @@
 	icon_state = "cargo"
 	},
 /area/almayer/lifeboat_pumps/south2)
+"qHc" = (
+/obj/effect/decal/cleanable/vomit,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21"
+	},
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/engineering/upper_engineering/port)
 "qHg" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -62317,14 +62229,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/hallways/hangar)
-"qYo" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 6"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/engineering/lower/engine_core)
 "qYq" = (
 /turf/open/floor/almayer{
 	dir = 5;
@@ -63736,29 +63640,6 @@
 	icon_state = "silverfull"
 	},
 /area/almayer/command/computerlab)
-"rxV" = (
-/obj/structure/surface/table/almayer,
-/obj/item/cell/high{
-	pixel_x = -8;
-	pixel_y = 8
-	},
-/obj/item/ashtray/plastic{
-	icon_state = "ashtray_full_bl";
-	pixel_x = 5;
-	pixel_y = 1
-	},
-/obj/item/trash/cigbutt{
-	pixel_x = -10;
-	pixel_y = 13
-	},
-/obj/item/trash/cigbutt{
-	pixel_x = -6;
-	pixel_y = -9
-	},
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/engineering/upper_engineering/port)
 "ryt" = (
 /obj/structure/pipes/standard/manifold/visible,
 /turf/open/floor/almayer{
@@ -64111,18 +63992,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/engineering/lower/workshop)
-"rDB" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 13"
-	},
-/obj/structure/sign/safety/rad_haz{
-	pixel_x = 8;
-	pixel_y = -32
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/engineering/lower/engine_core)
 "rDH" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer,
@@ -67100,6 +66969,12 @@
 	icon_state = "plate"
 	},
 /area/almayer/maint/hull/lower/stern)
+"sES" = (
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "cargo"
+	},
+/area/almayer/engineering/upper_engineering/port)
 "sEZ" = (
 /obj/structure/reagent_dispensers/peppertank{
 	pixel_y = 26
@@ -67504,6 +67379,14 @@
 	icon_state = "plate"
 	},
 /area/almayer/living/basketball)
+"sOx" = (
+/obj/structure/closet/secure_closet/engineering_personal,
+/obj/item/clothing/suit/storage/hazardvest/yellow,
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "cargo"
+	},
+/area/almayer/engineering/upper_engineering)
 "sOy" = (
 /obj/structure/stairs/perspective{
 	dir = 1;
@@ -67665,6 +67548,18 @@
 	icon_state = "blue"
 	},
 /area/almayer/living/basketball)
+"sTe" = (
+/obj/structure/surface/table/almayer,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/structure/machinery/alarm/almayer{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo"
+	},
+/area/almayer/engineering/lower/engine_core)
 "sTm" = (
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/carpet,
@@ -70849,15 +70744,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/u_a_s)
-"tZP" = (
-/obj/structure/machinery/cm_vending/clothing/maintenance_technician,
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/almayer/engineering/upper_engineering/port)
 "tZZ" = (
 /obj/structure/machinery/cryopod,
 /obj/effect/decal/warning_stripes{
@@ -71457,6 +71343,20 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/cells)
+"umZ" = (
+/obj/structure/surface/table/almayer,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = 28
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo"
+	},
+/area/almayer/engineering/lower/engine_core)
 "unh" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/firstaid/o2,
@@ -71724,14 +71624,6 @@
 /obj/effect/landmark/late_join/charlie,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/charlie)
-"urW" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 7"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/engineering/lower/engine_core)
 "usm" = (
 /obj/structure/machinery/light,
 /obj/structure/sign/safety/waterhazard{
@@ -76356,20 +76248,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/lower_medical_lobby)
-"vVX" = (
-/obj/structure/surface/table/almayer,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_y = 28
-	},
-/turf/open/floor/almayer{
-	icon_state = "cargo"
-	},
-/area/almayer/engineering/lower/engine_core)
 "vVY" = (
 /turf/open/floor/plating,
 /area/almayer/maint/hull/upper/u_m_s)
@@ -76987,6 +76865,17 @@
 	icon_state = "cargo"
 	},
 /area/almayer/living/offices)
+"wfe" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
+	access_modified = 1;
+	dir = 1;
+	name = "\improper Auxiliary Combat Support Secondary Preparations";
+	req_one_access_txt = "19;27;22"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/living/cryo_cells)
 "wfn" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/almayer{
@@ -79080,15 +78969,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/lifeboat_pumps/south1)
-"wTJ" = (
-/obj/effect/decal/cleanable/vomit,
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21"
-	},
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/engineering/upper_engineering/port)
 "wTM" = (
 /turf/closed/wall/almayer/research/containment/wall/south,
 /area/almayer/medical/containment/cell)
@@ -80637,14 +80517,6 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
-"xxl" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 2"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/engineering/lower/engine_core)
 "xxm" = (
 /obj/structure/bed{
 	can_buckle = 0
@@ -80837,6 +80709,19 @@
 	icon_state = "plate"
 	},
 /area/almayer/shipboard/brig/execution)
+"xAb" = (
+/obj/structure/surface/table/almayer,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo"
+	},
+/area/almayer/engineering/lower/engine_core)
 "xAe" = (
 /turf/closed/wall/almayer/research/containment/wall/corner,
 /area/almayer/medical/containment/cell)
@@ -81251,14 +81136,6 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/brig/processing)
-"xIO" = (
-/obj/structure/machinery/power/fusion_engine{
-	name = "\improper S-52 fusion reactor 11"
-	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
-/area/almayer/engineering/lower/engine_core)
 "xIQ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -82150,6 +82027,12 @@
 	icon_state = "mono"
 	},
 /area/almayer/medical/medical_science)
+"xXQ" = (
+/obj/structure/machinery/cm_vending/clothing/maintenance_technician,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/engineering/upper_engineering/port)
 "xXT" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -126749,7 +126632,7 @@ dXG
 nqx
 hzg
 vBU
-fIX
+jba
 fnI
 ipa
 fYZ
@@ -128971,7 +128854,7 @@ byI
 beB
 kFY
 jmK
-bDL
+wfe
 bbs
 ccQ
 bCN
@@ -130701,7 +130584,7 @@ apd
 alR
 amA
 atq
-eeH
+sOx
 alO
 axM
 amA
@@ -130904,7 +130787,7 @@ apd
 alR
 amA
 atq
-eeH
+sOx
 alO
 axN
 azq
@@ -131732,10 +131615,10 @@ alG
 aYj
 apd
 jWh
-kUw
-dod
+xXQ
+sES
 vyI
-rxV
+nSn
 thV
 fCL
 uIv
@@ -131935,8 +131818,8 @@ alG
 aYj
 apd
 jWh
-tZP
-dod
+ick
+sES
 vyI
 vyI
 vyI
@@ -132138,10 +132021,10 @@ aEp
 lIw
 aEp
 jWh
-kUw
-dod
+xXQ
+sES
 vyI
-wTJ
+qHc
 thV
 uWV
 uIv
@@ -134863,13 +134746,13 @@ shL
 uXk
 mlF
 hsy
-hgV
-osM
-ghX
+kTz
+aPv
+aPv
 dTS
-okQ
-xIO
-nxZ
+aPv
+aPv
+kTz
 hsy
 tos
 uXk
@@ -135265,7 +135148,7 @@ nic
 tmQ
 ppM
 hsy
-npn
+cco
 bVN
 oGJ
 xpZ
@@ -135279,7 +135162,7 @@ coH
 oTO
 uqh
 iAE
-gNG
+xAb
 hsy
 iWa
 fZR
@@ -135468,21 +135351,21 @@ nic
 aIh
 aIh
 hsy
-cGe
+kMq
 uXk
 rae
 jIV
 pzM
 mtZ
-bqP
-fyd
-qYo
+aPv
+aPv
+aPv
 fQn
 pzM
 nac
 xNf
 uXk
-fbH
+gJR
 hsy
 aIh
 aIh
@@ -135671,21 +135554,21 @@ nic
 ppM
 ppM
 hsy
-ebt
+sTe
 nCn
 oGJ
 uSW
 kzO
 vaZ
 kYL
-dLi
+aPv
 sCV
 rjO
 suY
 pdK
 uqh
 pJr
-fbH
+gJR
 hsy
 aIh
 aIh
@@ -135875,19 +135758,19 @@ aIh
 ppM
 hsy
 hsy
-vVX
+umZ
 mlF
 uXk
 hmw
 gSa
 mtZ
-nbv
+aPv
 fQn
 wSV
 ulp
 uXk
 tos
-fbH
+gJR
 hsy
 hsy
 ppM
@@ -136078,19 +135961,19 @@ aIh
 aIh
 aIh
 hsy
-hwd
+dHB
 mlF
 hsy
-kag
+kuL
 fQn
 mtZ
-xxl
+aPv
 fQn
 mtZ
-dKc
+aPv
 hsy
 beL
-hwd
+dHB
 hsy
 cWb
 aIh
@@ -136284,13 +136167,13 @@ hsy
 ylh
 opH
 hsy
-kJn
+koN
 fQn
 qoR
 aPU
 rjO
 mtZ
-rDB
+iwi
 hsy
 iEw
 ylh
@@ -136487,13 +136370,13 @@ hsy
 ylh
 mlF
 hsy
-nFM
+aPv
 eZp
 kzO
 pzM
 hip
 ptZ
-urW
+aPv
 hsy
 tos
 ylh

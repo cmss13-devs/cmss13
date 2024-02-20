@@ -1,0 +1,5 @@
+author: "private-tristan"
+delete-after: True
+changes:
+  - rscdel: "VAIMS (vaipo med spec) no longer gets a redundant burn line"
+  - balance: "VAIMS now gets an extra MAR mag."

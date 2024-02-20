@@ -13270,6 +13270,9 @@
 	},
 /area/bigredv2/outside/e)
 "aMS" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor{
 	dir = 10;
 	icon_state = "asteroidwarning"
@@ -15841,16 +15844,6 @@
 	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/caves_lambda)
-"aTx" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidwarning"
-	},
-/area/bigredv2/outside/lambda_cave_cas)
 "aTy" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -16460,7 +16453,8 @@
 	icon_state = "gib6"
 	},
 /turf/open/floor{
-	icon_state = "asteroidwarning"
+	dir = 1;
+	icon_state = "asteroidfloor"
 	},
 /area/bigredv2/outside/lambda_cave_cas)
 "aVx" = (
@@ -17299,6 +17293,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/item/device/camera,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "redfull"
@@ -18484,7 +18479,7 @@
 "bbZ" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/computer/cameras/wooden_tv{
-	dir = 8
+	dir = 4
 	},
 /obj/structure/machinery/light{
 	dir = 4
@@ -26545,7 +26540,8 @@
 "bKH" = (
 /obj/structure/machinery/light,
 /turf/open/floor{
-	icon_state = "asteroidwarning"
+	dir = 1;
+	icon_state = "asteroidfloor"
 	},
 /area/bigredv2/outside/lambda_cave_cas)
 "bKY" = (
@@ -28301,7 +28297,9 @@
 /area/bigredv2/outside/eta)
 "epu" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/device/camera,
+/obj/structure/machinery/computer/cameras/wooden_tv{
+	dir = 4
+	},
 /turf/open/floor{
 	dir = 9;
 	icon_state = "redfull"
@@ -30497,7 +30495,7 @@
 	},
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidwarning"
+	icon_state = "asteroidfloor"
 	},
 /area/bigredv2/outside/lambda_cave_cas)
 "hLS" = (
@@ -31679,6 +31677,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/item/handcuffs,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "redfull"
@@ -35120,6 +35119,7 @@
 	},
 /area/bigredv2/caves/mining)
 "oJh" = (
+/obj/structure/machinery/vending/security,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "red"
@@ -36854,7 +36854,9 @@
 /area/bigredv2/caves/mining)
 "rma" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/handcuffs,
+/obj/structure/machinery/computer/cameras/wooden_tv{
+	dir = 8
+	},
 /turf/open/floor{
 	dir = 9;
 	icon_state = "redfull"
@@ -38952,6 +38954,7 @@
 /area/bigredv2/outside/space_port_lz2)
 "ufg" = (
 /obj/structure/surface/table/reinforced,
+/obj/item/pizzabox/vegetable,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "redfull"
@@ -39475,12 +39478,6 @@
 	icon_state = "darkyellow2"
 	},
 /area/bigredv2/outside/filtration_plant)
-"uUs" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor{
-	icon_state = "asteroidwarning"
-	},
-/area/bigredv2/outside/lambda_cave_cas)
 "uUV" = (
 /obj/structure/prop/server_equipment/yutani_server/broken,
 /turf/open/floor/greengrid,
@@ -39540,11 +39537,6 @@
 	icon_state = "darkyellow2"
 	},
 /area/bigredv2/outside/engineering)
-"vcm" = (
-/turf/open/floor{
-	icon_state = "asteroidwarning"
-	},
-/area/bigredv2/outside/lambda_cave_cas)
 "vct" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -39578,6 +39570,7 @@
 "vdy" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/surface/table/reinforced,
+/obj/item/storage/donut_box,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "redfull"
@@ -39837,6 +39830,15 @@
 	icon_state = "delivery"
 	},
 /area/bigredv2/caves/eta/xenobiology)
+"vtR" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor{
+	dir = 6;
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/caves_lambda)
 "vuz" = (
 /obj/structure/machinery/door_control{
 	id = "eta";
@@ -76428,7 +76430,7 @@ aSg
 aSg
 aSg
 aSg
-aSg
+aTq
 qhl
 aUp
 aUk
@@ -76645,8 +76647,8 @@ aKP
 aKP
 aKP
 aMR
-aQu
-aYx
+aTr
+aDy
 aUp
 aQu
 aVr
@@ -76862,7 +76864,7 @@ aKP
 aKP
 aMR
 aQu
-aSi
+aTr
 aDy
 aTp
 aTu
@@ -77082,7 +77084,7 @@ aQu
 aTr
 aDy
 aTq
-hXM
+aTq
 apI
 gfv
 gfv
@@ -77299,7 +77301,7 @@ dLo
 aTr
 aDy
 aTq
-hXM
+aTq
 gfv
 mKL
 epu
@@ -77733,7 +77735,7 @@ uuo
 aSj
 ixR
 aUx
-vcm
+xpQ
 gfv
 ufg
 aYy
@@ -77948,7 +77950,7 @@ aao
 aao
 xXN
 nse
-aTx
+ixR
 xpQ
 bKH
 apI
@@ -78165,9 +78167,9 @@ aao
 aao
 apI
 cIq
-aTx
+ixR
 xpQ
-vcm
+xpQ
 prC
 aYy
 aYy
@@ -78382,7 +78384,7 @@ aao
 aao
 xXN
 nse
-aTx
+ixR
 xpQ
 aVw
 apI
@@ -78601,7 +78603,7 @@ sYL
 gkN
 hLs
 fls
-uUs
+fls
 oCk
 vdy
 gSJ
@@ -80546,7 +80548,7 @@ uaB
 uaB
 uaB
 aMq
-aMT
+aTv
 aOm
 aOm
 aOm
@@ -80763,7 +80765,7 @@ aJE
 aKQ
 aKQ
 hmm
-aMT
+aTv
 aOn
 aOn
 aOn
@@ -80980,7 +80982,7 @@ aJF
 anI
 anI
 anI
-aMV
+vtR
 gXp
 gXp
 gXp

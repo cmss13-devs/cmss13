@@ -164,9 +164,6 @@ SUBSYSTEM_DEF(shuttle)
 	// First, determine the size of the needed zone
 	// Because of shuttle rotation, the "width" of the shuttle is not
 	// always x.
-	var/travel_dir = M.preferred_direction
-	// Remember, the direction is the direction we appear to be
-	// coming from
 	var/dock_angle = dir2angle(M.preferred_direction) + dir2angle(M.port_direction) + 180
 	var/dock_dir = angle2dir(dock_angle)
 
@@ -185,19 +182,10 @@ SUBSYSTEM_DEF(shuttle)
 
 /*
 	to_chat(world, "The attempted transit dock will be [transit_width] width, and \)
-		[transit_height] in height. The travel dir is [travel_dir]."
+		[transit_height] in height. The travel dir is [M.preferred_direction]."
 */
 
-	var/transit_path = /turf/open/space/transit
-	switch(travel_dir)
-		if(NORTH)
-			transit_path = /turf/open/space/transit/north
-		if(SOUTH)
-			transit_path = /turf/open/space/transit/south
-		if(EAST)
-			transit_path = /turf/open/space/transit/east
-		if(WEST)
-			transit_path = /turf/open/space/transit/west
+	var/transit_path = M.get_transit_path_type()
 
 	var/datum/turf_reservation/proposal = SSmapping.RequestBlockReservation(transit_width, transit_height, null, /datum/turf_reservation/transit, transit_path)
 

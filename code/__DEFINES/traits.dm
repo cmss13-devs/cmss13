@@ -466,6 +466,8 @@ GLOBAL_LIST(trait_name_map)
 #define XENO_WEED_TRAIT "xeno_weed"
 /// traits associated with actively interacted machinery
 #define INTERACTION_TRAIT "interaction"
+/// traits associated with interacting with a dropship
+#define TRAIT_SOURCE_DROPSHIP_INTERACTION "dropship_interaction"
 /// traits bound by stunned status effects
 #define STUNNED_TRAIT "stunned"
 /// traits bound by knocked_down status effect

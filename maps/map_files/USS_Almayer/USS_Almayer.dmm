@@ -52062,9 +52062,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer,
 /area/almayer/command/corporateliaison)
-"nTT" = (
-/turf/closed/wall/almayer/outer,
-/area/almayer/maint/hull/upper)
 "nTZ" = (
 /turf/open/floor/almayer{
 	dir = 5;
@@ -101905,8 +101902,8 @@ aaa
 aaa
 aaa
 aad
-nTT
-nTT
+cZe
+cZe
 cZe
 vfS
 cmr

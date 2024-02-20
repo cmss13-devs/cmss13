@@ -2,6 +2,7 @@
 // Fore = West  | Aft = East //
 // Port = South | Starboard = North //
 // Bow = Western|Stern = Eastern //(those are the front and back small sections)
+// Naming convention is to start by port or starboard then put eitheir (bow,fore,midship,aft,stern)
 /area/almayer
 	icon = 'icons/turf/area_almayer.dmi'
 	// ambience = list('sound/ambience/shipambience.ogg')
@@ -474,7 +475,7 @@
 	name = "\improper Upper Deck Starboard-Stern Hull"
 
 /area/almayer/maint/hull/upper/u_f_s
-	name = "\improper Upper Deck Fore-Starboard Hull"
+	name = "\improper Upper Deck Starboard-Fore Hull"
 
 /area/almayer/maint/hull/upper/u_m_s
 	name = "\improper Upper Deck Starboard-Midship Hull"

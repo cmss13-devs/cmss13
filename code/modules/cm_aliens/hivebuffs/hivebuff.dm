@@ -66,6 +66,9 @@
 	/// Flavour message to give to the marines on buff engage
 	var/marine_flavourmessage
 
+	/// Apply the buff effect to new xenomorphs who spawn or evolve.
+	var/apply_on_new_xeno = TRUE
+
 
 /datum/hivebuff/New(datum/hive_status/xenohive)
 	. = ..()
@@ -169,6 +172,13 @@
 
 	// Purchase and deduct funds only after we're sure the buff has engaged
 	_purchase_and_deduct()
+
+	for(var/mob/living/carbon/xenomorph/xeno in hive.totalXenos)
+		if(apply_on_new_xeno)
+			RegisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN, PROC_REF(_handle_xenomorph_new))
+		apply_buff_effects(xeno)
+
+
 	log_admin("[purchasing_mob] and [hive.living_xeno_queen] of [hive.hivenumber] have purchased a hive buff: [name].")
 
 	// Add to the relevant hive lists.
@@ -197,7 +207,7 @@
 /// IMPORTANT: If you buff has any kind of conditions which can fail. Return a string with details to be passed to the purchaser.
 /// If your buff succeeds you must return TRUE
 /datum/hivebuff/proc/on_engage()
-	return
+	return TRUE
 
 /// Wrapper for on_cease(), calls qdel(src) after on_cease() behaviour.
 /datum/hivebuff/proc/_on_cease()
@@ -208,6 +218,8 @@
 		for(var/obj/effect/alien/resin/special/pylon/endgame/pylon_to_clear in sustained_pylons)
 			pylon_to_clear.remove_hivebuff()
 			UnregisterSignal(pylon_to_clear, COMSIG_PARENT_QDELETING)
+	LAZYREMOVE(hive.active_hivebuffs, src)
+
 
 /// Checks the number of pylons required and if the hive posesses them
 /datum/hivebuff/proc/_check_num_required_pylons(obj/effect/alien/resin/special/pylon/endgame/purchased_pylon)
@@ -311,7 +323,22 @@
 		xenomorph.play_screen_text(cease_flavourmessage, override_color = "#740064")
 		to_chat(xenomorph, SPAN_XENO(cease_flavourmessage))
 
+///Signal handler for new xenomorphs joining the hive
+/datum/hivebuff/proc/_handle_xenomorph_new(mob/living/carbon/xenomorph/new_xeno)
+	SIGNAL_HANDLER
+	if(!apply_on_new_xeno)
+		return
+	// If we're the same hive as the buff
+	if(new_xeno.hive == hive)
+		apply_buff_effects(new_xeno)
 
+///The actual effects of the buff to apply
+/datum/hivebuff/proc/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
+	return
+
+/// Reverse the effects here, should be the opposite of apply_effects()
+/datum/hivebuff/proc/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
+	return
 
 ////////////////////////////////
 //		BUFFS
@@ -336,19 +363,14 @@
 	tier = HIVEBUFF_TIER_MINOR
 
 	engage_flavourmessage = "The queen has imbued us with greater fortitude."
-	duration = 30 SECONDS
+	duration = 10 SECONDS
 	number_of_required_pylons = 2
 
+/datum/hivebuff/extra_life/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
+	xeno.maxHealth *= 1.05
 
-/datum/hivebuff/extra_life/on_engage()
-	for(var/mob/living/carbon/xenomorph/xeno as anything in hive.totalXenos)
-		xeno.maxHealth *= 1.05
-	return TRUE
-
-/datum/hivebuff/extra_life/on_cease()
-	for(var/mob/living/carbon/xenomorph/xeno as anything in hive.totalXenos)
-		xeno.maxHealth = initial(xeno.caste.max_health)
-	return TRUE
+/datum/hivebuff/extra_life/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
+	xeno.maxHealth = initial(xeno.caste.max_health)
 
 /datum/hivebuff/extra_life/major
 	name = "Major Boon of Plenty"
@@ -360,17 +382,6 @@
 	number_of_required_pylons = 2
 	radial_icon = "health_m"
 
-
-/datum/hivebuff/extra_life/major/on_engage()
-	for(var/mob/living/carbon/xenomorph/xeno as anything in hive.totalXenos)
-		xeno.maxHealth *= 1.1
-	return TRUE
-
-/datum/hivebuff/extra_life/major/on_cease()
-	for(var/mob/living/carbon/xenomorph/xeno as anything in hive.totalXenos)
-		xeno.maxHealth = initial(xeno.caste.max_health)
-	return TRUE
-
 /datum/hivebuff/game_ender_caste
 	name = "Boon of Destruction"
 	desc = "A huge behemoth of a Xenomorph which can tear its way through defences and flesh alike."
@@ -381,7 +392,7 @@
 /datum/hivebuff/game_ender_caste/on_engage()
 
 	/// CODE FOR SPAWNING OF THE DESTROYER HERE.
-	return
+	return TRUE
 
 /datum/hivebuff/defence
 	name = "Boon of Defence"
@@ -403,6 +414,7 @@
 	number_of_required_pylons = 2
 	radial_icon = "shield_m"
 
+
 /datum/hivebuff/attack
 	name = "Boon of Aggression"
 	desc = "Increases all xenomorph damage by 5% for 5 minutes"
@@ -422,3 +434,4 @@
 	duration = 10 MINUTES
 	number_of_required_pylons = 2
 	radial_icon = "slash_m"
+

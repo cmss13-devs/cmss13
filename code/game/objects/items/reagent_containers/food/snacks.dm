@@ -647,8 +647,6 @@
 /obj/item/reagent_container/food/snacks/carpmeat/processed
 	name = "processed carp fillet"
 	desc = "A fillet of spess carp meat. This one has been processed to remove carpotoxin."
-	icon_state = "fishfillet"
-	filling_color = "#FFDEFE"
 
 /obj/item/reagent_container/food/snacks/carpmeat/processed/Initialize()
 	. = ..()

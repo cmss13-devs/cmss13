@@ -102,8 +102,7 @@
 	if (!P)
 		to_chat(user, SPAN_DANGER("That probably won't blend."))
 		return 1
-	if ((istype(P,/datum/food_processor_process/xenomeat) || istype(P,/datum/food_processor_process/carpmeat)) && !skillcheck(user, SKILL_DOMESTIC, SKILL_DOMESTIC_MASTER))
-		to_chat(user, SPAN_DANGER("You aren't trained to remove dangerous substances from food"))
+	if(!P.can_use(user))
 		return 1
 	user.visible_message("[user] put [what] into [src].", \
 		"You put [what] into [src].")

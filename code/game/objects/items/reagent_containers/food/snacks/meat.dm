@@ -63,8 +63,6 @@
 /obj/item/reagent_container/food/snacks/meat/xenomeat/processed
 	name = "meat"
 	desc = "A slab of acrid smelling meat. This one has been processed to remove acid."
-	icon_state = "xenomeat"
-	filling_color = "#43DE18"
 
 /obj/item/reagent_container/food/snacks/meat/xenomeat/processed/Initialize()
 	. = ..()

@@ -189,21 +189,9 @@
 	. = ..()
 	if(.)
 		return
-
-	var/mob/living/carbon/xenomorph/current_xeno = user?.mob
-
-	if(!current_xeno?.hive)
-		return
-
-	if((!current_xeno.hive.living_xeno_queen || SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST) && !current_xeno.hive.allow_no_queen_actions) //No Hive status on WO
-		to_chat(current_xeno, SPAN_WARNING("There is no Queen. We are alone."))
-		return
-
-	if(current_xeno.interference)
-		to_chat(current_xeno, SPAN_WARNING("A headhunter temporarily cut off our psychic connection!"))
-		return
-
-	current_xeno.hive.hive_ui.open_hive_status(current_xeno)
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	xeno.hive_status()
+	return TRUE
 
 /datum/keybinding/xenomorph/hide
 	hotkey_keys = list("Unbound")

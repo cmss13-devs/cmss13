@@ -19,6 +19,8 @@
 	var/build_state = BARRICADE_BSTATE_SECURED //Look at __game.dm for barricade defines
 	var/upgrade = null
 
+	welder_lower_damage_limit = BARRICADE_DMG_HEAVY
+
 /obj/structure/barricade/metal/update_icon()
 	. = ..()
 	if(dir > 2)
@@ -44,24 +46,16 @@
 
 /obj/structure/barricade/metal/attackby(obj/item/item, mob/user)
 	if(iswelder(item))
-		if(!HAS_TRAIT(item, TRAIT_TOOL_BLOWTORCH))
-			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
-			return
-		if(user.action_busy)
-			return
+		if(!attackby_welder(item, user))
+			return FALSE
+
+
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You're not trained to repair [src]..."))
-			return
-		var/obj/item/tool/weldingtool/welder = item
-		if(damage_state == BARRICADE_DMG_HEAVY)
-			to_chat(user, SPAN_WARNING("[src] has sustained too much structural damage to be repaired."))
-			return
+			return FALSE
 
-		if(health == maxhealth)
-			to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
-			return
+		weld_cade(item, user)
 
-		weld_cade(welder, user)
 		return
 
 	if(try_nailgun_usage(item, user))

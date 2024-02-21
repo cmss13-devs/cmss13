@@ -5,7 +5,7 @@ import { useBackend } from '../../backend';
 import { mfdState, useEquipmentState } from './stateManagers';
 import { EquipmentContext, SentrySpec } from './types';
 
-const SentryPanel = (props: DropshipEquipment, context) => {
+const SentryPanel = (props: DropshipEquipment) => {
   const sentryData = props.data as SentrySpec;
   return (
     <Stack>
@@ -48,10 +48,10 @@ const SentryPanel = (props: DropshipEquipment, context) => {
   );
 };
 
-export const SentryMfdPanel = (props: MfdProps, context) => {
-  const { act, data } = useBackend<EquipmentContext>(context);
-  const { setPanelState } = mfdState(context, props.panelStateId);
-  const { equipmentState } = useEquipmentState(context, props.panelStateId);
+export const SentryMfdPanel = (props: MfdProps) => {
+  const { act, data } = useBackend<EquipmentContext>();
+  const { setPanelState } = mfdState(props.panelStateId);
+  const { equipmentState } = useEquipmentState(props.panelStateId);
   const sentry = data.equipment_data.find(
     (x) => x.mount_point === equipmentState
   );

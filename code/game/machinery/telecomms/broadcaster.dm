@@ -150,8 +150,6 @@
 	var/list/heard_gibberish= list() // completely screwed over message (ie "F%! (O*# *#!<>&**%!")
 
 	if(M)
-		if(isAI(M))
-			volume = RADIO_VOLUME_CRITICAL
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 			if(skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT))

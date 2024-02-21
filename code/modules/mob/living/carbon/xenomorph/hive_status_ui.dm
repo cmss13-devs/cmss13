@@ -137,7 +137,7 @@
 		return UI_INTERACTIVE
 
 	// If the Queen died or is otherwise missing.
-	if(!assoc_hive.living_xeno_queen)
+	if(!assoc_hive.living_xeno_queen && !assoc_hive.allow_no_queen_actions)
 		return UI_CLOSE
 
 /datum/hive_status_ui/ui_data(mob/user)

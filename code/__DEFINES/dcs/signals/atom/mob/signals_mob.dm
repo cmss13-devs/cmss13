@@ -59,6 +59,9 @@
 #define COMSIG_MOB_WEED_SLOWDOWN "mob_weeds_slowdown"
 
 #define COMSIG_MOB_TAKE_DAMAGE "mob_take_damage" // TODO: move COMSIG_XENO_TAKE_DAMAGE & COMSIG_HUMAN_TAKE_DAMAGE to this
+
+///From /mob/living/carbon/human/attack_alien(): (mob/living/carbon/xenomorph/M, dam_bonus)
+#define COMSIG_MOB_TACKLED_DOWN "mob_tackled_down"
 ///called in /client/change_view()
 #define COMSIG_MOB_CHANGE_VIEW "mob_change_view"
 	#define COMPONENT_OVERRIDE_VIEW (1<<0)
@@ -105,6 +108,12 @@
 #define COMSIG_MOB_EMOTE "mob_emote"
 
 #define COMSIG_MOB_EMOTED(emote_key) "mob_emoted_[emote_key]"
+
+#define COMSIG_MOB_TRY_EMOTE "mob_try_emote"
+	#define COMPONENT_OVERRIDE_EMOTE (1<<0)
+
+#define COMSIG_MOB_TRY_POINT "mob_try_point"
+	#define COMPONENT_OVERRIDE_POINT (1<<0)
 
 //from /mob/living/set_stat()
 #define COMSIG_MOB_STAT_SET_ALIVE "mob_stat_set_alive"
@@ -170,3 +179,5 @@
 #define COMSIG_MOB_EFFECT_CLOAK_CANCEL "mob_effect_cloak_cancel"
 
 #define COMSIG_MOB_END_TUTORIAL "mob_end_tutorial"
+
+#define COMSIG_MOB_NESTED "mob_nested"

@@ -1,4 +1,0 @@
-author: "Vicacrov"
-delete-after: True
-changes:
-  - bugfix: "Placing flags now anchors the actual flag, not the stack of flags in your hand."

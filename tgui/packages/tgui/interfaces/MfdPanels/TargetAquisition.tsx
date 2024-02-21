@@ -11,9 +11,8 @@ directionLookup['NORTH'] = 1;
 directionLookup['WEST'] = 8;
 directionLookup['EAST'] = 4;
 
-const useStrikeMode = (context) => {
+const useStrikeMode = () => {
   const [data, set] = useSharedState<string | undefined>(
-    context,
     'strike-mode',
     undefined
   );
@@ -23,9 +22,8 @@ const useStrikeMode = (context) => {
   };
 };
 
-const useStrikeDirection = (context) => {
+const useStrikeDirection = () => {
   const [data, set] = useSharedState<string | undefined>(
-    context,
     'strike-direction',
     undefined
   );
@@ -35,9 +33,8 @@ const useStrikeDirection = (context) => {
   };
 };
 
-const useWeaponSelectedState = (context) => {
+const useWeaponSelectedState = () => {
   const [data, set] = useSharedState<number | undefined>(
-    context,
     'target-weapon-select',
     undefined
   );
@@ -47,9 +44,8 @@ const useWeaponSelectedState = (context) => {
   };
 };
 
-const useTargetFiremissionSelect = (context) => {
+const useTargetFiremissionSelect = () => {
   const [data, set] = useSharedState<CasFiremission | undefined>(
-    context,
     'target-firemission-select',
     undefined
   );
@@ -59,17 +55,16 @@ const useTargetFiremissionSelect = (context) => {
   };
 };
 
-export const useTargetOffset = (context, panelId: string) => {
-  const [data, set] = useLocalState(context, `${panelId}_targetOffset`, 0);
+export const useTargetOffset = (panelId: string) => {
+  const [data, set] = useLocalState(`${panelId}_targetOffset`, 0);
   return {
     targetOffset: data,
     setTargetOffset: set,
   };
 };
 
-const useTargetSubmenu = (context, panelId: string) => {
+const useTargetSubmenu = (panelId: string) => {
   const [data, set] = useSharedState<string | undefined>(
-    context,
     `${panelId}_target_left`,
     undefined
   );
@@ -79,11 +74,11 @@ const useTargetSubmenu = (context, panelId: string) => {
   };
 };
 
-export const TargetLines = (props: { panelId: string }, context) => {
+export const TargetLines = (props: { readonly panelId: string }) => {
   const { data } = useBackend<
     EquipmentContext & FiremissionContext & TargetContext
-  >(context);
-  const { targetOffset } = useTargetOffset(context, props.panelId);
+  >();
+  const { targetOffset } = useTargetOffset(props.panelId);
   return (
     <>
       {data.targets_data.length > targetOffset && (
@@ -126,25 +121,18 @@ export const TargetLines = (props: { panelId: string }, context) => {
   );
 };
 
-const leftButtonGenerator = (context, panelId: string) => {
+const leftButtonGenerator = (panelId: string) => {
   const { data } = useBackend<
     EquipmentContext & FiremissionContext & TargetContext
-  >(context);
-  const { leftButtonMode, setLeftButtonMode } = useTargetSubmenu(
-    context,
-    panelId
-  );
-  const { strikeMode, setStrikeMode } = useStrikeMode(context);
-  const { setStrikeDirection } = useStrikeDirection(context);
+  >();
+  const { leftButtonMode, setLeftButtonMode } = useTargetSubmenu(panelId);
+  const { strikeMode, setStrikeMode } = useStrikeMode();
+  const { setStrikeDirection } = useStrikeDirection();
   const { firemissionSelected, setFiremissionSelected } =
-    useTargetFiremissionSelect(context);
-  const { weaponSelected, setWeaponSelected } = useWeaponSelectedState(context);
+    useTargetFiremissionSelect();
+  const { weaponSelected, setWeaponSelected } = useWeaponSelectedState();
   const weapons = data.equipment_data.filter((x) => x.is_weapon);
-  const [fmOffset] = useLocalState(
-    context,
-    `${panelId}_fm_strike_select_offset`,
-    0
-  );
+  const [fmOffset] = useLocalState(`${panelId}_fm_strike_select_offset`, 0);
   const firemission_mapper = (x: number) => {
     if (x === 0) {
       return {
@@ -262,12 +250,12 @@ const leftButtonGenerator = (context, panelId: string) => {
   return [];
 };
 
-export const lazeMapper = (context, offset) => {
-  const { act, data } = useBackend<TargetContext>(context);
-  const { setSelectedTarget } = useLazeTarget(context);
+export const lazeMapper = (offset) => {
+  const { act, data } = useBackend<TargetContext>();
+  const { setSelectedTarget } = useLazeTarget();
 
-  const { fmXOffsetValue } = useFiremissionXOffsetValue(context);
-  const { fmYOffsetValue } = useFiremissionYOffsetValue(context);
+  const { fmXOffsetValue } = useFiremissionXOffsetValue();
+  const { fmYOffsetValue } = useFiremissionYOffsetValue();
 
   const target =
     data.targets_data.length > offset ? data.targets_data[offset] : undefined;
@@ -318,32 +306,28 @@ export const getLastTargetName = (data) => {
     : target?.target_name;
 };
 
-export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
+export const TargetAquisitionMfdPanel = (props: MfdProps) => {
   const { panelStateId } = props;
 
   const { act, data } = useBackend<
     EquipmentContext & FiremissionContext & TargetContext
-  >(context);
+  >();
 
-  const { setPanelState } = mfdState(context, panelStateId);
-  const { selectedTarget, setSelectedTarget } = useLazeTarget(context);
-  const { strikeMode } = useStrikeMode(context);
-  const { strikeDirection } = useStrikeDirection(context);
-  const { weaponSelected } = useWeaponSelectedState(context);
-  const { firemissionSelected } = useTargetFiremissionSelect(context);
-  const { targetOffset, setTargetOffset } = useTargetOffset(
-    context,
-    panelStateId
-  );
+  const { setPanelState } = mfdState(panelStateId);
+  const { selectedTarget, setSelectedTarget } = useLazeTarget();
+  const { strikeMode } = useStrikeMode();
+  const { strikeDirection } = useStrikeDirection();
+  const { weaponSelected } = useWeaponSelectedState();
+  const { firemissionSelected } = useTargetFiremissionSelect();
+  const { targetOffset, setTargetOffset } = useTargetOffset(panelStateId);
   const [fmOffset, setFmOffset] = useLocalState(
-    context,
     `${props.panelStateId}_fm_strike_select_offset`,
     0
   );
-  const { leftButtonMode } = useTargetSubmenu(context, props.panelStateId);
+  const { leftButtonMode } = useTargetSubmenu(props.panelStateId);
 
-  const { fmXOffsetValue } = useFiremissionXOffsetValue(context);
-  const { fmYOffsetValue } = useFiremissionYOffsetValue(context);
+  const { fmXOffsetValue } = useFiremissionXOffsetValue();
+  const { fmYOffsetValue } = useFiremissionYOffsetValue();
 
   const strikeConfigLabel =
     strikeMode === 'weapon'
@@ -363,7 +347,7 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
       (strikeMode === 'firemission' && firemissionSelected !== undefined));
 
   const targets = range(targetOffset, targetOffset + 5).map((x) =>
-    lazeMapper(context, x)
+    lazeMapper(x)
   );
 
   if (
@@ -458,7 +442,7 @@ export const TargetAquisitionMfdPanel = (props: MfdProps, context) => {
           },
         },
       ]}
-      leftButtons={leftButtonGenerator(context, panelStateId)}
+      leftButtons={leftButtonGenerator(panelStateId)}
       rightButtons={targets}>
       <Box className="NavigationMenu">
         <Stack>

@@ -204,8 +204,6 @@
 					alone = 0
 					break
 			if(alone && ian && puppies < 4)
-				if(near_camera(src) || near_camera(ian))
-					return
 				new /mob/living/simple_animal/corgi/puppy(loc)
 
 

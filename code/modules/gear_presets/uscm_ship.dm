@@ -52,18 +52,18 @@
 	minimap_icon = "cl"
 	minimap_background = MINIMAP_ICON_BACKGROUND_CIVILIAN
 
-	utility_under = list(/obj/item/clothing/under/liaison_suit/outing)
+	utility_under = list(/obj/item/clothing/under/liaison_suit/black)
 	utility_hat = list()
 	utility_gloves = list()
 	utility_shoes = list(/obj/item/clothing/shoes/laceup)
-	utility_extra = list(/obj/item/clothing/under/liaison_suit/suspenders)
+	utility_extra = list(/obj/item/clothing/under/liaison_suit/blue)
 
-	service_under = list(/obj/item/clothing/under/liaison_suit)
+	service_under = list(/obj/item/clothing/under/liaison_suit/field)
 	service_over = list()
 	service_hat = list()
 	service_shoes = list(/obj/item/clothing/shoes/laceup)
 
-	dress_under = list(/obj/item/clothing/under/liaison_suit/formal)
+	dress_under = list(/obj/item/clothing/under/liaison_suit/corporate_formal)
 	dress_over = list()
 	dress_hat = list()
 	dress_gloves = list(/obj/item/clothing/gloves/marine/dress)
@@ -80,7 +80,7 @@
 		//back_item = /obj/item/storage/backpack
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcl(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/ivy(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 
@@ -624,7 +624,7 @@
 	minimum_age = 27
 	skills = /datum/skills/auxiliary_officer
 
-	minimap_icon = list("cic" = MINIMAP_ICON_COLOR_SILVER)
+	minimap_icon = list("cic" = COLOR_SILVER)
 	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
 
 /datum/equipment_preset/uscm_ship/auxiliary_officer/New()

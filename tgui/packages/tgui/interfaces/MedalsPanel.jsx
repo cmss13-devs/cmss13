@@ -1,29 +1,25 @@
 import { useBackend, useLocalState } from '../backend';
-import { Tabs, Section, Button, Fragment, Stack, Flex } from '../components';
+import { Tabs, Section, Button, Stack, Flex } from '../components';
 import { Window } from '../layouts';
 
 const PAGES = [
   {
     title: 'USCM',
-    component: () => MedalsPage,
     color: 'blue',
     icon: 'medal',
   },
   {
     title: 'Hive',
-    component: () => MedalsPage,
     color: 'purple',
     icon: 'star',
   },
 ];
 
-export const MedalsPanel = (props, context) => {
-  const { data } = useBackend(context);
+export const MedalsPanel = (props) => {
+  const { data } = useBackend();
   const { uscm_awards, uscm_award_ckeys, xeno_awards, xeno_award_ckeys } = data;
 
-  const [pageIndex, setPageIndex] = useLocalState(context, 'pageIndex', 1);
-
-  const PageComponent = PAGES[pageIndex].component();
+  const [pageIndex, setPageIndex] = useLocalState('pageIndex', 1);
 
   return (
     <Window
@@ -54,7 +50,7 @@ export const MedalsPanel = (props, context) => {
             </Tabs>
           </Stack.Item>
           <Stack.Item mx={0}>
-            <PageComponent
+            <MedalsPage
               awards={pageIndex === 0 ? uscm_awards : xeno_awards}
               ckeys={pageIndex === 0 ? uscm_award_ckeys : xeno_award_ckeys}
               isMarineMedal={pageIndex === 0}
@@ -69,15 +65,15 @@ export const MedalsPanel = (props, context) => {
   );
 };
 
-const MedalsPage = (props, context) => {
-  const { act } = useBackend(context);
+const MedalsPage = (props) => {
+  const { act } = useBackend();
   const { awards, ckeys, isMarineMedal } = props;
 
   return (
     <Section
       title={isMarineMedal ? 'Medal Awards' : 'Royal Jellies'}
       buttons={
-        <Fragment>
+        <>
           <Button
             icon="clock"
             content="Refresh"
@@ -93,9 +89,9 @@ const MedalsPage = (props, context) => {
             ml={0.5}
             onClick={() => act(isMarineMedal ? 'add_medal' : 'add_jelly')}
           />
-        </Fragment>
+        </>
       }>
-      <Fragment>
+      <>
         {Object.keys(awards).map((recipient_name, recipient_index) => (
           <Section
             title={recipient_name + ckeys[recipient_name]}
@@ -132,7 +128,7 @@ const MedalsPage = (props, context) => {
             ))}
           </Section>
         ))}
-      </Fragment>
+      </>
     </Section>
   );
 };

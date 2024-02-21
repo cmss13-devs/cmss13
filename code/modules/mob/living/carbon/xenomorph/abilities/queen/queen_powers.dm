@@ -1,6 +1,7 @@
 // devolve a xeno - lots of old, vaguely shitty code here
-/datum/action/xeno_action/onclick/deevolve/use_ability(atom/Atom)
+/datum/action/xeno_action/onclick/manage_hive/proc/de_evolve_other()
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
+	var/plasma_cost_devolve = 500
 	if(!user_xeno.check_state())
 		return
 	if(!user_xeno.observed_xeno)
@@ -8,7 +9,7 @@
 		return
 
 	var/mob/living/carbon/xenomorph/target_xeno = user_xeno.observed_xeno
-	if(!user_xeno.check_plasma(plasma_cost))
+	if(!user_xeno.check_plasma(plasma_cost_devolve))
 		return
 
 	if(target_xeno.hivenumber != user_xeno.hivenumber)
@@ -130,7 +131,7 @@
 	SSround_recording.recorder.stop_tracking(target_xeno)
 	SSround_recording.recorder.track_player(new_xeno)
 	qdel(target_xeno)
-	return ..()
+	return
 
 /datum/action/xeno_action/onclick/remove_eggsac/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/queen/X = owner
@@ -292,12 +293,15 @@
 	to_chat(X, SPAN_XENONOTICE("You channel your plasma to heal your sisters' wounds around this area."))
 	return ..()
 
-/datum/action/xeno_action/onclick/give_evo_points/use_ability(atom/Atom)
+/datum/action/xeno_action/onclick/manage_hive/proc/give_evo_points()
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
+	var/plasma_cost_givepoints = 100
+
+
 	if(!user_xeno.check_state())
 		return
 
-	if(!user_xeno.check_plasma(plasma_cost))
+	if(!user_xeno.check_plasma(plasma_cost_givepoints))
 		return
 
 	if(world.time < SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK)
@@ -308,7 +312,8 @@
 
 	if(!choice)
 		return
-
+	var/evo_points_per_larva = 250
+	var/required_larva = 1
 	var/mob/living/carbon/xenomorph/target_xeno
 
 	for(var/mob/living/carbon/xenomorph/xeno in user_xeno.hive.totalXenos)
@@ -351,14 +356,45 @@
 		target_xeno.evolution_stored += evo_points_per_larva
 
 	user_xeno.hive.stored_larva--
-	return ..()
+	return
 
-/datum/action/xeno_action/onclick/banish/use_ability(atom/Atom)
+
+
+/datum/action/xeno_action/onclick/manage_hive/proc/give_jelly_reward()
+	var/mob/living/carbon/xenomorph/queen/xeno = owner
+	var/plasma_cost_jelly = 500
+	if(!xeno.check_state())
+		return
+	if(!xeno.check_plasma(plasma_cost_jelly))
+		return
+	if(give_jelly_award(xeno.hive))
+		xeno.use_plasma(plasma_cost_jelly)
+		return
+/datum/action/xeno_action/onclick/manage_hive/use_ability(atom/Atom)
+	var/mob/living/carbon/xenomorph/queen/queenbanish = owner
+	plasma_cost = 0
+
+	var/choice = tgui_input_list(queenbanish, "Manage The Hive", "Hive Management",  list("Banish (500)", "Re-Admit (100)", "De-evolve (500)", "Reward Jelly (500)", "Exchange larva for evolution (100)",), theme="hive_status")
+	switch(choice)
+		if("Banish (500)")
+			banish()
+		if("Re-Admit (100)")
+			readmit()
+		if("De-evolve (500)")
+			de_evolve_other()
+		if("Reward Jelly (500)")
+			give_jelly_reward(queenbanish.hive)
+		if("Exchange larva for evolution (100)")
+			give_evo_points()
+
+
+/datum/action/xeno_action/onclick/manage_hive/proc/banish()
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
+	var/plasma_cost_banish = 500
 	if(!user_xeno.check_state())
 		return
 
-	if(!user_xeno.check_plasma(plasma_cost))
+	if(!user_xeno.check_plasma(plasma_cost_banish))
 		return
 
 	var/choice = tgui_input_list(user_xeno, "Choose a xenomorph to banish:", "Banish", user_xeno.hive.totalXenos, theme="hive_status")
@@ -399,7 +435,7 @@
 		to_chat(user_xeno, SPAN_XENOWARNING("You must provide a reason for banishing [target_xeno]."))
 		return
 
-	if(!user_xeno.check_state() || !check_and_use_plasma_owner(plasma_cost) || target_xeno.health < 0)
+	if(!user_xeno.check_state() || !check_and_use_plasma_owner(plasma_cost_banish) || target_xeno.health < 0)
 		return
 
 	// Let everyone know they were banished
@@ -413,20 +449,21 @@
 	addtimer(CALLBACK(src, PROC_REF(remove_banish), user_xeno.hive, target_xeno.name), 30 MINUTES)
 
 	message_admins("[key_name_admin(user_xeno)] has banished [key_name_admin(target_xeno)]. Reason: [reason]")
-	return ..()
+	return
 
-/datum/action/xeno_action/onclick/banish/proc/remove_banish(datum/hive_status/hive, name)
+/datum/action/xeno_action/proc/remove_banish(datum/hive_status/hive, name)
 	hive.banished_ckeys.Remove(name)
 
 
 // Readmission = un-banish
 
-/datum/action/xeno_action/onclick/readmit/use_ability(atom/Atom)
+/datum/action/xeno_action/onclick/manage_hive/proc/readmit()
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
+	var/plasma_cost_readmit = 100
 	if(!user_xeno.check_state())
 		return
 
-	if(!user_xeno.check_plasma(plasma_cost))
+	if(!user_xeno.check_plasma(plasma_cost_readmit))
 		return
 
 	var/choice = tgui_input_list(user_xeno, "Choose a xenomorph to readmit:", "Re-admit", user_xeno.hive.banished_ckeys, theme="hive_status")
@@ -470,7 +507,7 @@
 		target_xeno.lock_evolve = FALSE
 
 	user_xeno.hive.banished_ckeys.Remove(banished_name)
-	return ..()
+	return
 
 /datum/action/xeno_action/onclick/eye
 	name = "Enter Eye Form"

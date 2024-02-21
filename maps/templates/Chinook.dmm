@@ -41,6 +41,11 @@
 	icon_state = "rasputin15"
 	},
 /area/adminlevel/chinook/shuttle/unpowered)
+"ak" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/storage/fancy/cigar,
+/turf/open/floor/almayer,
+/area/adminlevel/chinook/offices)
 "al" = (
 /turf/open/floor/almayer_hull,
 /area/space)
@@ -658,15 +663,6 @@
 	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/chinook/offices)
-"cr" = (
-/obj/structure/surface/table/reinforced/black,
-/obj/item/book/manual/robotics_cyborgs{
-	pixel_x = -8;
-	pixel_y = 7
-	},
-/obj/item/storage/fancy/cigar,
-/turf/open/floor/almayer,
-/area/adminlevel/chinook/offices)
 "cs" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -754,6 +750,16 @@
 	icon_state = "wood"
 	},
 /area/adminlevel/chinook/offices)
+"cI" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/item/fuel_cell,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "plating_striped"
+	},
+/area/adminlevel/chinook/engineering)
 "cL" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1;
@@ -1252,19 +1258,6 @@
 	icon_state = "blue"
 	},
 /area/adminlevel/chinook/offices)
-"eA" = (
-/obj/structure/machinery/power/fusion_engine,
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
-/area/adminlevel/chinook/engineering)
 "eB" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
@@ -1301,16 +1294,6 @@
 	icon_state = "sterile_green_corner"
 	},
 /area/adminlevel/chinook/medical)
-"eG" = (
-/obj/structure/machinery/power/fusion_engine,
-/obj/structure/platform{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
-/area/adminlevel/chinook/engineering)
 "eH" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -1923,6 +1906,19 @@
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook)
+"gD" = (
+/obj/structure/machinery/power/reactor,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/platform{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/adminlevel/chinook/engineering)
 "gH" = (
 /obj/structure/sign/safety/press_area_ag{
 	pixel_y = 24
@@ -2030,6 +2026,16 @@
 	icon_state = "orange"
 	},
 /area/adminlevel/chinook/offices)
+"ha" = (
+/obj/structure/machinery/power/reactor,
+/obj/structure/platform{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/adminlevel/chinook/engineering)
 "hc" = (
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin6"
@@ -2411,6 +2417,16 @@
 	icon_state = "plate"
 	},
 /area/adminlevel/chinook/sec)
+"it" = (
+/obj/structure/machinery/power/reactor,
+/obj/structure/platform{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/adminlevel/chinook/engineering)
 "iu" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
@@ -2442,6 +2458,14 @@
 /obj/structure/closet/secure_closet/engineering_electrical,
 /turf/open/floor/almayer{
 	icon_state = "plate"
+	},
+/area/adminlevel/chinook/engineering)
+"iB" = (
+/obj/structure/machinery/power/reactor,
+/obj/structure/platform,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
 	},
 /area/adminlevel/chinook/engineering)
 "iC" = (
@@ -2769,15 +2793,6 @@
 	icon_state = "plate"
 	},
 /area/adminlevel/chinook/event)
-"jK" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/device/multitool,
-/obj/item/fuelCell{
-	pixel_x = 5;
-	pixel_y = 7
-	},
-/turf/open/floor/almayer,
-/area/adminlevel/chinook/engineering)
 "jN" = (
 /obj/structure/platform{
 	dir = 4
@@ -3522,6 +3537,15 @@
 	icon_state = "plating_striped"
 	},
 /area/adminlevel/chinook)
+"mx" = (
+/obj/structure/machinery/power/reactor,
+/obj/structure/machinery/light,
+/obj/structure/platform,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/adminlevel/chinook/engineering)
 "mz" = (
 /obj/structure/bed/chair/comfy{
 	dir = 4
@@ -4592,19 +4616,6 @@
 	},
 /turf/open/floor/kutjevo,
 /area/adminlevel/chinook/event)
-"pT" = (
-/obj/structure/machinery/power/fusion_engine,
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/structure/platform{
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
-/area/adminlevel/chinook/engineering)
 "pU" = (
 /obj/structure/platform{
 	dir = 1
@@ -5242,6 +5253,16 @@
 	icon_state = "plating_striped"
 	},
 /area/adminlevel/chinook)
+"sq" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/effect/spawner/random/tool,
+/obj/item/fuel_cell{
+	pixel_y = 10
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/chinook/engineering)
 "sr" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -5643,6 +5664,24 @@
 	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/chinook/sec)
+"tI" = (
+/obj/structure/machinery/power/reactor,
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/structure/sign/safety/high_voltage{
+	pixel_x = -15;
+	pixel_y = 5
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = -15;
+	pixel_y = -7
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/adminlevel/chinook/engineering)
 "tJ" = (
 /obj/structure/closet/boxinggloves,
 /turf/open/floor/almayer{
@@ -6565,6 +6604,15 @@
 	name = "\improper carpet"
 	},
 /area/adminlevel/chinook)
+"wC" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/device/multitool,
+/obj/item/fuel_cell{
+	pixel_x = 5;
+	pixel_y = 7
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/chinook/engineering)
 "wD" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/kitchen/knife/butcher{
@@ -7273,14 +7321,6 @@
 "zW" = (
 /turf/closed/wall/almayer/reinforced,
 /area/adminlevel/chinook/engineering)
-"zX" = (
-/obj/structure/machinery/power/fusion_engine,
-/obj/structure/platform,
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
-/area/adminlevel/chinook/engineering)
 "zY" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/light,
@@ -7536,16 +7576,6 @@
 	icon_state = "stan9"
 	},
 /area/adminlevel/chinook/shuttle/unpowered)
-"AV" = (
-/obj/structure/machinery/power/fusion_engine,
-/obj/structure/platform{
-	dir = 8
-	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
-/area/adminlevel/chinook/engineering)
 "AX" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
@@ -7837,16 +7867,6 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "orange"
-	},
-/area/adminlevel/chinook/engineering)
-"BZ" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/item/fuelCell,
-/turf/open/floor/almayer{
-	dir = 8;
-	icon_state = "plating_striped"
 	},
 /area/adminlevel/chinook/engineering)
 "Cb" = (
@@ -8212,6 +8232,13 @@
 	name = "\improper carpet"
 	},
 /area/adminlevel/chinook/offices)
+"DF" = (
+/obj/structure/machinery/power/reactor,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/adminlevel/chinook/engineering)
 "DH" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1
@@ -8227,6 +8254,13 @@
 "DJ" = (
 /turf/closed/shuttle/ert,
 /area/adminlevel/chinook/shuttle/unpowered)
+"DK" = (
+/obj/structure/surface/table/almayer,
+/obj/item/fuel_cell,
+/turf/open/floor/almayer{
+	icon_state = "orange"
+	},
+/area/adminlevel/chinook/engineering)
 "DL" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/tool,
@@ -8377,6 +8411,19 @@
 	icon_state = "wood"
 	},
 /area/adminlevel/chinook/offices)
+"Eu" = (
+/obj/structure/machinery/power/reactor,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/platform{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/adminlevel/chinook/engineering)
 "Ev" = (
 /obj/structure/barricade/handrail,
 /turf/open/floor/almayer{
@@ -9091,13 +9138,6 @@
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
-	},
-/area/adminlevel/chinook/engineering)
-"Hn" = (
-/obj/structure/machinery/power/fusion_engine,
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
 	},
 /area/adminlevel/chinook/engineering)
 "Ho" = (
@@ -11622,13 +11662,6 @@
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/cargo)
-"Ri" = (
-/obj/structure/surface/table/almayer,
-/obj/item/fuelCell,
-/turf/open/floor/almayer{
-	icon_state = "orange"
-	},
-/area/adminlevel/chinook/engineering)
 "Rj" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Bathroom"
@@ -11681,24 +11714,6 @@
 	icon_state = "plating"
 	},
 /area/adminlevel/chinook/sec)
-"Rt" = (
-/obj/structure/machinery/power/fusion_engine,
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/sign/safety/high_voltage{
-	pixel_x = -15;
-	pixel_y = 5
-	},
-/obj/structure/sign/safety/hazard{
-	pixel_x = -15;
-	pixel_y = -7
-	},
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
-/area/adminlevel/chinook/engineering)
 "Rw" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
@@ -11734,15 +11749,6 @@
 	icon_state = "red"
 	},
 /area/adminlevel/chinook/sec)
-"RD" = (
-/obj/structure/machinery/power/fusion_engine,
-/obj/structure/machinery/light,
-/obj/structure/platform,
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
-/area/adminlevel/chinook/engineering)
 "RH" = (
 /obj/structure/toilet{
 	dir = 8
@@ -13576,16 +13582,6 @@
 	name = "\improper carpet"
 	},
 /area/adminlevel/chinook)
-"Yi" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/effect/spawner/random/tool,
-/obj/item/fuelCell{
-	pixel_y = 10
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/adminlevel/chinook/engineering)
 "Yj" = (
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/cryo)
@@ -18395,7 +18391,7 @@ aD
 ba
 bH
 Qs
-cr
+ak
 db
 dy
 jF
@@ -19965,7 +19961,7 @@ Tt
 UD
 WK
 UK
-Yi
+sq
 bz
 zC
 GS
@@ -20351,10 +20347,10 @@ bz
 Ki
 ot
 Kl
-AV
-eA
-Rt
-AV
+ha
+Eu
+tI
+ha
 Fv
 OZ
 IP
@@ -20481,7 +20477,7 @@ PO
 no
 no
 no
-BZ
+cI
 UE
 OZ
 jk
@@ -20494,7 +20490,7 @@ vT
 je
 pm
 Ig
-Ri
+DK
 XH
 al
 al
@@ -20610,7 +20606,7 @@ mA
 mA
 mA
 iP
-zX
+iB
 UK
 Ig
 RM
@@ -20732,12 +20728,12 @@ ZB
 Il
 Rl
 ot
-Hn
-Hn
-Hn
-Hn
+DF
+DF
+DF
+DF
 iP
-zX
+iB
 UK
 Lm
 RM
@@ -20859,12 +20855,12 @@ Nv
 Il
 PR
 ot
-Hn
-Hn
-Hn
-Hn
+DF
+DF
+DF
+DF
 iP
-RD
+mx
 UK
 bJ
 RM
@@ -20991,7 +20987,7 @@ Hy
 tS
 lV
 iP
-zX
+iB
 UK
 Ig
 RM
@@ -21119,7 +21115,7 @@ mA
 mA
 UE
 OZ
-jK
+wC
 Ig
 RM
 UK
@@ -21240,10 +21236,10 @@ bz
 Ki
 ot
 JU
-eG
-pT
-eG
-eG
+it
+gD
+it
+it
 PO
 OZ
 cv

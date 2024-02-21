@@ -305,7 +305,7 @@
 	icon_state = "lifesupport"
 
 /obj/structure/sign/safety/maint
-	name = "maintenace semiotic"
+	name = "maintenance semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of maintenance access."
 	icon_state = "maint"
 

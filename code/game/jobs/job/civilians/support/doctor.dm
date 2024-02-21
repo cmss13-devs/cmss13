@@ -52,7 +52,7 @@
 	return positions
 
 AddTimelock(/datum/job/civilian/doctor, list(
-	JOB_NURSE = 3 HOURS
+	JOB_MEDIC_ROLES = 1 HOURS
 ))
 
 /obj/effect/landmark/start/doctor

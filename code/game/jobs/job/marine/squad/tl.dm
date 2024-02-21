@@ -5,15 +5,14 @@
 	allow_additional = 1
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/uscm/tl
-	supervisors = "your squad leader, and assigned CIC personnel"
-	entry_message_body = "You are the <a href='"+WIKI_PLACEHOLDER+"'>Team Leader.</a>Your task is to assist the squad leader in leading the squad as well as utilize ordnance such as orbital bombardments, CAS, and mortar as well as coordinating resupply with Requisitions and CIC. If the squad leader dies, you are expected to lead in their place."
+	entry_message_body = "You are the <a href='"+WIKI_PLACEHOLDER+"'>Team Leader.</a>Your task is to assist the squad leader in leading the squad as well as utilize ordnance such as orbital bombardments, CAS, and mortar as well as coordinating resupply with Requisitions and CIC. If the squad leader is incapacitated or removed from their position, you are expected to lead in their place. You may also be expected to lead a fireteam of your squad, while your SL is in their place. You must obey the orders of your superiors commanding the operation. Failure to do so may result in job bans or other sanctions."
 
 /datum/job/marine/tl/generate_entry_conditions(mob/living/carbon/human/spawning_human)
 	. = ..()
 	spawning_human.important_radio_channels += JTAC_FREQ
 
 AddTimelock(/datum/job/marine/tl, list(
-	JOB_SQUAD_ROLES = 9 HOURS
+	JOB_SQUAD_ROLES = 8 HOURS
 ))
 
 /obj/effect/landmark/start/marine/tl

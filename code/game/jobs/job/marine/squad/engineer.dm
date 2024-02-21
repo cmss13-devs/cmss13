@@ -3,7 +3,6 @@
 	total_positions = 12
 	spawn_positions = 12
 	allow_additional = 1
-	supervisors = "your squad leader, and assigned CIC personnel"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/uscm/engineer
 	entry_message_body = "You have the <a href='"+WIKI_PLACEHOLDER+"'>equipment and skill</a> to build fortifications, reroute power lines, and bunker down. Your squaddies will look to you when it comes to construction in the field of battle."
@@ -34,7 +33,7 @@
 	gear_preset = /datum/equipment_preset/wo/marine/engineer
 
 AddTimelock(/datum/job/marine/engineer, list(
-	JOB_SQUAD_ROLES = 3 HOURS
+	JOB_SQUAD_ROLES = 1 HOURS
 ))
 
 /obj/effect/landmark/start/marine/engineer

@@ -5,7 +5,7 @@
 	supervisors = "the acting commander"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/uscm/leader
-	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>You are responsible for the men and women of your squad.</a> Make sure they are on task, working together, and communicating. You are also in charge of communicating with command and letting them know about the situation first hand. Keep out of harm's way."
+	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>You are responsible for the men and women of your squad.</a> Make sure they are on task, working together, and communicating. You are also in charge of communicating with command and letting them know about the situation first hand, and acting as a liaison for your squad. Keep out of harm's way. You must obey the orders of your superiors commanding the operation. Failure to do so may result in job bans or other sanctions."
 
 /datum/job/marine/leader/whiskey
 	title = JOB_WO_SQUAD_LEADER
@@ -13,7 +13,7 @@
 	gear_preset = /datum/equipment_preset/wo/marine/sl
 
 AddTimelock(/datum/job/marine/leader, list(
-	JOB_SQUAD_ROLES = 12 HOURS
+	JOB_SQUAD_ROLES = 10 HOURS
 ))
 
 /obj/effect/landmark/start/marine/leader

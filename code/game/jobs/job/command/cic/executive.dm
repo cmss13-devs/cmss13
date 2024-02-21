@@ -3,7 +3,7 @@
 	title = JOB_XO
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADMIN_NOTIFY
 	gear_preset = /datum/equipment_preset/uscm_ship/xo
-	supervisors = "the commanding officer and USCM High Command"
+	supervisors = "the Commanding Officer, USCM high command"
 
 /datum/job/command/executive/generate_entry_message(mob/living/carbon/human/H)
 	entry_message_body = "<a href='[generate_wiki_link()]'>You are second in command aboard the [MAIN_SHIP_NAME],</a> and behind the Commanding Officer in the chain of command. Where applicable, you must abide by the <a href='[CONFIG_GET(string/wikiarticleurl)][URL_WIKI_CO_RULES]'>Commanding Officer Code of Conduct</a>. You may need to fill in for other duties if areas are understaffed, and you are given access to do so. If there is no Commanding Officer, you are in charge of overseeing department heads among the [MAIN_SHIP_NAME], and overseeing the operation. Delegation will be your best friend. Make the USCM proud!"
@@ -19,8 +19,7 @@
 	GLOB.marine_leaders -= JOB_XO
 
 AddTimelock(/datum/job/command/executive, list(
-	JOB_COMMAND_ROLES = 12 HOURS,
-	JOB_DEPARTMENTHEADS_ROLES = 6 HOURS
+	JOB_COMMAND_ROLES = 5 HOURS,
 ))
 
 /obj/effect/landmark/start/executive

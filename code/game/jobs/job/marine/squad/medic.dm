@@ -3,7 +3,6 @@
 	total_positions = 16
 	spawn_positions = 16
 	allow_additional = 1
-	supervisors = "your squad leader, and assigned CIC personnel"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/uscm/medic
 	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>You tend the wounds of your squad mates</a> and make sure they are healthy and active. You may not be a fully-fledged doctor, but you stand between life and death when it matters."
@@ -34,8 +33,8 @@
 	gear_preset = /datum/equipment_preset/wo/marine/medic
 
 AddTimelock(/datum/job/marine/medic, list(
-	JOB_MEDIC_ROLES = 3 HOURS,
-	JOB_SQUAD_ROLES = 3 HOURS
+	JOB_MEDIC_ROLES = 1 HOURS,
+	JOB_SQUAD_ROLES = 1 HOURS
 ))
 
 /obj/effect/landmark/start/marine/medic

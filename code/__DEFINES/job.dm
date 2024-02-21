@@ -55,12 +55,11 @@ GLOBAL_LIST_INIT(job_squad_roles, JOB_SQUAD_ROLES_LIST)
 #define JOB_CMO "Chief Medical Officer"
 #define JOB_DOCTOR "Doctor"
 #define JOB_SURGEON "Surgeon"
+
 #define JOB_NURSE "Nurse"
 #define JOB_RESEARCHER "Researcher"
 #define JOB_MEDIC_ROLES  /datum/timelock/medic
 #define JOB_MEDIC_ROLES_LIST list(JOB_SQUAD_MEDIC, JOB_CMO, JOB_DOCTOR, JOB_NURSE, JOB_RESEARCHER, JOB_SURGEON)
-#define JOB_MEDBAY_ROLES  /datum/timelock/medbay
-#define JOB_MEDBAY_ROLES_LIST list(JOB_CMO, JOB_DOCTOR, JOB_NURSE, JOB_SURGEON)
 
 #define JOB_CORPORATE_LIAISON "Corporate Liaison"
 #define JOB_COMBAT_REPORTER "Combat Correspondent"
@@ -73,10 +72,6 @@ GLOBAL_LIST_INIT(job_squad_roles, JOB_SQUAD_ROLES_LIST)
 #define JOB_SO "Staff Officer"
 #define JOB_COMMAND_ROLES /datum/timelock/command
 #define JOB_COMMAND_ROLES_LIST   list(JOB_CO, JOB_XO, JOB_SO)
-#define JOB_DEPARTMENTHEADS_ROLES /datum/timelock/departmentheads
-#define JOB_DEPARTMENTHEADS_ROLES_LIST   list(JOB_CO, JOB_XO, JOB_AUXILIARY_OFFICER, JOB_CHIEF_ENGINEER, JOB_CHIEF_POLICE, JOB_CHIEF_REQUISITION, JOB_CMO)
-#define JOB_SQUADLEADERSHIP_ROLES /datum/timelock/squadleadership
-#define JOB_SQUADLEADERSHIP_ROLES_LIST   list(JOB_SQUAD_LEADER, JOB_SQUAD_TEAM_LEADER)
 GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
 #define JOB_AUXILIARY_OFFICER "Auxiliary Support Officer"

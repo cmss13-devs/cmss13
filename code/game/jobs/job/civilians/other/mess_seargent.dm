@@ -30,7 +30,3 @@
 	name = JOB_MESS_SERGEANT
 	icon_state = "chef_spawn"
 	job = /datum/job/civilian/chef
-
-AddTimelock(/datum/job/civilian/chef, list(
-	JOB_HUMAN_ROLES = 6 HOURS,
-))

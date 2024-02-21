@@ -34,9 +34,3 @@
 	. = ..()
 	src.roles = JOB_DROPSHIP_ROLES_LIST
 
-/datum/timelock/departmentheads
-	name = "Department Head"
-
-/datum/timelock/departmentheads/New(name, time_required, list/roles)
-	. = ..()
-	src.roles = JOB_DEPARTMENTHEADS_ROLES_LIST

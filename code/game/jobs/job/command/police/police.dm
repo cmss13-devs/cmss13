@@ -6,7 +6,6 @@
 	allow_additional = 1
 	scaled = 1
 	selection_class = "job_mp"
-	supervisors = "the Chief MP"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = /datum/equipment_preset/uscm_ship/uscm_police/mp
 	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>You</a> are held by a higher standard and are required to obey not only the server rules but the <a href='"+LAW_PLACEHOLDER+"'>Marine Law</a>. Failure to do so may result in a job ban or server ban. Your primary job is to maintain peace and stability aboard the ship. Marines can get rowdy after a few weeks of cryosleep! In addition, you are tasked with the security of high-ranking personnel, including the command staff. Keep them safe! You are 13th in line for Acting Commander, behind the MP Warden."
@@ -27,7 +26,7 @@
 	return positions
 
 AddTimelock(/datum/job/command/police, list(
-	JOB_SQUAD_ROLES = 12 HOURS
+	JOB_SQUAD_ROLES = 10 HOURS
 ))
 
 /obj/effect/landmark/start/police

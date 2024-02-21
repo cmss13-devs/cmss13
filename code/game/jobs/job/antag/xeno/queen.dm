@@ -1,7 +1,7 @@
 /datum/job/antag/xenos/queen
 	title = JOB_XENOMORPH_QUEEN
 	role_ban_alternative = "Queen"
-	supervisors = "Queen Mother"
+	supervisors = "Your Queen Mother"
 	selection_class = "job_xeno_queen"
 	total_positions = 1
 	spawn_positions = 1
@@ -15,11 +15,12 @@
 /datum/job/antag/xenos/queen/announce_entry_message(mob/new_queen, account, whitelist_status)
 	to_chat(new_queen, "<B>You are now a xenomorph queen!</B>")
 	to_chat(new_queen, "<B>Your job is to spread and command YOUR hive.</B>")
-	to_chat(new_queen, "<B>You should start by building a hive core, and growing your ovipositor in a safe location. If you have no children, you may want to seek viable hosts to infect prior to growing your ovipositor.</B>")
+	to_chat(new_queen, "<B>You should start by building a hive core, and growing your ovipositor in a safe location.</B>")
+	to_chat(new_queen, "<B>If you have no children, you may want to seek viable hosts to infect prior to growing your ovipositor.</B>")
 	to_chat(new_queen, "Talk in Hivemind using <strong>;</strong> (e.g. ';Hello my children!')")
 
 AddTimelock(/datum/job/antag/xenos/queen, list(
-	JOB_XENO_ROLES = 21 HOURS,
-	JOB_DRONE_ROLES = 9 HOURS,
-	JOB_T3_ROLES = 6 HOURS,
+	JOB_XENO_ROLES = 10 HOURS,
+	JOB_DRONE_ROLES = 5 HOURS,
+	JOB_T3_ROLES = 3 HOURS,
 ))

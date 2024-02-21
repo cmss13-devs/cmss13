@@ -4,10 +4,9 @@
 	spawn_positions = 4
 	allow_additional = 1
 	scaled = 1
-	supervisors = "your squad leader, and assigned CIC personnel"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/uscm/sg
-	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>You are the smartgunner.</a> Your task is to provide heavy weapons support."
+	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>You are the smartgunner.</a> Your task is to provide heavy weapons support with your IFF-compliant smartgun. You must obey the orders of your superiors commanding the operation. Failure to do so may result in job bans or other sanctions."
 
 /datum/job/marine/smartgunner/set_spawn_positions(count)
 	spawn_positions = sg_slot_formula(count)
@@ -30,7 +29,7 @@
 	gear_preset = /datum/equipment_preset/wo/marine/sg
 
 AddTimelock(/datum/job/marine/smartgunner, list(
-	JOB_SQUAD_ROLES = 6 HOURS
+	JOB_SQUAD_ROLES = 5 HOURS
 ))
 
 /obj/effect/landmark/start/marine/smartgunner

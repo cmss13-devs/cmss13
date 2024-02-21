@@ -416,6 +416,25 @@
 	<BR>"}
 	show_browser(user, dat, name, "mob[name]")
 
+/**
+ * Called by [/mob/dead/observer/proc/do_observe] when a carbon mob is observed by a ghost with [/datum/preferences/var/auto_observe] enabled.
+ *
+ * Any HUD changes past this point are handled by [/mob/dead/observer/proc/observe_target_screen_add]
+ * and [/mob/dead/observer/proc/observe_target_screen_remove].
+ *
+ * Override on subtype mobs if they have any extra HUD elements/behaviour.
+ */
+/mob/living/carbon/proc/auto_observed(mob/dead/observer/observer)
+	SHOULD_CALL_PARENT(TRUE)
+
+	LAZYINITLIST(observers)
+	observers |= observer
+	hud_used.show_hud(hud_used.hud_version, observer)
+
+	for(var/datum/action/action as anything in actions)
+		// Add the action's button (not the action itself) to the observer's screen.
+		observer.client.add_to_screen(action.button)
+
 //generates realistic-ish pulse output based on preset levels
 /mob/living/carbon/proc/get_pulse(method) //method 0 is for hands, 1 is for machines, more accurate
 	var/temp = 0 //see setup.dm:694

@@ -1,4 +1,5 @@
 /**
+ * Adapted pinging library based on:
  * @file https://www.jsdelivr.com/package/npm/ping.js
  * @copyright 2021 Alfred Gutierrez
  * @license MIT
@@ -13,16 +14,29 @@ export class Ping {
   constructor(opt) {
     this.opt = opt || {};
     this.favicon = this.opt.favicon || '/favicon.ico';
-    this.timeout = this.opt.timeout || 5000;
+    this.timeout = this.opt.timeout || 10000;
     this.logError = this.opt.logError || false;
   }
+
   /**
-   * Pings source and triggers a callback when completed.
+   * Pings source after a delay and triggers a callback when completed.
    * @param source Source of the website or server, including protocol and port.
    * @param callback Callback function to trigger when completed. Returns error and ping value.
-   * @param timeout Optional number of milliseconds to wait before aborting.
+   * @param delay Optional number of milliseconds to wait before starting.
    */
-  ping(source, callback) {
+  ping(source, callback, delay = 500) {
+    let timer;
+    timer = setTimeout(() => {
+      this.pingNow(source, callback);
+    }, delay);
+  }
+
+  /**
+   * Pings source immediately and triggers a callback when completed.
+   * @param source Source of the website or server, including protocol and port.
+   * @param callback Callback function to trigger when completed. Returns error and ping value.
+   */
+  pingNow(source, callback) {
     let self = this;
     self.wasSuccess = false;
     self.img = new Image();
@@ -40,6 +54,7 @@ export class Ping {
 
     if (self.timeout) {
       timer = setTimeout(() => {
+        self.wasSuccess = false;
         pingCheck.call(self, undefined);
       }, self.timeout);
     }
@@ -47,7 +62,7 @@ export class Ping {
     /**
      * Times ping and triggers callback.
      */
-    const pingCheck = function () {
+    const pingCheck = function (e) {
       if (timer) {
         clearTimeout(timer);
       }
@@ -58,9 +73,9 @@ export class Ping {
         // Notice [this] instead of [self], since .call() was used with context
         if (!this.wasSuccess) {
           if (self.logError) {
-            console.error('error loading resource');
+            console.error('error loading resource: ' + e.error);
           }
-          return callback('error', pong);
+          return callback(e ? 'error' : 'timeout', pong);
         }
         return callback(null, pong);
       } else {

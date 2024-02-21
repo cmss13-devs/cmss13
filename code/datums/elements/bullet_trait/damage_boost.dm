@@ -61,8 +61,6 @@ GLOBAL_LIST_INIT(damage_boost_vehicles, typecacheof(/obj/vehicle/multitile))
 /datum/element/bullet_trait_damage_boost/proc/handle_bullet(obj/projectile/P, atom/A)
 	SIGNAL_HANDLER
 
-	to_chat(world,"STEP 0: Handling Damage Boost with bullet '[P]', target '[A]', and source '[src]'.")
-	to_chat(world,"STEP 1: Last Atom Hit was [P.last_atom_signaled]. Bonus Projectile Check is [P.bonus_projectile_check].")
 	src.atom_type = check_type(A)
 
 	switch(atom_type)

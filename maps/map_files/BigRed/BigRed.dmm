@@ -32586,6 +32586,12 @@
 	icon_state = "darkred2"
 	},
 /area/bigredv2/caves/eta/research)
+"kKH" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "lambda-cave-extratunnel"
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "kMk" = (
 /obj/effect/landmark/hunter_primary,
 /turf/open/floor{
@@ -81662,7 +81668,7 @@ aMV
 tQw
 aao
 aao
-aao
+kKH
 aao
 aao
 aao

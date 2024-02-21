@@ -1210,15 +1210,6 @@
 /obj/item/frame/table/reinforced,
 /turf/open/floor/plating,
 /area/lv624/lazarus/corporate_dome)
-"Yz" = (
-/obj/item/weapon/gun/rifle/m41a/corporate/no_lock{
-	desc = "A Weyland-Yutani creation, this M41A MK2 comes equipped in corporate white. Uses 10x24mm caseless ammunition. The IFF electronics appear to be non-functional.";
-	name = "battered M41A pulse rifle Mk2"
-	},
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/lv624/lazarus/corporate_dome)
 "YN" = (
 /turf/open/gm/dirt,
 /area/lv624/lazarus/landing_zones/lz2)
@@ -1674,7 +1665,7 @@ JL
 oq
 cA
 Xz
-Yz
+cA
 Ho
 FP
 sH

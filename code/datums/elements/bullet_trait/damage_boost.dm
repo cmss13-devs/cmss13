@@ -28,16 +28,9 @@ GLOBAL_LIST_INIT(damage_boost_vehicles, typecacheof(/obj/vehicle/multitile))
 	/// A typecache of objs or turfs that, upon being hit, boost the damage of the attached projectile
 	var/list/damage_boosted_atoms
 
-	//vars for dealing with interaction issues with the Penetrating trait
-	var/boosted_hits
-	var/last_damage_mult
-
 	//allows for nuance in Breaching-Resistant interactions
 	var/active_damage_mult
 	var/atom_type
-
-	//var for dealing with bonus projectiles
-	var/bonus_projectile_check
 
 /**
  * vars:
@@ -51,11 +44,8 @@ GLOBAL_LIST_INIT(damage_boost_vehicles, typecacheof(/obj/vehicle/multitile))
 
 	src.damage_mult = damage_mult
 	src.damage_boosted_atoms = damage_boosted_atoms
-	src.boosted_hits = 0
-	src.last_damage_mult = 1
 	src.active_damage_mult = 1
 	src.atom_type = 0
-	src.bonus_projectile_check = 0
 
 	RegisterSignal(target, list(
 		COMSIG_BULLET_PRE_HANDLE_OBJ,
@@ -71,7 +61,9 @@ GLOBAL_LIST_INIT(damage_boost_vehicles, typecacheof(/obj/vehicle/multitile))
 /datum/element/bullet_trait_damage_boost/proc/handle_bullet(obj/projectile/P, atom/A)
 	SIGNAL_HANDLER
 
-	atom_type = check_type(A)
+	to_chat(world,"STEP 0: Handling Damage Boost with bullet '[P]', target '[A]', and source '[src]'.")
+	to_chat(world,"STEP 1: Last Atom Hit was [P.last_atom_signaled]. Bonus Projectile Check is [P.bonus_projectile_check].")
+	src.atom_type = check_type(A)
 
 	switch(atom_type)
 		if("door")
@@ -87,12 +79,21 @@ GLOBAL_LIST_INIT(damage_boost_vehicles, typecacheof(/obj/vehicle/multitile))
 		else
 			active_damage_mult = damage_mult
 
-	if(boosted_hits > 0)
-		if(bonus_projectile_check == P.damage)
-			P.damage = P.damage / last_damage_mult
-		boosted_hits--
-	if(damage_boosted_atoms[A.type])
-		P.damage = round(P.damage * active_damage_mult)
-		last_damage_mult = active_damage_mult
-		boosted_hits++
-		bonus_projectile_check = P.damage
+	if(P.damage_boosted && (P.last_atom_signaled != A) && (!P.bonus_projectile_check))
+	//If this is after a boosted hit, the last atom that procced this isn't the same as the current target, and this isn't a bonus projectile sharing the same damage_boost
+		if(!P.last_damage_mult) //Make sure stored mult isn't 0
+			P.last_damage_mult = 1
+
+		P.damage = P.damage / P.last_damage_mult //Reduce the damage back to normal
+		P.damage_boosted-- //Mark that damage has been returned to normal.
+
+	if(damage_boosted_atoms[A.type]) //If hitting a valid atom for damage boost
+		P.damage = round(P.damage * active_damage_mult) //Modify Damage by multiplier
+
+		if (active_damage_mult)
+			P.last_damage_mult = active_damage_mult //Save multiplier for next check
+		else
+			P.last_damage_mult = 1
+
+		P.damage_boosted++ //Mark that a boosted hit occurred.
+		P.last_atom_signaled = A //Save the current triggering atom to the projectile

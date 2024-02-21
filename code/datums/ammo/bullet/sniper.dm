@@ -104,23 +104,29 @@
 
 	shrapnel_chance = 0 // This isn't leaving any shrapnel.
 	accuracy = HIT_ACCURACY_TIER_8
-	damage = 100
+	damage = 125
 	shell_speed = AMMO_SPEED_TIER_6
 
 /datum/ammo/bullet/sniper/anti_materiel/on_hit_mob(mob/M,obj/projectile/P)
 	if((P.projectile_flags & PROJECTILE_BULLSEYE) && M == P.original)
 		var/mob/living/L = M
-		var/size_damage_mod = 0.2
+		var/size_damage_mod = 0.8
 		if(isxeno(M))
 			var/mob/living/carbon/xenomorph/target = M
 			if(target.mob_size >= MOB_SIZE_XENO)
-				size_damage_mod += 0.4
+				size_damage_mod += 0.6
 			if(target.mob_size >= MOB_SIZE_BIG)
 				size_damage_mod += 0.6
 		L.apply_armoured_damage(damage*size_damage_mod, ARMOR_BULLET, BRUTE, null, penetration)
-		// 180% damage to all targets (225), 240% (300) against non-Runner xenos, and 300% against Big xenos (375). -Kaga
-		// keeping above for book keeping sake, damage isnt that high anymore, does way less, very similar to normal sniper
+		// Base 180% damage to all targets (225), 240% (300) against non-Runner xenos, and 300% against Big xenos (375). -Kaga
+		// This applies after pen reductions. After hitting 1 other thing, it deals 180/240/300 damage, or 135/180/225 after hitting a dense wall or big xeno.
 		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
+
+/datum/ammo/bullet/sniper/anti_materiel/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating/light)
+	))
 
 /datum/ammo/bullet/sniper/anti_materiel/vulture
 	damage = 400 // Fully intended to vaporize anything smaller than a mini cooper

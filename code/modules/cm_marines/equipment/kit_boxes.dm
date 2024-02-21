@@ -47,34 +47,35 @@
 
 /obj/item/storage/box/spec/sniper
 	name = "\improper Sniper equipment case"
-	desc = "A large case containing your very own long-range M42A sniper rifle, M45 ghillie armor and helmet, M42 scout sight, ammunition, spotter equipment, and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
+	desc = "A large case containing your very own choice of a long-range rifle, between the classic M42A and the experimental XM43E1. Additionally, the kit includes a set of M45 ghillie armor and helmet, a M42 scout sight, ammunition, spotter gear, and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
 	kit_overlay = "sniper"
 
 /obj/item/storage/box/spec/sniper/fill_preset_inventory()
 	new /obj/item/spec_kit/sniper_weapon_selector(src)
-	new /obj/item/weapon/gun/pistol/vp78(src)
-	new /obj/item/ammo_magazine/pistol/vp78(src)
-	new /obj/item/ammo_magazine/pistol/vp78(src)
-
-/obj/item/storage/box/spec/sniper/m42a/fill_preset_inventory()
 	new /obj/item/clothing/suit/storage/marine/ghillie(src)
 	new /obj/item/clothing/head/helmet/marine/ghillie(src)
 	new /obj/item/clothing/glasses/night/m42_night_goggles(src)
+	new /obj/item/weapon/gun/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/storage/backpack/marine/smock(src)
+	// spotter
+	new /obj/item/storage/box/kit/spotter(src)
+
+/obj/item/storage/box/spec/sniper/m42a/fill_preset_inventory()
+	desc = "A large case containing an M42A sniper rifle, and a variety of specialized ammunition for it."
 	new /obj/item/ammo_magazine/sniper(src)
 	new /obj/item/ammo_magazine/sniper/incendiary(src)
 	new /obj/item/ammo_magazine/sniper/incendiary(src)
 	new /obj/item/ammo_magazine/sniper/flak(src)
 	new /obj/item/ammo_magazine/sniper/flak(src)
-	new /obj/item/storage/backpack/marine/smock(src)
 	new /obj/item/weapon/gun/rifle/sniper/M42A(src)
-	// spotter
-	new /obj/item/storage/box/kit/spotter(src)
 
-/obj/item/storage/box/spec/sniper/antimaterial/fill_preset_inventory()
-	desc = "a large case containing a XM43E1 anti material rifle"
-	new /obj/item/clothing/suit/storage/marine/light/vest/xm43e1_vest(src)
-	new /obj/item/clothing/head/helmet/marine/xm43e1(src)
+/obj/item/storage/box/spec/sniper/anti_materiel/fill_preset_inventory()
+	desc = "A large case containing a XM43E1 anti-materiel rifle, and five additional magazines of 10x99mm."
 	new /obj/item/weapon/gun/rifle/sniper/XM43E1(src)
+	new /obj/item/ammo_magazine/sniper/anti_materiel(src)
+	new /obj/item/ammo_magazine/sniper/anti_materiel(src)
 	new /obj/item/ammo_magazine/sniper/anti_materiel(src)
 	new /obj/item/ammo_magazine/sniper/anti_materiel(src)
 	new /obj/item/ammo_magazine/sniper/anti_materiel(src)
@@ -291,13 +292,13 @@
 //Sniper weapon selector snowflake
 /obj/item/spec_kit/sniper_weapon_selector
 	name = "\improper Sniper weapon case"
-	desc = "A large case with the option of the M42A sniper rifle and the XM43E1 Anti-Material rifle."
+	desc = "A large case that might contain either a classic M42A sniper rifle, or the experimental XM43E1 anti-materiel rifle. Choose wisely."
 
 /obj/item/spec_kit/sniper_weapon_selector/can_use(mob/living/carbon/human/user)
 	return TRUE
 
 /obj/item/spec_kit/sniper_weapon_selector/select_and_spawn(mob/living/carbon/human/user)
-	var/sniper_selection = tgui_input_list(usr, "Select your weapon", "Weapon Selection", list("M42A sniper rifle", "XM43E1 Anti-Material rifle"))
+	var/sniper_selection = tgui_input_list(usr, "Select your weapon", "Weapon Selection", list("M42A sniper rifle", "XM43E1 anti-materiel rifle"))
 	if(!sniper_selection || QDELETED(src))
 		return FALSE
 	var/turf/T = get_turf(loc)
@@ -307,8 +308,8 @@
 			weapon_box = new /obj/item/storage/box/spec/sniper/m42a(T)
 			user.put_in_hands(weapon_box)
 			return TRUE
-		if("XM43E1 Anti-Material rifle")
-			weapon_box = new /obj/item/storage/box/spec/sniper/antimaterial(T)
+		if("XM43E1 anti-materiel rifle")
+			weapon_box = new /obj/item/storage/box/spec/sniper/anti_materiel(T)
 			user.put_in_hands(weapon_box)
 			return TRUE
 	return FALSE

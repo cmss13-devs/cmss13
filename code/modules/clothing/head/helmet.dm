@@ -876,13 +876,6 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inventory = BLOCKSHARPOBJ
 	clothing_traits = list(TRAIT_EAR_PROTECTION)
 	unacidable = TRUE
-/obj/item/clothing/head/helmet/marine/xm43e1
-	name = "\improper XM-3VL pattern marksman helmet"
-	icon_state = "xm43e1_helmet"
-	item_state = "xm43e1_helmet"
-	specialty = "XM-3VL experimental light"
-	desc = "A state of the art helmet designed in tandem with the XM43E1, this helmets equiped with all the gizmos and gadgets, ballistics tracker, astrology, wind elevation, proper escalation, everything you can think of it has... probably, thats why the helmets flashing.. probably."
-	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
 /obj/item/clothing/head/helmet/marine/pilot
 	name = "\improper M30 tactical helmet"

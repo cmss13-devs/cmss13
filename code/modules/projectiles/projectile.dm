@@ -80,6 +80,17 @@
 	/// How much to make the bullet fall off by accuracy-wise when closer than the ideal range
 	var/accuracy_range_falloff = 10
 
+	/// Is this a lone (0), original (1), or bonus (2) projectile. Used by gun.dm and fire_bonus_projectiles() currently.
+	var/bonus_projectile_check = 0
+
+	/// What last atom triggered a signal this projectile is registered to? Used by damage_boost.dm currently.
+	var/atom/last_atom_signaled = null
+
+	/// Was this projectile affected by a damage_boost trait?
+	var/damage_boosted = 0
+	/// If this projectile was affected by a damage_boost trait, what was the last modifier?
+	 var/last_damage_mult = 1
+
 /obj/projectile/Initialize(mapload, datum/cause_data/cause_data)
 	. = ..()
 	path = list()
@@ -164,6 +175,12 @@
 		apply_bullet_trait(L)
 
 /obj/projectile/proc/calculate_damage()
+
+	if(damage_boosted)
+		damage = damage / last_damage_mult
+		damage_boosted--
+		last_damage_mult = 1
+
 	if(effective_range_min && distance_travelled < effective_range_min)
 		return max(0, damage - round((effective_range_min - distance_travelled) * damage_buildup))
 	else if(distance_travelled > effective_range_max)
@@ -215,6 +232,7 @@
 	//If we have the right kind of ammo, we can fire several projectiles at once.
 	if(ammo.bonus_projectiles_amount && ammo.bonus_projectiles_type)
 		ammo.fire_bonus_projectiles(src)
+		bonus_projectile_check = 1 //Mark this projectile as having spawned a set of bonus projectiles.
 
 	path = get_line(starting, target_turf)
 	p_x += clamp((rand()-0.5)*scatter*3, -8, 8)

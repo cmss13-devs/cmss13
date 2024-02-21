@@ -27070,7 +27070,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	name = "\improper Marshal Office Armory"
+	name = "\improper Lambda Checkpoint"
 	},
 /turf/open/floor{
 	icon_state = "delivery"
@@ -33944,7 +33944,7 @@
 /area/bigredv2/outside/admin_building)
 "mTJ" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	name = "\improper Marshal Office Armory"
+	name = "\improper Lambda Checkpoint"
 	},
 /turf/open/floor{
 	icon_state = "delivery"
@@ -35573,7 +35573,7 @@
 "prC" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
-	name = "\improper Marshal Office"
+	name = "\improper Lambda Checkpoint"
 	},
 /turf/open/floor{
 	icon_state = "delivery"

@@ -182,12 +182,10 @@
 	for(var/path in types)
 		if(findtext("[path]", object))
 			matches += path
-
-	if(matches.len==0)
+	if(matches.len==0 || matches == "" || matches == " ")
 		return
-
 	var/chosen
-	if(matches.len==1)
+	if(matches.len > 1)
 		chosen = matches[1]
 	else
 		chosen = tgui_input_list(usr, "Select an atom type", "Spawn Atom", matches)

@@ -374,6 +374,8 @@
 
 		if("read_record")
 			var/datum/ares_record/deleted_talk/conversation = locate(params["record"])
+			if(!istype(conversation))
+				return FALSE
 			deleted_1to1 = conversation.conversation
 			last_menu = current_menu
 			current_menu = "read_deleted"

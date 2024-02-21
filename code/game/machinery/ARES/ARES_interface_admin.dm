@@ -253,23 +253,22 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/user = usr
-
+	var/mob/user = ui.user
+	if(!check_rights_for(user.client, R_MOD))
+		to_chat(user, SPAN_WARNING("You require staff identification to access this terminal!"))
+		return FALSE
 	switch (action)
 		if("go_back")
 			if(!admin_interface.last_menu)
-				return to_chat(user, SPAN_WARNING("Error, no previous page detected."))
+				to_chat(user, SPAN_WARNING("Error, no previous page detected."))
+				return FALSE
 			var/temp_holder = admin_interface.current_menu
 			admin_interface.current_menu = admin_interface.last_menu
 			admin_interface.last_menu = temp_holder
 
 		if("login")
-			if(check_rights_for(user.client, R_MOD))
-				admin_interface.logged_in = user.client.ckey
-				admin_interface.access_list += "[user.client.ckey] at [worldtime2text()], Access Level '[user.client.admin_holder?.rank]'."
-			else
-				to_chat(user, SPAN_WARNING("You require staff identification to access this terminal!"))
-				return FALSE
+			admin_interface.logged_in = user.client.ckey
+			admin_interface.access_list += "[user.client.ckey] at [worldtime2text()], Access Level '[user.client.admin_holder?.rank]'."
 			admin_interface.current_menu = "main"
 
 		// -- Page Changers -- //
@@ -362,6 +361,8 @@
 
 		if("read_record")
 			var/datum/ares_record/deleted_talk/conversation = locate(params["record"])
+			if(!istype(conversation))
+				return FALSE
 			admin_interface.deleted_1to1 = conversation.conversation
 			admin_interface.last_menu = admin_interface.current_menu
 			admin_interface.current_menu = "read_deleted"
@@ -391,11 +392,9 @@
 
 		if("auth_access")
 			var/datum/ares_ticket/access/access_ticket = locate(params["ticket"])
-			if(!access_ticket)
+			if(!istype(access_ticket))
 				return FALSE
 			for(var/obj/item/card/id/identification in waiting_ids)
-				if(!istype(identification))
-					continue
 				if(identification.registered_gid != access_ticket.user_id_num)
 					continue
 				identification.handle_ares_access(MAIN_AI_SYSTEM, user)
@@ -403,8 +402,6 @@
 				ares_apollo_talk("Access Ticket [access_ticket.ticket_id]: [access_ticket.ticket_submitter] granted core access.")
 				return TRUE
 			for(var/obj/item/card/id/identification in active_ids)
-				if(!istype(identification))
-					continue
 				if(identification.registered_gid != access_ticket.user_id_num)
 					continue
 				identification.handle_ares_access(MAIN_AI_SYSTEM, user)

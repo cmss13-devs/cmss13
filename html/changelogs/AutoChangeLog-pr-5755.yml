@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed automatic CMB ERT caused by black market heat"
+  - code_imp: "get_specific_call now only accepts a path or a string of a path"

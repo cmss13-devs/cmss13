@@ -120,7 +120,7 @@
 	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
-	containername = "XM43E1 Anti-Materiel Magazine Crate"
+	containername = "XM43E1 Marksman Magazine Crate"
 	group = "Specialist Ammo"
 
 //M4RA

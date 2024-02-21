@@ -1,34 +1,18 @@
 import { useBackend } from '../backend';
-import { Box, Stack, Button, Icon } from '../components';
+import { Box, Stack, Button, Icon, RoundGauge } from '../components';
 import { Window } from '../layouts';
 import { Color } from 'common/color';
 import { Ping } from 'common/ping';
 import { Component } from 'react';
 
 const RELAY_COUNT = 8;
-
-const COLORS = [
-  new Color(220, 40, 40), // red
-  new Color(220, 200, 40), // yellow
-  new Color(60, 220, 40), // green
-];
-
-const getPingColor = function (ping) {
-  if (ping < 200) {
-    return COLORS[2];
-  }
-  if (ping < 500) {
-    return COLORS[1];
-  }
-  return COLORS[0];
-};
+const RED = new Color(220, 40, 40);
 
 export class PingResult {
-  constructor(desc = 'Loading...', url = '', ping = -1, color = COLORS[0]) {
+  constructor(desc = 'Loading...', url = '', ping = -1) {
     this.desc = desc;
     this.url = url;
     this.ping = ping;
-    this.color = color;
     this.error = null;
   }
 
@@ -36,7 +20,6 @@ export class PingResult {
     this.desc = desc;
     this.url = url;
     this.ping = ping;
-    this.color = getPingColor(ping);
     this.error = error;
   };
 }
@@ -130,17 +113,28 @@ class PingApp extends Component {
               {result.ping > -1 && result.error === null && (
                 <>
                   <Icon name="plug" inline />
-                  <Box inline>{result.desc}</Box>
-                  <Box inline preserveWhitespace color={result.color} bold>
-                    {' (' + result.ping + ')'}
+                  <Box preserveWhitespace inline>
+                    {result.desc + '  '}
                   </Box>
+                  <RoundGauge
+                    value={result.ping}
+                    maxValue={1000}
+                    minValue={50}
+                    ranges={{
+                      'good': [0, 200],
+                      'average': [200, 500],
+                      'bad': [500, 1000],
+                    }}
+                    format={(x) => ' ' + x + 'ms'}
+                    inline
+                  />
                 </>
               )}
               {result.error !== null && (
                 <>
-                  <Icon name="x" inline color={COLORS[0]} />
+                  <Icon name="x" inline color={RED} />
                   <Box inline>{result.desc}</Box>
-                  <Box inline preserveWhitespace color={COLORS[0]} bold>
+                  <Box inline preserveWhitespace color={RED} bold>
                     {' (' + result.error + ')'}
                   </Box>
                 </>

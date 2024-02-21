@@ -17,8 +17,8 @@
 	unacidable = TRUE
 	embeddable = FALSE
 
-	force = 15
-	throwforce = 25
+	force = MELEE_FORCE_WEAK
+	throwforce = MELEE_FORCE_NORMAL
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/launch_towards(datum/launch_metadata/LM)
 	..()

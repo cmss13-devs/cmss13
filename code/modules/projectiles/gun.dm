@@ -7,6 +7,7 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = ""
 	item_state = "gun"
+	has_unique_action = TRUE
 	pickup_sound = "gunequip"
 	drop_sound = "gunrustle"
 	pickupvol = 7

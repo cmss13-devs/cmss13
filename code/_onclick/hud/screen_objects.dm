@@ -59,8 +59,10 @@
 /atom/movable/screen/action_button/attack_ghost(mob/dead/observer/user)
 	return
 
-/atom/movable/screen/action_button/clicked(mob/user)
+/atom/movable/screen/action_button/clicked(mob/user, list/mods)
 	if(!user || !source_action)
+		return TRUE
+	if(source_action.owner != user)
 		return TRUE
 
 	if(source_action.can_use_action())
@@ -97,7 +99,7 @@
 	icon_state = "hide"
 	var/hidden = 0
 
-/atom/movable/screen/action_button/hide_toggle/clicked(mob/user, mods)
+/atom/movable/screen/action_button/hide_toggle/clicked(mob/user, list/mods)
 	user.hud_used.action_buttons_hidden = !user.hud_used.action_buttons_hidden
 	hidden = user.hud_used.action_buttons_hidden
 	if(hidden)
@@ -107,7 +109,7 @@
 		name = "Hide Buttons"
 		icon_state = "hide"
 	user.update_action_buttons()
-	return 1
+	return TRUE
 
 /atom/movable/screen/action_button/ghost/minimap/get_button_screen_loc(button_number)
 	return "SOUTH:6,CENTER+1:24"
@@ -215,7 +217,7 @@
 	/// The proc/verb which should be called on the gun.
 	var/gun_proc_ref
 
-/atom/movable/screen/gun/clicked(mob/user)
+/atom/movable/screen/gun/clicked(mob/user, list/mods)
 	. = ..()
 	if(.)
 		return

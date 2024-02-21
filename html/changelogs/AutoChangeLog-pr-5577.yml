@@ -1,0 +1,7 @@
+author: "LaylaMcC"
+delete-after: True
+changes:
+  - rscadd: "Increased levels of acidic blood and carpotoxin in xenomeat and carp fillets."
+  - rscdel: "Xenomeat and carp fillet-based recipes no longer add additional acidic blood or carpotoxin."
+  - qol: "Master level domestic skill allows the use of the food processor to remove acidic blood and carpotoxin from xenomeat and carp fillets."
+  - bugfix: "Turning named pieces of human meat into meatballs will retain the human's name."

@@ -98,6 +98,11 @@
 		to_chat(src, SPAN_NOTICE("We must be burrowed to do this."))
 		return
 
+	var/area/current_area = get_area(T)
+	if(current_area.flags_area & AREA_NOTUNNEL)
+		to_chat(src, SPAN_XENOWARNING("There's no way to surface here!!"))
+		return
+
 	if(tunnel)
 		tunnel = FALSE
 		to_chat(src, SPAN_NOTICE("We stop tunneling."))
@@ -156,7 +161,7 @@
 		addtimer(CALLBACK(src, PROC_REF(process_tunnel), T), 1 SECONDS)
 
 /mob/living/carbon/xenomorph/proc/do_tunnel(turf/T)
-	to_chat(src, SPAN_NOTICE("We tunnel to your destination."))
+	to_chat(src, SPAN_NOTICE("We tunnel to our destination."))
 	anchored = FALSE
 	forceMove(T)
 	burrow_off()
@@ -211,14 +216,14 @@
 	used_tremor = 1
 
 	for(var/mob/living/carbon/carbon_target in range(7, loc))
-		to_chat(carbon_target, SPAN_WARNING("You struggle to remain on your feet as the ground shakes beneath your feet!"))
+		to_chat(carbon_target, SPAN_WARNING("We struggle to remain on our feet as the ground shakes beneath our feet!"))
 		shake_camera(carbon_target, 2, 3)
 		if(get_dist(loc, carbon_target) <= 3 && !src.can_not_harm(carbon_target))
 			if(carbon_target.mob_size >= MOB_SIZE_BIG)
 				carbon_target.apply_effect(1, SLOW)
 			else
 				carbon_target.apply_effect(1, WEAKEN)
-			to_chat(carbon_target, SPAN_WARNING("The violent tremors make you lose your footing!"))
+			to_chat(carbon_target, SPAN_WARNING("The violent tremors make us lose our footing!"))
 
 	spawn(caste.tremor_cooldown)
 		used_tremor = 0

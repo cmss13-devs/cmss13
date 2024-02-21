@@ -1,5 +1,5 @@
 /datum/action/xeno_action/activable/blockade/use_ability(atom/A) // blockade, this abiltiy should always either last a short time or the walls should be destructible in 1-3 hits.
-	var/mob/living/carbon/xenomorph/queen/reaper = owner
+	var/mob/living/carbon/xenomorph/reaper = owner
 	if(!reaper.check_state())
 		return FALSE
 
@@ -12,18 +12,18 @@
 	var/width = initial(pillar_type.width)
 	var/height = initial(pillar_type.height)
 
-	var/turf/T = get_turf(A)
-	if((locate (/obj/effect/alien/weeds/node/pylon/core) in T)) //core has resin node in it, wall ontop of resin node deletes it, wall ontop of hive core delets all hive weeds if put ontop of it.
+	var/turf/active_turf = get_turf(A)
+	if((locate (/obj/effect/alien/weeds/node/pylon/core) in active_turf)) //core has resin node in it, wall ontop of resin node deletes it, wall ontop of hive core delets all hive weeds if put ontop of it.
 		return FALSE
-	if(T.density)
+	if(active_turf.density)
 		to_chat(reaper, SPAN_XENOWARNING("We can only construct this blockade in open areas!"))
 		return FALSE
 
-	if(T.z != owner.z)
+	if(active_turf.z != owner.z)
 		to_chat(reaper, SPAN_XENOWARNING("That's too far away!"))
 		return FALSE
 
-	if(!T.weeds)
+	if(!active_turf.weeds)
 		to_chat(reaper, SPAN_XENOWARNING("We can only construct this blockade on weeds!"))
 		return FALSE
 
@@ -31,22 +31,22 @@
 		return
 
 
-	if(!check_turf(reaper, T))
+	if(!check_turf(reaper, active_turf))
 		return FALSE
 
 	if(!check_and_use_plasma_owner())
 		return
 
-	var/turf/new_turf = locate(max(T.x - Floor(width/2), 1), max(T.y - Floor(height/2), 1), T.z)
+	var/turf/new_turf = locate(max(active_turf.x - Floor(width/2), 1), max(active_turf.y - Floor(height/2), 1), active_turf.z)
 	to_chat(reaper, SPAN_XENONOTICE("We raise a blockade!"))
-	var/obj/effect/alien/resin/resin_pillar/RP = new pillar_type(new_turf)
-	RP.start_decay(brittle_time, decay_time)
+	var/obj/effect/alien/resin/resin_pillar/resin_blockade = new pillar_type(new_turf)
+	resin_blockade.start_decay(brittle_time, decay_time)
 	apply_cooldown()
 	return ..()
 
 
 
-/datum/action/xeno_action/activable/blockade/proc/check_turf(mob/living/carbon/xenomorph/queen/reaper, turf/T)
+/datum/action/xeno_action/activable/blockade/proc/check_turf(mob/living/carbon/xenomorph/reaper, turf/T)
 	if(T.density)
 		to_chat(reaper, SPAN_XENOWARNING("We can't place a blockade here."))
 		return FALSE

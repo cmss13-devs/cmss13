@@ -14,10 +14,10 @@
 	speed = XENO_SPEED_FASTMOD_TIER_6
 
 	build_time_mult = BUILD_TIME_MULT_BUILDER
+	max_build_dist = 1
 
 	is_intelligent = 1
 	evolution_allowed = FALSE
-	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_NO_IGNITE
 	caste_desc = "john reaper" // temporary
 	deevolves_to = list("Larva")
 	can_hold_facehuggers = 1
@@ -25,8 +25,6 @@
 	acid_level = 2
 	weed_level = WEED_LEVEL_STANDARD
 	can_be_revived = FALSE
-
-	spit_delay = 25
 
 	tackle_min = 2
 	tackle_max = 6

@@ -164,3 +164,108 @@
   - ui: Made the Tutorial Menu automatically close when a tutorial is started.
   - code_imp: Made the tutorial Xenomorph not inherit the user's 'age' prefix.
   - code_imp: Added a basic unit test for tutorials.
+2024-02-14:
+  SabreML:
+  - bugfix: Fixed crates and similar objects layering below the dropship's fulton
+      recovery system.
+  Zonespace Drathek:
+  - balance: Lesser drones and Facehuggers cannot speak, custom emote, or point for
+      3 minutes after spawning
+2024-02-15:
+  InsaneRed:
+  - balance: Drop pouch now scales the same as normal webbing
+  SabreML:
+  - bugfix: Fixed some changelog icons being smaller than others.
+  Vicacrov:
+  - maptweak: LV-624 tfort's floodlights are now colony floodlights.
+  VileBeggar:
+  - qol: Attaching the bipod to weapons that have full auto (HPR included) will give
+      you a button toggle for immediately switching to full auto when deploying the
+      bipod.
+2024-02-16:
+  BadAtThisGame302:
+  - rscadd: Added two new beacons for the CL, Lawyer and Bodyguard.
+  - rscadd: Added an Executive Specialist and Executive Supervisor Lawyer preset.
+  - rscadd: Added a cyanide pill in the CLs briefcase for an easy way out.
+  - rscadd: Added a Wey-Yu Coffee Mug in the CLs briefcase as a souvenir sale.
+  Drathek:
+  - bugfix: Fixed xeno tutorial allowing evolution/de-evolution
+  - bugfix: Fixed some runtimes with tutorials
+  SabreML:
+  - bugfix: Fixed the 'Clear' button not resetting the number of keybind assignment
+      slots. (Keybinds menu)
+  - refactor: Refactored xeno strains.
+  - rscadd: Added a keybind setting to open the 'Purchase Strain' window. (Also renamed
+      the macro)
+  cuberound:
+  - balance: m4ra ammo looses about 1/5 of initial effect duration per 10 tiles traveled
+  harryob:
+  - admin: permanent and sticky bans are now handled in game, instead of being managed
+      externally
+2024-02-17:
+  MobiusWon:
+  - rscadd: Adds integral Motion Detector to XM4 IO Armor
+  - balance: Uniform utility accessories (I.E. Webbing) no longer can be equipped
+      while the XM4 is worn. Armor slots increased to 5 to compensate.
+  Steelpoint:
+  - balance: Royal Marine Commando's firearms now have a higher rate of fire, comparable
+      to the M41A.
+  mullenpaul:
+  - code_imp: rework logic of restrictedinput component to reduce checks
+2024-02-19:
+  Blundir:
+  - imageadd: updated many old/legacy sprites
+  Diegoflores31:
+  - balance: Tail Jab will now target enemies on the same tile it was targeted.
+  - balance: Aiming Tail Jab directly on a target will do an additional 15 damage
+2024-02-20:
+  BeagleGaming1:
+  - balance: Xenos can slash reactors
+  - balance: Reactors that are damaged will still run until reaching weld damage or
+      being manually de-activated
+  - balance: Reactors that are damaged will lose fuel (when applicable) and fail more
+      often when fuel runs out, new cells need to be used to reset the fail rate
+  - balance: Reactors can be damaged by bullets or explosions
+  - code_imp: Updated Power all ship reactors admin button code
+  - imageadd: Updated reactor sprites
+  - maptweak: Minor changes to reactors and surrounding areas
+  Drathek:
+  - code_imp: Autowiki now skips guns and mags without icon_states
+  - code_imp: Unit testing for spritesheets now enforces css requirements for class
+      names
+  - imageadd: Gun stats lineart now uses the no_name sprite again for guns without
+      lineart
+  - rscdel: Removed death messages for lesser drones and facehuggers that are still
+      temporarily muted
+  Huffie56:
+  - balance: add the ability for SG to buy an VP78 or an SU-6 each for 15 points.
+  SabreML:
+  - ui: Added tooltips to entry icons in the changelog.
+  - code_imp: Added a unit test for xeno strains.
+  Vicacrov:
+  - bugfix: Fixes a missing examine text when you hit an exactly half-full ammo magazine
+      against your helmet.
+  Zonespace27:
+  - bugfix: You can no longer remove vehicle parts from a vehicle at a distance
+2024-02-21:
+  Contrabang:
+  - rscadd: Falling out of a Dropship en route to an LZ, now lets your corpse plummet
+      to the ground instead of being deleted.
+  Drathek:
+  - maptweak: Fixed access for two doors on the Almayer
+  - balance: Corrected vampire lurker damage values (Effectively reduction by 5 damage
+      for most attacks)
+  Stakeyng:
+  - rscadd: mou is now compatible with the shotgun scabbard
+  VileBeggar:
+  - rscadd: The Vulture can now be loaded with holo-targetting rounds which have severely
+      hampered ballistic performance, but mark any target that is hit, increasing
+      their damage taken by 33% for a brief period of time.
+  hislittlecuzingames:
+  - maptweak: tweaked Trijent Dam to add a new choke point.
+  private-tristan:
+  - rscdel: VAIMS (vaipo med spec) no longer gets a redundant burn line
+  - balance: VAIMS now gets an extra MAR mag.
+  - bugfix: Forsaken and Feral xenos can now (correctly) use hive-status
+  - spellcheck: fixed a case where we/our wouldn't be used when attempting to access
+      hive status with no queen

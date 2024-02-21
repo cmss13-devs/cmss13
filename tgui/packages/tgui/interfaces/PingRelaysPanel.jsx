@@ -1,11 +1,9 @@
-import { Box, Stack } from '../components';
+import { useBackend } from '../backend';
+import { Box, Stack, Button, Icon } from '../components';
 import { Window } from '../layouts';
 import { Color } from 'common/color';
 import { Ping } from 'common/ping';
 import { Component } from 'react';
-import { createLogger } from '../logging'; // TODO: Remove this
-
-const logger = createLogger('pingRelays'); // TODO: Remove this
 
 const RELAY_COUNT = 8;
 
@@ -26,7 +24,7 @@ const getPingColor = function (ping) {
 };
 
 export class PingResult {
-  constructor(desc = 'Loading...', url = '', ping = 0, color = COLORS[0]) {
+  constructor(desc = 'Loading...', url = '', ping = -1, color = COLORS[0]) {
     this.desc = desc;
     this.url = url;
     this.ping = ping;
@@ -57,7 +55,6 @@ class PingApp extends Component {
   }
 
   startTest(desc, pingURL, connectURL) {
-    logger.log('starting test for ' + desc); // TODO: Remove this
     this.pinger.ping('http://' + pingURL, (error, pong) => {
       this.results[this.state.currentIndex]?.update(
         desc,
@@ -65,9 +62,6 @@ class PingApp extends Component {
         pong,
         error
       );
-      logger.log(
-        'finished ' + this.state.currentIndex + ' ' + pong + ' ' + error
-      ); // TODO: Remove this
       this.setState((prevState) => ({
         currentIndex: prevState.currentIndex + 1,
       }));
@@ -114,12 +108,44 @@ class PingApp extends Component {
   }
 
   render() {
+    const { act } = useBackend();
+
     return (
-      <Stack direction="column" fill>
+      <Stack direction="column" fill vertical>
         {this.results.map((result, i) => (
-          <Stack.Item key={i} basis="content" grow={0} pb={1}>
-            {result.desc}: <a href={result.url}>{result.url}</a>{' '}
-            <Box color={result.color}>({result.ping})</Box> {result.error}
+          <Stack.Item key={i} height={2}>
+            <Button.Confirm
+              fluid
+              height={2}
+              confirmContent={'Connect? '}
+              confirmColor="caution"
+              disabled={result.ping === -1 || result.error}
+              onClick={() => act('connect', { url: result.url })}>
+              {result.ping <= -1 && result.error === null && (
+                <>
+                  <Icon name="spinner" spin inline />
+                  <Box inline>{result.desc}</Box>
+                </>
+              )}
+              {result.ping > -1 && result.error === null && (
+                <>
+                  <Icon name="plug" inline />
+                  <Box inline>{result.desc}</Box>
+                  <Box inline preserveWhitespace color={result.color} bold>
+                    {' (' + result.ping + ')'}
+                  </Box>
+                </>
+              )}
+              {result.error !== null && (
+                <>
+                  <Icon name="x" inline color={COLORS[0]} />
+                  <Box inline>{result.desc}</Box>
+                  <Box inline preserveWhitespace color={COLORS[0]} bold>
+                    {' (' + result.error + ')'}
+                  </Box>
+                </>
+              )}
+            </Button.Confirm>
           </Stack.Item>
         ))}
       </Stack>
@@ -129,7 +155,7 @@ class PingApp extends Component {
 
 export const PingRelaysPanel = () => {
   return (
-    <Window width={300} height={400} theme={'ntos'}>
+    <Window width={400} height={300} theme={'weyland'}>
       <Window.Content>
         <PingApp />
       </Window.Content>

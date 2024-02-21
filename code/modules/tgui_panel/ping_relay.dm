@@ -12,3 +12,16 @@ GLOBAL_DATUM_INIT(relays_panel, /datum/ping_relay_tgui, new)
 
 /datum/ping_relay_tgui/ui_state(mob/user)
 	return GLOB.always_state
+
+/datum/ping_relay_tgui/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	var/mob/user = ui.user
+
+	switch(action)
+		if("connect")
+			user << link(params["url"])
+			ui.close()
+			return

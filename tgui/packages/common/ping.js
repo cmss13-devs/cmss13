@@ -24,7 +24,7 @@ export class Ping {
    * @param callback Callback function to trigger when completed. Returns error and ping value.
    * @param delay Optional number of milliseconds to wait before starting.
    */
-  ping(source, callback, delay = 500) {
+  ping(source, callback, delay = 1000) {
     let timer;
     timer = setTimeout(() => {
       this.pingNow(source, callback);
@@ -75,7 +75,7 @@ export class Ping {
           if (self.logError) {
             console.error('error loading resource: ' + e.error);
           }
-          return callback(e ? 'error' : 'timeout', pong);
+          return callback(e ? 'Error' : 'Timed Out', pong);
         }
         return callback(null, pong);
       } else {

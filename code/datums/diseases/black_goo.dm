@@ -125,9 +125,9 @@
 			if(iszombie(infected_mob))
 				stage++
 				return
-			// if not a zombie and isn't transforming then we transform you into a zombie.
-			if(!zombie_is_transforming)//why that's check here?
-				// if your dead we span you that your going to turn into a zombie.
+			// if not a zombie(above check) and isn't transforming then we transform you into a zombie.
+			if(!zombie_is_transforming)
+				// if your dead we inform you that your going to turn into a zombie.
 				if(infected_mob.stat == DEAD && stage_counter != stage)
 					to_chat(infected_mob, SPAN_CENTERBOLD("Your zombie infection is now at stage three! Zombie transformation begin!"))
 					stage_counter = stage

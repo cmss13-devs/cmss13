@@ -222,7 +222,7 @@
 	// If the user has a gun in their active hand, call `gun_proc_ref` on it.
 	var/obj/item/weapon/gun/held_item = user.get_held_item()
 	if(istype(held_item))
-		call(held_item, gun_proc_ref)()
+		INVOKE_ASYNC(held_item, gun_proc_ref)
 
 /atom/movable/screen/gun/attachment
 	name = "Activate weapon attachment"

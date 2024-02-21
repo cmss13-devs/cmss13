@@ -30,12 +30,12 @@ export class PingResult {
     this.color = color;
   }
 
-  update(desc, url, ping) {
+  update = function (desc, url, ping) {
     this.desc = desc;
     this.url = url;
     this.ping = ping;
     this.color = getPingColor(ping);
-  }
+  };
 }
 
 let p = new Ping();
@@ -48,7 +48,7 @@ for (let i = 0; i < 8; i++) {
 const startTest = function (desc, pingURL, connectURL) {
   logger.log('starting test for ' + desc); // TODO: Remove this
   p.ping('http://' + pingURL, (err, data) => {
-    results[++currentIndex].update(desc, 'byond://' + connectURL, data);
+    results[currentIndex++].update(desc, 'byond://' + connectURL, data);
     logger.log('finished ' + currentIndex + ' ' + data + ' ' + err); // TODO: Remove this
   });
 };

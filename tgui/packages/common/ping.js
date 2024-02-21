@@ -13,7 +13,7 @@ export class Ping {
   constructor(opt) {
     this.opt = opt || {};
     this.favicon = this.opt.favicon || '/favicon.ico';
-    this.timeout = this.opt.timeout || 0;
+    this.timeout = this.opt.timeout || 10000;
     this.logError = this.opt.logError || false;
   }
   /**

@@ -1,0 +1,4 @@
+author: "Kaga"
+delete-after: True
+changes:
+  - bugfix: "Fixed a bug that broke ID-Lockable items in presets. Rejoice, PMC Snipers, pre-equipped USCM Specs, UPP Commandos, and WY Deathsquads."

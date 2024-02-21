@@ -13,6 +13,8 @@
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_RUNNER
 	attack_delay = -4
+
+	available_strains = list(/datum/xeno_strain/acider)
 	behavior_delegate_type = /datum/behavior_delegate/runner_base
 	evolves_to = list(XENO_CASTE_LURKER)
 	deevolves_to = list("Larva")
@@ -62,7 +64,6 @@
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
-	mutation_type = RUNNER_NORMAL
 
 	icon_xeno = 'icons/mob/xenos/runner.dmi'
 	icon_xenonid = 'icons/mob/xenonids/runner.dmi'
@@ -76,6 +77,12 @@
 	..()
 	if (pass_flags_container)
 		pass_flags_container.flags_pass |= PASS_FLAGS_CRAWLER
+
+/mob/living/carbon/xenomorph/runner/recalculate_actions()
+	. = ..()
+	pull_multiplier *= 0.85
+	if(is_zoomed)
+		zoom_out()
 
 /datum/behavior_delegate/runner_base
 	name = "Base Runner Behavior Delegate"

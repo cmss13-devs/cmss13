@@ -209,10 +209,10 @@ GLOBAL_VAR_INIT(log_end, world.system_type == UNIX ? ascii2text(13) : "")
 	WRITE_LOG(GLOB.world_game_log, "MISC: [text]")
 	GLOB.STUI?.debug.Add("\[[time]]MISC: [text]")
 
-/proc/log_mutator(text)
-	if(!GLOB.mutator_logs)
+/proc/log_strain(text)
+	if(!GLOB.strain_logs)
 		return
-	WRITE_LOG(GLOB.mutator_logs, "[text]")
+	WRITE_LOG(GLOB.strain_logs, "[text]")
 
 /proc/log_hiveorder(text)
 	var/time = time_stamp()

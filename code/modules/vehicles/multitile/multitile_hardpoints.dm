@@ -149,7 +149,7 @@
 		hps += H
 
 	var/chosen_hp = tgui_input_list(usr, "Select a hardpoint to remove", "Hardpoint Removal", (hps + "Cancel"))
-	if(chosen_hp == "Cancel" || !chosen_hp)
+	if(chosen_hp == "Cancel" || !chosen_hp || !in_range(src, user))
 		return
 
 	var/obj/item/hardpoint/old = chosen_hp

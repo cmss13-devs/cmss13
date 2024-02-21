@@ -102,7 +102,7 @@ class PingApp extends Component {
     );
     this.startTest(
       'Australia, Sydney',
-      'aus.cm-ss13.com:8996', // wrong
+      'aus.cm-ss13.com:8998',
       'aus.cm-ss13.com:1400'
     );
   }

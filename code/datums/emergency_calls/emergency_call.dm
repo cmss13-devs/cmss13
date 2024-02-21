@@ -105,13 +105,6 @@
 		em_call.activate(quiet_launch, announce_incoming)
 		return
 
-	for(var/datum/emergency_call/cur_em_call as anything in all_calls) //Loop through all potential candidates
-		if(cur_em_call.name == call_name)
-			var/datum/emergency_call/em_call = new cur_em_call.type()
-			em_call.objective_info = info
-			em_call.activate(quiet_launch, announce_incoming)
-			return
-
 	error("get_specific_call could not find emergency call '[call_name]'")
 	return
 

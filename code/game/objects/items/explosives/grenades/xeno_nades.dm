@@ -42,15 +42,3 @@
 	else
 		new /obj/effect/alien/weeds/node(current_turf)
 		qdel(src)
-
-
-
-
-
-
-
-
-
-
-
-

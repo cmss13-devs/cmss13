@@ -298,7 +298,7 @@
 	return TRUE
 
 /obj/item/spec_kit/sniper_weapon_selector/select_and_spawn(mob/living/carbon/human/user)
-	var/sniper_selection = tgui_input_list(usr, "Select your weapon", "Weapon Selection", list("M42A sniper rifle", "XM43E1 anti-materiel rifle"))
+	var/sniper_selection = tgui_input_list(user, "Select your weapon", "Weapon Selection", list("M42A sniper rifle", "XM43E1 anti-materiel rifle"))
 	if(!sniper_selection || QDELETED(src))
 		return FALSE
 	var/turf/T = get_turf(loc)

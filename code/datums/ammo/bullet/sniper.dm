@@ -119,7 +119,7 @@
 				size_damage_mod += 0.6
 		L.apply_armoured_damage(damage*size_damage_mod, ARMOR_BULLET, BRUTE, null, penetration)
 		// Base 180% damage to all targets (225), 240% (300) against non-Runner xenos, and 300% against Big xenos (375). -Kaga
-		// This applies after pen reductions. After hitting 1 other thing, it deals 180/240/300 damage, or 135/180/225 after hitting a dense wall or big xeno.
+		// This applies after pen reductions. After hitting 1 other thing, it deals 180/240/300 damage, or 90/120/150 after hitting a dense wall or big xeno.
 		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
 
 /datum/ammo/bullet/sniper/anti_materiel/set_bullet_traits()

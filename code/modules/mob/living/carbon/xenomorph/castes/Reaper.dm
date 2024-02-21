@@ -71,7 +71,6 @@
 		/mob/living/carbon/xenomorph/proc/rename_tunnel,
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
-	mutation_type = REAPER_NORMAL
 
 /datum/caste_datum/Reaper/New()
 	. = ..()

@@ -252,7 +252,7 @@
 	gun_proc_ref = TYPE_VERB_REF(/obj/item/weapon/gun, use_unique_action)
 
 
-/atom/movable/screen/clicked(mob/user)
+/atom/movable/screen/clicked(mob/user, list/mods)
 	if(!user)
 		return TRUE
 

@@ -28,7 +28,7 @@
 	var/recentlyflipped = FALSE
 	var/hasconnectionoverlay = TRUE
 	var/linkable = TRUE
-	welder_fix = BARRICADE_DMG_HEAVY
+	welder_lower_damage_limit = BARRICADE_DMG_HEAVY
 
 /obj/structure/barricade/plasteel/update_icon()
 	..()

@@ -43,7 +43,7 @@
 	var/repair_materials = list()
 	var/metallic = TRUE
 	/// Lower limit of damage beyond which the barricade cannot be fixed by welder. Compared to damage_state. If null it can be repaired at any damage_state.
-	var/welder_fix = null
+	var/welder_lower_damage_limit = null
 
 /obj/structure/barricade/Initialize(mapload, mob/user)
 	. = ..()
@@ -488,7 +488,7 @@
 		to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
 		return FALSE
 
-	if(!(isnull(damage_state)) && !(isnull(welder_fix)) && damage_state >= welder_fix)
+	if(!(isnull(damage_state)) && !(isnull(welder_lower_damage_limit)) && damage_state >= welder_lower_damage_limit)
 		to_chat(user, SPAN_WARNING("[src] has sustained too much structural damage to be repaired."))
 		return FALSE
 

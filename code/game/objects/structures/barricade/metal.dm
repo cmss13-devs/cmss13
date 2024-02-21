@@ -19,7 +19,7 @@
 	var/build_state = BARRICADE_BSTATE_SECURED //Look at __game.dm for barricade defines
 	var/upgrade = null
 
-	welder_fix = BARRICADE_DMG_HEAVY
+	welder_lower_damage_limit = BARRICADE_DMG_HEAVY
 
 /obj/structure/barricade/metal/update_icon()
 	. = ..()

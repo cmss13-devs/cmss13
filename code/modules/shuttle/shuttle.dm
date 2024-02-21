@@ -1004,3 +1004,15 @@
 		to_chat(user, SPAN_WARNING("Shuttle already in transit."))
 		return FALSE
 	return TRUE
+
+/obj/docking_port/mobile/proc/get_transit_path_type()
+	. = /turf/open/space/transit
+	switch(preferred_direction)
+		if(NORTH)
+			return /turf/open/space/transit/north
+		if(SOUTH)
+			return /turf/open/space/transit/south
+		if(EAST)
+			return /turf/open/space/transit/east
+		if(WEST)
+			return /turf/open/space/transit/west

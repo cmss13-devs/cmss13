@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - spellcheck: "Reworded message when a facehugger's temporary mute ends to not mention hivemind"

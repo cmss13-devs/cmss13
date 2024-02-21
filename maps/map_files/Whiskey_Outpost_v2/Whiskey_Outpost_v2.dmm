@@ -700,6 +700,13 @@
 /obj/item/stool,
 /turf/open/gm/dirtgrassborder/west,
 /area/whiskey_outpost/outside/lane/two_south)
+"cB" = (
+/obj/structure/machinery/fuelcell_recycler/full,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "floor_plate"
+	},
+/area/whiskey_outpost/inside/engineering)
 "cC" = (
 /obj/structure/sign/poster,
 /turf/closed/wall/r_wall,
@@ -1397,76 +1404,6 @@
 "fj" = (
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/bunker)
-"fk" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/firstaid/rad,
-/obj/item/storage/firstaid/rad,
-/obj/item/storage/firstaid/rad,
-/obj/item/storage/firstaid/rad,
-/obj/item/storage/firstaid/toxin{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/storage/firstaid/toxin{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/storage/firstaid/toxin{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/storage/firstaid/toxin{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/storage/firstaid/fire,
-/obj/item/storage/firstaid/fire,
-/obj/item/storage/firstaid/fire,
-/obj/item/storage/firstaid/fire,
-/obj/item/storage/firstaid/regular{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/storage/firstaid/regular{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/storage/firstaid/regular{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/storage/firstaid/regular{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/storage/firstaid/o2,
-/obj/item/storage/firstaid/o2,
-/obj/item/storage/firstaid/o2,
-/obj/item/storage/firstaid/o2,
-/obj/item/storage/firstaid/adv{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/storage/firstaid/adv{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/storage/firstaid/adv{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/storage/firstaid/adv{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/effect/landmark/wo_supplies/storage/belts/lifesaver,
-/obj/effect/landmark/wo_supplies/storage/belts/lifesaver,
-/obj/effect/landmark/wo_supplies/storage/belts/lifesaver,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitegreen"
-	},
-/area/whiskey_outpost/inside/hospital)
 "fl" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/sentry,
@@ -1929,13 +1866,6 @@
 	icon_state = "floor_plate"
 	},
 /area/whiskey_outpost/inside/cic)
-"gX" = (
-/obj/structure/machinery/gel_refiller,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitegreen"
-	},
-/area/whiskey_outpost/inside/hospital)
 "gZ" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/glass/beaker/bluespace,
@@ -2177,6 +2107,13 @@
 	icon_state = "whitegreen"
 	},
 /area/whiskey_outpost/inside/hospital)
+"hH" = (
+/obj/structure/machinery/power/reactor/colony,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "floor_plate"
+	},
+/area/whiskey_outpost/inside/engineering)
 "hI" = (
 /turf/open/gm/grass/gbcorner/south_west,
 /area/whiskey_outpost/outside/lane/one_north)
@@ -4286,6 +4223,13 @@
 /obj/effect/landmark/start/whiskey/engineer,
 /turf/open/gm/dirtgrassborder/north,
 /area/whiskey_outpost/outside/lane/two_south)
+"pk" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "floor_plate"
+	},
+/area/whiskey_outpost/inside/engineering)
 "pm" = (
 /obj/effect/decal/cleanable/blood/writing,
 /obj/item/weapon/gun/pistol/m4a3,
@@ -4898,6 +4842,10 @@
 "rp" = (
 /turf/open/jungle,
 /area/whiskey_outpost/outside/north/northwest)
+"rq" = (
+/obj/effect/landmark/start/whiskey/engineering,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/whiskey_outpost/inside/engineering)
 "rs" = (
 /obj/item/storage/toolbox/emergency,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -5058,16 +5006,6 @@
 	},
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/beach)
-"rR" = (
-/obj/structure/closet/hydrant{
-	pixel_x = -32
-	},
-/obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_plate"
-	},
-/area/whiskey_outpost/inside/engineering)
 "rS" = (
 /obj/structure/filingcabinet,
 /turf/open/floor/prison{
@@ -5446,13 +5384,6 @@
 /obj/item/tool/pen,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/mortar_pit)
-"tt" = (
-/obj/structure/machinery/power/geothermal,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_plate"
-	},
-/area/whiskey_outpost/inside/engineering)
 "tu" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 8
@@ -5485,14 +5416,6 @@
 	icon_state = "darkyellowfull2"
 	},
 /area/whiskey_outpost/inside/supply)
-"ty" = (
-/obj/structure/machinery/power/geothermal,
-/obj/structure/machinery/light/small,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_plate"
-	},
-/area/whiskey_outpost/inside/engineering)
 "tz" = (
 /turf/open/floor{
 	dir = 1;
@@ -5898,6 +5821,13 @@
 	},
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/supply)
+"uM" = (
+/obj/structure/closet/firecloset/full,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "floor_plate"
+	},
+/area/whiskey_outpost/inside/engineering)
 "uN" = (
 /obj/structure/disposalpipe/sortjunction/untagged/flipped{
 	dir = 1
@@ -6554,6 +6484,14 @@
 "xb" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/whiskey_outpost/outside/north/beach)
+"xc" = (
+/obj/structure/machinery/light/small,
+/obj/structure/machinery/power/reactor/colony,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "floor_plate"
+	},
+/area/whiskey_outpost/inside/engineering)
 "xg" = (
 /turf/open/floor/prison{
 	dir = 4;
@@ -7438,6 +7376,13 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/whiskey_outpost/inside/bunker)
+"Ay" = (
+/obj/structure/machinery/gel_refiller,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitegreen"
+	},
+/area/whiskey_outpost/inside/hospital)
 "AA" = (
 /turf/open/jungle,
 /area/whiskey_outpost/outside/south/far)
@@ -9779,6 +9724,14 @@
 /obj/item/tool/crowbar,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/three_south)
+"JA" = (
+/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/light/small,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "floor_plate"
+	},
+/area/whiskey_outpost/inside/engineering)
 "JB" = (
 /obj/structure/disposalpipe/sortjunction{
 	dir = 1;
@@ -11094,6 +11047,17 @@
 	},
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/river/west)
+"PR" = (
+/obj/structure/surface/rack,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "floor_plate"
+	},
+/area/whiskey_outpost/inside/engineering)
 "PT" = (
 /obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor{
@@ -12545,6 +12509,76 @@
 	icon_state = "floor_plate"
 	},
 /area/whiskey_outpost/inside/bunker/pillbox/one)
+"Wj" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/firstaid/rad,
+/obj/item/storage/firstaid/rad,
+/obj/item/storage/firstaid/rad,
+/obj/item/storage/firstaid/rad,
+/obj/item/storage/firstaid/toxin{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/firstaid/toxin{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/firstaid/toxin{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/firstaid/toxin{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/firstaid/fire,
+/obj/item/storage/firstaid/fire,
+/obj/item/storage/firstaid/fire,
+/obj/item/storage/firstaid/fire,
+/obj/item/storage/firstaid/regular{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/firstaid/regular{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/firstaid/regular{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/firstaid/regular{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/firstaid/o2,
+/obj/item/storage/firstaid/o2,
+/obj/item/storage/firstaid/o2,
+/obj/item/storage/firstaid/o2,
+/obj/item/storage/firstaid/adv{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/effect/landmark/wo_supplies/storage/belts/lifesaver,
+/obj/effect/landmark/wo_supplies/storage/belts/lifesaver,
+/obj/effect/landmark/wo_supplies/storage/belts/lifesaver,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitegreen"
+	},
+/area/whiskey_outpost/inside/hospital)
 "Wk" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -19565,13 +19599,13 @@ WK
 ak
 ak
 ak
-ak
-mT
-mT
-mT
-mT
-mT
-mT
+nK
+nK
+nK
+nK
+nK
+nK
+nK
 mT
 mT
 mT
@@ -19767,13 +19801,13 @@ aC
 qe
 ih
 Nr
-ak
-mT
-mT
-mT
-mT
-mT
-mT
+nK
+uM
+rq
+fG
+rq
+PR
+nK
 mT
 mT
 mT
@@ -19970,11 +20004,11 @@ PB
 PM
 Ed
 nK
-nK
-nK
-nK
-nK
-nK
+pk
+sP
+rV
+sP
+cB
 nK
 nK
 nK
@@ -20174,9 +20208,9 @@ PM
 nK
 qu
 re
-rR
+rV
 sP
-tt
+hH
 nK
 vl
 vR
@@ -20376,9 +20410,9 @@ uI
 nK
 qx
 ri
-rf
+rV
 sP
-ty
+JA
 nK
 vl
 rV
@@ -20578,9 +20612,9 @@ mh
 nK
 qu
 re
-rf
+rV
 sP
-tt
+hH
 nK
 vl
 rV
@@ -20780,9 +20814,9 @@ nI
 Kr
 qC
 rs
-fG
+rV
 sP
-ty
+xc
 nK
 vl
 rV
@@ -26217,8 +26251,8 @@ bG
 cb
 pq
 qz
-fk
-gX
+Wj
+Ay
 hD
 im
 iO

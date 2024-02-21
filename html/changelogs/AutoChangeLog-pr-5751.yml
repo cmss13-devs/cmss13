@@ -1,0 +1,5 @@
+author: "SabreML"
+delete-after: True
+changes:
+  - rscadd: "Added 'observe' functionality to Xenomorphs, allowing observers to view the target's UI."
+  - rscadd: "Made observing a player also show their action buttons."

@@ -26,21 +26,17 @@ export class Ping {
     let self = this;
     self.wasSuccess = false;
     self.img = new Image();
-    self.img.onload = onload;
-    self.img.onerror = onerror;
-
-    let timer;
-    let start = new Date();
-
-    const onload = function (e) {
+    self.img.onload = (e) => {
       self.wasSuccess = true;
       pingCheck.call(self, e);
     };
-
-    const onerror = function (e) {
+    self.img.onerror = (e) => {
       self.wasSuccess = false;
       pingCheck.call(self, e);
     };
+
+    let timer;
+    let start = new Date();
 
     if (self.timeout) {
       timer = setTimeout(() => {

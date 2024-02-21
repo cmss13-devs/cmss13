@@ -11227,6 +11227,11 @@
 /obj/structure/flora/grass/desert/heavygrass_3,
 /turf/open/desert/dirt,
 /area/desert_dam/interior/caves/central_caves)
+"aHO" = (
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached16"
+	},
+/area/desert_dam/exterior/valley/valley_wilderness)
 "aHP" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt{
@@ -96356,7 +96361,7 @@ awC
 awC
 dTs
 dTs
-aXv
+aHO
 aPP
 aaC
 aXC
@@ -96602,7 +96607,7 @@ aVZ
 aHd
 dTs
 aOh
-aWz
+dTs
 dTs
 dTs
 dTs
@@ -98708,8 +98713,8 @@ dTs
 dTs
 dTs
 dTs
-dTs
-dTs
+aam
+ayp
 aeE
 aeE
 ayD
@@ -99880,7 +99885,7 @@ dTs
 dTs
 aam
 ayp
-dTs
+aeE
 aeE
 bgH
 dTs

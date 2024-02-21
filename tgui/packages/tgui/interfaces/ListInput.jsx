@@ -161,6 +161,7 @@ export const ListInput = (props) => {
             <Stack.Item>
               <Input
                 fluid
+                autoFocus
                 onInput={(e, value) =>
                   setDisplayedArray(
                     buttons.filter(

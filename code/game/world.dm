@@ -87,10 +87,6 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 	GLOB.obfs_x = rand(-500, 500) //A number between -100 and 100
 	GLOB.obfs_y = rand(-500, 500) //A number between -100 and 100
 
-	spawn(3000) //so we aren't adding to the round-start lag
-		if(CONFIG_GET(flag/ToRban))
-			ToRban_autoupdate()
-
 	// If the server's configured for local testing, get everything set up ASAP.
 	// Shamelessly stolen from the test manager's host_tests() proc
 	if(testing_locally)
@@ -129,8 +125,8 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 	GLOB.world_runtime_log = "[GLOB.log_directory]/runtime.log"
 	GLOB.round_stats = "[GLOB.log_directory]/round_stats.log"
 	GLOB.scheduler_stats = "[GLOB.log_directory]/round_scheduler_stats.log"
-	GLOB.mutator_logs = "[GLOB.log_directory]/mutator_logs.log"
 	GLOB.mapping_log = "[GLOB.log_directory]/mapping.log"
+	GLOB.strain_logs = "[GLOB.log_directory]/strain_logs.log"
 
 	start_log(GLOB.tgui_log)
 	start_log(GLOB.world_href_log)
@@ -139,8 +135,8 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 	start_log(GLOB.world_runtime_log)
 	start_log(GLOB.round_stats)
 	start_log(GLOB.scheduler_stats)
-	start_log(GLOB.mutator_logs)
 	start_log(GLOB.mapping_log)
+	start_log(GLOB.strain_logs)
 
 	if(fexists(GLOB.config_error_log))
 		fcopy(GLOB.config_error_log, "[GLOB.log_directory]/config_error.log")

@@ -25,8 +25,8 @@ GLOBAL_PROTECT(world_runtime_log)
 GLOBAL_VAR(scheduler_stats)
 GLOBAL_PROTECT(scheduler_stats)
 
-GLOBAL_VAR(mutator_logs)
-GLOBAL_PROTECT(mutator_logs)
+GLOBAL_VAR(strain_logs)
+GLOBAL_PROTECT(strain_logs)
 
 GLOBAL_VAR(mapping_log)
 GLOBAL_PROTECT(mapping_log)

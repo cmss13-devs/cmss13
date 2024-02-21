@@ -663,11 +663,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	// weapon info
 
-	data["icon"] = SSassets.transport.get_asset_url("no_name.png")
-
-	if(SSassets.cache["[base_gun_icon].png"])
-		data["icon"] = SSassets.transport.get_asset_url("[base_gun_icon].png")
-
+	data["icon"] = base_gun_icon
 	data["name"] = name
 	data["desc"] = desc
 	data["two_handed_only"] = (flags_gun_features & GUN_WIELDED_FIRING_ONLY)
@@ -727,8 +723,8 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 /obj/item/weapon/gun/ui_assets(mob/user)
 	. = ..() || list()
-	. += get_asset_datum(/datum/asset/simple/firemodes)
-	//. += get_asset_datum(/datum/asset/spritesheet/gun_lineart)
+	. += get_asset_datum(/datum/asset/spritesheet/gun_lineart_modes)
+	. += get_asset_datum(/datum/asset/spritesheet/gun_lineart)
 
 // END TGUI \\
 
@@ -1348,7 +1344,7 @@ and you're good to go.
 	user.next_move = world.time //No click delay on PBs.
 
 	//Point blanking doesn't actually fire the projectile. Instead, it simulates firing the bullet proper.
-	if(!able_to_fire(user)) //If it's a valid PB aside from that you can't fire the gun, do nothing.
+	if(flags_gun_features & GUN_BURST_FIRING || !able_to_fire(user)) //If it's a valid PB aside from that you can't fire the gun, do nothing.
 		return TRUE
 
 	//The following relating to bursts was borrowed from Fire code.

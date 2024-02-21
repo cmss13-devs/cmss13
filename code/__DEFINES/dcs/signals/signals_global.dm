@@ -68,7 +68,7 @@
 #define COMSIG_GLOB_RESEARCH_LOCKDOWN "!research_lockdown_closed"
 #define COMSIG_GLOB_RESEARCH_LIFT "!research_lockdown_opened"
 
-/// From /obj/structure/machinery/power/fusion_engine/proc/set_overloading() : (set_overloading)
+/// From /obj/structure/machinery/power/reactor/proc/set_overloading() : (set_overloading)
 #define COMSIG_GLOB_GENERATOR_SET_OVERLOADING "!generator_set_overloading"
 
 #define COMSIG_GLOB_HIJACK_IMPACTED "!hijack_impacted"

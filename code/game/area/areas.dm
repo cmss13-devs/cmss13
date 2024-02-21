@@ -66,7 +66,7 @@
 	var/powernet_name = "default" //Default powernet name. Change to something else to make completely separate powernets
 	var/requires_power = 1
 	var/unlimited_power = 0
-	var/always_unpowered = 0 //this gets overriden to 1 for space in area/New()
+	var/always_unpowered = 0 //this gets overridden to 1 for space in area/New()
 
 	//which channels are powered
 	var/power_equip = TRUE

@@ -59,8 +59,10 @@
 /atom/movable/screen/action_button/attack_ghost(mob/dead/observer/user)
 	return
 
-/atom/movable/screen/action_button/clicked(mob/user)
+/atom/movable/screen/action_button/clicked(mob/user, list/mods)
 	if(!user || !source_action)
+		return TRUE
+	if(source_action.owner != user)
 		return TRUE
 
 	if(source_action.can_use_action())
@@ -97,7 +99,7 @@
 	icon_state = "hide"
 	var/hidden = 0
 
-/atom/movable/screen/action_button/hide_toggle/clicked(mob/user, mods)
+/atom/movable/screen/action_button/hide_toggle/clicked(mob/user, list/mods)
 	user.hud_used.action_buttons_hidden = !user.hud_used.action_buttons_hidden
 	hidden = user.hud_used.action_buttons_hidden
 	if(hidden)
@@ -107,7 +109,7 @@
 		name = "Hide Buttons"
 		icon_state = "hide"
 	user.update_action_buttons()
-	return 1
+	return TRUE
 
 /atom/movable/screen/action_button/ghost/minimap/get_button_screen_loc(button_number)
 	return "SOUTH:6,CENTER+1:24"
@@ -211,7 +213,7 @@
 		update_icon(user)
 	return 1
 
-/atom/movable/screen/clicked(mob/user)
+/atom/movable/screen/clicked(mob/user, list/mods)
 	if(!user)
 		return TRUE
 
@@ -505,7 +507,11 @@
 	name = "queen locator"
 	icon = 'icons/mob/hud/alien_standard.dmi'
 	icon_state = "trackoff"
-	var/list/track_state = list(TRACKER_QUEEN, 0)
+	/// A weak reference to the atom currently being tracked.
+	/// (Note: This is null for `TRACKER_QUEEN` and `TRACKER_HIVE`, as those are accessed through the user's hive datum.)
+	var/datum/weakref/tracking_ref = null
+	/// The 'category' of the atom currently being tracked. (Defaults to `TRACKER_QUEEN`)
+	var/tracker_type = TRACKER_QUEEN
 
 /atom/movable/screen/queen_locator/clicked(mob/living/carbon/xenomorph/user, mods)
 	if(!istype(user))
@@ -520,34 +526,38 @@
 	if(mods["alt"])
 		var/list/options = list()
 		if(user.hive.living_xeno_queen)
-			options["Queen"] = list(TRACKER_QUEEN, 0)
+			// Don't need weakrefs to this or the hive core, since there's only one possible target.
+			options["Queen"] = list(null, TRACKER_QUEEN)
 
 		if(user.hive.hive_location)
-			options["Hive Core"] = list(TRACKER_HIVE, 0)
+			options["Hive Core"] = list(null, TRACKER_HIVE)
 
-		var/xeno_leader_index = 1
-		for(var/xeno in user.hive.xeno_leader_list)
-			var/mob/living/carbon/xenomorph/xeno_lead = user.hive.xeno_leader_list[xeno_leader_index]
-			if(xeno_lead)
-				options["Xeno Leader [xeno_lead]"] = list(TRACKER_LEADER, xeno_leader_index)
-			xeno_leader_index++
+		for(var/mob/living/carbon/xenomorph/leader in user.hive.xeno_leader_list)
+			options["Xeno Leader [leader]"] = list(leader, TRACKER_LEADER)
 
 		var/list/sorted_tunnels = sort_list_dist(user.hive.tunnels, get_turf(user))
-		var/tunnel_index = 1
-		for(var/obj/structure/tunnel/tunnel in sorted_tunnels)
-			options["Tunnel [tunnel.tunnel_desc]"] = list(TRACKER_TUNNEL, tunnel_index)
-			tunnel_index++
+		for(var/obj/structure/tunnel/tunnel as anything in sorted_tunnels)
+			options["Tunnel [tunnel.tunnel_desc]"] = list(tunnel, TRACKER_TUNNEL)
 
-		var/selected = tgui_input_list(user, "Select what you want the locator to track.", "Locator Options", options)
+		var/list/selected = tgui_input_list(user, "Select what you want the locator to track.", "Locator Options", options)
 		if(selected)
-			track_state = options[selected]
+			var/selected_data = options[selected]
+			tracking_ref = WEAKREF(selected_data[1]) // Weakref to the tracked atom (or null)
+			tracker_type = selected_data[2] // Tracker category
 		return
+
 	if(!user.hive.living_xeno_queen)
 		to_chat(user, SPAN_WARNING("Our hive doesn't have a living queen!"))
 		return FALSE
 	if(HAS_TRAIT(user, TRAIT_ABILITY_BURROWED) || user.is_mob_incapacitated() || user.buckled)
 		return FALSE
 	user.overwatch(user.hive.living_xeno_queen)
+
+// Reset to the defaults
+/atom/movable/screen/queen_locator/proc/reset_tracking()
+	icon_state = "trackoff"
+	tracking_ref = null
+	tracker_type = TRACKER_QUEEN
 
 /atom/movable/screen/xenonightvision
 	icon = 'icons/mob/hud/alien_standard.dmi'

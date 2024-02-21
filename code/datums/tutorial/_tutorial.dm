@@ -52,6 +52,7 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 
 	reservation = SSmapping.request_turf_block_reservation(initial(tutorial_template.width), initial(tutorial_template.height), 1)
 	if(!reservation)
+		abort_tutorial()
 		return FALSE
 
 	var/turf/bottom_left_corner_reservation = reservation.bottom_left_turfs[1]

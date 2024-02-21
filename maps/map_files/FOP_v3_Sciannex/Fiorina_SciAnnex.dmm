@@ -1922,11 +1922,6 @@
 	icon_state = "whitegreenfull"
 	},
 /area/fiorina/tumor/ice_lab)
-"bhf" = (
-/obj/item/fuelCell,
-/obj/structure/surface/rack,
-/turf/open/floor/prison,
-/area/fiorina/maintenance)
 "bht" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib4"
@@ -2034,6 +2029,13 @@
 	icon_state = "floor_plate"
 	},
 /area/fiorina/tumor/aux_engi)
+"blf" = (
+/obj/structure/machinery/power/reactor/colony,
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "bluecorner"
+	},
+/area/fiorina/station/power_ring)
 "blA" = (
 /obj/item/shard{
 	icon_state = "medium";
@@ -3702,13 +3704,6 @@
 	icon_state = "cell_stripe"
 	},
 /area/fiorina/station/medbay)
-"ckx" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/item/fuelCell,
-/turf/open/floor/plating/prison,
-/area/fiorina/station/lowsec)
 "ckA" = (
 /obj/structure/platform,
 /turf/open/floor/prison,
@@ -8237,6 +8232,13 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/botany)
+"eXY" = (
+/obj/structure/platform,
+/obj/structure/reagent_dispensers/fueltank/oxygentank{
+	layer = 2.6
+	},
+/turf/open/floor/prison,
+/area/fiorina/lz/near_lzI)
 "eYr" = (
 /obj/structure/inflatable,
 /obj/structure/barricade/handrail/type_b,
@@ -9209,9 +9211,26 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/oob)
+"fDW" = (
+/obj/structure/machinery/power/reactor/colony,
+/turf/open/floor/prison,
+/area/fiorina/station/power_ring)
 "fEn" = (
 /turf/open/floor/prison,
 /area/fiorina/tumor/ice_lab)
+"fEv" = (
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/structure/surface/rack,
+/turf/open/floor/prison{
+	icon_state = "bluefull"
+	},
+/area/fiorina/station/power_ring)
 "fEH" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/computer/station_alert,
@@ -10840,6 +10859,13 @@
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
+"gFj" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/item/fuel_cell,
+/turf/open/floor/plating/prison,
+/area/fiorina/station/lowsec)
 "gFp" = (
 /obj/structure/inflatable/door,
 /turf/open/floor/prison{
@@ -12901,6 +12927,19 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/oob)
+"hQv" = (
+/obj/structure/platform{
+	dir = 1
+	},
+/obj/item/fuel_cell,
+/obj/structure/platform{
+	dir = 4
+	},
+/obj/structure/platform_decoration{
+	dir = 9
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/station/lowsec)
 "hQM" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -14885,6 +14924,11 @@
 	icon_state = "greenfull"
 	},
 /area/fiorina/tumor/civres)
+"iYQ" = (
+/obj/item/fuel_cell,
+/obj/structure/surface/rack,
+/turf/open/floor/prison,
+/area/fiorina/maintenance)
 "iZm" = (
 /obj/item/trash/chips,
 /obj/structure/machinery/light/double/blue{
@@ -16961,19 +17005,6 @@
 /obj/structure/window/framed/prison/reinforced/hull,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/fiberbush)
-"koy" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/item/fuelCell,
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform_decoration{
-	dir = 9
-	},
-/turf/open/floor/plating/prison,
-/area/fiorina/station/lowsec)
 "koH" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clipboard,
@@ -17213,16 +17244,6 @@
 	icon_state = "blue"
 	},
 /area/fiorina/station/chapel)
-"kwL" = (
-/obj/item/fuelCell,
-/obj/structure/platform,
-/obj/structure/machinery/light/double/blue{
-	dir = 8;
-	pixel_x = -10;
-	pixel_y = 13
-	},
-/turf/open/floor/plating/prison,
-/area/fiorina/station/lowsec)
 "kwT" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/plating/prison,
@@ -17639,16 +17660,6 @@
 	icon_state = "yellow"
 	},
 /area/fiorina/station/lowsec)
-"kIe" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/prop/souto_land/pole{
-	dir = 1
-	},
-/obj/structure/prop/souto_land/streamer{
-	dir = 9
-	},
-/turf/open/floor/wood,
-/area/fiorina/station/park)
 "kIg" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/prison{
@@ -18380,7 +18391,7 @@
 	},
 /area/fiorina/station/lowsec)
 "ldF" = (
-/obj/structure/closet/emcloset,
+/obj/structure/machinery/fuelcell_recycler/full,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "blue"
@@ -18948,6 +18959,16 @@
 	},
 /turf/open/floor/wood,
 /area/fiorina/station/security/wardens)
+"lvt" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/prop/souto_land/pole{
+	dir = 1
+	},
+/obj/structure/prop/souto_land/streamer{
+	dir = 9
+	},
+/turf/open/floor/wood,
+/area/fiorina/station/park)
 "lvy" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan_rightengine"
@@ -19833,6 +19854,18 @@
 	icon_state = "kitchen"
 	},
 /area/fiorina/tumor/civres)
+"lWy" = (
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/structure/surface/rack,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/station/power_ring)
 "lXs" = (
 /obj/item/book/manual/marine_law,
 /obj/item/book/manual/marine_law{
@@ -19949,16 +19982,6 @@
 /obj/item/clipboard,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
-"mbH" = (
-/obj/structure/platform,
-/obj/item/fuelCell,
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
-	pixel_x = 10;
-	pixel_y = 13
-	},
-/turf/open/floor/plating/prison,
-/area/fiorina/station/lowsec)
 "mcr" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/stock_parts/matter_bin/super,
@@ -20280,6 +20303,17 @@
 	icon_state = "floor_plate"
 	},
 /area/fiorina/station/chapel)
+"mok" = (
+/obj/structure/closet/crate/bravo,
+/obj/item/stack/sheet/metal/medium_stack,
+/obj/item/stack/sheet/metal/medium_stack,
+/obj/item/fuel_cell,
+/obj/item/stack/sheet/plasteel,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/prison{
+	icon_state = "bluefull"
+	},
+/area/fiorina/station/power_ring)
 "mom" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/surgery/surgicaldrill,
@@ -22446,6 +22480,13 @@
 	icon_state = "yellowcorner"
 	},
 /area/fiorina/station/lowsec)
+"nAV" = (
+/obj/structure/machinery/fuelcell_recycler/full,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "bluecorner"
+	},
+/area/fiorina/station/power_ring)
 "nBb" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
@@ -23435,10 +23476,6 @@
 	},
 /turf/open/space,
 /area/fiorina/oob)
-"ogs" = (
-/obj/structure/machinery/power/geothermal,
-/turf/open/floor/prison,
-/area/fiorina/station/power_ring)
 "ogM" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/floor/plating/prison,
@@ -24252,17 +24289,6 @@
 	icon_state = "blue"
 	},
 /area/fiorina/station/civres_blue)
-"oEn" = (
-/obj/structure/closet/crate/bravo,
-/obj/item/stack/sheet/metal/medium_stack,
-/obj/item/stack/sheet/metal/medium_stack,
-/obj/item/fuelCell,
-/obj/item/stack/sheet/plasteel,
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/prison{
-	icon_state = "bluefull"
-	},
-/area/fiorina/station/power_ring)
 "oEs" = (
 /obj/structure/barricade/handrail/type_b{
 	layer = 3.5
@@ -24437,13 +24463,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/ice/noweed,
 /area/fiorina/tumor/ice_lab)
-"oIg" = (
-/obj/structure/platform,
-/obj/structure/reagent_dispensers/oxygentank{
-	layer = 2.6
-	},
-/turf/open/floor/prison,
-/area/fiorina/lz/near_lzI)
 "oIq" = (
 /obj/structure/ice/thin/indestructible{
 	dir = 1;
@@ -26306,13 +26325,6 @@
 	icon_state = "floor_plate"
 	},
 /area/fiorina/station/flight_deck)
-"pWl" = (
-/obj/structure/machinery/power/geothermal,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "bluecorner"
-	},
-/area/fiorina/station/power_ring)
 "pWp" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan8"
@@ -27297,13 +27309,6 @@
 	icon_state = "darkredfull2"
 	},
 /area/fiorina/station/research_cells)
-"qBS" = (
-/obj/item/circuitboard/mecha/gygax/targeting,
-/obj/structure/surface/rack,
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
-/area/fiorina/tumor/civres)
 "qBT" = (
 /obj/structure/sink{
 	dir = 4;
@@ -28390,6 +28395,16 @@
 /obj/structure/window/framed/prison/reinforced/hull,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
+"rmJ" = (
+/obj/structure/platform,
+/obj/item/fuel_cell,
+/obj/structure/machinery/light/double/blue{
+	dir = 4;
+	pixel_x = 10;
+	pixel_y = 13
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/station/lowsec)
 "rmX" = (
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_sn_full_cap"
@@ -29539,6 +29554,13 @@
 	icon_state = "whitegreenfull"
 	},
 /area/fiorina/station/medbay)
+"rZM" = (
+/obj/item/circuitboard/exosuit/peripherals/max/targeting,
+/obj/structure/surface/rack,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/fiorina/tumor/civres)
 "rZN" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8
@@ -32882,16 +32904,6 @@
 /obj/item/explosive/grenade/high_explosive/frag,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
-"tVf" = (
-/obj/structure/closet/crate/bravo,
-/obj/item/stack/sheet/metal/medium_stack,
-/obj/item/stack/sheet/metal/medium_stack,
-/obj/item/fuelCell,
-/obj/item/stack/sheet/plasteel,
-/turf/open/floor/prison{
-	icon_state = "bluefull"
-	},
-/area/fiorina/station/power_ring)
 "tVI" = (
 /obj/structure/inflatable/popped/door,
 /turf/open/floor/prison{
@@ -33289,6 +33301,10 @@
 	},
 /turf/open/space/basic,
 /area/fiorina/oob)
+"ugI" = (
+/obj/item/fuel_cell,
+/turf/open/floor/prison,
+/area/fiorina/tumor/aux_engi)
 "ugP" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/trash/plate{
@@ -35984,6 +36000,16 @@
 "vNq" = (
 /turf/closed/wall/r_wall/prison,
 /area/fiorina/station/telecomm/lz1_cargo)
+"vNQ" = (
+/obj/item/fuel_cell,
+/obj/structure/platform,
+/obj/structure/machinery/light/double/blue{
+	dir = 8;
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/station/lowsec)
 "vOm" = (
 /turf/open/floor/prison{
 	dir = 8;
@@ -36292,6 +36318,12 @@
 	icon_state = "greenfull"
 	},
 /area/fiorina/station/transit_hub)
+"vZe" = (
+/obj/structure/closet/emcloset,
+/turf/open/floor/prison{
+	icon_state = "bluecorner"
+	},
+/area/fiorina/station/power_ring)
 "vZs" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/prison{
@@ -36788,6 +36820,16 @@
 	icon_state = "floor_plate"
 	},
 /area/fiorina/station/medbay)
+"woB" = (
+/obj/structure/closet/crate/bravo,
+/obj/item/stack/sheet/metal/medium_stack,
+/obj/item/stack/sheet/metal/medium_stack,
+/obj/item/fuel_cell,
+/obj/item/stack/sheet/plasteel,
+/turf/open/floor/prison{
+	icon_state = "bluefull"
+	},
+/area/fiorina/station/power_ring)
 "wps" = (
 /obj/structure/bed/sofa/south/grey/left,
 /obj/structure/machinery/light/double/blue{
@@ -39041,10 +39083,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/transit_hub)
-"xNw" = (
-/obj/item/fuelCell,
-/turf/open/floor/prison,
-/area/fiorina/tumor/aux_engi)
 "xNG" = (
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/effect/decal/cleanable/blood,
@@ -48787,7 +48825,7 @@ dXG
 swj
 xHV
 dIo
-qBS
+rZM
 sHL
 swj
 dIo
@@ -50740,8 +50778,8 @@ nMm
 aHJ
 jlk
 jlk
-xNw
-xNw
+ugI
+ugI
 jlk
 jlk
 umy
@@ -55642,7 +55680,7 @@ tkj
 oer
 ckZ
 kXD
-kIe
+lvt
 tas
 tas
 tTA
@@ -62438,11 +62476,11 @@ lgS
 eLu
 eLu
 eLu
-bhf
-bhf
+iYQ
+iYQ
 eLu
-bhf
-bhf
+iYQ
+iYQ
 eLu
 eLu
 ppI
@@ -63286,11 +63324,11 @@ lgS
 eLu
 eLu
 eLu
-bhf
-bhf
+iYQ
+iYQ
 eLu
-bhf
-bhf
+iYQ
+iYQ
 eLu
 eLu
 cME
@@ -77444,7 +77482,7 @@ end
 kqC
 wzE
 pah
-kwL
+vNQ
 xbM
 iCN
 qOq
@@ -77655,14 +77693,14 @@ vds
 elO
 ioc
 duF
-koy
+hQv
 gsL
 mOI
 xbM
 qOq
 xbM
 xbM
-ckx
+gFj
 sNN
 goG
 tOM
@@ -77875,7 +77913,7 @@ qOq
 huG
 xbM
 pah
-mbH
+rmJ
 goG
 tOM
 tOM
@@ -80855,8 +80893,8 @@ jyo
 mxQ
 mxQ
 mxQ
-tVf
-oEn
+woB
+mok
 mxQ
 pRx
 tOM
@@ -82119,8 +82157,8 @@ gbf
 pYB
 pYB
 gbf
-pWl
-ogs
+blf
+fDW
 mxQ
 jjg
 mxQ
@@ -82546,7 +82584,7 @@ gbf
 iYe
 bnx
 siy
-nBw
+nAV
 mxQ
 mxQ
 vUZ
@@ -82759,7 +82797,7 @@ doQ
 upM
 vjR
 nBw
-ogs
+fDW
 jjg
 cBn
 rxM
@@ -82958,7 +82996,7 @@ tOM
 xpM
 mxQ
 mxQ
-jzP
+vZe
 ydK
 jzP
 tlj
@@ -82971,7 +83009,7 @@ taS
 jEa
 hPu
 ydK
-pWl
+blf
 mxQ
 mxQ
 jLD
@@ -84018,7 +84056,7 @@ tOM
 xpM
 mxQ
 mxQ
-pYB
+fEv
 uTw
 pYB
 pYB
@@ -84230,7 +84268,7 @@ tOM
 rdt
 rsQ
 mxQ
-gbf
+lWy
 gbf
 gbf
 jMv
@@ -92042,7 +92080,7 @@ xeO
 xfb
 yat
 xeO
-oIg
+eXY
 nGZ
 nGZ
 rJW

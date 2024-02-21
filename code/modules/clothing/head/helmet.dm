@@ -380,7 +380,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 	var/obj/item/storage/internal/headgear/pockets
 	var/storage_slots = 2 // keep in mind, one slot is reserved for garb items
-	var/storage_slots_reserved_for_garb = 1
+	var/storage_slots_reserved_for_garb = 2
 	var/storage_max_w_class = SIZE_TINY // can hold tiny items only, EXCEPT for glasses & metal flask.
 	var/storage_max_storage_space = 4
 
@@ -476,10 +476,10 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 /obj/item/clothing/head/helmet/marine/attackby(obj/item/attacking_item, mob/user)
 	if(istype(attacking_item, /obj/item/ammo_magazine) && world.time > helmet_bash_cooldown && user)
 		var/obj/item/ammo_magazine/M = attacking_item
-		var/ammo_level = "somewhat"
+		var/ammo_level = "more than half full."
 		playsound(user, 'sound/items/trayhit1.ogg', 15, FALSE)
-		if(M.current_rounds > (M.max_rounds/2))
-			ammo_level = "more than half full."
+		if(M.current_rounds == (M.max_rounds/2))
+			ammo_level = "half full."
 		if(M.current_rounds < (M.max_rounds/2))
 			ammo_level = "less than half full."
 		if(M.current_rounds < (M.max_rounds/6))
@@ -669,29 +669,39 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		return FALSE
 
 	if(active_visor)
+		var/visor_to_deactivate = active_visor
+		var/skipped_hud = FALSE
 		var/iterator = 1
-		for(var/hud_type in total_visors)
-			if(hud_type == active_visor)
+		for(var/obj/item/device/helmet_visor/current_visor as anything in total_visors)
+			if(current_visor == active_visor || skipped_hud)
 				if(length(total_visors) > iterator)
-					active_visor = total_visors[(iterator + 1)]
-					toggle_visor(user, total_visors[iterator], TRUE)
+					var/obj/item/device/helmet_visor/next_visor = total_visors[iterator + 1]
+
+					if(!isnull(GLOB.huds[next_visor.hud_type]?.hudusers[user]))
+						iterator++
+						skipped_hud = TRUE
+						continue
+
+					active_visor = next_visor
+					toggle_visor(user, visor_to_deactivate, silent = TRUE) // disables the old visor
 					toggle_visor(user)
 					return active_visor
 				else
 					active_visor = null
-					toggle_visor(user, total_visors[iterator], FALSE)
+					toggle_visor(user, visor_to_deactivate, FALSE)
 					return FALSE
 			iterator++
 
-	if(total_visors[1])
-		active_visor = total_visors[1]
+	for(var/obj/item/device/helmet_visor/new_visor in total_visors)
+
+		if(!isnull(GLOB.huds[new_visor.hud_type]?.hudusers[user]))
+			continue
+
+		active_visor = new_visor
 		toggle_visor(user)
 		return active_visor
 
-	active_visor = null
-	recalculate_visors(user)
 	return FALSE
-
 /datum/action/item_action/cycle_helmet_huds/New(Target, obj/item/holder)
 	. = ..()
 	name = "Cycle helmet HUD"
@@ -772,7 +782,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/covert
 	name = "\improper M10 covert helmet"
-	desc = "An M10 marine helmet version designed for use in darkened enviroments. It is coated with a special anti-reflective paint."
+	desc = "An M10 marine helmet version designed for use in darkened environments. It is coated with a special anti-reflective paint."
 	icon_state = "marsoc_helmet"
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUM

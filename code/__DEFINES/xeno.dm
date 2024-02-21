@@ -361,6 +361,48 @@
 
 #define RESIN_CONSTRUCTION_NO_MAX -1
 
+// -------------- //
+// STRAIN DEFINES //
+// -------------- //
+
+// Facehugger strain flags
+#define FACEHUGGER_WATCHER "Watcher"
+
+// Drone strain flags
+#define DRONE_HEALER "Healer"
+#define DRONE_GARDENER "Gardener"
+
+// Hivelord strain flags
+#define HIVELORD_RESIN_WHISPERER "Resin Whisperer"
+
+// Carrier strain flags
+#define CARRIER_EGGSAC "Eggsac"
+
+// Boiler strain flags
+#define BOILER_TRAPPER "Trapper"
+
+// Runner strain flags
+#define RUNNER_ACIDER "Acider"
+
+// Lurker strain flags
+#define LURKER_VAMPIRE "Vampire"
+
+// Ravager strain flags
+#define RAVAGER_HEDGEHOG "Hedgehog"
+#define RAVAGER_BERSERKER "Berserker"
+
+// Defender strain flags
+#define DEFENDER_STEELCREST "Steelcrest"
+
+// Crusher strain flags
+#define CRUSHER_CHARGER "Charger"
+
+// Praetorian strain flags
+#define PRAETORIAN_VANGUARD "Vanguard"
+#define PRAETORIAN_DANCER "Dancer"
+#define PRAETORIAN_WARDEN "Warden"
+#define PRAETORIAN_OPPRESSOR "Oppressor"
+
 /////////////////////////////////////////////////////////////////////////////////////
 //
 // Modifiers
@@ -660,7 +702,7 @@
 // PARAMETERS:
 // source_hive integer  the hive to check the alliance of
 // target_hive  integer  the target hive to see if the source_hive is allied to it.
-#define HIVE_ALLIED_TO_HIVE(source_hive, target_hive) (source_hive == target_hive || GLOB.hive_datum[source_hive]?.faction_is_ally(GLOB.hive_datum[target_hive]?.internal_faction))
+#define HIVE_ALLIED_TO_HIVE(source_hive, target_hive) ((source_hive) == (target_hive) || GLOB.hive_datum[source_hive]?.faction_is_ally(GLOB.hive_datum[target_hive]?.internal_faction))
 
 #define QUEEN_SPAWN_TIMEOUT (2 MINUTES)
 

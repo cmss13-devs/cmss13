@@ -308,13 +308,13 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	dat += "<center>"
 	dat += "<a[current_menu == MENU_MARINE ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_MARINE]\"><b>Human</b></a> - "
 	dat += "<a[current_menu == MENU_XENOMORPH ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_XENOMORPH]\"><b>Xenomorph</b></a> - "
-	if(GLOB.RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_COMMANDER)
+	if(owner.check_whitelist_status(WHITELIST_COMMANDER))
 		dat += "<a[current_menu == MENU_CO ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_CO]\"><b>Commanding Officer</b></a> - "
-	if(GLOB.RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_SYNTHETIC)
+	if(owner.check_whitelist_status(WHITELIST_SYNTHETIC))
 		dat += "<a[current_menu == MENU_SYNTHETIC ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_SYNTHETIC]\"><b>Synthetic</b></a> - "
-	if(GLOB.RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_PREDATOR)
+	if(owner.check_whitelist_status(WHITELIST_PREDATOR))
 		dat += "<a[current_menu == MENU_YAUTJA ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_YAUTJA]\"><b>Yautja</b></a> - "
-	if(GLOB.RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_MENTOR)
+	if(owner.check_whitelist_status(WHITELIST_MENTOR))
 		dat += "<a[current_menu == MENU_MENTOR ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_MENTOR]\"><b>Mentor</b></a> - "
 	dat += "<a[current_menu == MENU_SETTINGS ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_SETTINGS]\"><b>Settings</b></a> - "
 	dat += "<a[current_menu == MENU_SPECIAL ? " class='linkOff'" : ""] href=\"byond://?src=\ref[user];preference=change_menu;menu=[MENU_SPECIAL]\"><b>Special Roles</b></a>"
@@ -484,7 +484,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 				n++
 		if(MENU_CO)
-			if(GLOB.RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_COMMANDER)
+			if(owner.check_whitelist_status(WHITELIST_COMMANDER))
 				dat += "<div id='column1'>"
 				dat += "<h2><b><u>Commander Settings:</u></b></h2>"
 				dat += "<b>Commander Whitelist Status:</b> <a href='?_src_=prefs;preference=commander_status;task=input'><b>[commander_status]</b></a><br>"
@@ -494,7 +494,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			else
 				dat += "<b>You do not have the whitelist for this role.</b>"
 		if(MENU_SYNTHETIC)
-			if(GLOB.RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_SYNTHETIC)
+			if(owner.check_whitelist_status(WHITELIST_SYNTHETIC))
 				dat += "<div id='column1'>"
 				dat += "<h2><b><u>Synthetic Settings:</u></b></h2>"
 				dat += "<b>Synthetic Name:</b> <a href='?_src_=prefs;preference=synth_name;task=input'><b>[synthetic_name]</b></a><br>"
@@ -504,7 +504,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			else
 				dat += "<b>You do not have the whitelist for this role.</b>"
 		if(MENU_YAUTJA)
-			if(GLOB.RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_PREDATOR)
+			if(owner.check_whitelist_status(WHITELIST_PREDATOR))
 				dat += "<div id='column1'>"
 				dat += "<h2><b><u>Yautja Information:</u></b></h2>"
 				dat += "<b>Yautja Name:</b> <a href='?_src_=prefs;preference=pred_name;task=input'><b>[predator_name]</b></a><br>"
@@ -518,7 +518,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 				dat += "<div id='column2'>"
 				dat += "<h2><b><u>Equipment Setup:</u></b></h2>"
-				if(GLOB.RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_YAUTJA_LEGACY)
+				if(owner.check_whitelist_status(WHITELIST_YAUTJA_LEGACY))
 					dat += "<b>Legacy Gear:</b> <a href='?_src_=prefs;preference=pred_use_legacy;task=input'><b>[predator_use_legacy]</b></a><br>"
 				dat += "<b>Translator Type:</b> <a href='?_src_=prefs;preference=pred_trans_type;task=input'><b>[predator_translator_type]</b></a><br>"
 				dat += "<b>Mask Style:</b> <a href='?_src_=prefs;preference=pred_mask_type;task=input'><b>([predator_mask_type])</b></a><br>"
@@ -542,7 +542,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			else
 				dat += "<b>You do not have the whitelist for this role.</b>"
 		if(MENU_MENTOR)
-			if(GLOB.RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_MENTOR)
+			if(owner.check_whitelist_status(WHITELIST_MENTOR))
 				dat += "<b>Nothing here. For now.</b>"
 			else
 				dat += "<b>You do not have the whitelist for this role.</b>"
@@ -636,7 +636,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			dat += "<b>Spawn as Engineer:</b> <a href='?_src_=prefs;preference=toggles_ert;flag=[PLAY_ENGINEER]'><b>[toggles_ert & PLAY_ENGINEER ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Spawn as Specialist:</b> <a href='?_src_=prefs;preference=toggles_ert;flag=[PLAY_HEAVY]'><b>[toggles_ert & PLAY_HEAVY ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Spawn as Smartgunner:</b> <a href='?_src_=prefs;preference=toggles_ert;flag=[PLAY_SMARTGUNNER]'><b>[toggles_ert & PLAY_SMARTGUNNER ? "Yes" : "No"]</b></a><br>"
-			if(GLOB.RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_SYNTHETIC)
+			if(owner.check_whitelist_status(WHITELIST_SYNTHETIC))
 				dat += "<b>Spawn as Synth:</b> <a href='?_src_=prefs;preference=toggles_ert;flag=[PLAY_SYNTH]'><b>[toggles_ert & PLAY_SYNTH ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Spawn as Miscellaneous:</b> <a href='?_src_=prefs;preference=toggles_ert;flag=[PLAY_MISC]'><b>[toggles_ert & PLAY_MISC ? "Yes" : "No"]</b></a><br>"
 			dat += "</div>"
@@ -684,7 +684,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 		if(jobban_isbanned(user, job.title))
 			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='center'></td><td><b>BANNED</b></td></tr>"
 			continue
-		else if(job.flags_startup_parameters & ROLE_WHITELISTED && !(GLOB.RoleAuthority.roles_whitelist[user.ckey] & job.flags_whitelist))
+		else if(!job.check_whitelist_status(user))
 			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='center'></td><td>WHITELISTED</td></tr>"
 			continue
 		else if(!job.can_play_role(user.client))
@@ -796,7 +796,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 		if(jobban_isbanned(user, job.title))
 			HTML += "<b><del>[job.disp_title]</del></b></td><td width='60%'><b>BANNED</b></td></tr>"
 			continue
-		else if(job.flags_startup_parameters & ROLE_WHITELISTED && !(GLOB.RoleAuthority.roles_whitelist[user.ckey] & job.flags_whitelist))
+		else if(!job.check_whitelist_status(user))
 			HTML += "<b><del>[job.disp_title]</del></b></td><td width='60%'>WHITELISTED</td></tr>"
 			continue
 		else if(!job.can_play_role(user.client))
@@ -962,7 +962,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 		pref_job_slots[J.title] = JOB_SLOT_CURRENT_SLOT
 
 /datum/preferences/proc/process_link(mob/user, list/href_list)
-	var/whitelist_flags = GLOB.RoleAuthority.roles_whitelist[user.ckey]
+
 
 	switch(href_list["preference"])
 		if("job")
@@ -1198,6 +1198,9 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 				if ("all")
 					randomize_appearance()
 		if("input")
+			var/datum/entity/player/player = get_player_from_key(user.ckey)
+			var/whitelist_flags = player.whitelist_flags
+
 			switch(href_list["preference"])
 				if("name")
 					if(human_name_ban)
@@ -1286,7 +1289,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					predator_caster_material = new_pred_caster_mat
 				if("pred_cape_type")
 					var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
-					var/whitelist_status = GLOB.clan_ranks_ordered[J.get_whitelist_status(GLOB.RoleAuthority.roles_whitelist, owner)]
+					var/whitelist_status = GLOB.clan_ranks_ordered[J.get_whitelist_status(owner)]
 
 					var/list/options = list("None" = "None")
 					for(var/cape_name in GLOB.all_yautja_capes)
@@ -1325,7 +1328,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 					if(whitelist_flags & (WHITELIST_COMMANDER_COUNCIL|WHITELIST_COMMANDER_COUNCIL_LEGACY))
 						options += list("Council" = WHITELIST_COUNCIL)
-					if(whitelist_flags & WHITELIST_COMMANDER_LEADER)
+					if(whitelist_flags & (WHITELIST_COMMANDER_LEADER|WHITELIST_COMMANDER_COLONEL))
 						options += list("Leader" = WHITELIST_LEADER)
 
 					var/new_commander_status = tgui_input_list(user, "Choose your new Commander Whitelist Status.", "Commander Status", options)

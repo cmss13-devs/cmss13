@@ -391,75 +391,52 @@ Make sure their actual health updates immediately.*/
 	hud_set_plasma() //update plasma amount on the plasma mob_hud
 
 /mob/living/carbon/xenomorph/proc/queen_locator()
-	if(!hud_used || !hud_used.locate_leader)
+	if(!hud_used?.locate_leader)
 		return
 
-	var/atom/movable/screen/queen_locator/QL = hud_used.locate_leader
-	if(!loc)
-		QL.icon_state = "trackoff"
+	var/atom/movable/screen/queen_locator/locator = hud_used.locate_leader
+	if(!loc || !hive)
+		locator.reset_tracking()
 		return
 
 	var/atom/tracking_atom
-	switch(QL.track_state[1])
+	switch(locator.tracker_type)
 		if(TRACKER_QUEEN)
-			if(!hive || !hive.living_xeno_queen)
-				QL.icon_state = "trackoff"
-				return
 			tracking_atom = hive.living_xeno_queen
 		if(TRACKER_HIVE)
-			if(!hive || !hive.hive_location)
-				QL.icon_state = "trackoff"
-				return
 			tracking_atom = hive.hive_location
 		if(TRACKER_LEADER)
-			if(!QL.track_state[2])
-				QL.icon_state = "trackoff"
-				return
-
-			var/leader_tracker = QL.track_state[2]
-
-			if(!hive || !hive.xeno_leader_list)
-				QL.icon_state = "trackoff"
-				return
-			if(leader_tracker > hive.xeno_leader_list.len)
-				QL.icon_state = "trackoff"
-				return
-			if(!hive.xeno_leader_list[leader_tracker])
-				QL.icon_state = "trackoff"
-				return
-			tracking_atom = hive.xeno_leader_list[leader_tracker]
+			var/atom/leader = locator.tracking_ref?.resolve()
+			// If the leader exists, and is actually in the leader list.
+			if(leader && (leader in hive.xeno_leader_list))
+				tracking_atom = leader
 		if(TRACKER_TUNNEL)
-			if(!QL.track_state[2])
-				QL.icon_state = "trackoff"
-				return
+			tracking_atom = locator.tracking_ref?.resolve()
 
-			var/tunnel_tracker = QL.track_state[2]
-
-			if(!hive || !hive.tunnels)
-				QL.icon_state = "trackoff"
-				return
-			if(tunnel_tracker > hive.tunnels.len)
-				QL.icon_state = "trackoff"
-				return
-			if(!hive.tunnels[tunnel_tracker])
-				QL.icon_state = "trackoff"
-				return
-			tracking_atom = hive.tunnels[tunnel_tracker]
-
+	// If the atom can't be found/has been deleted.
 	if(!tracking_atom)
-		QL.icon_state = "trackoff"
+		var/already_tracking_queen = (locator.tracker_type == TRACKER_QUEEN)
+
+		// Reset the tracker back to the queen.
+		locator.reset_tracking()
+
+		// If it wasn't the queen that couldn't be found above, try again with her as the target.
+		// This is just to avoid the tracker going blank for one life tick.
+		// (There's no risk of an infinite loop here since `locator.tracker_type` just got set to `TRACKER_QUEEN`.)
+		if(!already_tracking_queen)
+			queen_locator()
 		return
 
 	if(tracking_atom.loc.z != loc.z || get_dist(src, tracking_atom) < 1 || src == tracking_atom)
-		QL.icon_state = "trackondirect"
+		locator.icon_state = "trackondirect"
 	else
-		var/area/A = get_area(loc)
-		var/area/QA = get_area(tracking_atom.loc)
-		if(A.fake_zlevel == QA.fake_zlevel)
-			QL.setDir(Get_Compass_Dir(src, tracking_atom))
-			QL.icon_state = "trackon"
+		var/area/our_area = get_area(loc)
+		var/area/target_area = get_area(tracking_atom.loc)
+		if(our_area.fake_zlevel == target_area.fake_zlevel)
+			locator.setDir(Get_Compass_Dir(src, tracking_atom))
+			locator.icon_state = "trackon"
 		else
-			QL.icon_state = "trackondirect"
+			locator.icon_state = "trackondirect"
 
 /mob/living/carbon/xenomorph/proc/mark_locator()
 	if(!hud_used || !hud_used.locate_marker || !tracked_marker.loc || !loc)
@@ -529,6 +506,7 @@ Make sure their actual health updates immediately.*/
 /mob/living/carbon/xenomorph/proc/handle_crit()
 	if(stat <= CONSCIOUS && !gibbing)
 		set_stat(UNCONSCIOUS)
+		SEND_SIGNAL(src, COMSIG_XENO_ENTER_CRIT)
 
 /mob/living/carbon/xenomorph/set_stat(new_stat)
 	. = ..()

@@ -1,0 +1,5 @@
+author: "Huffie56"
+delete-after: True
+changes:
+  - refactor: "refactored files with the aim of making fixing barricade with a welder more constant."
+  - bugfix: "being unable to repair more than one metal barricade at the time."

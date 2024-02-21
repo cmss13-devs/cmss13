@@ -6021,9 +6021,7 @@
 /obj/structure/bed/chair/dropship/pilot{
 	dir = 1
 	},
-/turf/open/shuttle{
-	icon_state = "floor7"
-	},
+/turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "aUz" = (
 /turf/closed/shuttle/ert{
@@ -6032,9 +6030,7 @@
 /area/shiva/interior/aerodrome)
 "aUA" = (
 /obj/structure/girder/reinforced,
-/turf/open/shuttle{
-	icon_state = "floor7"
-	},
+/turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "aUM" = (
 /turf/open/floor/shiva{
@@ -6159,9 +6155,7 @@
 	icon_state = "equip_base";
 	name = "shuttle attachment point"
 	},
-/turf/open/shuttle{
-	icon_state = "floor7"
-	},
+/turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "aVF" = (
 /obj/structure/surface/table,
@@ -6173,15 +6167,11 @@
 	},
 /area/shiva/interior/colony/medseceng)
 "aVL" = (
-/turf/open/shuttle{
-	icon_state = "floor7"
-	},
+/turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "aVM" = (
 /obj/item/weapon/gun/pistol/holdout,
-/turf/open/shuttle{
-	icon_state = "floor7"
-	},
+/turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "aVN" = (
 /turf/closed/shuttle/ert{
@@ -6228,9 +6218,7 @@
 /area/shiva/interior/aerodrome)
 "aVU" = (
 /obj/item/stack/sheet/metal,
-/turf/open/shuttle{
-	icon_state = "floor7"
-	},
+/turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "aWb" = (
 /obj/structure/foamed_metal,
@@ -6310,18 +6298,14 @@
 	},
 /area/shiva/interior/aerodrome)
 "aWS" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin14"
-	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_left_to_right,
 /area/shiva/interior/aerodrome)
 "aWT" = (
 /obj/item/ammo_magazine/pistol/holdout{
 	pixel_x = 6;
 	pixel_y = -4
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin14"
-	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_left_to_right,
 /area/shiva/interior/aerodrome)
 "aWU" = (
 /turf/closed/shuttle/ert{
@@ -6598,17 +6582,13 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/shiva/interior/aerodrome)
 "bbg" = (
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 8
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/shiva/interior/aerodrome)
 "bbh" = (
 /turf/closed/shuttle/ert{
@@ -6950,9 +6930,7 @@
 /area/shiva/interior/colony/research_hab)
 "bqN" = (
 /obj/structure/machinery/door/airlock/almayer/generic,
-/turf/open/shuttle{
-	icon_state = "floor7"
-	},
+/turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "bqO" = (
 /obj/effect/decal/cleanable/blood,
@@ -7282,6 +7260,12 @@
 /obj/item/device/motiondetector/hacked,
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
+"bIP" = (
+/obj/structure/machinery/power/reactor/colony,
+/turf/open/floor/shiva{
+	dir = 1
+	},
+/area/shiva/interior/garage)
 "bIV" = (
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard/cp_bar)
@@ -7383,9 +7367,7 @@
 /area/shiva/interior/lz2_habs)
 "bOh" = (
 /obj/effect/landmark/survivor_spawner,
-/turf/open/shuttle{
-	icon_state = "floor7"
-	},
+/turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "bPu" = (
 /obj/item/bodybag,
@@ -7582,9 +7564,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/shuttle{
-	icon_state = "floor7"
-	},
+/turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "bYS" = (
 /obj/structure/machinery/light/double,
@@ -7621,9 +7601,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/shuttle{
-	icon_state = "floor7"
-	},
+/turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "cbt" = (
 /obj/structure/surface/table,
@@ -7773,9 +7751,7 @@
 /area/shiva/interior/colony/research_hab)
 "clp" = (
 /obj/item/tool/weldingtool,
-/turf/open/shuttle{
-	icon_state = "floor7"
-	},
+/turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "clz" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage{
@@ -9233,10 +9209,6 @@
 "dYp" = (
 /turf/closed/wall/shiva/ice,
 /area/shiva/interior/bar)
-"dYw" = (
-/obj/structure/machinery/defenses/sentry/premade,
-/turf/open/auto_turf/snow/layer0,
-/area/shiva/exterior/junkyard)
 "dZb" = (
 /obj/structure/closet/secure_closet/guncabinet,
 /obj/structure/machinery/firealarm{
@@ -9781,9 +9753,7 @@
 /area/shiva/interior/colony/n_admin)
 "eHL" = (
 /obj/item/tool/wrench,
-/turf/open/shuttle{
-	icon_state = "floor7"
-	},
+/turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "eHY" = (
 /obj/item/lightstick/red/spoke/planted{
@@ -10321,9 +10291,7 @@
 	name = "shuttle attachment point"
 	},
 /obj/item/storage/firstaid/fire,
-/turf/open/shuttle{
-	icon_state = "floor7"
-	},
+/turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "fpF" = (
 /obj/structure/stairs/perspective/ice{
@@ -10800,6 +10768,14 @@
 /obj/structure/window/framed/shiva,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
+"fNR" = (
+/obj/structure/surface/rack,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/turf/open/floor/shiva{
+	icon_state = "yellow"
+	},
+/area/shiva/interior/garage)
 "fOa" = (
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = -11
@@ -10935,6 +10911,13 @@
 	icon_state = "floor3"
 	},
 /area/shiva/interior/aerodrome)
+"fWJ" = (
+/obj/structure/machinery/power/reactor/colony,
+/turf/open/floor/shiva{
+	dir = 8;
+	icon_state = "yellowfull"
+	},
+/area/shiva/interior/lz2_habs)
 "fXp" = (
 /obj/structure/prop/invuln{
 	desc = "The mounting points are ground down from heavy use. They'll need some maintenance work before they can be used again.";
@@ -10946,9 +10929,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/shuttle{
-	icon_state = "floor7"
-	},
+/turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "fXr" = (
 /obj/item/lightstick/red/spoke/planted{
@@ -11975,6 +11956,17 @@
 	dir = 1
 	},
 /area/shiva/interior/colony/central)
+"hat" = (
+/obj/structure/surface/rack,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/turf/open/floor/shiva{
+	dir = 10;
+	icon_state = "yellow"
+	},
+/area/shiva/interior/garage)
 "hbo" = (
 /obj/structure/platform/strata,
 /turf/open/auto_turf/ice/layer1,
@@ -12036,10 +12028,13 @@
 	icon_state = "wred"
 	},
 /area/shiva/interior/colony/medseceng)
-"hgx" = (
-/obj/structure/machinery/power/geothermal,
-/turf/open/floor/plating,
-/area/shiva/interior/colony/medseceng)
+"hgk" = (
+/obj/structure/machinery/fuelcell_recycler/full,
+/turf/open/floor/shiva{
+	dir = 6;
+	icon_state = "yellow"
+	},
+/area/shiva/interior/garage)
 "hgI" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/auto_turf/snow/layer2,
@@ -14772,6 +14767,10 @@
 	icon_state = "floor3"
 	},
 /area/shiva/exterior/lz2_fortress)
+"jTR" = (
+/obj/structure/machinery/power/reactor/colony,
+/turf/open/floor/plating,
+/area/shiva/interior/colony/medseceng)
 "jTT" = (
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 6
@@ -15883,13 +15882,6 @@
 	icon_state = "yellowfull"
 	},
 /area/shiva/interior/colony/research_hab)
-"kTN" = (
-/obj/structure/machinery/power/geothermal,
-/turf/open/floor/shiva{
-	dir = 8;
-	icon_state = "yellowfull"
-	},
-/area/shiva/interior/lz2_habs)
 "kTP" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/auto_turf/snow/layer1,
@@ -22149,12 +22141,6 @@
 /obj/structure/largecrate/random,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
-"rHQ" = (
-/obj/structure/machinery/power/geothermal,
-/turf/open/floor/shiva{
-	dir = 1
-	},
-/area/shiva/interior/garage)
 "rIj" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/shiva{
@@ -22242,9 +22228,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/shiva/interior/aerodrome)
 "rNO" = (
 /obj/structure/prop/ice_colony/soil_net,
@@ -22279,9 +22263,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/shiva/interior/aerodrome)
 "rRb" = (
 /obj/structure/surface/rack,
@@ -26366,9 +26348,7 @@
 /area/shiva/exterior/lz2_fortress)
 "vVq" = (
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin14"
-	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_left_to_right,
 /area/shiva/interior/aerodrome)
 "vWf" = (
 /obj/item/handcuffs,
@@ -27232,6 +27212,12 @@
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
+"wZO" = (
+/obj/structure/machinery/fuelcell_recycler/full,
+/turf/open/floor/shiva{
+	icon_state = "yellow"
+	},
+/area/shiva/interior/garage)
 "wZW" = (
 /obj/structure/bed,
 /turf/open/floor/wood,
@@ -27561,9 +27547,7 @@
 	name = "shuttle attachment point"
 	},
 /obj/item/storage/firstaid/adv,
-/turf/open/shuttle{
-	icon_state = "floor7"
-	},
+/turf/open/shuttle/can_surgery/black,
 /area/shiva/interior/aerodrome)
 "xzo" = (
 /obj/item/lightstick/red/spoke/planted{
@@ -37113,7 +37097,7 @@ puZ
 puZ
 puZ
 anc
-kTN
+fWJ
 mCn
 uRi
 xQJ
@@ -37437,7 +37421,7 @@ puZ
 puZ
 puZ
 anc
-kTN
+fWJ
 mCn
 cce
 xQJ
@@ -37761,7 +37745,7 @@ puZ
 puZ
 puZ
 anc
-kTN
+fWJ
 mCn
 cce
 xQJ
@@ -45675,7 +45659,7 @@ kyD
 tHd
 pDr
 tHd
-dYw
+kyD
 kyD
 kyD
 kyD
@@ -45837,7 +45821,7 @@ tHd
 kyD
 pDr
 kyD
-dYw
+kyD
 kyD
 kyD
 kyD
@@ -53228,7 +53212,7 @@ ver
 ver
 ver
 fEO
-oDM
+hat
 ktd
 bFg
 bIV
@@ -53390,7 +53374,7 @@ ver
 ver
 ver
 ver
-pSD
+fNR
 ktd
 cZk
 bIV
@@ -54200,7 +54184,7 @@ aAh
 ver
 ver
 ver
-pSD
+wZO
 ktd
 cZk
 bFg
@@ -54362,7 +54346,7 @@ ver
 ver
 ver
 pNf
-aCA
+hgk
 ktd
 gJo
 lTc
@@ -55003,11 +54987,11 @@ oQl
 oQl
 oQl
 ktd
-rHQ
+bIP
 tXd
 aAh
 pSD
-rHQ
+bIP
 ktd
 oQl
 oQl
@@ -55165,11 +55149,11 @@ oQl
 oQl
 oQl
 ktd
-rHQ
+bIP
 ush
 vUL
 aCA
-rHQ
+bIP
 ktd
 oQl
 oQl
@@ -55328,9 +55312,9 @@ oQl
 oQl
 ktd
 ktd
-rHQ
-rHQ
-rHQ
+bIP
+bIP
+bIP
 ktd
 ktd
 oQl
@@ -58347,16 +58331,16 @@ acT
 qDT
 eAZ
 acT
-hgx
+jTR
 cso
 agh
-hgx
-hgx
-hgx
-hgx
+jTR
+jTR
+jTR
+jTR
 agh
 cso
-hgx
+jTR
 acT
 aii
 agh
@@ -58509,7 +58493,7 @@ aDn
 eAZ
 eAZ
 aDn
-hgx
+jTR
 cso
 agh
 cso
@@ -58518,7 +58502,7 @@ cso
 cso
 agh
 cso
-hgx
+jTR
 acT
 acT
 aii
@@ -58674,10 +58658,10 @@ aek
 eXL
 cso
 agh
-hgx
-hgx
-hgx
-hgx
+jTR
+jTR
+jTR
+jTR
 agh
 cso
 qdd

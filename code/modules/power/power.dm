@@ -81,7 +81,7 @@
 	if(has_power || !src.needs_power)
 		if(machine_processing)
 			if(stat & NOPOWER)
-				addToListNoDupe(GLOB.processing_machines, src) // power interupted us, start processing again
+				addToListNoDupe(GLOB.processing_machines, src) // power interrupted us, start processing again
 		stat &= ~NOPOWER
 		src.update_use_power(USE_POWER_IDLE)
 

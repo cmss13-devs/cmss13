@@ -277,7 +277,7 @@
 
 // Helpers
 /// Only use the CEILING_PROTECTION_TIER_X defines for `protection_level`
-#define CEILING_IS_PROTECTED(ceiling, protection_level) (ceiling >= protection_level)
+#define CEILING_IS_PROTECTED(ceiling, protection_level) ((ceiling) >= (protection_level))
 
 // Default font settings
 #define FONT_SIZE "5pt"
@@ -530,7 +530,7 @@
 /// `amount` - The number to get per time
 /// `time` - The time period in which to gain this amount
 /// To be used with delta_time. Multiplied by 10 to convert from deciseconds to seconds
-#define AMOUNT_PER_TIME(amount, time) ((amount / (time))*10)
+#define AMOUNT_PER_TIME(amount, time) (((amount) / (time))*10)
 
 // Local message mode. Used to decide wheter message should be dispatched on the radio.
 #define MESSAGE_MODE_LOCAL 1

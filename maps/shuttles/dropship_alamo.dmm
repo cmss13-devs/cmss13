@@ -101,7 +101,7 @@
 /area/shuttle/drop1/sulaco)
 "if" = (
 /obj/structure/shuttle/part/dropship1/left_outer_wing_connector,
-/turf/open/space/basic,
+/turf/template_noop,
 /area/shuttle/drop1/sulaco)
 "ig" = (
 /turf/closed/shuttle/dropship1{
@@ -218,7 +218,7 @@
 /area/shuttle/drop1/sulaco)
 "rl" = (
 /obj/structure/shuttle/part/dropship1/lower_right_wall,
-/turf/open/space/basic,
+/turf/template_noop,
 /area/shuttle/drop1/sulaco)
 "rr" = (
 /turf/closed/shuttle/dropship1/transparent{
@@ -239,7 +239,7 @@
 /area/shuttle/drop1/sulaco)
 "sA" = (
 /obj/structure/shuttle/part/dropship1/lower_left_wall,
-/turf/open/space/basic,
+/turf/template_noop,
 /area/shuttle/drop1/sulaco)
 "tR" = (
 /obj/item/device/radio/intercom/alamo{
@@ -279,7 +279,7 @@
 /area/shuttle/drop1/sulaco)
 "xM" = (
 /obj/structure/shuttle/part/dropship1/bottom_right_wall,
-/turf/open/space/basic,
+/turf/template_noop,
 /area/shuttle/drop1/sulaco)
 "yQ" = (
 /turf/closed/shuttle/dropship1/transparent{
@@ -288,7 +288,7 @@
 /area/shuttle/drop1/sulaco)
 "yU" = (
 /obj/structure/shuttle/part/dropship1/bottom_left_wall,
-/turf/open/space/basic,
+/turf/template_noop,
 /area/shuttle/drop1/sulaco)
 "zw" = (
 /obj/structure/shuttle/part/dropship1/transparent/upper_left_wing,
@@ -358,7 +358,7 @@
 /area/shuttle/drop1/sulaco)
 "EN" = (
 /obj/structure/shuttle/part/dropship1/transparent/engine_left_exhaust,
-/turf/open/space/basic,
+/turf/template_noop,
 /area/shuttle/drop1/sulaco)
 "FA" = (
 /obj/structure/shuttle/part/dropship1/transparent/engine_left_cap,
@@ -408,7 +408,7 @@
 /area/shuttle/drop1/sulaco)
 "Jm" = (
 /obj/structure/shuttle/part/dropship1/transparent/engine_right_exhaust,
-/turf/open/space/basic,
+/turf/template_noop,
 /area/shuttle/drop1/sulaco)
 "JP" = (
 /turf/closed/shuttle/dropship1{
@@ -442,7 +442,7 @@
 /area/shuttle/drop1/sulaco)
 "Me" = (
 /obj/structure/shuttle/part/dropship1/left_inner_wing_connector,
-/turf/open/space/basic,
+/turf/template_noop,
 /area/shuttle/drop1/sulaco)
 "MP" = (
 /turf/closed/shuttle/dropship1{
@@ -539,7 +539,7 @@
 /area/shuttle/drop1/sulaco)
 "Ta" = (
 /obj/structure/shuttle/part/dropship1/right_inner_wing_connector,
-/turf/open/space/basic,
+/turf/template_noop,
 /area/shuttle/drop1/sulaco)
 "Te" = (
 /obj/structure/shuttle/part/dropship1/transparent/right_inner_bottom_wing,
@@ -609,7 +609,7 @@
 /area/shuttle/drop1/sulaco)
 "Wg" = (
 /obj/structure/shuttle/part/dropship1/right_outer_wing_connector,
-/turf/open/space/basic,
+/turf/template_noop,
 /area/shuttle/drop1/sulaco)
 "WQ" = (
 /turf/closed/shuttle/dropship1{

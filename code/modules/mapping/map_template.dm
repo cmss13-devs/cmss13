@@ -73,7 +73,7 @@
 			if(istype(movable_in_turf, /obj/docking_port/stationary))
 				ports += movable_in_turf
 
-		// Not sure if there is some importance here to make sure the area is in z
+	// Not sure if there is some importance here to make sure the area is in z
 	// first or not.  Its defined In Initialize yet its run first in templates
 	// BEFORE so... hummm
 	SSmapping.reg_in_areas_in_z(areas)
@@ -82,13 +82,11 @@
 
 	SSatoms.InitializeAtoms(areas + turfs + movables, returns_created_atoms ? created_atoms : null)
 
-//	for(var/turf/unlit as anything in turfs)
-//		if(unlit.space_lit)
-//			continue
-//		var/area/loc_area = unlit.loc
-//		if(!loc_area.static_lighting)
-//			continue
-//		unlit.lighting_build_overlay()
+	for(var/turf/unlit as anything in turfs)
+		var/area/loc_area = unlit.loc
+		if(!loc_area.static_lighting)
+			continue
+		unlit.static_lighting_build_overlay()
 
 /datum/map_template/proc/load_new_z(secret = FALSE)
 	var/x = round((world.maxx - width) * 0.5) + 1

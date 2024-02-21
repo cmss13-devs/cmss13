@@ -2599,7 +2599,7 @@
 	assignment = JOB_UPP_COMBAT_SYNTH
 	rank = JOB_UPP_COMBAT_SYNTH
 	paygrade = PAY_SHORT_SYN
-	idtype = /obj/item/card/id/gold
+	idtype = /obj/item/card/id/dogtag
 
 /datum/equipment_preset/upp/synth/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(50;MALE,50;FEMALE)
@@ -2638,7 +2638,6 @@
 	new_human.set_species(SYNTH_GEN_THREE)
 
 /datum/equipment_preset/upp/synth/load_gear(mob/living/carbon/human/new_human)
-	load_name(new_human)
 	//back
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/compact, WEAR_IN_BACK) //1

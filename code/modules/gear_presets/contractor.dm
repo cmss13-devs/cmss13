@@ -395,7 +395,6 @@
 	new_human.set_species(SYNTH_GEN_THREE)
 
 /datum/equipment_preset/contractor/duty/synth/load_gear(mob/living/carbon/human/new_human)
-	load_name(new_human)
 	//back
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/smartpack/black, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator, WEAR_IN_BACK) //1
@@ -782,7 +781,6 @@
 	new_human.set_species(SYNTH_GEN_THREE)
 
 /datum/equipment_preset/contractor/covert/synth/load_gear(mob/living/carbon/human/new_human)
-	load_name(new_human)
 	//back
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/smartpack/black, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator, WEAR_IN_BACK) //1

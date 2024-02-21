@@ -82,13 +82,3 @@
 	reaper_grenade.forceMove(get_turf(reaper_spit))
 	reaper_grenade.throw_atom(A, 5, SPEED_SLOW, reaper_spit, TRUE)
 	addtimer(CALLBACK(reaper_grenade, TYPE_PROC_REF(/obj/item/explosive, prime)), priming_delay)
-
-
-
-
-
-
-
-
-
-

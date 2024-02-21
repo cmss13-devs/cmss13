@@ -123,9 +123,9 @@ export const ListInput = (props) => {
                   }}
                 />
               }>
-              {displayedArray.map((button) => (
+              {displayedArray.map((button, i) => (
                 <Button
-                  key={button}
+                  key={i}
                   fluid
                   color="transparent"
                   id={button}

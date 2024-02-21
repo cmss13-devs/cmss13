@@ -431,7 +431,7 @@
 	// Check if either hand has a metal stack by checking the weapon offhand
 	// Presume the material is a sheet until proven otherwise.
 	var/obj/item/stack/sheet/material = null
-	var/obj/item/weapon/gun/smg/nailgun/compact/tactical/mat_tac = 4 //Material needed to make a repair with a tactical compact nailgun.
+	var/mat_tac = 4 //Material needed to make a repair with a tactical compact nailgun.
 	if(user.l_hand == nailgun)
 		material = user.r_hand
 	else
@@ -460,7 +460,7 @@
 		return FALSE
 
 	if(istype(item,/obj/item/weapon/gun/smg/nailgun/compact/tactical) && material.amount < mat_tac) //If less than [mat_tac] material is held, cancel repair.
-		to_chat(user, SPAN_WARNING("You need atleast [mat_tac] [material.singular_name]\s to patch up [src]!"))
+		to_chat(user, SPAN_WARNING("You need at least [mat_tac] [material.singular_name]\s to patch up [src]!"))
 		return FALSE
 
 	if(!material || (material != user.l_hand && material != user.r_hand) || material.amount <= 0)

@@ -135,7 +135,7 @@
 	var/on = 1
 	var/icon_on = "camera"
 	var/icon_off = "camera_off"
-	var/size = 3
+	var/size = 7
 
 /obj/item/device/camera/verb/change_size()
 	set name = "Set Photo Focus"

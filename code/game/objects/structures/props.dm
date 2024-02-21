@@ -3101,3 +3101,32 @@
 /obj/structure/prop/hybrisa/misc/phonebox/broken
 	desc = "A phone-box, it doesn't seem to be working, the line must be down. The glass has been broken."
 	icon_state = "phonebox_closed_broken"
+
+// Billboards, Signs and Posters
+
+/obj/structure/prop/hybrisa/BillboardsandSigns/BigBillboards
+	name = "billboard"
+	desc = "A advertisement billboard."
+	icon = 'icons/obj/structures/props/32x64_zenithbillboards.dmi'
+	icon_state = "billboard_bigger"
+	bound_width = 64
+	bound_height = 32
+	density = FALSE
+	health = 200
+	opacity = TRUE
+	anchored = TRUE
+/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1
+	name = "billboard"
+	desc = "A advertisement billboard."
+	icon = 'icons/obj/structures/props/32x64_zenithbillboards.dmi'
+	icon_state = "billboard1"
+/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard2
+	name = "billboard"
+	desc = "A advertisement billboard."
+	icon = 'icons/obj/structures/props/32x64_zenithbillboards.dmi'
+	icon_state = "billboard2"
+/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard3
+	name = "billboard"
+	desc = "A advertisement billboard."
+	icon = 'icons/obj/structures/props/32x64_zenithbillboards.dmi'
+	icon_state = "billboard3"

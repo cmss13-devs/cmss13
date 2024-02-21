@@ -204,6 +204,34 @@
 	icon = 'icons/effects/hybrisa_decals.dmi'
 	icon_state = "Z_W"
 
+// Red & White Warning Stripes
+
+/obj/effect/hybrisa/decal/warning/redandwhite_SEcorner
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "red_SE-out"
+/obj/effect/hybrisa/decal/warning/redandwhite_S
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "red_S"
+/obj/effect/hybrisa/decal/warning/redandwhite_SWcorner
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "red_SW-out"
+/obj/effect/hybrisa/decal/warning/redandwhite_E
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "red_E"
+/obj/effect/hybrisa/decal/warning/redandwhite_W
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "red_W"
+/obj/effect/hybrisa/decal/warning/redandwhite_NEcorner
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "red_NE-out"
+/obj/effect/hybrisa/decal/warning/redandwhite_N
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "red_N"
+/obj/effect/hybrisa/decal/warning/redandwhite_NWcorner
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "red_NW-out"
+
+
 // Grate
 
 /obj/effect/hybrisa/decal/grate

@@ -1041,7 +1041,16 @@
 	icon_state = "carpetpatternblue"
 /turf/open/floor/hybrisa/carpet/carpetpatternbrown
 	icon_state = "carpetpatternbrown"
-
+/turf/open/floor/hybrisa/carpet/carpetreddeco
+	icon_state = "carpetred_deco"
+/turf/open/floor/hybrisa/carpet/carpetbluedeco
+	icon_state = "carpetblue_deco"
+/turf/open/floor/hybrisa/carpet/carpetblackdeco
+	icon_state = "carpetblack_deco"
+/turf/open/floor/hybrisa/carpet/carpetbeigedeco
+	icon_state = "carpetbeige_deco"
+/turf/open/floor/hybrisa/carpet/carpetgreendeco
+	icon_state = "carpetgreen_deco"
 
 // Tile
 

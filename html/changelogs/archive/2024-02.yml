@@ -247,3 +247,25 @@
       against your helmet.
   Zonespace27:
   - bugfix: You can no longer remove vehicle parts from a vehicle at a distance
+2024-02-21:
+  Contrabang:
+  - rscadd: Falling out of a Dropship en route to an LZ, now lets your corpse plummet
+      to the ground instead of being deleted.
+  Drathek:
+  - maptweak: Fixed access for two doors on the Almayer
+  - balance: Corrected vampire lurker damage values (Effectively reduction by 5 damage
+      for most attacks)
+  Stakeyng:
+  - rscadd: mou is now compatible with the shotgun scabbard
+  VileBeggar:
+  - rscadd: The Vulture can now be loaded with holo-targetting rounds which have severely
+      hampered ballistic performance, but mark any target that is hit, increasing
+      their damage taken by 33% for a brief period of time.
+  hislittlecuzingames:
+  - maptweak: tweaked Trijent Dam to add a new choke point.
+  private-tristan:
+  - rscdel: VAIMS (vaipo med spec) no longer gets a redundant burn line
+  - balance: VAIMS now gets an extra MAR mag.
+  - bugfix: Forsaken and Feral xenos can now (correctly) use hive-status
+  - spellcheck: fixed a case where we/our wouldn't be used when attempting to access
+      hive status with no queen

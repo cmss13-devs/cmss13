@@ -1,4 +1,0 @@
-author: "Contrabang"
-delete-after: True
-changes:
-  - rscadd: "Falling out of a Dropship en route to an LZ, now lets your corpse plummet to the ground instead of being deleted."

@@ -118,8 +118,15 @@
 			if(target.mob_size >= MOB_SIZE_BIG)
 				size_damage_mod += 0.6
 		L.apply_armoured_damage(damage*size_damage_mod, ARMOR_BULLET, BRUTE, null, penetration)
-		// 180% damage to all targets (225), 240% (300) against non-Runner xenos, and 300% against Big xenos (375). -Kaga
+		// Base 180% damage to all targets (225), 240% (300) against non-Runner xenos, and 300% against Big xenos (375). -Kaga
+		// This applies after pen reductions. After hitting 1 other thing, it deals 180/240/300 damage, or 135/180/225 after hitting a dense wall or big xeno.
 		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
+
+/datum/ammo/bullet/sniper/anti_materiel/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating/weak)
+	))
 
 /datum/ammo/bullet/sniper/anti_materiel/vulture
 	damage = 400 // Fully intended to vaporize anything smaller than a mini cooper

@@ -566,6 +566,11 @@ GLOBAL_LIST_EMPTY(vending_products)
 								if("Sniper Set")
 									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SNIPER)
 									specialist_assignment = "Sniper"
+									GLOB.available_specialist_sets -= "Anti-materiel Sniper Set"
+								if("Anti-materiel Sniper Set")
+									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SNIPER)
+									specialist_assignment = "Sniper"
+									GLOB.available_specialist_sets -= "Sniper Set"
 								if("Demolitionist Set")
 									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_ROCKET)
 									specialist_assignment = "Demo"

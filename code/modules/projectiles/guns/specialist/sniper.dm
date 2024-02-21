@@ -345,6 +345,7 @@
 	item_state = "xm43e1"
 	unacidable = TRUE
 	indestructible = 1
+	aimed_shot_cooldown_delay = 4 SECONDS
 
 	fire_sound = 'sound/weapons/sniper_heavy.ogg'
 	current_mag = /obj/item/ammo_magazine/sniper/anti_materiel //Renamed from anti-tank to align with new identity/description. Other references have been changed as well. -Kaga
@@ -354,9 +355,9 @@
 	attachable_allowed = list(/obj/item/attachable/bipod)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
 	starting_attachment_types = list(/obj/item/attachable/pmc_sniperbarrel)
-	sniper_beam_type = /obj/effect/ebeam/laser/intense
-	sniper_beam_icon = "laser_beam_intense"
-	sniper_lockon_icon = "sniper_lockon_intense"
+	sniper_beam_type = /obj/effect/ebeam/laser
+	sniper_beam_icon = "laser_beam"
+	sniper_lockon_icon = "sniper_lockon"
 
 /obj/item/weapon/gun/rifle/sniper/XM43E1/handle_starting_attachment()
 	..()
@@ -376,6 +377,7 @@
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_6 * 6 )//Big boy damage, but it takes a lot of time to fire a shot.
 	//Kaga: Adjusted from 56 (Tier 4, 7*8) -> 30 (Tier 6, 5*6) ticks. 95 really wasn't big-boy damage anymore, although I updated it to 125 to remain consistent with the other 10x99mm caliber weapon (M42C). Now takes only twice as long as the M42A.
+	//This outright deals less DPS than the normal sniper rifle, 125 vs 140 per 3s.
 	set_burst_amount(BURST_AMOUNT_TIER_1)
 	accuracy_mult = BASE_ACCURACY_MULT + 2*HIT_ACCURACY_MULT_TIER_10 //Who coded this like this, and why? It just calculates out to 1+1=2. Leaving a note here to check back later.
 	scatter = SCATTER_AMOUNT_TIER_10
@@ -385,10 +387,11 @@
 /obj/item/weapon/gun/rifle/sniper/XM43E1/set_bullet_traits()
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff),
-		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating),
 		BULLET_TRAIT_ENTRY_ID("turfs", /datum/element/bullet_trait_damage_boost, 11, GLOB.damage_boost_turfs),
 		BULLET_TRAIT_ENTRY_ID("breaching", /datum/element/bullet_trait_damage_boost, 11, GLOB.damage_boost_breaching),
-		//At 1375 per shot it'll take 1 shot to break resin turfs, and a full mag of 8 to break reinforced walls.
+		//At 1375 per shot it'll take 1 shot to break resin turfs usually (thick resin at 1350, RNG may vary), and a full mag of 8 to break reinforced walls.
+		//However, the second wall it hits will only take 550 damage, unable to even kill a full-health normal resin wall (900).
+		//Much more effective at breaking resin doors and membranes, which have less HP and slow down the projectile less.
 		BULLET_TRAIT_ENTRY_ID("pylons", /datum/element/bullet_trait_damage_boost, 6, GLOB.damage_boost_pylons)
 		//At 750 per shot it'll take 3 to break a Pylon (1800 HP). No Damage Boost vs other xeno structures yet, those will require a whole new list w/ the damage_boost trait.
 	))

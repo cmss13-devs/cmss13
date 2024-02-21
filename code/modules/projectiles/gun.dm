@@ -1419,6 +1419,10 @@ and you're good to go.
 				BP.generate_bullet(GLOB.ammo_list[projectile_to_fire.ammo.bonus_projectiles_type], 0, NO_FLAGS)
 				BP.accuracy = round(BP.accuracy * projectile_to_fire.accuracy/initial(projectile_to_fire.accuracy)) //Modifies accuracy of pellets per fire_bonus_projectiles.
 				BP.damage *= damage_buff
+
+				BP.bonus_projectile_check = 2
+				projectile_to_fire.bonus_projectile_check = 1
+
 				projectile_to_fire.give_bullet_traits(BP)
 				if(bullets_fired > 1)
 					BP.original = attacked_mob //original == the original target of the projectile. If the target is downed and this isn't set, the projectile will try to fly over it. Of course, it isn't going anywhere, but it's the principle of the thing. Very embarrassing.

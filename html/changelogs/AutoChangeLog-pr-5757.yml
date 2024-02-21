@@ -1,0 +1,4 @@
+author: "BadAtThisGame302"
+delete-after: True
+changes:
+  - rscadd: "Implemented a probability of playing a static-filled transmission as the distress received response."

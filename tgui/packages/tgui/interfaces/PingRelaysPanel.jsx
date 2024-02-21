@@ -14,10 +14,10 @@ const COLORS = [
 ];
 
 const getPingColor = function (ping) {
-  if (ping < 100) {
+  if (ping < 200) {
     return COLORS[2];
   }
-  if (ping < 400) {
+  if (ping < 500) {
     return COLORS[1];
   }
   return COLORS[0];

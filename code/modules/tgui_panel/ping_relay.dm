@@ -4,6 +4,11 @@ GLOBAL_DATUM_INIT(relays_panel, /datum/ping_relay_tgui, new)
 	GLOB.relays_panel.tgui_interact(client.mob)
 
 /datum/ping_relay_tgui/tgui_interact(mob/user, datum/tgui/ui)
+	var/list/relay_ping_conf = CONFIG_GET(keyed_list/connection_relay_ping)
+	if(!length(relay_ping_conf))
+		to_chat(user, "There are no relays configured to test.")
+		return
+
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "PingRelaysPanel", "Relay Pings")

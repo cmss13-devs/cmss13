@@ -237,7 +237,7 @@
 	flags_atom |= NOREACT
 	for(var/i = 1 to (storage_slots-1))
 		new default_cig_type(src)
-	trading_card = new /obj/item/toy/trading_card(src)
+	trading_card = new(src)
 
 /obj/item/storage/fancy/cigarettes/trading_card/attack_hand(mob/user, mods)
 	if(trading_card?.loc == src && loc == user)
@@ -249,9 +249,9 @@
 
 	. = ..()
 
-/obj/item/storage/fancy/cigarettes/trading_card/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/toy/trading_card))
-		trading_card = W
+/obj/item/storage/fancy/cigarettes/trading_card/attackby(obj/item/attacked_by_item, mob/user)
+	if(istype(attacked_by_item, /obj/item/toy/trading_card))
+		trading_card = attacked_by_item
 
 	. = ..()
 
@@ -477,14 +477,14 @@
 
 /obj/item/storage/fancy/trading_card/fill_preset_inventory()
 
-	for(var/i = 1, i <= storage_slots, i++)
+	for(var/i in 1 to storage_slots)
 		top_trading_card = new /obj/item/toy/trading_card(src)
 
 /obj/item/storage/fancy/trading_card/update_icon()
 	if(!(top_trading_card))
 		icon_state = "trading_[collection_color]_pack_empty"
 		return
-	if(length(contents) == 5)
+	if(length(contents) == storage_slots)
 		icon_state = "trading_[collection_color]_pack_closed"
 		return
 	icon_state = "trading_[collection_color]_pack_open"
@@ -505,9 +505,9 @@
 
 	. = ..()
 
-/obj/item/storage/fancy/trading_card/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/toy/trading_card))
-		top_trading_card = W
+/obj/item/storage/fancy/trading_card/attackby(obj/item/attacked_by_item, mob/user)
+	if(istype(attackd_by_item, /obj/item/toy/trading_card))
+		top_trading_card = attacked_by_item
 
 	. = ..()
 

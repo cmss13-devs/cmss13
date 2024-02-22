@@ -1,4 +1,0 @@
-author: "SabreML"
-delete-after: True
-changes:
-  - qol: "Added a 'Time Since Death' counter to the status tab for ghosts."

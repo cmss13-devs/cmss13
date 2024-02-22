@@ -12,7 +12,6 @@
  * Other things
  */
 
-
 //recreational items
 
 /obj/item/toy
@@ -22,7 +21,6 @@
 	throw_range = 20
 	force = 0
 	black_market_value = 5
-
 
 /*
  * Balloons
@@ -118,24 +116,24 @@
 	icon_state = "singularity_s1"
 
 
-
 /*
  * Crayons
  */
 
 /obj/item/toy/crayon
 	name = "crayon"
-	desc = "A colourful crayon. Please refrain from eating it or putting it in your nose."
+	desc = "A colorful crayon. Please refrain from eating it or putting it in your nose."
 	icon = 'icons/obj/items/crayons.dmi'
 	icon_state = "crayonred"
 	w_class = SIZE_TINY
-	attack_verb = list("attacked", "coloured")
+	attack_verb = list("attacked", "colored")
 	black_market_value = 5
-	var/crayon_color = "#FF0000" //RGB
-	var/shadeColour = "#220000" //RGB
-	var/uses = 30 //0 for unlimited uses
+	var/crayon_color = COLOR_RED
+	var/shade_color = "#220000"
+	/// 0 for unlimited uses
+	var/uses = 30
 	var/instant = 0
-	var/colourName = "red" //for updateIcon purposes
+	var/colorName = "red" //for updateIcon purposes
 
 /*
  * Snap pops
@@ -235,7 +233,6 @@
 /obj/item/toy/waterflower/get_examine_text(mob/user)
 	. = ..()
 	. += "[reagents.total_volume] units of water left!"
-
 
 
 /*
@@ -398,6 +395,14 @@
 		playsound(src.loc, sound_effect, 25, 1)
 		src.add_fingerprint(user)
 		addtimer(VARSET_CALLBACK(src, spam_flag, FALSE), 2 SECONDS)
+
+// rubber duck
+/obj/item/toy/bikehorn/rubberducky
+	name = "rubber ducky"
+	desc = "Rubber ducky you're so fine, you make bathtime lots of fuuun. Rubber ducky I'm awfully fooooond of yooooouuuu~" //thanks doohl
+	icon = 'icons/obj/structures/props/watercloset.dmi'
+	icon_state = "rubberducky"
+	item_state = "rubberducky"
 
 /obj/item/computer3_part
 	name = "computer part"

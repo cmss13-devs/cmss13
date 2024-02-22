@@ -19,7 +19,7 @@
 	var/datum/cas_signal/recorded_loc = null
 
 	var/obj/effect/firemission_guidance/guidance
-
+	var/atom/tracked_object
 
 /datum/cas_fire_envelope/New()
 	..()
@@ -27,6 +27,7 @@
 
 /datum/cas_fire_envelope/Destroy(force, ...)
 	linked_console = null
+	untrack_object()
 	return ..()
 
 /datum/cas_fire_envelope/ui_data(mob/user)
@@ -151,7 +152,9 @@
 	recorded_loc = marker
 	return TRUE
 
-/datum/cas_fire_envelope/proc/change_current_loc(location)
+/datum/cas_fire_envelope/proc/change_current_loc(location, atom/object)
+	if(object)
+		untrack_object()
 	if(!location && guidance)
 		for(var/mob/M in guidance.users)
 			if(istype(M) && M.client)
@@ -162,6 +165,21 @@
 		guidance = new /obj/effect/firemission_guidance()
 	guidance.forceMove(location)
 	guidance.updateCameras(linked_console)
+	if(object)
+		tracked_object = object
+		RegisterSignal(tracked_object, COMSIG_PARENT_QDELETING, PROC_REF(on_tracked_object_del))
+
+/// Call to unregister the on_tracked_object_del behavior
+/datum/cas_fire_envelope/proc/untrack_object()
+	if(tracked_object)
+		UnregisterSignal(tracked_object, COMSIG_PARENT_QDELETING)
+		tracked_object = null
+
+/// Signal handler for when we are viewing a object in cam is qdel'd (but camera actually is actually some other obj)
+/datum/cas_fire_envelope/proc/on_tracked_object_del(atom/target)
+	SIGNAL_HANDLER
+	tracked_object = null
+	change_current_loc()
 
 /datum/cas_fire_envelope/proc/user_is_guided(user)
 	return guidance && (user in guidance.users)
@@ -241,7 +259,20 @@
 		mission_error = "Target is off bounds or obstructed."
 		return
 	change_current_loc(target_turf)
-	playsound(target_turf, soundeffect, 70, TRUE, 50)
+	playsound(source = target_turf, soundin = soundeffect, vol = 70, vary = TRUE, sound_range = 50, falloff = 8)
+
+	for(var/mob/mob in range(15, target_turf))
+		var/ds_identifier = "LARGE BIRD"
+		var/fm_identifier = "SPIT FIRE"
+		if (mob.mob_flags & KNOWS_TECHNOLOGY)
+			ds_identifier = "DROPSHIP"
+			fm_identifier = "FIRE"
+
+		mob.show_message( \
+			SPAN_HIGHDANGER("YOU HEAR THE [ds_identifier] ROAR AS IT PREPARES TO [fm_identifier] NEAR YOU!"),SHOW_MESSAGE_VISIBLE, \
+			SPAN_HIGHDANGER("YOU HEAR SOMETHING FLYING CLOSER TO YOU!") , SHOW_MESSAGE_AUDIBLE \
+		)
+
 	sleep(flyto_period)
 	stat = FIRE_MISSION_STATE_FIRING
 	mission.execute_firemission(linked_console, target_turf, dir, fire_length, step_delay, src)
@@ -293,10 +324,10 @@
 
 /datum/cas_fire_envelope/uscm_dropship
 	fire_length = 12
-	grace_period = 50 //5 seconds
-	flyto_period = 50 //five seconds
-	flyoff_period = 50 //FIVE seconds
-	cooldown_period = 100 //f~ I mean, 10 seconds
+	grace_period = 5 SECONDS 
+	flyto_period = 4 SECONDS //sleep in the FM itself has been increased by one more second
+	flyoff_period = 5 SECONDS
+	cooldown_period = 10 SECONDS
 	soundeffect = 'sound/weapons/dropship_sonic_boom.ogg' //BOOM~WOOOOOSH~HSOOOOOW~BOOM
 	step_delay = 3
 	max_offset = 12

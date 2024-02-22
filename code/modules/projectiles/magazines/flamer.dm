@@ -94,7 +94,7 @@
 		to_chat(user, SPAN_WARNING("This chemical is not potent enough to be used in a flamethrower!"))
 		return
 
-	var/fuel_amt_to_remove = Clamp(to_add.volume, 0, max_rounds - reagents.get_reagent_amount(to_add.id))
+	var/fuel_amt_to_remove = clamp(to_add.volume, 0, max_rounds - reagents.get_reagent_amount(to_add.id))
 	if(!fuel_amt_to_remove)
 		if(!max_rounds)
 			to_chat(user, SPAN_WARNING("[target] is empty!"))
@@ -171,7 +171,7 @@
 	if(usr.get_active_hand() != src)
 		return
 
-	var/set_pressure = Clamp(tgui_input_number(usr, "Change fuel pressure to: (max: [max_pressure])", "Fuel pressure", fuel_pressure, 10, 1), 1 ,max_pressure)
+	var/set_pressure = clamp(tgui_input_number(usr, "Change fuel pressure to: (max: [max_pressure])", "Fuel pressure", fuel_pressure, 10, 1), 1 ,max_pressure)
 	if(!set_pressure)
 		to_chat(usr, SPAN_WARNING("You can't find that setting on the regulator!"))
 	else

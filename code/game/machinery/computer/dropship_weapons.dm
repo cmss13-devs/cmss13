@@ -33,6 +33,8 @@
 	var/camera_width = 11
 	var/camera_height = 11
 	var/camera_map_name
+	///Tracks equipment with a camera that is deployed and we are viewing
+	var/obj/structure/dropship_equipment/camera_area_equipment = null
 
 	var/registered = FALSE
 
@@ -62,17 +64,20 @@
 /obj/structure/machinery/computer/dropship_weapons/attack_hand(mob/user)
 	if(..())
 		return
-	if(!allowed(user))
 
+	if(!allowed(user))
+		// TODO: Restore cas simulator
+		to_chat(user, SPAN_WARNING("Weapons modification access denied."))
+		return TRUE
 		// everyone can access the simulator, requested feature.
-		to_chat(user, SPAN_WARNING("Weapons modification access denied, attempting to launch simulation."))
+		/*to_chat(user, SPAN_WARNING("Weapons modification access denied, attempting to launch simulation."))
 
 		if(!selected_firemission)
 			to_chat(user, SPAN_WARNING("Firemission must be selected before attempting to run the simulation"))
-			return
+			return TRUE
 
 		tgui_interact(user)
-		return 1
+		return FALSE*/
 
 	user.set_interaction(src)
 	ui_interact(user)
@@ -100,7 +105,7 @@
 
 /obj/structure/machinery/computer/dropship_weapons/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 0)
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
-	if (!istype(dropship))
+	if(!istype(dropship))
 		return
 
 	var/screen_mode = 0
@@ -129,11 +134,6 @@
 		if(screen_mode != 3 || !selected_firemission || dropship.mode != SHUTTLE_CALL)
 			update_location(user, null)
 
-	ui_data(user)
-	if(!tacmap.map_holder)
-		var/level = SSmapping.levels_by_trait(tacmap.targeted_ztrait)
-		tacmap.map_holder = SSminimaps.fetch_tacmap_datum(level[1], tacmap.allowed_flags)
-	user.client.register_map_obj(tacmap.map_holder.map)
 	tgui_interact(user)
 
 /obj/structure/machinery/computer/dropship_weapons/tgui_interact(mob/user, datum/tgui/ui)
@@ -141,10 +141,15 @@
 		var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
 		RegisterSignal(dropship, COMSIG_DROPSHIP_ADD_EQUIPMENT, PROC_REF(equipment_update))
 		RegisterSignal(dropship, COMSIG_DROPSHIP_REMOVE_EQUIPMENT, PROC_REF(equipment_update))
-		registered=TRUE
+		registered = TRUE
+
+	if(!tacmap.map_holder)
+		var/level = SSmapping.levels_by_trait(tacmap.targeted_ztrait)
+		tacmap.map_holder = SSminimaps.fetch_tacmap_datum(level[1], tacmap.allowed_flags)
 
 	ui = SStgui.try_update_ui(user, src, ui)
-	if (!ui)
+	if(!ui)
+		user.client.register_map_obj(tacmap.map_holder.map)
 		SEND_SIGNAL(src, COMSIG_CAMERA_REGISTER_UI, user)
 		ui = new(user, src, "DropshipWeaponsConsole", "Weapons Console")
 		ui.open()
@@ -152,8 +157,7 @@
 /obj/structure/machinery/computer/dropship_weapons/ui_close(mob/user)
 	. = ..()
 	SEND_SIGNAL(src, COMSIG_CAMERA_UNREGISTER_UI, user)
-	if(simulation.looking_at_simulation)
-		simulation.stop_watching(user)
+	simulation.stop_watching(user)
 
 /obj/structure/machinery/computer/dropship_weapons/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
@@ -239,7 +243,6 @@
 		.["firemission_selected_laser"] = firemission_envelope.recorded_loc ? firemission_envelope.recorded_loc.get_name() : "NOT SELECTED"
 
 	.["configuration"] = configuration
-	.["looking"] = simulation.looking_at_simulation
 	.["dummy_mode"] = simulation.dummy_mode
 	.["worldtime"] = world.time
 	.["nextdetonationtime"] = simulation.detonation_cooldown
@@ -257,7 +260,7 @@
 	switch(action)
 		if("button_push")
 			playsound(src, get_sfx("terminal_button"), 25, FALSE)
-			return TRUE
+			return FALSE
 
 		if("select_equipment")
 			var/base_tag = params["equipment_id"]
@@ -305,12 +308,13 @@
 				var/mount_point = equipment.ship_base.attach_id
 				if(mount_point != equipment_tag)
 					continue
-				if (istype(equipment, /obj/structure/dropship_equipment/sentry_holder))
+				if(istype(equipment, /obj/structure/dropship_equipment/sentry_holder))
 					var/obj/structure/dropship_equipment/sentry_holder/sentry = equipment
 					var/obj/structure/machinery/defenses/sentry/defense = sentry.deployed_turret
-					if (defense.has_camera)
+					if(defense.has_camera)
 						defense.set_range()
 						var/datum/shape/rectangle/current_bb = defense.range_bounds
+						camera_area_equipment = sentry
 						SEND_SIGNAL(src, COMSIG_CAMERA_SET_AREA, current_bb.center_x, current_bb.center_y, defense.loc.z, current_bb.width, current_bb.height)
 				return TRUE
 
@@ -331,6 +335,7 @@
 					if(medevac.linked_stretcher)
 						SEND_SIGNAL(src, COMSIG_CAMERA_SET_TARGET, medevac.linked_stretcher, 5, 5)
 				return TRUE
+
 		if("fulton-target")
 			var/equipment_tag = params["equipment_id"]
 			for(var/obj/structure/dropship_equipment/equipment as anything in shuttle.equipments)
@@ -342,6 +347,7 @@
 					var/target_ref = params["ref"]
 					fulton.automate_interact(user, target_ref)
 				return TRUE
+
 		if("fire-weapon")
 			var/weapon_tag = params["eqp_tag"]
 			var/obj/structure/dropship_equipment/weapon/DEW = get_weapon(weapon_tag)
@@ -349,19 +355,23 @@
 				return FALSE
 
 			var/datum/cas_signal/sig = get_cas_signal(camera_target_id)
-
 			if(!sig)
 				return FALSE
 
 			selected_equipment = DEW
-			ui_open_fire(user, shuttle, camera_target_id)
+			if(ui_open_fire(user, shuttle, camera_target_id))
+				if(firemission_envelope)
+					firemission_envelope.untrack_object()
 			return TRUE
+
 		if("deploy-equipment")
 			var/equipment_tag = params["equipment_id"]
 			for(var/obj/structure/dropship_equipment/equipment as anything in shuttle.equipments)
 				var/mount_point = equipment.ship_base.attach_id
 				if(mount_point != equipment_tag)
 					continue
+				if(camera_area_equipment == equipment)
+					set_camera_target(null)
 				equipment.equipment_interact(user)
 				return TRUE
 
@@ -386,13 +396,8 @@
 			var/x_offset_value = params["x_offset_value"]
 			var/y_offset_value = params["y_offset_value"]
 
-			var/datum/cas_iff_group/cas_group = GLOB.cas_groups[faction]
-			var/datum/cas_signal/cas_sig
-			for(var/X in cas_group.cas_signals)
-				var/datum/cas_signal/LT = X
-				if(LT.target_id == target_id  && LT.valid_signal())
-					cas_sig = LT
-					break
+			camera_target_id = target_id
+			var/datum/cas_signal/cas_sig = get_cas_signal(camera_target_id, valid_only = TRUE)
 			// we don't want rapid offset changes to trigger admin warnings
 			// and block the user from accessing TGUI
 			// we change the minute_count
@@ -410,12 +415,14 @@
 				current.y + dy,
 				current.z)
 
-			firemission_envelope.change_current_loc(new_target)
-
+			camera_area_equipment = null
+			firemission_envelope.change_current_loc(new_target, cas_sig)
 			return TRUE
+
 		if("nvg-enable")
 			SEND_SIGNAL(src, COMSIG_CAMERA_SET_NVG, 5, "#7aff7a")
 			return TRUE
+
 		if("nvg-disable")
 			SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR_NVG)
 			return TRUE
@@ -449,24 +456,28 @@
 
 /obj/structure/machinery/computer/dropship_weapons/proc/get_weapon(eqp_tag)
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
-	for(var/obj/structure/dropship_equipment/equipment in dropship.equipments)
-		if(istype(equipment, /obj/structure/dropship_equipment/weapon))
-			//is weapon
-			if(selected_equipment == equipment)
-				return equipment
+	var/obj/structure/dropship_equipment/equipment = dropship.equipments[eqp_tag]
+	if(istype(equipment, /obj/structure/dropship_equipment/weapon))
+		//is weapon
+		return equipment
 	return
 
-/obj/structure/machinery/computer/dropship_weapons/proc/get_cas_signal(target_ref)
+/obj/structure/machinery/computer/dropship_weapons/proc/get_cas_signal(target_ref, valid_only = FALSE)
 	if(!target_ref)
 		return
 
 	var/datum/cas_iff_group/cas_group = GLOB.cas_groups[faction]
 	for(var/datum/cas_signal/sig in cas_group.cas_signals)
 		if(sig.target_id == target_ref)
+			if(valid_only && !sig.valid_signal())
+				continue
 			return sig
 
-
 /obj/structure/machinery/computer/dropship_weapons/proc/set_camera_target(target_ref)
+	camera_area_equipment = null
+	if(firemission_envelope)
+		firemission_envelope.untrack_object()
+
 	var/datum/cas_signal/target = get_cas_signal(target_ref)
 	camera_target_id = target_ref
 	if(!target)

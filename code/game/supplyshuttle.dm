@@ -383,7 +383,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	///How close the CMB is to investigating | 100 sends an ERT
 	var/black_market_heat = 0
 
-	/// This contains a list of all typepaths of sold items and how many times they've been recieved. Used to calculate points dropoff (Can't send down a hundred blue souto cans for infinite points)
+	/// This contains a list of all typepaths of sold items and how many times they've been received. Used to calculate points dropoff (Can't send down a hundred blue souto cans for infinite points)
 	var/list/black_market_sold_items
 
 	/// If the players killed him by sending a live hostile below.. this goes false and they can't order any more contraband.
@@ -667,9 +667,12 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	var/list/packages
 
 
-/obj/item/paper/manifest/read_paper(mob/user)
+/obj/item/paper/manifest/read_paper(mob/user, scramble = FALSE)
+	var/paper_info = info
+	if(scramble)
+		paper_info = stars_decode_html(info)
 	// Tossing ref in widow id as this allows us to read multiple manifests at same time
-	show_browser(user, "<BODY class='paper'>[info][stamps]</BODY>", null, "manifest\ref[src]", "size=550x650")
+	show_browser(user, "<BODY class='paper'>[paper_info][stamps]</BODY>", null, "manifest\ref[src]", "size=550x650")
 	onclose(user, "manifest\ref[src]")
 
 /obj/item/paper/manifest/proc/generate_contents()
@@ -749,7 +752,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	if(..())
 		return
 
-	if( isturf(loc) && (in_range(src, usr) || ishighersilicon(usr)) )
+	if( isturf(loc) && (in_range(src, usr) || isSilicon(usr)) )
 		usr.set_interaction(src)
 
 	if(href_list["order"])
@@ -799,7 +802,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			var/mob/living/carbon/human/H = usr
 			idname = H.get_authentification_name()
 			idrank = H.get_assignment()
-		else if(ishighersilicon(usr))
+		else if(isSilicon(usr))
 			idname = usr.real_name
 
 		GLOB.supply_controller.ordernum++
@@ -921,10 +924,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	if(..())
 		return
 
-	if(ismaintdrone(usr))
-		return
-
-	if(isturf(loc) && ( in_range(src, usr) || ishighersilicon(usr) ) )
+	if(isturf(loc) && in_range(src, usr) )
 		usr.set_interaction(src)
 
 	//Calling the shuttle
@@ -1277,7 +1277,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 /datum/controller/supply/proc/black_market_investigation()
 	black_market_heat = -1
-	SSticker.mode.get_specific_call("Inspection - Colonial Marshal Ledger Investigation Team", TRUE, TRUE)
+	SSticker.mode.get_specific_call(/datum/emergency_call/inspection_cmb/black_market, TRUE, TRUE) // "Inspection - Colonial Marshals Ledger Investigation Team"
 	log_game("Black Market Inspection auto-triggered.")
 
 /obj/structure/machinery/computer/supplycomp/proc/is_buyable(datum/supply_packs/supply_pack)
@@ -1446,10 +1446,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		to_chat(usr, SPAN_WARNING("The elevator needs to be in the cargo bay dock to call a vehicle up. Ask someone to send it away."))
 		return
 
-	if(ismaintdrone(usr))
-		return
-
-	if(isturf(loc) && ( in_range(src, usr) || ishighersilicon(usr) ) )
+	if(isturf(loc) && ( in_range(src, usr) || isSilicon(usr) ) )
 		usr.set_interaction(src)
 
 	if(href_list["get_vehicle"])

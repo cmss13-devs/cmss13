@@ -556,3 +556,36 @@
   - bugfix: m56d can not longer shoot backwards when facing north
   mullenpaul:
   - refactor: tgui js components now jsx
+2023-12-31:
+  AnonHault:
+  - spellcheck: fixed a typo
+  BeagleGaming1:
+  - qol: Adds the ability to hide your action buttons
+  Birdtalon:
+  - bugfix: Fixes a runtime on decapping one's self.
+  - bugfix: Runtime with milk and possibly other reagent's on_mob_life()
+  - bugfix: Fixes runtime calling post_attack() on a mob which has already been qdeleted
+      via gibbing.
+  - code_imp: Refactors some code to new throw_carbon proc
+  Cthulhu80:
+  - bugfix: Fixes movement delay stacking on weeds
+  - bugfix: Fixes evac pods launching with more than the occupant limit
+  Huffie56:
+  - qol: creating a new section called engineering supplies for the rifleman and the
+      team leader.
+  - balance: added standard binocular to the rifleman vendor at a cost of 5.
+  - balance: added Range Finder and Laser Designator binoculars to Team leader at
+      a cost of 10 and 20.
+  - balance: added ES-11 Mobile Fuel Canister and ME3 hand welder to Team leader and
+      rifleman for 5 each.
+  InsaneRed:
+  - balance: Properly tweaks predator stun resist back to what it should have been.
+  SabreML:
+  - bugfix: Fixed the Hive Status window showing an error message when the Queen dies.
+  - qol: Added a 'Time Since Death' counter to the status tab for ghosts.
+  blackdragonTOW:
+  - rscadd: Max CL Headset radio keys from 3 to 5.  (+2 increase)
+  cuberound:
+  - balance: gives trucker engineer level construction skill
+  mullenpaul:
+  - refactor: sentry laptop now uses camera manager component

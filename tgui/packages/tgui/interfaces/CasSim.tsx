@@ -1,22 +1,25 @@
-import { useBackend } from '../backend';
+import { useBackend, useLocalState } from '../backend';
 import { Box, Button, Section, ProgressBar, NoticeBox, Stack } from '../components';
 
 interface CasSimData {
   configuration: any;
-  looking: 0 | 1;
   dummy_mode: string;
   worldtime: number;
   nextdetonationtime: number;
   detonation_cooldown: number;
 }
 
-export const CasSim = (_props, context) => {
-  const { act, data } = useBackend<CasSimData>(context);
+export const CasSim = () => {
+  const { act, data } = useBackend<CasSimData>();
+  const [simulationView, setSimulationView] = useLocalState(
+    'simulation_view',
+    false
+  );
 
   const timeLeft = data.nextdetonationtime - data.worldtime;
   const timeLeftPct = timeLeft / data.detonation_cooldown;
 
-  const canDetonate = timeLeft < 0 && data.configuration && data.looking;
+  const canDetonate = timeLeft < 0 && data.configuration && simulationView;
 
   return (
     <Box className="CasSim">
@@ -48,13 +51,16 @@ export const CasSim = (_props, context) => {
       <Section title="Cas Simulation Controls">
         <Stack>
           <Stack.Item grow>
-            {(!data.looking && (
+            {(!simulationView && (
               <Button
                 fluid={1}
                 icon="eye"
                 color="good"
                 content="Enter simulation"
-                onClick={() => act('start_watching')}
+                onClick={() => {
+                  act('start_watching');
+                  setSimulationView(true);
+                }}
               />
             )) || (
               <Button
@@ -62,7 +68,10 @@ export const CasSim = (_props, context) => {
                 icon="eye-slash"
                 color="good"
                 content="Exit simulation"
-                onClick={() => act('stop_watching')}
+                onClick={() => {
+                  act('stop_watching');
+                  setSimulationView(false);
+                }}
               />
             )}
           </Stack.Item>

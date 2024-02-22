@@ -179,9 +179,9 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 			return ARES_ACCESS_CE
 		if(JOB_SYNTH)
 			return ARES_ACCESS_SYNTH
-	if(card.paygrade in GLOB.wy_paygrades)
+	if(card.paygrade in GLOB.wy_highcom_paygrades)
 		return ARES_ACCESS_WY_COMMAND
-	if(card.paygrade in GLOB.highcom_paygrades)
+	if(card.paygrade in GLOB.uscm_highcom_paygrades)
 		return ARES_ACCESS_HIGH
 	if(card.paygrade in GLOB.co_paygrades)
 		return ARES_ACCESS_CO

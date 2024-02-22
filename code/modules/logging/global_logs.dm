@@ -28,6 +28,9 @@ GLOBAL_PROTECT(scheduler_stats)
 GLOBAL_VAR(strain_logs)
 GLOBAL_PROTECT(strain_logs)
 
+GLOBAL_VAR(mapping_log)
+GLOBAL_PROTECT(mapping_log)
+
 GLOBAL_VAR(round_stats)
 GLOBAL_PROTECT(round_stats)
 

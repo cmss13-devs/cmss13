@@ -81,8 +81,8 @@
 				to_chat(usr, SPAN_NOTICE("Unable to comply."))
 				return TRUE
 
-/obj/structure/machinery/computer/shuttle/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock, idnum, override=FALSE)
-	if(port && (shuttleId == initial(shuttleId) || override))
+/obj/structure/machinery/computer/shuttle/connect_to_shuttle(mapload, obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
+	if(port && (shuttleId == initial(shuttleId)))
 		shuttleId = port.id
 
 /obj/structure/machinery/computer/shuttle/ert

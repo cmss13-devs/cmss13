@@ -152,13 +152,13 @@
 
 /obj/item/device/camera/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/device/camera_film))
-		if(pictures_left)
-			to_chat(user, SPAN_NOTICE("[src] still has some film in it!"))
+		if(pictures_left >= (pictures_max - 10))
+			to_chat(user, SPAN_NOTICE("[src] cannot fit more film in it!"))
 			return
 		to_chat(user, SPAN_NOTICE("You insert [I] into [src]."))
 		if(user.temp_drop_inv_item(I))
 			qdel(I)
-			pictures_left = pictures_max
+			pictures_left += 10
 		return
 	..()
 
@@ -334,6 +334,8 @@
 	name = "Broadcasting Camera"
 	desc = "Actively document everything you see, from the mundanity of shipside to the brutal battlefields below. Has a built in printer for action shots."
 	icon_state = "broadcastingcamera"
+	pictures_left = 20
+	pictures_max = 20
 	w_class = SIZE_HUGE
 	flags_equip_slot = NO_FLAGS //cannot be equiped
 	flags_item = TWOHANDED

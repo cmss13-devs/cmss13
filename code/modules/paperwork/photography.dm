@@ -122,7 +122,7 @@
 /obj/item/device/camera
 	name = "camera"
 	icon = 'icons/obj/items/items.dmi'
-	desc = "A polaroid camera. 10 photos left."
+	desc = "A polaroid camera."
 	icon_state = "camera"
 	item_state = "electropack"
 	w_class = SIZE_SMALL
@@ -132,10 +132,11 @@
 	black_market_value = 20
 	var/pictures_max = 10
 	var/pictures_left = 10
-	var/on = 1
-	var/icon_on = "camera"
-	var/icon_off = "camera_off"
 	var/size = 7
+
+/obj/item/device/camera/get_examine_text(mob/user)
+	. = ..()
+	. += "It has [pictures_left] photos left."
 
 /obj/item/device/camera/verb/change_size()
 	set name = "Set Photo Focus"
@@ -148,15 +149,6 @@
 
 /obj/item/device/camera/attack(mob/living/carbon/human/M, mob/user)
 	return
-
-/obj/item/device/camera/attack_self(mob/user)
-	..()
-	on = !on
-	if(on)
-		src.icon_state = icon_on
-	else
-		src.icon_state = icon_off
-	to_chat(user, "You switch the camera [on ? "on" : "off"].")
 
 /obj/item/device/camera/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/device/camera_film))
@@ -270,7 +262,7 @@
 	return mob_detail
 
 /obj/item/device/camera/afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
-	if(!on || !pictures_left || ismob(target.loc) || isstorage(target.loc))
+	if(!pictures_left || ismob(target.loc) || isstorage(target.loc))
 		return
 	if(user.contains(target) || istype(target, /atom/movable/screen))
 		return
@@ -278,16 +270,9 @@
 	playsound(loc, pick('sound/items/polaroid1.ogg', 'sound/items/polaroid2.ogg'), 15, 1)
 
 	pictures_left--
-	desc = "A polaroid camera. It has [pictures_left] photos left."
 	to_chat(user, SPAN_NOTICE("[pictures_left] photos left."))
 
 	captureimage(target, user, flag)
-
-	icon_state = icon_off
-	on = 0
-	spawn(64)
-		icon_state = icon_on
-		on = 1
 
 /obj/item/device/camera/proc/captureimage(atom/target, mob/user, flag)
 	var/mob_descriptions = ""
@@ -343,10 +328,33 @@
 	name = "Old Camera"
 	desc = "An old, slightly beat-up digital camera, with a cheap photo printer taped on. It's a nice shade of blue."
 	icon_state = "oldcamera"
-	icon_on = "oldcamera"
-	icon_off = "oldcamera_off"
 	pictures_left = 30
 
+/obj/item/device/camera/broadcasting
+	name = "Broadcasting Camera"
+	desc = "Actively document everything you see, from the mundanity of shipside to the brutal battlefields below. Has a built in printer for action shots."
+	icon_state = "broadcastingcamera"
+	w_class = SIZE_HUGE
+	flags_equip_slot = NO_FLAGS //cannot be equiped
+	flags_item = TWOHANDED
+	item_state = "broadcastingcamera"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_0.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_0.dmi'
+		)
+
+/obj/item/device/camera/broadcasting/attack_self(mob/user) //Mimic wielding of a gun
+	. = ..()
+	if(!(flags_item & TWOHANDED))
+		return
+	if(flags_item & WIELDED)
+		unwield(user)
+	else
+		wield(user)
+
+/obj/item/device/camera/broadcasting/dropped(mob/user)
+	..()
+	unwield(user)
 
 /obj/item/photo/proc/construct(datum/picture/P)
 	icon = P.fields["icon"]
@@ -356,3 +364,4 @@
 	pixel_x = P.fields["pixel_x"]
 	pixel_y = P.fields["pixel_y"]
 	photo_size = P.fields["size"]
+

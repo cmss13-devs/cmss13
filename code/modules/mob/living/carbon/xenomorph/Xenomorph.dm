@@ -839,6 +839,8 @@
 	tackle_min = caste.tackle_min
 	tackle_max = caste.tackle_max
 	tackle_chance = caste.tackle_chance + tackle_chance_modifier
+	tacklestrength_min = caste.tacklestrength_min
+	tacklestrength_max = caste.tacklestrength_max
 
 /mob/living/carbon/xenomorph/proc/recalculate_health()
 	var/new_max_health = nocrit ? health_modifier + maxHealth : health_modifier + caste.max_health

@@ -125,7 +125,7 @@
 	icon_state = "poster7"
 
 /obj/structure/sign/poster/ad/Initialize()
-	serial_number = pick(7,8,9,10,11,13,18,22,35,36,37,43,45,47,48,56,59)
+	serial_number = pick(7,8,9,10,11,13,18,22,35,36,37,43,45,47,48,56,59,70,72)
 	.=..()
 
 /obj/structure/sign/poster/art
@@ -174,14 +174,14 @@
 	icon_state = "poster4"
 
 /obj/structure/sign/poster/propaganda/Initialize()
-	serial_number = pick(4,14,15,20,21,40,41,42,49)
+	serial_number = pick(4,14,15,20,21,40,41,42,49,64,65)
 	.=..()
 
 /obj/structure/sign/poster/safety
 	icon_state = "poster27"
 
 /obj/structure/sign/poster/safety/Initialize()
-	serial_number = pick(27,28,30,31,44)
+	serial_number = pick(27,28,30,31,44,66,68,69,71)
 	.=..()
 
 /obj/structure/sign/poster/io
@@ -210,7 +210,7 @@
 	icon_state = "poster50"
 
 /obj/structure/sign/poster/corporate/Initialize()
-	serial_number = pick(55,50,51,60,61)
+	serial_number = pick(50,51,60,61,62,63,67)
 	.=..()
 /obj/structure/sign/poster/kellandmining
 	icon_state = "poster46"

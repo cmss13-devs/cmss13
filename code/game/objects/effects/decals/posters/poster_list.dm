@@ -213,3 +213,129 @@ Template
 	icon_state="poster41"
 	name = "Falling Falcons"
 	desc = "Promotional material for the 2nd Company of the 2nd Battalion of the 4th Brigade, the Falling Falcons. Designed by an unknown artist and printed in an effort to bolster the ranks of the Falling Falcons."
+
+// Hybrisa
+/datum/poster/poster_42
+	icon_state="poster42"
+	name = "Join the Colonial Marines. Enlist today, protect tomorrow!"
+	desc = "Join the Colonial Marines. Enlist today, protect tomorrow!"
+/datum/poster/poster_43
+	icon_state="poster43"
+	name = "Koorlander - lovingly machine-rolled for YOUR pleasure."
+	desc = "Koorlander - lovingly machine-rolled for YOUR pleasure."
+/datum/poster/poster_44
+	icon_state="poster44"
+	name = "WASTE damages PROFIT - Think On!"
+	desc = "WASTE damages PROFIT - Think On!"
+/datum/poster/poster_45
+	icon_state="poster45"
+	name = "Pizza Galaxy poster"
+	desc = "This poster depicts a delicious looking slice of Pizza, Yum."
+/datum/poster/poster_46
+	icon_state="poster46"
+	name = "Kelland Mining co. poster"
+	desc = "A simplified version of the Kelland Mining co. logo.The Kelland Mining Company is owned by Prospectia, a sub-division of the San Rei Corporation, which is in turn owned by the Weyland-Yutani Corporation."
+/datum/poster/poster_47
+	icon_state="poster47"
+	name = "EAT"
+	desc = "This is less of a poster and more of an advertisement for those gross power bars."
+/datum/poster/poster_48
+	icon_state="poster48"
+	name = "Classic Cola poster"
+	desc = "This poster depicts a classic cola can. With a taste that's been around for centuries. Nobody can beat it."
+/datum/poster/poster_49
+	icon_state="poster49"
+	name = "Join the Colonial Marines. Enlist today, protect tomorrow!"
+	desc = "Join the Colonial Marines. Enlist today, protect tomorrow!"
+/datum/poster/poster_50
+	icon_state="poster50"
+	name = "Synthetic 'Daniel' poster"
+	desc = "An ominous forward facing profile of the Synthetic model 'Daniel'. Not quite a second generation model but something inbetween, suited for the needs of colonists. The poster is more art then an advertisement."
+/datum/poster/poster_51
+	icon_state="poster51"
+	name = "Synthetic 'Daniel' poster"
+	desc = "An ominous side facing profile of the Synthetic model 'Daniel'. Not quite a second generation model but something inbetween, suited for the needs of colonists. The poster is more art then an advertisement."
+/datum/poster/poster_52
+	icon_state="poster52"
+	name = "Colonial Marshalls poster"
+	desc = "To live, to serve, wherever humanity roams."
+/datum/poster/poster_53
+	icon_state="poster53"
+	name = "Colonial Marshalls poster"
+	desc = "The laws of Earth stretch beyond the Sol: The Colonial Marshals."
+/datum/poster/poster_54
+	icon_state="poster54"
+	name = "Pimp Clown poster"
+	desc = "Always returning. Always watching."
+/datum/poster/poster_55
+	icon_state="poster55"
+	name = "Weyland-Yutani poster"
+	desc = "You don't have much choice in brand loyalty when there's basically only one brand."
+/datum/poster/poster_56
+	icon_state="poster56"
+	name = "Koorlander Gold"
+	desc = "Koorlander Golds, lovingly machine rolled for YOUR pleasure."
+/datum/poster/poster_57
+	icon_state="poster57"
+	name = "art?"
+	desc = "This poster depicts some curved lines that some pretentious art snob valued at over $12,000,000. Too bad this is just a low-resolution print."
+/datum/poster/poster_58
+	icon_state="poster58"
+	name = "art?"
+	desc = "This poster depicts outsider geometric postmodern ascetic abject social expressionism art...you think."
+/datum/poster/poster_59
+	icon_state="poster59"
+	name = "Davenport Gin poster"
+	desc = "On your way back home? Toast your return with Davenport gin."
+/datum/poster/poster_60
+	icon_state="poster60"
+	name = "Weyland Yutani - 'Daniel' Model Synthetic poster"
+	desc = "A poster depicting a child in the arms of a Weyland Yutani 'Daniel' model Synthetic, Who thought this was a good idea?"
+/datum/poster/poster_61
+	icon_state="poster61"
+	name = "Silence is not a Virtue - Do Not Share Sensitive Information..."
+	desc = "Silence is not a Virtue - Do Not Share Sensitive Information..."
+/datum/poster/poster_62
+	icon_state="poster62"
+	name = "Synthetic 'Daniel' poster"
+	desc = "An ominous forward facing profile of the Synthetic model 'Daniel'. Not quite a second generation model but something inbetween, suited for the needs of colonists. The poster is more art then an advertisement."
+/datum/poster/poster_63
+	icon_state="poster63"
+	name = "Synthetic 'Daniel' poster"
+	desc = "An ominous side facing profile of the Synthetic model 'Daniel'. Not quite a second generation model but something inbetween, suited for the needs of colonists. The poster is more art then an advertisement."
+/datum/poster/poster_64
+	icon_state="poster64"
+	name = "Colonial Marine Corps poster"
+	desc = "Every Paycheck a Fortune! Every Formation a Parade! - Join the Colonial Marines!"
+/datum/poster/poster_65
+	icon_state="poster65"
+	name = "Colonial Marine Corps poster"
+	desc = "This poster depicts the logo of the Colonial Marine Corps, Oorah!"
+/datum/poster/poster_66
+	icon_state="poster66"
+	name = "Save Resources! Switch Off Before You Clock Off."
+	desc = "Save Resources! Switch Off Before You Clock Off."
+/datum/poster/poster_67
+	icon_state="poster67"
+	name = "Weyland Yutani - 'Daniel' Model Synthetic poster"
+	desc = "A poster depicting a child holding the hands of a Weyland Yutani 'Daniel' model Synthetic, Who thought this was a good idea?"
+/datum/poster/poster_68
+	icon_state="poster68"
+	name = "Clutter Clouds the Mind - Clean Workstation = Clear Head!"
+	desc = "Clutter Clouds the Mind - Clean Workstation = Clear Head!"
+/datum/poster/poster_69
+	icon_state="poster69"
+	name = "NO foreign objects allowed - that means YOU Smokey Joe!"
+	desc = "NO foreign objects allowed - that means YOU Smokey Joe!"
+/datum/poster/poster_70
+	icon_state="poster70"
+	name = "Souto Blue"
+	desc = "Souto Blue. If you don't drink Souto, you probably do stuff like floss and value your kidneys...wimp. Printed in Havana."
+/datum/poster/poster_71
+	icon_state="poster71"
+	name = "REMEMBER - Check Once, Twice, Thrice!"
+	desc = "REMEMBER - Check Once, Twice, Thrice!"
+/datum/poster/poster_72
+	icon_state="poster72"
+	name = "Souto Lime"
+	desc = "Souto Lime. If you don't drink Souto, you probably do stuff like floss and value your kidneys...wimp. Printed in Havana."

@@ -96,12 +96,19 @@
 		return chosen_call
 
 /datum/game_mode/proc/get_specific_call(call_name, quiet_launch = FALSE, announce_incoming = TRUE, info = "")
-	for(var/datum/emergency_call/E in all_calls) //Loop through all potential candidates
-		if(E.name == call_name)
-			var/datum/emergency_call/em_call = new E.type()
-			em_call.objective_info = info
-			em_call.activate(quiet_launch, announce_incoming)
-			return
+	if(ispath(call_name, /datum/emergency_call))
+		var/datum/emergency_call/em_call = new call_name
+		em_call.objective_info = info
+		em_call.activate(quiet_launch, announce_incoming)
+		return
+
+	var/call_path = text2path(call_name)
+	if(ispath(call_path, /datum/emergency_call))
+		var/datum/emergency_call/em_call = new call_path
+		em_call.objective_info = info
+		em_call.activate(quiet_launch, announce_incoming)
+		return
+
 	error("get_specific_call could not find emergency call '[call_name]'")
 	return
 

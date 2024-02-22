@@ -26,17 +26,11 @@
 /obj/structure/barricade/deployable/attackby(obj/item/item, mob/user)
 
 	if(iswelder(item))
-		if(!HAS_TRAIT(item, TRAIT_TOOL_BLOWTORCH))
-			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
-			return
-		if(user.action_busy)
-			return
-		var/obj/item/tool/weldingtool/welder = item
-		if(health == maxhealth)
-			to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
-			return
+		if(!attackby_welder(item, user))
+			return FALSE
 
-		weld_cade(welder, user)
+
+		weld_cade(item, user)
 		return
 
 	else if(HAS_TRAIT(item, TRAIT_TOOL_CROWBAR))

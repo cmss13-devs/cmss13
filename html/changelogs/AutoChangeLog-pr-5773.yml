@@ -1,0 +1,4 @@
+author: "SabreML"
+delete-after: True
+changes:
+  - bugfix: "Fixed Xenomorphs not having their caste's tackle duration values applied to them."

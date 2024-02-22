@@ -269,9 +269,9 @@
 
 	playsound(loc, pick('sound/items/polaroid1.ogg', 'sound/items/polaroid2.ogg'), 15, 1)
 	pictures_left--
-		to_chat(user, SPAN_NOTICE("[pictures_left] photos left."))
+	to_chat(user, SPAN_NOTICE("[pictures_left] photos left."))
 
-	spawn(10) 
+	spawn(10)
 		captureimage(target, user, flag)
 
 

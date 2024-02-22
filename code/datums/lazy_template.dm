@@ -74,7 +74,6 @@
 	var/list/loaded_areas = list()
 
 	var/list/obj/structure/cable/loaded_cables = list()
-	var/list/obj/machinery/atmospherics/loaded_atmospherics = list()
 
 	for(var/z_idx in parsed_template.parsed_bounds[MAP_MAXZ] to 1 step -1)
 		var/turf/bottom_left = reservation.bottom_left_turfs[z_idx]

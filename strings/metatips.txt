@@ -12,6 +12,7 @@ As a mentor, you can become the imaginary friend of a new player to teach them!
 You shouldn't ignore what your allies are up to. Sometimes they can be organizing a flank in hivemind/radio, sometimes they can be walking up behind you with a slug-loaded shotgun. Either way, it pays to be alert to what they're doing, as much to as what the enemies are.
 The Wiki (https://cm-ss13.com/wiki) is a very useful repository of information about the game, such as weapons, equipment, xenomorph castes and their strains. It may not be fully up to date much of the time, but the basics are usually accurate.
 As an observer, you may see how much remaining hijack time is left in the status panel.
+As an observer, you can quickly follow someone by ctrl-clicking on their sprite.
 You can always AdminHelp with the F1 key to question a member of staff regarding rules or game bugs.
 As ghost you are given extra tools for spectating the round: you can jump and follow specific players, get notifications about CAS and OB strikes, can see all health bars, and such.
 You can press ESC key to bring up the game pause menu. It allows you change settings, AdminHelp and MentorHelp, and even access the Web Maps of game by clicking at top right.

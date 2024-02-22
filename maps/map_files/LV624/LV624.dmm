@@ -10399,15 +10399,6 @@
 	icon_state = "podhatchfloor"
 	},
 /area/lv624/lazarus/comms)
-"aTo" = (
-/obj/structure/machinery/power/geothermal,
-/obj/structure/lattice{
-	layer = 2.9
-	},
-/turf/open/floor/plating{
-	icon_state = "warnplate"
-	},
-/area/lv624/lazarus/engineering)
 "aTq" = (
 /obj/structure/foamed_metal,
 /turf/open/floor{
@@ -10688,7 +10679,10 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/foamed_metal,
+/obj/structure/foamed_metal{
+	layer = 3.01
+	},
+/obj/structure/machinery/fuelcell_recycler/full,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -10892,10 +10886,8 @@
 /obj/structure/lattice{
 	layer = 2.9
 	},
-/obj/structure/machinery/power/geothermal{
-	fail_rate = 5
-	},
 /obj/structure/platform,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/plating{
 	dir = 6;
 	icon_state = "warnplate"
@@ -10911,13 +10903,11 @@
 /obj/structure/lattice{
 	layer = 2.9
 	},
-/obj/structure/machinery/power/geothermal{
-	fail_rate = 5
-	},
 /obj/item/clothing/head/hardhat/orange{
 	pixel_x = -7;
 	pixel_y = 13
 	},
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "warnplate"
@@ -10927,9 +10917,7 @@
 /obj/structure/lattice{
 	layer = 2.9
 	},
-/obj/structure/machinery/power/geothermal{
-	fail_rate = 5
-	},
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/plating{
 	dir = 4;
 	icon_state = "warnplate"
@@ -11213,11 +11201,11 @@
 	},
 /area/lv624/lazarus/engineering)
 "aWg" = (
-/obj/structure/machinery/power/geothermal,
 /obj/structure/lattice{
 	layer = 2.9
 	},
 /obj/structure/platform,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/plating{
 	dir = 10;
 	icon_state = "warnplate"
@@ -12059,6 +12047,9 @@
 /obj/item/device/multitool,
 /obj/item/device/assembly/prox_sensor,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -17021,9 +17012,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/machinery/power/geothermal{
-	fail_rate = 5
-	},
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "warnplate"
@@ -17983,9 +17972,7 @@
 /obj/structure/lattice{
 	layer = 2.9
 	},
-/obj/structure/machinery/power/geothermal{
-	fail_rate = 5
-	},
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/plating{
 	icon_state = "warnplate"
 	},
@@ -22207,13 +22194,13 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_central_caves)
 "tem" = (
-/obj/structure/machinery/power/geothermal,
 /obj/structure/lattice{
 	layer = 2.9
 	},
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/plating{
 	dir = 4;
 	icon_state = "warnplate"
@@ -44602,7 +44589,7 @@ aQr
 aQo
 aSi
 aSL
-aTo
+lHc
 ogR
 aUs
 nwR

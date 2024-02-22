@@ -5,21 +5,28 @@
 	climbable = TRUE
 	anchored = TRUE
 	density = TRUE
-	throwpass = TRUE //You can throw objects over this, despite its density.
+	/// You can throw objects over this, despite its density.
+	throwpass = TRUE
 	layer = BELOW_OBJ_LAYER
 	flags_atom = ON_BORDER
-	var/stack_type //The type of stack the barricade dropped when disassembled if any.
-	var/stack_amount = 5 //The amount of stack dropped when disassembled at full health
-	var/destroyed_stack_amount //to specify a non-zero amount of stack to drop when destroyed
+	/// The type of stack the barricade dropped when disassembled if any.
+	var/stack_type
+	/// The amount of stack dropped when disassembled at full health
+	var/stack_amount = 5
+	/// to specify a non-zero amount of stack to drop when destroyed
+	var/destroyed_stack_amount
 	health = 100 //Pretty tough. Changes sprites at 300 and 150
-	var/maxhealth = 100 //Basic code functions
+	var/maxhealth = 100
 	/// Used for calculating some stuff related to maxhealth as it constantly changes due to e.g. barbed wire. set to 100 to avoid possible divisions by zero
 	var/starting_maxhealth = 100
-	var/crusher_resistant = TRUE //Whether a crusher can ram through it.
-	var/force_level_absorption = 5 //How much force an item needs to even damage it at all.
+	/// Whether a crusher can ram through it.
+	var/crusher_resistant = TRUE
+	/// How much force an item needs to even damage it at all.
+	var/force_level_absorption = 5
 	var/barricade_hitsound
 	var/barricade_type = "barricade" //"metal", "plasteel", etc.
-	var/wire_icon = 'icons/obj/structures/barricades.dmi' //! Icon file used for the wiring
+	/// ! Icon file used for the wiring
+	var/wire_icon = 'icons/obj/structures/barricades.dmi'
 	var/can_change_dmg_state = TRUE
 	var/damage_state = BARRICADE_DMG_NONE
 	var/closed = FALSE
@@ -35,6 +42,8 @@
 	var/burn_flame_multiplier = 1
 	var/repair_materials = list()
 	var/metallic = TRUE
+	/// Lower limit of damage beyond which the barricade cannot be fixed by welder. Compared to damage_state. If null it can be repaired at any damage_state.
+	var/welder_lower_damage_limit = null
 
 /obj/structure/barricade/Initialize(mapload, mob/user)
 	. = ..()
@@ -465,4 +474,22 @@
 	nailgun.current_mag.current_rounds -= 3
 	nailgun.in_chamber = null
 	nailgun.load_into_chamber()
+	return TRUE
+
+// This proc is to check a bunch of condition to cancel the action that a welder user is trying to do while giving
+// a explanation on why...
+
+/obj/structure/barricade/proc/attackby_welder(obj/item/item, mob/user)
+	if(!HAS_TRAIT(item, TRAIT_TOOL_BLOWTORCH))
+		to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+		return FALSE
+
+	if(health == maxhealth)
+		to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
+		return FALSE
+
+	if(!(isnull(damage_state)) && !(isnull(welder_lower_damage_limit)) && damage_state >= welder_lower_damage_limit)
+		to_chat(user, SPAN_WARNING("[src] has sustained too much structural damage to be repaired."))
+		return FALSE
+
 	return TRUE

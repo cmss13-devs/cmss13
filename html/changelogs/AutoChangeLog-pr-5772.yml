@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - balance: "Increased same tile weed expansion delay for queen from 7s to 10s"

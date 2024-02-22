@@ -221,15 +221,13 @@ GLOBAL_LIST_EMPTY(alldepartments)
 				to_chat(ui.user, SPAN_NOTICE("You can't do that."))
 				return
 
-			flick("[initial(icon_state)]receive", src)
-			spawn(30)
-				original_fax.forceMove(ui.user.loc)
-				ui.user.put_in_hands(original_fax)
-				to_chat(ui.user, SPAN_NOTICE("You take \the [original_fax.name] out of \the [src]."))
-				original_fax = null
-				fax_paper_copy = null
-				photo_list = null
-				. = TRUE
+			original_fax.forceMove(ui.user.loc)
+			ui.user.put_in_hands(original_fax)
+			to_chat(ui.user, SPAN_NOTICE("You take \the [original_fax.name] out of \the [src]."))
+			original_fax = null
+			fax_paper_copy = null
+			photo_list = null
+			. = TRUE
 
 		if("insertpaper")
 			var/jammed = FALSE
@@ -530,6 +528,7 @@ GLOBAL_LIST_EMPTY(alldepartments)
 	desc = "A standard issue portable fax machine for civilian reporters. Functions off of an internal battery. Cannot receive faxes while being worn. It is currently undeployed. Activate the device inhand to deploy it."
 	w_class = SIZE_HUGE
 	flags_equip_slot = SLOT_BACK
+	flags_item = ITEM_OVERRIDE_NORTHFACE
 	icon = 'icons/obj/structures/machinery/library.dmi'
 	icon_state = "fax_backpack"
 	item_state = "fax_backpack"

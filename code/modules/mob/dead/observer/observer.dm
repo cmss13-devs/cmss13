@@ -268,6 +268,7 @@
 	client.clear_screen()
 	client.eye = carbon_target
 	observe_target_mob = carbon_target
+
 	carbon_target.auto_observed(src)
 
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(observer_move_react))

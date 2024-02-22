@@ -506,7 +506,7 @@
 	. = ..()
 
 /obj/item/storage/fancy/trading_card/attackby(obj/item/attacked_by_item, mob/user)
-	if(istype(attackd_by_item, /obj/item/toy/trading_card))
+	if(istype(attacked_by_item, /obj/item/toy/trading_card))
 		top_trading_card = attacked_by_item
 
 	. = ..()

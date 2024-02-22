@@ -1,0 +1,4 @@
+author: "AtticusRezzer"
+delete-after: True
+changes:
+  - bugfix: "Fixed the incorrect area flag in lifeboats allowing tunneling"

@@ -136,6 +136,9 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/camera/broadcasting(new_human), WEAR_R_HAND)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/device/camera(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/device/fax_backpack(new_human), WEAR_BACK)
+
+
 
 /datum/equipment_preset/uscm_ship/reporter_uscm
 	name = "Combat Correspondent"

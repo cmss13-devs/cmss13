@@ -468,7 +468,7 @@
 		return FALSE
 
 	var/soundchannel = playsound(src, nailgun.repair_sound, 25, 1)
-	if(!do_after(user, nailgun.nailing_speed, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
+	if(!do_after(user, nailgun.nailing_speed, INTERRUPT_ALL, BUSY_ICON_BUILD, src))
 		playsound(src, null, channel = soundchannel)
 		return FALSE
 

@@ -25,6 +25,9 @@ export const PingIndicator = (props) => {
       width="50px"
       className="Ping"
       color="transparent"
+      hover
+      py="0.125em" // Override what light theme does to this
+      px="0.25em" // Override what light theme does to this
       tooltip="Ping relays"
       tooltipPosition="bottom-start"
       onClick={() => act('ping_relays')}>

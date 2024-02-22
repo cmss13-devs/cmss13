@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Box, Stack, Button, Icon, RoundGauge } from '../components';
+import { Box, Stack, Button, Icon, RoundGauge, Flex } from '../components';
 import { Window } from '../layouts';
 import { Color } from 'common/color';
 import { Ping } from 'common/ping';
@@ -29,7 +29,11 @@ class PingApp extends Component {
     super();
 
     this.pinger = new Ping();
-    this.state = { currentIndex: 0 };
+    this.state = {
+      currentIndex: 0,
+      lastClickedIndex: 0,
+      lastClickedState: false,
+    };
 
     this.results = new Array(RELAY_COUNT);
     for (let i = 0; i < RELAY_COUNT; i++) {
@@ -49,6 +53,13 @@ class PingApp extends Component {
         currentIndex: prevState.currentIndex + 1,
       }));
     });
+  }
+
+  handleConfirmChange(index, newState) {
+    if (newState || this.state.lastClickedIndex === index) {
+      this.setState({ lastClickedIndex: index });
+      this.setState({ lastClickedState: newState });
+    }
   }
 
   componentDidMount() {
@@ -100,44 +111,68 @@ class PingApp extends Component {
             <Button.Confirm
               fluid
               height={2}
-              confirmContent={'Connect? '}
+              confirmContent=""
               confirmColor="caution"
               disabled={result.ping === -1 || result.error}
+              onConfirmChange={(clickedOnce) =>
+                this.handleConfirmChange(i, clickedOnce)
+              }
               onClick={() => act('connect', { url: result.url })}>
               {result.ping <= -1 && result.error === null && (
-                <>
-                  <Icon name="spinner" spin inline />
-                  <Box inline>{result.desc}</Box>
-                </>
+                <Flex justify="space-between">
+                  <Flex.Item>
+                    <Icon name="spinner" spin inline />
+                  </Flex.Item>
+                  <Flex.Item>
+                    <Box inline>{result.desc}</Box>
+                  </Flex.Item>
+                  <Flex.Item width={8} />
+                </Flex>
               )}
               {result.ping > -1 && result.error === null && (
-                <>
-                  <Icon name="plug" inline />
-                  <Box preserveWhitespace inline>
-                    {result.desc + '  '}
-                  </Box>
-                  <RoundGauge
-                    value={result.ping}
-                    maxValue={1000}
-                    minValue={50}
-                    ranges={{
-                      'good': [0, 200],
-                      'average': [200, 500],
-                      'bad': [500, 1000],
-                    }}
-                    format={(x) => ' ' + x + 'ms'}
-                    inline
-                  />
-                </>
+                <Flex justify="space-between">
+                  <Flex.Item>
+                    <Icon name="plug" inline />
+                  </Flex.Item>
+                  <Flex.Item>
+                    <Box inline>
+                      {this.state.lastClickedIndex === i &&
+                      this.state.lastClickedState
+                        ? 'Connect via ' + result.desc + '?'
+                        : result.desc}
+                    </Box>
+                  </Flex.Item>
+                  <Flex.Item width={8}>
+                    <RoundGauge
+                      value={result.ping}
+                      maxValue={1000}
+                      minValue={50}
+                      minWidth={4}
+                      ranges={{
+                        'good': [0, 200],
+                        'average': [200, 500],
+                        'bad': [500, 1000],
+                      }}
+                      format={(x) => x + 'ms'}
+                      inline
+                    />
+                  </Flex.Item>
+                </Flex>
               )}
               {result.error !== null && (
-                <>
-                  <Icon name="x" inline color={RED} />
-                  <Box inline>{result.desc}</Box>
-                  <Box inline preserveWhitespace color={RED} bold>
-                    {' (' + result.error + ')'}
-                  </Box>
-                </>
+                <Flex justify="space-between">
+                  <Flex.Item>
+                    <Icon name="x" inline color={RED} />
+                  </Flex.Item>
+                  <Flex.Item>
+                    <Box inline>{result.desc}</Box>
+                  </Flex.Item>
+                  <Flex.Item width={8}>
+                    <Box inline preserveWhitespace color={RED} bold>
+                      {' (' + result.error + ')'}
+                    </Box>
+                  </Flex.Item>
+                </Flex>
               )}
             </Button.Confirm>
           </Stack.Item>

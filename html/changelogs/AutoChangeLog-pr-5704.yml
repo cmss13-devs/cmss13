@@ -1,0 +1,4 @@
+author: "iloveloopers"
+delete-after: True
+changes:
+  - qol: "Reagent tanks can now be dragged faster."

@@ -29410,9 +29410,6 @@
 	icon_state = "whitegreenfull"
 	},
 /area/bigredv2/outside/hydroponics)
-"fYm" = (
-/turf/closed/wall/solaris/reinforced,
-/area/bigredv2/outside/chapel)
 "fYH" = (
 /turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/caves/mining)
@@ -35107,7 +35104,10 @@
 	},
 /area/bigredv2/caves/mining)
 "oJh" = (
-/obj/structure/machinery/vending/security,
+/obj/structure/machinery/power/apc{
+	dir = 1;
+	start_charge = 0
+	},
 /turf/open/floor{
 	dir = 1;
 	icon_state = "red"
@@ -40994,6 +40994,12 @@
 	icon_state = "mars_dirt_4"
 	},
 /area/bigredv2/outside/filtration_plant)
+"xfb" = (
+/obj/structure/machinery/vending/security,
+/turf/open/floor{
+	icon_state = "red"
+	},
+/area/bigredv2/outside/lambda_cave_cas)
 "xfx" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	desc = "A heavy duty power cable for high voltage applications";
@@ -77766,7 +77772,7 @@ aYy
 aYy
 apI
 iHG
-fYm
+iHG
 aJy
 aJy
 nRT
@@ -77972,7 +77978,7 @@ aao
 aao
 aao
 aao
-xXN
+aao
 nse
 ixR
 xpQ
@@ -77983,7 +77989,7 @@ wku
 aYy
 evN
 sTv
-fYm
+iHG
 atb
 atb
 atb
@@ -78199,7 +78205,7 @@ aYy
 aYy
 aYy
 aYy
-apI
+xfb
 aao
 aao
 aao
@@ -78406,7 +78412,7 @@ aao
 aao
 aao
 aao
-xXN
+aao
 nse
 ixR
 xpQ

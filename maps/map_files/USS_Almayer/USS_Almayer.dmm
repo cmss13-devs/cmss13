@@ -27048,6 +27048,9 @@
 	pixel_x = 7;
 	pixel_y = -3
 	},
+/obj/item/device/camera_film{
+	pixel_x = -5
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -34447,6 +34450,10 @@
 	phone_id = "Reporter";
 	pixel_x = -4;
 	pixel_y = 6
+	},
+/obj/item/device/toner{
+	pixel_y = -11;
+	pixel_x = -2
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -55301,18 +55308,7 @@
 	},
 /area/almayer/engineering/lower/engine_core)
 "opI" = (
-/obj/structure/closet/secure_closet,
-/obj/item/device/camera_film,
-/obj/item/device/camera_film,
-/obj/item/device/camera_film,
-/obj/item/storage/box/tapes,
-/obj/item/clothing/head/fedora,
-/obj/item/clothing/suit/storage/marine/light/reporter,
-/obj/item/clothing/head/helmet/marine/reporter,
-/obj/item/clothing/head/cmcap/reporter,
-/obj/item/device/flashlight,
-/obj/item/device/toner,
-/obj/item/device/toner,
+/obj/structure/machinery/cm_vending/clothing/combat_correspondent,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},

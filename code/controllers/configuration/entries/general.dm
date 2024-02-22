@@ -633,12 +633,10 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 /// Relay Ping Browser configuration
 /datum/config_entry/keyed_list/connection_relay_ping
 	splitter = "|"
-	key_mode = KEY_MODE_TEXT
+	key_mode = KEY_MODE_TEXT_UNALTERED
 	value_mode = VALUE_MODE_TEXT
-	to_lower_keys = FALSE
 
 /datum/config_entry/keyed_list/connection_relay_con
 	splitter = "|"
-	key_mode = KEY_MODE_TEXT
+	key_mode = KEY_MODE_TEXT_UNALTERED
 	value_mode = VALUE_MODE_TEXT
-	to_lower_keys = FALSE

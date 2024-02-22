@@ -27,6 +27,7 @@
 	RegisterSignal(parent, COMSIG_XENO_TRY_HIVEMIND_TALK, PROC_REF(on_hivemind))
 	RegisterSignal(parent, COMSIG_MOB_TRY_EMOTE, PROC_REF(on_emote))
 	RegisterSignal(parent, COMSIG_MOB_TRY_POINT, PROC_REF(on_point))
+	ADD_TRAIT(parent, TRAIT_TEMPORARILY_MUTED, TRAIT_SOURCE_TEMPORARY_MUTE)
 
 /datum/component/temporary_mute/UnregisterFromParent()
 	..()
@@ -37,6 +38,7 @@
 		UnregisterSignal(parent, COMSIG_MOB_TRY_POINT)
 		if(on_unmute_message)
 			to_chat(parent, SPAN_NOTICE(on_unmute_message))
+		REMOVE_TRAIT(parent, TRAIT_TEMPORARILY_MUTED, TRAIT_SOURCE_TEMPORARY_MUTE)
 
 /datum/component/temporary_mute/proc/on_speak(
 	mob/user,

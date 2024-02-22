@@ -28,6 +28,10 @@
 	var/mob_min = 3
 	var/dispatch_message = "An encrypted signal has been received from a nearby vessel. Stand by." //Msg to display when starting
 	var/arrival_message = "" //Msg to display about when the shuttle arrives
+	/// Probability that the message will be replaced with static. - prob(chance_hidden)
+	var/chance_hidden = 20
+	/// Message to display when distress beacon is hidden
+	var/static_message = "**STATIC** %$#&!- *!%^#$$ ^%%$# +_!@* &*%$## **STATIC** &%$#^*! @!*%$# ^%&$#@ *%&$#^ **STATIC** --SIGNAL LOST"
 	var/objectives //Txt of objectives to display to joined. Todo: make this into objective notes
 	var/objective_info //For additional info in the objectives txt
 	var/probability = 0
@@ -92,12 +96,19 @@
 		return chosen_call
 
 /datum/game_mode/proc/get_specific_call(call_name, quiet_launch = FALSE, announce_incoming = TRUE, info = "")
-	for(var/datum/emergency_call/E in all_calls) //Loop through all potential candidates
-		if(E.name == call_name)
-			var/datum/emergency_call/em_call = new E.type()
-			em_call.objective_info = info
-			em_call.activate(quiet_launch, announce_incoming)
-			return
+	if(ispath(call_name, /datum/emergency_call))
+		var/datum/emergency_call/em_call = new call_name
+		em_call.objective_info = info
+		em_call.activate(quiet_launch, announce_incoming)
+		return
+
+	var/call_path = text2path(call_name)
+	if(ispath(call_path, /datum/emergency_call))
+		var/datum/emergency_call/em_call = new call_path
+		em_call.objective_info = info
+		em_call.activate(quiet_launch, announce_incoming)
+		return
+
 	error("get_specific_call could not find emergency call '[call_name]'")
 	return
 
@@ -305,7 +316,10 @@
 
 	candidates = list()
 	if(arrival_message && announce_incoming)
-		marine_announcement(arrival_message, "Intercepted Transmission:")
+		if(prob(chance_hidden))
+			marine_announcement(static_message, "Intercepted Transmission:")
+		else
+			marine_announcement(arrival_message, "Intercepted Transmission:")
 
 /datum/emergency_call/proc/add_candidate(mob/M)
 	if(!M.client || (M.mind && (M.mind in candidates)) || istype(M, /mob/living/carbon/xenomorph))

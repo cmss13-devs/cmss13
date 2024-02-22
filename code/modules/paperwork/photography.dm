@@ -338,7 +338,6 @@
 	icon_state = "broadcastingcamera"
 	pictures_left = 20
 	pictures_max = 20
-	force = MELEE_FORCE_NORMAL //would probably hurt a lot to get hit with this
 	w_class = SIZE_HUGE
 	flags_equip_slot = NO_FLAGS //cannot be equiped
 	flags_item = TWOHANDED

@@ -1,4 +1,5 @@
 import { useBackend } from '../backend';
+import { round } from 'common/math';
 import { Box, Stack, Button, Icon, RoundGauge, Flex } from '../components';
 import { Window } from '../layouts';
 import { Color } from 'common/color';
@@ -46,7 +47,7 @@ class PingApp extends Component {
       this.results[this.state.currentIndex]?.update(
         desc,
         'byond://' + connectURL,
-        pong,
+        round(pong * 0.75), // The ping is inflated so lets compensate a bit
         error
       );
       this.setState((prevState) => ({

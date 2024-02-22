@@ -16,6 +16,7 @@ export class Ping {
     this.favicon = this.opt.favicon || '/favicon.ico';
     this.timeout = this.opt.timeout || 10000;
     this.logError = this.opt.logError || false;
+    this.abort = false;
   }
 
   /**
@@ -25,10 +26,18 @@ export class Ping {
    * @param delay Optional number of milliseconds to wait before starting.
    */
   ping(source, callback, delay = 1000) {
+    this.abort = false;
     let timer;
-    timer = setTimeout(() => {
-      this.pingNow(source, callback);
-    }, delay);
+    if (delay > 0) {
+      timer = setTimeout(() => {
+        if (this.abort) {
+          return;
+        }
+        this.pingNow(source, callback);
+      }, delay);
+      return;
+    }
+    this.pingNow(source, callback);
   }
 
   /**
@@ -38,6 +47,7 @@ export class Ping {
    */
   pingNow(source, callback) {
     let self = this;
+    self.abort = false;
     self.wasSuccess = false;
     self.img = new Image();
     self.img.onload = (e) => {
@@ -66,6 +76,9 @@ export class Ping {
       if (timer) {
         clearTimeout(timer);
       }
+      if (this.abort) {
+        return;
+      }
       let pong = new Date() - start;
 
       if (typeof callback === 'function') {
@@ -84,5 +97,12 @@ export class Ping {
     };
 
     self.img.src = source + self.favicon + '?' + +new Date(); // Trigger image load with cache buster
+  }
+
+  /**
+   * Aborts any pending ping request.
+   */
+  cancel() {
+    this.abort = true;
   }
 }

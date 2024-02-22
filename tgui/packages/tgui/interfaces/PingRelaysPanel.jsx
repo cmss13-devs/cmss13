@@ -101,6 +101,10 @@ class PingApp extends Component {
     );
   }
 
+  componentWillUnmount() {
+    this.pinger.cancel();
+  }
+
   render() {
     const { act } = useBackend();
 

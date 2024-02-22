@@ -6,7 +6,6 @@ import { Color } from 'common/color';
 import { Ping } from 'common/ping';
 import { Component } from 'react';
 
-const RELAY_COUNT = 8;
 const RED = new Color(220, 40, 40);
 
 export class PingResult {
@@ -30,16 +29,12 @@ class PingApp extends Component {
     super();
 
     this.pinger = new Ping();
+    this.results = new Array();
     this.state = {
       currentIndex: 0,
       lastClickedIndex: 0,
       lastClickedState: false,
     };
-
-    this.results = new Array(RELAY_COUNT);
-    for (let i = 0; i < RELAY_COUNT; i++) {
-      this.results[i] = new PingResult();
-    }
   }
 
   startTest(desc, pingURL, connectURL) {
@@ -64,42 +59,15 @@ class PingApp extends Component {
   }
 
   componentDidMount() {
-    this.startTest('Direct', 'play.cm-ss13.com:8998', 'play.cm-ss13.com:1400');
-    this.startTest(
-      'United Kingdom, London',
-      'uk.cm-ss13.com:8998',
-      'uk.cm-ss13.com:1400'
-    );
-    this.startTest(
-      'France, Gravelines',
-      'eu-w.cm-ss13.com:8998',
-      'eu-w.cm-ss13.com:1400'
-    );
-    this.startTest(
-      'Poland, Warsaw',
-      'eu-e.cm-ss13.com:8998',
-      'eu-e.cm-ss13.com:1400'
-    );
-    this.startTest(
-      'Oregon, Hillsboro',
-      'us-w.cm-ss13.com:8998',
-      'us-w.cm-ss13.com:1400'
-    );
-    this.startTest(
-      'Virginia, Vint Hill',
-      'us-e.cm-ss13.com:8998',
-      'us-e.cm-ss13.com:1400'
-    );
-    this.startTest(
-      'Singapore',
-      'asia-se.cm-ss13.com:8998',
-      'asia-se.cm-ss13.com:1400'
-    );
-    this.startTest(
-      'Australia, Sydney',
-      'aus.cm-ss13.com:8998',
-      'aus.cm-ss13.com:1400'
-    );
+    this.setState({ currentIndex: 0 });
+    for (let i = 0; i < this.props.relayNames.length; i++) {
+      this.results.push(new PingResult());
+      this.startTest(
+        this.props.relayNames[i],
+        this.props.relayPings[i],
+        this.props.relayCons[i]
+      );
+    }
   }
 
   componentWillUnmount() {
@@ -188,10 +156,17 @@ class PingApp extends Component {
 }
 
 export const PingRelaysPanel = () => {
+  const { data } = useBackend();
+  const { relay_names, relay_pings, relay_cons } = data;
+
   return (
     <Window width={400} height={300} theme={'weyland'}>
       <Window.Content>
-        <PingApp />
+        <PingApp
+          relayNames={relay_names}
+          relayPings={relay_pings}
+          relayCons={relay_cons}
+        />
       </Window.Content>
     </Window>
   );

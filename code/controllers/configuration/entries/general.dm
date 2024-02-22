@@ -629,3 +629,16 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 /datum/config_entry/flag/guest_ban
 
 /datum/config_entry/flag/auto_profile
+
+/// Relay Ping Browser configuration
+/datum/config_entry/keyed_list/connection_relay_ping
+	splitter = "|"
+	key_mode = KEY_MODE_TEXT
+	value_mode = VALUE_MODE_TEXT
+	to_lower_keys = FALSE
+
+/datum/config_entry/keyed_list/connection_relay_con
+	splitter = "|"
+	key_mode = KEY_MODE_TEXT
+	value_mode = VALUE_MODE_TEXT
+	to_lower_keys = FALSE

@@ -262,17 +262,19 @@
 	return mob_detail
 
 /obj/item/device/camera/afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
-	if(!pictures_left || ismob(target.loc) || isstorage(target.loc))
+	if(pictures_left <= 0 || ismob(target.loc) || isstorage(target.loc))
 		return
 	if(user.contains(target) || istype(target, /atom/movable/screen))
 		return
 
 	playsound(loc, pick('sound/items/polaroid1.ogg', 'sound/items/polaroid2.ogg'), 15, 1)
-
 	pictures_left--
-	to_chat(user, SPAN_NOTICE("[pictures_left] photos left."))
+		to_chat(user, SPAN_NOTICE("[pictures_left] photos left."))
 
-	captureimage(target, user, flag)
+	spawn(10) 
+		captureimage(target, user, flag)
+
+
 
 /obj/item/device/camera/proc/captureimage(atom/target, mob/user, flag)
 	var/mob_descriptions = ""

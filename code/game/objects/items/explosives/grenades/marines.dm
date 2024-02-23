@@ -473,8 +473,8 @@
 	item_state = "grenade_sebb"
 	det_time = 4 SECONDS
 	var/range = 5 // Maximum range of effect
-	var/damage = 120 // Generic Energy damage from 1.2 GV. Distance scaled
-	var/falloff_dam_reduction_mult = 12 // Factor to mutiply the effect range has on damage.
+	var/damage = 120 // Maximum possible damage before falloff.
+	var/falloff_dam_reduction_mult = 13 // Factor to mutiply the effect range has on damage.
 
 /obj/item/explosive/grenade/sebb/examine(mob/user)
 	..()

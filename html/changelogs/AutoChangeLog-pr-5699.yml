@@ -1,7 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - maptweak: "split each Hallway area port and starboard into three areas.(fore midship aft)"
-  - maptweak: "change the area around north and south west staircase to remove emergency shutters."
-  - maptweak: "change the area west of squad preparation room to remove emergency shutter."
-  - maptweak: "change the area west of lower engi to make emergency shutter be at the frontier of the area."

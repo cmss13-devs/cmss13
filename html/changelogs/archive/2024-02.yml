@@ -304,3 +304,45 @@
   - rscadd: CIC can now view helmet cameras of Command Staff. Literally 1984
   iloveloopers:
   - qol: Autolathes are now significantly faster.
+2024-02-23:
+  AtticusRezzer:
+  - bugfix: Fixed the incorrect area flag in lifeboats allowing tunneling
+  Drathek:
+  - balance: Increased same tile weed expansion delay for queen from 7s to 10s
+  Huffie56:
+  - maptweak: split each Hallway area port and starboard into three areas.(fore midship
+      aft)
+  - maptweak: change the area around north and south west staircase to remove emergency
+      shutters.
+  - maptweak: change the area west of squad preparation room to remove emergency shutter.
+  - maptweak: change the area west of lower engi to make emergency shutter be at the
+      frontier of the area.
+  InsaneRed:
+  - rscadd: Added a new ability to the predalien "Feral Rush" that increases it's
+      armor and speed for a short duration.
+  - rscadd: Added two new abilities to the predalien "Feral Frenzy" and a toggle.
+      The predalien can now switch between a single target GUT and an AOE one, both
+      of which has damage that scale with your kills.
+  - rscdel: Removed the predaliens gib ability
+  - rscdel: Removed the predaliens "pounce" ability
+  - rscdel: Removed the predaliens "Ground Smash" ability
+  - balance: Predalien no longer has plasma costs, or plasma.
+  - balance: The Plasma Rifle, which is ONLY used to hunt abominations now has a higher
+      ROF and has incin bullets.
+  - spellcheck: Re-wrote the predalien text to be more up to date and remove missinformation
+  - qol: Everyone can see how many kills the predalien has by examining it.
+  - rscadd: Added  a "Feral Smash" ability that lets you grab somebody and smash them
+      to the ground, this scales with kills and is a devastating attack.
+  - balance: Removed screenshake from predalien's screech
+  - balance: Predalien removes fire stacks faster.
+  - bugfix: Girders are now slashable by very_sharp_claws instead of just having a
+      queen chack
+  SabreML:
+  - bugfix: Fixed the search function of TGUI input lists.
+  - qol: Made the TGUI input list search bar automatically focus when toggled.
+  - bugfix: Fixed Xenomorphs not having their caste's tackle duration values applied
+      to them.
+  fira:
+  - code_imp: Updated mapping backend from /tg/ upstream.
+  iloveloopers:
+  - qol: Reagent tanks can now be dragged faster.

@@ -304,7 +304,7 @@
 	name = "Inspection - Colonial Marshals Ledger Investigation Team"
 	mob_max = 3 //Marshal, Deputy, ICC CL
 	mob_min = 2
-	shuttle_id = "Distress_PMC"
+	shuttle_id = MOBILE_SHUTTLE_ID_ERT2
 
 	max_synths = 0
 	will_spawn_icc_liaison = TRUE

@@ -35,7 +35,7 @@
  * Does the grunt work of loading the template.
  */
 /datum/lazy_template/proc/lazy_load()
-	RETURN_TYPE(/turf)
+	RETURN_TYPE(/datum/turf_reservation)
 	// This is a static assosciative list that is used to ensure maps that have variations are correctly varied when spawned
 	// I want to make it to where you can make a range and it'll randomly pick'n'take from the available versions at random
 	// But that can be done later when I have the time
@@ -72,8 +72,6 @@
 	var/list/loaded_atom_movables = list()
 	var/list/loaded_turfs = list()
 	var/list/loaded_areas = list()
-
-	var/list/obj/structure/cable/loaded_cables = list()
 
 	for(var/z_idx in parsed_template.parsed_bounds[MAP_MAXZ] to 1 step -1)
 		var/turf/bottom_left = reservation.bottom_left_turfs[z_idx]

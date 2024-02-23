@@ -8,6 +8,7 @@
 	objectives = "Assault the USCM, and sabotage as much as you can. Ensure any survivors escape in your custody."
 	probability = 20
 	hostility = TRUE
+	home_base = /datum/ert_home/clf
 	var/max_synths = 1
 	var/synths = 0
 

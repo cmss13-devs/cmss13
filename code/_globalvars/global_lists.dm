@@ -522,3 +522,12 @@ GLOBAL_PROTECT(topic_tokens)
 
 GLOBAL_LIST_EMPTY(topic_commands)
 GLOBAL_PROTECT(topic_commands)
+
+GLOBAL_LIST_INIT(distress_beacon_hubs, setup_distress_hubs())
+
+/proc/setup_distress_hubs()
+	var/all_hubs = list()
+	for(var/path in subtypesof(/datum/ert_home))
+		all_hubs[path] = new path()
+	return all_hubs
+

@@ -134,3 +134,11 @@
 #define ESCAPE_SHUTTLE_SOUTH_PREFIX "escape_shuttle_s"
 
 #define ESCAPE_SHUTTLE_DOCK_PREFIX "almayer-hangar-escape-shuttle-"
+
+#define ERT_SHUTTLE_DEFAULT_RECHARGE 90 SECONDS
+
+#define ADMIN_LANDING_PAD_1 "base-ert1"
+#define ADMIN_LANDING_PAD_2 "base-ert2"
+#define ADMIN_LANDING_PAD_3 "base-ert3"
+#define ADMIN_LANDING_PAD_4 "base-ert4"
+#define ADMIN_LANDING_PAD_5 "base-ert5"

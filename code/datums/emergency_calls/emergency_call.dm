@@ -57,6 +57,20 @@
 
 	var/time_required_for_job = 5 HOURS
 
+	/// the [/datum/ert_home] we should attempt to spawn in for the return journey
+	var/home_base
+
+/datum/ert_home
+	/// the lazy template we should spawn in that contains the home base
+	var/base_template
+
+	/// the dock ID we should attempt to dock home with
+	var/home_dock
+
+/datum/ert_home/clf
+	base_template = /datum/lazy_template/clf_ert_station
+	home_dock = ADMIN_LANDING_PAD_1
+
 /datum/game_mode/proc/initialize_emergency_calls()
 	if(all_calls.len) //It's already been set up.
 		return
@@ -269,12 +283,14 @@
 		if(M.client)
 			to_chat(M, SPAN_NOTICE("Distress beacon: [src.name] finalized."))
 
-	var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttle_id)
+	var/obj/docking_port/mobile/shuttle
+	if(shuttle_id)
+		if(!SSmapping.shuttle_templates[shuttle_id])
+			message_admins("Distress beacon: [name] does not have a valid shuttle_id: [shuttle_id]")
+			CRASH("ert called with invalid shuttle_id")
 
-	if(!istype(shuttle))
-		if(shuttle_id) //Cryo distress doesn't have a shuttle
-			message_admins("Warning: Distress shuttle not found.")
-	spawn_items()
+		var/datum/map_template/shuttle/new_shuttle = SSmapping.shuttle_templates[shuttle_id]
+		shuttle = SSshuttle.load_template_to_transit(new_shuttle)
 
 	if(shuttle && auto_shuttle_launch)
 		var/obj/structure/machinery/computer/shuttle/ert/comp = shuttle.getControlConsole()

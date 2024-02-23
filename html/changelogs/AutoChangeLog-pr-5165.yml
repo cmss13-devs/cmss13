@@ -1,4 +1,0 @@
-author: "fira"
-delete-after: True
-changes:
-  - code_imp: "Updated mapping backend from /tg/ upstream."

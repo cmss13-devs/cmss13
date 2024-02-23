@@ -18,6 +18,8 @@
 
 	update_Login_details()
 
+	SEND_SIGNAL(src, COMSIG_MOB_LOGIN)
+
 	client.images = null
 	client.screen = null //remove hud items just in case
 	if(!hud_used)

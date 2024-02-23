@@ -162,7 +162,7 @@
 	UnregisterSignal(observe_target_mob, COMSIG_PARENT_QDELETING)
 	UnregisterSignal(observe_target_mob, COMSIG_MOB_GHOSTIZE)
 	UnregisterSignal(observe_target_mob, COMSIG_MOB_NEW_MIND)
-	UnregisterSignal(observe_target_mob, COMSIG_MOB_LOGGED_IN)
+	UnregisterSignal(observe_target_mob, COMSIG_MOB_LOGIN)
 
 	if(observe_target_client)
 		UnregisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_ADD)

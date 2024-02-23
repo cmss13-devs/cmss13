@@ -37694,6 +37694,14 @@
 	icon_state = "platingdmg3"
 	},
 /area/bigredv2/caves/mining)
+"sri" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/library)
 "sso" = (
 /obj/structure/bed/chair,
 /turf/open/mars_cave{
@@ -38321,6 +38329,15 @@
 	icon_state = "mars_cave_7"
 	},
 /area/bigredv2/outside/n)
+"tkM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/library)
 "tkN" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
@@ -74470,9 +74487,9 @@ tmj
 aEi
 aEi
 aui
+tkM
 aui
-aui
-aEi
+sri
 aEi
 aEi
 aEi

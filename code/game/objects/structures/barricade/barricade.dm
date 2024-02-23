@@ -366,8 +366,8 @@
 		if(50 to 75) damage_state = BARRICADE_DMG_SLIGHT
 		if(75 to INFINITY) damage_state = BARRICADE_DMG_NONE
 
-/obj/structure/barricade/proc/try_weld_cade(obj/item/tool/weldingtool/welder, mob/user)
-	if(!can_weld(welder, user))
+/obj/structure/barricade/proc/try_weld_cade(obj/item/tool/weldingtool/welder, mob/user, repeat = TRUE, skip_check = FALSE)
+	if(!skip_check && !can_weld(welder, user))
 		return FALSE
 
 	if(!(welder.remove_fuel(2, user)))
@@ -386,6 +386,14 @@
 	user.count_niche_stat(STATISTICS_NICHE_REPAIR_CADES)
 	update_health(-200)
 	playsound(src.loc, 'sound/items/Welder2.ogg', 25, TRUE)
+
+	welder = user.get_active_hand()
+	if(can_weld(welder, user, silent = TRUE))
+		// Assumption: The implementation of can_weld will return false if fully repaired
+		if(!try_weld_cade(welder, user, repeat = TRUE, skip_check = TRUE))
+			// If this returned false, then we were interrupted or ran out of fuel, so stop looping
+			return TRUE
+
 	return TRUE
 
 /obj/structure/barricade/verb/count_rotate()

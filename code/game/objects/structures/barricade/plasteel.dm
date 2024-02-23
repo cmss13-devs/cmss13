@@ -60,7 +60,7 @@
 		if(BARRICADE_BSTATE_MOVABLE)
 			. += SPAN_INFO("The protection panel has been removed and the anchor bolts loosened. It's ready to be taken apart.")
 
-/obj/structure/barricade/plasteel/try_weld_cade(obj/item/item, mob/user)
+/obj/structure/barricade/plasteel/try_weld_cade(obj/item/item, mob/user, repeat = TRUE, skip_check = FALSE)
 	busy = TRUE
 	..()
 	busy = FALSE

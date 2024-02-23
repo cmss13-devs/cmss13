@@ -1,4 +1,0 @@
-author: "SabreML"
-delete-after: True
-changes:
-  - refactor: "Refactored the 'gun action' buttons, making them show their names in the status bar when hovered over."

@@ -66,7 +66,7 @@
 
 /datum/ammo/bullet/pistol/ap/toxin/on_hit_turf(turf/T, obj/projectile/P)
 	. = ..()
-	if(T.flags_turf & TURF_ORGANIC)
+	if(T.turf_flags & TURF_ORGANIC)
 		P.damage *= organic_damage_mult
 
 /datum/ammo/bullet/pistol/ap/toxin/on_hit_obj(obj/O, obj/projectile/P)
@@ -197,7 +197,7 @@
 
 /datum/ammo/bullet/pistol/squash/toxin/on_hit_turf(turf/T, obj/projectile/P)
 	. = ..()
-	if(T.flags_turf & TURF_ORGANIC)
+	if(T.turf_flags & TURF_ORGANIC)
 		P.damage *= organic_damage_mult
 
 /datum/ammo/bullet/pistol/squash/toxin/on_hit_obj(obj/O, obj/projectile/P)

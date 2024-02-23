@@ -399,6 +399,14 @@ const PunishmentActions = (props) => {
             disabled={!hasPermission(data, 'show_notes')}
             onClick={() => act('show_notes')}
           />
+          <Button
+            width="100%"
+            icon="clipboard-list"
+            color="average"
+            content="Check Ckey"
+            disabled={!hasPermission(data, 'check_ckey')}
+            onClick={() => act('check_ckey')}
+          />
         </Stack>
       </Section>
 

@@ -1,0 +1,4 @@
+author: "TopHatPenguin"
+delete-after: True
+changes:
+  - rscdel: "Removes part of MOPP suit desc."

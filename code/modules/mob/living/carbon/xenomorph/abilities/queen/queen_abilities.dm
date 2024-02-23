@@ -38,7 +38,7 @@
 
 	var/node_plant_cooldown = 7 SECONDS
 	var/node_plant_plasma_cost = 300
-	var/turf_build_cooldown = 7 SECONDS
+	var/turf_build_cooldown = 10 SECONDS
 
 /datum/action/xeno_action/onclick/manage_hive
 	name = "Manage The Hive"

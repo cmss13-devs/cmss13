@@ -37,6 +37,9 @@ GLOBAL_LIST_EMPTY(minimap_icons)
 
 GLOBAL_LIST_EMPTY(mainship_pipes)
 
+/// List of all the maps that have been cached for /proc/load_map
+GLOBAL_LIST_EMPTY(cached_maps)
+
 /proc/initiate_minimap_icons()
 	var/list/icons = list()
 	for(var/iconstate in icon_states('icons/UI_icons/map_blips.dmi'))

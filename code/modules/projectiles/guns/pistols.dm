@@ -587,7 +587,7 @@
 	desc = "Standard issue USCM firearm. Also found in the hands of Weyland-Yutani PMC teams. Fires 9mm armor shredding rounds and is capable of 3-round burst."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "_88m4" // to comply with css standards
-	item_state = "88m4"
+	item_state = "_88m4"
 	fire_sound = "88m4"
 	firesound_volume = 20
 	reload_sound = 'sound/weapons/gun_88m4_reload.ogg'

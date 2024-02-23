@@ -53,6 +53,12 @@
 		admin_holder.unbanpanel()
 	return
 
+/client/proc/stickyban_panel()
+	set name = "Stickyban Panel"
+	set category = "Admin.Panels"
+
+	admin_holder?.stickypanel()
+
 /client/proc/player_panel_new()
 	set name = "Player Panel"
 	set category = "Admin.Panels"

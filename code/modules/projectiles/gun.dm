@@ -1344,7 +1344,7 @@ and you're good to go.
 	user.next_move = world.time //No click delay on PBs.
 
 	//Point blanking doesn't actually fire the projectile. Instead, it simulates firing the bullet proper.
-	if(!able_to_fire(user)) //If it's a valid PB aside from that you can't fire the gun, do nothing.
+	if(flags_gun_features & GUN_BURST_FIRING || !able_to_fire(user)) //If it's a valid PB aside from that you can't fire the gun, do nothing.
 		return TRUE
 
 	//The following relating to bursts was borrowed from Fire code.

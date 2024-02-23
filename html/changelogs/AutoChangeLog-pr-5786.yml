@@ -1,0 +1,4 @@
+author: "Segrain"
+delete-after: True
+changes:
+  - admin: "Check Ckey verb is now available on player panel."

@@ -911,7 +911,7 @@
 		return XENO_ATTACK_ACTION
 
 /obj/structure/girder/attack_alien(mob/living/carbon/xenomorph/M)
-	if((M.caste && M.caste.tier < 2 && !isqueen(M)) || unacidable)
+	if((M.caste && M.caste.tier < 2 && M.claw_type < CLAW_TYPE_VERY_SHARP) || unacidable)
 		to_chat(M, SPAN_WARNING("Our claws aren't sharp enough to damage [src]."))
 		return XENO_NO_DELAY_ACTION
 	M.animation_attack_on(src)

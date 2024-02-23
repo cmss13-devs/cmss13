@@ -175,3 +175,8 @@ GLOBAL_LIST_INIT(RESTRICTED_CAMERA_NETWORKS, list( //Those networks can only be 
 #define CHECKS_PASSED 1
 #define STILL_ON_COOLDOWN 2
 #define NO_LIGHT_STATE_CHANGE 3
+
+//tool capabilities or something i don't know
+#define REMOVE_CROWBAR  (1<<0)
+#define BREAK_CROWBAR   (1<<1)
+#define REMOVE_SCREWDRIVER (1<<2)

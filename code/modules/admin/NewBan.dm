@@ -180,14 +180,43 @@ GLOBAL_DATUM(Banlist, /savefile)
 				expiry = "Removal Pending"
 		else
 			expiry = "Permaban"
-		var/unban_link = "<A href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];unbanf=[ban.ckey]'>(U)</A>"
+		var/unban_link
+		if(ban.is_permabanned)
+			unban_link = "<a href='?src=\ref[src];[HrefToken()];unban_perma=[ban.ckey]'>(UP)</a>"
+		else
+			unban_link = "<A href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];unbanf=[ban.ckey]'>(UT)</A>"
 
-		dat += "<tr><td>[unban_link] Key: <B>[ban.ckey]</B></td><td>ComputerID: <B>[ban.last_known_cid]</B></td><td>IP: <B>[ban.last_known_ip]</B></td><td> [expiry]</td><td>(By: [ban.admin])</td><td>(Reason: [ban.reason])</td></tr>"
+		dat += "<tr><td>[unban_link] Key: <B>[ban.ckey]</B></td><td>ComputerID: <B>[ban.last_known_cid]</B></td><td>IP: <B>[ban.last_known_ip]</B></td><td> [expiry]</td><td>(By: [ban.admin ? ban.admin : "AdminBot"])</td><td>(Reason: [ban.reason])</td></tr>"
 
 	dat += "</table>"
-	var/dat_header = "<HR><B>Bans:</B> <span class='[INTERFACE_BLUE]'>(U) = Unban"
+	var/dat_header = "<HR><B>Bans:</B> <span class='[INTERFACE_BLUE]'>(UP) = Unban Perma (UT) = Unban Timed"
 	dat_header += "</span> - <span class='[INTERFACE_GREEN]'>Ban Listing</span><HR><table border=1 rules=all frame=void cellspacing=0 cellpadding=3 >[dat]"
 	show_browser(usr, dat_header, "Unban Panel", "unbanp", "size=875x400")
+
+/datum/admins/proc/stickypanel()
+	var/add_sticky = "<a href='?src=\ref[src];[HrefToken()];sticky=1;new_sticky=1'>Add Sticky Ban</a>"
+	var/find_sticky = "<a href='?src=\ref[src];[HrefToken()];sticky=1;find_sticky=1'>Find Sticky Ban</a>"
+
+	var/data = "<hr><b>Sticky Bans:</b> [add_sticky] [find_sticky] <table border=1 rules=all frame=void cellspacing=0 cellpadding=3>"
+
+	var/list/datum/view_record/stickyban/stickies = DB_VIEW(/datum/view_record/stickyban,
+		DB_COMP("active", DB_EQUALS, TRUE)
+	)
+
+	for(var/datum/view_record/stickyban/current_sticky in stickies)
+		var/whitelist_link = "<a href='?src=\ref[src];[HrefToken()];sticky=[current_sticky.id];whitelist_ckey=1'>(WHITELIST)</a>"
+		var/remove_sticky_link = "<a href='?src=\ref[src];[HrefToken()];sticky=[current_sticky.id];remove=1'>(REMOVE)</a>"
+		var/add_to_sticky_link = "<a href='?src=\ref[src];[HrefToken()];sticky=[current_sticky.id];add=1'>(ADD)</a>"
+
+		var/impacted_ckey_link = "<a href='?src=\ref[src];[HrefToken()];sticky=[current_sticky.id];view_all_ckeys=1'>CKEYs</a>"
+		var/impacted_ip_link = "<a href='?src=\ref[src];[HrefToken()];sticky=[current_sticky.id];view_all_ips=1'>IPs</a>"
+		var/impacted_cid_link = "<a href='?src=\ref[src];[HrefToken()];sticky=[current_sticky.id];view_all_cids=1'>CIDs</a>"
+
+		data += "<tr><td>[whitelist_link][remove_sticky_link][add_to_sticky_link]</td><td>Identifier: [current_sticky.identifier]</td><td>Reason: [current_sticky.reason]</td><td>Message: [current_sticky.message]</td> <td>Admin: [current_sticky.admin]</td> <td>View: [impacted_ckey_link][impacted_ip_link][impacted_cid_link]</td></tr>"
+
+	data += "</table>"
+
+	show_browser(owner, data, "Stickyban Panel", "sticky", "size=875x400")
 
 //////////////////////////////////// DEBUG ////////////////////////////////////
 
@@ -251,3 +280,48 @@ GLOBAL_DATUM(Banlist, /savefile)
 	if(P.is_time_banned && alert(usr, "Ban already exists. Proceed?", "Confirmation", "Yes", "No") != "Yes")
 		return
 	P.add_timed_ban(reason, mins)
+
+/client/proc/cmd_admin_do_stickyban(identifier, reason, message, list/impacted_ckeys, list/impacted_cids, list/impacted_ips)
+	if(!identifier)
+		identifier = tgui_input_text(src, "Name of the primary CKEY you are adding a stickyban to.", "BuildABan")
+	if(!identifier)
+		return
+
+	if(!message)
+		message = tgui_input_text(src, "What message should be given to the impacted users?", "BuildABan", encode = FALSE)
+	if(!message)
+		return
+
+	if(!reason)
+		reason = tgui_input_text(src, "What's the reason for the ban? This is shown internally, and not displayed in public notes and ban messages. Include as much detail as necessary.", "BuildABan", multiline = TRUE, encode = FALSE)
+	if(!reason)
+		return
+
+	if(!length(impacted_ckeys))
+		impacted_ckeys = splittext(tgui_input_text(src, "Which CKEYs should be impacted by this ban? Include the primary ckey, separated by semicolons.", "BuildABan", "player1;player2;player3"), ";")
+
+	if(!length(impacted_cids))
+		impacted_cids = splittext(tgui_input_text(src, "Which CIDs should be impacted by this ban? Separate with semicolons.", "BuildABan", "12345678;87654321"), ";")
+
+	if(!length(impacted_ips))
+		impacted_ips = splittext(tgui_input_text(src, "Which IPs should be impacted by this ban? Separate with semicolons.", "BuildABan", "1.1.1.1;8.8.8.8"), ";")
+
+	var/datum/entity/stickyban/new_sticky = SSstickyban.add_stickyban(identifier, reason, message, player_data)
+
+	if(!new_sticky)
+		to_chat(src, SPAN_ADMIN("Failed to apply stickyban."))
+		return
+
+	for(var/ckey in impacted_ckeys)
+		SSstickyban.add_matched_ckey(new_sticky.id, ckey)
+
+	for(var/cid in impacted_cids)
+		SSstickyban.add_matched_cid(new_sticky.id, cid)
+
+	for(var/ip in impacted_ips)
+		SSstickyban.add_matched_ip(new_sticky.id, ip)
+
+	log_admin("STICKYBAN: Identifier: [identifier] Reason: [reason] Message: [message] CKEYs: [english_list(impacted_ckeys)] IPs: [english_list(impacted_ips)] CIDs: [english_list(impacted_cids)]")
+	message_admins("[key_name_admin(src)] has added a new stickyban with the identifier '[identifier]'.")
+	var/datum/tgs_chat_embed/field/reason_embed = new("Stickyban Reason", reason)
+	important_message_external("[src] has added a new stickyban with the identifier '[identifier]'.", "Stickyban Placed", list(reason_embed))

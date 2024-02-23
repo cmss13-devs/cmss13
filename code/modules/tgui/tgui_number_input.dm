@@ -145,6 +145,7 @@
 		"min_value" = min_value,
 		"preferences" = list(),
 		"title" = title,
+		"integer_only" = integer_only
 	)
 
 /datum/tgui_input_number/ui_data(mob/user)

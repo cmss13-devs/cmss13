@@ -118,7 +118,7 @@
 	update_icon()
 
 	playsound(src.loc, close_sound, 15, 1)
-	if(initial(density) != density) // If it didn't start dense (ea map placement) then don't make it dense
+	if(pixel_y < 10 || pixel_x < 10) // If it's offsetted to a point where it would confuse players, don't make dense
 		density = TRUE
 	return TRUE
 

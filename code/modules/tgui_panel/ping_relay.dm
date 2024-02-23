@@ -46,6 +46,7 @@ GLOBAL_DATUM_INIT(relays_panel, /datum/ping_relay_tgui, new)
 
 	switch(action)
 		if("connect")
+			to_chat(user, "Now connecting via [params["desc"]]. Please wait...");
 			user << link(params["url"])
 			ui.close()
 			return

@@ -90,7 +90,9 @@ class PingApp extends Component {
               onConfirmChange={(clickedOnce) =>
                 this.handleConfirmChange(i, clickedOnce)
               }
-              onClick={() => act('connect', { url: result.url })}>
+              onClick={() =>
+                act('connect', { url: result.url, desc: result.desc })
+              }>
               {result.ping <= -1 && result.error === null && (
                 <Flex justify="space-between">
                   <Flex.Item>

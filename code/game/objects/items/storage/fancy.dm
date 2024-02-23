@@ -247,13 +247,13 @@
 		user.put_in_hands(trading_card)
 		trading_card = null
 
-	. = ..()
+	return ..()
 
 /obj/item/storage/fancy/cigarettes/trading_card/attackby(obj/item/attacked_by_item, mob/user)
 	if(istype(attacked_by_item, /obj/item/toy/trading_card))
 		trading_card = attacked_by_item
 
-	. = ..()
+	return ..()
 
 /////////////
 //CIGAR BOX//
@@ -503,13 +503,13 @@
 		update_icon()
 		return
 
-	. = ..()
+	return ..()
 
 /obj/item/storage/fancy/trading_card/attackby(obj/item/attacked_by_item, mob/user)
 	if(istype(attacked_by_item, /obj/item/toy/trading_card))
 		top_trading_card = attacked_by_item
 
-	. = ..()
+	return ..()
 
 /obj/item/storage/fancy/trading_card/red
 	collection_color = "red"

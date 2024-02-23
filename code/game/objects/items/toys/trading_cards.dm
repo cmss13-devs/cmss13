@@ -58,4 +58,4 @@
 			desc = front_description
 			icon_state = front_icon_state
 			is_front = TRUE
-	. = ..()
+	return ..()

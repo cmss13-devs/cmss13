@@ -366,9 +366,8 @@
 		if(50 to 75) damage_state = BARRICADE_DMG_SLIGHT
 		if(75 to INFINITY) damage_state = BARRICADE_DMG_NONE
 
-/obj/structure/barricade/proc/weld_cade(obj/item/tool/weldingtool/welder, mob/user)
-	if(!metallic)
-		user.visible_message(SPAN_WARNING("You can't weld \the [src]!"))
+/obj/structure/barricade/proc/try_weld_cade(obj/item/tool/weldingtool/welder, mob/user)
+	if(!can_weld(welder, user))
 		return FALSE
 
 	if(!(welder.remove_fuel(2, user)))
@@ -476,20 +475,28 @@
 	nailgun.load_into_chamber()
 	return TRUE
 
-// This proc is to check a bunch of condition to cancel the action that a welder user is trying to do while giving
-// a explanation on why...
+/obj/structure/barricade/proc/can_weld(obj/item/item, mob/user, silent)
+	if(user.action_busy)
+		return FALSE
 
-/obj/structure/barricade/proc/attackby_welder(obj/item/item, mob/user)
+	if(!metallic)
+		if(!silent)
+			user.visible_message(SPAN_WARNING("You can't weld \the [src]!"))
+		return FALSE
+
 	if(!HAS_TRAIT(item, TRAIT_TOOL_BLOWTORCH))
-		to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+		if(!silent)
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 		return FALSE
 
 	if(health == maxhealth)
-		to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
+		if(!silent)
+			to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
 		return FALSE
 
 	if(!(isnull(damage_state)) && !(isnull(welder_lower_damage_limit)) && damage_state >= welder_lower_damage_limit)
-		to_chat(user, SPAN_WARNING("[src] has sustained too much structural damage to be repaired."))
+		if(!silent)
+			to_chat(user, SPAN_WARNING("[src] has sustained too much structural damage to be repaired."))
 		return FALSE
 
 	return TRUE

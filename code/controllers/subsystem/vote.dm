@@ -59,7 +59,7 @@ SUBSYSTEM_DEF(vote)
 	voting.Cut()
 	remove_action_buttons()
 
-	UnregisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGIN)
+	UnregisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGGED_IN)
 
 	for(var/c in GLOB.player_list)
 		update_static_data(c)
@@ -373,7 +373,7 @@ SUBSYSTEM_DEF(vote)
 			if(send_clients_vote)
 				C.mob.vote()
 
-		RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGIN, PROC_REF(handle_client_joining))
+		RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGGED_IN, PROC_REF(handle_client_joining))
 		SStgui.update_uis(src)
 		return TRUE
 	return FALSE

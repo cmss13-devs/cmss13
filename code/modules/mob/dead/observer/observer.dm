@@ -162,7 +162,7 @@
 	UnregisterSignal(observe_target_mob, COMSIG_PARENT_QDELETING)
 	UnregisterSignal(observe_target_mob, COMSIG_MOB_GHOSTIZE)
 	UnregisterSignal(observe_target_mob, COMSIG_MOB_NEW_MIND)
-	UnregisterSignal(observe_target_mob, COMSIG_MOB_LOGIN)
+	UnregisterSignal(observe_target_mob, COMSIG_MOB_LOGGED_IN)
 
 	if(observe_target_client)
 		UnregisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_ADD)
@@ -275,7 +275,7 @@
 	RegisterSignal(observe_target_mob, COMSIG_PARENT_QDELETING, PROC_REF(clean_observe_target))
 	RegisterSignal(observe_target_mob, COMSIG_MOB_GHOSTIZE, PROC_REF(observe_target_ghosting))
 	RegisterSignal(observe_target_mob, COMSIG_MOB_NEW_MIND, PROC_REF(observe_target_new_mind))
-	RegisterSignal(observe_target_mob, COMSIG_MOB_LOGIN, PROC_REF(observe_target_login))
+	RegisterSignal(observe_target_mob, COMSIG_MOB_LOGGED_IN, PROC_REF(observe_target_login))
 
 	if(observe_target_mob.client)
 		observe_target_client = observe_target_mob.client

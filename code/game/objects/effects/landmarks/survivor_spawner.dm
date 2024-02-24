@@ -144,6 +144,16 @@
 
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
 
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_cl
+	equipment = /datum/equipment_preset/survivor/wy/asstmanager
+	synth_equipment = /datum/equipment_preset/synth/survivor/wy/corporate_synth
+	intro_text = list("<h2>You are the last alive Senior Administrator on the Colony!</h2>",\
+	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
+	story_text = "You are the Assistant Operations Manager stationed on 'Ifrit' from Weyland-Yutani. This whole outbreak has been a giant mess, you and all other Company personnel ran to the Operations Panic Room, until you heard shooting outside and closed the shutters. You are running low on food, water and ammunition for the weapons you one-day said were 'useless' and a waste of Company dollars. You remember that Administrator Stahl sent out a distress beacon to any ship in range, hoping to get picked up by the Company, he ran to the Spaceport. You have not seen him since. In their latest attempts at trying to breach in, the so called 'xenomorphs' have tried attacking the shutters, but to no avail. But they will breach soon... You must survive and find a way to contact Weyland-Yutani."
+
+	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
+
 //Military Survivors//
 
 /obj/effect/landmark/survivor_spawner/lv522_forecon_tech

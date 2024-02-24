@@ -2991,7 +2991,6 @@
 	bound_height = 32
 	density = TRUE
 	health = 200
-	opacity = TRUE
 	anchored = TRUE
 	layer = 5
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble1
@@ -3048,7 +3047,6 @@
 	bound_height = 64
 	density = TRUE
 	health = 200
-	opacity = TRUE
 	anchored = TRUE
 
 /obj/structure/prop/hybrisa/misc/stoneplanterseats/empty
@@ -3064,7 +3062,6 @@
 	bound_width = 64
 	bound_height = 64
 	density = TRUE
-	opacity = TRUE
 	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
@@ -3076,7 +3073,6 @@
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "detonator"
 	density = TRUE
-	opacity = TRUE
 	anchored = TRUE
 
 /obj/structure/prop/hybrisa/misc/firehydrant
@@ -3085,7 +3081,6 @@
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "firehydrant"
 	density = TRUE
-	opacity = TRUE
 	anchored = TRUE
 /obj/structure/prop/hybrisa/misc/phonebox
 	name = "phonebox"
@@ -3096,11 +3091,14 @@
 	bound_width = 32
 	bound_height = 32
 	density = TRUE
-	opacity = TRUE
 	anchored = TRUE
 /obj/structure/prop/hybrisa/misc/phonebox/broken
 	desc = "A phone-box, it doesn't seem to be working, the line must be down. The glass has been broken."
 	icon_state = "phonebox_closed_broken"
+
+/obj/structure/prop/hybrisa/misc/phonebox/lightup
+	desc = "A phone-box, it doesn't seem to be working, the line must be down."
+	icon_state = "phonebox_closed_light"
 
 // Billboards, Signs and Posters
 
@@ -3113,7 +3111,6 @@
 	bound_height = 32
 	density = FALSE
 	health = 200
-	opacity = TRUE
 	anchored = TRUE
 /obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1
 	name = "billboard"

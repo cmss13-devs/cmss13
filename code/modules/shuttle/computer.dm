@@ -193,7 +193,7 @@
 
 	if(must_launch_home)
 		if(action == "launch_home")
-			var/datum/turf_reservation/loaded = SSmapping.lazy_load_template(ert.home_base)
+			var/datum/turf_reservation/loaded = SSmapping.lazy_load_template(ert.home_base, force = TRUE)
 			var/turf/bottom_left = loaded.bottom_left_turfs[1]
 			var/turf/top_right = loaded.top_right_turfs[1]
 

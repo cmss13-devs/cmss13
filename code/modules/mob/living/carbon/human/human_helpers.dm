@@ -247,6 +247,13 @@
 				var/datum/action/item_action/smartgun/toggle_motion_detector/TMD = locate(/datum/action/item_action/smartgun/toggle_motion_detector) in sg.actions
 				TMD.update_icon()
 				sg.motion_detector()
+		if(istype(i, /obj/item/clothing/suit/storage/marine/medium/rto/intel))
+			var/obj/item/clothing/suit/storage/marine/medium/rto/intel/xm4 = i
+			if(xm4.motion_detector)
+				xm4.motion_detector = FALSE
+				var/datum/action/item_action/intel/toggle_motion_detector/TMD = locate(/datum/action/item_action/intel/toggle_motion_detector) in xm4.actions
+				TMD.update_icon()
+				xm4.motion_detector()
 
 /mob/living/carbon/human/proc/disable_headsets()
 	//Disable all radios to reduce radio spam for dead people

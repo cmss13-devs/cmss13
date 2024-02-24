@@ -22,6 +22,10 @@
 
 	// We don't want people talking to other xenomorphs across tutorials
 	new_character.can_hivemind_speak = FALSE
+	// No age prefix or HUD element
+	new_character.age = XENO_NO_AGE
+	new_character.show_age_prefix = FALSE
+	new_character.generate_name()
 
 	tutorial_mob = new_character
 	xeno = new_character

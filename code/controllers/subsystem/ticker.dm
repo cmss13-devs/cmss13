@@ -8,6 +8,10 @@ SUBSYSTEM_DEF(ticker)
 
 	var/current_state = GAME_STATE_STARTUP //State of current round used by process()
 	var/force_ending = FALSE //Round was ended by admin intervention
+
+	/// If TRUE, there is no lobby phase, the game starts immediately.
+	var/start_immediately = FALSE
+
 	var/bypass_checks = FALSE //Bypass mode init checks
 	var/setup_failed = FALSE //If the setup has failed at any point
 	var/setup_started = FALSE
@@ -80,6 +84,10 @@ SUBSYSTEM_DEF(ticker)
 				var/mob/new_player/player = i
 				if(player.ready) // TODO: port this  == PLAYER_READY_TO_PLAY)
 					++totalPlayersReady
+
+			if(start_immediately)
+				time_left = 0
+
 			if(time_left < 0 || delay_start)
 				return
 

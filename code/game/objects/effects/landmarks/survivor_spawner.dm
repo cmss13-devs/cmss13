@@ -159,7 +159,8 @@
 	synth_equipment = /datum/equipment_preset/synth/survivor/wy/corporate_synth
 	intro_text = list("<h2>You are a Medical Doctor on the Colony!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
-	"<span class='danger'>Your primary working on 'Ifrit' from Weyland-Yutani. This whole outbreak has been a giant mess, you and all other Company personnel ran to the Operations Panic Room, until you heard shooting outside and closed the shutters. You are running low on food, water and ammunition for the weapons. You remember that the xenomorphs have a sort of implanter which latches on to your face and then... something bursts out of your chest, through the rib cage. You had plenty of those cases at the Medical Bay. In their latest attempts at trying to breach in, the so called 'xenomorphs' have tried attacking the shutters, but to no avail. But they will breach soon... You must survive and find a way to contact Weyland-Yutani."
+	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
+	story_text = "Your primary working on 'Ifrit' from Weyland-Yutani. This whole outbreak has been a giant mess, you and all other Company personnel ran to the Operations Panic Room, until you heard shooting outside and closed the shutters. You are running low on food, water and ammunition for the weapons. You remember that the xenomorphs have a sort of implanter which latches on to your face and then... something bursts out of your chest, through the rib cage. You had plenty of those cases at the Medical Bay. In their latest attempts at trying to breach in, the so called 'xenomorphs' have tried attacking the shutters, but to no avail. But they will breach soon... You must survive and find a way to contact Weyland-Yutani."
 
 	spawn_priority = SPAWN_PRIORITY_HIGH
 

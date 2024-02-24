@@ -546,20 +546,20 @@ GLOBAL_LIST_EMPTY(alldepartments)
 	if(deployturf.density)
 		fail = TRUE
 	else
-		for(var/obj/X in deployturf.contents - src)
-			if(X.density && !(X.flags_atom & ON_BORDER))
+		for(var/obj/blockingobj in deployturf.contents - src)
+			if(blockingobj.density && !(blockingobj.flags_atom & ON_BORDER))
 				fail = TRUE
 				break
-			if(istype(X, /obj/structure/machinery/defenses))
+			if(istype(blockingobj, /obj/structure/machinery/defenses))
 				fail = TRUE
 				break
-			else if(istype(X, /obj/structure/window))
+			else if(istype(blockingobj, /obj/structure/window))
 				fail = TRUE
 				break
-			else if(istype(X, /obj/structure/windoor_assembly))
+			else if(istype(blockingobj, /obj/structure/windoor_assembly))
 				fail = TRUE
 				break
-			else if(istype(X, /obj/structure/machinery/door))
+			else if(istype(blockingobj, /obj/structure/machinery/door))
 				fail = TRUE
 				break
 	if(fail)

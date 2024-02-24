@@ -1,5 +1,0 @@
-author: "Warfan1815"
-delete-after: True
-changes:
-  - rscadd: "Added WeyYu Trading Cards (they come in packs of 5, single, or in special packs of WeyYu Gold) buyable at rec vendor (and/or colony tobacco vendors in the case of the special cigarette packs)"
-  - imageadd: "Added sprites of the WeyYu Trading Cards, trading card packs, and special WeyYu Gold cigarette packs."

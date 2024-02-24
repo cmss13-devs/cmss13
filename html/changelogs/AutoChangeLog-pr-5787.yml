@@ -1,4 +1,0 @@
-author: "Segrain"
-delete-after: True
-changes:
-  - bugfix: "Fully healed limbs should now properly remove the overlays for their wounds and bandages."

@@ -19,8 +19,7 @@ endmap
 map bigredv2
 endmap
 
-map prison_station_fop
-	disabled
+map prison_station_fop	
 endmap
 
 map fiorina_sciannex

@@ -5,7 +5,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	paygrade = PAY_SHORT_WYC7
 	skills = /datum/skills/civilian/survivor/manager
-	assignment = "Colony Assistant Manager"
+	assignment = "Assistant Operations Manager"
 	idtype = /obj/item/card/id/silver/clearance_badge/manager
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
 	access = list(
@@ -29,7 +29,6 @@
 	survivor_variant = CORPORATE_SURVIVOR
 
 /datum/equipment_preset/survivor/wy/asstmanager/load_gear(mob/living/carbon/human/new_human)
-
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/manager(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/glass/beaker/vial/random/good(new_human), WEAR_IN_BACK)
@@ -39,9 +38,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf(new_human), WEAR_MASK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife, WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/ushanka(new_human), WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/glass/beaker/vial/random/good(new_human), WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(new_human), WEAR_R_STORE)
 	add_survivor_weapon_civilian(new_human)
-	add_random_cl_survivor_loot(new_human)
-
 	..()

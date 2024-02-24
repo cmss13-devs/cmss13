@@ -104,12 +104,6 @@
 	if(is_mainship_level(z))
 		GLOB.ship_areas += src
 
-	if(base_lighting_alpha)
-		return INITIALIZE_HINT_ROUNDSTART
-
-/area/LateInitialize()
-	. = ..()
-
 	update_base_lighting()
 
 /area/proc/initialize_power(override_power)

@@ -13,6 +13,8 @@
 	rechargeTime = ERT_SHUTTLE_DEFAULT_RECHARGE // 90s cooldown to recharge
 	var/list/doors = list()
 	var/list/external_doors = list()
+	var/home_base
+	var/list/local_landmarks = list()
 
 /obj/docking_port/mobile/emergency_response/Initialize(mapload)
 	. = ..(mapload)
@@ -27,6 +29,27 @@
 /obj/docking_port/mobile/emergency_response/enterTransit()
 	control_doors("force-lock-launch", force = TRUE, external_only = TRUE)
 	..()
+
+/obj/docking_port/mobile/emergency_response/register()
+	. = ..()
+
+	for(var/turf/current_turf as anything in return_turfs())
+		for(var/obj/effect/landmark/landmark in current_turf.GetAllContents())
+			LAZYADD(local_landmarks[landmark.type], landmark)
+
+/obj/docking_port/mobile/emergency_response/initiate_docking(obj/docking_port/stationary/new_dock, movement_direction, force)
+	. = ..()
+	if(. != DOCKING_SUCCESS)
+		return
+
+	if(!is_mainship_level(z))
+		return
+
+	if(!home_base)
+		return
+
+	var/obj/structure/machinery/computer/shuttle/ert/console = getControlConsole()
+	console.must_launch_home = TRUE
 
 /obj/docking_port/mobile/emergency_response/proc/control_doors(action, force = FALSE, external_only = FALSE)
 	var/list/door_list = doors
@@ -174,12 +197,18 @@
 	width  = 7
 	height = 13
 	var/is_external = FALSE
+	var/lockdown_on_land = FALSE
 
 /obj/docking_port/stationary/emergency_response/on_arrival(obj/docking_port/mobile/arriving_shuttle)
 	. = ..()
 	if(istype(arriving_shuttle, /obj/docking_port/mobile/emergency_response))
 		var/obj/docking_port/mobile/emergency_response/ert = arriving_shuttle
 		ert.control_doors("unlock", force = FALSE)
+
+	if(lockdown_on_land)
+		var/obj/structure/machinery/computer/shuttle/console = arriving_shuttle.getControlConsole()
+		console.disable()
+		lockdown_on_land = FALSE
 
 /obj/docking_port/stationary/emergency_response/port1
 	name = "Almayer starboard landing pad"

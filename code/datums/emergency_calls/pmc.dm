@@ -5,6 +5,7 @@
 	mob_max = 6
 	probability = 20
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT2
+	home_base = /datum/lazy_template/ert/weyland_station
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc
 	item_spawn = /obj/effect/landmark/ert_spawns/distress_pmc/item
 

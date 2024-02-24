@@ -9,9 +9,6 @@
 	/// If this is true each load will increment an index keyed to the type and it will load [map_name]_[index]
 	var/uses_multiple_allocations = FALSE
 
-	/// Key to identify this template - used in caching
-	var/key
-
 	/// Directory of maps to prefix to the filename
 	var/map_dir = "maps/templates/lazy_templates"
 
@@ -28,7 +25,7 @@
 		return QDEL_HINT_LETMELIVE
 
 	QDEL_LIST(reservations)
-	GLOB.lazy_templates -= key
+	GLOB.lazy_templates -= type
 	return ..()
 
 /**
@@ -43,9 +40,9 @@
 
 	var/load_path = "[map_dir]/[map_name].dmm"
 	if(uses_multiple_allocations)
-		var/times = multiple_allocation_hash[key] || 0
+		var/times = multiple_allocation_hash[type] || 0
 		times += 1
-		multiple_allocation_hash[key] = times
+		multiple_allocation_hash[type] = times
 		load_path = "[map_dir]/[map_name]_[times].dmm"
 
 	if(!load_path || !fexists(load_path))
@@ -56,7 +53,7 @@
 		measure_only = TRUE,
 	)
 	if(isnull(parsed_template.parsed_bounds))
-		CRASH("Failed to cache lazy template for loading: '[key]'")
+		CRASH("Failed to cache lazy template for loading: '[type]'")
 
 	var/width = parsed_template.parsed_bounds[MAP_MAXX] - parsed_template.parsed_bounds[MAP_MINX] + 1
 	var/height = parsed_template.parsed_bounds[MAP_MAXY] - parsed_template.parsed_bounds[MAP_MINY] + 1
@@ -66,7 +63,7 @@
 		parsed_template.parsed_bounds[MAP_MAXZ],
 	)
 	if(!reservation)
-		CRASH("Failed to reserve a block for lazy template: '[key]'")
+		CRASH("Failed to reserve a block for lazy template: '[type]'")
 
 	// lists kept for overall loading
 	var/list/loaded_atom_movables = list()

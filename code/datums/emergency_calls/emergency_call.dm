@@ -57,19 +57,11 @@
 
 	var/time_required_for_job = 5 HOURS
 
-	/// the [/datum/ert_home] we should attempt to spawn in for the return journey
-	var/home_base
+	/// the shuttle being used by this distress call
+	var/obj/docking_port/mobile/emergency_response/shuttle
 
-/datum/ert_home
-	/// the lazy template we should spawn in that contains the home base
-	var/base_template
-
-	/// the dock ID we should attempt to dock home with
-	var/home_dock
-
-/datum/ert_home/clf
-	base_template = /datum/lazy_template/clf_ert_station
-	home_dock = ADMIN_LANDING_PAD_1
+	/// the [/datum/lazy_template] we should attempt to spawn in for the return journey
+	var/home_base = /datum/lazy_template/ert/freelancer_station
 
 /datum/game_mode/proc/initialize_emergency_calls()
 	if(all_calls.len) //It's already been set up.
@@ -283,7 +275,6 @@
 		if(M.client)
 			to_chat(M, SPAN_NOTICE("Distress beacon: [src.name] finalized."))
 
-	var/obj/docking_port/mobile/shuttle
 	if(shuttle_id)
 		if(!SSmapping.shuttle_templates[shuttle_id])
 			message_admins("Distress beacon: [name] does not have a valid shuttle_id: [shuttle_id]")
@@ -291,6 +282,7 @@
 
 		var/datum/map_template/shuttle/new_shuttle = SSmapping.shuttle_templates[shuttle_id]
 		shuttle = SSshuttle.load_template_to_transit(new_shuttle)
+		shuttle.home_base = home_base
 
 	if(shuttle && auto_shuttle_launch)
 		var/obj/structure/machinery/computer/shuttle/ert/comp = shuttle.getControlConsole()
@@ -351,6 +343,23 @@
 
 /datum/emergency_call/proc/get_spawn_point(is_for_items)
 	var/landmark
+
+	if(shuttle)
+		if(is_for_items)
+			landmark = SAFEPICK(shuttle.local_landmarks[item_spawn])
+		else
+			landmark = SAFEPICK(shuttle.local_landmarks[name_of_spawn])
+
+		if(landmark)
+			return get_turf(landmark)
+
+		var/list/valid_turfs = list()
+		for(var/turf/open/floor/valid_turf in shuttle.return_turfs())
+			valid_turfs += valid_turf
+
+		if(length(valid_turfs))
+			return pick(valid_turfs)
+
 	if(is_for_items)
 		landmark = SAFEPICK(GLOB.ert_spawns[item_spawn])
 	else

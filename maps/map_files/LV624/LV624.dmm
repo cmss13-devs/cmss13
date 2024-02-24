@@ -12929,7 +12929,7 @@
 /area/lv624/ground/colony/west_tcomms_road)
 "bTw" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "cargospecial"
+	insert_tag = "cargospecial1"
 	},
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)

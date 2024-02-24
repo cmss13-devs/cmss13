@@ -48,7 +48,11 @@
 	UNTIL(!Master.map_loading)
 	target_turf = GLOB.nightmare_landmarks[landmark]
 	if(!target_turf?.z)
-		CRASH("Nightmare Mapload: Could not find landmark: [landmark]")
+		if(landmark in GLOB.nightmare_landmark_tags_removed)
+			log_debug("Nightmare Mapload: Could not find landmark: [landmark] because it was deleted")
+			return
+		else
+			CRASH("Nightmare Mapload: Could not find landmark: [landmark]")
 	var/result = parsed.load(target_turf.x, target_turf.y, target_turf.z, crop_map = TRUE, no_changeturf = FALSE, place_on_top = FALSE, delete = replace)
 	if(!result || !parsed.bounds)
 		CRASH("Nightmare Mapload: Map insertion failed unexpectedly for file: [filepath]")

@@ -27240,6 +27240,12 @@
 	icon_state = "red"
 	},
 /area/bigredv2/outside/marshal_office)
+"cGv" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "containerroom_xenos"
+	},
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/outside/nw/ceiling)
 "cGQ" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
@@ -49741,7 +49747,7 @@ axv
 anp
 anp
 anp
-anp
+cGv
 ajx
 ajY
 akK

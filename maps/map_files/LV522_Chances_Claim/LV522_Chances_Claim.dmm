@@ -34798,10 +34798,7 @@
 "nKj" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "cell_stripe"
-	},
+/turf/open/floor/prison,
 /area/lv522/indoors/lone_buildings/storage_blocks)
 "nKk" = (
 /obj/structure/machinery/camera/autoname{

@@ -309,77 +309,6 @@
 #define CAN_HOLD_TWO_HANDS 1
 #define CAN_HOLD_ONE_HAND 2
 
-// ------------ //
-// STRAIN FLAGS //
-// ------------ //
-
-// Queen strain flags
-#define QUEEN_NORMAL "Normal"
-
-// Facehugger strain flags
-#define FACEHUGGER_NORMAL "Normal"
-#define FACEHUGGER_WATCHER "Watcher"
-
-// Drone strain flags
-#define DRONE_NORMAL "Normal"
-#define DRONE_HEALER "Healer"
-#define DRONE_GARDENER "Gardener"
-
-// Hivelord strain flags
-#define HIVELORD_NORMAL "Normal"
-#define HIVELORD_RESIN_WHISPERER "Resin Whisperer"
-
-// Carrier strain flags
-#define CARRIER_NORMAL "Normal"
-#define CARRIER_EGGSAC "Eggsac"
-
-// Burrower strain flags
-#define BURROWER_NORMAL "Normal"
-#define BURROWER_TREMOR "Tremor"
-
-// Sentinel strain flags
-#define SENTINEL_NORMAL "Normal"
-
-// Spitter strain flags
-#define SPITTER_NORMAL "Normal"
-
-// Boiler strain flags
-#define BOILER_NORMAL "Normal"
-#define BOILER_TRAPPER "Trapper"
-
-// Runner strain flags
-#define RUNNER_NORMAL "Normal"
-#define RUNNER_ACIDER "Acider"
-
-// Lurker strain flags
-#define LURKER_NORMAL "Normal"
-#define LURKER_VAMPIRE   "Vampire"
-// Ravager strain flags
-#define RAVAGER_NORMAL "Normal"
-#define RAVAGER_HEDGEHOG "Hedgehog"
-#define RAVAGER_BERSERKER   "Berserker"
-
-// Defender strain flags
-#define DEFENDER_NORMAL "Normal"
-#define DEFENDER_STEELCREST "Steelcrest"
-
-// Warrior strain flags
-#define WARRIOR_NORMAL "Normal"
-
-// Crusher strain flags
-#define CRUSHER_NORMAL "Normal"
-#define CRUSHER_CHARGER "Charger"
-
-// Praetorian strain flags
-#define PRAETORIAN_NORMAL   "Normal"
-#define PRAETORIAN_VANGUARD "Vanguard"
-#define PRAETORIAN_DANCER   "Dancer"
-#define PRAETORIAN_WARDEN   "Warden"
-#define PRAETORIAN_OPPRESSOR  "Oppressor"
-
-// Hellhound strain flags
-#define HELLHOUND_NORMAL "Normal"
-
 GLOBAL_LIST_INIT(default_onmob_icons, list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_0.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_0.dmi',
@@ -452,4 +381,3 @@ GLOBAL_LIST_INIT(default_xeno_onmob_icons, list(
 #define MOBILITY_FLAGS_DEFAULT (MOBILITY_MOVE | MOBILITY_STAND)
 #define MOBILITY_FLAGS_CARBON_DEFAULT (MOBILITY_MOVE | MOBILITY_STAND | MOBILITY_REST | MOBILITY_LIEDOWN)
 #define MOBILITY_FLAGS_REST_CAPABLE_DEFAULT (MOBILITY_MOVE | MOBILITY_STAND | MOBILITY_REST | MOBILITY_LIEDOWN)
-

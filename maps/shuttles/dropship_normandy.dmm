@@ -63,7 +63,7 @@
 /area/shuttle/drop2/sulaco)
 "fQ" = (
 /obj/structure/shuttle/part/dropship2/left_inner_wing_connector,
-/turf/open/space/basic,
+/turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "gD" = (
 /turf/closed/shuttle/dropship2/transparent{
@@ -118,7 +118,7 @@
 /area/shuttle/drop2/sulaco)
 "iI" = (
 /obj/structure/shuttle/part/dropship2/right_inner_wing_connector,
-/turf/open/space/basic,
+/turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "jc" = (
 /obj/item/device/radio/intercom/normandy{
@@ -216,7 +216,7 @@
 /area/shuttle/drop2/sulaco)
 "nS" = (
 /obj/structure/shuttle/part/dropship2/lower_left_wall,
-/turf/open/space/basic,
+/turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "oc" = (
 /obj/structure/shuttle/part/dropship2/transparent/nose_top_right,
@@ -514,7 +514,7 @@
 /area/shuttle/drop2/sulaco)
 "NM" = (
 /obj/structure/shuttle/part/dropship2/left_outer_wing_connector,
-/turf/open/space/basic,
+/turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "Od" = (
 /obj/effect/attach_point/fuel/dropship2{
@@ -587,7 +587,7 @@
 /area/shuttle/drop2/sulaco)
 "QK" = (
 /obj/structure/shuttle/part/dropship2/lower_right_wall,
-/turf/open/space/basic,
+/turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "Rr" = (
 /turf/template_noop,
@@ -607,7 +607,7 @@
 /area/shuttle/drop2/sulaco)
 "RJ" = (
 /obj/structure/shuttle/part/dropship2/right_outer_wing_connector,
-/turf/open/space/basic,
+/turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "SB" = (
 /obj/structure/shuttle/part/dropship2/nose_front_left,

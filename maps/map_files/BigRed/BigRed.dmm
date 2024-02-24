@@ -18470,7 +18470,7 @@
 "bbZ" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/computer/cameras/wooden_tv{
-	dir = 4
+	dir = 8
 	},
 /obj/structure/machinery/light{
 	dir = 4

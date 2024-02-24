@@ -101,7 +101,7 @@
 		"type": "map_insert",
 		"landmark": "panic_room",
 		"chance": 9.0,
-		"path": "standalone/panic_room_shivas.dmm",
+		"path": "standalone/panic_room_hold.dmm",
         "when": { "panic_room": "full" }
 	}
 ]

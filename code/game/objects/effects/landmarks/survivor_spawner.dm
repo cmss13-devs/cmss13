@@ -155,8 +155,8 @@
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
 
 /obj/effect/landmark/survivor_spawner/shivas_panic_room_doc
-	equipment = /datum/equipment_preset/survivor/wy/asstmanager
-	synth_equipment = /datum/equipment_preset/synth/survivor/wy/corporate_synth
+	equipment = /datum/equipment_preset/survivor/doctor
+	synth_equipment = /datum/equipment_preset/synth/survivor/emt_synth
 	intro_text = list("<h2>You are a Medical Doctor on the Colony!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
@@ -165,8 +165,8 @@
 	spawn_priority = SPAWN_PRIORITY_HIGH
 
 /obj/effect/landmark/survivor_spawner/shivas_panic_room_sci
-	equipment = /datum/equipment_preset/survivor/wy/asstmanager
-	synth_equipment = /datum/equipment_preset/synth/survivor/wy/corporate_synth
+	equipment = /datum/equipment_preset/survivor/scientist
+	synth_equipment = /datum/equipment_preset/synth/survivor/scientist_synth
 	intro_text = list("<h2>You are a Weyland-Yutani Scientist on the Colony!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
@@ -175,8 +175,8 @@
 	spawn_priority = SPAWN_PRIORITY_HIGH
 
 /obj/effect/landmark/survivor_spawner/shivas_panic_room_civ
-	equipment = /datum/equipment_preset/survivor/wy/asstmanager
-	synth_equipment = /datum/equipment_preset/synth/survivor/wy/corporate_synth
+	equipment = /datum/equipment_preset/survivor/civilian
+	synth_equipment = /datum/equipment_preset/synth/survivor/chef_synth
 	intro_text = list("<h2>You are a worker on the Colony!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")

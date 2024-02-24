@@ -17,12 +17,6 @@
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/colony/s_admin)
-"aZ" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/shiva{
-	icon_state = "floor3"
-	},
-/area/shiva/interior/colony/s_admin)
 "ba" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/alarm{
@@ -46,8 +40,6 @@
 "bI" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/paper_bin,
-/obj/item/tool/stamp,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -116,8 +108,8 @@
 	},
 /area/shiva/interior/colony/s_admin)
 "dv" = (
-/obj/structure/closet/secure_closet/guncabinet,
 /obj/item/ammo_magazine/rifle/m16,
+/obj/structure/closet/secure_closet/guncabinet/wy,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "redfull"
@@ -148,6 +140,7 @@
 	dir = 4;
 	pixel_y = 4
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
 /area/shiva/interior/colony/s_admin)
 "fj" = (
@@ -255,12 +248,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/shiva/interior/colony/s_admin)
-"iC" = (
-/obj/structure/prop/ice_colony/hula_girl,
-/turf/open/floor/shiva{
-	dir = 1
-	},
-/area/shiva/interior/colony/s_admin)
 "iF" = (
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/shiva{
@@ -276,8 +263,8 @@
 	},
 /area/shiva/interior/colony/s_admin)
 "iZ" = (
-/obj/structure/closet/secure_closet/guncabinet,
 /obj/item/weapon/gun/rifle/m16,
+/obj/structure/closet/secure_closet/guncabinet/wy,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "redfull"
@@ -319,7 +306,10 @@
 /area/shiva/interior/colony/s_admin)
 "jP" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/weapon/twohanded/fireaxe,
+/obj/item/clothing/head/soft/sec/corp{
+	pixel_y = 10
+	},
+/obj/item/tool/stamp/hos,
 /turf/open/floor/shiva{
 	dir = 1
 	},
@@ -331,6 +321,13 @@
 	},
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
+	},
+/area/shiva/interior/colony/s_admin)
+"kB" = (
+/obj/structure/bed/bedroll,
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_doc,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
 	},
 /area/shiva/interior/colony/s_admin)
 "kP" = (
@@ -517,12 +514,6 @@
 	icon_state = "platingdmg2"
 	},
 /area/shiva/interior/colony/s_admin)
-"pW" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/shiva{
-	icon_state = "bluefull"
-	},
-/area/shiva/interior/colony/s_admin)
 "qT" = (
 /obj/structure/machinery/firealarm{
 	dir = 8;
@@ -557,6 +548,13 @@
 	},
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
+	},
+/area/shiva/interior/colony/s_admin)
+"rQ" = (
+/obj/item/ammo_magazine/rifle/boltaction,
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_civ,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
 	},
 /area/shiva/interior/colony/s_admin)
 "sq" = (
@@ -605,6 +603,7 @@
 /obj/structure/bed/chair/comfy{
 	dir = 4
 	},
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_doc,
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -641,6 +640,10 @@
 	icon_state = "green"
 	},
 /area/shiva/interior/colony/botany)
+"tW" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno,
+/turf/open/floor/plating,
+/area/shiva/interior/colony/s_admin)
 "tY" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -851,9 +854,9 @@
 	},
 /area/shiva/interior/colony/s_admin)
 "yd" = (
-/obj/structure/closet/secure_closet/guncabinet,
 /obj/item/weapon/gun/rifle/ar10,
 /obj/item/ammo_magazine/rifle/ar10,
+/obj/structure/closet/secure_closet/guncabinet/wy,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "redfull"
@@ -895,13 +898,19 @@
 	},
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
+"yQ" = (
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_sci,
+/turf/open/floor/shiva{
+	icon_state = "bluefull"
+	},
+/area/shiva/interior/colony/s_admin)
 "yS" = (
-/obj/structure/closet/secure_closet/guncabinet,
 /obj/structure/machinery/firealarm{
 	dir = 8;
 	pixel_x = -24
 	},
 /obj/item/weapon/gun/boltaction,
+/obj/structure/closet/secure_closet/guncabinet/wy,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "redfull"
@@ -956,11 +965,11 @@
 	},
 /area/shiva/interior/colony/s_admin)
 "Av" = (
-/obj/structure/closet/secure_closet/guncabinet,
 /obj/structure/machinery/light/double{
 	dir = 8;
 	pixel_y = -5
 	},
+/obj/structure/closet/secure_closet/guncabinet/wy,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "redfull"
@@ -1033,6 +1042,12 @@
 	icon_state = "multi_tiles"
 	},
 /area/shiva/interior/bar)
+"BU" = (
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_civ,
+/turf/open/floor/shiva{
+	icon_state = "bluefull"
+	},
+/area/shiva/interior/colony/s_admin)
 "Cc" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor/plating{
@@ -1091,6 +1106,9 @@
 /area/shiva/interior/colony/s_admin)
 "Dx" = (
 /obj/structure/machinery/light/double,
+/obj/item/shard{
+	icon_state = "medium"
+	},
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -1301,12 +1319,12 @@
 	},
 /area/shiva/interior/colony/s_admin)
 "JQ" = (
-/obj/structure/closet/secure_closet/guncabinet,
 /obj/item/ammo_magazine/rifle/boltaction,
 /obj/structure/machinery/alarm{
 	dir = 4;
 	pixel_x = -24
 	},
+/obj/structure/closet/secure_closet/guncabinet/wy,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "redfull"
@@ -1324,6 +1342,18 @@
 /obj/item/ammo_casing,
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
+	},
+/area/shiva/interior/colony/s_admin)
+"Kp" = (
+/obj/structure/machinery/computer/cameras{
+	dir = 8
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/shard{
+	icon_state = "large"
+	},
+/turf/open/floor/shiva{
+	dir = 1
 	},
 /area/shiva/interior/colony/s_admin)
 "KG" = (
@@ -1450,6 +1480,12 @@
 	icon_state = "multi_tiles"
 	},
 /area/shiva/interior/colony/s_admin)
+"Nu" = (
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_doc,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/shiva/interior/colony/s_admin)
 "NC" = (
 /obj/item/lightstick/variant/planted,
 /turf/open/auto_turf/snow/layer2,
@@ -1490,8 +1526,21 @@
 	icon_state = "snow_mat"
 	},
 /area/shiva/interior/colony/botany)
+"PI" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 8
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/clipboard,
+/obj/item/tool/stamp,
+/obj/effect/landmark/crap_item,
+/turf/open/floor/shiva{
+	dir = 1
+	},
+/area/shiva/interior/colony/s_admin)
 "PV" = (
 /obj/structure/bed/bedroll,
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_sci,
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
 	},
@@ -1628,6 +1677,18 @@
 /obj/structure/machinery/disposal/broken,
 /turf/open/floor/shiva{
 	icon_state = "bluefull"
+	},
+/area/shiva/interior/colony/s_admin)
+"Tr" = (
+/obj/structure/machinery/computer/station_alert{
+	dir = 4
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/shiva{
+	dir = 1
 	},
 /area/shiva/interior/colony/s_admin)
 "TG" = (
@@ -1900,7 +1961,7 @@ ce
 MR
 wM
 fj
-ul
+rQ
 iZ
 ce
 Ik
@@ -1923,7 +1984,7 @@ ce
 ce
 ce
 ce
-aZ
+fj
 xZ
 fj
 dv
@@ -1973,7 +2034,7 @@ Ad
 zw
 dF
 ce
-fj
+Nu
 Ub
 xZ
 Pb
@@ -1994,16 +2055,16 @@ zi
 xa
 dF
 tk
-Bq
+Kp
 rB
 qU
 ce
 ul
-pW
+dF
 dF
 ov
-dF
-gL
+yQ
+kB
 ce
 Ik
 FY
@@ -2019,8 +2080,8 @@ uM
 dF
 dF
 RH
-HA
-Cu
+Tr
+PI
 Dx
 ce
 uE
@@ -2068,7 +2129,7 @@ Hx
 lP
 dF
 Lr
-iC
+Hx
 Hx
 Hx
 yq
@@ -2086,7 +2147,7 @@ FY
 "}
 (11,1,1) = {"
 Nq
-zA
+tW
 dg
 uh
 lq
@@ -2114,7 +2175,7 @@ oH
 GC
 Bg
 oT
-Ad
+Cx
 Hx
 dF
 CZ
@@ -2127,7 +2188,7 @@ Fc
 CZ
 DY
 dF
-dF
+BU
 ce
 ce
 cS
@@ -2174,9 +2235,9 @@ Cu
 dF
 ce
 yi
-pW
+BU
 dF
-pW
+dF
 Ko
 gB
 fM
@@ -2226,7 +2287,7 @@ ce
 Se
 Dg
 dF
-pW
+yQ
 CZ
 Py
 fM

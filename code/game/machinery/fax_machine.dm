@@ -534,20 +534,19 @@ GLOBAL_LIST_EMPTY(alldepartments)
 	item_state = "fax_backpack"
 
 /obj/item/device/fax_backpack/attack_self(mob/user) //activate item version fax inhand to deploy
-	..()
 	if(!ishuman(user))
 		return
-	var/turf/T = get_turf(usr)
-	if(istype(T, /turf/open))
-		var/turf/open/floor = T
+	var/turf/deployturf = get_turf(user)
+	if(istype(deployturf, /turf/open))
+		var/turf/open/floor = deployturf
 		if(!floor.allow_construction)
 			to_chat(user, SPAN_WARNING("You cannot deploy \the [src] here, find a more secure surface!"))
 			return FALSE
 	var/fail = FALSE
-	if(T.density)
+	if(deployturf.density)
 		fail = TRUE
 	else
-		for(var/obj/X in T.contents - src)
+		for(var/obj/X in deployturf.contents - src)
 			if(X.density && !(X.flags_atom & ON_BORDER))
 				fail = TRUE
 				break

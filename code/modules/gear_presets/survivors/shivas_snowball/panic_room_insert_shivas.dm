@@ -1,5 +1,6 @@
 // /obj/effect/landmark/survivor_spawner/shivas_assistant_manager
 // panic_room_insert_shivas.dmm
+
 /datum/equipment_preset/survivor/wy/asstmanager
 	name = "Survivor - Corporate Assistant Manager"
 	flags = EQUIPMENT_PRESET_EXTRA

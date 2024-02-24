@@ -275,7 +275,7 @@
 		if(M.client)
 			to_chat(M, SPAN_NOTICE("Distress beacon: [src.name] finalized."))
 
-	if(shuttle_id)
+	if(shuttle_id && !override_spawn_loc)
 		if(!SSmapping.shuttle_templates[shuttle_id])
 			message_admins("Distress beacon: [name] does not have a valid shuttle_id: [shuttle_id]")
 			CRASH("ert called with invalid shuttle_id")

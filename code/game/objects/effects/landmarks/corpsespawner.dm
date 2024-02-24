@@ -16,61 +16,87 @@
 	GLOB.corpse_spawns -= src
 	return ..()
 
-/obj/effect/landmark/corpsespawner/realpirate
-	name = "Pirate"
-	equip_path = /datum/equipment_preset/corpse/realpirate
-
-/obj/effect/landmark/corpsespawner/realpirate/ranged
-	name = "Pirate Gunner"
-	equip_path = /datum/equipment_preset/corpse/realpirate/ranged
-
-/obj/effect/landmark/corpsespawner/russian
-	name = "Russian"
-	equip_path = /datum/equipment_preset/corpse/russian
-
-/obj/effect/landmark/corpsespawner/russian/ranged
-
 ///////////Civilians//////////////////////
 
 /obj/effect/landmark/corpsespawner/prisoner
 	name = "Prisoner"
 	equip_path = /datum/equipment_preset/corpse/prisoner
 
+/obj/effect/landmark/corpsespawner/prisoner/burst
+	name = "Burst Prisoner"
+	equip_path = /datum/equipment_preset/corpse/prisoner/burst
+
 /obj/effect/landmark/corpsespawner/chef
 	name = "Chef"
 	equip_path = /datum/equipment_preset/corpse/chef
+
+/obj/effect/landmark/corpsespawner/chef/burst
+	name = "Burst Chef"
+	equip_path = /datum/equipment_preset/corpse/chef/burst
 
 /obj/effect/landmark/corpsespawner/doctor
 	name = "Doctor"
 	equip_path = /datum/equipment_preset/corpse/doctor
 
+/obj/effect/landmark/corpsespawner/doctor/burst
+	name = "Burst Doctor"
+	equip_path = /datum/equipment_preset/corpse/doctor/burst
+
 /obj/effect/landmark/corpsespawner/engineer
 	name = "Engineer"
 	equip_path = /datum/equipment_preset/corpse/engineer
+
+/obj/effect/landmark/corpsespawner/engineer/burst
+	name = "Burst Engineer"
+	equip_path = /datum/equipment_preset/corpse/engineer/burst
 
 /obj/effect/landmark/corpsespawner/scientist
 	name = "Scientist"
 	equip_path = /datum/equipment_preset/corpse/scientist
 
+/obj/effect/landmark/corpsespawner/scientist/burst
+	name = "Burst Scientist"
+	equip_path = /datum/equipment_preset/corpse/scientist/burst
+
 /obj/effect/landmark/corpsespawner/miner
 	name = "Shaft Miner"
 	equip_path = /datum/equipment_preset/corpse/miner
 
+/obj/effect/landmark/corpsespawner/miner/burst
+	name = "Burst Shaft Miner"
+	equip_path = /datum/equipment_preset/corpse/miner/burst
+
 /obj/effect/landmark/corpsespawner/security
-	name = "Security"
+	name = "Security Officer"
 	equip_path = /datum/equipment_preset/corpse/security
 
+/obj/effect/landmark/corpsespawner/security/burst
+	name = "Burst Security Officer"
+	equip_path = /datum/equipment_preset/corpse/security/burst
+
 /obj/effect/landmark/corpsespawner/security/marshal
-	name = "Colonial Marshal"
-	equip_path = /datum/equipment_preset/corpse/security/marshal
+	name = "Colonial Marshal Deputy"
+	equip_path = /datum/equipment_preset/corpse/security/cmb
+
+/obj/effect/landmark/corpsespawner/security/marshal/burst
+	name = "Burst Colonial Marshal Deputy"
+	equip_path = /datum/equipment_preset/corpse/security/cmb/burst
 
 /obj/effect/landmark/corpsespawner/security/liaison
 	name = "Corporate Liaison"
-	equip_path = /datum/equipment_preset/corpse/security/liaison
+	equip_path = /datum/equipment_preset/corpse/liaison
+
+/obj/effect/landmark/corpsespawner/liaison/burst
+	name = "Burst Corporate Liaison"
+	equip_path = /datum/equipment_preset/corpse/liaison/burst
 
 /obj/effect/landmark/corpsespawner/prison_security
 	name = "Prison Guard"
-	equip_path = /datum/equipment_preset/corpse/prison_security
+	equip_path = /datum/equipment_preset/corpse/prison_guard
+
+/obj/effect/landmark/corpsespawner/prison_security/burst
+	name = "Burst Prison Guard"
+	equip_path = /datum/equipment_preset/corpse/prison_guard/burst
 
 /////////////////Officers//////////////////////
 
@@ -78,22 +104,33 @@
 	name = "Staff Officer"
 	equip_path = /datum/equipment_preset/corpse/bridgeofficer
 
-/obj/effect/landmark/corpsespawner/bridgeofficer/johnson
-	name = "Mr. Johnson Telovin"
-	equip_path = /datum/equipment_preset/corpse/bridgeofficer/johnson
-
-/obj/effect/landmark/corpsespawner/commander
-	name = "Commanding Officer"
-	equip_path = /datum/equipment_preset/corpse/commander
+/obj/effect/landmark/corpsespawner/administrator
+	name = "Colony Administrator"
+	equip_path = /datum/equipment_preset/corpse/administrator
 
 /obj/effect/landmark/corpsespawner/wysec
 	name = "Weyland-Yutani Corporate Security Guard"
 	equip_path = /datum/equipment_preset/corpse/wysec
 
+/obj/effect/landmark/corpsespawner/wysec/burst
+	name = "Burst Weyland-Yutani Corporate Security Guard"
+	equip_path = /datum/equipment_preset/corpse/wysec/burst
+
 /obj/effect/landmark/corpsespawner/wygoon
-	name = "Weyland-Yutani Corporate Security Goon"
+	name = "Weyland-Yutani Corporate Security Officer"
 	equip_path = /datum/equipment_preset/corpse/pmc/goon
 
+/obj/effect/landmark/corpsespawner/wygoon/burst
+	name = "Burst Weyland-Yutani Corporate Security Officer"
+	equip_path = /datum/equipment_preset/corpse/pmc/goon/burst
+
+/obj/effect/landmark/corpsespawner/wygoon/lead
+	name = "Weyland-Yutani Corporate Security Lead"
+	equip_path = /datum/equipment_preset/corpse/pmc/goon/lead
+
+/obj/effect/landmark/corpsespawner/wygoon/lead/burst
+	name = "Burst Weyland-Yutani Corporate Security Lead"
+	equip_path = /datum/equipment_preset/corpse/pmc/goon/lead/burst
 
 ///CM specific jobs///
 
@@ -165,14 +202,28 @@
 	equip_path = /datum/equipment_preset/corpse/pmc/burst
 
 /obj/effect/landmark/corpsespawner/freelancer
-	name = "Freelancer Mercenary"
+	name = "Freelancer"
 	equip_path = /datum/equipment_preset/corpse/freelancer
 
 /obj/effect/landmark/corpsespawner/freelancer/burst
-	name = "Burst Freelancer Mercenary"
+	name = "Burst Freelancer"
 	equip_path = /datum/equipment_preset/corpse/freelancer/burst
 
 // Fun Faction Corpse
+
+/obj/effect/landmark/corpsespawner/realpirate
+	name = "Pirate"
+	equip_path = /datum/equipment_preset/corpse/realpirate
+
+/obj/effect/landmark/corpsespawner/realpirate/ranged
+	name = "Pirate Gunner"
+	equip_path = /datum/equipment_preset/corpse/realpirate/ranged
+
+/obj/effect/landmark/corpsespawner/russian
+	name = "Russian"
+	equip_path = /datum/equipment_preset/corpse/russian
+
+/obj/effect/landmark/corpsespawner/russian/ranged
 
 /obj/effect/landmark/corpsespawner/dutchrifle
 	name = "Dutch Dozen Rifleman"

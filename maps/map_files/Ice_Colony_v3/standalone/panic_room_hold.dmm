@@ -538,12 +538,6 @@
 	icon_state = "bluefull"
 	},
 /area/shiva/interior/colony/s_admin)
-"rr" = (
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/shiva{
-	dir = 1
-	},
-/area/shiva/interior/colony/s_admin)
 "rB" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 4
@@ -2068,7 +2062,7 @@ FY
 js
 zA
 do
-rr
+Hx
 Hx
 lP
 dF

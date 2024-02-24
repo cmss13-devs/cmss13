@@ -1144,9 +1144,11 @@
 
 	var/list/possible_fultons = get_targets()
 
-	var/obj/item/stack/fulton/fult = possible_fultons[fulton_choice]
 	if(!fulton_choice)
 		return
+	// Strip any \proper or \improper in order to match the entry in possible_fultons.
+	fulton_choice = strip_improper(fulton_choice)
+	var/obj/item/stack/fulton/fult = possible_fultons[fulton_choice]
 
 	if(!ship_base) //system was uninstalled midway
 		return

@@ -96,8 +96,9 @@ GLOBAL_LIST_INIT(admin_verbs_admin, list(
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_ban, list(
-	/client/proc/unban_panel
-	// /client/proc/jobbans // Disabled temporarily due to 15-30 second lag spikes. Don't forget the comma in the line above when uncommenting this!
+	/client/proc/unban_panel,
+	/client/proc/stickyban_panel,
+	// /client/proc/jobbans // Disabled temporarily due to 15-30 second lag spikes.
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_sounds, list(
@@ -242,7 +243,6 @@ GLOBAL_LIST_INIT(admin_verbs_possess, list(
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_permissions, list(
-	/client/proc/ToRban,
 	/client/proc/whitelist_panel,
 ))
 

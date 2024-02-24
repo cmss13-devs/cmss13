@@ -926,7 +926,7 @@
 	name = "\improper S-52 fusion reactor"
 	desc = "A Westingland S-52 Fusion Reactor.  Takes fuels cells and converts them to power.  Also produces a large amount of heat."
 	icon = 'icons/obj/structures/machinery/fusion_eng.dmi'
-	icon_state = "off-0"
+	icon_state = "off"
 
 /obj/structure/prop/invuln/pipe_water
 	name = "pipe water"

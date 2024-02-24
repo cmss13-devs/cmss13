@@ -1771,6 +1771,7 @@
 #include "code\modules\gear_presets\survivors\lv_624\corporate_dome_insert_lv624.dm"
 #include "code\modules\gear_presets\survivors\lv_624\preset_lv.dm"
 #include "code\modules\gear_presets\survivors\new_varadero\preset_new_varadero.dm"
+#include "code\modules\gear_presets\survivors\shivas_snowball\panic_room_insert_shivas.dm"
 #include "code\modules\gear_presets\survivors\shivas_snowball\preset_shivas_snowball.dm"
 #include "code\modules\gear_presets\survivors\solaris\crashlanding-offices_insert_bigred.dm"
 #include "code\modules\gear_presets\survivors\solaris\preset_solaris.dm"

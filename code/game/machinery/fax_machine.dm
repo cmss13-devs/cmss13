@@ -537,7 +537,7 @@ GLOBAL_LIST_EMPTY(alldepartments)
 	..()
 	if(!ishuman(user))
 		return
-	var/turf/T = get_turf(usr)
+	var/turf/T = get_turf(user)
 	if(istype(T, /turf/open))
 		var/turf/open/floor = T
 		if(!floor.allow_construction)

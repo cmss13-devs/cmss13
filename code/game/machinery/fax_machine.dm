@@ -536,9 +536,15 @@ GLOBAL_LIST_EMPTY(alldepartments)
 /obj/item/device/fax_backpack/attack_self(mob/user) //activate item version fax inhand to deploy
 	if(!ishuman(user))
 		return
+<<<<<<< HEAD
 	var/turf/deployturf = get_turf(user)
 	if(istype(deployturf, /turf/open))
 		var/turf/open/floor = deployturf
+=======
+	var/turf/T = get_turf(user)
+	if(istype(T, /turf/open))
+		var/turf/open/floor = T
+>>>>>>> ef6402a47d86f35e243083a68d6b5e5176cb4852
 		if(!floor.allow_construction)
 			to_chat(user, SPAN_WARNING("You cannot deploy \the [src] here, find a more secure surface!"))
 			return FALSE

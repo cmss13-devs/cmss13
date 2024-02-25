@@ -287,6 +287,9 @@
 	icon_state = "shed_8_ag"
 
 /area/lv553/indoors/lone_buildings/weyyu_hostel
-	name = "Issac's Lament - West - Weyland-Yutani Hostel"
+	name = "Issac's Lament - South-West - Weyland-Yutani Hostel"
 	icon_state = "shed_1_ag"
 
+/area/lv553/indoors/lone_buildings/goon_and_chef_house
+	name = "Issac's Lament - South-West - Two Bedroom House"
+	icon_state = "shed_1_ag"

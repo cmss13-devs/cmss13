@@ -851,7 +851,8 @@
 /area/lv759/power_plant/south_hallway)
 "ajp" = (
 /turf/closed/shuttle/dropship2/WY/StarGlider{
-	icon_state = "zwing7"
+	icon_state = "zwing7";
+	opacity = 0
 	},
 /area/lv759/landing_zone/starglider)
 "ajr" = (
@@ -3903,9 +3904,6 @@
 /turf/open/hybrisa/street/sidewalkcenter,
 /area/lv759/outdoors/colony_streets/east_central_street)
 "aPM" = (
-/obj/structure/prop/hybrisa/decal/road/lines2{
-	pixel_y = 8
-	},
 /obj/effect/hybrisa/decal/road/lines1,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/east_central_street)
@@ -5606,7 +5604,8 @@
 /area/lv759/indoors/apartment_services/east)
 "bka" = (
 /turf/closed/shuttle/dropship2/WY/StarGlider{
-	icon_state = "27"
+	icon_state = "27";
+	opacity = 0
 	},
 /area/lv759/landing_zone/starglider)
 "bkg" = (
@@ -10857,8 +10856,9 @@
 	},
 /area/lv759/indoors/hospital/outgoing)
 "cqH" = (
-/turf/closed/shuttle/dropship2/WY/HorizonRunner{
-	icon_state = "zwing3"
+/turf/closed/shuttle/dropship2/WY/StarGlider{
+	icon_state = "zwing3";
+	opacity = 0
 	},
 /area/lv759/landing_zone/horizon_runner)
 "cqZ" = (
@@ -23346,7 +23346,8 @@
 /area/lv759/outdoors/colony_streets/east_central_street)
 "eVc" = (
 /turf/closed/shuttle/dropship2/WY/StarGlider{
-	icon_state = "17"
+	icon_state = "17";
+	opacity = 0
 	},
 /area/lv759/landing_zone/starglider)
 "eVf" = (
@@ -30522,7 +30523,8 @@
 	icon_state = "coil1"
 	},
 /turf/closed/shuttle/dropship2/WY/StarGlider{
-	icon_state = "33"
+	icon_state = "33";
+	opacity = 0
 	},
 /area/lv759/landing_zone/starglider)
 "gtt" = (
@@ -35923,8 +35925,9 @@
 /turf/open/floor/corsat,
 /area/lv759/power_plant)
 "hyA" = (
-/turf/closed/shuttle/dropship2/WY/HorizonRunner{
-	icon_state = "zwing8"
+/turf/closed/shuttle/dropship2/WY/StarGlider{
+	icon_state = "zwing8";
+	opacity = 0
 	},
 /area/lv759/landing_zone/horizon_runner)
 "hyD" = (
@@ -40843,12 +40846,14 @@
 /area/lv759/outdoors)
 "izq" = (
 /turf/closed/shuttle/dropship2/WY/StarGlider{
-	icon_state = "23"
+	icon_state = "23";
+	opacity = 0
 	},
 /area/lv759/landing_zone/starglider)
 "izu" = (
 /turf/closed/shuttle/dropship2/WY/StarGlider{
-	icon_state = "zwing2"
+	icon_state = "zwing2";
+	opacity = 0
 	},
 /area/lv759/landing_zone/starglider)
 "izx" = (
@@ -44957,7 +44962,8 @@
 /area/lv759/indoors/hospital/virology)
 "jqQ" = (
 /turf/closed/shuttle/dropship2/WY/StarGlider{
-	icon_state = "zwing6"
+	icon_state = "zwing6";
+	opacity = 0
 	},
 /area/lv759/landing_zone/starglider)
 "jqV" = (
@@ -49747,7 +49753,8 @@
 /area/lv759/landing_zone_2)
 "kpl" = (
 /turf/closed/shuttle/dropship2/WY/StarGlider{
-	icon_state = "32"
+	icon_state = "32";
+	opacity = 0
 	},
 /area/lv759/landing_zone/starglider)
 "kpr" = (
@@ -56250,7 +56257,8 @@
 	dir = 1
 	},
 /obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
-	pixel_y = 34
+	pixel_y = 34;
+	pixel_x = -16
 	},
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/outdoors/colony_streets/north_street)
@@ -59533,8 +59541,9 @@
 /turf/open/floor/plating,
 /area/lv759/landing_zone/starglider)
 "mnv" = (
-/turf/closed/shuttle/dropship2/WY/HorizonRunner{
-	icon_state = "zwing7"
+/turf/closed/shuttle/dropship2/WY/StarGlider{
+	icon_state = "zwing7";
+	opacity = 0
 	},
 /area/lv759/landing_zone/horizon_runner)
 "mny" = (
@@ -62198,7 +62207,8 @@
 /area/lv759/colonial_marshals/north_office)
 "mPd" = (
 /turf/closed/shuttle/dropship2/WY/StarGlider{
-	icon_state = "zwing8"
+	icon_state = "zwing8";
+	opacity = 0
 	},
 /area/lv759/landing_zone/starglider)
 "mPt" = (
@@ -63886,8 +63896,9 @@
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv759/indoors/hospital/virology)
 "nhW" = (
-/turf/closed/shuttle/dropship2/WY/HorizonRunner{
-	icon_state = "zwing6"
+/turf/closed/shuttle/dropship2/WY/StarGlider{
+	icon_state = "zwing6";
+	opacity = 0
 	},
 /area/lv759/landing_zone/horizon_runner)
 "nhX" = (
@@ -64674,7 +64685,8 @@
 /area/lv759/landing_zone_2)
 "nsg" = (
 /turf/closed/shuttle/dropship2/WY/StarGlider{
-	icon_state = "26"
+	icon_state = "26";
+	opacity = 0
 	},
 /area/lv759/landing_zone/starglider)
 "nsj" = (
@@ -69739,8 +69751,9 @@
 	},
 /area/lv759/indoors/apartment_services/east)
 "otP" = (
-/turf/closed/shuttle/dropship2/WY/HorizonRunner{
-	icon_state = "zwing2"
+/turf/closed/shuttle/dropship2/WY/StarGlider{
+	icon_state = "zwing2";
+	opacity = 0
 	},
 /area/lv759/landing_zone/horizon_runner)
 "otT" = (
@@ -73514,7 +73527,8 @@
 /area/lv759/indoors/apartment/west)
 "pgp" = (
 /turf/closed/shuttle/dropship2/WY/StarGlider{
-	icon_state = "22"
+	icon_state = "22";
+	opacity = 0
 	},
 /area/lv759/landing_zone/starglider)
 "pgq" = (
@@ -74146,13 +74160,6 @@
 "pow" = (
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/east_central_street)
-"poz" = (
-/obj/structure/prop/hybrisa/decal/road/lines2{
-	pixel_y = 8
-	},
-/obj/effect/hybrisa/decal/road/lines4,
-/turf/open/hybrisa/street/asphalt,
-/area/lv759/outdoors/colony_streets/east_central_street)
 "poA" = (
 /obj/structure/bed/chair/office/light{
 	dir = 1;
@@ -74604,7 +74611,8 @@
 /area/lv759/outdoors)
 "psE" = (
 /turf/closed/shuttle/dropship2/WY/StarGlider{
-	icon_state = "29"
+	icon_state = "29";
+	opacity = 0
 	},
 /area/lv759/landing_zone/starglider)
 "psI" = (
@@ -82526,7 +82534,8 @@
 	light_power = 5
 	},
 /turf/closed/shuttle/dropship2/WY/StarGlider{
-	icon_state = "26"
+	icon_state = "26";
+	opacity = 0
 	},
 /area/lv759/landing_zone/starglider)
 "qUI" = (
@@ -85596,7 +85605,8 @@
 	icon_state = "coil2"
 	},
 /turf/closed/shuttle/dropship2/WY/StarGlider{
-	icon_state = "27"
+	icon_state = "27";
+	opacity = 0
 	},
 /area/lv759/landing_zone/starglider)
 "rzZ" = (
@@ -87264,7 +87274,8 @@
 /area/lv759/outdoors/colony_streets/north_street)
 "rPD" = (
 /turf/closed/shuttle/dropship2/WY/StarGlider{
-	icon_state = "28"
+	icon_state = "28";
+	opacity = 0
 	},
 /area/lv759/landing_zone/starglider)
 "rPJ" = (
@@ -90025,9 +90036,6 @@
 	pixel_x = -6;
 	pixel_y = 4
 	},
-/obj/structure/prop/hybrisa/decal/road/lines2{
-	pixel_y = 8
-	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/east_central_street)
 "ssV" = (
@@ -91086,7 +91094,8 @@
 /area/lv759/landing_zone_1/tunnel)
 "sDH" = (
 /turf/closed/shuttle/dropship2/WY/StarGlider{
-	icon_state = "33"
+	icon_state = "33";
+	opacity = 0
 	},
 /area/lv759/landing_zone/starglider)
 "sDJ" = (
@@ -92316,7 +92325,8 @@
 /area/lv759/landing_zone/landing_zone_4)
 "sRd" = (
 /turf/closed/shuttle/dropship2/WY/StarGlider{
-	icon_state = "16"
+	icon_state = "16";
+	opacity = 0
 	},
 /area/lv759/landing_zone/starglider)
 "sRj" = (
@@ -93434,8 +93444,9 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/east_central_street)
 "tcR" = (
-/turf/closed/shuttle/dropship2/WY/HorizonRunner{
-	icon_state = "zwing4"
+/turf/closed/shuttle/dropship2/WY/StarGlider{
+	icon_state = "zwing4";
+	opacity = 0
 	},
 /area/lv759/landing_zone/horizon_runner)
 "tcV" = (
@@ -93979,7 +93990,8 @@
 /area/lv759/oob)
 "tjr" = (
 /turf/closed/shuttle/dropship2/WY/StarGlider{
-	icon_state = "zwing4"
+	icon_state = "zwing4";
+	opacity = 0
 	},
 /area/lv759/landing_zone/starglider)
 "tjw" = (
@@ -97695,12 +97707,6 @@
 	icon_state = "test_floor4"
 	},
 /area/lv759/landing_zone/horizon_runner)
-"tVx" = (
-/obj/structure/prop/hybrisa/decal/road/lines2{
-	pixel_y = 8
-	},
-/turf/open/hybrisa/street/asphalt,
-/area/lv759/outdoors/colony_streets/east_central_street)
 "tVy" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -111402,7 +111408,8 @@
 /area/lv759/colonial_marshals/head_office)
 "wEG" = (
 /turf/closed/shuttle/dropship2/WY/StarGlider{
-	icon_state = "zwing3"
+	icon_state = "zwing3";
+	opacity = 0
 	},
 /area/lv759/landing_zone/starglider)
 "wEJ" = (
@@ -133421,7 +133428,7 @@ yjt
 hdz
 kag
 kag
-hdz
+jbE
 beZ
 yjt
 yjt
@@ -133673,8 +133680,8 @@ yjt
 yjt
 hdz
 hdz
-yjt
-yjt
+vBk
+duV
 yjt
 yjt
 yjt
@@ -133922,11 +133929,11 @@ yjt
 yjt
 yjt
 yjt
+beZ
 hdz
 hdz
-yjt
-yjt
-yjt
+hdz
+jbE
 yjt
 yjt
 yjt
@@ -134173,13 +134180,13 @@ hdz
 yjt
 yjt
 yjt
+hdz
+hdz
 yjt
-yjt
-yjt
-yjt
-yjt
-yjt
-yjt
+hdz
+hdz
+jbE
+hdz
 hdz
 hdz
 yjt
@@ -134429,8 +134436,8 @@ yjt
 yjt
 yjt
 yjt
-hdz
-hdz
+beZ
+jbE
 kag
 kag
 kag
@@ -136959,7 +136966,7 @@ kag
 kag
 beZ
 hdz
-hdz
+jbE
 yjt
 yjt
 yjt
@@ -137211,7 +137218,7 @@ kag
 hdz
 hdz
 hdz
-yjt
+jbE
 hdz
 yjt
 yjt
@@ -137462,10 +137469,10 @@ yjt
 beZ
 hdz
 yjt
-yjt
-yjt
-yjt
-yjt
+hdz
+vBk
+uwI
+hdz
 yjt
 yjt
 yjt
@@ -137714,10 +137721,10 @@ yjt
 yjt
 yjt
 yjt
-yjt
 hdz
 hdz
-hdz
+jbE
+beZ
 yjt
 hdz
 yjt
@@ -144258,7 +144265,7 @@ yjt
 yjt
 yjt
 yjt
-hdz
+beZ
 kag
 kag
 beZ
@@ -144509,10 +144516,10 @@ hdz
 beZ
 yjt
 yjt
-yjt
-yjt
 hdz
 hdz
+hdz
+jbE
 yjt
 yjt
 yjt
@@ -144762,9 +144769,9 @@ hdz
 beZ
 yjt
 yjt
-yjt
-yjt
-yjt
+hdz
+xyz
+mYp
 yjt
 yjt
 yjt
@@ -145014,9 +145021,9 @@ yjt
 yjt
 yjt
 yjt
-yjt
-yjt
-yjt
+hdz
+vBk
+duV
 yjt
 yjt
 yjt
@@ -145266,9 +145273,9 @@ yjt
 yjt
 yjt
 yjt
-yjt
-yjt
 hdz
+hdz
+jbE
 yjt
 hdz
 beZ
@@ -145519,7 +145526,7 @@ yjt
 yjt
 yjt
 yjt
-hdz
+beZ
 kag
 hdz
 kag
@@ -147541,7 +147548,7 @@ yjt
 yjt
 yjt
 yjt
-hdz
+ePL
 kag
 kag
 kag
@@ -147794,7 +147801,7 @@ yjt
 yjt
 yjt
 hdz
-hdz
+roy
 kag
 kag
 kag
@@ -155273,8 +155280,8 @@ hTI
 frd
 kWK
 pvK
-lvW
-lvW
+frd
+frd
 kWK
 pvK
 frd
@@ -164357,7 +164364,7 @@ xYn
 qie
 iow
 gkk
-tVx
+pow
 rQR
 lyx
 dBl
@@ -166121,7 +166128,7 @@ xYn
 hbp
 iMQ
 fil
-poz
+wqG
 nHn
 nkt
 jEy

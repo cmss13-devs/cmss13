@@ -2874,68 +2874,6 @@
 	name = "medical cargo container"
 	icon = 'icons/obj/structures/props/containersextended2.dmi'
 	icon_state = "emptymedicalright"
-// Decals
-
-
-/obj/structure/prop/hybrisa/decal
-	icon = 'icons/obj/structures/props/zenithdecals.dmi'
-	icon_state = "weylandyutanilogo1"
-	unslashable = TRUE
-	unacidable = TRUE
-	breakable = TRUE
-
-/obj/structure/prop/hybrisa/decal/WY/WY1
-	name = "Weyland-Yutani"
-	icon = 'icons/obj/structures/props/zenithdecals.dmi'
-	icon_state = "weylandyutanilogo1"
-
-/obj/structure/prop/hybrisa/decal/WY/WYworn
-	name = "Weyland-Yutani"
-	icon = 'icons/obj/structures/props/zenithdecals.dmi'
-	icon_state = "weylandyutanilogo2"
-
-/obj/structure/prop/hybrisa/decal/road
-	name = "road line"
-	icon = 'icons/effects/hybrisa_lines.dmi'
-	icon_state = "Z_M2"
-	layer = 1
-/obj/structure/prop/hybrisa/decal/road/lines1
-	icon = 'icons/effects/hybrisa_lines.dmi'
-	icon_state = "Z_W1"
-/obj/structure/prop/hybrisa/decal/road/lines2
-	icon = 'icons/effects/hybrisa_lines.dmi'
-	icon_state = "Z_N2"
-/obj/structure/prop/hybrisa/decal/road/lines3
-	icon = 'icons/effects/hybrisa_lines.dmi'
-	icon_state = "Z_S3"
-/obj/structure/prop/hybrisa/decal/road/lines4
-	icon = 'icons/effects/hybrisa_lines.dmi'
-	icon_state = "Z_E4"
-/obj/structure/prop/hybrisa/decal/road/lines5
-	icon = 'icons/effects/hybrisa_lines.dmi'
-	icon_state = "Z_M1"
-/obj/structure/prop/hybrisa/decal/road/lines6
-	icon = 'icons/effects/hybrisa_lines.dmi'
-	icon_state = "Z_M2"
-
-/obj/structure/prop/hybrisa/decal/gold
-	name = "border"
-	icon = 'icons/effects/hybrisa_lines.dmi'
-	icon_state = "Z_S"
-	layer = 1
-/obj/structure/prop/hybrisa/decal/gold/line1
-	icon = 'icons/effects/hybrisa_lines.dmi'
-	icon_state = "Z_S"
-/obj/structure/prop/hybrisa/decal/gold/line2
-	icon = 'icons/effects/hybrisa_lines.dmi'
-	icon_state = "Z_E"
-/obj/structure/prop/hybrisa/decal/gold/line3
-	icon = 'icons/effects/hybrisa_lines.dmi'
-	icon_state = "Z_N"
-/obj/structure/prop/hybrisa/decal/gold/line4
-	icon = 'icons/effects/hybrisa_lines.dmi'
-	icon_state = "Z_W"
-
 
 /// Fake Platforms
 

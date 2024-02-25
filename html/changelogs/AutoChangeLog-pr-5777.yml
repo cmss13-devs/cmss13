@@ -1,6 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - ui: "Added the relay ping browser accessed by the tgchat ping to test and use alternative connections to the server"
-  - ui: "Added onConfirmChange prop to Button.Confirm component."
-  - config: "Added CONNECTION_RELAY_PING and CONNECTION_RELAY_CON in the relays.txt config that is optionally included in config.txt"

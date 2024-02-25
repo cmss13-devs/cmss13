@@ -766,6 +766,11 @@
 	var/datum/mob_hud/MH = GLOB.huds[MOB_HUD_XENO_INFECTION]
 	MH.add_hud_to(src, src)
 
+// Transfer any observing players over to the xeno's new body (`target`) on evolve/de-evolve.
+/mob/living/carbon/xenomorph/transfer_observers_to(atom/target)
+	for(var/mob/dead/observer/observer as anything in observers)
+		observer.clean_observe_target()
+		observer.do_observe(target)
 
 /mob/living/carbon/xenomorph/check_improved_pointing()
 	//xeno leaders get a big arrow and less cooldown
@@ -839,6 +844,8 @@
 	tackle_min = caste.tackle_min
 	tackle_max = caste.tackle_max
 	tackle_chance = caste.tackle_chance + tackle_chance_modifier
+	tacklestrength_min = caste.tacklestrength_min
+	tacklestrength_max = caste.tacklestrength_max
 
 /mob/living/carbon/xenomorph/proc/recalculate_health()
 	var/new_max_health = nocrit ? health_modifier + maxHealth : health_modifier + caste.max_health

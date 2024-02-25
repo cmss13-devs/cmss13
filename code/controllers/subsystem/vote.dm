@@ -525,7 +525,7 @@ GLOBAL_LIST_INIT(possible_vote_types, list(
 			if(!(params["vote_type"] in GLOB.possible_vote_types))
 				return
 
-			if(!check_rights(R_ADMIN))
+			if(!check_rights(R_MOD))
 				var/list/vote_type = GLOB.possible_vote_types[params["vote_type"]]
 				if(vote_type["admin_only"])
 					return

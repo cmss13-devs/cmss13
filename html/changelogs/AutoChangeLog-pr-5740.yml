@@ -1,4 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - refactor: "refactor marine_armor.dm and split it into multiples files."

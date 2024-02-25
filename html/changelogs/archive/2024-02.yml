@@ -365,3 +365,25 @@
       the case of the special cigarette packs)
   - imageadd: Added sprites of the WeyYu Trading Cards, trading card packs, and special
       WeyYu Gold cigarette packs.
+2024-02-25:
+  Drathek:
+  - ui: Added the relay ping browser accessed by the tgchat ping to test and use alternative
+      connections to the server
+  - ui: Added onConfirmChange prop to Button.Confirm component.
+  - config: Added CONNECTION_RELAY_PING and CONNECTION_RELAY_CON in the relays.txt
+      config that is optionally included in config.txt
+  - rscadd: Welding a barricade will now repeat automatically if it can still be repaired.
+  - balance: 'Reverted multi-welding change to barricades: All barricades must be
+      welded one at a time.'
+  - refactor: Refactored more barricade code.
+  Huffie56:
+  - refactor: refactor marine_armor.dm and split it into multiples files.
+  SabreML:
+  - bugfix: Fixed 'hidden' action buttons being shown to observing players.
+  - qol: Made any observers transfer over when a Xenomorph evolves/de-evolves.
+  SpartanBobby:
+  - maptweak: Edits to secure storage LV624s detailing
+  - maptweak: Make a few unabreakable walls on kutjevo breakable, touches the east
+      botony caves flanks ands removes some ledges from combat routes
+  - maptweak: Edits to southwest dorms LV522
+  - maptweak: Redetails bigred Libary

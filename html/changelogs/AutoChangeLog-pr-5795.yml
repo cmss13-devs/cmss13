@@ -1,6 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - rscadd: "Welding a barricade will now repeat automatically if it can still be repaired."
-  - balance: "Reverted multi-welding change to barricades: All barricades must be welded one at a time."
-  - refactor: "Refactored more barricade code."

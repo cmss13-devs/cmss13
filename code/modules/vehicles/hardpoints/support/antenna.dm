@@ -70,3 +70,14 @@
 		else
 			I.color = null
 	return I
+
+/obj/item/hardpoint/support/arc_antenna/can_be_removed(mob/remover)
+	var/obj/vehicle/multitile/arc/arc_owner = owner
+	if(!istype(arc_owner))
+		return TRUE
+
+	if(arc_owner.antenna_deployed)
+		to_chat(remover, SPAN_WARNING("[src] cannot be removed from [owner] while its antenna is deployed."))
+		return FALSE
+
+	return TRUE

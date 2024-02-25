@@ -791,3 +791,7 @@
 
 /obj/item/hardpoint/get_applying_acid_time()
 	return 10 SECONDS //you are not supposed to be able to easily combat-melt irreplaceable things.
+
+/// Proc to be overridden if you want to have special conditions preventing the removal of the hardpoint. Add chat messages in this proc if you want to tell the player why
+/obj/item/hardpoint/proc/can_be_removed(mob/remover)
+	return TRUE

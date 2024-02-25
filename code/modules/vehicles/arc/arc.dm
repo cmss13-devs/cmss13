@@ -1,5 +1,5 @@
 /obj/vehicle/multitile/arc
-	name = "M540-A Armored Recon Carrier"
+	name = "\improper M540-A Armored Recon Carrier"
 	desc = "An M540-A Armored Recon Carrier. A lightly armored reconnaissance and intelligence vehicle. Entrances on the sides."
 
 	icon = 'icons/obj/vehicles/arc.dmi'

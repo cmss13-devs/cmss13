@@ -158,6 +158,9 @@
 		to_chat(user, SPAN_WARNING("There is nothing installed there."))
 		return
 
+	if(!old.can_be_removed(user))
+		return
+
 	// It's in a holder
 	if(!(old in hardpoints))
 		for(var/obj/item/hardpoint/holder/H in hardpoints)

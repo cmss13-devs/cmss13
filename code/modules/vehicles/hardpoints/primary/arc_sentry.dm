@@ -46,11 +46,12 @@
 /obj/item/hardpoint/primary/arc_sentry/on_install(obj/vehicle/multitile/V)
 	. = ..()
 	RegisterSignal(owner, COMSIG_ARC_ANTENNA_TOGGLED, PROC_REF(toggle_processing))
+	toggle_processing() // We can't know that the antenna is in the same position as when the gun was removed
 
 /obj/item/hardpoint/primary/arc_sentry/on_uninstall(obj/vehicle/multitile/V)
 	. = ..()
 	UnregisterSignal(owner, COMSIG_ARC_ANTENNA_TOGGLED)
-	START_PROCESSING(SSfastobj, src)
+	STOP_PROCESSING(SSfastobj, src)
 
 /obj/item/hardpoint/primary/arc_sentry/Destroy()
 	STOP_PROCESSING(SSfastobj, src)
@@ -277,6 +278,17 @@
 		return
 
 	start_fire(object = sentry_target)
+
+/obj/item/hardpoint/primary/arc_sentry/can_be_removed(mob/remover)
+	var/obj/vehicle/multitile/arc/arc_owner = owner
+	if(!istype(arc_owner))
+		return TRUE
+
+	if(arc_owner.antenna_deployed)
+		to_chat(remover, SPAN_WARNING("[src] cannot be removed from [owner] while its antenna is deployed."))
+		return FALSE
+
+	return TRUE
 
 /obj/projectile/arc_sentry/Initialize(mapload, datum/cause_data/cause_data)
 	. = ..()

@@ -18,12 +18,6 @@
 "ba" = (
 /obj/effect/attach_point/fuel/dropship2{
 	dir = 1;
-	pixel_x = -32
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/attach_point/fuel/dropship2{
 	pixel_x = -32;
 	attach_id = 11
 	},
@@ -121,12 +115,7 @@
 /area/shuttle/drop2/sulaco)
 "gV" = (
 /obj/effect/attach_point/fuel/dropship2{
-	dir = 1
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/attach_point/fuel/dropship2{
+	dir = 1;
 	attach_id = 10
 	},
 /turf/closed/shuttle/dropship2/transparent{

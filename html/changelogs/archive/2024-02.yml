@@ -346,3 +346,22 @@
   - code_imp: Updated mapping backend from /tg/ upstream.
   iloveloopers:
   - qol: Reagent tanks can now be dragged faster.
+2024-02-24:
+  BadAtThisGame302:
+  - rscadd: Added a CL and Goon nightmare insert spawn.
+  - mapadd: added a new nightmare insert on LV which revamps the Corporate Dome into
+      a holdout.
+  SabreML:
+  - bugfix: Fixed the 88 Mod 4 pistol's holster sprite.
+  Segrain:
+  - admin: Check Ckey verb is now available on player panel.
+  - bugfix: Fully healed limbs should now properly remove the overlays for their wounds
+      and bandages.
+  TopHatPenguin:
+  - rscdel: Removes part of MOPP suit desc.
+  Warfan1815:
+  - rscadd: Added WeyYu Trading Cards (they come in packs of 5, single, or in special
+      packs of WeyYu Gold) buyable at rec vendor (and/or colony tobacco vendors in
+      the case of the special cigarette packs)
+  - imageadd: Added sprites of the WeyYu Trading Cards, trading card packs, and special
+      WeyYu Gold cigarette packs.

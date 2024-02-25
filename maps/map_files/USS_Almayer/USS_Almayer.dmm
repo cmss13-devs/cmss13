@@ -30969,6 +30969,9 @@
 	dir = 4
 	},
 /obj/structure/machinery/power/apc/almayer,
+/obj/structure/sign/safety/rewire{
+	pixel_y = -38
+	},
 /turf/open/floor/almayer{
 	icon_state = "red"
 	},
@@ -38135,6 +38138,9 @@
 /area/almayer/command/airoom)
 "iZB" = (
 /obj/structure/machinery/power/apc/almayer,
+/obj/structure/sign/safety/rewire{
+	pixel_y = -38
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/warden_office)
 "iZE" = (
@@ -40080,6 +40086,10 @@
 /obj/structure/machinery/power/apc/almayer{
 	dir = 4
 	},
+/obj/structure/sign/safety/rewire{
+	pixel_x = 32;
+	pixel_y = 24
+	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "red"
@@ -40868,6 +40878,9 @@
 /obj/structure/machinery/light{
 	unacidable = 1;
 	unslashable = 1
+	},
+/obj/structure/sign/safety/rewire{
+	pixel_y = -38
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/execution)

@@ -578,6 +578,11 @@
 	if(current_mob.stat == DEAD)
 		return FALSE
 
+	if(HAS_TRAIT(current_mob, TRAIT_NESTED) && (current_mob.status_flags & XENO_HOST))
+		for(var/obj/item/alien_embryo/embryo in current_mob)
+			if(HIVE_ALLIED_TO_HIVE(hivenumber, embryo.hivenumber))
+				return FALSE
+
 	var/turf/current_turf
 	var/turf/last_turf = loc
 	var/atom/temp_atom = new acid_type()

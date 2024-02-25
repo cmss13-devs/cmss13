@@ -152,7 +152,7 @@
 	data["access_tickets"] = logged_access
 
 	var/list/security_vents = list()
-	for(var/obj/structure/pipes/vents/pump/no_boom/gas/vent as anything in link.linked_vents)
+	for(var/obj/structure/pipes/vents/pump/no_boom/gas/vent in link.linked_vents)
 		if(!istype(vent))
 			continue
 		if(!vent.vent_tag)

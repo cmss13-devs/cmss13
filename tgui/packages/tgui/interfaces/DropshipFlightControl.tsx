@@ -5,7 +5,7 @@ import { LaunchButton, CancelLaunchButton, DisabledScreen, InFlightCountdown, La
 
 interface DoorStatus {
   id: string;
-  value: 0 | 1;
+  value: -1 | 0 | 1;
 }
 
 interface AutomatedControl {
@@ -77,6 +77,7 @@ const DropshipDoorControl = () => {
             return (
               <Stack.Item key={x.id}>
                 <>
+                  {x.value === -1 && <Button icon="ban">No response</Button>}
                   {x.value === 0 && (
                     <Button
                       onClick={() =>

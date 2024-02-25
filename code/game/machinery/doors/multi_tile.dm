@@ -241,6 +241,8 @@
 	no_panel = 1
 	not_weldable = 1
 	var/queen_pryable = TRUE
+	var/obj/docking_port/mobile/marine_dropship/linked_dropship
+
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ex_act(severity)
 	return
@@ -266,6 +268,18 @@
 		unlock(TRUE)
 		open(1)
 		lock(TRUE)
+		var/direction
+		switch(id)
+			if("starboard_door")
+				direction = "starboard"
+			if("port_door")
+				direction = "port"
+			if("aft_door")
+				direction = "aft"
+		if(linked_dropship && linked_dropship.door_control.door_controllers[direction])
+			var/datum/door_controller/single/control = linked_dropship.door_control.door_controllers[direction]
+			control.status = SHUTTLE_DOOR_BROKEN
+
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1
 	name = "\improper Alamo cargo door"

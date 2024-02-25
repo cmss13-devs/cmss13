@@ -1,7 +1,7 @@
 {
     "map_name": "Fiorina Cellblocks",
     "map_path": "map_files/FOP_v2_Cellblocks",
-    "map_file": "Prison_Station_FOP.dmm",
+    "map_file": "Prison_Station_V3.dmm",
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/fiorina",
         "/datum/equipment_preset/survivor/doctor/fiorina",

@@ -1,5 +1,0 @@
-author: "SabreML"
-delete-after: True
-changes:
-  - bugfix: "Fixed 'hidden' action buttons being shown to observing players."
-  - qol: "Made any observers transfer over when a Xenomorph evolves/de-evolves."

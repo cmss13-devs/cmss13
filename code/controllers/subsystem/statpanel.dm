@@ -29,7 +29,7 @@ SUBSYSTEM_DEF(statpanels)
 		global_data = list(
 			"Map: [SSmapping.configs?[GROUND_MAP]?.map_name || "Loading..."]",
 			cached ? "Next Map: [cached?.map_name]" : null,
-// "Round ID: [GLOB.round_id ? GLOB.round_id : "NULL"]", // this is commented because we don't have it and we should have it instead of using debug DB - be the hero of today
+			"Round ID: [GLOB.round_id ? GLOB.round_id : "NULL"]",
 //   "Round Time: [ROUND_TIME]",
 			"Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]",
 			"Round Time: [duration2text()]",
@@ -43,6 +43,9 @@ SUBSYSTEM_DEF(statpanels)
 	while(length(currentrun))
 		var/client/target = currentrun[length(currentrun)]
 		currentrun.len--
+
+		if(!target)
+			continue
 
 		if(!target.stat_panel.is_ready())
 			continue
@@ -313,14 +316,39 @@ SUBSYSTEM_DEF(statpanels)
 	for(index in 1 to length(to_make))
 		var/atom/thing = to_make[index]
 
+		// var/start_time = REALTIMEOFDAY
 		var/generated_string
-		/* We're cheap and won't render all overlays. It's expensive and updates with onmob changes!
-		if(ismob(thing) || length(thing.overlays) > 2)
-			generated_string = costly_icon2html(thing, parent, sourceonly=TRUE)
+		// We're cheap and won't render all overlays. It's expensive and updates with onmob changes!
+		//if(ismob(thing) || length(thing.overlays) > 2)
+			//generated_string = costly_icon2html(thing, parent, sourceonly=TRUE)
+		if(ishuman(thing))
+			var/mob/living/carbon/human/human_thing = thing
+			var/icon
+
+			// Ensure they have their armor since its going to be the majority of their appearance
+			var/list/armor = list()
+			var/obj/item/uniform = human_thing.get_item_by_slot(WEAR_BODY)
+			if(uniform)
+				armor += new uniform.type
+			var/obj/item/hat = human_thing.get_item_by_slot(WEAR_HEAD)
+			if(hat)
+				armor += new hat.type
+			var/obj/item/suit = human_thing.get_item_by_slot(WEAR_JACKET)
+			if(suit)
+				armor += new suit.type
+			var/obj/item/gloves = human_thing.get_item_by_slot(WEAR_HANDS)
+			if(gloves)
+				armor += new gloves.type
+			var/obj/item/shoes = human_thing.get_item_by_slot(WEAR_FEET)
+			if(shoes)
+				armor += new shoes.type
+
+			// If we don't succeed making a flat human icon below, allowing the human to pass into icon2html will throw a bad icon operation because of a workaround in icon2html for humans...
+			icon = get_flat_human_copy_icon(human_thing, showDirs = list(SOUTH), outfit_override = armor)
+			generated_string = icon2html(icon, parent, sourceonly=TRUE)
+			// log_debug("object_window_info called on ref=[REF(thing)], instance=[thing], type=[thing.type], finished in [(REALTIMEOFDAY-start_time) / 10]s")
 		else
 			generated_string = icon2html(thing, parent, sourceonly=TRUE)
-		*/
-		generated_string = icon2html(thing, parent, sourceonly=TRUE)
 
 		newly_seen[thing] = generated_string
 		if(TICK_CHECK)
@@ -383,8 +411,10 @@ SUBSYSTEM_DEF(statpanels)
 	set name = "Open Statbrowser Options"
 	set hidden = TRUE
 
+	if (!current_fontsize)
+		current_fontsize = 12
 
-	var/datum/statbrowser_options/SM = statbrowser_options
-	if(!SM)
-		SM = statbrowser_options = new(src, current_fontsize)
-	SM.tgui_interact()
+	var/datum/statbrowser_options/options_panel = statbrowser_options
+	if(!options_panel)
+		options_panel = statbrowser_options = new(src, current_fontsize)
+	options_panel.tgui_interact()

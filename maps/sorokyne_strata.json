@@ -11,6 +11,7 @@
         "/datum/equipment_preset/survivor/scientist/soro",
         "/datum/equipment_preset/survivor/doctor/soro",
         "/datum/equipment_preset/survivor/engineer/soro",
+        "/datum/equipment_preset/survivor/corporate/soro",
         "/datum/equipment_preset/survivor/security/soro",
         "/datum/equipment_preset/survivor/interstellar_human_rights_observer/soro"
     ],
@@ -33,6 +34,7 @@
         "xeno_hive_bravo": 0,
         "xeno_hive_charlie": 70
     },
+    "camouflage": "snow",
     "gamemodes": [
         "Distress Signal",
         "Hunter Games",

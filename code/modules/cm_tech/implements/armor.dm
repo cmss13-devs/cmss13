@@ -94,7 +94,7 @@
 		COMSIG_HUMAN_BULLET_ACT
 	))
 
-/obj/item/clothing/accessory/health/proc/take_bullet_damage(mob/living/carbon/human/user, damage, ammo_flags, obj/item/projectile/P)
+/obj/item/clothing/accessory/health/proc/take_bullet_damage(mob/living/carbon/human/user, damage, ammo_flags, obj/projectile/P)
 	SIGNAL_HANDLER
 	if(damage <= 0 || (ammo_flags & AMMO_IGNORE_ARMOR))
 		return
@@ -167,7 +167,7 @@
 
 /obj/item/clothing/accessory/health/scrap
 	name = "scrap metal"
-	desc = "A weak armour plate, only able to protect from a little bit of damage. Perhaps that will be enough."
+	desc = "A weak armor plate, only able to protect from a little bit of damage. Perhaps that will be enough."
 	icon_state = "scrap_100"
 	base_icon_state = "scrap"
 	health_states = list(

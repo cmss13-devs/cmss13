@@ -70,8 +70,8 @@
 /obj/structure/machinery/bot/mulebot/Initialize(mapload, ...)
 	. = ..()
 	botcard = new(src)
-	if(RoleAuthority)
-		var/datum/job/ctequiv = RoleAuthority.roles_by_name[JOB_CARGO_TECH]
+	if(GLOB.RoleAuthority)
+		var/datum/job/ctequiv = GLOB.RoleAuthority.roles_by_name[JOB_CARGO_TECH]
 		if(ctequiv) botcard.access = ctequiv.get_access()
 
 	cell = new(src)
@@ -83,7 +83,7 @@
 	SSradio.add_object(src, beacon_freq, filter = RADIO_NAVBEACONS)
 
 	var/count = 0
-	for(var/obj/structure/machinery/bot/mulebot/other in machines)
+	for(var/obj/structure/machinery/bot/mulebot/other in GLOB.machines)
 		count++
 	if(!suffix)
 		suffix = "#[count]"
@@ -284,7 +284,7 @@
 		return
 	if (usr.stat)
 		return
-	if ((in_range(src, usr) && istype(src.loc, /turf)) || (ishighersilicon(usr)))
+	if ((in_range(src, usr) && istype(src.loc, /turf)) || (isSilicon(usr)))
 		usr.set_interaction(src)
 
 		switch(href_list["op"])
@@ -551,7 +551,7 @@
 		var/speed = ((wires & WIRE_MOTOR1) ? 1:0) + ((wires & WIRE_MOTOR2) ? 2:0)
 		switch(speed)
 			if(0)
-				// do nothing
+				pass()
 			if(1)
 				process_bot()
 				spawn(2)
@@ -756,14 +756,10 @@
 	if(!(wires & WIRE_MOBAVOID)) //usually just bumps, but if avoidance disabled knock over mobs
 		var/mob/M = A
 		if(ismob(M))
-			if(isborg(M))
-				src.visible_message(SPAN_DANGER("[src] bumps into [M]!"))
-			else
-				src.visible_message(SPAN_DANGER("[src] knocks over [M]!"))
-				M.stop_pulling()
-				M.apply_effect(8, STUN)
-				M.apply_effect(5, WEAKEN)
-				M.lying = 1
+			src.visible_message(SPAN_DANGER("[src] knocks over [M]!"))
+			M.stop_pulling()
+			M.apply_effect(8, STUN)
+			M.apply_effect(5, WEAKEN)
 	..()
 
 /obj/structure/machinery/bot/mulebot/alter_health()
@@ -916,11 +912,11 @@
 	post_signal_multiple(control_freq, kv)
 
 /obj/structure/machinery/bot/mulebot/emp_act(severity)
+	. = ..()
 	if (cell)
 		cell.emp_act(severity)
 	if(load)
 		load.emp_act(severity)
-	..()
 
 
 /obj/structure/machinery/bot/mulebot/explode()

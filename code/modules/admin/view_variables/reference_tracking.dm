@@ -12,9 +12,11 @@
 			SSgarbage.update_nextfire(reset_time = TRUE)
 			return
 
+#if !defined(UNIT_TESTS) && !defined(SPACEMAN_DMM) // Without this we just get thousands of warnings about sleeps in qdel
 		if(!skip_alert && tgui_alert(usr,"Running this will lock everything up for about 5 minutes.  Would you like to begin the search?", "Find References", list("Yes", "No")) != "Yes")
 			running_find_references = null
 			return
+#endif
 
 	//this keeps the garbage collector from failing to collect objects being searched for in here
 	SSgarbage.can_fire = FALSE
@@ -22,7 +24,7 @@
 	if(usr?.client)
 		usr.client.running_find_references = type
 
-	log_reftracker("Beginning search for references to a [type].")
+	log_reftracker("Beginning search for references to '[src]' a [type].")
 
 	var/starting_time = world.time
 
@@ -58,7 +60,7 @@
 	log_reftracker("Finished searching clients")
 #endif
 
-	log_reftracker("Completed search for references to a [type].")
+	log_reftracker("Completed search for references to '[src]' a [type].")
 
 	if(usr?.client)
 		usr.client.running_find_references = null
@@ -129,6 +131,11 @@
 					continue //End early, don't want these logging
 				#endif
 				log_reftracker("Found [type] [text_ref(src)] in list [container_name].")
+				var/msg
+				for(var/i in 1 to min(10, potential_cache.len))
+					msg += "[potential_cache[i]],"
+				if(msg)
+					log_reftracker("List contents: [msg]")
 				continue
 
 			var/assoc_val = null
@@ -142,6 +149,11 @@
 					continue //End early, don't want these logging
 				#endif
 				log_reftracker("Found [type] [text_ref(src)] in list [container_name]\[[element_in_list]\]")
+				var/msg
+				for(var/i in 1 to min(10, potential_cache.len))
+					msg += "[potential_cache[i]],"
+				if(msg)
+					log_reftracker("List contents: [msg]")
 				continue
 			//We need to run both of these checks, since our object could be hiding in either of them
 			//Check normal sublists

@@ -147,12 +147,12 @@ if grep -P '^/[\w/]\S+\(.*(var/|, ?var/.*).*\)' $code_files; then
 	st=1
 fi;
 
-#part "unmanaged global vars"
-#if grep -P '^/*var/' $code_files; then
-#	echo
-#	echo -e "${RED}ERROR: Unmanaged global var use detected in code, please use the helpers.${NC}"
-#	st=1
-#fi;
+part "unmanaged global vars"
+if grep -P '^/*var/' $code_files; then
+	echo
+	echo -e "${RED}ERROR: Unmanaged global var use detected in code, please use the helpers.${NC}"
+	st=1
+fi;
 
 
 part "map json naming"
@@ -166,9 +166,10 @@ part "map json sanity"
 for json in maps/*.json
 do
 	map_path=$(jq -r '.map_path' $json)
+	override_map=$(jq -r '.override_map' $json)
 	while read map_file; do
 		filename="maps/$map_path/$map_file"
-		if [ ! -f $filename ]
+		if [ ! -f $filename ] && [ -z "$override_map" ]
 		then
 			echo
 			echo -e "${RED}ERROR: found invalid file reference to $filename in _maps/$json.${NC}"
@@ -194,6 +195,13 @@ part "balloon_alert idiomatic usage"
 if $grep 'balloon_alert\(.*?, ?"[A-Z]' $code_files; then
 	echo
 	echo -e "${RED}ERROR: Balloon alerts should not start with capital letters. This includes text like 'AI'. If this is a false positive, wrap the text in UNLINT().${NC}"
+	st=1
+fi;
+
+part "to_chat without user"
+if $grep 'to_chat\(("|SPAN)' $code_files; then
+	echo
+	echo -e "${RED}ERROR: to_chat() requires a target as its first argument.${NC}"
 	st=1
 fi;
 

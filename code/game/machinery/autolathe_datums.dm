@@ -267,12 +267,6 @@
 	hidden = TRUE
 	category = AUTOLATHE_CATEGORY_DEVICES_AND_COMPONENTS
 
-/datum/autolathe/recipe/welder_industrial
-	name = "industrial blowtorch"
-	path = /obj/item/tool/weldingtool/largetank
-	hidden = TRUE
-	category = AUTOLATHE_CATEGORY_TOOLS
-
 /datum/autolathe/recipe/handcuffs
 	name = "handcuffs"
 	path = /obj/item/handcuffs
@@ -422,10 +416,6 @@
 	name = "bonesetter"
 	path = /obj/item/tool/surgery/bonesetter
 
-/datum/autolathe/recipe/medilathe/bonegel
-	name = "bone gel"
-	path = /obj/item/tool/surgery/bonegel
-
 /datum/autolathe/recipe/medilathe/fixovein
 	name = "FixOVein"
 	path = /obj/item/tool/surgery/FixOVein
@@ -476,6 +466,11 @@
 /datum/autolathe/recipe/medilathe/syringe_case
 	name = "syringe case"
 	path = /obj/item/storage/syringe_case
+	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
+
+/datum/autolathe/recipe/medilathe/surgical_case
+	name = "surgical case"
+	path = /obj/item/storage/surgical_case
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 
 /datum/autolathe/recipe/medilathe/vial_box

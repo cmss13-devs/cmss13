@@ -23,7 +23,7 @@
 
 	That's it. There are some special rules, though, namely:
 
-		* If the explosion occured in a wall, the wave is strengthened
+		* If the explosion occurred in a wall, the wave is strengthened
 		with power *= reflection_multiplier and reflected back in the
 		direction it came from
 
@@ -109,7 +109,7 @@
 		survivor.power += dying.power
 
 	// Two waves travling towards each other weakens the explosion
-	if(survivor.direction == reverse_dir[dying.direction])
+	if(survivor.direction == GLOB.reverse_dir[dying.direction])
 		survivor.power -= dying.power
 
 	return is_stronger
@@ -120,11 +120,11 @@
 
 	// If the cell is the epicenter, propagate in all directions
 	if(isnull(direction))
-		return alldirs
+		return GLOB.alldirs
 
-	var/dir = reflected ? reverse_dir[direction] : direction
+	var/dir = reflected ? GLOB.reverse_dir[direction] : direction
 
-	if(dir in cardinal)
+	if(dir in GLOB.cardinals)
 		propagation_dirs += list(dir, turn(dir, 45), turn(dir, -45))
 	else
 		propagation_dirs += dir
@@ -180,7 +180,7 @@
 	for(var/dir in to_spread)
 		// Diagonals are longer, that should be reflected in the power falloff
 		var/dir_falloff = 1
-		if(dir in diagonals)
+		if(dir in GLOB.diagonals)
 			dir_falloff = 1.414
 
 		if(isnull(direction))
@@ -210,7 +210,7 @@
 			// Set the direction the explosion is traveling in
 			E.direction = dir
 			//Diagonal cells have a small delay when branching off the center. This helps the explosion look circular
-			if(!direction && (dir in diagonals))
+			if(!direction && (dir in GLOB.diagonals))
 				E.delay = 1
 
 			setup_new_cell(E)
@@ -322,7 +322,7 @@ as having entered the turf.
 				M.attack_log += "\[[time_stamp()]\] <b>[key_name(firing_mob)]</b> blew up <b>[key_name(M)]</b> with \a <b>[explosion_source]</b> in [get_area(T)]."
 
 				firing_mob.attack_log += "\[[time_stamp()]\] <b>[key_name(firing_mob)]</b> blew up <b>[key_name(M)]</b> with \a <b>[explosion_source]</b> in [get_area(T)]."
-				var/ff_msg = "[key_name(firing_mob)] blew up [key_name(M)] with \a [explosion_source] in [get_area(T)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP LOC</a>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location_of_mob.x];Y=[location_of_mob.y];Z=[location_of_mob.z]'>JMP SRC</a>) ([firing_mob.client ? "<a href='?priv_msg=[firing_mob.client.ckey]'>PM</a>" : "NO CLIENT"])"
+				var/ff_msg = "[key_name(firing_mob)] blew up [key_name(M)] with \a [explosion_source] in [get_area(T)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP LOC</a>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[location_of_mob.x];Y=[location_of_mob.y];Z=[location_of_mob.z]'>JMP SRC</a>) [ADMIN_PM(firing_mob)]"
 				var/ff_living = TRUE
 				if(M.stat == DEAD)
 					ff_living = FALSE

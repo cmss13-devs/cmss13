@@ -40,7 +40,9 @@
 	layer = ABOVE_XENO_LAYER
 	var/splatter_type = "splatter"
 
-/obj/effect/temp_visual/dir_setting/bloodsplatter/Initialize(mapload, set_dir, fx_duration)
+/obj/effect/temp_visual/dir_setting/bloodsplatter/Initialize(mapload, set_dir, fx_duration, color_override)
+	if(color_override)
+		color = color_override
 	if(IS_DIAGONAL_DIR(set_dir))
 		icon_state = "[splatter_type][pick(1, 2, 6)]"
 	else
@@ -76,21 +78,21 @@
 
 /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter
 	splatter_type = "csplatter"
-	color = "#77b013"
+	color = BLOOD_COLOR_XENO
 
 /obj/effect/temp_visual/dir_setting/bloodsplatter/human
 	splatter_type = "csplatter"
-	color = "#a8180d"
+	color = BLOOD_COLOR_HUMAN
 
 /obj/effect/temp_visual/dir_setting/bloodsplatter/hellhound
 	splatter_type = "csplatter"
-	color = "#a80d3b"
+	color = BLOOD_COLOR_YAUTJA
 
 /obj/effect/temp_visual/dir_setting/bloodsplatter/yautjasplatter
 	splatter_type = "csplatter"
-	color = "#5A934A"
+	color = BLOOD_COLOR_YAUTJA_DARK
 
 /obj/effect/temp_visual/dir_setting/bloodsplatter/synthsplatter
 	splatter_type = "csplatter"
-	color = "#e0e0e0"
+	color = BLOOD_COLOR_SYNTHETIC
 

@@ -14,7 +14,7 @@
 		to_chat(wearer, SPAN_WARNING("You've already claimed your equipment."))
 		return
 
-	if(wearer.is_mob_incapacitated() || wearer.lying || wearer.buckled)
+	if(wearer.is_mob_incapacitated() || wearer.body_position == LYING_DOWN /* replace by mobility_flags */ || wearer.buckled)
 		to_chat(wearer, SPAN_WARNING("You're not able to do that right now."))
 		return
 
@@ -60,11 +60,11 @@
 			if(YAUTJA_GEAR_STICK)
 				spawned_weapon = new /obj/item/weapon/yautja/combistick(wearer.loc)
 			if(YAUTJA_THRALL_GEAR_MACHETE)
-				spawned_weapon = new /obj/item/weapon/claymore/mercsword/machete(wearer.loc)
+				spawned_weapon = new /obj/item/weapon/sword/machete(wearer.loc)
 			if(YAUTJA_THRALL_GEAR_RAPIER)
-				spawned_weapon = new /obj/item/weapon/claymore/mercsword/ceremonial(wearer.loc)
+				spawned_weapon = new /obj/item/weapon/sword/ceremonial(wearer.loc)
 			if(YAUTJA_THRALL_GEAR_CLAYMORE)
-				spawned_weapon = new /obj/item/weapon/claymore(wearer.loc)
+				spawned_weapon = new /obj/item/weapon/sword(wearer.loc)
 			if(YAUTJA_THRALL_GEAR_FIREAXE)
 				spawned_weapon = new /obj/item/weapon/twohanded/fireaxe(wearer.loc)
 

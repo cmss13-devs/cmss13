@@ -124,11 +124,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/clearing/north)
 "aaA" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/clearing/north)
 "aaB" = (
@@ -546,11 +542,7 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
 "acl" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/northwest)
 "acm" = (
@@ -753,11 +745,7 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
 "acV" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /obj/structure/machinery/power/apc{
 	dir = 1;
 	pixel_y = 24;
@@ -790,11 +778,7 @@
 	},
 /area/ice_colony/surface/requesitions)
 "ada" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /obj/structure/machinery/computer/shuttle_control/ice_colony/elevator4{
 	pixel_y = 30
 	},
@@ -861,16 +845,6 @@
 "adl" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
-	},
-/turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
-"adm" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/machinery/door/airlock/almayer/secure/colony{
-	locked = 0;
-	name = "Colony Requesitions Storage Pod"
 	},
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
@@ -1318,18 +1292,8 @@
 	icon_state = "darkyellow2"
 	},
 /area/ice_colony/surface/engineering/generator)
-"aex" = (
-/obj/structure/machinery/power/geothermal,
-/turf/open/floor{
-	icon_state = "platebot"
-	},
-/area/ice_colony/surface/engineering/generator)
 "aey" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/valley/northwest)
 "aez" = (
@@ -1350,18 +1314,6 @@
 	},
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/northeast)
-"aeC" = (
-/obj/structure/machinery/door/airlock{
-	id_tag = "st_5";
-	locked = 0;
-	name = "Storage Unit";
-	req_one_access_txt = "100;101;102;103"
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
 "aeD" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -1375,11 +1327,7 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
 "aeF" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -1814,11 +1762,7 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
 "afN" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -1993,11 +1937,7 @@
 /turf/closed/wall,
 /area/ice_colony/surface/engineering)
 "agj" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/valley/northwest)
 "agk" = (
@@ -2058,15 +1998,6 @@
 	icon_state = "darkyellow2"
 	},
 /area/ice_colony/surface/engineering/generator)
-"ags" = (
-/obj/structure/machinery/power/geothermal,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor{
-	icon_state = "platebot"
-	},
-/area/ice_colony/surface/engineering/generator)
 "agt" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -2116,11 +2047,7 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
 "agA" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
 "agB" = (
@@ -2348,19 +2275,11 @@
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/clearing/north)
 "ahh" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/clearing/north)
 "ahi" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/clearing/north)
 "ahj" = (
@@ -2382,11 +2301,7 @@
 	},
 /area/ice_colony/surface/engineering/generator)
 "ahn" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/clearing/north)
 "aho" = (
@@ -2521,11 +2436,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/surface/hydroponics/north)
 "ahJ" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/clearing/north)
 "ahK" = (
@@ -2712,10 +2623,10 @@
 /area/ice_colony/surface/hydroponics/north)
 "aig" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/north)
 "aih" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/north)
 "aii" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -2858,11 +2769,7 @@
 	},
 /area/ice_colony/surface/substation/smes)
 "aiC" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/north)
 "aiD" = (
@@ -2951,7 +2858,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/north)
 "aiO" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -3069,11 +2976,7 @@
 	},
 /area/ice_colony/surface/substation/smes)
 "ajf" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/clearing/north)
 "ajg" = (
@@ -3084,11 +2987,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/northeast)
 "ajj" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/northeast)
 "ajl" = (
@@ -3272,7 +3171,7 @@
 /area/ice_colony/surface/substation/smes)
 "ajF" = (
 /obj/item/disk/botany,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/north)
 "ajG" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -3319,11 +3218,7 @@
 	},
 /area/ice_colony/surface/engineering)
 "ajM" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/clearing/north)
@@ -3617,11 +3512,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/clearing/north)
 "akB" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -3991,11 +3882,7 @@
 /turf/open/ice,
 /area/ice_colony/surface/mining)
 "alI" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/southeast)
 "alJ" = (
@@ -4189,11 +4076,7 @@
 	},
 /area/ice_colony/surface/dorms/restroom_e)
 "aml" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/valley/southeast)
 "amm" = (
@@ -4219,11 +4102,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/southeast)
 "amq" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/north)
 "amr" = (
@@ -5065,11 +4944,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/pass)
 "aoK" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/clearing/pass)
 "aoL" = (
@@ -5705,7 +5580,7 @@
 /area/ice_colony/exterior/surface/valley/west)
 "aqt" = (
 /obj/item/storage/bag/plants,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/north)
 "aqu" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -6676,11 +6551,7 @@
 	},
 /area/ice_colony/surface/dorms)
 "asV" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/pass)
 "asW" = (
@@ -7050,11 +6921,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/clearing/south)
 "atW" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/clearing/south)
 "atX" = (
@@ -7162,14 +7029,14 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/lobby)
 "auk" = (
 /mob/living/simple_animal/cow,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/lobby)
 "aul" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/lobby)
 "aum" = (
 /obj/structure/bed/chair{
@@ -7237,11 +7104,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/dorms)
 "auu" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/south)
 "auw" = (
@@ -7277,13 +7140,13 @@
 /area/ice_colony/surface/clinic/lobby)
 "auA" = (
 /obj/effect/landmark/monkey_spawn,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/lobby)
 "auB" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/lobby)
 "auC" = (
 /obj/structure/flora/pottedplant,
@@ -7402,11 +7265,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/clearing/south)
 "auQ" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/southwest)
 "auR" = (
@@ -7464,7 +7323,7 @@
 /obj/item/stack/rods{
 	amount = 25
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/lobby)
 "auZ" = (
 /turf/open/floor{
@@ -7665,11 +7524,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/clearing/south)
 "avx" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/valley/southwest)
 "avy" = (
@@ -7809,11 +7664,7 @@
 	},
 /area/ice_colony/surface/hydroponics/lobby)
 "avO" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/valley/southwest)
 "avP" = (
@@ -7943,11 +7794,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/southwest)
 "awd" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/clearing/south)
 "awe" = (
@@ -8100,7 +7947,7 @@
 /area/ice_colony/exterior/surface/valley/southeast)
 "awA" = (
 /obj/structure/machinery/light,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/lobby)
 "awB" = (
 /obj/structure/bed/chair{
@@ -8156,11 +8003,7 @@
 	},
 /area/ice_colony/surface/hydroponics/lobby)
 "awJ" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/auto_turf/snow/layer1,
@@ -8240,11 +8083,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/clearing/south)
 "awY" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/clearing/south)
 "awZ" = (
@@ -8608,11 +8447,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/southwest)
 "ayb" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/southwest)
 "ayc" = (
@@ -8620,11 +8455,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/southwest)
 "ayd" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/auto_turf/snow/layer1,
@@ -8747,11 +8578,7 @@
 	},
 /area/ice_colony/surface/dorms/lavatory)
 "ayv" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/south)
 "ayw" = (
@@ -8772,11 +8599,7 @@
 	},
 /area/ice_colony/surface/dorms/canteen)
 "ayy" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/southwest)
 "ayz" = (
@@ -8823,11 +8646,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/south)
 "ayF" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -8837,11 +8656,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/clearing/south)
 "ayG" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/valley/south)
 "ayH" = (
@@ -9077,11 +8892,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/valley/south)
 "azp" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/valley/south)
 "azq" = (
@@ -9117,10 +8928,10 @@
 /area/ice_colony/surface/disposals)
 "azw" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/south)
 "azx" = (
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/south)
 "azy" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -9172,11 +8983,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/ice_colony/exterior/surface/valley/south)
 "azH" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/south)
 "azI" = (
@@ -9206,7 +9013,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/south)
 "azM" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
@@ -9535,11 +9342,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "aAE" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "aAF" = (
@@ -9964,11 +9767,7 @@
 	},
 /area/ice_colony/surface/garage/repair)
 "aBM" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "aBN" = (
@@ -11092,7 +10891,7 @@
 /area/ice_colony/exterior/surface/valley/southeast)
 "aED" = (
 /obj/item/tool/hatchet,
-/turf/open/gm/grass,
+/turf/open/gm/grass/grass1,
 /area/ice_colony/surface/hydroponics/south)
 "aEE" = (
 /obj/structure/disposalpipe/segment,
@@ -12122,17 +11921,6 @@
 	icon_state = "whitered"
 	},
 /area/ice_colony/surface/clinic/lobby)
-"aHB" = (
-/obj/structure/machinery/door/airlock/almayer/secure/colony{
-	id = "st_17";
-	locked = 0;
-	name = "Power Storage Unit"
-	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "vault"
-	},
-/area/ice_colony/surface/storage_unit/power)
 "aHD" = (
 /obj/structure/closet/secure_closet/guncabinet,
 /obj/structure/machinery/firealarm{
@@ -12529,6 +12317,12 @@
 /obj/effect/landmark/corpsespawner/doctor,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
+"aIW" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/shuttle/can_surgery/red,
+/area/ice_colony/surface/hangar/beta)
 "aIX" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -12565,18 +12359,6 @@
 /area/ice_colony/exterior/surface/clearing/pass)
 "aJd" = (
 /turf/closed/wall/r_wall,
-/area/ice_colony/surface/storage_unit/telecomms)
-"aJe" = (
-/obj/structure/machinery/door/airlock/almayer/secure/colony{
-	dir = 2;
-	id = "st_18";
-	locked = 0;
-	name = "Disposals Storage Unit"
-	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "vault"
-	},
 /area/ice_colony/surface/storage_unit/telecomms)
 "aJf" = (
 /turf/closed/wall/r_wall,
@@ -13857,18 +13639,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating,
 /area/ice_colony/surface/research)
-"aNV" = (
-/obj/structure/machinery/door/airlock/almayer/secure/colony{
-	dir = 2;
-	id = "st_19";
-	locked = 0;
-	name = "Research Storage Unit"
-	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "vault"
-	},
-/area/ice_colony/surface/storage_unit/research)
 "aNW" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -32
@@ -14023,7 +13793,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
 "aOC" = (
-/obj/item/weapon/gun/shotgun/double/with_stock,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6"
 	},
@@ -14425,7 +14195,7 @@
 /area/ice_colony/surface/bar/bar)
 "aPy" = (
 /obj/structure/surface/table/woodentable,
-/obj/structure/machinery/chem_dispenser/beer,
+/obj/structure/machinery/chem_dispenser/soda/beer,
 /obj/structure/machinery/alarm{
 	dir = 1;
 	pixel_y = -24
@@ -14706,22 +14476,6 @@
 	icon_state = "dark2"
 	},
 /area/ice_colony/surface/research)
-"aQm" = (
-/obj/structure/machinery/door/airlock/almayer/secure/colony{
-	id = "research_entrance";
-	locked = 0;
-	name = "Omicron Research Dome"
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor{
-	icon_state = "dark2"
-	},
-/area/ice_colony/surface/research)
 "aQt" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -14769,28 +14523,6 @@
 /turf/open/floor{
 	dir = 4;
 	icon_state = "darkbrown2"
-	},
-/area/ice_colony/surface/hangar/alpha)
-"aQB" = (
-/obj/structure/shuttle/diagonal{
-	icon_state = "swall_f9"
-	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/ice_colony/surface/hangar/alpha)
-"aQC" = (
-/obj/structure/computerframe,
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/ice_colony/surface/hangar/alpha)
-"aQD" = (
-/obj/structure/shuttle/diagonal{
-	icon_state = "swall_f5"
-	},
-/turf/open/shuttle{
-	icon_state = "floor6"
 	},
 /area/ice_colony/surface/hangar/alpha)
 "aQE" = (
@@ -14851,28 +14583,6 @@
 	icon_state = "dark2"
 	},
 /area/ice_colony/surface/hangar/hallway)
-"aQK" = (
-/obj/structure/shuttle/diagonal{
-	icon_state = "swall_f9"
-	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/ice_colony/surface/hangar/beta)
-"aQL" = (
-/obj/structure/computerframe,
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/ice_colony/surface/hangar/beta)
-"aQM" = (
-/obj/structure/shuttle/diagonal{
-	icon_state = "swall_f5"
-	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/ice_colony/surface/hangar/beta)
 "aQN" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor{
@@ -15113,20 +14823,6 @@
 	icon_state = "swall3"
 	},
 /area/ice_colony/surface/hangar/alpha)
-"aRz" = (
-/obj/structure/machinery/light,
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/ice_colony/surface/hangar/alpha)
-"aRA" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/ice_colony/surface/hangar/alpha)
 "aRB" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -15146,28 +14842,6 @@
 "aRE" = (
 /turf/closed/shuttle{
 	icon_state = "swall3"
-	},
-/area/ice_colony/surface/hangar/beta)
-"aRF" = (
-/obj/structure/machinery/light,
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/ice_colony/surface/hangar/beta)
-"aRG" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/obj/effect/landmark/survivor_spawner,
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/ice_colony/surface/hangar/beta)
-"aRH" = (
-/obj/structure/machinery/light,
-/obj/item/weapon/gun/pistol/holdout,
-/turf/open/shuttle{
-	icon_state = "floor6"
 	},
 /area/ice_colony/surface/hangar/beta)
 "aRI" = (
@@ -15403,12 +15077,6 @@
 	icon_state = "swall8"
 	},
 /area/ice_colony/surface/hangar/alpha)
-"aSi" = (
-/obj/structure/machinery/door/unpowered/shuttle,
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/ice_colony/surface/hangar/alpha)
 "aSj" = (
 /turf/closed/shuttle{
 	icon_state = "swall4"
@@ -15445,12 +15113,6 @@
 "aSq" = (
 /turf/closed/shuttle{
 	icon_state = "swall8"
-	},
-/area/ice_colony/surface/hangar/beta)
-"aSr" = (
-/obj/structure/machinery/door/unpowered/shuttle,
-/turf/open/shuttle{
-	icon_state = "floor6"
 	},
 /area/ice_colony/surface/hangar/beta)
 "aSs" = (
@@ -15685,60 +15347,6 @@
 	icon_state = "darkbrown2"
 	},
 /area/ice_colony/surface/hangar/alpha)
-"aSU" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/bed/chair{
-	dir = 4
-	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/ice_colony/surface/hangar/alpha)
-"aSV" = (
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/ice_colony/surface/hangar/alpha)
-"aSW" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/structure/bed/chair{
-	dir = 8
-	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/ice_colony/surface/hangar/alpha)
-"aSY" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/bed/chair{
-	dir = 4
-	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/ice_colony/surface/hangar/beta)
-"aSZ" = (
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/ice_colony/surface/hangar/beta)
-"aTa" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/structure/bed/chair{
-	dir = 8
-	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/ice_colony/surface/hangar/beta)
 "aTb" = (
 /turf/open/floor{
 	dir = 4;
@@ -15909,38 +15517,6 @@
 	icon_state = "darkbrown2"
 	},
 /area/ice_colony/surface/hangar/alpha)
-"aTz" = (
-/obj/structure/bed/chair{
-	dir = 4
-	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/ice_colony/surface/hangar/alpha)
-"aTA" = (
-/obj/structure/bed/chair{
-	dir = 8
-	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/ice_colony/surface/hangar/alpha)
-"aTD" = (
-/obj/structure/bed/chair{
-	dir = 4
-	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/ice_colony/surface/hangar/beta)
-"aTE" = (
-/obj/structure/bed/chair{
-	dir = 8
-	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/ice_colony/surface/hangar/beta)
 "aTH" = (
 /obj/structure/machinery/power/apc{
 	dir = 8;
@@ -16282,15 +15858,6 @@
 	icon_state = "darkbrown2"
 	},
 /area/ice_colony/surface/hangar/beta)
-"aUM" = (
-/obj/item/ammo_magazine/pistol/holdout{
-	pixel_x = 6;
-	pixel_y = -4
-	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/ice_colony/surface/hangar/beta)
 "aUN" = (
 /obj/structure/ice/thin/end{
 	dir = 8
@@ -16403,11 +15970,7 @@
 	},
 /area/ice_colony/exterior/surface/cliff)
 "aVf" = (
-/obj/item/lightstick{
-	anchored = 1;
-	icon_state = "lightstick_blue1";
-	luminosity = 2
-	},
+/obj/item/lightstick/planted,
 /turf/open/ice,
 /area/ice_colony/exterior/surface/landing_pad_external)
 "aVg" = (
@@ -16746,22 +16309,6 @@
 	icon_state = "dark2"
 	},
 /area/ice_colony/surface/hangar/alpha)
-"aWc" = (
-/obj/structure/shuttle/diagonal{
-	icon_state = "swall_f10"
-	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/ice_colony/surface/hangar/alpha)
-"aWd" = (
-/obj/structure/shuttle/diagonal{
-	icon_state = "swall_f6"
-	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/ice_colony/surface/hangar/alpha)
 "aWe" = (
 /obj/structure/shuttle/diagonal{
 	icon_state = "swall_f9"
@@ -16816,22 +16363,6 @@
 	icon_state = "dark2"
 	},
 /area/ice_colony/surface/hangar/beta)
-"aWl" = (
-/obj/structure/shuttle/diagonal{
-	icon_state = "swall_f10"
-	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/ice_colony/surface/hangar/beta)
-"aWm" = (
-/obj/structure/shuttle/diagonal{
-	icon_state = "swall_f6"
-	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/ice_colony/surface/hangar/beta)
 "aWn" = (
 /obj/structure/shuttle/diagonal{
 	icon_state = "swall_f9"
@@ -16853,12 +16384,6 @@
 	},
 /area/ice_colony/exterior/surface/landing_pad)
 "aWp" = (
-/turf/open/floor/plating,
-/area/ice_colony/exterior/surface/landing_pad)
-"aWq" = (
-/obj/docking_port/stationary/marine_dropship/lz1{
-	name = "Hangar Landing Zone"
-	},
 /turf/open/floor/plating,
 /area/ice_colony/exterior/surface/landing_pad)
 "aWr" = (
@@ -17794,11 +17319,7 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/exterior/surface/container_yard)
 "aZt" = (
-/obj/item/lightstick/red{
-	anchored = 1;
-	icon_state = "lightstick_red1";
-	luminosity = 2
-	},
+/obj/item/lightstick/red/planted,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/exterior/surface/container_yard)
 "aZu" = (
@@ -19853,13 +19374,6 @@
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/north)
-"bgR" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
-	locked = 0;
-	name = "\improper Underground Maintenance"
-	},
-/turf/open/floor/plating,
-/area/ice_colony/underground/hangar)
 "bgS" = (
 /obj/structure/machinery/landinglight/ds2{
 	dir = 4
@@ -20022,12 +19536,6 @@
 	icon_state = "dark2"
 	},
 /area/ice_colony/underground/requesition/lobby)
-"bhs" = (
-/obj/docking_port/stationary/marine_dropship/lz2,
-/turf/open/floor/plating/icefloor{
-	icon_state = "warnplate"
-	},
-/area/ice_colony/underground/hangar)
 "bht" = (
 /turf/open/floor/plating/icefloor{
 	icon_state = "warnplate"
@@ -20286,10 +19794,6 @@
 /turf/open/floor{
 	icon_state = "bcircuit"
 	},
-/area/ice_colony/underground/hangar)
-"biw" = (
-/obj/structure/machinery/power/geothermal,
-/turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
 "bix" = (
 /obj/structure/closet/secure_closet/engineering_welding,
@@ -20583,15 +20087,6 @@
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/requesition/lobby)
-"bjz" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
-	dir = 1;
-	locked = 0;
-	name = "\improper Underground Maintenance";
-	req_access_txt = "100"
-	},
-/turf/open/floor/plating,
-/area/ice_colony/underground/hangar)
 "bjA" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/ice_colony/underground/maintenance/north)
@@ -23910,18 +23405,6 @@
 /obj/structure/sign/safety/high_voltage,
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/engineering/substation)
-"btB" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/secure/colony{
-	dir = 2;
-	id = "engine_electrical_maintenance";
-	locked = 0;
-	name = "Underground Power Substation"
-	},
-/turf/open/floor{
-	icon_state = "dark2"
-	},
-/area/ice_colony/underground/engineering/substation)
 "btC" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	dir = 1;
@@ -24141,10 +23624,6 @@
 /area/ice_colony/exterior/underground/caves/open)
 "bug" = (
 /turf/closed/wall/r_wall,
-/area/ice_colony/exterior/underground/caves)
-"buh" = (
-/obj/structure/machinery/power/geothermal,
-/turf/open/floor/plating,
 /area/ice_colony/exterior/underground/caves)
 "bui" = (
 /turf/open/floor{
@@ -24649,13 +24128,6 @@
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/bball)
-"bvD" = (
-/obj/structure/machinery/power/geothermal,
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/ice_colony/exterior/underground/caves)
 "bvE" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -24684,6 +24156,13 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/structure/surface/rack,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
 /turf/open/floor/plating,
 /area/ice_colony/underground/engineering/substation)
 "bvJ" = (
@@ -25021,15 +24500,6 @@
 	icon_state = "bcircuit"
 	},
 /area/ice_colony/underground/engineering/substation)
-"bwA" = (
-/obj/structure/machinery/power/geothermal,
-/turf/open/floor/plating,
-/area/ice_colony/underground/engineering/substation)
-"bwB" = (
-/obj/structure/machinery/power/geothermal,
-/obj/structure/machinery/light/small,
-/turf/open/floor/plating,
-/area/ice_colony/underground/engineering/substation)
 "bwE" = (
 /obj/structure/ice/thin/end,
 /turf/open/ice,
@@ -25149,16 +24619,6 @@
 	icon_state = "darkgreen2"
 	},
 /area/ice_colony/underground/crew/bball)
-"bwZ" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/secure/colony{
-	dir = 2;
-	id = "engine_electrical_maintenance";
-	locked = 0;
-	name = "Underground Power Substation"
-	},
-/turf/open/floor/plating,
-/area/ice_colony/underground/engineering/substation)
 "bxa" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -25361,6 +24821,7 @@
 	dir = 1
 	},
 /obj/structure/surface/rack,
+/obj/item/fuel_cell,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/engineering)
 "bxJ" = (
@@ -27028,7 +26489,7 @@
 /area/ice_colony/underground/storage/highsec)
 "bCS" = (
 /obj/structure/safe,
-/obj/item/weapon/katana/replica,
+/obj/item/weapon/sword/katana/replica,
 /obj/item/reagent_container/food/drinks/bottle/absinthe,
 /turf/open/floor{
 	dir = 1;
@@ -28142,7 +27603,7 @@
 /area/ice_colony/surface/bar/canteen)
 "bFZ" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/toy/farwadoll,
+/obj/item/toy/plush/farwa,
 /turf/open/floor{
 	icon_state = "darkblue2"
 	},
@@ -28289,17 +27750,6 @@
 	icon_state = "darkpurple2"
 	},
 /area/ice_colony/underground/research)
-"bGA" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/secure/colony{
-	dir = 2;
-	locked = 0;
-	name = "Underground Secure Technical Storage"
-	},
-/turf/open/floor{
-	icon_state = "dark2"
-	},
-/area/ice_colony/underground/storage/highsec)
 "bGB" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/command/checkpoint)
@@ -34669,6 +34119,23 @@
 "cbk" = (
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/tcomms)
+"cbU" = (
+/obj/structure/shuttle/diagonal{
+	icon_state = "swall_f6"
+	},
+/turf/open/shuttle/can_surgery/red,
+/area/ice_colony/surface/hangar/beta)
+"chE" = (
+/obj/structure/machinery/door/airlock{
+	id_tag = "st_5";
+	name = "Storage Unit";
+	req_one_access_txt = "100;101;102;103"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/surface/requesitions)
 "csl" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -34678,18 +34145,53 @@
 	icon_state = "dark2"
 	},
 /area/ice_colony/surface/research)
+"cBQ" = (
+/obj/structure/machinery/door/unpowered/shuttle,
+/turf/open/shuttle/can_surgery/red,
+/area/ice_colony/surface/hangar/beta)
+"cEG" = (
+/obj/docking_port/stationary/marine_dropship/lz2,
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/underground/hangar)
+"cNY" = (
+/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ice_colony/exterior/underground/caves)
 "cVM" = (
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
+"dfj" = (
+/obj/structure/shuttle/diagonal{
+	icon_state = "swall_f5"
+	},
+/turf/open/shuttle/can_surgery/red,
+/area/ice_colony/surface/hangar/alpha)
 "dgG" = (
 /turf/open/floor{
 	dir = 5;
 	icon_state = "darkyellow2"
 	},
 /area/ice_colony/surface/tcomms)
+"doO" = (
+/obj/structure/machinery/power/reactor/colony,
+/turf/open/floor{
+	icon_state = "platebot"
+	},
+/area/ice_colony/surface/engineering/generator)
+"drG" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
+	dir = 1;
+	name = "\improper Underground Maintenance";
+	req_access_txt = "100"
+	},
+/turf/open/floor/plating,
+/area/ice_colony/underground/hangar)
 "dxl" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -34706,6 +34208,17 @@
 	icon_state = "darkyellow2"
 	},
 /area/ice_colony/surface/tcomms)
+"dFm" = (
+/obj/structure/machinery/light,
+/obj/item/weapon/gun/pistol/holdout,
+/turf/open/shuttle/can_surgery/red,
+/area/ice_colony/surface/hangar/beta)
+"dRe" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/shuttle/can_surgery/red,
+/area/ice_colony/surface/hangar/beta)
 "ecS" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -34722,6 +34235,14 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/carpet,
 /area/ice_colony/underground/crew/leisure)
+"etX" = (
+/obj/structure/machinery/power/reactor/colony,
+/turf/open/floor/plating,
+/area/ice_colony/underground/engineering/substation)
+"ezC" = (
+/obj/structure/machinery/fuelcell_recycler/full,
+/turf/open/floor/plating,
+/area/ice_colony/underground/engineering/substation)
 "ezT" = (
 /obj/vehicle/train/cargo/trolley,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -34744,6 +34265,28 @@
 	icon_state = "darkyellow2"
 	},
 /area/ice_colony/surface/research/tech_storage)
+"faO" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/shuttle/can_surgery/red,
+/area/ice_colony/surface/hangar/alpha)
+"fgp" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
+	name = "Colony Requesitions Storage Pod"
+	},
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/surface/requesitions)
+"fkY" = (
+/obj/structure/machinery/light,
+/turf/open/shuttle/can_surgery/red,
+/area/ice_colony/surface/hangar/beta)
 "fqt" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -34793,6 +34336,15 @@
 	icon_state = "darkred2"
 	},
 /area/ice_colony/underground/reception/checkpoint_north)
+"gHI" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/shuttle/can_surgery/red,
+/area/ice_colony/surface/hangar/alpha)
 "gXP" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
@@ -34809,9 +34361,35 @@
 	dir = 9
 	},
 /area/ice_colony/exterior/surface/valley/south)
+"hrs" = (
+/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/light/small,
+/turf/open/floor/plating,
+/area/ice_colony/underground/engineering/substation)
 "hrN" = (
 /turf/open/auto_turf/snow/layer4,
 /area/ice_colony/exterior/surface/clearing/north)
+"hwC" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
+	name = "\improper Underground Maintenance"
+	},
+/turf/open/floor/plating,
+/area/ice_colony/underground/hangar)
+"hxr" = (
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
+	id = "research_entrance";
+	name = "Omicron Research Dome"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "dark2"
+	},
+/area/ice_colony/surface/research)
 "hAX" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating,
@@ -34831,6 +34409,17 @@
 	icon_state = "warnplate"
 	},
 /area/ice_colony/underground/hangar)
+"ilp" = (
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
+	dir = 2;
+	id = "st_19";
+	name = "Research Storage Unit"
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "vault"
+	},
+/area/ice_colony/surface/storage_unit/research)
 "iBu" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/paper/research_notes,
@@ -34849,6 +34438,16 @@
 /obj/item/packageWrap,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
+"iUo" = (
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
+	id = "st_17";
+	name = "Power Storage Unit"
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "vault"
+	},
+/area/ice_colony/surface/storage_unit/power)
 "iZc" = (
 /obj/structure/lz_sign/ice_sign{
 	desc = "The only good bug is a dead bug.";
@@ -34857,6 +34456,16 @@
 	},
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/south)
+"iZF" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
+	dir = 2;
+	name = "Underground Secure Technical Storage"
+	},
+/turf/open/floor{
+	icon_state = "dark2"
+	},
+/area/ice_colony/underground/storage/highsec)
 "jtr" = (
 /turf/closed/wall,
 /area/ice_colony/exterior/surface/cliff)
@@ -34875,6 +34484,18 @@
 	icon_state = "darkbrown2"
 	},
 /area/ice_colony/surface/hangar/alpha)
+"jFV" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/shuttle/can_surgery/red,
+/area/ice_colony/surface/hangar/alpha)
+"jPb" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/shuttle/can_surgery/red,
+/area/ice_colony/surface/hangar/alpha)
 "jZI" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/shuttle_control/dropship2,
@@ -34892,6 +34513,17 @@
 	icon_state = "warnplate"
 	},
 /area/ice_colony/surface/tcomms)
+"krs" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
+	dir = 2;
+	id = "engine_electrical_maintenance";
+	name = "Underground Power Substation"
+	},
+/turf/open/floor{
+	icon_state = "dark2"
+	},
+/area/ice_colony/underground/engineering/substation)
 "kKZ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
@@ -34907,6 +34539,19 @@
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/tcomms)
+"luM" = (
+/obj/item/ammo_magazine/pistol/holdout{
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/turf/open/shuttle/can_surgery/red,
+/area/ice_colony/surface/hangar/beta)
+"lxu" = (
+/obj/structure/shuttle/diagonal{
+	icon_state = "swall_f6"
+	},
+/turf/open/shuttle/can_surgery/red,
+/area/ice_colony/surface/hangar/alpha)
 "lyD" = (
 /obj/structure/machinery/alarm{
 	dir = 8;
@@ -34926,9 +34571,21 @@
 "lJQ" = (
 /turf/open/auto_turf/snow/layer4,
 /area/ice_colony/exterior/surface/valley/south)
+"lSF" = (
+/turf/open/shuttle/can_surgery/red,
+/area/ice_colony/surface/hangar/alpha)
 "lXk" = (
 /turf/open/auto_turf/snow/layer4,
 /area/ice_colony/exterior/surface/clearing/south)
+"mec" = (
+/turf/open/shuttle/can_surgery/red,
+/area/ice_colony/surface/hangar/beta)
+"mgy" = (
+/obj/structure/shuttle/diagonal{
+	icon_state = "swall_f9"
+	},
+/turf/open/shuttle/can_surgery/red,
+/area/ice_colony/surface/hangar/beta)
 "mog" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -34949,6 +34606,12 @@
 	dir = 5;
 	icon_state = "darkbrown2"
 	},
+/area/ice_colony/surface/hangar/beta)
+"mLJ" = (
+/obj/structure/shuttle/diagonal{
+	icon_state = "swall_f5"
+	},
+/turf/open/shuttle/can_surgery/red,
 /area/ice_colony/surface/hangar/beta)
 "neZ" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
@@ -34977,9 +34640,26 @@
 /obj/effect/landmark/static_comms/net_one,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/tcomms)
+"oIL" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/shuttle/can_surgery/red,
+/area/ice_colony/surface/hangar/beta)
+"oNg" = (
+/obj/structure/machinery/door/unpowered/shuttle,
+/turf/open/shuttle/can_surgery/red,
+/area/ice_colony/surface/hangar/alpha)
 "oOd" = (
 /turf/open/auto_turf/snow/layer4,
 /area/ice_colony/exterior/surface/clearing/pass)
+"oQI" = (
+/obj/structure/machinery/light,
+/turf/open/shuttle/can_surgery/red,
+/area/ice_colony/surface/hangar/alpha)
 "oZq" = (
 /obj/structure/machinery/alarm{
 	dir = 4;
@@ -35001,9 +34681,19 @@
 	},
 /turf/open/floor/carpet,
 /area/ice_colony/underground/crew/leisure)
+"poh" = (
+/obj/structure/machinery/power/reactor/colony,
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/underground/hangar)
 "pyn" = (
 /turf/closed/wall,
 /area/ice_colony/underground/hangar)
+"qiR" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/shuttle/can_surgery/red,
+/area/ice_colony/surface/hangar/alpha)
 "qny" = (
 /obj/structure/surface/table/woodentable,
 /turf/open/floor/wood,
@@ -35021,8 +34711,29 @@
 "qEB" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
+"qJe" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/shuttle/can_surgery/red,
+/area/ice_colony/surface/hangar/beta)
+"qKs" = (
+/obj/structure/machinery/power/reactor/colony,
+/turf/open/floor/plating,
+/area/ice_colony/exterior/underground/caves)
+"qPo" = (
+/obj/structure/surface/rack,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/turf/open/floor/plating,
+/area/ice_colony/underground/maintenance/engineering)
 "qRy" = (
 /obj/structure/closet/toolcloset,
 /obj/structure/machinery/door_control{
@@ -35043,11 +34754,21 @@
 /obj/structure/machinery/recharge_station,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
+"rxJ" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
+	dir = 2;
+	id = "engine_electrical_maintenance";
+	name = "Underground Power Substation"
+	},
+/turf/open/floor/plating,
+/area/ice_colony/underground/engineering/substation)
 "rxQ" = (
 /turf/open/auto_turf/snow/layer4,
 /area/ice_colony/exterior/surface/valley/northwest)
 "rAm" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor{
 	icon_state = "dark2"
 	},
@@ -35080,6 +34801,12 @@
 	icon_state = "darkbrown2"
 	},
 /area/ice_colony/surface/hangar/alpha)
+"sto" = (
+/obj/docking_port/stationary/marine_dropship/lz1{
+	name = "LZ1: Hangar Landing Zone"
+	},
+/turf/open/floor/plating,
+/area/ice_colony/exterior/surface/landing_pad)
 "sKH" = (
 /obj/structure/surface/table,
 /obj/item/device/analyzer,
@@ -35092,6 +34819,12 @@
 "sTg" = (
 /turf/open/auto_turf/snow/layer4,
 /area/ice_colony/exterior/surface/valley/northeast)
+"sTG" = (
+/obj/structure/shuttle/diagonal{
+	icon_state = "swall_f10"
+	},
+/turf/open/shuttle/can_surgery/red,
+/area/ice_colony/surface/hangar/beta)
 "sTY" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
@@ -35130,6 +34863,7 @@
 /area/ice_colony/underground/hangar)
 "tEG" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /obj/effect/landmark/queen_spawn,
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
@@ -35145,6 +34879,13 @@
 "tZS" = (
 /turf/open/auto_turf/snow/layer4,
 /area/ice_colony/exterior/surface/valley/west)
+"ubd" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/shuttle/can_surgery/red,
+/area/ice_colony/surface/hangar/beta)
 "ueV" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
 /turf/open/floor{
@@ -35193,10 +34934,12 @@
 "uUv" = (
 /obj/effect/alien/weeds/node,
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
 "vcU" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
 "vhS" = (
@@ -35238,6 +34981,10 @@
 /obj/item/paper/research_notes,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/control/pv1)
+"wxw" = (
+/obj/structure/computerframe,
+/turf/open/shuttle/can_surgery/red,
+/area/ice_colony/surface/hangar/alpha)
 "wDj" = (
 /turf/open/floor/plating/icefloor{
 	dir = 1;
@@ -35249,6 +34996,17 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
+"xfO" = (
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
+	dir = 2;
+	id = "st_18";
+	name = "Disposals Storage Unit"
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "vault"
+	},
+/area/ice_colony/surface/storage_unit/telecomms)
 "xkk" = (
 /obj/effect/landmark/queen_spawn,
 /turf/open/floor/icefloor{
@@ -35263,10 +35021,36 @@
 	icon_state = "darkyellow2"
 	},
 /area/ice_colony/surface/tcomms)
+"xyz" = (
+/obj/structure/machinery/power/reactor/colony,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "platebot"
+	},
+/area/ice_colony/surface/engineering/generator)
+"xAI" = (
+/obj/structure/shuttle/diagonal{
+	icon_state = "swall_f10"
+	},
+/turf/open/shuttle/can_surgery/red,
+/area/ice_colony/surface/hangar/alpha)
+"xFB" = (
+/obj/structure/shuttle/diagonal{
+	icon_state = "swall_f9"
+	},
+/turf/open/shuttle/can_surgery/red,
+/area/ice_colony/surface/hangar/alpha)
 "xWm" = (
 /obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/ice,
 /area/ice_colony/exterior/surface/landing_pad_external)
+"yfA" = (
+/obj/structure/computerframe,
+/turf/open/shuttle/can_surgery/red,
+/area/ice_colony/surface/hangar/beta)
 "ygw" = (
 /obj/structure/surface/table,
 /obj/item/device/encryptionkey,
@@ -39814,15 +39598,15 @@ aaI
 aaI
 aaI
 abD
-adm
+fgp
 abD
 adY
 abD
-aeC
+chE
 abD
 adY
 abD
-adm
+fgp
 abD
 adY
 abD
@@ -44044,15 +43828,15 @@ abE
 abF
 abF
 abD
-adm
+fgp
 abD
 adY
 abD
-adm
+fgp
 abD
 adY
 abD
-adm
+fgp
 abD
 adY
 abD
@@ -50157,7 +49941,7 @@ bDE
 bEz
 bFc
 bFc
-bGA
+iZF
 bHn
 bHn
 bIJ
@@ -51512,11 +51296,11 @@ aZW
 aZW
 aZG
 aZG
-bgR
+hwC
 aZG
 aZG
 aZG
-bgR
+hwC
 aZG
 aZG
 aZG
@@ -52369,7 +52153,7 @@ big
 aZW
 aZW
 aZW
-bjz
+drG
 bgH
 bgH
 bkE
@@ -52642,7 +52426,7 @@ aZW
 bcy
 bbc
 aZW
-bhs
+bht
 bhG
 bht
 aZW
@@ -53212,9 +52996,9 @@ bht
 aZW
 aZW
 beB
-biw
-biw
-biw
+poh
+poh
+poh
 aZG
 bgH
 bgH
@@ -53760,7 +53544,7 @@ aZW
 aZW
 aZW
 aZW
-aZW
+cEG
 aZW
 aZW
 aZW
@@ -55470,7 +55254,7 @@ aZW
 aZW
 bjf
 aZG
-bgR
+hwC
 aZG
 beB
 bkt
@@ -55697,7 +55481,7 @@ aLN
 aLN
 aLN
 aLN
-aQm
+hxr
 aLN
 aLN
 aLN
@@ -59078,7 +58862,7 @@ aKr
 aKr
 aKR
 aKR
-aNV
+ilp
 auw
 auw
 auw
@@ -69874,11 +69658,11 @@ box
 box
 bqF
 bnk
-buh
-buh
-bvD
-buh
-buh
+qKs
+qKs
+cNY
+qKs
+qKs
 bqP
 brt
 bsf
@@ -70438,11 +70222,11 @@ box
 box
 bqF
 btA
-buj
+ezC
 buj
 buj
 bui
-bwA
+etX
 btz
 brt
 bsf
@@ -70719,12 +70503,12 @@ boQ
 boQ
 boQ
 boQ
-btB
+krs
 buk
 buk
 bvE
 bui
-bwA
+etX
 btz
 brt
 bsf
@@ -71006,7 +70790,7 @@ bul
 buj
 bvF
 bui
-bwB
+hrs
 btz
 bxG
 bsf
@@ -71289,7 +71073,7 @@ buj
 bvG
 buk
 buk
-bwZ
+rxJ
 bxH
 brZ
 brZ
@@ -71573,7 +71357,7 @@ bwg
 bwg
 btz
 bxI
-bse
+qPo
 bsf
 brt
 byc
@@ -77983,7 +77767,7 @@ aRy
 aRy
 aRy
 aUh
-aSi
+oNg
 aVy
 aWb
 aSf
@@ -78257,17 +78041,17 @@ avs
 aOf
 aOK
 aPI
-aQB
-aRz
+xFB
+oQI
 aSh
-aSU
-aTz
-aTz
-aTz
-aSU
-aSV
-aTz
-aWc
+faO
+jPb
+jPb
+jPb
+faO
+lSF
+jPb
+xAI
 aWb
 aSj
 aPH
@@ -78539,17 +78323,17 @@ avs
 aOf
 aOK
 aPJ
-aQC
-aRA
-aSi
-aSV
-aSV
-aSV
-aSV
-aSV
-aSV
-aSV
-aSV
+wxw
+qiR
+oNg
+lSF
+lSF
+lSF
+lSF
+lSF
+lSF
+lSF
+lSF
 aWJ
 aXm
 aPH
@@ -78821,17 +78605,17 @@ avs
 aOf
 aOK
 aPK
-aQD
-aRz
+dfj
+oQI
 aSj
-aSW
-aTA
-aTA
-aTA
-aSW
-aSV
-aTA
-aWd
+gHI
+jFV
+jFV
+jFV
+gHI
+lSF
+jFV
+lxu
 aWe
 aSh
 aPH
@@ -79111,7 +78895,7 @@ aRy
 aRy
 aRy
 aUh
-aSi
+oNg
 aVy
 aWe
 aPH
@@ -81271,16 +81055,16 @@ acz
 acz
 acz
 aeh
-aex
+doO
 aeU
 afs
-aex
-aex
-ags
-aex
+doO
+doO
+xyz
+doO
 ahm
 aeU
-aex
+doO
 aeg
 ajA
 ajT
@@ -81553,7 +81337,7 @@ adj
 adj
 adj
 aeh
-aex
+doO
 aeU
 afq
 aeU
@@ -81562,7 +81346,7 @@ agt
 aeU
 afq
 aeU
-aex
+doO
 aeh
 aeI
 aeI
@@ -81838,10 +81622,10 @@ aei
 agw
 aeW
 afs
-aex
-aex
-ags
-aex
+doO
+doO
+xyz
+doO
 ahm
 afu
 aix
@@ -83341,7 +83125,7 @@ aRE
 aRE
 aRE
 aUn
-aSr
+cBQ
 aVD
 aWk
 aPT
@@ -83615,17 +83399,17 @@ aac
 aOj
 aOY
 aPU
-aQK
-aRF
+mgy
+fkY
 aSq
-aSY
-aTD
-aTD
-aTD
-aSY
-aSZ
-aTD
-aWl
+oIL
+aIW
+aIW
+aIW
+oIL
+mec
+aIW
+sTG
 aWk
 aSs
 aPT
@@ -83897,17 +83681,17 @@ aac
 aOj
 aOZ
 aPV
-aQL
-aRG
-aSr
-aSZ
-aSZ
-aSZ
-aSZ
-aUM
-aSZ
-aSZ
-aSZ
+yfA
+ubd
+cBQ
+mec
+mec
+mec
+mec
+luM
+mec
+mec
+mec
 aWN
 aXu
 aPT
@@ -84179,17 +83963,17 @@ aac
 aOj
 aOZ
 aPW
-aQM
-aRH
+mLJ
+dFm
 aSs
-aTa
-aTE
-aTE
-aTE
-aTa
-aSZ
-aTE
-aWm
+qJe
+dRe
+dRe
+dRe
+qJe
+mec
+dRe
+cbU
 aWn
 aSq
 aPT
@@ -84469,7 +84253,7 @@ aRE
 aRE
 aRE
 aUn
-aSr
+cBQ
 aVD
 aWn
 aPT
@@ -87822,7 +87606,7 @@ amm
 aFE
 aFE
 aFE
-aHB
+iUo
 aFE
 aFE
 aky
@@ -89519,7 +89303,7 @@ amm
 amm
 amm
 amm
-aJe
+xfO
 aJi
 aJi
 aJi
@@ -89566,7 +89350,7 @@ aWp
 aWp
 aWp
 aWQ
-aWq
+aWp
 bbl
 aUP
 aUP
@@ -90684,7 +90468,7 @@ aWp
 aWp
 aWp
 aWp
-aWp
+sto
 aWp
 aWp
 aWp

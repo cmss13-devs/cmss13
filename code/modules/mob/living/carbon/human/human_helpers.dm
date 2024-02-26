@@ -219,18 +219,9 @@
 
 	return 0
 
-
-/mob/living/carbon/human/has_legs()
-	. = 0
-	if(has_limb("r_foot") && has_limb("r_leg"))
-		.++
-	if(has_limb("l_foot") && has_limb("l_leg"))
-		.++
-
 /mob/living/carbon/human/proc/disable_special_flags()
 	status_flags |= CANPUSH
 	anchored = FALSE
-	frozen = FALSE
 
 /mob/living/carbon/human/proc/disable_special_items()
 	set waitfor = FALSE // Scout decloak animation uses sleep(), which is problematic for taser gun
@@ -242,6 +233,10 @@
 			return
 	var/list/cont = contents_recursive()
 	for(var/i in cont)
+		if(istype(i, /obj/item/device/assembly/prox_sensor))
+			var/obj/item/device/assembly/prox_sensor/prox = i
+			if(prox.scanning)
+				prox.toggle_scan()
 		if(istype(i, /obj/item/device/motiondetector))
 			var/obj/item/device/motiondetector/md = i
 			md.toggle_active(src, old_active = TRUE, forced = TRUE)
@@ -252,6 +247,13 @@
 				var/datum/action/item_action/smartgun/toggle_motion_detector/TMD = locate(/datum/action/item_action/smartgun/toggle_motion_detector) in sg.actions
 				TMD.update_icon()
 				sg.motion_detector()
+		if(istype(i, /obj/item/clothing/suit/storage/marine/medium/rto/intel))
+			var/obj/item/clothing/suit/storage/marine/medium/rto/intel/xm4 = i
+			if(xm4.motion_detector)
+				xm4.motion_detector = FALSE
+				var/datum/action/item_action/intel/toggle_motion_detector/TMD = locate(/datum/action/item_action/intel/toggle_motion_detector) in xm4.actions
+				TMD.update_icon()
+				xm4.motion_detector()
 
 /mob/living/carbon/human/proc/disable_headsets()
 	//Disable all radios to reduce radio spam for dead people
@@ -264,15 +266,14 @@
 	var/goes_out = 0
 	if(armor)
 		if(istype(wear_suit, /obj/item/clothing/suit/storage/marine))
-			var/obj/item/clothing/suit/storage/marine/S = wear_suit
-			if(S.turn_off_light(src))
+			if(wear_suit.turn_light(src, toggle_on = FALSE))
 				light_off++
 		for(var/obj/item/clothing/head/helmet/marine/H in contents)
 			for(var/obj/item/attachable/flashlight/FL in H.pockets)
 				if(FL.activate_attachment(H, src, TRUE))
 					light_off++
 		for(var/obj/item/clothing/head/hardhat/headlamp in contents)
-			if(headlamp.turn_off_light(src))
+			if(headlamp.turn_light(src, toggle_on = FALSE))
 				light_off++
 	if(guns)
 		for(var/obj/item/weapon/gun/G in contents)

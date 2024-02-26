@@ -116,7 +116,7 @@
 	},
 /area/event)
 "F" = (
-/obj/effect/landmark/start/marine/rto,
+/obj/effect/landmark/start/marine/tl,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},

@@ -20,7 +20,7 @@
 	if(world.time <= l_move_time + move_delay)
 		return
 	// Redundant check?
-	if(user.is_mob_incapacitated() || user.lying)
+	if(user.is_mob_incapacitated())
 		return
 
 	if(propelled) //can't manually move it mid-propelling.
@@ -103,3 +103,8 @@
 			newdir = EAST
 		B.setDir(newdir)
 	bloodiness--
+
+/obj/structure/bed/chair/wheelchair/do_buckle(mob/target, mob/user)
+	if(ishuman(target) && ishuman(user))
+		ADD_TRAIT(target, TRAIT_USING_WHEELCHAIR, TRAIT_SOURCE_BUCKLE)
+	. = ..()

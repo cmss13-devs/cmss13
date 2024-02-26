@@ -2,18 +2,23 @@
  *	Datum containing methods to allow for the control over multiple door groups.
  */
 /datum/door_controller/aggregate
+	var/label = "dropship"
 	var/list/door_controllers = list()
 	var/allow_multicast = TRUE
 
 /datum/door_controller/aggregate/Destroy(force, ...)
 	. = ..()
-	for(var/i in door_controllers)
-		qdel(i)
+	QDEL_LIST_ASSOC_VAL(door_controllers)
 	door_controllers = null
+
+/datum/door_controller/aggregate/proc/set_label(label)
+	for(var/datum/door_controller/single/cont in door_controllers)
+		cont.label = label
 
 /datum/door_controller/aggregate/proc/add_door(door, direction)
 	if(!door_controllers[direction])
 		var/datum/door_controller/single/new_controller = new()
+		new_controller.label = label
 		new_controller.is_locked = FALSE
 		door_controllers[direction] = new_controller
 
@@ -105,38 +110,49 @@
 			if("force-unlock")
 				INVOKE_ASYNC(src, PROC_REF(force_lock_open_door), door)
 				is_locked = FALSE
+			else
+				CRASH("Unknown door command [action]")
 
 /datum/door_controller/single/proc/lockdown_door_launch(obj/structure/machinery/door/airlock/air)
 	var/list/door_turfs = list(get_turf(air))
 	if(istype(air, /obj/structure/machinery/door/airlock/multi_tile))
 		var/obj/structure/machinery/door/airlock/multi_tile/multi_door = air
-		door_turfs = multi_door.get_filler_turfs()
+		door_turfs = multi_door.locate_filler_turfs()
 	for(var/turf/door_turf in door_turfs)
 		bump_at_turf(door_turf)
 
 	lockdown_door(air)
 
 /datum/door_controller/single/proc/bump_at_turf(turf/door_turf)
-	for(var/mob/blocking_mob in door_turf)
-		if(isliving(blocking_mob))
-			to_chat(blocking_mob, SPAN_HIGHDANGER("You get thrown back as the [label] doors slam shut!"))
-			blocking_mob.apply_effect(4, WEAKEN)
-			for(var/turf/target_turf in orange(1, door_turf)) // Forcemove to a non shuttle turf
-				if(!istype(target_turf, /turf/open/shuttle) && !istype(target_turf, /turf/closed/shuttle))
-					blocking_mob.forceMove(target_turf)
-					break
+	for(var/mob/living/blocking_mob in door_turf)
+		to_chat(blocking_mob, SPAN_HIGHDANGER("You get thrown back as the [label] doors slam shut!"))
+		blocking_mob.KnockDown(4)
+		for(var/turf/target_turf in orange(1, door_turf)) // Forcemove to a non shuttle turf
+			if(!istype(target_turf, /turf/open/shuttle) && !istype(target_turf, /turf/closed/shuttle))
+				blocking_mob.forceMove(target_turf)
+				break
 
-/datum/door_controller/proc/lockdown_door(obj/structure/machinery/door/airlock/air)
-	air.safe = 0
-	air.operating = 0
-	air.unlock(TRUE)
-	air.close(TRUE)
-	air.lock(TRUE)
-	air.safe = 1
+/datum/door_controller/proc/lockdown_door(obj/structure/machinery/door/target)
+	if(istype(target, /obj/structure/machinery/door/airlock))
+		var/obj/structure/machinery/door/airlock/air = target
+		air.safe = 0
+		air.operating = 0
+		air.unlock(TRUE)
+		air.close(TRUE)
+		air.lock(TRUE)
+		air.safe = 1
+	if(istype(target, /obj/structure/machinery/door/poddoor))
+		target.close()
 
-/datum/door_controller/proc/force_lock_open_door(obj/structure/machinery/door/airlock/air)
-	air.safe = 0
-	air.unlock(TRUE)
-	air.open(TRUE)
-	air.lock(TRUE)
-	air.safe = 1
+/datum/door_controller/proc/force_lock_open_door(obj/structure/machinery/door/target)
+	if(istype(target, /obj/structure/machinery/door/airlock))
+		var/obj/structure/machinery/door/airlock/air = target
+		air.safe = 0
+		air.unlock(TRUE)
+		air.open(TRUE)
+		air.lock(TRUE)
+		air.safe = 1
+
+	if(istype(target, /obj/structure/machinery/door/poddoor))
+		target.open()
+

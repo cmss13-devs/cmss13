@@ -184,13 +184,6 @@
 	)
 	result = /obj/item/reagent_container/food/snacks/roburger
 
-/datum/recipe/roburger_unsafe
-	items = list(
-		/obj/item/reagent_container/food/snacks/bun,
-		/obj/item/robot_parts/head,
-	)
-	result = /obj/item/reagent_container/food/snacks/roburger/unsafe
-
 /datum/recipe/clownburger
 	items = list(
 		/obj/item/reagent_container/food/snacks/bun,
@@ -669,6 +662,15 @@
 	)
 	result = /obj/item/reagent_container/food/snacks/waffles
 
+/datum/recipe/pancakes
+	reagents = list("milk" = 5)
+	items = list(
+		/obj/item/reagent_container/food/snacks/doughslice,
+		/obj/item/reagent_container/food/snacks/doughslice,
+		/obj/item/reagent_container/food/snacks/doughslice,
+	)
+	result = /obj/item/reagent_container/food/snacks/pancakes
+
 /datum/recipe/donkpocket
 	items = list(
 		/obj/item/reagent_container/food/snacks/dough,
@@ -760,7 +762,7 @@
 /datum/recipe/syntikabob
 	items = list(
 		/obj/item/stack/rods,
-		/obj/item/reagent_container/food/snacks/meat/syntiflesh,
+		/obj/item/reagent_container/food/snacks/meat/synthmeat,
 	)
 	result = /obj/item/reagent_container/food/snacks/monkeykabob
 

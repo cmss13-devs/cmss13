@@ -18,7 +18,7 @@
 /obj/item/reagent_container/food/snacks/csandwich/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/reagent_container/food/snacks/csandwich))
 		//No sandwitch inception, it causes some bugs...
-		to_chat(user, SPAN_NOTICE(" You can't put a [W] in the [src]."))
+		to_chat(user, SPAN_NOTICE("You can't put \a [W] in [src]."))
 		return
 
 	var/sandwich_limit = 4
@@ -74,7 +74,7 @@
 
 	name = lowertext("[fullname] sandwich")
 	if(length(name) > 80) name = "[pick(list("absurd","colossal","enormous","ridiculous"))] sandwich"
-	w_class = n_ceil(Clamp((ingredients.len/2),1,3))
+	w_class = Ceiling(clamp((ingredients.len/2),1,3))
 
 /obj/item/reagent_container/food/snacks/csandwich/Destroy()
 	QDEL_NULL_LIST(ingredients)

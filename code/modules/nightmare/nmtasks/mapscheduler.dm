@@ -28,8 +28,6 @@
 
 	for(var/turf/T as anything in tainted)
 		var/area/A = T.loc
-		if(!A?.lighting_use_dynamic)
+		if(!A?.area_has_base_lighting)
 			continue
-		T.cached_lumcount = -1 // Invalidate lumcount to force update here
-		T.lighting_changed = TRUE
-		SSlighting.changed_turfs += T
+		T.update_light()

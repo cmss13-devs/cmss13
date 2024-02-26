@@ -4,8 +4,8 @@
 
 
 /datum/keybinding/client/admin_help
-	hotkey_keys = list("F1")
-	classic_keys = list("F1")
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
 	name = "admin_help"
 	full_name = "Admin Help"
 	description = "Ask an admin for help."

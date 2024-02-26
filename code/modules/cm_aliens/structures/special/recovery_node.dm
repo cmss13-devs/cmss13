@@ -5,7 +5,7 @@
 	desc = "A warm, soothing light source that pulsates with a faint hum."
 	icon_state = "recovery"
 	health = 400
-	var/heal_amount = 10
+	var/heal_amount = 20
 	var/heal_cooldown = 5 SECONDS
 	var/last_healed
 

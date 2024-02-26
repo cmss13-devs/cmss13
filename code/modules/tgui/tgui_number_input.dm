@@ -31,7 +31,7 @@
 		qdel(number_input)
 
 ///A clone of tgui_input_number that defaults to accepting negative inputs too.
-/proc/tgui_input_real_number(mob/user, message, title = "Number Input", default = 0, max_value = 16777216, min_value = -16777216, timeout = 0, integer_only = FALSE)
+/proc/tgui_input_real_number(mob/user, message, title = "Number Input", default = 0, max_value = SHORT_REAL_LIMIT, min_value = -SHORT_REAL_LIMIT, timeout = 0, integer_only = FALSE)
 	return tgui_input_number(user, message, title, default, max_value, min_value, timeout, integer_only)
 /**
  * Creates an asynchronous TGUI number input window with an associated callback.
@@ -145,6 +145,7 @@
 		"min_value" = min_value,
 		"preferences" = list(),
 		"title" = title,
+		"integer_only" = integer_only
 	)
 
 /datum/tgui_input_number/ui_data(mob/user)
@@ -158,11 +159,13 @@
 		return
 	switch(action)
 		if("submit")
-			if(!isnum(params["entry"]))
-				CRASH("A non number was input into tgui input number by [usr]")
 			var/choice = params["entry"]
+			if(!isnum(choice))
+				CRASH("A non number was input into tgui input number by [usr]")
+			if(choice != choice) //isnan
+				CRASH("A NaN was input into tgui input number by [usr]")
 			if(integer_only)
-				choice = round(params["entry"])
+				choice = round(choice)
 			if(choice > max_value)
 				CRASH("A number greater than the max value was input into tgui input number by [usr]")
 			if(choice < min_value)

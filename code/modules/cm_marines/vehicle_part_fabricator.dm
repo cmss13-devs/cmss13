@@ -119,14 +119,17 @@
 	valid_parts = /obj/structure/dropship_equipment
 	valid_ammo = /obj/structure/ship_ammo
 
+	unslashable = TRUE
+	unacidable = TRUE
+
 /obj/structure/machinery/part_fabricator/dropship/get_point_store()
-	return supply_controller.dropship_points
+	return GLOB.supply_controller.dropship_points
 
 /obj/structure/machinery/part_fabricator/dropship/add_to_point_store(number = 1)
-	supply_controller.dropship_points += number
+	GLOB.supply_controller.dropship_points += number
 
 /obj/structure/machinery/part_fabricator/dropship/spend_point_store(number = 1)
-	supply_controller.dropship_points -= number
+	GLOB.supply_controller.dropship_points -= number
 
 /obj/structure/machinery/part_fabricator/dropship/ui_static_data(mob/user)
 	var/list/static_data = list()
@@ -227,13 +230,13 @@
 	indestructible = TRUE
 
 /obj/structure/machinery/part_fabricator/tank/get_point_store()
-	return supply_controller.tank_points
+	return GLOB.supply_controller.tank_points
 
 /obj/structure/machinery/part_fabricator/tank/add_to_point_store(number = 1)
-	supply_controller.tank_points += number
+	GLOB.supply_controller.tank_points += number
 
 /obj/structure/machinery/part_fabricator/tank/spend_point_store(number = 1)
-	supply_controller.tank_points -= number
+	GLOB.supply_controller.tank_points -= number
 
 /obj/structure/machinery/part_fabricator/tank/ui_static_data(mob/user)
 	var/list/static_data = list()

@@ -28,6 +28,10 @@
 	var/message = tgui_input_text(user, "Shout a message?", "Megaphone", multiline = TRUE)
 	if(!message)
 		return
+	// we know user is a human now, so adjust user for this check
+	var/mob/living/carbon/human/humanoid = user
+	var/list/new_message = humanoid.handle_speech_problems(message)
+	message = new_message[1]
 	message = capitalize(message)
 	log_admin("[key_name(user)] used a megaphone to say: >[message]<")
 

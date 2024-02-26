@@ -47,8 +47,8 @@
 
 /obj/structure/pipes/standard/cap
 	name = "pipe endcap"
-	desc = "An endcap for pipes"
-	icon = 'icons/obj/pipes/pipes.dmi'
+	desc = "An endcap for pipes."
+	icon = 'icons/obj/pipes/pipes3.dmi'
 	icon_state = ""
 	level = 2
 	dir = SOUTH
@@ -72,14 +72,14 @@
 
 /obj/structure/pipes/standard/cap/visible/scrubbers
 	name = "scrubbers pipe endcap"
-	desc = "An endcap for scrubbers pipes"
+	desc = "An endcap for scrubbers pipes."
 	icon_state = "cap-scrubbers"
 	layer = ATMOS_PIPE_SCRUBBER_LAYER
 	color = PIPE_COLOR_RED
 
 /obj/structure/pipes/standard/cap/visible/supply
 	name = "supply pipe endcap"
-	desc = "An endcap for supply pipes"
+	desc = "An endcap for supply pipes."
 	icon_state = "cap-supply"
 	layer = ATMOS_PIPE_SUPPLY_LAYER
 	color = PIPE_COLOR_BLUE
@@ -95,17 +95,21 @@
 
 /obj/structure/pipes/standard/cap/hidden/scrubbers
 	name = "scrubbers pipe endcap"
-	desc = "An endcap for scrubbers pipes"
+	desc = "An endcap for scrubbers pipes."
 	icon_state = "cap-f-scrubbers"
 	layer = ATMOS_PIPE_SCRUBBER_LAYER
 	color = PIPE_COLOR_RED
 
 /obj/structure/pipes/standard/cap/hidden/supply
 	name = "supply pipe endcap"
-	desc = "An endcap for supply pipes"
+	desc = "An endcap for supply pipes."
 	icon_state = "cap-f-supply"
 	layer = ATMOS_PIPE_SUPPLY_LAYER
 	color = PIPE_COLOR_BLUE
+
+/obj/structure/pipes/standard/cap/hidden/supply/no_boom
+	name = "reinforced supply pipe endcap"
+	explodey = FALSE
 
 
 /obj/structure/pipes/standard/tank

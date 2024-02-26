@@ -31,9 +31,11 @@
 			air.breakable = FALSE
 			air.indestructible = TRUE
 			air.unacidable = TRUE
+	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(on_dir_change))
 
 /obj/docking_port/mobile/emergency_response/enterTransit()
 	control_doors("force-lock-launch", force = TRUE, external_only = TRUE)
+	UnregisterSignal(src, COMSIG_ATOM_DIR_CHANGE)
 	..()
 
 /obj/docking_port/mobile/emergency_response/proc/control_doors(action, force = FALSE, external_only = FALSE)
@@ -61,14 +63,13 @@
 				INVOKE_ASYNC(src, PROC_REF(lockdown_door_launch), door)
 
 /obj/docking_port/mobile/emergency_response/proc/lockdown_door_launch(obj/structure/machinery/door/airlock/air)
-	for(var/mob/blocking_mob in air.loc) // Bump all mobs outta the way for outside airlocks of shuttles
-		if(isliving(blocking_mob))
-			to_chat(blocking_mob, SPAN_HIGHDANGER("You get thrown back as the dropship doors slam shut!"))
-			blocking_mob.apply_effect(4, WEAKEN)
-			for(var/turf/target_turf in orange(1, air)) // Forcemove to a non shuttle turf
-				if(!istype(target_turf, /turf/open/shuttle) && !istype(target_turf, /turf/closed/shuttle))
-					blocking_mob.forceMove(target_turf)
-					break
+	for(var/mob/living/blocking_mob in air.loc) // Bump all mobs outta the way for outside airlocks of shuttles
+		to_chat(blocking_mob, SPAN_HIGHDANGER("You get thrown back as the dropship doors slam shut!"))
+		blocking_mob.KnockDown(4)
+		for(var/turf/target_turf in orange(1, air)) // Forcemove to a non shuttle turf
+			if(!istype(target_turf, /turf/open/shuttle) && !istype(target_turf, /turf/closed/shuttle))
+				blocking_mob.forceMove(target_turf)
+				break
 	lockdown_door(air)
 
 /obj/docking_port/mobile/emergency_response/proc/lockdown_door(obj/structure/machinery/door/airlock/air)
@@ -78,10 +79,10 @@
 	air.lock()
 	air.safe = 1
 
-/obj/docking_port/mobile/emergency_response/setDir(newdir)
-	. = ..()
+/obj/docking_port/mobile/emergency_response/proc/on_dir_change(datum/source, old_dir, new_dir)
+	SIGNAL_HANDLER
 	for(var/obj/structure/machinery/door/shuttle_door in doors)
-		shuttle_door.handle_multidoor()
+		shuttle_door.handle_multidoor(old_dir, new_dir)
 
 // ERT Shuttle 1
 /obj/docking_port/mobile/emergency_response/ert1
@@ -105,6 +106,13 @@
 	port_direction = NORTH
 
 // ERT Shuttle 4
+
+/obj/docking_port/mobile/emergency_response/ert4
+	name = "TWE Shuttle"
+	id = MOBILE_SHUTTLE_ID_ERT4
+	preferred_direction = SOUTH
+	port_direction = NORTH
+
 /obj/docking_port/mobile/emergency_response/small
 	name = "Rescue Shuttle"
 	id = MOBILE_SHUTTLE_ID_ERT_SMALL
@@ -114,6 +122,7 @@
 	height = 9
 	var/port_door
 	var/starboard_door
+
 
 /obj/docking_port/mobile/emergency_response/small/Initialize(mapload)
 	. = ..()
@@ -247,7 +256,7 @@
 	width  = 17
 	height = 29
 	airlock_id = "s_umbilical"
-	airlock_area = /area/almayer/hallways/port_umbilical
+	airlock_area = /area/almayer/hallways/lower/port_umbilical
 
 /obj/docking_port/stationary/emergency_response/external/hangar_starboard
 	name = "Almayer hanger starboard external airlock"
@@ -256,7 +265,7 @@
 	width  = 17
 	height = 29
 	airlock_id = "n_umbilical"
-	airlock_area = /area/almayer/hallways/starboard_umbilical
+	airlock_area = /area/almayer/hallways/lower/starboard_umbilical
 
 // These are docking ports not on the almayer
 /obj/docking_port/stationary/emergency_response/idle_port1
@@ -293,6 +302,14 @@
 	height = 29
 	roundstart_template = /datum/map_template/shuttle/big_ert
 
+/obj/docking_port/stationary/emergency_response/idle_port6
+	name = "Response Station Landing Pad 6"
+	dir = NORTH
+	id = ADMIN_LANDING_PAD_5
+	width  = 17
+	height = 29
+	roundstart_template = /datum/map_template/shuttle/twe_ert
+
 /datum/map_template/shuttle/response_ert
 	name = "Response Shuttle"
 	shuttle_id = "ert_response_shuttle"
@@ -304,6 +321,10 @@
 /datum/map_template/shuttle/upp_ert
 	name = "UPP Shuttle"
 	shuttle_id = "ert_upp_shuttle"
+
+/datum/map_template/shuttle/twe_ert
+	name = "TWE Shuttle"
+	shuttle_id = "ert_twe_shuttle"
 
 /datum/map_template/shuttle/small_ert
 	name = "Rescue Shuttle"

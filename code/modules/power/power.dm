@@ -51,21 +51,21 @@
 	// return 1
 
 	var/area/A = src.loc.loc // make sure it's in an area
-	if(!A || !isarea(A) || !A.master)
+	if(!A || !isarea(A))
 		return 0 // if not, then not powered
 	if(chan == -1)
 		chan = power_channel
-	return A.master.powered(chan) // return power status of the area
+	return A.powered(chan) // return power status of the area
 
 // increment the power usage stats for an area
 
 /obj/structure/machinery/proc/use_power(amount, chan = POWER_CHANNEL_ONEOFF, autocalled = 0) // defaults to one-off power charge, not constant power change
 	var/area/A = get_area(src) // make sure it's in an area
-	if(!A || !isarea(A) || !A.master)
+	if(!A || !isarea(A))
 		return
-	A.master.use_power(amount, chan)
+	A.use_power(amount, chan)
 	if(!autocalled)
-		log_power_update_request(A.master, src)
+		log_power_update_request(A, src)
 	return 1
 
 //The master_area optional argument can be used to save on a lot of processing if the master area is already known. This is mainly intended for when this proc is called by the master controller.
@@ -81,13 +81,13 @@
 	if(has_power || !src.needs_power)
 		if(machine_processing)
 			if(stat & NOPOWER)
-				addToListNoDupe(processing_machines, src) // power interupted us, start processing again
+				addToListNoDupe(GLOB.processing_machines, src) // power interrupted us, start processing again
 		stat &= ~NOPOWER
 		src.update_use_power(USE_POWER_IDLE)
 
 	else
 		if(machine_processing)
-			processing_machines -= src // no power, can't process.
+			GLOB.processing_machines -= src // no power, can't process.
 		stat |= NOPOWER
 		src.update_use_power(USE_POWER_NONE)
 
@@ -97,19 +97,19 @@
 
 // rebuild all power networks from scratch
 /proc/makepowernets()
-	for(var/datum/powernet/PN in powernets)
+	for(var/datum/powernet/PN in GLOB.powernets)
 		del(PN) //not qdel on purpose, powernet is still using del.
-	powernets.Cut()
+	GLOB.powernets.Cut()
 
-	for(var/area/A in all_areas)
-		if(powernets_by_name[A.powernet_name])
+	for(var/area/A in GLOB.all_areas)
+		if(GLOB.powernets_by_name[A.powernet_name])
 			continue
 		var/datum/powernet/PN = new()
 		PN.powernet_name = A.powernet_name
-		powernets += PN
-		powernets_by_name[A.powernet_name] = PN
+		GLOB.powernets += PN
+		GLOB.powernets_by_name[A.powernet_name] = PN
 
-	for(var/obj/structure/machinery/power/M in machines)
+	for(var/obj/structure/machinery/power/M in GLOB.machines)
 		M.connect_to_network()
 
 	return 1
@@ -222,7 +222,7 @@
 
 	var/cdir
 
-	for(var/card in cardinal)
+	for(var/card in GLOB.cardinals)
 		var/turf/T = get_step(loc,card)
 		cdir = get_dir(T,loc)
 
@@ -250,7 +250,7 @@
 	var/area/A = get_area(src)
 	if(!A)
 		return 0
-	var/datum/powernet/PN = powernets_by_name[A.powernet_name]
+	var/datum/powernet/PN = GLOB.powernets_by_name[A.powernet_name]
 	if(!PN)
 		return 0
 	powernet = PN
@@ -274,10 +274,9 @@
 	return null
 
 /area/proc/get_apc()
-	for(var/area/RA in src.related)
-		var/obj/structure/machinery/power/apc/FINDME = locate() in RA
-		if (FINDME)
-			return FINDME
+	var/obj/structure/machinery/power/apc/FINDME = locate() in src
+	if (FINDME)
+		return FINDME
 
 
 //Determines how strong could be shock, deals damage to mob, uses power.

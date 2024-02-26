@@ -92,12 +92,12 @@
 
 /atom/movable/proc/Moved(atom/oldloc, direction, Forced = FALSE)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, oldloc, direction, Forced)
-	if (isturf(loc))
-		if (opacity)
-			oldloc.UpdateAffectingLights()
-		else
-			if (light)
-				light.changed()
+	for(var/datum/dynamic_light_source/light as anything in hybrid_light_sources)
+		light.source_atom.update_light()
+		if(!isturf(loc))
+			light.find_containing_atom()
+	for(var/datum/static_light_source/L as anything in static_light_sources) // Cycle through the light sources on this atom and tell them to update.
+		L.source_atom.static_update_light()
 	return TRUE
 
 /atom/movable/proc/forceMove(atom/destination)

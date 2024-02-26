@@ -28,7 +28,7 @@
 	desc = "You were a product of an experimental military programme that sought to breed the perfect supersoldier. In some aspects, they've succeeded."
 
 /datum/origin/uscm/aw/generate_human_name(gender = MALE)
-	return pick(gender == MALE ? first_names_male : first_names_female) + " A.W. " + pick(weapon_surnames)
+	return pick(gender == MALE ? GLOB.first_names_male : GLOB.first_names_female) + " A.W. " + pick(GLOB.weapon_surnames)
 
 /datum/origin/uscm/aw/validate_name(name_to_check)
 	if(!findtext(name_to_check, "A.W. "))

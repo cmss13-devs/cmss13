@@ -5,6 +5,11 @@
 	var/last_known_ip
 	var/last_known_cid
 
+	var/whitelist_status
+	var/whitelist_flags
+
+	var/discord_link_id
+
 	var/last_login
 
 	var/is_permabanned = FALSE
@@ -37,6 +42,7 @@
 	var/migrating_bans = FALSE
 	var/migrating_jobbans = FALSE
 
+	var/datum/entity/discord_link/discord_link
 	var/datum/entity/player/permaban_admin
 	var/datum/entity/player/time_ban_admin
 	var/list/datum/entity/player_note/notes
@@ -60,6 +66,8 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		"is_permabanned" = DB_FIELDTYPE_INT,
 		"permaban_reason" = DB_FIELDTYPE_STRING_MAX,
 		"permaban_date" = DB_FIELDTYPE_STRING_LARGE,
+		"whitelist_status" = DB_FIELDTYPE_STRING_MAX,
+		"discord_link_id" = DB_FIELDTYPE_BIGINT,
 		"permaban_admin_id" = DB_FIELDTYPE_BIGINT,
 		"is_time_banned" = DB_FIELDTYPE_INT,
 		"time_ban_reason" = DB_FIELDTYPE_STRING_MAX,
@@ -89,11 +97,11 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 			notes_add(ckey, note_text, admin.mob)
 	else
 		// notes_add already sends a message
-		message_admins("[key_name_admin(admin.mob)] has edited [ckey]'s [note_categories[note_category]] notes: [sanitize(note_text)]")
+		message_admins("[key_name_admin(admin.mob)] has edited [ckey]'s [GLOB.note_categories[note_category]] notes: [sanitize(note_text)]")
 	if(!is_confidential && note_category == NOTE_ADMIN && owning_client)
 		to_chat_immediate(owning_client, SPAN_WARNING(FONT_SIZE_LARGE("You have been noted by [key_name_admin(admin.mob, FALSE)].")))
 		to_chat_immediate(owning_client, SPAN_WARNING(FONT_SIZE_BIG("The note is : [sanitize(note_text)]")))
-		to_chat_immediate(owning_client, SPAN_WARNING(FONT_SIZE_BIG("If you believe this was filed in error or misplaced, make a staff report at <a href='[URL_FORUM_STAFF_REPORT]'><b>The CM Forums</b></a>")))
+		to_chat_immediate(owning_client, SPAN_WARNING(FONT_SIZE_BIG("If you believe this was filed in error or misplaced, make a staff report at <a href='[CONFIG_GET(string/staffreport)]'><b>The CM Forums</b></a>")))
 		to_chat_immediate(owning_client, SPAN_WARNING(FONT_SIZE_BIG("You can also click the name of the staff member noting you to PM them.")))
 	// create new instance of player_note entity
 	var/datum/entity/player_note/note = DB_ENTITY(/datum/entity/player_note)
@@ -101,6 +109,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	note.player_id = id
 	note.text = note_text
 	note.date = "[time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")]"
+	note.round_id = GLOB.round_id
 	note.is_confidential = is_confidential
 	note.note_category = note_category
 	note.is_ban = is_ban
@@ -133,6 +142,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	message_admins("[key_name_admin(admin)] deleted one of [ckey]'s notes.")
 	// get note from our list
 	var/datum/entity/player_note/note = DB_ENTITY(/datum/entity/player_note, note_id)
+	log_admin("Note: [note.text] by [note.admin]")
 	// de-list it
 	notes.Remove(note)
 	// murder it
@@ -229,7 +239,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 			if(job_bans[safe_rank])
 				continue
 			var/old_rank = check_jobban_path(safe_rank)
-			jobban_keylist[old_rank][ckey] = ban_text
+			GLOB.jobban_keylist[old_rank][ckey] = ban_text
 			jobban_savebanfile()
 
 	add_note("Banned from [total_rank] - [ban_text]", FALSE, NOTE_ADMIN, TRUE, duration) // it is ban related note
@@ -295,6 +305,36 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 
 	return TRUE
 
+/// Permanently bans this user, with the provided reason. The banner ([/datum/entity/player]) argument is optional, as this can be done without admin intervention.
+/datum/entity/player/proc/add_perma_ban(reason, internal_reason, datum/entity/player/banner)
+	if(is_permabanned)
+		return FALSE
+
+	is_permabanned = TRUE
+	permaban_date = "[time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")]"
+	permaban_reason = reason
+
+	if(banner)
+		permaban_admin_id = banner.id
+		message_admins("[key_name_admin(banner.owning_client)] has permanently banned [ckey] for '[reason]'.")
+		var/datum/tgs_chat_embed/field/reason_embed
+		if(internal_reason)
+			reason_embed = new("Permaban Reason", internal_reason)
+		important_message_external("[banner.owning_client] has permanently banned [ckey] for '[reason]'.", "Permaban Placed", reason_embed ? list(reason_embed) : null)
+
+		add_note("Permanently banned | [reason]", FALSE, NOTE_ADMIN, TRUE)
+		if(internal_reason)
+			add_note("Internal reason: [internal_reason]", TRUE, NOTE_ADMIN)
+
+	if(owning_client)
+		to_chat_forced(owning_client, SPAN_LARGE("<big><b>You have been permanently banned by [banner.ckey].\nReason: [reason].</b></big>"))
+		to_chat_forced(owning_client, SPAN_LARGE("This is a permanent ban. It will not be removed."))
+		QDEL_NULL(owning_client)
+
+	save()
+
+	return TRUE
+
 /datum/entity/player/proc/auto_unban()
 	if(!is_time_banned)
 		return
@@ -314,20 +354,6 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		if(value.ban_time && time_left < 0)
 			value.delete()
 			job_bans -= value
-
-/datum/entity/player/proc/load_refs()
-	if(refs_loaded)
-		return
-	while(!notes_loaded || !jobbans_loaded)
-		stoplag()
-	for(var/key in job_bans)
-		var/datum/entity/player_job_ban/value = job_bans[key]
-		if(istype(value))
-			value.load_refs()
-	for(var/datum/entity/player_note/note in notes)
-		if(istype(note))
-			note.load_refs()
-	refs_loaded = TRUE
 
 /datum/entity_meta/player/on_read(datum/entity/player/player)
 	player.job_bans = list()
@@ -382,8 +408,15 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		permaban_admin = DB_ENTITY(/datum/entity/player, permaban_admin_id)
 	if(time_ban_admin_id)
 		time_ban_admin = DB_ENTITY(/datum/entity/player, time_ban_admin_id)
+	if(discord_link_id)
+		discord_link = DB_ENTITY(/datum/entity/discord_link, discord_link_id)
 
+	if(whitelist_status)
+		var/list/whitelists = splittext(whitelist_status, "|")
 
+		for(var/whitelist in whitelists)
+			if(whitelist in GLOB.bitfields["whitelist_status"])
+				whitelist_flags |= GLOB.bitfields["whitelist_status"]["[whitelist]"]
 
 /datum/entity/player/proc/on_read_notes(list/datum/entity/player_note/_notes)
 	notes_loaded = TRUE
@@ -444,54 +477,45 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	record_login_triplet(player.ckey, address, computer_id)
 	player_data.sync()
 
-/datum/entity/player/proc/check_ban(computer_id, address)
+/datum/entity/player/proc/check_ban(computer_id, address, is_telemetry)
 	. = list()
 
-	var/list/linked_bans = check_for_sticky_ban(address, computer_id)
-	if(islist(linked_bans))
-		var/datum/view_record/stickyban_list_view/SLW = LAZYACCESS(linked_bans, 1)
-		if(SLW)
-			var/reason = ""
+	var/list/datum/view_record/stickyban/all_stickies = SSstickyban.check_for_sticky_ban(ckey, address, computer_id)
 
-			if(SLW.address == address)
-				reason += "IP Address Matches; "
-			if(SLW.computer_id == computer_id)
-				reason += "CID Matches; "
-			if(SLW.ckey == ckey)
-				reason += "Ckey Matches; "
+	if(length(all_stickies))
+		var/datum/view_record/stickyban/sticky = all_stickies[1]
 
-			var/source_id = SLW.linked_stickyban
-			var/source_reason = SLW.linked_reason
-			var/source_ckey = SLW.linked_ckey
-			if(!source_id)
-				source_id = "[SLW.entry_id]"
-				source_reason = SLW.reason
-				source_ckey = SLW.ckey
+		if(!is_telemetry)
+			log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Stickybanned (Reason: [sticky.reason])")
+			message_admins("Failed Login: [ckey] (IP: [last_known_ip], CID: [last_known_cid]) - Stickybanned (Reason: [sticky.reason])")
 
-			log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Stickybanned (Linked to [source_ckey]; Reason: [source_reason])")
-			message_admins("Failed Login: [ckey] (IP: [last_known_ip], CID: [last_known_cid]) - Stickybanned (Linked to ckey [source_ckey]; Reason: [source_reason])")
+		var/appeal
+		if(CONFIG_GET(string/banappeals))
+			appeal = "\nFor more information on your ban, or to appeal, head to <a href='[CONFIG_GET(string/banappeals)]'>[CONFIG_GET(string/banappeals)]</a>"
 
-			DB_FILTER(/datum/entity/player_sticky_ban,
-				DB_AND(
-					DB_COMP("ckey", DB_EQUALS, ckey),
-					DB_COMP("address", DB_EQUALS, address),
-					DB_COMP("computer_id", DB_EQUALS, computer_id)
-				), CALLBACK(src, PROC_REF(process_stickyban), address, computer_id, source_id, reason, null))
+		.["desc"] = "\nReason: Stickybanned - [sticky.message] Identifier: [sticky.identifier]\n[appeal]"
+		.["reason"] = "ckey/id"
 
-			.["desc"] = "\nReason: Stickybanned\nExpires: PERMANENT"
-			.["reason"] = "ckey/id"
-			return .
+		if(!is_telemetry)
+			SSstickyban.match_sticky(sticky.id, ckey, address, computer_id)
+		return
+
 
 	if(!is_time_banned && !is_permabanned)
 		return null
+
 	var/appeal
 	if(CONFIG_GET(string/banappeals))
 		appeal = "\nFor more information on your ban, or to appeal, head to <a href='[CONFIG_GET(string/banappeals)]'>[CONFIG_GET(string/banappeals)]</a>"
 	if(is_permabanned)
-		permaban_admin.sync()
-		log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Banned [permaban_reason]")
-		message_admins("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [permaban_reason]")
-		.["desc"] = "\nReason: [permaban_reason]\nExpires: <B>PERMANENT</B>\nBy: [permaban_admin.ckey][appeal]"
+		var/banner = "Host"
+		if(permaban_admin_id)
+			var/datum/view_record/players/banning_admin = locate() in DB_VIEW(/datum/view_record/players, DB_COMP("id", DB_EQUALS, permaban_admin_id))
+			banner = banning_admin.ckey
+		if(!is_telemetry)
+			log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Banned [permaban_reason]")
+			message_admins("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [permaban_reason]")
+		.["desc"] = "\nReason: [permaban_reason]\nExpires: <B>PERMANENT</B>\nBy: [banner][appeal]"
 		.["reason"] = "ckey/id"
 		return .
 	if(is_time_banned)
@@ -506,8 +530,9 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 			timeleftstring = "[round(time_left / 60, 0.1)] Hours"
 		else
 			timeleftstring = "[time_left] Minutes"
-		log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Banned [time_ban_reason]")
-		message_admins("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [time_ban_reason]")
+		if(!is_telemetry)
+			log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Banned [time_ban_reason]")
+			message_admins("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [time_ban_reason]")
 		.["desc"] = "\nReason: [time_ban_reason]\nExpires: [timeleftstring]\nBy: [time_ban_admin.ckey][appeal]"
 		.["reason"] = "ckey/id"
 		return .
@@ -562,33 +587,33 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	save()
 
 /datum/entity/player/proc/migrate_bans()
-	if(!Banlist) // if Banlist cannot be located for some reason
+	if(!GLOB.Banlist) // if GLOB.Banlist cannot be located for some reason
 		LoadBans() // try to load the bans
-		if(!Banlist) // uh oh, can't find bans!
+		if(!GLOB.Banlist) // uh oh, can't find bans!
 			return
 
 	var/reason
 	var/expiration
 	var/banned_by
 
-	Banlist.cd = "/base"
+	GLOB.Banlist.cd = "/base"
 
-	for (var/A in Banlist.dir)
-		Banlist.cd = "/base/[A]"
+	for (var/A in GLOB.Banlist.dir)
+		GLOB.Banlist.cd = "/base/[A]"
 
-		if(ckey != Banlist["key"])
+		if(ckey != GLOB.Banlist["key"])
 			continue
 
-		if(Banlist["temp"])
-			if (!GetExp(Banlist["minutes"]))
+		if(GLOB.Banlist["temp"])
+			if (!GetExp(GLOB.Banlist["minutes"]))
 				return
 
-		if(expiration > Banlist["minutes"])
+		if(expiration > GLOB.Banlist["minutes"])
 			return // found longer ban
 
-		reason = Banlist["reason"]
-		banned_by = Banlist["bannedby"]
-		expiration = Banlist["minutes"]
+		reason = GLOB.Banlist["reason"]
+		banned_by = GLOB.Banlist["bannedby"]
+		expiration = GLOB.Banlist["minutes"]
 
 	migrated_bans = TRUE
 	save()
@@ -611,13 +636,13 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 /datum/entity/player/proc/migrate_jobbans()
 	if(!job_bans)
 		job_bans = list()
-	for(var/name in RoleAuthority.roles_for_mode)
+	for(var/name in GLOB.RoleAuthority.roles_for_mode)
 		var/safe_job_name = ckey(name)
-		if(!jobban_keylist[safe_job_name])
+		if(!GLOB.jobban_keylist[safe_job_name])
 			continue
 		if(!safe_job_name)
 			continue
-		var/reason = jobban_keylist[safe_job_name][ckey]
+		var/reason = GLOB.jobban_keylist[safe_job_name][ckey]
 		if(!reason)
 			continue
 
@@ -649,6 +674,23 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		stat.stat_number += num
 	stat.save()
 
+/datum/entity/player/proc/check_whitelist_status(flag_to_check)
+	if(whitelist_flags & flag_to_check)
+		return TRUE
+
+	return FALSE
+
+/datum/entity/player/proc/set_whitelist_status(field_to_set)
+	whitelist_flags = field_to_set
+
+	var/list/output = list()
+	for(var/bitfield in GLOB.bitfields["whitelist_status"])
+		if(field_to_set & GLOB.bitfields["whitelist_status"]["[bitfield]"])
+			output += bitfield
+	whitelist_status = output.Join("|")
+
+	save()
+
 /datum/entity_link/player_to_banning_admin
 	parent_entity = /datum/entity/player
 	child_entity = /datum/entity/player
@@ -661,13 +703,13 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	parent_entity = /datum/entity/player
 	child_entity = /datum/entity/player
 	child_field = "permaban_admin_id"
-
 	parent_name = "permabanning_admin"
 
-/datum/view_record/player_ban_view
+/datum/view_record/players
 	var/id
 	var/ckey
 	var/is_permabanned
+	var/is_time_banned
 	var/ban_type
 	var/reason
 	var/date
@@ -675,19 +717,24 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	var/admin
 	var/last_known_cid
 	var/last_known_ip
+	var/discord_link_id
+	var/whitelist_status
 
-/datum/entity_view_meta/timed_ban_list
+/datum/entity_view_meta/players
 	root_record_type = /datum/entity/player
-	destination_entity = /datum/view_record/player_ban_view
+	destination_entity = /datum/view_record/players
 	fields = list(
 		"id",
 		"ckey",
 		"is_permabanned", // this one for the machine
+		"is_time_banned",
 		"ban_type" = DB_CASE(DB_COMP("is_permabanned", DB_EQUALS, 1), DB_CONST("permaban"), DB_CONST("timed ban")), // this one is readable
 		"reason" = DB_CASE(DB_COMP("is_permabanned", DB_EQUALS, 1), "permaban_reason", "time_ban_reason"),
 		"date" = DB_CASE(DB_COMP("is_permabanned", DB_EQUALS, 1), "permaban_date", "time_ban_date"),
 		"expiration" = "time_ban_expiration", //don't care if this is permaban, since it will be handled later
 		"admin" = DB_CASE(DB_COMP("is_permabanned", DB_EQUALS, 1), "permabanning_admin.ckey", "banning_admin.ckey"),
 		"last_known_ip",
-		"last_known_cid")
-	root_filter = DB_OR(DB_COMP("is_permabanned", DB_EQUALS, 1), DB_COMP("is_time_banned", DB_EQUALS, 1))
+		"last_known_cid",
+		"discord_link_id",
+		"whitelist_status"
+		)

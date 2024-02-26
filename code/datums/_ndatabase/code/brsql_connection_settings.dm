@@ -30,13 +30,14 @@
 
 /datum/db/connection_settings/brsql/New(list/config)
 	..()
-	ipaddress = config["db_address"]
-	port = text2num(config["db_port"])
-	username = config["db_username"]
-	password = config["db_password"]
-	db = config["db_database"]
-	min_threads = text2num(config["db_min_threads"] || "1")
-	max_threads = text2num(config["db_max_threads"] || "100")
+
+	ipaddress = CONFIG_GET(string/db_address)
+	port = CONFIG_GET(number/db_port)
+	username = CONFIG_GET(string/db_username)
+	password = CONFIG_GET(string/db_password)
+	db = CONFIG_GET(string/db_database)
+	min_threads = CONFIG_GET(number/db_min_threads)
+	max_threads = CONFIG_GET(number/db_max_threads)
 
 /datum/db/connection_settings/brsql/create_connection()
 	var/datum/db/connection/brsql_connection/connection = new()

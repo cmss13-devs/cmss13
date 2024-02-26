@@ -42,6 +42,9 @@ SUBSYSTEM_DEF(nightmare)
 	// this is the only way i've found to make this work, other than going
 	// full cooperative scheduling with the tasks / a ticking SS
 
+	if(!initialized)
+		message_admins("Nightmare subsystem is performing prepare_game prior to initialization! No nightmare inserts will be loaded.")
+
 	if(stat == NIGHTMARE_STATUS_DONE)
 		return TRUE
 	if(stat == NIGHTMARE_STATUS_RUNNING)

@@ -29,6 +29,8 @@
 
 	cause_data = create_cause_data("resin trap", X)
 	set_hive_data(src, hivenumber)
+	if(hivenumber == XENO_HIVE_NORMAL)
+		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
 /obj/effect/alien/resin/trap/Initialize()
 	. = ..()
@@ -53,6 +55,14 @@
 		if(RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
 			. += "It's filled with pressurised acid."
 
+/obj/effect/alien/resin/trap/proc/forsaken_handling()
+	SIGNAL_HANDLER
+	if(is_ground_level(z))
+		hivenumber = XENO_HIVE_FORSAKEN
+		set_hive_data(src, XENO_HIVE_FORSAKEN)
+
+	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
+
 /obj/effect/alien/resin/trap/proc/facehugger_die()
 	var/obj/item/clothing/mask/facehugger/FH = new (loc)
 	FH.die()
@@ -75,7 +85,7 @@
 			trigger_trap(TRUE)
 	..()
 
-/obj/effect/alien/resin/trap/bullet_act(obj/item/projectile/P)
+/obj/effect/alien/resin/trap/bullet_act(obj/projectile/P)
 	var/mob/living/carbon/xenomorph/X = P.firer
 	if(istype(X) && HIVE_ALLIED_TO_HIVE(X.hivenumber, hivenumber))
 		return
@@ -96,7 +106,7 @@
 				var/mob/living/carbon/human/H = AM
 				if(issynth(H) || isyautja(H))
 					return
-				if(H.stat == DEAD || H.lying)
+				if(H.stat == DEAD || H.body_position == LYING_DOWN)
 					return
 				if(H.ally_of_hivenumber(hivenumber))
 					return
@@ -135,7 +145,7 @@
 	clear_tripwires()
 	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == hivenumber)
-			to_chat(X, SPAN_XENOMINORWARNING("You sense one of your Hive's facehugger traps at [A.name] has been burnt!"))
+			to_chat(X, SPAN_XENOMINORWARNING("We sense one of our Hive's facehugger traps at [A.name] has been burnt!"))
 
 /obj/effect/alien/resin/trap/proc/get_spray_type(level)
 	switch(level)
@@ -159,6 +169,7 @@
 			trap_type_name = "hugger"
 			var/obj/item/clothing/mask/facehugger/FH = new (loc)
 			FH.hivenumber = hivenumber
+			set_hive_data(FH, hivenumber)
 			set_state()
 			visible_message(SPAN_WARNING("[FH] gets out of [src]!"))
 			sleep(15)
@@ -188,9 +199,9 @@
 	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == hivenumber)
 			if(destroyed)
-				to_chat(X, SPAN_XENOMINORWARNING("You sense one of your Hive's [trap_type_name] traps at [A.name] has been destroyed!"))
+				to_chat(X, SPAN_XENOMINORWARNING("We sense one of our Hive's [trap_type_name] traps at [A.name] has been destroyed!"))
 			else
-				to_chat(X, SPAN_XENOMINORWARNING("You sense one of your Hive's [trap_type_name] traps at [A.name] has been triggered!"))
+				to_chat(X, SPAN_XENOMINORWARNING("We sense one of our Hive's [trap_type_name] traps at [A.name] has been triggered!"))
 
 /obj/effect/alien/resin/trap/proc/clear_tripwires()
 	QDEL_NULL_LIST(tripwires)

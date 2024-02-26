@@ -1,70 +1,12 @@
 //-----USS Almayer Machinery file -----//
 // Put any new machines in here before map is released and everything moved to their proper positions.
 
-
-
-//-----USS Almayer Props -----//
-//Put any props that don't function properly, they could function in the future but for now are for looks. This system could be expanded for other maps too. ~Art
-
-/obj/item/prop/almayer
-	name = "GENERIC USS ALMAYER PROP"
-	desc = "THIS SHOULDN'T BE VISIBLE, AHELP 'ART-P03' IF SEEN IN ROUND WITH LOCATION"
-	icon = 'icons/obj/structures/props/almayer_props.dmi'
-	icon_state = "hangarbox"
-
-/obj/item/prop/almayer/box
-	name = "metal crate"
-	desc = "A metal crate used often for storing small electronics that go into dropships"
-	icon_state = "hangarbox"
-	w_class = SIZE_LARGE
-
-/obj/item/prop/almayer/flight_recorder
-	name = "\improper FR-112 flight recorder"
-	desc = "A small red box that contains flight data from a dropship while it's on mission. Usually referred to as the black box, although this one comes in bloody red."
-	icon_state = "flight_recorder"
-	w_class = SIZE_LARGE
-
-/obj/item/prop/almayer/flight_recorder/colony
-	name = "\improper CIR-60 colony information recorder"
-	desc = "A small red box that records colony announcements, colonist flatlines and other key readouts. Usually refered to the black box, although this one comes in bloody red."
-	icon_state = "flight_recorder"
-	w_class = SIZE_LARGE
-
-/obj/item/prop/almayer/flare_launcher
-	name = "\improper MJU-77/C case"
-	desc = "A flare launcher that usually gets mounted onto dropships to help survivability against infrared tracking missiles."
-	icon_state = "flare_launcher"
-	w_class = SIZE_SMALL
-
-/obj/item/prop/almayer/chaff_launcher
-	name = "\improper RR-247 Chaff case"
-	desc = "A chaff launcher that usually gets mounted onto dropships to help survivability against radar tracking missiles."
-	icon_state = "chaff_launcher"
-	w_class = SIZE_MEDIUM
-
-/obj/item/prop/almayer/handheld1
-	name = "small handheld"
-	desc = "A small piece of electronic doodads"
-	icon_state = "handheld1"
-	w_class = SIZE_SMALL
-
-/obj/item/prop/almayer/comp_closed
-	name = "dropship maintenance computer"
-	desc = "A closed dropship maintenance computer that technicians and pilots use to find out what's wrong with a dropship. It has various outlets for different systems."
-	icon_state = "hangar_comp"
-	w_class = SIZE_LARGE
-
-/obj/item/prop/almayer/comp_open
-	name = "dropship maintenance computer"
-	desc = "An opened dropship maintenance computer, it seems to be off however. It's used by technicians and pilots to find damaged or broken systems on a dropship. It has various outlets for different systems."
-	icon_state = "hangar_comp_open"
-	w_class = SIZE_LARGE
-
 /obj/structure/machinery/prop/almayer
 	name = "GENERIC USS ALMAYER PROP"
 	desc = "THIS SHOULDN'T BE VISIBLE, AHELP 'ART-P01' IF SEEN IN ROUND WITH LOCATION"
 
 /obj/structure/machinery/prop/almayer/hangar/dropship_part_fabricator
+
 /obj/structure/machinery/prop/almayer/computer/PC
 	name = "personal desktop"
 	desc = "A small computer hooked up into the ship's computer network."
@@ -138,13 +80,19 @@
 	use_power = USE_POWER_IDLE
 	density = TRUE
 	idle_power_usage = 2
-	///flags that we want to be shown when you interact with this table
 	var/datum/tacmap/map
+	///flags that we want to be shown when you interact with this table
 	var/minimap_type = MINIMAP_FLAG_USCM
+	///The faction that is intended to use this structure (determines type of tacmap used)
+	var/faction = FACTION_MARINE
 
 /obj/structure/machinery/prop/almayer/CICmap/Initialize()
 	. = ..()
-	map = new(src, minimap_type)
+
+	if (faction == FACTION_MARINE)
+		map = new /datum/tacmap/drawing(src, minimap_type)
+	else
+		map = new(src, minimap_type) // Non-drawing version
 
 /obj/structure/machinery/prop/almayer/CICmap/Destroy()
 	QDEL_NULL(map)
@@ -157,12 +105,15 @@
 
 /obj/structure/machinery/prop/almayer/CICmap/upp
 	minimap_type = MINIMAP_FLAG_UPP
+	faction = FACTION_UPP
 
 /obj/structure/machinery/prop/almayer/CICmap/clf
 	minimap_type = MINIMAP_FLAG_CLF
+	faction = FACTION_CLF
 
 /obj/structure/machinery/prop/almayer/CICmap/pmc
 	minimap_type = MINIMAP_FLAG_PMC
+	faction = FACTION_PMC
 
 //Nonpower using props
 
@@ -254,7 +205,7 @@
 		var/obj/item/dogtag/D = I
 		if(D.fallen_names)
 			to_chat(user, SPAN_NOTICE("You add [D] to [src]."))
-			fallen_list += D.fallen_names
+			GLOB.fallen_list += D.fallen_names
 			qdel(D)
 		return TRUE
 	else
@@ -262,13 +213,13 @@
 
 /obj/structure/prop/almayer/ship_memorial/get_examine_text(mob/user)
 	. = ..()
-	if((isobserver(user) || ishuman(user)) && fallen_list)
+	if((isobserver(user) || ishuman(user)) && GLOB.fallen_list)
 		var/faltext = ""
-		for(var/i = 1 to fallen_list.len)
-			if(i != fallen_list.len)
-				faltext += "[fallen_list[i]], "
+		for(var/i = 1 to GLOB.fallen_list.len)
+			if(i != GLOB.fallen_list.len)
+				faltext += "[GLOB.fallen_list[i]], "
 			else
-				faltext += fallen_list[i]
+				faltext += GLOB.fallen_list[i]
 		. += SPAN_NOTICE("To our fallen soldiers: <b>[faltext]</b>.")
 
 /obj/structure/prop/almayer/particle_cannon

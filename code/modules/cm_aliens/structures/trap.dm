@@ -349,6 +349,7 @@
 		HasProximity(A)
 
 /obj/effect/alien/resin/trap/proc/on_shuttle_crushing()
+	SIGNAL_HANDLER
 	UnregisterSignal(src, COMSIG_MOVABLE_SHUTTLE_CRUSH)
 	loc = null
 

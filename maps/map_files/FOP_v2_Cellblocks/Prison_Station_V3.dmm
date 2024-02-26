@@ -48169,7 +48169,7 @@
 /area/prison/kitchen)
 "nuj" = (
 /obj/structure/window/framed/prison/cell,
-/turf/closed/wall/prison,
+/turf/open/space/basic,
 /area/prison/cellblock/highsec/south/north)
 "nuw" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -68582,7 +68582,7 @@ bPg
 bvA
 byy
 bPg
-nuj
+bvA
 byy
 bPg
 bvA
@@ -70923,7 +70923,7 @@ bwC
 bPg
 bvA
 bvA
-nuj
+bun
 bPg
 bwC
 bvA

@@ -310,9 +310,9 @@
 	for(var/turf/T in orange(1,loc))
 		if(T.density)
 			continue
-		var/obj/effect/trap_tripwire/HT = new /obj/effect/trap_tripwire(T)
-		HT.linked_trap = src
-		tripwires += HT
+		var/obj/effect/trap_tripwire/new_tripwire = new /obj/effect/trap_tripwire(T)
+		new_tripwire.linked_trap = src
+		tripwires += new_tripwire
 
 /obj/effect/alien/resin/trap/attackby(obj/item/W, mob/user)
 	if(!(istype(W, /obj/item/clothing/mask/facehugger) && isxeno(user)))

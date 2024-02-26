@@ -352,8 +352,6 @@
 				break
 
 			for(var/obj/item/card/id/identification in link.active_ids)
-				if(!istype(identification))
-					continue
 				if(identification.registered_gid != access_ticket.user_id_num)
 					continue
 
@@ -380,8 +378,6 @@
 			if(!access_ticket)
 				return FALSE
 			for(var/obj/item/card/id/identification in link.waiting_ids)
-				if(!istype(identification))
-					continue
 				if(identification.registered_gid != access_ticket.user_id_num)
 					continue
 				identification.handle_ares_access(last_login, operator)
@@ -390,8 +386,6 @@
 				ares_apollo_talk("Access Ticket [access_ticket.ticket_id]: [access_ticket.ticket_submitter] was granted access by [last_login].")
 				return TRUE
 			for(var/obj/item/card/id/identification in link.active_ids)
-				if(!istype(identification))
-					continue
 				if(identification.registered_gid != access_ticket.user_id_num)
 					continue
 				identification.handle_ares_access(last_login, operator)
@@ -412,8 +406,6 @@
 			to_chat(usr, SPAN_NOTICE("[access_ticket.ticket_type] [access_ticket.ticket_id] marked as rejected."))
 			ares_apollo_talk("Access Ticket [access_ticket.ticket_id]: [access_ticket.ticket_submitter] was rejected access by [last_login].")
 			for(var/obj/item/card/id/identification in link.waiting_ids)
-				if(!istype(identification))
-					continue
 				if(identification.registered_gid != access_ticket.user_id_num)
 					continue
 				var/mob/living/carbon/human/id_owner = identification.registered_ref?.resolve()

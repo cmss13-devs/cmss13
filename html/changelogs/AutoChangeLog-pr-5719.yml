@@ -1,4 +1,0 @@
-author: "VileBeggar"
-delete-after: True
-changes:
-  - rscadd: "The Vulture can now be loaded with holo-targetting rounds which have severely hampered ballistic performance, but mark any target that is hit, increasing their damage taken by 33% for a brief period of time."

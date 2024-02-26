@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - balance: "Corrected vampire lurker damage values (Effectively reduction by 5 damage for most attacks)"

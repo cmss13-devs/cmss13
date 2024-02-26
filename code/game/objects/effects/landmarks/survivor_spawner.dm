@@ -42,6 +42,19 @@
 
 	spawn_priority = SPAWN_PRIORITY_HIGH
 
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf_leader
+hostile = TRUE
+equipment = /datum/equipment_preset/clf/leader
+synth_equipment = /datum/equipment_preset/clf/synth
+intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
+"You are NOT aware of the xenomorph threat.",\
+"Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.")
+story_text = "You are a soldier fighting for the Colonial Liberation Front. Your ship received a distress signal from a planet bordering the CLF controlled space under USCM control. Ready and willing to save poor colonists from parasitic tyrants, you and your team boarded small ship called Marie Curie. Unfortunately, right before you came close to a landing zone, a glob of acid hit the ship, damaging one of the engines. Despite all the efforts of the pilot, the ship went straight into nearby mountain. You were hurt pretty badly in the crash. Dumbfounded, you rise up and notice that one of your limbs is badly bruised. You looked at other survivors, also limping and trying to tend to their wounds, luckily, none of you were seriously hurt."
+roundstart_damage_min = 3
+roundstart_damage_max = 10
+roundstart_damage_times = 2
+
+spawn_priority = SPAWN_PRIORITY_HIGH
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf_engineer
 	hostile = TRUE
 	equipment = /datum/equipment_preset/clf/engineer

@@ -194,7 +194,6 @@
 
 /mob/living/carbon/cortical_borer/Life(delta_time)
 	..()
-	update_canmove()
 	update_icons()
 	var/heal_amt = 1
 	if(host)
@@ -234,10 +233,11 @@
 	else
 		if(contaminant > 0)
 			if(!luminosity)
-				SetLuminosity(2)
+				set_light(2, 1, "#0f6b32")
+				set_light_on(TRUE)
 			contaminant = max(contaminant - 0.3, 0)
 		else
-			SetLuminosity(0)
+			set_light_on(FALSE)
 	if(bruteloss || fireloss)
 		heal_overall_damage(heal_amt, heal_amt)
 	if(toxloss && !contaminant)//no clearing toxic impurities while contaminated.
@@ -267,8 +267,6 @@
 	if(layer != initial(layer)) //Unhide
 		layer = initial(layer)
 	recalculate_move_delay = TRUE
-	if(!lying)
-		update_canmove()
 	update_icons()
 
 /mob/living/carbon/cortical_borer/death()
@@ -281,7 +279,6 @@
 /mob/living/carbon/cortical_borer/rejuvenate()
 	..()
 	update_icons()
-	update_canmove()
 	SSmob.living_misc_mobs |= src
 
 /mob/living/carbon/cortical_borer/Destroy()
@@ -297,8 +294,8 @@
 	if(stat == DEAD)
 		icon_state = "Borer Dead"
 
-	else if(lying)
-		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
+	else if(body_position == LYING_DOWN)
+		if(!HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED))
 			icon_state = "Borer Resting"
 		else
 			icon_state = "Borer Stunned"
@@ -306,7 +303,7 @@
 		icon_state = "Borer"
 
 /mob/living/carbon/cortical_borer/proc/GiveBorerHUD()
-	var/datum/mob_hud/H = huds[MOB_HUD_BRAINWORM]
+	var/datum/mob_hud/H = GLOB.huds[MOB_HUD_BRAINWORM]
 	H.add_hud_to(src)
 
 /mob/living/carbon/cortical_borer/can_ventcrawl()

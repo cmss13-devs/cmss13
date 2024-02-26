@@ -60,7 +60,7 @@
 	em_call.ert_message = "A new Cortical Borer has been birthed!"
 	em_call.objectives = "Create enjoyable Roleplay. Do not kill your host. Do not take control unless granted permission or directed to by admins. Hivemind is :0 (That's Zero, not Oscar)"
 
-	em_call.activate(announce = FALSE)
+	em_call.activate(TRUE, FALSE)
 
 	message_admins("A new Cortical Borer has spawned at [get_area(loc)]")
 
@@ -676,16 +676,16 @@
 			for(var/datum in subtypesof(/datum/borer_chem/yautja))
 				var/datum/borer_chem/C = datum
 				var/chem = initial(C.chem_id)
-				var/datum/reagent/R = chemical_reagents_list[chem]
+				var/datum/reagent/R = GLOB.chemical_reagents_list[chem]
 				if(R)
 					content += "<tr><td><a href='?_src_=\ref[src];src=\ref[src];borer_use_chem=[chem]'>[initial(C.quantity)] units of [C.chem_name] ([initial(C.cost)] Enzymes)</a><p>[initial(C.desc)]</p></td></tr>"
 		else
 			for(var/datum in subtypesof(/datum/borer_chem/human))
 				var/datum/borer_chem/C = datum
 				var/chem = initial(C.chem_id)
-				var/datum/reagent/R = chemical_reagents_list[chem]
+				var/datum/reagent/R = GLOB.chemical_reagents_list[chem]
 				if(R)
-					content += "<tr><td><a href='?_src_=\ref[src];src=\ref[src];borer_use_chem=[chem]'>[initial(C.quantity)] units of [C.chem_name] ([initial(C.cost)] Enzymes)</a><p>[initial(C.desc)]</p></td></tr>"
+					content += "<tr><td><a href='?_src_=\ref[src];src=\ref[src];borer_use_chem=[chem]'>[initial(C.quantity)] units of [initial(C.chem_name)] ([initial(C.cost)] Enzymes)</a><p>[initial(C.desc)]</p></td></tr>"
 
 	content += "</table>"
 
@@ -817,7 +817,7 @@
 
 		if(!C || !host || (borer_flags_status & BORER_STATUS_CONTROLLING) || !src || stat)
 			return FALSE
-		var/datum/reagent/R = chemical_reagents_list[C.chem_id]
+		var/datum/reagent/R = GLOB.chemical_reagents_list[C.chem_id]
 		if(enzymes < C.cost)
 			to_chat(src, SPAN_XENOWARNING("You need [C.cost] enzymes stored to secrete [C.chem_name]!"))
 			return FALSE

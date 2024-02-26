@@ -121,16 +121,16 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 						var/obj/item/clothing/worn_item = O
 						if((O.flags_atom & USES_HEARING) || ((istype(worn_item) && worn_item.accessories)))
 							listening_obj |= O
+					for(var/mob/inner_mob in M.contents)
+						listening |= inner_mob
+						for(var/mob/living/captive_brain/brain in inner_mob)
+							listening |= brain
 				else if(istype(I, /obj/structure/surface))
 					var/obj/structure/surface/table = I
 					hearturfs += table.locs[1]
 					for(var/obj/O in table.contents)
 						if(O.flags_atom & USES_HEARING)
 							listening_obj |= O
-					for(var/mob/inner_mob in M.contents)
-						listening |= inner_mob
-						for(var/mob/living/captive_brain/brain in inner_mob)
-							listening |= brain
 				else if(istype(I, /obj/))
 					var/obj/O = I
 					hearturfs += O.locs[1]

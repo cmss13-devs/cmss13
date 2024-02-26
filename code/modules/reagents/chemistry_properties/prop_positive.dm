@@ -500,8 +500,8 @@
 				else
 					embryo.counter = embryo.per_stage_hugged_time
 
-	H.chem_effect_flags |= CHEM_EFFECT_ANTI_PARASITE
-	to_chat(H, SPAN_NOTICE("Your body feels warmer."))
+	current_human.chem_effect_flags |= CHEM_EFFECT_ANTI_PARASITE
+	to_chat(current_human, SPAN_NOTICE("Your body feels warmer."))
 
 /datum/chem_property/positive/antiparasitic/process_overdose(mob/living/M, potency = 1)
 	M.apply_damage(potency, TOX)

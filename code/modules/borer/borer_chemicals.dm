@@ -121,6 +121,14 @@
 	quantity = 3
 	category = BORER_CAT_PUNISH
 
+/datum/borer_chem/human/death_powder
+	chem_name = "Living Death"
+	chem_id = "zombiepowder"
+	desc = "A strong neurotoxin that puts the subject into a death-like state."
+	cost = 300
+	quantity = 1
+	category = BORER_CAT_PUNISH
+
 //Yautja chemicals
 /datum/borer_chem/yautja/thwei
 	chem_name = "Thwei"

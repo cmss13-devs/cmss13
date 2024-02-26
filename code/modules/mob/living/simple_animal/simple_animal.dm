@@ -355,7 +355,7 @@
 
 	message = capitalize(trim_left(message))
 
-	..(message, speaking, verb, nolog = !ckey) //if the animal has a ckey then it will log the message
+	..(message, null, verb, nolog = !ckey) //if the animal has a ckey then it will log the message
 
 /mob/living/simple_animal/on_immobilized_trait_gain(datum/source)
 	. = ..()

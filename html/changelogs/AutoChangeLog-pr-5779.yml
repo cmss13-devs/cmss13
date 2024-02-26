@@ -1,4 +1,0 @@
-author: "harryob"
-delete-after: True
-changes:
-  - admin: "marking a ticket now actually stops other people from messing with your marked ticket"

@@ -387,3 +387,15 @@
       botony caves flanks ands removes some ledges from combat routes
   - maptweak: Edits to southwest dorms LV522
   - maptweak: Redetails bigred Libary
+2024-02-26:
+  Mister-moon1:
+  - balance: Reverted flare range buff 7->5 tiles
+  SpartanBobby:
+  - maptweak: Edits to southyard sci-annex
+  harryob:
+  - admin: marking a ticket now actually stops other people from messing with your
+      marked ticket
+  realforest2001:
+  - admin: Mods can now run votes where appropriate.
+  - admin: Moved a few event verbs from Admin level to Senior Mod.
+  - admin: Added a log to creating new bank accounts.

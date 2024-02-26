@@ -1,0 +1,6 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - admin: "Mods can now run votes where appropriate."
+  - admin: "Moved a few event verbs from Admin level to Senior Mod."
+  - admin: "Added a log to creating new bank accounts."

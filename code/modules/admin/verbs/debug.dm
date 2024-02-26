@@ -283,6 +283,8 @@
 		account_user.mind.store_memory(remembered_info)
 		account_user.mind.initial_account = generated_account
 
+	log_admin("[key_name(usr)] has created a new bank account for [key_name(account_user)].")
+
 /client/proc/cmd_assume_direct_control(mob/M in GLOB.mob_list)
 	set name = "Control Mob"
 	set desc = "Assume control of the mob"

@@ -44247,13 +44247,6 @@
 /obj/structure/window/framed/prison/reinforced/hull,
 /turf/open/floor/wood,
 /area/prison/residential/north)
-"eHz" = (
-/obj/structure/surface/table/reinforced,
-/obj/structure/surface/table/reinforced,
-/turf/open/floor/prison{
-	dir = 10
-	},
-/area/prison/cellblock/highsec/north/north)
 "eHA" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/floor/prison{
@@ -46097,11 +46090,6 @@
 	icon_state = "darkyellow2"
 	},
 /area/prison/hallway/central/west)
-"iLq" = (
-/obj/structure/window/framed/prison/cell,
-/obj/structure/window/framed/prison/cell,
-/turf/closed/wall/prison,
-/area/prison/cellblock/highsec/south/north)
 "iLz" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -50582,11 +50570,6 @@
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/south)
-"sVD" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/open/space,
-/area/space)
 "sYr" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8
@@ -50750,10 +50733,6 @@
 	icon_state = "redfull"
 	},
 /area/prison/cellblock/highsec/north/south)
-"tni" = (
-/obj/structure/lattice,
-/turf/closed/wall/r_wall/prison_unmeltable,
-/area/prison/yard)
 "too" = (
 /obj/effect/landmark/corpsespawner/colonist/random/burst,
 /turf/open/floor/carpet,
@@ -69442,7 +69421,7 @@ bgt
 bpT
 bbV
 bdI
-iLq
+nuj
 bPg
 bvA
 bvF
@@ -70458,7 +70437,7 @@ aor
 awT
 axW
 aYS
-kaF
+aCi
 aCi
 aET
 aCl
@@ -70669,8 +70648,8 @@ iUu
 aor
 awT
 axW
-eHz
-kaF
+aYS
+aCi
 aCi
 aET
 aCl
@@ -81301,14 +81280,14 @@ acL
 aAO
 aAO
 aAO
-acL
 aAO
-aAO
-acL
-acL
 aAO
 aAO
 acL
+acL
+aAO
+aAO
+aAO
 aAO
 aAO
 aAO
@@ -81515,11 +81494,11 @@ bbp
 bbp
 bbp
 bcj
+aAO
 acL
 acL
-acL
-acL
-tni
+aAO
+bcj
 bbp
 bbp
 bbp
@@ -85850,7 +85829,7 @@ csl
 csl
 csl
 cwU
-sVD
+aAO
 aAO
 csR
 aAO

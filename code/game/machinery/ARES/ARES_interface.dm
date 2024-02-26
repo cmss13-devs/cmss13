@@ -185,8 +185,6 @@
 
 	var/list/logged_techs = list()
 	for(var/datum/ares_record/tech/tech_unlock as anything in datacore.records_tech)
-		if(!istype(tech_unlock))
-			continue
 		var/list/current_tech = list()
 		current_tech["time"] = tech_unlock.time
 		current_tech["details"] = tech_unlock.details

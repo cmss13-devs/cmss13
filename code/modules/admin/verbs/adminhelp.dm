@@ -469,6 +469,11 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 /datum/admin_help/proc/Close(key_name = key_name_admin(usr), silent = FALSE)
 	if(state != AHELP_ACTIVE)
 		return
+
+	if(marked_admin != usr.key)
+		to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin]. Please override their mark to interact with this ticket!"))
+		return
+
 	RemoveActive()
 	state = AHELP_CLOSED
 	GLOB.ahelp_tickets.ListInsert(src)
@@ -483,6 +488,11 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 /datum/admin_help/proc/Resolve(key_name = key_name_admin(usr), silent = FALSE)
 	if(state != AHELP_ACTIVE)
 		return
+
+	if(marked_admin != usr.key)
+		to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin]. Please override their mark to interact with this ticket!"))
+		return
+
 	RemoveActive()
 	state = AHELP_RESOLVED
 	GLOB.ahelp_tickets.ListInsert(src)
@@ -499,6 +509,10 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 /datum/admin_help/proc/defer_to_mentors()
 	if(state != AHELP_ACTIVE || !initial_message)
+		return
+
+	if(marked_admin != usr.key)
+		to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin]. Please override their mark to interact with this ticket!"))
 		return
 
 	if(!initiator.current_mhelp)
@@ -559,6 +573,10 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	if(state != AHELP_ACTIVE)
 		return
 
+	if(marked_admin != usr.key)
+		to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin]. Please override their mark to interact with this ticket!"))
+		return
+
 	if(initiator)
 		initiator.giveadminhelpverb()
 
@@ -580,6 +598,10 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	var/key_name = key_name_admin(usr)
 	if(state != AHELP_ACTIVE)
 		to_chat(usr, SPAN_WARNING("This ticket is already closed!"))
+		return
+
+	if(marked_admin != usr.key)
+		to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin]. Please override their mark to interact with this ticket!"))
 		return
 
 	var/chosen = tgui_input_list(usr, "Which auto response do you wish to send?", "AutoReply", GLOB.adminreplies)

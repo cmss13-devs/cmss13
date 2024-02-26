@@ -12,7 +12,7 @@
 	var/egg_planting_range = 15
 	var/slashing_allowed = XENO_SLASH_ALLOWED //This initial var allows the queen to turn on or off slashing. Slashing off means harm intent does much less damage.
 	var/construction_allowed = NORMAL_XENO //Who can place construction nodes for special structures
-	var/destruction_allowed = XENO_LEADER //Who can destroy special structures
+	var/destruction_allowed = NORMAL_XENO //Who can destroy special structures
 	var/unnesting_allowed = TRUE
 	var/hive_orders = "" //What orders should the hive have
 	var/color = null
@@ -46,7 +46,6 @@
 	var/allowed_nest_distance = 15 //How far away do we allow nests from an ovied Queen. Default 15 tiles.
 	var/obj/effect/alien/resin/special/pylon/core/hive_location = null //Set to ref every time a core is built, for defining the hive location
 
-	var/datum/mutator_set/hive_mutators/mutators = new
 	var/tier_slot_multiplier = 1
 	var/larva_gestation_multiplier = 1
 	var/bonus_larva_spawn_chance = 1
@@ -143,7 +142,6 @@
 	var/static/list/evolution_menu_images
 
 /datum/hive_status/New()
-	mutators.hive = src
 	hive_ui = new(src)
 	mark_ui = new(src)
 	faction_ui = new(src)
@@ -279,7 +277,6 @@
 
 /datum/hive_status/proc/set_living_xeno_queen(mob/living/carbon/xenomorph/queen/queen)
 	if(!queen)
-		mutators.reset_mutators()
 		SStracking.delete_leader("hive_[hivenumber]")
 		SStracking.stop_tracking("hive_[hivenumber]", living_xeno_queen)
 		SShive_status.wait = 10 SECONDS
@@ -293,10 +290,8 @@
 	recalculate_hive()
 
 /datum/hive_status/proc/recalculate_hive()
-	if (!living_xeno_queen)
-		queen_leader_limit = 0 //No leaders for a Hive without a Queen!
-	else
-		queen_leader_limit = 4 + mutators.leader_count_boost
+	//No leaders for a Hive without a Queen!
+	queen_leader_limit = living_xeno_queen ? 4 : 0
 
 	if (xeno_leader_list.len > queen_leader_limit)
 		var/diff = 0
@@ -309,11 +304,6 @@
 		for (var/i in xeno_leader_list.len + 1 to queen_leader_limit)
 			open_xeno_leader_positions += i
 			xeno_leader_list.len++
-
-
-	tier_slot_multiplier = mutators.tier_slot_multiplier
-	larva_gestation_multiplier = mutators.larva_gestation_multiplier
-	bonus_larva_spawn_chance = mutators.bonus_larva_spawn_chance
 
 	hive_ui.update_all_data()
 
@@ -524,7 +514,7 @@
 			xeno_name = "Larva ([X.nicknumber])"
 		xenos["[X.nicknumber]"] = list(
 			"name" = xeno_name,
-			"strain" = X.mutation_type,
+			"strain" = X.get_strain_name(),
 			"ref" = "\ref[X]"
 		)
 

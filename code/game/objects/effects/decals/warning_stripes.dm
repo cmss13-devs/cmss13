@@ -253,3 +253,17 @@
 /obj/effect/hybrisa/decal/roadcross
 	icon = 'icons/effects/64x64hybrisa_decals.dmi'
 	icon_state = "roadcross"
+
+/// Dirt & Grime
+
+/obj/effect/hybrisa/decal/dirt
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "dirt"
+
+/obj/effect/hybrisa/decal/bloodtrail
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "bloodtrail"
+
+/obj/effect/hybrisa/decal/tiretrack
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "tiremarks"

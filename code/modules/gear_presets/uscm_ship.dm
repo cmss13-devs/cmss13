@@ -255,7 +255,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/engi(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack/welder_chestrig, (new_human), WEAR_R_HAND)
 
 /datum/equipment_preset/uscm_ship/maint/load_rank(mob/living/carbon/human/new_human)
 	if(new_human.client)

@@ -302,8 +302,10 @@
 		to_chat(responder, SPAN_NOTICE("<b>NOTICE:</b> A mentor is already handling this thread!"))
 		return
 
-	var/choice = tgui_input_list(usr, "Which autoresponse option do you want to send to the player?\n\n L - A webpage link.\n A - An answer to a common question.", "Autoresponse", list ("L: Discord", "L: Xeno Quickstart Guide", "L: Marine Quickstart Guide", "L: Current Map", "A: No plasma regen", "A: Devour as Xeno", "T: Tunnel", "E: Event in progress", "R: Radios", "B: Binoculars", "D: Joining disabled", "L: Leaving the server", "M: Macros", "C: Changelog", "H: Clear Cache", "O: Combat Click-Drag Override"))
-	if(!choice)
+	var/choice = tgui_input_list(usr, "Which autoresponse option do you want to send to the player?\n\n L - A webpage link.\n A - An answer to a common question.", "Autoresponse", GLOB.mentorreplies)
+	var/datum/autoreply/mentor/response = GLOB.mentorreplies[choice]
+
+	if(!response || !istype(response))
 		return
 
 	if(!check_author())
@@ -324,18 +326,6 @@
 
 	var/msg = SPAN_MENTORSAY("<span class='prefix'>Autoresponse:</span> <span class='message'>[choice]</span>")
 	switch(choice)
-		if("L: Discord")
-			msg += "You can join our Discord server by using <a href='[CONFIG_GET(string/discordurl)]'>this link</a>!"
-		if("L: Xeno Quickstart Guide")
-			msg += "Your answer can be found on the Xeno Quickstart Guide on our wiki. <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_XENO_QUICKSTART]'>Check it out here.</a>"
-		if("L: Marine Quickstart Guide")
-			msg += "Your answer can be found on the Marine Quickstart Guide on our wiki. <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_MARINE_QUICKSTART]'>Check it out here.</a>"
-		if("L: Current Map")
-			msg += "If you need a map overview of the current round, use Current Map verb in OOC tab to check name of the map. Then open our <a href='[CONFIG_GET(string/wikiurl)]'>wiki front page</a> and look for the map overview in the 'Maps' section. If the map is not listed, it's a new or rare map and the overview hasn't been finished yet."
-		if("A: No plasma regen")
-			msg += "If you have low/no plasma regen, it's most likely because you are off weeds or are currently using a passive ability, such as the Runner's 'Hide' or emitting a pheromone."
-		if("A: Devour as Xeno")
-			msg += "Devouring is useful to quickly transport incapacitated hosts from one place to another. In order to devour a host as a Xeno, grab the mob (CTRL+Click) and then click on yourself to begin devouring. The host can break out of your belly, which will result in your death so make sure your target is incapacitated. After approximately 1 minute host will be automatically regurgitated. To release your target voluntary, click 'Regurgitate' on the HUD to throw them back up."
 		if("T: Tunnel")
 			msg += "Click on the tunnel to enter it. While being in the tunnel, Alt + Click it to exit, Ctrl + Click to choose a destination."
 		if("E: Event in progress")
@@ -350,8 +340,6 @@
 			msg += "If you need to leave the server as a marine, either go to cryo or ask someone to cryo you before leaving. If you are a xenomorph, find a safe place to rest and ghost before leaving, that will instantly unlock your xeno for observers to join."
 		if("M: Macros")
 			msg += "This <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_MACROS]'>guide</a> explains how to set up macros including examples of most common and useful ones."
-		if("C: Changelog")
-			msg += "The answer to your question can be found in the changelog. Click the changelog button at the top-right of the screen to view it in-game."
 		if("H: Clear Cache")
 			msg += "In order to clear cache, you need to click on gear icon located in upper-right corner of your BYOND client and select preferences. Switch to Games tab and click Clear Cache button. In some cases you need to manually delete cache. To do that, select Advanced tab and click Open User Directory and delete \"cache\" folder there."
 		if("O: Combat Click-Drag Override")

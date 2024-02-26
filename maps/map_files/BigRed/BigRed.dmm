@@ -16134,6 +16134,7 @@
 	id = "lambda-exterior";
 	name = "Lambda Checkpoint Exterior"
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
 	icon_state = "delivery"
 	},
@@ -17117,6 +17118,7 @@
 	dir = 8;
 	pixel_y = 3
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor,
 /area/bigredv2/outside/lambda_cave_cas)
 "aXu" = (
@@ -26535,6 +26537,15 @@
 	icon_state = "asteroidfloor"
 	},
 /area/bigredv2/outside/lambda_cave_cas)
+"bKU" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/recharger,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "redfull"
+	},
+/area/bigredv2/outside/lambda_cave_cas)
 "bKY" = (
 /obj/structure/fence,
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -28868,13 +28879,6 @@
 	icon_state = "delivery"
 	},
 /area/bigredv2/caves)
-"fls" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
-/area/bigredv2/outside/lambda_cave_cas)
 "fmd" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -29565,13 +29569,6 @@
 	icon_state = "delivery"
 	},
 /area/bigredv2/outside/cargo)
-"gkN" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidwarning"
-	},
-/area/bigredv2/outside/lambda_cave_cas)
 "glB" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/solaris/reinforced,
@@ -29931,10 +29928,6 @@
 	},
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/mining)
-"gSJ" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor,
-/area/bigredv2/outside/lambda_cave_cas)
 "gTJ" = (
 /obj/structure/machinery/autolathe,
 /turf/open/floor/plating,
@@ -30471,7 +30464,6 @@
 /turf/open/mars_cave,
 /area/bigredv2/caves/mining)
 "hLs" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -31724,6 +31716,7 @@
 "jKu" = (
 /obj/limb/arm/l_arm,
 /obj/effect/decal/cleanable/blood/drip,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor,
 /area/bigredv2/outside/lambda_cave_cas)
 "jKI" = (
@@ -33914,6 +33907,10 @@
 /obj/structure/machinery/computer/atmos_alert,
 /turf/open/floor,
 /area/bigredv2/caves)
+"mRJ" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/outside/lambda_cave_cas)
 "mSn" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/floor{
@@ -35019,11 +35016,6 @@
 	icon_state = "mars_cave_5"
 	},
 /area/bigredv2/caves_virology)
-"oCk" = (
-/obj/structure/window/framed/solaris/reinforced,
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/plating,
-/area/bigredv2/outside/lambda_cave_cas)
 "oDB" = (
 /obj/structure/closet/l3closet,
 /obj/effect/landmark/objective_landmark/close,
@@ -38033,6 +38025,7 @@
 /obj/structure/surface/table/reinforced,
 /obj/item/device/camera,
 /obj/structure/machinery/light/small,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "redfull"
@@ -39567,7 +39560,6 @@
 	},
 /area/bigredv2/outside/engineering)
 "vdy" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/surface/table/reinforced,
 /obj/item/storage/donut_box,
 /turf/open/floor{
@@ -40769,6 +40761,7 @@
 	id = "lambda-exterior";
 	name = "Lambda Checkpoint Exterior"
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
 	icon_state = "delivery"
 	},
@@ -40975,6 +40968,7 @@
 	id = "lambda-exterior";
 	name = "Lambda Checkpoint Exterior"
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
 	icon_state = "delivery"
 	},
@@ -40996,6 +40990,7 @@
 /area/bigredv2/outside/filtration_plant)
 "xfb" = (
 /obj/structure/machinery/vending/security,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
 	icon_state = "red"
 	},
@@ -77544,17 +77539,17 @@ aao
 aao
 aao
 aao
-iHG
+mRJ
 wNw
 xdh
 aUw
 wNw
-iHG
-jeH
+mRJ
+bKU
 aXt
 jKu
-apI
-iHG
+hiH
+mRJ
 nRT
 bat
 baW
@@ -77771,7 +77766,7 @@ ufg
 aYy
 aYy
 apI
-iHG
+mRJ
 iHG
 aJy
 aJy
@@ -78630,15 +78625,15 @@ aao
 aao
 aao
 sYL
-gkN
+nse
 hLs
-fls
-fls
-oCk
+xpQ
+xpQ
+gfv
 vdy
-gSJ
-gSJ
-hiH
+aYy
+aYy
+apI
 iHG
 aao
 aao

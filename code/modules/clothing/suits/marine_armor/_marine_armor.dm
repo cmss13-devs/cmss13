@@ -649,7 +649,6 @@
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 	unacidable = TRUE
 
-<<<<<<< HEAD
 /obj/item/clothing/suit/storage/marine/light/vest/xm43e1_vest
 	name = "\improper XM-3VL pattern fire support vest"
 	armor_melee = CLOTHING_ARMOR_MEDIUM
@@ -662,8 +661,6 @@
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 	unacidable = TRUE
 
-=======
->>>>>>> upstream/master
 /obj/item/clothing/suit/storage/RO
 	name = "quartermaster jacket"
 	desc = "A green jacket worn by USCM personnel. The back has the flag of the United Americas on it."

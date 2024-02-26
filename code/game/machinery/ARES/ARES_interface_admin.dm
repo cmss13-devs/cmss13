@@ -82,7 +82,7 @@
 	data["nuke_available"] = datacore.nuke_available
 
 	var/list/logged_announcements = list()
-	for(var/datum/ares_record/announcement/broadcast as anything in datacore.records_announcement)
+	for(var/datum/ares_record/announcement/broadcast in datacore.records_announcement)
 		var/list/current_broadcast = list()
 		current_broadcast["time"] = broadcast.time
 		current_broadcast["title"] = broadcast.title
@@ -92,7 +92,7 @@
 	data["records_announcement"] = logged_announcements
 
 	var/list/logged_alerts = list()
-	for(var/datum/ares_record/security/security_alert as anything in datacore.records_security)
+	for(var/datum/ares_record/security/security_alert in datacore.records_security)
 		var/list/current_alert = list()
 		current_alert["time"] = security_alert.time
 		current_alert["title"] = security_alert.title
@@ -102,7 +102,7 @@
 	data["records_security"] = logged_alerts
 
 	var/list/logged_flights = list()
-	for(var/datum/ares_record/flight/flight_log as anything in datacore.records_flight)
+	for(var/datum/ares_record/flight/flight_log in datacore.records_flight)
 		var/list/current_flight = list()
 		current_flight["time"] = flight_log.time
 		current_flight["title"] = flight_log.title
@@ -113,7 +113,7 @@
 	data["records_flight"] = logged_flights
 
 	var/list/logged_bioscans = list()
-	for(var/datum/ares_record/bioscan/scan as anything in datacore.records_bioscan)
+	for(var/datum/ares_record/bioscan/scan in datacore.records_bioscan)
 		var/list/current_scan = list()
 		current_scan["time"] = scan.time
 		current_scan["title"] = scan.title
@@ -123,7 +123,7 @@
 	data["records_bioscan"] = logged_bioscans
 
 	var/list/logged_bombs = list()
-	for(var/datum/ares_record/bombardment/bomb as anything in datacore.records_bombardment)
+	for(var/datum/ares_record/bombardment/bomb in datacore.records_bombardment)
 		var/list/current_bomb = list()
 		current_bomb["time"] = bomb.time
 		current_bomb["title"] = bomb.title
@@ -134,9 +134,7 @@
 	data["records_bombardment"] = logged_bombs
 
 	var/list/logged_deletes = list()
-	for(var/datum/ares_record/deletion/deleted as anything in datacore.records_deletion)
-		if(!istype(deleted))
-			continue
+	for(var/datum/ares_record/deletion/deleted in datacore.records_deletion)
 		var/list/current_delete = list()
 		current_delete["time"] = deleted.time
 		current_delete["title"] = deleted.title
@@ -147,9 +145,7 @@
 	data["records_deletion"] = logged_deletes
 
 	var/list/logged_discussions = list()
-	for(var/datum/ares_record/deleted_talk/deleted_convo as anything in datacore.records_deletion)
-		if(!istype(deleted_convo))
-			continue
+	for(var/datum/ares_record/deleted_talk/deleted_convo in datacore.records_deletion)
 		var/list/deleted_disc = list()
 		deleted_disc["time"] = deleted_convo.time
 		deleted_disc["title"] = deleted_convo.title
@@ -158,9 +154,7 @@
 	data["deleted_discussions"] = logged_discussions
 
 	var/list/logged_orders = list()
-	for(var/datum/ares_record/requisition_log/req_order as anything in datacore.records_asrs)
-		if(!istype(req_order))
-			continue
+	for(var/datum/ares_record/requisition_log/req_order in datacore.records_asrs)
 		var/list/current_order = list()
 		current_order["time"] = req_order.time
 		current_order["details"] = req_order.details
@@ -173,9 +167,7 @@
 	var/list/logged_convos = list()
 	var/list/active_convo = list()
 	var/active_ref
-	for(var/datum/ares_record/talk_log/log as anything in datacore.records_talking)
-		if(!istype(log))
-			continue
+	for(var/datum/ares_record/talk_log/log in datacore.records_talking)
 		if(log.user == interface.last_login)
 			active_convo = log.conversation
 			active_ref = "\ref[log]"
@@ -191,9 +183,7 @@
 	data["conversations"] = logged_convos
 
 	var/list/logged_maintenance = list()
-	for(var/datum/ares_ticket/maintenance/maint_ticket as anything in tickets_maintenance)
-		if(!istype(maint_ticket))
-			continue
+	for(var/datum/ares_ticket/maintenance/maint_ticket in tickets_maintenance)
 		var/lock_status = TICKET_OPEN
 		switch(maint_ticket.ticket_status)
 			if(TICKET_REJECTED, TICKET_CANCELLED, TICKET_COMPLETED)
@@ -214,7 +204,7 @@
 	data["maintenance_tickets"] = logged_maintenance
 
 	var/list/logged_access = list()
-	for(var/datum/ares_ticket/access/access_ticket as anything in tickets_access)
+	for(var/datum/ares_ticket/access/access_ticket in tickets_access)
 		var/lock_status = TICKET_OPEN
 		switch(access_ticket.ticket_status)
 			if(TICKET_REJECTED, TICKET_CANCELLED, TICKET_REVOKED)

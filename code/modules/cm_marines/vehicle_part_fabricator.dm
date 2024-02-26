@@ -151,9 +151,9 @@
 		if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && dropship_equipment_data.combat_equipment)
 			index +=  1
 			continue
-		var/build_name = dropship_equipment_data.name
-		var/build_description = dropship_equipment_data.desc
-		var/build_cost = dropship_equipment_data.point_cost
+		var/build_name = initial(dropship_equipment_data.name)
+		var/build_description = initial(dropship_equipment_data.desc)
+		var/build_cost = initial(dropship_equipment_data.point_cost)
 		if(build_cost)
 			static_data["Equipment"] += list(list(
 				"name" = capitalize_first_letters(build_name),
@@ -172,9 +172,9 @@
 		if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) && ship_ammo_data.combat_equipment)
 			index = index + 1
 			continue
-		var/build_name = ship_ammo_data.name
-		var/build_description = ship_ammo_data.desc
-		var/build_cost = ship_ammo_data.point_cost
+		var/build_name = initial(ship_ammo_data.name)
+		var/build_description = initial(ship_ammo_data.desc)
+		var/build_cost = initial(ship_ammo_data.point_cost)
 		if(build_cost)
 			static_data["Ammo"] += list(list(
 				"name" = capitalize_first_letters(build_name),

@@ -81,12 +81,10 @@
 					door_control.add_door(air, "port")
 				if("aft_door")
 					door_control.add_door(air, "aft")
-	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(on_dir_change))
 
 /obj/docking_port/mobile/marine_dropship/Destroy(force)
 	. = ..()
 	qdel(door_control)
-	UnregisterSignal(src, COMSIG_ATOM_DIR_CHANGE)
 
 /obj/docking_port/mobile/marine_dropship/proc/control_doors(action, direction, force, asynchronous = TRUE)
 	// its been locked down by the queen
@@ -119,12 +117,6 @@
 			shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg', ares_logging = ARES_LOG_SECURITY)
 			set_security_level(SEC_LEVEL_RED)
 			return
-
-/obj/docking_port/mobile/marine_dropship/proc/on_dir_change(datum/source, old_dir, new_dir)
-	SIGNAL_HANDLER
-	for(var/place in shuttle_areas)
-		for(var/obj/structure/machinery/door/air in place)
-			air.handle_multidoor(old_dir, new_dir)
 
 /obj/docking_port/mobile/marine_dropship/alamo
 	name = "Alamo"

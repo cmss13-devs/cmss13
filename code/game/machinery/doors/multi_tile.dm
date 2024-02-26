@@ -569,3 +569,4 @@
 	icon = 'icons/obj/structures/doors/2x1almayerdoor_glass.dmi'
 	opacity = FALSE
 	glass = TRUE
+

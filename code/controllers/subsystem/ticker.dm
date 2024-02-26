@@ -207,7 +207,7 @@ SUBSYSTEM_DEF(ticker)
 	CHECK_TICK
 	mode.announce()
 	if(mode.taskbar_icon)
-		RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGIN, PROC_REF(handle_mode_icon))
+		RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGGED_IN, PROC_REF(handle_mode_icon))
 		set_clients_taskbar_icon(mode.taskbar_icon)
 
 	if(GLOB.perf_flags & PERF_TOGGLE_LAZYSS)

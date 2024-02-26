@@ -254,7 +254,7 @@
 	width  = 17
 	height = 29
 	airlock_id = "s_umbilical"
-	airlock_area = /area/almayer/hallways/port_umbilical
+	airlock_area = /area/almayer/hallways/lower/port_umbilical
 
 /obj/docking_port/stationary/emergency_response/external/hangar_starboard
 	name = "Almayer hanger starboard external airlock"
@@ -263,7 +263,7 @@
 	width  = 17
 	height = 29
 	airlock_id = "n_umbilical"
-	airlock_area = /area/almayer/hallways/starboard_umbilical
+	airlock_area = /area/almayer/hallways/lower/starboard_umbilical
 
 // These are docking ports not on the almayer
 /obj/docking_port/stationary/emergency_response/idle_port1

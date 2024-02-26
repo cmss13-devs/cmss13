@@ -119,6 +119,14 @@
 	user.admin_holder.player_notes_show(target.ckey)
 	return TRUE
 
+/datum/player_action/check_ckey
+	action_tag = "check_ckey"
+	name = "Check Ckey"
+
+
+/datum/player_action/check_ckey/act(client/user, mob/target, list/params)
+	user.admin_holder.check_ckey(target.ckey)
+	return TRUE
 
 /datum/player_action/reset_xeno_name
 	action_tag = "reset_xeno_name"

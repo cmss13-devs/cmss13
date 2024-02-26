@@ -454,9 +454,8 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_m56d
-	name = "M56D drum magazine crate (x2)"
+	name = "M56D drum magazine crate (x1)"
 	contains = list(
-		/obj/item/ammo_magazine/m56d,
 		/obj/item/ammo_magazine/m56d,
 	)
 	cost = 25

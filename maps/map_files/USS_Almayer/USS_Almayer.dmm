@@ -62225,9 +62225,6 @@
 	icon_state = "dark_sterile"
 	},
 /area/almayer/engineering/upper_engineering/port)
-"rna" = (
-/turf/closed/wall/almayer/aicore,
-/area/almayer/command/airoom)
 "rng" = (
 /turf/closed/wall/almayer,
 /area/almayer/maint/hull/lower/l_m_p)
@@ -77296,7 +77293,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/upper/stern_hallway)
 "wnh" = (
-/obj/structure/window/framed/almayer/white/hull,
+/obj/structure/window/framed/almayer/aicore/hull,
 /turf/open/floor/plating,
 /area/almayer/command/airoom)
 "wnw" = (
@@ -120951,7 +120948,7 @@ oJR
 tFe
 asD
 xQV
-gBO
+qQS
 aqU
 aCZ
 dgg
@@ -121761,7 +121758,7 @@ mLE
 bUx
 mLE
 tmK
-gBO
+qQS
 aug
 avL
 aqU
@@ -140286,8 +140283,8 @@ daz
 daz
 kfU
 daz
-rna
-rna
+ebN
+ebN
 lnS
 uVv
 yit
@@ -140490,8 +140487,8 @@ daz
 daz
 daz
 sGZ
-rna
-rna
+ebN
+ebN
 roH
 ebN
 ebN
@@ -141302,8 +141299,8 @@ daz
 daz
 daz
 tHu
-rna
-rna
+ebN
+ebN
 gXs
 ebN
 ebN
@@ -141504,8 +141501,8 @@ daz
 daz
 sTV
 daz
-rna
-rna
+ebN
+ebN
 gbg
 uVv
 yit

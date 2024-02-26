@@ -263,19 +263,19 @@
 		if (control.status != SHUTTLE_DOOR_BROKEN)
 			return ..()
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
-			to_chat(user, SPAN_WARNING("You don't seem to understand how to restore remote connection to [src]."))
+			to_chat(user, SPAN_WARNING("You don't seem to understand how to restore a remote connection to [src]."))
 			return
 		if(user.action_busy)
 			return
 
-		to_chat(user, SPAN_WARNING("You begin to restore remote connection to [src]."))
+		to_chat(user, SPAN_WARNING("You begin to restore the remote connection to [src]."))
 		if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
-			to_chat(user, SPAN_WARNING("You fail to restore remote connection to [src]."))
+			to_chat(user, SPAN_WARNING("You fail to restore a remote connection to [src]."))
 			return
 		unlock(TRUE)
 		close(FALSE)
 		control.status = SHUTTLE_DOOR_UNLOCKED
-		to_chat(user, SPAN_WARNING("You successfully restored remote connection to [src]."))
+		to_chat(user, SPAN_WARNING("You successfully restored the remote connection to [src]."))
 		return
 	..()
 

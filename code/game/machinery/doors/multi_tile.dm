@@ -265,6 +265,9 @@
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You don't seem to understand how to restore remote connection to [src]."))
 			return
+		if(user.action_busy)
+			return
+
 		to_chat(user, SPAN_WARNING("You begin to restore remote connection to [src]."))
 		if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
 			to_chat(user, SPAN_WARNING("You fail to restore remote connection to [src]."))
@@ -290,6 +293,9 @@
 
 	if(!locked)
 		return ..()
+
+	if(xeno.action_busy)
+		return
 
 	to_chat(xeno, SPAN_NOTICE("You try and force the doors open"))
 	if(do_after(xeno, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))

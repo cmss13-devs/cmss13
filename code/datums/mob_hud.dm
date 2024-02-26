@@ -252,10 +252,10 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 
 /mob/living/carbon/xenomorph/remove_from_all_mob_huds()
 	for(var/datum/mob_hud/hud in GLOB.huds)
-		if(istype(hud, /datum/mob_hud/xeno))
+		if(istype(hud, /datum/mob_hud/xeno) || istype(hud, /datum/mob_hud/brainworm))
 			hud.remove_from_hud(src)
 			hud.remove_hud_from(src, src)
-		else if (istype(hud, /datum/mob_hud/xeno_infection) || istype(hud, /datum/mob_hud/brainworm))
+		else if (istype(hud, /datum/mob_hud/xeno_infection))
 			hud.remove_hud_from(src, src)
 	if (xeno_hostile_hud)
 		xeno_hostile_hud = FALSE

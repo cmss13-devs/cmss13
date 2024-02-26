@@ -34,7 +34,7 @@
 		return TRUE
 	if(door_controllers[direction])
 		var/datum/door_controller/single/single_controller = door_controllers[direction]
-		return single_controller.status == 1
+		return single_controller.status == SHUTTLE_DOOR_LOCKED
 	else
 		WARNING("Direction [direction] does not exist.")
 	return FALSE

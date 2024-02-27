@@ -139,6 +139,7 @@ GLOBAL_LIST_INIT(admin_verbs_minor_event, list(
 	/client/proc/admin_biohazard_alert,
 	/client/proc/toggle_hardcore_perma,
 	/client/proc/toggle_bypass_joe_restriction,
+	/client/proc/borer_broadcast,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_major_event, list(

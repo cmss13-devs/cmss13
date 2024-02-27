@@ -346,7 +346,7 @@
 	unacidable = TRUE
 	indestructible = 1
 
-	fire_sound = 'sound/weapons/sniper_heavy.ogg'
+	fire_sound = 'sound/weapons/xm43e1_fire.ogg'
 	current_mag = /obj/item/ammo_magazine/sniper/anti_materiel //Renamed from anti-tank to align with new identity/description. Other references have been changed as well. -Kaga
 	force = 12
 	wield_delay = WIELD_DELAY_HORRIBLE //Ends up being 1.6 seconds due to scope

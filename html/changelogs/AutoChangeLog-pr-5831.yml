@@ -1,0 +1,4 @@
+author: "Segrain"
+delete-after: True
+changes:
+  - spellcheck: "Changed names of \"resin node\" and \"resin hole\" to \"weed node\" and \"resin trap\" respectfully."

@@ -1,5 +1,5 @@
 # dmdoc
-[DOCUMENTATION]: **PUT DOCUMENTATION LINK HERE**
+[DOCUMENTATION]: https://docs.cm-ss13.com/
 
 [BYOND]: https://secure.byond.com/
 

@@ -439,6 +439,8 @@
 		host.med_hud_set_status()
 		host.special_mob = TRUE
 
+		GLOB.living_borers += host
+
 		if(src && !src.key)
 			src.key = "@[borer_key]"
 		return TRUE
@@ -484,6 +486,7 @@
 	if(host_brain)
 		log_interact(host, src, "Borer: [key_name(host)] Took control back")
 		host.special_mob = FALSE
+		GLOB.living_borers -= host
 		// host -> self
 		var/h2s_id = host.computer_id
 		var/h2s_ip= host.lastKnownIP
@@ -842,3 +845,31 @@
 		qdel(current_chem)
 		return TRUE
 	..()
+
+
+
+/client/proc/borer_broadcast(msg as text)
+	set category = "Admin.Factions"
+	set name = "Borer Impulse"
+
+	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
+		to_chat(src, "Only staff members may talk on this channel.")
+		return
+
+	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
+
+	if(!msg)
+		return
+
+	message_admins("Borer Impulse: [key_name(src)] : [msg]")
+
+	msg = process_chat_markup(msg, list("*"))
+
+	for(var/mob/living/cur_mob in GLOB.living_borers)
+		if(cur_mob.client) // Send to xenos who are non-staff
+			to_chat(cur_mob, SPAN_XOOC("Cortical Impulse: [msg]"))
+
+	for(var/mob/dead/observer/cur_mob in GLOB.observer_list)
+		if(cur_mob.client) // Send to observers who are non-staff
+			to_chat(cur_mob, SPAN_XOOC("Cortical Impulse: [src.key]([src.admin_holder.rank]): [msg]"))
+

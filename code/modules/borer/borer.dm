@@ -1,3 +1,5 @@
+GLOBAL_LIST_EMPTY(living_borers)
+
 /mob/living/captive_brain
 	name = "captive mind"
 	real_name = "captive mind"
@@ -181,6 +183,7 @@
 		max_contaminant = max_contaminant + (max_contaminant / 2)
 	if((!is_admin_level(z)) && ERT)
 		summon()
+	GLOB.living_borers += src
 
 /mob/living/carbon/cortical_borer/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -274,6 +277,7 @@
 	var/datum/language/corticalborer/c_link = GLOB.all_languages[LANGUAGE_BORER]
 	c_link.broadcast(src, null, src.truename, TRUE)
 	SSmob.living_misc_mobs -= src
+	GLOB.living_borers -= src
 	leave_host()
 	. = ..()
 
@@ -281,9 +285,11 @@
 	..()
 	update_icons()
 	SSmob.living_misc_mobs |= src
+	GLOB.living_borers += src
 
 /mob/living/carbon/cortical_borer/Destroy()
 	SSmob.living_misc_mobs -= src
+	GLOB.living_borers -= src
 
 	remove_from_all_mob_huds()
 	if(host)

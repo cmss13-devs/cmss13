@@ -2590,7 +2590,7 @@
 
 //*****************************************************************************************************/
 /datum/equipment_preset/upp/synth
-	name = "UPP Combat Synthetic"
+	name = "UPP Synthetic"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	languages = ALL_SYNTH_LANGUAGES_UPP
@@ -2660,8 +2660,8 @@
 	new_human.equip_to_slot_or_del(new hat, WEAR_HEAD)
 	//body
 	var/obj/item/clothing/under/marine/veteran/UPP/medic/UPP = new()
-	var/obj/item/clothing/accessory/storage/tool_webbing/equipped/W = new()
-	UPP.attach_accessory(new_human, W)
+	var/obj/item/clothing/accessory/storage/tool_webbing/equipped/webbing = new()
+	UPP.attach_accessory(new_human, webbing)
 	new_human.equip_to_slot_or_del(UPP, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/support, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/glass/bottle/tricordrazine, WEAR_IN_JACKET)

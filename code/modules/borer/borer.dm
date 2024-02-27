@@ -312,7 +312,7 @@
 
 /mob/living/carbon/cortical_borer/proc/GiveBorerHUD()
 	var/datum/mob_hud/H = GLOB.huds[MOB_HUD_BRAINWORM]
-	H.add_hud_to(src)
+	H.add_hud_to(src, src)
 
 /mob/living/carbon/cortical_borer/can_ventcrawl()
 	return TRUE

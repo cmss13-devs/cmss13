@@ -134,7 +134,7 @@
  */
 /obj/structure/machinery/defenses/proc/handle_iff(selection)
 	switch(selection)
-		if(FACTION_USCM)
+		if(FACTION_MARINE)
 			faction_group = FACTION_LIST_MARINE
 		if(FACTION_WEYLAND)
 			faction_group = FACTION_LIST_MARINE_WY

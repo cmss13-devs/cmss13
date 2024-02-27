@@ -339,13 +339,15 @@
 
 /obj/item/weapon/gun/rifle/sniper/XM43E1
 	name = "\improper XM43E1 experimental anti-materiel rifle"
-	desc = "An experimental anti-materiel rifle produced by Armat Systems, recently reacquired from the deep storage of an abandoned prototyping facility. This one in particular is currently undergoing field testing. Chambered in 10x99mm Caseless."
+	desc = "An experimental anti-materiel rifle produced by Armat Systems, recently reacquired from the deep storage of an abandoned prototyping facility. This one in particular is currently undergoing field testing. Chambered in 10x99mm Caseless.\nThis weapon can punch through metal plating and walls, though it'll lose most of its lethality in the process. It even works for demolitions, with experienced users known to disassemble solid reinforced walls in the field with a single standard magazine in lieu of explosives of an engineer, using each of the 8 shots to break down vital structural support and take the wall apart."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	icon_state = "xm43e1"
 	item_state = "xm43e1"
 	unacidable = TRUE
 	indestructible = 1
 	aimed_shot_cooldown_delay = 4 SECONDS
+	var/focused_fire_counter = 0
+	var/mob/focused_fire_target = null
 
 	fire_sound = 'sound/weapons/sniper_heavy.ogg'
 	current_mag = /obj/item/ammo_magazine/sniper/anti_materiel //Renamed from anti-tank to align with new identity/description. Other references have been changed as well. -Kaga

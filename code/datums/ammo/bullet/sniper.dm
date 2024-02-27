@@ -107,20 +107,72 @@
 	damage = 125
 	shell_speed = AMMO_SPEED_TIER_6
 
-/datum/ammo/bullet/sniper/anti_materiel/on_hit_mob(mob/M,obj/projectile/P)
-	if((P.projectile_flags & PROJECTILE_BULLSEYE) && M == P.original)
-		var/mob/living/L = M
-		var/size_damage_mod = 0.8
-		if(isxeno(M))
-			var/mob/living/carbon/xenomorph/target = M
-			if(target.mob_size >= MOB_SIZE_XENO)
-				size_damage_mod += 0.6
-			if(target.mob_size >= MOB_SIZE_BIG)
-				size_damage_mod += 0.6
-		L.apply_armoured_damage(damage*size_damage_mod, ARMOR_BULLET, BRUTE, null, penetration)
-		// Base 180% damage to all targets (225), 240% (300) against non-Runner xenos, and 300% against Big xenos (375). -Kaga
-		// This applies after pen reductions. After hitting 1 other thing, it deals 180/240/300 damage, or 90/120/150 after hitting a dense wall or big xeno.
-		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
+/datum/ammo/bullet/sniper/anti_materiel/on_hit_mob(mob/target_mob,obj/projectile/aimed_projectile)
+	if((aimed_projectile.projectile_flags & PROJECTILE_BULLSEYE) && target_mob == aimed_projectile.original)
+
+		var/amr_counter = 0
+
+		if(istype(aimed_projectile.shot_from, /obj/item/weapon/gun/rifle/sniper/XM43E1))
+			var/obj/item/weapon/gun/rifle/sniper/XM43E1/amr = aimed_projectile.shot_from
+			if(target_mob == amr.focused_fire_target)
+				if(amr.focused_fire_counter < 2)
+					amr.focused_fire_counter += 1
+				else
+					amr.focused_fire_counter = 2
+			else
+				amr.focused_fire_counter = 0
+
+			amr_counter = amr.focused_fire_counter + 1
+			amr.focused_fire_target = target_mob
+
+		var/mob/living/living_target = target_mob
+		var/size_damage_mod = 0.8 // 1.8x vs Non-Xenos (225)
+		var/size_current_health_damage = 0 // % Current Health calculation, only used for Xeno calculations at the moment.
+		var/focused_fire_active = 0 // Whether to try and use focused fire calculations or not, for that kind of target.
+
+		if(isxeno(target_mob))
+			var/mob/living/carbon/xenomorph/target = target_mob
+			size_damage_mod -= 0.2 // Down to 1.6x damage, 200.
+			size_current_health_damage = 0.1 // 1.6x Damage + 10% current health (200 + 10%, 223 vs Runners)
+
+			if(target.mob_size >= MOB_SIZE_XENO && (target.caste_type != XENO_CASTE_DEFENDER))
+				size_current_health_damage += 0.1 // 1.6x Damage + 20% current health
+				focused_fire_active = 1 // Focus Fire Required. Only deals 50% bonus damage on a first Aimed Shot, then 75%, then 100%. Resets with a successful aimed shot on another target.
+
+			if(target.mob_size >= MOB_SIZE_BIG && (target.caste_type != XENO_CASTE_DEFENDER))
+				size_damage_mod -= 0.6 // Down to 1x Damage.
+				size_current_health_damage += 0.1 // 1x Damage + 30% current health.
+				focused_fire_active = 1
+				// Most T3s have around 650 to 700 HP, meaning the health modifier grants a MAXIMUM of around 195-210 damage for a total max of 320-335. This is fully focused (3 shots) and at max HP.
+				// Queen takes around 275 at max health and unfocused, 425 fully focused. Defender only takes 200 damage, even while fortified, but still causes falloff like a Big Xeno.
+				// At low health, does little more than a normal shot. Does WORSE than a normal shot if unfocused and hitting through blockers, all of which stack to reduce it.
+
+			var/final_xeno_damage = ((damage * size_damage_mod) + ((target.health + damage) * size_current_health_damage))
+
+			if(focused_fire_active && amr_counter) // If this is a target that needs to be focus-fired and the gun supports it, reduce bonus damage to 50%, then 75%, then 100%
+				// If amr_counter is 0, then the gun likely doesn't have the tracker functions, so skip this and deal normal damage.
+				final_xeno_damage *= (0.25 + (0.25 * amr_counter))
+
+			living_target.apply_armoured_damage((final_xeno_damage), ARMOR_BULLET, BRUTE, null, penetration)
+
+		else
+			living_target.apply_armoured_damage((damage*size_damage_mod), ARMOR_BULLET, BRUTE, null, penetration)
+
+		// Base 1.8x damage to non-xeno targets (225), 1.6x + 10% current against Runners (223), 1.2x + 20% current health against most non-Runner xenos, and +30% current health against Big xenos. -Kaga
+		// This applies after pen reductions. After hitting 1 other thing, it deals 80% damage, or 40% after hitting a dense wall or big xeno.
+
+		if(focused_fire_active)
+			switch(amr_counter)
+				if(1)
+					to_chat(aimed_projectile.firer, SPAN_WARNING("One Hit! You begin to carefully track the target's movements."))
+				if(2)
+					to_chat(aimed_projectile.firer, SPAN_WARNING("Two Hits! You're starting to get a good read on the target's patterns."))
+				if(3)
+					to_chat(aimed_projectile.firer, SPAN_WARNING("Bullseye! You're fully focused on the target."))
+				else
+					to_chat(aimed_projectile.firer, SPAN_WARNING("Bullseye!"))
+		else
+			to_chat(aimed_projectile.firer, SPAN_WARNING("Bullseye!"))
 
 /datum/ammo/bullet/sniper/anti_materiel/set_bullet_traits()
 	. = ..()

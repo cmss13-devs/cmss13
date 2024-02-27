@@ -481,10 +481,10 @@ GLOBAL_LIST_EMPTY(timelocks)
 GLOBAL_LIST_INIT(available_specialist_sets, list(
 			"Scout Set",
 			"Sniper Set",
+			"Anti-materiel Sniper Set",
 			"Demolitionist Set",
 			"Heavy Grenadier Set",
-			"Pyro Set",
-			"Anti-materiel Sniper Set"
+			"Pyro Set"
 			))
 
 //Similar thing, but used in /obj/item/spec_kit

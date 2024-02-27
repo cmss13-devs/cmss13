@@ -113,6 +113,7 @@
 	new /obj/item/weapon/gun/flamer/M240T(src)
 	new /obj/item/ammo_magazine/flamer_tank/large(src)
 	new /obj/item/storage/pouch/flamertank(src)
+	new /obj/item/storage/pouch/flamertank(src)
 	new /obj/item/tool/extinguisher(src)
 	new /obj/item/tool/extinguisher/mini(src)
 	new /obj/item/weapon/gun/pistol/vp78(src)

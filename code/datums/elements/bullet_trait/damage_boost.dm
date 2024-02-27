@@ -61,7 +61,7 @@ GLOBAL_LIST_INIT(damage_boost_vehicles, typecacheof(/obj/vehicle/multitile))
 /datum/element/bullet_trait_damage_boost/proc/handle_bullet(obj/projectile/P, atom/A)
 	SIGNAL_HANDLER
 
-	src.atom_type = check_type(A)
+	atom_type = check_type(A)
 
 	switch(atom_type)
 		if("door")

@@ -47,8 +47,10 @@
 			help_message = "Hibernation is how you purify contaminants from your body, allowing you to use your enzymes more freely.\n\nYou can only hibernate whilst inside a host, and it renders you unable to act other than to speak to your host.\n\nYou can freely enter or leave hibernation by clicking the Hibernate button."
 		if("Secreting Chemicals")
 			help_message = "Whilst inside a humanoid host you can secrete chemicals to facilitate your relationship.\nThese can vary from helpful medications to harmful control measures.\n\nSecreting chemicals costs enzymes and if a chemical is impure will cause you to gain contaminant.\nIf you are at, or will go over, your contaminant capacity you will be unable to secrete chemicals.\nPure chemicals are chemicals native to borers such as Cortical Enzyme."
-
+	if(!help_message)
+		return FALSE
 	alert(target, help_message, choice, "Ok")
+	return TRUE
 
 //############# Physical Interaction Procs #############
 /mob/living/carbon/cortical_borer/proc/summon()
@@ -674,18 +676,18 @@
 			human_host = host
 		if(isspeciesyautja(human_host))
 			for(var/datum in subtypesof(/datum/borer_chem/yautja))
-				var/datum/borer_chem/C = datum
-				var/chem = initial(C.chem_id)
+				var/datum/borer_chem/current_chem = datum
+				var/chem = initial(current_chem.chem_id)
 				var/datum/reagent/R = GLOB.chemical_reagents_list[chem]
 				if(R)
-					content += "<tr><td><a href='?_src_=\ref[src];src=\ref[src];borer_use_chem=[chem]'>[initial(C.quantity)] units of [C.chem_name] ([initial(C.cost)] Enzymes)</a><p>[initial(C.desc)]</p></td></tr>"
+					content += "<tr><td><a href='?_src_=\ref[src];src=\ref[src];borer_use_chem=[chem]'>[current_chem.quantity] units of [current_chem.chem_name] ([current_chem.cost] Enzymes)</a><p>[current_chem.desc]</p></td></tr>"
 		else
 			for(var/datum in subtypesof(/datum/borer_chem/human))
-				var/datum/borer_chem/C = datum
-				var/chem = initial(C.chem_id)
+				var/datum/borer_chem/current_chem = datum
+				var/chem = current_chem.chem_id
 				var/datum/reagent/R = GLOB.chemical_reagents_list[chem]
 				if(R)
-					content += "<tr><td><a href='?_src_=\ref[src];src=\ref[src];borer_use_chem=[chem]'>[initial(C.quantity)] units of [initial(C.chem_name)] ([initial(C.cost)] Enzymes)</a><p>[initial(C.desc)]</p></td></tr>"
+					content += "<tr><td><a href='?_src_=\ref[src];src=\ref[src];borer_use_chem=[chem]'>[current_chem.quantity] units of [current_chem.chem_name] ([current_chem.cost] Enzymes)</a><p>[current_chem.desc]</p></td></tr>"
 
 	content += "</table>"
 
@@ -724,6 +726,7 @@
 		var/say_string = (docile) ? "slurs" :"states"
 		if(host)
 			to_chat(host, SPAN_XENO("[truename] [say_string]: [input]"), type = MESSAGE_TYPE_RADIO)
+			show_blurb(host, 15, input, TRUE, "center", "center", COLOR_BROWN, null, null, 1)
 			log_say("BORER: ([key_name(src)] to [key_name(host)]) [input]", src)
 			to_chat(src, SPAN_XENO("[truename] [say_string]: [input]"), type = MESSAGE_TYPE_RADIO)
 			for (var/mob/dead in GLOB.dead_mob_list)
@@ -750,8 +753,8 @@
 	set desc = "Communicate mentally with your borer."
 
 
-	var/mob/living/carbon/cortical_borer/B = has_brain_worms()
-	if(!B)
+	var/mob/living/carbon/cortical_borer/borer = has_brain_worms()
+	if(!borer)
 		return FALSE
 
 	if(stat == DEAD)
@@ -762,13 +765,14 @@
 	if(!input)
 		return FALSE
 
-	to_chat(B, SPAN_XENO("[src.real_name] says: [input]"), type = MESSAGE_TYPE_RADIO)
-	log_say("BORER: ([key_name(src)] to [key_name(B)]) [input]", src)
+	to_chat(borer, SPAN_XENO("[src.real_name] says: [input]"), type = MESSAGE_TYPE_RADIO)
+	show_blurb(borer, 15, input, TRUE, "center", "center", COLOR_BROWN, null, null, 1)
+	log_say("BORER: ([key_name(src)] to [key_name(borer)]) [input]", src)
 	to_chat(src, SPAN_XENO("[src.real_name] says: [input]"), type = MESSAGE_TYPE_RADIO)
 	for (var/mob/dead in GLOB.dead_mob_list)
-		var/track_host = " (<a href='byond://?src=\ref[dead];track=\ref[B.host]'>F</a>)"
+		var/track_host = " (<a href='byond://?src=\ref[dead];track=\ref[borer.host]'>F</a>)"
 		if(!istype(dead,/mob/new_player) && !istype(dead,/mob/living/brain)) //No meta-evesdropping
-			dead.show_message(SPAN_BORER("BORER: ([name][track_host] to [B.truename]) says: [input]"), SHOW_MESSAGE_VISIBLE)
+			dead.show_message(SPAN_BORER("BORER: ([name][track_host] to [borer.truename]) says: [input]"), SHOW_MESSAGE_VISIBLE)
 	return TRUE
 
 /mob/living/proc/trapped_mind_comm()
@@ -807,32 +811,32 @@
 			return FALSE
 
 		var/topic_chem = href_list["borer_use_chem"]
-		var/datum/borer_chem/C = null
+		var/datum/borer_chem/current_chem = null
 
 		for(var/datum in typesof(/datum/borer_chem))
 			var/datum/borer_chem/test = datum
-			if(initial(test.chem_id) == topic_chem)
-				C = new test()
+			if(test.chem_id == topic_chem)
+				current_chem = new test()
 				break
 
-		if(!C || !host || (borer_flags_status & BORER_STATUS_CONTROLLING) || !src || stat)
+		if(!current_chem || !host || (borer_flags_status & BORER_STATUS_CONTROLLING) || !src || stat)
 			return FALSE
-		var/datum/reagent/R = GLOB.chemical_reagents_list[C.chem_id]
-		if(enzymes < C.cost)
-			to_chat(src, SPAN_XENOWARNING("You need [C.cost] enzymes stored to secrete [C.chem_name]!"))
+		var/datum/reagent/R = GLOB.chemical_reagents_list[current_chem.chem_id]
+		if(enzymes < current_chem.cost)
+			to_chat(src, SPAN_XENOWARNING("You need [current_chem.cost] enzymes stored to secrete [current_chem.chem_name]!"))
 			return FALSE
-		var/contamination = round(C.cost / 10)
-		if(C.impure && ((contaminant + contamination) > max_contaminant))
-			to_chat(src, SPAN_XENOWARNING("You are too contaminated to secrete [C.chem_name]!"))
+		var/contamination = round(current_chem.cost / 10)
+		if(current_chem.impure && ((contaminant + contamination) > max_contaminant))
+			to_chat(src, SPAN_XENOWARNING("You are too contaminated to secrete [current_chem.chem_name]!"))
 			return FALSE
-		to_chat(src, SPAN_XENONOTICE("You squirt a measure of [C.chem_name] from your reservoirs into [host]'s bloodstream."))
+		to_chat(src, SPAN_XENONOTICE("You squirt a measure of [current_chem.chem_name] from your reservoirs into [host]'s bloodstream."))
 		contaminant += contamination
-		host.reagents.add_reagent(C.chem_id, C.quantity)
-		enzymes -= C.cost
-		log_interact(src, host, "[key_name(src)] has injected [C.quantity] units of [R.name] into their host, [key_name(host)]")
+		host.reagents.add_reagent(current_chem.chem_id, current_chem.quantity)
+		enzymes -= current_chem.cost
+		log_interact(src, host, "[key_name(src)] has injected [current_chem.quantity] units of [R.name] into their host, [key_name(host)]")
 
 		// This is used because we use a static set of datums to determine what chems are available,
 		// instead of a table or something. Thus, when we instance it, we can safely delete it
-		qdel(C)
+		qdel(current_chem)
 		return TRUE
 	..()

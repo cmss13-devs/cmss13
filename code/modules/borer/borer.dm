@@ -176,6 +176,7 @@
 	GiveBorerHUD()
 	if(generation == 1)
 		maxHealth = maxHealth + (maxHealth / 2)
+		health = maxHealth
 		max_enzymes = max_enzymes + (max_enzymes / 2)
 		max_contaminant = max_contaminant + (max_contaminant / 2)
 	if((!is_admin_level(z)) && ERT)
@@ -202,7 +203,7 @@
 			var/mob/living/carbon/human/human_host
 			if(ishuman(host))
 				human_host = host
-			if(((human_host.chem_effect_flags & CHEM_EFFECT_ANTI_PARASITE) && !human_host.reagents.has_reagent("benzyme")) || human_host.reagents.has_reagent("bcure"))
+			if((human_host.chem_effect_flags & CHEM_EFFECT_ANTI_PARASITE) && (!human_host.reagents.has_reagent("benzyme") || human_host.reagents.has_reagent("bcure")))
 				if(!docile)
 					if(borer_flags_status & BORER_STATUS_CONTROLLING)
 						to_chat(host, SPAN_XENOHIGHDANGER("You feel the flow of a soporific chemical in your host's blood, lulling you into docility."))

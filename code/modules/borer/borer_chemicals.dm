@@ -46,22 +46,15 @@
 	cost = 80
 	quantity = 5
 
-/datum/borer_chem/human/quickclot
-	chem_name = "Quickclot"
-	chem_id = "quickclot"
-	desc = "Vastly improves the blood's natural ability to coagulate and stop bleeding. Overdosing will result in severe tissue damage."
-	cost = 90
-	quantity = 5
-
 /datum/borer_chem/human/iron
-	chem_id = "Iron"
+	chem_name = "Iron"
 	chem_id = "iron"
 	desc = "Promotes production of blood. Overdosing on iron is extremely toxic."
 	cost = 20
 	impure = FALSE
 
 /datum/borer_chem/human/oxycodone
-	chem_id = "Oxycodone"
+	chem_name = "Oxycodone"
 	chem_id = "oxycodone"
 	desc = "An extremely strong painkiller."
 	cost = 120

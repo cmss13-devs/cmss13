@@ -168,7 +168,7 @@
 	generation = gen
 	add_language(LANGUAGE_BORER)
 	var/mob_number = rand(1000,9999)
-	real_name = "Cortical Borer [mob_number]"
+	real_name = "Cortical Borer [borer_names[min(generation, borer_names.len)]] [mob_number]"
 	truename = "[borer_names[min(generation, borer_names.len)]] [mob_number]"
 	can_reproduce = reproduction
 	borer_flags_targets = new_targets

@@ -578,6 +578,9 @@
 	if(current_mob.stat == DEAD)
 		return FALSE
 
+	if(HAS_TRAIT(current_mob, TRAIT_NESTED))
+		return FALSE
+
 	var/turf/current_turf
 	var/turf/last_turf = loc
 	var/atom/temp_atom = new acid_type()

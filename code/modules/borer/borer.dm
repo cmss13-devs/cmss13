@@ -283,12 +283,18 @@
 
 /mob/living/carbon/cortical_borer/Destroy()
 	SSmob.living_misc_mobs -= src
-	var/datum/mob_hud/H = GLOB.huds[MOB_HUD_BRAINWORM]
-	H.remove_hud_from(src, src)
+
+	remove_from_all_mob_huds()
 	if(host)
 		for(var/datum/action/innate/borer/action in host.actions)
 			action.hide_from(host)
 	return ..()
+
+/mob/living/carbon/cortical_borer/remove_from_all_mob_huds()
+	for(var/datum/mob_hud/hud in GLOB.huds)
+		if(istype(hud, /datum/mob_hud/brainworm))
+			hud.remove_from_hud(src)
+			hud.remove_hud_from(src, src)
 //###################################################//
 
 

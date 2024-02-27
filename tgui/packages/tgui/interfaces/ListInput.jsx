@@ -123,9 +123,9 @@ export const ListInput = (props) => {
                   }}
                 />
               }>
-              {displayedArray.map((button) => (
+              {displayedArray.map((button, i) => (
                 <Button
-                  key={button}
+                  key={i}
                   fluid
                   color="transparent"
                   id={button}
@@ -161,6 +161,7 @@ export const ListInput = (props) => {
             <Stack.Item>
               <Input
                 fluid
+                autoFocus
                 onInput={(e, value) =>
                   setDisplayedArray(
                     buttons.filter(

@@ -87,6 +87,7 @@
 #include "tgui_create_message.dm"
 #include "timer_sanity.dm"
 #include "tutorials.dm"
+#include "xeno_strains.dm"
 
 // Unit tests backend
 #include "focus_only_tests.dm"

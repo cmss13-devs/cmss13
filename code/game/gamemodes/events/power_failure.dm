@@ -74,16 +74,15 @@
 	if(announce)
 		marine_announcement("Power has been restored. Reason: Unknown.", "Power Systems Nominal", 'sound/AI/poweron.ogg')
 
-/proc/power_restore_ship_reactors(announce = 1)
-	for(var/obj/structure/machinery/power/fusion_engine/FE in GLOB.machines)
-		FE.buildstate = 0
-		FE.is_on = 1
-		FE.fusion_cell = new
-		FE.power_gen_percent = 98
-		FE.update_icon()
-		FE.start_processing()
-		FE.power_change()
+/proc/power_restore_ship_reactors(announce = TRUE)
+	for(var/obj/structure/machinery/power/reactor/reactor in GLOB.machines)
+		if(!is_mainship_level(reactor.z)) //Only ship reactors should be repaired
+			continue
+		reactor.buildstate = 0
+		if(reactor.require_fusion_cell && !reactor.fusion_cell)
+			reactor.fusion_cell = new
+		reactor.power_gen_percent = 98
+		reactor.start_functioning(TRUE)
 
-	sleep(100)
 	if(announce)
-		marine_announcement("Power has been restored. Reason: Unknown.", "Power Systems Nominal", 'sound/AI/poweron.ogg')
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Power has been restored. Reason: Unknown.", "Power Systems Nominal", 'sound/AI/poweron.ogg'), 10 SECONDS)

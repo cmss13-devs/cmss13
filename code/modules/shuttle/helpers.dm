@@ -19,7 +19,7 @@
 	if(!door_controllers[direction])
 		var/datum/door_controller/single/new_controller = new()
 		new_controller.label = label
-		new_controller.is_locked = FALSE
+		new_controller.status = SHUTTLE_DOOR_UNLOCKED
 		door_controllers[direction] = new_controller
 
 	var/datum/door_controller/single/controller = door_controllers[direction]
@@ -29,12 +29,12 @@
 	if(direction == "all")
 		for(var/i in door_controllers)
 			var/datum/door_controller/single/control = door_controllers[i]
-			if(!control.is_locked)
+			if(control.status != SHUTTLE_DOOR_LOCKED)
 				return FALSE
 		return TRUE
 	if(door_controllers[direction])
 		var/datum/door_controller/single/single_controller = door_controllers[direction]
-		return single_controller.is_locked
+		return single_controller.status == SHUTTLE_DOOR_LOCKED
 	else
 		WARNING("Direction [direction] does not exist.")
 	return FALSE
@@ -60,9 +60,9 @@
 
 	for(var/direction in door_controllers)
 		var/datum/door_controller/single/controller = door_controllers[direction]
-		var/list/door_data = list("id" = direction, "value" = controller.is_locked)
+		var/list/door_data = list("id" = direction, "value" = controller.status)
 		. += list(door_data)
-		if(!controller.is_locked)
+		if(controller.status == SHUTTLE_DOOR_UNLOCKED)
 			all_locked = FALSE
 
 	var/list/door_data = list("id" = "all", "value" = all_locked)
@@ -74,7 +74,7 @@
 /datum/door_controller/single
 	var/label = "dropship"
 	var/list/doors = list()
-	var/is_locked = FALSE
+	var/status = SHUTTLE_DOOR_UNLOCKED
 
 /datum/door_controller/single/Destroy(force, ...)
 	. = ..()
@@ -93,23 +93,29 @@
 			if("close")
 				INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/structure/machinery/door/airlock, close))
 			if("force-lock")
+				if (status == SHUTTLE_DOOR_BROKEN)
+					continue
 				INVOKE_ASYNC(src, PROC_REF(lockdown_door), door)
-				is_locked = TRUE
+				status = SHUTTLE_DOOR_LOCKED
 			if("lock")
 				INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/structure/machinery/door/airlock, lock))
-				is_locked = TRUE
+				if (status != SHUTTLE_DOOR_BROKEN)
+					status = SHUTTLE_DOOR_LOCKED
 			if("unlock")
 				INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/structure/machinery/door/airlock, unlock))
-				is_locked = FALSE
+				if (status != SHUTTLE_DOOR_BROKEN)
+					status = SHUTTLE_DOOR_UNLOCKED
 			if("force-lock-launch")
 				if(asynchronous)
 					INVOKE_ASYNC(src, PROC_REF(lockdown_door_launch), door)
 				else
 					lockdown_door_launch(door)
-				is_locked = TRUE
+				if (status != SHUTTLE_DOOR_BROKEN)
+					status = SHUTTLE_DOOR_LOCKED
 			if("force-unlock")
 				INVOKE_ASYNC(src, PROC_REF(force_lock_open_door), door)
-				is_locked = FALSE
+				if (status != SHUTTLE_DOOR_BROKEN)
+					status = SHUTTLE_DOOR_UNLOCKED
 			else
 				CRASH("Unknown door command [action]")
 

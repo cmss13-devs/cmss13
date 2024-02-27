@@ -399,3 +399,35 @@
   - admin: Mods can now run votes where appropriate.
   - admin: Moved a few event verbs from Admin level to Senior Mod.
   - admin: Added a log to creating new bank accounts.
+2024-02-27:
+  BadAtThisGame302:
+  - mapadd: added a new nightmare insert in the Operations Panic Room on Shivas
+  - rscadd: Added trucker hats to the Solaris and Trijent Trucker survs.
+  - rscadd: Added the CMB Marshal jacket to the CMB Marshal.
+  - imageadd: Differentiated the CMB Deputy and CMB Marshal jackets to accurately
+      know which is which. Courtesy of AmoryBlaine.
+  - imageadd: Added new insulated gloves, coveralls (Tan/Red), updated the blue coveralls,
+      Five Colonist Clothes (Grey/Khaki/Pink/Blue/Green), updated the Orange/Blue/Black
+      hazard vests and updated the CMB Uniform and Cap. Courtesy of AmoryBlaine.
+  Drathek:
+  - bugfix: Fixed a runtime when swapping tools during cade welding
+  Huffie56:
+  - rscadd: adding vendor for maintenance technician.
+  - code_imp: remove some item that maintenance technician spawned with and put them
+      in is vendor instead.
+  - maptweak: replaced secured closet by vendor for maintenance technician.
+  - balance: set base price for B12 to 30 and for the M4 to 20.
+  - balance: Medic comtech and SL have a discount of 20% for the B12 and M4. (B12=24
+      & M4=16=)
+  - balance: removed the free M4 for FTL but added FTL the option to buy it for 20.
+  - balance: changed the price of Drop Pouch from 15 to 10.
+  InsaneRed:
+  - balance: Oppressor tailhook is now 8 deciseconds instead of 7.
+  Megaddd:
+  - balance: health analyzer no longer shows large custom research chem property text
+      rows.
+  SabreML:
+  - qol: Added a failure message when trying to remove a built-in helmet visor.
+  paulrpg,kugamo:
+  - imageadd: shuttle rotation sprites added
+  - maptweak: escape pods now use new floors

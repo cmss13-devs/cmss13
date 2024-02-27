@@ -1,0 +1,4 @@
+author: "Segrain"
+delete-after: True
+changes:
+  - bugfix: "FORECON and RMC now can add their frequences to groundside radiotowers."

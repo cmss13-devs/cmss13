@@ -1,0 +1,4 @@
+author: "Segrain"
+delete-after: True
+changes:
+  - admin: "TWE mobs are now properly counted on Who screen."

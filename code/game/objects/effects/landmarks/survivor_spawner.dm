@@ -49,12 +49,12 @@
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
-	story_text = "You are a soldier fighting for the Colonial Liberation Front. Your ship received a distress signal from a planet bordering the CLF controlled space under USCM control. Ready and willing to save poor colonists from parasitic tyrants, you and your team boarded small ship called Marie Curie. Unfortunately, right before you came close to a landing zone, a glob of acid hit the ship, damaging one of the engines. Despite all the efforts of the pilot, the ship went straight into nearby mountain. You were hurt pretty badly in the crash. Dumbfounded, you rise up and notice that one of your limbs is badly bruised. You looked at other survivors, also limping and trying to tend to their wounds, luckily, none of you were seriously hurt."
-	roundstart_damage_min = 3
+	story_text = "You are the leader of a squad fighting for the Colonial Liberation Front. Your ship received a distress signal from a planet bordering the CLF controlled space under USCM control. Ready and willing to save poor colonists from parasitic tyrants and under your orders, you and your team small boarded a small ship called Marie Curie. Unfortunately, right before you came close to a landing zone, a glob of acid hit the ship, damaging one of the engines. Despite all the efforts of your pilot, the ship went straight into nearby mountain. You were hurt pretty badly in the crash. Dumbfounded, you rise up and notice that one of your limbs is badly bruised. You looked up at the few remaining survivors of your squad, all limping and trying to tend to their wounds, luckily, none of your men were seriously hurt, and all seem to be responsive to your orders."
+	roundstart_damage_min = 2
 	roundstart_damage_max = 10
 	roundstart_damage_times = 2
 
-	spawn_priority = SPAWN_PRIORITY_HIGH
+	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
 
 /obj/effect/landmark/survivor_spawner/lv624_crashed_clf_engineer
 	hostile = TRUE

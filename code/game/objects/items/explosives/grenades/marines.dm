@@ -587,7 +587,7 @@
 
 
 /obj/effect/overlay/sebb/Initialize()
-	..()
+	. = ..()
 	QDEL_IN(src,time_to_live)
 
 

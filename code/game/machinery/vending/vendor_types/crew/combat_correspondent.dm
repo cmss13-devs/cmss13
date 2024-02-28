@@ -1,6 +1,9 @@
 //------------ CC CLOTHING VENDOR---------------
 
 GLOBAL_LIST_INIT(cm_vending_clothing_combat_correspondent, list(
+		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
+		list("Essential Reporter's Set", 0, /obj/effect/essentials_set/cc, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("Leather Satchel", 0, /obj/item/storage/backpack/satchel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
 
 		list("UNIFORM (CHOOSE 1)", 0, null, null, null),
 		list("Black Uniform", 0, /obj/item/clothing/under/marine/reporter/black, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
@@ -18,10 +21,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_combat_correspondent, list(
 		list("Combat Correspondent's Helmet", 0, /obj/item/clothing/head/helmet/marine/reporter, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_RECOMMENDED),
 		list("Combat Correspondent's Cap", 0, /obj/item/clothing/head/cmcap/reporter, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 		list("Fedora", 0, /obj/item/clothing/head/fedora, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
-
-		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Essential Reporter's Set", 0, /obj/effect/essentials_set/cc, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
-		list("Leather Satchel", 0, /obj/item/storage/backpack/satchel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
 
 		list("REFILLS", 0, null, null, null),
 		list("Camera", 10, /obj/item/device/camera, null, VENDOR_ITEM_REGULAR),

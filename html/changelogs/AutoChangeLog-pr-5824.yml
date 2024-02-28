@@ -1,4 +1,0 @@
-author: "mullenpaul"
-delete-after: True
-changes:
-  - bugfix: "ammo consumption logic for cas tgui correctly counts"

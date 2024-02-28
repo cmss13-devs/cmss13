@@ -431,3 +431,32 @@
   paulrpg,kugamo:
   - imageadd: shuttle rotation sprites added
   - maptweak: escape pods now use new floors
+2024-02-28:
+  Birdtalon:
+  - bugfix: Admin verbs - Hide will now hide Control Mob verb
+  Drathek:
+  - bugfix: Fixed the Mass Screenshot Debug verb bounds
+  LTNTS:
+  - rscadd: 'brig areas: warden office, MP bunks, starboard hallway, interrogation
+      room, evidence storage'
+  - spellcheck: changes brig surgery to brig medical
+  - code_imp: removed some brig areas from hijack, added other brig areas
+  SabreML:
+  - bugfix: Fixed acid pillars shooting nested marines.
+  Segrain:
+  - bugfix: FORECON and RMC now can add their frequences to groundside radiotowers.
+  - bugfix: Fisticuffs attacks are no longer attributed to wrong mob.
+  - admin: TWE mobs are now properly counted on Who screen.
+  - spellcheck: Changed names of "resin node" and "resin hole" to "weed node" and
+      "resin trap" respectfully.
+  - bugfix: CLF survivors no longer incorrectly get told that they are not hostile
+      to marines.
+  Warfan1815:
+  - spellcheck: Fixed the order of trading cards (as they were accidentally inverted)
+  Zonespace27:
+  - bugfix: M707 spotting scope should no longer teleport its user.
+  - bugfix: M707's attachments should now correctly reflect the map's camouflage.
+  ihatethisengine:
+  - balance: Pried open dropship hatches cannot be remotely locked anymore
+  mullenpaul:
+  - bugfix: ammo consumption logic for cas tgui correctly counts

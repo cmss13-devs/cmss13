@@ -1,5 +1,0 @@
-author: "Zonespace27"
-delete-after: True
-changes:
-  - bugfix: "M707 spotting scope should no longer teleport its user."
-  - bugfix: "M707's attachments should now correctly reflect the map's camouflage."

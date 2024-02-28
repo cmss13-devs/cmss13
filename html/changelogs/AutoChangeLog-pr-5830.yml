@@ -1,0 +1,5 @@
+author: "Nanu"
+delete-after: True
+changes:
+  - balance: "Removed the ability for Combat Synths in the UPP/CLF ERT to use guns, as well as the CLF Survivor Synth."
+  - rscadd: "Did a few minor tweaks to help fill in some of the space given by the removal of guns/ammo from the Combat Synths loadout."

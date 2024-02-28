@@ -374,6 +374,7 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 /world/proc/HandleTestRun()
 	// Wait for the game ticker to initialize
 	Master.sleep_offline_after_initializations = FALSE
+	SSticker.start_immediately = TRUE
 	UNTIL(SSticker.initialized)
 
 	//trigger things to run the whole process

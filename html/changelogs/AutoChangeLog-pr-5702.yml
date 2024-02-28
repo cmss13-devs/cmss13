@@ -1,0 +1,4 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - balance: "omnisentrygun price down to 300, but it goes up 100 points after each purchase"

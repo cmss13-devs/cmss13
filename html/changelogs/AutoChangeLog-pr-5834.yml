@@ -1,0 +1,4 @@
+author: "MobiusWon"
+delete-after: True
+changes:
+  - balance: "Readds M4 armor to FTL vendor as a default item"

@@ -138,8 +138,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/camera(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/device/fax_backpack(new_human), WEAR_BACK)
 
-
-
 /datum/equipment_preset/uscm_ship/reporter_uscm
 	name = "Combat Correspondent"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE

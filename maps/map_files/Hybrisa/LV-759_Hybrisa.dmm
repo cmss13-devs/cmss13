@@ -1811,6 +1811,13 @@
 	},
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/lv759/indoors/weyyu_office/floor)
+"atE" = (
+/obj/effect/hybrisa/decal/dirt,
+/obj/effect/hybrisa/decal/tiretrack{
+	dir = 5
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/hospital/paramedics_garage)
 "atZ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
@@ -58306,18 +58313,6 @@
 	icon_state = "73"
 	},
 /area/lv759/landing_zone/horizon_runner)
-"lUl" = (
-/obj/structure/cargo_container/grant/left{
-	layer = 1;
-	icon = 'icons/obj/structures/props/containersextended.dmi';
-	icon_state = "grafcontain3_l";
-	name = "Vandalized Cargo Container";
-	desc = "A huge industrial shipping container. Seems to have been vandalized."
-	},
-/turf/closed/wall/hangar{
-	name = "reinforced metal wall"
-	},
-/area/lv759/landing_zone_2/ceiling)
 "lUr" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -72590,11 +72585,6 @@
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red{
 	dir = 4
 	},
-/obj/structure/machinery/atm{
-	pixel_y = 11;
-	icon = 'icons/obj/structures/props/64x64zenithrandomprops.dmi';
-	pixel_x = 9
-	},
 /turf/open/hybrisa/street/sidewalk{
 	dir = 1
 	},
@@ -78397,6 +78387,7 @@
 "pYr" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/hybrisa/decal/tiretrack,
 /turf/open/floor/plating{
 	icon_state = "warnplate"
 	},
@@ -91014,6 +91005,11 @@
 	icon_state = "marked"
 	},
 /area/lv759/outdoors)
+"suS" = (
+/obj/effect/hybrisa/decal/dirt,
+/obj/effect/hybrisa/decal/tiretrack,
+/turf/open/floor/plating,
+/area/lv759/indoors/hospital/paramedics_garage)
 "suV" = (
 /obj/structure/reagent_dispensers/water_cooler{
 	density = 0;
@@ -91038,10 +91034,6 @@
 /obj/item/tool/screwdriver,
 /turf/open/floor/prison,
 /area/lv759/outdoors)
-"svo" = (
-/obj/structure/bed/hybrisa/bunkbed1,
-/turf/open/floor/hybrisa/carpet/carpetpatternblue,
-/area/lv759/indoors/apartment/west)
 "svv" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "docstripingdir"
@@ -137392,7 +137384,7 @@ mcx
 xSR
 krN
 tvl
-svo
+krN
 lCo
 bLF
 sqs
@@ -154046,7 +154038,7 @@ tSy
 nnd
 fAK
 bYL
-rWl
+mYs
 lxH
 wLe
 jEy
@@ -157006,8 +156998,8 @@ uDP
 nNp
 jSM
 iqD
-jXm
-jXm
+atE
+suS
 kYD
 pYr
 gnl
@@ -168208,7 +168200,7 @@ xCG
 xCG
 xCG
 uuK
-lUl
+wtQ
 rKl
 tTc
 mGE

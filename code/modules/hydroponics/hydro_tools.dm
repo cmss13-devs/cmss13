@@ -157,6 +157,7 @@
 	name = "fertilizer bottle"
 	desc = "A small glass bottle. Can hold up to 10 units."
 	icon = 'icons/obj/items/chemistry.dmi'
+	icon_state = "fertilizer"
 	flags_atom = FPRINT| OPENCONTAINER
 	possible_transfer_amounts = null
 	w_class = SIZE_SMALL

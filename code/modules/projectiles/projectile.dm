@@ -84,7 +84,7 @@
 	var/bonus_projectile_check = 0
 
 	/// What atom did this last receive a registered signal from? Used by damage_boost.dm
-	var/atom/last_atom_signaled = null
+	var/datum/weakref/last_atom_signaled = null
 
 	/// Was this projectile affected by damage_boost.dm? If so, what was the last modifier?
 	var/damage_boosted = 0

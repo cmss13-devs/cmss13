@@ -347,7 +347,7 @@
 	indestructible = 1
 	aimed_shot_cooldown_delay = 4 SECONDS
 	var/focused_fire_counter = 0
-	var/mob/focused_fire_target = null
+	var/datum/weakref/focused_fire_target = null
 
 	fire_sound = 'sound/weapons/sniper_heavy.ogg'
 	current_mag = /obj/item/ammo_magazine/sniper/anti_materiel //Renamed from anti-tank to align with new identity/description. Other references have been changed as well. -Kaga

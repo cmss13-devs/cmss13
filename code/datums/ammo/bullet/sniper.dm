@@ -114,7 +114,7 @@
 
 		if(istype(aimed_projectile.shot_from, /obj/item/weapon/gun/rifle/sniper/XM43E1))
 			var/obj/item/weapon/gun/rifle/sniper/XM43E1/amr = aimed_projectile.shot_from
-			if(target_mob == amr.focused_fire_target)
+			if(target_mob == (amr.focused_fire_target?.resolve()))
 				if(amr.focused_fire_counter < 2)
 					amr.focused_fire_counter += 1
 				else
@@ -123,7 +123,7 @@
 				amr.focused_fire_counter = 0
 
 			amr_counter = amr.focused_fire_counter + 1
-			amr.focused_fire_target = target_mob
+			amr.focused_fire_target = WEAKREF(target_mob)
 
 		var/mob/living/living_target = target_mob
 		var/size_damage_mod = 0.8 // 1.8x vs Non-Xenos (225)

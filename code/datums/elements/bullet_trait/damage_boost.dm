@@ -78,7 +78,7 @@ GLOBAL_LIST_INIT(damage_boost_vehicles, typecacheof(/obj/vehicle/multitile))
 			active_damage_mult = damage_mult
 
 
-	if(boosted_projectile.damage_boosted && (boosted_projectile.last_atom_signaled != hit_atom) && (!boosted_projectile.bonus_projectile_check))
+	if(boosted_projectile.damage_boosted && ((boosted_projectile.last_atom_signaled?.resolve()) != hit_atom) && (!boosted_projectile.bonus_projectile_check))
 	//If this is after a boosted hit, the last atom that procced this isn't the same as the current target, and this isn't a bonus projectile sharing the same damage_boost
 		if(!boosted_projectile.last_damage_mult) //Make sure stored mult isn't 0
 			boosted_projectile.last_damage_mult = 1
@@ -95,4 +95,4 @@ GLOBAL_LIST_INIT(damage_boost_vehicles, typecacheof(/obj/vehicle/multitile))
 			boosted_projectile.last_damage_mult = 1
 
 		boosted_projectile.damage_boosted++ //Mark that a boosted hit occurred.
-		boosted_projectile.last_atom_signaled = hit_atom //Save the current triggering atom to the projectile
+		boosted_projectile.last_atom_signaled = WEAKREF(hit_atom) //Save the current triggering atom to the projectile

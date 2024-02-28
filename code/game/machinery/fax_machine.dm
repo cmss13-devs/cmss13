@@ -583,7 +583,7 @@ GLOBAL_LIST_EMPTY(alldepartments)
 		if(original_fax || scan)
 			to_chat(user, SPAN_NOTICE("There is still something in [src]. Remove it before you pick it up."))
 			return
-		to_chat(user, "You begin to pick up [src]...")
+		to_chat(user, SPAN_NOTICE("You begin to pick up [src]..."))
 		if(do_after(user, 4.5 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 			to_chat(user, SPAN_NOTICE("You pick up [src]."))

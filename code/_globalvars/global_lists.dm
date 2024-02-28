@@ -173,6 +173,7 @@ GLOBAL_LIST_INIT(player_origins, USCM_ORIGINS)
 GLOBAL_LIST_INIT_TYPED(hive_datum, /datum/hive_status, list(
 	XENO_HIVE_NORMAL = new /datum/hive_status(),
 	XENO_HIVE_CORRUPTED = new /datum/hive_status/corrupted(),
+	XENO_HIVE_RENEGADE = new /datum/hive_status/corrupted/renegade(),
 	XENO_HIVE_ALPHA = new /datum/hive_status/alpha(),
 	XENO_HIVE_BRAVO = new /datum/hive_status/bravo(),
 	XENO_HIVE_CHARLIE = new /datum/hive_status/charlie(),
@@ -182,7 +183,6 @@ GLOBAL_LIST_INIT_TYPED(hive_datum, /datum/hive_status, list(
 	XENO_HIVE_MUTATED = new /datum/hive_status/mutated(),
 	XENO_HIVE_FORSAKEN = new /datum/hive_status/forsaken(),
 	XENO_HIVE_YAUTJA = new /datum/hive_status/yautja(),
-	XENO_HIVE_RENEGADE = new /datum/hive_status/corrupted/renegade(),
 	XENO_HIVE_TUTORIAL = new /datum/hive_status/tutorial()
 ))
 

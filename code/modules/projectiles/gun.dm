@@ -817,7 +817,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		return
 
 	if(magazine.flags_magazine & AMMUNITION_HANDFUL)
-		to_chat(user, SPAN_WARNING("[src] needs an actual magazine."))
+		hand_load_chamber(user, magazine)
 		return
 
 	if(magazine.current_rounds <= 0)
@@ -848,6 +848,25 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 
 	update_icon()
 	return TRUE
+
+//Loads a bullet into the chamber from a handful of ammo. Ejects current one if there is.
+/obj/item/weapon/gun/proc/hand_load_chamber(mob/user, obj/item/ammo_magazine/handful)
+	var datum/ammo/new_cartridge = GLOB.ammo_list[handful.default_ammo]
+	if(in_chamber==null)
+		to_chat(user, SPAN_NOTICE("You load a [new_cartridge] into the [src]'s chamber."))
+	else
+		unload_chamber(user)
+		to_chat(user, SPAN_NOTICE("You clear the chamber of the [src] then load a [new_cartridge]."))
+	in_chamber = create_bullet(new_cartridge, initial(name))
+	apply_traits(in_chamber)
+	cock_gun(user) //placeholder
+
+	handful.current_rounds -= 1
+	if(handful.current_rounds <= 0)
+		if(user)
+			user.temp_drop_inv_item(handful)
+		qdel(handful)
+	else handful.update_icon()
 
 /obj/item/weapon/gun/proc/replace_magazine(mob/user, obj/item/ammo_magazine/magazine)
 	user.drop_inv_item_to_loc(magazine, src) //Click!

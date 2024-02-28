@@ -44,8 +44,8 @@
 			user.visible_message(SPAN_NOTICE("\The [user] removes \the [src]."))
 			deconstruct(TRUE)
 		return
-	else
-		. = ..()
+
+	return ..()
 
 /obj/structure/barricade/snow/hit_barricade(obj/item/I)
 	switch(I.damtype)
@@ -101,7 +101,7 @@
 	if(try_nailgun_usage(W, user))
 		return
 
-	. = ..()
+	return ..()
 
 /obj/structure/barricade/wooden/hit_barricade(obj/item/I)
 	switch(I.damtype)

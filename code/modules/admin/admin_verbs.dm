@@ -96,8 +96,9 @@ GLOBAL_LIST_INIT(admin_verbs_admin, list(
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_ban, list(
-	/client/proc/unban_panel
-	// /client/proc/jobbans // Disabled temporarily due to 15-30 second lag spikes. Don't forget the comma in the line above when uncommenting this!
+	/client/proc/unban_panel,
+	/client/proc/stickyban_panel,
+	// /client/proc/jobbans // Disabled temporarily due to 15-30 second lag spikes.
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_sounds, list(
@@ -110,6 +111,7 @@ GLOBAL_LIST_INIT(admin_verbs_minor_event, list(
 	/client/proc/cmd_admin_change_custom_event,
 	/datum/admins/proc/admin_force_distress,
 	/datum/admins/proc/admin_force_ERT_shuttle,
+	/client/proc/enable_event_mob_verbs,
 	/client/proc/force_hijack,
 	/datum/admins/proc/force_predator_round, //Force spawns a predator round.
 	/client/proc/adjust_predator_round,
@@ -140,7 +142,6 @@ GLOBAL_LIST_INIT(admin_verbs_minor_event, list(
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_major_event, list(
-	/client/proc/enable_event_mob_verbs,
 	/client/proc/cmd_admin_dress_all,
 	/client/proc/free_all_mobs_in_view,
 	/client/proc/drop_bomb,
@@ -237,12 +238,12 @@ GLOBAL_LIST_INIT(debug_verbs, list(
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_possess, list(
+	/client/proc/cmd_assume_direct_control,
 	/client/proc/possess,
 	/client/proc/release
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_permissions, list(
-	/client/proc/ToRban,
 	/client/proc/whitelist_panel,
 ))
 
@@ -262,10 +263,7 @@ GLOBAL_LIST_INIT(admin_mob_event_verbs_hideable, list(
 	/client/proc/editappear,
 	/client/proc/cmd_admin_addhud,
 	/client/proc/cmd_admin_change_their_hivenumber,
-	/client/proc/cmd_assume_direct_control,
 	/client/proc/free_mob_for_ghosts,
-	/client/proc/possess,
-	/client/proc/release,
 	/client/proc/cmd_admin_grantfullaccess,
 	/client/proc/cmd_admin_grantallskills,
 	/client/proc/admin_create_account
@@ -273,6 +271,7 @@ GLOBAL_LIST_INIT(admin_mob_event_verbs_hideable, list(
 
 //verbs which can be hidden - needs work
 GLOBAL_LIST_INIT(admin_verbs_hideable, list(
+	/client/proc/cmd_assume_direct_control,
 	/client/proc/release,
 	/client/proc/possess,
 	/client/proc/callproc_datum,

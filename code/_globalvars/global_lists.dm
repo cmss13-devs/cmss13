@@ -37,6 +37,9 @@ GLOBAL_LIST_EMPTY(minimap_icons)
 
 GLOBAL_LIST_EMPTY(mainship_pipes)
 
+/// List of all the maps that have been cached for /proc/load_map
+GLOBAL_LIST_EMPTY(cached_maps)
+
 /proc/initiate_minimap_icons()
 	var/list/icons = list()
 	for(var/iconstate in icon_states('icons/UI_icons/map_blips.dmi'))
@@ -165,9 +168,6 @@ GLOBAL_LIST_INIT(language_keys, setup_language_keys()) //table of say codes for 
 // Origins
 GLOBAL_REFERENCE_LIST_INDEXED(origins, /datum/origin, name)
 GLOBAL_LIST_INIT(player_origins, USCM_ORIGINS)
-
-//Xeno mutators
-GLOBAL_REFERENCE_LIST_INDEXED_SORTED(xeno_mutator_list, /datum/xeno_mutator, name)
 
 //Xeno hives
 GLOBAL_LIST_INIT_TYPED(hive_datum, /datum/hive_status, list(

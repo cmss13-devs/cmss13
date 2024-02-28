@@ -172,6 +172,9 @@ export class ButtonConfirm extends Component {
     } else {
       window.removeEventListener('click', this.handleClick);
     }
+    if (this.props.onConfirmChange) {
+      this.props.onConfirmChange(clickedOnce);
+    }
   }
 
   render() {
@@ -183,6 +186,7 @@ export class ButtonConfirm extends Component {
       color,
       content,
       onClick,
+      onConfirmChange,
       ...rest
     } = this.props;
     return (

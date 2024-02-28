@@ -1,0 +1,4 @@
+author: "Birdtalon"
+delete-after: True
+changes:
+  - bugfix: "Admin verbs - Hide will now hide Control Mob verb"

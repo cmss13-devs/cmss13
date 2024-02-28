@@ -152,7 +152,7 @@
 
 /obj/item/device/camera/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/device/camera_film))
-		if(pictures_left > (src.pictures_max - 10))
+		if(pictures_left > (pictures_max - 10))
 			to_chat(user, SPAN_NOTICE("[src] cannot fit more film in it!"))
 			return
 		to_chat(user, SPAN_NOTICE("You insert [I] into [src]."))
@@ -271,8 +271,7 @@
 	pictures_left--
 	to_chat(user, SPAN_NOTICE("[pictures_left] photos left."))
 
-	spawn(10)
-		captureimage(target, user, flag)
+	addtimer(CALLBACK(src, PROC_REF(captureimage), target, user, flag), 1 SECONDS)
 
 
 
@@ -334,23 +333,21 @@
 
 /obj/item/device/camera/broadcasting
 	name = "Broadcasting Camera"
-	desc = "Actively document everything you see, from the mundanity of shipside to the brutal battlefields below. Has a built in printer for action shots."
+	desc = "Actively document everything you see, from the mundanity of shipside to the brutal battlefields below. Has a built-in printer for action shots."
 	icon_state = "broadcastingcamera"
-	pictures_left = 20
-	pictures_max = 20
-	w_class = SIZE_HUGE
-	flags_equip_slot = NO_FLAGS //cannot be equiped
-	flags_item = TWOHANDED
 	item_state = "broadcastingcamera"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_0.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_0.dmi'
 		)
+	pictures_left = 20
+	pictures_max = 20
+	w_class = SIZE_HUGE
+	flags_equip_slot = NO_FLAGS //cannot be equiped
+	flags_item = TWOHANDED
 
 /obj/item/device/camera/broadcasting/attack_self(mob/user) //wielding capabilities
 	. = ..()
-	if(!(flags_item & TWOHANDED))
-		return
 	if(flags_item & WIELDED)
 		unwield(user)
 	else
@@ -368,4 +365,3 @@
 	pixel_x = P.fields["pixel_x"]
 	pixel_y = P.fields["pixel_y"]
 	photo_size = P.fields["size"]
-

@@ -125,6 +125,11 @@
 	desc = "A polaroid camera."
 	icon_state = "camera"
 	item_state = "camera"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_0.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_0.dmi'
+		)
+	flags_item = TWOHANDED
 	w_class = SIZE_SMALL
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
@@ -137,6 +142,17 @@
 /obj/item/device/camera/get_examine_text(mob/user)
 	. = ..()
 	. += "It has [pictures_left] photos left."
+
+/obj/item/device/camera/attack_self(mob/user) //wielding capabilities
+	. = ..()
+	if(flags_item & WIELDED)
+		unwield(user)
+	else
+		wield(user)
+
+/obj/item/device/camera/dropped(mob/user)
+	..()
+	unwield(user)
 
 /obj/item/device/camera/verb/change_size()
 	set name = "Set Photo Focus"
@@ -262,18 +278,19 @@
 	return mob_detail
 
 /obj/item/device/camera/afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
-	if(pictures_left <= 0 || ismob(target.loc) || isstorage(target.loc))
+	if(pictures_left <= 0)
+		to_chat(user, SPAN_WARNING("There isn't enough film in the [src] to take a photo."))
 		return
-	if(user.contains(target) || istype(target, /atom/movable/screen))
+	if(ismob(target.loc) || isstorage(target.loc) || user.contains(target) || istype(target, /atom/movable/screen))
 		return
-
+	if(!(flags_item & WIELDED))
+		to_chat(user, SPAN_WARNING("You need to wield the [src] with both hands to take a photo!"))
+		return
 	playsound(loc, pick('sound/items/polaroid1.ogg', 'sound/items/polaroid2.ogg'), 15, 1)
 	pictures_left--
 	to_chat(user, SPAN_NOTICE("[pictures_left] photos left."))
 
 	addtimer(CALLBACK(src, PROC_REF(captureimage), target, user, flag), 1 SECONDS)
-
-
 
 /obj/item/device/camera/proc/captureimage(atom/target, mob/user, flag)
 	var/mob_descriptions = ""
@@ -336,26 +353,10 @@
 	desc = "Actively document everything you see, from the mundanity of shipside to the brutal battlefields below. Has a built-in printer for action shots."
 	icon_state = "broadcastingcamera"
 	item_state = "broadcastingcamera"
-	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_0.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_0.dmi'
-		)
 	pictures_left = 20
 	pictures_max = 20
 	w_class = SIZE_HUGE
 	flags_equip_slot = NO_FLAGS //cannot be equiped
-	flags_item = TWOHANDED
-
-/obj/item/device/camera/broadcasting/attack_self(mob/user) //wielding capabilities
-	. = ..()
-	if(flags_item & WIELDED)
-		unwield(user)
-	else
-		wield(user)
-
-/obj/item/device/camera/broadcasting/dropped(mob/user)
-	..()
-	unwield(user)
 
 /obj/item/photo/proc/construct(datum/picture/P)
 	icon = P.fields["icon"]

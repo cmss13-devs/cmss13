@@ -31,7 +31,6 @@
 
 /obj/item/tool/plantspray/pests/old
 	name = "bottle of pestkiller"
-	icon = 'icons/obj/items/chemistry.dmi'
 
 /obj/item/tool/plantspray/pests/old/carbaryl
 	name = "bottle of carbaryl"

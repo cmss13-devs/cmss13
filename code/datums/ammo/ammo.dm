@@ -251,4 +251,4 @@
 	chemical.fire_penetrating = reference.fire_penetrating
 	chemical.burn_sprite = reference.burn_sprite
 
-	new /obj/flamer_fire(Turf, cause_data, chemical)
+	new /obj/flamer_fire(turf, cause_data, chemical)

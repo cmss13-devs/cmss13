@@ -16,9 +16,9 @@
 	service_hat = list(/obj/item/clothing/head/cmcap)
 	service_shoes = list(/obj/item/clothing/shoes/dress)
 
-	dress_under = list(/obj/item/clothing/under/marine/dress)
-	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress)
-	dress_hat = list(/obj/item/clothing/head/marine/peaked)
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
+	dress_hat = list(/obj/item/clothing/head/marine/dress_cover/officer)
 	dress_gloves = list(/obj/item/clothing/gloves/marine/dress)
 	dress_shoes = list(/obj/item/clothing/shoes/dress)
 
@@ -127,6 +127,10 @@
 	minimap_icon = "correspondent"
 	minimap_background = MINIMAP_ICON_BACKGROUND_CIVILIAN
 
+	dress_under = list()
+	dress_over = list()
+	dress_hat = list()
+
 /datum/equipment_preset/uscm_ship/reporter/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
 
@@ -158,6 +162,9 @@
 
 	minimap_icon = "correspondent"
 	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
+
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
+	dress_hat = list(/obj/item/clothing/head/marine/dress_cover)
 
 /datum/equipment_preset/uscm_ship/reporter_uscm/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
@@ -246,6 +253,9 @@
 	minimap_icon = "engi"
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/engi)
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
+	dress_hat = list(/obj/item/clothing/head/marine/dress_cover)
 
 /datum/equipment_preset/uscm_ship/maint/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/tech
@@ -284,6 +294,9 @@
 	minimap_icon = "ot"
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/engi)
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
+	dress_hat = list(/obj/item/clothing/head/marine/dress_cover)
 
 /datum/equipment_preset/uscm_ship/ordn/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/tech
@@ -327,6 +340,8 @@
 	minimap_icon = list("ct" = MINIMAP_ICON_COLOR_HEAD)
 
 	utility_under = list(/obj/item/clothing/under/rank/qm_suit)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
+	dress_hat = list(/obj/item/clothing/head/marine/dress_cover)
 
 /datum/equipment_preset/uscm_ship/qm/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/tech
@@ -358,6 +373,9 @@
 	minimap_icon = "ct"
 
 	utility_under = list(/obj/item/clothing/under/rank/cargotech)
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
+	dress_hat = list(/obj/item/clothing/head/marine/dress_cover)
 
 /datum/equipment_preset/uscm_ship/cargo/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/tech
@@ -405,11 +423,11 @@
 	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
 	service_hat = list(/obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/marine/commander/dress, /obj/item/clothing/head/beret/marine/commander/black, /obj/item/clothing/head/marine/peaked/service)
 
-	dress_under = list(/obj/item/clothing/under/marine/dress, /obj/item/clothing/under/marine/officer/formal/servicedress)
-	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
-	dress_hat = list(/obj/item/clothing/head/marine/peaked/captain/white, /obj/item/clothing/head/marine/peaked/captain/black, /obj/item/clothing/head/marine/peaked)
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
+	dress_hat = list(/obj/item/clothing/head/marine/dress_cover/officer)
 	dress_shoes = list(/obj/item/clothing/shoes/dress/commander)
-	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/white, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/black, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/suit, /obj/item/clothing/suit/storage/jacket/marine/dress)
+	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
 
 /datum/equipment_preset/uscm_ship/commander/New()
 	. = ..()
@@ -465,13 +483,6 @@
 	role_comm_title = "CO"
 	minimum_age = 35
 
-	dress_over = list(
-		/obj/item/clothing/suit/storage/jacket/marine/dress/officer/white,
-		/obj/item/clothing/suit/storage/jacket/marine/dress/officer/black,
-		/obj/item/clothing/suit/storage/jacket/marine/dress/officer/suit,
-		/obj/item/clothing/suit/storage/jacket/marine/dress/officer/falcon,
-	)
-
 /datum/equipment_preset/uscm_ship/commander/council/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/commander/council(new_human), WEAR_HEAD)
@@ -481,6 +492,7 @@
 	name = "USCM Commanding Officer (CO++)"
 	idtype = /obj/item/card/id/general
 	paygrade = PAY_SHORT_MO6
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior, /obj/item/clothing/under/marine/dress/blues/general)
 
 /datum/equipment_preset/uscm_ship/commander/council/plus/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/commander/councilchief(new_human), WEAR_HEAD)
@@ -575,6 +587,8 @@
 	minimap_icon = "sea"
 
 	service_hat = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/drillhat)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
+	dress_hat = list(/obj/item/clothing/head/marine/dress_cover)
 
 /datum/equipment_preset/uscm_ship/sea/New()
 	. = ..()
@@ -726,6 +740,9 @@
 
 	minimap_icon = "dcc"
 
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
+	dress_hat = list(/obj/item/clothing/head/marine/dress_cover)
+
 /datum/equipment_preset/uscm_ship/dcc/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
 	if(new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
@@ -782,9 +799,7 @@
 	service_hat = list(/obj/item/clothing/head/beret/cm)
 	service_shoes = list(/obj/item/clothing/shoes/dress/commander)
 
-	dress_extra = list(/obj/item/clothing/head/beret/marine/commander/dress, /obj/item/storage/large_holster/ceremonial_sword/full)
-	dress_hat = list(/obj/item/clothing/head/marine/peaked/captain)
-	dress_shoes = list(/obj/item/clothing/shoes/dress/commander)
+	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
 
 /datum/equipment_preset/uscm_ship/officer/New()
 	. = ..()
@@ -817,6 +832,9 @@
 	minimap_icon = "mst"
 
 	utility_under = list(/obj/item/clothing/under/marine/chef)
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
+	dress_hat = list(/obj/item/clothing/head/marine/dress_cover)
 
 /datum/equipment_preset/uscm_ship/chef/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel

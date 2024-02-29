@@ -87,6 +87,46 @@
 	id = "almayer vehicle"
 	roundstart_template = /datum/map_template/shuttle/vehicle
 
+	//elevator effects (four so the entire elevator doesn't vanish when there's one opaque obstacle between you and the actual elevator loc).
+	var/obj/effect/elevator/vehicle/SW
+	var/obj/effect/elevator/vehicle/SE
+	var/obj/effect/elevator/vehicle/NW
+	var/obj/effect/elevator/vehicle/NE
+
+/obj/docking_port/stationary/vehicle_elevator/almayer/Initialize(mapload)
+	. = ..()
+	// Create and offset some effects for the elevator shaft sprite.
+	SW = new(locate(src.x - 2, src.y - 2, src.z))
+
+	SE = new(locate(src.x + 2, src.y - 2, src.z))
+	SE.pixel_x = -128
+
+	NW = new(locate(src.x - 2, src.y + 2, src.z))
+	NW.pixel_y = -128
+
+	NE = new(locate(src.x + 2, src.y + 2, src.z))
+	NE.pixel_x = -128
+	NE.pixel_y = -128
+
+	SW.invisibility = INVISIBILITY_ABSTRACT
+	SE.invisibility = INVISIBILITY_ABSTRACT
+	NW.invisibility = INVISIBILITY_ABSTRACT
+	NE.invisibility = INVISIBILITY_ABSTRACT
+
+// Make the elevator shaft visible when the elevator leaves.
+/obj/docking_port/stationary/vehicle_elevator/almayer/on_departure(obj/docking_port/mobile/departing_shuttle)
+	SW.invisibility = 0
+	SE.invisibility = 0
+	NW.invisibility = 0
+	NE.invisibility = 0
+
+// And make it invisible again when the elevator returns.
+/obj/docking_port/stationary/vehicle_elevator/almayer/on_arrival(obj/docking_port/mobile/arriving_shuttle)
+	SW.invisibility = INVISIBILITY_ABSTRACT
+	SE.invisibility = INVISIBILITY_ABSTRACT
+	NW.invisibility = INVISIBILITY_ABSTRACT
+	NE.invisibility = INVISIBILITY_ABSTRACT
+
 /obj/docking_port/stationary/vehicle_elevator/adminlevel
 	name = "Adminlevel Vehicle Elevator Dock"
 	id = "adminlevel vehicle"

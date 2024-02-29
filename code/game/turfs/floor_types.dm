@@ -213,7 +213,7 @@
 /// Base type of the requisitions and vehicle bay elevator pits.
 /turf/open/floor/almayer/empty
 	name = "\proper empty space"
-	desc = "There seems to be an awful lot of machinery down below"
+	desc = "There seems to be an awful lot of machinery down below..."
 	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "black"
 
@@ -231,7 +231,7 @@
 
 /turf/open/floor/almayer/empty/Entered(atom/movable/AM)
 	..()
-	if(!isobserver(AM) && !istype(AM, /obj/docking_port))
+	if(!isobserver(AM) && !istype(AM, /obj/effect/elevator) && !istype(AM, /obj/docking_port))
 		addtimer(CALLBACK(src, PROC_REF(enter_depths), AM), 0.2 SECONDS)
 
 /// Returns a list of turfs to be used as a destination for anyone unfortunate enough to fall into the pit.

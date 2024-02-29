@@ -279,7 +279,7 @@
 			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SNIPER)
 		if("Anti-materiel Sniper")
 			spec_box = new /obj/item/storage/box/spec/sniper/anti_materiel(T)
-			specialist_assignment = "Sniper"
+			specialist_assignment = "Heavy Sniper"
 			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SNIPER)
 		if("Scout")
 			spec_box = new /obj/item/storage/box/spec/scout(T)

@@ -1,0 +1,7 @@
+author: "BadAtThisGame302"
+delete-after: True
+changes:
+  - rscadd: "Added a new uniform to the Flight Control Operator."
+  - rscadd: "Added a new faction IFF grouping for WY Survs."
+  - rscadd: "Added the ICC and the CL survs to the WY IFF System."
+  - rscadd: "Added the USCM CL to the WY IFF System."

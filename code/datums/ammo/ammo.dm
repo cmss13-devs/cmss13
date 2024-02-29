@@ -237,8 +237,8 @@
 
 		P.fire_at(new_target, original_P.firer, original_P.shot_from, P.ammo.max_range, P.ammo.shell_speed, original_P.original) //Fire!
 
-/datum/ammo/proc/drop_flame(turf/Turf, datum/cause_data/cause_data) // ~Art updated fire 20JAN17
-	if(!istype(Turf))
+/datum/ammo/proc/drop_flame(turf/turf, datum/cause_data/cause_data) // ~Art updated fire 20JAN17
+	if(!istype(turf))
 		return
 	if(locate(/obj/flamer_fire) in Turf)
 		return

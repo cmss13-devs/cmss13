@@ -1,5 +1,7 @@
 
 #define QUEEN_DEATH_COUNTDOWN  10 MINUTES //10 minutes. Can be changed into a variable if it needs to be manipulated later.
+/// Marine major if we have this many or less xenos after the queen timer runs out; also used for warning last xenos
+#define XENO_HIVE_COLLAPSE_THRESHOLD	3
 
 #define MODE_INFESTATION_X_MAJOR "Xenomorph Major Victory"
 #define MODE_INFESTATION_M_MAJOR "Marine Major Victory"

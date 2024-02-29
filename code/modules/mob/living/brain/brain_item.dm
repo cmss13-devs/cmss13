@@ -67,4 +67,5 @@
 			brainmob.mind.transfer_to(target)
 		else
 			target.key = brainmob.key
-			if(target.client) target.client.view_size.reset_to_default()
+			if(target.client)
+				target.client.view_size.reset_to_default()

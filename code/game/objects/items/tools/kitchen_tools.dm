@@ -45,6 +45,10 @@
 		return ..()
 
 	if (reagents.total_volume > 0)
+		var/fullness = M.nutrition + (M.reagents.get_reagent_amount("nutriment") * 25)
+		if(fullness > NUTRITION_HIGH)
+			to_chat(user, SPAN_WARNING("[user == M ? "You" : "They"] don't feel like eating more right now."))
+			return ..()
 		reagents.set_source_mob(user)
 		reagents.trans_to_ingest(M, reagents.total_volume)
 		if(M == user)
@@ -214,7 +218,7 @@
 	var/cooldown = 0
 
 /obj/item/tool/kitchen/tray/attack(mob/living/carbon/M, mob/living/carbon/user)
-	to_chat(user, SPAN_WARNING("You accidentally slam yourself with the [src]!"))
+	to_chat(user, SPAN_WARNING("You accidentally slam yourself with [src]!"))
 	user.apply_effect(1, WEAKEN)
 	user.take_limb_damage(2)
 

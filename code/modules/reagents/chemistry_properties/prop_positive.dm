@@ -106,9 +106,12 @@
 /datum/chem_property/positive/hemogenic/process(mob/living/M, potency = 1, delta_time)
 	if(!iscarbon(M))
 		return
-	var/mob/living/carbon/C = M
-	C.blood_volume = min(C.blood_volume+potency,BLOOD_VOLUME_MAXIMUM+100)
-	if(potency > POTENCY_MAX_TIER_1 && C.blood_volume > BLOOD_VOLUME_MAXIMUM && !isyautja(M)) //Too many red blood cells thickens the blood and leads to clotting, doesn't impact Yautja
+	if(M.nutrition < 200)
+		return
+
+	handle_nutrition_loss(M, potency, delta_time)
+	M.blood_volume = min(M.blood_volume + potency, M.limit_blood)
+	if(potency > POTENCY_MAX_TIER_1 && M.blood_volume > (M.max_blood + 10) && !isyautja(M)) //Too many red blood cells thickens the blood and leads to clotting, doesn't impact Yautja
 		M.take_limb_damage(potency)
 		M.apply_damage(POTENCY_MULTIPLIER_MEDIUM*potency, OXY)
 		M.reagent_move_delay_modifier += potency
@@ -119,6 +122,41 @@
 
 /datum/chem_property/positive/hemogenic/process_critical(mob/living/M, potency = 1)
 	M.nutrition = max(M.nutrition - POTENCY_MULTIPLIER_VHIGH*potency, 0)
+
+/datum/chem_property/positive/hemogenic/proc/handle_nutrition_loss(mob/living/M, potency = 1, delta_time)
+	M.nutrition = max(M.nutrition - potency, 0)
+
+/datum/chem_property/positive/hemogenic/predator
+	name = PROPERTY_YAUTJA_HEMOGENIC
+	code = "YHM"
+	rarity = PROPERTY_DISABLED
+
+/datum/chem_property/positive/hemogenic/predator/handle_nutrition_loss(mob/living/M, potency = 1, delta_time)
+	return
+
+/datum/chem_property/positive/hemostatic
+	name = PROPERTY_HEMOSTATIC
+	code = "HSC"
+	description = "Vastly improves the blood's natural ability to coagulate and stop bleeding by heightening platelet production and effectiveness. Overdosing will cause extreme blood clotting, resulting in severe tissue damage."
+	rarity = PROPERTY_UNCOMMON
+	max_level = 1
+	value = 2
+
+/datum/chem_property/positive/hemostatic/process(mob/living/affected_mob, potency = 1, delta_time)
+	var/mob/living/carbon/human/effected_human = affected_mob
+	effected_human.chem_effect_flags |= CHEM_EFFECT_NO_BLEEDING
+
+/datum/chem_property/positive/hemostatic/on_delete(mob/living/affected_mob)
+	var/mob/living/carbon/human/effected_human = affected_mob
+	effected_human.chem_effect_flags &= CHEM_EFFECT_NO_BLEEDING
+
+/datum/chem_property/positive/hemostatic/process_overdose(mob/living/affected_mob, potency = 1)
+	affected_mob.apply_damage(potency, BRUTE)
+
+/datum/chem_property/positive/hemostatic/process_critical(mob/living/affected_mob, potency = 1)
+	affected_mob.apply_damage(potency * 9, BRUTE)
+	affected_mob.apply_damage(potency * 9, BURN)
+	affected_mob.apply_damage(potency * 9, TOX)
 
 /datum/chem_property/positive/nervestimulating
 	name = PROPERTY_NERVESTIMULATING
@@ -417,7 +455,7 @@
 	if(prob(10 * delta_time))
 		to_chat(M, SPAN_WARNING("You feel like you have the worst brain freeze ever!"))
 	M.apply_effect(20, PARALYZE)
-	M.stunned = max(M.stunned,21)
+	M.apply_effect(20, STUN)
 
 /datum/chem_property/positive/neurocryogenic/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.bodytemperature = max(M.bodytemperature - 2.5 * potency * delta_time,0)
@@ -443,24 +481,24 @@
 	description = "Antimicrobial property specifically targeting parasitic pathogens in the body disrupting their growth and potentially killing them."
 	rarity = PROPERTY_UNCOMMON
 
-/datum/chem_property/positive/antiparasitic/process(mob/living/M, potency = 1, delta_time)
-	if(!ishuman(M))
+/datum/chem_property/positive/antiparasitic/process(mob/living/current_mob, potency = 1, delta_time)
+	if(!ishuman(current_mob))
 		return
-	var/mob/living/carbon/human/H = M
-	for(var/content in H.contents)
-		var/obj/item/alien_embryo/A = content
-		if(A && istype(A))
-			if(A.counter > 0)
-				A.counter = A.counter - potency
-				H.take_limb_damage(0,POTENCY_MULTIPLIER_MEDIUM*potency)
+	var/mob/living/carbon/human/current_human = current_mob
+	for(var/content in current_human.contents)
+		var/obj/item/alien_embryo/embryo = content
+		if(embryo && istype(embryo))
+			if(embryo.counter > 0)
+				embryo.counter = embryo.counter - potency
+				current_human.take_limb_damage(0,POTENCY_MULTIPLIER_MEDIUM*potency)
 			else
-				A.stage--
-				if(A.stage <= 0)//if we reach this point, the embryo dies and the occupant takes a nasty amount of acid damage
-					qdel(A)
-					H.take_limb_damage(0,rand(20,40))
-					H.vomit()
+				embryo.stage--
+				if(embryo.stage <= 0)//if we reach this point, the embryo dies and the occupant takes a nasty amount of acid damage
+					qdel(embryo)
+					current_human.take_limb_damage(0,rand(20,40))
+					current_human.vomit()
 				else
-					A.counter = 90
+					embryo.counter = embryo.per_stage_hugged_time
 
 /datum/chem_property/positive/antiparasitic/process_overdose(mob/living/M, potency = 1)
 	M.apply_damage(potency, TOX)
@@ -510,7 +548,7 @@
 	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_REACTANT
 	value = 3
-	max_level = 1
+	COOLDOWN_DECLARE(ghost_notif)
 
 /datum/chem_property/positive/defibrillating/on_delete(mob/living/M)
 	..()
@@ -536,19 +574,33 @@
 /datum/chem_property/positive/defibrillating/process_dead(mob/living/M, potency = 1, delta_time)
 	if(!ishuman(M))
 		return
-	var/mob/living/carbon/human/H = M
-	H.apply_damage(-H.getOxyLoss(), OXY)
-	if(H.check_tod() && H.is_revivable() && H.health > HEALTH_THRESHOLD_DEAD)
-		to_chat(H, SPAN_NOTICE("You feel your heart struggling as you suddenly feel a spark, making it desperately try to continue pumping."))
-		playsound_client(H.client, 'sound/effects/Heart Beat Short.ogg', 35)
-		addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, handle_revive)), 50, TIMER_UNIQUE)
-	else if (potency > POTENCY_MAX_TIER_1 && H.check_tod() && H.is_revivable() && H.health < HEALTH_THRESHOLD_DEAD) //Will heal if level is 7 or greater
-		to_chat(H, SPAN_NOTICE("You feel a faint spark in your chest."))
-		H.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, BRUTE)
-		H.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, BURN)
-		H.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, TOX)
-		H.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, CLONE)
-		H.apply_damage(-H.getOxyLoss(), OXY)
+	var/mob/living/carbon/human/dead = M
+	var/revivable = dead.check_tod() && dead.is_revivable()
+	if(revivable && (dead.health > HEALTH_THRESHOLD_DEAD))
+		addtimer(CALLBACK(dead, TYPE_PROC_REF(/mob/living/carbon/human, handle_revive)), 5 SECONDS)
+		to_chat(dead, SPAN_NOTICE("You feel your heart struggling as you suddenly feel a spark, making it desperately try to continue pumping."))
+		playsound_client(dead.client, 'sound/effects/heart_beat_short.ogg', 35)
+	else if ((potency >= 1) && revivable && dead.health <= HEALTH_THRESHOLD_DEAD) //heals on all level above 1. This is however, minimal.
+		to_chat(dead, SPAN_NOTICE("You feel a faint spark in your chest."))
+		dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, BRUTE)
+		dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, BURN)
+		dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, TOX)
+		dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, CLONE)
+		dead.apply_damage(-dead.getOxyLoss(), OXY)
+		if(potency > CREATE_MAX_TIER_1) //heal more if higher levels
+			dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, BRUTE)
+			dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, BURN)
+			dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, TOX)
+			dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, CLONE)
+		if(dead.health < HEALTH_THRESHOLD_DEAD)
+			return
+		if(!COOLDOWN_FINISHED(src, ghost_notif))
+			return
+		var/mob/dead/observer/ghost = dead.get_ghost()
+		if(ghost?.client)
+			COOLDOWN_START(src, ghost_notif, 30 SECONDS)
+			playsound_client(ghost.client, 'sound/effects/adminhelp_new.ogg')
+			to_chat(ghost, SPAN_BOLDNOTICE("Your heart is struggling to pump! There is a chance you might get up!(Verbs -> Ghost -> Re-enter corpse, or <a href='?src=\ref[ghost];reentercorpse=1'>click here!</a>)"))
 	return TRUE
 
 /datum/chem_property/positive/hyperdensificating
@@ -595,7 +647,7 @@
 		return
 	H.chem_effect_flags |= CHEM_EFFECT_RESIST_NEURO
 	to_chat(M, SPAN_NOTICE("Your skull feels incredibly thick."))
-	M.dazed = 0
+	M.SetDaze(0)
 
 /datum/chem_property/positive/neuroshielding/process_overdose(mob/living/M, potency = 1, delta_time)
 	if(!ishuman(M))

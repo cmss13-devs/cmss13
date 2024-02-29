@@ -22,15 +22,15 @@
 
 /datum/chemical_reaction/proc/add_to_filtered_list(reset = FALSE)
 	if(reset)
-		for(var/R in chemical_reactions_filtered_list)
-			LAZYREMOVE(chemical_reactions_filtered_list[R], src)
+		for(var/R in GLOB.chemical_reactions_filtered_list)
+			LAZYREMOVE(GLOB.chemical_reactions_filtered_list[R], src)
 	for(var/R in required_reagents)
-		LAZYADD(chemical_reactions_filtered_list[R], src)
+		LAZYADD(GLOB.chemical_reactions_filtered_list[R], src)
 
 /datum/chemical_reaction/proc/check_duplicate()
 	for(var/R in required_reagents)
-		if(chemical_reactions_filtered_list[R])
-			for(var/reaction in chemical_reactions_filtered_list[R])//We filter the chemical_reactions_filtered_list so we don't have to search through as much
+		if(GLOB.chemical_reactions_filtered_list[R])
+			for(var/reaction in GLOB.chemical_reactions_filtered_list[R])//We filter the GLOB.chemical_reactions_filtered_list so we don't have to search through as much
 				var/datum/chemical_reaction/C = reaction
 				var/matches = 0
 				for(var/B in required_reagents)
@@ -43,7 +43,7 @@
 // To prevent such a situation, if ALL reagent inside a reaction are medical chemicals, the recipe is considered flawed.
 /datum/chemical_reaction/proc/check_reaction_uses_all_default_medical()
 	for(var/R in required_reagents)
-		var/datum/reagent/M = chemical_reagents_list[R]
+		var/datum/reagent/M = GLOB.chemical_reagents_list[R]
 		if(!(initial(M.flags) & REAGENT_TYPE_MEDICAL))
 			return FALSE
 	return TRUE

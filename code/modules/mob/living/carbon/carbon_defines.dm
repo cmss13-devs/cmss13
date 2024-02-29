@@ -1,5 +1,6 @@
 /mob/living/carbon
 	gender = MALE
+	mobility_flags = MOBILITY_FLAGS_CARBON_DEFAULT
 	var/list/stomach_contents = list()
 
 	var/life_tick = 0   // The amount of life ticks that have processed on this mob.
@@ -20,6 +21,10 @@
 
 	//blood.dm
 	blood_volume = BLOOD_VOLUME_NORMAL
+	var/special_blood = null
+
+	///list of active transfusions from blood bags or iv stands
+	var/list/active_transfusions = list()
 
 	var/datum/huntdata/hunter_data //Stores all information relating to Hunters for use with their HUD and other systems.
 

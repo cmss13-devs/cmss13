@@ -19,7 +19,6 @@
 # +BAN = the ability to ban, jobban and fullban
 # +STEALTH = the ability to stealthmin (make yourself appear with a fake name to everyone but other admins
 # +POSSESS = the ability to possess objects
-# +REJUV (or +REJUVINATE) = the ability to heal, respawn, modify damage and use godmode
 # +COLOR = the ability to use the OOC > "Set OOC Color - Self" verb
 # +BUILD (or +BUILDMODE) = the ability to use buildmode
 # +SERVER = higher-risk admin verbs and abilities, such as those which affect the server configuration.
@@ -36,16 +35,16 @@ Mentor      	+MENTOR +COLOR
 
 
 Trial Moderator +MOD +SERVER +COLOR
-Moderator 		+MOD +SERVER +BAN +REJUV +COLOR +NOLOCK
-Trial Admin 	+ADMIN +MOD +SERVER +BAN +REJUV +SPAWN +STEALTH +VAREDIT +COLOR
-Admin 			+ADMIN +MOD +SERVER +BAN +REJUV +SPAWN +STEALTH +VAREDIT +POSSESS +SOUND +COLOR +BUILDMODE
+Moderator 		+MOD +SERVER +BAN +COLOR +NOLOCK
+Trial Admin 	+ADMIN +MOD +SERVER +BAN +SPAWN +STEALTH +VAREDIT +COLOR
+Admin 			+ADMIN +MOD +SERVER +BAN +SPAWN +STEALTH +VAREDIT +POSSESS +SOUND +COLOR +BUILDMODE
 
 
 Coder			+MOD +SERVER +BAN +VAREDIT +SPAWN +DEBUG +COLOR
 Mapper 			+MOD +VAREDIT +COLOR +BUILDMODE +SPAWN
 Spriter			+MOD +VAREDIT +SPAWN +COLOR
-Developer		+ADMIN +MOD +SERVER +BAN +VAREDIT +SPAWN +DEBUG +REJUV +POSSESS +BUILDMODE +SOUND +COLOR
-Lead Spriter    +ADMIN +MOD +SERVER +REJUV +VAREDIT +BUILDMODE +SPAWN +DEBUG +COLOR
+Developer		+ADMIN +MOD +SERVER +BAN +VAREDIT +SPAWN +DEBUG +POSSESS +BUILDMODE +SOUND +COLOR
+Lead Spriter    +ADMIN +MOD +SERVER +VAREDIT +BUILDMODE +SPAWN +DEBUG +COLOR
 
 
 Host 			+EVERYTHING
@@ -55,6 +54,6 @@ Head Dev		+EVERYTHING
 
 
 Legacy Mentor 	 +MENTOR +COLOR
-Senior Moderator +ADMIN +MOD +SERVER +BAN +REJUV +SPAWN +STEALTH +VAREDIT +POSSESS +SOUND +COLOR +BUILDMODE
-Senior Admin  	 +ADMIN +MOD +SERVER +BAN +REJUV +SPAWN +STEALTH +VAREDIT +POSSESS +SOUND +COLOR +BUILDMODE +DEBUG
+Senior Moderator +ADMIN +MOD +SERVER +BAN +SPAWN +STEALTH +VAREDIT +POSSESS +SOUND +COLOR +BUILDMODE
+Senior Admin  	 +ADMIN +MOD +SERVER +BAN +SPAWN +STEALTH +VAREDIT +POSSESS +SOUND +COLOR +BUILDMODE +DEBUG
 

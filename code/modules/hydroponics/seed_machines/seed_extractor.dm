@@ -16,10 +16,10 @@
 	var/list/data = list()
 	var/list/geneMasks = list()
 
-	for(var/gene_tag in gene_tag_masks)
+	for(var/gene_tag in GLOB.gene_tag_masks)
 		var/list/genedata = list(list(
 			"tag" = gene_tag,
-			"mask" = gene_tag_masks[gene_tag]
+			"mask" = GLOB.gene_tag_masks[gene_tag]
 		))
 		geneMasks += genedata
 
@@ -89,8 +89,8 @@
 			if(!genetics.roundstart)
 				loaded_disk.genesource += " (variety #[genetics.uid])"
 
-			loaded_disk.name += " ([gene_tag_masks[params["gene"]]], #[genetics.uid])"
-			loaded_disk.desc += " The label reads \'gene [gene_tag_masks[params["gene"]]], sampled from [genetics.display_name]\'."
+			loaded_disk.name += " ([GLOB.gene_tag_masks[params["gene"]]], #[genetics.uid])"
+			loaded_disk.desc += " The label reads \'gene [GLOB.gene_tag_masks[params["gene"]]], sampled from [genetics.display_name]\'."
 			playsound(loc, 'sound/machines/fax.ogg', 15, 1)
 			eject_disk()
 

@@ -4,7 +4,8 @@
 	name = "\improper Suspicious Automated Guns Rack"
 	desc = "While similar in function to ColMarTech automated racks, this one is clearly not of USCM origin. Contains various weapons, ammunition and explosives."
 	icon_state = "antag_guns"
-	req_access = list(ACCESS_ILLEGAL_PIRATE)
+	req_one_access = list(ACCESS_ILLEGAL_PIRATE, ACCESS_UPP_GENERAL, ACCESS_CLF_GENERAL)
+	req_access = null
 
 	use_snowflake_points = TRUE
 
@@ -88,10 +89,10 @@
 	spawned_gear_list = list(
 		/obj/item/tool/hatchet,
 		/obj/item/tool/hatchet,
-		/obj/item/weapon/melee/baseballbat,
-		/obj/item/weapon/melee/baseballbat,
-		/obj/item/weapon/melee/baseballbat/metal,
-		/obj/item/weapon/melee/twohanded/spear,
-		/obj/item/weapon/melee/twohanded/spear,
-		/obj/item/weapon/melee/twohanded/fireaxe,
+		/obj/item/weapon/baseballbat,
+		/obj/item/weapon/baseballbat,
+		/obj/item/weapon/baseballbat/metal,
+		/obj/item/weapon/twohanded/spear,
+		/obj/item/weapon/twohanded/spear,
+		/obj/item/weapon/twohanded/fireaxe,
 	)

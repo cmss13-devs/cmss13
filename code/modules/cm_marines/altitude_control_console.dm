@@ -38,6 +38,10 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 	. = ..()
 	START_PROCESSING(SSslowobj, src)
 
+/obj/structure/machinery/computer/altitude_control_console/Destroy()
+	STOP_PROCESSING(SSslowobj, src)
+	return ..()
+
 /obj/structure/machinery/computer/altitude_control_console/process()
 	. = ..()
 	var/temperature_change
@@ -59,7 +63,7 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 				temperature_change = COOLING
 			if(SHIP_ALT_HIGH)
 				temperature_change = COOLING
-	GLOB.ship_temp = Clamp(GLOB.ship_temp += temperature_change, 0, 120)
+	GLOB.ship_temp = clamp(GLOB.ship_temp += temperature_change, 0, 120)
 	if(prob(50))
 		return
 	if(GLOB.ship_alt == SHIP_ALT_LOW)

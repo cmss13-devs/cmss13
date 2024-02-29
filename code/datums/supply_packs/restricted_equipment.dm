@@ -4,18 +4,18 @@
 	name = "B12 pattern marine armor crate (x1 helmet, x1 armor)"
 	contains = list(
 		/obj/item/clothing/head/helmet/marine/leader,
-		/obj/item/clothing/suit/storage/marine/leader,
+		/obj/item/clothing/suit/storage/marine/medium/leader,
 	)
 	cost = 20
 	containertype = /obj/structure/closet/crate
 	containername = "B12 pattern marine armor crate"
 	group = "Restricted Equipment"
 
-/datum/supply_packs/armor_rto
+/datum/supply_packs/armor_tl
 	name = "M4 pattern marine armor crate (x1 helmet, x1 armor)"
 	contains = list(
 		/obj/item/clothing/head/helmet/marine/rto,
-		/obj/item/clothing/suit/storage/marine/rto,
+		/obj/item/clothing/suit/storage/marine/medium/rto,
 	)
 	cost = 20
 	containertype = /obj/structure/closet/crate

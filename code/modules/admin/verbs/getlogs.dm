@@ -13,7 +13,6 @@
 	codebase for the entire /TG/station commuity a TONNE easier :3 Thanks for your help!
 */
 
-
 //This proc allows Game Masters to grant a client access to the .getruntimelog verb
 //Permissions expire at the end of each round.
 //Runtimes can be used to meta or spot game-crashing exploits so it's advised to only grant coders that
@@ -23,25 +22,24 @@
 	set desc = "Give somebody access to any session logfiles saved to the /log/runtime/ folder."
 	set category = null
 
-	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "<font color='red'>Only Admins may use this command.</font>")
+	if(!src.admin_holder || !(admin_holder.rights & R_MOD) || !(admin_holder.rights & R_DEBUG))
+		to_chat(src, "<font color='red'>Access denied.</font>")
 		return
 
 	var/client/target = tgui_input_list(src,"Choose somebody to grant access to the server's runtime logs (permissions expire at the end of each round):","Grant Permissions", GLOB.clients)
-	if(!istype(target,/client))
+	if(!istype(target, /client))
 		to_chat(src, "<font color='red'>Error: giveruntimelog(): Client not found.</font>")
 		return
 
+	message_admins("[key_name_admin(src)] granted [key_name_admin(target)] access to runtime logs this round.")
 	target.verbs |= /client/proc/getruntimelog
 	to_chat(target, "<font color='red'>You have been granted access to runtime logs. Please use them responsibly or risk being banned.</font>")
-	return
-
 
 //This proc allows download of runtime logs saved within the data/logs/ folder by dreamdeamon.
 //It works similarly to show-server-log.
 /client/proc/getruntimelog()
 	set name = ".getruntimelog"
-	set desc = "Retrieve any session logfiles saved by dreamdeamon."
+	set desc = "Pick a logfile from data/logs/runtime to view."
 	set category = null
 
 	var/path = browse_files("data/logs/runtime/")
@@ -52,17 +50,19 @@
 		return
 
 	message_admins("[key_name_admin(src)] accessed file: [path]")
-	src << run( file(path) )
 	to_chat(src, "Attempting to send file, this may take a fair few minutes if the file is very large.")
-	return
-
+	src << ftp(file(path))
 
 //This proc allows download of past server logs saved within the data/logs/ folder.
 //It works similarly to show-server-log.
 /client/proc/getserverlog()
 	set name = ".getserverlog"
-	set desc = "Fetch logfiles from data/logs"
+	set desc = "Pick a logfile from data/logs to view."
 	set category = null
+
+	if(!src.admin_holder || !(admin_holder.rights & (R_MOD) || !(admin_holder.rights & R_DEBUG)))
+		to_chat(src, "<font color='red'>Access denied.</font>")
+		return
 
 	var/path = browse_files("data/logs/")
 	if(!path)
@@ -72,44 +72,112 @@
 		return
 
 	message_admins("[key_name_admin(src)] accessed file: [path]")
-	src << run( file(path) )
 	to_chat(src, "Attempting to send file, this may take a fair few minutes if the file is very large.")
-	return
-
+	src << ftp(file(path))
 
 //Other log stuff put here for the sake of organisation
 
-//Shows today's server log
-/datum/admins/proc/view_txt_log()
-	set name = "Show Server Log"
-	set desc = "Shows today's server log."
+/**Shows this round's server log*/
+/datum/admins/proc/view_game_log()
+	set name = "Show Server Game Log"
+	set desc = "Shows this round's server game log."
 	set category = "Server"
 
-	var/path = "data/logs/[time2text(world.realtime,"YYYY/MM-Month/DD-Day")].log"
-	if( fexists(path) )
-		src << run( file(path) )
-	else
-		var/pathyesteday = "data/logs/[time2text(world.realtime-400000,"YYYY/MM-Month/DD-Day")].log" // roughly 12 hours before this, should cover for most issues
-		if( fexists(pathyesteday) )
-			src << run( file(pathyesteday) )
-		else
-			to_chat(src, "<font color='red'>Error: view_txt_log(): File not found/Invalid path([path]) or path([pathyesteday]).</font>")
-			return
-
-	return
-
-//Shows today's attack log
-/datum/admins/proc/view_atk_log()
-	set category = "Admin"
-	set name = "Show Server Attack Log"
-	set desc = "Shows today's server attack log."
-
-	var/path = "data/logs/[time2text(world.realtime,"YYYY/MM-Month/DD-Day")] Attack.log"
-	if( fexists(path) )
-		src << run( file(path) )
-	else
-		to_chat(src, "<font color='red'>Error: view_atk_log(): File not found/Invalid path([path]).</font>")
+	if(!check_rights(R_MOD|R_DEBUG))
 		return
-	usr << run( file(path) )
 
-	return
+	var/path = GLOB.world_game_log
+	if(!fexists(path))
+		to_chat(src, "<font color='red'>Error: view_log(): File not found/Invalid path([path]).</font>")
+		return
+
+	if(usr.client.file_spam_check())
+		return
+
+	message_admins("[key_name_admin(src)] accessed file: [path]")
+	to_chat(src, "Attempting to send file, this may take a fair few minutes if the file is very large.")
+	src << ftp(file(path))
+
+/**Shows this round's attack log*/
+/datum/admins/proc/view_attack_log()
+	set name = "Show Server Attack Log"
+	set desc = "Shows this round's server attack log."
+	set category = "Server"
+
+	if(!check_rights(R_MOD))
+		return
+
+	var/path = GLOB.world_attack_log
+	if(!fexists(path))
+		to_chat(src, "<font color='red'>Error: view_log(): File not found/Invalid path([path]).</font>")
+		return
+
+	if(usr.client.file_spam_check())
+		return
+
+	message_admins("[key_name_admin(src)] accessed file: [path]")
+	to_chat(src, "Attempting to send file, this may take a fair few minutes if the file is very large.")
+	src << ftp(file(path))
+
+/**Shows this round's runtime log*/
+/datum/admins/proc/view_runtime_log()
+	set name = "Show Server Runtime Log"
+	set desc = "Shows this round's server runtime log."
+	set category = "Server"
+
+	if(!check_rights(R_DEBUG))
+		return
+
+	var/path = GLOB.world_runtime_log
+	if(!fexists(path))
+		to_chat(src, "<font color='red'>Error: view_log(): File not found/Invalid path([path]).</font>")
+		return
+
+	if(usr.client.file_spam_check())
+		return
+
+	message_admins("[key_name_admin(src)] accessed file: [path]")
+	to_chat(src, "Attempting to send file, this may take a fair few minutes if the file is very large.")
+	src << ftp(file(path))
+
+/**Shows this round's href log*/
+/datum/admins/proc/view_href_log()
+	set name = "Show Server HREF Log"
+	set desc = "Shows this round's server HREF log."
+	set category = "Server"
+
+	if(!check_rights(R_DEBUG))
+		return
+
+	var/path = GLOB.world_href_log
+	if(!fexists(path))
+		to_chat(src, "<font color='red'>Error: view_log(): File not found/Invalid path([path]).</font>")
+		return
+
+	if(usr.client.file_spam_check())
+		return
+
+	message_admins("[key_name_admin(src)] accessed file: [path]")
+	to_chat(src, "Attempting to send file, this may take a fair few minutes if the file is very large.")
+	src << ftp(file(path))
+
+/**Shows this round's tgui log*/
+/datum/admins/proc/view_tgui_log()
+	set name = "Show Server TGUI Log"
+	set desc = "Shows this round's server TGUI log."
+	set category = "Server"
+
+	if(!check_rights(R_DEBUG))
+		return
+
+	var/path = GLOB.tgui_log
+	if(!fexists(path))
+		to_chat(src, "<font color='red'>Error: view_log(): File not found/Invalid path([path]).</font>")
+		return
+
+	if(usr.client.file_spam_check())
+		return
+
+	message_admins("[key_name_admin(src)] accessed file: [path]")
+	to_chat(src, "Attempting to send file, this may take a fair few minutes if the file is very large.")
+	src << ftp(file(path))

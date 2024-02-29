@@ -68,6 +68,10 @@
 	name = "Kepler wrapper"
 	icon_state = "kepler"
 
+/obj/item/trash/kepler/flamehot
+	name = "Kepler Flamehot wrapper"
+	icon_state = "flamehotkepler"
+
 /obj/item/trash/liquidfood
 	name = "\improper \"LiquidFood\" ration"
 	icon_state = "liquidfood"

@@ -215,7 +215,7 @@
 				return
 
 			if(href_list["createpill_multiple"])
-				count = Clamp(tgui_input_number(user, "Select the number of pills to make. (max: [max_pill_count])", "Pills to make", pillamount, max_pill_count, 1), 0, max_pill_count)
+				count = clamp(tgui_input_number(user, "Select the number of pills to make. (max: [max_pill_count])", "Pills to make", pillamount, max_pill_count, 1), 0, max_pill_count)
 				if(!count)
 					return
 
@@ -237,8 +237,6 @@
 			while (count--)
 				var/obj/item/reagent_container/pill/P = new/obj/item/reagent_container/pill(loc)
 				P.pill_desc = "A custom pill."
-				P.pixel_x = rand(-7, 7) //random position
-				P.pixel_y = rand(-7, 7)
 				P.icon_state = "pill"+pillsprite
 				reagents.trans_to(P,amount_per_pill)
 				if(loaded_pill_bottle)
@@ -271,8 +269,6 @@
 					P.name = "[name] vial"
 					reagents.trans_to(P, 30)
 
-				P.pixel_x = rand(-7, 7) //random position
-				P.pixel_y = rand(-7, 7)
 				P.update_icon()
 
 				if(href_list["store"])

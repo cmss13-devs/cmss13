@@ -163,7 +163,6 @@
 	var/turf/T1 = locate(L[3],L[4],z)
 	for(var/turf/T in block(T0,T1))
 		T.color = _color
-		//LAZYINITLIST(T.atom_colours)
 		T.maptext = null
 	if(_color)
 		var/turf/T = locate(L[1], L[2], z)
@@ -181,18 +180,20 @@
 	if(P)
 		return P.id
 
-/obj/docking_port/proc/is_in_shuttle_bounds(atom/A)
-	var/turf/T = get_turf(A)
-	if(T.z != z)
+/obj/docking_port/proc/is_in_shuttle_bounds(atom/target)
+	if(!target)
+		return FALSE
+	var/turf/target_turf = get_turf(target)
+	if(!target_turf || target_turf.z != z)
 		return FALSE
 	var/list/bounds = return_coords()
 	var/x0 = bounds[1]
 	var/y0 = bounds[2]
 	var/x1 = bounds[3]
 	var/y1 = bounds[4]
-	if(!ISINRANGE(T.x, min(x0, x1), max(x0, x1)))
+	if(!ISINRANGE(target_turf.x, min(x0, x1), max(x0, x1)))
 		return FALSE
-	if(!ISINRANGE(T.y, min(y0, y1), max(y0, y1)))
+	if(!ISINRANGE(target_turf.y, min(y0, y1), max(y0, y1)))
 		return FALSE
 	return TRUE
 
@@ -267,9 +268,7 @@
 		if(!roundstart_template)
 			CRASH("json_key:[json_key] value \[[sid]\] resulted in a null shuttle template for [src]")
 	else if(roundstart_template) // passed a PATH
-		var/sid = "[initial(roundstart_template.shuttle_id)]"
-
-		roundstart_template = SSmapping.shuttle_templates[sid]
+		roundstart_template = SSmapping.all_shuttle_templates[roundstart_template]
 		if(!roundstart_template)
 			CRASH("Invalid path ([roundstart_template]) passed to docking port.")
 
@@ -344,6 +343,9 @@
 	var/rechargeTime = 0 //time spent after arrival before being able to launch again
 	var/prearrivalTime = 0 //delay after call time finishes for sound effects, explosions, etc.
 
+	var/playing_launch_announcement_alarm = FALSE // FALSE = off ; TRUE = on
+	var/datum/looping_sound/looping_launch_announcement_alarm/alarm_sound_loop
+
 	var/landing_sound = 'sound/effects/engine_landing.ogg'
 	var/ignition_sound = 'sound/effects/engine_startup.ogg'
 	/// Default shuttle audio ambience while flying
@@ -378,12 +380,85 @@
 
 	var/shuttle_flags = NONE
 
+#define WORLDMAXX_CUTOFF (world.maxx + 1)
+#define WORLDMAXY_CUTOFF (world.maxx + 1)
+/**
+ * Calculated and populates the information used for docking and some internal vars.
+ * This can also be used to calculate from shuttle_areas so that you can expand/shrink shuttles!
+ *
+ * Arguments:
+ * * loading_from - The template that the shuttle was loaded from, if not given we iterate shuttle_areas to calculate information instead
+ */
+/obj/docking_port/mobile/proc/calculate_docking_port_information(datum/map_template/shuttle/loading_from)
+	var/port_x_offset = loading_from?.port_x_offset
+	var/port_y_offset = loading_from?.port_y_offset
+	var/width = loading_from?.width
+	var/height = loading_from?.height
+	if(!loading_from)
+		if(!length(shuttle_areas))
+			CRASH("Attempted to calculate a docking port's information without a template before it was assigned any areas!")
+		// no template given, use shuttle_areas to calculate width and height
+		var/min_x = -1
+		var/min_y = -1
+		var/max_x = WORLDMAXX_CUTOFF
+		var/max_y = WORLDMAXY_CUTOFF
+		for(var/area/area as anything in shuttle_areas)
+			for(var/turf/turf in area)
+				min_x = max(turf.x, min_x)
+				max_x = min(turf.x, max_x)
+				min_y = max(turf.y, min_y)
+				max_y = min(turf.y, max_y)
+			CHECK_TICK
+
+		if(min_x == -1 || max_x == WORLDMAXX_CUTOFF)
+			CRASH("Failed to locate shuttle boundaries when iterating through shuttle areas, somehow.")
+		if(min_y == -1 || max_y == WORLDMAXY_CUTOFF)
+			CRASH("Failed to locate shuttle boundaries when iterating through shuttle areas, somehow.")
+
+		width = (max_x - min_x) + 1
+		height = (max_y - min_y) + 1
+		port_x_offset = min_x - x
+		port_y_offset = min_y - y
+
+	if(dir in list(EAST, WEST))
+		src.width = height
+		src.height = width
+	else
+		src.width = width
+		src.height = height
+
+	switch(dir)
+		if(NORTH)
+			dwidth = port_x_offset - 1
+			dheight = port_y_offset - 1
+		if(EAST)
+			dwidth = height - port_y_offset
+			dheight = port_x_offset - 1
+		if(SOUTH)
+			dwidth = width - port_x_offset
+			dheight = height - port_y_offset
+		if(WEST)
+			dwidth = port_y_offset - 1
+			dheight = width - port_x_offset
+#undef WORLDMAXX_CUTOFF
+#undef WORLDMAXY_CUTOFF
+
 /obj/docking_port/mobile/register()
 	. = ..()
 	SSshuttle.mobile += src
 
+/**
+ * Actions to be taken after shuttle is loaded and has been moved to its final location
+ *
+ * Arguments:
+ * * replace - TRUE if this shuttle is replacing an existing one. FALSE by default.
+ */
+/obj/docking_port/mobile/proc/postregister(replace = FALSE)
+	return
+
 /obj/docking_port/mobile/Destroy(force)
 	if(force)
+		QDEL_NULL(alarm_sound_loop)
 		SSshuttle.mobile -= src
 		destination = null
 		previous = null
@@ -411,6 +486,14 @@
 	initial_engines = count_engines()
 	current_engines = initial_engines
 
+	//Launch Announcement Alarm variables setup
+	alarm_sound_loop = new(src)
+	alarm_sound_loop.mid_length = 20
+	alarm_sound_loop.extra_range = 30
+	alarm_sound_loop.volume = 100
+	alarm_sound_loop.is_sound_projecting = TRUE
+	alarm_sound_loop.falloff_distance = 7
+
 	#ifdef DOCKING_PORT_HIGHLIGHT
 	highlight("#0f0")
 	#endif
@@ -431,19 +514,23 @@
 
 // Called after the shuttle is loaded from template
 /obj/docking_port/mobile/proc/linkup(datum/map_template/shuttle/template, obj/docking_port/stationary/dock)
+
+	// ================== CM Change ==================
+	// This is gone in /tg/ backend but kept for historical reasons
+	// Suspect this is supposed to be handled in register
 	var/list/static/shuttle_id = list()
-	var/idnum = ++shuttle_id[template]
+	var/idnum = ++shuttle_id[id]
 	if(idnum > 1)
 		if(id == initial(id))
 			id = "[id][idnum]"
 		if(name == initial(name))
 			name = "[name] [idnum]"
-	for(var/place in shuttle_areas)
-		var/area/area = place
-		area.connect_to_shuttle(src, dock, idnum, FALSE)
-		for(var/each in place)
-			var/atom/atom = each
-			atom.connect_to_shuttle(src, dock, idnum, FALSE)
+	// ================ END CM Change ================
+
+	for(var/area/place as anything in shuttle_areas)
+		place.connect_to_shuttle(TRUE, src, dock)
+		for(var/atom/individual_atoms in place)
+			individual_atoms.connect_to_shuttle(TRUE, src, dock)
 
 
 //this is a hook for custom behaviour. Maybe at some point we could add checks to see if engines are intact
@@ -627,15 +714,15 @@
 
 /obj/docking_port/mobile/proc/intoTheSunset()
 	// Loop over mobs
-	for(var/t in return_turfs())
-		var/turf/T = t
-		for(var/mob/living/L in T.GetAllContents())
+	for(var/turf/turf as anything in return_turfs())
+		for(var/mob/living/mob in turf.GetAllContents())
 			// Ghostize them and put them in nullspace stasis (for stat & possession checks)
-			//L.notransform = TRUE
-			var/mob/dead/observer/O = L.ghostize(FALSE)
-			if(O)
-				O.timeofdeath = world.time
-			L.moveToNullspace()
+			//mob.notransform = TRUE
+			var/mob/dead/observer/obs = mob.ghostize(FALSE)
+			if(obs)
+				obs.timeofdeath = world.time
+				obs.client?.player_details.larva_queue_time = max(obs.client.player_details.larva_queue_time, world.time)
+			mob.moveToNullspace()
 
 	// Now that mobs are stowed, delete the shuttle
 	jumpToNullSpace()
@@ -645,7 +732,7 @@
 		return FALSE
 	var/list/turfs = ripple_area(S1)
 	for(var/t in turfs)
-		ripples += new /obj/effect/abstract/ripple(t, animate_time)
+		ripples += new /obj/effect/abstract/ripple/shadow(t, animate_time)
 	return TRUE
 
 /obj/docking_port/mobile/proc/remove_ripples()
@@ -728,7 +815,7 @@
 
 /obj/docking_port/mobile/proc/check_effects()
 	if(!ripples.len)
-		if((mode == SHUTTLE_CALL) || (mode == SHUTTLE_RECALL))
+		if((mode == SHUTTLE_PREARRIVAL))
 			var/tl = timeLeft(1)
 			if(tl <= SHUTTLE_RIPPLE_TIME)
 				create_ripples(destination, tl)
@@ -993,3 +1080,15 @@
 		to_chat(user, SPAN_WARNING("Shuttle already in transit."))
 		return FALSE
 	return TRUE
+
+/obj/docking_port/mobile/proc/get_transit_path_type()
+	. = /turf/open/space/transit
+	switch(preferred_direction)
+		if(NORTH)
+			return /turf/open/space/transit/north
+		if(SOUTH)
+			return /turf/open/space/transit/south
+		if(EAST)
+			return /turf/open/space/transit/east
+		if(WEST)
+			return /turf/open/space/transit/west

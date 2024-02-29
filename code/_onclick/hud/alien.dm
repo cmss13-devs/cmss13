@@ -17,20 +17,20 @@
 	draw_throw(ui_alien_datum)
 	draw_zone_sel(ui_alien_datum)
 	draw_healths(ui_alien_datum)
-	draw_nightvision(ui_alien_datum)
-	draw_plasma_display(ui_alien_datum)
-	draw_armor_display(ui_alien_datum)
-	draw_locate_queen(ui_alien_datum)
-	draw_locate_mark(ui_alien_datum)
+	draw_alien_nightvision(ui_alien_datum)
+	draw_alien_plasma_display(ui_alien_datum)
+	draw_alien_armor_display(ui_alien_datum)
+	draw_alien_locate_queen(ui_alien_datum)
+	draw_alien_locate_mark(ui_alien_datum)
 
-/datum/hud/alien/proc/draw_nightvision(datum/custom_hud/alien/ui_alien_datum)
+/datum/hud/proc/draw_alien_nightvision(datum/custom_hud/alien/ui_alien_datum)
 	var/atom/movable/screen/using = new /atom/movable/screen/xenonightvision()
 	using.icon = ui_alien_datum.ui_style_icon
 	using.screen_loc = ui_alien_datum.ui_alien_nightvision
 	infodisplay += using
 	add_verb(mymob, /datum/action/xeno_action/verb/verb_night_vision)
 
-/datum/hud/alien/proc/draw_plasma_display(datum/custom_hud/alien/ui_alien_datum)
+/datum/hud/proc/draw_alien_plasma_display(datum/custom_hud/alien/ui_alien_datum)
 	alien_plasma_display = new /atom/movable/screen()
 	alien_plasma_display.icon = ui_alien_datum.ui_style_icon
 	alien_plasma_display.icon_state = "power_display2"
@@ -38,7 +38,7 @@
 	alien_plasma_display.screen_loc = ui_alien_datum.ui_alienplasmadisplay
 	infodisplay += alien_plasma_display
 
-/datum/hud/alien/proc/draw_armor_display(datum/custom_hud/alien/ui_alien_datum)
+/datum/hud/proc/draw_alien_armor_display(datum/custom_hud/alien/ui_alien_datum)
 	alien_armor_display = new /atom/movable/screen()
 	alien_armor_display.icon = ui_alien_datum.ui_style_icon
 	alien_armor_display.icon_state = "armor_100"
@@ -46,13 +46,13 @@
 	alien_armor_display.screen_loc = ui_alien_datum.ui_alienarmordisplay
 	infodisplay += alien_armor_display
 
-/datum/hud/alien/proc/draw_locate_queen(datum/custom_hud/alien/ui_alien_datum)
+/datum/hud/proc/draw_alien_locate_queen(datum/custom_hud/alien/ui_alien_datum)
 	locate_leader = new /atom/movable/screen/queen_locator()
 	locate_leader.icon = ui_alien_datum.ui_style_icon
 	locate_leader.screen_loc = ui_alien_datum.ui_queen_locator
 	infodisplay += locate_leader
 
-/datum/hud/alien/proc/draw_locate_mark(datum/custom_hud/alien/ui_alien_datum)
+/datum/hud/proc/draw_alien_locate_mark(datum/custom_hud/alien/ui_alien_datum)
 	locate_marker = new /atom/movable/screen/mark_locator()
 	locate_marker.icon = ui_alien_datum.ui_style_icon
 	locate_marker.screen_loc = ui_alien_datum.ui_mark_locator
@@ -64,10 +64,10 @@
 	var/mob/living/carbon/xenomorph/H = mymob
 	if(hud_version != HUD_STYLE_NOHUD)
 		if(H.r_hand)
-			H.client.screen += H.r_hand
+			H.client.add_to_screen(H.r_hand)
 			H.r_hand.screen_loc = ui_alien_datum.hud_slot_offset(H.r_hand, ui_alien_datum.ui_rhand)
 		if(H.l_hand)
-			H.client.screen += H.l_hand
+			H.client.add_to_screen(H.l_hand)
 			H.l_hand.screen_loc = ui_alien_datum.hud_slot_offset(H.l_hand, ui_alien_datum.ui_lhand)
 	else
 		if(H.r_hand)
@@ -87,17 +87,9 @@
 
 	draw_mov_intent(ui_alien_datum)
 	draw_healths(ui_alien_datum)
-
-	var/atom/movable/screen/using = new /atom/movable/screen/xenonightvision()
-	using.icon = ui_alien_datum.ui_style_icon
-	using.screen_loc = ui_alien_datum.ui_alien_nightvision
-	infodisplay += using
-
-	locate_leader = new /atom/movable/screen/queen_locator()
-	locate_leader.icon = ui_alien_datum.ui_style_icon
-	locate_leader.screen_loc = ui_alien_datum.ui_queen_locator
-	infodisplay += locate_leader
-
+	draw_alien_nightvision(ui_alien_datum)
+	draw_alien_locate_queen(ui_alien_datum)
+	draw_alien_locate_mark(ui_alien_datum)
 
 /mob/living/carbon/xenomorph/larva/create_hud()
 	if(!hud_used)

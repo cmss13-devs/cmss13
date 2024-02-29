@@ -47,7 +47,7 @@
 		SPAN_NOTICE("[user] replaces your severed [parse_zone(target_zone)] with \the [tool]."),
 		SPAN_NOTICE("[user] replaces [target]'s severed [parse_zone(target_zone)] with \the [tool]."))
 
-	surgery.affected_limb.robotize(surgery_in_progress = TRUE, uncalibrated = TRUE)
+	surgery.affected_limb.robotize(surgery_in_progress = TRUE, uncalibrated = TRUE, synth_skin = issynth(target))
 	target.update_body()
 	target.pain.recalculate_pain()
 

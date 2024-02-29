@@ -168,7 +168,7 @@
 		mytape.timestamp += mytape.used_capacity
 		var/language_known = (M.universal_speak || (speaking && (speaking.name in known_languages)))
 		var/mob_name = language_known ? M.GetVoice() : "Unknown"
-		var/message = language_known ? msg : speaking.scramble(msg)
+		var/message = (!speaking || language_known) ? msg : speaking.scramble(msg)
 		mytape.storedinfo += "\[[time2text(mytape.used_capacity,"mm:ss")]\] [mob_name] [verb], \"[italics ? "<i>" : null][message][italics ? "</i>" : null]\""
 
 
@@ -261,7 +261,7 @@
 			audible_message(SPAN_MAROON("[icon2html(src, usr)] End of recording."))
 			break
 
-		var/list/heard = get_mobs_in_view(world_view_size, src)
+		var/list/heard = get_mobs_in_view(GLOB.world_view_size, src)
 		langchat_speech(mytape.storedinfo[i], heard, GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_small"))
 
 		audible_message(SPAN_MAROON("[icon2html(src, usr)] [mytape.storedinfo[i]]"))//We want to display this properly, don't double encode
@@ -368,8 +368,12 @@
 	var/unspooled = FALSE
 	var/list/icons_available = list()
 	var/radial_icon_file = 'icons/mob/radial_tape.dmi'
-	var/list/cassette_colours = list("blue", "gray", "green", "orange", "pink_stripe", "purple", "rainbow", "red_black", "red_stripe", "camo", "rising_sun", "orange", "blue", "ocean", "aesthetic")
+	var/list/cassette_colors = list("blue", "gray", "green", "orange", "pink_stripe", "purple", "rainbow", "red_black", "red_stripe", "camo", "rising_sun", "orange", "blue", "ocean", "aesthetic")
 	var/list/cassette_map_themes = list("solaris", "ice", "lz", "dam", "worstmap")
+	inherent_traits = list(TRAIT_ITEM_RENAME_SPECIAL) //used to make the rename component work specially.
+	///used to store the tape's name for one side and the other side
+	var/flipped_name
+	var/unflipped_name
 
 
 /obj/item/tape/get_examine_text(mob/user)
@@ -409,6 +413,8 @@
 	initial_icon_state = icon_state //random tapes will set this after choosing their icon
 	if(prob(50))
 		tapeflip()
+	flipped_name = name
+	unflipped_name = name
 
 /obj/item/tape/proc/update_available_icons()
 	icons_available = list()
@@ -483,15 +489,19 @@
 
 	if(icon_state == initial_icon_state)
 		icon_state = "cassette_flip"
+		unflipped_name = name
+		name = flipped_name
 	else if(icon_state == "cassette_flip") //so flipping doesn't overwrite an unexpected icon_state (e.g. an admin's)
 		icon_state = initial_icon_state
+		flipped_name = name
+		name = unflipped_name
 
 //Random color tapes
 /obj/item/tape/random
 	icon_state = "cassette_rainbow"
 
 /obj/item/tape/random/Initialize(mapload)
-	icon_state = "cassette_[pick(cassette_colours)]"
+	icon_state = "cassette_[pick(cassette_colors)]"
 	. = ..()
 
 /obj/item/tape/regulation

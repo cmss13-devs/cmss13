@@ -34,12 +34,16 @@
 	name = "Toggle Sleeping"
 
 /datum/player_action/mob_sleep/act(client/user, mob/target, list/params)
+	if(!istype(target, /mob/living))
+		return TRUE
+	var/mob/living/living = target
+
 	if (!params["sleep"]) //if they're already slept, set their sleep to zero and remove the icon
-		target.sleeping = 0
-		target.RemoveSleepingIcon()
+		living.sleeping = 0
+		living.RemoveSleepingIcon()
 	else
-		target.sleeping = 9999999 //if they're not, sleep them and add the sleep icon, so other marines nearby know not to mess with them.
-		target.AddSleepingIcon()
+		living.sleeping = 9999999 //if they're not, sleep them and add the sleep icon, so other marines nearby know not to mess with them.
+		living.AddSleepingIcon()
 
 	message_admins("[key_name_admin(user)] toggled sleep on [key_name_admin(target)].")
 
@@ -64,16 +68,8 @@
 
 	message_admins("[key_name_admin(user)] has sent [key_name_admin(target)] back to the Lobby.")
 
-	var/mob/new_player/NP = new()
-
-	if(!target.mind)
-		target.mind_initialize()
-
-	target.mind.transfer_to(NP)
-
-	qdel(target)
+	target.send_to_lobby()
 	return TRUE
-
 
 /datum/player_action/force_say
 	action_tag = "mob_force_say"
@@ -109,9 +105,13 @@
 	name = "Toggle Frozen"
 
 /datum/player_action/toggle_frozen/act(client/user, mob/target, list/params)
-	target.frozen = text2num(params["freeze"])
+	var/frozen = text2num(params["freeze"])
+	if(frozen)
+		ADD_TRAIT(target, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ADMIN)
+	else
+		REMOVE_TRAIT(target, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ADMIN)
 
-	message_admins("[key_name_admin(user)] [target.frozen? "froze" : "unfroze"] [key_name_admin(target)]")
+	message_admins("[key_name_admin(user)] [frozen? "froze" : "unfroze"] [key_name_admin(target)]")
 	return TRUE
 
 // MESSAGE
@@ -187,7 +187,7 @@
 /datum/player_action/follow/act(client/user, mob/target, list/params)
 	if(istype(user.mob, /mob/dead/observer))
 		var/mob/dead/observer/O = user.mob
-		O.ManualFollow(target)
+		O.do_observe(target)
 		return TRUE
 	else
 		to_chat(user, SPAN_WARNING("You must be a ghost to do this."))

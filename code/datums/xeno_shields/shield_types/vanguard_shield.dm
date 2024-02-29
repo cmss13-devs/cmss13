@@ -1,7 +1,7 @@
 // Vanguard shields rapidly decay after the first hit.
 /datum/xeno_shield/vanguard
 	var/hit_yet = FALSE
-	var/explosive_armor_amount = XENO_EXPOSIVEARMOR_MOD_VERYLARGE
+	var/explosive_armor_amount = XENO_EXPOSIVEARMOR_MOD_VERY_LARGE
 	amount = 800
 
 /datum/xeno_shield/vanguard/on_hit(damage)
@@ -50,7 +50,6 @@
 	if (!istype(linked_xeno))
 		return
 
-	if (linked_xeno.mutation_type == PRAETORIAN_VANGUARD)
-		var/datum/behavior_delegate/praetorian_vanguard/BD = linked_xeno.behavior_delegate
-		if (istype(BD))
-			BD.last_combat_time = world.time
+	var/datum/behavior_delegate/praetorian_vanguard/behavior = linked_xeno.behavior_delegate
+	if (istype(behavior))
+		behavior.last_combat_time = world.time

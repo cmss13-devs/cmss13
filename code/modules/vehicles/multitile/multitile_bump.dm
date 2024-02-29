@@ -106,14 +106,12 @@
 	return TRUE
 
 /obj/structure/surface/handle_vehicle_bump(obj/vehicle/multitile/V)
-	detach_all()
 	playsound(V, 'sound/effects/metal_crash.ogg', 20)
 	visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
 	qdel(src)
 	return TRUE
 
 /obj/structure/surface/table/handle_vehicle_bump(obj/vehicle/multitile/V)
-	detach_all()
 	playsound(V, 'sound/effects/metal_crash.ogg', 20)
 	visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
 	if(prob(50))
@@ -122,7 +120,6 @@
 	return TRUE
 
 /obj/structure/surface/rack/handle_vehicle_bump(obj/vehicle/multitile/V)
-	detach_all()
 	playsound(V, 'sound/effects/metal_crash.ogg', 20)
 	visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
 	deconstruct()
@@ -344,10 +341,24 @@
 	return TRUE
 
 /obj/structure/machinery/m56d_post/handle_vehicle_bump(obj/vehicle/multitile/V)
-	new /obj/item/device/m56d_post(loc)
 	playsound(V, 'sound/effects/metal_crash.ogg', 20)
 	visible_message(SPAN_DANGER("\The [V] drives over \the [src]!"))
-	qdel(src)
+
+	if(gun_mounted)
+		var/obj/item/device/m56d_gun/HMG = new(loc)
+		transfer_label_component(HMG)
+		HMG.rounds = gun_rounds
+		HMG.has_mount = TRUE
+		if(gun_health)
+			HMG.health = gun_health
+		HMG.update_icon()
+		qdel(src)
+	else
+		var/obj/item/device/m56d_post/post = new(loc)
+		post.health = health
+		transfer_label_component(post)
+		qdel(src)
+
 	return TRUE
 
 /obj/structure/machinery/m56d_hmg/handle_vehicle_bump(obj/vehicle/multitile/V)
@@ -355,7 +366,9 @@
 	HMG.name = name
 	HMG.rounds = rounds
 	HMG.has_mount = TRUE
+	HMG.health = health
 	HMG.update_icon()
+	transfer_label_component(HMG)
 	playsound(V, 'sound/effects/metal_crash.ogg', 20)
 	visible_message(SPAN_DANGER("\The [V] drives over \the [src]!"))
 	qdel(src)
@@ -572,7 +585,7 @@
 		last_damage_data = create_cause_data("[initial(V.name)] roadkill", driver)
 		log_attack("[key_name(src)] was rammed by [key_name(driver)] with [V].")
 		if(faction == driver.faction)
-			msg_admin_ff("[key_name(driver)] rammed [key_name(src)] with \the [V] in [get_area(src)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[driver.x];Y=[driver.y];Z=[driver.z]'>JMP</a>) ([driver.client ? "<a href='?priv_msg=[driver.client.ckey]'>PM</a>" : "NO CLIENT"])")
+			msg_admin_ff("[key_name(driver)] rammed [key_name(src)] with \the [V] in [get_area(src)] [ADMIN_JMP(driver)] [ADMIN_PM(driver)]")
 	else
 		log_attack("[key_name(src)] was friendly pushed by [key_name(driver)] with [V].") //to be able to determine whether vehicle was pushign friendlies
 
@@ -615,7 +628,7 @@
 		last_damage_data = create_cause_data("[initial(V.name)] roadkill", driver)
 		log_attack("[key_name(src)] was rammed by [key_name(driver)] with [V].")
 		if(faction == driver.faction)
-			msg_admin_ff("[key_name(driver)] rammed and damaged member of allied faction [key_name(src)] with \the [V] in [get_area(src)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[driver.x];Y=[driver.y];Z=[driver.z]'>JMP</a>) ([driver.client ? "<a href='?priv_msg=[driver.client.ckey]'>PM</a>" : "NO CLIENT"])")
+			msg_admin_ff("[key_name(driver)] rammed and damaged member of allied faction [key_name(src)] with \the [V] in [get_area(src)] [ADMIN_JMP(driver)] [ADMIN_PM(driver)]")
 	else
 		log_attack("[key_name(src)] was friendly pushed by [key_name(driver)] with [V].") //to be able to determine whether vehicle was pushing friendlies
 
@@ -642,7 +655,7 @@
 			//Check what dir they should be facing to be looking directly at the vehicle
 			else if(dir_between == dir) //front hit (facing the vehicle)
 				blocked = TRUE
-			else if(dir_between == reverse_dir[dir]) // rear hit (facing directly away from the vehicle)
+			else if(dir_between == GLOB.reverse_dir[dir]) // rear hit (facing directly away from the vehicle)
 				takes_damage = TRUE
 			//side hit
 			else if(caste.caste_type == XENO_CASTE_QUEEN) // queen blocks even with sides
@@ -740,7 +753,7 @@
 
 //BURROWER
 /mob/living/carbon/xenomorph/burrower/handle_vehicle_bump(obj/vehicle/multitile/V)
-	if(burrow)
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		return TRUE
 	else
 		return . = ..()

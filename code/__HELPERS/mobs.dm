@@ -51,8 +51,10 @@
 		return f_style
 
 /proc/random_name(gender, species = "Human")
-	if(gender==FEMALE) return capitalize(pick(first_names_female)) + " " + capitalize(pick(last_names))
-	else return capitalize(pick(first_names_male)) + " " + capitalize(pick(last_names))
+	if(gender==FEMALE)
+		return capitalize(pick(GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))
+	else
+		return capitalize(pick(GLOB.first_names_male)) + " " + capitalize(pick(GLOB.last_names))
 
 /proc/has_species(mob/M, species)
 	if(!M || !istype(M,/mob/living/carbon/human))
@@ -71,6 +73,7 @@
 /mob/proc/change_real_name(mob/M, new_name)
 	if(!new_name)
 		return FALSE
+	var/old_name = M.real_name
 
 	M.real_name = new_name
 	M.name = new_name
@@ -81,6 +84,7 @@
 	// If we are humans, we need to update our voice as well
 	M.change_mob_voice(new_name)
 
+	SEND_SIGNAL(src, COMSIG_MOB_REAL_NAME_CHANGED, old_name, new_name)
 	return TRUE
 
 /mob/proc/change_mind_name(new_mind_name)
@@ -102,11 +106,11 @@
 
 /*Changing/updating a mob's client color matrices. These render over the map window and affect most things the player sees, except things like inventory,
 text popups, HUD, and some fullscreens. Code based on atom filter code, since these have similar issues with application order - for ex. if you have
-a desaturation and a recolour matrix, you'll get very different results if you desaturate before recolouring, or recolour before desaturating.
+a desaturation and a recolor matrix, you'll get very different results if you desaturate before recoloring, or recolor before desaturating.
 
 See matrices.dm for the matrix procs.
 
-If you want to recolour a specific atom, you should probably do it as a color matrix filter instead since that code already exists.
+If you want to recolor a specific atom, you should probably do it as a color matrix filter instead since that code already exists.
 
 Apparently color matrices are not the same sort of matrix used by matrix datums and can't be worked with using normal matrix procs.*/
 

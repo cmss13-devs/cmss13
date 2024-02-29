@@ -18,13 +18,29 @@
 
 //---------------------GENERAL PROCS
 
-/obj/item/ammo_box/Destroy()
-	SetLuminosity(0)
-	. = ..()
+/obj/item/ammo_box/attack_self(mob/living/user)
+	..()
+	if(burning)
+		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
+		return
 
-/obj/item/ammo_box/proc/unfold_box(turf/T)
-	new /obj/item/stack/sheet/cardboard(T)
+	if(user.a_intent == INTENT_HARM)
+		unfold_box(user)
+		return
+	deploy_ammo_box(user, user.loc)
+
+/obj/item/ammo_box/proc/unfold_box(mob/user)
+	if(is_loaded())
+		to_chat(user, SPAN_WARNING("You need to empty the box before unfolding it!"))
+		return
+	new /obj/item/stack/sheet/cardboard(user.loc)
 	qdel(src)
+
+/obj/item/ammo_box/proc/is_loaded()
+	return FALSE
+
+/obj/item/ammo_box/proc/deploy_ammo_box(mob/user, turf/T)
+	user.drop_held_item()
 
 //---------------------FIRE HANDLING PROCS
 /obj/item/ammo_box/flamer_fire_act(severity, datum/cause_data/flame_cause_data)
@@ -32,7 +48,7 @@
 		return
 	burning = TRUE
 
-	SetLuminosity(3)
+	set_light(3)
 	apply_fire_overlay()
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), src), 5 SECONDS)
 
@@ -69,6 +85,8 @@
 	var/handful = "shells" //used for 'magazine' boxes that give handfuls to determine what kind for the sprite
 	can_explode = TRUE
 	limit_per_tile = 2
+	ground_offset_x = 5
+	ground_offset_y = 5
 
 /obj/item/ammo_box/magazine/empty
 	empty = TRUE
@@ -86,8 +104,6 @@
 		while(i < num_of_magazines)
 			contents += new magazine_type(src)
 			i++
-	pixel_x = rand(-5, 5)
-	pixel_y = rand(-5, 5)
 	update_icon()
 
 /obj/item/ammo_box/magazine/update_icon()
@@ -130,24 +146,13 @@
 	if(burning)
 		. += SPAN_DANGER("It's on fire and might explode!")
 
-/obj/item/ammo_box/magazine/attack_self(mob/living/user)
-	..()
-	if(burning)
-		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
-		return
+/obj/item/ammo_box/magazine/is_loaded()
+	if(handfuls)
+		var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in contents
+		return AM?.current_rounds
+	return length(contents)
 
-	if(length(contents))
-		if(!handfuls)
-			deploy_ammo_box(user, user.loc)
-			return
-		else
-			var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in contents
-			if(AM && AM.current_rounds)
-				deploy_ammo_box(user, user.loc)
-				return
-	unfold_box(user.loc)
-
-/obj/item/ammo_box/magazine/proc/deploy_ammo_box(mob/living/user, turf/T)
+/obj/item/ammo_box/magazine/deploy_ammo_box(mob/living/user, turf/T)
 	if(burning)
 		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
 		return
@@ -230,11 +235,11 @@
 
 	if(host_box)
 		host_box.apply_fire_overlay(will_explode)
-		host_box.SetLuminosity(3)
+		host_box.set_light(3)
 		host_box.visible_message(SPAN_WARNING(shown_message))
 	else
 		apply_fire_overlay(will_explode)
-		SetLuminosity(3)
+		set_light(3)
 		visible_message(SPAN_WARNING(shown_message))
 
 /obj/item/ammo_box/magazine/apply_fire_overlay(will_explode = FALSE)
@@ -300,10 +305,10 @@
 	if(burning)
 		. += SPAN_DANGER("It's on fire and might explode!")
 
-/obj/item/ammo_box/rounds/attack_self(mob/living/user)
-	..()
-	if(bullet_amount < 1)
-		unfold_box(user.loc)
+
+
+/obj/item/ammo_box/rounds/is_loaded()
+	return bullet_amount
 
 /obj/item/ammo_box/rounds/attackby(obj/item/I, mob/user)
 	if(burning)
@@ -415,7 +420,7 @@
 		visible_message(SPAN_WARNING("\The [src] catches on fire!"))
 
 	apply_fire_overlay(will_explode)
-	SetLuminosity(3)
+	set_light(3)
 
 /obj/item/ammo_box/rounds/apply_fire_overlay(will_explode = FALSE)
 	//original fire overlay is made for standard mag boxes, so they don't need additional offsetting

@@ -13,6 +13,7 @@
 	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL
 	is_landing_zone = TRUE
+	ceiling = CEILING_REINFORCED_METAL
 
 /area/shuttle/drop1/Enter(atom/movable/O, atom/oldloc)
 	if(istype(O, /obj/structure/barricade))
@@ -69,6 +70,7 @@
 	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL
 	is_landing_zone = TRUE
+	ceiling = CEILING_REINFORCED_METAL
 
 /area/shuttle/drop2/sulaco
 	name = "\improper Dropship Normandy"
@@ -115,7 +117,7 @@
 //DISTRESS SHUTTLES
 
 /area/shuttle/distress
-	lighting_use_dynamic = FALSE
+	base_lighting_alpha = 255
 	unique = TRUE
 
 /area/shuttle/distress/start

@@ -40,8 +40,8 @@
 		return
 
 	if(QDELETED(buckled_mob))
-		vehicle.set_seated_mob(seat, null)
 		M.unset_interaction()
+		vehicle.set_seated_mob(seat, null)
 		if(M.client)
 			M.client.view_size.reset_to_default()
 			M.client.pixel_x = 0
@@ -174,8 +174,8 @@
 		return
 
 	if(QDELETED(buckled_mob))
-		vehicle.set_seated_mob(seat, null)
 		M.unset_interaction()
+		vehicle.set_seated_mob(seat, null)
 		if(M.client)
 			M.client.view_size.reset_to_default()
 			M.client.pixel_x = 0
@@ -252,8 +252,8 @@
 		return
 
 	if(QDELETED(buckled_mob))
-		vehicle.set_seated_mob(seat, null)
 		M.unset_interaction()
+		vehicle.set_seated_mob(seat, null)
 		if(M.client)
 			M.client.view_size.reset_to_default()
 			M.client.pixel_x = 0
@@ -302,7 +302,7 @@
 	icon_state = "vehicle_seat"
 	var/image/chairbar = null
 	var/broken = FALSE
-	buildstacktype = 0
+	buildstackamount = 0
 	can_rotate = FALSE
 	picked_up_item = null
 
@@ -376,28 +376,17 @@
 			//if both seats on same tile have buckled mob, we become dense, otherwise, not dense.
 			if(buckled_mob)
 				if(VS.buckled_mob)
-					buckled_mob.density = TRUE
-					VS.buckled_mob.density = TRUE
+					REMOVE_TRAIT(buckled_mob, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
+					REMOVE_TRAIT(VS.buckled_mob, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
 				else
-					buckled_mob.density = FALSE
+					ADD_TRAIT(buckled_mob, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
 			else
 				if(VS.buckled_mob)
-					VS.buckled_mob.density = FALSE
-				M.density = TRUE
+					ADD_TRAIT(VS.buckled_mob, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
+				REMOVE_TRAIT(M, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
 			break
 
 	handle_rotation()
-
-/obj/structure/bed/chair/vehicle/unbuckle()
-	if(buckled_mob && buckled_mob.buckled == src)
-		buckled_mob.buckled = null
-		buckled_mob.anchored = initial(buckled_mob.anchored)
-		buckled_mob.update_canmove()
-
-		var/M = buckled_mob
-		buckled_mob = null
-
-		afterbuckle(M)
 
 //attack handling
 
@@ -409,7 +398,7 @@
 		if(!broken)
 			break_seat()
 		else
-			deconstruct()
+			deconstruct(FALSE)
 
 
 /obj/structure/bed/chair/vehicle/attackby(obj/item/W, mob/living/user)

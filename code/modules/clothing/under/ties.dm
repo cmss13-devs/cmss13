@@ -79,6 +79,22 @@
 	name = "red tie"
 	icon_state = "redtie"
 
+/obj/item/clothing/accessory/green
+	name = "green tie"
+	icon_state = "greentie"
+
+/obj/item/clothing/accessory/black
+	name = "black tie"
+	icon_state = "blacktie"
+
+/obj/item/clothing/accessory/gold
+	name = "gold tie"
+	icon_state = "goldtie"
+
+/obj/item/clothing/accessory/purple
+	name = "purple tie"
+	icon_state = "purpletie"
+
 /obj/item/clothing/accessory/horrible
 	name = "horrible tie"
 	desc = "A neosilk clip-on tie. This one is disgusting."
@@ -342,6 +358,11 @@
 	desc = "An armband, worn by the crew to display which department they're assigned to. This one is white and green."
 	icon_state = "medgreen"
 
+/obj/item/clothing/accessory/armband/nurse
+	name = "nurse armband"
+	desc = "An armband, worn by the rookie nurses to display they are still not doctors. This one is dark red."
+	icon_state = "nurse"
+
 //patches
 /obj/item/clothing/accessory/patch
 	name = "USCM patch"
@@ -359,6 +380,16 @@
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the USS Hanyut, USCM FORECON."
 	icon_state = "forecon_patch"
 
+/obj/item/clothing/accessory/patch/royal_marines
+	name = "TWE Royal Marines Commando patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the royal marines commando."
+	icon_state = "commandopatch"
+
+/obj/item/clothing/accessory/patch/upp
+	name = "UPP Airborne Reconnaissance patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the 173rd Airborne Reconnaissance Platoon."
+	icon_state = "upppatch"
+
 /obj/item/clothing/accessory/poncho
 	name = "USCM Poncho"
 	desc = "The standard USCM poncho has variations for every climate. Custom fitted to be attached to standard USCM armor variants it is comfortable, warming or cooling as needed, and well-fit. A marine couldn't ask for more. Affectionately referred to as a \"woobie\"."
@@ -367,9 +398,26 @@
 
 /obj/item/clothing/accessory/poncho/Initialize()
 	. = ..()
-	select_gamemode_skin(type)
+	// Only do this for the base type '/obj/item/clothing/accessory/poncho'.
+	select_gamemode_skin(/obj/item/clothing/accessory/poncho)
 	inv_overlay = image("icon" = 'icons/obj/items/clothing/ties_overlay.dmi', "icon_state" = "[icon_state]")
 	update_icon()
+
+/obj/item/clothing/accessory/poncho/green
+	icon_state = "poncho"
+
+/obj/item/clothing/accessory/poncho/brown
+	icon_state = "d_poncho"
+
+/obj/item/clothing/accessory/poncho/black
+	icon_state = "u_poncho"
+
+/obj/item/clothing/accessory/poncho/blue
+	icon_state = "c_poncho"
+
+/obj/item/clothing/accessory/poncho/purple
+	icon_state = "s_poncho"
+
 
 //Ties that can store stuff
 
@@ -414,8 +462,8 @@
 	return hold.attackby(W, user)
 
 /obj/item/clothing/accessory/storage/emp_act(severity)
+	. = ..()
 	hold.emp_act(severity)
-	..()
 
 /obj/item/clothing/accessory/storage/hear_talk(mob/M, msg)
 	hold.hear_talk(M, msg)
@@ -513,13 +561,27 @@
 	desc = "A stylish black waistcoat with plenty of discreet pouches, to be both utilitarian and fashionable without compromising looks."
 	icon_state = "waistcoat"
 
-/obj/item/clothing/accessory/storage/black_vest/tool_webbing
-	hold = /obj/item/storage/internal/accessory/black_vest/tool_webbing
+/obj/item/clothing/accessory/storage/tool_webbing
+	name = "Tool Webbing"
+	desc = "A brown synthcotton webbing that is similar in function to civilian tool aprons, but is more durable for field usage."
+	hold = /obj/item/storage/internal/accessory/tool_webbing
 
-/obj/item/storage/internal/accessory/black_vest/tool_webbing
+/obj/item/storage/internal/accessory/tool_webbing
 	storage_slots = 7
+	can_hold = list(
+		/obj/item/tool/screwdriver,
+		/obj/item/tool/wrench,
+		/obj/item/tool/weldingtool,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/wirecutters,
+		/obj/item/stack/cable_coil,
+		/obj/item/device/multitool,
+	)
 
-/obj/item/storage/internal/accessory/black_vest/tool_webbing/fill_preset_inventory()
+/obj/item/clothing/accessory/storage/tool_webbing/equipped
+	hold = /obj/item/storage/internal/accessory/tool_webbing/equipped
+
+/obj/item/storage/internal/accessory/tool_webbing/equipped/fill_preset_inventory()
 	new /obj/item/tool/screwdriver(src)
 	new /obj/item/tool/wrench(src)
 	new /obj/item/tool/weldingtool(src)
@@ -529,7 +591,7 @@
 	new /obj/item/device/multitool(src)
 
 /obj/item/storage/internal/accessory/surg_vest
-	storage_slots = 13
+	storage_slots = 14
 	can_hold = list(
 		/obj/item/tool/surgery,
 		/obj/item/stack/medical/advanced/bruise_pack,
@@ -569,6 +631,7 @@
 	new /obj/item/tool/surgery/FixOVein(src)
 	new /obj/item/stack/nanopaste(src)
 	new /obj/item/tool/surgery/surgical_line(src)
+	new /obj/item/tool/surgery/synthgraft(src)
 
 /obj/item/clothing/accessory/storage/surg_vest
 	name = "surgical webbing vest"
@@ -587,11 +650,41 @@
 /obj/item/clothing/accessory/storage/surg_vest/blue/equipped
 	hold = /obj/item/storage/internal/accessory/surg_vest/equipped
 
+/obj/item/clothing/accessory/storage/surg_vest/drop_blue
+	name = "blue surgical drop pouch"
+	desc = "A matte blue synthcotton drop pouch purpose-made for holding surgical tools."
+	icon_state = "drop_pouch_surgical_blue"
+
+/obj/item/clothing/accessory/storage/surg_vest/drop_blue/equipped
+	hold = /obj/item/storage/internal/accessory/surg_vest/equipped
+
+/obj/item/clothing/accessory/storage/surg_vest/drop_green
+	name = "green surgical drop pouch"
+	desc = "A greenish synthcotton drop pouch purpose-made for holding surgical tools."
+	icon_state = "drop_pouch_surgical_green"
+
+/obj/item/clothing/accessory/storage/surg_vest/drop_green/equipped
+	hold = /obj/item/storage/internal/accessory/surg_vest/equipped
+
+/obj/item/clothing/accessory/storage/surg_vest/drop_black
+	name = "black surgical drop pouch"
+	desc = "A tactical black synthcotton drop pouch purpose-made for holding surgical tools."
+	icon_state = "drop_pouch_surgical_black"
+
+/obj/item/clothing/accessory/storage/surg_vest/drop_black/equipped
+	hold = /obj/item/storage/internal/accessory/surg_vest/equipped
+
 /obj/item/clothing/accessory/storage/knifeharness
 	name = "M272 pattern knife vest"
 	desc = "An older generation M272 pattern knife vest once employed by the USCM. Can hold up to 5 knives. It is made of synthcotton."
 	icon_state = "vest_knives"
 	hold = /obj/item/storage/internal/accessory/knifeharness
+
+/obj/item/clothing/accessory/storage/knifeharness/attack_hand(mob/user, mods)
+	if(!mods || !mods["alt"] || !length(hold.contents))
+		return ..()
+
+	hold.contents[length(contents)].attack_hand(user, mods)
 
 /obj/item/storage/internal/accessory/knifeharness
 	storage_slots = 5
@@ -601,8 +694,34 @@
 		/obj/item/tool/kitchen/utensil/pknife,
 		/obj/item/tool/kitchen/knife,
 		/obj/item/attachable/bayonet,
-		/obj/item/weapon/melee/throwing_knife,
+		/obj/item/weapon/throwing_knife,
 	)
+	storage_flags = STORAGE_ALLOW_QUICKDRAW|STORAGE_FLAGS_POUCH
+
+	COOLDOWN_DECLARE(draw_cooldown)
+
+/obj/item/storage/internal/accessory/knifeharness/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/weapon/throwing_knife(src)
+
+/obj/item/storage/internal/accessory/knifeharness/attack_hand(mob/user, mods)
+	. = ..()
+
+	if(!COOLDOWN_FINISHED(src, draw_cooldown))
+		to_chat(user, SPAN_WARNING("You need to wait before drawing another knife!"))
+		return FALSE
+
+	if(length(contents))
+		contents[length(contents)].attack_hand(user, mods)
+		COOLDOWN_START(src, draw_cooldown, BAYONET_DRAW_DELAY)
+
+/obj/item/storage/internal/accessory/knifeharness/_item_insertion(obj/item/inserted_item, prevent_warning = 0)
+	..()
+	playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
+
+/obj/item/storage/internal/accessory/knifeharness/_item_removal(obj/item/removed_item, atom/new_location)
+	..()
+	playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 
 /obj/item/clothing/accessory/storage/knifeharness/duelling
 	name = "decorated harness"
@@ -614,12 +733,12 @@
 	storage_slots = 2
 	max_storage_space = 2
 	can_hold = list(
-		/obj/item/weapon/melee/unathiknife,
+		/obj/item/weapon/unathiknife,
 	)
 
 /obj/item/storage/internal/accessory/knifeharness/duelling/fill_preset_inventory()
-	new /obj/item/weapon/melee/unathiknife(src)
-	new /obj/item/weapon/melee/unathiknife(src)
+	new /obj/item/weapon/unathiknife(src)
+	new /obj/item/weapon/unathiknife(src)
 
 /obj/item/clothing/accessory/storage/droppouch
 	name = "drop pouch"
@@ -636,6 +755,7 @@
 	cant_hold = list( //Prevent inventory powergame
 		/obj/item/storage/firstaid,
 		/obj/item/storage/bible,
+		/obj/item/storage/toolkit,
 		)
 	storage_flags = NONE //no verb, no quick draw, no tile gathering
 
@@ -684,7 +804,7 @@
 
 	..()
 
-/obj/item/storage/internal/accessory/holster/can_be_inserted(obj/item/W, stop_messages)
+/obj/item/storage/internal/accessory/holster/can_be_inserted(obj/item/W, mob/user, stop_messages = FALSE)
 	if( ..() ) //If the parent did their thing, this should be fine. It pretty much handles all the checks.
 		if(isgun(W))
 			if(current_gun)
@@ -789,3 +909,10 @@
 	new /obj/item/clothing/accessory/holobadge/cord(src)
 	..()
 	return
+
+/obj/item/clothing/accessory/storage/owlf_vest
+	name = "\improper OWLF agent vest"
+	desc = "This is a fancy-looking ballistics vest, meant to be attached to a uniform." //No stats for these yet, just placeholder implementation.
+	icon = 'icons/obj/items/clothing/ties.dmi'
+	icon_state = "owlf_vest"
+	item_state = "owlf_vest"

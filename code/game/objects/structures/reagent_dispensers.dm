@@ -5,6 +5,7 @@
 	icon_state = "watertank"
 	density = TRUE
 	anchored = FALSE
+	drag_delay = 1
 	health = 100 // Can be destroyed in 2-4 slashes.
 	flags_atom = CAN_BE_SYRINGED
 	wrenchable = TRUE
@@ -38,6 +39,11 @@
 		. += SPAN_NOTICE(" Nothing.")
 	if(reagents)
 		. += SPAN_NOTICE("Total volume: [reagents.total_volume] / [reagents.maximum_volume].")
+	if(dispensing)
+		. += SPAN_NOTICE("\nTransfer mode: Dispensing")
+	else
+		. += SPAN_NOTICE("\nTransfer mode: Filling")
+	. += SPAN_NOTICE("Transfer rate: [amount_per_transfer_from_this] units")
 
 /obj/structure/reagent_dispensers/Destroy()
 	playsound(src.loc, 'sound/effects/slosh.ogg', 50, 1, 3)
@@ -63,10 +69,10 @@
 	if(health <= 0)
 		deconstruct(FALSE)
 
-/obj/structure/reagent_dispensers/bullet_act(obj/item/projectile/Proj)
+/obj/structure/reagent_dispensers/bullet_act(obj/projectile/Proj)
 	health -= Proj.damage
 	if(Proj.firer)
-		msg_admin_niche("[key_name_admin(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
+		msg_admin_niche("[key_name_admin(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]) [ADMIN_JMP(loc)].")
 		log_game("[key_name(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]).")
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	healthcheck()
@@ -114,8 +120,6 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			deconstruct(FALSE)
 			return
-		else
-	return
 
 /obj/structure/reagent_dispensers/attack_hand()
 	if(!reagents || reagents.locked)
@@ -144,13 +148,6 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "ammoniatank"
 	chemical = "ammonia"
-
-/obj/structure/reagent_dispensers/oxygentank
-	name = "oxygentank"
-	desc = "An oxygen tank"
-	icon = 'icons/obj/objects.dmi'
-	icon_state = "oxygentank"
-	chemical = "oxygen"
 
 /obj/structure/reagent_dispensers/acidtank
 	name = "sulfuric acid tank"
@@ -221,7 +218,7 @@
 			"You wrench [src]'s faucet [modded ? "closed" : "open"]")
 		modded = modded ? 0 : 1
 		if (modded)
-			message_admins("[key_name_admin(user)] opened fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]), leaking fuel. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>)")
+			message_admins("[key_name_admin(user)] opened fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]), leaking fuel. [ADMIN_JMP(loc)]")
 			log_game("[key_name(user)] opened fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]), leaking fuel.")
 			leak_fuel(amount_per_transfer_from_this)*/
 	if(istype(W,/obj/item/device/assembly_holder))
@@ -243,7 +240,7 @@
 
 		var/obj/item/device/assembly_holder/H = W
 		if (istype(H.a_left,/obj/item/device/assembly/igniter) || istype(H.a_right,/obj/item/device/assembly/igniter))
-			msg_admin_niche("[key_name_admin(user)] rigged [name] at [loc.loc.name] ([loc.x],[loc.y],[loc.z]) for explosion. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>)")
+			msg_admin_niche("[key_name_admin(user)] rigged [name] at [loc.loc.name] ([loc.x],[loc.y],[loc.z]) for explosion. [ADMIN_JMP(loc)]")
 			log_game("[key_name(user)] rigged [name] at [loc.loc.name] ([loc.x],[loc.y],[loc.z]) for explosion.")
 
 		rig = W
@@ -291,14 +288,14 @@
 	return ..()
 
 
-/obj/structure/reagent_dispensers/fueltank/bullet_act(obj/item/projectile/Proj)
+/obj/structure/reagent_dispensers/fueltank/bullet_act(obj/projectile/Proj)
 	if(exploding) return 0
 	if(ismob(Proj.firer))
 		source_mob = WEAKREF(Proj.firer)
 
 	if(Proj.damage > 10 && prob(60) && !reinforced)
 		if(Proj.firer)
-			message_admins("[key_name_admin(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
+			message_admins("[key_name_admin(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]) [ADMIN_JMP(loc)].")
 			log_game("[key_name(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]).")
 		exploding = TRUE
 		explode()
@@ -391,6 +388,13 @@
 	icon_state = "hydrogentank"
 	chemical = "hydrogen"
 
+/obj/structure/reagent_dispensers/fueltank/oxygentank
+	name = "oxygentank"
+	desc = "An oxygen tank"
+	icon = 'icons/obj/objects.dmi'
+	icon_state = "oxygentank"
+	chemical = "oxygen"
+
 /obj/structure/reagent_dispensers/fueltank/custom
 	name = "reagent tank"
 	desc = "A reagent tank, typically used to store large quantities of chemicals."
@@ -429,6 +433,7 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "peppertank"
 	anchored = TRUE
+	drag_delay = 3
 	wrenchable =  FALSE
 	density = FALSE
 	amount_per_transfer_from_this = 45
@@ -442,6 +447,7 @@
 	icon_state = "water_cooler"
 	possible_transfer_amounts = null
 	anchored = TRUE
+	drag_delay = 3
 	chemical = "water"
 
 /obj/structure/reagent_dispensers/water_cooler/walk_past
@@ -457,6 +463,7 @@
 	icon_state = "beertankTEMP"
 	amount_per_transfer_from_this = 10
 	chemical = "beer"
+	drag_delay = 3
 
 /obj/structure/reagent_dispensers/beerkeg/alt
 	icon_state = "beertank_alt"
@@ -471,6 +478,7 @@
 	icon_state = "virusfoodtank"
 	amount_per_transfer_from_this = 10
 	anchored = TRUE
+	drag_delay = 3
 	wrenchable = FALSE
 	density = FALSE
 	chemical = "virusfood"

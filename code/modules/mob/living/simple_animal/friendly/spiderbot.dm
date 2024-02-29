@@ -6,7 +6,6 @@
 	minbodytemp = 0
 	maxbodytemp = 500
 
-	var/obj/item/device/radio/borg/radio = null
 	var/mob/living/silicon/ai/connected_ai = null
 	var/obj/item/cell/cell = null
 	var/obj/structure/machinery/camera/camera = null
@@ -138,7 +137,8 @@
 		src.mind = M.brainmob.mind
 		src.mind.key = M.brainmob.key
 		src.ckey = M.brainmob.ckey
-		if(client) client.view_size.reset_to_default()
+		if(client)
+			client.view_size.reset_to_default()
 		src.name = "Spider-bot ([M.brainmob.name])"
 
 /mob/living/simple_animal/spiderbot/proc/explode(cause = "exploding") //When emagged.
@@ -174,7 +174,6 @@
 
 /mob/living/simple_animal/spiderbot/New()
 
-	radio = new /obj/item/device/radio/borg(src)
 	camera = new /obj/structure/machinery/camera(src)
 	camera.c_tag = "Spiderbot-[real_name]"
 	camera.network = list("SS13")

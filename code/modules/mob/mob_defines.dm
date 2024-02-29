@@ -24,11 +24,12 @@
 
 	/*A bunch of this stuff really needs to go under their own defines instead of being globally attached to mob.
 	A variable should only be globally attached to turfs/obj/whatever, when it is in fact needed as such.
-	The current method unnecessarily clusters up the variable list, especially for humans (although rearranging won't really clean it up a lot but the difference will be noticable for other mobs).
+	The current method unnecessarily clusters up the variable list, especially for humans (although rearranging won't really clean it up a lot but the difference will be noticeable for other mobs).
 	I'll make some notes on where certain variable defines should probably go.
 	Changing this around would probably require a good look-over the pre-existing code.
 	*/
-	var/list/observers //The list of people observing this mob.
+	/// The list of people observing this mob.
+	var/list/mob/dead/observer/observers
 	var/zone_selected = "chest"
 
 	var/use_me = 1 //Allows all mobs to use the me verb by default, will have to manually specify they cannot
@@ -65,22 +66,14 @@
 	var/dizziness = 0//Carbon
 	var/jitteriness = 0//Carbon
 	var/floatiness = 0
-	var/knocked_out = 0
-	var/stunned = 0
-	var/frozen = 0
-	var/knocked_down = 0
 	var/losebreath = 0.0//Carbon
-	var/dazed = 0
-	var/slowed = 0 // X_SLOW_AMOUNT
-	var/superslowed = 0 // X_SUPERSLOW_AMOUNT
 	var/shakecamera = 0
 
 	// bool status effects \\
 
 	/// bool that tracks if blind
 	var/blinded = FALSE
-	var/sleeping = 0 //Carbon
-	var/resting = 0 //Carbon
+	var/resting = 0
 	var/is_floating = 0
 	var/is_dizzy = 0
 	var/is_jittery = 0
@@ -95,9 +88,6 @@
 	var/exploit_record = ""
 
 	var/gibbing = FALSE
-	var/lying = FALSE
-	var/lying_prev = 0
-	var/canmove = 1
 	var/lastpuke = 0
 	unacidable = FALSE
 	var/mob_size = MOB_SIZE_HUMAN
@@ -125,6 +115,7 @@
 	var/life_steps_total = 0
 	var/life_kills_total = 0
 	var/life_damage_taken_total = 0
+	var/life_revives_total = 0
 	var/festivizer_hits_total = 0
 
 	var/life_value = 1 // when killed, the killee gets this much added to its life_kills_total
@@ -184,7 +175,7 @@
 
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
 
-	var/status_flags = CANKNOCKDOWN|CANPUSH|STATUS_FLAGS_DEBILITATE //bitflags defining which status effects can be inflicted (replaces canweaken, canstun, etc)
+	var/status_flags = DEFAULT_MOB_STATUS_FLAGS //bitflags defining which status effects can be inflicted (replaces canweaken, canstun, etc)
 
 	var/area/lastarea = null
 	var/obj/control_object //Used by admins to possess objects. All mobs should have this var
@@ -205,7 +196,7 @@
 
 	var/recently_pointed_to = 0 //used as cooldown for the pointing verb.
 
-	///Colour matrices to be applied to the client window. Assoc. list.
+	///Color matrices to be applied to the client window. Assoc. list.
 	var/list/client_color_matrices
 
 	var/list/image/hud_list //This mob's HUD (med/sec, etc) images. Associative list.
@@ -224,6 +215,12 @@
 	var/next_delay_update = 0 // when next update of move delay should happen
 	var/next_delay_delay = 10 // how much time we wait for next calc of move delay
 	var/move_delay
+
+	///Holds the time when a mob can throw an item next, only applies after two throws, reference /mob/proc/do_click()
+	COOLDOWN_DECLARE(throw_delay)
+
+	///holds the buffer to allow for throwing two things before the cooldown effects throwing, reference /mob/proc/do_click()
+	var/throw_buffer = 0
 
 	var/list/datum/action/actions = list()
 
@@ -263,6 +260,9 @@
 	var/mutable_appearance/active_thinking_indicator
 	/// User is thinking in character. Used to revert to thinking state after stop_typing
 	var/thinking_IC = FALSE
+
+	// contains /atom/movable/screen/alert only
+	var/list/alerts = list()
 
 /mob/vv_get_dropdown()
 	. = ..()
@@ -367,10 +367,6 @@
 		switch(type)
 			if(/mob/living/carbon/human)
 				possibleverbs += typesof(/mob/living/carbon/proc,/mob/living/carbon/verb,/mob/living/carbon/human/verb,/mob/living/carbon/human/proc)
-			if(/mob/living/silicon/robot)
-				possibleverbs += typesof(/mob/living/silicon/proc,/mob/living/silicon/robot/proc,/mob/living/silicon/robot/verb)
-			if(/mob/living/silicon/ai)
-				possibleverbs += typesof(/mob/living/silicon/proc,/mob/living/silicon/ai/proc)
 		possibleverbs -= verbs
 		possibleverbs += "Cancel" // ...And one for the bottom
 
@@ -434,4 +430,3 @@
 			return
 
 		src.regenerate_icons()
-

@@ -11,6 +11,10 @@
 	var/last_use
 	var/id
 
+/obj/structure/machinery/line_nexter/med
+	icon = 'icons/obj/structures/barricades.dmi'
+	icon_state = "turnstile_med"
+
 /obj/structure/machinery/line_nexter/Initialize()
 	. = ..()
 	last_use = world.time
@@ -58,7 +62,7 @@
 	icon_state = "doorctrl1"
 	add_fingerprint(user)
 
-	for(var/obj/structure/machinery/line_nexter/L in machines)
+	for(var/obj/structure/machinery/line_nexter/L in GLOB.machines)
 		if(id == L.id)
 			L.next()
 

@@ -79,7 +79,7 @@
 /area/shiva/interior/lz2_habs)
 "t" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/melee/ice_axe/red,
+/obj/item/weapon/ice_axe/red,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},

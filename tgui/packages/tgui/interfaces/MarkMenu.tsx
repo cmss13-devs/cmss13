@@ -1,13 +1,6 @@
 import { classes } from 'common/react';
 import { useBackend, useLocalState } from '../backend';
-import {
-  Tabs,
-  Box,
-  Flex,
-  Stack,
-  Button,
-  Icon,
-} from '../components';
+import { Tabs, Box, Flex, Stack, Button, Icon } from '../components';
 import { Window } from '../layouts';
 
 interface MarkProps {
@@ -38,10 +31,12 @@ interface PlacedMark extends Mark {
 // The position of the xeno in the hive (0 = normal xeno; 1 = queen; 2+ = hive leader)
 type HivePosition = 0 | 1 | 2;
 
-
-const MenuActions = (props, context) => {
-  const [historicalSelected, setHistoricalSelected] = useLocalState(context, 'historicalSelected', '');
-  const { data, act } = useBackend<MarkProps>(context);
+const MenuActions = (props) => {
+  const [historicalSelected, setHistoricalSelected] = useLocalState(
+    'historicalSelected',
+    ''
+  );
+  const { data, act } = useBackend<MarkProps>();
   return (
     <Flex fill justify="space-between" className="ActionMenu">
       <Flex.Item>
@@ -49,7 +44,7 @@ const MenuActions = (props, context) => {
           color="xeno"
           disabled={historicalSelected === ''}
           onClick={() => act('watch', { type: historicalSelected })}>
-            Watch
+          Watch
         </Button>
       </Flex.Item>
       <Flex.Item>
@@ -68,35 +63,45 @@ const MenuActions = (props, context) => {
             onClick={() => {
               act('destroy', { type: historicalSelected });
               setHistoricalSelected('');
-              }}>
+            }}>
             Destroy
           </Button>
-        </Flex.Item>)}
+        </Flex.Item>
+      )}
 
       {data.is_leader === 1 && (
         <Flex.Item>
           <Button
             color="xeno"
             disabled={historicalSelected === ''}
-            onClick={() => act('force', { type: historicalSelected })} >
+            onClick={() => act('force', { type: historicalSelected })}>
             Force Tracking
           </Button>
-        </Flex.Item>)}
-    </Flex>);
+        </Flex.Item>
+      )}
+    </Flex>
+  );
 };
 
-const MarkSelection = (props, context) => {
-  const { data } = useBackend<MarkProps>(context);
-  const [selectionMenu, setSelectionMenu] = useLocalState(context, 'selectionMenu', false);
+const MarkSelection = (props) => {
+  const { data } = useBackend<MarkProps>();
+  const [selectionMenu, setSelectionMenu] = useLocalState(
+    'selectionMenu',
+    false
+  );
   const { selected_mark } = data;
-  const mark_prototype = data.mark_meanings.find(x => x.id === selected_mark)
-    ?? data.mark_meanings[0];
+  const mark_prototype =
+    data.mark_meanings.find((x) => x.id === selected_mark) ??
+    data.mark_meanings[0];
   return (
     <Box>
       <Stack className="MarkStack">
         <Stack.Item className="ChooseMark__BuildIcon">
           <Button
-            className={classes(["MenuSelectionButton", selectionMenu && 'MenuSelectionButtonClicked'])}
+            className={classes([
+              'MenuSelectionButton',
+              selectionMenu && 'MenuSelectionButtonClicked',
+            ])}
             color="xeno"
             onClick={() => setSelectionMenu(!selectionMenu)}
             compact>
@@ -106,7 +111,9 @@ const MarkSelection = (props, context) => {
         <Stack.Item>
           <Stack vertical>
             <Stack.Item>
-              <span className="MarkName">New Mark - {mark_prototype.name} </span>
+              <span className="MarkName">
+                New Mark - {mark_prototype.name}{' '}
+              </span>
             </Stack.Item>
             <Stack.Item>
               <span>{mark_prototype.desc}</span>
@@ -114,47 +121,58 @@ const MarkSelection = (props, context) => {
           </Stack>
         </Stack.Item>
       </Stack>
-      {selectionMenu
-        && (
-          <div className="ChooseMenu">
-            <MarkMeaningList onClick={() => setSelectionMenu(false)} />
-          </div>)}
+      {selectionMenu && (
+        <div className="ChooseMenu">
+          <MarkMeaningList onClick={() => setSelectionMenu(false)} />
+        </div>
+      )}
     </Box>
   );
 };
 
-const MarkImage = (props: {image: string, size: string}, _) => {
-  return (<span
-    className={classes([
-      `choosemark${props.size}`,
-      `${props.image}${props.size === '64x64' ? '_big' : ''}`,
-      'ChooseMark__BuildIcon',
-    ])}
-  />);
+const MarkImage = (
+  props: { readonly image: string; readonly size: string },
+  _
+) => {
+  return (
+    <span
+      className={classes([
+        `choosemark${props.size}`,
+        `${props.image}${props.size === '64x64' ? '_big' : ''}`,
+        'ChooseMark__BuildIcon',
+      ])}
+    />
+  );
 };
 
-const HistoricalMark = (props: {mark: PlacedMark}, context) => {
-  const { data } = useBackend<MarkProps>(context);
+const HistoricalMark = (props: { readonly mark: PlacedMark }) => {
+  const { data } = useBackend<MarkProps>();
   const { mark } = props;
-  const [historicalSelected, setHistoricalSelected] = useLocalState(context, 'historicalSelected', '');
+  const [historicalSelected, setHistoricalSelected] = useLocalState(
+    'historicalSelected',
+    ''
+  );
 
-  const isTracked = data.tracked_mark === null ? false : data.tracked_mark === mark.id;
+  const isTracked =
+    data.tracked_mark === null ? false : data.tracked_mark === mark.id;
 
   return (
     <Box
       className={classes([historicalSelected === mark.id && 'Selected'])}
-      onClick={() => setHistoricalSelected(historicalSelected === '' ? mark.id : historicalSelected === mark.id ? '' : mark.id)}
-    >
-      <Flex
-        className="MarkStack"
-        direction="row"
-        justify="space-between"
-        fill
-      >
+      onClick={() =>
+        setHistoricalSelected(
+          historicalSelected === ''
+            ? mark.id
+            : historicalSelected === mark.id
+              ? ''
+              : mark.id
+        )
+      }>
+      <Flex className="MarkStack" direction="row" justify="space-between" fill>
         <Flex.Item className="ChooseMark__BuildIcon">
-          <MarkImage image={mark.image} size='64x64' />
+          <MarkImage image={mark.image} size="64x64" />
         </Flex.Item>
-        <Flex.Item className={classes(["MarkLabel"])}>
+        <Flex.Item className={classes(['MarkLabel'])}>
           <Flex align="flex-top" justify="flex-start" fill>
             <Flex.Item>
               <Stack vertical className="HistoricalLabel">
@@ -165,24 +183,27 @@ const HistoricalMark = (props: {mark: PlacedMark}, context) => {
                   <span>{mark.area}</span>
                 </Stack.Item>
                 <Stack.Item>
-                  <span>Owner: {mark.owner_name} - {mark.time}</span>
+                  <span>
+                    Owner: {mark.owner_name} - {mark.time}
+                  </span>
                 </Stack.Item>
               </Stack>
             </Flex.Item>
             <Flex.Item grow={1}>
-              <div className={classes(["MarkWatch"])}>
-                {mark.watching.map(x => (
+              <div className={classes(['MarkWatch'])}>
+                {mark.watching.map((x) => (
                   <div key={x}>
                     <span>{x}</span>
-                  </div>))}
+                  </div>
+                ))}
               </div>
             </Flex.Item>
 
-            {isTracked
-              && (
-                <Flex.Item>
-                  <Icon name="eye" className="TrackIcon" size={2} />
-                </Flex.Item>)}
+            {isTracked && (
+              <Flex.Item>
+                <Icon name="eye" className="TrackIcon" size={2} />
+              </Flex.Item>
+            )}
           </Flex>
         </Flex.Item>
       </Flex>
@@ -190,9 +211,8 @@ const HistoricalMark = (props: {mark: PlacedMark}, context) => {
   );
 };
 
-const MarkHistory = (props, context) => {
-
-  const { data } = useBackend<MarkProps>(context);
+const MarkHistory = (props) => {
+  const { data } = useBackend<MarkProps>();
 
   const { mark_list_infos } = data;
   return (
@@ -207,24 +227,18 @@ const MarkHistory = (props, context) => {
         <MenuActions />
       </Flex.Item>
 
-      {mark_list_infos.map(x => (
+      {mark_list_infos.map((x) => (
         <Flex.Item key={x.id}>
           <HistoricalMark mark={x} />
         </Flex.Item>
       ))}
-
     </Flex>
   );
 };
 
-export const MarkMenu = (props, context) => {
+export const MarkMenu = (props) => {
   return (
-    <Window
-      title={'Mark Menu'}
-      theme="hive_status"
-      resizable
-      width={560}
-      height={680}>
+    <Window title={'Mark Menu'} theme="hive_status" width={560} height={680}>
       <Window.Content scrollable className="MarkMenu">
         <Stack vertical>
           <Stack.Item>
@@ -236,8 +250,8 @@ export const MarkMenu = (props, context) => {
   );
 };
 
-const MarkMeaningList = (props: {onClick?: () => void}, context) => {
-  const { data, act } = useBackend<MarkProps>(context);
+const MarkMeaningList = (props: { readonly onClick?: () => void }) => {
+  const { data, act } = useBackend<MarkProps>();
   const { mark_meanings, selected_mark } = data;
 
   return (
@@ -254,7 +268,7 @@ const MarkMeaningList = (props: {onClick?: () => void}, context) => {
           }}>
           <Stack align="center">
             <Stack.Item>
-              <MarkImage image={val.image} size='32x32' />
+              <MarkImage image={val.image} size="32x32" />
             </Stack.Item>
             <Stack.Item grow>
               <Box fontSiz>{val.desc}</Box>

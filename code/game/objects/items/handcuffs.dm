@@ -29,20 +29,6 @@
 	if(!C.handcuffed)
 		place_handcuffs(C, user)
 
-/obj/item/handcuffs/obj/structure/MouseDrop(mob/living/carbon/human/H)
-	var/mob/living/carbon/human/user = usr
-	if (!istype(user))
-		return
-	if (user.stat || get_dist(user, src) > 1 || get_dist(user, H) > 1 || H.lying)
-		return
-	if (!istype(H))
-		return
-
-	if(!do_after(user, cuff_delay, INTERRUPT_ALL, BUSY_ICON_HOSTILE, H, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
-		return
-
-	// TODO: apply handcuffs
-
 /obj/item/handcuffs/get_mob_overlay(mob/user_mob, slot)
 	var/image/ret = ..()
 
@@ -137,7 +123,7 @@
 	if(istype(I, /obj/item/stack/rods))
 		var/obj/item/stack/rods/R = I
 		if (R.use(1))
-			var/obj/item/weapon/melee/wirerod/W = new /obj/item/weapon/melee/wirerod
+			var/obj/item/weapon/wirerod/W = new /obj/item/weapon/wirerod
 
 			user.put_in_hands(W)
 			to_chat(user, SPAN_NOTICE("You wrap the cable restraint around the top of the rod."))

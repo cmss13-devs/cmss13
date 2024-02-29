@@ -25,7 +25,7 @@
 	for(var/i in 1 to storage_slots)
 		new content_type(src)
 
-var/list/grenade_packets = list(
+GLOBAL_LIST_INIT(grenade_packets, list(
 	/obj/item/storage/box/packet/high_explosive,
 	/obj/item/storage/box/packet/baton_slug,
 	/obj/item/storage/box/packet/flare,
@@ -37,7 +37,7 @@ var/list/grenade_packets = list(
 	/obj/item/storage/box/packet/m15,
 	/obj/item/storage/box/packet/airburst_he,
 	/obj/item/storage/box/packet/airburst_incen
-	)
+	))
 
 /obj/item/storage/box/packet/high_explosive
 	name = "\improper HEDP grenade packet"
@@ -110,19 +110,31 @@ var/list/grenade_packets = list(
 	content_type = /obj/item/explosive/grenade/high_explosive/m15/rubber
 
 /obj/item/storage/box/packet/airburst_he
-	name = "\improper M74 airbust grenade packet"
+	name = "\improper M74 airburst grenade packet"
 	desc = "It contains three M74 airburst fragmentation grenades. This end towards the enemy."
 	icon_state = "agmf_packet"
 	content_type = /obj/item/explosive/grenade/high_explosive/airburst
 
 /obj/item/storage/box/packet/airburst_incen
-	name = "\improper M74 airbust incendiary grenade packet"
+	name = "\improper M74 airburst incendiary grenade packet"
 	desc = "It contains three M74 airburst incendiary grenades. This end towards the enemy."
 	icon_state = "agmi_packet"
 	content_type = /obj/item/explosive/grenade/incendiary/airburst
 
 /obj/item/storage/box/packet/airburst_smoke
-	name = "\improper M74 airbust smoke grenade packet"
+	name = "\improper M74 airburst smoke grenade packet"
 	desc = "It contains three M74 airburst smoke grenades. This end towards the enemy."
 	icon_state = "agms_packet"
 	content_type = /obj/item/explosive/grenade/smokebomb/airburst
+
+/obj/item/storage/box/packet/rmc/he
+	name = "\improper R2175/A HEDP grenade packet"
+	desc = "It contains three R2175/A HEDP grenades. Handle with care."
+	icon_state = "hedp_packet"
+	content_type = /obj/item/explosive/grenade/high_explosive/rmc
+
+/obj/item/storage/box/packet/rmc/incin
+	name = "\improper R2175/B HIDP grenade packet"
+	desc = "It contains three R2175/B HIDP grenades. Handle with care."
+	icon_state = "hidp_packet"
+	content_type = /obj/item/explosive/grenade/incendiary/rmc

@@ -1,4 +1,0 @@
-author: "carlarctg"
-delete-after: True
-changes:
-  - balance: "Reworks the firearms skill. Civilians can now fire pistols, SMGs, and certain other civilian weapons without penalties. Civilian gun penalties have had their firerate reduction remove and scatter increased."

@@ -21,7 +21,7 @@
 		var/char = copytext(hex, i, i + 1)
 		switch(char)
 			if("0")
-				//Apparently, switch works with empty statements, yay! If that doesn't work, blame me, though. -- Urist
+				pass()
 			if("9", "8", "7", "6", "5", "4", "3", "2", "1")
 				num += text2num(char) * 16 ** power
 			if("a", "A")
@@ -77,7 +77,6 @@
 				hex += "E"
 			if(15.0)
 				hex += "F"
-			else
 		power--
 	while(length(hex) < placeholder)
 		hex = text("0[]", hex)
@@ -165,8 +164,6 @@
 			return 6
 		if("SOUTHWEST")
 			return 10
-		else
-	return
 
 //Converts an angle (degrees) into an ss13 direction
 /proc/angle2dir(degree)
@@ -226,7 +223,6 @@
 	if(rights & R_POSSESS) . += "[seperator]+POSSESS"
 	if(rights & R_PERMISSIONS) . += "[seperator]+PERMISSIONS"
 	if(rights & R_STEALTH) . += "[seperator]+STEALTH"
-	if(rights & R_REJUVINATE) . += "[seperator]+REJUVINATE"
 	if(rights & R_COLOR) . += "[seperator]+COLOR"
 	if(rights & R_VAREDIT) . += "[seperator]+VAREDIT"
 	if(rights & R_SOUNDS) . += "[seperator]+SOUND"
@@ -313,3 +309,22 @@
 				for(var/A in value)
 					if(var_source.vars.Find(A))
 						. += A
+
+/// Formats a larger number to correct textual representation without losing data
+/proc/big_number_to_text(number)
+	return num2text(number, INFINITY)
+
+/proc/text2list(text, delimiter="\n")
+	var/delim_len = length(delimiter)
+	if (delim_len < 1)
+		return list(text)
+
+	. = list()
+	var/last_found = 1
+	var/found
+
+	do
+		found       = findtext(text, delimiter, last_found, 0)
+		.          += copytext(text, last_found, found)
+		last_found  = found + delim_len
+	while (found)

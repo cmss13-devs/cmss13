@@ -13,20 +13,20 @@
 	var/isGlass = TRUE
 	black_market_value = 25
 
-/obj/item/reagent_container/food/drinks/bottle/bullet_act(obj/item/projectile/P)
+/obj/item/reagent_container/food/drinks/bottle/bullet_act(obj/projectile/P)
 	. = ..()
 	if(isGlass)
 		smash()
 
 ///Audio/visual bottle breaking effects start here
 /obj/item/reagent_container/food/drinks/bottle/proc/smash(mob/living/target, mob/living/user)
-	var/obj/item/weapon/melee/broken_bottle/B
+	var/obj/item/weapon/broken_bottle/B
 	if(user)
 		user.temp_drop_inv_item(src)
-		B = new /obj/item/weapon/melee/broken_bottle(user.loc)
+		B = new /obj/item/weapon/broken_bottle(user.loc)
 		user.put_in_active_hand(B)
 	else
-		B = new /obj/item/weapon/melee/broken_bottle(src.loc)
+		B = new /obj/item/weapon/broken_bottle(src.loc)
 	if(prob(33))
 		if(target)
 			new/obj/item/shard(target.loc) // Create a glass shard at the target's location!
@@ -107,7 +107,7 @@
 	if(alcohol_potency < BURN_LEVEL_TIER_1)
 		to_chat(user, SPAN_NOTICE("There's not enough flammable liquid in \the [src]!"))
 		return
-	alcohol_potency = Clamp(alcohol_potency, BURN_LEVEL_TIER_1, BURN_LEVEL_TIER_7)
+	alcohol_potency = clamp(alcohol_potency, BURN_LEVEL_TIER_1, BURN_LEVEL_TIER_7)
 
 	if(!do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return

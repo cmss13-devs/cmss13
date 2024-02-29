@@ -11,12 +11,12 @@
 
 	choice_categories = list(
 		// SENTRY_CATEGORY_ROF = list(ROF_SINGLE, ROF_FULL_AUTO),
-		SENTRY_CATEGORY_IFF = list(FACTION_USCM, FACTION_WEYLAND, FACTION_HUMAN),
+		SENTRY_CATEGORY_IFF = list(FACTION_MARINE, FACTION_WEYLAND, FACTION_HUMAN),
 	)
 
 	selected_categories = list(
 		SENTRY_CATEGORY_ROF = ROF_SINGLE,
-		SENTRY_CATEGORY_IFF = FACTION_USCM,
+		SENTRY_CATEGORY_IFF = FACTION_MARINE,
 	)
 
 /obj/structure/machinery/defenses/sentry/flamer/handle_rof(level)
@@ -29,7 +29,7 @@
 			fire_delay = 0.5
 
 /obj/structure/machinery/defenses/sentry/flamer/actual_fire(atom/A)
-	var/obj/item/projectile/P = new(create_cause_data(initial(name), owner_mob))
+	var/obj/projectile/P = new(create_cause_data(initial(name), owner_mob))
 	P.generate_bullet(new ammo.default_ammo)
 	GIVE_BULLET_TRAIT(P, /datum/element/bullet_trait_iff, faction_group)
 	P.fire_at(A, src, owner_mob, P.ammo.max_range, P.ammo.shell_speed, null)

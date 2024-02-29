@@ -16,16 +16,18 @@
 	can_be_near_defense = TRUE
 
 	choice_categories = list(
-		SENTRY_CATEGORY_IFF = list(FACTION_USCM, FACTION_WEYLAND, FACTION_HUMAN),
+		SENTRY_CATEGORY_IFF = list(FACTION_MARINE, FACTION_WEYLAND, FACTION_HUMAN),
 	)
 
 	selected_categories = list(
-		SENTRY_CATEGORY_IFF = FACTION_USCM,
+		SENTRY_CATEGORY_IFF = FACTION_MARINE,
 	)
 
 
 /obj/structure/machinery/defenses/planted_flag/Initialize()
 	. = ..()
+
+	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(turf_changed))
 
 	if(turned_on)
 		apply_area_effect()
@@ -79,6 +81,11 @@
 			continue
 
 		apply_buff_to_player(H)
+
+/obj/structure/machinery/defenses/planted_flag/proc/turf_changed()
+	SIGNAL_HANDLER
+	if(range_bounds)
+		QDEL_NULL(range_bounds)
 
 /obj/structure/machinery/defenses/planted_flag/proc/apply_buff_to_player(mob/living/carbon/human/H)
 	H.activate_order_buff(COMMAND_ORDER_HOLD, buff_intensity, 1.5 SECONDS)

@@ -11,7 +11,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "e" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -20,10 +20,10 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "f" = (
 /turf/closed/wall,
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "i" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/diamond{
@@ -32,7 +32,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "l" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/alien/weeds/node,
@@ -55,7 +55,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "p" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/silver{
@@ -66,13 +66,13 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "q" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "r" = (
 /obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
@@ -84,14 +84,14 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "t" = (
 /obj/structure/surface/rack,
 /obj/item/tool/shovel,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "y" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/metal{
@@ -107,7 +107,7 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "C" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/platinum{
@@ -116,14 +116,14 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "D" = (
 /obj/structure/largecrate/supply,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "G" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/rifle/lmg,
@@ -131,7 +131,7 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "H" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -140,7 +140,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "I" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/rifle/mar40{
@@ -153,7 +153,7 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "M" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/iron{
@@ -163,7 +163,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "N" = (
 /obj/effect/alien/weeds/node,
 /turf/open/gm/dirt,
@@ -184,7 +184,7 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "U" = (
 /obj/structure/closet/crate,
 /obj/item/ammo_magazine/rifle/mar40,
@@ -197,7 +197,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "V" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -211,7 +211,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "X" = (
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
 	icon_state = "door_locked";
@@ -222,12 +222,12 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 "Z" = (
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/lv624/ground/barrens/north_east_barrens)
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
 
 (1,1,1) = {"
 O

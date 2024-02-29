@@ -685,6 +685,16 @@
 	icon_state = "hair_scully2"
 	gender = FEMALE
 
+/datum/sprite_accessory/hair/scully2alt
+	name = "Scully 2 Alt"
+	icon_state = "hair_scully2alt"
+	gender = FEMALE
+
+/datum/sprite_accessory/hair/ponytail8
+	name = "Ponytail 8"
+	icon_state = "hair_ponytail8"
+	gender = FEMALE
+
 /datum/sprite_accessory/hair/chelsea
 	name = "Punk Shave, Chelsea"
 	icon_state = "hair_punk_chelsea"
@@ -724,3 +734,29 @@
 /datum/sprite_accessory/hair/croft
 	name = "Croft"
 	icon_state = "hair_croft"
+
+/datum/sprite_accessory/hair/aviator
+	name = "Aviator"
+	icon_state = "hair_aviator"
+
+/datum/sprite_accessory/hair/gantleponytail
+	name = "Gentle Ponytail"
+	icon_state = "hair_gantleponytail"
+	gender = FEMALE
+
+/datum/sprite_accessory/hair/edgar
+	name = "Edgar"
+	icon_state = "hair_edgar"
+
+/datum/sprite_accessory/hair/emobun
+	name = "Emo Little Bun"
+	icon_state = "hair_emobun"
+
+/datum/sprite_accessory/hair/taper
+	name = "Taper"
+	icon_state = "hair_taper"
+
+/datum/sprite_accessory/hair/gentlebraid
+	name = "Gentle Braid"
+	icon_state = "hair_braid3"
+	gender = FEMALE

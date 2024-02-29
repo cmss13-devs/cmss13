@@ -129,11 +129,11 @@
 /area/shiva/interior/colony/research_hab)
 "M" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/melee/ice_axe/green{
+/obj/item/weapon/ice_axe/green{
 	pixel_y = 4
 	},
-/obj/item/weapon/melee/ice_axe,
-/obj/item/weapon/melee/ice_axe/red{
+/obj/item/weapon/ice_axe,
+/obj/item/weapon/ice_axe/red{
 	pixel_y = -4
 	},
 /turf/open/floor/plating,

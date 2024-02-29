@@ -14,7 +14,7 @@
 	// Which entrance to exit through
 	var/entrance_id = null
 
-/obj/structure/interior_exit/get_projectile_hit_boolean(obj/item/projectile/P)
+/obj/structure/interior_exit/get_projectile_hit_boolean(obj/projectile/P)
 	return FALSE
 
 /obj/structure/interior_exit/attack_hand(mob/M)
@@ -82,7 +82,7 @@
 	switch(dir)
 		if(NORTH)
 			pixel_y = 31
-			layer = INTERIOR_WALL_NORTH_LAYER
+			layer = WALL_LAYER
 		if(SOUTH)
 			layer = INTERIOR_WALL_SOUTH_LAYER
 

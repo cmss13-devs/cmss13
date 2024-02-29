@@ -54,7 +54,6 @@
 				src.health -= W.force * 0.75
 			if("brute")
 				src.health -= W.force * 0.5
-			else
 		if (src.health <= 0)
 			src.explode()
 		..()
@@ -66,6 +65,7 @@
 	return
 
 /obj/structure/machinery/deployable/barrier/emp_act(severity)
+	. = ..()
 	if(inoperable())
 		return
 	if(prob(50/severity))

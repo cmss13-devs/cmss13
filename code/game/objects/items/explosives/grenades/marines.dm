@@ -197,6 +197,88 @@
 
 /*
 //================================================
+				M203 Grenades
+//================================================
+*/
+
+/obj/item/explosive/grenade/incendiary/impact
+	name = "\improper 40mm incendiary grenade"
+	desc = "This is a 40mm grenade, designed to be launched by a grenade launcher and detonate on impact. This one is marked as a incendiary grenade, watch your fire."
+	icon_state = "grenade_40mm_inc"
+	det_time = 0
+	item_state = "grenade_fire"
+	hand_throwable = FALSE
+	dangerous = TRUE
+	underslug_launchable = TRUE
+	flame_level = BURN_TIME_TIER_2
+	burn_level = BURN_LEVEL_TIER_3
+	flameshape = FLAMESHAPE_DEFAULT
+	radius = 2
+	fire_type = FIRE_VARIANT_DEFAULT
+
+/obj/item/explosive/grenade/incendiary/impact/prime()
+	return
+
+/obj/item/explosive/grenade/incendiary/impact/launch_impact(atom/hit_atom)
+	..()
+	var/detonate = TRUE
+	var/turf/hit_turf = null
+	if(isobj(hit_atom) && !rebounding)
+		detonate = FALSE
+	if(isturf(hit_atom))
+		hit_turf = hit_atom
+		if(hit_turf.density && !rebounding)
+			detonate = FALSE
+	if(active && detonate) // Active, and we reached our destination.
+		var/angle = dir2angle(last_move_dir)
+		var/turf/target = locate(x + sin(angle)*radius, y + cos(angle)*radius, z)
+		if(target)
+			INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flame_radius), cause_data, radius, get_turf(src), flame_level, burn_level, flameshape, target)
+		else
+			//Not stellar, but if we can't find a direction, fall back to HIDP behaviour.
+			INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flame_radius), cause_data, radius, get_turf(src), flame_level, burn_level, FLAMESHAPE_DEFAULT, target)
+		playsound(src, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
+		qdel(src)
+
+/obj/item/explosive/grenade/high_explosive/impact //omega hell killer grenade of doom from hell
+	name = "\improper 40mm HE grenade"
+	desc = "This is a 40mm grenade, designed to be launched by a grenade launcher and detonate on impact. This one is marked as a High-Explosive grenade, watch your fire."
+	icon_state = "grenade_40mm_he"
+	item_state = "grenade_hedp"
+	det_time = 0
+	hand_throwable = FALSE
+	dangerous = TRUE
+	underslug_launchable = TRUE
+	explosion_power = 100 //hedp
+	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
+
+/obj/item/explosive/grenade/high_explosive/impact/prime()
+// We don't prime, we use launch_impact.
+
+/obj/item/explosive/grenade/high_explosive/impact/launch_impact(atom/hit_atom)
+	..()
+	var/detonate = TRUE
+	if(isobj(hit_atom) && !rebounding)
+		detonate = FALSE
+	if(isturf(hit_atom) && hit_atom.density && !rebounding)
+		detonate = FALSE
+	if(active && detonate) // Active, and we reached our destination.
+		if(explosion_power)
+			cell_explosion(loc, explosion_power, explosion_falloff, falloff_mode, last_move_dir, cause_data)
+		qdel(src)
+
+/obj/item/explosive/grenade/high_explosive/airburst/buckshot
+	name = "\improper 40mm Buckshot Shell"
+	desc = "A classic of grenade launchers everywhere, this is a 40mm shell loaded with buckshot; very dangerous, watch your fire."
+	icon_state = "grenade_40mm_buckshot"
+	item_state = "grenade_hornet_active"
+	shrapnel_count = 10
+	shrapnel_type = /datum/ammo/bullet/shotgun/spread
+	direct_hit_shrapnel = 5
+	dispersion_angle = 35//big
+
+/*
+//================================================
 				Incendiary Grenades
 //================================================
 */
@@ -385,6 +467,46 @@
 
 /*
 //================================================
+			Nerve Gas Grenades
+//================================================
+*/
+/obj/item/explosive/grenade/nerve_gas
+	name = "\improper CN20 canister grenade"
+	desc = "A canister grenade of deadly nerve gas. It is set to detonate in 4 seconds."
+	icon_state = "flashbang2"//temp icon
+	det_time = 40
+	item_state = "grenade_phos_clf"//temp icon
+	underslug_launchable = FALSE
+	harmful = TRUE
+	antigrief_protection = TRUE
+	/// The nerve gas datum
+	var/datum/effect_system/smoke_spread/cn20/nerve_gas
+	/// The typepath of the nerve gas
+	var/nerve_gas_type = /datum/effect_system/smoke_spread/cn20
+	/// The radius the gas will reach
+	var/nerve_gas_radius = 2
+
+/obj/item/explosive/grenade/nerve_gas/Initialize(mapload, ...)
+	. = ..()
+	nerve_gas = new nerve_gas_type
+	nerve_gas.attach(src)
+
+/obj/item/explosive/grenade/nerve_gas/Destroy()
+	QDEL_NULL(nerve_gas)
+	return ..()
+
+/obj/item/explosive/grenade/nerve_gas/prime()
+	playsound(src.loc, 'sound/effects/smoke.ogg', 25, 1, 4)
+	nerve_gas.set_up(nerve_gas_radius, 0, get_turf(src), null, 6)
+	nerve_gas.start()
+	qdel(src)
+
+/obj/item/explosive/grenade/nerve_gas/xeno
+	name = "\improper CN20-X canister grenade"
+	nerve_gas_type = /datum/effect_system/smoke_spread/cn20/xeno
+
+/*
+//================================================
 			Airburst Smoke Grenades
 //================================================
 */
@@ -465,31 +587,32 @@
 		ram_distance -- //for max pinballing.
 	icon_state = inactive_icon
 
-/obj/item/explosive/grenade/slug/proc/impact_mob(mob/living/M)
-	var/direction = Get_Angle(src,M)
-	var/target_turf = get_angle_target_turf(src,direction,throw_max)
-	var/fling = rand(throw_min,throw_max) //WEEEEEEEEEEEEEEEEEEEE What is going to be put into throw_atom
+/obj/item/explosive/grenade/slug/proc/impact_mob(mob/living/smacked)
+	var/direction = Get_Angle(src, smacked)
+	var/target_turf = get_angle_target_turf(src,direction, throw_max)
+	var/fling = rand(throw_min, throw_max) //WEEEEEEEEEEEEEEEEEEEE What is going to be put into throw_atom
 	var/random_tile = 0 //random tile for bounce
 
-	playsound(M.loc, impact_sound, 75, 1)
-	M.apply_damage(impact_damage, BRUTE)
+	playsound(smacked.loc, impact_sound, 75, 1)
+	smacked.apply_damage(impact_damage, BRUTE)
+	smacked.attack_log += "\[[time_stamp()]\] [src], fired by [fingerprintslast], struck [key_name(smacked)]."
 
 	random_tile = get_random_turf_in_range(src,ram_distance,ram_distance) //getting random tile for bounce
 	src.throw_atom(random_tile,ram_distance,SPEED_FAST,src,TRUE,NORMAL_LAUNCH,NO_FLAGS) //time for a little trolling
 
-	if(isyautja(M)|| issynth(M))
-		M.apply_effect(slowdown_time * 0.5, SLOW)
-		M.apply_effect(dazed_time * 0.5, DAZE)
+	if(isyautja(smacked)|| issynth(smacked))
+		smacked.apply_effect(slowdown_time * 0.5, SLOW)
+		smacked.apply_effect(dazed_time * 0.5, DAZE)
 
-	if(M.mob_size >= MOB_SIZE_BIG)//big xenos not KO'ed
-		M.apply_effect(slowdown_time * 1.2, SLOW)//They are slowed more :trol:
-		M.apply_effect(dazed_time * 1.2, DAZE)
+	if(smacked.mob_size >= MOB_SIZE_BIG)//big xenos not KO'ed
+		smacked.apply_effect(slowdown_time * 1.2, SLOW)//They are slowed more :trol:
+		smacked.apply_effect(dazed_time * 1.2, DAZE)
 		return
 
-	M.apply_effect(knockout_time, WEAKEN)//but little xenos and humans are
-	M.throw_atom(target_turf,fling,SPEED_AVERAGE,M,TRUE)
-	M.apply_effect(slowdown_time, SLOW)
-	M.apply_effect(dazed_time, DAZE)
+	smacked.apply_effect(knockout_time, WEAKEN)//but little xenos and humans are
+	smacked.throw_atom(target_turf, fling, SPEED_AVERAGE, smacked, TRUE)
+	smacked.apply_effect(slowdown_time, SLOW)
+	smacked.apply_effect(dazed_time, DAZE)
 	return
 
 /obj/item/explosive/grenade/slug/baton
@@ -582,11 +705,11 @@
 	det_time = 20
 	underslug_launchable = TRUE
 	harmful = FALSE
-	var/foam_metal_type = FOAM_METAL_TYPE_ALUMINIUM
+	var/foam_metal_type = FOAM_METAL_TYPE_IRON
 
 /obj/item/explosive/grenade/metal_foam/prime()
 	var/datum/effect_system/foam_spread/s = new()
-	s.set_up(12, get_turf(src), metal_foam = foam_metal_type) //Metalfoam 1 for aluminum foam, 2 for iron foam (Stronger), 12 amt = 2 tiles radius (5 tile length diamond)
+	s.set_up(12, get_turf(src), metal_foam = foam_metal_type) //12 amt = 2 tiles radius (5 tile length diamond)
 	s.start()
 	qdel(src)
 
@@ -605,4 +728,24 @@
 	flame_level = BURN_TIME_TIER_3
 	burn_level = BURN_LEVEL_TIER_3
 	radius = 2
+	fire_type = FIRE_VARIANT_DEFAULT
+
+//Royal marine grenades
+
+/obj/item/explosive/grenade/high_explosive/rmc
+	name = "\improper R2175/A HEDP grenade"
+	desc = "High-Explosive Dual-Purpose. A small, but deceptively strong blast grenade that has recently been added to the arsenal of the RMC."
+	icon_state = "rmc_grenade"
+	item_state = "grenade_hedp"
+	explosion_power = 130
+	explosion_falloff = 30
+
+/obj/item/explosive/grenade/incendiary/rmc
+	name = "\improper R2175/B HIDP grenade"
+	desc = "The R2175/B HIDP is a small, but deceptively strong incendiary grenade designed to rapidly clear areas with fast-acting potent fire. It is set to detonate in 4 seconds."
+	icon_state = "rmc_grenade_fire"
+	item_state = "grenade_fire"
+	flame_level = BURN_TIME_TIER_1
+	burn_level = BURN_LEVEL_TIER_8
+	radius = 3
 	fire_type = FIRE_VARIANT_DEFAULT

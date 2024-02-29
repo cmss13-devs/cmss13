@@ -111,7 +111,7 @@
 	item_state = "bombsuitsec"
 	allowed = list(
 		/obj/item/weapon/gun,
-		/obj/item/weapon/melee/baton,
+		/obj/item/weapon/baton,
 		/obj/item/handcuffs,
 
 		/obj/item/device/flashlight,

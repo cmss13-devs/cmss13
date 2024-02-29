@@ -18,6 +18,10 @@
 	src.ion_trail = new /datum/effect_system/ion_trail_follow()
 	src.ion_trail.set_up(src)
 
+/obj/item/tank/jetpack/Destroy()
+	QDEL_NULL(ion_trail)
+	return ..()
+
 
 /obj/item/tank/jetpack/verb/toggle_rockets()
 	set name = "Toggle Jetpack Stabilization"
@@ -79,9 +83,3 @@
 	distribute_pressure = 0
 	icon_state = "jetpack-black"
 	item_state =  "jetpack-black"
-
-/obj/item/tank/jetpack/carbondioxide/New()
-	..()
-	src.ion_trail = new /datum/effect_system/ion_trail_follow()
-	src.ion_trail.set_up(src)
-

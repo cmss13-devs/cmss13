@@ -32,15 +32,16 @@ GLOBAL_LIST_INIT_TYPED(undershirt_f, /datum/sprite_accessory/undershirt, setup_u
 /datum/sprite_accessory/undershirt/proc/get_image(mob_gender)
 	var/selected_icon_state = icon_state
 	if(camo_conforming)
-		switch(SSmapping.configs[GROUND_MAP].map_name) // maploader TODO: json
-			if(MAP_PRISON_STATION, MAP_PRISON_STATION_V3, MAP_LV522_CHANCES_CLAIM)
+		switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+			if("classic")
 				selected_icon_state = "c_" + selected_icon_state
-			if(MAP_LV_624, MAP_RUNTIME, MAP_NEW_VARADERO)
+			if("jungle")
 				selected_icon_state = "j_" + selected_icon_state
-			if(MAP_WHISKEY_OUTPOST, MAP_DESERT_DAM, MAP_BIG_RED, MAP_KUTJEVO)
+			if("desert")
 				selected_icon_state = "d_" + selected_icon_state
-			if(MAP_CORSAT, MAP_SOROKYNE_STRATA, MAP_ICE_COLONY, MAP_ICE_COLONY_V3)
+			if("snow")
 				selected_icon_state = "s_" + selected_icon_state
+
 	if(gender == PLURAL)
 		selected_icon_state += mob_gender == MALE ? "_m" : "_f"
 	return image(icon, selected_icon_state)
@@ -60,21 +61,37 @@ GLOBAL_LIST_INIT_TYPED(undershirt_f, /datum/sprite_accessory/undershirt, setup_u
 
 // Plural
 /datum/sprite_accessory/undershirt/undershirt
-	name = "Undershirt"
-	icon_state = "undershirt"
+	name = "Undershirt (Tan)"
+	icon_state = "t_undershirt"
 	gender = NEUTER
 
+/datum/sprite_accessory/undershirt/undershirt/black
+	name = "Undershirt (Black)"
+	icon_state = "b_undershirt"
+
 /datum/sprite_accessory/undershirt/undershirt/sleeveless
-	name = "Undershirt (Sleeveless)"
-	icon_state = "undershirt_sleeveless"
+	name = "Undershirt (Tan, Sleeveless)"
+	icon_state = "t_undershirt_sleeveless"
+
+/datum/sprite_accessory/undershirt/undershirt/sleeveless/black
+	name = "Undershirt (Black, Sleeveless)"
+	icon_state = "b_undershirt_sleeveless"
 
 /datum/sprite_accessory/undershirt/undershirt/rolled
-	name = "Undershirt (Rolled)"
-	icon_state = "rolled_undershirt"
+	name = "Undershirt (Tan, Rolled)"
+	icon_state = "t_rolled_undershirt"
 
 /datum/sprite_accessory/undershirt/undershirt/rolled_sleeveless
-	name = "Undershirt (Rolled Sleeveless)"
-	icon_state = "rolled_undershirt_sleeveless"
+	name = "Undershirt (Tan, Rolled Sleeveless)"
+	icon_state = "t_rolled_undershirt_sleeveless"
+
+/datum/sprite_accessory/undershirt/undershirt/long
+	name = "Undershirt (Tan, Long Sleeved)"
+	icon_state = "t_long_undershirt"
+
+/datum/sprite_accessory/undershirt/undershirt/long/black
+	name = "Undershirt (Black, Long Sleeved)"
+	icon_state = "b_long_undershirt"
 
 // Male
 /datum/sprite_accessory/undershirt/none

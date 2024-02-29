@@ -45,10 +45,10 @@
 		M.apply_effect(3, DAZE)
 		M.apply_effect(5, SLOW)
 
-/obj/item/weapon/shield/riot/yautja/attackby(obj/item/I, mob/user)
+/obj/item/weapon/shield/riot/yautja/attackby(obj/item/attacking_item, mob/user)
 	if(cooldown < world.time - 25)
-		if(istype(I, /obj/item/weapon) && (I.flags_item & ITEM_PREDATOR))
-			user.visible_message(SPAN_WARNING("[user] bashes \the [src] with \the [I]!"))
+		if(istype(attacking_item, /obj/item/weapon) && (attacking_item.flags_item & ITEM_PREDATOR))
+			user.visible_message(SPAN_WARNING("[user] bashes [src] with [attacking_item]!"))
 			playsound(user.loc, 'sound/effects/shieldbash.ogg', 25, 1)
 			cooldown = world.time
 	else

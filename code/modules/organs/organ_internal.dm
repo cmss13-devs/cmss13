@@ -247,6 +247,25 @@
 	robotic_type = /obj/item/organ/brain/prosthetic
 	vital = 1
 
+/datum/internal_organ/brain/process(delta_time)
+	..()
+
+	if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
+		return
+
+	if(organ_status >= ORGAN_BRUISED && prob(5 * delta_time))
+		var/dir_choice = pick(list(NORTH, SOUTH, EAST, WEST))
+		owner.drop_held_items()
+		if(!owner.buckled && owner.stat == CONSCIOUS)
+			owner.Move(get_step(get_turf(owner), dir_choice))
+		to_chat(owner, SPAN_DANGER("Your mind wanders and goes blank for a moment..."))
+
+	if(organ_status >= ORGAN_BROKEN && prob(5 * delta_time))
+		owner.apply_effect(1, PARALYZE)
+		if(owner.jitteriness < 100)
+			owner.make_jittery(50)
+		to_chat(owner, SPAN_DANGER("Your body seizes up!"))
+
 /datum/internal_organ/brain/prosthetic //used by synthetic species
 	robotic = ORGAN_ROBOT
 	removed_type = /obj/item/organ/brain/prosthetic

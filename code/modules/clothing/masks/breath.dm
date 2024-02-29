@@ -16,7 +16,7 @@
 	set name = "Adjust mask"
 	set src in usr
 
-	if(usr.canmove && !usr.stat && !usr.is_mob_restrained())
+	if(usr.is_mob_incapacitated())
 		if(!src.hanging)
 			src.hanging = !src.hanging
 			gas_transfer_coefficient = 1 //gas is now escaping to the turf and vice versa
@@ -225,3 +225,14 @@
 /obj/item/clothing/mask/tornscarf/black
 	icon_state = "torn_scarf_black"
 	item_state = "torn_scarf_black"
+
+/obj/item/clothing/mask/owlf_mask
+	name = "\improper OWLF gas mask"
+	desc = "A close-fitting mask that can be connected to an air supply."
+	icon_state = "owlf_mask"
+	item_state = "owlf_mask"
+	flags_inventory = COVERMOUTH|ALLOWINTERNALS
+	flags_armor_protection = 0
+	w_class = SIZE_SMALL
+	gas_transfer_coefficient = 0.10
+	permeability_coefficient = 0.50

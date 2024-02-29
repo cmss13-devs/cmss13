@@ -309,7 +309,13 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 
 	holder2.icon_state = null
 	if(has_brain_worms())
-		holder2.icon_state = "hudbrainwormhost"
+		var/worm_icon = "hudbrainwormhost"
+		switch(borer.generation)
+			if(0)
+				worm_icon = "hudbrainwormhostb"
+			if(1)
+				worm_icon = "hudbrainwormhostg"
+		holder2.icon_state = worm_icon
 		holder2.pixel_x = 9
 		holder2.pixel_y = -8
 
@@ -484,11 +490,17 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 
 			return
 
-		var/mob/living/carbon/cortical_borer/B = has_brain_worms()
+		var/mob/living/carbon/cortical_borer/brainworm = has_brain_worms()
 		holder5.icon_state = null
-		if(B)
-			holder5.icon_state = "hudbrainwormhost"
-			if(B.borer_flags_status & BORER_STATUS_CONTROLLING)
+		if(brainworm)
+			var/worm_icon = "hudbrainwormhost"
+			switch(brainworm.generation)
+				if(0)
+					worm_icon = "hudbrainwormhostb"
+				if(1)
+					worm_icon = "hudbrainwormhostg"
+			holder5.icon_state = worm_icon
+			if(brainworm.borer_flags_status & BORER_STATUS_CONTROLLING)
 				holder.icon_state = "hudbrainworm"
 				if(!holder2_set)
 					holder2.icon_state = "hudbrainworm"

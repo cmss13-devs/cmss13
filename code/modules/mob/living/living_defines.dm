@@ -85,7 +85,9 @@
 		/obj/item/device/radio,
 		/obj/structure/machinery/camera,
 		/obj/limb,
-		/obj/item/alien_embryo
+		/obj/item/alien_embryo,
+		/mob/living/carbon/cortical_borer,
+		/mob/living/captive_brain
 	)
 	//blood.dm
 	///How much blood the mob has

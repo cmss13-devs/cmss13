@@ -87,6 +87,9 @@
 
 	if(!target && targets.len)
 		target = pick(targets)
+		if(ismob(target.loc)) //Check to prevent certain issues with mobs-in-mobs being shot at, or attempt to be.
+			targets -= target
+			target = pick(targets)
 
 	get_target(target)
 	return TRUE

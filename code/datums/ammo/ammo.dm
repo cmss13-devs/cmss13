@@ -240,7 +240,7 @@
 /datum/ammo/proc/drop_flame(turf/turf, datum/cause_data/cause_data) // ~Art updated fire 20JAN17
 	if(!istype(turf))
 		return
-	if(locate(/obj/flamer_fire) in Turf)
+	if(locate(/obj/flamer_fire) in turf)
 		return
 
 	var/datum/reagent/reference = GLOB.chemical_reagents_list[flamer_reagent_id] //this is probably a bad way of doing this but it works

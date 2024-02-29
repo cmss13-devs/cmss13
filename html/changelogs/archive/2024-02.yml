@@ -460,3 +460,18 @@
   - balance: Pried open dropship hatches cannot be remotely locked anymore
   mullenpaul:
   - bugfix: ammo consumption logic for cas tgui correctly counts
+2024-02-29:
+  MobiusWon:
+  - balance: Readds M4 armor to FTL vendor as a default item
+  Nanu:
+  - balance: Removed the ability for Combat Synths in the UPP/CLF ERT to use guns,
+      as well as the CLF Survivor Synth.
+  - rscadd: Did a few minor tweaks to help fill in some of the space given by the
+      removal of guns/ammo from the Combat Synths loadout.
+  Segrain:
+  - bugfix: Removed an exploit involving crates.
+  cuberound:
+  - balance: omnisentrygun price down to 300, but it goes up 100 points after each
+      purchase
+  mullenpaul:
+  - code_imp: removed duplicated signal code from dropship equipment

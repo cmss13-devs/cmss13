@@ -1,4 +1,0 @@
-author: "mullenpaul"
-delete-after: True
-changes:
-  - code_imp: "removed duplicated signal code from dropship equipment"

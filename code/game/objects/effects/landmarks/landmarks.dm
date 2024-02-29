@@ -90,9 +90,11 @@
 		return
 	GLOB.nightmare_landmarks[insert_tag] = get_turf(src)
 /obj/effect/landmark/nightmare/Destroy()
-	if(insert_tag && autoremove \
-	   && GLOB.nightmare_landmarks[insert_tag] == get_turf(src))
-		GLOB.nightmare_landmarks.Remove(insert_tag)
+	if(insert_tag)
+		var/turf/turf = get_turf(src)
+		if(autoremove && GLOB.nightmare_landmarks[insert_tag] == turf)
+			GLOB.nightmare_landmarks.Remove(insert_tag)
+		GLOB.nightmare_landmark_tags_removed += insert_tag
 	return ..()
 
 /obj/effect/landmark/ert_spawns/distress

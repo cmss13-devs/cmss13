@@ -1,0 +1,4 @@
+author: "Lok1"
+delete-after: True
+changes:
+  - rscadd: "maintenance stations stun when exiting like closets"

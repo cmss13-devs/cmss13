@@ -12,18 +12,19 @@
 	/// the borg inside
 	var/mob/living/occupant = null
 	/// Two charged borgs in a row with default cell
-	var/max_internal_charge = 15000 
+	var/max_internal_charge = 15000
 	/// Starts charged, to prevent power surges on round start
-	var/current_internal_charge = 15000 
-	var/charging_cap_active = 25000 // Active Cap - When cyborg is inside
+	var/current_internal_charge = 15000
+	/// Active Cap - When cyborg is inside
+	var/charging_cap_active = 25000
 	/// Passive Cap - Recharging internal capacitor when no cyborg is inside
-	var/charging_cap_passive = 2500 
+	var/charging_cap_passive = 2500
 	/// Used to update icon only once every 10 ticks
-	var/icon_update_tick = 0 
+	var/icon_update_tick = 0
 	/// implants to not remove
 	var/known_implants = list(/obj/item/implant/chem, /obj/item/implant/death_alarm, /obj/item/implant/loyalty, /obj/item/implant/tracking, /obj/item/implant/neurostim)
-	///stun time upon exiting, if at all	
-	var/exit_stun = 2 
+	///stun time upon exiting, if at all
+	var/exit_stun = 2
 
 
 /obj/structure/machinery/recharge_station/Initialize(mapload, ...)
@@ -201,7 +202,7 @@
 
 	cyborg.forceMove(loc)
 	if(exit_stun)
-		cyborg.apply_effect(exit_stun, STUN) //Action delay when going out of a closet
+		cyborg.Stun(exit_stun) //Action delay when going out of a closet
 	if(cyborg.mobility_flags & MOBILITY_MOVE)
 		cyborg.visible_message(SPAN_WARNING("[cyborg] suddenly gets out of [src]!"), SPAN_WARNING("You get out of [src] and get your bearings!"))
 

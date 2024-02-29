@@ -207,6 +207,7 @@ GLOBAL_LIST_EMPTY(living_borers)
 	update_icons()
 	var/heal_amt = 1
 	if(host)
+		set_light_on(FALSE)
 		heal_amt = 3
 		if(!stat && host.stat != DEAD)
 			var/mob/living/carbon/human/human_host

@@ -1,0 +1,3060 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ae" = (
+/obj/structure/machinery/door_control{
+	id = "kitchen_pizza_time";
+	name = "Main Kitchen Shutters";
+	pixel_x = 28
+	},
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/space)
+"am" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 4;
+	pixel_y = -3
+	},
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	pixel_y = -3
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/space)
+"aA" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/microwave{
+	pixel_y = 8
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/space)
+"aJ" = (
+/turf/open/floor/prison{
+	icon_state = "red"
+	},
+/area/space)
+"aS" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out"
+	},
+/turf/open/floor/prison{
+	icon_state = "yellow"
+	},
+/area/space)
+"bd" = (
+/obj/structure/prop/invuln{
+	desc = "An inflated membrane. This one is puncture proof. Wow!";
+	icon = 'icons/obj/items/inflatable.dmi';
+	icon_state = "wall"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/almayer_hull,
+/area/space)
+"bT" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/recharger,
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/space)
+"cr" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/trash/plate{
+	pixel_x = 1;
+	pixel_y = 3
+	},
+/obj/item/trash/plate{
+	pixel_x = 1;
+	pixel_y = 6
+	},
+/obj/item/reagent_container/food/condiment/saltshaker{
+	pixel_x = -4
+	},
+/obj/item/reagent_container/food/condiment/peppermill{
+	pixel_x = 4
+	},
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/space)
+"dc" = (
+/obj/structure/sign/poster{
+	desc = "Eat an EAT bar! ...Aren't they called MEAT bars?";
+	icon_state = "poster7";
+	name = "EAT - poster";
+	pixel_y = 30
+	},
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 4
+	},
+/area/space)
+"ef" = (
+/obj/structure/surface/rack,
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel/mature{
+	pixel_x = -1;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel/mature{
+	pixel_x = 1;
+	pixel_y = -5
+	},
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/space)
+"eh" = (
+/obj/structure/machinery/chem_dispenser/soda{
+	density = 0;
+	pixel_y = 30
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/space)
+"eo" = (
+/obj/structure/closet/secure_closet/freezer/meat,
+/obj/item/reagent_container/food/condiment/coldsauce,
+/obj/item/reagent_container/food/condiment/coldsauce,
+/turf/open/floor/prison{
+	icon_state = "greenblue";
+	dir = 1
+	},
+/area/space)
+"eD" = (
+/obj/structure/reagent_dispensers/water_cooler/stacks{
+	density = 0;
+	pixel_x = -11;
+	pixel_y = -1
+	},
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/space)
+"eK" = (
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 6
+	},
+/area/space)
+"eW" = (
+/turf/open/mars_dirt{
+	icon_state = "mars_cave_11"
+	},
+/area/space)
+"fj" = (
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "yellow"
+	},
+/area/space)
+"fu" = (
+/turf/open/floor/plating,
+/area/space)
+"fE" = (
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "yellowcorner"
+	},
+/area/space)
+"fI" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/turf/open/floor/corsat{
+	icon_state = "marked"
+	},
+/area/space)
+"gu" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	pixel_y = -3
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/space)
+"gU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/floor/prison{
+	icon_state = "yellow"
+	},
+/area/space)
+"hg" = (
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "yellowcorner"
+	},
+/area/space)
+"hL" = (
+/turf/open/floor/prison{
+	icon_state = "greenblue";
+	dir = 1
+	},
+/area/space)
+"iw" = (
+/obj/structure/surface/table/reinforced,
+/turf/open/floor/prison{
+	icon_state = "greenblue";
+	dir = 6
+	},
+/area/space)
+"iY" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5
+	},
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "yellow"
+	},
+/area/space)
+"jf" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/item/reagent_container/food/snacks/toastedsandwich{
+	pixel_y = 11
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	name = "\improper Kitchen Shutters";
+	id = "kitchen_pizza_time"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/space)
+"jy" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	name = "\improper Kitchen Shutters";
+	id = "kitchen_pizza_time"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/space)
+"jH" = (
+/turf/open/mars{
+	icon_state = "mars_cave_10"
+	},
+/area/space)
+"la" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/door/poddoor/almayer{
+	name = s;
+	unacidable = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/space)
+"lN" = (
+/turf/open/floor/prison{
+	icon_state = "bright_clean2"
+	},
+/area/space)
+"me" = (
+/turf/open/mars_dirt{
+	icon_state = "mars_cave_8"
+	},
+/area/space)
+"np" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/pizzabox{
+	pixel_y = 5
+	},
+/obj/item/pizzabox{
+	pixel_y = 8
+	},
+/obj/item/pizzabox{
+	pixel_y = 11
+	},
+/obj/item/pizzabox{
+	pixel_y = 14
+	},
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/space)
+"ny" = (
+/obj/structure/closet/secure_closet/fridge/fish/stock,
+/turf/open/floor/prison{
+	icon_state = "greenblue"
+	},
+/area/space)
+"nA" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	pixel_y = -3
+	},
+/obj/structure/machinery/recharger,
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/space)
+"nB" = (
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/space)
+"nK" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/tool/kitchen/tray,
+/obj/item/tool/kitchen/knife{
+	pixel_x = 3
+	},
+/obj/item/tool/kitchen/knife/butcher{
+	pixel_x = -8
+	},
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/space)
+"oo" = (
+/turf/open/floor/prison{
+	dir = 6;
+	icon_state = "yellow"
+	},
+/area/space)
+"oD" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/turf/open/floor/corsat{
+	icon_state = "marked"
+	},
+/area/space)
+"pD" = (
+/turf/open/mars_dirt{
+	icon_state = "mars_cave_10"
+	},
+/area/space)
+"pT" = (
+/turf/open/floor/corsat{
+	icon_state = "retrosquareslight"
+	},
+/area/space)
+"qt" = (
+/turf/open/mars_dirt{
+	icon_state = "mars_cave_6"
+	},
+/area/space)
+"qv" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/book/manual/chef_recipes,
+/obj/item/clothing/head/chefhat,
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/space)
+"qy" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/juicer{
+	pixel_y = 9
+	},
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/space)
+"sB" = (
+/turf/open/mars_dirt{
+	icon_state = "mars_cave_7"
+	},
+/area/space)
+"sJ" = (
+/obj/structure/machinery/vending/snack,
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/space)
+"sW" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/door/poddoor/almayer{
+	name = "\improper Umbillical Airlock";
+	unacidable = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/space)
+"uo" = (
+/obj/structure/window/framed/almayer/hull,
+/turf/open/floor/plating,
+/area/space)
+"uD" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/processor{
+	pixel_y = 10
+	},
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/space)
+"uY" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/box/cups,
+/obj/item/tool/kitchen/utensil/spoon,
+/obj/item/tool/kitchen/utensil/spoon,
+/obj/item/tool/kitchen/utensil/spoon,
+/obj/item/tool/kitchen/utensil/fork,
+/obj/item/tool/kitchen/utensil/fork,
+/obj/item/tool/kitchen/utensil/fork,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	name = "\improper Kitchen Shutters";
+	id = "kitchen_pizza_time"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/space)
+"vi" = (
+/turf/open/floor/prison{
+	icon_state = "redcorner";
+	dir = 1
+	},
+/area/space)
+"wi" = (
+/obj/structure/closet/secure_closet/fridge/meat/stock,
+/turf/open/floor/prison{
+	icon_state = "greenblue";
+	dir = 9
+	},
+/area/space)
+"wm" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/reagent_container/food/snacks/tomatomeat,
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/space)
+"wo" = (
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "yellowcorner"
+	},
+/area/space)
+"wq" = (
+/turf/open/floor/prison{
+	icon_state = "redcorner";
+	dir = 4
+	},
+/area/space)
+"wz" = (
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 1
+	},
+/area/space)
+"yo" = (
+/turf/open/floor/prison{
+	icon_state = "greenbluecorner";
+	dir = 4
+	},
+/area/space)
+"yr" = (
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 10
+	},
+/area/space)
+"yE" = (
+/obj/structure/machinery/vending/dinnerware,
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	pixel_y = -3
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/space)
+"yK" = (
+/turf/open/floor/prison{
+	icon_state = "greenblue";
+	dir = 8
+	},
+/area/space)
+"yP" = (
+/obj/structure/surface/rack,
+/turf/open/floor/prison{
+	icon_state = "greenblue";
+	dir = 10
+	},
+/area/space)
+"zW" = (
+/turf/open/floor/prison{
+	icon_state = "greenblue";
+	dir = 4
+	},
+/area/space)
+"Ab" = (
+/obj/structure/machinery/gibber{
+	pixel_y = 10
+	},
+/obj/structure/surface/table/reinforced,
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/space)
+"Ac" = (
+/obj/structure/closet/secure_closet/fridge/dry,
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/space)
+"Ao" = (
+/obj/structure/machinery/chem_dispenser/soda/beer{
+	density = 0;
+	pixel_y = 31
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/space)
+"AD" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/space)
+"AH" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "yellow"
+	},
+/area/space)
+"AV" = (
+/turf/open/floor{
+	icon_state = "blueyellowfull"
+	},
+/area/space)
+"AW" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out"
+	},
+/turf/open/floor/prison{
+	icon_state = "yellow"
+	},
+/area/space)
+"Bz" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/trash/plate{
+	pixel_y = 2
+	},
+/obj/item/trash/plate{
+	pixel_y = 4
+	},
+/obj/item/trash/plate{
+	pixel_y = 6
+	},
+/obj/item/trash/plate{
+	pixel_y = 8
+	},
+/obj/item/trash/plate{
+	pixel_y = 10
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/space)
+"Cv" = (
+/obj/structure/closet/secure_closet/freezer/fridge/full,
+/obj/item/reagent_container/food/condiment/enzyme,
+/obj/item/reagent_container/food/condiment/enzyme,
+/obj/item/reagent_container/food/drinks/soymilk,
+/obj/item/reagent_container/food/drinks/soymilk,
+/turf/open/floor/prison{
+	icon_state = "greenblue";
+	dir = 1
+	},
+/area/space)
+"Dx" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/reagent_container/food/snacks/sliceable/bread{
+	pixel_y = 8
+	},
+/obj/item/reagent_container/food/snacks/sliceable/bread{
+	pixel_y = 4
+	},
+/obj/item/reagent_container/food/snacks/sliceable/bread,
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/space)
+"Fz" = (
+/obj/structure/surface/table/reinforced,
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/space)
+"FY" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 8;
+	pixel_y = -3
+	},
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	pixel_y = -3
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/space)
+"Gh" = (
+/obj/structure/reagent_dispensers/water_cooler/stacks{
+	density = 0;
+	pixel_x = -9;
+	pixel_y = 19
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
+"Gt" = (
+/turf/open/floor/prison{
+	dir = 5;
+	icon_state = "yellow"
+	},
+/area/space)
+"Hd" = (
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "yellow"
+	},
+/area/space)
+"ID" = (
+/turf/closed/wall/rock/red,
+/area/space)
+"Jl" = (
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 8
+	},
+/area/space)
+"Jm" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/prison,
+/area/space)
+"Jq" = (
+/obj/structure/closet/secure_closet/fridge/organic/stock,
+/turf/open/floor/prison{
+	icon_state = "greenblue"
+	},
+/area/space)
+"JP" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/tool/kitchen/knife/butcher,
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/space)
+"Kb" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 4;
+	pixel_y = -3
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/space)
+"Km" = (
+/turf/open/mars_dirt{
+	icon_state = "mars_cave_5"
+	},
+/area/space)
+"KY" = (
+/turf/open/floor/prison{
+	icon_state = "blue_plate"
+	},
+/area/space)
+"La" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	pixel_y = -3
+	},
+/obj/item/reagent_container/food/condiment/hotsauce/sriracha,
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/space)
+"Ma" = (
+/obj/structure/machinery/door/poddoor/almayer/open{
+	name = "\improper Umbillical Airlock"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/space)
+"Mt" = (
+/turf/open/floor/prison{
+	dir = 9;
+	icon_state = "yellow"
+	},
+/area/space)
+"MB" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/pizzabox/meat,
+/obj/item/weapon/pizza_cutter,
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/space)
+"MK" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 8;
+	pixel_y = -3
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/space)
+"Nl" = (
+/turf/open/floor/prison,
+/area/space)
+"No" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/prison,
+/area/space)
+"NN" = (
+/obj/structure/closet/secure_closet/fridge/groceries/stock,
+/turf/open/floor/prison{
+	icon_state = "greenblue";
+	dir = 9
+	},
+/area/space)
+"NP" = (
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
+	},
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/space)
+"OS" = (
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 4
+	},
+/area/space)
+"Pn" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/clothing/suit/chef/classic,
+/obj/item/clothing/gloves/latex,
+/obj/item/clothing/suit/chef/classic,
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/space)
+"Rh" = (
+/obj/structure/window/framed/almayer/hull,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/turf/open/floor/plating,
+/area/space)
+"RV" = (
+/obj/item/clothing/suit/chef/classic,
+/obj/item/clothing/gloves/latex,
+/obj/item/clothing/head/chefhat,
+/obj/structure/surface/table/reinforced,
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/space)
+"Sq" = (
+/obj/structure/kitchenspike,
+/turf/open/floor/prison{
+	icon_state = "greenblue"
+	},
+/area/space)
+"TC" = (
+/turf/open/floor/prison{
+	icon_state = "yellowcorner"
+	},
+/area/space)
+"TE" = (
+/turf/open/mars_dirt{
+	icon_state = "mars_cave_3"
+	},
+/area/space)
+"TH" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	pixel_y = -3
+	},
+/obj/item/storage/box/drinkingglasses,
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/space)
+"TY" = (
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
+"Us" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	pixel_y = -3
+	},
+/obj/item/reagent_container/food/condiment/hotsauce/tabasco,
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/space)
+"Vj" = (
+/obj/structure/closet/secure_closet/fridge/dry/stock,
+/turf/open/floor/prison{
+	icon_state = "greenblue";
+	dir = 5
+	},
+/area/space)
+"Vm" = (
+/obj/structure/surface/table/reinforced,
+/turf/open/floor/prison{
+	icon_state = "greenbluecorner"
+	},
+/area/space)
+"Vv" = (
+/obj/docking_port/stationary/emergency_response/idle_port3,
+/turf/open/floor/plating,
+/area/space)
+"VK" = (
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "yellow"
+	},
+/area/space)
+"WL" = (
+/obj/structure/window/framed/almayer/hull,
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/turf/open/floor/plating,
+/area/space)
+"WP" = (
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/space)
+"WZ" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/space)
+"Xa" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out"
+	},
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "yellow"
+	},
+/area/space)
+"Xq" = (
+/obj/structure/surface/rack,
+/turf/open/floor/prison{
+	icon_state = "greenblue"
+	},
+/area/space)
+"Xx" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/reagent_container/food/snacks/sliceable/flatdough,
+/obj/item/tool/kitchen/rollingpin,
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/space)
+"XD" = (
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 5
+	},
+/area/space)
+"Yf" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/reagent_container/food/condiment/hotsauce/franks/macho{
+	pixel_y = 18;
+	pixel_x = -6
+	},
+/obj/item/reagent_container/food/condiment/hotsauce/franks{
+	pixel_y = 18;
+	pixel_x = 6
+	},
+/obj/item/reagent_container/food/condiment/hotsauce/cholula{
+	pixel_y = 16
+	},
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/space)
+"Yy" = (
+/turf/open/space/basic,
+/area/space)
+"YO" = (
+/turf/closed/wall/almayer,
+/area/space)
+"ZM" = (
+/obj/structure/closet/secure_closet/freezer/fridge/full,
+/obj/item/reagent_container/food/condiment/enzyme,
+/obj/item/reagent_container/food/drinks/soymilk,
+/obj/item/reagent_container/food/drinks/soymilk,
+/turf/open/floor/prison{
+	icon_state = "greenblue";
+	dir = 1
+	},
+/area/space)
+
+(1,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(2,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(3,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(4,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(5,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(6,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(7,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(8,1,1) = {"
+Yy
+Yy
+Yy
+ID
+ID
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(9,1,1) = {"
+Yy
+Yy
+Yy
+ID
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(10,1,1) = {"
+Yy
+Yy
+Yy
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+YO
+YO
+WL
+WL
+WL
+YO
+YO
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(11,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+ID
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+YO
+YO
+TY
+TY
+TY
+TY
+TY
+YO
+YO
+Yy
+Yy
+Yy
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(12,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+jH
+ID
+YO
+YO
+YO
+YO
+YO
+YO
+YO
+YO
+YO
+Gh
+TY
+TY
+TY
+TY
+TY
+TY
+YO
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(13,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+jH
+TE
+YO
+YO
+nK
+RV
+Xx
+ef
+wm
+qy
+YO
+YO
+Jl
+Jl
+Jl
+Jl
+yr
+TY
+TY
+Rh
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(14,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+jH
+TE
+TE
+YO
+Ac
+nB
+nB
+nB
+nB
+nB
+nB
+eD
+YO
+dc
+OS
+OS
+vi
+aJ
+TY
+TY
+Rh
+Yy
+Yy
+Yy
+Yy
+YO
+uo
+uo
+uo
+YO
+uo
+uo
+uo
+YO
+Yy
+Yy
+Yy
+Yy
+"}
+(15,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+pD
+TE
+pD
+qt
+Rh
+qv
+nB
+nB
+MB
+cr
+Pn
+nB
+nB
+jy
+WP
+MK
+FY
+wz
+aJ
+TY
+TY
+Rh
+Yy
+Yy
+Yy
+YO
+YO
+Mt
+fj
+fj
+fj
+fj
+fj
+VK
+YO
+YO
+Yy
+Yy
+Yy
+"}
+(16,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+pD
+pD
+TE
+TE
+TE
+Rh
+Dx
+nB
+nB
+np
+JP
+aA
+nB
+nB
+uY
+WP
+WP
+TH
+wz
+aJ
+TY
+TY
+Rh
+Yy
+Yy
+YO
+YO
+Mt
+fE
+Nl
+Nl
+Nl
+Nl
+Nl
+wo
+VK
+YO
+YO
+Yy
+Yy
+"}
+(17,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+sB
+TE
+TE
+TE
+TE
+Rh
+Yf
+nB
+nB
+nB
+NP
+nB
+nB
+nB
+jf
+WP
+WP
+La
+wz
+aJ
+TY
+TY
+Rh
+Yy
+Yy
+YO
+YO
+Xa
+Jm
+Jm
+Jm
+Jm
+Jm
+Jm
+Jm
+aS
+YO
+YO
+Yy
+Yy
+"}
+(18,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+sB
+TE
+pD
+pD
+sB
+YO
+sJ
+nB
+nB
+ae
+YO
+uD
+Ab
+bT
+YO
+Ao
+WP
+Us
+wz
+aJ
+TY
+TY
+Rh
+Yy
+Yy
+Yy
+YO
+AH
+fu
+fu
+fu
+fu
+fu
+fu
+Vv
+gU
+YO
+Yy
+Yy
+Yy
+"}
+(19,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+sB
+pD
+TE
+TE
+eW
+YO
+YO
+AD
+AD
+YO
+YO
+YO
+YO
+YO
+YO
+eh
+WP
+nA
+wz
+aJ
+TY
+TY
+YO
+bd
+bd
+bd
+YO
+AH
+fu
+fu
+fu
+fu
+fu
+fu
+fu
+gU
+YO
+Yy
+Yy
+Yy
+"}
+(20,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+sB
+TE
+eW
+Km
+YO
+WP
+WP
+WP
+WP
+WZ
+lN
+lN
+lN
+WZ
+WP
+WP
+yE
+wz
+aJ
+Jl
+Jl
+WZ
+Jl
+Jl
+Jl
+Ma
+AH
+fu
+fu
+fu
+fu
+fu
+fu
+fu
+gU
+la
+Yy
+Yy
+Yy
+"}
+(21,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+sB
+TE
+TE
+ID
+YO
+WP
+WP
+WP
+WP
+WZ
+lN
+lN
+lN
+WZ
+WP
+WP
+yE
+wz
+aJ
+OS
+OS
+WZ
+OS
+OS
+OS
+Ma
+AH
+fu
+fu
+fu
+fu
+fu
+fu
+fu
+gU
+sW
+Yy
+Yy
+Yy
+"}
+(22,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+me
+TE
+ID
+ID
+YO
+WP
+WP
+WP
+Bz
+YO
+YO
+oD
+YO
+YO
+WP
+WP
+gu
+wz
+aJ
+TY
+TY
+YO
+bd
+bd
+bd
+YO
+AH
+fu
+fu
+fu
+fu
+fu
+fu
+fu
+gU
+YO
+Yy
+Yy
+Yy
+"}
+(23,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+me
+ID
+ID
+YO
+WP
+WP
+WP
+Fz
+YO
+wi
+yK
+yP
+YO
+WP
+WP
+gu
+wz
+aJ
+TY
+TY
+Rh
+Yy
+Yy
+Yy
+YO
+AH
+fu
+fu
+fu
+fu
+fu
+fu
+fu
+gU
+YO
+YO
+Yy
+Yy
+"}
+(24,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+YO
+WP
+WP
+WP
+Fz
+YO
+eo
+KY
+Xq
+YO
+WP
+WP
+gu
+wz
+aJ
+TY
+TY
+Rh
+Yy
+Yy
+Yy
+YO
+AH
+fu
+fu
+fu
+fu
+fu
+fu
+fu
+gU
+YO
+YO
+Yy
+Yy
+"}
+(25,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+YO
+WP
+WP
+WP
+Fz
+YO
+ZM
+KY
+Sq
+YO
+WP
+WP
+gu
+wz
+aJ
+TY
+TY
+Rh
+Yy
+Yy
+Yy
+YO
+AH
+fu
+fu
+fu
+fu
+fu
+fu
+fu
+gU
+YO
+YO
+Yy
+Yy
+"}
+(26,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+YO
+WP
+WP
+WP
+YO
+YO
+Cv
+KY
+Jq
+YO
+WP
+Kb
+am
+wz
+aJ
+TY
+TY
+YO
+bd
+bd
+bd
+YO
+AH
+fu
+fu
+fu
+fu
+fu
+fu
+fu
+gU
+YO
+Yy
+Yy
+Yy
+"}
+(27,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+YO
+WP
+WP
+WP
+YO
+NN
+yo
+KY
+ny
+YO
+Jl
+Jl
+Jl
+wq
+aJ
+Jl
+Jl
+WZ
+Jl
+Jl
+Jl
+Ma
+AH
+fu
+fu
+fu
+fu
+fu
+fu
+fu
+gU
+sW
+Yy
+Yy
+Yy
+"}
+(28,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+YO
+WP
+WP
+WP
+fI
+hL
+KY
+Vm
+iw
+YO
+OS
+OS
+OS
+vi
+aJ
+OS
+OS
+WZ
+OS
+OS
+OS
+Ma
+AH
+fu
+fu
+fu
+fu
+fu
+fu
+fu
+gU
+sW
+Yy
+Yy
+Yy
+"}
+(29,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+YO
+YO
+WP
+WP
+YO
+Vj
+zW
+iw
+YO
+YO
+TY
+TY
+TY
+wz
+aJ
+TY
+TY
+YO
+bd
+bd
+bd
+YO
+AH
+fu
+fu
+fu
+fu
+fu
+fu
+fu
+gU
+YO
+Yy
+Yy
+Yy
+"}
+(30,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+YO
+YO
+YO
+YO
+YO
+oD
+YO
+YO
+TY
+TY
+TY
+TY
+wz
+aJ
+TY
+TY
+Rh
+Yy
+Yy
+Yy
+YO
+AH
+fu
+fu
+fu
+fu
+fu
+fu
+fu
+gU
+YO
+Yy
+Yy
+Yy
+"}
+(31,1,1) = {"
+Yy
+Yy
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+YO
+YO
+pT
+pT
+YO
+nB
+nB
+nB
+YO
+TY
+TY
+TY
+TY
+wz
+aJ
+TY
+TY
+Rh
+Yy
+Yy
+YO
+YO
+iY
+No
+No
+No
+No
+No
+No
+No
+AW
+YO
+YO
+Yy
+Yy
+"}
+(32,1,1) = {"
+Yy
+ID
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Rh
+pT
+pT
+pT
+YO
+nB
+nB
+nB
+YO
+TY
+TY
+TY
+TY
+wz
+aJ
+TY
+TY
+Rh
+Yy
+Yy
+YO
+YO
+Gt
+hg
+Nl
+Nl
+Nl
+Nl
+Nl
+TC
+oo
+YO
+YO
+Yy
+Yy
+"}
+(33,1,1) = {"
+Yy
+ID
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Rh
+pT
+pT
+pT
+WZ
+nB
+nB
+nB
+YO
+TY
+TY
+TY
+TY
+wz
+aJ
+TY
+TY
+Rh
+Yy
+Yy
+Yy
+YO
+YO
+Gt
+Hd
+Hd
+Hd
+Hd
+Hd
+oo
+YO
+YO
+Yy
+Yy
+Yy
+"}
+(34,1,1) = {"
+Yy
+Yy
+ID
+ID
+ID
+ID
+ID
+Yy
+Yy
+Yy
+YO
+YO
+YO
+YO
+YO
+nB
+nB
+nB
+WZ
+AV
+AV
+AV
+AV
+XD
+eK
+TY
+TY
+Rh
+Yy
+Yy
+Yy
+Yy
+YO
+uo
+uo
+uo
+YO
+uo
+uo
+uo
+YO
+Yy
+Yy
+Yy
+Yy
+"}
+(35,1,1) = {"
+Yy
+Yy
+ID
+ID
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Rh
+pT
+pT
+pT
+WZ
+nB
+nB
+nB
+YO
+TY
+TY
+TY
+TY
+TY
+TY
+TY
+TY
+Rh
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(36,1,1) = {"
+Yy
+Yy
+Yy
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Rh
+pT
+pT
+pT
+YO
+nB
+nB
+nB
+YO
+YO
+TY
+TY
+TY
+TY
+TY
+TY
+TY
+YO
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(37,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+YO
+YO
+pT
+pT
+YO
+nB
+nB
+nB
+YO
+YO
+YO
+TY
+TY
+TY
+TY
+TY
+YO
+YO
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(38,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+YO
+YO
+YO
+YO
+WL
+WL
+WL
+YO
+ID
+YO
+YO
+WL
+WL
+WL
+YO
+YO
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(39,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+Yy
+Yy
+Yy
+ID
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(40,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(41,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(42,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(43,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(44,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+ID
+ID
+ID
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}
+(45,1,1) = {"
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+Yy
+"}

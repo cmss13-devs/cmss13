@@ -224,7 +224,7 @@
 	else if(speaker.has_brain_worms())
 		B = speaker.has_brain_worms()
 	if(B)
-		speaker_mask = B.truename
+		speaker_mask = B.real_name
 	if(!speaker_mask)
 		speaker_mask = speaker.real_name
 

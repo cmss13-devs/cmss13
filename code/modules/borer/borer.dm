@@ -6,6 +6,8 @@ GLOBAL_LIST_EMPTY(living_borers)
 	icon = 'icons/obj/items/organs.dmi'
 	icon_state = "xenobrain"
 
+	special_mob = TRUE //shows up in own observe category
+
 	/// Whether or not the brain is mid-resisting control.
 	var/resisting_control = FALSE
 
@@ -34,7 +36,7 @@ GLOBAL_LIST_EMPTY(living_borers)
 		for (var/mob/dead in GLOB.dead_mob_list)
 			var/track_borer = " (<a href='byond://?src=\ref[dead];track=\ref[B.host]'>F</a>)"
 			if(!istype(dead,/mob/new_player) && !istype(dead,/mob/living/brain)) //No meta-evesdropping
-				dead.show_message(SPAN_BORER("BORER: ([name] (trapped mind) to [B.truename][track_borer]) whispers: [message]"), SHOW_MESSAGE_VISIBLE)
+				dead.show_message(SPAN_BORER("BORER: ([name] (trapped mind) to [B.real_name][track_borer]) whispers: [message]"), SHOW_MESSAGE_VISIBLE)
 
 /mob/living/captive_brain/say_understands(mob/other, datum/language/speaking = null)
 	var/mob/living/carbon/cortical_borer/B = loc
@@ -97,6 +99,7 @@ GLOBAL_LIST_EMPTY(living_borers)
 	universal_understand = TRUE
 
 	holder_type = /obj/item/holder/borer
+	special_mob = TRUE //shows up in own observe category
 
 	var/generation = 1
 	var/stealthy = FALSE
@@ -109,13 +112,13 @@ GLOBAL_LIST_EMPTY(living_borers)
 	var/attempting_to_dominate = FALSE		// To prevent people from spam opening the Dominate Victim input
 
 	var/enzymes = 10						// Enzymes used for chemical injection.
+	var/enzyme_rate = 1						// Rate of increase for enzymes per life tick. Primary generation double.
 	var/max_enzymes = 500
 	var/contaminant = 0						//Contaminant builds up on enzyme usage, roughly proportionate to cost of use.
 	var/max_contaminant = 120				//Decreases through hibernation or reproduction.
 	var/hibernating = FALSE					//Usable inside a host, but not when controlling. Allows clearing of impurities.
 
 	var/mob/living/carbon/host				// Carbon host for the brain worm.
-	var/truename							// Name used for brainworm-speak.
 	var/mob/living/captive_brain/host_brain	// Used for swapping control of the body back and forth.
 	var/docile = FALSE						// Anti-Parasite or Anti-Enzyme chemicals can stop borers from acting.
 	var/bonding = FALSE
@@ -163,24 +166,27 @@ GLOBAL_LIST_EMPTY(living_borers)
 		/datum/action/innate/borer/torment,
 	)
 
+	var/list/ancestry = list()
+	var/list/offspring = list()
+
 //################### INIT & LIFE ###################//
-/mob/living/carbon/cortical_borer/New(atom/newloc, gen=1, ERT = FALSE, reproduction = 0, new_targets = BORER_TARGET_HUMANS)
+/mob/living/carbon/cortical_borer/New(atom/newloc, gen=1, ERT = FALSE, reproduction = 0, new_targets = BORER_TARGET_HUMANS, ancestors = list())
 	..(newloc)
 	SSmob.living_misc_mobs += src
 	generation = gen
 	add_language(LANGUAGE_BORER)
 	var/mob_number = rand(1000,9999)
-	real_name = "Cortical Borer [borer_names[min(generation, borer_names.len)]] [mob_number]"
-	truename = "[borer_names[min(generation, borer_names.len)]] [mob_number]"
+	name = "Cortical Borer ([mob_number])"
+	real_name = "[borer_names[min(generation, borer_names.len)]] [mob_number]"
 	can_reproduce = reproduction
 	borer_flags_targets = new_targets
 	give_new_actions(ACTION_SET_HOSTLESS)
 	GiveBorerHUD()
-	if(generation == 1)
-		maxHealth = maxHealth + (maxHealth / 2)
+	if(generation <= 1)
+		maxHealth = maxHealth * 1.5
 		health = maxHealth
-		max_enzymes = max_enzymes + (max_enzymes / 2)
-		max_contaminant = max_contaminant + (max_contaminant / 2)
+		max_enzymes = max_enzymes * 1.5
+		max_contaminant = max_contaminant * 1.5
 	if((!is_admin_level(z)) && ERT)
 		summon()
 	GLOB.living_borers += src
@@ -221,9 +227,10 @@ GLOBAL_LIST_EMPTY(living_borers)
 						to_chat(src, SPAN_XENONOTICE("You shake off your lethargy as the chemical leaves your host's blood."))
 					docile = FALSE
 			if(!hibernating && (enzymes < max_enzymes))
-				enzymes++
-				if(generation == 1)
-					enzymes++
+				var/increase = enzyme_rate
+				if(generation <= 1)
+					increase = enzyme_rate * 2
+				enzymes = min(enzymes + increase, max_enzymes)
 			if(contaminant > 0)
 				if(hibernating)
 					contaminant = max(contaminant -= 1, 0)
@@ -275,7 +282,7 @@ GLOBAL_LIST_EMPTY(living_borers)
 
 /mob/living/carbon/cortical_borer/death()
 	var/datum/language/corticalborer/c_link = GLOB.all_languages[LANGUAGE_BORER]
-	c_link.broadcast(src, null, src.truename, TRUE)
+	c_link.broadcast(src, null, real_name, TRUE)
 	SSmob.living_misc_mobs -= src
 	GLOB.living_borers -= src
 	leave_host()
@@ -341,7 +348,7 @@ GLOBAL_LIST_EMPTY(living_borers)
 
 	. += ""
 	. += "Borer:"
-	. += "Name: [truename]"
+	. += "Name: [real_name]"
 	. += "Can Reproduce: [CR]"
 	. += "Enzymes: [round(enzymes)]/[round(max_enzymes)]"
 	. += "Contaminant: [round(contaminant)]/[round(max_contaminant)]"

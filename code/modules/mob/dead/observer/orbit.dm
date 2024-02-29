@@ -113,7 +113,7 @@
 			var/mob/living/player = M
 			serialized["health"] = Floor(player.health / player.maxHealth * 100)
 
-			if(isborer(player) || iscaptivemind(player) || player.special_mob)
+			if(player.special_mob)
 				special_mobs += list(serialized)
 
 			if(isxeno(player))

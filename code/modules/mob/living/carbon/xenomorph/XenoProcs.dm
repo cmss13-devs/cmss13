@@ -156,7 +156,7 @@
 
 		. += ""
 		. += "Borer:"
-		. += "Name: [B.truename]"
+		. += "Name: [B.real_name]"
 		. += "Can Reproduce: [CR]"
 		. += "Enzymes: [round(B.enzymes)]/[round(B.max_enzymes)]"
 		. += "Health: [B.health]/[B.maxHealth]"

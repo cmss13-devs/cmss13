@@ -119,7 +119,7 @@
 	chem_id = "zombiepowder"
 	desc = "A strong neurotoxin that puts the subject into a death-like state."
 	cost = 300
-	quantity = 1
+	quantity = 2
 	category = BORER_CAT_PUNISH
 
 //Yautja chemicals

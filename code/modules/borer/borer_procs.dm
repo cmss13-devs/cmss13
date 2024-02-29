@@ -627,23 +627,25 @@
 	set name = "Reproduce"
 	set desc = "Spawn a new borer."
 
-	var/mob/living/carbon/cortical_borer/B = has_brain_worms()
+	var/mob/living/carbon/cortical_borer/brainworm = has_brain_worms()
 
-	if(!B)
+	if(!brainworm)
 		return FALSE
-	if(B.can_reproduce)
-		if(B.enzymes >= BORER_LARVAE_COST)
+	if(brainworm.can_reproduce)
+		if(brainworm.enzymes >= BORER_LARVAE_COST)
 			to_chat(src, SPAN_XENOWARNING("Your host twitches and quivers as you rapdly excrete a larva from your sluglike body.</span>"))
 			visible_message(SPAN_WARNING("[src] heaves violently, expelling a rush of vomit and a wriggling, sluglike creature!</span>"))
-			if(B.generation == 1)
-				B.enzymes -= BORER_LARVAE_COST
+			if(brainworm.generation <= 1)
+				brainworm.enzymes -= BORER_LARVAE_COST
 			else
-				B.enzymes = 0
+				brainworm.enzymes = 0
 			var/turf/T = get_turf(src)
 			T.add_vomit_floor()
-			B.contaminant = 0
-			var/repro = max(B.can_reproduce - 1, 0)
-			new /mob/living/carbon/cortical_borer(T, B.generation + 1, TRUE, repro, B.borer_flags_targets)
+			brainworm.contaminant = 0
+			var/repro = max(brainworm.can_reproduce - 1, 0)
+			var/ancestors = (brainworm.ancestry += real_name)
+			var/mob/living/carbon/cortical_borer/birthed = new /mob/living/carbon/cortical_borer(T, brainworm.generation + 1, TRUE, repro, brainworm.borer_flags_targets, ancestors)
+			brainworm.offspring += birthed.real_name
 			return TRUE
 		else
 			to_chat(src, SPAN_XENONOTICE("You need at least [BORER_LARVAE_COST] enzymes to reproduce!"))
@@ -730,14 +732,14 @@
 	if(src && !QDELETED(src) && !QDELETED(host))
 		var/say_string = (docile) ? "slurs" :"states"
 		if(host)
-			to_chat(host, SPAN_XENO("[truename] [say_string]: [input]"), type = MESSAGE_TYPE_RADIO)
+			to_chat(host, SPAN_XENO("[real_name] [say_string]: [input]"), type = MESSAGE_TYPE_RADIO)
 			show_blurb(host, 15, input, TRUE, "center", "center", COLOR_BROWN, null, null, 1)
 			log_say("BORER: ([key_name(src)] to [key_name(host)]) [input]", src)
-			to_chat(src, SPAN_XENO("[truename] [say_string]: [input]"), type = MESSAGE_TYPE_RADIO)
+			to_chat(src, SPAN_XENO("[real_name] [say_string]: [input]"), type = MESSAGE_TYPE_RADIO)
 			for (var/mob/dead in GLOB.dead_mob_list)
 				var/track_host = " (<a href='byond://?src=\ref[dead];track=\ref[host]'>F</a>)"
 				if(!istype(dead,/mob/new_player) && !istype(dead,/mob/living/brain)) //No meta-evesdropping
-					dead.show_message(SPAN_BORER("BORER: ([truename] to [host.real_name][track_host]) [say_string]: [input]"), SHOW_MESSAGE_VISIBLE)
+					dead.show_message(SPAN_BORER("BORER: ([real_name] to [host.real_name][track_host]) [say_string]: [input]"), SHOW_MESSAGE_VISIBLE)
 			return TRUE
 
 /mob/living/carbon/cortical_borer/verb/toggle_silence_inside_host()
@@ -777,7 +779,7 @@
 	for (var/mob/dead in GLOB.dead_mob_list)
 		var/track_host = " (<a href='byond://?src=\ref[dead];track=\ref[borer.host]'>F</a>)"
 		if(!istype(dead,/mob/new_player) && !istype(dead,/mob/living/brain)) //No meta-evesdropping
-			dead.show_message(SPAN_BORER("BORER: ([name][track_host] to [borer.truename]) says: [input]"), SHOW_MESSAGE_VISIBLE)
+			dead.show_message(SPAN_BORER("BORER: ([name][track_host] to [borer.real_name]) says: [input]"), SHOW_MESSAGE_VISIBLE)
 	return TRUE
 
 /mob/living/proc/trapped_mind_comm()
@@ -794,13 +796,13 @@
 	if(!input)
 		return FALSE
 
-	to_chat(CB, SPAN_XENO("[B.truename] says: [input]"), type = MESSAGE_TYPE_RADIO)
+	to_chat(CB, SPAN_XENO("[B.real_name] says: [input]"), type = MESSAGE_TYPE_RADIO)
 	log_say("BORER: ([key_name(src)] to [key_name(CB)]) [input]", B)
-	to_chat(src, SPAN_XENO("[B.truename] says: [input]"), type = MESSAGE_TYPE_RADIO)
+	to_chat(src, SPAN_XENO("[B.real_name] says: [input]"), type = MESSAGE_TYPE_RADIO)
 	for (var/mob/dead in GLOB.dead_mob_list)
 		var/track_borer = " (<a href='byond://?src=\ref[dead];track=\ref[B.host]'>F</a>)"
 		if(!istype(dead,/mob/new_player) && !istype(dead,/mob/living/brain)) //No meta-evesdropping
-			dead.show_message(SPAN_BORER("BORER: ([B.truename][track_borer] to [real_name] (trapped mind)) says: [input]"), SHOW_MESSAGE_VISIBLE)
+			dead.show_message(SPAN_BORER("BORER: ([B.real_name][track_borer] to [real_name] (trapped mind)) says: [input]"), SHOW_MESSAGE_VISIBLE)
 	return TRUE
 
 
@@ -866,10 +868,10 @@
 	msg = process_chat_markup(msg, list("*"))
 
 	for(var/mob/living/cur_mob in GLOB.living_borers)
-		if(cur_mob.client) // Send to xenos who are non-staff
+		if(cur_mob.client) // Send to borers
 			to_chat(cur_mob, SPAN_XOOC("Cortical Impulse: [msg]"))
 
 	for(var/mob/dead/observer/cur_mob in GLOB.observer_list)
-		if(cur_mob.client) // Send to observers who are non-staff
+		if(cur_mob.client) // Send to observers
 			to_chat(cur_mob, SPAN_XOOC("Cortical Impulse: [src.key]([src.admin_holder.rank]): [msg]"))
 

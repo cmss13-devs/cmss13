@@ -194,22 +194,21 @@
 /obj/structure/machinery/recharge_station/proc/go_out()
 	if(!occupant)
 		return
-	var/mob/living/cyborg = occupant
+	var/mob/living/synth = occupant
 
-	if(cyborg.client)
-		cyborg.client.eye = cyborg.client.mob
-		cyborg.client.perspective = MOB_PERSPECTIVE
+	if(synth.client)
+		synth.client.eye = synth.client.mob
+		synth.client.perspective = MOB_PERSPECTIVE
 
-	cyborg.forceMove(loc)
+	synth.forceMove(loc)
 	if(exit_stun)
-		cyborg.Stun(exit_stun) //Action delay when going out of a closet
-	if(cyborg.mobility_flags & MOBILITY_MOVE)
-		cyborg.visible_message(SPAN_WARNING("[cyborg] suddenly gets out of [src]!"), SPAN_WARNING("You get out of [src] and get your bearings!"))
+		synth.Stun(exit_stun) //Action delay when going out of a closet
+	if(synth.mobility_flags & MOBILITY_MOVE)
+		synth.visible_message(SPAN_WARNING("[synth] suddenly gets out of [src]!"), SPAN_WARNING("You get out of [src] and get your bearings!"))
 
 	occupant = null
 	update_icon()
 	update_use_power(USE_POWER_IDLE)
-	return
 
 /obj/structure/machinery/recharge_station/verb/move_eject()
 	set category = "Object"

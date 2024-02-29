@@ -63,7 +63,7 @@
 	. = ..()
 
 	var/lesser_count = 0
-	for(var/mob/living/carbon/xenomorph/lesser_drone/lesser in linked_hive.totalXenos)
+	for(var/mob/living/carbon/xenomorph/lesser_drone/lesser in linked_hive.total_living_xenos)
 		lesser_count++
 
 	. += "Currently holding [SPAN_NOTICE("[Floor(lesser_drone_spawns)]")]/[SPAN_NOTICE("[lesser_drone_spawn_limit]")] lesser drones."
@@ -152,7 +152,7 @@
 
 		for(var/hivenumber in GLOB.hive_datum)
 			var/datum/hive_status/checked_hive = GLOB.hive_datum[hivenumber]
-			if(!length(checked_hive.totalXenos))
+			if(!length(checked_hive.total_living_xenos))
 				continue
 
 			if(checked_hive == linked_hive)
@@ -168,7 +168,7 @@
 
 	for(var/hivenumber in GLOB.hive_datum)
 		var/datum/hive_status/checked_hive = GLOB.hive_datum[hivenumber]
-		if(!length(checked_hive.totalXenos))
+		if(!length(checked_hive.total_living_xenos))
 			continue
 
 		if(checked_hive == linked_hive)
@@ -191,7 +191,7 @@
 	if(linked_hive.check_if_hit_larva_from_pylon_limit())
 		return
 
-	linked_hive.partial_larva += (linked_hive.get_real_total_xeno_count() + linked_hive.stored_larva) * LARVA_ADDITION_MULTIPLIER
+	linked_hive.partial_larva += (length(linked_hive.total_living_xenos_advanced) + linked_hive.stored_larva) * LARVA_ADDITION_MULTIPLIER
 	linked_hive.convert_partial_larva_to_full_larva()
 	linked_hive.hive_ui.update_burrowed_larva()
 

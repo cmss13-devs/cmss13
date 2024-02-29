@@ -119,8 +119,8 @@
 		if(SSticker.mode && SSticker.current_state != GAME_STATE_FINISHED)
 			if((GLOB.last_ares_callout + 2 MINUTES) > world.time)
 				return
-			if(hive.hivenumber == XENO_HIVE_NORMAL && (LAZYLEN(hive.totalXenos) == 1))
-				var/mob/living/carbon/xenomorph/X = LAZYACCESS(hive.totalXenos, 1)
+			if(hive.hivenumber == XENO_HIVE_NORMAL && (LAZYLEN(hive.total_living_xenos_advanced) == 1))
+				var/mob/living/carbon/xenomorph/X = LAZYACCESS(hive.total_living_xenos_advanced, 1)
 				GLOB.last_ares_callout = world.time
 				// Tell the marines where the last one is.
 				var/name = "[MAIN_AI_SYSTEM] Bioscan Status"

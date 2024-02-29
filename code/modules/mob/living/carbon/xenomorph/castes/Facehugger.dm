@@ -40,7 +40,6 @@
 	life_value = 0
 	default_honor_value = 0
 	show_only_numbers = TRUE
-	counts_for_slots = FALSE
 	counts_for_roundend = FALSE
 	refunds_larva_if_banished = FALSE
 	can_hivemind_speak = FALSE

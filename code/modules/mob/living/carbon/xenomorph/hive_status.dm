@@ -37,8 +37,10 @@
 	var/list/tier_2_xenos = list()
 	/// list of living tier3 xenos
 	var/list/tier_3_xenos = list()
-	/// list of living xenos
-	var/list/totalXenos = list()
+	/// list of all living xenos, including tier 0s such as facehuggers and lessers
+	var/list/total_living_xenos = list()
+	/// list of all living xenos, excluding tier 0s such as facehuggers and lessers
+	var/list/total_living_xenos_advanced = list()
 	/// list of previously living xenos (hardrefs currently)
 	var/list/total_dead_xenos = list()
 	var/xeno_queen_timer
@@ -203,7 +205,7 @@
 		X.hive.remove_xeno(X, TRUE)
 
 	// Already in the hive
-	if(X in totalXenos)
+	if(X in total_living_xenos)
 		return
 
 	// Can only have one queen.
@@ -221,7 +223,9 @@
 
 	var/area/A = get_area(X)
 	if(!should_block_game_interaction(X) || (A.flags_atom & AREA_ALLOW_XENO_JOIN))
-		totalXenos += X
+		total_living_xenos += X
+		if(X.tier > 0)
+			total_living_xenos_advanced += X
 		if(X.tier == 2)
 			tier_2_xenos += X
 		else if(X.tier == 3)
@@ -236,13 +240,13 @@
 		return
 
 	// Make sure the xeno was in the hive in the first place
-	if(!(xeno in totalXenos))
+	if(!(xeno in total_living_xenos))
 		return
 
 	// This might be a redundant check now that Queen/Destroy() checks, but doesn't hurt to double check
 	if(living_xeno_queen == xeno)
 		var/mob/living/carbon/xenomorph/queen/next_queen = null
-		for(var/mob/living/carbon/xenomorph/queen/queen in totalXenos)
+		for(var/mob/living/carbon/xenomorph/queen/queen in total_living_xenos_advanced)
 			if(!should_block_game_interaction(queen) && queen != src && !QDELETED(queen))
 				next_queen = queen
 				break
@@ -259,7 +263,9 @@
 		total_dead_xenos += xeno
 #endif
 
-	totalXenos -= xeno
+	total_living_xenos -= xeno
+	if(xeno.tier > 0)
+		total_living_xenos_advanced -= xeno
 	if(xeno.tier == 2)
 		tier_2_xenos -= xeno
 	else if(xeno.tier == 3)
@@ -400,14 +406,14 @@
 		list(XENO_CASTE_BOILER = 0, XENO_CASTE_CRUSHER = 0, XENO_CASTE_PRAETORIAN = 0, XENO_CASTE_RAVAGER = 0)
 	)
 
-	for(var/mob/living/carbon/xenomorph/X in totalXenos)
+	for(var/mob/living/carbon/xenomorph/X in total_living_xenos_advanced)
 		//don't show xenos in the thunderdome when admins test stuff.
 		if(should_block_game_interaction(X))
 			var/area/A = get_area(X)
 			if(!(A.flags_atom & AREA_ALLOW_XENO_JOIN))
 				continue
 
-		if(X.caste && X.counts_for_slots)
+		if(X.caste)
 			xeno_counts[X.caste.tier+1][X.caste.caste_type]++
 
 	return xeno_counts
@@ -418,7 +424,7 @@
 /datum/hive_status/proc/get_xeno_keys()
 	var/list/xenos = list()
 
-	for(var/mob/living/carbon/xenomorph/X in totalXenos)
+	for(var/mob/living/carbon/xenomorph/X in total_living_xenos)
 		if(should_block_game_interaction(X))
 			var/area/A = get_area(X)
 			if(!(A.flags_atom & AREA_ALLOW_XENO_JOIN))
@@ -501,7 +507,7 @@
 /datum/hive_status/proc/get_xeno_info()
 	var/list/xenos = list()
 
-	for(var/mob/living/carbon/xenomorph/X in totalXenos)
+	for(var/mob/living/carbon/xenomorph/X in total_living_xenos)
 		if(should_block_game_interaction(X))
 			var/area/A = get_area(X)
 			if(!(A.flags_atom & AREA_ALLOW_XENO_JOIN))
@@ -532,7 +538,7 @@
 /datum/hive_status/proc/get_xeno_vitals()
 	var/list/xenos = list()
 
-	for(var/mob/living/carbon/xenomorph/X in totalXenos)
+	for(var/mob/living/carbon/xenomorph/X in total_living_xenos)
 		if(should_block_game_interaction(X))
 			var/area/A = get_area(X)
 			if(!(A.flags_atom & AREA_ALLOW_XENO_JOIN))
@@ -597,9 +603,8 @@
 
 	var/burrowed_factor = min(stored_larva, sqrt(4*stored_larva))
 	var/effective_total = round(burrowed_factor)
-	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
-		if(xeno.counts_for_slots)
-			effective_total++
+	for(var/mob/living/carbon/xenomorph/xeno as anything in total_living_xenos_advanced)
+		effective_total++
 
 	// Tier 3 slots are always 20% of the total xenos in the hive
 	slots[TIER_3][OPEN_SLOTS] = max(0, Ceiling(0.20*effective_total/tier_slot_multiplier) - used_tier_3_slots)
@@ -683,7 +688,7 @@
 			S.hijack_delete = TRUE
 			hive_structures[name_ref] -= S
 			qdel(S)
-	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
+	for(var/mob/living/carbon/xenomorph/xeno as anything in total_living_xenos)
 		if(get_area(xeno) != hijacked_dropship && xeno.loc && is_ground_level(xeno.loc.z))
 			if(isfacehugger(xeno) || islesserdrone(xeno))
 				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
@@ -762,11 +767,11 @@
 		spawning_area = hive_location
 	else if(living_xeno_queen)
 		spawning_area = living_xeno_queen
-	else for(var/mob/living/carbon/xenomorpheus as anything in totalXenos)
+	else for(var/mob/living/carbon/xenomorpheus as anything in total_living_xenos)
 		if(islarva(xenomorpheus) || isxeno_builder(xenomorpheus)) //next to xenos that should be in a safe spot
 			spawning_area = xenomorpheus
 	if(!spawning_area)
-		spawning_area = pick(totalXenos) // FUCK IT JUST GO ANYWHERE
+		spawning_area = pick(total_living_xenos) // FUCK IT JUST GO ANYWHERE
 	var/list/turf_list
 	for(var/turf/open/open_turf in orange(3, spawning_area))
 		if(istype(open_turf, /turf/open/space))
@@ -829,9 +834,8 @@
 
 /datum/hive_status/proc/update_hugger_limit()
 	var/countable_xeno_iterator = 0
-	for(var/mob/living/carbon/xenomorph/cycled_xeno as anything in totalXenos)
-		if(cycled_xeno.counts_for_slots)
-			countable_xeno_iterator++
+	for(var/mob/living/carbon/xenomorph/cycled_xeno as anything in total_living_xenos_advanced)
+		countable_xeno_iterator++
 
 	playable_hugger_limit = max(Floor(countable_xeno_iterator / playable_hugger_max_divisor), playable_hugger_minimum)
 
@@ -848,7 +852,7 @@
 		var/time_left = round((user.timeofdeath + JOIN_AS_FACEHUGGER_DELAY - world.time) / 10)
 		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until 3 minutes have passed ([time_left] seconds remaining)."))
 		return FALSE
-	if(totalXenos.len <= 0)
+	if(total_living_xenos_advanced.len <= 0)
 		//This is to prevent people from joining as Forsaken Huggers on the pred ship
 		to_chat(user, SPAN_WARNING("The hive has fallen, you can't join it!"))
 		return FALSE
@@ -860,7 +864,7 @@
 	update_hugger_limit()
 
 	var/current_hugger_count = 0
-	for(var/mob/mob as anything in totalXenos)
+	for(var/mob/mob as anything in total_living_xenos)
 		if(isfacehugger(mob))
 			current_hugger_count++
 	if(playable_hugger_limit <= current_hugger_count)
@@ -885,9 +889,8 @@
 
 /datum/hive_status/proc/update_lesser_drone_limit()
 	var/countable_xeno_iterator = 0
-	for(var/mob/living/carbon/xenomorph/cycled_xeno as anything in totalXenos)
-		if(cycled_xeno.counts_for_slots)
-			countable_xeno_iterator++
+	for(var/mob/living/carbon/xenomorph/cycled_xeno as anything in total_living_xenos_advanced)
+		countable_xeno_iterator++
 
 	lesser_drone_limit = max(Floor(countable_xeno_iterator / playable_lesser_drones_max_divisor), lesser_drone_minimum)
 
@@ -904,7 +907,7 @@
 		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until 30 seconds have passed ([time_left] seconds remaining)."))
 		return FALSE
 
-	if(totalXenos.len <= 0)
+	if(total_living_xenos_advanced.len <= 0)
 		to_chat(user, SPAN_WARNING("The hive has fallen, you can't join it!"))
 		return FALSE
 
@@ -919,7 +922,7 @@
 	update_lesser_drone_limit()
 
 	var/current_lesser_drone_count = 0
-	for(var/mob/mob as anything in totalXenos)
+	for(var/mob/mob as anything in total_living_xenos)
 		if(islesserdrone(mob))
 			current_lesser_drone_count++
 
@@ -931,14 +934,6 @@
 		return FALSE
 
 	return TRUE
-
-// Get amount of real xenos, don't count lessers/huggers
-/datum/hive_status/proc/get_real_total_xeno_count()
-	var/count = 0
-	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
-		if(xeno.counts_for_slots)
-			count++
-	return count
 
 // Checks if we hit larva limit
 /datum/hive_status/proc/check_if_hit_larva_from_pylon_limit()
@@ -952,7 +947,7 @@
 		var/turf/turf = get_turf(current_human)
 		if(is_ground_level(turf?.z))
 			groundside_humans_weighted_count += GLOB.RoleAuthority.calculate_role_weight(job)
-	hit_larva_pylon_limit = (get_real_total_xeno_count() + stored_larva) > (groundside_humans_weighted_count * ENDGAME_LARVA_CAP_MULTIPLIER)
+	hit_larva_pylon_limit = (length(total_living_xenos_advanced) + stored_larva) > (groundside_humans_weighted_count * ENDGAME_LARVA_CAP_MULTIPLIER)
 	hive_ui.update_pylon_status()
 	return hit_larva_pylon_limit
 
@@ -1283,7 +1278,7 @@
 	if(!(faction in FACTION_LIST_HUMANOID))
 		return
 
-	for(var/mob/living/carbon/xenomorph/xeno in totalXenos) // handle defecting xenos on betrayal
+	for(var/mob/living/carbon/xenomorph/xeno in total_living_xenos) // handle defecting xenos on betrayal
 		if(!xeno.iff_tag)
 			continue
 		if(!(faction in xeno.iff_tag.faction_groups))
@@ -1311,7 +1306,7 @@
 	xeno.iff_tag = null
 
 /datum/hive_status/corrupted/proc/handle_defectors(faction)
-	for(var/mob/living/carbon/xenomorph/xeno in totalXenos)
+	for(var/mob/living/carbon/xenomorph/xeno in total_living_xenos)
 		if(!xeno.iff_tag)
 			continue
 		if(xeno in defectors)

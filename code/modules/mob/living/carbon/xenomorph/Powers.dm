@@ -206,7 +206,7 @@
 	if(hive.living_xeno_queen)
 		var/current_area_name = get_area_name(target_turf)
 
-		for(var/mob/living/carbon/xenomorph/X in hive.totalXenos)
+		for(var/mob/living/carbon/xenomorph/X in hive.total_living_xenos)
 			to_chat(X, SPAN_XENOANNOUNCE("[src.name] has declared: [NM.mark_meaning.desc] in [sanitize_area(current_area_name)]! (<a href='?src=\ref[X];overwatch=1;target=\ref[NM]'>Watch</a>) (<a href='?src=\ref[X];track=1;target=\ref[NM]'>Track</a>)"))
 			//this is killing the tgui chat and I dont know why
 	return TRUE

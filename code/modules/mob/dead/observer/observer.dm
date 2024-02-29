@@ -865,7 +865,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	var/datum/hive_status/hive
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
-		if(hive.totalXenos.len > 0)
+		if(hive.total_living_xenos.len > 0)
 			hives += list("[hive.name]" = hive.hivenumber)
 			last_hive_checked = hive
 
@@ -893,7 +893,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set category = "Ghost.View"
 
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
-	if(!hive || !length(hive.totalXenos))
+	if(!hive || !length(hive.total_living_xenos))
 		to_chat(src, SPAN_ALERT("There seems to be no living normal hive at the moment"))
 		return
 

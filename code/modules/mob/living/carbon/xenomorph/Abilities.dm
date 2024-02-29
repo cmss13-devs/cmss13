@@ -85,7 +85,7 @@
 		tunnelobj.tunnel_desc = "[msg]"
 
 	if(X.hive.living_xeno_queen || X.hive.allow_no_queen_actions)
-		for(var/mob/living/carbon/xenomorph/target_for_message as anything in X.hive.totalXenos)
+		for(var/mob/living/carbon/xenomorph/target_for_message as anything in X.hive.total_living_xenos)
 			var/overwatch_target = XENO_OVERWATCH_TARGET_HREF
 			var/overwatch_src = XENO_OVERWATCH_SRC_HREF
 			to_chat(target_for_message, SPAN_XENOANNOUNCE("Hive: A new tunnel[description ? " ([description])" : ""] has been created by [X] (<a href='byond://?src=\ref[target_for_message];[overwatch_target]=\ref[X];[overwatch_src]=\ref[target_for_message]'>watch</a>) at <b>[get_area_name(tunnelobj)]</b>."))

@@ -295,7 +295,7 @@
 
 	X.hive.mark_ui.update_all_data()
 
-	for(var/mob/living/carbon/xenomorph/XX in X.hive.totalXenos)
+	for(var/mob/living/carbon/xenomorph/XX in X.hive.total_living_xenos)
 		XX.hud_set_marks() //this should be a hud thing, but that code is too confusing so I am doing it here
 
 	addtimer(CALLBACK(src, PROC_REF(check_for_weeds)), 30 SECONDS, TIMER_UNIQUE)
@@ -306,7 +306,7 @@
 	if(builder_hive)
 		builder_hive.resin_marks -= src
 
-		for(var/mob/living/carbon/xenomorph/XX in builder_hive.totalXenos)
+		for(var/mob/living/carbon/xenomorph/XX in builder_hive.total_living_xenos)
 			XX.built_structures -= src
 			if(!XX.client)
 				continue
@@ -329,7 +329,7 @@
 	. = ..()
 	var/mob/living/carbon/xenomorph/xeno_createdby
 	var/datum/hive_status/builder_hive = GLOB.hive_datum[hivenumber]
-	for(var/mob/living/carbon/xenomorph/X in builder_hive.totalXenos)
+	for(var/mob/living/carbon/xenomorph/X in builder_hive.total_living_xenos)
 		if(X.nicknumber == createdby)
 			xeno_createdby = X
 	if(isxeno(user) || isobserver(user))

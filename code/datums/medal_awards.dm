@@ -288,10 +288,8 @@ GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, 
 	var/list/possible_recipients = list()
 	var/list/recipient_castes = list()
 	var/list/recipient_mobs = list()
-	for(var/mob/living/carbon/xenomorph/xeno in hive.totalXenos)
+	for(var/mob/living/carbon/xenomorph/xeno in hive.total_living_xenos_advanced)
 		if (xeno.persistent_ckey == usr.persistent_ckey) // Don't award self
-			continue
-		if (xeno.tier == 0) // Don't award larva or facehuggers
 			continue
 		if (!as_admin && istype(xeno.caste, /datum/caste_datum/queen)) // Don't award queens unless admin
 			continue
@@ -338,7 +336,7 @@ GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, 
 	var/recipient_ckey = recipient_mob.persistent_ckey
 	var/posthumous = !isliving(recipient_mob) || recipient_mob.stat == DEAD
 	if(!as_admin) // Don't need to check for giver mob in admin mode
-		for(var/mob/mob in hive.totalXenos)
+		for(var/mob/mob in hive.total_living_xenos_advanced)
 			if(mob == usr)
 				// Giver: Increment their medals given stat
 				giver_mob = mob

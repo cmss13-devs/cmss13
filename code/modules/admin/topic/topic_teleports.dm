@@ -136,7 +136,7 @@
 					to_chat(owner, SPAN_ALERT("Hive choice error. Aborting."))
 					return
 				var/datum/hive_status/Hive = GLOB.hive_datum[hives[faction]]
-				var/list/targets = Hive.totalXenos
+				var/list/targets = Hive.total_living_xenos
 				for(var/mob/living/carbon/xenomorph/X in targets)
 					var/area/AR = get_area(X)
 					if(X.stat == DEAD || AR.statistic_exempt)

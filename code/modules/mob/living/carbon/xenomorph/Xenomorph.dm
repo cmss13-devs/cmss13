@@ -97,7 +97,6 @@
 	var/death_fontsize = 3
 
 	var/small_explosives_stun = TRUE // Have to put this here, otherwise it can't be strain specific
-	var/counts_for_slots = TRUE
 	var/counts_for_roundend = TRUE
 	var/refunds_larva_if_banished = TRUE
 	var/can_hivemind_speak = TRUE

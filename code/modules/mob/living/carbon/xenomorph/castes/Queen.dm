@@ -496,7 +496,7 @@
 
 	if(hive && hive.living_xeno_queen == src)
 		var/mob/living/carbon/xenomorph/queen/next_queen = null
-		for(var/mob/living/carbon/xenomorph/queen/queen in hive.totalXenos)
+		for(var/mob/living/carbon/xenomorph/queen/queen in hive.total_living_xenos_advanced)
 			if(!should_block_game_interaction(queen) && queen != src && !QDELETED(queen))
 				next_queen = queen
 				break
@@ -778,7 +778,7 @@
 
 		// Reset the banished ckey list
 		if(length(hive.banished_ckeys))
-			for(var/mob/living/carbon/xenomorph/target_xeno in hive.totalXenos)
+			for(var/mob/living/carbon/xenomorph/target_xeno in hive.total_living_xenos)
 				if(!target_xeno.ckey)
 					continue
 				for(var/mob_name in hive.banished_ckeys)

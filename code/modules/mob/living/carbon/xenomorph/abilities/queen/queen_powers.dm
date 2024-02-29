@@ -308,7 +308,7 @@
 		to_chat(usr, SPAN_XENOWARNING("You must give some time for larva to spawn before sacrificing them. Please wait another [round((SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK - world.time) / 600)] minutes."))
 		return
 
-	var/choice = tgui_input_list(user_xeno, "Choose a xenomorph to give evolution points for a burrowed larva:", "Give Evolution Points", user_xeno.hive.totalXenos, theme="hive_status")
+	var/choice = tgui_input_list(user_xeno, "Choose a xenomorph to give evolution points for a burrowed larva:", "Give Evolution Points", user_xeno.hive.total_living_xenos_advanced, theme="hive_status")
 
 	if(!choice)
 		return
@@ -316,7 +316,7 @@
 	var/required_larva = 1
 	var/mob/living/carbon/xenomorph/target_xeno
 
-	for(var/mob/living/carbon/xenomorph/xeno in user_xeno.hive.totalXenos)
+	for(var/mob/living/carbon/xenomorph/xeno in user_xeno.hive.total_living_xenos_advanced)
 		if(html_encode(xeno.name) == html_encode(choice))
 			target_xeno = xeno
 			break
@@ -397,14 +397,14 @@
 	if(!user_xeno.check_plasma(plasma_cost_banish))
 		return
 
-	var/choice = tgui_input_list(user_xeno, "Choose a xenomorph to banish:", "Banish", user_xeno.hive.totalXenos, theme="hive_status")
+	var/choice = tgui_input_list(user_xeno, "Choose a xenomorph to banish:", "Banish", user_xeno.hive.total_living_xenos, theme="hive_status")
 
 	if(!choice)
 		return
 
 	var/mob/living/carbon/xenomorph/target_xeno
 
-	for(var/mob/living/carbon/xenomorph/xeno in user_xeno.hive.totalXenos)
+	for(var/mob/living/carbon/xenomorph/xeno in user_xeno.hive.total_living_xenos)
 		if(html_encode(xeno.name) == html_encode(choice))
 			target_xeno = xeno
 			break
@@ -483,7 +483,7 @@
 	var/banished_living = FALSE
 	var/mob/living/carbon/xenomorph/target_xeno
 
-	for(var/mob/living/carbon/xenomorph/xeno in user_xeno.hive.totalXenos)
+	for(var/mob/living/carbon/xenomorph/xeno in user_xeno.hive.total_living_xenos)
 		if(xeno.ckey == banished_ckey)
 			target_xeno = xeno
 			banished_living = TRUE
@@ -627,7 +627,7 @@
 	to_chat(Q, SPAN_XENONOTICE("You rally the hive to the queen beacon!"))
 	LAZYCLEARLIST(transported_xenos)
 	RegisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN, PROC_REF(tunnel_xeno))
-	for(var/xeno in hive.totalXenos)
+	for(var/xeno in hive.total_living_xenos)
 		if(xeno == Q)
 			continue
 		tunnel_xeno(src, xeno)

@@ -61,10 +61,7 @@
 	var/count = 0
 
 	// Compare the areas.
-	for(var/mob/living/carbon/xenomorph/X in hive.totalXenos)
-		if(!(X in GLOB.living_xeno_list))
-			continue
-
+	for(var/mob/living/carbon/xenomorph/X in hive.total_living_xenos_advanced)
 		var/area/XA = get_area(X)
 		if(XA == MA)
 			count++

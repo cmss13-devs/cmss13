@@ -49,7 +49,7 @@
 		for(var/hivenumber in GLOB.hive_datum)
 			hive = GLOB.hive_datum[hivenumber]
 			if(hive.name == faction)
-				for(var/mob/M in hive.totalXenos)
+				for(var/mob/M in hive.total_living_xenos)
 					show_player_event_info(M)
 				return
 

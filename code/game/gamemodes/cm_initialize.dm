@@ -505,7 +505,7 @@ Additional game mode variables.
 	var/last_active_hive = 0
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
-		if(hive.totalXenos.len <= 0)
+		if(hive.total_living_xenos_advanced.len <= 0)
 			continue
 		active_hives[hive.name] = hive.hivenumber
 		last_active_hive = hive.hivenumber
@@ -526,7 +526,7 @@ Additional game mode variables.
 	//We have our Hive picked, time to figure out what we can join via
 	var/list/available_facehugger_sources = list()
 
-	for(var/mob/living/carbon/xenomorph/carrier/carrier in hive.totalXenos)
+	for(var/mob/living/carbon/xenomorph/carrier/carrier in hive.total_living_xenos_advanced)
 		if(carrier.huggers_cur > carrier.huggers_reserved)
 			var/area_name = get_area_name(carrier)
 			var/descriptive_name = "[carrier.name] in [area_name]"
@@ -571,7 +571,7 @@ Additional game mode variables.
 	var/last_active_hive = 0
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
-		if(hive.totalXenos.len <= 0)
+		if(hive.total_living_xenos_advanced.len <= 0)
 			continue
 		active_hives[hive.name] = hive.hivenumber
 		last_active_hive = hive.hivenumber

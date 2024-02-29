@@ -201,7 +201,7 @@ SUBSYSTEM_DEF(hijack)
 	var/datum/hive_status/hive
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
-		if(!length(hive.totalXenos))
+		if(!length(hive.total_living_xenos))
 			continue
 
 		switch(announce)
@@ -307,7 +307,7 @@ SUBSYSTEM_DEF(hijack)
 		var/datum/hive_status/hive
 		for(var/hivenumber in GLOB.hive_datum)
 			hive = GLOB.hive_datum[hivenumber]
-			if(!length(hive.totalXenos))
+			if(!length(hive.total_living_xenos))
 				continue
 
 			xeno_announcement(SPAN_XENOANNOUNCE("The talls may be attempting to take their ship down with them in Engineering, stop them!"), hive.hivenumber, XENO_HIJACK_ANNOUNCE)

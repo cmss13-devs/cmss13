@@ -255,7 +255,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 				var/count = Q.count_hivemember_same_area()
 
 				// Check if at least half of the hive is onboard. If not, we don't launch.
-				if(count < length(Q.hive.totalXenos) * 0.5)
+				if(count < length(Q.hive.total_living_xenos_advanced) * 0.5)
 					to_chat(Q, SPAN_WARNING("More than half of your hive is not on board. Don't leave without them!"))
 					return
 

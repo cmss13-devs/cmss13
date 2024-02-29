@@ -142,7 +142,7 @@
 			CR = "No"
 
 		. += ""
-		. += "Borer:"
+		. += "Borer: CONTROLLING"
 		. += "Name: [B.real_name]"
 		. += "Can Reproduce: [CR]"
 		. += "Enzymes: [round(B.enzymes)]/[round(B.max_enzymes)]"
@@ -150,6 +150,7 @@
 		. += "Injuries: Brute:[round(B.getBruteLoss())] Burn:[round(B.getFireLoss())] Toxin:[round(B.getToxLoss())]"
 		. += ""
 		. += "Host Brain Damage: [brainloss]/100"
+		. += "Host Blood Level: [blood_volume / 5.6]%"
 
 
 /mob/living/carbon/human/ex_act(severity, direction, datum/cause_data/cause_data)

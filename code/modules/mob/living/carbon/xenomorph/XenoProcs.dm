@@ -155,7 +155,7 @@
 			CR = "No"
 
 		. += ""
-		. += "Borer:"
+		. += "Borer: CONTROLLING"
 		. += "Name: [B.real_name]"
 		. += "Can Reproduce: [CR]"
 		. += "Enzymes: [round(B.enzymes)]/[round(B.max_enzymes)]"

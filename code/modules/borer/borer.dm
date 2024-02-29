@@ -346,9 +346,12 @@ GLOBAL_LIST_EMPTY(living_borers)
 		CR = "Forbidden"
 	else if((enzymes < BORER_LARVAE_COST))
 		CR = "No"
+	var/bore_status = "AWAKE"
+	if(hibernating)
+		bore_status = "HIBERNATING"
 
 	. += ""
-	. += "Borer:"
+	. += "Borer: [bore_status]"
 	. += "Name: [real_name]"
 	. += "Can Reproduce: [CR]"
 	. += "Enzymes: [round(enzymes)]/[round(max_enzymes)]"
@@ -361,6 +364,7 @@ GLOBAL_LIST_EMPTY(living_borers)
 		. += "Host Integrity: [host.health / health_perc]%"
 		if(ishuman(host))
 			. += "Host Brain Damage: [host.brainloss]%"
+			. += "Host Blood Level: [host.blood_volume / 5.6]%"
 		else if(isxeno(host))
 			var/mob/living/carbon/xenomorph/xeno_host = host
 			if(xeno_host.plasma_max)

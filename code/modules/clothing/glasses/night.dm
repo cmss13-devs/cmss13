@@ -70,6 +70,14 @@
 	name = "\improper M42 spotter sight"
 	desc = "A companion headset and night vision goggles system for USCM spotters. Allows highlighted imaging of surroundings. Click it to toggle."
 
+/obj/item/clothing/glasses/night/m42_night_goggles/spotter/can_use_active_effect(mob/living/carbon/human/user)
+	if(!(GLOB.character_traits[/datum/character_trait/skills/spotter] in user.traits))
+		to_chat(user, SPAN_WARNING("You have no idea how to use this!"))
+		return FALSE
+	else
+		return TRUE
+
+
 /obj/item/clothing/glasses/night/m42_night_goggles/m42c
 	name = "\improper M42C special operations sight"
 	desc = "A specialized variation of the M42 scout sight system, intended for use with the high-power M42C anti-tank sniper rifle. Allows for highlighted imaging of surroundings, as well as detection of thermal signatures even from a great distance. Click it to toggle."

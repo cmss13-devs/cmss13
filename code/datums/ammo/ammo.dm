@@ -243,12 +243,6 @@
 	if(locate(/obj/flamer_fire) in turf)
 		return
 
-	var/datum/reagent/reference = GLOB.chemical_reagents_list[flamer_reagent_id] //this is probably a bad way of doing this but it works
-	var/datum/reagent/chemical = new reference.type
-	chemical.intensityfire = reference.intensityfire
-	chemical.durationfire = reference.durationfire
-	chemical.burncolor = reference.burncolor
-	chemical.fire_penetrating = reference.fire_penetrating
-	chemical.burn_sprite = reference.burn_sprite
+	var/datum/reagent/chemical = GLOB.chemical_reagents_list[flamer_reagent_id]
 
 	new /obj/flamer_fire(turf, cause_data, chemical)

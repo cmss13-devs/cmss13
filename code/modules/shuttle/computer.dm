@@ -219,34 +219,6 @@
 		return
 
 	switch(action)
-		if("move")
-			if(ert.mode != SHUTTLE_IDLE)
-				to_chat(usr, SPAN_WARNING("You can't move to a new destination whilst in transit."))
-				return TRUE
-			var/dockId = params["target"]
-			var/list/local_data = ui_data(usr)
-			var/found = FALSE
-			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
-			for(var/destination in local_data["destinations"])
-				if(destination["id"] == dockId)
-					found = TRUE
-					break
-			if(!found)
-				log_admin("[key_name(usr)] may be attempting a href dock exploit on [src] with target location \"[dockId]\"")
-				to_chat(usr, SPAN_WARNING("The [dockId] dock is not available at this time."))
-				return
-			var/obj/docking_port/stationary/dock = SSshuttle.getDock(dockId)
-			var/dock_reserved = FALSE
-			for(var/obj/docking_port/mobile/other_shuttle in SSshuttle.mobile)
-				if(dock == other_shuttle.destination)
-					dock_reserved = TRUE
-					break
-			if(dock_reserved)
-				to_chat(usr, SPAN_WARNING("\The [dock] is currently in use."))
-				return TRUE
-			SSshuttle.moveShuttle(ert.id, dock.id, TRUE)
-			to_chat(usr, SPAN_NOTICE("You begin the launch sequence to [dock]."))
-			return TRUE
 		if("button-push")
 			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
 			return FALSE
@@ -270,6 +242,40 @@
 			if(ert.mode == SHUTTLE_CALL || ert.mode == SHUTTLE_RECALL)
 				return TRUE
 			ert.control_doors("unlock", external_only = TRUE)
+
+	if(must_launch_home)
+		return
+
+	if(action != "move")
+		return
+
+	if(ert.mode != SHUTTLE_IDLE)
+		to_chat(usr, SPAN_WARNING("You can't move to a new destination whilst in transit."))
+		return TRUE
+	var/dockId = params["target"]
+	var/list/local_data = ui_data(usr)
+	var/found = FALSE
+	playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
+	for(var/destination in local_data["destinations"])
+		if(destination["id"] == dockId)
+			found = TRUE
+			break
+	if(!found)
+		log_admin("[key_name(usr)] may be attempting a href dock exploit on [src] with target location \"[dockId]\"")
+		to_chat(usr, SPAN_WARNING("The [dockId] dock is not available at this time."))
+		return
+	var/obj/docking_port/stationary/dock = SSshuttle.getDock(dockId)
+	var/dock_reserved = FALSE
+	for(var/obj/docking_port/mobile/other_shuttle in SSshuttle.mobile)
+		if(dock == other_shuttle.destination)
+			dock_reserved = TRUE
+			break
+	if(dock_reserved)
+		to_chat(usr, SPAN_WARNING("\The [dock] is currently in use."))
+		return TRUE
+	SSshuttle.moveShuttle(ert.id, dock.id, TRUE)
+	to_chat(usr, SPAN_NOTICE("You begin the launch sequence to [dock]."))
+	return TRUE
 
 /obj/structure/machinery/computer/shuttle/ert/attack_hand(mob/user)
 	. = ..(user)

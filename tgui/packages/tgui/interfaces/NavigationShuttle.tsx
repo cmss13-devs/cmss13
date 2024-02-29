@@ -1,5 +1,5 @@
 import { useBackend, useSharedState } from '../backend';
-import { Box, Button, Icon, Flex, Section, Stack, ProgressBar, Dimmer } from '../components';
+import { Box, Button, Icon, Flex, Section, Stack, ProgressBar } from '../components';
 import { Window } from '../layouts';
 
 export interface DockingPort {
@@ -253,13 +253,11 @@ const LaunchHome = (props) => {
   const { data, act } = useBackend<NavigationProps>();
 
   return (
-    <Dimmer>
-      <Section title="Automatic Return Enabled">
-        <Button fluid onClick={() => act('launch_home')}>
-          Return Home
-        </Button>
-      </Section>
-    </Dimmer>
+    <Section title="Automatic Return Enabled">
+      <Button fluid onClick={() => act('launch_home')}>
+        Return Home
+      </Button>
+    </Section>
   );
 };
 
@@ -267,7 +265,9 @@ const RenderScreen = (props) => {
   const { data } = useBackend<NavigationProps>();
   return (
     <>
-      {data.shuttle_mode === 'idle' && <DestionationSelection />}
+      {data.shuttle_mode === 'idle' && !data.must_launch_home && (
+        <DestionationSelection />
+      )}
       {!!data.must_launch_home && <LaunchHome />}
       {data.shuttle_mode === 'igniting' && <LaunchCountdown />}
       {data.shuttle_mode === 'recharging' && <ShuttleRecharge />}

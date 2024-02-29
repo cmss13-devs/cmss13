@@ -304,11 +304,6 @@
 	pixel_x = 15;
 	pixel_y = -32
 	},
-/obj/structure/machinery/door/poddoor/almayer{
-	dir = 4;
-	id = "ERT Lock 2";
-	unacidable = 1
-	},
 /turf/open/floor/almayer{
 	icon_state = "tcomms"
 	},
@@ -840,17 +835,6 @@
 	pixel_x = 15
 	},
 /turf/closed/wall/r_wall/unmeltable,
-/area/adminlevel/ert_station)
-"Hp" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/structure/machinery/door_control{
-	id = "ERT Lock 2";
-	name = "Hangar Lock";
-	pixel_x = 24
-	},
-/turf/open/floor/plating/almayer,
 /area/adminlevel/ert_station)
 "Hy" = (
 /obj/item/newspaper,
@@ -1887,7 +1871,7 @@ Lh
 Fg
 cL
 Ea
-Hp
+Ea
 Ea
 Ea
 Ea
@@ -2023,8 +2007,8 @@ Fg
 "}
 (16,1,1) = {"
 Fg
-kn
-kn
+IG
+dz
 kn
 kn
 kn

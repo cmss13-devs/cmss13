@@ -602,9 +602,7 @@
 				slots[TIER_3][GUARANTEED_SLOTS][initial(current_caste.caste_type)] = slots_free - slots_used
 
 	var/burrowed_factor = min(stored_larva, sqrt(4*stored_larva))
-	var/effective_total = round(burrowed_factor)
-	for(var/mob/living/carbon/xenomorph/xeno as anything in total_living_xenos_advanced)
-		effective_total++
+	var/effective_total = length(total_living_xenos_advanced) + round(burrowed_factor)
 
 	// Tier 3 slots are always 20% of the total xenos in the hive
 	slots[TIER_3][OPEN_SLOTS] = max(0, Ceiling(0.20*effective_total/tier_slot_multiplier) - used_tier_3_slots)

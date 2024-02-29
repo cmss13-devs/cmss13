@@ -172,6 +172,7 @@
 		list("Large Pistol Magazine Pouch", round(scale * 2), /obj/item/storage/pouch/magazine/pistol/large, VENDOR_ITEM_REGULAR),
 		list("Tools Pouch", 1.25, /obj/item/storage/pouch/tools, VENDOR_ITEM_REGULAR),
 		list("Sling Pouch", 1.25, /obj/item/storage/pouch/sling, VENDOR_ITEM_REGULAR),
+		list("Fuel Tank Strap Pouch", round(scale * 2), /obj/item/storage/pouch/flamertank, VENDOR_ITEM_REGULAR),
 
 		list("MASK", -1, null, null, null),
 		list("Gas Mask", round(scale * 15), /obj/item/clothing/mask/gas, VENDOR_ITEM_REGULAR),

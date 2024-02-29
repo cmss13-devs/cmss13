@@ -505,7 +505,7 @@ Additional game mode variables.
 	var/last_active_hive = 0
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
-		if(hive.total_living_xenos_advanced.len <= 0)
+		if(length(hive.total_living_xenos_advanced) <= 0)
 			continue
 		active_hives[hive.name] = hive.hivenumber
 		last_active_hive = hive.hivenumber
@@ -571,7 +571,7 @@ Additional game mode variables.
 	var/last_active_hive = 0
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
-		if(hive.total_living_xenos_advanced.len <= 0)
+		if(length(hive.total_living_xenos_advanced) <= 0)
 			continue
 		active_hives[hive.name] = hive.hivenumber
 		last_active_hive = hive.hivenumber

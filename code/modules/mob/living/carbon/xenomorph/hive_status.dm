@@ -852,7 +852,7 @@
 		var/time_left = round((user.timeofdeath + JOIN_AS_FACEHUGGER_DELAY - world.time) / 10)
 		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until 3 minutes have passed ([time_left] seconds remaining)."))
 		return FALSE
-	if(total_living_xenos_advanced.len <= 0)
+	if(length(total_living_xenos_advanced) <= 0)
 		//This is to prevent people from joining as Forsaken Huggers on the pred ship
 		to_chat(user, SPAN_WARNING("The hive has fallen, you can't join it!"))
 		return FALSE
@@ -907,7 +907,7 @@
 		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until 30 seconds have passed ([time_left] seconds remaining)."))
 		return FALSE
 
-	if(total_living_xenos_advanced.len <= 0)
+	if(length(total_living_xenos_advanced) <= 0)
 		to_chat(user, SPAN_WARNING("The hive has fallen, you can't join it!"))
 		return FALSE
 

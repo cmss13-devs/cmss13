@@ -119,7 +119,7 @@
 		if(SSticker.mode && SSticker.current_state != GAME_STATE_FINISHED && hive.hivenumber == XENO_HIVE_NORMAL)
 			// Notify the hive that we are about to perish
 			if(LAZYLEN(hive.total_living_xenos_advanced == XENO_HIVE_COLLAPSE_THRESHOLD))
-				xeno_message(SPAN_XENOANNOUNCE("We can feel our hive's power weakening - only a few of us are left. Without a Queen, we perish!"))
+				xeno_message(SPAN_XENOANNOUNCE("We can feel our hive's power weakening - only a few of us are left."))
 				return
 			if((GLOB.last_ares_callout + 2 MINUTES) > world.time)
 				return

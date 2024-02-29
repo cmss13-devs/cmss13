@@ -283,7 +283,7 @@ GLOBAL_LIST_EMPTY(living_borers)
 
 /mob/living/carbon/cortical_borer/death()
 	var/datum/language/corticalborer/c_link = GLOB.all_languages[LANGUAGE_BORER]
-	c_link.broadcast(src, null, real_name, TRUE)
+	c_link.broadcast(src, "Has Died", real_name, TRUE)
 	SSmob.living_misc_mobs -= src
 	GLOB.living_borers -= src
 	leave_host()

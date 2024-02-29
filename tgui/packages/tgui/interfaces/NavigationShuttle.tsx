@@ -261,14 +261,21 @@ const LaunchHome = (props) => {
   );
 };
 
+const DestinationOptions = (props) => {
+  const { data, act } = useBackend<NavigationProps>();
+
+  if (data.must_launch_home) {
+    return <LaunchHome />;
+  } else {
+    return <DestionationSelection />;
+  }
+};
+
 const RenderScreen = (props) => {
   const { data } = useBackend<NavigationProps>();
   return (
     <>
-      {data.shuttle_mode === 'idle' && !data.must_launch_home && (
-        <DestionationSelection />
-      )}
-      {!!data.must_launch_home && <LaunchHome />}
+      {data.shuttle_mode === 'idle' && <DestinationOptions />}
       {data.shuttle_mode === 'igniting' && <LaunchCountdown />}
       {data.shuttle_mode === 'recharging' && <ShuttleRecharge />}
       {data.shuttle_mode === 'called' && <InFlightCountdown />}

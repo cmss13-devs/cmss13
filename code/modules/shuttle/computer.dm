@@ -191,33 +191,6 @@
 
 	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
 
-	if(must_launch_home)
-		if(action == "launch_home")
-			var/datum/turf_reservation/loaded = SSmapping.lazy_load_template(ert.home_base, force = TRUE)
-			var/turf/bottom_left = loaded.bottom_left_turfs[1]
-			var/turf/top_right = loaded.top_right_turfs[1]
-
-			var/obj/docking_port/stationary/emergency_response/target
-			for(var/obj/docking_port/stationary/emergency_response/shuttle in SSshuttle.stationary)
-				if(shuttle.z != bottom_left.z)
-					continue
-				if(shuttle.x >= top_right.x || shuttle.y >= top_right.y)
-					continue
-				if(shuttle.x <= bottom_left.x || shuttle.y <= bottom_left.y)
-					continue
-
-				target = shuttle
-				break
-
-			if(!target)
-				return
-
-			SSshuttle.moveShuttleToDock(ert, target, TRUE)
-			target.lockdown_on_land = TRUE
-			must_launch_home = FALSE
-
-		return
-
 	switch(action)
 		if("button-push")
 			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
@@ -244,6 +217,35 @@
 			ert.control_doors("unlock", external_only = TRUE)
 
 	if(must_launch_home)
+		if(action == "launch_home")
+
+			if(ert.mode != SHUTTLE_IDLE)
+				to_chat(ui.user, SPAN_WARNING("Unable to return home."))
+				return
+
+			var/datum/turf_reservation/loaded = SSmapping.lazy_load_template(ert.home_base, force = TRUE)
+			var/turf/bottom_left = loaded.bottom_left_turfs[1]
+			var/turf/top_right = loaded.top_right_turfs[1]
+
+			var/obj/docking_port/stationary/emergency_response/target
+			for(var/obj/docking_port/stationary/emergency_response/shuttle in SSshuttle.stationary)
+				if(shuttle.z != bottom_left.z)
+					continue
+				if(shuttle.x >= top_right.x || shuttle.y >= top_right.y)
+					continue
+				if(shuttle.x <= bottom_left.x || shuttle.y <= bottom_left.y)
+					continue
+
+				target = shuttle
+				break
+
+			if(!target)
+				return
+
+			SSshuttle.moveShuttleToDock(ert, target, TRUE)
+			target.lockdown_on_land = TRUE
+			must_launch_home = FALSE
+
 		return
 
 	if(action != "move")

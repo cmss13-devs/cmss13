@@ -121,13 +121,13 @@
 						stage_level += 42
 
 		if(ZOMBIE_INFECTION_STAGE_THREE)
-			// if zombie or transforming we upgrade it to stage four..
+			// if zombie or transforming we upgrade it to stage four.
 			if(iszombie(infected_mob))
 				stage++
 				return
 			// if not a zombie(above check) and isn't transforming then we transform you into a zombie.
 			if(!zombie_is_transforming)
-				// if your dead we inform you that your going to turn into a zombie.
+				// if your dead we inform you that you're going to turn into a zombie.
 				if(infected_mob.stat == DEAD && stage_counter != stage)
 					to_chat(infected_mob, SPAN_CENTERBOLD("Your zombie infection is now at stage three! Zombie transformation begin!"))
 					stage_counter = stage
@@ -137,7 +137,7 @@
 
 		if(ZOMBIE_INFECTION_STAGE_FOUR)
 			return
-			//final stage of infection it's to avoid running the above test once your a zombie for now. maybe more later.
+			// final stage of infection it's to avoid running the above test once you're a zombie for now. maybe more later.
 
 /datum/disease/black_goo/proc/zombie_transform(mob/living/carbon/human/human)
 	set waitfor = 0

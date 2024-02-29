@@ -12215,7 +12215,7 @@
 /turf/open/floor/almayer,
 /area/almayer/squads/req)
 "bpR" = (
-/turf/open/floor/almayer/empty,
+/turf/open/floor/almayer/empty/requisitions,
 /area/supply/station)
 "bpS" = (
 /obj/structure/machinery/door/poddoor/railing{
@@ -12587,7 +12587,7 @@
 /area/almayer/squads/req)
 "bsK" = (
 /obj/effect/landmark/supply_elevator,
-/turf/open/floor/almayer/empty,
+/turf/open/floor/almayer/empty/requisitions,
 /area/supply/station)
 "bsL" = (
 /obj/structure/machinery/door/poddoor/railing{
@@ -53225,7 +53225,7 @@
 /area/almayer/squads/bravo)
 "oiX" = (
 /obj/docking_port/stationary/vehicle_elevator/almayer,
-/turf/open/floor/almayer/empty,
+/turf/open/floor/almayer/empty/vehicle_bay,
 /area/almayer/hallways/lower/vehiclehangar)
 "oiY" = (
 /obj/effect/decal/warning_stripes{
@@ -65062,7 +65062,7 @@
 	},
 /area/almayer/medical/lower_medical_medbay)
 "sje" = (
-/turf/open/floor/almayer/empty,
+/turf/open/floor/almayer/empty/vehicle_bay,
 /area/almayer/hallways/lower/vehiclehangar)
 "sjj" = (
 /obj/structure/machinery/keycard_auth{

@@ -184,15 +184,3 @@
 		if(M.id == gear_id)
 			spawn()
 				M.icon_state = "gear"
-
-/obj/effect/landmark/vehicleelevator/Initialize(mapload, ...)
-	. = ..()
-	GLOB.vehicle_elevator = get_turf(src)
-	return INITIALIZE_HINT_QDEL
-
-/datum/shuttle/ferry/supply/vehicle
-	railing_id = "vehicle_elevator_railing"
-	gear_id = "vehicle_elevator_gears"
-
-/datum/shuttle/ferry/supply/vehicle/pick_loc()
-	return GLOB.vehicle_elevator

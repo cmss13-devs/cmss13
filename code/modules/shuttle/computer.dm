@@ -94,7 +94,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	var/disabled = FALSE
-	var/must_launch_home = TRUE
+	var/must_launch_home = FALSE
 	var/compatible_landing_zones = list()
 
 /obj/structure/machinery/computer/shuttle/ert/broken

@@ -282,6 +282,7 @@
 
 		var/datum/map_template/shuttle/new_shuttle = SSmapping.shuttle_templates[shuttle_id]
 		shuttle = SSshuttle.load_template_to_transit(new_shuttle)
+		shuttle.control_doors("force-lock", force = TRUE, external_only = TRUE)
 		shuttle.home_base = home_base
 
 	if(shuttle && auto_shuttle_launch)

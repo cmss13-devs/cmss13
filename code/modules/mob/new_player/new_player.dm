@@ -146,7 +146,7 @@
 				mind.transfer_to(observer, TRUE)
 
 				if(observer.client)
-					observer.client.change_view(GLOB.world_view_size)
+					observer.client.view_size.reset_to_default()
 
 				observer.set_huds_from_prefs()
 
@@ -369,7 +369,7 @@
 
 	setup_human(new_character, src, is_late_join)
 
-	new_character.client?.change_view(GLOB.world_view_size)
+	new_character.client?.view_size.reset_to_default()
 
 	return new_character
 

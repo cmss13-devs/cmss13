@@ -831,9 +831,9 @@ cases. Override_icon_state should be a list.*/
 	else if(!zoom)
 		do_zoom(user, tileoffset, viewsize, keep_zoom)
 		return
-	unzoom(user)
+	unzoom(user, tileoffset)
 
-/obj/item/proc/unzoom(mob/living/user)
+/obj/item/proc/unzoom(mob/living/user, tileoffset)
 	if(user.interactee == src)
 		user.unset_interaction()
 	var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
@@ -851,7 +851,8 @@ cases. Override_icon_state should be a list.*/
 	UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
 	//General reset in case anything goes wrong, the view will always reset to default unless zooming in.
 	if(user.client)
-		user.client.change_view(GLOB.world_view_size, src)
+		user.client.view_size.reset_to_default()
+		animate(user.client, 3*(tileoffset/7), pixel_x = 0, pixel_y = 0)
 		user.client.pixel_x = 0
 		user.client.pixel_y = 0
 
@@ -874,8 +875,6 @@ cases. Override_icon_state should be a list.*/
 	else
 		user.set_interaction(src)
 	if(user.client)
-		user.client.change_view(viewsize, src)
-
 		RegisterSignal(src, list(
 			COMSIG_ITEM_DROPPED,
 			COMSIG_ITEM_UNWIELD,
@@ -885,28 +884,37 @@ cases. Override_icon_state should be a list.*/
 
 		zoom_initial_mob_dir = user.dir
 
-		var/tilesize = 32
-		var/viewoffset = tilesize * tileoffset
-
-		switch(user.dir)
-			if(NORTH)
-				user.client.pixel_x = 0
-				user.client.pixel_y = viewoffset
-			if(SOUTH)
-				user.client.pixel_x = 0
-				user.client.pixel_y = -viewoffset
-			if(EAST)
-				user.client.pixel_x = viewoffset
-				user.client.pixel_y = 0
-			if(WEST)
-				user.client.pixel_x = -viewoffset
-				user.client.pixel_y = 0
+		user.client.view_size.add(viewsize)
+		change_zoom_offset(user, zoom_offset = tileoffset)
 
 	SEND_SIGNAL(src, COMSIG_ITEM_ZOOM, user)
 	var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
 	user.visible_message(SPAN_NOTICE("[user] peers through \the [zoom_device]."),
 	SPAN_NOTICE("You peer through \the [zoom_device]."))
 	zoom = !zoom
+
+///applies the offset of the zooming, using animate for smoothing.
+/obj/item/proc/change_zoom_offset(mob/user, newdir, zoom_offset)
+	SIGNAL_HANDLER
+	if(!istype(user))
+		return
+
+	var/viewoffset
+	if(zoom_offset)
+		viewoffset = zoom_offset * 32
+
+	var/zoom_offset_time = 3*((viewoffset/32)/7)
+	var/dirtooffset = newdir ? newdir : user.dir
+
+	switch(dirtooffset)
+		if(NORTH)
+			animate(user.client, pixel_x = 0, pixel_y = viewoffset, time = zoom_offset_time)
+		if(SOUTH)
+			animate(user.client, pixel_x = 0, pixel_y = -viewoffset, time = zoom_offset_time)
+		if(EAST)
+			animate(user.client, pixel_x = viewoffset, pixel_y = 0, time = zoom_offset_time)
+		if(WEST)
+			animate(user.client, pixel_x = -viewoffset, pixel_y = 0, time = zoom_offset_time)
 
 /obj/item/proc/get_icon_state(mob/user_mob, slot)
 	var/mob_state

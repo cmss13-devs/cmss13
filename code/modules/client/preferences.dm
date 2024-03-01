@@ -236,6 +236,11 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	/// if this client has custom cursors enabled
 	var/custom_cursors = TRUE
 
+	var/widescreenpref = TRUE
+
+	var/pixel_size = 0
+
+	var/scaling_method = SCALING_METHOD_NORMAL
 	/// if this client has tooltips enabled
 	var/tooltips = TRUE
 
@@ -583,6 +588,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 			dat += "<div id='column2'>"
 			dat += "<h2><b><u>Game Settings:</u></b></h2>"
+			dat += "<b>Widescreen:</b> <a href='?_src_=prefs;preference=widescreenpref'><b>[widescreenpref ? "Enabled" : "Disabled"]</b></a><br>"
 			dat += "<b>Ambient Occlusion:</b> <a href='?_src_=prefs;preference=ambientocclusion'><b>[toggle_prefs & TOGGLE_AMBIENT_OCCLUSION ? "Enabled" : "Disabled"]</b></a><br>"
 			dat += "<b>Fit Viewport:</b> <a href='?_src_=prefs;preference=auto_fit_viewport'>[auto_fit_viewport ? "Auto" : "Manual"]</a><br>"
 			dat += "<b>Adaptive Zoom:</b> <a href='?_src_=prefs;preference=adaptive_zoom'>[adaptive_zoom ? "[adaptive_zoom * 2]x" : "Disabled"]</a><br>"
@@ -1978,6 +1984,10 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 				if("change_menu")
 					current_menu = href_list["menu"]
+
+				if("widescreenpref")
+					widescreenpref = !widescreenpref
+					user.client.view_size.set_default(get_screen_size(widescreenpref))
 
 	ShowChoices(user)
 	return 1

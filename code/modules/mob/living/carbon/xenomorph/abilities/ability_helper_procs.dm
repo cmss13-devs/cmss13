@@ -177,7 +177,7 @@
 	if(!client)
 		return
 	is_zoomed = 1
-	client.change_view(viewsize)
+	client.view_size.add(viewsize)
 	var/viewoffset = 32 * tileoffset
 	switch(dir)
 		if(NORTH)
@@ -196,7 +196,7 @@
 /mob/living/carbon/xenomorph/proc/zoom_out()
 	if(!client)
 		return
-	client.change_view(GLOB.world_view_size)
+	client.view_size.reset_to_default()
 	client.pixel_x = 0
 	client.pixel_y = 0
 	is_zoomed = 0

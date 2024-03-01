@@ -1,4 +1,4 @@
-import { useBackend, useSharedState } from '../backend';
+import { useBackend, useLocalState, useSharedState } from '../backend';
 import { Button, Section, Stack, Tabs, Table, Box, Input, NumberInput, LabeledControls, Divider, Collapsible } from '../components';
 import { Window } from '../layouts';
 
@@ -60,7 +60,7 @@ const HomePanel = (props) => {
 const SquadPanel = (props) => {
   const { act, data } = useBackend();
 
-  const [category, setCategory] = useSharedState('selected', 'monitor');
+  const [category, setCategory] = useLocalState('selected', 'monitor');
 
   return (
     <>
@@ -325,21 +325,21 @@ const SquadMonitor = (props) => {
 
   let { marines, squad_leader } = data;
 
-  const [hidden_marines, setHiddenMarines] = useSharedState(
+  const [hidden_marines, setHiddenMarines] = useLocalState(
     'hidden_marines',
     []
   );
 
-  const [showHiddenMarines, setShowHiddenMarines] = useSharedState(
+  const [showHiddenMarines, setShowHiddenMarines] = useLocalState(
     'showhidden',
     false
   );
-  const [showDeadMarines, setShowDeadMarines] = useSharedState(
+  const [showDeadMarines, setShowDeadMarines] = useLocalState(
     'showdead',
     false
   );
 
-  const [marineSearch, setMarineSearch] = useSharedState('marinesearch', null);
+  const [marineSearch, setMarineSearch] = useLocalState('marinesearch', null);
 
   let determine_status_color = (status) => {
     let conscious = status.includes('Conscious');

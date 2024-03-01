@@ -507,7 +507,7 @@
 					user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 					cam = null
 					user.reset_view(null)
-				else if(user.client.view != GLOB.world_view_size)
+				else if(usr.client.view_size.get_client_view_size() != usr.client.view_size.default)
 					to_chat(user, SPAN_WARNING("You're too busy peering through binoculars."))
 				else
 					if(cam)

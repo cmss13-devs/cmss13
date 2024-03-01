@@ -27465,7 +27465,7 @@
 /area/fiorina/station/civres_blue)
 "qHi" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "riot_in_progress"
+	insert_tag = "riot_control"
 	},
 /turf/open/floor/prison,
 /area/fiorina/station/security)

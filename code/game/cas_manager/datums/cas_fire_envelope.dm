@@ -216,7 +216,7 @@
 		M.lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 		M.sync_lighting_plane_alpha()
 	if(linked_console.upgraded == MATRIX_WIDE)
-		M.client?.change_view(7, M)
+		M.client?.view_size.reset_to_default()
 	else
 		return
 
@@ -324,7 +324,7 @@
 
 /datum/cas_fire_envelope/uscm_dropship
 	fire_length = 12
-	grace_period = 5 SECONDS 
+	grace_period = 5 SECONDS
 	flyto_period = 4 SECONDS //sleep in the FM itself has been increased by one more second
 	flyoff_period = 5 SECONDS
 	cooldown_period = 10 SECONDS

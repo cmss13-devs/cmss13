@@ -143,14 +143,14 @@
 		far_sight = TRUE
 		if(user)
 			if(user.client)
-				user.client.change_view(8, src)
+				user.client.view_size.add(1)
 		START_PROCESSING(SSobj, src)
 	else
 		linked_smartgun = null
 		far_sight = FALSE
 		if(user)
 			if(user.client)
-				user.client.change_view(GLOB.world_view_size, src)
+				user.client.view_size.reset_to_default()
 		STOP_PROCESSING(SSobj, src)
 
 	var/datum/action/item_action/m56_goggles/far_sight/FT = locate(/datum/action/item_action/m56_goggles/far_sight) in actions

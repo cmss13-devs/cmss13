@@ -103,7 +103,7 @@
 	else
 		new_xeno.key = target_xeno.key
 		if(new_xeno.client)
-			new_xeno.client.change_view(GLOB.world_view_size)
+			new_xeno.client.view_size.reset_to_default()
 			new_xeno.client.pixel_x = 0
 			new_xeno.client.pixel_y = 0
 

@@ -263,7 +263,7 @@
 		new_xeno.key = picked.key
 
 		if(new_xeno.client)
-			new_xeno.client.change_view(GLOB.world_view_size)
+			new_xeno.client.view_size.reset_to_default()
 			if(new_xeno.client.prefs?.toggles_flashing & FLASH_POOLSPAWN)
 				window_flash(new_xeno.client)
 

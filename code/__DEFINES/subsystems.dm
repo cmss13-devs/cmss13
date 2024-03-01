@@ -109,6 +109,8 @@
 // Subsystems shutdown in the reverse of the order they initialize in
 // The numbers just define the ordering, they are meaningless otherwise.
 
+#define SS_INIT_TICKER_SPAWN 999
+#define SS_INIT_TITLE 990
 #define SS_INIT_PROFILER 86
 #define SS_INIT_INPUT   85
 #define SS_INIT_TOPIC 83

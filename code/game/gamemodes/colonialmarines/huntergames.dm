@@ -234,7 +234,8 @@
 		H = new(picked)
 
 	H.key = M.key
-	if(H.client) H.client.change_view(GLOB.world_view_size)
+	if(H.client)
+		H.client.view_size.reset_to_default()
 
 	if(!H.mind)
 		H.mind = new(H.key)

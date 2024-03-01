@@ -27463,6 +27463,12 @@
 /obj/effect/spawner/random/tool,
 /turf/open/floor/prison,
 /area/fiorina/station/civres_blue)
+"qHi" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "riot_in_progress"
+	},
+/turf/open/floor/prison,
+/area/fiorina/station/security)
 "qHG" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = 25
@@ -68528,7 +68534,7 @@ uGY
 ihB
 ihB
 ubP
-ubP
+qHi
 gag
 sbF
 sbF

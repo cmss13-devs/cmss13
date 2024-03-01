@@ -281,7 +281,12 @@ const DestinationOptions = (props) => {
   const { data, act } = useBackend<NavigationProps>();
 
   if (data.must_launch_home) {
-    return <LaunchHome />;
+    return (
+      <>
+        <LaunchHome />
+        <DestionationSelection />
+      </>
+    );
   } else {
     return <DestionationSelection />;
   }
@@ -304,7 +309,7 @@ const RenderScreen = (props) => {
 export const NavigationShuttle = (props) => {
   const { data } = useBackend<NavigationProps>();
   return (
-    <Window theme="crtgreen" height={500} width={700}>
+    <Window theme="crtgreen" height={505} width={700}>
       <Window.Content className="NavigationMenu">
         {data.is_disabled === 1 && <DisabledScreen />}
         {data.is_disabled === 0 && <RenderScreen />}

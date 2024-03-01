@@ -387,7 +387,9 @@
 	update_health(-200)
 	playsound(src.loc, 'sound/items/Welder2.ogg', 25, TRUE)
 
-	welder = user.get_active_hand()
+	var/current_tool = user.get_active_hand()
+	if(current_tool != welder)
+		return TRUE // Swapped hands or tool
 	if(repeat && can_weld(welder, user, silent = TRUE))
 		// Assumption: The implementation of can_weld will return false if fully repaired
 		if(!try_weld_cade(welder, user, repeat = TRUE, skip_check = TRUE))

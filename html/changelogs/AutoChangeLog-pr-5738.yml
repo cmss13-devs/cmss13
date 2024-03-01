@@ -1,4 +1,0 @@
-author: "Megaddd"
-delete-after: True
-changes:
-  - balance: "health analyzer no longer shows large custom research chem property text rows."

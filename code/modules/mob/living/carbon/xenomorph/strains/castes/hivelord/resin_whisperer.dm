@@ -1,6 +1,6 @@
 /datum/xeno_strain/resin_whisperer
 	name = HIVELORD_RESIN_WHISPERER
-	description = "You lose your corrosive acid, your ability to secrete thick resin, your ability to reinforce resin secretions, sacrifice your ability to plant resin nodes outside of weeds, and you sacrifice a fifth of your plasma reserves to enhance your vision and gain a stronger connection to the resin. You can now remotely place resin secretions including resin nodes up to a distance of twelve paces!"
+	description = "You lose your corrosive acid, your ability to secrete thick resin, your ability to reinforce resin secretions, sacrifice your ability to plant weed nodes outside of weeds, and you sacrifice a fifth of your plasma reserves to enhance your vision and gain a stronger connection to the resin. You can now remotely place resin secretions including weed nodes up to a distance of twelve paces!"
 	flavor_description = "Let the resin guide you. It whispers, so listen closely."
 	icon_state_prefix = "Resin Whisperer"
 

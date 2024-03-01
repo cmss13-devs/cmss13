@@ -1,0 +1,4 @@
+author: "Warfan1815"
+delete-after: True
+changes:
+  - bugfix: "Fixes the pulling of trading cards out of a pack message being visible to other people"

@@ -69,7 +69,6 @@
 /area/space)
 "am" = (
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -327,15 +326,10 @@
 	},
 /area/adminlevel/chinook/offices)
 "aV" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal3";
-	pixel_y = 16
+/turf/open/floor/corsat{
+	icon_state = "squares"
 	},
-/obj/structure/desertdam/decals/road_edge{
-	pixel_x = 2
-	},
-/turf/open/floor/wood/ship,
-/area/adminlevel/chinook)
+/area/space)
 "aW" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21";
@@ -366,13 +360,15 @@
 	},
 /area/adminlevel/chinook/sec)
 "aY" = (
-/obj/structure/machinery/light{
-	dir = 4
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = 16
 	},
-/turf/open/floor/corsat{
-	icon_state = "squares"
+/obj/structure/desertdam/decals/road_edge{
+	pixel_x = 2
 	},
-/area/space)
+/turf/open/floor/wood/ship,
+/area/adminlevel/chinook)
 "aZ" = (
 /obj/structure/machinery/door/airlock/almayer/secure{
 	dir = 1;
@@ -556,9 +552,8 @@
 /turf/open/floor/wood/ship,
 /area/adminlevel/chinook)
 "by" = (
-/obj/structure/flora/pottedplant/random,
-/turf/open/floor/almayer,
-/area/adminlevel/chinook/offices)
+/turf/closed/shuttle/elevator,
+/area/space)
 "bz" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -1254,7 +1249,6 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/device/multitool,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -1351,7 +1345,7 @@
 	dir = 8;
 	tag = "icon-tube1 (EAST)"
 	},
-/obj/structure/machinery/cm_vending/sorted/medical/blood,
+/obj/structure/machinery/medical_pod/bodyscanner,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
@@ -2214,13 +2208,17 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook)
 "fZ" = (
-/turf/closed/shuttle/elevator,
-/area/space)
-"ga" = (
-/obj/item/toy/inflatable_duck,
-/turf/open/gm/river{
-	name = "pool"
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "green";
+	tag = "icon-green (NORTH)"
 	},
+/area/adminlevel/chinook)
+"ga" = (
+/obj/structure/bed/chair{
+	tag = "icon-chair (NORTH)"
+	},
+/turf/open/floor/almayer,
 /area/adminlevel/chinook)
 "gb" = (
 /obj/structure/machinery/cm_vending/clothing/synth,
@@ -2243,9 +2241,9 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/cargo)
 "ge" = (
-/obj/item/toy/beach_ball,
-/turf/open/gm/river{
-	name = "pool"
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "green"
 	},
 /area/adminlevel/chinook)
 "gg" = (
@@ -2452,7 +2450,6 @@
 	},
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -2519,10 +2516,17 @@
 "gT" = (
 /obj/structure/machinery/telecomms/relay,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
+"gU" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
 "gV" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer{
@@ -2890,15 +2894,6 @@
 	tag = "icon-bluecorner (NORTH)"
 	},
 /area/adminlevel/chinook/offices)
-"hU" = (
-/obj/structure/machinery/light{
-	dir = 8;
-	tag = "icon-tube1 (EAST)"
-	},
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/space)
 "hW" = (
 /turf/open/floor/almayer{
 	dir = 6;
@@ -3505,6 +3500,11 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/event)
+"jH" = (
+/turf/closed/shuttle/elevator{
+	dir = 6
+	},
+/area/space)
 "jI" = (
 /obj/structure/machinery/computer/card{
 	dir = 4
@@ -3625,6 +3625,11 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/cargo)
+"kc" = (
+/turf/closed/shuttle/elevator{
+	dir = 10
+	},
+/area/space)
 "kd" = (
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/almayer{
@@ -3673,13 +3678,10 @@
 	},
 /area/adminlevel/chinook/sec)
 "kl" = (
-/obj/structure/machinery/body_scanconsole,
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (NORTH)"
+/turf/closed/shuttle/elevator{
+	dir = 5
 	},
-/area/adminlevel/chinook/offices)
+/area/space)
 "km" = (
 /obj/structure/machinery/light{
 	dir = 1;
@@ -3750,6 +3752,7 @@
 	},
 /area/adminlevel/chinook/offices)
 "ku" = (
+/obj/structure/machinery/cm_vending/sorted/medical/blood,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_corner";
@@ -4276,6 +4279,13 @@
 /obj/item/pizzabox/mushroom,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/cargo)
+"md" = (
+/obj/structure/machinery/light,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/chinook)
 "me" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/attachment,
@@ -5197,6 +5207,13 @@
 	tag = "icon-red"
 	},
 /area/adminlevel/chinook/sec)
+"oF" = (
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "green";
+	tag = "icon-green (NORTHWEST)"
+	},
+/area/adminlevel/chinook)
 "oG" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -5265,6 +5282,7 @@
 /obj/structure/sign/safety/autodoc{
 	pixel_x = -16
 	},
+/obj/structure/machinery/medical_pod/autodoc,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
@@ -5811,10 +5829,11 @@
 	},
 /area/adminlevel/chinook/offices)
 "qu" = (
-/turf/open/floor/corsat{
-	icon_state = "squares"
+/obj/item/toy/inflatable_duck,
+/turf/open/gm/river{
+	name = "pool"
 	},
-/area/space)
+/area/adminlevel/chinook)
 "qv" = (
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_sn_full_cap"
@@ -5990,11 +6009,6 @@
 	},
 /turf/open/floor/kutjevo/tan,
 /area/adminlevel/chinook/event)
-"qQ" = (
-/turf/closed/shuttle/elevator{
-	dir = 5
-	},
-/area/space)
 "qS" = (
 /obj/structure/platform{
 	dir = 1
@@ -6942,14 +6956,9 @@
 	},
 /area/adminlevel/chinook/sec)
 "tJ" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
-	},
-/area/adminlevel/chinook)
+/obj/structure/flora/pottedplant/random,
+/turf/open/floor/almayer,
+/area/adminlevel/chinook/offices)
 "tK" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/storage/box/drinkingglasses,
@@ -6957,6 +6966,13 @@
 	icon_state = "kitchen"
 	},
 /area/adminlevel/chinook/event)
+"tL" = (
+/obj/structure/machinery/body_scanconsole,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/chinook/offices)
 "tM" = (
 /obj/structure/barricade/handrail{
 	dir = 8
@@ -7749,7 +7765,6 @@
 "vW" = (
 /obj/structure/machinery/telecomms/processor,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -8055,10 +8070,14 @@
 	},
 /area/adminlevel/chinook)
 "wY" = (
-/turf/closed/shuttle/elevator{
-	dir = 6
+/obj/structure/machinery/light{
+	dir = 1
 	},
-/area/space)
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/chinook)
 "xa" = (
 /obj/structure/machinery/light{
 	dir = 4;
@@ -8234,7 +8253,6 @@
 	pixel_y = 27
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -8371,12 +8389,10 @@
 	},
 /area/adminlevel/chinook/offices)
 "xZ" = (
-/obj/structure/machinery/body_scanconsole,
-/turf/open/floor/almayer{
-	icon_state = "sterile_green_side";
-	tag = "icon-sterile"
+/turf/closed/shuttle/elevator{
+	dir = 9
 	},
-/area/adminlevel/chinook/medical)
+/area/space)
 "ya" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
@@ -8653,7 +8669,6 @@
 	},
 /obj/structure/machinery/telecomms/broadcaster,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -8736,10 +8751,11 @@
 /area/adminlevel/chinook/sec)
 "zl" = (
 /turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "green"
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
 	},
-/area/adminlevel/chinook)
+/area/adminlevel/chinook/offices)
 "zm" = (
 /obj/structure/machinery/door_control{
 	id = "chinook_solitary3";
@@ -9508,10 +9524,9 @@
 /turf/open/floor/wood/ship,
 /area/adminlevel/chinook/offices)
 "BJ" = (
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "green";
-	tag = "icon-green (NORTH)"
+/obj/item/toy/beach_ball,
+/turf/open/gm/river{
+	name = "pool"
 	},
 /area/adminlevel/chinook)
 "BK" = (
@@ -10028,7 +10043,6 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/device/flashlight/lamp,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -10554,10 +10568,11 @@
 	},
 /area/adminlevel/chinook)
 "Fi" = (
-/obj/structure/bed/chair{
-	tag = "icon-chair (NORTH)"
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "green";
+	tag = "icon-green (NORTHEAST)"
 	},
-/turf/open/floor/almayer,
 /area/adminlevel/chinook)
 "Fk" = (
 /obj/structure/sign/ROsign{
@@ -10748,7 +10763,6 @@
 "FQ" = (
 /obj/structure/machinery/telecomms/hub,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -11908,17 +11922,8 @@
 	},
 /area/adminlevel/chinook/sec)
 "Ju" = (
-/turf/closed/shuttle/elevator{
-	dir = 9
-	},
+/turf/closed/shuttle/elevator/gears,
 /area/space)
-"Jw" = (
-/obj/structure/machinery/light,
-/turf/open/floor/almayer{
-	icon_state = "cargo";
-	tag = "icon-bluecorner (NORTH)"
-	},
-/area/adminlevel/chinook)
 "Jx" = (
 /obj/structure/surface/rack,
 /turf/open/floor/almayer{
@@ -12811,7 +12816,7 @@
 /area/adminlevel/chinook/sec)
 "LS" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Arena"
+	name = "\improper Basketball Court"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook)
@@ -13272,7 +13277,6 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -13499,11 +13503,6 @@
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/chinook/offices)
-"NY" = (
-/turf/closed/shuttle/elevator{
-	dir = 10
-	},
-/area/space)
 "NZ" = (
 /turf/closed/shuttle/elevator{
 	dir = 9
@@ -13924,14 +13923,10 @@
 	},
 /area/adminlevel/chinook)
 "Pi" = (
-/obj/structure/machinery/door/airlock/multi_tile/elevator/access{
-	desc = "An elevator hatch to take you to different levels of the station. This elevator seems to be disabled.";
-	name = "\improper Elevator Hatch"
-	},
-/turf/open/floor/corsat{
-	icon_state = "squares"
-	},
-/area/space)
+/obj/structure/machinery/light,
+/obj/structure/flora/pottedplant/random,
+/turf/open/floor/almayer,
+/area/adminlevel/chinook/offices)
 "Pj" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
@@ -14604,13 +14599,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook)
-"QX" = (
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "green";
-	tag = "icon-green (NORTHEAST)"
-	},
-/area/adminlevel/chinook)
 "Rc" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
 /obj/structure/machinery/light{
@@ -14974,18 +14962,10 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/adminlevel/chinook/sec)
-"Sf" = (
-/turf/open/floor/almayer{
-	dir = 9;
-	icon_state = "green";
-	tag = "icon-green (NORTHWEST)"
-	},
-/area/adminlevel/chinook)
 "Sg" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -15046,7 +15026,6 @@
 "So" = (
 /obj/structure/machinery/telecomms/bus,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -15213,7 +15192,6 @@
 "SQ" = (
 /obj/structure/machinery/telecomms/server,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -15534,6 +15512,7 @@
 	dir = 4;
 	tag = "icon-tube1 (EAST)"
 	},
+/obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_corner";
@@ -15906,11 +15885,6 @@
 	tag = "icon-red (NORTH)"
 	},
 /area/adminlevel/chinook/sec)
-"UT" = (
-/obj/structure/machinery/light,
-/obj/structure/flora/pottedplant/random,
-/turf/open/floor/almayer,
-/area/adminlevel/chinook/offices)
 "UU" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/suit/straight_jacket,
@@ -16008,7 +15982,13 @@
 	},
 /area/adminlevel/chinook/medical)
 "Vd" = (
-/turf/closed/shuttle/elevator/gears,
+/obj/structure/machinery/door/airlock/multi_tile/elevator/access{
+	desc = "An elevator hatch to take you to different levels of the station. This elevator seems to be disabled.";
+	name = "\improper Elevator Hatch"
+	},
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
 /area/space)
 "Ve" = (
 /obj/structure/surface/table/reinforced/black,
@@ -16190,7 +16170,6 @@
 	},
 /obj/structure/machinery/telecomms/receiver,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -16644,7 +16623,6 @@
 /area/adminlevel/chinook/event)
 "WV" = (
 /turf/open/floor/almayer{
-	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
 	},
 /area/adminlevel/chinook/cargo)
@@ -17411,7 +17389,6 @@
 "YU" = (
 /obj/structure/machinery/telecomms/allinone,
 /turf/open/floor/almayer{
-	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
 /area/adminlevel/chinook/engineering)
@@ -17489,6 +17466,15 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/chinook/medical)
+"Zd" = (
+/obj/structure/machinery/light{
+	dir = 8;
+	tag = "icon-tube1 (EAST)"
+	},
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/space)
 "Ze" = (
 /obj/structure/machinery/light{
 	dir = 4;
@@ -19464,7 +19450,7 @@ pX
 pX
 pX
 pX
-ge
+BJ
 pX
 pX
 nk
@@ -19716,7 +19702,7 @@ pX
 pX
 pX
 pX
-ga
+qu
 pX
 pX
 pX
@@ -19795,11 +19781,11 @@ oi
 oi
 oi
 df
-Ju
-fZ
-fZ
-fZ
-NY
+xZ
+by
+by
+by
+kc
 Yc
 sr
 vl
@@ -19840,7 +19826,7 @@ ZZ
 CF
 pv
 pX
-ge
+BJ
 pX
 pX
 pX
@@ -19922,11 +19908,11 @@ oi
 oi
 oi
 df
-Vd
-hU
-qu
-hU
-Vd
+Ju
+Zd
+aV
+Zd
+Ju
 Yc
 eu
 Zi
@@ -20049,11 +20035,11 @@ oi
 oi
 oi
 df
-Pi
-qu
-qu
-qu
-Pi
+Vd
+aV
+aV
+aV
+Vd
 Pw
 sr
 Zi
@@ -20176,11 +20162,11 @@ oi
 oi
 oi
 df
-qu
-qu
-qu
-qu
-qu
+aV
+aV
+aV
+aV
+aV
 TJ
 sr
 Zi
@@ -20303,11 +20289,11 @@ oi
 oi
 oi
 df
-qu
-qu
-qu
-qu
-qu
+aV
+aV
+aV
+aV
+aV
 TJ
 sr
 Zi
@@ -20430,11 +20416,11 @@ oi
 oi
 oi
 df
-qu
-qu
-qu
-qu
-qu
+aV
+aV
+aV
+aV
+aV
 TJ
 sr
 Zi
@@ -20557,11 +20543,11 @@ Yt
 Yt
 Yt
 df
-Vd
-aY
-qu
-aY
-Vd
+Ju
+gU
+aV
+gU
+Ju
 Yc
 eu
 Zi
@@ -20684,11 +20670,11 @@ al
 al
 al
 df
-qQ
-fZ
-fZ
-fZ
-wY
+kl
+by
+by
+by
+jH
 Yc
 sr
 Zi
@@ -21215,7 +21201,7 @@ Yc
 vl
 vl
 vl
-UT
+Pi
 jF
 rU
 Qm
@@ -21988,7 +21974,7 @@ xu
 zE
 Bj
 DH
-by
+tJ
 xi
 Wq
 qZ
@@ -25510,9 +25496,9 @@ Zu
 al
 al
 Xm
-kl
+cf
 VY
-VY
+tL
 dj
 dN
 Ix
@@ -25637,9 +25623,9 @@ Zu
 al
 al
 Xm
-cf
+zl
 VY
-cZ
+VY
 VY
 VY
 ep
@@ -26393,7 +26379,7 @@ oi
 oi
 oi
 SP
-Sf
+oF
 gk
 gk
 gk
@@ -26520,15 +26506,15 @@ oi
 oi
 oi
 fu
-BJ
+fZ
 ZZ
 UN
 WF
-tJ
+wY
 yN
 yN
 yN
-Jw
+md
 WF
 Oe
 ZZ
@@ -26647,9 +26633,9 @@ oi
 oi
 oi
 fu
-BJ
-Fi
-Fi
+fZ
+ga
+ga
 bY
 FE
 yQ
@@ -26774,11 +26760,11 @@ oi
 oi
 oi
 SP
-BJ
-Fi
-Fi
+fZ
+ga
+ga
 bY
-aV
+aY
 uy
 wz
 Gu
@@ -26901,9 +26887,9 @@ oi
 oi
 oi
 SP
-BJ
-Fi
-Fi
+fZ
+ga
+ga
 bY
 iA
 bL
@@ -27028,9 +27014,9 @@ oi
 oi
 oi
 SP
-BJ
-Fi
-Fi
+fZ
+ga
+ga
 bY
 iA
 Ri
@@ -27155,9 +27141,9 @@ oi
 oi
 oi
 fu
-BJ
-Fi
-Fi
+fZ
+ga
+ga
 bY
 iA
 wz
@@ -27282,7 +27268,7 @@ oi
 oi
 oi
 fu
-BJ
+fZ
 ZZ
 ZZ
 bY
@@ -27354,7 +27340,7 @@ rx
 WN
 rE
 uF
-xZ
+ph
 YP
 zT
 Ko
@@ -27409,7 +27395,7 @@ oi
 oi
 oi
 SP
-BJ
+fZ
 ZZ
 ZZ
 WF
@@ -27536,7 +27522,7 @@ oi
 oi
 oi
 fu
-BJ
+fZ
 ZZ
 ZZ
 EV
@@ -27663,9 +27649,9 @@ oi
 oi
 oi
 fu
-BJ
-Fi
-Fi
+fZ
+ga
+ga
 EV
 iA
 wz
@@ -27790,9 +27776,9 @@ oi
 oi
 oi
 SP
-BJ
-Fi
-Fi
+fZ
+ga
+ga
 EV
 iA
 uS
@@ -27831,7 +27817,7 @@ Vr
 Vr
 mr
 ZZ
-ZZ
+lO
 Xv
 WF
 dJ
@@ -27917,9 +27903,9 @@ oi
 oi
 oi
 SP
-BJ
-Fi
-Fi
+fZ
+ga
+ga
 EV
 iA
 VT
@@ -27958,7 +27944,7 @@ Vr
 Vr
 Vr
 ZZ
-ZZ
+lO
 ZI
 WF
 WF
@@ -28044,11 +28030,11 @@ oi
 oi
 oi
 SP
-BJ
-Fi
-Fi
+fZ
+ga
+ga
 EV
-aV
+aY
 bx
 wz
 FW
@@ -28085,7 +28071,7 @@ TQ
 TQ
 MU
 Wq
-ZZ
+lO
 ZZ
 aT
 ZZ
@@ -28171,9 +28157,9 @@ oi
 oi
 oi
 fu
-BJ
-Fi
-Fi
+fZ
+ga
+ga
 EV
 Ps
 cN
@@ -28212,7 +28198,7 @@ JK
 wj
 MU
 Wq
-ZZ
+lO
 ZZ
 ZZ
 ZZ
@@ -28298,15 +28284,15 @@ oi
 oi
 oi
 fu
-BJ
+fZ
 ZZ
 UN
 WF
-tJ
+wY
 yN
 yN
 yN
-Jw
+md
 WF
 Oe
 ZZ
@@ -28425,18 +28411,18 @@ oi
 oi
 oi
 SP
-QX
-zl
-zl
-zl
-zl
-zl
-zl
-zl
-zl
-zl
-zl
-zl
+Fi
+ge
+ge
+ge
+ge
+ge
+ge
+ge
+ge
+ge
+ge
+ge
 gh
 WF
 LX
@@ -31514,7 +31500,7 @@ Vr
 Vr
 AR
 ZZ
-ZZ
+lO
 ZI
 PV
 Jx
@@ -31641,7 +31627,7 @@ TQ
 Df
 Tm
 Bb
-ZZ
+lO
 ZI
 PV
 JJ

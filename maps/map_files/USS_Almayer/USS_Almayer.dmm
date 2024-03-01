@@ -32258,7 +32258,9 @@
 	dir = 4;
 	pixel_y = -18
 	},
-/turf/open/floor/almayer/aicore/no_build,
+/turf/open/floor/almayer/aicore/glowing/no_build{
+	icon_state = "ai_floor3"
+	},
 /area/almayer/command/airoom)
 "gTK" = (
 /obj/effect/decal/warning_stripes{
@@ -49325,7 +49327,9 @@
 	dir = 8;
 	pixel_x = 17
 	},
-/turf/open/floor/almayer/aicore/no_build,
+/turf/open/floor/almayer/aicore/glowing/no_build{
+	icon_state = "ai_floor3"
+	},
 /area/almayer/command/airoom)
 "mUE" = (
 /obj/structure/disposalpipe/segment,
@@ -53863,9 +53867,7 @@
 	pixel_y = 6
 	},
 /obj/item/tool/pen,
-/turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "ai_floor3"
-	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "ouw" = (
 /obj/structure/machinery/light/small{
@@ -58905,9 +58907,7 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
-/turf/open/floor/almayer/aicore/glowing/no_build{
-	icon_state = "ai_floor3"
-	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "qiy" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -62149,7 +62149,10 @@
 	},
 /area/almayer/engineering/upper_engineering/port)
 "rna" = (
-/turf/closed/wall/almayer/white,
+/obj/structure/machinery/status_display{
+	pixel_y = 30
+	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "rnd" = (
 /obj/structure/disposalpipe/segment{
@@ -64470,20 +64473,6 @@
 	icon_state = "orangefull"
 	},
 /area/almayer/living/briefing)
-"scS" = (
-/obj/structure/machinery/status_display{
-	pixel_y = 30
-	},
-/obj/structure/machinery/light{
-	dir = 8;
-	invisibility = 101;
-	unacidable = 1;
-	unslashable = 1
-	},
-/turf/open/floor/almayer/no_build{
-	icon_state = "ai_floors"
-	},
-/area/almayer/command/airoom)
 "scX" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/kitchen/tray,
@@ -140003,8 +139992,8 @@ sbJ
 sbJ
 sbJ
 daz
-eKJ
-qQS
+rna
+clw
 qQS
 sKY
 qQS
@@ -142033,8 +142022,8 @@ sbJ
 sbJ
 sbJ
 daz
-eKJ
-qQS
+rna
+clw
 qQS
 aCd
 qQS

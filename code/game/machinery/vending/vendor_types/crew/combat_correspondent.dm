@@ -3,6 +3,8 @@
 GLOBAL_LIST_INIT(cm_vending_clothing_combat_correspondent, list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Essential Reporter's Set", 0, /obj/effect/essentials_set/cc, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("Portable Press Fax Machine", 0, /obj/item/device/fax_backpack, CIVILIAN_CAN_BUY_BACKPACK, VENDOR_ITEM_RECOMMENDED),
+		list("Press Broadcasting Camera", 0, /obj/item/device/camera/broadcasting, CIVILIAN_CAN_BUY_UTILITY, VENDOR_ITEM_RECOMMENDED),
 		list("Leather Satchel", 0, /obj/item/storage/backpack/satchel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
 
 		list("UNIFORM (CHOOSE 1)", 0, null, null, null),

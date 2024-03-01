@@ -128,15 +128,17 @@
 	minimap_background = MINIMAP_ICON_BACKGROUND_CIVILIAN
 
 /datum/equipment_preset/uscm_ship/reporter/load_gear(mob/living/carbon/human/new_human)
-
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/reporter(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/reporter(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/reporter(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/device/camera/broadcasting(new_human), WEAR_R_HAND)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/device/camera(new_human), WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/device/fax_backpack(new_human), WEAR_BACK)
+
+/datum/equipment_preset/uscm_ship/reporter/load_preset(mob/living/carbon/human/new_human, randomise, count_participant, client/mob_client, show_job_gear)
+	. = ..()
+	new_human.marine_buyable_categories[CIVILIAN_CAN_BUY_BACKPACK] = 1
+	new_human.marine_buyable_categories[CIVILIAN_CAN_BUY_UTILITY] = 1
 
 /datum/equipment_preset/uscm_ship/reporter_uscm
 	name = "Combat Correspondent"

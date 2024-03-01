@@ -123,10 +123,20 @@
 	disabled = FALSE
 
 /obj/structure/machinery/computer/shuttle/ert/tgui_interact(mob/user, datum/tgui/ui)
+	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
+
+	if(ert.distress_beacon && ishuman(user))
+		var/mob/living/carbon/human/human_user = user
+		var/obj/item/card/id/id = human_user.get_idcard()
+
+		if(!id || !HAS_TRAIT_FROM_ONLY(id, TRAIT_ERT_ID, ert.distress_beacon))
+			to_chat(user, SPAN_WARNING("Your ID is not authorized to interact with this terminal."))
+			balloon_alert(user, "unauthorized!")
+			return
+
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
-		ui = new(user, src, "NavigationShuttle", "[shuttle.name] Navigation Computer")
+		ui = new(user, src, "NavigationShuttle", "[ert.name] Navigation Computer")
 		ui.open()
 
 
@@ -223,7 +233,7 @@
 				to_chat(ui.user, SPAN_WARNING("Unable to return home."))
 				return
 
-			var/datum/turf_reservation/loaded = SSmapping.lazy_load_template(ert.home_base, force = TRUE)
+			var/datum/turf_reservation/loaded = SSmapping.lazy_load_template(ert.distress_beacon.home_base, force = TRUE)
 			var/turf/bottom_left = loaded.bottom_left_turfs[1]
 			var/turf/top_right = loaded.top_right_turfs[1]
 

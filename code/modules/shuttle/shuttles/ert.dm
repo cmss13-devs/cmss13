@@ -13,7 +13,7 @@
 	rechargeTime = ERT_SHUTTLE_DEFAULT_RECHARGE // 90s cooldown to recharge
 	var/list/doors = list()
 	var/list/external_doors = list()
-	var/home_base
+	var/datum/emergency_call/distress_beacon
 	var/list/local_landmarks = list()
 
 /obj/docking_port/mobile/emergency_response/Initialize(mapload)
@@ -45,7 +45,7 @@
 	if(!is_mainship_level(z))
 		return
 
-	if(!home_base)
+	if(!distress_beacon || !distress_beacon.home_base)
 		return
 
 	var/obj/structure/machinery/computer/shuttle/ert/console = getControlConsole()

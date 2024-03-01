@@ -254,9 +254,12 @@ const LaunchHome = (props) => {
 
   return (
     <Section title="Automatic Return Enabled">
-      <Button fluid onClick={() => act('launch_home')}>
-        Return Home
-      </Button>
+      <Button.Confirm
+        fluid
+        content={'Return Home'}
+        confirmContent={'One-way navigation enabled - confirm?'}
+        onClick={() => act('launch_home')}
+      />
     </Section>
   );
 };

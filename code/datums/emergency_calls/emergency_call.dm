@@ -283,7 +283,7 @@
 		var/datum/map_template/shuttle/new_shuttle = SSmapping.shuttle_templates[shuttle_id]
 		shuttle = SSshuttle.load_template_to_transit(new_shuttle)
 		shuttle.control_doors("force-lock", force = TRUE, external_only = TRUE)
-		shuttle.home_base = home_base
+		shuttle.distress_beacon = src
 
 	if(shuttle && auto_shuttle_launch)
 		var/obj/structure/machinery/computer/shuttle/ert/comp = shuttle.getControlConsole()
@@ -329,6 +329,13 @@
 			marine_announcement(static_message, "Intercepted Transmission:")
 		else
 			marine_announcement(arrival_message, "Intercepted Transmission:")
+
+	for(var/datum/mind/spawned as anything in members)
+		if(ishuman(spawned.current))
+			var/mob/living/carbon/human/spawned_human = spawned.current
+			var/obj/item/card/id/id = spawned_human.get_idcard()
+			if(id)
+				ADD_TRAIT(id, TRAIT_ERT_ID, src)
 
 /datum/emergency_call/proc/add_candidate(mob/M)
 	if(!M.client || (M.mind && (M.mind in candidates)) || istype(M, /mob/living/carbon/xenomorph))

@@ -75,9 +75,13 @@
 #define COMSIG_MOB_PRE_CLICK "mob_pre_click"
 	#define COMPONENT_INTERRUPT_CLICK (1<<0)
 
-///from base of /mob/Login(): ()
+/// From base of /mob/Login(), called when a client logs into this mob: ()
+/// Not to be confused with [COMSIG_MOB_LOGGED_IN]
 #define COMSIG_MOB_LOGIN "mob_login"
-///from base of /mob/Logout(): ()
+/// From base of /mob/Login(), called after a client logs into this mob: ()
+/// Not to be confused with [COMSIG_MOB_LOGIN]
+#define COMSIG_MOB_LOGGED_IN "mob_logged_in"
+/// From base of /mob/Logout(): ()
 #define COMSIG_MOB_LOGOUT "mob_logout"
 
 /// From /mob/proc/change_real_name(): (old_name, new_name)

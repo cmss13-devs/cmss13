@@ -28,7 +28,8 @@
 	I'll make some notes on where certain variable defines should probably go.
 	Changing this around would probably require a good look-over the pre-existing code.
 	*/
-	var/list/observers //The list of people observing this mob.
+	/// The list of people observing this mob.
+	var/list/mob/dead/observer/observers
 	var/zone_selected = "chest"
 
 	var/use_me = 1 //Allows all mobs to use the me verb by default, will have to manually specify they cannot
@@ -429,4 +430,3 @@
 			return
 
 		src.regenerate_icons()
-

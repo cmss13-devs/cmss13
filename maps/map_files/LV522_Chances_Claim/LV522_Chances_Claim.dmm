@@ -689,12 +689,13 @@
 	},
 /area/lv522/outdoors/colony_streets/windbreaker/observation)
 "arP" = (
-/obj/item/lightstick/red/spoke/planted{
-	pixel_x = -9;
-	pixel_y = 25
+/obj/structure/machinery/light{
+	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
-/area/lv522/outdoors/colony_streets/central_streets)
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/lv522/indoors/lone_buildings/storage_blocks)
 "arV" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/belt/utility,
@@ -3430,10 +3431,8 @@
 	},
 /area/lv522/indoors/b_block/bar)
 "bOX" = (
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall/shiva/prefabricated/reinforced,
 /area/lv522/indoors/lone_buildings/storage_blocks)
 "bPH" = (
 /obj/structure/prop/invuln/ice_prefab/trim{
@@ -6361,20 +6360,8 @@
 	},
 /area/lv522/oob)
 "dbc" = (
-/obj/structure/fence{
-	layer = 2.9
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
-/area/lv522/outdoors/colony_streets/central_streets)
+/turf/closed/wall/solaris/reinforced/hull/lv522,
+/area/lv522/indoors/lone_buildings/storage_blocks)
 "dbi" = (
 /obj/item/clothing/suit/storage/marine/medium/leader,
 /obj/item/clothing/head/helmet/marine/leader{
@@ -9187,10 +9174,7 @@
 /area/lv522/atmos/east_reactor)
 "egj" = (
 /obj/structure/machinery/floodlight,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/prison,
 /area/lv522/indoors/lone_buildings/storage_blocks)
 "egt" = (
 /obj/structure/powerloader_wreckage,
@@ -9495,10 +9479,13 @@
 	},
 /area/lv522/atmos/east_reactor)
 "emt" = (
-/obj/structure/cargo_container/grant/rightmid,
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/structure/largecrate/random/barrel/white,
 /turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_marked"
+	dir = 8;
+	icon_state = "cell_stripe"
 	},
 /area/lv522/indoors/lone_buildings/storage_blocks)
 "emz" = (
@@ -11327,11 +11314,10 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/lv522/landing_zone_1/tunnel)
 "eYT" = (
-/obj/structure/prop/ice_colony/ground_wire{
-	dir = 8
-	},
-/turf/open/auto_turf/sand_white/layer0,
-/area/lv522/outdoors/colony_streets/central_streets)
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spider/spiderling/nogrow,
+/turf/open/floor/prison,
+/area/lv522/indoors/lone_buildings/storage_blocks)
 "eZb" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -15434,7 +15420,16 @@
 /area/lv522/indoors/c_block/casino)
 "gFy" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
+/obj/structure/machinery/camera/autoname{
+	dir = 8
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "floor_marked"
+	},
 /area/lv522/indoors/lone_buildings/storage_blocks)
 "gFD" = (
 /obj/structure/surface/table/almayer,
@@ -17131,7 +17126,7 @@
 "hjE" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison,
+/turf/closed/wall/shiva/prefabricated/reinforced,
 /area/lv522/indoors/lone_buildings/storage_blocks)
 "hjW" = (
 /obj/structure/surface/table/almayer,
@@ -20222,12 +20217,6 @@
 	icon_state = "plate"
 	},
 /area/lv522/atmos/cargo_intake)
-"isG" = (
-/obj/structure/largecrate/random/barrel,
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
-/area/lv522/indoors/lone_buildings/storage_blocks)
 "isL" = (
 /obj/structure/surface/table/almayer,
 /obj/item/spacecash/c1000,
@@ -21509,10 +21498,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/auto_turf/shale/layer2,
 /area/lv522/outdoors/colony_streets/north_west_street)
-"iSx" = (
-/obj/structure/girder,
-/turf/open/floor/plating,
-/area/lv522/indoors/lone_buildings/storage_blocks)
 "iSF" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/prop/server_equipment/laptop/on,
@@ -27720,10 +27705,7 @@
 	},
 /area/lv522/atmos/east_reactor/south)
 "kXc" = (
-/obj/structure/prop/ice_colony/ground_wire{
-	dir = 8
-	},
-/turf/open/auto_turf/shale/layer1,
+/turf/closed/wall/solaris/reinforced/hull/lv522,
 /area/lv522/outdoors/colony_streets/central_streets)
 "kXe" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -30605,8 +30587,8 @@
 "meM" = (
 /obj/item/clothing/accessory/red,
 /obj/item/clothing/under/liaison_suit/field{
-	pixel_y = 9;
-	pixel_x = -4
+	pixel_x = -4;
+	pixel_y = 9
 	},
 /turf/open/floor/carpet,
 /area/lv522/indoors/a_block/executive)
@@ -31895,16 +31877,6 @@
 	icon_state = "floor_plate"
 	},
 /area/lv522/outdoors/n_rockies)
-"mFe" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/cargo_container/grant/left,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_marked"
-	},
-/area/lv522/indoors/lone_buildings/storage_blocks)
 "mFg" = (
 /obj/structure/surface/table/almayer,
 /obj/item/co2_cartridge{
@@ -34310,9 +34282,6 @@
 	icon_state = "blue"
 	},
 /area/lv522/indoors/a_block/admin)
-"nxu" = (
-/turf/open/floor/plating,
-/area/lv522/indoors/lone_buildings/storage_blocks)
 "nxF" = (
 /obj/structure/machinery/light/small,
 /obj/effect/landmark/lv624/fog_blocker/short,
@@ -34829,10 +34798,7 @@
 "nKj" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "cell_stripe"
-	},
+/turf/open/floor/prison,
 /area/lv522/indoors/lone_buildings/storage_blocks)
 "nKk" = (
 /obj/structure/machinery/camera/autoname{
@@ -38452,13 +38418,6 @@
 	icon_state = "floor_marked"
 	},
 /area/lv522/landing_zone_2)
-"pck" = (
-/obj/structure/largecrate/random/barrel/white,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
-/area/lv522/indoors/lone_buildings/storage_blocks)
 "pco" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
 /turf/open/floor/prison,
@@ -42166,13 +42125,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/dorms)
-"qvK" = (
-/obj/structure/cargo_container/grant/right,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_marked"
-	},
-/area/lv522/indoors/lone_buildings/storage_blocks)
 "qvM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/chair/comfy{
@@ -42382,8 +42334,8 @@
 /area/lv522/indoors/a_block/fitness/glass)
 "qzp" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/ds2{
-	id = "sh_dropship2";
 	dir = 2;
+	id = "sh_dropship2";
 	name = "\improper Typhoon crew hatch"
 	},
 /turf/open/shuttle/dropship{
@@ -45546,11 +45498,6 @@
 	icon_state = "41"
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
-"rBV" = (
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
-/area/lv522/indoors/lone_buildings/storage_blocks)
 "rBZ" = (
 /turf/closed/shuttle/dropship2/tornado{
 	icon_state = "97"
@@ -47121,7 +47068,10 @@
 "she" = (
 /obj/structure/machinery/floodlight,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "cell_stripe"
+	},
 /area/lv522/indoors/lone_buildings/storage_blocks)
 "shh" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/ds2{
@@ -47462,6 +47412,11 @@
 	},
 /area/lv522/oob)
 "smR" = (
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	dir = 4;
+	id = "West LZ Storage";
+	name = "Emergency Lockdown"
+	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -51630,7 +51585,7 @@
 /area/lv522/outdoors/colony_streets/north_east_street)
 "tNS" = (
 /obj/item/stack/sheet/metal,
-/turf/open/floor/plating,
+/turf/open/floor/prison,
 /area/lv522/indoors/lone_buildings/storage_blocks)
 "tOe" = (
 /obj/structure/platform{
@@ -56966,18 +56921,6 @@
 	icon_state = "marked"
 	},
 /area/lv522/indoors/a_block/dorms)
-"vIt" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 8
-	},
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_marked"
-	},
-/area/lv522/indoors/lone_buildings/storage_blocks)
 "vIy" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
@@ -57577,12 +57520,6 @@
 	icon_state = "cement3"
 	},
 /area/lv522/outdoors/colony_streets/north_east_street)
-"vTH" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
-/area/lv522/indoors/lone_buildings/storage_blocks)
 "vTK" = (
 /obj/structure/prop/vehicles{
 	icon_state = "van_damaged"
@@ -57926,12 +57863,6 @@
 	icon_state = "blue"
 	},
 /area/lv522/indoors/a_block/hallway)
-"waj" = (
-/obj/structure/girder/displaced,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
-/area/lv522/indoors/lone_buildings/storage_blocks)
 "wan" = (
 /obj/structure/surface/table/almayer,
 /turf/open/floor/prison{
@@ -57981,6 +57912,11 @@
 "wbi" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
+	},
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	dir = 4;
+	id = "West LZ Storage";
+	name = "Emergency Lockdown"
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -61227,11 +61163,8 @@
 	},
 /area/lv522/atmos/sewer)
 "xoj" = (
-/obj/structure/largecrate/random/barrel/red,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
+/turf/closed/wall/solaris/reinforced/hull/lv522,
 /area/lv522/indoors/lone_buildings/storage_blocks)
 "xoC" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -62557,11 +62490,6 @@
 	icon_state = "floor_plate"
 	},
 /area/lv522/indoors/a_block/hallway)
-"xQR" = (
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
-/area/lv522/indoors/lone_buildings/storage_blocks)
 "xRg" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1
@@ -67594,7 +67522,7 @@ ien
 ien
 ien
 ien
-ien
+spo
 umf
 vXc
 vXc
@@ -67813,15 +67741,15 @@ ylo
 ylo
 ylo
 ylo
+dbc
 ylo
 ylo
 ylo
 ylo
 ylo
 ylo
-ylo
-ien
-ien
+rMF
+spo
 vXc
 vXc
 vXc
@@ -68038,18 +67966,18 @@ udK
 wHi
 nly
 miW
-hYf
-mFe
-hYf
-wHi
+ylo
+ylo
+dbc
+bOX
 jZe
 wky
 wPV
 tyl
 ylo
-ien
-ien
-ien
+rMF
+spo
+vXc
 vXc
 vXc
 vXc
@@ -68265,17 +68193,17 @@ hYf
 wHi
 jUk
 ouI
-hYf
-emt
-pck
-hYf
+arP
+ylo
+xoj
+ylo
 erS
 abe
 ukT
 ofS
 ylo
-ien
-ien
+rMF
+spo
 vXc
 vXc
 vXc
@@ -68493,16 +68421,16 @@ hYf
 xhW
 hYf
 hYf
-qvK
+ylo
 xoj
-hYf
+ylo
 lpt
 gJL
 wHi
 cAW
 ylo
 ylo
-ien
+spo
 vXc
 vXc
 vXc
@@ -68720,17 +68648,17 @@ hYf
 hLl
 wHi
 hYf
-vBM
-hYf
-isG
-vBM
+ylo
+dbc
+ylo
+emt
 hYf
 wHi
 tIS
-xQR
-waj
-ien
-ien
+yfu
+ylo
+spo
+vXc
 vXc
 vXc
 umf
@@ -68947,16 +68875,16 @@ yfu
 yfu
 bZd
 yfu
-bZd
+bOX
+xoj
+ylo
+yfu
 bZd
 yfu
-yfu
 bZd
-xQR
-vTH
-gFy
-nxu
-ien
+bZd
+iPD
+spo
 vXc
 vXc
 vXc
@@ -69174,16 +69102,16 @@ qJK
 qJK
 cQB
 bZd
-yfu
-bZd
-bZd
+ylo
+xoj
+bOX
 yfu
 tNS
-gFy
-gFy
-rBV
-iSx
-ien
+bZd
+bZd
+yfu
+iPD
+spo
 vXc
 vXc
 cpy
@@ -69401,17 +69329,17 @@ yfu
 yfu
 bDr
 bZd
-yfu
-yfu
-bZd
-bZd
-bZd
+ylo
+dbc
 bOX
-gFy
-tNS
-xQR
-ien
-ien
+eYT
+bZd
+yfu
+bZd
+yfu
+iPD
+spo
+vXc
 vXc
 cpy
 vXc
@@ -69629,15 +69557,15 @@ yfu
 bDr
 yfu
 hjE
-yfu
-qpc
+dbc
+ylo
 nKj
 dGK
 qpc
 she
 egj
 ylo
-ien
+spo
 vXc
 vXc
 vXc
@@ -69855,16 +69783,16 @@ jUk
 hYf
 sIS
 yfu
-bZd
-gJL
-vIt
-cOA
-xhW
+bOX
+xoj
+ylo
+ylo
+gFy
 hsz
 jnr
 ylo
 ylo
-ien
+spo
 vXc
 vXc
 vXc
@@ -70082,17 +70010,17 @@ ylo
 smR
 wbi
 smR
-smR
-smR
+ylo
+dbc
 ylo
 ylo
 ylo
 ylo
 ylo
 ylo
-ien
-ien
-ien
+rMF
+sql
+vXc
 vXc
 yiM
 yiM
@@ -70310,15 +70238,15 @@ xyN
 cnN
 xyN
 xyN
-xyN
+kXc
 lwv
 xyN
 xyN
-dbc
+xyN
 xyN
 xyN
 sql
-ien
+vXc
 yiM
 yiM
 yiM
@@ -70536,16 +70464,16 @@ rwE
 rwE
 hWI
 yiM
+kXc
+kXc
+kXc
 vXc
 vXc
 vXc
-vXc
-vXc
-dbc
 umf
 umf
 vXc
-ien
+yiM
 yiM
 yiM
 yiM
@@ -70762,18 +70690,18 @@ yiM
 yiM
 yiM
 yiM
-eYT
-eYT
+yiM
+yiM
 kXc
 vXc
 vXc
 vXc
-dbc
 vXc
 vXc
-ien
-ien
-ien
+vXc
+vXc
+yiM
+yiM
 yiM
 yiM
 yiM
@@ -70989,17 +70917,17 @@ yiM
 yiM
 yiM
 yiM
-arP
 yiM
 yiM
-puY
+kXc
 vXc
 vXc
-dbc
+vXc
+vXc
 vXc
 vXc
 yiM
-ien
+yiM
 yiM
 yiM
 yiM
@@ -71217,16 +71145,16 @@ yiM
 yiM
 yiM
 yiM
-yiM
-yiM
-yiM
+kXc
+kXc
+kXc
 vXc
 vXc
-dbc
+vXc
 vXc
 yiM
 yiM
-ien
+yiM
 yiM
 yiM
 yiM
@@ -71445,16 +71373,16 @@ yiM
 yiM
 yiM
 wdy
+kXc
 iPR
 iPR
 iPR
 iPR
-dbc
 jPv
 vXc
-ien
-ien
-ien
+vXc
+yiM
+yiM
 yiM
 yiM
 pWR
@@ -71680,7 +71608,7 @@ nLm
 rMF
 jPv
 vXc
-ien
+vXc
 yiM
 yiM
 yiM
@@ -71907,7 +71835,7 @@ nLm
 nLm
 rVa
 jPv
-ien
+vXc
 vXc
 vXc
 yiM
@@ -72133,9 +72061,9 @@ wan
 wEQ
 nLm
 nLm
-ien
-ien
-ien
+rMF
+jPv
+vXc
 vXc
 umf
 xTV
@@ -72361,7 +72289,7 @@ uDP
 kDH
 nLm
 nLm
-ien
+spo
 vXc
 vXc
 vXc
@@ -72588,7 +72516,7 @@ fjP
 vJT
 pfV
 nLm
-ien
+spo
 vXc
 vXc
 vXc
@@ -72814,9 +72742,9 @@ tUM
 uOs
 uOs
 vJT
-nLm
-ien
-ien
+pMd
+spo
+vXc
 vXc
 jue
 wYa
@@ -73041,8 +72969,8 @@ uOs
 uOs
 lsD
 wyE
-nLm
-ien
+pMd
+spo
 vXc
 vXc
 upz
@@ -73268,8 +73196,8 @@ lBj
 vJT
 whn
 tek
-nLm
-ien
+pMd
+spo
 vXc
 vXc
 vXc
@@ -73496,8 +73424,8 @@ oDu
 nLm
 nLm
 nLm
-ien
-ien
+spo
+vXc
 umf
 vXc
 vaZ
@@ -73723,7 +73651,7 @@ fVB
 cxC
 rzG
 nLm
-ien
+spo
 vXc
 umf
 vXc
@@ -73950,7 +73878,7 @@ bGL
 koj
 aMI
 nLm
-ien
+spo
 vXc
 vXc
 vXc
@@ -74177,8 +74105,8 @@ sKH
 weR
 nLm
 nLm
-ien
-ien
+spo
+vXc
 vXc
 vXc
 wYa

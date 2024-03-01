@@ -431,8 +431,12 @@
 	observers |= observer
 	hud_used.show_hud(hud_used.hud_version, observer)
 
+	// Add the player's action buttons (not the actions themselves) to the observer's screen.
 	for(var/datum/action/action as anything in actions)
-		// Add the action's button (not the action itself) to the observer's screen.
+		// Skip any hidden ones (of course).
+		if(action.hidden || action.player_hidden)
+			continue
+
 		observer.client.add_to_screen(action.button)
 
 //generates realistic-ish pulse output based on preset levels

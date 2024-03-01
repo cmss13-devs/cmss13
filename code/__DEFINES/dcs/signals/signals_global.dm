@@ -34,9 +34,11 @@
 
 #define COMSIG_GLOB_REMOVE_VOTE_BUTTON "!remove_vote_button"
 
-#define COMSIG_GLOB_CLIENT_LOGIN "!client_login"
+/// Called from /client/New() when a client logs in to the game: (client)
+#define COMSIG_GLOB_CLIENT_LOGGED_IN "!client_logged_in"
 
-#define COMSIG_GLOB_MOB_LOGIN "!mob_login"
+/// Called from /mob/Login() when a client logs into a mob: (mob)
+#define COMSIG_GLOB_MOB_LOGGED_IN "!mob_logged_in"
 
 ///from /datum/controller/subsystem/ticker/PostSetup
 #define COMSIG_GLOB_POST_SETUP "!post_setup"

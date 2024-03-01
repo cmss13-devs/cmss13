@@ -47,7 +47,7 @@
 	if(!closed) // Closed = gate down for plasteel for some reason
 		return ..()
 	else
-		return 0
+		return FALSE
 
 /obj/structure/barricade/plasteel/get_examine_text(mob/user)
 	. = ..()
@@ -60,22 +60,25 @@
 		if(BARRICADE_BSTATE_MOVABLE)
 			. += SPAN_INFO("The protection panel has been removed and the anchor bolts loosened. It's ready to be taken apart.")
 
-/obj/structure/barricade/plasteel/weld_cade(obj/item/item, mob/user)
+/obj/structure/barricade/plasteel/try_weld_cade(obj/item/item, mob/user, repeat = TRUE, skip_check = FALSE)
 	busy = TRUE
 	..()
 	busy = FALSE
 
+/obj/structure/barricade/plasteel/can_weld(obj/item/item, mob/user, silent)
+	if(!..())
+		return FALSE
+
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+		if(!silent)
+			to_chat(user, SPAN_WARNING("You're not trained to repair [src]..."))
+		return FALSE
+
+	return TRUE
+
 /obj/structure/barricade/plasteel/attackby(obj/item/item, mob/user)
 	if(iswelder(item))
-		if(!attackby_welder(item, user))
-			return FALSE
-
-
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-			to_chat(user, SPAN_WARNING("You're not trained to repair [src]..."))
-			return FALSE
-
-		weld_cade(item, user)
+		try_weld_cade(item, user)
 		return
 
 	if(try_nailgun_usage(item, user))
@@ -87,7 +90,7 @@
 			return
 
 	switch(build_state)
-		if(2) //Fully constructed step. Use screwdriver to remove the protection panels to reveal the bolts
+		if(BARRICADE_BSTATE_SECURED) //Fully constructed step. Use screwdriver to remove the protection panels to reveal the bolts
 			if(HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER))
 				if(busy || tool_cooldown > world.time)
 					return
@@ -100,12 +103,14 @@
 					if(B != src && B.dir == dir)
 						to_chat(user, SPAN_WARNING("There's already a barricade here."))
 						return
-				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
+				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+					return
 				user.visible_message(SPAN_NOTICE("[user] removes [src]'s protection panel."),
 				SPAN_NOTICE("You remove [src]'s protection panels, exposing the anchor bolts."))
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				build_state = BARRICADE_BSTATE_UNSECURED
 				return
+
 			if(HAS_TRAIT(item, TRAIT_TOOL_CROWBAR))
 				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 					to_chat(user, SPAN_WARNING("You are not trained to modify [src]..."))
@@ -125,7 +130,8 @@
 					for(var/obj/structure/barricade/plasteel/cade in get_step(src, direction))
 						cade.update_icon()
 				update_icon()
-		if(1) //Protection panel removed step. Screwdriver to put the panel back, wrench to unsecure the anchor bolts
+
+		if(BARRICADE_BSTATE_UNSECURED) //Protection panel removed step. Screwdriver to put the panel back, wrench to unsecure the anchor bolts
 			if(HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER))
 				if(busy || tool_cooldown > world.time)
 					return
@@ -133,12 +139,14 @@
 				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
 					return
-				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
+				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+					return
 				user.visible_message(SPAN_NOTICE("[user] set [src]'s protection panel back."),
 				SPAN_NOTICE("You set [src]'s protection panel back."))
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				build_state = BARRICADE_BSTATE_SECURED
 				return
+
 			if(HAS_TRAIT(item, TRAIT_TOOL_WRENCH))
 				if(busy || tool_cooldown > world.time)
 					return
@@ -146,7 +154,8 @@
 				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
 					return
-				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
+				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+					return
 				user.visible_message(SPAN_NOTICE("[user] loosens [src]'s anchor bolts."),
 				SPAN_NOTICE("You loosen [src]'s anchor bolts."))
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -155,7 +164,7 @@
 				update_icon() //unanchored changes layer
 				return
 
-		if(0) //Anchor bolts loosened step. Apply crowbar to unseat the panel and take apart the whole thing. Apply wrench to rescure anchor bolts
+		if(BARRICADE_BSTATE_MOVABLE) //Anchor bolts loosened step. Apply crowbar to unseat the panel and take apart the whole thing. Apply wrench to rescure anchor bolts
 			if(HAS_TRAIT(item, TRAIT_TOOL_WRENCH))
 				if(busy || tool_cooldown > world.time)
 					return
@@ -167,7 +176,8 @@
 				if(!(istype(T) && T.allow_construction))
 					to_chat(user, SPAN_WARNING("[src] must be secured on a proper surface!"))
 					return
-				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
+				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+					return
 				user.visible_message(SPAN_NOTICE("[user] secures [src]'s anchor bolts."),
 				SPAN_NOTICE("You secure [src]'s anchor bolts."))
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -175,6 +185,7 @@
 				build_state = BARRICADE_BSTATE_UNSECURED
 				update_icon() //unanchored changes layer
 				return
+
 			if(HAS_TRAIT(item, TRAIT_TOOL_CROWBAR))
 				if(busy || tool_cooldown > world.time)
 					return
@@ -187,15 +198,14 @@
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 				busy = TRUE
 				if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
-					busy = FALSE
 					user.visible_message(SPAN_NOTICE("[user] takes [src]'s panels apart."),
 					SPAN_NOTICE("You take [src]'s panels apart."))
 					playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 					deconstruct(TRUE) //Note : Handles deconstruction too !
-				else busy = FALSE
+				busy = FALSE
 				return
 
-	. = ..()
+	return ..()
 
 /obj/structure/barricade/plasteel/attack_hand(mob/user as mob)
 	if(isxeno(user))
@@ -257,7 +267,7 @@
 	is_wired = TRUE
 	climbable = FALSE
 	update_icon()
-	. = ..()
+	return ..()
 
 /obj/structure/barricade/plasteel/wired/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()

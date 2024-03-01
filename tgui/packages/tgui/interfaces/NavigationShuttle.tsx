@@ -1,5 +1,5 @@
 import { useBackend, useSharedState } from '../backend';
-import { Box, Button, Icon, Flex, Section, Stack, ProgressBar } from '../components';
+import { Box, Button, Icon, Flex, Section, Stack, ProgressBar, Dimmer } from '../components';
 import { Window } from '../layouts';
 
 export interface DockingPort {
@@ -20,6 +20,7 @@ export interface NavigationProps {
   max_engine_start_duration: number;
   max_pre_arrival_duration: number;
   must_launch_home: boolean;
+  spooling: boolean;
   is_disabled: 0 | 1;
   locked_down: 0 | 1;
 }
@@ -264,6 +265,18 @@ const LaunchHome = (props) => {
   );
 };
 
+const SpoolingDimmer = (props) => {
+  const { data, act } = useBackend<NavigationProps>();
+
+  return (
+    <Dimmer>
+      <Section title="Spooling Up">
+        <ProgressBar value={0.5} />
+      </Section>
+    </Dimmer>
+  );
+};
+
 const DestinationOptions = (props) => {
   const { data, act } = useBackend<NavigationProps>();
 
@@ -278,6 +291,7 @@ const RenderScreen = (props) => {
   const { data } = useBackend<NavigationProps>();
   return (
     <>
+      {!!data.spooling && <SpoolingDimmer />}
       {data.shuttle_mode === 'idle' && <DestinationOptions />}
       {data.shuttle_mode === 'igniting' && <LaunchCountdown />}
       {data.shuttle_mode === 'recharging' && <ShuttleRecharge />}

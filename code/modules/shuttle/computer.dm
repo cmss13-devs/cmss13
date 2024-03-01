@@ -94,8 +94,13 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	var/disabled = FALSE
-	var/must_launch_home = FALSE
 	var/compatible_landing_zones = list()
+
+	/// this interface is busy - used in [/obj/structure/machinery/computer/shuttle/ert/proc/launch_home] as this can take a second
+	var/spooling
+
+	/// if this shuttle only has the option to return home
+	var/must_launch_home = FALSE
 
 /obj/structure/machinery/computer/shuttle/ert/broken
 	name = "nonfunctional shuttle control console"
@@ -111,6 +116,40 @@
 	for(var/obj/docking_port/stationary/emergency_response/dock in SSshuttle.stationary)
 		if(!dock.is_external)
 			. += list(dock)
+
+/obj/structure/machinery/computer/shuttle/ert/proc/launch_home()
+	if(spooling)
+		return
+
+	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
+
+	spooling = TRUE
+
+	var/datum/turf_reservation/loaded = SSmapping.lazy_load_template(ert.distress_beacon.home_base, force = TRUE)
+	var/turf/bottom_left = loaded.bottom_left_turfs[1]
+	var/turf/top_right = loaded.top_right_turfs[1]
+
+	var/obj/docking_port/stationary/emergency_response/target
+	for(var/obj/docking_port/stationary/emergency_response/shuttle in SSshuttle.stationary)
+		if(shuttle.z != bottom_left.z)
+			continue
+		if(shuttle.x >= top_right.x || shuttle.y >= top_right.y)
+			continue
+		if(shuttle.x <= bottom_left.x || shuttle.y <= bottom_left.y)
+			continue
+
+		target = shuttle
+		break
+
+	if(!target)
+		spooling = FALSE
+		return
+
+	SSshuttle.moveShuttleToDock(ert, target, TRUE)
+	target.lockdown_on_land = TRUE
+
+	spooling = FALSE
+	must_launch_home = FALSE
 
 
 /obj/structure/machinery/computer/shuttle/ert/is_disabled()
@@ -165,6 +204,7 @@
 	.["shuttle_mode"] = ert.mode
 	.["flight_time"] = ert.timeLeft(0)
 	.["is_disabled"] = disabled
+	.["spooling"] = spooling
 	.["must_launch_home"] = must_launch_home
 
 	var/door_count = length(ert.external_doors)
@@ -228,33 +268,12 @@
 
 	if(must_launch_home)
 		if(action == "launch_home")
-
 			if(ert.mode != SHUTTLE_IDLE)
 				to_chat(ui.user, SPAN_WARNING("Unable to return home."))
+				balloon_alert(ui.user, "can't go home!")
 				return
 
-			var/datum/turf_reservation/loaded = SSmapping.lazy_load_template(ert.distress_beacon.home_base, force = TRUE)
-			var/turf/bottom_left = loaded.bottom_left_turfs[1]
-			var/turf/top_right = loaded.top_right_turfs[1]
-
-			var/obj/docking_port/stationary/emergency_response/target
-			for(var/obj/docking_port/stationary/emergency_response/shuttle in SSshuttle.stationary)
-				if(shuttle.z != bottom_left.z)
-					continue
-				if(shuttle.x >= top_right.x || shuttle.y >= top_right.y)
-					continue
-				if(shuttle.x <= bottom_left.x || shuttle.y <= bottom_left.y)
-					continue
-
-				target = shuttle
-				break
-
-			if(!target)
-				return
-
-			SSshuttle.moveShuttleToDock(ert, target, TRUE)
-			target.lockdown_on_land = TRUE
-			must_launch_home = FALSE
+			launch_home()
 
 		return
 

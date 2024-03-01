@@ -141,6 +141,9 @@
 	requires_power = 0
 	flags_area = AREA_NOTUNNEL
 
+/area/misc
+	weather_enabled = FALSE
+
 /area/misc/testroom
 	requires_power = FALSE
 	name = "Test Room"

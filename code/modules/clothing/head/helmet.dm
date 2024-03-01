@@ -511,7 +511,17 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			new_action.give_to(user)
 		return
 
-	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER) && length(inserted_visors))
+	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER))
+		// If there isn't anything to remove, return.
+		if(!length(inserted_visors))
+			// If the user is trying to remove a built-in visor, give them a more helpful failure message.
+			switch(length(built_in_visors))
+				if(1) // Messy plural handling
+					to_chat(user, SPAN_WARNING("The visor on [src] is built-in!"))
+				if(2 to INFINITY)
+					to_chat(user, SPAN_WARNING("The visors on [src] are built-in!"))
+			return
+
 		if(active_visor)
 			var/obj/item/device/helmet_visor/temp_visor_holder = active_visor
 			active_visor = null
@@ -1403,10 +1413,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 /obj/item/clothing/head/helmet/marine/reporter
 	name = "press helmet"
 	desc = "A helmet designed to make it clear that the wearer is safety aware and not looking for a fight."
-	icon = 'icons/mob/humans/onmob/contained/war_correspondent.dmi'
-	icon_state = "wc_helm"
-	item_state = "wc_helm"
-	contained_sprite = TRUE
+	icon_state = "cc_helmet"
+	item_state = "cc_helmet"
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 
 	built_in_visors = list()

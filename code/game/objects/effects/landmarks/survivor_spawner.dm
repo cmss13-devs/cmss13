@@ -70,6 +70,28 @@
 
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
 
+//Weyland-Yutani Survivors//
+
+/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_cl
+	equipment = /datum/equipment_preset/survivor/wy/executive
+	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
+	intro_text = list("<h2>You are the last alive Executive of Lazarus Landing!</h2>",\
+	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
+	story_text = "You are a Corporate Liaison stationed on LV-624 from Weyland-Yutani. You were tipped off about some very peculiar looking eggs recovered from the alien temple North-East of the colony. Being the smart Executive the Company hired you to be, you decided to prepare your office for the worst when the first 'facehugger' was born in the vats of the Research Dome. Turned out, you were right, everyone who called you crazy and called these the new 'synthetics' is now dead, you along with your Corporate Security detail are the only survivors due to your paranoia. The xenomorph onslaught was relentless, a fuel tank was shot by one of the Officers, leading to the destruction of a part of the dome, along with alot of the defences being melted. You must survive and find a way to contact Weyland-Yutani."
+
+	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
+
+/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon
+	equipment = /datum/equipment_preset/survivor/goon
+	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
+	intro_text = list("<h2>You are a Corporate Security Officer!</h2>",\
+	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
+	story_text = "You are a Corporate Security Officer stationed on LV-624 from Weyland-Yutani. Suddenly one day you were pulled aside by the Corporate Liaison and told to bring supplies from both Engineering and the Marshals Offices to their office, and fast. You began fortifying the Corporate Dome and was told by the Executive that something big will ravage the entire colony, excluding you. Turns out, the Liaison was right, these so called 'xenomorphs' broke containment from the Research Dome and began destroying the entire colony. Once they came for the Dome and tried to kill all of you, you barely managed to hold them off even after losing one Officer and alot of the defences. The Liaison said they will soon find a way to contact Weyland-Yutani and to remain steadfast until rescue arrives."
+
+	spawn_priority = SPAWN_PRIORITY_HIGH
+
 /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc
 	equipment = /datum/equipment_preset/survivor/pmc
 	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
@@ -121,6 +143,47 @@
 	roundstart_damage_times = 2
 
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
+
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_cl
+	equipment = /datum/equipment_preset/survivor/wy/asstmanager
+	synth_equipment = /datum/equipment_preset/synth/survivor/wy/corporate_synth
+	intro_text = list("<h2>You are the last alive Senior Administrator on the Colony!</h2>",\
+	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
+	story_text = "You are the Assistant Operations Manager stationed on 'Ifrit' by Weyland-Yutani. This whole outbreak has been a giant mess, you and all other Company personnel ran to the Operations Panic Room, until you heard shooting outside and closed the shutters. You are running low on food, water and ammunition for the weapons you one-day said were 'useless' and a waste of Company dollars. You remember that Administrator Stahl sent out a distress beacon to any ship in range, hoping to get picked up by the Company, he ran to the Spaceport. You have not seen him since. In their attempts at trying to breach in, the so called 'xenomorphs' have tried attacking the shutters, but to no avail. They will soon try again. You must survive and find a way to contact Weyland-Yutani."
+
+	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
+
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_doc
+	equipment = /datum/equipment_preset/survivor/doctor
+	synth_equipment = /datum/equipment_preset/synth/survivor/emt_synth
+	intro_text = list("<h2>You are a Medical Doctor on the Colony!</h2>",\
+	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
+	story_text = "You are a Doctor working on 'Ifrit' for Weyland-Yutani. This whole outbreak has been a giant mess, you and all other Company personnel ran to the Operations Panic Room, until you heard shooting outside and closed the shutters. You are running low on food, water and ammunition for the weapons. You remember that the xenomorphs have a sort of implanter which latches on to your face and then... something bursts out of your chest, through the rib cage. You had plenty of those cases at the Medical Bay. In their attempts at trying to breach in, the so called 'xenomorphs' have tried attacking the shutters, but to no avail. They will soon try again. You must survive and find a way to contact Weyland-Yutani."
+
+	spawn_priority = SPAWN_PRIORITY_HIGH
+
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_sci
+	equipment = /datum/equipment_preset/survivor/scientist
+	synth_equipment = /datum/equipment_preset/synth/survivor/scientist_synth
+	intro_text = list("<h2>You are a Weyland-Yutani Scientist on the Colony!</h2>",\
+	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
+	story_text = "You are a Scientist working on 'Ifrit' for Weyland-Yutani. This whole outbreak has been a giant mess, you and all other Company personnel ran to the Operations Panic Room, until you heard shooting outside and closed the shutters. You are running low on food, water and ammunition for the weapons. You remember that the XX-121 species, codenamed that by Research Director Clarke, have a variety of different species, what you can assume a 'leader' of some sort and that their acid is deadly should it come in contact with you or the shutters. You ran far from the labs and have not seen some your coworkers since. In their attempts at trying to breach in, these so called 'xenomorphs' have tried attacking the shutters, but to no avail. They will soon try again. You must survive and find a way to contact Weyland-Yutani."
+
+	spawn_priority = SPAWN_PRIORITY_HIGH
+
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_civ
+	equipment = /datum/equipment_preset/survivor/civilian
+	synth_equipment = /datum/equipment_preset/synth/survivor/chef_synth
+	intro_text = list("<h2>You are a worker on the Colony!</h2>",\
+	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
+	story_text = "You are a civilian working on 'Ifrit' for Weyland-Yutani. This whole outbreak has been a giant mess, you and all other Company personnel ran to the Operations Panic Room, until you heard shooting outside and closed the shutters. You are running low on food, water and ammunition for the weapons. You remember hearing the alarms blaring and decided to run with a couple others to the Panic Room, hoping to be safe from the threat until rescue arrives. Now you wait along with others for their second attack on the Panic Room. In their first attempt at trying to breach in, the so called 'xenomorphs' have tried attacking the shutters, but to no avail. They will soon try again. You must survive and find a way to contact Weyland-Yutani."
+
+	spawn_priority = SPAWN_PRIORITY_MEDIUM
+
 
 //Military Survivors//
 

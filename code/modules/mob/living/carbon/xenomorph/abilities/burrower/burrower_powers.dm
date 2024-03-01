@@ -156,7 +156,7 @@
 		addtimer(CALLBACK(src, PROC_REF(process_tunnel), T), 1 SECONDS)
 
 /mob/living/carbon/xenomorph/proc/do_tunnel(turf/T)
-	to_chat(src, SPAN_NOTICE("We tunnel to your destination."))
+	to_chat(src, SPAN_NOTICE("We tunnel to the destination."))
 	anchored = FALSE
 	forceMove(T)
 	burrow_off()

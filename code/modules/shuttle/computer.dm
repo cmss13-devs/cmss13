@@ -171,7 +171,12 @@
 
 	if(ert.distress_beacon && ishuman(user))
 		var/mob/living/carbon/human/human_user = user
-		var/obj/item/card/id/id = human_user.get_idcard()
+		var/obj/item/card/id/id = human_user.get_active_hand()
+		if(!istype(id))
+			id = human_user.get_inactive_hand()
+
+		if(!istype(id))
+			id = human_user.get_idcard()
 
 		if(!id || !HAS_TRAIT_FROM_ONLY(id, TRAIT_ERT_ID, ert.distress_beacon))
 			to_chat(user, SPAN_WARNING("Your ID is not authorized to interact with this terminal."))

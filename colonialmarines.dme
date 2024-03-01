@@ -973,7 +973,7 @@
 #include "code\game\machinery\vending\vendor_types\antag\antag_gear.dm"
 #include "code\game\machinery\vending\vendor_types\antag\antag_guns_snowflake.dm"
 #include "code\game\machinery\vending\vendor_types\antag\antag_guns_sorted.dm"
-#include "code\game\machinery\vending\vendor_types\antag\combat_correspondant.dm"
+#include "code\game\machinery\vending\vendor_types\antag\combat_correspondent.dm"
 #include "code\game\machinery\vending\vendor_types\crew\commanding_officer.dm"
 #include "code\game\machinery\vending\vendor_types\crew\engineering.dm"
 #include "code\game\machinery\vending\vendor_types\crew\medical.dm"

@@ -1,6 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - code_imp: "Autowiki now skips guns and mags without icon_states"
-  - code_imp: "Unit testing for spritesheets now enforces css requirements for class names"
-  - imageadd: "Gun stats lineart now uses the no_name sprite again for guns without lineart"

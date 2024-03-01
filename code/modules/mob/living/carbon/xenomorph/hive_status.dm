@@ -12,7 +12,7 @@
 	var/egg_planting_range = 15
 	var/slashing_allowed = XENO_SLASH_ALLOWED //This initial var allows the queen to turn on or off slashing. Slashing off means harm intent does much less damage.
 	var/construction_allowed = NORMAL_XENO //Who can place construction nodes for special structures
-	var/destruction_allowed = XENO_LEADER //Who can destroy special structures
+	var/destruction_allowed = NORMAL_XENO //Who can destroy special structures
 	var/unnesting_allowed = TRUE
 	var/hive_orders = "" //What orders should the hive have
 	var/color = null

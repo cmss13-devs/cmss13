@@ -62185,7 +62185,7 @@
 /area/desert_dam/exterior/valley/valley_telecoms)
 "lrn" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "damtemple"
+	insert_tag = "damtemple_intact"
 	},
 /turf/open/desert/dirt{
 	icon_state = "desert_transition_edge1"
@@ -65097,7 +65097,7 @@
 	icon_state = "S"
 	},
 /obj/effect/landmark/nightmare{
-	insert_tag = "shipgone"
+	insert_tag = "shipgone_northlz"
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -65450,7 +65450,7 @@
 /area/desert_dam/interior/dam_interior/garage)
 "wrl" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "cavein"
+	insert_tag = "cavein_engineering"
 	},
 /turf/closed/wall/rock/orange,
 /area/desert_dam/exterior/rock)
@@ -66042,7 +66042,7 @@
 	icon_state = "road_edge_decal3"
 	},
 /obj/effect/landmark/nightmare{
-	insert_tag = "minievac"
+	insert_tag = "minievac_westresearch"
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)

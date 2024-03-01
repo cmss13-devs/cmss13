@@ -4520,7 +4520,7 @@
 /area/kutjevo/exterior/runoff_river)
 "fNe" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "cleaningprog"
+	insert_tag = "cleaningprog_botany"
 	},
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/botany)
@@ -8021,7 +8021,7 @@
 /area/kutjevo/interior/colony_central/mine_elevator)
 "kPw" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "trappedmonke"
+	insert_tag = "trappedmonke_andclown"
 	},
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/oob)
@@ -9464,7 +9464,7 @@
 /area/kutjevo/interior/complex/med)
 "mIg" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "plinkingspot"
+	insert_tag = "plinkingspot_northlz"
 	},
 /turf/closed/wall/kutjevo/rock/border,
 /area/kutjevo/exterior/scrubland)

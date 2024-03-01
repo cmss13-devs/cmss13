@@ -162,12 +162,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station)
-"fy" = (
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "w-y2"
-	},
-/area/adminlevel/ert_station)
 "fX" = (
 /obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor/almayer{
@@ -311,12 +305,6 @@
 "kn" = (
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
-	},
-/area/adminlevel/ert_station)
-"kJ" = (
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "w-y0"
 	},
 /area/adminlevel/ert_station)
 "kZ" = (
@@ -1030,12 +1018,6 @@
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/almayer{
 	icon_state = "floor"
-	},
-/area/adminlevel/ert_station)
-"Ou" = (
-/turf/open/floor/almayer{
-	dir = 1;
-	icon_state = "w-y1"
 	},
 /area/adminlevel/ert_station)
 "OA" = (
@@ -2031,7 +2013,7 @@ FQ
 yq
 hE
 FB
-kJ
+FB
 gm
 VF
 yq
@@ -2070,7 +2052,7 @@ lp
 yq
 hE
 gm
-Ou
+FB
 FB
 VF
 yq
@@ -2109,7 +2091,7 @@ lp
 yq
 hE
 FB
-fy
+FB
 FB
 VF
 yq

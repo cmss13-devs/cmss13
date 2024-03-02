@@ -265,7 +265,7 @@ GLOBAL_DATUM_INIT(medals_view_given_tgui, /datum/medals_view_given_tgui, new)
 	)
 
 /client/verb/view_given_medals()
-	set name = "View Given Medals"
+	set name = "View Medals Given to Others"
 	set category = "OOC.Records"
 
 	GLOB.medals_view_given_tgui.tgui_interact(mob)

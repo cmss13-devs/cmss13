@@ -11,7 +11,7 @@
 
 // Dropship Roles is both PO and DCC combined to not force people to backtrack
 AddTimelock(/datum/job/command/pilot, list(
-	JOB_DROPSHIP_ROLES = 2 HOURS
+	JOB_SQUAD_ROLES = 1 HOURS
 ))
 
 /obj/effect/landmark/start/pilot

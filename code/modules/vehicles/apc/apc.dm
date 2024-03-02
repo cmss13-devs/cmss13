@@ -17,8 +17,10 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 
 	interior_map = /datum/map_template/interior/apc
 
-	passengers_slots = 15
+	passengers_slots = 22
 	xenos_slots = 8
+
+	wall_ram_damage = 120
 
 	entrances = list(
 		"left" = list(2, 0),
@@ -40,6 +42,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 		/obj/item/hardpoint/primary/dualcannon,
 		/obj/item/hardpoint/secondary/frontalcannon,
 		/obj/item/hardpoint/support/flare_launcher,
+		/obj/item/hardpoint/support/flare_launcher/smoke_launcher,
 		/obj/item/hardpoint/locomotion/apc_wheels,
 	)
 
@@ -108,6 +111,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 		add_verb(M.client, list(
 			/obj/vehicle/multitile/proc/toggle_door_lock,
 			/obj/vehicle/multitile/proc/activate_horn,
+			/obj/vehicle/multitile/proc/use_megaphone,
 			/obj/vehicle/multitile/proc/name_vehicle
 		))
 	else if(seat == VEHICLE_GUNNER)
@@ -135,6 +139,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 		remove_verb(M.client, list(
 			/obj/vehicle/multitile/proc/toggle_door_lock,
 			/obj/vehicle/multitile/proc/activate_horn,
+			/obj/vehicle/multitile/proc/use_megaphone,
 			/obj/vehicle/multitile/proc/name_vehicle,
 		))
 	else if(seat == VEHICLE_GUNNER)
@@ -292,3 +297,4 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 	V.add_hardpoint(new /obj/item/hardpoint/secondary/frontalcannon)
 	V.add_hardpoint(new /obj/item/hardpoint/support/flare_launcher)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
+

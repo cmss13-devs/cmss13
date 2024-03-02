@@ -349,6 +349,19 @@
 						store_egg(E)
 			return
 
+	//target an egg morpher to fill em
+	if(istype(T, /obj/effect/alien/resin/special/eggmorph))
+		var/obj/effect/alien/resin/special/eggmorph/morpher = T
+		if(Adjacent(morpher))
+			if(morpher.linked_hive && (morpher.linked_hive.hivenumber != hivenumber))
+				to_chat(src, SPAN_WARNING("That egg morpher is tainted!"))
+				return
+			if(on_fire)
+				to_chat(src, SPAN_WARNING("Touching \the [morpher] while you're on fire would burn the facehuggers in it!"))
+				return
+			store_eggs_in_egg_morpher(morpher)
+			return
+
 	var/obj/item/xeno_egg/E = get_active_hand()
 	if(!E) //empty active hand
 		//if no hugger in active hand, we take one from our storage

@@ -11,13 +11,13 @@
 	icon = 'icons/obj/items/pamphlets.dmi'
 	icon_state = "pamphlet_written"
 	item_state = "pamphlet_written"
-	var/vehicle_type = /datum/vehicle_order/apc/empty
+	var/vehicle_type = /datum/vehicle_order/apc
 	var/vehicle_category = "APC"
 
 /obj/item/vehicle_coupon/tank
 	name = "tank coupon"
 	desc = "We're done playing! This coupon allows the ship crew to retrieve a complete Longstreet tank from Vehicle ASRS. Make sure to send the ASRS lift down so it can be retrieved. One use only. LTB not included. Comes with free friendly fire."
-	vehicle_type = /datum/vehicle_order/tank/broken
+	vehicle_type = /datum/vehicle_order/tank
 	vehicle_category = "TANK"
 
 /obj/item/vehicle_coupon/attack_self(mob/user)
@@ -38,10 +38,10 @@
 		return
 
 	. = TRUE
-	comp.spent = FALSE
-	QDEL_NULL_LIST(comp.vehicles)
+
+	QDEL_LIST_ASSOC_VAL(comp.vehicles)
 	comp.vehicles = list(
-		new vehicle_type(),
+		vehicle_type = new vehicle_type()
 	)
 	comp.allowed_roles = null
 	comp.req_access = list()

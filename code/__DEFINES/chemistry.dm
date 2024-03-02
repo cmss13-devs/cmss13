@@ -32,6 +32,9 @@
 #define HIGH_REAGENTS_OVERDOSE_CRITICAL 100
 
 
+// Chance of bicaridine OD to patch IB per every process_mob()
+#define BICARIDINE_OD_IB_TREAT_CHANCE 4
+
 // How many units of reagent are consumed per tick, by default.
 #define REAGENTS_METABOLISM AMOUNT_PER_TIME(1, 10 SECONDS)
 // By defining the effect multiplier this way, it'll exactly adjust

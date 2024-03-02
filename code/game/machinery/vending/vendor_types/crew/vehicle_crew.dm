@@ -16,7 +16,6 @@
 	vend_sound = 'sound/machines/medevac_extend.ogg'
 
 	var/selected_vehicle
-	var/budget_points = 0
 	var/available_categories = VEHICLE_ALL_AVAILABLE
 
 	available_points_to_display = 0
@@ -51,14 +50,17 @@
 			malfunction()
 			return
 
-/obj/structure/machinery/cm_vending/gear/vehicle_crew/proc/populate_products(datum/source, obj/vehicle/multitile/V)
+/obj/structure/machinery/cm_vending/gear/vehicle_crew/proc/populate_products(datum/source, datum/vehicle_order/VO)
 	SIGNAL_HANDLER
 	UnregisterSignal(SSdcs, COMSIG_GLOB_VEHICLE_ORDERED)
 
-	if(!selected_vehicle)
-		selected_vehicle = "APC" // The whole thing seems to be based upon the assumption you unlock tank as an override, defaulting to APC
-	if(selected_vehicle == "APC")
-		available_categories &= ~(VEHICLE_ARMOR_AVAILABLE|VEHICLE_INTEGRAL_AVAILABLE) //APC lacks these, so we need to remove these flags to be able to access spare parts section
+	available_categories = VEHICLE_ALL_AVAILABLE
+
+	if(istype(VO, /datum/vehicle_order/tank))
+		selected_vehicle = "TANK"
+	else if(istype(VO, /datum/vehicle_order/apc))
+		selected_vehicle = "APC"
+		available_categories &= ~(VEHICLE_ARMOR_AVAILABLE|VEHICLE_INTEGRAL_AVAILABLE)	//APC lacks these, so we need to remove these flags to be able to access spare parts section
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/get_listed_products(mob/user)
 	var/list/display_list = list()
@@ -87,8 +89,8 @@
 	. = list()
 	. += ui_static_data(user)
 
-	if(GLOB.supply_controller.tank_points) //we steal points from GLOB.supply_controller, meh-he-he. Solely to be able to modify amount of points in vendor if needed by just changing one var.
-		available_points_to_display = GLOB.supply_controller.tank_points
+	if(GLOB.supply_controller.tank_points) //we steal points from supply_controller, meh-he-he. Solely to be able to modify amount of points in vendor if needed by just changing one var.
+		available_points_to_display += GLOB.supply_controller.tank_points
 		GLOB.supply_controller.tank_points = 0
 	.["current_m_points"] = available_points_to_display
 
@@ -99,7 +101,7 @@
 		var/prod_available = FALSE
 		var/p_cost = myprod[2]
 		var/avail_flag = myprod[4]
-		if(budget_points >= p_cost && (!avail_flag || available_categories & avail_flag))
+		if(available_points_to_display >= p_cost && (!avail_flag || available_categories & avail_flag))
 			prod_available = TRUE
 		stock_values += list(prod_available)
 
@@ -118,7 +120,7 @@
 			to_chat(H, SPAN_WARNING("Not enough points."))
 			vend_fail()
 			return FALSE
-		budget_points -= L[2]
+		available_points_to_display -= L[2]
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/get_appropriate_vend_turf(mob/living/carbon/human/H)
 	var/turf/T = get_turf(src)
@@ -129,7 +131,8 @@ GLOBAL_LIST_INIT(cm_vending_vehicle_crew_tank, list(
 	list("STARTING KIT SELECTION:", 0, null, null, null),
 
 	list("INTEGRAL PARTS", 0, null, null, null),
-	list("M34A2-A Multipurpose Turret", 0, /obj/effect/essentials_set/tank/turret, VEHICLE_INTEGRAL_AVAILABLE, VENDOR_ITEM_MANDATORY),
+	list("M34A2-B Multipurpose Turret \[ Flares \]", 0, /obj/effect/essentials_set/tank/turret/flares, VEHICLE_INTEGRAL_AVAILABLE, VENDOR_ITEM_RECOMMENDED),
+	list("M34A2-A Multipurpose Turret \[ Smoke \]", 0, /obj/effect/essentials_set/tank/turret, VEHICLE_INTEGRAL_AVAILABLE, VENDOR_ITEM_REGULAR),
 
 	list("PRIMARY WEAPON", 0, null, null, null),
 	list("AC3-E Autocannon", 0, /obj/effect/essentials_set/tank/autocannon, VEHICLE_PRIMARY_AVAILABLE, VENDOR_ITEM_RECOMMENDED),
@@ -161,9 +164,11 @@ GLOBAL_LIST_INIT(cm_vending_vehicle_crew_tank_spare, list(
 	list("SPARE PARTS SELECTION:", 0, null, null, null),
 
 	list("INTEGRAL PARTS", 0, null, null, null),
-	list("M34A2-A Multipurpose Turret", 500, /obj/item/hardpoint/holder/tank_turret, null, VENDOR_ITEM_REGULAR),
+	list("M34A2-B Multipurpose Turret \[ Flares \]", 500, /obj/item/hardpoint/holder/tank_turret/flares, null, VENDOR_ITEM_RECOMMENDED),
+	list("M34A2-A Multipurpose Turret \[ Smoke \]", 500, /obj/item/hardpoint/holder/tank_turret, null, VENDOR_ITEM_REGULAR),
 
 	list("SUPPORT AMMUNITION", 0, null, null, null),
+	list("Turret Flare Launcher Magazine", 50, /obj/item/ammo_magazine/hardpoint/flare_launcher/tank, null, VENDOR_ITEM_RECOMMENDED),
 	list("Turret Smoke Screen Magazine", 50, /obj/item/ammo_magazine/hardpoint/turret_smoke, null, VENDOR_ITEM_REGULAR),
 
 	list("PRIMARY WEAPON", 0, null, null, null),
@@ -216,7 +221,8 @@ GLOBAL_LIST_INIT(cm_vending_vehicle_crew_apc, list(
 	list("RE-RE700 Frontal Cannon", 0, /obj/effect/essentials_set/apc/frontalcannon, VEHICLE_SECONDARY_AVAILABLE, VENDOR_ITEM_MANDATORY),
 
 	list("SUPPORT MODULE", 0, null, null, null),
-	list("M-97F Flare Launcher", 0, /obj/effect/essentials_set/apc/flarelauncher, VEHICLE_SUPPORT_AVAILABLE, VENDOR_ITEM_MANDATORY),
+	list("M-87F Flare Launcher", 0, /obj/effect/essentials_set/apc/flarelauncher, VEHICLE_SUPPORT_AVAILABLE, VENDOR_ITEM_MANDATORY),
+	list("M-87S Smoke Screen System", 0, /obj/effect/essentials_set/apc/flarelauncher/smokelauncher, VEHICLE_SUPPORT_AVAILABLE, VENDOR_ITEM_MANDATORY),
 
 	list("WHEELS", 0, null, null, null),
 	list("APC Wheels", 0, /obj/item/hardpoint/locomotion/apc_wheels, VEHICLE_TREADS_AVAILABLE, VENDOR_ITEM_MANDATORY)))
@@ -237,10 +243,12 @@ GLOBAL_LIST_INIT(cm_vending_vehicle_crew_apc_spare, list(
 	list("RE-RE700 Frontal Cannon Magazine", 150, /obj/item/ammo_magazine/hardpoint/tank_glauncher, null, VENDOR_ITEM_REGULAR),
 
 	list("SUPPORT MODULE", 0, null, null, null),
-	list("M-97F Flare Launcher", 300, /obj/item/hardpoint/support/flare_launcher, null, VENDOR_ITEM_REGULAR),
+	list("M-87F Flare Launcher", 300, /obj/item/hardpoint/support/flare_launcher, null, VENDOR_ITEM_RECOMMENDED),
+	list("M-87S Smoke Screen System", 300, /obj/item/hardpoint/support/flare_launcher/smoke_launcher, null, VENDOR_ITEM_REGULAR),
 
 	list("SUPPORT AMMUNITION", 0, null, null, null),
-	list("M-97F Flare Launcher Magazine", 50, /obj/item/ammo_magazine/hardpoint/flare_launcher, null, VENDOR_ITEM_REGULAR),
+	list("M-87F Flare Launcher Magazine", 50, /obj/item/ammo_magazine/hardpoint/flare_launcher, null, VENDOR_ITEM_RECOMMENDED),
+	list("M-87S Smoke Screen Magazine", 50, /obj/item/ammo_magazine/hardpoint/turret_smoke/apc, null, VENDOR_ITEM_REGULAR),
 
 	list("WHEELS", 0, null, null, null),
 	list("APC Wheels", 200, /obj/item/hardpoint/locomotion/apc_wheels, null, VENDOR_ITEM_REGULAR)))
@@ -468,6 +476,14 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 		/obj/item/ammo_magazine/hardpoint/turret_smoke,
 	)
 
+/obj/effect/essentials_set/tank/turret/flares
+	spawned_gear_list = list(
+		/obj/item/hardpoint/holder/tank_turret/flares,
+		/obj/item/ammo_magazine/hardpoint/flare_launcher/tank,
+		/obj/item/ammo_magazine/hardpoint/flare_launcher/tank,
+		/obj/item/ammo_magazine/hardpoint/flare_launcher/tank,
+	)
+
 /obj/effect/essentials_set/apc/dualcannon
 	spawned_gear_list = list(
 		/obj/item/hardpoint/primary/dualcannon,
@@ -489,4 +505,11 @@ GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 		/obj/item/ammo_magazine/hardpoint/flare_launcher,
 		/obj/item/ammo_magazine/hardpoint/flare_launcher,
 		/obj/item/ammo_magazine/hardpoint/flare_launcher,
+	)
+
+/obj/effect/essentials_set/apc/flarelauncher/smokelauncher
+	spawned_gear_list = list(
+		/obj/item/hardpoint/support/flare_launcher/smoke_launcher,
+		/obj/item/ammo_magazine/hardpoint/turret_smoke/apc,
+		/obj/item/ammo_magazine/hardpoint/turret_smoke/apc,
 	)

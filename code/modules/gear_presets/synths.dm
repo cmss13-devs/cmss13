@@ -126,7 +126,8 @@
 
 /datum/equipment_preset/synth/survivor/load_race(mob/living/carbon/human/new_human)
 	//Switch to check client for synthetic generation preference, and set the subspecies of colonial synth
-	var/generation_selection = SYNTH_COLONY_GEN_ONE
+	new_human.set_species(SYNTH_COLONY_GEN_ONE)
+/*	var/generation_selection = SYNTH_COLONY_GEN_ONE
 	if(new_human.client?.prefs?.synthetic_type)
 		generation_selection = new_human.client.prefs.synthetic_type
 	switch(generation_selection)
@@ -138,6 +139,7 @@
 			new_human.set_species(SYNTH_COLONY_GEN_ONE)
 		else
 			new_human.set_species(SYNTH_COLONY)
+*/
 
 /datum/equipment_preset/synth/survivor/New()
 	. = ..()

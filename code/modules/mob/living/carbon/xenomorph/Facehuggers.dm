@@ -240,6 +240,8 @@
 	if(!target)
 		return FALSE
 
+	if(stat == DEAD)
+		return FALSE
 	target.visible_message(SPAN_WARNING("[src] leaps at [target]!"), \
 	SPAN_WARNING("[src] leaps at [target]!"))
 	leaping = TRUE

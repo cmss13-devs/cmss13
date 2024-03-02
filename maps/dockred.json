@@ -1,0 +1,36 @@
+{
+    "map_name": "Dock Red",
+    "map_path": "map_files/Dock_Red",
+    "map_file": "Dock_Red.dmm",
+    "weather_holder": "/datum/weather_ss_map_holder/big_red",
+    "survivor_types": [
+        "/datum/equipment_preset/survivor/scientist/solaris",
+        "/datum/equipment_preset/survivor/doctor/solaris",
+        "/datum/equipment_preset/survivor/chaplain/solaris",
+        "/datum/equipment_preset/survivor/engineer/solaris",
+        "/datum/equipment_preset/survivor/trucker/solaris",
+        "/datum/equipment_preset/survivor/security/solaris",
+        "/datum/equipment_preset/survivor/colonial_marshal/solaris",
+        "/datum/equipment_preset/survivor/corporate/solaris",
+        "/datum/equipment_preset/survivor/clf",
+        "/datum/equipment_preset/survivor/civilian"
+    ],
+    "defcon_triggers": [
+        4750,
+        3500,
+        2000,
+        1000,
+        0.0
+    ],
+    "map_item_type": "/obj/item/map/dock_red_map",
+    "announce_text": "Мы потеряли связь с подземной исследовательской базой Вейланд-Ютани в секторе 'Ред'. ###SHIPNAME### отправлен для оказания поддержки.",
+    "monkey_types": [
+        "neaera"
+    ],
+    "traits": [{ "Ground": true }],
+    "camouflage": "desert",
+    "gamemodes": [
+        "Distress Signal",
+        "Infection"
+    ]
+}

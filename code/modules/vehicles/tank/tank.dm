@@ -21,6 +21,8 @@
 	revivable_dead_slots = 2
 	xenos_slots = 4
 
+	wall_ram_damage = 360
+
 	entrances = list(
 		"back" = list(0, 2)
 	)
@@ -36,11 +38,10 @@
 	move_momentum_build_factor = 1.8
 	move_turn_momentum_loss_factor = 0.6
 
-	vehicle_light_range = 7
-
 	// Rest (all the guns) is handled by the tank turret hardpoint
 	hardpoints_allowed = list(
 		/obj/item/hardpoint/holder/tank_turret,
+		/obj/item/hardpoint/holder/tank_turret/flares,
 		/obj/item/hardpoint/support/weapons_sensor,
 		/obj/item/hardpoint/support/overdrive_enhancer,
 		/obj/item/hardpoint/support/artillery_module,
@@ -110,6 +111,7 @@
 		add_verb(M.client, list(
 			/obj/vehicle/multitile/proc/toggle_door_lock,
 			/obj/vehicle/multitile/proc/activate_horn,
+			/obj/vehicle/multitile/proc/use_megaphone,
 		))
 	else if(seat == VEHICLE_GUNNER)
 		add_verb(M.client, list(
@@ -133,6 +135,7 @@
 		remove_verb(M.client, list(
 			/obj/vehicle/multitile/proc/toggle_door_lock,
 			/obj/vehicle/multitile/proc/activate_horn,
+			/obj/vehicle/multitile/proc/use_megaphone,
 		))
 	else if(seat == VEHICLE_GUNNER)
 		remove_verb(M.client, list(

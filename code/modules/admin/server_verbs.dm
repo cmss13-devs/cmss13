@@ -27,17 +27,17 @@
 
 		maprotatechoices[mapname] = VM
 
-	var/chosenmap = tgui_input_list(usr, "Choose a ground map to change to", "Change Ground Map", maprotatechoices)
+	var/chosenmap = tgui_input_list(usr, "Выберите карту", "Смена карты", maprotatechoices)
 	if(!chosenmap)
 		return
 
 	var/datum/map_config/VM = maprotatechoices[chosenmap]
 	if(!SSmapping.changemap(VM, GROUND_MAP))
-		to_chat(usr, SPAN_WARNING("Failed to change the ground map."))
+		to_chat(usr, SPAN_WARNING("Не удалось поменять карту."))
 		return
 
-	log_admin("[key_name(usr)] changed the map to [VM.map_name].")
-	message_admins("[key_name_admin(usr)] changed the map to [VM.map_name].")
+	log_admin("[key_name(usr)] меняет карту на [VM.map_name].")
+	message_admins("[key_name_admin(usr)] меняет карту на [VM.map_name].")
 
 /datum/admins/proc/vote_ground_map()
 	set category = "Server"
@@ -47,8 +47,8 @@
 		return
 
 	SSvote.initiate_vote("groundmap", usr.ckey)
-	log_admin("[key_name(usr)] started a groundmap vote.")
-	message_admins("[key_name_admin(usr)] started a groundmap vote.")
+	log_admin("[key_name(usr)] начал голосование за карту.")
+	message_admins("[key_name_admin(usr)] начал голосование за карту.")
 
 /datum/admins/proc/override_ground_map()
 	set category = "Server"
@@ -57,15 +57,15 @@
 	if(!check_rights(R_SERVER))
 		return
 
-	var/map_type = tgui_alert(usr, "Override Ship or Ground Map?", "Map selection", list(GROUND_MAP, SHIP_MAP, "Cancel"))
-	if(map_type == "Cancel")
+	var/map_type = tgui_alert(usr, "Сменить карту корабля или планеты?", "Выбор карты", list(GROUND_MAP, SHIP_MAP, "ОТМЕНИТЬ"))
+	if(map_type == "ОТМЕНИТЬ")
 		return
 
-	var/map = input(usr, "Choose a custom map to run for next round","Upload Map") as null|file
+	var/map = input(usr, "Выберите кастомную карту для следующего раунда","Загрузить карту") as null|file
 	if(!map)
 		return
 	if(copytext("[map]", -4) != ".dmm")//4 == length(".dmm")
-		to_chat(usr,  SPAN_WARNING("Filename must end in '.dmm': [map]"), confidential = TRUE)
+		to_chat(usr,  SPAN_WARNING("Имя файлы должно заканчиваться на '.dmm': [map]"), confidential = TRUE)
 		return
 
 	message_admins(SPAN_ADMINNOTICE("[key_name_admin(usr)] is overriding the next '[map_type]' map with a custom one."))

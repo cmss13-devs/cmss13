@@ -289,7 +289,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 					if(GLOB.round_statistics)
 						GLOB.round_statistics.track_hijack()
 
-					marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", "Dropship Alert", 'sound/AI/hijack.ogg', logging = ARES_LOG_SECURITY)
+					marine_announcement("Незапланированное отправление десантного судна зафиксировано в зоне операции. Высокая вероятность угона. Отключение автопилота.", "Уведомление Десантного Корабля", 'sound/AI/hijack.ogg', logging = ARES_LOG_SECURITY)
 					shuttle.alerts_allowed--
 					log_ares_flight("Unknown", "Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.")
 

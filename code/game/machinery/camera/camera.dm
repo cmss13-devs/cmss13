@@ -70,7 +70,7 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 		var/area/my_area = get_area(src)
 		if(my_area)
 			for(var/obj/structure/machinery/camera/autoname/current_camera in GLOB.machines)
-				if(current_camera == src) 
+				if(current_camera == src)
 					continue
 				var/area/current_camera_area = get_area(current_camera)
 				if(current_camera_area.type != my_area.type)

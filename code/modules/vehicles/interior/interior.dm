@@ -311,7 +311,6 @@
 	var/turf/max = reservation.top_right_turfs[1]
 	return list(Floor(min.x + (max.x - min.x)/2), Floor(min.y + (max.y - min.y)/2), min.z)
 
-
 /datum/interior/proc/get_middle_turf()
 	var/list/turf/bounds = get_bound_turfs()
 	var/turf/middle = locate(Floor(bounds[1].x + (bounds[2].x - bounds[1].x)/2), Floor(bounds[1].y + (bounds[2].y - bounds[1].y)/2), bounds[1].z)

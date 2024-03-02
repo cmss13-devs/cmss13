@@ -2,7 +2,7 @@
 /mob/proc/hear_apollo()
 	return FALSE
 
-/mob/proc/hear_say(message, verb = "says", datum/language/language = null, alt_name = "", italics = 0, mob/speaker = null, sound/speech_sound, sound_vol)
+/mob/proc/hear_say(message, verb = "говорит", datum/language/language = null, alt_name = "", italics = 0, mob/speaker = null, sound/speech_sound, sound_vol)
 
 	if(!client && !(mind && mind.current != src))
 		return
@@ -42,9 +42,9 @@
 
 	if(sdisabilities & DISABILITY_DEAF || ear_deaf)
 		if(speaker == src)
-			to_chat(src, SPAN_WARNING("You cannot hear yourself speak!"))
+			to_chat(src, SPAN_WARNING("Я не слышу себя!"))
 		else
-			to_chat(src, SPAN_LOCALSAY("<span class='prefix'>[comm_paygrade][speaker_name]</span>[alt_name] talks but you cannot hear them."))
+			to_chat(src, SPAN_LOCALSAY("<span class='prefix'>[comm_paygrade][speaker_name]</span>[alt_name] говорит, но я ни черта не слышу."))
 	else
 		to_chat(src, SPAN_LOCALSAY("<span class='prefix'>[comm_paygrade][speaker_name]</span>[alt_name] [verb], <span class='[style]'>\"[message]\"</span>"))
 		if (speech_sound && (get_dist(speaker, src) <= GLOB.world_view_size && src.z == speaker.z))
@@ -53,7 +53,7 @@
 
 
 /mob/proc/hear_radio(
-	message, verb="says",
+	message, verb="говорит",
 	datum/language/language=null,
 	part_a, part_b,
 	mob/speaker = null,
@@ -103,7 +103,7 @@
 
 
 	if(hard_to_hear)
-		speaker_name = "unknown"
+		speaker_name = "неизвестный"
 		comm_paygrade = ""
 
 	if(istype(src, /mob/dead/observer))
@@ -122,7 +122,7 @@
 
 	if(sdisabilities & DISABILITY_DEAF || ear_deaf)
 		if(prob(20))
-			to_chat(src, SPAN_WARNING("You feel your headset vibrate but can hear nothing from it!"), type = MESSAGE_TYPE_RADIO)
+			to_chat(src, SPAN_WARNING("Мой наушник вибрирует, но я ничего не слышу..."), type = MESSAGE_TYPE_RADIO)
 	else if(track)
 		if(!command)
 			to_chat(src, "[part_a][comm_paygrade][track][part_b][verb], <span class=\"[style]\">\"[message]\"</span></span></span>", type = MESSAGE_TYPE_RADIO)
@@ -134,7 +134,7 @@
 		else
 			to_chat(src, "<span class=\"[fontsize_style]\">[part_a][comm_paygrade][speaker_name][part_b][verb], <span class=\"[style]\">\"[message]\"</span></span></span></span>", type = MESSAGE_TYPE_RADIO)
 
-/mob/proc/hear_signlang(message, verb = "gestures", datum/language/language, mob/speaker = null)
+/mob/proc/hear_signlang(message, verb = "жестикулирует", datum/language/language, mob/speaker = null)
 	var/comm_paygrade = ""
 	if(!client)
 		return
@@ -174,16 +174,16 @@
 
 	if(sdisabilities & DISABILITY_DEAF || ear_deaf)
 		if(speaker == src)
-			to_chat(src, SPAN_WARNING("You cannot hear yourself speak!"))
+			to_chat(src, SPAN_WARNING("Я не слышу своих слов!"))
 		else
-			to_chat(src, SPAN_LOCALSAY("Someone near talks but you cannot hear them."))
+			to_chat(src, SPAN_LOCALSAY("Кто-то рядом разговаривает, но я ничего не слышу."))
 		return
 
 	if(hearing_self)
-		heard = SPAN_LOCALSAY("You mutter something about... [stars(message, clear_char_probability = 99)]")
+		heard = SPAN_LOCALSAY("Бубню что-то про... [stars(message, clear_char_probability = 99)]")
 
 	else if(!sleeping && proximity_flag)
-		heard = SPAN_LOCALSAY("You hear someone near you say something... [stars(message, clear_char_probability)]")
+		heard = SPAN_LOCALSAY("Кто-то рядом говорит о... [stars(message, clear_char_probability)]")
 
 	else if(prob(15))
 
@@ -195,9 +195,9 @@
 			heardword = copytext(heardword,2)
 		if(copytext(heardword,-1) in punctuation)
 			heardword = copytext(heardword,1,length(heardword))
-		heard = SPAN_LOCALSAY("...You hear something about...[heardword]")
+		heard = SPAN_LOCALSAY("...Что? Кто-то говорит про...[heardword]")
 
 	else
-		heard = SPAN_LOCALSAY("...<i>You almost hear someone talking</i>...")
+		heard = SPAN_LOCALSAY("...<i>Кажется я слышу разговоры</i>...")
 
 	to_chat(src, heard)

@@ -23,12 +23,12 @@
 	stafftype = "[admin_holder.rank]"
 
 	msg = strip_html(msg)
-	log_admin("DEAD: [key_name(src)] : [msg]")
+	log_admin("МЕРТВЕЦ: [key_name(src)] : [msg]")
 
 	if (!msg)
 		return
 
-	var/rendered = "<span class='game deadsay'><span class='prefix'>DEAD:</span> <span class='name'>[stafftype]([src.key])</span> says, <span class='message'>\"[msg]\"</span></span>"
+	var/rendered = "<span class='game deadsay'><span class='prefix'>МЕРТВЕЦ:</span> <span class='name'>[stafftype]([src.key])</span> рассказывает, <span class='message'>\"[msg]\"</span></span>"
 
 	for (var/mob/M in GLOB.player_list)
 		if (istype(M, /mob/new_player))

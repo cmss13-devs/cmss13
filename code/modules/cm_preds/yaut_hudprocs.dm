@@ -12,25 +12,47 @@
 		return
 
 	var/list/options = list()
-	var/list/optionsp = list(
-		"Un-Mark as Thralled",
-		"Mark as Honored",
-		"Un-Mark as Honored",
-		"Mark as Dishonorable",
-		"Un-Mark as Dishonorable",
-		"Mark as Gear Carrier",
-		"Un-Mark as Gear Carrier"
-	)
+	var/honor_mark
+	var/dishonor_mark
+	var/gear_mark
+	var/hunt_mark
+	var/thrall_mark
 
-	if(!T.hunter_data.prey)
+	for(var/mob/living/carbon/prey in view(7, usr.client))
+		if(!prey)
+			continue
+		if(prey.stat == DEAD)
+			continue
+		if(ishuman_strict(prey) || isxeno(prey))
+			if(!T.hunter_data.prey && !prey.hunter_data.hunter)
+				hunt_mark = TRUE
+			if(!prey.hunter_data.dishonored)
+				dishonor_mark = TRUE
+		if(ishuman_strict(prey))
+			if(!prey.hunter_data.honored)
+				honor_mark = TRUE
+			if(!prey.hunter_data.gear)
+				gear_mark = TRUE
+			if(!prey.hunter_data.thrall)
+				thrall_mark = TRUE
+
+	if(hunt_mark)
 		options += "Mark as Prey"
-	else
-		options += "Un-Mark as Prey"
 
-	if(!T.hunter_data.thrall)
+	if(honor_mark)
+		options += "Mark as Honored"
+
+	if(dishonor_mark)
+		options += "Mark as Dishonorable"
+
+	if(gear_mark)
+		options += "Mark as Gear Carrier"
+
+	if(thrall_mark)
 		options += "Mark as Thralled"
 
-	options += optionsp
+	if(!LAZYLEN(options))
+		to_chat(src, SPAN_YAUTJABOLD("Рядом нет подходящих целей для метки."))
 
 	var/input = tgui_input_list(usr, "Select which mark to apply", "Mark Panel", options)
 
@@ -41,22 +63,58 @@
 		switch(input)
 			if("Mark as Prey")
 				T.mark_for_hunt()
-			if("Un-Mark as Prey")
-				T.remove_from_hunt()
 			if("Mark as Honored")
 				T.mark_honored()
-			if("Un-Mark as Honored")
-				T.unmark_honored()
 			if("Mark as Dishonorable")
 				T.mark_dishonored()
-			if("Un-Mark as Dishonorable")
-				T.unmark_dishonored()
 			if("Mark as Gear Carrier")
 				T.mark_gear()
-			if("Un-Mark as Gear Carrier")
-				T.unmark_gear()
 			if("Mark as Thralled")
 				T.mark_thralled()
+
+	return
+
+/mob/living/carbon/human/proc/unmark_panel()
+	set name = "Unmark Panel"
+	set category = "Yautja.Marks"
+	set desc = "Allows you to remove marks from your prey."
+
+	if(is_mob_incapacitated())
+		to_chat(src, SPAN_DANGER("You're not able to do that right now."))
+		return
+
+	var/mob/living/carbon/human/T = src
+	if(!isyautja(T))
+		return
+
+	var/list/options = list()
+	var/list/optionsp = list(
+		"Un-Mark as Thralled",
+		"Un-Mark as Honored",
+		"Un-Mark as Dishonorable",
+		"Un-Mark as Gear Carrier"
+	)
+
+	if(T.hunter_data.prey)
+		options += "Un-Mark as Prey"
+
+	options += optionsp
+
+	var/input = tgui_input_list(usr, "Select which mark to remove", "Mark Panel", options)
+
+	if(!input)
+		return
+	else if(input)
+
+		switch(input)
+			if("Un-Mark as Prey")
+				T.remove_from_hunt()
+			if("Un-Mark as Honored")
+				T.unmark_honored()
+			if("Un-Mark as Dishonorable")
+				T.unmark_dishonored()
+			if("Un-Mark as Gear Carrier")
+				T.unmark_gear()
 			if("Un-Mark as Thralled")
 				T.unmark_thralled()
 
@@ -85,9 +143,12 @@
 	// List all possible preys
 	// We only target living humans and xenos
 	var/list/target_list = list()
-	for(var/mob/living/prey in view(7, usr.client))
+	for(var/mob/living/carbon/prey in view(7, usr.client))
 		if((ishuman_strict(prey) || isxeno(prey)) && prey.stat != DEAD)
 			target_list += prey
+
+	if(!LAZYLEN(target_list))
+		to_chat(src, SPAN_YAUTJABOLD("Рядом нет подходящих целей для метки."))
 
 	var/mob/living/carbon/M = tgui_input_list(usr, "Target", "Choose a prey.", target_list)
 	if(!M)
@@ -138,6 +199,7 @@
 	prey.hud_set_hunter()
 
 
+/***************** HONORED PROCS *****************/
 
 /mob/living/carbon/human/proc/mark_honored()
 	if(is_mob_incapacitated())
@@ -173,8 +235,6 @@
 	T.hunter_data.honored = TRUE
 	T.hunter_data.honored_reason = "[reason]' by '[src.real_name]"
 	T.hud_set_hunter()
-
-
 
 /mob/living/carbon/human/proc/unmark_honored()
 	if(is_mob_incapacitated())
@@ -212,6 +272,7 @@
 		to_chat(src, SPAN_YAUTJABOLD("You cannot undo the actions of a living brother or sister!"))
 
 
+/***************** DISHONORED PROCS *****************/
 
 /mob/living/carbon/human/proc/mark_dishonored()
 	if(is_mob_incapacitated())
@@ -251,8 +312,6 @@
 	T.hunter_data.dishonored_reason = "[reason]' by '[src.real_name]"
 	T.hud_set_hunter()
 
-
-
 /mob/living/carbon/human/proc/unmark_dishonored()
 	if(is_mob_incapacitated())
 		to_chat(src, SPAN_DANGER("You're not able to do that right now."))
@@ -263,7 +322,7 @@
 		return
 
 	var/list/target_list = list()
-	for(var/mob/living/carbon/target in view(7, usr.client))
+	for(var/mob/living/carbon/target in world)
 		if((ishuman_strict(target) || isxeno(target)) && target.stat != DEAD)
 			if(target.job != "Predalien" && target.job != "Predalien Larva")
 				if(target.hunter_data.dishonored)
@@ -293,6 +352,7 @@
 		to_chat(src, SPAN_YAUTJABOLD("You cannot undo the actions of a living brother or sister!"))
 
 
+/***************** GEAR PROCS *****************/
 
 /mob/living/carbon/human/proc/mark_gear()
 	if(is_mob_incapacitated())
@@ -323,8 +383,6 @@
 	T.hunter_data.gear = TRUE
 	T.hud_set_hunter()
 
-
-
 /mob/living/carbon/human/proc/unmark_gear()
 	if(is_mob_incapacitated())
 		to_chat(src, SPAN_DANGER("You're not able to do that right now."))
@@ -335,7 +393,7 @@
 		return
 
 	var/list/target_list = list()
-	for(var/mob/living/carbon/target in view(7, usr.client))
+	for(var/mob/living/carbon/target in world)
 		if((ishuman_strict(target) && target.stat != DEAD))
 			if(target.hunter_data.gear)
 				target_list += target
@@ -359,6 +417,8 @@
 	else
 		to_chat(src, SPAN_YAUTJABOLD("You cannot undo the actions of a living brother or sister!"))
 
+
+/***************** THRALLED PROCS *****************/
 
 /mob/living/carbon/human/proc/mark_thralled()
 	if(is_mob_incapacitated())
@@ -401,8 +461,6 @@
 	hunter_data.thrall = T
 	T.hud_set_hunter()
 
-
-
 /mob/living/carbon/human/proc/unmark_thralled()
 	if(is_mob_incapacitated())
 		to_chat(src, SPAN_DANGER("You're not able to do that right now."))
@@ -415,7 +473,7 @@
 	// List all possible targets
 	// We only target living humans
 	var/list/target_list = list()
-	for(var/mob/living/carbon/target in view(7, usr.client))
+	for(var/mob/living/carbon/target in world)
 		if(ishuman_strict(target) && target.stat != DEAD)
 			if(target.hunter_data.thralled)
 				target_list += target

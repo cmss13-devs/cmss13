@@ -946,7 +946,7 @@
 
 	//Shields
 	if( !(ammo_flags & AMMO_ROCKET) ) //No, you can't block rockets.
-		if(prob(75) && check_shields(damage * 0.65, "[P]") ) // Lower chance to block bullets
+		if(prob(75) && check_shields(damage * 0.65, "[P]", attacker_dir = get_dir(P.firer,src)) ) // Lower chance to block bullets
 			P.ammo.on_shield_block(src)
 			bullet_ping(P)
 			return
@@ -1046,7 +1046,7 @@
 
 	if(isxeno(P.firer))
 		var/mob/living/carbon/xenomorph/X = P.firer
-		if(X.can_not_harm(src))
+		if(X.can_not_harm(src) && !(P.ammo.flags_ammo_behavior & AMMO_IGNORE_XENO_IFF))
 			bullet_ping(P)
 			return -1
 		else

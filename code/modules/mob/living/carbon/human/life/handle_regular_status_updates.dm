@@ -37,12 +37,14 @@
 				if(halloss > 100)
 					visible_message(SPAN_WARNING("\The [src] slumps to the ground, too weak to continue fighting."), \
 					SPAN_WARNING("You slump to the ground, you're in too much pain to keep going."))
+					heartbeating(src)
 					apply_effect(10, PARALYZE)
 					setHalLoss(99)
 
 		//UNCONSCIOUS. NO-ONE IS HOME
 		if(regular_update && ((getOxyLoss() > 50)))
 			apply_effect(3, PARALYZE)
+			heartbeating(src)
 
 		if((src.species.flags & HAS_HARDCRIT) && HEALTH_THRESHOLD_CRIT > health)
 			var/already_in_crit = FALSE

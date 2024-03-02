@@ -1976,8 +1976,8 @@
 "cKY" = (
 /obj/structure/prop/brazier/frame/full/campfire,
 /obj/item/tool/match/paper{
-	pixel_x = -11;
-	pixel_y = -2
+	pixel_y = -2;
+	pixel_x = -11
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/spring)
@@ -3620,12 +3620,12 @@
 /area/kutjevo/interior/construction)
 "eCE" = (
 /obj/item/clipboard{
-	pixel_x = -4;
-	pixel_y = 4
+	pixel_y = 4;
+	pixel_x = -4
 	},
 /obj/item/tool/pen{
-	desc = "It's a seemingly normal pen... aside from the faint red fingerprints on the side...";
 	name = "stained pen";
+	desc = "It's a seemingly normal pen... aside from the faint red fingerprints on the side...";
 	pixel_x = 2;
 	pixel_y = 10
 	},
@@ -4504,6 +4504,12 @@
 /obj/effect/landmark/corpsespawner/security/marshal,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction)
+"fMB" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 5
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/colony_South/power2)
 "fMB" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 5
@@ -6701,8 +6707,8 @@
 /area/kutjevo/exterior/complex_border/med_rec)
 "jac" = (
 /obj/item/device/radio{
-	desc = "A regular shortwave radio, this one has experienced minor water damage but is still functional.";
-	name = "damp shortwave radio"
+	name = "damp shortwave radio";
+	desc = "A regular shortwave radio, this one has experienced minor water damage but is still functional."
 	},
 /turf/open/desert/desert_shore/shore_corner2,
 /area/kutjevo/exterior/spring)
@@ -40911,6 +40917,11 @@ rIL
 rIL
 rIL
 mMf
+jhS
+hws
+qwg
+vcY
+jhS
 jhS
 hws
 qwg

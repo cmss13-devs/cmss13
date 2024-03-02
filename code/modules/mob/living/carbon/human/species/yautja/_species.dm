@@ -51,6 +51,8 @@
 		/mob/living/carbon/human/proc/mark_thralled,
 		/mob/living/carbon/human/proc/unmark_thralled,
 		/mob/living/carbon/human/proc/mark_panel,
+		/mob/living/carbon/human/proc/unmark_panel,
+		/mob/living/carbon/human/proc/pred_bioscan,
 	)
 
 	knock_down_reduction = 1.5
@@ -213,6 +215,7 @@
 	hunter.set_languages(list(LANGUAGE_YAUTJA))
 	give_action(hunter, /datum/action/predator_action/claim_equipment)
 	give_action(hunter, /datum/action/yautja_emote_panel)
+	give_action(hunter, /datum/action/human_action/yautja_jump)
 	give_action(hunter, /datum/action/predator_action/mark_for_hunt)
 	give_action(hunter, /datum/action/predator_action/mark_panel)
 	return ..()

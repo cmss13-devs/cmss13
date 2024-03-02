@@ -258,6 +258,8 @@ const ObservableItem = (props: {
 
   const displayHealth = typeof health === 'number';
 
+  const displayHealth = typeof health === 'number';
+
   return (
     <Button
       color={'transparent'}

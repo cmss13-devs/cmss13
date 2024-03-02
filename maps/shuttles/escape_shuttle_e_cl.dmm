@@ -38,11 +38,17 @@
 /area/shuttle/escape_pod)
 "z" = (
 /obj/structure/machinery/cryopod/evacuation,
+/turf/open/shuttle/escapepod,
+/area/shuttle/escape_pod)
+"v" = (
+/obj/structure/machinery/computer/shuttle/escape_pod_panel/liaison{
+	pixel_y = 30
+	},
 /turf/open/shuttle/escapepod{
 	icon_state = "floor4"
 	},
 /area/shuttle/escape_pod)
-"D" = (
+"y" = (
 /obj/structure/machinery/door/airlock/evacuation/liaison{
 	name = "\improper Evacuation Airlock CL-1";
 	id_tag = "cl_evac"

@@ -103,7 +103,10 @@
 		if(HDPT_SECONDARY) num_delays = 3
 		if(HDPT_SUPPORT) num_delays = 2
 		if(HDPT_ARMOR) num_delays = 10
-		if(HDPT_TREADS, HDPT_WHEELS) num_delays = 7
+		if(HDPT_TREADS, HDPT_WHEELS)
+			num_delays = 7
+			//now reset the movement timer
+			next_move = world.time
 
 	if(!do_after(user, 30*num_delays * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = num_delays))
 		user.visible_message(SPAN_WARNING("[user] stops installing \the [HP] on \the [src]."), SPAN_WARNING("You stop installing \the [HP] on \the [src]."))

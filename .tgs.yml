@@ -3,6 +3,7 @@ byond: "514.1588"
 static_files:
   - name: config
   - name: data
+  - name: local.db
 linux_scripts:
   PreCompile.sh: tools/tgs_scripts/PreCompile.sh
   WatchdogLaunch.sh: tools/tgs_scripts/WatchdogLaunch.sh

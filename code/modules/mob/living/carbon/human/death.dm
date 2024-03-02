@@ -43,6 +43,10 @@
 		return
 
 	GLOB.alive_human_list -= src
+	if(heartpouncecooldown > 1)
+		src << sound(null, channel = SOUND_CHANNEL_HEART)
+	if(heartbeatingcooldown > 1)
+		src << sound(null, channel = SOUND_CHANNEL_HEART)
 
 	if(!gibbed)
 		if(HAS_TRAIT(src, TRAIT_HARDCORE) || MODE_HAS_TOGGLEABLE_FLAG(MODE_HARDCORE_PERMA))

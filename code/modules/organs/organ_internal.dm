@@ -73,6 +73,7 @@
 	var/obj/limb/parent = owner.get_limb(parent_limb)
 	if(!silent)
 		owner.custom_pain("Something inside your [parent.display_name] hurts a lot.", 1)
+		owner.heartpounce(src)
 	set_organ_status()
 
 /datum/internal_organ/proc/heal_damage(amount)

@@ -1,7 +1,7 @@
 /mob/living/carbon/human/proc/parse_say_modes(message)
 	. = list("message_and_language", "modes" = list())
 	if(length(message) >= 1 && message[1] == ";")
-		.["message_and_language"] = copytext(message, 2)
+		.["message_and_language"] = copytext_char(message, 2)
 		.["modes"] += "headset"
 		return
 
@@ -16,7 +16,7 @@
 				i--
 				break
 			.["modes"] += GLOB.department_radio_keys[":[current_channel]"]
-		.["message_and_language"] = copytext(message, i+1)
+		.["message_and_language"] = copytext_char(message, i+1)
 		var/multibroadcast_cooldown = 0
 		for(var/obj/item/device/radio/headset/headset in list(wear_l_ear, wear_r_ear))
 			if(world.time - headset.last_multi_broadcast < headset.multibroadcast_cooldown)
@@ -30,9 +30,9 @@
 		return
 
 	if(length(message) >= 2 && (message[1] == "." || message[1] == ":" || message[1] == "#"))
-		var/channel_prefix = copytext(message, 1, 3)
+		var/channel_prefix = copytext_char(message, 1, 3)
 		if(channel_prefix in GLOB.department_radio_keys)
-			.["message_and_language"] = copytext(message, 3)
+			.["message_and_language"] = copytext_char(message, 3)
 			.["modes"] += GLOB.department_radio_keys[channel_prefix]
 			return
 
@@ -49,19 +49,19 @@
 	var/parsed_language = parse_language(message_and_language)
 	if(parsed_language)
 		.["language"] = parsed_language
-		.["message"] = copytext(message_and_language, 3)
+		.["message"] = copytext_char(message_and_language, 3)
 	else
 		.["message"] = message_and_language
 
 /mob/living/carbon/human/say(message)
 
-	var/verb = "says"
+	var/verb = "говорит"
 	var/alt_name = ""
 	var/message_range = GLOB.world_view_size
 	var/italics = 0
 
 	if(!able_to_speak)
-		to_chat(src, SPAN_DANGER("You try to speak, but nothing comes out!"))
+		to_chat(src, SPAN_DANGER("Пытаюсь говорить, но ничего не выходит"))
 		return
 
 	if(client)
@@ -74,9 +74,9 @@
 	if(stat == DEAD)
 		return say_dead(message)
 
-	if(copytext(message,1,2) == "*")
+	if(copytext_char(message,1,2) == "*")
 		if(!findtext(message, "*", 2)) //Second asterisk means it is markup for *bold*, not an *emote.
-			return emote(lowertext(copytext(message,2)), intentional = TRUE) //TRUE arg means emote was caused by player (e.g. no an auto scream when hurt).
+			return emote(lowertext(copytext_char(message,2)), intentional = TRUE) //TRUE arg means emote was caused by player (e.g. no an auto scream when hurt).
 
 	if(name != GetVoice())
 		alt_name = "(as [get_id_name("Unknown")])"
@@ -91,7 +91,7 @@
 	if(!speaking)
 		speaking = get_default_language()
 
-	var/ending = copytext(message, length(message))
+	var/ending = copytext_char(message, length(message))
 	if (speaking)
 		// This is broadcast to all mobs with the language,
 		// irrespective of distance or anything else.
@@ -105,9 +105,9 @@
 		verb = speaking.get_spoken_verb(ending)
 	else
 		if(ending=="!")
-			verb=pick("exclaims","shouts","yells")
+			verb=pick("восклицает","кричит","вопит")
 		if(ending=="?")
-			verb="asks"
+			verb="спрашивает"
 
 	if (istype(wear_mask, /obj/item/clothing/mask/muzzle))
 		return
@@ -158,7 +158,7 @@
 
 			for(var/mob/living/M in hearers(message_range, src))
 				if(M != src)
-					M.show_message(SPAN_NOTICE("[src] talks into [used_radios.len ? used_radios[1] : "the radio."]"), SHOW_MESSAGE_VISIBLE)
+					M.show_message(SPAN_NOTICE("[src] говорит в [used_radios.len ? used_radios[1] : "the radio."]"), SHOW_MESSAGE_VISIBLE)
 			if(ishumansynth_strict(src))
 				playsound(src.loc, 'sound/effects/radiostatic.ogg', 15, 1)
 
@@ -190,9 +190,9 @@
 		if (GRADUAL)
 			say_text += "..."
 		if (PAINFUL)
-			say_text += pick("-OW!", "-UGH!", "-ACK!")
+			say_text += pick("-ОУ!", "-УХ!", "-АААЙ!")
 		if (EXTREMELY_PAINFUL)
-			say_text += pick("-AAAGH!", "-AAARGH!", "-AAAHH!")
+			say_text += pick("-ААААААААА!", "-АЫАЫАА!", "-ЫЫАААА!")
 
 	say(say_text)
 	winset(client, "input", "text=[null]")
@@ -243,50 +243,50 @@ for it but just ignore it.
 */
 
 /mob/living/carbon/human/say_quote(message, datum/language/speaking = null)
-	var/verb = "says"
+	var/verb = "говорит"
 	var/ending = copytext(message, length(message))
 
 	if(speaking)
 		verb = speaking.get_spoken_verb(ending)
 	else
 		if(ending == "!")
-			verb=pick("exclaims","shouts","yells")
+			verb=pick("восклицает","кричит","вопит")
 		else if(ending == "?")
-			verb="asks"
+			verb="спрашивает"
 
 	return verb
 
 /mob/living/carbon/human/proc/handle_speech_problems(message)
 	var/list/returns[2]
-	var/verb = "says"
+	var/verb = "говорит"
 	if(silent)
 		message = ""
 	if(sdisabilities & DISABILITY_MUTE)
 		message = ""
 	var/braindam = getBrainLoss()
 	if(slurring || stuttering || HAS_TRAIT(src, TRAIT_DAZED) || braindam >= 60)
-		msg_admin_niche("[key_name(src)] stuttered while saying: \"[message]\"") //Messages that get modified by the 4 reasons below have their original message logged too
+		msg_admin_niche("[key_name(src)] заплетается говоря: \"[message]\"") //Messages that get modified by the 4 reasons below have their original message logged too
 	if(slurring)
 		message = slur(message)
-		verb = pick("stammers","stutters")
+		verb = pick("заплетаясь говорит","заикается")
 	if(stuttering)
 		message = NewStutter(message)
-		verb = pick("stammers", "stutters")
+		verb = pick("заплетаясь говорит", "заикается")
 	if(HAS_TRAIT(src, TRAIT_DAZED))
 		message = DazedText(message)
-		verb = pick("mumbles", "babbles")
+		verb = pick("бормочет", "болтает")
 	if(braindam >= 60)
 		if(prob(braindam/4))
 			message = stutter(message, stuttering)
-			verb = pick("stammers", "stutters")
+			verb = pick("заплетаясь говорит", "заикается")
 		if(prob(braindam))
 			message = uppertext(message)
-			verb = pick("yells like an idiot","says rather loudly")
+			verb = pick("вопит как идиот","громко заявляет")
 	if(HAS_TRAIT(src, TRAIT_LISPING))
 		var/old_message = message
 		message = lisp_replace(message)
 		if(old_message != message)
-			verb = "lisps"
+			verb = "шепелявит"
 
 	returns[1] = message
 	returns[2] = verb

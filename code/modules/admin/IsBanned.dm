@@ -13,9 +13,9 @@
 
 	//Guest Checking
 	if(!real_bans_only && CONFIG_GET(flag/guest_ban) && IsGuestKey(key))
-		log_access("Failed Login: [key] - Guests not allowed")
-		message_admins("Failed Login: [key] - Guests not allowed")
-		return list("reason"="guest", "desc"="\nReason: Guests not allowed. Please sign in with a byond account.")
+		log_access("Ой ой, [key] не смог зайти - Гости не нужны")
+		message_admins("Ой ой, [key] не смог зайти - Гости не нужны")
+		return list("reason"="guest", "desc"="\nПричина: Guests not allowed. Please sign in with a byond account.")
 
 	// wait for database to be ready
 	WAIT_DB_READY

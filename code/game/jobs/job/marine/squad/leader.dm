@@ -1,7 +1,7 @@
 /datum/job/marine/leader
 	title = JOB_SQUAD_LEADER
-	total_positions = 4
-	spawn_positions = 4
+	total_positions = 2
+	spawn_positions = 2
 	supervisors = "the acting commanding officer"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/uscm/leader
@@ -13,7 +13,7 @@
 	gear_preset = /datum/equipment_preset/wo/marine/sl
 
 AddTimelock(/datum/job/marine/leader, list(
-	JOB_SQUAD_ROLES = 10 HOURS
+	JOB_SQUAD_ROLES = 5 HOURS
 ))
 
 /obj/effect/landmark/start/marine/leader

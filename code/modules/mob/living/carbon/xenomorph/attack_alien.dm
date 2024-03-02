@@ -31,7 +31,7 @@
 			if(M == src || anchored || buckled)
 				return XENO_NO_DELAY_ACTION
 
-			if(check_shields(0, M.name)) // Blocking check
+			if(check_shields(0, M.name, attacker_dir = get_dir(M,src))) // Blocking check
 				M.visible_message(SPAN_DANGER("[M]'s grab is blocked by [src]'s shield!"), \
 				SPAN_DANGER("Our grab was blocked by [src]'s shield!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				playsound(loc, 'sound/weapons/alien_claw_block.ogg', 25, 1) //Feedback
@@ -61,7 +61,7 @@
 							to_chat(M, SPAN_WARNING("We should not harm this host! It has a sister inside."))
 							return XENO_NO_DELAY_ACTION
 
-			if(check_shields(0, M.name)) // Blocking check
+			if(check_shields(0, M.name, attacker_dir = get_dir(M,src))) // Blocking check
 				M.visible_message(SPAN_DANGER("[M]'s slash is blocked by [src]'s shield!"), \
 				SPAN_DANGER("Our slash is blocked by [src]'s shield!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				playsound(loc, 'sound/weapons/alien_claw_block.ogg', 25, 1) //Feedback
@@ -187,7 +187,7 @@
 				return XENO_NO_DELAY_ACTION
 
 			M.animation_attack_on(src)
-			if(check_shields(0, M.name)) // Blocking check
+			if(check_shields(0, M.name, attacker_dir = get_dir(M,src))) // Blocking check
 				M.visible_message(SPAN_DANGER("[M]'s tackle is blocked by [src]'s shield!"), \
 				SPAN_DANGER("We tackle is blocked by [src]'s shield!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				playsound(loc, 'sound/weapons/alien_claw_block.ogg', 25, 1) //Feedback

@@ -8,6 +8,9 @@ on:
 jobs:
   triage:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
       - uses: eps1lon/actions-label-merge-conflict@v2.1.0
         with:

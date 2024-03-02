@@ -324,7 +324,7 @@
 
 /datum/cas_fire_envelope/uscm_dropship
 	fire_length = 12
-	grace_period = 5 SECONDS 
+	grace_period = 5 SECONDS
 	flyto_period = 4 SECONDS //sleep in the FM itself has been increased by one more second
 	flyoff_period = 5 SECONDS
 	cooldown_period = 10 SECONDS

@@ -1,0 +1,36 @@
+{
+    "map_name": "Khami Barrens",
+    "map_path": "map_files/Khami_Barrens",
+    "map_file": "Khami_Barrens.dmm",
+    "webmap_url": "Khami_Barrens",
+    "weather_holder": "/datum/weather_ss_map_holder/big_red",
+    "survivor_types": [
+        "/datum/equipment_preset/survivor/doctor/kutjevo",
+        "/datum/equipment_preset/survivor/chaplain/kutjevo",
+        "/datum/equipment_preset/survivor/engineer/kutjevo",
+        "/datum/equipment_preset/survivor/colonial_marshal/kutjevo",
+        "/datum/equipment_preset/survivor/trucker/kutjevo",
+        "/datum/equipment_preset/survivor/security/kutjevo",
+        "/datum/equipment_preset/survivor/clf",
+        "/datum/equipment_preset/survivor/civilian"
+    ],
+    "defcon_triggers": [
+        4250,
+        2950,
+        1650,
+        1000,
+        0.0
+    ],
+    "map_item_type": "/obj/item/map/khami_barrens",
+    "announce_text": "Мы потеряли связь с небольшой археологической колонией Вей-Ю в пустошах Кхами. ###SHIPNAME### отправлен для оказания поддержки.",
+    "monkey_types": [
+        "neaera",
+        "stok"
+	],
+	"traits": [{ "Ground": true }],
+    "camouflage": "desert",
+    "gamemodes": [
+        "Distress Signal",
+        "Infection"
+    ]
+}

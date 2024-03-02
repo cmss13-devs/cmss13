@@ -225,7 +225,7 @@
 	switch(type)
 		if(NARRATION_METHOD_SAY)
 			selected.langchat_speech(message, heard, GLOB.all_languages, skip_language_check = TRUE)
-			selected.visible_message("<b>[selected]</b> says, \"[message]\"")
+			selected.visible_message("<b>[selected]</b> говорит, \"[message]\"")
 		if(NARRATION_METHOD_ME)
 			selected.langchat_speech(message, heard, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote"))
 			selected.visible_message("<b>[selected]</b> [message]")

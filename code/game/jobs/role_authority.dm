@@ -61,7 +61,6 @@ GLOBAL_VAR_INIT(players_preassigned, 0)
 											/datum/job/special/uaac,
 											/datum/job/special/uaac/tis,
 											/datum/job/special/uscm,
-											/datum/job/command/tank_crew //Rip VC
 											)
 	var/squads_all[] = typesof(/datum/squad) - /datum/squad
 	var/castes_all[] = subtypesof(/datum/caste_datum)
@@ -212,6 +211,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	if(SSnightmare.get_scenario_value("predator_round") && !Check_WO())
 		SSticker.mode.flags_round_type |= MODE_PREDATOR
+		send2chat("Predator round!", CONFIG_GET(string/new_round_alert_channel))
 		// Set predators starting amount based on marines assigned
 		var/datum/job/PJ = temp_roles_for_mode[JOB_PREDATOR]
 		if(istype(PJ))
@@ -545,7 +545,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	for(var/i= 1 to squads_copy.len)
 		var/datum/squad/S = pick_n_take(squads_copy)
-		if (S.roundstart && S.usable && S.faction == H.faction && S.name != "Root")
+		if (S.roundstart && S.usable && S.faction == H.faction && S.name != "Root" && GLOB.clients.len >= S.active_at)
 			mixed_squads += S
 
 	var/datum/squad/lowest = pick(mixed_squads)
@@ -600,7 +600,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	// The following code removes non useable squads from the lists of squads we assign marines too.
 	for(var/i= 1 to squads_copy.len)
 		var/datum/squad/S = pick_n_take(squads_copy)
-		if (S.roundstart && S.usable && S.faction == H.faction && S.name != "Root")
+		if (S.roundstart && S.usable && S.faction == H.faction && S.name != "Root" && GLOB.clients.len >= S.active_at)
 			mixed_squads += S
 
 	//Deal with IOs first
@@ -622,6 +622,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			pref_squad_name = H.client.prefs.preferred_squad
 
 		var/datum/squad/lowest
+
 
 		switch(H.job)
 			if(JOB_SQUAD_ENGI)

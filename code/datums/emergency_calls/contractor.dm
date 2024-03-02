@@ -12,7 +12,7 @@
 
 /datum/emergency_call/contractors/New()
 	..()
-	arrival_message = "[MAIN_SHIP_NAME], this is USCSS Inheritor with Vanguard's Arrow Incorporated, Primary Operations; we are responding to your distress call and boarding in accordance with the Military Aid Act of 2177, authenticication code Lima-18153. "
+	arrival_message = "[MAIN_SHIP_NAME], это USCSS Inheritor с Vanguard's Arrow Incorporated, Primary Operations на борту; мы принимаем ваш сигнал бедствия и совершим посадку согласно закону о военной помощи от 2177го, код авторизации Lima-18153. "
 	objectives = "Ensure the survival of the [MAIN_SHIP_NAME], eliminate any hostiles, and assist the crew in any way possible."
 
 
@@ -87,7 +87,7 @@
 /datum/emergency_call/contractors/covert
 	name = "Military Contractors (Covert) (Hostile to WY)"
 	mob_max = 7
-	probability = 0
+	probability = 5
 	max_medics = 1
 	max_engineers = 1
 	max_heavies = 1

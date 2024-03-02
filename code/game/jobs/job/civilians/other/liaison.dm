@@ -24,5 +24,5 @@
 	job = /datum/job/civilian/liaison
 
 AddTimelock(/datum/job/civilian/liaison, list(
-	JOB_HUMAN_ROLES = 10 HOURS,
+	JOB_HUMAN_ROLES = 1 HOURS,
 ))

@@ -35,7 +35,7 @@
 	return TRUE
 
 /datum/game_mode/xenovs/announce()
-	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("The current map is - [SSmapping.configs[GROUND_MAP].map_name]!"))
+	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("Игровая карта - [SSmapping.configs[GROUND_MAP].map_name]!"))
 
 /datum/game_mode/xenovs/get_roles_list()
 	return GLOB.ROLES_XENO
@@ -280,8 +280,9 @@
 	if(GLOB.round_statistics)
 		GLOB.round_statistics.track_round_end()
 	log_game("Round end result: [round_finished]")
-	to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|Round Complete|"))
-	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("Thus ends the story of the battling hives on [SSmapping.configs[GROUND_MAP].map_name]. [round_finished]\nThe game-mode was: [GLOB.master_mode]!\n[CONFIG_GET(string/endofroundblurb)]"))
+	to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|Раунд Завершен|"))
+	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("Так завершилась история борьбы ульев на [SSmapping.configs[GROUND_MAP].map_name]. [round_finished]\nРежим игры был: [GLOB.master_mode]!\nГриф в конце раунда (EORG) запрещён. Убийство своих, спам в локальный игровой чат и т.д. наказуемо МОМЕНТАЛЬНЫМ баном на 3 часа!"))
+
 
 // for the toolbox
 /datum/game_mode/xenovs/end_round_message()

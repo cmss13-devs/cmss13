@@ -174,7 +174,7 @@
 	if(!shuttle.is_hijacked)
 		tgui_interact(user)
 
-/obj/structure/machinery/computer/shuttle/dropship/flight/proc/groundside_alien_action(mob/living/carbon/xenomorph/xeno)
+/obj/structure/machinery/computer/shuttle/dropship/flight/proc/groundside_alien_action(mob/living/carbon/xenomorph/xeno, datum/dropship_hijack/hijack)
 	if(SSticker.mode.active_lz != src)
 		to_chat(xeno, SPAN_NOTICE("This terminal is inactive."))
 		return
@@ -297,7 +297,7 @@
 	hijack.fire()
 	GLOB.alt_ctrl_disabled = TRUE
 
-	marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", "Dropship Alert", 'sound/AI/hijack.ogg', logging = ARES_LOG_SECURITY)
+	marine_announcement("Незапланированное отправление десантного судна зафиксировано в зоне операции. Высокая вероятность угона. Отключение автопилота.", "Уведомление Десантного Корабля", 'sound/AI/hijack.ogg', logging = ARES_LOG_SECURITY)
 	log_ares_flight("Unknown", "Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.")
 
 	var/mob/living/carbon/xenomorph/xeno = user

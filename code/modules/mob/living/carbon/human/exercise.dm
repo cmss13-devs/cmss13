@@ -67,6 +67,7 @@ Verbs related to getting fucking jacked, bro
 		stamina.apply_damage(staminaloss)
 		if(stamina.current_stamina < 10)
 			to_chat(src, SPAN_WARNING("You slump down to the floor, too tired to keep going."))
+			heartpounce()
 			return
 
 /mob/living/carbon/human/proc/can_do_pushup()
@@ -108,11 +109,11 @@ Verbs related to getting fucking jacked, bro
 		if(SKILL_ENDURANCE_NONE)
 			stamina_loss += 5
 		if(SKILL_ENDURANCE_TRAINED)
-			stamina_loss -= 1
-		if(SKILL_ENDURANCE_MASTER)
-			stamina_loss -= 2
-		if(SKILL_ENDURANCE_EXPERT)
 			stamina_loss -= 3
+		if(SKILL_ENDURANCE_MASTER)
+			stamina_loss -= 3.5
+		if(SKILL_ENDURANCE_EXPERT)
+			stamina_loss -= 4
 	if(wear_suit)
 		stamina_loss += 0.5
 	if(back)

@@ -6,7 +6,7 @@
 	w_class = SIZE_LARGE
 	max_rounds = 60
 	gun_type = /obj/item/hardpoint/primary/flamer
-	default_ammo = /datum/ammo/flamethrower/tank_flamer
+	default_ammo = /datum/ammo/flamethrower/tank_flamer/buffed
 
 /obj/item/ammo_magazine/hardpoint/primary_flamer/update_icon()
 	if(current_rounds > 0)

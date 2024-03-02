@@ -347,7 +347,7 @@
 	if(stat)
 		return
 
-	var/verb = "says"
+	var/verb = "говорит"
 
 	if(speak_emote.len)
 		verb = pick(speak_emote)

@@ -227,16 +227,27 @@ CULT
 				to_chat(H, SPAN_WARNING("It's too late to recall the droppod now!"))
 		return
 
-	if(!can_deploy_droppod(T))
-		return
-
-	to_chat(H, SPAN_WARNING("No droppods currently available."))
-	return
-
-/* // FULL IMPLEM OF DROPPODS FOR REUSE
 	var/list/list_of_techs = list()
+	for(var/i in GLOB.unlocked_droppod_techs)
+		var/datum/tech/tech_to_use = i
+		list_of_techs += list("[tech_to_use.name]" = tech_to_use)
+
+	if(!list_of_techs.len)
+		to_chat(H, SPAN_WARNING("No droppods currently available."))
+		return
+
+	var/input = tgui_input_list(H, "Choose a tech to deploy at this location", "Tech deployment", list_of_techs)
+
 	if(!can_deploy_droppod(T))
 		return
+	if(!input)
+		return
+
+	var/datum/tech/tech_to_deploy = list_of_techs[input]
+
+	if(!tech_to_deploy)
+		return
+
 	var/area/turf_area = get_area(T)
 	if(!turf_area)
 		return
@@ -252,7 +263,6 @@ CULT
 	for(var/M in to_send_to)
 		to_chat(M, SPAN_BLUE("<b>SUPPLY DROP REQUEST:</b> Droppod requested at LONGITUDE: [obfuscate_x(T.x)], LATITUDE: [obfuscate_y(T.y)]. ETA [Floor(land_time*0.1)] seconds."))
 	RegisterSignal(assigned_droppod, COMSIG_PARENT_QDELETING, PROC_REF(handle_droppod_deleted))
-*/
 
 /datum/action/human_action/activable/droppod/proc/handle_droppod_deleted(obj/structure/droppod/tech/T)
 	SIGNAL_HANDLER
@@ -271,10 +281,10 @@ CULT
 	if(!ishuman(user))
 		return FALSE
 
-	var/mob/living/carbon/human/H = user
+//	var/mob/living/carbon/human/H = user
 
-	if(H.job != JOB_SQUAD_TEAM_LEADER)
-		return FALSE
+//	if(H.job != JOB_SQUAD_TEAM_LEADER)
+//		return FALSE
 
 	return ..()
 
@@ -523,7 +533,7 @@ CULT
 	if(tgui_alert(H, "Are you sure you want to begin the mutiny?", "Begin Mutiny?", list("Yes", "No")) != "Yes")
 		return
 
-	shipwide_ai_announcement("DANGER: Communications received; a mutiny is in progress. Code: Detain, Arrest, Defend.")
+	shipwide_ai_announcement("ОПАСНОСТЬ: Получены сообщения; в разгаре мятеж. Код: Задержать, Арестовать, Защитить.")
 	var/datum/equipment_preset/other/mutineer/XC = new()
 
 	XC.load_status(H)

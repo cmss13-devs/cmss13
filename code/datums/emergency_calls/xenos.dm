@@ -9,7 +9,7 @@
 
 /datum/emergency_call/xenos/New()
 	..()
-	arrival_message = "[MAIN_SHIP_NAME], this is USS Vriess respond-- #&...*#&^#.. signal... oh god, they're in the vent---... Priority Warning: Signal lost."
+	arrival_message = "[MAIN_SHIP_NAME], это USS Vriess отвечает-- #&...*#&^#.. сигнал... Боже, они в вентиляции---... Приоритетное Оповещение: Сигнал потерян."
 	objectives = "For the Empress!"
 
 

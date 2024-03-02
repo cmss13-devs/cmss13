@@ -27,6 +27,10 @@
 
 	var/list/turfs_ahead = list(ahead, get_step(ahead, turn(move_dir, 90)), get_step(ahead, turn(move_dir, -90)))
 	for(var/turf/T in turfs_ahead)
+		for(var/obj/effect/alien/weeds/weed in T)
+			if(weed.weed_strength < WEED_LEVEL_HIVE)
+				playsound(weed, "alien_resin_break", 25)
+				weed.deconstruct(FALSE)
 		if(istype(T, /turf/open/snow))
 			var/turf/open/snow/ST = T
 			if(!ST || !ST.bleed_layer)

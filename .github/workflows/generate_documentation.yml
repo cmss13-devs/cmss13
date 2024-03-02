@@ -7,6 +7,9 @@ jobs:
   generate_documentation:
     if: "!contains(github.event.head_commit.message, '[ci skip]')"
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
     concurrency: gen-docs
     steps:
       - uses: actions/checkout@v3

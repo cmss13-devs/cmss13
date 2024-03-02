@@ -9,7 +9,7 @@
 	var/hull = 0
 	var/walltype = WALL_METAL
 	/// when walls smooth with one another, the type of junction each wall is.
-	var/junctiontype 
+	var/junctiontype
 	var/thermite = 0
 	var/melting = FALSE
 	var/claws_minimum = CLAW_TYPE_SHARP
@@ -24,7 +24,7 @@
 
 	var/damage = 0
 	/// Wall will break down to girders if damage reaches this point
-	var/damage_cap = HEALTH_WALL 
+	var/damage_cap = HEALTH_WALL
 
 	var/damage_overlay
 	var/global/damage_overlays[8]
@@ -38,7 +38,7 @@
 	var/d_state = 0 //Normal walls are now as difficult to remove as reinforced walls
 
 	/// the acid hole inside the wall
-	var/obj/effect/acid_hole/acided_hole 
+	var/obj/effect/acid_hole/acided_hole
 	var/acided_hole_dir = SOUTH
 
 	var/special_icon = 0
@@ -356,7 +356,7 @@
 
 	if(istype(attacking_item, /obj/item/weapon/twohanded/breacher))
 		var/obj/item/weapon/twohanded/breacher/current_hammer = attacking_item
-		if(user.action_busy)
+		if(user.action_busy || !(current_hammer.flags_item & WIELDED))
 			return
 		if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG) || !current_hammer.really_heavy))
 			to_chat(user, SPAN_WARNING("You can't use \the [current_hammer] properly!"))

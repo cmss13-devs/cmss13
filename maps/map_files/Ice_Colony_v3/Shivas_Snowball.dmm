@@ -10933,7 +10933,9 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/shuttle/can_surgery/black,
+/turf/open/shuttle{
+	icon_state = "floor7"
+	},
 /area/shiva/interior/aerodrome)
 "fXr" = (
 /obj/item/lightstick/red/spoke/planted{
@@ -18173,10 +18175,6 @@
 	},
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/interior/colony/medseceng)
-"npM" = (
-/obj/structure/machinery/power/reactor/colony,
-/turf/open/floor/plating,
-/area/shiva/interior/colony/medseceng)
 "npY" = (
 /obj/structure/inflatable,
 /turf/open/auto_turf/snow/layer3,
@@ -18537,12 +18535,6 @@
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
-"nJu" = (
-/obj/structure/machinery/fuelcell_recycler/full,
-/turf/open/floor/shiva{
-	icon_state = "yellow"
-	},
-/area/shiva/interior/garage)
 "nKc" = (
 /obj/structure/machinery/door/airlock/almayer/medical/colony{
 	dir = 1;
@@ -22234,7 +22226,9 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
 /area/shiva/interior/aerodrome)
 "rNO" = (
 /obj/structure/prop/ice_colony/soil_net,
@@ -22269,7 +22263,9 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
 /area/shiva/interior/aerodrome)
 "rRb" = (
 /obj/structure/surface/rack,
@@ -43674,7 +43670,7 @@ tHd
 tHd
 jMf
 tHd
-ffg
+jMf
 tHd
 jMf
 ofw

@@ -237,6 +237,7 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 
 	shutdown_logging()
 
+	send2chat("Рестарт")
 	if(TgsAvailable())
 		send_tgs_restart()
 		TgsReboot()

@@ -9,7 +9,7 @@
 	max_heavies = 1
 	max_medics = 1
 
-	arrival_message = "'We're here to kick ass and kill Yautja. Mainly kill Yautja."
+	arrival_message = "'Мы здесь надрать задниц и перебить Яутж. В основном наебашить Яутж."
 	objectives = "Hunt down and kill all Yautja without mercy. Retrieve the gear and leave."
 	probability = 0
 

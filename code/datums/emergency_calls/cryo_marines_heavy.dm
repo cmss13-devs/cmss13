@@ -21,7 +21,7 @@
 	leaders = cryo_squad.num_leaders
 	. = ..()
 	if(length(members))
-		shipwide_ai_announcement("Successfully deployed [length(members)] Foxtrot marines.")
+		shipwide_ai_announcement("Успешно пробуждено [length(members)] солдат Foxtrot.")
 
 /datum/emergency_call/cryo_squad_equipped/create_member(datum/mind/M, turf/override_spawn_loc)
 	set waitfor = 0

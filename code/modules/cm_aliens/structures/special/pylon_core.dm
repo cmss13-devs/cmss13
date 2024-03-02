@@ -148,7 +148,7 @@
 		if(hijack_delete)
 			return ..()
 
-		marine_announcement("ALERT.\n\nEnergy build up around communication relay at [get_area(src)] halted.", "[MAIN_AI_SYSTEM] Biological Scanner")
+		marine_announcement("ВНИМАНИЕ.\n\nЭнергетический всплеск около коммуникационного реле в [get_area(src)] ОСТАНОВЛЕН.", "[MAIN_AI_SYSTEM] Biological Scanner")
 
 		for(var/hivenumber in GLOB.hive_datum)
 			var/datum/hive_status/checked_hive = GLOB.hive_datum[hivenumber]
@@ -164,7 +164,7 @@
 
 /// Checks if all comms towers are connected and then starts end game content on all pylons if they are
 /obj/effect/alien/resin/special/pylon/endgame/proc/comms_relay_connection()
-	marine_announcement("ALERT.\n\nIrregular build up of energy around communication relays at [get_area(src)], biological hazard detected.\n\nDANGER: Hazard is generating new xenomorph entities, advise urgent termination of hazard by ground forces.", "[MAIN_AI_SYSTEM] Biological Scanner")
+	marine_announcement("ВНИМАНИЕ.\n\nОбнаружен иррегулярный всплеск энергии около коммуникационного реле в [get_area(src)], подтверждена биологическая угроза.\n\nОПАСНОСТЬ: Объект формирует новые ксено-организмы, рекомендация к немедленному устранению угрозы наземными силами.", "[MAIN_AI_SYSTEM] Biological Scanner")
 
 	for(var/hivenumber in GLOB.hive_datum)
 		var/datum/hive_status/checked_hive = GLOB.hive_datum[hivenumber]
@@ -240,7 +240,6 @@
 /obj/effect/alien/resin/special/pylon/core/process()
 	. = ..()
 	update_minimap_icon()
-
 	// Handle spawning larva if core is connected to a hive
 	if(linked_hive)
 		for(var/mob/living/carbon/xenomorph/larva/worm in range(2, src))
@@ -285,14 +284,17 @@
 		health += min(heal_amount, maxhealth-health)
 		last_healed = world.time + heal_interval
 
-/obj/effect/alien/resin/special/pylon/core/proc/can_spawn_larva()
+/obj/effect/alien/resin/special/pylon/core/proc/can_spawn_larva(mob/xeno_candidate)
 	if(linked_hive.hardcore)
+		return FALSE
+	if(linked_hive.stored_larva <= linked_hive.reserved_larva)
+		to_chat(xeno_candidate, SPAN_WARNING("Королева улья зарезервировала эту лярву закопанной."))
 		return FALSE
 
 	return linked_hive.stored_larva
 
 /obj/effect/alien/resin/special/pylon/core/proc/spawn_burrowed_larva(mob/xeno_candidate)
-	if(can_spawn_larva() && xeno_candidate)
+	if(can_spawn_larva(xeno_candidate) && xeno_candidate)
 		var/mob/living/carbon/xenomorph/larva/new_xeno = spawn_hivenumber_larva(loc, linked_hive.hivenumber)
 		if(isnull(new_xeno))
 			return FALSE

@@ -20,10 +20,10 @@ GLOBAL_DATUM(Banlist, /savefile)
 				ClearTempbans()
 				return 0
 			else
-				.["desc"] = "\nReason: [GLOB.Banlist["reason"]]\nExpires: [GetExp(GLOB.Banlist["minutes"])]\nBy: [GLOB.Banlist["bannedby"]][appeal]"
+				.["desc"] = "\nПричина: [GLOB.Banlist["reason"]]\nСрок: [GetExp(GLOB.Banlist["minutes"])]\nВыдан: [GLOB.Banlist["bannedby"]][appeal]"
 		else
 			GLOB.Banlist.cd = "/base/[ckey][id]"
-			.["desc"] = "\nReason: [GLOB.Banlist["reason"]]\nExpires: <B>PERMENANT</B>\nBy: [GLOB.Banlist["bannedby"]][appeal]"
+			.["desc"] = "\nПричина: [GLOB.Banlist["reason"]]\nСрок: <B>ПЕРМА</B>\nВыдан: [GLOB.Banlist["bannedby"]][appeal]"
 		.["reason"] = "ckey/id"
 		return .
 	else
@@ -46,9 +46,9 @@ GLOBAL_DATUM(Banlist, /savefile)
 						ClearTempbans()
 						return 0
 					else
-						.["desc"] = "\nReason: [GLOB.Banlist["reason"]]\nExpires: [GetExp(GLOB.Banlist["minutes"])]\nBy: [GLOB.Banlist["bannedby"]][appeal]"
+						.["desc"] = "\nПричина: [GLOB.Banlist["reason"]]\nСрок: [GetExp(GLOB.Banlist["minutes"])]\nBy: [GLOB.Banlist["bannedby"]][appeal]"
 				else
-					.["desc"] = "\nReason: [GLOB.Banlist["reason"]]\nExpires: <B>PERMENANT</B>\nBy: [GLOB.Banlist["bannedby"]][appeal]"
+					.["desc"] = "\nПричина: [GLOB.Banlist["reason"]]\nСрок: <B>ПЕРМА</B>\nВыдан: [GLOB.Banlist["bannedby"]][appeal]"
 				.["reason"] = matches
 				return .
 	return 0
@@ -62,10 +62,10 @@ GLOBAL_DATUM(Banlist, /savefile)
 	GLOB.Banlist = new("data/banlist.bdb")
 	log_admin("Loading GLOB.Banlist")
 
-	if (!length(GLOB.Banlist.dir)) log_admin("GLOB.Banlist is empty.")
+	if (!length(GLOB.Banlist.dir)) log_admin("Банлист пуст. Ой.")
 
 	if (!GLOB.Banlist.dir.Find("base"))
-		log_admin("GLOB.Banlist missing base dir.")
+		log_admin("Банлист не имеет базовой директории.")
 		GLOB.Banlist.dir.Add("base")
 		GLOB.Banlist.cd = "/base"
 	else if (GLOB.Banlist.dir.Find("base"))
@@ -82,8 +82,8 @@ GLOBAL_DATUM(Banlist, /savefile)
 		GLOB.Banlist.cd = "/base/[A]"
 		if (!GLOB.Banlist["key"] || !GLOB.Banlist["id"])
 			RemoveBan(A)
-			log_admin("Invalid Ban.")
-			message_admins("Invalid Ban.")
+			log_admin("Некорректный бан.")
+			message_admins("Некорректный бан.")
 			continue
 
 		if (!GLOB.Banlist["temp"]) continue
@@ -137,12 +137,12 @@ GLOBAL_DATUM(Banlist, /savefile)
 	if (!GLOB.Banlist.dir.Remove(foldername)) return 0
 
 	if(!usr)
-		log_admin("Ban Expired: [key]")
-		message_admins("Ban Expired: [key]")
+		log_admin("Срок бана истек: [key]")
+		message_admins("Срок бана истек: [key]")
 	else
-		ban_unban_log_save("[key_name_admin(usr)] unbanned [key]")
-		log_admin("[key_name_admin(usr)] unbanned [key]")
-		message_admins("[key_name_admin(usr)] unbanned: [key]")
+		ban_unban_log_save("[key_name_admin(usr)] разбанил [key]")
+		log_admin("[key_name_admin(usr)] разбанил [key]")
+		message_admins("[key_name_admin(usr)] разбанил: [key]")
 	for (var/A in GLOB.Banlist.dir)
 		GLOB.Banlist.cd = "/base/[A]"
 		if (key == GLOB.Banlist["key"] /*|| id == GLOB.Banlist["id"]*/)
@@ -160,11 +160,11 @@ GLOBAL_DATUM(Banlist, /savefile)
 	else
 		var/timeleftstring
 		if (exp >= 1440) //1440 = 1 day in minutes
-			timeleftstring = "[round(exp / 1440, 0.1)] Days"
+			timeleftstring = "[round(exp / 1440, 0.1)] Дней"
 		else if (exp >= 60) //60 = 1 hour in minutes
-			timeleftstring = "[round(exp / 60, 0.1)] Hours"
+			timeleftstring = "[round(exp / 60, 0.1)] Часов"
 		else
-			timeleftstring = "[exp] Minutes"
+			timeleftstring = "[exp] Минут"
 		return timeleftstring
 
 /datum/admins/proc/unbanpanel()
@@ -186,12 +186,12 @@ GLOBAL_DATUM(Banlist, /savefile)
 		else
 			unban_link = "<A href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];unbanf=[ban.ckey]'>(UT)</A>"
 
-		dat += "<tr><td>[unban_link] Key: <B>[ban.ckey]</B></td><td>ComputerID: <B>[ban.last_known_cid]</B></td><td>IP: <B>[ban.last_known_ip]</B></td><td> [expiry]</td><td>(By: [ban.admin ? ban.admin : "AdminBot"])</td><td>(Reason: [ban.reason])</td></tr>"
+		dat += "<tr><td>[unban_link] Ключ: <B>[ban.ckey]</B></td><td>ComputerID: <B>[ban.last_known_cid]</B></td><td>IP: <B>[ban.last_known_ip]</B></td><td> [expiry]</td><td>(By: [ban.admin])</td><td>(Причина: [ban.reason])</td></tr>"
 
 	dat += "</table>"
-	var/dat_header = "<HR><B>Bans:</B> <span class='[INTERFACE_BLUE]'>(UP) = Unban Perma (UT) = Unban Timed"
-	dat_header += "</span> - <span class='[INTERFACE_GREEN]'>Ban Listing</span><HR><table border=1 rules=all frame=void cellspacing=0 cellpadding=3 >[dat]"
-	show_browser(usr, dat_header, "Unban Panel", "unbanp", "size=875x400")
+	var/dat_header = "<HR><B>Баны:</B> <span class='[INTERFACE_BLUE]'>(U) = Разбанить"
+	dat_header += "</span> - <span class='[INTERFACE_GREEN]'>Список банов</span><HR><table border=1 rules=all frame=void cellspacing=0 cellpadding=3 >[dat]"
+	show_browser(usr, dat_header, "Панель Разбанов", "unbanp", "size=875x400")
 
 /datum/admins/proc/stickypanel()
 	var/add_sticky = "<a href='?src=\ref[src];[HrefToken()];sticky=1;new_sticky=1'>Add Sticky Ban</a>"
@@ -266,18 +266,18 @@ GLOBAL_DATUM(Banlist, /savefile)
 		return //mods+ cannot be banned. Even if they could, the ban doesn't affect them anyway
 
 	if(!M.ckey)
-		to_chat(usr, SPAN_DANGER("<B>Warning: Mob ckey for [M.name] not found.</b>"))
+		to_chat(usr, SPAN_DANGER("<B>Внимание: Сикей для моба [M.name] не найден.</b>"))
 		return
 	var/mob_key = M.ckey
-	var/mins = tgui_input_number(usr,"How long (in minutes)? \n 180 = 3 hours \n 1440 = 1 day \n 4320 = 3 days \n 10080 = 7 days \n 43800 = 1 Month","Ban time", 1440, 262800, 1)
+	var/mins = tgui_input_number(usr,"На сколько (в минутах)? \n 180 = 3 часа \n 1440 = 1 день \n 4320 = 3 дня \n 10080 = Неделя \n 43800 = Месяц","Срок бана", 1440, 262800, 1)
 	if(!mins)
 		return
 	if(mins >= 525600) mins = 525599
-	var/reason = input(usr,"Reason? \n\nPress 'OK' to finalize the ban.","reason","Griefer") as message|null
+	var/reason = input(usr,"Причина? \n\nНажмите 'ОК' чтобы закончить.","причина","Гриферок") as message|null
 	if(!reason)
 		return
 	var/datum/entity/player/P = get_player_from_key(mob_key) // you may not be logged in, but I will find you and I will ban you
-	if(P.is_time_banned && alert(usr, "Ban already exists. Proceed?", "Confirmation", "Yes", "No") != "Yes")
+	if(P.is_time_banned && alert(usr, "Бан уже существует. Продолжим?", "Подтверждение", "Да", "Нет") != "Да")
 		return
 	P.add_timed_ban(reason, mins)
 

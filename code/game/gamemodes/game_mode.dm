@@ -55,11 +55,12 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 		return TRUE
 	var/players = 0
 	for(var/mob/new_player/player in GLOB.new_player_list)
-		if(player.client && player.ready)
-			players++
-	if(GLOB.master_mode == "secret")
-		if(players >= required_players_secret)
-			return TRUE
+		if((player.client)&&(player.ready))
+			playerC++
+
+	if(GLOB.master_mode=="secret")
+		if(playerC >= required_players_secret)
+			return 1
 	else
 		if(players >= required_players)
 			return TRUE
@@ -133,8 +134,8 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 	if(GLOB.round_statistics)
 		GLOB.round_statistics.track_round_end()
 	log_game("Round end result: [round_finished]")
-	to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|Round Complete|"))
-	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("Thus ends the story of the brave men and women of the [MAIN_SHIP_NAME] and their struggle on [SSmapping.configs[GROUND_MAP].map_name].\nThe game-mode was: [GLOB.master_mode]!\n[CONFIG_GET(string/endofroundblurb)]"))
+	to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|Раунд завершен|"))
+	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("Так заканчивается история экипажа [MAIN_SHIP_NAME] и их борьбы на [SSmapping.configs[GROUND_MAP].map_name].\nРежим игры: [GLOB.master_mode]!\nГриф в конце раунда (EORG) запрещён. Убийство своих, спам в локальный игровой чат и прочие нарушение влекут за собой незамедлительный бан на 3 часа!"))
 
 /datum/game_mode/proc/declare_completion()
 	if(GLOB.round_statistics)

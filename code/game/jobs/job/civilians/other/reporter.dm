@@ -35,5 +35,5 @@ This could be the story of the sector! 'Brave Marines responding to dangerous di
 	job = /datum/job/civilian/reporter
 
 AddTimelock(/datum/job/civilian/reporter, list(
-	JOB_HUMAN_ROLES = 10 HOURS,
+	JOB_HUMAN_ROLES = 1 HOURS,
 ))

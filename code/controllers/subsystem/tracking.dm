@@ -44,10 +44,16 @@ SUBSYSTEM_DEF(tracking)
 			if(ishuman(current_mob))
 				var/mob/living/carbon/human/human_mob = current_mob
 				var/obj/item/device/radio/headset/almayer/marine/earpiece = human_mob.get_type_in_ears(/obj/item/device/radio/headset)
-				if(earpiece?.has_hud)
-					human_mob.locate_squad_leader(earpiece.locate_setting)
+				if(istype(earpiece, /obj/item/device/radio/headset/yautja))
+					if(earpiece?.has_hud)
+						human_mob.locate_lost_equipment(earpiece.locate_setting)
+					else
+						human_mob.locate_lost_equipment()
 				else
-					human_mob.locate_squad_leader()
+					if(earpiece?.has_hud)
+						human_mob.locate_squad_leader(earpiece.locate_setting)
+					else
+						human_mob.locate_squad_leader()
 			else if(isxeno(current_mob))
 				var/mob/living/carbon/xenomorph/xeno_mob = current_mob
 				xeno_mob.queen_locator()

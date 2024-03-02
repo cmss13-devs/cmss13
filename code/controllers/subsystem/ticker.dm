@@ -55,10 +55,18 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/Initialize(timeofday)
 	load_mode()
 
-	var/all_music = CONFIG_GET(keyed_list/lobby_music)
-	var/key = SAFEPICK(all_music)
-	if(key)
-		login_music = file(all_music[key])
+	login_music = pick("sound/lobby/darkday.ogg",
+						"sound/lobby/govnovoz.ogg",
+						"sound/lobby/hf2.ogg",
+						"sound/lobby/lv426.ogg",
+						"sound/lobby/mesa.ogg",
+						"sound/lobby/primovictoria.ogg",
+						"sound/lobby/prosvistela.ogg",
+						"sound/lobby/rome.ogg",
+						"sound/lobby/teardrop.ogg",
+						"sound/lobby/warrior.ogg",
+						"sound/lobby/skeleti.ogg",
+												)
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/ticker/fire(resumed = FALSE)
@@ -281,7 +289,7 @@ SUBSYSTEM_DEF(ticker)
 	save_mode(CONFIG_GET(string/gamemode_default))
 
 	if(GLOB.round_statistics)
-		to_chat_spaced(world, html = FONT_SIZE_BIG(SPAN_ROLE_BODY("<B>Welcome to [GLOB.round_statistics.round_name]</B>")))
+		to_chat_spaced(world, html = FONT_SIZE_BIG(SPAN_ROLE_BODY("<B>Добро пожаловать на [GLOB.round_statistics.round_name]</B>")))
 
 	GLOB.supply_controller.start_processing()
 
@@ -387,10 +395,10 @@ SUBSYSTEM_DEF(ticker)
 
 	var/skip_delay = check_rights()
 	if(delay_end && !skip_delay)
-		to_chat(world, SPAN_BOLDNOTICE("An admin has delayed the round end."))
+		to_chat(world, SPAN_BOLDNOTICE("Администратор отложил конец раунда."))
 		return
 
-	to_chat(world, SPAN_BOLDNOTICE("Rebooting World in [DisplayTimeText(delay)]. [reason]"))
+	to_chat(world, SPAN_BOLDNOTICE("Перезагрузка мира через [DisplayTimeText(delay)]. [reason]"))
 
 	var/start_wait = world.time
 	sleep(delay - (world.time - start_wait))
@@ -399,9 +407,20 @@ SUBSYSTEM_DEF(ticker)
 		to_chat(world, SPAN_BOLDNOTICE("Reboot was cancelled by an admin."))
 		return
 
-	log_game("Rebooting World. [reason]")
+	log_game("АГАСЬ. [reason]")
 	to_chat_forced(world, "<h3>[SPAN_BOLDNOTICE("Rebooting...")]</h3>")
-
+	var/end_sound = pick("sound/misc/Game_Over_Man.ogg",
+						"sound/misc/gone_to_plaid.ogg",
+						"sound/misc/Rerun.ogg",
+						"sound/misc/facehugged_male.ogg",
+						"sound/misc/asses_kicked.ogg",
+						"sound/misc/hardon.ogg",
+						"sound/misc/outstanding_marines.ogg",
+						"sound/misc/sadtrombone.ogg",
+						"sound/misc/distressbeacon_Sunshine.ogg",
+						"sound/misc/surrounded_by_assholes.ogg",
+						"sound/misc/good_is_dumb.ogg")
+	world << sound(end_sound)
 	world.Reboot(TRUE)
 
 /datum/controller/subsystem/ticker/proc/create_characters()

@@ -159,8 +159,8 @@
 			var/disarm_chance = rand(1, 100)
 			var/attacker_skill_level = attacking_mob.skills ? attacking_mob.skills.get_skill_level(SKILL_CQC) : SKILL_CQC_MAX // No skills, so assume max
 			var/defender_skill_level = skills ? skills.get_skill_level(SKILL_CQC) : SKILL_CQC_MAX // No skills, so assume max
-			disarm_chance -= 5 * attacker_skill_level
-			disarm_chance += 5 * defender_skill_level
+			disarm_chance -= 10 * attacker_skill_level
+			disarm_chance += 10 * defender_skill_level
 
 			if(disarm_chance <= 25)
 				var/strength = 2 + max((attacker_skill_level - defender_skill_level), 0)

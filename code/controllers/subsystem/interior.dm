@@ -51,7 +51,12 @@ SUBSYSTEM_DEF(interior)
 	if(!isturf(loc))
 		loc = get_turf(loc)
 
-	var/datum/turf_reservation/interior/reservation = SSmapping.used_turfs[loc]
+	var/datum/weakref/reservation_weakref = SSmapping.used_turfs[loc]
+
+	if(!reservation_weakref)
+		return
+
+	var/datum/turf_reservation/interior/reservation = reservation_weakref.resolve()
 
 	if(!istype(reservation))
 		return FALSE

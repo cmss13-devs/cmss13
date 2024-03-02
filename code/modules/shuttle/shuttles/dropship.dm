@@ -50,6 +50,9 @@
 	RegisterSignal(src, COMSIG_DROPSHIP_ADD_EQUIPMENT, PROC_REF(add_equipment))
 	RegisterSignal(src, COMSIG_DROPSHIP_REMOVE_EQUIPMENT, PROC_REF(remove_equipment))
 
+	RegisterSignal(src, COMSIG_DROPSHIP_ADD_EQUIPMENT, PROC_REF(add_equipment))
+	RegisterSignal(src, COMSIG_DROPSHIP_REMOVE_EQUIPMENT, PROC_REF(remove_equipment))
+
 /obj/docking_port/mobile/marine_dropship/Destroy(force)
 	. = ..()
 	qdel(door_control)
@@ -118,7 +121,7 @@
 				continue
 
 			var/name = "Unidentified Lifesigns"
-			var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
+			var/input = "Неизвестные организмы зафиксированы на борту. Рекомендация: блокировка всех внешних шлюзов, включая воздуховоды и вентиляцию."
 			shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg', ares_logging = ARES_LOG_SECURITY)
 			set_security_level(SEC_LEVEL_RED)
 			return
@@ -171,7 +174,7 @@
 		return
 
 	if(automated_hangar_id && automated_lz_id && automated_delay && !automated_timer && mode == SHUTTLE_IDLE)
-		ai_silent_announcement("The [name] will automatically depart in [automated_delay * 0.1] seconds")
+		ai_silent_announcement("Автоматическое отбытие '[name]' через [automated_delay * 0.1] секунд")
 		automated_timer = addtimer(CALLBACK(src, PROC_REF(automated_fly)), automated_delay, TIMER_STOPPABLE)
 
 /obj/docking_port/mobile/marine_dropship/proc/automated_fly()
@@ -188,7 +191,7 @@
 		SSshuttle.moveShuttle(id, automated_lz_id, TRUE)
 	else
 		SSshuttle.moveShuttle(id, automated_hangar_id, TRUE)
-	ai_silent_announcement("Dropship '[name]' departing.")
+	ai_silent_announcement("Десантный корабль '[name]' отбывает.")
 
 /obj/docking_port/stationary/marine_dropship
 	dir = NORTH

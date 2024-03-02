@@ -1,9 +1,9 @@
 //This is intended to be a full wrapper. DO NOT directly modify its values
 ///Container for client viewsize
 /datum/view_data
-	///width ratio of the owneing clients view
+	///width ratio of the parents clients view
 	var/width = 0
-	///height ratio of the owneing clients view
+	///height ratio of the parents clients view
 	var/height = 0
 	///Default view size, formatted as a string
 	var/default = ""

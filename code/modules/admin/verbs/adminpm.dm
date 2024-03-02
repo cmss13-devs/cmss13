@@ -228,7 +228,8 @@
 		if(CLIENT_IS_STAFF(src)) //sender is an admin but recipient is not. Do BIG RED TEXT
 			var/already_logged = FALSE
 			if(!recipient.current_ticket)
-				new /datum/admin_help(msg, recipient, TRUE)
+				var/datum/admin_help/new_ticket = new(msg, recipient, TRUE)
+				new_ticket.marked_admin = ckey
 				already_logged = TRUE
 				log_ahelp(recipient.current_ticket.id, "Ticket Opened", msg, recipient.ckey, src.ckey)
 

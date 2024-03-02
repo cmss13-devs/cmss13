@@ -1,0 +1,4 @@
+author: "Vicacrov"
+delete-after: True
+changes:
+  - qol: "The Transfer Plasma ability now has a blue, healing overlay and causes a second-long jitter upon success, to show the recipient that they are being targeted."

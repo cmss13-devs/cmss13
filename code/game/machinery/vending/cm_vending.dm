@@ -1279,8 +1279,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 			//Gives ranks to the ranked
 			if(istype(underclothes) && user.wear_id && user.wear_id.paygrade)
 				var/rankpath = get_rank_pins(user.wear_id.paygrade)
-				//var/falconpatch = /obj/item/clothing/accessory/patch/falcon
-				//underclothes.attach_accessory(user,falconpatch)
 				if(rankpath)
 					var/obj/item/clothing/accessory/ranks/rank_insignia = new rankpath()
 					var/obj/item/clothing/accessory/patch/uscmpatch = new(get_turf(src))

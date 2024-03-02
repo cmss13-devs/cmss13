@@ -359,7 +359,7 @@
 			if(on_fire)
 				to_chat(src, SPAN_WARNING("Touching \the [morpher] while you're on fire would burn the facehuggers in it!"))
 				return
-			store_eggs_in_egg_morpher(morpher)
+			store_huggers_from_egg_morpher(morpher)
 			return
 
 	var/obj/item/xeno_egg/E = get_active_hand()

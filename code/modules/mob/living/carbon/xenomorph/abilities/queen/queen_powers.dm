@@ -293,6 +293,7 @@
 	to_chat(X, SPAN_XENONOTICE("You channel your plasma to heal your sisters' wounds around this area."))
 	return ..()
 
+
 /datum/action/xeno_action/onclick/manage_hive/proc/give_evo_points()
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
 	var/plasma_cost_givepoints = 100
@@ -308,8 +309,9 @@
 		to_chat(usr, SPAN_XENOWARNING("You must give some time for larva to spawn before sacrificing them. Please wait another [round((SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK - world.time) / 600)] minutes."))
 		return
 
-	if(active)
-		to_chat(usr, SPAN_XENOWARNING("Прошлый бонус от жертвы грудолома всё ещё активен!"))
+	var/choice = tgui_input_list(user_xeno, "Choose a xenomorph to give evolution points for a burrowed larva:", "Give Evolution Points", user_xeno.hive.totalXenos, theme="hive_status")
+
+	if(!choice)
 		return
 	var/evo_points_per_larva = 250
 	var/required_larva = 1
@@ -337,19 +339,22 @@
 		return
 
 	if(user_xeno.hive.stored_larva < required_larva)
-		to_chat(usr, SPAN_XENOWARNING("Недостаточно закопанных грудоломов."))
+		to_chat(user_xeno, SPAN_XENOWARNING("You need at least [required_larva] burrowed larva to sacrifice one for evolution points."))
 		return
 
-	if(!user_xeno.check_state() || !check_and_use_plasma_owner(plasma_cost))
+	if(tgui_alert(user_xeno, "Are you sure you want to sacrifice a larva to give [target_xeno] [evo_points_per_larva] evolution points?", "Give Evolution Points", list("Yes", "No")) != "Yes")
 		return
 
-	xeno_message(SPAN_XENOANNOUNCE("Улей пожертвовал новорождённой сестрой во имя эволюции! Дополнительный приток остановится через [duration/600] минут."), hivenumber = user_xeno.hive.hivenumber)
-	xeno_maptext("Улей пожертвовал новорождённой сестрой во имя эволюции!", "Эволюция Улья", user_xeno.hive.hivenumber)
-	addtimer(CALLBACK(src, PROC_REF(end_boost), user_xeno), duration)
-	active = TRUE
+	if(!user_xeno.check_state() || !check_and_use_plasma_owner(plasma_cost) || target_xeno.health < 0 || user_xeno.hive.stored_larva < required_larva)
+		return
 
-	var/datum/techtree/xeno_tree = GET_TREE(TREE_XENO)
-	xeno_tree.give_points_over_time(to_give, duration)
+	to_chat(target_xeno, SPAN_XENOWARNING("\The [user_xeno] has given you evolution points! Use them well."))
+	to_chat(user_xeno, SPAN_XENOWARNING("\The [target_xeno] was given [evo_points_per_larva] evolution points."))
+
+	if(target_xeno.evolution_stored + evo_points_per_larva > target_xeno.evolution_threshold)
+		target_xeno.evolution_stored = target_xeno.evolution_threshold
+	else
+		target_xeno.evolution_stored += evo_points_per_larva
 
 	user_xeno.hive.stored_larva--
 	return

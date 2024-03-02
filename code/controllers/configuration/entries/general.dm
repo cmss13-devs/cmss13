@@ -159,8 +159,6 @@ Administrative related.
 /datum/config_entry/string/ooc_color_default
 	config_entry_value = "#b82e00"
 
-/datum/config_entry/flag/usewhitelist
-
 /datum/config_entry/flag/usealienwhitelist
 
 /datum/config_entry/flag/use_age_restriction_for_jobs //Do jobs use account age restrictions? --requires database

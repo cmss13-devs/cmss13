@@ -1652,7 +1652,6 @@
 #include "code\modules\cm_preds\yaut_items.dm"
 #include "code\modules\cm_preds\yaut_machines.dm"
 #include "code\modules\cm_preds\yaut_mask.dm"
-#include "code\modules\cm_preds\yaut_mask_actions.dm"
 #include "code\modules\cm_preds\yaut_procs.dm"
 #include "code\modules\cm_preds\yaut_shield.dm"
 #include "code\modules\cm_preds\yaut_special_actions.dm"

@@ -94,12 +94,13 @@ GLOBAL_LIST_EMPTY(living_borers)
 	density = 0
 	pass_flags = PASS_FLAGS_CRAWLER
 	mob_size = MOB_SIZE_SMALL
-	faction = list("creature")
+	faction = "Cortical"
 	hud_possible = list(HEALTH_HUD,STATUS_HUD)
 	universal_understand = TRUE
 
 	holder_type = /obj/item/holder/borer
 	special_mob = TRUE //shows up in own observe category
+	lighting_alpha = 200
 
 	var/generation = 1
 	var/stealthy = FALSE

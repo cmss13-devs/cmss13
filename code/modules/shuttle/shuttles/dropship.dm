@@ -43,6 +43,9 @@
 					door_control.add_door(air, "port")
 				if("aft_door")
 					door_control.add_door(air, "aft")
+			var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/hatch = air
+			if(istype(hatch))
+				hatch.linked_dropship = src
 
 	RegisterSignal(src, COMSIG_DROPSHIP_ADD_EQUIPMENT, PROC_REF(add_equipment))
 	RegisterSignal(src, COMSIG_DROPSHIP_REMOVE_EQUIPMENT, PROC_REF(remove_equipment))

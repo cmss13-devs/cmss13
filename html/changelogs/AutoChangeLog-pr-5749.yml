@@ -1,6 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - rscadd: "adding vendor for maintenance technician."
-  - code_imp: "remove some item that maintenance technician spawned with and put them in is vendor instead."
-  - maptweak: "replaced secured closet by vendor for maintenance technician."

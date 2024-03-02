@@ -876,5 +876,9 @@
 			to_chat(cur_mob, SPAN_XOOC("Cortical Impulse: [src.key]([src.admin_holder.rank]): [msg]"))
 
 /mob/living/carbon/human/proc/make_borer_host(worm_generation = 1, worm_repro = 1)
+	if(has_brain_worms())
+		return FALSE
 	var/mob/living/carbon/cortical_borer/birthed = new /mob/living/carbon/cortical_borer(src, worm_generation, TRUE, worm_repro)
 	birthed.perform_infestation(src)
+	log_admin("[key_name(src)] was infected with a Cortical Borer by proccall.")
+	return TRUE

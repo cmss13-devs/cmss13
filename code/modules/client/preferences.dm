@@ -1986,7 +1986,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					current_menu = href_list["menu"]
 
 				if("widescreen")
-					widescreenpref = !widescreenpref
+					widescreen = !widescreen
 					user.client.view_size.set_default(get_screen_size(widescreen))
 
 	ShowChoices(user)

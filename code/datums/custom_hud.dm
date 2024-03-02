@@ -6,17 +6,17 @@
 	var/ui_inventory = "WEST:6,1:5"
 
 	//Lower center, persistent menu
-	var/ui_sstore1 = "WEST+2:10,1:5"
-	var/ui_id = "WEST+3:12,1:5"
-	var/ui_belt = "WEST+4:14,1:5"
-	var/ui_back = "WEST+5:14,1:5"
-	var/ui_rhand = "WEST+6:16,1:5"
-	var/ui_lhand = "WEST+7:16,1:5"
-	var/ui_equip = "WEST+6:16,2:5"
-	var/ui_swaphand1 = "WEST+6:16,2:5"
-	var/ui_swaphand2 = "WEST+7:16,2:5"
-	var/ui_storage1 = "WEST+8:18,1:5"
-	var/ui_storage2 = "WEST+9:20,1:5"
+	var/ui_sstore1 = "CENTER-5:10,1:5"
+	var/ui_id = "CENTER-4:12,1:5"
+	var/ui_belt = "CENTER-3:14,1:5"
+	var/ui_back = "CENTER-2:14,1:5"
+	var/ui_rhand = "CENTER:16,1:5"
+	var/ui_lhand = "CENTER-1:16,1:5"
+	var/ui_equip = "CENTER-1:16,2:5"
+	var/ui_swaphand1 = "CENTER-1:16,2:5"
+	var/ui_swaphand2 = "CENTER:16,2:5"
+	var/ui_storage1 = "CENTER+1:18,1:5"
+	var/ui_storage2 = "CENTER+2:20,1:5"
 
 	//Lower right, persistent menu
 	var/ui_dropbutton = "EAST-4:22,1:5"

@@ -184,6 +184,7 @@
 
 GLOBAL_DATUM_INIT(medals_view_tgui, /datum/medals_view_tgui, new)
 
+
 /datum/medals_view_tgui/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -194,7 +195,7 @@ GLOBAL_DATUM_INIT(medals_view_tgui, /datum/medals_view_tgui, new)
 	. = ..()
 	.["medals"] = list()
 
-	for(var/datum/view_record/medal_view/medal as anything in DB_VIEW(/datum/view_record/medal_view, DB_COMP("player_id", DB_EQUALS, user.client.player_data.id)))
+	for(var/datum/view_record/medal_view/medal as anything in get_medals())
 		var/xeno_medal = FALSE
 		if(medal.medal_type in GLOB.xeno_medals)
 			xeno_medal = TRUE
@@ -211,6 +212,10 @@ GLOBAL_DATUM_INIT(medals_view_tgui, /datum/medals_view_tgui, new)
 		)
 
 		.["medals"] += list(current_medal)
+
+/datum/medals_view_tgui/proc/get_medals()
+	return DB_VIEW(/datum/view_record/medal_view, DB_COMP("player_id", DB_EQUALS, user.client.player_data.id))
+
 
 /datum/medals_view_tgui/ui_state(mob/user)
 	return GLOB.always_state
@@ -226,43 +231,19 @@ GLOBAL_DATUM_INIT(medals_view_tgui, /datum/medals_view_tgui, new)
 
 	GLOB.medals_view_tgui.tgui_interact(mob)
 
-GLOBAL_DATUM_INIT(medals_view_given_tgui, /datum/medals_view_given_tgui, new)
+GLOBAL_DATUM_INIT(medals_view_given_tgui, /datum/medals_view_tgui/given_medals, new)
 
-/datum/medals_view_given_tgui/tgui_interact(mob/user, datum/tgui/ui)
+
+/datum/medals_view_tgui/given_medals/get_medals()
+	return DB_VIEW(/datum/view_record/medal_view, DB_COMP("giver_player_id", DB_EQUALS, user.client.player_data.id))
+
+
+/datum/medals_view_tgui/given_medals/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "MedalsViewer", "[user.ckey]'s Medals")
+		ui = new(user, src, "MedalsViewer", "[user.ckey]'s Given Medals")
 		ui.open()
 
-/datum/medals_view_given_tgui/ui_static_data(mob/user)
-	. = ..()
-	.["medals"] = list()
-
-	for(var/datum/view_record/medal_view/medal as anything in DB_VIEW(/datum/view_record/medal_view, DB_COMP("giver_player_id", DB_EQUALS, user.client.player_data.id)))
-		var/xeno_medal = FALSE
-		if(medal.medal_type in GLOB.xeno_medals)
-			xeno_medal = TRUE
-
-		var/list/current_medal = list(
-			"round_id" = medal.round_id,
-			"medal_type" = medal.medal_type,
-			"medal_icon" = replacetext(medal.medal_type, " ", "-"),
-			"xeno_medal" = xeno_medal,
-			"recipient_name" = medal.recipient_name,
-			"recipient_role" = medal.recipient_role,
-			"giver_name" = medal.giver_name,
-			"citation" = medal.citation
-		)
-
-		.["medals"] += list(current_medal)
-
-/datum/medals_view_given_tgui/ui_state(mob/user)
-	return GLOB.always_state
-
-/datum/medals_view_given_tgui/ui_assets(mob/user)
-	return list(
-		get_asset_datum(/datum/asset/spritesheet/medal)
-	)
 
 /client/verb/view_given_medals()
 	set name = "View Medals Given to Others"

@@ -93,7 +93,6 @@
 //=========================================================================================
 
 /obj/structure/machinery/cryopod/evacuation
-	stat = MACHINE_DO_NOT_PROCESS
 	unslashable = TRUE
 	unacidable = TRUE
 	time_till_despawn = 6000000 //near infinite so despawn never occurs.

@@ -43,7 +43,6 @@
 #define EMPED 256 // temporary broken by EMP pulse
 #define TIPPED_OVER 512 // for tipped over vendors
 #define IN_USE 1024 // to show that it's actively used right now. Vending an object, for example.
-#define MACHINE_DO_NOT_PROCESS 32768 //Do not added these to processing queue.
 
 #define IN_REPAIR (REPAIR_STEP_FOUR|REPAIR_STEP_THREE|REPAIR_STEP_TWO|REPAIR_STEP_ONE)
 

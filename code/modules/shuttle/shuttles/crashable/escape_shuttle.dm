@@ -29,6 +29,7 @@
 			air.unacidable = TRUE
 			air.linked_shuttle = src
 
+
 /obj/docking_port/mobile/crashable/escape_shuttle/proc/cancel_evac()
 	door_handler.control_doors("force-unlock")
 	evac_set = FALSE
@@ -47,6 +48,7 @@
 	for(var/area/interior_area in shuttle_areas)
 		for(var/obj/structure/machinery/cryopod/evacuation/cryotube in interior_area)
 			cryotube.dock_state = STATE_READY
+
 	for(var/obj/structure/machinery/door/air in door_handler.doors)
 		air.breakable = TRUE
 		air.indestructible = FALSE
@@ -115,7 +117,12 @@
 
 /obj/docking_port/mobile/crashable/escape_shuttle/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
 	. = ..()
+
 	playsound(src,'sound/effects/escape_pod_launch.ogg', 50, 1)
+
+	for(var/area/interior_area in shuttle_areas)
+		for(var/obj/structure/machinery/cryopod/evacuation/cryotube in interior_area)
+			cryotube.dock_state = STATE_LAUNCHED
 
 /obj/docking_port/mobile/crashable/escape_shuttle/e
 	id = ESCAPE_SHUTTLE_EAST

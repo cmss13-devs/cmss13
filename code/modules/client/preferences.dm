@@ -238,7 +238,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 
 	var/widescreen = TRUE
 
-	var/pixel_size = 0
+	var/pixel_size = PIXEL_SCALING_AUTO
 	var/scaling_method = SCALING_METHOD_NORMAL
 
 	/// if this client has tooltips enabled

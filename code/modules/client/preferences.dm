@@ -239,8 +239,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/widescreen = TRUE
 
 	var/pixel_size = 0
-
 	var/scaling_method = SCALING_METHOD_NORMAL
+
 	/// if this client has tooltips enabled
 	var/tooltips = TRUE
 
@@ -1988,6 +1988,22 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 				if("widescreen")
 					widescreen = !widescreen
 					user.client.view_size.set_default(get_screen_size(widescreen))
+
+				if("pixel_size")
+					var/index = GLOB.pixel_size_options.Find(pixel_size) + 1
+					if(index > length(GLOB.pixel_size_options))
+						index = 1
+					pixel_size = GLOB.pixel_size_options[index]
+
+					user.client.view_size.apply()
+
+				if("scaling_method")
+					var/index = GLOB.scaling_options.Find(scaling_method) + 1
+					if(index > length(GLOB.scaling_options))
+						index = 1
+					scaling_method = GLOB.scaling_options[index]
+
+					user.client.view_size.update_zoom_mode()
 
 	ShowChoices(user)
 	return 1

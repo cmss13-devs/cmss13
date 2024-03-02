@@ -10,12 +10,12 @@
 
 	///Bool that determines whether we want it to ignore any other changes after we applied some changes
 	var/suppress_changes = FALSE
-	///the owner of this view data
-	var/client/chief = null
+	///the parent of this view data
+	var/client/parent = null
 
-/datum/view_data/New(client/owner, view_string)
+/datum/view_data/New(client/parent, view_string)
 	default = view_string
-	chief = owner
+	src.parent = parent
 	apply()
 
 ///sets the default view size froma  string
@@ -32,15 +32,15 @@
 
 ///Resets the format type
 /datum/view_data/proc/assert_format()
-	winset(chief, "mapwindow.map", "zoom=0")
+	winset(parent, "mapwindow.map", "zoom=0")
 
 ///applies the current clients preferred pixel size setting
 /datum/view_data/proc/update_pixel_format()
-	winset(chief, "mapwindow.map", "zoom=[chief.prefs.pixel_size]")
+	winset(parent, "mapwindow.map", "zoom=[parent.prefs.pixel_size]")
 
 ///applies the preferred clients scaling method
 /datum/view_data/proc/update_zoom_mode()
-	winset(chief, "mapwindow.map", "zoom-mode=[chief.prefs.scaling_method]")
+	winset(parent, "mapwindow.map", "zoom-mode=[parent.prefs.scaling_method]")
 
 ///Returns a boolean if the client has any form of zoom
 /datum/view_data/proc/is_zooming()
@@ -100,7 +100,7 @@
 
 ///applies all current outstanding changes to the client
 /datum/view_data/proc/apply()
-	chief.change_view(get_client_view_size())
+	parent.change_view(get_client_view_size())
 	safe_apply_formatting()
 
 ///supresses any further view changes until it is unsupressed
@@ -123,7 +123,7 @@
 ///Zooms the client back in with an animate pretty simple
 /datum/view_data/proc/zoom_in()
 	reset_to_default()
-	animate(chief, pixel_x = 0, pixel_y = 0, 0, FALSE, LINEAR_EASING, ANIMATION_END_NOW)
+	animate(parent, pixel_x = 0, pixel_y = 0, 0, FALSE, LINEAR_EASING, ANIMATION_END_NOW)
 
 ///zooms out the client with a given radius and offset as well as a direction
 /datum/view_data/proc/zoom_out(radius = 0, offset = 0, direction = NONE)
@@ -139,7 +139,7 @@
 				_y = -offset
 			if(WEST)
 				_x = -offset
-		animate(chief, pixel_x = world.icon_size*_x, pixel_y = world.icon_size*_y, 0, FALSE, LINEAR_EASING, ANIMATION_END_NOW)
+		animate(parent, pixel_x = world.icon_size*_x, pixel_y = world.icon_size*_y, 0, FALSE, LINEAR_EASING, ANIMATION_END_NOW)
 
 	set_view_radius_to(radius)
 
@@ -148,3 +148,25 @@
 	if(widescreen)
 		return CONFIG_GET(string/default_view)
 	return CONFIG_GET(string/default_view_square)
+
+/client/verb/set_pixel_size(size as num)
+	set name = ".set_pixel_size"
+
+	if(!(size in GLOB.pixel_size_options))
+		return
+
+	prefs.pixel_size = size
+	prefs.save_preferences()
+
+	view_size.apply()
+
+/client/verb/set_scaling_method(method as text)
+	set name = ".set_scaling_method"
+
+	if(!(method in GLOB.scaling_options))
+		return
+
+	prefs.scaling_method = method
+	prefs.save_preferences()
+
+	view_size.update_zoom_mode()

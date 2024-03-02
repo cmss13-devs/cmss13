@@ -85,6 +85,8 @@
 
 	if(hostile)
 		to_chat(survivor, SPAN_HIGHDANGER("You are HOSTILE to the USCM!"))
+	else if(survivor.faction == FACTION_CLF)
+		to_chat(survivor, SPAN_HIGHDANGER("You are HOSTILE to the USCM, but NOT to other survivors!"))
 	else
 		to_chat(survivor, SPAN_XENOHIGHDANGER("You are NON-HOSTILE to the USCM!"))
 

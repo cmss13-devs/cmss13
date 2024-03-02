@@ -35,7 +35,7 @@
 	var/headset_hud_on = FALSE
 	var/locate_setting = TRACKER_SL
 	var/misc_tracking = FALSE
-	var/hud_type = MOB_HUD_FACTION_USCM
+	var/hud_type = MOB_HUD_FACTION_MARINE
 	var/default_freq
 
 	///The type of minimap this headset is added to
@@ -341,7 +341,7 @@
 	var/z_level = turf_gotten.z
 
 	if(wearer.assigned_equipment_preset.always_minimap_visible == TRUE || wearer.stat == DEAD) //We show to all marines if we have this flag, separated by faction
-		if(hud_type == MOB_HUD_FACTION_USCM)
+		if(hud_type == MOB_HUD_FACTION_MARINE)
 			marker_flags = MINIMAP_FLAG_USCM
 		else if(hud_type == MOB_HUD_FACTION_UPP)
 			marker_flags = MINIMAP_FLAG_UPP
@@ -1013,7 +1013,7 @@
 	icon_state = "cmb_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/cmb)
 	has_hud = TRUE
-	hud_type = MOB_HUD_FACTION_USCM
+	hud_type = MOB_HUD_FACTION_MARINE
 
 /obj/item/device/radio/headset/distress/CMB/limited
 	name = "\improper Damaged CMB Earpiece"
@@ -1058,7 +1058,7 @@
 	initial_keys = list(/obj/item/device/encryptionkey/soc/forecon)
 	volume = RADIO_VOLUME_QUIET
 	has_hud = TRUE
-	hud_type = MOB_HUD_FACTION_USCM
+	hud_type = MOB_HUD_FACTION_MARINE
 
 /obj/item/device/radio/headset/almayer/mcom/vc
 	name = "marine vehicle crew radio headset"

@@ -303,10 +303,26 @@
 	},
 /area/adminlevel/chinook/offices)
 "aV" = (
-/turf/open/floor/corsat{
-	icon_state = "squares"
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_y = 14;
+	pixel_x = 7
 	},
-/area/space)
+/obj/item/reagent_container/food/drinks/bottle/cognac{
+	pixel_y = 13;
+	pixel_x = -6
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	pixel_y = -3;
+	pixel_x = -3
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	pixel_x = 6
+	},
+/turf/open/floor/almayer{
+	icon_state = "ai_floors"
+	},
+/area/adminlevel/chinook/offices)
 "aW" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21"
@@ -455,15 +471,50 @@
 	},
 /area/adminlevel/chinook)
 "bl" = (
-/obj/structure/machinery/cm_vending/clothing/dress,
-/obj/structure/sign/poster/propaganda{
-	pixel_y = 30
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/noticeboard{
+	pixel_y = 27
+	},
+/obj/item/clothing/accessory/medal/gold/service{
+	pixel_y = 21;
+	pixel_x = -6
+	},
+/obj/item/clothing/accessory/medal/gold/service{
+	pixel_y = 21;
+	pixel_x = -2
+	},
+/obj/item/clothing/accessory/medal/gold/service{
+	pixel_y = 21;
+	pixel_x = 2
+	},
+/obj/item/clothing/accessory/medal/gold/service{
+	pixel_y = 21;
+	pixel_x = 6
+	},
+/obj/item/tool/lighter/zippo/gold{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/obj/item/prop/tableflag{
+	pixel_x = -9;
+	pixel_y = -2
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/chinook/offices)
 "bm" = (
 /obj/structure/surface/table/reinforced/black,
-/obj/structure/machinery/computer/card,
+/obj/item/paper_bin/uscm{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/tool/pen/fountain{
+	pixel_y = 4;
+	pixel_x = -8
+	},
+/obj/item/device/flashlight/lamp{
+	pixel_y = 8;
+	pixel_x = 6
+	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/chinook/offices)
 "bn" = (
@@ -487,24 +538,13 @@
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/offices)
 "bu" = (
-/obj/structure/machinery/cm_vending/clothing/dress,
-/turf/open/floor/strata{
-	desc = "Faux wooden floor boards, certified fire resistant. Begrudgingly put in place of actual wood due to concerns about 'fire safety'. Whatever that means.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/obj/structure/surface/table/reinforced/black,
+/turf/closed/mineral,
 /area/adminlevel/chinook/offices)
 "bv" = (
-/obj/structure/surface/table/reinforced/black,
-/obj/item/reagent_container/food/drinks/cans/waterbottle{
-	pixel_y = 7
-	},
-/turf/open/floor/strata{
-	desc = "Faux wooden floor boards, certified fire resistant. Begrudgingly put in place of actual wood due to concerns about 'fire safety'. Whatever that means.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
-/area/adminlevel/chinook/offices)
+/obj/item/stack/sheet/wood/large_stack,
+/turf/open/floor/plating,
+/area/adminlevel/chinook/engineering)
 "bx" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3";
@@ -517,8 +557,16 @@
 /turf/open/floor/wood/ship,
 /area/adminlevel/chinook)
 "by" = (
-/turf/closed/shuttle/elevator,
-/area/space)
+/obj/structure/surface/table/reinforced/black,
+/obj/item/ashtray/glass{
+	pixel_y = 4;
+	pixel_x = -13
+	},
+/turf/open/floor/carpet{
+	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
+	name = "\improper carpet"
+	},
+/area/adminlevel/chinook/offices)
 "bz" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -530,20 +578,12 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/cargo)
 "bB" = (
-/obj/structure/surface/table/reinforced/black,
-/obj/item/prop/helmetgarb/flair_uscm{
-	pixel_x = 7
+/obj/structure/machinery/cm_vending/clothing/dress,
+/obj/structure/sign/poster/propaganda{
+	pixel_y = 30
 	},
-/obj/item/clothing/accessory/patch{
-	pixel_x = -3;
-	pixel_y = 6
-	},
-/turf/open/floor/strata{
-	desc = "Faux wooden floor boards, certified fire resistant. Begrudgingly put in place of actual wood due to concerns about 'fire safety'. Whatever that means.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
-/area/adminlevel/chinook/offices)
+/turf/open/floor/wood/ship,
+/area/space)
 "bC" = (
 /turf/closed/wall/almayer/outer,
 /area/adminlevel/chinook/cargo)
@@ -910,6 +950,15 @@
 /obj/structure/machinery/disposal,
 /turf/open/floor/wood/ship,
 /area/adminlevel/chinook/offices)
+"cK" = (
+/obj/item/tool/pen,
+/obj/item/paper_bin/uscm,
+/obj/structure/surface/table/reinforced/black,
+/turf/open/floor/carpet{
+	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
+	name = "\improper carpet"
+	},
+/area/space)
 "cL" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1;
@@ -963,27 +1012,20 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook)
 "cU" = (
-/obj/structure/surface/table/reinforced/black,
-/obj/item/reagent_container/food/drinks/coffeecup/uscm{
-	pixel_x = -7;
-	pixel_y = 6
-	},
 /turf/open/floor/carpet{
 	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
 	name = "\improper carpet"
 	},
-/area/adminlevel/chinook/offices)
+/area/space)
 "cV" = (
-/obj/structure/surface/table/reinforced/black,
-/obj/item/paper_bin/uscm{
-	pixel_y = 6
+/obj/structure/machinery/light{
+	dir = 1
 	},
-/obj/item/tool/pen,
-/turf/open/floor/carpet{
-	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
-	name = "\improper carpet"
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "green"
 	},
-/area/adminlevel/chinook/offices)
+/area/adminlevel/chinook)
 "cW" = (
 /obj/structure/machinery/autolathe/medilathe/full,
 /turf/open/floor/almayer{
@@ -1272,6 +1314,13 @@
 	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/chinook/offices)
+"dP" = (
+/obj/structure/bed/chair/comfy/black,
+/turf/open/floor/carpet{
+	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
+	name = "\improper carpet"
+	},
+/area/space)
 "dQ" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/flora/pottedplant{
@@ -1689,6 +1738,15 @@
 	icon_state = "plate"
 	},
 /area/adminlevel/chinook)
+"fa" = (
+/obj/structure/sign/prop1{
+	pixel_y = 32
+	},
+/obj/structure/closet/secure_closet/commander{
+	name = "commodore's locker"
+	},
+/turf/open/floor/wood/ship,
+/area/space)
 "fb" = (
 /obj/structure/machinery/door_control{
 	id = "chinookengilock";
@@ -1832,7 +1890,9 @@
 /area/adminlevel/chinook/offices)
 "fz" = (
 /obj/structure/surface/table/reinforced/black,
-/obj/item/clothing/suit/storage/bomber,
+/obj/item/clothing/suit/storage/bomber{
+	name = "custom bomber jacket"
+	},
 /obj/item/prop/flower_vase/redwhiteflowers{
 	pixel_x = 7;
 	pixel_y = 11
@@ -1861,7 +1921,9 @@
 "fC" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/item/paper_bin/uscm,
-/obj/item/tool/pen,
+/obj/item/tool/pen/fountain{
+	pixel_y = -3
+	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/chinook/offices)
 "fD" = (
@@ -1898,18 +1960,15 @@
 	},
 /area/adminlevel/chinook/medical)
 "fI" = (
-/obj/structure/sign/prop1{
-	pixel_y = 32
+/obj/structure/machinery/computer/card{
+	dir = 4
 	},
-/obj/structure/closet/secure_closet/commander{
-	name = "commodore's locker"
+/obj/structure/surface/table/reinforced/black,
+/turf/open/floor/carpet{
+	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
+	name = "\improper carpet"
 	},
-/turf/open/floor/strata{
-	desc = "Faux wooden floor boards, certified fire resistant. Begrudgingly put in place of actual wood due to concerns about 'fire safety'. Whatever that means.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
-/area/adminlevel/chinook/offices)
+/area/space)
 "fJ" = (
 /obj/structure/machinery/autolathe/full,
 /turf/open/floor/almayer{
@@ -1946,13 +2005,13 @@
 	pixel_x = -8;
 	pixel_y = 8
 	},
-/obj/item/tool/pen{
-	pixel_x = -10;
-	pixel_y = -1
-	},
 /obj/item/device/flashlight/lamp{
 	pixel_y = 8;
 	pixel_x = 6
+	},
+/obj/item/tool/pen/fountain{
+	pixel_x = -8;
+	pixel_y = 5
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/chinook/offices)
@@ -1971,45 +2030,22 @@
 	},
 /area/adminlevel/chinook/engineering)
 "fR" = (
-/obj/structure/machinery/light{
+/obj/structure/bed/chair/comfy{
 	dir = 1
 	},
-/obj/structure/closet/secure_closet/securecom{
-	name = "commodore's secure box"
+/turf/open/floor/wood/ship,
+/area/space)
+"fS" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/reagent_container/food/drinks/cans/waterbottle{
+	pixel_y = 7
 	},
 /turf/open/floor/strata{
 	desc = "Faux wooden floor boards, certified fire resistant. Begrudgingly put in place of actual wood due to concerns about 'fire safety'. Whatever that means.";
 	icon = 'icons/turf/floors/floors.dmi';
 	icon_state = "wood"
 	},
-/area/adminlevel/chinook/offices)
-"fS" = (
-/obj/structure/surface/table/reinforced/black,
-/obj/structure/noticeboard{
-	pixel_y = 27
-	},
-/obj/item/clothing/accessory/medal/gold/service{
-	pixel_y = 21;
-	pixel_x = -6
-	},
-/obj/item/clothing/accessory/medal/gold/service{
-	pixel_y = 21;
-	pixel_x = -2
-	},
-/obj/item/clothing/accessory/medal/gold/service{
-	pixel_y = 21;
-	pixel_x = 2
-	},
-/obj/item/clothing/accessory/medal/gold/service{
-	pixel_y = 21;
-	pixel_x = 6
-	},
-/obj/item/tool/lighter/zippo/gold{
-	pixel_x = 5;
-	pixel_y = 6
-	},
-/turf/open/floor/wood/ship,
-/area/adminlevel/chinook/offices)
+/area/space)
 "fU" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/almayer{
@@ -2093,7 +2129,7 @@
 	},
 /area/adminlevel/chinook/cargo)
 "gh" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/rack,
 /obj/item/device/binoculars,
 /obj/item/device/binoculars,
 /obj/item/device/binoculars,
@@ -2101,7 +2137,7 @@
 /obj/item/device/binoculars,
 /obj/item/device/binoculars,
 /turf/open/floor/almayer{
-	icon_state = "plate"
+	icon_state = "cargo"
 	},
 /area/adminlevel/chinook)
 "gi" = (
@@ -2329,11 +2365,14 @@
 	},
 /area/adminlevel/chinook/engineering)
 "gU" = (
-/obj/structure/machinery/light{
-	dir = 4
+/obj/structure/surface/table/reinforced/black,
+/obj/item/reagent_container/food/drinks/h_chocolate{
+	pixel_y = 10;
+	pixel_x = 8
 	},
-/turf/open/floor/corsat{
-	icon_state = "squares"
+/turf/open/floor/carpet{
+	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
+	name = "\improper carpet"
 	},
 /area/space)
 "gV" = (
@@ -2414,6 +2453,10 @@
 	},
 /obj/structure/machinery/light{
 	dir = 8
+	},
+/obj/item/prop/tableflag/uscm2{
+	pixel_y = 6;
+	pixel_x = 10
 	},
 /turf/open/floor/carpet{
 	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
@@ -2630,16 +2673,14 @@
 /turf/open/floor/plating,
 /area/adminlevel/chinook/shuttle)
 "hN" = (
-/obj/structure/surface/table/reinforced/black,
-/obj/item/reagent_container/food/drinks/h_chocolate{
-	pixel_y = 10;
-	pixel_x = 8
+/obj/structure/machinery/light{
+	dir = 8
 	},
 /turf/open/floor/carpet{
 	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
 	name = "\improper carpet"
 	},
-/area/adminlevel/chinook/offices)
+/area/space)
 "hP" = (
 /turf/open/floor/almayer{
 	dir = 10;
@@ -2776,10 +2817,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 2.1
 	},
-/obj/structure/platform{
-	dir = 1;
-	layer = 2
-	},
+/obj/structure/platform/stair_cut/alt,
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/event)
 "ip" = (
@@ -2821,16 +2859,11 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 2.1
 	},
-/obj/structure/platform{
-	dir = 1;
-	layer = 2
-	},
+/obj/structure/platform/stair_cut,
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/event)
 "iw" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/stair_cut,
 /obj/structure/stairs/perspective{
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap";
@@ -2854,6 +2887,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
+/obj/item/reagent_container/food/drinks/golden_cup/tournament_26_06_2011,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating"
@@ -3112,9 +3146,7 @@
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/stair_cut/alt,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating"
@@ -3183,13 +3215,16 @@
 	},
 /area/adminlevel/chinook/event)
 "jA" = (
-/obj/structure/machinery/light{
-	dir = 1
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 16
 	},
-/obj/structure/closet/secure_closet/securecom{
-	name = "commodore's secure box"
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = 8;
+	pixel_y = 16
 	},
-/obj/item/reagent_container/food/drinks/golden_cup,
 /turf/open/floor/wood/ship,
 /area/adminlevel/chinook/offices)
 "jC" = (
@@ -3224,20 +3259,19 @@
 	},
 /area/adminlevel/chinook/event)
 "jH" = (
-/turf/closed/shuttle/elevator{
-	dir = 6
-	},
+/obj/structure/flora/pottedplant/random,
+/turf/open/floor/wood/ship,
 /area/space)
 "jI" = (
-/obj/structure/machinery/computer/card{
-	dir = 4
-	},
 /obj/structure/surface/table/reinforced/black,
+/obj/item/ashtray/glass{
+	pixel_y = 4
+	},
 /turf/open/floor/carpet{
 	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
 	name = "\improper carpet"
 	},
-/area/adminlevel/chinook/offices)
+/area/space)
 "jJ" = (
 /obj/structure/surface/rack,
 /obj/item/device/lightreplacer,
@@ -3340,8 +3374,18 @@
 	},
 /area/adminlevel/chinook/cargo)
 "kc" = (
-/turf/closed/shuttle/elevator{
-	dir = 10
+/obj/structure/surface/table/reinforced/black,
+/obj/item/prop/helmetgarb/flair_uscm{
+	pixel_x = 7
+	},
+/obj/item/clothing/accessory/patch{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/turf/open/floor/strata{
+	desc = "Faux wooden floor boards, certified fire resistant. Begrudgingly put in place of actual wood due to concerns about 'fire safety'. Whatever that means.";
+	icon = 'icons/turf/floors/floors.dmi';
+	icon_state = "wood"
 	},
 /area/space)
 "kd" = (
@@ -3387,10 +3431,17 @@
 	},
 /area/adminlevel/chinook/sec)
 "kl" = (
-/turf/closed/shuttle/elevator{
-	dir = 5
+/obj/structure/filingcabinet{
+	pixel_x = 8;
+	pixel_y = 16
 	},
-/area/space)
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 16
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/chinook/offices)
 "km" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -3692,6 +3743,16 @@
 	},
 /turf/open/floor/kutjevo,
 /area/adminlevel/chinook/event)
+"le" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/toy/beach_ball/holoball{
+	pixel_y = 4
+	},
+/turf/open/floor/carpet{
+	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
+	name = "\improper carpet"
+	},
+/area/space)
 "lf" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
@@ -3908,6 +3969,17 @@
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/chinook)
+"lU" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/prop/tableflag/uscm{
+	pixel_x = -9;
+	pixel_y = 6
+	},
+/turf/open/floor/carpet{
+	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
+	name = "\improper carpet"
+	},
+/area/adminlevel/chinook/offices)
 "lV" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -4067,6 +4139,33 @@
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/cargo)
+"my" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/noticeboard{
+	pixel_y = 27
+	},
+/obj/item/clothing/accessory/medal/gold/service{
+	pixel_y = 21;
+	pixel_x = -6
+	},
+/obj/item/clothing/accessory/medal/gold/service{
+	pixel_y = 21;
+	pixel_x = -2
+	},
+/obj/item/clothing/accessory/medal/gold/service{
+	pixel_y = 21;
+	pixel_x = 2
+	},
+/obj/item/clothing/accessory/medal/gold/service{
+	pixel_y = 21;
+	pixel_x = 6
+	},
+/obj/item/tool/lighter/zippo/gold{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/turf/open/floor/wood/ship,
+/area/space)
 "mz" = (
 /obj/structure/bed/chair/comfy{
 	dir = 4
@@ -4801,11 +4900,15 @@
 	},
 /area/adminlevel/chinook/sec)
 "oF" = (
-/turf/open/floor/almayer{
-	dir = 9;
-	icon_state = "green"
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/light{
+	dir = 8
 	},
-/area/adminlevel/chinook)
+/turf/open/floor/carpet{
+	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
+	name = "\improper carpet"
+	},
+/area/adminlevel/chinook/offices)
 "oG" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -5623,6 +5726,17 @@
 	icon_state = "silver"
 	},
 /area/adminlevel/chinook)
+"rg" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/computer/emails{
+	dir = 4;
+	pixel_x = 1
+	},
+/turf/open/floor/carpet{
+	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
+	name = "\improper carpet"
+	},
+/area/space)
 "rh" = (
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry,
 /turf/open/floor/almayer{
@@ -5712,6 +5826,10 @@
 	icon_state = "sterile_green_side"
 	},
 /area/adminlevel/chinook/medical)
+"rv" = (
+/obj/structure/reagent_dispensers/water_cooler,
+/turf/open/floor/wood/ship,
+/area/adminlevel/chinook/offices)
 "rw" = (
 /obj/structure/platform_decoration{
 	dir = 1
@@ -6087,6 +6205,7 @@
 	},
 /obj/structure/surface/rack,
 /obj/item/clothing/head/welding,
+/obj/item/stack/sheet/metal/large_stack,
 /turf/open/floor/almayer{
 	icon_state = "orange"
 	},
@@ -6184,9 +6303,7 @@
 /turf/open/floor/wood/ship,
 /area/adminlevel/chinook/offices)
 "sW" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/stair_cut,
 /obj/structure/stairs/perspective{
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap";
@@ -6288,15 +6405,15 @@
 	},
 /area/adminlevel/chinook)
 "tp" = (
-/obj/structure/surface/table/reinforced/black,
-/obj/item/toy/beach_ball/holoball{
-	pixel_y = 4
+/obj/structure/closet/crate{
+	name = "prosthetics printer materials crate"
 	},
-/turf/open/floor/carpet{
-	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
-	name = "\improper carpet"
+/obj/item/stack/sheet/metal/large_stack,
+/obj/item/stack/sheet/metal/large_stack,
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
-/area/adminlevel/chinook/offices)
+/area/adminlevel/chinook/medical)
 "tq" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "Bathroom"
@@ -6520,6 +6637,11 @@
 	},
 /turf/open/floor/kutjevo/tan,
 /area/adminlevel/chinook/event)
+"ub" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/computer/card,
+/turf/open/floor/wood/ship,
+/area/space)
 "ud" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	dir = 2;
@@ -6596,16 +6718,15 @@
 /area/adminlevel/chinook/offices)
 "uq" = (
 /obj/structure/surface/table/reinforced/black,
-/obj/structure/machinery/computer/emails{
-	dir = 8;
-	pixel_x = -3;
-	pixel_y = -1
+/obj/item/reagent_container/food/drinks/coffeecup/uscm{
+	pixel_x = -7;
+	pixel_y = 6
 	},
 /turf/open/floor/carpet{
 	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
 	name = "\improper carpet"
 	},
-/area/adminlevel/chinook/offices)
+/area/space)
 "ur" = (
 /obj/structure/bed/sofa/south/grey/left,
 /turf/open/floor/almayer{
@@ -7715,10 +7836,9 @@
 	},
 /area/adminlevel/chinook/offices)
 "xZ" = (
-/turf/closed/shuttle/elevator{
-	dir = 9
-	},
-/area/space)
+/obj/structure/surface/table/reinforced/almayer_B,
+/turf/open/floor/wood/ship,
+/area/adminlevel/chinook/offices)
 "ya" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
@@ -7967,6 +8087,25 @@
 	icon_state = "sterile_green_corner"
 	},
 /area/adminlevel/chinook/medical)
+"yX" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/device/flashlight/lamp{
+	pixel_y = 5;
+	pixel_x = -8
+	},
+/obj/item/paper_bin/uscm{
+	pixel_y = 8;
+	pixel_x = 5
+	},
+/obj/item/tool/pen/fountain{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/turf/open/floor/carpet{
+	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
+	name = "\improper carpet"
+	},
+/area/adminlevel/chinook/offices)
 "yY" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -8102,6 +8241,19 @@
 	name = "\improper carpet"
 	},
 /area/adminlevel/chinook/offices)
+"zu" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/closet/secure_closet/securecom{
+	name = "commodore's secure box"
+	},
+/turf/open/floor/strata{
+	desc = "Faux wooden floor boards, certified fire resistant. Begrudgingly put in place of actual wood due to concerns about 'fire safety'. Whatever that means.";
+	icon = 'icons/turf/floors/floors.dmi';
+	icon_state = "wood"
+	},
+/area/space)
 "zw" = (
 /turf/open/floor/wood/ship,
 /area/adminlevel/chinook/event)
@@ -8992,14 +9144,12 @@
 /turf/open/floor/wood/ship,
 /area/adminlevel/chinook/offices)
 "Cw" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
+/obj/structure/surface/table/reinforced/black,
 /turf/open/floor/carpet{
 	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
 	name = "\improper carpet"
 	},
-/area/adminlevel/chinook/offices)
+/area/space)
 "Cx" = (
 /turf/open/floor/almayer/uscm/directional{
 	dir = 9
@@ -9057,6 +9207,12 @@
 	icon_state = "silver"
 	},
 /area/adminlevel/chinook/cryo)
+"CL" = (
+/obj/structure/reagent_dispensers/water_cooler,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/adminlevel/chinook/offices)
 "CM" = (
 /obj/structure/machinery/light,
 /obj/structure/machinery/medical_pod/sleeper,
@@ -9731,11 +9887,18 @@
 	},
 /area/adminlevel/chinook)
 "Fi" = (
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "green"
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/light{
+	dir = 8
 	},
-/area/adminlevel/chinook)
+/obj/item/toy/beach_ball/holoball{
+	pixel_y = 4
+	},
+/turf/open/floor/carpet{
+	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
+	name = "\improper carpet"
+	},
+/area/adminlevel/chinook/offices)
 "Fk" = (
 /obj/structure/sign/ROsign{
 	desc = "A metal plaque discussing firearms safety. Its rules say: \n 1. Always keep firearms pointed in a safe direction away from anyone.\n 2. Keep your finger off the trigger until ready to shoot.\n 3. Do not take any firearms outside of the range.\n 4. No smoking, eating or drinking is allowed while on the firing range.";
@@ -10316,10 +10479,8 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/surface/table/reinforced/almayer_B,
-/turf/open/floor/almayer{
-	icon_state = "ai_floors"
-	},
+/obj/structure/flora/pottedplant/random,
+/turf/open/floor/wood/ship,
 /area/adminlevel/chinook/offices)
 "Hf" = (
 /obj/structure/bed/chair/comfy/black{
@@ -10981,7 +11142,26 @@
 	},
 /area/adminlevel/chinook/sec)
 "Ju" = (
-/turf/closed/shuttle/elevator/gears,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/closet/secure_closet/securecom{
+	name = "commodore's secure box"
+	},
+/obj/item/reagent_container/food/drinks/golden_cup,
+/turf/open/floor/wood/ship,
+/area/space)
+"Jw" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/computer/emails{
+	dir = 8;
+	pixel_x = -3;
+	pixel_y = -1
+	},
+/turf/open/floor/carpet{
+	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
+	name = "\improper carpet"
+	},
 /area/space)
 "Jx" = (
 /obj/structure/surface/rack,
@@ -11117,6 +11297,21 @@
 	icon_state = "cargo"
 	},
 /area/adminlevel/chinook/sec)
+"JP" = (
+/obj/item/stack/sheet/metal/large_stack,
+/turf/open/floor/plating,
+/area/adminlevel/chinook/engineering)
+"JQ" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/paper_bin/uscm{
+	pixel_y = 6
+	},
+/obj/item/tool/pen,
+/turf/open/floor/carpet{
+	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
+	name = "\improper carpet"
+	},
+/area/space)
 "JR" = (
 /turf/open/floor/kutjevo/tan/alt_edge,
 /area/adminlevel/chinook/event)
@@ -11597,14 +11792,16 @@
 	},
 /area/adminlevel/chinook/engineering)
 "Lp" = (
-/obj/structure/sign/goldenplaque{
-	pixel_x = 31;
-	desc = "The plaque reads, 'This plaque is awarded to: KARL WALZ, For superior and unrivaled strategic prowess during the 2173 War Games, scoring a decisive and triumphant victory for their side.'";
-	name = "2173 Commanding Excellence Award"
+/obj/structure/machinery/light{
+	dir = 4
 	},
-/turf/open/floor/carpet{
-	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
-	name = "\improper carpet"
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/reagent_container/food/drinks/golden_cup{
+	name = "No. 1 Baller Award";
+	desc = "A trophy given to the winner of the annual Baller competition. Such a competition has, in fact, nothing to do with basketball and is so elusive, nobody knows what it actually is or what winning it symbolizes. But at least it has a nice trophy."
+	},
+/turf/open/floor/almayer{
+	icon_state = "ai_floors"
 	},
 /area/adminlevel/chinook/offices)
 "Ls" = (
@@ -12072,20 +12269,8 @@
 	},
 /area/adminlevel/chinook)
 "MP" = (
-/obj/structure/surface/table/reinforced/black,
-/obj/structure/machinery/computer/card{
-	dir = 4;
-	pixel_y = 11
-	},
-/obj/structure/machinery/computer/intel{
-	dir = 4;
-	pixel_y = -3
-	},
-/turf/open/floor/carpet{
-	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
-	name = "\improper carpet"
-	},
-/area/adminlevel/chinook/offices)
+/turf/open/floor/wood/ship,
+/area/space)
 "MQ" = (
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer{
@@ -12240,6 +12425,7 @@
 /obj/structure/closet/crate,
 /obj/item/stack/sheet/plasteel/large_stack,
 /obj/item/stack/sheet/metal/medium_stack,
+/obj/item/stack/sheet/metal/large_stack,
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
@@ -12657,12 +12843,9 @@
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/offices)
 "OS" = (
-/obj/structure{
-	density = 1;
-	desc = "A shuttle control computer. This one seems powered down.";
-	icon = 'icons/obj/structures/machinery/computer.dmi';
+/obj/structure/prop/pred_flight{
 	icon_state = "syndishuttle";
-	name = "nonfunctional shuttle control console"
+	name = "shuttle control console"
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15"
@@ -13183,13 +13366,20 @@
 	},
 /area/adminlevel/chinook/engineering)
 "Qs" = (
-/obj/item/tool/pen,
+/obj/item/tool/pen/fountain{
+	pixel_x = 3;
+	pixel_y = -1
+	},
 /obj/item/paper_bin/uscm,
 /obj/structure/sign/prop1{
 	pixel_x = -32;
 	pixel_y = 2
 	},
 /obj/structure/surface/table/reinforced/black,
+/obj/item/tool/pen/fountain{
+	pixel_x = 3;
+	pixel_y = 3
+	},
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/offices)
 "Qt" = (
@@ -13260,6 +13450,10 @@
 /obj/item/prop/tableflag/uscm2{
 	pixel_y = 1;
 	pixel_x = 1
+	},
+/obj/item/tool/pen/fountain{
+	pixel_x = 10;
+	pixel_y = 6
 	},
 /turf/open/floor/carpet{
 	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
@@ -13878,14 +14072,14 @@
 	},
 /area/adminlevel/chinook)
 "SH" = (
-/obj/item/tool/pen,
-/obj/item/paper_bin/uscm,
-/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/carpet{
 	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
 	name = "\improper carpet"
 	},
-/area/adminlevel/chinook/offices)
+/area/space)
 "SI" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/reagentgrinder{
@@ -13980,9 +14174,7 @@
 	},
 /area/adminlevel/chinook)
 "SV" = (
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/stair_cut/alt,
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
@@ -14242,7 +14434,8 @@
 "TU" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/item/reagent_container/food/snacks/monkeysdelight{
-	pixel_y = 9
+	pixel_y = 9;
+	desc = "Morbidly pickled and preserved as a conversation piece. Somehow, doesn't smell like anything."
 	},
 /turf/open/floor/carpet{
 	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
@@ -14640,12 +14833,11 @@
 	},
 /area/adminlevel/chinook/medical)
 "Vd" = (
-/obj/structure/machinery/door/airlock/multi_tile/elevator/access{
-	desc = "An elevator hatch to take you to different levels of the station. This elevator seems to be disabled.";
-	name = "\improper Elevator Hatch"
-	},
-/turf/open/floor/corsat{
-	icon_state = "squares"
+/obj/structure/machinery/cm_vending/clothing/dress,
+/turf/open/floor/strata{
+	desc = "Faux wooden floor boards, certified fire resistant. Begrudgingly put in place of actual wood due to concerns about 'fire safety'. Whatever that means.";
+	icon = 'icons/turf/floors/floors.dmi';
+	icon_state = "wood"
 	},
 /area/space)
 "Ve" = (
@@ -14696,6 +14888,10 @@
 	dir = 9
 	},
 /area/adminlevel/chinook/cargo)
+"Vp" = (
+/obj/structure/machinery/disposal,
+/turf/open/floor/wood/ship,
+/area/space)
 "Vq" = (
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/cargo)
@@ -14902,6 +15098,19 @@
 	icon_state = "dark_sterile"
 	},
 /area/adminlevel/chinook/offices)
+"Wa" = (
+/obj/structure/sign/prop1{
+	pixel_y = 32
+	},
+/obj/structure/closet/secure_closet/commander{
+	name = "commodore's locker"
+	},
+/turf/open/floor/strata{
+	desc = "Faux wooden floor boards, certified fire resistant. Begrudgingly put in place of actual wood due to concerns about 'fire safety'. Whatever that means.";
+	icon = 'icons/turf/floors/floors.dmi';
+	icon_state = "wood"
+	},
+/area/space)
 "Wb" = (
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin/wy{
@@ -15931,11 +16140,14 @@
 	},
 /area/adminlevel/chinook/medical)
 "Zd" = (
-/obj/structure/machinery/light{
-	dir = 8
+/obj/structure/sign/goldenplaque{
+	pixel_x = 31;
+	desc = "The plaque reads, 'This plaque is awarded to: KARL WALZ, For superior and unrivaled strategic prowess during the 2173 War Games, scoring a decisive and triumphant victory for their side.'";
+	name = "2173 Commanding Excellence Award"
 	},
-/turf/open/floor/corsat{
-	icon_state = "squares"
+/turf/open/floor/carpet{
+	desc = "Plush, waterproof carpet. Apparently it's fire resistant while remaining quite soft.";
+	name = "\improper carpet"
 	},
 /area/space)
 "Zf" = (
@@ -18068,23 +18280,23 @@ oi
 oi
 oi
 oi
-df
-df
-df
-df
-df
-df
+Yc
+Yc
+Yc
+Yc
+Yc
+Yc
 Yc
 Xm
 Xm
 Xm
 Yc
-df
-df
-df
-df
-df
-df
+Yc
+Yc
+Yc
+Yc
+Yc
+Yc
 al
 al
 Yt
@@ -18195,12 +18407,12 @@ oi
 oi
 oi
 oi
-df
-xZ
-by
-by
-by
-kc
+Yc
+NZ
+AD
+AD
+AD
+qd
 Yc
 sr
 vl
@@ -18211,7 +18423,7 @@ AD
 AD
 AD
 qd
-df
+Yc
 al
 al
 al
@@ -18322,12 +18534,12 @@ oi
 oi
 oi
 oi
-df
-Ju
-Zd
-aV
-Zd
-Ju
+Yc
+Fx
+DS
+TJ
+DS
+Fx
 Yc
 eu
 Zi
@@ -18338,7 +18550,7 @@ DS
 TJ
 DS
 Fx
-df
+Yc
 al
 al
 al
@@ -18449,12 +18661,12 @@ oi
 oi
 oi
 oi
-df
-Vd
-aV
-aV
-aV
-Vd
+Yc
+Pw
+TJ
+TJ
+TJ
+Pw
 Pw
 sr
 Zi
@@ -18465,7 +18677,7 @@ TJ
 TJ
 TJ
 HT
-df
+Yc
 al
 al
 al
@@ -18576,12 +18788,12 @@ oi
 oi
 oi
 oi
-df
-aV
-aV
-aV
-aV
-aV
+Yc
+TJ
+TJ
+TJ
+TJ
+TJ
 TJ
 sr
 Zi
@@ -18592,7 +18804,7 @@ TJ
 TJ
 TJ
 HT
-df
+Yc
 al
 al
 al
@@ -18703,12 +18915,12 @@ oi
 oi
 oi
 oi
-df
-aV
-aV
-aV
-aV
-aV
+Yc
+TJ
+TJ
+TJ
+TJ
+TJ
 TJ
 sr
 Zi
@@ -18719,7 +18931,7 @@ TJ
 TJ
 TJ
 HT
-df
+Yc
 al
 al
 al
@@ -18830,12 +19042,12 @@ oi
 oi
 oi
 oi
-df
-aV
-aV
-aV
-aV
-aV
+Yc
+TJ
+TJ
+TJ
+TJ
+TJ
 TJ
 sr
 Zi
@@ -18846,7 +19058,7 @@ TJ
 TJ
 TJ
 HT
-df
+Yc
 al
 al
 al
@@ -18957,12 +19169,12 @@ Jc
 Yt
 Yt
 Yt
-df
-Ju
-gU
-aV
-gU
-Ju
+Yc
+Fx
+Fn
+TJ
+Fn
+Fx
 Yc
 eu
 Zi
@@ -18973,7 +19185,7 @@ Fn
 TJ
 Fn
 Fx
-df
+Yc
 al
 al
 al
@@ -19084,12 +19296,12 @@ Zu
 al
 al
 al
-df
-kl
-by
-by
-by
-jH
+Yc
+MF
+AD
+AD
+AD
+rp
 Yc
 sr
 Zi
@@ -19100,7 +19312,7 @@ AD
 AD
 AD
 rp
-df
+Yc
 al
 al
 al
@@ -19227,7 +19439,7 @@ Yc
 Yc
 Yc
 Yc
-df
+Yc
 al
 al
 al
@@ -20632,7 +20844,7 @@ jF
 mU
 nv
 qj
-up
+rv
 Ix
 sr
 Xx
@@ -21513,7 +21725,7 @@ fK
 QB
 DE
 up
-eo
+cG
 jF
 sr
 vl
@@ -22260,9 +22472,9 @@ al
 al
 Yc
 bl
-qj
-qj
-Cm
+fK
+Fi
+DE
 up
 cG
 jF
@@ -22275,7 +22487,7 @@ fK
 NW
 DE
 up
-eo
+cG
 jF
 sr
 Xx
@@ -22385,12 +22597,12 @@ oi
 Zu
 al
 al
-Xm
+Yc
 bm
-qj
-Bx
-tp
-Ns
+CC
+Kx
+DE
+up
 up
 jF
 sr
@@ -22515,9 +22727,9 @@ al
 Yc
 ZF
 qj
-CC
-hN
-Ns
+by
+DE
+up
 up
 jg
 vl
@@ -22639,12 +22851,12 @@ oi
 Zu
 al
 al
-Xm
+Yc
 jA
-qj
-SH
-ny
-Ns
+up
+up
+up
+up
 up
 jF
 sr
@@ -22767,12 +22979,12 @@ Zu
 al
 al
 Yc
-fS
-qj
-Lp
-Cw
+Lx
 up
+Lp
+fe
 eo
+cG
 jF
 sr
 Zi
@@ -22836,7 +23048,7 @@ UK
 UK
 bz
 nU
-nU
+JP
 RM
 WL
 al
@@ -23010,21 +23222,21 @@ oi
 oi
 oi
 oi
-oi
-oi
-oi
-oi
-oi
-oi
+bB
+cU
+cU
+hN
+MP
+Vp
 oi
 Zu
 al
 al
 Yc
 bu
-qj
-qj
-Cm
+fK
+oF
+DE
 up
 cG
 jF
@@ -23033,17 +23245,17 @@ Zi
 Xx
 jF
 Bh
-MP
+fK
 hf
 DE
 up
-eo
+cG
 jF
 sr
 Xx
 YC
 YC
-zJ
+CL
 up
 Zy
 EB
@@ -23089,7 +23301,7 @@ Ig
 Ig
 UK
 bz
-nU
+bv
 pp
 RM
 XH
@@ -23137,22 +23349,22 @@ oi
 oi
 oi
 oi
-oi
-oi
-oi
-oi
-oi
-oi
+ub
+cU
+rg
+le
+fR
+MP
 oi
 Zu
 al
 al
-Xm
-bv
-qj
-jI
-MA
-Ns
+Yc
+wK
+CC
+Kx
+DE
+up
 up
 jF
 sr
@@ -23264,22 +23476,22 @@ oi
 oi
 oi
 oi
-oi
-oi
-oi
-oi
-oi
-oi
+fa
+cU
+dP
+gU
+fR
+MP
 oi
 Zu
 al
 al
 Yc
-fI
+ZF
 qj
-CC
-cU
-Ns
+yX
+DE
+up
 up
 rX
 vl
@@ -23288,7 +23500,7 @@ Xx
 jF
 ZF
 qj
-MA
+lU
 DE
 up
 up
@@ -23391,29 +23603,29 @@ oi
 oi
 oi
 oi
-oi
-oi
-oi
-oi
-oi
-oi
+Ju
+cU
+cK
+jI
+fR
+MP
 oi
 Zu
 al
 al
-Xm
-fR
-qj
-uq
-cV
-Ns
+Yc
+qa
+up
+up
+up
+up
 up
 jF
 sr
 Zi
 Xx
 jF
-qa
+kl
 up
 up
 up
@@ -23518,21 +23730,21 @@ oi
 oi
 oi
 oi
-oi
-oi
-oi
-oi
-oi
-oi
+my
+cU
+Zd
+SH
+MP
+jH
 oi
 Zu
 al
 al
 Yc
-bB
-qj
-qj
-Cw
+aw
+up
+fE
+up
 up
 eo
 jF
@@ -23540,12 +23752,12 @@ ZS
 Zi
 Xx
 jF
-aw
+Lx
 up
 Hd
-fe
-up
-up
+aV
+xZ
+qa
 jF
 sr
 Xx
@@ -23772,12 +23984,12 @@ oi
 oi
 oi
 oi
-oi
-oi
-oi
-oi
-oi
-oi
+Vd
+cU
+cU
+hN
+MP
+Vp
 oi
 oi
 Zu
@@ -23899,12 +24111,12 @@ oi
 oi
 oi
 oi
-oi
-oi
-oi
-oi
-oi
-oi
+fS
+cU
+fI
+Cw
+fR
+MP
 oi
 oi
 Zu
@@ -24026,12 +24238,12 @@ oi
 oi
 oi
 oi
-oi
-oi
-oi
-oi
-oi
-oi
+Wa
+cU
+dP
+uq
+fR
+MP
 oi
 oi
 Zu
@@ -24109,7 +24321,7 @@ AM
 Iv
 GE
 OB
-OB
+tp
 Iv
 OB
 RP
@@ -24153,12 +24365,12 @@ oi
 oi
 oi
 oi
-oi
-oi
-oi
-oi
-oi
-oi
+zu
+cU
+Jw
+JQ
+fR
+MP
 oi
 oi
 Zu
@@ -24280,12 +24492,12 @@ oi
 oi
 oi
 oi
-oi
-oi
-oi
-oi
-oi
-oi
+kc
+cU
+cU
+SH
+MP
+jH
 oi
 oi
 Zu
@@ -24794,7 +25006,7 @@ oi
 oi
 oi
 SP
-oF
+gh
 PM
 PM
 PM
@@ -24933,7 +25145,7 @@ md
 WF
 yR
 ZZ
-PP
+Wy
 WF
 cA
 QW
@@ -25302,7 +25514,7 @@ oi
 oi
 oi
 SP
-fZ
+cV
 ga
 ga
 bY
@@ -25695,7 +25907,7 @@ jD
 LW
 ZZ
 ZZ
-PP
+Wy
 WF
 WF
 WF
@@ -25710,8 +25922,8 @@ jZ
 Tm
 NU
 TQ
-TQ
 og
+SL
 SL
 kA
 SL
@@ -25810,7 +26022,7 @@ oi
 oi
 oi
 SP
-fZ
+cV
 ZZ
 ZZ
 WF
@@ -25837,9 +26049,9 @@ Tl
 Tm
 TQ
 TQ
-TQ
 oh
 ld
+SL
 wj
 wj
 wj
@@ -25949,7 +26161,7 @@ jD
 Ff
 ZZ
 ZZ
-PP
+Wy
 WF
 WF
 lO
@@ -25965,8 +26177,8 @@ Tm
 Vr
 Vr
 Vr
-Vr
 BP
+SL
 wj
 wj
 wj
@@ -26092,8 +26304,8 @@ Tm
 lD
 Vr
 Vr
-Vr
 BP
+SL
 wj
 wj
 wj
@@ -26218,9 +26430,9 @@ gl
 Tm
 WU
 Vr
-Vr
 om
 pP
+Vr
 Vr
 Vr
 Vr
@@ -26318,7 +26530,7 @@ oi
 oi
 oi
 SP
-fZ
+cV
 ga
 ga
 EV
@@ -26345,9 +26557,9 @@ kg
 Tm
 kG
 Vr
-Vr
 om
 pP
+Vr
 Vr
 Vr
 Vr
@@ -26473,8 +26685,8 @@ Tm
 Qt
 Vr
 Vr
-Vr
 BP
+SL
 wj
 wj
 wj
@@ -26600,8 +26812,8 @@ Tm
 Vr
 Vr
 Vr
-Vr
 BP
+SL
 wj
 wj
 wj
@@ -26711,7 +26923,7 @@ md
 WF
 yR
 ZZ
-PP
+Wy
 WF
 Wc
 lO
@@ -26726,9 +26938,9 @@ kq
 Tm
 TQ
 TQ
-TQ
 oz
 BV
+SL
 wj
 wj
 wj
@@ -26826,7 +27038,7 @@ oi
 oi
 oi
 SP
-Fi
+gh
 ge
 ge
 ge
@@ -26853,8 +27065,8 @@ QR
 Tm
 NU
 TQ
-TQ
 oH
+SL
 SL
 kI
 SL

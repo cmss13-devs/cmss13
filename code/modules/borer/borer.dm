@@ -268,6 +268,8 @@ GLOBAL_LIST_EMPTY(living_borers)
 			return
 		else if(health <= 0) //in crit
 			handle_crit()
+		else if(health >= 1)
+			set_stat(CONSCIOUS)
 
 /mob/living/carbon/cortical_borer/proc/handle_crit()
 	if(stat == DEAD || gibbing)

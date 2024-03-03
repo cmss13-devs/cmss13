@@ -28,7 +28,7 @@
 
 	// It should absolutely self-destroy upon hijack, so xenos don't get an effectively godmoded mob
 	if(is_mainship_level(z) && istype(SSticker.mode, /datum/game_mode/colonialmarines))
-		RegisterSignal(src, COMSIG_GLOB_HIJACK_STARTED, PROC_REF(destroy_upon_hijack))
+		RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_STARTED, PROC_REF(destroy_upon_hijack))
 
 //Inefficient pooling/caching way.
 GLOBAL_LIST_EMPTY(human_dummy_list)
@@ -83,7 +83,7 @@ GLOBAL_LIST_EMPTY(dummy_mob_list)
 	SIGNAL_HANDLER
 
 	visible_message("The [src] suddenly disintegrates!")
-	qdel(src)
+	dust()
 
 /mob/living/carbon/human/dummy/Destroy()
 	UnregisterSignal(src, COMSIG_GLOB_HIJACK_STARTED)

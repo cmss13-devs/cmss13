@@ -225,7 +225,8 @@
 
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/attack_alien(mob/living/carbon/xenomorph/xeno)
-	if(!shuttleId)
+	// if the shuttleid is null or the shuttleid references a shuttle that has been removed from play, pick one
+	if(!shuttleId || !SSshuttle.hasShuttle(shuttleId))
 		var/list/alternatives = alternative_shuttles()
 		shuttleId = pick(alternatives)["id"]
 
@@ -552,7 +553,7 @@
 			var/found = FALSE
 			for(var/shuttle in alternatives)
 				if(shuttle["id"] == new_shuttle)
-				found = TRUE
+					found = TRUE
 			if(found)
 				shuttleId = params["new_shuttle"]
 				update_static_data(user, ui)

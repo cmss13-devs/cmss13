@@ -86,7 +86,7 @@ GLOBAL_LIST_EMPTY(dummy_mob_list)
 	SIGNAL_HANDLER
 
 	visible_message("The [src] suddenly disintegrates!")
-	dust()
+	dust(create_cause_data("hijack autodelete"))
 
 /mob/living/carbon/human/dummy/Destroy()
 	UnregisterSignal(src, COMSIG_GLOB_HIJACK_STARTED)

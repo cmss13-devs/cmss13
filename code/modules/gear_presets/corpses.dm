@@ -264,7 +264,7 @@
 /datum/equipment_preset/corpse/liaison
 	name = "Corpse - Corporate Liaison"
 	assignment = JOB_EXECUTIVE
-	rank = FACTION_WY
+	rank = JOB_EXECUTIVE
 	faction_group = FACTION_LIST_WY
 	paygrade = PAY_SHORT_WYC3
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
@@ -279,16 +279,30 @@
 	)
 
 /datum/equipment_preset/corpse/liaison/load_gear(mob/living/carbon/human/new_human)
+	var/random = rand(1,4)
 	add_ice_colony_survivor_equipment(new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/black(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/aviator(new_human), WEAR_EYES)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
 	add_random_cl_survivor_loot(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
+
+	switch(random)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/blue(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(new_human), WEAR_JACKET)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/brown(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(new_human), WEAR_JACKET)
+		if(3)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/corporate_formal(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(new_human), WEAR_JACKET)
+		if(4)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/black(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(new_human), WEAR_JACKET)
+
 	. = ..()
 
 /datum/equipment_preset/corpse/liaison/burst
@@ -354,8 +368,8 @@
 
 /datum/equipment_preset/corpse/administrator
 	name = "Corpse - Administrator"
-	assignment = JOB_DIRECTOR
-	rank = FACTION_WY
+	assignment = "Colonial Administrator"
+	rank = JOB_DIRECTOR
 	faction_group = FACTION_LIST_WY
 	paygrade = PAY_SHORT_WYC10
 	idtype = /obj/item/card/id/silver/cl
@@ -557,11 +571,11 @@
 /datum/equipment_preset/corpse/wy/manager/load_gear(mob/living/carbon/human/new_human)
 	add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/manager(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/manager(new_human), WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/manager(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp78(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(new_human), WEAR_R_STORE)

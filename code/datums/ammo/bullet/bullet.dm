@@ -53,10 +53,12 @@
 		fired_from.delete_bullet(firing_projectile, TRUE)
 		return
 
-	if(!(fired_from.flags_gun_features & GUN_SILENCED))
-		playsound(user, fired_from.fire_sound, fired_from.firesound_volume, FALSE)
-	else
+	if(fired_from.flags_gun_features & GUN_SILENCED)
 		playsound(user, fired_from.fire_sound, 25, FALSE)
+	else if(is_mainship_level(user.z))
+		playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), fired_from.fire_sound, volume = fired_from.firesound_volume)
+	else
+		playsound(user, fired_from.fire_sound, fired_from.firesound_volume, FALSE)
 
 	shake_camera(user, 1, 2)
 

@@ -343,13 +343,16 @@
 		to_chat(user, SPAN_XENONOTICE("You place a facehugger in [src]."))
 		qdel(FH)
 
+/obj/effect/alien/resin/trap/healthcheck()
+	if(trap_type != RESIN_TRAP_EMPTY && loc)
+		trigger_trap()
+	..()
+
 /obj/effect/alien/resin/trap/Crossed(atom/A)
 	if(ismob(A) || isVehicleMultitile(A))
 		HasProximity(A)
 
 /obj/effect/alien/resin/trap/Destroy()
-	if(trap_type != RESIN_TRAP_EMPTY && loc)
-		trigger_trap()
 	QDEL_NULL_LIST(tripwires)
 	. = ..()
 

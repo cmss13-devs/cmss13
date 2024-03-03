@@ -658,12 +658,11 @@
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 
-//==================War Correspondent==================\\
+//==================Combat Correspondent==================\\
 
 /obj/item/clothing/suit/storage/marine/light/reporter
 	name = "press body armor"
 	desc = "Body armor used by war correspondents in battles and wars across the universe."
-	icon = 'icons/mob/humans/onmob/contained/war_correspondent.dmi'
-	icon_state = "wc_armor"
+	icon_state = "cc_armor"
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
-	contained_sprite = TRUE
+

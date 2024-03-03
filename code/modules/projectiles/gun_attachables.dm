@@ -3226,7 +3226,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	var/obj/projectile/P = new(src, create_cause_data(initial(name), user, src))
 	var/datum/ammo/flamethrower/ammo_datum = new projectile_type
-	ammo_datum.flamer_reagent_type = flamer_reagent.type
+	ammo_datum.flamer_reagent_id = flamer_reagent.id
 	P.generate_bullet(ammo_datum)
 	P.icon_state = "naptha_ball"
 	P.color = flamer_reagent.color

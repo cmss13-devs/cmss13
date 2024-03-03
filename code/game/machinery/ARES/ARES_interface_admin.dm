@@ -2,19 +2,19 @@
 	set name = "Open ARES Interface"
 	set category = "Admin.Factions"
 
+	var/mob/user = usr
 	if(!check_rights(R_MOD))
-		to_chat(usr, SPAN_WARNING("You do not have access to this command."))
+		to_chat(user, SPAN_WARNING("You do not have access to this command."))
 		return FALSE
 
 	if(!SSticker.mode)
-		to_chat(usr, SPAN_WARNING("The round has not started yet."))
+		to_chat(user, SPAN_WARNING("The round has not started yet."))
 		return FALSE
 
 	if(!GLOB.ares_link || !GLOB.ares_link.admin_interface || !GLOB.ares_link.interface)
 		to_chat(usr, SPAN_BOLDWARNING("ERROR: ARES Link or Interface not found!"))
 		return FALSE
-	GLOB.ares_link.tgui_interact(mob)
-	var/mob/user = usr
+	GLOB.ares_link.tgui_interact(user)
 	var/log = "[key_name(user)] opened the remote ARES Interface."
 	if(user.job)
 		log = "[key_name(user)] ([user.job]) opened the remote ARES Interface."
@@ -51,8 +51,7 @@
 	var/list/data = list()
 
 	data["admin_login"] = "[admin_interface.logged_in], [user.client.admin_holder?.rank]"
-	data["admin_access_log"] = list()
-	data["admin_access_log"] += admin_interface.access_list
+	data["admin_access_log"] = list(admin_interface.access_list)
 
 	data["current_menu"] = admin_interface.current_menu
 	data["last_page"] = admin_interface.last_menu
@@ -67,13 +66,10 @@
 	data["evac_status"] = SShijack.evac_status
 	data["worldtime"] = world.time
 
-	data["access_log"] = list()
-	data["access_log"] += datacore.interface_access_list
-	data["apollo_log"] = list()
-	data["apollo_log"] += datacore.apollo_log
+	data["access_log"] = list(datacore.interface_access_list)
+	data["apollo_log"] = list(datacore.apollo_log)
 
-	data["deleted_conversation"] = list()
-	data["deleted_conversation"] += admin_interface.deleted_1to1
+	data["deleted_conversation"] = list(admin_interface.deleted_1to1)
 
 	data["distresstime"] = datacore.ares_distress_cooldown
 	data["distresstimelock"] = DISTRESS_TIME_LOCK
@@ -344,6 +340,8 @@
 			if(message)
 				interface.response_from_ares(message, params["active_convo"])
 				var/datum/ares_record/talk_log/conversation = locate(params["active_convo"])
+				if(!istype(conversation))
+					return FALSE
 				var/admin_log = SPAN_STAFF_IC("<b>ADMINS/MODS: [SPAN_RED("[key_name(user)] replied to [conversation.user]'s ARES message")] [SPAN_GREEN("via Remote Interface")] with: [SPAN_BLUE(message)] </b>")
 				for(var/client/admin in GLOB.admins)
 					if((R_ADMIN|R_MOD) & admin.admin_holder.rights)

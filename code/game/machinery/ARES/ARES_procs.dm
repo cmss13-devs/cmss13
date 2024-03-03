@@ -234,8 +234,10 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 
 
 /obj/structure/machinery/computer/ares_console/proc/message_ares(text, mob/Sender, ref, fake = FALSE)
-	var/msg = SPAN_STAFF_IC("<b><font color=orange>ARES:</font> [key_name(Sender, 1)] [ARES_MARK(Sender)] [ADMIN_PP(Sender)] [ADMIN_VV(Sender)] [ADMIN_SM(Sender)] [ADMIN_JMP_USER(Sender)] [ARES_REPLY(Sender, ref)]:</b> [text]")
 	var/datum/ares_record/talk_log/conversation = locate(ref)
+	if(!istype(conversation))
+		return
+	var/msg = SPAN_STAFF_IC("<b><font color=orange>ARES:</font> [key_name(Sender, 1)] [ARES_MARK(Sender)] [ADMIN_PP(Sender)] [ADMIN_VV(Sender)] [ADMIN_SM(Sender)] [ADMIN_JMP_USER(Sender)] [ARES_REPLY(Sender, ref)]:</b> [text]")
 	conversation.conversation += "[last_login] at [worldtime2text()], '[text]'"
 	if(fake)
 		log_say("[key_name(Sender)] faked the message '[text]' from [last_login] in ARES 1:1.")
@@ -255,6 +257,8 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 
 /obj/structure/machinery/computer/ares_console/proc/response_from_ares(text, ref)
 	var/datum/ares_record/talk_log/conversation = locate(ref)
+	if(!istype(conversation))
+		return
 	conversation.conversation += "[MAIN_AI_SYSTEM] at [worldtime2text()], '[text]'"
 // ------ End ARES Interface Procs ------ //
 

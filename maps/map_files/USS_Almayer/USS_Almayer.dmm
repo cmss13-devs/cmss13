@@ -19306,14 +19306,14 @@
 /area/almayer/medical/morgue)
 "cnW" = (
 /obj/structure/machinery/optable,
+/mob/living/carbon/human/dummy,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
 /area/almayer/medical/morgue)
 "cnZ" = (
-/obj/item/tool/surgery/hemostat,
-/obj/item/tool/surgery/scalpel,
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/device/professor_dummy_tablet,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_corner"
@@ -19324,6 +19324,8 @@
 /obj/item/tool/surgery/cautery,
 /obj/item/tool/surgery/retractor,
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/tool/surgery/scalpel,
+/obj/item/tool/surgery/hemostat,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},

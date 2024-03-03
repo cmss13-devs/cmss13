@@ -1,12 +1,12 @@
 /obj/item/device/professor_dummy_tablet
 	icon = 'icons/obj/items/devices.dmi'
-	name = "Professor DUMMY tablet"
+	name = "\improper Professor DUMMY tablet"
 	desc = "A Professor DUMMY Control Tablet."
 	suffix = "\[3\]"
 	icon_state = "Cotablet"
 	item_state = "Cotablet"
 
-	var/mob/living/carbon/human/linked_dummy
+	var/mob/living/carbon/human/dummy/linked_dummy
 
 /obj/item/device/professor_dummy_tablet/Destroy()
 	linked_dummy = null
@@ -21,23 +21,31 @@
  */
 /obj/item/device/professor_dummy_tablet/proc/is_adjacent_to_dummy(mob/user)
 	if (get_dist(linked_dummy, user) > 1)
-		to_chat(user, "You are too far away to use the tablet.")
+		to_chat(user, SPAN_WARNING("You are too far away from the dummy to use its tablet."))
 		return FALSE
-
 	return TRUE
 
-/obj/item/device/professor_dummy_tablet/proc/link_mob(mob/living/carbon/human/H)
-	linked_dummy = H
+/obj/item/device/professor_dummy_tablet/proc/link_mob(mob/user)
+	for(var/mob/living/carbon/human/dummy/dummy_to_link in range(1))
+		if(dummy_to_link)
+			linked_dummy = dummy_to_link
+			if(user)
+				balloon_alert(user, "New dummy registered.")
+			return TRUE
+	if(user)
+		balloon_alert(user, "No dummy detected nearby.")
+	return FALSE
 
 /obj/item/device/professor_dummy_tablet/attack_self(mob/user as mob)
 	..()
 	interact(user)
 
 /obj/item/device/professor_dummy_tablet/interact(mob/user as mob)
-	if (isnull(linked_dummy))
+	if(isnull(linked_dummy))
+		link_mob(user)
 		return
 
-	if (!is_adjacent_to_dummy(user))
+	if(!is_adjacent_to_dummy(user))
 		return
 
 	user.set_interaction(src)

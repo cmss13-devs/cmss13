@@ -303,6 +303,8 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 
 					Q.count_niche_stat(STATISTICS_NICHE_FLIGHT)
 
+					SEND_GLOBAL_SIGNAL(COMSIG_GLOB_HIJACK_STARTED)
+
 					if(Q.hive)
 						addtimer(CALLBACK(Q.hive, TYPE_PROC_REF(/datum/hive_status, abandon_on_hijack)), DROPSHIP_WARMUP_TIME + 5 SECONDS, TIMER_UNIQUE) //+ 5 seconds catch standing in doorways
 

@@ -551,11 +551,11 @@
 			var/list/alternatives = alternative_shuttles()
 			var/new_shuttle = params["new_shuttle"]
 			var/found = FALSE
-			for(var/shuttle in alternatives)
-				if(shuttle["id"] == new_shuttle)
+			for(var/alt_shuttle in alternatives)
+				if(alt_shuttle["id"] == new_shuttle)
 					found = TRUE
 			if(found)
-				shuttleId = params["new_shuttle"]
+				shuttleId = new_shuttle
 				update_static_data(user, ui)
 			else
 				log_admin("Player [user] attempted to change shuttle illegally.")

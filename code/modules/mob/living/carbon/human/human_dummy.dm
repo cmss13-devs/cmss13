@@ -85,7 +85,7 @@ GLOBAL_LIST_EMPTY(dummy_mob_list)
 /mob/living/carbon/human/dummy/proc/destroy_upon_hijack()
 	SIGNAL_HANDLER
 
-	visible_message("The [src] suddenly disintegrates!")
+	visible_message(SPAN_WARNING("The [src] suddenly disintegrates!"))
 	dust(create_cause_data("hijack autodelete"))
 
 /mob/living/carbon/human/dummy/Destroy()

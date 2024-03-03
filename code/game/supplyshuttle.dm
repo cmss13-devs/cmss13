@@ -1401,13 +1401,14 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	if(!SSshuttle.vehicle_elevator)
 		return
 
-	dat += "Platform position:<br>"
+	dat += "Platform position: "
 	if (SSshuttle.vehicle_elevator.mode != SHUTTLE_IDLE)
 		dat += "Moving"
 	else
 		if(is_mainship_level(SSshuttle.vehicle_elevator.z))
-			dat += "Raised<br>"
-			dat += "\[<a href='?src=\ref[src];lower_elevator=1'>Lower</a>\]"
+			dat += "Raised"
+			if(!spent)
+				dat += "<br>\[<a href='?src=\ref[src];lower_elevator=1'>Lower</a>\]"
 		else
 			dat += "Lowered"
 	dat += "<br><hr>"
@@ -1448,6 +1449,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 	if(href_list["get_vehicle"])
 		if(is_mainship_level(SSshuttle.vehicle_elevator.z) || SSshuttle.vehicle_elevator.mode != SHUTTLE_IDLE)
+			to_chat(usr, SPAN_WARNING("The elevator needs to be in the cargo bay dock to call a vehicle up!"))
 			return
 		// dunno why the +1 is needed but the vehicles spawn off-center
 		var/turf/middle_turf = get_turf(SSshuttle.vehicle_elevator)

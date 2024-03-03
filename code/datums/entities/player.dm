@@ -460,12 +460,10 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	request.execute_blocking()
 	var/datum/http_response/response = request.into_response()
 	if(response.errored)
-		to_chat(world, "response errored :(")
 		return
 
 	var/static/regex/regex = regex("joined = \"(\\d{4}-\\d{2}-\\d{2})\"")
 	if(!regex.Find(response.body))
-		to_chat(world, "no no found >.< [response.status_code]")
 		return
 
 	byond_account_age = regex.group[1]

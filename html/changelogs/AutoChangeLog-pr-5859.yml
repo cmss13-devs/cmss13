@@ -1,0 +1,4 @@
+author: "harryob"
+delete-after: True
+changes:
+  - admin: "opening a new ticket via pming now automatically marks the ticket"

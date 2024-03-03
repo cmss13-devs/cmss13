@@ -1,3 +1,41 @@
+/datum/reagent/borer
+	reagent_state = LIQUID
+	chemclass = CHEM_CLASS_SPECIAL
+	flags = REAGENT_SCANNABLE|REAGENT_NO_GENERATION
+
+/datum/reagent/borer/enzyme
+	name = "Cortical Enzyme"
+	id = "borerenzyme"
+	description = "An enzyme secreted by a parasite that consumes certain chemicals from the bloodstream. Also seems to help fight addictions."
+	color = "#25c08c"
+	overdose = LOW_REAGENTS_OVERDOSE
+	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
+	properties = list(PROPERTY_CROSSMETABOLIZING = 2, PROPERTY_ANTIADDICTIVE = 2)
+
+/datum/reagent/borer/cure
+	name = "Anti-Enzyme"
+	id = "borercure"
+	description = "An anti-parasite drug synthesised from parastic enzymes. Effectively fights toxins in the bloodstream."
+	color = "#25c08c"
+	overdose = LOW_REAGENTS_OVERDOSE
+	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
+	properties = list(PROPERTY_CROSSMETABOLIZING = 2, PROPERTY_ANTITOXIN = 4, PROPERTY_ANTIPARASITIC = 2)
+
+/datum/reagent/borer/shock
+	name = "Neuroshock"
+	id = "borershock"
+	description = "A biosynthetic nerve agent that stimulates cardiomyocytes in critical condition."
+	properties = list(PROPERTY_CROSSMETABOLIZING = 2, PROPERTY_DEFIBRILLATING = 1, PROPERTY_INTRAVENOUS = 1)
+
+/datum/reagent/borer/transformative
+	name = "Biomend"
+	id = "borertransform"
+	description = "A biosynthetic agent that mends damage tissue while creating a toxic byproduct."
+	properties = list(PROPERTY_CROSSMETABOLIZING = 2, PROPERTY_TRANSFORMATIVE = 2, PROPERTY_INTRAVENOUS = 1)
+
+
+////////////// BORER CHEM DATUMS USED IN THE SYNTHESISER MENU ///////////////////////
+
 GLOBAL_LIST_INIT_TYPED(borer_chemicals, /datum/borer_chem, generate_borer_chems())
 
 /proc/generate_borer_chems()
@@ -19,7 +57,7 @@ GLOBAL_LIST_INIT_TYPED(borer_chemicals, /datum/borer_chem, generate_borer_chems(
 	var/quantity = 10
 
 	var/category = BORER_CAT_HEAL
-
+	var/restricted = FALSE
 	var/species = "UNSET"
 
 
@@ -75,11 +113,23 @@ GLOBAL_LIST_INIT_TYPED(borer_chemicals, /datum/borer_chem, generate_borer_chems(
 	cost = 120
 	quantity = 5
 
-/datum/borer_chem/human/epinephrine
-	chem_name = "Epinephrine"
-	chem_id = "adrenaline"
-	desc = "Useful for restarting the heart. Overdosing may stress the heart and cause tissue damage."
+/datum/borer_chem/human/restarter
+	chem_name = "Neuroshock"
+	chem_id = "borershock"
+	desc = "A powerful nerve agent that stimulates the heart. Useful for keeping your host alive. Lethal in high doses."
+	cost = 300
+	quantity = 2
+	restricted = TRUE
+	impure = FALSE
 
+/datum/borer_chem/universal/biomend
+	chem_name = "Biomend"
+	chem_id = "borertransform"
+	desc = "A biosynthetic agent that mends damage tissue while creating a toxic byproduct."
+	cost = 250
+	quantity = 10
+	restricted = TRUE
+	impure = FALSE
 
 //"Motivation" Chems
 /datum/borer_chem/human/stimulant_brain
@@ -136,6 +186,7 @@ GLOBAL_LIST_INIT_TYPED(borer_chemicals, /datum/borer_chem, generate_borer_chems(
 	cost = 300
 	quantity = 5
 	category = BORER_CAT_PUNISH
+	impure = FALSE
 
 //Yautja chemicals
 /datum/borer_chem/yautja
@@ -151,20 +202,14 @@ GLOBAL_LIST_INIT_TYPED(borer_chemicals, /datum/borer_chem, generate_borer_chems(
 
 
 //Anti-Anti-Parasite
-/datum/borer_chem/human/enzyme
+/datum/borer_chem/universal
+	species = "Universal"
+
+/datum/borer_chem/universal/enzyme
 	chem_name = "Cortical Enzyme"
-	chem_id = "benzyme"
+	chem_id = "borerenzyme"
 	desc = "An enzyme focused on consuming chemicals in the bloodstream. Helps fight addictions. This will work as a preventative measure against anti-parasite drugs so long as it is in the bloodstream. Can cause brain damage."
 	cost = 150
 	quantity = 8
-	category = BORER_CAT_SELF
-	impure = FALSE
-
-/datum/borer_chem/yautja/enzyme
-	chem_name = "Cortical Enzyme"
-	chem_id = "benzyme"
-	desc = "An enzyme focused on consuming chemicals in the bloodstream. Helps fight addictions. This will work as a preventative measure against anti-parasite drugs so long as it is in the bloodstream. Can cause brain damage."
-	cost = 150
-	quantity = 6
 	category = BORER_CAT_SELF
 	impure = FALSE

@@ -134,6 +134,9 @@ GLOBAL_LIST_EMPTY(living_borers)
 	/// Borer status, controlling or docile.
 	var/borer_flags_status //Controlling or Docile. Unsure if I want to put hibernating in here or in actives as active abilities will stop enzyme production.
 
+	/// Whether the borer can create chemicals that are marked as restricted.
+	var/restricted_chems_allowed = FALSE
+
 	var/list/datum/reagent/synthesized_chems
 
 	var/current_actions = ACTION_SET_HOSTLESS
@@ -214,7 +217,7 @@ GLOBAL_LIST_EMPTY(living_borers)
 			var/mob/living/carbon/human/human_host
 			if(ishuman(host))
 				human_host = host
-			if((human_host.chem_effect_flags & CHEM_EFFECT_ANTI_PARASITE) && (!human_host.reagents.has_reagent("benzyme") || human_host.reagents.has_reagent("bcure")))
+			if((human_host.chem_effect_flags & CHEM_EFFECT_ANTI_PARASITE) && (!human_host.reagents.has_reagent("borerenzyme") || human_host.reagents.has_reagent("borercure")))
 				if(!docile)
 					if(borer_flags_status & BORER_STATUS_CONTROLLING)
 						to_chat(host, SPAN_XENOHIGHDANGER("You feel the flow of a soporific chemical in your host's blood, lulling you into docility."))

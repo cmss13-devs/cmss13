@@ -455,8 +455,8 @@
 
 /datum/chemical_reaction/borer_cure
 	name = "Anti-Enzyme"
-	id = "bcure"
-	result = "bcure"
-	required_reagents = list("benzyme" = 2, "anti_toxin" = 4)
+	id = "borercure"
+	result = "borercure"
+	required_reagents = list("borerenzyme" = 2, "anti_toxin" = 4)
 	result_amount = 3
 	mob_react = FALSE

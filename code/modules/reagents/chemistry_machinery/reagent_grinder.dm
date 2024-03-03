@@ -54,7 +54,7 @@
 		/obj/item/reagent_container/food/snacks/watermelonslice = list("watermelonjuice" = 0),
 		/obj/item/reagent_container/food/snacks/grown/grapes = list("grapejuice" = 0),
 		/obj/item/reagent_container/food/snacks/grown/poisonberries = list("poisonberryjuice" = 0),
-		/obj/item/holder/borer = list("benzyme" = 0),
+		/obj/item/holder/borer = list("borerenzyme" = 0),
 
 	)
 
@@ -417,7 +417,7 @@
 		if(beaker.reagents.total_volume >= beaker.reagents.maximum_volume)
 			break
 		var/space = beaker.reagents.maximum_volume - beaker.reagents.total_volume
-		beaker.reagents.add_reagent("benzyme",min(6, space))
+		beaker.reagents.add_reagent("borerenzyme",min(6, space))
 		remove_object(b_holder)
 		break
 

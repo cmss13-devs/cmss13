@@ -688,16 +688,12 @@
 			human_host = host
 		if(isspeciesyautja(human_host))
 			for(var/datum/borer_chem/chem_datum in GLOB.borer_chemicals)
-				if(chem_datum.species != SPECIES_YAUTJA)
-					continue
-				var/datum/borer_chem/current_chem = chem_datum
-				var/chem = current_chem.chem_id
-				var/datum/reagent/R = GLOB.chemical_reagents_list[chem]
-				if(R)
-					content += "<tr><td><a href='?_src_=\ref[src];src=\ref[src];borer_use_chem=[chem]'>[current_chem.quantity] units of [current_chem.chem_name] ([current_chem.cost] Enzymes)</a><p>[current_chem.desc]</p></td></tr>"
-		else
-			for(var/datum/borer_chem/chem_datum in GLOB.borer_chemicals)
-				if(chem_datum.species != SPECIES_HUMAN)
+				if(chem_datum.species != "Universal")
+					if(isspeciesyautja(human_host) && chem_datum.species != SPECIES_YAUTJA)
+						continue
+					if(chem_datum.species != SPECIES_HUMAN)
+						continue
+				if(chem_datum.restricted && !restricted_chems_allowed)
 					continue
 				var/datum/borer_chem/current_chem = chem_datum
 				var/chem = current_chem.chem_id

@@ -40,8 +40,8 @@
 /obj/item/device/professor_dummy_tablet/proc/clear_linked_mob()
 	SIGNAL_HANDLER
 
-	linked_dummy = null
 	UnregisterSignal(linked_dummy, COMSIG_PARENT_QDELETING)
+	linked_dummy = null
 
 /obj/item/device/professor_dummy_tablet/attack_self(mob/user as mob)
 	..()

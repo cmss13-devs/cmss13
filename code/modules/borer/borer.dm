@@ -137,7 +137,7 @@ GLOBAL_LIST_EMPTY(living_borers)
 	/// Whether the borer can create chemicals that are marked as restricted.
 	var/restricted_chems_allowed = FALSE
 
-	var/list/datum/reagent/synthesized_chems
+	var/list/datum/borer_chem/synthesized_chems = list()
 
 	var/current_actions = ACTION_SET_HOSTLESS
 	var/list/actions_hostless = list(

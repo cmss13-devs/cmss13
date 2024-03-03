@@ -3,9 +3,12 @@
 #define BORER_CAT_PUNISH "Motivators"
 #define BORER_CAT_STIM "Stimulants"
 #define BORER_CAT_SELF "Self Protection"
+#define BORER_CAT_REPLICATED "Replicated"
 
 ///Amount of chemicals needed for a borer to reproduce, provided reproduction is toggled.
 #define BORER_LARVAE_COST 400
+/// Amount of chemicals needed for a borer to replicate a chemical.
+#define BORER_REPLICATE_COST 350
 
 #define ACTION_SET_HOSTLESS "actions_hostless"
 #define ACTION_SET_HUMANOID "actions_human"

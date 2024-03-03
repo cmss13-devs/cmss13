@@ -44,6 +44,8 @@ GLOBAL_LIST_INIT_TYPED(borer_chemicals, /datum/borer_chem, generate_borer_chems(
 		chem_list += new chem_datum
 	for(var/chem_datum in subtypesof(/datum/borer_chem/yautja))
 		chem_list += new chem_datum
+	for(var/chem_datum in subtypesof(/datum/borer_chem/universal))
+		chem_list += new chem_datum
 	return chem_list
 
 /datum/borer_chem
@@ -60,6 +62,9 @@ GLOBAL_LIST_INIT_TYPED(borer_chemicals, /datum/borer_chem, generate_borer_chems(
 	var/restricted = FALSE
 	var/species = "UNSET"
 
+/datum/borer_chem/synthesised
+	desc = "A chemical replicated from exposure."
+	category = BORER_CAT_REPLICATED
 
 //Medical Chems
 /datum/borer_chem/human

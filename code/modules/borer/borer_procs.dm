@@ -659,7 +659,13 @@
 		to_chat(src, SPAN_XENOWARNING("You are not allowed to reproduce!"))
 		return FALSE
 
-
+/mob/living/carbon/cortical_borer/proc/get_possible_chems()
+	var/list/possibilities = list()
+	for(var/datum/borer_chem/chem in GLOB.borer_chemicals)
+		possibilities += chem
+	for(var/datum/borer_chem/chem in src.synthesized_chems)
+		possibilities += chem
+	return possibilities
 
 /mob/living/carbon/cortical_borer/verb/secrete_chemicals()
 	set category = "Borer"
@@ -684,32 +690,111 @@
 
 	if(ishuman(host))
 		var/mob/living/carbon/human/human_host
-		if(ishuman(host))
-			human_host = host
-		if(isspeciesyautja(human_host))
-			for(var/datum/borer_chem/chem_datum in GLOB.borer_chemicals)
-				if(chem_datum.species != "Universal")
-					if(isspeciesyautja(human_host) && chem_datum.species != SPECIES_YAUTJA)
+		human_host = host
+		for(var/datum/borer_chem/chem_datum in get_possible_chems())
+			if(chem_datum.species != "Universal")
+				if(isspeciesyautja(human_host))
+					if(chem_datum.species != SPECIES_YAUTJA)
 						continue
-					if(chem_datum.species != SPECIES_HUMAN)
-						continue
-				if(chem_datum.restricted && !restricted_chems_allowed)
+				else if(chem_datum.species != SPECIES_HUMAN)
 					continue
-				var/datum/borer_chem/current_chem = chem_datum
-				var/chem = current_chem.chem_id
-				var/datum/reagent/R = GLOB.chemical_reagents_list[chem]
-				if(R)
-					content += "<tr><td><a href='?_src_=\ref[src];src=\ref[src];borer_use_chem=[chem]'>[current_chem.quantity] units of [current_chem.chem_name] ([current_chem.cost] Enzymes)</a><p>[current_chem.desc]</p></td></tr>"
+			if(chem_datum.restricted && !restricted_chems_allowed)
+				continue
+			var/datum/borer_chem/current_chem = chem_datum
+			var/chem = current_chem.chem_id
+			var/datum/reagent/R = GLOB.chemical_reagents_list[chem]
+			if(R)
+				content += "<tr><td><a href='?_src_=\ref[src];src=\ref[src];borer_use_chem=[chem]'>[current_chem.quantity] units of [current_chem.chem_name] ([current_chem.cost] Enzymes)</a><p>[current_chem.desc]</p></td></tr>"
 
 	content += "</table>"
 
 	var/html = get_html_template(content)
 
-	usr << browse(null, "window=ViewBorer\ref[src]Chems;size=585x400")
 	usr << browse(html, "window=ViewBorer\ref[src]Chems;size=585x400")
 
 	return TRUE
 
+
+/mob/living/carbon/cortical_borer/verb/learn_chemicals()
+	set category = "Borer"
+	set name = "Replicate Chemical"
+	set desc = "Study a chemical compound for replication."
+
+	if(!host)
+		to_chat(src, SPAN_XENOWARNING("You are not inside a host body."))
+		return FALSE
+
+	if(stat)
+		to_chat(src, SPAN_XENOWARNING("You cannot replicate chemicals in your current state."))
+		return FALSE
+
+	if(docile)
+		to_chat(src, SPAN_XENOWARNING("You are feeling far too docile to do that."))
+		return FALSE
+
+	if(enzymes < BORER_REPLICATE_COST)
+		to_chat(src, SPAN_XENONOTICE("You need at least [BORER_REPLICATE_COST] enzymes to attempt chemical replication!"))
+		return FALSE
+
+	var/list/options = list()
+	var/list/options_datums = list()
+	var/list/existing_chems = list()
+	for(var/datum/borer_chem/existing_chem in GLOB.borer_chemicals)
+		if(!(existing_chem.chem_id in existing_chems))
+			existing_chems += existing_chem.chem_id
+	for(var/datum/borer_chem/existing_chem in synthesized_chems)
+		if(!(existing_chem.chem_id in existing_chems))
+			existing_chems += existing_chem.chem_id
+
+	for(var/datum/reagent/potential_chem in host.reagents?.reagent_list)
+		if(potential_chem.id in existing_chems)
+			continue
+		if(potential_chem.volume < potential_chem.overdose)
+			continue
+		options += potential_chem.id
+		options_datums[potential_chem.id] = potential_chem
+
+	if(!options)
+		to_chat(src, SPAN_XENONOTICE("There are no chemicals within your host you are able to replicate!"))
+		return FALSE
+
+	var/choice = tgui_input_list(usr, "Which option do you wish to attempt replication for?", "Choose Option", options, 20 SECONDS)
+	if(!choice)
+		return FALSE
+	if(tgui_alert(usr, "Do you wish to attempt replication of '[choice]'?", "Confirm", list("Yes", "No"), 10 SECONDS) != "Yes")
+		return FALSE
+	var/datum/reagent/chosen = options_datums[choice]
+	if(!chosen)
+		return FALSE
+
+	enzymes -= BORER_REPLICATE_COST
+	var/failure_mult = 0
+	for(var/property in chosen.properties)
+		failure_mult++
+	var/failure_chance = failure_mult * 10
+
+	chosen.volume = (chosen.volume / 10)
+
+	if(prob(failure_chance))
+		to_chat(src, SPAN_XENOWARNING("Replication failed! This chemical has a failure chance of [failure_chance]%!"))
+		return FALSE
+
+	var/datum/borer_chem/synthesised/new_chem = new
+	new_chem.chem_id = chosen.id
+	new_chem.chem_name = chosen.name
+	new_chem.desc = chosen.description
+	var/n_species = host.get_species()
+	if(!n_species)
+		n_species = "UNSET"
+	new_chem.species = n_species
+
+	new_chem.cost = ((5 * failure_chance))
+	new_chem.quantity = (chosen.overdose / 3)
+
+	synthesized_chems += new_chem
+	to_chat(src, SPAN_XENONOTICE("Replication successful!"))
+
+	return TRUE
 
 
 //############# Communication Procs #############
@@ -829,6 +914,11 @@
 			current_chem = chem_datum
 			if(current_chem.chem_id == topic_chem)
 				break
+		if(current_chem.chem_id != topic_chem)
+			for(var/datum/borer_chem/chem_datum in synthesized_chems)
+				current_chem = chem_datum
+				if(current_chem.chem_id == topic_chem)
+					break
 
 		if(!current_chem || !host || (borer_flags_status & BORER_STATUS_CONTROLLING) || !src || stat)
 			return FALSE

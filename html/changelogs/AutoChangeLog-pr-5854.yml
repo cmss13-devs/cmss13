@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed skills not getting set for UPP and CLF synths"
+  - spellcheck: "Fixed naming of colony synth gen 1 and gen 2 being swapped"

@@ -35,3 +35,15 @@
       to other people
   iloveloopers:
   - bugfix: custom flamer chemicals now work on the flamer nozzle
+2024-03-03:
+  Drathek:
+  - bugfix: Fixed skills not getting set for UPP and CLF synths
+  - spellcheck: Fixed naming of colony synth gen 1 and gen 2 being swapped
+  TheGamerdk:
+  - bugfix: Fixes the lifeboat black turfs of Doom
+  Vicacrov:
+  - qol: The Transfer Plasma ability now has a blue, healing overlay and causes a
+      second-long jitter upon success, to show the recipient that they are being targeted.
+  - rscadd: Larvae now do the attack animation when nudging.
+  harryob:
+  - admin: opening a new ticket via pming now automatically marks the ticket

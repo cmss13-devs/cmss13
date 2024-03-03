@@ -1,3 +1,13 @@
+GLOBAL_LIST_INIT_TYPED(borer_chemicals, /datum/borer_chem, generate_borer_chems())
+
+/proc/generate_borer_chems()
+	var/list/chem_list = list()
+	for(var/chem_datum in subtypesof(/datum/borer_chem/human))
+		chem_list += new chem_datum
+	for(var/chem_datum in subtypesof(/datum/borer_chem/yautja))
+		chem_list += new chem_datum
+	return chem_list
+
 /datum/borer_chem
 	var/chem_name = "Unset"
 	/// Chemical identifier, used in the proc to create it.
@@ -10,8 +20,13 @@
 
 	var/category = BORER_CAT_HEAL
 
+	var/species = "UNSET"
+
 
 //Medical Chems
+/datum/borer_chem/human
+	species = SPECIES_HUMAN
+
 /datum/borer_chem/human/tricordrazine
 	chem_name = "Tricordrazine"
 	chem_id = "tricordrazine"
@@ -72,7 +87,7 @@
 	chem_id = "brain_stimulant"
 	desc = "A powerful stimulant that enhances brain function. Lethal in high doses. Lasts one minute per unit."
 	cost = 300
-	quantity = 1
+	quantity = 2
 	category = BORER_CAT_STIM
 
 /datum/borer_chem/human/stimulant_muscle
@@ -80,7 +95,7 @@
 	chem_id = "speed_stimulant"
 	desc = "A powerful stimulant that enhances musculature. Lethal in high doses. Lasts one minute per unit."
 	cost = 300
-	quantity = 1
+	quantity = 2
 	category = BORER_CAT_STIM
 
 /datum/borer_chem/human/neurotoxin
@@ -88,7 +103,7 @@
 	chem_id = PLASMA_NEUROTOXIN
 	desc = "A potent and hallucinagenic neurotoxin."
 	cost = 125
-	quantity = 1
+	quantity = 2
 	category = BORER_CAT_PUNISH
 
 /datum/borer_chem/human/antineurotoxin
@@ -110,8 +125,8 @@
 	chem_name = "Potassium Chlorophoride"
 	chem_id = "potassium_chlorophoride"
 	desc = "A powerful chemical based on Potassium Chloride that causes instant cardiac arrest."
-	cost = 250
-	quantity = 3
+	cost = 300
+	quantity = 5
 	category = BORER_CAT_PUNISH
 
 /datum/borer_chem/human/death_powder
@@ -119,10 +134,13 @@
 	chem_id = "zombiepowder"
 	desc = "A strong neurotoxin that puts the subject into a death-like state."
 	cost = 300
-	quantity = 2
+	quantity = 5
 	category = BORER_CAT_PUNISH
 
 //Yautja chemicals
+/datum/borer_chem/yautja
+	species = SPECIES_YAUTJA
+
 /datum/borer_chem/yautja/thwei
 	chem_name = "Thwei"
 	chem_id = "thwei"
@@ -132,7 +150,7 @@
 
 
 
-//Anti-Sugar
+//Anti-Anti-Parasite
 /datum/borer_chem/human/enzyme
 	chem_name = "Cortical Enzyme"
 	chem_id = "benzyme"

@@ -271,6 +271,7 @@ GLOBAL_LIST_EMPTY(living_borers)
 			handle_crit()
 		else if(health >= 1)
 			set_stat(CONSCIOUS)
+			blinded = FALSE
 
 /mob/living/carbon/cortical_borer/proc/handle_crit()
 	if(stat == DEAD || gibbing)
@@ -285,12 +286,13 @@ GLOBAL_LIST_EMPTY(living_borers)
 	update_icons()
 
 /mob/living/carbon/cortical_borer/death()
-	var/datum/language/corticalborer/c_link = GLOB.all_languages[LANGUAGE_BORER]
-	c_link.broadcast(src, "Has Died", real_name, TRUE)
 	SSmob.living_misc_mobs -= src
 	GLOB.living_borers -= src
 	leave_host()
 	. = ..()
+	if(!is_admin_level(z))
+		var/datum/language/corticalborer/c_link = GLOB.all_languages[LANGUAGE_BORER]
+		c_link.broadcast(src, "Has Died", real_name, TRUE)
 
 /mob/living/carbon/cortical_borer/rejuvenate()
 	..()
@@ -314,7 +316,12 @@ GLOBAL_LIST_EMPTY(living_borers)
 			hud.remove_from_hud(src)
 			hud.remove_hud_from(src, src)
 //###################################################//
-
+/mob/living/carbon/cortical_borer/get_examine_text(mob/user)
+	. = ..()
+	if(stat == DEAD)
+		. += SPAN_WARNING("It's dead.")
+	if(ishuman(user))
+		. += SPAN_HELPFUL("You think you could put it in a chemical juicer...")
 
 /mob/living/carbon/cortical_borer/update_icons()
 	if(stat == DEAD)
@@ -375,6 +382,9 @@ GLOBAL_LIST_EMPTY(living_borers)
 				. += "Host Plasma: [xeno_host.plasma_stored / plasma_perc]%"
 
 /mob/living/carbon/cortical_borer/say(message)//I need to parse the message properly so it doesn't look stupid
+	if(stat == DEAD)
+		to_chat(src, SPAN_WARNING("You cannot speak from beyond the grave!"))
+		return FALSE
 	var/datum/language/parsed_language = parse_language(message)
 	var/new_message = message
 	if(parsed_language)

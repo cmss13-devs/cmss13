@@ -290,13 +290,13 @@
 	SPAN_DANGER("We nudge our head against [src]."), null, 5, CHAT_TYPE_XENO_FLUFF)
 
 /mob/living/proc/is_xeno_grabbable()
-	if(stat == DEAD)
+	if(stat == DEAD || (status_flags & FAKEDEATH))
 		return FALSE
 
 	return TRUE
 
 /mob/living/carbon/human/is_xeno_grabbable()
-	if(stat != DEAD || chestburst)
+	if(((stat != DEAD) && !(status_flags & FAKEDEATH)) || chestburst)
 		return TRUE
 
 	if(status_flags & XENO_HOST)

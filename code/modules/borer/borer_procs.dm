@@ -284,6 +284,8 @@
 	host.status_flags |= PASSEMOTES
 	host.verbs += /mob/living/proc/borer_comm
 	get_host_actions()
+	faction = target.faction
+	faction_group = target.faction_group
 	return TRUE
 
 
@@ -336,6 +338,9 @@
 
 	forceMove(get_turf(host))
 	apply_effect(1, STUN)
+
+	faction = "Cortical"
+	faction_group = list("Cortical")
 
 	log_interact(src, host, "Borer: [key_name(src)] left their host; [key_name(host)]")
 	host.reset_view(null)
@@ -682,15 +687,19 @@
 		if(ishuman(host))
 			human_host = host
 		if(isspeciesyautja(human_host))
-			for(var/datum in subtypesof(/datum/borer_chem/yautja))
-				var/datum/borer_chem/current_chem = datum
-				var/chem = initial(current_chem.chem_id)
+			for(var/datum/borer_chem/chem_datum in GLOB.borer_chemicals)
+				if(chem_datum.species != SPECIES_YAUTJA)
+					continue
+				var/datum/borer_chem/current_chem = chem_datum
+				var/chem = current_chem.chem_id
 				var/datum/reagent/R = GLOB.chemical_reagents_list[chem]
 				if(R)
 					content += "<tr><td><a href='?_src_=\ref[src];src=\ref[src];borer_use_chem=[chem]'>[current_chem.quantity] units of [current_chem.chem_name] ([current_chem.cost] Enzymes)</a><p>[current_chem.desc]</p></td></tr>"
 		else
-			for(var/datum in subtypesof(/datum/borer_chem/human))
-				var/datum/borer_chem/current_chem = datum
+			for(var/datum/borer_chem/chem_datum in GLOB.borer_chemicals)
+				if(chem_datum.species != SPECIES_HUMAN)
+					continue
+				var/datum/borer_chem/current_chem = chem_datum
 				var/chem = current_chem.chem_id
 				var/datum/reagent/R = GLOB.chemical_reagents_list[chem]
 				if(R)
@@ -820,10 +829,9 @@
 		var/topic_chem = href_list["borer_use_chem"]
 		var/datum/borer_chem/current_chem = null
 
-		for(var/datum in typesof(/datum/borer_chem))
-			var/datum/borer_chem/test = datum
-			if(test.chem_id == topic_chem)
-				current_chem = new test()
+		for(var/datum/borer_chem/chem_datum in GLOB.borer_chemicals)
+			current_chem = chem_datum
+			if(current_chem.chem_id == topic_chem)
 				break
 
 		if(!current_chem || !host || (borer_flags_status & BORER_STATUS_CONTROLLING) || !src || stat)

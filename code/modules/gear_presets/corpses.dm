@@ -63,14 +63,11 @@
 	assignment = "Prisoner"
 
 /datum/equipment_preset/corpse/prisoner/load_gear(mob/living/carbon/human/new_human)
+	add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/color/orange(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/attachable/bayonet(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
-	if(prob(50)) new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet(new_human), WEAR_HEAD)
-	if(prob(50)) new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(new_human), WEAR_FEET)
 
 /datum/equipment_preset/corpse/prisoner/burst
@@ -85,9 +82,8 @@
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/corpse/chef/load_gear(mob/living/carbon/human/new_human)
+	add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chef(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/chef/classic(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(new_human), WEAR_FEET)
@@ -108,9 +104,8 @@
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY)
 
 /datum/equipment_preset/corpse/doctor/load_gear(mob/living/carbon/human/new_human)
+	add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(new_human), WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
@@ -133,9 +128,8 @@
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_ENGINEERING)
 
 /datum/equipment_preset/corpse/engineer/load_gear(mob/living/carbon/human/new_human)
+	add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/engineer(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng(new_human), WEAR_BACK)
@@ -159,9 +153,8 @@
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY)
 
 /datum/equipment_preset/corpse/scientist/load_gear(mob/living/carbon/human/new_human)
+	add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/virologist(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/chem(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/surgery/green(new_human), WEAR_HEAD)
@@ -187,9 +180,8 @@
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_ENGINEERING)
 
 /datum/equipment_preset/corpse/miner/load_gear(mob/living/carbon/human/new_human)
+	add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/miner(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/industrial(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
@@ -211,9 +203,8 @@
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_COMMAND)
 
 /datum/equipment_preset/corpse/security/load_gear(mob/living/carbon/human/new_human)
+	add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/security(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/security(new_human), WEAR_JACKET)
@@ -250,10 +241,9 @@
 	)
 
 /datum/equipment_preset/corpse/security/cmb/load_gear(mob/living/carbon/human/new_human)
+	add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CMB/limited(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/CMB(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/heavy(new_human), WEAR_WAIST)
@@ -289,9 +279,9 @@
 	)
 
 /datum/equipment_preset/corpse/security/liaison/load_gear(mob/living/carbon/human/new_human)
+	add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/black(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/aviator(new_human), WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
@@ -321,9 +311,8 @@
 	)
 
 /datum/equipment_preset/corpse/prison_security/load_gear(mob/living/carbon/human/new_human)
+	add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/security(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
@@ -354,10 +343,9 @@
 	)
 
 /datum/equipment_preset/corpse/bridgeofficer/load_gear(mob/living/carbon/human/new_human)
+	add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/centcom_officer(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
-		new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/bulletproof(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses(new_human), WEAR_EYES)
@@ -396,9 +384,8 @@
 	)
 
 /datum/equipment_preset/corpse/administrator/load_gear(mob/living/carbon/human/new_human)
+	add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/ivy(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
@@ -430,9 +417,8 @@
 	)
 
 /datum/equipment_preset/corpse/wysec/load_gear(mob/living/carbon/human/new_human)
+	add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/formal/servicedress(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/security(new_human), WEAR_JACKET)
@@ -451,11 +437,10 @@
 	name = "Corpse - Colonist"
 
 /datum/equipment_preset/colonist/load_gear(mob/living/carbon/human/new_human)
+	add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(new_human), WEAR_BACK)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(new_human), WEAR_FEET)
 
@@ -516,9 +501,8 @@
 
 /datum/equipment_preset/corpse/ua_riot/load_gear(mob/living/carbon/human/new_human)
 	var/random = rand(1,5)
+	add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/ua_riot(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(new_human), WEAR_FEET)
@@ -571,9 +555,8 @@
 	)
 
 /datum/equipment_preset/corpse/wy/manager/load_gear(mob/living/carbon/human/new_human)
+	add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/manager(new_human), WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/manager(new_human), WEAR_JACKET)
@@ -918,11 +901,9 @@
 	access = get_access(ACCESS_LIST_DELIVERY)
 
 /datum/equipment_preset/corpse/pizza/load_gear(mob/living/carbon/human/new_human)
-
+	add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/pizza, WEAR_BODY)
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-		add_ice_colony_survivor_equipment(new_human)
-		new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/soft/red, WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/red, WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel, WEAR_BACK)

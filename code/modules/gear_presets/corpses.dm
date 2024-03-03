@@ -278,7 +278,7 @@
 		ACCESS_CIVILIAN_COMMAND,
 	)
 
-/datum/equipment_preset/corpse/security/liaison/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/corpse/liaison/load_gear(mob/living/carbon/human/new_human)
 	add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/black(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/aviator(new_human), WEAR_EYES)

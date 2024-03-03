@@ -27,7 +27,7 @@
 	set_resting(TRUE)
 
 	// It should absolutely self-destroy upon hijack, so xenos don't get an effectively godmoded mob
-	if(is_mainship_level(z) && SSticker.mode == "Distress Signal")
+	if(is_mainship_level(z) && istype(SSticker.mode, /datum/game_mode/colonialmarines))
 		RegisterSignal(src, COMSIG_GLOB_HIJACK_STARTED, PROC_REF(destroy_upon_hijack))
 
 //Inefficient pooling/caching way.

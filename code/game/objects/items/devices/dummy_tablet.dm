@@ -31,10 +31,10 @@
 			linked_dummy = dummy_to_link
 			RegisterSignal(linked_dummy, COMSIG_PARENT_QDELETING, PROC_REF(clear_linked_mob))
 			if(user)
-				balloon_alert(user, "New dummy registered.")
+				balloon_alert(user, "new dummy registered")
 			return TRUE
 	if(user)
-		balloon_alert(user, "No dummy detected nearby.")
+		balloon_alert(user, "no dummy detected nearby")
 	return FALSE
 
 /obj/item/device/professor_dummy_tablet/proc/clear_linked_mob()

@@ -15,7 +15,7 @@
 	else if(isxeno(host))
 		options += list("Assuming Control","Hibernation","Reproducing")
 	else
-		options += list("Assuming Control","Hibernation","Secreting Chemicals","Reproducing", "Host Death")
+		options += list("Assuming Control","Hibernation","Secreting Chemicals","Learning Chemicals","Reproducing", "Host Death")
 
 	var/choice = tgui_input_list(target, "What would you like help with?", "Help", options, 20 SECONDS)
 
@@ -47,6 +47,8 @@
 			help_message = "Hibernation is how you purify contaminants from your body, allowing you to use your enzymes more freely.\n\nYou can only hibernate whilst inside a host, and it renders you unable to act other than to speak to your host.\n\nYou can freely enter or leave hibernation by clicking the Hibernate button."
 		if("Secreting Chemicals")
 			help_message = "Whilst inside a humanoid host you can secrete chemicals to facilitate your relationship.\nThese can vary from helpful medications to harmful control measures.\n\nSecreting chemicals costs enzymes and if a chemical is impure will cause you to gain contaminant.\nIf you are at, or will go over, your contaminant capacity you will be unable to secrete chemicals.\nPure chemicals are chemicals native to borers such as Cortical Enzyme."
+		if("Learning Chemicals")
+			help_message = "Whilst inside a humanoid host you can learn new chemicals to synthesise, costing [BORER_REPLICATE_COST] Enzymes.\n\nThis requires your host to have a chemical in their blood you do not already know, and for that chemical to be in a state of Overdose.\n\nLearning the chemical has a chance to fail, consuming enzymes but producing no results. This is determined by the number of properties the chemical has.\nSuccessful replication of the chemical will permanently allow you to reproduce it.\nSuccessful or not, attempting to replicate a chemical will consume 90% of the amount in your host's bloodstream."
 		if("Host Death")
 			help_message = "Upon the death of your host you will be forced to release direct control (if you are currently in control), but otherwise will be largely unaffected. If your host becomes permanently unreviavable however, you will be ejected from their corpse."
 	if(!help_message)

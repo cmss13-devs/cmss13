@@ -154,6 +154,7 @@ GLOBAL_LIST_EMPTY(living_borers)
 		/datum/action/innate/borer/leave_body,
 		/datum/action/innate/borer/scan_chems,
 		/datum/action/innate/borer/make_chems,
+		/datum/action/innate/borer/learn_chems,
 	)
 	var/list/actions_xenohost = list(
 		/datum/action/innate/borer/helpme,
@@ -525,6 +526,18 @@ GLOBAL_LIST_EMPTY(living_borers)
 		to_chat(B, SPAN_WARNING("You cannot do that while hibernating!"))
 		return
 	borerscan(B, B.host)
+
+/datum/action/innate/borer/learn_chems
+	name = "Learn Chemicals"
+	action_icon_state = "borer_human_learn"
+
+/datum/action/innate/borer/learn_chems/action_activate()
+	if(!isborer(owner)) return FALSE
+	var/mob/living/carbon/cortical_borer/B = owner
+	if(B.hibernating)
+		to_chat(B, SPAN_WARNING("You cannot do that while hibernating!"))
+		return
+	B.learn_chemicals()
 
 /datum/action/innate/borer/make_larvae
 	name = "Reproduce"

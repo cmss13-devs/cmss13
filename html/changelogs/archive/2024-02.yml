@@ -399,3 +399,79 @@
   - admin: Mods can now run votes where appropriate.
   - admin: Moved a few event verbs from Admin level to Senior Mod.
   - admin: Added a log to creating new bank accounts.
+2024-02-27:
+  BadAtThisGame302:
+  - mapadd: added a new nightmare insert in the Operations Panic Room on Shivas
+  - rscadd: Added trucker hats to the Solaris and Trijent Trucker survs.
+  - rscadd: Added the CMB Marshal jacket to the CMB Marshal.
+  - imageadd: Differentiated the CMB Deputy and CMB Marshal jackets to accurately
+      know which is which. Courtesy of AmoryBlaine.
+  - imageadd: Added new insulated gloves, coveralls (Tan/Red), updated the blue coveralls,
+      Five Colonist Clothes (Grey/Khaki/Pink/Blue/Green), updated the Orange/Blue/Black
+      hazard vests and updated the CMB Uniform and Cap. Courtesy of AmoryBlaine.
+  Drathek:
+  - bugfix: Fixed a runtime when swapping tools during cade welding
+  Huffie56:
+  - rscadd: adding vendor for maintenance technician.
+  - code_imp: remove some item that maintenance technician spawned with and put them
+      in is vendor instead.
+  - maptweak: replaced secured closet by vendor for maintenance technician.
+  - balance: set base price for B12 to 30 and for the M4 to 20.
+  - balance: Medic comtech and SL have a discount of 20% for the B12 and M4. (B12=24
+      & M4=16=)
+  - balance: removed the free M4 for FTL but added FTL the option to buy it for 20.
+  - balance: changed the price of Drop Pouch from 15 to 10.
+  InsaneRed:
+  - balance: Oppressor tailhook is now 8 deciseconds instead of 7.
+  Megaddd:
+  - balance: health analyzer no longer shows large custom research chem property text
+      rows.
+  SabreML:
+  - qol: Added a failure message when trying to remove a built-in helmet visor.
+  paulrpg,kugamo:
+  - imageadd: shuttle rotation sprites added
+  - maptweak: escape pods now use new floors
+2024-02-28:
+  Birdtalon:
+  - bugfix: Admin verbs - Hide will now hide Control Mob verb
+  Drathek:
+  - bugfix: Fixed the Mass Screenshot Debug verb bounds
+  LTNTS:
+  - rscadd: 'brig areas: warden office, MP bunks, starboard hallway, interrogation
+      room, evidence storage'
+  - spellcheck: changes brig surgery to brig medical
+  - code_imp: removed some brig areas from hijack, added other brig areas
+  SabreML:
+  - bugfix: Fixed acid pillars shooting nested marines.
+  Segrain:
+  - bugfix: FORECON and RMC now can add their frequences to groundside radiotowers.
+  - bugfix: Fisticuffs attacks are no longer attributed to wrong mob.
+  - admin: TWE mobs are now properly counted on Who screen.
+  - spellcheck: Changed names of "resin node" and "resin hole" to "weed node" and
+      "resin trap" respectfully.
+  - bugfix: CLF survivors no longer incorrectly get told that they are not hostile
+      to marines.
+  Warfan1815:
+  - spellcheck: Fixed the order of trading cards (as they were accidentally inverted)
+  Zonespace27:
+  - bugfix: M707 spotting scope should no longer teleport its user.
+  - bugfix: M707's attachments should now correctly reflect the map's camouflage.
+  ihatethisengine:
+  - balance: Pried open dropship hatches cannot be remotely locked anymore
+  mullenpaul:
+  - bugfix: ammo consumption logic for cas tgui correctly counts
+2024-02-29:
+  MobiusWon:
+  - balance: Readds M4 armor to FTL vendor as a default item
+  Nanu:
+  - balance: Removed the ability for Combat Synths in the UPP/CLF ERT to use guns,
+      as well as the CLF Survivor Synth.
+  - rscadd: Did a few minor tweaks to help fill in some of the space given by the
+      removal of guns/ammo from the Combat Synths loadout.
+  Segrain:
+  - bugfix: Removed an exploit involving crates.
+  cuberound:
+  - balance: omnisentrygun price down to 300, but it goes up 100 points after each
+      purchase
+  mullenpaul:
+  - code_imp: removed duplicated signal code from dropship equipment

@@ -87,7 +87,7 @@ GLOBAL_LIST_EMPTY(alldepartments)
 		else
 			to_chat(user, SPAN_NOTICE("\The [src] jammed! It can only accept up to five papers at once."))
 			playsound(src, "sound/machines/terminal_insert_disc.ogg", 50, TRUE)
-		flick("faxsend", src)
+		flick("[initial(icon_state)]send", src)
 		updateUsrDialog()
 		return
 
@@ -245,7 +245,7 @@ GLOBAL_LIST_EMPTY(alldepartments)
 				else
 					to_chat(ui.user, SPAN_NOTICE("\The [src] jammed! It can only accept up to five papers at once."))
 					playsound(src, "sound/machines/terminal_insert_disc.ogg", 50, TRUE)
-				flick("faxsend", src)
+				flick("[initial(icon_state)]send", src)
 			. = TRUE
 
 		if("ejectid")
@@ -408,10 +408,10 @@ GLOBAL_LIST_EMPTY(alldepartments)
 				return
 			if(! (F.inoperable() ) )
 
-				flick("faxreceive", F)
+				flick("[initial(icon_state)]receive", F)
 
 				// give the sprite some time to flick
-				spawn(20)
+				spawn(30)
 					var/obj/item/paper/P = new(F.loc,faxcontents.photo_list)
 					P.name = "faxed message"
 					P.info = "[faxcontents.data]"
@@ -514,6 +514,85 @@ GLOBAL_LIST_EMPTY(alldepartments)
 	department = DEPARTMENT_PROVOST
 	target_department = "Brig"
 	network = "USCM High Command Quantum Relay"
+
+
+///The deployed fax machine backpack
+/obj/structure/machinery/faxmachine/backpack
+	name = "\improper Portable Press Fax Machine"
+	desc = "A standard issue portable fax machine for civilian reporters. Functions off of an internal battery. Cannot receive faxes while being worn. It is currently deployed. Click-drag the device towards you to pick it up."
+	icon_state = "fax_backpack"
+	needs_power = FALSE
+	use_power = USE_POWER_NONE
+	health = 150
+
+///The wearable and deployable part of the fax machine backpack
+/obj/item/device/fax_backpack
+	name = "\improper Portable Press Fax Machine"
+	desc = "A standard issue portable fax machine for civilian reporters. Functions off of an internal battery. Cannot receive faxes while being worn. It is currently undeployed. Activate the device inhand to deploy it."
+	icon = 'icons/obj/structures/machinery/library.dmi'
+	icon_state = "fax_backpack"
+	item_state = "fax_backpack"
+	w_class = SIZE_HUGE
+	flags_equip_slot = SLOT_BACK
+	flags_item = ITEM_OVERRIDE_NORTHFACE
+
+/obj/item/device/fax_backpack/attack_self(mob/user) //activate item version fax inhand to deploy
+	if(!ishuman(user))
+		return
+	var/turf/deployturf = get_turf(user)
+	if(istype(deployturf, /turf/open))
+		var/turf/open/floor = deployturf
+		if(!floor.allow_construction)
+			to_chat(user, SPAN_WARNING("You cannot deploy [src] here, find a more secure surface!"))
+			return FALSE
+	var/fail = FALSE
+	if(deployturf.density)
+		fail = TRUE
+	else
+		var/static/list/blocking_types = typecacheof(list(
+			/obj/structure/machinery/defenses,
+			/obj/structure/window,
+			/obj/structure/windoor_assembly,
+			/obj/structure/machinery/door,
+		))
+		for(var/obj/blockingobj in deployturf.contents)
+			if(blockingobj.density && !(blockingobj.flags_atom & ON_BORDER))
+				fail = TRUE
+				break
+			if(is_type_in_typecache(blockingobj, blocking_types))
+				fail = TRUE
+				break
+	if(fail)
+		to_chat(user, SPAN_WARNING("You can't deploy [src] here, something is in the way."))
+		return
+	to_chat(user,  SPAN_NOTICE("You begin to deploy [src]..."))
+	if(do_after(user, 4.5 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		to_chat(user, SPAN_NOTICE("You deploy [src]."))
+		var/obj/structure/machinery/faxmachine/backpack/deployedfax = new(deployturf)
+		transfer_label_component(deployedfax)
+		playsound(src.loc, 'sound/machines/print.ogg', 40, 1)
+		qdel(src)
+		return
+	return ..()
+
+/obj/structure/machinery/faxmachine/backpack/MouseDrop(over_object, src_location, over_location) //Drag the deployed fax onto you to pick it up.
+	if(!ishuman(usr))
+		return
+	var/mob/living/carbon/human/user = usr
+	if(over_object == user && in_range(src, user))
+		if(original_fax || scan)
+			to_chat(user, SPAN_NOTICE("There is still something in [src]. Remove it before you pick it up."))
+			return
+		to_chat(user, SPAN_NOTICE("You begin to pick up [src]..."))
+		if(do_after(user, 4.5 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
+			to_chat(user, SPAN_NOTICE("You pick up [src]."))
+			var/obj/item/device/fax_backpack/faxbag = new(loc)
+			transfer_label_component(faxbag)
+			user.put_in_hands(faxbag)
+			qdel(src)
+			return
+		return ..()
 
 /datum/fax
 	var/data

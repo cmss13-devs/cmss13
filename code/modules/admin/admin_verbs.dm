@@ -271,6 +271,7 @@ GLOBAL_LIST_INIT(admin_mob_event_verbs_hideable, list(
 
 //verbs which can be hidden - needs work
 GLOBAL_LIST_INIT(admin_verbs_hideable, list(
+	/client/proc/cmd_assume_direct_control,
 	/client/proc/release,
 	/client/proc/possess,
 	/client/proc/callproc_datum,

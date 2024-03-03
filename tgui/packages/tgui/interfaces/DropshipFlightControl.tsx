@@ -14,7 +14,13 @@ interface AutomatedControl {
   ground_lz: null | string;
 }
 
+type ShuttleRef = {
+  name: string;
+  id: string;
+};
+
 interface DropshipNavigationProps extends NavigationProps {
+  shuttle_id: string;
   door_status: Array<DoorStatus>;
   has_flight_optimisation?: 0 | 1;
   is_flight_optimised?: 0 | 1;
@@ -23,8 +29,9 @@ interface DropshipNavigationProps extends NavigationProps {
   primary_lz?: string;
   automated_control: AutomatedControl;
   has_flyby_skill: 0 | 1;
-
   playing_launch_announcement_alarm: boolean;
+  can_change_shuttle: 0 | 1;
+  alternative_shuttles: Array<ShuttleRef>;
 }
 
 const DropshipDoorControl = () => {
@@ -209,7 +216,7 @@ export const TouchdownCooldown = () => {
   );
 };
 
-const AutopilotConfig = (props) => {
+const AutopilotConfig = () => {
   const { data, act } = useBackend<DropshipNavigationProps>();
   const [automatedHangar, setAutomatedHangar] = useSharedState<
     string | undefined
@@ -286,6 +293,7 @@ const StopLaunchAnnouncementAlarm = () => {
       icon="ban"
       onClick={() => {
         act('stop_playing_launch_announcement_alarm');
+        act('button-push');
       }}>
       Stop Alarm
     </Button>
@@ -299,6 +307,7 @@ const PlayLaunchAnnouncementAlarm = () => {
       icon="rocket"
       onClick={() => {
         act('play_launch_announcement_alarm');
+        act('button-push');
       }}>
       Start Alarm
     </Button>
@@ -306,11 +315,7 @@ const PlayLaunchAnnouncementAlarm = () => {
 };
 
 const LaunchAnnouncementAlarm = () => {
-  const { data, act } = useBackend<DropshipNavigationProps>();
-  const [siteselection, setSiteSelection] = useSharedState<string | undefined>(
-    'target_site',
-    undefined
-  );
+  const { data } = useBackend<DropshipNavigationProps>();
   return (
     <Section
       title="Launch Announcement Alarm"
@@ -325,12 +330,49 @@ const LaunchAnnouncementAlarm = () => {
   );
 };
 
-const RenderScreen = (props) => {
+const DropshipButton = (props: { readonly ship: ShuttleRef }) => {
+  const { act, data } = useBackend<DropshipNavigationProps>();
+  const match = props.ship.id === data.shuttle_id;
+  return (
+    <Button
+      disable={match}
+      onClick={() => {
+        act('change_shuttle', { new_shuttle: props.ship.id });
+        act('button-push');
+      }}>
+      {match && '['}
+      {props.ship.name}
+      {match && ']'}
+    </Button>
+  );
+};
+
+const DropshipSelector = () => {
+  const { data } = useBackend<DropshipNavigationProps>();
+  return (
+    <Section title="Select Dropship">
+      <Stack>
+        {data.alternative_shuttles
+          .sort((a, b) => a.id.localeCompare(b.id))
+          .map((x) => (
+            <DropshipButton ship={x} key={x.id} />
+          ))}
+      </Stack>
+    </Section>
+  );
+};
+
+const RenderScreen = () => {
   const { data } = useBackend<DropshipNavigationProps>();
   return (
     <>
-      {data.can_set_automated === 1 && <AutopilotConfig />}
+      {data.shuttle_mode === 'idle' && data.can_change_shuttle === 1 && (
+        <DropshipSelector />
+      )}
       {data.shuttle_mode === 'idle' && <DropshipDestinationSelection />}
+      {data.shuttle_mode === 'idle' && data.can_set_automated === 1 && (
+        <AutopilotConfig />
+      )}
       {data.shuttle_mode === 'igniting' && <LaunchCountdown />}
       {data.shuttle_mode === 'pre-arrival' && <TouchdownCooldown />}
       {data.shuttle_mode === 'recharging' && <ShuttleRecharge />}
@@ -346,7 +388,7 @@ const RenderScreen = (props) => {
   );
 };
 
-export const DropshipFlightControl = (props) => {
+export const DropshipFlightControl = () => {
   const { data } = useBackend<DropshipNavigationProps>();
   return (
     <Window theme="crtgreen" height={500} width={700}>

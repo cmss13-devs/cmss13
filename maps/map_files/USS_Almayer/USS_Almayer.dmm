@@ -5029,8 +5029,7 @@
 	},
 /obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
 	dir = 4;
-	name = "Normandy Remote Control Console";
-	shuttleId = "dropship_normandy"
+	name = "Dropship Remote Control Console"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -5046,11 +5045,6 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/window/reinforced/toughened{
 	dir = 4
-	},
-/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
-	dir = 8;
-	name = "Alamo Remote Control Console";
-	shuttleId = "dropship_alamo"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"

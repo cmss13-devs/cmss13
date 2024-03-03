@@ -1,0 +1,4 @@
+author: "private-tristan"
+delete-after: True
+changes:
+  - qol: "Added balloon alerts to smartgunners"

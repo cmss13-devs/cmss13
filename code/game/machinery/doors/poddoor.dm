@@ -283,10 +283,10 @@
 		/obj/structure/machinery/door/airlock,
 	)
 
-/obj/structure/machinery/door/poddoor/almayer/Initialize()
+/obj/structure/machinery/door/poddoor/almayer/LateInitialize()
 	. = ..()
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, relativewall_neighbours)), 10)
-	
+	relativewall_neighbours()
+
 /obj/structure/machinery/door/poddoor/almayer/open
 	density = FALSE
 

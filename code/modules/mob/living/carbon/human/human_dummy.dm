@@ -26,6 +26,9 @@
 	create_hud()
 	set_resting(TRUE)
 
+	return INITIALIZE_HINT_ROUNDSTART
+
+/mob/living/carbon/human/dummy/LateInitialize()
 	// It should absolutely self-destroy upon hijack, so xenos don't get an effectively godmoded mob
 	if(is_mainship_level(z) && istype(SSticker.mode, /datum/game_mode/colonialmarines))
 		RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_STARTED, PROC_REF(destroy_upon_hijack))

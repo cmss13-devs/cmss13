@@ -321,6 +321,8 @@
 		// -- Delete Button -- //
 		if("delete_record")
 			var/datum/ares_record/record = locate(params["record"])
+			if(!istype(record))
+				return FALSE
 			if(record.record_name == ARES_RECORD_DELETED)
 				return FALSE
 			var/datum/ares_record/deletion/new_delete = new

@@ -66,10 +66,10 @@
 	data["evac_status"] = SShijack.evac_status
 	data["worldtime"] = world.time
 
-	data["access_log"] = list(datacore.interface_access_list)
-	data["apollo_log"] = list(datacore.apollo_log)
+	data["access_log"] = datacore.interface_access_list
+	data["apollo_log"] = datacore.apollo_log
 
-	data["deleted_conversation"] = list(admin_interface.deleted_1to1)
+	data["deleted_conversation"] = admin_interface.deleted_1to1
 
 	data["distresstime"] = datacore.ares_distress_cooldown
 	data["distresstimelock"] = DISTRESS_TIME_LOCK

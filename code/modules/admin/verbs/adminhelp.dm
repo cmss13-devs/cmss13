@@ -470,7 +470,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	if(state != AHELP_ACTIVE)
 		return
 
-	if(marked_admin != usr.key)
+	if(marked_admin != usr.ckey)
 		to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin]. Please override their mark to interact with this ticket!"))
 		return
 
@@ -489,7 +489,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	if(state != AHELP_ACTIVE)
 		return
 
-	if(marked_admin != usr.key)
+	if(marked_admin != usr.ckey)
 		to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin]. Please override their mark to interact with this ticket!"))
 		return
 
@@ -511,7 +511,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	if(state != AHELP_ACTIVE || !initial_message)
 		return
 
-	if(marked_admin != usr.key)
+	if(marked_admin != usr.ckey)
 		to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin]. Please override their mark to interact with this ticket!"))
 		return
 
@@ -539,7 +539,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 /datum/admin_help/proc/mark_ticket()
 	if(marked_admin)
-		if(marked_admin == usr.key)
+		if(marked_admin == usr.ckey)
 			unmark_ticket()
 			return
 		to_chat(usr, SPAN_WARNING("This ticket has already been marked by [marked_admin]."))
@@ -557,7 +557,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	message_admins(msg)
 	log_admin_private(msg)
 	log_ahelp(id, "Marked", "Marked by [usr.key]", sender = usr.ckey)
-	marked_admin = usr.key
+	marked_admin = usr.ckey
 
 /datum/admin_help/proc/unmark_ticket()
 	var/key_name = key_name_admin(usr)
@@ -573,7 +573,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	if(state != AHELP_ACTIVE)
 		return
 
-	if(marked_admin != usr.key)
+	if(marked_admin != usr.ckey)
 		to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin]. Please override their mark to interact with this ticket!"))
 		return
 
@@ -600,7 +600,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		to_chat(usr, SPAN_WARNING("This ticket is already closed!"))
 		return
 
-	if(marked_admin != usr.key)
+	if(marked_admin != usr.ckey)
 		to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin]. Please override their mark to interact with this ticket!"))
 		return
 

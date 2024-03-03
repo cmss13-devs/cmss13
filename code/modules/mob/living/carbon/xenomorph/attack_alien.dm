@@ -288,6 +288,7 @@
 /mob/living/attack_larva(mob/living/carbon/xenomorph/larva/M)
 	M.visible_message(SPAN_DANGER("[M] nudges its head against [src]."), \
 	SPAN_DANGER("We nudge our head against [src]."), null, 5, CHAT_TYPE_XENO_FLUFF)
+	M.animation_attack_on(src)
 
 /mob/living/proc/is_xeno_grabbable()
 	if(stat == DEAD)

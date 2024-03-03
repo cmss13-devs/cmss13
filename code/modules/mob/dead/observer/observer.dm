@@ -236,8 +236,9 @@
 	if(observe_target_client != new_client)
 		observe_target_client = new_client
 
-	RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_ADD, PROC_REF(observe_target_screen_add))
-	RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_REMOVE, PROC_REF(observe_target_screen_remove))
+	// Override the signal from any previous targets.
+	RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_ADD, PROC_REF(observe_target_screen_add), TRUE)
+	RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_REMOVE, PROC_REF(observe_target_screen_remove), TRUE)
 
 /// When the observe target logs in our observer connect to the new client
 /mob/dead/observer/proc/observe_target_login(mob/living/new_character)
@@ -246,8 +247,9 @@
 	if(observe_target_client != new_character.client)
 		observe_target_client = new_character.client
 
-	RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_ADD, PROC_REF(observe_target_screen_add))
-	RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_REMOVE, PROC_REF(observe_target_screen_remove))
+	// Override the signal from any previous targets.
+	RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_ADD, PROC_REF(observe_target_screen_add), TRUE)
+	RegisterSignal(observe_target_client, COMSIG_CLIENT_SCREEN_REMOVE, PROC_REF(observe_target_screen_remove), TRUE)
 
 ///makes the ghost see the target hud and sets the eye at the target.
 /mob/dead/observer/proc/do_observe(atom/movable/target)
@@ -266,6 +268,7 @@
 	client.clear_screen()
 	client.eye = carbon_target
 	observe_target_mob = carbon_target
+
 	carbon_target.auto_observed(src)
 
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(observer_move_react))

@@ -241,8 +241,11 @@
 /area/almayer/shipboard/brig/armory
 	name = "\improper Brig Armory"
 
-/area/almayer/shipboard/brig/main_office
-	name = "\improper Brig Main Office"
+/area/almayer/shipboard/brig/mp_bunks
+	name = "\improper Brig MP Bunks"
+
+/area/almayer/shipboard/brig/starboard_hallway
+	name = "\improper Brig Starboard Hallway"
 
 /area/almayer/shipboard/brig/perma
 	name = "\improper Brig Perma Cells"
@@ -250,8 +253,11 @@
 /area/almayer/shipboard/brig/cryo
 	name = "\improper Brig Cryo Pods"
 
-/area/almayer/shipboard/brig/surgery
-	name = "\improper Brig Surgery"
+/area/almayer/shipboard/brig/medical
+	name = "\improper Brig Medical"
+
+/area/almayer/shipboard/brig/interrogation
+	name = "\improper Brig Interrogation Room"
 
 /area/almayer/shipboard/brig/general_equipment
 	name = "\improper Brig General Equipment"
@@ -262,11 +268,15 @@
 /area/almayer/shipboard/brig/execution
 	name = "\improper Brig Execution Room"
 
+/area/almayer/shipboard/brig/execution_storage
+	name = "\improper Brig Execution Storage"
+
 /area/almayer/shipboard/brig/cic_hallway
 	name = "\improper Brig CiC Hallway"
 
 /area/almayer/shipboard/brig/dress
 	name = "\improper CIC Dress Uniform Room"
+
 /area/almayer/shipboard/brig/processing
 	name = "\improper Brig Processing and Holding"
 
@@ -276,6 +286,10 @@
 
 /area/almayer/shipboard/brig/chief_mp_office
 	name = "\improper Brig Chief MP Office"
+	icon_state = "chiefmpoffice"
+
+/area/almayer/shipboard/brig/warden_office
+	name = "\improper Brig Warden Office"
 	icon_state = "chiefmpoffice"
 
 /area/almayer/shipboard/sea_office

@@ -96,5 +96,12 @@
         "landmark": "lz2-north",
         "path": "lz2-variations/north/full-closed.dmm",
         "when": { "lz2-north": "full" }
-    }
+    },
+	{
+		"type": "map_insert",
+		"landmark": "panic_room",
+		"chance": 0.5,
+		"path": "standalone/panic_room_hold.dmm",
+        "when": { "panic_room": "full" }
+	}
 ]

@@ -1402,11 +1402,13 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		return
 
 	dat += "Platform position: "
-	if (SSshuttle.vehicle_elevator.timeLeft())
+	if (SSshuttle.vehicle_elevator.mode != SHUTTLE_IDLE)
 		dat += "Moving"
 	else
 		if(is_mainship_level(SSshuttle.vehicle_elevator.z))
 			dat += "Raised"
+			if(!spent)
+				dat += "<br>\[<a href='?src=\ref[src];lower_elevator=1'>Lower</a>\]"
 		else
 			dat += "Lowered"
 	dat += "<br><hr>"
@@ -1442,15 +1444,12 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		world.log << "## ERROR: Eek. The supply/elevator datum is missing somehow."
 		return
 
-	if(!should_block_game_interaction(SSshuttle.vehicle_elevator))
-		to_chat(usr, SPAN_WARNING("The elevator needs to be in the cargo bay dock to call a vehicle up. Ask someone to send it away."))
-		return
-
 	if(isturf(loc) && ( in_range(src, usr) || isSilicon(usr) ) )
 		usr.set_interaction(src)
 
 	if(href_list["get_vehicle"])
-		if(is_mainship_level(SSshuttle.vehicle_elevator.z))
+		if(is_mainship_level(SSshuttle.vehicle_elevator.z) || SSshuttle.vehicle_elevator.mode != SHUTTLE_IDLE)
+			to_chat(usr, SPAN_WARNING("The elevator needs to be in the cargo bay dock to call a vehicle up!"))
 			return
 		// dunno why the +1 is needed but the vehicles spawn off-center
 		var/turf/middle_turf = get_turf(SSshuttle.vehicle_elevator)
@@ -1458,9 +1457,11 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		var/obj/vehicle/multitile/ordered_vehicle
 
 		var/datum/vehicle_order/VO = locate(href_list["get_vehicle"])
+		if(!(VO in vehicles))
+			return
 
-		if(!VO) return
-		if(VO.has_vehicle_lock()) return
+		if(VO?.has_vehicle_lock())
+			return
 
 		spent = TRUE
 		ordered_vehicle = new VO.ordered_vehicle(middle_turf)
@@ -1469,6 +1470,12 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		VO.on_created(ordered_vehicle)
 
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_VEHICLE_ORDERED, ordered_vehicle)
+
+	else if(href_list["lower_elevator"])
+		if(!is_mainship_level(SSshuttle.vehicle_elevator.z))
+			return
+
+		SSshuttle.vehicle_elevator.request(SSshuttle.getDock("adminlevel vehicle"))
 
 	add_fingerprint(usr)
 	updateUsrDialog()

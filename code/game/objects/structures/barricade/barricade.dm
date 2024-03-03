@@ -366,9 +366,8 @@
 		if(50 to 75) damage_state = BARRICADE_DMG_SLIGHT
 		if(75 to INFINITY) damage_state = BARRICADE_DMG_NONE
 
-/obj/structure/barricade/proc/weld_cade(obj/item/tool/weldingtool/welder, mob/user)
-	if(!metallic)
-		user.visible_message(SPAN_WARNING("You can't weld \the [src]!"))
+/obj/structure/barricade/proc/try_weld_cade(obj/item/tool/weldingtool/welder, mob/user, repeat = TRUE, skip_check = FALSE)
+	if(!skip_check && !can_weld(welder, user))
 		return FALSE
 
 	if(!(welder.remove_fuel(2, user)))
@@ -387,6 +386,16 @@
 	user.count_niche_stat(STATISTICS_NICHE_REPAIR_CADES)
 	update_health(-200)
 	playsound(src.loc, 'sound/items/Welder2.ogg', 25, TRUE)
+
+	var/current_tool = user.get_active_hand()
+	if(current_tool != welder)
+		return TRUE // Swapped hands or tool
+	if(repeat && can_weld(welder, user, silent = TRUE))
+		// Assumption: The implementation of can_weld will return false if fully repaired
+		if(!try_weld_cade(welder, user, repeat = TRUE, skip_check = TRUE))
+			// If this returned false, then we were interrupted or ran out of fuel, so stop looping
+			return TRUE
+
 	return TRUE
 
 /obj/structure/barricade/verb/count_rotate()
@@ -476,20 +485,28 @@
 	nailgun.load_into_chamber()
 	return TRUE
 
-// This proc is to check a bunch of condition to cancel the action that a welder user is trying to do while giving
-// a explanation on why...
+/obj/structure/barricade/proc/can_weld(obj/item/item, mob/user, silent)
+	if(user.action_busy)
+		return FALSE
 
-/obj/structure/barricade/proc/attackby_welder(obj/item/item, mob/user)
+	if(!metallic)
+		if(!silent)
+			user.visible_message(SPAN_WARNING("You can't weld \the [src]!"))
+		return FALSE
+
 	if(!HAS_TRAIT(item, TRAIT_TOOL_BLOWTORCH))
-		to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+		if(!silent)
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 		return FALSE
 
 	if(health == maxhealth)
-		to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
+		if(!silent)
+			to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
 		return FALSE
 
 	if(!(isnull(damage_state)) && !(isnull(welder_lower_damage_limit)) && damage_state >= welder_lower_damage_limit)
-		to_chat(user, SPAN_WARNING("[src] has sustained too much structural damage to be repaired."))
+		if(!silent)
+			to_chat(user, SPAN_WARNING("[src] has sustained too much structural damage to be repaired."))
 		return FALSE
 
 	return TRUE

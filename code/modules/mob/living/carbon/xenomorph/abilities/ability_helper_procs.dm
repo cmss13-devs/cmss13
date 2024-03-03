@@ -310,6 +310,9 @@
 
 	to_chat(src, SPAN_NOTICE("We start focusing our plasma towards [target]."))
 	to_chat(target, SPAN_NOTICE("We feel that [src] starts transferring some of their plasma to us."))
+	face_atom(target)
+	target.flick_heal_overlay(transfer_delay, COLOR_CYAN)
+
 	if(!do_after(src, transfer_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		return
 
@@ -320,6 +323,7 @@
 		amount = plasma_stored //Just use all of it
 	use_plasma(amount)
 	target.gain_plasma(amount)
+	target.xeno_jitter(1 SECONDS)
 	to_chat(target, SPAN_XENOWARNING("[src] has transfered [amount] plasma to us. We now have [target.plasma_stored]."))
 	to_chat(src, SPAN_XENOWARNING("We have transferred [amount] plasma to [target]. We now have [plasma_stored]."))
 	playsound(src, "alien_drool", 25)

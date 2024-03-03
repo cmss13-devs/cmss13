@@ -117,8 +117,8 @@
 		var/datum/space_level/cur_level = SSmapping.z_list[cur_z]
 		cur_x += cur_level.bounds[MAP_MINX] - 1
 		cur_y += cur_level.bounds[MAP_MINY] - 1
-		width = cur_level.bounds[MAP_MAXX] - cur_level.bounds[MAP_MINX] - half_chunk_size + 1
-		height = cur_level.bounds[MAP_MAXY] - cur_level.bounds[MAP_MINY] - half_chunk_size + 1
+		width = cur_level.bounds[MAP_MAXX] - cur_level.bounds[MAP_MINX] - half_chunk_size + 3
+		height = cur_level.bounds[MAP_MAXY] - cur_level.bounds[MAP_MINY] - half_chunk_size + 3
 	else
 		width = world.maxx - half_chunk_size + 2
 		height = world.maxy - half_chunk_size + 2
@@ -282,6 +282,8 @@
 			remembered_info += "<b>Your account was created:</b> [T.time], [T.date] at [T.source_terminal]<br>"
 		account_user.mind.store_memory(remembered_info)
 		account_user.mind.initial_account = generated_account
+
+	log_admin("[key_name(usr)] has created a new bank account for [key_name(account_user)].")
 
 /client/proc/cmd_assume_direct_control(mob/M in GLOB.mob_list)
 	set name = "Control Mob"

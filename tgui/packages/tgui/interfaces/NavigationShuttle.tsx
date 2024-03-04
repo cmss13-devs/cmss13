@@ -21,6 +21,7 @@ export interface NavigationProps {
   max_pre_arrival_duration: number;
   must_launch_home: boolean;
   spooling: boolean;
+  mission_accomplished: boolean;
   is_disabled: 0 | 1;
   locked_down: 0 | 1;
 }
@@ -238,13 +239,16 @@ const DoorControls = () => {
 };
 
 export const DisabledScreen = (props) => {
+  const { data, act } = useBackend<NavigationProps>();
+
+  const disabled_text = data.mission_accomplished
+    ? 'Auto-navigation protocol completed - return home complete. Shuttle disabled.'
+    : 'The shuttle has had an error. Contact your nearest system administrator to resolve the issue.';
+
   return (
     <Box className="DisabledScreen">
       <div>
-        <span>
-          The shuttle has had an error. Contact your nearest system
-          administrator to resolve the issue.
-        </span>
+        <span>{disabled_text}</span>
       </div>
     </Box>
   );

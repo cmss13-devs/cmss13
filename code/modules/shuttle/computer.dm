@@ -102,6 +102,9 @@
 	/// if this shuttle only has the option to return home
 	var/must_launch_home = FALSE
 
+	/// if the ERT that used this shuttle has returned home
+	var/mission_accomplished = FALSE
+
 /obj/structure/machinery/computer/shuttle/ert/broken
 	name = "nonfunctional shuttle control console"
 	disabled = TRUE
@@ -217,6 +220,7 @@
 	.["is_disabled"] = disabled
 	.["spooling"] = spooling
 	.["must_launch_home"] = must_launch_home
+	.["mission_accomplished"] = mission_accomplished
 
 	var/door_count = length(ert.external_doors)
 	var/locked_count = 0

@@ -206,8 +206,9 @@
 		ert.control_doors("unlock", force = FALSE)
 
 	if(lockdown_on_land)
-		var/obj/structure/machinery/computer/shuttle/console = arriving_shuttle.getControlConsole()
+		var/obj/structure/machinery/computer/shuttle/ert/console = arriving_shuttle.getControlConsole()
 		console.disable()
+		console.mission_accomplished = TRUE
 		lockdown_on_land = FALSE
 
 /obj/docking_port/stationary/emergency_response/port1

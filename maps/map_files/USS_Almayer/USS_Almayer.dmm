@@ -46010,6 +46010,14 @@
 "lFp" = (
 /turf/closed/wall/almayer,
 /area/almayer/engineering/lower/workshop/hangar)
+"lFq" = (
+/obj/structure/pipes/vents/pump/no_boom{
+	dir = 1
+	},
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "ai_plates"
+	},
+/area/almayer/command/airoom)
 "lFr" = (
 /obj/structure/machinery/firealarm{
 	dir = 8;
@@ -141638,7 +141646,7 @@ ebN
 ebN
 gbg
 uVv
-erN
+lFq
 ebN
 qQS
 kBy

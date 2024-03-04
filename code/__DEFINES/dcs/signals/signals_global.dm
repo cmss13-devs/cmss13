@@ -75,5 +75,3 @@
 
 #define COMSIG_GLOB_HIJACK_IMPACTED "!hijack_impacted"
 #define COMSIG_GLOB_HIJACK_LANDED "!hijack_landed"
-/// Sent when the queen launches the dropship
-#define COMSIG_GLOB_HIJACK_STARTED "!hijack_started"

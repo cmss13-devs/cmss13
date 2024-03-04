@@ -180,7 +180,22 @@
 /turf/open/floor/plating/plating_catwalk/shiva
 	icon = 'icons/turf/floors/ice_colony/shiva_floor.dmi'
 
+/turf/open/floor/plating/plating_catwalk/aicore
+	icon = 'icons/turf/floors/aicore.dmi'
+	icon_state = "ai_plating_catwalk"
 
+/turf/open/floor/plating/plating_catwalk/aicore/update_icon()
+	. = ..()
+	if(covered)
+		overlays += image(icon, src, "ai_catwalk", CATWALK_LAYER)
+
+/turf/open/floor/plating/plating_catwalk/aicore/white
+	icon_state = "w_ai_plating_catwalk"
+
+/turf/open/floor/plating/plating_catwalk/aicore/white/update_icon()
+	. = ..()
+	if(covered)
+		overlays += image(icon, src, "w_ai_catwalk", CATWALK_LAYER)
 
 /turf/open/floor/plating/ironsand
 	name = "Iron Sand"
@@ -300,6 +315,27 @@
 	icon_state = "logo_directional"
 
 /turf/open/floor/almayer/no_build
+	allow_construction = FALSE
+	hull_floor = TRUE
+
+/turf/open/floor/almayer/aicore
+	icon = 'icons/turf/floors/aicore.dmi'
+	icon_state = "ai_floor1"
+
+/turf/open/floor/almayer/aicore/glowing
+	icon_state = "ai_floor2"
+	light_color = "#d69c46"
+	light_range = 2
+
+/turf/open/floor/almayer/aicore/glowing/Initialize(mapload, ...)
+	. = ..()
+	set_light_on(TRUE)
+
+/turf/open/floor/almayer/aicore/no_build
+	allow_construction = FALSE
+	hull_floor = TRUE
+
+/turf/open/floor/almayer/aicore/glowing/no_build
 	allow_construction = FALSE
 	hull_floor = TRUE
 

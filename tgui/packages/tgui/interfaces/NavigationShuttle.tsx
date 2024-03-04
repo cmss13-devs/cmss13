@@ -254,7 +254,7 @@ const LaunchHome = (props) => {
   const { data, act } = useBackend<NavigationProps>();
 
   return (
-    <Section title="Automatic Return Enabled">
+    <Section title="Automatic Return Enabled" className="DestinationSelector">
       <Button.Confirm
         fluid
         content={'Return Home'}

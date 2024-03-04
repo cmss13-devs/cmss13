@@ -55,8 +55,9 @@
 
 	if(fired_from.flags_gun_features & GUN_SILENCED)
 		playsound(user, fired_from.fire_sound, 25, FALSE)
-	else if(is_mainship_level(user.z))
+	else if(is_mainship_level(user.z) && !TIMER_COOLDOWN_CHECK(user, COOLDOWN_SHIPWIDE_EXECUTION_ALERT))
 		playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), fired_from.fire_sound, volume = fired_from.firesound_volume)
+		TIMER_COOLDOWN_START(user, COOLDOWN_SHIPWIDE_EXECUTION_ALERT, 5 SECONDS)
 	else
 		playsound(user, fired_from.fire_sound, fired_from.firesound_volume, FALSE)
 

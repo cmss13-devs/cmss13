@@ -2578,10 +2578,10 @@
 /turf/open/floor/interior/plastic,
 /area/lv553/oob)
 "bLj" = (
-/obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/window{
 	dir = 4
 	},
+/obj/structure/machinery/disposal,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -4531,6 +4531,16 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/gm/dirt,
 /area/lv553/outdoors/colony_streets/west)
+"cSW" = (
+/obj/structure/window{
+	dir = 4
+	},
+/obj/structure/window,
+/obj/structure/surface/table/almayer,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "cTc" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor{
@@ -6410,7 +6420,6 @@
 /turf/open/gm/dirt,
 /area/lv553/indoors/lone_buildings/gas_n_gear)
 "ecX" = (
-/obj/item/shard,
 /obj/item/clothing/mask/facehugger{
 	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing? It has been impaled by a knife";
 	icon_state = "facehugger_impregnated";
@@ -8041,6 +8050,17 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv553/outdoors/colony_streets/northeast)
+"fcs" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/surface/table/almayer,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "fcI" = (
 /turf/open/gm/dirtgrassborder{
 	icon_state = "grassdirt_corner"
@@ -9389,8 +9409,12 @@
 	},
 /area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "fQl" = (
-/turf/closed/wall/r_wall,
-/area/lv553/indoors/gated_community/head_of_corporate_engineering)
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/prop/almayer/CICmap,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "fQt" = (
 /obj/item/frame/rack,
 /obj/item/spacecash/c1{
@@ -9433,11 +9457,15 @@
 	},
 /area/lv553/indoors/hospital/storage_laundyroom_and_breakroom)
 "fRy" = (
-/obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/window{
 	dir = 4
 	},
 /obj/structure/window,
+/obj/structure/surface/table/almayer,
+/obj/item/paper_bin{
+	pixel_y = 4
+	},
+/obj/item/tool/pen,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -10038,6 +10066,13 @@
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
+	},
+/area/lv553/oob)
+"gju" = (
+/obj/structure/window,
+/obj/structure/surface/table/almayer,
+/turf/open/floor{
+	icon_state = "dark"
 	},
 /area/lv553/oob)
 "gkr" = (
@@ -11391,6 +11426,7 @@
 	},
 /area/lv553/oob)
 "hdA" = (
+/obj/structure/fence,
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
 	icon_state = "grassdirt_corner"
@@ -12075,13 +12111,16 @@
 /turf/open/floor/wood,
 /area/lv553/indoors/welcome_center/offices)
 "hCg" = (
-/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
-	pixel_y = -11
+/obj/structure/machinery/door_control{
+	desc = "A garage door opener.";
+	id = "gated_community";
+	name = "gate button";
+	pixel_x = -28;
+	pixel_y = 0;
+	req_one_access_txt = "2;3;12;19"
 	},
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
-/area/lv553/outdoors/landing_zones_disembark)
+/turf/open/gm/dirt,
+/area/lv553/outdoors/gated_community_exterior)
 "hCv" = (
 /obj/structure/machinery/computer/cameras/wooden_tv{
 	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW.";
@@ -14599,6 +14638,12 @@
 /obj/structure/fence,
 /turf/open/gm/grass,
 /area/lv553/outdoors/colony_streets/west)
+"iTN" = (
+/obj/structure/bed/chair/office/dark,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "iTO" = (
 /obj/structure/largecrate/random/barrel/true_random,
 /obj/item/spacecash/c100{
@@ -17003,7 +17048,8 @@
 /area/lv553/indoors/hospital/storage_laundyroom_and_breakroom)
 "kvZ" = (
 /obj/structure/machinery/power/monitor{
-	name = "Main Power Grid Monitoring"
+	name = "Main Power Grid Monitoring";
+	layer = 2.99
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -17406,9 +17452,7 @@
 	},
 /area/lv553/oob)
 "kLl" = (
-/obj/structure/flora/jungle/hedge{
-	dir = 9
-	},
+/obj/structure/flora/jungle/hedge,
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
 	icon_state = "grassdirt_corner"
@@ -17416,9 +17460,7 @@
 /area/lv553/landing_zone_2)
 "kLG" = (
 /obj/effect/spawner/gibspawner/xeno,
-/turf/open/gm/dirtgrassborder{
-	dir = 1
-	},
+/turf/closed/wall/r_wall,
 /area/lv553/outdoors/landing_zones_disembark)
 "kLN" = (
 /turf/open/floor{
@@ -20622,6 +20664,27 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/welcome_center/offices)
+"mGc" = (
+/obj/structure/window{
+	dir = 4
+	},
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/prop/almayer/computer{
+	dir = 8;
+	pixel_y = 8;
+	icon_state = "demo_sim";
+	layer = 3.01
+	},
+/obj/structure/machinery/prop/almayer/computer{
+	dir = 8;
+	pixel_y = -6;
+	icon_state = "shuttle";
+	layer = 3.01
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "mGe" = (
 /obj/item/trash/cigbutt/cigarbutt,
 /turf/open/gm/river,
@@ -23895,16 +23958,20 @@
 	},
 /area/lv553/oob)
 "oDF" = (
-/obj/structure/machinery/door_control{
-	desc = "A garage door opener.";
-	id = "gated_community";
-	name = "gate button";
-	pixel_x = -28;
-	pixel_y = 0;
-	req_one_access_txt = "2;3;12;19"
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
 	},
-/turf/open/gm/dirt,
-/area/lv553/indoors/gated_community/director_of_corporate_research)
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/surface/table/almayer,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "oEw" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/gm/grass,
@@ -24551,9 +24618,7 @@
 	},
 /area/lv553/oob)
 "oWT" = (
-/obj/structure/flora/jungle/hedge{
-	dir = 5
-	},
+/obj/structure/flora/jungle/hedge,
 /turf/open/gm/dirtgrassborder{
 	dir = 8;
 	icon_state = "grassdirt_corner"
@@ -27622,7 +27687,19 @@
 	},
 /area/lv553/indoors/hospital/storage_laundyroom_and_breakroom)
 "qyz" = (
-/obj/structure/machinery/prop/almayer/CICmap,
+/obj/structure/window{
+	dir = 4
+	},
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/prop/almayer/computer{
+	dir = 8;
+	pixel_y = 8;
+	icon_state = "id"
+	},
+/obj/structure/machinery/prop/almayer/computer{
+	dir = 8;
+	pixel_y = -6
+	},
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -27978,6 +28055,17 @@
 	},
 /turf/open/asphalt/cement,
 /area/lv553/outdoors/bungalow_manager_exterior)
+"qLi" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/surface/table/almayer,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "qLu" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
@@ -28118,6 +28206,21 @@
 /obj/item/stool,
 /turf/open/gm/dirt,
 /area/lv553/outdoors/colony_streets/east)
+"qQJ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/structure/surface/table/almayer,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "qQU" = (
 /obj/structure/machinery/light{
 	dir = 1;
@@ -28688,8 +28791,11 @@
 	},
 /area/lv553/indoors/hospital/operating_rooms)
 "riW" = (
-/turf/closed/wall/r_wall,
-/area/lv553/indoors/gated_community/head_of_corporate_security)
+/obj/structure/surface/table/almayer,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "riY" = (
 /obj/structure/janitorialcart,
 /turf/open/gm/dirtgrassborder{
@@ -31980,9 +32086,6 @@
 /area/lv553/indoors/hospital/research/floor)
 "sYC" = (
 /obj/structure/closet/fancy,
-/obj/structure/curtain/red{
-	pixel_x = -32
-	},
 /obj/item/clothing/under/liaison_suit/formal,
 /obj/item/storage/fancy/cigarettes/arcturian_ace,
 /obj/item/storage/box/matches,
@@ -34872,8 +34975,12 @@
 	},
 /area/lv553/oob)
 "uFZ" = (
-/obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/window,
+/obj/structure/surface/table/almayer,
+/obj/item/ashtray/bronze{
+	pixel_y = 0;
+	pixel_x = -6
+	},
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -35715,6 +35822,16 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv553/indoors/flooded/west_apartments)
+"vjg" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/obj/structure/surface/table/almayer,
+/turf/open/floor{
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "vjh" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 6
@@ -36196,6 +36313,21 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/oob)
+"vDh" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/surface/table/almayer,
+/turf/open/floor{
+	dir = 6;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "vDk" = (
 /obj/structure/bed/stool,
 /turf/open/floor/carpet,
@@ -36507,7 +36639,7 @@
 /area/lv553/indoors/lone_buildings/weyyu_hostel)
 "vNS" = (
 /obj/structure/sign/poster/propaganda,
-/turf/closed/wall/r_wall,
+/turf/closed/wall/r_wall/unmeltable,
 /area/lv553/oob)
 "vOy" = (
 /obj/item/tool/mop{
@@ -38132,6 +38264,13 @@
 	},
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/army_surplus)
+"wKk" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder{
+	dir = 8;
+	icon_state = "grassdirt_corner"
+	},
+/area/lv553/outdoors/landing_zones_disembark)
 "wKp" = (
 /obj/structure/bed/sofa/south/grey/right,
 /obj/item/clothing/mask/cigarette/weed,
@@ -46067,7 +46206,7 @@ glB
 glB
 glB
 brb
-pCm
+wTq
 hXp
 tVX
 tOS
@@ -46937,7 +47076,7 @@ kQN
 glB
 iXS
 qxc
-uFZ
+gju
 nOS
 ewo
 ewo
@@ -47161,7 +47300,7 @@ vlL
 gDr
 glB
 glB
-fRy
+cSW
 gMa
 exf
 exf
@@ -47388,8 +47527,8 @@ glB
 qpl
 glB
 glB
-qyz
-qyz
+glB
+glB
 glB
 glB
 tVX
@@ -47606,17 +47745,17 @@ glB
 nsw
 wTq
 kvZ
-lBc
 glB
+lBc
 uFZ
 qeh
 uwi
+riW
+riW
+riW
 glB
 glB
-glB
-glB
-glB
-tVX
+vjg
 ewo
 mlh
 pCm
@@ -47830,17 +47969,17 @@ glB
 iWG
 wTq
 bLj
-bLj
-bLj
+qyz
+mGc
 fRy
 nOS
 qZw
+riW
+fQl
+riW
 glB
-glB
-glB
-glB
-glB
-tVX
+iTN
+vjg
 ewo
 pCm
 pCm
@@ -48059,12 +48198,12 @@ pPF
 pPF
 tjU
 qZw
+riW
+riW
+riW
 glB
 glB
-glB
-glB
-glB
-tVX
+vjg
 ewo
 ica
 pCm
@@ -48278,7 +48417,7 @@ glB
 glB
 xxC
 ewo
-jVu
+qQJ
 exf
 exf
 exf
@@ -48502,16 +48641,16 @@ uLl
 vSy
 pCm
 ewo
-qZw
+qLi
+gDr
+glB
+glB
+lBc
 glB
 glB
 glB
 glB
-tKp
-tKp
-glB
-glB
-glB
+lBc
 tVX
 ewo
 dfW
@@ -48726,17 +48865,17 @@ wTq
 pCm
 pCm
 nOd
-xnn
+oDF
 eqb
 eqb
+fcs
+fcs
+fcs
 eqb
 eqb
-eqb
-eqb
-eqb
-eqb
-eqb
-sML
+fcs
+fcs
+vDh
 ewo
 pCm
 pCm
@@ -56022,21 +56161,21 @@ mMX
 qgs
 lHq
 lHq
-riW
-riW
-riW
-riW
-riW
-riW
-riW
-riW
+bdg
+bdg
+bdg
+bdg
+bdg
+bdg
+bdg
+bdg
 lHq
-xKq
-xKq
-xKq
-xKq
-xKq
-xKq
+kKK
+kKK
+kKK
+kKK
+kKK
+kKK
 xKq
 xKq
 xKq
@@ -56246,7 +56385,7 @@ mMX
 yfC
 lHq
 qMp
-riW
+bdg
 sBI
 fEd
 jCJ
@@ -56260,7 +56399,7 @@ ufe
 jiv
 wKZ
 ods
-xKq
+kKK
 jSK
 snm
 xKq
@@ -56470,10 +56609,10 @@ mMX
 qgs
 lHq
 lHq
-riW
+bdg
 wFN
 qph
-riW
+bdg
 jtE
 dwr
 frI
@@ -56484,7 +56623,7 @@ lqP
 igJ
 rUL
 igJ
-xKq
+kKK
 jOV
 sDl
 xKq
@@ -56694,10 +56833,10 @@ iwz
 qgs
 lHq
 lHq
-riW
-riW
-riW
-riW
+bdg
+bdg
+bdg
+bdg
 jtE
 hen
 tcB
@@ -56706,10 +56845,10 @@ lHq
 kKK
 sZg
 igJ
-xKq
+kKK
 hNf
-xKq
-xKq
+kKK
+kKK
 xGu
 xKq
 lgh
@@ -56918,7 +57057,7 @@ iwz
 qgs
 lHq
 lHq
-riW
+bdg
 rwb
 jtE
 fgp
@@ -56927,10 +57066,10 @@ jtE
 hQJ
 bdg
 lbP
-xKq
+kKK
 rpu
-xKq
-xKq
+kKK
+kKK
 igJ
 igJ
 igJ
@@ -57142,11 +57281,11 @@ iwz
 qgs
 lHq
 lHq
-riW
+bdg
 lVQ
 qUL
-riW
-riW
+bdg
+bdg
 jtE
 tQd
 bdg
@@ -57366,18 +57505,18 @@ iwz
 qgs
 qMp
 lHq
-riW
+bdg
 jtE
 aFe
 jtE
-riW
+bdg
 lyq
-riW
-riW
+bdg
+bdg
 cKB
 cKB
 cKB
-xKq
+kKK
 dwu
 sNp
 hHQ
@@ -57590,7 +57729,7 @@ iwz
 qgs
 lHq
 lHq
-riW
+bdg
 wbA
 sxe
 vgC
@@ -57601,14 +57740,14 @@ cKB
 cKB
 cKB
 cKB
+kKK
+kKK
+kKK
+kKK
+kKK
+kKK
 xKq
-kKK
-kKK
-kKK
-kKK
-kKK
-xKq
-xKq
+huK
 huK
 cfs
 jDg
@@ -57814,11 +57953,11 @@ iwz
 qgs
 lHq
 lHq
-riW
+bdg
 bdg
 oNp
 gVH
-riW
+bdg
 cKB
 cKB
 cKB
@@ -57830,9 +57969,9 @@ cKB
 cKB
 cKB
 cKB
-cKB
-oDF
+hCg
 tsc
+jDg
 jDg
 jDg
 jDg
@@ -58055,8 +58194,8 @@ cKB
 cKB
 cKB
 cKB
-cKB
 mtk
+jDg
 jDg
 jDg
 jDg
@@ -58263,23 +58402,23 @@ qgs
 lHq
 lHq
 lHq
-fQl
 tuZ
 tuZ
 tuZ
 tuZ
 tuZ
-fQl
+tuZ
+tuZ
 cKB
 cKB
 cKB
 cKB
 cKB
 cKB
-jTD
+sec
 sec
 hjO
-hjO
+sec
 jTD
 ijU
 sCK
@@ -58487,13 +58626,13 @@ qgs
 lHq
 lHq
 xSm
-fQl
+tuZ
 nsb
 noc
 kVr
 lcl
 osK
-fQl
+tuZ
 cKB
 cKB
 cKB
@@ -58721,10 +58860,10 @@ gMX
 cKB
 cKB
 cKB
-jTD
-jTD
+sec
+sec
 tbM
-jTD
+sec
 kke
 ewK
 gDV
@@ -58940,16 +59079,16 @@ gPv
 gPv
 cET
 gPv
-fQl
-fQl
+tuZ
+tuZ
 mxO
-fQl
+tuZ
 cKB
 sec
 sSb
 kke
-jTD
-jTD
+sec
+sec
 ewK
 oNo
 jTD
@@ -59159,12 +59298,12 @@ qgs
 lHq
 lHq
 qMp
-fQl
+tuZ
 bQL
-fQl
-fQl
+tuZ
+tuZ
 wSX
-fQl
+tuZ
 poh
 uBT
 tuZ
@@ -59383,10 +59522,10 @@ qgs
 lHq
 lHq
 lHq
-fQl
+tuZ
 bap
 fUJ
-fQl
+tuZ
 gPv
 gPv
 gPv
@@ -59397,9 +59536,9 @@ hjO
 sQq
 fom
 tFT
-jTD
-jTD
-jTD
+sec
+sec
+sec
 jTD
 lgh
 lHp
@@ -59607,10 +59746,10 @@ bcy
 lHq
 qMp
 lHq
-fQl
+tuZ
 tUe
 vhs
-fQl
+tuZ
 iKl
 ppE
 ohN
@@ -59621,7 +59760,7 @@ dql
 qTA
 gTv
 llj
-jTD
+sec
 szS
 nlT
 jTD
@@ -59831,15 +59970,15 @@ sZd
 lHq
 lHq
 lHq
-fQl
-fQl
-fQl
-fQl
-fQl
-fQl
-fQl
-fQl
-fQl
+tuZ
+tuZ
+tuZ
+tuZ
+tuZ
+tuZ
+tuZ
+tuZ
+tuZ
 lHq
 sec
 kUB
@@ -60065,8 +60204,8 @@ qMp
 lHq
 lHq
 lHq
-jTD
-jTD
+sec
+sec
 jTD
 jTD
 jTD
@@ -63829,26 +63968,26 @@ bak
 bak
 ucD
 oWT
+wjq
+wpR
+wpR
+wpR
+wpR
+wpR
 ten
-ten
-ten
-ten
-ten
-ten
-ten
-ten
-ten
-ten
-ten
-ten
-ten
-ten
-ten
-ten
-ten
-ten
-ten
-ten
+wpR
+wpR
+wpR
+wpR
+wpR
+wpR
+wpR
+wpR
+wpR
+wpR
+wpR
+wpR
+wpR
 wjq
 mMD
 jKZ
@@ -64053,7 +64192,7 @@ kNY
 bak
 bak
 ucD
-eAV
+wKk
 udv
 fKk
 fKk
@@ -64277,7 +64416,7 @@ bak
 bak
 bak
 bak
-hCg
+vBJ
 mMD
 qhh
 fBL
@@ -64501,7 +64640,7 @@ fkA
 xRd
 bak
 bak
-bdT
+vBJ
 mMD
 dSO
 iME
@@ -64725,7 +64864,7 @@ knw
 bak
 bak
 xRd
-bdT
+vBJ
 mMD
 dSO
 jKZ
@@ -64949,7 +65088,7 @@ pEj
 bak
 fZU
 bak
-hCg
+vBJ
 mMD
 dSO
 jKZ
@@ -65173,7 +65312,7 @@ pEj
 nha
 nha
 fZU
-bdT
+wjq
 bay
 jKZ
 jKZ
@@ -66741,7 +66880,7 @@ xfb
 qPA
 qPA
 qPA
-bdT
+vBJ
 wpR
 wpR
 wpR
@@ -66965,7 +67104,7 @@ xDf
 fmY
 qPA
 qPA
-bdT
+vBJ
 wpR
 wpR
 wpR
@@ -67189,7 +67328,7 @@ vZw
 qPA
 qPA
 qPA
-bdT
+vBJ
 wpR
 wpR
 wpR
@@ -67413,7 +67552,7 @@ qPA
 qPA
 qPA
 qPA
-bdT
+vBJ
 wpR
 oea
 wpR
@@ -67861,12 +68000,12 @@ qPA
 qPA
 mkT
 kLl
-ten
-ten
-ten
-ten
-ten
-ten
+wjq
+wpR
+wpR
+wpR
+wpR
+wpR
 oBJ
 sgw
 lce

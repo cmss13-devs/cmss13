@@ -1,48 +1,56 @@
-import { classes } from 'common/react';
+import { KEY_ENTER, KEY_ESCAPE } from 'common/keycodes';
 import { clamp } from 'common/math';
+import { classes } from 'common/react';
 import { Component, createRef } from 'react';
-import { Box } from './Box';
-import { KEY_ESCAPE, KEY_ENTER } from 'common/keycodes';
 
-const DEFAULT_MIN = -16777216;
-const DEFAULT_MAX = 16777216;
+import { Box } from './Box';
+
+const DEFAULT_MIN = 0;
+const DEFAULT_MAX = 10000;
 
 /**
- * Takes a string input and parses integers from it.
+ * Takes a string input and parses integers or floats from it.
  * If none: Minimum is set.
  * Else: Clamps it to the given range.
  */
-const getClampedNumber = (value, minValue, maxValue) => {
+const getClampedNumber = (value, minValue, maxValue, allowFloats) => {
   const minimum = minValue || DEFAULT_MIN;
   const maximum = maxValue || maxValue === 0 ? maxValue : DEFAULT_MAX;
-  const defaultValue = maximum < 0 ? minimum : minimum > 0 ? minimum : 0;
   if (!value || !value.length) {
-    return String(defaultValue);
+    return String(minimum);
   }
-  let parsedValue = parseFloat(value.replace(/[^\-.\d]/g, ''), 10);
+  let parsedValue = allowFloats
+    ? parseFloat(value.replace(/[^\-\d.]/g, ''))
+    : parseInt(value.replace(/[^\-\d]/g, ''), 10);
   if (isNaN(parsedValue)) {
-    return String(defaultValue);
+    return String(minimum);
   } else {
     return String(clamp(parsedValue, minimum, maximum));
   }
 };
 
 export class RestrictedInput extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.inputRef = createRef();
     this.state = {
       editing: false,
     };
     this.handleBlur = (e) => {
+      const { maxValue, minValue, allowFloats } = this.props;
       const { editing } = this.state;
       if (editing) {
+        e.target.value = getClampedNumber(
+          e.target.value,
+          minValue,
+          maxValue,
+          allowFloats
+        );
         this.setEditing(false);
       }
     };
     this.handleChange = (e) => {
-      const { maxValue, minValue, onChange } = this.props;
-      e.target.value = getClampedNumber(e.target.value, minValue, maxValue);
+      const { onChange } = this.props;
       if (onChange) {
         onChange(e, +e.target.value);
       }
@@ -64,9 +72,14 @@ export class RestrictedInput extends Component {
       }
     };
     this.handleKeyDown = (e) => {
-      const { maxValue, minValue, onChange, onEnter } = this.props;
+      const { maxValue, minValue, onChange, onEnter, allowFloats } = this.props;
       if (e.keyCode === KEY_ENTER) {
-        const safeNum = getClampedNumber(e.target.value, minValue, maxValue);
+        const safeNum = getClampedNumber(
+          e.target.value,
+          minValue,
+          maxValue,
+          allowFloats
+        );
         this.setEditing(false);
         if (onChange) {
           onChange(e, +safeNum);
@@ -91,11 +104,16 @@ export class RestrictedInput extends Component {
   }
 
   componentDidMount() {
-    const { maxValue, minValue } = this.props;
+    const { maxValue, minValue, allowFloats } = this.props;
     const nextValue = this.props.value?.toString();
     const input = this.inputRef.current;
     if (input) {
-      input.value = getClampedNumber(nextValue, minValue, maxValue);
+      input.value = getClampedNumber(
+        nextValue,
+        minValue,
+        maxValue,
+        allowFloats
+      );
     }
     if (this.props.autoFocus || this.props.autoSelect) {
       setTimeout(() => {
@@ -109,14 +127,19 @@ export class RestrictedInput extends Component {
   }
 
   componentDidUpdate(prevProps, _) {
-    const { maxValue, minValue } = this.props;
+    const { maxValue, minValue, allowFloats } = this.props;
     const { editing } = this.state;
     const prevValue = prevProps.value?.toString();
     const nextValue = this.props.value?.toString();
     const input = this.inputRef.current;
     if (input && !editing) {
       if (nextValue !== prevValue && nextValue !== input.value) {
-        input.value = getClampedNumber(nextValue, minValue, maxValue);
+        input.value = getClampedNumber(
+          nextValue,
+          minValue,
+          maxValue,
+          allowFloats
+        );
       }
     }
   }

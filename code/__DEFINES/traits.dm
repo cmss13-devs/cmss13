@@ -159,6 +159,8 @@
 #define TRAIT_DAZED "dazed"
 /// Apply this to identify a mob as merged with weeds
 #define TRAIT_MERGED_WITH_WEEDS "merged_with_weeds"
+/// Apply this to identify a mob as temporarily muted
+#define TRAIT_TEMPORARILY_MUTED "temporarily_muted"
 
 // SPECIES TRAITS
 /// Knowledge of Yautja technology
@@ -264,6 +266,9 @@
 #define TRAIT_GUN_BIPODDED "t_gun_bipodded"
 
 #define TRAIT_GUN_LIGHT_DEACTIVATED "t_gun_light_deactivated"
+
+/// If this ID belongs to an ERT member
+#define TRAIT_ERT_ID "ert_id"
 
 // Miscellaneous item traits.
 // Do NOT bloat this category, if needed make a new category (like shoe traits, xeno item traits...)
@@ -422,6 +427,8 @@ GLOBAL_LIST(trait_name_map)
 ///Status trait coming from ability
 #define TRAIT_SOURCE_ABILITY(ability) "t_s_ability_[ability]"
 #define TRAIT_SOURCE_LIMB(limb) "t_s_limb_[limb]"
+///Status trait coming from temporary_mute
+#define TRAIT_SOURCE_TEMPORARY_MUTE "t_s_temporary_mute"
 ///Status trait forced by the xeno action charge
 #define TRAIT_SOURCE_XENO_ACTION_CHARGE "t_s_xeno_action_charge"
 ///Status trait coming from a xeno nest
@@ -462,6 +469,8 @@ GLOBAL_LIST(trait_name_map)
 #define XENO_WEED_TRAIT "xeno_weed"
 /// traits associated with actively interacted machinery
 #define INTERACTION_TRAIT "interaction"
+/// traits associated with interacting with a dropship
+#define TRAIT_SOURCE_DROPSHIP_INTERACTION "dropship_interaction"
 /// traits bound by stunned status effects
 #define STUNNED_TRAIT "stunned"
 /// traits bound by knocked_down status effect

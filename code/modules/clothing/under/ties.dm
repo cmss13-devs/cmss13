@@ -79,6 +79,22 @@
 	name = "red tie"
 	icon_state = "redtie"
 
+/obj/item/clothing/accessory/green
+	name = "green tie"
+	icon_state = "greentie"
+
+/obj/item/clothing/accessory/black
+	name = "black tie"
+	icon_state = "blacktie"
+
+/obj/item/clothing/accessory/gold
+	name = "gold tie"
+	icon_state = "goldtie"
+
+/obj/item/clothing/accessory/purple
+	name = "purple tie"
+	icon_state = "purpletie"
+
 /obj/item/clothing/accessory/horrible
 	name = "horrible tie"
 	desc = "A neosilk clip-on tie. This one is disgusting."
@@ -341,6 +357,11 @@
 	name = "EMT armband"
 	desc = "An armband, worn by the crew to display which department they're assigned to. This one is white and green."
 	icon_state = "medgreen"
+
+/obj/item/clothing/accessory/armband/nurse
+	name = "nurse armband"
+	desc = "An armband, worn by the rookie nurses to display they are still not doctors. This one is dark red."
+	icon_state = "nurse"
 
 //patches
 /obj/item/clothing/accessory/patch

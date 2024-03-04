@@ -28,6 +28,10 @@
 	var/mob_min = 3
 	var/dispatch_message = "An encrypted signal has been received from a nearby vessel. Stand by." //Msg to display when starting
 	var/arrival_message = "" //Msg to display about when the shuttle arrives
+	/// Probability that the message will be replaced with static. - prob(chance_hidden)
+	var/chance_hidden = 20
+	/// Message to display when distress beacon is hidden
+	var/static_message = "**STATIC** %$#&!- *!%^#$$ ^%%$# +_!@* &*%$## **STATIC** &%$#^*! @!*%$# ^%&$#@ *%&$#^ **STATIC** --SIGNAL LOST"
 	var/objectives //Txt of objectives to display to joined. Todo: make this into objective notes
 	var/objective_info //For additional info in the objectives txt
 	var/probability = 0
@@ -46,12 +50,18 @@
 	var/max_heavies = 1
 	var/max_smartgunners = 1
 	var/shuttle_id = MOBILE_SHUTTLE_ID_ERT1 //Empty shuttle ID means we're not using shuttles (aka spawn straight into cryo)
-	var/auto_shuttle_launch = FALSE
+	var/auto_shuttle_launch = TRUE
 	var/spawn_max_amount = FALSE
 
 	var/ert_message = "An emergency beacon has been activated"
 
 	var/time_required_for_job = 5 HOURS
+
+	/// the shuttle being used by this distress call
+	var/obj/docking_port/mobile/emergency_response/shuttle
+
+	/// the [/datum/lazy_template] we should attempt to spawn in for the return journey
+	var/home_base = /datum/lazy_template/ert/freelancer_station
 
 /datum/game_mode/proc/initialize_emergency_calls()
 	if(all_calls.len) //It's already been set up.
@@ -92,12 +102,19 @@
 		return chosen_call
 
 /datum/game_mode/proc/get_specific_call(call_name, quiet_launch = FALSE, announce_incoming = TRUE, info = "")
-	for(var/datum/emergency_call/E in all_calls) //Loop through all potential candidates
-		if(E.name == call_name)
-			var/datum/emergency_call/em_call = new E.type()
-			em_call.objective_info = info
-			em_call.activate(quiet_launch, announce_incoming)
-			return
+	if(ispath(call_name, /datum/emergency_call))
+		var/datum/emergency_call/em_call = new call_name
+		em_call.objective_info = info
+		em_call.activate(quiet_launch, announce_incoming)
+		return
+
+	var/call_path = text2path(call_name)
+	if(ispath(call_path, /datum/emergency_call))
+		var/datum/emergency_call/em_call = new call_path
+		em_call.objective_info = info
+		em_call.activate(quiet_launch, announce_incoming)
+		return
+
 	error("get_specific_call could not find emergency call '[call_name]'")
 	return
 
@@ -258,12 +275,15 @@
 		if(M.client)
 			to_chat(M, SPAN_NOTICE("Distress beacon: [src.name] finalized."))
 
-	var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttle_id)
+	if(shuttle_id && !override_spawn_loc)
+		if(!SSmapping.shuttle_templates[shuttle_id])
+			message_admins("Distress beacon: [name] does not have a valid shuttle_id: [shuttle_id]")
+			CRASH("ert called with invalid shuttle_id")
 
-	if(!istype(shuttle))
-		if(shuttle_id) //Cryo distress doesn't have a shuttle
-			message_admins("Warning: Distress shuttle not found.")
-	spawn_items()
+		var/datum/map_template/shuttle/new_shuttle = SSmapping.shuttle_templates[shuttle_id]
+		shuttle = SSshuttle.load_template_to_transit(new_shuttle)
+		shuttle.control_doors("force-lock", force = TRUE, external_only = TRUE)
+		shuttle.distress_beacon = src
 
 	if(shuttle && auto_shuttle_launch)
 		var/obj/structure/machinery/computer/shuttle/ert/comp = shuttle.getControlConsole()
@@ -305,7 +325,17 @@
 
 	candidates = list()
 	if(arrival_message && announce_incoming)
-		marine_announcement(arrival_message, "Intercepted Transmission:")
+		if(prob(chance_hidden))
+			marine_announcement(static_message, "Intercepted Transmission:")
+		else
+			marine_announcement(arrival_message, "Intercepted Transmission:")
+
+	for(var/datum/mind/spawned as anything in members)
+		if(ishuman(spawned.current))
+			var/mob/living/carbon/human/spawned_human = spawned.current
+			var/obj/item/card/id/id = spawned_human.get_idcard()
+			if(id)
+				ADD_TRAIT(id, TRAIT_ERT_ID, src)
 
 /datum/emergency_call/proc/add_candidate(mob/M)
 	if(!M.client || (M.mind && (M.mind in candidates)) || istype(M, /mob/living/carbon/xenomorph))
@@ -321,6 +351,23 @@
 
 /datum/emergency_call/proc/get_spawn_point(is_for_items)
 	var/landmark
+
+	if(shuttle)
+		if(is_for_items)
+			landmark = SAFEPICK(shuttle.local_landmarks[item_spawn])
+		else
+			landmark = SAFEPICK(shuttle.local_landmarks[name_of_spawn])
+
+		if(landmark)
+			return get_turf(landmark)
+
+		var/list/valid_turfs = list()
+		for(var/turf/open/floor/valid_turf in shuttle.return_turfs())
+			valid_turfs += valid_turf
+
+		if(length(valid_turfs))
+			return pick(valid_turfs)
+
 	if(is_for_items)
 		landmark = SAFEPICK(GLOB.ert_spawns[item_spawn])
 	else

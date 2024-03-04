@@ -165,6 +165,8 @@
 #define COMSIG_KB_XENO_HIVE_STATUS "keybinding_hive_status"
 #define COMSIG_KB_XENO_HIDE "keybinding_hide"
 #define COMSIG_KB_XENO_EVOLVE "keybinding_evolve"
+#define COMSIG_KB_XENO_PURCHASE_STRAIN "keybinding_purchase_strain"
+
 // Yautja
 
 #define COMSIG_KB_YAUTJA_BUTCHER "keybinding_yautja_butcher"

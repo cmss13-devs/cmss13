@@ -267,8 +267,11 @@
 	req_role = JOB_CORPORATE_LIAISON
 	listed_products = list(
 		list("INCENTIVES", 0, null, null, null),
+		list("Corporate Security Bodyguard", 50, /obj/item/handheld_distress_beacon/bodyguard, "white", "A beacon which sends the Corporate Security Division an encoded message informing them of your request for a Corporate Security Bodyguard."),
+		list("Corporate Lawyer Team", 50, /obj/item/handheld_distress_beacon/lawyer, "white", "A beacon which sends the Corporate Affairs Division an encoded message informing them of your request for a Corporate Lawyer, required when a contract signee breaks one of their clauses."),
 		list("Neurostimulator Implant", 30, /obj/item/implanter/neurostim, "white", "Implant which regulates nociception and sensory function. Benefits include pain reduction, improved balance, and improved resistance to overstimulation and disorientation. To encourage compliance, negative stimulus is applied if the implant hears a (non-radio) spoken codephrase. Implant will be degraded by the body's immune system over time, and thus malfunction with gradually increasing frequency. Personal use not recommended."),
 		list("Ultrazine Injector", 25, /obj/item/reagent_container/hypospray/autoinjector/ultrazine/liaison, "white", "Highly-addictive stimulant. Enhances short-term physical performance, particularly running speed. Effects last approximately 10 minutes per injection. More than two injections at a time will result in overdose. Withdrawal causes extreme discomfort and hallucinations. Long-term use results in halluciations and organ failure. Conditional distribution secures subject compliance. Not for personal use."),
+		list("Cyanide Pill", 20, /obj/item/reagent_container/pill/cyanide, "white", "A cyanide pill, also known as a suicide pill. For the easy way out."),
 		list("Ceramic Plate", 10, /obj/item/trash/ceramic_plate, "white", "A ceramic plate, useful in a variety of situations."),
 		list("Cash", 5, /obj/item/spacecash/c1000/counterfeit, "white", "$1000 USD, unmarked bills"),
 		list("WY Encryption Key", 5, /obj/item/device/encryptionkey/WY, "white", "WY private comms encryption key, for conducting private business."),
@@ -282,6 +285,7 @@
 		list("Sake", 5, /obj/item/reagent_container/food/drinks/bottle/sake, "white", "Weyland-Yutani Sake, for a proper business dinner."),
 		list("Beer", 5, /obj/item/reagent_container/food/drinks/cans/aspen, "white", "Weyland-Yutani Aspen Beer, for a more casual night."),
 		list("Drinking Glass", 1, /obj/item/reagent_container/food/drinks/drinkingglass, "white", "A Drinking Glass, because you have class."),
+		list("Weyland-Yutani Coffee Mug", 1, /obj/item/reagent_container/food/drinks/coffeecup/wy, "white", "A Weyland-Yutani coffee mug, for any Marines who want a Company souvenir."),
 
 		list("STATIONARY", 0, null, null, null),
 		list("WY pen, black", 1, /obj/item/tool/pen/clicky, "white", "A WY pen, for writing formally on the go."),

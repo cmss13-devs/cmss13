@@ -3,6 +3,7 @@
 	mob_max = 7
 	probability = 15
 	home_base = /datum/lazy_template/ert/twe_station
+	shuttle_id = MOBILE_SHUTTLE_ID_ERT4
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_twe
 	item_spawn = /obj/effect/landmark/ert_spawns/distress_twe/item
 	max_engineers =  0

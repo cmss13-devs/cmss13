@@ -1,0 +1,5 @@
+author: "ZephyrTFA, harryob"
+delete-after: True
+changes:
+  - rscadd: "framework for new ert stations ported from tgstation/tgstation#71785, by ZephyrTFA"
+  - rscadd: "distress beacons now start in transit to the ship, and will return to their own home base. they can't keep going back and forth between the ship and their base"

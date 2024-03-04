@@ -65,7 +65,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/chat_display_preferences = CHAT_TYPE_ALL
 	var/item_animation_pref_level = SHOW_ITEM_ANIMATIONS_ALL
 	var/pain_overlay_pref_level = PAIN_OVERLAY_BLURRY
-	var/UI_style_color = COLOR_WHITE
+	var/UI_style_color = "#ffffff"
 	var/UI_style_alpha = 255
 	var/View_MC = FALSE
 	var/window_skin = 0
@@ -245,7 +245,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/auto_observe = TRUE
 
 /datum/preferences/New(client/C)
-	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
+	key_bindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	macros = new(C, src)
 	if(istype(C))
 		owner = C

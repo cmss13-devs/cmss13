@@ -50,11 +50,12 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 
 	tutorial_mob = starting_mob
 
-	reservation = SSmapping.RequestBlockReservation(initial(tutorial_template.width), initial(tutorial_template.height))
+	reservation = SSmapping.request_turf_block_reservation(initial(tutorial_template.width), initial(tutorial_template.height), 1)
 	if(!reservation)
+		abort_tutorial()
 		return FALSE
 
-	var/turf/bottom_left_corner_reservation = locate(reservation.bottom_left_coords[1], reservation.bottom_left_coords[2], reservation.bottom_left_coords[3])
+	var/turf/bottom_left_corner_reservation = reservation.bottom_left_turfs[1]
 	var/datum/map_template/tutorial/template = new tutorial_template
 	template.load(bottom_left_corner_reservation, FALSE, TRUE)
 	var/obj/landmark = locate(/obj/effect/landmark/tutorial_bottom_left) in GLOB.landmarks_list
@@ -97,11 +98,7 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 /// Verify the template loaded fully and without error.
 /datum/tutorial/proc/verify_template_loaded()
 	// We subtract 1 from x and y because the bottom left corner doesn't start at the walls.
-	var/turf/true_bottom_left_corner = locate(
-		reservation.bottom_left_coords[1],
-		reservation.bottom_left_coords[2],
-		reservation.bottom_left_coords[3],
-	)
+	var/turf/true_bottom_left_corner = reservation.bottom_left_turfs[1]
 	// We subtract 1 from x and y here because the bottom left corner counts as the first tile
 	var/turf/top_right_corner = locate(
 		true_bottom_left_corner.x + initial(tutorial_template.width) - 1,

@@ -184,16 +184,22 @@ export const PlayerPanel = (props) => {
               </Stack.Item>
             </Stack>
           )}
-          {client_age && first_join && (
+          {client_age && (
             <Stack mt={1}>
               <Stack.Item width="80px" color="label">
                 Account age:
-                <br />
-                First join:
               </Stack.Item>
               <Stack.Item grow={1} align="right">
                 {client_age}
-                <br />
+              </Stack.Item>
+            </Stack>
+          )}
+          {first_join && (
+            <Stack mt={1}>
+              <Stack.Item width="80px" color="label">
+                First join:
+              </Stack.Item>
+              <Stack.Item grow={1} align="right">
                 {first_join}
               </Stack.Item>
             </Stack>

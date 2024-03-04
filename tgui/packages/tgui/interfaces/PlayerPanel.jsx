@@ -197,7 +197,9 @@ export const PlayerPanel = (props) => {
           {first_join && (
             <Stack mt={1}>
               <Stack.Item width="80px" color="label">
-                First join:
+                <Tooltip content="This is estimated, and depending on database integrity, may not be accurate to a user's first join date.">
+                  <Box position="relative">First join:</Box>
+                </Tooltip>
               </Stack.Item>
               <Stack.Item grow={1} align="right">
                 {first_join}

@@ -7504,6 +7504,9 @@
 	pixel_y = 16
 	},
 /obj/item/clothing/accessory/stethoscope,
+/obj/structure/closet/secure_closet/surgical/professor_dummy{
+	pixel_x = -32
+	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_corner"
@@ -19306,14 +19309,14 @@
 /area/almayer/medical/morgue)
 "cnW" = (
 /obj/structure/machinery/optable,
-/mob/living/carbon/human/dummy,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile"
 	},
 /area/almayer/medical/morgue)
 "cnZ" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/device/professor_dummy_tablet,
+/obj/item/tool/surgery/scalpel,
+/obj/item/tool/surgery/hemostat,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_corner"
@@ -19324,8 +19327,6 @@
 /obj/item/tool/surgery/cautery,
 /obj/item/tool/surgery/retractor,
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/tool/surgery/scalpel,
-/obj/item/tool/surgery/hemostat,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},

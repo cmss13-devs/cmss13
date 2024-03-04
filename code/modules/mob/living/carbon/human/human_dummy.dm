@@ -24,14 +24,6 @@
 	status_flags = GODMODE|CANPUSH
 	prepare_huds()
 	create_hud()
-	set_resting(TRUE)
-
-	return INITIALIZE_HINT_ROUNDSTART
-
-/mob/living/carbon/human/dummy/LateInitialize()
-	// It should absolutely self-destroy upon hijack, so xenos don't get an effectively godmoded mob
-	if(is_mainship_level(z) && istype(SSticker.mode, /datum/game_mode/colonialmarines))
-		RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_LANDED, PROC_REF(destroy_upon_hijack))
 
 //Inefficient pooling/caching way.
 GLOBAL_LIST_EMPTY(human_dummy_list)
@@ -82,16 +74,6 @@ GLOBAL_LIST_EMPTY(dummy_mob_list)
 /mob/living/carbon/human/dummy/add_to_all_mob_huds()
 	return
 
-/mob/living/carbon/human/dummy/proc/destroy_upon_hijack()
-	SIGNAL_HANDLER
-
-	visible_message(SPAN_WARNING("The [src] suddenly disintegrates!"))
-	dust(create_cause_data("hijack autodelete"))
-
-/mob/living/carbon/human/dummy/Destroy()
-	UnregisterSignal(src, COMSIG_GLOB_HIJACK_LANDED)
-	return ..()
-
 /mob/living/carbon/human/dummy/tutorial // Effectively an even more disabled dummy
 
 /mob/living/carbon/human/dummy/tutorial/Initialize(mapload)
@@ -99,3 +81,24 @@ GLOBAL_LIST_EMPTY(dummy_mob_list)
 	status_flags = GODMODE
 	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_TUTORIAL)
 	anchored = TRUE
+
+// Used by the CMO and the SEA for teaching medical personnel
+/mob/living/carbon/human/dummy/professor_dummy/Initialize(mapload)
+	. = ..()
+	change_real_name(src, "Professor DUMMY")
+	return INITIALIZE_HINT_ROUNDSTART
+
+// It should absolutely self-destroy upon hijack, so xenos don't get an effectively godmoded mob
+/mob/living/carbon/human/dummy/professor_dummy/LateInitialize()
+	if(is_mainship_level(z) && istype(SSticker.mode, /datum/game_mode/colonialmarines))
+		RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_LANDED, PROC_REF(destroy_upon_hijack))
+
+/mob/living/carbon/human/dummy/professor_dummy/proc/destroy_upon_hijack()
+	SIGNAL_HANDLER
+
+	visible_message(SPAN_WARNING("The [src] suddenly disintegrates!"))
+	dust(create_cause_data("hijack autodelete"))
+
+/mob/living/carbon/human/dummy/professor_dummy/Destroy()
+	UnregisterSignal(src, COMSIG_GLOB_HIJACK_LANDED)
+	return ..()

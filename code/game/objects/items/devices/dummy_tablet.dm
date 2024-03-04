@@ -6,7 +6,7 @@
 	icon_state = "Cotablet"
 	item_state = "Cotablet"
 
-	var/mob/living/carbon/human/dummy/linked_dummy
+	var/mob/living/carbon/human/dummy/professor_dummy/linked_dummy
 
 /obj/item/device/professor_dummy_tablet/Destroy()
 	linked_dummy = null
@@ -26,7 +26,7 @@
 	return TRUE
 
 /obj/item/device/professor_dummy_tablet/proc/link_mob(mob/user)
-	for(var/mob/living/carbon/human/dummy/dummy_to_link in range(1))
+	for(var/mob/living/carbon/human/dummy/professor_dummy/dummy_to_link in range(1))
 		if(dummy_to_link)
 			linked_dummy = dummy_to_link
 			RegisterSignal(linked_dummy, COMSIG_PARENT_QDELETING, PROC_REF(clear_linked_mob))

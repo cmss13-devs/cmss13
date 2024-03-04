@@ -1,7 +1,0 @@
-author: "SabreML"
-delete-after: True
-changes:
-  - rscadd: "Made the vehicle bay elevator look and sound better when in use."
-  - bugfix: "Fixed the vehicle bay elevator's front railings not closing when the elevator was lowered."
-  - bugfix: "Fixed the vehicle bay elevator's docking port falling down the elevator shaft when it was lowered."
-  - bugfix: "Fixed falling into the vehicle bay elevator shaft teleporting players to the requisitions elevator."

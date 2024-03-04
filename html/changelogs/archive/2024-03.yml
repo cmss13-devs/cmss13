@@ -47,3 +47,24 @@
   - rscadd: Larvae now do the attack animation when nudging.
   harryob:
   - admin: opening a new ticket via pming now automatically marks the ticket
+2024-03-04:
+  Foxtrot:
+  - rscadd: Added a CLF Team Leader spawn to the nightmare insert on LV-624
+  - spellcheck: Updated the CLF & PMC ship nightmare insert intro text
+  SabreML:
+  - rscadd: Made the vehicle bay elevator look and sound better when in use.
+  - bugfix: Fixed the vehicle bay elevator's front railings not closing when the elevator
+      was lowered.
+  - bugfix: Fixed the vehicle bay elevator's docking port falling down the elevator
+      shaft when it was lowered.
+  - bugfix: Fixed falling into the vehicle bay elevator shaft teleporting players
+      to the requisitions elevator.
+  TheGamerdk:
+  - rscadd: New View Given Medals button to see what medals you've given to others
+  - bugfix: Sensor tower no longer ignores half the hive
+  private-tristan:
+  - qol: Added balloon alerts to smartgunners
+  realforest2001:
+  - code_imp: Plastic Explosives and subtypes now have variable controlled skill checks
+      rather than hard-code.
+  - bugfix: MPs can now use Riot Breaching Charges as intended.

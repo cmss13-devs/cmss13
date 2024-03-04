@@ -1,5 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - code_imp: "Plastic Explosives and subtypes now have variable controlled skill checks rather than hard-code."
-  - bugfix: "MPs can now use Riot Breaching Charges as intended."

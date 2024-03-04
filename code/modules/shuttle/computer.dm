@@ -129,6 +129,7 @@
 	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
 
 	spooling = TRUE
+	SStgui.update_uis(src)
 
 	var/datum/turf_reservation/loaded = SSmapping.lazy_load_template(ert.distress_beacon.home_base, force = TRUE)
 	var/turf/bottom_left = loaded.bottom_left_turfs[1]
@@ -331,6 +332,8 @@
 /obj/structure/machinery/computer/shuttle/ert/small/get_landing_zones()
 	. = list()
 	for(var/obj/docking_port/stationary/emergency_response/dock in SSshuttle.stationary)
+		if(!is_mainship_level(dock.z))
+			continue
 		if(istype(dock, /obj/docking_port/stationary/emergency_response/external/hangar_port))
 			continue
 		if(istype(dock, /obj/docking_port/stationary/emergency_response/external/hangar_starboard))
@@ -347,6 +350,8 @@
 /obj/structure/machinery/computer/shuttle/ert/big/get_landing_zones()
 	. = list()
 	for(var/obj/docking_port/stationary/emergency_response/dock in SSshuttle.stationary)
+		if(!is_mainship_level(dock.z))
+			continue
 		. += list(dock)
 
 /obj/structure/machinery/computer/shuttle/lifeboat

@@ -270,9 +270,14 @@ const SpoolingDimmer = (props) => {
 
   return (
     <Dimmer>
-      <Section title="Spooling Up">
-        <ProgressBar value={0.5} />
-      </Section>
+      <Stack>
+        <Stack.Item>
+          <Box>Spooling...</Box>
+        </Stack.Item>
+        <Stack.Item>
+          <Icon name={'spinner'} spin />
+        </Stack.Item>
+      </Stack>
     </Dimmer>
   );
 };

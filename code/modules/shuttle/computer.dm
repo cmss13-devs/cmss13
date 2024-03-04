@@ -313,6 +313,7 @@
 				return
 
 			launch_home()
+			return TRUE
 
 /obj/structure/machinery/computer/shuttle/ert/attack_hand(mob/user)
 	. = ..(user)

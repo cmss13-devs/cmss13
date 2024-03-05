@@ -865,7 +865,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	var/datum/hive_status/hive
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
-		if(length(hive.total_living_xenos) > 0)
+		if(length(hive.total_living_xenos))
 			hives += list("[hive.name]" = hive.hivenumber)
 			last_hive_checked = hive
 

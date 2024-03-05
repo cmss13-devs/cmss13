@@ -845,6 +845,37 @@
 
 //*****************************************************************************************************/
 
+/datum/equipment_preset/other/professor_dummy
+name = "DUMMY"
+	flags = EQUIPMENT_PRESET_EXTRA
+	assignment = "DUMMY"
+	rank = "DUMMY"
+	idtype = /obj/item/card/id/dogtag
+	uses_special_name = TRUE
+
+/datum/equipment_preset/other/professor_dummy/load_name(mob/living/carbon/human/new_human, randomise)
+	new_human.gender = pick(MALE, FEMALE)
+	new_human.real_name = "Professor DUMMY the Medical Mannequin"
+	new_human.name = new_human.real_name
+	new_human.age = rand(1,5)
+	var/datum/preferences/A = new
+	A.randomize_appearance(new_human)
+
+/datum/equipment_preset/other/professor_dummy/load_race(mob/living/carbon/human/new_human)
+	. = ..()
+	//Can't hug the dummy! Otherwise it's basically human...
+	new_human.huggable = FALSE
+	new_human.mob_flags |= EASY_SURGERY //Nurses can practise surgery on it.
+
+/datum/equipment_preset/other/professor_dummy/load_gear(mob/living/carbon/human/new_human)
+	var/obj/item/device/professor_dummy_tablet/tablet = new /obj/item/device/professor_dummy_tablet(new_human)
+	tablet.link_mob(new_human)
+	new_human.equip_to_slot_or_del(tablet, WEAR_R_HAND)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical, WEAR_BODY)
+
+//*****************************************************************************************************/
+
 /datum/equipment_preset/other/tank
 	name = "Event Vehicle Crewman (CRMN)"
 	flags = EQUIPMENT_PRESET_EXTRA

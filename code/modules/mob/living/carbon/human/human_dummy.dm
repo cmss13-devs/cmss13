@@ -82,29 +82,7 @@ GLOBAL_LIST_EMPTY(dummy_mob_list)
 	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_TUTORIAL)
 	anchored = TRUE
 
-// Used by the CMO and the SEA for teaching medical personnel
-/mob/living/carbon/human/dummy/professor_dummy/Initialize(mapload)
-	. = ..()
-
-	// Personalise it
-	change_real_name(src, "Professor DUMMY the Medical Mannequin")
-	age = rand(1,5)
-	gender = pick(MALE, FEMALE)
-	var/datum/preferences/A = new
-	A.randomize_appearance(src)
-	regenerate_icons()
-
-	// Ensure nurses can practice surgery on it
-	mob_flags |= EASY_SURGERY
-	huggable = FALSE
-
-	// Spawn its control tablet
-	var/obj/item/device/professor_dummy_tablet/tablet = new (loc)
-	tablet.link_dummy(src)
-
-	if(is_mainship_level(loc.z))
-		RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_LANDED, PROC_REF(destroy_upon_hijack))
-
+// Professor Dummy, used by CMOs and SEAs to teach new nurses/doctors
 /mob/living/carbon/human/dummy/professor_dummy/proc/destroy_upon_hijack()
 	SIGNAL_HANDLER
 

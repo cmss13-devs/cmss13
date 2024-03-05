@@ -29,7 +29,7 @@
 	for(var/mob/living/carbon/human/dummy/professor_dummy/dummy_to_link in range(1))
 		if(dummy_to_link)
 			linked_dummy = dummy_to_link
-			RegisterSignal(linked_dummy, COMSIG_PARENT_QDELETING, PROC_REF(clear_linked_mob))
+			RegisterSignal(linked_dummy, COMSIG_PARENT_QDELETING, PROC_REF(self_delete))
 			if(user)
 				balloon_alert(user, "new dummy registered")
 			return TRUE
@@ -37,11 +37,12 @@
 		balloon_alert(user, "no dummy detected nearby")
 	return FALSE
 
-/obj/item/device/professor_dummy_tablet/proc/clear_linked_mob()
+/obj/item/device/professor_dummy_tablet/proc/self_delete()
 	SIGNAL_HANDLER
 
 	UnregisterSignal(linked_dummy, COMSIG_PARENT_QDELETING)
 	linked_dummy = null
+	qdel(src)
 
 /obj/item/device/professor_dummy_tablet/attack_self(mob/user as mob)
 	..()

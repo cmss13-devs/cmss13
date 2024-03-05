@@ -86,11 +86,7 @@ GLOBAL_LIST_EMPTY(dummy_mob_list)
 /mob/living/carbon/human/dummy/professor_dummy/Initialize(mapload)
 	. = ..()
 	change_real_name(src, "Professor DUMMY")
-	return INITIALIZE_HINT_ROUNDSTART
-
-// It should absolutely self-destroy upon hijack, so xenos don't get an effectively godmoded mob
-/mob/living/carbon/human/dummy/professor_dummy/LateInitialize()
-	if(is_mainship_level(z) && istype(SSticker.mode, /datum/game_mode/colonialmarines))
+	if(is_mainship_level(z))
 		RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_LANDED, PROC_REF(destroy_upon_hijack))
 
 /mob/living/carbon/human/dummy/professor_dummy/proc/destroy_upon_hijack()

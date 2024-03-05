@@ -180,6 +180,7 @@
 	icon_locked = "surgical_wall_locked"
 	icon_opened = "surgical_wall_open"
 	icon_broken = "surgical_wall_spark"
+	health = null	// Unbreakable
 	unacidable = TRUE
 	unslashable = TRUE
 	store_mobs = TRUE
@@ -201,13 +202,23 @@
 		visible_message(SPAN_HIGHDANGER("Professor DUMMY should only be used for teaching medical personnel, exclusively done by the [JOB_CMO] or the [JOB_SEA]. Do not abuse it."))
 	..()
 
-/obj/structure/closet/secure_closet/professor_dummy/toggle(mob/living/user)
-	if(opened)
-		for(var/mob/M in loc)
-			if(!istype(M, /mob/living/carbon/human/dummy/professor_dummy))
-				visible_message(SPAN_WARNING("[src] won't budge!"))
-				return
+/obj/structure/closet/secure_closet/professor_dummy/close()
+	for(var/mob/M in loc)
+		if(!istype(M, /mob/living/carbon/human/dummy/professor_dummy))
+			visible_message(SPAN_WARNING("[src] won't budge!"))
+			return
 	..()
+
+	// Force locking upon closing it
+	locked = TRUE
+	update_icon()
 
 /obj/structure/closet/secure_closet/professor_dummy/flashbang(datum/source, obj/item/explosive/grenade/flashbang/FB)
 	return
+
+/obj/structure/closet/secure_closet/professor_dummy/emp_act(severity)
+	for(var/mob/living/carbon/human/dummy/professor_dummy/dummy in src)
+		visible_message(SPAN_DANGER("Something in the cabinet blows apart!"))
+		playsound(src, 'sound/effects/metal_crash.ogg', 25, 1)
+		qdel(dummy)
+	..()

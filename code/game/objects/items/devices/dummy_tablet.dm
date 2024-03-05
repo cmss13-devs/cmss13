@@ -29,7 +29,7 @@
 		return FALSE
 	return TRUE
 
-/obj/item/device/professor_dummy_tablet/proc/link_dummy(/mob/living/carbon/human/dummy/professor_dummy/dummy_to_link)
+/obj/item/device/professor_dummy_tablet/proc/link_dummy(mob/living/carbon/human/dummy/professor_dummy/dummy_to_link)
 	if(dummy_to_link)
 		linked_dummy = dummy_to_link
 		RegisterSignal(linked_dummy, COMSIG_PARENT_QDELETING, PROC_REF(self_delete))

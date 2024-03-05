@@ -98,7 +98,8 @@ GLOBAL_LIST_EMPTY(dummy_mob_list)
 	mob_flags |= EASY_SURGERY
 
 	// Spawn its control tablet
-	new /obj/item/device/professor_dummy_tablet(loc)
+	var/obj/item/device/professor_dummy_tablet/tablet = new loc
+	tablet.link_dummy(src)
 
 	if(is_mainship_level(z))
 		RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_LANDED, PROC_REF(destroy_upon_hijack))

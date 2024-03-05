@@ -142,6 +142,7 @@
 			CR = "No"
 
 		. += ""
+		. += "Cortical Directive: [GLOB.brainlink.cortical_directive]"
 		. += "Borer: CONTROLLING"
 		. += "Name: [B.real_name]"
 		. += "Can Reproduce: [CR]"

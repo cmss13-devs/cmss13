@@ -36,18 +36,6 @@
 
 ////////////// BORER CHEM DATUMS USED IN THE SYNTHESISER MENU ///////////////////////
 
-GLOBAL_LIST_INIT_TYPED(borer_chemicals, /datum/borer_chem, generate_borer_chems())
-
-/proc/generate_borer_chems()
-	var/list/chem_list = list()
-	for(var/chem_datum in subtypesof(/datum/borer_chem/human))
-		chem_list += new chem_datum
-	for(var/chem_datum in subtypesof(/datum/borer_chem/yautja))
-		chem_list += new chem_datum
-	for(var/chem_datum in subtypesof(/datum/borer_chem/universal))
-		chem_list += new chem_datum
-	return chem_list
-
 /datum/borer_chem
 	var/chem_name = "Unset"
 	/// Chemical identifier, used in the proc to create it.

@@ -1,4 +1,36 @@
-GLOBAL_LIST_EMPTY(living_borers)
+/datum/borer_brainlink
+	var/list/living_borers = list()
+	var/list/datum/borer_chem/borer_chemicals = list()
+	var/cortical_directive = "Seek hosts and spread. Avoid detection where possible. Do not assume control without need." // Default directive.
+
+/datum/borer_brainlink/New()
+	. = ..()
+	borer_chemicals = generate_borer_chems()
+
+GLOBAL_DATUM_INIT(brainlink, /datum/borer_brainlink, new)
+
+/datum/borer_brainlink/proc/generate_borer_chems()
+	var/list/chem_list = list()
+	for(var/chem_datum in subtypesof(/datum/borer_chem/human))
+		chem_list += new chem_datum
+	for(var/chem_datum in subtypesof(/datum/borer_chem/yautja))
+		chem_list += new chem_datum
+	for(var/chem_datum in subtypesof(/datum/borer_chem/universal))
+		chem_list += new chem_datum
+	return chem_list
+
+/datum/borer_brainlink/proc/update_directive(new_directive)
+	cortical_directive = new_directive
+
+	for(var/mob/living/cur_mob in GLOB.brainlink.living_borers)
+		if(cur_mob.client) // Send to borers
+			to_chat(cur_mob, SPAN_XOOC("Cortical Impulse: The Cortical Directive has changed."))
+			to_chat(cur_mob, SPAN_XENOBOLDNOTICE("[new_directive]."))
+
+	for(var/mob/dead/observer/cur_mob in GLOB.observer_list)
+		if(cur_mob.client) // Send to observers
+			to_chat(cur_mob, SPAN_XOOC("Cortical Impulse: The Cortical Directive has changed."))
+			to_chat(cur_mob, SPAN_XENOBOLDNOTICE("[new_directive]."))
 
 /mob/living/captive_brain
 	name = "captive mind"
@@ -194,7 +226,7 @@ GLOBAL_LIST_EMPTY(living_borers)
 		max_contaminant = max_contaminant * 1.5
 	if((!is_admin_level(z)) && ERT)
 		summon()
-	GLOB.living_borers += src
+	GLOB.brainlink.living_borers += src
 
 /mob/living/carbon/cortical_borer/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -291,7 +323,7 @@ GLOBAL_LIST_EMPTY(living_borers)
 
 /mob/living/carbon/cortical_borer/death()
 	SSmob.living_misc_mobs -= src
-	GLOB.living_borers -= src
+	GLOB.brainlink.living_borers -= src
 	leave_host()
 	. = ..()
 	if(!is_admin_level(z))
@@ -302,11 +334,11 @@ GLOBAL_LIST_EMPTY(living_borers)
 	..()
 	update_icons()
 	SSmob.living_misc_mobs |= src
-	GLOB.living_borers += src
+	GLOB.brainlink.living_borers += src
 
 /mob/living/carbon/cortical_borer/Destroy()
 	SSmob.living_misc_mobs -= src
-	GLOB.living_borers -= src
+	GLOB.brainlink.living_borers -= src
 
 	remove_from_all_mob_huds()
 	if(host)
@@ -365,6 +397,7 @@ GLOBAL_LIST_EMPTY(living_borers)
 		bore_status = "HIBERNATING"
 
 	. += ""
+	. += "Cortical Directive: [GLOB.brainlink.cortical_directive]"
 	. += "Borer: [bore_status]"
 	. += "Name: [real_name]"
 	. += "Can Reproduce: [CR]"

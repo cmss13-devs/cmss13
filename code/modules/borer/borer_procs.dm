@@ -446,7 +446,7 @@
 		host.med_hud_set_status()
 		host.special_mob = TRUE
 
-		GLOB.living_borers += host
+		GLOB.brainlink.living_borers += host
 
 		if(src && !src.key)
 			src.key = "@[borer_key]"
@@ -493,7 +493,7 @@
 	if(host_brain)
 		log_interact(host, src, "Borer: [key_name(host)] Took control back")
 		host.special_mob = FALSE
-		GLOB.living_borers -= host
+		GLOB.brainlink.living_borers -= host
 		// host -> self
 		var/h2s_id = host.computer_id
 		var/h2s_ip= host.lastKnownIP
@@ -663,7 +663,7 @@
 
 /mob/living/carbon/cortical_borer/proc/get_possible_chems()
 	var/list/possibilities = list()
-	for(var/datum/borer_chem/chem in GLOB.borer_chemicals)
+	for(var/datum/borer_chem/chem in GLOB.brainlink.borer_chemicals)
 		possibilities += chem
 	for(var/datum/borer_chem/chem in src.synthesized_chems)
 		possibilities += chem
@@ -741,7 +741,7 @@
 	var/list/options = list()
 	var/list/options_datums = list()
 	var/list/existing_chems = list()
-	for(var/datum/borer_chem/existing_chem in GLOB.borer_chemicals)
+	for(var/datum/borer_chem/existing_chem in GLOB.brainlink.borer_chemicals)
 		if(!(existing_chem.chem_id in existing_chems))
 			existing_chems += existing_chem.chem_id
 	for(var/datum/borer_chem/existing_chem in synthesized_chems)
@@ -912,7 +912,7 @@
 		var/topic_chem = href_list["borer_use_chem"]
 		var/datum/borer_chem/current_chem = null
 
-		for(var/datum/borer_chem/chem_datum in GLOB.borer_chemicals)
+		for(var/datum/borer_chem/chem_datum in GLOB.brainlink.borer_chemicals)
 			current_chem = chem_datum
 			if(current_chem.chem_id == topic_chem)
 				break
@@ -963,7 +963,7 @@
 
 	msg = process_chat_markup(msg, list("*"))
 
-	for(var/mob/living/cur_mob in GLOB.living_borers)
+	for(var/mob/living/cur_mob in GLOB.brainlink.living_borers)
 		if(cur_mob.client) // Send to borers
 			to_chat(cur_mob, SPAN_XOOC("Cortical Impulse: [msg]"))
 

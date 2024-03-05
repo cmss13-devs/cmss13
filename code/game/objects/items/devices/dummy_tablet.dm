@@ -42,6 +42,9 @@
 
 	UnregisterSignal(linked_dummy, COMSIG_PARENT_QDELETING)
 	linked_dummy = null
+	if(isstorage(loc))
+		var/obj/item/storage/storage = loc
+		storage.remove_from_storage(src, get_turf(src))
 	qdel(src)
 
 /obj/item/device/professor_dummy_tablet/attack_self(mob/user as mob)

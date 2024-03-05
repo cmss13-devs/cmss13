@@ -8,10 +8,6 @@
 
 	var/mob/living/carbon/human/dummy/professor_dummy/linked_dummy
 
-/obj/item/device/professor_dummy_tablet/Initialize(mapload)
-	. = ..()
-	link_dummy()
-
 /obj/item/device/professor_dummy_tablet/Destroy()
 	linked_dummy = null
 	. = ..()

@@ -650,7 +650,8 @@
 			T.add_vomit_floor()
 			brainworm.contaminant = 0
 			var/repro = max(brainworm.can_reproduce - 1, 0)
-			var/ancestors = (brainworm.ancestry += real_name)
+			var/list/ancestors = brainworm.ancestry
+			ancestors += real_name
 			var/mob/living/carbon/cortical_borer/birthed = new /mob/living/carbon/cortical_borer(T, brainworm.generation + 1, TRUE, repro, brainworm.borer_flags_targets, ancestors)
 			brainworm.offspring += birthed.real_name
 			return TRUE

@@ -1,4 +1,15 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ac" = (
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 1;
+	pixel_y = 12;
+	layer = 2.9808
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
 "ae" = (
 /obj/structure/machinery/door_control{
 	id = "kitchen_pizza_time";
@@ -8,6 +19,22 @@
 /turf/open/floor{
 	icon_state = "cmo"
 	},
+/area/space)
+"ah" = (
+/obj/structure/prop/invuln{
+	desc = "An inflated membrane. This one is puncture proof. Wow!";
+	icon = 'icons/obj/items/inflatable.dmi';
+	icon_state = "wall"
+	},
+/obj/structure/blocker/invisible_wall,
+/obj/structure/sign/safety/airlock{
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = 15;
+	pixel_y = 32
+	},
+/turf/open/floor/almayer_hull,
 /area/space)
 "am" = (
 /obj/structure/surface/table/almayer,
@@ -24,6 +51,19 @@
 	icon_state = "kitchen"
 	},
 /area/space)
+"ap" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/space)
 "aA" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/microwave{
@@ -32,6 +72,12 @@
 /turf/open/floor/prison{
 	icon_state = "kitchen"
 	},
+/area/space)
+"aD" = (
+/obj/structure/sign/safety/nonpress_0g{
+	pixel_x = 32
+	},
+/turf/open/floor/plating/prison,
 /area/space)
 "aJ" = (
 /turf/open/floor/prison{
@@ -54,6 +100,29 @@
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/almayer_hull,
+/area/space)
+"bo" = (
+/obj/structure/machinery/shower{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/space)
+"bB" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
 /area/space)
 "bT" = (
 /obj/structure/surface/table/reinforced,
@@ -82,6 +151,49 @@
 	icon_state = "cmo"
 	},
 /area/space)
+"cI" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "blueyellowfull"
+	},
+/area/space)
+"cK" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/sign/safety/airlock{
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = 15;
+	pixel_y = 32
+	},
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "yellow"
+	},
+/area/space)
+"cO" = (
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 8;
+	pixel_y = -3
+	},
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 1;
+	pixel_y = 12
+	},
+/obj/structure/prop/souto_land/pole{
+	dir = 4;
+	pixel_y = 24
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
 "dc" = (
 /obj/structure/sign/poster{
 	desc = "Eat an EAT bar! ...Aren't they called MEAT bars?";
@@ -89,9 +201,19 @@
 	name = "EAT - poster";
 	pixel_y = 30
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
 /turf/open/floor/prison{
 	icon_state = "red";
 	dir = 4
+	},
+/area/space)
+"dS" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/airlock/almayer/generic,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
 	},
 /area/space)
 "ef" = (
@@ -113,9 +235,16 @@
 	density = 0;
 	pixel_y = 30
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
 /turf/open/floor/prison{
 	icon_state = "kitchen"
 	},
+/area/space)
+"ei" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer_hull,
 /area/space)
 "eo" = (
 /obj/structure/closet/secure_closet/freezer/meat,
@@ -136,10 +265,27 @@
 	icon_state = "cmo"
 	},
 /area/space)
+"eI" = (
+/obj/structure/platform/kutjevo/smooth,
+/turf/open/space/basic,
+/area/space)
 "eK" = (
 /turf/open/floor/prison{
 	icon_state = "red";
 	dir = 6
+	},
+/area/space)
+"eQ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
+/turf/open/floor{
+	icon_state = "cmo"
 	},
 /area/space)
 "eW" = (
@@ -162,12 +308,36 @@
 	icon_state = "yellowcorner"
 	},
 /area/space)
-"fI" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
+"fN" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/reagent_container/food/drinks/cans/souto/peach{
+	pixel_y = 14;
+	pixel_x = -4
 	},
-/turf/open/floor/corsat{
-	icon_state = "marked"
+/obj/item/reagent_container/food/drinks/cans/souto/diet/lime{
+	pixel_y = 9
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
+"fO" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 4
+	},
+/turf/open/space/basic,
+/area/space)
+"gb" = (
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	pixel_y = -3
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor{
+	icon_state = "blueyellowfull"
 	},
 /area/space)
 "gu" = (
@@ -180,6 +350,16 @@
 	icon_state = "kitchen"
 	},
 /area/space)
+"gy" = (
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor{
+	icon_state = "blueyellowfull"
+	},
+/area/space)
 "gU" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -188,10 +368,27 @@
 	icon_state = "yellow"
 	},
 /area/space)
+"hb" = (
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 1;
+	pixel_y = 12
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
 "hg" = (
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "yellowcorner"
+	},
+/area/space)
+"hv" = (
+/obj/structure/closet/crate/freezer/cooler,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "floor_marked"
 	},
 /area/space)
 "hL" = (
@@ -200,8 +397,66 @@
 	dir = 1
 	},
 /area/space)
+"hR" = (
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 8;
+	pixel_y = -3
+	},
+/obj/structure/bed/chair/bolted{
+	dir = 4;
+	pixel_x = 7
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = 15;
+	pixel_y = -32
+	},
+/obj/structure/sign/safety/airlock{
+	pixel_y = -32
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
+"hX" = (
+/obj/structure/bed/chair/bolted{
+	pixel_y = -1
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
+"ic" = (
+/obj/item/trash/plate{
+	pixel_y = 4
+	},
+/obj/item/trash/plate{
+	pixel_y = 6
+	},
+/obj/item/trash/plate{
+	pixel_y = 8
+	},
+/obj/item/trash/plate{
+	pixel_y = 10
+	},
+/obj/structure/surface/table/almayer,
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	pixel_y = -3
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/space)
 "iw" = (
 /obj/structure/surface/table/reinforced,
+/obj/item/reagent_container/food/snacks/tofukabob,
+/obj/item/reagent_container/food/snacks/tofukabob{
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/snacks/tofukabob{
+	pixel_y = 5
+	},
 /turf/open/floor/prison{
 	icon_state = "greenblue";
 	dir = 6
@@ -217,11 +472,18 @@
 	icon_state = "yellow"
 	},
 /area/space)
+"jb" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 5
+	},
+/area/space)
 "jf" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
@@ -236,11 +498,22 @@
 	icon_state = "plate"
 	},
 /area/space)
+"jq" = (
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 12
+	},
+/obj/structure/mirror{
+	pixel_x = 29
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/space)
 "jy" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
@@ -257,6 +530,40 @@
 	icon_state = "mars_cave_10"
 	},
 /area/space)
+"jT" = (
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	pixel_y = -3
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "blueyellowfull"
+	},
+/area/space)
+"jV" = (
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 8
+	},
+/obj/structure/bed/chair/bolted{
+	dir = 4;
+	pixel_x = 7
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
+"kW" = (
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
 "la" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/machinery/door/poddoor/almayer{
@@ -267,6 +574,76 @@
 	icon_state = "test_floor4"
 	},
 /area/space)
+"lg" = (
+/turf/closed/shuttle/ert{
+	icon_state = "leftengine_1"
+	},
+/area/space)
+"lw" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/reagent_container/food/condiment/coldsauce{
+	pixel_y = 22;
+	pixel_x = -10
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
+"ly" = (
+/obj/structure/prop/souto_land/streamer{
+	dir = 1;
+	pixel_y = 24
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
+"lB" = (
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 8;
+	pixel_y = -3
+	},
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 1;
+	pixel_y = 12
+	},
+/obj/item/storage/briefcase/stowaway{
+	pixel_y = 11
+	},
+/obj/structure/prop/souto_land/pole{
+	dir = 4;
+	pixel_y = 24
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
+"lH" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	icon_state = "almayer_pdoor";
+	id = "pizza_takeaway_out"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/space)
+"lJ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/structure/sign/safety/airlock{
+	pixel_y = -32
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = 15;
+	pixel_y = -32
+	},
+/turf/open/floor/prison{
+	icon_state = "yellow"
+	},
+/area/space)
 "lN" = (
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
@@ -275,6 +652,44 @@
 "me" = (
 /turf/open/mars_dirt{
 	icon_state = "mars_cave_8"
+	},
+/area/space)
+"mk" = (
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 4;
+	pixel_y = -3
+	},
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 4;
+	pixel_y = 16
+	},
+/obj/structure/machinery/vending/snack{
+	layer = 3.01;
+	pixel_y = 3
+	},
+/turf/open/floor/prison{
+	icon_state = "bright_clean2"
+	},
+/area/space)
+"mt" = (
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 8;
+	pixel_y = -3
+	},
+/obj/structure/bed/chair/bolted{
+	dir = 4;
+	pixel_x = 7
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
+"nf" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan5"
 	},
 /area/space)
 "np" = (
@@ -307,7 +722,9 @@
 	color = "#b51c0b";
 	pixel_y = -3
 	},
-/obj/structure/machinery/recharger,
+/obj/structure/machinery/recharger{
+	layer = 2.97
+	},
 /turf/open/floor/prison{
 	icon_state = "kitchen"
 	},
@@ -338,19 +755,69 @@
 /area/space)
 "oD" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/turf/open/floor/corsat{
-	icon_state = "marked"
+/obj/structure/machinery/door/airlock/almayer/maint{
+	locked = 1
 	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/space)
+"oG" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating/prison,
 /area/space)
 "pD" = (
 /turf/open/mars_dirt{
 	icon_state = "mars_cave_10"
 	},
 /area/space)
-"pT" = (
-/turf/open/floor/corsat{
-	icon_state = "retrosquareslight"
+"pE" = (
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 12
 	},
+/obj/structure/mirror{
+	pixel_x = 29
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/space)
+"pS" = (
+/obj/structure/bed/chair/bolted{
+	dir = 8;
+	pixel_x = -7
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
+"pT" = (
+/obj/structure/closet/crate/freezer/rations,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "floor_marked"
+	},
+/area/space)
+"qh" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_rightengine"
+	},
+/area/space)
+"qo" = (
+/obj/structure/closet{
+	pixel_y = 16;
+	density = 0
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/space)
+"qq" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
+	},
+/turf/open/space/basic,
 /area/space)
 "qt" = (
 /turf/open/mars_dirt{
@@ -374,13 +841,68 @@
 	icon_state = "cmo"
 	},
 /area/space)
+"qA" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/space)
+"se" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Bathroom";
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/space)
+"sl" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/space)
+"sx" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 8
+	},
+/area/space)
 "sB" = (
 /turf/open/mars_dirt{
 	icon_state = "mars_cave_7"
 	},
 /area/space)
+"sI" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/reagent_container/food/snacks/sliceable/pizza/meatpizza{
+	pixel_y = 13;
+	pixel_x = 15
+	},
+/obj/item/trash/plate{
+	pixel_y = 3;
+	pixel_x = 1
+	},
+/obj/item/reagent_container/food/snacks/meatpizzaslice{
+	pixel_y = 3;
+	pixel_x = -1
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
 "sJ" = (
-/obj/structure/machinery/vending/snack,
+/obj/structure/machinery/vending/ingredients,
 /turf/open/floor{
 	icon_state = "cmo"
 	},
@@ -390,6 +912,81 @@
 /obj/structure/machinery/door/poddoor/almayer{
 	name = "\improper Umbillical Airlock";
 	unacidable = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/space)
+"tp" = (
+/obj/structure/bed/chair/bolted{
+	dir = 4;
+	pixel_y = 17;
+	pixel_x = 10
+	},
+/obj/structure/bed/chair/bolted{
+	dir = 8;
+	pixel_x = -7
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
+"tq" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/space)
+"tC" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/reagent_container/food/condiment/peppermill{
+	pixel_x = 13;
+	pixel_y = 12
+	},
+/obj/item/reagent_container/food/condiment/saltshaker{
+	pixel_x = 7;
+	pixel_y = 17
+	},
+/obj/item/trash/plate{
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/snacks/cheeseburger{
+	pixel_x = -1;
+	pixel_y = 9
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
+"tM" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
+/turf/open/floor/corsat{
+	icon_state = "retrosquareslight"
+	},
+/area/space)
+"tX" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
+"ub" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	icon_state = "almayer_pdoor";
+	id = "pizza_takeaway_out"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -406,6 +1003,29 @@
 	},
 /turf/open/floor{
 	icon_state = "cmo"
+	},
+/area/space)
+"uK" = (
+/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	layer = 3.01
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	layer = 3.01
+	},
+/turf/open/space,
+/area/space)
+"uN" = (
+/obj/structure/prop/souto_land/streamer{
+	dir = 4;
+	pixel_y = 24
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
 	},
 /area/space)
 "uY" = (
@@ -434,6 +1054,55 @@
 	dir = 1
 	},
 /area/space)
+"vq" = (
+/obj/structure/toilet{
+	pixel_y = 16
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/space)
+"vA" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 8
+	},
+/area/space)
+"vI" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/prison,
+/area/space)
+"vX" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/space)
+"wa" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/space)
 "wi" = (
 /obj/structure/closet/secure_closet/fridge/meat/stock,
 /turf/open/floor/prison{
@@ -455,6 +1124,10 @@
 	},
 /area/space)
 "wq" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
 /turf/open/floor/prison{
 	icon_state = "redcorner";
 	dir = 4
@@ -466,6 +1139,79 @@
 	dir = 1
 	},
 /area/space)
+"wP" = (
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 8;
+	pixel_y = -3
+	},
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 1;
+	pixel_y = 12
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
+"wQ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 1
+	},
+/area/space)
+"wX" = (
+/obj/structure/closet/crate/freezer/cooler/oj,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "floor_marked"
+	},
+/area/space)
+"xc" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 1
+	},
+/area/space)
+"xe" = (
+/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/turf/open/space/basic,
+/area/space)
+"xp" = (
+/obj/structure/platform/kutjevo/smooth,
+/obj/structure/disposalpipe/trunk,
+/obj/structure/barricade/handrail/kutjevo{
+	layer = 3.01
+	},
+/turf/open/space,
+/area/space)
+"xX" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/trash/plate{
+	pixel_y = 3;
+	pixel_x = 1
+	},
+/obj/item/reagent_container/food/snacks/mushroompizzaslice{
+	pixel_y = 4
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
+"yg" = (
+/obj/structure/platform_decoration/kutjevo,
+/turf/open/space/basic,
+/area/space)
 "yo" = (
 /turf/open/floor/prison{
 	icon_state = "greenbluecorner";
@@ -476,6 +1222,27 @@
 /turf/open/floor/prison{
 	icon_state = "red";
 	dir = 10
+	},
+/area/space)
+"ys" = (
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 4;
+	pixel_y = -3
+	},
+/obj/structure/bed/chair/bolted{
+	dir = 8;
+	pixel_x = -7
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = 15;
+	pixel_y = -32
+	},
+/obj/structure/sign/safety/airlock{
+	pixel_y = -32
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
 	},
 /area/space)
 "yE" = (
@@ -501,6 +1268,78 @@
 	dir = 10
 	},
 /area/space)
+"zj" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/toolbox/mechanical{
+	pixel_y = -4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/space)
+"zl" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/reagent_container/food/condiment/hotsauce/cholula{
+	pixel_y = 28;
+	pixel_x = 16
+	},
+/obj/item/reagent_container/food/condiment/saltshaker{
+	pixel_x = 7;
+	pixel_y = 17
+	},
+/obj/item/reagent_container/food/condiment/peppermill{
+	pixel_x = 13;
+	pixel_y = 12
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
+"zz" = (
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 4;
+	pixel_y = -3
+	},
+/obj/structure/bed/chair/bolted{
+	dir = 8;
+	pixel_x = -7
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
+"zC" = (
+/obj/structure/bed/chair/bolted{
+	dir = 4;
+	pixel_x = 7
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
+"zE" = (
+/obj/structure/machinery/door_control/airlock{
+	id = "pizza_takeaway";
+	name = "Airlock - Inside";
+	pixel_x = 28;
+	pixel_y = 8
+	},
+/obj/structure/machinery/door_control/airlock{
+	id = "pizza_takeaway_out";
+	name = "Airlock - Out";
+	pixel_x = 28;
+	pixel_y = 18
+	},
+/turf/open/floor/plating/prison,
+/area/space)
+"zM" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "redcorner";
+	dir = 1
+	},
+/area/space)
 "zW" = (
 /turf/open/floor/prison{
 	icon_state = "greenblue";
@@ -522,10 +1361,26 @@
 	icon_state = "cmo"
 	},
 /area/space)
+"Aj" = (
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 8
+	},
+/obj/structure/sign/safety/bathunisex{
+	pixel_x = 15;
+	pixel_y = 32
+	},
+/turf/open/floor{
+	icon_state = "blueyellowfull"
+	},
+/area/space)
 "Ao" = (
 /obj/structure/machinery/chem_dispenser/soda/beer{
 	density = 0;
 	pixel_y = 31
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8
 	},
 /turf/open/floor/prison{
 	icon_state = "kitchen"
@@ -559,6 +1414,29 @@
 	icon_state = "yellow"
 	},
 /area/space)
+"Bu" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor{
+	icon_state = "cmo"
+	},
+/area/space)
+"By" = (
+/obj/structure/machinery/suit_storage_unit/standard_unit{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/structure/sign/safety/suit_storage{
+	pixel_x = 32
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/space)
 "Bz" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/trash/plate{
@@ -580,6 +1458,35 @@
 	icon_state = "kitchen"
 	},
 /area/space)
+"BJ" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 1;
+	icon_state = "pipe-j2"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/space)
+"Ck" = (
+/obj/structure/sink{
+	dir = 1;
+	pixel_y = -10
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/space)
+"Cp" = (
+/obj/structure/surface/table/reinforced/cloth,
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
 "Cv" = (
 /obj/structure/closet/secure_closet/freezer/fridge/full,
 /obj/item/reagent_container/food/condiment/enzyme,
@@ -589,6 +1496,42 @@
 /turf/open/floor/prison{
 	icon_state = "greenblue";
 	dir = 1
+	},
+/area/space)
+"CO" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/space)
+"CP" = (
+/turf/open/floor/almayer_hull,
+/area/space)
+"CT" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/space)
+"Db" = (
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 4;
+	pixel_y = -3
+	},
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 1;
+	pixel_y = 12
+	},
+/obj/structure/prop/souto_land/pole{
+	dir = 8;
+	pixel_y = 24
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
 	},
 /area/space)
 "Dx" = (
@@ -604,10 +1547,79 @@
 	icon_state = "cmo"
 	},
 /area/space)
+"DH" = (
+/obj/structure/platform/kutjevo/smooth,
+/obj/structure/barricade/handrail/kutjevo{
+	layer = 3.01
+	},
+/turf/open/space/basic,
+/area/space)
+"Ee" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	layer = 3.01
+	},
+/turf/open/space/basic,
+/area/space)
+"Ei" = (
+/turf/closed/wall/almayer/outer,
+/area/space)
+"Ep" = (
+/obj/structure/machinery/door/poddoor/almayer/open{
+	name = "\improper Umbillical Airlock";
+	id = "pizza_ert_arrival"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/space)
+"EK" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	icon_state = "almayer_pdoor";
+	id = "pizza_takeaway"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/space)
+"Fd" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_x = -30
+	},
+/turf/open/floor/prison{
+	icon_state = "bright_clean2"
+	},
+/area/space)
+"Fj" = (
+/obj/structure/closet/crate/freezer,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "floor_marked"
+	},
+/area/space)
 "Fz" = (
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
 	icon_state = "kitchen"
+	},
+/area/space)
+"FD" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	icon_state = "almayer_pdoor";
+	id = "pizza_takeaway"
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/space)
+"FL" = (
+/turf/closed/shuttle/ert{
+	icon_state = "rightengine_1";
+	opacity = 0
 	},
 /area/space)
 "FY" = (
@@ -626,10 +1638,38 @@
 	},
 /area/space)
 "Gh" = (
-/obj/structure/reagent_dispensers/water_cooler/stacks{
-	density = 0;
-	pixel_x = -9;
-	pixel_y = 19
+/obj/structure/machinery/disposal{
+	layer = 2.97
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
+"Gj" = (
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 8
+	},
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	pixel_y = -3
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
+"Gm" = (
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 1;
+	pixel_y = 12
+	},
+/obj/structure/prop/souto_land/streamer{
+	dir = 1;
+	pixel_y = 24
 	},
 /turf/open/floor{
 	icon_state = "redyellowfull"
@@ -641,14 +1681,67 @@
 	icon_state = "yellow"
 	},
 /area/space)
+"GM" = (
+/obj/structure/sign/safety/airlock{
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = 15;
+	pixel_y = 32
+	},
+/turf/open/space/basic,
+/area/space)
+"Ha" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan_leftengine"
+	},
+/area/space)
 "Hd" = (
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "yellow"
 	},
 /area/space)
+"HQ" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/trash/plate{
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/snacks/bigbiteburger{
+	pixel_y = 10;
+	pixel_x = -1
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
+"Iq" = (
+/obj/item/trash/plate{
+	pixel_y = 2
+	},
+/obj/item/trash/plate{
+	pixel_y = 4
+	},
+/obj/item/trash/plate{
+	pixel_y = 6
+	},
+/obj/item/trash/plate{
+	pixel_y = 8
+	},
+/obj/item/trash/plate{
+	pixel_y = 10
+	},
+/turf/closed/wall/rock/red,
+/area/space)
 "ID" = (
 /turf/closed/wall/rock/red,
+/area/space)
+"Jd" = (
+/obj/structure/closet{
+	pixel_y = 16;
+	density = 0
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/space)
 "Jl" = (
 /turf/open/floor/prison{
@@ -675,6 +1768,20 @@
 	icon_state = "cmo"
 	},
 /area/space)
+"JV" = (
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 1;
+	pixel_y = 12;
+	layer = 3.01
+	},
+/obj/structure/bed/chair/bolted{
+	pixel_y = -1
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
 "Kb" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/barricade/handrail/sandstone/b{
@@ -686,10 +1793,42 @@
 	icon_state = "kitchen"
 	},
 /area/space)
-"Km" = (
-/turf/open/mars_dirt{
-	icon_state = "mars_cave_5"
+"Kc" = (
+/obj/structure/sign/safety/airlock{
+	pixel_y = -32
 	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = 15;
+	pixel_y = -32
+	},
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/door_control/airlock{
+	id = "pizza_takeaway";
+	name = "Airlock";
+	pixel_x = 2;
+	pixel_y = 18
+	},
+/turf/open/floor/almayer_hull,
+/area/space)
+"Kd" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/space)
+"KB" = (
+/obj/structure/sign/safety/bathunisex{
+	pixel_x = 15;
+	pixel_y = 32
+	},
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/washing_machine{
+	pixel_y = 10
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/space)
 "KY" = (
 /turf/open/floor/prison{
@@ -700,19 +1839,82 @@
 /obj/structure/surface/table/almayer,
 /obj/structure/barricade/handrail/sandstone/b{
 	color = "#b51c0b";
-	pixel_y = -3
+	pixel_y = -3;
+	layer = 3.2
 	},
-/obj/item/reagent_container/food/condiment/hotsauce/sriracha,
+/obj/item/reagent_container/food/condiment/hotsauce/franks/macho{
+	pixel_y = 11;
+	pixel_x = -6
+	},
+/obj/item/reagent_container/food/condiment/hotsauce/franks{
+	pixel_y = 11;
+	pixel_x = 6
+	},
+/obj/item/reagent_container/food/condiment/hotsauce/cholula{
+	pixel_y = 6
+	},
 /turf/open/floor/prison{
 	icon_state = "kitchen"
 	},
 /area/space)
-"Ma" = (
-/obj/structure/machinery/door/poddoor/almayer/open{
-	name = "\improper Umbillical Airlock"
+"Ln" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer{
+	icon_state = "security_det";
+	name = "Shuttle control deck";
+	pixel_y = 6
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
+/obj/structure/machinery/light/small{
+	dir = 8;
+	pixel_x = -11;
+	pixel_y = 10
+	},
+/turf/open/floor/plating/prison,
+/area/space)
+"Ly" = (
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 4
+	},
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 1;
+	pixel_y = 12
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
+"LH" = (
+/obj/structure/bed/chair/bolted{
+	dir = 1;
+	pixel_y = 12
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
+"Mj" = (
+/obj/structure/bed/chair/dropship/pilot{
+	dir = 1
+	},
+/obj/structure/machinery/light/small{
+	dir = 8;
+	pixel_x = -11;
+	pixel_y = 10
+	},
+/turf/open/floor/plating/prison,
+/area/space)
+"Mk" = (
+/obj/structure/machinery/vending/coffee{
+	pixel_y = 12
+	},
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	pixel_y = -3
+	},
+/turf/open/floor/prison{
+	icon_state = "bright_clean2"
 	},
 /area/space)
 "Mt" = (
@@ -740,6 +1942,60 @@
 	icon_state = "kitchen"
 	},
 /area/space)
+"MS" = (
+/obj/structure/machinery/shower{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/space)
+"MT" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/space)
+"MX" = (
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 9
+	},
+/area/space)
+"Nb" = (
+/obj/item/reagent_container/food/condiment/hotsauce/franks/macho{
+	pixel_y = 18;
+	pixel_x = -6
+	},
+/obj/item/reagent_container/food/condiment/hotsauce/franks{
+	pixel_y = 18;
+	pixel_x = 6
+	},
+/obj/item/reagent_container/food/condiment/hotsauce/cholula{
+	pixel_y = 16
+	},
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/condiment/coldsauce{
+	pixel_y = 13;
+	pixel_x = 8
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
 "Nl" = (
 /turf/open/floor/prison,
 /area/space)
@@ -749,6 +2005,35 @@
 	},
 /turf/open/floor/prison,
 /area/space)
+"Nr" = (
+/obj/structure/machinery/vending/cola{
+	pixel_y = 12
+	},
+/turf/open/floor/prison{
+	icon_state = "bright_clean2"
+	},
+/area/space)
+"Ny" = (
+/obj/structure/sink{
+	dir = 1;
+	pixel_y = -10
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/space)
+"NG" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/space)
+"NJ" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan20"
+	},
+/area/space)
 "NN" = (
 /obj/structure/closet/secure_closet/fridge/groceries/stock,
 /turf/open/floor/prison{
@@ -757,18 +2042,108 @@
 	},
 /area/space)
 "NP" = (
-/obj/structure/sink{
-	dir = 4;
-	pixel_x = 11
+/obj/structure/sink/kitchen{
+	pixel_x = 11;
+	dir = 4
 	},
 /turf/open/floor{
 	icon_state = "cmo"
+	},
+/area/space)
+"NV" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Showers & Bathroom";
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/space)
+"Og" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/reagent_container/food/snacks/sliceable/pizza/mushroompizza{
+	pixel_y = -2;
+	pixel_x = -16
+	},
+/obj/item/trash/plate{
+	pixel_y = 8;
+	pixel_x = 3
+	},
+/obj/item/reagent_container/food/snacks/meatpizzaslice{
+	pixel_y = 8;
+	pixel_x = -1
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
+"OJ" = (
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 1;
+	pixel_y = 12
+	},
+/obj/structure/prop/souto_land/streamer{
+	pixel_y = 24
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
+"OK" = (
+/obj/structure/machinery/vending/cigarette{
+	pixel_y = 3;
+	layer = 3.01
+	},
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 8
+	},
+/turf/open/floor/prison{
+	icon_state = "bright_clean2"
+	},
+/area/space)
+"OQ" = (
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 1;
+	pixel_y = 12
+	},
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 8;
+	pixel_y = 13
+	},
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
 	},
 /area/space)
 "OS" = (
 /turf/open/floor/prison{
 	icon_state = "red";
 	dir = 4
+	},
+/area/space)
+"Pl" = (
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 1;
+	pixel_y = 12
+	},
+/obj/structure/reagent_dispensers/water_cooler/stacks{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 15
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
 	},
 /area/space)
 "Pn" = (
@@ -780,12 +2155,69 @@
 	icon_state = "kitchen"
 	},
 /area/space)
+"PH" = (
+/obj/structure/prop/souto_land/streamer{
+	pixel_y = 24
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
+"PL" = (
+/obj/structure/sign/safety/airlock{
+	pixel_y = -32
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = 15;
+	pixel_y = -32
+	},
+/turf/open/floor/almayer_hull,
+/area/space)
+"QN" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/space)
 "Rh" = (
 /obj/structure/window/framed/almayer/hull,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
 /turf/open/floor/plating,
+/area/space)
+"RC" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 1
+	},
+/turf/open/space/basic,
+/area/space)
+"RN" = (
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 1;
+	pixel_y = 12;
+	layer = 3.01
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
+"RP" = (
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor{
+	icon_state = "blueyellowfull"
+	},
 /area/space)
 "RV" = (
 /obj/item/clothing/suit/chef/classic,
@@ -796,10 +2228,50 @@
 	icon_state = "cmo"
 	},
 /area/space)
+"Sp" = (
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
 "Sq" = (
 /obj/structure/kitchenspike,
+/obj/item/reagent_container/food/snacks/meat{
+	pixel_y = -5
+	},
+/obj/item/reagent_container/food/snacks/meat{
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison{
 	icon_state = "greenblue"
+	},
+/area/space)
+"Sz" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/prison{
+	icon_state = "bright_clean2"
+	},
+/area/space)
+"SV" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Showers"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/space)
+"Tu" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/space)
 "TC" = (
@@ -818,9 +2290,35 @@
 	color = "#b51c0b";
 	pixel_y = -3
 	},
-/obj/item/storage/box/drinkingglasses,
+/obj/item/storage/box/drinkingglasses{
+	layer = 2.97
+	},
 /turf/open/floor/prison{
 	icon_state = "kitchen"
+	},
+/area/space)
+"TK" = (
+/turf/closed/shuttle/ert,
+/area/space)
+"TQ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_y = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_y = -1
+	},
+/turf/open/floor{
+	icon_state = "cmo"
 	},
 /area/space)
 "TY" = (
@@ -828,15 +2326,17 @@
 	icon_state = "redyellowfull"
 	},
 /area/space)
-"Us" = (
-/obj/structure/surface/table/almayer,
+"Ux" = (
 /obj/structure/barricade/handrail/sandstone/b{
 	color = "#b51c0b";
-	pixel_y = -3
+	dir = 1;
+	pixel_y = 12
 	},
-/obj/item/reagent_container/food/condiment/hotsauce/tabasco,
-/turf/open/floor/prison{
-	icon_state = "kitchen"
+/obj/structure/bed/chair/bolted{
+	pixel_y = -1
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
 	},
 /area/space)
 "Vj" = (
@@ -848,18 +2348,63 @@
 /area/space)
 "Vm" = (
 /obj/structure/surface/table/reinforced,
+/obj/item/reagent_container/food/snacks/sliceable/pizza/mushroompizza,
 /turf/open/floor/prison{
 	icon_state = "greenbluecorner"
+	},
+/area/space)
+"Vs" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 8
+	},
+/area/space)
+"Vt" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan25"
 	},
 /area/space)
 "Vv" = (
 /obj/docking_port/stationary/emergency_response/idle_port3,
 /turf/open/floor/plating,
 /area/space)
+"VD" = (
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	dir = 1;
+	pixel_y = 12
+	},
+/obj/structure/reagent_dispensers/water_cooler/stacks{
+	density = 0;
+	pixel_x = -3;
+	pixel_y = 15
+	},
+/obj/structure/surface/table/almayer,
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
 "VK" = (
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "yellow"
+	},
+/area/space)
+"VX" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor{
+	icon_state = "cmo"
 	},
 /area/space)
 "WL" = (
@@ -871,6 +2416,13 @@
 /turf/open/floor/prison{
 	icon_state = "kitchen"
 	},
+/area/space)
+"WS" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1;
+	req_one_access = null
+	},
+/turf/open/floor/plating/prison,
 /area/space)
 "WZ" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -889,11 +2441,45 @@
 	icon_state = "yellow"
 	},
 /area/space)
+"Xj" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/sign/safety/airlock{
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = 15;
+	pixel_y = 32
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/space)
 "Xq" = (
 /obj/structure/surface/rack,
 /turf/open/floor/prison{
 	icon_state = "greenblue"
 	},
+/area/space)
+"Xr" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/space)
+"Xw" = (
+/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
+	},
+/turf/open/space/basic,
 /area/space)
 "Xx" = (
 /obj/structure/surface/table/reinforced,
@@ -903,10 +2489,45 @@
 	icon_state = "cmo"
 	},
 /area/space)
+"XB" = (
+/obj/structure/machinery/shower{
+	pixel_y = 16
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/space)
 "XD" = (
 /turf/open/floor/prison{
 	icon_state = "red";
 	dir = 5
+	},
+/area/space)
+"XZ" = (
+/obj/structure/barricade/handrail/sandstone/b{
+	color = "#b51c0b";
+	pixel_y = -3
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
+"Ya" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
 	},
 /area/space)
 "Yf" = (
@@ -926,11 +2547,83 @@
 	icon_state = "cmo"
 	},
 /area/space)
+"Yj" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/item/tool/kitchen/utensil/pknife{
+	pixel_x = -6
+	},
+/obj/item/tool/kitchen/utensil/pfork{
+	pixel_y = 3;
+	pixel_x = -3
+	},
+/obj/item/reagent_container/food/drinks/cans/souto/blue{
+	pixel_x = 5;
+	pixel_y = 10
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/space)
+"Ym" = (
+/obj/structure/sign/safety/nonpress_0g{
+	pixel_x = -16
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating/prison,
+/area/space)
+"Yv" = (
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile"
+	},
+/area/space)
+"Yw" = (
+/turf/closed/shuttle/ert{
+	icon_state = "stan27"
+	},
+/area/space)
 "Yy" = (
 /turf/open/space/basic,
 /area/space)
+"YD" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/reagent_container/food/snacks/sliceable/pizza/meatpizza{
+	pixel_y = 5
+	},
+/turf/open/floor/prison{
+	icon_state = "greenblue";
+	dir = 6
+	},
+/area/space)
+"YM" = (
+/obj/structure/prop/invuln{
+	desc = "An inflated membrane. This one is puncture proof. Wow!";
+	icon = 'icons/obj/items/inflatable.dmi';
+	icon_state = "wall"
+	},
+/obj/structure/blocker/invisible_wall,
+/obj/structure/sign/safety/airlock{
+	pixel_y = -32
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = 15;
+	pixel_y = -32
+	},
+/turf/open/floor/almayer_hull,
+/area/space)
 "YO" = (
 /turf/closed/wall/almayer,
+/area/space)
+"ZD" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	name = "\improper Umbillical Airlock";
+	id = "pizza_ert_arrival"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
 /area/space)
 "ZM" = (
 /obj/structure/closet/secure_closet/freezer/fridge/full,
@@ -1324,7 +3017,7 @@ Yy
 Yy
 Yy
 ID
-ID
+Iq
 ID
 ID
 Yy
@@ -1387,20 +3080,20 @@ ID
 ID
 ID
 ID
-YO
-YO
+Ei
+Ei
 WL
 WL
 WL
-YO
-YO
-Yy
+uo
+Ei
+Ei
 Yy
 Yy
 Yy
 ID
 ID
-Yy
+ID
 Yy
 Yy
 Yy
@@ -1422,32 +3115,32 @@ ID
 Yy
 Yy
 Yy
+yg
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+ID
+Ei
+Ei
+hX
+Cp
+LH
+TY
+Pl
+TY
+Ei
+Ei
+Yy
+Yy
 Yy
 ID
 ID
-ID
-ID
-ID
-ID
-ID
-ID
-ID
-ID
-YO
-YO
-TY
-TY
-TY
-TY
-TY
-YO
-YO
-Yy
-Yy
-Yy
-ID
-ID
-Yy
 Yy
 Yy
 Yy
@@ -1468,28 +3161,28 @@ Yy
 Yy
 Yy
 Yy
-Yy
-Yy
+yg
+Xw
 jH
 ID
-YO
-YO
-YO
-YO
-YO
-YO
-YO
-YO
-YO
+Ei
+Ei
+Ei
+Ei
+Ei
+Ei
+Ei
+Ei
+Ei
 Gh
+Ly
+Sp
 TY
-TY
-TY
-TY
-TY
-TY
-YO
-Yy
+Sp
+RN
+zC
+zC
+Ei
 Yy
 Yy
 Yy
@@ -1514,12 +3207,12 @@ Yy
 Yy
 Yy
 Yy
-Yy
-Yy
+yg
+Xw
 jH
-TE
-YO
-YO
+pD
+Ei
+Ei
 nK
 RV
 Xx
@@ -1528,15 +3221,15 @@ wm
 qy
 YO
 YO
-Jl
+vA
 Jl
 Jl
 Jl
 yr
 TY
-TY
+Cp
+Cp
 Rh
-Yy
 Yy
 Yy
 Yy
@@ -1559,13 +3252,13 @@ Yy
 Yy
 Yy
 Yy
-Yy
-Yy
-Yy
+yg
+qq
+Xw
 jH
 TE
 TE
-YO
+Ei
 Ac
 nB
 nB
@@ -1581,22 +3274,22 @@ OS
 vi
 aJ
 TY
-TY
+Cp
+Cp
 Rh
 Yy
 Yy
 Yy
 Yy
-YO
+Ei
 uo
 uo
 uo
-YO
+Ei
 uo
 uo
 uo
-YO
-Yy
+Ei
 Yy
 Yy
 Yy
@@ -1605,9 +3298,9 @@ Yy
 Yy
 Yy
 Yy
-Yy
-Yy
-Yy
+yg
+Xw
+pD
 pD
 TE
 pD
@@ -1622,19 +3315,20 @@ Pn
 nB
 nB
 jy
-WP
+tq
 MK
 FY
 wz
 aJ
-TY
-TY
+hb
+pS
+pS
 Rh
 Yy
 Yy
 Yy
-YO
-YO
+Ei
+Ei
 Mt
 fj
 fj
@@ -1642,9 +3336,8 @@ fj
 fj
 fj
 VK
-YO
-YO
-Yy
+Ei
+Ei
 Yy
 Yy
 "}
@@ -1652,11 +3345,11 @@ Yy
 Yy
 Yy
 Yy
-Yy
-Yy
-pD
+eI
 pD
 TE
+pD
+sB
 TE
 TE
 Rh
@@ -1669,18 +3362,19 @@ aA
 nB
 nB
 uY
-WP
+tq
 WP
 TH
 wz
 aJ
-TY
-TY
+cO
+mt
+mt
 Rh
 Yy
 Yy
-YO
-YO
+Ei
+Ei
 Mt
 fE
 Nl
@@ -1690,22 +3384,21 @@ Nl
 Nl
 wo
 VK
-YO
-YO
-Yy
+Ei
+Ei
 Yy
 "}
 (17,1,1) = {"
 Yy
 Yy
 Yy
-Yy
-Yy
+eI
 sB
 TE
 TE
+sB
 TE
-TE
+pD
 Rh
 Yf
 nB
@@ -1716,18 +3409,19 @@ nB
 nB
 nB
 jf
-WP
+tq
 WP
 La
 wz
 aJ
-TY
-TY
+ly
+Cp
+tC
 Rh
 Yy
 Yy
-YO
-YO
+Ei
+Ei
 Xa
 Jm
 Jm
@@ -1737,23 +3431,22 @@ Jm
 Jm
 Jm
 aS
-YO
-YO
-Yy
+Ei
+Ei
 Yy
 "}
 (18,1,1) = {"
 Yy
 Yy
 Yy
-Yy
-Yy
+eI
+NJ
+TK
+TK
+Ha
+lg
 sB
-TE
-pD
-pD
-sB
-YO
+Ei
 sJ
 nB
 nB
@@ -1765,16 +3458,17 @@ bT
 YO
 Ao
 WP
-Us
+gu
 wz
 aJ
-TY
-TY
+PH
+HQ
+fN
 Rh
 Yy
 Yy
 Yy
-YO
+uo
 AH
 fu
 fu
@@ -1784,8 +3478,7 @@ fu
 fu
 Vv
 gU
-YO
-Yy
+uo
 Yy
 Yy
 "}
@@ -1793,14 +3486,14 @@ Yy
 Yy
 Yy
 Yy
-Yy
-Yy
-sB
-pD
-TE
+eI
+Yw
+Ln
+Mj
+WS
 TE
 eW
-YO
+Ei
 YO
 AD
 AD
@@ -1815,14 +3508,15 @@ WP
 nA
 wz
 aJ
-TY
-TY
-YO
+Db
+zz
+ys
+Ei
+ah
 bd
-bd
-bd
-YO
-AH
+YM
+Ei
+cK
 fu
 fu
 fu
@@ -1830,45 +3524,45 @@ fu
 fu
 fu
 fu
-gU
-YO
-Yy
-Yy
+lJ
+Ei
+GM
 Yy
 "}
 (20,1,1) = {"
 Yy
 Yy
 Yy
-Yy
-Yy
-Yy
-sB
+eI
+Vt
+nf
+nf
+qh
+FL
 TE
-eW
-Km
-YO
+uo
 WP
 WP
 WP
 WP
 WZ
 lN
+Fd
 lN
-lN
-WZ
-WP
+Ya
+bB
 WP
 yE
 wz
 aJ
 Jl
 Jl
-WZ
+Jl
+ZD
 Jl
 Jl
 Jl
-Ma
+Ep
 AH
 fu
 fu
@@ -1881,41 +3575,41 @@ gU
 la
 Yy
 Yy
-Yy
 "}
 (21,1,1) = {"
 Yy
 Yy
 Yy
-Yy
-Yy
-Yy
+eI
+sB
 sB
 TE
+eW
 TE
-ID
-YO
+pD
+uo
 WP
-WP
-WP
-WP
-WZ
-lN
-lN
-lN
-WZ
-WP
+Tu
+CO
+CO
+NG
+Sz
+Sz
+Sz
+BJ
+vX
 WP
 yE
 wz
 aJ
 OS
 OS
-WZ
+OS
+ZD
 OS
 OS
 OS
-Ma
+Ep
 AH
 fu
 fu
@@ -1928,42 +3622,42 @@ gU
 sW
 Yy
 Yy
-Yy
 "}
 (22,1,1) = {"
 Yy
 Yy
 Yy
-Yy
-Yy
-Yy
-me
+eI
+sB
+sB
+eW
+TE
 TE
 ID
-ID
-YO
-WP
-WP
+Ei
+Fz
+tq
 WP
 Bz
 YO
 YO
-oD
+AD
 YO
 YO
-WP
+CT
 WP
 gu
 wz
 aJ
-TY
-TY
-YO
+lB
+mt
+hR
+Ei
+ah
 bd
-bd
-bd
-YO
-AH
+YM
+Ei
+cK
 fu
 fu
 fu
@@ -1971,26 +3665,25 @@ fu
 fu
 fu
 fu
-gU
-YO
-Yy
-Yy
+lJ
+Ei
+GM
 Yy
 "}
 (23,1,1) = {"
 Yy
 Yy
 Yy
-Yy
-Yy
-Yy
-Yy
+eI
 me
+TE
+TE
+pD
 ID
 ID
-YO
-WP
-WP
+Ei
+Fz
+tq
 WP
 Fz
 YO
@@ -1998,18 +3691,19 @@ wi
 yK
 yP
 YO
+CT
 WP
-WP
-gu
+ic
 wz
 aJ
-TY
-TY
+Gm
+Cp
+Cp
 Rh
 Yy
 Yy
 Yy
-YO
+uo
 AH
 fu
 fu
@@ -2019,8 +3713,7 @@ fu
 fu
 fu
 gU
-YO
-YO
+uo
 Yy
 Yy
 "}
@@ -2028,16 +3721,16 @@ Yy
 Yy
 Yy
 Yy
-Yy
-Yy
-Yy
-Yy
+RC
+xe
+me
+me
 ID
 ID
 ID
-YO
-WP
-WP
+Ei
+Fz
+tq
 WP
 Fz
 YO
@@ -2045,18 +3738,19 @@ eo
 KY
 Xq
 YO
-WP
+CT
 WP
 gu
 wz
 aJ
-TY
-TY
+uN
+pS
+tp
 Rh
 Yy
 Yy
 Yy
-YO
+uo
 AH
 fu
 fu
@@ -2066,8 +3760,7 @@ fu
 fu
 fu
 gU
-YO
-YO
+uo
 Yy
 Yy
 "}
@@ -2076,15 +3769,15 @@ Yy
 Yy
 Yy
 Yy
-Yy
-Yy
-Yy
-ID
-ID
-ID
-YO
-WP
-WP
+RC
+uK
+PL
+Ei
+Ei
+Ei
+Ei
+Xj
+Xr
 WP
 Fz
 YO
@@ -2092,18 +3785,19 @@ ZM
 KY
 Sq
 YO
-WP
+CT
 WP
 gu
 wz
 aJ
-TY
-TY
+OJ
+Cp
+Cp
 Rh
 Yy
 Yy
 Yy
-YO
+uo
 AH
 fu
 fu
@@ -2113,8 +3807,7 @@ fu
 fu
 fu
 gU
-YO
-YO
+uo
 Yy
 Yy
 "}
@@ -2124,14 +3817,14 @@ Yy
 Yy
 Yy
 Yy
-Yy
-Yy
-ID
-ID
-ID
-YO
-WP
-WP
+xp
+ei
+ub
+oG
+Ym
+FD
+vI
+wa
 WP
 YO
 YO
@@ -2139,19 +3832,20 @@ Cv
 KY
 Jq
 YO
-WP
+CT
 Kb
 am
 wz
 aJ
-TY
-TY
-YO
+Db
+zz
+ys
+Ei
+ah
 bd
-bd
-bd
-YO
-AH
+YM
+Ei
+cK
 fu
 fu
 fu
@@ -2159,10 +3853,9 @@ fu
 fu
 fu
 fu
-gU
-YO
-Yy
-Yy
+lJ
+Ei
+GM
 Yy
 "}
 (27,1,1) = {"
@@ -2171,14 +3864,14 @@ Yy
 Yy
 Yy
 Yy
-Yy
-Yy
-ID
-ID
-ID
-YO
-WP
-WP
+DH
+CP
+lH
+zE
+aD
+EK
+Nl
+sl
 WP
 YO
 NN
@@ -2186,18 +3879,19 @@ yo
 KY
 ny
 YO
-Jl
-Jl
-Jl
+Vs
+sx
+sx
 wq
 aJ
 Jl
 Jl
-WZ
+Jl
+ZD
 Jl
 Jl
 Jl
-Ma
+Ep
 AH
 fu
 fu
@@ -2208,7 +3902,6 @@ fu
 fu
 gU
 sW
-Yy
 Yy
 Yy
 "}
@@ -2218,16 +3911,16 @@ Yy
 Yy
 Yy
 Yy
-Yy
-Yy
-ID
-ID
-ID
-YO
+DH
+Kc
+Ei
+Ei
+Ei
+Ei
+By
+sl
 WP
-WP
-WP
-fI
+WZ
 hL
 KY
 Vm
@@ -2236,15 +3929,16 @@ YO
 OS
 OS
 OS
-vi
+zM
 aJ
 OS
 OS
-WZ
+OS
+ZD
 OS
 OS
 OS
-Ma
+Ep
 AH
 fu
 fu
@@ -2257,7 +3951,6 @@ gU
 sW
 Yy
 Yy
-Yy
 "}
 (29,1,1) = {"
 Yy
@@ -2265,34 +3958,35 @@ Yy
 Yy
 Yy
 Yy
-Yy
-Yy
+RC
+Ee
+fO
 ID
 ID
-ID
-YO
-YO
-WP
+Ei
+Ei
+qA
 WP
 YO
 Vj
 zW
-iw
+YD
 YO
 YO
-TY
-TY
-TY
-wz
+Nr
+Mk
+OK
+wQ
 aJ
-TY
-TY
-YO
+wP
+mt
+hR
+Ei
+ah
 bd
-bd
-bd
-YO
-AH
+YM
+Ei
+cK
 fu
 fu
 fu
@@ -2300,10 +3994,9 @@ fu
 fu
 fu
 fu
-gU
-YO
-Yy
-Yy
+lJ
+Ei
+GM
 Yy
 "}
 (30,1,1) = {"
@@ -2315,30 +4008,31 @@ Yy
 Yy
 Yy
 Yy
+Yy
 ID
 ID
-ID
-YO
-YO
+Ei
+dS
 YO
 YO
 YO
 oD
 YO
 YO
-TY
-TY
-TY
-TY
-wz
+jV
+jV
+Gj
+mk
+wQ
 aJ
-TY
-TY
+hb
+Cp
+zl
 Rh
 Yy
 Yy
 Yy
-YO
+uo
 AH
 fu
 fu
@@ -2348,8 +4042,7 @@ fu
 fu
 fu
 gU
-YO
-Yy
+uo
 Yy
 Yy
 "}
@@ -2363,29 +4056,30 @@ Yy
 Yy
 Yy
 Yy
-ID
-YO
-YO
+Yy
+Ei
+Ei
+tM
 pT
-pT
 YO
-nB
-nB
-nB
+XB
+MT
+MS
 YO
+Cp
+Cp
 TY
-TY
-TY
-TY
-wz
+MX
+wQ
 aJ
-TY
-TY
+hb
+Cp
+lw
 Rh
 Yy
 Yy
-YO
-YO
+Ei
+Ei
 iY
 No
 No
@@ -2395,9 +4089,8 @@ No
 No
 No
 AW
-YO
-YO
-Yy
+Ei
+Ei
 Yy
 "}
 (32,1,1) = {"
@@ -2412,27 +4105,28 @@ Yy
 Yy
 Yy
 Rh
-pT
-pT
-pT
+Fj
+tM
+Fj
 YO
-nB
-nB
-nB
+XB
+MT
+bo
 YO
+Cp
+Cp
 TY
-TY
-TY
-TY
-wz
+jb
+xc
 aJ
 TY
-TY
+pS
+pS
 Rh
 Yy
 Yy
-YO
-YO
+Ei
+Ei
 Gt
 hg
 Nl
@@ -2442,9 +4136,8 @@ Nl
 Nl
 TC
 oo
-YO
-YO
-Yy
+Ei
+Ei
 Yy
 "}
 (33,1,1) = {"
@@ -2459,28 +4152,29 @@ Yy
 Yy
 Yy
 Rh
-pT
-pT
-pT
-WZ
-nB
-nB
-nB
+wX
+tM
+hv
 YO
-TY
-TY
-TY
-TY
+YO
+SV
+YO
+YO
+pS
+pS
+XZ
+jT
 wz
 aJ
 TY
-TY
+zC
+zC
 Rh
 Yy
 Yy
 Yy
-YO
-YO
+Ei
+Ei
 Gt
 Hd
 Hd
@@ -2488,9 +4182,8 @@ Hd
 Hd
 Hd
 oo
-YO
-YO
-Yy
+Ei
+Ei
 Yy
 Yy
 "}
@@ -2505,38 +4198,38 @@ ID
 Yy
 Yy
 Yy
+Ei
 YO
 YO
 YO
 YO
+KB
+VX
+zj
 YO
-nB
-nB
-nB
-WZ
-AV
-AV
-AV
-AV
+Aj
+RP
+gy
+gb
 XD
 eK
-TY
-TY
+hb
+Yj
+sI
 Rh
 Yy
 Yy
 Yy
 Yy
-YO
+Ei
 uo
 uo
 uo
-YO
+Ei
 uo
 uo
 uo
-YO
-Yy
+Ei
 Yy
 Yy
 Yy
@@ -2553,24 +4246,24 @@ Yy
 Yy
 Yy
 Rh
-pT
-pT
-pT
-WZ
-nB
-nB
-nB
-YO
+vq
+QN
+Yv
+se
+Bu
+TQ
+Bu
+NV
+AV
+cI
+OQ
+kW
 TY
-TY
-TY
-TY
-TY
-TY
-TY
-TY
+kW
+ac
+Og
+xX
 Rh
-Yy
 Yy
 Yy
 Yy
@@ -2600,24 +4293,24 @@ Yy
 Yy
 Yy
 Rh
-pT
-pT
-pT
+vq
+ap
+Kd
 YO
-nB
-nB
-nB
+qo
+eQ
+Ck
 YO
 YO
-TY
-TY
-TY
-TY
-TY
-TY
-TY
-YO
-Yy
+tX
+JV
+Cp
+Cp
+LH
+hb
+pS
+pS
+Ei
 Yy
 Yy
 Yy
@@ -2646,25 +4339,25 @@ Yy
 Yy
 Yy
 ID
+Ei
+Ei
+jq
+pE
+YO
+Jd
+eQ
+Ny
 YO
 YO
-pT
-pT
 YO
-nB
-nB
-nB
-YO
-YO
-YO
-TY
-TY
-TY
-TY
-TY
-YO
-YO
-Yy
+Ux
+Cp
+Cp
+LH
+VD
+Nb
+Ei
+Ei
 Yy
 Yy
 Yy
@@ -2694,28 +4387,28 @@ Yy
 ID
 ID
 ID
-YO
-YO
-YO
-YO
+Ei
+Ei
+Ei
+Ei
 WL
 WL
 WL
-YO
+Ei
 ID
-YO
-YO
+Ei
+Ei
 WL
 WL
 WL
-YO
-YO
-Yy
+uo
+Ei
+Ei
 Yy
 Yy
 Yy
 ID
-ID
+Yy
 Yy
 Yy
 Yy
@@ -2989,7 +4682,7 @@ Yy
 Yy
 Yy
 Yy
-ID
+Yy
 ID
 ID
 Yy

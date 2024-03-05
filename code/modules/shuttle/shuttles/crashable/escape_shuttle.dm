@@ -62,6 +62,7 @@
 		air.unacidable = FALSE
 
 /obj/docking_port/mobile/crashable/escape_shuttle/proc/cleanup_cryopod(obj/structure/machinery/cryopod/evacuation/pod)
+	SIGNAL_HANDLER
 	LAZYREMOVE(cryopods, pod)
 
 /obj/docking_port/mobile/crashable/escape_shuttle/evac_launch()

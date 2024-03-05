@@ -96,12 +96,13 @@ GLOBAL_LIST_EMPTY(dummy_mob_list)
 
 	// Ensure nurses can practice surgery on it
 	mob_flags |= EASY_SURGERY
+	huggable = FALSE
 
 	// Spawn its control tablet
 	var/obj/item/device/professor_dummy_tablet/tablet = new (loc)
 	tablet.link_dummy(src)
 
-	if(is_mainship_level(z))
+	if(is_mainship_level(loc.z))
 		RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_LANDED, PROC_REF(destroy_upon_hijack))
 
 /mob/living/carbon/human/dummy/professor_dummy/proc/destroy_upon_hijack()

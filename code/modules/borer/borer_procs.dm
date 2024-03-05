@@ -110,7 +110,7 @@
 			if(human_target.reagents.reagent_list.len)
 				to_chat(user, SPAN_XENONOTICE("Subject contains the following reagents:"))
 				for(var/datum/reagent/R in human_target.reagents.reagent_list)
-					to_chat(user, "[R.overdose != 0 && R.volume >= R.overdose && !(R.flags & REAGENT_CANNOT_OVERDOSE) ? SPAN_WARNING("<b>OD: </b>") : ""] <font color='#9773C4'><b>[round(R.volume, 1)]u [R.name]</b></font>")
+					to_chat(user, "[R.overdose != 0 && R.volume >= R.overdose && !(R.flags & REAGENT_CANNOT_OVERDOSE) ? SPAN_WARNING("<b>OD: </b>") : ""] <font color='#9773C4'><b>[R.volume]u [R.name]</b></font>")
 			else
 				to_chat(user, SPAN_XENONOTICE("Subject contains no reagents."))
 	if(isxeno(M))

@@ -172,30 +172,36 @@
 	new /obj/item/storage/surgical_tray(src)
 	new /obj/item/roller/surgical(src)
 
-/obj/structure/closet/secure_closet/surgical/professor_dummy
+/obj/structure/closet/secure_closet/professor_dummy
 	name = "professor dummy cabinet"
 	desc = "An ultrasafe cabinet containing Professor DUMMY and its tablet. Only accessible by Chief Medical Officers and Senior Listed Advisors."
+	icon_state = "surgical_wall_locked"
+	icon_closed = "surgical_wall_unlocked"
+	icon_locked = "surgical_wall_locked"
+	icon_opened = "surgical_wall_open"
+	icon_broken = "surgical_wall_spark"
 	unacidable = TRUE
 	unslashable = TRUE
 	store_mobs = TRUE
+	wall_mounted = TRUE
 
-/obj/structure/closet/secure_closet/surgical/professor_dummy/Initialize()
+/obj/structure/closet/secure_closet/professor_dummy/Initialize()
 	. = ..()
 	new /mob/living/carbon/human/dummy/professor_dummy(src)
 
-/obj/structure/closet/secure_closet/surgical/professor_dummy/togglelock(mob/living/user)
+/obj/structure/closet/secure_closet/professor_dummy/togglelock(mob/living/user)
 	if(user.job == JOB_CMO || user.job == JOB_SEA)
 		..()
 		return
 
 	to_chat(user, SPAN_WARNING("Only the [JOB_CMO] or the [JOB_SEA] can toggle this lock."))
 
-/obj/structure/closet/secure_closet/surgical/professor_dummy/dump_contents()
+/obj/structure/closet/secure_closet/professor_dummy/dump_contents()
 	if(locate(/mob/living/carbon/human/dummy/professor_dummy) in src)
 		visible_message(SPAN_HIGHDANGER("Professor DUMMY should only be used for teaching medical personnel, exclusively done by the [JOB_CMO] or the [JOB_SEA]. Do not abuse it."))
 	..()
 
-/obj/structure/closet/secure_closet/surgical/professor_dummy/toggle(mob/living/user)
+/obj/structure/closet/secure_closet/professor_dummy/toggle(mob/living/user)
 	if(opened)
 		for(var/mob/M in loc)
 			if(!istype(M, /mob/living/carbon/human/dummy/professor_dummy))
@@ -203,5 +209,5 @@
 				return
 	..()
 
-/obj/structure/closet/secure_closet/surgical/professor_dummy/flashbang(datum/source, obj/item/explosive/grenade/flashbang/FB)
+/obj/structure/closet/secure_closet/professor_dummy/flashbang(datum/source, obj/item/explosive/grenade/flashbang/FB)
 	return

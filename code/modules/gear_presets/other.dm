@@ -861,7 +861,6 @@
 	var/datum/preferences/A = new
 	A.randomize_appearance(new_human)
 
-
 /datum/equipment_preset/other/professor_dummy/load_race(mob/living/carbon/human/new_human)
 	. = ..()
 	//Can't hug the dummy! Otherwise it's basically human...
@@ -870,7 +869,7 @@
 
 /datum/equipment_preset/other/professor_dummy/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/device/professor_dummy_tablet/tablet = new /obj/item/device/professor_dummy_tablet(new_human)
-	tablet.link_mob(new_human)
+	tablet.link_dummy(new_human)
 	new_human.equip_to_slot_or_del(tablet, WEAR_R_HAND)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical, WEAR_BODY)

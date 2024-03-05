@@ -19,15 +19,21 @@
 	var/launched = FALSE
 	var/evac_set = FALSE
 
+	var/list/obj/structure/machinery/cryopod/evacuation/cryopods
+
 /obj/docking_port/mobile/crashable/escape_shuttle/Initialize(mapload)
 	. = ..(mapload)
-	for(var/place in shuttle_areas)
+	for(var/area/place in shuttle_areas)
 		for(var/obj/structure/machinery/door/airlock/evacuation/air in place)
 			door_handler.doors += list(air)
 			air.breakable = FALSE
 			air.indestructible = TRUE
 			air.unacidable = TRUE
 			air.linked_shuttle = src
+
+		for(var/obj/structure/machinery/cryopod/evacuation/pod in place)
+			RegisterSignal(pod, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_cryopod))
+			LAZYADD(cryopods, pod)
 
 
 /obj/docking_port/mobile/crashable/escape_shuttle/proc/cancel_evac()
@@ -38,22 +44,25 @@
 	if(panel.pod_state != STATE_READY && panel.pod_state != STATE_DELAYED)
 		return
 	panel.pod_state = STATE_IDLE
-	for(var/area/interior_area in shuttle_areas)
-		for(var/obj/structure/machinery/cryopod/evacuation/cryotube in interior_area)
-			cryotube.dock_state = STATE_IDLE
+
+	for(var/obj/structure/machinery/cryopod/evacuation/cryotube as anything in cryopods)
+		cryotube.dock_state = STATE_IDLE
 
 /obj/docking_port/mobile/crashable/escape_shuttle/proc/prepare_evac()
 	door_handler.control_doors("force-unlock")
 	evac_set = TRUE
-	for(var/area/interior_area in shuttle_areas)
-		for(var/obj/structure/machinery/cryopod/evacuation/cryotube in interior_area)
-			cryotube.dock_state = STATE_READY
+
+	for(var/obj/structure/machinery/cryopod/evacuation/cryotube as anything in cryopods)
+		cryotube.dock_state = STATE_READY
 
 	for(var/obj/structure/machinery/door/air in door_handler.doors)
 		air.breakable = TRUE
 		air.indestructible = FALSE
 		air.unslashable = FALSE
 		air.unacidable = FALSE
+
+/obj/docking_port/mobile/crashable/escape_shuttle/proc/cleanup_cryopod(obj/structure/machinery/cryopod/evacuation/pod)
+	LAZYREMOVE(cryopods, pod)
 
 /obj/docking_port/mobile/crashable/escape_shuttle/evac_launch()
 	. = ..()
@@ -70,14 +79,14 @@
 
 	door_handler.control_doors("force-lock-launch")
 	var/occupant_count = 0
-	var/list/cryos = list()
 	for(var/area/interior_area in shuttle_areas)
 		for(var/mob/living/occupant in interior_area)
 			occupant_count++
-		for(var/obj/structure/machinery/cryopod/evacuation/cryotube in interior_area)
-			if(cryotube.occupant)
-				occupant_count++
-			cryos += list(cryotube)
+
+	for(var/obj/structure/machinery/cryopod/evacuation/cryopod as anything in cryopods)
+		if(cryopod.occupant)
+			occupant_count++
+
 	if (occupant_count > max_capacity)
 		playsound(src,'sound/effects/escape_pod_warmup.ogg', 50, 1)
 		sleep(31)
@@ -85,7 +94,7 @@
 		cell_explosion(sploded, 100, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("escape pod malfunction")) //Clears out walls
 		sleep(25)
 		mode = SHUTTLE_CRASHED
-		for(var/obj/structure/machinery/cryopod/evacuation/cryotube in cryos)
+		for(var/obj/structure/machinery/cryopod/evacuation/cryotube as anything in cryopods)
 			cryotube.go_out()
 		door_handler.control_doors("force-unlock")
 		return
@@ -120,9 +129,8 @@
 
 	playsound(src,'sound/effects/escape_pod_launch.ogg', 50, 1)
 
-	for(var/area/interior_area in shuttle_areas)
-		for(var/obj/structure/machinery/cryopod/evacuation/cryotube in interior_area)
-			cryotube.dock_state = STATE_LAUNCHED
+	for(var/obj/structure/machinery/cryopod/evacuation/cryotube as anything in cryopods)
+		cryotube.dock_state = STATE_LAUNCHED
 
 /obj/docking_port/mobile/crashable/escape_shuttle/e
 	id = ESCAPE_SHUTTLE_EAST

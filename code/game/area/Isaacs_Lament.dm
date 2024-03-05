@@ -233,7 +233,7 @@
 
 /area/lv553/indoors/flooded/west_slums
 	name = "Flooded Area - West Slums"
-	icon_state = "shed_7_ag"
+	icon_state = "shed_7_ug"
 
 /area/lv553/indoors/flooded/west_apartments
 	name = "Flooded Area - West Apartments"
@@ -246,6 +246,54 @@
 /area/lv553/indoors/flooded/telecomms
 	name = "Flooded Area - Engineering Telecomms"
 	icon_state = "tcomms2"
+
+/area/lv553/indoors/operations/reception
+	name = "Operations - Reception"
+	icon_state = "shed_1_ug"
+
+/area/lv553/indoors/operations/offices/northwest
+	name = "Operations - Northwest Offices"
+	icon_state = "shed_2_ug"
+
+/area/lv553/indoors/operations/offices/southwest
+	name = "Operations - Southwest Offices"
+	icon_state = "shed_3_ug"
+
+/area/lv553/indoors/operations/offices/east
+	name = "Operations - East Offices"
+	icon_state = "shed_3_ug"
+
+/area/lv553/indoors/operations/hallway/west
+	name = "Operations - West Hallway and Bathrooms"
+	icon_state = "shed_6_ug"
+
+/area/lv553/indoors/operations/hallway/north
+	name = "Operations - North Central Hallway"
+	icon_state = "shed_7_ug"
+
+/area/lv553/indoors/operations/hallway/south
+	name = "Operations - South Central Hallway"
+	icon_state = "shed_8_ug"
+
+/area/lv553/indoors/operations/serverroom
+	name = "Operations - Server Room"
+	icon_state = "shed_1_ug"
+
+/area/lv553/indoors/operations/lockerroom
+	name = "Operations - Locker Room"
+	icon_state = "shed_2_ug"
+
+/area/lv553/indoors/operations/xenobiological_research
+	name = "Operations - Xenobiological Research"
+	icon_state = "shed_3_ug"
+
+/area/lv553/indoors/operations/maintenance/north
+	name = "Operations - North Maintenance"
+	icon_state = "sewers4"
+
+/area/lv553/indoors/operations/maintenance/south
+	name = "Operations - South Maintenance"
+	icon_state = "sewers4"
 
 /area/lv553/indoors/lone_buildings
 	icon_state = "shed_x_ag"

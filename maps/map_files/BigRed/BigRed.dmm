@@ -12602,7 +12602,7 @@
 /area/bigredv2/outside/office_complex)
 "aLh" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "lz1north"
+	insert_tag = "lz1north_mining"
 	},
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/space_port)
@@ -27195,6 +27195,12 @@
 	icon_state = "red"
 	},
 /area/bigredv2/outside/marshal_office)
+"cGv" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "containerroom_xenos"
+	},
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/outside/nw/ceiling)
 "cGQ" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor{
@@ -28358,7 +28364,7 @@
 /area/bigredv2/outside/dorms)
 "ers" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "etatunnel"
+	insert_tag = "etatunnel_open"
 	},
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
@@ -28711,7 +28717,7 @@
 /area/bigredv2/caves/mining)
 "eUT" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "viro-rock"
+	insert_tag = "viro-rock_open"
 	},
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/virology)
@@ -31090,7 +31096,7 @@
 /area/bigredv2/outside/space_port_lz2)
 "iIp" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "chapel"
+	insert_tag = "chapel_cult"
 	},
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/chapel)
@@ -31315,7 +31321,7 @@
 /area/bigredv2/caves/mining)
 "jcn" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "tcomms"
+	insert_tag = "tcomms_open"
 	},
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
@@ -31467,7 +31473,7 @@
 	dir = 5
 	},
 /obj/effect/landmark/nightmare{
-	insert_tag = "dorms"
+	insert_tag = "dorms_party"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
@@ -33265,7 +33271,7 @@
 /area/bigredv2/caves/mining)
 "lMt" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "cargo"
+	insert_tag = "cargo_containers"
 	},
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/cargo)
@@ -33280,7 +33286,7 @@
 /area/bigredv2/caves_lambda)
 "lMB" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "lz1cave"
+	insert_tag = "lz1cave_flank"
 	},
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/space_port)
@@ -34454,7 +34460,7 @@
 /area/bigredv2/outside/filtration_cave_cas)
 "nGt" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "admin"
+	insert_tag = "admin_pmc"
 	},
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/admin_building)
@@ -35469,7 +35475,7 @@
 /area/bigredv2/outside/admin_building)
 "pdN" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "lz1entrance"
+	insert_tag = "lz1entrance_v2"
 	},
 /turf/open/mars,
 /area/bigredv2/outside/nw)
@@ -36590,7 +36596,7 @@
 /area/bigredv2/caves/mining)
 "qTu" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "viro"
+	insert_tag = "viro_open"
 	},
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
@@ -36927,7 +36933,7 @@
 /area/bigredv2/caves/mining)
 "rrl" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "filtration"
+	insert_tag = "filtration_restored"
 	},
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2"
@@ -38943,7 +38949,7 @@
 /area/bigredv2/caves/mining)
 "tYM" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "prison"
+	insert_tag = "prison_breakout"
 	},
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/marshal_office)
@@ -39277,7 +39283,7 @@
 /area/bigredv2/caves/mining)
 "uCD" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "reactor"
+	insert_tag = "reactor_meltdown"
 	},
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
@@ -39883,7 +39889,7 @@
 /area/bigredv2/caves/eta/research)
 "vvi" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "lz1containers"
+	insert_tag = "lz1containers_scramble"
 	},
 /turf/open/floor{
 	dir = 4;
@@ -41717,7 +41723,7 @@
 /area/bigredv2/outside/n)
 "yfe" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "eta"
+	insert_tag = "eta_carp"
 	},
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/eta/xenobiology)
@@ -49956,7 +49962,7 @@ axv
 anp
 anp
 anp
-anp
+cGv
 ajx
 ajY
 akK

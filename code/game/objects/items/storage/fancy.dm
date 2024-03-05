@@ -241,7 +241,7 @@
 
 /obj/item/storage/fancy/cigarettes/trading_card/attack_hand(mob/user, mods)
 	if(trading_card?.loc == src && loc == user)
-		user.visible_message(SPAN_NOTICE("You pull a [trading_card.collection_color] trading card out of the cigarette pack."))
+		to_chat(user, SPAN_NOTICE("You pull a [trading_card.collection_color] trading card out of the cigarette pack."))
 		//have to take two disparate systems n' ram 'em together
 		remove_from_storage(trading_card, user.loc)
 		user.put_in_hands(trading_card)
@@ -491,7 +491,7 @@
 
 /obj/item/storage/fancy/trading_card/attack_hand(mob/user, mods)
 	if(top_trading_card?.loc == src && loc == user)
-		user.visible_message(SPAN_NOTICE("You pull a [top_trading_card.collection_color] trading card out of the pack."))
+		to_chat(user, SPAN_NOTICE("You pull a [top_trading_card.collection_color] trading card out of the pack."))
 		//have to take two disparate systems n' ram 'em together
 		remove_from_storage(top_trading_card, user.loc)
 		user.put_in_hands(top_trading_card)

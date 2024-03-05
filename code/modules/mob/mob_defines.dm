@@ -16,9 +16,6 @@
 
 	var/atom/movable/screen/hands = null //robot
 
-	var/adminhelp_marked = 0 // Prevents marking an Adminhelp more than once. Making this a client define will cause runtimes and break some Adminhelps
-	var/adminhelp_marked_admin = "" // Ckey of last marking admin
-
 	/// a ckey that persists client logout / ghosting, replaced when a client inhabits the mob
 	var/persistent_ckey
 

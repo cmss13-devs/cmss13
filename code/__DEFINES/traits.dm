@@ -267,6 +267,9 @@
 
 #define TRAIT_GUN_LIGHT_DEACTIVATED "t_gun_light_deactivated"
 
+/// If this ID belongs to an ERT member
+#define TRAIT_ERT_ID "ert_id"
+
 // Miscellaneous item traits.
 // Do NOT bloat this category, if needed make a new category (like shoe traits, xeno item traits...)
 

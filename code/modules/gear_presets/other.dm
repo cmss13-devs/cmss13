@@ -846,7 +846,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/other/professor_dummy
-name = "DUMMY"
+	name = "DUMMY"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "DUMMY"
 	rank = "DUMMY"
@@ -869,7 +869,7 @@ name = "DUMMY"
 
 /datum/equipment_preset/other/professor_dummy/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/device/professor_dummy_tablet/tablet = new /obj/item/device/professor_dummy_tablet(new_human)
-	tablet.link_mob(new_human)
+	tablet.link_dummy(new_human)
 	new_human.equip_to_slot_or_del(tablet, WEAR_R_HAND)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical, WEAR_BODY)

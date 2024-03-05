@@ -187,7 +187,7 @@
 	wall_mounted = TRUE
 
 /obj/structure/closet/secure_closet/professor_dummy/Initialize()
-    . = ..()
+	. = ..()
 	var/mob/living/carbon/human/dummy/professor_dummy/spawned_dummy = new(src)
 	var/datum/equipment_preset/dummy_preset = /datum/equipment_preset/other/professor_dummy
 	arm_equipment(spawned_dummy, initial(dummy_preset.name), TRUE, FALSE)

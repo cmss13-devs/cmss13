@@ -8,6 +8,10 @@
 
 	var/mob/living/carbon/human/dummy/professor_dummy/linked_dummy
 
+/obj/item/device/professor_dummy_tablet/Initialize(mapload)
+	. = ..()
+	link_dummy()
+
 /obj/item/device/professor_dummy_tablet/Destroy()
 	linked_dummy = null
 	. = ..()
@@ -25,17 +29,12 @@
 		return FALSE
 	return TRUE
 
-/obj/item/device/professor_dummy_tablet/proc/link_mob(mob/user)
+/obj/item/device/professor_dummy_tablet/proc/link_dummy()
 	for(var/mob/living/carbon/human/dummy/professor_dummy/dummy_to_link in range(1))
 		if(dummy_to_link)
 			linked_dummy = dummy_to_link
 			RegisterSignal(linked_dummy, COMSIG_PARENT_QDELETING, PROC_REF(self_delete))
-			if(user)
-				balloon_alert(user, "new dummy registered")
-			return TRUE
-	if(user)
-		balloon_alert(user, "no dummy detected nearby")
-	return FALSE
+			return
 
 /obj/item/device/professor_dummy_tablet/proc/self_delete()
 	SIGNAL_HANDLER
@@ -53,7 +52,6 @@
 
 /obj/item/device/professor_dummy_tablet/interact(mob/user as mob)
 	if(isnull(linked_dummy))
-		link_mob(user)
 		return
 
 	if(!is_adjacent_to_dummy(user))

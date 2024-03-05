@@ -181,7 +181,6 @@
 
 /obj/structure/closet/secure_closet/surgical/professor_dummy/Initialize()
 	. = ..()
-	new /obj/item/device/professor_dummy_tablet(src)
 	new /mob/living/carbon/human/dummy/professor_dummy(src)
 
 /obj/structure/closet/secure_closet/surgical/professor_dummy/togglelock(mob/living/user)

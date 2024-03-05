@@ -85,7 +85,21 @@ GLOBAL_LIST_EMPTY(dummy_mob_list)
 // Used by the CMO and the SEA for teaching medical personnel
 /mob/living/carbon/human/dummy/professor_dummy/Initialize(mapload)
 	. = ..()
-	change_real_name(src, "Professor DUMMY")
+
+	// Personalise it
+	change_real_name(src, "Professor DUMMY the Medical Mannequin")
+	age = rand(1,5)
+	gender = pick(MALE, FEMALE)
+	var/datum/preferences/A = new
+	A.randomize_appearance(src)
+	regenerate_icons()
+
+	// Ensure nurses can practice surgery on it
+	mob_flags |= EASY_SURGERY
+
+	// Spawn its control tablet
+	new /obj/item/device/professor_dummy_tablet(loc)
+
 	if(is_mainship_level(z))
 		RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_LANDED, PROC_REF(destroy_upon_hijack))
 

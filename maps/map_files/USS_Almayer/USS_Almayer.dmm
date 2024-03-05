@@ -7504,7 +7504,7 @@
 	pixel_y = 16
 	},
 /obj/item/clothing/accessory/stethoscope,
-/obj/structure/closet/secure_closet/surgical/professor_dummy{
+/obj/structure/closet/secure_closet/professor_dummy{
 	pixel_x = -32
 	},
 /turf/open/floor/almayer{

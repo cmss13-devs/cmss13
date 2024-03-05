@@ -114,6 +114,7 @@
 	dir = 8;
 	layer = 3.25
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -230,6 +231,13 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv553/outdoors/colony_streets/west)
+"afY" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/closed/wall/r_wall,
+/area/lv553/oob)
 "agg" = (
 /obj/structure/surface/rack,
 /obj/item/storage/box/m94/signal{
@@ -833,6 +841,14 @@
 /obj/item/storage/firstaid/regular,
 /turf/open/floor/interior/wood,
 /area/lv553/oob)
+"aCI" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "aCX" = (
 /obj/structure/bed/chair/wood/wings{
 	dir = 4
@@ -862,6 +878,9 @@
 	icon_state = "SE-out";
 	pixel_y = 15;
 	pixel_x = 1
+	},
+/obj/structure/machinery/light{
+	dir = 4
 	},
 /turf/open/floor{
 	icon_state = "darkbluecorners2"
@@ -1342,6 +1361,16 @@
 	},
 /turf/open/gm/river,
 /area/lv553/indoors/flooded/weymart)
+"aPr" = (
+/obj/structure/closet/crate/ammo,
+/obj/item/newspaper{
+	pixel_y = 0;
+	name = "operations personal defense weapons order m-7 yr-2182"
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "aPt" = (
 /obj/structure/sink{
 	dir = 8;
@@ -1349,6 +1378,21 @@
 	pixel_y = 6
 	},
 /turf/open/asphalt/cement,
+/area/lv553/oob)
+"aPz" = (
+/obj/structure/disposalpipe/segment{
+	name = "pneumatic delivery system pipe";
+	pixel_y = 0;
+	pixel_x = 5
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2";
+	pixel_x = -8
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
 "aPB" = (
 /obj/structure/sink{
@@ -1525,6 +1569,26 @@
 /turf/open/floor/plating{
 	icon_state = "platebot"
 	},
+/area/lv553/oob)
+"aVK" = (
+/obj/item/prop{
+	color = "#FF0000";
+	icon = 'icons/obj/pipes/power_cond_white.dmi';
+	icon_state = '0-1';
+	name = "cable";
+	layer = 2.8
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "0-4";
+	layer = 2.81
+	},
+/obj/structure/machinery/power/apc,
+/obj/structure/machinery/light,
+/turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
 "aWs" = (
 /obj/structure/largecrate/lisa,
@@ -1747,6 +1811,15 @@
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
+"bdC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/turf/open/floor{
+	icon_state = "dark2"
+	},
+/area/lv553/oob)
 "bdJ" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/snacks/csandwich,
@@ -1875,6 +1948,20 @@
 	dir = 8
 	},
 /area/lv553/outdoors/colony_streets/northeast)
+"bjx" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1;
+	pixel_x = 1
+	},
+/obj/item/stack/sheet/wood,
+/obj/item/shard,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor{
+	icon_state = "darkbluecorners2";
+	dir = 4
+	},
+/area/lv553/oob)
 "bjG" = (
 /obj/item/paper/crumpled{
 	pixel_x = 10;
@@ -1980,6 +2067,20 @@
 	icon_state = "barber"
 	},
 /area/lv553/indoors/lone_buildings/weyyu_hostel)
+"bmX" = (
+/obj/structure/platform/strata/metal{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment{
+	name = "waterpipe";
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment{
+	name = "pneumatic delivery system pipe";
+	pixel_y = 0
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "bnf" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "shower room door"
@@ -2064,6 +2165,7 @@
 	icon_state = "S";
 	pixel_y = 0
 	},
+/obj/item/clothing/mask/surgical,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -2360,7 +2462,14 @@
 	},
 /area/lv553/indoors/hospital/operating_rooms)
 "bDB" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/structure/surface/table/almayer,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "darkblue2"
@@ -2583,12 +2692,14 @@
 	},
 /obj/structure/machinery/disposal,
 /turf/open/floor{
-	icon_state = "dark"
+	dir = 5;
+	icon_state = "darkblue2"
 	},
 /area/lv553/oob)
 "bLv" = (
 /obj/structure/surface/table,
 /obj/item/stock_parts/manipulator/nano,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "whiteblue"
@@ -2623,6 +2734,7 @@
 /area/lv553/indoors/uscm_garrison/recruitment_office)
 "bMv" = (
 /obj/structure/machinery/telecomms/server,
+/obj/structure/cable/heavyduty,
 /turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
 "bMA" = (
@@ -2821,6 +2933,18 @@
 	icon_state = "white"
 	},
 /area/lv553/indoors/lone_buildings/weyyu_hostel)
+"bRi" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/machinery/light,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "bRI" = (
 /obj/effect/decal/cleanable/blood{
 	pixel_y = 12
@@ -2881,20 +3005,31 @@
 /obj/structure/largecrate/supply/supplies/mre,
 /turf/open/asphalt/cement,
 /area/lv553/indoors/lone_buildings/army_surplus)
+"bTu" = (
+/obj/structure/disposalpipe/segment{
+	name = "pneumatic delivery system pipe";
+	pixel_y = 0;
+	pixel_x = 5
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2";
+	pixel_x = -8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "bTx" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = 0;
-	pixel_x = -17
+	icon_state = "N";
+	pixel_y = 1
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out";
-	pixel_y = 0;
-	pixel_x = 13
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (WEST)"
 	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/floor{
-	icon_state = "darkbluecorners2";
-	dir = 8
+	dir = 1;
+	icon_state = "darkblue2"
 	},
 /area/lv553/oob)
 "bTR" = (
@@ -3827,6 +3962,20 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
+"cwS" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (WEST)"
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "cxe" = (
 /obj/structure/largecrate/random/barrel{
 	pixel_x = -3
@@ -3853,6 +4002,26 @@
 	},
 /obj/item/ammo_magazine/rifle/mar40,
 /turf/open/floor/wood,
+/area/lv553/oob)
+"cxB" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/item/storage/fancy/cigarettes/wypacket{
+	icon_state = "wypacket0";
+	storage_slots = 0;
+	pixel_x = 7;
+	pixel_y = 3
+	},
+/obj/item/tool/lighter/random{
+	pixel_x = 8;
+	pixel_y = -5
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "darkblue2"
+	},
 /area/lv553/oob)
 "cya" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -3890,6 +4059,7 @@
 /area/lv553/indoors/uscm_garrison/armory)
 "cys" = (
 /obj/structure/machinery/telecomms/bus,
+/obj/structure/cable/heavyduty,
 /turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
 "cyu" = (
@@ -3902,6 +4072,20 @@
 "cyC" = (
 /obj/structure/surface/table,
 /turf/open/floor/wood,
+/area/lv553/oob)
+"cyE" = (
+/obj/structure/disposalpipe/junction{
+	dir = 1;
+	icon_state = "pipe-j2";
+	pixel_x = -8
+	},
+/obj/structure/disposalpipe/segment{
+	name = "water pipe";
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
 "cyS" = (
 /obj/structure/filingcabinet,
@@ -3965,6 +4149,7 @@
 "cBG" = (
 /obj/structure/closet/secure_closet/freezer/fridge/full,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -3982,6 +4167,20 @@
 	icon_state = "whiteblue"
 	},
 /area/lv553/indoors/hospital/research/reception)
+"cBM" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "cBN" = (
 /obj/structure/closet/secure_closet/freezer/fridge/full,
 /obj/effect/decal/cleanable/dirt,
@@ -4186,6 +4385,18 @@
 	icon_state = "white_cyan1"
 	},
 /area/lv553/oob)
+"cHw" = (
+/obj/item/stack/sheet/metal,
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "0-2"
+	},
+/obj/item/stack/cable_coil,
+/obj/effect/spawner/gibspawner/robot,
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "cHF" = (
 /obj/structure/bed,
 /obj/item/bedsheet/captain,
@@ -4355,6 +4566,20 @@
 /obj/item/trash/hotdog,
 /turf/open/floor/wood,
 /area/lv553/oob)
+"cMV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_y = -1;
+	pixel_x = 1
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/ammo_magazine/pistol/holdout{
+	current_rounds = 0
+	},
+/turf/open/floor{
+	icon_state = "darkbluecorners2"
+	},
+/area/lv553/oob)
 "cMW" = (
 /obj/structure/sink{
 	pixel_y = 24
@@ -4379,6 +4604,22 @@
 	dir = 8
 	},
 /area/lv553/outdoors/colony_streets/south)
+"cNC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/structure/bed/chair,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "cOC" = (
 /obj/structure/fence,
 /turf/open/gm/grass,
@@ -4537,8 +4778,24 @@
 	},
 /obj/structure/window,
 /obj/structure/surface/table/almayer,
+/obj/item/paper_bin{
+	pixel_y = 4;
+	pixel_x = 4
+	},
+/obj/item/tool/pen{
+	pixel_x = 2
+	},
+/obj/item/ashtray/bronze{
+	pixel_y = 0;
+	pixel_x = -8
+	},
+/obj/item/trash/cigbutt{
+	pixel_y = 7;
+	pixel_x = -6
+	},
 /turf/open/floor{
-	icon_state = "dark"
+	icon_state = "darkbluecorners2";
+	dir = 8
 	},
 /area/lv553/oob)
 "cTc" = (
@@ -4572,6 +4829,10 @@
 /obj/item/shard,
 /turf/open/gm/river,
 /area/lv553/indoors/flooded/weymart)
+"cTZ" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "cUi" = (
 /obj/structure/fence,
 /obj/structure/barricade/sandbags/wired{
@@ -4588,6 +4849,15 @@
 /obj/structure/fence,
 /turf/open/gm/grass,
 /area/lv553/outdoors/welcome_center_exterior/east)
+"cUX" = (
+/obj/structure/toilet{
+	dir = 4
+	},
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
+	},
+/area/lv553/oob)
 "cVa" = (
 /obj/item/trash/cigbutt,
 /obj/item/shard,
@@ -4722,6 +4992,7 @@
 	icon_state = "S";
 	pixel_y = 0
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	icon_state = "darkblue2"
 	},
@@ -4814,6 +5085,17 @@
 	icon_state = "barber"
 	},
 /area/lv553/indoors/uscm_garrison/garrison_bunks)
+"ddn" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "ddE" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 5
@@ -4827,8 +5109,10 @@
 /obj/structure/closet/secure_closet/personal{
 	pixel_x = 8
 	},
+/obj/item/clothing/mask/surgical,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
-	icon_state = "dark"
+	icon_state = "dark2"
 	},
 /area/lv553/oob)
 "ded" = (
@@ -4856,6 +5140,7 @@
 	pixel_y = -1;
 	pixel_x = 1
 	},
+/obj/item/trash/cigbutt,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -4889,7 +5174,7 @@
 "deX" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
-	icon_state = "dark"
+	icon_state = "dark2"
 	},
 /area/lv553/oob)
 "deY" = (
@@ -4932,6 +5217,7 @@
 /area/lv553/indoors/hospital/outpatients_and_icu)
 "dfW" = (
 /obj/structure/machinery/telecomms/processor,
+/obj/structure/cable/heavyduty,
 /turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
 "dgm" = (
@@ -5099,6 +5385,12 @@
 	dir = 4
 	},
 /area/lv553/indoors/uscm_garrison/recruitment_office)
+"djO" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "djR" = (
 /obj/structure/prop/dam/truck,
 /obj/structure/largecrate/supply/ammo/m41a/half{
@@ -5160,6 +5452,14 @@
 	},
 /turf/open/gm/dirt,
 /area/lv553/outdoors/hospital/break_garden)
+"dlu" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "dark2"
+	},
+/area/lv553/oob)
 "dly" = (
 /obj/structure/machinery/door/airlock/almayer/secure{
 	dir = 1;
@@ -5484,6 +5784,27 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv553/indoors/lone_buildings/clf_house)
+"dus" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c";
+	pixel_x = 5;
+	pixel_y = 6;
+	name = "pneumatic delivery system pipe";
+	layer = 2.31
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "1-4";
+	pixel_x = -8;
+	pixel_y = -7
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8";
+	pixel_y = -7;
+	pixel_x = 15
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "duB" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -5665,6 +5986,13 @@
 	icon_state = "white"
 	},
 /area/lv553/indoors/hospital/lobby)
+"dzo" = (
+/obj/structure/prop/almayer/computers/sensor_computer1,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "dzw" = (
 /obj/structure/flora/jungle/hedge{
 	dir = 10
@@ -5894,6 +6222,13 @@
 /obj/item/shard,
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/screenwriter_house)
+"dHI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "dark2"
+	},
+/area/lv553/oob)
 "dIr" = (
 /obj/structure/sign/safety/medical{
 	pixel_x = 8;
@@ -5962,6 +6297,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
+/obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkblue2"
@@ -5985,6 +6321,17 @@
 /turf/open/floor{
 	icon_state = "darkbluecorners2";
 	dir = 8
+	},
+/area/lv553/oob)
+"dLl" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkblue2"
 	},
 /area/lv553/oob)
 "dLq" = (
@@ -6241,6 +6588,24 @@
 	icon_state = "warnplate"
 	},
 /area/lv553/oob)
+"dWi" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/sign/poster/hunk{
+	pixel_y = 32
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "dWo" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 8;
@@ -6257,11 +6622,31 @@
 /turf/open/gm/grass,
 /area/lv553/outdoors/landing_zones_disembark)
 "dWL" = (
-/obj/structure/bed/chair{
-	dir = 1
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
 	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
+/obj/structure/surface/table/almayer,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/item/ashtray/plastic{
+	pixel_x = -7
+	},
+/obj/item/storage/fancy/cigarettes/lucky_strikes{
+	icon_state = "lspacket10";
+	pixel_x = 6;
+	pixel_y = 2;
+	storage_slots = 10
+	},
+/obj/item/tool/lighter/random{
+	pixel_x = 8;
+	pixel_y = -5
+	},
+/turf/open/floor{
+	dir = 6;
+	icon_state = "darkblue2"
 	},
 /area/lv553/oob)
 "dXd" = (
@@ -6378,6 +6763,18 @@
 /area/lv553/landing_zone_1)
 "ebR" = (
 /turf/closed/shuttle/ert,
+/area/lv553/oob)
+"ecc" = (
+/obj/structure/machinery/constructable_frame{
+	icon_state = "box_2"
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "0-2"
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
 "ecd" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -6537,6 +6934,11 @@
 	},
 /turf/open/gm/coast,
 /area/lv553/outdoors/flooded_streets/waste_treatment)
+"eeE" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "eeO" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 6
@@ -6760,6 +7162,13 @@
 	dir = 1
 	},
 /area/lv553/outdoors/hospital/road_north_east)
+"ejF" = (
+/obj/structure/machinery/door/airlock/prison_hatch/autoname,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "ejI" = (
 /obj/structure/machinery/disposal,
 /turf/open/floor/wood,
@@ -6964,6 +7373,24 @@
 	},
 /turf/open/gm/dirt,
 /area/lv553/outdoors/colony_streets/east)
+"epX" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	pixel_y = -7
+	},
+/obj/structure/disposalpipe/segment{
+	name = "water pipe";
+	dir = 8;
+	pixel_y = 8
+	},
+/obj/structure/disposalpipe/segment{
+	name = "water pipe";
+	dir = 8;
+	pixel_y = 8;
+	pixel_x = -8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "eqb" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -6990,6 +7417,21 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv553/indoors/lone_buildings/goon_and_chef_house)
+"erI" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/sign/poster{
+	pixel_y = -32
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
+"erV" = (
+/obj/structure/sign/poster{
+	pixel_y = 34
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "esb" = (
 /obj/item/shard,
 /turf/open/floor/wood,
@@ -7253,6 +7695,25 @@
 	dir = 8
 	},
 /area/lv553/outdoors/flooded_streets/west)
+"eyI" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/item/shard,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
+"eyK" = (
+/obj/structure/bed/chair,
+/obj/item/trash/cigbutt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "dark2"
+	},
+/area/lv553/oob)
 "ezl" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder{
@@ -7359,6 +7820,20 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv553/oob)
+"eCV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_magazine/pistol/holdout{
+	current_rounds = 0
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "eCW" = (
 /obj/item/stool{
 	pixel_y = 10
@@ -7420,6 +7895,25 @@
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
+"eFH" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/item/storage/fancy/trading_card{
+	pixel_y = 9;
+	pixel_x = -5
+	},
+/obj/item/storage/fancy/trading_card{
+	pixel_y = 9;
+	pixel_x = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "eGC" = (
 /obj/structure/flora/bush/ausbushes/palebush,
 /turf/open/gm/dirtgrassborder{
@@ -7433,6 +7927,12 @@
 	tag = "icon-beach (NORTHEAST)"
 	},
 /area/lv553/outdoors/flooded_streets/east)
+"eGS" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor{
+	icon_state = "dark2"
+	},
+/area/lv553/oob)
 "eHm" = (
 /turf/open/gm/coast{
 	icon_state = "beachcorner"
@@ -7441,6 +7941,20 @@
 "eHp" = (
 /turf/closed/shuttle/ert{
 	icon_state = "rightengine_3"
+	},
+/area/lv553/oob)
+"eHu" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "darkblue2"
 	},
 /area/lv553/oob)
 "eHH" = (
@@ -7476,6 +7990,20 @@
 	unacidable = 1
 	},
 /turf/open/floor/interior/wood,
+/area/lv553/oob)
+"eIJ" = (
+/obj/item/weapon/gun/shotgun/pump{
+	name = "\improper broken M37A2 pump shotgun";
+	current_mag = null
+	},
+/obj/item/ammo_casing/shell{
+	icon_state = "shell_9_1"
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/clothing/head/cmcap/boonie,
+/turf/open/floor{
+	icon_state = "dark2"
+	},
 /area/lv553/oob)
 "eJb" = (
 /obj/item/trash/chips,
@@ -7799,6 +8327,17 @@
 /obj/item/stack/cable_coil/orange,
 /turf/open/floor/interior/wood,
 /area/lv553/oob)
+"eTK" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/obj/structure/machinery/light,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor{
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "eUh" = (
 /obj/structure/prop/dam/truck/cargo{
 	dir = 4
@@ -7932,6 +8471,7 @@
 	pixel_y = 15
 	},
 /obj/item/stack/sheet/mineral/silver,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteblue"
@@ -7958,6 +8498,23 @@
 	pixel_y = 16
 	},
 /turf/open/floor/interior/wood,
+/area/lv553/oob)
+"eYS" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
+"eZb" = (
+/obj/structure/window_frame/hangar,
+/obj/item/shard,
+/obj/item/shard,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/oob)
 "eZe" = (
 /turf/closed/shuttle/ert{
@@ -8056,6 +8613,19 @@
 	pixel_x = 1
 	},
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/prop/almayer/computer{
+	dir = 8;
+	pixel_y = 9;
+	name = "colony PDT-L tracker computer";
+	icon_state = "console";
+	icon = 'icons/obj/structures/machinery/ares.dmi'
+	},
+/obj/structure/machinery/prop/almayer/computer{
+	dir = 8;
+	pixel_y = -6;
+	name = "colony security records computer";
+	icon_state = "security"
+	},
 /turf/open/floor{
 	dir = 4;
 	icon_state = "darkblue2"
@@ -8106,6 +8676,13 @@
 	icon_state = "whitegreen"
 	},
 /area/lv553/indoors/hospital/operating_rooms)
+"fdU" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "feC" = (
 /obj/structure/urinal{
 	pixel_y = 21
@@ -8163,6 +8740,30 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/gated_community/head_of_corporate_security)
+"fgu" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/obj/item/ashtray/plastic{
+	pixel_y = 8
+	},
+/obj/item/storage/fancy/cigar{
+	pixel_y = -1;
+	pixel_x = -3;
+	icon_state = "cigarcase5";
+	storage_slots = 5
+	},
+/turf/open/floor{
+	dir = 6;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "fgJ" = (
 /obj/structure/bed/chair/comfy/blue{
 	dir = 1
@@ -8479,6 +9080,18 @@
 	dir = 1
 	},
 /area/lv553/outdoors/colony_streets/east)
+"fqm" = (
+/obj/structure/closet/secure_closet/personal{
+	pixel_x = -8
+	},
+/obj/structure/closet/secure_closet/personal{
+	pixel_x = 8
+	},
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "fqY" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_17";
@@ -8610,6 +9223,18 @@
 /turf/open/gm/river,
 /area/lv553/indoors/flooded/west_apartments)
 "fuc" = (
+/obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/far,
+/obj/item/folder/white,
+/obj/item/folder/red,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
 /turf/open/floor{
 	dir = 6;
 	icon_state = "darkblue2"
@@ -8665,6 +9290,17 @@
 /obj/item/trash/wy_chips_pepper,
 /turf/open/floor/interior/wood,
 /area/lv553/oob)
+"fvo" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "fvZ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -8674,6 +9310,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "darkblue2"
@@ -8720,6 +9357,18 @@
 /obj/structure/window/framed/wood,
 /turf/open/gm/dirt,
 /area/lv553/oob)
+"fyf" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1;
+	pixel_x = 1
+	},
+/obj/item/shard,
+/turf/open/floor{
+	icon_state = "darkbluecorners2";
+	dir = 4
+	},
+/area/lv553/oob)
 "fyh" = (
 /obj/item/trash/cigbutt/cigarbutt,
 /obj/effect/decal/cleanable/dirt,
@@ -8731,6 +9380,11 @@
 	dir = 1
 	},
 /area/lv553/outdoors/colony_streets/southwest)
+"fyC" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "fyH" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/wood,
@@ -8923,6 +9577,26 @@
 "fEb" = (
 /turf/closed/wall/r_wall,
 /area/lv553/indoors/flooded/telecomms)
+"fEc" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_x = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/pistol/holdout/flashlight{
+	current_mag = null
+	},
+/obj/item/ammo_magazine/pistol/holdout{
+	current_rounds = 0
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "fEd" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -8962,6 +9636,33 @@
 	dir = 8;
 	icon_state = "barber"
 	},
+/area/lv553/oob)
+"fEP" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c";
+	pixel_y = -7;
+	pixel_x = -8
+	},
+/obj/structure/disposalpipe/segment{
+	name = "pneumatic delivery system pipe";
+	pixel_y = 25;
+	pixel_x = -8
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	pixel_y = -7;
+	pixel_x = 24
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c";
+	pixel_y = 8;
+	pixel_x = 7;
+	name = "water pipe";
+	layer = 2.4
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
 "fEV" = (
 /obj/structure/surface/table/reinforced/black,
@@ -9121,6 +9822,23 @@
 	},
 /turf/open/gm/river,
 /area/lv553/outdoors/bungalow_manager_exterior)
+"fIT" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/pistol/holdout/flashlight{
+	current_mag = null
+	},
+/obj/item/ammo_magazine/pistol/holdout{
+	current_rounds = 0
+	},
+/turf/open/floor{
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "fJa" = (
 /obj/structure/desertdam/decals/road_stop{
 	dir = 8;
@@ -9409,8 +10127,8 @@
 	},
 /area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "fQl" = (
-/obj/structure/surface/table/almayer,
 /obj/structure/machinery/prop/almayer/CICmap,
+/obj/structure/surface/table/almayer,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -9424,6 +10142,18 @@
 /obj/item/trash/plate,
 /turf/open/gm/river,
 /area/lv553/indoors/flooded/weymart)
+"fQA" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt/cigarbutt,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "fQC" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "bunkhouse door"
@@ -9467,7 +10197,8 @@
 	},
 /obj/item/tool/pen,
 /turf/open/floor{
-	icon_state = "dark"
+	dir = 6;
+	icon_state = "darkblue2"
 	},
 /area/lv553/oob)
 "fRR" = (
@@ -9591,6 +10322,14 @@
 	icon_state = "white"
 	},
 /area/lv553/indoors/welcome_center/lobby)
+"fUs" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "dark2"
+	},
+/area/lv553/oob)
 "fUz" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor,
@@ -9920,6 +10659,20 @@
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/wood,
 /area/lv553/indoors/hospital/reception)
+"gcX" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/item/trash/cigbutt/bcigbutt{
+	pixel_y = 7;
+	pixel_x = -1
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "gdc" = (
 /obj/item/stack/sheet/wood,
 /obj/item/reagent_container/food/snacks/donkpocket{
@@ -10071,8 +10824,21 @@
 "gju" = (
 /obj/structure/window,
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/prop/almayer/computer{
+	dir = 1;
+	pixel_y = -5;
+	pixel_x = -8;
+	name = "colony outgoing communications computer"
+	},
+/obj/structure/machinery/prop/almayer/computer{
+	dir = 1;
+	pixel_y = -5;
+	pixel_x = 9;
+	name = "colony telemetry computer"
+	},
 /turf/open/floor{
-	icon_state = "dark"
+	dir = 10;
+	icon_state = "darkblue2"
 	},
 /area/lv553/oob)
 "gkr" = (
@@ -10263,6 +11029,15 @@
 	icon_state = "beachcorner2"
 	},
 /area/lv553/indoors/flooded/west_apartments)
+"gsD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment{
+	name = "pneumatic delivery system pipe";
+	pixel_y = 0;
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "gsI" = (
 /obj/structure/surface/rack,
 /obj/item/storage/toolbox/electrical{
@@ -10270,6 +11045,11 @@
 	},
 /obj/item/stack/cable_coil{
 	pixel_y = -5
+	},
+/obj/structure/disposalpipe/segment{
+	name = "pneumatic delivery system pipe";
+	pixel_y = 0;
+	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
@@ -10378,6 +11158,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
+	},
+/obj/structure/machinery/light{
+	dir = 4
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -10511,19 +11294,15 @@
 /turf/open/asphalt/cement,
 /area/lv553/indoors/lone_buildings/multidoor_garage)
 "gBH" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 8;
-	name = "\improper Operations door";
-	welded = 1;
-	icon_state = "door_welded"
+/obj/structure/disposalpipe/segment{
+	pixel_x = -7
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
+/obj/structure/disposalpipe/segment{
+	name = "water pipe";
+	dir = 1;
+	pixel_x = 8
 	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
+/turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
 "gBJ" = (
 /obj/structure/sign/safety/synth_storage{
@@ -10531,6 +11310,29 @@
 	},
 /turf/open/gm/dirt,
 /area/lv553/outdoors/bungalow_manager_exterior)
+"gCp" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/fancy/cigar{
+	pixel_y = 6;
+	icon_state = "cigarcase0";
+	storage_slots = 0
+	},
+/obj/item/storage/box/matches{
+	pixel_x = -2;
+	pixel_y = 0;
+	max_storage_space = 0
+	},
+/obj/item/trash/cigbutt/cigarbutt{
+	pixel_y = 11
+	},
+/obj/item/trash/cigbutt/cigarbutt{
+	pixel_y = 11;
+	pixel_x = 9
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "gCC" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "north_exit_gate";
@@ -10588,6 +11390,11 @@
 	dir = 1;
 	layer = 3.25
 	},
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -10951,6 +11758,17 @@
 	icon_state = "white"
 	},
 /area/lv553/oob)
+"gNh" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/structure/machinery/disposal,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "gNo" = (
 /obj/structure/sink{
 	dir = 1;
@@ -11007,6 +11825,24 @@
 	},
 /turf/open/gm/grass,
 /area/lv553/indoors/welcome_center/canteen)
+"gOC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/far,
+/obj/item/folder/white,
+/obj/item/folder/yellow,
+/turf/open/floor{
+	dir = 10;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "gPk" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 1
@@ -11257,6 +12093,15 @@
 	},
 /turf/open/asphalt/cement,
 /area/lv553/outdoors/colony_streets/east)
+"gXj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "dark2"
+	},
+/area/lv553/oob)
 "gXl" = (
 /obj/structure/reagent_dispensers/beerkeg{
 	pixel_x = -3;
@@ -11301,6 +12146,20 @@
 	},
 /turf/open/floor,
 /area/lv553/indoors/welcome_center/offices)
+"gZb" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/barricade/wooden{
+	dir = 4;
+	layer = 5.3
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "gZi" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/grass,
@@ -11458,8 +12317,27 @@
 /turf/open/gm/dirt,
 /area/lv553/outdoors/hospital/break_garden)
 "heV" = (
+/obj/structure/machinery/disposal,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
 /turf/open/floor{
-	dir = 1;
+	dir = 4;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
+"heW" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/item/trash/burger{
+	pixel_y = -6
+	},
+/turf/open/floor{
+	dir = 8;
 	icon_state = "darkblue2"
 	},
 /area/lv553/oob)
@@ -11512,6 +12390,17 @@
 /obj/item/tool/pen/fountain,
 /turf/open/floor/wood,
 /area/lv553/indoors/bungalow_manager)
+"hhk" = (
+/obj/structure/toilet{
+	dir = 8;
+	tag = "icon-toilet00 (WEST)"
+	},
+/obj/structure/window,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "hhN" = (
 /obj/item/prop{
 	color = "#FF0000";
@@ -11592,6 +12481,13 @@
 /obj/item/frame/rack,
 /turf/open/gm/river,
 /area/lv553/indoors/flooded/weymart)
+"hkm" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/turf/closed/wall/r_wall,
+/area/lv553/oob)
 "hkx" = (
 /turf/closed/wall/r_wall,
 /area/lv553/outdoors/colony_streets/south)
@@ -11677,6 +12573,16 @@
 	},
 /turf/open/gm/dirt,
 /area/lv553/landing_zone_1)
+"hox" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "2-4"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "hoX" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/dirtgrassborder{
@@ -11931,6 +12837,15 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv553/oob)
+"hvN" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4
+	},
+/obj/item/trash/cigbutt,
+/turf/open/floor{
+	icon_state = "dark2"
+	},
+/area/lv553/oob)
 "hvV" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
@@ -12059,6 +12974,15 @@
 	icon_state = "barber"
 	},
 /area/lv553/indoors/lz_sec_checkpoint)
+"hzT" = (
+/obj/item/trash/cigbutt{
+	pixel_y = 7;
+	pixel_x = -6
+	},
+/turf/open/floor{
+	icon_state = "dark2"
+	},
+/area/lv553/oob)
 "hAi" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/dirtgrassborder{
@@ -12066,9 +12990,14 @@
 	},
 /area/lv553/outdoors/colony_streets/northeast)
 "hAl" = (
-/obj/structure/platform/strata/metal,
-/obj/structure/platform/strata/metal{
-	dir = 8
+/obj/structure/disposalpipe/segment{
+	pixel_x = -7
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 4;
+	icon_state = "pipe-y";
+	name = "pneumatic delivery system pipe";
+	pixel_x = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
@@ -12218,6 +13147,14 @@
 	icon_state = "white"
 	},
 /area/lv553/oob)
+"hEK" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/machinery/meter,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "hEU" = (
 /obj/structure/platform_decoration/strata/metal,
 /turf/open/gm/grass,
@@ -12268,6 +13205,12 @@
 /turf/open/gm/dirt,
 /area/lv553/outdoors/hospital/break_garden)
 "hFz" = (
+/obj/structure/machinery/disposal,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
 /turf/open/floor{
 	icon_state = "darkblue2"
 	},
@@ -12427,6 +13370,16 @@
 	},
 /turf/open/floor,
 /area/lv553/indoors/flooded/east_apartments)
+"hIp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt/bcigbutt{
+	pixel_y = 7;
+	pixel_x = -1
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "hIN" = (
 /obj/item/tool/wet_sign,
 /turf/open/asphalt/cement,
@@ -12679,6 +13632,7 @@
 /obj/structure/xenoautopsy{
 	pixel_y = 14
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
 "hQJ" = (
@@ -12687,6 +13641,12 @@
 /obj/structure/machinery/light,
 /turf/open/floor/wood,
 /area/lv553/indoors/gated_community/head_of_corporate_security)
+"hRj" = (
+/obj/structure/bed/chair,
+/turf/open/floor{
+	icon_state = "dark2"
+	},
+/area/lv553/oob)
 "hRp" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 4
@@ -12793,9 +13753,22 @@
 	},
 /area/lv553/outdoors/colony_streets/southwest)
 "hUZ" = (
-/obj/structure/platform/strata/metal,
-/obj/structure/platform/strata/metal{
-	dir = 4
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	pixel_y = -7;
+	pixel_x = -25
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c";
+	pixel_y = -7;
+	pixel_x = 7
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c";
+	pixel_y = 8;
+	pixel_x = -8
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
@@ -12880,6 +13853,24 @@
 "hWC" = (
 /turf/open/floor{
 	icon_state = "asteroid"
+	},
+/area/lv553/oob)
+"hWH" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/obj/structure/surface/table/almayer,
+/obj/item/paper_bin{
+	pixel_y = 4
+	},
+/obj/item/trash/cigbutt/bcigbutt{
+	pixel_y = 9;
+	pixel_x = -1
+	},
+/obj/item/tool/pen,
+/turf/open/floor{
+	icon_state = "darkblue2"
 	},
 /area/lv553/oob)
 "hWS" = (
@@ -12970,6 +13961,13 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "barber"
+	},
+/area/lv553/oob)
+"hZs" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor{
+	icon_state = "dark2"
 	},
 /area/lv553/oob)
 "hZz" = (
@@ -13089,6 +14087,7 @@
 /area/lv553/outdoors/flooded_streets/west)
 "ica" = (
 /obj/structure/machinery/telecomms/receiver,
+/obj/structure/cable/heavyduty,
 /turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
 "ici" = (
@@ -13737,6 +14736,32 @@
 /obj/structure/machinery/light,
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/screenwriter_house)
+"ivu" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/surface/table/almayer,
+/obj/item/ashtray/plastic{
+	pixel_x = 9
+	},
+/obj/item/trash/cigbutt/bcigbutt{
+	pixel_y = 7;
+	pixel_x = 11
+	},
+/obj/item/trash/cigbutt/bcigbutt{
+	pixel_y = 7;
+	pixel_x = 7
+	},
+/obj/effect/landmark/objective_landmark/medium{
+	pixel_y = 3;
+	pixel_x = -5
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "ivL" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -13805,6 +14830,19 @@
 	icon_state = "whiteyellowfull"
 	},
 /area/lv553/indoors/welcome_center/lobby)
+"ixK" = (
+/obj/structure/disposalpipe/junction{
+	dir = 4;
+	icon_state = "pipe-y";
+	name = "pneumatic delivery system pipe";
+	pixel_x = 5
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2";
+	pixel_x = -8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "ixQ" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "SigmaGate";
@@ -13850,8 +14888,9 @@
 /turf/open/asphalt/cement,
 /area/lv553/outdoors/lone_buildings/gas_n_gear)
 "iyg" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 1
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8";
+	pixel_y = 0
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
@@ -13859,6 +14898,19 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/army_surplus)
+"iyx" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/sign/poster{
+	pixel_y = 34
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "iyI" = (
 /obj/structure/machinery/power/apc{
 	dir = 4
@@ -14116,6 +15168,7 @@
 	pixel_y = 1;
 	pixel_x = -15
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "darkbluecorners2";
 	dir = 4
@@ -14221,12 +15274,34 @@
 /turf/open/floor/wood,
 /area/lv553/indoors/welcome_center/offices)
 "iGY" = (
-/obj/structure/airlock_assembly{
-	dir = 4
-	},
+/obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/queen_spawn,
 /turf/open/floor{
-	icon_state = "dark"
+	icon_state = "dark2"
 	},
+/area/lv553/oob)
+"iGZ" = (
+/obj/structure/platform/strata/metal{
+	dir = 1
+	},
+/obj/item/prop{
+	color = "#FF0000";
+	icon = 'icons/obj/pipes/power_cond_white.dmi';
+	icon_state = '1-2';
+	name = "cable";
+	layer = 2.8
+	},
+/obj/item/prop{
+	color = "#FF0000";
+	icon = 'icons/obj/pipes/power_cond_white.dmi';
+	icon_state = '0-1';
+	name = "cable";
+	layer = 2.8
+	},
+/obj/structure/machinery/vending/cigarette/colony{
+	layer = 3.25
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
 "iHb" = (
 /turf/open/gm/dirtgrassborder{
@@ -14308,6 +15383,30 @@
 	icon_state = "dark"
 	},
 /area/lv553/indoors/uscm_garrison/recruitment_office)
+"iKb" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/obj/structure/surface/table/almayer,
+/obj/item/ashtray/plastic{
+	pixel_x = -9
+	},
+/obj/item/trash/cigbutt/bcigbutt{
+	pixel_y = 7;
+	pixel_x = -11
+	},
+/obj/item/trash/cigbutt/bcigbutt{
+	pixel_y = 7;
+	pixel_x = -9
+	},
+/obj/effect/landmark/objective_landmark/medium{
+	pixel_x = 5
+	},
+/turf/open/floor{
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "iKd" = (
 /obj/item/stool,
 /turf/open/floor/prison{
@@ -14406,6 +15505,25 @@
 /obj/vehicle/powerloader,
 /turf/open/gm/dirt,
 /area/lv553/indoors/lone_buildings/gas_n_gear)
+"iLQ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/obj/structure/surface/table/almayer,
+/obj/item/paper_bin{
+	pixel_y = 5
+	},
+/obj/item/tool/pen,
+/turf/open/floor{
+	dir = 10;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "iME" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3";
@@ -14613,6 +15731,18 @@
 	icon_state = "barber"
 	},
 /area/lv553/oob)
+"iSP" = (
+/obj/structure/disposalpipe/segment,
+/obj/item/trash/cigbutt/cigarbutt{
+	pixel_y = 11;
+	pixel_x = 3
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "iTd" = (
 /obj/structure/machinery/power/apc{
 	dir = 8
@@ -14640,8 +15770,9 @@
 /area/lv553/outdoors/colony_streets/west)
 "iTN" = (
 /obj/structure/bed/chair/office/dark,
+/obj/item/trash/cigbutt/bcigbutt,
 /turf/open/floor{
-	icon_state = "dark"
+	icon_state = "dark2"
 	},
 /area/lv553/oob)
 "iTO" = (
@@ -14657,6 +15788,19 @@
 "iTX" = (
 /turf/open/gm/dirt,
 /area/lv553/outdoors/bungalow_manager_exterior)
+"iVg" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "iVA" = (
 /obj/structure/closet/secure_closet/guncabinet,
 /obj/item/weapon/gun/rifle/m16{
@@ -14703,6 +15847,11 @@
 /area/lv553/oob)
 "iWG" = (
 /obj/structure/largecrate/random/case,
+/obj/structure/disposalpipe/segment{
+	name = "pneumatic delivery system pipe";
+	pixel_y = 0;
+	dir = 8
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
 "iXf" = (
@@ -14784,6 +15933,17 @@
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
+	},
+/area/lv553/oob)
+"iYT" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/structure/machinery/vending/snack/packaged,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkblue2"
 	},
 /area/lv553/oob)
 "iYV" = (
@@ -14877,6 +16037,22 @@
 /obj/effect/spawner/gibspawner/xeno,
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/army_surplus)
+"jbR" = (
+/obj/structure/surface/table/almayer,
+/obj/item/newspaper{
+	pixel_y = 1;
+	name = "report on sudden destruction of colony infrastructure m-7 yr-2182";
+	pixel_x = 7
+	},
+/obj/item/newspaper{
+	pixel_y = 1;
+	name = "report on power storage capabilities m-7 yr-2182";
+	pixel_x = -7
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "jcF" = (
 /obj/structure/fence,
 /turf/open/gm/grass,
@@ -14912,6 +16088,11 @@
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
+"jeG" = (
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/turf/open/asphalt/cement,
+/area/lv553/outdoors/colony_streets/southwest)
 "jeQ" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
@@ -14955,6 +16136,12 @@
 	icon_state = "barber"
 	},
 /area/lv553/indoors/gated_community/residence_bunkhouse)
+"jgq" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "jgr" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_17";
@@ -14982,6 +16169,30 @@
 /obj/structure/grille,
 /turf/open/gm/river,
 /area/lv553/indoors/flooded/waste_silos)
+"jhq" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/structure/filingcabinet,
+/obj/item/folder/yellow,
+/obj/item/folder/red,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
+"jhw" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "jhF" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/grass,
@@ -15037,6 +16248,13 @@
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor{
 	icon_state = "freezerfloor"
+	},
+/area/lv553/oob)
+"jki" = (
+/obj/structure/window_frame/hangar,
+/obj/item/shard,
+/turf/open/floor{
+	icon_state = "dark2"
 	},
 /area/lv553/oob)
 "jko" = (
@@ -15109,6 +16327,26 @@
 	},
 /turf/open/gm/dirt,
 /area/lv553/oob)
+"jlB" = (
+/obj/item/newspaper{
+	pixel_y = 3;
+	name = "suspicious persons list m-7 yr-2182";
+	pixel_x = -8
+	},
+/obj/effect/landmark/objective_landmark/far{
+	pixel_x = 6;
+	pixel_y = 3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/structure/surface/table/almayer,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "jlE" = (
 /turf/open/gm/dirtgrassborder,
 /area/lv553/outdoors/lone_buildings/gas_n_gear)
@@ -15134,6 +16372,15 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv553/indoors/welcome_center/canteen)
+"jmH" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Operations door";
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "dark2"
+	},
+/area/lv553/oob)
 "jmX" = (
 /obj/item/storage/toolbox,
 /turf/open/gm/river,
@@ -15141,6 +16388,22 @@
 "jni" = (
 /turf/closed/wall/r_wall,
 /area/lv553/indoors/aerospace_control)
+"jnQ" = (
+/obj/structure/disposalpipe/segment{
+	name = "pneumatic delivery system pipe";
+	pixel_y = 6;
+	dir = 8
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8";
+	pixel_y = -7
+	},
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (WEST)"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "jnY" = (
 /obj/item/tool/wrench,
 /turf/open/gm/river,
@@ -15166,10 +16429,12 @@
 	},
 /area/lv553/indoors/hospital/research/floor)
 "joq" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
+/obj/structure/disposalpipe/segment{
+	name = "waterpipe";
+	dir = 8
 	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
 "jou" = (
 /obj/item/circuitboard,
@@ -15301,6 +16566,21 @@
 	},
 /turf/open/gm/dirt,
 /area/lv553/oob)
+"jsB" = (
+/obj/structure/disposalpipe/segment{
+	pixel_x = -7
+	},
+/obj/structure/disposalpipe/segment{
+	name = "water pipe";
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "jsF" = (
 /obj/effect/alien/resin/spike,
 /turf/open/gm/dirt,
@@ -15323,6 +16603,19 @@
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/gm/grass,
 /area/lv553/indoors/gated_community/residence_bunkhouse)
+"jtO" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	pixel_y = -7
+	},
+/obj/structure/disposalpipe/segment{
+	name = "water pipe";
+	dir = 8;
+	pixel_y = 8
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "jug" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/limb/arm/l_arm,
@@ -15655,6 +16948,22 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv553/indoors/hospital/research/toilets)
+"jEQ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/structure/machinery/light,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	dir = 10;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "jEV" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/light,
@@ -15732,6 +17041,17 @@
 /obj/structure/prop/dam/crane,
 /turf/open/asphalt/cement,
 /area/lv553/oob)
+"jGN" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/obj/structure/xenoautopsy/tank/broken,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor{
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "jGS" = (
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_sn_full_cap"
@@ -15741,6 +17061,13 @@
 	},
 /turf/open/gm/dirtgrassborder,
 /area/lv553/outdoors/bungalow_manager_exterior)
+"jHa" = (
+/obj/structure/window_frame/hangar,
+/obj/item/shard,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "jHe" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "bathroom door"
@@ -15958,6 +17285,16 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "freezerfloor"
+	},
+/area/lv553/oob)
+"jLC" = (
+/obj/structure/toilet{
+	dir = 8;
+	tag = "icon-toilet00 (WEST)"
+	},
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/prison{
+	icon_state = "floor_plate"
 	},
 /area/lv553/oob)
 "jLD" = (
@@ -16317,6 +17654,16 @@
 /obj/structure/machinery/light,
 /turf/open/floor/wood,
 /area/lv553/indoors/bungalow_manager)
+"jWY" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/effect/landmark/objective_landmark/far,
+/obj/item/ashtray/plastic{
+	pixel_y = 12
+	},
+/turf/open/floor{
+	icon_state = "dark2"
+	},
+/area/lv553/oob)
 "jXr" = (
 /obj/structure/sign/poster/ad{
 	pixel_x = 32
@@ -16340,6 +17687,39 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv553/outdoors/flooded_streets/west)
+"jYE" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/obj/structure/machinery/meter,
+/obj/structure/machinery/light,
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
+"jZd" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/machinery/disposal,
+/turf/open/floor{
+	dir = 6;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
+"jZe" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 1;
+	layer = 3.25
+	},
+/turf/open/floor{
+	icon_state = "dark2"
+	},
+/area/lv553/oob)
 "jZt" = (
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	density = 0;
@@ -16350,6 +17730,12 @@
 /turf/open/gm/dirt,
 /area/lv553/oob)
 "jZu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	layer = 2.5;
+	pixel_y = 1
+	},
 /turf/open/floor{
 	icon_state = "darkbluecorners2";
 	dir = 1
@@ -16549,6 +17935,19 @@
 	pixel_x = -17;
 	pixel_y = 29
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
+"kfK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c";
+	pixel_y = 0;
+	name = "pneumatic delivery system pipe"
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
 "kfU" = (
@@ -16709,6 +18108,14 @@
 /turf/open/floor/wood,
 /area/lv553/indoors/gated_community/director_of_coporate_relations)
 "kkm" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/structure/filingcabinet,
+/obj/item/folder/red,
+/obj/item/folder/black,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "darkblue2"
@@ -16829,9 +18236,7 @@
 	},
 /area/lv553/indoors/bungalow_manager)
 "kor" = (
-/obj/structure/machinery/power/geothermal{
-	fail_rate = 5
-	},
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/plating{
 	icon_state = "platebot"
 	},
@@ -16883,6 +18288,22 @@
 /obj/item/ammo_magazine/rifle/mar40,
 /turf/open/floor/interior/wood,
 /area/lv553/oob)
+"kpQ" = (
+/obj/structure/surface/table/almayer,
+/obj/item/newspaper{
+	pixel_y = 1;
+	name = "report on decreasing aquifer water levels m-7 yr-2182";
+	pixel_x = 7
+	},
+/obj/item/newspaper{
+	pixel_y = 1;
+	name = "report on unidentified materials in disposal systems m-7 yr-2182";
+	pixel_x = -7
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "kpV" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 4
@@ -16926,6 +18347,24 @@
 	},
 /turf/open/floor/interior/wood,
 /area/lv553/oob)
+"krA" = (
+/obj/structure/disposalpipe/junction{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
+"krI" = (
+/obj/structure/machinery/constructable_frame{
+	icon_state = "box_1"
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "0-2"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "krL" = (
 /obj/item/trash/cheesie{
 	pixel_x = 12;
@@ -16934,6 +18373,13 @@
 /obj/item/trash/barcardine,
 /turf/open/floor{
 	icon_state = "white"
+	},
+/area/lv553/oob)
+"krW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/shard,
+/turf/open/floor{
+	icon_state = "dark2"
 	},
 /area/lv553/oob)
 "ksa" = (
@@ -16977,6 +18423,11 @@
 	dir = 8;
 	icon_state = "barber"
 	},
+/area/lv553/oob)
+"ksV" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/ashtray/plastic,
+/turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
 "ksZ" = (
 /obj/structure/machinery/colony_floodlight,
@@ -17047,12 +18498,15 @@
 	},
 /area/lv553/indoors/hospital/storage_laundyroom_and_breakroom)
 "kvZ" = (
-/obj/structure/machinery/power/monitor{
-	name = "Main Power Grid Monitoring";
-	layer = 2.99
+/obj/structure/machinery/photocopier,
+/obj/effect/landmark/objective_landmark/medium,
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (WEST)"
 	},
 /turf/open/floor{
-	icon_state = "dark"
+	dir = 1;
+	icon_state = "darkblue2"
 	},
 /area/lv553/oob)
 "kwb" = (
@@ -17261,6 +18715,7 @@
 /obj/structure/curtain/medical{
 	pixel_y = 32
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "darkblue2"
@@ -17333,6 +18788,28 @@
 "kGx" = (
 /turf/closed/wall,
 /area/lv553/outdoors/hospital/break_garden)
+"kGP" = (
+/obj/structure/barricade/wooden{
+	dir = 1;
+	layer = 3.1;
+	pixel_y = 17
+	},
+/turf/open/floor{
+	icon_state = "dark2"
+	},
+/area/lv553/oob)
+"kGT" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/obj/structure/sign/nosmoking_2{
+	pixel_x = -31
+	},
+/turf/open/floor{
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "kGW" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
@@ -17586,6 +19063,21 @@
 	},
 /turf/open/gm/grass,
 /area/lv553/oob)
+"kPp" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c";
+	pixel_x = 5;
+	pixel_y = 6;
+	name = "pneumatic delivery system pipe"
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "2-8";
+	pixel_y = -7;
+	pixel_x = -8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "kPW" = (
 /obj/structure/ladder{
 	height = 1;
@@ -17661,7 +19153,8 @@
 "kQN" = (
 /obj/structure/prop/almayer/computers/sensor_computer1,
 /turf/open/floor{
-	icon_state = "dark"
+	dir = 9;
+	icon_state = "darkblue2"
 	},
 /area/lv553/oob)
 "kRu" = (
@@ -17684,6 +19177,14 @@
 /obj/item/clothing/under/liaison_suit/outing,
 /turf/open/floor,
 /area/lv553/indoors/bungalow_manager)
+"kSb" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/paper,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "kSr" = (
 /turf/open/gm/dirtgrassborder,
 /area/lv553/outdoors/uscm_garrison_exterior/entrance)
@@ -18050,6 +19551,24 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
+"lcG" = (
+/obj/item/prop{
+	color = "#FF0000";
+	icon = 'icons/obj/pipes/power_cond_white.dmi';
+	icon_state = '1-2';
+	name = "cable";
+	layer = 2.8
+	},
+/obj/item/prop{
+	color = "#FF0000";
+	icon = 'icons/obj/pipes/power_cond_white.dmi';
+	icon_state = '0-1';
+	name = "cable";
+	layer = 2.8
+	},
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "ldi" = (
 /obj/structure/surface/table,
 /obj/structure/window{
@@ -18068,6 +19587,77 @@
 	},
 /turf/open/floor,
 /area/lv553/indoors/flooded/east_apartments)
+"ldw" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/weapon/gun/pistol/holdout/flashlight{
+	current_mag = null;
+	pixel_x = -13;
+	pixel_y = 12
+	},
+/obj/item/weapon/gun/pistol/holdout/flashlight{
+	current_mag = null;
+	pixel_x = -13;
+	pixel_y = 8
+	},
+/obj/item/weapon/gun/pistol/holdout/flashlight{
+	current_mag = null;
+	pixel_x = -13;
+	pixel_y = 3
+	},
+/obj/item/weapon/gun/pistol/holdout/flashlight{
+	current_mag = null;
+	pixel_x = -13;
+	pixel_y = -2
+	},
+/obj/item/weapon/gun/pistol/holdout/flashlight{
+	current_mag = null;
+	pixel_x = -13;
+	pixel_y = -7
+	},
+/obj/item/ammo_magazine/pistol/holdout{
+	pixel_y = 17;
+	pixel_x = 2
+	},
+/obj/item/ammo_magazine/pistol/holdout{
+	pixel_y = 13;
+	pixel_x = 2
+	},
+/obj/item/ammo_magazine/pistol/holdout{
+	pixel_y = 9;
+	pixel_x = 2
+	},
+/obj/item/ammo_magazine/pistol/holdout{
+	pixel_y = 5;
+	pixel_x = 2
+	},
+/obj/item/ammo_magazine/pistol/holdout{
+	pixel_y = 0;
+	pixel_x = 2
+	},
+/obj/item/ammo_magazine/pistol/holdout{
+	pixel_y = 17;
+	pixel_x = 9
+	},
+/obj/item/ammo_magazine/pistol/holdout{
+	pixel_y = 13;
+	pixel_x = 9
+	},
+/obj/item/ammo_magazine/pistol/holdout{
+	pixel_y = 9;
+	pixel_x = 9
+	},
+/obj/item/ammo_magazine/pistol/holdout{
+	pixel_y = 5;
+	pixel_x = 9
+	},
+/obj/item/ammo_magazine/pistol/holdout{
+	pixel_y = 0;
+	pixel_x = 9
+	},
+/turf/open/floor{
+	icon_state = "dark2"
+	},
+/area/lv553/oob)
 "ldT" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
@@ -18091,6 +19681,19 @@
 /obj/item/shard,
 /turf/open/floor/wood,
 /area/lv553/indoors/bungalow_manager)
+"leN" = (
+/obj/item/stack/sheet/metal,
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "0-2"
+	},
+/obj/effect/landmark/objective_landmark/far,
+/obj/item/stack/cable_coil,
+/obj/effect/spawner/gibspawner/robot,
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "lfk" = (
 /obj/structure/window{
 	dir = 4
@@ -18333,8 +19936,14 @@
 /turf/open/gm/grass,
 /area/lv553/outdoors/colony_streets/south)
 "lmb" = (
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
+/obj/item/ammo_magazine/pistol/holdout{
+	current_rounds = 0
+	},
+/obj/item/weapon/gun/pistol/holdout/flashlight{
+	current_mag = null
+	},
+/turf/open/floor{
+	icon_state = "dark2"
 	},
 /area/lv553/oob)
 "lmi" = (
@@ -18377,6 +19986,17 @@
 	icon_state = "whitegreen"
 	},
 /area/lv553/indoors/hospital/storage_laundyroom_and_breakroom)
+"lnv" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "lnK" = (
 /obj/item/trash/cigbutt,
 /obj/effect/decal/cleanable/blood/xeno,
@@ -18461,6 +20081,7 @@
 	icon_state = "W";
 	layer = 3.3
 	},
+/obj/structure/machinery/light,
 /turf/open/floor{
 	dir = 10;
 	icon_state = "darkblue2"
@@ -18518,6 +20139,11 @@
 /turf/open/asphalt/cement,
 /area/lv553/oob)
 "lrd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
 /turf/open/floor{
 	dir = 4;
 	icon_state = "darkblue2"
@@ -18537,6 +20163,7 @@
 	dir = 8;
 	tag = "icon-toilet00 (WEST)"
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -18819,9 +20446,20 @@
 	},
 /area/lv553/oob)
 "lBl" = (
-/turf/open/floor{
-	icon_state = "darkbluecorners2";
+/obj/structure/machinery/light{
 	dir = 4
+	},
+/obj/structure/surface/table/almayer,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 8
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "darkblue2"
 	},
 /area/lv553/oob)
 "lBr" = (
@@ -19106,6 +20744,16 @@
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/wood,
 /area/lv553/oob)
+"lJu" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/obj/structure/machinery/light,
+/turf/open/floor{
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "lJx" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -14;
@@ -19230,6 +20878,28 @@
 	icon_state = "barber"
 	},
 /area/lv553/oob)
+"lOe" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/prop/almayer/computer{
+	dir = 8;
+	pixel_y = 9;
+	name = "colony disposals computer"
+	},
+/obj/structure/machinery/prop/almayer/computer{
+	dir = 8;
+	pixel_y = -6;
+	name = "colony systems pressurisation computer";
+	icon_state = "research"
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "lOo" = (
 /turf/open/floor/strata{
 	icon_state = "floor2"
@@ -19250,6 +20920,17 @@
 	icon_state = "whiteblue"
 	},
 /area/lv553/indoors/hospital/research/reception)
+"lOV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/structure/machinery/vending/cigarette/colony,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "lOW" = (
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor{
@@ -19281,6 +20962,15 @@
 "lPl" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /turf/open/floor/wood,
+/area/lv553/oob)
+"lPr" = (
+/obj/structure/window_frame/hangar,
+/obj/effect/spawner/gibspawner/xeno,
+/obj/item/shard,
+/obj/item/shard,
+/turf/open/floor{
+	icon_state = "dark2"
+	},
 /area/lv553/oob)
 "lPt" = (
 /turf/open/gm/grass,
@@ -19330,6 +21020,20 @@
 /obj/structure/flora/bush/ausbushes/palebush,
 /turf/open/gm/grass,
 /area/lv553/outdoors/flooded_streets/east)
+"lRB" = (
+/obj/structure/disposalpipe/segment{
+	pixel_x = -7
+	},
+/obj/structure/disposalpipe/segment{
+	name = "waterpipe";
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "lRF" = (
 /obj/item/stool,
 /turf/open/floor/wood,
@@ -19442,13 +21146,9 @@
 "lWi" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
-	pixel_y = 0;
-	pixel_x = -15
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
 	pixel_y = 0
 	},
+/obj/item/trash/cigbutt,
 /turf/open/floor{
 	icon_state = "darkblue2"
 	},
@@ -19657,6 +21357,32 @@
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
+	},
+/area/lv553/oob)
+"mcP" = (
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor{
+	icon_state = "dark"
 	},
 /area/lv553/oob)
 "mcS" = (
@@ -19875,6 +21601,15 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv553/outdoors/colony_streets/east)
+"miu" = (
+/obj/structure/barricade/wooden{
+	dir = 4;
+	layer = 5.3
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "mjg" = (
 /obj/structure/closet/secure_closet/freezer/fridge/groceries,
 /turf/open/floor{
@@ -19931,6 +21666,7 @@
 /area/lv553/outdoors/colony_streets/east)
 "mlh" = (
 /obj/structure/machinery/telecomms/broadcaster,
+/obj/structure/cable/heavyduty,
 /turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
 "mly" = (
@@ -20145,6 +21881,17 @@
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/gm/grass,
 /area/lv553/outdoors/colony_streets/east)
+"mrA" = (
+/obj/structure/airlock_assembly{
+	dir = 4
+	},
+/obj/item/stack/cable_coil,
+/obj/effect/spawner/gibspawner/robot,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor{
+	icon_state = "dark2"
+	},
+/area/lv553/oob)
 "mrY" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -20305,6 +22052,16 @@
 	icon_state = "darkred2"
 	},
 /area/lv553/indoors/uscm_garrison/armory)
+"muW" = (
+/obj/structure/barricade/wooden{
+	dir = 1;
+	layer = 3.1;
+	pixel_y = 17
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "mvt" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/packaged_burger{
@@ -20357,6 +22114,26 @@
 /obj/item/stool,
 /turf/open/floor/wood,
 /area/lv553/indoors/welcome_center/lobby)
+"mwP" = (
+/obj/structure/closet/secure_closet/personal{
+	pixel_x = -8
+	},
+/obj/structure/closet/secure_closet/personal{
+	pixel_x = 8
+	},
+/obj/item/storage/toolbox/mechanical{
+	pixel_y = 5
+	},
+/obj/item/storage/toolbox/electrical{
+	pixel_y = 0
+	},
+/obj/item/storage/toolbox/emergency{
+	pixel_y = -6
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "mxs" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -20426,11 +22203,51 @@
 "mzr" = (
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/clf_house)
+"mzz" = (
+/obj/item/prop{
+	color = "#FF0000";
+	icon = 'icons/obj/pipes/power_cond_white.dmi';
+	icon_state = '1-2';
+	name = "cable";
+	layer = 2.8
+	},
+/obj/item/prop{
+	color = "#FF0000";
+	icon = 'icons/obj/pipes/power_cond_white.dmi';
+	icon_state = '0-1';
+	name = "cable";
+	layer = 2.8
+	},
+/obj/structure/machinery/vending/snack/packaged,
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "mzV" = (
 /turf/open/gm/dirtgrassborder{
 	icon_state = "grassdirt_corner"
 	},
 /area/lv553/outdoors/bungalow_manager_exterior)
+"mAe" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
+"mAq" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "mAz" = (
 /obj/structure/machinery/door/poddoor/almayer/locked,
 /turf/open/gm/dirtgrassborder{
@@ -20471,6 +22288,18 @@
 	},
 /turf/open/gm/grass,
 /area/lv553/landing_zone_1)
+"mBL" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	layer = 2.5;
+	pixel_y = 1
+	},
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor{
+	icon_state = "darkbluecorners2";
+	dir = 1
+	},
+/area/lv553/oob)
 "mBS" = (
 /obj/item/trash/chips,
 /turf/open/gm/river,
@@ -20522,19 +22351,16 @@
 /turf/open/gm/grass,
 /area/lv553/outdoors/hospital/road_north_west)
 "mDH" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 8;
-	name = "\improper Operations door";
-	welded = 1;
-	icon_state = "door_welded"
+/obj/structure/disposalpipe/segment{
+	name = "pneumatic delivery system pipe";
+	pixel_y = 6;
+	dir = 8
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = 0
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8";
+	pixel_y = -7
 	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
+/turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
 "mDK" = (
 /obj/item/stack/sheet/metal,
@@ -20671,18 +22497,21 @@
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/prop/almayer/computer{
 	dir = 8;
-	pixel_y = 8;
+	pixel_y = 9;
 	icon_state = "demo_sim";
-	layer = 3.01
+	layer = 3.03;
+	name = "disposals computer"
 	},
 /obj/structure/machinery/prop/almayer/computer{
 	dir = 8;
-	pixel_y = -6;
+	pixel_y = -5;
 	icon_state = "shuttle";
-	layer = 3.01
+	layer = 3.04;
+	name = "colony power control computer"
 	},
 /turf/open/floor{
-	icon_state = "dark"
+	dir = 4;
+	icon_state = "darkblue2"
 	},
 /area/lv553/oob)
 "mGe" = (
@@ -20782,9 +22611,30 @@
 	},
 /turf/open/gm/river,
 /area/lv553/outdoors/bungalow_manager_exterior)
+"mJu" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/item/trash/cigbutt/cigarbutt,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "mJv" = (
 /turf/open/asphalt/cement,
 /area/lv553/indoors/flooded/west_apartments)
+"mJH" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/item/trash/cigbutt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "mJK" = (
 /obj/structure/surface/table,
 /obj/item/spacecash/c10{
@@ -20853,6 +22703,7 @@
 	icon_state = "S";
 	pixel_y = 0
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "darkblue2"
 	},
@@ -21098,6 +22949,17 @@
 	},
 /turf/open/asphalt/cement,
 /area/lv553/outdoors/bungalow_manager_exterior)
+"mSR" = (
+/obj/item/trash/cigbutt/bcigbutt{
+	pixel_y = 9;
+	pixel_x = -1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "mTc" = (
 /obj/structure/disposalpipe/segment{
 	name = "steam pipe";
@@ -21237,7 +23099,18 @@
 /turf/open/asphalt/cement,
 /area/lv553/indoors/uscm_garrison/io_office)
 "mZm" = (
-/obj/structure/platform_decoration/strata/metal,
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c";
+	pixel_y = -7;
+	pixel_x = 7
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c";
+	pixel_y = 8;
+	pixel_x = -8
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
 "mZG" = (
@@ -21249,6 +23122,22 @@
 	icon_state = "dark"
 	},
 /area/lv553/indoors/uscm_garrison/io_office)
+"mZO" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/microwave,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "nax" = (
 /obj/structure/ladder{
 	height = 1;
@@ -21431,7 +23320,7 @@
 	dir = 1;
 	tag = "icon-tube1 (WEST)"
 	},
-/obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -21482,6 +23371,10 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass,
 /area/lv553/landing_zone_1)
+"niM" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall/r_wall,
+/area/lv553/oob)
 "njc" = (
 /obj/structure/machinery/door/poddoor/almayer/locked,
 /turf/open/gm/dirtgrassborder{
@@ -21516,6 +23409,17 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "vault"
+	},
+/area/lv553/oob)
+"njQ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_y = 0
+	},
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor{
+	icon_state = "darkbluecorners2";
+	dir = 8
 	},
 /area/lv553/oob)
 "nkO" = (
@@ -21613,6 +23517,15 @@
 	dir = 4
 	},
 /area/lv553/outdoors/hospital/break_garden)
+"nmW" = (
+/obj/structure/window_frame/hangar,
+/obj/item/shard,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "nnX" = (
 /obj/item/shard,
 /obj/structure/window_frame/colony,
@@ -21637,9 +23550,31 @@
 	icon_state = "whitegreen"
 	},
 /area/lv553/indoors/hospital/reception)
+"nop" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/obj/structure/cable/heavyduty,
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "nos" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
 /turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
+"noS" = (
+/obj/effect/landmark/xeno_spawn,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkblue2"
+	},
 /area/lv553/oob)
 "npa" = (
 /obj/item/clothing/head/soft/trucker,
@@ -21759,12 +23694,27 @@
 /area/lv553/oob)
 "nsw" = (
 /obj/structure/largecrate/random/barrel,
+/obj/structure/disposalpipe/segment{
+	name = "pneumatic delivery system pipe";
+	pixel_y = 0;
+	dir = 8
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
 "nsy" = (
 /obj/structure/surface/rack,
 /obj/item/toy/blink,
 /turf/open/asphalt/cement,
+/area/lv553/oob)
+"nsA" = (
+/obj/structure/machinery/meter{
+	pixel_y = 1
+	},
+/obj/structure/disposalpipe/segment{
+	name = "waterpipe";
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
 "nsI" = (
 /obj/structure/cargo_container{
@@ -21779,6 +23729,12 @@
 "nsP" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor,
+/area/lv553/oob)
+"ntQ" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/lv553/oob)
 "ntX" = (
 /obj/item/trash/chunk,
@@ -21887,6 +23843,15 @@
 	icon_state = "wood-broken3"
 	},
 /area/lv553/oob)
+"nxP" = (
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (WEST)"
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "nxR" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "bunkroom door"
@@ -21901,6 +23866,14 @@
 	name = "bedroom door"
 	},
 /turf/open/floor/wood,
+/area/lv553/oob)
+"nyi" = (
+/obj/item/trash/cigbutt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/oob)
 "nyj" = (
 /obj/item/trash/waffles,
@@ -21958,6 +23931,13 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv553/indoors/lone_buildings/gas_n_gear)
+"nzu" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/turf/closed/wall/r_wall,
+/area/lv553/oob)
 "nAs" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/gm/dirtgrassborder,
@@ -22087,6 +24067,17 @@
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/gm/dirt,
 /area/lv553/outdoors/colony_streets/east)
+"nDf" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "nDg" = (
 /obj/structure/flora/bush/ausbushes/palebush,
 /turf/open/gm/grass,
@@ -22219,6 +24210,15 @@
 	icon_state = "dark"
 	},
 /area/lv553/indoors/aerospace_control)
+"nGg" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 1;
+	name = "\improper Operations Security door"
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "nGi" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -22236,6 +24236,33 @@
 	icon_state = "whitegreen"
 	},
 /area/lv553/indoors/hospital/storage_laundyroom_and_breakroom)
+"nGC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/item/trash/cigbutt,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
+"nGG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt/cigarbutt,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "nGS" = (
 /obj/structure/desertdam/decals/road_stop{
 	icon_state = "stop_decal5";
@@ -22319,6 +24346,12 @@
 /turf/open/gm/dirt,
 /area/lv553/oob)
 "nKb" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_y = -1;
+	pixel_x = 1
+	},
+/obj/item/shard,
 /turf/open/floor{
 	icon_state = "darkbluecorners2"
 	},
@@ -22344,6 +24377,20 @@
 	icon_state = "vault"
 	},
 /area/lv553/indoors/flooded/weymart)
+"nKD" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4;
+	layer = 3.25
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt/bcigbutt{
+	pixel_y = 7;
+	pixel_x = -1
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "nKG" = (
 /obj/structure/bed,
 /obj/item/bedsheet/captain,
@@ -22439,8 +24486,13 @@
 /turf/open/floor/wood,
 /area/lv553/outdoors/bungalow_manager_exterior)
 "nOd" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_y = 32
+/obj/structure/disposalpipe/segment{
+	name = "waterpipe";
+	dir = 8
+	},
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (WEST)"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
@@ -22779,6 +24831,56 @@
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/gm/dirt,
 /area/lv553/outdoors/colony_streets/east)
+"nWZ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/structure/surface/table/almayer,
+/obj/item/toy/trading_card{
+	pixel_y = 9;
+	pixel_x = -8
+	},
+/obj/item/toy/trading_card{
+	pixel_y = 9;
+	pixel_x = -4
+	},
+/obj/item/toy/trading_card{
+	pixel_y = 9
+	},
+/obj/item/toy/trading_card{
+	pixel_y = 9;
+	pixel_x = 4
+	},
+/obj/item/toy/trading_card{
+	pixel_y = 9;
+	pixel_x = 8
+	},
+/obj/item/toy/trading_card{
+	pixel_y = -6;
+	pixel_x = 8
+	},
+/obj/item/toy/trading_card{
+	pixel_y = -6;
+	pixel_x = 4
+	},
+/obj/item/toy/trading_card{
+	pixel_y = -6
+	},
+/obj/item/toy/trading_card{
+	pixel_y = -6;
+	pixel_x = -4
+	},
+/obj/item/toy/trading_card{
+	pixel_y = -6;
+	pixel_x = -8
+	},
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "nXf" = (
 /obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor/wood,
@@ -23130,6 +25232,17 @@
 	},
 /turf/open/floor/interior/wood,
 /area/lv553/oob)
+"ogG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "ogU" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/flora/bush/desert{
@@ -23479,6 +25592,19 @@
 /obj/structure/largecrate/random/case,
 /turf/open/gm/dirtgrassborder,
 /area/lv553/oob)
+"osk" = (
+/obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/far,
+/obj/item/folder/yellow,
+/obj/item/folder/black,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/turf/open/floor{
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "osu" = (
 /obj/item/trash/hotdog,
 /obj/item/trash/cigbutt/cigarbutt,
@@ -23531,6 +25657,18 @@
 	icon_state = "white"
 	},
 /area/lv553/indoors/lone_buildings/gas_n_gear)
+"osT" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "osY" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/tool/kitchen/utensil/pspoon{
@@ -23568,6 +25706,21 @@
 /obj/structure/surface/table/holotable,
 /turf/open/floor{
 	icon_state = "asteroid"
+	},
+/area/lv553/oob)
+"oui" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/item/trash/cigbutt/cigarbutt{
+	pixel_y = 11;
+	pixel_x = 3
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkblue2"
 	},
 /area/lv553/oob)
 "ouq" = (
@@ -23826,6 +25979,11 @@
 	icon_state = "white"
 	},
 /area/lv553/indoors/hospital/research/offices)
+"ozX" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/machinery/meter,
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "oAG" = (
 /obj/structure/toilet{
 	tag = "icon-toilet00 (WEST)"
@@ -23967,6 +26125,18 @@
 	pixel_y = 1
 	},
 /obj/structure/surface/table/almayer,
+/obj/item/ashtray/plastic{
+	pixel_x = -1
+	},
+/obj/item/trash/cigbutt/cigarbutt{
+	pixel_y = 11;
+	pixel_x = 6
+	},
+/obj/item/trash/cigbutt/cigarbutt{
+	pixel_y = 11;
+	pixel_x = 4
+	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "darkblue2"
@@ -24024,6 +26194,15 @@
 /obj/item/shard,
 /turf/open/gm/river,
 /area/lv553/outdoors/flooded_streets/west)
+"oFi" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_magazine/pistol/holdout{
+	current_rounds = 0
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "oFl" = (
 /turf/open/asphalt/cement,
 /area/lv553/outdoors/flooded_streets/waste_treatment)
@@ -24355,6 +26534,17 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv553/indoors/welcome_center/canteen)
+"oNP" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/item/trash/cigbutt,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "oNV" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/snacks/boiledrice,
@@ -24371,6 +26561,10 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
+/obj/structure/sign/poster/pinup{
+	pixel_y = 32
+	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "darkblue2"
@@ -24435,6 +26629,17 @@
 "oOE" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan3"
+	},
+/area/lv553/oob)
+"oOK" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_y = 0
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "darkbluecorners2";
+	dir = 8
 	},
 /area/lv553/oob)
 "oOV" = (
@@ -24544,6 +26749,10 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	layer = 3.3
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 8
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -24859,6 +27068,10 @@
 	pixel_x = 15;
 	pixel_y = -8
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
 "pay" = (
@@ -24905,6 +27118,7 @@
 "pbx" = (
 /obj/structure/filingcabinet,
 /obj/item/folder/blue,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/wood,
 /area/lv553/indoors/hospital/research/offices)
 "pbC" = (
@@ -24913,6 +27127,25 @@
 	},
 /turf/open/gm/grass,
 /area/lv553/indoors/bungalow_manager)
+"pcf" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/surface/table/almayer,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/item/paper_bin{
+	pixel_y = 5
+	},
+/obj/item/tool/pen,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "pcN" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
@@ -24956,9 +27189,9 @@
 	},
 /area/lv553/indoors/welcome_center/lobby)
 "peo" = (
-/obj/structure/bed/chair,
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
+/obj/item/device/walkman,
+/turf/open/floor{
+	icon_state = "dark"
 	},
 /area/lv553/oob)
 "peI" = (
@@ -25058,6 +27291,16 @@
 	icon_state = "whitegreen"
 	},
 /area/lv553/indoors/hospital/outpatients_and_icu)
+"pgr" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 1;
+	layer = 3.25
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "dark2"
+	},
+/area/lv553/oob)
 "pgA" = (
 /obj/structure/machinery/door/window{
 	dir = 1;
@@ -25314,6 +27557,18 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/army_surplus)
+"pls" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4;
+	layer = 3.25
+	},
+/obj/item/trash/cigbutt{
+	pixel_y = 7
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "plu" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/gm/dirt,
@@ -25534,11 +27789,33 @@
 	icon_state = "white"
 	},
 /area/lv553/indoors/hospital/research/floor)
+"pqN" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "0-2"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "pqR" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/storage/pouch/flare,
 /turf/open/gm/dirt,
 /area/lv553/landing_zone_2)
+"pqS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/constructable_frame,
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "0-2"
+	},
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "pqT" = (
 /obj/structure/platform/strata/metal{
 	dir = 4
@@ -25591,6 +27868,13 @@
 	pixel_y = 30
 	},
 /turf/open/gm/dirt,
+/area/lv553/oob)
+"psH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/toy/trading_card,
+/turf/open/floor{
+	icon_state = "dark2"
+	},
 /area/lv553/oob)
 "psJ" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -25924,6 +28208,19 @@
 	},
 /turf/open/floor/plating,
 /area/lv553/oob)
+"pBB" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/faxmachine{
+	pixel_y = 1
+	},
+/obj/item/newspaper{
+	pixel_y = 0;
+	name = "half-finished correspondence on water treatment facilities m-7 yr-2182"
+	},
+/turf/open/floor{
+	icon_state = "dark2"
+	},
+/area/lv553/oob)
 "pBJ" = (
 /obj/structure/machinery/light,
 /turf/open/asphalt/cement,
@@ -25968,6 +28265,19 @@
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
 	icon_state = "grassdirt_corner2"
+	},
+/area/lv553/oob)
+"pDc" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1;
+	pixel_x = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt,
+/turf/open/floor{
+	icon_state = "darkbluecorners2";
+	dir = 4
 	},
 /area/lv553/oob)
 "pDF" = (
@@ -26044,6 +28354,18 @@
 	dir = 10
 	},
 /area/lv553/indoors/uscm_garrison/garrison_bunks)
+"pFD" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt/bcigbutt,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "pFK" = (
 /obj/structure/sink{
 	pixel_x = -5;
@@ -26062,6 +28384,20 @@
 /turf/open/floor{
 	dir = 8;
 	icon_state = "barber"
+	},
+/area/lv553/oob)
+"pHs" = (
+/obj/structure/window{
+	dir = 4
+	},
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (WEST)"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt,
+/turf/open/floor{
+	icon_state = "dark"
 	},
 /area/lv553/oob)
 "pHv" = (
@@ -26083,6 +28419,20 @@
 	icon_state = "beachcorner"
 	},
 /area/lv553/outdoors/flooded_streets/west)
+"pId" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/nosmoking_2{
+	pixel_x = -31
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "pIC" = (
 /obj/structure/bed/sofa/south/grey/right{
 	pixel_y = 8
@@ -26173,6 +28523,22 @@
 	icon_state = "white"
 	},
 /area/lv553/indoors/lone_buildings/gas_n_gear)
+"pKP" = (
+/obj/structure/disposalpipe/segment{
+	name = "pneumatic delivery system pipe";
+	pixel_y = 0;
+	pixel_x = 5
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2";
+	pixel_x = -8
+	},
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (WEST)"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "pKZ" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 10
@@ -26393,6 +28759,10 @@
 /obj/structure/platform/strata/metal{
 	dir = 8
 	},
+/obj/structure/disposalpipe/segment{
+	name = "pneumatic delivery system pipe";
+	pixel_y = 0
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
 "pQg" = (
@@ -26481,6 +28851,17 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/recruiter_house)
+"pSr" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "pSv" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 8;
@@ -27047,13 +29428,8 @@
 /turf/open/gm/grass,
 /area/lv553/outdoors/gated_community_exterior)
 "qgu" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	pixel_y = -1;
-	pixel_x = -13
-	},
 /turf/open/floor{
-	icon_state = "darkbluecorners2"
+	icon_state = "dark2"
 	},
 /area/lv553/oob)
 "qgv" = (
@@ -27218,6 +29594,23 @@
 "qkl" = (
 /turf/closed/wall,
 /area/lv553/indoors/hospital/storage_laundyroom_and_breakroom)
+"qkr" = (
+/obj/structure/surface/table/almayer,
+/obj/item/newspaper{
+	pixel_y = 1;
+	name = "report on accomodations for increasing company activity m-7 yr-2182";
+	pixel_x = 7
+	},
+/obj/item/newspaper{
+	pixel_y = 1;
+	name = "report on gang-sabotaged telecommunications m-7 yr-2182";
+	pixel_x = -7
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "qky" = (
 /obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor{
@@ -27346,9 +29739,18 @@
 /turf/open/gm/dirt,
 /area/lv553/oob)
 "qoI" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/machinery/cm_vending/sorted/walkman,
+/turf/open/floor{
+	dir = 6;
+	icon_state = "darkblue2"
 	},
 /area/lv553/oob)
 "qoO" = (
@@ -27503,6 +29905,14 @@
 "qug" = (
 /turf/closed/wall/r_wall,
 /area/lv553/outdoors/flooded_streets/west)
+"quu" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/xenoautopsy/jar_shelf{
+	pixel_y = 14
+	},
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "quK" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/gm/dirt,
@@ -27579,6 +29989,20 @@
 	icon_state = "wood-broken3"
 	},
 /area/lv553/indoors/flooded/west_apartments)
+"qwY" = (
+/obj/structure/disposalpipe/segment{
+	pixel_x = -7
+	},
+/obj/structure/disposalpipe/segment{
+	name = "water pipe";
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "qxb" = (
 /turf/closed/wall,
 /area/lv553/indoors/flooded/east_apartments)
@@ -27587,7 +30011,8 @@
 	layer = 3.25
 	},
 /turf/open/floor{
-	icon_state = "dark"
+	dir = 8;
+	icon_state = "darkblue2"
 	},
 /area/lv553/oob)
 "qxi" = (
@@ -27693,15 +30118,19 @@
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/prop/almayer/computer{
 	dir = 8;
-	pixel_y = 8;
-	icon_state = "id"
+	pixel_y = 9;
+	icon_state = "id";
+	name = "wiring distribution computer";
+	layer = 3.01
 	},
 /obj/structure/machinery/prop/almayer/computer{
 	dir = 8;
-	pixel_y = -6
+	pixel_y = -5;
+	layer = 3.02
 	},
 /turf/open/floor{
-	icon_state = "dark"
+	dir = 4;
+	icon_state = "darkblue2"
 	},
 /area/lv553/oob)
 "qyC" = (
@@ -27862,6 +30291,17 @@
 /obj/effect/landmark/static_comms/net_two,
 /turf/open/asphalt/cement,
 /area/lv553/oob)
+"qCW" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light,
+/turf/open/floor{
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "qDs" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/asphalt/cement,
@@ -28013,12 +30453,46 @@
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
+"qJH" = (
+/obj/item/prop{
+	color = "#FF0000";
+	icon = 'icons/obj/pipes/power_cond_white.dmi';
+	icon_state = '1-2';
+	name = "cable";
+	layer = 2.8
+	},
+/obj/item/prop{
+	color = "#FF0000";
+	icon = 'icons/obj/pipes/power_cond_white.dmi';
+	icon_state = '0-1';
+	name = "cable";
+	layer = 2.8
+	},
+/obj/structure/machinery/vending/cola,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "qJR" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8
 	},
 /turf/open/gm/river,
 /area/lv553/outdoors/bungalow_manager_exterior)
+"qKe" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor{
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "qKg" = (
 /obj/structure/sign/safety/bathwomens{
 	pixel_x = -17
@@ -28061,6 +30535,15 @@
 	pixel_y = 1
 	},
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/prop/almayer/computer{
+	pixel_x = -9;
+	name = "colony sewage and gas computer"
+	},
+/obj/structure/machinery/prop/almayer/computer{
+	icon_state = "atmos";
+	pixel_x = 8;
+	name = "colony water distribution computer"
+	},
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkblue2"
@@ -28216,6 +30699,11 @@
 	layer = 3.3
 	},
 /obj/structure/surface/table/almayer,
+/obj/item/paper_bin{
+	pixel_y = 4
+	},
+/obj/item/tool/pen,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "darkblue2"
@@ -28508,6 +30996,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/liq_r_mart)
+"qYP" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "qYT" = (
 /obj/structure/surface/rack,
 /obj/item/storage/box/wy_mre,
@@ -28600,6 +31096,24 @@
 	pixel_y = -1
 	},
 /turf/open/floor/wood,
+/area/lv553/oob)
+"rbK" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/item/trash/hotdog,
+/obj/item/trash/burger{
+	pixel_y = -6
+	},
+/obj/item/trash/barcardine,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "darkblue2"
+	},
 /area/lv553/oob)
 "rci" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
@@ -28792,6 +31306,13 @@
 /area/lv553/indoors/hospital/operating_rooms)
 "riW" = (
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/faxmachine{
+	pixel_y = 0
+	},
+/obj/item/newspaper{
+	pixel_y = 1;
+	name = "half-finished correspondence on telecommunications mainframe maintenance m-7 yr-2182"
+	},
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -28828,6 +31349,17 @@
 	},
 /turf/open/floor,
 /area/lv553/indoors/welcome_center/lobby)
+"rjP" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/structure/machinery/vending/cola,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "rjV" = (
 /turf/closed/wall,
 /area/lv553/indoors/uscm_garrison/io_office)
@@ -28872,6 +31404,16 @@
 	pixel_y = 6
 	},
 /turf/open/floor/wood,
+/area/lv553/oob)
+"rli" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt/cigarbutt,
+/turf/open/floor{
+	icon_state = "dark2"
+	},
 /area/lv553/oob)
 "rlo" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -28981,6 +31523,18 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
+"roB" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "roO" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 1;
@@ -29032,6 +31586,13 @@
 	icon_state = "barber"
 	},
 /area/lv553/indoors/lone_buildings/weyyu_hostel)
+"rsp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "rsN" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 1;
@@ -29049,6 +31610,18 @@
 	pixel_y = -1
 	},
 /turf/open/floor/wood,
+/area/lv553/oob)
+"rsP" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/pistol/holdout/flashlight{
+	current_mag = null
+	},
+/obj/item/ammo_magazine/pistol/holdout{
+	current_rounds = 0
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/oob)
 "rsQ" = (
 /obj/structure/platform/strata/metal,
@@ -29555,6 +32128,18 @@
 	icon_state = "white"
 	},
 /area/lv553/indoors/hospital/outpatients_and_icu)
+"rII" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	layer = 2.5;
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "darkbluecorners2";
+	dir = 1
+	},
+/area/lv553/oob)
 "rIK" = (
 /obj/structure/prop/dam/truck{
 	dir = 1
@@ -29729,6 +32314,28 @@
 	},
 /turf/open/floor/interior/wood,
 /area/lv553/oob)
+"rLR" = (
+/obj/structure/surface/table/almayer,
+/obj/item/newspaper{
+	pixel_y = 1;
+	name = "Isaacs Lament marshal's wanted list m-7 yr-2182";
+	pixel_x = -7
+	},
+/obj/item/newspaper{
+	pixel_y = 1;
+	name = "suspicious persons list m-7 yr-2182";
+	pixel_x = 7
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_y = 0
+	},
+/turf/open/floor{
+	icon_state = "darkbluecorners2";
+	dir = 8
+	},
+/area/lv553/oob)
 "rMf" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
@@ -29824,6 +32431,11 @@
 "rOS" = (
 /turf/open/gm/dirtgrassborder,
 /area/lv553/outdoors/colony_streets/southwest)
+"rPj" = (
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt/cigarbutt,
+/turf/open/asphalt/cement,
+/area/lv553/outdoors/colony_streets/southwest)
 "rPk" = (
 /obj/structure/bookcase,
 /obj/item/weapon/gun/rifle/type71/carbine{
@@ -29859,6 +32471,7 @@
 "rPY" = (
 /obj/structure/surface/table,
 /obj/item/stock_parts/scanning_module/adv,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -29939,6 +32552,20 @@
 	},
 /turf/open/floor/strata{
 	icon_state = "floor2"
+	},
+/area/lv553/oob)
+"rTs" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "darkblue2"
 	},
 /area/lv553/oob)
 "rUu" = (
@@ -30217,6 +32844,17 @@
 	pixel_y = -2
 	},
 /turf/open/floor/wood,
+/area/lv553/oob)
+"sbd" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
 "sbq" = (
 /obj/structure/bed/chair/wood/wings{
@@ -30654,6 +33292,12 @@
 /obj/item/shard,
 /turf/open/gm/river,
 /area/lv553/indoors/flooded/waste_station)
+"slB" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "slO" = (
 /obj/item/toy/inflatable_duck,
 /turf/open/gm/river,
@@ -30811,6 +33455,7 @@
 	},
 /obj/structure/bed,
 /obj/effect/landmark/xeno_spawn,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "darkblue2"
@@ -30846,6 +33491,13 @@
 	icon_state = "whitegreencorner"
 	},
 /area/lv553/indoors/hospital/reception)
+"srn" = (
+/obj/item/trash/cigbutt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	icon_state = "dark2"
+	},
+/area/lv553/oob)
 "srq" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "shed_garage";
@@ -31160,6 +33812,10 @@
 	pixel_x = -7;
 	pixel_y = 9
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
 "sAD" = (
@@ -31277,6 +33933,18 @@
 	icon_state = "whitegreen"
 	},
 /area/lv553/indoors/hospital/lobby)
+"sDF" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1;
+	pixel_x = 1
+	},
+/obj/item/trash/cigbutt,
+/turf/open/floor{
+	icon_state = "darkbluecorners2";
+	dir = 4
+	},
+/area/lv553/oob)
 "sDJ" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 32
@@ -31490,11 +34158,46 @@
 "sId" = (
 /turf/open/gm/grass,
 /area/lv553/outdoors/colony_streets/northeast)
+"sIV" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor{
+	icon_state = "dark2"
+	},
+/area/lv553/oob)
+"sJz" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "sKr" = (
 /turf/open/gm/dirtgrassborder{
 	icon_state = "grassdirt_corner"
 	},
 /area/lv553/outdoors/flooded_streets/waste_treatment)
+"sKw" = (
+/obj/structure/disposalpipe/segment{
+	name = "pneumatic delivery system pipe";
+	pixel_y = 0;
+	pixel_x = 5
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8";
+	pixel_y = 0;
+	pixel_x = 2
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2-4";
+	pixel_x = -8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "sKV" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 1
@@ -31537,9 +34240,9 @@
 	},
 /area/lv553/oob)
 "sMy" = (
-/obj/structure/surface/table/holotable,
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor{
+	icon_state = "dark"
 	},
 /area/lv553/oob)
 "sMz" = (
@@ -31683,6 +34386,9 @@
 "sQC" = (
 /obj/structure/sink{
 	pixel_y = 22
+	},
+/obj/structure/machinery/light{
+	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv553/oob)
@@ -32392,6 +35098,25 @@
 /obj/structure/window/framed/colony,
 /turf/open/floor/kutjevo/colors/purple,
 /area/lv553/oob)
+"tfb" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/item/trash/cigbutt/cigarbutt,
+/obj/item/trash/cigbutt/cigarbutt,
+/turf/open/floor{
+	dir = 10;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "tfe" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2";
@@ -32471,6 +35196,16 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv553/outdoors/colony_streets/southwest)
+"tig" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "tje" = (
 /obj/structure/bed/chair,
 /obj/effect/landmark/corpsespawner/colonist/burst,
@@ -32486,6 +35221,33 @@
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
+"tjx" = (
+/obj/item/trash/cigbutt{
+	pixel_y = 7;
+	pixel_x = -6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
+"tjB" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/gun/pistol/holdout/flashlight{
+	current_mag = null
+	},
+/obj/item/ammo_magazine/pistol/holdout{
+	current_rounds = 0
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "tjH" = (
 /obj/structure/window/framed/colony,
 /turf/open/gm/dirtgrassborder,
@@ -32499,6 +35261,11 @@
 "tjU" = (
 /obj/structure/platform_decoration/strata/metal{
 	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	name = "pneumatic delivery system pipe";
+	pixel_y = 0;
+	layer = 2.86
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
@@ -32657,6 +35424,18 @@
 	},
 /turf/open/gm/dirt,
 /area/lv553/outdoors/colony_streets/northeast)
+"toC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "toP" = (
 /obj/structure/surface/table,
 /obj/structure/window{
@@ -32742,6 +35521,17 @@
 	icon_state = "vault"
 	},
 /area/lv553/indoors/uscm_garrison/armory)
+"tph" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "tpi" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3"
@@ -32820,7 +35610,13 @@
 /turf/open/asphalt/cement,
 /area/lv553/oob)
 "tqU" = (
-/obj/structure/machinery/computer3/server/rack,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "1-4"
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
 "tqZ" = (
@@ -33055,6 +35851,54 @@
 "txI" = (
 /turf/open/asphalt/cement,
 /area/lv553/indoors/flooded/telecomms)
+"tyk" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c";
+	pixel_x = 5;
+	pixel_y = 6;
+	name = "pneumatic delivery system pipe";
+	layer = 2.31
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2";
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "1-4";
+	pixel_x = -8;
+	pixel_y = -7
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
+"tyn" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/fancy/cigarettes/blackpack{
+	pixel_x = 6;
+	icon_state = "blackpacket0";
+	storage_slots = 0
+	},
+/obj/item/tool/lighter/zippo{
+	pixel_x = -6;
+	pixel_y = 1
+	},
+/obj/item/trash/cigbutt/bcigbutt{
+	pixel_y = -4;
+	pixel_x = 9
+	},
+/obj/item/trash/cigbutt/bcigbutt{
+	pixel_y = -4;
+	pixel_x = 1
+	},
+/obj/item/trash/cigbutt/bcigbutt{
+	pixel_y = 13;
+	pixel_x = -5
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "tyw" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
@@ -33183,6 +36027,18 @@
 	},
 /turf/open/gm/dirt,
 /area/lv553/landing_zone_2)
+"tAK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/landmark/xeno_spawn,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "tAM" = (
 /obj/structure/machinery/atm{
 	name = "Weyland-Yutani Automatic Teller Machine";
@@ -33319,6 +36175,14 @@
 /obj/structure/bed/chair/wood/normal,
 /turf/open/floor/wood,
 /area/lv553/oob)
+"tEH" = (
+/obj/item/trash/cigbutt/bcigbutt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "tEK" = (
 /obj/item/clothing/mask/facehugger{
 	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
@@ -33352,6 +36216,20 @@
 	pixel_x = 14
 	},
 /turf/open/floor/interior/wood,
+/area/lv553/oob)
+"tFH" = (
+/obj/structure/platform/strata/metal{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment{
+	name = "pneumatic delivery system pipe";
+	pixel_y = 0
+	},
+/obj/structure/machinery/meter{
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
 "tFT" = (
 /obj/structure/sign/poster/music{
@@ -33393,6 +36271,15 @@
 	},
 /turf/open/floor{
 	icon_state = "redyellowfull"
+	},
+/area/lv553/oob)
+"tHj" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_y = 0
+	},
+/turf/open/floor{
+	icon_state = "dark2"
 	},
 /area/lv553/oob)
 "tHm" = (
@@ -33489,6 +36376,16 @@
 /area/lv553/oob)
 "tKp" = (
 /obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/ashtray/plastic{
+	pixel_x = 7
+	},
+/obj/item/paper_bin{
+	pixel_y = 5;
+	pixel_x = -5
+	},
+/obj/item/tool/pen{
+	pixel_x = -6
+	},
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -33603,7 +36500,15 @@
 /turf/open/gm/grass,
 /area/lv553/outdoors/colony_streets/west)
 "tOS" = (
-/obj/structure/platform/strata/metal,
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	pixel_y = -7
+	},
+/obj/structure/disposalpipe/segment{
+	name = "water pipe";
+	dir = 8;
+	pixel_y = 8
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
 "tPC" = (
@@ -33654,6 +36559,14 @@
 /obj/structure/prop/dam/truck/mining,
 /turf/open/gm/dirt,
 /area/lv553/outdoors/lone_buildings/gas_n_gear)
+"tQX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/xeno_hive_spawn,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "tRp" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/microwave{
@@ -33739,6 +36652,18 @@
 	pixel_y = 14
 	},
 /turf/open/floor/wood,
+/area/lv553/oob)
+"tTA" = (
+/obj/item/trash/cigbutt/cigarbutt{
+	pixel_y = 11;
+	pixel_x = 3
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment{
+	name = "waterpipe";
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
 "tTS" = (
 /obj/structure/sink{
@@ -34121,6 +37046,14 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv553/outdoors/landing_zones_disembark)
+"udL" = (
+/obj/structure/bed/chair/office/dark,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt/cigarbutt,
+/turf/open/floor{
+	icon_state = "dark2"
+	},
+/area/lv553/oob)
 "ueg" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/limb/hand/r_hand,
@@ -34603,10 +37536,21 @@
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/army_surplus)
 "upV" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/turf/open/floor{
+/obj/item/ashtray/plastic,
+/obj/item/trash/cigbutt/cigarbutt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	layer = 2.5;
+	pixel_y = 1
+	},
+/obj/structure/machinery/light{
 	dir = 1;
-	icon_state = "darkblue2"
+	tag = "icon-tube1 (WEST)"
+	},
+/obj/structure/surface/table/almayer,
+/turf/open/floor{
+	icon_state = "darkbluecorners2";
+	dir = 1
 	},
 /area/lv553/oob)
 "uqq" = (
@@ -34641,6 +37585,7 @@
 "urq" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/xenoautopsy/tank/broken,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
 "usc" = (
@@ -34700,7 +37645,19 @@
 /turf/open/gm/grass,
 /area/lv553/outdoors/hospital/road_north_east)
 "utM" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/paper_bin{
+	pixel_y = 5
+	},
+/obj/item/tool/pen,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/surface/table/almayer,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "darkblue2"
@@ -34730,6 +37687,20 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/wood,
 /area/lv553/oob)
+"uwa" = (
+/obj/item/stack/sheet/metal,
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "0-2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/objective_landmark/far,
+/obj/item/stack/cable_coil,
+/obj/effect/spawner/gibspawner/robot,
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "uwi" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -34747,6 +37718,17 @@
 	tag = "icon-red 1,0"
 	},
 /turf/open/asphalt/cement,
+/area/lv553/oob)
+"uxB" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "darkblue2"
+	},
 /area/lv553/oob)
 "uxD" = (
 /obj/structure/surface/table,
@@ -34798,6 +37780,19 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv553/outdoors/flooded_streets/west)
+"uzJ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	layer = 2.5;
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt/cigarbutt,
+/turf/open/floor{
+	icon_state = "darkbluecorners2";
+	dir = 1
+	},
+/area/lv553/oob)
 "uzP" = (
 /obj/structure/machinery/power/apc{
 	dir = 8
@@ -34954,6 +37949,12 @@
 	},
 /turf/open/floor,
 /area/lv553/outdoors/colony_streets/east)
+"uEH" = (
+/obj/item/trash/cigbutt,
+/turf/open/floor{
+	icon_state = "dark2"
+	},
+/area/lv553/oob)
 "uEX" = (
 /obj/structure/surface/rack,
 /obj/structure/prop/invuln/overhead_pipe{
@@ -34978,11 +37979,26 @@
 /obj/structure/window,
 /obj/structure/surface/table/almayer,
 /obj/item/ashtray/bronze{
-	pixel_y = 0;
+	pixel_y = -5;
 	pixel_x = -6
 	},
+/obj/item/storage/fancy/cigarettes/trading_card{
+	pixel_x = 7;
+	pixel_y = 1;
+	icon_state = "collectpacket15";
+	layer = 3;
+	storage_slots = 16
+	},
+/obj/item/trash/cigbutt{
+	pixel_y = 2;
+	pixel_x = -6
+	},
+/obj/item/storage/fancy/cigar/matchbook/wy_gold{
+	pixel_y = 9;
+	pixel_x = -5
+	},
 /turf/open/floor{
-	icon_state = "dark"
+	icon_state = "darkbluecorners2"
 	},
 /area/lv553/oob)
 "uGi" = (
@@ -34991,6 +38007,22 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv553/outdoors/colony_streets/south)
+"uGp" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/pistol/holdout/flashlight{
+	current_mag = null
+	},
+/obj/item/ammo_magazine/pistol/holdout{
+	current_rounds = 0
+	},
+/turf/open/floor{
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "uGI" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/asphalt/cement,
@@ -35006,6 +38038,21 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/interior/wood,
 /area/lv553/oob)
+"uHv" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/structure/sign/poster{
+	pixel_y = 34
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "uHH" = (
 /turf/open/asphalt/cement,
 /area/lv553/outdoors/lone_buildings/gas_n_gear)
@@ -35020,6 +38067,13 @@
 	tag = "icon-tube1 (WEST)"
 	},
 /turf/open/floor/wood,
+/area/lv553/oob)
+"uIf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light,
+/turf/open/floor{
+	icon_state = "dark2"
+	},
 /area/lv553/oob)
 "uIh" = (
 /obj/item/circuitboard,
@@ -35093,6 +38147,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/storage/fancy/cigar/tarbacktube,
 /obj/item/storage/fancy/cigar/matchbook/brown,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -35158,6 +38213,10 @@
 	},
 /obj/item/circuitboard{
 	pixel_y = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
@@ -35439,6 +38498,15 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/engineer_alcoholic_house)
+"uXF" = (
+/obj/structure/barricade/wooden{
+	dir = 4;
+	layer = 5.3
+	},
+/turf/open/floor{
+	icon_state = "dark2"
+	},
+/area/lv553/oob)
 "uXU" = (
 /turf/open/floor{
 	dir = 4;
@@ -35603,6 +38671,23 @@
 	},
 /turf/open/floor{
 	icon_state = "white"
+	},
+/area/lv553/oob)
+"vdE" = (
+/obj/structure/surface/table/almayer,
+/obj/item/newspaper{
+	pixel_y = 1;
+	name = "report on colony disappearances m-7 yr-2182";
+	pixel_x = 7
+	},
+/obj/item/newspaper{
+	pixel_y = 1;
+	name = "half-finished correspondence on PDT surgical implant rollout m-7 yr-2182";
+	pixel_x = -7
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor{
+	icon_state = "dark2"
 	},
 /area/lv553/oob)
 "vdW" = (
@@ -35828,6 +38913,20 @@
 	pixel_y = 0
 	},
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/prop/almayer/computer{
+	dir = 1;
+	pixel_y = -5;
+	icon_state = "id";
+	name = "wiring distribution computer";
+	layer = 3.01;
+	pixel_x = -9
+	},
+/obj/structure/machinery/prop/almayer/computer{
+	dir = 1;
+	pixel_y = -5;
+	pixel_x = 8;
+	name = "colony telemetry computer"
+	},
 /turf/open/floor{
 	icon_state = "darkblue2"
 	},
@@ -35852,6 +38951,21 @@
 	dir = 8
 	},
 /area/lv553/outdoors/landing_zones_disembark)
+"vjG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/surface/table/almayer,
+/obj/item/paper_bin{
+	pixel_y = 4
+	},
+/obj/item/tool/pen,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "vjH" = (
 /obj/structure/machinery/light,
 /turf/open/floor{
@@ -35906,7 +39020,8 @@
 "vlL" = (
 /obj/structure/prop/almayer/computers/sensor_computer3,
 /turf/open/floor{
-	icon_state = "dark"
+	dir = 1;
+	icon_state = "darkblue2"
 	},
 /area/lv553/oob)
 "vme" = (
@@ -36110,6 +39225,16 @@
 	},
 /turf/open/gm/grass,
 /area/lv553/outdoors/welcome_center_exterior/east)
+"vtY" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/item/trash/cigbutt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "dark2"
+	},
+/area/lv553/oob)
 "vua" = (
 /obj/structure/bookcase{
 	icon_state = "book-3"
@@ -36136,6 +39261,16 @@
 	icon_state = "dark"
 	},
 /area/lv553/indoors/uscm_garrison/io_office)
+"vvB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/ammo_magazine/pistol/holdout{
+	current_rounds = 0
+	},
+/turf/open/floor{
+	icon_state = "dark2"
+	},
+/area/lv553/oob)
 "vvD" = (
 /obj/structure/bedsheetbin{
 	pixel_x = 5
@@ -36147,6 +39282,17 @@
 	dir = 4
 	},
 /area/lv553/landing_zone_1)
+"vvT" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1;
+	pixel_x = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "vvY" = (
 /obj/structure{
 	dir = 4;
@@ -36189,6 +39335,18 @@
 /obj/structure/flora/jungle/vines,
 /turf/open/gm/dirtgrassborder{
 	dir = 8
+	},
+/area/lv553/oob)
+"vxi" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/item/trash/cigbutt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "darkblue2"
 	},
 /area/lv553/oob)
 "vxk" = (
@@ -36292,15 +39450,12 @@
 /area/lv553/outdoors/landing_zones_disembark)
 "vBX" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = 0;
-	pixel_x = 17
-	},
-/obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
 	pixel_y = -1;
-	pixel_x = -13
+	pixel_x = 1
 	},
+/obj/item/shard,
+/obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor{
 	icon_state = "darkbluecorners2"
 	},
@@ -36323,6 +39478,17 @@
 	pixel_x = 1
 	},
 /obj/structure/surface/table/almayer,
+/obj/item/ashtray/plastic{
+	pixel_y = 10
+	},
+/obj/item/trash/cigbutt/bcigbutt{
+	pixel_y = 17
+	},
+/obj/item/trash/cigbutt/bcigbutt{
+	pixel_y = 17;
+	pixel_x = -3
+	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 6;
 	icon_state = "darkblue2"
@@ -36424,6 +39590,20 @@
 	},
 /turf/open/floor,
 /area/lv553/indoors/flooded/east_apartments)
+"vFN" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "0-2"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "vHb" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/mre_pack/meal1{
@@ -36520,6 +39700,16 @@
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
+	},
+/area/lv553/oob)
+"vId" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/obj/item/trash/cigbutt/cigarbutt,
+/turf/open/floor{
+	icon_state = "darkblue2"
 	},
 /area/lv553/oob)
 "vIA" = (
@@ -36638,8 +39828,11 @@
 	},
 /area/lv553/indoors/lone_buildings/weyyu_hostel)
 "vNS" = (
-/obj/structure/sign/poster/propaganda,
-/turf/closed/wall/r_wall/unmeltable,
+/obj/item/clothing/mask/surgical,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/oob)
 "vOy" = (
 /obj/item/tool/mop{
@@ -36889,6 +40082,18 @@
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/metal/large_stack,
 /turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
+"vSS" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_y = -1;
+	pixel_x = 1
+	},
+/obj/item/storage/pouch/cassette,
+/obj/item/device/cassette_tape/cargocrate,
+/turf/open/floor{
+	icon_state = "darkbluecorners2"
+	},
 /area/lv553/oob)
 "vST" = (
 /obj/structure/surface/table,
@@ -37417,6 +40622,11 @@
 "whT" = (
 /obj/structure/surface/rack,
 /obj/item/tool/weldingtool/hugetank,
+/obj/structure/disposalpipe/segment{
+	name = "pneumatic delivery system pipe";
+	pixel_y = 0;
+	dir = 8
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
 "whU" = (
@@ -37966,6 +41176,7 @@
 /obj/structure/toilet{
 	dir = 4
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
 	icon_state = "floor_plate"
 	},
@@ -38175,6 +41386,13 @@
 	icon_state = "dark"
 	},
 /area/lv553/indoors/uscm_garrison/garrison_bunks)
+"wIw" = (
+/obj/item/trash/cigbutt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "dark2"
+	},
+/area/lv553/oob)
 "wIx" = (
 /turf/closed/wall,
 /area/lv553/indoors/lone_buildings/recruiter_house)
@@ -38244,6 +41462,22 @@
 	icon_state = "white"
 	},
 /area/lv553/indoors/lone_buildings/weyyu_hostel)
+"wJV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/snacks/superbiteburger,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "wJW" = (
 /obj/structure/surface/rack,
 /obj/item/storage/belt/marine{
@@ -38305,6 +41539,19 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/gated_community/director_of_corporate_research)
+"wLb" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "wLf" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 4;
@@ -38902,6 +42149,21 @@
 /obj/item/trash/cheesie,
 /turf/open/gm/dirt,
 /area/lv553/outdoors/hospital/break_garden)
+"xeW" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/ammo_magazine/pistol/holdout{
+	current_rounds = 0
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "xfb" = (
 /obj/structure/sign/safety/airtraffictower{
 	pixel_x = 13;
@@ -38947,6 +42209,16 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv553/indoors/flooded/west_apartments)
+"xgB" = (
+/obj/structure/machinery/disposal,
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_y = 0
+	},
+/turf/open/floor{
+	icon_state = "darkbluecorners2"
+	},
+/area/lv553/oob)
 "xhe" = (
 /obj/item/storage/toolbox/electrical{
 	pixel_y = 12;
@@ -39274,6 +42546,7 @@
 	pixel_y = 16;
 	pixel_x = 1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "darkbluecorners2";
 	dir = 4
@@ -39486,6 +42759,17 @@
 	},
 /turf/open/gm/grass,
 /area/lv553/oob)
+"xvM" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "xwb" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/closet/medical_wall{
@@ -39584,6 +42868,17 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv553/landing_zone_1)
+"xzQ" = (
+/obj/structure/disposalpipe/segment{
+	pixel_x = -7
+	},
+/obj/structure/disposalpipe/segment{
+	name = "waterpipe";
+	dir = 1;
+	pixel_x = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "xzS" = (
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/gm/dirtgrassborder{
@@ -39633,6 +42928,21 @@
 	},
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/army_surplus)
+"xBz" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/food/drinks/cans/souto/classic{
+	pixel_x = 9;
+	pixel_y = -3
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "xBF" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 8;
@@ -40017,6 +43327,17 @@
 /obj/structure/reagent_dispensers/beerkeg/alt,
 /turf/open/asphalt/cement,
 /area/lv553/outdoors/colony_streets/west)
+"xNo" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "xOc" = (
 /turf/open/floor/wood,
 /area/lv553/indoors/uscm_garrison/io_office)
@@ -40143,6 +43464,16 @@
 /obj/item/stack/cable_coil,
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/clf_house)
+"xRK" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = 0
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "xRP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/power/apc{
@@ -40562,6 +43893,16 @@
 "ybW" = (
 /turf/open/floor/plating,
 /area/lv553/indoors/lone_buildings/weyyu_hostel)
+"ych" = (
+/obj/structure/machinery/constructable_frame,
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "0-2"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/oob)
 "yct" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "bedroom door"
@@ -40623,6 +43964,9 @@
 /obj/structure/sign/poster/hunk{
 	pixel_y = 32
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
 "yfC" = (
@@ -40683,6 +44027,15 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
+"ygG" = (
+/obj/item/trash/cigbutt/bcigbutt{
+	pixel_y = 7
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/oob)
 "yhl" = (
 /obj/item/storage/toolbox,
 /turf/open/gm/river,
@@ -40700,6 +44053,21 @@
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/soymilk,
 /turf/open/floor/wood,
+/area/lv553/oob)
+"yhR" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "0-2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk,
 /area/lv553/oob)
 "yic" = (
 /obj/structure/machinery/atm{
@@ -40738,12 +44106,49 @@
 /obj/item/clothing/head/welding,
 /turf/open/asphalt/cement,
 /area/lv553/indoors/bungalow_manager)
+"yjq" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "yjY" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 10
 	},
 /turf/open/gm/grass,
 /area/lv553/outdoors/hospital/road_north_west)
+"ykb" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_x = -8;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_y = 7;
+	pixel_x = -1
+	},
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_y = 16;
+	pixel_x = -1
+	},
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_x = -8;
+	pixel_y = 16
+	},
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_y = 7;
+	pixel_x = 6
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkblue2"
+	},
+/area/lv553/oob)
 "ykh" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/asphalt/cement,
@@ -43292,11 +46697,11 @@ wTq
 wTq
 wTq
 wTq
-tqU
-qZw
-glB
-tVX
-tqU
+jVu
+fvo
+wLb
+tAK
+lDc
 wTq
 nRr
 nRr
@@ -43490,36 +46895,36 @@ bhp
 bhp
 wTq
 dmB
-oOe
-exf
-lDc
+nGG
+wLb
+gOC
 pCm
 utM
 bDB
-bDB
+jlB
 kkm
-kkm
+jhq
 pCm
-exf
-exf
-exf
-exf
-exf
-exf
-exf
-exf
-exf
-exf
+fvo
+wLb
+heW
+rjP
+iYT
+lOV
+lnv
+ykb
+wLb
+fQA
 pCm
-lmb
-lmb
-lmb
-lmb
+gNh
+wLb
+fvo
+iLQ
 pCm
-tqU
-qZw
-glB
-tVX
+hox
+pqS
+ecc
+krI
 tqU
 wTq
 nRr
@@ -43716,35 +47121,35 @@ wTq
 aok
 tNB
 glB
-tVX
+rLR
 pCm
 upV
 adK
 glB
 glB
-glB
+jgq
 wdr
+muW
 glB
 glB
 glB
 glB
-glB
-glB
-glB
-glB
-glB
-glB
-wdr
+mcP
+jgq
+qgu
+qgu
+qgu
+jmH
+krW
 lmb
-lmb
-lmb
-lmb
+hvN
+iVg
 pCm
-tqU
-qZw
-glB
-tVX
-tqU
+pSr
+pCm
+pCm
+pCm
+sbd
 wTq
 nRr
 nRr
@@ -43939,36 +47344,36 @@ sRY
 wTq
 fux
 tNB
+qgu
+jgq
+nGg
 glB
-tVX
-pCm
-heV
-glB
-glB
-glB
+qgu
+qgu
+qgu
 nKb
-pCm
-iEE
-glB
+jHa
+bjx
+sMy
 mXw
-eqb
-eqb
-eqb
-eqb
+xBz
+rbK
+cxB
+fEc
 uwi
 glB
 vBX
+nmW
+fyf
+udL
+mXw
+dWL
 pCm
-lmb
-lmb
-lmb
-lmb
-pCm
-tqU
-qZw
-glB
-tVX
-tqU
+yhR
+cHw
+leN
+cHw
+nop
 wTq
 nRr
 nRr
@@ -44162,37 +47567,37 @@ bhp
 bhp
 wTq
 lMt
-qZw
+osT
 glB
-tVX
+xgB
 pCm
 heV
-glB
-glB
-glB
-hFz
+lrd
+uwi
+rsp
+lJu
 pCm
-qZw
-glB
-tVX
-pCm
-pCm
-pCm
-pCm
-qZw
+eyI
 glB
 tVX
 pCm
-lmb
-lmb
-lmb
-lmb
 pCm
-tqU
-qZw
+pCm
+pCm
+ogG
 glB
 tVX
-tqU
+pCm
+pcf
+lBl
+fgu
+nzu
+pCm
+bTx
+qgu
+tQX
+qgu
+qCW
 wTq
 nRr
 nRr
@@ -44386,37 +47791,37 @@ bhp
 bhp
 wTq
 pCm
-qeH
+pCm
 pSv
 pCm
 pCm
 pCm
 pCm
-lBl
-glB
-hFz
+nPN
+nTB
+pCm
 pCm
 qZw
-glB
-tVX
+rsP
+vId
 pCm
 wBT
-wBT
+cUX
 pCm
 qZw
 glB
 mKV
 pCm
-lmb
-lmb
-lmb
-lmb
 pCm
-tqU
-qZw
-glB
-tVX
-tqU
+pCm
+pCm
+pCm
+pCm
+vFN
+uwa
+cHw
+cHw
+nop
 wTq
 nRr
 nRr
@@ -44609,19 +48014,19 @@ wTq
 wTq
 wTq
 wTq
-ewo
+erV
 qZw
 glB
-glB
+qYP
 tVX
-ewo
-pCm
-pCm
-nTB
-pCm
+erI
 pCm
 qZw
-glB
+qgu
+tVX
+pCm
+qZw
+jgq
 tVX
 pCm
 sQC
@@ -44629,18 +48034,18 @@ dXX
 mri
 qZw
 glB
-bTx
+dKP
+dLl
+eFH
+cNC
+nWZ
+tfb
 pCm
+pSr
 pCm
+niM
 pCm
-pCm
-pCm
-pCm
-tqU
-qZw
-glB
-tVX
-tqU
+sbd
 wTq
 nRr
 nRr
@@ -44829,42 +48234,42 @@ cKY
 cKY
 unb
 wTq
+mAe
 voS
-voS
-voS
+xvM
 pCm
-exf
+uHv
 bZy
-glB
-glB
+fUs
+eyK
 tVX
-ewo
+krA
 tKp
 jZu
-glB
+qgu
 hFz
 pCm
-qZw
+nGC
 glB
-tVX
+lJu
 pCm
 pCm
 pCm
 pCm
-qZw
+cwS
 glB
 glB
 cya
-lmb
-peo
-sMy
-dWL
-pCm
-tqU
-qZw
 glB
-tVX
-tqU
+peo
+glB
+tig
+pCm
+vFN
+ecc
+ych
+krI
+nop
 wTq
 nRr
 nRr
@@ -45053,42 +48458,42 @@ uZA
 uZA
 uZA
 wTq
-bav
+pHs
 bav
 bav
 eeu
 glB
 glB
-glB
-glB
+vtY
+hRj
 tVX
-ewo
-tKp
+slB
+kSb
 gDr
-glB
-hFz
+qgu
+osk
 pCm
 qZw
 glB
 tVX
 mri
-dXX
+ntQ
 ilT
 pCm
 qZw
+jgq
+mXw
+fdU
+pDc
 glB
-qgu
+vSS
+jZd
 pCm
-lmb
-lmb
-lmb
-lmb
-pCm
-eff
-eff
+cBM
+dlu
 iGY
-eff
-eff
+gXj
+qKe
 wTq
 nRr
 nRr
@@ -45278,41 +48683,41 @@ uZA
 uZA
 wTq
 hlk
-hlk
+hhk
 lrQ
 pCm
-eqb
+iyx
 uwi
-glB
-glB
+rli
+hRj
 tVX
-ewo
+slB
 ybR
-lrd
+eqb
 lrd
 fuc
 pCm
-qZw
+mAq
 glB
-tVX
+tig
 pCm
 ehA
-ehA
+jLC
 pCm
 qZw
-glB
+qgu
 lWi
 pCm
-pCm
+mZO
+wJV
 qoI
-qoI
 pCm
 pCm
-ewo
-qZw
-glB
-tVX
-tOS
+hkm
+afY
+mrA
+nzu
+hkm
 wTq
 wTq
 nRr
@@ -45505,26 +48910,26 @@ pCm
 pCm
 pCm
 pCm
-ewo
+erV
 qZw
-glB
-glB
+mJH
+hRj
 tVX
-ewo
+erI
 pCm
 nPN
 nPN
 pCm
 pCm
-qZw
-glB
+ddn
+djO
 tVX
 pCm
 pCm
 pCm
 pCm
 qZw
-glB
+qgu
 tVX
 pCm
 pCm
@@ -45532,12 +48937,12 @@ pCm
 pCm
 pCm
 ewo
-ewo
-qZw
-glB
-tVX
 iyg
-hAl
+pId
+qgu
+kGT
+iyg
+ewo
 wTq
 nRr
 nRr
@@ -45722,46 +49127,46 @@ uZA
 uZA
 uZA
 uZA
-msP
-msP
+ics
+rPj
 wTq
-ewo
-ewo
+qwY
+gBH
 pCm
-ewo
+qwY
 jVu
 bZy
 glB
 glB
 tVX
-ewo
+cyE
 pCm
-ewo
-ewo
-ewo
-ewo
-qZw
+jsB
+jsB
+qwY
+gBH
+sJz
 glB
-tVX
-ewo
-ewo
-ewo
-ewo
+xRK
+hAl
+lRB
+xzQ
+xzQ
 qZw
-glB
-tVX
-ewo
-ewo
-ewo
-ewo
-ewo
-ewo
+qgu
+uGp
+gBH
+gBH
+qwY
+gBH
+gBH
+gBH
 jVu
 bZy
-glB
-dKP
+qgu
+oOK
 lDc
-tOS
+fEP
 wTq
 nRr
 nRr
@@ -45946,38 +49351,38 @@ uZA
 uZA
 uZA
 uZA
-msP
-msP
+jeG
+jeG
 sWL
 exf
 exf
 sWL
 exf
-bZy
+uzJ
 iLl
 gwE
-pwu
-dKP
+vvT
+njQ
 exf
 xTO
+fvo
 exf
 exf
-exf
-exf
+fvo
 bZy
 glB
 dKP
+fvo
 exf
 exf
 exf
-exf
-bZy
-glB
+rII
+eGS
 dKP
 exf
+mJu
 exf
-exf
-exf
+fvo
 exf
 exf
 bZy
@@ -46170,41 +49575,41 @@ uZA
 uZA
 uZA
 uZA
+rPj
 msP
-msP
 nPN
-glB
-glB
+wIw
+qgu
 nPN
+qgu
 glB
+bdC
+wTq
+jhw
+djO
+nyi
+lPr
+kGP
+eIJ
+qgu
+srn
 glB
-brb
-vNS
-hXp
-glB
-glB
-nPN
-glB
-glB
-glB
-glB
-glB
-glB
-glB
-glB
-glB
+jgq
 glB
 glB
 glB
 glB
 glB
 glB
+vvB
+sMy
 glB
 glB
 glB
-glB
-glB
-glB
+qgu
+qgu
+dHI
+qgu
 brb
 wTq
 hXp
@@ -46395,39 +49800,39 @@ uZA
 uZA
 uZA
 msP
-msP
+rPj
 phL
 eqb
 eqb
 brI
 eqb
 uwi
-hYt
-oTu
+tHj
+roB
 sSL
 jEg
 eqb
 tps
-eqb
+xNo
 uwi
+jgq
+cMV
+eqb
+uxB
+eqb
+eqb
+nDf
+uxB
+eqb
+sDF
 glB
 mXw
+uxB
 eqb
 eqb
 eqb
-eqb
-eqb
-eqb
-eqb
-uwi
-glB
-mXw
-eqb
-eqb
-eqb
-eqb
-eqb
-eqb
+oNP
+nDf
 uwi
 hYt
 oTu
@@ -46619,39 +50024,39 @@ uZA
 uZA
 uZA
 msP
-msP
+rPj
 wTq
-ewo
-ewo
+bTu
+ixK
 pCm
-ewo
+bTu
 ofj
 mtG
-eqb
+vxi
 eqb
 tfn
-ewo
+bTu
 pCm
-ewo
+pKP
 qZw
-glB
+miu
 tVX
-ewo
-ewo
-ewo
-ewo
-ewo
-ewo
-ewo
+sKw
+bTu
+bTu
+bTu
+aPz
+bTu
+bTu
 qZw
-glB
+jgq
 tVX
-ewo
-ewo
-ewo
-ewo
-ewo
-ewo
+bTu
+bTu
+aPz
+bTu
+bTu
+tyk
 fvZ
 uwi
 glB
@@ -46857,9 +50262,9 @@ pCm
 pCm
 pCm
 pCm
-gBH
-nPN
-mDH
+iBx
+eZb
+ell
 pCm
 pCm
 pCm
@@ -46875,8 +50280,8 @@ pCm
 pCm
 pCm
 pCm
-ewo
-ewo
+kPp
+dus
 qZw
 glB
 tVX
@@ -47070,41 +50475,41 @@ uZA
 uZA
 wTq
 glB
-ewo
+gsD
 wTq
 kQN
-glB
-iXS
+yjq
+noS
 qxc
 gju
-nOS
-ewo
-ewo
-ewo
+iGZ
+lcG
+qJH
+mzz
 qZw
-glB
+mSR
 tVX
-ewo
+aVK
 pCm
 pCm
 oOe
-exf
-exf
-exf
+tph
+wLb
+tph
 bZy
 glB
 dKP
 lqk
 pCm
-cMf
-cMf
+eeE
+ksV
 pCm
 pCm
-ewo
+mDH
 qZw
-glB
+qgu
 tVX
-tOS
+epX
 wTq
 wTq
 nRr
@@ -47297,36 +50702,36 @@ glB
 gsI
 wTq
 vlL
-gDr
-glB
-glB
+jZe
+qgu
+tjx
 cSW
 gMa
 exf
+fvo
 exf
-exf
-bZy
-glB
+mBL
+djO
 tVX
-ewo
+pqN
 cys
 pCm
 qZw
-ddV
+mwP
+jgq
+fqm
 glB
-ddV
-glB
-tKp
-glB
-tVX
+jWY
+qgu
+tjB
 cdJ
 kFf
 ljR
-cMf
+fyC
 pCm
-ewo
-qZw
-glB
+mDH
+xeW
+qgu
 tVX
 tOS
 wTq
@@ -47517,41 +50922,41 @@ uZA
 uZA
 uZA
 wTq
-glB
+jgq
 whT
 wTq
-kQN
-glB
-glB
+dzo
+hzT
+qgu
 glB
 qpl
 glB
 glB
+qgu
+qgu
 glB
-glB
-glB
-glB
+djO
 tVX
-ewo
+pqN
 bMv
 pCm
 qZw
+fqm
+qgu
 ddV
-glB
-ddV
-glB
-tKp
-glB
+qgu
+ldw
+aPr
 tVX
 cdJ
 tMG
 dKP
-lDc
+jEQ
 pCm
-ewo
+mDH
 qZw
-glB
-tVX
+eGS
+tig
 tOS
 wTq
 nRr
@@ -47741,42 +51146,42 @@ uZA
 uZA
 uZA
 wTq
-glB
+nxP
 nsw
 wTq
 kvZ
-glB
-lBc
+psH
+pls
 uFZ
 qeh
 uwi
-riW
-riW
-riW
+jbR
+tyn
+qkr
 glB
-glB
-vjg
-ewo
+ygG
+hWH
+pqN
 mlh
 pCm
-fvZ
-eqb
-eqb
+dWi
+gZb
+rTs
 eqb
 xpg
-glB
+sMy
 aDI
 tfn
 cdJ
 fRR
-glB
+vNS
 hjP
 pCm
-ewo
+jnQ
 qZw
-glB
-tVX
-tOS
+hZs
+lWi
+jtO
 wTq
 nRr
 nRr
@@ -47973,18 +51378,18 @@ qyz
 mGc
 fRy
 nOS
-qZw
-riW
+pFD
+pBB
 fQl
 riW
-glB
+qgu
 iTN
 vjg
-ewo
+jYE
 pCm
 pCm
 pCm
-myE
+ejF
 pCm
 pCm
 pCm
@@ -47993,12 +51398,12 @@ pCm
 pCm
 pCm
 dJQ
-glB
+jgq
 hjP
 pCm
-ewo
+mDH
 qZw
-glB
+qgu
 tVX
 tOS
 wTq
@@ -48190,40 +51595,40 @@ uZA
 uZA
 wTq
 glB
-ewo
+kfK
 hjV
-ewo
+bmX
 pPF
-pPF
+tFH
 pPF
 tjU
 qZw
-riW
-riW
-riW
-glB
-glB
-vjg
-ewo
+vdE
+gCp
+kpQ
+qgu
+rsP
+iKb
+pqN
 ica
 pCm
 paj
 glB
 pCm
-vEg
-qZw
+quu
+eHu
 glB
 bYZ
-exf
+eCV
 pCm
 oqx
 iXS
 cZR
 pCm
-ewo
-qZw
-glB
-tVX
+mDH
+ogG
+qgu
+fIT
 tOS
 wTq
 nRr
@@ -48416,37 +51821,37 @@ wTq
 glB
 glB
 xxC
-ewo
+tTA
 qQJ
 exf
-exf
+oui
 exf
 bZy
+eGS
+hIp
 glB
-glB
-glB
-glB
-glB
-tVX
-ewo
+qgu
+qgu
+tig
+pqN
 bMv
 pCm
 sAs
 deX
 pCm
 vEg
-qZw
+ogG
+vNS
 glB
-glB
-glB
+jgq
 iiO
-glB
-glB
-hjP
+oFi
+sMy
+jGN
 pCm
-ewo
+mDH
 qZw
-glB
+uXF
 tVX
 tOS
 wTq
@@ -48640,37 +52045,37 @@ wTq
 uLl
 vSy
 pCm
-ewo
+nsA
 qLi
-gDr
+pgr
+qgu
+qgu
+nKD
 glB
 glB
-lBc
 glB
-glB
-glB
-glB
+tEH
 lBc
 tVX
-ewo
+pqN
 dfW
 pCm
 yfc
-glB
+uIf
 pCm
 hQp
 xnn
 eqb
-eqb
-eqb
+uxB
+bRi
 pCm
 iEE
 glB
-tVX
+eTK
 pCm
 pCm
 iBx
-nPN
+sIV
 ell
 pCm
 wTq
@@ -48868,19 +52273,19 @@ nOd
 oDF
 eqb
 eqb
+vjG
 fcs
-fcs
-fcs
-eqb
-eqb
-fcs
-fcs
+ivu
+toC
+gcX
+vjG
+lOe
 vDh
-ewo
+eYS
 pCm
 pCm
 kfn
-glB
+qgu
 pCm
 pCm
 ucn
@@ -48892,11 +52297,11 @@ spQ
 eqb
 rKl
 pCm
-ewo
+jnQ
 qZw
-glB
+qgu
 tVX
-ewo
+jtO
 wTq
 nRr
 nRr
@@ -49088,22 +52493,22 @@ uZA
 wTq
 wTq
 pCm
-ewo
-ewo
-ewo
-ewo
-ewo
-ewo
-ewo
-ewo
-ewo
-ewo
-ewo
-ewo
-ewo
-ewo
+joq
+cTZ
+ozX
+iSP
+cTZ
+cTZ
+cTZ
+cTZ
+hEK
+cTZ
+cTZ
+cTZ
+aCI
+cTZ
 xxC
-glB
+jgq
 dCZ
 wTq
 wTq
@@ -49116,11 +52521,11 @@ wTq
 wTq
 wTq
 wTq
-ewo
+mDH
 qZw
-glB
+uEH
 tVX
-ewo
+tOS
 wTq
 nRr
 nRr
@@ -49312,18 +52717,18 @@ uZA
 uZA
 wTq
 wTq
+nPN
+nPN
 wTq
 wTq
-joq
-joq
-joq
-joq
+nPN
+nPN
+jki
 wTq
-joq
-joq
-joq
-joq
 wTq
+jki
+nPN
+nPN
 wTq
 wTq
 wTq
@@ -49342,7 +52747,7 @@ vbZ
 wTq
 wTq
 sVL
-nPN
+sIV
 nqg
 wTq
 wTq

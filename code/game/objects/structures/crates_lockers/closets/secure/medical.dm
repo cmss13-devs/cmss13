@@ -218,7 +218,7 @@
 
 /obj/structure/closet/secure_closet/professor_dummy/emp_act(severity)
 	for(var/mob/living/carbon/human/dummy/professor_dummy/dummy in src)
-		visible_message(SPAN_DANGER("Something in the cabinet blows apart!"))
+		visible_message(SPAN_DANGER("Something in [src] blows apart!"))
 		playsound(src, 'sound/effects/metal_crash.ogg', 25, 1)
 		qdel(dummy)
 	..()

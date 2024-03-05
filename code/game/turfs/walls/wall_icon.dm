@@ -44,6 +44,10 @@
 				bullet_overlay = image('icons/effects/bulletholes.dmi', src, "bhole_[bullethole_state]_2")
 			overlays += bullet_overlay
 
+	var/area/my_area = loc
+	if(my_area.lighting_effect)
+		overlays += my_area.lighting_effect
+
 #undef BULLETHOLE_STATES
 #undef cur_increment
 

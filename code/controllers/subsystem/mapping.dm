@@ -37,6 +37,9 @@ SUBSYSTEM_DEF(mapping)
 	/// list of traits and their associated z leves
 	var/list/z_trait_levels = list()
 
+	/// list of lazy templates that have been loaded
+	var/list/loaded_lazy_templates
+
 //dlete dis once #39770 is resolved
 /datum/controller/subsystem/mapping/proc/HACK_LoadMapConfig()
 	if(!configs)
@@ -423,3 +426,28 @@ SUBSYSTEM_DEF(mapping)
 	if(!MC)
 		return MAIN_SHIP_DEFAULT_NAME
 	return MC.map_name
+
+/datum/controller/subsystem/mapping/proc/lazy_load_template(datum/lazy_template/template_to_load, force = FALSE)
+	RETURN_TYPE(/datum/turf_reservation)
+
+	UNTIL(initialized)
+	var/static/lazy_loading = FALSE
+	UNTIL(!lazy_loading)
+
+	lazy_loading = TRUE
+	. = _lazy_load_template(template_to_load, force)
+	lazy_loading = FALSE
+	return .
+
+/datum/controller/subsystem/mapping/proc/_lazy_load_template(datum/lazy_template/template_to_load, force = FALSE)
+	PRIVATE_PROC(TRUE)
+
+	if(LAZYACCESS(loaded_lazy_templates, template_to_load) && !force)
+		var/datum/lazy_template/template = GLOB.lazy_templates[template_to_load]
+		return template.reservations[1]
+	LAZYSET(loaded_lazy_templates, template_to_load, TRUE)
+
+	var/datum/lazy_template/target = GLOB.lazy_templates[template_to_load]
+	if(!target)
+		CRASH("Attempted to lazy load a template key that does not exist: '[template_to_load]'")
+	return target.lazy_load()

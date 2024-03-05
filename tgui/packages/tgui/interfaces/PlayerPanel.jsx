@@ -66,7 +66,15 @@ export const PlayerPanel = (props) => {
   const [pageIndex, setPageIndex] = useLocalState('pageIndex', 0);
   const [canModifyCkey, setModifyCkey] = useLocalState('canModifyCkey', false);
   const PageComponent = PAGES[pageIndex].component();
-  const { mob_name, mob_type, client_key, client_ckey, client_rank } = data;
+  const {
+    mob_name,
+    mob_type,
+    client_key,
+    client_ckey,
+    client_rank,
+    client_age,
+    first_join,
+  } = data;
 
   return (
     <Window title={`${mob_name} Player Panel`} width={600} height={500}>
@@ -173,6 +181,28 @@ export const PlayerPanel = (props) => {
                   onClick={() => act('alert_message')}
                   content="Alert Message"
                 />
+              </Stack.Item>
+            </Stack>
+          )}
+          {client_age && (
+            <Stack mt={1}>
+              <Stack.Item width="80px" color="label">
+                Account age:
+              </Stack.Item>
+              <Stack.Item grow={1} align="right">
+                {client_age}
+              </Stack.Item>
+            </Stack>
+          )}
+          {first_join && (
+            <Stack mt={1}>
+              <Stack.Item width="80px" color="label">
+                <Tooltip content="This is estimated, and depending on database integrity, may not be accurate to a user's first join date.">
+                  <Box position="relative">First join:</Box>
+                </Tooltip>
+              </Stack.Item>
+              <Stack.Item grow={1} align="right">
+                {first_join}
               </Stack.Item>
             </Stack>
           )}

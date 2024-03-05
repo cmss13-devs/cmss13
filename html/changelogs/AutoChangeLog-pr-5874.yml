@@ -1,0 +1,4 @@
+author: "Vicacrov"
+delete-after: True
+changes:
+  - rscadd: "Added a professor dummy cabinet to the CMO office, containing Professor DUMMY and its control tablet. It is a tool to teach new medical personnel with. The cabinet is accessible by the CMO and the SEA only."

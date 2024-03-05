@@ -191,7 +191,6 @@
 	var/mob/living/carbon/human/dummy/professor_dummy/spawned_dummy = new(src)
 	var/datum/equipment_preset/dummy_preset = /datum/equipment_preset/other/professor_dummy
 	arm_equipment(spawned_dummy, initial(dummy_preset.name), TRUE, FALSE)
-	spawned_dummy.RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_LANDED, TYPE_PROC_REF(/mob/living/carbon/human/dummy/professor_dummy, destroy_upon_hijack))
 
 /obj/structure/closet/secure_closet/professor_dummy/togglelock(mob/living/user)
 	if(user.job == JOB_CMO || user.job == JOB_SEA)

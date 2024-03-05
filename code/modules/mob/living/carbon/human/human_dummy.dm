@@ -83,6 +83,10 @@ GLOBAL_LIST_EMPTY(dummy_mob_list)
 	anchored = TRUE
 
 // Professor Dummy, used by CMOs and SEAs to teach new nurses/doctors
+/mob/living/carbon/human/dummy/professor_dummy/Initialize(mapload)
+	. = ..()
+	RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_LANDED, PROC_REF(destroy_upon_hijack))
+
 /mob/living/carbon/human/dummy/professor_dummy/proc/destroy_upon_hijack()
 	SIGNAL_HANDLER
 

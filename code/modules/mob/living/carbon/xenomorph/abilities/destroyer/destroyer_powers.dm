@@ -160,7 +160,7 @@
 		to_chat(xeno, SPAN_XENONOTICE("It would not be wise to try to leap there..."))
 		return
 
-	var/list/leap_line = getline2(xeno, target)
+	var/list/leap_line = get_line(xeno, target)
 	for(var/turf/jump_turf in leap_line)
 		if(jump_turf.density)
 			to_chat(xeno, SPAN_XENONOTICE("We don't have a clear path to leap to that location!"))

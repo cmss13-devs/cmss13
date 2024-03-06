@@ -50221,13 +50221,6 @@
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/cells)
-"nhT" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "orangecorner"
-	},
-/area/almayer/hallways/upper/aft_hallway)
 "nhV" = (
 /obj/structure/machinery/light/small,
 /turf/open/floor/almayer{
@@ -53640,6 +53633,9 @@
 "orq" = (
 /obj/item/storage/toolbox/mechanical{
 	pixel_y = 13
+	},
+/obj/structure/machinery/power/apc/almayer{
+	dir = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -58123,6 +58119,16 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/corporateliaison)
+"pVI" = (
+/obj/effect/step_trigger/clone_cleaner,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out"
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "green"
+	},
+/area/almayer/hallways/upper/fore_hallway)
 "pWb" = (
 /obj/effect/landmark/start/marine/tl/delta,
 /obj/effect/landmark/late_join/delta,
@@ -67727,7 +67733,6 @@
 	pixel_x = 4;
 	pixel_y = -3
 	},
-/obj/structure/machinery/power/apc/almayer,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -77170,6 +77175,7 @@
 	pixel_y = 28
 	},
 /obj/structure/closet,
+/obj/item/clothing/head/bearpelt,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -112488,7 +112494,7 @@ cuI
 ocX
 ocX
 ocX
-fCP
+pVI
 fCP
 fCP
 fCP
@@ -129509,8 +129515,8 @@ jhx
 jhx
 dnH
 gpc
-bKU
-vpi
+kjX
+gqf
 iZz
 wDM
 uto
@@ -129712,8 +129718,8 @@ nwU
 owg
 owg
 ptK
-nhT
-gqf
+fes
+vpi
 iZz
 wDM
 aOQ

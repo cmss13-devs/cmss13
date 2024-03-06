@@ -240,6 +240,7 @@
 	return TRUE
 
 /datum/hivebuff/proc/_roundtime_check()
+	//BIRDTALON: REMOVE TO_CHAT(WORLD)
 	to_chat(world, "[ROUND_TIME] > [SSticker.round_start_time] +  [roundtime_to_enable]")
 	if(ROUND_TIME > (SSticker.round_start_time + roundtime_to_enable))
 		return TRUE

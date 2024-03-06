@@ -812,7 +812,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		if(client.view != GLOB.world_view_size)
 			client.view_size.reset_to_default()
 		else
-			client.view_size.add(7)
+			client.view_size.add(14)
 
 
 /mob/dead/observer/verb/toggle_darkness()

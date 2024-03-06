@@ -34,7 +34,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 
 	movement_sound = 'sound/vehicles/tank_driving.ogg'
 
-	var/gunner_view_buff = 3
+	var/gunner_view_buff = 6
 
 	hardpoints_allowed = list(
 		/obj/item/hardpoint/primary/dualcannon,

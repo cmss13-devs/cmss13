@@ -143,7 +143,7 @@
 		far_sight = TRUE
 		if(user)
 			if(user.client)
-				user.client.view_size.add(1)
+				user.client.view_size.add(2)
 		START_PROCESSING(SSobj, src)
 	else
 		linked_smartgun = null

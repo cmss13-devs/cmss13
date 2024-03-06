@@ -11,7 +11,7 @@
 	activatable = TRUE
 
 	var/is_active = 0
-	var/view_buff = 3 //This way you can VV for more or less fun
+	var/view_buff = 6 //This way you can VV for more or less fun
 	var/view_tile_offset = 7
 
 /obj/item/hardpoint/support/artillery_module/handle_fire(atom/target, mob/living/user, params)
@@ -30,7 +30,7 @@
 		holder = T
 		break
 
-	user.client.view_size.add(3)
+	user.client.view_size.add(view_buff)
 	is_active = TRUE
 
 	switch(holder.dir)

@@ -23,7 +23,7 @@
 	hivelord.can_stack_builds = TRUE
 	hivelord.recalculate_plasma()
 
-	hivelord.client?.view_size.add(3)
+	hivelord.client?.view_size.add(6)
 
 	hivelord.set_resin_build_order(GLOB.resin_build_order_hivelord_whisperer)
 	for(var/datum/action/xeno_action/action in hivelord.actions)

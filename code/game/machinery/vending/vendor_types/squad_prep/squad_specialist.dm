@@ -230,15 +230,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_specialist, list(
 		/obj/item/explosive/grenade/smokebomb/airburst,
 	)
 
-	spawned_gear_list = list(
-		/obj/item/explosive/grenade/sebb,
-		/obj/item/explosive/grenade/sebb,
-		/obj/item/explosive/grenade/sebb,
-		/obj/item/explosive/grenade/sebb,
-		/obj/item/explosive/grenade/sebb,
-		/obj/item/explosive/grenade/sebb,
-	)
-
 /obj/effect/essentials_set/sebb_6_pack
 	spawned_gear_list = list(
 		/obj/item/explosive/grenade/sebb,

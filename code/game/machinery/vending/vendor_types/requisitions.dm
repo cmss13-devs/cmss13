@@ -61,7 +61,6 @@
 		list("Breaching Charge", round(scale * 2), /obj/item/explosive/plastic/breaching_charge, VENDOR_ITEM_REGULAR),
 		list("G2 Electroshock Grenade", round(scale * 5), /obj/item/explosive/grenade/sebb, null, VENDOR_ITEM_REGULAR),
 
-
 		list("WEBBINGS", -1, null, null),
 		list("Black Webbing Vest", round(scale * 2), /obj/item/clothing/accessory/storage/black_vest, VENDOR_ITEM_REGULAR),
 		list("Brown Webbing Vest", round(scale * 2), /obj/item/clothing/accessory/storage/black_vest/brown_vest, VENDOR_ITEM_REGULAR),

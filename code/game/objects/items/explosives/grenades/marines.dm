@@ -467,18 +467,22 @@
 
 /obj/item/explosive/grenade/sebb
 	name = "\improper G2 Electroshock grenade"
-	desc = "This is a G2 Electroshock Grenade. Produced by Armat Battlefield Systems, it's sometimes referred to as the Sonic Electric Ball Breaker, after a rash of incidents where the intense 1.2 gV sonic payload caused... rupturing. A bounding landmine mode is available for this weapon which activates a small drill to self-bury itself when planted. Simply plant it at your feet and walk away."
-
+	desc = "This is a G2 Electroshock Grenade. Produced by Armat Battlefield Systems, it's sometimes referred to as the Sonic Electric Ball Breaker, \
+		after a rash of incidents where the intense 1.2 gV sonic payload caused... rupturing. \
+		A bounding landmine mode is available for this weapon which activates a small drill to self-bury itself when planted. Simply plant it at your feet and walk away."
 	icon_state = "grenade_sebb"
 	item_state = "grenade_sebb"
 	det_time = 4 SECONDS
-	var/range = 5 // Maximum range of effect
-	var/damage = 120 // Maximum possible damage before falloff.
-	var/falloff_dam_reduction_mult = 13 // Factor to mutiply the effect range has on damage.
+	/// Maximum range of effect
+	var/range = 5
+	/// Maximum possible damage before falloff.
+	var/damage = 120
+	/// Factor to mutiply the effect range has on damage.
+	var/falloff_dam_reduction_mult = 13
 
-/obj/item/explosive/grenade/sebb/examine(mob/user)
-	..()
-	to_chat(user, SPAN_NOTICE("To put into mine mode, plant at feet."))
+/obj/item/explosive/grenade/sebb/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("To put into mine mode, plant at feet.")
 
 /obj/item/explosive/grenade/afterattack(atom/target, mob/user, proximity)
 	if(active)
@@ -496,27 +500,27 @@
 		SPAN_NOTICE("You start deploying [src]."))
 	to_chat(user, SPAN_NOTICE("You switch [src] into landmine mode and start placing it..."))
 	playsound(user.loc, 'sound/effects/thud.ogg', 100, 6)
-	if(!do_after(user,2 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+	if(!do_after(user, 2 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		to_chat(user, SPAN_NOTICE("You stop digging."))
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] finishes deploying [src]."), \
+	user.visible_message(SPAN_NOTICE("[user] finishes deploying [src]."),
 		SPAN_NOTICE("You finish deploying [src]."))
 	var/obj/item/explosive/mine/sebb/planted = new /obj/item/explosive/mine/sebb(get_turf(user))
-	planted.pixel_x += rand(-5,5)
-	planted.pixel_y += rand(-5,5)
+	planted.pixel_x += rand(-5, 5)
+	planted.pixel_y += rand(-5, 5)
 	qdel(src)
 
 /obj/item/explosive/grenade/sebb/activate()
 	..()
 	var/soundtime = det_time - 5
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound),src.loc,'sound/effects/sebb_beep.ogg',60,0, 10),soundtime)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), src.loc, 'sound/effects/sebb_beep.ogg', 60, 0, 10), soundtime)
 
 
 /obj/item/explosive/grenade/sebb/prime()
-	var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread
-	var/list/full_range = oview(range,src) // Fill a list of stuff in the range so we won't have to spam it
-	new /obj/effect/overlay/sebb(get_turf(src))
+	var/datum/effect_system/spark_spread/spark = new
+	var/list/full_range = oview(range, src) // Fill a list of stuff in the range so we won't have to spam it
+	new /obj/effect/overlay/temp/sebb(get_turf(src))
 	playsound(src.loc, 'sound/effects/sebb_explode.ogg', 100, 0, 10)
 	for(var/obj/structure/machinery/defenses/sentry/sentry_stun in full_range)
 		sentry_stun.sentry_range = 0 // Temporarily "disable" the sentry by killing its range then setting it back.
@@ -531,7 +535,7 @@
 			spark.set_up(2, 1, turf)
 			spark.start()
 	for(var/mob/living/carbon/mob in full_range) // no simplemob support
-		var/mob_dist = get_dist(src,mob)
+		var/mob_dist = get_dist(src, mob)
 		var/falloff = mob_dist * falloff_dam_reduction_mult
 		// Damage equation: damage - (mob distance * falloff_dam_reduction_mult)
 		//  Example: A marine is 3 tiles out, the distance (3) is multiplied by falloff_dam_reduction_mult to get falloff.
@@ -542,18 +546,18 @@
 
 		if(ishuman(mob))
 			var/mob/living/carbon/human/shocked_human = mob
-			if(shocked_human.species == /datum/species/synthetic) // Massive overvoltage to ungrounded robots is pretty bad
-				damage_applied = damage_applied * 2
+			if(isspeciessynth(shocked_human)) // Massive overvoltage to ungrounded robots is pretty bad
+				damage_applied *= 2
 				shocked_human.Stun(1)
-				to_chat(mob,SPAN_HIGHDANGER("All of your systems jam up as your main bus is overvolted by [damage_applied*2] volts."))
-			shocked_human.take_overall_armored_damage(damage_applied ,ARMOR_ENERGY,BURN, 90) // 90% chance to be on additional limbs
+				to_chat(mob, SPAN_HIGHDANGER("All of your systems jam up as your main bus is overvolted by [damage_applied*2] volts."))
+			shocked_human.take_overall_armored_damage(damage_applied, ARMOR_ENERGY, BURN, 90) // 90% chance to be on additional limbs
 			shocked_human.make_dizzy(damage_applied*3)
 			shocked_human.make_jittery(damage_applied*3)
 			mob.apply_stamina_damage(damage_applied*2) // REMOVETHIS REMOVETHIS TO TEST
 			shocked_human.emote("pain")
 		else //nonhuman damage + slow
 			mob.apply_damage(damage_applied, BURN)
-			mob.Slow(damage_applied/mob_dist)
+			mob.Slow(damage_applied/max(mob_dist, 1))
 
 		if(mob_dist < 1) // Range based stuff, standing ontop of the equivalent of a canned lighting bolt should mess you up.
 			mob.KnockDown(1)
@@ -563,32 +567,25 @@
 			mob.KnockDown((range/2)/mob_dist) // half of the maximum range divided by the distance the mob is to the grenade
 			mob.eye_blurry = damage_applied/8
 		else
-			to_chat(mob,SPAN_HIGHDANGER("Your entire body seizes up as a powerful shock courses through it!"))
+			to_chat(mob, SPAN_HIGHDANGER("Your entire body seizes up as a powerful shock courses through it!"))
 	qdel(src)
 
 
 /obj/item/explosive/grenade/sebb/primed
-	name = "\improper G2 Electroshock grenade"
-	desc = "A G2 Electroshock Grenade, looks like its quite angry! Oh shit!"
+	desc = "A G2 Electroshock Grenade, looks like it's quite angry! Oh shit!"
 	det_time = 1 SECONDS // 1 second to blow it up
 
-/obj/item/explosive/grenade/sebb/primed/New()
+/obj/item/explosive/grenade/sebb/primed/Initialize()
+	. = ..()
 	activate()
 
-/obj/effect/overlay/sebb
-	name = "Danger"
+/obj/effect/overlay/temp/sebb
 	icon = 'icons/effects/sebb.dmi'
 	icon_state = "sebb_explode"
 	layer = ABOVE_LIGHTING_PLANE
-	var/time_to_live = 1 SECONDS // How long the sprite placeholder lives
 	pixel_x = -175 // We need these offsets to force center the sprite because BYOND is dumb
 	pixel_y = -175
 	appearance_flags = RESET_COLOR
-
-
-/obj/effect/overlay/sebb/Initialize()
-	. = ..()
-	QDEL_IN(src,time_to_live)
 
 
 /*

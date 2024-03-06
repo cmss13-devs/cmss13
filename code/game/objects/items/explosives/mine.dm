@@ -328,11 +328,9 @@
 
 /obj/item/explosive/mine/sebb/disarm()
 	. = ..()
-	new /obj/item/explosive/grenade/sebb(src)
+	new /obj/item/explosive/grenade/sebb(get_turf(src))
 	qdel(src)
 
 /obj/item/explosive/mine/sebb/prime()
-	set waitfor = 0
 	new /obj/item/explosive/grenade/sebb/primed(get_turf(src))
-	if(!QDELETED(src))
-		disarm()
+	qdel(src)

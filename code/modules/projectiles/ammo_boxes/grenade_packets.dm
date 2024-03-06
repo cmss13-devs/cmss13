@@ -115,7 +115,6 @@ GLOBAL_LIST_INIT(grenade_packets, list(
 	icon_state = "sebb_packet"
 	content_type = /obj/item/explosive/grenade/sebb
 
-
 /obj/item/storage/box/packet/airburst_he
 	name = "\improper M74 airburst grenade packet"
 	desc = "It contains three M74 airburst fragmentation grenades. This end towards the enemy."

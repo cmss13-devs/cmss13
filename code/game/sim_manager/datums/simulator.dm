@@ -40,7 +40,7 @@
 	if(!sim_camera)
 		to_chat(user, SPAN_WARNING("GPU damaged! Unable to start simulation."))
 		return
-	if(user.client.view != GLOB.world_view_size)
+	if(user.client.view_size.is_zooming())
 		to_chat(user, SPAN_WARNING("You're too busy looking at something else."))
 		return
 	user.reset_view(sim_camera)

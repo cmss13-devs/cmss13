@@ -155,6 +155,7 @@ GLOBAL_LIST_INIT(admin_verbs_major_event, list(
 	/client/proc/load_event_level,
 	/client/proc/cmd_fun_fire_ob,
 	/client/proc/map_template_upload,
+	/client/proc/force_load_lazy_template,
 	/client/proc/enable_podlauncher,
 	/client/proc/change_taskbar_icon,
 	/client/proc/change_weather,

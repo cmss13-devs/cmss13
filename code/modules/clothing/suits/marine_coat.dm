@@ -278,15 +278,29 @@
 	icon_state = "o_jacket"
 	item_state = "o_jacket"
 
-//==================War Correspondent==================\\
+//==================Combat Correspondent==================\\
 
 /obj/item/clothing/suit/storage/jacket/marine/reporter
 	name = "combat correspondent jacket"
 	desc = "A jacket for the most fashionable war correspondents."
-	icon = 'icons/mob/humans/onmob/contained/war_correspondent.dmi'
-	icon_state = "wc_suit"
-	item_state = "wc_suit"
-	contained_sprite = TRUE
+	icon_state = "cc_brown"
+	item_state = "cc_brown"
+	flags_atom = NO_SNOW_TYPE
+	has_buttons = FALSE
+
+/obj/item/clothing/suit/storage/jacket/marine/reporter/green
+	icon_state = "cc_green"
+	item_state = "cc_green"
+
+
+/obj/item/clothing/suit/storage/jacket/marine/reporter/black
+	icon_state = "cc_black"
+	item_state = "cc_black"
+
+/obj/item/clothing/suit/storage/jacket/marine/reporter/blue
+	icon_state = "cc_blue"
+	item_state = "cc_blue"
+
 
 //==================Corporate Liaison==================\\
 

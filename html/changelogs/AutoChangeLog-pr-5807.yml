@@ -1,4 +1,0 @@
-author: "SabreML"
-delete-after: True
-changes:
-  - bugfix: "Fixed acid pillars shooting nested marines."

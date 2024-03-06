@@ -101,11 +101,6 @@
 	if(opacity)
 		directional_opacity = ALL_CARDINALS
 
-	//Get area light
-	var/area/A = loc
-	if(A?.lighting_effect)
-		overlays += A.lighting_effect
-
 	return INITIALIZE_HINT_NORMAL
 
 /turf/Destroy(force)

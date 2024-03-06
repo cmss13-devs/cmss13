@@ -1,6 +1,0 @@
-author: "LTNTS"
-delete-after: True
-changes:
-  - rscadd: "brig areas: warden office, MP bunks, starboard hallway, interrogation room, evidence storage"
-  - spellcheck: "changes brig surgery to brig medical"
-  - code_imp: "removed some brig areas from hijack, added other brig areas"

@@ -1,4 +1,0 @@
-author: "Segrain"
-delete-after: True
-changes:
-  - bugfix: "Fisticuffs attacks are no longer attributed to wrong mob."

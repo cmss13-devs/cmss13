@@ -143,14 +143,16 @@
 		far_sight = TRUE
 		if(user)
 			if(user.client)
-				user.client.view_size.add(2)
+				var/list/global_view = getviewsize(get_screen_size(user.client.prefs.widescreen))
+				user.client.view_size.set_default("[global_view[1] + 2]x[global_view[2] + 2]")
+
 		START_PROCESSING(SSobj, src)
 	else
 		linked_smartgun = null
 		far_sight = FALSE
 		if(user)
 			if(user.client)
-				user.client.view_size.reset_to_default()
+				user.client.view_size.set_default(get_screen_size(user.client.prefs.widescreen))
 		STOP_PROCESSING(SSobj, src)
 
 	var/datum/action/item_action/m56_goggles/far_sight/FT = locate(/datum/action/item_action/m56_goggles/far_sight) in actions

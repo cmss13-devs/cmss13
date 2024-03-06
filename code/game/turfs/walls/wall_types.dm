@@ -485,7 +485,14 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	if(neighbors_list in list(EAST|WEST))
 		var/r1 = rand(0,10) //Make a random chance for this to happen
 		if(r1 >= 9)
-			overlays += image(icon, icon_state = "wood_variant")
+			overlays += image(icon, icon_state = "[icon_state]_variant") // [icon_state] exists to make it capable to vary plain walls as well (either it'll be "wood" or "plain_wood")
+
+/turf/closed/wall/wood/plain
+	name = "plain wood wall"
+	icon = 'icons/turf/walls/wood_plain.dmi'
+	icon_state = "wood_plain"
+	walltype = WALL_WOOD_PLAIN
+	baseturfs = /turf/open/floor/wood
 
 //Colorable rocks. Looks like moonsand.
 

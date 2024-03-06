@@ -345,6 +345,7 @@
 #define WALL_BONE_RESIN "bone_resin"
 #define WALL_CAVE "cavewall"
 #define WALL_WOOD "wood"
+#define WALL_WOOD_PLAIN "wood_plain"
 #define WALL_GOLD "gold"
 #define WALL_CULT "cult"
 #define WALL_STONE "stone"

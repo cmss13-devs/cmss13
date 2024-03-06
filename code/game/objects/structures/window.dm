@@ -695,6 +695,16 @@
 	basestate = "wood_rwindow"
 	window_frame = /obj/structure/window_frame/wood
 
+/obj/structure/window/framed/wood/plain
+	icon_state = "wood_plain_window0"
+	basestate = "wood_plain_window"
+	window_frame = /obj/structure/window_frame/wood/plain
+
+/obj/structure/window/framed/wood/reinforced/plain
+	icon_state = "wood_plain_rwindow0"
+	basestate = "wood_plain_rwindow"
+	window_frame = /obj/structure/window_frame/wood/plain
+
 //Strata windows
 
 /obj/structure/window/framed/strata

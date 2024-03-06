@@ -641,8 +641,16 @@
 /obj/item/reagent_container/food/snacks/carpmeat/Initialize()
 	. = ..()
 	reagents.add_reagent("fish", 3)
-	reagents.add_reagent("carpotoxin", 3)
+	reagents.add_reagent("carpotoxin", 6)
 	src.bitesize = 6
+
+/obj/item/reagent_container/food/snacks/carpmeat/processed
+	name = "processed carp fillet"
+	desc = "A fillet of spess carp meat. This one has been processed to remove carpotoxin."
+
+/obj/item/reagent_container/food/snacks/carpmeat/processed/Initialize()
+	. = ..()
+	reagents.remove_reagent("carpotoxin", 6)
 
 /obj/item/reagent_container/food/snacks/fishfingers
 	name = "Fish Fingers"
@@ -653,7 +661,6 @@
 /obj/item/reagent_container/food/snacks/fishfingers/Initialize()
 	. = ..()
 	reagents.add_reagent("fish", 4)
-	reagents.add_reagent("carpotoxin", 3)
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/hugemushroomslice
@@ -802,7 +809,6 @@
 	. = ..()
 	reagents.add_reagent("bread", 3)
 	reagents.add_reagent("fish", 3)
-	reagents.add_reagent("carpotoxin", 3)
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/tofuburger
@@ -850,7 +856,6 @@
 	. = ..()
 	reagents.add_reagent("bread", 3)
 	reagents.add_reagent("meatprotein", 3)
-	reagents.add_reagent("xenoblood", 3)
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/clownburger
@@ -1070,7 +1075,6 @@
 	. = ..()
 	reagents.add_reagent("bread", 4)
 	reagents.add_reagent("meatprotein", 2)
-	reagents.add_reagent("xenoblood", 4)
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/wingfangchu
@@ -1084,7 +1088,6 @@
 	. = ..()
 	reagents.add_reagent("soysauce", 4)
 	reagents.add_reagent("meatprotein", 4)
-	reagents.add_reagent("xenoblood", 4)
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/human/kabob
@@ -1133,7 +1136,6 @@
 /obj/item/reagent_container/food/snacks/cubancarp/Initialize()
 	. = ..()
 	reagents.add_reagent("fish", 6)
-	reagents.add_reagent("carpotoxin", 3)
 	reagents.add_reagent("hotsauce", 3)
 	bitesize = 3
 
@@ -1690,7 +1692,6 @@
 /obj/item/reagent_container/food/snacks/fishandchips/Initialize()
 	. = ..()
 	reagents.add_reagent("fish", 6)
-	reagents.add_reagent("carpotoxin", 3)
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/sandwich
@@ -2172,7 +2173,6 @@
 	reagents.add_reagent("bread", 10)
 	reagents.add_reagent("meatprotein", 10)
 	reagents.add_reagent("cheese", 10)
-	reagents.add_reagent("xenoblood", 10)
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/xenomeatbreadslice

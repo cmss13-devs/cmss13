@@ -1,0 +1,9 @@
+author: "GrrrKitten"
+delete-after: True
+changes:
+  - rscadd: "New Deployable Fax Backpack for the Civilian Combat Correspondent"
+  - rscadd: "New Wieldable Broadcasting Camera for the Civilian Combat Correspondent"
+  - rscadd: "Cameras can no longer be turned off but have to be wielded to take photos"
+  - rscadd: "Add's new Combat Correspondent vendor with CC's basic outfits and standard gear"
+  - bugfix: "Fixes numerous camera/photo bugs"
+  - imageadd: "Adds new itemstates for the polaroid camera"

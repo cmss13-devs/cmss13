@@ -10,11 +10,6 @@ GLOBAL_PROTECT(href_token)
 	var/rights = 0
 	var/fakekey = null
 
-	var/admincaster_screen = 0 //See newscaster.dm under machinery for a full description
-	var/datum/feed_message/admincaster_feed_message = new /datum/feed_message   //These two will act as admin_holders.
-	var/datum/feed_channel/admincaster_feed_channel = new /datum/feed_channel
-	var/admincaster_signature //What you'll sign the newsfeeds as
-
 	var/href_token
 
 	var/datum/marked_datum
@@ -31,7 +26,6 @@ GLOBAL_PROTECT(href_token)
 		error("Admin datum created without a ckey argument. Datum has been deleted")
 		qdel(src)
 		return
-	admincaster_signature = "Weyland-Yutani Officer #[rand(0,9)][rand(0,9)][rand(0,9)]"
 	rank = initial_rank
 	rights = initial_rights
 	href_token = GenerateToken()

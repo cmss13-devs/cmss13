@@ -182,7 +182,7 @@ SUBSYSTEM_DEF(minimaps)
  * the raw lists are to speed up the Fire() of the subsystem so we dont have to filter through
  * WARNING!
  * There is a byond bug: http://www.byond.com/forum/post/2661309
- * That that forces us to use a seperate list ref when accessing the lists of this datum
+ * That that forces us to use a separate list ref when accessing the lists of this datum
  * Yea it hurts me too
  */
 /datum/hud_displays
@@ -584,6 +584,8 @@ SUBSYSTEM_DEF(minimaps)
 	if(minimap_displayed)
 		owner?.client?.remove_from_screen(map)
 		minimap_displayed = FALSE
+
+	UnregisterSignal(target, COMSIG_MOVABLE_Z_CHANGED)
 
 /**
  * Updates the map when the owner changes zlevel

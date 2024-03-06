@@ -213,7 +213,10 @@
 		return FALSE
 
 	if(lock_evolve)
-		to_chat(src, SPAN_WARNING("You are banished and cannot reach the hivemind."))
+		if(banished)
+			to_chat(src, SPAN_WARNING("We are banished and cannot reach the hivemind."))
+		else
+			to_chat(src, SPAN_WARNING("We can't evolve."))
 		return FALSE
 
 	if(jobban_isbanned(src, JOB_XENOMORPH))//~who so genius to do this is?
@@ -271,7 +274,10 @@
 		return
 
 	if(lock_evolve)
-		to_chat(src, SPAN_WARNING("We are banished and cannot reach the hivemind."))
+		if(banished)
+			to_chat(src, SPAN_WARNING("We are banished and cannot reach the hivemind."))
+		else
+			to_chat(src, SPAN_WARNING("We can't deevolve."))
 		return FALSE
 
 

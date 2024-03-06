@@ -436,7 +436,7 @@ What a mess.*/
 							temp += "</ul>"
 					if("rank")
 						//This was so silly before the change. Now it actually works without beating your head against the keyboard. /N
-						if (istype(active1, /datum/data/record) && GLOB.highcom_paygrades.Find(rank))
+						if (istype(active1, /datum/data/record) && GLOB.uscm_highcom_paygrades.Find(rank))
 							temp = "<h5>Occupation:</h5>"
 							temp += "<ul>"
 							for(var/rank in GLOB.joblist)
@@ -529,7 +529,7 @@ What a mess.*/
 				if(4)
 					R.fields["criminal"] = pick("None", "*Arrest*", "Incarcerated", "Released", "Suspect", "NJP")
 				if(5)
-					R.fields["p_stat"] = pick("*Unconcious*", "Active", "Physically Unfit")
+					R.fields["p_stat"] = pick("*Unconscious*", "Active", "Physically Unfit")
 				if(6)
 					R.fields["m_stat"] = pick("*Insane*", "*Unstable*", "*Watch*", "Stable")
 			continue

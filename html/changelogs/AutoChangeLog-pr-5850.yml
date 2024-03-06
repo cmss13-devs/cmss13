@@ -1,0 +1,4 @@
+author: "TheGamerdk"
+delete-after: True
+changes:
+  - refactor: "Overwatch console will now save your filter settings"

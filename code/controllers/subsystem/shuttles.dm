@@ -39,9 +39,6 @@ SUBSYSTEM_DEF(shuttle)
 	var/loading_shuttle = FALSE
 
 /datum/controller/subsystem/shuttle/Initialize(timeofday)
-	if(GLOB.perf_flags & PERF_TOGGLE_SHUTTLES)
-		can_fire = FALSE
-		return
 	initial_load()
 	return SS_INIT_SUCCESS
 
@@ -52,8 +49,6 @@ SUBSYSTEM_DEF(shuttle)
 		CHECK_TICK
 
 /datum/controller/subsystem/shuttle/fire(resumed = FALSE)
-	if(!resumed && (GLOB.perf_flags & PERF_TOGGLE_SHUTTLES))
-		return
 	for(var/thing in mobile)
 		if(!thing)
 			mobile.Remove(thing)
@@ -164,9 +159,6 @@ SUBSYSTEM_DEF(shuttle)
 	// First, determine the size of the needed zone
 	// Because of shuttle rotation, the "width" of the shuttle is not
 	// always x.
-	var/travel_dir = M.preferred_direction
-	// Remember, the direction is the direction we appear to be
-	// coming from
 	var/dock_angle = dir2angle(M.preferred_direction) + dir2angle(M.port_direction) + 180
 	var/dock_dir = angle2dir(dock_angle)
 
@@ -185,27 +177,24 @@ SUBSYSTEM_DEF(shuttle)
 
 /*
 	to_chat(world, "The attempted transit dock will be [transit_width] width, and \)
-		[transit_height] in height. The travel dir is [travel_dir]."
+		[transit_height] in height. The travel dir is [M.preferred_direction]."
 */
 
-	var/transit_path = /turf/open/space/transit
-	switch(travel_dir)
-		if(NORTH)
-			transit_path = /turf/open/space/transit/north
-		if(SOUTH)
-			transit_path = /turf/open/space/transit/south
-		if(EAST)
-			transit_path = /turf/open/space/transit/east
-		if(WEST)
-			transit_path = /turf/open/space/transit/west
+	var/transit_path = M.get_transit_path_type()
 
-	var/datum/turf_reservation/proposal = SSmapping.RequestBlockReservation(transit_width, transit_height, null, /datum/turf_reservation/transit, transit_path)
+	var/datum/turf_reservation/proposal = SSmapping.request_turf_block_reservation(
+		transit_width,
+		transit_height,
+		1,
+		reservation_type = /datum/turf_reservation/transit,
+		turf_type_override = transit_path,
+	)
 
 	if(!istype(proposal))
 		log_debug("generate_transit_dock() failed to get a block reservation from mapping system")
 		return FALSE
 
-	var/turf/bottomleft = locate(proposal.bottom_left_coords[1], proposal.bottom_left_coords[2], proposal.bottom_left_coords[3])
+	var/turf/bottomleft = proposal.bottom_left_turfs[1]
 	// Then create a transit docking port in the middle
 	var/coords = M.return_coords(0, 0, dock_dir)
 	/* 0------2
@@ -374,7 +363,7 @@ SUBSYSTEM_DEF(shuttle)
 
 	return shuttle
 
-/datum/controller/subsystem/shuttle/proc/action_load(datum/map_template/shuttle/loading_template, obj/docking_port/stationary/destination_port)
+/datum/controller/subsystem/shuttle/proc/action_load(datum/map_template/shuttle/loading_template, obj/docking_port/stationary/destination_port, replace = FALSE)
 	// Check for an existing preview
 	if(preview_shuttle && (loading_template != preview_template))
 		preview_shuttle.jumpToNullSpace()
@@ -383,8 +372,7 @@ SUBSYSTEM_DEF(shuttle)
 		QDEL_NULL(preview_reservation)
 
 	if(!preview_shuttle)
-		if(load_template(loading_template))
-			preview_shuttle.linkup(loading_template, destination_port)
+		load_template(loading_template)
 		preview_template = loading_template
 
 	// get the existing shuttle information, if any
@@ -419,9 +407,6 @@ SUBSYSTEM_DEF(shuttle)
 
 	for(var/area/A as anything in preview_shuttle.shuttle_areas)
 		for(var/turf/T as anything in A)
-			// turfs inside the shuttle are not available for shuttles
-			T.flags_atom &= ~UNUSED_RESERVATION_TURF
-
 			// update underlays
 			if(istype(T, /turf/closed/shuttle))
 				var/dx = T.x - preview_shuttle.x
@@ -430,8 +415,10 @@ SUBSYSTEM_DEF(shuttle)
 				T.underlays.Cut()
 				T.underlays += mutable_appearance(target_lz.icon, target_lz.icon_state, TURF_LAYER, FLOOR_PLANE)
 
+	preview_shuttle.register(replace)
 	var/list/force_memory = preview_shuttle.movement_force
 	preview_shuttle.movement_force = list("KNOCKDOWN" = 0, "THROW" = 0)
+
 	preview_shuttle.initiate_docking(D)
 	preview_shuttle.movement_force = force_memory
 
@@ -442,7 +429,7 @@ SUBSYSTEM_DEF(shuttle)
 	preview_shuttle.timer = timer
 	preview_shuttle.mode = mode
 
-	preview_shuttle.register()
+	preview_shuttle.postregister(replace)
 
 	// TODO indicate to the user that success happened, rather than just
 	// blanking the modification tab
@@ -452,16 +439,21 @@ SUBSYSTEM_DEF(shuttle)
 	selected = null
 	QDEL_NULL(preview_reservation)
 
-/datum/controller/subsystem/shuttle/proc/load_template(datum/map_template/shuttle/S)
+/datum/controller/subsystem/shuttle/proc/load_template(datum/map_template/shuttle/loading_template)
 	. = FALSE
-	// load shuttle template, centred at shuttle import landmark,
-	preview_reservation = SSmapping.RequestBlockReservation(S.width, S.height, SSmapping.transit.z_value, /datum/turf_reservation/transit)
+	// Load shuttle template to a fresh block reservation.
+	preview_reservation = SSmapping.request_turf_block_reservation(
+		loading_template.width,
+		loading_template.height,
+		1,
+		reservation_type = /datum/turf_reservation/transit,
+	)
 	if(!preview_reservation)
 		CRASH("failed to reserve an area for shuttle template loading")
-	var/turf/BL = TURF_FROM_COORDS_LIST(preview_reservation.bottom_left_coords)
-	S.load(BL, centered = FALSE, register = FALSE)
+	var/turf/bottom_left = preview_reservation.bottom_left_turfs[1]
+	loading_template.load(bottom_left, centered = FALSE, register = FALSE)
 
-	var/affected = S.get_affected_turfs(BL, centered=FALSE)
+	var/affected = loading_template.get_affected_turfs(bottom_left, centered=FALSE)
 
 	var/found = 0
 	// Search the turfs for docking ports
@@ -475,13 +467,13 @@ SUBSYSTEM_DEF(shuttle)
 				found++
 				if(found > 1)
 					qdel(P, force=TRUE)
-					log_world("Map warning: Shuttle Template [S.mappath] has multiple mobile docking ports.")
+					log_world("Map warning: Shuttle Template [loading_template.mappath] has multiple mobile docking ports.")
 				else
 					preview_shuttle = P
 			if(istype(P, /obj/docking_port/stationary))
-				log_world("Map warning: Shuttle Template [S.mappath] has a stationary docking port.")
+				log_world("Map warning: Shuttle Template [loading_template.mappath] has a stationary docking port.")
 	if(!found)
-		var/msg = "load_template(): Shuttle Template [S.mappath] has no mobile docking port. Aborting import."
+		var/msg = "load_template(): Shuttle Template [loading_template.mappath] has no mobile docking port. Aborting import."
 		for(var/T in affected)
 			var/turf/T0 = T
 			T0.empty()
@@ -490,7 +482,7 @@ SUBSYSTEM_DEF(shuttle)
 		WARNING(msg)
 		return
 	//Everything fine
-	S.post_load(preview_shuttle)
+	loading_template.post_load(preview_shuttle)
 	return TRUE
 
 /datum/controller/subsystem/shuttle/proc/unload_preview()

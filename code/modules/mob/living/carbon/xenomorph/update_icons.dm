@@ -41,7 +41,7 @@
 			Q.queen_standing_icon = icon_xeno
 			Q.queen_ovipositor_icon = 'icons/mob/xenos/ovipositor.dmi'
 
-	var/mutation_caste_state = "[mutation_type] [caste.caste_type]"
+	var/mutation_caste_state = "[get_strain_icon()] [caste.caste_type]"
 	if(!walking_state_cache[mutation_caste_state])
 		var/cache_walking_state = FALSE
 		for(var/state in icon_states(icon))
@@ -64,7 +64,7 @@
 	if(behavior_delegate?.on_update_icons())
 		return
 
-	var/mutation_caste_state = "[mutation_icon_state || mutation_type] [caste.caste_type]"
+	var/mutation_caste_state = "[get_strain_icon()] [caste.caste_type]"
 	if(stat == DEAD)
 		icon_state = "[mutation_caste_state] Dead"
 		if(!(icon_state in icon_states(icon_xeno)))

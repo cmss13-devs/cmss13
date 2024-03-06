@@ -313,7 +313,7 @@
 	if(!choice)
 		return
 	var/evo_points_per_larva = 250
-	var/required_larva = 3
+	var/required_larva = 1
 	var/mob/living/carbon/xenomorph/target_xeno
 
 	for(var/mob/living/carbon/xenomorph/xeno in user_xeno.hive.totalXenos)

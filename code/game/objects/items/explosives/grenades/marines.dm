@@ -472,7 +472,6 @@
 		A bounding landmine mode is available for this weapon which activates a small drill to self-bury itself when planted. Simply plant it at your feet and walk away."
 	icon_state = "grenade_sebb"
 	item_state = "grenade_sebb"
-	det_time = 4 SECONDS
 	/// Maximum range of effect
 	var/range = 5
 	/// Maximum possible damage before falloff.

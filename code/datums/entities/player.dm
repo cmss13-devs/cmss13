@@ -29,6 +29,9 @@
 
 	var/stickyban_whitelisted = FALSE
 
+	var/byond_account_age
+	var/first_join_date
+
 
 // UNTRACKED FIELDS
 	var/name // Used for NanoUI statistics menu
@@ -78,6 +81,8 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		"migrated_bans" = DB_FIELDTYPE_INT,
 		"migrated_jobbans" = DB_FIELDTYPE_INT,
 		"stickyban_whitelisted" = DB_FIELDTYPE_INT,
+		"byond_account_age" = DB_FIELDTYPE_STRING_MEDIUM,
+		"first_join_date" = DB_FIELDTYPE_STRING_MEDIUM,
 	)
 
 // NOTE: good example of database operations using NDatabase, so it is well commented
@@ -449,6 +454,31 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		for(var/datum/entity/player_stat/S as anything in _stat)
 			LAZYSET(stats, S.stat_id, S)
 
+/datum/entity/player/proc/load_byond_account_age()
+	var/datum/http_request/request = new()
+	request.prepare(RUSTG_HTTP_METHOD_GET, "https://www.byond.com/members/[ckey]?format=text")
+	request.execute_blocking()
+	var/datum/http_response/response = request.into_response()
+	if(response.errored)
+		return
+
+	var/static/regex/regex = regex("joined = \"(\\d{4}-\\d{2}-\\d{2})\"")
+	if(!regex.Find(response.body))
+		return
+
+	byond_account_age = regex.group[1]
+
+/datum/entity/player/proc/find_first_join_date()
+	var/list/triplets = search_login_triplet_by_ckey(ckey)
+
+	if(!length(triplets))
+		first_join_date = "UNKNOWN"
+		return
+
+	var/datum/view_record/login_triplet/first_triplet = triplets[1]
+	first_join_date = first_triplet.login_date
+
+
 /proc/get_player_from_key(key)
 	var/safe_key = ckey(key)
 	if(!safe_key)
@@ -470,9 +500,15 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		error("ALARM: MISMATCH. Loaded player data for client [ckey], player data ckey is [player.ckey], id: [player.id]")
 	player_data = player
 	player_data.owning_client = src
+	if(!player_data.last_login)
+		player_data.first_join_date = "[time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")]"
+	if(!player_data.first_join_date)
+		player_data.find_first_join_date()
 	player_data.last_login = "[time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")]"
 	player_data.last_known_ip = address
 	player_data.last_known_cid = computer_id
+	if(!player_data.byond_account_age)
+		player_data.load_byond_account_age()
 	player_data.save()
 	record_login_triplet(player.ckey, address, computer_id)
 	player_data.sync()

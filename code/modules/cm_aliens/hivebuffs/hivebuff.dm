@@ -158,7 +158,7 @@
 	if(QDELETED(purchased_pylon) || QDELETED(purchasing_mob) && !purchasing_mob.check_state())
 		return FALSE
 
-	// Actually process the buff and apply effects - If the buff succeeds engage_message will return TRUE otherwise it will return a string which will get passed to the purchaser and the queen.
+	// Actually process the buff and apply effects - If the buff succeeds engage_message will return TRUE, if it fails there should be an engage_failure_message set.
 	if(!on_engage())
 		if(engage_failure_message && istext(engage_failure_message))
 			to_chat(purchasing_mob, SPAN_XENONOTICE(engage_failure_message))
@@ -204,7 +204,7 @@
 	return TRUE
 
 /// Behaviour for the buff goes in here.
-/// IMPORTANT: If you buff has any kind of conditions which can fail. Return a string with details to be passed to the purchaser.
+/// IMPORTANT: If you buff has any kind of conditions which can fail. Set an engage_failure_message and return FALSE.
 /// If your buff succeeds you must return TRUE
 /datum/hivebuff/proc/on_engage()
 	return TRUE

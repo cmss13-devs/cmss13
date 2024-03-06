@@ -88,7 +88,3 @@
 			//Review damage and knockdown
 			carbon.apply_armoured_damage(20)
 			carbon.KnockDown((1 SECONDS) / GLOBAL_STATUS_MULTIPLIER)
-
-/datum/behavior_delegate/destroyer_base/melee_attack_additional_effects_self()
-	..()
-	to_chat(world, "Attack self")

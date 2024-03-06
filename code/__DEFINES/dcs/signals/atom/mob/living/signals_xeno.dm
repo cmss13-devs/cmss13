@@ -81,6 +81,3 @@
 
 /// From /mob/living/carbon/xenomorph/proc/do_evolve()
 #define COMSIG_XENO_EVOLVE_TO_NEW_CASTE "xeno_evolve_to_new_caste"
-
-/// From
-#define COMSIG_XENO_NEW_XENO_CREATED "xeno_new_xeno_spawned"

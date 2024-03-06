@@ -903,7 +903,6 @@ cases. Override_icon_state should be a list.*/
 	if(zoom_offset)
 		viewoffset = zoom_offset * 32
 
-	var/zoom_offset_time = 3*((viewoffset/32)/7)
 	var/dirtooffset = newdir ? newdir : user.dir
 
 	switch(dirtooffset)

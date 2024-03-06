@@ -1256,7 +1256,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		var/client/observer_client = nearby_observer.client
 		// We check observer view range specifically to also show the message to zoomed out ghosts. Double check Z as get_dist goes thru levels.
 		if((observer_client?.prefs?.toggles_chat & CHAT_DEAD) \
-			&& src.z == nearby_observer.z && get_dist(src, nearby_observer) <= observer_client.view)
+			&& src.z == nearby_observer.z && (nearby_observer in view(observer_client)))
 			to_chat(observer_client, SPAN_DEADSAY("<b>[src]</b> points to [A] [nearby_observer.format_jump(A)]"))
 	return TRUE
 

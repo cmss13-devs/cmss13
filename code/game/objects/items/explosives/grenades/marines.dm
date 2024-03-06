@@ -496,9 +496,8 @@
 
 	if(target != get_turf(user))
 		return
-	user.visible_message(SPAN_NOTICE("[user] starts deploying [src]."), \
-		SPAN_NOTICE("You start deploying [src]."))
-	to_chat(user, SPAN_NOTICE("You switch [src] into landmine mode and start placing it..."))
+	user.visible_message(SPAN_NOTICE("[user] starts deploying [src]."),
+		SPAN_NOTICE("You switch [src] into landmine mode and start placing it..."))
 	playsound(user.loc, 'sound/effects/thud.ogg', 100, 6)
 	if(!do_after(user, 2 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		to_chat(user, SPAN_NOTICE("You stop digging."))

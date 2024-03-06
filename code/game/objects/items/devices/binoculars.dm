@@ -30,7 +30,7 @@
 	if(SEND_SIGNAL(user, COMSIG_BINOCULAR_ATTACK_SELF, src))
 		return
 
-	zoom(user, 11, 12)
+	zoom(user, 11, 10)
 
 /obj/item/device/binoculars/dropped(/obj/item/item, mob/user)
 	. = ..()

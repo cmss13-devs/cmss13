@@ -389,6 +389,11 @@
 		var/list/viewrangelist = splittext(view,"x")
 		return list(text2num(viewrangelist[1]), text2num(viewrangelist[2]))
 
+///Return the center turf of the user's view
+/proc/get_view_center(mob/user)
+	var/x_offset = round(user.client.pixel_x / 32)
+	var/y_offset = round(user.client.pixel_y / 32)
+	return locate(user.x + x_offset, user.y + y_offset, user.z)
 
 #if DEBUG_CLICK_RATE
 /obj/item/clickrate_test

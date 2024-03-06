@@ -265,33 +265,39 @@
 			blip_pool[target] = new /obj/effect/detector_blip
 
 		var/obj/effect/detector_blip/DB = blip_pool[target]
-		var/c_view = getviewsize(user.client.view)
-		var/view_x_offset = 0
-		var/view_y_offset = 0
-		if(c_view[1] > 15 || c_view[2] > 15)
-			if(user.client.pixel_x >= 0)
-				view_x_offset = round(user.client.pixel_x/32)
-			else
-				view_x_offset = Ceiling(user.client.pixel_x/32)
-			if(user.client.pixel_y >= 0)
-				view_y_offset = round(user.client.pixel_y/32)
-			else
-				view_y_offset = Ceiling(user.client.pixel_y/32)
 
-		var/diff_dir_x = 0
-		var/diff_dir_y = 0
-		if(target.x - user.x > c_view + view_x_offset) diff_dir_x = 4
-		else if(target.x - user.x < -c_view + view_x_offset) diff_dir_x = 8
-		if(target.y - user.y > c_view + view_y_offset) diff_dir_y = 1
-		else if(target.y - user.y < -c_view + view_y_offset) diff_dir_y = 2
-		if(diff_dir_x || diff_dir_y)
+		var/c_view = getviewsize(user.client.view)
+		var/view_x = c_view[1]
+		var/view_y = c_view[2]
+
+		var/turf/center_view = get_view_center(user)
+
+		var/dir
+
+		var/screen_pos_y = target.y - center_view.y + round(view_y * 0.5) + 1
+		if(screen_pos_y < 1)
+			dir = SOUTH
+			screen_pos_y = 1
+		else if (screen_pos_y > view_y)
+			dir = NORTH
+			screen_pos_y = view_y
+
+		var/screen_pos_x = target.x - center_view.x + round(view_x * 0.5) + 1
+		if(screen_pos_x < 1)
+			dir = (dir ? dir == SOUTH ? SOUTHWEST : NORTHWEST : WEST)
+			screen_pos_x = 1
+		else if (screen_pos_x > view_x)
+			dir = (dir ? dir == SOUTH ? SOUTHEAST : NORTHEAST : EAST)
+			screen_pos_x = view_x
+
+		if(dir)
 			DB.icon_state = "[blip_icon]_blip_dir"
-			DB.setDir(diff_dir_x + diff_dir_y)
+			DB.setDir(dir)
 		else
 			DB.icon_state = "[blip_icon]_blip"
 			DB.setDir(initial(DB.dir))
 
-		DB.screen_loc = "[clamp(c_view + 1 - view_x_offset + (target.x - user.x), 1, 2*c_view+1)],[clamp(c_view + 1 - view_y_offset + (target.y - user.y), 1, 2*c_view+1)]"
+		DB.screen_loc = "[screen_pos_x],[screen_pos_y]"
 		user.client.add_to_screen(DB)
 		addtimer(CALLBACK(src, PROC_REF(clear_pings), user, DB), 1 SECONDS)
 

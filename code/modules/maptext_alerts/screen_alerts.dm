@@ -30,7 +30,7 @@
 	maptext_width = 480
 	maptext_x = 0
 	maptext_y = 0
-	screen_loc = "LEFT,TOP-3"
+	screen_loc = "TOP-3"
 
 	///Time taken to fade in as we start printing text
 	var/fade_in_time = 0
@@ -57,7 +57,6 @@
 	maptext_width = 480
 	maptext_x = 0
 	maptext_y = 0
-	screen_loc = "LEFT,TOP-3"
 
 	letters_per_update = 2
 	fade_out_delay = 4.5 SECONDS

@@ -746,6 +746,7 @@
 	new_human.set_species(SYNTH_COLONY_GEN_ONE)
 
 /datum/equipment_preset/clf/synth/load_skills(mob/living/carbon/human/new_human)
+	. = ..()
 	new_human.allow_gun_usage = FALSE
 
 /datum/equipment_preset/clf/synth/load_gear(mob/living/carbon/human/new_human)

@@ -22,7 +22,7 @@
 
 /obj/effect/spider/attackby(obj/item/W, mob/user)
 	if(LAZYLEN(W.attack_verb))
-		visible_message(SPAN_DANGER("[src] has been [pick(W.attack_verb)] with \the [W][(user ? "by [user]." : ".")]"))
+		visible_message(SPAN_DANGER("[src] has been [pick(W.attack_verb)] with [W][(user ? " by [user]." : ".")]"))
 	else
 		visible_message(SPAN_DANGER("[src] has been attacked with [W][(user ? " by [user]." : ".")]"))
 

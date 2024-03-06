@@ -16,6 +16,27 @@
 	name = "Main Kitchen Shutters";
 	pixel_x = 28
 	},
+/obj/structure/safe/floor,
+/obj/item/spacecash/c1000,
+/obj/item/spacecash/c100,
+/obj/item/spacecash/c10,
+/obj/item/spacecash/c10,
+/obj/item/spacecash/c10,
+/obj/item/spacecash/c10,
+/obj/item/spacecash/c100,
+/obj/item/spacecash/c100,
+/obj/item/spacecash/c100,
+/obj/item/spacecash/c100,
+/obj/item/spacecash/c100,
+/obj/item/spacecash/c100,
+/obj/item/spacecash/c50,
+/obj/item/spacecash/c50,
+/obj/item/spacecash/c50,
+/obj/item/spacecash/c50,
+/obj/item/spacecash/c50,
+/obj/item/spacecash/c500,
+/obj/item/spacecash/c500,
+/obj/item/spacecash/c500,
 /turf/open/floor{
 	icon_state = "cmo"
 	},
@@ -119,6 +140,10 @@
 /area/adminlevel/ert_station/pizza_station)
 "aD" = (
 /obj/structure/sign/safety/nonpress_0g{
+	pixel_x = 32
+	},
+/obj/structure/sign/safety/manualopenclose{
+	pixel_y = 14;
 	pixel_x = 32
 	},
 /turf/open/floor/plating/prison,
@@ -436,7 +461,7 @@
 /obj/item/reagent_container/food/condiment/coldsauce,
 /obj/structure/machinery/light/small/blue{
 	dir = 1;
-	pixel_y = 13;
+	pixel_y = 20;
 	pixel_x = 16
 	},
 /turf/open/floor/prison{
@@ -1123,7 +1148,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1;
 	pixel_x = 16;
-	pixel_y = 13
+	pixel_y = 20
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/pizza_station)
@@ -1218,11 +1243,6 @@
 	color = "#b51c0b";
 	pixel_y = -3
 	},
-/obj/structure/machinery/recharger{
-	layer = 2.97;
-	pixel_y = -1;
-	pixel_x = -1
-	},
 /obj/item/reagent_container/food/drinks/cans/tonic{
 	pixel_x = -15;
 	pixel_y = 10
@@ -1230,6 +1250,12 @@
 /obj/item/reagent_container/food/drinks/cans/tonic{
 	pixel_y = 6;
 	pixel_x = -15
+	},
+/obj/structure/machinery/computer/emails{
+	dir = 1;
+	pixel_y = 2;
+	pixel_x = 3;
+	layer = 2.97
 	},
 /turf/open/floor/prison{
 	icon_state = "kitchen"
@@ -1433,7 +1459,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1;
 	pixel_x = 16;
-	pixel_y = 13
+	pixel_y = 20
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/pizza_station)
@@ -1530,6 +1556,13 @@
 	icon_state = "redyellowfull"
 	},
 /area/adminlevel/ert_station/pizza_station)
+"rk" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 8
+	},
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space)
 "rA" = (
 /obj/structure/bed/chair/bolted{
 	dir = 1;
@@ -1765,7 +1798,9 @@
 	name = "\improper Umbillical Airlock";
 	id = "pizza_ert_arrival"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Galaxy Pizza!"
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -1798,7 +1833,9 @@
 /turf/open/space,
 /area/space)
 "tX" = (
-/obj/structure/machinery/disposal,
+/obj/structure/machinery/disposal{
+	layer = 2.97
+	},
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
@@ -2491,6 +2528,9 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/sign/safety/galley{
+	pixel_x = -24
+	},
 /turf/open/floor{
 	icon_state = "cmo"
 	},
@@ -2904,8 +2944,7 @@
 /area/adminlevel/ert_station/pizza_station)
 "Fd" = (
 /obj/structure/machinery/light{
-	dir = 8;
-	invisibility = 101
+	dir = 8
 	},
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
@@ -3121,6 +3160,10 @@
 	},
 /area/adminlevel/ert_station/pizza_station)
 "Gt" = (
+/obj/structure/machinery/atm{
+	pixel_y = 32;
+	pixel_x = 2
+	},
 /turf/open/floor/prison{
 	dir = 5;
 	icon_state = "yellow"
@@ -3328,10 +3371,14 @@
 	},
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/door_control/airlock{
-	id = "pizza_takeaway";
-	name = "Airlock";
+	id = "pizza_takeaway_out";
+	name = "Airlock - Out";
 	pixel_x = 2;
 	pixel_y = 18
+	},
+/obj/structure/sign/safety/manualopenclose{
+	pixel_y = -3;
+	pixel_x = 7
 	},
 /turf/open/floor/almayer_hull,
 /area/adminlevel/ert_station/pizza_station)
@@ -3643,7 +3690,7 @@
 /obj/structure/closet/secure_closet/fridge/groceries/stock,
 /obj/structure/machinery/light/small/blue{
 	dir = 1;
-	pixel_y = 13
+	pixel_y = 20
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
@@ -4713,8 +4760,10 @@
 	name = "\improper Umbillical Airlock";
 	id = "pizza_ert_arrival"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Galaxy Pizza!"
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -5060,8 +5109,8 @@ oy
 OJ
 OJ
 tT
-qX
-Yy
+rk
+Vx
 ID
 ID
 ID
@@ -5367,7 +5416,7 @@ Yy
 Yy
 Yy
 Yy
-Yy
+Vx
 Vx
 Yy
 yg
@@ -5414,7 +5463,7 @@ Yy
 Yy
 Yy
 Yy
-Yy
+Vx
 wD
 qq
 Xw
@@ -5633,13 +5682,13 @@ Yy
 Yy
 uo
 AH
-fu
-fu
-fu
-fu
-fu
-fu
 Vv
+fu
+fu
+fu
+fu
+fu
+fu
 gU
 uo
 Yy
@@ -6118,7 +6167,7 @@ Yy
 (29,1,1) = {"
 Yy
 Yy
-Yy
+Vx
 Yy
 Yy
 YF
@@ -6476,7 +6525,7 @@ nX
 Ei
 Yy
 Yy
-Yy
+Vx
 Yy
 Yy
 Yy
@@ -6524,7 +6573,7 @@ Ei
 Vx
 Vx
 Vx
-Yy
+Vx
 Yy
 Yy
 Yy

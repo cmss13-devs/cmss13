@@ -893,7 +893,7 @@ cases. Override_icon_state should be a list.*/
 	SPAN_NOTICE("You peer through \the [zoom_device]."))
 	zoom = !zoom
 
-///applies the offset of the zooming, using animate for smoothing.
+///applies the offset of the zooming
 /obj/item/proc/change_zoom_offset(mob/user, newdir, zoom_offset)
 	SIGNAL_HANDLER
 	if(!istype(user))
@@ -908,13 +908,17 @@ cases. Override_icon_state should be a list.*/
 
 	switch(dirtooffset)
 		if(NORTH)
-			animate(user.client, pixel_x = 0, pixel_y = viewoffset, time = zoom_offset_time)
+			user.client.pixel_x = 0
+			user.client.pixel_y = viewoffset
 		if(SOUTH)
-			animate(user.client, pixel_x = 0, pixel_y = -viewoffset, time = zoom_offset_time)
+			user.client.pixel_x = 0
+			user.client.pixel_y = -viewoffset
 		if(EAST)
-			animate(user.client, pixel_x = viewoffset, pixel_y = 0, time = zoom_offset_time)
+			user.client.pixel_x = viewoffset
+			user.client.pixel_y = 0
 		if(WEST)
-			animate(user.client, pixel_x = -viewoffset, pixel_y = 0, time = zoom_offset_time)
+			user.client.pixel_x = -viewoffset
+			user.client.pixel_y = 0
 
 /obj/item/proc/get_icon_state(mob/user_mob, slot)
 	var/mob_state

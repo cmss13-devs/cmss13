@@ -83,3 +83,15 @@
   - imageadd: Added a few additional AI Core themed floors from myself.
   - maptweak: Remapped the AI core to use the new walls/floors.
   - rscadd: Added a subtype of AI Core floor that glows orange for thematic lighting.
+2024-03-06:
+  Drathek:
+  - bugfix: Fixed crashed/hijack dropship not staying in the crashed mode.
+  Vicacrov:
+  - rscadd: Added a professor dummy cabinet to the CMO office, containing Professor
+      DUMMY and its control tablet. It is a tool to teach new medical personnel with.
+      The cabinet is accessible by the CMO and the SEA only.
+  harryob:
+  - admin: byond account age and first time connected to server can now be seen in
+      the player panel
+  nauticall:
+  - mapadd: Revamped the Chinook event map.

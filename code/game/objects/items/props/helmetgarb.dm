@@ -392,7 +392,7 @@
 		to_chat(user, SPAN_WARNING("You cannot use \the [src] when they are hidden."))
 		return
 
-	if(user.client.view > 7 && shape != NVG_SHAPE_COSMETIC)
+	if(user.client.view_size.is_zooming() && shape != NVG_SHAPE_COSMETIC)
 		to_chat(user, SPAN_WARNING("You cannot use \the [src] while using optics."))
 		return
 

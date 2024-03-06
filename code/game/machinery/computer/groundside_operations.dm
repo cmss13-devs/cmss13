@@ -308,7 +308,7 @@
 					usr.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 					cam = null
 					usr.reset_view(null)
-				else if(usr.client.view_size.get_client_view_size() != usr.client.view_size.default)
+				else if(usr.client.view_size.is_zooming())
 					to_chat(usr, SPAN_WARNING("You're too busy peering through binoculars."))
 				else
 					if(cam)

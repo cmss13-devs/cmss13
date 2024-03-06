@@ -242,7 +242,7 @@
 /// To choose a hivebuff
 /obj/effect/alien/resin/special/pylon/endgame/proc/choose_hivebuff(mob/living/carbon/xenomorph/xeno)
 	if(!COOLDOWN_FINISHED(src, buff_cooldown))
-		to_chat(SPAN_XENONOTICE("We can't do that again yet!"))
+		to_chat(xeno, SPAN_XENONOTICE("We can't do that again yet!"))
 		return
 	COOLDOWN_START(src, buff_cooldown, 30 SECONDS)
 	var/list/buffs = list()
@@ -263,8 +263,7 @@
 		return
 
 	var/selection
-	var/list/radial_images_tiers = list(HIVEBUFF_TIER_MINOR = image('icons/ui_icons/hivebuff_radial.dmi', "minor"),
-										 HIVEBUFF_TIER_MAJOR = image('icons/ui_icons/hivebuff_radial.dmi', "major"))
+	var/list/radial_images_tiers = list(HIVEBUFF_TIER_MINOR = image('icons/ui_icons/hivebuff_radial.dmi', "minor"), HIVEBUFF_TIER_MAJOR = image('icons/ui_icons/hivebuff_radial.dmi', "major"))
 
 	if((xeno.client.prefs && xeno.client.prefs.no_radials_preference))
 		selection = tgui_input_list(xeno, "Pick a buff.", "Select Buff", names)

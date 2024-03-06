@@ -58,13 +58,12 @@
 		/datum/action/xeno_action/onclick/destroyer_shield,
 	)
 
-	//Change these
-	mutation_icon_state = DEFENDER_NORMAL
-	mutation_type = DEFENDER_NORMAL
-
 	icon_xeno = 'icons/mob/xenos/destroyer.dmi'
+
+	//BIRDTALON: Do we need xenonid stuff?
 	//icon_xenonid = ''
 
+	//BIRDTALON: need weed food icon
 	//weed_food_icon = ''
 	weed_food_states = list()
 	weed_food_states_flipped = list()

@@ -852,7 +852,6 @@ cases. Override_icon_state should be a list.*/
 	//General reset in case anything goes wrong, the view will always reset to default unless zooming in.
 	if(user.client)
 		user.client.view_size.reset_to_default()
-		animate(user.client, 3*(tileoffset/7), pixel_x = 0, pixel_y = 0)
 		user.client.pixel_x = 0
 		user.client.pixel_y = 0
 

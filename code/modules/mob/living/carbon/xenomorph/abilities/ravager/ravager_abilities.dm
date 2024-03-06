@@ -33,7 +33,7 @@
 	var/max_targets = 6
 	var/main_empower_base_shield = 0
 	var/initial_activation_shield = 60
-	var/shield_per_human = 60
+	var/shield_per_human = 65
 	var/time_until_timeout = 6 SECONDS
 
 	// State

@@ -84,52 +84,13 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 	key = STRIPPABLE_ITEM_BELT
 	item_slot = SLOT_WAIST
 
-/datum/strippable_item/mob_item_slot/pocket
-	/// Which pocket we're referencing. Used for visible text.
-	var/pocket_side
-
-/datum/strippable_item/mob_item_slot/pocket/get_obscuring(atom/source)
-	return FALSE
-
-/datum/strippable_item/mob_item_slot/pocket/get_equip_delay(obj/item/equipping)
-	return POCKET_EQUIP_DELAY
-
-/datum/strippable_item/mob_item_slot/pocket/start_equip(atom/source, obj/item/equipping, mob/user)
-	. = ..()
-	if (!.)
-		warn_owner(source)
-
-/datum/strippable_item/mob_item_slot/pocket/start_unequip(atom/source, mob/user)
-	var/obj/item/item = get_item(source)
-	if (isnull(item))
-		return FALSE
-
-	to_chat(user, "<span class='notice'>You try to empty [source]'s [pocket_side] pocket.</span>")
-
-	// var/log_message = "[key_name(source)] is being pickpocketed of [item] by [key_name(user)] ([pocket_side])"
-	// source.log_message(log_message, LOG_ATTACK, color="red")
-	// user.log_message(log_message, LOG_ATTACK, color="red", log_globally=FALSE)
-	item.add_fingerprint(src)
-
-	var/result = start_unequip_mob(item, source, user, POCKET_STRIP_DELAY)
-
-	if (!result)
-		warn_owner(source)
-
-	return result
-
-/datum/strippable_item/mob_item_slot/pocket/proc/warn_owner(atom/owner)
-	to_chat(owner, "<span class='warning'>You feel your [pocket_side] pocket being fumbled with!</span>")
-
 /datum/strippable_item/mob_item_slot/pocket/left
 	key = STRIPPABLE_ITEM_LPOCKET
 	item_slot = SLOT_STORE
-	pocket_side = "left"
 
 /datum/strippable_item/mob_item_slot/pocket/right
 	key = STRIPPABLE_ITEM_RPOCKET
 	item_slot = SLOT_STORE
-	pocket_side = "right"
 
 // /datum/strippable_item/mob_item_slot/handcuffs
 // 	key = STRIPPABLE_ITEM_HANDCUFFS

@@ -127,7 +127,6 @@
 		"<span class='userdanger'>[user] tries to remove your [item].</span>"
 	)
 
-	to_chat(user, "<span class='danger'>You try to remove [source]'s [item]...</span>")
 	// source.log_message("[key_name(source)] is being stripped of [item] by [key_name(src)]", LOG_ATTACK, color="red")
 	// user.log_message("[key_name(source)] is being stripped of [item] by [key_name(src)]", LOG_ATTACK, color="red", log_globally=FALSE)
 	item.add_fingerprint(src)
@@ -177,7 +176,7 @@
 		return FALSE
 	if (!equipping.mob_can_equip(
 		source,
-		item_slot
+		key
 	))
 		to_chat(user, "<span class='warning'>\The [equipping] doesn't fit in that place!</span>")
 		return FALSE
@@ -197,7 +196,7 @@
 
 	if (!equipping.mob_can_equip(
 		source,
-		item_slot
+		key
 	))
 		return FALSE
 
@@ -211,7 +210,7 @@
 		return FALSE
 
 	var/mob/mob_source = source
-	mob_source.equip_to_slot(equipping, item_slot)
+	mob_source.equip_to_slot_if_possible(equipping, key)
 
 /datum/strippable_item/mob_item_slot/get_obscuring(atom/source)
 	return FALSE

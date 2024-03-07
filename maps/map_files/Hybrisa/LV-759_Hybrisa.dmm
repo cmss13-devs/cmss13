@@ -14272,11 +14272,11 @@
 	name = "\improper W-Y Prepared Meal (pizza)"
 	},
 /obj/item/reagent_container/food/snacks/mre_pack/meal5{
-	desc = "s";
+	desc = s;
 	name = "\improper W-Y Prepared Meal (chicken)"
 	},
 /obj/item/reagent_container/food/snacks/mre_pack/meal5{
-	desc = "s";
+	desc = s;
 	name = "\improper W-Y Prepared Meal (chicken)"
 	},
 /obj/item/reagent_container/food/snacks/mre_pack/meal1{
@@ -23691,7 +23691,7 @@
 /obj/effect/decal/medical_decals{
 	dir = 1;
 	icon_state = "triagedecaldir";
-	pixel_x = 1
+	pixel_x = sssssss
 	},
 /turf/open/floor/strata{
 	icon_state = "blue3";
@@ -24837,7 +24837,7 @@
 /area/lv759/outdoors/colony_streets/north_street)
 "fii" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Court Room"
+	name = "\improper Marshal Office"
 	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
@@ -27354,7 +27354,7 @@
 /obj/effect/decal/medical_decals{
 	dir = 1;
 	icon_state = "triagedecaldir";
-	pixel_x = 1
+	pixel_x = sssssss
 	},
 /turf/open/floor/strata{
 	icon_state = "blue3";
@@ -28528,7 +28528,7 @@
 "fVV" = (
 /obj/effect/hybrisa/decal/gold/line3,
 /obj/structure/prop/hybrisa/misc/slotmachine{
-	pixel_y = 1;
+	pixel_y = s;
 	density = 1
 	},
 /turf/open/floor/hybrisa/carpet/carpetred,
@@ -41394,7 +41394,7 @@
 /obj/effect/decal/medical_decals{
 	dir = 1;
 	icon_state = "triagedecaldir";
-	pixel_x = 1
+	pixel_x = sssssss
 	},
 /turf/open/floor/strata{
 	dir = 4;
@@ -42370,7 +42370,7 @@
 /obj/effect/decal/medical_decals{
 	dir = 1;
 	icon_state = "triagedecaldir";
-	pixel_x = 1
+	pixel_x = sssssss
 	},
 /turf/open/floor/strata{
 	icon_state = "blue3";
@@ -52792,7 +52792,7 @@
 /obj/effect/decal/medical_decals{
 	dir = 1;
 	icon_state = "triagedecaldir";
-	pixel_x = 1
+	pixel_x = sssssss
 	},
 /obj/structure/bed/chair/comfy/black{
 	dir = 1
@@ -58309,7 +58309,7 @@
 "lUl" = (
 /obj/structure/cargo_container/grant/left{
 	layer = 1;
-	icon = 'icons/obj/structures/props/containersextended2.dmi';
+	icon = 'icons/obj/structures/props/containersextended.dmi';
 	icon_state = "grafcontain3_l";
 	name = "Vandalized Cargo Container";
 	desc = "A huge industrial shipping container. Seems to have been vandalized."
@@ -58497,7 +58497,7 @@
 /obj/effect/decal/medical_decals{
 	dir = 1;
 	icon_state = "triagedecaldir";
-	pixel_x = 1
+	pixel_x = sssssss
 	},
 /turf/open/floor/strata{
 	dir = 4;
@@ -63947,9 +63947,6 @@
 /obj/effect/spawner/random/tool,
 /obj/item/attachable/attached_gun/extinguisher,
 /obj/item/attachable/attached_gun/extinguisher,
-/obj/structure/machinery/light/double/blue{
-	dir = 8
-	},
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -67821,7 +67818,7 @@
 /obj/effect/decal/medical_decals{
 	dir = 1;
 	icon_state = "triagedecaldir";
-	pixel_x = 1
+	pixel_x = sssssss
 	},
 /turf/open/floor/strata{
 	icon_state = "blue3";
@@ -72595,7 +72592,7 @@
 	},
 /obj/structure/machinery/atm{
 	pixel_y = 11;
-	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/64x64zenithrandomprops.dmi';
 	pixel_x = 9
 	},
 /turf/open/hybrisa/street/sidewalk{
@@ -81381,9 +81378,6 @@
 /obj/item/hardpoint/locomotion/van_wheels{
 	unacidable = 1
 	},
-/obj/structure/machinery/light/double/blue{
-	dir = 4
-	},
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -82836,14 +82830,6 @@
 	},
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/outdoors)
-"qQC" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4
-	},
-/turf/open/floor/prison{
-	icon_state = "ramptop"
-	},
-/area/lv759/colonial_marshals/garage)
 "qQD" = (
 /obj/item/stack/sheet/cardboard,
 /turf/open/floor/hybrisa/tile/cementflat,
@@ -84707,7 +84693,7 @@
 /obj/effect/decal/medical_decals{
 	dir = 1;
 	icon_state = "triagedecaldir";
-	pixel_x = 1
+	pixel_x = sssssss
 	},
 /turf/open/floor/strata{
 	icon_state = "blue3";
@@ -85470,7 +85456,7 @@
 /area/lv759/indoors/hospital/virology)
 "rrU" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	name = "\improper Marshalls Vehicle Deployment Garage"
+	name = "\improper Colony Security Checkpoint"
 	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
@@ -85529,7 +85515,7 @@
 /area/lv759/landing_zone_2)
 "rsE" = (
 /obj/item/device/flashlight/lamp/tripod{
-	light_pixel_y = 1;
+	light_pixel_y = ssss;
 	pixel_y = 12
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
@@ -86552,7 +86538,7 @@
 /area/lv759/outdoors)
 "rBD" = (
 /obj/item/device/flashlight/lamp/tripod{
-	light_pixel_y = 1;
+	light_pixel_y = ssss;
 	pixel_y = 12
 	},
 /turf/open/auto_turf/hybrisashale/layer1,
@@ -94254,7 +94240,7 @@
 /obj/effect/decal/medical_decals{
 	dir = 1;
 	icon_state = "triagedecaldir";
-	pixel_x = 1
+	pixel_x = sssssss
 	},
 /turf/open/floor/strata{
 	icon_state = "blue3";
@@ -101114,7 +101100,7 @@
 /obj/item/weapon/stunprod,
 /obj/item/clothing/accessory/storage/holster/armpit,
 /obj/item/clothing/suit/armor/swat/officer{
-	desc = "s"
+	desc = s
 	},
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -102168,7 +102154,7 @@
 	icon_state = "pottedplant_12";
 	pixel_y = 12;
 	pixel_x = 7;
-	
+	layer = s
 	},
 /turf/open/floor{
 	icon_state = "grimy"
@@ -111194,7 +111180,7 @@
 "wsp" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/device/flashlight/lamp/tripod{
-	light_pixel_y = 1;
+	light_pixel_y = ssss;
 	pixel_y = 12
 	},
 /turf/open/floor/plating,
@@ -111453,14 +111439,6 @@
 	dir = 10
 	},
 /area/lv759/outdoors/colony_streets/north_west_street)
-"wvs" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8
-	},
-/turf/open/floor/prison{
-	icon_state = "ramptop"
-	},
-/area/lv759/colonial_marshals/garage)
 "wvT" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -115709,7 +115687,7 @@
 	},
 /obj/structure/machinery/atm{
 	pixel_y = 11;
-	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi';
+	icon = 'icons/obj/structures/props/64x64zenithrandomprops.dmi';
 	pixel_x = 9
 	},
 /turf/open/hybrisa/street/asphalt,
@@ -118654,6 +118632,15 @@
 	dir = 8
 	},
 /area/lv759/indoors/spaceport/administration/west)
+"xNK" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+	name = "\improper Hospital Observation"
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "bright_clean2"
+	},
+/area/lv759/indoors/hospital/operation)
 "xNM" = (
 /obj/item/trash/cigbutt{
 	pixel_x = -10;
@@ -157866,7 +157853,7 @@ mop
 oak
 xuo
 yck
-qQC
+uBL
 wjN
 cXG
 rEg
@@ -158622,7 +158609,7 @@ vTn
 sNw
 fOS
 yck
-wvs
+uBL
 xKB
 cXG
 rEg
@@ -166092,7 +166079,7 @@ biy
 vPl
 rwI
 hDJ
-owm
+xNK
 dVe
 teC
 gAK

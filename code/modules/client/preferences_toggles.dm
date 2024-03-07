@@ -26,7 +26,7 @@
 	to_chat(src, SPAN_BOLDNOTICE("You will [(prefs.toggles_chat & CHAT_PRAYER) ? "now" : "no longer"] see prayerchat."))
 
 /client/verb/toggle_observer_announcement_sounds()
-	set name = "Hear/Silence Announcements"
+	set name = "Hear/Silence Ghost Announcements"
 	set category = "Preferences.Sound"
 	set desc = "Toggle hearing a notification of announcements while being an observer."
 	prefs.toggles_sound ^= SOUND_OBSERVER_ANNOUNCEMENTS

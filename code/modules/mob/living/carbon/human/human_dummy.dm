@@ -74,7 +74,6 @@ GLOBAL_LIST_EMPTY(dummy_mob_list)
 /mob/living/carbon/human/dummy/add_to_all_mob_huds()
 	return
 
-
 /mob/living/carbon/human/dummy/tutorial // Effectively an even more disabled dummy
 
 /mob/living/carbon/human/dummy/tutorial/Initialize(mapload)
@@ -82,3 +81,18 @@ GLOBAL_LIST_EMPTY(dummy_mob_list)
 	status_flags = GODMODE
 	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_TUTORIAL)
 	anchored = TRUE
+
+// Professor Dummy, used by CMOs and SEAs to teach new nurses/doctors
+/mob/living/carbon/human/dummy/professor_dummy/Initialize(mapload)
+	. = ..()
+	RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_LANDED, PROC_REF(destroy_upon_hijack))
+
+/mob/living/carbon/human/dummy/professor_dummy/proc/destroy_upon_hijack()
+	SIGNAL_HANDLER
+
+	visible_message(SPAN_WARNING("The [src] suddenly disintegrates!"))
+	dust(create_cause_data("hijack autodelete"))
+
+/mob/living/carbon/human/dummy/professor_dummy/Destroy()
+	UnregisterSignal(src, COMSIG_GLOB_HIJACK_LANDED)
+	return ..()

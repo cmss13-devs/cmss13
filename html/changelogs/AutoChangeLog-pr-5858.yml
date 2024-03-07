@@ -1,4 +1,0 @@
-author: "Vicacrov"
-delete-after: True
-changes:
-  - rscadd: "Larvae now do the attack animation when nudging."

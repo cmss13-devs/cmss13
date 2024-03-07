@@ -1,6 +1,6 @@
-/obj/effect/elevator/supply
-	name = "\improper empty space"
-	desc = "There seems to be an awful lot of machinery down below"
+/obj/effect/elevator
+	name = "\proper empty space"
+	desc = "There seems to be an awful lot of machinery down below..."
 	icon = 'icons/effects/160x160.dmi'
 	icon_state = "supply_elevator_lowered"
 	unacidable = TRUE
@@ -8,17 +8,25 @@
 	layer = ABOVE_TURF_LAYER
 	appearance_flags = KEEP_TOGETHER
 
-/obj/effect/elevator/supply/ex_act(severity)
+/obj/effect/elevator/ex_act(severity)
 	return
 
-/obj/effect/elevator/supply/Destroy(force)
+/obj/effect/elevator/Destroy(force)
 	if(!force)
 		return QDEL_HINT_LETMELIVE
 	return ..()
 
-/obj/effect/elevator/supply/visible_message() //Prevents message spam with empty elevator shaft - "The empty space falls into the depths!"
+// Don't move with the elevator.
+/obj/effect/elevator/onShuttleMove(turf/newT, turf/oldT, list/movement_force, move_dir, obj/docking_port/stationary/old_dock, obj/docking_port/mobile/moving_dock)
+	return
+/obj/effect/elevator/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+	return
+/obj/effect/elevator/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
 	return
 
 /obj/effect/elevator/animation_overlay
 	blend_mode = BLEND_INSET_OVERLAY
 	appearance_flags = KEEP_TOGETHER
+
+/obj/effect/elevator/vehicle
+	icon_state = "vehicle_elevator_lowered"

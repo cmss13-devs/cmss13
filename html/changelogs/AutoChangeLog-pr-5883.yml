@@ -1,0 +1,6 @@
+author: "sleepynecrons"
+delete-after: True
+changes:
+  - imageadd: "changed warrior tail to old one"
+  - imageadd: "edited weed overlays to reflect altered tail shape"
+  - imageadd: "fixed holes in a couple warrior sprites"

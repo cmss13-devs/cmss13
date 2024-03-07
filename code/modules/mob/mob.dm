@@ -459,7 +459,7 @@
 	if(M.pulling == src && (M.a_intent & INTENT_GRAB) && M.grab_level == GRAB_AGGRESSIVE)
 		return
 
-	show_inv(M)
+	//show_inv(M)
 
 /mob/proc/swap_hand()
 	hand = !hand

@@ -1147,8 +1147,10 @@
 	icon_state = "darkredfull2"
 /turf/open/floor/hybrisa/metal/redcorner
 	icon_state = "zredcorner"
-
-
+/turf/open/floor/hybrisa/metal/grated
+	icon_state = "rampsmaller"
+/turf/open/floor/hybrisa/metal/stripe_red
+	icon_state = "stripe_red"
 // Misc
 
 /turf/open/floor/hybrisa/misc

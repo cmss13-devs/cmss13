@@ -267,3 +267,7 @@
 /obj/effect/hybrisa/decal/tiretrack
 	icon = 'icons/effects/hybrisa_decals.dmi'
 	icon_state = "tiremarks"
+
+/obj/effect/hybrisa/decal/trash
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "trash_1"

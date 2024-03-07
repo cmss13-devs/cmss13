@@ -9,7 +9,8 @@
 	arrival_message = "'!`2*%slau#*jer t*h$em a!l%. le&*ve n(o^ w&*nes%6es.*v$e %#d ou^'"
 	objectives = "Whiteout protocol is in effect for the target. Ensure there are no traces of the infestation or any witnesses."
 	probability = 0
-	shuttle_id = "Distress_PMC"
+	shuttle_id = MOBILE_SHUTTLE_ID_ERT2
+	home_base = /datum/lazy_template/ert/weyland_station
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc
 	item_spawn = /obj/effect/landmark/ert_spawns/distress_pmc/item
 	max_medics = 1
@@ -91,7 +92,8 @@
 	mob_max = 8
 	mob_min = 5
 	probability = 0
-	shuttle_id = "Distress_PMC"
+	shuttle_id = MOBILE_SHUTTLE_ID_ERT2
+	home_base = /datum/lazy_template/ert/weyland_station
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc
 
 /datum/emergency_call/marsoc/create_member(datum/mind/M, turf/override_spawn_loc)
@@ -120,8 +122,9 @@
 	mob_max = 8
 	mob_min = 5
 	probability = 0
-	shuttle_id = "Distress_PMC"
+	shuttle_id = MOBILE_SHUTTLE_ID_ERT2
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc
+	home_base = /datum/lazy_template/ert/weyland_station
 
 /datum/emergency_call/marsoc_covert/create_member(datum/mind/M)
 

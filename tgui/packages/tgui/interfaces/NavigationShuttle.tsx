@@ -1,5 +1,5 @@
 import { useBackend, useSharedState } from '../backend';
-import { Box, Button, Icon, Flex, Section, Stack, ProgressBar } from '../components';
+import { Box, Button, Icon, Flex, Section, Stack, ProgressBar, Dimmer } from '../components';
 import { Window } from '../layouts';
 
 export interface DockingPort {
@@ -19,6 +19,9 @@ export interface NavigationProps {
   max_refuel_duration: number;
   max_engine_start_duration: number;
   max_pre_arrival_duration: number;
+  must_launch_home: boolean;
+  spooling: boolean;
+  mission_accomplished: boolean;
   is_disabled: 0 | 1;
   locked_down: 0 | 1;
 }
@@ -236,23 +239,74 @@ const DoorControls = () => {
 };
 
 export const DisabledScreen = (props) => {
+  const { data, act } = useBackend<NavigationProps>();
+
+  const disabled_text = data.mission_accomplished
+    ? 'Auto-navigation protocol completed - return home complete. Shuttle disabled.'
+    : 'The shuttle has had an error. Contact your nearest system administrator to resolve the issue.';
+
   return (
     <Box className="DisabledScreen">
       <div>
-        <span>
-          The shuttle has had an error. Contact your nearest system
-          administrator to resolve the issue.
-        </span>
+        <span>{disabled_text}</span>
       </div>
     </Box>
   );
+};
+
+const LaunchHome = (props) => {
+  const { data, act } = useBackend<NavigationProps>();
+
+  return (
+    <Section title="Automatic Return Enabled" className="DestinationSelector">
+      <Button.Confirm
+        fluid
+        content={'Return Home'}
+        confirmContent={'One-way navigation enabled - confirm?'}
+        onClick={() => act('launch_home')}
+      />
+    </Section>
+  );
+};
+
+const SpoolingDimmer = (props) => {
+  const { data, act } = useBackend<NavigationProps>();
+
+  return (
+    <Dimmer>
+      <Stack>
+        <Stack.Item>
+          <Box>Spooling...</Box>
+        </Stack.Item>
+        <Stack.Item>
+          <Icon name={'spinner'} spin />
+        </Stack.Item>
+      </Stack>
+    </Dimmer>
+  );
+};
+
+const DestinationOptions = (props) => {
+  const { data, act } = useBackend<NavigationProps>();
+
+  if (data.must_launch_home) {
+    return (
+      <>
+        <LaunchHome />
+        <DestionationSelection />
+      </>
+    );
+  } else {
+    return <DestionationSelection />;
+  }
 };
 
 const RenderScreen = (props) => {
   const { data } = useBackend<NavigationProps>();
   return (
     <>
-      {data.shuttle_mode === 'idle' && <DestionationSelection />}
+      {!!data.spooling && <SpoolingDimmer />}
+      {data.shuttle_mode === 'idle' && <DestinationOptions />}
       {data.shuttle_mode === 'igniting' && <LaunchCountdown />}
       {data.shuttle_mode === 'recharging' && <ShuttleRecharge />}
       {data.shuttle_mode === 'called' && <InFlightCountdown />}
@@ -264,7 +318,7 @@ const RenderScreen = (props) => {
 export const NavigationShuttle = (props) => {
   const { data } = useBackend<NavigationProps>();
   return (
-    <Window theme="crtgreen" height={500} width={700}>
+    <Window theme="crtgreen" height={505} width={700}>
       <Window.Content className="NavigationMenu">
         {data.is_disabled === 1 && <DisabledScreen />}
         {data.is_disabled === 0 && <RenderScreen />}

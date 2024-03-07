@@ -68,3 +68,30 @@
   - code_imp: Plastic Explosives and subtypes now have variable controlled skill checks
       rather than hard-code.
   - bugfix: MPs can now use Riot Breaching Charges as intended.
+2024-03-05:
+  Segrain:
+  - admin: Marking tickets properly recognises your ckey.
+  ZephyrTFA, harryob:
+  - rscadd: framework for new ert stations ported from tgstation/tgstation#71785,
+      by ZephyrTFA
+  - rscadd: distress beacons now start in transit to the ship, and will return to
+      their own home base. they can't keep going back and forth between the ship and
+      their base
+  realforest2001:
+  - imageadd: Added AI Core themed walls, windows and floors from Zenith.
+  - imageadd: Added AI Core themed blast doors from Zenith.
+  - imageadd: Added a few additional AI Core themed floors from myself.
+  - maptweak: Remapped the AI core to use the new walls/floors.
+  - rscadd: Added a subtype of AI Core floor that glows orange for thematic lighting.
+2024-03-06:
+  Drathek:
+  - bugfix: Fixed crashed/hijack dropship not staying in the crashed mode.
+  Vicacrov:
+  - rscadd: Added a professor dummy cabinet to the CMO office, containing Professor
+      DUMMY and its control tablet. It is a tool to teach new medical personnel with.
+      The cabinet is accessible by the CMO and the SEA only.
+  harryob:
+  - admin: byond account age and first time connected to server can now be seen in
+      the player panel
+  nauticall:
+  - mapadd: Revamped the Chinook event map.

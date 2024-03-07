@@ -1,0 +1,5 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - admin: "Adds a remote admin ARES Interface so staff can see the interface remotely."
+  - admin: "Staff can now approve and revoke ARES Access tickets via remote interface if there are no Working Joes."

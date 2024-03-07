@@ -1501,11 +1501,12 @@
 	desc = "The 'Mono-Spectra', a mass-produced civilian vehicle for the colonial markets, in and outside of the United Americas. Produced by 'Meridian' a car marque and associated operating division of the Weyland-Yutani Corporation."
 	icon = 'icons/obj/structures/props/vehiclesexpanded2.dmi'
 	icon_state = "MeridianCar_1"
-	bound_height = 64
+	bound_height = 32
 	bound_width = 64
 	unslashable = TRUE
 	unacidable = TRUE
 	density = TRUE
+	layer = ABOVE_MOB_LAYER
 /obj/structure/prop/hybrisa/vehicles/Car/Car_1
 	icon_state = "MeridianCar_2"
 /obj/structure/prop/hybrisa/vehicles/Car/Car_2
@@ -1519,18 +1520,12 @@
 
 // Car Chassis
 
-/obj/structure/prop/hybrisa/vehicles/Car_chassis
+/obj/structure/prop/hybrisa/vehicles/Car/Car_chassis
     desc = "A Mono-Spectra chassis in the early stages of assembly."
-	bound_height = 64
-	bound_width = 64
-	unslashable = TRUE
-	unacidable = TRUE
-	density = TRUE
 
-/obj/structure/prop/hybrisa/vehicles/Car_chassis
+/obj/structure/prop/hybrisa/vehicles/Car/Car_chassis
 	name = "Mono-Spectra Chassis"
 	icon_state = "MeridianCar_shell"
-
 
 // damaged suv
 
@@ -3002,10 +2997,13 @@
 	icon_state = "buildingventbig13"
 
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall
-	name = "machinery"
+	name = "wall vent"
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "smallwallvent1"
 	density = FALSE
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall2
+	name = "wall vent"
+	icon_state = "smallwallvent2"
 
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/computer
 	name = "machinery"
@@ -3107,3 +3105,29 @@
 	desc = "A advertisement billboard."
 	icon = 'icons/obj/structures/props/32x64_zenithbillboards.dmi'
 	icon_state = "billboard3"
+
+// Car Factory
+
+/obj/structure/prop/hybrisa/Factory
+	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi'
+	icon_state = "factory_roboticarm"
+
+/obj/structure/prop/hybrisa/Factory/Robotic_arm
+	name = "Robotic arm"
+	desc = "A robotic arm used in the construction of 'Meridian' Automobiles."
+	icon_state = "factory_roboticarm"
+	bound_width = 32
+	bound_height = 32
+	anchored = TRUE
+	layer = ABOVE_MOB_LAYER
+/obj/structure/prop/hybrisa/Factory/Robotic_arm/Flipped
+	icon_state = "factory_roboticarm2"
+/obj/structure/prop/hybrisa/Factory/Conveyor_belt
+	name = "large conveyor belt"
+	desc = "A large conveyor belt used in industrial factories."
+	icon_state = "factory_conveyer"
+	density = FALSE
+
+
+
+

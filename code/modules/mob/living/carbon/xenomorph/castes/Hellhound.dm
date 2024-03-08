@@ -64,7 +64,6 @@
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
-	mutation_type = HELLHOUND_NORMAL
 
 	icon_xeno = 'icons/mob/xenos/hellhound.dmi'
 	icon_xenonid = 'icons/mob/xenos/hellhound.dmi'

@@ -176,12 +176,12 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	item_state_slots = list(WEAR_BODY = "medical")
 
-/obj/item/clothing/under/rank/medical/nurse
-	name = "medical nurse scrubs"
-	desc = "It's made of a special fiber that provides minor protection against biohazards. This one features an orange armband."
-	icon_state = "scrubsnurse"
-	item_state = "scrubsnurse"
-	item_state_slots = list(WEAR_BODY = "scrubsnurse")
+/obj/item/clothing/under/rank/medical/lightblue
+	name = "medical scrubs"
+	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in light blue."
+	icon_state = "scrubslightblue"
+	flags_jumpsuit = FALSE
+	item_state_slots = list(WEAR_BODY = "scrubslightblue")
 
 /obj/item/clothing/under/rank/medical/blue
 	name = "medical scrubs"
@@ -203,6 +203,13 @@
 	icon_state = "scrubspurple"
 	flags_jumpsuit = FALSE
 	item_state_slots = list(WEAR_BODY = "scrubspurple")
+
+/obj/item/clothing/under/rank/medical/orange
+	name = "medical scrubs"
+	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in prisoner orange."
+	icon_state = "scrubsorange"
+	flags_jumpsuit = FALSE
+	item_state_slots = list(WEAR_BODY = "scrubsorange")
 
 /obj/item/clothing/under/rank/psych
 	desc = "A basic white jumpsuit. It has turquoise markings that denote the wearer as a psychiatrist."

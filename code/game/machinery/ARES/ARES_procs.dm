@@ -1,5 +1,5 @@
-GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 GLOBAL_DATUM_INIT(ares_datacore, /datum/ares_datacore, new)
+GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
 GLOBAL_LIST_INIT(maintenance_categories, list(
 	"Broken Light",
 	"Shattered Glass",
@@ -25,6 +25,9 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	var/obj/structure/machinery/ares/processor/apollo/processor_apollo
 	var/obj/structure/machinery/ares/processor/bioscan/processor_bioscan
 	var/obj/structure/machinery/computer/ares_console/interface
+	var/datum/ares_console_admin/admin_interface
+	var/datum/ares_datacore/datacore
+
 	var/list/obj/structure/machinery/computer/working_joe/ticket_computers = list()
 
 	/// Working Joe stuff
@@ -32,6 +35,25 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	var/list/tickets_access = list()
 	var/list/waiting_ids = list()
 	var/list/active_ids = list()
+
+/datum/ares_link/New()
+	admin_interface = new
+	datacore = GLOB.ares_datacore
+
+/datum/ares_link/Destroy()
+	qdel(admin_interface)
+	for(var/obj/structure/machinery/ares/link in linked_systems)
+		link.delink()
+	for(var/obj/structure/machinery/computer/ares_console/interface in linked_systems)
+		interface.delink()
+	for(var/obj/effect/step_trigger/ares_alert/alert in linked_alerts)
+		alert.delink()
+	..()
+
+/* BELOW ARE IN AdminAres.dm
+/datum/ares_link/tgui_interact(mob/user, datum/tgui/ui)
+/datum/ares_link/ui_data(mob/user)
+*/
 
 /datum/ares_datacore
 	/// A record of who logged in and when.
@@ -61,20 +83,9 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	/// Is nuke request usable or not?
 	var/nuke_available = TRUE
 
-
 	COOLDOWN_DECLARE(ares_distress_cooldown)
 	COOLDOWN_DECLARE(ares_nuclear_cooldown)
 	COOLDOWN_DECLARE(ares_quarters_cooldown)
-
-/datum/ares_link/Destroy()
-	for(var/obj/structure/machinery/ares/link in linked_systems)
-		link.delink()
-	for(var/obj/structure/machinery/computer/ares_console/interface in linked_systems)
-		interface.delink()
-	for(var/obj/effect/step_trigger/ares_alert/alert in linked_alerts)
-		alert.delink()
-	..()
-
 
 // ------ ARES Logging Procs ------ //
 /proc/ares_is_active()
@@ -196,43 +207,58 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 
 /obj/structure/machinery/computer/proc/ares_auth_to_text(access_level)
 	switch(access_level)
-		if(ARES_ACCESS_BASIC)//0
+		if(ARES_ACCESS_LOGOUT)
+			return "Logged Out"
+		if(ARES_ACCESS_BASIC)
 			return "Authorized"
-		if(ARES_ACCESS_COMMAND)//1
+		if(ARES_ACCESS_COMMAND)
 			return "[MAIN_SHIP_NAME] Command"
-		if(ARES_ACCESS_JOE)//2
+		if(ARES_ACCESS_JOE)
 			return "Working Joe"
-		if(ARES_ACCESS_CORPORATE)//3
+		if(ARES_ACCESS_CORPORATE)
 			return "Weyland-Yutani"
-		if(ARES_ACCESS_SENIOR)//4
+		if(ARES_ACCESS_SENIOR)
 			return "[MAIN_SHIP_NAME] Senior Command"
-		if(ARES_ACCESS_CE)//5
+		if(ARES_ACCESS_CE)
 			return "Chief Engineer"
-		if(ARES_ACCESS_SYNTH)//6
+		if(ARES_ACCESS_SYNTH)
 			return "USCM Synthetic"
-		if(ARES_ACCESS_CO)//7
+		if(ARES_ACCESS_CO)
 			return "[MAIN_SHIP_NAME] Commanding Officer"
-		if(ARES_ACCESS_HIGH)//8
+		if(ARES_ACCESS_HIGH)
 			return "USCM High Command"
-		if(ARES_ACCESS_WY_COMMAND)//9
+		if(ARES_ACCESS_WY_COMMAND)
 			return "Weyland-Yutani Directorate"
-		if(ARES_ACCESS_DEBUG)//10
+		if(ARES_ACCESS_DEBUG)
 			return "AI Service Technician"
 
 
-/obj/structure/machinery/computer/ares_console/proc/message_ares(text, mob/Sender, ref)
-	var/msg = SPAN_STAFF_IC("<b><font color=orange>ARES:</font> [key_name(Sender, 1)] [ARES_MARK(Sender)] [ADMIN_PP(Sender)] [ADMIN_VV(Sender)] [ADMIN_SM(Sender)] [ADMIN_JMP_USER(Sender)] [ARES_REPLY(Sender, ref)]:</b> [text]")
+/obj/structure/machinery/computer/ares_console/proc/message_ares(text, mob/Sender, ref, fake = FALSE)
 	var/datum/ares_record/talk_log/conversation = locate(ref)
+	if(!istype(conversation))
+		return
+	var/msg = SPAN_STAFF_IC("<b><font color=orange>ARES:</font> [key_name(Sender, 1)] [ARES_MARK(Sender)] [ADMIN_PP(Sender)] [ADMIN_VV(Sender)] [ADMIN_SM(Sender)] [ADMIN_JMP_USER(Sender)] [ARES_REPLY(Sender, ref)]:</b> [text]")
 	conversation.conversation += "[last_login] at [worldtime2text()], '[text]'"
+	if(fake)
+		log_say("[key_name(Sender)] faked the message '[text]' from [last_login] in ARES 1:1.")
+		msg = SPAN_STAFF_IC("<b><font color=orange>ARES:</font> [key_name(Sender, 1)] faked a message from '[last_login]':</b> [text]")
+	else
+		log_say("[key_name(Sender)] sent '[text]' to ARES 1:1.")
+		for(var/client/admin in GLOB.admins)
+			if(admin.prefs.toggles_sound & SOUND_ARES_MESSAGE)
+				playsound_client(admin, 'sound/machines/chime.ogg', vol = 25)
+
 	for(var/client/admin in GLOB.admins)
 		if((R_ADMIN|R_MOD) & admin.admin_holder.rights)
 			to_chat(admin, msg)
-			if(admin.prefs.toggles_sound & SOUND_ARES_MESSAGE)
-				playsound_client(admin, 'sound/machines/chime.ogg', vol = 25)
-	log_say("[key_name(Sender)] sent '[text]' to ARES 1:1.")
+			var/admin_user = GLOB.ares_link.admin_interface.logged_in
+			if(admin_user && !fake)
+				to_chat(admin, SPAN_STAFF_IC("<b>ADMINS/MODS: [SPAN_RED("[admin_user] is logged in to ARES Remote Interface! They may be replying to this message!")]</b>"))
 
 /obj/structure/machinery/computer/ares_console/proc/response_from_ares(text, ref)
 	var/datum/ares_record/talk_log/conversation = locate(ref)
+	if(!istype(conversation))
+		return
 	conversation.conversation += "[MAIN_AI_SYSTEM] at [worldtime2text()], '[text]'"
 // ------ End ARES Interface Procs ------ //
 

@@ -154,18 +154,18 @@
 /obj/item/clothing/accessory/medal/on_attached(obj/item/clothing/S, mob/living/user, silent)
 	. = ..()
 	if(.)
-		RegisterSignal(S, COMSIG_ITEM_PICKUP, PROC_REF(remove_medal))
+		RegisterSignal(S, COMSIG_ITEM_EQUIPPED, PROC_REF(remove_medal))
 
-/obj/item/clothing/accessory/medal/proc/remove_medal(obj/item/clothing/C, mob/user)
+/obj/item/clothing/accessory/medal/proc/remove_medal(obj/item/clothing/C, mob/user, slot)
 	SIGNAL_HANDLER
-	if(user.real_name != recipient_name)
+	if(user.real_name != recipient_name && (slot == WEAR_BODY || slot == WEAR_JACKET))
 		C.remove_accessory(user, src)
 		user.drop_held_item(src)
 
 /obj/item/clothing/accessory/medal/on_removed(mob/living/user, obj/item/clothing/C)
 	. = ..()
 	if(.)
-		UnregisterSignal(C, COMSIG_ITEM_PICKUP)
+		UnregisterSignal(C, COMSIG_ITEM_EQUIPPED)
 
 /obj/item/clothing/accessory/medal/attack(mob/living/carbon/human/H, mob/living/carbon/human/user)
 	if(!(istype(H) && istype(user)))

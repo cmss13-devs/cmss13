@@ -180,7 +180,9 @@
 	))
 		to_chat(user, "<span class='warning'>\The [equipping] doesn't fit in that place!</span>")
 		return FALSE
-
+	if(equipping.flags_item & WIELDED)
+		ai_announcement("tmega")
+		equipping.unwield(user)
 	return TRUE
 
 /datum/strippable_item/mob_item_slot/start_equip(atom/source, obj/item/equipping, mob/user)
@@ -191,7 +193,7 @@
 	if (!ismob(source))
 		return FALSE
 
-	if (!do_after(user, source, 2 SECONDS + get_equip_delay(equipping)))
+	if (!do_after(user, 2 SECONDS + get_equip_delay(equipping), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, source, INTERRUPT_MOVED, BUSY_ICON_FRIENDLY))
 		return FALSE
 
 	if (!equipping.mob_can_equip(
@@ -238,7 +240,7 @@
 
 /// A utility function for `/datum/strippable_item`s to start unequipping an item from a mob.
 /proc/start_unequip_mob(obj/item/item, mob/source, mob/user, strip_delay)
-	if (!do_after(user, 2 SECONDS + item.time_to_unequip, BUSY_ICON_HOSTILE, INTERRUPT_ALL, source, INTERRUPT_ALL))
+	if (!do_after(user, 2 SECONDS + item.time_to_equip, INTERRUPT_ALL, BUSY_ICON_HOSTILE, source, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 		return FALSE
 
 	return TRUE

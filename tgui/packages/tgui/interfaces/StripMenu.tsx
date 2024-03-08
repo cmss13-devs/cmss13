@@ -46,6 +46,16 @@ const ALTERNATE_ACTIONS: Record<string, AlternateAction> = {
     text: 'Knot',
   },
 
+  remove_accessory: {
+    icon: 'tshirt',
+    text: 'Remove accessory',
+  },
+
+  retrieve_tag: {
+    icon: 'tg-air-tank',
+    text: 'Retrieve info tag',
+  },
+
   untie: {
     icon: 'shoe-prints',
     text: 'Untie',
@@ -79,6 +89,7 @@ const SLOTS: Record<
     gridSpot: GridSpotKey;
     image?: string;
     additionalComponent?: JSX.Element;
+    hideEmpty?: boolean;
   }
 > = {
   glasses: {
@@ -114,11 +125,13 @@ const SLOTS: Record<
   handcuffs: {
     displayName: 'handcuffs',
     gridSpot: getGridSpotKey([1, 4]),
+    hideEmpty: true,
   },
 
   legcuffs: {
     displayName: 'legcuffs',
     gridSpot: getGridSpotKey([1, 5]),
+    hideEmpty: true,
   },
 
   w_uniform: {
@@ -240,6 +253,8 @@ export const StripMenu = (props, context) => {
 
   const gridSpots = new Map<GridSpotKey, string>();
   for (const key of Object.keys(data.items)) {
+    const item = data.items[key];
+    if (item === null && SLOTS[key].hideEmpty) continue;
     gridSpots.set(SLOTS[key].gridSpot, key);
   }
 
@@ -277,7 +292,7 @@ export const StripMenu = (props, context) => {
                   if (item === null) {
                     tooltip = slot.displayName;
                   } else if ('name' in item) {
-                    alternateAction = undefined;
+                    alternateAction = ALTERNATE_ACTIONS[item.alternate];
 
                     content = (
                       <Box

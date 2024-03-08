@@ -433,15 +433,48 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 ////////////
 /obj/item/clothing/mask/cigarette/weed
 	name = "weed joint"
+	icon_state = "weed_off"
+	icon_on = "weed_on"
+	icon_off = "weed_off"
+	item_state = "wcigoff"
 	desc = "A rolled-up package of ambrosia vulgaris, aka space weed, in some smooth paper; you sure this is legal dude?"
 	chem_volume = 39
 	smoketime = 20 MINUTES
+	actions_types = list(/datum/action/item_action/hotbox)
+	var/datum/effect_system/smoke_spread/smoke
 
 /obj/item/clothing/mask/cigarette/weed/Initialize()
 	. = ..()
 	reagents.add_reagent("space_drugs",15)
 	reagents.add_reagent("bicaridine", 8)
 	reagents.add_reagent("kelotane", 1)
+
+/datum/action/item_action/hotbox/New(mob/living/user, obj/item/holder)
+	..()
+	name = "Puff"
+	button.name = name
+	button.overlays.Cut()
+	var/image/IMG = image('icons/mob/hud/actions_xeno.dmi', button, "shift_spit_acid_glob")
+	button.overlays += IMG
+
+/datum/action/item_action/hotbox/can_use_action()
+	var/mob/living/carbon/human/H = owner
+	if(istype(H) && !H.is_mob_incapacitated() && H.body_position == STANDING_UP && holder_item == H.wear_mask)
+		return TRUE
+
+/datum/action/item_action/hotbox/action_activate()
+	var/datum/effect_system/smoke_spread/smoke = new /datum/effect_system/smoke_spread/bad
+	user.visible_message(SPAN_NOTICE("[src] takes a massive breath!"),\
+	SPAN_WARNING("You prepare for a massive cloud!"))
+
+	if(!do_after(user, 4 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+		return
+
+	user.visible_message(SPAN_BOLDNOTICE("[src] puffs a massive cloud from their [src]"),\
+	smoke.set_up(rand(1,3), 0, get_turf(user),user.dir,5)
+	H.wear_mask.smoketime =- 5 MINUTES
+	smoke.start()
+
 
 ////////////
 // CIGARS //

@@ -220,7 +220,7 @@
 		if(medal_type)
 			var/obj/item/clothing/accessory/medal/medal = new medal_type()
 			medal.recipient_name = new_human.real_name
-			medal.recipient_rank = current_rank
+			medal.recipient_rank = assignment
 
 			if(new_human.wear_suit && new_human.wear_suit.can_attach_accessory(medal))
 				new_human.wear_suit.attach_accessory(new_human, medal, TRUE)

@@ -8,6 +8,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	attack_speed = 3
+	can_split = FALSE
 	var/heal_brute = 0
 	var/heal_burn = 0
 	var/alien = FALSE

@@ -475,7 +475,7 @@
 	/// Maximum range of effect
 	var/range = 5
 	/// Maximum possible damage before falloff.
-	var/damage = 120
+	var/damage = 130
 	/// Factor to mutiply the effect range has on damage.
 	var/falloff_dam_reduction_mult = 13
 
@@ -483,7 +483,7 @@
 	. = ..()
 	. += SPAN_NOTICE("To put into mine mode, plant at feet.")
 
-/obj/item/explosive/grenade/afterattack(atom/target, mob/user, proximity)
+/obj/item/explosive/grenade/sebb/afterattack(atom/target, mob/user, proximity)
 	if(active)
 		return
 
@@ -516,7 +516,7 @@
 
 
 /obj/item/explosive/grenade/sebb/prime()
-	var/datum/effect_system/spark_spread/spark = new
+	var/datum/effect_system/spark_spread/sparka = new
 	var/list/full_range = oview(range, src) // Fill a list of stuff in the range so we won't have to spam it
 	new /obj/effect/overlay/temp/sebb(get_turf(src))
 	playsound(src.loc, 'sound/effects/sebb_explode.ogg', 100, 0, 10)
@@ -526,12 +526,15 @@
 		addtimer(VARSET_CALLBACK(sentry_stun, sentry_range, initial(sentry_stun.sentry_range)), 2 SECONDS)
 		sentry_stun.visible_message(SPAN_DANGER("[src]'s screen flickes violently as it's shocked!"))
 		sentry_stun.visible_message(SPAN_DANGER("[src] says \"ERROR: Fire control system resetting due to critical voltage flucuation!\""))
-		spark.set_up(5, 1, sentry_stun)
-		spark.start()
+		sparka.set_up(5, 1, sentry_stun)
+		sparka.start()
 	for(var/turf/turf in full_range)
 		if(prob(25))
-			spark.set_up(2, 1, turf)
-			spark.start()
+			var/datum/effect_system/spark_spread/sparkTurf = new //using a different spike system because it becomes
+			sparkTurf.set_up(2, 1, turf)
+			sparkTurf.start()
+			to_chat_forced(world, get_dist(turf,src))
+			to_chat_forced(world,turf)
 	for(var/mob/living/carbon/mob in full_range) // no simplemob support
 		var/mob_dist = get_dist(src, mob)
 		var/falloff = mob_dist * falloff_dam_reduction_mult
@@ -539,8 +542,8 @@
 		//  Example: A marine is 3 tiles out, the distance (3) is multiplied by falloff_dam_reduction_mult to get falloff.
 		// 	The raw damage is minused by falloff to get actual damage
 		var/damage_applied = damage - falloff
-		spark.set_up(5, 1, mob)
-		spark.start()
+		sparka.set_up(5, 1, mob)
+		sparka.start()
 
 		if(ishuman(mob))
 			var/mob/living/carbon/human/shocked_human = mob
@@ -549,10 +552,11 @@
 				shocked_human.Stun(1)
 				to_chat(mob, SPAN_HIGHDANGER("All of your systems jam up as your main bus is overvolted by [damage_applied*2] volts."))
 			shocked_human.take_overall_armored_damage(damage_applied, ARMOR_ENERGY, BURN, 90) // 90% chance to be on additional limbs
-			shocked_human.make_dizzy(damage_applied*3)
-			shocked_human.make_jittery(damage_applied*3)
-			mob.apply_stamina_damage(damage_applied*2) // REMOVETHIS REMOVETHIS TO TEST
+			shocked_human.make_dizzy(damage_applied*2)
+			shocked_human.make_jittery(damage_applied*2)
+			mob.apply_stamina_damage(damage_applied*1) // REMOVETHIS REMOVETHIS TO TEST
 			shocked_human.emote("pain")
+			shake_camera(mob, 1, 1)
 		else //nonhuman damage + slow
 			mob.apply_damage(damage_applied, BURN)
 			mob.Slow(damage_applied/max(mob_dist, 1))
@@ -562,7 +566,7 @@
 			mob.Superslow(5)
 			mob.eye_blurry = damage_applied/4
 		else if((mob_dist < (range-1)) && (mob.mob_size < MOB_SIZE_XENO_VERY_SMALL)) // Flicker stun humans that are closer to the grenade and larvas too.
-			mob.KnockDown((range/2)/mob_dist) // half of the maximum range divided by the distance the mob is to the grenade
+			mob.apply_effect(1 + (damage_applied/40),WEAKEN) // 1 + damage/40
 			mob.eye_blurry = damage_applied/8
 		else
 			to_chat(mob, SPAN_HIGHDANGER("Your entire body seizes up as a powerful shock courses through it!"))
@@ -575,6 +579,7 @@
 
 /obj/item/explosive/grenade/sebb/primed/Initialize()
 	. = ..()
+	src.visible_message(SPAN_HIGHDANGER("[src] pops out of the ground!"))
 	activate()
 
 /obj/effect/overlay/temp/sebb

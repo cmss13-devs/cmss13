@@ -1,0 +1,4 @@
+author: "iloveloopers"
+delete-after: True
+changes:
+  - balance: "ravager empower range is now 4 tiles"

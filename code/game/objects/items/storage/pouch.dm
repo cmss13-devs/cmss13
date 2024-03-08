@@ -192,7 +192,7 @@
 	name = "first-aid pouch"
 	desc = "It contains, by default, autoinjectors. But it may also hold ointments, bandages, and pill packets."
 	icon_state = "firstaid"
-	storage_slots = 5
+	storage_slots = 4
 	can_hold = list(
 		/obj/item/stack/medical/ointment,
 		/obj/item/reagent_container/hypospray/autoinjector,
@@ -209,21 +209,18 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/tramadol(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
-	new /obj/item/stack/medical/splint(src)
 
 /obj/item/storage/pouch/firstaid/full/alternate/fill_preset_inventory()
 	new /obj/item/reagent_container/hypospray/autoinjector/tricord(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/tramadol(src)
 	new /obj/item/stack/medical/splint(src)
 	new /obj/item/stack/medical/ointment(src)
-	new /obj/item/stack/medical/bruise_pack(src)
 
 /obj/item/storage/pouch/firstaid/full/pills/fill_preset_inventory()
 	new /obj/item/storage/pill_bottle/packet/bicaridine(src)
 	new /obj/item/storage/pill_bottle/packet/kelotane(src)
 	new /obj/item/storage/pill_bottle/packet/tramadol(src)
 	new /obj/item/storage/pill_bottle/packet/tramadol(src)
-	new /obj/item/stack/medical/splint(src)
 
 /obj/item/storage/pouch/firstaid/ert
 	desc = "It can contain autoinjectors, ointments, and bandages. This one has some extra stuff."
@@ -1197,7 +1194,7 @@
 /obj/item/storage/pouch/tools
 	name = "tools pouch"
 	desc = "It's designed to hold maintenance tools - screwdriver, wrench, cable coil, etc. It also has a hook for an entrenching tool or light replacer."
-	storage_slots = 5
+	storage_slots = 4
 	max_w_class = SIZE_MEDIUM
 	icon_state = "tools"
 	can_hold = list(

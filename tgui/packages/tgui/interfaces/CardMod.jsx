@@ -1,12 +1,12 @@
-import { Fragment } from 'inferno';
+import { Fragment } from 'react';
 import { useBackend, useLocalState } from '../backend';
 import { Box, Button, Stack, Input, Section, Tabs, Table, NumberInput } from '../components';
 import { Window } from '../layouts';
 import { AccessList } from './common/AccessList';
 import { map } from 'common/collections';
 
-export const CardMod = (props, context) => {
-  const [tab2, setTab2] = useLocalState(context, 'tab2', 1);
+export const CardMod = (props) => {
+  const [tab2, setTab2] = useLocalState('tab2', 1);
   return (
     <Window width={450} height={520} resizable>
       <Window.Content scrollable>
@@ -27,8 +27,8 @@ export const CardMod = (props, context) => {
   );
 };
 
-export const CrewManifest = (props, context) => {
-  const { act, data } = useBackend(context);
+export const CrewManifest = (props) => {
+  const { act, data } = useBackend();
   const { manifest = {} } = data;
   return (
     <Section
@@ -60,9 +60,9 @@ export const CrewManifest = (props, context) => {
   );
 };
 
-export const CardContent = (props, context) => {
-  const { act, data } = useBackend(context);
-  const [tab, setTab] = useLocalState(context, 'tab', 1);
+export const CardContent = (props) => {
+  const { act, data } = useBackend();
+  const [tab, setTab] = useLocalState('tab', 1);
   const {
     authenticated,
     regions = [],
@@ -75,13 +75,12 @@ export const CardContent = (props, context) => {
     id_account,
   } = data;
   const [selectedDepartment, setSelectedDepartment] = useLocalState(
-    context,
     'department',
     Object.keys(jobs)[0]
   );
   const departmentJobs = jobs[selectedDepartment] || [];
   return (
-    <Fragment>
+    <>
       <Section
         title={
           has_id && authenticated ? (
@@ -99,7 +98,7 @@ export const CardContent = (props, context) => {
           )
         }
         buttons={
-          <Fragment>
+          <>
             <Button
               icon="print"
               content="Print"
@@ -118,7 +117,7 @@ export const CardContent = (props, context) => {
                 act(authenticated ? 'PRG_logout' : 'PRG_authenticate');
               }}
             />
-          </Fragment>
+          </>
         }>
         <Button
           fluid
@@ -127,7 +126,7 @@ export const CardContent = (props, context) => {
           onClick={() => act('PRG_eject')}
         />
         {!!has_id && !!authenticated && (
-          <Fragment>
+          <>
             Linked Account:
             <NumberInput
               value={id_account}
@@ -140,7 +139,7 @@ export const CardContent = (props, context) => {
                 })
               }
             />
-          </Fragment>
+          </>
         )}
       </Section>
       {!!has_id && !!authenticated && (
@@ -229,6 +228,6 @@ export const CardContent = (props, context) => {
           )}
         </Box>
       )}
-    </Fragment>
+    </>
   );
 };

@@ -350,7 +350,7 @@
 	)
 
 /datum/equipment_preset/corpse/security/liaison/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/formal(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/black(new_human), WEAR_BODY)
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(new_human)
 	else
@@ -758,7 +758,7 @@
 	faction = FACTION_PMC
 	faction_group = FACTION_LIST_WY
 	rank = JOB_PMC_STANDARD
-	paygrade = "PMC-OP"
+	paygrade = PAY_SHORT_PMC_OP
 	idtype = /obj/item/card/id/pmc
 	skills = /datum/skills/civilian/survivor/pmc
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
@@ -988,7 +988,7 @@
 	paygrade = PAY_SHORT_ME5
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "FORECON"
-	faction_group = list(FACTION_USCM, FACTION_SURVIVOR)
+	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_ENGINEERING,

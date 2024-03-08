@@ -40,14 +40,14 @@ interface VendingData {
 }
 
 interface VenableItem {
-  record: VendingRecord;
+  readonly record: VendingRecord;
 }
 
 interface RecordNameProps extends BoxProps {
-  record: VendingRecord;
+  readonly record: VendingRecord;
 }
 
-const DescriptionTooltip = (props: RecordNameProps, context) => {
+const DescriptionTooltip = (props: RecordNameProps) => {
   const { record } = props;
   const isMandatory = record.prod_color === VENDOR_ITEM_MANDATORY;
   const isRecommended = record.prod_color === VENDOR_ITEM_RECOMMENDED;
@@ -55,7 +55,7 @@ const DescriptionTooltip = (props: RecordNameProps, context) => {
   return (
     <Tooltip
       position="bottom-start"
-      className={classes(['Tooltip', props.className])}
+      // className={classes(['Tooltip', props.className])}
       content={
         <NoticeBox
           info
@@ -78,10 +78,10 @@ const DescriptionTooltip = (props: RecordNameProps, context) => {
 };
 
 interface VendButtonProps extends BoxProps {
-  isRecommended: boolean;
-  isMandatory: boolean;
-  available: boolean;
-  onClick: () => any;
+  readonly isRecommended: boolean;
+  readonly isMandatory: boolean;
+  readonly available: boolean;
+  readonly onClick: () => any;
 }
 
 const VendButton = (props: VendButtonProps, _) => {
@@ -107,8 +107,8 @@ const VendButton = (props: VendButtonProps, _) => {
   );
 };
 
-const VendableItemRow = (props: VenableItem, context) => {
-  const { data, act } = useBackend<VendingData>(context);
+const VendableItemRow = (props: VenableItem) => {
+  const { data, act } = useBackend<VendingData>();
   const { record } = props;
 
   const quantity = data.stock_listing[record.prod_index - 1];
@@ -149,11 +149,11 @@ const VendableItemRow = (props: VenableItem, context) => {
   );
 };
 
-const VendableClothingItemRow = (
-  props: { record: VendingRecord; hasCost: boolean },
-  context
-) => {
-  const { data, act } = useBackend<VendingData>(context);
+const VendableClothingItemRow = (props: {
+  readonly record: VendingRecord;
+  readonly hasCost: boolean;
+}) => {
+  const { data, act } = useBackend<VendingData>();
   const { record, hasCost } = props;
 
   const quantity = data.stock_listing[record.prod_index - 1];
@@ -201,14 +201,14 @@ const VendableClothingItemRow = (
 };
 
 interface VendingCategoryProps {
-  category: VendingCategory;
+  readonly category: VendingCategory;
 }
 
 interface DescriptionProps {
-  desc: string;
-  name: string;
-  isMandatory: boolean;
-  isRecommended: boolean;
+  readonly desc: string;
+  readonly name: string;
+  readonly isMandatory: boolean;
+  readonly isRecommended: boolean;
 }
 
 const ItemDescriptionViewer = (props: DescriptionProps, _) => {
@@ -230,11 +230,11 @@ const ItemDescriptionViewer = (props: DescriptionProps, _) => {
   );
 };
 
-export const ViewVendingCategory = (props: VendingCategoryProps, context) => {
-  const { data } = useBackend<VendingData>(context);
+export const ViewVendingCategory = (props: VendingCategoryProps) => {
+  const { data } = useBackend<VendingData>();
   const { vendor_type } = data;
   const { category } = props;
-  const [searchTerm, _] = useLocalState(context, 'searchTerm', '');
+  const [searchTerm, _] = useLocalState('searchTerm', '');
   const searchFilter = (x: VendingRecord) =>
     x.prod_name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase());
 
@@ -288,10 +288,17 @@ const getTheme = (value: string | number): string => {
   }
 };
 
-export const VendingSorted = (_, context) => {
-  const { data, act } = useBackend<VendingData>(context);
+export const VendingSorted = () => {
+  const { data, act } = useBackend<VendingData>();
+  if (data === undefined) {
+    return (
+      <Window height={800} width={400}>
+        no data!
+      </Window>
+    );
+  }
   const categories = data.displayed_categories ?? [];
-  const [searchTerm, setSearchTerm] = useLocalState(context, 'searchTerm', '');
+  const [searchTerm, setSearchTerm] = useLocalState('searchTerm', '');
   const isEmpty = categories.length === 0;
   const show_points = data.show_points ?? false;
   const points = data.current_m_points ?? 0;

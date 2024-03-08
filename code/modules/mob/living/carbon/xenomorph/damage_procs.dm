@@ -299,7 +299,7 @@
 	. = ..()
 	switch(fire.fire_variant)
 		if(FIRE_VARIANT_TYPE_B)
-			if(!armor_deflection_debuff) //Only adds another reset timer if the debuff is currently on 0, so at the start or after a reset has recently occured.
+			if(!armor_deflection_debuff) //Only adds another reset timer if the debuff is currently on 0, so at the start or after a reset has recently occurred.
 				reset_xeno_armor_debuff_after_time(src, delta_time*10)
 			fire.type_b_debuff_xeno_armor(src) //Always reapplies debuff each time to minimize gap.
 

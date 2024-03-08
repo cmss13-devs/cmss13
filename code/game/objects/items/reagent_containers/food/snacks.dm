@@ -503,7 +503,7 @@
 /obj/item/reagent_container/food/snacks/egg/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype( W, /obj/item/toy/crayon ))
 		var/obj/item/toy/crayon/C = W
-		var/clr = C.colourName
+		var/clr = C.colorName
 
 		if(!(clr in list("blue","green","mime","orange","purple","rainbow","red","yellow")))
 			to_chat(usr, SPAN_NOTICE(" The egg refuses to take on this color!"))
@@ -569,7 +569,7 @@
 	name = "Boiled egg"
 	desc = "A hard-boiled egg."
 	icon_state = "egg"
-	filling_color = "#FFFFFF"
+	filling_color = COLOR_WHITE
 
 /obj/item/reagent_container/food/snacks/boiledegg/Initialize()
 	. = ..()
@@ -641,8 +641,16 @@
 /obj/item/reagent_container/food/snacks/carpmeat/Initialize()
 	. = ..()
 	reagents.add_reagent("fish", 3)
-	reagents.add_reagent("carpotoxin", 3)
+	reagents.add_reagent("carpotoxin", 6)
 	src.bitesize = 6
+
+/obj/item/reagent_container/food/snacks/carpmeat/processed
+	name = "processed carp fillet"
+	desc = "A fillet of spess carp meat. This one has been processed to remove carpotoxin."
+
+/obj/item/reagent_container/food/snacks/carpmeat/processed/Initialize()
+	. = ..()
+	reagents.remove_reagent("carpotoxin", 6)
 
 /obj/item/reagent_container/food/snacks/fishfingers
 	name = "Fish Fingers"
@@ -653,7 +661,6 @@
 /obj/item/reagent_container/food/snacks/fishfingers/Initialize()
 	. = ..()
 	reagents.add_reagent("fish", 4)
-	reagents.add_reagent("carpotoxin", 3)
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/hugemushroomslice
@@ -802,7 +809,6 @@
 	. = ..()
 	reagents.add_reagent("bread", 3)
 	reagents.add_reagent("fish", 3)
-	reagents.add_reagent("carpotoxin", 3)
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/tofuburger
@@ -829,13 +835,6 @@
 	reagents.add_reagent("iron", 3)
 	bitesize = 2
 
-/// Vanilla roburger - the nanites turn people into cyborgs
-/obj/item/reagent_container/food/snacks/roburger/unsafe
-/obj/item/reagent_container/food/snacks/roburger/unsafe/Initialize(mapload, ...)
-	. = ..()
-	if(prob(5))
-		reagents.add_reagent("nanites", 2)
-
 /obj/item/reagent_container/food/snacks/roburgerbig
 	name = "roburger"
 	desc = "This massive patty looks like poison. Beep."
@@ -845,7 +844,6 @@
 
 /obj/item/reagent_container/food/snacks/roburgerbig/Initialize()
 	. = ..()
-	reagents.add_reagent("nanites", 100)
 	bitesize = 0.1
 
 /obj/item/reagent_container/food/snacks/xenoburger
@@ -858,14 +856,13 @@
 	. = ..()
 	reagents.add_reagent("bread", 3)
 	reagents.add_reagent("meatprotein", 3)
-	reagents.add_reagent("xenoblood", 3)
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/clownburger
 	name = "Clown Burger"
 	desc = "This tastes funny..."
 	icon_state = "clownburger"
-	filling_color = "#FF00FF"
+	filling_color = COLOR_MAGENTA
 
 /obj/item/reagent_container/food/snacks/clownburger/Initialize()
 	. = ..()
@@ -881,7 +878,7 @@
 	name = "Mime Burger"
 	desc = "Its taste defies language."
 	icon_state = "mimeburger"
-	filling_color = "#FFFFFF"
+	filling_color = COLOR_WHITE
 
 /obj/item/reagent_container/food/snacks/mimeburger/Initialize()
 	. = ..()
@@ -1078,7 +1075,6 @@
 	. = ..()
 	reagents.add_reagent("bread", 4)
 	reagents.add_reagent("meatprotein", 2)
-	reagents.add_reagent("xenoblood", 4)
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/wingfangchu
@@ -1092,7 +1088,6 @@
 	. = ..()
 	reagents.add_reagent("soysauce", 4)
 	reagents.add_reagent("meatprotein", 4)
-	reagents.add_reagent("xenoblood", 4)
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/human/kabob
@@ -1141,7 +1136,6 @@
 /obj/item/reagent_container/food/snacks/cubancarp/Initialize()
 	. = ..()
 	reagents.add_reagent("fish", 6)
-	reagents.add_reagent("carpotoxin", 3)
 	reagents.add_reagent("hotsauce", 3)
 	bitesize = 3
 
@@ -1368,7 +1362,7 @@
 	name = "Tomato soup"
 	desc = "Smells like copper"
 	icon_state = "tomatosoup"
-	filling_color = "#FF0000"
+	filling_color = COLOR_RED
 
 /obj/item/reagent_container/food/snacks/bloodsoup/Initialize()
 	. = ..()
@@ -1698,7 +1692,6 @@
 /obj/item/reagent_container/food/snacks/fishandchips/Initialize()
 	. = ..()
 	reagents.add_reagent("fish", 6)
-	reagents.add_reagent("carpotoxin", 3)
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/sandwich
@@ -2128,7 +2121,7 @@
 	desc = "A tasty dessert that won't make it through a metal detector."
 	icon_state = "gappletart"
 	trash = /obj/item/trash/plate
-	filling_color = "#FFFF00"
+	filling_color = COLOR_YELLOW
 
 /obj/item/reagent_container/food/snacks/appletart/Initialize()
 	. = ..()
@@ -2180,7 +2173,6 @@
 	reagents.add_reagent("bread", 10)
 	reagents.add_reagent("meatprotein", 10)
 	reagents.add_reagent("cheese", 10)
-	reagents.add_reagent("xenoblood", 10)
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/xenomeatbreadslice

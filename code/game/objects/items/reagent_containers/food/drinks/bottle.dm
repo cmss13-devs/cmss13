@@ -107,7 +107,7 @@
 	if(alcohol_potency < BURN_LEVEL_TIER_1)
 		to_chat(user, SPAN_NOTICE("There's not enough flammable liquid in \the [src]!"))
 		return
-	alcohol_potency = Clamp(alcohol_potency, BURN_LEVEL_TIER_1, BURN_LEVEL_TIER_7)
+	alcohol_potency = clamp(alcohol_potency, BURN_LEVEL_TIER_1, BURN_LEVEL_TIER_7)
 
 	if(!do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return

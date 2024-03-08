@@ -1,4 +1,0 @@
-author: "SabreML"
-delete-after: True
-changes:
-  - bugfix: "Fixed screen alert tooltips ('Buckled' indicator and stuff) getting stuck open."

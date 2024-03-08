@@ -174,7 +174,7 @@
 	switch(fire_reagent.fire_type)
 		if(FIRE_VARIANT_TYPE_B)
 			max_stacks = 10 //Armor Shredding Greenfire caps at 1 resist/pat
-	fire_stacks = Clamp(fire_stacks + add_fire_stacks, min_stacks, max_stacks)
+	fire_stacks = clamp(fire_stacks + add_fire_stacks, min_stacks, max_stacks)
 
 	if(on_fire && fire_stacks <= 0)
 		ExtinguishMob()

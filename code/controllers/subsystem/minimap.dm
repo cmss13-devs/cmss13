@@ -585,6 +585,8 @@ SUBSYSTEM_DEF(minimaps)
 		owner?.client?.remove_from_screen(map)
 		minimap_displayed = FALSE
 
+	UnregisterSignal(target, COMSIG_MOVABLE_Z_CHANGED)
+
 /**
  * Updates the map when the owner changes zlevel
  */

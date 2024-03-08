@@ -759,7 +759,7 @@
 		<A href='?src=\ref[src];[HrefToken()];events=power'>Power ship SMESs and APCs</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=quickpower'>Power ship SMESs</A><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=powereverything'>Power ALL SMESs and APCs everywhere</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=powershipreactors'>Power all ship reactors</A><BR>
+		<A href='?src=\ref[src];[HrefToken()];events=powershipreactors'>Repair and power all ship reactors</A><BR>
 		<BR>
 		<B>Events</B><BR>
 		<A href='?src=\ref[src];[HrefToken()];events=blackout'>Break all lights</A><BR>

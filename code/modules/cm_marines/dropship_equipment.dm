@@ -21,6 +21,7 @@
 	var/skill_required = SKILL_PILOT_TRAINED
 	var/combat_equipment = TRUE
 
+
 /obj/structure/dropship_equipment/Destroy()
 	QDEL_NULL(ammo_equipped)
 	if(linked_shuttle)
@@ -34,6 +35,7 @@
 			linked_console.selected_equipment = null
 		linked_console = null
 	. = ..()
+
 
 /obj/structure/dropship_equipment/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
 	if(unslashable)
@@ -1144,9 +1146,11 @@
 
 	var/list/possible_fultons = get_targets()
 
-	var/obj/item/stack/fulton/fult = possible_fultons[fulton_choice]
 	if(!fulton_choice)
 		return
+	// Strip any \proper or \improper in order to match the entry in possible_fultons.
+	fulton_choice = strip_improper(fulton_choice)
+	var/obj/item/stack/fulton/fult = possible_fultons[fulton_choice]
 
 	if(!ship_base) //system was uninstalled midway
 		return

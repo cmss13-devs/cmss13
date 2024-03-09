@@ -141,7 +141,7 @@
 				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] starts unscrewing [src]'s maintenance hatch."), \
 				SPAN_NOTICE("You start unscrewing [src]'s maintenance hatch."))
-				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				if(do_after(user, 2 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(QDELETED(src) || repair_state != FLOODLIGHT_REPAIR_UNSCREW)
 						return
 					playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
@@ -153,7 +153,7 @@
 				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] starts screwing [src]'s maintenance hatch closed."), \
 				SPAN_NOTICE("You start screwing [src]'s maintenance hatch closed."))
-				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				if(do_after(user, 2 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(QDELETED(src) || repair_state != FLOODLIGHT_REPAIR_SCREW)
 						return
 					playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
@@ -176,7 +176,7 @@
 				playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] starts prying [src]'s maintenance hatch open."),\
 				SPAN_NOTICE("You start prying [src]'s maintenance hatch open."))
-				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				if(do_after(user, 2 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(QDELETED(src) || repair_state != FLOODLIGHT_REPAIR_CROWBAR)
 						return
 					playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
@@ -200,7 +200,7 @@
 					playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
 					user.visible_message(SPAN_NOTICE("[user] starts welding [src]'s damage."),
 					SPAN_NOTICE("You start welding [src]'s damage."))
-					if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+					if(do_after(user, 4 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 						if(QDELETED(src) || !welder.isOn() || repair_state != FLOODLIGHT_REPAIR_WELD)
 							return
 						playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
@@ -225,7 +225,7 @@
 				playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] starts replacing [src]'s damaged cables."),\
 				SPAN_NOTICE("You start replacing [src]'s damaged cables."))
-				if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+				if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 					if(QDELETED(src) || repair_state != FLOODLIGHT_REPAIR_CABLE)
 						return
 					if(coil.use(2))
@@ -257,8 +257,7 @@
 			SPAN_NOTICE("You replace [src]'s damaged lighting assembly."))
 			return TRUE
 
-	..()
-	return FALSE
+	return ..()
 
 /obj/structure/machinery/colony_floodlight/attack_hand(mob/user)
 	if(ishuman(user))
@@ -267,7 +266,7 @@
 		else if(!is_lit)
 			to_chat(user, SPAN_WARNING("Nothing happens. Looks like it's powered elsewhere."))
 		return FALSE
-	..()
+	return ..()
 
 /obj/structure/machinery/colony_floodlight/get_examine_text(mob/user)
 	. = ..()

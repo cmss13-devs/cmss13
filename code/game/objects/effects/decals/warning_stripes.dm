@@ -253,7 +253,12 @@
 /obj/effect/hybrisa/decal/roadcross
 	icon = 'icons/effects/64x64hybrisa_decals.dmi'
 	icon_state = "roadcross"
-
+/obj/effect/hybrisa/decal/checkpoint_decal
+	icon = 'icons/effects/64x64hybrisa_decals.dmi'
+	icon_state = "checkpoint_decal"
+/obj/effect/hybrisa/decal/workers_decal
+	icon = 'icons/effects/64x64hybrisa_decals.dmi'
+	icon_state = "workers_decal"
 
 /// Dirt & Grime
 

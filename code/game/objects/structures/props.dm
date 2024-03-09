@@ -3105,7 +3105,11 @@
 	desc = "A advertisement billboard."
 	icon = 'icons/obj/structures/props/32x64_zenithbillboards.dmi'
 	icon_state = "billboard3"
-
+/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard4
+	name = "billboard"
+	desc = "A advertisement billboard."
+	icon = 'icons/obj/structures/props/32x64_zenithbillboards.dmi'
+	icon_state = "billboard4"
 // Car Factory
 
 /obj/structure/prop/hybrisa/Factory
@@ -3116,10 +3120,9 @@
 	name = "Robotic arm"
 	desc = "A robotic arm used in the construction of 'Meridian' Automobiles."
 	icon_state = "factory_roboticarm"
-	bound_width = 32
+	bound_width = 64
 	bound_height = 32
 	anchored = TRUE
-	layer = ABOVE_MOB_LAYER
 /obj/structure/prop/hybrisa/Factory/Robotic_arm/Flipped
 	icon_state = "factory_roboticarm2"
 /obj/structure/prop/hybrisa/Factory/Conveyor_belt

@@ -7,11 +7,12 @@
 	density = FALSE
 	anchored = TRUE
 	var/ispowered = FALSE
-	var/turned_on = 0 //has to be toggled in engineering
+	var/turned_on = FALSE //has to be toggled in engineering
 	use_power = USE_POWER_IDLE
 	unslashable = TRUE
 	unacidable = TRUE
-	var/list/floodlist = list() // This will save our list of floodlights on the map
+	///All floodlights under our control
+	var/list/floodlist = list()
 	power_machine = TRUE
 
 /obj/structure/machinery/colony_floodlight_switch/Initialize(mapload, ...)
@@ -20,9 +21,9 @@
 
 /obj/structure/machinery/colony_floodlight_switch/LateInitialize()
 	. = ..()
-	for(var/obj/structure/machinery/colony_floodlight/F in GLOB.machines)
-		floodlist += F
-		F.fswitch = src
+	for(var/obj/structure/machinery/colony_floodlight/floodlight in GLOB.machines)
+		floodlist += floodlight
+		floodlight.fswitch = src
 	start_processing()
 
 /obj/structure/machinery/colony_floodlight_switch/Destroy()
@@ -30,7 +31,6 @@
 		floodlight.fswitch = null
 	floodlist = null
 	return ..()
-
 
 /obj/structure/machinery/colony_floodlight_switch/update_icon()
 	if(!ispowered)
@@ -42,10 +42,10 @@
 
 /obj/structure/machinery/colony_floodlight_switch/process()
 	var/lightpower = 0
-	for(var/obj/structure/machinery/colony_floodlight/C in floodlist)
-		if(!C.is_lit)
+	for(var/obj/structure/machinery/colony_floodlight/floodlight in floodlist)
+		if(!floodlight.is_lit)
 			continue
-		lightpower += C.power_tick
+		lightpower += floodlight.power_tick
 	use_power(lightpower)
 
 /obj/structure/machinery/colony_floodlight_switch/power_change()
@@ -54,37 +54,37 @@
 		if(ispowered && turned_on)
 			toggle_lights()
 		ispowered = FALSE
-		turned_on = 0
+		turned_on = FALSE
 		update_icon()
 	else
 		ispowered = TRUE
 		update_icon()
 
 /obj/structure/machinery/colony_floodlight_switch/proc/toggle_lights()
-	for(var/obj/structure/machinery/colony_floodlight/F in floodlist)
-		spawn(rand(0,50))
-			F.is_lit = !F.is_lit
-			if(!F.damaged)
-				if(F.is_lit) //Shut it down
-					F.set_light(F.lum_value)
+	for(var/obj/structure/machinery/colony_floodlight/floodlight in floodlist)
+		spawn(rand(0, 50))
+			floodlight.is_lit = !floodlight.is_lit
+			if(!floodlight.damaged)
+				if(floodlight.is_lit) //Shut it down
+					floodlight.set_light(floodlight.lum_value)
 				else
-					F.set_light(0)
-			F.update_icon()
-	return 0
+					floodlight.set_light(0)
+			floodlight.update_icon()
+	return FALSE
 
 /obj/structure/machinery/colony_floodlight_switch/attack_hand(mob/user as mob)
 	if(!ishuman(user))
 		to_chat(user, "Nice try.")
-		return 0
+		return FALSE
 	if(!ispowered)
 		to_chat(user, "Nothing happens.")
-		return 0
+		return FALSE
 	playsound(src,'sound/items/Deconstruct.ogg', 30, 1)
 	use_power(5)
 	toggle_lights()
-	turned_on = !(src.turned_on)
+	turned_on = !turned_on
 	update_icon()
-	return 1
+	return TRUE
 
 
 #define FLOODLIGHT_REPAIR_UNSCREW 0
@@ -100,14 +100,18 @@
 	density = TRUE
 	anchored = TRUE
 	layer = ABOVE_XENO_LAYER
-	var/damaged = 0 //Can be smashed by xenos
-	var/is_lit = 0 //whether the floodlight is switched to on or off. Does not necessarily mean it emits light.
+	///Whether it has been smashed by xenos
+	var/damaged = FALSE
+	///whether the floodlight is switched to on or off. Does not necessarily mean it emits light.
+	var/is_lit = FALSE
 	unslashable = TRUE
 	unacidable = TRUE
-	var/power_tick = 50 // power each floodlight takes up per process
+	///The power each floodlight takes up per process
+	var/power_tick = 50
 	use_power = USE_POWER_NONE //It's the switch that uses the actual power, not the lights
-	var/obj/structure/machinery/colony_floodlight_switch/fswitch = null //Reverse lookup for power grabbing in area
 	needs_power = FALSE
+	///Reverse lookup for power grabbing in area
+	var/obj/structure/machinery/colony_floodlight_switch/fswitch = null
 	var/lum_value = 7
 	var/repair_state = 0
 	health = 150
@@ -131,7 +135,7 @@
 		if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair [src]."))
-				return 0
+				return FALSE
 
 			if(repair_state == FLOODLIGHT_REPAIR_UNSCREW)
 				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
@@ -153,7 +157,7 @@
 					if(QDELETED(src) || repair_state != FLOODLIGHT_REPAIR_SCREW)
 						return
 					playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
-					damaged = 0
+					damaged = FALSE
 					repair_state = FLOODLIGHT_REPAIR_UNSCREW
 					health = initial(health)
 					user.visible_message(SPAN_NOTICE("[user] screws [src]'s maintenance hatch closed."), \
@@ -166,16 +170,16 @@
 		else if(HAS_TRAIT(I, TRAIT_TOOL_CROWBAR))
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair [src]."))
-				return 0
+				return FALSE
 
 			if(repair_state == FLOODLIGHT_REPAIR_CROWBAR)
-				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
+				playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] starts prying [src]'s maintenance hatch open."),\
 				SPAN_NOTICE("You start prying [src]'s maintenance hatch open."))
 				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(QDELETED(src) || repair_state != FLOODLIGHT_REPAIR_CROWBAR)
 						return
-					playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
+					playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 					repair_state = FLOODLIGHT_REPAIR_WELD
 					user.visible_message(SPAN_NOTICE("[user] pries [src]'s maintenance hatch open."),\
 					SPAN_NOTICE("You pry [src]'s maintenance hatch open."))
@@ -185,37 +189,37 @@
 			if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
 				to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 				return
-			var/obj/item/tool/weldingtool/WT = I
+			var/obj/item/tool/weldingtool/welder = I
 
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair [src]."))
-				return 0
+				return FALSE
 
 			if(repair_state == FLOODLIGHT_REPAIR_WELD)
-				if(WT.remove_fuel(1, user))
+				if(welder.remove_fuel(1, user))
 					playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
 					user.visible_message(SPAN_NOTICE("[user] starts welding [src]'s damage."),
 					SPAN_NOTICE("You start welding [src]'s damage."))
 					if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-						if(QDELETED(src) || !WT.isOn() || repair_state != FLOODLIGHT_REPAIR_WELD)
+						if(QDELETED(src) || !welder.isOn() || repair_state != FLOODLIGHT_REPAIR_WELD)
 							return
 						playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 						repair_state = FLOODLIGHT_REPAIR_CABLE
 						user.visible_message(SPAN_NOTICE("[user] welds [src]'s damage."),
 						SPAN_NOTICE("You weld [src]'s damage."))
-						return 1
+						return TRUE
 				else
 					to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
 			return TRUE
 
 		else if(iscoil(I))
-			var/obj/item/stack/cable_coil/C = I
+			var/obj/item/stack/cable_coil/coil = I
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair [src]."))
-				return 0
+				return FALSE
 
 			if(repair_state == FLOODLIGHT_REPAIR_CABLE)
-				if(C.get_amount() < 2)
+				if(coil.get_amount() < 2)
 					to_chat(user, SPAN_WARNING("You need two coils of wire to replace the damaged cables."))
 					return
 				playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
@@ -224,16 +228,16 @@
 				if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 					if(QDELETED(src) || repair_state != FLOODLIGHT_REPAIR_CABLE)
 						return
-					if(C.use(2))
+					if(coil.use(2))
 						playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 						repair_state = FLOODLIGHT_REPAIR_SCREW
-						user.visible_message(SPAN_NOTICE("[user] starts replaces [src]'s damaged cables."),\
+						user.visible_message(SPAN_NOTICE("[user] replaces [src]'s damaged cables."),\
 						SPAN_NOTICE("You replace [src]'s damaged cables."))
 			return TRUE
 
 
 	..()
-	return 0
+	return FALSE
 
 /obj/structure/machinery/colony_floodlight/attack_hand(mob/user)
 	if(ishuman(user))
@@ -241,7 +245,7 @@
 			to_chat(user, SPAN_WARNING("[src] is damaged."))
 		else if(!is_lit)
 			to_chat(user, SPAN_WARNING("Nothing happens. Looks like it's powered elsewhere."))
-		return 0
+		return FALSE
 	..()
 
 /obj/structure/machinery/colony_floodlight/get_examine_text(mob/user)

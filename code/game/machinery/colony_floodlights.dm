@@ -235,6 +235,27 @@
 						SPAN_NOTICE("You replace [src]'s damaged cables."))
 			return TRUE
 
+		else if(istype(I, /obj/item/device/lightreplacer))
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+				to_chat(user, SPAN_WARNING("You have no clue how to repair [src]."))
+				return FALSE
+
+			if(repair_state == FLOODLIGHT_REPAIR_UNSCREW)
+				to_chat(user, SPAN_WARNING("You need to unscrew [src]'s maintenance hatch."))
+				return FALSE
+			if(repair_state == FLOODLIGHT_REPAIR_SCREW)
+				to_chat(user, SPAN_WARNING("You need to screw [src]'s maintenance hatch."))
+				return FALSE
+
+			var/obj/item/device/lightreplacer/replacer = I
+			if(!replacer.CanUse(user))
+				to_chat(user, replacer.failmsg)
+				return FALSE
+			replacer.Use(user)
+			repair_state = FLOODLIGHT_REPAIR_SCREW
+			user.visible_message(SPAN_NOTICE("[user] replaces [src]'s damaged lighting assembly."),\
+			SPAN_NOTICE("You replace [src]'s damaged lighting assembly."))
+			return TRUE
 
 	..()
 	return FALSE

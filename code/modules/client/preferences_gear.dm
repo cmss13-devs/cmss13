@@ -515,6 +515,10 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 	display_name = "Card, Uno Reverse - yellow"
 	path = /obj/item/toy/handcard/uno_reverse_yellow
 
+/datum/gear/toy/card/trading_card
+	display_name = "Card, random WeyYu Trading"
+	path = /obj/item/toy/trading_card
+
 /datum/gear/toy/deck
 	display_name = "Deck of cards, regular"
 	path = /obj/item/toy/deck
@@ -522,6 +526,10 @@ GLOBAL_LIST_EMPTY(gear_datums_by_name)
 /datum/gear/toy/deck/uno
 	display_name = "Deck of cards, Uno"
 	path = /obj/item/toy/deck/uno
+
+/datum/gear/toy/trading_card
+	display_name = "Trading Card Packet"
+	path = /obj/item/storage/fancy/trading_card
 
 /datum/gear/toy/d6
 	display_name = "Die, 6 sides"

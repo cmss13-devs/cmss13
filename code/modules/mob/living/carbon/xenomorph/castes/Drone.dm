@@ -12,6 +12,11 @@
 	evasion = XENO_EVASION_MEDIUM
 	speed = XENO_SPEED_TIER_7
 
+	available_strains = list(
+		/datum/xeno_strain/gardener,
+		/datum/xeno_strain/healer,
+	)
+
 	build_time_mult = BUILD_TIME_MULT_BUILDER
 
 	caste_desc = "A builder of hives. Only drones may evolve into Queens."
@@ -69,7 +74,6 @@
 		/mob/living/carbon/xenomorph/proc/rename_tunnel,
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
-	mutation_type = DRONE_NORMAL
 
 	icon_xeno = 'icons/mob/xenos/drone.dmi'
 	icon_xenonid = 'icons/mob/xenonids/drone.dmi'

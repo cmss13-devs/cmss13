@@ -301,6 +301,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	paygrade = PAY_SHORT_WYC2
+	faction_group = FACTION_LIST_SURVIVOR_WY
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
@@ -381,7 +382,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_LOGISTICS,ACCESS_WY_FLIGHT)
 
 /datum/equipment_preset/survivor/flight_control_operator/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/lawyer/bluesuit(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/workwear/khaki(new_human), WEAR_BODY)
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/windbreaker/windbreaker_brown(new_human), WEAR_JACKET)
@@ -425,10 +426,11 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	name = "Survivor - Interstellar Commerce Commission Liaison"
 	assignment = "Interstellar Commerce Commission Corporate Liaison"
 	skills = /datum/skills/civilian/survivor
-	idtype = /obj/item/card/id/silver/cl
-	paygrade = PAY_SHORT_ICCL
-	role_comm_title = "ICC Rep."
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	paygrade = PAY_SHORT_ICCL
+	faction_group = FACTION_LIST_SURVIVOR_WY
+	idtype = /obj/item/card/id/silver/cl
+	role_comm_title = "ICC Rep."
 
 	survivor_variant = CORPORATE_SURVIVOR
 

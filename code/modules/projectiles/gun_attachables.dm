@@ -1271,6 +1271,19 @@ Defined in conflicts.dm of the #defines folder.
 	QDEL_NULL(scope_element)
 	return ..()
 
+/obj/item/attachable/vulture_scope/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	var/new_attach_icon
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("snow")
+			attach_icon = new_attach_icon ? new_attach_icon : "s_" + attach_icon
+		if("desert")
+			attach_icon = new_attach_icon ? new_attach_icon : "d_" + attach_icon
+		if("classic")
+			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
+		if("urban")
+			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
+
 /obj/item/attachable/vulture_scope/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -1814,12 +1827,26 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/stock/vulture
 	name = "\improper M707 heavy stock"
 	icon_state = "vulture_stock"
+	attach_icon = "vulture_stock"
 	hud_offset_mod = 3
 
 /obj/item/attachable/stock/vulture/Initialize(mapload, ...)
 	. = ..()
 	select_gamemode_skin(type)
 	// Doesn't give any stat additions due to the gun already having really good ones, and this is unremovable from the gun itself
+
+/obj/item/attachable/stock/vulture/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	var/new_attach_icon
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("snow")
+			attach_icon = new_attach_icon ? new_attach_icon : "s_" + attach_icon
+		if("desert")
+			attach_icon = new_attach_icon ? new_attach_icon : "d_" + attach_icon
+		if("classic")
+			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
+		if("urban")
+			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
 
 /obj/item/attachable/stock/tactical
 	name = "\improper MK221 tactical stock"
@@ -3199,7 +3226,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	var/obj/projectile/P = new(src, create_cause_data(initial(name), user, src))
 	var/datum/ammo/flamethrower/ammo_datum = new projectile_type
-	ammo_datum.flamer_reagent_type = flamer_reagent.type
+	ammo_datum.flamer_reagent_id = flamer_reagent.id
 	P.generate_bullet(ammo_datum)
 	P.icon_state = "naptha_ball"
 	P.color = flamer_reagent.color
@@ -3301,6 +3328,10 @@ Defined in conflicts.dm of the #defines folder.
 	var/bipod_deployed = FALSE
 	/// If this should anchor the user while in use
 	var/heavy_bipod = FALSE
+	// Are switching to full auto when deploying the bipod
+	var/full_auto_switch = FALSE
+	// Store our old firemode so we can switch to it when undeploying the bipod
+	var/old_firemode = null
 
 /obj/item/attachable/bipod/New()
 	..()
@@ -3311,16 +3342,33 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_mod = SCATTER_AMOUNT_TIER_9
 	recoil_mod = RECOIL_AMOUNT_TIER_5
 
-/obj/item/attachable/bipod/Attach(obj/item/weapon/gun/G)
+/obj/item/attachable/bipod/Attach(obj/item/weapon/gun/gun, mob/user)
 	..()
 
-	RegisterSignal(G, COMSIG_ITEM_DROPPED, PROC_REF(handle_drop))
+	if((GUN_FIREMODE_AUTOMATIC in gun.gun_firemode_list) || (gun.flags_gun_features & GUN_SUPPORT_PLATFORM))
+		var/given_action = FALSE
+		if(user && (gun == user.l_hand || gun == user.r_hand))
+			give_action(user, /datum/action/item_action/bipod/toggle_full_auto_switch, src, gun)
+			given_action = TRUE
+		if(!given_action)
+			new /datum/action/item_action/bipod/toggle_full_auto_switch(src, gun)
+
+	RegisterSignal(gun, COMSIG_ITEM_DROPPED, PROC_REF(handle_drop))
 
 /obj/item/attachable/bipod/Detach(mob/user, obj/item/weapon/gun/detaching_gub)
 	UnregisterSignal(detaching_gub, COMSIG_ITEM_DROPPED)
 
+	//clear out anything related to full auto switching
+	full_auto_switch = FALSE
+	old_firemode = null
+	for(var/item_action in detaching_gub.actions)
+		var/datum/action/item_action/bipod/toggle_full_auto_switch/target_action = item_action
+		if(target_action.target == src)
+			qdel(item_action)
+			break
+
 	if(bipod_deployed)
-		undeploy_bipod(detaching_gub)
+		undeploy_bipod(detaching_gub, user)
 	..()
 
 /obj/item/attachable/bipod/update_icon()
@@ -3334,60 +3382,62 @@ Defined in conflicts.dm of the #defines folder.
 	if(istype(loc, /obj/item/weapon/gun))
 		var/obj/item/weapon/gun/gun = loc
 		gun.update_attachable(slot)
-		for(var/datum/action/A as anything in gun.actions)
-			A.update_button_icon()
+		for(var/datum/action/item_action as anything in gun.actions)
+			if(!istype(item_action, /datum/action/item_action/bipod/toggle_full_auto_switch))
+				item_action.update_button_icon()
 
-/obj/item/attachable/bipod/proc/handle_drop(obj/item/weapon/gun/G, mob/living/carbon/human/user)
+/obj/item/attachable/bipod/proc/handle_drop(obj/item/weapon/gun/gun, mob/living/carbon/human/user)
 	SIGNAL_HANDLER
 
 	UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
 
 	if(bipod_deployed)
-		undeploy_bipod(G)
+		undeploy_bipod(gun, user)
 		user.apply_effect(1, SUPERSLOW)
 		user.apply_effect(2, SLOW)
 
-/obj/item/attachable/bipod/proc/undeploy_bipod(obj/item/weapon/gun/G)
-	REMOVE_TRAIT(G, TRAIT_GUN_BIPODDED, "attached_bipod")
+/obj/item/attachable/bipod/proc/undeploy_bipod(obj/item/weapon/gun/gun, mob/user)
+	REMOVE_TRAIT(gun, TRAIT_GUN_BIPODDED, "attached_bipod")
 	bipod_deployed = FALSE
 	accuracy_mod = -HIT_ACCURACY_MULT_TIER_5
 	scatter_mod = SCATTER_AMOUNT_TIER_9
 	recoil_mod = RECOIL_AMOUNT_TIER_5
 	burst_scatter_mod = 0
 	delay_mod = FIRE_DELAY_TIER_12
-	G.recalculate_attachment_bonuses()
-	G.stop_fire()
-	var/mob/living/user
-	if(isliving(G.loc))
-		user = G.loc
-		SEND_SIGNAL(user, COMSIG_MOB_UNDEPLOYED_BIPOD)
-		UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
+	//if we are no longer on full auto, don't bother switching back to the old firemode
+	if(full_auto_switch && gun.gun_firemode == GUN_FIREMODE_AUTOMATIC && gun.gun_firemode != old_firemode)
+		gun.do_toggle_firemode(user, null, old_firemode)
 
-	if(G.flags_gun_features & GUN_SUPPORT_PLATFORM)
-		G.remove_firemode(GUN_FIREMODE_AUTOMATIC)
+	gun.recalculate_attachment_bonuses()
+	gun.stop_fire()
+	SEND_SIGNAL(user, COMSIG_MOB_UNDEPLOYED_BIPOD)
+	UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
+
+	if(gun.flags_gun_features & GUN_SUPPORT_PLATFORM)
+		gun.remove_firemode(GUN_FIREMODE_AUTOMATIC)
 
 	if(heavy_bipod)
 		user.anchored = FALSE
 
-	if(!QDELETED(G))
+	if(!QDELETED(gun))
 		playsound(user,'sound/items/m56dauto_rotate.ogg', 55, 1)
 		update_icon()
 
-/obj/item/attachable/bipod/activate_attachment(obj/item/weapon/gun/G,mob/living/user, turn_off)
+/obj/item/attachable/bipod/activate_attachment(obj/item/weapon/gun/gun, mob/living/user, turn_off)
 	if(turn_off)
 		if(bipod_deployed)
-			undeploy_bipod(G)
+			undeploy_bipod(gun, user)
 	else
-		var/obj/support = check_bipod_support(G, user)
+		var/obj/support = check_bipod_support(gun, user)
 		if(!support&&!bipod_deployed)
 			to_chat(user, SPAN_NOTICE("You start deploying [src] on the ground."))
-			if(!do_after(user, 15, INTERRUPT_ALL, BUSY_ICON_HOSTILE, G,INTERRUPT_DIFF_LOC))
+			if(!do_after(user, 15, INTERRUPT_ALL, BUSY_ICON_HOSTILE, gun, INTERRUPT_DIFF_LOC))
 				return FALSE
 
 		bipod_deployed = !bipod_deployed
 		if(user)
 			if(bipod_deployed)
-				ADD_TRAIT(G, TRAIT_GUN_BIPODDED, "attached_bipod")
+				ADD_TRAIT(gun, TRAIT_GUN_BIPODDED, "attached_bipod")
 				to_chat(user, SPAN_NOTICE("You deploy [src] [support ? "on [support]" : "on the ground"]."))
 				SEND_SIGNAL(user, COMSIG_MOB_DEPLOYED_BIPOD)
 				playsound(user,'sound/items/m56dauto_rotate.ogg', 55, 1)
@@ -3395,25 +3445,29 @@ Defined in conflicts.dm of the #defines folder.
 				scatter_mod = -SCATTER_AMOUNT_TIER_10
 				recoil_mod = -RECOIL_AMOUNT_TIER_4
 				burst_scatter_mod = -SCATTER_AMOUNT_TIER_8
-				if(istype(G,/obj/item/weapon/gun/rifle/sniper/M42A))
+				if(istype(gun, /obj/item/weapon/gun/rifle/sniper/M42A))
 					delay_mod = -FIRE_DELAY_TIER_7
 				else
 					delay_mod = -FIRE_DELAY_TIER_12
-				G.recalculate_attachment_bonuses()
-				G.stop_fire()
+				gun.recalculate_attachment_bonuses()
+				gun.stop_fire()
 
 				initial_mob_dir = user.dir
 				RegisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(handle_mob_move_or_look))
 
-				if(G.flags_gun_features & GUN_SUPPORT_PLATFORM)
-					G.add_firemode(GUN_FIREMODE_AUTOMATIC)
+				if(gun.flags_gun_features & GUN_SUPPORT_PLATFORM)
+					gun.add_firemode(GUN_FIREMODE_AUTOMATIC)
 
 				if(heavy_bipod)
 					user.anchored = TRUE
 
+				old_firemode = gun.gun_firemode
+				if(full_auto_switch && gun.gun_firemode != GUN_FIREMODE_AUTOMATIC)
+					gun.do_toggle_firemode(user, null, GUN_FIREMODE_AUTOMATIC)
+
 			else
 				to_chat(user, SPAN_NOTICE("You retract [src]."))
-				undeploy_bipod(G)
+				undeploy_bipod(gun, user)
 
 	update_icon()
 
@@ -3430,10 +3484,10 @@ Defined in conflicts.dm of the #defines folder.
 
 
 //when user fires the gun, we check if they have something to support the gun's bipod.
-/obj/item/attachable/proc/check_bipod_support(obj/item/weapon/gun/G, mob/living/user)
+/obj/item/attachable/proc/check_bipod_support(obj/item/weapon/gun/gun, mob/living/user)
 	return 0
 
-/obj/item/attachable/bipod/check_bipod_support(obj/item/weapon/gun/G, mob/living/user)
+/obj/item/attachable/bipod/check_bipod_support(obj/item/weapon/gun/gun, mob/living/user)
 	var/turf/T = get_turf(user)
 	for(var/obj/O in T)
 		if(O.throwpass && O.density && O.dir == user.dir && O.flags_atom & ON_BORDER)
@@ -3444,6 +3498,31 @@ Defined in conflicts.dm of the #defines folder.
 		if(O2.throwpass && O2.density)
 			return O2
 	return 0
+
+//item actions for handling deployment to full auto.
+/datum/action/item_action/bipod/toggle_full_auto_switch/New(Target, obj/item/holder)
+	. = ..()
+	name = "Toggle Full Auto Switch"
+	action_icon_state = "full_auto_switch"
+	button.name = name
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+/datum/action/item_action/bipod/toggle_full_auto_switch/action_activate()
+	var/obj/item/weapon/gun/holder_gun = holder_item
+	var/obj/item/attachable/bipod/attached_bipod = holder_gun.attachments["under"]
+
+	attached_bipod.full_auto_switch = !attached_bipod.full_auto_switch
+	to_chat(owner, SPAN_NOTICE("[icon2html(holder_gun, owner)] You will [attached_bipod.full_auto_switch? "<B>start</b>" : "<B>stop</b>"] switching to full auto when deploying the bipod."))
+	playsound(owner, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
+
+	if(attached_bipod.full_auto_switch)
+		button.icon_state = "template_on"
+	else
+		button.icon_state = "template"
+
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 
 /obj/item/attachable/bipod/m60
@@ -3460,6 +3539,23 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "bipod_m60"
 	attach_icon = "vulture_bipod"
 	heavy_bipod = TRUE
+
+/obj/item/attachable/bipod/vulture/Initialize(mapload, ...)
+	. = ..()
+	select_gamemode_skin(type)
+
+/obj/item/attachable/bipod/vulture/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	var/new_attach_icon
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("snow")
+			attach_icon = new_attach_icon ? new_attach_icon : "s_" + attach_icon
+		if("desert")
+			attach_icon = new_attach_icon ? new_attach_icon : "d_" + attach_icon
+		if("classic")
+			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
+		if("urban")
+			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
 
 /obj/item/attachable/burstfire_assembly
 	name = "burst fire assembly"

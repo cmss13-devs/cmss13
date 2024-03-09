@@ -112,3 +112,8 @@
   - imageadd: changed warrior tail to old one
   - imageadd: edited weed overlays to reflect altered tail shape
   - imageadd: fixed holes in a couple warrior sprites
+2024-03-09:
+  Drathek:
+  - bugfix: Fix pod doors no longer updating adjacent tiles
+  iloveloopers:
+  - balance: ravager empower range is now 4 tiles

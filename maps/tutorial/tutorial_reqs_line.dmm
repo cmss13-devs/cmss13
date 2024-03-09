@@ -39,7 +39,6 @@
 /turf/open/floor/almayer,
 /area/misc/tutorial)
 "o" = (
-/obj/structure/window/framed/almayer/hull,
 /turf/closed/wall/almayer/outer,
 /area/misc/tutorial)
 "w" = (

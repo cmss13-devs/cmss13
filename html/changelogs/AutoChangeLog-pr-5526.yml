@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - balance: "Increased double throw delay from .4s to 1.5s"

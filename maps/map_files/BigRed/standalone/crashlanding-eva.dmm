@@ -47,9 +47,7 @@
 /area/bigredv2/outside/general_offices)
 "aE" = (
 /obj/structure/computerframe,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/dark_grey,
 /area/bigredv2/outside/general_offices)
 "aF" = (
 /turf/closed/shuttle/ert{
@@ -107,26 +105,18 @@
 /turf/open/mars,
 /area/bigredv2/caves_north)
 "aR" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin6"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_top_left,
 /area/bigredv2/outside/general_offices)
 "aS" = (
-/turf/open/shuttle/dropship{
-	icon_state = "floor8"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
 /area/bigredv2/outside/general_offices)
 "aT" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin7"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_top_right,
 /area/bigredv2/outside/general_offices)
 "aU" = (
 /obj/structure/surface/rack,
 /obj/item/map/big_red_map,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/dark_grey,
 /area/bigredv2/outside/general_offices)
 "aV" = (
 /turf/closed/shuttle/ert{
@@ -191,34 +181,24 @@
 /area/bigredv2/outside/general_offices)
 "bg" = (
 /obj/structure/machinery/door/airlock/almayer/generic,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgery,
 /area/bigredv2/outside/general_offices)
 "bh" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/dark_grey,
 /area/bigredv2/outside/general_offices)
 "bi" = (
 /obj/item/paper/crumpled/bloody,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "u_psycopath_l"
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/bigredv2/outside/general_offices)
 "bj" = (
 /obj/structure/bed/chair/dropship/passenger,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/dark_grey,
 /area/bigredv2/outside/general_offices)
 "bk" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/bigredv2/outside/general_offices)
 "bl" = (
 /obj/effect/decal/cleanable/dirt,
@@ -249,9 +229,7 @@
 /area/bigredv2/outside/general_offices)
 "bq" = (
 /obj/effect/landmark/corpsespawner/wygoon,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/dark_grey,
 /area/bigredv2/outside/general_offices)
 "br" = (
 /turf/closed/shuttle/ert{
@@ -262,22 +240,16 @@
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/dark_grey,
 /area/bigredv2/outside/general_offices)
 "bt" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/wygoon,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/bigredv2/outside/general_offices)
 "bu" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/dark_grey,
 /area/bigredv2/outside/general_offices)
 "bv" = (
 /obj/structure/bed/chair/dropship/passenger{
@@ -287,9 +259,7 @@
 	dir = 1;
 	icon_state = "gib6"
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/dark_grey,
 /area/bigredv2/outside/general_offices)
 "bw" = (
 /turf/closed/shuttle/ert{
@@ -339,9 +309,7 @@
 	dir = 1;
 	icon_state = "gib6"
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/bigredv2/outside/general_offices)
 "bG" = (
 /turf/closed/shuttle/ert{
@@ -481,25 +449,17 @@
 "cb" = (
 /obj/structure/surface/rack,
 /obj/item/restraints,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/dark_grey,
 /area/bigredv2/outside/general_offices)
 "cc" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin4"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_bottom_left,
 /area/bigredv2/outside/general_offices)
 "cd" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin8"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_bottom_right,
 /area/bigredv2/outside/general_offices)
 "ce" = (
 /obj/structure/surface/rack,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/dark_grey,
 /area/bigredv2/outside/general_offices)
 "cf" = (
 /turf/closed/shuttle/ert{
@@ -546,9 +506,7 @@
 "cm" = (
 /obj/effect/spawner/gibspawner/human,
 /obj/effect/decal/cleanable/blood,
-/turf/open/shuttle/dropship{
-	icon_state = "floor8"
-	},
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
 /area/bigredv2/outside/general_offices)
 "cn" = (
 /turf/closed/shuttle/ert{
@@ -586,9 +544,7 @@
 "cu" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/remains,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/dark_grey,
 /area/bigredv2/outside/general_offices)
 "cv" = (
 /turf/closed/shuttle/ert{
@@ -1049,9 +1005,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery,
 /area/bigredv2/outside/general_offices)
 "eM" = (
 /obj/item/stack/rods,
@@ -1104,9 +1058,7 @@
 "Zt" = (
 /obj/structure/bed/chair/dropship/passenger,
 /obj/effect/landmark/corpsespawner/wygoon,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/can_surgery/dark_grey,
 /area/bigredv2/outside/general_offices)
 
 (1,1,1) = {"

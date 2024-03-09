@@ -4,6 +4,7 @@
 	name = "Xenomorph - Basic"
 	desc = "A tutorial to get you acquainted with the very basics of how to play a xenomorph."
 	icon_state = "xeno"
+	tutorial_id = "xeno_basic_1"
 	tutorial_template = /datum/map_template/tutorial/s12x12
 	starting_xenomorph_type = /mob/living/carbon/xenomorph/drone
 
@@ -20,6 +21,7 @@
 	xeno.plasma_max = 0
 	xeno.melee_damage_lower = 40
 	xeno.melee_damage_upper = 40
+	xeno.lock_evolve = TRUE
 
 	message_to_player("Welcome to the Xenomorph basic tutorial. You are [xeno.name], a drone, the workhorse of the hive.")
 
@@ -105,7 +107,7 @@
 
 	UnregisterSignal(human_dummy, COMSIG_MOB_DEATH)
 	message_to_player("Well done. Killing humans is one of many ways to help the hive.")
-	message_to_player("Another way is to <b>capture</b> them. This will grow a new xenomorph inside them  which will eventually burst into a new playable xenomorph!")
+	message_to_player("Another way is to <b>capture</b> them. This will grow a new xenomorph inside them which will eventually burst into a new playable xenomorph!")
 	addtimer(CALLBACK(human_dummy, TYPE_PROC_REF(/mob/living, rejuvenate)), 8 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(proceed_to_tackle_phase)), 10 SECONDS)
 
@@ -227,3 +229,5 @@
 
 /datum/tutorial/xenomorph/basic/init_map()
 	loc_from_corner(9,0).ChangeTurf(/turf/closed/wall/resin/tutorial)
+
+#undef WAITING_HEALTH_THRESHOLD

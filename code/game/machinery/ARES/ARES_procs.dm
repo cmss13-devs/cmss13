@@ -207,35 +207,37 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 
 /obj/structure/machinery/computer/proc/ares_auth_to_text(access_level)
 	switch(access_level)
-		if(ARES_ACCESS_LOGOUT)//0
+		if(ARES_ACCESS_LOGOUT)
 			return "Logged Out"
-		if(ARES_ACCESS_BASIC)//1
+		if(ARES_ACCESS_BASIC)
 			return "Authorized"
-		if(ARES_ACCESS_COMMAND)//2
+		if(ARES_ACCESS_COMMAND)
 			return "[MAIN_SHIP_NAME] Command"
-		if(ARES_ACCESS_JOE)//3
+		if(ARES_ACCESS_JOE)
 			return "Working Joe"
-		if(ARES_ACCESS_CORPORATE)//4
+		if(ARES_ACCESS_CORPORATE)
 			return "Weyland-Yutani"
-		if(ARES_ACCESS_SENIOR)//5
+		if(ARES_ACCESS_SENIOR)
 			return "[MAIN_SHIP_NAME] Senior Command"
-		if(ARES_ACCESS_CE)//6
+		if(ARES_ACCESS_CE)
 			return "Chief Engineer"
-		if(ARES_ACCESS_SYNTH)//7
+		if(ARES_ACCESS_SYNTH)
 			return "USCM Synthetic"
-		if(ARES_ACCESS_CO)//8
+		if(ARES_ACCESS_CO)
 			return "[MAIN_SHIP_NAME] Commanding Officer"
-		if(ARES_ACCESS_HIGH)//9
+		if(ARES_ACCESS_HIGH)
 			return "USCM High Command"
-		if(ARES_ACCESS_WY_COMMAND)//10
+		if(ARES_ACCESS_WY_COMMAND)
 			return "Weyland-Yutani Directorate"
-		if(ARES_ACCESS_DEBUG)//11
+		if(ARES_ACCESS_DEBUG)
 			return "AI Service Technician"
 
 
 /obj/structure/machinery/computer/ares_console/proc/message_ares(text, mob/Sender, ref, fake = FALSE)
-	var/msg = SPAN_STAFF_IC("<b><font color=orange>ARES:</font> [key_name(Sender, 1)] [ARES_MARK(Sender)] [ADMIN_PP(Sender)] [ADMIN_VV(Sender)] [ADMIN_SM(Sender)] [ADMIN_JMP_USER(Sender)] [ARES_REPLY(Sender, ref)]:</b> [text]")
 	var/datum/ares_record/talk_log/conversation = locate(ref)
+	if(!istype(conversation))
+		return
+	var/msg = SPAN_STAFF_IC("<b><font color=orange>ARES:</font> [key_name(Sender, 1)] [ARES_MARK(Sender)] [ADMIN_PP(Sender)] [ADMIN_VV(Sender)] [ADMIN_SM(Sender)] [ADMIN_JMP_USER(Sender)] [ARES_REPLY(Sender, ref)]:</b> [text]")
 	conversation.conversation += "[last_login] at [worldtime2text()], '[text]'"
 	if(fake)
 		log_say("[key_name(Sender)] faked the message '[text]' from [last_login] in ARES 1:1.")
@@ -255,6 +257,8 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 
 /obj/structure/machinery/computer/ares_console/proc/response_from_ares(text, ref)
 	var/datum/ares_record/talk_log/conversation = locate(ref)
+	if(!istype(conversation))
+		return
 	conversation.conversation += "[MAIN_AI_SYSTEM] at [worldtime2text()], '[text]'"
 // ------ End ARES Interface Procs ------ //
 

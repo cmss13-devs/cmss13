@@ -8,8 +8,8 @@ GLOBAL_LIST_INIT(sqrtTable, list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4,
 
 // MATH DEFINES
 
-#define Ceiling(x) (-round(-x))
-#define CLAMP01(x) (clamp(x, 0, 1))
+#define Ceiling(x) (-round(-(x)))
+#define CLAMP01(x) (clamp((x), 0, 1))
 
 // cotangent
 #define Cot(x) (1 / tan(x))
@@ -17,36 +17,36 @@ GLOBAL_LIST_INIT(sqrtTable, list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4,
 // cosecant
 #define Csc(x) (1 / sin(x))
 
-#define Default(a, b) (a ? a : b)
+#define Default(a, b) ((a) ? (a) : (b))
 #define Floor(x) (round(x))
 
 // Greatest Common Divisor - Euclid's algorithm
-#define Gcd(a, b) (b ? Gcd(b, a % b) : a)
+#define Gcd(a, b) ((b) ? Gcd((b), (a) % (b)) : (a))
 
-#define Inverse(x) (1 / x)
-#define IsEven(x) (x % 2 == 0)
+#define Inverse(x) (1 / (x))
+#define IsEven(x) ((x) % 2 == 0)
 
-#define IsInteger(x) (Floor(x) == x)
+#define IsInteger(x) (Floor(x) == (x))
 #define IsOdd(x) (!IsEven(x))
-#define IsMultiple(x, y) (x % y == 0)
+#define IsMultiple(x, y) ((x) % (y) == 0)
 
 // Least Common Multiple
-#define Lcm(a, b) (abs(a) / Gcd(a, b) * abs(b))
+#define Lcm(a, b) (abs(a) / Gcd((a), (b)) * abs(b))
 
 // Returns the nth root of x.
-#define NRoot(n, x) (x ** (1 / n))
+#define NRoot(n, x) ((x) ** (1 / (n)))
 
 // secant
 #define Sec(x) (1 / cos(x))
 
 // 57.2957795 = 180 / Pi
-#define ToDegrees(radians) (radians * 57.2957795)
+#define ToDegrees(radians) ((radians) * 57.2957795)
 
 // 0.0174532925 = Pi / 180
-#define ToRadians(degrees) (degrees * 0.0174532925)
+#define ToRadians(degrees) ((degrees) * 0.0174532925)
 
 // min is inclusive, max is exclusive
-#define WRAP(val, min, max) clamp(( min == max ? min : (val) - (round(((val) - (min))/((max) - (min))) * ((max) - (min))) ),min,max)
+#define WRAP(val, min, max) clamp(( (min) == (max) ? (min) : (val) - (round(((val) - (min))/((max) - (min))) * ((max) - (min))) ),(min),(max))
 
 
 // MATH PROCS

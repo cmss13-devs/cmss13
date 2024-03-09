@@ -107,3 +107,8 @@
 		var/obj/item/restraint/cuffs = attacking_object
 		if(cuffs.target_zone == SLOT_LEGS)
 			attach_cuffs(cuffs, user)
+
+/obj/item/clothing/shoes/orange/get_examine_text(mob/user)
+	. = ..()
+	if(chained)
+		. += SPAN_RED("They are chained with [chained].")

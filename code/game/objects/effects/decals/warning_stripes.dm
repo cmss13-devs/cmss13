@@ -260,6 +260,7 @@
 	icon = 'icons/effects/64x64hybrisa_decals.dmi'
 	icon_state = "workers_decal"
 
+
 /// Dirt & Grime
 
 /obj/effect/hybrisa/decal/dirt

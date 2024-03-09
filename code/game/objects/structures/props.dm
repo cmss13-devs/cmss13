@@ -1471,6 +1471,10 @@
     icon = 'icons/obj/structures/props/vehiclesexpanded2.dmi'
     icon_state = "MeridianCar_1"
 
+/obj/structure/prop/hybrisa/vehicles/Car
+    icon = 'icons/obj/structures/props/vehiclesexpanded2.dmi'
+    icon_state = "MeridianCar_1"
+
 /obj/structure/prop/hybrisa/vehicles/suv
 	name = "SUV"
 	desc = "Seems to be broken down."
@@ -1493,6 +1497,39 @@
 	icon_state = "SUV7"
 /obj/structure/prop/hybrisa/vehicles/suv/suv_8
 	icon_state = "SUV8"
+
+// Meridian Cars
+
+/obj/structure/prop/hybrisa/vehicles/Car
+	name = "Mono-Spectra"
+	desc = "The 'Mono-Spectra', a mass-produced civilian vehicle for the colonial markets, in and outside of the United Americas. Produced by 'Meridian' a car marque and associated operating division of the Weyland-Yutani Corporation."
+	icon = 'icons/obj/structures/props/vehiclesexpanded2.dmi'
+	icon_state = "MeridianCar_1"
+	bound_height = 32
+	bound_width = 64
+	unslashable = TRUE
+	unacidable = TRUE
+	density = TRUE
+	layer = ABOVE_MOB_LAYER
+/obj/structure/prop/hybrisa/vehicles/Car/Car_1
+	icon_state = "MeridianCar_2"
+/obj/structure/prop/hybrisa/vehicles/Car/Car_2
+	icon_state = "MeridianCar_3"
+/obj/structure/prop/hybrisa/vehicles/Car/Car_3
+	icon_state = "MeridianCar_4"
+/obj/structure/prop/hybrisa/vehicles/Car/Car_4
+	icon_state = "MeridianCar_5"
+/obj/structure/prop/hybrisa/vehicles/Car/Car_5
+	icon_state = "MeridianCar_6"
+
+// Car Chassis
+
+/obj/structure/prop/hybrisa/vehicles/Car/Car_chassis
+    desc = "A Mono-Spectra chassis in the early stages of assembly."
+
+/obj/structure/prop/hybrisa/vehicles/Car/Car_chassis
+	name = "Mono-Spectra Chassis"
+	icon_state = "MeridianCar_shell"
 
 // Meridian Cars
 
@@ -2998,9 +3035,13 @@
 
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall
 	name = "wall vent"
+	name = "wall vent"
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "smallwallvent1"
 	density = FALSE
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall2
+	name = "wall vent"
+	icon_state = "smallwallvent2"
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall2
 	name = "wall vent"
 	icon_state = "smallwallvent2"

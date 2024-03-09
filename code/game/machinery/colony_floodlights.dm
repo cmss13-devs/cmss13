@@ -1,6 +1,6 @@
 //Putting these here since it's power-related
 /obj/structure/machinery/colony_floodlight_switch
-	name = "Colony Floodlight Switch"
+	name = "colony floodlight switch"
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "panelnopower"
 	desc = "This switch controls the floodlights surrounding the archaeology complex. It only functions when there is power."
@@ -94,7 +94,7 @@
 #define FLOODLIGHT_REPAIR_SCREW 4
 
 /obj/structure/machinery/colony_floodlight
-	name = "Colony Floodlight"
+	name = "colony floodlight"
 	icon = 'icons/obj/structures/machinery/big_floodlight.dmi'
 	icon_state = "flood_s_off"
 	density = TRUE
@@ -107,6 +107,7 @@
 	var/power_tick = 50 // power each floodlight takes up per process
 	use_power = USE_POWER_NONE //It's the switch that uses the actual power, not the lights
 	var/obj/structure/machinery/colony_floodlight_switch/fswitch = null //Reverse lookup for power grabbing in area
+	needs_power = FALSE
 	var/lum_value = 7
 	var/repair_state = 0
 	health = 150

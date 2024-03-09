@@ -1,5 +1,5 @@
 import { map } from 'common/collections';
-import { resolveAsset } from '../assets';
+import { classes } from 'common/react';
 import { useBackend } from '../backend';
 import { ProgressBar, Section, Box, Flex, Table, Divider } from '../components';
 import { Window } from '../layouts';
@@ -68,7 +68,7 @@ const GeneralInfo = (props) => {
         <Flex.Item align="center">
           <Box height="5px" />
           <Box align="center">
-            <img src={resolveAsset(icon)} />
+            <span className={classes(['Icon', 'gunlineart96x96', `${icon}`])} />
           </Box>
           <Box height="5px" />
         </Flex.Item>
@@ -78,25 +78,33 @@ const GeneralInfo = (props) => {
         <Flex.Item align="center">
           <Flex direction="row">
             <Flex.Item>
-              {!auto_only ? (
-                <img src={resolveAsset('single.png')} />
-              ) : (
-                <img src={resolveAsset('disabled_single.png')} />
-              )}
+              <span
+                className={classes([
+                  'Icon',
+                  'gunlineartmodes96x32',
+                  `${!auto_only ? 'single' : 'disabled_single'}`,
+                ])}
+              />
             </Flex.Item>
             <Flex.Item>
-              {!auto_only && burst_amount > 1 ? (
-                <img src={resolveAsset('burst.png')} />
-              ) : (
-                <img src={resolveAsset('disabled_burst.png')} />
-              )}
+              <span
+                className={classes([
+                  'Icon',
+                  'gunlineartmodes96x32',
+                  `${
+                    !auto_only && burst_amount > 1 ? 'burst' : 'disabled_burst'
+                  }`,
+                ])}
+              />
             </Flex.Item>
             <Flex.Item>
-              {automatic ? (
-                <img src={resolveAsset('auto.png')} />
-              ) : (
-                <img src={resolveAsset('disabled_automatic.png')} />
-              )}
+              <span
+                className={classes([
+                  'Icon',
+                  'gunlineartmodes96x32',
+                  `${automatic ? 'auto' : 'disabled_automatic'}`,
+                ])}
+              />
             </Flex.Item>
           </Flex>
         </Flex.Item>

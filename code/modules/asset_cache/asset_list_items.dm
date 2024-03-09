@@ -61,32 +61,8 @@
 		"nano/templates/",
 	)
 
-/datum/asset/directory/nanoui/weapons
-	common_dirs = list(
-		"nano/images/weapons/",
-	)
-
-	uncommon_dirs = list()
-
-/datum/asset/directory/nanoui/weapons/send(client)
-	if(!client)
-		log_debug("Warning! Tried to send nanoui weapon data with a null client! (asset_list_items.dm line 93)")
-		return
-	SSassets.transport.send_assets(client, common)
-
-
 /datum/asset/simple/nanoui_images
 	keep_local_name = TRUE
-
-	assets = list(
-		"auto.png" = 'nano/images/weapons/auto.png',
-		"burst.png" = 'nano/images/weapons/burst.png',
-		"single.png" = 'nano/images/weapons/single.png',
-		"disabled_automatic.png" = 'nano/images/weapons/disabled_automatic.png',
-		"disabled_burst.png" = 'nano/images/weapons/disabled_burst.png',
-		"disabled_single.png" = 'nano/images/weapons/disabled_single.png',
-		"no_name.png" = 'nano/images/weapons/no_name.png',
-	)
 
 	var/list/common_dirs = list(
 		"nano/images/",
@@ -323,7 +299,7 @@
 		if(icon_state in icon_states(icon_file))
 			I = icon(icon_file, icon_state, SOUTH)
 			var/c = initial(item.color)
-			if (!isnull(c) && c != COLOR_WHITE)
+			if (!isnull(c) && c != "#FFFFFF")
 				I.Blend(c, ICON_MULTIPLY)
 		else
 			if (ispath(k, /obj/effect/essentials_set))
@@ -398,9 +374,29 @@
 	name = "gunlineart"
 
 /datum/asset/spritesheet/gun_lineart/register()
-	InsertAll("", 'icons/obj/items/weapons/guns/lineart.dmi')
+	var/icon_file = 'icons/obj/items/weapons/guns/lineart.dmi'
+	InsertAll("", icon_file)
+
+	for(var/obj/item/weapon/gun/current_gun as anything in subtypesof(/obj/item/weapon/gun))
+		if(isnull(initial(current_gun.icon_state)))
+			continue
+		if(initial(current_gun.flags_gun_features) & GUN_UNUSUAL_DESIGN)
+			continue // These don't have a way to inspect weapon stats
+		var/obj/item/weapon/gun/temp_gun = new current_gun
+		var/icon_state = temp_gun.base_gun_icon // base_gun_icon is set in Initialize generally
+		qdel(temp_gun)
+		if(icon_state && isnull(sprites[icon_state]))
+			// upgrade this to a stack_trace once all guns have a lineart and we want to lint against that
+			log_debug("[current_gun] does not have a valid lineart icon state, icon=[icon_file], icon_state=[json_encode(icon_state)]")
+
 	..()
 
+/datum/asset/spritesheet/gun_lineart_modes
+	name = "gunlineartmodes"
+
+/datum/asset/spritesheet/gun_lineart_modes/register()
+	InsertAll("", 'icons/obj/items/weapons/guns/lineart_modes.dmi')
+	..()
 
 /datum/asset/simple/orbit
 	assets = list(
@@ -413,17 +409,6 @@
 		"ntosradarpointer.png" = 'icons/images/ui_images/ntosradar_pointer.png',
 		"ntosradarpointerS.png" = 'icons/images/ui_images/ntosradar_pointer_S.png'
 	)
-
-/datum/asset/simple/firemodes
-	assets = list(
-		"auto.png" = 'html/images/auto.png',
-		"disabled_auto.png" = 'html/images/disabled_automatic.png',
-		"burst.png" = 'html/images/burst.png',
-		"disabled_burst.png" = 'html/images/disabled_burst.png',
-		"single.png" = 'html/images/single.png',
-		"disabled_single.png" = 'html/images/disabled_single.png',
-	)
-
 
 /datum/asset/simple/particle_editor
 	assets = list(

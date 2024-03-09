@@ -279,3 +279,9 @@
 
 /obj/item/weapon/gun/boltaction/vulture/skillless
 	bypass_trait = TRUE
+
+/obj/item/weapon/gun/boltaction/vulture/holo_target
+	current_mag = /obj/item/ammo_magazine/rifle/boltaction/vulture/holo_target
+
+/obj/item/weapon/gun/boltaction/vulture/holo_target/skillless
+	bypass_trait = TRUE

@@ -94,7 +94,12 @@
 		else
 			playsound(loc, "alien_resin_break", 25)
 
-		health -= (M.melee_damage_upper + 50) //Beef up the damage a bit
+		var/damage_to_structure = M.melee_damage_upper + XENO_DAMAGE_TIER_7
+		// Builders can destroy beefy things in maximum 5 hits
+		if(isxeno_builder(M))
+			health -= max(initial(health) * 0.2, damage_to_structure)
+		else
+			health -= damage_to_structure
 		healthcheck()
 	return XENO_ATTACK_ACTION
 
@@ -571,6 +576,9 @@
 	if(!burning_friendly && current_mob.health < 0)
 		return FALSE
 	if(current_mob.stat == DEAD)
+		return FALSE
+
+	if(HAS_TRAIT(current_mob, TRAIT_NESTED))
 		return FALSE
 
 	var/turf/current_turf

@@ -1061,7 +1061,7 @@
 	var/span_class = "yautja_translator"
 	if(translator_type != "Modern")
 		if(translator_type == "Retro")
-			overhead_color = COLOR_WHITE
+			overhead_color = "#FFFFFF"
 			span_class = "retro_translator"
 		msg = replacetext(msg, "a", "@")
 		msg = replacetext(msg, "e", "3")

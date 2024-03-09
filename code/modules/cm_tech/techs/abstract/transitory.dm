@@ -7,6 +7,7 @@
 	var/datum/tier/next
 
 	var/techs_to_unlock = 0
+	is_tier_changer = TRUE
 
 /datum/tech/transitory/check_tier_level(mob/M)
 	if(before && before != holder.tier.type)
@@ -22,9 +23,6 @@
 
 	return TRUE
 
-/datum/tech/transitory/is_tier_tech()
-	return TRUE
-
 /datum/tech/transitory/on_unlock(mob/user)
 	. = ..()
 	if(!next)
@@ -37,7 +35,7 @@
 		if(flags & TREE_FLAG_MARINE)
 			/// Due to calling parent, points will have already been spent by now.
 			var/current_points = holder.points + required_points
-			log_ares_tech(user.real_name, is_tier_tech(), "ALMAYER DEFCON LEVEL INCREASED", "THREAT ASSESSMENT LEVEL INCREASED TO LEVEL [next_tier.tier].\n\nLEVEL [next_tier.tier] assets have been authorised to handle the situation.", required_points, current_points)
+			log_ares_tech(user.real_name, is_tier_changer, "ALMAYER DEFCON LEVEL INCREASED", "THREAT ASSESSMENT LEVEL INCREASED TO LEVEL [next_tier.tier].\n\nLEVEL [next_tier.tier] assets have been authorised to handle the situation.", required_points, current_points)
 
 /datum/tech/transitory/get_tier_overlay()
 	if(!next)

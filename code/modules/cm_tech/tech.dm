@@ -24,6 +24,8 @@
 	var/announce_name = "ALMAYER SPECIAL ASSETS AUTHORIZED"
 	var/announce_message
 
+	var/is_tier_changer = FALSE
+
 /datum/tech/proc/can_unlock(mob/M)
 	SHOULD_CALL_PARENT(TRUE)
 
@@ -58,8 +60,6 @@
 
 	return TRUE
 
-/datum/tech/proc/is_tier_tech()
-	return FALSE
 
 /** Called when a tech is unlocked. Usually, benefits can be applied here
 * however, the purchase can still be cancelled by returning FALSE
@@ -72,12 +72,12 @@
 	unlocked = TRUE
 	to_chat(user, SPAN_HELPFUL("You have purchased the '[name]' tech node."))
 	log_admin("[key_name_admin(user)] has bought '[name]' via tech points.")
-	if(!is_tier_tech())
+	if(!is_tier_changer)
 		var/log_details = announce_message
 		if(!log_details)
 			log_details = name
 		var/current_points = holder.points
-		log_ares_tech(user.real_name, is_tier_tech(), announce_name, log_details, required_points, current_points)
+		log_ares_tech(user.real_name, is_tier_changer, announce_name, log_details, required_points, current_points)
 	holder.spend_points(required_points)
 	update_icon(node)
 

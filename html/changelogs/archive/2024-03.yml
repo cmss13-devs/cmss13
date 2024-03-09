@@ -95,3 +95,25 @@
       the player panel
   nauticall:
   - mapadd: Revamped the Chinook event map.
+2024-03-08:
+  BadAtThisGame302:
+  - mapadd: added a new Fiorina nightmare insert with CMB and UA Officers responding
+      to the distress signal.
+  Drathek:
+  - bugfix: Fixes some issues with SMES and reactors connecting to the powernet
+  Vicacrov:
+  - spellcheck: Fixed some grammar issues when attacking spiderwebs and when producing
+      eggs as an eggsac carrier.
+  realforest2001:
+  - admin: Adds a remote admin ARES Interface so staff can see the interface remotely.
+  - admin: Staff can now approve and revoke ARES Access tickets via remote interface
+      if there are no Working Joes.
+  sleepynecrons:
+  - imageadd: changed warrior tail to old one
+  - imageadd: edited weed overlays to reflect altered tail shape
+  - imageadd: fixed holes in a couple warrior sprites
+2024-03-09:
+  Drathek:
+  - bugfix: Fix pod doors no longer updating adjacent tiles
+  iloveloopers:
+  - balance: ravager empower range is now 4 tiles

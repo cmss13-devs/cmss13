@@ -190,7 +190,6 @@
 /// Called to generate a new survival wave of agents
 /datum/tutorial/marine/reqs_line/proc/spawn_survival_wave()
 	survival_wave++
-	clear_all_messages()
 	message_to_player("Wave [survival_wave]")
 	var/agents_to_spawn = min(max_survival_agents, 1 + survival_wave * TUTORIAL_REQS_LINE_SURVIVAL_DIFFICULTY * survival_difficulty)
 	for(var/agent_i in 1 to agents_to_spawn)

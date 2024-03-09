@@ -18,6 +18,7 @@ const PAGES = {
   'security': () => Security,
   'requisitions': () => Requisitions,
   'emergency': () => Emergency,
+  'core_security': () => CoreSec,
   'admin_access_log': () => AdminAccessLogs,
   'access_management': () => AccessManagement,
   'maintenance_management': () => MaintManagement,
@@ -1315,6 +1316,8 @@ const FlightLogs = (props, context) => {
 
           <h3>
             {logged_in}, {access_text}
+            <br />
+            Remote Admin: {admin_login}
           </h3>
 
           <Button.Confirm
@@ -1569,6 +1572,78 @@ const Emergency = (props, context) => {
           disabled={access_text}
         />
       </Flex>
+    </>
+  );
+};
+
+const CoreSec = (props) => {
+  const { data, act } = useBackend();
+  const {
+    logged_in,
+    access_text,
+    access_level,
+    last_page,
+    current_menu,
+    security_vents,
+  } = data;
+
+  return (
+    <>
+      <Section>
+        <Flex align="center">
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={last_page === current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+            />
+          </Box>
+
+          <h3>
+            {logged_in}, {access_text}
+            <br />
+            Remote Admin: {admin_login}
+          </h3>
+
+          <Button.Confirm
+            content="Logout"
+            icon="circle-user"
+            ml="auto"
+            px="2rem"
+            bold
+            onClick={() => act('logout')}
+          />
+        </Flex>
+      </Section>
+
+      <Section>
+        <h1 align="center">Core Security Protocols</h1>
+      </Section>
+      <Section>
+        <h1 align="center">Nerve Gas Release</h1>
+        {security_vents.map((vent, i) => {
+          return (
+            <Button.Confirm
+              key={i}
+              content={vent.vent_tag}
+              icon="wind"
+              tooltip="Release Gas"
+              disabled={!vent.available}
+              onClick={() => act('trigger_vent', { vent: vent.ref })}
+            />
+          );
+        })}
+      </Section>
     </>
   );
 };

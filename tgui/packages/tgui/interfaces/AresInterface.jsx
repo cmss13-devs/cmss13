@@ -1620,7 +1620,9 @@ const CoreSec = (props) => {
               content={vent.vent_tag}
               icon="wind"
               tooltip="Release Gas"
-              disabled={access_level < 5 || !vent.available}
+              disabled={
+                (access_level < 5 && access_level !== 3) || !vent.available
+              }
               onClick={() => act('trigger_vent', { vent: vent.ref })}
             />
           );

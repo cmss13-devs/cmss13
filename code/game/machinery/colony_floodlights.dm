@@ -251,10 +251,16 @@
 			if(!replacer.CanUse(user))
 				to_chat(user, replacer.failmsg)
 				return FALSE
-			replacer.Use(user)
-			repair_state = FLOODLIGHT_REPAIR_SCREW
-			user.visible_message(SPAN_NOTICE("[user] replaces [src]'s damaged lighting assembly."),\
-			SPAN_NOTICE("You replace [src]'s damaged lighting assembly."))
+			playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
+			user.visible_message(SPAN_NOTICE("[user] starts replacing [src]'s damaged lighting assembly."),\
+			SPAN_NOTICE("You start replacing [src]'s damaged lighting assembly."))
+			if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+				if(QDELETED(src) || repair_state == FLOODLIGHT_REPAIR_SCREW)
+					return
+				replacer.Use(user)
+				repair_state = FLOODLIGHT_REPAIR_SCREW
+				user.visible_message(SPAN_NOTICE("[user] replaces [src]'s damaged lighting assembly."),\
+				SPAN_NOTICE("You replace [src]'s damaged lighting assembly."))
 			return TRUE
 
 	return ..()

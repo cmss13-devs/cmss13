@@ -79,8 +79,8 @@
 	chained = cuffs
 	slowdown = 15
 	icon_state = "orange1"
-	time_to_equip = 2 SECONDS
-	time_to_unequip = 5 SECONDS
+	time_to_equip = (cuffs.breakouttime / 4)
+	time_to_unequip = cuffs.breakouttime
 	return TRUE
 
 /obj/item/clothing/shoes/orange/proc/remove_cuffs(mob/user as mob)

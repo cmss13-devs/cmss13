@@ -483,6 +483,10 @@
 	role_comm_title = "CO"
 	minimum_age = 35
 
+	dress_over = list(
+		/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer,
+		/obj/item/clothing/suit/storage/jacket/marine/dress/officer/falcon,
+	)
 /datum/equipment_preset/uscm_ship/commander/council/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/commander/council(new_human), WEAR_HEAD)

@@ -41,9 +41,9 @@ type AlternateAction = {
 };
 
 const ALTERNATE_ACTIONS: Record<string, AlternateAction> = {
-  knot: {
-    icon: 'shoe-prints',
-    text: 'Knot',
+  remove_splints: {
+    icon: 'crutch',
+    text: 'Remove splints',
   },
 
   remove_accessory: {
@@ -52,33 +52,13 @@ const ALTERNATE_ACTIONS: Record<string, AlternateAction> = {
   },
 
   retrieve_tag: {
-    icon: 'tg-air-tank',
+    icon: 'tags',
     text: 'Retrieve info tag',
   },
 
-  untie: {
-    icon: 'shoe-prints',
-    text: 'Untie',
-  },
-
-  unknot: {
-    icon: 'shoe-prints',
-    text: 'Unknot',
-  },
-
-  enable_internals: {
-    icon: 'tg-air-tank',
-    text: 'Enable internals',
-  },
-
-  disable_internals: {
-    icon: 'tg-air-tank-slash',
-    text: 'Disable internals',
-  },
-
-  adjust_jumpsuit: {
-    icon: 'tshirt',
-    text: 'Adjust jumpsuit',
+  toggle_internals: {
+    icon: 'mask-face',
+    text: 'Toggle internals',
   },
 };
 

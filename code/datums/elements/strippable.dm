@@ -41,6 +41,9 @@
 	if (!istype(overmob))
 		return
 
+	if (!overmob.Adjacent(source))
+		return
+
 	if (!overmob.client)
 		return
 
@@ -109,6 +112,11 @@
 	if (isnull(item))
 		return FALSE
 
+	if (user.action_busy && !skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED)) {
+		to_chat(user, "<span class='warning'>You can't do this right now.</span>")
+		return FALSE
+	}
+
 	if (ismob(source))
 		if ((item.flags_inventory & CANTSTRIP) || (item.flags_item & NODROP))
 			return FALSE
@@ -174,6 +182,10 @@
 
 	if (!ismob(source))
 		return FALSE
+	if (user.action_busy) {
+		to_chat(user, "<span class='warning'>You can't do this right now.</span>")
+		return FALSE
+	}
 	if (!equipping.mob_can_equip(
 		source,
 		key
@@ -193,11 +205,19 @@
 	if (!ismob(source))
 		return FALSE
 
-	if (!do_after(user, 2 SECONDS + get_equip_delay(equipping), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, source, INTERRUPT_MOVED, BUSY_ICON_FRIENDLY))
+	var/time_to_strip = HUMAN_STRIP_DELAY + equipping.time_to_equip
+	var/mob/sourcemob = source
+
+	if (ishuman(sourcemob) && ishuman(user))
+		var/mob/living/carbon/human/sourcehuman = sourcemob
+		var/mob/living/carbon/human/userhuman = user
+		time_to_strip = userhuman.get_strip_delay(userhuman, sourcehuman) + equipping.time_to_equip
+
+	if (!do_after(user, time_to_strip, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, source, INTERRUPT_MOVED, BUSY_ICON_FRIENDLY))
 		return FALSE
 
 	if (!equipping.mob_can_equip(
-		source,
+		sourcemob,
 		key
 	))
 		return FALSE
@@ -211,8 +231,8 @@
 	if (!ismob(source))
 		return FALSE
 
-	var/mob/mob_source = source
-	mob_source.equip_to_slot_if_possible(equipping, key)
+	var/mob/sourcemob = source
+	sourcemob.equip_to_slot_if_possible(equipping, key)
 
 /datum/strippable_item/mob_item_slot/get_obscuring(atom/source)
 	return FALSE
@@ -239,14 +259,19 @@
 	return equipping.time_to_equip
 
 /// A utility function for `/datum/strippable_item`s to start unequipping an item from a mob.
-/proc/start_unequip_mob(obj/item/item, mob/source, mob/user, strip_delay)
-	if (!do_after(user, 2 SECONDS + item.time_to_equip, INTERRUPT_ALL, BUSY_ICON_HOSTILE, source, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
+/datum/strippable_item/mob_item_slot/proc/start_unequip_mob(obj/item/item, mob/living/carbon/human/source, mob/living/carbon/human/user)
+	var/time_to_strip = HUMAN_STRIP_DELAY + item.time_to_equip
+
+	if (istype(source) && istype(user))
+		time_to_strip = user.get_strip_delay(user, source) + item.time_to_equip
+
+	if (!do_after(user, time_to_strip, INTERRUPT_ALL, BUSY_ICON_HOSTILE, source, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 		return FALSE
 
 	return TRUE
 
 /// A utility function for `/datum/strippable_item`s to finish unequipping an item from a mob.
-/proc/finish_unequip_mob(obj/item/item, mob/source, mob/user)
+/datum/strippable_item/mob_item_slot/proc/finish_unequip_mob(obj/item/item, mob/source, mob/user)
 	if (!source.drop_inv_item_on_ground(item))
 		return FALSE
 

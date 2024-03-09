@@ -42,6 +42,55 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 	key = STRIPPABLE_ITEM_MASK
 	item_slot = SLOT_FACE
 
+/datum/strippable_item/mob_item_slot/mask/get_alternate_action(atom/source, mob/user)
+	var/obj/item/clothing/mask = get_item(source)
+	if (!istype(mask))
+		return null
+	if (!ishuman(source))
+		return null
+	var/mob/living/carbon/human/sourcehuman = source
+	if (istype(sourcehuman.s_store, /obj/item/tank))
+		return "toggle_internals"
+	if (istype(sourcehuman.back, /obj/item/tank))
+		return "toggle_internals"
+	if (istype(sourcehuman.belt, /obj/item/tank))
+		return "toggle_internals"
+	return null
+
+/datum/strippable_item/mob_item_slot/mask/alternate_action(atom/source, mob/user)
+	if(!ishuman(source))
+		return
+	var/mob/living/carbon/human/sourcehuman = source
+	if(user.action_busy || user.is_mob_incapacitated() || !source.Adjacent(user))
+		return
+	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (sourcehuman.stat == DEAD || sourcehuman.health < HEALTH_THRESHOLD_CRIT) && !sourcehuman.get_target_lock(user.faction_group))
+		to_chat(user, SPAN_WARNING("You can't toggle internals of a crit or dead member of another faction!"))
+		return
+
+	sourcehuman.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their internals toggled by [key_name(user)]</font>")
+	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to toggle [key_name(src)]'s' internals</font>")
+	if(sourcehuman.internal)
+		user.visible_message(SPAN_DANGER("<B>[user] is trying to disable [sourcehuman]'s internals</B>"), null, null, 3)
+	else
+		user.visible_message(SPAN_DANGER("<B>[user] is trying to enable [sourcehuman]'s internals.</B>"), null, null, 3)
+
+	if(do_after(user, POCKET_STRIP_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC, sourcehuman, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+		if(sourcehuman.internal)
+			sourcehuman.internal.add_fingerprint(user)
+			sourcehuman.internal = null
+			sourcehuman.visible_message("[sourcehuman] is no longer running on internals.", null, null, 1)
+		else
+			if(istype(sourcehuman.wear_mask, /obj/item/clothing/mask))
+				if(istype(sourcehuman.back, /obj/item/tank))
+					sourcehuman.internal = sourcehuman.back
+				else if(istype(sourcehuman.s_store, /obj/item/tank))
+					sourcehuman.internal = sourcehuman.s_store
+				else if(istype(sourcehuman.belt, /obj/item/tank))
+					sourcehuman.internal = sourcehuman.belt
+				if(sourcehuman.internal)
+					sourcehuman.visible_message(SPAN_NOTICE("[sourcehuman] is now running on internals."), null, null, 1)
+					sourcehuman.internal.add_fingerprint(user)
+
 /datum/strippable_item/mob_item_slot/eyes
 	key = STRIPPABLE_ITEM_EYES
 	item_slot = SLOT_EYES
@@ -68,37 +117,61 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 	if(!ishuman(source))
 		return
 	var/mob/living/carbon/human/sourcemob = source
-	if(!user.action_busy && !user.is_mob_incapacitated() && source.Adjacent(user))
-		if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (sourcemob.stat == DEAD || sourcemob.health < HEALTH_THRESHOLD_CRIT) && !sourcemob.get_target_lock(user.faction_group))
-			to_chat(user, SPAN_WARNING("You can't strip a crit or dead member of another faction!"))
+	if(user.action_busy || user.is_mob_incapacitated() || !source.Adjacent(user))
+		return
+	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (sourcemob.stat == DEAD || sourcemob.health < HEALTH_THRESHOLD_CRIT) && !sourcemob.get_target_lock(user.faction_group))
+		to_chat(user, SPAN_WARNING("You can't strip a crit or dead member of another faction!"))
+		return
+	if(sourcemob.w_uniform && istype(sourcemob.w_uniform, /obj/item/clothing))
+		var/obj/item/clothing/under/U = sourcemob.w_uniform
+		if(!LAZYLEN(U.accessories))
+			return FALSE
+		var/obj/item/clothing/accessory/A = LAZYACCESS(U.accessories, 1)
+		if(LAZYLEN(U.accessories) > 1)
+			A = tgui_input_list(user, "Select an accessory to remove from [U]", "Remove accessory", U.accessories)
+		if(!istype(A))
 			return
-		if(sourcemob.w_uniform && istype(sourcemob.w_uniform, /obj/item/clothing))
-			var/obj/item/clothing/under/U = sourcemob.w_uniform
-			if(!LAZYLEN(U.accessories))
-				return FALSE
-			var/obj/item/clothing/accessory/A = LAZYACCESS(U.accessories, 1)
-			if(LAZYLEN(U.accessories) > 1)
-				A = tgui_input_list(user, "Select an accessory to remove from [U]", "Remove accessory", U.accessories)
-			if(!istype(A))
+		sourcemob.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their accessory ([A]) removed by [key_name(user)]</font>")
+		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to remove [key_name(sourcemob)]'s' accessory ([A])</font>")
+		if(istype(A, /obj/item/clothing/accessory/holobadge) || istype(A, /obj/item/clothing/accessory/medal))
+			sourcemob.visible_message(SPAN_DANGER("<B>[user] tears off \the [A] from [sourcemob]'s [U]!</B>"), null, null, 5)
+			if(U == sourcemob.w_uniform)
+				U.remove_accessory(user, A)
+		else
+			if(HAS_TRAIT(sourcemob, TRAIT_UNSTRIPPABLE) && !sourcemob.is_mob_incapacitated()) //Can't strip the unstrippable!
+				to_chat(user, SPAN_DANGER("[sourcemob] has an unbreakable grip on their equipment!"))
 				return
-			sourcemob.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their accessory ([A]) removed by [key_name(user)]</font>")
-			user.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to remove [key_name(sourcemob)]'s' accessory ([A])</font>")
-			if(istype(A, /obj/item/clothing/accessory/holobadge) || istype(A, /obj/item/clothing/accessory/medal))
-				sourcemob.visible_message(SPAN_DANGER("<B>[user] tears off \the [A] from [sourcemob]'s [U]!</B>"), null, null, 5)
+			sourcemob.visible_message(SPAN_DANGER("<B>[user] is trying to take off \a [A] from [source]'s [U]!</B>"), null, null, 5)
+			if(do_after(user, sourcemob.get_strip_delay(user, sourcemob), INTERRUPT_ALL, BUSY_ICON_GENERIC, sourcemob, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 				if(U == sourcemob.w_uniform)
 					U.remove_accessory(user, A)
-			else
-				if(HAS_TRAIT(sourcemob, TRAIT_UNSTRIPPABLE) && !sourcemob.is_mob_incapacitated()) //Can't strip the unstrippable!
-					to_chat(user, SPAN_DANGER("[sourcemob] has an unbreakable grip on their equipment!"))
-					return
-				sourcemob.visible_message(SPAN_DANGER("<B>[user] is trying to take off \a [A] from [source]'s [U]!</B>"), null, null, 5)
-				if(do_after(user, sourcemob.get_strip_delay(user, sourcemob), INTERRUPT_ALL, BUSY_ICON_GENERIC, sourcemob, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
-					if(U == sourcemob.w_uniform)
-						U.remove_accessory(user, A)
 
 /datum/strippable_item/mob_item_slot/suit
 	key = STRIPPABLE_ITEM_SUIT
 	item_slot = SLOT_OCLOTHING
+
+/datum/strippable_item/mob_item_slot/suit/get_alternate_action(atom/source, mob/user)
+	if(!ishuman(source))
+		return
+	var/mob/living/carbon/human/sourcemob = source
+	for(var/bodypart in list("l_leg","r_leg","l_arm","r_arm","r_hand","l_hand","r_foot","l_foot","chest","head","groin"))
+		var/obj/limb/limb = sourcemob.get_limb(bodypart)
+		if(limb && (limb.status & LIMB_SPLINTED))
+			return "remove_splints"
+	return null
+
+/datum/strippable_item/mob_item_slot/suit/alternate_action(atom/source, mob/user)
+	if(!ishuman(source))
+		return
+	var/mob/living/carbon/human/sourcemob = source
+	if(user.action_busy || user.is_mob_incapacitated() || !source.Adjacent(user))
+		return
+	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (sourcemob.stat == DEAD || sourcemob.health < HEALTH_THRESHOLD_CRIT) && !sourcemob.get_target_lock(user.faction_group))
+		to_chat(user, SPAN_WARNING("You can't remove splints of a crit or dead member of another faction!"))
+		return
+	sourcemob.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their splints removed by [key_name(user)]</font>")
+	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to remove [key_name(sourcemob)]'s' splints </font>")
+	sourcemob.remove_splints(user)
 
 /datum/strippable_item/mob_item_slot/gloves
 	key = STRIPPABLE_ITEM_GLOVES
@@ -116,6 +189,51 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 /datum/strippable_item/mob_item_slot/id
 	key = STRIPPABLE_ITEM_ID
 	item_slot = SLOT_ID
+
+/datum/strippable_item/mob_item_slot/id/get_alternate_action(atom/source, mob/user)
+	var/obj/item/card/id/dogtag/tag = get_item(source)
+	if(!ishuman(source))
+		return null
+	var/mob/living/carbon/human/sourcemob = source
+	if (!istype(tag))
+		return null
+	if (!sourcemob.undefibbable && !skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
+		return null
+	return tag.dogtag_taken ? null : "retrieve_tag"
+
+/datum/strippable_item/mob_item_slot/id/alternate_action(atom/source, mob/user)
+	ai_announcement("please?2")
+	if(!ishuman(source))
+		return
+	var/mob/living/carbon/human/sourcemob = source
+	if(user.action_busy || user.is_mob_incapacitated() || !source.Adjacent(user))
+		return
+	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (sourcemob.stat == DEAD || sourcemob.health < HEALTH_THRESHOLD_CRIT) && !sourcemob.get_target_lock(user.faction_group))
+		to_chat(user, SPAN_WARNING("You can't strip a crit or dead member of another faction!"))
+		return
+	ai_announcement("please?3")
+	if(!istype(sourcemob.wear_id, /obj/item/card/id/dogtag))
+		return
+	if (!sourcemob.undefibbable && !skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
+		return
+	ai_announcement("please?4")
+	var/obj/item/card/id/dogtag/tag = sourcemob.wear_id
+	if(!tag.dogtag_taken)
+		if(sourcemob.stat == DEAD)
+			to_chat(usr, SPAN_NOTICE("You take [sourcemob]'s information tag, leaving the ID tag"))
+			tag.dogtag_taken = TRUE
+			tag.icon_state = "dogtag_taken"
+			var/obj/item/dogtag/newtag = new(sourcemob.loc)
+			newtag.fallen_names = list(tag.registered_name)
+			newtag.fallen_assgns = list(tag.assignment)
+			newtag.fallen_blood_types = list(tag.blood_type)
+			user.put_in_hands(newtag)
+		else
+			to_chat(user, SPAN_WARNING("You can't take a dogtag's information tag while its owner is alive."))
+	else
+		to_chat(user, SPAN_WARNING("Someone's already taken [sourcemob]'s information tag."))
+		return
+
 
 /datum/strippable_item/mob_item_slot/belt
 	key = STRIPPABLE_ITEM_BELT

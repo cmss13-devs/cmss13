@@ -282,7 +282,7 @@
 			if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				switch(repair_state)
 					if(FLOODLIGHT_REPAIR_UNSCREW) . += SPAN_INFO("You must first unscrew its maintenance hatch.")
-					if(FLOODLIGHT_REPAIR_CROWBAR) . += SPAN_INFO("You must crowbar its maintenance hatch open.")
+					if(FLOODLIGHT_REPAIR_CROWBAR) . += SPAN_INFO("You must crowbar its maintenance hatch open or use a light replacer.")
 					if(FLOODLIGHT_REPAIR_WELD) . += SPAN_INFO("You must weld the damage to it.")
 					if(FLOODLIGHT_REPAIR_CABLE) . += SPAN_INFO("You must replace its damaged cables.")
 					if(FLOODLIGHT_REPAIR_SCREW) . += SPAN_INFO("You must screw its maintenance hatch closed.")

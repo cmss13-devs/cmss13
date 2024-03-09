@@ -307,6 +307,9 @@
 		if("page_deleted_1to1")
 			admin_interface.last_menu = admin_interface.current_menu
 			admin_interface.current_menu = "deleted_talks"
+		if("page_tech")
+			admin_interface.last_menu = admin_interface.current_menu
+			admin_interface.current_menu = "tech_log"
 		if("page_access_management")
 			admin_interface.last_menu = admin_interface.current_menu
 			admin_interface.current_menu = "access_management"

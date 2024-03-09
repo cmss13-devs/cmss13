@@ -359,6 +359,10 @@
 					new_title = "[record.title] at [record.time]"
 					new_details = "[record.details] Launched by [record.user]."
 					datacore.records_bombardment -= record
+				if(ARES_RECORD_TECH)
+					new_title = "[record.title] at [record.time]"
+					new_details = record.details
+					datacore.records_tech -= record
 
 			new_delete.details = new_details
 			new_delete.user = last_login

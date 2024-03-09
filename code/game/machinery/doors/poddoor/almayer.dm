@@ -7,6 +7,10 @@
 		/obj/structure/machinery/door/airlock,
 	)
 
+/obj/structure/machinery/door/poddoor/almayer/Initialize()
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
 /obj/structure/machinery/door/poddoor/almayer/LateInitialize()
 	. = ..()
 	relativewall_neighbours()

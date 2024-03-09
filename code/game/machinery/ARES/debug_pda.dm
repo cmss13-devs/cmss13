@@ -87,8 +87,7 @@
 	data["is_pda"] = TRUE
 
 	data["admin_login"] = "[logged_in], AI Service Technician"
-	data["admin_access_log"] = list()
-	data["admin_access_log"] += access_list
+	data["admin_access_log"] = access_list
 
 	data["current_menu"] = current_menu
 	data["last_page"] = last_menu
@@ -103,13 +102,10 @@
 	data["evac_status"] = SShijack.evac_status
 	data["worldtime"] = world.time
 
-	data["access_log"] = list()
-	data["access_log"] += datacore.interface_access_list
-	data["apollo_log"] = list()
-	data["apollo_log"] += datacore.apollo_log
+	data["access_log"] = datacore.interface_access_list
+	data["apollo_log"] = datacore.apollo_log
 
-	data["deleted_conversation"] = list()
-	data["deleted_conversation"] += deleted_1to1
+	data["deleted_conversation"] = deleted_1to1
 
 	data["distresstime"] = datacore.ares_distress_cooldown
 	data["distresstimelock"] = DISTRESS_TIME_LOCK

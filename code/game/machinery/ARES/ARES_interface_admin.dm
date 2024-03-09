@@ -53,8 +53,7 @@
 	data["is_pda"] = FALSE
 
 	data["admin_login"] = "[admin_interface.logged_in], [user.client.admin_holder?.rank]"
-	data["admin_access_log"] = list()
-	data["admin_access_log"] += admin_interface.access_list
+	data["admin_access_log"] = admin_interface.access_list
 
 	data["current_menu"] = admin_interface.current_menu
 	data["last_page"] = admin_interface.last_menu

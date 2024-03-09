@@ -1133,12 +1133,6 @@
 	icon_state = "orangelinecorner"
 /turf/open/floor/hybrisa/metal/orangeline
 	icon_state = "orangeline"
-/turf/open/floor/hybrisa/metal/orangefloor1
-	icon_state = "zorangefloor1"
-/turf/open/floor/hybrisa/metal/orangefloorfull
-	icon_state = "zorangefloorfull1"
-/turf/open/floor/hybrisa/metal/orangefloorcorner
-	icon_state = "zorangefloorcorner1"
 /turf/open/floor/hybrisa/metal/darkblackmetal1
 	icon_state = "darkblackmetal1"
 /turf/open/floor/hybrisa/metal/darkblackmetal2
@@ -1151,6 +1145,12 @@
 	icon_state = "rampsmaller"
 /turf/open/floor/hybrisa/metal/stripe_red
 	icon_state = "stripe_red"
+/turf/open/floor/hybrisa/metal/zbrownfloor1
+	icon_state = "zbrownfloor1"
+/turf/open/floor/hybrisa/metal/zbrownfloor_corner
+	icon_state = "zbrownfloorcorner1"
+/turf/open/floor/hybrisa/metal/zbrownfloor_full
+	icon_state = "zbrownfloorfull1"
 // Misc
 
 /turf/open/floor/hybrisa/misc

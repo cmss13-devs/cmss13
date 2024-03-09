@@ -345,13 +345,13 @@
 	icon_state = "handcuff"
 
 /obj/item/storage/box/handcuffs/fill_preset_inventory()
-	new /obj/item/handcuffs(src)
-	new /obj/item/handcuffs(src)
-	new /obj/item/handcuffs(src)
-	new /obj/item/handcuffs(src)
-	new /obj/item/handcuffs(src)
-	new /obj/item/handcuffs(src)
-	new /obj/item/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
 
 
 /obj/item/storage/box/zipcuffs
@@ -360,20 +360,20 @@
 	icon_state = "handcuff"
 
 /obj/item/storage/box/zipcuffs/fill_preset_inventory()
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
 
 /obj/item/storage/box/zipcuffs/small
 	name = "small box of zip cuffs"
@@ -381,13 +381,13 @@
 	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/zipcuffs/fill_preset_inventory()
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
-	new /obj/item/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
+	new /obj/item/restraint/handcuffs/zip(src)
 
 /obj/item/storage/box/tapes
 	name = "box of regulation tapes"

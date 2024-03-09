@@ -12163,7 +12163,7 @@
 /area/ice_colony/surface/command/crisis)
 "aIv" = (
 /obj/structure/surface/table/woodentable,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /obj/item/tool/stamp,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
@@ -28871,7 +28871,7 @@
 /area/ice_colony/underground/security/interrogation)
 "bJH" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /obj/structure/machinery/flasher_button{
 	id = "sec_checkpoint";
 	pixel_y = 24
@@ -30138,7 +30138,7 @@
 "bMX" = (
 /obj/item/book/manual/marine_law,
 /obj/structure/surface/table/reinforced,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkred2"
@@ -33966,7 +33966,7 @@
 /area/ice_colony/underground/medical/storage)
 "bXR" = (
 /obj/structure/surface/table/woodentable,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /obj/item/weapon/baton,
 /turf/open/floor/wood,
 /area/ice_colony/underground/security/marshal)

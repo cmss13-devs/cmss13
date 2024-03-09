@@ -1,16 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"ac" = (
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
-	dir = 1;
-	pixel_y = 12;
-	layer = 2.9808;
-	name = "red handrail"
-	},
-/turf/open/floor{
-	icon_state = "redyellowfull"
-	},
-/area/adminlevel/ert_station/pizza_station)
 "ae" = (
 /obj/structure/machinery/door_control{
 	id = "kitchen_pizza_time";
@@ -46,7 +34,8 @@
 /obj/structure/prop/invuln{
 	desc = "An inflated membrane. This one is puncture proof. Wow!";
 	icon = 'icons/obj/items/inflatable.dmi';
-	icon_state = "wall"
+	icon_state = "wall";
+	name = "Docking Umbilical"
 	},
 /obj/structure/blocker/invisible_wall,
 /obj/structure/sign/safety/airlock{
@@ -69,7 +58,8 @@
 /obj/structure/barricade/handrail/sandstone/b{
 	color = "#b51c0b";
 	pixel_y = -3;
-	name = "red handrail"
+	name = "red handrail";
+	layer = 4.1
 	},
 /obj/item/reagent_container/food/drinks/cans/souto/cherry{
 	pixel_x = -8;
@@ -196,7 +186,8 @@
 /obj/structure/prop/invuln{
 	desc = "An inflated membrane. This one is puncture proof. Wow!";
 	icon = 'icons/obj/items/inflatable.dmi';
-	icon_state = "wall"
+	icon_state = "wall";
+	name = "Docking Umbilical"
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/almayer_hull,
@@ -347,7 +338,8 @@
 	color = "#b51c0b";
 	dir = 1;
 	pixel_y = 12;
-	name = "red handrail"
+	name = "red handrail";
+	layer = 4.1
 	},
 /obj/structure/prop/souto_land/streamer{
 	dir = 6
@@ -590,7 +582,8 @@
 /obj/structure/barricade/handrail/sandstone/b{
 	color = "#b51c0b";
 	pixel_y = -3;
-	name = "red handrail"
+	name = "red handrail";
+	layer = 4.1
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -608,7 +601,8 @@
 /obj/structure/barricade/handrail/sandstone/b{
 	color = "#b51c0b";
 	pixel_y = -3;
-	name = "red handrail"
+	name = "red handrail";
+	layer = 4.1
 	},
 /obj/item/storage/box/drinkingglasses{
 	layer = 2.97;
@@ -677,7 +671,8 @@
 	color = "#b51c0b";
 	dir = 1;
 	pixel_y = 12;
-	name = "red handrail"
+	name = "red handrail";
+	layer = 4.1
 	},
 /turf/open/floor{
 	icon_state = "redyellowfull"
@@ -766,7 +761,8 @@
 /obj/structure/barricade/handrail/sandstone/b{
 	color = "#b51c0b";
 	pixel_y = -3;
-	name = "red handrail"
+	name = "red handrail";
+	layer = 4.1
 	},
 /obj/item/reagent_container/food/drinks/drinkingglass{
 	pixel_y = 14;
@@ -938,7 +934,8 @@
 /obj/structure/barricade/handrail/sandstone/b{
 	color = "#b51c0b";
 	pixel_y = -3;
-	name = "red handrail"
+	name = "red handrail";
+	layer = 4.1
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -1006,7 +1003,8 @@
 /obj/structure/barricade/handrail/sandstone/b{
 	color = "#b51c0b";
 	pixel_y = -3;
-	name = "red handrail"
+	name = "red handrail";
+	layer = 4.1
 	},
 /obj/item/reagent_container/food/drinks/drinkingglass/cola{
 	pixel_y = 8;
@@ -1079,7 +1077,8 @@
 	color = "#b51c0b";
 	dir = 1;
 	pixel_y = 12;
-	name = "red handrail"
+	name = "red handrail";
+	layer = 4.1
 	},
 /obj/item/storage/briefcase/stowaway{
 	pixel_y = 11
@@ -1096,7 +1095,8 @@
 /obj/structure/barricade/handrail/sandstone/b{
 	color = "#b51c0b";
 	pixel_y = -3;
-	name = "red handrail"
+	name = "red handrail";
+	layer = 4.1
 	},
 /turf/open/floor/prison{
 	icon_state = "kitchen"
@@ -1185,7 +1185,7 @@
 	name = "red handrail"
 	},
 /obj/structure/machinery/vending/snack{
-	layer = 3.01;
+	layer = 4.15;
 	pixel_y = 3
 	},
 /turf/open/floor/prison{
@@ -1264,7 +1264,8 @@
 /obj/structure/barricade/handrail/sandstone/b{
 	color = "#b51c0b";
 	pixel_y = -3;
-	name = "red handrail"
+	name = "red handrail";
+	layer = 4.1
 	},
 /obj/item/reagent_container/food/drinks/cans/tonic{
 	pixel_x = -15;
@@ -2145,7 +2146,8 @@
 	color = "#b51c0b";
 	dir = 1;
 	pixel_y = 12;
-	name = "red handrail"
+	name = "red handrail";
+	layer = 4.1
 	},
 /obj/structure/prop/souto_land/streamer{
 	dir = 6
@@ -2338,7 +2340,8 @@
 /obj/structure/barricade/handrail/sandstone/b{
 	color = "#b51c0b";
 	pixel_y = -3;
-	name = "red handrail"
+	name = "red handrail";
+	layer = 4.1
 	},
 /obj/structure/surface/table/almayer,
 /obj/item/trash/ceramic_plate{
@@ -2452,7 +2455,8 @@
 /obj/structure/barricade/handrail/sandstone/b{
 	color = "#b51c0b";
 	pixel_y = -3;
-	name = "red handrail"
+	name = "red handrail";
+	layer = 4.1
 	},
 /obj/item/trash/ceramic_plate{
 	pixel_y = 2
@@ -2832,7 +2836,8 @@
 	color = "#b51c0b";
 	dir = 1;
 	pixel_y = 12;
-	name = "red handrail"
+	name = "red handrail";
+	layer = 4.1
 	},
 /obj/structure/prop/souto_land/streamer{
 	dir = 9
@@ -3085,7 +3090,8 @@
 /obj/structure/barricade/handrail/sandstone/b{
 	color = "#b51c0b";
 	pixel_y = -3;
-	name = "red handrail"
+	name = "red handrail";
+	layer = 4.1
 	},
 /obj/item/reagent_container/food/drinks/cans/cola{
 	pixel_y = 6;
@@ -3148,7 +3154,8 @@
 /obj/structure/barricade/handrail/sandstone/b{
 	color = "#b51c0b";
 	pixel_y = -3;
-	name = "red handrail"
+	name = "red handrail";
+	layer = 4.1
 	},
 /turf/open/floor{
 	icon_state = "redyellowfull"
@@ -3240,7 +3247,8 @@
 /obj/structure/barricade/handrail/sandstone/b{
 	color = "#b51c0b";
 	pixel_y = -3;
-	name = "red handrail"
+	name = "red handrail";
+	layer = 4.1
 	},
 /obj/item/reagent_container/food/drinks/coffeecup{
 	pixel_x = -5;
@@ -3368,7 +3376,7 @@
 	color = "#b51c0b";
 	dir = 1;
 	pixel_y = 12;
-	layer = 3.01;
+	layer = 4.1;
 	name = "red handrail"
 	},
 /obj/structure/bed/chair/bolted{
@@ -3474,7 +3482,7 @@
 /obj/structure/barricade/handrail/sandstone/b{
 	color = "#b51c0b";
 	pixel_y = -3;
-	layer = 3.2;
+	layer = 4.1;
 	name = "red handrail"
 	},
 /obj/item/reagent_container/food/condiment/hotsauce/franks/macho{
@@ -3527,7 +3535,8 @@
 	color = "#b51c0b";
 	dir = 1;
 	pixel_y = 12;
-	name = "red handrail"
+	name = "red handrail";
+	layer = 4.1
 	},
 /turf/open/floor{
 	icon_state = "redyellowfull"
@@ -3849,7 +3858,8 @@
 	color = "#b51c0b";
 	dir = 1;
 	pixel_y = 12;
-	name = "red handrail"
+	name = "red handrail";
+	layer = 4.1
 	},
 /obj/structure/barricade/handrail/sandstone/b{
 	color = "#b51c0b";
@@ -3900,7 +3910,8 @@
 	color = "#b51c0b";
 	dir = 1;
 	pixel_y = 12;
-	name = "red handrail"
+	name = "red handrail";
+	layer = 4.1
 	},
 /obj/structure/reagent_dispensers/water_cooler/stacks{
 	density = 0;
@@ -4051,7 +4062,7 @@
 	color = "#b51c0b";
 	dir = 1;
 	pixel_y = 12;
-	layer = 3.01;
+	layer = 4.1;
 	name = "red handrail"
 	},
 /turf/open/floor{
@@ -4272,7 +4283,8 @@
 /obj/structure/barricade/handrail/sandstone/b{
 	color = "#b51c0b";
 	pixel_y = -3;
-	name = "red handrail"
+	name = "red handrail";
+	layer = 4.1
 	},
 /obj/item/storage/box/drinkingglasses{
 	layer = 2.97;
@@ -4353,7 +4365,8 @@
 	color = "#b51c0b";
 	dir = 1;
 	pixel_y = 12;
-	name = "red handrail"
+	name = "red handrail";
+	layer = 4.1
 	},
 /obj/structure/bed/chair/bolted{
 	pixel_y = -1
@@ -4427,7 +4440,8 @@
 	color = "#b51c0b";
 	dir = 1;
 	pixel_y = 12;
-	name = "red handrail"
+	name = "red handrail";
+	layer = 4.1
 	},
 /obj/structure/reagent_dispensers/water_cooler/stacks{
 	density = 0;
@@ -4674,7 +4688,8 @@
 /obj/structure/barricade/handrail/sandstone/b{
 	color = "#b51c0b";
 	pixel_y = -3;
-	name = "red handrail"
+	name = "red handrail";
+	layer = 4.1
 	},
 /turf/open/floor{
 	icon_state = "redyellowfull"
@@ -4813,7 +4828,8 @@
 /obj/structure/prop/invuln{
 	desc = "An inflated membrane. This one is puncture proof. Wow!";
 	icon = 'icons/obj/items/inflatable.dmi';
-	icon_state = "wall"
+	icon_state = "wall";
+	name = "Docking Umbilical"
 	},
 /obj/structure/blocker/invisible_wall,
 /obj/structure/sign/safety/airlock{
@@ -6513,7 +6529,7 @@ OQ
 jV
 uN
 kW
-ac
+RN
 Og
 xX
 Rh

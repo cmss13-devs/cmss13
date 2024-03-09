@@ -141,10 +141,13 @@
 	// if the dropship has crashed don't allow more interactions
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
 	if(shuttle.mode == SHUTTLE_CRASHED)
-		to_chat(user, SPAN_NOTICE("\The [src] is not responsive"))
+		to_chat(user, SPAN_NOTICE("[src] is unresponsive."))
 		return
 
 	if(dropship_control_lost)
+		if(shuttle.is_hijacked)
+			to_chat(user, SPAN_WARNING("The shuttle is not responding due to an unauthorized access attempt."))
+			return
 		var/remaining_time = timeleft(door_control_cooldown) / 10
 		to_chat(user, SPAN_WARNING("The shuttle is not responding due to an unauthorized access attempt. In large text it says the lockout will be automatically removed in [remaining_time] seconds."))
 		if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
@@ -324,14 +327,14 @@
 		colonial_marines.add_current_round_status_to_end_results("Hijack")
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/remove_door_lock()
+	if(door_control_cooldown)
+		deltimer(door_control_cooldown)
+		door_control_cooldown = null
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
 	if(shuttle.is_hijacked)
 		return
 	playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
 	dropship_control_lost = FALSE
-	if(door_control_cooldown)
-		deltimer(door_control_cooldown)
-		door_control_cooldown = null
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/ui_data(mob/user)
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)

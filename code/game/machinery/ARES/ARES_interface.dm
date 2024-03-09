@@ -9,10 +9,10 @@
 	var/current_menu = "login"
 	var/last_menu = ""
 
-	var/authentication = ARES_ACCESS_BASIC
+	var/authentication = ARES_ACCESS_LOGOUT
 
 	/// The last person to login.
-	var/last_login
+	var/last_login = "No User"
 	/// The person pretending to be last_login
 	var/sudo_holder
 
@@ -286,6 +286,8 @@
 				last_login = sudo_holder
 				sudo_holder = null
 			datacore.interface_access_list += "[last_login] logged out at [worldtime2text()]."
+			last_login = "No User"
+			authentication = ARES_ACCESS_LOGOUT
 
 		if("home")
 			last_menu = current_menu
@@ -333,6 +335,8 @@
 		// -- Delete Button -- //
 		if("delete_record")
 			var/datum/ares_record/record = locate(params["record"])
+			if(!istype(record))
+				return FALSE
 			if(record.record_name == ARES_RECORD_DELETED)
 				return FALSE
 			var/datum/ares_record/deletion/new_delete = new
@@ -386,6 +390,8 @@
 
 		if("read_record")
 			var/datum/ares_record/deleted_talk/conversation = locate(params["record"])
+			if(!istype(conversation))
+				return FALSE
 			deleted_1to1 = conversation.conversation
 			last_menu = current_menu
 			current_menu = "read_deleted"

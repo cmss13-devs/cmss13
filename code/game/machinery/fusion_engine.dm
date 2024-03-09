@@ -80,6 +80,11 @@
 /obj/structure/machinery/power/reactor/LateInitialize() //Need to wait for powernets to start existing first
 	. = ..()
 
+	if(QDELETED(src))
+		return
+	if(powernet)
+		return
+
 	if(!connect_to_network()) //Make sure its connected to a powernet
 		CRASH("[src] has failed to connect to a power network. Check that it has been mapped correctly.")
 

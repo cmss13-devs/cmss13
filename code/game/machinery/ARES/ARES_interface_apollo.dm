@@ -19,7 +19,7 @@
 	var/last_login
 
 	/// Notification sound
-	var/notify_sounds =  TRUE
+	var/notify_sounds = TRUE
 
 
 /obj/structure/machinery/computer/working_joe/proc/link_systems(datum/ares_link/new_link = GLOB.ares_link, override)
@@ -89,8 +89,7 @@
 	data["access_log"] = list()
 	data["access_log"] += datacore.apollo_login_list
 
-	data["apollo_log"] = list()
-	data["apollo_log"] += datacore.apollo_log
+	data["apollo_log"] = datacore.apollo_log
 
 	data["notify_sounds"] = notify_sounds
 
@@ -375,7 +374,7 @@
 		if("auth_access")
 			playsound = FALSE
 			var/datum/ares_ticket/access/access_ticket = locate(params["ticket"])
-			if(!access_ticket)
+			if(!istype(access_ticket))
 				return FALSE
 			for(var/obj/item/card/id/identification in link.waiting_ids)
 				if(identification.registered_gid != access_ticket.user_id_num)

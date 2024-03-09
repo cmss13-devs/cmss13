@@ -475,9 +475,9 @@
 	/// Maximum range of effect
 	var/range = 5
 	/// Maximum possible damage before falloff.
-	var/damage = 130
+	var/damage = 120
 	/// Factor to mutiply the effect range has on damage.
-	var/falloff_dam_reduction_mult = 13
+	var/falloff_dam_reduction_mult = 14
 
 /obj/item/explosive/grenade/sebb/get_examine_text(mob/user)
 	. = ..()
@@ -497,7 +497,7 @@
 		return
 	user.visible_message(SPAN_NOTICE("[user] starts deploying [src]."),
 		SPAN_NOTICE("You switch [src] into landmine mode and start placing it..."))
-	playsound(user.loc, 'sound/effects/thud.ogg', 100, 6)
+	playsound(user.loc, 'sound/effects/thud.ogg', 40)
 	if(!do_after(user, 2 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		to_chat(user, SPAN_NOTICE("You stop digging."))
 		return
@@ -517,24 +517,26 @@
 
 /obj/item/explosive/grenade/sebb/prime()
 	var/datum/effect_system/spark_spread/sparka = new
-	var/list/full_range = oview(range, src) // Fill a list of stuff in the range so we won't have to spam it
-	new /obj/effect/overlay/temp/sebb(get_turf(src))
+	var/turf/sebb_turf = get_turf(src)
+	var/list/full_range = oview(range, src) // Fill a list of stuff in the range so we won't have to spam oview again
+	new /obj/effect/overlay/temp/sebb(sebb_turf)
+	new /obj/effect/overlay/temp/emp_sparks(sebb_turf)
 	playsound(src.loc, 'sound/effects/sebb_explode.ogg', 100, 0, 10)
 	for(var/obj/structure/machinery/defenses/sentry/sentry_stun in full_range)
 		sentry_stun.sentry_range = 0 // Temporarily "disable" the sentry by killing its range then setting it back.
-
+		new /obj/effect/overlay/temp/elec_arc(get_turf(sentry_stun))
 		addtimer(VARSET_CALLBACK(sentry_stun, sentry_range, initial(sentry_stun.sentry_range)), 2 SECONDS)
 		sentry_stun.visible_message(SPAN_DANGER("[src]'s screen flickes violently as it's shocked!"))
 		sentry_stun.visible_message(SPAN_DANGER("[src] says \"ERROR: Fire control system resetting due to critical voltage flucuation!\""))
-		sparka.set_up(5, 1, sentry_stun)
+		sparka.set_up(1, 1, sentry_stun)
 		sparka.start()
 	for(var/turf/turf in full_range)
-		if(prob(25))
-			var/datum/effect_system/spark_spread/sparkTurf = new //using a different spike system because it becomes
-			sparkTurf.set_up(2, 1, turf)
+		if(prob(8))
+			var/datum/effect_system/spark_spread/sparkTurf = new //using a different spike system because the spark system doesn't like when you reuse it for differant things
+			sparkTurf.set_up(1, 1, turf)
 			sparkTurf.start()
-			to_chat_forced(world, get_dist(turf,src))
-			to_chat_forced(world,turf)
+		if(prob(10))
+			new /obj/effect/overlay/temp/emp_sparks(turf)
 	for(var/mob/living/carbon/mob in full_range) // no simplemob support
 		var/mob_dist = get_dist(src, mob)
 		var/falloff = mob_dist * falloff_dam_reduction_mult
@@ -542,21 +544,22 @@
 		//  Example: A marine is 3 tiles out, the distance (3) is multiplied by falloff_dam_reduction_mult to get falloff.
 		// 	The raw damage is minused by falloff to get actual damage
 		var/damage_applied = damage - falloff
-		sparka.set_up(5, 1, mob)
+		sparka.set_up(1, 1, mob)
 		sparka.start()
-
+		shake_camera(mob, 1, 1)
 		if(ishuman(mob))
 			var/mob/living/carbon/human/shocked_human = mob
 			if(isspeciessynth(shocked_human)) // Massive overvoltage to ungrounded robots is pretty bad
-				damage_applied *= 2
-				shocked_human.Stun(1)
+				shocked_human.Stun(1 + (damage_applied/40))
+				damage_applied *= 1.5
+				new /obj/effect/overlay/temp/elec_arc(get_turf(shocked_human))
 				to_chat(mob, SPAN_HIGHDANGER("All of your systems jam up as your main bus is overvolted by [damage_applied*2] volts."))
+				mob.visible_message(SPAN_WARNING("[mob] seizes up from the elctric shock"))
 			shocked_human.take_overall_armored_damage(damage_applied, ARMOR_ENERGY, BURN, 90) // 90% chance to be on additional limbs
 			shocked_human.make_dizzy(damage_applied*2)
 			shocked_human.make_jittery(damage_applied*2)
 			mob.apply_stamina_damage(damage_applied*1) // REMOVETHIS REMOVETHIS TO TEST
 			shocked_human.emote("pain")
-			shake_camera(mob, 1, 1)
 		else //nonhuman damage + slow
 			mob.apply_damage(damage_applied, BURN)
 			mob.Slow(damage_applied/max(mob_dist, 1))
@@ -566,10 +569,12 @@
 			mob.Superslow(5)
 			mob.eye_blurry = damage_applied/4
 		else if((mob_dist < (range-1)) && (mob.mob_size < MOB_SIZE_XENO_VERY_SMALL)) // Flicker stun humans that are closer to the grenade and larvas too.
-			mob.apply_effect(1 + (damage_applied/40),WEAKEN) // 1 + damage/40
+			mob.apply_effect(1 + (damage_applied/100),WEAKEN) // 1 + damage/40
 			mob.eye_blurry = damage_applied/8
 		else
 			to_chat(mob, SPAN_HIGHDANGER("Your entire body seizes up as a powerful shock courses through it!"))
+		to_chat_forced(world, damage_applied)
+	empulse(src, 1, 2) // mini EMP
 	qdel(src)
 
 

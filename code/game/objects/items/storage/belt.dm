@@ -571,7 +571,7 @@
 
 /obj/item/storage/belt/marine/smartgunner/uscm
 
-/obj/item/storage/belt/marine/smartgunner/uscm/filled
+/obj/item/storage/belt/marine/smartgunner/uscm/filled/fill_preset_inventory()
 	new /obj/item/ammo_magazine/smartgun(src)
 	new /obj/item/ammo_magazine/smartgun(src)
 	new /obj/item/ammo_magazine/smartgun(src)

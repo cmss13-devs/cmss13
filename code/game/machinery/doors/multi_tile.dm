@@ -291,9 +291,6 @@
 	if(!queen_pryable)
 		return ..()
 
-	if(!locked)
-		return ..()
-
 	if(xeno.action_busy)
 		return
 

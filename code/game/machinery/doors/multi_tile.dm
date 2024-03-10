@@ -297,7 +297,7 @@
 	to_chat(xeno, SPAN_NOTICE("You try and force the doors open"))
 	if(do_after(xeno, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		unlock(TRUE)
-		open(1)
+		open(TRUE)
 		lock(TRUE)
 		var/direction
 		switch(id)

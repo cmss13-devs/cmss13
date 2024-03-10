@@ -215,7 +215,7 @@ type StripMenuItem =
       | {
           icon: string;
           name: string;
-          alternate?: string;
+          alternate: string;
         }
       | {
           obscured: ObscuringLevel;
@@ -229,7 +229,7 @@ type StripMenuData = {
 };
 
 export const StripMenu = (props, context) => {
-  const { act, data } = useBackend<StripMenuData>(context);
+  const { act, data } = useBackend<StripMenuData>();
 
   const gridSpots = new Map<GridSpotKey, string>();
   for (const key of Object.keys(data.items)) {

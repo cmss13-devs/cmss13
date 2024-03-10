@@ -291,27 +291,31 @@
 	if(!queen_pryable)
 		return ..()
 
-	if(!locked)
-		return ..()
-
 	if(xeno.action_busy)
 		return
 
-	to_chat(xeno, SPAN_NOTICE("You try and force the doors open"))
+	var/direction
+	switch(id)
+		if("starboard_door")
+			direction = "starboard"
+		if("port_door")
+			direction = "port"
+		if("aft_door")
+			direction = "aft"
+	var/datum/door_controller/single/control
+	if(linked_dropship && linked_dropship.door_control.door_controllers[direction])
+		control = linked_dropship.door_control.door_controllers[direction]
+
+	if(control && control.status == SHUTTLE_DOOR_BROKEN)
+		to_chat(xeno, SPAN_NOTICE("The door is already disabled."))
+		return
+
+	to_chat(xeno, SPAN_WARNING("You try and force the doors open!"))
 	if(do_after(xeno, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		unlock(TRUE)
 		open(1)
 		lock(TRUE)
-		var/direction
-		switch(id)
-			if("starboard_door")
-				direction = "starboard"
-			if("port_door")
-				direction = "port"
-			if("aft_door")
-				direction = "aft"
-		if(linked_dropship && linked_dropship.door_control.door_controllers[direction])
-			var/datum/door_controller/single/control = linked_dropship.door_control.door_controllers[direction]
+		if(control)
 			control.status = SHUTTLE_DOOR_BROKEN
 
 

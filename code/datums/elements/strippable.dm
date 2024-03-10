@@ -80,9 +80,16 @@
 /// This should be used for checking if an item CAN be equipped.
 /// It should not perform the equipping itself.
 /datum/strippable_item/proc/try_equip(atom/source, obj/item/equipping, mob/user)
-	if ((equipping.flags_item & NODROP) || (equipping.flags_item & ITEM_ABSTRACT))
+	if ((equipping.flags_item & ITEM_ABSTRACT))
+		return FALSE
+	if ((equipping.flags_item & NODROP))
 		to_chat(user, SPAN_WARNING("You can't put [equipping] on [source], it's stuck to your hand!"))
 		return FALSE
+	if (ishuman(source))
+		var/mob/living/carbon/human/sourcehuman = source
+		if(HAS_TRAIT(sourcehuman, TRAIT_UNSTRIPPABLE) && !sourcehuman.is_mob_incapacitated())
+			to_chat(src, SPAN_DANGER("[sourcehuman] is too strong to force [equipping] onto them!"))
+			return
 	return TRUE
 
 /// Start the equipping process. This is the proc you should yield in.
@@ -127,6 +134,10 @@
 		if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (sourcehuman.stat == DEAD || sourcehuman.health < HEALTH_THRESHOLD_CRIT) && !sourcehuman.get_target_lock(user.faction_group))
 			to_chat(user, SPAN_WARNING("You can't strip items of a crit or dead member of another faction!"))
 			return FALSE
+
+		if(HAS_TRAIT(sourcehuman, TRAIT_UNSTRIPPABLE) && !sourcehuman.is_mob_incapacitated())
+			to_chat(src, SPAN_DANGER("[sourcehuman] has an unbreakable grip on their equipment!"))
+			return
 
 	return TRUE
 

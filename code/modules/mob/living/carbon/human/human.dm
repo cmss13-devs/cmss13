@@ -13,7 +13,7 @@
 	create_reagents(1000)
 	if(!real_name || !name)
 		change_real_name(src, "unknown")
-	AddElement(/datum/element/strippable, GLOB.strippable_human_items, /mob/living/carbon/human/.proc/should_strip)
+	AddElement(/datum/element/strippable, GLOB.strippable_human_items, TYPE_PROC_REF(/mob/living/carbon/human, should_strip))
 	. = ..()
 
 	prev_gender = gender // Debug for plural genders

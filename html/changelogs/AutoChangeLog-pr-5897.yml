@@ -1,0 +1,4 @@
+author: "Segrain"
+delete-after: True
+changes:
+  - admin: "Actually fixed the last case of being warned against interacting with ticket already marked by you."

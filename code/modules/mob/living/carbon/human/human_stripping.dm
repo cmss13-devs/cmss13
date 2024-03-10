@@ -21,14 +21,10 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 )))
 
 /mob/living/carbon/human/proc/should_strip(mob/user)
-	// if (user.pulling != src || user.grab_state != GRAB_AGGRESSIVE)
-	// 	return TRUE
+	if (user.pulling != src || user.grab_level != GRAB_AGGRESSIVE)
+		return TRUE
 
-	// if (ishuman(user))
-	// 	var/mob/living/carbon/human/human_user = user
-	// 	//return !human_user.can_be_firemanned(src)
-
-	return TRUE
+	return user.a_intent != INTENT_GRAB
 
 /datum/strippable_item/mob_item_slot/head
 	key = STRIPPABLE_ITEM_HEAD
@@ -197,7 +193,7 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 	var/mob/living/carbon/human/sourcemob = source
 	if (!istype(tag))
 		return null
-	if (!sourcemob.undefibbable && !skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
+	if (!sourcemob.undefibbable && (!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED) || sourcemob.stat != DEAD))
 		return null
 	return tag.dogtag_taken ? null : "retrieve_tag"
 

@@ -321,8 +321,6 @@
 
 	var/list/items = list()
 
-	//ai_announcement("[strippable.items.len]")
-
 	for (var/strippable_key in strippable.items)
 		var/datum/strippable_item/item_data = strippable.items[strippable_key]
 
@@ -347,7 +345,7 @@
 
 		LAZYINITLIST(result)
 
-		result["icon"] = icon2base64(icon(item.icon, item.icon_state))
+		result["icon"] = icon2base64(icon(item.icon, item.icon_state, frame = 1))
 		result["name"] = item.name
 		result["alternate"] = item_data.get_alternate_action(owner, user)
 

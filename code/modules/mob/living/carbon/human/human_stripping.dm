@@ -118,28 +118,28 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 		to_chat(user, SPAN_WARNING("You can't strip a crit or dead member of another faction!"))
 		return
 	if(sourcemob.w_uniform && istype(sourcemob.w_uniform, /obj/item/clothing))
-		var/obj/item/clothing/under/U = sourcemob.w_uniform
-		if(!LAZYLEN(U.accessories))
+		var/obj/item/clothing/under/uniform = sourcemob.w_uniform
+		if(!LAZYLEN(uniform.accessories))
 			return FALSE
-		var/obj/item/clothing/accessory/A = LAZYACCESS(U.accessories, 1)
-		if(LAZYLEN(U.accessories) > 1)
-			A = tgui_input_list(user, "Select an accessory to remove from [U]", "Remove accessory", U.accessories)
-		if(!istype(A))
+		var/obj/item/clothing/accessory/accessory = LAZYACCESS(uniform.accessories, 1)
+		if(LAZYLEN(uniform.accessories) > 1)
+			accessory = tgui_input_list(user, "Select an accessory to remove from [uniform]", "Remove accessory", uniform.accessories)
+		if(!istype(accessory))
 			return
-		sourcemob.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their accessory ([A]) removed by [key_name(user)]</font>")
-		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to remove [key_name(sourcemob)]'s' accessory ([A])</font>")
-		if(istype(A, /obj/item/clothing/accessory/holobadge) || istype(A, /obj/item/clothing/accessory/medal))
-			sourcemob.visible_message(SPAN_DANGER("<B>[user] tears off \the [A] from [sourcemob]'s [U]!</B>"), null, null, 5)
-			if(U == sourcemob.w_uniform)
-				U.remove_accessory(user, A)
+		sourcemob.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their accessory ([accessory]) removed by [key_name(user)]</font>")
+		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to remove [key_name(sourcemob)]'s' accessory ([accessory])</font>")
+		if(istype(accessory, /obj/item/clothing/accessory/holobadge) || istype(accessory, /obj/item/clothing/accessory/medal))
+			sourcemob.visible_message(SPAN_DANGER("<B>[user] tears off \the [accessory] from [sourcemob]'s [uniform]!</B>"), null, null, 5)
+			if(uniform == sourcemob.w_uniform)
+				uniform.remove_accessory(user, accessory)
 		else
 			if(HAS_TRAIT(sourcemob, TRAIT_UNSTRIPPABLE) && !sourcemob.is_mob_incapacitated()) //Can't strip the unstrippable!
 				to_chat(user, SPAN_DANGER("[sourcemob] has an unbreakable grip on their equipment!"))
 				return
-			sourcemob.visible_message(SPAN_DANGER("<B>[user] is trying to take off \a [A] from [source]'s [U]!</B>"), null, null, 5)
+			sourcemob.visible_message(SPAN_DANGER("<B>[user] is trying to take off \a [accessory] from [source]'s [uniform]!</B>"), null, null, 5)
 			if(do_after(user, sourcemob.get_strip_delay(user, sourcemob), INTERRUPT_ALL, BUSY_ICON_GENERIC, sourcemob, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
-				if(U == sourcemob.w_uniform)
-					U.remove_accessory(user, A)
+				if(uniform == sourcemob.w_uniform)
+					uniform.remove_accessory(user, accessory)
 
 /datum/strippable_item/mob_item_slot/suit
 	key = STRIPPABLE_ITEM_SUIT

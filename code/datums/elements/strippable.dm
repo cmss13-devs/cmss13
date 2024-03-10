@@ -294,8 +294,10 @@
 	if (!source.drop_inv_item_on_ground(item))
 		return FALSE
 
-	// source.log_message("[key_name(source)] has been stripped of [item] by [key_name(user)]", LOG_ATTACK, color="red")
-	// user.log_message("[key_name(source)] has been stripped of [item] by [key_name(user)]", LOG_ATTACK, color="red", log_globally=FALSE)
+	if (ismob(source))
+		var/mob/sourcemob = source
+		sourcemob.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(sourcemob)] has been stripped of [item] by [key_name(user)]</font>")
+		user.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(user)] has been stripped of [key_name(sourcemob)] of [item]</font>")
 
 	// Updates speed in case stripped speed affecting item
 	source.recalculate_move_delay = TRUE

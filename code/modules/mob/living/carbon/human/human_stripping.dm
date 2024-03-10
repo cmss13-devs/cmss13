@@ -16,15 +16,14 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 	/datum/strippable_item/mob_item_slot/pocket/right,
 	/datum/strippable_item/mob_item_slot/hand/left,
 	/datum/strippable_item/mob_item_slot/hand/right,
-	/datum/strippable_item/mob_item_slot/handcuffs,
-	/datum/strippable_item/mob_item_slot/legcuffs,
+	/datum/strippable_item/mob_item_slot/cuffs/handcuffs,
+	/datum/strippable_item/mob_item_slot/cuffs/legcuffs,
 )))
 
 /mob/living/carbon/human/proc/should_strip(mob/user)
-	if (user.pulling != src || user.grab_level != GRAB_AGGRESSIVE)
-		return TRUE
-
-	return user.a_intent != INTENT_GRAB
+	if (user.pulling == src && user.grab_level == GRAB_AGGRESSIVE && (user.a_intent & INTENT_GRAB))
+		return FALSE //to not interfere with fireman carry
+	return TRUE
 
 /datum/strippable_item/mob_item_slot/head
 	key = STRIPPABLE_ITEM_HEAD
@@ -198,7 +197,6 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 	return tag.dogtag_taken ? null : "retrieve_tag"
 
 /datum/strippable_item/mob_item_slot/id/alternate_action(atom/source, mob/user)
-	ai_announcement("please?2")
 	if(!ishuman(source))
 		return
 	var/mob/living/carbon/human/sourcemob = source
@@ -207,12 +205,10 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (sourcemob.stat == DEAD || sourcemob.health < HEALTH_THRESHOLD_CRIT) && !sourcemob.get_target_lock(user.faction_group))
 		to_chat(user, SPAN_WARNING("You can't strip a crit or dead member of another faction!"))
 		return
-	ai_announcement("please?3")
 	if(!istype(sourcemob.wear_id, /obj/item/card/id/dogtag))
 		return
 	if (!sourcemob.undefibbable && !skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
 		return
-	ai_announcement("please?4")
 	var/obj/item/card/id/dogtag/tag = sourcemob.wear_id
 	if(!tag.dogtag_taken)
 		if(sourcemob.stat == DEAD)
@@ -249,8 +245,8 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 /datum/strippable_item/mob_item_slot/hand/right
 	key = STRIPPABLE_ITEM_RHAND
 
-/datum/strippable_item/mob_item_slot/handcuffs
- 	key = STRIPPABLE_ITEM_HANDCUFFS
+/datum/strippable_item/mob_item_slot/cuffs/handcuffs
+	key = STRIPPABLE_ITEM_HANDCUFFS
 
-/datum/strippable_item/mob_item_slot/legcuffs
- 	key = STRIPPABLE_ITEM_LEGCUFFS
+/datum/strippable_item/mob_item_slot/cuffs/legcuffs
+	key = STRIPPABLE_ITEM_LEGCUFFS

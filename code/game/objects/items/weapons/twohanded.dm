@@ -46,9 +46,7 @@
 
 /obj/item/proc/unwield(mob/user)
 	if( (flags_item|TWOHANDED|WIELDED) != flags_item)
-		ai_announcement("FALSE")
 		return FALSE//Have to be actually a twohander and wielded.
-	ai_announcement("TRUE")
 	flags_item ^= WIELDED
 	SEND_SIGNAL(src, COMSIG_ITEM_UNWIELD, user)
 	name = copytext(name,1,-10)

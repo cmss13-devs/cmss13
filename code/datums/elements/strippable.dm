@@ -37,6 +37,9 @@
 	if (user == source)
 		return
 
+	if (over == source)
+		return
+
 	var/mob/overmob = over
 	if (!istype(overmob))
 		return
@@ -50,7 +53,7 @@
 	if (overmob.client != user)
 		return
 
-	if (!isnull(should_strip_proc_path) && !call(source, should_strip_proc_path)(user))
+	if (!isnull(should_strip_proc_path) && !call(source, should_strip_proc_path)(overmob))
 		return
 
 	var/datum/strip_menu/strip_menu
@@ -77,8 +80,8 @@
 /// This should be used for checking if an item CAN be equipped.
 /// It should not perform the equipping itself.
 /datum/strippable_item/proc/try_equip(atom/source, obj/item/equipping, mob/user)
-	if ((equipping.flags_item & NODROP))
-		to_chat(user, "<span class='warning'>You can't put [equipping] on [source], it's stuck to your hand!</span>")
+	if ((equipping.flags_item & NODROP) || (equipping.flags_item & ITEM_ABSTRACT))
+		to_chat(user, SPAN_WARNING("You can't put [equipping] on [source], it's stuck to your hand!"))
 		return FALSE
 	return TRUE
 
@@ -86,14 +89,14 @@
 /// Returns TRUE/FALSE depending on if it is allowed.
 /datum/strippable_item/proc/start_equip(atom/source, obj/item/equipping, mob/user)
 	source.visible_message(
-		"<span class='notice'>[user] tries to put [equipping] on [source].</span>",
-		"<span class='notice'>[user] tries to put [equipping] on you.</span>"
+		SPAN_NOTICE("[user] tries to put [equipping] on [source]."),
+		SPAN_NOTICE("[user] tries to put [equipping] on you.")
 	)
 
-
-	// var/log = "[key_name(source)] is having [equipping] put on them by [key_name(user)]"
-	// source.log_message(log, LOG_ATTACK, color="red")
-	// user.log_message(log, LOG_ATTACK, color="red", log_globally=FALSE)
+	if (ismob(source))
+		var/mob/sourcemob = source
+		sourcemob.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(sourcemob)] is having [equipping] put on them by [key_name(user)]</font>")
+		user.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(user)] is putting [equipping] on [key_name(sourcemob)]</font>")
 
 	return TRUE
 
@@ -112,13 +115,17 @@
 	if (isnull(item))
 		return FALSE
 
-	if (user.action_busy && !skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED)) {
-		to_chat(user, "<span class='warning'>You can't do this right now.</span>")
+	if (user.action_busy && !skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
+		to_chat(user, SPAN_WARNING("You can't do this right now."))
 		return FALSE
-	}
 
-	if (ismob(source))
-		if ((item.flags_inventory & CANTSTRIP) || (item.flags_item & NODROP))
+	if ((item.flags_inventory & CANTSTRIP) || (item.flags_item & NODROP) || (item.flags_item & ITEM_ABSTRACT))
+		return FALSE
+
+	if (ishuman(source))
+		var/mob/living/carbon/human/sourcehuman = source
+		if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (sourcehuman.stat == DEAD || sourcehuman.health < HEALTH_THRESHOLD_CRIT) && !sourcehuman.get_target_lock(user.faction_group))
+			to_chat(user, SPAN_WARNING("You can't strip items of a crit or dead member of another faction!"))
 			return FALSE
 
 	return TRUE
@@ -131,12 +138,15 @@
 		return FALSE
 
 	source.visible_message(
-		"<span class='warning'>[user] tries to remove [source]'s [item].</span>",
-		"<span class='userdanger'>[user] tries to remove your [item].</span>"
+		SPAN_WARNING("[user] tries to remove [source]'s [item]."),
+		SPAN_DANGER("[user] tries to remove your [item].")
 	)
 
-	// source.log_message("[key_name(source)] is being stripped of [item] by [key_name(src)]", LOG_ATTACK, color="red")
-	// user.log_message("[key_name(source)] is being stripped of [item] by [key_name(src)]", LOG_ATTACK, color="red", log_globally=FALSE)
+	if (ismob(source))
+		var/mob/sourcemob = source
+		sourcemob.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(sourcemob)] is being stripped of [item] by [key_name(user)]</font>")
+		user.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(user)] is stripping [key_name(sourcemob)] of [item]</font>")
+
 	item.add_fingerprint(src)
 
 	return TRUE
@@ -182,18 +192,16 @@
 
 	if (!ismob(source))
 		return FALSE
-	if (user.action_busy) {
-		to_chat(user, "<span class='warning'>You can't do this right now.</span>")
+	if (user.action_busy)
+		to_chat(user, SPAN_WARNING("You can't do this right now."))
 		return FALSE
-	}
 	if (!equipping.mob_can_equip(
 		source,
 		key
 	))
-		to_chat(user, "<span class='warning'>\The [equipping] doesn't fit in that place!</span>")
+		to_chat(user, SPAN_WARNING("\The [equipping] doesn't fit in that place!"))
 		return FALSE
 	if(equipping.flags_item & WIELDED)
-		ai_announcement("tmega")
 		equipping.unwield(user)
 	return TRUE
 

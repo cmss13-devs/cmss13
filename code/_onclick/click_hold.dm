@@ -102,4 +102,3 @@
 
 	if(over_object)
 		SEND_SIGNAL(over_object, COMSIG_ATOM_DROP_ON, src_location, src)
-		ai_announcement("[over_object] [src_location] test")

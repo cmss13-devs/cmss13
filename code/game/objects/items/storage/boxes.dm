@@ -354,6 +354,20 @@
 	new /obj/item/restraint/handcuffs(src)
 
 
+/obj/item/storage/box/legcuffs
+	name = "box of legcuffs"
+	desc = "A box full of legcuffs."
+	icon_state = "handcuff"
+
+/obj/item/storage/box/legcuffs/fill_preset_inventory()
+	new /obj/item/restraint/legcuffs(src)
+	new /obj/item/restraint/legcuffs(src)
+	new /obj/item/restraint/legcuffs(src)
+	new /obj/item/restraint/legcuffs(src)
+	new /obj/item/restraint/legcuffs(src)
+	new /obj/item/restraint/legcuffs(src)
+	new /obj/item/restraint/legcuffs(src)
+
 /obj/item/storage/box/zipcuffs
 	name = "box of zip cuffs"
 	desc = "A box full of zip cuffs."

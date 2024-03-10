@@ -236,6 +236,7 @@
 	products = list(
 		/obj/item/restraint/handcuffs = 8,
 		/obj/item/restraint/handcuffs/zip = 10,
+		/obj/item/restraint/legcuffs = 3,
 		/obj/item/explosive/grenade/flashbang = 4,
 		/obj/item/weapon/gun/energy/taser = 4,
 		/obj/item/reagent_container/spray/pepper = 4,

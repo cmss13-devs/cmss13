@@ -151,6 +151,10 @@
 	desc = "A manky old cigar butt."
 	icon_state = "cigarbutt"
 
+/obj/item/trash/bluntbutt
+	name  = "roach"
+	desc = "Someone's been puffing some good kush."
+	icon_state = "bluntbutt"
 ////////////
 ///Dishes///
 ////////////

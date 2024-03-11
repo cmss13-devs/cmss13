@@ -432,15 +432,17 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 //  WEED  //
 ////////////
 /obj/item/clothing/mask/cigarette/weed
-	name = "weed joint"
-	icon_state = "weed_off"
-	icon_on = "weed_on"
-	icon_off = "weed_off"
-	item_state = "wcigoff"
+	name = "\the weed joint"
+	icon_state = "blunt_off"
+	icon_on = "blunt_on"
+	icon_off = "blunt_off"
+	item_state = "blunt_on"
 	desc = "A rolled-up package of ambrosia vulgaris, aka space weed, in some smooth paper; you sure this is legal dude?"
 	chem_volume = 39
 	smoketime = 20 MINUTES
 	actions_types = list(/datum/action/item_action/hotbox)
+	var/puff_cooldown = 10 SECONDS
+	var/can_puff = TRUE
 	var/datum/effect_system/smoke_spread/smoke
 
 /obj/item/clothing/mask/cigarette/weed/Initialize()
@@ -448,6 +450,50 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	reagents.add_reagent("space_drugs",15)
 	reagents.add_reagent("bicaridine", 8)
 	reagents.add_reagent("kelotane", 1)
+
+/obj/item/clothing/mask/cigarette/weed/verb/puff()
+	set name = "Hotbox"
+	set desc = "Puff a fat cloud"
+	set category = "Smoke"
+	set src in usr
+	var/mob/living/carbon/human/smoker = usr
+	var/datum/effect_system/smoke_spread/smoke = new /datum/effect_system/smoke_spread/weed
+	if(!usr || usr.is_mob_incapacitated(TRUE))
+		return
+	if(smoker.wear_mask != src)
+		return
+	if(!can_puff)
+		to_chat(smoker,SPAN_NOTICE("Your lungs lack fresh air, chill man."))
+		return
+
+	if(icon_on == "blunt_off")
+		to_chat(smoker,SPAN_NOTICE("You need to light it up first."))
+		return
+
+	smoker.visible_message(SPAN_NOTICE("[src] takes a massive breath!"),\
+	SPAN_WARNING("You prepare for a massive cloud!"))
+
+	if(!do_after(smoker, 4 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+		to_chat(smoker,SPAN_NOTICE("You fumble the puff!"))
+		smoker.emote("cough")
+		smoker.emote("gasp")
+		smoker.apply_damage(rand(5,10),OXYLOSS)
+		can_puff = FALSE
+		addtimer(VARSET_CALLBACK(src, can_puff, TRUE), puff_cooldown + 5 SECONDS)
+		return
+
+	smoker.visible_message(SPAN_BOLDNOTICE("[smoker] puffs a massive cloud from their [src]"))
+	smoke.set_up(rand(1,3), 0, get_turf(smoker),smoker.dir,5)
+	smoketime =- 4 MINUTES // Burns it a lot faster when
+	can_puff = FALSE
+	addtimer(VARSET_CALLBACK(src, can_puff, TRUE), puff_cooldown) // Need to take a breather before puffing
+	smoker.apply_damage(rand(1,10),OXYLOSS)
+	smoker.druggy += 50 // Awww yeah
+	smoker.make_jittery(40)
+
+	if(prob(10))
+		smoker.emote("cough")
+	smoke.start()
 
 /datum/action/item_action/hotbox/New(mob/living/user, obj/item/holder)
 	..()
@@ -463,17 +509,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		return TRUE
 
 /datum/action/item_action/hotbox/action_activate()
-	var/datum/effect_system/smoke_spread/smoke = new /datum/effect_system/smoke_spread/bad
-	user.visible_message(SPAN_NOTICE("[src] takes a massive breath!"),\
-	SPAN_WARNING("You prepare for a massive cloud!"))
-
-	if(!do_after(user, 4 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+	var/obj/item/clothing/mask/cigarette/weed/weed = holder_item
+	if(!istype(weed))
 		return
-
-	user.visible_message(SPAN_BOLDNOTICE("[src] puffs a massive cloud from their [src]"),\
-	smoke.set_up(rand(1,3), 0, get_turf(user),user.dir,5)
-	H.wear_mask.smoketime =- 5 MINUTES
-	smoke.start()
+	weed.puff()
 
 
 ////////////

@@ -329,6 +329,33 @@
 		human_creature.temporary_slowdown = max(human_creature.temporary_slowdown, 4) //One tick every two second
 		human_creature.recalculate_move_delay = TRUE
 	return TRUE
+//////////////////////////////////////
+// WEED SMOKE
+////////////////////////////////////
+
+/obj/effect/particle_effect/smoke/weed
+	name = "Marijuana smoke"
+	smokeranking = SMOKE_RANK_HIGH
+	color = "#95d1ac"
+	var/xeno_affecting = TRUE // can we get much higher (so high)
+	opacity = FALSE
+	alpha = 75
+
+/obj/effect/particle_effect/smoke/weed/affect(mob/living/carbon/affected)
+	..()
+	if(ishuman(affected))
+		if (affected.internal != null && affected.wear_mask && (affected.wear_mask.flags_inventory & ALLOWINTERNALS))
+			return
+		else
+			affected.updatehealth()
+			if(prob(15) && (affected.coughedtime < world.time))
+				affected.coughedtime = 1
+				affected.emote("cough")
+
+		affected.last_damage_data = cause_data
+
+	affected.druggy += 5
+
 
 //////////////////////////////////////
 // FLASHBANG SMOKE
@@ -632,6 +659,10 @@
 
 /datum/effect_system/smoke_spread/cn20/xeno
 	smoke_type = /obj/effect/particle_effect/smoke/cn20/xeno
+
+/datum/effect_system/smoke_spread/weed
+	smoke_type = /obj/effect/particle_effect/smoke/weed
+
 
 // XENO SMOKES
 

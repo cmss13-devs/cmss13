@@ -117,3 +117,7 @@
   - bugfix: Fix pod doors no longer updating adjacent tiles
   iloveloopers:
   - balance: ravager empower range is now 4 tiles
+2024-03-11:
+  Segrain:
+  - admin: Actually fixed the last case of being warned against interacting with ticket
+      already marked by you.

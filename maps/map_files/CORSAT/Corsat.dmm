@@ -31121,7 +31121,7 @@
 	},
 /area/corsat/omega/maint)
 "bLD" = (
-/obj/structure/closet/l3closet/janitor,
+/obj/structure/closet/l3closet/general,
 /turf/open/floor/corsat{
 	dir = 5;
 	icon_state = "yellow"

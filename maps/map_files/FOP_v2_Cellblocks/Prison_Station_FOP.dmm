@@ -195,7 +195,7 @@
 	},
 /area/prison/research/secret/testing)
 "aav" = (
-/obj/structure/closet/l3closet,
+/obj/structure/closet/l3closet/general,
 /obj/structure/machinery/light{
 	dir = 1
 	},

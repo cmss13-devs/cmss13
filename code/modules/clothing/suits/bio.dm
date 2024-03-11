@@ -1,7 +1,9 @@
 //Biosuit complete with shoes (in the item sprite)
+//Standard biosuit, orange stripe
+
 /obj/item/clothing/head/bio_hood
 	name = "bio hood"
-	icon_state = "bio"
+	icon_state = "bio_general"
 	desc = "A hood that protects the head and face from biological contaminants."
 	permeability_coefficient = 0.2
 	armor_melee = CLOTHING_ARMOR_NONE
@@ -26,7 +28,7 @@
 /obj/item/clothing/suit/bio_suit
 	name = "bio suit"
 	desc = "A suit that protects against biological contamination."
-	icon_state = "bio"
+	icon_state = "bio_general"
 	item_state = "bio_suit"
 	w_class = SIZE_LARGE//bulky item
 	gas_transfer_coefficient = 0.01
@@ -47,7 +49,7 @@
 /obj/item/clothing/suit/storage/synthbio
 	name = "bio suit"
 	desc = "Synthetic compliant bio-hazard suit. Intended to allow a synthetic to offer the illusion of infection control to humans. Has had most of the internal protective lining removed, allowing it to hold equipment and be lighter to move in."
-	icon_state = "bio"
+	icon_state = "bio_general"
 	item_state = "bio_suit"
 	allowed = list(
 		/obj/item/weapon/baton,
@@ -65,13 +67,13 @@
 		/obj/item/device/motiondetector,
 	)
 
-//Standard biosuit, orange stripe
-/obj/item/clothing/head/bio_hood/general
-	icon_state = "bio_general"
+//Medical biosuit, blue wrist bands
+/obj/item/clothing/head/bio_hood/medical
+	icon_state = "bio_med"
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 
-/obj/item/clothing/suit/bio_suit/general
-	icon_state = "bio_general"
+/obj/item/clothing/suit/bio_suit/medical
+	icon_state = "bio_med"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS|BODY_FLAG_HANDS|BODY_FLAG_FEET
 	flags_inv_hide = HIDEGLOVES|HIDEJUMPSUIT|HIDETAIL
 
@@ -84,7 +86,7 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
 	flags_inv_hide = HIDEGLOVES|HIDEJUMPSUIT|HIDETAIL
 
-//Security biosuit, grey with red stripe across the chest
+//Security biosuit, red wrist bands
 /obj/item/clothing/head/bio_hood/security
 	icon_state = "bio_security"
 
@@ -93,17 +95,7 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
 	flags_inv_hide = HIDEGLOVES|HIDEJUMPSUIT|HIDETAIL
 
-//Janitor's biosuit, grey with purple arms
-/obj/item/clothing/head/bio_hood/janitor
-	icon_state = "bio_janitor"
-
-/obj/item/clothing/suit/bio_suit/janitor
-	icon_state = "bio_janitor"
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
-	flags_inv_hide = HIDEGLOVES|HIDEJUMPSUIT|HIDETAIL
-
-
-//Scientist's biosuit, white with a pink-ish hue
+//Scientist's biosuit, purple wrist bands
 /obj/item/clothing/head/bio_hood/scientist
 	icon_state = "bio_scientist"
 
@@ -111,15 +103,6 @@
 	icon_state = "bio_scientist"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
 	flags_inv_hide = HIDEGLOVES|HIDEJUMPSUIT|HIDETAIL
-
-//CMO's biosuit, blue stripe
-/obj/item/clothing/suit/bio_suit/cmo
-	icon_state = "bio_cmo"
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
-	flags_inv_hide = HIDEGLOVES|HIDEJUMPSUIT|HIDETAIL
-
-/obj/item/clothing/head/bio_hood/cmo
-	icon_state = "bio_cmo"
 
 
 //Plague Dr mask can be found in clothing/masks/gasmask.dm

@@ -13504,9 +13504,8 @@
 /area/fiorina/station/botany)
 "igQ" = (
 /obj/structure/closet/cabinet,
-/obj/item/clothing/under/rank/janitor,
-/obj/item/clothing/suit/bio_suit/janitor,
-/obj/item/clothing/head/bio_hood/janitor,
+/obj/item/clothing/suit/bio_suit/general,
+/obj/item/clothing/head/bio_hood/general,
 /turf/open/floor/wood,
 /area/fiorina/station/civres_blue)
 "igV" = (

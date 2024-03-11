@@ -184,7 +184,7 @@
 	switch (action)
 		if("go_back")
 			if(!last_menu)
-				return to_chat(usr, SPAN_WARNING("Error, no previous page detected."))
+				return to_chat(operator, SPAN_WARNING("Error, no previous page detected."))
 			var/temp_holder = current_menu
 			current_menu = last_menu
 			last_menu = temp_holder
@@ -280,14 +280,14 @@
 			var/assigned = ticket.ticket_assignee
 			if(assigned)
 				if(assigned == last_login)
-					var/prompt = tgui_alert(usr, "You already claimed this ticket! Do you wish to drop your claim?", "Unclaim ticket", list("Yes", "No"))
+					var/prompt = tgui_alert(operator, "You already claimed this ticket! Do you wish to drop your claim?", "Unclaim ticket", list("Yes", "No"))
 					if(prompt != "Yes")
 						return FALSE
 					/// set ticket back to pending
 					ticket.ticket_assignee = null
 					ticket.ticket_status = TICKET_PENDING
 					return claim
-				var/choice = tgui_alert(usr, "This ticket has already been claimed by [assigned]! Do you wish to override their claim?", "Claim Override", list("Yes", "No"))
+				var/choice = tgui_alert(operator, "This ticket has already been claimed by [assigned]! Do you wish to override their claim?", "Claim Override", list("Yes", "No"))
 				if(choice != "Yes")
 					claim = FALSE
 			if(claim)
@@ -300,9 +300,9 @@
 			if(!istype(ticket))
 				return FALSE
 			if(ticket.ticket_submitter != last_login)
-				to_chat(usr, SPAN_WARNING("You cannot cancel a ticket that does not belong to you!"))
+				to_chat(operator, SPAN_WARNING("You cannot cancel a ticket that does not belong to you!"))
 				return FALSE
-			to_chat(usr, SPAN_WARNING("[ticket.ticket_type] [ticket.ticket_id] has been cancelled."))
+			to_chat(operator, SPAN_WARNING("[ticket.ticket_type] [ticket.ticket_id] has been cancelled."))
 			ticket.ticket_status = TICKET_CANCELLED
 			if(ticket.ticket_priority)
 				ares_apollo_talk("Priority [ticket.ticket_type] [ticket.ticket_id] has been cancelled.")
@@ -315,9 +315,9 @@
 			if(!istype(ticket))
 				return FALSE
 			if(ticket.ticket_assignee != last_login && ticket.ticket_assignee) //must be claimed by you or unclaimed.)
-				to_chat(usr, SPAN_WARNING("You cannot update a ticket that is not assigned to you!"))
+				to_chat(operator, SPAN_WARNING("You cannot update a ticket that is not assigned to you!"))
 				return FALSE
-			var/choice = tgui_alert(usr, "What do you wish to mark the ticket as?", "Mark", list(TICKET_COMPLETED, TICKET_REJECTED), 20 SECONDS)
+			var/choice = tgui_alert(operator, "What do you wish to mark the ticket as?", "Mark", list(TICKET_COMPLETED, TICKET_REJECTED), 20 SECONDS)
 			switch(choice)
 				if(TICKET_COMPLETED)
 					ticket.ticket_status = TICKET_COMPLETED
@@ -329,7 +329,7 @@
 				ares_apollo_talk("Priority [ticket.ticket_type] [ticket.ticket_id] has been [choice] by [last_login].")
 			else
 				send_notifcation()
-			to_chat(usr, SPAN_NOTICE("[ticket.ticket_type] [ticket.ticket_id] marked as [choice]."))
+			to_chat(operator, SPAN_NOTICE("[ticket.ticket_type] [ticket.ticket_id] marked as [choice]."))
 			return TRUE
 
 		if("new_access")
@@ -425,10 +425,10 @@
 			if(!istype(access_ticket))
 				return FALSE
 			if(access_ticket.ticket_assignee != last_login && access_ticket.ticket_assignee) //must be claimed by you or unclaimed.)
-				to_chat(usr, SPAN_WARNING("You cannot update a ticket that is not assigned to you!"))
+				to_chat(operator, SPAN_WARNING("You cannot update a ticket that is not assigned to you!"))
 				return FALSE
 			access_ticket.ticket_status = TICKET_REJECTED
-			to_chat(usr, SPAN_NOTICE("[access_ticket.ticket_type] [access_ticket.ticket_id] marked as rejected."))
+			to_chat(operator, SPAN_NOTICE("[access_ticket.ticket_type] [access_ticket.ticket_id] marked as rejected."))
 			ares_apollo_talk("Access Ticket [access_ticket.ticket_id]: [access_ticket.ticket_submitter] was rejected access by [last_login].")
 			for(var/obj/item/card/id/identification in link.waiting_ids)
 				if(identification.registered_gid != access_ticket.user_id_num)

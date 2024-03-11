@@ -283,22 +283,44 @@
 		/obj/structure/machinery/door/airlock,
 	)
 
+/obj/structure/machinery/door/poddoor/almayer/Initialize()
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/structure/machinery/door/poddoor/almayer/LateInitialize()
+	. = ..()
+	relativewall_neighbours()
+
 /obj/structure/machinery/door/poddoor/almayer/open
 	density = FALSE
+
 /obj/structure/machinery/door/poddoor/almayer/blended
 	icon_state = "almayer_pdoor1"
 	base_icon_state = "almayer_pdoor"
+
 /obj/structure/machinery/door/poddoor/almayer/blended/open
 	density = FALSE
+
 /obj/structure/machinery/door/poddoor/almayer/blended/white
 	icon_state = "w_almayer_pdoor1"
 	base_icon_state = "w_almayer_pdoor"
+
 /obj/structure/machinery/door/poddoor/almayer/blended/white/open
 	density = FALSE
 
-/obj/structure/machinery/door/poddoor/almayer/Initialize()
-	. = ..()
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, relativewall_neighbours)), 10)
+/obj/structure/machinery/door/poddoor/almayer/blended/aicore
+	icon_state = "aidoor1"
+	base_icon_state = "aidoor"
+
+/obj/structure/machinery/door/poddoor/almayer/blended/aicore/open
+	density = FALSE
+
+/obj/structure/machinery/door/poddoor/almayer/blended/white_aicore
+	icon_state = "w_aidoor1"
+	base_icon_state = "w_aidoor"
+
+/obj/structure/machinery/door/poddoor/almayer/blended/white_aicore/open
+	density = FALSE
 
 /obj/structure/machinery/door/poddoor/almayer/locked
 	unslashable = TRUE

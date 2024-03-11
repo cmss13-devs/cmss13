@@ -10,7 +10,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	MOB_HUD_XENO_INFECTION = new /datum/mob_hud/xeno_infection(),
 	MOB_HUD_XENO_STATUS = new /datum/mob_hud/xeno(),
 	MOB_HUD_XENO_HOSTILE = new /datum/mob_hud/xeno_hostile(),
-	MOB_HUD_FACTION_USCM = new /datum/mob_hud/faction(),
+	MOB_HUD_FACTION_MARINE = new /datum/mob_hud/faction(),
 	MOB_HUD_FACTION_OBSERVER = new /datum/mob_hud/faction/observer(),
 	MOB_HUD_FACTION_UPP = new /datum/mob_hud/faction/upp(),
 	MOB_HUD_FACTION_WY = new /datum/mob_hud/faction/wy(),

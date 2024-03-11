@@ -12931,7 +12931,7 @@
 /area/lv624/ground/colony/west_tcomms_road)
 "bTw" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "cargospecial"
+	insert_tag = "cargospecial1"
 	},
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
@@ -20091,7 +20091,7 @@
 /area/lv624/ground/caves/sand_temple)
 "pca" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "nexuscenter"
+	insert_tag = "nexuscenter_barricaded"
 	},
 /turf/open/floor{
 	dir = 9;
@@ -22332,7 +22332,7 @@
 /area/lv624/lazarus/quartstorage)
 "tgi" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "lz-containers"
+	insert_tag = "lz-containers_swapped"
 	},
 /turf/open/floor{
 	icon_state = "warning"

@@ -14,7 +14,7 @@
 	armor_bio = CLOTHING_ARMOR_ULTRAHIGH
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	flags_inventory = COVEREYES|COVERMOUTH
+	flags_inventory = COVEREYES|COVERMOUTH|BLOCKGASEFFECT
 	flags_inv_hide = HIDEFACE|HIDEMASK|HIDEEARS|HIDEALLHAIR
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	siemens_coefficient = 0.9

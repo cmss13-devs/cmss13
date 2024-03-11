@@ -107,8 +107,6 @@
 	new /obj/item/storage/pouch/medical(src)
 	new /obj/item/storage/pouch/syringe(src)
 	new /obj/item/storage/pouch/medkit(src)
-	if(is_mainship_level(z))
-		new /obj/item/device/radio/headset/almayer/cmo(src)
 	return
 /obj/structure/closet/secure_closet/chemical
 	name = "chemical closet"

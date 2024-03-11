@@ -312,12 +312,11 @@
 
 	to_chat(xeno, SPAN_WARNING("You try and force the doors open!"))
 	if(do_after(xeno, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		if(control)
+			control.status = SHUTTLE_DOOR_BROKEN
 		unlock(TRUE)
 		open(TRUE)
 		lock(TRUE)
-		if(control)
-			control.status = SHUTTLE_DOOR_BROKEN
-
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1
 	name = "\improper Alamo cargo door"

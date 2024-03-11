@@ -228,7 +228,7 @@
 			last_menu = temp_holder
 
 		if("login")
-			var/mob/living/carbon/human/operator = usr
+			var/mob/living/carbon/human/operator = ui.user
 			var/obj/item/card/id/idcard = operator.get_active_hand()
 			if(istype(idcard))
 				authentication = get_ares_access(idcard)

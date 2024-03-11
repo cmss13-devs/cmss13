@@ -156,7 +156,7 @@
 		return
 
 	var/playsound = TRUE
-	var/mob/living/carbon/human/operator = usr
+	var/mob/living/carbon/human/operator = ui.user
 
 	switch (action)
 		if("go_back")

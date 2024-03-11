@@ -31121,7 +31121,7 @@
 	},
 /area/corsat/omega/maint)
 "bLD" = (
-/obj/structure/closet/l3closet/general,
+/obj/structure/closet/l3closet,
 /turf/open/floor/corsat{
 	dir = 5;
 	icon_state = "yellow"
@@ -35244,7 +35244,7 @@
 /turf/open/floor/corsat,
 /area/corsat/inaccessible)
 "bYU" = (
-/obj/structure/closet/l3closet/general,
+/obj/structure/closet/l3closet,
 /turf/open/floor/corsat{
 	icon_state = "yellow"
 	},
@@ -39429,7 +39429,7 @@
 /turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "ePL" = (
-/obj/structure/closet/l3closet/general,
+/obj/structure/closet/l3closet,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -58094,7 +58094,7 @@
 	},
 /area/corsat/gamma/hangar/flightcontrol)
 "sFD" = (
-/obj/structure/closet/l3closet/general,
+/obj/structure/closet/l3closet,
 /obj/structure/machinery/light,
 /turf/open/floor/corsat{
 	icon_state = "plate"

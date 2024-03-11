@@ -473,7 +473,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "ch" = (
-/obj/structure/closet/l3closet/general,
+/obj/structure/closet/l3closet,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},

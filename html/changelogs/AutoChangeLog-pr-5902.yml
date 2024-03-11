@@ -1,0 +1,4 @@
+author: "Stakeyng"
+delete-after: True
+changes:
+  - balance: "Drop pouch has more space (2 large (unchanged), 4 medium, 8 small)"

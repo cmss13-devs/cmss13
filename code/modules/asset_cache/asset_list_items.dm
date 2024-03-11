@@ -391,6 +391,14 @@
 
 	..()
 
+/datum/asset/spritesheet/battlepass
+	name = "battlepass"
+
+/datum/asset/spritesheet/battlepass/register()
+	for(var/datum/battlepass_reward/reward as anything in subtypesof(/datum/battlepass_reward))
+		Insert(initial(reward.icon_state), initial(reward.icon))
+	return ..()
+
 /datum/asset/spritesheet/gun_lineart_modes
 	name = "gunlineartmodes"
 

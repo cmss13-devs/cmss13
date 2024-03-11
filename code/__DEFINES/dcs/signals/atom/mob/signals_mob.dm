@@ -185,3 +185,5 @@
 #define COMSIG_MOB_END_TUTORIAL "mob_end_tutorial"
 
 #define COMSIG_MOB_NESTED "mob_nested"
+
+#define COMSIG_MOB_KILL_TOTAL_INCREASED "mob_kill_total_increased"

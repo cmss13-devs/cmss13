@@ -121,3 +121,24 @@
   Segrain:
   - admin: Actually fixed the last case of being warned against interacting with ticket
       already marked by you.
+2024-03-12:
+  Drathek:
+  - bugfix: Fix chestrig not displaying on maps with different skins (e.g. Shivas)
+  Katskan:
+  - balance: Medical Skill 4 reduced speed buff from -75% duration to -50% duration
+  - balance: Medical Skill 3 increased speed buff from -0% duration to -25% duration
+  Segrain:
+  - rscadd: Requisitions' vendor now has medical radio keys in stock.
+  - rscadd: CE and CMO can now get spare departmental headsets from their vendors
+      to recruit survivors without having to go to Requisitions.
+  - bugfix: Wiping frequencies off radiotowers no longer breaks them forever.
+  Stakeyng:
+  - balance: Drop pouch has more space (2 large (unchanged), 4 medium, 8 small)
+  ihatethisengine2:
+  - bugfix: Dropship door prying can now always be performed by queen even if open
+      or not locked
+  realforest2001:
+  - soundadd: Added pda_ping.ogg, sourced from Paradise SS13 mailapproved.ogg
+  - rscadd: Added notification sounds from certain APOLLO ticket interactions.
+  - rscadd: People making an access ticket request are now notified of the status
+      changes.

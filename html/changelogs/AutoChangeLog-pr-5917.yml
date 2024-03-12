@@ -1,4 +1,0 @@
-author: "ihatethisengine2"
-delete-after: True
-changes:
-  - bugfix: "Dropship door prying can now always be performed by queen even if open or not locked"

@@ -17,8 +17,8 @@
 	if(is_a_synth)
 		spawn_gibs()
 		return
-	else
-		undefibbable = TRUE
+
+	undefibbable = TRUE
 
 	..()
 

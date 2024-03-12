@@ -1,0 +1,6 @@
+author: "Segrain"
+delete-after: True
+changes:
+  - bugfix: "Picking up clothes/armour with somebody else's medal attached no longer makes the medal fall off (trying to wear them still does)."
+  - bugfix: "Doctors calling themselves surgeons now properly get playtime medals."
+  - bugfix: "Playtime medals now use assignments instead of backend paygrade codes (e.g. \"Awarded to Squad Leader John Doe\" instead of \"Awarded to ME5 John Doe\")."

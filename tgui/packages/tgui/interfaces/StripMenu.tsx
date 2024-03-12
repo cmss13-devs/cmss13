@@ -62,16 +62,15 @@ const ALTERNATE_ACTIONS: Record<string, AlternateAction> = {
   },
 };
 
-const SLOTS: Record<
-  string,
-  {
-    displayName: string;
-    gridSpot: GridSpotKey;
-    image?: string;
-    additionalComponent?: JSX.Element;
-    hideEmpty?: boolean;
-  }
-> = {
+type Slot = {
+  displayName: string;
+  gridSpot: GridSpotKey;
+  image?: string;
+  additionalComponent?: JSX.Element;
+  hideEmpty?: boolean;
+};
+
+const SLOTS: Record<string, Slot> = {
   glasses: {
     displayName: 'glasses',
     gridSpot: getGridSpotKey([0, 1]),
@@ -224,7 +223,7 @@ type StripMenuItem =
       Partial<Interactable>);
 
 type StripMenuData = {
-  items: Record<keyof typeof SLOTS, StripMenuItem>;
+  items: Record<keyof Slot, StripMenuItem>;
   name: string;
 };
 
@@ -325,9 +324,15 @@ export const StripMenu = (props, context) => {
                         }}>
                         <Button
                           onClick={() => {
-                            act('use', {
-                              key: keyAtSpot,
-                            });
+                            if (item === null) {
+                              act('equip', {
+                                key: keyAtSpot,
+                              });
+                            } else {
+                              act('strip', {
+                                key: keyAtSpot,
+                              });
+                            }
                           }}
                           fluid
                           tooltip={tooltip}

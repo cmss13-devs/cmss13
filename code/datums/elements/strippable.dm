@@ -393,7 +393,52 @@
 	var/mob/user = usr
 
 	switch (action)
-		if ("use")
+		if ("equip")
+			var/key = params["key"]
+			var/datum/strippable_item/strippable_item = strippable.items[key]
+
+			if (isnull(strippable_item))
+				return
+
+			if (!strippable_item.should_show(owner, user))
+				return
+
+			if (strippable_item.get_obscuring(owner) == STRIPPABLE_OBSCURING_COMPLETELY)
+				return
+
+			var/item = strippable_item.get_item(owner)
+			if (!isnull(item))
+				return
+
+			var/obj/item/held_item = user.get_held_item()
+			if (isnull(held_item))
+				return
+
+			if (!strippable_item.try_equip(owner, held_item, user))
+				return
+
+			LAZYORASSOCLIST(interactions, user, key)
+
+			// Yielding call
+			var/should_finish = strippable_item.start_equip(owner, held_item, user)
+
+			LAZYREMOVEASSOC(interactions, user, key)
+
+			if (!should_finish)
+				return
+
+			if (QDELETED(src) || QDELETED(owner))
+				return
+
+			// They equipped an item in the meantime
+			if (!isnull(strippable_item.get_item(owner)))
+				return
+
+			if (!user.Adjacent(owner))
+				return
+
+			strippable_item.finish_equip(owner, held_item, user)
+		if ("strip")
 			var/key = params["key"]
 			var/datum/strippable_item/strippable_item = strippable.items[key]
 
@@ -408,54 +453,29 @@
 
 			var/item = strippable_item.get_item(owner)
 			if (isnull(item))
-				var/obj/item/held_item = user.get_held_item()
-				if (isnull(held_item))
-					return
+				return
 
-				if (strippable_item.try_equip(owner, held_item, user))
-					LAZYORASSOCLIST(interactions, user, key)
+			LAZYORASSOCLIST(interactions, user, key)
 
-					// Yielding call
-					var/should_finish = strippable_item.start_equip(owner, held_item, user)
+			var/should_unequip = strippable_item.start_unequip(owner, user)
 
-					LAZYREMOVEASSOC(interactions, user, key)
+			LAZYREMOVEASSOC(interactions, user, key)
 
-					if (!should_finish)
-						return
+			// Yielding call
+			if (!should_unequip)
+				return
 
-					if (QDELETED(src) || QDELETED(owner))
-						return
+			if (QDELETED(src) || QDELETED(owner))
+				return
 
-					// They equipped an item in the meantime
-					if (!isnull(strippable_item.get_item(owner)))
-						return
+			// They changed the item in the meantime
+			if (strippable_item.get_item(owner) != item)
+				return
 
-					if (!user.Adjacent(owner))
-						return
+			if (!user.Adjacent(owner))
+				return
 
-					strippable_item.finish_equip(owner, held_item, user)
-			else if (strippable_item.try_unequip(owner, user))
-				LAZYORASSOCLIST(interactions, user, key)
-
-				var/should_unequip = strippable_item.start_unequip(owner, user)
-
-				LAZYREMOVEASSOC(interactions, user, key)
-
-				// Yielding call
-				if (!should_unequip)
-					return
-
-				if (QDELETED(src) || QDELETED(owner))
-					return
-
-				// They changed the item in the meantime
-				if (strippable_item.get_item(owner) != item)
-					return
-
-				if (!user.Adjacent(owner))
-					return
-
-				strippable_item.finish_unequip(owner, user)
+			strippable_item.finish_unequip(owner, user)
 		if ("alt")
 			var/key = params["key"]
 			var/datum/strippable_item/strippable_item = strippable.items[key]

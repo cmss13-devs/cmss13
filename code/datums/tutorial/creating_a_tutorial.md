@@ -87,8 +87,8 @@ Any proc whose main purpose is to advance the tutorial will be hereon referred t
 
 	UnregisterSignal(tracking_atoms[/obj/structure/machinery/cryopod/tutorial], COMSIG_CRYOPOD_GO_OUT)
 	message_to_player("Good. You may notice the yellow \"food\" icon on the right side of your screen. Proceed to the outlined <b>Food Vendor</b> and vend the <b>USCM Protein Bar</b>.")
-    update_objective("Vend a <b>USCM Protein Bar</b> from the outlined <b>ColMarTech Food Vendor</b>.")
-    TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/cm_vending/sorted/marine_food/tutorial, food_vendor)
+	update_objective("Vend a <b>USCM Protein Bar</b> from the outlined <b>ColMarTech Food Vendor</b>.")
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/cm_vending/sorted/marine_food/tutorial, food_vendor)
 	add_highlight(food_vendor)
 	food_vendor.req_access = list()
 	RegisterSignal(food_vendor, COMSIG_VENDOR_SUCCESSFUL_VEND, PROC_REF(on_food_vend))

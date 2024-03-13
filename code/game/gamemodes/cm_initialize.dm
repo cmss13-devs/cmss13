@@ -396,6 +396,10 @@ Additional game mode variables.
 			return FALSE
 		var/mob/dead/observer/candidate_observer = xeno_candidate
 
+		// If an observing mod wants to join as a xeno, make sure that they can actually enter the queue.
+		if(check_client_rights(candidate_observer.client, R_MOD, FALSE))
+			candidate_observer.adminlarva = TRUE
+
 		// Give the player a cached message of their queue status if they are an observer
 		if(candidate_observer.larva_queue_cached_message)
 			to_chat(candidate_observer, SPAN_XENONOTICE(candidate_observer.larva_queue_cached_message))

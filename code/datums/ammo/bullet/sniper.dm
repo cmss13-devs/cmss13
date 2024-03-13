@@ -108,24 +108,45 @@
 	shell_speed = AMMO_SPEED_TIER_6
 
 /datum/ammo/bullet/sniper/anti_materiel/on_hit_mob(mob/target_mob,obj/projectile/aimed_projectile)
+
+	var/mob/living/living_target = target_mob
+
 	if((aimed_projectile.projectile_flags & PROJECTILE_BULLSEYE) && target_mob == aimed_projectile.original)
 
 		var/amr_counter = 0
+		var/datum/weakref/old_target = null // This is used to let xenos know when they're no longer targeted.
 
-		if(istype(aimed_projectile.shot_from, /obj/item/weapon/gun/rifle/sniper/XM43E1))
+		var/mob/living/carbon/human/human_firer
+		var/image/focused_fire_marker_temp = image('icons/mob/hud/hud.dmi', target_mob, "hudeye")
+
+		if(istype(aimed_projectile.firer, /mob/living/carbon/human)) // Preps the Focused Fire marker.
+			human_firer = aimed_projectile.firer
+			focused_fire_marker_temp.color = human_firer.assigned_squad?.chat_color
+
+			if(target_mob.icon_size > world.icon_size) // Centers marker on their tile.
+				focused_fire_marker_temp.pixel_x = (target_mob.icon_size / 4)
+
+		if(istype(aimed_projectile.shot_from, /obj/item/weapon/gun/rifle/sniper/XM43E1)) // Calculates the Focus Counter.
 			var/obj/item/weapon/gun/rifle/sniper/XM43E1/amr = aimed_projectile.shot_from
+
+			old_target = amr.focused_fire_target
+
 			if(target_mob == (amr.focused_fire_target?.resolve()))
-				if(amr.focused_fire_counter < 2)
+				if(amr.focused_fire_counter < 2) // Can stack up to twice.
 					amr.focused_fire_counter += 1
 				else
 					amr.focused_fire_counter = 2
-			else
-				amr.focused_fire_counter = 0
+			else // If it's a new target
+				amr.focused_fire_counter = 0 // Stacks to 0
+				if(human_firer)
+					human_firer.client?.images -= human_firer?.focused_fire_marker // Remove old marker
+					qdel(human_firer?.focused_fire_marker)
+					human_firer.focused_fire_marker = focused_fire_marker_temp // Store new marker ref
+					human_firer.client?.images += focused_fire_marker_temp // Add new marker
 
 			amr_counter = amr.focused_fire_counter + 1
 			amr.focused_fire_target = WEAKREF(target_mob)
 
-		var/mob/living/living_target = target_mob
 		var/size_damage_mod = 0.8 // 1.8x vs Non-Xenos (225)
 		var/size_current_health_damage = 0 // % Current Health calculation, only used for Xeno calculations at the moment.
 		var/focused_fire_active = 0 // Whether to try and use focused fire calculations or not, for that kind of target.
@@ -158,13 +179,18 @@
 		else
 			living_target.apply_armoured_damage((damage*size_damage_mod), ARMOR_BULLET, BRUTE, null, penetration)
 
-		// Base 1.8x damage to non-xeno targets (225), 1.6x + 10% current against Runners (223), 1.2x + 20% current health against most non-Runner xenos, and +30% current health against Big xenos. -Kaga
+		// Base 1.8x damage to non-xeno targets (225), 1.6x + 10% current against Runners and Defenders (223), 1.6x + 20% current health against most non-Runner xenos, and +30% current health against Big xenos. -Kaga
 		// This applies after pen reductions. After hitting 1 other thing, it deals 80% damage, or 40% after hitting a dense wall or big xeno.
 
 		if(focused_fire_active)
 			switch(amr_counter)
 				if(1)
 					to_chat(aimed_projectile.firer, SPAN_WARNING("One Hit! You begin to carefully track the target's movements."))
+					if(isxeno(target_mob) && isxeno(old_target?.resolve()))
+						var/mob/living/carbon/xenomorph/old_xeno = old_target?.resolve()
+						var/mob/living/carbon/xenomorph/new_xeno = target_mob
+						if(old_xeno.hive == new_xeno.hive)
+							to_chat(old_xeno,SPAN_XENOLEADER("We sense that the far-spitter host has begun targeting another sister."))
 				if(2)
 					to_chat(aimed_projectile.firer, SPAN_WARNING("Two Hits! You're starting to get a good read on the target's patterns."))
 				if(3)

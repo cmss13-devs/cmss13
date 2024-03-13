@@ -137,6 +137,7 @@ As such, don't expect any values assigned to common firearms to even consider ho
 */
 
 #define FIRE_DELAY_TIER_VULTURE 20
+#define FIRE_DELAY_TIER_SNIPER 15
 #define FIRE_DELAY_TIER_1 12
 #define FIRE_DELAY_TIER_2 10
 #define FIRE_DELAY_TIER_3 9

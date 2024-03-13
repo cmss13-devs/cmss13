@@ -204,12 +204,12 @@
 
 	var/blocked = FALSE
 	for(var/turf/T in path)
-		if(T.density || T.opacity)
+		if(T.density && T.opacity)
 			blocked = TRUE
 			break
 
 		for(var/obj/O in T)
-			if(O.get_projectile_hit_boolean(P))
+			if(O.get_projectile_hit_boolean(P) && O.opacity)
 				blocked = TRUE
 				break
 
@@ -330,7 +330,7 @@
 
 /obj/item/weapon/gun/rifle/sniper/M42A/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_7*3)
+	set_fire_delay(FIRE_DELAY_TIER_SNIPER)
 	set_burst_amount(BURST_AMOUNT_TIER_1)
 	accuracy_mult = BASE_ACCURACY_MULT * 3 //you HAVE to be able to hit
 	scatter = SCATTER_AMOUNT_TIER_8
@@ -345,7 +345,7 @@
 	item_state = "xm43e1"
 	unacidable = TRUE
 	indestructible = 1
-	aimed_shot_cooldown_delay = 4 SECONDS
+	aimed_shot_cooldown_delay = 4.5 SECONDS
 	var/focused_fire_counter = 0
 	var/datum/weakref/focused_fire_target = null
 
@@ -377,8 +377,8 @@
 
 /obj/item/weapon/gun/rifle/sniper/XM43E1/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_6 * 6 )//Big boy damage, but it takes a lot of time to fire a shot.
-	//Kaga: Adjusted from 56 (Tier 4, 7*8) -> 30 (Tier 6, 5*6) ticks. 95 really wasn't big-boy damage anymore, although I updated it to 125 to remain consistent with the other 10x99mm caliber weapon (M42C). Now takes only twice as long as the M42A.
+	set_fire_delay(FIRE_DELAY_TIER_SNIPER * 2)//Big boy damage, but it takes a lot of time to fire a shot.
+	//Kaga: Fixed back to half the M42A's firerate (3 seconds), using a new define.
 	//This outright deals less DPS than the normal sniper rifle, 125 vs 140 per 3s.
 	set_burst_amount(BURST_AMOUNT_TIER_1)
 	accuracy_mult = BASE_ACCURACY_MULT + 2*HIT_ACCURACY_MULT_TIER_10 //Who coded this like this, and why? It just calculates out to 1+1=2. Leaving a note here to check back later.

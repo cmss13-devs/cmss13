@@ -522,6 +522,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "acK" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -3322,6 +3323,7 @@
 	pixel_y = 24;
 	req_one_access_txt = "90;91;92"
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "asE" = (
 /obj/structure/bed/chair/office/dark{
@@ -3347,6 +3349,7 @@
 	unacidable = 1;
 	unslashable = 1
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "asH" = (
 /obj/structure/machinery/telecomms/bus/preset_three,
@@ -3679,11 +3682,13 @@
 /area/almayer/command/airoom)
 "auf" = (
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom,
+/turf/closed/wall/almayer/aicore/hull,
 /area/almayer/command/airoom)
 "aug" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "aui" = (
 /obj/structure/machinery/telecomms/hub/preset,
@@ -3986,6 +3991,7 @@
 	pixel_y = -24;
 	req_one_access_txt = "91;92"
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "avM" = (
 /obj/structure/machinery/computer/cameras/almayer/ares{
@@ -4003,6 +4009,7 @@
 	pixel_y = 6
 	},
 /obj/item/tool/pen,
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "avN" = (
 /obj/structure/machinery/telecomms/processor/preset_two,
@@ -4175,6 +4182,7 @@
 	icon_state = "W";
 	pixel_x = -1
 	},
+/turf/open/floor/almayer/aicore/glowing/no_build,
 /area/almayer/command/airoom)
 "awv" = (
 /obj/structure/machinery/computer/telecomms/monitor,
@@ -5658,6 +5666,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "aCf" = (
 /obj/structure/window/framed/almayer/hull/hijack_bustable,
@@ -7242,6 +7251,7 @@
 	unacidable = 0;
 	unslashable = 0
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "aKu" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -7471,6 +7481,9 @@
 	pixel_y = 16
 	},
 /obj/item/clothing/accessory/stethoscope,
+/obj/structure/closet/secure_closet/professor_dummy{
+	pixel_x = -32
+	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_corner"
@@ -9768,6 +9781,7 @@
 	pixel_y = -24;
 	req_one_access_txt = "200;91;92"
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "baw" = (
 /turf/open/floor/almayer,
@@ -12191,6 +12205,7 @@
 /turf/open/floor/almayer,
 /area/almayer/squads/req)
 "bpR" = (
+/turf/open/floor/almayer/empty/requisitions,
 /area/supply/station)
 "bpS" = (
 /obj/structure/machinery/door/poddoor/railing{
@@ -12560,6 +12575,7 @@
 /area/almayer/squads/req)
 "bsK" = (
 /obj/effect/landmark/supply_elevator,
+/turf/open/floor/almayer/empty/requisitions,
 /area/supply/station)
 "bsL" = (
 /obj/structure/machinery/door/poddoor/railing{
@@ -14803,6 +14819,15 @@
 	name = "\improper ARES Mainframe Shutters";
 	plane = -7
 	},
+/obj/structure/machinery/door/poddoor/almayer/blended/aicore/open{
+	closed_layer = 3.2;
+	id = "ARES Emergency";
+	layer = 3.2;
+	name = "ARES Emergency Lockdown";
+	needs_power = 0;
+	open_layer = 1.9;
+	plane = -7
+	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "test_floor4"
 	},
@@ -15362,6 +15387,10 @@
 /obj/structure/machinery/camera/autoname/almayer/containment/ares{
 	dir = 8;
 	pixel_y = 2
+	},
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "ai_silver";
+	dir = 4
 	},
 /area/almayer/command/airoom)
 "bLw" = (
@@ -17774,6 +17803,7 @@
 	icon_state = "S";
 	layer = 3.3
 	},
+/turf/open/floor/almayer/aicore/glowing/no_build,
 /area/almayer/command/airoom)
 "ccs" = (
 /obj/structure/disposalpipe/segment{
@@ -18771,6 +18801,11 @@
 "cls" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/port_point_defense)
+"clw" = (
+/turf/open/floor/almayer/aicore/glowing/no_build{
+	icon_state = "ai_floor3"
+	},
+/area/almayer/command/airoom)
 "clE" = (
 /obj/structure/machinery/door/airlock/almayer/marine/delta/medic,
 /turf/open/floor/almayer{
@@ -19082,6 +19117,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "cnq" = (
 /obj/structure/machinery/line_nexter{
@@ -19445,6 +19481,7 @@
 	pixel_x = 5;
 	pixel_y = 6
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "cqp" = (
 /obj/structure/largecrate/random/barrel/white,
@@ -19802,6 +19839,7 @@
 /area/almayer/hallways/upper/stern_hallway)
 "cwS" = (
 /obj/structure/blocker/invisible_wall,
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "cwX" = (
 /obj/structure/ladder{
@@ -19815,6 +19853,7 @@
 	icon_state = "S";
 	layer = 3.3
 	},
+/turf/open/floor/almayer/aicore/glowing/no_build,
 /area/almayer/command/airoom)
 "cxk" = (
 /obj/structure/machinery/light,
@@ -20011,6 +20050,7 @@
 	dir = 1;
 	icon_state = "ramptop"
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "cBs" = (
 /obj/structure/bed/chair,
@@ -20330,6 +20370,12 @@
 	icon_state = "orangefull"
 	},
 /area/almayer/living/briefing)
+"cHC" = (
+/obj/structure/machinery/cm_vending/clothing/combat_correspondent,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/almayer/command/combat_correspondent)
 "cHE" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -20546,6 +20592,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
+	},
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "ai_arrow"
 	},
 /area/almayer/command/airoom)
 "cLq" = (
@@ -21407,6 +21456,9 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/upper_engineering/port)
+"daz" = (
+/turf/closed/wall/almayer/aicore/hull,
+/area/almayer/command/airoom)
 "daF" = (
 /obj/structure/machinery/power/apc/almayer{
 	dir = 1
@@ -22940,6 +22992,7 @@
 	icon_state = "W";
 	layer = 3.3
 	},
+/turf/open/floor/almayer/aicore/glowing/no_build,
 /area/almayer/command/airoom)
 "dDt" = (
 /obj/structure/toilet{
@@ -23165,6 +23218,7 @@
 /obj/structure/stairs{
 	dir = 1
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "dGr" = (
 /obj/structure/pipes/vents/scrubber{
@@ -23271,10 +23325,15 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/living/bridgebunks)
+"dIi" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
+/turf/open/floor/plating/plating_catwalk/aicore,
+/area/almayer/command/airoom)
 "dIn" = (
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 5
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "dID" = (
 /obj/effect/decal/warning_stripes{
@@ -23633,6 +23692,7 @@
 /obj/structure/stairs{
 	dir = 1
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "dQp" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -24289,6 +24349,9 @@
 /obj/item/clothing/shoes/red,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/u_m_p)
+"ebN" = (
+/turf/closed/wall/almayer/aicore/reinforced,
+/area/almayer/command/airoom)
 "ebV" = (
 /obj/structure/machinery/status_display{
 	pixel_y = 30
@@ -25279,6 +25342,11 @@
 	icon_state = "plate"
 	},
 /area/almayer/maint/hull/lower/l_m_s)
+"erN" = (
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "ai_plates"
+	},
+/area/almayer/command/airoom)
 "esd" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -25443,6 +25511,7 @@
 	pixel_y = 24;
 	req_one_access_txt = "200;91;92"
 	},
+/turf/open/floor/almayer/aicore/glowing/no_build,
 /area/almayer/command/airoom)
 "euO" = (
 /obj/structure/machinery/light{
@@ -26258,6 +26327,9 @@
 /obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
+/turf/open/floor/almayer/aicore/glowing/no_build{
+	icon_state = "ai_floor3"
+	},
 /area/almayer/command/airoom)
 "eKQ" = (
 /obj/structure/pipes/vents/scrubber{
@@ -26867,6 +26939,7 @@
 	dir = 8;
 	light_color = "#d69c46"
 	},
+/turf/open/floor/plating/plating_catwalk/aicore,
 /area/almayer/command/airoom)
 "eXq" = (
 /turf/closed/wall/almayer,
@@ -26945,6 +27018,7 @@
 	dir = 8;
 	pixel_x = 29
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "eYD" = (
 /obj/effect/decal/warning_stripes{
@@ -27276,6 +27350,10 @@
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/platform_decoration{
 	dir = 1
+	},
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "ai_silver";
+	dir = 8
 	},
 /area/almayer/command/airoom)
 "fdf" = (
@@ -27638,6 +27716,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/turf/open/floor/almayer/aicore/glowing/no_build,
 /area/almayer/command/airoom)
 "fmB" = (
 /obj/structure/bed/chair/comfy{
@@ -28015,6 +28094,7 @@
 	icon_state = "NW-out";
 	pixel_y = 1
 	},
+/turf/open/floor/almayer/aicore/glowing/no_build,
 /area/almayer/command/airoom)
 "frV" = (
 /obj/structure/toilet{
@@ -28648,6 +28728,7 @@
 /obj/structure/machinery/camera/autoname/almayer/containment/ares{
 	dir = 4
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "fER" = (
 /obj/structure/machinery/autolathe,
@@ -28913,10 +28994,20 @@
 	icon_state = "green"
 	},
 /area/almayer/shipboard/brig/cells)
+"fJY" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
+	},
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "ai_arrow";
+	dir = 8
+	},
+/area/almayer/command/airoom)
 "fKe" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out"
 	},
+/turf/open/floor/almayer/aicore/glowing/no_build,
 /area/almayer/command/airoom)
 "fKh" = (
 /obj/structure/window/framed/almayer,
@@ -29084,6 +29175,10 @@
 	pixel_y = -8;
 	req_one_access_txt = "90;91;92"
 	},
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "ai_silver";
+	dir = 4
+	},
 /area/almayer/command/airoom)
 "fMt" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -29092,6 +29187,15 @@
 	plane = -7
 	},
 /obj/effect/step_trigger/ares_alert/core,
+/obj/structure/machinery/door/poddoor/almayer/blended/aicore/open{
+	closed_layer = 3.2;
+	id = "ARES Emergency";
+	layer = 3.2;
+	name = "ARES Emergency Lockdown";
+	needs_power = 0;
+	open_layer = 1.9;
+	plane = -7
+	},
 /obj/structure/sign/safety/laser{
 	pixel_x = 32;
 	pixel_y = -8
@@ -29749,6 +29853,7 @@
 	pixel_x = 8;
 	pixel_y = -8
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "gbg" = (
 /obj/structure/sign/safety/terminal{
@@ -29771,6 +29876,9 @@
 	pixel_x = -24;
 	pixel_y = -8;
 	req_one_access_txt = "90;91;92"
+	},
+/turf/open/floor/almayer/aicore/glowing/no_build{
+	icon_state = "ai_floor3"
 	},
 /area/almayer/command/airoom)
 "gbs" = (
@@ -29978,6 +30086,7 @@
 	icon_state = "S";
 	layer = 3.3
 	},
+/turf/open/floor/almayer/aicore/glowing/no_build,
 /area/almayer/command/airoom)
 "gfv" = (
 /turf/open/floor/plating/plating_catwalk,
@@ -30197,6 +30306,7 @@
 /obj/item/storage/box/ids{
 	pixel_x = -4
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "gjB" = (
 /obj/structure/machinery/light{
@@ -31060,6 +31170,7 @@
 	pixel_y = 8;
 	req_one_access_txt = "91;92"
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "gAj" = (
 /obj/structure/bed/chair/comfy/charlie{
@@ -31823,6 +31934,7 @@
 	unacidable = 0;
 	unslashable = 0
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "gMS" = (
 /obj/structure/machinery/camera/autoname/almayer{
@@ -31936,6 +32048,10 @@
 	unacidable = 0;
 	unslashable = 0
 	},
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "ai_silver";
+	dir = 4
+	},
 /area/almayer/command/airoom)
 "gOC" = (
 /obj/structure/machinery/recharge_station,
@@ -31975,6 +32091,7 @@
 /obj/structure/stairs{
 	dir = 1
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "gPS" = (
 /obj/effect/decal/warning_stripes{
@@ -32149,6 +32266,9 @@
 	dir = 4;
 	pixel_y = -18
 	},
+/turf/open/floor/almayer/aicore/glowing/no_build{
+	icon_state = "ai_floor3"
+	},
 /area/almayer/command/airoom)
 "gTK" = (
 /obj/effect/decal/warning_stripes{
@@ -32237,6 +32357,10 @@
 /area/almayer/living/bridgebunks)
 "gUN" = (
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
+	},
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "ai_arrow";
 	dir = 4
 	},
 /area/almayer/command/airoom)
@@ -35067,6 +35191,7 @@
 	pixel_x = 14;
 	pixel_y = 38
 	},
+/turf/open/floor/almayer/aicore/glowing/no_build,
 /area/almayer/command/airoom)
 "hSb" = (
 /obj/structure/largecrate/random/secure,
@@ -35156,6 +35281,7 @@
 	pixel_y = 16
 	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom,
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "hTt" = (
 /obj/structure/machinery/brig_cell/cell_1{
@@ -35533,6 +35659,13 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/engineering/lower/workshop/hangar)
+"hZj" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "hZw" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out"
@@ -35820,6 +35953,7 @@
 	dir = 1;
 	icon_state = "ramptop"
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "ieX" = (
 /obj/structure/surface/table/almayer,
@@ -35865,6 +35999,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
 	},
+/turf/open/floor/almayer/aicore/glowing/no_build,
 /area/almayer/command/airoom)
 "igs" = (
 /obj/structure/surface/table/almayer,
@@ -36439,6 +36574,7 @@
 	dir = 1;
 	icon_state = "ramptop"
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "isI" = (
 /obj/structure/sign/nosmoking_2{
@@ -36483,6 +36619,10 @@
 	open_layer = 2.1;
 	unacidable = 0;
 	unslashable = 0
+	},
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "ai_silver";
+	dir = 8
 	},
 /area/almayer/command/airoom)
 "ito" = (
@@ -36790,6 +36930,7 @@
 	unacidable = 1;
 	unslashable = 1
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "iyS" = (
 /obj/structure/disposalpipe/segment{
@@ -38169,6 +38310,7 @@
 /obj/structure/stairs{
 	dir = 1
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "iZE" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
@@ -39292,6 +39434,15 @@
 	plane = -7
 	},
 /obj/effect/step_trigger/ares_alert/core,
+/obj/structure/machinery/door/poddoor/almayer/blended/aicore/open{
+	closed_layer = 3.2;
+	id = "ARES Emergency";
+	layer = 3.2;
+	name = "ARES Emergency Lockdown";
+	needs_power = 0;
+	open_layer = 1.9;
+	plane = -7
+	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "test_floor4"
 	},
@@ -39431,6 +39582,12 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/vehiclehangar)
+"jtj" = (
+/obj/effect/step_trigger/clone_cleaner,
+/turf/open/floor/almayer/aicore/glowing/no_build{
+	icon_state = "ai_floor3"
+	},
+/area/almayer/command/airoom)
 "jts" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/disposalpipe/segment{
@@ -39550,6 +39707,9 @@
 /area/almayer/hallways/upper/aft_hallway)
 "jvB" = (
 /obj/effect/step_trigger/clone_cleaner,
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "ai_plates"
+	},
 /area/almayer/command/airoom)
 "jvD" = (
 /obj/structure/machinery/door_control{
@@ -39946,6 +40106,7 @@
 	pixel_x = 24;
 	req_one_access_txt = "90;91;92"
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "jEA" = (
 /obj/structure/disposalpipe/segment{
@@ -41050,6 +41211,7 @@
 /obj/structure/machinery/camera/autoname/almayer/containment/ares{
 	dir = 4
 	},
+/turf/open/floor/almayer/aicore/glowing/no_build,
 /area/almayer/command/airoom)
 "jZd" = (
 /obj/structure/pipes/vents/pump{
@@ -41274,6 +41436,7 @@
 /obj/structure/stairs{
 	dir = 1
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "kbJ" = (
 /obj/effect/decal/warning_stripes{
@@ -41589,6 +41752,7 @@
 /obj/structure/machinery/camera/autoname/almayer/containment/ares{
 	dir = 8
 	},
+/turf/open/floor/almayer/aicore/glowing/no_build,
 /area/almayer/command/airoom)
 "kil" = (
 /obj/structure/stairs/perspective{
@@ -42595,6 +42759,10 @@
 	pixel_y = -8;
 	req_one_access_txt = "90;91;92"
 	},
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "ai_silver";
+	dir = 8
+	},
 /area/almayer/command/airoom)
 "kAh" = (
 /obj/structure/sign/safety/restrictedarea{
@@ -43144,6 +43312,7 @@
 	dir = 1;
 	icon_state = "ramptop"
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "kKB" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -43645,6 +43814,7 @@
 	pixel_y = 24;
 	req_one_access_txt = "200;91;92"
 	},
+/turf/open/floor/almayer/aicore/glowing/no_build,
 /area/almayer/command/airoom)
 "kSA" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -43896,6 +44066,10 @@
 	},
 /area/almayer/command/computerlab)
 "kXj" = (
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "ai_silver";
+	dir = 4
+	},
 /area/almayer/command/airoom)
 "kXm" = (
 /obj/effect/decal/warning_stripes{
@@ -44490,6 +44664,7 @@
 	dir = 1;
 	icon_state = "ramptop"
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "liF" = (
 /obj/structure/machinery/light/small{
@@ -44752,6 +44927,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/medical_science)
 "lmz" = (
+/turf/closed/wall/almayer/aicore/hull,
 /area/space)
 "lmA" = (
 /obj/structure/flora/pottedplant{
@@ -44825,6 +45001,9 @@
 	pixel_x = 24;
 	pixel_y = -8;
 	req_one_access_txt = "90;91;92"
+	},
+/turf/open/floor/almayer/aicore/glowing/no_build{
+	icon_state = "ai_floor3"
 	},
 /area/almayer/command/airoom)
 "lok" = (
@@ -45134,6 +45313,7 @@
 "ltc" = (
 /obj/effect/landmark/late_join/working_joe,
 /obj/effect/landmark/start/working_joe,
+/turf/open/floor/plating/plating_catwalk/aicore,
 /area/almayer/command/airoom)
 "ltm" = (
 /obj/structure/bed/chair/comfy/orange,
@@ -46850,6 +47030,7 @@
 	},
 /obj/item/folder/white,
 /obj/item/folder/white,
+/turf/open/floor/almayer/aicore/glowing/no_build,
 /area/almayer/command/airoom)
 "mea" = (
 /obj/structure/flora/pottedplant{
@@ -47307,6 +47488,7 @@
 	icon_state = "NE-out";
 	pixel_y = 1
 	},
+/turf/open/floor/almayer/aicore/glowing/no_build,
 /area/almayer/command/airoom)
 "mlm" = (
 /turf/open/floor/almayer{
@@ -48335,6 +48517,15 @@
 	name = "\improper ARES Mainframe Shutters";
 	plane = -7
 	},
+/obj/structure/machinery/door/poddoor/almayer/blended/aicore/open{
+	closed_layer = 3.2;
+	id = "ARES Emergency";
+	layer = 3.2;
+	name = "ARES Emergency Lockdown";
+	needs_power = 0;
+	open_layer = 1.9;
+	plane = -7
+	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "test_floor4"
 	},
@@ -48451,6 +48642,12 @@
 	icon_state = "mono"
 	},
 /area/almayer/medical/hydroponics)
+"mHE" = (
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "ai_silver";
+	dir = 8
+	},
+/area/almayer/command/airoom)
 "mHF" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/head/headband/red{
@@ -49016,6 +49213,15 @@
 	plane = -7
 	},
 /obj/effect/step_trigger/ares_alert/core,
+/obj/structure/machinery/door/poddoor/almayer/blended/aicore/open{
+	closed_layer = 3.2;
+	id = "ARES Emergency";
+	layer = 3.2;
+	name = "ARES Emergency Lockdown";
+	needs_power = 0;
+	open_layer = 1.9;
+	plane = -7
+	},
 /obj/structure/sign/safety/terminal{
 	pixel_x = -18;
 	pixel_y = -8
@@ -49223,6 +49429,9 @@
 /obj/structure/machinery/computer/cameras/almayer/ares{
 	dir = 8;
 	pixel_x = 17
+	},
+/turf/open/floor/almayer/aicore/glowing/no_build{
+	icon_state = "ai_floor3"
 	},
 /area/almayer/command/airoom)
 "mUE" = (
@@ -52541,6 +52750,7 @@
 /obj/structure/sign/safety/rewire{
 	pixel_y = 38
 	},
+/turf/open/floor/almayer/aicore/glowing/no_build,
 /area/almayer/command/airoom)
 "ocI" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -52960,6 +53170,7 @@
 /area/almayer/squads/bravo)
 "oiX" = (
 /obj/docking_port/stationary/vehicle_elevator/almayer,
+/turf/open/floor/almayer/empty/vehicle_bay,
 /area/almayer/hallways/lower/vehiclehangar)
 "oiY" = (
 /obj/effect/decal/warning_stripes{
@@ -53549,6 +53760,10 @@
 "osy" = (
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/platform_decoration,
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "ai_silver";
+	dir = 4
+	},
 /area/almayer/command/airoom)
 "osz" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -53703,6 +53918,7 @@
 	pixel_y = 6
 	},
 /obj/item/tool/pen,
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "ouw" = (
 /obj/structure/machinery/light/small{
@@ -54624,6 +54840,7 @@
 	pixel_x = -24;
 	req_one_access_txt = "90;91;92"
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "oKb" = (
 /obj/structure/machinery/status_display{
@@ -54687,6 +54904,10 @@
 	pixel_y = -8
 	},
 /obj/effect/step_trigger/clone_cleaner,
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "ai_silver";
+	dir = 8
+	},
 /area/almayer/command/airoom)
 "oLF" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -55042,6 +55263,7 @@
 	icon_state = "W";
 	pixel_x = -1
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "oRW" = (
 /obj/structure/surface/table/almayer,
@@ -55917,6 +56139,7 @@
 	dir = 1;
 	icon_state = "ramptop"
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "pgJ" = (
 /obj/structure/sign/safety/hvac_old{
@@ -56168,6 +56391,7 @@
 	pixel_y = 16
 	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom,
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "pnh" = (
 /obj/structure/ladder{
@@ -57304,6 +57528,19 @@
 	icon_state = "dark_sterile"
 	},
 /area/almayer/living/port_emb)
+"pJR" = (
+/obj/effect/step_trigger/teleporter_vector{
+	name = "Almayer_AresUp";
+	vector_x = -97;
+	vector_y = 65
+	},
+/obj/structure/stairs{
+	dir = 1
+	},
+/turf/open/floor/almayer/aicore/glowing/no_build{
+	icon_state = "ai_floor3"
+	},
+/area/almayer/command/airoom)
 "pKh" = (
 /obj/structure/machinery/alarm/almayer{
 	dir = 1
@@ -58070,6 +58307,10 @@
 /obj/structure/pipes/vents/pump/no_boom{
 	dir = 8
 	},
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "ai_silver";
+	dir = 4
+	},
 /area/almayer/command/airoom)
 "pYo" = (
 /obj/effect/decal/warning_stripes{
@@ -58673,6 +58914,7 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "qiy" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -59411,6 +59653,10 @@
 	pixel_x = -24;
 	pixel_y = -8;
 	req_one_access_txt = "90;91;92"
+	},
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "ai_silver";
+	dir = 8
 	},
 /area/almayer/command/airoom)
 "qwY" = (
@@ -60397,6 +60643,9 @@
 /area/almayer/living/port_emb)
 "qLS" = (
 /obj/structure/pipes/standard/manifold/hidden/supply/no_boom,
+/turf/open/floor/almayer/aicore/glowing/no_build{
+	icon_state = "ai_floor3"
+	},
 /area/almayer/command/airoom)
 "qLV" = (
 /obj/structure/surface/table/almayer,
@@ -60617,6 +60866,9 @@
 	icon_state = "red"
 	},
 /area/almayer/maint/hull/upper/u_a_p)
+"qQS" = (
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "qRb" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
@@ -61238,6 +61490,7 @@
 	pixel_y = -24;
 	req_one_access_txt = "200;91;92"
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "rbB" = (
 /turf/open/floor/almayer{
@@ -61949,6 +62202,12 @@
 	icon_state = "dark_sterile"
 	},
 /area/almayer/engineering/upper_engineering/port)
+"rna" = (
+/obj/structure/machinery/status_display{
+	pixel_y = 30
+	},
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "rnd" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -61983,6 +62242,7 @@
 	dir = 8;
 	pixel_x = 17
 	},
+/turf/open/floor/almayer/aicore/glowing/no_build,
 /area/almayer/command/airoom)
 "rnN" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -62708,6 +62968,7 @@
 /obj/structure/machinery/camera/autoname/almayer/containment/ares{
 	dir = 8
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "rCl" = (
 /obj/effect/decal/warning_stripes{
@@ -62731,6 +62992,7 @@
 /obj/structure/stairs{
 	dir = 1
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "rCD" = (
 /obj/structure/machinery/light/small{
@@ -63476,6 +63738,7 @@
 	unacidable = 1;
 	unslashable = 1
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "rNK" = (
 /obj/structure/surface/table/almayer,
@@ -64184,6 +64447,7 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/port_fore_hallway)
 "sbJ" = (
+/turf/closed/wall/almayer/aicore/hull,
 /area/almayer/powered/agent)
 "sbP" = (
 /obj/effect/landmark/start/police,
@@ -64638,6 +64902,7 @@
 	},
 /area/almayer/medical/lower_medical_medbay)
 "sje" = (
+/turf/open/floor/almayer/empty/vehicle_bay,
 /area/almayer/hallways/lower/vehiclehangar)
 "sjj" = (
 /obj/structure/machinery/keycard_auth{
@@ -65878,6 +66143,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
+/turf/open/floor/almayer/aicore/glowing/no_build,
 /area/almayer/command/airoom)
 "sEM" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -66039,6 +66305,7 @@
 /obj/structure/stairs{
 	dir = 1
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "sIr" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -66153,6 +66420,7 @@
 	dir = 8;
 	layer = 3.25
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "sLk" = (
 /obj/structure/ladder{
@@ -68947,6 +69215,9 @@
 /area/almayer/shipboard/brig/cells)
 "tId" = (
 /obj/structure/machinery/recharge_station,
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "ai_cargo"
+	},
 /area/almayer/command/airoom)
 "tIe" = (
 /obj/structure/machinery/camera/autoname/almayer{
@@ -69062,6 +69333,9 @@
 /obj/structure/machinery/cryopod/right{
 	layer = 3.1;
 	pixel_y = 13
+	},
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "ai_cargo"
 	},
 /area/almayer/command/airoom)
 "tJR" = (
@@ -69930,6 +70204,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "ubI" = (
 /obj/structure/surface/table/almayer,
@@ -72338,6 +72613,12 @@
 	icon_state = "plate"
 	},
 /area/almayer/maint/hull/lower/l_a_p)
+"uVv" = (
+/obj/structure/pipes/standard/manifold/hidden/supply/no_boom{
+	dir = 1
+	},
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "uVA" = (
 /turf/open/floor/almayer{
 	dir = 4;
@@ -73031,6 +73312,7 @@
 /obj/item/folder/white,
 /obj/item/folder/white,
 /obj/item/folder/white,
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "vhw" = (
 /obj/structure/disposalpipe/trunk{
@@ -73129,6 +73411,7 @@
 /obj/structure/pipes/standard/manifold/hidden/supply/no_boom{
 	dir = 1
 	},
+/turf/open/floor/plating/plating_catwalk/aicore,
 /area/almayer/command/airoom)
 "viJ" = (
 /obj/structure/machinery/door/airlock/almayer/maint,
@@ -74417,6 +74700,10 @@
 "vAU" = (
 /obj/structure/pipes/vents/scrubber/no_boom{
 	dir = 4
+	},
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "ai_silver";
+	dir = 8
 	},
 /area/almayer/command/airoom)
 "vBp" = (
@@ -75846,6 +76133,7 @@
 	dir = 4;
 	pixel_x = -17
 	},
+/turf/open/floor/almayer/aicore/glowing/no_build,
 /area/almayer/command/airoom)
 "vXk" = (
 /turf/open/floor/almayer{
@@ -76688,6 +76976,15 @@
 	alert_message = "Caution: Movement detected in ARES Core.";
 	cooldown_duration = 1200
 	},
+/obj/structure/machinery/door/poddoor/almayer/blended/aicore/open{
+	closed_layer = 3.2;
+	id = "ARES Emergency";
+	layer = 3.2;
+	name = "ARES Emergency Lockdown";
+	needs_power = 0;
+	open_layer = 1.9;
+	plane = -7
+	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "test_floor4"
 	},
@@ -76842,6 +77139,10 @@
 	icon_state = "cargo"
 	},
 /area/almayer/living/bridgebunks)
+"wnh" = (
+/obj/structure/window/framed/almayer/aicore/hull,
+/turf/open/floor/plating,
+/area/almayer/command/airoom)
 "wnw" = (
 /obj/structure/machinery/flasher{
 	id = "Perma 2";
@@ -77637,6 +77938,7 @@
 /obj/structure/stairs{
 	dir = 1
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "wDg" = (
 /obj/effect/decal/warning_stripes{
@@ -78028,6 +78330,9 @@
 /area/almayer/medical/upper_medical)
 "wJB" = (
 /obj/structure/machinery/cryopod/right,
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "ai_cargo"
+	},
 /area/almayer/command/airoom)
 "wJC" = (
 /obj/structure/largecrate/random/barrel/yellow,
@@ -79754,6 +80059,7 @@
 	},
 /obj/effect/landmark/late_join/working_joe,
 /obj/effect/landmark/start/working_joe,
+/turf/open/floor/plating/plating_catwalk/aicore,
 /area/almayer/command/airoom)
 "xnz" = (
 /obj/effect/decal/warning_stripes{
@@ -80215,6 +80521,10 @@
 	req_one_access_txt = "90;91;92"
 	},
 /obj/effect/step_trigger/clone_cleaner,
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "ai_silver";
+	dir = 4
+	},
 /area/almayer/command/airoom)
 "xvO" = (
 /obj/structure/disposalpipe/segment{
@@ -80693,6 +81003,10 @@
 	icon_state = "silver"
 	},
 /area/almayer/shipboard/brig/cic_hallway)
+"xDC" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "xDF" = (
 /obj/structure/machinery/autolathe,
 /turf/open/floor/almayer{
@@ -81429,6 +81743,10 @@
 	icon_state = "plate"
 	},
 /area/almayer/hallways/lower/port_aft_hallway)
+"xQV" = (
+/obj/effect/step_trigger/clone_cleaner,
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "xQW" = (
 /obj/structure/sign/safety/bathunisex{
 	pixel_x = -18
@@ -81699,6 +82017,7 @@
 	pixel_y = 24;
 	req_one_access_txt = "90;91;92"
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "xVe" = (
 /obj/effect/decal/warning_stripes{
@@ -82026,6 +82345,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 9
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "yaR" = (
 /obj/structure/disposalpipe/segment{
@@ -82052,6 +82372,13 @@
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/hallways/lower/vehiclehangar)
+"yaZ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "ybk" = (
 /turf/closed/wall/almayer,
 /area/almayer/hallways/upper/stern_hallway)
@@ -82220,6 +82547,7 @@
 	icon_state = "W";
 	pixel_x = -1
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "ydM" = (
 /obj/structure/window{
@@ -82485,6 +82813,7 @@
 /obj/structure/pipes/vents/pump/no_boom{
 	dir = 1
 	},
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "yiW" = (
 /obj/structure/machinery/cryopod/right{
@@ -120714,8 +121043,8 @@ lin
 oJR
 tFe
 asD
-jvB
-kXj
+xQV
+qQS
 aqU
 aCZ
 dgg
@@ -120916,8 +121245,8 @@ sIf
 isC
 isC
 tFe
-jvB
-jvB
+xQV
+xQV
 rNF
 aqU
 qjF
@@ -121120,7 +121449,7 @@ pgH
 jDV
 tFe
 xVc
-jvB
+xQV
 eYz
 aqU
 gjB
@@ -121525,7 +121854,7 @@ mLE
 bUx
 mLE
 tmK
-kXj
+qQS
 aug
 avL
 aqU
@@ -126410,7 +126739,7 @@ vkQ
 kzR
 oig
 oIB
-dha
+cHC
 dha
 pxj
 oIB
@@ -139237,19 +139566,19 @@ lmz
 lmz
 lmz
 lmz
-kXj
-kXj
-kXj
-kXj
-kXj
-kXj
-kXj
-kXj
-kXj
-kXj
-kXj
-kXj
-kXj
+daz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
 lmz
 lmz
 lmz
@@ -139440,19 +139769,19 @@ lmz
 lmz
 lmz
 lmz
-kXj
+daz
 vhe
 fEN
 cqm
 gTH
 qit
-kXj
+ebN
 cxc
 gwn
 pfT
 jYR
 dyp
-kXj
+daz
 lmz
 lmz
 lmz
@@ -139643,19 +139972,19 @@ lmz
 sbJ
 sbJ
 sbJ
-kXj
-eKJ
-kXj
-kXj
+daz
+rna
+clw
+qQS
 sKY
-kXj
+qQS
 bIp
 fKe
 dDp
 dDp
 frM
 lcg
-kXj
+daz
 lmz
 lmz
 lmz
@@ -139839,17 +140168,17 @@ lmz
 lmz
 lmz
 lmz
-kXj
-kXj
-kXj
-kXj
-kXj
+daz
+daz
+daz
+daz
+daz
 tte
 hvw
 auf
 pmV
-auf
-auf
+xDC
+xDC
 dIn
 rby
 bIp
@@ -139858,7 +140187,7 @@ sEK
 sEK
 mlb
 lcg
-kXj
+daz
 lmz
 lmz
 lmz
@@ -140041,27 +140370,27 @@ lmz
 lmz
 lmz
 lmz
-kXj
-kXj
+daz
+daz
 hRW
 asZ
 vXh
-kXj
-kXj
+daz
+daz
 kfU
-kXj
-kXj
-kXj
+daz
+ebN
+ebN
 lnS
-viB
+uVv
 yit
-kXj
+ebN
 cxc
 kBy
 kBy
 gfu
 fPB
-kXj
+daz
 lmz
 lmz
 lmz
@@ -140243,29 +140572,29 @@ bdH
 lmz
 lmz
 lmz
-kXj
-kXj
+daz
+daz
 eKJ
-cxc
+yaZ
 ffE
-cLo
-kXj
-kXj
-kXj
-kXj
+hZj
+clw
+daz
+daz
+daz
 sGZ
-kXj
-kXj
+ebN
+ebN
 roH
-kXj
-kXj
-kXj
-kXj
-mLE
-mLE
-kXj
-kXj
-kXj
+ebN
+ebN
+ebN
+daz
+wnh
+wnh
+daz
+daz
+daz
 lmz
 lmz
 lmz
@@ -140446,7 +140775,7 @@ bdH
 lmz
 lmz
 lmz
-kXj
+daz
 acJ
 ubA
 cck
@@ -140456,10 +140785,10 @@ ubA
 gMN
 mRn
 itf
-kXj
+mHE
 vAU
 qwJ
-gUN
+fJY
 kzT
 wkM
 oLm
@@ -140468,7 +140797,7 @@ kKv
 kKv
 dGl
 dGl
-kXj
+daz
 lmz
 lmz
 lmz
@@ -140649,7 +140978,7 @@ bdH
 lmz
 lmz
 lmz
-kXj
+daz
 cwS
 ffE
 vHa
@@ -140659,19 +140988,19 @@ ffE
 ffE
 jqP
 cLo
-kXj
+clw
 viB
-auf
+dIi
 qLS
-kXj
+erN
 wkM
 jvB
-jvB
+jtj
 ieF
 ieF
+pJR
 gPr
-gPr
-kXj
+daz
 lmz
 lmz
 lmz
@@ -140852,7 +141181,7 @@ bdH
 lmz
 lmz
 lmz
-kXj
+daz
 oRV
 ydI
 mdW
@@ -140874,7 +141203,7 @@ cBm
 cBm
 iZw
 dQl
-kXj
+daz
 lmz
 lmz
 lmz
@@ -141055,29 +141384,29 @@ bdH
 lmz
 lmz
 lmz
-kXj
-kXj
+daz
+daz
 eKJ
-cxc
+yaZ
 ffE
-cLo
-kXj
-kXj
-kXj
-kXj
+hZj
+clw
+daz
+daz
+daz
 tHu
-kXj
-kXj
+ebN
+ebN
 gXs
-kXj
-kXj
-kXj
-kXj
-mLE
-mLE
-kXj
-kXj
-kXj
+ebN
+ebN
+ebN
+daz
+wnh
+wnh
+daz
+daz
+daz
 lmz
 lmz
 lmz
@@ -141259,27 +141588,27 @@ lmz
 lmz
 lmz
 lmz
-kXj
-kXj
+daz
+daz
 ocB
 nJH
 rnH
-kXj
-kXj
+daz
+daz
 sTV
-kXj
-kXj
-kXj
+daz
+ebN
+ebN
 gbg
-viB
+uVv
 yit
-kXj
+ebN
 cxc
 kBy
 kBy
 gfu
 kBy
-kXj
+daz
 lmz
 lmz
 lmz
@@ -141463,17 +141792,17 @@ lmz
 lmz
 lmz
 lmz
-kXj
-kXj
-kXj
-kXj
-kXj
+daz
+daz
+daz
+daz
+daz
 tte
 hvw
 auf
 hTl
-auf
-auf
+xDC
+xDC
 yaQ
 bat
 mFN
@@ -141482,7 +141811,7 @@ dDp
 dDp
 frM
 lcg
-kXj
+daz
 lmz
 lmz
 lmz
@@ -141669,23 +141998,23 @@ lmz
 lmz
 lmz
 lmz
-kXj
+daz
 sbJ
 sbJ
 sbJ
-kXj
-eKJ
-kXj
-kXj
+daz
+rna
+clw
+qQS
 aCd
-kXj
+qQS
 mFN
 igr
 sEK
 sEK
 mlb
 lcg
-kXj
+daz
 lmz
 lmz
 lmz
@@ -141872,7 +142201,7 @@ lmz
 lmz
 lmz
 lmz
-kXj
+daz
 ltc
 eXk
 xns
@@ -141882,13 +142211,13 @@ rCi
 gba
 mUz
 our
-kXj
+ebN
 cxc
 kBy
 kBy
 khJ
 gyN
-kXj
+daz
 lmz
 lmz
 lmz
@@ -142075,23 +142404,23 @@ lmz
 lmz
 lmz
 lmz
-kXj
+daz
 tId
 wJB
 tJN
-kXj
-kXj
-kXj
-kXj
-kXj
-kXj
-kXj
-kXj
-kXj
-kXj
-kXj
-kXj
-kXj
+daz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
 lmz
 lmz
 lmz
@@ -142278,11 +142607,11 @@ bdH
 bdH
 bdH
 lmz
-kXj
-kXj
-kXj
-kXj
-kXj
+daz
+daz
+daz
+daz
+daz
 lmz
 lmz
 lmz

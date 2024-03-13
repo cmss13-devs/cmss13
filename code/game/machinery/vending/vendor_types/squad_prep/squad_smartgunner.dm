@@ -84,8 +84,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_smartgun, list(
 		list("Map", 0, /obj/item/map/current_map, MARINE_CAN_BUY_KIT, VENDOR_ITEM_MANDATORY),
 
 		list("BELT", 0, null, null, null),
-		list("M802 Smartgunner Sidearm Belt", 0, /obj/item/storage/belt/gun/smartgunner/uscm/filled, MARINE_CAN_BUY_BELT, VENDOR_ITEM_MANDATORY),
-		list("M280 Smartgunner Drum Belt", 0, /obj/item/storage/belt/marine/smartgunner/uscm/filled, MARINE_CAN_BUY_BELT, VENDOR_ITEM_MANDATORY),
+		list("M802 Smartgunner Sidearm Belt", 0, /obj/item/storage/belt/gun/smartgunner/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_MANDATORY),
+		list("M280 Smartgunner Drum Belt", 0, /obj/item/storage/belt/marine/smartgunner, MARINE_CAN_BUY_BELT, VENDOR_ITEM_MANDATORY),
 
 		list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Flare Pouch (Full)", 0, /obj/item/storage/pouch/flare/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),

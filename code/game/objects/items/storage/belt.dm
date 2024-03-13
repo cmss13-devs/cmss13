@@ -569,13 +569,6 @@
 	new /obj/item/ammo_magazine/smartgun(src)
 	new /obj/item/ammo_magazine/smartgun(src)
 
-/obj/item/storage/belt/marine/smartgunner/uscm
-
-/obj/item/storage/belt/marine/smartgunner/uscm/filled/fill_preset_inventory()
-	new /obj/item/ammo_magazine/smartgun(src)
-	new /obj/item/ammo_magazine/smartgun(src)
-	new /obj/item/ammo_magazine/smartgun(src)
-
 /obj/item/storage/belt/marine/quackers
 	name = "Mr. Quackers"
 	desc = "What are we going to do today, Mr. Quackers?"
@@ -1664,15 +1657,6 @@
 		/obj/item/ammo_magazine/smartgun,
 	)
 	has_gamemode_skin = TRUE
-
-/obj/item/storage/belt/gun/smartgunner/uscm
-
-/obj/item/storage/belt/gun/smartgunner/uscm/filled/fill_preset_inventory()
-	handle_item_insertion(new /obj/item/weapon/gun/pistol/m4a3())
-	new /obj/item/ammo_magazine/pistol/hp(src)
-	new /obj/item/ammo_magazine/smartgun(src)
-	new /obj/item/ammo_magazine/smartgun(src)
-	new /obj/item/ammo_magazine/smartgun(src)
 
 /obj/item/storage/belt/gun/smartgunner/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/m4a3())

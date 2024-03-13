@@ -24105,6 +24105,10 @@
 	pixel_x = 4;
 	pixel_y = -2
 	},
+/obj/item/stack/sheet/cardboard/small_stack{
+	pixel_x = -6;
+	pixel_y = 9
+	},
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie_delta_shared)
 "dXI" = (
@@ -26160,7 +26164,14 @@
 	pixel_x = -1;
 	pixel_y = 10
 	},
-/obj/item/stack/cable_coil,
+/obj/item/stack/cable_coil{
+	pixel_y = 1;
+	pixel_x = 8
+	},
+/obj/item/stack/sheet/cardboard/small_stack{
+	pixel_y = -3;
+	pixel_x = -8
+	},
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha_bravo_shared)
 "eGq" = (
@@ -67445,7 +67456,11 @@
 "teu" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/weapon/gun/shotgun/pump{
-	starting_attachment_types = list(/obj/item/attachable/stock/shotgun)
+	starting_attachment_types = list(/obj/item/attachable/stock/shotgun);
+	pixel_y = 9
+	},
+/obj/item/stack/sheet/cardboard/small_stack{
+	pixel_y = -6
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie_delta_shared)
@@ -72048,7 +72063,12 @@
 	desc = "A large handheld tool used to override various machine functions. Primarily used to pulse Airlock and APC wires on a shortwave frequency. It contains a small data buffer as well. This one is comically oversized. Made in Texas.";
 	icon_state = "multitool_big";
 	name = "\improper Oversized Security Access Tuner";
-	pixel_y = 8
+	pixel_y = 16;
+	pixel_x = 10
+	},
+/obj/item/stack/sheet/cardboard/medium_stack{
+	pixel_y = -6;
+	pixel_x = -7
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha_bravo_shared)

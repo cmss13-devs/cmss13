@@ -72,8 +72,18 @@
 	name = "Base Destroyer Behavior Delegate"
 	///reward for hitting shots instead of spamming acid ball
 
+
+///Direct override on Collide() to prevent bumping
+/mob/living/carbon/xenomorph/destroyer/Collide(atom/movable/movable_atom)
+	if(behavior_delegate)
+		behavior_delegate.on_collide(movable_atom)
+	..()
+
 /// Knocks down hostiles and deals damage, knocks down allies for a much shorter time
 /datum/behavior_delegate/destroyer_base/on_collide(atom/movable/movable_atom)
+	if(!bound_xeno.Adjacent(movable_atom))
+		return
+
 	if(isxeno_human(movable_atom))
 		var/mob/living/carbon/carbon = movable_atom
 
@@ -86,4 +96,9 @@
 		else
 			//Review damage and knockdown
 			carbon.apply_armoured_damage(20)
-			carbon.KnockDown((1 SECONDS) / GLOBAL_STATUS_MULTIPLIER)
+
+			var/turf/T = get_turf(carbon)
+			var/list/contents = T.contents
+
+			for(var/mob/living/carbon/carbon in contents)
+				carbon.KnockDown((1 SECONDS) / GLOBAL_STATUS_MULTIPLIER)

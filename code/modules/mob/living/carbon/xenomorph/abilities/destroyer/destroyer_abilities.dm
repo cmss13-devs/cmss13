@@ -11,12 +11,7 @@
 
 	var/damage = 25
 
-	var/slash_sounds = list('sound/weapons/alien_claw_flesh1.ogg',
-						'sound/weapons/alien_claw_flesh2.ogg',
-						'sound/weapons/alien_claw_flesh3.ogg',
-						'sound/weapons/alien_claw_flesh4.ogg',
-						'sound/weapons/alien_claw_flesh5.ogg',
-						'sound/weapons/alien_claw_flesh6.ogg')
+	var/slash_sounds = list('sound/weapons/alien_claw_flesh1.ogg', 'sound/weapons/alien_claw_flesh2.ogg', 'sound/weapons/alien_claw_flesh3.ogg', 'sound/weapons/alien_claw_flesh4.ogg', 'sound/weapons/alien_claw_flesh5.ogg', 'sound/weapons/alien_claw_flesh6.ogg')
 
 /// Screech which puts out lights in a 7 tile radius, slows and dazes.
 /datum/action/xeno_action/activable/doom

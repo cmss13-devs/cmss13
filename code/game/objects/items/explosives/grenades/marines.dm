@@ -495,11 +495,24 @@
 
 	if(target != get_turf(user))
 		return
+
+	if(locate(/obj/item/explosive/mine) in get_turf(src))
+		to_chat(user, SPAN_WARNING("There already is a mine at this position!"))
+		return
+
+	if(user_turf && (user_turf.density || locate(/obj/structure/fence) in user_turf))
+		to_chat(user, SPAN_WARNING("You can't plant a mine here."))
+		return
+	
+	if(Adjacent(/obj/item/explosive/mine))
+		to_chat(user, SPAN_WARNING("Too close to another mine! Plant it somewhere less obvious."))
+		return
+	
 	user.visible_message(SPAN_NOTICE("[user] starts deploying [src]."),
 		SPAN_NOTICE("You switch [src] into landmine mode and start placing it..."))
 	playsound(user.loc, 'sound/effects/thud.ogg', 40)
 	if(!do_after(user, 2 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-		to_chat(user, SPAN_NOTICE("You stop digging."))
+		to_chat(user, SPAN_NOTICE("You stop planting."))
 		return
 
 	user.visible_message(SPAN_NOTICE("[user] finishes deploying [src]."),
@@ -521,6 +534,7 @@
 	var/list/full_range = oview(range, src) // Fill a list of stuff in the range so we won't have to spam oview again
 	new /obj/effect/overlay/temp/sebb(sebb_turf)
 	new /obj/effect/overlay/temp/emp_sparks(sebb_turf)
+
 	playsound(src.loc, 'sound/effects/sebb_explode.ogg', 100, 0, 10)
 	for(var/obj/structure/machinery/defenses/sentry/sentry_stun in full_range)
 		sentry_stun.sentry_range = 0 // Temporarily "disable" the sentry by killing its range then setting it back.
@@ -530,6 +544,7 @@
 		sentry_stun.visible_message(SPAN_DANGER("[src] says \"ERROR: Fire control system resetting due to critical voltage flucuation!\""))
 		sparka.set_up(1, 1, sentry_stun)
 		sparka.start()
+
 	for(var/turf/turf in full_range)
 		if(prob(8))
 			var/datum/effect_system/spark_spread/sparkTurf = new //using a different spike system because the spark system doesn't like when you reuse it for differant things
@@ -537,6 +552,7 @@
 			sparkTurf.start()
 		if(prob(10))
 			new /obj/effect/overlay/temp/emp_sparks(turf)
+			
 	for(var/mob/living/carbon/mob in full_range) // no simplemob support
 		var/mob_dist = get_dist(src, mob)
 		var/falloff = mob_dist * falloff_dam_reduction_mult

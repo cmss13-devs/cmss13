@@ -71,7 +71,7 @@ The API for tutorials is designed to be very simple, so I'll go over all the bas
 -   `retrieve_bind(action_name)`
     -   This proc will be one you'll get a fair amount of use from. Whenever you tell the user to do something like "drop an item", you should tell them what button to press by calling `retrieve_bind("drop_item")` in the string telling them to drop an item.
 -   `mark_completed()`
-    -           This proc can be used as an alternative to calling `end_tutorial(TRUE)`. Calling this proc means any method of exiting the tutorial (ghosting, dying, pressing the exit button) will mark the tutorial as completed.
+    -   This proc can be used as an alternative to calling `end_tutorial(TRUE)`. Calling this proc means any method of exiting the tutorial (ghosting, dying, pressing the exit button) will mark the tutorial as completed.
 
 ## Step 2.1: Tracking Atoms
 

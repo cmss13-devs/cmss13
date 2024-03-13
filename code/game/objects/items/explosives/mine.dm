@@ -297,7 +297,6 @@
 /obj/item/explosive/mine/active/no_iff
 	iff_signal = null
 
-
 /obj/item/explosive/mine/pmc
 	name = "\improper M20P Claymore anti-personnel mine"
 	desc = "The M20P Claymore is a directional proximity triggered anti-personnel mine designed by Armat Systems for use by the United States Colonial Marines. It has been modified for use by the Wey-Yu PMC forces."

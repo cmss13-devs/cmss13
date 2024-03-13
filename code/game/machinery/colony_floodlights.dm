@@ -61,16 +61,8 @@
 		update_icon()
 
 /obj/structure/machinery/colony_floodlight_switch/proc/toggle_lights()
-	for(var/obj/structure/machinery/colony_floodlight/floodlight in floodlist)
-		spawn(rand(0, 50))
-			floodlight.is_lit = !floodlight.is_lit
-			if(!floodlight.damaged)
-				if(floodlight.is_lit) //Shut it down
-					floodlight.set_light(floodlight.lum_value)
-				else
-					floodlight.set_light(0)
-			floodlight.update_icon()
-	return FALSE
+	for(var/obj/structure/machinery/colony_floodlight/floodlight as anything in floodlist)
+		addtimer(CALLBACK(floodlight, TYPE_PROC_REF(/obj/structure/machinery/colony_floodlight, toggle_light)), rand(0, 5 SECONDS))
 
 /obj/structure/machinery/colony_floodlight_switch/attack_hand(mob/user as mob)
 	if(!ishuman(user))
@@ -288,6 +280,13 @@
 					if(FLOODLIGHT_REPAIR_SCREW) . += SPAN_INFO("You must screw its maintenance hatch closed.")
 		else if(!is_lit)
 			. += SPAN_INFO("It doesn't seem powered.")
+
+/obj/structure/machinery/colony_floodlight/proc/toggle_light()
+	is_lit = !is_lit
+	if(!damaged)
+		set_light(is_lit ? lum_value : 0)
+	update_icon()
+	return is_lit
 
 #undef FLOODLIGHT_REPAIR_UNSCREW
 #undef FLOODLIGHT_REPAIR_CROWBAR

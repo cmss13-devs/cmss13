@@ -49,17 +49,12 @@
 /area/adminlevel/ert_station/pizza_station)
 "am" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
+/obj/structure/barricade/handrail/pizza{
 	dir = 4;
-	pixel_y = -3;
-	name = "red handrail"
+	pixel_y = -3
 	},
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
-	pixel_y = -3;
-	name = "red handrail";
-	layer = 4.1
+/obj/structure/barricade/handrail/pizza{
+	pixel_y = -3
 	},
 /obj/item/reagent_container/food/drinks/cans/souto/cherry{
 	pixel_x = -8;
@@ -328,18 +323,13 @@
 /turf/open/floor/prison,
 /area/adminlevel/ert_station/pizza_station)
 "cO" = (
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
+/obj/structure/barricade/handrail/pizza{
 	dir = 8;
-	pixel_y = -3;
-	name = "red handrail"
+	pixel_y = -3
 	},
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
+/obj/structure/barricade/handrail/pizza{
 	dir = 1;
-	pixel_y = 12;
-	name = "red handrail";
-	layer = 4.1
+	pixel_y = 12
 	},
 /obj/structure/prop/souto_land/streamer{
 	dir = 6
@@ -461,6 +451,9 @@
 	pixel_y = 20;
 	pixel_x = 16
 	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
 /turf/open/floor/prison{
 	icon_state = "greenblue";
 	dir = 1
@@ -579,11 +572,8 @@
 /turf/open/space/basic,
 /area/space)
 "gb" = (
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
-	pixel_y = -3;
-	name = "red handrail";
-	layer = 4.1
+/obj/structure/barricade/handrail/pizza{
+	pixel_y = -3
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -598,11 +588,8 @@
 /area/adminlevel/ert_station/pizza_station)
 "gu" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
-	pixel_y = -3;
-	name = "red handrail";
-	layer = 4.1
+/obj/structure/barricade/handrail/pizza{
+	pixel_y = -3
 	},
 /obj/item/storage/box/drinkingglasses{
 	layer = 2.97;
@@ -623,10 +610,8 @@
 	},
 /area/adminlevel/ert_station/pizza_station)
 "gy" = (
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
-	dir = 8;
-	name = "red handrail"
+/obj/structure/barricade/handrail/pizza{
+	dir = 8
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -667,12 +652,9 @@
 /turf/open/space,
 /area/space)
 "hb" = (
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
+/obj/structure/barricade/handrail/pizza{
 	dir = 1;
-	pixel_y = 12;
-	name = "red handrail";
-	layer = 4.1
+	pixel_y = 12
 	},
 /turf/open/floor{
 	icon_state = "redyellowfull"
@@ -709,11 +691,9 @@
 	},
 /area/adminlevel/ert_station/pizza_station)
 "hR" = (
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
+/obj/structure/barricade/handrail/pizza{
 	dir = 8;
-	pixel_y = -3;
-	name = "red handrail"
+	pixel_y = -3
 	},
 /obj/structure/bed/chair/bolted{
 	dir = 4;
@@ -758,11 +738,8 @@
 	pixel_y = 10
 	},
 /obj/structure/surface/table/almayer,
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
-	pixel_y = -3;
-	name = "red handrail";
-	layer = 4.1
+/obj/structure/barricade/handrail/pizza{
+	pixel_y = -3
 	},
 /obj/item/reagent_container/food/drinks/drinkingglass{
 	pixel_y = 14;
@@ -931,11 +908,8 @@
 	},
 /area/space)
 "jT" = (
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
-	pixel_y = -3;
-	name = "red handrail";
-	layer = 4.1
+/obj/structure/barricade/handrail/pizza{
+	pixel_y = -3
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -948,10 +922,8 @@
 	},
 /area/adminlevel/ert_station/pizza_station)
 "jV" = (
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
-	dir = 8;
-	name = "red handrail"
+/obj/structure/barricade/handrail/pizza{
+	dir = 8
 	},
 /turf/open/floor{
 	icon_state = "redyellowfull"
@@ -968,10 +940,8 @@
 	},
 /area/adminlevel/ert_station/pizza_station)
 "kW" = (
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
-	dir = 8;
-	name = "red handrail"
+/obj/structure/barricade/handrail/pizza{
+	dir = 8
 	},
 /obj/structure/prop/souto_land/streamer{
 	dir = 1;
@@ -1000,11 +970,8 @@
 /area/adminlevel/ert_station/pizza_station)
 "lv" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
-	pixel_y = -3;
-	name = "red handrail";
-	layer = 4.1
+/obj/structure/barricade/handrail/pizza{
+	pixel_y = -3
 	},
 /obj/item/reagent_container/food/drinks/drinkingglass/cola{
 	pixel_y = 8;
@@ -1067,21 +1034,17 @@
 	},
 /area/adminlevel/ert_station/pizza_station)
 "lB" = (
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
+/obj/structure/barricade/handrail/pizza{
 	dir = 8;
-	pixel_y = -3;
-	name = "red handrail"
+	pixel_y = -3
 	},
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
+/obj/structure/barricade/handrail/pizza{
 	dir = 1;
-	pixel_y = 12;
-	name = "red handrail";
-	layer = 4.1
+	pixel_y = 12
 	},
 /obj/item/storage/briefcase/stowaway{
-	pixel_y = 11
+	pixel_y = 11;
+	layer = 4.11
 	},
 /obj/structure/prop/souto_land/streamer{
 	dir = 6
@@ -1092,11 +1055,8 @@
 /area/adminlevel/ert_station/pizza_station)
 "lE" = (
 /obj/structure/machinery/vending/dinnerware,
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
-	pixel_y = -3;
-	name = "red handrail";
-	layer = 4.1
+/obj/structure/barricade/handrail/pizza{
+	pixel_y = -3
 	},
 /turf/open/floor/prison{
 	icon_state = "kitchen"
@@ -1172,17 +1132,13 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/pizza_station)
 "mk" = (
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
+/obj/structure/barricade/handrail/pizza{
 	dir = 4;
-	pixel_y = -3;
-	name = "red handrail"
+	pixel_y = -3
 	},
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
+/obj/structure/barricade/handrail/pizza{
 	dir = 4;
-	pixel_y = 16;
-	name = "red handrail"
+	pixel_y = 16
 	},
 /obj/structure/machinery/vending/snack{
 	layer = 4.15;
@@ -1193,11 +1149,9 @@
 	},
 /area/adminlevel/ert_station/pizza_station)
 "mt" = (
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
+/obj/structure/barricade/handrail/pizza{
 	dir = 8;
-	pixel_y = -3;
-	name = "red handrail"
+	pixel_y = -3
 	},
 /obj/structure/bed/chair/bolted{
 	dir = 4;
@@ -1261,11 +1215,8 @@
 /area/adminlevel/ert_station/pizza_station)
 "nA" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
-	pixel_y = -3;
-	name = "red handrail";
-	layer = 4.1
+/obj/structure/barricade/handrail/pizza{
+	pixel_y = -3
 	},
 /obj/item/reagent_container/food/drinks/cans/tonic{
 	pixel_x = -15;
@@ -1542,10 +1493,8 @@
 	},
 /area/adminlevel/ert_station/pizza_station)
 "qU" = (
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
-	dir = 8;
-	name = "red handrail"
+/obj/structure/barricade/handrail/pizza{
+	dir = 8
 	},
 /obj/structure/bed/chair/bolted{
 	dir = 4;
@@ -2136,18 +2085,13 @@
 /turf/open/space/basic,
 /area/space)
 "wP" = (
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
+/obj/structure/barricade/handrail/pizza{
 	dir = 8;
-	pixel_y = -3;
-	name = "red handrail"
+	pixel_y = -3
 	},
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
+/obj/structure/barricade/handrail/pizza{
 	dir = 1;
-	pixel_y = 12;
-	name = "red handrail";
-	layer = 4.1
+	pixel_y = 12
 	},
 /obj/structure/prop/souto_land/streamer{
 	dir = 6
@@ -2312,11 +2256,9 @@
 	},
 /area/adminlevel/ert_station/pizza_station)
 "ys" = (
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
+/obj/structure/barricade/handrail/pizza{
 	dir = 4;
-	pixel_y = -3;
-	name = "red handrail"
+	pixel_y = -3
 	},
 /obj/structure/bed/chair/bolted{
 	dir = 8;
@@ -2337,11 +2279,8 @@
 	},
 /area/adminlevel/ert_station/pizza_station)
 "yE" = (
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
-	pixel_y = -3;
-	name = "red handrail";
-	layer = 4.1
+/obj/structure/barricade/handrail/pizza{
+	pixel_y = -3
 	},
 /obj/structure/surface/table/almayer,
 /obj/item/trash/ceramic_plate{
@@ -2452,11 +2391,8 @@
 /area/adminlevel/ert_station/pizza_station)
 "zx" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
-	pixel_y = -3;
-	name = "red handrail";
-	layer = 4.1
+/obj/structure/barricade/handrail/pizza{
+	pixel_y = -3
 	},
 /obj/item/trash/ceramic_plate{
 	pixel_y = 2
@@ -2475,11 +2411,9 @@
 	},
 /area/adminlevel/ert_station/pizza_station)
 "zz" = (
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
+/obj/structure/barricade/handrail/pizza{
 	dir = 4;
-	pixel_y = -3;
-	name = "red handrail"
+	pixel_y = -3
 	},
 /obj/structure/bed/chair/bolted{
 	dir = 8;
@@ -2565,10 +2499,8 @@
 	},
 /area/adminlevel/ert_station/pizza_station)
 "Aj" = (
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
-	dir = 8;
-	name = "red handrail"
+/obj/structure/barricade/handrail/pizza{
+	dir = 8
 	},
 /obj/structure/sign/safety/bathunisex{
 	pixel_x = 15;
@@ -2826,18 +2758,13 @@
 	},
 /area/adminlevel/ert_station/pizza_station)
 "Db" = (
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
+/obj/structure/barricade/handrail/pizza{
 	dir = 4;
-	pixel_y = -3;
-	name = "red handrail"
+	pixel_y = -3
 	},
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
+/obj/structure/barricade/handrail/pizza{
 	dir = 1;
-	pixel_y = 12;
-	name = "red handrail";
-	layer = 4.1
+	pixel_y = 12
 	},
 /obj/structure/prop/souto_land/streamer{
 	dir = 9
@@ -3081,17 +3008,12 @@
 /area/adminlevel/ert_station/pizza_station)
 "FY" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
+/obj/structure/barricade/handrail/pizza{
 	dir = 8;
-	pixel_y = -3;
-	name = "red handrail"
+	pixel_y = -3
 	},
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
-	pixel_y = -3;
-	name = "red handrail";
-	layer = 4.1
+/obj/structure/barricade/handrail/pizza{
+	pixel_y = -3
 	},
 /obj/item/reagent_container/food/drinks/cans/cola{
 	pixel_y = 6;
@@ -3146,16 +3068,11 @@
 	},
 /area/adminlevel/ert_station/pizza_station)
 "Gj" = (
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
-	dir = 8;
-	name = "red handrail"
+/obj/structure/barricade/handrail/pizza{
+	dir = 8
 	},
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
-	pixel_y = -3;
-	name = "red handrail";
-	layer = 4.1
+/obj/structure/barricade/handrail/pizza{
+	pixel_y = -3
 	},
 /turf/open/floor{
 	icon_state = "redyellowfull"
@@ -3244,11 +3161,8 @@
 /area/space)
 "HL" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
-	pixel_y = -3;
-	name = "red handrail";
-	layer = 4.1
+/obj/structure/barricade/handrail/pizza{
+	pixel_y = -3
 	},
 /obj/item/reagent_container/food/drinks/coffeecup{
 	pixel_x = -5;
@@ -3372,12 +3286,9 @@
 	},
 /area/adminlevel/ert_station/pizza_station)
 "JV" = (
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
+/obj/structure/barricade/handrail/pizza{
 	dir = 1;
-	pixel_y = 12;
-	layer = 4.1;
-	name = "red handrail"
+	pixel_y = 12
 	},
 /obj/structure/bed/chair/bolted{
 	pixel_y = -1
@@ -3388,11 +3299,9 @@
 /area/adminlevel/ert_station/pizza_station)
 "Kb" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
+/obj/structure/barricade/handrail/pizza{
 	dir = 4;
-	pixel_y = -3;
-	name = "red handrail"
+	pixel_y = -3
 	},
 /obj/item/corncob,
 /obj/item/corncob{
@@ -3459,11 +3368,9 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/pizza_station)
 "KC" = (
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
+/obj/structure/barricade/handrail/pizza{
 	dir = 8;
-	pixel_y = -3;
-	name = "red handrail"
+	pixel_y = -3
 	},
 /obj/structure/prop/souto_land/streamer{
 	dir = 6
@@ -3479,11 +3386,8 @@
 /area/adminlevel/ert_station/pizza_station)
 "La" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
-	pixel_y = -3;
-	layer = 4.1;
-	name = "red handrail"
+/obj/structure/barricade/handrail/pizza{
+	pixel_y = -3
 	},
 /obj/item/reagent_container/food/condiment/hotsauce/franks/macho{
 	pixel_y = 11;
@@ -3526,17 +3430,12 @@
 /turf/open/floor/plating/prison,
 /area/adminlevel/ert_station/pizza_station)
 "Ly" = (
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
-	dir = 4;
-	name = "red handrail"
+/obj/structure/barricade/handrail/pizza{
+	dir = 4
 	},
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
+/obj/structure/barricade/handrail/pizza{
 	dir = 1;
-	pixel_y = 12;
-	name = "red handrail";
-	layer = 4.1
+	pixel_y = 12
 	},
 /turf/open/floor{
 	icon_state = "redyellowfull"
@@ -3570,10 +3469,8 @@
 /obj/structure/machinery/vending/coffee{
 	pixel_y = 12
 	},
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
-	pixel_y = -3;
-	name = "red handrail"
+/obj/structure/barricade/handrail/pizza{
+	pixel_y = -3
 	},
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
@@ -3604,11 +3501,9 @@
 /area/adminlevel/ert_station/pizza_station)
 "MK" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
+/obj/structure/barricade/handrail/pizza{
 	dir = 8;
-	pixel_y = -3;
-	name = "red handrail"
+	pixel_y = -3
 	},
 /obj/item/reagent_container/food/drinks/bottle/wine{
 	pixel_y = 7;
@@ -3844,38 +3739,30 @@
 	pixel_y = 3;
 	layer = 3.01
 	},
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
-	dir = 8;
-	name = "red handrail"
+/obj/structure/barricade/handrail/pizza{
+	dir = 8
 	},
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
 	},
 /area/adminlevel/ert_station/pizza_station)
 "OQ" = (
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
+/obj/structure/barricade/handrail/pizza{
 	dir = 1;
-	pixel_y = 12;
-	name = "red handrail";
-	layer = 4.1
+	pixel_y = 12
 	},
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
+/obj/structure/barricade/handrail/pizza{
 	dir = 8;
-	pixel_y = 13;
-	name = "red handrail"
+	pixel_y = 13
 	},
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
-	dir = 8;
-	name = "red handrail"
+/obj/structure/barricade/handrail/pizza{
+	dir = 8
 	},
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_27";
 	pixel_y = 13;
-	pixel_x = -2
+	pixel_x = -2;
+	layer = 4.11
 	},
 /turf/open/floor{
 	icon_state = "redyellowfull"
@@ -3906,22 +3793,21 @@
 	},
 /area/adminlevel/ert_station/pizza_station)
 "Pl" = (
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
+/obj/structure/barricade/handrail/pizza{
 	dir = 1;
-	pixel_y = 12;
-	name = "red handrail";
-	layer = 4.1
+	pixel_y = 12
 	},
 /obj/structure/reagent_dispensers/water_cooler/stacks{
 	density = 0;
 	pixel_x = -8;
-	pixel_y = 15
+	pixel_y = 15;
+	layer = 4.11
 	},
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_17";
 	pixel_x = -8;
-	pixel_y = 2
+	pixel_y = 2;
+	layer = 4.12
 	},
 /turf/open/floor{
 	icon_state = "redyellowfull"
@@ -4058,22 +3944,18 @@
 /turf/open/space/basic,
 /area/space)
 "RN" = (
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
+/obj/structure/barricade/handrail/pizza{
 	dir = 1;
 	pixel_y = 12;
-	layer = 4.1;
-	name = "red handrail"
+	layer = 4.11
 	},
 /turf/open/floor{
 	icon_state = "redyellowfull"
 	},
 /area/adminlevel/ert_station/pizza_station)
 "RP" = (
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
-	dir = 8;
-	name = "red handrail"
+/obj/structure/barricade/handrail/pizza{
+	dir = 8
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -4131,10 +4013,8 @@
 	},
 /area/adminlevel/ert_station/pizza_station)
 "Sp" = (
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
-	dir = 4;
-	name = "red handrail"
+/obj/structure/barricade/handrail/pizza{
+	dir = 4
 	},
 /turf/open/floor{
 	icon_state = "redyellowfull"
@@ -4280,11 +4160,8 @@
 /area/space)
 "TH" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
-	pixel_y = -3;
-	name = "red handrail";
-	layer = 4.1
+/obj/structure/barricade/handrail/pizza{
+	pixel_y = -3
 	},
 /obj/item/storage/box/drinkingglasses{
 	layer = 2.97;
@@ -4361,12 +4238,9 @@
 	},
 /area/adminlevel/ert_station/pizza_station)
 "Ux" = (
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
+/obj/structure/barricade/handrail/pizza{
 	dir = 1;
-	pixel_y = 12;
-	name = "red handrail";
-	layer = 4.1
+	pixel_y = 12
 	},
 /obj/structure/bed/chair/bolted{
 	pixel_y = -1
@@ -4436,12 +4310,9 @@
 /turf/open/space/basic,
 /area/space)
 "VD" = (
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
+/obj/structure/barricade/handrail/pizza{
 	dir = 1;
-	pixel_y = 12;
-	name = "red handrail";
-	layer = 4.1
+	pixel_y = 12
 	},
 /obj/structure/reagent_dispensers/water_cooler/stacks{
 	density = 0;
@@ -4685,11 +4556,8 @@
 	},
 /area/adminlevel/ert_station/pizza_station)
 "XZ" = (
-/obj/structure/barricade/handrail/sandstone/b{
-	color = "#b51c0b";
-	pixel_y = -3;
-	name = "red handrail";
-	layer = 4.1
+/obj/structure/barricade/handrail/pizza{
+	pixel_y = -3
 	},
 /turf/open/floor{
 	icon_state = "redyellowfull"

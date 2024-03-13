@@ -6,14 +6,14 @@
 	desc = "This switch controls the floodlights surrounding the archaeology complex. It only functions when there is power."
 	density = FALSE
 	anchored = TRUE
-	var/ispowered = FALSE
-	var/turned_on = FALSE //has to be toggled in engineering
 	use_power = USE_POWER_IDLE
 	unslashable = TRUE
 	unacidable = TRUE
+	power_machine = TRUE
+	var/ispowered = FALSE
+	var/turned_on = FALSE //has to be toggled in engineering
 	///All floodlights under our control
 	var/list/floodlist = list()
-	power_machine = TRUE
 
 /obj/structure/machinery/colony_floodlight_switch/Initialize(mapload, ...)
 	. = ..()
@@ -100,16 +100,16 @@
 	density = TRUE
 	anchored = TRUE
 	layer = ABOVE_XENO_LAYER
+	unslashable = TRUE
+	unacidable = TRUE
+	use_power = USE_POWER_NONE //It's the switch that uses the actual power, not the lights
+	needs_power = FALSE
 	///Whether it has been smashed by xenos
 	var/damaged = FALSE
 	///Whether the floodlight is switched to on or off. Does not necessarily mean it emits light.
 	var/is_lit = FALSE
-	unslashable = TRUE
-	unacidable = TRUE
 	///The power each floodlight takes up per process
 	var/power_tick = 50
-	use_power = USE_POWER_NONE //It's the switch that uses the actual power, not the lights
-	needs_power = FALSE
 	///Reverse lookup for power grabbing in area
 	var/obj/structure/machinery/colony_floodlight_switch/fswitch = null
 	var/lum_value = 7

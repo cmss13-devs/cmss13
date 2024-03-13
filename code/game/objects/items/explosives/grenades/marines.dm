@@ -477,11 +477,11 @@
 	/// Maximum possible damage before falloff.
 	var/damage = 110
 	/// Factor to mutiply the effect range has on damage.
-	var/falloff_dam_reduction_mult = 14
-	/// Damage is divided by this to get xeno slowdown
+	var/falloff_dam_reduction_mult = 20
+	/// Post falloff calc damage is divided by this to get xeno slowdown
 	var/xeno_slowdown_numerator = 12
-	// Damage is multipled by this to get human stamina damage
-	var/human_stam_dam_factor = 1
+	/// Post falloff calc damage is multipled by this to get human stamina damage
+	var/human_stam_dam_factor = 0.9
 
 /obj/item/explosive/grenade/sebb/get_examine_text(mob/user)
 	. = ..()
@@ -586,8 +586,8 @@
 				to_chat(mob, SPAN_HIGHDANGER("All of your systems jam up as your main bus is overvolted by [damage_applied*2] volts."))
 				mob.visible_message(SPAN_WARNING("[mob] seizes up from the elctric shock"))
 			shocked_human.take_overall_armored_damage(damage_applied, ARMOR_ENERGY, BURN, 90) // 90% chance to be on additional limbs
-			shocked_human.make_dizzy(damage_applied*2)
-			mob.apply_stamina_damage(damage_applied*1) // Stamina damage
+			shocked_human.make_dizzy(damage_applied)
+			mob.apply_stamina_damage(damage_applied*human_stam_dam_factor) // Stamina damage
 			shocked_human.emote("pain")
 		else //nonhuman damage + slow
 			mob.apply_damage(damage_applied, BURN)

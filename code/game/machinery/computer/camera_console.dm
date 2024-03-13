@@ -289,6 +289,11 @@
 /obj/structure/machinery/computer/cameras/mortar/set_broken()
 	return
 
+/obj/structure/machinery/computer/cameras/public_helmet
+	name = "Helmet Camera Interface"
+	desc = "A computer linked to the helmet camera network. Commonly used by bored staff."
+	network = list(CAMERA_NET_OVERWATCH)
+
 /obj/structure/machinery/computer/cameras/dropship
 	name = "abstract dropship camera computer"
 	desc = "A computer to monitor cameras linked to the dropship."

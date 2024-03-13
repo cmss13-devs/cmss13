@@ -95,7 +95,15 @@ Any proc whose main purpose is to advance the tutorial will be hereon referred t
 
 ```
 
-Line-by-line: - `SIGNAL_HANDLER` is necessary as this proc was called via signal. - Here we are unregistering the signal we registered in the previous proc to call this one, which in this case was waiting for the player to leave the tracked cryopod. - Now, we tell the user the next step in the script, which is sent to their screen. - Here we update the player's status panel with similar info to the above line, but far more condensed. - Since we need to access the food vendor, we use the `TUTORIAL_ATOM_FROM_TRACKING()` macro to get a ref to it. - We add a yellow outline to the food vendor to make it more clear what is wanted of the player - The tutorial food vendors are locked to `ACCESS_TUTORIAL_LOCKED` by default, so here we remove that access requirement - And finally, we register a signal for the next script proc, waiting for the user to vend something from the food vendor.
+Line-by-line:
+- `SIGNAL_HANDLER` is necessary as this proc was called via signal.
+- Here we are unregistering the signal we registered in the previous proc to call this one, which inthis case was waiting for the player to leave the tracked cryopod.
+- Now, we tell the user the next step in the script, which is sent to their screen.
+- Here we update the player's status panel with similar info to the above line, but far morecondensed.
+- Since we need to access the food vendor, we use the `TUTORIAL_ATOM_FROM_TRACKING()` macro to get aref to it.
+- We add a yellow outline to the food vendor to make it more clear what is wanted of the player
+- The tutorial food vendors are locked to `ACCESS_TUTORIAL_LOCKED` by default, so here we remove thataccess requirement
+- And finally, we register a signal for the next script proc, waiting for the user to vend something from the food vendor.
 
 ## Step 2.3: Quirks & Tips
 

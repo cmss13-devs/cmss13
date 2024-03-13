@@ -33,8 +33,8 @@
 		to_chat(usr, SPAN_WARNING("You must be a ghost to use this."))
 
 	var/mob/dead/observer/ghost = mob
-	ghost.adminlarva = !ghost.adminlarva
-	to_chat(usr, SPAN_BOLDNOTICE("You have [ghost.adminlarva ? "dis" : "en"]abled your larva protection."))
+	ghost.admin_larva_protection = !ghost.admin_larva_protection
+	to_chat(usr, SPAN_BOLDNOTICE("You have [ghost.admin_larva_protection ? "en" : "dis"]abled your larva protection."))
 
 /client/proc/unban_panel()
 	set name = "Unban Panel"

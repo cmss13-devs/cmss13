@@ -42,7 +42,7 @@
 
 /obj/structure/machinery/colony_floodlight_switch/process()
 	var/lightpower = 0
-	for(var/obj/structure/machinery/colony_floodlight/floodlight in floodlist)
+	for(var/obj/structure/machinery/colony_floodlight/floodlight as anything in floodlist)
 		if(!floodlight.is_lit)
 			continue
 		lightpower += floodlight.power_tick
@@ -102,7 +102,7 @@
 	layer = ABOVE_XENO_LAYER
 	///Whether it has been smashed by xenos
 	var/damaged = FALSE
-	///whether the floodlight is switched to on or off. Does not necessarily mean it emits light.
+	///Whether the floodlight is switched to on or off. Does not necessarily mean it emits light.
 	var/is_lit = FALSE
 	unslashable = TRUE
 	unacidable = TRUE
@@ -113,7 +113,7 @@
 	///Reverse lookup for power grabbing in area
 	var/obj/structure/machinery/colony_floodlight_switch/fswitch = null
 	var/lum_value = 7
-	var/repair_state = 0
+	var/repair_state = FLOODLIGHT_REPAIR_UNSCREW
 	health = 150
 
 /obj/structure/machinery/colony_floodlight/Destroy()

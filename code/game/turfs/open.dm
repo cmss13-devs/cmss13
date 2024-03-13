@@ -1236,3 +1236,42 @@
 	icon_state = "outerhull_dir"
 /turf/open/engineership/engineer_floor14
 	icon_state = "engineer_floor_corner3"
+
+// Pillars
+/turf/open/engineership/pillars
+	name = "strange metal pillar"
+	desc = "A strange metal pillar, unlike any metal you've seen before."
+	icon_state = "eng_pillar1"
+
+/turf/open/engineership/pillars/north/pillar1
+	icon_state = "eng_pillar1"
+/turf/open/engineership/pillars/north/pillar2
+	icon_state = "eng_pillar2"
+/turf/open/engineership/pillars/north/pillar3
+	icon_state = "eng_pillar3"
+/turf/open/engineership/pillars/north/pillar4
+	icon_state = "eng_pillar4"
+/turf/open/engineership/pillars/south/pillarsouth1
+	icon_state = "eng_pillarsouth1"
+/turf/open/engineership/pillars/south/pillarsouth2
+	icon_state = "eng_pillarsouth2"
+/turf/open/engineership/pillars/south/pillarsouth3
+	icon_state = "eng_pillarsouth3"
+/turf/open/engineership/pillars/south/pillarsouth4
+	icon_state = "eng_pillarsouth4"
+/turf/open/engineership/pillars/west/pillarwest1
+	icon_state = "eng_pillarwest1"
+/turf/open/engineership/pillars/west/pillarwest2
+	icon_state = "eng_pillarwest2"
+/turf/open/engineership/pillars/west/pillarwest3
+	icon_state = "eng_pillarwest3"
+/turf/open/engineership/pillars/west/pillarwest4
+	icon_state = "eng_pillarwest4"
+/turf/open/engineership/pillars/east/pillareast1
+	icon_state = "eng_pillareast1"
+/turf/open/engineership/pillars/east/pillareast2
+	icon_state = "eng_pillareast2"
+/turf/open/engineership/pillars/east/pillareast3
+	icon_state = "eng_pillareast3"
+/turf/open/engineership/pillars/east/pillareast4
+	icon_state = "eng_pillareast4"

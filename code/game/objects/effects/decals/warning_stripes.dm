@@ -282,3 +282,8 @@
 /obj/effect/hybrisa/decal/trash
 	icon = 'icons/effects/hybrisa_decals.dmi'
 	icon_state = "trash_1"
+
+/// Engineer_ship
+/obj/effect/hybrisa/decal/engineership_corners
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "engPlatform_corners"

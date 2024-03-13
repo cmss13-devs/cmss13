@@ -2212,8 +2212,42 @@
 // Engineer
 
 /obj/structure/prop/hybrisa/engineer
-	icon = 'icons/obj/structures/props/blackgoocontainers.dmi'
-	icon_state = "blackgoocontainer1"
+	icon = 'icons/obj/structures/props/engineerJockey.dmi'
+	icon_state = "spacejockey"
+
+/obj/structure/prop/hybrisa/engineer/spacejockey
+	name = "Giant Pilot"
+	desc = "temp."
+	icon = 'icons/obj/structures/props/engineerJockey.dmi'
+	icon_state = "spacejockey"
+	unslashable = TRUE
+	unacidable = TRUE
+	indestructible = TRUE
+	layer = ABOVE_MOB_LAYER
+
+/obj/structure/prop/hybrisa/engineer/giantpodbroken
+	name = "Giant Pod"
+	desc = "temp."
+	icon = 'icons/obj/structures/props/engineerPod.dmi'
+	icon_state = "pod_broken"
+	bound_height = 96
+	bound_width = 64
+	unslashable = TRUE
+	unacidable = TRUE
+	indestructible = TRUE
+	layer = ABOVE_MOB_LAYER
+	density = TRUE
+obj/structure/prop/hybrisa/engineer/giantpod
+	name = "Giant Pod"
+	desc = "temp."
+	icon = 'icons/obj/structures/props/engineerPod.dmi'
+	icon_state = "pod"
+	bound_height = 96
+	bound_width = 64
+	unslashable = TRUE
+	unacidable = TRUE
+	indestructible = TRUE
+	density = TRUE
 
 /obj/structure/prop/hybrisa/engineer/engineerpillar
 	icon = 'icons/obj/structures/props/zenithengineerpillarangled.dmi'

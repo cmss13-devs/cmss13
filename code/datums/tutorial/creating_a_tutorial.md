@@ -1,7 +1,5 @@
 # Tutorial Creation
 
-[ToC]
-
 ## Step 1: Identifying the Goal
 
 Your first objective when making a tutorial should be to have a clear and concise vision of what you want the tutorial to convey to the user. People absorb information better in smaller chunks, so you should ideally keep a tutorial to one section of information at a time.

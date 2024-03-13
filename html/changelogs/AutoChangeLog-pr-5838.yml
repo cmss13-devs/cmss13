@@ -1,0 +1,7 @@
+author: "nauticall"
+delete-after: True
+changes:
+  - imageadd: "Resprites first aid kits, coffins, material stacks, mortar shells, and chemistry items. Chemistry sprites ported from Baystation / Aurora."
+  - bugfix: "Recolors several reagent sprites to be more in-line with their established colors, such as on autoinjectors."
+  - bugfix: "Fixed invisible cloth tables."
+  - bugfix: "Fixed wrong shading on the large floodlight."

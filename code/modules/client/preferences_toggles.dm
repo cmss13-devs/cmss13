@@ -31,7 +31,7 @@
 	set desc = "Toggle hearing a notification of announcements while being an observer."
 	prefs.toggles_sound ^= SOUND_OBSERVER_ANNOUNCEMENTS
 	prefs.save_preferences()
-	to_chat(usr, SPAN_BOLDNOTICE("You will [(prefs.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS) ? "now" : "no longer"] hear a sound of announcements while being an observer."))
+	to_chat(usr, SPAN_BOLDNOTICE("You will [(prefs.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS) ? "now" : "no longer"] hear announcement sounds as an observer."))
 
 /client/verb/toggletitlemusic()
 	set name = "Hear/Silence LobbyMusic"

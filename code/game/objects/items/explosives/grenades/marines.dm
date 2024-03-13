@@ -475,7 +475,7 @@
 	/// Maximum range of effect
 	var/range = 5
 	/// Maximum possible damage before falloff.
-	var/damage = 120
+	var/damage = 110
 	/// Factor to mutiply the effect range has on damage.
 	var/falloff_dam_reduction_mult = 14
 	/// Damage is divided by this to get xeno slowdown
@@ -508,11 +508,11 @@
 	if(user_turf && (user_turf.density || locate(/obj/structure/fence) in user_turf))
 		to_chat(user, SPAN_WARNING("You can't plant a mine here."))
 		return
-	
+
 	if(Adjacent(/obj/item/explosive/mine)) // bit more strict on this than normal mines
 		to_chat(user, SPAN_WARNING("Too close to another mine! Plant it somewhere less obvious."))
 		return
-	
+
 	user.visible_message(SPAN_NOTICE("[user] starts deploying [src]."),
 		SPAN_NOTICE("You switch [src] into landmine mode and start placing it..."))
 	playsound(user.loc, 'sound/effects/thud.ogg', 40)
@@ -529,23 +529,22 @@
 
 /obj/item/explosive/grenade/sebb/activate()
 	..()
-	var/soundtime
-	var/beeplen = 5.7 // length of the sound effect
-	if(det_time > beeplen)
-		soundtime = det_time - (det_time) /// TODO find a way to assure that the sound always goes off 0.57 seconds before it blows up
-	else 
-		soundtime = 0 // too shhort for sound to complete before explosion
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), src.loc, 'sound/effects/sebb_beep.ogg', 60, 0, 10), soundtime)
+	var/beeplen = 6 // Actual length of the sound rounded up to nearest decisecond
+	var/soundtime = det_time - beeplen
+	if(det_time < beeplen) // just play sound if detonation shorter than the sound
+		playsound(src.loc, 'sound/effects/sebb_explode.ogg', 90, 0, 10)
+	else
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), src.loc, 'sound/effects/sebb_beep.ogg', 60, 0, 10), soundtime)
 
 
 /obj/item/explosive/grenade/sebb/prime()
 	var/datum/effect_system/spark_spread/sparka = new
 	var/turf/sebb_turf = get_turf(src)
-	var/list/full_range = oview(range, src) // Fill a list of stuff in the range so we won't have to spam oview 
+	var/list/full_range = oview(range, src) // Fill a list of stuff in the range so we won't have to spam oview
 	new /obj/effect/overlay/temp/sebb(sebb_turf)
 
-	playsound(src.loc, 'sound/effects/sebb_explode.ogg', 100, 0, 10)
-	
+	playsound(src.loc, 'sound/effects/sebb_explode.ogg', 90, 0, 10)
+
 	for(var/obj/structure/machinery/defenses/sentry/sentry_stun in full_range)
 		sentry_stun.sentry_range = 0 // Temporarily "disable" the sentry by killing its range then setting it back.
 		new /obj/effect/overlay/temp/elec_arc(get_turf(sentry_stun))  // sprites are meh but we need visual indication that the sentry was messed up
@@ -566,14 +565,14 @@
 	for(var/mob/living/carbon/mob in full_range) // no legacy mob support
 
 		var/mob_dist = get_dist(src, mob) // Distance from mob
-		
-		/** 
+
+		/**
 		 * Damage equation: damage - (mob distance * falloff_dam_reduction_mult)
 		 * Example: A marine is 3 tiles out, the distance (3) is multiplied by falloff_dam_reduction_mult to get falloff.
 		 * The raw damage is minused by falloff to get actual damage
 		*/
-		
-		var/falloff = mob_dist * falloff_dam_reduction_mult 
+
+		var/falloff = mob_dist * falloff_dam_reduction_mult
 		var/damage_applied = damage - falloff // Final damage applied after falloff calc
 		sparka.set_up(1, 1, mob)
 		sparka.start()
@@ -590,26 +589,24 @@
 			shocked_human.make_dizzy(damage_applied*2)
 			mob.apply_stamina_damage(damage_applied*1) // Stamina damage
 			shocked_human.emote("pain")
-			(mob_dist < (range-1)
 		else //nonhuman damage + slow
 			mob.apply_damage(damage_applied, BURN)
-			if((mob_dist < (range-3)) // 2 tiles around small superslow
-				mob.Superslow(2)	
+			if((mob_dist < (range-3))) // 2 tiles around small superslow
+				mob.Superslow(2)
 			mob.Slow(damage_applied/11)
 			to_chat_forced(world, "slowdown: [damage_applied/11] SECONDS") // REMOVETHIS REMOVETHIS TO TEST
 
 		if(mob_dist < 1) // Range based stuff, standing ontop of the equivalent of a canned lighting bolt should mess you up.
-			mob.KnockDown(1)
-			mob.Superslow(5) // Note that humans will likely be in stamcrit also so the same could be applied
+			mob.Superslow(3) // Note that humans will likely be in stamcrit so it's always worse for them when ontop of it and we can just balancing it on xenos.
 			mob.eye_blurry = damage_applied/4
-
+			mob.Daze(2)
 		else if((mob_dist < (range-1)) && (mob.mob_size < MOB_SIZE_XENO_VERY_SMALL)) // Flicker stun humans that are closer to the grenade and larvas too.
 			mob.apply_effect(1 + (damage_applied/100),WEAKEN) // 1 + damage/40
 			mob.eye_blurry = damage_applied/8
 
 		else
 			to_chat(mob, SPAN_HIGHDANGER("Your entire body seizes up as a powerful shock courses through it!"))
-		
+
 
 		new /obj/effect/overlay/temp/emp_sparks(mob)
 		mob.make_jittery(damage_applied*2)
@@ -619,7 +616,7 @@
 
 /obj/item/explosive/grenade/sebb/primed
 	desc = "A G2 Electroshock Grenade, looks like it's quite angry! Oh shit!"
-	det_time = 6 // 0.6 seconds to blow up. We want them to get caught if they go through.
+	det_time = 7 // 0.7 seconds to blow up. We want them to get caught if they go through.
 
 /obj/item/explosive/grenade/sebb/primed/Initialize()
 	. = ..()

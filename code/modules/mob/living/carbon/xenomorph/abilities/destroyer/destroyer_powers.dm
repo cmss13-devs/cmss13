@@ -139,26 +139,23 @@
 	var/mob/living/carbon/xenomorph/xeno = owner
 	XENO_ACTION_CHECK(xeno)
 
-	if(!xeno.check_state())
-		return
-	if(!action_cooldown_check())
-		return
-	if(!check_plasma_owner(src.plasma_cost))
-		return
-
 	if(get_dist(owner, target) > range)
 		to_chat(xeno, SPAN_XENONOTICE("We cannot leap that far!"))
 		return
 
 	var/turf/target_turf = get_turf(target)
 
-	if(istype(target_turf, /turf/closed))
-		to_chat(xeno, SPAN_XENONOTICE("We cannot jump into that area!"))
+	if(!target_turf || target_turf.density)
+		to_chat(xeno, SPAN_XENONOTICE("We cannot leap to that!"))
 		return
 
 	if(istype(target_turf, /turf/open/space))
 		to_chat(xeno, SPAN_XENONOTICE("It would not be wise to try to leap there..."))
 		return
+
+	var/area/target_area = get_area(target_turf)
+	if(target_area.flags_area & AREA_NOTUNNEL)
+		to_chat(xeno, SPAN_XENONOTICE("We cannot leap to that area!"))
 
 	var/list/leap_line = get_line(xeno, target)
 	for(var/turf/jump_turf in leap_line)
@@ -167,7 +164,7 @@
 			return
 
 		for(var/obj/structure/possible_blocker in jump_turf)
-			if(!possible_blocker.throwpass)
+			if(possible_blocker.density && !possible_blocker.throwpass)
 				to_chat(xeno, SPAN_XENONOTICE("There's something blocking us from leaping."))
 				return
 
@@ -212,7 +209,7 @@
 	owner.alpha = 255
 	animate(owner, alpha = 0, transform = matrix()*0.9, time = 3, easing = BOUNCE_EASING)
 	for(var/i in 1 to 3)
-		sleep(0.1 SECONDS)
+		sleep(1 DECISECONDS)
 		if(QDELETED(owner) || owner.stat == DEAD) //we got hit and died, rip us
 
 			//Initial effect
@@ -281,6 +278,9 @@
 			var/throwtarget = get_edge_target_turf(owner, throw_dir)
 			item.throw_atom(throwtarget, 2, SPEED_REALLY_FAST, owner, TRUE)
 
+	for(var/obj/structure/structure in orange(1, owner))
+		structure.ex_act(300, get_dir(owner, structure))
+	/*
 	// Break windows in the aoe
 
 	for(var/obj/structure/window/window in range(1, owner))
@@ -291,7 +291,7 @@
 	// Barricades suffer heavy damage
 	for(var/obj/structure/barricade/cade in orange(2, owner))
 		cade.take_damage(250)
-
+	*/
 	// Shake the camera of any mobs in the vicinity
 	for(var/mob/living in range(7, owner))
 		shake_camera(living, 15, 1)

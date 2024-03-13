@@ -3,6 +3,9 @@
 /obj/item/tool/wirecutters/clippers
 	name = "plant clippers"
 	desc = "A tool used to take samples from plants."
+	icon = 'icons/obj/items/items.dmi'
+	icon_state = "pclippers"
+	item_state = "pclippers"
 
 /obj/item/device/analyzer/plant_analyzer
 	name = "plant analyzer"

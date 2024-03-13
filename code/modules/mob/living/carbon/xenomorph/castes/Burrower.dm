@@ -74,8 +74,6 @@
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
 
-	mutation_type = BURROWER_NORMAL
-
 	icon_xeno = 'icons/mob/xenos/burrower.dmi'
 	icon_xenonid = 'icons/mob/xenonids/burrower.dmi'
 
@@ -109,11 +107,3 @@
 
 /datum/behavior_delegate/burrower_base
 	name = "Base Burrower Behavior Delegate"
-
-/datum/behavior_delegate/burrower_base/on_update_icons()
-	if(bound_xeno.stat == DEAD)
-		return
-
-	if(HAS_TRAIT(bound_xeno, TRAIT_ABILITY_BURROWED))
-		bound_xeno.icon_state = "[bound_xeno.mutation_icon_state] Burrower Burrowed"
-		return TRUE

@@ -49,11 +49,11 @@
 	drop_flame(get_turf(P), P.weapon_cause_data)
 
 /datum/ammo/flamethrower/tank_flamer
-	flamer_reagent_type = /datum/reagent/napalm/blue
+	flamer_reagent_id = "napalmx"
 
 /datum/ammo/flamethrower/sentry_flamer
 	flags_ammo_behavior = AMMO_IGNORE_ARMOR|AMMO_IGNORE_COVER|AMMO_FLAME
-	flamer_reagent_type = /datum/reagent/napalm/blue
+	flamer_reagent_id = "napalmx"
 
 	accuracy = HIT_ACCURACY_TIER_8
 	accurate_range = 6

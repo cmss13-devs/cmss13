@@ -42,8 +42,6 @@
 
 /obj/structure/machinery/power/smes/Initialize()
 	. = ..()
-	if(!powernet)
-		connect_to_network()
 
 	dir_loop:
 		for(var/d in GLOB.cardinals)
@@ -56,13 +54,24 @@
 		stat |= BROKEN
 		return
 	terminal.master = src
-	if(!terminal.powernet)
-		terminal.connect_to_network()
 	updateicon()
 	start_processing()
 
 	if(!should_be_mapped)
 		warning("Non-buildable or Non-magical SMES at [src.x]X [src.y]Y [src.z]Z")
+
+	return INITIALIZE_HINT_ROUNDSTART
+
+/obj/structure/machinery/power/smes/LateInitialize()
+	. = ..()
+
+	if(QDELETED(src))
+		return
+
+	if(!powernet && !connect_to_network())
+		CRASH("[src] has failed to connect to a power network. Check that it has been mapped correctly.")
+	if(terminal && !terminal.powernet)
+		terminal.connect_to_network()
 
 /obj/structure/machinery/power/smes/proc/updateicon()
 	overlays.Cut()

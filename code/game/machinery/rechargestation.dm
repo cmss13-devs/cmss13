@@ -8,14 +8,23 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 50
 	active_power_usage = 50
-	var/mob/living/occupant = null
-	var/max_internal_charge = 15000 // Two charged borgs in a row with default cell
-	var/current_internal_charge = 15000 // Starts charged, to prevent power surges on round start
-	var/charging_cap_active = 25000 // Active Cap - When cyborg is inside
-	var/charging_cap_passive = 2500 // Passive Cap - Recharging internal capacitor when no cyborg is inside
-	var/icon_update_tick = 0 // Used to update icon only once every 10 ticks
-	var/known_implants = list(/obj/item/implant/chem, /obj/item/implant/death_alarm, /obj/item/implant/loyalty, /obj/item/implant/tracking, /obj/item/implant/neurostim)
 	can_buckle = TRUE
+	/// the borg inside
+	var/mob/living/occupant = null
+	/// Two charged borgs in a row with default cell
+	var/max_internal_charge = 15000
+	/// Starts charged, to prevent power surges on round start
+	var/current_internal_charge = 15000
+	/// Active Cap - When cyborg is inside
+	var/charging_cap_active = 25000
+	/// Passive Cap - Recharging internal capacitor when no cyborg is inside
+	var/charging_cap_passive = 2500
+	/// Used to update icon only once every 10 ticks
+	var/icon_update_tick = 0
+	/// implants to not remove
+	var/known_implants = list(/obj/item/implant/chem, /obj/item/implant/death_alarm, /obj/item/implant/loyalty, /obj/item/implant/tracking, /obj/item/implant/neurostim)
+	///stun time upon exiting, if at all
+	var/exit_stun = 2
 
 
 /obj/structure/machinery/recharge_station/Initialize(mapload, ...)
@@ -183,18 +192,23 @@
 
 
 /obj/structure/machinery/recharge_station/proc/go_out()
-	if(!( src.occupant ))
+	if(!occupant)
 		return
-	//for(var/obj/O in src)
-	// O.forceMove(src.loc)
-	if (src.occupant.client)
-		src.occupant.client.eye = src.occupant.client.mob
-		src.occupant.client.perspective = MOB_PERSPECTIVE
-	src.occupant.forceMove(loc)
-	src.occupant = null
+	var/mob/living/synth = occupant
+
+	if(synth.client)
+		synth.client.eye = synth.client.mob
+		synth.client.perspective = MOB_PERSPECTIVE
+
+	synth.forceMove(loc)
+	if(exit_stun)
+		synth.Stun(exit_stun) //Action delay when going out of a closet
+	if(synth.mobility_flags & MOBILITY_MOVE)
+		synth.visible_message(SPAN_WARNING("[synth] suddenly gets out of [src]!"), SPAN_WARNING("You get out of [src] and get your bearings!"))
+
+	occupant = null
 	update_icon()
 	update_use_power(USE_POWER_IDLE)
-	return
 
 /obj/structure/machinery/recharge_station/verb/move_eject()
 	set category = "Object"

@@ -1,4 +1,0 @@
-author: "SabreML"
-delete-after: True
-changes:
-  - qol: "Added a failure message when trying to remove a built-in helmet visor."

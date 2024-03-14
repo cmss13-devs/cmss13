@@ -13,10 +13,9 @@ export const PartFabricator = (props) => {
   );
 };
 
-const GeneralPanel = (props) => {
-  const { act, data } = useBackend();
-  const { points, Equipment, Ammo } = data;
-
+const GeneralPanel = (props, context) => {
+  const { act, data } = useBackend(context);
+  const { points, omnisentrygun_price, Equipment, Ammo } = data;
   return (
     <div>
       <Section>Points: {points}</Section>
@@ -37,8 +36,8 @@ const GeneralPanel = (props) => {
                       tooltipPosition="left"
                       onClick={() =>
                         act('produce', {
-                          path: Equipment.path,
-                          cost: Equipment.cost,
+                          index: Equipment.index,
+                          is_ammo: Equipment.is_ammo,
                         })
                       }
                     />
@@ -57,18 +56,34 @@ const GeneralPanel = (props) => {
                   label={Ammo.name}
                   className="underline"
                   buttons={
-                    <Button
-                      content={'Fabricate  (' + Ammo.cost + ')'}
-                      icon="wrench"
-                      tooltip={Ammo.desc}
-                      tooltipPosition="left"
-                      onClick={() =>
-                        act('produce', {
-                          path: Ammo.path,
-                          cost: Ammo.cost,
-                        })
-                      }
-                    />
+                    Ammo.name === 'A/C-49-P Air Deployable Sentry' ? (
+                      <Button
+                        content={'Fabricate  (' + omnisentrygun_price + ')'}
+                        icon="wrench"
+                        tooltip={Ammo.desc}
+                        tooltipPosition="left"
+                        cost={omnisentrygun_price}
+                        onClick={() =>
+                          act('produce', {
+                            index: Ammo.index,
+                            is_ammo: Ammo.is_ammo,
+                          })
+                        }
+                      />
+                    ) : (
+                      <Button
+                        content={'Fabricate  (' + Ammo.cost + ')'}
+                        icon="wrench"
+                        tooltip={Ammo.desc}
+                        tooltipPosition="left"
+                        onClick={() =>
+                          act('produce', {
+                            index: Ammo.index,
+                            is_ammo: Ammo.is_ammo,
+                          })
+                        }
+                      />
+                    )
                   }
                 />
               ))}

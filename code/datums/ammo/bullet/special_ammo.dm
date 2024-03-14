@@ -130,6 +130,9 @@
 /datum/ammo/bullet/machinegun/auto/set_bullet_traits()
 	return
 
+/datum/ammo/bullet/machinegun/auto/medium // for T37, UPP MMG
+	name = "medium machinegun bullet"
+
 /datum/ammo/bullet/minigun
 	name = "minigun bullet"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM

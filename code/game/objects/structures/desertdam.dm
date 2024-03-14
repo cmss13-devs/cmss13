@@ -24,3 +24,8 @@
 	name = "road"
 	icon_state = "stop_decal1"
 	layer = TURF_LAYER
+
+/obj/structure/desertdam/decals/road_stop_ru
+	name = "road"
+	icon_state = "stop_decal1_ru"
+	layer = TURF_LAYER

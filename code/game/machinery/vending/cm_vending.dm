@@ -561,8 +561,9 @@ GLOBAL_LIST_EMPTY(vending_products)
 							var/specialist_assignment
 							switch(p_name)
 								if("Scout Set")
-									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SCOUT)
-									specialist_assignment = "Scout"
+									to_chat(user, SPAN_WARNING("Nuh uh. No scout on HvH."))
+									vend_fail()
+									return FALSE
 								if("Sniper Set")
 									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SNIPER)
 									specialist_assignment = "Sniper"

@@ -67,6 +67,16 @@
 	desc = "An old cargo truck, seems to be broken down."
 	icon_state = "truck_cargo"
 
+/obj/structure/prop/dam/truck/upp
+	name = "UPP truck"
+	desc = "An old truck used by the UPP. You don't have the keys for it."
+	icon_state = "truck_upp"
+
+/obj/structure/prop/dam/truck/upp/mining
+	name = "UPP mining truck"
+	desc = "AN old truck used by the UPP. This one is carrying various mining equipment for fluid extraction. You don't have the keys for it."
+	icon_state = "truck_upp_mining"
+
 /obj/structure/prop/dam/van
 	name = "van"
 	desc = "An old van, seems to be broken down."
@@ -79,6 +89,11 @@
 
 /obj/structure/prop/dam/van/damaged
 	icon_state = "van_damaged"
+
+/obj/structure/prop/dam/van/ambulance
+	name = "Ambulance truck"
+	desc = "An ambulance, probably used by some hospital nearby. You don't have the keys for it."
+	icon_state = "van_ambulance"
 
 /obj/structure/prop/dam/crane
 	name = "cargo crane"

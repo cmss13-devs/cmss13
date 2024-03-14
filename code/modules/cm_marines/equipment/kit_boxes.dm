@@ -258,12 +258,8 @@
 			specialist_assignment = "Sniper"
 			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SNIPER)
 		if("Scout")
-			spec_box = new /obj/item/storage/box/spec/scout(T)
-			specialist_assignment = "Scout"
-			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SCOUT)
-			//this is to be able to use C4s that are coming with the kit
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-				user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)
+			to_chat(user, SPAN_WARNING("Nuh uh. No scout on HvH."))
+			return
 		if("Demo")
 			spec_box = new /obj/item/storage/box/spec/demolitionist(T)
 			specialist_assignment = "Demo"

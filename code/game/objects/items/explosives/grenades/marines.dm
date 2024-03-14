@@ -414,7 +414,7 @@
 
 /obj/item/explosive/grenade/smokebomb/prime()
 	playsound(src.loc, 'sound/effects/smoke.ogg', 25, 1, 4)
-	smoke.set_up(smoke_radius, 0, get_turf(src), null, 6)
+	smoke.set_up(smoke_radius, 0, get_turf(src), null, 30)
 	smoke.start()
 	qdel(src)
 
@@ -449,7 +449,7 @@
 
 /obj/item/explosive/grenade/phosphorus/prime()
 	playsound(src.loc, 'sound/effects/smoke.ogg', 25, 1, 4)
-	smoke.set_up(smoke_radius, 0, get_turf(src))
+	smoke.set_up(smoke_radius, 0, get_turf(src), null, 18)
 	smoke.start()
 	qdel(src)
 

@@ -590,6 +590,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			dat += "<b>tgui Window Mode:</b> <a href='?_src_=prefs;preference=tgui_fancy'><b>[(tgui_fancy) ? "Fancy (default)" : "Compatible (slower)"]</b></a><br>"
 			dat += "<b>tgui Window Placement:</b> <a href='?_src_=prefs;preference=tgui_lock'><b>[(tgui_lock) ? "Primary monitor" : "Free (default)"]</b></a><br>"
 			dat += "<b>Play Admin Sounds:</b> <a href='?_src_=prefs;preference=hear_admin_sounds'><b>[(toggles_sound & SOUND_MIDI) ? "Yes" : "No"]</b></a><br>"
+			dat += "<b>Play Announcement Sounds As Ghost:</b> <a href='?_src_=prefs;preference=hear_observer_announcements'><b>[(toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Toggle Meme or Atmospheric Sounds:</b> <a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_admin_sound_types'>Toggle</a><br>"
 			dat += "<b>Set Eye Blur Type:</b> <a href='?src=\ref[src];action=proccall;procpath=/client/proc/set_eye_blur_type'>Set</a><br>"
 			dat += "<b>Play Lobby Music:</b> <a href='?_src_=prefs;preference=lobby_music'><b>[(toggles_sound & SOUND_LOBBY) ? "Yes" : "No"]</b></a><br>"
@@ -1818,6 +1819,9 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					toggles_sound ^= SOUND_MIDI
 					if(!(toggles_sound & SOUND_MIDI))
 						user?.client?.tgui_panel?.stop_music()
+
+				if("hear_observer_announcements")
+					toggles_sound ^= SOUND_OBSERVER_ANNOUNCEMENTS
 
 				if("lobby_music")
 					toggles_sound ^= SOUND_LOBBY

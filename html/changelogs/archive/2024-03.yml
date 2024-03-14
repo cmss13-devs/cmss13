@@ -149,3 +149,14 @@
   - bugfix: Doctors calling themselves surgeons now properly get playtime medals.
   - bugfix: Playtime medals now use assignments instead of backend paygrade codes
       (e.g. "Awarded to Squad Leader John Doe" instead of "Awarded to ME5 John Doe").
+2024-03-14:
+  Vicacrov:
+  - rscadd: Added an option to hear or silence announcement audio cues (queen screech,
+      CIC beep, etc.) while being an observer.
+  nauticall:
+  - imageadd: Resprites first aid kits, coffins, material stacks, mortar shells, and
+      chemistry items. Chemistry sprites ported from Baystation / Aurora.
+  - bugfix: Recolors several reagent sprites to be more in-line with their established
+      colors, such as on autoinjectors.
+  - bugfix: Fixed invisible cloth tables.
+  - bugfix: Fixed wrong shading on the large floodlight.

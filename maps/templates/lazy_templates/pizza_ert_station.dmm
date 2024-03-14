@@ -3737,7 +3737,7 @@
 "OK" = (
 /obj/structure/machinery/vending/cigarette{
 	pixel_y = 3;
-	layer = 3.01
+	layer = 4.15
 	},
 /obj/structure/barricade/handrail/pizza{
 	dir = 8

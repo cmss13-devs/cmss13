@@ -117,6 +117,8 @@
 		/obj/item/ammo_magazine/sniper/anti_materiel,
 		/obj/item/ammo_magazine/sniper/anti_materiel,
 		/obj/item/ammo_magazine/sniper/anti_materiel,
+		/obj/item/ammo_magazine/sniper/anti_materiel,
+		/obj/item/ammo_magazine/sniper/anti_materiel,
 	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/ammo

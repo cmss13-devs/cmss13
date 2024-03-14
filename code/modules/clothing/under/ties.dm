@@ -767,7 +767,7 @@
 
 /obj/item/storage/internal/accessory/ifak
 	w_class = SIZE_LARGE
-	storage_slots = 6
+	storage_slots = 5
 	max_w_class = SIZE_SMALL
 	can_hold = list(
 		/obj/item/stack/medical/ointment,
@@ -779,7 +779,6 @@
 	)
 
 /obj/item/storage/internal/accessory/ifak/fill_preset_inventory()
-	new /obj/item/reagent_container/hypospray/autoinjector/tricord(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/tricord(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/tramadol(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)

@@ -526,6 +526,7 @@
 	jitteriness = 0
 	dizziness = 0
 	stamina.current_stamina = 100
+	
 	// restore all of a human's blood
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src

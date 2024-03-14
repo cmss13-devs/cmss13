@@ -1,4 +1,0 @@
-author: "Vicacrov"
-delete-after: True
-changes:
-  - rscadd: "Added an option to hear or silence announcement audio cues (queen screech, CIC beep, etc.) while being an observer."

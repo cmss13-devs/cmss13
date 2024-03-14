@@ -13,19 +13,11 @@
 			sq.max_engineers = engi_slot_formula(count)
 
 /datum/job/marine/engineer/get_total_positions(latejoin=0)
-	var/slots = engi_slot_formula(get_total_marines())
-
-	if(slots <= total_positions_so_far)
-		slots = total_positions_so_far
-	else
-		total_positions_so_far = slots
-
-	if(latejoin)
-		for(var/datum/squad/sq in GLOB.RoleAuthority.squads)
-			if(sq)
-				sq.max_engineers = slots
-
-	return (slots*4)
+	var/real_max_positions = 0
+	for(var/datum/squad/squad in GLOB.RoleAuthority.squads)
+		if(squad.roundstart && squad.usable && squad.faction == FACTION_MARINE && squad.name != "Root")
+			real_max_positions += squad.max_engineers
+	return real_max_positions
 
 /datum/job/marine/engineer/whiskey
 	title = JOB_WO_SQUAD_ENGINEER

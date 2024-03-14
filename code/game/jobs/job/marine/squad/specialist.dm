@@ -12,16 +12,11 @@
 	spawn_positions = spec_slot_formula(count)
 
 /datum/job/marine/specialist/get_total_positions(latejoin = 0)
-	var/positions = spawn_positions
-	if(latejoin)
-		positions = spec_slot_formula(get_total_marines())
-		if(positions <= total_positions_so_far)
-			positions = total_positions_so_far
-		else
-			total_positions_so_far = positions
-	else
-		total_positions_so_far = positions
-	return positions
+	var/real_max_positions = 0
+	for(var/datum/squad/squad in GLOB.RoleAuthority.squads)
+		if(squad.roundstart && squad.usable && squad.faction == FACTION_MARINE && squad.name != "Root")
+			real_max_positions += squad.max_specialists
+	return real_max_positions
 
 
 /datum/job/marine/specialist/whiskey

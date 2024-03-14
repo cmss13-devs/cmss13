@@ -13,19 +13,11 @@
 			sq.max_medics = medic_slot_formula(count)
 
 /datum/job/marine/medic/get_total_positions(latejoin=0)
-	var/slots = medic_slot_formula(get_total_marines())
-
-	if(slots <= total_positions_so_far)
-		slots = total_positions_so_far
-	else
-		total_positions_so_far = slots
-
-	if(latejoin)
-		for(var/datum/squad/sq in GLOB.RoleAuthority.squads)
-			if(sq)
-				sq.max_medics = slots
-
-	return (slots*4)
+	var/real_max_positions = 0
+	for(var/datum/squad/squad in GLOB.RoleAuthority.squads)
+		if(squad.roundstart && squad.usable && squad.faction == FACTION_MARINE && squad.name != "Root")
+			real_max_positions += squad.max_medics
+	return real_max_positions
 
 /datum/job/marine/medic/whiskey
 	title = JOB_WO_SQUAD_MEDIC

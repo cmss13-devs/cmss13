@@ -31,6 +31,8 @@
 	var/firing = FALSE
 	/// If set to 1, can't unanchor and move the mortar, used for map spawns and WO
 	var/fixed = FALSE
+	/// if true, blows up the shell immediately
+	var/ship_side = FALSE
 
 	var/obj/structure/machinery/computer/cameras/mortar/internal_camera
 
@@ -209,37 +211,44 @@
 /obj/structure/mortar/attackby(obj/item/O, mob/user)
 	if(istype(O, /obj/item/mortar_shell))
 		var/obj/item/mortar_shell/mortar_shell = O
+		var/turf/T = locate(targ_x + dial_x + offset_x, targ_y + dial_y + offset_y, z)
+		var/area/A = get_area(T)
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You don't have the training to fire [src]."))
 			return
 		if(busy)
 			to_chat(user, SPAN_WARNING("Someone else is currently using [src]."))
 			return
-		if(!is_ground_level(z))
-			to_chat(user, SPAN_WARNING("You cannot fire [src] here."))
-			return
-		if(targ_x == 0 && targ_y == 0) //Mortar wasn't set
-			to_chat(user, SPAN_WARNING("[src] needs to be aimed first."))
-			return
-		var/turf/T = locate(targ_x + dial_x + offset_x, targ_y + dial_y + offset_y, z)
-		if(!T)
-			to_chat(user, SPAN_WARNING("You cannot fire [src] to this target."))
-			return
-		var/area/A = get_area(T)
-		if(!istype(A))
-			to_chat(user, SPAN_WARNING("This area is out of bounds!"))
-			return
-		if(CEILING_IS_PROTECTED(A.ceiling, CEILING_PROTECTION_TIER_2) || protected_by_pylon(TURF_PROTECTION_MORTAR, T))
-			to_chat(user, SPAN_WARNING("You cannot hit the target. It is probably underground."))
-			return
-		if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_LZ_PROTECTION) && A.is_landing_zone)
-			to_chat(user, SPAN_WARNING("You cannot bomb the landing zone!"))
-			return
+		if(!ship_side)
+			if(targ_x == 0 && targ_y == 0) //Mortar wasn't set
+				to_chat(user, SPAN_WARNING("[src] needs to be aimed first."))
+				return
+			if(!T)
+				to_chat(user, SPAN_WARNING("You cannot fire [src] to this target."))
+				return
+			if(!istype(A))
+				to_chat(user, SPAN_WARNING("This area is out of bounds!"))
+				return
+			if(CEILING_IS_PROTECTED(A.ceiling, CEILING_PROTECTION_TIER_2) || protected_by_pylon(TURF_PROTECTION_MORTAR, T))
+				to_chat(user, SPAN_WARNING("You cannot hit the target. It is probably underground."))
+				return
+			if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_LZ_PROTECTION) && A.is_landing_zone)
+				to_chat(user, SPAN_WARNING("You cannot bomb the landing zone!"))
+				return
 
-		//Small amount of spread so that consecutive mortar shells don't all land on the same tile
-		var/turf/T1 = locate(T.x + pick(-1,0,0,1), T.y + pick(-1,0,0,1), T.z)
-		if(T1)
-			T = T1
+		if(!ship_side)
+			var/turf/T1 = locate(T.x + pick(-1,0,0,1), T.y + pick(-1,0,0,1), T.z) //Small amount of spread so that consecutive mortar shells don't all land on the same tile
+			if(T1)
+				T = T1
+		else
+			var/crash_occurred = (SSticker?.mode?.is_in_endgame)
+			if(crash_occurred)
+				var/turf/our_turf = get_turf(src)
+				T = our_turf
+				travel_time = 0.5 SECONDS
+			else
+				to_chat(user, SPAN_RED("ARE YOU OUT OF YOUR MIND?!"))
+				return
 
 		user.visible_message(SPAN_NOTICE("[user] starts loading \a [mortar_shell.name] into [src]."),
 		SPAN_NOTICE("You start loading \a [mortar_shell.name] into [src]."))
@@ -308,36 +317,43 @@
 		firing = FALSE
 		return
 
-	playsound(target, 'sound/weapons/gun_mortar_travel.ogg', 50, 1)
-	var/relative_dir
-	for(var/mob/M in range(15, target))
-		if(get_turf(M) == target)
-			relative_dir = 0
-		else
-			relative_dir = Get_Compass_Dir(M, target)
-		M.show_message( \
-			SPAN_DANGER("A SHELL IS COMING DOWN [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
-			SPAN_DANGER("YOU HEAR SOMETHING COMING DOWN [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
-		)
-	sleep(2.5 SECONDS) // Sleep a bit to give a message
-	for(var/mob/M in range(10, target))
-		if(get_turf(M) == target)
-			relative_dir = 0
-		else
-			relative_dir = Get_Compass_Dir(M, target)
-		M.show_message( \
-			SPAN_HIGHDANGER("A SHELL IS ABOUT TO IMPACT [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
-			SPAN_HIGHDANGER("YOU HEAR SOMETHING VERY CLOSE COMING DOWN [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
-		)
-	sleep(2 SECONDS) // Wait out the rest of the landing time
-	target.ceiling_debris_check(2)
-	if(!protected_by_pylon(TURF_PROTECTION_MORTAR, target))
-		shell.detonate(target)
-	qdel(shell)
-	firing = FALSE
+	if(ship_side)
+		var/turf/our_turf = get_turf(src)
+		shell.detonate(our_turf)
+	else
+		playsound(target, 'sound/weapons/gun_mortar_travel.ogg', 50, 1)
+		var/relative_dir
+		for(var/mob/M in range(15, target))
+			if(get_turf(M) == target)
+				relative_dir = 0
+			else
+				relative_dir = Get_Compass_Dir(M, target)
+			M.show_message( \
+				SPAN_DANGER("A SHELL IS COMING DOWN [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
+				SPAN_DANGER("YOU HEAR SOMETHING COMING DOWN [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
+			)
+		sleep(2.5 SECONDS) // Sleep a bit to give a message
+		for(var/mob/M in range(10, target))
+			if(get_turf(M) == target)
+				relative_dir = 0
+			else
+				relative_dir = Get_Compass_Dir(M, target)
+			M.show_message( \
+				SPAN_HIGHDANGER("A SHELL IS ABOUT TO IMPACT [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
+				SPAN_HIGHDANGER("YOU HEAR SOMETHING VERY CLOSE COMING DOWN [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
+			)
+		sleep(2 SECONDS) // Wait out the rest of the landing time
+		target.ceiling_debris_check(2)
+		if(!protected_by_pylon(TURF_PROTECTION_MORTAR, target))
+			shell.detonate(target)
+		qdel(shell)
+		firing = FALSE
 
 /obj/structure/mortar/proc/can_fire_at(mob/user, test_targ_x = targ_x, test_targ_y = targ_y, test_dial_x, test_dial_y)
 	var/dialing = test_dial_x || test_dial_y
+	if(ship_side)
+		to_chat(user, SPAN_WARNING("You cannot aim the mortar while on a ship."))
+		return FALSE
 	if(test_dial_x + test_targ_x > world.maxx || test_dial_x + test_targ_x < 0)
 		to_chat(user, SPAN_WARNING("You cannot [dialing ? "dial to" : "aim at"] this coordinate, it is outside of the area of operations."))
 		return FALSE
@@ -385,21 +401,23 @@
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(user, SPAN_WARNING("You don't have the training to deploy [src]."))
 		return
-	if(!is_ground_level(deploy_turf.z))
-		to_chat(user, SPAN_WARNING("You cannot deploy [src] here."))
-		return
 	var/area/A = get_area(deploy_turf)
-	if(CEILING_IS_PROTECTED(A.ceiling, CEILING_PROTECTION_TIER_1))
+	if(CEILING_IS_PROTECTED(A.ceiling, CEILING_PROTECTION_TIER_1) && is_ground_level(deploy_turf.z))
 		to_chat(user, SPAN_WARNING("You probably shouldn't deploy [src] indoors."))
 		return
 	user.visible_message(SPAN_NOTICE("[user] starts deploying [src]."), \
 		SPAN_NOTICE("You start deploying [src]."))
 	playsound(deploy_turf, 'sound/items/Deconstruct.ogg', 25, 1)
 	if(do_after(user, 4 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-		user.visible_message(SPAN_NOTICE("[user] deploys [src]."), \
-			SPAN_NOTICE("You deploy [src]."))
-		playsound(deploy_turf, 'sound/weapons/gun_mortar_unpack.ogg', 25, 1)
 		var/obj/structure/mortar/M = new /obj/structure/mortar(deploy_turf)
+		if(!is_ground_level(deploy_turf.z))
+			M.ship_side = TRUE
+			user.visible_message(SPAN_NOTICE("[user] deploys [src]."), \
+				SPAN_NOTICE("You deploy [src]. This is a bad idea."))
+		else
+			user.visible_message(SPAN_NOTICE("[user] deploys [src]."), \
+				SPAN_NOTICE("You deploy [src]."))
+		playsound(deploy_turf, 'sound/weapons/gun_mortar_unpack.ogg', 25, 1)
 		M.name = src.name
 		M.setDir(user.dir)
 		qdel(src)

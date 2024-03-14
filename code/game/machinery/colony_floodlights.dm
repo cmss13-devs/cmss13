@@ -166,15 +166,15 @@
 
 			if(repair_state == FLOODLIGHT_REPAIR_CROWBAR)
 				playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
-				user.visible_message(SPAN_NOTICE("[user] starts prying [src]'s maintenance hatch open."),\
-				SPAN_NOTICE("You start prying [src]'s maintenance hatch open."))
+				user.visible_message(SPAN_NOTICE("[user] starts prying [src]'s damaged lighting assembly out."),\
+				SPAN_NOTICE("You start prying [src]'s damaged lighting assembly out."))
 				if(do_after(user, 2 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(QDELETED(src) || repair_state != FLOODLIGHT_REPAIR_CROWBAR)
 						return
 					playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 					repair_state = FLOODLIGHT_REPAIR_WELD
-					user.visible_message(SPAN_NOTICE("[user] pries [src]'s maintenance hatch open."),\
-					SPAN_NOTICE("You pry [src]'s maintenance hatch open."))
+					user.visible_message(SPAN_NOTICE("[user] pries [src]'s damaged lighting assembly out."),\
+					SPAN_NOTICE("You pry [src]'s damaged lighting assembly out."))
 			return TRUE
 
 		else if(iswelder(I))
@@ -274,7 +274,7 @@
 			if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				switch(repair_state)
 					if(FLOODLIGHT_REPAIR_UNSCREW) . += SPAN_INFO("You must first unscrew its maintenance hatch.")
-					if(FLOODLIGHT_REPAIR_CROWBAR) . += SPAN_INFO("You must crowbar its maintenance hatch open or use a light replacer.")
+					if(FLOODLIGHT_REPAIR_CROWBAR) . += SPAN_INFO("You must crowbar its lighting assembly out or use a light replacer.")
 					if(FLOODLIGHT_REPAIR_WELD) . += SPAN_INFO("You must weld the damage to it.")
 					if(FLOODLIGHT_REPAIR_CABLE) . += SPAN_INFO("You must replace its damaged cables.")
 					if(FLOODLIGHT_REPAIR_SCREW) . += SPAN_INFO("You must screw its maintenance hatch closed.")

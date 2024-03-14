@@ -116,6 +116,7 @@
 			playsound(loc, "alien_resin_move", 50)
 			if(ishuman(buckled_mob))
 				var/mob/living/carbon/human/H = buckled_mob
+				log_attack("[key_name(user)] unnested [key_name(H)] at [get_location_in_text(H)]")
 				user.attack_log += "\[[time_stamp()]\]<font color='orange'> Unnested [key_name(H)] at [get_location_in_text(H)]</font>"
 				H.attack_log += "\[[time_stamp()]\]<font color='orange'> Unnested by [key_name(user)] at [get_location_in_text(H)]</font>"
 			unbuckle()
@@ -130,6 +131,7 @@
 			playsound(loc, "alien_resin_move", 50)
 			if(ishuman(buckled_mob))
 				var/mob/living/carbon/human/H = buckled_mob
+				log_attack("[key_name(user)] unnested [key_name(H)] at [get_location_in_text(H)]")
 				user.attack_log += "\[[time_stamp()]\]<font color='orange'> Unnested [key_name(H)] at [get_location_in_text(H)]</font>"
 				H.attack_log += "\[[time_stamp()]\]<font color='orange'> Unnested by [key_name(user)] at [get_location_in_text(H)]</font>"
 			unbuckle()
@@ -180,6 +182,9 @@
 	playsound(loc, "alien_resin_move", 50)
 	if(ishuman(buckled_mob))
 		var/mob/living/carbon/human/H = buckled_mob
+		if(isxeno(user))
+			msg_admin_niche("[key_name(user)] unnested [key_name(H)] at [get_location_in_text(H)] [ADMIN_JMP(loc)]")
+		log_attack("[key_name(user)] unnested [key_name(H)] at [get_location_in_text(H)]")
 		user.attack_log += "\[[time_stamp()]\]<font color='orange'> Unnested [key_name(H)] at [get_location_in_text(H)]</font>"
 		H.attack_log += "\[[time_stamp()]\]<font color='orange'> Unnested by [key_name(user)] at [get_location_in_text(H)]</font>"
 	unbuckle()

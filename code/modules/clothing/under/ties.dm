@@ -761,8 +761,9 @@
 
 /obj/item/clothing/accessory/storage/ifak
 	name = "individual first-aid kit"
-	desc = "A convenient pouch to carry essential medical items. It clips into your uniform."
+	desc = "A compact pouch to carry essential medical items. It clips onto your uniform."
 	icon_state = "ifak"
+	slot = ACCESSORY_SLOT_MEDICAL
 	hold = /obj/item/storage/internal/accessory/ifak/
 
 /obj/item/storage/internal/accessory/ifak

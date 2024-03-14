@@ -947,7 +947,8 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 		list("Large General Pouch", 10, /obj/item/storage/pouch/general/large, null, VENDOR_ITEM_REGULAR),
 		list("Random Useful (Or Not) Item", 5, /obj/effect/essentials_set/random/clf_bonus_item, null, VENDOR_ITEM_REGULAR),
 		list("Shoulder Holster", 10, /obj/item/clothing/accessory/storage/holster, null, VENDOR_ITEM_REGULAR),
-		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR)
+		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR),
+		list("Individual First Aid Kit", 10, /obj/item/clothing/accessory/storage/ifak, null, VENDOR_ITEM_REGULAR),
 	)
 
 /datum/equipment_preset/proc/load_upp_shotgun(mob/living/carbon/human/new_human)

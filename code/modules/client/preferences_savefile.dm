@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 21
+#define SAVEFILE_VERSION_MAX 22
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -88,6 +88,12 @@
 		else
 			dual_wield_pref = DUAL_WIELD_FIRE
 		S["dual_wield_pref"] << dual_wield_pref
+
+	if(savefile_version < 22)
+		var/sound_toggles
+		S["toggles_sound"] >> sound_toggles
+		sound_toggles |= SOUND_OBSERVER_ANNOUNCEMENTS
+		S["toggles_sound"] << sound_toggles
 
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1

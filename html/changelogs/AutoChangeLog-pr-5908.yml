@@ -1,0 +1,6 @@
+author: "Huffie56"
+delete-after: True
+changes:
+  - balance: "adding M44 Marksman Speed Loader and SU-6 Smartpistol Magazine in vendor of (medic,comtech, SL) at a cost of 6 each."
+  - balance: "adding M44 Marksman Speed Loader and SU-6 Smartpistol Magazine in vendor of (rifleman, TL, IO) at a cost of 10 each."
+  - balance: "adding VP78 case and SU-6 case in vendor of IO at a cost of 15 each."

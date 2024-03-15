@@ -231,6 +231,15 @@
 	icon = 'icons/effects/hybrisa_decals.dmi'
 	icon_state = "red_NW-out"
 
+// Angled Warning-Stripes
+/obj/effect/hybrisa/decal/warningstripes_angled
+	name = "warning stripes"
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "warningstripes_angled"
+/obj/effect/hybrisa/decal/warningstripes_angled_corner
+	name = "warning stripes"
+	icon = 'icons/effects/hybrisa_decals.dmi'
+	icon_state = "warningstripes_angled_corner"
 
 // Grate
 

@@ -646,9 +646,10 @@
 	pixel_y = -9
 	},
 /obj/structure/cable/white{
-	color = "550d0d";
+	color = "#550d0d";
 	icon_state = "1-5";
-	layer = 5
+	layer = 5;
+	level = 2
 	},
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv759/outdoors)
@@ -895,6 +896,13 @@
 	icon_state = "platingdmg1"
 	},
 /area/lv759/power_plant/south_hallway)
+"aiy" = (
+/obj/structure/platform_decoration/hybrisa/engineer_corner{
+	dir = 8
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform3,
+/turf/open/engineership/engineer_floor1,
+/area/lv759/outdoors)
 "aiG" = (
 /obj/effect/decal/cleanable/blood/gibs/limb,
 /obj/effect/decal/cleanable/blood,
@@ -1316,9 +1324,10 @@
 "ami" = (
 /obj/structure/machinery/autolathe/armylathe,
 /obj/structure/cable/white{
-	color = "9f8700";
+	color = "#9f8700";
 	icon_state = "2-9";
-	layer = 5
+	layer = 5;
+	level = 2
 	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
@@ -1541,16 +1550,15 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/cuppajoes)
 "aps" = (
-/obj/structure/platform_decoration/hybrisa/engineer_corner{
-	dir = 8
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 1
 	},
-/obj/structure/platform_decoration/hybrisa/engineer_corner{
-	dir = 8
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 8;
+	layer = 4
 	},
-/obj/structure/prop/hybrisa/fakeplatforms/platform1{
-	dir = 8
-	},
-/turf/open/engineership/engineer_floor9,
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors)
 "apv" = (
 /obj/structure/machinery/door/airlock/almayer/generic/glass{
@@ -2412,6 +2420,14 @@
 	icon_state = "white"
 	},
 /area/lv759/colonial_marshals)
+"ayN" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 8
+	},
+/turf/closed/wall/engineership{
+	name = "strange metal wall"
+	},
+/area/lv759/oob)
 "ayO" = (
 /obj/item/trash/cigbutt,
 /obj/item/trash/cigbutt{
@@ -2929,6 +2945,10 @@
 	name = "reinforced metal wall"
 	},
 /area/lv759/indoors/hospital/cmo_office)
+"aEE" = (
+/obj/structure/stairs,
+/turf/open/engineership/engineer_floor9,
+/area/lv759/outdoors)
 "aEI" = (
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco1{
 	dir = 4
@@ -4540,7 +4560,8 @@
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/lv759/outdoors)
 "aUv" = (
-/turf/open/engineership/engineer_floor8,
+/obj/structure/largecrate/random/case/double,
+/turf/open/engineership/engineer_floor2,
 /area/lv759/outdoors)
 "aUy" = (
 /obj/structure/platform/hybrisa/metalplatform6{
@@ -7295,6 +7316,12 @@
 	icon_state = "cell_stripe"
 	},
 /area/lv759/indoors/hospital/virology)
+"bwK" = (
+/obj/structure/prop/ice_colony/surveying_device{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors)
 "bwO" = (
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/colony_streets/south_east_street)
@@ -7383,9 +7410,10 @@
 	icon_state = "S"
 	},
 /obj/structure/cable/white{
-	color = "9f8700";
+	color = "#9f8700";
 	icon_state = "8-9";
-	layer = 5
+	layer = 5;
+	level = 2
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -9304,6 +9332,13 @@
 	icon_state = "ramptop"
 	},
 /area/lv759/indoors/spaceport/engineering)
+"bSV" = (
+/obj/structure/platform_decoration/hybrisa/engineer_corner{
+	dir = 4
+	},
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/engineership/engineer_floor9,
+/area/lv759/outdoors)
 "bTh" = (
 /obj/item/folder/black,
 /obj/effect/landmark/objective_landmark/close,
@@ -9577,6 +9612,14 @@
 	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv759/outdoors)
+"bVX" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 4
+	},
+/turf/closed/wall/engineership{
+	name = "strange metal wall"
+	},
+/area/lv759/oob)
 "bVY" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "docstriping"
@@ -11200,7 +11243,7 @@
 	name = "Pipe"
 	},
 /obj/structure/cable/white{
-	color = "550d0d";
+	color = "#550d0d";
 	icon_state = "1-9";
 	layer = 5
 	},
@@ -15487,9 +15530,10 @@
 	pixel_y = 1
 	},
 /obj/structure/cable/white{
-	color = "9f8700";
+	color = "#9f8700";
 	icon_state = "4-6";
-	layer = 5
+	layer = 5;
+	level = 2
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -17293,6 +17337,18 @@
 	icon_state = "platingdmg3"
 	},
 /area/lv759/outdoors/colony_streets/south_east_street)
+"dtk" = (
+/obj/structure/platform_decoration/hybrisa/engineer_corner,
+/obj/effect/hybrisa/decal/engineership_corners{
+	dir = 1
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 8;
+	pixel_x = -1;
+	pixel_y = -1
+	},
+/turf/open/engineership/engineer_floor9,
+/area/lv759/outdoors)
 "dts" = (
 /obj/item/shard,
 /obj/effect/hybrisa/decal/bloodtrail{
@@ -19198,19 +19254,11 @@
 	},
 /area/lv759/outdoors/colony_streets/north_west_street)
 "dOu" = (
-/obj/structure/platform/hybrisa/rockdark{
-	dir = 1
-	},
-/obj/structure/platform/hybrisa/rockdark{
-	dir = 4
-	},
 /obj/structure/prop/hybrisa/engineer/engineerpillar/smallsouthwest2{
 	dir = 8
 	},
-/turf/closed/wall/kutjevo/rock{
-	desc = "Massive columns comprised of anicent sedimentary rocks loom before you.";
-	icon = 'icons/turf/walls/kutjevorockdark.dmi'
-	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/engineership/engineer_floor13,
 /area/lv759/oob)
 "dOB" = (
 /obj/structure/closet/l3closet/general,
@@ -20698,6 +20746,14 @@
 	},
 /turf/open/floor/corsat,
 /area/lv759/indoors/spaceport/engineering)
+"edO" = (
+/obj/structure/platform_decoration/hybrisa/engineer_corner{
+	dir = 1
+	},
+/obj/effect/hybrisa/decal/engineership_corners,
+/obj/structure/prop/hybrisa/fakeplatforms/platform3,
+/turf/open/engineership/engineer_floor9,
+/area/lv759/outdoors)
 "edP" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/glass{
 	dir = 1
@@ -21573,6 +21629,13 @@
 	dir = 8
 	},
 /turf/open/auto_turf/hybrisashale/layer1,
+/area/lv759/outdoors)
+"emV" = (
+/obj/structure/largecrate/random/mini/small_case/c{
+	pixel_x = 11;
+	pixel_y = 15
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors)
 "enh" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -22450,7 +22513,8 @@
 	},
 /obj/structure/barricade/handrail/hybrisa/handrail,
 /obj/structure/barricade/handrail/hybrisa/handrail{
-	dir = 8
+	dir = 8;
+	layer = 4
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/colony_streets/north_west_street)
@@ -24666,6 +24730,15 @@
 "eTn" = (
 /turf/open/floor/hybrisa/misc/wysmallright,
 /area/lv759/outdoors)
+"eTF" = (
+/obj/effect/hybrisa/decal/engineership_corners{
+	dir = 4
+	},
+/obj/structure/platform_decoration{
+	dir = 1
+	},
+/turf/open/engineership/engineer_floor9,
+/area/lv759/outdoors)
 "eTL" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/cable{
@@ -26067,6 +26140,16 @@
 	icon_state = "carpet11-12"
 	},
 /area/lv759/indoors/bar/recroom)
+"fhl" = (
+/obj/effect/hybrisa/decal/engineership_corners{
+	dir = 4
+	},
+/obj/effect/hybrisa/decal/warningstripes_angled_corner{
+	dir = 1;
+	pixel_y = -1
+	},
+/turf/open/engineership/engineer_floor9,
+/area/lv759/outdoors)
 "fhq" = (
 /obj/structure/closet/secure_closet,
 /turf/open/hybrisa/dropship/dropship3,
@@ -26629,9 +26712,10 @@
 	pixel_y = 2
 	},
 /obj/structure/cable/white{
-	color = "550d0d";
+	color = "#550d0d";
 	icon_state = "8-10";
-	layer = 5
+	layer = 5;
+	level = 2
 	},
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv759/outdoors)
@@ -26778,6 +26862,16 @@
 	pixel_y = 16
 	},
 /turf/open/floor/interior/wood,
+/area/lv759/outdoors)
+"foH" = (
+/obj/effect/hybrisa/decal/grate{
+	dir = 4
+	},
+/obj/effect/hybrisa/decal/warningstripes_angled{
+	dir = 4;
+	pixel_y = 4
+	},
+/turf/open/engineership/engineer_floor1,
 /area/lv759/outdoors)
 "foI" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -30881,9 +30975,10 @@
 	pixel_y = 23
 	},
 /obj/structure/cable/white{
-	color = "9f8700";
+	color = "#9f8700";
 	icon_state = "4-9";
-	layer = 5
+	layer = 5;
+	level = 2
 	},
 /turf/open/floor/plating,
 /area/lv759/outdoors)
@@ -34437,7 +34532,8 @@
 /area/lv759/recycling_plant/garage)
 "gNl" = (
 /obj/structure/barricade/handrail/hybrisa/handrail{
-	dir = 8
+	dir = 8;
+	layer = 4
 	},
 /obj/structure/barricade/handrail/hybrisa/handrail,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -35351,6 +35447,15 @@
 	dir = 1
 	},
 /area/lv759/outdoors/colony_streets/north_street)
+"gUs" = (
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = -9;
+	pixel_y = 10
+	},
+/turf/open/engineership/engineer_floor8{
+	dir = 4
+	},
+/area/lv759/outdoors)
 "gUv" = (
 /obj/structure/flora/pottedplant,
 /turf/open/floor/prison{
@@ -36657,14 +36762,15 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
+/obj/structure/cable/white{
+	color = "#550d0d";
+	icon_state = "4-8";
+	layer = 5;
+	level = 2
+	},
 /obj/structure/window/reinforced{
 	dir = 1;
 	layer = 2
-	},
-/obj/structure/cable/white{
-	color = "550d0d";
-	icon_state = "4-8";
-	layer = 5
 	},
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv759/outdoors)
@@ -36699,6 +36805,13 @@
 	pixel_y = 10
 	},
 /turf/open/floor/prison,
+/area/lv759/outdoors)
+"hiv" = (
+/obj/structure/largecrate/random/mini/small_case/b,
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	layer = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors)
 "hiK" = (
 /obj/effect/hybrisa/decal/road/road_edge{
@@ -38707,6 +38820,14 @@
 	icon_state = "floor3"
 	},
 /area/lv759/landing_zone/landing_zone_4)
+"hBt" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	pixel_y = -2
+	},
+/turf/open/engineership/engineer_floor8{
+	dir = 4
+	},
+/area/lv759/outdoors)
 "hBy" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -39276,10 +39397,11 @@
 	},
 /area/lv759/indoors/hospital/outgoing)
 "hGE" = (
-/obj/structure/prop/hybrisa/fakeplatforms/platform1{
-	dir = 8
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 1
 	},
-/turf/open/engineership/engineer_floor3,
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors)
 "hGI" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -39720,6 +39842,13 @@
 	icon_state = "darkyellow2"
 	},
 /area/lv759/indoors/garage_workshop)
+"hLv" = (
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = -9;
+	pixel_y = 10
+	},
+/turf/open/engineership/engineer_floor3,
+/area/lv759/outdoors)
 "hLx" = (
 /obj/item/tool/warning_cone{
 	pixel_x = 5;
@@ -39806,6 +39935,12 @@
 	icon = 'icons/turf/walls/kutjevorockdark.dmi'
 	},
 /area/lv759/oob)
+"hMI" = (
+/obj/structure/stairs{
+	dir = 1
+	},
+/turf/open/engineership/engineer_floor9,
+/area/lv759/outdoors)
 "hML" = (
 /obj/structure/platform/hybrisa/rockdark{
 	dir = 4
@@ -40428,6 +40563,13 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/east_central_street)
+"hSG" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 8;
+	layer = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors)
 "hSM" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/drip{
@@ -40446,6 +40588,21 @@
 	icon_state = "platingdmg3"
 	},
 /area/lv759/colonial_marshals/garage)
+"hSQ" = (
+/obj/structure/largecrate/random/mini/small_case{
+	layer = 6;
+	pixel_x = 5;
+	pixel_y = 4
+	},
+/obj/item/stock_parts/matter_bin/adv{
+	pixel_x = -5;
+	pixel_y = 9
+	},
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/engineership/engineer_floor8{
+	dir = 4
+	},
+/area/lv759/outdoors)
 "hTb" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -41563,14 +41720,15 @@
 	color = "#6b675e"
 	},
 /obj/structure/machinery/reagent_analyzer,
+/obj/structure/cable/white{
+	color = "#550d0d";
+	icon_state = "0-4";
+	layer = 5;
+	level = 2
+	},
 /obj/structure/window/reinforced{
 	dir = 1;
 	layer = 2
-	},
-/obj/structure/cable/white{
-	color = "550d0d";
-	icon_state = "0-4";
-	layer = 5
 	},
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv759/outdoors)
@@ -42603,14 +42761,16 @@
 	pixel_y = -1
 	},
 /obj/structure/cable/white{
-	color = "550d0d";
+	color = "#550d0d";
 	icon_state = "1-10";
-	layer = 5
+	layer = 5;
+	level = 2
 	},
 /obj/structure/cable/white{
-	color = "550d0d";
+	color = "#550d0d";
 	icon_state = "8-9";
-	layer = 5
+	layer = 5;
+	level = 2
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -42914,14 +43074,16 @@
 	pixel_y = 12
 	},
 /obj/structure/cable/white{
-	color = "9f8700";
+	color = "#9f8700";
 	icon_state = "1-8";
-	layer = 5
+	layer = 5;
+	level = 2
 	},
 /obj/structure/cable/white{
-	color = "007740";
+	color = "#007740";
 	icon_state = "5-6";
-	layer = 5
+	layer = 5;
+	level = 2
 	},
 /turf/open/floor/corsat,
 /area/lv759/landing_zone_1/tunnel)
@@ -42953,6 +43115,20 @@
 	icon_state = "whitegreen"
 	},
 /area/lv759/indoors/hospital/emergency_room)
+"iui" = (
+/obj/structure/platform_decoration/hybrisa/engineer_corner{
+	dir = 8
+	},
+/obj/structure/largecrate/random/mini/small_case,
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = 14;
+	pixel_y = -3
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform3,
+/turf/open/engineership/engineer_floor8{
+	dir = 4
+	},
+/area/lv759/outdoors)
 "iuj" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 2
@@ -43335,7 +43511,7 @@
 	},
 /area/lv759/outdoors/colony_streets/central_streets)
 "ixu" = (
-/obj/structure/prop/hybrisa/fakeplatforms/platform1{
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	dir = 1
 	},
 /turf/open/engineership/engineer_floor3,
@@ -44337,7 +44513,8 @@
 /area/lv759/outdoors/colony_streets/north_street)
 "iFZ" = (
 /obj/structure/barricade/handrail/hybrisa/handrail{
-	dir = 8
+	dir = 8;
+	layer = 4
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/colony_streets/north_west_street)
@@ -44594,9 +44771,10 @@
 	pixel_y = 18
 	},
 /obj/structure/cable/white{
-	color = "9f8700";
+	color = "#9f8700";
 	icon_state = "4-6";
-	layer = 5
+	layer = 5;
+	level = 2
 	},
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv759/outdoors)
@@ -45925,9 +46103,10 @@
 	pixel_y = 2
 	},
 /obj/structure/cable/white{
-	color = "007740";
+	color = "#007740";
 	icon_state = "1-4";
-	layer = 5
+	layer = 5;
+	level = 2
 	},
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv759/outdoors)
@@ -47172,6 +47351,12 @@
 	name = "reinforced metal wall"
 	},
 /area/lv759/indoors/apartment_services/west)
+"jjd" = (
+/obj/effect/hybrisa/decal/warningstripes_angled_corner,
+/turf/open/engineership/engineer_floor8{
+	dir = 4
+	},
+/area/lv759/outdoors)
 "jjh" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform4,
 /turf/open/floor/plating,
@@ -49008,7 +49193,8 @@
 /obj/item/device/flashlight/lamp/tripod/grey,
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/barricade/handrail/hybrisa/handrail{
-	dir = 8
+	dir = 8;
+	layer = 4
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -50538,6 +50724,13 @@
 /obj/item/paper/crumpled/bloody,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/lv759/outdoors/colony_streets/central_streets)
+"jRQ" = (
+/obj/structure/largecrate/random/case/small,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/engineership/engineer_floor8{
+	dir = 4
+	},
+/area/lv759/outdoors)
 "jSb" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -51039,7 +51232,7 @@
 /area/lv759/outdoors)
 "jWM" = (
 /obj/structure/prop/hybrisa/engineer/giantpod,
-/turf/open/engineership/engineer_floor3,
+/turf/open/engineership/engineer_floor2,
 /area/lv759/outdoors)
 "jWQ" = (
 /obj/structure/barricade/handrail/strata{
@@ -52680,14 +52873,14 @@
 	},
 /area/lv759/landing_zone/landing_zone_3)
 "kmz" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
 /obj/item/clothing/gloves/marine/veteran/pmc/commando,
 /obj/structure/cable/white{
 	color = "9f8700";
 	icon_state = "8-9";
 	layer = 5
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
 	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
@@ -52865,9 +53058,10 @@
 /area/lv759/outdoors)
 "kos" = (
 /obj/structure/cable/white{
-	color = "550d0d";
+	color = "#550d0d";
 	icon_state = "6-8";
-	layer = 5
+	layer = 5;
+	level = 2
 	},
 /turf/open/floor/plating{
 	dir = 8;
@@ -53832,6 +54026,15 @@
 	icon_state = "blackfull"
 	},
 /area/lv759/outdoors)
+"kwb" = (
+/obj/effect/hybrisa/decal/engineership_corners{
+	dir = 8
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 4
+	},
+/turf/open/engineership/engineer_floor3,
+/area/lv759/outdoors)
 "kwh" = (
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
@@ -53873,9 +54076,10 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/computer/card,
 /obj/structure/cable/white{
-	color = "007740";
+	color = "#007740";
 	icon_state = "1-10";
-	layer = 5
+	layer = 5;
+	level = 2
 	},
 /turf/open/floor/corsat,
 /area/lv759/landing_zone_1/tunnel)
@@ -54025,9 +54229,10 @@
 	},
 /obj/item/prop/laz_top,
 /obj/structure/cable/white{
-	color = "550d0d";
+	color = "#550d0d";
 	icon_state = "4-5";
-	layer = 5
+	layer = 5;
+	level = 2
 	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
@@ -55050,7 +55255,8 @@
 "kJi" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/barricade/handrail/hybrisa/handrail{
-	dir = 8
+	dir = 8;
+	layer = 4
 	},
 /turf/open/hybrisa/street/sidewalk{
 	dir = 8
@@ -55663,6 +55869,18 @@
 	icon_state = "whitegreen"
 	},
 /area/lv759/indoors/hospital/emergency_room)
+"kOZ" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 1
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 8;
+	pixel_x = -1;
+	pixel_y = -1
+	},
+/obj/structure/largecrate/random/mini/small_case/c,
+/turf/open/engineership/engineer_floor1,
+/area/lv759/outdoors)
 "kPe" = (
 /turf/closed/shuttle/dropship2/WY/HorizonRunner{
 	icon_state = "wy2"
@@ -56190,9 +56408,10 @@
 	pixel_x = -1
 	},
 /obj/structure/cable/white{
-	color = "550d0d";
+	color = "#550d0d";
 	icon_state = "8-9";
-	layer = 5
+	layer = 5;
+	level = 2
 	},
 /turf/open/floor/strata{
 	dir = 1;
@@ -57205,8 +57424,16 @@
 /turf/open/floor/strata,
 /area/lv759/colonial_marshals/garage)
 "leE" = (
-/obj/structure/platform_decoration/hybrisa/engineer_corner{
+/obj/effect/hybrisa/decal/warningstripes_angled{
+	dir = 4;
+	pixel_y = 2
+	},
+/obj/effect/hybrisa/decal/grate{
 	dir = 4
+	},
+/obj/effect/hybrisa/decal/warningstripes_angled{
+	dir = 4;
+	pixel_y = 3
 	},
 /turf/open/engineership/engineer_floor8{
 	dir = 4
@@ -59613,6 +59840,10 @@
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco6,
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/outdoors)
+"lBa" = (
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/engineership/engineer_floor3,
+/area/lv759/outdoors)
 "lBd" = (
 /turf/closed/shuttle/dropship2/transparent{
 	icon = 'icons/turf/ert_shuttle.dmi';
@@ -60062,7 +60293,8 @@
 "lFG" = (
 /obj/structure/barricade/handrail/hybrisa/handrail,
 /obj/structure/barricade/handrail/hybrisa/handrail{
-	dir = 8
+	dir = 8;
+	layer = 4
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/colony_streets/central_streets)
@@ -60686,6 +60918,17 @@
 /obj/structure/machinery/light/spot/blue,
 /turf/open/floor/hybrisa/metal/zbrownfloor1,
 /area/lv759/indoors/chapel)
+"lLE" = (
+/obj/structure/platform_decoration/hybrisa/engineer_corner{
+	dir = 1
+	},
+/obj/structure/prop/hybrisa/engineer/engineerpillar/southwestbottom,
+/obj/effect/hybrisa/decal/engineership_corners,
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 8
+	},
+/turf/open/engineership/engineer_floor9,
+/area/lv759/outdoors)
 "lLN" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal3"
@@ -61432,9 +61675,10 @@
 	pixel_y = 10
 	},
 /obj/structure/cable/white{
-	color = "9f8700";
+	color = "#9f8700";
 	icon_state = "8-9";
-	layer = 5
+	layer = 5;
+	level = 2
 	},
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv759/outdoors)
@@ -62553,9 +62797,6 @@
 	},
 /area/lv759/colonial_marshals/garage)
 "mgz" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
 /obj/item/prop/almayer/handheld1,
 /obj/item/reagent_container/food/drinks/coffee{
 	pixel_x = -8;
@@ -62566,9 +62807,13 @@
 	pixel_y = 8
 	},
 /obj/structure/cable/white{
-	color = "9f8700";
+	color = "#9f8700";
 	icon_state = "4-8";
-	layer = 5
+	layer = 5;
+	level = 2
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
 	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
@@ -62599,7 +62844,7 @@
 /area/lv759/outdoors/colony_streets/south_east_street)
 "mgG" = (
 /obj/structure/prop/hybrisa/engineer/giantpodbroken,
-/turf/open/engineership/engineer_floor3,
+/turf/open/engineership/engineer_floor2,
 /area/lv759/outdoors)
 "mgJ" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -63053,14 +63298,19 @@
 /area/lv759/colonial_marshals/prisoners_cells)
 "mlC" = (
 /obj/structure/cable/white{
-	color = "9f8700";
+	color = "#9f8700";
 	icon_state = "2-9";
-	layer = 5
+	layer = 5;
+	level = 2
 	},
 /obj/structure/prop/almayer/computers/sensor_computer2{
 	desc = null;
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
 	name = "computer"
+	},
+/obj/structure/window/reinforced{
+	dir = 1;
+	layer = 2
 	},
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv759/outdoors)
@@ -63496,6 +63746,16 @@
 	icon_state = "redfull"
 	},
 /area/lv759/colonial_marshals/armory)
+"mqu" = (
+/obj/effect/hybrisa/decal/engineership_corners{
+	dir = 8
+	},
+/obj/effect/hybrisa/decal/warningstripes_angled_corner{
+	dir = 4;
+	pixel_y = -1
+	},
+/turf/open/engineership/engineer_floor3,
+/area/lv759/outdoors)
 "mqv" = (
 /obj/item/paper/crumpled{
 	pixel_x = 6;
@@ -64138,7 +64398,7 @@
 /area/lv759/outdoors)
 "mwc" = (
 /obj/structure/cable/white{
-	color = "550d0d";
+	color = "#550d0d";
 	icon_state = "1-6";
 	layer = 5
 	},
@@ -64858,6 +65118,25 @@
 	icon_state = "plate"
 	},
 /area/lv759/landing_zone_2/ceiling)
+"mDv" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	pixel_y = -2
+	},
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = 3;
+	pixel_y = 15
+	},
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = 5;
+	pixel_y = 4
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 4
+	},
+/turf/open/engineership/engineer_floor8{
+	dir = 4
+	},
+/area/lv759/outdoors)
 "mDw" = (
 /obj/effect/hybrisa/decal/road/lines3,
 /obj/effect/hybrisa/decal/road/road_edge{
@@ -65199,6 +65478,22 @@
 	icon_state = "officesquares"
 	},
 /area/lv759/recycling_plant)
+"mHb" = (
+/obj/structure/largecrate/random/mini/small_case{
+	layer = 5;
+	pixel_y = 12
+	},
+/obj/item/tool/pen/blue{
+	pixel_x = 6;
+	pixel_y = -7
+	},
+/obj/item/paper{
+	layer = 2
+	},
+/turf/open/engineership/engineer_floor8{
+	dir = 4
+	},
+/area/lv759/outdoors)
 "mHd" = (
 /obj/structure/bed/hybrisa/bunkbed1{
 	dir = 4
@@ -68401,9 +68696,10 @@
 	},
 /obj/item/stack/cable_coil/orange,
 /obj/structure/cable/white{
-	color = "550d0d";
+	color = "#550d0d";
 	icon_state = "4-6";
-	layer = 5
+	layer = 5;
+	level = 2
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -69041,6 +69337,12 @@
 	icon_state = "floor_plate"
 	},
 /area/lv759/indoors/hospital/virology)
+"nvf" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors)
 "nvm" = (
 /obj/effect/hybrisa/decal/road/lines2,
 /obj/effect/hybrisa/decal/road/road_edge{
@@ -69071,6 +69373,11 @@
 /obj/effect/hybrisa/decal/dirt_2,
 /turf/open/floor/kutjevo/grey,
 /area/lv759/indoors/garage_workshop)
+"nvE" = (
+/obj/structure/platform_decoration/hybrisa/engineer_corner,
+/obj/structure/stairs,
+/turf/open/engineership/engineer_floor9,
+/area/lv759/outdoors)
 "nvF" = (
 /obj/structure/surface/table,
 /obj/item/storage/backpack/marine/fluff,
@@ -70806,7 +71113,8 @@
 	dir = 1
 	},
 /obj/structure/barricade/handrail/hybrisa/handrail{
-	dir = 8
+	dir = 8;
+	layer = 4
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/colony_streets/central_streets)
@@ -71746,6 +72054,16 @@
 	dir = 4
 	},
 /area/lv759/outdoors/colony_streets/central_streets)
+"nYo" = (
+/obj/effect/hybrisa/decal/grate{
+	dir = 4
+	},
+/obj/effect/hybrisa/decal/warningstripes_angled{
+	dir = 4;
+	pixel_y = 2
+	},
+/turf/open/engineership/engineer_floor1,
+/area/lv759/outdoors)
 "nYs" = (
 /obj/structure/bed/chair{
 	icon_state = "chair_alt";
@@ -73593,6 +73911,15 @@
 	dir = 4
 	},
 /area/lv759/outdoors/colony_streets/central_streets)
+"ooE" = (
+/obj/structure/platform_decoration/hybrisa/engineer_corner{
+	dir = 4
+	},
+/obj/structure/platform_decoration{
+	dir = 8
+	},
+/turf/open/engineership/engineer_floor9,
+/area/lv759/outdoors)
 "ooJ" = (
 /obj/effect/hybrisa/decal/road/lines2,
 /obj/effect/hybrisa/decal/road/lines1,
@@ -74348,6 +74675,11 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/hybrisa/street/cement1,
 /area/lv759/outdoors/colony_streets/south_east_street)
+"ovp" = (
+/obj/structure/platform_decoration/hybrisa/engineer_corner,
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/engineership/engineer_floor9,
+/area/lv759/outdoors)
 "ovC" = (
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/prison{
@@ -74460,6 +74792,12 @@
 	icon_state = "floor_plate"
 	},
 /area/lv759/outdoors/colony_streets/central_streets)
+"oxt" = (
+/obj/structure/platform_decoration/hybrisa/engineer_corner{
+	dir = 4
+	},
+/turf/open/engineership/engineer_floor2,
+/area/lv759/outdoors)
 "oxu" = (
 /obj/item/stack/sheet/wood{
 	pixel_y = -8
@@ -77254,6 +77592,16 @@
 /obj/item/stack/medical/splint,
 /turf/open/hybrisa/street/sidewalk,
 /area/lv759/outdoors/colony_streets/central_streets)
+"oVI" = (
+/obj/structure/platform_decoration/hybrisa/engineer_corner,
+/obj/effect/hybrisa/decal/engineership_corners{
+	dir = 1
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 1
+	},
+/turf/open/engineership/engineer_floor9,
+/area/lv759/outdoors)
 "oVP" = (
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/hybrisa/street/sidewalk{
@@ -77738,7 +78086,8 @@
 /area/lv759/outdoors)
 "pbh" = (
 /obj/structure/barricade/handrail/hybrisa/handrail{
-	dir = 8
+	dir = 8;
+	layer = 4
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/colony_streets/north_street)
@@ -79395,6 +79744,13 @@
 	icon_state = "silverfull"
 	},
 /area/lv759/outdoors)
+"ptr" = (
+/obj/structure/largecrate/random/barrel/purewhite,
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	layer = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors)
 "pts" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/barricade/handrail/hybrisa/road/wood/orange{
@@ -79781,6 +80137,15 @@
 	dir = 1;
 	icon_state = "asteroidfloor"
 	},
+/area/lv759/outdoors)
+"pxs" = (
+/obj/structure/platform_decoration/hybrisa/engineer_corner{
+	dir = 1
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 4
+	},
+/turf/open/engineership/engineer_floor1,
 /area/lv759/outdoors)
 "pxu" = (
 /obj/structure/window/reinforced{
@@ -80207,7 +80572,8 @@
 	dir = 1
 	},
 /obj/structure/barricade/handrail/hybrisa/handrail{
-	dir = 8
+	dir = 8;
+	layer = 4
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/colony_streets/north_street)
@@ -80877,7 +81243,8 @@
 /area/lv759/indoors/hospital/icu)
 "pIc" = (
 /obj/structure/barricade/handrail/hybrisa/handrail{
-	dir = 8
+	dir = 8;
+	layer = 4
 	},
 /turf/open/hybrisa/street/sidewalk{
 	dir = 8
@@ -81004,6 +81371,15 @@
 	dir = 8;
 	icon_state = "blackfull"
 	},
+/area/lv759/outdoors)
+"pJb" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	pixel_y = -2
+	},
+/obj/effect/hybrisa/decal/engineership_corners{
+	dir = 1
+	},
+/turf/open/engineership/engineer_floor3,
 /area/lv759/outdoors)
 "pJd" = (
 /obj/item/tool/weldingtool,
@@ -81953,6 +82329,13 @@
 	icon = 'icons/turf/walls/hybrisaresearchbrownwall.dmi'
 	},
 /area/lv759/outdoors)
+"pTc" = (
+/obj/structure/platform_decoration/hybrisa/engineer_corner{
+	dir = 8
+	},
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/engineership/engineer_floor9,
+/area/lv759/outdoors)
 "pTi" = (
 /obj/effect/hybrisa/decal/road/lines1,
 /obj/effect/hybrisa/decal/road/road_edge,
@@ -82065,7 +82448,7 @@
 	name = "Pipe"
 	},
 /obj/structure/cable/white{
-	color = "550d0d";
+	color = "#550d0d";
 	icon_state = "4-9";
 	layer = 5
 	},
@@ -83815,6 +84198,16 @@
 	icon_state = "floor3"
 	},
 /area/lv759/indoors/spaceport/security)
+"qnY" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 1
+	},
+/obj/structure/largecrate/random/case/double,
+/obj/item/clothing/head/bio_hood/scientist{
+	pixel_y = 12
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors)
 "qnZ" = (
 /obj/structure/closet/hydrant,
 /turf/closed/wall/strata_outpost_ribbed{
@@ -83907,6 +84300,15 @@
 	icon_state = "whitegreen"
 	},
 /area/lv759/indoors/hospital/central_hallway)
+"qoK" = (
+/obj/effect/hybrisa/decal/engineership_corners{
+	dir = 1
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 4
+	},
+/turf/open/engineership/engineer_floor9,
+/area/lv759/outdoors)
 "qoO" = (
 /obj/structure/prop/hybrisa/airport/dropshipventright,
 /turf/open/floor/plating,
@@ -84961,6 +85363,16 @@
 	dir = 4
 	},
 /area/lv759/outdoors/colony_streets/south_east_street)
+"qys" = (
+/obj/structure/platform_decoration/hybrisa/engineer_corner{
+	dir = 1
+	},
+/obj/effect/hybrisa/decal/engineership_corners,
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 1
+	},
+/turf/open/engineership/engineer_floor9,
+/area/lv759/outdoors)
 "qyt" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10"
@@ -85615,6 +86027,13 @@
 	icon_state = "whitegreenfull"
 	},
 /area/lv759/indoors/hospital/pharmacy)
+"qFf" = (
+/obj/effect/hybrisa/decal/grate,
+/obj/effect/hybrisa/decal/warningstripes_angled{
+	pixel_y = -4
+	},
+/turf/open/engineership/engineer_floor1,
+/area/lv759/outdoors)
 "qFm" = (
 /obj/structure/platform{
 	dir = 4
@@ -86837,7 +87256,7 @@
 /obj/structure/prop/ice_colony/surveying_device{
 	dir = 4
 	},
-/turf/open/auto_turf/hybrisashale/layer1,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors)
 "qQv" = (
 /obj/structure/platform{
@@ -87333,9 +87752,10 @@
 	pixel_x = 1
 	},
 /obj/structure/cable/white{
-	color = "9f8700";
+	color = "#9f8700";
 	icon_state = "4-10";
-	layer = 5
+	layer = 5;
+	level = 2
 	},
 /turf/open/floor/strata{
 	icon_state = "cyan3"
@@ -87570,6 +87990,22 @@
 	},
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/lv759/indoors/casino)
+"qYe" = (
+/obj/structure/prop/structure_lattice{
+	dir = 4
+	},
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	layer = 3.1;
+	level = 3;
+	pixel_y = 10
+	},
+/obj/structure/machinery/floodlight{
+	layer = 4;
+	pixel_y = 20
+	},
+/turf/open/engineership/engineer_floor3,
+/area/lv759/outdoors)
 "qYg" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -88179,6 +88615,18 @@
 	dir = 1
 	},
 /area/lv759/indoors/chapel)
+"reg" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform1{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform1{
+	dir = 8
+	},
+/obj/structure/platform_decoration{
+	dir = 4
+	},
+/turf/open/engineership/engineer_floor9,
+/area/lv759/outdoors)
 "reh" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/binoculars,
@@ -88315,10 +88763,11 @@
 	},
 /area/lv759/outdoors/colony_streets/central_streets)
 "rfp" = (
-/obj/effect/hybrisa/decal/engineership_corners{
-	dir = 1
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	layer = 4
 	},
-/turf/open/engineership/engineer_floor3,
+/obj/structure/largecrate/random/barrel/black,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors)
 "rfr" = (
 /obj/item/trash/cigbutt{
@@ -88506,7 +88955,7 @@
 	pixel_y = 13
 	},
 /obj/structure/cable/white{
-	color = "550d0d";
+	color = "#550d0d";
 	icon_state = "2-6";
 	layer = 5
 	},
@@ -88748,6 +89197,11 @@
 	},
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/outdoors/colony_streets/north_street)
+"rjy" = (
+/obj/structure/largecrate/random/case/small,
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/engineership/engineer_floor3,
+/area/lv759/outdoors)
 "rjH" = (
 /obj/item/weapon/twohanded/folded_metal_chair{
 	pixel_x = -7;
@@ -89158,10 +89612,26 @@
 	},
 /area/lv759/outdoors/colony_streets/central_streets)
 "rnO" = (
-/obj/structure/prop/hybrisa/fakeplatforms/platform1{
-	dir = 8
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 4
 	},
-/turf/open/engineership/engineer_floor1,
+/obj/structure/prop/structure_lattice{
+	dir = 4
+	},
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	layer = 4
+	},
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	layer = 3.1;
+	level = 3;
+	pixel_y = 10
+	},
+/obj/structure/machinery/floodlight{
+	layer = 4;
+	pixel_y = 20
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors)
 "rnQ" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -89313,6 +89783,14 @@
 /turf/closed/wall/r_wall/bunker{
 	name = "reinforced metal wall"
 	},
+/area/lv759/outdoors)
+"rpF" = (
+/obj/item/stock_parts/matter_bin/adv{
+	pixel_x = 6;
+	pixel_y = 13
+	},
+/obj/item/stock_parts/matter_bin/super,
+/turf/open/engineership/engineer_floor1,
 /area/lv759/outdoors)
 "rpP" = (
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble11{
@@ -90420,6 +90898,7 @@
 /obj/structure/platform_decoration/hybrisa/engineer_corner{
 	dir = 1
 	},
+/obj/item/device/flashlight/lamp/tripod/grey,
 /turf/open/engineership/engineer_floor9,
 /area/lv759/outdoors)
 "rzU" = (
@@ -92223,6 +92702,13 @@
 	icon_state = "white"
 	},
 /area/lv759/indoors/bar/botany)
+"rPA" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 4
+	},
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors)
 "rPB" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal2"
@@ -92268,6 +92754,13 @@
 	dir = 8;
 	icon_state = "platingdmg3"
 	},
+/area/lv759/outdoors)
+"rQp" = (
+/obj/structure/platform/hybrisa/rockdark{
+	dir = 1
+	},
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/auto_turf/hybrisashale/layer0_plate,
 /area/lv759/outdoors)
 "rQy" = (
 /obj/structure/flora/pottedplant,
@@ -93656,7 +94149,8 @@
 /area/lv759/landing_zone_2)
 "seX" = (
 /obj/structure/barricade/handrail/hybrisa/handrail{
-	dir = 8
+	dir = 8;
+	layer = 4
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/colony_streets/central_streets)
@@ -94457,6 +94951,13 @@
 	icon_state = "red"
 	},
 /area/lv759/colonial_marshals/armory)
+"smY" = (
+/obj/effect/hybrisa/decal/engineership_corners{
+	dir = 8
+	},
+/obj/structure/platform_decoration,
+/turf/open/engineership/engineer_floor9,
+/area/lv759/outdoors)
 "snm" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -94578,6 +95079,13 @@
 	icon_state = "cargo_arrow"
 	},
 /area/lv759/indoors/spaceport/cargo)
+"sou" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 1
+	},
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors)
 "sox" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 8
@@ -95291,9 +95799,10 @@
 	layer = 3.3
 	},
 /obj/structure/cable/white{
-	color = "9f8700";
+	color = "#9f8700";
 	icon_state = "5-6";
-	layer = 5
+	layer = 5;
+	level = 2
 	},
 /turf/open/floor/strata{
 	dir = 1;
@@ -96345,6 +96854,15 @@
 	icon_state = "cell_stripe"
 	},
 /area/lv759/outdoors)
+"sEJ" = (
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = -9;
+	pixel_y = 10
+	},
+/obj/structure/largecrate/random/barrel/black,
+/obj/structure/prop/hybrisa/fakeplatforms/platform3,
+/turf/open/engineership/engineer_floor1,
+/area/lv759/outdoors)
 "sEK" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/sign/safety/high_voltage{
@@ -96685,6 +97203,22 @@
 /obj/structure/prop/hybrisa/xenobiology/small/cracked2,
 /turf/open/floor/bluegrid,
 /area/lv759/outdoors)
+"sHy" = (
+/obj/structure/prop/structure_lattice{
+	dir = 4
+	},
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	layer = 3.1;
+	level = 3;
+	pixel_y = 10
+	},
+/obj/structure/machinery/floodlight{
+	layer = 4;
+	pixel_y = 20
+	},
+/turf/open/engineership/engineer_floor1,
+/area/lv759/outdoors)
 "sHA" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -97009,7 +97543,7 @@
 	pixel_y = 6
 	},
 /obj/structure/cable/white{
-	color = "550d0d";
+	color = "#550d0d";
 	icon_state = "1-2";
 	layer = 5
 	},
@@ -97876,6 +98410,16 @@
 	dir = 4
 	},
 /area/lv759/outdoors/colony_streets/north_street)
+"sTl" = (
+/obj/structure/platform_decoration/hybrisa/engineer_corner{
+	dir = 8
+	},
+/obj/effect/hybrisa/decal/engineership_corners{
+	dir = 8
+	},
+/obj/structure/platform_decoration,
+/turf/open/engineership/engineer_floor9,
+/area/lv759/outdoors)
 "sTm" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/barricade/sandbags,
@@ -98228,6 +98772,16 @@
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "cargo_arrow"
+	},
+/area/lv759/outdoors)
+"sXq" = (
+/obj/structure/blocker/invisible_wall,
+/obj/effect/hybrisa/decal/warningstripes_angled_corner{
+	dir = 4;
+	pixel_y = -1
+	},
+/turf/open/engineership/engineer_floor8{
+	dir = 4
 	},
 /area/lv759/outdoors)
 "sXv" = (
@@ -98778,9 +99332,10 @@
 	icon_state = "S"
 	},
 /obj/structure/cable/white{
-	color = "9f8700";
+	color = "#9f8700";
 	icon_state = "4-6";
-	layer = 5
+	layer = 5;
+	level = 2
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -98928,6 +99483,16 @@
 	icon_state = "plating"
 	},
 /area/lv759/indoors/spaceport/cargo)
+"tdS" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 4;
+	pixel_x = 2
+	},
+/turf/open/engineership/engineer_floor8{
+	dir = 4
+	},
+/area/lv759/outdoors)
 "tdW" = (
 /obj/structure/machinery/newscaster,
 /turf/closed/wall/hangar{
@@ -99209,13 +99774,6 @@
 	name = "reinforced metal wall"
 	},
 /area/lv759/landing_zone_1/tunnel)
-"tgG" = (
-/obj/structure/platform_decoration/hybrisa/engineer_corner{
-	dir = 4
-	},
-/obj/structure/prop/hybrisa/fakeplatforms/platform1,
-/turf/open/engineership/engineer_floor9,
-/area/lv759/outdoors)
 "tgK" = (
 /obj/structure/prop/hybrisa/misc/fake/pipes/pipe1,
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco2{
@@ -100285,6 +100843,13 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/south_west_street)
+"tsr" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform1,
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 1
+	},
+/turf/open/engineership/engineer_floor9,
+/area/lv759/outdoors)
 "tsu" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/trash/c_tube{
@@ -102654,6 +103219,16 @@
 	icon_state = "ramptop"
 	},
 /area/lv759/outdoors)
+"tSj" = (
+/obj/effect/hybrisa/decal/engineership_corners{
+	dir = 1
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 4;
+	pixel_x = 1
+	},
+/turf/open/engineership/engineer_floor3,
+/area/lv759/outdoors)
 "tSl" = (
 /obj/item/stack/sheet/cardboard{
 	layer = 1
@@ -104142,6 +104717,15 @@
 	icon_state = "cell_stripe"
 	},
 /area/lv759/indoors/hospital/virology)
+"ugU" = (
+/obj/structure/largecrate/random/barrel/black{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/turf/open/engineership/engineer_floor8{
+	dir = 4
+	},
+/area/lv759/outdoors)
 "uha" = (
 /obj/structure/sink{
 	dir = 8;
@@ -104314,6 +104898,20 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/lv759/colonial_marshals/hallway)
+"uit" = (
+/obj/structure/platform_decoration/hybrisa/engineer_corner,
+/obj/effect/hybrisa/decal/engineership_corners{
+	dir = 1
+	},
+/obj/effect/hybrisa/decal/grate{
+	dir = 1
+	},
+/obj/effect/hybrisa/decal/warningstripes_angled{
+	dir = 1;
+	pixel_y = -4
+	},
+/turf/open/engineership/engineer_floor9,
+/area/lv759/outdoors)
 "uiA" = (
 /obj/structure/platform/kutjevo/smooth{
 	climb_delay = 1;
@@ -104523,6 +105121,18 @@
 	icon_state = "blue3"
 	},
 /area/lv759/landing_zone/landing_zone_3)
+"ujU" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 1
+	},
+/obj/structure/largecrate/random/case/small,
+/obj/item/device/radio{
+	pixel_x = 6;
+	pixel_y = 11
+	},
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors)
 "ujV" = (
 /obj/effect/hybrisa/decal/road/roadmiddle{
 	dir = 8;
@@ -104716,6 +105326,12 @@
 	},
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/central_streets)
+"ulQ" = (
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/engineership/engineer_floor8{
+	dir = 8
+	},
+/area/lv759/outdoors)
 "umg" = (
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco6{
 	dir = 8
@@ -105630,6 +106246,16 @@
 	},
 /turf/open/floor/prison,
 /area/lv759/outdoors/colony_streets/south_west_street)
+"uuf" = (
+/obj/effect/hybrisa/decal/warningstripes_angled{
+	dir = 8;
+	pixel_y = 4
+	},
+/obj/effect/hybrisa/decal/grate{
+	dir = 8
+	},
+/turf/open/engineership/engineer_floor1,
+/area/lv759/outdoors)
 "uum" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -105681,6 +106307,16 @@
 	},
 /turf/open/floor/hybrisa/carpet/carpetpatternbrown,
 /area/lv759/indoors/apartment_services/east)
+"uuZ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -4
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 1
+	},
+/turf/open/engineership/engineer_floor1,
+/area/lv759/outdoors)
 "uvb" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -105886,14 +106522,16 @@
 	dir = 4
 	},
 /obj/structure/cable/white{
-	color = "550d0d";
+	color = "#550d0d";
 	icon_state = "1-4";
-	layer = 5
+	layer = 5;
+	level = 2
 	},
 /obj/structure/cable/white{
-	color = "007740";
+	color = "#007740";
 	icon_state = "8-9";
-	layer = 5
+	layer = 5;
+	level = 2
 	},
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv759/outdoors)
@@ -106084,6 +106722,15 @@
 	icon_state = "ramptop"
 	},
 /area/lv759/landing_zone_2)
+"uzG" = (
+/obj/effect/hybrisa/decal/engineership_corners{
+	dir = 4
+	},
+/obj/structure/platform_decoration{
+	dir = 4
+	},
+/turf/open/engineership/engineer_floor9,
+/area/lv759/outdoors)
 "uzI" = (
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble12{
 	pixel_x = -16;
@@ -108309,6 +108956,18 @@
 	},
 /turf/open/floor/plating/kutjevo,
 /area/lv759/landing_zone_1)
+"uSm" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform1{
+	dir = 8
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform1{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 8
+	},
+/turf/open/engineership/engineer_floor9,
+/area/lv759/outdoors)
 "uSt" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble12{
@@ -108754,6 +109413,12 @@
 "uWR" = (
 /turf/open/floor/hybrisa/wood/redwood,
 /area/lv759/indoors/apartment/west)
+"uXe" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors)
 "uXh" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal3"
@@ -109102,6 +109767,14 @@
 	dir = 8;
 	icon_state = "black"
 	},
+/area/lv759/outdoors)
+"vbz" = (
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = 8;
+	pixel_y = -3;
+	layer = 2.9
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors)
 "vbC" = (
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaldark,
@@ -111005,6 +111678,13 @@
 /obj/structure/bed/sofa/vert/white/bot,
 /turf/open/floor/hybrisa/carpet/carpetdarkerblue,
 /area/lv759/landing_zone/landing_zone_4)
+"vwk" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 4
+	},
+/obj/structure/largecrate/random/barrel/black,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors)
 "vwr" = (
 /obj/effect/hybrisa/decal/checkpoint_decal{
 	dir = 4;
@@ -112059,7 +112739,7 @@
 	pixel_y = 32
 	},
 /obj/structure/cable/white{
-	color = "550d0d";
+	color = "#550d0d";
 	icon_state = "1-8";
 	layer = 5
 	},
@@ -112781,6 +113461,13 @@
 /obj/effect/hybrisa/decal/dirt_2,
 /turf/open/hybrisa/street/sidewalk,
 /area/lv759/outdoors/colony_streets/north_street)
+"vNw" = (
+/obj/structure/largecrate/random/barrel/black{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/turf/open/engineership/engineer_floor3,
+/area/lv759/outdoors)
 "vNx" = (
 /obj/item/ammo_casing/bullet,
 /turf/open/hybrisa/street/sidewalkcenter{
@@ -113096,9 +113783,10 @@
 	layer = 3.3
 	},
 /obj/structure/cable/white{
-	color = "9f8700";
+	color = "#9f8700";
 	icon_state = "8-9";
-	layer = 5
+	layer = 5;
+	level = 2
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -114295,6 +114983,13 @@
 "wcs" = (
 /obj/effect/hybrisa/decal/engineership_corners,
 /turf/open/engineership/engineer_floor9,
+/area/lv759/outdoors)
+"wcH" = (
+/obj/effect/hybrisa/decal/warningstripes_angled_corner{
+	dir = 4;
+	pixel_y = -4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors)
 "wcK" = (
 /obj/effect/decal/warning_stripes{
@@ -116427,6 +117122,10 @@
 	},
 /turf/open/floor/strata,
 /area/lv759/colonial_marshals/armory)
+"wyG" = (
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/engineership/engineer_floor1,
+/area/lv759/outdoors)
 "wyO" = (
 /obj/structure/machinery/light,
 /turf/open/hybrisa/street/cement3,
@@ -118048,11 +118747,22 @@
 	icon_state = "whitered"
 	},
 /area/lv759/indoors/hospital/icu)
+"wOL" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform1{
+	dir = 1
+	},
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/engineership/engineer_floor9,
+/area/lv759/outdoors)
 "wPf" = (
 /obj/item/clothing/under/color/orange,
 /obj/structure/bed/hybrisa/prisonbed,
 /turf/open/floor/strata,
 /area/lv759/colonial_marshals/prisoners_cells)
+"wPm" = (
+/obj/structure/prop/ice_colony/ground_wire,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors)
 "wPp" = (
 /obj/structure/platform/hybrisa/metalplatform1{
 	dir = 1
@@ -118260,6 +118970,11 @@
 	dir = 6;
 	icon_state = "multi_tiles"
 	},
+/area/lv759/outdoors)
+"wRM" = (
+/obj/effect/hybrisa/decal/engineership_corners,
+/obj/structure/prop/hybrisa/fakeplatforms/platform3,
+/turf/open/engineership/engineer_floor3,
 /area/lv759/outdoors)
 "wRS" = (
 /obj/structure/prop/invuln/minecart_tracks{
@@ -118989,6 +119704,13 @@
 	icon_state = "whitegreen"
 	},
 /area/lv759/indoors/hospital/east_hallway)
+"wYA" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform1{
+	dir = 4
+	},
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/engineership/engineer_floor2,
+/area/lv759/outdoors)
 "wYB" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal3"
@@ -119584,6 +120306,14 @@
 	icon_state = "darkbrown2"
 	},
 /area/lv759/landing_zone_1/tunnel)
+"xdJ" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform1,
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = 3;
+	pixel_y = 15
+	},
+/turf/open/engineership/engineer_floor3,
+/area/lv759/outdoors)
 "xdP" = (
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
@@ -119597,7 +120327,7 @@
 /turf/open/floor/hybrisa/carpet/carpetbluedeco,
 /area/lv759/colonial_marshals/north_office)
 "xek" = (
-/obj/structure/prop/hybrisa/fakeplatforms/platform1{
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	dir = 1
 	},
 /turf/open/engineership/engineer_floor1,
@@ -121217,9 +121947,6 @@
 	},
 /area/lv759/landing_zone/landing_zone_4)
 "xtL" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
 /obj/item/broken_device,
 /obj/item/circuitboard{
 	pixel_x = 12;
@@ -121235,9 +121962,13 @@
 	},
 /obj/item/stock_parts/manipulator,
 /obj/structure/cable/white{
-	color = "9f8700";
+	color = "#9f8700";
 	icon_state = "4-8";
-	layer = 5
+	layer = 5;
+	level = 2
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
 	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
@@ -122141,6 +122872,15 @@
 	icon_state = "darkbrown2"
 	},
 /area/lv759/landing_zone_1/tunnel)
+"xAn" = (
+/obj/item/stock_parts/matter_bin/adv{
+	pixel_x = -5;
+	pixel_y = 9
+	},
+/turf/open/engineership/engineer_floor8{
+	dir = 4
+	},
+/area/lv759/outdoors)
 "xAy" = (
 /turf/closed/shuttle/dropship2/transparent{
 	desc = "The WY-LWI Horizon Runner HR-150, a collaborative creation of Lunnar-Welsun Industries and Weyland-Yutani. This small dropship is designed for short-range commercial transport.";
@@ -122766,10 +123506,23 @@
 /turf/closed/wall/r_wall/biodome,
 /area/lv759/outdoors)
 "xFI" = (
-/obj/structure/platform_decoration/hybrisa/engineer_corner{
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	layer = 4
+	},
+/obj/structure/prop/structure_lattice{
 	dir = 4
 	},
-/turf/open/engineership/engineer_floor1,
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	layer = 3.1;
+	level = 3;
+	pixel_y = 10
+	},
+/obj/structure/machinery/floodlight{
+	layer = 4;
+	pixel_y = 20
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors)
 "xFK" = (
 /obj/structure/surface/table/gamblingtable,
@@ -123121,7 +123874,7 @@
 	dir = 1
 	},
 /obj/structure/cable/white{
-	color = "550d0d";
+	color = "#550d0d";
 	icon_state = "2-8";
 	layer = 5
 	},
@@ -124472,9 +125225,10 @@
 	pixel_x = 1
 	},
 /obj/structure/cable/white{
-	color = "9f8700";
+	color = "#9f8700";
 	icon_state = "6-8";
-	layer = 5
+	layer = 5;
+	level = 2
 	},
 /turf/open/floor/strata{
 	dir = 8;
@@ -125041,6 +125795,10 @@
 	dir = 8
 	},
 /area/lv759/outdoors/colony_streets/central_streets)
+"yfe" = (
+/obj/structure/sign/poster/wylogo,
+/turf/closed/wall/r_wall/bunker,
+/area/lv759/indoors/weymart)
 "yfi" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -125050,9 +125808,10 @@
 	pixel_y = 2
 	},
 /obj/structure/cable/white{
-	color = "550d0d";
+	color = "#550d0d";
 	icon_state = "5-6";
-	layer = 5
+	layer = 5;
+	level = 2
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -125765,6 +126524,20 @@
 /turf/open/floor/almayer{
 	icon_state = "black"
 	},
+/area/lv759/outdoors)
+"ylr" = (
+/obj/structure/platform_decoration/hybrisa/engineer_corner,
+/obj/effect/hybrisa/decal/engineership_corners{
+	dir = 1
+	},
+/obj/effect/hybrisa/decal/warningstripes_angled{
+	dir = 1;
+	pixel_y = -4
+	},
+/obj/effect/hybrisa/decal/grate{
+	dir = 1
+	},
+/turf/open/engineership/engineer_floor9,
 /area/lv759/outdoors)
 "ylx" = (
 /obj/structure/grille,
@@ -139598,7 +140371,7 @@ lCG
 lCG
 lCG
 cAb
-jqr
+wgb
 ndK
 lof
 gKp
@@ -145427,7 +146200,7 @@ hXC
 hxs
 bhk
 kmV
-kmV
+jKA
 kmV
 bhk
 wCc
@@ -145585,7 +146358,7 @@ eMx
 fBg
 sPU
 lGr
-aVI
+yfe
 xBZ
 sPU
 xJU
@@ -145678,9 +146451,9 @@ hXC
 hxs
 bhk
 kmV
-xxh
+jKA
 kmV
-xxh
+jKA
 kmV
 bhk
 wCc
@@ -145929,11 +146702,11 @@ qwo
 xIe
 bhk
 kmV
-xxh
+jKA
 kmV
 xxh
 kmV
-xxh
+jKA
 kmV
 bhk
 yaM
@@ -146180,13 +146953,13 @@ auT
 qwo
 xIe
 bhk
-kmV
-kmV
-xxh
+jKA
 kmV
 xxh
+xxh
+xxh
 kmV
-kmV
+jKA
 bhk
 fWA
 rjM
@@ -146433,11 +147206,11 @@ qwo
 xIe
 bhk
 kmV
-xxh
+jKA
 kmV
 xxh
 kmV
-xxh
+jKA
 kmV
 bhk
 qZr
@@ -146684,11 +147457,11 @@ auT
 ezW
 wCc
 ieZ
+bhk
 kmV
+jKA
 kmV
-xxh
-kmV
-xxh
+jKA
 kmV
 bhk
 hXC
@@ -146939,7 +147712,7 @@ wCc
 ieZ
 bhk
 kmV
-kmV
+jKA
 kmV
 bhk
 hXC
@@ -147961,7 +148734,7 @@ auT
 auT
 auT
 auT
-lMP
+wOL
 bGa
 hCf
 bGa
@@ -150985,8 +151758,8 @@ hdz
 kDA
 vss
 jfJ
-bbE
-kDA
+bwK
+cIv
 mzJ
 ndW
 qlM
@@ -151237,8 +152010,8 @@ hdz
 hdz
 kDA
 qar
-jfJ
-hdz
+uXe
+cIv
 kDA
 cZw
 vMY
@@ -151447,7 +152220,7 @@ auT
 wpF
 auT
 auT
-auT
+isZ
 auT
 auT
 mRH
@@ -151487,8 +152260,8 @@ kDA
 hdz
 hdz
 kDA
-hdz
-beZ
+cIv
+cIv
 qar
 jfJ
 kDA
@@ -151739,8 +152512,8 @@ kDA
 kDA
 hdz
 kDA
-kDA
-hdz
+cIv
+cIv
 hdz
 hdz
 tlO
@@ -151946,11 +152719,11 @@ auT
 auT
 isZ
 isZ
+isZ
 auT
 auT
 auT
-auT
-auT
+isZ
 isZ
 auT
 auT
@@ -152460,8 +153233,8 @@ isZ
 auT
 auT
 qwo
-fHp
-unn
+iOu
+fRz
 unn
 unn
 unn
@@ -152711,9 +153484,9 @@ auT
 auT
 auT
 auT
-qwo
-iOu
-fRz
+auT
+mRH
+fHp
 unn
 unn
 unn
@@ -152964,8 +153737,8 @@ auT
 auT
 auT
 auT
-mRH
-fHp
+qwo
+iOu
 unn
 unn
 unn
@@ -153026,8 +153799,8 @@ bGa
 jKA
 tgl
 haS
-hMP
-bGa
+pTc
+jKA
 oRp
 auT
 auT
@@ -153216,9 +153989,9 @@ pbZ
 auT
 auT
 auT
-qwo
+auT
+mRH
 fHp
-unn
 unn
 unn
 unn
@@ -153468,9 +154241,9 @@ ieZ
 cjq
 auT
 auT
-qwo
+auT
 dOu
-fRz
+uch
 unn
 unn
 unn
@@ -153531,7 +154304,7 @@ nTG
 auT
 auT
 lMP
-bGa
+jKA
 oRp
 auT
 auT
@@ -153721,7 +154494,7 @@ ieZ
 qlM
 auT
 auT
-mRH
+qwo
 iOu
 fRz
 unn
@@ -153966,7 +154739,7 @@ hXC
 hxs
 bhk
 kmV
-kmV
+jKA
 kmV
 bhk
 wCc
@@ -154035,7 +154808,7 @@ auT
 auT
 auT
 lMP
-bGa
+jKA
 oRp
 auT
 auT
@@ -154217,9 +154990,9 @@ hXC
 hxs
 bhk
 kmV
-xxh
+jKA
 kmV
-xxh
+jKA
 kmV
 bhk
 wCc
@@ -154468,18 +155241,18 @@ qwo
 xIe
 bhk
 kmV
-xxh
+jKA
 kmV
 xxh
 kmV
-xxh
+jKA
 kmV
 bhk
 kTp
 auT
 auT
 qwo
-rUG
+rQp
 lhd
 hdz
 hdz
@@ -154719,13 +155492,13 @@ auT
 qwo
 xIe
 bhk
-kmV
-kmV
-xxh
+jKA
 kmV
 xxh
+xxh
+xxh
 kmV
-kmV
+jKA
 bhk
 ege
 xgH
@@ -154971,13 +155744,13 @@ auT
 qwo
 xIe
 bhk
+jKA
 kmV
 xxh
-kmV
+xxh
 xxh
 kmV
-xxh
-kmV
+jKA
 bhk
 hBY
 mgP
@@ -155041,9 +155814,9 @@ cjq
 hXC
 hxs
 bhk
-kmV
-kmV
-kmV
+lBa
+jKA
+jKA
 jWM
 kmV
 bhk
@@ -155224,11 +155997,11 @@ qwo
 xIe
 bhk
 kmV
+jKA
 kmV
 xxh
 kmV
-xxh
-kmV
+jKA
 kmV
 bhk
 kTp
@@ -155294,10 +156067,10 @@ hxs
 bhk
 kmV
 avM
-kmV
-kmV
-kmV
-avM
+jKA
+jKA
+jKA
+jRQ
 kmV
 bhk
 wCc
@@ -155477,9 +156250,9 @@ wCc
 ieZ
 bhk
 kmV
+jKA
 kmV
-xxh
-kmV
+jKA
 kmV
 bhk
 hXC
@@ -155546,9 +156319,9 @@ bhk
 kmV
 avM
 avM
-kmV
 avM
-kmV
+jKA
+avM
 avM
 avM
 kmV
@@ -155730,7 +156503,7 @@ wCc
 ieZ
 bhk
 kmV
-kmV
+jKA
 kmV
 bhk
 hXC
@@ -155795,14 +156568,14 @@ auT
 qwo
 xIe
 bhk
-kmV
-kmV
+jKA
+jKA
 jWM
+jKA
 avM
-avM
-avM
-kmV
-kmV
+jKA
+jKA
+jKA
 jWM
 bhk
 ege
@@ -156047,15 +156820,15 @@ auT
 qwo
 xIe
 bhk
-kmV
-kmV
-kmV
+jKA
+jKA
+jKA
+jKA
 avM
-avM
-avM
-kmV
-kmV
-kmV
+jKA
+jKA
+jKA
+jKA
 bhk
 hBY
 haS
@@ -156245,7 +157018,7 @@ auT
 qwo
 fHp
 unn
-beZ
+unn
 roy
 beZ
 hdz
@@ -156300,11 +157073,11 @@ qwo
 xIe
 bhk
 kmV
+ugU
+mHb
 avM
+jKA
 avM
-kmV
-avM
-kmV
 avM
 avM
 kmV
@@ -156485,7 +157258,7 @@ auT
 auT
 auT
 auT
-lMP
+wOL
 oRp
 auT
 auT
@@ -156498,7 +157271,7 @@ qwo
 iOu
 unn
 unn
-beZ
+unn
 hdz
 beZ
 nnj
@@ -156552,14 +157325,14 @@ ezW
 wCc
 ieZ
 bhk
-kmV
-avM
-kmV
-kmV
+lBa
+xAn
+jKA
+jKA
 jWM
 avM
 kmV
-bhk
+wyG
 hXC
 iRR
 auT
@@ -156806,16 +157579,16 @@ wCc
 ieZ
 bhk
 kmV
-kmV
-kmV
-kmV
+jKA
+jKA
+jKA
 kmV
 bhk
 hXC
 hxs
 cjq
 auT
-lMP
+wOL
 oRp
 auT
 qwo
@@ -157563,7 +158336,7 @@ auT
 auT
 auT
 lMP
-bGa
+jKA
 oRp
 auT
 auT
@@ -157765,8 +158538,8 @@ beZ
 hdz
 kDA
 hdz
-hdz
-hdz
+cIv
+cIv
 beZ
 srR
 kDA
@@ -158017,8 +158790,8 @@ wgc
 kDA
 kDA
 kDA
-hdz
-hdz
+cIv
+cIv
 hdz
 nnj
 kDA
@@ -158066,8 +158839,8 @@ auT
 auT
 auT
 qvM
-fEm
-bGa
+bSV
+jKA
 oRp
 auT
 auT
@@ -158520,7 +159293,7 @@ piq
 hdz
 hdz
 qQt
-pen
+wPm
 kDA
 hdz
 kDA
@@ -158569,14 +159342,14 @@ auT
 qvM
 rjM
 fEm
-bGa
+jKA
 bGa
 oRp
 auT
 auT
 hXC
 hxs
-kmV
+lBa
 avM
 avM
 kmV
@@ -158757,7 +159530,7 @@ auT
 auT
 auT
 auT
-lMP
+wOL
 jKA
 bGa
 bGa
@@ -158771,8 +159544,8 @@ alB
 hWz
 nVc
 imX
-hdz
-hdz
+cIv
+cIv
 qXJ
 kDA
 kDA
@@ -158803,7 +159576,7 @@ auT
 auT
 auT
 auT
-isZ
+auT
 auT
 auT
 nOr
@@ -158819,7 +159592,7 @@ isZ
 auT
 qvM
 fEm
-bGa
+jKA
 bGa
 bGa
 bGa
@@ -158829,7 +159602,7 @@ rjM
 fgS
 bhk
 avM
-kmV
+jKA
 mgG
 avM
 bhk
@@ -159081,8 +159854,8 @@ haS
 vUh
 bhk
 avM
-kmV
-kmV
+jKA
+jKA
 avM
 bhk
 xIe
@@ -159305,7 +160078,7 @@ auT
 auT
 auT
 auT
-isZ
+auT
 auT
 auT
 nOr
@@ -159317,11 +160090,11 @@ siT
 siT
 siT
 siT
-ieZ
-auT
-qvM
-fEm
-bGa
+sTl
+bVX
+qoK
+ooE
+jKA
 tgl
 nTG
 auT
@@ -159335,7 +160108,7 @@ ieZ
 kmV
 avM
 avM
-kmV
+lBa
 hXC
 tKZ
 auT
@@ -159569,10 +160342,10 @@ ykc
 ykc
 ykc
 sYd
-wCc
+edO
 aps
-fEm
-bGa
+hSG
+aEE
 tgl
 nTG
 auT
@@ -159817,14 +160590,14 @@ hXC
 hxs
 gXN
 kOQ
-bhk
-kmV
+sHy
+hLv
 bhk
 vPe
-sYd
-wcs
-hMP
-tgl
+aiy
+sou
+cIv
+nvE
 nTG
 auT
 isZ
@@ -160073,10 +160846,10 @@ oHX
 oHX
 oHX
 mSv
-vPe
-sYd
-wcs
-oCv
+wRM
+qnY
+pCl
+tsr
 auT
 isZ
 auT
@@ -160325,10 +161098,10 @@ bhk
 bhk
 bhk
 vPe
-mSv
-vPe
-sYd
-wCc
+iui
+ujU
+pCl
+qys
 ieZ
 qlM
 auT
@@ -160577,10 +161350,10 @@ gdt
 gdt
 avM
 vif
-vPe
-mSv
-vPe
-sYd
+wRM
+cOG
+pCl
+uuZ
 xIe
 ogE
 auT
@@ -160829,9 +161602,9 @@ gdt
 gdt
 gdt
 avM
-bhk
-ixu
-bhk
+sEJ
+cOG
+pCl
 ixu
 xIe
 bGs
@@ -161073,17 +161846,17 @@ auT
 qwo
 kTp
 tOJ
-kmV
-aTg
+rjy
+xdJ
 bhk
 gdt
 gdt
 gdt
 gdt
 avM
-bhk
-ixu
-kmV
+foH
+cIv
+pCl
 xek
 xIe
 jgr
@@ -161325,17 +162098,17 @@ auT
 qwo
 kTp
 bhk
-kmV
+qYe
 aTg
 bhk
 gdt
 gdt
 gdt
 gdt
-avM
-bhk
-ixu
-kmV
+hBt
+cOG
+cIv
+hiv
 xek
 xIe
 jgr
@@ -161585,9 +162358,9 @@ gdt
 gdt
 gdt
 avM
-bhk
-ixu
-bhk
+uuf
+cIv
+ptr
 ixu
 xIe
 bGs
@@ -161833,14 +162606,14 @@ uAG
 qgh
 uAG
 bhk
-gdt
-gdt
-avM
+sXq
+tdS
+jjd
 bhk
+pJb
+cOG
 rfp
-leE
-rfp
-xFI
+xek
 xIe
 ogE
 auT
@@ -162084,15 +162857,15 @@ ieZ
 auQ
 uAG
 qgh
-uAG
-bhk
-bhk
-bhk
-rfp
+mqu
+nYo
+hSG
+qFf
+tSj
 leE
-rfp
+cIv
 xFI
-hXC
+oVI
 hxs
 jgr
 auT
@@ -162333,18 +163106,18 @@ auT
 auT
 auT
 fWA
-lOV
-auQ
-uAG
-qgh
+smY
+pxs
+kwb
+mDv
 hGE
-hGE
-hGE
-leE
-rfp
-xFI
-hXC
-hxs
+cIv
+cIv
+hSG
+cIv
+wcH
+ylr
+uzG
 uni
 auT
 nOr
@@ -162585,17 +163358,17 @@ auT
 auT
 vTS
 fEm
-uEr
-lOV
-auQ
-uAG
-bhk
-kmV
-bhk
-rfp
-xFI
-hXC
-hxs
+hMI
+hSG
+hSG
+hSG
+cIv
+vbz
+emV
+nvf
+wcH
+uit
+fhl
 uni
 isZ
 auT
@@ -162836,17 +163609,17 @@ auT
 auT
 qvM
 fEm
-bGa
-tgl
-qzA
-ieZ
-bhk
+jKA
+hMI
+nvf
+nvf
+nvf
+vwk
+rPA
 rnO
-rnO
-rnO
-xFI
-hXC
-hxs
+kOZ
+dtk
+fhl
 uni
 ogE
 nOr
@@ -163072,10 +163845,10 @@ auT
 cjq
 hXC
 hxs
-bhk
+wyG
 kmV
-kmV
-kmV
+jKA
+jKA
 jWM
 kmV
 bhk
@@ -163089,21 +163862,21 @@ qvM
 fEm
 bGa
 tgl
-nTG
-auT
-kBK
-poc
-poc
-poc
-poc
-poc
+eTF
+ayN
+lLE
+uSm
+uSm
+uSm
+uSm
+reg
 hxs
 uni
 isZ
 auT
 auT
 auT
-isZ
+auT
 auT
 auT
 aHb
@@ -163326,9 +164099,9 @@ hxs
 bhk
 kmV
 avM
-kmV
-kmV
-kmV
+jKA
+jKA
+jKA
 nnK
 kmV
 bhk
@@ -163338,7 +164111,7 @@ qlM
 auT
 qvM
 fEm
-bGa
+jKA
 tgl
 nTG
 auT
@@ -163573,19 +164346,19 @@ rzP
 rjM
 rjM
 rjM
-tgG
+fgS
 bhk
 kmV
 avM
 avM
-kmV
-kmV
-kmV
-nnK
-nnK
+avM
+jKA
+avM
+avM
+avM
 kmV
 bhk
-fWA
+ege
 rjM
 rjM
 fEm
@@ -163605,7 +164378,7 @@ auT
 auT
 auT
 auT
-isZ
+auT
 auT
 auT
 aHb
@@ -163823,24 +164596,24 @@ bGa
 bGa
 bGa
 bGa
-bGa
+jKA
 bGa
 oRp
 bhk
-kmV
-kmV
+jKA
+jKA
 mgG
 aUv
-kmV
-aUv
-kmV
-kmV
+gUs
+jKA
+jKA
+jKA
 jWM
 bhk
 lMP
+jKA
 bGa
-bGa
-bGa
+jKA
 bGa
 oRp
 auT
@@ -164073,21 +164846,21 @@ jKA
 bGa
 jKA
 bGa
-bGa
+jKA
 bGa
 bGa
 bGa
 oRp
 bhk
-kmV
-kmV
-kmV
-aUv
-kmV
-aUv
-kmV
-kmV
-kmV
+jKA
+jKA
+jKA
+jKA
+avM
+jKA
+jKA
+jKA
+jKA
 bhk
 lMP
 bGa
@@ -164334,19 +165107,19 @@ bhk
 kmV
 nnK
 nnK
-kmV
-kmV
-kmV
+avM
+jKA
 avM
 avM
-kmV
+avM
+lBa
 bhk
 qZr
 haS
-haS
+wYA
 haS
 hMP
-oRp
+ieN
 auT
 auT
 auT
@@ -164585,12 +165358,12 @@ wCc
 ieZ
 bhk
 kmV
-nnK
-kmV
-kmV
+ulQ
+jKA
+jKA
 jWM
-avM
-kmV
+hSQ
+vNw
 bhk
 hXC
 hxs
@@ -164838,11 +165611,11 @@ wCc
 ieZ
 bhk
 kmV
-kmV
-kmV
-kmV
-kmV
-bhk
+jKA
+jKA
+jKA
+rjy
+rpF
 hXC
 hxs
 cjq
@@ -164850,7 +165623,7 @@ auT
 auT
 auT
 lMP
-oRp
+ieN
 auT
 auT
 auT
@@ -165351,9 +166124,9 @@ cjq
 auT
 auT
 qvM
-fEm
+oxt
 bGa
-bGa
+jKA
 oRp
 auT
 auT
@@ -165605,7 +166378,7 @@ qvM
 fEm
 bGa
 bGa
-tgl
+ovp
 nTG
 auT
 auT
@@ -165853,9 +166626,9 @@ auT
 auT
 sbp
 qvM
-fEm
+oxt
 bGa
-bGa
+jKA
 tgl
 nTG
 auT
@@ -166104,7 +166877,7 @@ auT
 auT
 auT
 qvM
-fEm
+bSV
 bGa
 bGa
 tgl
@@ -166355,9 +167128,9 @@ uEr
 rjM
 rjM
 rjM
-fEm
+oxt
 bGa
-bGa
+jKA
 tgl
 nTG
 auT
@@ -166859,7 +167632,7 @@ auT
 auT
 auT
 lMP
-bGa
+jKA
 tgl
 nTG
 auT

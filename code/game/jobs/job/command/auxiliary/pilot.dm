@@ -1,7 +1,7 @@
 /datum/job/command/pilot
 	title = JOB_PILOT
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 1
+	spawn_positions = 1
 	allow_additional = TRUE
 	scaled = TRUE
 	supervisors = "the auxiliary support officer"

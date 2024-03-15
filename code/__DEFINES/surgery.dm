@@ -168,6 +168,7 @@ See also /datum/surgery_step/saw_off_limb/failure var/list/cannot_hack, listing 
 #define SURGERY_TOOLS_PRY_ENCASED list(\
 	/obj/item/tool/surgery/retractor = SURGERY_TOOL_MULT_IDEAL,\
 	/obj/item/tool/crowbar = SURGERY_TOOL_MULT_SUBSTITUTE,\
+	/obj/item/tool/crowbar/tactical = SURGERY_TOOL_MULT_SUBSTITUTE,\
 	/obj/item/maintenance_jack = SURGERY_TOOL_MULT_BAD_SUBSTITUTE\
 	)
 

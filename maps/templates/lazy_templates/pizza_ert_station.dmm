@@ -89,7 +89,8 @@
 "an" = (
 /obj/structure/bed/chair/bolted{
 	dir = 1;
-	pixel_y = 12
+	pixel_y = 12;
+	buckling_y = 12
 	},
 /turf/open/floor/prison,
 /area/adminlevel/ert_station/pizza_station)
@@ -318,7 +319,8 @@
 "cL" = (
 /obj/structure/bed/chair/bolted{
 	dir = 8;
-	pixel_x = -7
+	pixel_x = -7;
+	buckling_x = -7
 	},
 /turf/open/floor/prison,
 /area/adminlevel/ert_station/pizza_station)
@@ -697,7 +699,8 @@
 	},
 /obj/structure/bed/chair/bolted{
 	dir = 4;
-	pixel_x = 7
+	pixel_x = 7;
+	buckling_x = 7
 	},
 /obj/structure/sign/safety/hazard{
 	pixel_x = 15;
@@ -715,7 +718,8 @@
 /area/adminlevel/ert_station/pizza_station)
 "hX" = (
 /obj/structure/bed/chair/bolted{
-	pixel_y = -1
+	pixel_y = -1;
+	buckling_y = -1
 	},
 /obj/structure/machinery/light{
 	dir = 8
@@ -874,7 +878,9 @@
 /obj/structure/bed/chair/bolted{
 	dir = 4;
 	pixel_x = 7;
-	pixel_y = -6
+	pixel_y = -6;
+	buckling_x = 7;
+	buckling_y = -6
 	},
 /turf/open/floor{
 	icon_state = "redyellowfull"
@@ -1155,7 +1161,8 @@
 	},
 /obj/structure/bed/chair/bolted{
 	dir = 4;
-	pixel_x = 7
+	pixel_x = 7;
+	buckling_x = 7
 	},
 /obj/structure/prop/souto_land/streamer{
 	dir = 6
@@ -1272,7 +1279,8 @@
 "nX" = (
 /obj/structure/bed/chair/bolted{
 	dir = 8;
-	pixel_x = -7
+	pixel_x = -7;
+	buckling_x = -7
 	},
 /obj/structure/machinery/light,
 /turf/open/floor{
@@ -1384,7 +1392,8 @@
 "pS" = (
 /obj/structure/bed/chair/bolted{
 	dir = 8;
-	pixel_x = -7
+	pixel_x = -7;
+	buckling_x = -7
 	},
 /turf/open/floor{
 	icon_state = "redyellowfull"
@@ -1498,7 +1507,8 @@
 	},
 /obj/structure/bed/chair/bolted{
 	dir = 4;
-	pixel_x = 7
+	pixel_x = 7;
+	buckling_x = 7
 	},
 /obj/structure/machinery/alarm{
 	pixel_y = 25
@@ -1545,7 +1555,8 @@
 "rA" = (
 /obj/structure/bed/chair/bolted{
 	dir = 1;
-	pixel_y = 12
+	pixel_y = 12;
+	buckling_y = 12
 	},
 /turf/open/floor{
 	icon_state = "redyellowfull"
@@ -1707,7 +1718,9 @@
 /obj/structure/bed/chair/bolted{
 	dir = 4;
 	pixel_y = 17;
-	pixel_x = 10
+	pixel_x = 10;
+	buckling_y = 17;
+	buckling_x = 10
 	},
 /obj/structure/machinery/light,
 /turf/open/floor{
@@ -2037,7 +2050,8 @@
 "wo" = (
 /obj/structure/bed/chair/bolted{
 	dir = 8;
-	pixel_x = -7
+	pixel_x = -7;
+	buckling_x = -7
 	},
 /turf/open/floor/prison{
 	dir = 8;
@@ -2262,7 +2276,8 @@
 	},
 /obj/structure/bed/chair/bolted{
 	dir = 8;
-	pixel_x = -7
+	pixel_x = -7;
+	buckling_x = -7
 	},
 /obj/structure/sign/safety/hazard{
 	pixel_x = 15;
@@ -2417,7 +2432,8 @@
 	},
 /obj/structure/bed/chair/bolted{
 	dir = 8;
-	pixel_x = -7
+	pixel_x = -7;
+	buckling_x = -7
 	},
 /obj/structure/prop/souto_land/streamer{
 	dir = 9
@@ -2429,7 +2445,8 @@
 "zC" = (
 /obj/structure/bed/chair/bolted{
 	dir = 4;
-	pixel_x = 7
+	pixel_x = 7;
+	buckling_x = 7
 	},
 /turf/open/floor{
 	icon_state = "redyellowfull"
@@ -2680,7 +2697,8 @@
 "BU" = (
 /obj/structure/bed/chair/bolted{
 	dir = 1;
-	pixel_y = 12
+	pixel_y = 12;
+	buckling_y = 12
 	},
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_x = -30
@@ -3291,7 +3309,8 @@
 	pixel_y = 12
 	},
 /obj/structure/bed/chair/bolted{
-	pixel_y = -1
+	pixel_y = -1;
+	buckling_y = -1
 	},
 /turf/open/floor{
 	icon_state = "redyellowfull"
@@ -3444,7 +3463,8 @@
 "LH" = (
 /obj/structure/bed/chair/bolted{
 	dir = 1;
-	pixel_y = 12
+	pixel_y = 12;
+	buckling_y = 12
 	},
 /obj/structure/prop/souto_land/pole{
 	dir = 8;
@@ -3983,7 +4003,8 @@
 "Se" = (
 /obj/structure/bed/chair/bolted{
 	dir = 1;
-	pixel_y = 12
+	pixel_y = 12;
+	buckling_y = 12
 	},
 /obj/structure/prop/souto_land/streamer{
 	pixel_y = 9
@@ -4243,7 +4264,8 @@
 	pixel_y = 12
 	},
 /obj/structure/bed/chair/bolted{
-	pixel_y = -1
+	pixel_y = -1;
+	buckling_y = -1
 	},
 /obj/structure/machinery/light{
 	dir = 4
@@ -4333,7 +4355,8 @@
 "VN" = (
 /obj/structure/bed/chair/bolted{
 	dir = 8;
-	pixel_x = -7
+	pixel_x = -7;
+	buckling_x = -7
 	},
 /obj/structure/sign/poster{
 	desc = "One of those hot, tanned babes back the beaches of good ol' Earth.";

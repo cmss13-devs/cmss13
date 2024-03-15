@@ -49,7 +49,7 @@
 					}
 				</script>
 				<p id='loading'>You start unfolding the map...</p>
-					<img onload="pageloaded(this)" src="[wikiurl]/[html_link]?printable=yes&remove_links=1" id="main_frame" alt=""></img>
+					<img onload="pageloaded(this)" src="https://cdn-forum.cm-ss13.com/original/2X/8/86abc5cad64e22e3cda69bc1d665eca076fa8b7d.jpeg?printable=yes&remove_links=1" id="main_frame" alt=""></img>
 				</body>
 
 				</html>
@@ -130,6 +130,12 @@
 /obj/item/map/new_varadero
 	name = "\improper New Varadero map"
 	desc = "A labeled blueprint of the UA outpost New Varadero"
+	html_link = "images/9/94/New_Varadero.png"
+	color = "red"
+
+/obj/item/map/rosansk
+	name = "\improper Rosansk map"
+	desc = "A labeled blueprint of the UPP occupied city Rosansk"
 	html_link = "images/9/94/New_Varadero.png"
 	color = "red"
 

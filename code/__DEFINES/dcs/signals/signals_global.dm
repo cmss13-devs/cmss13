@@ -75,3 +75,5 @@
 
 #define COMSIG_GLOB_HIJACK_IMPACTED "!hijack_impacted"
 #define COMSIG_GLOB_HIJACK_LANDED "!hijack_landed"
+
+#define COMSIG_GLOB_ANTIAIR_DESTROYED "!antiair_destroyed"

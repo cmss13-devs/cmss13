@@ -334,3 +334,25 @@
 	new /obj/item/clothing/under/shorts/red(src)
 	new /obj/item/clothing/under/shorts/blue(src)
 	new /obj/item/clothing/under/shorts/green(src)
+
+/obj/structure/machinery/prop/antiair_mainframe
+	name = "SSDC Mainframe"
+	desc = "The mainframe controlling the Sputnik Stratospheric Defense Cannon. Destroying this would enable ships to land on the western and eastern landing pads."
+	desc_lore = "The Sputnik Stratospheric Defense Cannon is a state-of-the-art UPP airspace defense solution. It utilizes adaptive optics and AI-targeting algorithms to intercept even the smallest of targets in the stratosphere."
+	icon_state = "processor"
+	unacidable = FALSE
+	health = 500
+	var/destroy_title = "SSDC Destroyed"
+	var/destroy_announcement = "The SSDC covering the airspace above Rosansk has been destroyed.\n\nIt is now possible to utilize the Western and Eastern landing pads in front of the city."
+
+/obj/structure/machinery/prop/antiair_mainframe/Destroy(force)
+	if(!force)
+		new /obj/item/stack/rods(loc)
+		new /obj/item/stack/cable_coil/cut(loc)
+		new /obj/effect/spawner/gibspawner/robot(loc)
+		new /obj/effect/decal/cleanable/blood/oil(loc)
+		marine_announcement(destroy_announcement, destroy_title)
+		marine_announcement(destroy_announcement, destroy_title, FACTION_UPP)
+		message_admins("The AA mainframe has been destroyed. Last touched by [src.fingerprintslast].")
+		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_ANTIAIR_DESTROYED)
+	return ..()

@@ -206,7 +206,7 @@
 	///percent of gel remaining in container
 	var/remaining_gel = 100
 	///If gel is used when doing bone surgery
-	var/unlimited_gel = FALSE
+	var/unlimited_gel = TRUE
 	///Time it takes per 10% of gel refilled
 	var/time_per_refill = 1 SECONDS
 	///if the bone gel is actively being refilled

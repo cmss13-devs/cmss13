@@ -340,6 +340,7 @@
 	desc = "The mainframe controlling the Sputnik Stratospheric Defense Cannon. Destroying this would enable ships to land on the western and eastern landing pads. You must use a C4 brick."
 	desc_lore = "The Sputnik Stratospheric Defense Cannon is a state-of-the-art UPP airspace defense solution. It utilizes adaptive optics and AI-targeting algorithms to intercept even the smallest of targets in the stratosphere."
 	icon_state = "processor"
+	density = TRUE
 	unacidable = FALSE
 	var/destroy_title = "SSDC Destroyed"
 	var/destroy_announcement = "The SSDC covering the airspace above Rosansk has been destroyed.\n\nIt is now possible to utilize the Western and Eastern landing pads in front of the city."

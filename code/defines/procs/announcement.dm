@@ -162,5 +162,5 @@
 
 		to_chat_spaced(T, html = "[SPAN_ANNOUNCEMENT_HEADER(title)]<br><br>[SPAN_ANNOUNCEMENT_BODY(message)]", type = MESSAGE_TYPE_RADIO)
 		if(isobserver(T) && !(T.client?.prefs?.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS))
-			return
+			continue
 		playsound_client(T.client, sound_to_play, T, vol = 45)

@@ -84,7 +84,7 @@
 	// Only equip if uniform doesn't already have a utility accessory slot equipped
 	var/obj/item/clothing/under/uniform = user.w_uniform
 	var/accessory = locate(/obj/item/clothing/accessory/storage) in uniform.accessories
-	if(accessory)
+	if(accessory && !istype(accessory,/obj/item/clothing/accessory/storage/ifak))
 		to_chat(user, SPAN_WARNING("[src] can't be worn with [accessory]."))
 		return FALSE
 	// Only equip if user has expert intel skill level

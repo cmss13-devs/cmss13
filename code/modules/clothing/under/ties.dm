@@ -776,7 +776,7 @@
 		/obj/item/storage/pill_bottle/packet,
 		/obj/item/stack/medical/bruise_pack,
 		/obj/item/stack/medical/splint,
-		/obj/item/attachable/bayonet
+		/obj/item/attachable/bayonet,
 	)
 
 /obj/item/storage/internal/accessory/ifak/fill_preset_inventory()

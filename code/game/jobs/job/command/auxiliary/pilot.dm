@@ -1,5 +1,5 @@
 /datum/job/command/pilot
-	title = JOB_PILOT
+	title = JOB_CAS_PILOT
 	total_positions = 1
 	spawn_positions = 1
 	allow_additional = TRUE
@@ -15,6 +15,6 @@ AddTimelock(/datum/job/command/pilot, list(
 ))
 
 /obj/effect/landmark/start/pilot
-	name = JOB_PILOT
+	name = JOB_CAS_PILOT
 	icon_state = "po_spawn"
 	job = /datum/job/command/pilot

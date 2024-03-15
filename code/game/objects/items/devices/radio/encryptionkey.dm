@@ -151,7 +151,7 @@
 	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_ALMAYER = TRUE)
 
 /obj/item/device/encryptionkey/po
-	name = "\improper Marine Pilot Officer Radio Encryption Key"
+	name = "\improper Marine Gunship Pilot Radio Encryption Key"
 	icon_state = "cap_key"
 	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_INTEL = TRUE)
 

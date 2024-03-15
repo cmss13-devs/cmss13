@@ -659,15 +659,15 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/po
-	name = "USCM Pilot (DP) (Cryo)"
+	name = "USCM Gunship Pilot (GP) (Cryo)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver
 	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_PILOT)
-	assignment = JOB_PILOT
-	rank = JOB_PILOT
+	assignment = JOB_CAS_PILOT
+	rank = JOB_CAS_PILOT
 	paygrade = PAY_SHORT_MO1
-	role_comm_title = "DP"
+	role_comm_title = "FSO"
 	skills = /datum/skills/pilot
 
 	minimap_icon = "pilot"
@@ -685,7 +685,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/po/full
-	name = "USCM Pilot Officer (PO)"
+	name = "USCM Gunship Pilot (PO)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/pilot)
@@ -709,16 +709,16 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/dcc
-	name = "USCM Dropship Crew Chief (DCC) (Cryo)"
+	name = "USCM Dropship Gunship Pilot (DPO) (Cryo)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver
 	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_PILOT)
-	assignment = JOB_DROPSHIP_CREW_CHIEF
-	rank = JOB_DROPSHIP_CREW_CHIEF
+	assignment = JOB_DROPSHIP_PILOT
+	rank = JOB_DROPSHIP_PILOT
 	paygrade = PAY_SHORT_ME5
-	role_comm_title = "DCC"
-	skills = /datum/skills/crew_chief
+	role_comm_title = "DPO"
+	skills = /datum/skills/pilot
 
 	minimap_icon = "dcc"
 
@@ -735,7 +735,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/dcc/full
-	name = "USCM Dropship Crew Chief (DCC)"
+	name = "USCM Dropship Pilot (DCC)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/pilot/dcc)

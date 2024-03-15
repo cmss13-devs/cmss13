@@ -257,9 +257,9 @@
 			return /datum/equipment_preset/uscm_ship/auxiliary_officer
 		if(JOB_INTEL)
 			return /datum/equipment_preset/uscm/intel/full
-		if(JOB_PILOT)
+		if(JOB_CAS_PILOT)
 			return /datum/equipment_preset/uscm_ship/po/full
-		if(JOB_DROPSHIP_CREW_CHIEF)
+		if(JOB_DROPSHIP_PILOT)
 			return /datum/equipment_preset/uscm_ship/dcc/full
 		if(JOB_CORPORATE_LIAISON)
 			return /datum/equipment_preset/uscm_ship/liaison

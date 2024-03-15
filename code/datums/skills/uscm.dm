@@ -127,7 +127,7 @@ MILITARY NONCOMBATANT
 	)
 
 /datum/skills/pilot
-	name = "Pilot Officer"
+	name = "Gunship Pilot"
 	skills = list(
 		SKILL_PILOT = SKILL_PILOT_EXPERT,
 		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,
@@ -140,7 +140,7 @@ MILITARY NONCOMBATANT
 	)
 
 /datum/skills/crew_chief
-	name = "Dropship Crew Chief"
+	name = "Dropship Pilot"
 	skills = list(
 		SKILL_PILOT = SKILL_PILOT_TRAINED,
 		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,

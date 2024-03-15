@@ -170,8 +170,8 @@
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/officer/pilot
-	name = "pilot officer bodysuit"
-	desc = "A bodysuit worn by pilot officers of the USCM, and is meant for survival in inhospitable conditions. Fly the marines onwards to glory. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	name = "fire support officer bodysuit"
+	desc = "A bodysuit worn by fire support officers of the USCM, and is meant for survival in inhospitable conditions. Fly the marines onwards to glory. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "pilot_flightsuit"
 	item_state = "pilot_flightsuit"
 	worn_state = "pilot_flightsuit"
@@ -181,8 +181,8 @@
 	suit_restricted = list(/obj/item/clothing/suit/armor/vest/pilot, /obj/item/clothing/suit/storage/marine/light/vest/dcc, /obj/item/clothing/suit/storage/jacket/marine/pilot, /obj/item/clothing/suit/storage/marine/light/vest)
 
 /obj/item/clothing/under/marine/officer/pilot/flight
-	name = "tactical pilot officer flightsuit"
-	desc = "A flightsuit worn by pilot officers of the USCM, with plenty of leather straps, pouches, and other essential gear you will never use. Looks badass."
+	name = "tactical fire support officer flightsuit"
+	desc = "A flightsuit worn by fire support officers of the USCM, with plenty of leather straps, pouches, and other essential gear you will never use. Looks badass."
 	icon_state = "pilot_flightsuit_alt"
 	item_state = "pilot_flightsuit_alt"
 	worn_state = "pilot_flightsuit_alt"
@@ -191,8 +191,8 @@
 	flags_cold_protection = ICE_PLANET_MIN_COLD_PROT
 
 /obj/item/clothing/under/marine/officer/pilot/dcc
-	name = "dropship crew chief bodysuit"
-	desc = "A bodysuit worn by dropship crew chiefs of the USCM, and is meant for survival in inhospitable conditions. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	name = "dropship fire support officer bodysuit"
+	desc = "A bodysuit worn by dropship fire support officers of the USCM, and is meant for survival in inhospitable conditions. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "crewchief_flightsuit"
 	item_state = "crewchief_flightsuit"
 	worn_state = "crewchief_flightsuit"
@@ -888,7 +888,7 @@
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/uniform_1.dmi',
 	)
-	
+
 /obj/item/clothing/under/marine/reporter/black
 	icon_state = "cc_black"
 	worn_state = "cc_black"

@@ -119,7 +119,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 		new /obj/item/clothing/mask/rebreather/scarf(src)
 
 /obj/structure/closet/secure_closet/pilot_officer
-	name = "pilot officer's locker"
+	name = "fire support officer's locker"
 	req_access = list(ACCESS_MARINE_PILOT)
 	icon_state = "secure_locked_pilot"
 	icon_closed = "secure_unlocked_pilot"

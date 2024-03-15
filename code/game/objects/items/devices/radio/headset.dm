@@ -523,7 +523,7 @@
 
 /obj/item/device/radio/headset/almayer/po
 	name = "marine pilot radio headset"
-	desc = "Used by Pilot Officers. Channels are as follows: :v - marine command, :n - engineering, :m - medical, :j - JTAC, :t - intel."
+	desc = "Used by Gunship Pilots. Channels are as follows: :v - marine command, :n - engineering, :m - medical, :j - JTAC, :t - intel."
 	initial_keys = list(/obj/item/device/encryptionkey/po)
 	volume = RADIO_VOLUME_CRITICAL
 	multibroadcast_cooldown = LOW_MULTIBROADCAST_COOLDOWN

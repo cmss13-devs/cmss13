@@ -5,7 +5,7 @@ import { Window } from '../layouts';
 export const XenomorphExtractor = (_props, context) => {
   const { act, data } = useBackend(context);
 
-  const { organ, points, upgrades, path, caste, value } = data;
+  const { organ, points, upgrades, caste, value } = data;
 
   return (
     <Window width={600} height={650} theme="crtyellow">
@@ -66,7 +66,7 @@ export const XenomorphExtractor = (_props, context) => {
                           tooltipPosition="left"
                           onClick={() =>
                             act('produce', {
-                              paths: upgrades.path,
+                              ref: upgrades.ref,
                               cost: upgrades.cost,
                               varia: upgrades.vari,
                             })

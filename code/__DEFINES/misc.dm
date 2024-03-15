@@ -167,13 +167,17 @@
 #define PACKET_BEHAVIOR_EXACT 1
 #define PACKET_BEHAVIOR_VALUE 2
 
+#define UPGRADE_EXCLUDE_BUY 0
+#define UPGRADE_CATEGORY 0.5 //lord forgive me
 #define UPGRADE_TIER_1 1
 #define UPGRADE_TIER_2 2
 #define UPGRADE_TIER_3 3
 #define UPGRADE_TIER_4 4
 #define UPGRADE_TIER_5 5
-//Value define, read research_upgrades.dm for more info'
-#define ITEM_EXCLUDE_BUY 0
+//Value define\
+
+#define ITEM_MACHINERY_UPGRADE 0
+#define ITEM_ACCESSORY_UPGRADE 1
 
 
 // RESEARCH UPGRADES DEFINES END

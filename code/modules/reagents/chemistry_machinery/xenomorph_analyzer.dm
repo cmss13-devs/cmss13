@@ -12,7 +12,6 @@
 	var/obj/item/organ/xeno/organ = null
 	var/busy = FALSE
 	var/caste_of_organ = null
-	var/list/different_upgrades = list()// used for items that are not research_upgrades. eg ammo
 
 /obj/structure/machinery/xenoanalyzer/attack_hand(mob/user as mob)
 	tgui_interact(user)
@@ -54,26 +53,34 @@
 	to_world("Oof")
 	var/list/static_data = list()
 	static_data["upgrades"] = list()
-	for(var/upgrade_type in subtypesof(/obj/item/research_upgrades))
+	for(var/upgrade_type in subtypesof(/datum/research_upgrades))
 		to_world("Ayo")
-		var/obj/item/research_upgrades/upgrade = new upgrade_type //cant call procs without creating it. doing so crashes the game.
-		var/upgrade_variations = upgrade.value
+		var/datum/research_upgrades/upgrade = new upgrade_type //gone
+		if(upgrade.behavior <= UPGRADE_CATEGORY)
+			to_world(upgrade)
+			continue
+		var/upgrade_variations = upgrade.behavior
 		for(var/iteration in 1 to upgrade_variations)
-			if(upgrade.value)
-				to_world(upgrade)
-				var/upgrade_price = upgrade.price[iteration]
-				var/upgrade_name = (capitalize_first_letters(upgrade.name) + capitalize_first_letters(upgrade.get_upgrade_desc(iteration, TRUE) ))
-				var/upgrade_desc = (initial(upgrade.desc) + upgrade.get_upgrade_desc(iteration, FALSE))
-				to_world(upgrade_name)
-				static_data["upgrades"] += list(list(
-						"name" = upgrade_name,
-						"desc" = upgrade_desc,
-						"vari" = iteration,
-						"cost" = upgrade_price,
-						"path" = upgrade_type
-				))
-	for(var/item in different_upgrades)
-
+			to_world(upgrade)
+			//var/upgrade_price = upgrade.value_upgrade[iteration]
+			to_world("oh2")
+			var/upgrade_name = (capitalize_first_letters(upgrade.name) + capitalize_first_letters(upgrade.get_upgrade_desc(iteration)))
+			var/upgrade_price = (upgrade.value_upgrade[iteration])
+			to_world("oh12")
+			var/upgrade_desc = (initial(upgrade.desc) + upgrade.get_upgrade_desc(iteration))
+			to_world("oh1")
+			var/item = initial(upgrade.item_reference)
+			to_world(initial(upgrade.item_reference))
+			to_world(upgrade_name + "asd")
+			static_data["upgrades"] += list(list(
+				"name" = upgrade_name,
+				"desc" = upgrade_desc,
+				"vari" = iteration,
+				"cost" = upgrade_price,
+				"ref" = item,
+				"category" = initial(upgrade.upgrade_type)
+			))
+			to_world(item)
 	return static_data
 
 /obj/structure/machinery/xenoanalyzer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -90,11 +97,14 @@
 			process_organ()
 			. = TRUE
 		if("produce")
-			var/produce = text2path(params["paths"])
+			var/produce = text2path(params["ref"])
 			var/cost = text2num(params["cost"])
 			var/vari = text2num(params["varia"])
 			if(cost)
-				start_print_upgrade(produce, cost, usr, vari)
+				to_world(produce)
+				to_world(params["ref"] + " asadasdassss")
+
+				start_print_upgrade(params["ref"], cost, usr, vari)
 
 /obj/structure/machinery/xenoanalyzer/proc/eject_biomass()
 	if(isnull(organ))
@@ -121,9 +131,11 @@
 		biomass_points -= cost
 		addtimer(CALLBACK(src, PROC_REF(print_upgrade), produce_path, variation), 5 SECONDS)
 
-
 /obj/structure/machinery/xenoanalyzer/proc/print_upgrade(produce_path, variation)
 	busy = FALSE
+	if(isnull(produce_path))
+		to_world("uhohhh")
+	to_world(produce_path)
 	icon_state = "mixer0b"
 	var/obj/item/research_upgrades/upgrade = new produce_path(get_turf(src))
 	upgrade.value = variation

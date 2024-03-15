@@ -1,6 +1,8 @@
 {
     "override_map": true,
     "map_name": "Rosansk",
+    "map_path": "templates/LV624",
+    "map_file": "AmphibiousLandingOverhauled.dmm",
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/lv",
         "/datum/equipment_preset/survivor/doctor/lv",

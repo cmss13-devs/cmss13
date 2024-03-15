@@ -293,10 +293,16 @@
 	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/normandy
 
+/obj/docking_port/stationary/marine_dropship/lz1/antiair_enabled
+	name = "Western Inland Zone"
+
 /obj/docking_port/stationary/marine_dropship/lz1/antiair_enabled/Initialize(mapload)
 	. = ..()
 	unregister()
 	RegisterSignal(SSdcs, COMSIG_GLOB_ANTIAIR_DESTROYED, PROC_REF(register))
+
+/obj/docking_port/stationary/marine_dropship/lz2/antiair_enabled
+	name = "Eastern Inland Zone"
 
 /obj/docking_port/stationary/marine_dropship/lz2/antiair_enabled/Initialize(mapload)
 	. = ..()

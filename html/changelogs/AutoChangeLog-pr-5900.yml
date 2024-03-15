@@ -1,5 +1,0 @@
-author: "Segrain"
-delete-after: True
-changes:
-  - rscadd: "Requisitions' vendor now has medical radio keys in stock."
-  - rscadd: "CE and CMO can now get spare departmental headsets from their vendors to recruit survivors without having to go to Requisitions."

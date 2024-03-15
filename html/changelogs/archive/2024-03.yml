@@ -121,3 +121,62 @@
   Segrain:
   - admin: Actually fixed the last case of being warned against interacting with ticket
       already marked by you.
+2024-03-12:
+  Drathek:
+  - bugfix: Fix chestrig not displaying on maps with different skins (e.g. Shivas)
+  Katskan:
+  - balance: Medical Skill 4 reduced speed buff from -75% duration to -50% duration
+  - balance: Medical Skill 3 increased speed buff from -0% duration to -25% duration
+  Segrain:
+  - rscadd: Requisitions' vendor now has medical radio keys in stock.
+  - rscadd: CE and CMO can now get spare departmental headsets from their vendors
+      to recruit survivors without having to go to Requisitions.
+  - bugfix: Wiping frequencies off radiotowers no longer breaks them forever.
+  Stakeyng:
+  - balance: Drop pouch has more space (2 large (unchanged), 4 medium, 8 small)
+  ihatethisengine2:
+  - bugfix: Dropship door prying can now always be performed by queen even if open
+      or not locked
+  realforest2001:
+  - soundadd: Added pda_ping.ogg, sourced from Paradise SS13 mailapproved.ogg
+  - rscadd: Added notification sounds from certain APOLLO ticket interactions.
+  - rscadd: People making an access ticket request are now notified of the status
+      changes.
+2024-03-13:
+  Segrain:
+  - bugfix: Picking up clothes/armour with somebody else's medal attached no longer
+      makes the medal fall off (trying to wear them still does).
+  - bugfix: Doctors calling themselves surgeons now properly get playtime medals.
+  - bugfix: Playtime medals now use assignments instead of backend paygrade codes
+      (e.g. "Awarded to Squad Leader John Doe" instead of "Awarded to ME5 John Doe").
+2024-03-14:
+  Vicacrov:
+  - rscadd: Added an option to hear or silence announcement audio cues (queen screech,
+      CIC beep, etc.) while being an observer.
+  nauticall:
+  - imageadd: Resprites first aid kits, coffins, material stacks, mortar shells, and
+      chemistry items. Chemistry sprites ported from Baystation / Aurora.
+  - bugfix: Recolors several reagent sprites to be more in-line with their established
+      colors, such as on autoinjectors.
+  - bugfix: Fixed invisible cloth tables.
+  - bugfix: Fixed wrong shading on the large floodlight.
+2024-03-15:
+  Drathek:
+  - balance: The light replacer can now be used to skip the crowbar, welding, and
+      wire steps when repairing colony lights.
+  - bugfix: Fixes SMES and APC interfaces not checking adjacency or incapacitated
+      states
+  - spellcheck: Fixed examine text for colony lights (improper names and not powered
+      text)
+  Huffie56:
+  - balance: adding M44 Marksman Speed Loader and SU-6 Smartpistol Magazine in vendor
+      of (medic,comtech, SL) at a cost of 6 each.
+  - balance: adding M44 Marksman Speed Loader and SU-6 Smartpistol Magazine in vendor
+      of (rifleman, TL, IO) at a cost of 10 each.
+  - balance: adding VP78 case and SU-6 case in vendor of IO at a cost of 15 each.
+  - balance: adding M44 Marksman Speed Loader and SU-6 Smartpistol Magazine in SG
+      vendor for 10 point each.
+  - balance: adding the ability for to buy smartgun DV9 battery for 15 points in SG
+      vendor.
+  Segrain:
+  - qol: Middleclicking beds/chairs/etc is now a shortcut for buckling to them.

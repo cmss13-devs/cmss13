@@ -709,7 +709,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/dcc
-	name = "USCM Dropship Gunship Pilot (DPO) (Cryo)"
+	name = "USCM Dropship Pilot (DP) (Cryo)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver
@@ -717,7 +717,7 @@
 	assignment = JOB_DROPSHIP_PILOT
 	rank = JOB_DROPSHIP_PILOT
 	paygrade = PAY_SHORT_ME5
-	role_comm_title = "DPO"
+	role_comm_title = "DP"
 	skills = /datum/skills/pilot
 
 	minimap_icon = "dcc"
@@ -735,7 +735,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/dcc/full
-	name = "USCM Dropship Pilot (DCC)"
+	name = "USCM Dropship Pilot (DP)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/pilot/dcc)

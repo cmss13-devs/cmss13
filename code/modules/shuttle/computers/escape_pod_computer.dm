@@ -238,7 +238,7 @@
 
 /obj/structure/machinery/door/airlock/evacuation/Destroy()
 	if(linked_shuttle)
-		linked_shuttle.mode = SHUTTLE_CRASHED
+		linked_shuttle.set_mode(SHUTTLE_CRASHED)
 		linked_shuttle.door_handler.doors -= list(src)
 	. = ..()
 

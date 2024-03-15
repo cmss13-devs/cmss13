@@ -41320,7 +41320,7 @@
 	},
 /area/almayer/hallways/upper/aft_hallway)
 "jZY" = (
-/obj/structure/closet/l3closet/virology,
+/obj/structure/closet/l3closet/medical,
 /turf/open/floor/almayer{
 	icon_state = "redfull"
 	},

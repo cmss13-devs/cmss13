@@ -11,9 +11,9 @@
 	new /obj/item/clothing/head/bio_hood( src )
 
 /obj/structure/closet/l3closet/medical
-	icon_state = "bio"
-	icon_closed = "bio"
-	icon_opened = "bioopen"
+	icon_state = "bio_medical"
+	icon_closed = "bio_medical"
+	icon_opened = "bio_medicalopen"
 
 /obj/structure/closet/l3closet/medical/Initialize()
 	. = ..()

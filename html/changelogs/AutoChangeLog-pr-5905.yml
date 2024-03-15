@@ -1,6 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - balance: "The light replacer can now be used to skip the crowbar, welding, and wire steps when repairing colony lights."
-  - bugfix: "Fixes SMES and APC interfaces not checking adjacency or incapacitated states"
-  - spellcheck: "Fixed examine text for colony lights (improper names and not powered text)"

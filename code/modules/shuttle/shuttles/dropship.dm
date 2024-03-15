@@ -294,15 +294,13 @@
 	roundstart_template = /datum/map_template/shuttle/normandy
 
 /obj/docking_port/stationary/marine_dropship/lz1/antiair_enabled/Initialize(mapload)
-	if(!area_type)
-		var/area/place = get_area(src)
-		area_type = place?.type // We might be created in nullspace
+	. = ..()
+	unregister()
 	RegisterSignal(SSdcs, COMSIG_GLOB_ANTIAIR_DESTROYED, PROC_REF(register))
 
 /obj/docking_port/stationary/marine_dropship/lz2/antiair_enabled/Initialize(mapload)
-	if(!area_type)
-		var/area/place = get_area(src)
-		area_type = place?.type // We might be created in nullspace
+	. = ..()
+	unregister()
 	RegisterSignal(SSdcs, COMSIG_GLOB_ANTIAIR_DESTROYED, PROC_REF(register))
 
 /obj/docking_port/stationary/marine_dropship/crash_site

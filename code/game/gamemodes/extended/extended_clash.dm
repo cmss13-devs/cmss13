@@ -11,3 +11,10 @@
 /datum/game_mode/extended/faction_clash/post_setup()
 	. = ..()
 	SSweather.force_weather_holder(/datum/weather_ss_map_holder/faction_clash)
+	addtimer(CALLBACK(src, PROC_REF(ares_online)), 5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(map_announcement)), 20 SECONDS)
+
+/datum/game_mode/extended/proc/map_announcement()
+	if(SSmapping.configs[GROUND_MAP].announce_text)
+		var/rendered_announce_text = replacetext(SSmapping.configs[GROUND_MAP].announce_text, "###SHIPNAME###", MAIN_SHIP_NAME)
+		marine_announcement(rendered_announce_text, "[MAIN_SHIP_NAME]")

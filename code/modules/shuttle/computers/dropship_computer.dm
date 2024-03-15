@@ -210,7 +210,7 @@
 			log_ares_flight("Unknown", "Remote launch signal for [shuttle.name] received. Authentication garbled.")
 			log_ares_security("Security Alert", "Remote launch signal for [shuttle.name] received. Authentication garbled.")
 			return
-		if(shuttle.destination.id != linked_lz)
+		if(shuttle.destination && shuttle.destination.id != linked_lz)
 			to_chat(xeno, "The shuttle not ready. The screen reads T-[shuttle.timeLeft(10)]. Have patience.")
 			return
 		if(shuttle.mode == SHUTTLE_CALL)

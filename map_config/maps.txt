@@ -60,5 +60,8 @@ endmap
 map new_varadero
 endmap
 
+map isaacs_lament
+endmap
+
 map whiskey_outpost_v2
 endmap

@@ -1,0 +1,36 @@
+{
+    "map_name": "Isaacs Lament",
+    "map_path": "map_files/Isaacs_Lament",
+    "map_file": "Isaacs_Lament.dmm",
+    "weather_holder": "/datum/weather_ss_map_holder/isaacs_lement",
+    "survivor_types": [
+        "/datum/equipment_preset/survivor/scientist/isaacs",
+        "/datum/equipment_preset/survivor/doctor/isaacs",
+        "/datum/equipment_preset/survivor/chaplain/isaacs",
+        "/datum/equipment_preset/survivor/engineer/isaacs",
+        "/datum/equipment_preset/survivor/corporate/isaacs",
+        "/datum/equipment_preset/survivor/trucker/isaacs",
+        "/datum/equipment_preset/survivor/security/isaacs",
+        "/datum/equipment_preset/survivor/colonial_marshal/isaacs",
+        "/datum/equipment_preset/survivor/goon",
+        "/datum/equipment_preset/survivor/clf",
+        "/datum/equipment_preset/survivor/civilian"
+    ],
+    "map_item_type": "/obj/item/map/lazarus_landing_map",
+    "announce_text": "An automated distress signal has been received from the rural colony settlement of Isaacs Lament, on the border world of LV-553. A response team from the ###SHIPNAME### will be dispatched shortly to investigate.",
+    "monkey_types": [
+        "farwa",
+        "monkey",
+        "neaera",
+        "stok"
+    ],
+    "traits": [{ "Ground": true }],
+    "camouflage": "jungle",
+    "gamemodes": [
+        "Distress Signal",
+        "Hunter Games",
+        "Hive Wars",
+        "Faction Clash",
+        "Infection"
+    ]
+}

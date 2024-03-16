@@ -25,6 +25,8 @@
 /// from /obj/structure/transmitter/update_icon()
 #define COMSIG_TRANSMITTER_UPDATE_ICON "transmitter_update_icon"
 
+#define COMSIG_STRUCTURE_WRENCHED "structure_wrenched"
+#define COMSIG_STRUCTURE_UNWRENCHED "structure_unwrenched"
 #define COMSIG_TENT_COLLAPSING "tent_collapsing"
 
 /// from /obj/proc/afterbuckle()

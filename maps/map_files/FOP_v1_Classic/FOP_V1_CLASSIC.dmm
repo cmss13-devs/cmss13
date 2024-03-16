@@ -128,12 +128,6 @@
 	icon_state = "marked"
 	},
 /area/prison/cellblock/maxsec/north)
-"aA" = (
-/obj/structure/barricade/handrail,
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
-/area/prison/hallway/entrance)
 "aC" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -158,6 +152,9 @@
 /obj/item/stack/tile/plasteel,
 /turf/open/floor/prison,
 /area/prison/cellblock/mediumsec/east)
+"aG" = (
+/turf/closed/wall/r_wall/prison_unmeltable,
+/area/fiorina/lz/near_lzI)
 "aH" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -435,7 +432,7 @@
 "bL" = (
 /obj/structure/machinery/camera/autoname/lz_camera,
 /turf/closed/wall/r_wall/prison_unmeltable,
-/area/prison/hallway/entrance)
+/area/fiorina/lz/near_lzI)
 "bM" = (
 /obj/structure/machinery/washing_machine,
 /obj/effect/decal/cleanable/dirt,
@@ -1832,7 +1829,7 @@
 /turf/open/floor/prison{
 	icon_state = "sterile_white"
 	},
-/area/prison/hallway/entrance)
+/area/fiorina/lz/near_lzI)
 "if" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -1962,13 +1959,14 @@
 /turf/open/floor/prison,
 /area/prison/security)
 "iI" = (
-/obj/structure/barricade/handrail{
-	dir = 8
+/obj/structure/machinery/door_control/brbutton{
+	id = "LZ1_Lockdown_Classic";
+	pixel_y = 29
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
-/area/prison/hallway/entrance)
+/area/fiorina/lz/near_lzI)
 "iJ" = (
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
@@ -2843,13 +2841,15 @@
 	},
 /area/prison/cellblock/mediumsec/east)
 "mT" = (
-/obj/structure/barricade/handrail{
-	dir = 1
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	dir = 4;
+	id = "LZ1_Lockdown_Classic";
+	name = "Emergency Lockdown"
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
-/area/prison/hallway/entrance)
+/area/fiorina/lz/near_lzI)
 "mU" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -7238,14 +7238,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/prison/pirate)
-"HC" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	dir = 1
-	},
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
-/area/prison/hallway/entrance)
 "HG" = (
 /obj/effect/glowshroom,
 /turf/closed/wall/prison,
@@ -8093,7 +8085,7 @@
 /turf/open/floor/prison{
 	icon_state = "sterile_white"
 	},
-/area/prison/hallway/entrance)
+/area/fiorina/lz/near_lzI)
 "Lo" = (
 /obj/structure/machinery/disposal,
 /turf/open/floor/prison{
@@ -8287,6 +8279,11 @@
 	icon_state = "redfull"
 	},
 /area/prison/cellblock/mediumsec/east)
+"Mf" = (
+/turf/open/floor/corsat{
+	icon_state = "marked"
+	},
+/area/fiorina/lz/near_lzI)
 "Mg" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1
@@ -8296,14 +8293,6 @@
 "Mh" = (
 /turf/closed/wall/prison,
 /area/prison/kitchen)
-"Mj" = (
-/obj/structure/barricade/handrail{
-	dir = 4
-	},
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
-/area/prison/hallway/entrance)
 "Mk" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/prison,
@@ -30238,10 +30227,10 @@ Cm
 Vv
 Vv
 Vv
-oV
-Rc
-Rc
-oV
+aG
+iI
+Mf
+aG
 Vv
 Vv
 Vv
@@ -30450,10 +30439,10 @@ Cm
 gq
 gq
 gq
-OL
+aG
 mT
-aA
-OL
+mT
+aG
 gq
 gq
 gq
@@ -30662,9 +30651,9 @@ MN
 MN
 MN
 MN
-OL
-uo
-uo
+aG
+iI
+Mf
 bL
 NK
 MN
@@ -31522,9 +31511,9 @@ MN
 MN
 MN
 MN
-iI
-iI
-HC
+OL
+OL
+OL
 Rc
 Cg
 OL
@@ -31734,9 +31723,9 @@ MN
 MN
 MN
 MN
-Vg
-Vg
-HC
+OL
+OL
+OL
 Rc
 Gc
 OL
@@ -31946,9 +31935,9 @@ MN
 MN
 MN
 MN
-Mj
-Mj
-HC
+OL
+OL
+OL
 Rc
 Cg
 OL
@@ -32782,9 +32771,9 @@ MN
 MN
 MN
 MN
-OL
-uo
-uo
+aG
+iI
+Mf
 bL
 MN
 MN
@@ -32994,10 +32983,10 @@ gq
 gq
 gq
 gq
-OL
+aG
 mT
-aA
-OL
+mT
+aG
 Vv
 gq
 gq
@@ -33206,10 +33195,10 @@ gq
 gq
 gq
 gq
-oV
-Rc
-Rc
-oV
+aG
+iI
+Mf
+aG
 Vv
 Vv
 Vv

@@ -1,7 +1,7 @@
 /datum/job/command/crew_chief
 	title = JOB_DROPSHIP_PILOT
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 2
+	spawn_positions = 2
 	allow_additional = TRUE
 	scaled = TRUE
 	supervisors = "the gunship officer"

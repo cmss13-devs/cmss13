@@ -9749,7 +9749,6 @@
 /area/prison/cellblock/maxsec/north)
 "SM" = (
 /obj/structure/lattice,
-/obj/structure/lattice,
 /turf/open/space/basic,
 /area/prison/hallway/entrance)
 "SN" = (
@@ -10647,11 +10646,6 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/wood,
 /area/prison/cellblock/mediumsec/east)
-"Xl" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/space)
 "Xm" = (
 /obj/structure/filingcabinet,
 /obj/effect/decal/cleanable/dirt,
@@ -37203,7 +37197,7 @@ Vv
 Vv
 Vv
 Vv
-Xl
+Vv
 Vv
 Vv
 gq

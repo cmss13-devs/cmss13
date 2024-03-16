@@ -293,6 +293,96 @@
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 300, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name)), source_mob), 0.5 SECONDS) //Your standard HE splash damage rocket. Good damage, good range, good speed, it's an all rounder
 	QDEL_IN(src, 0.5 SECONDS)
 
+/obj/structure/ship_ammo/rocket/custom_missile
+	name = "\improper AIM-224B-C 'Widowmaker Custom'"
+	desc = "A modified version of the AIM-224B missile, allows for custom reagent mix to be inserted in the receptacle"
+	icon_state = "custom_missile"
+	ammo_name = "rocket"
+	travelling_time = 70
+	point_cost = 600
+	fire_mission_delay = 0 //direct bombard only
+	/// the limits of the custom missile (same as shell)
+	var/list/reaction_limits = list( "max_ex_power" = 360, "base_ex_falloff" = 90, "max_ex_shards" = 128,
+							"max_fire_rad" = 8, "max_fire_int" = 40, "max_fire_dur" = 48,
+							"min_fire_rad" = 3, "min_fire_int" = 5, "min_fire_dur" = 5
+	)
+	/// current assembly state of the missile
+	var/assembly_stage = ASSEMBLY_UNLOCKED
+	/// the maximum volume allowed in the rocket
+	var/max_container_volume = 240
+	/// the current total volume
+	var/current_container_volume = 0
+	/// the containers inside the rocket
+	var/list/obj/item/reagent_container/glass/containers = list()
+	var/list/allowed_containers = list(/obj/item/reagent_container/glass/beaker, /obj/item/reagent_container/glass/bucket, /obj/item/reagent_container/glass/bottle, /obj/item/reagent_container/glass/bucket/mopbucket)
+
+/obj/structure/ship_ammo/rocket/custom_missile/attackby(obj/item/item as obj, mob/user as mob)
+	if(HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER))
+		if(assembly_stage == ASSEMBLY_UNLOCKED)
+			to_chat(user, SPAN_NOTICE("You lock the [name]."))
+			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 0, 6)
+			assembly_stage = ASSEMBLY_LOCKED
+			icon_state = "custom_missile_ready"
+		else if(assembly_stage == ASSEMBLY_LOCKED)
+			to_chat(user, SPAN_NOTICE("You unlock the [name]."))
+			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 0, 6)
+			assembly_stage = ASSEMBLY_UNLOCKED
+			icon_state = "custom_missile"
+	else if(is_type_in_list(item, allowed_containers) && (!assembly_stage || assembly_stage == ASSEMBLY_UNLOCKED))
+		if(current_container_volume >= max_container_volume)
+			to_chat(user, SPAN_DANGER("The [name] can not hold more containers."))
+			return
+		else
+			if(item.reagents.total_volume)
+				if(item.reagents.maximum_volume + current_container_volume > max_container_volume)
+					to_chat(user, SPAN_DANGER("\the [item] is too large for [name]."))
+					return
+				if(user.temp_drop_inv_item(item))
+					to_chat(user, SPAN_NOTICE("You add \the [item] to the [name]."))
+					item.forceMove(src)
+					containers += item
+					current_container_volume += item.reagents.maximum_volume
+					assembly_stage = ASSEMBLY_UNLOCKED
+			else
+				to_chat(user, SPAN_DANGER("\the [item] is empty."))
+	else if(HAS_TRAIT(item, TRAIT_TOOL_CROWBAR))
+		if(assembly_stage == ASSEMBLY_UNLOCKED)
+			if(containers.len)
+				for(var/obj/container in containers)
+					if(istype(container))
+						containers -= container
+						user.put_in_hands(container)
+				current_container_volume = 0
+	else return ..()
+
+/obj/structure/ship_ammo/rocket/custom_missile/get_examine_text(mob/user)
+	. = ..()
+	. += "\n Contains [containers.len] containers."
+	switch(assembly_stage)
+		if(ASSEMBLY_LOCKED)
+			. += "\n It is ready."
+		if(ASSEMBLY_UNLOCKED)
+			. += "\n It is unlocked."
+
+/obj/structure/ship_ammo/rocket/custom_missile/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
+	if(assembly_stage == ASSEMBLY_UNLOCKED || containers.len == 0) //shitty explosion if left unlocked or no containers
+		impact.ceiling_debris_check(3)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 60, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name)), source_mob), 0.5 SECONDS)
+	else
+		if(assembly_stage == ASSEMBLY_LOCKED)
+			impact.ceiling_debris_check(3)
+			var/obj/item/explosive/bomb = new /obj/item/explosive
+			bomb.create_reagents(1000)
+			for(var/limit in bomb.reaction_limits)
+				bomb.reagents.vars[limit] = reaction_limits[limit]
+			for(var/obj/container in containers)
+				container.forceMove(bomb)
+				bomb.containers += container
+			bomb.forceMove(impact)
+			bomb.reaction_limits = reaction_limits
+			bomb.prime(TRUE)
+	QDEL_IN(src, 0.5 SECONDS)
+
 /obj/structure/ship_ammo/rocket/banshee
 	name = "\improper AGM-227 'Banshee'"
 	desc = "The AGM-227 missile is a mainstay of the overhauled dropship fleet against any mobile or armored ground targets. It's earned the nickname of 'Banshee' from the sudden wail that it emits right before hitting a target. Useful to clear out large areas. Can be loaded into the LAU-444 Guided Missile Launcher."

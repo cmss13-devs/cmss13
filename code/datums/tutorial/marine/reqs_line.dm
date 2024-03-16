@@ -105,7 +105,7 @@
 	kill_timers()
 	active_agent = null
 	loser_agent = null
-	agents.Cut()
+	QDEL_LIST(agents)
 
 /datum/tutorial/marine/reqs_line/init_map()
 	var/obj/structure/machinery/cm_vending/sorted/attachments/blend/tutorial/attachies_vendor = new(loc_from_corner(2, 7))

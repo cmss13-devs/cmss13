@@ -205,4 +205,4 @@
 	color = "#b51c0b"
 	can_be_reinforced = FALSE
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
-	layer = 4.1
+	layer = MOB_LAYER + 0.01

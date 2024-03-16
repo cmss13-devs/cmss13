@@ -4339,9 +4339,12 @@
 /obj/structure/reagent_dispensers/water_cooler/stacks{
 	density = 0;
 	pixel_x = -3;
-	pixel_y = 15
+	pixel_y = 15;
+	layer = 4.03
 	},
-/obj/structure/surface/table/almayer,
+/obj/structure/surface/table/almayer{
+	layer = 4.02
+	},
 /turf/open/floor{
 	icon_state = "redyellowfull"
 	},

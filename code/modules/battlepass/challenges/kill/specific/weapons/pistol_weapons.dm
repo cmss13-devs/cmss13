@@ -8,3 +8,4 @@
 	)
 	kill_requirement_upper = 1
 	completion_xp = 5 // pistols are tough
+	challenge_category = CHALLENGE_HUMAN

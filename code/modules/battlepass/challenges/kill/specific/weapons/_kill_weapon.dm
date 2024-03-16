@@ -3,6 +3,7 @@
 	desc = "Kill AMOUNT Xenomorphs using a WEAPON."
 	kill_requirement_lower = 1
 	kill_requirement_upper = 2
+	challenge_category = CHALLENGE_NONE
 	/// A list of possible weapons for this challenge to choose from. I would do it with typepaths but cause data only tracks names
 	var/list/possible_weapons = list()
 	/// The weapon chosen for this challenge

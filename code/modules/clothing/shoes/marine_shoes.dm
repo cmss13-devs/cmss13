@@ -28,12 +28,17 @@
 		/obj/item/weapon/straight_razor,
 	)
 	drop_sound = "armorequip"
+	var/base_icon_state
+
+/obj/item/clothing/shoes/marine/Initialize(mapload, ...)
+	. = ..()
+	base_icon_state = initial(icon_state)
 
 /obj/item/clothing/shoes/marine/update_icon()
 	if(stored_item)
-		icon_state = "[initial(icon_state)]-1"
+		icon_state = "[base_icon_state]-1"
 	else
-		icon_state = initial(icon_state)
+		icon_state = base_icon_state
 
 /obj/item/clothing/shoes/marine/knife
 	spawn_item_type = /obj/item/attachable/bayonet

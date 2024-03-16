@@ -34,6 +34,15 @@
 /datum/battlepass_challenge/plant_resin_nodes/check_challenge_completed()
 	return (planted_nodes >= node_requirement)
 
+/datum/battlepass_challenge/plant_resin_nodes/get_completion_percent()
+	return (planted_nodes / node_requirement)
+
+/datum/battlepass_challenge/plant_resin_nodes/get_completion_numerator()
+	return planted_nodes
+
+/datum/battlepass_challenge/plant_resin_nodes/get_completion_denominator()
+	return node_requirement
+
 /datum/battlepass_challenge/plant_resin_nodes/serialize()
 	. = ..()
 	.["node_requirement"] = node_requirement

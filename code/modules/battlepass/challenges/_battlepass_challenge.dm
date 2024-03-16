@@ -56,6 +56,16 @@
 	SEND_SIGNAL(src, COMSIG_BATTLEPASS_CHALLENGE_COMPLETED)
 	return TRUE
 
+/// Get how completed the challenge is as a percentage out of 1
+/datum/battlepass_challenge/proc/get_completion_percent()
+	return 0
+
+/datum/battlepass_challenge/proc/get_completion_numerator()
+	return 0
+
+/datum/battlepass_challenge/proc/get_completion_denominator()
+	return 1
+
 /// Convert data about this challenge into a list to be inserted in a savefile
 /datum/battlepass_challenge/proc/serialize()
 	SHOULD_CALL_PARENT(TRUE)

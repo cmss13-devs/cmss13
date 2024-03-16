@@ -396,7 +396,9 @@
 
 /datum/asset/spritesheet/battlepass/register()
 	for(var/datum/battlepass_reward/reward as anything in subtypesof(/datum/battlepass_reward))
-		Insert(initial(reward.icon_state), initial(reward.icon))
+		var/icon/sprite = icon(initial(reward.icon), initial(reward.icon_state))
+		sprite.Scale(96, 96)
+		Insert(initial(reward.icon_state), sprite)
 	return ..()
 
 /datum/asset/spritesheet/gun_lineart_modes

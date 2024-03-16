@@ -5,3 +5,4 @@
 		"M41A pulse rifle MK2",
 		"M37A2 pump shotgun",
 	)
+	challenge_category = CHALLENGE_HUMAN

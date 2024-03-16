@@ -29,6 +29,15 @@
 /datum/battlepass_challenge/kill_enemies/check_challenge_completed()
 	return (enemy_kills_required <= current_enemy_kills)
 
+/datum/battlepass_challenge/kill_enemies/get_completion_percent()
+	return (current_enemy_kills / enemy_kills_required)
+
+/datum/battlepass_challenge/kill_enemies/get_completion_numerator()
+	return current_enemy_kills
+
+/datum/battlepass_challenge/kill_enemies/get_completion_denominator()
+	return enemy_kills_required
+
 /datum/battlepass_challenge/kill_enemies/serialize()
 	. = ..()
 	.["enemy_kills_required"] = enemy_kills_required

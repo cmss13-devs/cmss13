@@ -11,6 +11,8 @@ SUBSYSTEM_DEF(battlepass)
 	var/list/xeno_challenges = list()
 	/// List of paths of all battlepass rewards for the current season, in order
 	var/list/season_rewards = list()
+	/// List of all paths of all premium battlepass rewards for the current season, in order
+	var/list/premium_season_rewards = list()
 
 /datum/controller/subsystem/battlepass/Initialize()
 	if(!fexists("config/battlepass.json"))
@@ -23,6 +25,9 @@ SUBSYSTEM_DEF(battlepass)
 
 	for(var/reward_path in battlepass_data["reward_data"])
 		season_rewards += text2path(reward_path)
+
+	for(var/reward_path in battlepass_data["premium_reward_data"])
+		premium_season_rewards += text2path(reward_path)
 
 	for(var/datum/battlepass_challenge/challenge_path as anything in subtypesof(/datum/battlepass_challenge))
 		switch(initial(challenge_path.challenge_category))

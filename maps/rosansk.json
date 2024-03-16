@@ -16,7 +16,7 @@
         "monkey"
     ],
     "traits": [{ "Ground": true }],
-    "camouflage": "jungle",
+    "camouflage": "urban",
     "gamemodes": [
         "Distress Signal",
         "Hunter Games",

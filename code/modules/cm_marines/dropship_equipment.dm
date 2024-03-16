@@ -163,7 +163,7 @@
 	health = null
 	icon_state = "sentry_system"
 	is_interactable = TRUE
-	point_cost = 200
+	point_cost = 0
 	shorthand = "Sentry"
 	var/deployment_cooldown
 	var/obj/structure/machinery/defenses/sentry/premade/dropship/deployed_turret
@@ -740,7 +740,7 @@
 	desc = "A dismounted GAU-21 'Rattler' 30mm rotary cannon. It seems to be missing its feed links and has exposed connection wires. Capable of firing 5200 rounds a minute, feared by many for its power. Earned the nickname 'Rattler' from the vibrations it would cause on dropships in its initial production run. Accepts PGU-100/PGU-105 ammo crates"
 	icon_state = "30mm_cannon"
 	firing_sound = 'sound/effects/gau_incockpit.ogg'
-	point_cost = 400
+	point_cost = 0
 	skill_required = SKILL_PILOT_TRAINED
 	fire_mission_only = FALSE
 	shorthand = "GAU"
@@ -759,7 +759,7 @@
 	desc = "A missile pod weapon system capable of launching a single laser-guided missile. Moving this will require some sort of lifter. Accepts AGM, AIM, BLU, and GBU missile systems."
 	firing_sound = 'sound/effects/rocketpod_fire.ogg'
 	firing_delay = 5
-	point_cost = 600
+	point_cost = 0
 	shorthand = "MSL"
 
 /obj/structure/dropship_equipment/weapon/rocket_pod/deplete_ammo()
@@ -781,7 +781,7 @@
 	icon = 'icons/obj/structures/props/almayer_props64.dmi'
 	firing_sound = 'sound/effects/rocketpod_fire.ogg'
 	firing_delay = 10 //1 seconds
-	point_cost = 600
+	point_cost = 0
 	shorthand = "RKT"
 
 /obj/structure/dropship_equipment/weapon/minirocket_pod/update_icon()
@@ -803,7 +803,7 @@
 	icon = 'icons/obj/structures/props/almayer_props64.dmi'
 	firing_sound = 'sound/effects/phasein.ogg'
 	firing_delay = 50 //5 seconds
-	point_cost = 500
+	point_cost = 0
 	skill_required = SKILL_PILOT_TRAINED
 	fire_mission_only = FALSE
 	shorthand = "LZR"
@@ -824,7 +824,7 @@
 	firing_delay = 10 //1 seconds
 	bound_height = 32
 	equip_categories = list(DROPSHIP_CREW_WEAPON) //fits inside the central spot of the dropship
-	point_cost = 200
+	point_cost = 0
 	shorthand = "LCH"
 
 /obj/structure/dropship_equipment/weapon/launch_bay/update_equipment()

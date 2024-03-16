@@ -203,7 +203,7 @@
 	max_ammo_count = 400
 	ammo_used_per_firing = 40
 	bullet_spread_range = 4
-	point_cost = 325
+	point_cost = 0
 	fire_mission_delay = 2
 	shrapnel_type = /datum/ammo/bullet/shrapnel/gau/at
 	directhit_damage = 80 //how much damage is to be inflicted to a mob, this is here so that we can hit resting mobs.
@@ -226,7 +226,7 @@
 	ammo_used_per_firing = 10
 	max_inaccuracy = 1
 	warning_sound = 'sound/effects/nightvision.ogg'
-	point_cost = 200
+	point_cost = 0
 	fire_mission_delay = 4 //very good but long cooldown
 
 
@@ -285,7 +285,7 @@
 	icon_state = "single"
 	travelling_time = 30 //not powerful, but reaches target fast
 	ammo_id = ""
-	point_cost = 300
+	point_cost = 0
 	fire_mission_delay = 4 //We don't care because our ammo has just 1 rocket
 
 /obj/structure/ship_ammo/rocket/widowmaker/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
@@ -298,7 +298,7 @@
 	desc = "The AGM-227 missile is a mainstay of the overhauled dropship fleet against any mobile or armored ground targets. It's earned the nickname of 'Banshee' from the sudden wail that it emits right before hitting a target. Useful to clear out large areas. Can be loaded into the LAU-444 Guided Missile Launcher."
 	icon_state = "banshee"
 	ammo_id = "b"
-	point_cost = 300
+	point_cost = 0
 	fire_mission_delay = 4 //We don't care because our ammo has just 1 rocket
 
 /obj/structure/ship_ammo/rocket/banshee/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
@@ -313,7 +313,7 @@
 	icon_state = "paveway"
 	travelling_time = 20 //A fast payload due to its very tight blast zone
 	ammo_id = "k"
-	point_cost = 300
+	point_cost = 0
 	fire_mission_delay = 4 //We don't care because our ammo has just 1 rocket
 
 /obj/structure/ship_ammo/rocket/keeper/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
@@ -327,7 +327,7 @@
 	icon_state = "harpoon"
 	ammo_id = "s"
 	travelling_time = 50
-	point_cost = 300
+	point_cost = 0
 	fire_mission_delay = 4
 
 //Looks kinda OP but all it can actually do is just to blow windows and some of other things out, cant do much damage.
@@ -341,7 +341,7 @@
 	desc = "The AGM-99 'Napalm' is an incendiary missile used to turn specific targeted areas into giant balls of fire for a long time. Can be loaded into the LAU-444 Guided Missile Launcher."
 	icon_state = "napalm"
 	ammo_id = "n"
-	point_cost = 500
+	point_cost = 0
 	fire_mission_delay = 0 //0 means unusable
 
 /obj/structure/ship_ammo/rocket/napalm/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
@@ -356,7 +356,7 @@
 	icon_state = "fatty"
 	ammo_id = "f"
 	travelling_time = 50
-	point_cost = 300
+	point_cost = 0
 	fire_mission_delay = 4
 
 /obj/structure/ship_ammo/rocket/thermobaric/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
@@ -380,7 +380,7 @@
 	ammo_name = "minirocket"
 	travelling_time = 80 //faster than 30mm cannon, slower than real rockets
 	transferable_ammo = TRUE
-	point_cost = 300
+	point_cost = 0
 	fire_mission_delay = 3 //high cooldown
 
 /obj/structure/ship_ammo/minirocket/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
@@ -410,7 +410,7 @@
 	name = "\improper AGR-59-I 'Mini-Mike'"
 	desc = "The AGR-59-I 'Mini-Mike' incendiary minirocket is a cheap and efficient means of putting hate down range AND setting them on fire! Though rockets lack a guidance package, it makes up for it in ammunition count. Can be loaded into the LAU-229 Rocket Pod."
 	icon_state = "minirocket_inc"
-	point_cost = 500
+	point_cost = 0
 	fire_mission_delay = 3 //high cooldown
 
 /obj/structure/ship_ammo/minirocket/incendiary/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
@@ -427,7 +427,7 @@
 	max_ammo_count = 1
 	ammo_name = "area denial sentry"
 	travelling_time = 0 // handled by droppod
-	point_cost = 800 //handled by printer
+	point_cost = 0 //handled by printer
 	accuracy_range = 0 // pinpoint
 	max_inaccuracy = 0
 	/// Special structures it needs to break with drop pod

@@ -667,7 +667,7 @@
 	assignment = JOB_CAS_PILOT
 	rank = JOB_CAS_PILOT
 	paygrade = PAY_SHORT_MO1
-	role_comm_title = "FSO"
+	role_comm_title = "GP"
 	skills = /datum/skills/pilot
 
 	minimap_icon = "pilot"
@@ -685,7 +685,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/po/full
-	name = "USCM Gunship Pilot (PO)"
+	name = "USCM Gunship Pilot (GP)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/pilot)

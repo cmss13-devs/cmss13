@@ -180,3 +180,6 @@
       vendor.
   Segrain:
   - qol: Middleclicking beds/chairs/etc is now a shortcut for buckling to them.
+2024-03-16:
+  nauticall:
+  - bugfix: Makes pill bottle caps appear on closed pill bottles again.

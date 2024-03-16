@@ -672,7 +672,7 @@
 
 	minimap_icon = "pilot"
 
-/datum/equipment_preset/uscm_ship/po/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/uscm_ship/gp/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
 	if(new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
@@ -722,7 +722,7 @@
 
 	minimap_icon = "pilot"
 
-/datum/equipment_preset/uscm_ship/po/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/uscm_ship/dp/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
 	if(new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine

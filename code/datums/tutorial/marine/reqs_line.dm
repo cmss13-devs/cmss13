@@ -81,7 +81,7 @@
 		/obj/item/storage/backpack/marine/engineerpack/flamethrower/kit = list("pyro pack", "pyro backpack", "g4-1 pack", "flamer backpack"),
 		/obj/item/storage/backpack/marine/satchel/rto = list("phone pack", "phone backpack", "radio pack"),
 		/obj/item/storage/backpack/general_belt = list("G8", "G8 belt"),
-		/obj/item/storage/pouch/magazine/large = list("Large pouch", "Large mag pouch", "Large magazine pouch"),
+		/obj/item/storage/pouch/magazine/large = list("Large mag pouch", "Large magazine pouch"),
 		/obj/item/storage/pouch/shotgun/large = list("Shotgun pouch", "Shotgun shells pouch", "Shells pouch", "Large shells pouch"),
 		/obj/item/storage/box/m94/signal = list("Signal flares", "box of signals", "CAS flares"),
 		/obj/item/device/motiondetector = list("MD", "Motion Detector"),
@@ -89,7 +89,7 @@
 		/obj/item/device/binoculars/range/designator = list("LD", "Designator", "Laser Designator", "Tac Binos"),
 		/obj/item/pamphlet/skill/jtac = list("JTAC Pamphlet"),
 		/* Explosives */
-		/obj/item/explosive/grenade/high_explosive = list("M40", "Grenade", "HEDP", "Frag"),
+		/obj/item/explosive/grenade/high_explosive = list("M40", "HEDP"),
 		/obj/item/explosive/grenade/incendiary = list("HIDP", "Incendiary nade", "Incendiary grenade", "HIDP", "Fire grenade"),
 		/obj/item/explosive/plastic = list("C4", "C4", "plastic", "plastic explosives"),
 		/obj/item/explosive/plastic/breaching_charge = list("Breaching", "breach charge", "breaching charge"),
@@ -436,6 +436,7 @@
 			make_agent_leave(TRUE)
 
 /datum/tutorial/marine/reqs_line/proc/continue_stage_survival()
+	mark_completed()
 	message_to_player("Success! You have completed the tutorial!")
 	update_objective("You have finished the tutorial! But there's more if you want to practice.")
 	addtimer(CALLBACK(src, PROC_REF(message_to_player), "You may stay to practice with random orders, or quit with the button at top left."), 3 SECONDS)

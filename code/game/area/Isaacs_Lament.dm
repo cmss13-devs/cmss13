@@ -381,10 +381,26 @@
 	name = "Issac's Lament - South-West - Neil's Arcade"
 	icon_state = "shed_3_ag"
 
+/area/lv553/indoors/lone_buildings/polemuseum
+	name = "Issac's Lament - South-East - Pole Museum"
+	icon_state = "shed_1_ag"
+
+/area/lv553/indoors/lone_buildings/laundromat
+	name = "Issac's Lament - East - Laundromat"
+	icon_state = "shed_1_ag"
+
+/area/lv553/indoors/lone_buildings/jurossushi
+	name = "Issac's Lament - East - Little Juro's Sushi Bistro"
+	icon_state = "shed_2_ag"
+
 /area/lv553/indoors/lone_buildings/flynns_bar
 	name = "Issac's Lament - North-East - Flynn's Bar"
 	icon_state = "shed_1_ag"
 
-/area/lv553/indoors/lone_buildings/flynns_bar
+/area/lv553/indoors/lone_buildings/mechanic_shop
 	name = "Issac's Lament - North-East - Mechanic's Shop"
 	icon_state = "shed_2_ag"
+
+/area/lv553/indoors/lone_buildings/weymart
+	name = "Issac's Lament - North-East - Wey-Mart"
+	icon_state = "shed_3_ag"

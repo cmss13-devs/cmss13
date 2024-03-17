@@ -281,8 +281,12 @@
 
 /obj/item/prop/magazine/boots/n054
 	name = "Boots!: Issue No.54"
-	desc = "The only official USCM magazine, the headline reads 'ARMAT strikes back against litigants in M41A-MK2 self cleaning case'"
+	desc = "The only official USCM magazine, the headline reads 'ARMAT strikes back against litigants in M41A-MK2 self cleaning case.'"
 
 /obj/item/prop/magazine/boots/n055
 	name = "Boots!: Issue No.55"
 	desc = "The only official USCM magazine, the headline reads 'TEN tips to keep your UD4 cockpit both safer and more relaxing.'"
+
+/obj/item/prop/magazine/boots/n080
+	name = "Boots!: Issue No.80"
+	desc = "The only official USCM magazine, the headline reads 'Ten Ways To Extend Your Barrel Before Your CO Notices.'"

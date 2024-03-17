@@ -445,7 +445,7 @@
 	name = "Issac's Lament - South-East - Pole Museum"
 	icon_state = "shed_1_ag"
 
-/area/lv553/indoors/lone_buildings/polemuseum
+/area/lv553/indoors/lone_buildings/cargo_lz
 	name = "Issac's Lament - South-East - Cargo Landing Pad"
 	icon_state = "outpost_gen_1"
 

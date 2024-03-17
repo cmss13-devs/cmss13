@@ -166,9 +166,7 @@ export const HealthScan = (props) => {
                 inline
                 style={{ 'margin-left': '2%' }}
                 content="Change"
-                onClick={() =>
-                  act('change_holo_card', { patient_mob: patient_mob })
-                }
+                onClick={() => act('change_holo_card')}
               />
             </LabeledList.Item>
           </LabeledList>

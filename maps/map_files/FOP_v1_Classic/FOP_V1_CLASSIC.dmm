@@ -398,8 +398,8 @@
 	req_access_txt = "100"
 	},
 /turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
+	dir = 10;
+	icon_state = "whitegreenfull"
 	},
 /area/prison/medbay)
 "bG" = (
@@ -970,8 +970,8 @@
 	dir = 1
 	},
 /turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
+	dir = 10;
+	icon_state = "whitegreenfull"
 	},
 /area/prison/medbay)
 "dR" = (
@@ -1959,9 +1959,12 @@
 /turf/open/floor/prison,
 /area/prison/security)
 "iI" = (
-/obj/structure/machinery/door_control/brbutton{
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	dir = 4;
 	id = "LZ1_Lockdown_Classic";
-	pixel_y = 29
+	indestructible = 1;
+	name = "Emergency Lockdown";
+	unacidable = 1
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -2092,7 +2095,9 @@
 	},
 /area/prison/cellblock/mediumsec/west)
 "jw" = (
-/obj/structure/airlock_assembly,
+/obj/structure/airlock_assembly{
+	dir = 4
+	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
@@ -2173,8 +2178,8 @@
 /obj/item/tool/surgery/bonesetter,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
+	dir = 10;
+	icon_state = "whitegreenfull"
 	},
 /area/prison/medbay)
 "jN" = (
@@ -2187,8 +2192,8 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
+	dir = 10;
+	icon_state = "whitegreenfull"
 	},
 /area/prison/medbay)
 "jP" = (
@@ -2223,12 +2228,13 @@
 /turf/open/floor/plating/prison,
 /area/prison/cellblock/mediumsec/west)
 "jY" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
+/obj/structure/machinery/computer/med_data/laptop{
+	pixel_y = 3
 	},
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
+	dir = 10;
+	icon_state = "whitegreenfull"
 	},
 /area/prison/medbay)
 "jZ" = (
@@ -2350,8 +2356,8 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
+	dir = 10;
+	icon_state = "whitegreenfull"
 	},
 /area/prison/medbay)
 "kF" = (
@@ -2641,8 +2647,8 @@
 /obj/structure/surface/rack,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
+	dir = 10;
+	icon_state = "whitegreenfull"
 	},
 /area/prison/medbay)
 "lM" = (
@@ -2714,8 +2720,8 @@
 /obj/structure/surface/table/reinforced,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
+	dir = 10;
+	icon_state = "whitegreenfull"
 	},
 /area/prison/medbay)
 "mg" = (
@@ -2840,16 +2846,6 @@
 	icon_state = "bright_clean2"
 	},
 /area/prison/cellblock/mediumsec/east)
-"mT" = (
-/obj/structure/machinery/door/poddoor/almayer/closed{
-	dir = 4;
-	id = "LZ1_Lockdown_Classic";
-	name = "Emergency Lockdown"
-	},
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
-/area/fiorina/lz/near_lzI)
 "mU" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -2889,8 +2885,8 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
+	dir = 10;
+	icon_state = "whitegreenfull"
 	},
 /area/prison/medbay)
 "ng" = (
@@ -3149,8 +3145,8 @@
 /obj/structure/machinery/disposal,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
+	dir = 10;
+	icon_state = "whitegreenfull"
 	},
 /area/prison/medbay)
 "ox" = (
@@ -3379,8 +3375,8 @@
 /obj/item/tool/surgery/circular_saw,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
+	dir = 10;
+	icon_state = "whitegreenfull"
 	},
 /area/prison/medbay)
 "pD" = (
@@ -3489,8 +3485,8 @@
 /obj/structure/machinery/constructable_frame,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
+	dir = 10;
+	icon_state = "whitegreenfull"
 	},
 /area/prison/medbay)
 "qf" = (
@@ -3647,8 +3643,8 @@
 /obj/structure/flora/pottedplant,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
+	dir = 10;
+	icon_state = "whitegreenfull"
 	},
 /area/prison/medbay)
 "qO" = (
@@ -3915,10 +3911,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 9
 	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison,
 /area/prison/medbay)
 "sa" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -3991,16 +3984,6 @@
 	icon_state = "redfull"
 	},
 /area/prison/cellblock/mediumsec/west)
-"sq" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitegreenfull"
-	},
-/area/prison/medbay)
 "sr" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -4286,8 +4269,8 @@
 "tY" = (
 /obj/structure/machinery/disposal,
 /turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
+	dir = 10;
+	icon_state = "whitegreenfull"
 	},
 /area/prison/medbay)
 "uh" = (
@@ -4500,10 +4483,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 5
 	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison,
 /area/prison/medbay)
 "vg" = (
 /obj/structure/closet/firecloset/full,
@@ -4670,13 +4650,6 @@
 "we" = (
 /obj/structure/machinery/optable,
 /turf/open/floor/prison,
-/area/prison/medbay)
-"wf" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
-	},
 /area/prison/medbay)
 "wg" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
@@ -5274,8 +5247,8 @@
 /obj/item/storage/firstaid/toxin,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
+	dir = 10;
+	icon_state = "whitegreenfull"
 	},
 /area/prison/medbay)
 "za" = (
@@ -5524,8 +5497,8 @@
 /obj/structure/surface/rack,
 /obj/item/storage/firstaid/adv,
 /turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
+	dir = 10;
+	icon_state = "whitegreenfull"
 	},
 /area/prison/medbay)
 "Am" = (
@@ -5829,14 +5802,6 @@
 	icon_state = "kitchen"
 	},
 /area/prison/canteen)
-"Bt" = (
-/obj/structure/machinery/iv_drip,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
-	},
-/area/prison/medbay)
 "Bu" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -6012,8 +5977,8 @@
 /obj/item/storage/box/syringes,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
+	dir = 10;
+	icon_state = "whitegreenfull"
 	},
 /area/prison/medbay)
 "Co" = (
@@ -6119,8 +6084,8 @@
 "CM" = (
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
+	dir = 10;
+	icon_state = "whitegreenfull"
 	},
 /area/prison/medbay)
 "CN" = (
@@ -6391,8 +6356,8 @@
 /obj/structure/machinery/light,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
+	dir = 10;
+	icon_state = "whitegreenfull"
 	},
 /area/prison/medbay)
 "DS" = (
@@ -6438,8 +6403,8 @@
 "Ea" = (
 /obj/structure/machinery/chem_dispenser/medbay,
 /turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
+	dir = 10;
+	icon_state = "whitegreenfull"
 	},
 /area/prison/medbay)
 "Ed" = (
@@ -6447,8 +6412,8 @@
 /obj/item/storage/firstaid/regular,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
+	dir = 10;
+	icon_state = "whitegreenfull"
 	},
 /area/prison/medbay)
 "Ee" = (
@@ -6921,12 +6886,6 @@
 	},
 /turf/open/floor/prison,
 /area/prison/cellblock/maxsec/north)
-"Gg" = (
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
-	},
-/area/prison/medbay)
 "Gh" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 6
@@ -7511,13 +7470,6 @@
 	icon_state = "sterile_white"
 	},
 /area/prison/hallway/entrance)
-"IV" = (
-/obj/structure/surface/table,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
-	},
-/area/prison/medbay)
 "IW" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8
@@ -7924,16 +7876,6 @@
 	icon_state = "sterile_white"
 	},
 /area/prison/hallway/entrance)
-"KG" = (
-/obj/structure/pipes/vents/pump{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
-	},
-/area/prison/medbay)
 "KH" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/storage/toolbox/electrical,
@@ -7980,8 +7922,8 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
+	dir = 10;
+	icon_state = "whitegreenfull"
 	},
 /area/prison/medbay)
 "KS" = (
@@ -8776,8 +8718,8 @@
 /obj/item/tool/surgery/retractor,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
+	dir = 10;
+	icon_state = "whitegreenfull"
 	},
 /area/prison/medbay)
 "OE" = (
@@ -9010,8 +8952,8 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
+	dir = 10;
+	icon_state = "whitegreenfull"
 	},
 /area/prison/medbay)
 "PH" = (
@@ -9269,8 +9211,8 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/glowshroom,
 /turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
+	dir = 10;
+	icon_state = "whitegreenfull"
 	},
 /area/prison/medbay)
 "QS" = (
@@ -9344,8 +9286,8 @@
 /obj/structure/surface/table,
 /obj/item/storage/box,
 /turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
+	dir = 10;
+	icon_state = "whitegreenfull"
 	},
 /area/prison/medbay)
 "Rg" = (
@@ -9371,8 +9313,8 @@
 /obj/structure/surface/table,
 /obj/item/tool/surgery/hemostat,
 /turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
+	dir = 10;
+	icon_state = "whitegreenfull"
 	},
 /area/prison/medbay)
 "Rn" = (
@@ -9439,8 +9381,8 @@
 "RA" = (
 /obj/structure/bed/chair,
 /turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
+	dir = 10;
+	icon_state = "whitegreenfull"
 	},
 /area/prison/medbay)
 "RB" = (
@@ -9497,8 +9439,8 @@
 /obj/structure/surface/rack,
 /obj/item/storage/firstaid/rad,
 /turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
+	dir = 10;
+	icon_state = "whitegreenfull"
 	},
 /area/prison/medbay)
 "RN" = (
@@ -9722,10 +9664,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison,
 /area/prison/medbay)
 "SH" = (
 /obj/structure/machinery/light{
@@ -9750,10 +9689,7 @@
 "SO" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/prison,
 /area/prison/medbay)
 "SS" = (
 /obj/structure/surface/table,
@@ -10242,8 +10178,8 @@
 /obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
+	dir = 10;
+	icon_state = "whitegreenfull"
 	},
 /area/prison/medbay)
 "Vk" = (
@@ -10455,9 +10391,7 @@
 	},
 /area/prison/cellblock/mediumsec/west)
 "Wo" = (
-/obj/docking_port/stationary/marine_dropship/lz1{
-	name = "LZ1: Hangar Landing Zone"
-	},
+/obj/docking_port/stationary/marine_dropship/airlock/lz1,
 /turf/open/space/basic,
 /area/fiorina/lz/near_lzI)
 "Wp" = (
@@ -10654,10 +10588,7 @@
 	pixel_y = 3
 	},
 /obj/structure/surface/table/reinforced,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
-	},
+/turf/open/floor/prison,
 /area/prison/medbay)
 "Xr" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -10774,8 +10705,8 @@
 /obj/structure/closet/secure_closet/chemical,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
+	dir = 10;
+	icon_state = "whitegreenfull"
 	},
 /area/prison/medbay)
 "XW" = (
@@ -10970,8 +10901,8 @@
 /obj/structure/surface/table,
 /obj/item/reagent_container/dropper,
 /turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
+	dir = 10;
+	icon_state = "whitegreenfull"
 	},
 /area/prison/medbay)
 "YR" = (
@@ -11065,8 +10996,8 @@
 /obj/structure/surface/rack,
 /obj/item/storage/firstaid/o2,
 /turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
+	dir = 10;
+	icon_state = "whitegreenfull"
 	},
 /area/prison/medbay)
 "Zw" = (
@@ -11108,8 +11039,8 @@
 /obj/item/device/defibrillator,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
-	dir = 8;
-	icon_state = "sterile_white"
+	dir = 10;
+	icon_state = "whitegreenfull"
 	},
 /area/prison/medbay)
 "ZI" = (
@@ -29779,7 +29710,7 @@ Vn
 PL
 ka
 dg
-IV
+ZP
 YP
 Rf
 Cn
@@ -30208,14 +30139,14 @@ eC
 tf
 tf
 xW
-wf
+lv
 dg
 OV
 Eo
 lv
 IE
 dg
-wf
+lv
 OB
 Vj
 jM
@@ -30228,7 +30159,7 @@ Vv
 Vv
 Vv
 aG
-iI
+Mf
 Mf
 aG
 Vv
@@ -30418,8 +30349,8 @@ dg
 qe
 KP
 Ea
-wf
-jY
+lv
+qu
 ow
 dg
 OV
@@ -30430,7 +30361,7 @@ dg
 QR
 eC
 tf
-IV
+ZP
 nn
 gq
 gq
@@ -30440,8 +30371,8 @@ gq
 gq
 gq
 aG
-mT
-mT
+Mf
+Mf
 aG
 gq
 gq
@@ -30639,7 +30570,7 @@ Vt
 mW
 dg
 dg
-wf
+lv
 we
 Ae
 Rm
@@ -30653,7 +30584,7 @@ MN
 MN
 aG
 iI
-Mf
+iI
 bL
 NK
 MN
@@ -30847,14 +30778,14 @@ dF
 dg
 am
 am
-sq
-lv
+dF
+eC
 ek
 yF
-KG
+HY
 Ck
 tf
-Bt
+Qe
 nn
 MN
 MN
@@ -31066,7 +30997,7 @@ yF
 jO
 we
 eC
-Bt
+Qe
 nn
 MN
 MN
@@ -31489,7 +31420,7 @@ tg
 dg
 bD
 PG
-wf
+lv
 pC
 RS
 MN
@@ -32324,18 +32255,18 @@ Sl
 sj
 dg
 CM
-Gg
-jO
+tf
+dF
 Wi
-wf
-wf
+lv
+lv
 yF
 lv
 tf
 eC
 lv
 yF
-KG
+HY
 tf
 tf
 yX
@@ -32536,11 +32467,11 @@ Wr
 sQ
 dg
 dP
-wf
-jO
+eC
+dF
 yF
 Xq
-wf
+lv
 yF
 lv
 tf
@@ -32748,18 +32679,18 @@ NO
 Wa
 dg
 RA
-wf
-jO
+eC
+dF
 pi
 SF
-Gg
+tf
 Wi
 lv
 eC
 tf
 Bn
 yF
-wf
+lv
 eC
 tf
 Zt
@@ -32773,7 +32704,7 @@ MN
 MN
 aG
 iI
-Mf
+iI
 bL
 MN
 MN
@@ -32960,10 +32891,10 @@ NO
 ZR
 dg
 mf
-wf
-jO
+eC
+dF
 pi
-Xq
+jY
 tY
 dg
 wR
@@ -32984,8 +32915,8 @@ gq
 gq
 gq
 aG
-mT
-mT
+Mf
+Mf
 aG
 Vv
 gq
@@ -33196,7 +33127,7 @@ gq
 gq
 gq
 aG
-iI
+Mf
 Mf
 aG
 Vv

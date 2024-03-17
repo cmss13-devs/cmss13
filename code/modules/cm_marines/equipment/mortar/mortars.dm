@@ -321,6 +321,15 @@
 		var/turf/our_turf = get_turf(src)
 		shell.detonate(our_turf)
 	else
+		if(istype(shell, /obj/item/mortar_shell/custom)) // big shell warning for ghosts
+			var/obj/effect/mortar_effect = new(target)
+			mortar_effect.icon = 'icons/obj/structures/mortar.dmi'
+			mortar_effect.icon_state = "mortar_ammo_custom"
+			mortar_effect.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+			mortar_effect.invisibility = INVISIBILITY_MAXIMUM
+			QDEL_IN(mortar_effect, 5 SECONDS)
+			notify_ghosts(header = "Custom Shell", message = "A custom mortar shell is about to land at [get_area(target)].", source = mortar_effect)
+
 		playsound(target, 'sound/weapons/gun_mortar_travel.ogg', 50, 1)
 		var/relative_dir
 		for(var/mob/M in range(15, target))

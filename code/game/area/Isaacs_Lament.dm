@@ -123,7 +123,7 @@
 
 /area/lv553/indoors/bungalow_manager
 	name = "Isaac's Lament - WeyYu Colonial Manager's Bungalow"
-	icon_state = "shed_1_ag"
+	icon_state = "outpost_canteen_0"
 
 /area/lv553/indoors/aerospace_control
 	name = "Isaac's Lament - Landing Zones' Aerospace Control"
@@ -192,35 +192,35 @@
 
 /area/lv553/indoors/gated_community/head_of_corporate_engineering
 	name = "Weyland Yutani Gated Community - Head of Engineering House"
-	icon_state = "shed_3_ag"
+	icon_state = "outpost_canteen_1"
 
 /area/lv553/indoors/gated_community/head_of_corporate_security
 	name = "Weyland Yutani Gated Community - Head of Security House"
-	icon_state = "shed_4_ag"
+	icon_state = "outpost_canteen_2"
 
 /area/lv553/indoors/gated_community/director_of_corporate_research
 	name = "Weyland Yutani Gated Community - Director of Research House"
-	icon_state = "shed_5_ag"
+	icon_state = "outpost_canteen_3"
 
 /area/lv553/indoors/gated_community/director_of_coporate_relations
 	name = "Weyland Yutani Gated Community - Director of Corporate Relations House"
-	icon_state = "shed_6_ag"
+	icon_state = "outpost_canteen_4"
 
 /area/lv553/indoors/uscm_garrison/recruitment_office
 	name = "USCM Garrison - Recruitment Office"
-	icon_state = "shed_1_ug"
+	icon_state = "ug_jung_mine_1"
 
 /area/lv553/indoors/uscm_garrison/garrison_bunks
 	name = "USCM Garrison - Garrison Bunks"
-	icon_state = "shed_2_ug"
+	icon_state = "ug_jung_mine_2"
 
 /area/lv553/indoors/uscm_garrison/armory
 	name = "USCM Garrison - Armory"
-	icon_state = "shed_3_ug"
+	icon_state = "ug_jung_mine_3"
 
 /area/lv553/indoors/uscm_garrison/io_office
 	name = "USCM Garrison - Third Fleet Intelligence Office"
-	icon_state = "tcomms1"
+	icon_state = "hive_0"
 
 /area/lv553/indoors/flooded/weymart
 	name = "Flooded Area - Weymart"
@@ -228,7 +228,7 @@
 
 /area/lv553/indoors/flooded/waste_station
 	name = "Flooded Area - Waste Water Station"
-	icon_state = "outpost_engi_4"
+	icon_state = "outpost_engi_0"
 
 /area/lv553/indoors/flooded/waste_silos
 	name = "Flooded Area - Waste Water Silos"
@@ -252,83 +252,103 @@
 
 /area/lv553/indoors/operations/reception
 	name = "Operations - Reception"
-	icon_state = "shed_1_ug"
+	icon_state = "outpost_admin_0"
 
 /area/lv553/indoors/operations/offices/northwest
 	name = "Operations - Northwest Offices"
-	icon_state = "shed_2_ug"
+	icon_state = "outpost_admin_1"
 
 /area/lv553/indoors/operations/offices/southwest
 	name = "Operations - Southwest Offices"
-	icon_state = "shed_3_ug"
+	icon_state = "outpost_admin_2"
 
 /area/lv553/indoors/operations/offices/east
 	name = "Operations - East Offices"
-	icon_state = "shed_4_ug"
+	icon_state = "outpost_admin_3"
 
 /area/lv553/indoors/operations/hallway/west
 	name = "Operations - West Hallway and Bathrooms"
-	icon_state = "shed_5_ug"
+	icon_state = "shed_1_ug"
 
 /area/lv553/indoors/operations/hallway/north
 	name = "Operations - North Central Hallway"
-	icon_state = "shed_6_ug"
+	icon_state = "shed_2_ug"
 
 /area/lv553/indoors/operations/hallway/south
 	name = "Operations - South Central Hallway"
-	icon_state = "shed_7_ug"
+	icon_state = "shed_3_ug"
 
 /area/lv553/indoors/operations/serverroom
 	name = "Operations - Server Room"
-	icon_state = "shed_8_ug"
+	icon_state = "outpost_admin_4"
 
 /area/lv553/indoors/operations/lockerroom
 	name = "Operations - Locker Room"
-	icon_state = "shed_1_ug"
+	icon_state = "outpost_admin_5"
 
 /area/lv553/indoors/operations/xenobiological_research
 	name = "Operations - Xenobiological Research"
-	icon_state = "shed_2_ug"
+	icon_state = "outpost_med_chem"
 
 /area/lv553/indoors/operations/maintenance/north
 	name = "Operations - North Maintenance"
-	icon_state = "sewers4"
+	icon_state = "outpost_maint"
 
 /area/lv553/indoors/operations/maintenance/south
 	name = "Operations - South Maintenance"
-	icon_state = "sewers4"
+	icon_state = "outpost_maint"
 
 /area/lv553/indoors/marshals/reception
 	name = "Colonial Marshals Bureau - Reception"
-	icon_state = "shed_1_ug"
+	icon_state = "security_station"
 
 /area/lv553/indoors/marshals/garage
 	name = "Colonial Marshals Bureau - Garage"
-	icon_state = "shed_2_ug"
+	icon_state = "security_station"
 
 /area/lv553/indoors/marshals/interrogation
 	name = "Colonial Marshals Bureau - Interrogation Room"
-	icon_state = "shed_3_ug"
+	icon_state = "security_station"
 
 /area/lv553/indoors/marshals/marshalsoffice
 	name = "Colonial Marshals Bureau - Marshals Office"
-	icon_state = "shed_4_ug"
+	icon_state = "security_station"
 
 /area/lv553/indoors/marshals/mainhall
 	name = "Colonial Marshals Bureau - Main Building"
-	icon_state = "shed_5_ug"
+	icon_state = "security_station"
 
 /area/lv553/indoors/marshals/cells
 	name = "Colonial Marshals Bureau - Cellblock"
-	icon_state = "shed_6_ug"
+	icon_state = "security_station"
 
 /area/lv553/indoors/marshals/barracks
 	name = "Colonial Marshals Bureau - Barracks"
-	icon_state = "shed_7_ug"
+	icon_state = "security_station"
 
 /area/lv553/indoors/marshals/storage
 	name = "Colonial Marshals Bureau - Storage Shed"
-	icon_state = "shed_8_ug"
+	icon_state = "security_station"
+
+/area/lv553/indoors/southwest/slums
+	name = "Southwest - Slums and Houses"
+	icon_state = "sewers"
+
+/area/lv553/indoors/south/slums
+	name = "South - Slums and Houses"
+	icon_state = "sewers1"
+
+/area/lv553/indoors/southeast/slums
+	name = "Southeast - Slums and Houses"
+	icon_state = "sewers2"
+
+/area/lv553/indoors/east/slums
+	name = "East - Slums and Houses"
+	icon_state = "sewers3"
+
+/area/lv553/indoors/northeast/slums
+	name = "Northeast - Slums and Houses"
+	icon_state = "sewers4"
 
 /area/lv553/indoors/lone_buildings
 	icon_state = "shed_x_ag"
@@ -388,6 +408,18 @@
 /area/lv553/indoors/lone_buildings/cheeseburger
 	name = "Issac's Lament - South-West - Stacy's All You Can Eat Burgers"
 	icon_state = "shed_5_ag"
+
+/area/lv553/indoors/lone_buildings/chinese
+	name = "Issac's Lament - South-West - Chinese Takeout"
+	icon_state = "shed_6_ag"
+
+/area/lv553/indoors/lone_buildings/internet_cafe
+	name = "Issac's Lament - South-West - Internet Cafe"
+	icon_state = "shed_7_ag"
+
+/area/lv553/indoors/lone_buildings/clf_communications
+	name = "Issac's Lament - South-West - CLF Communications Building"
+	icon_state = "shed_8_ag"
 
 /area/lv553/indoors/lone_buildings/trapped_house
 	name = "Issac's Lament - South - Trapped House"

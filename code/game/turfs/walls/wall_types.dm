@@ -577,6 +577,14 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	walltype = WALL_JUNGLE_UPDATED //Not a metal wall
 	hull = 1
 
+/turf/closed/wall/strata_ice/jungle/isaacs
+	name = "jungle vegetation"
+	icon = 'icons/turf/walls/junglewalls_v3.dmi'
+	icon_state = "jungle_veg"
+	desc = "Exceptionally dense vegetation that you can't see through."
+	walltype = WALL_JUNGLE_UPDATED //Not a metal wall
+	hull = 1
+
 /turf/closed/wall/strata_outpost_ribbed //this guy is our reinforced replacement
 	name = "ribbed outpost walls"
 	icon = 'icons/turf/walls/strata_outpost.dmi'

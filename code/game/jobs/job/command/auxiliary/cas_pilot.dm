@@ -9,6 +9,10 @@
 	gear_preset = /datum/equipment_preset/uscm_ship/gp
 	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>Your job is to fly, protect, and maintain the ship's gunship.</a> While you are an officer, your authority is limited to the dropship, where you have authority over the enlisted personnel."
 
+/datum/job/command/pilot/whiskey
+	total_positions = 2
+	spawn_positions = 2
+
 // Dropship Roles is both DP, GP and DCC combined to not force people to backtrack
 AddTimelock(/datum/job/command/pilot/cas_pilot, list(
 	JOB_DROPSHIP_ROLES = 2 HOURS

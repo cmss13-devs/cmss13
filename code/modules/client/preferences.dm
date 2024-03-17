@@ -771,9 +771,10 @@ GLOBAL_LIST_INIT(bgstate_options, list(
  *
  * Arguments:
  * * limit - The amount of jobs allowed per column. Defaults to 19 to make it look nice.
-//splitJobs - Allows you split the table by job. You can make different tables for each department by including their heads. Defaults to MS to make it look nice.
-//width - Screen' width. Defaults to 950 to make it look nice.
-//height - Screen's height. Defaults to 700 to make it look nice.
+ * * splitJobs - Allows you split the table by job. You can make different tables for each department by including their heads. Defaults to MS to make it look nice.
+ * * width - Screen' width. Defaults to 950 to make it look nice.
+ * * height - Screen's height. Defaults to 700 to make it look nice.
+ */
 /datum/preferences/proc/set_job_slots(mob/user, limit = 19, list/splitJobs = list(JOB_MESS_SERGEANT), width = 950, height = 700)
 	if(!GLOB.RoleAuthority)
 		return

@@ -261,31 +261,31 @@
 
 /area/lv553/indoors/operations/offices/east
 	name = "Operations - East Offices"
-	icon_state = "shed_3_ug"
+	icon_state = "shed_4_ug"
 
 /area/lv553/indoors/operations/hallway/west
 	name = "Operations - West Hallway and Bathrooms"
-	icon_state = "shed_6_ug"
+	icon_state = "shed_5_ug"
 
 /area/lv553/indoors/operations/hallway/north
 	name = "Operations - North Central Hallway"
-	icon_state = "shed_7_ug"
+	icon_state = "shed_6_ug"
 
 /area/lv553/indoors/operations/hallway/south
 	name = "Operations - South Central Hallway"
-	icon_state = "shed_8_ug"
+	icon_state = "shed_7_ug"
 
 /area/lv553/indoors/operations/serverroom
 	name = "Operations - Server Room"
-	icon_state = "shed_1_ug"
+	icon_state = "shed_8_ug"
 
 /area/lv553/indoors/operations/lockerroom
 	name = "Operations - Locker Room"
-	icon_state = "shed_2_ug"
+	icon_state = "shed_1_ug"
 
 /area/lv553/indoors/operations/xenobiological_research
 	name = "Operations - Xenobiological Research"
-	icon_state = "shed_3_ug"
+	icon_state = "shed_2_ug"
 
 /area/lv553/indoors/operations/maintenance/north
 	name = "Operations - North Maintenance"
@@ -297,10 +297,6 @@
 
 /area/lv553/indoors/lone_buildings
 	icon_state = "shed_x_ag"
-
-/area/lv553/indoors/lone_buildings/liq_r_mart
-	name = "Issac's Lament - West - Liq-R-Mart"
-	icon_state = "shed_8_ag"
 
 /area/lv553/indoors/lone_buildings/recruiter_house
 	name = "Issac's Lament - West - Recruiter's House"
@@ -334,10 +330,22 @@
 	name = "Issac's Lament - West - Multi-Door Garage"
 	icon_state = "shed_8_ag"
 
+/area/lv553/indoors/lone_buildings/liq_r_mart
+	name = "Issac's Lament - West - Liq-R-Mart"
+	icon_state = "shed_8_ag"
+
 /area/lv553/indoors/lone_buildings/weyyu_hostel
 	name = "Issac's Lament - South-West - Weyland-Yutani Hostel"
 	icon_state = "shed_1_ag"
 
 /area/lv553/indoors/lone_buildings/goon_and_chef_house
 	name = "Issac's Lament - South-West - Two Bedroom House"
+	icon_state = "shed_2_ag"
+
+/area/lv553/indoors/lone_buildings/neils_arcade
+	name = "Issac's Lament - South-West - Neil's Arcade"
+	icon_state = "shed_3_ag"
+
+/area/lv553/indoors/lone_buildings/flynns_bar
+	name = "Issac's Lament - North-East - Flynn's Bar"
 	icon_state = "shed_1_ag"

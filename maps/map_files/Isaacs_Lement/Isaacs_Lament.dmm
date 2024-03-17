@@ -65,6 +65,10 @@
 	dir = 8
 	},
 /area/lv553/indoors/operations/offices/northwest)
+"ace" = (
+/obj/item/spacecash/c10,
+/turf/open/gm/river,
+/area/lv553/indoors/flooded/west_slums)
 "aci" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -529,7 +533,7 @@
 /area/lv553/oob)
 "amJ" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/reagent_container/food/drinks/bottle/tomatojuice,
+/obj/item/reagent_container/food/snacks/upp,
 /turf/open/floor/wood,
 /area/lv553/oob)
 "amM" = (
@@ -900,7 +904,6 @@
 "aAc" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/toy/deck,
-/obj/item/ammo_magazine/rifle/mar40,
 /turf/open/floor/prison/chapel_carpet,
 /area/lv553/oob)
 "aAk" = (
@@ -3030,8 +3033,7 @@
 /area/lv553/landing_zone_2)
 "bMd" = (
 /obj/structure/surface/table/woodentable,
-/obj/item/paper_bin,
-/obj/item/tool/pen/blue,
+/obj/item/explosive/grenade/high_explosive/training,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "darkblue2"
@@ -3225,7 +3227,7 @@
 /area/lv553/oob)
 "bQL" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "bathroom door"
+	name = "\improper Bathroom"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -3282,7 +3284,7 @@
 "bTb" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
-	name = "Sergeant's office door"
+	name = "Sergeant's Office"
 	},
 /turf/open/floor{
 	dir = 8;
@@ -3745,7 +3747,7 @@
 /area/lv553/outdoors/hospital/break_garden)
 "cdW" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "bathroom door"
+	name = "\improper Bathroom"
 	},
 /turf/open/floor{
 	dir = 8;
@@ -3807,8 +3809,8 @@
 /area/lv553/indoors/operations/xenobiological_research)
 "cfi" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1;
-	name = "bathroom door"
+	dir = 2;
+	name = "\improper Bathroom"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -4197,10 +4199,6 @@
 	},
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/army_surplus)
-"crK" = (
-/obj/structure/mineral_door/wood,
-/turf/open/space/basic,
-/area/lv553/oob)
 "ctb" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /obj/structure/machinery/colony_floodlight,
@@ -4265,6 +4263,12 @@
 	layer = 2.8
 	},
 /turf/open/asphalt/cement,
+/area/lv553/oob)
+"cuv" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Bathroom"
+	},
+/turf/open/floor/wood,
 /area/lv553/oob)
 "cuA" = (
 /obj/item/stack/sheet/metal,
@@ -5877,8 +5881,8 @@
 /area/lv553/indoors/uscm_garrison/armory)
 "dju" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1;
-	name = "bathroom door"
+	dir = 2;
+	name = "\improper Bathroom"
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
@@ -6187,29 +6191,8 @@
 	},
 /area/lv553/indoors/welcome_center/lobby)
 "dse" = (
-/obj/item/trash/cigbutt{
-	pixel_y = 14;
-	pixel_x = -7
-	},
-/obj/item/trash/cigbutt{
-	pixel_y = 7;
-	pixel_x = 5
-	},
-/obj/item/trash/cigbutt{
-	pixel_y = -5;
-	pixel_x = -10
-	},
-/obj/item/trash/cigbutt{
-	pixel_y = -6;
-	pixel_x = 5
-	},
-/obj/item/trash/cigbutt/cigarbutt{
-	pixel_y = 1;
-	pixel_x = 5
-	},
-/obj/item/trash/cigbutt/bcigbutt{
-	pixel_y = 8;
-	pixel_x = -4
+/obj/structure/bed/chair/wood/normal{
+	dir = 4
 	},
 /turf/open/asphalt/cement,
 /area/lv553/outdoors/colony_streets/southwest)
@@ -6581,8 +6564,8 @@
 /area/lv553/oob)
 "dAZ" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1;
-	name = "bathroom door"
+	dir = 2;
+	name = "\improper Bathroom"
 	},
 /turf/open/gm/river,
 /area/lv553/oob)
@@ -7901,6 +7884,12 @@
 	pixel_x = -9;
 	pixel_y = 8
 	},
+/obj/structure/barricade/handrail/wire{
+	dir = 4;
+	layer = 2.991
+	},
+/obj/structure/surface/table/woodentable,
+/obj/item/ashtray/plastic,
 /turf/open/asphalt/cement,
 /area/lv553/outdoors/colony_streets/southwest)
 "eop" = (
@@ -8327,16 +8316,6 @@
 	pixel_y = -9
 	},
 /turf/open/floor/wood,
-/area/lv553/oob)
-"ezT" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1;
-	name = "bathroom door"
-	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "barber"
-	},
 /area/lv553/oob)
 "ezZ" = (
 /obj/structure/window/framed/colony/reinforced,
@@ -9048,9 +9027,13 @@
 	icon_state = "darkred2"
 	},
 /area/lv553/indoors/uscm_garrison/armory)
+"eXA" = (
+/obj/item/clothing/shoes/marine/upp,
+/turf/open/floor/wood,
+/area/lv553/oob)
 "eXD" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "recruiter's house";
+	name = "USCM Recruiter's house";
 	dir = 1
 	},
 /turf/open/floor/wood,
@@ -9549,8 +9532,6 @@
 	},
 /area/lv553/indoors/hospital/research/floor)
 "flf" = (
-/obj/item/trash/cigbutt,
-/obj/item/trash/cigbutt/cigarbutt,
 /obj/structure/machinery/light,
 /turf/open/asphalt/cement,
 /area/lv553/indoors/operations/reception)
@@ -9710,6 +9691,10 @@
 	pixel_y = 0
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/safety/bathmens{
+	pixel_y = -32;
+	pixel_x = 7
+	},
 /turf/open/floor{
 	icon_state = "darkblue2"
 	},
@@ -10105,14 +10090,6 @@
 /obj/structure/prop/dam/truck/cargo,
 /turf/open/asphalt/cement,
 /area/lv553/oob)
-"fBw" = (
-/obj/item/trash/plate,
-/obj/structure/surface/table/reinforced{
-	flipped = 1;
-	icon_state = "reinfflip1+"
-	},
-/turf/open/gm/river,
-/area/lv553/indoors/flooded/west_slums)
 "fBL" = (
 /obj/structure/desertdam/decals/road_edge{
 	pixel_x = -12
@@ -10155,7 +10132,7 @@
 /area/lv553/oob)
 "fCl" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "weyland-yutani hostel door"
+	name = "Weyland-Yutani Corporate Hostel"
 	},
 /turf/open/asphalt/cement,
 /area/lv553/indoors/lone_buildings/weyyu_hostel)
@@ -10195,6 +10172,20 @@
 	icon_state = "darkredfull2"
 	},
 /area/lv553/oob)
+"fDB" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/sign/safety/bathwomens{
+	pixel_y = 32;
+	pixel_x = 7
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "darkblue2"
+	},
+/area/lv553/indoors/operations/hallway/west)
 "fDT" = (
 /obj/effect/decal/strata_decals/grime/grime1{
 	dir = 1
@@ -10398,16 +10389,14 @@
 /turf/open/floor/wood,
 /area/lv553/indoors/welcome_center/offices)
 "fIb" = (
-/obj/item/trash/cigbutt{
-	pixel_y = 7;
-	pixel_x = 5
-	},
 /obj/item/trash/cigbutt/cigarbutt{
 	pixel_y = 10
 	},
-/obj/item/trash/cigbutt/ucigbutt{
-	pixel_x = -4
+/obj/structure/barricade/handrail/wire{
+	dir = 4;
+	layer = 2.991
 	},
+/obj/structure/surface/table/woodentable,
 /turf/open/asphalt/cement,
 /area/lv553/outdoors/colony_streets/southwest)
 "fIh" = (
@@ -11539,6 +11528,10 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv553/outdoors/colony_streets/southwest)
+"gmN" = (
+/obj/structure/barricade/handrail/wire,
+/turf/open/asphalt/cement,
+/area/lv553/outdoors/colony_streets/southwest)
 "gmO" = (
 /obj/structure/sink{
 	dir = 1;
@@ -11859,7 +11852,7 @@
 /area/lv553/outdoors/hospital/break_garden)
 "gAa" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "bathroom door"
+	name = "\improper Bathroom"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -12415,7 +12408,7 @@
 "gMX" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
-	name = "head of corporate engineering house door"
+	name = "Corporate Chief Technician's House"
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/gated_community/head_of_corporate_engineering)
@@ -13374,8 +13367,8 @@
 /area/lv553/outdoors/colony_streets/northeast)
 "hus" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1;
-	name = "bathroom door"
+	dir = 2;
+	name = "\improper Bathroom"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -13748,6 +13741,17 @@
 	},
 /turf/open/floor,
 /area/lv553/oob)
+"hEx" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 4;
+	layer = 2.991
+	},
+/obj/structure/barricade/handrail/wire{
+	dir = 4;
+	layer = 2.991
+	},
+/turf/open/asphalt/cement,
+/area/lv553/outdoors/colony_streets/southwest)
 "hEI" = (
 /obj/structure/flora/jungle/hedge{
 	dir = 6
@@ -13909,6 +13913,7 @@
 	pixel_y = 11;
 	req_one_access_txt = "2;3;12;19"
 	},
+/obj/item/clothing/head/cmcap,
 /turf/open/floor/wood,
 /area/lv553/indoors/uscm_garrison/recruitment_office)
 "hGB" = (
@@ -16381,7 +16386,7 @@
 /area/lv553/outdoors/hospital/break_garden)
 "iPu" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "bathroom door"
+	name = "\improper Bathroom"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -16749,10 +16754,10 @@
 /area/lv553/indoors/hospital/research/offices)
 "iZp" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "bathroom door"
+	name = "\improper Bathroom"
 	},
 /turf/open/floor{
-	icon_state = "redyellowfull"
+	icon_state = "freezerfloor"
 	},
 /area/lv553/indoors/uscm_garrison/recruitment_office)
 "iZH" = (
@@ -16855,6 +16860,7 @@
 	dir = 1;
 	tag = "icon-tube1 (WEST)"
 	},
+/obj/structure/bed/chair/comfy/black,
 /turf/open/floor/wood,
 /area/lv553/indoors/uscm_garrison/recruitment_office)
 "jdw" = (
@@ -17591,6 +17597,13 @@
 	icon_state = "whitegreencorner"
 	},
 /area/lv553/indoors/hospital/outpatients_and_icu)
+"jzf" = (
+/obj/structure/machinery/light_construct{
+	dir = 4
+	},
+/obj/item/trash/plate,
+/turf/open/gm/river,
+/area/lv553/indoors/flooded/west_slums)
 "jzg" = (
 /obj/structure/curtain{
 	icon_state = "shower"
@@ -17708,8 +17721,8 @@
 /area/lv553/oob)
 "jCJ" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1;
-	name = "bathroom door"
+	dir = 2;
+	name = "\improper Bathroom"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -17879,7 +17892,7 @@
 /area/lv553/outdoors/bungalow_manager_exterior)
 "jHe" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "bathroom door"
+	name = "\improper Bathroom"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -18563,6 +18576,13 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/welcome_center/canteen)
+"kax" = (
+/obj/structure/barricade/handrail/wire,
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
+/turf/open/asphalt/cement,
+/area/lv553/outdoors/colony_streets/southwest)
 "kaW" = (
 /obj/structure/surface/table/woodentable{
 	flipped = 1
@@ -18778,26 +18798,6 @@
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
-"kgb" = (
-/obj/item/trash/cigbutt{
-	pixel_y = 7;
-	pixel_x = 5
-	},
-/obj/item/trash/cigbutt{
-	pixel_x = -6;
-	pixel_y = 5
-	},
-/obj/item/trash/cigbutt{
-	pixel_x = 6;
-	pixel_y = -1
-	},
-/obj/item/trash/cigbutt/cigarbutt,
-/obj/item/trash/cigbutt/bcigbutt{
-	pixel_y = 12;
-	pixel_x = -4
-	},
-/turf/open/asphalt/cement,
-/area/lv553/outdoors/colony_streets/southwest)
 "kgh" = (
 /obj/structure/cargo_container{
 	icon_state = "ferret_m"
@@ -19408,14 +19408,9 @@
 /turf/open/gm/dirtgrassborder,
 /area/lv553/landing_zone_2)
 "kzd" = (
-/obj/item/trash/cigbutt,
 /obj/item/trash/cigbutt/ucigbutt{
 	pixel_x = 5;
 	pixel_y = 7
-	},
-/obj/item/trash/cigbutt/bcigbutt{
-	pixel_y = 16;
-	pixel_x = -2
 	},
 /turf/open/asphalt/cement,
 /area/lv553/outdoors/lone_buildings/weyyu_hostel)
@@ -20088,9 +20083,6 @@
 	pixel_x = 13
 	},
 /obj/item/weapon/pole/fancy_cane/this_is_a_knife/machete,
-/obj/item/weapon/gun/revolver/small{
-	pixel_y = 6
-	},
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -21197,7 +21189,7 @@
 "lyq" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 8;
-	name = "head of corporate security house door"
+	name = "Corporate Security Chief's House"
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/gated_community/head_of_corporate_security)
@@ -21498,8 +21490,8 @@
 /area/lv553/outdoors/flooded_streets/waste_treatment)
 "lFp" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1;
-	name = "bathroom door"
+	dir = 2;
+	name = "\improper Bathroom"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -21611,11 +21603,6 @@
 /obj/item/shard,
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/engineer_alcoholic_house)
-"lKF" = (
-/obj/item/trash/cigbutt,
-/obj/item/trash/cigbutt/cigarbutt,
-/turf/open/asphalt/cement,
-/area/lv553/outdoors/colony_streets/southwest)
 "lKM" = (
 /obj/structure/toilet,
 /obj/structure/sign/poster/art{
@@ -21625,16 +21612,6 @@
 	icon_state = "wood-broken"
 	},
 /area/lv553/oob)
-"lKW" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1;
-	name = "bathroom door"
-	},
-/obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/lv553/indoors/hospital/operating_rooms)
 "lLd" = (
 /obj/structure/flora/jungle/vines,
 /turf/open/gm/dirtgrassborder,
@@ -22114,7 +22091,7 @@
 /area/lv553/oob)
 "maa" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "weyland-yutani hostel door";
+	name = "Weyland-Yutani Corporate Hostel";
 	dir = 1
 	},
 /turf/open/floor{
@@ -22234,11 +22211,6 @@
 	icon_state = "barber"
 	},
 /area/lv553/oob)
-"mcp" = (
-/obj/item/trash/cigbutt,
-/obj/item/trash/cigbutt,
-/turf/open/asphalt/cement,
-/area/lv553/outdoors/colony_streets/southwest)
 "mcx" = (
 /obj/structure/bed/sofa/south/grey/left,
 /obj/item/reagent_container/food/drinks/bottle/beer/craft{
@@ -22753,7 +22725,7 @@
 "mri" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
-	name = "bathroom door"
+	name = "\improper Bathroom"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv553/indoors/operations/hallway/west)
@@ -22825,13 +22797,6 @@
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/wood,
 /area/lv553/indoors/bungalow_manager)
-"mtk" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "uscm_garrison";
-	name = "\improper gated community shutters"
-	},
-/turf/open/gm/dirt,
-/area/lv553/indoors/gated_community/director_of_corporate_research)
 "mtt" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/computer/cameras/wooden_tv{
@@ -23897,8 +23862,8 @@
 /area/lv553/oob)
 "mTk" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1;
-	name = "bathroom door"
+	dir = 2;
+	name = "\improper Bathroom"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -25705,9 +25670,9 @@
 /obj/structure/closet/cabinet,
 /obj/item/storage/briefcase,
 /obj/effect/landmark/objective_landmark/close,
-/obj/item/clothing/under/suit_jacket/trainee,
 /obj/item/clothing/glasses/sunglasses/prescription,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/under/colonist/workwear,
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/screenwriter_house)
 "nUX" = (
@@ -26839,13 +26804,9 @@
 /turf/open/floor/wood,
 /area/lv553/oob)
 "oxC" = (
-/obj/item/ammo_magazine/pistol/rubber{
-	current_rounds = 0
-	},
 /obj/item/weapon/gun/pistol/m4a3/training{
 	current_mag = null
 	},
-/obj/item/clothing/head/beanie,
 /obj/item/trash/cigbutt/ucigbutt,
 /turf/open/floor/wood,
 /area/lv553/indoors/uscm_garrison/recruitment_office)
@@ -29152,8 +29113,8 @@
 /area/lv553/landing_zone_2)
 "pzr" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1;
-	name = "bathroom door"
+	dir = 2;
+	name = "\improper Bathroom"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -29206,8 +29167,8 @@
 /area/lv553/indoors/lone_buildings/army_surplus)
 "pAX" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1;
-	name = "bathroom door"
+	dir = 2;
+	name = "\improper Bathroom"
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
@@ -29218,6 +29179,11 @@
 	id = "tunnel4a"
 	},
 /turf/open/floor/plating,
+/area/lv553/oob)
+"pBx" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/clothing/head/uppcap/civi,
+/turf/open/floor/wood,
 /area/lv553/oob)
 "pBB" = (
 /obj/structure/surface/table/almayer,
@@ -29450,7 +29416,7 @@
 "pJF" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
-	name = "synthetic's shed"
+	name = "Synthetic Butler Shed"
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -29918,7 +29884,7 @@
 "pVz" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
-	name = "Sergeant's office door"
+	name = "Sergeant's Office"
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -29932,35 +29898,6 @@
 /obj/item/ammo_box/magazine/shotgun/buckshot,
 /turf/open/asphalt/cement,
 /area/lv553/indoors/lone_buildings/army_surplus)
-"pVC" = (
-/obj/item/trash/cigbutt{
-	pixel_y = 7;
-	pixel_x = 5
-	},
-/obj/item/trash/cigbutt{
-	pixel_y = -5;
-	pixel_x = -10
-	},
-/obj/item/trash/cigbutt/cigarbutt{
-	pixel_y = 6;
-	pixel_x = 1
-	},
-/obj/item/trash/cigbutt/ucigbutt{
-	pixel_x = 5
-	},
-/obj/item/trash/cigbutt/bcigbutt{
-	pixel_y = 12;
-	pixel_x = -4
-	},
-/turf/open/asphalt/cement,
-/area/lv553/outdoors/lone_buildings/weyyu_hostel)
-"pVJ" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
-	dir = 1;
-	name = "Lieutenant's office door"
-	},
-/turf/open/floor,
-/area/lv553/oob)
 "pWa" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3";
@@ -30135,8 +30072,8 @@
 /area/lv553/oob)
 "qaA" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1;
-	name = "bathroom door"
+	dir = 2;
+	name = "\improper Bathroom"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -30536,7 +30473,7 @@
 "qhX" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "uscm_garrison";
-	name = "\improper uscm garrison gate"
+	name = "\improper USCMC Garrison Gate"
 	},
 /turf/open/gm/dirt,
 /area/lv553/indoors/uscm_garrison/recruitment_office)
@@ -33390,9 +33327,9 @@
 /turf/open/floor/plating,
 /area/lv553/landing_zone_1)
 "rMT" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	name = "director of corporate research house door";
-	dir = 1
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
+	dir = 1;
+	name = "Corporate Research Director's House"
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/gated_community/director_of_corporate_research)
@@ -33595,13 +33532,6 @@
 	icon_state = "white"
 	},
 /area/lv553/indoors/welcome_center/lobby)
-"rUz" = (
-/obj/item/trash/cigbutt{
-	pixel_y = -6;
-	pixel_x = 5
-	},
-/turf/open/asphalt/cement,
-/area/lv553/outdoors/lone_buildings/weyyu_hostel)
 "rUA" = (
 /obj/structure/flora/jungle/vines,
 /turf/open/gm/dirtgrassborder{
@@ -34231,21 +34161,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass,
 /area/lv553/oob)
-"siN" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/item/trash/cigbutt{
-	pixel_x = -9;
-	pixel_y = 8
-	},
-/obj/item/trash/cigbutt/bcigbutt{
-	pixel_y = 12;
-	pixel_x = -4
-	},
-/obj/item/trash/cigbutt/ucigbutt,
-/turf/open/asphalt/cement,
-/area/lv553/indoors/lone_buildings/weyyu_hostel)
 "siR" = (
 /obj/item/light_bulb/tube,
 /turf/open/gm/river,
@@ -35269,8 +35184,8 @@
 /area/lv553/oob)
 "sIb" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1;
-	name = "bathroom door"
+	dir = 2;
+	name = "\improper Bathroom"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -35430,7 +35345,6 @@
 	},
 /area/lv553/indoors/operations/hallway/south)
 "sNa" = (
-/obj/item/spacecash/c10,
 /obj/structure/surface/table/reinforced{
 	flipped = 1;
 	icon_state = "reinfflip1-"
@@ -35777,7 +35691,7 @@
 "sUh" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
-	name = "Lieutenant's office door"
+	name = "Lieutenant's Office"
 	},
 /obj/item/clothing/mask/facehugger{
 	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
@@ -35991,6 +35905,7 @@
 /obj/item/storage/box/matches,
 /obj/item/clothing/mask/cigarette/weed,
 /obj/item/clothing/mask/cigarette/weed,
+/obj/item/clothing/under/liaison_suit/ivy,
 /turf/open/floor/wood,
 /area/lv553/indoors/gated_community/director_of_coporate_relations)
 "sYV" = (
@@ -36137,7 +36052,11 @@
 /area/lv553/oob)
 "taQ" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/reagent_container/food/condiment/hotsauce/sriracha,
+/obj/item/reagent_container/food/drinks/bottle/vodka{
+	pixel_x = 7;
+	pixel_y = 15
+	},
+/obj/item/clothing/accessory/patch/upp,
 /turf/open/floor/wood,
 /area/lv553/oob)
 "tbe" = (
@@ -36147,7 +36066,7 @@
 "tbM" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 8;
-	name = "director of corporate relations house door"
+	name = "Corporate Chief Executive of Corporate Relations house"
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/gated_community/director_of_coporate_relations)
@@ -36228,13 +36147,6 @@
 /obj/item/storage/beer_pack,
 /turf/open/floor/wood,
 /area/lv553/indoors/gated_community/head_of_corporate_security)
-"tdb" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 2;
-	name = "bathroom door"
-	},
-/turf/open/floor/wood,
-/area/lv553/oob)
 "tdp" = (
 /obj/structure/cargo_container{
 	icon_state = "seegson_l"
@@ -36821,7 +36733,7 @@
 "tsc" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "gated_community";
-	name = "\improper gated community shutters"
+	name = "\improper Gated Community Gate"
 	},
 /turf/open/gm/dirt,
 /area/lv553/indoors/gated_community/director_of_corporate_research)
@@ -38046,7 +37958,7 @@
 /area/lv553/outdoors/colony_streets/northeast)
 "tYo" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "recruiter's house"
+	name = "USCM Recruiter's house"
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/recruiter_house)
@@ -39677,8 +39589,8 @@
 /area/lv553/outdoors/colony_streets/west)
 "uRc" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1;
-	name = "bathroom door"
+	dir = 2;
+	name = "\improper Bathroom"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -39738,15 +39650,15 @@
 /turf/open/floor/wood,
 /area/lv553/indoors/hospital/research/offices)
 "uTc" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1;
-	name = "bathroom door"
-	},
 /obj/item/clothing/mask/facehugger{
 	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
 	icon_state = "facehugger_impregnated";
 	name = "????";
 	stat = 2
+	},
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2;
+	name = "\improper Bathroom"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -41984,17 +41896,11 @@
 	},
 /area/lv553/oob)
 "whA" = (
-/obj/item/trash/cigbutt{
-	pixel_y = 7;
-	pixel_x = 5
+/obj/structure/bed/chair/wood/normal{
+	dir = 4
 	},
-/obj/item/trash/cigbutt{
-	pixel_x = -6;
-	pixel_y = 5
-	},
-/obj/item/trash/cigbutt/cigarbutt,
-/obj/item/trash/cigbutt/ucigbutt{
-	pixel_x = 5
+/obj/structure/bed/chair/wood/normal{
+	dir = 4
 	},
 /turf/open/asphalt/cement,
 /area/lv553/outdoors/colony_streets/southwest)
@@ -42836,7 +42742,8 @@
 /area/lv553/indoors/lone_buildings/weyyu_hostel)
 "wIM" = (
 /obj/structure/surface/table/woodentable,
-/obj/item/explosive/grenade/high_explosive/training,
+/obj/item/paper_bin,
+/obj/item/tool/pen/blue,
 /turf/open/floor/wood,
 /area/lv553/indoors/uscm_garrison/recruitment_office)
 "wJb" = (
@@ -43218,7 +43125,7 @@
 /area/lv553/indoors/hospital/research/offices)
 "wRR" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "weyland-yutani hostel door"
+	name = "Weyland-Yutani Corporate Hostel"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -43740,7 +43647,7 @@
 /area/lv553/outdoors/landing_zones_disembark)
 "xiZ" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "shower room door"
+	name = "\improper USCMC Bunks"
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -44014,14 +43921,6 @@
 	},
 /area/lv553/indoors/bungalow_manager)
 "xqb" = (
-/obj/item/trash/cigbutt{
-	pixel_y = 7;
-	pixel_x = 5
-	},
-/obj/item/trash/cigbutt/cigarbutt{
-	pixel_y = 1;
-	pixel_x = 4
-	},
 /obj/item/trash/cigbutt/bcigbutt{
 	pixel_y = 12;
 	pixel_x = -4
@@ -44077,7 +43976,7 @@
 /area/lv553/outdoors/colony_streets/west)
 "xsh" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
-	name = "\improper USCMC Garrison Recruitment Center door"
+	name = "\improper USCMC Garrison Recruitment Center"
 	},
 /turf/open/floor/almayer,
 /area/lv553/indoors/uscm_garrison/recruitment_office)
@@ -44222,8 +44121,8 @@
 /area/lv553/oob)
 "xwJ" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1;
-	name = "bathroom door"
+	dir = 2;
+	name = "\improper Bathroom"
 	},
 /turf/open/floor,
 /area/lv553/oob)
@@ -44250,10 +44149,6 @@
 	},
 /area/lv553/indoors/operations/maintenance/south)
 "xxK" = (
-/obj/item/trash/cigbutt{
-	pixel_y = -5;
-	pixel_x = -10
-	},
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -44601,7 +44496,7 @@
 /area/lv553/outdoors/uscm_garrison_exterior/fenced)
 "xGu" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "bedroom door"
+	name = "\improper Bathroom"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -44642,7 +44537,7 @@
 /area/lv553/indoors/uscm_garrison/recruitment_office)
 "xIr" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "\improper USCM bunkroom door";
+	name = "\improper USCMC Firing Range";
 	dir = 1
 	},
 /turf/open/floor{
@@ -45069,8 +44964,8 @@
 /area/lv553/oob)
 "xWC" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1;
-	name = "bathroom door"
+	dir = 2;
+	name = "\improper Bathroom"
 	},
 /turf/open/floor{
 	dir = 8;
@@ -45354,8 +45249,8 @@
 /area/lv553/indoors/operations/reception)
 "ybT" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1;
-	name = "bathroom door"
+	dir = 2;
+	name = "\improper Bathroom"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -49230,7 +49125,7 @@ jBJ
 mZV
 wBT
 jBJ
-qZw
+fDB
 asZ
 mKV
 gAP
@@ -50549,7 +50444,7 @@ uZA
 uZA
 uZA
 uZA
-ics
+msP
 flf
 wTq
 sKW
@@ -50752,7 +50647,7 @@ jeg
 tsl
 lVW
 dCQ
-rUz
+vLr
 xqb
 xxK
 vLr
@@ -50773,8 +50668,8 @@ uZA
 uZA
 uZA
 uZA
-mcp
-mcp
+msP
+msP
 sWL
 fkw
 fkw
@@ -50979,8 +50874,8 @@ dCQ
 fCl
 dCQ
 dCQ
-pVC
 wUO
+vLr
 kzd
 mqA
 mqA
@@ -50997,7 +50892,7 @@ uZA
 uZA
 uZA
 uZA
-lKF
+msP
 msP
 lwj
 iYh
@@ -51221,8 +51116,8 @@ uZA
 uZA
 uZA
 uZA
+ics
 msP
-lKF
 phL
 eqb
 eqb
@@ -51759,7 +51654,7 @@ kIp
 sFg
 iqg
 cSC
-iqg
+ace
 sNa
 agB
 aam
@@ -51983,8 +51878,8 @@ pHS
 vWL
 iqg
 mVM
-bjg
-fBw
+jzf
+mVM
 agB
 aam
 aam
@@ -52994,10 +52889,10 @@ fYM
 dCQ
 dse
 whA
-ics
-siN
-kgb
-ics
+msP
+vLi
+msP
+gmN
 uZA
 uZA
 uZA
@@ -53218,10 +53113,10 @@ dCQ
 dCQ
 fIb
 enQ
+hEx
 msP
 msP
-msP
-msP
+kax
 uZA
 uZA
 uZA
@@ -55702,7 +55597,7 @@ cyd
 eff
 lPl
 amJ
-uuj
+pBx
 taQ
 eff
 uZA
@@ -56151,7 +56046,7 @@ pAX
 cTE
 mIv
 cTE
-cTE
+eXA
 eff
 uZA
 uZA
@@ -59746,7 +59641,7 @@ eff
 eff
 eff
 eff
-eUV
+cuv
 eff
 eff
 uZA
@@ -60852,7 +60747,7 @@ uZA
 uZA
 uZA
 uZA
-crK
+bov
 pTQ
 vzD
 kOl
@@ -61305,7 +61200,7 @@ fTy
 eff
 eff
 eff
-eUV
+cuv
 eff
 eff
 nfX
@@ -63021,7 +62916,7 @@ cKB
 cKB
 cKB
 cKB
-mtk
+tsc
 jDg
 jDg
 jDg
@@ -64413,7 +64308,7 @@ tKS
 tKS
 tKS
 ihA
-bov
+qdA
 ihA
 ihA
 tKS
@@ -68190,7 +68085,7 @@ uTc
 ckn
 ckn
 wNZ
-lKW
+wfs
 ckn
 pBS
 ckn
@@ -68906,7 +68801,7 @@ izj
 owW
 owW
 izj
-pVJ
+izj
 izj
 izj
 izj
@@ -69110,7 +69005,7 @@ reO
 reO
 ihA
 ihA
-baM
+bWY
 ihA
 osF
 tKS
@@ -70468,7 +70363,7 @@ izj
 mjo
 gFP
 izj
-ezT
+psJ
 slT
 slT
 pCm
@@ -70916,7 +70811,7 @@ izj
 izj
 izj
 izj
-ezT
+psJ
 slT
 slT
 pCm
@@ -71169,7 +71064,7 @@ pCm
 cyC
 cTE
 cTE
-tdb
+pAX
 wgu
 gLw
 pCm
@@ -72490,7 +72385,7 @@ nRr
 nRr
 pCm
 tTS
-ezT
+psJ
 izj
 hDQ
 izj
@@ -72504,7 +72399,7 @@ ldT
 izj
 hDQ
 izj
-ezT
+psJ
 qCJ
 pCm
 xAV
@@ -73386,7 +73281,7 @@ gKh
 gKh
 pCm
 tTS
-ezT
+psJ
 izj
 rOo
 izj
@@ -73400,7 +73295,7 @@ ldT
 izj
 rOo
 izj
-ezT
+psJ
 qCJ
 pCm
 xAV
@@ -88300,7 +88195,7 @@ fZZ
 cTE
 cTE
 daq
-nRr
+kjR
 kjR
 kjR
 kjR
@@ -88524,7 +88419,7 @@ cVn
 cTE
 pjF
 eff
-nRr
+kjR
 kjR
 kjR
 kjR
@@ -88748,7 +88643,7 @@ eff
 eUV
 eff
 eff
-nRr
+kjR
 kjR
 kjR
 kjR

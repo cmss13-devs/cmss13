@@ -1,0 +1,1 @@
+/obj/effect/landmark/start/pilot : /obj/effect/landmark/start/pilot/cas_pilot{@OLD}

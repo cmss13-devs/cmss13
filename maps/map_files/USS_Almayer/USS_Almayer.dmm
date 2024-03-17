@@ -4322,7 +4322,7 @@
 	},
 /area/almayer/living/pilotbunks)
 "awY" = (
-/obj/effect/landmark/start/pilot,
+/obj/effect/landmark/start/pilot/cas_pilot,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/pilotbunks)
 "awZ" = (

@@ -93,7 +93,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 
 /datum/health_scan/ui_data(mob/user, data_detail_level = null)
 	var/list/data = list(
-		"patient_mob" = target_mob,
+		"patient_mob" = WEAKREF(target_mob), // this doesn't work just yet
 		"patient" = target_mob.name,
 		"dead" = get_death_value(target_mob),
 		"health" = get_health_value(target_mob),

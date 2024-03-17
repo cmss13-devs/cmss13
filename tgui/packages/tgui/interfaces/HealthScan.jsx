@@ -3,7 +3,7 @@ import { Section, ProgressBar, Box, LabeledList, NoticeBox, Stack, Icon, Divider
 import { Window } from '../layouts';
 
 export const HealthScan = (props) => {
-  const { data } = useBackend();
+  const { act, data } = useBackend();
   const {
     patient_mob,
     patient,
@@ -51,7 +51,7 @@ export const HealthScan = (props) => {
 
   let holocard_message;
   if (holocard === 'red') {
-    holocard_message = 'Patient needs life-saving surgery.';
+    holocard_message = 'Patient needs life-saving treatment.';
   } else if (holocard === 'orange') {
     holocard_message = 'Patient needs non-urgent surgery.';
   } else if (holocard === 'purple') {

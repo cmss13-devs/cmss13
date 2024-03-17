@@ -2626,9 +2626,23 @@ obj/structure/prop/hybrisa/engineer/giantpod
 /obj/structure/prop/hybrisa/misc/slotmachine
 	name = "slot machine"
 	desc = "A slot machine."
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
+	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi'
 	icon_state = "slotmachine"
-
+	bound_width = 32
+	bound_height = 32
+	anchored = TRUE
+	density = TRUE
+	layer = 3.2
+/obj/structure/prop/hybrisa/misc/slotmachine_broken
+	name = "slot machine"
+	desc = "A broken slot machine."
+	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi'
+	icon_state = "slotmachine_broken"
+	bound_width = 32
+	bound_height = 32
+	anchored = TRUE
+	density = TRUE
+	layer = 3.2
 /obj/structure/prop/hybrisa/misc/coffeestuff/coffeemachine1
 	name = "coffee machine"
 	desc = "A coffee machine."

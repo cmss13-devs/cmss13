@@ -1094,8 +1094,28 @@
 	icon_state = "blacktileshiny"
 /turf/open/floor/hybrisa/tile/cementflat
 	icon_state = "cementflat"
-
-
+/turf/open/floor/hybrisa/tile/beige_bigtile
+	icon_state = "beige_bigtile"
+/turf/open/floor/hybrisa/tile/yellow_bigtile
+	icon_state = "yellow_bigtile"
+/turf/open/floor/hybrisa/tile/darkgrey_bigtile
+	icon_state = "darkgrey_bigtile"
+/turf/open/floor/hybrisa/tile/darkbrown_bigtile
+	icon_state = "darkbrown_bigtile"
+/turf/open/floor/hybrisa/tile/darkbrowncorner_bigtile
+	icon_state = "darkbrowncorner_bigtile"
+/turf/open/floor/hybrisa/tile/asteroidfloor_bigtile
+	icon_state = "asteroidfloor_bigtile"
+/turf/open/floor/hybrisa/tile/asteroidwarning_bigtile
+	icon_state = "asteroidwarning_bigtile"
+/turf/open/floor/hybrisa/tile/lightbeige_bigtile
+	icon_state = "lightbeige_bigtile"
+/turf/open/floor/hybrisa/tile/green_bigtile
+	icon_state = "green_bigtile"
+/turf/open/floor/hybrisa/tile/greencorner_bigtile
+	icon_state = "greencorner_bigtile"
+/turf/open/floor/hybrisa/tile/greenfull_bigtile
+	icon_state = "greenfull_bigtile"
 // Wood
 
 /turf/open/floor/hybrisa/wood
@@ -1151,6 +1171,14 @@
 	icon_state = "zbrownfloorcorner1"
 /turf/open/floor/hybrisa/metal/zbrownfloor_full
 	icon_state = "zbrownfloorfull1"
+/turf/open/floor/hybrisa/metal/greenmetal1
+	icon_state = "greenmetal1"
+/turf/open/floor/hybrisa/metal/greenmetalfull
+	icon_state = "greenmetalfull"
+/turf/open/floor/hybrisa/metal/greenmetalcorner
+	icon_state = "greenmetalcorner"
+/turf/open/floor/hybrisa/metal/metalwhitefull
+	icon_state = "metalwhitefull"
 // Misc
 
 /turf/open/floor/hybrisa/misc

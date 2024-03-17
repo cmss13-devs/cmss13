@@ -410,7 +410,7 @@
 /area/lv553/indoors/hospital/research/offices)
 "ajL" = (
 /obj/structure/toilet{
-	tag = "icon-toilet00 (WEST)"
+	pixel_y = 16
 	},
 /obj/item/device/cassette_tape/ocean{
 	pixel_y = 12
@@ -615,8 +615,7 @@
 /area/lv553/indoors/flooded/east_apartments)
 "aqt" = (
 /obj/structure/toilet{
-	dir = 4;
-	tag = "icon-toilet00 (WEST)"
+	dir = 4
 	},
 /turf/open/floor{
 	dir = 8;
@@ -980,7 +979,7 @@
 /area/lv553/indoors/operations/offices/east)
 "aCX" = (
 /obj/structure/toilet{
-	tag = "icon-toilet00 (WEST)"
+	pixel_y = 16
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
@@ -1775,8 +1774,7 @@
 /area/lv553/outdoors/colony_streets/south)
 "aVy" = (
 /obj/structure/toilet{
-	dir = 1;
-	tag = "icon-toilet00 (WEST)"
+	dir = 1
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -1816,7 +1814,7 @@
 /area/lv553/outdoors/colony_streets/northeast)
 "aWJ" = (
 /obj/structure/toilet{
-	tag = "icon-toilet00 (WEST)"
+	pixel_y = 16
 	},
 /turf/open/floor{
 	icon_state = "redyellowfull"
@@ -1994,7 +1992,7 @@
 "bbR" = (
 /obj/structure/bed/chair{
 	dir = 4;
-	tag = "icon-chair (EAST)"
+	pixel_y = 0
 	},
 /turf/open/floor/interior/plastic,
 /area/lv553/oob)
@@ -2123,8 +2121,7 @@
 /area/lv553/outdoors/landing_zones_disembark)
 "bfg" = (
 /obj/structure/toilet{
-	dir = 1;
-	tag = "icon-toilet00 (WEST)"
+	dir = 1
 	},
 /turf/open/floor/wood{
 	icon_state = "wood-broken"
@@ -3605,7 +3602,7 @@
 /area/lv553/outdoors/colony_streets/southwest)
 "bVP" = (
 /obj/structure/toilet{
-	tag = "icon-toilet00 (WEST)"
+	pixel_y = 16
 	},
 /turf/open/gm/river,
 /area/lv553/indoors/flooded/west_slums)
@@ -3698,7 +3695,7 @@
 /area/lv553/indoors/lone_buildings/weyyu_hostel)
 "bXl" = (
 /obj/structure/toilet{
-	tag = "icon-toilet00 (WEST)"
+	pixel_y = 16
 	},
 /turf/open/floor{
 	icon_state = "redyellowfull"
@@ -4193,8 +4190,7 @@
 /area/lv553/indoors/gated_community/residence_bunkhouse)
 "ckJ" = (
 /obj/structure/toilet{
-	dir = 1;
-	tag = "icon-toilet00 (WEST)"
+	dir = 1
 	},
 /obj/structure/closet/walllocker{
 	pixel_x = -32
@@ -4215,7 +4211,7 @@
 /area/lv553/indoors/lone_buildings/weymart)
 "clB" = (
 /obj/structure/toilet{
-	tag = "icon-toilet00 (WEST)"
+	pixel_y = 16
 	},
 /turf/open/floor{
 	icon_state = "redyellowfull"
@@ -5700,8 +5696,7 @@
 /area/lv553/indoors/gated_community/director_of_corporate_research)
 "cVk" = (
 /obj/structure/toilet{
-	dir = 4;
-	tag = "icon-toilet00 (WEST)"
+	dir = 4
 	},
 /turf/open/floor{
 	dir = 8;
@@ -5786,8 +5781,7 @@
 /area/lv553/indoors/flooded/west_apartments)
 "cXp" = (
 /obj/structure/toilet{
-	pixel_y = 11;
-	tag = "icon-toilet00 (WEST)"
+	pixel_y = 16
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -6955,8 +6949,7 @@
 /area/lv553/indoors/uscm_garrison/garrison_bunks)
 "dyH" = (
 /obj/structure/toilet{
-	dir = 4;
-	tag = "icon-toilet00 (WEST)"
+	dir = 4
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -7123,8 +7116,7 @@
 /area/lv553/oob)
 "dEk" = (
 /obj/structure/toilet{
-	dir = 1;
-	tag = "icon-toilet00 (WEST)"
+	dir = 1
 	},
 /obj/item/toy/bikehorn/rubberducky,
 /turf/open/floor{
@@ -7195,7 +7187,7 @@
 /area/lv553/indoors/southwest/slums)
 "dGJ" = (
 /obj/structure/toilet{
-	tag = "icon-toilet00 (WEST)"
+	pixel_y = 16
 	},
 /obj/structure/machinery/light{
 	dir = 8
@@ -9250,8 +9242,7 @@
 /area/lv553/oob)
 "eMj" = (
 /obj/structure/toilet{
-	dir = 1;
-	tag = "icon-toilet00 (WEST)"
+	dir = 1
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/northeast/slums)
@@ -11157,8 +11148,7 @@
 	},
 /obj/effect/decal/cleanable/blood{
 	desc = "Watch your step.";
-	icon_state = "gib6";
-	tag = "icon-gib6"
+	icon_state = "gib6"
 	},
 /turf/open/gm/dirt/brown,
 /area/lv553/oob)
@@ -11593,8 +11583,7 @@
 /area/lv553/indoors/southwest/slums)
 "fUX" = (
 /obj/structure/toilet{
-	tag = "icon-toilet00 (WEST)";
-	pixel_y = 17
+	pixel_y = 16
 	},
 /obj/item/paper/crumpled{
 	pixel_y = 18
@@ -11691,8 +11680,7 @@
 /area/lv553/indoors/northeast/slums)
 "fYo" = (
 /obj/structure/toilet{
-	dir = 4;
-	tag = "icon-toilet00 (WEST)"
+	dir = 4
 	},
 /turf/open/floor{
 	icon_state = "redyellowfull"
@@ -13123,8 +13111,7 @@
 /area/lv553/indoors/southwest/slums)
 "gLw" = (
 /obj/structure/toilet{
-	dir = 1;
-	tag = "icon-toilet00 (WEST)"
+	dir = 1
 	},
 /turf/open/floor{
 	icon_state = "redyellowfull"
@@ -14330,8 +14317,7 @@
 /area/lv553/landing_zone_1)
 "hyT" = (
 /obj/structure/toilet{
-	dir = 4;
-	tag = "icon-toilet00 (WEST)"
+	dir = 4
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -15228,7 +15214,7 @@
 "hVj" = (
 /obj/effect/alien/weeds/node,
 /obj/structure/toilet{
-	tag = "icon-toilet00 (WEST)"
+	pixel_y = 16
 	},
 /turf/open/floor{
 	icon_state = "redyellowfull"
@@ -16180,8 +16166,7 @@
 /area/lv553/outdoors/colony_streets/east)
 "isC" = (
 /obj/structure/toilet{
-	dir = 4;
-	tag = "icon-toilet00 (WEST)"
+	dir = 4
 	},
 /turf/open/gm/river,
 /area/lv553/indoors/flooded/west_slums)
@@ -19219,8 +19204,7 @@
 /area/lv553/outdoors/bungalow_manager_exterior)
 "jOG" = (
 /obj/structure/toilet{
-	dir = 1;
-	tag = "icon-toilet00 (WEST)"
+	dir = 1
 	},
 /turf/open/floor/wood{
 	icon_state = "wood-broken6"
@@ -19355,8 +19339,7 @@
 /area/lv553/indoors/lone_buildings/pizza)
 "jSy" = (
 /obj/structure/toilet{
-	dir = 1;
-	tag = "icon-toilet00 (WEST)"
+	dir = 1
 	},
 /turf/open/floor{
 	icon_state = "redyellowfull"
@@ -19388,7 +19371,7 @@
 /area/lv553/indoors/lz_sec_checkpoint)
 "jSK" = (
 /obj/structure/toilet{
-	tag = "icon-toilet00 (WEST)"
+	pixel_y = 16
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -19938,8 +19921,7 @@
 /area/lv553/indoors/lone_buildings/army_surplus)
 "kjt" = (
 /obj/structure/toilet{
-	dir = 1;
-	tag = "icon-toilet00 (WEST)"
+	dir = 1
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -20131,14 +20113,6 @@
 	icon_state = "dark"
 	},
 /area/lv553/indoors/bungalow_manager)
-"koc" = (
-/obj/structure/toilet{
-	tag = "icon-toilet00 (WEST)"
-	},
-/turf/open/floor{
-	icon_state = "redyellowfull"
-	},
-/area/lv553/indoors/southeast/slums)
 "koj" = (
 /obj/structure/surface/table,
 /turf/open/floor/wood,
@@ -20669,7 +20643,7 @@
 /area/lv553/indoors/lone_buildings/polemuseum)
 "kCM" = (
 /obj/structure/toilet{
-	tag = "icon-toilet00 (WEST)"
+	pixel_y = 16
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -20977,8 +20951,7 @@
 /area/lv553/indoors/welcome_center/canteen)
 "kNb" = (
 /obj/structure/toilet{
-	dir = 1;
-	tag = "icon-toilet00 (WEST)"
+	dir = 1
 	},
 /turf/open/floor{
 	icon_state = "redyellowfull"
@@ -21334,8 +21307,7 @@
 /area/lv553/oob)
 "kWx" = (
 /obj/structure/toilet{
-	dir = 4;
-	tag = "icon-toilet00 (WEST)"
+	dir = 4
 	},
 /turf/open/gm/grass/dirt,
 /area/lv553/outdoors/colony_streets/southwest)
@@ -24244,7 +24216,7 @@
 /area/lv553/outdoors/colony_streets/west)
 "mwD" = (
 /obj/structure/toilet{
-	tag = "icon-toilet00 (WEST)"
+	pixel_y = 16
 	},
 /turf/open/floor/wood{
 	icon_state = "wood-broken3"
@@ -24528,7 +24500,7 @@
 	dir = 1
 	},
 /obj/structure/toilet{
-	tag = "icon-toilet00 (WEST)"
+	pixel_y = 16
 	},
 /turf/open/floor/wood{
 	icon_state = "wood-broken6"
@@ -24782,7 +24754,7 @@
 /area/lv553/indoors/uscm_garrison/io_office)
 "mGP" = (
 /obj/structure/toilet{
-	tag = "icon-toilet00 (WEST)"
+	pixel_y = 16
 	},
 /obj/structure/window{
 	dir = 4
@@ -25223,8 +25195,7 @@
 /area/lv553/indoors/lone_buildings/weyyu_hostel)
 "mUt" = (
 /obj/structure/toilet{
-	dir = 1;
-	tag = "icon-toilet00 (WEST)"
+	dir = 1
 	},
 /turf/open/floor{
 	dir = 8;
@@ -25560,7 +25531,7 @@
 /area/lv553/indoors/lone_buildings/jurossushi)
 "nbF" = (
 /obj/structure/toilet{
-	tag = "icon-toilet00 (WEST)"
+	pixel_y = 16
 	},
 /turf/open/floor{
 	dir = 8;
@@ -25899,8 +25870,7 @@
 /area/lv553/indoors/hospital/research/offices)
 "nlT" = (
 /obj/structure/toilet{
-	dir = 4;
-	tag = "icon-toilet00 (WEST)"
+	dir = 4
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -26450,8 +26420,7 @@
 /area/lv553/indoors/hospital/research/floor)
 "nBx" = (
 /obj/structure/toilet{
-	dir = 1;
-	tag = "icon-toilet00 (WEST)"
+	dir = 1
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -27382,7 +27351,7 @@
 /area/lv553/indoors/hospital/reception)
 "nYn" = (
 /obj/structure/toilet{
-	tag = "icon-toilet00 (WEST)"
+	pixel_y = 16
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -27778,8 +27747,7 @@
 /area/lv553/indoors/welcome_center/lobby)
 "ohC" = (
 /obj/structure/toilet{
-	dir = 1;
-	tag = "icon-toilet00 (WEST)"
+	dir = 1
 	},
 /turf/open/floor{
 	icon_state = "redyellowfull"
@@ -28344,7 +28312,7 @@
 /area/lv553/outdoors/colony_streets/east)
 "ovS" = (
 /obj/structure/toilet{
-	tag = "icon-toilet00 (WEST)"
+	pixel_y = 16
 	},
 /turf/open/floor{
 	icon_state = "redyellowfull"
@@ -28555,7 +28523,7 @@
 /area/lv553/indoors/operations/offices/east)
 "oAG" = (
 /obj/structure/toilet{
-	tag = "icon-toilet00 (WEST)"
+	pixel_y = 16
 	},
 /obj/item/toy/snappop{
 	pixel_x = -3;
@@ -28841,7 +28809,7 @@
 /area/lv553/indoors/hospital/research/offices)
 "oGe" = (
 /obj/structure/toilet{
-	tag = "icon-toilet00 (WEST)"
+	pixel_y = 16
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -30500,8 +30468,7 @@
 /area/lv553/indoors/lone_buildings/polemuseum)
 "prn" = (
 /obj/structure/toilet{
-	dir = 4;
-	tag = "icon-toilet00 (WEST)"
+	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -30774,7 +30741,7 @@
 /area/lv553/outdoors/hospital/road_north_east)
 "pxq" = (
 /obj/structure/toilet{
-	tag = "icon-toilet00 (WEST)"
+	pixel_y = 16
 	},
 /turf/open/floor{
 	dir = 8;
@@ -31486,8 +31453,7 @@
 /area/lv553/outdoors/colony_streets/south)
 "pRh" = (
 /obj/structure/toilet{
-	dir = 1;
-	tag = "icon-toilet00 (WEST)"
+	dir = 1
 	},
 /obj/structure/machinery/light/small,
 /turf/open/floor{
@@ -32331,7 +32297,7 @@
 /area/lv553/indoors/southwest/slums)
 "qjY" = (
 /obj/structure/toilet{
-	tag = "icon-toilet00 (WEST)"
+	pixel_y = 16
 	},
 /turf/open/floor{
 	dir = 8;
@@ -32581,8 +32547,7 @@
 /area/lv553/outdoors/colony_streets/southeast)
 "qql" = (
 /obj/structure/toilet{
-	dir = 1;
-	tag = "icon-toilet00 (WEST)"
+	dir = 1
 	},
 /turf/open/floor,
 /area/lv553/indoors/marshals/cells)
@@ -33656,7 +33621,7 @@
 /area/lv553/indoors/southwest/slums)
 "qRZ" = (
 /obj/structure/toilet{
-	tag = "icon-toilet00 (WEST)"
+	pixel_y = 16
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -33756,8 +33721,7 @@
 /area/lv553/indoors/welcome_center/lobby)
 "qUz" = (
 /obj/structure/toilet{
-	dir = 1;
-	tag = "icon-toilet00 (WEST)"
+	dir = 1
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -34091,8 +34055,7 @@
 /area/lv553/outdoors/landing_zones_disembark)
 "rcX" = (
 /obj/structure/toilet{
-	dir = 1;
-	tag = "icon-toilet00 (WEST)"
+	dir = 1
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -35015,8 +34978,7 @@
 /area/lv553/indoors/operations/hallway/north)
 "rCL" = (
 /obj/structure/toilet{
-	dir = 1;
-	tag = "icon-toilet00 (WEST)"
+	dir = 1
 	},
 /turf/open/floor{
 	dir = 8;
@@ -35510,7 +35472,7 @@
 /area/lv553/indoors/hospital/research/floor)
 "rQu" = (
 /obj/structure/toilet{
-	tag = "icon-toilet00 (WEST)"
+	pixel_y = 16
 	},
 /turf/open/gm/river,
 /area/lv553/indoors/flooded/waste_station)
@@ -35549,8 +35511,7 @@
 /area/lv553/indoors/bungalow_manager)
 "rSA" = (
 /obj/structure/toilet{
-	dir = 1;
-	tag = "icon-toilet00 (WEST)"
+	dir = 1
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -36711,8 +36672,7 @@
 /area/lv553/indoors/southwest/slums)
 "suA" = (
 /obj/structure/toilet{
-	dir = 1;
-	tag = "icon-toilet00 (WEST)"
+	dir = 1
 	},
 /turf/open/floor{
 	icon_state = "redyellowfull"
@@ -37900,8 +37860,7 @@
 /area/lv553/indoors/operations/hallway/south)
 "sVN" = (
 /obj/structure/toilet{
-	dir = 1;
-	tag = "icon-toilet00 (WEST)"
+	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/small{
@@ -39549,8 +39508,7 @@
 /area/lv553/indoors/southeast/slums)
 "tHe" = (
 /obj/structure/toilet{
-	dir = 1;
-	tag = "icon-toilet00 (WEST)"
+	dir = 1
 	},
 /turf/open/floor{
 	dir = 8;
@@ -40076,7 +40034,7 @@
 /area/lv553/indoors/hospital/research/offices)
 "tVP" = (
 /obj/structure/toilet{
-	tag = "icon-toilet00 (WEST)"
+	pixel_y = 16
 	},
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -40349,8 +40307,7 @@
 /area/lv553/indoors/lone_buildings/weyyu_hostel)
 "ubL" = (
 /obj/structure/toilet{
-	dir = 1;
-	tag = "icon-toilet00 (WEST)"
+	dir = 1
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/southeast/slums)
@@ -42254,8 +42211,7 @@
 /area/lv553/indoors/northeast/slums)
 "veP" = (
 /obj/structure/toilet{
-	dir = 1;
-	tag = "icon-toilet00 (WEST)"
+	dir = 1
 	},
 /turf/open/floor{
 	icon_state = "whitegreen"
@@ -42397,8 +42353,7 @@
 /area/lv553/outdoors/flooded_streets/waste_treatment)
 "vhs" = (
 /obj/structure/toilet{
-	dir = 1;
-	tag = "icon-toilet00 (WEST)"
+	dir = 1
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -42590,8 +42545,7 @@
 	pixel_y = -6
 	},
 /obj/structure/toilet{
-	dir = 4;
-	tag = "icon-toilet00 (WEST)"
+	dir = 4
 	},
 /turf/open/floor/wood{
 	icon_state = "wood-broken3"
@@ -43344,7 +43298,7 @@
 /area/lv553/outdoors/flooded_streets/east)
 "vHY" = (
 /obj/structure/toilet{
-	tag = "icon-toilet00 (WEST)"
+	pixel_y = 16
 	},
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -43781,8 +43735,7 @@
 /area/lv553/oob)
 "vTn" = (
 /obj/structure/toilet{
-	dir = 4;
-	tag = "icon-toilet00 (WEST)"
+	dir = 4
 	},
 /turf/open/floor{
 	dir = 8;
@@ -45361,8 +45314,7 @@
 /area/lv553/indoors/southwest/slums)
 "wKx" = (
 /obj/structure/toilet{
-	dir = 1;
-	tag = "icon-toilet00 (WEST)"
+	dir = 1
 	},
 /turf/open/floor{
 	dir = 8;
@@ -45857,8 +45809,7 @@
 /area/lv553/indoors/lone_buildings/goon_and_chef_house)
 "wUJ" = (
 /obj/structure/toilet{
-	pixel_y = 13;
-	tag = "icon-toilet00 (WEST)"
+	pixel_y = 16
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/southwest/slums)
@@ -47270,7 +47221,7 @@
 /area/lv553/outdoors/colony_streets/south)
 "xJx" = (
 /obj/structure/toilet{
-	tag = "icon-toilet00 (WEST)"
+	pixel_y = 16
 	},
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -47728,8 +47679,7 @@
 /area/lv553/indoors/uscm_garrison/garrison_bunks)
 "xWE" = (
 /obj/structure/toilet{
-	dir = 1;
-	tag = "icon-toilet00 (WEST)"
+	dir = 1
 	},
 /turf/open/floor{
 	icon_state = "redyellowfull"
@@ -48216,15 +48166,6 @@
 /obj/item/storage/toolbox,
 /turf/open/gm/river,
 /area/lv553/outdoors/flooded_streets/west)
-"yhw" = (
-/obj/structure/toilet{
-	pixel_y = 11;
-	tag = "icon-toilet00 (WEST)"
-	},
-/turf/open/floor{
-	icon_state = "redyellowfull"
-	},
-/area/lv553/oob)
 "yhG" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/drinks/soymilk,
@@ -79008,7 +78949,7 @@ rOY
 rOY
 rOY
 ifJ
-koc
+tHd
 bZs
 ifJ
 dmk
@@ -81036,7 +80977,7 @@ ftb
 vdl
 pWx
 ifJ
-koc
+tHd
 bZs
 ifJ
 gdK
@@ -82986,7 +82927,7 @@ vsm
 kjR
 kjR
 eff
-yhw
+ovS
 rVc
 eff
 eff
@@ -83295,7 +83236,7 @@ fPJ
 xYm
 gBY
 ifJ
-koc
+tHd
 bZs
 ifJ
 rOY
@@ -83306,7 +83247,7 @@ gVZ
 aex
 gyY
 ifJ
-koc
+tHd
 vLV
 ifJ
 gyY
@@ -83725,7 +83666,7 @@ gVZ
 gVZ
 aex
 ifJ
-koc
+tHd
 vLV
 ifJ
 xcV
@@ -87796,7 +87737,7 @@ rOY
 rOY
 rOY
 mAS
-koc
+tHd
 vLV
 mAS
 vbZ
@@ -91326,7 +91267,7 @@ bpU
 qBT
 fXg
 mAS
-koc
+tHd
 qjK
 mAS
 rOY

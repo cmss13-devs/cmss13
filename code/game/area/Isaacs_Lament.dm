@@ -381,6 +381,10 @@
 	name = "Issac's Lament - South-West - Neil's Arcade"
 	icon_state = "shed_3_ag"
 
+/area/lv553/indoors/lone_buildings/travel_agency
+	name = "Issac's Lament - South-West - Wey-Yu Travel Agency"
+	icon_state = "shed_4_ag"
+
 /area/lv553/indoors/lone_buildings/polemuseum
 	name = "Issac's Lament - South-East - Pole Museum"
 	icon_state = "shed_1_ag"
@@ -392,6 +396,14 @@
 /area/lv553/indoors/lone_buildings/jurossushi
 	name = "Issac's Lament - East - Little Juro's Sushi Bistro"
 	icon_state = "shed_2_ag"
+
+/area/lv553/indoors/lone_buildings/pizza
+	name = "Issac's Lament - East - Pizza Galaxy"
+	icon_state = "shed_3_ag"
+
+/area/lv553/indoors/lone_buildings/insurance
+	name = "Issac's Lament - East - Insurance Salesman"
+	icon_state = "shed_4_ag"
 
 /area/lv553/indoors/lone_buildings/flynns_bar
 	name = "Issac's Lament - North-East - Flynn's Bar"

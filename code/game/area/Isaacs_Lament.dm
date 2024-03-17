@@ -127,7 +127,7 @@
 
 /area/lv553/indoors/aerospace_control
 	name = "Isaac's Lament - Landing Zones' Aerospace Control"
-	icon_state = "outpost_gen_1"
+	icon_state = "outpost_gen_0"
 	requires_power = FALSE
 
 /area/lv553/indoors/lz_sec_checkpoint
@@ -334,6 +334,10 @@
 	name = "Power Station - Main Building"
 	icon_state = "outpost_engi_1"
 
+/area/lv553/indoors/ss_athens
+	name = "SS Athens - Ship"
+	icon_state = "rdecks"
+
 /area/lv553/indoors/southwest/slums
 	name = "Southwest - Slums and Houses"
 	icon_state = "sewers"
@@ -440,6 +444,10 @@
 /area/lv553/indoors/lone_buildings/polemuseum
 	name = "Issac's Lament - South-East - Pole Museum"
 	icon_state = "shed_1_ag"
+
+/area/lv553/indoors/lone_buildings/polemuseum
+	name = "Issac's Lament - South-East - Cargo Landing Pad"
+	icon_state = "outpost_gen_1"
 
 /area/lv553/indoors/lone_buildings/laundromat
 	name = "Issac's Lament - East - Laundromat"

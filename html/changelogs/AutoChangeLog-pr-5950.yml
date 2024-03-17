@@ -1,0 +1,5 @@
+author: "Katskan"
+delete-after: True
+changes:
+  - balance: "changed medical 4 skill speed multiplier from tier 2 to a non-standard 0.35"
+  - balance: "changed defib medical skill speed scaling"

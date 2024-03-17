@@ -17593,7 +17593,7 @@
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
+	
 	},
 /area/lv553/oob)
 "iYh" = (
@@ -21014,7 +21014,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_18";
 	pixel_x = -8;
-	tag = "icon-pottedplant_10"
+	
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/southwest/slums)
@@ -21039,7 +21039,7 @@
 "kOF" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 8;
-	tag = "icon-pipe-t (WEST)"
+	
 	},
 /turf/open/gm/coast/dirt/beachcorner/north_east,
 /area/lv553/outdoors/flooded_streets/waste_treatment)
@@ -22413,7 +22413,7 @@
 "lyz" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 8;
-	tag = "icon-pipe-t (WEST)"
+	
 	},
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/north_east,
 /area/lv553/outdoors/flooded_streets/waste_treatment)
@@ -24436,7 +24436,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_18";
 	pixel_x = -8;
-	tag = "icon-pottedplant_10"
+	
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -26371,7 +26371,7 @@
 "nAK" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 4;
-	tag = "icon-pipe-t (EAST)"
+	
 	},
 /turf/open/gm/river,
 /area/lv553/outdoors/flooded_streets/waste_treatment)

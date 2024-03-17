@@ -2,6 +2,7 @@
 	name = "Weyland-Yutani Corporate Security (Squad)"
 	mob_max = 6
 	probability = 0
+	home_base = /datum/lazy_template/ert/weyland_station
 
 /datum/emergency_call/goon/New()
 	..()

@@ -14,6 +14,13 @@
 	else
 		icon_state = icon_opened
 
+/obj/structure/closet/coffin/uscm
+	name = "\improper USCM coffin"
+	desc = "A burial receptacle for dearly departed Marines, adorned in red and finished with the Corps' emblem on the interior. Semper fi."
+	icon_state = "uscm_coffin"
+	icon_closed = "uscm_coffin"
+	icon_opened = "uscm_coffin_open"
+
 /obj/structure/closet/coffin/predator
 	name = "strange coffin"
 	desc = "It's a burial receptacle for the dearly departed. Seems to have weird markings on the side..?"

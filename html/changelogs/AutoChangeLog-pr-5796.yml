@@ -1,6 +1,0 @@
-author: "Drathek BadAtThisGame"
-delete-after: True
-changes:
-  - maptweak: "Fixed various nightmare inserts that were not spawning; removing or disabling others that were not in use."
-  - maptweak: "Updated containerroom_xenos insert for Solaris Ridge to include coms tower (BadAtThisGame)"
-  - code_imp: "Nightmare errors are now a runtime."

@@ -319,7 +319,7 @@
 "agR" = (
 /obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "ahc" = (
 /obj/structure/prop/dam/truck,
 /turf/open/asphalt/cement,
@@ -349,7 +349,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "ahM" = (
 /obj/structure/reagent_dispensers/water_cooler/stacks{
 	pixel_x = -10;
@@ -1165,7 +1165,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "aFQ" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 4;
@@ -1744,7 +1744,7 @@
 	dir = 9;
 	icon_state = "warnplate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "aUB" = (
 /turf/closed/wall/r_wall,
 /area/lv553/indoors/lone_buildings/clf_communications)
@@ -1787,7 +1787,7 @@
 /turf/open/floor/plating{
 	icon_state = "platebot"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "aVK" = (
 /obj/item/prop{
 	color = "#FF0000";
@@ -2867,6 +2867,11 @@
 /obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/gm/dirt2,
 /area/lv553/outdoors/bungalow_manager_exterior)
+"bCQ" = (
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/lv553/indoors/ss_athens)
 "bCS" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/snacks/carpmeat,
@@ -3071,7 +3076,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "bJC" = (
 /obj/item/weapon/broken_glass{
 	layer = 3
@@ -3210,7 +3215,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "bMD" = (
 /obj/structure/bed,
 /obj/structure/bed{
@@ -3252,7 +3257,7 @@
 	dir = 5;
 	icon_state = "warnplate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "bNn" = (
 /turf/open/gm/road{
 	icon_state = "browndirt_road_1"
@@ -3276,7 +3281,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "bNX" = (
 /obj/structure/surface/table,
 /obj/structure/window{
@@ -3422,7 +3427,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "bRI" = (
 /obj/effect/decal/cleanable/blood{
 	pixel_y = 12
@@ -3683,7 +3688,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "stan5"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "bXk" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 4;
@@ -3901,7 +3906,7 @@
 	name = "\improper Power Station Shutters"
 	},
 /turf/open/gm/road,
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "cdz" = (
 /obj/structure/prop/dam/truck/cargo{
 	icon_state = "truck_damaged"
@@ -4084,7 +4089,7 @@
 "chb" = (
 /obj/structure/cargo_container/watatsumi/mid,
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "chh" = (
 /obj/structure/extinguisher_cabinet/alt{
 	pixel_y = 26
@@ -4101,7 +4106,7 @@
 	dir = 1;
 	icon_state = "warnplate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "chF" = (
 /turf/open/gm/dirtgrassborder/dirt/east,
 /area/lv553/outdoors/uscm_garrison_exterior/fenced)
@@ -4357,7 +4362,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "cpi" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/drinks/dry_ramen{
@@ -4475,6 +4480,9 @@
 	},
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/army_surplus)
+"crG" = (
+/turf/closed/wall,
+/area/lv553/indoors/power_station)
 "css" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 5
@@ -4795,9 +4803,7 @@
 /turf/open/floor,
 /area/lv553/indoors/bungalow_manager)
 "cAa" = (
-/obj/structure/cargo_container{
-	icon_state = "ch_red 0,1"
-	},
+/obj/structure/cargo_container/wy/mid,
 /turf/open/gm/dirt/brown,
 /area/lv553/oob)
 "cAc" = (
@@ -4956,7 +4962,7 @@
 	dir = 4
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "cDA" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_x = -32
@@ -5288,7 +5294,7 @@
 "cMf" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "cMh" = (
 /obj/structure/fence,
 /turf/open/gm/road{
@@ -5544,7 +5550,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "cSS" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/gm/dirt/brown,
@@ -5601,7 +5607,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "stan22"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "cTy" = (
 /obj/structure/fence,
 /turf/open/gm/road{
@@ -5853,7 +5859,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "cZg" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/gm/dirt/brown,
@@ -6088,7 +6094,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "stan_r_w"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "dfy" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -6138,7 +6144,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "dgT" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -6275,7 +6281,7 @@
 	dir = 1;
 	icon_state = "warnplate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "djf" = (
 /obj/item/stool{
 	pixel_x = -11;
@@ -7107,6 +7113,9 @@
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
 /area/lv553/indoors/welcome_center/lobby)
+"dDW" = (
+/turf/open/floor/plating,
+/area/lv553/indoors/power_station)
 "dEj" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2";
@@ -7353,7 +7362,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "dLq" = (
 /obj/structure/surface/table,
 /obj/item/storage/box/donkpockets{
@@ -7662,14 +7671,14 @@
 	dir = 1;
 	icon_state = "asteroidfloor"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "dWh" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/plating{
 	dir = 1;
 	icon_state = "warnplate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "dWo" = (
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/south_west,
 /area/lv553/outdoors/lone_buildings/weyyu_hostel)
@@ -7725,7 +7734,7 @@
 	dir = 1;
 	icon_state = "asteroidfloor"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "dYE" = (
 /turf/open/gm/road{
 	icon_state = "browndirt_road_1";
@@ -7830,7 +7839,7 @@
 /area/lv553/landing_zone_1)
 "ebR" = (
 /turf/closed/shuttle/ert,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "ecd" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/snacks/sliceable/bread,
@@ -7896,7 +7905,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "edr" = (
 /turf/open/asphalt/cement,
 /area/lv553/outdoors/colony_streets/south)
@@ -8340,7 +8349,7 @@
 "emV" = (
 /obj/structure/cargo_container/watatsumi/left,
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "enb" = (
 /obj/item/trash/cigbutt{
 	pixel_x = -8;
@@ -8679,7 +8688,7 @@
 /area/lv553/indoors/uscm_garrison/garrison_bunks)
 "ewo" = (
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "ewp" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/door/window{
@@ -9025,7 +9034,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "rightengine_3"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "eHH" = (
 /obj/effect/spawner/gibspawner/human,
 /obj/effect/decal/cleanable/blood,
@@ -9535,9 +9544,7 @@
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/south_east,
 /area/lv553/outdoors/hospital/break_garden)
 "eVG" = (
-/obj/structure/cargo_container{
-	icon_state = "ferret_l"
-	},
+/obj/structure/cargo_container/ferret/left,
 /turf/open/gm/grass/dirt,
 /area/lv553/outdoors/colony_streets/northeast)
 "eWw" = (
@@ -9662,7 +9669,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "stan_black_t_up"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "eZk" = (
 /obj/structure/desertdam/decals/road_stop{
 	dir = 1;
@@ -9935,7 +9942,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "fhJ" = (
 /turf/open/floor{
 	dir = 1;
@@ -10327,7 +10334,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "frI" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/prop/magazine/boots/n055{
@@ -10383,7 +10390,7 @@
 	pixel_y = 16
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "fts" = (
 /obj/structure/window/framed/wood/plain,
 /turf/open/gm/grass/dirt,
@@ -10655,7 +10662,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "fzQ" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_box/magazine/m4a3{
@@ -11058,7 +11065,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "fJK" = (
 /obj/structure/bed/chair/wood/normal,
 /turf/open/floor/wood,
@@ -11082,7 +11089,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "fKd" = (
 /turf/open/gm/dirt/brown,
 /area/lv553/outdoors/cmb/exterior)
@@ -11258,7 +11265,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "fOB" = (
 /obj/structure/machinery/floodlight,
 /turf/open/gm/dirt/brown,
@@ -11410,7 +11417,7 @@
 	},
 /obj/item/reagent_container/food/snacks/hotdog,
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "fRR" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -11439,7 +11446,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "fSq" = (
 /obj/structure/closet/crate/secure/mortar_ammo/mortar_kit,
 /turf/open/gm/dirt/brown,
@@ -11603,10 +11610,7 @@
 /turf/open/gm/dirt/brown,
 /area/lv553/oob)
 "fVF" = (
-/obj/structure/cargo_container{
-	icon_state = "ch_red 0,0";
-	pixel_y = -1
-	},
+/obj/structure/cargo_container/wy/left,
 /turf/open/gm/dirt/brown,
 /area/lv553/oob)
 "fVH" = (
@@ -12121,7 +12125,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "gju" = (
 /obj/structure/window,
 /obj/structure/surface/table/almayer,
@@ -12287,7 +12291,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "stan_rightengine"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "goa" = (
 /obj/structure/grille,
 /turf/open/gm/river,
@@ -12428,7 +12432,7 @@
 	pixel_y = 2
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "guJ" = (
 /obj/structure/reagent_dispensers/fueltank/gas,
 /turf/open/asphalt/cement,
@@ -12441,7 +12445,7 @@
 	icon_state = "leftengine_3";
 	opacity = 0
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "gvc" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8
@@ -12517,7 +12521,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "gys" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/grass/dirt,
@@ -12769,7 +12773,7 @@
 "gDN" = (
 /obj/structure/largecrate/supply/floodlights,
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "gDT" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/spawner/gibspawner/robot,
@@ -12896,7 +12900,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "gGr" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/cameras{
@@ -12954,7 +12958,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "stan20"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "gIG" = (
 /obj/structure/machinery/door_control{
 	desc = "A garage door opener.";
@@ -13550,7 +13554,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "gZi" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/grass/dirt,
@@ -13614,7 +13618,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "haZ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -13798,7 +13802,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "hhR" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research/colony{
 	dir = 1;
@@ -13998,7 +14002,7 @@
 	pixel_x = -1
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "hpX" = (
 /turf/open/floor{
 	dir = 8;
@@ -14089,7 +14093,7 @@
 "hsQ" = (
 /obj/structure/cargo_container/seegson/mid,
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "hsS" = (
 /obj/item/trash/candy{
 	pixel_y = 11
@@ -14171,7 +14175,7 @@
 /obj/structure/surface/table/reinforced,
 /obj/item/clothing/suit/armor/vest/security,
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "huK" = (
 /turf/open/gm/dirtgrassborder/dirt/west,
 /area/lv553/outdoors/hospital/road_north_west)
@@ -14254,7 +14258,7 @@
 "hxD" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "hxS" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -14760,7 +14764,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "hHQ" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /obj/item/organ/eyes/prosthetic,
@@ -15043,7 +15047,7 @@
 	},
 /obj/structure/machinery/autodoc_console,
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "hPk" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/condiment/hotsauce/sriracha,
@@ -15059,6 +15063,16 @@
 	},
 /turf/open/gm/grass/dirt,
 /area/lv553/outdoors/colony_streets/northeast)
+"hQf" = (
+/obj/item/clipboard,
+/obj/item/tool/pen/clicky{
+	pixel_y = 2;
+	pixel_x = -6
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/lv553/indoors/ss_athens)
 "hQi" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -15293,7 +15307,7 @@
 	dir = 1;
 	icon_state = "warnplate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "hWu" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/rifle/m41aMK1,
@@ -15427,7 +15441,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "hZb" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/paper_bin{
@@ -15442,7 +15456,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "hZz" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 10
@@ -15730,7 +15744,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "ihA" = (
 /turf/closed/wall/wood/plain,
 /area/lv553/oob)
@@ -15857,7 +15871,7 @@
 	dir = 4;
 	icon_state = "warnplate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "ikT" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -16193,7 +16207,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "itm" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
@@ -16248,7 +16262,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "iuV" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/dirt/south,
@@ -16343,7 +16357,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "stan_inner_t_left"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "iwy" = (
 /obj/structure/toilet{
 	dir = 8
@@ -16518,7 +16532,7 @@
 	icon_state = "shower"
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "izO" = (
 /obj/structure/fence,
 /turf/open/gm/grass/dirt,
@@ -16666,7 +16680,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "iCD" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -16930,7 +16944,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "iIm" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "hospital_garage";
@@ -17283,7 +17297,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "stan1"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "iPN" = (
 /obj/structure/closet/secure_closet/freezer/fridge/groceries,
 /turf/open/floor/wood,
@@ -17323,7 +17337,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "iRI" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/dirt/east,
@@ -17506,7 +17520,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "iWD" = (
 /obj/item/stool{
 	pixel_x = -17
@@ -17537,7 +17551,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "iXf" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/head/helmet/riot,
@@ -17592,8 +17606,7 @@
 	},
 /turf/open/floor/prison{
 	dir = 10;
-	icon_state = "whitegreenfull";
-	
+	icon_state = "whitegreenfull"
 	},
 /area/lv553/oob)
 "iYh" = (
@@ -17626,7 +17639,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "iYV" = (
 /obj/item/frame/light_fixture/small{
 	anchored = 1;
@@ -17708,7 +17721,7 @@
 "jaI" = (
 /obj/structure/cargo_container/seegson/right,
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "jaJ" = (
 /obj/item/trash/cigbutt,
 /obj/item/trash/chips,
@@ -18184,7 +18197,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "jpI" = (
 /obj/structure/bed/chair,
 /obj/item/trash/cigbutt,
@@ -18632,7 +18645,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "jBJ" = (
 /turf/closed/wall/r_wall,
 /area/lv553/indoors/operations/hallway/west)
@@ -18834,7 +18847,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "jGx" = (
 /turf/closed/wall,
 /area/lv553/indoors/hospital/outpatients_and_icu)
@@ -19403,7 +19416,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "stan_leftengine"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "jTD" = (
 /turf/closed/wall/r_wall,
 /area/lv553/indoors/gated_community/director_of_coporate_relations)
@@ -19516,13 +19529,22 @@
 "jXy" = (
 /obj/structure/largecrate/supply/supplies/water,
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "jYd" = (
 /obj/structure/machinery/light/small,
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
 /area/lv553/indoors/south/slums)
+"jYj" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Bathroom"
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/power_station)
 "jYr" = (
 /obj/structure/fence,
 /obj/structure/fence,
@@ -19582,7 +19604,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "stan23"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "kap" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Weyland-Yutani Welcome Center 'Alexandria' Restaurant Kitchen 'On the House'"
@@ -19752,7 +19774,7 @@
 	dir = 8;
 	icon_state = "warnplate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "keh" = (
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/north_east,
 /area/lv553/outdoors/uscm_garrison_exterior/fenced)
@@ -19805,9 +19827,7 @@
 /turf/open/asphalt/cement,
 /area/lv553/oob)
 "kgh" = (
-/obj/structure/cargo_container{
-	icon_state = "ferret_m"
-	},
+/obj/structure/cargo_container/ferret/mid,
 /turf/open/gm/grass/dirt,
 /area/lv553/outdoors/colony_streets/west)
 "kgk" = (
@@ -19852,6 +19872,9 @@
 	icon_state = "darkredfull2"
 	},
 /area/lv553/indoors/lone_buildings/pizza)
+"khu" = (
+/turf/closed/wall/r_wall,
+/area/lv553/indoors/power_station)
 "khv" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Operations door"
@@ -20122,7 +20145,7 @@
 /turf/open/floor/plating{
 	icon_state = "platebot"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "koA" = (
 /obj/structure/largecrate/hunter_games_medical,
 /turf/open/floor/wood,
@@ -20233,7 +20256,7 @@
 	dir = 10;
 	icon_state = "warnplate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "kqN" = (
 /turf/open/gm/dirtgrassborder/dirt/east,
 /area/lv553/outdoors/bungalow_manager_exterior)
@@ -20280,7 +20303,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "krL" = (
 /obj/item/trash/cheesie{
 	pixel_x = 12;
@@ -20846,7 +20869,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "kIP" = (
 /obj/structure/flora/jungle/hedge{
 	dir = 8
@@ -20971,7 +20994,7 @@
 	dir = 4;
 	icon_state = "warnplate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "kNj" = (
 /obj/item/weapon/gun/shotgun/pump,
 /turf/open/floor/wood,
@@ -21013,8 +21036,7 @@
 "kOl" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_18";
-	pixel_x = -8;
-	
+	pixel_x = -8
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/southwest/slums)
@@ -21038,8 +21060,7 @@
 /area/lv553/indoors/lone_buildings/laundromat)
 "kOF" = (
 /obj/structure/disposalpipe/trunk{
-	dir = 8;
-	
+	dir = 8
 	},
 /turf/open/gm/coast/dirt/beachcorner/north_east,
 /area/lv553/outdoors/flooded_streets/waste_treatment)
@@ -21264,9 +21285,7 @@
 /turf/open/floor/wood,
 /area/lv553/indoors/gated_community/director_of_coporate_relations)
 "kUV" = (
-/obj/structure/cargo_container{
-	icon_state = "seegson_m"
-	},
+/obj/structure/cargo_container/grant/rightmid,
 /turf/open/gm/road,
 /area/lv553/outdoors/colony_streets/northeast)
 "kVe" = (
@@ -21504,7 +21523,7 @@
 	pixel_y = 10
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "lbr" = (
 /turf/closed/wall,
 /area/lv553/indoors/hospital/garage)
@@ -21651,7 +21670,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "lfk" = (
 /obj/structure/window{
 	dir = 4
@@ -21724,7 +21743,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "lgK" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/computer/cameras/wooden_tv{
@@ -22329,7 +22348,7 @@
 	pixel_y = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "lvL" = (
 /obj/structure/machinery/floodlight,
 /turf/open/floor/wood,
@@ -22412,8 +22431,7 @@
 /area/lv553/indoors/gated_community/head_of_corporate_security)
 "lyz" = (
 /obj/structure/disposalpipe/trunk{
-	dir = 8;
-	
+	dir = 8
 	},
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/north_east,
 /area/lv553/outdoors/flooded_streets/waste_treatment)
@@ -22491,7 +22509,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "stan27"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "lAL" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/grass/dirt,
@@ -22652,7 +22670,11 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
+"lDA" = (
+/obj/structure/cargo_container/grant/right,
+/turf/open/gm/road,
+/area/lv553/outdoors/colony_streets/northeast)
 "lDF" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/metal/medium_stack,
@@ -22710,7 +22732,7 @@
 "lFj" = (
 /obj/structure/sign/safety/high_voltage,
 /turf/closed/wall,
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "lFn" = (
 /obj/structure/fence,
 /turf/open/gm/river,
@@ -23020,7 +23042,7 @@
 	dir = 1;
 	icon_state = "warnplate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "lPl" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /turf/open/floor/wood,
@@ -23262,7 +23284,7 @@
 	pixel_y = -4
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "lXp" = (
 /turf/open/floor{
 	icon_state = "dark2"
@@ -23330,7 +23352,7 @@
 	dir = 1;
 	icon_state = "asteroidfloor"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "lZV" = (
 /obj/structure/sign/safety/high_voltage{
 	pixel_y = 32
@@ -23340,7 +23362,7 @@
 	dir = 1;
 	icon_state = "warnplate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "lZW" = (
 /obj/structure/noticeboard{
 	pixel_y = 30
@@ -23725,7 +23747,7 @@
 	dir = 1;
 	icon_state = "warnplate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "mjg" = (
 /obj/structure/closet/secure_closet/freezer/fridge/groceries,
 /turf/open/floor{
@@ -23750,7 +23772,7 @@
 /obj/structure/surface/table/reinforced,
 /obj/item/clothing/head/helmet/marine/veteran/pmc,
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "mkj" = (
 /obj/structure/filingcabinet/chestdrawer{
 	density = 0;
@@ -23798,12 +23820,6 @@
 	dir = 8
 	},
 /turf/open/gm/grass/dirt,
-/area/lv553/outdoors/colony_streets/northeast)
-"mlY" = (
-/obj/structure/cargo_container{
-	icon_state = "seegson_r"
-	},
-/turf/open/gm/road,
 /area/lv553/outdoors/colony_streets/northeast)
 "mmi" = (
 /obj/structure/machinery/vending/cola,
@@ -24234,7 +24250,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "mxI" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -24435,8 +24451,7 @@
 "mAO" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_18";
-	pixel_x = -8;
-	
+	pixel_x = -8
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -24537,7 +24552,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "mDn" = (
 /obj/item/tool/minihoe,
 /turf/open/gm/grass/dirt,
@@ -24573,7 +24588,7 @@
 	dir = 1;
 	icon_state = "asteroidfloor"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "mEj" = (
 /obj/structure/holohoop{
 	pixel_y = 25
@@ -24942,7 +24957,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "stan_inner_dark"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "mMX" = (
 /turf/closed/wall/r_wall,
 /area/lv553/outdoors/uscm_garrison_exterior/fenced)
@@ -25020,7 +25035,7 @@
 "mOD" = (
 /obj/structure/cargo_container/ferret/left,
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "mOK" = (
 /obj/item/shard,
 /turf/open/floor,
@@ -25083,9 +25098,7 @@
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner2/north_east,
 /area/lv553/landing_zone_1)
 "mQm" = (
-/obj/structure/cargo_container{
-	icon_state = "seegson_m"
-	},
+/obj/structure/cargo_container/seegson/mid,
 /turf/open/asphalt/cement,
 /area/lv553/indoors/lone_buildings/multidoor_garage)
 "mQI" = (
@@ -25229,7 +25242,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "mVi" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/asphalt/cement,
@@ -25283,7 +25296,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "mWO" = (
 /obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
@@ -25386,7 +25399,7 @@
 "mYX" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "mZd" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -25508,7 +25521,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "nbA" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -25578,6 +25591,12 @@
 	icon_state = "darkblue2"
 	},
 /area/lv553/indoors/operations/offices/east)
+"ndc" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/power_station)
 "ndg" = (
 /obj/structure/prop/server_equipment/yutani_server/broken,
 /obj/structure/cable/heavyduty{
@@ -25972,13 +25991,13 @@
 	name = "\improper SS Athens Bedroom"
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "noJ" = (
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "noP" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -26088,7 +26107,7 @@
 	pixel_y = 12
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "nrY" = (
 /turf/open/gm/road{
 	icon_state = "browndirt_road_3";
@@ -26167,13 +26186,13 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "nsK" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname{
 	name = "\improper SS Athens Captain's Quarters"
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "nsP" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor,
@@ -26370,8 +26389,7 @@
 /area/lv553/oob)
 "nAK" = (
 /obj/structure/disposalpipe/trunk{
-	dir = 4;
-	
+	dir = 4
 	},
 /turf/open/gm/river,
 /area/lv553/outdoors/flooded_streets/waste_treatment)
@@ -26718,7 +26736,7 @@
 	dir = 9;
 	icon_state = "warnplate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "nIR" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Bathroom"
@@ -27074,7 +27092,7 @@
 	pixel_x = 5
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "nSP" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/asphalt/cement,
@@ -27586,7 +27604,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "oeF" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -27594,7 +27612,7 @@
 /obj/structure/surface/rack,
 /obj/effect/landmark/wo_supplies/storage/belts/medical,
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "oeN" = (
 /turf/open/gm/dirtgrassborder/dirt/west,
 /area/lv553/outdoors/flooded_streets/east)
@@ -28001,7 +28019,7 @@
 /turf/open/floor/plating{
 	icon_state = "warnplate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "opw" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -28208,7 +28226,7 @@
 "otb" = (
 /obj/structure/cargo_container/wy/mid,
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "otz" = (
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/south_west,
 /area/lv553/landing_zone_2)
@@ -28655,7 +28673,7 @@
 /turf/open/floor/plating{
 	icon_state = "platebot"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "oDF" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -28725,7 +28743,7 @@
 	dir = 1
 	},
 /turf/open/gm/grass/dirt,
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "oEI" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/snacks/carpmeat,
@@ -29046,7 +29064,7 @@
 "oMw" = (
 /obj/structure/largecrate/supply,
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "oMx" = (
 /obj/item/trash/cigbutt,
 /obj/item/trash/sosjerky,
@@ -29205,7 +29223,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "stan3"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "oOV" = (
 /turf/closed/wall/r_wall,
 /area/lv553/outdoors/lone_buildings/weyyu_hostel)
@@ -29621,7 +29639,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "stan2"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "oZY" = (
 /obj/structure/filingcabinet,
 /obj/item/disk,
@@ -29809,7 +29827,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "pfF" = (
 /turf/open/gm/road{
 	icon_state = "browndirt_road_1";
@@ -30077,9 +30095,7 @@
 	},
 /area/lv553/indoors/south/slums)
 "pjk" = (
-/obj/structure/cargo_container{
-	icon_state = "seegson_l"
-	},
+/obj/structure/cargo_container/seegson/left,
 /turf/open/asphalt/cement,
 /area/lv553/indoors/lone_buildings/multidoor_garage)
 "pjq" = (
@@ -30759,7 +30775,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "pyg" = (
 /obj/item/stack/sheet/metal/small_stack,
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/south_east,
@@ -31460,7 +31476,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "pRl" = (
 /obj/item/ammo_magazine/rifle/mar40{
 	pixel_x = 9
@@ -31626,6 +31642,9 @@
 "pWg" = (
 /turf/closed/wall/r_wall,
 /area/lv553/indoors/marshals/storage)
+"pWk" = (
+/turf/open/floor,
+/area/lv553/indoors/power_station)
 "pWl" = (
 /turf/open/gm/road{
 	icon_state = "browndirt_road_corner";
@@ -31850,11 +31869,9 @@
 "qbf" = (
 /obj/structure/cargo_container/wy/left,
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "qbm" = (
-/obj/structure/cargo_container{
-	icon_state = "ferret_r"
-	},
+/obj/structure/cargo_container/ferret/right,
 /turf/open/gm/grass/dirt,
 /area/lv553/outdoors/colony_streets/west)
 "qbB" = (
@@ -32029,7 +32046,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "qfj" = (
 /obj/structure/surface/rack,
 /obj/item/storage/box/wy_mre,
@@ -32117,7 +32134,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "qgw" = (
 /turf/open/gm/dirtgrassborder/dirt/west,
 /area/lv553/outdoors/uscm_garrison_exterior/fenced)
@@ -32561,7 +32578,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "qqT" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/item/tool/wirecutters/clippers,
@@ -33756,7 +33773,7 @@
 "qVk" = (
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "qVL" = (
 /obj/structure/surface/table,
 /obj/item/paper_bin/wy{
@@ -33774,7 +33791,7 @@
 	dir = 10;
 	icon_state = "warnplate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "qWy" = (
 /obj/structure/machinery/light,
 /turf/open/asphalt/cement,
@@ -33784,7 +33801,7 @@
 	dir = 1;
 	icon_state = "asteroidfloor"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "qWU" = (
 /obj/structure/surface/table,
 /obj/item/storage/box/cups{
@@ -33922,7 +33939,7 @@
 "qZy" = (
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "qZH" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -34487,6 +34504,10 @@
 	icon_state = "barber"
 	},
 /area/lv553/indoors/lone_buildings/weyyu_hostel)
+"rsh" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/lv553/indoors/power_station)
 "rsN" = (
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner2/south_east,
 /area/lv553/outdoors/hospital/road_north_east)
@@ -34720,7 +34741,7 @@
 	pixel_x = 5
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "rwn" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 8
@@ -35121,7 +35142,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "stan_inner_t_right"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "rGT" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -35178,7 +35199,7 @@
 	name = "\improper Power Station Security Checkpoint"
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "rJk" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2-4-8"
@@ -35979,7 +36000,7 @@
 	dir = 1;
 	icon_state = "warnplate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "scZ" = (
 /obj/item/storage/toolbox/mechanical{
 	pixel_y = 6
@@ -36001,7 +36022,7 @@
 	icon_state = "rightengine_1";
 	opacity = 0
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "sec" = (
 /turf/closed/wall,
 /area/lv553/indoors/gated_community/director_of_coporate_relations)
@@ -36135,7 +36156,7 @@
 	icon_state = "browndirt_road_1";
 	dir = 1
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "sia" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	name = "\improper Jeppson's Memorial Hospital Breakroom"
@@ -36217,7 +36238,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "siG" = (
 /obj/structure/bed,
 /obj/item/bedsheet/captain,
@@ -36231,7 +36252,7 @@
 "siI" = (
 /obj/structure/cargo_container/ferret/mid,
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "siL" = (
 /obj/structure/flora/jungle/vines,
 /obj/structure/flora/jungle/vines/heavy,
@@ -36249,7 +36270,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "leftengine_2"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "sji" = (
 /obj/item/stack/rods,
 /turf/open/floor/interior/plastic,
@@ -36380,7 +36401,7 @@
 	dir = 4
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "snl" = (
 /obj/structure/machinery/floodlight/landing,
 /turf/open/gm/dirt/brown,
@@ -36794,7 +36815,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "syk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/xeno,
@@ -36832,7 +36853,7 @@
 /turf/open/floor/plating{
 	icon_state = "warnplate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "szb" = (
 /obj/structure/bed/sofa,
 /obj/item/weapon/gun/revolver/m44{
@@ -37507,6 +37528,12 @@
 /obj/item/reagent_container/food/snacks/grown/apple/poisoned,
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/school)
+"sNT" = (
+/obj/vehicle/train/cargo/trolley,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/lv553/indoors/ss_athens)
 "sOs" = (
 /obj/structure/machinery/door/airlock/almayer/medical/colony{
 	dir = 1;
@@ -37528,9 +37555,7 @@
 /turf/open/floor/wood,
 /area/lv553/indoors/gated_community/director_of_coporate_relations)
 "sOB" = (
-/obj/structure/cargo_container{
-	icon_state = "ferret_l"
-	},
+/obj/structure/cargo_container/ferret/left,
 /turf/open/gm/grass/dirt,
 /area/lv553/outdoors/colony_streets/west)
 "sPd" = (
@@ -37795,7 +37820,7 @@
 	pixel_y = 15
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "sUh" = (
 /obj/item/clothing/mask/facehugger{
 	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
@@ -38225,9 +38250,7 @@
 /turf/open/gm/grass/dirt,
 /area/lv553/outdoors/colony_streets/southeast)
 "tcy" = (
-/obj/structure/cargo_container{
-	icon_state = "ferret_r"
-	},
+/obj/structure/cargo_container/ferret/right,
 /turf/open/gm/grass/dirt,
 /area/lv553/outdoors/colony_streets/northeast)
 "tcB" = (
@@ -38247,9 +38270,7 @@
 /turf/open/floor/wood,
 /area/lv553/indoors/gated_community/head_of_corporate_security)
 "tdp" = (
-/obj/structure/cargo_container{
-	icon_state = "seegson_l"
-	},
+/obj/structure/cargo_container/grant/leftmid,
 /turf/open/gm/road,
 /area/lv553/outdoors/colony_streets/northeast)
 "tdq" = (
@@ -39061,7 +39082,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "stan_inner_w_1"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "txz" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 4;
@@ -39758,7 +39779,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "tOz" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/grass/dirt,
@@ -39832,9 +39853,7 @@
 /turf/open/gm/grass/dirt,
 /area/lv553/outdoors/flooded_streets/waste_treatment)
 "tQQ" = (
-/obj/structure/cargo_container{
-	icon_state = "ferret_m"
-	},
+/obj/structure/cargo_container/ferret/mid,
 /turf/open/gm/grass/dirt,
 /area/lv553/outdoors/colony_streets/northeast)
 "tQW" = (
@@ -40386,7 +40405,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "udv" = (
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/north_west,
 /area/lv553/outdoors/landing_zones_disembark)
@@ -40534,7 +40553,7 @@
 	dir = 5;
 	icon_state = "warnplate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "uhk" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -41417,7 +41436,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "rightengine_2"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "uFs" = (
 /obj/structure/surface/table,
 /turf/open/floor/almayer{
@@ -41473,7 +41492,7 @@
 	icon_state = "browndirt_road_corner";
 	dir = 1
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "uGI" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/gm/road{
@@ -41681,9 +41700,7 @@
 /turf/open/floor,
 /area/lv553/indoors/welcome_center/offices)
 "uMm" = (
-/obj/structure/cargo_container{
-	icon_state = "seegson_r"
-	},
+/obj/structure/cargo_container/seegson/right,
 /turf/open/asphalt/cement,
 /area/lv553/indoors/lone_buildings/multidoor_garage)
 "uMo" = (
@@ -41934,7 +41951,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "uUN" = (
 /obj/structure/surface/rack,
 /obj/item/tool/weldingtool,
@@ -42251,7 +42268,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "leftengine_1"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "vfW" = (
 /obj/structure/machinery/shower{
 	dir = 1
@@ -42282,7 +42299,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "stan_inner_s_w"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "vgw" = (
 /obj/structure/machinery/vending/dinnerware,
 /turf/open/floor{
@@ -42628,7 +42645,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "voS" = (
 /obj/structure/sink{
 	dir = 8;
@@ -42649,7 +42666,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "vpB" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -42681,7 +42698,7 @@
 	icon_state = "browndirt_road_1";
 	dir = 1
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "vqi" = (
 /obj/structure/filingcabinet,
 /obj/item/folder/red,
@@ -42959,7 +42976,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "vyZ" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/dirtgrassborder/dirt/south,
@@ -42975,7 +42992,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "vzr" = (
 /obj/structure/sink{
 	dir = 4;
@@ -43063,7 +43080,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "vCg" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/storage/fancy/egg_box,
@@ -43152,11 +43169,9 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "vEM" = (
-/obj/structure/cargo_container{
-	icon_state = "ch_red 0,2"
-	},
+/obj/structure/cargo_container/wy/right,
 /turf/open/gm/dirt/brown,
 /area/lv553/oob)
 "vET" = (
@@ -44850,7 +44865,7 @@
 "wxu" = (
 /obj/structure/machinery/light,
 /turf/open/gm/grass/dirt,
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "wxB" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -45171,7 +45186,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "wHJ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
@@ -45261,13 +45276,13 @@
 	dir = 6;
 	icon_state = "warnplate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "wJQ" = (
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
 /turf/open/gm/dirtgrassborder/dirt/north,
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "wJS" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/gibspawner/xeno,
@@ -45492,7 +45507,7 @@
 /area/lv553/indoors/marshals/interrogation)
 "wOr" = (
 /obj/item/reagent_container/food/drinks/golden_cup{
-	desc = "Flynn's Bar awarded best bar in Isaac's Lament fifth time in a row!";
+	desc = "Flynn's Bar awarded best bar in Isaac's Lement fifth time in a row!";
 	pixel_y = 13
 	},
 /obj/structure/window{
@@ -45923,7 +45938,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "wZo" = (
 /turf/open/gm/river,
 /area/lv553/indoors/flooded/waste_silos)
@@ -46040,7 +46055,7 @@
 	dir = 6;
 	icon_state = "warnplate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "xcJ" = (
 /obj/structure/sign/poster/pinup{
 	pixel_y = 29
@@ -46081,6 +46096,12 @@
 	icon_state = "whitegreencorner"
 	},
 /area/lv553/indoors/hospital/operating_rooms)
+"xdv" = (
+/obj/vehicle/train/cargo/engine{
+	dir = 2
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv553/indoors/ss_athens)
 "xdY" = (
 /obj/structure/machinery/shower{
 	pixel_y = 17
@@ -46120,7 +46141,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "stan_l_w"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "xeV" = (
 /obj/item/trash/cheesie,
 /turf/open/gm/dirt/brown,
@@ -46158,7 +46179,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "xfo" = (
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner2/south_east,
 /area/lv553/outdoors/hospital/road_north_west)
@@ -46348,7 +46369,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "xkP" = (
 /obj/structure/sign/poster/ad{
 	pixel_y = 32
@@ -46369,7 +46390,7 @@
 	dir = 1;
 	icon_state = "warnplate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "xlF" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 4
@@ -46414,7 +46435,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "xmW" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/storage/backpack/souto,
@@ -46656,7 +46677,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "xtM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
@@ -47041,7 +47062,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "stan25"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "xEb" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 26
@@ -47055,7 +47076,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/power_station)
 "xEn" = (
 /obj/item/trash/chunk,
 /turf/open/floor/wood,
@@ -48052,7 +48073,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "yeA" = (
 /obj/structure/bed,
 /obj/item/bedsheet/captain,
@@ -48161,7 +48182,7 @@
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/ss_athens)
 "yhl" = (
 /obj/item/storage/toolbox,
 /turf/open/gm/river,
@@ -78184,7 +78205,7 @@ bhp
 bhp
 rOJ
 cqA
-mlY
+kUV
 oUX
 jat
 jat
@@ -78408,7 +78429,7 @@ bhp
 bhp
 rOJ
 cqA
-oUX
+lDA
 oUX
 rYQ
 kjR
@@ -83513,27 +83534,27 @@ nRr
 vbZ
 vbZ
 vbZ
-pCm
-pCm
-pCm
+khu
+khu
+khu
 qer
 qer
 qer
-pCm
-pCm
-pCm
+khu
+khu
+khu
 kAK
 qer
 qer
-pCm
-pCm
-pCm
+khu
+khu
+khu
 qer
 qer
 qer
-pCm
-pCm
-pCm
+khu
+khu
+khu
 bhp
 gUi
 bhp
@@ -83737,7 +83758,7 @@ vbZ
 vbZ
 vbZ
 vbZ
-pCm
+khu
 ncN
 bhp
 bhp
@@ -83757,7 +83778,7 @@ bhp
 bhp
 bhp
 ncN
-pCm
+khu
 xaD
 bhp
 bhp
@@ -83961,7 +83982,7 @@ vbZ
 vbZ
 vbZ
 vbZ
-pCm
+khu
 bhp
 bhp
 sRY
@@ -83981,7 +84002,7 @@ bhp
 bhp
 bhp
 wxu
-pCm
+khu
 oEE
 sRY
 bhp
@@ -84204,9 +84225,9 @@ vWz
 kkE
 kkE
 dep
-pCm
-pCm
-pCm
+khu
+khu
+khu
 bhp
 xaD
 bhp
@@ -84857,17 +84878,17 @@ vbZ
 vbZ
 vbZ
 bhp
-pCm
+khu
 bhp
 bhp
-eff
-eff
+crG
+crG
 uGl
 cdu
 cdu
 cdu
-eff
-eff
+crG
+crG
 qFQ
 nwr
 nRr
@@ -85081,17 +85102,17 @@ vbZ
 vbZ
 bhp
 bhp
-pCm
+khu
 ncN
 bhp
-eff
+crG
 nIP
 kdP
 kdP
 kdP
 kdP
 kqG
-eff
+crG
 bhp
 qFQ
 nwr
@@ -85305,17 +85326,17 @@ bhp
 bhp
 bhp
 bhp
-pCm
+khu
 bhp
 bhp
-eLQ
+rsh
 lPe
-smj
-smj
-smj
-smj
+dDW
+dDW
+dDW
+dDW
 syV
-eLQ
+rsh
 bhp
 ncN
 nmG
@@ -85324,9 +85345,9 @@ nRr
 nRr
 nRr
 vWz
-pCm
-pCm
-pCm
+khu
+khu
+khu
 bhp
 bhp
 bhp
@@ -85532,14 +85553,14 @@ xaD
 qer
 bhp
 sRY
-eLQ
+rsh
 diV
-smj
+dDW
 kor
 kor
-smj
+dDW
 syV
-eLQ
+rsh
 bhp
 bhp
 nmG
@@ -85549,7 +85570,7 @@ nRr
 nRr
 nRr
 shV
-pCm
+khu
 oEE
 bhp
 bhp
@@ -85756,14 +85777,14 @@ bhp
 qer
 bhp
 bhp
-eff
+crG
 scy
-smj
+dDW
 kor
 kor
-smj
+dDW
 syV
-eff
+crG
 sRY
 bhp
 nmG
@@ -85773,7 +85794,7 @@ oQL
 oQL
 oQL
 gMS
-pCm
+khu
 bhp
 bhp
 bhp
@@ -85980,24 +86001,24 @@ bhp
 qer
 bhp
 bhp
-eff
+crG
 hWn
-smj
+dDW
 kor
 kor
-smj
+dDW
 syV
-eff
+crG
 jTa
 sRY
 nmG
 nRr
 qOz
-eff
-eLQ
-eLQ
-eLQ
-pCm
+crG
+rsh
+rsh
+rsh
+khu
 bhp
 bhp
 bhp
@@ -86201,23 +86222,23 @@ bhp
 vbZ
 bhp
 bhp
-pCm
+khu
 bhp
 bhp
-eLQ
+rsh
 xlv
-smj
+dDW
 kor
 kor
-smj
+dDW
 syV
-eLQ
+rsh
 bhp
 bsD
 nmG
 nRr
 vqg
-eff
+crG
 nSN
 sng
 mkf
@@ -86425,24 +86446,24 @@ xQd
 vbZ
 vbZ
 bhp
-pCm
+khu
 ncN
 bhp
-eLQ
+rsh
 mjd
-smj
+dDW
 kor
 kor
-smj
+dDW
 syV
-eLQ
+rsh
 bhp
 bhp
 nmG
 nRr
 qOz
 rJe
-izj
+pWk
 cDe
 huF
 mYX
@@ -86649,27 +86670,27 @@ nLw
 vbZ
 vbZ
 bhp
-pCm
+khu
 bhp
 bhp
-eff
+crG
 dWh
-smj
-smj
-smj
-smj
+dDW
+dDW
+dDW
+dDW
 syV
-eff
-eff
-eff
-eff
+crG
+crG
+crG
+crG
 nRr
 yjx
-eff
-eff
-eff
-eff
-pCm
+crG
+crG
+crG
+crG
+khu
 bhp
 bhp
 vbZ
@@ -86876,17 +86897,17 @@ bhp
 qer
 bhp
 bhp
-eff
+crG
 uhj
 ikS
 ikS
 ikS
 kNg
 xcy
-eff
+crG
 fRZ
 pRh
-eff
+crG
 nRr
 nRr
 vWz
@@ -87100,17 +87121,17 @@ bhp
 qer
 sRY
 bhp
-eff
+crG
 lZM
 qWO
 qWO
 qWO
-eff
-eff
-eff
-nJa
-eff
-eff
+crG
+crG
+crG
+jYj
+crG
+crG
 nRr
 nRr
 nRr
@@ -87324,17 +87345,17 @@ xaD
 qer
 bhp
 bhp
-eff
+crG
 dYt
 qWO
 qWO
 qWO
-eff
+crG
 aFN
 mxs
-slT
+ndc
 iuU
-eff
+crG
 mfK
 nRr
 nRr
@@ -87545,19 +87566,19 @@ vbZ
 vbZ
 vbZ
 bhp
-pCm
+khu
 bhp
 bhp
-eff
+crG
 mEe
 qWO
 qWO
 qWO
 dWg
-slT
-slT
-slT
-slT
+ndc
+ndc
+ndc
+ndc
 qfc
 nRr
 nRr
@@ -87565,7 +87586,7 @@ nRr
 nRr
 vWz
 dep
-pCm
+khu
 xaD
 bhp
 bhp
@@ -87769,27 +87790,27 @@ vbZ
 vbZ
 bhp
 bhp
-pCm
+khu
 ncN
 bhp
-eff
+crG
 aUw
 kdP
 kdP
 qWx
 lFj
 bMA
-slT
-slT
+ndc
+ndc
 jBH
-eff
+crG
 nRr
 nRr
 nRr
 lqo
 nRr
 wof
-pCm
+khu
 bhp
 xaD
 sRY
@@ -87993,27 +88014,27 @@ vbZ
 vbZ
 vbZ
 bhp
-pCm
+khu
 bhp
 bhp
-eff
+crG
 chD
 aVH
 oDz
 ooW
-eff
+crG
 xEb
-slT
-slT
+ndc
+ndc
 gGp
-eLQ
+rsh
 nRr
 nRr
 nRr
 nRr
 nRr
 dsE
-pCm
+khu
 bhp
 bhp
 bhp
@@ -88220,17 +88241,17 @@ bhp
 qer
 bhp
 bhp
-eff
+crG
 lZV
 aVH
 oDz
 ooW
-eff
+crG
 jGm
-slT
+ndc
 bIl
 tOs
-eLQ
+rsh
 nwr
 nRr
 nRr
@@ -88444,17 +88465,17 @@ bhp
 qer
 bhp
 bhp
-eff
+crG
 bNf
 ikS
 ikS
 wJL
-eff
+crG
 xfc
 hZb
 fhE
 xtj
-eLQ
+rsh
 nmG
 nRr
 fiu
@@ -88668,17 +88689,17 @@ bhp
 qer
 bhp
 bhp
-eff
-eff
-eff
-eff
-eff
-eff
-eff
-eff
-eff
-eff
-eff
+crG
+crG
+crG
+crG
+crG
+crG
+crG
+crG
+crG
+crG
+crG
 nmG
 nRr
 nRr
@@ -88889,7 +88910,7 @@ nRr
 vbZ
 bhp
 bhp
-pCm
+khu
 bhp
 bhp
 bhp
@@ -88909,7 +88930,7 @@ nwr
 nRr
 vEM
 dsE
-pCm
+khu
 bhp
 sRY
 vbZ
@@ -89113,7 +89134,7 @@ vbZ
 vbZ
 bhp
 vbZ
-pCm
+khu
 ncN
 bhp
 bhp
@@ -89133,7 +89154,7 @@ qFQ
 iwf
 iwf
 hUj
-pCm
+khu
 bhp
 bhp
 bhp
@@ -89337,27 +89358,27 @@ vbZ
 vbZ
 vbZ
 vbZ
-pCm
-pCm
-pCm
+khu
+khu
+khu
 qer
 qer
 qer
-pCm
-pCm
-pCm
+khu
+khu
+khu
 qer
 qer
 qer
-pCm
-pCm
-pCm
+khu
+khu
+khu
 qer
 qer
 qer
-pCm
-pCm
-pCm
+khu
+khu
+khu
 xaD
 bhp
 sRY
@@ -89574,7 +89595,7 @@ bhp
 bhp
 bhp
 bhp
-pCm
+khu
 gUi
 bhp
 bhp
@@ -91967,7 +91988,7 @@ aUt
 aUt
 txj
 dgR
-kWo
+bCQ
 rGP
 ebR
 ebR
@@ -91983,9 +92004,9 @@ wZf
 wZf
 wZf
 txj
-kWo
+bCQ
 iWu
-kWo
+bCQ
 edo
 vpx
 gxt
@@ -92191,21 +92212,21 @@ aUt
 aUt
 txj
 leQ
-kWo
+bCQ
 txj
 agR
 oeF
-kWo
+bCQ
 txj
 ftr
-kWo
+bCQ
 yeo
 fJH
 txj
 iCC
 ewo
 ewo
-kWo
+bCQ
 txj
 ewo
 uds
@@ -92415,22 +92436,22 @@ ebR
 ebR
 vgo
 lgE
-kWo
+bCQ
 nbq
-kWo
-kWo
-kWo
+bCQ
+bCQ
+bCQ
 txj
 sTX
-kWo
+bCQ
 fJH
 hpC
 txj
-kWo
+bCQ
 ewo
 ewo
-kWo
-kWo
+bCQ
+bCQ
 ewo
 wHr
 ewo
@@ -92646,21 +92667,21 @@ nrV
 cSQ
 txj
 luK
-kWo
+bCQ
 fRQ
 cMf
 txj
-kWo
+bCQ
 ewo
 ewo
-kWo
-kWo
+bCQ
+bCQ
 bRk
-kWo
+bCQ
 hZa
-kWo
-kWo
-kWo
+bCQ
+bCQ
+bCQ
 mMV
 mMV
 mMV
@@ -92867,20 +92888,20 @@ ahC
 txj
 pxC
 ewo
-kWo
+bCQ
 txj
 rwg
-kWo
+bCQ
 voR
 gut
 txj
-kWo
+bCQ
 ewo
+xdv
+bCQ
+bCQ
 ewo
-kWo
-kWo
-ewo
-kWo
+bCQ
 ewo
 ewo
 iWY
@@ -93084,30 +93105,30 @@ aUt
 lAr
 vzn
 gjo
-kWo
+bCQ
 txj
 yhg
-kWo
+bCQ
 txj
 hPh
 haV
 lDp
 txj
 lbj
-kWo
+bCQ
 haV
 voR
 txj
-kWo
-kWo
-kWo
-kWo
-kWo
+bCQ
+bCQ
+sNT
+bCQ
+bCQ
 ewo
 bNW
 ewo
 oMw
-kWo
+bCQ
 qVk
 uFo
 uFo
@@ -93307,8 +93328,8 @@ aUt
 aUt
 lAr
 hhQ
-kWo
-kWo
+bCQ
+bCQ
 iwj
 bXb
 mVa
@@ -93322,17 +93343,17 @@ vyL
 bXb
 bXb
 vgo
-kWo
-kWo
-kWo
-kWo
-kWo
-kWo
-kWo
-kWo
-kWo
-kWo
-kWo
+bCQ
+bCQ
+sNT
+bCQ
+hQf
+bCQ
+bCQ
+bCQ
+bCQ
+bCQ
+bCQ
 mMV
 mMV
 mMV
@@ -93532,27 +93553,27 @@ aUt
 lAr
 vzn
 gjo
-kWo
+bCQ
 jpA
-kWo
-kWo
+bCQ
+bCQ
 xmF
 ewo
 noJ
-kWo
+bCQ
 ewo
 ewo
-kWo
+bCQ
 ewo
 ewo
 uUK
-kWo
-kWo
-kWo
-kWo
-kWo
+bCQ
+bCQ
+sNT
+bCQ
+bCQ
 gDN
-kWo
+bCQ
 lXb
 ewo
 dLk
@@ -93758,28 +93779,28 @@ kac
 hhQ
 gjo
 oZW
-kWo
+bCQ
 gYY
 oZW
 ewo
 ewo
-kWo
+bCQ
 ewo
 ewo
 gYY
 ewo
 ewo
 lAr
-kWo
+bCQ
 ewo
 ewo
-kWo
-kWo
+bCQ
+bCQ
 ewo
-kWo
+bCQ
 jXy
 ewo
-kWo
+bCQ
 ewo
 uFo
 uFo
@@ -93994,17 +94015,17 @@ dft
 ebR
 iRm
 vgo
-kWo
+bCQ
 ewo
 ewo
-kWo
+bCQ
 oen
-kWo
+bCQ
 cYY
-kWo
+bCQ
 krv
-kWo
-kWo
+bCQ
+bCQ
 mMV
 mMV
 mMV
@@ -94206,7 +94227,7 @@ xDO
 bXb
 bXb
 vgo
-kWo
+bCQ
 iYP
 txj
 fzF
@@ -94216,18 +94237,18 @@ kIv
 ewo
 txj
 fKa
-kWo
+bCQ
 txj
-kWo
+bCQ
 ewo
 ewo
-kWo
-kWo
+bCQ
+bCQ
 mOD
-kWo
+bCQ
 qbf
 ewo
-kWo
+bCQ
 emV
 siX
 siX
@@ -94430,7 +94451,7 @@ aUt
 aUt
 aUt
 txj
-kWo
+bCQ
 siE
 txj
 frG
@@ -94445,13 +94466,13 @@ txj
 mWq
 ewo
 ewo
-kWo
+bCQ
 txj
 siI
-kWo
+bCQ
 otb
 ewo
-kWo
+bCQ
 chb
 uFo
 uFo
@@ -94654,7 +94675,7 @@ aUt
 bqd
 aUt
 txj
-kWo
+bCQ
 iYP
 iwj
 bXb
@@ -94672,10 +94693,10 @@ xkF
 xkF
 txj
 qgv
-kWo
+bCQ
 nsI
-kWo
-kWo
+bCQ
+bCQ
 ith
 mMV
 mMV

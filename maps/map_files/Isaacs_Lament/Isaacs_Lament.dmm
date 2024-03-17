@@ -17643,7 +17643,7 @@
 "iYV" = (
 /obj/item/frame/light_fixture/small{
 	anchored = 1;
-	desc = "Used for holding a shotgun in place.";
+	desc = "Used for holding a shotgun in place. Someone forgot to set this one.";
 	layer = 3.1;
 	name = "trap frame";
 	pixel_x = -8;
@@ -17651,7 +17651,7 @@
 	},
 /obj/item/frame/light_fixture{
 	anchored = 1;
-	desc = "Used for holding a shotgun in place.";
+	desc = "Used for holding a shotgun in place. Someone forgot to set this one.";
 	name = "trap frame";
 	pixel_y = -9
 	},

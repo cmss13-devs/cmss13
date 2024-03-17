@@ -145,6 +145,12 @@
 	icon_state = "plating"
 	},
 /area/event)
+"M" = (
+/obj/effect/landmark/start/pilot/cas_pilot,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event)
 "N" = (
 /obj/effect/landmark/start/nurse,
 /turf/open/floor/almayer{
@@ -289,7 +295,7 @@ a
 A
 l
 L
-b
+M
 b
 b
 b

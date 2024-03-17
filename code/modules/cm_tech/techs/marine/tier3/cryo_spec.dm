@@ -15,9 +15,7 @@
 	. = ..()
 	if(!.)
 		return
-	if(!SSticker.mode)
-		to_chat(user, SPAN_WARNING("You can't do this right now!"))
-		return
+	return FALSE
 
 /datum/tech/cryomarine/on_unlock()
 	. = ..()

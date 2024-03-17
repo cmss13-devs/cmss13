@@ -32,12 +32,13 @@
  * Does the grunt work of loading the template.
  */
 /datum/lazy_template/proc/lazy_load()
-	RETURN_TYPE(/datum/turf_reservation)
+	//RETURN_TYPE(/datum/turf_reservation)
 	// This is a static assosciative list that is used to ensure maps that have variations are correctly varied when spawned
 	// I want to make it to where you can make a range and it'll randomly pick'n'take from the available versions at random
 	// But that can be done later when I have the time
-	var/static/list/multiple_allocation_hash = list()
-
+	//var/static/list/multiple_allocation_hash = list()
+	return null
+	/*
 	var/load_path = "[map_dir]/[map_name].dmm"
 	if(uses_multiple_allocations)
 		var/times = multiple_allocation_hash[type] || 0
@@ -96,3 +97,4 @@
 	SEND_SIGNAL(src, COMSIG_LAZY_TEMPLATE_LOADED, loaded_atom_movables, loaded_turfs, loaded_areas)
 	reservations += reservation
 	return reservation
+*/

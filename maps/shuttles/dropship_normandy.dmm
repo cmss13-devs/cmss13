@@ -17,9 +17,9 @@
 /area/shuttle/drop2/sulaco)
 "ba" = (
 /obj/effect/attach_point/fuel/dropship2{
+	attach_id = 11;
 	dir = 1;
-	pixel_x = -32;
-	attach_id = 11
+	pixel_x = -32
 	},
 /turf/closed/shuttle/dropship2/transparent{
 	icon_state = "33"
@@ -115,20 +115,16 @@
 /area/shuttle/drop2/sulaco)
 "gV" = (
 /obj/effect/attach_point/fuel/dropship2{
-	dir = 1;
-	attach_id = 10
+	attach_id = 10;
+	dir = 1
 	},
 /turf/closed/shuttle/dropship2/transparent{
 	icon_state = "28"
 	},
 /area/shuttle/drop2/sulaco)
 "he" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/ds2{
-	dir = 1;
-	id = "starboard_door"
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+/turf/closed/shuttle/dropship2{
+	icon_state = "54"
 	},
 /area/shuttle/drop2/sulaco)
 "it" = (
@@ -288,12 +284,8 @@
 /turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "ut" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/ds2{
-	id = "port_door";
-	dir = 2
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+/turf/closed/shuttle/dropship2{
+	icon_state = "52"
 	},
 /area/shuttle/drop2/sulaco)
 "uC" = (
@@ -384,8 +376,8 @@
 /area/shuttle/drop2/sulaco)
 "Dq" = (
 /obj/effect/attach_point/electronics/dropship2{
-	dir = 1;
-	attach_id = 6
+	attach_id = 6;
+	dir = 1
 	},
 /obj/structure/shuttle/part/dropship2/transparent/inner_right_weapons,
 /turf/template_noop,
@@ -735,7 +727,7 @@ eu
 OI
 GE
 lJ
-PJ
+ut
 ut
 jc
 pU
@@ -919,7 +911,7 @@ wX
 fI
 fx
 Tp
-PJ
+he
 he
 gG
 RG

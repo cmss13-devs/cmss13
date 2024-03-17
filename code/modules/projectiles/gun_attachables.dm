@@ -1005,6 +1005,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "S10 variable zoom telescopic scope"
 	desc = "An ARMAT S10 telescopic eye piece. Can be switched between 2x zoom, which allows the user to move while scoped in, and 4x zoom. Press the 'use rail attachment' HUD icon or use the verb of the same name to zoom."
 	attachment_action_type = /datum/action/item_action/toggle
+	ignore_clash_fog = TRUE
 	var/dynamic_aim_slowdown = SLOWDOWN_ADS_MINISCOPE_DYNAMIC
 	var/zoom_level = ZOOM_LEVEL_4X
 
@@ -1090,6 +1091,7 @@ Defined in conflicts.dm of the #defines folder.
 	zoom_viewsize = 7
 	allows_movement = TRUE
 	aim_speed_mod = 0
+	ignore_clash_fog = TRUE
 	var/dynamic_aim_slowdown = SLOWDOWN_ADS_MINISCOPE_DYNAMIC
 
 /obj/item/attachable/scope/mini/New()
@@ -1160,6 +1162,7 @@ Defined in conflicts.dm of the #defines folder.
 	zoom_offset = 6
 	zoom_viewsize = 7
 	pixel_shift_y = 15
+	ignore_clash_fog = TRUE
 	var/dynamic_aim_slowdown = SLOWDOWN_ADS_MINISCOPE_DYNAMIC
 
 /obj/item/attachable/scope/mini_iff/New()

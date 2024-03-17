@@ -63,6 +63,7 @@
 		set_range()
 	update_icon()
 	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(unset_range))
+	return INITIALIZE_HINT_QDEL
 
 /obj/structure/machinery/defenses/sentry/Destroy() //Clear these for safety's sake.
 	targets = null

@@ -1,0 +1,39 @@
+{
+    "map_name": "Hellway",
+    "map_path": "map_files/Hellway",
+    "map_file": "hellway.dmm",
+    "survivor_types": [
+        "/datum/equipment_preset/survivor/scientist/lv",
+        "/datum/equipment_preset/survivor/doctor/lv",
+        "/datum/equipment_preset/survivor/chaplain/lv",
+        "/datum/equipment_preset/survivor/engineer/lv",
+        "/datum/equipment_preset/survivor/corporate/lv",
+        "/datum/equipment_preset/survivor/trucker/lv",
+        "/datum/equipment_preset/survivor/security/lv",
+        "/datum/equipment_preset/survivor/goon",
+        "/datum/equipment_preset/survivor/clf",
+        "/datum/equipment_preset/survivor/civilian"
+    ],
+    "map_item_type": "/obj/item/map/lazarus_landing_map",
+    "announce_text": "A distress beacon has been recieved from the space Incredibly Long Hallway. A response team from the ###SHIPNAME### will be dispatched shortly to investigate.",
+    "monkey_types": [
+        "farwa",
+        "monkey",
+        "neaera",
+        "stok"
+    ],
+    "traits": [{ "Ground": true }],
+    "xvx_hives": {
+        "xeno_hive_alpha": 0,
+        "xeno_hive_bravo": 0,
+        "xeno_hive_charlie": 70
+    },
+    "camouflage": "jungle",
+    "gamemodes": [
+        "Distress Signal",
+        "Hunter Games",
+        "Hive Wars",
+        "Faction Clash",
+        "Infection"
+    ]
+}

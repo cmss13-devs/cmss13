@@ -60,6 +60,17 @@
 	icon_state = "42"
 	},
 /area/shuttle/drop1/sulaco)
+"dr" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
+	},
+/turf/open/shuttle/dropship{
+	icon_state = "rasputin15"
+	},
+/area/shuttle/drop1/sulaco)
 "dU" = (
 /obj/structure/machinery/door_control{
 	id = "dropship_alamo";
@@ -352,15 +363,6 @@
 	icon_state = "39"
 	},
 /area/shuttle/drop1/sulaco)
-"GQ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/ds1{
-	dir = 1;
-	id = "starboard_door"
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
-/area/shuttle/drop1/sulaco)
 "Ho" = (
 /obj/structure/machinery/computer/dropship_weapons/dropship1,
 /obj/structure/transmitter/rotary{
@@ -404,8 +406,8 @@
 /area/shuttle/drop1/sulaco)
 "IP" = (
 /obj/effect/attach_point/electronics/dropship1{
-	dir = 1;
-	attach_id = 6
+	attach_id = 6;
+	dir = 1
 	},
 /obj/structure/shuttle/part/dropship1/transparent/inner_right_weapons,
 /turf/template_noop,
@@ -586,8 +588,8 @@
 /area/shuttle/drop1/sulaco)
 "UN" = (
 /obj/effect/attach_point/electronics/dropship1{
-	dir = 1;
-	attach_id = 5
+	attach_id = 5;
+	dir = 1
 	},
 /obj/structure/shuttle/part/dropship1/transparent/inner_left_weapons,
 /turf/template_noop,
@@ -637,12 +639,8 @@
 	},
 /area/shuttle/drop1/sulaco)
 "XI" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/dropshipside/ds1{
-	id = "port_door";
-	dir = 2
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
+/turf/closed/shuttle/dropship1{
+	icon_state = "52"
 	},
 /area/shuttle/drop1/sulaco)
 "YV" = (
@@ -701,7 +699,7 @@ hG
 Et
 iI
 JP
-il
+XI
 XI
 mW
 qn
@@ -724,8 +722,8 @@ oo
 TK
 ws
 TK
-il
-il
+dr
+dr
 TK
 ws
 SM
@@ -862,8 +860,8 @@ oo
 TK
 cr
 TK
-il
-il
+TK
+TK
 TK
 ws
 BS
@@ -885,8 +883,8 @@ zS
 iv
 zV
 MP
-il
-GQ
+nE
+nE
 nC
 nE
 rl

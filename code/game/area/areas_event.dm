@@ -130,6 +130,7 @@ structure:
 	icon_state = "metal_dyn_lit"
 
 	base_lighting_alpha = 255
+	ceiling = CEILING_REINFORCED_METAL
 
 //dynamic lighting, lit, unpowered.
 /area/event/metal/dynamic/lit/unpowered

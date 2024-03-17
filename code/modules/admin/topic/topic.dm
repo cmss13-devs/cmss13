@@ -2348,10 +2348,11 @@
 /datum/admins/proc/accept_handheld_ert(mob/approver, mob/ref_person, ert_called)
 	if(GLOB.distress_cancel)
 		return
-	GLOB.distress_cancel = TRUE
+	/*GLOB.distress_cancel = TRUE
 	SSticker.mode.get_specific_call("[ert_called]", TRUE, FALSE)
 	log_game("[key_name_admin(approver)] has sent [ert_called], requested by [key_name_admin(ref_person)]")
-	message_admins("[key_name_admin(approver)] has sent [ert_called], requested by [key_name_admin(ref_person)]")
+	message_admins("[key_name_admin(approver)] has sent [ert_called], requested by [key_name_admin(ref_person)]")*/
+	message_admins("ERT calls currently disabled")
 
 /datum/admins/proc/generate_job_ban_list(mob/M, datum/entity/player/P, list/roles, department, color = "ccccff")
 	var/counter = 0

@@ -677,13 +677,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
  * Returns TRUE if this vending machine is scanning for IDs.
  */
 /obj/structure/machinery/vending/proc/checking_id()
-	if(hacking_safety)
-		return TRUE
-
-	if(isWireCut(VENDING_WIRE_IDSCAN))
-		return FALSE
-
-	return TRUE
+	return FALSE
 
 /obj/structure/machinery/vending/ui_data(mob/user)
 	. = list()

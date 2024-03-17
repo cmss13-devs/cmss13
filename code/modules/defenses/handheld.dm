@@ -108,6 +108,10 @@
 	icon_state = "Normal uac_sentry_handheld"
 	defense_type = /obj/structure/machinery/defenses/sentry
 
+/obj/item/defenses/handheld/sentry/Initialize()
+	. = ..()
+	return INITIALIZE_HINT_QDEL
+
 /obj/item/defenses/handheld/sentry/get_upgrade_list()
 	. = list()
 	if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_SNIPER_SENTRY))

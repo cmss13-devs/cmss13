@@ -24,12 +24,13 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 	var/attachable_atoms = list(/obj/structure/closet/crate)
 	var/datum/turf_reservation/reservation
 
-/obj/item/stack/fulton/New(loc, amount, atom_to_attach)
-	..()
+/obj/item/stack/fulton/Initialize(loc, amount, atom_to_attach)
+	. = ..()
 	if(amount)
 		src.amount = amount
 	attached_atom = atom_to_attach
 	update_icon()
+	return INITIALIZE_HINT_QDEL
 
 /obj/item/stack/fulton/Destroy()
 	if(attached_atom)

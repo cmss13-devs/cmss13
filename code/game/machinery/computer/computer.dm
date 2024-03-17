@@ -140,3 +140,60 @@
 /obj/structure/machinery/computer/fixer/New()
 	all_configs = config
 	..()
+
+/obj/structure/red_terminal
+	name = "red team terminal"
+	desc = "Blue team wins if they use this. Don't let that happen."
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "power"
+	color = "#ff0000"
+	unslashable = TRUE
+	unacidable = TRUE
+	indestructible = TRUE
+
+/obj/structure/red_terminal/attack_hand(mob/user)
+	. = ..()
+	if(user.faction != FACTION_MARINE)
+		to_chat(user, SPAN_WARNING("You can't use this."))
+		return
+
+	if(in_use)
+		return
+
+	playsound(src, "keyboard", 15, 1)
+	in_use = TRUE
+	if(!do_after(user, 15 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
+		to_chat(user, SPAN_WARNING("You need to finish using the terminal to win."))
+		in_use = FALSE
+		return
+
+	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ANNOUNCEMENT_HEADER_ADMIN(" <b>Game Over</b>\n \t Blue team wins. Red team terminal used by [user]."))
+
+
+/obj/structure/blue_terminal
+	name = "blue team terminal"
+	desc = "Red team wins if they use this. Don't let that happen."
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "power"
+	color = "#0000ff"
+	unslashable = TRUE
+	unacidable = TRUE
+	indestructible = TRUE
+
+/obj/structure/blue_terminal/attack_hand(mob/user)
+	. = ..()
+	if(user.faction != FACTION_UPP)
+		to_chat(user, SPAN_WARNING("You can't use this."))
+		return
+
+	if(in_use)
+		return
+
+	playsound(src, "keyboard", 15, 1)
+	in_use = TRUE
+	if(!do_after(user, 15 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
+		to_chat(user, SPAN_WARNING("You need to finish using the terminal to win."))
+		in_use = FALSE
+		return
+
+	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ANNOUNCEMENT_HEADER_ADMIN(" <b>Game Over</b>\n \t Red team wins. Blue team terminal used by [user]."))

@@ -226,7 +226,7 @@
 		return
 
 	if(SSticker.tutorial_disabled)
-		to_chat(src, SPAN_WARNING("Tutorials are currently disabled because something broke, sorry!"))
+		to_chat(src, SPAN_WARNING("Tutorials are disabled FOR ONLY THIS ROUND due to performance reasons."))
 		return
 
 	var/datum/tutorial_menu/menu = new(src)

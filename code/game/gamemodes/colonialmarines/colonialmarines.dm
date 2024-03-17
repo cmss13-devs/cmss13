@@ -249,23 +249,8 @@
 	if(TIMER_COOLDOWN_CHECK(src, COOLDOWN_HIJACK_GROUND_CHECK))
 		return
 
-	var/groundside_humans = 0
-	var/groundside_xenos = 0
-
-	for(var/mob/current_mob in GLOB.player_list)
-		if(!is_ground_level(current_mob.z) || !current_mob.client || current_mob.stat == DEAD)
-			continue
-
-		if(ishuman_strict(current_mob))
-			groundside_humans++
-			continue
-
-		if(isxeno(current_mob))
-			groundside_xenos++
-			continue
-
-	if(groundside_humans > (groundside_xenos * GROUNDSIDE_XENO_MULTIPLIER))
-		SSticker.mode.get_specific_call(/datum/emergency_call/forsaken_xenos, TRUE, FALSE) // "Xenomorphs Groundside (Forsaken)"
+	//if(groundside_humans > (groundside_xenos * GROUNDSIDE_XENO_MULTIPLIER))
+	//	SSticker.mode.get_specific_call(/datum/emergency_call/forsaken_xenos, TRUE, FALSE) // "Xenomorphs Groundside (Forsaken)"
 
 	TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_GROUND_CHECK, 1 MINUTES)
 

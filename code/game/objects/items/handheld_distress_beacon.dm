@@ -12,7 +12,7 @@
 	///Tells the user who the beacon will be sent to IC
 	var/recipient = "the USCSS Royce"
 	///The name of the ERT that will be passed to get_specific_call
-	var/list/ert_paths = list(/datum/emergency_call/pmc/chem_retrieval) // "Weyland-Yutani PMC (Chemical Investigation Squad)"
+	var/list/ert_paths = list() // "Weyland-Yutani PMC (Chemical Investigation Squad)"
 	///The clickable version that will be sent in message_admins
 	var/list/ert_short_names = list("SEND PMCs")
 	///Whether beacon can be used, or has already been used
@@ -63,7 +63,7 @@
 	beacon_type = "CMB beacon"
 	recipient = "Anchorpoint Station"
 	// "CMB - Patrol Team - Marshals in Distress (Friendly)", "CMB - Anchorpoint Station Colonial Marine QRF (Friendly)"
-	ert_paths = list(/datum/emergency_call/cmb/alt, /datum/emergency_call/cmb/anchorpoint)
+	ert_paths = list()
 	ert_short_names = list("SEND CMB", "SEND QRF")
 
 // Corporate Lawyer beacon available for 50 points at the CLs briefcase
@@ -73,7 +73,7 @@
 
 	beacon_type = "Lawyer beacon"
 	recipient = "the Corporate Affairs Division"
-	ert_paths = list(/datum/emergency_call/inspection_wy/lawyer) // "Lawyers - Corporate"
+	ert_paths = list() // "Lawyers - Corporate"
 	ert_short_names = list("SEND LAWYERS")
 
 // Corporate Security Bodyguard beacon available for 50 points at the CLs briefcase
@@ -83,5 +83,5 @@
 
 	beacon_type = "Bodyguard beacon"
 	recipient = "the Corporate Security Division"
-	ert_paths = list(/datum/emergency_call/goon/bodyguard) // "Weyland-Yutani Goon (Executive Bodyguard Detail)"
+	ert_paths = list() // "Weyland-Yutani Goon (Executive Bodyguard Detail)"
 	ert_short_names = list("SEND BODYGUARD")

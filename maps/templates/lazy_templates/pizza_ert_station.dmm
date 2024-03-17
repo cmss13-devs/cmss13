@@ -46,7 +46,6 @@
 /turf/open/floor/almayer_hull,
 /area/adminlevel/ert_station/pizza_station)
 "am" = (
-/obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/drinks/cans/souto/cherry{
 	pixel_x = -8;
 	layer = 2.97
@@ -81,6 +80,7 @@
 	pixel_x = 3;
 	pixel_y = -1
 	},
+/obj/structure/surface/table/reinforced/diner_white,
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "an" = (
@@ -135,9 +135,8 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/barricade/handrail/pizza/outer_wall,
 /obj/structure/barricade/handrail/pizza/outer_wall{
-	pixel_x = -15
+	pixel_x = -3
 	},
 /turf/open/floor/prison{
 	icon_state = "red"
@@ -145,12 +144,8 @@
 /area/adminlevel/ert_station/pizza_station)
 "aP" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
-/obj/structure/barricade/handrail/pizza/inner_corners{
-	dir = 4;
-	pixel_y = -10;
-	pixel_x = 1
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/pizza/outer_wall,
 /turf/open/floor/prison{
 	icon_state = "red"
 	},
@@ -224,9 +219,8 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/barricade/handrail/pizza/inner_corners{
-	pixel_y = -10;
-	pixel_x = -2
+/obj/structure/barricade/handrail/pizza/outer_wall{
+	pixel_x = 36
 	},
 /turf/open/floor/prison{
 	icon_state = "red"
@@ -254,13 +248,20 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/handrail/pizza/outer_wall{
 	pixel_x = 4
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "red"
 	},
+/area/adminlevel/ert_station/pizza_station)
+"ch" = (
+/obj/structure/barricade/handrail/pizza/outer_wall{
+	pixel_y = -1;
+	pixel_x = 9
+	},
+/turf/closed/wall/diner/hull,
 /area/adminlevel/ert_station/pizza_station)
 "cq" = (
 /obj/structure/pipes/vents/scrubber{
@@ -305,7 +306,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9
 	},
-/obj/structure/barricade/handrail/pizza/outer_wall,
 /obj/structure/barricade/handrail/pizza/inner_corners{
 	pixel_y = -10;
 	pixel_x = -3
@@ -361,7 +361,13 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "red";
-	dir = 4
+	dir = 5
+	},
+/area/adminlevel/ert_station/pizza_station)
+"dd" = (
+/turf/open/floor/prison{
+	icon_state = "red";
+	dir = 5
 	},
 /area/adminlevel/ert_station/pizza_station)
 "dh" = (
@@ -374,8 +380,8 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/barricade/handrail/pizza/t_junction{
-	pixel_y = -10
+/obj/structure/barricade/handrail/pizza/outer_wall{
+	layer = 4
 	},
 /turf/open/floor/prison{
 	icon_state = "red"
@@ -469,7 +475,7 @@
 /area/space)
 "eK" = (
 /obj/structure/barricade/handrail/pizza/outer_wall{
-	pixel_x = 3
+	pixel_x = 2
 	},
 /turf/open/floor/prison{
 	icon_state = "red";
@@ -519,13 +525,13 @@
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/pizza_station)
 "fv" = (
-/obj/structure/barricade/handrail/pizza/inner_wall{
-	dir = 8;
-	pixel_x = 3
-	},
 /obj/structure/bed/sofa/diner_e_w{
 	dir = 8;
 	pixel_x = -3
+	},
+/obj/structure/barricade/handrail/pizza/inner_wall_long{
+	dir = 4;
+	pixel_x = 3
 	},
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
@@ -576,23 +582,20 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9
 	},
-/obj/structure/barricade/handrail/pizza/endcap{
-	pixel_x = 29;
-	pixel_y = -2;
-	dir = 1
-	},
-/obj/structure/barricade/handrail/pizza/inner_wall{
-	dir = 4;
-	pixel_x = 29;
-	pixel_y = 28
-	},
 /turf/open/floor/prison{
 	icon_state = "red";
 	dir = 5
 	},
 /area/adminlevel/ert_station/pizza_station)
+"gd" = (
+/obj/structure/barricade/handrail/pizza/inner_wall_long{
+	dir = 8;
+	pixel_y = -1;
+	pixel_x = -3
+	},
+/turf/open/floor/diner/white_red,
+/area/adminlevel/ert_station/pizza_station)
 "gu" = (
-/obj/structure/surface/table/almayer,
 /obj/item/storage/box/drinkingglasses{
 	layer = 2.97;
 	pixel_x = 12
@@ -610,15 +613,12 @@
 /obj/structure/barricade/handrail/pizza/outer_wall{
 	pixel_y = -1
 	},
+/obj/structure/surface/table/reinforced/diner_white,
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "gy" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/barricade/handrail/pizza/inner_wall{
-	dir = 4;
-	pixel_x = 29
-	},
 /turf/open/floor/diner/red_yellow,
 /area/adminlevel/ert_station/pizza_station)
 "gU" = (
@@ -686,10 +686,6 @@
 	},
 /area/adminlevel/ert_station/pizza_station)
 "hR" = (
-/obj/structure/barricade/handrail/pizza/inner_wall{
-	dir = 4;
-	pixel_x = -2
-	},
 /obj/structure/bed/sofa/diner_n_s{
 	dir = 1
 	},
@@ -700,23 +696,37 @@
 	pixel_x = 15;
 	pixel_y = -32
 	},
+/obj/structure/barricade/handrail/pizza/inner_wall_long{
+	dir = 8;
+	pixel_y = 23;
+	pixel_x = -3
+	},
+/obj/structure/barricade/handrail/pizza/endcap{
+	dir = 8;
+	pixel_x = -3
+	},
+/turf/open/floor/diner/white_red,
+/area/adminlevel/ert_station/pizza_station)
+"hT" = (
+/obj/structure/bed/stool/diner{
+	dir = 4
+	},
+/obj/structure/barricade/handrail/pizza/inner_wall_long{
+	dir = 8;
+	pixel_x = -2
+	},
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "hX" = (
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/barricade/handrail/pizza/outer_wall{
-	dir = 1;
-	pixel_y = 15;
-	pixel_x = 7
-	},
+/obj/structure/bed/stool/diner,
 /obj/structure/barricade/handrail/pizza/entrance{
 	dir = 8;
-	pixel_y = 15;
-	pixel_x = -24
+	pixel_x = -23;
+	pixel_y = 21
 	},
-/obj/structure/bed/stool/diner,
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "ic" = (
@@ -732,7 +742,6 @@
 /obj/item/trash/plate{
 	pixel_y = 10
 	},
-/obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/drinks/drinkingglass{
 	pixel_y = 14;
 	pixel_x = 11
@@ -744,6 +753,7 @@
 /obj/structure/barricade/handrail/pizza/outer_wall{
 	pixel_y = -1
 	},
+/obj/structure/surface/table/reinforced/diner_white,
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "im" = (
@@ -910,16 +920,27 @@
 /area/adminlevel/ert_station/pizza_station)
 "kz" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 1;
-	name = "\improper Kitchen"
+/obj/structure/machinery/door/airlock/multi_tile/diner{
+	dir = 2
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
 /area/adminlevel/ert_station/pizza_station)
 "kW" = (
-/obj/structure/barricade/handrail/pizza/outer_wall,
+/obj/structure/barricade/handrail/pizza/t_junction{
+	dir = 8;
+	pixel_x = -3;
+	density = 0
+	},
+/obj/structure/barricade/handrail/pizza/outer_wall{
+	pixel_x = 17
+	},
+/obj/structure/barricade/handrail/pizza/inner_wall_long{
+	dir = 8;
+	pixel_x = -3;
+	pixel_y = 25
+	},
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "la" = (
@@ -927,9 +948,7 @@
 /obj/structure/machinery/door/poddoor/almayer{
 	unacidable = 1
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	locked = 1
-	},
+/obj/structure/machinery/door/airlock/multi_tile/diner,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -940,7 +959,6 @@
 	},
 /area/adminlevel/ert_station/pizza_station)
 "lv" = (
-/obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/drinks/drinkingglass/cola{
 	pixel_y = 8;
 	pixel_x = -2
@@ -952,6 +970,7 @@
 /obj/structure/barricade/handrail/pizza/outer_wall{
 	pixel_y = -1
 	},
+/obj/structure/surface/table/reinforced/diner_white,
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "lw" = (
@@ -999,11 +1018,17 @@
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "lB" = (
-/obj/structure/barricade/handrail/pizza/inner_wall{
-	dir = 4;
-	pixel_x = -2
-	},
 /obj/structure/bed/sofa/diner_n_s,
+/obj/structure/barricade/handrail/pizza/inner_corners{
+	pixel_x = -3;
+	pixel_y = 22;
+	density = 0
+	},
+/obj/structure/barricade/handrail/pizza/inner_wall_long{
+	dir = 8;
+	pixel_y = -1;
+	pixel_x = -3
+	},
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "lE" = (
@@ -1011,6 +1036,7 @@
 /obj/structure/barricade/handrail/pizza/outer_wall{
 	pixel_y = -1
 	},
+/obj/structure/surface/table/reinforced/diner_white,
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "lH" = (
@@ -1081,7 +1107,12 @@
 "mk" = (
 /obj/structure/machinery/vending/snack{
 	layer = 4.15;
-	pixel_y = 3
+	pixel_y = 3;
+	pixel_x = -3
+	},
+/obj/structure/barricade/handrail/pizza/endcap{
+	dir = 4;
+	pixel_x = 6
 	},
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
@@ -1091,13 +1122,18 @@
 /obj/structure/bed/sofa/diner_e_w{
 	dir = 4
 	},
+/obj/structure/barricade/handrail/pizza/endcap{
+	dir = 8;
+	pixel_x = -3
+	},
+/obj/structure/barricade/handrail/pizza/inner_wall_long{
+	dir = 8;
+	pixel_y = 15;
+	pixel_x = -3
+	},
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "mu" = (
-/obj/structure/barricade/handrail/pizza/inner_wall{
-	dir = 4;
-	pixel_x = -2
-	},
 /obj/structure/surface/table/reinforced/diner_white,
 /obj/item/tool/kitchen/tray{
 	pixel_y = 8;
@@ -1118,13 +1154,18 @@
 	pixel_x = 5;
 	pixel_y = 13
 	},
+/obj/structure/barricade/handrail/pizza/inner_wall_long{
+	dir = 8;
+	pixel_y = -1;
+	pixel_x = -3
+	},
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "my" = (
 /obj/structure/barricade/handrail/pizza/entrance{
 	dir = 8;
 	pixel_y = -10;
-	pixel_x = 7
+	pixel_x = 5
 	},
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
@@ -1175,7 +1216,6 @@
 	},
 /area/adminlevel/ert_station/pizza_station)
 "nA" = (
-/obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/drinks/cans/tonic{
 	pixel_x = -15;
 	pixel_y = 10
@@ -1193,6 +1233,7 @@
 /obj/structure/barricade/handrail/pizza/outer_wall{
 	pixel_y = -1
 	},
+/obj/structure/surface/table/reinforced/diner_white,
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "nB" = (
@@ -1219,7 +1260,7 @@
 /obj/structure/barricade/handrail/pizza/entrance{
 	dir = 4;
 	pixel_y = -10;
-	pixel_x = -2
+	pixel_x = -7
 	},
 /turf/open/floor/prison{
 	icon_state = "red"
@@ -1303,6 +1344,17 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating/prison,
 /area/adminlevel/ert_station/pizza_station)
+"oL" = (
+/obj/structure/barricade/handrail/pizza/entrance{
+	dir = 4;
+	pixel_y = -10;
+	pixel_x = 24
+	},
+/obj/structure/barricade/handrail/pizza/outer_wall{
+	pixel_x = -7
+	},
+/turf/closed/wall/diner,
+/area/adminlevel/ert_station/pizza_station)
 "oU" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9
@@ -1352,9 +1404,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/pizza_station)
 "pS" = (
-/obj/structure/barricade/handrail/pizza/inner_wall{
-	dir = 8
-	},
 /obj/structure/bed/sofa/diner_e_w{
 	dir = 8
 	},
@@ -1383,12 +1432,12 @@
 /obj/structure/pipes/vents/scrubber{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/handrail/pizza/entrance{
 	dir = 4;
 	pixel_y = -10;
-	pixel_x = -8
+	pixel_x = -3
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "red"
 	},
@@ -1458,13 +1507,20 @@
 /turf/open/floor/diner/white_black,
 /area/adminlevel/ert_station/pizza_station)
 "qU" = (
-/obj/structure/bed/chair/bolted{
-	dir = 4;
-	pixel_x = 7;
-	buckling_x = 7
-	},
 /obj/structure/machinery/alarm{
 	pixel_y = 25
+	},
+/obj/structure/bed/stool/diner{
+	dir = 4
+	},
+/obj/structure/barricade/handrail/pizza/inner_wall_long{
+	dir = 8;
+	pixel_x = -2
+	},
+/obj/structure/barricade/handrail/pizza/inner_wall_short{
+	dir = 8;
+	pixel_x = -2;
+	pixel_y = 22
 	},
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
@@ -1517,9 +1573,7 @@
 	name = "\improper Umbillical Airlock";
 	unacidable = 1
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	locked = 1
-	},
+/obj/structure/machinery/door/airlock/multi_tile/diner,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -1654,20 +1708,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
-"tq" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/barricade/handrail/pizza/inner_wall{
-	pixel_x = -3;
-	density = 0;
-	pixel_y = -9
-	},
-/turf/open/floor/diner/white_red,
-/area/adminlevel/ert_station/pizza_station)
 "ty" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -1707,12 +1747,10 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
+/obj/structure/machinery/door/airlock/multi_tile/diner,
 /obj/structure/machinery/door/poddoor/almayer/open{
 	name = "\improper Umbillical Airlock";
 	id = "pizza_ert_arrival"
-	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Galaxy Pizza!"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -1759,7 +1797,12 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
-/obj/structure/barricade/handrail/pizza/outer_wall,
+/obj/structure/barricade/handrail/pizza/outer_wall{
+	pixel_x = -9
+	},
+/obj/structure/barricade/handrail/pizza/outer_wall{
+	pixel_x = 20
+	},
 /turf/open/floor/diner/red_yellow,
 /area/adminlevel/ert_station/pizza_station)
 "ub" = (
@@ -1789,15 +1832,6 @@
 /obj/structure/window/framed/diner/hull,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/pizza_station)
-"uz" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/barricade/handrail/pizza/outer_wall,
-/turf/open/floor/prison{
-	icon_state = "red"
-	},
-/area/adminlevel/ert_station/pizza_station)
 "uD" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/processor{
@@ -1820,14 +1854,14 @@
 /turf/open/space,
 /area/space)
 "uN" = (
-/obj/structure/barricade/handrail/pizza/outer_wall,
+/obj/structure/barricade/handrail/pizza/outer_wall{
+	pixel_y = -1;
+	pixel_x = 9
+	},
 /obj/structure/barricade/handrail/pizza/entrance{
 	dir = 8;
-	pixel_y = -10;
-	pixel_x = -24
-	},
-/obj/structure/barricade/handrail/pizza/outer_wall{
-	pixel_x = 14
+	pixel_x = -23;
+	pixel_y = -11
 	},
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
@@ -1889,7 +1923,7 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "red";
-	dir = 8
+	dir = 9
 	},
 /area/adminlevel/ert_station/pizza_station)
 "vI" = (
@@ -2021,6 +2055,19 @@
 	dir = 1
 	},
 /area/adminlevel/ert_station/pizza_station)
+"wA" = (
+/obj/structure/barricade/handrail/pizza/inner_wall_long{
+	dir = 8;
+	pixel_x = -3;
+	pixel_y = -2
+	},
+/obj/structure/barricade/handrail/pizza/inner_wall_short{
+	dir = 8;
+	pixel_x = -3;
+	pixel_y = 20
+	},
+/turf/open/floor/diner/white_red,
+/area/adminlevel/ert_station/pizza_station)
 "wD" = (
 /obj/structure/platform_decoration/kutjevo,
 /obj/structure/lattice,
@@ -2043,9 +2090,15 @@
 	pixel_x = 2;
 	pixel_y = 6
 	},
-/obj/structure/barricade/handrail/pizza/inner_wall{
-	dir = 4;
-	pixel_x = -2
+/obj/structure/barricade/handrail/pizza/inner_corners{
+	pixel_x = -3;
+	pixel_y = 22;
+	density = 0
+	},
+/obj/structure/barricade/handrail/pizza/inner_wall_long{
+	dir = 8;
+	pixel_y = -1;
+	pixel_x = -3
 	},
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
@@ -2115,16 +2168,21 @@
 /turf/open/space,
 /area/space)
 "xv" = (
-/obj/structure/barricade/handrail/pizza/inner_wall{
-	dir = 8;
-	pixel_x = 1
-	},
 /obj/structure/sign/safety/airlock{
 	pixel_y = -32
 	},
 /obj/structure/sign/safety/hazard{
 	pixel_x = 15;
 	pixel_y = -32
+	},
+/obj/structure/barricade/handrail/pizza/inner_wall_long{
+	dir = 4;
+	pixel_y = 18;
+	pixel_x = 3
+	},
+/obj/structure/barricade/handrail/pizza/endcap{
+	dir = 4;
+	pixel_x = 3
 	},
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
@@ -2180,11 +2238,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
 	},
-/obj/structure/barricade/handrail/pizza/entrance{
-	dir = 8;
-	pixel_y = -10;
-	pixel_x = 7
-	},
 /turf/open/floor/prison{
 	icon_state = "red";
 	dir = 10
@@ -2198,18 +2251,22 @@
 /obj/structure/sign/safety/airlock{
 	pixel_y = -32
 	},
-/obj/structure/barricade/handrail/pizza/inner_wall{
-	dir = 8;
-	pixel_x = 1
-	},
 /obj/structure/bed/sofa/diner_e_w{
 	dir = 8;
 	pixel_x = -2
 	},
+/obj/structure/barricade/handrail/pizza/inner_wall_long{
+	dir = 4;
+	pixel_y = 16;
+	pixel_x = 3
+	},
+/obj/structure/barricade/handrail/pizza/endcap{
+	dir = 4;
+	pixel_x = 3
+	},
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "yE" = (
-/obj/structure/surface/table/almayer,
 /obj/item/trash/ceramic_plate{
 	pixel_y = 6
 	},
@@ -2224,6 +2281,7 @@
 /obj/structure/barricade/handrail/pizza/outer_wall{
 	pixel_y = -1
 	},
+/obj/structure/surface/table/reinforced/diner_white,
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "yG" = (
@@ -2312,7 +2370,6 @@
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "zx" = (
-/obj/structure/surface/table/almayer,
 /obj/item/trash/ceramic_plate{
 	pixel_y = 2
 	},
@@ -2328,12 +2385,14 @@
 /obj/structure/barricade/handrail/pizza/outer_wall{
 	pixel_y = -1
 	},
+/obj/structure/surface/table/reinforced/diner_white,
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "zz" = (
-/obj/structure/barricade/handrail/pizza/inner_wall{
-	dir = 8;
-	pixel_x = 1
+/obj/structure/barricade/handrail/pizza/inner_wall_long{
+	dir = 4;
+	pixel_y = -1;
+	pixel_x = 3
 	},
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
@@ -2362,11 +2421,6 @@
 "zM" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
-	},
-/obj/structure/barricade/handrail/pizza/endcap{
-	pixel_x = 23;
-	pixel_y = 26;
-	dir = 1
 	},
 /turf/open/floor/prison{
 	icon_state = "redcorner";
@@ -2641,13 +2695,18 @@
 /obj/structure/sign/safety/airlock{
 	pixel_y = -32
 	},
-/obj/structure/barricade/handrail/pizza/inner_wall{
-	dir = 4;
-	pixel_x = -2
-	},
 /obj/structure/bed/sofa/diner_e_w{
 	dir = 4;
 	pixel_x = 3
+	},
+/obj/structure/barricade/handrail/pizza/inner_wall_long{
+	dir = 8;
+	pixel_y = 22;
+	pixel_x = -3
+	},
+/obj/structure/barricade/handrail/pizza/endcap{
+	dir = 8;
+	pixel_x = -3
 	},
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
@@ -2668,13 +2727,20 @@
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "Db" = (
-/obj/structure/barricade/handrail/pizza/inner_wall{
-	dir = 8;
-	pixel_x = 1
-	},
 /obj/item/storage/briefcase/stowaway{
 	pixel_y = 3;
 	pixel_x = -8
+	},
+/obj/structure/barricade/handrail/pizza/inner_wall_long{
+	dir = 4;
+	pixel_y = -1;
+	pixel_x = 3
+	},
+/obj/structure/barricade/handrail/pizza/inner_corners{
+	dir = 4;
+	pixel_y = 22;
+	pixel_x = 3;
+	density = 0
 	},
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
@@ -2698,17 +2764,6 @@
 	},
 /obj/item/reagent_container/food/snacks/sliceable/bread,
 /turf/open/floor/diner/white_blue,
-/area/adminlevel/ert_station/pizza_station)
-"DC" = (
-/obj/structure/barricade/handrail/pizza/inner_wall{
-	dir = 4;
-	pixel_x = 23;
-	pixel_y = 13
-	},
-/turf/open/floor/prison{
-	icon_state = "red";
-	dir = 4
-	},
 /area/adminlevel/ert_station/pizza_station)
 "DF" = (
 /obj/structure/disposalpipe/segment{
@@ -2749,10 +2804,7 @@
 /area/space)
 "Eh" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
-/obj/structure/barricade/handrail/pizza/inner_corners{
-	pixel_y = -10;
-	pixel_x = -2
-	},
+/obj/structure/barricade/handrail/pizza/outer_wall,
 /turf/open/floor/prison{
 	icon_state = "red"
 	},
@@ -2761,11 +2813,11 @@
 /turf/closed/wall/diner/hull,
 /area/adminlevel/ert_station/pizza_station)
 "Ep" = (
+/obj/structure/machinery/door/airlock/multi_tile/diner,
 /obj/structure/machinery/door/poddoor/almayer/open{
 	name = "\improper Umbillical Airlock";
 	id = "pizza_ert_arrival"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -2917,7 +2969,6 @@
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "FY" = (
-/obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/drinks/cans/cola{
 	pixel_y = 6;
 	pixel_x = -6
@@ -2942,6 +2993,7 @@
 	pixel_x = -3;
 	pixel_y = -1
 	},
+/obj/structure/surface/table/reinforced/diner_white,
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "FZ" = (
@@ -2954,12 +3006,10 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/barricade/handrail/pizza/inner_corners{
-	dir = 4;
-	pixel_y = -10;
-	pixel_x = 1
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/pizza/outer_wall{
+	pixel_x = -22
+	},
 /turf/open/floor/prison{
 	icon_state = "red"
 	},
@@ -2980,10 +3030,16 @@
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "Gj" = (
+/obj/structure/barricade/handrail/pizza/t_junction{
+	dir = 8;
+	pixel_x = -2;
+	density = 0
+	},
 /obj/structure/barricade/handrail/pizza/inner_corners{
 	dir = 4;
 	pixel_y = -10;
-	pixel_x = 7
+	pixel_x = 6;
+	density = 0
 	},
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
@@ -3067,14 +3123,7 @@
 	},
 /turf/open/space,
 /area/space)
-"Hs" = (
-/obj/structure/barricade/handrail/pizza/inner_wall{
-	dir = 8
-	},
-/turf/open/floor/diner/white_red,
-/area/adminlevel/ert_station/pizza_station)
 "HL" = (
-/obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/drinks/coffeecup{
 	pixel_x = -5;
 	pixel_y = 4
@@ -3089,6 +3138,7 @@
 /obj/structure/barricade/handrail/pizza/outer_wall{
 	pixel_y = -1
 	},
+/obj/structure/surface/table/reinforced/diner_white,
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "HQ" = (
@@ -3123,10 +3173,10 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/handrail/pizza/outer_wall{
 	pixel_x = -5
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
 	icon_state = "red"
 	},
@@ -3200,16 +3250,21 @@
 /turf/open/floor/diner/white_black,
 /area/adminlevel/ert_station/pizza_station)
 "Kb" = (
-/obj/structure/surface/table/almayer,
 /obj/item/corncob,
 /obj/item/corncob{
 	pixel_y = 7
 	},
-/obj/structure/barricade/handrail/pizza/inner_wall{
-	dir = 8;
-	pixel_x = 3;
-	pixel_y = -1
+/obj/structure/barricade/handrail/pizza/inner_wall_long{
+	dir = 4;
+	pixel_y = -1;
+	pixel_x = 3
 	},
+/obj/structure/barricade/handrail/pizza/inner_wall_short{
+	dir = 4;
+	pixel_y = 31;
+	pixel_x = 3
+	},
+/obj/structure/surface/table/reinforced/diner_white,
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "Kc" = (
@@ -3266,13 +3321,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/pizza_station)
-"KC" = (
-/obj/structure/barricade/handrail/pizza/inner_wall{
-	dir = 4;
-	pixel_x = -2
-	},
-/turf/open/floor/diner/white_red,
-/area/adminlevel/ert_station/pizza_station)
 "KU" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -3288,7 +3336,6 @@
 	},
 /area/adminlevel/ert_station/pizza_station)
 "La" = (
-/obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/condiment/hotsauce/franks/macho{
 	pixel_y = 11;
 	pixel_x = -6
@@ -3306,6 +3353,7 @@
 /obj/structure/barricade/handrail/pizza/outer_wall{
 	pixel_y = -1
 	},
+/obj/structure/surface/table/reinforced/diner_white,
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "Lk" = (
@@ -3328,21 +3376,47 @@
 	},
 /turf/open/floor/plating/prison,
 /area/adminlevel/ert_station/pizza_station)
+"Lp" = (
+/obj/structure/barricade/handrail/pizza/inner_wall_long{
+	dir = 8;
+	pixel_y = -1;
+	pixel_x = -3
+	},
+/obj/structure/barricade/handrail/pizza/t_junction{
+	dir = 1;
+	pixel_y = 22;
+	pixel_x = -3;
+	density = 0
+	},
+/turf/open/floor/diner/white_red,
+/area/adminlevel/ert_station/pizza_station)
 "Ly" = (
 /obj/structure/barricade/handrail/pizza/inner_corners{
 	dir = 4;
-	pixel_y = 15;
-	pixel_x = 2
+	pixel_y = 21;
+	pixel_x = 3;
+	density = 0
+	},
+/obj/structure/barricade/handrail/pizza/outer_wall{
+	pixel_y = 21;
+	pixel_x = -13;
+	dir = 1
 	},
 /obj/structure/barricade/handrail/pizza/endcap{
-	pixel_x = 2;
-	pixel_y = -3
+	dir = 4;
+	pixel_y = 1;
+	pixel_x = 3
+	},
+/obj/structure/barricade/handrail/pizza/inner_wall_long{
+	dir = 4;
+	pixel_y = 19;
+	pixel_x = 3
 	},
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "LH" = (
 /obj/structure/barricade/handrail/pizza/outer_wall{
-	pixel_x = -9
+	pixel_x = -3
 	},
 /obj/structure/barricade/handrail/pizza/entrance{
 	dir = 4;
@@ -3366,13 +3440,13 @@
 /obj/structure/machinery/vending/coffee{
 	pixel_y = 12
 	},
-/obj/structure/barricade/handrail/pizza/t_junction{
-	dir = 4;
-	pixel_x = 7
+/obj/structure/barricade/handrail/pizza/outer_wall{
+	pixel_x = -2
 	},
 /obj/structure/barricade/handrail/pizza/inner_corners{
 	pixel_y = -10;
-	pixel_x = -9
+	pixel_x = -7;
+	density = 0
 	},
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
@@ -3400,7 +3474,6 @@
 /turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "MK" = (
-/obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/drinks/bottle/wine{
 	pixel_y = 7;
 	pixel_x = -6
@@ -3412,11 +3485,17 @@
 /obj/item/reagent_container/food/drinks/bottle/whiskey{
 	pixel_x = -4
 	},
-/obj/structure/barricade/handrail/pizza/inner_wall{
-	dir = 4;
-	pixel_x = -3;
-	pixel_y = -1
+/obj/structure/barricade/handrail/pizza/inner_wall_long{
+	dir = 8;
+	pixel_y = -1;
+	pixel_x = -3
 	},
+/obj/structure/barricade/handrail/pizza/inner_wall_short{
+	dir = 8;
+	pixel_y = 31;
+	pixel_x = -3
+	},
+/obj/structure/surface/table/reinforced/diner_white,
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "MS" = (
@@ -3453,11 +3532,6 @@
 	},
 /area/adminlevel/ert_station/pizza_station)
 "MX" = (
-/obj/structure/barricade/handrail/pizza/inner_wall{
-	dir = 8;
-	pixel_x = -25;
-	pixel_y = 13
-	},
 /turf/open/floor/prison{
 	icon_state = "red";
 	dir = 9
@@ -3501,10 +3575,6 @@
 /obj/structure/sign/safety/coffee{
 	pixel_y = 32;
 	pixel_x = -13
-	},
-/obj/structure/barricade/handrail/pizza/inner_wall{
-	dir = 8;
-	pixel_x = 7
 	},
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
@@ -3600,36 +3670,24 @@
 /obj/structure/barricade/handrail/pizza/entrance{
 	dir = 8;
 	pixel_y = -10;
-	pixel_x = 7
+	pixel_x = 3
 	},
 /turf/open/floor/prison{
 	icon_state = "red"
 	},
 /area/adminlevel/ert_station/pizza_station)
 "OD" = (
-/obj/structure/barricade/handrail/pizza/inner_wall{
-	dir = 8;
-	pixel_x = 1
-	},
 /obj/structure/surface/table/reinforced/diner_white,
 /obj/item/reagent_container/food/drinks/cans/souto/diet/classic{
 	pixel_x = -9;
 	pixel_y = 6
 	},
+/obj/structure/barricade/handrail/pizza/inner_wall_long{
+	dir = 4;
+	pixel_y = -1;
+	pixel_x = 3
+	},
 /turf/open/floor/diner/white_red,
-/area/adminlevel/ert_station/pizza_station)
-"OE" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/barricade/handrail/pizza/entrance{
-	dir = 8;
-	pixel_y = -10;
-	pixel_x = 1
-	},
-/turf/open/floor/prison{
-	icon_state = "red"
-	},
 /area/adminlevel/ert_station/pizza_station)
 "OG" = (
 /obj/structure/platform/kutjevo/smooth{
@@ -3653,7 +3711,11 @@
 "OK" = (
 /obj/structure/machinery/vending/cigarette{
 	pixel_y = 3;
-	layer = 4.15
+	layer = 4.1
+	},
+/obj/structure/barricade/handrail/pizza/endcap{
+	dir = 8;
+	pixel_x = -7
 	},
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
@@ -3665,6 +3727,12 @@
 	pixel_y = 18;
 	layer = 4.11
 	},
+/obj/structure/barricade/handrail/pizza/endcap{
+	dir = 8;
+	pixel_x = -3;
+	pixel_y = -2;
+	density = 1
+	},
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "OS" = (
@@ -3674,15 +3742,15 @@
 	},
 /area/adminlevel/ert_station/pizza_station)
 "OY" = (
-/obj/structure/barricade/handrail/pizza/inner_wall{
-	dir = 8;
-	pixel_x = 2
+/obj/structure/barricade/handrail/pizza/inner_wall_long{
+	dir = 4;
+	pixel_y = -4;
+	pixel_x = 3
 	},
-/obj/structure/barricade/handrail/pizza/inner_wall{
-	dir = 1;
-	pixel_x = 2;
-	pixel_y = 19;
-	density = 0
+/obj/structure/barricade/handrail/pizza/inner_wall_short{
+	dir = 4;
+	pixel_y = 18;
+	pixel_x = 3
 	},
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
@@ -3690,16 +3758,26 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
+"Pd" = (
+/obj/structure/barricade/handrail/pizza/inner_corners{
+	dir = 4;
+	pixel_y = 22;
+	pixel_x = 3;
+	density = 0
+	},
+/obj/structure/barricade/handrail/pizza/inner_wall_long{
+	dir = 4;
+	pixel_y = -1;
+	pixel_x = 3
+	},
+/turf/open/floor/diner/white_red,
+/area/adminlevel/ert_station/pizza_station)
 "Pi" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
-	},
-/obj/structure/barricade/handrail/pizza/endcap{
-	pixel_x = -25;
-	pixel_y = 26
 	},
 /turf/open/floor/prison{
 	icon_state = "red";
@@ -3871,9 +3949,11 @@
 /turf/open/floor/diner/white_blue,
 /area/adminlevel/ert_station/pizza_station)
 "Se" = (
-/obj/structure/barricade/handrail/pizza/outer_wall,
 /obj/structure/bed/sofa/diner_n_s{
 	dir = 1
+	},
+/obj/structure/barricade/handrail/pizza/outer_wall{
+	pixel_x = -3
 	},
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
@@ -3888,13 +3968,6 @@
 	},
 /turf/open/space,
 /area/space)
-"Sj" = (
-/obj/structure/barricade/handrail/pizza/inner_wall{
-	dir = 8;
-	pixel_x = 7
-	},
-/turf/closed/wall/diner,
-/area/adminlevel/ert_station/pizza_station)
 "So" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -3907,7 +3980,18 @@
 "Sp" = (
 /obj/structure/barricade/handrail/pizza/inner_corners{
 	dir = 8;
-	pixel_x = 2
+	pixel_y = -1;
+	pixel_x = 3;
+	density = 0
+	},
+/obj/structure/barricade/handrail/pizza/inner_wall_long{
+	dir = 4;
+	pixel_y = 19;
+	pixel_x = 3
+	},
+/obj/structure/barricade/handrail/pizza/outer_wall{
+	pixel_y = -1;
+	pixel_x = -20
 	},
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
@@ -3975,12 +4059,6 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
-	},
-/obj/structure/barricade/handrail/pizza/inner_wall{
-	dir = 1;
-	pixel_x = 3;
-	density = 0;
-	pixel_y = -9
 	},
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
@@ -4056,7 +4134,6 @@
 	},
 /area/space)
 "TH" = (
-/obj/structure/surface/table/almayer,
 /obj/item/storage/box/drinkingglasses{
 	layer = 2.97;
 	pixel_x = 14
@@ -4067,6 +4144,7 @@
 /obj/structure/barricade/handrail/pizza/outer_wall{
 	pixel_y = -1
 	},
+/obj/structure/surface/table/reinforced/diner_white,
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
 "TK" = (
@@ -4178,7 +4256,7 @@
 	},
 /turf/open/floor/prison{
 	icon_state = "red";
-	dir = 8
+	dir = 9
 	},
 /area/adminlevel/ert_station/pizza_station)
 "Vt" = (
@@ -4228,9 +4306,14 @@
 	pixel_y = 32;
 	serial_number = 12
 	},
-/obj/structure/barricade/handrail/pizza/inner_wall{
-	dir = 8;
+/obj/structure/barricade/handrail/pizza/inner_wall_long{
+	dir = 4;
 	pixel_x = 3
+	},
+/obj/structure/barricade/handrail/pizza/inner_wall_short{
+	dir = 4;
+	pixel_x = 3;
+	pixel_y = 22
 	},
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
@@ -4268,11 +4351,11 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/poddoor/almayer/open{
 	name = "\improper Umbillical Airlock";
 	id = "pizza_ert_arrival"
 	},
-/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -4281,7 +4364,9 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/barricade/handrail/pizza/outer_wall{
+/obj/structure/barricade/handrail/pizza/entrance{
+	dir = 8;
+	pixel_y = -10;
 	pixel_x = 6
 	},
 /turf/open/floor/prison{
@@ -4307,9 +4392,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Kitchen and Cleaning"
-	},
+/obj/structure/machinery/door/airlock/multi_tile/diner,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -4333,7 +4416,7 @@
 "Xg" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /obj/structure/barricade/handrail/pizza/outer_wall{
-	pixel_x = -8
+	pixel_x = -3
 	},
 /turf/open/floor/prison{
 	icon_state = "red"
@@ -4432,26 +4515,35 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/barricade/handrail/pizza/entrance{
-	dir = 8;
-	pixel_y = -10;
-	pixel_x = 7
-	},
+/obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/handrail/pizza/entrance{
 	dir = 4;
 	pixel_y = -10;
-	pixel_x = -8
+	pixel_x = -7
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/pizza/entrance{
+	dir = 8;
+	pixel_y = -10;
+	pixel_x = 6
+	},
 /turf/open/floor/prison{
 	icon_state = "red"
 	},
 /area/adminlevel/ert_station/pizza_station)
 "XZ" = (
-/obj/structure/barricade/handrail/pizza/outer_wall,
 /obj/structure/barricade/handrail/pizza/inner_corners{
 	dir = 8;
-	pixel_x = 3
+	pixel_x = 3;
+	density = 0
+	},
+/obj/structure/barricade/handrail/pizza/outer_wall{
+	pixel_x = 1;
+	layer = 4
+	},
+/obj/structure/barricade/handrail/pizza/inner_wall_long{
+	dir = 4;
+	pixel_x = 3;
+	pixel_y = 19
 	},
 /turf/open/floor/diner/white_red,
 /area/adminlevel/ert_station/pizza_station)
@@ -4463,10 +4555,8 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "STAFF ONLY"
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/door/airlock/multi_tile/diner,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -4569,13 +4659,11 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/door/airlock/multi_tile/diner,
 /obj/structure/machinery/door/poddoor/almayer/open{
 	name = "\improper Umbillical Airlock";
 	id = "pizza_ert_arrival"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Galaxy Pizza!"
 	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -5149,7 +5237,7 @@ ID
 ID
 ID
 Ei
-Ei
+ch
 hX
 Ff
 rA
@@ -5337,13 +5425,13 @@ Pn
 nB
 nB
 jy
-tq
+BV
 MK
 FY
 wz
 dy
-Hs
-Hs
+xl
+xl
 pS
 Rh
 Yy
@@ -5388,9 +5476,9 @@ BV
 xl
 TH
 Qd
-uz
-xl
-xl
+Gm
+Lp
+gd
 mt
 Rh
 Yy
@@ -5482,7 +5570,7 @@ Ao
 xl
 lv
 Qd
-OE
+Ws
 xl
 HQ
 fN
@@ -5530,7 +5618,7 @@ xl
 nA
 sa
 aP
-zz
+Pd
 zz
 ys
 Ei
@@ -5948,9 +6036,9 @@ xV
 Vm
 iw
 YO
+dd
 OS
 OS
-DC
 zM
 Gm
 OS
@@ -5994,14 +6082,14 @@ Vj
 zW
 YD
 YO
-Sj
+YO
 Nr
 Mk
 OK
 wQ
 bK
 wP
-KC
+gd
 CF
 Ei
 ah
@@ -6042,7 +6130,7 @@ oD
 YO
 YO
 qU
-xl
+hT
 Gj
 mk
 wQ
@@ -6280,7 +6368,7 @@ AV
 cI
 OQ
 xl
-xl
+wA
 kW
 xl
 Og
@@ -6371,7 +6459,7 @@ xy
 Ny
 YO
 YO
-YO
+oL
 Ux
 cE
 eh

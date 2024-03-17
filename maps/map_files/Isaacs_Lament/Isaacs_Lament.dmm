@@ -258,14 +258,14 @@
 "afL" = (
 /obj/structure/largecrate/supply/ammo/sentry,
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/storage)
 "afM" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/window{
 	dir = 4
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/reception)
 "afN" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -350,6 +350,10 @@
 	dir = 8
 	},
 /area/lv553/outdoors/flooded_streets/east)
+"ahx" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor,
+/area/lv553/indoors/marshals/reception)
 "ahC" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 1;
@@ -370,7 +374,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/mainhall)
 "ahR" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 1;
@@ -535,7 +539,7 @@
 /turf/open/gm/dirtgrassborder{
 	dir = 1
 	},
-/area/lv553/oob)
+/area/lv553/outdoors/colony_streets/south)
 "amJ" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/snacks/upp,
@@ -555,6 +559,15 @@
 	icon_state = "whiteblue"
 	},
 /area/lv553/indoors/hospital/research/floor)
+"amQ" = (
+/obj/structure/machinery/shower{
+	pixel_y = 17
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/marshals/barracks)
 "amY" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/shard,
@@ -650,7 +663,7 @@
 	pixel_y = 9
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/cells)
 "arE" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -671,13 +684,7 @@
 	},
 /area/lv553/indoors/uscm_garrison/garrison_bunks)
 "arR" = (
-/obj/structure/closet/cabinet{
-	density = 0;
-	pixel_y = 0
-	},
-/obj/item/ammo_magazine/rifle/mar40/lmg,
-/obj/item/ammo_magazine/rifle/mar40/lmg,
-/obj/item/weapon/gun/rifle/mar40/carbine,
+/obj/structure/largecrate/black_market/clf_supplies,
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/clf_house)
 "asb" = (
@@ -1115,7 +1122,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/mainhall)
 "aFJ" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/snacks/appletart{
@@ -1393,7 +1400,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/barracks)
 "aLQ" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/under/swimsuit/purple,
@@ -1450,7 +1457,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/mainhall)
 "aNz" = (
 /obj/structure/sign/safety/bathunisex{
 	pixel_x = 7;
@@ -2003,7 +2010,7 @@
 	req_one_access_txt = "2;3;12;19"
 	},
 /turf/open/asphalt/cement,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/garage)
 "bdJ" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/snacks/csandwich,
@@ -2815,7 +2822,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/barracks)
 "bEM" = (
 /obj/structure/machinery/shower{
 	pixel_y = 17
@@ -3174,6 +3181,10 @@
 /obj/item/shard,
 /turf/open/floor/wood,
 /area/lv553/indoors/welcome_center/lobby)
+"bOS" = (
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/gm/dirt,
+/area/lv553/outdoors/colony_streets/south)
 "bOV" = (
 /obj/item/trash/cigbutt/ucigbutt{
 	pixel_x = 5;
@@ -3236,6 +3247,9 @@
 /obj/item/shard,
 /turf/open/floor/wood,
 /area/lv553/indoors/uscm_garrison/recruitment_office)
+"bQE" = (
+/turf/closed/wall/r_wall,
+/area/lv553/indoors/marshals/marshalsoffice)
 "bQJ" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2";
@@ -3314,7 +3328,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/mainhall)
 "bTo" = (
 /obj/structure/surface/table,
 /obj/item/ashtray/plastic,
@@ -3947,7 +3961,7 @@
 	dir = 8;
 	icon_state = "grassdirt_corner"
 	},
-/area/lv553/oob)
+/area/lv553/outdoors/colony_streets/south)
 "cjb" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/item/stack/sheet/metal,
@@ -3963,7 +3977,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/mainhall)
 "cjN" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor{
@@ -4612,7 +4626,7 @@
 "cCx" = (
 /obj/structure/window,
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/mainhall)
 "cCE" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 8
@@ -4825,7 +4839,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/mainhall)
 "cID" = (
 /obj/structure/barricade/plasteel/metal{
 	dir = 8
@@ -4925,6 +4939,10 @@
 "cLu" = (
 /turf/open/gm/grass,
 /area/lv553/outdoors/flooded_streets/waste_treatment)
+"cLB" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor,
+/area/lv553/indoors/marshals/mainhall)
 "cLF" = (
 /obj/structure/bed,
 /obj/item/bedsheet/captain,
@@ -5280,7 +5298,7 @@
 	dir = 8;
 	icon_state = "grassdirt_corner"
 	},
-/area/lv553/oob)
+/area/lv553/outdoors/colony_streets/south)
 "cUn" = (
 /obj/item/weapon/gun/shotgun/pump{
 	name = "\improper broken M37A2 pump shotgun";
@@ -5330,6 +5348,16 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/gated_community/director_of_corporate_research)
+"cVk" = (
+/obj/structure/toilet{
+	dir = 4;
+	tag = "icon-toilet00 (WEST)"
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/marshals/barracks)
 "cVn" = (
 /obj/structure/bed,
 /obj/item/bedsheet/captain,
@@ -5489,7 +5517,7 @@
 "daf" = (
 /obj/structure/largecrate/supply/supplies/sandbags,
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/storage)
 "dak" = (
 /turf/open/gm/dirtgrassborder{
 	icon_state = "grassdirt_corner"
@@ -5605,6 +5633,9 @@
 	icon_state = "dark"
 	},
 /area/lv553/indoors/operations/lockerroom)
+"dea" = (
+/turf/closed/wall/r_wall,
+/area/lv553/indoors/marshals/garage)
 "ded" = (
 /obj/structure/largecrate/random/barrel/red{
 	pixel_x = 9;
@@ -5624,6 +5655,9 @@
 /obj/structure/machinery/cm_vending/sorted/marine_food,
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
+"dey" = (
+/turf/closed/wall,
+/area/lv553/indoors/marshals/mainhall)
 "deN" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
@@ -5968,6 +6002,9 @@
 "dkP" = (
 /turf/open/floor,
 /area/lv553/indoors/welcome_center/lobby)
+"dkU" = (
+/turf/open/floor,
+/area/lv553/outdoors/colony_streets/south)
 "dkV" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 1;
@@ -6663,7 +6700,7 @@
 	name = "break room"
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/mainhall)
 "dCJ" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname{
 	dir = 1
@@ -6792,6 +6829,13 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv553/indoors/lone_buildings/recruiter_house)
+"dGK" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_0"
+	},
+/turf/open/gm/dirt,
+/area/lv553/outdoors/colony_streets/south)
 "dGO" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/prop/almayer/computer/PC{
@@ -6859,6 +6903,13 @@
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/grass,
 /area/lv553/landing_zone_2)
+"dJt" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 1;
+	icon_state = "sandbag_0"
+	},
+/turf/open/gm/dirt,
+/area/lv553/outdoors/colony_streets/south)
 "dJu" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 8
@@ -6929,7 +6980,7 @@
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/emails,
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/marshalsoffice)
 "dLR" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/explosive/grenade/custom/ied{
@@ -7464,7 +7515,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/mainhall)
 "edU" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner,
 /turf/open/gm/dirtgrassborder{
@@ -8080,7 +8131,7 @@
 /turf/open/floor{
 	icon_state = "asteroid"
 	},
-/area/lv553/oob)
+/area/lv553/outdoors/colony_streets/south)
 "eta" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/under/pj/red,
@@ -8168,6 +8219,16 @@
 	icon_state = "white_cyan1"
 	},
 /area/lv553/oob)
+"evf" = (
+/obj/structure/toilet{
+	dir = 8;
+	tag = "icon-toilet00 (WEST)"
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/marshals/mainhall)
 "evt" = (
 /obj/structure/surface/table,
 /obj/item/storage/fancy/cigarettes/lady_finger,
@@ -8213,7 +8274,7 @@
 	pixel_y = 6
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/reception)
 "ewr" = (
 /turf/open/floor{
 	dir = 1;
@@ -8646,7 +8707,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/barracks)
 "eKA" = (
 /obj/structure/desertdam/decals/road_stop{
 	dir = 8;
@@ -9558,7 +9619,7 @@
 	pixel_y = 2
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/marshalsoffice)
 "fkw" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -10182,6 +10243,10 @@
 /obj/structure/prop/dam/truck/cargo,
 /turf/open/asphalt/cement,
 /area/lv553/oob)
+"fBD" = (
+/obj/structure/machinery/vending/cola,
+/turf/open/floor,
+/area/lv553/indoors/marshals/reception)
 "fBL" = (
 /obj/structure/desertdam/decals/road_edge{
 	pixel_x = -12
@@ -10603,7 +10668,7 @@
 "fLz" = (
 /obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/mainhall)
 "fLM" = (
 /obj/structure/barricade/handrail/sandstone/b{
 	color = "#8CCE8F";
@@ -11046,7 +11111,7 @@
 /obj/item/ammo_magazine/sentry,
 /obj/item/ammo_magazine/sentry,
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/storage)
 "fVq" = (
 /obj/structure/machinery/m56d_hmg/mg_turret,
 /obj/structure/barricade/wooden,
@@ -11368,6 +11433,9 @@
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/wood,
 /area/lv553/indoors/hospital/reception)
+"gcU" = (
+/turf/open/floor,
+/area/lv553/indoors/marshals/barracks)
 "gcX" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -11834,7 +11902,7 @@
 	name = "\improper Colonial Marshal Bureau cellblock door"
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/cells)
 "gtS" = (
 /obj/item/trash/boonie,
 /turf/open/floor/interior/plastic,
@@ -11853,6 +11921,9 @@
 /obj/structure/reagent_dispensers/fueltank/gas,
 /turf/open/asphalt/cement,
 /area/lv553/oob)
+"guM" = (
+/turf/closed/wall/r_wall,
+/area/lv553/indoors/marshals/barracks)
 "guU" = (
 /turf/closed/shuttle/ert{
 	icon_state = "leftengine_3";
@@ -12000,7 +12071,7 @@
 	icon_state = "sandbag_0"
 	},
 /turf/open/gm/dirt,
-/area/lv553/oob)
+/area/lv553/outdoors/colony_streets/south)
 "gAP" = (
 /turf/closed/wall/r_wall,
 /area/lv553/indoors/operations/offices/southwest)
@@ -12116,6 +12187,10 @@
 	icon_state = "white"
 	},
 /area/lv553/indoors/hospital/reception)
+"gCK" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder,
+/area/lv553/outdoors/colony_streets/south)
 "gCR" = (
 /obj/structure/window/framed/colony,
 /turf/open/gm/river,
@@ -12136,6 +12211,9 @@
 	icon_state = "barber"
 	},
 /area/lv553/indoors/uscm_garrison/garrison_bunks)
+"gDj" = (
+/turf/open/floor,
+/area/lv553/indoors/marshals/mainhall)
 "gDo" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/microwave{
@@ -12244,7 +12322,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/mainhall)
 "gFT" = (
 /obj/structure/machinery/light,
 /turf/open/gm/grass,
@@ -12571,6 +12649,9 @@
 	icon_state = "whitegreen"
 	},
 /area/lv553/indoors/hospital/operating_rooms)
+"gNR" = (
+/turf/open/floor,
+/area/lv553/indoors/marshals/garage)
 "gNX" = (
 /obj/structure/window/framed/colony,
 /turf/open/gm/dirtgrassborder{
@@ -12632,7 +12713,7 @@
 "gPw" = (
 /obj/structure/machinery/power/port_gen/pacman,
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/storage)
 "gPQ" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 4
@@ -12997,6 +13078,12 @@
 	icon_state = "asteroidfloor"
 	},
 /area/lv553/oob)
+"hbr" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor,
+/area/lv553/indoors/marshals/interrogation)
 "hbK" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/reagent_container/food/snacks/donut/jelly{
@@ -13004,7 +13091,7 @@
 	pixel_y = 9
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/barracks)
 "hbY" = (
 /obj/effect/spawner/gibspawner/xeno,
 /turf/open/floor{
@@ -13273,7 +13360,7 @@
 /obj/structure/surface/rack,
 /obj/structure/largecrate/supply/ammo/shotgun,
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/storage)
 "hnc" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "laundromat door"
@@ -13299,6 +13386,9 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv553/outdoors/colony_streets/southeast)
+"hnx" = (
+/turf/closed/wall/r_wall,
+/area/lv553/indoors/marshals/mainhall)
 "hnB" = (
 /obj/structure/janitorialcart,
 /turf/open/floor,
@@ -13601,6 +13691,10 @@
 	icon_state = "white_cyan1"
 	},
 /area/lv553/oob)
+"hxg" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor,
+/area/lv553/indoors/marshals/mainhall)
 "hxl" = (
 /obj/structure/surface/table,
 /obj/item/pizzabox/meat{
@@ -13679,7 +13773,7 @@
 	name = "shower room door"
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/barracks)
 "hzl" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/river,
@@ -13870,7 +13964,7 @@
 	dir = 4
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/barracks)
 "hEx" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 4;
@@ -14137,6 +14231,10 @@
 	icon_state = "dark"
 	},
 /area/lv553/indoors/operations/offices/east)
+"hII" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor,
+/area/lv553/indoors/marshals/marshalsoffice)
 "hIN" = (
 /obj/item/tool/wet_sign,
 /turf/open/asphalt/cement,
@@ -14285,6 +14383,12 @@
 	icon_state = "white"
 	},
 /area/lv553/indoors/welcome_center/offices)
+"hNa" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/marshals/cells)
 "hNf" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "bedroom door"
@@ -14629,7 +14733,7 @@
 /turf/open/floor{
 	icon_state = "asteroid"
 	},
-/area/lv553/oob)
+/area/lv553/outdoors/colony_streets/south)
 "hWH" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -15417,6 +15521,9 @@
 	icon_state = "vault"
 	},
 /area/lv553/oob)
+"irh" = (
+/turf/open/floor,
+/area/lv553/indoors/marshals/marshalsoffice)
 "irQ" = (
 /obj/item/storage/secure/safe{
 	pixel_x = -7;
@@ -16498,6 +16605,10 @@
 /obj/structure/machinery/light,
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/liq_r_mart)
+"iOG" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor,
+/area/lv553/indoors/marshals/mainhall)
 "iOI" = (
 /turf/open/floor/carpet,
 /area/lv553/indoors/bungalow_manager)
@@ -16652,7 +16763,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/mainhall)
 "iSP" = (
 /obj/structure/disposalpipe/segment,
 /obj/item/trash/cigbutt/cigarbutt{
@@ -17444,7 +17555,7 @@
 "jqK" = (
 /obj/structure/largecrate/supply/weapons/flamers,
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/storage)
 "jqL" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 8
@@ -17541,6 +17652,9 @@
 	icon_state = "whiteblue"
 	},
 /area/lv553/indoors/hospital/research/floor)
+"jtu" = (
+/turf/closed/wall/r_wall,
+/area/lv553/indoors/marshals/reception)
 "jtE" = (
 /turf/open/floor/wood,
 /area/lv553/indoors/gated_community/head_of_corporate_security)
@@ -17603,7 +17717,7 @@
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/mainhall)
 "jwt" = (
 /obj/structure{
 	dir = 4;
@@ -17986,6 +18100,9 @@
 	icon_state = "darkblue2"
 	},
 /area/lv553/indoors/operations/reception)
+"jGj" = (
+/turf/open/floor,
+/area/lv553/indoors/marshals/reception)
 "jGl" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor{
@@ -18499,7 +18616,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/barracks)
 "jRp" = (
 /obj/structure/surface/rack,
 /obj/item/hardpoint/locomotion/van_wheels,
@@ -19164,6 +19281,12 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
+"klV" = (
+/obj/structure/extinguisher_cabinet/alt{
+	pixel_y = 26
+	},
+/turf/open/floor,
+/area/lv553/indoors/marshals/mainhall)
 "kmr" = (
 /turf/open/floor{
 	dir = 1;
@@ -19436,7 +19559,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/mainhall)
 "ksZ" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/dirt,
@@ -19545,7 +19668,7 @@
 	pixel_y = 17
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/barracks)
 "kxW" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 1;
@@ -19601,7 +19724,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/cells)
 "kAq" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "bathroom door"
@@ -20589,7 +20712,7 @@
 	name = "\improper Colonial Marshal Bureau garage manway door"
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/garage)
 "lcl" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/microwave,
@@ -20661,7 +20784,7 @@
 	name = "bunkroom door"
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/barracks)
 "lev" = (
 /obj/item/prop/helmetgarb/spent_slug,
 /turf/open/gm/dirt,
@@ -20768,7 +20891,7 @@
 /turf/open/floor{
 	icon_state = "asteroid"
 	},
-/area/lv553/oob)
+/area/lv553/outdoors/colony_streets/south)
 "lhm" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_x = -32
@@ -20872,6 +20995,16 @@
 	icon_state = "darkblue2"
 	},
 /area/lv553/indoors/operations/xenobiological_research)
+"lka" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2;
+	name = "\improper Bathroom"
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/marshals/barracks)
 "lkc" = (
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/goon_and_chef_house)
@@ -21335,6 +21468,16 @@
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder,
 /area/lv553/outdoors/colony_streets/northeast)
+"lxu" = (
+/obj/structure/sink{
+	dir = 1;
+	pixel_y = -8
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/marshals/barracks)
 "lxA" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/drinks/coffee,
@@ -21421,6 +21564,10 @@
 /obj/structure/window/framed/colony,
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/flynns_bar)
+"lzU" = (
+/obj/structure/machinery/vending/cola,
+/turf/open/floor,
+/area/lv553/indoors/marshals/mainhall)
 "lAc" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 8
@@ -21697,7 +21844,7 @@
 	pixel_x = -8
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/barracks)
 "lGn" = (
 /obj/item/weapon/broken_glass,
 /turf/open/gm/dirtgrassborder{
@@ -21898,7 +22045,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/barracks)
 "lOe" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -22052,6 +22199,9 @@
 	icon_state = "white_cyan1"
 	},
 /area/lv553/oob)
+"lSd" = (
+/turf/closed/wall,
+/area/lv553/indoors/marshals/barracks)
 "lSi" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/microwave,
@@ -22403,7 +22553,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/mainhall)
 "mcx" = (
 /obj/structure/bed/sofa/south/grey/left,
 /obj/item/reagent_container/food/drinks/bottle/beer/craft{
@@ -22459,7 +22609,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/barracks)
 "meg" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/head/hairflower,
@@ -22666,7 +22816,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/mainhall)
 "mkf" = (
 /obj/structure/surface/table/reinforced,
 /turf/open/floor,
@@ -22792,7 +22942,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/barracks)
 "moX" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/gm/river,
@@ -22842,7 +22992,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/mainhall)
 "mpK" = (
 /obj/item/reagent_container/food/drinks/cans/waterbottle,
 /turf/open/gm/river,
@@ -23018,6 +23168,10 @@
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/interior/plastic,
 /area/lv553/oob)
+"mtE" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor,
+/area/lv553/indoors/marshals/barracks)
 "mtG" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -23412,7 +23566,7 @@
 	name = "\improper Colonial Marshal Bureau door"
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/mainhall)
 "mDd" = (
 /obj/structure/largecrate/supply/supplies/water,
 /turf/open/floor/almayer{
@@ -23789,7 +23943,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/cells)
 "mLO" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -24123,6 +24277,10 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
+"mVi" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/asphalt/cement,
+/area/lv553/indoors/marshals/garage)
 "mVD" = (
 /obj/structure/surface/rack,
 /obj/item/storage/belt/gun/m4a3/m1911{
@@ -24211,7 +24369,7 @@
 "mXD" = (
 /obj/structure/surface/table/almayer,
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/barracks)
 "mXE" = (
 /obj/structure/machinery/shower{
 	dir = 1
@@ -24440,7 +24598,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/mainhall)
 "nel" = (
 /obj/item/storage/toolbox/electrical,
 /turf/open/floor/wood,
@@ -24847,7 +25005,7 @@
 	pixel_y = 17
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/mainhall)
 "nsb" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/reagent_container/food/drinks/coffeecup{
@@ -24921,7 +25079,7 @@
 "nsP" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/reception)
 "ntX" = (
 /obj/item/trash/chunk,
 /turf/open/gm/river,
@@ -24963,7 +25121,7 @@
 "nvE" = (
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/gm/dirt,
-/area/lv553/oob)
+/area/lv553/outdoors/colony_streets/south)
 "nwf" = (
 /obj/structure/cargo_container{
 	icon_state = "red 0,0";
@@ -25343,7 +25501,7 @@
 /turf/open/floor{
 	icon_state = "asteroid"
 	},
-/area/lv553/oob)
+/area/lv553/outdoors/colony_streets/south)
 "nED" = (
 /obj/structure/prop/ice_colony/surveying_device,
 /turf/open/gm/dirtgrassborder{
@@ -25976,7 +26134,7 @@
 /obj/structure/fence,
 /obj/structure/fence,
 /turf/open/gm/grass,
-/area/lv553/oob)
+/area/lv553/outdoors/colony_streets/south)
 "nVN" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/curtain/medical,
@@ -26021,7 +26179,7 @@
 /turf/open/floor{
 	icon_state = "asteroid"
 	},
-/area/lv553/oob)
+/area/lv553/outdoors/colony_streets/south)
 "nWz" = (
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/gm/dirt,
@@ -26894,13 +27052,13 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/mainhall)
 "otV" = (
 /obj/structure/surface/table/holotable,
 /turf/open/floor{
 	icon_state = "asteroid"
 	},
-/area/lv553/oob)
+/area/lv553/outdoors/colony_streets/south)
 "oui" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -26944,6 +27102,13 @@
 	},
 /turf/open/gm/dirt,
 /area/lv553/oob)
+"ovc" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 8;
+	icon_state = "sandbag_0"
+	},
+/turf/open/gm/dirt,
+/area/lv553/outdoors/colony_streets/south)
 "ovq" = (
 /obj/structure/curtain/medical{
 	pixel_y = -32
@@ -27025,7 +27190,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/mainhall)
 "owY" = (
 /obj/structure/machinery/light{
 	dir = 1;
@@ -27561,7 +27726,7 @@
 /obj/structure/bed/chair/office/light,
 /obj/structure/machinery/door_control{
 	desc = "A garage door opener.";
-	id = "mansion_gate";
+	id = "bungalow_gate";
 	name = "west button";
 	pixel_y = -19;
 	req_one_access_txt = "2;3;12;19";
@@ -27634,6 +27799,9 @@
 /obj/docking_port/stationary/marine_dropship/lz2,
 /turf/open/gm/dirt,
 /area/lv553/landing_zone_2)
+"oLa" = (
+/turf/closed/wall,
+/area/lv553/indoors/marshals/interrogation)
 "oLl" = (
 /turf/open/floor{
 	icon_state = "dark2"
@@ -28060,6 +28228,12 @@
 /obj/structure/machinery/landinglight/ds1/spoke,
 /turf/open/gm/dirt,
 /area/lv553/landing_zone_1)
+"oXu" = (
+/obj/structure/extinguisher_cabinet/alt{
+	pixel_y = 26
+	},
+/turf/open/floor,
+/area/lv553/indoors/marshals/barracks)
 "oXG" = (
 /obj/item/trash/cigbutt,
 /obj/effect/decal/cleanable/dirt,
@@ -28744,7 +28918,7 @@
 /turf/open/floor{
 	icon_state = "asteroid"
 	},
-/area/lv553/oob)
+/area/lv553/outdoors/colony_streets/south)
 "pkT" = (
 /obj/item/reagent_container/syringe,
 /turf/open/floor/wood,
@@ -28774,6 +28948,10 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/gm/dirt,
 /area/lv553/outdoors/landing_zones_disembark)
+"plU" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/colony,
+/turf/open/floor,
+/area/lv553/indoors/marshals/cells)
 "pma" = (
 /obj/structure/fence,
 /turf/open/gm/grass,
@@ -29090,6 +29268,12 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv553/outdoors/colony_streets/south)
+"psA" = (
+/obj/structure/machinery/power/apc{
+	dir = 8
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/neils_arcade)
 "psF" = (
 /obj/structure/sign/poster/safety{
 	pixel_y = 30
@@ -29616,7 +29800,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/barracks)
 "pGD" = (
 /obj/structure/closet/secure_closet/personal{
 	pixel_x = -8
@@ -29857,7 +30041,7 @@
 	},
 /obj/structure/reagent_dispensers/fueltank/gas,
 /turf/open/asphalt/cement,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/garage)
 "pNh" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/ammo_magazine/handful/shotgun/buckshot,
@@ -30000,7 +30184,7 @@
 "pQp" = (
 /obj/structure/largecrate/supply/supplies/plasteel,
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/storage)
 "pQu" = (
 /obj/structure/prop/dam/van,
 /turf/open/gm/dirt,
@@ -30178,6 +30362,9 @@
 	dir = 4
 	},
 /area/lv553/oob)
+"pWg" = (
+/turf/closed/wall/r_wall,
+/area/lv553/indoors/marshals/storage)
 "pWq" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/eat,
@@ -30340,7 +30527,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/mainhall)
 "qaA" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
@@ -30887,7 +31074,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/barracks)
 "qmb" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/trash/burger,
@@ -31019,7 +31206,7 @@
 	tag = "icon-toilet00 (WEST)"
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/cells)
 "qqH" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 4
@@ -31316,6 +31503,12 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv553/outdoors/bungalow_manager_exterior)
+"qxW" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor,
+/area/lv553/indoors/marshals/reception)
 "qyc" = (
 /obj/structure/curtain/red{
 	pixel_y = -32
@@ -31729,6 +31922,9 @@
 	icon_state = "darkbluecorners2"
 	},
 /area/lv553/indoors/operations/hallway/south)
+"qJd" = (
+/turf/closed/wall/r_wall,
+/area/lv553/indoors/marshals/interrogation)
 "qJH" = (
 /obj/item/prop{
 	color = "#FF0000";
@@ -32378,6 +32574,12 @@
 	},
 /turf/open/gm/dirt,
 /area/lv553/landing_zone_2)
+"rbd" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor,
+/area/lv553/indoors/marshals/interrogation)
 "rbC" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 8;
@@ -32585,6 +32787,9 @@
 /obj/item/storage/belt/marine/mar40,
 /turf/open/floor/wood,
 /area/lv553/oob)
+"riw" = (
+/turf/open/floor,
+/area/lv553/indoors/marshals/interrogation)
 "riy" = (
 /turf/closed/wall,
 /area/lv553/indoors/hospital/research/offices)
@@ -32690,6 +32895,10 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
+"rkU" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor,
+/area/lv553/indoors/marshals/garage)
 "rlo" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "bathroom door"
@@ -32901,7 +33110,7 @@
 	pixel_y = 15
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/barracks)
 "rtm" = (
 /obj/structure/bed,
 /obj/item/bedsheet/captain,
@@ -32937,7 +33146,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/mainhall)
 "rtE" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -33304,7 +33513,7 @@
 	name = "Colonial Marshal Bureau garage Door"
 	},
 /turf/open/asphalt/cement,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/garage)
 "rDu" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/rifle/mar40/carbine{
@@ -33323,6 +33532,13 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
+"rDA" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 2;
+	name = "\improper Colonial Marshal Bureau door"
+	},
+/turf/open/floor,
+/area/lv553/indoors/marshals/storage)
 "rDC" = (
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap";
@@ -33622,7 +33838,7 @@
 	name = "interrogation room"
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/interrogation)
 "rMn" = (
 /obj/structure/bed,
 /obj/item/bedsheet/captain,
@@ -33704,7 +33920,7 @@
 	dir = 8
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/barracks)
 "rOC" = (
 /obj/structure/sign/safety/bathunisex{
 	pixel_x = 8;
@@ -35155,7 +35371,7 @@
 /obj/structure/surface/rack,
 /obj/item/smartgun_battery,
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/storage)
 "sAE" = (
 /obj/structure/bed,
 /obj/item/bedsheet/captain,
@@ -35220,7 +35436,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/mainhall)
 "sCh" = (
 /obj/item/clothing/head/hardhat,
 /turf/open/floor{
@@ -35306,7 +35522,7 @@
 /turf/open/floor{
 	icon_state = "asteroid"
 	},
-/area/lv553/oob)
+/area/lv553/outdoors/colony_streets/south)
 "sDC" = (
 /obj/structure/morgue_tray{
 	dir = 8
@@ -35395,7 +35611,7 @@
 "sFK" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/mainhall)
 "sFN" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/storage/fancy/cigar/matchbook{
@@ -35586,6 +35802,10 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/lv553/indoors/operations/reception)
+"sLk" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor,
+/area/lv553/indoors/marshals/mainhall)
 "sLA" = (
 /obj/item/trash/cigbutt,
 /obj/item/trash/cigbutt,
@@ -35686,6 +35906,10 @@
 	icon_state = "white"
 	},
 /area/lv553/oob)
+"sNm" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/asphalt/cement,
+/area/lv553/indoors/marshals/garage)
 "sNp" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/microwave,
@@ -36282,7 +36506,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/mainhall)
 "sZy" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
 /turf/open/gm/dirtgrassborder{
@@ -36599,7 +36823,7 @@
 "tgz" = (
 /obj/structure/surface/rack,
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/storage)
 "tgE" = (
 /obj/structure/bed/chair/wood/wings{
 	dir = 4
@@ -36746,7 +36970,7 @@
 	pixel_y = 15
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/barracks)
 "tmr" = (
 /obj/structure/machinery/photocopier,
 /obj/structure/machinery/light{
@@ -37048,7 +37272,7 @@
 	name = "lineup door"
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/mainhall)
 "trG" = (
 /turf/closed/wall,
 /area/lv553/indoors/flooded/west_apartments)
@@ -37681,7 +37905,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/mainhall)
 "tGs" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/trash/candle,
@@ -38020,7 +38244,7 @@
 	pixel_y = 10
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/barracks)
 "tRt" = (
 /obj/structure/bed,
 /obj/structure/bed{
@@ -38035,7 +38259,7 @@
 /obj/item/bedsheet/captain,
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/cells)
 "tRw" = (
 /obj/structure/largecrate/supply/ammo/shotgun,
 /obj/item/weapon/gun/shotgun/merc,
@@ -38058,7 +38282,7 @@
 	name = "cellblock door"
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/cells)
 "tSy" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -38128,7 +38352,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/barracks)
 "tTT" = (
 /obj/structure/surface/table,
 /obj/item/tool/pen/blue,
@@ -38263,6 +38487,10 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/lv553/indoors/operations/serverroom)
+"tXu" = (
+/obj/structure/machinery/vending/snack,
+/turf/open/floor,
+/area/lv553/indoors/marshals/mainhall)
 "tXC" = (
 /obj/structure/bed/chair/comfy/orange{
 	dir = 8
@@ -38656,6 +38884,16 @@
 	},
 /turf/open/floor,
 /area/lv553/oob)
+"ugd" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2;
+	name = "\improper Bathroom"
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/marshals/mainhall)
 "ugG" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor{
@@ -39085,7 +39323,7 @@
 	pixel_y = 15
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/barracks)
 "upx" = (
 /turf/closed/wall,
 /area/lv553/indoors/lone_buildings/multidoor_garage)
@@ -39123,6 +39361,13 @@
 	dir = 1
 	},
 /area/lv553/indoors/operations/offices/northwest)
+"uqp" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 2;
+	name = "\improper Colonial Marshal Bureau door"
+	},
+/turf/open/floor,
+/area/lv553/indoors/marshals/mainhall)
 "uqq" = (
 /turf/open/floor/wood,
 /area/lv553/indoors/welcome_center/canteen)
@@ -39196,6 +39441,10 @@
 	},
 /turf/open/floor/interior/plastic,
 /area/lv553/oob)
+"usY" = (
+/obj/structure/surface/table/woodentable,
+/turf/open/floor,
+/area/lv553/indoors/marshals/barracks)
 "utg" = (
 /obj/structure/machinery/door/airlock/almayer/research{
 	locked = 1;
@@ -39748,7 +39997,7 @@
 "uKK" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/cells)
 "uKM" = (
 /obj/structure/surface/table,
 /obj/item/stock_parts/manipulator/nano,
@@ -40064,7 +40313,7 @@
 	dir = 1
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/marshalsoffice)
 "uWl" = (
 /turf/open/gm/coast{
 	dir = 9
@@ -40187,7 +40436,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/clothing/mask/cigarette/cigar/havana,
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/marshalsoffice)
 "vaZ" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /obj/structure/machinery/light,
@@ -40457,6 +40706,10 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv553/indoors/gated_community/head_of_corporate_engineering)
+"vhG" = (
+/obj/structure/bed/chair,
+/turf/open/floor,
+/area/lv553/indoors/marshals/mainhall)
 "vhM" = (
 /turf/open/floor{
 	dir = 8;
@@ -40687,7 +40940,7 @@
 	dir = 4
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/marshalsoffice)
 "vnS" = (
 /obj/structure/sink{
 	dir = 1;
@@ -40878,7 +41131,7 @@
 	pixel_x = 5
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/barracks)
 "vvK" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 4
@@ -41206,6 +41459,12 @@
 	},
 /turf/open/floor,
 /area/lv553/indoors/flooded/east_apartments)
+"vGK" = (
+/obj/structure/extinguisher_cabinet/alt{
+	pixel_y = 26
+	},
+/turf/open/asphalt/cement,
+/area/lv553/indoors/marshals/garage)
 "vGY" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -41724,6 +41983,16 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv553/oob)
+"vTn" = (
+/obj/structure/toilet{
+	dir = 4;
+	tag = "icon-toilet00 (WEST)"
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/marshals/mainhall)
 "vTA" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/light{
@@ -41969,7 +42238,7 @@
 	pixel_y = -32
 	},
 /turf/open/gm/dirt,
-/area/lv553/oob)
+/area/lv553/outdoors/colony_streets/south)
 "vZr" = (
 /obj/structure/closet/fancy{
 	pixel_x = -7;
@@ -41980,7 +42249,7 @@
 	pixel_y = 15
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/barracks)
 "vZw" = (
 /turf/open/gm/dirtgrassborder{
 	icon_state = "grassdirt_corner2"
@@ -42605,7 +42874,7 @@
 "wrm" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/reception)
 "wrx" = (
 /obj/structure/disposalpipe/segment{
 	name = "pneumatic delivery system pipe";
@@ -42661,7 +42930,7 @@
 	name = "\improper Colonial Marshal Bureau door"
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/reception)
 "wtK" = (
 /obj/structure/surface/table,
 /obj/item/weapon/gun/revolver/m44/custom,
@@ -42796,7 +43065,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/reception)
 "wzK" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
@@ -43323,11 +43592,15 @@
 	},
 /turf/open/floor/plating,
 /area/lv553/oob)
+"wOe" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor,
+/area/lv553/indoors/marshals/reception)
 "wOl" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/flashlight/lamp,
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/interrogation)
 "wOD" = (
 /obj/structure/surface/table,
 /obj/item/clothing/head/soft/ferret,
@@ -43339,6 +43612,12 @@
 	icon_state = "beachcorner2"
 	},
 /area/lv553/outdoors/flooded_streets/waste_treatment)
+"wOZ" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/marshals/barracks)
 "wPh" = (
 /obj/structure/computer3frame,
 /turf/open/floor/wood,
@@ -43509,6 +43788,15 @@
 	icon_state = "white"
 	},
 /area/lv553/indoors/lone_buildings/weyyu_hostel)
+"wSL" = (
+/turf/closed/wall/r_wall,
+/area/lv553/indoors/marshals/cells)
+"wSU" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor,
+/area/lv553/indoors/marshals/reception)
 "wSX" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "bedroom door";
@@ -43953,7 +44241,7 @@
 	},
 /obj/item/bedsheet/captain,
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/barracks)
 "xhA" = (
 /obj/structure/surface/rack,
 /obj/item/tool/weldingtool/hugetank,
@@ -44337,6 +44625,12 @@
 	},
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/army_surplus)
+"xqV" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/marshals/mainhall)
 "xrj" = (
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/asphalt/cement,
@@ -44350,7 +44644,7 @@
 	name = "lineup door"
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/mainhall)
 "xrS" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass,
@@ -44425,13 +44719,13 @@
 	dir = 1
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/mainhall)
 "xuL" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Colonial Marshal Bureau garage door"
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/garage)
 "xuM" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/snacks/cheesyfries,
@@ -44499,7 +44793,7 @@
 /turf/open/gm/dirtgrassborder{
 	dir = 4
 	},
-/area/lv553/oob)
+/area/lv553/outdoors/colony_streets/south)
 "xwJ" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
@@ -44849,6 +45143,9 @@
 	icon_state = "darkblue2"
 	},
 /area/lv553/indoors/operations/offices/east)
+"xGa" = (
+/turf/open/asphalt/cement,
+/area/lv553/indoors/marshals/garage)
 "xGh" = (
 /obj/structure/filingcabinet{
 	pixel_x = 8
@@ -45083,6 +45380,9 @@
 	},
 /turf/open/floor,
 /area/lv553/indoors/welcome_center/offices)
+"xPb" = (
+/turf/open/floor,
+/area/lv553/indoors/marshals/storage)
 "xPy" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
@@ -45183,7 +45483,7 @@
 	name = "Colonial Marshal Bureau garage Door"
 	},
 /turf/open/asphalt/cement,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/garage)
 "xRd" = (
 /obj/item/clothing/mask/facehugger{
 	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
@@ -45233,7 +45533,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/barracks)
 "xSi" = (
 /turf/closed/wall,
 /area/lv553/indoors/lone_buildings/army_surplus)
@@ -45306,6 +45606,9 @@
 	icon_state = "darkblue2"
 	},
 /area/lv553/indoors/operations/offices/east)
+"xUG" = (
+/turf/open/floor,
+/area/lv553/indoors/marshals/cells)
 "xUY" = (
 /turf/closed/wall,
 /area/lv553/indoors/hospital/research/toilets)
@@ -45548,7 +45851,7 @@
 	name = "\improper Colonial Marshal Bureau barracks."
 	},
 /turf/open/floor,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/barracks)
 "xZU" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/condiment/saltshaker,
@@ -45773,7 +46076,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/marshals/mainhall)
 "ygd" = (
 /obj/structure/ladder{
 	height = 1;
@@ -45781,7 +46084,7 @@
 	pixel_y = 20
 	},
 /turf/open/asphalt/cement,
-/area/lv553/oob)
+/area/lv553/indoors/marshals/garage)
 "ygf" = (
 /obj/structure/fence,
 /turf/open/gm/grass,
@@ -59569,7 +59872,7 @@ xGy
 bvT
 xDG
 vJU
-xGM
+psA
 iUh
 uZA
 uZA
@@ -65624,24 +65927,24 @@ tKS
 tKS
 tKS
 tKS
-pCm
-pCm
-pCm
-pCm
-izj
+jtu
+jtu
+jtu
+jtu
+jGj
 wtA
-pCm
-pCm
+jtu
+jtu
 xwr
 xwr
 xwr
 ciM
-qer
-qer
-qer
-qer
-qer
-qer
+hXK
+hXK
+hXK
+hXK
+hXK
+hXK
 nVL
 reO
 reO
@@ -65848,24 +66151,24 @@ tKS
 tKS
 tKS
 tKS
-pCm
-oCr
-oCr
-oCr
-izj
-izj
-tVu
-pCm
-rnp
-rnp
-rnp
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
+jtu
+wSU
+wSU
+wSU
+jGj
+jGj
+fBD
+jtu
+ovc
+ovc
+ovc
+hnx
+hnx
+hnx
+hnx
+hnx
+hnx
+hnx
 cUi
 reO
 reO
@@ -66072,24 +66375,24 @@ tKS
 tKS
 tKS
 tKS
-pCm
+jtu
 wrm
-izj
-izj
-izj
+jGj
+jGj
+jGj
 wrm
-nLX
-pCm
-nRr
-nRr
-nRr
-pCm
-rnp
-rnp
-rnp
-rnp
-rnp
-pCm
+wOe
+jtu
+tKS
+tKS
+tKS
+hnx
+ovc
+ovc
+ovc
+ovc
+ovc
+hnx
 amg
 reO
 reO
@@ -66296,25 +66599,25 @@ tKS
 tKS
 tKS
 tKS
-pCm
-izj
+jtu
+jGj
 wrm
-izj
-izj
-izj
+jGj
+jGj
+jGj
 nsP
-pCm
-nRr
-nRr
+jtu
+tKS
+tKS
 vZb
-pCm
+hnx
 lgS
 hWC
 lgS
 hWC
 lgS
-pCm
-vDu
+hnx
+ajX
 reO
 tOz
 reO
@@ -66510,27 +66813,27 @@ tKS
 tKS
 nTq
 xAv
-pCm
-pCm
+dea
+dea
 rDq
 rDq
 rDq
-pCm
+dea
 xRb
 xRb
 xRb
-pCm
-pCm
-izj
+dea
+jtu
+jGj
 wtA
-pCm
+jtu
 afM
 ewp
-pCm
-pCm
-nRr
-nRr
-nRr
+jtu
+jtu
+tKS
+tKS
+tKS
 nWw
 hWC
 hWC
@@ -66734,27 +67037,27 @@ tKS
 tKS
 muq
 llH
-pCm
+dea
 bdt
-aUt
-aUt
-aUt
-aUt
-aUt
-aUt
-aUt
+xGa
+xGa
+xGa
+xGa
+xGa
+xGa
+xGa
 pMV
-pCm
-izj
+jtu
+jGj
 wrm
-mXD
-mXD
-mXD
+ahx
+ahx
+ahx
 wzF
-pCm
-nRr
-nRr
-nRr
+jtu
+tKS
+tKS
+tKS
 esE
 hWC
 hWC
@@ -66762,7 +67065,7 @@ hWC
 hWC
 hWC
 nEn
-vDu
+ajX
 wqX
 hre
 kpV
@@ -66958,27 +67261,27 @@ tKS
 nTq
 ttB
 reO
-pCm
-aUt
-aUt
-nSP
-aUt
-aUt
-aUt
-aUt
-aUt
-aUt
-pCm
-izj
-izj
-mXD
+dea
+xGa
+xGa
+mVi
+xGa
+xGa
+xGa
+xGa
+xGa
+xGa
+jtu
+jGj
+jGj
+ahx
 wrm
-rOo
-izj
-pCm
-nRr
-nRr
-nRr
+qxW
+jGj
+jtu
+tKS
+tKS
+tKS
 esE
 otV
 hWC
@@ -67182,33 +67485,33 @@ tKS
 muq
 wqX
 reO
-pCm
-jiV
-nSP
-aUt
-aUt
-aUt
-aUt
-aUt
-aUt
-aUt
-pCm
-izj
-izj
-izj
-izj
-izj
-izj
-pCm
-nRr
-nRr
-nRr
+dea
+vGK
+mVi
+xGa
+xGa
+xGa
+xGa
+xGa
+xGa
+xGa
+jtu
+jGj
+jGj
+jGj
+jGj
+jGj
+jGj
+jtu
+tKS
+tKS
+tKS
 esE
-izj
-izj
-izj
-izj
-izj
+dkU
+dkU
+dkU
+dkU
+dkU
 nEn
 amg
 hre
@@ -67406,27 +67709,27 @@ tKS
 muq
 reO
 tOz
-pCm
-aUt
-aUt
-aUt
-aUt
-aUt
-aUt
-nSP
-aUt
-aUt
+dea
+xGa
+xGa
+xGa
+xGa
+xGa
+xGa
+mVi
+xGa
+xGa
 lcg
-izj
-izj
-eff
-eff
-eff
-eff
-pCm
-nRr
-nRr
-nRr
+gDj
+gDj
+dey
+dey
+dey
+dey
+hnx
+tKS
+tKS
+tKS
 esE
 hWC
 hWC
@@ -67630,27 +67933,27 @@ tKS
 muq
 tOz
 reO
-pCm
+dea
 ygd
-aUt
-aUt
-aUt
-aUt
-aUt
-aUt
-aUt
-aUt
-izj
-izj
-izj
+xGa
+xGa
+xGa
+xGa
+xGa
+xGa
+xGa
+xGa
+gNR
+gDj
+gDj
 dCD
-izj
-izj
-izj
-uKK
-nRr
-nRr
-nRr
+gDj
+gDj
+gDj
+iOG
+tKS
+tKS
+tKS
 esE
 hWC
 hWC
@@ -67854,34 +68157,34 @@ tKS
 muq
 reO
 reO
-pCm
-tBE
-tBE
-pCm
-uKK
-uKK
+dea
+sNm
+sNm
+dea
+rkU
+rkU
 xuL
-pCm
-pCm
-pCm
-pCm
-izj
-izj
-eff
-qri
-mXD
+qJd
+qJd
+qJd
+qJd
+gDj
+gDj
+dey
+vhG
+cLB
 xuI
-uKK
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
+iOG
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
 amg
 xAV
 tKS
@@ -68078,34 +68381,34 @@ tKS
 muq
 reO
 reO
-pCm
+hnx
 mcl
 aFI
-uKK
-mXD
-mXD
-izj
-eff
-oCr
-izj
+iOG
+cLB
+cLB
+gDj
+oLa
+hbr
+riw
 rMf
-izj
-izj
-btA
-qri
-mXD
+gDj
+gDj
+hxg
+vhG
+cLB
 xuI
-uKK
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
+iOG
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
 amg
 xAV
 tKS
@@ -68302,35 +68605,35 @@ tKS
 muq
 reO
 wqX
-pCm
+hnx
 sZw
 cjF
-uKK
-izj
-izj
-izj
-eff
+iOG
+gDj
+gDj
+gDj
+oLa
 wOl
-izj
-eff
-izj
-izj
-eff
-eff
-eff
-eff
-pCm
-nRr
-nRr
-nRr
+riw
+oLa
+gDj
+gDj
+dey
+dey
+dey
+dey
+hnx
+tKS
+tKS
+tKS
 vZb
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
+wSL
+wSL
+wSL
+wSL
+wSL
+wSL
+wSL
 xAV
 tKS
 lpB
@@ -68526,35 +68829,35 @@ tKS
 muq
 reO
 reO
-pCm
-slT
+hnx
+xqV
 aNs
-pCm
-izj
-izj
-izj
-eff
-eeR
-izj
-eff
-aHi
-izj
+hnx
+gDj
+gDj
+gDj
+oLa
+rbd
+riw
+oLa
+klV
+gDj
 fLz
-nsP
-nLX
-tVu
-pCm
-nRr
-nRr
-nRr
-nRr
+tXu
+sLk
+lzU
+hnx
+tKS
+tKS
+tKS
+tKS
 uKK
-slT
-izj
+hNa
+xUG
 tRW
-izj
+xUG
 qql
-pCm
+wSL
 xAV
 tKS
 muq
@@ -68750,35 +69053,35 @@ tKS
 muq
 tOz
 nmH
-pCm
-slT
-slT
+hnx
+xqV
+xqV
 bTb
-izj
-izj
-izj
-eff
-eff
-eff
-eff
-izj
-izj
-izj
-izj
-izj
-izj
+gDj
+gDj
+gDj
+oLa
+oLa
+oLa
+oLa
+gDj
+gDj
+gDj
+gDj
+gDj
+gDj
 mDc
-nRr
-nRr
-nRr
-nRr
+tKS
+tKS
+tKS
+tKS
 uKK
-slT
-izj
+hNa
+xUG
 uKK
 arq
 tRt
-pCm
+wSL
 xAV
 tKS
 muq
@@ -68973,36 +69276,36 @@ tKS
 tKS
 muq
 wqX
-pCm
-pCm
-eff
-eff
-eff
-izj
-izj
-izj
-izj
-izj
-izj
-izj
-izj
-pCm
-pCm
-pCm
-pCm
-pCm
-eff
-eff
-nRr
-nRr
-nRr
+hnx
+hnx
+dey
+dey
+dey
+gDj
+gDj
+gDj
+gDj
+gDj
+gDj
+gDj
+gDj
+bQE
+bQE
+bQE
+bQE
+bQE
+bQE
+tKS
+tKS
+tKS
+tKS
 uKK
-slT
-izj
-pCm
-pCm
-pCm
-pCm
+hNa
+xUG
+wSL
+wSL
+wSL
+wSL
 xAV
 tKS
 muq
@@ -69197,36 +69500,36 @@ tKS
 tKS
 muq
 wqX
-pCm
+hnx
 aFI
 aFI
 aFI
 ahM
-izj
-izj
+gDj
+gDj
 cCx
-slT
-izj
+xqV
+gDj
 owW
 owW
-izj
-izj
-izj
-izj
-izj
-izj
-izj
-eff
-nRr
-nRr
-nRr
+gDj
+irh
+irh
+irh
+irh
+irh
+bQE
+tKS
+tKS
+tKS
+tKS
 uKK
-slT
-izj
+hNa
+xUG
 tRW
-izj
+xUG
 qql
-pCm
+wSL
 xAV
 tKS
 muq
@@ -69421,36 +69724,36 @@ tKS
 tKS
 muq
 tOz
-pCm
+hnx
 cHY
-slT
-slT
-slT
-izj
-izj
+xqV
+xqV
+xqV
+gDj
+gDj
 cCx
-slT
-izj
+xqV
+gDj
 owW
 owW
-izj
-pCm
-izj
+gDj
+bQE
+irh
 dLJ
 vnJ
-izj
-izj
-eff
-nRr
-nRr
-nRr
+irh
+bQE
+tKS
+tKS
+tKS
+tKS
 uKK
 mLG
-izj
+xUG
 uKK
 arq
 tRt
-pCm
+wSL
 xAV
 tKS
 muq
@@ -69645,36 +69948,36 @@ tKS
 tKS
 muq
 reO
-pCm
-eff
-eff
-slT
-slT
-izj
-izj
+hnx
+dey
+dey
+xqV
+xqV
+gDj
+gDj
 cCx
-slT
-izj
+xqV
+gDj
 owW
 owW
-izj
-uKK
-izj
+gDj
+hII
+irh
 vaW
 uVJ
-izj
-izj
-eff
-nRr
-nRr
-nRr
+irh
+bQE
+tKS
+tKS
+tKS
+tKS
 uKK
 kAk
-izj
-pCm
-pCm
-pCm
-pCm
+xUG
+wSL
+wSL
+wSL
+wSL
 xAV
 tKS
 muq
@@ -69869,36 +70172,36 @@ tKS
 tKS
 muq
 llH
-pCm
+hnx
 aFI
 edN
-izj
-izj
-izj
-izj
-izj
-izj
-izj
-izj
-izj
-izj
-uKK
-izj
+gDj
+gDj
+gDj
+gDj
+gDj
+gDj
+gDj
+gDj
+gDj
+gDj
+hII
+irh
 fjZ
-izj
-izj
-izj
-eff
-nRr
-nRr
-nRr
+irh
+irh
+bQE
+tKS
+tKS
+tKS
+tKS
 uKK
-slT
-izj
+hNa
+xUG
 tRW
-izj
+xUG
 qql
-pCm
+wSL
 xAV
 tKS
 muq
@@ -70093,36 +70396,36 @@ tKS
 tKS
 muq
 reO
-pCm
+hnx
 qab
 neb
-izj
-izj
-izj
-izj
-izj
-izj
-izj
-pCm
-pCm
+gDj
+gDj
+gDj
+gDj
+gDj
+gDj
+gDj
+hnx
+hnx
 xrK
-pCm
-pCm
-pCm
-pCm
-pCm
-eff
-eff
-nRr
-nRr
-nRr
+bQE
+bQE
+bQE
+bQE
+bQE
+bQE
+tKS
+tKS
+tKS
+tKS
 uKK
-slT
-izj
+hNa
+xUG
 uKK
 arq
 tRt
-pCm
+wSL
 osF
 tKS
 lpB
@@ -70317,36 +70620,36 @@ tKS
 tKS
 muq
 reO
-pCm
+hnx
 rtD
 gFP
-izj
+gDj
 sBY
 gFP
-izj
-eff
-eff
-eff
-pCm
-mXD
-izj
+gDj
+dey
+dey
+dey
+hnx
+cLB
+gDj
 trE
-izj
-izj
-izj
-pCm
-nRr
-nRr
-nRr
-nRr
-nRr
+gDj
+gDj
+gDj
+hnx
+tKS
+tKS
+tKS
+tKS
+tKS
 uKK
-slT
-izj
-pCm
-pCm
-pCm
-pCm
+hNa
+plU
+wSL
+wSL
+wSL
+wSL
 tKS
 tKS
 muq
@@ -70541,36 +70844,36 @@ tKS
 tKS
 fFi
 uGi
-pCm
+hnx
 qab
 tGc
-izj
+gDj
 iSL
 yfP
-izj
-eff
+gDj
+dey
 mpI
-aqt
-pCm
-mXD
-qri
+vTn
+hnx
+cLB
+vhG
 jwq
-izj
-izj
+gDj
+gDj
 sFK
-pCm
-nRr
-nRr
-nRr
-nRr
-nRr
+hnx
+tKS
+tKS
+tKS
+tKS
+tKS
 uKK
-slT
-izj
+hNa
+xUG
 tRW
-izj
+xUG
 qql
-pCm
+wSL
 tKS
 tKS
 muq
@@ -70765,36 +71068,36 @@ tKS
 tKS
 tKS
 muq
-pCm
+hnx
 rtD
 otR
-izj
+gDj
 mjo
 gFP
-izj
-psJ
-slT
-slT
-pCm
-mXD
-qri
+gDj
+ugd
+xqV
+xqV
+hnx
+cLB
+vhG
 jwq
-izj
-izj
-izj
-pCm
-nRr
-nRr
-nRr
-nRr
-nRr
+gDj
+gDj
+gDj
+hnx
+tKS
+tKS
+tKS
+tKS
+tKS
 uKK
-slT
-izj
+hNa
+xUG
 uKK
 arq
 tRt
-pCm
+wSL
 tKS
 tKS
 pCm
@@ -70989,36 +71292,36 @@ tKS
 tKS
 tKS
 muq
-pCm
+hnx
 qab
 yfP
 nrZ
 ksM
 yfP
-izj
-eff
-eff
-eff
-pCm
-mXD
-qri
+gDj
+dey
+dey
+dey
+hnx
+cLB
+vhG
 jwq
-izj
-izj
-izj
-pCm
-nRr
-nRr
-nRr
-nRr
-nRr
-pCm
-izj
+gDj
+gDj
+gDj
+hnx
+tKS
+tKS
+tKS
+tKS
+tKS
+wSL
+xUG
 gtP
-pCm
-pCm
-pCm
-pCm
+wSL
+wSL
+wSL
+wSL
 tKS
 tKS
 pCm
@@ -71213,35 +71516,35 @@ tKS
 tKS
 tKS
 muq
-pCm
+hnx
 rtD
 otR
-izj
-izj
-izj
-izj
-psJ
-slT
-slT
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
+gDj
+gDj
+gDj
+gDj
+ugd
+xqV
+xqV
+hnx
+hnx
+hnx
+hnx
+hnx
+hnx
+hnx
+hnx
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
 gAN
 tKS
 tKS
@@ -71437,35 +71740,35 @@ tKS
 tKS
 tKS
 muq
-pCm
+hnx
 aFI
 edN
-izj
-izj
-izj
-izj
-eff
+gDj
+gDj
+gDj
+gDj
+dey
 mpI
-moH
-pCm
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
+evf
+hnx
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
 gAN
 tKS
 tKS
@@ -71661,35 +71964,35 @@ tKS
 tKS
 tKS
 muq
-pCm
-pCm
-pCm
-pCm
-izj
-wtA
-pCm
-pCm
-pCm
-pCm
-pCm
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
+hnx
+hnx
+hnx
+hnx
+gDj
+uqp
+hnx
+hnx
+hnx
+hnx
+hnx
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
 gAN
 tKS
 tKS
@@ -71886,34 +72189,34 @@ tKS
 tKS
 muq
 wqX
-xVZ
-mEr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
+gCK
+dJt
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
 gAN
 tKS
 tKS
@@ -72110,34 +72413,34 @@ tKS
 nTq
 ttB
 reO
-xVZ
-mEr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-pCm
-uKK
-uKK
-uKK
-pCm
+gCK
+dJt
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+guM
+mtE
+mtE
+mtE
+guM
 xZR
-pCm
-nRr
-nRr
-nRr
-nRr
-nRr
+guM
+tKS
+tKS
+tKS
+tKS
+tKS
 gAN
 tKS
 tKS
@@ -72334,34 +72637,34 @@ tKS
 muq
 llH
 reO
-xVZ
-mEr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-pCm
-pCm
-uKK
-pCm
-pCm
+gCK
+dJt
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+tKS
+guM
+guM
+mtE
+guM
+guM
 tRp
 mXD
 mXD
 mXD
-izj
-pCm
-pCm
-uKK
-pCm
-pCm
-nRr
+gcU
+guM
+guM
+mtE
+guM
+guM
+tKS
 gAN
 tKS
 tKS
@@ -72558,35 +72861,35 @@ tKS
 muq
 reO
 tOz
-xVZ
-mEr
-nRr
-nRr
-nRr
+gCK
+dJt
+tKS
+tKS
+tKS
 nvE
-iej
-nRr
-nRr
-nRr
-pCm
-pCm
-pCm
+bOS
+tKS
+tKS
+tKS
+guM
+guM
+guM
 kxq
 lGb
 xhr
-eff
+lSd
 mXD
-izj
-izj
-izj
-izj
-eff
+gcU
+gcU
+gcU
+gcU
+lSd
 kxq
 lGb
 xhr
-pCm
-pCm
-pCm
+guM
+guM
+guM
 skh
 tKS
 nTq
@@ -72782,35 +73085,35 @@ tKS
 muq
 reO
 reO
-pCm
-pCm
-izj
-wtA
-pCm
-pCm
-pCm
-pCm
-nRr
-nRr
-pCm
+pWg
+pWg
+xPb
+rDA
+pWg
+pWg
+pWg
+pWg
+tKS
+tKS
+guM
 tTS
-psJ
-izj
+lka
+gcU
 hDQ
-izj
+gcU
 ldT
-izj
-izj
-izj
-izj
-izj
+gcU
+gcU
+gcU
+gcU
+gcU
 ldT
-izj
+gcU
 hDQ
-izj
-psJ
-qCJ
-pCm
+gcU
+lka
+lxu
+guM
 xAV
 tKS
 fFi
@@ -73006,35 +73309,35 @@ tKS
 muq
 reO
 reO
-pCm
+pWg
 afL
-izj
-izj
-izj
-izj
+xPb
+xPb
+xPb
+xPb
 hmL
-pCm
-nRr
-nRr
-pCm
+pWg
+tKS
+tKS
+guM
 moH
-eff
+lSd
 vZr
-arm
-arm
-eff
-izj
+usY
+usY
+lSd
+gcU
 mec
 mec
 mec
-izj
-eff
+gcU
+lSd
 rsY
-arm
-arm
-eff
+usY
+usY
+lSd
 moH
-pCm
+guM
 xAV
 tKS
 tKS
@@ -73230,35 +73533,35 @@ tKS
 muq
 tOz
 nmH
-pCm
+pWg
 pQp
-izj
-izj
+xPb
+xPb
 tgz
-izj
+xPb
 tgz
-pCm
-nRr
-nRr
-pCm
-eff
-eff
-eff
-eff
-eff
-eff
-aHi
+pWg
+tKS
+tKS
+guM
+lSd
+lSd
+lSd
+lSd
+lSd
+lSd
+oXu
 eKv
 qlW
 pGl
-izj
-eff
-eff
-eff
-eff
-eff
-eff
-pCm
+gcU
+lSd
+lSd
+lSd
+lSd
+lSd
+lSd
+guM
 xAV
 tKS
 tKS
@@ -73454,35 +73757,35 @@ tKS
 muq
 wqX
 reO
-pCm
+pWg
 daf
-izj
-izj
+xPb
+xPb
 tgz
-izj
+xPb
 tgz
-pCm
-nRr
-nRr
-pCm
-aqt
-eff
+pWg
+tKS
+tKS
+guM
+cVk
+lSd
 upo
-arm
-arm
-eff
-izj
+usY
+usY
+lSd
+gcU
 aLK
 aLK
 aLK
-izj
-eff
+gcU
+lSd
 tmd
 hbK
-arm
-eff
-aqt
-pCm
+usY
+lSd
+cVk
+guM
 xAV
 tKS
 tKS
@@ -73678,35 +73981,35 @@ tKS
 muq
 reO
 reO
-pCm
+pWg
 jqK
 gPw
-izj
+xPb
 sAD
-izj
+xPb
 fVf
-pCm
-gKh
-gKh
-pCm
+pWg
+dGK
+dGK
+guM
 tTS
-psJ
-izj
+lka
+gcU
 rOo
-izj
+gcU
 ldT
-izj
-izj
-izj
-izj
-izj
+gcU
+gcU
+gcU
+gcU
+gcU
 ldT
-izj
+gcU
 rOo
-izj
-psJ
-qCJ
-pCm
+gcU
+lka
+lxu
+guM
 xAV
 tKS
 tKS
@@ -73902,35 +74205,35 @@ tKS
 fFi
 uGi
 tOz
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-ont
-ont
-pCm
-pCm
-pCm
+pWg
+pWg
+pWg
+pWg
+pWg
+pWg
+pWg
+pWg
+cNx
+cNx
+guM
+guM
+guM
 kxq
 vvD
 xhr
-eff
-izj
-izj
-izj
-izj
-izj
-eff
+lSd
+gcU
+gcU
+gcU
+gcU
+gcU
+lSd
 kxq
 vvD
 xhr
-pCm
-pCm
-pCm
+guM
+guM
+guM
 xAV
 tKS
 tKS
@@ -74138,21 +74441,21 @@ kpV
 uGi
 llH
 tOz
-pCm
-pCm
-uKK
-pCm
-eff
-eff
-eff
+guM
+guM
+mtE
+guM
+lSd
+lSd
+lSd
 hzi
-eff
-eff
-eff
-pCm
-uKK
-pCm
-pCm
+lSd
+lSd
+lSd
+guM
+mtE
+guM
+guM
 llH
 hre
 osF
@@ -74365,15 +74668,15 @@ uGi
 reO
 tOz
 reO
-pCm
-slT
+guM
+wOZ
 jQM
-slT
-slT
-slT
+wOZ
+wOZ
+wOZ
 jQM
-slT
-pCm
+wOZ
+guM
 reO
 reO
 tOz
@@ -74589,15 +74892,15 @@ fFi
 kpV
 uGi
 llH
-pCm
+guM
 xRU
-eff
-spx
-slT
+lSd
+amQ
+wOZ
 xRU
-eff
-spx
-pCm
+lSd
+amQ
+guM
 reO
 wqX
 hre
@@ -74813,15 +75116,15 @@ tKS
 tKS
 fFi
 uGi
-pCm
-slT
+guM
+wOZ
 bEC
 lNB
 lNB
 lNB
 bEC
-slT
-pCm
+wOZ
+guM
 reO
 hre
 osF
@@ -75037,15 +75340,15 @@ tKS
 tKS
 tKS
 fFi
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
+guM
+guM
+guM
+guM
+guM
+guM
+guM
+guM
+guM
 hre
 osF
 tKS

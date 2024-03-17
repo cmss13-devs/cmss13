@@ -83,6 +83,9 @@
 /area/lv553/outdoors/uscm_garrison_exterior/entrance
 	name = "USCM Garrison - Entrance Exterior"
 
+/area/lv553/outdoors/cmb/exterior
+	name = "Colonial Marshals Bureau - Exterior"
+
 /area/lv553/outdoors/flooded_streets/west
 	name = "Flooded Streets - West"
 
@@ -296,35 +299,35 @@
 	icon_state = "sewers4"
 
 /area/lv553/indoors/marshals/reception
-	name = "Office of the Colonial Marshals - Reception"
+	name = "Colonial Marshals Bureau - Reception"
 	icon_state = "shed_1_ug"
 
 /area/lv553/indoors/marshals/garage
-	name = "Office of the Colonial Marshals - Garage"
+	name = "Colonial Marshals Bureau - Garage"
 	icon_state = "shed_2_ug"
 
 /area/lv553/indoors/marshals/interrogation
-	name = "Office of the Colonial Marshals - Interrogation Room"
+	name = "Colonial Marshals Bureau - Interrogation Room"
 	icon_state = "shed_3_ug"
 
 /area/lv553/indoors/marshals/marshalsoffice
-	name = "Office of the Colonial Marshals - Marshals Office"
+	name = "Colonial Marshals Bureau - Marshals Office"
 	icon_state = "shed_4_ug"
 
 /area/lv553/indoors/marshals/mainhall
-	name = "Office of the Colonial Marshals - Main Building"
+	name = "Colonial Marshals Bureau - Main Building"
 	icon_state = "shed_5_ug"
 
 /area/lv553/indoors/marshals/cells
-	name = "Office of the Colonial Marshals - Cellblock"
+	name = "Colonial Marshals Bureau - Cellblock"
 	icon_state = "shed_6_ug"
 
 /area/lv553/indoors/marshals/barracks
-	name = "Office of the Colonial Marshals - Barracks"
+	name = "Colonial Marshals Bureau - Barracks"
 	icon_state = "shed_7_ug"
 
 /area/lv553/indoors/marshals/storage
-	name = "Office of the Colonial Marshals - Storage Shed"
+	name = "Colonial Marshals Bureau - Storage Shed"
 	icon_state = "shed_8_ug"
 
 /area/lv553/indoors/lone_buildings

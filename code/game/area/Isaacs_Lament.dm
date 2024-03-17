@@ -280,11 +280,11 @@
 
 /area/lv553/indoors/operations/serverroom
 	name = "Operations - Server Room"
-	icon_state = "outpost_admin_4"
+	icon_state = "tcomms1"
 
 /area/lv553/indoors/operations/lockerroom
 	name = "Operations - Locker Room"
-	icon_state = "outpost_admin_5"
+	icon_state = "outpost_admin_4"
 
 /area/lv553/indoors/operations/xenobiological_research
 	name = "Operations - Xenobiological Research"
@@ -329,6 +329,10 @@
 /area/lv553/indoors/marshals/storage
 	name = "Colonial Marshals Bureau - Storage Shed"
 	icon_state = "security_station"
+
+/area/lv553/indoors/power_station
+	name = "Power Station - Main Building"
+	icon_state = "outpost_engi_1"
 
 /area/lv553/indoors/southwest/slums
 	name = "Southwest - Slums and Houses"
@@ -464,3 +468,7 @@
 /area/lv553/indoors/lone_buildings/weymart
 	name = "Issac's Lament - North-East - Wey-Mart"
 	icon_state = "shed_3_ag"
+
+/area/lv553/indoors/lone_buildings/tcomms
+	name = "Issac's Lament - North-East - Telecommunications Tower"
+	icon_state = "tcomms3"

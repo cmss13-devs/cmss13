@@ -295,6 +295,38 @@
 	name = "Operations - South Maintenance"
 	icon_state = "sewers4"
 
+/area/lv553/indoors/marshals/reception
+	name = "Office of the Colonial Marshals - Reception"
+	icon_state = "shed_1_ug"
+
+/area/lv553/indoors/marshals/garage
+	name = "Office of the Colonial Marshals - Garage"
+	icon_state = "shed_2_ug"
+
+/area/lv553/indoors/marshals/interrogation
+	name = "Office of the Colonial Marshals - Interrogation Room"
+	icon_state = "shed_3_ug"
+
+/area/lv553/indoors/marshals/marshalsoffice
+	name = "Office of the Colonial Marshals - Marshals Office"
+	icon_state = "shed_4_ug"
+
+/area/lv553/indoors/marshals/mainhall
+	name = "Office of the Colonial Marshals - Main Building"
+	icon_state = "shed_5_ug"
+
+/area/lv553/indoors/marshals/cells
+	name = "Office of the Colonial Marshals - Cellblock"
+	icon_state = "shed_6_ug"
+
+/area/lv553/indoors/marshals/barracks
+	name = "Office of the Colonial Marshals - Barracks"
+	icon_state = "shed_7_ug"
+
+/area/lv553/indoors/marshals/storage
+	name = "Office of the Colonial Marshals - Storage Shed"
+	icon_state = "shed_8_ug"
+
 /area/lv553/indoors/lone_buildings
 	icon_state = "shed_x_ag"
 
@@ -349,3 +381,7 @@
 /area/lv553/indoors/lone_buildings/flynns_bar
 	name = "Issac's Lament - North-East - Flynn's Bar"
 	icon_state = "shed_1_ag"
+
+/area/lv553/indoors/lone_buildings/flynns_bar
+	name = "Issac's Lament - North-East - Mechanic's Shop"
+	icon_state = "shed_2_ag"

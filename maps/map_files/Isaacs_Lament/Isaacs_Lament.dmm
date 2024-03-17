@@ -10,7 +10,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "aam" = (
 /turf/open/gm/river,
 /area/lv553/outdoors/flooded_streets/west)
@@ -40,7 +40,9 @@
 /obj/structure/machinery/atm{
 	pixel_y = 30
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/flynns_bar)
 "abW" = (
 /obj/structure/surface/table/almayer,
@@ -746,7 +748,7 @@
 	},
 /area/lv553/indoors/operations/hallway/west)
 "ata" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Jeppson's Memorial Hospital Reception"
 	},
@@ -803,7 +805,7 @@
 /obj/structure/surface/table,
 /obj/item/map/current_map,
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "awf" = (
 /obj/item/spacecash/c20{
 	pixel_x = 8;
@@ -967,7 +969,7 @@
 	},
 /area/lv553/outdoors/colony_streets/northeast)
 "aCw" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "darkblue2"
@@ -1085,7 +1087,7 @@
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "aFe" = (
 /obj/item/bedsheet/captain,
 /turf/open/floor/wood,
@@ -1155,16 +1157,16 @@
 /obj/structure/sign/safety/coffee{
 	pixel_x = -17
 	},
-/obj/structure/machinery/vending/coffee/simple{
-	pixel_x = -5;
-	pixel_y = 1
-	},
 /obj/structure/transmitter{
 	name = "/proper power station telephone";
 	phone_category = "Offices";
 	phone_id = "Power Station";
 	pixel_x = 9;
 	pixel_y = 30
+	},
+/obj/structure/machinery/vending/coffee{
+	pixel_x = -5;
+	pixel_y = 1
 	},
 /turf/open/floor{
 	dir = 8;
@@ -1236,7 +1238,7 @@
 	dir = 4
 	},
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "aIh" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder{
@@ -1315,6 +1317,12 @@
 /obj/structure/fence,
 /turf/open/gm/grass,
 /area/lv553/outdoors/flooded_streets/waste_treatment)
+"aJV" = (
+/obj/structure/machinery/light/small,
+/turf/open/floor{
+	icon_state = "freezerfloor"
+	},
+/area/lv553/indoors/lone_buildings/pizza)
 "aJX" = (
 /obj/item/trash/crushed_cup,
 /turf/open/gm/river,
@@ -1643,6 +1651,12 @@
 	},
 /turf/open/floor/plating,
 /area/lv553/oob)
+"aRM" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/lone_buildings/weymart)
 "aRR" = (
 /obj/structure/barricade/sandbags/wired{
 	icon_state = "sandbag_0"
@@ -1678,10 +1692,8 @@
 	},
 /area/lv553/indoors/lone_buildings/army_surplus)
 "aSx" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	density = 2;
-	locked = 1;
-	name = "mechanic shop door"
+/obj/structure/machinery/door/airlock/almayer/generic/glass{
+	name = "\improper Liam's Automobile Repair Shop"
 	},
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/mechanic_shop)
@@ -1721,6 +1733,9 @@
 	icon_state = "warnplate"
 	},
 /area/lv553/oob)
+"aUO" = (
+/turf/closed/wall/r_wall,
+/area/lv553/indoors/lone_buildings/weymart)
 "aUT" = (
 /obj/structure/machinery/computer/cameras/wooden_tv{
 	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW.";
@@ -2200,10 +2215,8 @@
 /turf/open/gm/dirt,
 /area/lv553/landing_zone_2)
 "biz" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	density = 2;
-	locked = 1;
-	name = "mechanic shop door"
+/obj/structure/machinery/door/airlock/almayer/engineering/glass/colony{
+	name = "\improper Liam's Automobile Repair Shop Garage"
 	},
 /turf/open/asphalt/cement,
 /area/lv553/indoors/lone_buildings/mechanic_shop)
@@ -2312,24 +2325,24 @@
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "bme" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/rifle/mar40,
 /turf/open/floor/wood,
 /area/lv553/oob)
 "bmE" = (
-/obj/item/paper/crumpled{
-	pixel_y = 18
-	},
 /obj/structure/toilet{
 	pixel_y = 16;
 	name = "blocked toilet"
 	},
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "bmF" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 1
@@ -2441,14 +2454,14 @@
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "bpZ" = (
 /obj/structure/machinery/door/airlock/almayer/generic/glass{
 	name = "\improper Weyland-Yutani Gold Insurance";
 	dir = 1
 	},
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/insurance)
 "brb" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -3507,6 +3520,10 @@
 "bVn" = (
 /turf/open/asphalt/cement,
 /area/lv553/indoors/bungalow_manager)
+"bVx" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/lv553/indoors/lone_buildings/travel_agency)
 "bVG" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/xeno,
@@ -3637,6 +3654,12 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
+"bXD" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/travel_agency)
 "bXZ" = (
 /obj/structure/surface/table/woodentable,
 /obj/structure/sign/poster/propaganda{
@@ -3764,6 +3787,11 @@
 	dir = 1
 	},
 /area/lv553/landing_zone_2)
+"cbK" = (
+/turf/open/floor{
+	icon_state = "dark2"
+	},
+/area/lv553/indoors/lone_buildings/flynns_bar)
 "ccg" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/grass,
@@ -3844,8 +3872,7 @@
 	name = "\improper Bathroom"
 	},
 /turf/open/floor{
-	dir = 8;
-	icon_state = "barber"
+	icon_state = "freezerfloor"
 	},
 /area/lv553/indoors/welcome_center/lobby)
 "ceb" = (
@@ -3876,6 +3903,12 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
+"cer" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/insurance)
 "ceK" = (
 /obj/structure/machinery/vending/cigarette/colony,
 /obj/structure/machinery/light{
@@ -3934,7 +3967,7 @@
 	layer = 3.25
 	},
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "cgF" = (
 /obj/structure/sign/poster/ad{
 	pixel_x = 32
@@ -4042,6 +4075,10 @@
 	icon_state = "white"
 	},
 /area/lv553/indoors/hospital/operating_rooms)
+"ckq" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/mechanic_shop)
 "ckt" = (
 /obj/item/paper/crumpled{
 	pixel_x = 16;
@@ -4077,6 +4114,9 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv553/indoors/lone_buildings/clf_house)
+"clw" = (
+/turf/closed/wall,
+/area/lv553/indoors/lone_buildings/weymart)
 "clL" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/snacks/grown/tomato,
@@ -4217,6 +4257,9 @@
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
+"cps" = (
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/insurance)
 "cpC" = (
 /obj/structure/holohoop{
 	pixel_y = 26
@@ -4695,7 +4738,7 @@
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "cCw" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/rifle/m41aMK1,
@@ -4763,7 +4806,7 @@
 /area/lv553/indoors/hospital/garage)
 "cDK" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "apartment door"
+	name = "\improper Flynn's Apartment"
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/flynns_bar)
@@ -4915,7 +4958,7 @@
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "cHF" = (
 /obj/structure/bed,
 /obj/item/bedsheet/captain,
@@ -5003,6 +5046,19 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/gated_community/director_of_coporate_relations)
+"cKw" = (
+/obj/structure/machinery/computer/cameras/wooden_tv{
+	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW.";
+	dir = 4;
+	layer = 3.2;
+	name = "Television set";
+	network = null;
+	pixel_x = -7;
+	pixel_y = 3
+	},
+/obj/structure/surface/table/woodentable,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/flynns_bar)
 "cKB" = (
 /turf/open/gm/dirt,
 /area/lv553/outdoors/gated_community_exterior)
@@ -5098,7 +5154,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "cMs" = (
 /obj/item/trash/hotdog,
 /turf/open/floor/wood,
@@ -5590,7 +5646,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "cYn" = (
 /obj/structure/sign/safety/storage{
 	pixel_x = 34;
@@ -6241,7 +6297,7 @@
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "dnS" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Bathroom"
@@ -6329,6 +6385,13 @@
 "dqX" = (
 /turf/closed/wall,
 /area/lv553/indoors/uscm_garrison/garrison_bunks)
+"dqZ" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "redfull"
+	},
+/area/lv553/indoors/lone_buildings/pizza)
 "dro" = (
 /obj/structure/surface/table,
 /obj/structure/window{
@@ -6409,11 +6472,9 @@
 /turf/open/asphalt/cement,
 /area/lv553/outdoors/colony_streets/southwest)
 "dsn" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	density = 2;
+/obj/structure/machinery/door/airlock/almayer/security/colony{
 	dir = 1;
-	locked = 1;
-	name = "\improper gatehouse door"
+	name = "\improper Security Checkpoint"
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -6535,6 +6596,11 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/lv553/indoors/operations/hallway/south)
+"duw" = (
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/indoors/lone_buildings/flynns_bar)
 "duB" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -6604,7 +6670,7 @@
 /turf/open/floor/wood,
 /area/lv553/indoors/gated_community/head_of_corporate_security)
 "dwu" = (
-/obj/structure/machinery/vending/coffee/simple,
+/obj/structure/machinery/vending/coffee,
 /turf/open/floor/wood,
 /area/lv553/indoors/gated_community/director_of_corporate_research)
 "dwF" = (
@@ -6738,7 +6804,7 @@
 /area/lv553/indoors/hospital/outpatients_and_icu)
 "dAk" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "Bedroom";
+	name = "\improper Bedroom";
 	dir = 1
 	},
 /turf/open/floor/wood,
@@ -6787,7 +6853,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "dAZ" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
@@ -7012,9 +7078,9 @@
 	},
 /area/lv553/indoors/hospital/storage_laundyroom_and_breakroom)
 "dJl" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/generic/glass{
 	dir = 1;
-	name = "\improper Colony Administrator's Bungalow"
+	name = "\improper Corporate Administrator's Bungalow"
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/bungalow_manager)
@@ -7063,6 +7129,11 @@
 	icon_state = "darkblue2"
 	},
 /area/lv553/indoors/operations/xenobiological_research)
+"dJR" = (
+/obj/structure/reagent_dispensers/fueltank/gas,
+/obj/structure/machinery/light,
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/mechanic_shop)
 "dJV" = (
 /turf/open/gm/grass,
 /area/lv553/indoors/lone_buildings/recruiter_house)
@@ -7147,7 +7218,7 @@
 /turf/open/gm/grass,
 /area/lv553/outdoors/hospital/road_north_east)
 "dMX" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/colony,
 /turf/open/asphalt/cement,
 /area/lv553/outdoors/colony_streets/southwest)
 "dNa" = (
@@ -7347,6 +7418,12 @@
 "dUU" = (
 /turf/closed/wall,
 /area/lv553/indoors/lone_buildings/mechanic_shop)
+"dUV" = (
+/obj/structure/bed/chair/comfy{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/insurance)
 "dVf" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -7476,7 +7553,7 @@
 "dYR" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
-	name = "The Pole Museum"
+	name = "\improper The Pole Museum"
 	},
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/polemuseum)
@@ -7565,7 +7642,7 @@
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "eci" = (
 /obj/structure/surface/table,
 /obj/item/stack/sheet/mineral/osmium{
@@ -7704,8 +7781,8 @@
 /area/lv553/outdoors/bungalow_manager_exterior)
 "eeu" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1;
-	name = "\improper bathroom door"
+	dir = 2;
+	name = "\improper Bathroom"
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -7750,7 +7827,7 @@
 /turf/closed/wall,
 /area/lv553/oob)
 "efh" = (
-/obj/item/tool/weldingtool/largetank,
+/obj/item/tool/weldingtool/simple,
 /turf/open/asphalt/cement,
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "efl" = (
@@ -7788,7 +7865,7 @@
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "egv" = (
 /obj/structure/cargo_container{
 	icon_state = "HD_blue 0,2"
@@ -7989,7 +8066,7 @@
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "ekj" = (
 /turf/closed/wall,
 /area/lv553/indoors/gated_community/residence_bunkhouse)
@@ -8076,7 +8153,7 @@
 "elU" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "emj" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_17";
@@ -8386,7 +8463,7 @@
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "evf" = (
 /obj/structure/toilet{
 	dir = 8;
@@ -8678,7 +8755,7 @@
 "eBq" = (
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/insurance)
 "eBJ" = (
 /obj/structure/machinery/power/apc{
 	dir = 8
@@ -8713,7 +8790,7 @@
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "eDt" = (
 /obj/item/frame/rack,
 /obj/item/spacecash/c1,
@@ -8760,6 +8837,13 @@
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
+"eFN" = (
+/obj/structure/sign/safety/bathunisex{
+	pixel_x = 7;
+	pixel_y = 32
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/insurance)
 "eGC" = (
 /obj/structure/flora/bush/ausbushes/palebush,
 /turf/open/gm/dirtgrassborder{
@@ -8857,7 +8941,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "eKa" = (
 /obj/structure/closet,
 /obj/item/storage/fancy/cigarettes/wypacket,
@@ -9457,7 +9541,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "eZO" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/asphalt/cement,
@@ -9474,7 +9558,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "faE" = (
 /obj/structure/sink{
 	dir = 1;
@@ -9488,6 +9572,11 @@
 "faS" = (
 /turf/closed/wall,
 /area/lv553/outdoors/colony_streets/east)
+"fbb" = (
+/turf/open/floor{
+	icon_state = "freezerfloor"
+	},
+/area/lv553/indoors/lone_buildings/pizza)
 "fbA" = (
 /obj/structure/machinery/power/apc{
 	dir = 4
@@ -9649,7 +9738,7 @@
 /area/lv553/outdoors/colony_streets/east)
 "fgp" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "Bedroom";
+	name = "\improper Bedroom";
 	dir = 1
 	},
 /turf/open/floor/wood,
@@ -10005,7 +10094,7 @@
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "fpV" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -10119,7 +10208,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "ftr" = (
 /obj/structure/sink{
 	pixel_y = 16
@@ -10242,6 +10331,10 @@
 	},
 /turf/open/gm/grass,
 /area/lv553/outdoors/colony_streets/west)
+"fuO" = (
+/obj/structure/window/framed/colony,
+/turf/open/gm/grass,
+/area/lv553/indoors/lone_buildings/pizza)
 "fuQ" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 4
@@ -10321,7 +10414,7 @@
 	pixel_x = 6
 	},
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "fxV" = (
 /obj/structure/window/framed/wood/plain,
 /turf/open/gm/dirt,
@@ -10474,7 +10567,7 @@
 /area/lv553/indoors/operations/reception)
 "fCc" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "Bedroom";
+	name = "\improper Bedroom";
 	dir = 1
 	},
 /turf/open/floor/wood,
@@ -10529,7 +10622,7 @@
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "fDB" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -10573,7 +10666,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "fEw" = (
 /obj/structure/barricade/sandbags/wired{
 	dir = 1;
@@ -11272,10 +11365,6 @@
 	icon_state = "white"
 	},
 /area/lv553/indoors/welcome_center/lobby)
-"fUz" = (
-/obj/structure/reagent_dispensers/water_cooler,
-/turf/open/floor,
-/area/lv553/indoors/lone_buildings/mechanic_shop)
 "fUJ" = (
 /obj/structure/machinery/shower{
 	dir = 1
@@ -11314,10 +11403,13 @@
 	tag = "icon-toilet00 (WEST)";
 	pixel_y = 17
 	},
+/obj/item/paper/crumpled{
+	pixel_y = 18
+	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "fVf" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_box/magazine/shotgun/beanbag,
@@ -12004,10 +12096,10 @@
 	pixel_y = -32
 	},
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "goG" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "Bedroom";
+	name = "\improper Bedroom";
 	dir = 1
 	},
 /turf/open/floor/almayer{
@@ -12737,7 +12829,7 @@
 /area/lv553/oob)
 "gKw" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "storage room door"
+	name = "\improper Flynn's Bar Backroom"
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/flynns_bar)
@@ -13175,12 +13267,6 @@
 	icon_state = "floor3"
 	},
 /area/lv553/oob)
-"gWK" = (
-/obj/structure/sign/safety/galley{
-	pixel_x = 32
-	},
-/turf/open/asphalt/cement,
-/area/lv553/outdoors/colony_streets/east)
 "gXl" = (
 /obj/structure/reagent_dispensers/beerkeg{
 	pixel_x = -3;
@@ -13653,7 +13739,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "hqq" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/stack/barbed_wire,
@@ -13745,7 +13831,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "hsZ" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -13791,7 +13877,7 @@
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "hut" = (
 /obj/structure/filingcabinet,
 /obj/item/newspaper{
@@ -13815,7 +13901,7 @@
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "huF" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/clothing/suit/armor/vest/security,
@@ -13867,7 +13953,7 @@
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "hvV" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
@@ -13899,7 +13985,7 @@
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "hxg" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
@@ -14211,7 +14297,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "hEU" = (
 /obj/structure/platform_decoration/strata/metal,
 /turf/open/gm/grass,
@@ -14398,6 +14484,9 @@
 	},
 /turf/open/floor/plating,
 /area/lv553/oob)
+"hHG" = (
+/turf/closed/wall,
+/area/lv553/indoors/lone_buildings/travel_agency)
 "hHO" = (
 /obj/structure/bed,
 /obj/structure/bed{
@@ -14455,10 +14544,6 @@
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
 /area/lv553/indoors/marshals/marshalsoffice)
-"hIN" = (
-/obj/item/tool/wet_sign,
-/turf/open/asphalt/cement,
-/area/lv553/indoors/lone_buildings/mechanic_shop)
 "hJC" = (
 /obj/item/tool/crowbar/red,
 /turf/open/asphalt/cement,
@@ -14579,7 +14664,7 @@
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "hLj" = (
 /obj/structure/ladder{
 	height = 1;
@@ -14617,7 +14702,7 @@
 /area/lv553/indoors/marshals/cells)
 "hNf" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "Bedroom"
+	name = "\improper Bedroom"
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/gated_community/director_of_corporate_research)
@@ -14744,10 +14829,8 @@
 	},
 /area/lv553/oob)
 "hRz" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	density = 2;
-	locked = 1;
-	name = "mechanic shop break room door"
+/obj/structure/machinery/door/airlock/almayer/engineering/glass/colony{
+	name = "\improper Liam's Automobile Repair Shop Breakroom"
 	},
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/mechanic_shop)
@@ -15063,6 +15146,14 @@
 	icon_state = "dark"
 	},
 /area/lv553/indoors/operations/hallway/south)
+"hYA" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/reagent_container/food/drinks/bottle/beer/craft/reaper{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/flynns_bar)
 "hYD" = (
 /obj/structure/largecrate/random/mini{
 	pixel_x = -4;
@@ -15108,6 +15199,10 @@
 /obj/item/bedsheet/captain,
 /turf/open/gm/river,
 /area/lv553/indoors/flooded/west_slums)
+"hZP" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/insurance)
 "hZT" = (
 /obj/structure/surface/table,
 /turf/open/gm/dirt,
@@ -15382,7 +15477,7 @@
 	},
 /area/lv553/landing_zone_1)
 "ihT" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Weyland-Yutani Welcome Center 'Alexandria'"
 	},
@@ -15641,6 +15736,11 @@
 /area/lv553/indoors/hospital/research/floor)
 "ioK" = (
 /obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	icon_state = "shotglass";
+	pixel_y = 4;
+	pixel_x = 15
+	},
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/flynns_bar)
 "ioP" = (
@@ -15837,6 +15937,13 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/oob)
+"itm" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 8
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/mechanic_shop)
 "iue" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/gm/river,
@@ -15997,6 +16104,15 @@
 	},
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/goon_and_chef_house)
+"ixz" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	icon_state = "shotglass";
+	pixel_y = 5;
+	pixel_x = 11
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/flynns_bar)
 "ixE" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/paper_bin{
@@ -16381,7 +16497,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "iEE" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -16663,7 +16779,7 @@
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "iKl" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/clothing/head/hardhat/white{
@@ -16695,7 +16811,7 @@
 	pixel_x = 6
 	},
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "iKB" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -17219,7 +17335,7 @@
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "iYn" = (
 /obj/structure/sink{
 	pixel_y = 16
@@ -17705,7 +17821,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "jop" = (
 /obj/structure/sign/safety/galley{
 	pixel_x = 32
@@ -17902,6 +18018,9 @@
 	icon_state = "darkblue2"
 	},
 /area/lv553/indoors/operations/hallway/west)
+"jsi" = (
+/turf/closed/wall,
+/area/lv553/indoors/lone_buildings/pizza)
 "jsn" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_x = 32
@@ -18072,7 +18191,7 @@
 	},
 /area/lv553/outdoors/flooded_streets/east)
 "jxH" = (
-/obj/structure/machinery/vending/coffee/simple,
+/obj/structure/machinery/vending/coffee,
 /turf/open/floor,
 /area/lv553/oob)
 "jxI" = (
@@ -18354,7 +18473,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "jFV" = (
 /turf/open/floor/wood{
 	icon_state = "wood-broken4"
@@ -18551,7 +18670,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "jIE" = (
 /obj/structure/sign/safety/biohazard{
 	pixel_x = 8;
@@ -18644,7 +18763,7 @@
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "jLr" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -18754,6 +18873,13 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/polemuseum)
+"jOk" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21";
+	pixel_y = 3
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/mechanic_shop)
 "jOA" = (
 /obj/structure/fence,
 /turf/open/gm/grass,
@@ -18845,7 +18971,7 @@
 	pixel_y = 6
 	},
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "jQk" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 3
@@ -18894,6 +19020,12 @@
 	icon_state = "whitegreen"
 	},
 /area/lv553/indoors/hospital/reception)
+"jSs" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/lone_buildings/pizza)
 "jSC" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/reagent_container/food/drinks/coffee{
@@ -18988,6 +19120,10 @@
 /area/lv553/indoors/lone_buildings/recruiter_house)
 "jVq" = (
 /obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/device/flashlight/lamp/on{
+	pixel_x = 6;
+	pixel_y = 4
+	},
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "jVu" = (
@@ -19214,7 +19350,7 @@
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "kcd" = (
 /obj/item/trash/chips,
 /turf/open/floor/almayer{
@@ -19275,7 +19411,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "kdJ" = (
 /obj/structure/machinery/vending/coffee,
 /obj/structure/sign/safety/coffee{
@@ -19391,7 +19527,7 @@
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "khv" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Operations door"
@@ -19415,7 +19551,7 @@
 /turf/open/gm/grass,
 /area/lv553/landing_zone_1)
 "kib" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/generic/glass{
 	name = "\improper Weyland-Yutani Welcome Center 'Alexandria'"
 	},
 /turf/open/floor{
@@ -19469,7 +19605,7 @@
 	},
 /area/lv553/indoors/flooded/east_apartments)
 "kjD" = (
-/obj/structure/machinery/vending/coffee/simple,
+/obj/structure/machinery/vending/coffee,
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -19575,7 +19711,7 @@
 	},
 /area/lv553/indoors/welcome_center/lobby)
 "kmC" = (
-/obj/structure/surface/table,
+/obj/structure/surface/table/woodentable,
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "kmJ" = (
@@ -19796,7 +19932,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "ksa" = (
 /obj/structure/closet/bodybag,
 /turf/open/floor{
@@ -19976,7 +20112,7 @@
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "kyh" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/metal,
@@ -20006,7 +20142,7 @@
 /area/lv553/outdoors/lone_buildings/weyyu_hostel)
 "kzA" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "The Pole Museum"
+	name = "\improper The Pole Museum"
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/polemuseum)
@@ -20215,6 +20351,12 @@
 /obj/structure/flora/bush/ausbushes/palebush,
 /turf/open/gm/grass,
 /area/lv553/outdoors/lone_buildings/gas_n_gear)
+"kGb" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/mechanic_shop)
 "kGe" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/rifle/m16{
@@ -20308,7 +20450,7 @@
 	dir = 4
 	},
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "kIp" = (
 /turf/open/gm/dirt,
 /area/lv553/outdoors/flooded_streets/west)
@@ -20463,7 +20605,7 @@
 /obj/structure/surface/table,
 /obj/structure/machinery/prop/almayer/CICmap/pmc,
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "kNP" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -20527,7 +20669,7 @@
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "kOK" = (
 /obj/structure/desertdam/decals/road_stop{
 	icon_state = "stop_decal5";
@@ -21185,7 +21327,7 @@
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "lgE" = (
 /obj/structure/largecrate/random/barrel/red{
 	pixel_x = 4;
@@ -21234,6 +21376,18 @@
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/asphalt/cement,
 /area/lv553/oob)
+"lhJ" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/reagent_container/food/drinks/bottle/kahlua{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/obj/item/reagent_container/food/drinks/bottle/davenport{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/flynns_bar)
 "lhO" = (
 /turf/open/gm/dirt,
 /area/lv553/outdoors/uscm_garrison_exterior/entrance)
@@ -21294,7 +21448,7 @@
 	},
 /obj/structure/machinery/prop/almayer/CICmap/pmc,
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "ljz" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/reagent_container/food/drinks/coffee,
@@ -21661,6 +21815,15 @@
 /obj/structure/flora/bush/ausbushes/palebush,
 /turf/open/gm/grass,
 /area/lv553/outdoors/lone_buildings/weyyu_hostel)
+"lsr" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/lone_buildings/mechanic_shop)
 "lsz" = (
 /obj/structure/prop/dam/truck/cargo{
 	dir = 4
@@ -21789,7 +21952,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "lwL" = (
 /turf/closed/wall/r_wall,
 /area/lv553/outdoors/welcome_center_exterior/west)
@@ -21882,7 +22045,7 @@
 	pixel_y = 4
 	},
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/insurance)
 "lyW" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/microwave{
@@ -22014,7 +22177,7 @@
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "lBL" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -22484,7 +22647,7 @@
 	pixel_y = 0
 	},
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "lPH" = (
 /turf/open/gm/river,
 /area/lv553/oob)
@@ -22545,7 +22708,7 @@
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "lSd" = (
 /turf/closed/wall,
 /area/lv553/indoors/marshals/barracks)
@@ -22620,11 +22783,9 @@
 	},
 /area/lv553/indoors/hospital/storage_laundyroom_and_breakroom)
 "lUS" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	density = 2;
+/obj/structure/machinery/door/airlock/almayer/security/colony{
 	dir = 1;
-	locked = 1;
-	name = "\improper gatehouse door"
+	name = "\improper Security Checkpoint"
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -22754,7 +22915,7 @@
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "lZM" = (
 /obj/structure/closet/fireaxecabinet{
 	pixel_y = 28
@@ -22940,14 +23101,6 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv553/outdoors/colony_streets/east)
-"mdV" = (
-/obj/structure/surface/table,
-/obj/item/storage/firstaid/regular,
-/turf/open/floor/almayer{
-	icon_state = "sterile_green_corner";
-	tag = "icon-sterile"
-	},
-/area/lv553/indoors/hospital/outpatients_and_icu)
 "mec" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -23356,9 +23509,7 @@
 /area/lv553/oob)
 "mqc" = (
 /obj/structure/window/framed/colony,
-/turf/open/floor{
-	icon_state = "whitegreenfull"
-	},
+/turf/open/floor/plating,
 /area/lv553/indoors/hospital/storage_laundyroom_and_breakroom)
 "mqj" = (
 /obj/item/trash/cigbutt/ucigbutt,
@@ -23425,7 +23576,7 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "mqZ" = (
 /turf/closed/wall/r_wall,
 /area/lv553/outdoors/colony_streets/northeast)
@@ -23591,7 +23742,7 @@
 	dir = 8
 	},
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/insurance)
 "muL" = (
 /obj/structure/largecrate/supply/supplies/water,
 /turf/open/asphalt/cement,
@@ -23716,7 +23867,9 @@
 	pixel_x = 7;
 	pixel_y = 15
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark2"
+	},
 /area/lv553/indoors/lone_buildings/flynns_bar)
 "myw" = (
 /obj/structure/surface/table/woodentable,
@@ -24392,7 +24545,7 @@
 "mND" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
-	name = "storage shed door"
+	name = "\improper Executive Bungalow Laundry"
 	},
 /turf/open/floor,
 /area/lv553/indoors/bungalow_manager)
@@ -24870,6 +25023,19 @@
 	icon_state = "dark"
 	},
 /area/lv553/indoors/uscm_garrison/io_office)
+"mZH" = (
+/obj/structure/coatrack{
+	pixel_x = -9
+	},
+/obj/item/clothing/suit/storage/apron/overalls{
+	pixel_x = -8;
+	pixel_y = 3
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/mechanic_shop)
 "mZV" = (
 /obj/structure/toilet{
 	dir = 4
@@ -24908,10 +25074,6 @@
 	dir = 4
 	},
 /area/lv553/outdoors/landing_zones_disembark)
-"naY" = (
-/obj/structure/window/framed/colony,
-/turf/open/floor,
-/area/lv553/indoors/lone_buildings/mechanic_shop)
 "nbg" = (
 /obj/structure/cargo_container{
 	icon_state = "HD_blue 0,0"
@@ -24971,6 +25133,16 @@
 "nbP" = (
 /turf/closed/wall/r_wall,
 /area/lv553/indoors/operations/hallway/south)
+"ncq" = (
+/obj/item/tool/mop{
+	desc = "Unlock the power of Mop-Fu!";
+	force = 35;
+	pixel_x = -12;
+	pixel_y = 24
+	},
+/obj/item/reagent_container/glass/bucket/mopbucket,
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/mechanic_shop)
 "ncw" = (
 /obj/item/toy/beach_ball,
 /turf/open/gm/river,
@@ -25189,7 +25361,11 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
+"nkG" = (
+/obj/structure/machinery/power/apc,
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/mechanic_shop)
 "nkO" = (
 /obj/structure/desertdam/decals/road_stop{
 	dir = 8;
@@ -25610,7 +25786,7 @@
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "nxd" = (
 /obj/structure/machinery/colony_floodlight{
 	pixel_x = 8;
@@ -25632,7 +25808,7 @@
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "nxx" = (
 /obj/item/prop{
 	color = "#FF0000";
@@ -25655,7 +25831,7 @@
 /area/lv553/indoors/lone_buildings/weyyu_hostel)
 "nyb" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "Bedroom";
+	name = "\improper Bedroom";
 	dir = 1
 	},
 /turf/open/floor/wood,
@@ -25821,6 +25997,14 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/hospital/research/offices)
+"nCt" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/reagent_container/food/drinks/bottle/beer/craft/mono{
+	pixel_x = -5;
+	pixel_y = 2
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/flynns_bar)
 "nCz" = (
 /obj/structure/surface/table,
 /obj/structure/prop/invuln/overhead_pipe{
@@ -25908,7 +26092,7 @@
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "nDQ" = (
 /turf/open/floor{
 	icon_state = "floor4"
@@ -26836,7 +27020,7 @@
 	dir = 1
 	},
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/insurance)
 "ocK" = (
 /obj/structure/machinery/computer/arcade,
 /obj/structure/machinery/light{
@@ -26920,7 +27104,7 @@
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "oeR" = (
 /obj/structure/bed/chair,
 /turf/open/floor{
@@ -27031,6 +27215,12 @@
 	},
 /turf/open/gm/grass,
 /area/lv553/oob)
+"ohl" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/turf/open/floor{
+	icon_state = "freezerfloor"
+	},
+/area/lv553/indoors/lone_buildings/pizza)
 "ohz" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -27362,6 +27552,18 @@
 /obj/item/handcuffs,
 /turf/open/floor/wood,
 /area/lv553/oob)
+"oqJ" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/reagent_container/food/drinks/bottle/beer/craft{
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft/tuxedo{
+	pixel_y = 9;
+	pixel_x = 4
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/flynns_bar)
 "oqP" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -27508,8 +27710,8 @@
 	},
 /area/lv553/indoors/marshals/mainhall)
 "otV" = (
-/obj/structure/surface/table/holotable,
 /obj/item/ammo_magazine/handful/shotgun/beanbag,
+/obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "asteroid"
 	},
@@ -27689,13 +27891,11 @@
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "oxM" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	density = 2;
-	dir = 1;
-	locked = 1;
-	name = "mechanic shop garage manway door"
+/obj/structure/machinery/door/airlock/almayer/engineering/glass/colony{
+	name = "\improper Liam's Automobile Repair Shop Garage";
+	dir = 1
 	},
 /turf/open/asphalt/cement,
 /area/lv553/indoors/lone_buildings/mechanic_shop)
@@ -27740,7 +27940,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "oyA" = (
 /obj/structure/surface/rack,
 /obj/item/device/cassette_tape/heavymetal,
@@ -27873,7 +28073,9 @@
 /area/lv553/indoors/bungalow_manager)
 "oBZ" = (
 /obj/structure/reagent_dispensers/beerkeg,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark2"
+	},
 /area/lv553/indoors/lone_buildings/flynns_bar)
 "oCr" = (
 /obj/structure/bed/chair{
@@ -27967,6 +28169,10 @@
 	icon_state = "darkblue2"
 	},
 /area/lv553/indoors/operations/offices/east)
+"oEc" = (
+/obj/structure/machinery/vending/cigarette/colony,
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/mechanic_shop)
 "oEd" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/drinks/bottle/whiskey{
@@ -27983,7 +28189,9 @@
 /obj/item/reagent_container/food/drinks/bottle/whiskey{
 	pixel_x = -7
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark2"
+	},
 /area/lv553/indoors/lone_buildings/flynns_bar)
 "oEw" = (
 /obj/structure/flora/grass/tallgrass/jungle,
@@ -28109,6 +28317,15 @@
 /obj/item/ammo_magazine/handful/shotgun/buckshot,
 /turf/open/floor/wood,
 /area/lv553/oob)
+"oHv" = (
+/obj/structure/sink{
+	pixel_y = 24
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/lone_buildings/weymart)
 "oHC" = (
 /obj/item/trash/cigbutt{
 	pixel_x = -6;
@@ -28340,7 +28557,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "oNi" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/power/apc{
@@ -28556,7 +28773,7 @@
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "oSa" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 1
@@ -28575,7 +28792,7 @@
 	dir = 8
 	},
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "oSz" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -28838,7 +29055,7 @@
 	pixel_x = -32
 	},
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/insurance)
 "oZc" = (
 /obj/structure/bed/chair/office/light{
 	dir = 4
@@ -28983,6 +29200,10 @@
 	},
 /turf/open/gm/grass,
 /area/lv553/indoors/bungalow_manager)
+"pck" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/lv553/indoors/lone_buildings/insurance)
 "pcN" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
@@ -28990,7 +29211,7 @@
 "pdt" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
-	name = "The Pole Museum"
+	name = "\improper The Pole Museum"
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/polemuseum)
@@ -29129,7 +29350,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "pgp" = (
 /turf/open/floor{
 	icon_state = "dark"
@@ -29176,7 +29397,7 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "pgH" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/rifle/m41aMK1{
@@ -29285,7 +29506,7 @@
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "pis" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/dirt,
@@ -29395,8 +29616,8 @@
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/clf_house)
 "pkS" = (
-/obj/structure/surface/table/holotable,
 /obj/item/ammo_magazine/revolver/cmb/normalpoint,
+/obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "asteroid"
 	},
@@ -29794,7 +30015,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/insurance)
 "psN" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
@@ -29870,7 +30091,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "puh" = (
 /obj/structure/machinery/floodlight/landing,
 /obj/structure/desertdam/decals/road_stop{
@@ -29927,6 +30148,12 @@
 	icon_state = "redyellowfull"
 	},
 /area/lv553/oob)
+"puN" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/flynns_bar)
 "puR" = (
 /obj/structure/bed,
 /obj/item/bedsheet/captain,
@@ -29978,6 +30205,15 @@
 	icon_state = "dark2"
 	},
 /area/lv553/indoors/operations/hallway/south)
+"pxe" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/lone_buildings/insurance)
 "pxm" = (
 /obj/structure/reagent_dispensers/fueltank/gas,
 /obj/structure/reagent_dispensers/fueltank/gas{
@@ -30155,6 +30391,10 @@
 	icon_state = "dark2"
 	},
 /area/lv553/indoors/operations/offices/east)
+"pBG" = (
+/obj/item/tool/wet_sign,
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/mechanic_shop)
 "pBJ" = (
 /obj/structure/machinery/light,
 /turf/open/asphalt/cement,
@@ -30269,7 +30509,7 @@
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "pFz" = (
 /turf/open/floor/almayer/uscm/directional{
 	dir = 10
@@ -30444,7 +30684,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "pLc" = (
 /obj/structure/sign/poster/ad{
 	pixel_x = -32
@@ -30468,7 +30708,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "pLD" = (
 /obj/structure/machinery/space_heater,
 /turf/open/floor/wood,
@@ -30532,6 +30772,9 @@
 "pMt" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/packaged_burrito,
+/obj/item/reagent_container/food/snacks/packaged_burger{
+	pixel_y = 11
+	},
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "pMF" = (
@@ -30801,7 +31044,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "pTA" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/snacks/milosoup,
@@ -31000,6 +31243,14 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv553/outdoors/flooded_streets/east)
+"pZn" = (
+/obj/structure/filingcabinet/chestdrawer{
+	density = 0;
+	pixel_x = 7;
+	pixel_y = 17
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/flynns_bar)
 "pZL" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 1;
@@ -31195,7 +31446,7 @@
 	},
 /area/lv553/oob)
 "qeg" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass{
+/obj/structure/machinery/door/airlock/almayer/generic/glass{
 	dir = 1;
 	name = "\improper Jeppson's Memorial Hospital Waiting Room"
 	},
@@ -31467,6 +31718,15 @@
 	},
 /turf/open/gm/dirt,
 /area/lv553/indoors/uscm_garrison/recruitment_office)
+"qig" = (
+/obj/structure/sink{
+	pixel_y = 16
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/lone_buildings/mechanic_shop)
 "qiY" = (
 /obj/structure/surface/table/reinforced{
 	flipped = 1;
@@ -31780,7 +32040,9 @@
 	dir = 1;
 	name = "\improper Flynn's Bar"
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/flynns_bar)
 "qrP" = (
 /obj/structure/window_frame/colony/reinforced,
@@ -32078,7 +32340,10 @@
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/liq_r_mart)
 "qyo" = (
-/obj/structure/bed/chair/office/light,
+/obj/structure/bed/chair/comfy/black{
+	dir = 8;
+	pixel_x = -8
+	},
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "qyv" = (
@@ -32288,7 +32553,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "qCK" = (
 /turf/open/floor{
 	icon_state = "white"
@@ -32400,7 +32665,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "qGF" = (
 /obj/structure/closet,
 /obj/item/storage/fancy/cigarettes/kpack,
@@ -32580,10 +32845,10 @@
 "qLu" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
-	name = "office door"
+	name = "\improper Weyland-Yutani Corporate Travel Agency Office"
 	},
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "qLB" = (
 /obj/item/stack/sheet/metal,
 /turf/open/gm/river,
@@ -32646,7 +32911,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/insurance)
 "qMp" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/grass,
@@ -32675,7 +32940,7 @@
 "qMJ" = (
 /obj/structure/machinery/disposal,
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "qMP" = (
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
@@ -32855,9 +33120,9 @@
 	},
 /area/lv553/oob)
 "qTs" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
+/obj/structure/machinery/door/airlock/almayer/generic/corporate{
 	dir = 1;
-	name = "office door"
+	name = "Colony Administrator's Office"
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/bungalow_manager)
@@ -33275,7 +33540,7 @@
 /obj/item/folder/black,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "rdD" = (
 /turf/closed/wall,
 /area/lv553/indoors/hospital/lobby)
@@ -33307,10 +33572,8 @@
 /turf/open/gm/grass,
 /area/lv553/outdoors/colony_streets/south)
 "reS" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	density = 2;
-	locked = 1;
-	name = "mechanic shop office door"
+/obj/structure/machinery/door/airlock/almayer/engineering/glass/colony{
+	name = "\improper Liam's Office"
 	},
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/mechanic_shop)
@@ -33347,6 +33610,18 @@
 	},
 /turf/open/gm/grass,
 /area/lv553/indoors/welcome_center/lobby)
+"rhz" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/tool/pen/clicky{
+	pixel_y = -6;
+	pixel_x = -6
+	},
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = 9;
+	pixel_y = 8
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/mechanic_shop)
 "rhD" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/device/flashlight/lamp{
@@ -33476,7 +33751,7 @@
 	pixel_y = 4
 	},
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "rkR" = (
 /obj/structure/machinery/computer/cameras/wooden_tv{
 	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW.";
@@ -33518,7 +33793,7 @@
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "rlL" = (
 /obj/structure/flora/bush/ausbushes/palebush,
 /turf/open/gm/grass,
@@ -33579,6 +33854,11 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv553/outdoors/colony_streets/east)
+"rop" = (
+/obj/structure/surface/table,
+/obj/item/storage/box/donkpockets,
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/mechanic_shop)
 "roy" = (
 /obj/structure/closet,
 /obj/item/clothing/head/soft/trucker{
@@ -33821,7 +34101,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "rvq" = (
 /obj/structure/surface/table/woodentable,
 /turf/open/floor/wood,
@@ -33840,6 +34120,10 @@
 	dir = 4
 	},
 /area/lv553/indoors/operations/hallway/west)
+"rvD" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/lv553/indoors/hospital/outpatients_and_icu)
 "rvL" = (
 /obj/item/device/flashlight/lamp/tripod,
 /obj/structure/barricade/handrail/sandstone/b{
@@ -33970,6 +34254,13 @@
 /obj/item/light_bulb/tube,
 /turf/open/gm/river,
 /area/lv553/indoors/flooded/west_slums)
+"rzh" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/reagent_container/food/drinks/bottle/beer/craft/tazhushka{
+	pixel_y = 9
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/flynns_bar)
 "rzi" = (
 /obj/item/shard,
 /obj/item/clothing/mask/facehugger{
@@ -34088,7 +34379,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "rCB" = (
 /obj/structure/barricade/wooden{
 	dir = 1;
@@ -34266,7 +34557,7 @@
 /obj/item/folder/white,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "rIk" = (
 /obj/structure/curtain/red{
 	pixel_y = 0;
@@ -34292,6 +34583,10 @@
 	},
 /turf/open/gm/dirt,
 /area/lv553/outdoors/colony_streets/west)
+"rIQ" = (
+/obj/structure/surface/table/woodentable,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/insurance)
 "rJe" = (
 /obj/structure/machinery/door/airlock/almayer/security/colony{
 	dir = 1;
@@ -34511,6 +34806,15 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
+"rOh" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	icon_state = "shotglass";
+	pixel_y = 5;
+	pixel_x = 3
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/flynns_bar)
 "rOi" = (
 /obj/structure/bed/chair/comfy,
 /obj/structure/sign/poster/pinup{
@@ -34678,7 +34982,7 @@
 	dir = 4
 	},
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/insurance)
 "rUu" = (
 /obj/structure/sign/safety/bathwomens{
 	pixel_x = -25
@@ -34829,12 +35133,12 @@
 	pixel_x = 6
 	},
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "rXK" = (
-/obj/item/clothing/glasses/welding,
-/obj/structure/machinery/light/small{
+/obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/item/clothing/head/welding,
 /turf/open/asphalt/cement,
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "rYd" = (
@@ -34853,6 +35157,12 @@
 	icon_state = "white"
 	},
 /area/lv553/indoors/hospital/research/floor)
+"rYK" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/travel_agency)
 "rYM" = (
 /obj/structure/surface/rack,
 /obj/item/tank/emergency_oxygen/double,
@@ -35108,7 +35418,9 @@
 /obj/item/reagent_container/food/drinks/bottle/wine{
 	pixel_x = -8
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark2"
+	},
 /area/lv553/indoors/lone_buildings/flynns_bar)
 "sex" = (
 /obj/structure/cargo_container{
@@ -35240,7 +35552,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "siq" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -35295,7 +35607,7 @@
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "siE" = (
 /obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor/almayer{
@@ -35604,7 +35916,7 @@
 	pixel_x = -5
 	},
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "spF" = (
 /obj/structure/surface/table,
 /turf/open/floor{
@@ -35805,7 +36117,7 @@
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "svn" = (
 /obj/structure/surface/table,
 /obj/item/device/cassette_tape/ocean,
@@ -35833,7 +36145,7 @@
 	pixel_y = -32
 	},
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "swE" = (
 /obj/structure/machinery/door/airlock/almayer/research/colony{
 	name = "\improper Jeppson's Memorial Hospital Research Wing Breakroom"
@@ -35955,7 +36267,7 @@
 /area/lv553/indoors/uscm_garrison/io_office)
 "szN" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "Bedroom";
+	name = "\improper Bedroom";
 	dir = 1
 	},
 /turf/open/floor/wood,
@@ -36163,8 +36475,8 @@
 /turf/open/asphalt/cement,
 /area/lv553/oob)
 "sDv" = (
-/obj/structure/surface/table/holotable,
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "asteroid"
 	},
@@ -36311,11 +36623,9 @@
 /turf/open/floor/plating,
 /area/lv553/indoors/lone_buildings/weyyu_hostel)
 "sGZ" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	density = 2;
-	dir = 1;
-	locked = 1;
-	name = "\improper security checkpoint door"
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+	name = "\improper Landing Zone Security Checkpoint";
+	dir = 1
 	},
 /turf/open/floor{
 	dir = 8;
@@ -36549,7 +36859,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "sNp" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/microwave,
@@ -36780,7 +37090,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "sSb" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/microwave,
@@ -37240,7 +37550,7 @@
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "taQ" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/drinks/bottle/vodka{
@@ -37250,6 +37560,17 @@
 /obj/item/clothing/accessory/patch/upp,
 /turf/open/floor/wood,
 /area/lv553/oob)
+"tbd" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = -5;
+	pixel_y = 11
+	},
+/obj/item/trash/burger{
+	pixel_y = -6
+	},
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/mechanic_shop)
 "tbe" = (
 /obj/structure/girder,
 /turf/open/asphalt/cement,
@@ -37301,6 +37622,10 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv553/outdoors/colony_streets/south)
+"tcw" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/lv553/indoors/lone_buildings/weymart)
 "tcx" = (
 /obj/item/ammo_box/magazine/nailgun/empty{
 	pixel_x = -7;
@@ -37476,6 +37801,14 @@
 	icon_state = "dark"
 	},
 /area/lv553/indoors/hospital/research/offices)
+"thL" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/reagent_container/food/drinks/bottle/beer/craft/partypopper{
+	pixel_y = 9;
+	pixel_x = -3
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/flynns_bar)
 "tid" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 6
@@ -38088,7 +38421,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "twt" = (
 /obj/structure/machinery/power/apc{
 	dir = 4
@@ -38137,7 +38470,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "txi" = (
 /obj/item/prop{
 	color = "#FF0000";
@@ -38342,7 +38675,7 @@
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "tAJ" = (
 /obj/structure/desertdam/decals/road_edge{
 	pixel_x = 16
@@ -38602,6 +38935,16 @@
 	icon_state = "redyellowfull"
 	},
 /area/lv553/oob)
+"tHe" = (
+/obj/structure/toilet{
+	dir = 1;
+	tag = "icon-toilet00 (WEST)"
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/lone_buildings/pizza)
 "tHm" = (
 /obj/structure/desertdam/decals/road_stop{
 	icon_state = "stop_decal5";
@@ -38674,11 +39017,9 @@
 /turf/open/asphalt/cement,
 /area/lv553/oob)
 "tIS" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	density = 2;
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
-	locked = 1;
-	name = "mechanic shop door"
+	name = "\improper Liam's Automobile Repair Shop"
 	},
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/mechanic_shop)
@@ -38756,7 +39097,7 @@
 	dir = 8;
 	icon_state = "barber"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/insurance)
 "tMf" = (
 /obj/structure/filingcabinet/chestdrawer{
 	density = 0;
@@ -39092,13 +39433,15 @@
 /turf/open/gm/grass,
 /area/lv553/outdoors/lone_buildings/gas_n_gear)
 "tVn" = (
-/obj/structure/machinery/light,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/cigbutt/cigarbutt,
+/obj/structure/machinery/power/apc{
+	dir = 4
+	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "tVr" = (
 /obj/structure/machinery/power/apc/fully_broken/no_cell{
 	dir = 8
@@ -39230,6 +39573,9 @@
 /obj/item/ashtray/plastic,
 /turf/open/floor/wood,
 /area/lv553/indoors/hospital/reception)
+"tYU" = (
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/travel_agency)
 "tZf" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/condiment/saltshaker{
@@ -39244,7 +39590,7 @@
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "tZj" = (
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/wood,
@@ -39378,7 +39724,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "ubF" = (
 /obj/structure/reagent_dispensers/fueltank/gas,
 /turf/open/asphalt/cement,
@@ -39634,9 +39980,6 @@
 	},
 /obj/structure/bed/chair/office/light{
 	dir = 1
-	},
-/obj/structure/machinery/power/apc{
-	dir = 8
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -40099,7 +40442,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "urq" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/xenoautopsy/tank/broken,
@@ -40203,6 +40546,16 @@
 	icon_state = "whitegreen"
 	},
 /area/lv553/indoors/hospital/outpatients_and_icu)
+"uub" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2;
+	name = "\improper Bathroom"
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/lone_buildings/weymart)
 "uuj" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/wood,
@@ -40442,7 +40795,7 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "uDN" = (
 /obj/structure/sign/safety/galley{
 	pixel_x = -17;
@@ -40945,6 +41298,12 @@
 /obj/item/tool/pickaxe,
 /turf/open/gm/dirt,
 /area/lv553/oob)
+"uTI" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/lone_buildings/insurance)
 "uUo" = (
 /obj/structure/machinery/prop/almayer/computer/PC{
 	dir = 4
@@ -41723,7 +42082,7 @@
 	dir = 4
 	},
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "vqx" = (
 /obj/structure/bed/chair,
 /turf/open/floor{
@@ -42057,6 +42416,12 @@
 	tag = "icon-sterile"
 	},
 /area/lv553/oob)
+"vDf" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/insurance)
 "vDh" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -42173,7 +42538,7 @@
 	pixel_x = -6
 	},
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/insurance)
 "vFz" = (
 /obj/structure/surface/table,
 /obj/item/circuitboard{
@@ -42850,7 +43215,7 @@
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "vVQ" = (
 /obj/structure/sign/prop3{
 	pixel_y = 0;
@@ -42868,6 +43233,9 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/gated_community/director_of_coporate_relations)
+"vWq" = (
+/turf/closed/wall,
+/area/lv553/indoors/lone_buildings/insurance)
 "vWz" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 8;
@@ -42881,7 +43249,7 @@
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "vWG" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -43272,7 +43640,7 @@
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "whe" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/ashtray/plastic,
@@ -43367,7 +43735,7 @@
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "wjC" = (
 /obj/structure/desertdam/decals/road_stop{
 	icon_state = "stop_decal5";
@@ -43462,6 +43830,14 @@
 /area/lv553/oob)
 "wmH" = (
 /obj/structure/surface/table/woodentable,
+/obj/item/reagent_container/food/drinks/bottle/rum{
+	pixel_x = -7;
+	pixel_y = 14
+	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft/ganucci{
+	pixel_y = 9;
+	pixel_x = 2
+	},
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/flynns_bar)
 "wmM" = (
@@ -43679,6 +44055,10 @@
 	pixel_x = -8;
 	pixel_y = 12
 	},
+/obj/item/reagent_container/food/drinks/bottle/beer/craft/bluemalt{
+	pixel_y = 9;
+	pixel_x = 5
+	},
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/flynns_bar)
 "wsO" = (
@@ -43756,6 +44136,11 @@
 	icon_state = "bcarpet01"
 	},
 /area/lv553/indoors/welcome_center/offices)
+"wvN" = (
+/obj/structure/surface/table/almayer,
+/obj/item/prop/flower_vase/redwhiteflowers,
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/mechanic_shop)
 "wvO" = (
 /obj/structure/bed/sofa/south/grey/left,
 /turf/open/floor/wood,
@@ -43831,7 +44216,7 @@
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "wzp" = (
 /obj/item/clothing/mask/surgical,
 /obj/effect/decal/cleanable/blood,
@@ -43894,7 +44279,7 @@
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "wAO" = (
 /obj/structure/bed/stool,
 /obj/structure/machinery/light{
@@ -43989,7 +44374,7 @@
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "wDR" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -44010,7 +44395,7 @@
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "wEJ" = (
 /obj/item/prop{
 	color = "#FF0000";
@@ -44057,7 +44442,7 @@
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "wFN" = (
 /obj/structure/toilet{
 	dir = 8;
@@ -44152,9 +44537,9 @@
 /turf/open/gm/dirt,
 /area/lv553/outdoors/colony_streets/northeast)
 "wIn" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	name = "Bedroom";
-	dir = 1
+/obj/structure/machinery/door/airlock/almayer/generic/corporate{
+	dir = 1;
+	name = "Colony Administrator's Quarters"
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/bungalow_manager)
@@ -44429,6 +44814,18 @@
 	icon_state = "red"
 	},
 /area/lv553/indoors/marshals/interrogation)
+"wOr" = (
+/obj/item/reagent_container/food/drinks/golden_cup{
+	desc = "Flynn's Bar awarded best bar in Isaac's Lement fifth time in a row!";
+	pixel_y = 13
+	},
+/obj/structure/window{
+	dir = 4
+	},
+/obj/structure/window,
+/obj/structure/surface/table/almayer,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/flynns_bar)
 "wOD" = (
 /obj/structure/surface/table,
 /obj/item/clothing/head/soft/ferret,
@@ -44635,7 +45032,7 @@
 /area/lv553/indoors/marshals/reception)
 "wSX" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "Bedroom"
+	name = "\improper Bedroom"
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/gated_community/head_of_corporate_engineering)
@@ -44643,6 +45040,9 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/light{
 	dir = 1
+	},
+/obj/item/paper_bin{
+	pixel_y = 4
 	},
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/mechanic_shop)
@@ -44785,6 +45185,15 @@
 /obj/effect/spawner/gibspawner/xeno,
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/engineer_alcoholic_house)
+"wXX" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
+/area/lv553/indoors/lone_buildings/weymart)
 "wYu" = (
 /obj/structure/window_frame/colony,
 /turf/open/gm/river,
@@ -45230,7 +45639,7 @@
 	pixel_y = 32
 	},
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "xle" = (
 /turf/closed/wall/rock/brown,
 /area/lv553/oob)
@@ -45320,7 +45729,7 @@
 	name = "\improper Weyland-Yutani Gold Insurance"
 	},
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/insurance)
 "xnz" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/dirtgrassborder{
@@ -45542,7 +45951,7 @@
 	dir = 8
 	},
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "xtN" = (
 /turf/open/asphalt/cement,
 /area/lv553/indoors/lone_buildings/army_surplus)
@@ -45562,7 +45971,7 @@
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "xuC" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3";
@@ -45591,13 +46000,17 @@
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "xuO" = (
 /obj/structure/sink{
 	pixel_y = 24
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
+"xuY" = (
+/obj/structure/bed/chair/office/dark,
+/turf/open/floor,
+/area/lv553/indoors/lone_buildings/mechanic_shop)
 "xuZ" = (
 /obj/structure/window_frame/hangar,
 /obj/item/shard,
@@ -45650,7 +46063,10 @@
 	dir = 2;
 	name = "\improper Bathroom"
 	},
-/turf/open/floor,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "barber"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "xwT" = (
 /obj/item/trash/cigbutt,
@@ -45752,7 +46168,7 @@
 "xAf" = (
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/insurance)
 "xAk" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/paper_bin{
@@ -45852,6 +46268,12 @@
 /obj/structure/window_frame/colony/reinforced,
 /turf/open/floor/wood,
 /area/lv553/indoors/gated_community/head_of_corporate_engineering)
+"xCR" = (
+/obj/structure/surface/rack,
+/turf/open/floor{
+	icon_state = "freezerfloor"
+	},
+/area/lv553/indoors/lone_buildings/pizza)
 "xDf" = (
 /obj/structure/sign/safety/landingzone{
 	pixel_y = 32;
@@ -45935,7 +46357,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "xEJ" = (
 /obj/item/prop{
 	color = "#FF0000";
@@ -46125,7 +46547,7 @@
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "xKl" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/dirtgrassborder{
@@ -46305,7 +46727,7 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/weymart)
 "xQC" = (
 /obj/structure/surface/rack,
 /obj/item/folded_tent/big,
@@ -46353,7 +46775,7 @@
 /obj/item/folder/white,
 /obj/item/folder/yellow,
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "xRD" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -46617,7 +47039,7 @@
 /obj/structure/surface/rack,
 /obj/item/paper/janitor,
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "xYW" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "SigmaGate";
@@ -46710,7 +47132,7 @@
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
 	},
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/pizza)
 "xZV" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -46835,7 +47257,7 @@
 	name = "\improper Weyland-Yutani Corporate Travel Agency"
 	},
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/travel_agency)
 "ydB" = (
 /obj/item/trash/kepler/flamehot,
 /turf/open/gm/river,
@@ -54932,11 +55354,11 @@ uZA
 uZA
 uZA
 uZA
-eff
-eff
-eff
-eff
-eff
+hHG
+hHG
+hHG
+hHG
+hHG
 ycu
 rOS
 uZA
@@ -55156,11 +55578,11 @@ uZA
 uZA
 uZA
 uZA
-eLQ
+bVx
 rkI
 xtM
 qMJ
-eff
+hHG
 szV
 rOS
 uZA
@@ -55380,11 +55802,11 @@ msP
 msP
 msP
 msP
-eLQ
+bVx
 jQc
 aHJ
-cTE
-eff
+tYU
+hHG
 ycu
 rOS
 uZA
@@ -55604,11 +56026,11 @@ msP
 msP
 msP
 msP
-eLQ
+bVx
 kNz
 iKz
 elU
-eff
+hHG
 szV
 rOS
 uZA
@@ -55823,16 +56245,16 @@ uZA
 uZA
 uZA
 nSr
-eff
-eLQ
-eLQ
-eff
+hHG
+bVx
+bVx
+hHG
 ydo
-eff
+hHG
 tAG
 lPF
 elU
-eff
+hHG
 tMo
 qBs
 ruE
@@ -56047,16 +56469,16 @@ uZA
 uZA
 nSr
 gkr
-eLQ
+bVx
 spA
 fxN
 oSx
 elU
 qLu
-cTE
+tYU
 kIn
-cTE
-eff
+tYU
+hHG
 tMo
 ycu
 qBs
@@ -56271,16 +56693,16 @@ uZA
 nSr
 weH
 ycu
-eLQ
+bVx
 xYR
-cTE
-cTE
+tYU
+tYU
 swz
-eff
-eff
-eff
-eff
-eff
+hHG
+hHG
+hHG
+hHG
+hHG
 ihA
 ihA
 tMo
@@ -56495,12 +56917,12 @@ nSr
 gkr
 szV
 ycu
-eLQ
-cTE
+bVx
+tYU
 elU
-wmB
+rYK
 swz
-eff
+hHG
 irQ
 bjG
 mSl
@@ -56716,15 +57138,15 @@ hwR
 hwR
 hwR
 gkr
-eff
-eff
-eff
-eff
-rmu
+hHG
+hHG
+hHG
+hHG
+bXD
 rXJ
 avW
 ljx
-eff
+hHG
 wYR
 rWt
 gCF
@@ -56940,15 +57362,15 @@ ycu
 szV
 ycu
 ycu
-eff
+hHG
 bmd
 rlu
-eff
+hHG
 xkP
-cTE
+tYU
 cgm
 gom
-eff
+hHG
 tqr
 fcV
 aeO
@@ -57164,15 +57586,15 @@ ycu
 ycu
 tMo
 ycu
-eff
+hHG
 bmE
 jLo
 hus
 elU
-cTE
-cTE
-cTE
-eff
+tYU
+tYU
+tYU
+hHG
 baM
 ihA
 ihA
@@ -57388,15 +57810,15 @@ mEX
 mEX
 szV
 ycu
-eff
+hHG
 fUX
 tVn
-eff
+hHG
 xRz
 rdC
 vqi
 rHy
-eff
+hHG
 fcV
 qMb
 eff
@@ -57612,15 +58034,15 @@ lmZ
 mEX
 ycu
 ycu
-eff
-eff
-eff
-eff
-eff
-eff
-eff
-eff
-eff
+hHG
+hHG
+hHG
+hHG
+hHG
+hHG
+hHG
+hHG
+hHG
 bWy
 jOG
 eff
@@ -73041,7 +73463,7 @@ cRr
 fFw
 ftw
 qsf
-cTc
+rvD
 reO
 reO
 reO
@@ -73489,7 +73911,7 @@ xbu
 kNP
 fFw
 qsf
-cTc
+rvD
 reO
 reO
 wqX
@@ -73937,7 +74359,7 @@ qkY
 xoS
 ftw
 qsf
-cTc
+rvD
 reO
 reO
 reO
@@ -75268,7 +75690,7 @@ ppX
 qkB
 cmC
 jGx
-mdV
+vut
 lqn
 fYB
 dwm
@@ -75494,12 +75916,12 @@ jPs
 xbu
 xbu
 xbu
-cTc
+rvD
 xbu
 xbu
 xbu
 xbu
-cTc
+rvD
 xbu
 xbu
 vmP
@@ -78154,18 +78576,18 @@ kjR
 kjR
 kjR
 kjR
-eff
-eff
-eff
-eff
-eff
-eff
-eff
-eff
-eff
-eff
-eff
-eff
+clw
+clw
+clw
+clw
+clw
+clw
+clw
+clw
+clw
+clw
+clw
+clw
 lPt
 wMi
 kYH
@@ -78378,18 +78800,18 @@ kjR
 kjR
 kjR
 kjR
-eff
+clw
 urg
 pgm
 fto
-eff
+clw
 kdG
 pTg
-eff
-qGZ
-vUw
+clw
+oHv
+wXX
 lwq
-eff
+clw
 qgp
 ulR
 kYH
@@ -78602,18 +79024,18 @@ kjR
 kjR
 kjR
 kjR
-eff
+clw
 xEB
 hqg
 hqg
 fEj
 jIn
 hqg
-psJ
-slT
-slT
-slT
-eff
+uub
+aRM
+aRM
+aRM
+clw
 wMi
 kYH
 kYH
@@ -78826,18 +79248,18 @@ bBk
 bBk
 hvw
 kjR
-eff
+clw
 jFH
 tvW
 pug
-eff
+clw
 sNg
 txf
-eff
-pCm
-pCm
-eff
-eff
+clw
+aUO
+aUO
+clw
+clw
 wMi
 kYH
 kYH
@@ -79050,7 +79472,7 @@ jhF
 ktt
 oUN
 kjR
-eff
+clw
 ubj
 pLC
 pLb
@@ -79059,7 +79481,7 @@ hsS
 rvk
 hqg
 mqT
-pCm
+aUO
 tki
 bNB
 wMi
@@ -79283,7 +79705,7 @@ sii
 dAV
 hqg
 pgA
-pCm
+aUO
 cCO
 qgp
 ulR
@@ -79507,7 +79929,7 @@ krL
 pLb
 hqg
 njz
-pCm
+aUO
 bNB
 wMi
 kYH
@@ -79722,7 +80144,7 @@ kjR
 huq
 hUn
 bBk
-eff
+clw
 xQz
 hEJ
 fap
@@ -79731,7 +80153,7 @@ rCA
 aah
 hqg
 uDH
-pCm
+aUO
 quP
 wMi
 kYH
@@ -79946,16 +80368,16 @@ kjR
 wGf
 bDe
 gvP
-eff
-eff
-eLQ
-eLQ
-eLQ
-eLQ
-eff
-eff
-pCm
-pCm
+clw
+clw
+tcw
+tcw
+tcw
+tcw
+clw
+clw
+aUO
+aUO
 qgp
 ulR
 kYH
@@ -81056,9 +81478,9 @@ kjR
 kjR
 bbS
 vsm
-wmH
+oqJ
 lRg
-wmH
+lhJ
 eCW
 vsm
 lzM
@@ -81087,18 +81509,18 @@ kYH
 kYH
 kYH
 rdv
-eff
-eff
-eff
-eff
+vWq
+vWq
+vWq
+vWq
 xnu
-eff
-eLQ
-eff
+vWq
+pck
+vWq
 tki
 bNB
 wMi
-gWK
+piR
 piR
 piR
 piR
@@ -81311,27 +81733,27 @@ kYH
 kYH
 kYH
 rdv
-eff
-iEx
+vWq
+pxe
 qMn
-eff
-cTE
-aQy
+vWq
+eFN
+dUV
 vFy
-eff
+vWq
 lPt
 lPt
-eff
-eff
+jsi
+jsi
 fDr
-eff
-eff
-fMc
-xao
+jsi
+jsi
+fuO
+dqZ
 cMn
-fMc
-eff
-eff
+fuO
+jsi
+jsi
 kYH
 bpU
 aeS
@@ -81535,17 +81957,17 @@ kYH
 kYH
 mhQ
 rnU
-eff
+vWq
 tLh
-slT
+uTI
 psJ
-cTE
-cTE
+cps
+cps
 ocI
-eff
+vWq
 vmP
 vmP
-eff
+jsi
 phY
 lZm
 xuB
@@ -81555,7 +81977,7 @@ wzb
 whd
 xZU
 dnt
-eff
+jsi
 kYH
 kYH
 rdv
@@ -81725,7 +82147,7 @@ kjR
 kjR
 vye
 vsm
-kss
+duw
 qrG
 vsm
 lRg
@@ -81759,17 +82181,17 @@ kYH
 kYH
 bpU
 aeS
-eff
-eff
-eff
-eff
-cTE
-cTE
-cTE
+vWq
+vWq
+vWq
+vWq
+cps
+cps
+cps
 bpZ
 piR
 piR
-eff
+jsi
 lZm
 xuB
 cHr
@@ -81779,7 +82201,7 @@ xuB
 lZm
 xuB
 lZm
-fMc
+fuO
 kYH
 kYH
 rdv
@@ -81949,17 +82371,17 @@ kjR
 kjR
 vye
 vsm
-kss
-kss
-kss
+duw
+duw
+duw
 bQT
 bQT
 lRg
-ioK
-ioK
-ioK
-ioK
-ioK
+ixz
+thL
+rOh
+nCt
+rzh
 ioK
 vsm
 vsm
@@ -81985,15 +82407,15 @@ kYH
 bpU
 aeS
 quP
-eff
+vWq
 eBq
-cTE
+cps
 lyM
 rTr
-eff
+vWq
 piR
 piR
-eff
+jsi
 kgK
 fpB
 iKd
@@ -82174,17 +82596,17 @@ kjR
 vye
 vsm
 abU
-kss
-kss
+duw
+duw
 bQT
 bQT
 lRg
-ioK
+hYA
 kss
 kss
 kss
 kss
-oBZ
+kss
 vsm
 xTv
 mXE
@@ -82209,15 +82631,15 @@ kYH
 kYH
 rdv
 tki
-eff
+vWq
 xAf
-cTE
-kIn
-bXC
-eff
+cps
+vDf
+cer
+vWq
 piR
 piR
-eff
+jsi
 sRZ
 eki
 tZf
@@ -82227,7 +82649,7 @@ nxb
 fpB
 xuB
 wjB
-xao
+dqZ
 kYH
 kYH
 rdv
@@ -82398,7 +82820,7 @@ fcf
 aCc
 vsm
 abU
-kss
+duw
 vsm
 bQT
 bQT
@@ -82433,15 +82855,15 @@ kYH
 kYH
 bpU
 aeS
-eff
-eff
-cTE
-eff
-daq
-eff
+vWq
+vWq
+cps
+vWq
+hZP
+vWq
 piR
 piR
-eff
+jsi
 hLa
 lZm
 xuB
@@ -82451,7 +82873,7 @@ eZA
 iKd
 lZm
 oxI
-fMc
+fuO
 kYH
 kYH
 rdv
@@ -82657,15 +83079,15 @@ kYH
 kYH
 kYH
 bpU
-eff
-cTE
-cTE
+vWq
+cps
+cps
 muD
 oYZ
-eff
+vWq
 piR
 piR
-eff
+jsi
 vVp
 xuB
 lZm
@@ -82675,7 +83097,7 @@ iYi
 lZm
 siC
 nxr
-eff
+jsi
 kYH
 mhQ
 fEZ
@@ -82849,17 +83271,17 @@ xZJ
 vsm
 oBZ
 oBZ
-kss
+cbK
 myt
 sef
 vsm
 tCa
 rSK
 vsm
+wOr
 bQT
 bQT
-bQT
-bQT
+cKw
 lzM
 oUN
 kjR
@@ -82881,25 +83303,25 @@ kYH
 kYH
 kYH
 kYH
-eff
-cTE
-cTE
-rvq
-rvq
-eff
+vWq
+cps
+cps
+rIQ
+rIQ
+vWq
 piR
 piR
-eff
-eff
+jsi
+jsi
 lgB
-inZ
-inZ
-eff
-eff
-eff
+ohl
+ohl
+jsi
+jsi
+jsi
 hwT
-eff
-eff
+jsi
+jsi
 kYH
 bpU
 aeS
@@ -83071,19 +83493,19 @@ dlM
 kjR
 kjR
 vsm
-kss
-kss
-kss
-kss
+cbK
+cbK
+cbK
+cbK
 oEd
 vsm
-bQT
+pZn
 bQT
 dAk
 bQT
 bQT
 bQT
-bQT
+puN
 lzM
 fzi
 kjR
@@ -83105,15 +83527,15 @@ mdS
 kYH
 kYH
 kYH
-eff
-cTE
-cTE
-bXC
-cTE
-eff
+vWq
+cps
+cps
+cer
+cps
+vWq
 vmP
 vmP
-eff
+jsi
 nDH
 lZm
 lZm
@@ -83123,7 +83545,7 @@ oeO
 lZm
 lZm
 lZm
-eff
+jsi
 kYH
 kYH
 rdv
@@ -83329,15 +83751,15 @@ eff
 eff
 kYH
 kYH
-eff
-eff
-eff
-eff
-eff
-eff
+vWq
+vWq
+vWq
+vWq
+vWq
+vWq
 tki
 lPt
-eff
+jsi
 wAw
 lZm
 cCg
@@ -83561,7 +83983,7 @@ kYH
 bpU
 qBT
 bNB
-eff
+jsi
 aFd
 lZm
 oRQ
@@ -83571,7 +83993,7 @@ lZm
 lZm
 lZm
 svj
-eff
+jsi
 iJJ
 kYH
 rdv
@@ -83785,17 +84207,17 @@ kYH
 kYH
 bpU
 aeS
-eff
-eff
+jsi
+jsi
 vWC
-eff
-eff
+jsi
+jsi
 pFs
-eff
-eff
+jsi
+jsi
 bpY
-eff
-eff
+jsi
+jsi
 kYH
 mhQ
 fEZ
@@ -84009,17 +84431,17 @@ kYH
 kYH
 kYH
 bpU
-eff
+jsi
 tal
-eCc
-eff
+fbb
+jsi
 huA
-eCc
-exL
-eff
-slT
+fbb
+xCR
+jsi
+jSs
 qCJ
-eff
+jsi
 kYH
 bpU
 aeS
@@ -84233,17 +84655,17 @@ kYH
 kYH
 kYH
 kYH
-eff
+jsi
 tal
-jYd
-eff
+aJV
+jsi
 wFI
-eCc
+fbb
 wEx
-eff
+jsi
 iEx
-slT
-eff
+jSs
+jsi
 kYH
 kYH
 rdv
@@ -84457,17 +84879,17 @@ mdS
 kYH
 kYH
 mhQ
-eff
+jsi
 hvI
-eCc
-eff
+fbb
+jsi
 xKh
 lBv
 egu
-eff
-slT
-rCL
-eff
+jsi
+jSs
+tHe
+jsi
 kYH
 kYH
 rdv
@@ -84629,7 +85051,7 @@ nSP
 nSP
 kXS
 ttH
-hvs
+dJR
 dUU
 kjR
 kjR
@@ -84681,17 +85103,17 @@ wMi
 kYH
 kYH
 rdv
-eff
-eff
-eff
-eff
-eff
-eff
-eff
-eff
-eff
-eff
-eff
+jsi
+jsi
+jsi
+jsi
+jsi
+jsi
+jsi
+jsi
+jsi
+jsi
+jsi
 kYH
 kYH
 rdv
@@ -84842,18 +85264,18 @@ axW
 sId
 jhF
 dUU
-oCr
+wvN
 oCr
 oCr
 mjM
-fUz
+tVu
 gki
-hIN
+ttH
 efh
 nSP
 ttH
 nSP
-ttH
+nkG
 dUU
 kjR
 kjR
@@ -85066,11 +85488,11 @@ mqZ
 sId
 sId
 dUU
+qri
 mjM
 mjM
 mjM
-mjM
-mjM
+gvo
 gki
 ttH
 ttH
@@ -85515,7 +85937,7 @@ sId
 sId
 dUU
 wTa
-jVq
+rhz
 jVq
 mjM
 etd
@@ -85738,7 +86160,7 @@ axW
 sId
 gfx
 dUU
-qri
+xuY
 mjM
 mjM
 mjM
@@ -85966,7 +86388,7 @@ mjM
 mjM
 mjM
 mjM
-tVu
+jOk
 dUU
 nlu
 mjM
@@ -86193,7 +86615,7 @@ gki
 dUU
 dUU
 mjM
-etd
+pBG
 dUU
 kjR
 kjR
@@ -86410,14 +86832,14 @@ dUU
 dUU
 dUU
 dUU
+itm
 mjM
 mjM
 mjM
-gvo
 mjM
-mjM
-mjM
-bSS
+pBG
+ckq
+ncq
 dUU
 kjR
 kjR
@@ -86631,17 +87053,17 @@ vbZ
 bhp
 bhp
 dUU
-cPM
-cPM
+qig
+lsr
 xwJ
-mjM
-mjM
 mjM
 tCF
 mjM
 mjM
 mjM
 mjM
+tCF
+bSS
 dUU
 kjR
 pwC
@@ -87082,13 +87504,13 @@ dUU
 dUU
 dUU
 dUU
-kmC
 ibo
+mZH
 mjM
-nLX
+oEc
 dUU
 mjM
-mjM
+kGb
 mjM
 dUU
 kjR
@@ -87305,8 +87727,8 @@ bhp
 bhp
 bhp
 bhp
-naY
-kmC
+gki
+nLX
 mjM
 mjM
 mjM
@@ -87529,7 +87951,7 @@ sRY
 xaD
 bhp
 sRY
-naY
+gki
 pMt
 mjM
 oCr
@@ -87756,8 +88178,8 @@ bhp
 dUU
 hyN
 mjM
-kmC
 wOD
+tbd
 dUU
 dUU
 dUU
@@ -87978,8 +88400,8 @@ sRY
 bhp
 bhp
 dUU
-kmC
-tCF
+rop
+mjM
 eeR
 eeR
 dUU

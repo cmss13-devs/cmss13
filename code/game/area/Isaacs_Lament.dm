@@ -385,6 +385,22 @@
 	name = "Issac's Lament - South-West - Wey-Yu Travel Agency"
 	icon_state = "shed_4_ag"
 
+/area/lv553/indoors/lone_buildings/cheeseburger
+	name = "Issac's Lament - South-West - Stacy's All You Can Eat Burgers"
+	icon_state = "shed_5_ag"
+
+/area/lv553/indoors/lone_buildings/trapped_house
+	name = "Issac's Lament - South - Trapped House"
+	icon_state = "shed_1_ag"
+
+/area/lv553/indoors/lone_buildings/farm_shack
+	name = "Issac's Lament - South - Andrew's Organic Farm Shack"
+	icon_state = "shed_2_ag"
+
+/area/lv553/indoors/lone_buildings/school
+	name = "Issac's Lament - South - School"
+	icon_state = "shed_3_ag"
+
 /area/lv553/indoors/lone_buildings/polemuseum
 	name = "Issac's Lament - South-East - Pole Museum"
 	icon_state = "shed_1_ag"

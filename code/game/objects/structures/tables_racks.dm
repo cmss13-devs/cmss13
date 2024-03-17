@@ -628,6 +628,18 @@
 	icon_state = "clothtable"
 	table_prefix = "cloth"
 
+/obj/structure/surface/table/reinforced/diner_white
+	name = "white diner table"
+	desc = "A smooth white table, bolted to the floor. The industry standard for a diner."
+	icon_state = "wdinertable"
+	table_prefix = "wdiner"
+
+/obj/structure/surface/table/reinforced/diner_red
+	name = "red diner table"
+	desc = "A smooth white table, bolted to the floor. The industry standard for a diner."
+	icon_state = "rdinertable"
+	table_prefix = "rdiner"
+
 /*
  * Racks
  */

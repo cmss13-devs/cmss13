@@ -1015,3 +1015,25 @@
 	icon_state = "paddedsec_rwindow0"
 	basestate = "paddedsec_rwindow"
 	window_frame = /obj/structure/window_frame/corsat/security
+
+//Diner windows
+
+/obj/structure/window/framed/diner
+	name = "hull window"
+	desc = "A glass window with a special rod matrix inside a wall frame. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
+	icon = 'icons/turf/walls/diner_windows.dmi'
+	icon_state = "diner_window0"
+	basestate = "diner_window"
+	health = 40
+	window_frame = /obj/structure/window_frame/diner
+
+/obj/structure/window/framed/diner/hull
+	name = "window"
+	desc = "A glass window with a special rod matrix inside a wall frame. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
+	icon_state = "diner_window0"
+	basestate = "diner_window"
+	not_damageable = TRUE
+	not_deconstructable = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	health = 1000000 //Failsafe, shouldn't matter

@@ -199,10 +199,36 @@
 /obj/structure/barricade/handrail/sandstone/b
 	icon_state = "hr_sandstone_b"
 
+// Diner
 /obj/structure/barricade/handrail/pizza
 	name = "\improper diner half-wall"
-	icon_state = "hr_sandstone" //temp, getting sprites soontm
-	color = "#b51c0b"
 	can_be_reinforced = FALSE
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
 	layer = MOB_LAYER + 0.01
+
+/obj/structure/barricade/handrail/pizza/outer_wall
+	icon_state = "diner_wall_o"
+
+/obj/structure/barricade/handrail/pizza/inner_wall
+	icon_state = "diner_wall_i"
+	projectile_coverage = PROJECTILE_COVERAGE_NONE
+
+/obj/structure/barricade/handrail/pizza/inner_corners
+	icon_state = "diner_wall_i_corners"
+	layer = MOB_LAYER + 0.02
+
+/obj/structure/barricade/handrail/pizza/outer_corners
+	icon_state = "diner_wall_o_corners"
+
+/obj/structure/barricade/handrail/pizza/entrance
+	icon_state = "diner_wall_entrance"
+	projectile_coverage = PROJECTILE_COVERAGE_NONE
+	density = FALSE
+
+/obj/structure/barricade/handrail/pizza/t_junction
+	icon_state = "diner_wall_t"
+
+/obj/structure/barricade/handrail/pizza/endcap
+	icon_state = "diner_wall_cap"
+	layer = MOB_LAYER + 0.02
+	density = FALSE

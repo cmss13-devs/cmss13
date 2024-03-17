@@ -1369,6 +1369,7 @@
 #include "code\game\turfs\auto_turf.dm"
 #include "code\game\turfs\baseturf_skipover.dm"
 #include "code\game\turfs\closed.dm"
+#include "code\game\turfs\diner.dm"
 #include "code\game\turfs\floor.dm"
 #include "code\game\turfs\floor_types.dm"
 #include "code\game\turfs\kutjevo.dm"

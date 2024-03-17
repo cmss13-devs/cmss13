@@ -310,3 +310,10 @@
 
 /obj/structure/window_frame/corsat/security
 	window_type = /obj/structure/window/framed/corsat/security
+
+// Diner frames
+/obj/structure/window_frame/diner
+	icon = 'icons/turf/walls/diner_windows.dmi'
+	icon_state = "diner_window0_frame"
+	basestate = "diner_window"
+	window_type = /obj/structure/window/framed/diner

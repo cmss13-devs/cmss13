@@ -648,10 +648,15 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	show_browser(user, dat, "Preferences", "preferencebrowser")
 	onclose(user, "preferencewindow", src)
 
-//limit - The amount of jobs allowed per column. Defaults to 19 to make it look nice.
-//splitJobs - Allows you split the table by job. You can make different tables for each department by including their heads. Defaults to MS to make it look nice.
-//width - Screen' width. Defaults to 950 to make it look nice.
-//height - Screen's height. Defaults to 700 to make it look nice.
+/**
+ * Job Preferences: Preferences for role at round start.
+ *
+ * Arguments:
+ * * limit - The amount of jobs allowed per column. Defaults to 19 to make it look nice.
+ * * splitJobs - Allows you split the table by job. You can make different tables for each department by including their heads. Defaults to MS to make it look nice.
+ * * width - Screen' width. Defaults to 950 to make it look nice.
+ * * height - Screen's height. Defaults to 700 to make it look nice.
+ */
 /datum/preferences/proc/SetChoices(mob/user, limit = 19, list/splitJobs = list(JOB_MESS_SERGEANT), width = 950, height = 700)
 	if(!GLOB.RoleAuthority)
 		return
@@ -761,10 +766,15 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	onclose(user, "mob_occupation", user.client, list("_src_" = "prefs", "preference" = "job", "task" = "close"))
 	return
 
-//limit - The amount of jobs allowed per column. Defaults to 13 to make it look nice.
-//splitJobs - Allows you split the table by job. You can make different tables for each department by including their heads. Defaults to MS to make it look nice.
-//width - Screen' width. Defaults to 950 to make it look nice.
-//height - Screen's height. Defaults to 700 to make it look nice.
+/**
+ * Job Assignments window: Assign unique characters to a particular job.
+ *
+ * Arguments:
+ * * limit - The amount of jobs allowed per column. Defaults to 19 to make it look nice.
+ * * splitJobs - Allows you split the table by job. You can make different tables for each department by including their heads. Defaults to MS to make it look nice.
+ * * width - Screen' width. Defaults to 950 to make it look nice.
+ * * height - Screen's height. Defaults to 700 to make it look nice.
+ */
 /datum/preferences/proc/set_job_slots(mob/user, limit = 19, list/splitJobs = list(JOB_MESS_SERGEANT), width = 950, height = 700)
 	if(!GLOB.RoleAuthority)
 		return

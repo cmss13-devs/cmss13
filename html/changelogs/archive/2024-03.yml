@@ -183,3 +183,20 @@
 2024-03-16:
   nauticall:
   - bugfix: Makes pill bottle caps appear on closed pill bottles again.
+2024-03-17:
+  Huffie56:
+  - refactor: refactored areas replaced stern hallway by aft added two new hallway
+      area(fore, midship)
+  - refactor: refactored areas replaced midship maintenance by for and added two new
+      maintenance  areas(fore, aft) with each starboard and port side.
+  - maptweak: removed all the emergency shutter that weren't at the borders of each
+      areas.
+  - maptweak: added back the bear belt in a closet in a dormitory.
+  - maptweak: reconnect some air  pipe in an hallway north upper engi.
+  Segrain:
+  - bugfix: Ghosts no longer miss announcements seemingly at random.
+  SpartanBobby:
+  - maptweak: Removes some ledges on LV522
+  - maptweak: Removes unintended hullwalls on LV522
+  realforest2001:
+  - rscadd: Updated the Insanity law description.

@@ -1,7 +1,7 @@
 /datum/job/antag/xenos/queen
 	title = JOB_XENOMORPH_QUEEN
 	role_ban_alternative = "Queen"
-	supervisors = "Queen Mother"
+	supervisors = "Your Queen Mother"
 	selection_class = "job_xeno_queen"
 	total_positions = 1
 	spawn_positions = 1
@@ -13,9 +13,10 @@
 	SSticker.mode.pick_queen_spawn(NP.mind, hive_index)
 
 /datum/job/antag/xenos/queen/announce_entry_message(mob/new_queen, account, whitelist_status)
-	to_chat(new_queen, "<B>You are now the alien queen!</B>")
-	to_chat(new_queen, "<B>Your job is to spread the hive.</B>")
-	to_chat(new_queen, "<B>You should start by building a hive core.</B>")
+	to_chat(new_queen, "<B>You are now a xenomorph queen!</B>")
+	to_chat(new_queen, "<B>Your job is to spread and command YOUR hive.</B>")
+	to_chat(new_queen, "<B>You should start by building a hive core, and growing your ovipositor in a safe location.</B>")
+	to_chat(new_queen, "<B>If you have no children, you may want to seek viable hosts to infect prior to growing your ovipositor.</B>")
 	to_chat(new_queen, "Talk in Hivemind using <strong>;</strong> (e.g. ';Hello my children!')")
 
 AddTimelock(/datum/job/antag/xenos/queen, list(

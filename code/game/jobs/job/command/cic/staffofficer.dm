@@ -6,7 +6,8 @@
 	scaled = FALSE
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = /datum/equipment_preset/uscm_ship/so
-	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>Your job is to monitor the Marines, man the CIC, and listen to your superior officers.</a> You are in charge of logistics and the overwatch system. You are also in line to take command after other eligible superior commissioned officers."
+	supervisors = "the acting commander"
+	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>Your job is to monitor the Marines, man the CIC via overwatch, man the CIC, and listen to your Acting Commander.</a> You are in charge of managing one or many squads, or delegated duties handed out by the Acting Commander. You are 6th in line for Acting Commander, behind the Chief Medical Officer"
 
 /datum/job/command/bridge/set_spawn_positions(count)
 	spawn_positions = so_slot_formula(count)

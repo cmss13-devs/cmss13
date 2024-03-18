@@ -3287,6 +3287,11 @@
 	unacidable = 1;
 	unslashable = 1
 	},
+/obj/item/desk_bell{
+	pixel_x = -6;
+	pixel_y = 10;
+	anchored = 1
+	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "asH" = (
@@ -16102,6 +16107,11 @@
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/surface/table/reinforced/almayer_blend/north,
+/obj/item/desk_bell{
+	pixel_x = -6;
+	pixel_y = -8;
+	anchored = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -16392,6 +16402,11 @@
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/surface/table/reinforced/almayer_blend,
+/obj/item/desk_bell{
+	pixel_x = -6;
+	pixel_y = 10;
+	anchored = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -38947,8 +38962,11 @@
 /obj/structure/machinery/door/window/eastleft{
 	req_access_txt = "8"
 	},
-/obj/item/book/manual/medical_diagnostics_manual,
-/obj/item/device/megaphone,
+/obj/item/desk_bell{
+	pixel_x = -6;
+	pixel_y = 10;
+	anchored = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -68571,6 +68589,8 @@
 	dir = 8;
 	pixel_x = 17
 	},
+/obj/item/device/megaphone,
+/obj/item/book/manual/medical_diagnostics_manual,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -77143,6 +77163,11 @@
 /obj/structure/machinery/status_display{
 	pixel_x = -32
 	},
+/obj/item/desk_bell{
+	anchored = 1;
+	pixel_x = -8;
+	pixel_y = 8
+	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
 "wpu" = (
@@ -77820,6 +77845,9 @@
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 1;
 	name = "ship-grade camera"
+	},
+/obj/item/desk_bell{
+	anchored = 1
 	},
 /turf/open/floor/almayer{
 	dir = 6;

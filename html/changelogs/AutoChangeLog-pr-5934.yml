@@ -1,0 +1,4 @@
+author: "SabreML"
+delete-after: True
+changes:
+  - admin: "Made the 'Join as Xeno' button disable the user's larva protection when clicked by a moderator."

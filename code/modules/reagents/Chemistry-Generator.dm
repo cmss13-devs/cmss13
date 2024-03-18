@@ -200,8 +200,7 @@
 
 	//OD ratios
 	overdose = 5
-	for(var/i=1;i<=rand(1,11);i++) //We add 5 units to the overdose per cycle, min 5u, max 60u
-		if(prob(50 + 5*gen_tier))//Deviating from 5 gets exponentially more rare, deviation scales with chem level
+	for(var/i=1;i<=rand(max(gen_tier*2, 4),11);i++) //We add 5 units to the overdose per cycle, min 10u, max 60u
 			overdose += 5
 	overdose_critical = overdose + 5
 	for(var/i=1;i<=rand(1,5);i++) //overdose_critical is min 5u, to max 30u + normal overdose
@@ -261,14 +260,14 @@
 	else
 		switch(gen_tier)
 			if(1)
-				if(roll<=20)
+				if(roll<=40)
 					property = pick(GLOB.chemical_properties_list["negative"])
 				else if (roll<=50)
 					property = pick(GLOB.chemical_properties_list["neutral"])
 				else
 					property = pick(GLOB.chemical_properties_list["positive"])
 			if(2)
-				if(roll<=25)
+				if(roll<=35)
 					property = pick(GLOB.chemical_properties_list["negative"])
 				else if (roll<=45)
 					property = pick(GLOB.chemical_properties_list["neutral"])
@@ -277,14 +276,14 @@
 			if(3)
 				if(roll<=15)
 					property = pick(GLOB.chemical_properties_list["negative"])
-				else if (roll<=40)
+				else if (roll<=25)
 					property = pick(GLOB.chemical_properties_list["neutral"])
 				else
 					property = pick(GLOB.chemical_properties_list["positive"])
 			else
-				if(roll<=15)
+				if(roll<=10)
 					property = pick(GLOB.chemical_properties_list["negative"])
-				else if (roll<=40)
+				else if (roll<=15)
 					property = pick(GLOB.chemical_properties_list["neutral"])
 				else
 					property = pick(GLOB.chemical_properties_list["positive"])

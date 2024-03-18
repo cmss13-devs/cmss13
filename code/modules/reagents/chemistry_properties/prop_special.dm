@@ -126,6 +126,13 @@
 		A.hivenumber = hivenumber
 		A.faction = hive.internal_faction
 
+/datum/chem_property/special/encrypted
+	name = PROPERTY_ENCRYPTED
+	code = "ENC"
+	description = "This extremely complex chemical structure contains a cipher that appears to be missing a few parts to complete the process"
+	rarity = PROPERTY_DISABLED
+	category = PROPERTY_TYPE_ANOMALOUS
+
 /datum/chem_property/special/ciphering/predator
 	name = PROPERTY_CIPHERING_PREDATOR
 	code = "PCI"

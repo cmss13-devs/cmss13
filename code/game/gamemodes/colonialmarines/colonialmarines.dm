@@ -12,7 +12,8 @@
 	static_comms_amount = 1
 	var/round_status_flags
 
-	var/research_allocation_interval = 10 MINUTES
+	var/research_reroll_interval = 2 MINUTES
+	var/research_picked_interval = 5 MINUTES
 	var/next_research_allocation = 0
 	var/next_stat_check = 0
 	var/list/running_round_stats = list()
@@ -167,8 +168,13 @@
 		check_ground_humans()
 
 	if(next_research_allocation < world.time)
-		GLOB.chemical_data.update_credits(GLOB.chemical_data.research_allocation_amount)
-		next_research_allocation = world.time + research_allocation_interval
+		GLOB.chemical_data.reroll_chemicals()
+		next_research_allocation = world.time + research_reroll_interval
+	if(GLOB.chemical_data.picked_chem)
+		next_research_allocation = world.time + research_picked_interval
+		GLOB.chemical_data.picked_chem = FALSE
+
+
 
 	if(!round_finished)
 		var/datum/hive_status/hive

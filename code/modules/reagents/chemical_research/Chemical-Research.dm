@@ -5,6 +5,7 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 	var/clearance_level = 1
 	var/clearance_x_access = FALSE
 	var/reached_x_access = FALSE
+	var/picked_chem = FALSE
 	var/has_new_properties = FALSE
 	var/research_allocation_amount = 5
 	var/list/research_documents = list()
@@ -144,6 +145,8 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 /datum/chemical_data/proc/add_chemical_objective(datum/reagent/chem)
 	chemical_objective_list[chem.id] = chem.objective_value
 	chemical_not_completed_objective_list[chem.id] = chem.objective_value
+
+/datum/chemical_data/proc/reroll_chemicals()
 
 /datum/chemical_data/proc/get_tgui_data(chemid)
 	var/datum/reagent/chem = GLOB.chemical_reagents_list[chemid]

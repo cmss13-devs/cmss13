@@ -642,6 +642,8 @@
 	icon_state = "paper_wy_words"
 	unacidable = TRUE
 	var/datum/reagent/data
+	var/list/hint = list()
+	var/picked_property
 	var/tier
 	var/note_type
 	var/full_report
@@ -724,25 +726,26 @@
 			txt += "Weyland-Yutani Research Grant</H2></center>"
 			txt += "Dear valued researcher. Weyland-Yutani has taken high interest of your recent scientific progress. To further support your work we have sent you this research grant of [grant] credits. Please scan at your local Weyland-Yutani research data terminal to receive the benefits.<BR>\n"
 			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
+		if("ciph_hint")
+			icon_state = "paper_wy_words"
+			name = "Research Opportunity"
+			txt += "Weyland-Yutani Biological Weapons Division</H2></center>"
+			txt += "Dear valued Research department aboard [MAIN_SHIP_NAME], We believe [MAIN_SHIP_NAME] is above Weyland-Yutani Sponsored colony, thus we decided to share colony research findings. <BR>\n\n"
+			txt += "During testing, the theorized component [PROPERTY_CIPHERING] was found to be made of [hint[1]], Recent discovery made us believe the one of the missing pieces has [isNeutralProperty(hint[3]) ? "neutral" : "negative"] effects.<BR>\n"
+			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
+		if("ciph_hint_complete")
+			icon_state = "paper_wy_words"
+			name = "Research Opportunity"
+			txt += "Weyland-Yutani Biological Weapons Division</H2></center>"
+			txt += "During testing, the theorized component [PROPERTY_CIPHERING] was found to be made of [hint[2]] [prob(30) ? ("and "+ hint[3]) :""]. Recent discovery made us believe the one of the missing pieces has positive effects, as well as a XX-121 sample.<BR>\n"
+			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
+		if("leg_hint")
+			icon_state = "paper_wy_words"
+			name = "Property Breakthrough"
+			txt += "Weyland-Yutani Pharmaceuticals Division(TM).</H2></center>"
+			txt += "During XRF process on substance <I>[rand(10000,99999)]</I>, the theorized component [picked_property] was found to be made of [hint[1]], and [hint[2]]. Final discovery made us believe the final missing piece was [hint[3]].<BR>\n"
+			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
 	info = txt
-
-/obj/item/paper/research_notes/bad
-	note_type = "synthesis"
-	tier = "T1"
-
-/obj/item/paper/research_notes/decent
-	note_type = "synthesis"
-	tier = "T2"
-	full_report = TRUE
-
-/obj/item/paper/research_notes/good
-	note_type = "synthesis"
-	full_report = TRUE
-
-/obj/item/paper/research_notes/good/Initialize()
-	var/list/L = list("T3", "T4")
-	tier = pick(L)
-	. = ..()
 
 /obj/item/paper/research_notes/unique
 	note_type = "synthesis"
@@ -781,6 +784,25 @@
 	data = C
 	msg_admin_niche("New reagent with id [C.id], name [C.name], level [C.gen_tier], generated and printed at [loc] [ADMIN_JMP(loc)].")
 	. = ..()
+
+/obj/item/paper/research_notes/ciph_hint
+	note_type = "ciph_hint"
+
+/obj/item/paper/research_notes/ciph_hint/Initialize()
+	. = ..()
+	hint = GLOB.combining_properties[PROPERTY_CIPHERING]
+
+/obj/item/paper/research_notes/ciph_hint_complete
+	note_type = "ciph_hint_complete"
+
+/obj/item/paper/research_notes/leg_hint
+	note_type = "leg_hint"
+
+/obj/item/paper/research_notes/leg_hint/Initialize()
+	picked_property = pick(PROPERTY_LEGENDARY_LIST)
+	hint = GLOB.combining_properties[picked_property]
+	. = ..()
+
 
 /obj/item/paper/research_notes/grant
 	note_type = "grant"

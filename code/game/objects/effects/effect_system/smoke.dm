@@ -337,14 +337,14 @@
 	name = "Marijuana smoke"
 	smokeranking = SMOKE_RANK_HIGH
 	color = "#95d1ac"
-	var/xeno_affecting = TRUE // can we get much higher (so high)
 	opacity = FALSE
 	alpha = 75
+	var/xeno_affecting = TRUE
 
 /obj/effect/particle_effect/smoke/weed/affect(mob/living/carbon/affected)
 	..()
 	if(ishuman(affected))
-		if (affected.internal != null && affected.wear_mask && (affected.wear_mask.flags_inventory & ALLOWINTERNALS))
+		if (affected.internal && affected.wear_mask && (affected.wear_mask.flags_inventory & ALLOWINTERNALS))
 			return
 		else
 			affected.updatehealth()

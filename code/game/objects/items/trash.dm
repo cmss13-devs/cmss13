@@ -152,7 +152,7 @@
 	icon_state = "cigarbutt"
 
 /obj/item/trash/bluntbutt
-	name  = "roach"
+	name = "roach"
 	desc = "Someone's been puffing some good kush."
 	icon_state = "bluntbutt"
 ////////////

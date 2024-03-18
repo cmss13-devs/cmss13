@@ -453,15 +453,17 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/cigarette/weed/verb/puff()
 	set name = "Hotbox"
-	set desc = "Puff a fat cloud"
+	set desc = "Puff a fat cloud."
 	set category = "Smoke"
 	set src in usr
 	var/mob/living/carbon/human/smoker = usr
 	var/datum/effect_system/smoke_spread/smoke = new /datum/effect_system/smoke_spread/weed
-	if(!usr || usr.is_mob_incapacitated(TRUE))
+	if(!smoker || smoker.is_mob_incapacitated(TRUE))
 		return
+		
 	if(smoker.wear_mask != src)
 		return
+		
 	if(!can_puff)
 		to_chat(smoker,SPAN_NOTICE("Your lungs lack fresh air, chill man."))
 		return
@@ -484,7 +486,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 	smoker.visible_message(SPAN_BOLDNOTICE("[smoker] puffs a massive cloud from their [src]"))
 	smoke.set_up(rand(1,3), 0, get_turf(smoker),smoker.dir,5)
-	smoketime =- 4 MINUTES // Burns it a lot faster when
+	smoketime -= 4 MINUTES // Burns it a lot faster when
 	can_puff = FALSE
 	addtimer(VARSET_CALLBACK(src, can_puff, TRUE), puff_cooldown) // Need to take a breather before puffing
 	smoker.apply_damage(rand(1,10),OXYLOSS)

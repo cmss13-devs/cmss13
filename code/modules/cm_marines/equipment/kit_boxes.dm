@@ -74,6 +74,7 @@
 	desc = "a large case containing a XM43E1 anti material rifle"
 	new /obj/item/clothing/suit/storage/marine/light/vest/xm43e1_vest(src)
 	new /obj/item/clothing/head/helmet/marine/xm43e1(src)
+	new /obj/item/clothing/glasses/night/m42_night_goggles(src)
 	new /obj/item/weapon/gun/rifle/sniper/XM43E1(src)
 	new /obj/item/ammo_magazine/sniper/anti_materiel(src)
 	new /obj/item/ammo_magazine/sniper/anti_materiel(src)

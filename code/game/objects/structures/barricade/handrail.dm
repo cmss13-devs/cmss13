@@ -204,7 +204,6 @@
 	name = "\improper diner half-wall"
 	can_be_reinforced = FALSE
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
-	layer = MOB_LAYER + 0.1
 
 /obj/structure/barricade/handrail/pizza/outer_wall
 	icon_state = "diner_wall_o"
@@ -219,7 +218,7 @@
 
 /obj/structure/barricade/handrail/pizza/inner_corners
 	icon_state = "diner_wall_i_corners"
-	layer = MOB_LAYER + 0.2
+	layer = 2.99
 
 /obj/structure/barricade/handrail/pizza/outer_corners
 	icon_state = "diner_wall_o_corners"
@@ -231,9 +230,9 @@
 
 /obj/structure/barricade/handrail/pizza/t_junction
 	icon_state = "diner_wall_t"
-	layer = MOB_LAYER + 0.2
+	layer = 2.99
 
 /obj/structure/barricade/handrail/pizza/endcap
 	icon_state = "diner_wall_cap"
-	layer = MOB_LAYER + 0.2
+	layer = 2.99
 	density = FALSE

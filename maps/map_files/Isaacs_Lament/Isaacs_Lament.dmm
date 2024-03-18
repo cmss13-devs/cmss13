@@ -12,8 +12,20 @@
 	},
 /area/lv553/indoors/lone_buildings/weymart)
 "aam" = (
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/flooded_streets/west)
+"aaE" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Makeshift Telecommunications Hut"
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/tcomms)
 "aaZ" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/toy/deck/uno,
@@ -64,7 +76,9 @@
 /area/lv553/indoors/operations/offices/northwest)
 "ace" = (
 /obj/item/spacecash/c10,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "aci" = (
 /obj/structure/bed/chair{
@@ -174,7 +188,9 @@
 /area/lv553/indoors/operations/hallway/south)
 "aen" = (
 /obj/structure/window_frame/colony,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/east_apartments)
 "aes" = (
 /obj/item/shard,
@@ -320,6 +336,10 @@
 /obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor/plating/plating_catwalk,
 /area/lv553/indoors/ss_athens)
+"agW" = (
+/obj/item/tool/weldingtool/largetank,
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/cargo_lz)
 "ahc" = (
 /obj/structure/prop/dam/truck,
 /turf/open/asphalt/cement,
@@ -416,7 +436,9 @@
 	pixel_y = 12
 	},
 /obj/item/clothing/under/swimsuit/red,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/oob)
 "ajU" = (
 /obj/structure/window/reinforced{
@@ -522,6 +544,12 @@
 	},
 /turf/open/gm/dirtgrassborder/dirt/south,
 /area/lv553/outdoors/cmb/exterior)
+"amG" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/tcomms)
 "amJ" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/snacks/upp,
@@ -586,6 +614,15 @@
 /obj/item/tool/screwdriver,
 /turf/open/floor/interior/plastic,
 /area/lv553/oob)
+"anZ" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2-8"
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/tcomms)
 "aok" = (
 /obj/structure/prop/almayer/computers/sensor_computer3,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -607,11 +644,20 @@
 	icon_state = "wood-broken4"
 	},
 /area/lv553/indoors/southwest/slums)
+"apG" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
+	dir = 1;
+	name = "\improper Cargo Landing Zone Inspection Office"
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/cargo_lz)
 "aqi" = (
 /obj/item/trash/plate,
 /obj/item/light_bulb/tube,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/east_apartments)
 "aqt" = (
 /obj/structure/toilet{
@@ -673,6 +719,12 @@
 	},
 /turf/open/asphalt/cement,
 /area/lv553/indoors/gated_community/residence_bunkhouse)
+"asd" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "2-4"
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/tcomms)
 "asr" = (
 /obj/effect/decal/strata_decals/grime/grime2,
 /obj/effect/decal/strata_decals/grime/grime4{
@@ -690,7 +742,9 @@
 	pixel_x = -23;
 	pixel_y = -12
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/oob)
 "asv" = (
 /obj/effect/decal/warning_stripes{
@@ -715,6 +769,11 @@
 	icon_state = "wood-broken4"
 	},
 /area/lv553/indoors/southwest/slums)
+"asE" = (
+/obj/structure/prop/server_equipment/broken,
+/obj/structure/cable/heavyduty,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/tcomms)
 "asZ" = (
 /turf/open/floor{
 	icon_state = "dark"
@@ -800,7 +859,9 @@
 	pixel_y = -9
 	},
 /obj/item/trash/pistachios,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/weymart)
 "awn" = (
 /obj/effect/decal/warning_stripes{
@@ -832,7 +893,9 @@
 /area/lv553/outdoors/colony_streets/northeast)
 "ayc" = (
 /obj/structure/machinery/colony_floodlight,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/flooded_streets/waste_treatment)
 "ayL" = (
 /obj/structure/closet,
@@ -1025,7 +1088,9 @@
 /obj/item/trash/crushed_cup,
 /obj/item/spacecash/c10,
 /obj/structure/machinery/light_construct,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "aDY" = (
 /obj/effect/decal/warning_stripes{
@@ -1039,7 +1104,9 @@
 /area/lv553/indoors/operations/reception)
 "aEh" = (
 /obj/item/stack/sheet/wood,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/east_apartments)
 "aEo" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -1232,10 +1299,6 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/travel_agency)
-"aIf" = (
-/obj/structure/window/framed/colony,
-/turf/open/gm/dirtgrassborder/dirt/grassdirt_corner2/north_west,
-/area/lv553/indoors/northeast/slums)
 "aIh" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/dirt/west,
@@ -1297,6 +1360,7 @@
 /area/lv553/indoors/northeast/slums)
 "aJk" = (
 /obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/weapon/baseballbat/metal,
 /turf/open/floor,
 /area/lv553/oob)
 "aJm" = (
@@ -1329,7 +1393,9 @@
 /area/lv553/indoors/lone_buildings/pizza)
 "aJX" = (
 /obj/item/trash/crushed_cup,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/waste_silos)
 "aKc" = (
 /obj/structure/surface/table,
@@ -1462,7 +1528,9 @@
 "aNn" = (
 /obj/structure/window_frame/colony,
 /obj/item/shard,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/east_apartments)
 "aNs" = (
 /obj/structure/surface/table/almayer,
@@ -1487,7 +1555,9 @@
 	dir = 1;
 	name = "apartment door"
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/oob)
 "aOi" = (
 /obj/structure/largecrate/random/mini/med{
@@ -1495,6 +1565,21 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/lv553/oob)
+"aOm" = (
+/obj/structure/machinery/shower{
+	pixel_y = 17
+	},
+/obj/structure/window{
+	dir = 8
+	},
+/obj/structure/machinery/door/window{
+	dir = 2
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "vault"
+	},
+/area/lv553/indoors/lone_buildings/tcomms)
 "aOo" = (
 /obj/structure/sink{
 	pixel_y = 16
@@ -1562,7 +1647,9 @@
 /obj/item/stack/sheet/cardboard{
 	name = "soaked cardboard"
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/weymart)
 "aPt" = (
 /obj/structure/sink{
@@ -1937,10 +2024,6 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv553/indoors/gated_community/head_of_corporate_engineering)
-"bau" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/gm/grass/dirt,
-/area/lv553/indoors/northeast/slums)
 "bav" = (
 /obj/structure/window{
 	dir = 4
@@ -1964,7 +2047,9 @@
 "bbd" = (
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/waste_station)
 "bbm" = (
 /obj/item/ammo_casing/bullet,
@@ -2255,7 +2340,9 @@
 /obj/structure/machinery/light_construct{
 	dir = 4
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "bjm" = (
 /obj/structure/fence,
@@ -2264,7 +2351,7 @@
 "bjo" = (
 /obj/structure/machinery/power/port_gen/pacman/super,
 /turf/open/asphalt/cement,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/tcomms)
 "bjG" = (
 /obj/item/paper/crumpled{
 	pixel_x = 10;
@@ -2327,7 +2414,9 @@
 /area/lv553/indoors/operations/hallway/north)
 "blf" = (
 /obj/item/stack/sheet/wood,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/flooded_streets/west)
 "blw" = (
 /obj/structure/flora/jungle/hedge,
@@ -2342,6 +2431,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
 /area/lv553/indoors/gated_community/residence_bunkhouse)
+"blU" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/cargo_lz)
 "bmd" = (
 /obj/structure/sink{
 	dir = 8;
@@ -2450,7 +2543,9 @@
 /area/lv553/indoors/southwest/slums)
 "boy" = (
 /obj/structure/prop/fishing/line/long,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/flooded_streets/east)
 "boT" = (
 /obj/item/shard,
@@ -2464,7 +2559,9 @@
 	pixel_x = -6;
 	pixel_y = 16
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/oob)
 "bpx" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -2695,7 +2792,7 @@
 /area/lv553/indoors/south/slums)
 "bxl" = (
 /obj/structure/reagent_dispensers/fueltank/gas,
-/turf/open/asphalt/cement,
+/turf/open/gm/road,
 /area/lv553/outdoors/colony_streets/northeast)
 "bxA" = (
 /turf/open/floor/wood,
@@ -2861,7 +2958,9 @@
 /area/lv553/landing_zone_1)
 "bCL" = (
 /obj/item/trash/sosjerky,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/waste_silos)
 "bCN" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
@@ -2953,7 +3052,9 @@
 /obj/structure/machinery/door/window{
 	dir = 2
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "bEO" = (
 /obj/structure/prop/invuln/overhead_pipe{
@@ -3168,7 +3269,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/flooded_streets/waste_treatment)
 "bLO" = (
 /obj/structure/flora/jungle/hedge{
@@ -3263,6 +3366,13 @@
 	icon_state = "browndirt_road_1"
 	},
 /area/lv553/outdoors/flooded_streets/west)
+"bNr" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Makeshift Telecommunications Hut";
+	locked = 1
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/tcomms)
 "bNB" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/grass/dirt,
@@ -3318,6 +3428,15 @@
 /obj/item/shard,
 /turf/open/floor/wood,
 /area/lv553/indoors/welcome_center/lobby)
+"bOk" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor{
+	dir = 9;
+	icon_state = "redfull"
+	},
+/area/lv553/indoors/lone_buildings/internet_cafe)
 "bOS" = (
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/gm/dirt/brown,
@@ -3356,7 +3475,9 @@
 /area/lv553/indoors/operations/reception)
 "bPJ" = (
 /obj/structure/machinery/colony_floodlight,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/flooded_streets/east)
 "bPM" = (
 /turf/open/gm/road{
@@ -3466,7 +3587,9 @@
 /area/lv553/indoors/hospital/reception)
 "bSS" = (
 /obj/structure/janitorialcart,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "bTb" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
@@ -3565,7 +3688,9 @@
 	pixel_x = 8;
 	pixel_y = 8
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/oob)
 "bUR" = (
 /obj/structure/closet/secure_closet/personal{
@@ -3609,7 +3734,9 @@
 /obj/structure/toilet{
 	pixel_y = 16
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "bWa" = (
 /obj/structure/machinery/door_control{
@@ -3657,7 +3784,9 @@
 "bWG" = (
 /obj/item/trash/eat,
 /obj/item/frame/table/wood/poor,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "bWI" = (
 /obj/effect/landmark/xeno_spawn,
@@ -3676,7 +3805,9 @@
 "bWX" = (
 /obj/item/trash/chips,
 /obj/item/trash/burger,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/east_apartments)
 "bWY" = (
 /obj/structure/mineral_door/wood/open{
@@ -4143,7 +4274,7 @@
 /area/lv553/outdoors/cmb/exterior)
 "ciS" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "apartment door"
+	name = "\improper Steve's Wey-Net Cafe"
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/northeast/slums)
@@ -4173,7 +4304,9 @@
 /area/lv553/indoors/hospital/operating_rooms)
 "ckq" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "ckt" = (
 /obj/item/paper/crumpled{
@@ -4228,6 +4361,9 @@
 /obj/item/reagent_container/food/snacks/grown/tomato{
 	pixel_x = 5;
 	pixel_y = 14
+	},
+/obj/structure/machinery/light/small{
+	dir = 1
 	},
 /turf/open/floor/wood{
 	icon_state = "wood-broken"
@@ -4309,7 +4445,9 @@
 	name = "????";
 	stat = 2
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "cnN" = (
 /turf/open/floor/almayer/uscm/directional{
@@ -4791,10 +4929,15 @@
 /area/lv553/indoors/hospital/research/offices)
 "czd" = (
 /obj/item/stack/cable_coil,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/weymart)
 "czs" = (
 /obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/trash/burger{
+	pixel_y = -6
+	},
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/cheeseburger)
 "czG" = (
@@ -4897,7 +5040,9 @@
 /area/lv553/indoors/lone_buildings/weyyu_hostel)
 "cBV" = (
 /obj/item/bedsheet/captain,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_apartments)
 "cCg" = (
 /obj/item/tool/wet_sign,
@@ -5076,13 +5221,22 @@
 /obj/structure/machinery/landinglight/ds2/spoke,
 /turf/open/gm/dirt/brown,
 /area/lv553/landing_zone_2)
+"cFG" = (
+/obj/structure/machinery/door/airlock/almayer/command/colony{
+	dir = 1;
+	name = "\improper Cargo Landing Zone ICC Inspector's Office"
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/cargo_lz)
 "cFT" = (
 /obj/structure/surface/table/reinforced{
 	flipped = 1;
 	icon_state = "reinfflip1-"
 	},
 /obj/structure/prop/cash_register/broken,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "cGd" = (
 /obj/item/trash/chunk,
@@ -5109,7 +5263,9 @@
 /area/lv553/indoors/northeast/slums)
 "cGQ" = (
 /obj/item/stack/sheet/wood,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_apartments)
 "cGV" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
@@ -5196,7 +5352,9 @@
 	dir = 9;
 	pixel_y = 20
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/oob)
 "cKa" = (
 /obj/structure/sign/poster/hero/voteno{
@@ -5241,7 +5399,9 @@
 	icon_state = "ladderup";
 	id = "tunnel1a"
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/oob)
 "cLu" = (
 /turf/open/gm/grass/dirt,
@@ -5293,6 +5453,7 @@
 /area/lv553/landing_zone_2)
 "cMf" = (
 /obj/structure/surface/table/reinforced/almayer_B,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating/plating_catwalk,
 /area/lv553/indoors/ss_athens)
 "cMh" = (
@@ -5354,6 +5515,12 @@
 "cOG" = (
 /turf/closed/wall,
 /area/lv553/indoors/lone_buildings/school)
+"cOI" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/insurance)
 "cOT" = (
 /obj/structure/mineral_door/wood/open,
 /turf/open/floor/wood,
@@ -5390,7 +5557,9 @@
 /area/lv553/indoors/lone_buildings/screenwriter_house)
 "cPQ" = (
 /obj/item/stack/sheet/wood,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "cPS" = (
 /obj/effect/decal/warning_stripes{
@@ -5513,7 +5682,9 @@
 	flipped = 1;
 	icon_state = "reinfflip2"
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "cSG" = (
 /obj/structure/prop/dam/truck/mining,
@@ -5535,7 +5706,9 @@
 "cSL" = (
 /obj/item/light_bulb/tube,
 /obj/item/light_bulb/tube,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_apartments)
 "cSN" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
@@ -5555,6 +5728,15 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/gm/dirt/brown,
 /area/lv553/outdoors/colony_streets/west)
+"cST" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor{
+	dir = 9;
+	icon_state = "redfull"
+	},
+/area/lv553/indoors/lone_buildings/internet_cafe)
 "cSW" = (
 /obj/structure/window{
 	dir = 4
@@ -5632,7 +5814,9 @@
 "cTU" = (
 /obj/item/trash/barcardine,
 /obj/item/shard,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/weymart)
 "cTZ" = (
 /obj/structure/disposalpipe/segment,
@@ -5681,7 +5865,9 @@
 	name = "????";
 	stat = 2
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_apartments)
 "cVb" = (
 /obj/structure/bed/sofa/south/grey/left{
@@ -5769,7 +5955,7 @@
 /area/lv553/indoors/gated_community/director_of_corporate_research)
 "cWT" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "apartment door"
+	name = "\improper Steve's Wey-Net Cafe"
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/clf_communications)
@@ -5783,7 +5969,9 @@
 /obj/item/shard,
 /obj/structure/machinery/light_construct,
 /obj/item/light_bulb/tube,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_apartments)
 "cXp" = (
 /obj/structure/toilet{
@@ -5933,6 +6121,13 @@
 	icon_state = "whiteblue"
 	},
 /area/lv553/indoors/hospital/research/floor)
+"dbw" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/gm/road{
+	icon_state = "browndirt_road_1";
+	dir = 1
+	},
+/area/lv553/outdoors/colony_streets/east)
 "dbH" = (
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/north_west,
 /area/lv553/outdoors/colony_streets/southwest)
@@ -5977,7 +6172,9 @@
 	id = "tunnel1b";
 	pixel_y = 20
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/weymart)
 "dda" = (
 /obj/item/toy/bikehorn/rubberducky,
@@ -6164,6 +6361,9 @@
 	icon_state = "whiteyellowfull"
 	},
 /area/lv553/indoors/welcome_center/lobby)
+"dhe" = (
+/turf/closed/wall/r_wall,
+/area/lv553/indoors/lone_buildings/cargo_lz)
 "dhf" = (
 /obj/structure/toilet{
 	dir = 8
@@ -6426,6 +6626,10 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/lv553/outdoors/hospital/break_garden)
+"dlr" = (
+/obj/structure/fence,
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/tcomms)
 "dly" = (
 /obj/structure/machinery/door/airlock/almayer/secure{
 	dir = 1;
@@ -6444,6 +6648,11 @@
 	},
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner2/north_east,
 /area/lv553/outdoors/colony_streets/northeast)
+"dma" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/prop/colony/game,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/cargo_lz)
 "dmk" = (
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -6963,7 +7172,7 @@
 /area/lv553/indoors/lone_buildings/liq_r_mart)
 "dyY" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "apartment door"
+	name = "\improper Steve's Wey-Net Cafe"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -7055,7 +7264,9 @@
 	dir = 2;
 	name = "\improper Bathroom"
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/oob)
 "dBI" = (
 /turf/open/floor{
@@ -7468,7 +7679,9 @@
 	pixel_y = 3
 	},
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_apartments)
 "dOZ" = (
 /obj/structure/barricade/handrail/wire{
@@ -7772,7 +7985,9 @@
 /obj/item/clothing/under/shorts/red{
 	name = "red trunks"
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/oob)
 "eah" = (
 /turf/open/floor{
@@ -7996,7 +8211,9 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "eeS" = (
 /obj/structure/surface/table/gamblingtable,
@@ -8085,7 +8302,9 @@
 /area/lv553/indoors/lone_buildings/clf_communications)
 "egA" = (
 /obj/structure/largecrate/random,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/weymart)
 "egP" = (
 /obj/structure/surface/table,
@@ -8276,6 +8495,10 @@
 	icon_state = "redfull"
 	},
 /area/lv553/indoors/lone_buildings/internet_cafe)
+"ekG" = (
+/obj/structure/fence,
+/turf/open/gm/road,
+/area/lv553/outdoors/colony_streets/northeast)
 "ekP" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	icon_state = "fullgrass_1"
@@ -8373,7 +8596,7 @@
 /area/lv553/outdoors/landing_zones_disembark)
 "enj" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "management door"
+	name = "\improper Pole Museum Management Office"
 	},
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/polemuseum)
@@ -8549,14 +8772,35 @@
 	dir = 1
 	},
 /area/lv553/outdoors/cmb/exterior)
+"esF" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/lv553/indoors/lone_buildings/tcomms)
 "eta" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/under/pj/red,
 /turf/open/floor,
 /area/lv553/indoors/bungalow_manager)
 "etd" = (
-/obj/structure/machinery/light,
-/turf/open/floor,
+/obj/structure/surface/table/woodentable,
+/obj/item/prop/tableflag{
+	pixel_x = -8
+	},
+/obj/item/prop/tableflag/uscm,
+/obj/item/prop/tableflag/uscm2{
+	pixel_x = 8
+	},
+/obj/structure/sign/prop1{
+	pixel_y = -32
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "eto" = (
 /obj/structure/sign/poster/propaganda{
@@ -8975,7 +9219,9 @@
 "eDt" = (
 /obj/item/frame/rack,
 /obj/item/spacecash/c1,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/weymart)
 "eDD" = (
 /turf/open/floor/almayer/uscm/directional{
@@ -9076,7 +9322,9 @@
 	name = "????";
 	stat = 2
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/east_apartments)
 "eJn" = (
 /obj/structure/surface/rack,
@@ -9289,7 +9537,9 @@
 /obj/item/light_bulb/tube{
 	pixel_y = 14
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "eNt" = (
 /obj/structure/window_frame/colony/reinforced,
@@ -9460,7 +9710,9 @@
 /area/lv553/outdoors/colony_streets/southeast)
 "eRI" = (
 /obj/item/light_bulb/tube,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "eSq" = (
 /obj/effect/decal/cleanable/blood/xeno,
@@ -9639,7 +9891,7 @@
 /obj/structure/largecrate/random/case,
 /obj/structure/prop/server_equipment/laptop,
 /turf/open/asphalt/cement,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/tcomms)
 "eYj" = (
 /obj/structure/filingcabinet,
 /obj/item/disk,
@@ -9801,6 +10053,27 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv553/indoors/lone_buildings/polemuseum)
+"fcR" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/device/flashlight/lamp/green{
+	pixel_x = -9;
+	pixel_y = 13
+	},
+/obj/item/paper_bin/wy{
+	pixel_x = 3;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = -4;
+	pixel_y = -5
+	},
+/obj/item/tool/pen/clicky{
+	pixel_y = 5;
+	pixel_x = 3;
+	layer = 3.10
+	},
+/turf/open/floor/carpet,
+/area/lv553/indoors/lone_buildings/cargo_lz)
 "fcV" = (
 /turf/open/floor/wood{
 	icon_state = "wood-broken4"
@@ -10442,7 +10715,9 @@
 "ftZ" = (
 /obj/item/stack/sheet/metal,
 /obj/item/shard,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_apartments)
 "fuc" = (
 /obj/structure/filingcabinet,
@@ -10685,7 +10960,9 @@
 	pixel_y = 9
 	},
 /obj/item/light_bulb/tube,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_apartments)
 "fAA" = (
 /obj/structure/bedsheetbin{
@@ -10999,7 +11276,9 @@
 /area/lv553/indoors/southwest/slums)
 "fHq" = (
 /obj/structure/bed,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/east_apartments)
 "fHY" = (
 /obj/structure/filingcabinet{
@@ -11029,7 +11308,9 @@
 /obj/item/shard,
 /obj/structure/machinery/light_construct,
 /obj/effect/landmark/corpsespawner/colonist,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_apartments)
 "fIu" = (
 /turf/open/floor/wood,
@@ -11041,7 +11322,9 @@
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/bungalow_manager_exterior)
 "fJa" = (
 /obj/structure/desertdam/decals/road_stop{
@@ -11244,6 +11527,17 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/south/slums)
+"fNp" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/folder/white{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/obj/item/folder/black{
+	pixel_y = 10
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/insurance)
 "fNq" = (
 /obj/structure/bed/chair/office/light,
 /obj/structure/closet/medical_wall{
@@ -11328,9 +11622,18 @@
 	},
 /turf/open/gm/grass/dirt,
 /area/lv553/outdoors/colony_streets/southeast)
+"fPP" = (
+/obj/structure/prop/server_equipment/yutani_server/off,
+/obj/structure/cable/heavyduty{
+	icon_state = "0-2"
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/tcomms)
 "fPS" = (
 /obj/item/stack/sheet/metal,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_apartments)
 "fQf" = (
 /obj/structure/sink{
@@ -11358,7 +11661,9 @@
 	pixel_y = -9
 	},
 /obj/item/trash/plate,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/weymart)
 "fQC" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -11638,7 +11943,9 @@
 	dir = 8
 	},
 /obj/item/shard,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_apartments)
 "fWR" = (
 /obj/structure/toilet{
@@ -11749,7 +12056,9 @@
 	pixel_x = 1;
 	pixel_y = -12
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/oob)
 "fYU" = (
 /obj/structure/flora/jungle/hedge{
@@ -11950,11 +12259,15 @@
 /obj/item/reagent_container/food/snacks/donkpocket{
 	name = "soaked Donk-pocket"
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_apartments)
 "gdz" = (
 /obj/item/frame/table/wood/poor,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "gdK" = (
 /obj/structure/surface/table,
@@ -11979,7 +12292,9 @@
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/bungalow_manager_exterior)
 "gfi" = (
 /obj/structure/surface/rack,
@@ -12178,7 +12493,9 @@
 /obj/item/trash/cigbutt,
 /obj/item/frame/table/almayer,
 /obj/item/stack/cable_coil,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_apartments)
 "glf" = (
 /obj/structure/sign/poster/safety,
@@ -12211,7 +12528,9 @@
 	name = "????";
 	stat = 2
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/waste_station)
 "gmG" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -12270,7 +12589,9 @@
 "gns" = (
 /obj/item/trash/cigbutt,
 /obj/item/light_bulb/tube,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_apartments)
 "gnO" = (
 /obj/item/stack/tile/wood{
@@ -12294,14 +12615,18 @@
 /area/lv553/indoors/ss_athens)
 "goa" = (
 /obj/structure/grille,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/waste_station)
 "goh" = (
 /obj/item/trash/cigbutt,
 /obj/item/stack/sheet/wood,
 /obj/effect/landmark/corpsespawner/colonist,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "gom" = (
 /obj/effect/decal/cleanable/dirt,
@@ -12436,7 +12761,7 @@
 "guJ" = (
 /obj/structure/reagent_dispensers/fueltank/gas,
 /turf/open/asphalt/cement,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/cargo_lz)
 "guM" = (
 /turf/closed/wall/r_wall,
 /area/lv553/indoors/marshals/barracks)
@@ -12456,7 +12781,9 @@
 /obj/structure/reagent_dispensers/water_cooler{
 	pixel_x = -9
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "gvH" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
@@ -12571,7 +12898,9 @@
 	},
 /area/lv553/indoors/hospital/operating_rooms)
 "gAw" = (
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/flooded_streets/waste_treatment)
 "gAz" = (
 /obj/structure/machinery/door/airlock/almayer/security/reinforced/colony{
@@ -12730,7 +13059,9 @@
 /area/lv553/outdoors/cmb/exterior)
 "gCR" = (
 /obj/structure/window/framed/colony,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/weymart)
 "gCS" = (
 /obj/structure/desertdam/decals/road_stop{
@@ -12989,11 +13320,15 @@
 /area/lv553/indoors/hospital/research/floor)
 "gJa" = (
 /obj/item/stack/sheet/metal,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/flooded_streets/west)
 "gJc" = (
 /obj/item/shard,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/flooded_streets/west)
 "gJn" = (
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner2/north_west,
@@ -13064,7 +13399,9 @@
 /obj/structure/machinery/power/apc/fully_broken/no_cell{
 	dir = 1
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/weymart)
 "gKz" = (
 /obj/structure/cable/heavyduty{
@@ -13138,6 +13475,9 @@
 	icon_state = "darkblue2"
 	},
 /area/lv553/indoors/operations/offices/east)
+"gMF" = (
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/cargo_lz)
 "gMS" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/road{
@@ -13232,6 +13572,9 @@
 /obj/item/prop/magazine/dirty/torn,
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/engineer_trucker_bunkhouse)
+"gOd" = (
+/turf/closed/wall,
+/area/lv553/indoors/lone_buildings/tcomms)
 "gOo" = (
 /obj/item/ammo_magazine/pistol/skorpion,
 /turf/open/gm/dirt/brown,
@@ -13330,7 +13673,7 @@
 /area/lv553/indoors/southwest/slums)
 "gTs" = (
 /obj/structure/largecrate/random/barrel/yellow,
-/turf/open/asphalt/cement,
+/turf/open/gm/road,
 /area/lv553/outdoors/colony_streets/east)
 "gTt" = (
 /obj/structure/surface/table/almayer,
@@ -13372,7 +13715,9 @@
 /area/lv553/indoors/lone_buildings/multidoor_garage)
 "gUe" = (
 /obj/item/frame/table/almayer,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/weymart)
 "gUg" = (
 /obj/structure/flora/pottedplant{
@@ -13653,7 +13998,9 @@
 	dir = 4
 	},
 /obj/structure/platform/kutjevo/smooth,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/bungalow_manager_exterior)
 "hcv" = (
 /obj/structure/machinery/power/apc,
@@ -13844,8 +14191,19 @@
 /area/lv553/indoors/operations/maintenance/north)
 "hkd" = (
 /obj/item/frame/rack,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/weymart)
+"hks" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/cargo_lz)
 "hkx" = (
 /turf/closed/wall/r_wall,
 /area/lv553/outdoors/colony_streets/south)
@@ -13989,7 +14347,9 @@
 /area/lv553/oob)
 "hpz" = (
 /obj/item/trash/liquidfood,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/waste_silos)
 "hpC" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -14033,7 +14393,9 @@
 	pixel_y = 6;
 	dir = 1
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_apartments)
 "hrC" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -14132,7 +14494,9 @@
 /obj/item/stack/sheet/metal,
 /obj/item/frame/rack,
 /obj/item/shard,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/weymart)
 "huq" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
@@ -14294,7 +14658,9 @@
 /obj/structure/machinery/microwave{
 	pixel_y = 11
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "hyO" = (
 /obj/structure/bed/chair{
@@ -14335,7 +14701,9 @@
 /area/lv553/indoors/marshals/barracks)
 "hzl" = (
 /obj/structure/machinery/colony_floodlight,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/flooded_streets/west)
 "hzz" = (
 /obj/structure/surface/table/reinforced/black,
@@ -14579,7 +14947,9 @@
 	pixel_x = 6
 	},
 /obj/item/device/walkman,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/oob)
 "hFe" = (
 /obj/effect/decal/cleanable/blood/drip,
@@ -14995,7 +15365,9 @@
 /turf/open/floor/wood,
 /area/lv553/indoors/welcome_center/offices)
 "hNv" = (
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/bungalow_manager_exterior)
 "hOt" = (
 /obj/structure/barricade/handrail/strata{
@@ -15106,7 +15478,9 @@
 /obj/structure/machinery/door/airlock/almayer/engineering/glass/colony{
 	name = "\improper Liam's Automobile Repair Shop Breakroom"
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "hRM" = (
 /obj/item/trash/cigbutt,
@@ -15465,7 +15839,9 @@
 /area/lv553/outdoors/colony_streets/northeast)
 "hZI" = (
 /obj/item/bedsheet/captain,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "hZP" = (
 /obj/structure/window/framed/colony,
@@ -15481,6 +15857,12 @@
 	},
 /turf/open/gm/dirtgrassborder/dirt/east,
 /area/lv553/oob)
+"iat" = (
+/obj/structure/machinery/light,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/indoors/lone_buildings/mechanic_shop)
 "iaH" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/suit/storage/hazardvest/blue{
@@ -15504,14 +15886,25 @@
 "iaU" = (
 /obj/item/bedsheet/captain,
 /obj/item/stack/sheet/wood,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
+"iaW" = (
+/obj/item/stool,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/chinese)
 "ibo" = (
 /obj/structure/reagent_dispensers/water_cooler/stacks{
 	pixel_x = -10;
 	pixel_y = 13
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "ibx" = (
 /obj/structure/bed/chair/wood/normal,
@@ -15664,6 +16057,17 @@
 	icon_state = "whitegreen"
 	},
 /area/lv553/indoors/hospital/storage_laundyroom_and_breakroom)
+"idz" = (
+/obj/structure/sign/poster/propaganda{
+	pixel_x = 32
+	},
+/obj/structure/bed/chair/comfy/beige{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/indoors/lone_buildings/mechanic_shop)
 "idK" = (
 /obj/structure/surface/table,
 /obj/item/storage/box/masks{
@@ -15952,7 +16356,9 @@
 "inn" = (
 /obj/item/stack/sheet/metal,
 /obj/item/stack/cable_coil,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/east_apartments)
 "inu" = (
 /turf/closed/wall/r_wall,
@@ -15972,7 +16378,9 @@
 	dir = 8
 	},
 /obj/item/light_bulb/tube,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/weymart)
 "inB" = (
 /obj/structure/machinery/space_heater/radiator{
@@ -16101,7 +16509,9 @@
 /turf/open/gm/dirt/brown,
 /area/lv553/outdoors/colony_streets/east)
 "iqg" = (
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "iqw" = (
 /obj/structure/sign/safety/fire_haz{
@@ -16178,11 +16588,17 @@
 	},
 /turf/open/floor,
 /area/lv553/outdoors/colony_streets/east)
+"isB" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/turf/open/gm/dirtgrassborder/dirt/west,
+/area/lv553/outdoors/colony_streets/east)
 "isC" = (
 /obj/structure/toilet{
 	dir = 4
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "isM" = (
 /obj/structure/machinery/door/airlock/almayer/medical/colony{
@@ -16213,11 +16629,15 @@
 	icon_state = "pottedplant_22";
 	pixel_y = 8
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "iue" = (
 /obj/structure/reagent_dispensers/watertank,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/flooded_streets/waste_treatment)
 "iug" = (
 /obj/structure/bed/chair/comfy/blue{
@@ -16614,6 +17034,15 @@
 /obj/item/storage/bag/plasticbag,
 /turf/open/asphalt/cement,
 /area/lv553/oob)
+"iBr" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Steve's Wey-Net Cafe"
+	},
+/turf/open/floor{
+	dir = 9;
+	icon_state = "redfull"
+	},
+/area/lv553/indoors/lone_buildings/internet_cafe)
 "iBu" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -17203,6 +17632,13 @@
 	},
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/army_surplus)
+"iNO" = (
+/obj/structure/reagent_dispensers/watertank,
+/obj/structure/machinery/power/apc{
+	dir = 8
+	},
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/internet_cafe)
 "iNU" = (
 /obj/structure/machinery/disposal,
 /obj/effect/decal/cleanable/dirt,
@@ -17513,7 +17949,9 @@
 /area/lv553/indoors/operations/hallway/south)
 "iWl" = (
 /obj/item/trash/eat,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/weymart)
 "iWu" = (
 /obj/structure/cargo_container/grant/leftmid,
@@ -17725,7 +18163,9 @@
 "jaJ" = (
 /obj/item/trash/cigbutt,
 /obj/item/trash/chips,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_apartments)
 "jaQ" = (
 /obj/item/trash/cigbutt{
@@ -17786,7 +18226,7 @@
 	pixel_y = 0
 	},
 /turf/open/asphalt/cement,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/tcomms)
 "jdj" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner,
 /turf/open/gm/grass/dirt,
@@ -17823,7 +18263,7 @@
 	name = "\improper Powerloader Storage Shutters"
 	},
 /turf/open/asphalt/cement,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/cargo_lz)
 "jeQ" = (
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner2/north_east,
 /area/lv553/outdoors/lone_buildings/weyyu_hostel)
@@ -17898,7 +18338,9 @@
 /area/lv553/outdoors/uscm_garrison_exterior/fenced)
 "jgW" = (
 /obj/structure/grille,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/waste_silos)
 "jhF" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
@@ -18004,7 +18446,9 @@
 /turf/open/floor/wood,
 /area/lv553/indoors/bungalow_manager)
 "jkD" = (
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/flooded_streets/east)
 "jkL" = (
 /obj/structure/surface/table,
@@ -18041,6 +18485,15 @@
 	dir = 4
 	},
 /area/lv553/indoors/operations/hallway/north)
+"jls" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/item/tool/crowbar/red{
+	pixel_y = 2
+	},
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/cargo_lz)
 "jlE" = (
 /turf/open/gm/dirtgrassborder/dirt/north,
 /area/lv553/outdoors/lone_buildings/gas_n_gear)
@@ -18087,19 +18540,30 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv553/indoors/welcome_center/canteen)
+"jml" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/trash/burger{
+	pixel_y = -8
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/cheeseburger)
 "jmQ" = (
 /turf/closed/wall/r_wall,
 /area/lv553/indoors/south/slums)
 "jmX" = (
 /obj/item/storage/toolbox,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_apartments)
 "jni" = (
 /turf/closed/wall/r_wall,
 /area/lv553/indoors/aerospace_control)
 "jnY" = (
 /obj/item/tool/wrench,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/oob)
 "joh" = (
 /obj/item/stack/sheet/cardboard,
@@ -18334,7 +18798,9 @@
 "jsP" = (
 /obj/item/trash/cigbutt,
 /obj/item/shard,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_apartments)
 "jtt" = (
 /turf/open/floor{
@@ -18568,7 +19034,9 @@
 	dir = 4
 	},
 /obj/item/trash/plate,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "jzg" = (
 /obj/structure/curtain{
@@ -18641,6 +19109,7 @@
 	pixel_x = -10;
 	pixel_y = -6
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "barber"
@@ -18910,7 +19379,9 @@
 "jHr" = (
 /obj/item/trash/cigbutt/bcigbutt,
 /obj/item/frame/table/wood/poor,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "jHE" = (
 /obj/item/tool/soap{
@@ -19085,6 +19556,14 @@
 "jKZ" = (
 /turf/open/gm/dirt/brown,
 /area/lv553/outdoors/landing_zones_disembark)
+"jLj" = (
+/obj/structure/sign/prop3{
+	pixel_y = 32
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv553/indoors/lone_buildings/mechanic_shop)
 "jLo" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -19209,7 +19688,9 @@
 	icon_state = "pottedplant_21";
 	pixel_y = 3
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "jOA" = (
 /obj/structure/fence,
@@ -19431,6 +19912,9 @@
 	pixel_x = -8;
 	pixel_y = -8
 	},
+/obj/structure/machinery/power/apc{
+	dir = 8
+	},
 /turf/open/floor/wood{
 	icon_state = "wood-broken6"
 	},
@@ -19443,7 +19927,9 @@
 	name = "????";
 	stat = 2
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/east_apartments)
 "jVg" = (
 /obj/item/stack/sheet/metal,
@@ -19456,7 +19942,9 @@
 	pixel_x = 6;
 	pixel_y = 4
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "jVu" = (
 /obj/effect/decal/warning_stripes{
@@ -19549,7 +20037,7 @@
 /obj/structure/fence,
 /obj/structure/fence,
 /turf/open/asphalt/cement,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/tcomms)
 "jYz" = (
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/north_west,
 /area/lv553/outdoors/flooded_streets/west)
@@ -19748,6 +20236,10 @@
 	icon_state = "redyellowfull"
 	},
 /area/lv553/indoors/southeast/slums)
+"kdf" = (
+/obj/structure/machinery/colony_floodlight,
+/turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/north_east,
+/area/lv553/outdoors/colony_streets/east)
 "kdm" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/reagent_dispensers/beerkeg,
@@ -19778,6 +20270,17 @@
 "keh" = (
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/north_east,
 /area/lv553/outdoors/uscm_garrison_exterior/fenced)
+"kek" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/device/flashlight/lamp/green{
+	pixel_y = 11
+	},
+/obj/item/tool/pen/clicky{
+	pixel_y = -6;
+	pixel_x = -6
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/insurance)
 "keF" = (
 /obj/structure/barricade/handrail{
 	dir = 1;
@@ -20063,7 +20566,15 @@
 /area/lv553/indoors/welcome_center/lobby)
 "kmC" = (
 /obj/structure/surface/table/woodentable,
-/turf/open/floor,
+/obj/item/paper_bin{
+	pixel_x = -3;
+	pixel_y = 15
+	},
+/obj/item/tool/pen/fountain,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "kmE" = (
 /obj/structure/window/framed/colony/reinforced,
@@ -20355,7 +20866,9 @@
 /obj/structure/machinery/light_construct{
 	dir = 8
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/waste_station)
 "ksM" = (
 /obj/structure/surface/table/almayer,
@@ -20382,6 +20895,12 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass/dirt,
 /area/lv553/outdoors/colony_streets/northeast)
+"kty" = (
+/obj/item/tool/screwdriver{
+	pixel_x = 2
+	},
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/cargo_lz)
 "ktB" = (
 /obj/structure/machinery/light/small,
 /turf/open/floor/wood,
@@ -20391,7 +20910,9 @@
 	dir = 1;
 	name = "\improper Wey-Mart"
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/weymart)
 "ktT" = (
 /obj/item/stack/sheet/cardboard{
@@ -20546,6 +21067,13 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/polemuseum)
+"kzH" = (
+/obj/structure/machinery/computer/telecomms/server,
+/obj/structure/cable/heavyduty{
+	icon_state = "0-2"
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/tcomms)
 "kAk" = (
 /obj/structure/bed/chair,
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
@@ -20559,7 +21087,9 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Bathroom"
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/waste_station)
 "kAv" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -20607,7 +21137,10 @@
 /obj/structure/holohoop{
 	pixel_y = 26
 	},
-/turf/open/asphalt/cement,
+/turf/open/gm/road{
+	icon_state = "browndirt_road_corner";
+	dir = 8
+	},
 /area/lv553/outdoors/colony_streets/east)
 "kBr" = (
 /turf/open/floor{
@@ -20683,7 +21216,9 @@
 /area/lv553/indoors/southwest/slums)
 "kDN" = (
 /obj/structure/platform/kutjevo/smooth,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/bungalow_manager_exterior)
 "kEm" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -20766,7 +21301,12 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor,
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "kGe" = (
 /obj/structure/surface/rack,
@@ -21306,7 +21846,9 @@
 /area/lv553/indoors/gated_community/head_of_corporate_engineering)
 "kVw" = (
 /obj/effect/landmark/corpsespawner/colonist,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/east_apartments)
 "kVF" = (
 /obj/item/trash/hotdog,
@@ -21346,6 +21888,12 @@
 	},
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/liq_r_mart)
+"kWY" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/lv553/indoors/lone_buildings/cargo_lz)
 "kXm" = (
 /obj/item/stack/sheet/cardboard,
 /obj/item/stack/sheet/cardboard{
@@ -21364,6 +21912,12 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/southwest/slums)
+"kXD" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2-4-8"
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/tcomms)
 "kXF" = (
 /obj/structure/closet/fancy,
 /obj/structure/curtain/red{
@@ -21440,6 +21994,11 @@
 	icon_state = "darkgreen2"
 	},
 /area/lv553/indoors/uscm_garrison/io_office)
+"kZl" = (
+/obj/structure/surface/table/woodentable,
+/obj/structure/machinery/prop/almayer/computer/PC,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/insurance)
 "kZu" = (
 /obj/structure/desertdam/decals/road_stop{
 	dir = 1;
@@ -21527,10 +22086,6 @@
 "lbr" = (
 /turf/closed/wall,
 /area/lv553/indoors/hospital/garage)
-"lbD" = (
-/obj/structure/window/framed/colony,
-/turf/open/gm/dirtgrassborder/dirt/north,
-/area/lv553/indoors/northeast/slums)
 "lbF" = (
 /obj/structure/ladder{
 	height = 1;
@@ -21579,7 +22134,9 @@
 /area/lv553/indoors/gated_community/head_of_corporate_engineering)
 "lcm" = (
 /obj/item/clothing/under/swimsuit/blue,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/oob)
 "lcD" = (
 /obj/item/reagent_container/food/snacks/cheesewedge/extramature{
@@ -21639,9 +22196,9 @@
 /turf/open/floor,
 /area/lv553/indoors/flooded/east_apartments)
 "ldT" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
+/obj/structure/machinery/door/airlock/almayer/security/colony{
 	dir = 1;
-	name = "bunkroom door"
+	name = "\improper Colonial Marshals Bureau Bunkrooms"
 	},
 /turf/open/floor,
 /area/lv553/indoors/marshals/barracks)
@@ -21754,8 +22311,16 @@
 	network = null;
 	pixel_y = 6
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/weymart)
+"lgN" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "2-8"
+	},
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/tcomms)
 "lgS" = (
 /obj/structure/target,
 /obj/item/clothing/head/militia{
@@ -21956,6 +22521,12 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/southwest/slums)
+"lln" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-4"
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/tcomms)
 "llE" = (
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/south_east,
 /area/lv553/outdoors/hospital/road_north_east)
@@ -21995,7 +22566,9 @@
 /obj/item/device/walkman{
 	pixel_x = 8
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/oob)
 "lmZ" = (
 /obj/structure/bed,
@@ -22092,7 +22665,9 @@
 /obj/item/stack/sheet/cardboard{
 	name = "soaked cardboard"
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "lpB" = (
 /obj/structure/machinery/colony_floodlight,
@@ -22181,7 +22756,7 @@
 	pixel_y = 30
 	},
 /turf/open/asphalt/cement,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/cargo_lz)
 "lrd" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -22235,6 +22810,18 @@
 	icon_state = "barber"
 	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
+"lsv" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/ashtray/bronze{
+	pixel_y = 0;
+	pixel_x = -8
+	},
+/obj/item/paper_bin/wy{
+	pixel_x = 3;
+	pixel_y = 7
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/insurance)
 "lsz" = (
 /obj/structure/prop/dam/truck/cargo{
 	dir = 4
@@ -22587,6 +23174,17 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv553/indoors/lone_buildings/pizza)
+"lBK" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/paper_bin{
+	pixel_y = 5;
+	pixel_x = -5
+	},
+/obj/item/prop/flower_vase/bluewhiteflowers{
+	pixel_x = 10
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/cargo_lz)
 "lBL" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -22696,6 +23294,18 @@
 	icon_state = "whitegreen"
 	},
 /area/lv553/indoors/hospital/storage_laundyroom_and_breakroom)
+"lEm" = (
+/obj/structure/filingcabinet/chestdrawer{
+	pixel_x = -8;
+	pixel_y = 17
+	},
+/obj/structure/filingcabinet/chestdrawer{
+	pixel_x = 7;
+	pixel_y = 17
+	},
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/carpet,
+/area/lv553/indoors/lone_buildings/cargo_lz)
 "lEp" = (
 /obj/structure/sink{
 	pixel_y = 16
@@ -22735,7 +23345,9 @@
 /area/lv553/indoors/power_station)
 "lFn" = (
 /obj/structure/fence,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/flooded_streets/waste_treatment)
 "lFp" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -22821,12 +23433,19 @@
 	icon_state = "white"
 	},
 /area/lv553/indoors/welcome_center/canteen)
+"lIw" = (
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/tcomms)
 "lIC" = (
 /obj/structure/curtain/red{
 	pixel_y = 32
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/welcome_center/offices)
+"lJf" = (
+/obj/structure/flora/bush/ausbushes/palebush,
+/turf/open/gm/dirtgrassborder/dirt/west,
+/area/lv553/outdoors/colony_streets/east)
 "lJn" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/snacks/monkeyburger{
@@ -23058,7 +23677,9 @@
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/travel_agency)
 "lPH" = (
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/oob)
 "lQt" = (
 /obj/structure/flora/jungle/vines,
@@ -23173,7 +23794,9 @@
 /obj/item/frame/table/reinforced,
 /obj/item/stack/cable_coil,
 /obj/item/light_bulb/tube,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/waste_station)
 "lUK" = (
 /obj/structure/prop/invuln/overhead_pipe{
@@ -23261,7 +23884,9 @@
 	dir = 4
 	},
 /obj/item/light_bulb/tube,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/weymart)
 "lWO" = (
 /obj/structure/surface/table/woodentable,
@@ -23309,7 +23934,9 @@
 /area/lv553/indoors/gated_community/head_of_corporate_security)
 "lYv" = (
 /obj/item/trash/cigbutt,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_apartments)
 "lYB" = (
 /obj/structure/flora/jungle/vines/heavy,
@@ -23335,10 +23962,6 @@
 	},
 /turf/open/asphalt/cement,
 /area/lv553/outdoors/bungalow_manager_exterior)
-"lZh" = (
-/obj/structure/window/framed/colony,
-/turf/closed/wall,
-/area/lv553/indoors/northeast/slums)
 "lZm" = (
 /turf/open/floor/strata{
 	icon_state = "white_cyan1"
@@ -23407,7 +24030,9 @@
 /area/lv553/indoors/lone_buildings/jurossushi)
 "maI" = (
 /obj/item/trash/eat,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/waste_silos)
 "maP" = (
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner2/north_west,
@@ -23450,7 +24075,9 @@
 	dir = 2
 	},
 /obj/item/device/cassette_tape/ocean,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/oob)
 "mcf" = (
 /obj/structure/machinery/optable,
@@ -23641,7 +24268,9 @@
 /area/lv553/indoors/southwest/slums)
 "mgf" = (
 /obj/item/trash/cigbutt/bcigbutt,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/waste_silos)
 "mgn" = (
 /obj/structure/bed/chair{
@@ -23766,11 +24395,13 @@
 	},
 /area/lv553/indoors/marshals/mainhall)
 "mjM" = (
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "mkf" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/clothing/head/helmet/marine/veteran/pmc,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor,
 /area/lv553/indoors/power_station)
 "mkj" = (
@@ -23821,12 +24452,27 @@
 	},
 /turf/open/gm/grass/dirt,
 /area/lv553/outdoors/colony_streets/northeast)
+"mlN" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/tool/pen/clicky{
+	pixel_y = -6;
+	pixel_x = -6
+	},
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = 9;
+	pixel_y = 8
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/cargo_lz)
 "mmi" = (
 /obj/structure/machinery/vending/cola,
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/army_surplus)
 "mmm" = (
 /obj/structure/surface/rack,
+/obj/structure/machinery/power/apc{
+	dir = 4
+	},
 /turf/open/asphalt/cement,
 /area/lv553/indoors/lone_buildings/chinese)
 "mnb" = (
@@ -23856,7 +24502,9 @@
 /area/lv553/oob)
 "mov" = (
 /obj/item/stack/sheet/metal,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/flooded_streets/waste_treatment)
 "moF" = (
 /obj/structure/filingcabinet/chestdrawer{
@@ -23891,7 +24539,9 @@
 /area/lv553/indoors/marshals/barracks)
 "moX" = (
 /obj/structure/reagent_dispensers/watertank,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/oob)
 "mpc" = (
 /obj/structure/machinery/computer/cameras/wooden_tv{
@@ -23941,7 +24591,9 @@
 /area/lv553/indoors/marshals/mainhall)
 "mpK" = (
 /obj/item/reagent_container/food/drinks/cans/waterbottle,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/oob)
 "mqc" = (
 /obj/structure/window/framed/colony,
@@ -23949,7 +24601,9 @@
 /area/lv553/indoors/hospital/storage_laundyroom_and_breakroom)
 "mqj" = (
 /obj/item/trash/cigbutt/ucigbutt,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/flooded_streets/west)
 "mqn" = (
 /obj/structure/curtain/red{
@@ -24176,6 +24830,9 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/structure/bed/chair/comfy/beige{
+	dir = 4
+	},
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/insurance)
 "muL" = (
@@ -24184,7 +24841,9 @@
 /area/lv553/oob)
 "muQ" = (
 /obj/structure/fence,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/flooded_streets/west)
 "muS" = (
 /obj/structure/machinery/power/apc,
@@ -24214,7 +24873,9 @@
 	pixel_x = 8;
 	pixel_y = 8
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/oob)
 "mwn" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -24495,7 +25156,9 @@
 /area/lv553/outdoors/colony_streets/southeast)
 "mBS" = (
 /obj/item/trash/chips,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/flooded_streets/waste_treatment)
 "mBT" = (
 /obj/structure/fence,
@@ -24508,7 +25171,9 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/solid{
 	dir = 8
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/oob)
 "mCn" = (
 /obj/structure/machinery/light/small{
@@ -24534,7 +25199,9 @@
 /area/lv553/indoors/operations/offices/southwest)
 "mCH" = (
 /obj/item/trash/cigbutt/cigarbutt,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_apartments)
 "mCZ" = (
 /obj/structure/machinery/vending/cigarette/colony,
@@ -24622,7 +25289,9 @@
 /area/lv553/oob)
 "mEC" = (
 /obj/item/trash/cigbutt,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "mEF" = (
 /turf/open/floor{
@@ -24650,7 +25319,9 @@
 	desc = "A Farwa plush doll. Once soft and comforting now just really wet.";
 	name = "soaked Farwa plush doll"
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/bungalow_manager_exterior)
 "mEX" = (
 /turf/closed/wall,
@@ -24723,7 +25394,9 @@
 /area/lv553/indoors/operations/offices/east)
 "mGe" = (
 /obj/item/trash/cigbutt/cigarbutt,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/waste_silos)
 "mGm" = (
 /turf/open/floor,
@@ -24788,7 +25461,9 @@
 "mHl" = (
 /obj/structure/window_frame/colony,
 /obj/item/shard,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/weymart)
 "mHw" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -24823,7 +25498,9 @@
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/bungalow_manager_exterior)
 "mJv" = (
 /turf/open/gm/road{
@@ -24853,7 +25530,9 @@
 "mJR" = (
 /obj/item/trash/pistachios,
 /obj/item/trash/cigbutt/bcigbutt,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/waste_silos)
 "mKq" = (
 /obj/effect/decal/cleanable/blood,
@@ -24929,6 +25608,10 @@
 	icon_state = "darkblue2"
 	},
 /area/lv553/indoors/operations/lockerroom)
+"mLR" = (
+/obj/structure/machinery/power/apc,
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/cargo_lz)
 "mLT" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 8
@@ -25110,7 +25793,9 @@
 	dir = 8
 	},
 /obj/structure/platform/kutjevo/smooth,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/bungalow_manager_exterior)
 "mRs" = (
 /obj/effect/decal/warning_stripes{
@@ -25177,7 +25862,9 @@
 	name = "steam pipe";
 	pixel_x = 8
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/oob)
 "mTk" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -25268,14 +25955,18 @@
 /obj/item/stack/cable_coil,
 /obj/structure/machinery/light,
 /obj/effect/landmark/corpsespawner/colonist,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_apartments)
 "mVM" = (
 /obj/structure/surface/table/reinforced{
 	flipped = 1;
 	icon_state = "reinfflip1+"
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "mWl" = (
 /obj/effect/decal/strata_decals/grime/grime1{
@@ -25456,7 +26147,9 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "mZV" = (
 /obj/structure/toilet{
@@ -25566,11 +26259,15 @@
 	pixel_y = 24
 	},
 /obj/item/reagent_container/glass/bucket/mopbucket,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "ncw" = (
 /obj/item/toy/beach_ball,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/oob)
 "ncB" = (
 /obj/structure/surface/rack,
@@ -25603,7 +26300,7 @@
 	icon_state = "0-2"
 	},
 /turf/open/asphalt/cement,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/tcomms)
 "ndn" = (
 /obj/item/storage/toolbox/electrical{
 	pixel_y = 10
@@ -25621,7 +26318,9 @@
 /area/lv553/indoors/hospital/garage)
 "ndI" = (
 /obj/structure/window/framed/colony,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/east_apartments)
 "nea" = (
 /obj/effect/decal/cleanable/dirt,
@@ -25711,7 +26410,9 @@
 /area/lv553/outdoors/lone_buildings/weyyu_hostel)
 "ngF" = (
 /obj/item/trash/cigbutt,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/waste_silos)
 "ngJ" = (
 /turf/open/floor/wood{
@@ -25763,6 +26464,15 @@
 	icon_state = "dark"
 	},
 /area/lv553/indoors/aerospace_control)
+"nil" = (
+/obj/structure/bed,
+/obj/item/bedsheet/captain,
+/obj/structure/curtain/red{
+	pixel_y = 0;
+	pixel_x = -32
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/tcomms)
 "nio" = (
 /obj/structure/flora/jungle/vines,
 /obj/structure/flora/jungle/vines{
@@ -25797,7 +26507,9 @@
 /area/lv553/oob)
 "nji" = (
 /obj/effect/landmark/monkey_spawn,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/bungalow_manager_exterior)
 "njt" = (
 /obj/structure/machinery/power/apc,
@@ -25859,7 +26571,9 @@
 /obj/structure/extinguisher_cabinet/alt{
 	pixel_y = 26
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "nlx" = (
 /turf/open/floor{
@@ -26016,6 +26730,16 @@
 /obj/item/trash/cigbutt/cigarbutt,
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/liq_r_mart)
+"npi" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Bathroom"
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/tcomms)
 "npA" = (
 /obj/structure/machinery/door/airlock/almayer/generic,
 /turf/open/floor/wood,
@@ -26100,7 +26824,9 @@
 	name = "????";
 	stat = 2
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/weymart)
 "nrV" = (
 /obj/effect/decal/cleanable/blood{
@@ -26199,7 +26925,9 @@
 /area/lv553/indoors/marshals/reception)
 "ntX" = (
 /obj/item/trash/chunk,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/waste_silos)
 "nuf" = (
 /obj/structure/fence,
@@ -26215,6 +26943,9 @@
 /obj/structure/machinery/landinglight/ds1/spoke,
 /turf/open/gm/dirt/brown,
 /area/lv553/landing_zone_1)
+"nun" = (
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/cargo_lz)
 "nus" = (
 /obj/structure/platform/strata/metal{
 	dir = 4
@@ -26222,14 +26953,16 @@
 /turf/open/gm/grass/dirt,
 /area/lv553/outdoors/bungalow_manager_exterior)
 "nuL" = (
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/weymart)
 "nva" = (
 /obj/item/toy/beach_ball/holoball{
 	pixel_x = -8;
 	pixel_y = 7
 	},
-/turf/open/asphalt/cement,
+/turf/open/gm/road,
 /area/lv553/outdoors/colony_streets/east)
 "nvb" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/colony{
@@ -26246,7 +26979,9 @@
 /area/lv553/indoors/lone_buildings/trapped_house)
 "nvw" = (
 /obj/structure/fence,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/flooded_streets/east)
 "nvE" = (
 /obj/structure/largecrate/random/barrel/yellow,
@@ -26270,7 +27005,9 @@
 /area/lv553/oob)
 "nwO" = (
 /obj/structure/machinery/power/apc/fully_broken/no_cell,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/east_apartments)
 "nxb" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -26332,7 +27069,9 @@
 /area/lv553/oob)
 "nyj" = (
 /obj/item/trash/waffles,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/waste_silos)
 "nyq" = (
 /obj/structure/prop/invuln/overhead_pipe{
@@ -26391,7 +27130,9 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/flooded_streets/waste_treatment)
 "nAQ" = (
 /obj/structure/machinery/atm{
@@ -26899,7 +27640,9 @@
 /area/lv553/indoors/bungalow_manager)
 "nLX" = (
 /obj/structure/machinery/vending/coffee,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "nMX" = (
 /obj/structure/largecrate/random/barrel,
@@ -26964,6 +27707,11 @@
 	},
 /turf/closed/wall/r_wall,
 /area/lv553/indoors/hospital/lobby)
+"nPx" = (
+/obj/structure/prop/server_equipment,
+/obj/structure/cable/heavyduty,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/tcomms)
 "nPC" = (
 /obj/structure/sign/safety/conference_room{
 	pixel_y = -32
@@ -26995,7 +27743,9 @@
 	id = "tunnel1b";
 	pixel_y = 20
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/oob)
 "nQi" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
@@ -27028,7 +27778,9 @@
 	dir = 2;
 	name = "apartment door"
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/east_apartments)
 "nRD" = (
 /turf/open/floor/almayer/uscm/directional{
@@ -27049,6 +27801,41 @@
 	icon_state = "white"
 	},
 /area/lv553/indoors/hospital/research/floor)
+"nSm" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/reagent_container/food/snacks/packaged_burger{
+	pixel_x = 10;
+	pixel_y = 14
+	},
+/obj/item/reagent_container/food/snacks/packaged_burger{
+	pixel_x = 10;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/snacks/packaged_burger{
+	pixel_x = 10
+	},
+/obj/item/reagent_container/food/snacks/packaged_burger{
+	pixel_x = 10;
+	pixel_y = -7
+	},
+/obj/item/reagent_container/food/snacks/packaged_burger{
+	pixel_x = -6;
+	pixel_y = 14
+	},
+/obj/item/reagent_container/food/snacks/packaged_burger{
+	pixel_x = -6;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/snacks/packaged_burger{
+	pixel_x = -6
+	},
+/obj/item/reagent_container/food/snacks/packaged_burger{
+	pixel_x = -6;
+	pixel_y = -7
+	},
+/obj/structure/machinery/light/small,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/cheeseburger)
 "nSp" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
@@ -27066,6 +27853,9 @@
 "nSs" = (
 /obj/structure/bed/chair{
 	dir = 8
+	},
+/obj/structure/machinery/power/apc{
+	dir = 4
 	},
 /turf/open/floor/wood{
 	icon_state = "wood-broken4"
@@ -27104,7 +27894,7 @@
 /area/lv553/outdoors/colony_streets/southwest)
 "nTe" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "apartment door"
+	name = "\improper Steve's Wey-Net Cafe"
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/goon_and_chef_house)
@@ -27149,7 +27939,9 @@
 /obj/structure/extinguisher_cabinet/alt{
 	pixel_y = 26
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_apartments)
 "nUp" = (
 /obj/structure/bedsheetbin{
@@ -27261,6 +28053,12 @@
 /obj/structure/curtain/medical,
 /turf/open/floor/wood,
 /area/lv553/indoors/southeast/slums)
+"nVX" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Weyland-Yutani Gold Insurance Salesman Office"
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/insurance)
 "nVY" = (
 /turf/closed/wall/r_wall,
 /area/lv553/outdoors/bungalow_manager_exterior)
@@ -27352,7 +28150,9 @@
 	name = "soaked cardboard"
 	},
 /obj/item/light_bulb/tube,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "nXZ" = (
 /turf/open/gm/road,
@@ -27466,7 +28266,9 @@
 /area/lv553/indoors/hospital/lobby)
 "oaJ" = (
 /obj/structure/mineral_door/wood/open,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "oaR" = (
 /turf/closed/wall,
@@ -27522,7 +28324,9 @@
 /area/lv553/indoors/operations/hallway/south)
 "ocp" = (
 /obj/item/stack/sheet/metal,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/waste_station)
 "ocI" = (
 /obj/structure/bed/chair/comfy{
@@ -27931,6 +28735,13 @@
 "onQ" = (
 /turf/open/asphalt/cement,
 /area/lv553/indoors/lone_buildings/multidoor_garage)
+"onR" = (
+/obj/structure/surface/table/woodentable,
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/lv553/indoors/lone_buildings/cargo_lz)
 "onS" = (
 /obj/structure/surface/table/gamblingtable,
 /obj/item/ashtray/glass{
@@ -28177,6 +28988,14 @@
 	icon_state = "dark"
 	},
 /area/lv553/indoors/aerospace_control)
+"osE" = (
+/obj/structure/prop/server_equipment/laptop/on,
+/obj/structure/surface/table/woodentable/poor,
+/obj/structure/cable/heavyduty{
+	icon_state = "0-2"
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/tcomms)
 "osF" = (
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner2/north_west,
 /area/lv553/outdoors/colony_streets/south)
@@ -28563,12 +29382,10 @@
 	},
 /area/lv553/outdoors/colony_streets/southwest)
 "oBG" = (
-/obj/vehicle/powerloader/jd{
-	dir = 4
-	},
 /obj/effect/decal/cleanable/blood/oil/streak,
+/obj/structure/powerloader_wreckage/jd,
 /turf/open/asphalt/cement,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/cargo_lz)
 "oBH" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/effect/landmark/objective_landmark/far,
@@ -28613,7 +29430,9 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "oCt" = (
 /obj/structure/surface/rack,
@@ -28703,7 +29522,9 @@
 /area/lv553/indoors/operations/offices/east)
 "oEc" = (
 /obj/structure/machinery/vending/cigarette/colony,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "oEd" = (
 /obj/structure/surface/rack,
@@ -28775,7 +29596,9 @@
 "oFh" = (
 /obj/item/trash/cigbutt/ucigbutt,
 /obj/item/shard,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/flooded_streets/west)
 "oFl" = (
 /turf/open/asphalt/cement,
@@ -28894,7 +29717,9 @@
 /area/lv553/oob)
 "oIg" = (
 /obj/item/frame/table/almayer,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/east_apartments)
 "oIj" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -28927,7 +29752,9 @@
 	name = "????";
 	stat = 2
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_apartments)
 "oJe" = (
 /obj/structure/xenoautopsy/tank/hugger,
@@ -29068,7 +29895,9 @@
 "oMx" = (
 /obj/item/trash/cigbutt,
 /obj/item/trash/sosjerky,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/waste_silos)
 "oMP" = (
 /obj/effect/decal/warning_stripes{
@@ -29192,7 +30021,9 @@
 "oOl" = (
 /obj/structure/surface/table,
 /obj/item/device/cassette_tape/ocean,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/oob)
 "oOn" = (
 /obj/structure/machinery/door/poddoor/almayer{
@@ -29217,7 +30048,9 @@
 	pixel_x = -6;
 	pixel_y = 6
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/oob)
 "oOE" = (
 /turf/closed/shuttle/ert{
@@ -29235,7 +30068,9 @@
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/weymart)
 "oPO" = (
 /obj/structure/sign/poster/ad{
@@ -29292,7 +30127,9 @@
 /area/lv553/indoors/welcome_center/offices)
 "oRx" = (
 /obj/structure/largecrate/random/barrel/red,
-/turf/open/asphalt/cement,
+/turf/open/gm/road{
+	icon_state = "browndirt_road_1"
+	},
 /area/lv553/outdoors/colony_streets/east)
 "oRL" = (
 /obj/structure/flora/grass/tallgrass/jungle,
@@ -29875,6 +30712,10 @@
 /obj/item/bedsheet/captain,
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/trapped_house)
+"pgk" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/cargo_lz)
 "pgm" = (
 /obj/structure/surface/rack,
 /obj/item/storage/fancy/cigarettes/kpack{
@@ -30074,7 +30915,9 @@
 "piV" = (
 /obj/item/frame/rack,
 /obj/item/reagent_container/food/snacks/grown/potato,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "pjd" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -30251,7 +31094,7 @@
 	pixel_y = 30
 	},
 /turf/open/asphalt/cement,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/cargo_lz)
 "pnN" = (
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/north_east,
 /area/lv553/outdoors/bungalow_manager_exterior)
@@ -30918,7 +31761,9 @@
 /area/lv553/indoors/operations/offices/east)
 "pBG" = (
 /obj/item/tool/wet_sign,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "pBJ" = (
 /obj/structure/machinery/light,
@@ -30954,7 +31799,11 @@
 	icon_state = "2-4"
 	},
 /turf/open/asphalt/cement,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/tcomms)
+"pCs" = (
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/gm/road,
+/area/lv553/outdoors/colony_streets/northeast)
 "pCv" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/north_west,
@@ -31052,7 +31901,7 @@
 /area/lv553/indoors/operations/offices/east)
 "pFG" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "apartment door"
+	name = "\improper Steve's Wey-Net Cafe"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -31221,7 +32070,9 @@
 	dir = 1;
 	pixel_y = -9
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/weymart)
 "pLC" = (
 /obj/item/trash/chunk{
@@ -31258,7 +32109,9 @@
 "pLT" = (
 /obj/item/frame/table/almayer,
 /obj/item/shard,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/east_apartments)
 "pLW" = (
 /obj/structure/desertdam/decals/road_stop{
@@ -31276,7 +32129,9 @@
 /area/lv553/outdoors/colony_streets/southeast)
 "pMg" = (
 /obj/item/trash/cigbutt/ucigbutt,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/waste_silos)
 "pMl" = (
 /obj/structure/largecrate/supply/supplies/mre,
@@ -31298,7 +32153,9 @@
 /obj/item/reagent_container/food/snacks/packaged_burger{
 	pixel_y = 11
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "pMF" = (
 /obj/structure/machinery/light/small,
@@ -31693,7 +32550,9 @@
 /area/lv553/indoors/lone_buildings/gas_n_gear)
 "pXg" = (
 /obj/item/stack/sheet/wood,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/flooded_streets/east)
 "pXj" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -31707,7 +32566,9 @@
 /obj/item/stack/sheet/cardboard{
 	name = "soaked cardboard"
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_apartments)
 "pXv" = (
 /obj/structure/machinery/cm_vending/sorted/medical/bolted,
@@ -31795,6 +32656,7 @@
 	pixel_x = 7;
 	pixel_y = 17
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/flynns_bar)
 "pZL" = (
@@ -31849,7 +32711,9 @@
 "qaE" = (
 /obj/item/trash/eat,
 /obj/item/trash/crushed_cup,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/flooded_streets/waste_treatment)
 "qaI" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
@@ -31915,7 +32779,9 @@
 /obj/item/stack/sheet/cardboard{
 	name = "soaked cardboard"
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/east_apartments)
 "qcJ" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -31939,12 +32805,16 @@
 	},
 /obj/structure/machinery/light_construct,
 /obj/item/light_bulb/tube,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/east_apartments)
 "qds" = (
 /obj/item/shard,
 /obj/item/shard,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/east_apartments)
 "qdA" = (
 /obj/structure/mineral_door/wood{
@@ -32586,7 +33456,9 @@
 /area/lv553/oob)
 "qri" = (
 /obj/structure/bed/chair,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "qrG" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -32769,7 +33641,9 @@
 /area/lv553/outdoors/colony_streets/southwest)
 "qwk" = (
 /obj/structure/computerframe,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/waste_station)
 "qwn" = (
 /obj/structure/machinery/light/small,
@@ -32898,13 +33772,6 @@
 	},
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/liq_r_mart)
-"qyo" = (
-/obj/structure/bed/chair/comfy/black{
-	dir = 8;
-	pixel_x = -8
-	},
-/turf/open/floor,
-/area/lv553/indoors/lone_buildings/mechanic_shop)
 "qyv" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -33042,7 +33909,7 @@
 /area/lv553/indoors/operations/offices/southwest)
 "qAe" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "apartment door"
+	name = "\improper Steve's Wey-Net Cafe"
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/screenwriter_house)
@@ -33103,10 +33970,10 @@
 "qCM" = (
 /obj/effect/landmark/static_comms/net_two,
 /obj/structure/cable/heavyduty{
-	icon_state = "0-4"
+	icon_state = "1-4"
 	},
 /turf/open/asphalt/cement,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/tcomms)
 "qDs" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/asphalt/cement,
@@ -33318,7 +34185,9 @@
 /obj/structure/platform/kutjevo/smooth{
 	dir = 8
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/bungalow_manager_exterior)
 "qKe" = (
 /obj/effect/decal/warning_stripes{
@@ -33405,7 +34274,9 @@
 /area/lv553/indoors/lone_buildings/travel_agency)
 "qLB" = (
 /obj/item/stack/sheet/metal,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/weymart)
 "qLH" = (
 /obj/structure/surface/rack,
@@ -33722,7 +34593,9 @@
 	density = 0;
 	pixel_y = 21
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/oob)
 "qUh" = (
 /turf/closed/wall/r_wall,
@@ -33991,7 +34864,9 @@
 /obj/item/stack/sheet/cardboard{
 	name = "soaked cardboard"
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/waste_station)
 "rau" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -34030,7 +34905,9 @@
 /area/lv553/landing_zone_1)
 "rcy" = (
 /obj/item/trash/chunk,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/weymart)
 "rcz" = (
 /turf/open/gm/dirtgrassborder/dirt/west,
@@ -34112,7 +34989,9 @@
 /area/lv553/indoors/hospital/lobby)
 "rdK" = (
 /obj/item/shard,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/east_apartments)
 "rdX" = (
 /obj/structure/flora/pottedplant{
@@ -34128,7 +35007,9 @@
 /obj/item/bedsheet/captain,
 /obj/item/shard,
 /obj/item/stack/cable_coil,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_apartments)
 "reC" = (
 /obj/item/shard,
@@ -34141,7 +35022,9 @@
 /obj/structure/machinery/door/airlock/almayer/engineering/glass/colony{
 	name = "\improper Liam's Office"
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "rfO" = (
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/south_west,
@@ -34189,7 +35072,9 @@
 	pixel_x = 9;
 	pixel_y = 8
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "rhD" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -34393,7 +35278,9 @@
 /obj/item/trash/plate,
 /obj/structure/machinery/light_construct,
 /obj/item/light_bulb/tube,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/east_apartments)
 "rnb" = (
 /obj/structure/surface/rack,
@@ -34414,9 +35301,14 @@
 /turf/closed/wall,
 /area/lv553/indoors/lone_buildings/internet_cafe)
 "rnC" = (
-/obj/structure/machinery/computer/telecomms/server,
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
 /turf/open/floor/wood,
-/area/lv553/indoors/northeast/slums)
+/area/lv553/indoors/lone_buildings/tcomms)
 "rnU" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/south_east,
@@ -34424,7 +35316,9 @@
 "rop" = (
 /obj/structure/surface/table,
 /obj/item/storage/box/donkpockets,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "roy" = (
 /obj/structure/closet,
@@ -34677,8 +35571,15 @@
 /area/lv553/indoors/lone_buildings/weymart)
 "rvq" = (
 /obj/structure/surface/table/woodentable,
-/turf/open/floor/wood,
-/area/lv553/oob)
+/obj/item/spacecash/c100{
+	pixel_y = 10
+	},
+/obj/item/spacecash/c100{
+	pixel_y = 12
+	},
+/obj/item/spacecash/c1000,
+/turf/open/floor/carpet,
+/area/lv553/indoors/lone_buildings/cargo_lz)
 "rvB" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -34853,7 +35754,9 @@
 	dir = 4
 	},
 /obj/item/light_bulb/tube,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "rzh" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -34890,7 +35793,9 @@
 	layer = 3;
 	pixel_y = 6
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/bungalow_manager_exterior)
 "rAk" = (
 /obj/item/clothing/head/soft/trucker,
@@ -35136,8 +36041,14 @@
 	},
 /area/lv553/indoors/lone_buildings/army_surplus)
 "rFU" = (
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_apartments)
+"rGf" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/north_west,
+/area/lv553/outdoors/colony_streets/east)
 "rGP" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan_inner_t_right"
@@ -35156,7 +36067,9 @@
 /obj/structure/mineral_door/wood/open{
 	dir = 8
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "rHy" = (
 /obj/structure/filingcabinet,
@@ -35190,7 +36103,17 @@
 /turf/open/gm/dirt/brown,
 /area/lv553/outdoors/colony_streets/west)
 "rIQ" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 18
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = 8;
+	pixel_y = 16
+	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/insurance)
 "rJe" = (
@@ -35293,7 +36216,9 @@
 /obj/structure/machinery/power/apc/fully_broken/no_cell,
 /obj/item/stack/sheet/metal,
 /obj/item/shard,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/waste_station)
 "rLe" = (
 /obj/effect/decal/cleanable/blood/xeno,
@@ -35425,7 +36350,7 @@
 /area/lv553/indoors/marshals/barracks)
 "rOr" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "apartment door"
+	name = "\improper Steve's Wey-Net Cafe"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -35460,7 +36385,9 @@
 /area/lv553/indoors/southwest/slums)
 "rPt" = (
 /obj/effect/landmark/corpsespawner/colonist,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/waste_station)
 "rPF" = (
 /obj/structure/bed/chair{
@@ -35495,14 +36422,16 @@
 /obj/structure/toilet{
 	pixel_y = 16
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/waste_station)
 "rQP" = (
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner2/south_west,
 /area/lv553/outdoors/lone_buildings/weyyu_hostel)
 "rQU" = (
 /obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/wood,
+/turf/open/floor/plating,
 /area/lv553/indoors/northeast/slums)
 "rRh" = (
 /turf/open/gm/grass/dirt,
@@ -35651,7 +36580,9 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 32
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/waste_station)
 "rWe" = (
 /obj/structure/surface/rack,
@@ -35850,7 +36781,7 @@
 	layer = 2.85
 	},
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "apartment door"
+	name = "\improper Steve's Wey-Net Cafe"
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/clf_communications)
@@ -36260,7 +37191,9 @@
 /area/lv553/oob)
 "siR" = (
 /obj/item/light_bulb/tube,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_apartments)
 "siU" = (
 /obj/structure/flora/bush/ausbushes/palebush,
@@ -36335,7 +37268,9 @@
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/bungalow_manager_exterior)
 "skK" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -36355,7 +37290,9 @@
 /area/lv553/indoors/uscm_garrison/garrison_bunks)
 "sla" = (
 /obj/item/shard,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/waste_station)
 "slB" = (
 /obj/structure/disposalpipe/segment{
@@ -36365,7 +37302,9 @@
 /area/lv553/indoors/operations/reception)
 "slO" = (
 /obj/item/toy/inflatable_duck,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/bungalow_manager_exterior)
 "slT" = (
 /turf/open/floor{
@@ -36443,7 +37382,9 @@
 	icon_state = "reinfflip1+";
 	dir = 4
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/waste_station)
 "sor" = (
 /obj/effect/decal/warning_stripes{
@@ -36505,7 +37446,9 @@
 /obj/structure/machinery/light_construct{
 	dir = 1
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_apartments)
 "spt" = (
 /obj/structure/bed/chair/comfy/teal{
@@ -36753,7 +37696,9 @@
 	pixel_x = -22;
 	pixel_y = -12
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/oob)
 "svP" = (
 /obj/effect/decal/warning_stripes{
@@ -37472,7 +38417,9 @@
 	flipped = 1;
 	icon_state = "reinfflip1-"
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "sNg" = (
 /obj/item/trash/eat,
@@ -37566,7 +38513,7 @@
 	name = "\improper garage manway door"
 	},
 /turf/open/asphalt/cement,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/cargo_lz)
 "sQd" = (
 /turf/open/floor{
 	icon_state = "darkbluecorners2";
@@ -37807,8 +38754,16 @@
 	name = "steam pipe";
 	pixel_y = 8
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/oob)
+"sTT" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/cargo_lz)
 "sTU" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/spawner/gibspawner/xeno,
@@ -37931,7 +38886,9 @@
 /obj/item/stack/sheet/cardboard{
 	name = "soaked cardboard"
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/weymart)
 "sWL" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -37994,7 +38951,9 @@
 /obj/item/stack/sheet/cardboard{
 	name = "soaked cardboard"
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_apartments)
 "sXD" = (
 /obj/effect/decal/cleanable/blood,
@@ -38007,7 +38966,9 @@
 /obj/item/trash/boonie,
 /obj/item/stack/sheet/metal,
 /obj/structure/prop/cash_register/broken,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/weymart)
 "sXP" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -38072,6 +39033,15 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/gated_community/director_of_corporate_research)
+"sZq" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 4
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/lv553/indoors/lone_buildings/cargo_lz)
 "sZw" = (
 /obj/structure/filingcabinet{
 	density = 0;
@@ -38173,6 +39143,9 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv553/indoors/lone_buildings/pizza)
+"taL" = (
+/turf/closed/wall,
+/area/lv553/indoors/lone_buildings/cargo_lz)
 "taQ" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/drinks/bottle/vodka{
@@ -38191,7 +39164,9 @@
 /obj/item/trash/burger{
 	pixel_y = -6
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "tbe" = (
 /obj/structure/girder,
@@ -38375,14 +39350,16 @@
 /obj/structure/machinery/light_construct{
 	dir = 8
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_apartments)
 "tgj" = (
 /turf/open/gm/coast/dirt/beachcorner/south_east,
 /area/lv553/outdoors/flooded_streets/west)
 "tgs" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "apartment door"
+	name = "\improper Steve's Wey-Net Cafe"
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/south/slums)
@@ -38477,11 +39454,11 @@
 /turf/open/gm/dirtgrassborder/dirt/north,
 /area/lv553/indoors/southwest/slums)
 "tjR" = (
-/obj/structure/sign/poster/safety{
-	pixel_y = 30
+/obj/structure/sign/poster/hero/voteno{
+	pixel_y = 32
 	},
 /turf/open/floor/wood,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/cargo_lz)
 "tjU" = (
 /obj/structure/platform_decoration/strata/metal{
 	dir = 4
@@ -38511,7 +39488,9 @@
 /area/lv553/outdoors/colony_streets/east)
 "tkp" = (
 /obj/item/storage/beer_pack,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/weymart)
 "tkK" = (
 /turf/open/gm/grass/dirt,
@@ -38959,7 +39938,9 @@
 	pixel_y = 6
 	},
 /obj/structure/machinery/light_construct,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/east_apartments)
 "ttw" = (
 /obj/structure/sign/nosmoking_1{
@@ -39193,7 +40174,9 @@
 /area/lv553/indoors/uscm_garrison/garrison_bunks)
 "tyX" = (
 /obj/item/frame/table/wood,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_apartments)
 "tza" = (
 /obj/structure/bed/chair/comfy{
@@ -39343,6 +40326,17 @@
 /obj/structure/largecrate/supply/ammo/m39/half,
 /turf/open/asphalt/cement,
 /area/lv553/outdoors/uscm_garrison_exterior/entrance)
+"tCz" = (
+/obj/structure/toilet{
+	pixel_y = 16
+	},
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/lv553/indoors/lone_buildings/tcomms)
 "tCB" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/dirtgrassborder/dirt/east,
@@ -39351,7 +40345,9 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "tDs" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -39413,6 +40409,10 @@
 /area/lv553/outdoors/colony_streets/west)
 "tEx" = (
 /obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/trash/burger{
+	pixel_x = -6;
+	pixel_y = 3
+	},
 /turf/open/floor/wood{
 	icon_state = "wood-broken6"
 	},
@@ -39591,7 +40591,9 @@
 /obj/item/device/cassette_tape/ocean{
 	pixel_y = -2
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/oob)
 "tIJ" = (
 /turf/open/floor{
@@ -39612,7 +40614,9 @@
 	dir = 1;
 	name = "\improper Liam's Automobile Repair Shop"
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "tIV" = (
 /obj/structure/reagent_dispensers/fueltank/gas,
@@ -39894,6 +40898,17 @@
 	},
 /turf/open/asphalt/cement,
 /area/lv553/oob)
+"tRB" = (
+/obj/structure/machinery/door_control{
+	desc = "A garage door opener.";
+	id = "cargo_garage";
+	name = "garage door opener";
+	pixel_x = 1;
+	pixel_y = -22;
+	req_one_access_txt = "2;3;12;19"
+	},
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/cargo_lz)
 "tRG" = (
 /obj/structure/platform_decoration/strata/metal,
 /turf/open/asphalt/cement,
@@ -39913,7 +40928,7 @@
 /area/lv553/indoors/gated_community/residence_bunkhouse)
 "tSC" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "apartment door"
+	name = "\improper Steve's Wey-Net Cafe"
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/southeast/slums)
@@ -40038,11 +41053,15 @@
 /obj/structure/machinery/power/apc/fully_broken/no_cell{
 	dir = 8
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "tVu" = (
 /obj/structure/machinery/vending/cola,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "tVw" = (
 /obj/structure/flora/pottedplant{
@@ -40072,7 +41091,9 @@
 	pixel_y = -1
 	},
 /obj/item/shard,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/weymart)
 "tVX" = (
 /obj/effect/decal/warning_stripes{
@@ -40289,7 +41310,9 @@
 	},
 /area/lv553/indoors/operations/hallway/north)
 "uaZ" = (
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/waste_station)
 "ube" = (
 /obj/structure/surface/rack,
@@ -40345,7 +41368,7 @@
 	icon_state = "1-8"
 	},
 /turf/open/asphalt/cement,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/tcomms)
 "ucD" = (
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner2/south_west,
 /area/lv553/landing_zone_1)
@@ -40777,6 +41800,12 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/dirtgrassborder/dirt/west,
 /area/lv553/outdoors/colony_streets/southwest)
+"unv" = (
+/turf/open/gm/road{
+	icon_state = "browndirt_road_3";
+	dir = 1
+	},
+/area/lv553/outdoors/colony_streets/south)
 "unC" = (
 /obj/item/storage/toolbox/electrical{
 	pixel_y = 10
@@ -41180,6 +42209,14 @@
 /obj/structure/cargo_container/arious/mid,
 /turf/open/asphalt/cement,
 /area/lv553/oob)
+"uxh" = (
+/obj/structure/surface/table,
+/obj/structure/prop/cash_register/off,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "redfull"
+	},
+/area/lv553/indoors/lone_buildings/internet_cafe)
 "uxB" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -41240,7 +42277,9 @@
 /area/lv553/indoors/southwest/slums)
 "uzq" = (
 /obj/item/tool/wet_sign,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/colony_streets/east)
 "uzx" = (
 /turf/open/gm/coast/dirt/beachcorner2/south_east,
@@ -41256,7 +42295,7 @@
 /area/lv553/outdoors/flooded_streets/west)
 "uzL" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "apartment door"
+	name = "\improper Steve's Wey-Net Cafe"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -41430,7 +42469,9 @@
 /area/lv553/indoors/welcome_center/lobby)
 "uFf" = (
 /obj/item/shard,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/weymart)
 "uFo" = (
 /turf/closed/shuttle/ert{
@@ -41509,6 +42550,10 @@
 /area/lv553/indoors/uscm_garrison/recruitment_office)
 "uHp" = (
 /obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/trash/burger{
+	pixel_y = -2;
+	pixel_x = -7
+	},
 /turf/open/floor/wood{
 	icon_state = "wood-broken4"
 	},
@@ -41561,7 +42606,9 @@
 /area/lv553/indoors/lone_buildings/clf_communications)
 "uJc" = (
 /obj/item/stack/sheet/metal,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/east_apartments)
 "uJu" = (
 /obj/structure/machinery/colony_floodlight,
@@ -41797,7 +42844,9 @@
 	pixel_x = -6;
 	pixel_y = 5
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/oob)
 "uPf" = (
 /obj/structure/surface/table,
@@ -41829,6 +42878,11 @@
 /obj/structure/largecrate/random/barrel/true_random,
 /turf/open/asphalt/cement,
 /area/lv553/outdoors/colony_streets/west)
+"uQn" = (
+/obj/item/stool,
+/obj/structure/machinery/light/small,
+/turf/open/asphalt/cement,
+/area/lv553/indoors/lone_buildings/chinese)
 "uQM" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/chips{
@@ -41869,7 +42923,9 @@
 /obj/item/stack/sheet/cardboard{
 	name = "soaked cardboard"
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "uRX" = (
 /obj/structure/sign/poster/hero/voteno{
@@ -41879,7 +42935,9 @@
 /area/lv553/indoors/marshals/reception)
 "uSF" = (
 /obj/item/trash/plate,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/waste_silos)
 "uSI" = (
 /obj/effect/decal/strata_decals/grime/grime4,
@@ -41941,7 +42999,9 @@
 /area/lv553/indoors/operations/offices/northwest)
 "uUA" = (
 /obj/item/shard,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/flooded_streets/east)
 "uUK" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname{
@@ -41965,7 +43025,9 @@
 /area/lv553/outdoors/uscm_garrison_exterior/fenced)
 "uVm" = (
 /obj/item/frame/table/wood/poor,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/flooded_streets/west)
 "uVr" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -42056,6 +43118,13 @@
 /obj/item/shard,
 /turf/open/gm/grass/dirt,
 /area/lv553/outdoors/welcome_center_exterior/west)
+"uYJ" = (
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/gm/road{
+	icon_state = "browndirt_road_1";
+	dir = 4
+	},
+/area/lv553/outdoors/colony_streets/east)
 "uYZ" = (
 /obj/structure/surface/table/almayer,
 /obj/item/pizzabox/meat{
@@ -42074,7 +43143,9 @@
 /area/lv553/outdoors/colony_streets/southwest)
 "uZH" = (
 /obj/structure/bed,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "uZZ" = (
 /obj/structure/bed/sofa/south/grey/left{
@@ -42134,7 +43205,9 @@
 /obj/item/device/radio{
 	pixel_y = -2
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/weymart)
 "vbr" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -42584,7 +43657,7 @@
 /area/lv553/indoors/bungalow_manager)
 "vmF" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "apartment door"
+	name = "\improper Steve's Wey-Net Cafe"
 	},
 /turf/open/floor/wood,
 /area/lv553/oob)
@@ -42736,7 +43809,9 @@
 "vqS" = (
 /obj/structure/window_frame/colony,
 /obj/item/shard,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_apartments)
 "vry" = (
 /obj/structure/flora/jungle/hedge{
@@ -43088,6 +44163,12 @@
 	icon_state = "plate"
 	},
 /area/lv553/indoors/south/slums)
+"vDd" = (
+/turf/open/gm/road{
+	icon_state = "browndirt_road_3";
+	dir = 8
+	},
+/area/lv553/outdoors/colony_streets/south)
 "vDf" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -43190,7 +44271,6 @@
 /area/lv553/outdoors/landing_zones_disembark)
 "vFb" = (
 /obj/structure/bookcase,
-/obj/item/weapon/baseballbat/metal,
 /obj/item/device/cassette_tape/hairmetal{
 	pixel_x = -6;
 	pixel_y = 9
@@ -43226,7 +44306,7 @@
 /area/lv553/indoors/marshals/garage)
 "vGN" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "apartment door"
+	name = "\improper Steve's Wey-Net Cafe"
 	},
 /turf/open/floor/interior/plastic,
 /area/lv553/oob)
@@ -43328,7 +44408,7 @@
 /area/lv553/outdoors/colony_streets/northeast)
 "vIE" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "apartment door"
+	name = "\improper Steve's Wey-Net Cafe"
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/southwest/slums)
@@ -43405,7 +44485,9 @@
 /turf/open/floor,
 /area/lv553/indoors/lone_buildings/army_surplus)
 "vLa" = (
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/east_apartments)
 "vLi" = (
 /obj/structure/machinery/light{
@@ -43422,6 +44504,12 @@
 "vLw" = (
 /turf/closed/wall/r_wall,
 /area/lv553/indoors/welcome_center/offices)
+"vLF" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/tcomms)
 "vLN" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/grass/dirt,
@@ -43624,7 +44712,9 @@
 /obj/structure/machinery/light_construct,
 /obj/item/light_bulb/tube,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "vRt" = (
 /turf/closed/wall/r_wall,
@@ -43710,7 +44800,10 @@
 /area/lv553/outdoors/bungalow_manager_exterior)
 "vSg" = (
 /obj/structure/largecrate/supply/supplies/water,
-/turf/open/asphalt/cement,
+/turf/open/gm/road{
+	icon_state = "browndirt_road_1";
+	dir = 1
+	},
 /area/lv553/outdoors/colony_streets/east)
 "vSy" = (
 /obj/structure/surface/rack,
@@ -43919,7 +45012,9 @@
 /obj/item/frame/rack,
 /obj/item/trash/burger,
 /obj/item/trash/buritto,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/weymart)
 "vXC" = (
 /obj/structure/stairs/perspective{
@@ -44036,7 +45131,9 @@
 /area/lv553/outdoors/colony_streets/southwest)
 "vZR" = (
 /obj/item/toy/beach_ball,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/bungalow_manager_exterior)
 "vZU" = (
 /obj/structure/cargo_container/hd/mid/alt,
@@ -44091,7 +45188,9 @@
 	pixel_x = 8;
 	pixel_y = 8
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/oob)
 "waR" = (
 /obj/structure/machinery/colony_floodlight,
@@ -44214,7 +45313,9 @@
 "wdx" = (
 /obj/item/bedsheet/captain,
 /obj/item/shard,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/east_apartments)
 "wdC" = (
 /obj/structure/sink{
@@ -44300,6 +45401,10 @@
 "wgy" = (
 /turf/open/floor/wood,
 /area/lv553/indoors/bungalow_manager)
+"wgE" = (
+/obj/structure/machinery/power/apc,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/tcomms)
 "wgS" = (
 /obj/structure/ladder{
 	height = 1;
@@ -44640,7 +45745,7 @@
 	dir = 4
 	},
 /turf/open/asphalt/cement,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/cargo_lz)
 "wpX" = (
 /obj/structure/flora/bush/ausbushes/palebush,
 /turf/open/gm/grass/dirt,
@@ -44671,7 +45776,9 @@
 	pixel_y = 26
 	},
 /obj/item/trash/pistachios,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/weymart)
 "wqX" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
@@ -44743,6 +45850,9 @@
 	},
 /turf/open/gm/grass/dirt,
 /area/lv553/outdoors/colony_streets/west)
+"wsP" = (
+/turf/open/floor/carpet,
+/area/lv553/indoors/lone_buildings/cargo_lz)
 "wsT" = (
 /obj/structure/surface/rack,
 /obj/item/storage/firstaid/regular,
@@ -44818,7 +45928,9 @@
 "wvN" = (
 /obj/structure/surface/table/almayer,
 /obj/item/prop/flower_vase/redwhiteflowers,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "wvO" = (
 /obj/structure/bed/sofa/south/grey/left,
@@ -44826,7 +45938,10 @@
 /area/lv553/indoors/south/slums)
 "wvP" = (
 /obj/structure/fence,
-/turf/open/asphalt/cement,
+/turf/open/gm/road{
+	icon_state = "browndirt_road_corner";
+	dir = 8
+	},
 /area/lv553/outdoors/colony_streets/south)
 "wwd" = (
 /turf/open/floor{
@@ -44873,7 +45988,9 @@
 	pixel_x = 8;
 	pixel_y = 8
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/oob)
 "wxE" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -44985,7 +46102,9 @@
 	dir = 1;
 	pixel_y = -9
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "wBT" = (
 /obj/structure/toilet{
@@ -45145,6 +46264,12 @@
 	},
 /turf/open/gm/grass/dirt,
 /area/lv553/outdoors/hospital/break_garden)
+"wGy" = (
+/obj/structure/sign/poster/ad{
+	pixel_y = -32
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/cargo_lz)
 "wGH" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/metal/large_stack{
@@ -45376,10 +46501,6 @@
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/bungalow_manager)
-"wLj" = (
-/obj/structure/reagent_dispensers/fueltank/gas,
-/turf/open/asphalt/cement,
-/area/lv553/outdoors/colony_streets/south)
 "wLk" = (
 /obj/structure/sign/poster/music{
 	pixel_x = -32
@@ -45434,7 +46555,9 @@
 /area/lv553/indoors/lone_buildings/flynns_bar)
 "wMw" = (
 /obj/item/trash/plate,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "wMA" = (
 /obj/structure/reagent_dispensers/fueltank/gas,
@@ -45520,7 +46643,9 @@
 "wOD" = (
 /obj/structure/surface/table,
 /obj/item/clothing/head/soft/ferret,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "wOY" = (
 /turf/open/gm/coast/dirt/beachcorner2/north_east,
@@ -45560,7 +46685,9 @@
 /obj/structure/machinery/light_construct{
 	dir = 8
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/weymart)
 "wPK" = (
 /obj/structure/surface/table/woodentable,
@@ -45623,7 +46750,9 @@
 /obj/item/trash/crushed_cup,
 /obj/item/frame/table/reinforced,
 /obj/item/trash/popcorn,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/waste_station)
 "wQK" = (
 /obj/structure/fence,
@@ -45742,7 +46871,9 @@
 /obj/item/paper_bin{
 	pixel_y = 4
 	},
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "wTk" = (
 /obj/structure/bed/chair/wood/wings{
@@ -45908,7 +47039,9 @@
 /area/lv553/indoors/lone_buildings/weymart)
 "wYu" = (
 /obj/structure/window_frame/colony,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_apartments)
 "wYC" = (
 /turf/open/gm/dirtgrassborder/dirt/west,
@@ -45940,7 +47073,9 @@
 	},
 /area/lv553/indoors/ss_athens)
 "wZo" = (
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/waste_silos)
 "wZI" = (
 /obj/structure/flora/jungle/hedge{
@@ -45993,6 +47128,12 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/lv553/oob)
+"xaA" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-4-8"
+	},
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/tcomms)
 "xaB" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -46009,7 +47150,9 @@
 /area/lv553/oob)
 "xaT" = (
 /obj/structure/prop/fishing/line/long/part2,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/flooded_streets/east)
 "xaU" = (
 /obj/structure/surface/rack,
@@ -46131,11 +47274,15 @@
 	pixel_x = -5;
 	pixel_y = 4
 	},
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/oob)
 "xet" = (
 /obj/item/spacecash/c10,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/flooded_streets/west)
 "xeU" = (
 /turf/closed/shuttle/ert{
@@ -46355,7 +47502,9 @@
 "xke" = (
 /obj/item/frame/rack,
 /obj/item/reagent_container/food/snacks/grown/ricestalk,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "xkm" = (
 /turf/closed/wall/wood/plain,
@@ -46534,7 +47683,9 @@
 /area/lv553/indoors/hospital/research/offices)
 "xpf" = (
 /obj/item/shard,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_apartments)
 "xpg" = (
 /obj/effect/decal/warning_stripes{
@@ -46742,7 +47893,9 @@
 /area/lv553/indoors/southeast/slums)
 "xuY" = (
 /obj/structure/bed/chair/office/dark,
-/turf/open/floor,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/lv553/indoors/lone_buildings/mechanic_shop)
 "xuZ" = (
 /obj/structure/window_frame/hangar,
@@ -46850,7 +48003,9 @@
 /area/lv553/indoors/hospital/reception)
 "xxP" = (
 /obj/item/trash/cigbutt/cigarbutt,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/flooded_streets/waste_treatment)
 "xyg" = (
 /obj/structure/stairs/perspective{
@@ -46905,7 +48060,7 @@
 /area/lv553/outdoors/colony_streets/southwest)
 "xzZ" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "apartment door"
+	name = "\improper Steve's Wey-Net Cafe"
 	},
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/trapped_house)
@@ -46941,7 +48096,9 @@
 /area/lv553/oob)
 "xAS" = (
 /obj/item/trash/crushed_cup,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/flooded_streets/east)
 "xAV" = (
 /turf/open/gm/dirtgrassborder/dirt/north,
@@ -46999,7 +48156,9 @@
 	name = "soaked cardboard"
 	},
 /obj/structure/machinery/light_construct,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/west_slums)
 "xCP" = (
 /obj/item/shard,
@@ -47056,7 +48215,9 @@
 /area/lv553/indoors/lone_buildings/neils_arcade)
 "xDM" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/solid,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/oob)
 "xDO" = (
 /turf/closed/shuttle/ert{
@@ -47084,7 +48245,7 @@
 "xEr" = (
 /obj/structure/largecrate/random/barrel/true_random,
 /turf/open/asphalt/cement,
-/area/lv553/oob)
+/area/lv553/indoors/lone_buildings/tcomms)
 "xEB" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -47725,7 +48886,9 @@
 /obj/item/frame/table/reinforced,
 /obj/item/shard,
 /obj/structure/machinery/light_construct,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/indoors/flooded/waste_station)
 "xXo" = (
 /obj/structure/bed/sofa/south/grey/left{
@@ -48016,7 +49179,9 @@
 /area/lv553/indoors/lone_buildings/travel_agency)
 "ydB" = (
 /obj/item/trash/kepler/flamehot,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/flooded_streets/waste_treatment)
 "ydH" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -48185,7 +49350,9 @@
 /area/lv553/indoors/ss_athens)
 "yhl" = (
 /obj/item/storage/toolbox,
-/turf/open/gm/river,
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
 /area/lv553/outdoors/flooded_streets/west)
 "yhG" = (
 /obj/structure/surface/table,
@@ -62623,7 +63790,7 @@ rsX
 elz
 iUh
 rnA
-rZS
+iBr
 rnA
 xao
 xao
@@ -62848,7 +64015,7 @@ kyj
 iUh
 oeR
 rZS
-rZS
+cST
 qAV
 wnU
 rnA
@@ -63294,7 +64461,7 @@ elz
 vDk
 kyj
 iUh
-aKc
+uxh
 aKc
 rZS
 qAV
@@ -63744,7 +64911,7 @@ kyj
 iUh
 ekF
 rZS
-rZS
+bOk
 qAV
 wnU
 rnA
@@ -64862,7 +66029,7 @@ elz
 wAO
 kyj
 iUh
-lhn
+iNO
 lhn
 oaR
 dKf
@@ -66425,7 +67592,7 @@ uZA
 uZA
 tEx
 eDL
-sZY
+nSm
 fRu
 uZA
 uZA
@@ -66449,10 +67616,10 @@ tMo
 qBs
 ruE
 dpN
+iaW
 oru
 oru
-oru
-oru
+uQn
 dpN
 uZA
 uZA
@@ -66647,7 +67814,7 @@ xAV
 tKS
 tKS
 tKS
-czs
+jml
 rVW
 dhQ
 fRu
@@ -71484,7 +72651,7 @@ wpR
 wpR
 wpR
 wpR
-ten
+wpR
 wpR
 wpR
 wpR
@@ -73138,8 +74305,8 @@ nmH
 wqX
 reO
 reO
-reO
-xAV
+hre
+osF
 tKS
 tKS
 tKS
@@ -73359,11 +74526,11 @@ reO
 hXK
 reO
 reO
-hkx
-wvP
-wvP
-wvP
-edr
+jmQ
+cvL
+cvL
+cTy
+unv
 tKS
 tKS
 tKS
@@ -73583,11 +74750,11 @@ reO
 hXK
 reO
 tOz
-wvP
-wLj
-wLj
-wLj
-edr
+cvL
+iNV
+iNV
+iNV
+cNM
 tKS
 tKS
 tKS
@@ -73807,11 +74974,11 @@ cOG
 cOG
 reO
 reO
-wvP
-edr
-edr
-edr
-edr
+cvL
+nRl
+nRl
+nRl
+cNM
 tKS
 tKS
 tKS
@@ -74031,11 +75198,11 @@ vUw
 cOG
 reO
 reO
-hkx
+jmQ
+cvL
+cvL
 wvP
-wvP
-wvP
-edr
+vDd
 tKS
 tKS
 tKS
@@ -74258,8 +75425,8 @@ reO
 reO
 reO
 reO
-reO
-xAV
+ola
+skh
 tKS
 tKS
 tKS
@@ -78910,12 +80077,12 @@ bDe
 bDe
 bDe
 fzi
-jZx
-jZx
-jZx
-jZx
-jZx
-uaq
+cqA
+oUX
+oUX
+oUX
+oUX
+ekG
 lPt
 lPt
 lPt
@@ -79134,12 +80301,12 @@ kjR
 kjR
 kjR
 kjR
-jZx
-xrj
+cqA
+pCs
 bxl
-xrj
-jZx
-uaq
+pCs
+oUX
+ekG
 tki
 lPt
 lPt
@@ -79617,11 +80784,11 @@ eYI
 eYI
 eYI
 eYI
-tki
-cCO
-kxW
-lAc
-mdS
+isB
+lJf
+ulR
+kYH
+kYH
 kYH
 kYH
 bpU
@@ -79841,11 +81008,11 @@ eYI
 qnn
 qnT
 eYI
-piR
-piR
-piR
-piR
-piR
+vbI
+gSH
+gSH
+sLZ
+kYH
 kYH
 kYH
 kYH
@@ -80066,10 +81233,10 @@ tek
 qhF
 eYI
 vSg
-piR
+nXZ
 gTs
-piR
-piR
+eyd
+kYH
 kYH
 kYH
 kYH
@@ -80289,11 +81456,11 @@ eYI
 eYI
 eYI
 eYI
-uAQ
-piR
-piR
+dbw
+nXZ
+nXZ
 oRx
-oRx
+kYH
 kYH
 kYH
 kYH
@@ -80511,13 +81678,13 @@ sQu
 uPw
 eYI
 ima
-bNB
-lPt
-piR
-piR
-piR
-piR
-piR
+rGf
+ulR
+knk
+juX
+uYJ
+cUE
+kYH
 kYH
 kYH
 kYH
@@ -80735,13 +81902,13 @@ eYI
 ydY
 eYI
 rdv
-quP
-bNB
-lPt
-qgp
-pkZ
-pkZ
-ulR
+kdf
+mdS
+kYH
+kYH
+kYH
+kYH
+kYH
 kYH
 kYH
 kYH
@@ -80960,9 +82127,9 @@ kYH
 kYH
 bpU
 pkZ
-pkZ
-pkZ
 ulR
+kYH
+kYH
 kYH
 kYH
 kYH
@@ -81115,13 +82282,13 @@ vbZ
 vbZ
 bhp
 bhp
-jat
-jat
-jat
-ciS
-jat
-jat
-jat
+gOd
+gOd
+gOd
+bNr
+gOd
+gOd
+gOd
 kjR
 dWf
 jat
@@ -81339,13 +82506,13 @@ vbZ
 bhp
 bhp
 sRY
-jat
-mGF
-mGF
-mGF
-mGF
-mGF
-jat
+gOd
+kzH
+lln
+nil
+asd
+asE
+gOd
 kjR
 dWf
 jat
@@ -81563,13 +82730,13 @@ vbZ
 bhp
 bhp
 bhp
-jat
-mGF
-mGF
-mGF
-mGF
-mGF
-jat
+gOd
+fPP
+kXD
+vLF
+xaA
+wgE
+gOd
 kjR
 dWf
 jat
@@ -81787,13 +82954,13 @@ bhp
 bhp
 xaD
 bhp
-jat
-qaJ
-mGF
+gOd
+osE
+anZ
 rnC
-mGF
-mGF
-jat
+kXD
+nPx
+gOd
 kjR
 dWf
 jat
@@ -82010,14 +83177,14 @@ bhp
 bhp
 bhp
 bhp
-jat
-jat
-jat
-jat
-jat
-ryS
-jat
-jat
+gOd
+gOd
+gOd
+gOd
+gOd
+npi
+gOd
+gOd
 kjR
 wGf
 jat
@@ -82237,10 +83404,10 @@ bhp
 axW
 sId
 sId
-jat
-clB
-ijC
-jat
+gOd
+tCz
+esF
+gOd
 kjR
 kjR
 kjR
@@ -82461,10 +83628,10 @@ bhp
 axW
 sId
 sId
-jat
-wfY
-ijC
-jat
+gOd
+aOm
+esF
+gOd
 hvw
 kjR
 kjR
@@ -82685,10 +83852,10 @@ sRY
 axW
 gfx
 jhF
-jat
-jat
-jat
-jat
+gOd
+gOd
+aaE
+gOd
 oUN
 kjR
 jat
@@ -82909,10 +84076,10 @@ bhp
 mqZ
 sId
 siU
-bAZ
+dlr
 eYb
-aUt
-aUt
+jcP
+amG
 oUN
 kjR
 jat
@@ -83133,9 +84300,9 @@ bhp
 mqZ
 jhF
 sId
-bAZ
-aUt
-aUt
+dlr
+lIw
+lgN
 qCM
 oUN
 kjR
@@ -83357,9 +84524,9 @@ bhp
 mqZ
 sId
 gfx
-bAZ
-aUt
-aUt
+dlr
+lIw
+lIw
 jcP
 oUN
 kjR
@@ -83581,7 +84748,7 @@ bhp
 axW
 sId
 sId
-bAZ
+dlr
 xEr
 pCq
 ucv
@@ -83639,7 +84806,7 @@ bpU
 aeS
 vWq
 vWq
-cps
+nVX
 vWq
 hZP
 vWq
@@ -83805,7 +84972,7 @@ bhp
 axW
 gfx
 jhF
-bAZ
+dlr
 ndg
 ucv
 bjo
@@ -83862,7 +85029,7 @@ kYH
 kYH
 bpU
 vWq
-cps
+cOI
 cps
 muD
 oYZ
@@ -84030,9 +85197,9 @@ axW
 sId
 sId
 jYr
-bAZ
-bAZ
-bAZ
+dlr
+dlr
+dlr
 oUN
 kjR
 jat
@@ -84086,9 +85253,9 @@ kYH
 kYH
 kYH
 vWq
-cps
-cps
-rIQ
+kek
+lsv
+fNp
 rIQ
 vWq
 piR
@@ -84310,9 +85477,9 @@ kYH
 kYH
 kYH
 vWq
-cps
-cps
+kZl
 cer
+cps
 cps
 vWq
 vmP
@@ -86722,7 +87889,7 @@ wTa
 rhz
 jVq
 mjM
-etd
+iat
 dUU
 dUU
 biz
@@ -88515,7 +89682,7 @@ mjM
 mjM
 mjM
 dUU
-kmC
+jLj
 kmC
 etd
 dUU
@@ -88739,8 +89906,8 @@ mjM
 oCr
 oCr
 dUU
-qyo
 mjM
+idz
 mjM
 dUU
 kjR
@@ -89460,7 +90627,7 @@ ulR
 kYH
 kYH
 kYH
-rdv
+bpU
 eff
 eff
 eff
@@ -89529,14 +90696,14 @@ gVZ
 gVZ
 gVZ
 gVZ
-pCm
+dhe
 aUt
 aUt
 aUt
 aUt
 aUt
 aUt
-pCm
+dhe
 gVZ
 gVZ
 gVZ
@@ -89684,8 +90851,8 @@ kYH
 kYH
 kYH
 kYH
-piR
-aUt
+vbI
+rhd
 aUt
 aUt
 aUt
@@ -89739,11 +90906,11 @@ ifJ
 ifJ
 gVZ
 gVZ
-pCm
-pCm
-pCm
-pCm
-pCm
+dhe
+dhe
+dhe
+dhe
+dhe
 bAZ
 bAZ
 bAZ
@@ -89751,36 +90918,36 @@ bAZ
 bAZ
 bAZ
 bAZ
-pCm
-pCm
-pCm
+dhe
+dhe
+dhe
 aUt
 aUt
 aUt
 aUt
 aUt
 aUt
-pCm
-pCm
-pCm
-pCm
-eff
-eff
-eff
-eff
-eff
-eff
-eff
-eff
-eff
-eff
-eff
-eff
-eff
-eff
-eff
-eff
-pCm
+dhe
+dhe
+dhe
+dhe
+taL
+taL
+taL
+taL
+taL
+taL
+taL
+taL
+taL
+taL
+taL
+taL
+taL
+taL
+taL
+taL
+dhe
 bhp
 bhp
 vbZ
@@ -89908,8 +91075,8 @@ kYH
 kYH
 kYH
 kYH
-piR
-aUt
+xAK
+lQP
 aUt
 aUt
 aUt
@@ -89963,7 +91130,7 @@ wVm
 ifJ
 gVZ
 gVZ
-pCm
+dhe
 aUt
 aUt
 aUt
@@ -89977,34 +91144,34 @@ aUt
 aUt
 aUt
 aUt
-pCm
+dhe
 aUt
 aUt
 aUt
 aUt
 aUt
 aUt
-pCm
+dhe
 aUt
 tBQ
-eff
+taL
 pnE
 oBG
-aUt
-aUt
+jls
+sTT
 wpS
-aUt
-eff
-cTE
-rvq
-cTE
-cTE
-eff
-cTE
-cTE
-cTE
-cTE
-eff
+mLR
+taL
+blU
+lBK
+hks
+gMF
+taL
+lEm
+sZq
+wsP
+wGy
+taL
 bhp
 bhp
 vbZ
@@ -90083,9 +91250,9 @@ jat
 ciS
 jat
 jat
-kgk
-kgk
-kgk
+aBc
+aBc
+aBc
 jat
 jat
 kjR
@@ -90132,8 +91299,8 @@ kYH
 mhQ
 mdS
 kYH
-piR
-aUt
+xAK
+lQP
 aUt
 aUt
 aUt
@@ -90187,7 +91354,7 @@ jSy
 ifJ
 gVZ
 gVZ
-pCm
+dhe
 aUt
 aUt
 aUt
@@ -90211,24 +91378,24 @@ aUt
 ded
 aUt
 uwV
-eff
+taL
 lqY
-aUt
-aUt
-aUt
-aUt
-aUt
+kty
+agW
+nun
+nun
+nun
 sPd
-cTE
+gMF
+dma
+mlN
+gMF
+taL
+fcR
+onR
 rvq
-rvq
-cTE
-eff
-rvq
-rvq
-rvq
-cTE
-eff
+gMF
+taL
 bhp
 bhp
 bKx
@@ -90411,7 +91578,7 @@ ifJ
 ifJ
 gVZ
 gVZ
-pCm
+dhe
 aUt
 aUt
 aUt
@@ -90435,24 +91602,24 @@ aUt
 aUt
 aUt
 qZs
-eff
+taL
 guJ
-aUt
-aUt
-aUt
-aUt
-bWa
-eff
-cTE
-cTE
-cTE
-cTE
-eff
-cTE
-cTE
-cTE
-cTE
-eff
+nun
+nun
+nun
+nun
+tRB
+taL
+gMF
+gMF
+gMF
+gMF
+taL
+kWY
+wsP
+kWY
+gMF
+taL
 bhp
 bhp
 bhp
@@ -90635,7 +91802,7 @@ ifJ
 tYn
 gVZ
 gVZ
-pCm
+dhe
 aUt
 aUt
 aUt
@@ -90659,24 +91826,24 @@ aUt
 aUt
 aUt
 evK
-eff
+taL
 jez
 jez
 jez
 jez
 jez
 jez
-eff
+taL
 tjR
-cTE
-cTE
-cTE
-cTE
-cTE
-cTE
-cTE
-cTE
-eff
+gMF
+gMF
+gMF
+cFG
+gMF
+gMF
+gMF
+gMF
+taL
 bhp
 bhp
 bhp
@@ -90764,7 +91931,7 @@ kjR
 kjR
 kjR
 dWf
-bau
+rQU
 pfw
 auY
 mGF
@@ -90890,17 +92057,17 @@ aUt
 aUt
 aUt
 bWa
-eff
-cTE
-eff
-daq
-daq
-eff
-daq
-daq
-daq
-daq
-pCm
+taL
+gMF
+apG
+pgk
+pgk
+taL
+pgk
+pgk
+pgk
+pgk
+dhe
 bhp
 bhp
 vbZ
@@ -90982,7 +92149,7 @@ jat
 fPa
 mGF
 mGF
-kgk
+aBc
 kjR
 kjR
 kjR
@@ -91124,7 +92291,7 @@ aUt
 aUt
 aUt
 aUt
-pCm
+dhe
 bhp
 bhp
 bhp
@@ -91348,7 +92515,7 @@ aUt
 aUt
 aUt
 aUt
-pCm
+dhe
 bhp
 bhp
 bKx
@@ -91572,7 +92739,7 @@ aUt
 aUt
 aUt
 aUt
-pCm
+dhe
 bhp
 bhp
 bKx
@@ -91796,7 +92963,7 @@ aUt
 aUt
 aUt
 aUt
-pCm
+dhe
 bhp
 bhp
 bhp
@@ -92020,7 +93187,7 @@ siX
 vfm
 aUt
 aUt
-pCm
+dhe
 bhp
 bhp
 bhp
@@ -92244,7 +93411,7 @@ uFo
 sdL
 aUt
 aUt
-pCm
+dhe
 bhp
 bhp
 vbZ
@@ -92427,7 +93594,7 @@ ifJ
 gVZ
 gVZ
 gVZ
-pCm
+dhe
 aUt
 aUt
 aUt
@@ -92468,7 +93635,7 @@ aUt
 aUt
 aUt
 aUt
-pCm
+dhe
 bhp
 bhp
 vbZ
@@ -92555,7 +93722,7 @@ kjR
 kjR
 wGf
 gvP
-lbD
+aBc
 oCA
 mGF
 rqM
@@ -92566,7 +93733,7 @@ rqM
 mGF
 mGF
 mGF
-kgk
+aBc
 kjR
 kjR
 kjR
@@ -92651,7 +93818,7 @@ ifJ
 gVZ
 gVZ
 gVZ
-pCm
+dhe
 aUt
 aUt
 aUt
@@ -92692,7 +93859,7 @@ aUt
 aUt
 aUt
 aUt
-pCm
+dhe
 bhp
 bhp
 vbZ
@@ -92771,7 +93938,7 @@ bhp
 sRY
 jat
 jat
-kgk
+aBc
 jat
 jat
 fzi
@@ -92779,7 +93946,7 @@ kjR
 kjR
 kjR
 wGf
-aIf
+aBc
 dvd
 ftY
 jat
@@ -92790,7 +93957,7 @@ jat
 rBU
 mGF
 qaJ
-kgk
+aBc
 kjR
 kjR
 kjR
@@ -92875,7 +94042,7 @@ gVZ
 gVZ
 gVZ
 gVZ
-pCm
+dhe
 aUt
 aUt
 gIF
@@ -92916,7 +94083,7 @@ aUt
 aUt
 aUt
 aUt
-pCm
+dhe
 bhp
 bhp
 vbZ
@@ -93037,10 +94204,10 @@ cTE
 cTE
 hay
 pCm
-piR
-piR
-piR
-piR
+gSH
+gSH
+gSH
+gSH
 pCm
 pCm
 pCm
@@ -93099,7 +94266,7 @@ gVZ
 gVZ
 gVZ
 gVZ
-pCm
+dhe
 aUt
 aUt
 lAr
@@ -93140,7 +94307,7 @@ aUt
 syz
 aUt
 aUt
-pCm
+dhe
 bhp
 bhp
 vbZ
@@ -93216,7 +94383,7 @@ bhp
 bhp
 jat
 jat
-cGM
+aBc
 jat
 wcW
 lpa
@@ -93261,10 +94428,10 @@ hOz
 cTE
 hay
 pCm
-piR
-piR
-piR
-piR
+nXZ
+nXZ
+nXZ
+nXZ
 pCm
 cTE
 cTE
@@ -93323,7 +94490,7 @@ mAS
 gVZ
 gVZ
 gVZ
-pCm
+dhe
 aUt
 aUt
 lAr
@@ -93364,7 +94531,7 @@ aUt
 aUt
 aUt
 aUt
-pCm
+dhe
 bhp
 vbZ
 vbZ
@@ -93485,10 +94652,10 @@ xiq
 cTE
 hay
 pCm
-piR
-piR
-piR
-piR
+nXZ
+nXZ
+nXZ
+nXZ
 tBE
 cyC
 cTE
@@ -93547,7 +94714,7 @@ mAS
 gVZ
 gVZ
 gVZ
-pCm
+dhe
 aUt
 aUt
 lAr
@@ -93588,7 +94755,7 @@ aUt
 aUt
 aUt
 aUt
-pCm
+dhe
 bhp
 vbZ
 xvJ
@@ -93669,7 +94836,7 @@ nez
 mGF
 xEn
 qaJ
-kgk
+aBc
 kjR
 kjR
 pwC
@@ -93709,10 +94876,10 @@ xiq
 cTE
 hay
 pCm
-piR
-piR
-piR
-piR
+nXZ
+nXZ
+nXZ
+nXZ
 pCm
 cTE
 cTE
@@ -93771,7 +94938,7 @@ mAS
 gVZ
 gVZ
 gVZ
-pCm
+dhe
 aUt
 aUt
 xDO
@@ -93812,7 +94979,7 @@ aUt
 aUt
 aUt
 aUt
-pCm
+dhe
 bhp
 bhp
 bhp
@@ -93900,12 +95067,12 @@ dWf
 xGA
 jat
 jat
-kgk
-kgk
+aBc
+aBc
 jat
-kgk
-lZh
-lZh
+aBc
+aBc
+aBc
 jat
 kjR
 kjR
@@ -93933,10 +95100,10 @@ pCm
 pCm
 pCm
 pCm
-piR
-piR
-piR
-piR
+nXZ
+nXZ
+vZL
+juX
 pCm
 pCm
 npA
@@ -93995,7 +95162,7 @@ mAS
 mBQ
 gVZ
 gVZ
-pCm
+dhe
 aUt
 aUt
 aUt
@@ -94036,7 +95203,7 @@ aUt
 aUt
 aUt
 aUt
-pCm
+dhe
 bhp
 bhp
 vbZ
@@ -94157,10 +95324,10 @@ wgu
 qMb
 pCm
 nva
-piR
-piR
-piR
-piR
+vZL
+juX
+cUE
+kYH
 pCm
 cTE
 cTE
@@ -94219,7 +95386,7 @@ kkq
 jPl
 mBQ
 gVZ
-pCm
+dhe
 aUt
 aUt
 aUt
@@ -94260,7 +95427,7 @@ aUt
 aUt
 aUt
 aUt
-pCm
+dhe
 bhp
 bhp
 vbZ
@@ -94381,10 +95548,10 @@ wgu
 gLw
 pCm
 kBq
-piR
-piR
-piR
-piR
+cUE
+kYH
+kYH
+kYH
 tBE
 cTE
 cTE
@@ -94443,7 +95610,7 @@ gyY
 gBY
 jBx
 mBQ
-pCm
+dhe
 aUt
 aUt
 aUt
@@ -94484,7 +95651,7 @@ siX
 vfm
 aUt
 aUt
-pCm
+dhe
 bhp
 bhp
 vbZ
@@ -94604,11 +95771,11 @@ pCm
 pCm
 pCm
 pCm
-piR
-piR
-piR
-piR
-piR
+eyd
+kYH
+kYH
+kYH
+kYH
 pCm
 nfX
 cTE
@@ -94661,13 +95828,13 @@ mAS
 mAS
 mAS
 mAS
-pCm
+dhe
 vcb
 vcb
 vcb
-pCm
-pCm
-pCm
+dhe
+dhe
+dhe
 aUt
 aUt
 aUt
@@ -94708,7 +95875,7 @@ uFo
 sdL
 aUt
 aUt
-pCm
+dhe
 bhp
 vbZ
 vbZ
@@ -94891,7 +96058,7 @@ sRY
 bhp
 gUi
 bhp
-eff
+dhe
 aUt
 aUt
 aUt
@@ -94932,7 +96099,7 @@ aUt
 aUt
 aUt
 aUt
-pCm
+dhe
 vbZ
 vbZ
 nRr
@@ -95115,7 +96282,7 @@ bhp
 bhp
 xaD
 bhp
-eff
+dhe
 aUt
 aUt
 aUt
@@ -95156,7 +96323,7 @@ aUt
 aUt
 aUt
 aUt
-pCm
+dhe
 bhp
 vbZ
 vbZ
@@ -95339,7 +96506,7 @@ bhp
 bhp
 bhp
 bhp
-eff
+dhe
 aUt
 aUt
 aUt
@@ -95380,7 +96547,7 @@ aUt
 aUt
 aUt
 aUt
-pCm
+dhe
 bhp
 bhp
 vbZ
@@ -95563,48 +96730,48 @@ xaD
 sRY
 bhp
 bhp
-pCm
-eff
-eff
-eff
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
+dhe
+dhe
+dhe
+dhe
+dhe
+dhe
+dhe
+dhe
+dhe
+dhe
+dhe
+dhe
+dhe
 bAZ
 bAZ
 bAZ
 bAZ
 bAZ
-pCm
-pCm
-pCm
-pCm
-pCm
+dhe
+dhe
+dhe
+dhe
+dhe
 bAZ
 bAZ
 bAZ
 bAZ
 bAZ
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
+dhe
+dhe
+dhe
+dhe
+dhe
+dhe
+dhe
+dhe
+dhe
+dhe
+dhe
+dhe
+dhe
+dhe
 bhp
 bhp
 vbZ

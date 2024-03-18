@@ -119,6 +119,9 @@
 /area/lv553/outdoors/lone_buildings/weyyu_hostel
 	name = "Issac's Lament - Weyland-Yutani Hostel Exterior"
 
+/area/lv553/outdoors/lone_buildings/cargo_lz
+	name = "Issac's Lament - Cargo Landing Zone Exterior"
+
 //Indoors
 
 /area/lv553/indoors/bungalow_manager
@@ -334,6 +337,10 @@
 	name = "Power Station - Main Building"
 	icon_state = "outpost_engi_1"
 
+/area/lv553/indoors/corpo_armory
+	name = "Corporate Emergency Armory"
+	icon_state = "rdecks_sec"
+
 /area/lv553/indoors/ss_athens
 	name = "SS Athens - Ship"
 	icon_state = "rdecks"
@@ -465,6 +472,10 @@
 	name = "Issac's Lament - East - Insurance Salesman"
 	icon_state = "shed_4_ag"
 
+/area/lv553/indoors/lone_buildings/flooded
+	name = "Issac's Lament - East - Flooded House"
+	icon_state = "shed_5_ag"
+
 /area/lv553/indoors/lone_buildings/flynns_bar
 	name = "Issac's Lament - North-East - Flynn's Bar"
 	icon_state = "shed_1_ag"
@@ -476,6 +487,10 @@
 /area/lv553/indoors/lone_buildings/weymart
 	name = "Issac's Lament - North-East - Wey-Mart"
 	icon_state = "shed_3_ag"
+
+/area/lv553/indoors/lone_buildings/clf_barracks
+	name = "Issac's Lament - North-East - CLF Barracks"
+	icon_state = "shed_4_ag"
 
 /area/lv553/indoors/lone_buildings/tcomms
 	name = "Issac's Lament - North-East - Telecommunications Tower"

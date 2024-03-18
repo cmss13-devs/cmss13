@@ -900,7 +900,8 @@
 		to_chat(user, SPAN_WARNING("[src] is too far away."))
 		return
 	if(newcolor == "none")
-		if(!holo_card_color) return
+		if(!holo_card_color)
+			return
 		holo_card_color = null
 		to_chat(user, SPAN_NOTICE("You remove the holo card on [src]."))
 	else if(newcolor != holo_card_color)

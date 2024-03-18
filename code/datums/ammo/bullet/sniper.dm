@@ -139,8 +139,8 @@
 			else // If it's a new target
 				amr.focused_fire_counter = 0 // Stacks to 0
 				if(human_firer)
-					human_firer.client?.images -= human_firer?.focused_fire_marker // Remove old marker
-					qdel(human_firer?.focused_fire_marker)
+					human_firer.client?.images -= human_firer.focused_fire_marker // Remove old marker
+					qdel(human_firer.focused_fire_marker)
 					human_firer.focused_fire_marker = focused_fire_marker_temp // Store new marker ref
 					human_firer.client?.images += focused_fire_marker_temp // Add new marker
 
@@ -187,7 +187,7 @@
 				if(1)
 					to_chat(aimed_projectile.firer, SPAN_WARNING("One hit! You begin to carefully track the target's movements."))
 					if(isxeno(target_mob) && isxeno(old_target?.resolve()))
-						var/mob/living/carbon/xenomorph/old_xeno = old_target?.resolve()
+						var/mob/living/carbon/xenomorph/old_xeno = old_target.resolve()
 						var/mob/living/carbon/xenomorph/new_xeno = target_mob
 						if(old_xeno.hive == new_xeno.hive)
 							to_chat(old_xeno,SPAN_XENOLEADER("We sense that the far-spitter host has begun targeting another sister."))

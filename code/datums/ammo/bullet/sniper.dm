@@ -185,14 +185,14 @@
 		if(focused_fire_active)
 			switch(amr_counter)
 				if(1)
-					to_chat(aimed_projectile.firer, SPAN_WARNING("One Hit! You begin to carefully track the target's movements."))
+					to_chat(aimed_projectile.firer, SPAN_WARNING("One hit! You begin to carefully track the target's movements."))
 					if(isxeno(target_mob) && isxeno(old_target?.resolve()))
 						var/mob/living/carbon/xenomorph/old_xeno = old_target?.resolve()
 						var/mob/living/carbon/xenomorph/new_xeno = target_mob
 						if(old_xeno.hive == new_xeno.hive)
 							to_chat(old_xeno,SPAN_XENOLEADER("We sense that the far-spitter host has begun targeting another sister."))
 				if(2)
-					to_chat(aimed_projectile.firer, SPAN_WARNING("Two Hits! You're starting to get a good read on the target's patterns."))
+					to_chat(aimed_projectile.firer, SPAN_WARNING("Two hits! You're starting to get a good read on the target's patterns."))
 				if(3)
 					to_chat(aimed_projectile.firer, SPAN_WARNING("Bullseye! You're fully focused on the target."))
 				else

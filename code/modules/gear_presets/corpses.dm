@@ -61,6 +61,7 @@
 /datum/equipment_preset/corpse/prisoner
 	name = "Corpse - Prisoner"
 	assignment = "Prisoner"
+	xenovictim = TRUE
 
 /datum/equipment_preset/corpse/prisoner/load_gear(mob/living/carbon/human/new_human)
 	add_ice_colony_survivor_equipment(new_human)
@@ -70,15 +71,12 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(new_human), WEAR_FEET)
 
-/datum/equipment_preset/corpse/prisoner/burst
-	name = "Corpse - Burst Prisoner"
-	xenovictim = TRUE
-
 //*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/chef
 	name = "Corpse - Chef"
 	assignment = "Chef"
+	xenovictim = TRUE
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/corpse/chef/load_gear(mob/living/carbon/human/new_human)
@@ -91,16 +89,13 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
 
-/datum/equipment_preset/corpse/chef/burst
-	name = "Corpse - Burst Chef"
-	xenovictim = TRUE
-
 //*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/doctor
 	name = "Corpse - Doctor"
 	assignment = "Doctor"
 	idtype = /obj/item/card/id/silver/clearance_badge
+	xenovictim = TRUE
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY)
 
 /datum/equipment_preset/corpse/doctor/load_gear(mob/living/carbon/human/new_human)
@@ -116,15 +111,12 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/chef/classic/medical(new_human), WEAR_JACKET)
 	add_random_survivor_medical_gear(new_human)
 
-/datum/equipment_preset/corpse/doctor/burst
-	name = "Corpse - Burst Doctor"
-	xenovictim = TRUE
-
 //*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/engineer
 	name = "Corpse - Engineer"
 	assignment = "Engineer"
+	xenovictim = TRUE
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_ENGINEERING)
 
 /datum/equipment_preset/corpse/engineer/load_gear(mob/living/carbon/human/new_human)
@@ -140,17 +132,14 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 
-/datum/equipment_preset/corpse/engineer/burst
-	name = "Corpse - Burst Engineer"
-	xenovictim = TRUE
-
 //*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/scientist
 	name = "Corpse - Scientist"
 	assignment = "Scientist"
 	idtype = /obj/item/card/id/silver/clearance_badge/scientist
-	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY)
+	xenovictim = TRUE
+	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY)
 
 /datum/equipment_preset/corpse/scientist/load_gear(mob/living/carbon/human/new_human)
 	add_ice_colony_survivor_equipment(new_human)
@@ -168,15 +157,12 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector(new_human), WEAR_IN_BACK)
 
-/datum/equipment_preset/corpse/scientist/burst
-	name = "Corpse - Burst Scientist"
-	xenovictim = TRUE
-
 //*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/miner
 	name = "Corpse - Shaft Miner"
 	assignment = "Shaft Miner"
+	xenovictim = TRUE
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_ENGINEERING)
 
 /datum/equipment_preset/corpse/miner/load_gear(mob/living/carbon/human/new_human)
@@ -191,15 +177,12 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat/orange(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 
-/datum/equipment_preset/corpse/miner/burst
-	name = "Corpse - Burst Shaft Miner"
-	xenovictim = TRUE
-
 //*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/security
 	name = "Corpse - Security"
 	assignment = "Security Officer"
+	xenovictim = TRUE
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_COMMAND)
 
 /datum/equipment_preset/corpse/security/load_gear(mob/living/carbon/human/new_human)
@@ -219,10 +202,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
 
-/datum/equipment_preset/corpse/security/burst
-	name = "Corpse - Burst Security Officer"
-	xenovictim = TRUE
-
 //*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/security/cmb
@@ -230,6 +209,7 @@
 	rank = JOB_CMB
 	paygrade = PAY_SHORT_CMBD
 	idtype = /obj/item/card/id/deputy
+	xenovictim = TRUE
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_LOGISTICS,
@@ -255,10 +235,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 	. = ..()
 
-/datum/equipment_preset/corpse/security/cmb/burst
-	name = "Corpse - Burst Colonial Marshal Deputy"
-	xenovictim = TRUE
-
 //*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/liaison
@@ -268,7 +244,10 @@
 	faction_group = FACTION_LIST_WY
 	paygrade = PAY_SHORT_WYC3
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
+	xenovictim = TRUE
 	access = list(
+		ACCESS_WY_COLONIAL,
+		ACCESS_WY_EXEC,
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_LOGISTICS,
 		ACCESS_CIVILIAN_ENGINEERING,
@@ -305,15 +284,12 @@
 
 	. = ..()
 
-/datum/equipment_preset/corpse/liaison/burst
-	name = "Corpse - Burst Corporate Liaison"
-	xenovictim = TRUE
-
 //*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/prison_guard
 	name = "Corpse - Prison Guard"
 	assignment = "Prison Guard"
+	xenovictim = TRUE
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_LOGISTICS,
@@ -324,7 +300,7 @@
 		ACCESS_CIVILIAN_COMMAND,
 	)
 
-/datum/equipment_preset/corpse/prison_security/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/corpse/prison_guard/load_gear(mob/living/carbon/human/new_human)
 	add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/security(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
@@ -335,18 +311,25 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
 
-/datum/equipment_preset/corpse/prison_guard/burst
-	name = "Corpse - Burst Prison Guard"
-	xenovictim = TRUE
-
 //*****************************************************************************************************/
 								/////////////////Officers//////////////////////
 
-/datum/equipment_preset/corpse/bridgeofficer
-	name = "Corpse - Staff Officer"
-	idtype = /obj/item/card/id/general
-	assignment = "Staff Officer"
+/datum/equipment_preset/corpse/manager
+	name = "Corpse - Colony Division Manager"
+	assignment = "Colonial Division Manager"
+	rank = JOB_DIVISION_MANAGER
+	faction_group = FACTION_LIST_WY
+	paygrade = PAY_SHORT_WYC8
+	xenovictim = TRUE
 	access = list(
+		ACCESS_WY_GENERAL,
+		ACCESS_WY_COLONIAL,
+		ACCESS_WY_MEDICAL,
+		ACCESS_WY_SECURITY,
+		ACCESS_WY_ENGINEERING,
+		ACCESS_WY_FLIGHT,
+		ACCESS_WY_RESEARCH,
+		ACCESS_WY_EXEC,
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_LOGISTICS,
 		ACCESS_CIVILIAN_ENGINEERING,
@@ -356,9 +339,11 @@
 		ACCESS_CIVILIAN_COMMAND,
 	)
 
-/datum/equipment_preset/corpse/bridgeofficer/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/corpse/manager/load_gear(mob/living/carbon/human/new_human)
 	add_ice_colony_survivor_equipment(new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/centcom_officer(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/ivy(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/bulletproof(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
@@ -367,7 +352,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/administrator
-	name = "Corpse - Administrator"
+	name = "Corpse - Colony Administrator"
 	assignment = "Colonial Administrator"
 	rank = JOB_DIRECTOR
 	faction_group = FACTION_LIST_WY
@@ -411,6 +396,10 @@
 	new_human.equip_to_slot_or_del(new /obj/item/tool/lighter/zippo/executive(new_human), WEAR_R_STORE)
 	add_random_cl_survivor_loot(new_human)
 
+/datum/equipment_preset/corpse/administrator/burst
+	name = "Corpse - Burst Colony Administrator"
+	xenovictim = TRUE
+
 //*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/wysec
@@ -438,10 +427,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/security(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
-
-/datum/equipment_preset/corpse/wysec/burst
-	name = "Corpse - Burst Weyland-Yutani Corporate Security Guard"
-	xenovictim = TRUE
 
 //*****************************************************************************************************/
 
@@ -729,10 +714,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88_near_empty, WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_R_STORE)
-
-/datum/equipment_preset/corpse/pmc/goon/burst
-	name = "Corpse - Burst Weyland-Yutani Corporate (Goon)"
-	xenovictim = TRUE
 
 //*****************************************************************************************************/
 

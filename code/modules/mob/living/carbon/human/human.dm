@@ -894,12 +894,14 @@
 		to_chat(user, SPAN_WARNING("Triage holocards only works on humans."))
 		return
 	var/newcolor = tgui_input_list(user, "Choose a triage holo card to add to the patient:", "Triage holo card", list("black", "red", "orange", "purple", "none"))
-	if(!newcolor) return
+	if(!newcolor)
+		return
 	if(get_dist(user, src) > 7)
 		to_chat(user, SPAN_WARNING("[src] is too far away."))
 		return
 	if(newcolor == "none")
-		if(!holo_card_color) return
+		if(!holo_card_color)
+			return
 		holo_card_color = null
 		to_chat(user, SPAN_NOTICE("You remove the holo card on [src]."))
 	else if(newcolor != holo_card_color)

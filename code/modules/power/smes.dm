@@ -281,14 +281,13 @@
 // TGUI STUFF \\
 
 /obj/structure/machinery/power/smes/ui_status(mob/user)
-	if(!(stat & BROKEN) && !open_hatch)
-		. = UI_INTERACTIVE
-
-/obj/structure/machinery/power/smes/ui_state(mob/user)
+	. = ..()
 	if(stat & BROKEN)
 		return UI_CLOSE
 	if(open_hatch)
 		return UI_DISABLED
+
+/obj/structure/machinery/power/smes/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_state
 
 /obj/structure/machinery/power/smes/tgui_interact(mob/user, datum/tgui/ui)

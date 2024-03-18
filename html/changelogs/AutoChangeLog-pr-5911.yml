@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fix chestrig not displaying on maps with different skins (e.g. Shivas)"

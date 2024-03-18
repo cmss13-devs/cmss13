@@ -82,17 +82,8 @@ GLOBAL_LIST_EMPTY(dummy_mob_list)
 	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_TUTORIAL)
 	anchored = TRUE
 
-// Professor Dummy, used by CMOs and SEAs to teach new nurses/doctors
-/mob/living/carbon/human/dummy/professor_dummy/Initialize(mapload)
+/// Professor Dummy, used by CMOs and SEAs to teach new nurses/doctors
+/mob/living/carbon/human/professor_dummy/Initialize()
 	. = ..()
-	RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_LANDED, PROC_REF(destroy_upon_hijack))
-
-/mob/living/carbon/human/dummy/professor_dummy/proc/destroy_upon_hijack()
-	SIGNAL_HANDLER
-
-	visible_message(SPAN_WARNING("The [src] suddenly disintegrates!"))
-	dust(create_cause_data("hijack autodelete"))
-
-/mob/living/carbon/human/dummy/professor_dummy/Destroy()
-	UnregisterSignal(src, COMSIG_GLOB_HIJACK_LANDED)
-	return ..()
+	create_hud()
+	arm_equipment(src, /datum/equipment_preset/other/professor_dummy)

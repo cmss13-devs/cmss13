@@ -24103,11 +24103,13 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/camera_film{
 	pixel_x = 4;
-	pixel_y = -2
+	pixel_y = 1;
+	layer = 3.03
 	},
 /obj/item/stack/sheet/cardboard/small_stack{
-	pixel_x = -6;
-	pixel_y = 9
+	pixel_x = -5;
+	pixel_y = 3;
+	layer = 3.02
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie_delta_shared)
@@ -26169,8 +26171,9 @@
 	pixel_x = 8
 	},
 /obj/item/stack/sheet/cardboard/small_stack{
-	pixel_y = -3;
-	pixel_x = -8
+	pixel_y = 2;
+	pixel_x = -3;
+	layer = 3.01
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha_bravo_shared)
@@ -67460,7 +67463,7 @@
 	pixel_y = 9
 	},
 /obj/item/stack/sheet/cardboard/small_stack{
-	pixel_y = -6
+	layer = 3.01
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie_delta_shared)
@@ -72063,12 +72066,13 @@
 	desc = "A large handheld tool used to override various machine functions. Primarily used to pulse Airlock and APC wires on a shortwave frequency. It contains a small data buffer as well. This one is comically oversized. Made in Texas.";
 	icon_state = "multitool_big";
 	name = "\improper Oversized Security Access Tuner";
-	pixel_y = 16;
-	pixel_x = 10
+	pixel_y = 11;
+	pixel_x = 4
 	},
 /obj/item/stack/sheet/cardboard/medium_stack{
 	pixel_y = -6;
-	pixel_x = -7
+	pixel_x = -7;
+	layer = 3.01
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha_bravo_shared)

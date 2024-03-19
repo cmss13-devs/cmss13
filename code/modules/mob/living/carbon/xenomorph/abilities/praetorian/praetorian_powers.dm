@@ -844,8 +844,6 @@
 		if (!behavior.use_internal_hp_ability(bonus_heal))
 			bonus_heal = 0
 
-
-
 		to_chat(X, SPAN_XENODANGER("We heal [targetXeno]!"))
 		to_chat(targetXeno, SPAN_XENOHIGHDANGER("We are healed by [X]!"))
 		//Amount to heal in this cast of the ability

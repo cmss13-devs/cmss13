@@ -83,5 +83,5 @@
 		if(mob.client && mob.client.admin_holder && (mob.client.admin_holder.rights & R_MOD) && mob.client.prefs && (mob.client.prefs.toggles_chat & CHAT_DEAD)) // show the message to admins who have deadchat toggled on
 			mob.show_message(message, SHOW_MESSAGE_AUDIBLE)
 
-		else if((mob.stat == DEAD || isobserver(M)) && M && mob.client && mob.client.prefs && (mob.client.prefs.toggles_chat & CHAT_DEAD)) // show the message to regular ghosts who have deadchat toggled on
+		else if((mob.stat == DEAD || isobserver(mob)) && mob && mob.client && mob.client.prefs && (mob.client.prefs.toggles_chat & CHAT_DEAD)) // show the message to regular ghosts who have deadchat toggled on
 			mob.show_message(message, SHOW_MESSAGE_AUDIBLE)

@@ -1,4 +1,0 @@
-author: "Waseemq1235"
-delete-after: True
-changes:
-  - rscdel: "Removes HEAP from all UPP vendor gear presets"

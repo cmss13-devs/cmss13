@@ -211,3 +211,22 @@
   - maptweak: Placed APC's on ert stations and minor tweaks+fixes.
   Segrain:
   - bugfix: Professor Dummy in CMO's office now works properly.
+2024-03-19:
+  567Turtle:
+  - rscadd: PO has been split into two roles, the gunship pilot and the dropship pilot,
+      no more arguing over who gets CAS.
+  Drathek:
+  - bugfix: Overdose death messages will now mention last mob that contributed to
+      the OD
+  - admin: Many additions to attack, say, interact, and niche logging
+  - admin: Temporary muted messages/actions are now niche logged instead of say logged
+  - ui: Added niche log filtering to TGChat (still requires admin niche logs preference)
+  SabreML:
+  - admin: Made the 'Join as Xeno' button disable the user's larva protection when
+      clicked by a moderator.
+  TheGamerdk:
+  - bugfix: Synths can now have their heads reattached without being sent to limbo-crit-hell.
+  TotalEpicness5:
+  - bugfix: Stamina damage can now be ahealed.
+  Waseemq1235:
+  - rscdel: Removes HEAP from all UPP vendor gear presets

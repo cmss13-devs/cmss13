@@ -1,7 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Overdose death messages will now mention last mob that contributed to the OD"
-  - admin: "Many additions to attack, say, interact, and niche logging"
-  - admin: "Temporary muted messages/actions are now niche logged instead of say logged"
-  - ui: "Added niche log filtering to TGChat (still requires admin niche logs preference)"

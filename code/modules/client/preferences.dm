@@ -652,12 +652,12 @@ GLOBAL_LIST_INIT(bgstate_options, list(
  * Job Preferences: Preferences for role at round start.
  *
  * Arguments:
- * * limit - The amount of jobs allowed per column. Defaults to 19 to make it look nice.
- * * splitJobs - Allows you split the table by job. You can make different tables for each department by including their heads. Defaults to MS to make it look nice.
- * * width - Screen' width. Defaults to 950 to make it look nice.
- * * height - Screen's height. Defaults to 700 to make it look nice.
+ * * limit - The amount of jobs allowed per column.
+ * * splitJobs - Allows you split the table by job. You can make different tables for each department by including their heads.
+ * * width - Screen' width.
+ * * height - Screen's height.
  */
-/datum/preferences/proc/SetChoices(mob/user, limit = 19, list/splitJobs = list(JOB_MESS_SERGEANT), width = 950, height = 700)
+/datum/preferences/proc/SetChoices(mob/user, limit = 20, list/splitJobs = list(JOB_CHIEF_REQUISITION, JOB_WO_CMO), width = 950, height = 750)
 	if(!GLOB.RoleAuthority)
 		return
 
@@ -770,12 +770,12 @@ GLOBAL_LIST_INIT(bgstate_options, list(
  * Job Assignments window: Assign unique characters to a particular job.
  *
  * Arguments:
- * * limit - The amount of jobs allowed per column. Defaults to 19 to make it look nice.
- * * splitJobs - Allows you split the table by job. You can make different tables for each department by including their heads. Defaults to MS to make it look nice.
- * * width - Screen' width. Defaults to 950 to make it look nice.
- * * height - Screen's height. Defaults to 700 to make it look nice.
+ * * limit - The amount of jobs allowed per column.
+ * * splitJobs - Allows you split the table by job. You can make different tables for each department by including their heads.
+ * * width - Screen' width.
+ * * height - Screen's height.
  */
-/datum/preferences/proc/set_job_slots(mob/user, limit = 19, list/splitJobs = list(JOB_MESS_SERGEANT), width = 950, height = 700)
+/datum/preferences/proc/set_job_slots(mob/user, limit = 20, list/splitJobs = list(JOB_CHIEF_REQUISITION, JOB_WO_CMO), width = 950, height = 750)
 	if(!GLOB.RoleAuthority)
 		return
 

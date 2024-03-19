@@ -847,7 +847,7 @@
 		to_chat(X, SPAN_XENODANGER("We heal [targetXeno]!"))
 		to_chat(targetXeno, SPAN_XENOHIGHDANGER("We are healed by [X]!"))
 		//Amount to heal in this cast of the ability
-		var/quantity_healed =  heal_amount
+		var/quantity_healed = heal_amount
 		if(istype(targetXeno.strain, /datum/xeno_strain/warden))
 			// Half the healing if warden
 			quantity_healed = quantity_healed / 2

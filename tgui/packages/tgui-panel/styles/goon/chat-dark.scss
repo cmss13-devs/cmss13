@@ -301,10 +301,6 @@ em {
 .warningplain {
 }
 
-.deadsay {
-  color: #e2c1ff;
-}
-
 .binarysay {
   color: #1e90ff;
 }
@@ -1391,6 +1387,12 @@ em {
 
 .deadsay {
   color: #8b4dff;
+}
+
+.dooc {
+  color: #8b4dff;
+  font-weight: bold;
+  font-size: 120%;
 }
 
 .retro_translator {

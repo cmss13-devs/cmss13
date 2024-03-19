@@ -28,6 +28,7 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/client/proc/set_explosive_antigrief,
 	/client/proc/check_explosive_antigrief,
 	/client/proc/dsay,
+	/client/proc/dooc,
 	/client/proc/chem_panel, /*chem panel, allows viewing, editing and creation of reagent and chemical_reaction datums*/
 	/client/proc/player_panel_new, /*shows an interface for all players, with links to various panels*/
 	/client/proc/cmd_admin_pm_context, /*right-click adminPM interface*/

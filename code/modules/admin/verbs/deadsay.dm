@@ -28,17 +28,9 @@
 	if (!msg)
 		return
 
-	var/rendered = "<span class='game deadsay'><span class='prefix'>DEAD:</span> <span class='name'>[stafftype]([src.key])</span> says, <span class='message'>\"[msg]\"</span></span>"
+	var/rendered = "<span class='game deadsay'><span class='prefix'>DEAD:</span> <span class='name'>[stafftype] ([src.key])</span> says, <span class='message'>\"[msg]\"</span></span>"
 
-	for (var/mob/M in GLOB.player_list)
-		if (istype(M, /mob/new_player))
-			continue
-
-		if(M.client && M.client.admin_holder && (M.client.admin_holder.rights & R_MOD) && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_DEAD)) // show the message to admins who have deadchat toggled on
-			M.show_message(rendered, SHOW_MESSAGE_AUDIBLE)
-
-		else if((M.stat == DEAD || isobserver(M)) && M && M.client && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_DEAD)) // show the message to regular ghosts who have deadchat toggled on
-			M.show_message(rendered, SHOW_MESSAGE_AUDIBLE)
+	show_to_deadsay(rendered)
 
 /client/proc/get_dead_say()
 	var/msg = input(src, null, "dsay \"text\"") as text|null
@@ -47,3 +39,49 @@
 		return
 
 	dsay(msg)
+
+///Dsay but larger
+/client/proc/dooc(msg as text)
+	set category = "Admin.Events"
+	set name = "Dooc"
+	set hidden = TRUE
+	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
+		to_chat(src, "Only administrators may use this command.")
+		return
+	if(!src.mob)
+		return
+	if(prefs.muted & MUTE_DEADCHAT)
+		to_chat(src, SPAN_DANGER("You cannot send DOOC messages (muted)."))
+		return
+
+	if(!(prefs.toggles_chat & CHAT_DEAD))
+		to_chat(src, SPAN_DANGER("You have deadchat muted."))
+		return
+
+	if (src.handle_spam_prevention(msg,MUTE_DEADCHAT))
+		return
+
+	var/stafftype = null
+
+	stafftype = "[admin_holder.rank]"
+
+	msg = strip_html(msg)
+	log_admin("DEAD: [key_name(src)] : [msg]")
+
+	if (!msg)
+		return
+
+	var/rendered = "<span class='dooc'><span class='prefix'>DEAD:</span> <span class='name'>[stafftype] ([src.key])</span> says, <span class='message'>\"[msg]\"</span></span>"
+
+	show_to_deadsay(rendered)
+
+/client/proc/show_to_deadsay(message)
+	for (var/mob/M in GLOB.player_list)
+		if (istype(M, /mob/new_player))
+			continue
+
+		if(M.client && M.client.admin_holder && (M.client.admin_holder.rights & R_MOD) && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_DEAD)) // show the message to admins who have deadchat toggled on
+			M.show_message(message, SHOW_MESSAGE_AUDIBLE)
+
+		else if((M.stat == DEAD || isobserver(M)) && M && M.client && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_DEAD)) // show the message to regular ghosts who have deadchat toggled on
+			M.show_message(message, SHOW_MESSAGE_AUDIBLE)

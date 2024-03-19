@@ -6,7 +6,7 @@
 	ability_name = "rend"
 	macro_path = /datum/action_xeno_action/verb/verb_rend
 	xeno_cooldown = 2.5 SECONDS
-	plasma cost = 50
+	plasma_cost = 50
 	ability_primacy = XENO_PRIMARY_ACTION_1
 
 	var/damage = 25
@@ -20,7 +20,7 @@
 	ability_name = "doom"
 	macro_path = /datum/action_xeno_action/verb/verb_doom
 	xeno_cooldown = 2.5 SECONDS //90 SECONDS?
-	plasma cost = 50
+	plasma_cost = 50
 	ability_primacy = XENO_PRIMARY_ACTION_2
 
 	var/daze_length_seconds = 1

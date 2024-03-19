@@ -133,6 +133,12 @@
 	html_link = "images/9/94/New_Varadero.png"
 	color = "red"
 
+/obj/item/map/isaacs_lament_map
+	name = "\improper Isaac's Lament map"
+	desc = "An old map provided by Weyland-Yutani for the colony of Isaac's Lament on LV-533"
+	html_link = "images/9/94/New_Varadero.png"
+	color = "grey"
+
 GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 
 /proc/setup_all_maps()
@@ -149,7 +155,8 @@ GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 		MAP_CORSAT = new /obj/item/map/corsat(),
 		MAP_KUTJEVO = new /obj/item/map/kutjevo_map(),
 		MAP_LV522_CHANCES_CLAIM = new /obj/item/map/lv522_map(),
-		MAP_NEW_VARADERO = new /obj/item/map/new_varadero()
+		MAP_NEW_VARADERO = new /obj/item/map/new_varadero(),
+		MAP_ISAACS_LAMENT = new /obj/item/map/isaacs_lament_map()
 	)
 
 //used by marine equipment machines to spawn the correct map.

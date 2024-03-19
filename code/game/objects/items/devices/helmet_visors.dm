@@ -238,6 +238,7 @@
 		on_light = new(attached_helmet)
 		on_light.set_light_on(TRUE)
 	START_PROCESSING(SSobj, src)
+	RegisterSignal(user, COMSIG_MOB_CHANGE_VIEW, PROC_REF(change_view))
 
 /obj/item/device/helmet_visor/night_vision/deactivate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
 	user.remove_client_color_matrix("nvg_visor", 1 SECONDS)
@@ -247,6 +248,7 @@
 	if(visor_glows)
 		qdel(on_light)
 	UnregisterSignal(user, COMSIG_HUMAN_POST_UPDATE_SIGHT)
+	UnregisterSignal(user, COMSIG_MOB_CHANGE_VIEW)
 
 	user.update_sight()
 	STOP_PROCESSING(SSobj, src)
@@ -289,6 +291,12 @@
 		user.see_in_dark = 12
 	user.lighting_alpha = lighting_alpha
 	user.sync_lighting_plane_alpha()
+
+/obj/item/device/helmet_visor/night_vision/proc/change_view(mob/user, new_size)
+	SIGNAL_HANDLER
+	if(new_size > 7) // cannot use binos with NVO
+		var/obj/item/clothing/head/helmet/marine/attached_helmet = loc
+		deactivate_visor(attached_helmet, user)
 
 #undef NVG_VISOR_USAGE
 

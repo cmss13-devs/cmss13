@@ -658,3 +658,6 @@
 		S.time_to_live = lifetime
 	if(S.amount)
 		S.spread_smoke(direction)
+
+/datum/effect_system/smoke_spread/destroyer_doom
+	smoke_type = /obj/effect/particle_effect/smoke

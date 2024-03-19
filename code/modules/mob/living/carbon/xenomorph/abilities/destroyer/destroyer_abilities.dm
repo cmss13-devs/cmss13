@@ -50,9 +50,10 @@
 	ability_name = "legion_shield"
 	macro_path = /datum/action_xeno_action/verb/destroyer_shield
 	action_type = XENO_ACTION_ACTIVATE
-	xeno_cooldown = 1.5 SECONDS /// 180 SECONDS
+	xeno_cooldown = 180 SECONDS
 	plasma_cost = 0
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
+	var/shield_duration = 10 SECONDS
 	var/area_of_effect = 6
 	var/shield_amount = 200

@@ -1,0 +1,7 @@
+author: "Katskan"
+delete-after: True
+changes:
+  - rscadd: "Added some new uniforms and hats"
+  - rscadd: "Added blood packs to vendor for 5 points, equal to a pill bottle"
+  - rscadd: "Added tactical prybar to vendor for 5 points"
+  - rscadd: "Added some surgical tools, very expensive costs essentially your entire point budget to buy"

@@ -301,7 +301,7 @@
 	if(new_size > 7) // cannot use binos with NVO
 		var/obj/item/clothing/head/helmet/marine/attached_helmet = loc
 		if(istype(attached_helmet))
-			attached_helmet.turn_off_visors(user)
+			attached_helmet.toggle_visor(user)
 
 #undef NVG_VISOR_USAGE
 

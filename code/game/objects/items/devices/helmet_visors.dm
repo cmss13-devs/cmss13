@@ -302,7 +302,7 @@
 		var/obj/item/clothing/head/helmet/marine/attached_helmet = loc
 		if(!istype(attached_helmet))
 			return
-		deactivate_visor()
+		deactivate_visor(attached_helmet, user)
 		to_chat(user, SPAN_NOTICE("You deactivate [src] on [attached_helmet]."))
 		playsound_client(user.client, toggle_off_sound, null, 75)
 		attached_helmet.active_visor = null

@@ -138,7 +138,7 @@
 					amr.focused_fire_counter = 2
 			else // If it's a new target
 				amr.focused_fire_counter = 0 // Stacks to 0
-				if(human_firer)
+				if(human_firer && !(target_mob.is_dead()))
 					human_firer.client?.images -= human_firer.focused_fire_marker // Remove old marker
 					qdel(human_firer.focused_fire_marker)
 					human_firer.focused_fire_marker = focused_fire_marker_temp // Store new marker ref
@@ -182,7 +182,7 @@
 		// Base 1.8x damage to non-xeno targets (225), 1.6x + 10% current against Runners and Defenders (223), 1.6x + 20% current health against most non-Runner xenos, and +30% current health against Big xenos. -Kaga
 		// This applies after pen reductions. After hitting 1 other thing, it deals 80% damage, or 40% after hitting a dense wall or big xeno.
 
-		if(focused_fire_active)
+		if(focused_fire_active && !(target_mob.is_dead()))
 			switch(amr_counter)
 				if(1)
 					to_chat(aimed_projectile.firer, SPAN_WARNING("One hit! You begin to carefully track the target's movements."))
@@ -190,7 +190,7 @@
 						var/mob/living/carbon/xenomorph/old_xeno = old_target.resolve()
 						var/mob/living/carbon/xenomorph/new_xeno = target_mob
 						if(old_xeno.hive == new_xeno.hive)
-							to_chat(old_xeno,SPAN_XENOLEADER("We sense that the far-spitter host has begun targeting another sister."))
+							to_chat(old_xeno,SPAN_XENOLEADER("We sense that the far-spitter host is targeting another sister."))
 				if(2)
 					to_chat(aimed_projectile.firer, SPAN_WARNING("Two hits! You're starting to get a good read on the target's patterns."))
 				if(3)

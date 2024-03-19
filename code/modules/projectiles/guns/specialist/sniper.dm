@@ -377,7 +377,7 @@
 
 /obj/item/weapon/gun/rifle/sniper/XM43E1/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_SNIPER * 2)//Big boy damage, but it takes a lot of time to fire a shot.
+	set_fire_delay(FIRE_DELAY_TIER_AMR)//Big boy damage, but it takes a lot of time to fire a shot.
 	//Kaga: Fixed back to half the M42A's firerate (3 seconds), using a new define.
 	//This outright deals less DPS than the normal sniper rifle, 125 vs 140 per 3s.
 	set_burst_amount(BURST_AMOUNT_TIER_1)

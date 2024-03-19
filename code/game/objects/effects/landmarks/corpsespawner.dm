@@ -68,7 +68,7 @@
 	name = "Colony Administrator"
 	equip_path = /datum/equipment_preset/corpse/administrator
 
-/obj/effect/landmark/corpsespawner/administrator
+/obj/effect/landmark/corpsespawner/administrator/burst
 	name = "Burst Colony Administrator"
 	equip_path = /datum/equipment_preset/corpse/administrator/burst
 

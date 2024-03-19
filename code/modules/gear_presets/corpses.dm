@@ -61,7 +61,6 @@
 /datum/equipment_preset/corpse/prisoner
 	name = "Corpse - Prisoner"
 	assignment = "Prisoner"
-	xenovictim = TRUE
 
 /datum/equipment_preset/corpse/prisoner/load_gear(mob/living/carbon/human/new_human)
 	add_ice_colony_survivor_equipment(new_human)
@@ -76,7 +75,6 @@
 /datum/equipment_preset/corpse/chef
 	name = "Corpse - Chef"
 	assignment = "Chef"
-	xenovictim = TRUE
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/corpse/chef/load_gear(mob/living/carbon/human/new_human)
@@ -289,7 +287,6 @@
 /datum/equipment_preset/corpse/prison_guard
 	name = "Corpse - Prison Guard"
 	assignment = "Prison Guard"
-	xenovictim = TRUE
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_LOGISTICS,
@@ -320,7 +317,6 @@
 	rank = JOB_DIVISION_MANAGER
 	faction_group = FACTION_LIST_WY
 	paygrade = PAY_SHORT_WYC8
-	xenovictim = TRUE
 	access = list(
 		ACCESS_WY_GENERAL,
 		ACCESS_WY_COLONIAL,

@@ -846,7 +846,7 @@
 
 
 
-		to_chat(X, SPAN_XENODANGER("We heal [targetXeno]!"))
+		to_chat(X, SPAN_XENOHIGHDANGER("We heal [targetXeno]!"))
 		to_chat(targetXeno, SPAN_XENOHIGHDANGER("We are healed by [X]!"))
 		//Amount to heal in this cast of the ability
 		var/quantity_healed =  heal_amount
@@ -876,7 +876,7 @@
 		if (!behavior.use_internal_hp_ability(debuff_cost))
 			return
 
-		to_chat(X, SPAN_XENODANGER("We rejuvenate [targetXeno]!"))
+		to_chat(X, SPAN_XENOHIGHDANGER("We rejuvenate [targetXeno]!"))
 		to_chat(targetXeno, SPAN_XENOHIGHDANGER("We are rejuvenated by [X]!"))
 		targetXeno.visible_message(SPAN_BOLDNOTICE("[X] points at [targetXeno], and it spasms as it recuperates unnaturally quickly!")) //marines probably should know if a xeno gets rejuvenated
 		targetXeno.xeno_jitter(1 SECONDS) //it might confuse them as to why the queen got up half a second after being AT rocketed, and give them feedback on the Praetorian rejuvenating

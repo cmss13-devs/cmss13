@@ -1,17 +1,15 @@
 /*
 * TO ADD
 *
-* CAN NOT HARM CHECKS / DEAD CHECKS?
-* PLASMA CHECKS
-* STATUS CHECKS
-* LOGS
-* EARLY RETURNS?
-* ATTACK VISUALS FOR ALL ABILITIES
-* SOUNDS FOR ALL ABILITIES
-* LAST DAMAGE DATA = cause_data
+* CAN NOT HARM CHECKS / DEAD CHECKS? X
+* PLASMA CHECKS X
+* STATUS CHECKS X
+* LOGS X
+* EARLY RETURNS? X
+* ATTACK VISUALS FOR ALL ABILITIES X
+* SOUNDS FOR ALL ABILITIES X
+* LAST DAMAGE DATA = cause_data X
 */
-
-
 
 /*
 	REND ABILITY
@@ -31,6 +29,7 @@
 		if(xeno.can_not_harm(carbon))
 			continue
 		carbon.apply_armoured_damage(damage)
+		carbon.last_damage_data = create_cause_data(initial(xeno.name), xeno)
 		xeno.flick_attack_overlay(carbon, "slash")
 		to_chat(carbon, SPAN_DANGER("[xeno] slices into you with its razor sharp talons."))
 		log_attack("[key_name(xeno)] hit [key_name(carbon)] with [name]")
@@ -54,7 +53,11 @@
 
 	playsound(xeno.loc, 'sound/voice/deep_alien_screech2.ogg', 75, 0, status = 0)
 	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits an raspy guttural roar!"))
-	xeno.create_shriekwave(color = COLOR_RED) //Adds the visual effect. Wom wom wom
+	xeno.create_shriekwave(color = COLOR_RED) //Adds the visual effect.
+
+	var/datum/effect_system/smoke_spread/destroyer_doom/smoke_gas = new /datum/effect_system/smoke_spread/destroyer_doom
+	smoke_gas.set_up(3, 0, get_turf(xeno), null, 6)
+	smoke_gas.start()
 
 	// Turn off lights for items in the area dependant on distance.
 	for(var/obj/item/device/potential_lightsource in orange(extinguish_light_range, owner))
@@ -120,15 +123,17 @@
 	apply_cooldown()
 	return ..()
 
+/datum/action/xeno_action/onclick/destroyer_shield/proc/start_shield(mob/living/carbon/xenomorph/xeno)
+	var/datum/xeno_shield/shield = xeno.add_xeno_shield(shield_amount, XENO_SHIELD_SOURCE_DESTROYER_BULWARKSPELL, /datum/xeno_shield/destroyer_shield)
+	if(shield)
+		xeno.create_shield(shield_duration, "purple_animated_shield_full")
+
+
 /*
 	DESTROY ABILITY
 	Destroyer leaps into the air and crashes down damaging cades and mobs in a 3x3 area centred on him.
 	Long cooldown high damage ability, massive damage against cades, highly telegraphed.
 */
-
-/datum/action/xeno_action/onclick/destroyer_shield/proc/start_shield(mob/living/carbon/xenomorph/xeno)
-	var/datum/xeno_shield/shield = xeno.add_xeno_shield(600, XENO_SHIELD_SOURCE_DESTROYER_LEGIONSPELL, /datum/xeno_shield/destroyer_shield)
-	xeno.create_shield(shield.duration, "purple_animated_shield_full")
 
 #define LEAP_HEIGHT 210 //how high up leaps go, in pixels
 #define LEAP_DIRECTION_CHANGE_RANGE 5 //the range our x has to be within to not change the direction we slam from
@@ -237,19 +242,15 @@
 		if(ISINRANGE(owner.x, initial_x - LEAP_DIRECTION_CHANGE_RANGE, initial_x - 1))
 			negative = TRUE
 
-	//Visuals
 	new /obj/effect/temp_visual/destroyer_leap/end(owner.loc, negative, owner.dir)
-
 
 	SLEEP_CHECK_DEATH(descentTime, owner)
 	animate(owner, alpha = 255, transform = oldtransform, descentTime)
 	owner.mouse_opacity = initial(owner.mouse_opacity)
-	//Sounds
 	playsound(owner.loc, 'sound/effects/meteorimpact.ogg', 200, TRUE)
 
-	/// BIRDTALON: MAKE THIS A FOR?
+	/// Effects for landing
 	new /obj/effect/temp_visual/heavy_impact(owner.loc)
-
 	for(var/step in CARDINAL_ALL_DIRS)
 		new /obj/effect/temp_visual/heavy_impact(get_step(owner.loc, step))
 
@@ -261,6 +262,8 @@
 			continue
 		carbon.adjustBruteLoss(75)
 		if(!QDELETED(carbon)) // Some mobs are deleted on death
+			log_attack("[key_name(xeno)] hit [key_name(carbon)] with [name]")
+			carbon.last_damage_data = create_cause_data(initial(xeno.name), xeno)
 			var/throw_dir = get_dir(owner, carbon)
 			if(carbon.loc == owner.loc)
 				throw_dir = pick(GLOB.alldirs)
@@ -280,19 +283,7 @@
 
 	for(var/obj/structure/structure in orange(1, owner))
 		structure.ex_act(300, get_dir(owner, structure))
-	/*
-	// Break windows in the aoe
 
-	for(var/obj/structure/window/window in range(1, owner))
-		window.shatter_window(create_debris = TRUE)
-		playsound(src, "windowshatter", 50, 1)
-
-
-	// Barricades suffer heavy damage
-	for(var/obj/structure/barricade/cade in orange(2, owner))
-		cade.take_damage(250)
-	*/
-	// Shake the camera of any mobs in the vicinity
 	for(var/mob/living in range(7, owner))
 		shake_camera(living, 15, 1)
 

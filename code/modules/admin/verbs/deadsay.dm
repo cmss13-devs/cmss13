@@ -45,10 +45,10 @@
 	set category = "Admin.Events"
 	set name = "Dooc"
 	set hidden = TRUE
-	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
+		to_chat(src, SPAN_DANGER("Only administrators may use this command."))
 		return
-	if(!src.mob)
+	if(!mob)
 		return
 	if(prefs.muted & MUTE_DEADCHAT)
 		to_chat(src, SPAN_DANGER("You cannot send DOOC messages (muted)."))
@@ -58,7 +58,7 @@
 		to_chat(src, SPAN_DANGER("You have deadchat muted."))
 		return
 
-	if (src.handle_spam_prevention(msg,MUTE_DEADCHAT))
+	if (handle_spam_prevention(msg, MUTE_DEADCHAT))
 		return
 
 	var/stafftype = null
@@ -76,12 +76,12 @@
 	show_to_deadsay(rendered)
 
 /client/proc/show_to_deadsay(message)
-	for (var/mob/M in GLOB.player_list)
-		if (istype(M, /mob/new_player))
+	for (var/mob/mob in GLOB.observer_list)
+		if (istype(mob, /mob/new_player))
 			continue
 
-		if(M.client && M.client.admin_holder && (M.client.admin_holder.rights & R_MOD) && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_DEAD)) // show the message to admins who have deadchat toggled on
-			M.show_message(message, SHOW_MESSAGE_AUDIBLE)
+		if(mob.client && mob.client.admin_holder && (mob.client.admin_holder.rights & R_MOD) && mob.client.prefs && (mob.client.prefs.toggles_chat & CHAT_DEAD)) // show the message to admins who have deadchat toggled on
+			mob.show_message(message, SHOW_MESSAGE_AUDIBLE)
 
-		else if((M.stat == DEAD || isobserver(M)) && M && M.client && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_DEAD)) // show the message to regular ghosts who have deadchat toggled on
-			M.show_message(message, SHOW_MESSAGE_AUDIBLE)
+		else if((mob.stat == DEAD || isobserver(M)) && M && mob.client && mob.client.prefs && (mob.client.prefs.toggles_chat & CHAT_DEAD)) // show the message to regular ghosts who have deadchat toggled on
+			mob.show_message(message, SHOW_MESSAGE_AUDIBLE)

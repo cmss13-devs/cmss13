@@ -860,7 +860,7 @@
 		X.flick_heal_overlay(3 SECONDS, "#00B800")
 		behavior.transferred_healing += quantity_healed
 		use_plasma = TRUE //it's already hard enough to gauge health without hp showing on the mob
-		targetXeno.flick_heal_overlay(3 SECONDS, "#00B800")//so the visible_message and recovery overlay will warn marines and possibly predators that the xenomorph has been healed!rn marines and possibly predators that the xenomorph has been healed!
+		targetXeno.flick_heal_overlay(3 SECONDS, "#00B800")//so the visible_message and recovery overlay will warn marines and possibly predators that the xenomorph has been healed!
 
 	else if (curr_effect_type == WARDEN_HEAL_DEBUFFS)
 		if (X.observed_xeno != null)

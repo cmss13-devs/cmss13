@@ -244,7 +244,6 @@
 	if(!COOLDOWN_FINISHED(src, buff_cooldown))
 		to_chat(xeno, SPAN_XENONOTICE("We can't do that again yet!"))
 		return
-	COOLDOWN_START(src, buff_cooldown, 30 SECONDS)
 	var/list/buffs = list()
 	var/list/names = list()
 	var/list/radial_images = list()
@@ -291,6 +290,8 @@
 		to_chat(xeno, "This selection is impossible!")
 		return FALSE
 
+	xeno.hive.attempt_apply_hivebuff(buffs[selection], xeno, src)
+	COOLDOWN_START(src, buff_cooldown, 30 SECONDS)
 	return TRUE
 
 //Hive Core - Generates strong weeds, supports other buildings

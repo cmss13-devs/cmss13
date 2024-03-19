@@ -844,6 +844,28 @@
 
 	return ..()
 
+/obj/effect/alien/destroyer_cocoon
+	name = "alien cocoon"
+	desc = "A large pulsating cocoon."
+	health = 500
+	icon_state = "Egg"
+
+	var/timer
+
+/obj/effect/alien/destroyer_cocoon/Initialize(mapload, pylon)
+	..()
+	timer = addtimer(CALLBACK(src, PROC_REF(hatch_destroyer)), 10 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
+
+/// Roll for candidates to take the destroyer
+/obj/effect/alien/destroyer_cocoon/proc/roll_candidates()
+	return
+
+/// Hatch the destroyer from the egg
+/obj/effect/alien/destroyer_cocoon/proc/hatch_destroyer()
+	// BIRDTALON ADD HIVENUMBER STUFF
+	var/mob/living/carbon/xenomorph/destroyer/destroyer = new(get_turf(src))
+	qdel(src)
+
 /obj/item/explosive/grenade/alien
 	name = "alien grenade"
 	desc = "an alien grenade."

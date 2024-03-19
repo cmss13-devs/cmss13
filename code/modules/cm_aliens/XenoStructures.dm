@@ -864,6 +864,7 @@
 /obj/effect/alien/destroyer_cocoon/proc/hatch_destroyer()
 	// BIRDTALON ADD HIVENUMBER STUFF
 	var/mob/living/carbon/xenomorph/destroyer/destroyer = new(get_turf(src))
+	destroyer.emote("roar")
 	qdel(src)
 
 /obj/item/explosive/grenade/alien

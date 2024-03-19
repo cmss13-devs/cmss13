@@ -159,7 +159,7 @@
 		return FALSE
 
 	// Actually process the buff and apply effects - If the buff succeeds engage_message will return TRUE, if it fails there should be an engage_failure_message set.
-	if(!on_engage())
+	if(!on_engage(purchased_pylon))
 		if(engage_failure_message && istext(engage_failure_message))
 			to_chat(purchasing_mob, SPAN_XENONOTICE(engage_failure_message))
 			to_chat(hive.living_xeno_queen, SPAN_XENONOTICE(engage_failure_message))
@@ -206,7 +206,7 @@
 /// Behaviour for the buff goes in here.
 /// IMPORTANT: If you buff has any kind of conditions which can fail. Set an engage_failure_message and return FALSE.
 /// If your buff succeeds you must return TRUE
-/datum/hivebuff/proc/on_engage()
+/datum/hivebuff/proc/on_engage(obj/effect/alien/resin/special/pylon/purchased_pylon)
 	return TRUE
 
 /// Wrapper for on_cease(), calls qdel(src) after on_cease() behaviour.
@@ -375,7 +375,7 @@
 
 /datum/hivebuff/extra_life/major
 	name = "Major Boon of Plenty"
-	desc = "Increases all xenomorph health by 10% for 10 seconds"
+	desc = "Increases all xenomorph health by 10% for 10 minutes"
 	tier = HIVEBUFF_TIER_MAJOR
 
 	engage_flavourmessage = "The queen has imbued us with greater fortitude."
@@ -390,7 +390,34 @@
 	is_unique = TRUE
 	is_reusable = FALSE
 
-/datum/hivebuff/game_ender_caste/on_engage()
+/datum/hivebuff/game_ender_caste/on_engage(obj/effect/alien/resin/special/pylon/purchased_pylon)
+	var/turf/spawn_turf
+	for(var/turf/potential_turf in orange(5, purchased_pylon))
+		if(potential_turf.density)
+			continue
+		var/area/target_area = get_area(potential_turf)
+		if(target_area.flags_area & AREA_NOTUNNEL)
+			continue
+
+		// Do we have a turf for the Destroyer to exit after spawning?
+		var/exit_turf = FALSE
+		for(var/cardinal in GLOB.cardinals)
+			var/turf/turf_to_check = get_step(potential_turf, cardinal)
+			if(turf_to_check.density)
+				continue
+			var/area/exit_target_area = get_area(turf_to_check)
+			if(exit_target_area.flags_area & AREA_NOTUNNEL)
+				continue
+			exit_turf = TRUE
+			break
+		if(!exit_turf)
+			engage_failure_message = "Unable to find a viable spawn point for the Destroyer"
+			return FALSE
+
+		spawn_turf = potential_turf
+		break
+
+	new /obj/effect/alien/destroyer_cocoon(spawn_turf)
 
 	/// CODE FOR SPAWNING OF THE DESTROYER HERE.
 	return TRUE

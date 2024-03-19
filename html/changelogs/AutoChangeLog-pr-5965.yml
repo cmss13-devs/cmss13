@@ -1,0 +1,5 @@
+author: "Huffie56"
+delete-after: True
+changes:
+  - maptweak: "Fix ugliness at 5 different areas."
+  - maptweak: "added access restriction for doors that lack them(OT workshop, engi dormitory, Upper engi back storage door.)"

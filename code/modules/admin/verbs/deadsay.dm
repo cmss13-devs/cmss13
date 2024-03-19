@@ -77,8 +77,6 @@
 
 /client/proc/show_to_deadsay(message)
 	for (var/mob/mob in GLOB.observer_list)
-		if (istype(mob, /mob/new_player))
-			continue
 
 		if(mob.client && mob.client.admin_holder && (mob.client.admin_holder.rights & R_MOD) && mob.client.prefs && (mob.client.prefs.toggles_chat & CHAT_DEAD)) // show the message to admins who have deadchat toggled on
 			mob.show_message(message, SHOW_MESSAGE_AUDIBLE)

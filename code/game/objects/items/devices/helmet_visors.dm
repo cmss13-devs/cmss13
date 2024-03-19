@@ -300,12 +300,13 @@
 	SIGNAL_HANDLER
 	if(new_size > 7) // cannot use binos with NVO
 		var/obj/item/clothing/head/helmet/marine/attached_helmet = loc
-		if(istype(attached_helmet))
+		if(!istype(attached_helmet))
 			return
+		deactivate_visor()
 		to_chat(user, SPAN_NOTICE("You deactivate [src] on [attached_helmet]."))
 		playsound_client(user.client, toggle_off_sound, null, 75)
 		attached_helmet.active_visor = null
-		deactivate_visor()
+		attached_helmet.update_icon()
 		var/datum/action/item_action/cycle_helmet_huds/cycle_action = locate() in attached_helmet.actions
 		if(cycle_action)
 			cycle_action.set_default_overlay()

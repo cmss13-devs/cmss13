@@ -354,7 +354,7 @@ Class Procs:
 
 // fuel pomp place older just to add them ingame because sprite is there and pretty.
 
-/obj/structure/machinery/squeezer
+/obj/structure/machinery/fuelpomp
 	name = "\improper Fuel Pomp"
 	desc = "It is a fuel pomp."
 	icon_state = "fuelpompstatic"

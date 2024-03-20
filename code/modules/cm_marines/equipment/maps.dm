@@ -135,7 +135,7 @@
 
 /obj/item/map/isaacs_lament_map
 	name = "\improper Isaac's Lament map"
-	desc = "An old map provided by Weyland-Yutani for the colony of Isaac's Lament on LV-533"
+	desc = "An old map provided by Weyland-Yutani for the colony of Isaac's Lament on LV-873"
 	html_link = "images/9/94/New_Varadero.png"
 	color = "grey"
 

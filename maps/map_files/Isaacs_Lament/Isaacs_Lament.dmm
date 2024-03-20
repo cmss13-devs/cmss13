@@ -9707,6 +9707,11 @@
 	icon_state = "redyellowfull"
 	},
 /area/lv553/indoors/south/slums)
+"eJL" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/gm/grass/dirt,
+/area/lv553/outdoors/colony_streets/southwest)
 "eJR" = (
 /obj/item/trash/cheesie,
 /turf/open/floor{
@@ -13177,6 +13182,7 @@
 	name = "suspicious cable";
 	layer = 2.8
 	},
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating,
 /area/lv553/indoors/southwest/slums)
 "gtS" = (
@@ -15666,6 +15672,10 @@
 	icon_state = "dark"
 	},
 /area/lv553/indoors/operations/offices/east)
+"hIu" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/plating,
+/area/lv553/indoors/southwest/slums)
 "hII" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
@@ -16818,6 +16828,13 @@
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/north_west,
 /area/lv553/outdoors/colony_streets/northeast)
+"ikB" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 8
+	},
+/obj/item/stack/rods,
+/turf/open/gm/grass/dirt,
+/area/lv553/outdoors/colony_streets/southwest)
 "ikS" = (
 /turf/open/floor/plating{
 	dir = 4;
@@ -22518,6 +22535,10 @@
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/north_west,
 /area/lv553/outdoors/colony_streets/southwest)
+"kWJ" = (
+/obj/item/frame/table/gambling,
+/turf/open/floor/wood,
+/area/lv553/indoors/lone_buildings/clf_barracks)
 "kWL" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/drinks/bottle/whiskey{
@@ -24836,6 +24857,13 @@
 "mcT" = (
 /obj/structure/machinery/power/apc{
 	dir = 1
+	},
+/obj/item/prop{
+	color = "#FF0000";
+	icon = 'icons/obj/pipes/power_cond_white.dmi';
+	icon_state = '4-5';
+	name = "suspicious cable";
+	layer = 2.8
 	},
 /turf/open/floor/plating,
 /area/lv553/indoors/southwest/slums)
@@ -28059,6 +28087,7 @@
 	pixel_x = -16;
 	pixel_y = 13
 	},
+/obj/item/clothing/suit/storage/jacket/marine/bomber/grey,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -43196,6 +43225,11 @@
 	dir = 1
 	},
 /area/lv553/indoors/operations/offices/northwest)
+"uqc" = (
+/obj/structure/window_frame/colony,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/lv553/indoors/southwest/slums)
 "uqp" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced/colony{
 	dir = 1;
@@ -50421,6 +50455,7 @@
 	pixel_x = 10;
 	pixel_y = 1
 	},
+/obj/structure/surface/table/woodentable,
 /turf/open/floor/wood,
 /area/lv553/indoors/lone_buildings/clf_barracks)
 "xZD" = (
@@ -67436,9 +67471,9 @@ oaR
 ktP
 vKA
 gtK
-sEZ
-eai
-spM
+hIu
+uqc
+eJL
 spM
 spM
 wEN
@@ -67662,7 +67697,7 @@ oaR
 iSU
 oaR
 oaR
-qUH
+ikB
 qUH
 qUH
 mvk
@@ -89528,9 +89563,9 @@ kjR
 kjR
 kjR
 kjR
-wHW
-wHW
-wHW
+kjR
+kjR
+kjR
 kjR
 kjR
 hZz
@@ -90648,7 +90683,7 @@ uYf
 uYf
 cTJ
 cTJ
-cTJ
+kWJ
 bHW
 uYf
 kjR

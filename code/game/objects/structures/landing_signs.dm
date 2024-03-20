@@ -61,7 +61,7 @@
 	icon_state = "laz_sign" //TODO make unique icon.
 
 /obj/structure/lz_sign/isaacs_lament
-	name = "Isaacs Lament Sign"
-	desc = "A large sign for Isaacs Lament exhorting its values and organisations. it is smeared in blood and grafitti saying: liar."
+	name = "Isaac's Lament Sign"
+	desc = "A large sign for Isaac's Lament exhorting its values and organisations. It is smeared in blood and grafitti saying: Liar."
 	icon = 'icons/obj/structures/props/landing_signs_128_64.dmi'
 	icon_state = "isaacs_lament"

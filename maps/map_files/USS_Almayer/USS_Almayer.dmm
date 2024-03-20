@@ -2953,6 +2953,10 @@
 "arb" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/morgue)
+"arc" = (
+/obj/structure/machinery/fuelpomp,
+/turf/open/floor/almayer,
+/area/almayer/lifeboat_pumps/south1)
 "arg" = (
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin/uscm,
@@ -9839,13 +9843,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/starboard_missiles)
-"bbX" = (
-/obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/fuelpomp,
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/lifeboat_pumps/north2)
 "bbY" = (
 /obj/structure/machinery/cm_vending/clothing/smartgun/alpha,
 /turf/open/floor/almayer{
@@ -11165,6 +11162,10 @@
 	icon_state = "plate"
 	},
 /area/almayer/hallways/hangar)
+"bjW" = (
+/obj/structure/machinery/fuelpomp,
+/turf/open/floor/almayer,
+/area/almayer/lifeboat_pumps/south2)
 "bkb" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -12788,12 +12789,6 @@
 	dir = 8
 	},
 /turf/open/floor/almayer,
-/area/almayer/lifeboat_pumps/north1)
-"bvd" = (
-/obj/structure/machinery/fuelpomp,
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
 /area/almayer/lifeboat_pumps/north1)
 "bve" = (
 /obj/structure/disposalpipe/segment,
@@ -22413,6 +22408,10 @@
 	dir = 6;
 	icon_state = "red"
 	},
+/area/almayer/lifeboat_pumps/north2)
+"dwN" = (
+/obj/structure/machinery/fuelpomp,
+/turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/north2)
 "dxu" = (
 /obj/structure/sink{
@@ -32545,12 +32544,6 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/lower)
-"haM" = (
-/obj/structure/machinery/fuelpomp,
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/lifeboat_pumps/south2)
 "haO" = (
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -48288,6 +48281,10 @@
 	icon_state = "orangefull"
 	},
 /area/almayer/living/briefing)
+"mBW" = (
+/obj/structure/machinery/fuelpomp,
+/turf/open/floor/almayer,
+/area/almayer/lifeboat_pumps/north1)
 "mCo" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -62844,12 +62841,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/maint/upper/u_m_p)
-"rBH" = (
-/obj/structure/machinery/fuelpomp,
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/lifeboat_pumps/south1)
 "rCh" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -106710,7 +106701,7 @@ add
 fsU
 aHU
 aTm
-awW
+mBW
 aTm
 jgF
 fsU
@@ -106756,7 +106747,7 @@ aJU
 gBW
 ouQ
 vbB
-baw
+arc
 vbB
 qys
 gBW
@@ -106913,7 +106904,7 @@ awW
 auK
 aIr
 aTm
-bvd
+add
 aTm
 juX
 scu
@@ -106959,7 +106950,7 @@ baw
 lRE
 tuf
 vbB
-rBH
+aJU
 vbB
 mlz
 sOy
@@ -123964,7 +123955,7 @@ aeC
 wXh
 ayn
 atr
-aeA
+dwN
 atr
 ciw
 wXh
@@ -124012,7 +124003,7 @@ vcE
 kpo
 iMx
 bXe
-lJY
+bjW
 bXe
 eyG
 kpo
@@ -124167,7 +124158,7 @@ aeA
 asY
 ayQ
 atr
-bbX
+aeC
 atr
 ciD
 ngl
@@ -124215,7 +124206,7 @@ lJY
 ttS
 wEO
 bXe
-haM
+vcE
 bXe
 deg
 wLu

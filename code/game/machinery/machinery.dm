@@ -357,6 +357,7 @@ Class Procs:
 /obj/structure/machinery/fuelpomp
 	name = "\improper Fuel Pomp"
 	desc = "It is a fuel pomp."
+	icon = 'icons/obj/structures/objective.dmi'
 	icon_state = "fuelpompstatic"
 	density = TRUE
 	anchored = TRUE

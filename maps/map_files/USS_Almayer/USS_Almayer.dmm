@@ -804,13 +804,6 @@
 "aet" = (
 /turf/closed/wall/almayer,
 /area/almayer/living/starboard_garden)
-"aex" = (
-/obj/item/reagent_container/food/drinks/cans/beer{
-	pixel_x = 6;
-	pixel_y = 12
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/lifeboat_pumps/north2)
 "aez" = (
 /obj/structure/bed/chair,
 /turf/open/floor/almayer{
@@ -7903,16 +7896,6 @@
 "aOR" = (
 /turf/open/floor/almayer,
 /area/almayer/living/chapel)
-"aOU" = (
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/largecrate/random/barrel/blue,
-/turf/open/floor/almayer{
-	dir = 4;
-	icon_state = "red"
-	},
-/area/almayer/lifeboat_pumps/north2)
 "aOV" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/fancy/cigarettes/kpack,
@@ -9858,7 +9841,7 @@
 /area/almayer/shipboard/starboard_missiles)
 "bbX" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/constructable_frame,
+/obj/structure/machinery/fuelpomp,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -12807,7 +12790,7 @@
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/north1)
 "bvd" = (
-/obj/structure/machinery/constructable_frame,
+/obj/structure/machinery/fuelpomp,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -17181,10 +17164,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/engineering/upper_engineering/port)
-"bXz" = (
-/obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/lifeboat_pumps/north2)
 "bXH" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
@@ -17649,12 +17628,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/port_fore_hallway)
-"cbM" = (
-/obj/structure/closet/crate,
-/obj/item/clothing/glasses/welding,
-/obj/item/circuitboard,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/lifeboat_pumps/north1)
 "ccb" = (
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/almayer{
@@ -26060,14 +26033,6 @@
 	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
-"eGb" = (
-/obj/structure/machinery/constructable_frame{
-	icon_state = "box_2"
-	},
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/lifeboat_pumps/north2)
 "eGh" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/surgery/scalpel{
@@ -27079,10 +27044,6 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
-"faO" = (
-/obj/item/stack/cable_coil,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/lifeboat_pumps/south2)
 "faR" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -32585,8 +32546,7 @@
 	},
 /area/almayer/engineering/lower)
 "haM" = (
-/obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/constructable_frame,
+/obj/structure/machinery/fuelpomp,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -36614,10 +36574,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/maint/upper/u_m_p)
-"iun" = (
-/obj/effect/spawner/random/tool,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/lifeboat_pumps/south1)
 "iup" = (
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/disposalpipe/segment,
@@ -43198,14 +43154,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/engineering/lower/workshop/hangar)
-"kJL" = (
-/obj/structure/machinery/constructable_frame{
-	icon_state = "box_2"
-	},
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/lifeboat_pumps/north1)
 "kJW" = (
 /obj/structure/machinery/door/window/westright,
 /obj/structure/machinery/shower{
@@ -43890,13 +43838,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/maint/hull/upper/u_m_p)
-"kUQ" = (
-/obj/effect/decal/cleanable/blood/oil/streak,
-/obj/structure/machinery/constructable_frame,
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/lifeboat_pumps/south1)
 "kUR" = (
 /turf/open/floor/almayer{
 	icon_state = "bluefull"
@@ -45534,12 +45475,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/maint/upper/u_a_p)
-"lxT" = (
-/obj/structure/machinery/constructable_frame,
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/lifeboat_pumps/south2)
 "lxW" = (
 /obj/structure/sign/prop2{
 	pixel_y = 29
@@ -48224,10 +48159,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer,
 /area/almayer/living/offices)
-"mzF" = (
-/obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/lifeboat_pumps/south2)
 "mzI" = (
 /obj/structure/largecrate/random/barrel/white,
 /obj/structure/sign/safety/storage{
@@ -62914,9 +62845,7 @@
 	},
 /area/almayer/maint/upper/u_m_p)
 "rBH" = (
-/obj/structure/machinery/constructable_frame{
-	icon_state = "box_2"
-	},
+/obj/structure/machinery/fuelpomp,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -68837,10 +68766,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/starboard_midship_hallway)
-"tBq" = (
-/obj/item/tool/crowbar,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/lifeboat_pumps/south1)
 "tBu" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
 /obj/structure/machinery/sentry_holder/almayer,
@@ -69067,10 +68992,6 @@
 	icon_state = "sterile_green_corner"
 	},
 /area/almayer/medical/lower_medical_lobby)
-"tGi" = (
-/obj/effect/spawner/random/tool,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/lifeboat_pumps/south2)
 "tGj" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -75500,10 +75421,6 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/shipboard/brig/perma)
-"vPm" = (
-/obj/item/stack/cable_coil,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/lifeboat_pumps/south1)
 "vPv" = (
 /obj/structure/machinery/cryopod{
 	layer = 3.1;
@@ -106838,9 +106755,9 @@ tiW
 aJU
 gBW
 ouQ
-iun
+vbB
 baw
-vPm
+vbB
 qys
 gBW
 aJU
@@ -107199,8 +107116,8 @@ awW
 avc
 aIv
 aTm
-kJL
-cbM
+add
+aTm
 jzZ
 sLo
 awW
@@ -107245,7 +107162,7 @@ baw
 hJk
 yac
 vbB
-kUQ
+aJU
 vbB
 fDS
 iLd
@@ -107449,7 +107366,7 @@ gBW
 ouQ
 vbB
 baw
-tBq
+vbB
 qys
 gBW
 aJU
@@ -124048,7 +123965,7 @@ wXh
 ayn
 atr
 aeA
-aex
+atr
 ciw
 wXh
 aeC
@@ -124094,7 +124011,7 @@ kkx
 vcE
 kpo
 iMx
-tGi
+bXe
 lJY
 bXe
 eyG
@@ -124297,7 +124214,7 @@ xVS
 lJY
 ttS
 wEO
-faO
+bXe
 haM
 bXe
 deg
@@ -124453,7 +124370,7 @@ aeA
 atp
 ayR
 atr
-eGb
+aeC
 atr
 cji
 nqV
@@ -124501,8 +124418,8 @@ lJY
 hlX
 umh
 bXe
-lxT
-tGi
+vcE
+bXe
 pfH
 wlF
 lJY
@@ -124657,7 +124574,7 @@ wXh
 ayn
 atr
 aeA
-bXz
+atr
 ciw
 wXh
 aeC
@@ -124705,7 +124622,7 @@ kpo
 iMx
 bXe
 lJY
-mzF
+bXe
 eyG
 kpo
 vcE
@@ -124858,7 +124775,7 @@ ajs
 aeC
 aeC
 azk
-aOU
+biL
 biL
 biL
 cmF

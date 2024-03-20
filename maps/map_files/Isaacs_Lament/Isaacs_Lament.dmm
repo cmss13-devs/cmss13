@@ -47972,7 +47972,7 @@
 /area/lv553/indoors/marshals/interrogation)
 "wOr" = (
 /obj/item/reagent_container/food/drinks/golden_cup{
-	desc = "Flynn's Bar awarded best bar in Isaac's Lement fifth time in a row!";
+	desc = "Flynn's Bar awarded best bar in Isaac's Lament fifth time in a row!";
 	pixel_y = 13
 	},
 /obj/structure/window{

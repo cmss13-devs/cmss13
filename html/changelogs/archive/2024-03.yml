@@ -230,3 +230,17 @@
   - bugfix: Stamina damage can now be ahealed.
   Waseemq1235:
   - rscdel: Removes HEAP from all UPP vendor gear presets
+2024-03-20:
+  Huffie56:
+  - maptweak: Fix ugliness at 5 different areas.
+  - maptweak: added access restriction for doors that lack them(OT workshop, engi
+      dormitory, Upper engi back storage door.)
+  Katskan:
+  - rscadd: Added some new uniforms and hats
+  - rscadd: Added blood packs to vendor for 5 points, equal to a pill bottle
+  - rscadd: Added tactical prybar to vendor for 5 points
+  - rscadd: Added some surgical tools, very expensive costs essentially your entire
+      point budget to buy
+  realforest2001:
+  - rscadd: Changed all marine presets to use Dress Blues as their dress equipment.
+  - rscdel: Excluding Whiskey Outpost, removed all previous dress equipment from vendors.

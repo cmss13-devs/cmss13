@@ -1026,6 +1026,12 @@
 	icon_state = "wy_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/WY, /obj/item/device/encryptionkey/cmb)
 
+/obj/item/device/radio/headset/distress/CMB/ICC/limited
+	name = "\improper Damaged ICC Liaison Headset"
+	desc = "An expensive headset used by The Interstellar Commerce Commission. This one in particular has a liaison chip with the CMB. It also is damaged, so the channels are: ; - CMB, :o - Colony, :y - Weyland-Yutani."
+	icon_state = "wy_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/WY, /obj/item/device/encryptionkey/colony)
+
 /obj/item/device/radio/headset/almayer/highcom
 	name = "USCM High Command headset"
 	desc = "Issued to members of USCM High Command and their immediate subordinates. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel,  :z - HighCom"

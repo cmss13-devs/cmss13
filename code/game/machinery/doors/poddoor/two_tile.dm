@@ -1,3 +1,26 @@
+/obj/structure/machinery/door/poddoor/two_tile
+	dir = EAST
+	icon = 'icons/obj/structures/doors/1x2blast_hor.dmi'
+	var/obj/structure/machinery/door/poddoor/filler_object/f1
+	var/obj/structure/machinery/door/poddoor/filler_object/f2
+
+/obj/structure/machinery/door/poddoor/two_tile/opened
+	density = FALSE
+
+/obj/structure/machinery/door/poddoor/two_tile/Initialize()
+	. = ..()
+	f1 = new/obj/structure/machinery/door/poddoor/filler_object (loc)
+	f2 = new/obj/structure/machinery/door/poddoor/filler_object (get_step(src,dir))
+	f1.density = density
+	f2.density = density
+	f1.set_opacity(opacity)
+	f2.set_opacity(opacity)
+
+/obj/structure/machinery/door/poddoor/two_tile/Destroy()
+	QDEL_NULL(f1)
+	QDEL_NULL(f2)
+	return ..()
+
 /obj/structure/machinery/door/poddoor/two_tile/open()
 	if(operating) //doors can still open when emag-disabled
 		return
@@ -66,29 +89,6 @@
 	f3.set_opacity(initial(opacity))
 	f4.set_opacity(initial(opacity))
 	..()
-
-/obj/structure/machinery/door/poddoor/two_tile
-	dir = EAST
-	icon = 'icons/obj/structures/doors/1x2blast_hor.dmi'
-	var/obj/structure/machinery/door/poddoor/filler_object/f1
-	var/obj/structure/machinery/door/poddoor/filler_object/f2
-
-/obj/structure/machinery/door/poddoor/two_tile/opened
-	density = FALSE
-
-/obj/structure/machinery/door/poddoor/two_tile/Initialize()
-	. = ..()
-	f1 = new/obj/structure/machinery/door/poddoor/filler_object (loc)
-	f2 = new/obj/structure/machinery/door/poddoor/filler_object (get_step(src,dir))
-	f1.density = density
-	f2.density = density
-	f1.set_opacity(opacity)
-	f2.set_opacity(opacity)
-
-/obj/structure/machinery/door/poddoor/two_tile/Destroy()
-	QDEL_NULL(f1)
-	QDEL_NULL(f2)
-	return ..()
 
 /obj/structure/machinery/door/poddoor/two_tile/vertical
 	dir = NORTH

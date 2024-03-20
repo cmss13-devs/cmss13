@@ -1,4 +1,3 @@
-
 /obj/structure/machinery/door/poddoor
 	name = "\improper Podlock"
 	desc = "That looks like it doesn't open easily."

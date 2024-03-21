@@ -117,3 +117,141 @@
   - bugfix: Fix pod doors no longer updating adjacent tiles
   iloveloopers:
   - balance: ravager empower range is now 4 tiles
+2024-03-11:
+  Segrain:
+  - admin: Actually fixed the last case of being warned against interacting with ticket
+      already marked by you.
+2024-03-12:
+  Drathek:
+  - bugfix: Fix chestrig not displaying on maps with different skins (e.g. Shivas)
+  Katskan:
+  - balance: Medical Skill 4 reduced speed buff from -75% duration to -50% duration
+  - balance: Medical Skill 3 increased speed buff from -0% duration to -25% duration
+  Segrain:
+  - rscadd: Requisitions' vendor now has medical radio keys in stock.
+  - rscadd: CE and CMO can now get spare departmental headsets from their vendors
+      to recruit survivors without having to go to Requisitions.
+  - bugfix: Wiping frequencies off radiotowers no longer breaks them forever.
+  Stakeyng:
+  - balance: Drop pouch has more space (2 large (unchanged), 4 medium, 8 small)
+  ihatethisengine2:
+  - bugfix: Dropship door prying can now always be performed by queen even if open
+      or not locked
+  realforest2001:
+  - soundadd: Added pda_ping.ogg, sourced from Paradise SS13 mailapproved.ogg
+  - rscadd: Added notification sounds from certain APOLLO ticket interactions.
+  - rscadd: People making an access ticket request are now notified of the status
+      changes.
+2024-03-13:
+  Segrain:
+  - bugfix: Picking up clothes/armour with somebody else's medal attached no longer
+      makes the medal fall off (trying to wear them still does).
+  - bugfix: Doctors calling themselves surgeons now properly get playtime medals.
+  - bugfix: Playtime medals now use assignments instead of backend paygrade codes
+      (e.g. "Awarded to Squad Leader John Doe" instead of "Awarded to ME5 John Doe").
+2024-03-14:
+  Vicacrov:
+  - rscadd: Added an option to hear or silence announcement audio cues (queen screech,
+      CIC beep, etc.) while being an observer.
+  nauticall:
+  - imageadd: Resprites first aid kits, coffins, material stacks, mortar shells, and
+      chemistry items. Chemistry sprites ported from Baystation / Aurora.
+  - bugfix: Recolors several reagent sprites to be more in-line with their established
+      colors, such as on autoinjectors.
+  - bugfix: Fixed invisible cloth tables.
+  - bugfix: Fixed wrong shading on the large floodlight.
+2024-03-15:
+  Drathek:
+  - balance: The light replacer can now be used to skip the crowbar, welding, and
+      wire steps when repairing colony lights.
+  - bugfix: Fixes SMES and APC interfaces not checking adjacency or incapacitated
+      states
+  - spellcheck: Fixed examine text for colony lights (improper names and not powered
+      text)
+  Huffie56:
+  - balance: adding M44 Marksman Speed Loader and SU-6 Smartpistol Magazine in vendor
+      of (medic,comtech, SL) at a cost of 6 each.
+  - balance: adding M44 Marksman Speed Loader and SU-6 Smartpistol Magazine in vendor
+      of (rifleman, TL, IO) at a cost of 10 each.
+  - balance: adding VP78 case and SU-6 case in vendor of IO at a cost of 15 each.
+  - balance: adding M44 Marksman Speed Loader and SU-6 Smartpistol Magazine in SG
+      vendor for 10 point each.
+  - balance: adding the ability for to buy smartgun DV9 battery for 15 points in SG
+      vendor.
+  Segrain:
+  - qol: Middleclicking beds/chairs/etc is now a shortcut for buckling to them.
+2024-03-16:
+  nauticall:
+  - bugfix: Makes pill bottle caps appear on closed pill bottles again.
+2024-03-17:
+  Huffie56:
+  - refactor: refactored areas replaced stern hallway by aft added two new hallway
+      area(fore, midship)
+  - refactor: refactored areas replaced midship maintenance by for and added two new
+      maintenance  areas(fore, aft) with each starboard and port side.
+  - maptweak: removed all the emergency shutter that weren't at the borders of each
+      areas.
+  - maptweak: added back the bear belt in a closet in a dormitory.
+  - maptweak: reconnect some air  pipe in an hallway north upper engi.
+  Segrain:
+  - bugfix: Ghosts no longer miss announcements seemingly at random.
+  SpartanBobby:
+  - maptweak: Removes some ledges on LV522
+  - maptweak: Removes unintended hullwalls on LV522
+  realforest2001:
+  - rscadd: Updated the Insanity law description.
+2024-03-18:
+  Katskan:
+  - balance: changed medical 4 skill speed multiplier from tier 2 to a non-standard
+      0.35
+  - balance: changed defib medical skill speed scaling
+  Nanu308:
+  - mapadd: Added the Galaxy Pizza Space Diner ERT station, for all your outer expanse
+      food needs!
+  - maptweak: Placed APC's on ert stations and minor tweaks+fixes.
+  Segrain:
+  - bugfix: Professor Dummy in CMO's office now works properly.
+2024-03-19:
+  567Turtle:
+  - rscadd: PO has been split into two roles, the gunship pilot and the dropship pilot,
+      no more arguing over who gets CAS.
+  Drathek:
+  - bugfix: Overdose death messages will now mention last mob that contributed to
+      the OD
+  - admin: Many additions to attack, say, interact, and niche logging
+  - admin: Temporary muted messages/actions are now niche logged instead of say logged
+  - ui: Added niche log filtering to TGChat (still requires admin niche logs preference)
+  SabreML:
+  - admin: Made the 'Join as Xeno' button disable the user's larva protection when
+      clicked by a moderator.
+  TheGamerdk:
+  - bugfix: Synths can now have their heads reattached without being sent to limbo-crit-hell.
+  TotalEpicness5:
+  - bugfix: Stamina damage can now be ahealed.
+  Waseemq1235:
+  - rscdel: Removes HEAP from all UPP vendor gear presets
+2024-03-20:
+  Huffie56:
+  - maptweak: Fix ugliness at 5 different areas.
+  - maptweak: added access restriction for doors that lack them(OT workshop, engi
+      dormitory, Upper engi back storage door.)
+  Katskan:
+  - rscadd: Added some new uniforms and hats
+  - rscadd: Added blood packs to vendor for 5 points, equal to a pill bottle
+  - rscadd: Added tactical prybar to vendor for 5 points
+  - rscadd: Added some surgical tools, very expensive costs essentially your entire
+      point budget to buy
+  realforest2001:
+  - rscadd: Changed all marine presets to use Dress Blues as their dress equipment.
+  - rscdel: Excluding Whiskey Outpost, removed all previous dress equipment from vendors.
+2024-03-21:
+  BadAtThisGame302:
+  - rscadd: Heavily Updated Corpse Code.
+  Birdtalon:
+  - admin: Xeno eggs now take fingerprints.
+  Huffie56:
+  - qol: 'add some balloons for CPR : one is for when it''s a success and the other
+      is when it''s a failure.'
+  - refactor: refactored poddoor file and shutters file.
+  Steelpoint:
+  - maptweak: Adds several cardboard box spawns in to squad prep rooms.

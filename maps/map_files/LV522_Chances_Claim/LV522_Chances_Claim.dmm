@@ -8990,9 +8990,6 @@
 	icon_state = "browncorner"
 	},
 /area/lv522/oob)
-"eds" = (
-/turf/closed/wall/strata_outpost/reinforced/hull,
-/area/lv522/indoors/c_block/casino)
 "edw" = (
 /obj/structure/bed/roller,
 /obj/effect/decal/cleanable/dirt,
@@ -14832,7 +14829,7 @@
 "gtS" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/auto_turf/shale/layer2,
-/area/lv522/outdoors/n_rockies)
+/area/lv522/outdoors/colony_streets/north_street)
 "gtX" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/warning_stripes{
@@ -15762,18 +15759,6 @@
 	dir = 5
 	},
 /turf/open/auto_turf/sand_white/layer0,
-/area/lv522/outdoors/n_rockies)
-"gMe" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform_decoration{
-	dir = 9
-	},
-/turf/open/asphalt/cement,
 /area/lv522/outdoors/n_rockies)
 "gMy" = (
 /obj/structure/stairs/perspective{
@@ -18936,10 +18921,6 @@
 "hTe" = (
 /turf/open/gm/river,
 /area/lv522/landing_zone_1/tunnel)
-"hTf" = (
-/obj/structure/platform_decoration,
-/turf/open/asphalt/cement,
-/area/lv522/outdoors/n_rockies)
 "hTg" = (
 /obj/structure/surface/table/almayer,
 /turf/open/floor/corsat{
@@ -20385,9 +20366,6 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/nw_rockies)
-"ivK" = (
-/turf/closed/wall/strata_outpost/reinforced/hull,
-/area/lv522/indoors/lone_buildings/engineering)
 "ivN" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/cameras/wooden_tv/prop{
@@ -22583,16 +22561,6 @@
 	icon_state = "darkyellowfull2"
 	},
 /area/lv522/indoors/lone_buildings/engineering)
-"jkO" = (
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform,
-/obj/structure/platform_decoration{
-	dir = 6
-	},
-/turf/open/asphalt/cement,
-/area/lv522/outdoors/n_rockies)
 "jlc" = (
 /obj/structure/surface/rack,
 /obj/item/tool/minihoe{
@@ -25331,9 +25299,6 @@
 	icon_state = "floor_plate"
 	},
 /area/lv522/atmos/way_in_command_centre)
-"khd" = (
-/turf/closed/wall/strata_outpost/reinforced/hull,
-/area/lv522/indoors/c_block/cargo)
 "khf" = (
 /obj/structure/prop/server_equipment,
 /turf/open/floor/prison{
@@ -31065,7 +31030,7 @@
 	},
 /area/lv522/atmos/filt)
 "moe" = (
-/turf/closed/wall/strata_outpost/reinforced/hull,
+/turf/closed/wall/strata_outpost,
 /area/lv522/oob/w_y_vault)
 "moz" = (
 /obj/effect/decal/cleanable/dirt,
@@ -35371,9 +35336,6 @@
 	icon_state = "kitchen"
 	},
 /area/lv522/indoors/a_block/fitness)
-"nSE" = (
-/turf/closed/wall/strata_outpost/reinforced/hull,
-/area/lv522/indoors/a_block/admin)
 "nSF" = (
 /obj/structure/barricade/deployable{
 	dir = 1
@@ -35726,14 +35688,6 @@
 	icon_state = "blue"
 	},
 /area/lv522/indoors/a_block/hallway)
-"nYz" = (
-/obj/structure/platform{
-	dir = 4
-	},
-/turf/open/asphalt/cement{
-	icon_state = "cement3"
-	},
-/area/lv522/outdoors/n_rockies)
 "nYF" = (
 /obj/item/weapon/twohanded/folded_metal_chair,
 /obj/effect/decal/cleanable/dirt,
@@ -38989,9 +38943,6 @@
 /obj/item/prop/colony/used_flare,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/kitchen)
-"plz" = (
-/turf/closed/wall/strata_outpost/reinforced/hull,
-/area/lv522/indoors/a_block/executive)
 "plN" = (
 /obj/structure/platform,
 /obj/effect/decal/warning_stripes{
@@ -39273,9 +39224,6 @@
 	icon_state = "brown"
 	},
 /area/lv522/atmos/filt)
-"psC" = (
-/turf/closed/wall/strata_outpost/reinforced/hull,
-/area/lv522/indoors/a_block/hallway)
 "psF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_magazine/rifle/mar40/lmg,
@@ -49499,14 +49447,6 @@
 	icon_state = "cement4"
 	},
 /area/lv522/outdoors/colony_streets/south_east_street)
-"taS" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
-/turf/open/asphalt/cement{
-	icon_state = "cement14"
-	},
-/area/lv522/outdoors/n_rockies)
 "taW" = (
 /obj/structure/platform{
 	dir = 8
@@ -53154,8 +53094,8 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/mining)
 "urp" = (
-/obj/structure/platform{
-	dir = 1
+/obj/structure/platform_decoration{
+	dir = 4
 	},
 /obj/structure/largecrate/random,
 /turf/open/asphalt/cement,
@@ -70713,10 +70653,10 @@ nJv
 xvQ
 gcX
 kvq
-ivK
+nJv
 wng
 tCg
-ivK
+nJv
 xvQ
 xvQ
 xvQ
@@ -80620,10 +80560,10 @@ lCH
 vjW
 pjJ
 ien
-hJZ
-hJZ
-jqF
-vne
+ugV
+ugV
+sSn
+oxt
 hhD
 ahP
 xyL
@@ -80848,9 +80788,9 @@ pjJ
 ien
 ien
 ien
-hJZ
-hJZ
-vne
+ugV
+ugV
+oxt
 fjr
 crH
 xyL
@@ -81074,10 +81014,10 @@ lCH
 pjJ
 pjJ
 pjJ
-ien
-ien
-ien
-ien
+pjJ
+fjr
+fjr
+oxt
 fjr
 crH
 xyL
@@ -81302,7 +81242,7 @@ nCa
 nCa
 nCa
 nCa
-nCa
+iKF
 gtS
 oVO
 nQx
@@ -81522,15 +81462,15 @@ mjF
 gXI
 joJ
 urp
-hTf
-nYz
-nYz
-nYz
-nYz
-nYz
-nYz
-taS
-vjW
+gWI
+sQu
+sQu
+sQu
+sQu
+sQu
+sQu
+tNr
+rxI
 oxt
 jDO
 sSn
@@ -81748,8 +81688,8 @@ kri
 kEj
 ldy
 joJ
-gMe
-jkO
+gWI
+gWI
 oUq
 oUq
 tVa
@@ -85246,11 +85186,11 @@ gwP
 ild
 xJd
 jwM
-khd
+jmG
 wZt
 jwM
 nPc
-khd
+jmG
 xDD
 xDD
 jmG
@@ -85473,11 +85413,11 @@ eHF
 ftK
 pMs
 jEW
-khd
+jmG
 nnB
 fvN
 ful
-khd
+jmG
 xDD
 xDD
 jmG
@@ -85700,11 +85640,11 @@ jmG
 jmG
 jmG
 jmG
-khd
+jmG
 eNc
 wZy
 teO
-khd
+jmG
 aZj
 aZj
 jmG
@@ -86164,7 +86104,7 @@ qNR
 ifB
 ptp
 jmG
-khd
+jmG
 ycH
 gQV
 piY
@@ -87753,7 +87693,7 @@ yhi
 xPK
 oTG
 jmG
-khd
+jmG
 pjm
 opQ
 ydy
@@ -88205,7 +88145,7 @@ yhi
 spM
 jmG
 jmG
-khd
+jmG
 vBd
 brk
 rdF
@@ -89473,9 +89413,9 @@ bjd
 bjd
 bjd
 bjd
-alI
-alI
-alI
+mPj
+mPj
+mPj
 cpy
 cpy
 cpy
@@ -89702,7 +89642,7 @@ lfj
 bjd
 bjd
 bjd
-alI
+mPj
 cpy
 cpy
 cpy
@@ -89929,7 +89869,7 @@ xXv
 lfj
 bjd
 bjd
-alI
+mPj
 cpy
 cpy
 cpy
@@ -89954,7 +89894,7 @@ uog
 xBo
 nnz
 oVD
-plz
+xjF
 xFp
 sYk
 uNB
@@ -90156,7 +90096,7 @@ dfK
 xXv
 lfj
 bjd
-alI
+mPj
 cpy
 cpy
 cpy
@@ -90383,7 +90323,7 @@ vFD
 pqQ
 qpd
 bjd
-alI
+mPj
 cpy
 cpy
 cpy
@@ -90610,7 +90550,7 @@ hvh
 pqQ
 qpd
 bjd
-alI
+mPj
 cpy
 cpy
 cpy
@@ -90693,7 +90633,7 @@ fdb
 vNk
 vNk
 vNk
-eds
+vNk
 vNk
 mFA
 eur
@@ -90837,7 +90777,7 @@ hvh
 pqQ
 qpd
 bjd
-alI
+mPj
 cpy
 cpy
 cpy
@@ -90862,7 +90802,7 @@ wgW
 wgW
 ydb
 xRQ
-plz
+xjF
 xFp
 sYk
 pKX
@@ -91064,7 +91004,7 @@ hvh
 pqQ
 qpd
 bjd
-alI
+mPj
 cpy
 cpy
 cpy
@@ -91092,7 +91032,7 @@ xjF
 xjF
 xFp
 aDj
-xAw
+pKX
 nvt
 ykT
 kGb
@@ -91291,7 +91231,7 @@ hvh
 eZF
 lfj
 bjd
-alI
+mPj
 cpy
 cpy
 cpy
@@ -91518,7 +91458,7 @@ hvh
 pqQ
 qpd
 bjd
-alI
+mPj
 cpy
 cpy
 cpy
@@ -91745,7 +91685,7 @@ hvh
 pqQ
 qpd
 bjd
-alI
+mPj
 cpy
 cpy
 wDj
@@ -91773,7 +91713,7 @@ qSH
 qSH
 qSH
 cfv
-xAw
+pKX
 xnI
 ykT
 djM
@@ -91972,7 +91912,7 @@ hvh
 pqQ
 qpd
 bjd
-alI
+mPj
 cpy
 cpy
 wDj
@@ -92199,9 +92139,9 @@ hvh
 pqQ
 qpd
 bjd
-alI
-alI
-alI
+mPj
+mPj
+mPj
 wDj
 cPg
 eJR
@@ -93134,7 +93074,7 @@ vGp
 vGp
 kqp
 xFp
-xAw
+pKX
 pKX
 pKX
 kIZ
@@ -96765,7 +96705,7 @@ vGp
 cpy
 pZo
 tWt
-nSE
+tDS
 tDS
 thc
 thc
@@ -99280,10 +99220,10 @@ mgk
 vUb
 gdO
 gdO
-psC
+gdO
 ayn
 wHY
-psC
+gdO
 gdO
 tTK
 tTK

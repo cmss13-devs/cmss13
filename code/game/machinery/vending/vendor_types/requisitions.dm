@@ -409,6 +409,7 @@
 		list("Engineering Radio Encryption Key", 5, /obj/item/device/encryptionkey/engi, VENDOR_ITEM_REGULAR),
 		list("Intel Radio Encryption Key", 5, /obj/item/device/encryptionkey/intel, VENDOR_ITEM_REGULAR),
 		list("JTAC Radio Encryption Key", 5, /obj/item/device/encryptionkey/jtac, VENDOR_ITEM_REGULAR),
+		list("Medical Radio Encryption Key", 5, /obj/item/device/encryptionkey/med, VENDOR_ITEM_REGULAR),
 		list("Sentry Gun Network Encryption Key", 8, /obj/item/device/encryptionkey/sentry_laptop, VENDOR_ITEM_REGULAR),
 		list("Marine Radio Headset", 5, /obj/item/device/radio/headset/almayer, VENDOR_ITEM_REGULAR),
 		list("Supply Radio Encryption Key", 5, /obj/item/device/encryptionkey/req, VENDOR_ITEM_REGULAR),

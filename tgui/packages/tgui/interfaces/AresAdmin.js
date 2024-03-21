@@ -256,6 +256,18 @@ const MainMenu = (props, context) => {
               onClick={() => act('page_requisitions')}
             />
           </Stack.Item>
+          <Stack.Item>
+            <Button
+              content="Tech Control Log"
+              tooltip="Review the Intel Tech Log."
+              icon="magnifying-glass-chart"
+              ml="auto"
+              px="2rem"
+              width="25vw"
+              bold
+              onClick={() => act('page_tech')}
+            />
+          </Stack.Item>
         </Stack>
 
         <Stack>

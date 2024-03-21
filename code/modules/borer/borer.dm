@@ -201,6 +201,7 @@ GLOBAL_DATUM_INIT(brainlink, /datum/borer_brainlink, new)
 		/datum/action/innate/borer/make_larvae,
 		/datum/action/innate/borer/talk_to_brain,
 		/datum/action/innate/borer/torment,
+		/datum/action/innate/borer/transfer_host,//WIP
 	)
 
 	var/list/ancestry = list()
@@ -612,6 +613,6 @@ GLOBAL_DATUM_INIT(brainlink, /datum/borer_brainlink, new)
 	name = "Transfer Host"
 	action_icon_state = "borer_infest"
 
-/datum/action/innate/borer/infest_host/action_activate()
-	var/mob/living/carbon/cortical_borer/B = owner
+/datum/action/innate/borer/transfer_host/action_activate()
+	var/mob/living/carbon/cortical_borer/B = owner.has_brain_worms()
 	B.transfer_host()

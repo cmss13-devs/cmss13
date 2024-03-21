@@ -244,3 +244,14 @@
   realforest2001:
   - rscadd: Changed all marine presets to use Dress Blues as their dress equipment.
   - rscdel: Excluding Whiskey Outpost, removed all previous dress equipment from vendors.
+2024-03-21:
+  BadAtThisGame302:
+  - rscadd: Heavily Updated Corpse Code.
+  Birdtalon:
+  - admin: Xeno eggs now take fingerprints.
+  Huffie56:
+  - qol: 'add some balloons for CPR : one is for when it''s a success and the other
+      is when it''s a failure.'
+  - refactor: refactored poddoor file and shutters file.
+  Steelpoint:
+  - maptweak: Adds several cardboard box spawns in to squad prep rooms.

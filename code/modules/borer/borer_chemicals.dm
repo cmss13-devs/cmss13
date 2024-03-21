@@ -203,6 +203,6 @@
 	chem_id = "borerenzyme"
 	desc = "An enzyme focused on consuming chemicals in the bloodstream. Helps fight addictions. This will work as a preventative measure against anti-parasite drugs so long as it is in the bloodstream. Can cause brain damage."
 	cost = 150
-	quantity = 8
+	quantity = 6
 	category = BORER_CAT_SELF
 	impure = FALSE

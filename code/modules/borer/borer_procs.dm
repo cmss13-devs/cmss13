@@ -1,18 +1,18 @@
 //############# HELP ##################
 /mob/living/carbon/cortical_borer/verb/show_help()
-	set category = "Borer"
+	set category = "Borer.Misc"
 	set name = "Show Help"
 	set desc = "Show help for borer commands."
 
 	var/target = src
 
 	var/list/options = list("Communicating","Contaminant & Enzymes")
-	if(!host)
+	if(!host_mob)
 		options += list("Infecting a host")
 	else if(borer_flags_status & BORER_STATUS_CONTROLLING)
-		target = host
+		target = host_mob
 		options += list("Captive Host", "Releasing Control", "Reproducing")
-	else if(isxeno(host))
+	else if(isxeno(host_mob))
 		options += list("Assuming Control","Hibernation","Reproducing")
 	else
 		options += list("Assuming Control","Hibernation","Secreting Chemicals","Learning Chemicals","Reproducing", "Host Death")
@@ -148,28 +148,28 @@
 	for(var/datum/action/innate/borer/action in actions)
 		action.hide_from(target)
 
-	if(host && current_actions == ACTION_SET_CONTROL)
-		for(var/datum/action/innate/borer/action in host.actions)
-			action.hide_from(host)
+	if(host_mob && current_actions == ACTION_SET_CONTROL)
+		for(var/datum/action/innate/borer/action in host_mob.actions)
+			action.hide_from(host_mob)
 
 	var/list/abilities_to_give
 	switch(actions_list)
 		if(ACTION_SET_HOSTLESS)
 			abilities_to_give = actions_hostless.Copy()
-			if(host)
-				for(var/datum/action/innate/borer/action in host.actions)
-					action.hide_from(host)
+			if(host_mob)
+				for(var/datum/action/innate/borer/action in host_mob.actions)
+					action.hide_from(host_mob)
 		if(ACTION_SET_HUMANOID)
 			abilities_to_give = actions_humanoidhost.Copy()
 		if(ACTION_SET_XENO)
 			abilities_to_give = actions_xenohost.Copy()
 		if(ACTION_SET_CONTROL)
-			if(!host)
+			if(!host_mob)
 				return FALSE
 			abilities_to_give = actions_control.Copy()
-			target = host
-			for(var/datum/action/innate/borer/talk_to_borer/action in host.actions)
-				action.hide_from(host)
+			target = host_mob
+			for(var/datum/action/innate/borer/talk_to_borer/action in host_mob.actions)
+				action.hide_from(host_mob)
 
 	for(var/path in abilities_to_give)
 		give_action(target, path)
@@ -177,15 +177,15 @@
 	return TRUE
 
 /mob/living/carbon/cortical_borer/proc/get_host_actions()
-	if(!host)
+	if(!host_mob)
 		return FALSE
-	if(ishuman(host))
+	if(ishuman(host_mob))
 		give_new_actions(ACTION_SET_HUMANOID)
-	else if(isxeno(host))
+	else if(isxeno(host_mob))
 		give_new_actions(ACTION_SET_XENO)
 	else
 		return FALSE
-	give_action(host, /datum/action/innate/borer/talk_to_borer)
+	give_action(host_mob, /datum/action/innate/borer/talk_to_borer)
 	return TRUE
 
 /mob/living/carbon/cortical_borer/proc/hibernate()
@@ -227,11 +227,11 @@
 
 //Brainslug infests a target
 /mob/living/carbon/cortical_borer/verb/infest()
-	set category = "Borer"
+	set category = "Borer.Hostless"
 	set name = "Infest"
 	set desc = "Infest a suitable humanoid host."
 
-	if(host)
+	if(host_mob)
 		to_chat(src, "You are already within a host.")
 		return FALSE
 	if(stat)
@@ -279,12 +279,12 @@
 	if(target.has_brain_worms())
 		to_chat(src, SPAN_XENOWARNING("[target] is already infested!"))
 		return FALSE
-	host = target
-	log_interact(src, host, "Borer: [key_name(src)] Infested [key_name(host)]")
+	host_mob = target
+	log_interact(src, host_mob, "Borer: [key_name(src)] Infested [key_name(host_mob)]")
 	target.borer = src
 	forceMove(target)
-	host.status_flags |= PASSEMOTES
-	host.verbs += /mob/living/proc/borer_comm
+	host_mob.status_flags |= PASSEMOTES
+	host_mob.verbs += /mob/living/proc/borer_comm
 	get_host_actions()
 	faction = target.faction
 	faction_group = target.faction_group
@@ -293,10 +293,10 @@
 
 //Brainslug abandons the host
 /mob/living/carbon/cortical_borer/verb/release_host()
-	set category = "Borer"
+	set category = "Borer.Infested"
 	set name = "Release Host"
 	set desc = "Slither out of your host."
-	if(!host)
+	if(!host_mob)
 		to_chat(src, SPAN_XENOWARNING("You are not inside a host body."))
 		return FALSE
 	if(stat)
@@ -305,19 +305,19 @@
 	if(docile)
 		to_chat(src, SPAN_XENOWARNING("You are feeling far too docile to do that."))
 		return FALSE
-	if(!host || !src)
+	if(!host_mob || !src)
 		return FALSE
 	if(leaving)
 		leaving = FALSE
 		to_chat(src, SPAN_XENOWARNING("You decide against leaving your host.</span>"))
 		return TRUE
-	to_chat(src, SPAN_XENOHIGHDANGER("You begin disconnecting from [host]'s synapses and prodding at their internal ear canal."))
+	to_chat(src, SPAN_XENOHIGHDANGER("You begin disconnecting from [host_mob]'s synapses and prodding at their internal ear canal."))
 	leaving = TRUE
 	addtimer(CALLBACK(src, PROC_REF(let_go)), 200)
 	return TRUE
 
 /mob/living/carbon/cortical_borer/proc/let_go()
-	if(!host || !src || QDELETED(host) || QDELETED(src))
+	if(!host_mob || !src || QDELETED(host_mob) || QDELETED(src))
 		return FALSE
 	if(!leaving || borer_flags_status & BORER_STATUS_CONTROLLING)
 		return FALSE
@@ -325,46 +325,46 @@
 		to_chat(src, SPAN_XENOWARNING("You cannot release a target in your current state."))
 		return FALSE
 
-	to_chat(src, SPAN_XENOHIGHDANGER("You wiggle out of [host]'s ear and plop to the ground."))
+	to_chat(src, SPAN_XENOHIGHDANGER("You wiggle out of [host_mob]'s ear and plop to the ground."))
 
 	leaving = FALSE
 	leave_host()
 	return TRUE
 
 /mob/living/carbon/cortical_borer/proc/leave_host()
-	if(!host)
+	if(!host_mob)
 		return FALSE
 	if(borer_flags_status & BORER_STATUS_CONTROLLING)
 		detach()
 	give_new_actions(ACTION_SET_HOSTLESS)
 
-	forceMove(get_turf(host))
+	forceMove(get_turf(host_mob))
 	apply_effect(1, STUN)
 
 	faction = "Cortical"
 	faction_group = list("Cortical")
 
-	log_interact(src, host, "Borer: [key_name(src)] left their host; [key_name(host)]")
-	host.reset_view(null)
+	log_interact(src, host_mob, "Borer: [key_name(src)] left their host; [key_name(host_mob)]")
+	host_mob.reset_view(null)
 
-	var/mob/living/carbon/H = host
+	var/mob/living/carbon/H = host_mob
 	H.borer = null
 	H.status_flags &= ~PASSEMOTES
-	host = null
+	host_mob = null
 	return TRUE
 
 
 //Brainslug takes control of the body
 /mob/living/carbon/cortical_borer/verb/bond_brain()
-	set category = "Borer"
+	set category = "Borer.Infested"
 	set name = "Assume Control"
 	set desc = "Fully connect to the brain of your host."
 
-	if(!host)
+	if(!host_mob)
 		to_chat(src, SPAN_XENOWARNING("You are not inside a host body."))
 		return FALSE
 
-	if(host.stat == DEAD)
+	if(host_mob.stat == DEAD)
 		to_chat(src, SPAN_XENODANGER("This host is in no condition to be controlled."))
 		return FALSE
 
@@ -383,17 +383,17 @@
 
 	to_chat(src, "You begin delicately adjusting your connection to the host brain...")
 
-	if(QDELETED(src) || QDELETED(host))
+	if(QDELETED(src) || QDELETED(host_mob))
 		return FALSE
 
 	bonding = TRUE
 
-	var/delay = 300+(host.getBrainLoss()*5)
+	var/delay = 300+(host_mob.getBrainLoss()*5)
 	addtimer(CALLBACK(src, PROC_REF(assume_control)), delay)
 	return TRUE
 
 /mob/living/carbon/cortical_borer/proc/assume_control()
-	if(!host || !src || borer_flags_status & BORER_STATUS_CONTROLLING)
+	if(!host_mob || !src || borer_flags_status & BORER_STATUS_CONTROLLING)
 		return FALSE
 	if(!bonding)
 		return FALSE
@@ -402,22 +402,22 @@
 		return FALSE
 	else
 		to_chat(src, SPAN_XENOHIGHDANGER("You plunge your probosci deep into the cortex of the host brain, interfacing directly with their nervous system."))
-		to_chat(host, SPAN_HIGHDANGER("You feel a strange shifting sensation behind your eyes as an alien consciousness displaces yours."))
-		to_chat(host, SPAN_NOTICE("You can [SPAN_BOLD("resist")] this consciousness, but be warned you may suffer some degree of brain damage in the process!"))
+		to_chat(host_mob, SPAN_HIGHDANGER("You feel a strange shifting sensation behind your eyes as an alien consciousness displaces yours."))
+		to_chat(host_mob, SPAN_NOTICE("You can [SPAN_BOLD("resist")] this consciousness, but be warned you may suffer some degree of brain damage in the process!"))
 		var/borer_key = src.key
-		log_interact(src, host, "Borer: [key_name(src)] Assumed control of [key_name(host)]")
+		log_interact(src, host_mob, "Borer: [key_name(src)] Assumed control of [key_name(host_mob)]")
 		// host -> brain
-		var/h2b_id = host.computer_id
-		var/h2b_ip= host.lastKnownIP
-		host.computer_id = null
-		host.lastKnownIP = null
+		var/h2b_id = host_mob.computer_id
+		var/h2b_ip= host_mob.lastKnownIP
+		host_mob.computer_id = null
+		host_mob.lastKnownIP = null
 
 		qdel(host_brain)
 		host_brain = new(src)
 
-		host_brain.ckey = host.ckey
+		host_brain.ckey = host_mob.ckey
 
-		host_brain.name = host.name
+		host_brain.name = host_mob.name
 
 		if(!host_brain.computer_id)
 			host_brain.computer_id = h2b_id
@@ -431,22 +431,22 @@
 		src.computer_id = null
 		src.lastKnownIP = null
 
-		host.ckey = src.ckey
+		host_mob.ckey = src.ckey
 
-		if(!host.computer_id)
-			host.computer_id = s2h_id
+		if(!host_mob.computer_id)
+			host_mob.computer_id = s2h_id
 
-		if(!host.lastKnownIP)
-			host.lastKnownIP = s2h_ip
+		if(!host_mob.lastKnownIP)
+			host_mob.lastKnownIP = s2h_ip
 
 		bonding = FALSE
 		borer_flags_status |= BORER_STATUS_CONTROLLING
 
 		give_new_actions(ACTION_SET_CONTROL)
-		host.med_hud_set_status()
-		host.special_mob = TRUE
+		host_mob.med_hud_set_status()
+		host_mob.special_mob = TRUE
 
-		GLOB.brainlink.living_borers += host
+		GLOB.brainlink.living_borers += host_mob
 
 		if(src && !src.key)
 			src.key = "@[borer_key]"
@@ -456,9 +456,9 @@
 /mob/living/captive_brain/proc/return_control(mob/living/carbon/cortical_borer/B)
 	if(!B || !(B.borer_flags_status & BORER_STATUS_CONTROLLING) || !resisting_control)
 		return FALSE
-	B.host.adjustBrainLoss(rand(5,10))
+	B.host_mob.adjustBrainLoss(rand(5,10))
 	to_chat(src, SPAN_HIGHDANGER("With an immense exertion of will, you regain control of your body!"))
-	to_chat(B.host, SPAN_XENOHIGHDANGER("You feel control of the host brain ripped from your grasp, and retract your probosci before the wild neural impulses can damage you."))
+	to_chat(B.host_mob, SPAN_XENOHIGHDANGER("You feel control of the host brain ripped from your grasp, and retract your probosci before the wild neural impulses can damage you."))
 	resisting_control = FALSE
 	B.detach()
 	return TRUE
@@ -466,7 +466,7 @@
 ///Brain slug proc for voluntary removal of control.
 /mob/living/carbon/proc/release_control()
 
-	set category = "Borer"
+	set category = "Borer.Controlling"
 	set name = "Release Control"
 	set desc = "Release control of your host's body."
 
@@ -481,25 +481,25 @@
 		log_debug(EXCEPTION("Missing borer or missing host brain upon borer release."), src)
 
 /mob/living/carbon/cortical_borer/proc/detach()
-	if(!host || !(borer_flags_status & BORER_STATUS_CONTROLLING))
+	if(!host_mob || !(borer_flags_status & BORER_STATUS_CONTROLLING))
 		return FALSE
 
 	borer_flags_status &= ~BORER_STATUS_CONTROLLING
 	reset_view(null)
 
 	get_host_actions()
-	host.med_hud_set_status()
+	host_mob.med_hud_set_status()
 	sleeping = 0
 	if(host_brain)
-		log_interact(host, src, "Borer: [key_name(host)] Took control back")
-		host.special_mob = FALSE
-		GLOB.brainlink.living_borers -= host
+		log_interact(host_mob, src, "Borer: [key_name(host_mob)] Took control back")
+		host_mob.special_mob = FALSE
+		GLOB.brainlink.living_borers -= host_mob
 		// host -> self
-		var/h2s_id = host.computer_id
-		var/h2s_ip= host.lastKnownIP
-		host.computer_id = null
-		host.lastKnownIP = null
-		src.ckey = host.ckey
+		var/h2s_id = host_mob.computer_id
+		var/h2s_ip= host_mob.lastKnownIP
+		host_mob.computer_id = null
+		host_mob.lastKnownIP = null
+		src.ckey = host_mob.ckey
 		if(!src.computer_id)
 			src.computer_id = h2s_id
 		if(!host_brain.lastKnownIP)
@@ -510,18 +510,18 @@
 		var/b2h_ip = host_brain.lastKnownIP
 		host_brain.computer_id = null
 		host_brain.lastKnownIP = null
-		host.ckey = host_brain.ckey
+		host_mob.ckey = host_brain.ckey
 
-		if(!host.computer_id)
-			host.computer_id = b2h_id
-		if(!host.lastKnownIP)
-			host.lastKnownIP = b2h_ip
+		if(!host_mob.computer_id)
+			host_mob.computer_id = b2h_id
+		if(!host_mob.lastKnownIP)
+			host_mob.lastKnownIP = b2h_ip
 		qdel(host_brain)
 	return TRUE
 
 //Host Has died
 /mob/living/carbon/cortical_borer/proc/host_death(perma = FALSE)
-	if(!(host && loc == host))
+	if(!(host_mob && loc == host_mob))
 		log_debug("Borer ([key_name(src)]) called host_death without being inside a host!")
 		return FALSE
 	if(borer_flags_status & BORER_STATUS_CONTROLLING)
@@ -534,11 +534,11 @@
 
 //############# External Ability Procs #############
 /mob/living/carbon/cortical_borer/verb/hide_borer()
-	set category = "Borer"
+	set category = "Borer.Hostless"
 	set name = "Hide"
 	set desc = "Become invisible to the common eye."
 
-	if(host)
+	if(host_mob)
 		to_chat(usr, SPAN_WARNING("You cannot do this while you're inside a host."))
 		return FALSE
 
@@ -556,14 +556,14 @@
 	return TRUE
 
 /mob/living/carbon/cortical_borer/verb/dominate_victim()
-	set category = "Borer"
+	set category = "Borer.Hostless"
 	set name = "Dominate Victim"
 	set desc = "Freeze the limbs of a potential host with supernatural fear."
 
 	if(world.time - used_dominate < 150)
 		to_chat(src, SPAN_XENOWARNING("You cannot use that ability again so soon."))
 		return FALSE
-	if(host)
+	if(host_mob)
 		to_chat(src, SPAN_XENOWARNING("You cannot do that from within a host body."))
 		return FALSE
 	if(stat)
@@ -614,7 +614,7 @@
 
 //############# Internal Abiity Procs #############
 /mob/living/carbon/proc/punish_host()
-	set category = "Borer"
+	set category = "Borer.Controlling"
 	set name = "Torment Host"
 	set desc = "Punish your host with agony."
 
@@ -630,7 +630,7 @@
 
 
 /mob/living/carbon/proc/spawn_larvae()
-	set category = "Borer"
+	set category = "Borer.Controlling"
 	set name = "Reproduce"
 	set desc = "Spawn a new borer."
 
@@ -671,11 +671,11 @@
 	return possibilities
 
 /mob/living/carbon/cortical_borer/verb/secrete_chemicals()
-	set category = "Borer"
+	set category = "Borer.Infested"
 	set name = "Secrete Chemicals"
 	set desc = "Push some chemicals into your host's bloodstream."
 
-	if(!host)
+	if(!host_mob)
 		to_chat(src, SPAN_XENOWARNING("You are not inside a host body."))
 		return FALSE
 
@@ -691,9 +691,9 @@
 
 	content += "<table>"
 
-	if(ishuman(host))
+	if(ishuman(host_mob))
 		var/mob/living/carbon/human/human_host
-		human_host = host
+		human_host = host_mob
 		for(var/datum/borer_chem/chem_datum in get_possible_chems())
 			if(chem_datum.species != "Universal")
 				if(isspeciesyautja(human_host))
@@ -719,11 +719,11 @@
 
 
 /mob/living/carbon/cortical_borer/verb/learn_chemicals()
-	set category = "Borer"
+	set category = "Borer.Infested"
 	set name = "Replicate Chemical"
 	set desc = "Study a chemical compound for replication."
 
-	if(!host)
+	if(!host_mob)
 		to_chat(src, SPAN_XENOWARNING("You are not inside a host body."))
 		return FALSE
 
@@ -749,7 +749,7 @@
 		if(!(existing_chem.chem_id in existing_chems))
 			existing_chems += existing_chem.chem_id
 
-	for(var/datum/reagent/potential_chem in host.reagents?.reagent_list)
+	for(var/datum/reagent/potential_chem in host_mob.reagents?.reagent_list)
 		if(potential_chem.id in existing_chems)
 			continue
 		if(potential_chem.volume < potential_chem.overdose)
@@ -757,7 +757,7 @@
 		options += potential_chem.id
 		options_datums[potential_chem.id] = potential_chem
 
-	if(!options)
+	if(!options.len)
 		to_chat(src, SPAN_XENONOTICE("There are no chemicals within your host you are able to replicate!"))
 		return FALSE
 
@@ -786,7 +786,7 @@
 	new_chem.chem_id = chosen.id
 	new_chem.chem_name = chosen.name
 	new_chem.desc = chosen.description
-	var/n_species = host.get_species()
+	var/n_species = host_mob.get_species()
 	if(!n_species)
 		n_species = "UNSET"
 	new_chem.species = n_species
@@ -802,15 +802,15 @@
 
 //############# Communication Procs #############
 /mob/living/carbon/cortical_borer/verb/Communicate()
-	set category = "Borer"
+	set category = "Borer.Infested"
 	set name = "Converse with Host"
 	set desc = "Send a silent message to your host."
 
-	if(!host)
+	if(!host_mob)
 		to_chat(src, "You do not have a host to communicate with!")
 		return FALSE
 
-	if(host.stat == DEAD)
+	if(host_mob.stat == DEAD)
 		to_chat(src, SPAN_XENODANGER("Not even you can commune with the dead."))
 		return FALSE
 
@@ -822,22 +822,22 @@
 	if(!input)
 		return FALSE
 
-	if(src && !QDELETED(src) && !QDELETED(host))
+	if(src && !QDELETED(src) && !QDELETED(host_mob))
 		var/say_string = (docile) ? "slurs" :"states"
-		if(host)
-			to_chat(host, SPAN_XENO("[real_name] [say_string]: [input]"), type = MESSAGE_TYPE_RADIO)
-			show_blurb(host, 15, input, TRUE, "center", "center", COLOR_BROWN, null, null, 1)
-			log_say("BORER: ([key_name(src)] to [key_name(host)]) [input]", src)
+		if(host_mob)
+			to_chat(host_mob, SPAN_XENO("[real_name] [say_string]: [input]"), type = MESSAGE_TYPE_RADIO)
+			show_blurb(host_mob, 15, input, TRUE, "center", "center", COLOR_BROWN, null, null, 1)
+			log_say("BORER: ([key_name(src)] to [key_name(host_mob)]) [input]", src)
 			to_chat(src, SPAN_XENO("[real_name] [say_string]: [input]"), type = MESSAGE_TYPE_RADIO)
 			for (var/mob/dead in GLOB.dead_mob_list)
-				var/track_host = " (<a href='byond://?src=\ref[dead];track=\ref[host]'>F</a>)"
+				var/track_host = " (<a href='byond://?src=\ref[dead];track=\ref[host_mob]'>F</a>)"
 				if(!istype(dead,/mob/new_player) && !istype(dead,/mob/living/brain)) //No meta-evesdropping
-					dead.show_message(SPAN_BORER("BORER: ([real_name] to [host.real_name][track_host]) [say_string]: [input]"), SHOW_MESSAGE_VISIBLE)
+					dead.show_message(SPAN_BORER("BORER: ([real_name] to [host_mob.real_name][track_host]) [say_string]: [input]"), SHOW_MESSAGE_VISIBLE)
 			return TRUE
 
 /mob/living/carbon/cortical_borer/verb/toggle_silence_inside_host()
 	set name = "Toggle speech inside Host"
-	set category = "Borer"
+	set category = "Borer.Misc"
 	set desc = "Toggle whether you will be able to say audible messages while inside your host."
 
 	if(talk_inside_host)
@@ -849,7 +849,7 @@
 
 /mob/living/proc/borer_comm()
 	set name = "Converse with Borer"
-	set category = "Borer"
+	set category = "Borer.Host"
 	set desc = "Communicate mentally with your borer."
 
 
@@ -870,32 +870,32 @@
 	log_say("BORER: ([key_name(src)] to [key_name(borer)]) [input]", src)
 	to_chat(src, SPAN_XENO("[src.real_name] says: [input]"), type = MESSAGE_TYPE_RADIO)
 	for (var/mob/dead in GLOB.dead_mob_list)
-		var/track_host = " (<a href='byond://?src=\ref[dead];track=\ref[borer.host]'>F</a>)"
+		var/track_host = " (<a href='byond://?src=\ref[dead];track=\ref[borer.host_mob]'>F</a>)"
 		if(!istype(dead,/mob/new_player) && !istype(dead,/mob/living/brain)) //No meta-evesdropping
 			dead.show_message(SPAN_BORER("BORER: ([name][track_host] to [borer.real_name]) says: [input]"), SHOW_MESSAGE_VISIBLE)
 	return TRUE
 
 /mob/living/proc/trapped_mind_comm()
 	set name = "Converse with Trapped Mind"
-	set category = "Borer"
+	set category = "Borer.Controlling"
 	set desc = "Communicate mentally with the trapped mind of your host."
 
 
-	var/mob/living/carbon/cortical_borer/B = has_brain_worms()
-	if(!B || !B.host_brain)
+	var/mob/living/carbon/cortical_borer/borer = has_brain_worms()
+	if(!borer || !borer.host_brain)
 		return FALSE
-	var/mob/living/captive_brain/CB = B.host_brain
+	var/mob/living/captive_brain/CB = borer.host_brain
 	var/input = stripped_input(src, "Please enter a message to tell the trapped mind.", "Message", "")
 	if(!input)
 		return FALSE
 
-	to_chat(CB, SPAN_XENO("[B.real_name] says: [input]"), type = MESSAGE_TYPE_RADIO)
-	log_say("BORER: ([key_name(src)] to [key_name(CB)]) [input]", B)
-	to_chat(src, SPAN_XENO("[B.real_name] says: [input]"), type = MESSAGE_TYPE_RADIO)
+	to_chat(CB, SPAN_XENO("[borer.real_name] says: [input]"), type = MESSAGE_TYPE_RADIO)
+	log_say("BORER: ([key_name(src)] to [key_name(CB)]) [input]", borer)
+	to_chat(src, SPAN_XENO("[borer.real_name] says: [input]"), type = MESSAGE_TYPE_RADIO)
 	for (var/mob/dead in GLOB.dead_mob_list)
-		var/track_borer = " (<a href='byond://?src=\ref[dead];track=\ref[B.host]'>F</a>)"
+		var/track_borer = " (<a href='byond://?src=\ref[dead];track=\ref[borer.host_mob]'>F</a>)"
 		if(!istype(dead,/mob/new_player) && !istype(dead,/mob/living/brain)) //No meta-evesdropping
-			dead.show_message(SPAN_BORER("BORER: ([B.real_name][track_borer] to [real_name] (trapped mind)) says: [input]"), SHOW_MESSAGE_VISIBLE)
+			dead.show_message(SPAN_BORER("BORER: ([borer.real_name][track_borer] to [real_name] (trapped mind)) says: [input]"), SHOW_MESSAGE_VISIBLE)
 	return TRUE
 
 
@@ -923,7 +923,7 @@
 				if(current_chem.chem_id == topic_chem)
 					break
 
-		if(!current_chem || !host || (borer_flags_status & BORER_STATUS_CONTROLLING) || !src || stat)
+		if(!current_chem || !host_mob || (borer_flags_status & BORER_STATUS_CONTROLLING) || !src || stat)
 			return FALSE
 		var/datum/reagent/R = GLOB.chemical_reagents_list[current_chem.chem_id]
 		if(enzymes < current_chem.cost)
@@ -933,11 +933,11 @@
 		if(current_chem.impure && ((contaminant + contamination) > max_contaminant))
 			to_chat(src, SPAN_XENOWARNING("You are too contaminated to secrete [current_chem.chem_name]!"))
 			return FALSE
-		to_chat(src, SPAN_XENONOTICE("You squirt a measure of [current_chem.chem_name] from your reservoirs into [host]'s bloodstream."))
+		to_chat(src, SPAN_XENONOTICE("You squirt a measure of [current_chem.chem_name] from your reservoirs into [host_mob]'s bloodstream."))
 		contaminant += contamination
-		host.reagents.add_reagent(current_chem.chem_id, current_chem.quantity)
+		host_mob.reagents.add_reagent(current_chem.chem_id, current_chem.quantity)
 		enzymes -= current_chem.cost
-		log_interact(src, host, "[key_name(src)] has injected [current_chem.quantity] units of [R.name] into their host, [key_name(host)]")
+		log_interact(src, host_mob, "[key_name(src)] has injected [current_chem.quantity] units of [R.name] into their host, [key_name(host_mob)]")
 
 		// This is used because we use a static set of datums to determine what chems are available,
 		// instead of a table or something. Thus, when we instance it, we can safely delete it

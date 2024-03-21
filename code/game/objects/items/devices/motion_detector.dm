@@ -199,6 +199,11 @@
 	if(ishuman(holder.loc))
 		return holder.loc
 
+/obj/item/device/motiondetector/xm43/get_user()
+	var/atom/holder = loc
+	if(ishuman(holder.loc))
+		return holder.loc
+
 /obj/item/device/motiondetector/proc/apply_debuff(mob/M)
 	return
 

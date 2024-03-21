@@ -60,6 +60,16 @@
 /obj/item/roller,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
+"aD" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/weapon/twohanded/yautja/spear,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/adminlevel/ert_station/clf_station)
 "aE" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -152,6 +162,13 @@
 	dir = 1
 	},
 /turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
+"cq" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	icon_state = "p_stair_full"
+	},
+/turf/closed/wall/mineral/sandstone/runed,
 /area/adminlevel/ert_station/clf_station)
 "cx" = (
 /obj/structure/sink{
@@ -286,6 +303,14 @@
 /obj/structure/prop/wooden_cross,
 /turf/open/gm/dirt,
 /area/adminlevel/ert_station/clf_station)
+"fY" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 5;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/sandstone/runed,
+/area/adminlevel/ert_station/clf_station)
 "gc" = (
 /obj/structure/closet/crate,
 /obj/item/device/encryptionkey/clf,
@@ -301,6 +326,17 @@
 "gj" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner,
 /turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"gH" = (
+/obj/item/hunting_trap{
+	desc = "A bizarre alien device used for trapping and killing prey.";
+	name = "Alien Mine"
+	},
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/turf/open/floor/sandstone/runed,
 /area/adminlevel/ert_station/clf_station)
 "gN" = (
 /obj/effect/decal/cleanable/egg_smudge,
@@ -624,6 +660,14 @@
 	icon_state = "kitchen"
 	},
 /area/adminlevel/ert_station/clf_station)
+"nE" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 10;
+	icon_state = "p_stair_full"
+	},
+/turf/closed/wall/mineral/sandstone/runed/decor,
+/area/adminlevel/ert_station/clf_station)
 "nJ" = (
 /obj/item/clothing/shoes/jackboots,
 /turf/open/floor/wood,
@@ -709,6 +753,17 @@
 	},
 /obj/structure/platform_decoration/kutjevo,
 /turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"oT" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
 /area/adminlevel/ert_station/clf_station)
 "pk" = (
 /obj/structure/flora/grass/tallgrass/jungle,
@@ -954,6 +1009,9 @@
 /area/adminlevel/ert_station/clf_station)
 "vE" = (
 /obj/structure/largecrate/supply/weapons/shotgun,
+/obj/structure/platform/kutjevo{
+	dir = 8
+	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
 "vI" = (
@@ -964,6 +1022,11 @@
 	dir = 1
 	},
 /turf/open/auto_turf/strata_grass/layer1,
+/area/adminlevel/ert_station/clf_station)
+"vW" = (
+/obj/structure/closet/coffin/predator,
+/obj/item/weapon/gun/energy/yautja/plasmapistol,
+/turf/open/gm/dirt,
 /area/adminlevel/ert_station/clf_station)
 "wI" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -1203,7 +1266,7 @@
 /obj/structure/machinery/door/airlock/sandstone/runed/destroyable{
 	name = "\improper Strange Temple"
 	},
-/turf/open/space/basic,
+/turf/open/floor/sandstone/runed,
 /area/adminlevel/ert_station/clf_station)
 "BP" = (
 /obj/structure/surface/table/reinforced,
@@ -1377,6 +1440,14 @@
 "HI" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/dirt,
+/area/adminlevel/ert_station/clf_station)
+"HW" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 9;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/sandstone/runed,
 /area/adminlevel/ert_station/clf_station)
 "Ia" = (
 /obj/structure/bed/chair{
@@ -1731,6 +1802,14 @@
 	icon_state = "wood-broken"
 	},
 /area/adminlevel/ert_station/clf_station)
+"Ps" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/sandstone/runed,
+/area/adminlevel/ert_station/clf_station)
 "PC" = (
 /obj/item/trash/candle,
 /obj/structure/surface/table/woodentable/fancy,
@@ -1925,9 +2004,6 @@
 	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/adminlevel/ert_station/clf_station)
-"Ub" = (
-/turf/closed/wall/mineral/sandstone/runed/decor,
-/area/adminlevel/ert_station/clf_station)
 "Uj" = (
 /obj/structure/closet/crate,
 /obj/item/clothing/head/welding,
@@ -2036,6 +2112,14 @@
 /obj/item/explosive/grenade/incendiary/molotov,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
+"WH" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 6;
+	icon_state = "p_stair_full"
+	},
+/turf/closed/wall/mineral/sandstone/runed,
+/area/adminlevel/ert_station/clf_station)
 "WM" = (
 /obj/structure/platform_decoration/kutjevo{
 	dir = 8
@@ -2094,6 +2178,17 @@
 "YB" = (
 /turf/open/gm/grass{
 	icon_state = "grass2"
+	},
+/area/adminlevel/ert_station/clf_station)
+"YX" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
 	},
 /area/adminlevel/ert_station/clf_station)
 "Ze" = (
@@ -2179,14 +2274,14 @@ ax
 ax
 ax
 ax
-KT
-KT
-KT
-KT
-KT
-KT
-KT
-KT
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
 "}
 (2,1,1) = {"
 ax
@@ -2220,15 +2315,15 @@ Rg
 vI
 ZO
 LO
+LO
+LO
+LO
+LO
 ax
-KT
-KT
-KT
-KT
-KT
-KT
-KT
-KT
+ax
+Rg
+ax
+ax
 "}
 (3,1,1) = {"
 ax
@@ -2261,16 +2356,16 @@ Rg
 Rg
 Rg
 tJ
-Ub
+LO
+gH
+HW
+oT
+nE
+Rg
+Rg
+Rg
 ax
-KT
-KT
-KT
-KT
-KT
-KT
-KT
-KT
+ax
 "}
 (4,1,1) = {"
 ax
@@ -2304,15 +2399,15 @@ Rg
 vI
 vI
 BC
+vI
+Ps
+aD
+cq
 ax
-KT
-KT
-KT
-KT
-KT
-KT
-KT
-KT
+Rg
+Rg
+Rg
+ax
 "}
 (5,1,1) = {"
 ax
@@ -2345,16 +2440,16 @@ ax
 Rg
 Rg
 iO
-Ub
+LO
+gH
+fY
+YX
+WH
 ax
-KT
-KT
-KT
-KT
-KT
-KT
-KT
-KT
+Rg
+Rg
+Rg
+ax
 "}
 (6,1,1) = {"
 ax
@@ -2388,15 +2483,15 @@ Rg
 Rg
 ZO
 LO
+LO
+LO
+LO
+LO
 ax
-KT
-KT
-KT
-KT
-KT
-KT
-KT
-KT
+ax
+Rg
+ax
+ax
 "}
 (7,1,1) = {"
 ax
@@ -2431,14 +2526,14 @@ Rg
 ax
 ax
 ax
-KT
-KT
-KT
-KT
-KT
-KT
-KT
-KT
+ax
+ax
+ax
+ax
+vW
+Rg
+ax
+ax
 "}
 (8,1,1) = {"
 KT
@@ -2472,15 +2567,15 @@ HI
 ax
 ax
 ax
-KT
-KT
-KT
-KT
-KT
-KT
-KT
-KT
-KT
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
 "}
 (9,1,1) = {"
 KT
@@ -2516,13 +2611,13 @@ ax
 KT
 KT
 KT
-KT
-KT
-KT
-KT
-KT
-KT
-KT
+ax
+ax
+ax
+ax
+ax
+ax
+ax
 "}
 (10,1,1) = {"
 KT
@@ -2559,12 +2654,12 @@ KT
 KT
 KT
 KT
-KT
-KT
-KT
-KT
-KT
-KT
+ax
+ax
+ax
+ax
+ax
+ax
 "}
 (11,1,1) = {"
 KT
@@ -2602,11 +2697,11 @@ KT
 KT
 KT
 KT
-KT
-KT
-KT
-KT
-KT
+ax
+ax
+ax
+ax
+ax
 "}
 (12,1,1) = {"
 KT
@@ -2645,10 +2740,10 @@ iG
 KT
 KT
 KT
-KT
-KT
-KT
-KT
+ax
+ax
+ax
+ax
 "}
 (13,1,1) = {"
 KT
@@ -2687,10 +2782,10 @@ pk
 pk
 KT
 KT
-KT
-KT
-KT
-KT
+ax
+ax
+ax
+ax
 "}
 (14,1,1) = {"
 DN
@@ -2729,10 +2824,10 @@ ON
 pk
 pk
 KT
-KT
-KT
-KT
-KT
+ax
+ax
+ax
+ax
 "}
 (15,1,1) = {"
 DN
@@ -2773,8 +2868,8 @@ pk
 ax
 ax
 ax
-KT
-KT
+ax
+ax
 "}
 (16,1,1) = {"
 KT
@@ -2815,8 +2910,8 @@ xL
 pk
 ax
 ax
-KT
-KT
+ax
+ax
 "}
 (17,1,1) = {"
 ax

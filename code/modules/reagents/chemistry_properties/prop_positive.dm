@@ -604,9 +604,9 @@
 			dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, TOX)
 			dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, CLONE)
 		if(dead.health < HEALTH_THRESHOLD_DEAD)
-			return
+			return TRUE
 		if(!COOLDOWN_FINISHED(src, ghost_notif))
-			return
+			return TRUE
 		var/mob/dead/observer/ghost = dead.get_ghost()
 		if(ghost?.client)
 			COOLDOWN_START(src, ghost_notif, 30 SECONDS)

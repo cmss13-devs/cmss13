@@ -25,7 +25,7 @@
 	name = "Neuroshock"
 	id = "borershock"
 	description = "A biosynthetic nerve agent that stimulates cardiomyocytes in critical condition."
-	properties = list(PROPERTY_CROSSMETABOLIZING = 2, PROPERTY_DEFIBRILLATING = 1, PROPERTY_INTRAVENOUS = 1)
+	properties = list(PROPERTY_CROSSMETABOLIZING = 2, PROPERTY_DEFIBRILLATING = 2, PROPERTY_INTRAVENOUS = 1)
 
 /datum/reagent/borer/transformative
 	name = "Biomend"

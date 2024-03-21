@@ -5,7 +5,7 @@
 	mob_max = 6
 	probability = 0
 	objectives = "Stealthily assault the ship. Use your silenced weapons, tranquilizers, and night vision to get the advantage on the enemy. Take out the power systems, comms and engine. Stick together and keep a low profile."
-	shuttle_id = "Distress_UPP"
+	shuttle_id = MOBILE_SHUTTLE_ID_ERT3
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_upp
 	item_spawn = /obj/effect/landmark/ert_spawns/distress_upp/item
 	hostility = TRUE

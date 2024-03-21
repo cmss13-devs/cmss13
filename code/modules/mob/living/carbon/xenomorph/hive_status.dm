@@ -53,7 +53,6 @@
 	/// how many burrowed is going to spawn during larva surge
 	var/hijack_burrowed_left = 0
 
-	var/ignore_slots = FALSE
 	var/dynamic_evolution = TRUE
 	var/evolution_rate = 3 // Only has use if dynamic_evolution is false
 	var/evolution_bonus = 0
@@ -1052,7 +1051,6 @@
 	allow_no_queen_actions = TRUE
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
-	ignore_slots = TRUE
 	latejoin_burrowed = FALSE
 
 /datum/hive_status/forsaken
@@ -1067,7 +1065,6 @@
 	allow_no_queen_actions = TRUE
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
-	ignore_slots = TRUE
 	latejoin_burrowed = FALSE
 
 	need_round_end_check = TRUE
@@ -1108,7 +1105,6 @@
 	allow_no_queen_actions = TRUE
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
-	ignore_slots = TRUE
 	latejoin_burrowed = FALSE
 
 	need_round_end_check = TRUE
@@ -1138,7 +1134,6 @@
 	allow_no_queen_actions = TRUE
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
-	ignore_slots = TRUE
 	latejoin_burrowed = FALSE
 
 	var/mob/living/carbon/human/leader

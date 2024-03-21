@@ -385,34 +385,49 @@ Additional game mode variables.
 			available_xenos[larva_option] = list(hive)
 
 	if(!available_xenos.len || (instant_join && !available_xenos_non_ssd.len))
-		if(!xeno_candidate.client || !xeno_candidate.client.prefs || !(xeno_candidate.client.prefs.be_special & BE_ALIEN_AFTER_DEATH))
-			to_chat(xeno_candidate, SPAN_WARNING("There aren't any available xenomorphs or burrowed larvae. You can try getting spawned as a chestburster larva by toggling your Xenomorph candidacy in Preferences -> Toggle SpecialRole Candidacy."))
+		if(!xeno_candidate.client?.prefs || !(xeno_candidate.client.prefs.be_special & BE_ALIEN_AFTER_DEATH))
+			to_chat(xeno_candidate, SPAN_WARNING("There aren't any available xenomorphs or burrowed larvae. \
+				You can try getting spawned as a chestburster larva by toggling your Xenomorph candidacy in \
+				Preferences -> Toggle SpecialRole Candidacy."))
 			return FALSE
 		to_chat(xeno_candidate, SPAN_WARNING("There aren't any available xenomorphs or burrowed larvae."))
 
-		// Give the player a cached message of their queue status if they are an observer
+		if(!isobserver(xeno_candidate))
+			return FALSE
 		var/mob/dead/observer/candidate_observer = xeno_candidate
-		if(istype(candidate_observer))
-			if(candidate_observer.larva_queue_cached_message)
-				to_chat(xeno_candidate, SPAN_XENONOTICE(candidate_observer.larva_queue_cached_message))
-				return FALSE
 
-			// No cache, lets check now then
-			message_alien_candidates(get_alien_candidates(), dequeued = 0, cache_only = TRUE)
-			if(candidate_observer.larva_queue_cached_message)
-				var/datum/hive_status/cur_hive
-				for(var/hive_num in GLOB.hive_datum)
-					cur_hive = GLOB.hive_datum[hive_num]
-					for(var/mob_name in cur_hive.banished_ckeys)
-						if(cur_hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
-							candidate_observer.larva_queue_cached_message += "\nNOTE: You are banished from the [cur_hive] and you may not rejoin unless the Queen re-admits you or dies. Your queue number won't update until there is a hive you aren't banished from."
-							break
-				to_chat(xeno_candidate, SPAN_XENONOTICE(candidate_observer.larva_queue_cached_message))
-				return FALSE
+		// If an observing mod wants to join as a xeno, disable their larva protection so that they can enter the queue.
+		if(check_client_rights(candidate_observer.client, R_MOD, FALSE))
+			candidate_observer.admin_larva_protection = FALSE
 
-			// We aren't in queue yet, lets teach them about the queue then
-			candidate_observer.larva_queue_cached_message = "You are currently awaiting assignment in the larva queue. The ordering is based on your time of death or the time you joined. When you have been dead long enough and are not inactive, you will periodically receive messages where you are in the queue relative to other currently valid xeno candidates. Your current position will shift as others change their preferences or go inactive, but your relative position compared to all observers is the same. Note: Playing as a facehugger or in the thunderdome will not alter your time of death. This means you won't lose your relative place in queue if you step away, disconnect, play as a facehugger, or play in the thunderdome."
-			to_chat(xeno_candidate, SPAN_XENONOTICE(candidate_observer.larva_queue_cached_message))
+		// Give the player a cached message of their queue status if they are an observer
+		if(candidate_observer.larva_queue_cached_message)
+			to_chat(candidate_observer, SPAN_XENONOTICE(candidate_observer.larva_queue_cached_message))
+			return FALSE
+
+		// No cache, lets check now then
+		message_alien_candidates(get_alien_candidates(), dequeued = 0, cache_only = TRUE)
+
+		// If we aren't in the queue yet, let's teach them about the queue
+		if(!candidate_observer.larva_queue_cached_message)
+			candidate_observer.larva_queue_cached_message = "You are currently awaiting assignment in the larva queue. \
+				The ordering is based on your time of death or the time you joined. When you have been dead long enough and are not inactive, \
+				you will periodically receive messages where you are in the queue relative to other currently valid xeno candidates. \
+				Your current position will shift as others change their preferences or go inactive, but your relative position compared to all observers is the same. \
+				Note: Playing as a facehugger or in the thunderdome will not alter your time of death. \
+				This means you won't lose your relative place in queue if you step away, disconnect, play as a facehugger, or play in the thunderdome."
+			to_chat(candidate_observer, SPAN_XENONOTICE(candidate_observer.larva_queue_cached_message))
+			return FALSE
+
+		var/datum/hive_status/cur_hive
+		for(var/hive_num in GLOB.hive_datum)
+			cur_hive = GLOB.hive_datum[hive_num]
+			for(var/mob_name in cur_hive.banished_ckeys)
+				if(cur_hive.banished_ckeys[mob_name] == candidate_observer.ckey)
+					candidate_observer.larva_queue_cached_message += "\nNOTE: You are banished from the [cur_hive] and you may not rejoin unless \
+						the Queen re-admits you or dies. Your queue number won't update until there is a hive you aren't banished from."
+					break
+		to_chat(candidate_observer, SPAN_XENONOTICE(candidate_observer.larva_queue_cached_message))
 		return FALSE
 
 	var/mob/living/carbon/xenomorph/new_xeno
@@ -934,7 +949,7 @@ Additional game mode variables.
 	var/marine_pop_size = 0
 	var/uscm_personnel_count = 0
 	for(var/mob/living/carbon/human/human as anything in GLOB.alive_human_list)
-		if(human.faction == FACTION_USCM)
+		if(human.faction == FACTION_MARINE)
 			uscm_personnel_count++
 			var/datum/job/job = GET_MAPPED_ROLE(human.job)
 			marine_pop_size += GLOB.RoleAuthority.calculate_role_weight(job)

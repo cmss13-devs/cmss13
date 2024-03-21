@@ -316,14 +316,15 @@
 			return FALSE
 		var/mob/living/carbon/human/H = user
 		if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_SMARTGUN) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
-			to_chat(H, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
+			balloon_alert(user, "insufficient skills")
 			return FALSE
 		if(requires_harness)
 			if(!H.wear_suit || !(H.wear_suit.flags_inventory & SMARTGUN_HARNESS))
-				to_chat(H, SPAN_WARNING("You need a harness suit to be able to fire [src]..."))
+				balloon_alert(user, "harness required")
 				return FALSE
 		if(cover_open)
 			to_chat(H, SPAN_WARNING("You can't fire \the [src] with the feed cover open! (alt-click to close)"))
+			balloon_alert(user, "cannot fire; feed cover open")
 			return FALSE
 
 /obj/item/weapon/gun/smartgun/unique_action(mob/user)
@@ -337,6 +338,7 @@
 		return
 	secondary_toggled = !secondary_toggled
 	to_chat(user, "[icon2html(src, usr)] You changed \the [src]'s ammo preparation procedures. You now fire [secondary_toggled ? "armor shredding rounds" : "highly precise rounds"].")
+	balloon_alert(user, "firing [secondary_toggled ? "armor shredding" : "highly precise"]")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	ammo = secondary_toggled ? ammo_secondary : ammo_primary
 	var/datum/action/item_action/smartgun/toggle_ammo_type/TAT = locate(/datum/action/item_action/smartgun/toggle_ammo_type) in actions
@@ -387,7 +389,7 @@
 			return FALSE
 		return TRUE
 	if(!battery || battery.power_cell.charge == 0)
-		to_chat(usr, SPAN_WARNING("[src] emits a low power warning and immediately shuts down!"))
+		balloon_alert(usr, "low power")
 		return FALSE
 	return FALSE
 

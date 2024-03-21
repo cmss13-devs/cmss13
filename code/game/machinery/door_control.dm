@@ -176,9 +176,9 @@
 		flick(initial(icon_state) + "-denied",src)
 		return
 
-	// safety first
-	if(!is_mainship_level(SSshuttle.vehicle_elevator.z))
-		flick(initial(icon_state) + "-denied",src)
+	// If someone's trying to lower the railings but the elevator isn't in the vehicle bay.
+	if(!desiredstate && !is_mainship_level(SSshuttle.vehicle_elevator.z))
+		flick(initial(icon_state) + "-denied", src) // Safety first!
 		return
 
 	use_power(5)

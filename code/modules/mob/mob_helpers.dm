@@ -603,7 +603,10 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	for(var/mob/dead/observer/ghost as anything in GLOB.observer_list)
 		if(!ghost.client)
 			continue
-		ghost.notify_ghost(message, ghost_sound, enter_link, enter_text, source, alert_overlay, action, flashwindow, ignore_mapload, ignore_key, header, notify_volume, extra_large)
+		var/specific_ghost_sound = ghost_sound
+		if(!(ghost.client?.prefs?.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS))
+			specific_ghost_sound = null
+		ghost.notify_ghost(message, specific_ghost_sound, enter_link, enter_text, source, alert_overlay, action, flashwindow, ignore_mapload, ignore_key, header, notify_volume, extra_large)
 
 /mob/dead/observer/proc/notify_ghost(message, ghost_sound, enter_link, enter_text, atom/source, mutable_appearance/alert_overlay, action = NOTIFY_JUMP, flashwindow = FALSE, ignore_mapload = TRUE, ignore_key, header, notify_volume = 100, extra_large = FALSE) //Easy notification of a single ghosts.
 	if(ignore_mapload && SSatoms.initialized != INITIALIZATION_INNEW_REGULAR)	//don't notify for objects created during a map load

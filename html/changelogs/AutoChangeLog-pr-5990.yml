@@ -1,0 +1,4 @@
+author: "Vicacrov"
+delete-after: True
+changes:
+  - rscadd: "Tacmap announcements are now also muted if you have hear/silence ghost announcements toggled on."

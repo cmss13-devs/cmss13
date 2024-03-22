@@ -33,7 +33,9 @@
 	layer = ABOVE_FLY_LAYER
 	stat = DEAD
 	mob_flags = KNOWS_TECHNOLOGY
-	var/adminlarva = FALSE
+
+	/// If the observer is an admin, are they excluded from the xeno queue?
+	var/admin_larva_protection = TRUE // Enabled by default
 	var/ghostvision = TRUE
 	var/can_reenter_corpse
 	var/started_as_observer //This variable is set to 1 when you enter the game as an observer.

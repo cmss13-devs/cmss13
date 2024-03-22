@@ -525,7 +525,8 @@
 	hallucination = 0
 	jitteriness = 0
 	dizziness = 0
-
+	stamina.apply_damage(-stamina.max_stamina)
+	
 	// restore all of a human's blood
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src

@@ -69,6 +69,9 @@
 	/// If hit limit of larva from pylons
 	var/hit_larva_pylon_limit = FALSE
 
+	/// Bonus from having both pylons held for a time
+	var/double_pylon_bonus = 0
+
 	var/see_humans_on_tacmap = FALSE
 
 	var/list/hive_inherant_traits
@@ -951,7 +954,7 @@
 		var/turf/turf = get_turf(current_human)
 		if(is_ground_level(turf?.z))
 			groundside_humans_weighted_count += GLOB.RoleAuthority.calculate_role_weight(job)
-	hit_larva_pylon_limit = (get_real_total_xeno_count() + stored_larva) > (groundside_humans_weighted_count * ENDGAME_LARVA_CAP_MULTIPLIER)
+	hit_larva_pylon_limit = (get_real_total_xeno_count() + stored_larva) > (groundside_humans_weighted_count * ENDGAME_LARVA_CAP_MULTIPLIER + (0.03 * double_pylon_bonus))
 	hive_ui.update_pylon_status()
 	return hit_larva_pylon_limit
 

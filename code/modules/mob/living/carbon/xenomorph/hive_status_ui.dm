@@ -125,6 +125,8 @@
 		pylon_status = "The hive's power has surpassed what the pylons can provide."
 	else
 		pylon_status = "Pylons are strengthening our numbers!"
+	if(assoc_hive.get_structure_count(XENO_STRUCTURE_PYLON) >= 2)
+		pylon_status += " Pylon Integration: [assoc_hive.double_pylon_bonus]/[DOUBLE_PYLON_BONUS_MAX]"
 	if(send_update)
 		SStgui.update_uis(src)
 

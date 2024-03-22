@@ -180,6 +180,12 @@
 /// The time until you can re-corrupt a comms relay after the last pylon was destroyed
 #define XENO_PYLON_DESTRUCTION_DELAY (5 MINUTES)
 
+/// The time it takes for the double pylon bonus to be activated
+#define XENO_DOUBLE_PYLON_BONUS_STARTUP_COOLDOWN (10 MINUTES)
+
+/// The time it takes for the double pylon bonus to be upgraded
+#define XENO_DOUBLE_PYLON_BONUS_UPGRADE_COOLDOWN (7.5 MINUTES)
+
 /// Evolution boost during hijack
 #define XENO_HIJACK_EVILUTION_BUFF 10
 

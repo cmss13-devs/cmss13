@@ -33,7 +33,7 @@ SUBSYSTEM_DEF(xevolution)
 			continue
 
 		if(!HS.dynamic_evolution)
-			boost_power[HS.hivenumber] = HS.evolution_rate + HS.evolution_bonus
+			boost_power[HS.hivenumber] = HS.evolution_rate + HS.evolution_bonus + (HS.double_pylon_bonus * 0.5)
 			HS.hive_ui.update_burrowed_larva()
 			continue
 
@@ -49,7 +49,7 @@ SUBSYSTEM_DEF(xevolution)
 
 		boost_power_new = clamp(boost_power_new, BOOST_POWER_MIN, BOOST_POWER_MAX)
 
-		boost_power_new += HS.evolution_bonus
+		boost_power_new += HS.evolution_bonus + (HS.double_pylon_bonus * 0.5)
 		if(!force_boost_power)
 			boost_power[HS.hivenumber] = boost_power_new
 

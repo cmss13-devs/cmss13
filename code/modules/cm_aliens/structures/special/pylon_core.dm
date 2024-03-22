@@ -1,5 +1,6 @@
 #define PYLON_REPAIR_TIME (4 SECONDS)
 #define PYLON_WEEDS_REGROWTH_TIME (15 SECONDS)
+#define DOUBLE_PYLON_BONUS_MAX 3
 
 //Hive Pylon - Remote building location for other structures, generates strong weeds
 
@@ -49,8 +50,8 @@
 
 /obj/effect/alien/resin/special/pylon/process(delta_time)
 	if(lesser_drone_spawns < lesser_drone_spawn_limit)
-		// One every 10 seconds while on ovi, one every 120-ish seconds while off ovi
-		lesser_drone_spawns = min(lesser_drone_spawns + ((linked_hive.living_xeno_queen?.ovipositor ? 0.1 : 0.008) * delta_time), lesser_drone_spawn_limit)
+		// One every 10 seconds while on ovi, one every 120-ish seconds while off ovi, every double pylon bonus takes off ~30 seconds
+		lesser_drone_spawns = min(lesser_drone_spawns + (linked_hive.living_xeno_queen?.ovipositor ? 0.1 : (0.008 + (linked_hive.double_pylon_bonus * 0.03)) * delta_time), lesser_drone_spawn_limit)
 
 /obj/effect/alien/resin/special/pylon/attack_alien(mob/living/carbon/xenomorph/M)
 	if(isxeno_builder(M) && M.a_intent == INTENT_HELP && M.hivenumber == linked_hive.hivenumber)
@@ -159,6 +160,7 @@
 				xeno_announcement(SPAN_XENOANNOUNCE("We have lost our control of the tall's communication relay at [get_area(src)]."), hivenumber, XENO_GENERAL_ANNOUNCE)
 			else
 				xeno_announcement(SPAN_XENOANNOUNCE("Another hive has lost control of the tall's communication relay at [get_area(src)]."), hivenumber, XENO_GENERAL_ANNOUNCE)
+		double_pylon(FALSE)
 		linked_hive.hive_ui.update_pylon_status()
 	return ..()
 
@@ -178,7 +180,11 @@
 
 	activated = TRUE
 	linked_hive.check_if_hit_larva_from_pylon_limit()
+	linked_hive.hive_ui.update_pylon_status()
 	addtimer(CALLBACK(src, PROC_REF(give_larva)), XENO_PYLON_ACTIVATION_COOLDOWN, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_LOOP|TIMER_DELETE_ME)
+	if(linked_hive.get_structure_count(XENO_STRUCTURE_PYLON) >= 2)
+		addtimer(CALLBACK(src, PROC_REF(double_pylon)), XENO_DOUBLE_PYLON_BONUS_STARTUP_COOLDOWN, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_DELETE_ME)
+
 
 /// Looped proc via timer to give larva after time
 /obj/effect/alien/resin/special/pylon/endgame/proc/give_larva()
@@ -194,6 +200,50 @@
 	linked_hive.partial_larva += (linked_hive.get_real_total_xeno_count() + linked_hive.stored_larva) * LARVA_ADDITION_MULTIPLIER
 	linked_hive.convert_partial_larva_to_full_larva()
 	linked_hive.hive_ui.update_burrowed_larva()
+
+/// Handles the both adding and removing double_pylon_bonus
+// After 10 minutes of holding both pylons, it gets upgraded to stage 1, with stages being upgraded every 7.5 minutes until it maxes at stage 3
+// Every stage gives a bonus to lesser generation time, larva generation, and evilution
+/obj/effect/alien/resin/special/pylon/endgame/proc/double_pylon(double_pylon_check)
+	if(double_pylon_check == FALSE || linked_hive.get_structure_count(XENO_STRUCTURE_PYLON) < 2)
+		linked_hive.double_pylon_bonus = 0
+		return
+
+	if(linked_hive.double_pylon_bonus < 2)
+		linked_hive.double_pylon_bonus++
+		linked_hive.hive_ui.update_pylon_status()
+
+		marine_announcement("ALERT.\n\nEnergy readings have spiked at the communication relays! \n\nDANGER: Biological Hazards have increased their utilization the relays, advising immediate termination of hazard by ground forces.", "[MAIN_AI_SYSTEM] Biological Scanner")
+
+		for(var/hivenumber in GLOB.hive_datum)
+			var/datum/hive_status/checked_hive = GLOB.hive_datum[hivenumber]
+			if(!length(checked_hive.totalXenos))
+				continue
+
+			if(checked_hive == linked_hive)
+				xeno_announcement(SPAN_XENOANNOUNCE("Our grip over the communication relays has tightened, continue holding them!"), hivenumber, XENO_GENERAL_ANNOUNCE)
+			else
+				xeno_announcement(SPAN_XENOANNOUNCE("Another hive has tightened their grip over the tall's communication relays.[linked_hive.faction_is_ally(checked_hive.name) ? "" : " Stop them!"]"), hivenumber, XENO_GENERAL_ANNOUNCE)
+
+		addtimer(CALLBACK(src, PROC_REF(double_pylon)), XENO_DOUBLE_PYLON_BONUS_UPGRADE_COOLDOWN, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_DELETE_ME) // in 7.5 minutes it will call again to upgrade
+		return
+
+	if(linked_hive.double_pylon_bonus == DOUBLE_PYLON_BONUS_MAX - 1)
+		linked_hive.double_pylon_bonus++
+		linked_hive.hive_ui.update_pylon_status()
+
+		marine_announcement("ALERT.\n\nEnergy readings have spiked at the communication relays! \n\nDANGER: Biological Hazards have now fully utilized the relays, advising immediate termination of hazard by ground forces.", "[MAIN_AI_SYSTEM] Biological Scanner")
+
+		for(var/hivenumber in GLOB.hive_datum)
+			var/datum/hive_status/checked_hive = GLOB.hive_datum[hivenumber]
+			if(!length(checked_hive.totalXenos))
+				continue
+
+			if(checked_hive == linked_hive)
+				xeno_announcement(SPAN_XENOANNOUNCE("We are now fully utilizing the communication relays, continue holding them!"), hivenumber, XENO_GENERAL_ANNOUNCE)
+			else
+				xeno_announcement(SPAN_XENOANNOUNCE("Another hive is now fully utilizing the tall's communication relays.[linked_hive.faction_is_ally(checked_hive.name) ? "" : " Stop them!"]"), hivenumber, XENO_GENERAL_ANNOUNCE)
+		return
 
 //Hive Core - Generates strong weeds, supports other buildings
 /obj/effect/alien/resin/special/pylon/core

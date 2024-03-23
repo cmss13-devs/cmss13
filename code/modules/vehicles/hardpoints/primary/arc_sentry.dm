@@ -117,8 +117,6 @@
 		sentry_target = null
 		return
 
-	if(!islist(targets))
-		return
 	if(!targets.Find(new_target))
 		targets.Add(new_target)
 

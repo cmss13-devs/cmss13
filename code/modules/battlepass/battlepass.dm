@@ -76,18 +76,46 @@
 	/// All earned battlepass rewards
 	var/list/datum/battlepass_reward/rewards = list()
 
+	/// The tier of the battlepass the last time on_tier_up() was called
+	var/previous_on_tier_up_tier = 0
+
 /datum/battlepass/proc/add_xp(xp_amount)
 	xp += xp_amount
 	if(xp >= xp_tierup)
-		xp -= xp_tierup
-		tier++
+		var/tier_increase = round(xp / xp_tierup)
+		xp -= (tier_increase * xp_tierup)
+		tier += tier_increase
 		on_tier_up()
 
 /datum/battlepass/proc/on_tier_up()
-	// todo: add a sufficiently annoying visual popup
-	var/reward_path = SSbattlepass.season_rewards[tier]
-	var/datum/battlepass_reward/reward = new reward_path
-	rewards += reward
+	for(var/i in previous_on_tier_up_tier + 1 to tier)
+		var/reward_path = SSbattlepass.season_rewards[i]
+		var/datum/battlepass_reward/reward = new reward_path
+		rewards += reward
+
+	display_tier_up_popup()
+
+	var/list/types_in_rewards = list()
+	for(var/datum/battlepass_reward/reward as anything in rewards)
+		if(reward.type in types_in_rewards)
+			rewards -= reward
+			qdel(reward)
+			continue
+
+		types_in_rewards += reward.type
+
+	previous_on_tier_up_tier = tier
+
+/datum/battlepass/proc/display_tier_up_popup()
+	if(!owning_client)
+		return
+
+	var/client/user_client = owning_client.resolve()
+	if(!user_client.mob)
+		return
+
+	user_client.mob.overlay_fullscreen("battlepass_tierup", /atom/movable/screen/fullscreen/battlepass)
+	addtimer(CALLBACK(user_client.mob, TYPE_PROC_REF(/mob, clear_fullscreen), "battlepass_tierup"), 1.2 SECONDS) // 1.2s is the length of the tierup anim
 
 /// Check if it's been 24h since daily challenges were last assigned
 /datum/battlepass/proc/check_daily_challenge_reset()
@@ -129,8 +157,13 @@
 
 /datum/battlepass/proc/serialize_rewards()
 	. = list()
+	var/list/saved_reward_paths = list()
 	for(var/datum/battlepass_reward/reward as anything in rewards)
+		if(reward.type in saved_reward_paths)
+			continue
+
 		. += reward.type
+		saved_reward_paths += reward.type
 
 /// Provided a list of lists for daily challenges, load daily challenges from the lists
 /datum/battlepass/proc/load_daily_challenges(list/challenge_data)
@@ -148,9 +181,14 @@
 		challenge.deserialize(entry)
 
 /datum/battlepass/proc/load_rewards(list/reward_data)
+	var/list/loaded_paths = list()
 	for(var/path in reward_data)
+		if(path in loaded_paths)
+			continue
+
 		var/datum/battlepass_reward/reward = new path
 		rewards += reward
+		loaded_paths += path
 
 /// Called whenever a challenge is completed
 /datum/battlepass/proc/on_challenge_complete(datum/battlepass_challenge/challenge)

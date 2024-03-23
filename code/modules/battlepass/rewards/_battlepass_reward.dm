@@ -5,7 +5,7 @@
 	/// The name of this reward
 	var/name = "" as text
 	/// The iconfile that contains the image of this reward
-	var/icon
+	var/icon = 'code/modules/battlepass/rewards/sprites/battlepass.dmi'
 	/// The iconstate of the image of this reward
 	var/icon_state = "" as text
 	/// What category this item falls under (armor, toy, etc)
@@ -15,7 +15,7 @@
 
 /datum/battlepass_reward/proc/can_claim(mob/target_mob)
 	if(!iscarbon(target_mob))
-		return FALSE	
+		return FALSE
 
 	var/mob/living/carbon/carbon_mob = target_mob
 

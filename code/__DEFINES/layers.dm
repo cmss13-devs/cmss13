@@ -162,6 +162,8 @@
 #define FULLSCREEN_VULTURE_SCOPE_LAYER 17.21
 /// in critical
 #define FULLSCREEN_CRIT_LAYER 17.25
+/// tier-up battlepass
+#define FULLSCREEN_BATTLEPASS_TIERUP 18
 
 #define HUD_LAYER 19
 #define ABOVE_HUD_LAYER 20

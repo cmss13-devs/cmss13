@@ -179,6 +179,11 @@
 	icon_state = "vulture_scope_overlay_spotter"
 	should_resize = FALSE
 
+/atom/movable/screen/fullscreen/battlepass
+	icon_state = "battlepass_tierup"
+	layer = FULLSCREEN_BATTLEPASS_TIERUP
+	show_when_dead = TRUE
+
 //Weather overlays//
 
 /atom/movable/screen/fullscreen/weather

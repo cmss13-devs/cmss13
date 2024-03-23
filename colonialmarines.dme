@@ -1523,6 +1523,7 @@
 #include "code\modules\battlepass\rewards\_battlepass_reward.dm"
 #include "code\modules\battlepass\rewards\general_rewards.dm"
 #include "code\modules\battlepass\rewards\marine_rewards.dm"
+#include "code\modules\battlepass\rewards\xeno_rewards.dm"
 #include "code\modules\battlepass\rewards\code\particles.dm"
 #include "code\modules\buildmode\bm-mode.dm"
 #include "code\modules\buildmode\buildmode.dm"

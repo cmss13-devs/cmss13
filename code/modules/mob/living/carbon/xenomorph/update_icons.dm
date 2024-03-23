@@ -2,6 +2,7 @@
 //Abby
 
 //Xeno Overlays Indexes//////////
+#define X_HALO_LAYER 11
 #define X_BACK_LAYER 10
 #define X_HEAD_LAYER 9
 #define X_SUIT_LAYER 8
@@ -12,7 +13,7 @@
 #define X_TARGETED_LAYER 3
 #define X_LEGCUFF_LAYER 2
 #define X_FIRE_LAYER 1
-#define X_TOTAL_LAYERS 10
+#define X_TOTAL_LAYERS 11
 /////////////////////////////////
 
 
@@ -236,6 +237,14 @@
 	apply_overlay(X_SUIT_LAYER)
 	addtimer(CALLBACK(src, PROC_REF(remove_overlay), X_SUIT_LAYER), 20)
 
+/mob/living/carbon/xenomorph/proc/create_halo()
+	if(has_halo)
+		return
+
+	overlays_standing[X_HALO_LAYER] = image("icon" = 'code/modules/battlepass/rewards/sprites/halo.dmi', "icon_state" = get_halo_iconname())
+	apply_overlay(X_HALO_LAYER)
+	has_halo = TRUE
+
 /mob/living/carbon/xenomorph/proc/create_custom_empower(icolor, ialpha = 255, small_xeno = FALSE)
 	remove_suit_layer()
 
@@ -337,3 +346,4 @@
 #undef X_R_HAND_LAYER
 #undef X_LEGCUFF_LAYER
 #undef X_FIRE_LAYER
+#undef X_HALO_LAYER

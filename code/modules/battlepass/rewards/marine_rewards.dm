@@ -13,7 +13,6 @@
 
 /datum/battlepass_reward/marine/diamond_armor
 	name = "Diamond Armor"
-	icon = 'code/modules/battlepass/rewards/sprites/battlepass.dmi'
 	icon_state = "diamond_armor"
 	category = REWARD_CATEGORY_ARMOR
 
@@ -72,7 +71,7 @@
 			WEAR_HEAD = 'code/modules/battlepass/rewards/sprites/armor.dmi'
 		)
 		marine_helmet.update_icon()
-
+	return TRUE
 
 
 /datum/battlepass_reward/marine/toy
@@ -86,13 +85,13 @@
 	var/mob/living/carbon/human/target_human = target_mob
 	var/obj/item/new_toy = new item_path
 	target_human.put_in_hands(new_toy, TRUE)
+	return TRUE
 
 
 /datum/battlepass_reward/marine/toy/sus_crayon
 	name = "Suspicious Crayon"
-	icon = 'code/modules/battlepass/rewards/sprites/battlepass.dmi'
 	icon_state = "sus_crayon"
-	item_path = /obj/item/toy/crayon/suspicious
+	item_path = /obj/item/toy/suspicious
 
 
 /datum/battlepass_reward/marine/toy/runner_toy

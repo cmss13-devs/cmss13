@@ -6,3 +6,4 @@
 #define REWARD_CATEGORY_HELMET_FIRE "helmet_fire"
 #define REWARD_CATEGORY_PARTICLE "particle"
 #define REWARD_CATEGORY_TOY "toy"
+#define REWARD_CATEGORY_OVERLAY "overlay"

@@ -96,41 +96,6 @@
 		return NONE
 
 	return try_fire(target, null, params)
-/*
-/obj/item/hardpoint/primary/arc_sentry/clear_los()
-	var/turf/muzzle_turf = get_origin_turf()
-
-	var/turf/checking_turf = muzzle_turf
-	while(!(owner in checking_turf))
-		// Dense turfs block LoS
-		if(checking_turf.density)
-			return FALSE
-
-		// Ensure that we can pass over all objects in the turf
-		for(var/obj/object in checking_turf)
-			// Since vehicles are multitile the
-			if(object == owner)
-				continue
-
-			// Non-dense objects are irrelevant
-			if(!object.density)
-				continue
-
-			// Make sure we can pass object from all directions
-			if(!HAS_FLAG(object.pass_flags.flags_can_pass_all, PASS_OVER_THROW_ITEM))
-				if(!HAS_FLAG(object.flags_atom, ON_BORDER))
-					return FALSE
-				//If we're behind the object, check the behind pass flags
-				else if(dir == object.dir && !HAS_FLAG(object.pass_flags.flags_can_pass_behind, PASS_OVER_THROW_ITEM))
-					return FALSE
-				//If we're in front, check front pass flags
-				else if(dir == turn(object.dir, 180) && !HAS_FLAG(object.pass_flags.flags_can_pass_front, PASS_OVER_THROW_ITEM))
-					return FALSE
-
-		// Trace back towards the vehicle
-		checking_turf = get_step(checking_turf, turn(dir,180))
-
-	return TRUE*/
 
 
 /obj/item/hardpoint/primary/arc_sentry/generate_bullet(mob/user, turf/origin_turf)

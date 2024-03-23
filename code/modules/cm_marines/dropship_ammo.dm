@@ -410,7 +410,7 @@
 	name = "\improper AGR-59-I 'Mini-Mike'"
 	desc = "The AGR-59-I 'Mini-Mike' incendiary minirocket is a cheap and efficient means of putting hate down range AND setting them on fire! Though rockets lack a guidance package, it makes up for it in ammunition count. Can be loaded into the LAU-229 Rocket Pod."
 	icon_state = "minirocket_inc"
-	point_cost = 500
+	point_cost = 390
 	fire_mission_delay = 3 //high cooldown
 
 /obj/structure/ship_ammo/minirocket/incendiary/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)

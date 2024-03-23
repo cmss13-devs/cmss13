@@ -64,7 +64,6 @@
 		antenna.deploying = FALSE
 		return
 
-	STOP_PROCESSING(SSslowobj, vehicle)
 	to_chat(user, SPAN_NOTICE("You retract [antenna], enabling the ARC to move again."))
 	playsound(user, 'sound/machines/hydraulics_2.ogg', 80, TRUE)
 	vehicle.antenna_deployed = !vehicle.antenna_deployed
@@ -78,7 +77,6 @@
 		antenna.deploying = FALSE
 		return
 
-	START_PROCESSING(SSslowobj, vehicle)
 	to_chat(user, SPAN_NOTICE("You extend [antenna], locking the ARC in place."))
 	playsound(user, 'sound/machines/hydraulics_2.ogg', 80, TRUE)
 	vehicle.antenna_deployed = !vehicle.antenna_deployed
@@ -86,7 +84,7 @@
 	vehicle.update_icon()
 	SEND_SIGNAL(vehicle, COMSIG_ARC_ANTENNA_TOGGLED)
 
-/obj/vehicle/multitile/arc/open_controls_guide()
+/obj/vehicle/multitile/arc/proc/open_arc_controls_guide()
 	set name = "Vehicle Controls Guide"
 	set desc = "MANDATORY FOR FIRST PLAY AS VEHICLE CREWMAN OR AFTER UPDATES."
 	set category = "Vehicle"
@@ -111,7 +109,7 @@
 	var/dat = "<b><i>Common verbs:</i></b><br>\
 	1. <b>\"G: Name Vehicle\"</b> - used to add a custom name to the vehicle. Single use. 26 characters maximum.<br> \
 	2. <b>\"I: Get Status Info\"</b> - brings up \"Vehicle Status Info\" window with all available information about your vehicle.<br> \
-	3. <b>\"G: Toggle Sensor Antenna\"</b> - extend or retract the ARC's sensor antenna. While extended, all unknown lifeforms within a large range can be seen by all on the tacmap, but the ARC cannot move. Additionally enables the automated RE700 cannon.\
+	3. <b>\"G: Toggle Sensor Antenna\"</b> - extend or retract the ARC's sensor antenna. While extended, all unknown lifeforms within a large range can be seen by all on the tacmap, but the ARC cannot move. Additionally enables the automated RE700 cannon.<br> \
 	<font color='#cd6500'><b><i>Driver verbs:</i></b></font><br> 1. <b>\"G: Activate Horn\"</b> - activates vehicle horn. Keep in mind, that vehicle horn is very loud and can be heard from afar by both allies and foes.<br> \
 	2. <b>\"G: Toggle Door Locks\"</b> - toggles vehicle's access restrictions. Crewman, Brig and Command accesses bypass these restrictions.<br> \
 	<font color='#cd6500'><b><i>Driver shortcuts:</i></b></font><br> 1. <b>\"CTRL + Click\"</b> - activates vehicle horn.<br>"

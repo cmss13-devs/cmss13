@@ -125,18 +125,19 @@
 		if(!is_ground_level(xeno_turf.z))
 			continue
 
+		var/datum/weakref/xeno_weakref = WEAKREF(current_xeno)
+
 		if(get_dist(src, current_xeno) <= sensor_radius)
-			if(WEAKREF(current_xeno) in minimap_added)
+			if(xeno_weakref in minimap_added)
 				continue
 
 			SSminimaps.remove_marker(current_xeno)
 			current_xeno.add_minimap_marker(MINIMAP_FLAG_USCM|MINIMAP_FLAG_XENO)
-			minimap_added += WEAKREF(current_xeno)
-		else
-			if(WEAKREF(current_xeno) in minimap_added)
-				SSminimaps.remove_marker(current_xeno)
-				current_xeno.add_minimap_marker()
-				minimap_added -= WEAKREF(current_xeno)
+			minimap_added += xeno_weakref
+		else if(xeno_weakref in minimap_added)
+			SSminimaps.remove_marker(current_xeno)
+			current_xeno.add_minimap_marker()
+			minimap_added -= xeno_weakref
 
 /obj/vehicle/multitile/arc/relaymove(mob/user, direction)
 	if(antenna_deployed)
@@ -169,7 +170,7 @@
 		return
 	add_verb(M.client, list(
 		/obj/vehicle/multitile/proc/get_status_info,
-		//obj/vehicle/multitile/proc/open_controls_guide,
+		/obj/vehicle/multitile/arc/proc/open_arc_controls_guide,
 		/obj/vehicle/multitile/proc/toggle_door_lock,
 		/obj/vehicle/multitile/proc/activate_horn,
 		/obj/vehicle/multitile/proc/name_vehicle,
@@ -181,7 +182,7 @@
 		return
 	remove_verb(M.client, list(
 		/obj/vehicle/multitile/proc/get_status_info,
-		//obj/vehicle/multitile/proc/open_controls_guide,
+		/obj/vehicle/multitile/arc/proc/open_arc_controls_guide,
 		/obj/vehicle/multitile/proc/toggle_door_lock,
 		/obj/vehicle/multitile/proc/activate_horn,
 		/obj/vehicle/multitile/proc/name_vehicle,
@@ -233,6 +234,7 @@
 		return
 
 	user.forceMove(current_turf)
+	to_chat(user, SPAN_XENO("We crawl to the other side of [src]."))
 
 /*
 ** PRESETS SPAWNERS
@@ -247,7 +249,7 @@
 /obj/effect/vehicle_spawner/arc/Initialize()
 	. = ..()
 	spawn_vehicle()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/vehicle_spawner/arc/spawn_vehicle()
 	var/obj/vehicle/multitile/arc/ARC = new (loc)

@@ -125,6 +125,8 @@
 
 	/// Currently selected target to fire at. Set with set_target().
 	var/atom/target
+	/// The type of projectile to fire
+	var/projectile_type = /obj/projectile
 
 //-----------------------------
 //------GENERAL PROCS----------
@@ -159,7 +161,7 @@
 	return
 
 /obj/item/hardpoint/proc/generate_bullet(mob/user, turf/origin_turf)
-	var/obj/projectile/P = new(origin_turf, create_cause_data(initial(name), user))
+	var/obj/projectile/P = new projectile_type(origin_turf, create_cause_data(initial(name), user))
 	P.generate_bullet(new ammo.default_ammo)
 	// Apply bullet traits from gun
 	for(var/entry in traits_to_give)
@@ -794,4 +796,8 @@
 
 /// Proc to be overridden if you want to have special conditions preventing the removal of the hardpoint. Add chat messages in this proc if you want to tell the player why
 /obj/item/hardpoint/proc/can_be_removed(mob/remover)
+	SHOULD_CALL_PARENT(TRUE)
+
+	if(remover.stat > CONSCIOUS)
+		return FALSE
 	return TRUE

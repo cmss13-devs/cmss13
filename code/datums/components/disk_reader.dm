@@ -5,7 +5,7 @@
 
 /datum/component/disk_reader/Initialize()
 	. = ..()
-	if(!isatom(parent))
+	if(!istype(parent, /obj/structure/machinery))
 		return COMPONENT_INCOMPATIBLE
 
 /datum/component/disk_reader/Destroy(force, silent)
@@ -80,7 +80,7 @@
 	SIGNAL_HANDLER
 	var/atom/atom_parent = parent
 
-	atom_parent.visible_message(SPAN_WARNING("\The [atom_parent] powers down mid-operation as the area loses power."))
+	atom_parent.visible_message(SPAN_WARNING("[atom_parent] powers down mid-operation as the area loses power."))
 	playsound(atom_parent, 'sound/machines/terminal_shutdown.ogg', 25, 1)
 	SSobjectives.stop_processing_objective(src)
 	disk.forceMove(get_turf(atom_parent))

@@ -77,7 +77,7 @@
 		return TRUE
 
 	if(arc_owner.antenna_deployed)
-		to_chat(remover, SPAN_WARNING("[src] cannot be removed from [owner] while its antenna is deployed."))
+		to_chat(remover, SPAN_WARNING("[src] cannot be removed from [owner] while it is deployed."))
 		return FALSE
 
-	return TRUE
+	return ..()

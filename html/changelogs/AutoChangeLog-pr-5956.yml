@@ -1,0 +1,4 @@
+author: "Segrain"
+delete-after: True
+changes:
+  - admin: "Spawning nondeathsquad MARSOC now properly recognises \"current location\" option."

@@ -1,0 +1,5 @@
+author: "DN9123"
+delete-after: True
+changes:
+  - rscadd: "Added a couple of fortunes in strings/fortunes.txt"
+  - spellcheck: "fixed a grammar error I found in strings/fortunes.txt"

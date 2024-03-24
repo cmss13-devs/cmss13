@@ -35,7 +35,7 @@
 #define EMOTE_NO_MESSAGE (1<<3)
 
 // Bitflags for Working Joe emotes
+/// Working Joe emote
+#define WORKING_JOE_EMOTE (1<<0)
 /// Hazard Joe emote
 #define HAZARD_JOE_EMOTE (1<<1)
-/// Both Hazard and Working Joe emote
-#define BOTH_JOE_EMOTE (1<<2)

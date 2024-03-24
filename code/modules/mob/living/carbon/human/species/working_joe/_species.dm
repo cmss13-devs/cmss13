@@ -10,6 +10,13 @@
 	hair_color = "#000000"
 	icobase = 'icons/mob/humans/species/r_synthetic.dmi'
 	deform = 'icons/mob/humans/species/r_synthetic.dmi'
+	/// Used to assign which variant of emote_panel to give to user
+	var/emote_panel_type = /datum/joe_emote_panel
+
+/datum/species/synthetic/colonial/working_joe/hazard
+	name = SYNTH_HAZARD_JOE //TECHNICALLY the proper name would be Hazard Working Joes, but we will stick with Hazard Joe for now
+	name_plural = "Hazard Joes"
+	emote_panel_type = /datum/joe_emote_panel/hazard
 
 /datum/species/synthetic/colonial/working_joe/handle_post_spawn(mob/living/carbon/human/joe)
 	. = ..()
@@ -23,9 +30,8 @@
 
 /// Open the WJ's emote panel, which allows them to use voicelines
 /datum/species/synthetic/colonial/working_joe/open_emote_panel()
-	var/datum/joe_emote_panel/ui = new(usr)
+	var/datum/joe_emote_panel/ui = new emote_panel_type(usr)
 	ui.ui_interact(usr)
-
 
 /datum/action/joe_emote_panel
 	name = "Open Voice Synthesizer"
@@ -65,7 +71,7 @@
 	if(!length(wj_emotes))
 		var/list/emotes_to_add = list()
 		for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in subtypesof(/datum/emote/living/carbon/human/synthetic/working_joe))
-			if(!initial(emote.key) || !initial(emote.say_message))
+			if((emote.hazard_flag && emote.hazard_flag != BOTH_JOE_EMOTE) || !initial(emote.key) || !initial(emote.say_message))
 				continue
 
 			if(!(initial(emote.category) in wj_categories))
@@ -76,6 +82,18 @@
 
 		wj_emotes = emotes_to_add
 
+// Same as above, but for hazard joes
+/datum/joe_emote_panel/hazard/New()
+	if(!length(wj_emotes))
+		var/list/emotes_to_add = list()
+		for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in subtypesof(/datum/emote/living/carbon/human/synthetic/working_joe))
+			if(((!emote.hazard_flag || (emote.hazard_flag != BOTH_JOE_EMOTE && emote.hazard_flag != HAZARD_JOE_EMOTE))) || !initial(emote.key) || !initial(emote.say_message))
+				continue
+
+			if(!(initial(emote.category) in wj_categories))
+				wj_categories += initial(emote.category)
+			emotes_to_add += emote
+		wj_emotes = emotes_to_add
 
 /datum/joe_emote_panel/proc/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)

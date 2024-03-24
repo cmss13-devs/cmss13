@@ -1,3 +1,7 @@
+//defines
+#define HAZARD_JOE_EMOTE (1<<1)
+#define BOTH_JOE_EMOTE (1<<2)
+
 /datum/emote/living/carbon/human/synthetic/working_joe
 	species_type_allowed_typecache = list(/datum/species/synthetic/colonial/working_joe)
 	keybind_category = CATEGORY_SYNTH_EMOTE
@@ -6,3 +10,9 @@
 	var/category = ""
 	/// Override text for the emote to be displayed in the WJ emote panel
 	var/override_say = ""
+	/// Path to hazard joe variant sound
+	var/haz_sound
+	/// Alt message for Hazard Joe voiceline, if empty, will play message instead
+	var/haz_message = ""
+	/// If set to HAZARD, only Hazard joes use this emote, if BOTH, both.
+	var/hazard_flag

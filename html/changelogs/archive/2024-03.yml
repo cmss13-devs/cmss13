@@ -261,3 +261,12 @@
   Vicacrov:
   - rscadd: Tacmap announcements are now also muted if you have hear/silence ghost
       announcements toggled on.
+2024-03-24:
+  DN9123:
+  - rscadd: Added a couple of fortunes in strings/fortunes.txt
+  - spellcheck: fixed a grammar error I found in strings/fortunes.txt
+  Segrain:
+  - admin: Spawning nondeathsquad MARSOC now properly recognises "current location"
+      option.
+  ihatethisengine:
+  - bugfix: Fixed delayed launch launching lifeboat even if locked by queen

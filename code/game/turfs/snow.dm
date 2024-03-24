@@ -133,22 +133,6 @@
 				bleed_layer = 0
 				update_icon(1, 0)
 
-//Flames act
-/turf/open/snow/scorch(heat_level)
-	if(bleed_layer == 0)
-		return
-	switch(heat_level)
-		if(1 to 19)
-			bleed_layer--
-			update_icon(1, 0)
-
-		if(20 to 39)
-			bleed_layer = max(bleed_layer - 2, 0)
-			update_icon(1, 0)
-		if(40 to INFINITY)
-			bleed_layer = 0
-
-
 //SNOW LAYERS-----------------------------------//
 /turf/open/snow/layer0
 	icon_state = "snow_0"

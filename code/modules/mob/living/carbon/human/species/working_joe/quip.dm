@@ -1,10 +1,11 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/quip
 	category = JOE_EMOTE_CATEGORY_QUIP
 
-/datum/emote/living/carbon/human/synthetic/working_joe/quip/alwaysknow
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/alwaysknow //THE FUNNY LINE
 	key = "alwaysknow"
 	key_third_person = "workingjoe"
 	sound = 'sound/voice/joe/alwaysknow.ogg'
+	haz_sound = 'sound/voice/joe/alwaysknow_haz.ogg'
 	say_message = "You always know a Working Joe."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 

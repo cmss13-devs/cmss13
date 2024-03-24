@@ -6,7 +6,6 @@
 	sound = 'sound/voice/joe/damage.ogg'
 	say_message = "Do not damage Seegson property."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	hazard_flag = HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/damage/that_stings
 	key = "thatstings"
@@ -19,7 +18,6 @@
 	sound = 'sound/voice/joe/irresponsible.ogg'
 	say_message = "That was irresponsible."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
-	hazard_flag = BOTH_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/damage/this_is_futile
 	key = "thisisfutile"

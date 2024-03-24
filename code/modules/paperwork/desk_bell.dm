@@ -68,7 +68,7 @@
 				qdel(src)
 				return TRUE
 		else
-			user.visible_message("[user] begins [anchored ? "un" : ""]securing [src]...", "You begin [anchored ? "un" : ""]securing [src]...")
+			user.visible_message(SPAN_NOTICE("[user] begins [anchored ? "un" : ""]securing [src]..."), SPAN_NOTICE("You begin [anchored ? "un" : ""]securing [src]..."))
 			playsound(src, 'sound/items/Ratchet.ogg', 35, TRUE)
 			if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 				return FALSE

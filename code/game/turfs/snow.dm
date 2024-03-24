@@ -8,7 +8,6 @@
 	icon = 'icons/turf/floors/snow2.dmi'
 	icon_state = "snow_0"
 	is_groundmap_turf = TRUE
-	scorchable = TRUE
 
 	//PLACING/REMOVING/BUILDING
 /turf/open/snow/attackby(obj/item/I, mob/user)

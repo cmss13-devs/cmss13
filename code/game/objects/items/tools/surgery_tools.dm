@@ -93,11 +93,11 @@
 	desc = "Cut, cut, and once more cut."
 	icon_state = "scalpel"
 	flags_atom = FPRINT|CONDUCT
-	force = 10
+	force = 2
 	sharp = IS_SHARP_ITEM_ACCURATE
 	edge = 1
 	w_class = SIZE_TINY
-	throwforce = 5
+	throwforce = 1
 	flags_item = CAN_DIG_SHRAPNEL
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5

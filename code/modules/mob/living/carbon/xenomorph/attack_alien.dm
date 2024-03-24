@@ -877,7 +877,7 @@
 
 	while(bleed_layer > 0)
 		xeno_attack_delay(M)
-		if(!do_after(M, 12, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+		if(!do_after(M, 12/M.mob_size, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 			return XENO_NO_DELAY_ACTION
 
 		if(!bleed_layer)

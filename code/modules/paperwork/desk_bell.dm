@@ -88,7 +88,6 @@
 	if(broken_ringer)
 		return FALSE
 	check_clapper(user)
-	// The lack of varying is intentional. The only variance occurs on the strike the bell breaks.
 	COOLDOWN_START(src, ring_cooldown, ring_cooldown_length)
 	playsound(src, ring_sound, 80)
 	flick("desk_bell_activate", src)

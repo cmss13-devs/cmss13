@@ -141,6 +141,8 @@
 
 /datum/disease/black_goo/proc/zombie_transform(mob/living/carbon/human/human)
 	set waitfor = 0
+	if(human.buckled):
+		human.buckled.unbuckle()
 	zombie_is_transforming = TRUE
 	human.vomit_on_floor()
 	human.adjust_effect(5, STUN)

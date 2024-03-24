@@ -1,7 +1,3 @@
-//defines
-#define HAZARD_JOE_EMOTE (1<<1)
-#define BOTH_JOE_EMOTE (1<<2)
-
 /datum/emote/living/carbon/human/synthetic/working_joe
 	species_type_allowed_typecache = list(/datum/species/synthetic/colonial/working_joe)
 	keybind_category = CATEGORY_SYNTH_EMOTE

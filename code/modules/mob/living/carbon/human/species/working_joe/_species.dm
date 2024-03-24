@@ -59,49 +59,7 @@
 
 
 /datum/joe_emote_panel
-	/// Static dict ("category" : (emotes)) of every wj emote typepath
-	var/static/list/wj_emotes
-	/// Static list of categories for working joes
-	var/static/list/wj_categories = list()
-	/// Static dict ("category" : (emotes)) of every hj emote typepath
-	var/static/list/hj_emotes
-	/// Static list of categories for hazard joes
-	var/static/list/hj_categories = list()
-	/// Panel allows you to spam, so a manual CD is added here
 	COOLDOWN_DECLARE(panel_emote_cooldown)
-
-
-/datum/joe_emote_panel/New()
-	if(!length(wj_emotes))
-		var/list/emotes_to_add = list()
-		for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in subtypesof(/datum/emote/living/carbon/human/synthetic/working_joe))
-			if((emote.hazard_flag && emote.hazard_flag != BOTH_JOE_EMOTE) || !initial(emote.key) || !initial(emote.say_message))
-				continue
-
-			if(!(initial(emote.category) in wj_categories))
-				wj_categories += initial(emote.category)
-
-			emotes_to_add += emote
-		wj_emotes = emotes_to_add
-
-	if(!length(hj_emotes))
-		var/list/emotes_to_add = list()
-		for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in subtypesof(/datum/emote/living/carbon/human/synthetic/working_joe))
-			if(((!emote.hazard_flag || (emote.hazard_flag != BOTH_JOE_EMOTE && emote.hazard_flag != HAZARD_JOE_EMOTE))) || !initial(emote.key) || !initial(emote.say_message))
-				continue
-
-			if(!(initial(emote.category) in hj_categories))
-				hj_categories += initial(emote.category)
-
-			//edits to the emotes
-			if(emote.haz_message)
-				emote.say_message = emote.haz_message
-
-			emote.sound = emote.haz_sound
-
-			emotes_to_add += emote
-
-		hj_emotes = emotes_to_add
 
 /datum/joe_emote_panel/proc/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -125,10 +83,10 @@
 /datum/joe_emote_panel/ui_static_data(mob/user)
 	var/list/data = list()
 
-	data["categories"] = wj_categories
+	data["categories"] = GLOB.wj_categories
 	data["emotes"] = list()
 
-	for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in wj_emotes)
+	for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in GLOB.wj_emotes)
 		data["emotes"] += list(list(
 			"id" = initial(emote.key),
 			"text" = (initial(emote.override_say) || initial(emote.say_message)),
@@ -141,10 +99,10 @@
 /datum/joe_emote_panel/hazard/ui_static_data(mob/user)
 	var/list/data = list()
 
-	data["categories"] = hj_categories
+	data["categories"] = GLOB.hj_categories
 	data["emotes"] = list()
 
-	for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in hj_emotes)
+	for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in GLOB.hj_emotes)
 		data["emotes"] += list(list(
 			"id" = initial(emote.key),
 			"text" = (initial(emote.override_say) || initial(emote.say_message)),

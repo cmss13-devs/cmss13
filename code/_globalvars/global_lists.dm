@@ -276,6 +276,15 @@ GLOBAL_LIST_INIT(typecache_living, typecacheof(/mob/living))
 
 GLOBAL_LIST_INIT(emote_list, init_emote_list())
 
+/// list of categories for working joes
+GLOBAL_LIST_EMPTY(wj_categories)
+/// dict ("category" : (emotes)) of every wj emote typepath
+GLOBAL_LIST_INIT(wj_emotes, setup_working_joe_emotes())
+/// list of categories for hazard joes
+GLOBAL_LIST_EMPTY(hj_categories)
+/// dict ("category" : (emotes)) of every hj emote typepath
+GLOBAL_LIST_INIT(hj_emotes, setup_hazard_joe_emotes())
+
 /proc/cached_params_decode(params_data, decode_proc)
 	. = GLOB.paramslist_cache[params_data]
 	if(!.)
@@ -516,6 +525,39 @@ GLOBAL_LIST_INIT(available_specialist_kit_boxes, list(
 				.[E.key_third_person] = list(E)
 			else
 				.[E.key_third_person] |= E
+
+/// Setup for Working joe emotes and category list, returns data for wj_emotes
+/proc/setup_working_joe_emotes()
+	var/list/emotes_to_add = list()
+	for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in subtypesof(/datum/emote/living/carbon/human/synthetic/working_joe))
+		if((emote.hazard_flag && emote.hazard_flag != BOTH_JOE_EMOTE) || !initial(emote.key) || !initial(emote.say_message))
+			continue
+
+		if(!(initial(emote.category) in GLOB.wj_categories))
+			GLOB.wj_categories += initial(emote.category)
+
+		emotes_to_add += emote
+	return emotes_to_add
+
+/// Setup for Hazard joe emotes and category list, returns data for hj_emotes
+/proc/setup_hazard_joe_emotes()
+	var/list/emotes_to_add = list()
+	for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in subtypesof(/datum/emote/living/carbon/human/synthetic/working_joe))
+		if(((!emote.hazard_flag || (emote.hazard_flag != BOTH_JOE_EMOTE && emote.hazard_flag != HAZARD_JOE_EMOTE))) || !initial(emote.key) || !initial(emote.say_message))
+			continue
+
+		if(!(initial(emote.category) in GLOB.hj_categories))
+			GLOB.hj_categories += initial(emote.category)
+
+		//edits to the emotes
+		if(emote.haz_message)
+			emote.say_message = emote.haz_message
+
+		emote.sound = emote.haz_sound
+
+		emotes_to_add += emote
+
+	return emotes_to_add
 
 GLOBAL_LIST_EMPTY(topic_tokens)
 GLOBAL_PROTECT(topic_tokens)

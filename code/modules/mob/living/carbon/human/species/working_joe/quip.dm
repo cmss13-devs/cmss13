@@ -8,6 +8,7 @@
 	haz_sound = 'sound/voice/joe/alwaysknow_haz.ogg'
 	say_message = "You always know a Working Joe."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	hazard_flag = BOTH_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/awful_mess
 	key = "awful"

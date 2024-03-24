@@ -549,14 +549,7 @@ GLOBAL_LIST_INIT(available_specialist_kit_boxes, list(
 		if(!(initial(emote.category) in GLOB.hj_categories))
 			GLOB.hj_categories += initial(emote.category)
 
-		//edits to the emotes
-		if(emote.haz_message)
-			emote.say_message = emote.haz_message
-
-		emote.sound = emote.haz_sound
-
 		emotes_to_add += emote
-
 	return emotes_to_add
 
 GLOBAL_LIST_EMPTY(topic_tokens)

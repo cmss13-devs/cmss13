@@ -8,7 +8,8 @@
 	var/override_say = ""
 	/// Path to hazard joe variant sound
 	var/haz_sound
-	/// Alt message for Hazard Joe voiceline, if empty, will play message instead. Should only be set if emote used for both joes
-	var/haz_message = ""
 	/// What Working Joe types can use this emote
 	var/joe_flag = WORKING_JOE_EMOTE
+
+/datum/emote/living/carbon/human/synthetic/working_joe/get_sound(mob/living/user)
+    return ishazardjoe(user) ? haz_sound : sound

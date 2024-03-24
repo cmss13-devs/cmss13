@@ -1,7 +1,7 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/quip
 	category = JOE_EMOTE_CATEGORY_QUIP
 
-/datum/emote/living/carbon/human/synthetic/working_joe/quip/alwaysknow //THE FUNNY LINE
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/alwaysknow // THE FUNNY LINE
 	key = "alwaysknow"
 	key_third_person = "workingjoe"
 	sound = 'sound/voice/joe/alwaysknow.ogg'

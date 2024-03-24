@@ -478,15 +478,7 @@
 		INVOKE_ASYNC(FS, TYPE_PROC_REF(/datum/flameshape, handle_fire_spread), src, fire_spread_amount, burn_dam, fuel_pressure)
 	//Apply fire effects onto everyone in the fire
 
-	// Melt a single layer of snow
-	if (istype(loc, /turf/open/snow))
-		var/turf/open/snow/S = loc
-
-		if (S.bleed_layer > 0)
-			S.bleed_layer--
-			S.update_icon(1, 0)
-
-	//scorch mah grass HNNGGG
+	//scorch mah grass HNNGGG and muh SNOW hhhhGGG
 	if (istype(loc, /turf/open))
 		var/turf/open/scorch_turf_target = loc
 		if(scorch_turf_target.scorchable)

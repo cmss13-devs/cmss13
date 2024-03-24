@@ -44,7 +44,7 @@
 	//Repair the desk bell if its broken and we're using a screwdriver.
 	if(HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER))
 		if(broken_ringer)
-			visible_message(SPAN_NOTICE("[user] begins repairing [src]..."), SPAN_NOTICE("You begin repairing [src]..."))
+			user.visible_message(SPAN_NOTICE("[user] begins repairing [src]..."), SPAN_NOTICE("You begin repairing [src]..."))
 			if(do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 				user.visible_message(SPAN_NOTICE("[user] repairs [src]."), SPAN_NOTICE("You repair [src]."))
 				playsound(src, 'sound/items/Screwdriver.ogg', 50)

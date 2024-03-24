@@ -4,7 +4,8 @@
 	required_players = 0
 	latejoin_larva_drop = 0
 	votable = FALSE
-	var/research_allocation_interval = 10 MINUTES
+	var/research_reroll_interval = 2 MINUTES
+	var/research_picked_interval = 5 MINUTES
 	var/next_research_allocation = 0
 	taskbar_icon = 'icons/taskbar/gml_colonyrp.png'
 
@@ -24,8 +25,12 @@
 /datum/game_mode/extended/process()
 	. = ..()
 	if(next_research_allocation < world.time)
-		GLOB.chemical_data.update_credits(GLOB.chemical_data.research_allocation_amount)
-		next_research_allocation = world.time + research_allocation_interval
+		to_world("in process")
+		GLOB.chemical_data.reroll_chemicals()
+		next_research_allocation = world.time + research_reroll_interval
+	if(GLOB.chemical_data.picked_chem)
+		next_research_allocation = world.time + research_picked_interval
+		GLOB.chemical_data.picked_chem = FALSE
 
 /datum/game_mode/extended/check_finished()
 	if(round_finished)

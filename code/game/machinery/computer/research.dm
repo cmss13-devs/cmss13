@@ -100,10 +100,21 @@
 	tgui_interact(user)
 
 /obj/structure/machinery/computer/research/ui_static_data(mob/user)
+	var/list/contract = list()
+	for(var/i in GLOB.chemical_data.contract_chems_here)
+		var/datum/reagent/generated/contract_chem = i
+		var/datum/reagent/hint = pick(GLOB.chemical_reactions_list[contract_chem.id])
+		contract += list(list(
+			"name" = contract_chem.name,
+			"property_hint" = pick(contract_chem.properties),
+			"recipe_hint" = hint.name,
+		))
 	var/list/data = list(
 		"base_purchase_cost" = base_purchase_cost,
 		"main_terminal" = main_terminal,
 		"terminal_view" = TRUE,
+		"chems_generated" = isnull(GLOB.chemical_data.contract_chems_here),
+		"contract_chems" = contract,
 	)
 	return data
 
@@ -182,30 +193,6 @@
 							if(5)
 								new /obj/item/paper/research_notes/unique/tier_five/(photocopier.loc)
 								max_clearance = 5
-		if("purchase_document")
-			if(!photocopier)
-				return
-			var/purchase_tier = Floor(text2num(params["purchase_document"]))
-			if(purchase_tier <= 0 || purchase_tier > 5)
-				return
-			if(purchase_tier > GLOB.chemical_data.clearance_level)
-				return
-			var/purchase_cost = base_purchase_cost + purchase_tier * 2
-			if(purchase_cost <= GLOB.chemical_data.rsc_credits)
-				GLOB.chemical_data.update_credits(purchase_cost * -1)
-				var/obj/item/paper/research_notes/unique/N
-				switch(purchase_tier)
-					if(1)
-						N = new /obj/item/paper/research_notes/unique/tier_one/(photocopier.loc)
-					if(2)
-						N = new /obj/item/paper/research_notes/unique/tier_two/(photocopier.loc)
-					if(3)
-						N = new /obj/item/paper/research_notes/unique/tier_three/(photocopier.loc)
-					if(4)
-						N = new /obj/item/paper/research_notes/unique/tier_four/(photocopier.loc)
-					else
-						N = new /obj/item/paper/research_notes/unique/tier_five/(photocopier.loc)
-				visible_message(SPAN_NOTICE("Research report for [N.data.name] has been purchased."))
 		if("publish_document")
 			var/print_type = params["print_type"]
 			var/print_title = params["print_title"]

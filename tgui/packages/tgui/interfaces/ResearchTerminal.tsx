@@ -1,14 +1,21 @@
 import { useBackend, useLocalState } from '../backend';
-import { Button, Stack, Section, Flex, Tabs, Box } from '../components';
+import { Button, Stack, Section, Flex, Tabs, Box, LabeledList } from '../components';
 import { Window } from '../layouts';
 import { Table, TableCell, TableRow } from '../components/Table';
-import { classes } from '../../common/react';
 import { BoxProps } from '../components/Box';
 
 export interface DocumentLog {
   ['XRF Scans']?: Array<DocumentRecord>;
 }
 
+export interface ChemicalContracts{
+  Array<Chemical>;
+}
+export interface Chemical {
+  name: string;
+  property_hint: string;
+  recipe_hint: string;
+}
 export interface DocumentRecord {
   document_title: string;
   time: string;
@@ -28,72 +35,8 @@ interface TerminalProps {
   'clearance_x_access': number;
   'photocopier_error': number;
   'printer_toner': number;
+  'contract_chems';
 }
-
-const PurchaseDocs = (_, context) => {
-  const { data, act } = useBackend<TerminalProps>(context);
-  const [purchaseSelection, setPurchaseSelection] = useLocalState(
-    context,
-    'purchase_confirm',
-    '0'
-  );
-  const clearance_level = data.clearance_level;
-  const all_levels = ['1', '2', '3', '4', '5'];
-  const costs = { '1': 7, '2': 9, '3': 11, '4': 13, '5': 15 };
-  const available_levels = Array.from(Array(clearance_level).keys()).map((x) =>
-    (x + 1).toString()
-  );
-
-  return (
-    <Stack vertical>
-      <Stack.Item>
-        <span>Purchase Reports</span>
-        <hr />
-      </Stack.Item>
-
-      <Stack.Item>
-        <Flex justify="space-between" fill className="purchase-flex">
-          {all_levels.map((x) => {
-            const isDisabled =
-              !available_levels.includes(x) || costs[x] > data.rsc_credits;
-            return (
-              <Flex.Item key={x}>
-                <Button
-                  className={classes([
-                    !available_levels.includes(x) && 'HiddenButton',
-                  ])}
-                  disabled={isDisabled}
-                  onClick={() => setPurchaseSelection(x)}>
-                  Level {x} {costs[x]}CR
-                </Button>
-              </Flex.Item>
-            );
-          })}
-        </Flex>
-      </Stack.Item>
-      <hr />
-      {purchaseSelection !== '0' && (
-        <Flex.Item>
-          <ConfirmationDialogue
-            onConfirm={() => {
-              act('purchase_document', {
-                purchase_document: purchaseSelection,
-              });
-              setPurchaseSelection('0');
-            }}
-            onCancel={() => setPurchaseSelection('0')}>
-            <span>
-              Are you sure you want to purchase a level{' '}
-              <u>{purchaseSelection}</u> document?
-              <br />
-              It will cost <u>{costs[purchaseSelection]}</u> credits.
-            </span>
-          </ConfirmationDialogue>
-        </Flex.Item>
-      )}
-    </Stack>
-  );
-};
 
 interface ConfirmationProps extends BoxProps {
   readonly onConfirm: () => any;
@@ -221,6 +164,23 @@ interface CompoundData {
   docNumber: number;
   type: DocInfo;
   isPublished: boolean;
+}
+
+const Contracts = (_, context) => {
+  const { data } = useBackend<TerminalProps>(context);
+  return(
+    <LabeledList>
+        .map((x) => {
+            <LabeledList.Item
+              label={data.contract_chems[x].name}
+            />
+          });
+
+
+
+        })
+    </LabeledList>
+  )
 }
 
 const ResearchReportTable = (_, context) => {
@@ -468,7 +428,6 @@ const ResearchManager = (_, context) => {
         </Stack.Item>
       </Stack>
       <hr />
-      <PurchaseDocs />
       <ImproveClearanceConfirmation />
       <XClearanceConfirmation />
     </Box>
@@ -544,6 +503,13 @@ const ResearchOverview = (_, context) => {
           color="black">
           Published Material
         </Tabs.Tab>
+        <Tabs.Tab
+          selected={selectedTab === 4}
+          onClick={() => setSelectedTab(4)}
+          icon="book"
+          color="black">
+          Chemical Contracts
+        </Tabs.Tab>
       </Tabs>
       <div className="TabbedContent">
         <Stack vertical>
@@ -554,6 +520,7 @@ const ResearchOverview = (_, context) => {
             {selectedTab === 1 && <ResearchManager />}
             {selectedTab === 2 && <ResearchReportTable />}
             {selectedTab === 3 && <PublishedMaterial />}
+            {selectedTab === 3 && <Contracts />}
           </Stack.Item>
         </Stack>
       </div>

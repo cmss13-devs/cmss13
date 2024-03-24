@@ -82,29 +82,23 @@
 				if(0)
 					chem_id = pick(GLOB.chemical_gen_classes_list["C"])//If tier is 0, we can add any classed chemical
 				if(1)
-					if(roll<=35)
-						chem_id = pick(GLOB.chemical_gen_classes_list["C1"])
-					else if(roll<=65)
-						chem_id = pick(GLOB.chemical_gen_classes_list["C2"])
-					else if(roll<=85)
-						chem_id = pick(GLOB.chemical_gen_classes_list["C3"])
-					else
-						chem_id = pick(GLOB.chemical_gen_classes_list["C4"])
-				if(2)
-					if(roll<=30)
+					if(roll<=80)
 						chem_id = pick(GLOB.chemical_gen_classes_list["C1"])
 					else if(roll<=55)
 						chem_id = pick(GLOB.chemical_gen_classes_list["C2"])
-					else if(roll<=70)
+					else if(roll<=35)
+						chem_id = pick(GLOB.chemical_gen_classes_list["C3"])
+				if(2)
+					if(roll<=60)
+						chem_id = pick(GLOB.chemical_gen_classes_list["C1"])
+					else if(roll<=35)
+						chem_id = pick(GLOB.chemical_gen_classes_list["C2"])
+					else if(roll<=15)
 						chem_id = pick(GLOB.chemical_gen_classes_list["C3"])
 					else
 						chem_id = pick(GLOB.chemical_gen_classes_list["C4"])
 				if(3)
-					if(roll<=10)
-						chem_id = pick(GLOB.chemical_gen_classes_list["C1"])
-					else if(roll<=30)
-						chem_id = pick(GLOB.chemical_gen_classes_list["C2"])
-					else if(roll<=50)
+					if(roll<=50)
 						chem_id = pick(GLOB.chemical_gen_classes_list["C3"])
 					else if(roll<=70)
 						chem_id = pick(GLOB.chemical_gen_classes_list["C4"])
@@ -201,7 +195,7 @@
 	//OD ratios
 	overdose = 5
 	for(var/i=1;i<=rand(max(gen_tier*2, 4),11);i++) //We add 5 units to the overdose per cycle, min 10u, max 60u
-			overdose += 5
+		overdose += 5
 	overdose_critical = overdose + 5
 	for(var/i=1;i<=rand(1,5);i++) //overdose_critical is min 5u, to max 30u + normal overdose
 		if(prob(20 + 2*gen_tier))
@@ -333,7 +327,6 @@
 											PROPERTY_FOCUSING = PROPERTY_NERVESTIMULATING, PROPERTY_THERMOSTABILIZING = PROPERTY_HYPERTHERMIC, PROPERTY_THERMOSTABILIZING = PROPERTY_HYPOTHERMIC,
 											PROPERTY_AIDING = PROPERTY_NEUROINHIBITING, PROPERTY_OXYGENATING = PROPERTY_HYPOXEMIC, PROPERTY_ANTICARCINOGENIC = PROPERTY_CARCINOGENIC, \
 											PROPERTY_CIPHERING = PROPERTY_CIPHERING_PREDATOR, PROPERTY_TRANSFORMATIVE = PROPERTY_ANTITOXIC)
-	//The list below defines which properties should be combined into a combo property
 	var/datum/chem_property/match
 	var/datum/chem_property/initial_property
 	for(var/datum/chem_property/P in properties)

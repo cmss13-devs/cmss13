@@ -11,7 +11,7 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 	var/list/research_documents = list()
 	var/list/research_publications = list()
 	var/list/research_property_data = list() //starter properties are stored here
-	var/list/transmitted_data = list()
+	var/list/contract_chems_here = list() //3 chemicals that you get to pick
 	var/list/chemical_networks = list()
 	var/list/shared_item_storage = list()
 	var/list/shared_item_quantity = list()
@@ -147,6 +147,32 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 	chemical_not_completed_objective_list[chem.id] = chem.objective_value
 
 /datum/chemical_data/proc/reroll_chemicals()
+	to_world("in reroll")
+	var/list/contract_chems_here = list()
+	for(var/i = 1, i <= 3, i++)
+		to_world("in reroll2")
+		var/datum/reagent/generated/C = new /datum/reagent/generated
+		to_world("in reroll3")
+		C.id = "tau-[length(GLOB.chemical_gen_classes_list["tau"])]"
+		to_world("in rerol44l")
+		C.generate_name()
+		to_world("in reroll5")
+		C.chemclass = CHEM_CLASS_RARE
+		to_world("in rerol66l")
+		C.gen_tier = i
+		to_world("in rerol6l")
+		C.generate_stats()
+		to_world("in rerol5555l")
+		GLOB.chemical_gen_classes_list["tau"] += C.id //Because each unique_vended should be unique, we do not save the chemclass anywhere but in the tau list
+		to_world("in rerol553939393355l")
+		to_world(C.id)
+		GLOB.chemical_reagents_list[C.id] = C
+		to_world("in rerol53453434555l")
+		C.generate_assoc_recipe()
+		to_world("in rerol555543434343l")
+		contract_chems_here[C.id] = C
+		to_world("in rerol51121212555l")
+	to_world("Contract chemical batch generated, names are [contract_chems_here[1]], [contract_chems_here[2]], and [contract_chems_here[3]] ")
 
 /datum/chemical_data/proc/get_tgui_data(chemid)
 	var/datum/reagent/chem = GLOB.chemical_reagents_list[chemid]

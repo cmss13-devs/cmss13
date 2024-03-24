@@ -735,6 +735,19 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	icon_state = "shiva_fab_red"
 	walltype = WALL_SHIVA_FAB_RED
 
+/turf/closed/wall/diner
+	name = "reinforced hull"
+	desc = "A reinforced metal wall used to separate rooms and make up the station."
+	damage_cap = HEALTH_WALL_REINFORCED
+	icon = 'icons/turf/walls/diner_walls.dmi'
+	icon_state = "diner"
+	walltype = WALL_DINER
+
+/turf/closed/wall/diner/hull
+	name = "heavy reinforced hull"
+	desc = "A highly reinforced metal wall used to separate rooms and make up the station."
+	hull = TRUE
+	icon_state = "diner_h"
 
 //Xenomorph's Resin Walls
 

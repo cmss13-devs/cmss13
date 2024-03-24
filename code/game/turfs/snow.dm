@@ -133,6 +133,7 @@
 				bleed_layer = 0
 				update_icon(1, 0)
 
+//Flames act
 /turf/open/snow/scorch(heat_level)
 	if(bleed_layer == 0)
 		return
@@ -146,8 +147,6 @@
 			update_icon(1, 0)
 		if(40 to INFINITY)
 			bleed_layer = 0
-
-
 
 
 //SNOW LAYERS-----------------------------------//

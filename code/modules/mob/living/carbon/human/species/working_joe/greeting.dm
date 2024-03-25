@@ -24,7 +24,7 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/greeting/how_can_i_help
 	key = "howcanihelp"
 	sound = 'sound/voice/joe/how_can_i_help.ogg'
-	sound = 'sound/voice/joe/how_can_i_help_haz.ogg'
+	haz_sound = 'sound/voice/joe/how_can_i_help_haz.ogg'
 	say_message = "How can I help you?"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE

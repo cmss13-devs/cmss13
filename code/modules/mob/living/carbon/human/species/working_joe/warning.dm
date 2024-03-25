@@ -72,7 +72,7 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/hysterical
 	key = "hysterical"
 	sound = 'sound/voice/joe/hysterical.ogg'
-	sound = 'sound/voice/joe/hysterical_haz.ogg'
+	haz_sound = 'sound/voice/joe/hysterical_haz.ogg'
 	say_message = "You are becoming hysterical."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
@@ -80,7 +80,7 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/health_risks
 	key = "healthrisks"
 	sound = 'sound/voice/joe/health_risks.ogg'
-	sound = 'sound/voice/joe/health_risks_haz.ogg'
+	haz_sound = 'sound/voice/joe/health_risks_haz.ogg'
 	say_message = "These items carry notable health risks."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE

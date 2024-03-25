@@ -59,7 +59,7 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/breach
 	key = "breach"
 	sound = 'sound/voice/joe/breach.ogg'
-	sound = 'sound/voice/joe/breach_haz.ogg'
+	haz_sound = 'sound/voice/joe/breach_haz.ogg'
 	say_message = "Hazard Containment breach logged."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
@@ -67,7 +67,7 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/come_out_vent
 	key = "comeoutvent"
 	sound = 'sound/voice/joe/come_out_vent.ogg'
-	sound = 'sound/voice/joe/come_out_vent_haz.ogg'
+	haz_sound = 'sound/voice/joe/come_out_vent_haz.ogg'
 	say_message = "Come out of the vent system, please."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE

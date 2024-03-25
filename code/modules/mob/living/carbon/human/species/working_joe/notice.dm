@@ -4,7 +4,7 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/report
 	key = "report"
 	sound = 'sound/voice/joe/report.ogg'
-	sound = 'sound/voice/joe/report_haz.ogg'
+	haz_sound = 'sound/voice/joe/report_haz.ogg'
 	say_message = "Logging report to APOLLO."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE

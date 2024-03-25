@@ -28,7 +28,7 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/day_never_done
 	key = "dayneverdone"
 	sound = 'sound/voice/joe/day_never_done.ogg'
-	sound = 'sound/voice/joe/day_never_done_haz.ogg'
+	haz_sound = 'sound/voice/joe/day_never_done_haz.ogg'
 	say_message = "A synthetic's day is never done."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
@@ -58,7 +58,7 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/more_pressing_matters
 	key = "morepressingmatters"
 	sound = 'sound/voice/joe/more_pressing_matters.ogg'
-	sound = 'sound/voice/joe/more_pressing_matters_haz.ogg'
+	haz_sound = 'sound/voice/joe/more_pressing_matters_haz.ogg'
 	say_message = "There are more pressing matters."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE

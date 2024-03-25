@@ -18,7 +18,7 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/fire/fire
 	key = "fire"
 	sound = 'sound/voice/joe/fire.ogg'
-	sound = 'sound/voice/joe/fire_haz.ogg'
+	haz_sound = 'sound/voice/joe/fire_haz.ogg'
 	say_message = "Only wild animals fear fire."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE

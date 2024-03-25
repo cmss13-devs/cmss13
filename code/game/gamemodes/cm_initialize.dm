@@ -1022,8 +1022,11 @@ Additional game mode variables.
 		return
 
 	var/deathtime = world.time - joe_candidate.timeofdeath
-	if((deathtime < JOE_JOIN_DEAD_TIME && (joe_candidate.ckey in joes)) && !MODE_HAS_TOGGLEABLE_FLAG(MODE_BYPASS_JOE))
-		to_chat(joe_candidate, SPAN_WARNING("You have been dead for [DisplayTimeText(deathtime)]. You need to wait <b>[DisplayTimeText(JOE_JOIN_DEAD_TIME - deathtime)]</b> before rejoining as a Working Joe!"))
+	if(((deathtime < JOE_JOIN_DEAD_TIME || MODE_HAS_TOGGLEABLE_FLAG(MODE_DISABLE_JOE_RESPAWN)) && (joe_candidate.ckey in joes)) && !MODE_HAS_TOGGLEABLE_FLAG(MODE_BYPASS_JOE))
+		if(MODE_HAS_TOGGLEABLE_FLAG(MODE_DISABLE_JOE_RESPAWN))
+			to_chat(joe_candidate, SPAN_WARNING("Working Joe respawns are disabled!"))
+		else
+			to_chat(joe_candidate, SPAN_WARNING("You have been dead for [DisplayTimeText(deathtime)]. You need to wait <b>[DisplayTimeText(JOE_JOIN_DEAD_TIME - deathtime)]</b> before rejoining as a Working Joe!"))
 		return FALSE
 
 	// council doesn't count towards this conditional.

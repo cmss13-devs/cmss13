@@ -1,6 +1,7 @@
 /// From /atom/proc/Decorate
 #define COMSIG_ATOM_DECORATED "atom_decorated"
-
+//from SSatoms InitAtom - Only if the  atom was not deleted or failed initialization and has a loc
+#define COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON "atom_init_success_on"
 ///from base of atom/setDir(): (old_dir, new_dir). Called before the direction changes.
 #define COMSIG_ATOM_DIR_CHANGE "atom_dir_change"
 
@@ -45,3 +46,12 @@
 
 ///When the transform or an atom is varedited through vv topic.
 #define COMSIG_ATOM_VV_MODIFY_TRANSFORM "atom_vv_modify_transform"
+
+/// Called when an atom has something mouse dropped on it, from /client/MouseDrop: (atom/dropped_on)
+#define COMSIG_ATOM_DROPPED_ON "atom_dropped_on"
+
+/// Called when an atom is mouse dropped on another atom, from /client/MouseDrop: (atom/dropped_onto)
+#define COMSIG_ATOM_DROP_ON "atom_drop_on"
+
+/// Called when an atom has emp_act called on it, from /atom/emp_act: (severity)
+#define COMSIG_ATOM_EMP_ACT "atom_emp_act"

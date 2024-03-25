@@ -117,8 +117,8 @@
 	return container.attackby(W, user)
 
 /obj/structure/vehicle_locker/emp_act(severity)
+	. = ..()
 	container.emp_act(severity)
-	..()
 
 /obj/structure/vehicle_locker/hear_talk(mob/M, msg)
 	container.hear_talk(M, msg)

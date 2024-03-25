@@ -84,7 +84,7 @@
 	if(!istype(ID)) //not wearing an ID
 		to_chat(user, SPAN_WARNING("You should wear your ID before doing this."))
 		return FALSE
-	if(ID.registered_ref != WEAKREF(user))
+	if(!ID.check_biometrics(user))
 		to_chat(user, SPAN_WARNING("You should wear your ID before doing this."))
 		return FALSE
 

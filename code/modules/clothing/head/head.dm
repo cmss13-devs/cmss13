@@ -81,6 +81,9 @@
 /obj/item/clothing/head/beret/cm/black
 	icon_state = "beret_black"
 
+/obj/item/clothing/head/beret/cm/green
+	icon_state = "beret_green"
+
 /obj/item/clothing/head/beret/cm/squadberet
 	name = "USCM Squad Beret"
 	desc = "For those who want to show pride and have nothing to lose (in their head, at least)."
@@ -114,6 +117,12 @@
 				if(SQUAD_MARINE_5)
 					icon_state = "beret_echo"
 					desc = "Tightly Woven, as it should be."
+				if(SQUAD_MARINE_CRYO)
+					icon_state = "beret_foxtrot"
+					desc = "Looks and feels starched, cold to the touch."
+				if(SQUAD_MARINE_INTEL)
+					icon_state = "beret_intel"
+					desc = "Looks more intellegent than the person wearing it."
 		else
 			icon_state = "beret"
 			desc = initial(desc)
@@ -241,8 +250,11 @@
 						/obj/item/clothing/glasses/mgoggles = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/clothing/glasses/mgoggles/prescription = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/clothing/glasses/mgoggles/black = HAT_GARB_RELAY_ICON_STATE,
+						/obj/item/clothing/glasses/mgoggles/black/prescription = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/clothing/glasses/mgoggles/orange = HAT_GARB_RELAY_ICON_STATE,
+						/obj/item/clothing/glasses/mgoggles/orange/prescription = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/clothing/glasses/mgoggles/v2 = HAT_GARB_RELAY_ICON_STATE,
+						/obj/item/clothing/glasses/mgoggles/v2/prescription = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/prop/helmetgarb/helmet_nvg = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/prop/helmetgarb/helmet_nvg/cosmetic = HAT_GARB_RELAY_ICON_STATE,
 						/obj/item/prop/helmetgarb/helmet_nvg/marsoc = HAT_GARB_RELAY_ICON_STATE,
@@ -404,10 +416,8 @@
 /obj/item/clothing/head/cmcap/reporter
 	name = "combat correspondent cap"
 	desc = "A faithful cap for any terrain war correspondents may find themselves in."
-	icon = 'icons/mob/humans/onmob/contained/war_correspondent.dmi'
-	icon_state = "wc_flagcap"
-	item_state = "wc_flagcap"
-	contained_sprite = TRUE
+	icon_state = "cc_flagcap"
+	item_state = "cc_flagcap"
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 	flags_marine_hat = HAT_GARB_OVERLAY
 

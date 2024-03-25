@@ -82,6 +82,8 @@
 /datum/component/automatedfire/autofire/proc/initiate_shot()
 	SIGNAL_HANDLER
 	if(shooting)//if we are already shooting, it means the shooter is still on cooldown
+		if(bursting && (world.time > (next_fire + (burstfire_shot_delay * burst_shots_to_fire))))
+			hard_reset()
 		return
 	shooting = TRUE
 	process_shot()
@@ -123,19 +125,19 @@
 		if(GUN_FIREMODE_BURSTFIRE)
 			shots_fired++
 			if(shots_fired == burst_shots_to_fire)
-				callback_bursting.Invoke(FALSE)
-				callback_display_ammo.Invoke()
+				callback_bursting?.Invoke(FALSE)
+				callback_display_ammo?.Invoke()
 				bursting = FALSE
 				stop_firing()
 				if(have_to_reset_at_burst_end)//We failed to reset because we were bursting, we do it now
-					callback_reset_fire.Invoke()
+					callback_reset_fire?.Invoke()
 					have_to_reset_at_burst_end = FALSE
 				return
-			callback_bursting.Invoke(TRUE)
+			callback_bursting?.Invoke(TRUE)
 			bursting = TRUE
 			next_fire = world.time + burstfire_shot_delay
 		if(GUN_FIREMODE_AUTOMATIC)
-			callback_set_firing.Invoke(TRUE)
+			callback_set_firing?.Invoke(TRUE)
 			next_fire = world.time + (auto_fire_shot_delay * automatic_delay_mult)
 		if(GUN_FIREMODE_SEMIAUTO)
 			return

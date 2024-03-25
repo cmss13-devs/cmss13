@@ -53,30 +53,28 @@
 	if(zombie.glasses) zombie.drop_inv_item_on_ground(zombie.glasses, FALSE, TRUE)
 	if(zombie.wear_mask) zombie.drop_inv_item_on_ground(zombie.wear_mask, FALSE, TRUE)
 
-	if(zombie.lying)
-		zombie.lying = FALSE
-
 	var/obj/item/weapon/zombie_claws/ZC = new(zombie)
 	ZC.icon_state = "claw_r"
 	zombie.equip_to_slot_or_del(ZC, WEAR_R_HAND, TRUE)
 	zombie.equip_to_slot_or_del(new /obj/item/weapon/zombie_claws(zombie), WEAR_L_HAND, TRUE)
 	zombie.equip_to_slot_or_del(new /obj/item/clothing/glasses/zombie_eyes(zombie), WEAR_EYES, TRUE)
 
-	var/datum/disease/black_goo/D = locate() in zombie.viruses
-	if(!D)
-		D = zombie.AddDisease(new /datum/disease/black_goo())
-	D.stage = 5
+	var/datum/disease/black_goo/zombie_infection = locate() in zombie.viruses
+	if(!zombie_infection)
+		zombie_infection = zombie.AddDisease(new /datum/disease/black_goo())
+	zombie_infection.stage = 4
 
-	var/datum/mob_hud/Hu = huds[MOB_HUD_MEDICAL_OBSERVER]
+	var/datum/mob_hud/Hu = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
 	Hu.add_hud_to(zombie, zombie)
 
 	return ..()
 
 
+
 /datum/species/zombie/post_species_loss(mob/living/carbon/human/zombie)
 	..()
 	remove_from_revive(zombie)
-	var/datum/mob_hud/Hu = huds[MOB_HUD_MEDICAL_OBSERVER]
+	var/datum/mob_hud/Hu = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
 	Hu.remove_hud_from(zombie, zombie)
 
 
@@ -116,7 +114,7 @@
 /datum/species/zombie/proc/revive_from_death(mob/living/carbon/human/zombie)
 	if(zombie && zombie.loc && zombie.stat == DEAD)
 		zombie.revive(TRUE)
-		zombie.stunned = 4
+		zombie.apply_effect(4, STUN)
 
 		zombie.make_jittery(500)
 		zombie.visible_message(SPAN_WARNING("[zombie] rises from the ground!"))

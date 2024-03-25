@@ -128,6 +128,7 @@
 	attack_speed = 5
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
 	force = MELEE_FORCE_TIER_5
+	has_speed_bonus = FALSE
 
 /*#########################################
 ########### One Handed Weapons ############
@@ -248,14 +249,16 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("speared", "stabbed", "impaled")
 
-	var/on = 1
-	var/charged
+	var/on = TRUE
+	var/charged = FALSE
 
 	var/force_wielded = MELEE_FORCE_TIER_6
 	var/force_unwielded = MELEE_FORCE_TIER_2
 	var/force_storage = MELEE_FORCE_TIER_1
 	/// Ref to the tether effect when thrown
 	var/datum/effects/tethering/chain
+	///The mob the chain is linked to
+	var/mob/living/linked_to
 
 /obj/item/weapon/yautja/combistick/Destroy()
 	cleanup_chain()
@@ -273,11 +276,13 @@
 	charged = FALSE
 	remove_filter("combistick_charge")
 	unwield(user) //Otherwise stays wielded even when thrown
-	if(on)
-		setup_chain(user)
 	return TRUE
 
 /obj/item/weapon/yautja/combistick/proc/setup_chain(mob/living/user)
+	give_action(user, /datum/action/predator_action/bracer/combistick)
+	add_verb(user, /mob/living/carbon/human/proc/call_combi)
+	linked_to = user
+
 	var/list/tether_effects = apply_tether(user, src, range = 6, resistable = FALSE)
 	chain = tether_effects["tetherer_tether"]
 	RegisterSignal(chain, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_chain))
@@ -293,6 +298,10 @@
 /// Clean up the chain, deleting/nulling/unregistering as needed
 /obj/item/weapon/yautja/combistick/proc/cleanup_chain()
 	SIGNAL_HANDLER
+	if(linked_to)
+		remove_action(linked_to, /datum/action/predator_action/bracer/combistick)
+		remove_verb(linked_to, /mob/living/carbon/human/proc/call_combi)
+
 	if(!QDELETED(chain))
 		QDEL_NULL(chain)
 
@@ -929,7 +938,7 @@
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_6*2)
+	set_fire_delay(FIRE_DELAY_TIER_4*2)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -1238,6 +1247,13 @@
 /obj/item/weapon/gun/energy/yautja/plasma_caster/dropped(mob/living/carbon/human/M)
 	playsound(M, 'sound/weapons/pred_plasmacaster_off.ogg', 15, 1)
 	to_chat(M, SPAN_NOTICE("You deactivate your plasma caster."))
+
+	var/datum/action/predator_action/bracer/caster/caster_action
+	for(caster_action as anything in M.actions)
+		if(istypestrict(caster_action, /datum/action/predator_action/bracer/caster))
+			caster_action.update_button_icon(FALSE)
+			break
+
 	if(source)
 		forceMove(source)
 		source.caster_deployed = FALSE

@@ -44,7 +44,7 @@
 		if(TYPE_OBJ_REFERENCE)
 			selected_value = input(usr,"Enter variable value:" ,"Value") as obj in world
 		if(TYPE_TURF_REFERENCE)
-			selected_value = input(usr,"Enter variable value:" ,"Value") as turf in turfs
+			selected_value = input(usr,"Enter variable value:" ,"Value") as turf in GLOB.turfs
 
 #undef TYPE_TEXT
 #undef TYPE_NUMBER

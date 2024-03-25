@@ -76,7 +76,8 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 /datum/admin_podlauncher/proc/refresh_bay()
 	bay = locate(/area/admin/droppod/loading) in GLOB.sorted_areas
 	if(!bay)
-		to_chat(SPAN_WARNING("There's no /area/admin/droppod/loading. You can make one yourself, but yell at the mappers to fix this."))
+		if(holder)
+			to_chat(holder, SPAN_WARNING("There's no /area/admin/droppod/loading. You can make one yourself, but yell at the mappers to fix this."))
 		CRASH("No /area/admin/droppod/loading has been mapped into the admin z-level!")
 	ordered_area = list()
 	for(var/turf/T in bay)
@@ -221,7 +222,8 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 
 	custom_dropoff = TRUE
 	temp_pod.dropoff_point = get_turf(target)
-	to_chat(SPAN_NOTICE("You have selected [temp_pod.dropoff_point] as your dropoff location."))
+	if(holder)
+		to_chat(holder, SPAN_NOTICE("You have selected [temp_pod.dropoff_point] as your dropoff location."))
 	SStgui.update_uis(src)
 	return COMPONENT_INTERRUPT_CLICK
 

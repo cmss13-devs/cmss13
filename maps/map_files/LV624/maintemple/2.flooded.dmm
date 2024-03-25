@@ -260,7 +260,7 @@
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "hu" = (
-/obj/item/weapon/claymore/mercsword,
+/obj/item/weapon/sword,
 /turf/open/gm/coast/beachcorner2/north_west,
 /area/lv624/ground/caves/sand_temple)
 "hA" = (
@@ -686,7 +686,7 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/claymore/mercsword{
+/obj/item/weapon/sword{
 	layer = 3.1;
 	pixel_x = 6;
 	pixel_y = 7
@@ -1012,7 +1012,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "BI" = (
-/obj/item/weapon/claymore/mercsword{
+/obj/item/weapon/sword{
 	pixel_x = 6;
 	pixel_y = 7
 	},
@@ -1096,7 +1096,7 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/claymore/mercsword{
+/obj/item/weapon/sword{
 	layer = 3.1;
 	pixel_x = -6;
 	pixel_y = 7

@@ -17,6 +17,7 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+	drop_sound = "armorequip"
 	///Makes it so that we can see the right name in the vendor.
 	var/specialty = "USCM"
 	///List of map variants that use sleeve rolling on something else, like snow uniforms rolling the collar, and therefore shouldn't hide patches etc when rolled.
@@ -374,41 +375,17 @@
 
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
-/obj/item/clothing/under/marine/mp/provost/enforcer
-	name = "\improper Provost Enforcer Uniform"
-	desc = "The crisp uniform of a Provost Enforcer."
-
-/obj/item/clothing/under/marine/mp/provost/tml
-	name = "\improper Provost Team Leader Uniform"
-	desc = "The crisp uniform of a Provost Team Leader."
-	icon_state = "warden_jumpsuit"
-	worn_state = "warden_jumpsuit"
-
-/obj/item/clothing/under/marine/mp/provost/advisor
-	name = "\improper Provost Advisor Uniform"
-	desc = "The crisp uniform of a Provost Advisor."
-	icon_state = "warden_jumpsuit"
-	worn_state = "warden_jumpsuit"
-
-/obj/item/clothing/under/marine/mp/provost/inspector
-	name = "\improper Provost Inspector Uniform"
-	desc = "The crisp uniform of a Provost Inspector."
-	icon_state = "warden_jumpsuit"
-	worn_state = "warden_jumpsuit"
+/obj/item/clothing/under/marine/mp/provost/senior
+	name = "\improper Provost Senior Uniform"
+	desc = "The crisp uniform of a senior member of the Provost Office."
+	icon_state = "provost_tml"
+	worn_state = "provost_tml"
 
 /obj/item/clothing/under/marine/mp/provost/marshal
 	name = "\improper Provost Marshal Uniform"
 	desc = "The crisp uniform of a Provost Marshal."
-	icon_state = "WO_jumpsuit"
-	worn_state = "WO_jumpsuit"
-
-/obj/item/clothing/under/marine/mp/provost/marshal/sector
-	name = "\improper Provost Sector Marshal Uniform"
-	desc = "The crisp uniform of a Provost Sector Marshal."
-
-/obj/item/clothing/under/marine/mp/provost/marshal/chief
-	name = "\improper Provost Chief Marshal Uniform"
-	desc = "The crisp uniform of the Provost Chief Marshal."
+	icon_state = "provost_marshal"
+	worn_state = "provost_marshal"
 
 //==================//UNITED AMERICAS ALLIED COMMAND\\===================\\
 //=======================================================================\\
@@ -533,6 +510,9 @@
 	has_sensor = UNIFORM_NO_SENSORS
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine/veteran/bear)
 
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/uniform_1.dmi',
+	)
 
 /obj/item/clothing/under/marine/veteran/UPP
 	name = "\improper UPP fatigues"
@@ -605,7 +585,7 @@
 	worn_state = "freelancer_uniform"
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	has_sensor = UNIFORM_NO_SENSORS
-	suit_restricted = list(/obj/item/clothing/suit/storage/marine/faction/freelancer)
+	suit_restricted = list(/obj/item/clothing/suit/storage/marine/faction/freelancer, /obj/item/clothing/suit/storage/webbing, /obj/item/clothing/suit/storage/utility_vest)
 
 //=========================//Dutch Dozen\\================================\\
 
@@ -712,6 +692,40 @@
 	has_sensor = UNIFORM_HAS_SENSORS
 	sensor_faction = FACTION_COLONIST
 
+/obj/item/clothing/under/colonist/workwear
+	name = "grey workwear"
+	desc = "A pair of black slacks and a short-sleeve grey workshirt. Standard uniform for Weyland Yutani employees working in colony operations and administration."
+	icon_state = "workwear_grey"
+	worn_state = "workwear_grey"
+
+/obj/item/clothing/under/colonist/workwear/khaki
+	name = "khaki workwear"
+	desc = "A pair of jeans paired with a khaki workshirt. A common pairing among blue-collar workers due to its drab look."
+	icon_state = "workwear_khaki"
+	worn_state = "workwear_khaki"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_JACKET_REMOVABLE
+
+/obj/item/clothing/under/colonist/workwear/pink
+	name = "pink workwear"
+	desc = "A pair of jeans paired with a pink workshirt. Pink? Your wife might not think so, but such outlandish attire deserves questioning by corporate security. What are you, some kind of free-thinking anarchist?"
+	icon_state = "workwear_pink"
+	worn_state = "workwear_pink"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_JACKET_REMOVABLE
+
+/obj/item/clothing/under/colonist/workwear/blue
+	name = "blue workwear"
+	desc = "A pair of brown canvas workpants paired with a dark blue workshirt. A common pairing among blue-collar workers."
+	icon_state = "workwear_blue"
+	worn_state = "workwear_blue"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_JACKET_REMOVABLE
+
+/obj/item/clothing/under/colonist/workwear/green
+	name = "green workwear"
+	desc = "A pair of brown canvas workpants paired with a green workshirt. An common pairing among blue-collar workers."
+	icon_state = "workwear_green"
+	worn_state = "workwear_green"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_JACKET_REMOVABLE
+
 /obj/item/clothing/under/colonist/clf
 	name = "\improper Colonial Liberation Front uniform"
 	desc = "A stylish grey-green jumpsuit - standard issue for colonists. This version appears to have the symbol of the Colonial Liberation Front emblazoned in select areas."
@@ -755,6 +769,7 @@
 	displays_id = FALSE
 	has_sensor = UNIFORM_HAS_SENSORS
 	sensor_faction = FACTION_MARINE
+
 /obj/item/clothing/under/tshirt/gray_blu
 	name = "gray T-shirt and jeans"
 	desc = "A comfortable gray T-shirt and blue jeans."
@@ -775,7 +790,7 @@
 
 /obj/item/clothing/under/CM_uniform
 	name = "\improper Colonial Marshal uniform"
-	desc = "A blue shirt and tan trousers - the official uniform for a Colonial Marshal."
+	desc = "A pair of off-white slacks and a blue button-down shirt with a dark brown tie; the standard uniform of the Colonial Marshals."
 	icon_state = "marshal"
 	worn_state = "marshal"
 	armor_melee = CLOTHING_ARMOR_LOW
@@ -786,7 +801,7 @@
 	armor_bio = CLOTHING_ARMOR_NONE
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_JACKET_REMOVABLE
 
 /obj/item/clothing/under/liaison_suit
 	name = "liaison's tan suit"
@@ -828,14 +843,63 @@
 	icon_state = "liaison_blue_blazer"
 	worn_state = "liaison_blue_blazer"
 
+/obj/item/clothing/under/liaison_suit/field
+	name = "corporate casual"
+	desc = "A pair of dark brown slacks paired with a dark blue button-down shirt. A popular look among those in the corporate world that conduct the majority of their business from night clubs."
+	icon_state = "corporate_field"
+	worn_state = "corporate_field"
+
+/obj/item/clothing/under/liaison_suit/ivy
+	name = "country club outfit"
+	desc = "A pair of khaki slacks paired with a light blue button-down shirt. A popular look with those in the corporate world that conduct the majority of their business from country clubs."
+	icon_state = "corporate_ivy"
+	worn_state = "corporate_ivy"
+
+/obj/item/clothing/under/liaison_suit/corporate_formal
+	name = "white suit pants"
+	desc = "A pair of ivory slacks paired with a white shirt. A popular pairing for formal corporate events."
+	icon_state = "corporate_formal"
+	worn_state = "corporate_formal"
+
+/obj/item/clothing/under/liaison_suit/black
+	name = "black suit pants"
+	desc = "A pair of black slacks paired with a white shirt. The most common pairing among corporate workers."
+	icon_state = "corporate_black"
+	worn_state = "corporate_black"
+
+/obj/item/clothing/under/liaison_suit/brown
+	name = "brown suit pants"
+	desc = "A pair of brown slacks paired with a white shirt. A common pairing among corporate workers."
+	icon_state = "corporate_brown"
+	worn_state = "corporate_brown"
+
+/obj/item/clothing/under/liaison_suit/blue
+	name = "blue suit pants"
+	desc = "A pair of blue slacks paired with a white shirt. A common pairing among corporate workers."
+	icon_state = "corporate_blue"
+	worn_state = "corporate_blue"
+
 /obj/item/clothing/under/marine/reporter
 	name = "combat correspondent uniform"
 	desc = "A relaxed and robust uniform fit for any potential reporting needs."
-	icon = 'icons/mob/humans/onmob/contained/war_correspondent.dmi'
-	icon_state = "wc_uniform"
-	worn_state = "wc_uniform"
-	contained_sprite = TRUE
-	flags_atom = NO_NAME_OVERRIDE
+	icon_state = "cc_white"
+	worn_state = "cc_white"
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/uniform_1.dmi',
+	)
+	
+/obj/item/clothing/under/marine/reporter/black
+	icon_state = "cc_black"
+	worn_state = "cc_black"
+
+/obj/item/clothing/under/marine/reporter/orange
+	icon_state = "cc_orange"
+	worn_state = "cc_orange"
+
+/obj/item/clothing/under/marine/reporter/red
+	icon_state = "cc_red"
+	worn_state = "cc_red"
 
 /obj/item/clothing/under/twe_suit
 	name = "representative's fine suit"
@@ -969,3 +1033,160 @@
 	desc = "The officers uniform of the royal marines commando. They have shards of light Kevlar to help protect against stabbing weapons and bullets. Onpar with similar USCM equipment"
 	icon_state = "rmc_uniform_lt"
 	worn_state = "rmc_uniform_lt"
+
+/obj/item/clothing/under/marine/cbrn //CBRN MOPP suit
+	name = "\improper M3 MOPP suit"
+	desc = "M3 MOPP suits are specially designed and engineered to protect the wearer from unshielded exposure to any Chemical, Biological, Radiological, or Nuclear (CBRN) threats in the field. The suit has a recommended lifespan of twenty-four hours once contact with a toxic environment is made, but depending on the severity this can be shortened to eight hours or less."
+	desc_lore = "Since the outbreak of the New Earth Plague in 2157 and the subsequent Interstellar Commerce Commission (ICC) sanctioned decontamination of the colony and its 40 million inhabitants, the abandoned colony has been left under a strict quarantine blockade to prevent any potential scavengers from spreading what’s left of the highly-durable airborne flesh-eating bacteria. Following those events, the three major superpowers have been investing heavily in the development and procurement of CBRN equipment, in no small part due to the extensive damage that the plague and other similar bioweapons could do. The \"Marine 70\" upgrade package and the launch of the M3 pattern armor series saw the first M3-M prototypes approved for CBRN usage."
+	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	icon_state = "cbrn"
+	worn_state = "cbrn"
+	flags_jumpsuit = NO_FLAGS
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_VERYLOW
+	armor_bio = CLOTHING_ARMOR_HIGH
+	armor_rad = CLOTHING_ARMOR_HIGHPLUS
+	fire_intensity_resistance = BURN_LEVEL_TIER_1
+	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROT
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
+	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
+	actions_types = list(/datum/action/item_action/specialist/toggle_cbrn_hood)
+
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/uniform_1.dmi',
+	)
+
+	///Whether the hood and gas mask were worn through the hood toggle verb
+	var/hood_enabled = FALSE
+	///Whether enabling the hood protects you from fire
+	var/supports_fire_protection = TRUE
+	///Typepath of the attached hood
+	var/hood_type = /obj/item/clothing/head/helmet/marine/cbrn_hood
+	///The head clothing that the suit uses as a hood
+	var/obj/item/clothing/head/linked_hood
+
+/obj/item/clothing/under/marine/cbrn/Initialize()
+	linked_hood = new hood_type(src)
+	. = ..()
+
+/obj/item/clothing/under/marine/cbrn/Destroy()
+	. = ..()
+	if(linked_hood)
+		qdel(linked_hood)
+
+/obj/item/clothing/under/marine/cbrn/verb/hood_toggle()
+	set name = "Toggle Hood"
+	set desc = "Pull your hood and gasmask up over your face and head."
+	set src in usr
+	if(!usr || usr.is_mob_incapacitated(TRUE))
+		return
+	if(!ishuman(usr))
+		return
+	var/mob/living/carbon/human/user = usr
+
+	if(user.w_uniform != src)
+		to_chat(user, SPAN_WARNING("You must be wearing [src] to put on [linked_hood] attached to it!"))
+		return
+
+	if(!linked_hood)
+		to_chat(user, SPAN_BOLDWARNING("You are missing a linked_hood! This should not be possible."))
+		CRASH("[user] attempted to toggle hood on [src] that was missing a linked_hood.")
+
+	playsound(user.loc, "armorequip", 25, 1)
+	if(hood_enabled)
+		disable_hood(user, FALSE)
+		return
+	enable_hood(user)
+
+/obj/item/clothing/under/marine/cbrn/proc/enable_hood(mob/living/carbon/human/user)
+	if(!istype(user))
+		user = usr
+
+	if(!linked_hood.mob_can_equip(user, WEAR_HEAD))
+		to_chat(user, SPAN_WARNING("You are unable to equip [linked_hood]."))
+		return
+
+	user.equip_to_slot(linked_hood, WEAR_HEAD)
+
+	hood_enabled = TRUE
+	RegisterSignal(src, COMSIG_ITEM_UNEQUIPPED, PROC_REF(disable_hood))
+	RegisterSignal(linked_hood, COMSIG_ITEM_UNEQUIPPED, PROC_REF(disable_hood))
+
+	if(!supports_fire_protection)
+		return
+	to_chat(user, SPAN_NOTICE("You raise [linked_hood] over your head. You will no longer catch fire."))
+	toggle_fire_protection(user, TRUE)
+
+/obj/item/clothing/under/marine/cbrn/proc/disable_hood(mob/living/carbon/human/user, forced = TRUE)
+	if(!istype(user))
+		user = usr
+
+	UnregisterSignal(src, COMSIG_ITEM_UNEQUIPPED)
+	UnregisterSignal(linked_hood, COMSIG_ITEM_UNEQUIPPED)
+	addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living/carbon/human, drop_inv_item_to_loc), linked_hood, src), 1) //0.1s delay cause you can grab the hood
+	addtimer(CALLBACK(src, PROC_REF(check_remove_headgear)), 2) //Checks if it is still not in contents, incase it was dropped
+
+	hood_enabled = FALSE
+	if(!forced)
+		to_chat(user, SPAN_NOTICE("You take off [linked_hood]."))
+
+	if(supports_fire_protection)
+		toggle_fire_protection(user, FALSE)
+
+/obj/item/clothing/under/marine/cbrn/proc/check_remove_headgear(obj/item/clothing/under/marine/cbrn/uniform = src)
+	for(var/current_atom in contents)
+		if(current_atom == linked_hood)
+			return
+	linked_hood.forceMove(uniform)
+
+/obj/item/clothing/under/marine/cbrn/proc/toggle_fire_protection(mob/living/carbon/user, enable_fire_protection)
+	if(enable_fire_protection)
+		RegisterSignal(user, COMSIG_LIVING_PREIGNITION, PROC_REF(fire_shield_is_on))
+		RegisterSignal(user, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(flamer_fire_callback))
+		return
+	UnregisterSignal(user, list(COMSIG_LIVING_PREIGNITION, COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED))
+
+/obj/item/clothing/under/marine/cbrn/proc/fire_shield_is_on(mob/living/burning_mob) //Stealing it from the pyro spec armor
+	SIGNAL_HANDLER
+
+	if(burning_mob.fire_reagent?.fire_penetrating)
+		return
+
+	return COMPONENT_CANCEL_IGNITION
+
+/obj/item/clothing/under/marine/cbrn/proc/flamer_fire_callback(mob/living/burning_mob, datum/reagent/fire_reagent)
+	SIGNAL_HANDLER
+
+	if(fire_reagent.fire_penetrating)
+		return
+
+	. = COMPONENT_NO_IGNITE|COMPONENT_NO_BURN
+
+/datum/action/item_action/specialist/toggle_cbrn_hood
+	ability_primacy = SPEC_PRIMARY_ACTION_2
+
+/datum/action/item_action/specialist/toggle_cbrn_hood/New(obj/item/clothing/under/marine/cbrn/armor, obj/item/holder)
+	..()
+	name = "Toggle Hood"
+	button.name = name
+	button.overlays.Cut()
+	var/image/button_overlay = image(armor.linked_hood.icon, armor, armor.linked_hood.icon_state)
+	button.overlays += button_overlay
+
+/datum/action/item_action/specialist/toggle_cbrn_hood/action_activate()
+	var/obj/item/clothing/under/marine/cbrn/armor = holder_item
+	if(!istype(armor))
+		return
+	armor.hood_toggle()
+
+/obj/item/clothing/under/marine/cbrn/advanced
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_HIGHPLUS
+	armor_bio = CLOTHING_ARMOR_GIGAHIGHPLUS
+	armor_rad = CLOTHING_ARMOR_GIGAHIGHPLUS
+	armor_internaldamage = CLOTHING_ARMOR_HIGHPLUS
+	hood_type = /obj/item/clothing/head/helmet/marine/cbrn_hood/advanced

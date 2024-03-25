@@ -24,6 +24,7 @@ export const MESSAGE_TYPE_INTERNAL = 'internal';
 export const MESSAGE_TYPE_SYSTEM = 'system';
 export const MESSAGE_TYPE_LOCALCHAT = 'localchat';
 export const MESSAGE_TYPE_RADIO = 'radio';
+export const MESSAGE_TYPE_HIVEMIND = 'hivemind';
 export const MESSAGE_TYPE_INFO = 'info';
 export const MESSAGE_TYPE_WARNING = 'warning';
 export const MESSAGE_TYPE_HELPFUL = 'helpful';
@@ -39,6 +40,7 @@ export const MESSAGE_TYPE_EVENTCHAT = 'eventchat';
 export const MESSAGE_TYPE_ADMINLOG = 'adminlog';
 export const MESSAGE_TYPE_ATTACKLOG = 'attacklog';
 export const MESSAGE_TYPE_DEBUG = 'debug';
+export const MESSAGE_TYPE_NICHE = 'niche';
 
 // Metadata for each message type
 export const MESSAGE_TYPES = [
@@ -62,7 +64,13 @@ export const MESSAGE_TYPES = [
     type: MESSAGE_TYPE_RADIO,
     name: 'Radio',
     description: 'All departments of radio messages',
-    selector: '.radio, .xeno, .xenoqueen, .xenoleader, .alert, .newscaster',
+    selector: '.radio, .alert, .newscaster',
+  },
+  {
+    type: MESSAGE_TYPE_HIVEMIND,
+    name: 'Hivemind',
+    description: 'Xenomorph hivemind messages',
+    selector: '.xeno, .xenoqueen, .xenoleader',
   },
   {
     type: MESSAGE_TYPE_INFO,
@@ -155,6 +163,13 @@ export const MESSAGE_TYPES = [
     name: 'Debug Log',
     description: 'DEBUG: SSPlanets subsystem Recover().',
     selector: '.debuginfo',
+    admin: true,
+  },
+  {
+    type: MESSAGE_TYPE_NICHE,
+    name: 'Niche Log',
+    description: 'ADMIN NICHE LOG: Urist McTraitor stuttered while saying: Boo',
+    selector: '.niche',
     admin: true,
   },
 ];

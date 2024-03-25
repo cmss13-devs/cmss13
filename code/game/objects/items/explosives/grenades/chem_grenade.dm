@@ -1,5 +1,5 @@
 /obj/item/explosive/grenade/custom
-	name = "Custom grenade"
+	name = "custom grenade"
 	icon_state = "grenade_custom"
 	desc = "A custom chemical grenade with an M40 casing. This one is made to fit into underslung grenade launchers, but can also be thrown by hand."
 	w_class = SIZE_SMALL
@@ -17,7 +17,7 @@
 	..()
 
 /obj/item/explosive/grenade/custom/large
-	name = "Large Custom Grenade"
+	name = "large custom grenade"
 	desc = "A custom chemical grenade with an M15 casing. This casing has a higher explosive capacity than the M40 variant."
 	icon_state = "large_grenade_custom"
 	allowed_containers = list(/obj/item/reagent_container/glass)
@@ -33,7 +33,7 @@
 
 
 /obj/item/explosive/grenade/custom/metal_foam
-	name = "Metal-Foam Grenade"
+	name = "metal-foam grenade"
 	desc = "Used for emergency sealing of air breaches."
 	assembly_stage = ASSEMBLY_LOCKED
 	harmful = FALSE
@@ -56,7 +56,7 @@
 	update_icon()
 
 /obj/item/explosive/grenade/custom/incendiary
-	name = "Incendiary Grenade"
+	name = "incendiary grenade"
 	desc = "Used for clearing rooms of living things."
 	assembly_stage = ASSEMBLY_LOCKED
 	has_blast_wave_dampener = FALSE
@@ -79,7 +79,7 @@
 	update_icon()
 
 /obj/item/explosive/grenade/custom/flare
-	name = "M40-F flare grenade"
+	name = "\improper M40-F flare grenade"
 	desc = "Chemical flare in a grenade form, designed for compatibility with most standard issue launchers."
 	assembly_stage = ASSEMBLY_LOCKED
 	has_blast_wave_dampener = FALSE
@@ -103,7 +103,7 @@
 	update_icon()
 
 /obj/item/explosive/grenade/custom/large/flare
-	name = "M15-F flare grenade"
+	name = "\improper M15-F flare grenade"
 	desc = "Chemical flare in a grenade form, expanded variant. The casing is too large to fit most launchers."
 	assembly_stage = ASSEMBLY_LOCKED
 	has_blast_wave_dampener = FALSE

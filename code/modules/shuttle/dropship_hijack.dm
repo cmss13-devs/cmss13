@@ -10,7 +10,7 @@
 
 /datum/dropship_hijack/almayer/proc/crash_landing()
 	//break APCs
-	for(var/obj/structure/machinery/power/apc/A in machines)
+	for(var/obj/structure/machinery/power/apc/A in GLOB.machines)
 		if(A.z != crash_site.z)
 			continue
 		if(prob(A.crash_break_probability))
@@ -50,28 +50,21 @@
 
 	// Break the ultra-reinforced windows.
 	// Break the briefing windows.
-	for(var/i in GLOB.hijack_bustable_windows)
-		var/obj/structure/window/H = i
-		H.deconstruct(FALSE)
-
-	for(var/k in GLOB.hijack_bustable_ladders)
-		var/obj/structure/ladder/fragile_almayer/L = k
-		L.deconstruct()
-
-	// Delete the briefing door(s).
-	for(var/D in GLOB.hijack_deletable_windows)
-		qdel(D)
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_HIJACK_IMPACTED)
+	RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_LANDED, PROC_REF(finish_landing))
 
 	// Sleep while the explosions do their job
 	var/explosion_alive = TRUE
 	while(explosion_alive)
 		explosion_alive = FALSE
-		for(var/datum/automata_cell/explosion/E in cellauto_cells)
+		for(var/datum/automata_cell/explosion/E in GLOB.cellauto_cells)
 			if(E.explosion_cause_data && E.explosion_cause_data.cause_name == "dropship crash")
 				explosion_alive = TRUE
 				break
 		sleep(10)
 
+/datum/dropship_hijack/almayer/proc/finish_landing()
+	SShijack.announce_status_on_crash()
 	SSticker.hijack_ocurred()
 
 /datum/dropship_hijack/almayer/proc/fire()
@@ -79,8 +72,8 @@
 		return FALSE
 	shuttle.callTime = DROPSHIP_CRASH_TRANSIT_DURATION * GLOB.ship_alt
 	SSshuttle.moveShuttle(shuttle.id, crash_site.id, TRUE)
-	if(round_statistics)
-		round_statistics.track_hijack()
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.track_hijack()
 	return TRUE
 
 /datum/dropship_hijack/almayer/proc/target_crash_site(ship_section)
@@ -114,8 +107,8 @@
 		return
 
 	// if the AA site matches target site
-	if(target_ship_section == almayer_aa_cannon.protecting_section)
-		var/list/remaining_crash_sites = almayer_ship_sections.Copy()
+	if(target_ship_section == GLOB.almayer_aa_cannon.protecting_section)
+		var/list/remaining_crash_sites = GLOB.almayer_ship_sections.Copy()
 		remaining_crash_sites -= target_ship_section
 		var/new_target_ship_section = pick(remaining_crash_sites)
 		var/turf/target = get_crashsite_turf(new_target_ship_section)
@@ -172,7 +165,7 @@
 	playsound_z(SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP)), 'sound/effects/dropship_crash.ogg', volume = 75)
 
 /datum/dropship_hijack/almayer/proc/disable_latejoin()
-	enter_allowed = FALSE
+	GLOB.enter_allowed = FALSE
 
 /datum/dropship_hijack/almayer/proc/get_crashsite_turf(ship_section)
 	var/list/turfs = list()
@@ -183,13 +176,14 @@
 			turfs += get_area_turfs(/area/almayer/shipboard/brig/cic_hallway)
 			turfs += get_area_turfs(/area/almayer/shipboard/brig/cryo)
 			turfs += get_area_turfs(/area/almayer/shipboard/brig/evidence_storage)
-			turfs += get_area_turfs(/area/almayer/shipboard/brig/execution)
 			turfs += get_area_turfs(/area/almayer/shipboard/brig/general_equipment)
 			turfs += get_area_turfs(/area/almayer/shipboard/brig/lobby)
-			turfs += get_area_turfs(/area/almayer/shipboard/brig/main_office)
+			turfs += get_area_turfs(/area/almayer/shipboard/brig/starboard_hallway)
 			turfs += get_area_turfs(/area/almayer/shipboard/brig/perma)
 			turfs += get_area_turfs(/area/almayer/shipboard/brig/processing)
-			turfs += get_area_turfs(/area/almayer/shipboard/brig/surgery)
+			turfs += get_area_turfs(/area/almayer/shipboard/brig/medical)
+			turfs += get_area_turfs(/area/almayer/shipboard/brig/mp_bunks)
+			turfs += get_area_turfs(/area/almayer/shipboard/brig/chief_mp_office)
 			turfs += get_area_turfs(/area/almayer/command/cichallway)
 			turfs += get_area_turfs(/area/almayer/command/cic)
 		if("Upper deck Midship")
@@ -198,14 +192,13 @@
 			turfs += get_area_turfs(/area/almayer/medical/containment)
 			turfs += get_area_turfs(/area/almayer/medical/containment/cell)
 			turfs += get_area_turfs(/area/almayer/medical/medical_science)
-			turfs += get_area_turfs(/area/almayer/medical/testlab)
 			turfs += get_area_turfs(/area/almayer/medical/hydroponics)
 		if("Upper deck Aftship")
 			turfs += get_area_turfs(/area/almayer/engineering/upper_engineering)
 			turfs += get_area_turfs(/area/almayer/engineering/laundry)
 		if("Lower deck Foreship")
 			turfs += get_area_turfs(/area/almayer/hallways/hangar)
-			turfs += get_area_turfs(/area/almayer/hallways/vehiclehangar)
+			turfs += get_area_turfs(/area/almayer/hallways/lower/vehiclehangar)
 		if("Lower deck Midship")
 			turfs += get_area_turfs(/area/almayer/medical/chemistry)
 			turfs += get_area_turfs(/area/almayer/medical/lower_medical_lobby)
@@ -219,7 +212,7 @@
 			turfs += get_area_turfs(/area/almayer/squads/req)
 		if("Lower deck Aftship")
 			turfs += get_area_turfs(/area/almayer/living/cryo_cells)
-			turfs += get_area_turfs(/area/almayer/engineering/engineering_workshop)
+			turfs += get_area_turfs(/area/almayer/engineering/lower/workshop)
 		else
 			CRASH("Crash site [ship_section] unknown.")
 	return pick(turfs)

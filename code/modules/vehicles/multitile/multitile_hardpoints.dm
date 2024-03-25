@@ -149,7 +149,7 @@
 		hps += H
 
 	var/chosen_hp = tgui_input_list(usr, "Select a hardpoint to remove", "Hardpoint Removal", (hps + "Cancel"))
-	if(chosen_hp == "Cancel" || !chosen_hp)
+	if(chosen_hp == "Cancel" || !chosen_hp || !in_range(src, user))
 		return
 
 	var/obj/item/hardpoint/old = chosen_hp
@@ -230,47 +230,3 @@
 		qdel(old)
 
 	update_icon()
-
-//proc that fires non selected weaponry
-/obj/vehicle/multitile/proc/shoot_other_weapon(mob/living/carbon/human/M, seat, atom/A)
-
-	if(!istype(M))
-		return
-
-	var/list/usable_hps = get_hardpoints_with_ammo(seat)
-	for(var/obj/item/hardpoint/HP in usable_hps)
-		if(HP == active_hp[seat] || HP.slot != HDPT_PRIMARY && HP.slot != HDPT_SECONDARY)
-			usable_hps.Remove(HP)
-
-	if(!LAZYLEN(usable_hps))
-		to_chat(M, SPAN_WARNING("No other working weapons detected."))
-		return
-
-	for(var/obj/item/hardpoint/HP in usable_hps)
-		if(!HP.can_activate(M, A))
-			return
-		HP.activate(M, A)
-		break
-	return
-
-//proc that activates support module if it can be activated and you meet requirements
-/obj/vehicle/multitile/proc/activate_support_module(mob/living/carbon/human/M, seat, atom/A)
-
-	if(!istype(M))
-		return
-
-	var/list/usable_hps = get_activatable_hardpoints(seat)
-	for(var/obj/item/hardpoint/HP in usable_hps)
-		if(HP.slot != HDPT_SUPPORT)
-			usable_hps.Remove(HP)
-
-	if(!LAZYLEN(usable_hps))
-		to_chat(M, SPAN_WARNING("No activatable support modules detected."))
-		return
-
-	for(var/obj/item/hardpoint/HP in usable_hps)
-		if(!HP.can_activate(M, A))
-			return
-		HP.activate(M, A)
-		break
-	return

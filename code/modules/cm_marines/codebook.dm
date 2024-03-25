@@ -11,10 +11,10 @@ GLOBAL_LIST_EMPTY(codebook_data)
 	var/letter
 	var/code_data = "<table><tr><th>Call</th><th>Response<th></tr>"
 	for(var/i in 1 to 10)
-		letter = pick(greek_letters)
+		letter = pick(GLOB.greek_letters)
 		number = rand(100,999)
 		code_data += "<tr><td>[letter]-[number]</td>"
-		letter = pick(greek_letters)
+		letter = pick(GLOB.greek_letters)
 		number = rand(100,999)
 		code_data += "<td>[letter]-[number]</td></tr>"
 	code_data += "</table>"

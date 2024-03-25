@@ -1,6 +1,6 @@
 /datum/equipment_preset/wy
 	name = "WY"
-	paygrade = "WYC1"
+	paygrade = PAY_SHORT_WYC1
 
 	faction = FACTION_WY
 	rank = FACTION_WY
@@ -19,8 +19,8 @@
 
 /datum/equipment_preset/wy/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new headset_type(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/centcom(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/ivy(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
 	. = ..()
 
@@ -29,7 +29,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_TRAINEE
 	rank = JOB_TRAINEE
-	paygrade = "WYC1"
+	paygrade = PAY_SHORT_WYC1
 
 /datum/equipment_preset/wy/trainee/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/trainee(new_human), WEAR_BODY)
@@ -40,35 +40,64 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_JUNIOR_EXECUTIVE
 	rank = JOB_JUNIOR_EXECUTIVE
-	paygrade = "WYC2"
+	paygrade = PAY_SHORT_WYC2
 
 /datum/equipment_preset/wy/exec
 	name = "Corporate - C - Executive"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_EXECUTIVE
 	rank = JOB_EXECUTIVE
-	paygrade = "WYC3"
+	paygrade = PAY_SHORT_WYC3
 
 /datum/equipment_preset/wy/senior_exec
 	name = "Corporate - D - Senior Executive"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_SENIOR_EXECUTIVE
 	rank = JOB_SENIOR_EXECUTIVE
-	paygrade = "WYC4"
+	paygrade = PAY_SHORT_WYC4
 
 /datum/equipment_preset/wy/exec_spec
 	name = "Corporate - E - Executive Specialist"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_EXECUTIVE_SPECIALIST
 	rank = JOB_EXECUTIVE_SPECIALIST
-	paygrade = "WYC5"
+	paygrade = PAY_SHORT_WYC5
+
+/datum/equipment_preset/wy/exec_spec/lawyer
+	name = "Corporate - E - Lawyer"
+
+/datum/equipment_preset/wy/exec_spec/lawyer/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/blue(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/corporate/blue(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/clicky(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clipboard(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/notepad/blue(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/taperecorder(new_human), WEAR_L_STORE)
+
+	..()
 
 /datum/equipment_preset/wy/exec_supervisor
 	name = "Corporate - F - Executive Supervisor"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_EXECUTIVE_SUPERVISOR
 	rank = JOB_EXECUTIVE_SUPERVISOR
-	paygrade = "WYC6"
+	paygrade = PAY_SHORT_WYC6
+
+/datum/equipment_preset/wy/exec_supervisor/lawyer
+	name = "Corporate - F - Lawyer"
+
+/datum/equipment_preset/wy/exec_supervisor/lawyer/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/secure/briefcase(new_human), WEAR_R_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/black(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/corporate/black(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/clicky(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clipboard(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/spacecash/c1000/counterfeit(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/notepad/black(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/taperecorder(new_human), WEAR_L_STORE)
+	..()
 
 /datum/equipment_preset/wy/manager
 	skills = /datum/skills/civilian/manager
@@ -91,21 +120,21 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_ASSISTANT_MANAGER
 	rank = JOB_ASSISTANT_MANAGER
-	paygrade = "WYC7"
+	paygrade = PAY_SHORT_WYC7
 
 /datum/equipment_preset/wy/manager/division_manager
 	name = "Corporate - H - Division Manager"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_DIVISION_MANAGER
 	rank = JOB_DIVISION_MANAGER
-	paygrade = "WYC8"
+	paygrade = PAY_SHORT_WYC8
 
 /datum/equipment_preset/wy/manager/chief_executive
 	name = "Corporate - I - Chief Executive"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CHIEF_EXECUTIVE
 	rank = JOB_CHIEF_EXECUTIVE
-	paygrade = "WYC9"
+	paygrade = PAY_SHORT_WYC9
 
 /datum/equipment_preset/wy/manager/chief_executive/New()
 	. = ..()
@@ -116,7 +145,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_DIRECTOR
 	rank = JOB_DIRECTOR
-	paygrade = "WYC10"
+	paygrade = PAY_SHORT_WYC10
 	skills = /datum/skills/civilian/manager/director
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command/director
 

@@ -69,7 +69,7 @@
 	..()
 	if(is_grass_floor())
 		var/dir_sum = 0
-		for(var/direction in cardinal)
+		for(var/direction in GLOB.cardinals)
 			var/turf/T = get_step(src,direction)
 			if(!(T.is_grass_floor()))
 				dir_sum += direction

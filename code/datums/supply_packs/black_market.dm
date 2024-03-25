@@ -101,7 +101,7 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 			new /obj/item/clothing/head/helmet/marine/veteran/UPP(src)
 			new /obj/item/clothing/under/marine/veteran/UPP(src)
 			new /obj/item/clothing/suit/storage/marine/faction/UPP(src)
-			new /obj/item/clothing/shoes/marine/upp(src)
+			new /obj/item/clothing/shoes/marine/upp/knife(src)
 			new /obj/item/clothing/gloves/marine/veteran(src)
 			new /obj/item/storage/backpack/lightpack/five_slot(src)
 		if(5) //freelancer
@@ -585,7 +585,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/storage/box/packet/hefa/toy,
 		/obj/item/toy/inflatable_duck,
 		/obj/item/toy/beach_ball,
-		/obj/item/toy/farwadoll,
+		/obj/item/toy/plush/farwa,
 		/obj/item/toy/waterflower,
 		/obj/item/toy/spinningtoy,
 		/obj/item/storage/box/snappops,
@@ -642,7 +642,7 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	. = ..()
 	var/obj/item/paper/nope = new(src)
 	nope.name = "automated ASRS note"
-	nope.info = "Sorry! Your requested order of <b>USCM PONCHO (X2)</b> was not succesfully delivered because: 'No items of that type found in storage.'"
+	nope.info = "Sorry! Your requested order of <b>USCM PONCHO (X2)</b> was not successfully delivered because: 'No items of that type found in storage.'"
 	nope.color = "green"
 	nope.update_icon()
 
@@ -656,7 +656,7 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	. = ..()
 	var/obj/item/paper/nope = new(src)
 	nope.name = "automated ASRS note"
-	nope.info = "Sorry! Your requested order of <b> HIGH-EXPLOSIVE ARMOR-PIERCING M41A MAGAZINE (X3)</b> was not succesfully delivered because: 'ERROR: UNABLE TO ENTER COMPARTMENT EXIT CODE 2342: EXPLOSION HAZARD'"
+	nope.info = "Sorry! Your requested order of <b> HIGH-EXPLOSIVE ARMOR-PIERCING M41A MAGAZINE (X3)</b> was not successfully delivered because: 'ERROR: UNABLE TO ENTER COMPARTMENT EXIT CODE 2342: EXPLOSION HAZARD'"
 	nope.color = "green"
 	nope.update_icon()
 
@@ -749,8 +749,8 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
-/datum/supply_packs/contraband/deep_storage/xm42b_pipe
-	name = "10x99mm XM42B casing"
+/datum/supply_packs/contraband/deep_storage/xm43e1_pipe
+	name = "10x99mm XM43E1 casing"
 	contains = list(/obj/item/prop/helmetgarb/bullet_pipe)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market

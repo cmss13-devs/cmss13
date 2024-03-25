@@ -530,7 +530,7 @@ GLOBAL_LIST_INIT(available_specialist_kit_boxes, list(
 /proc/setup_working_joe_emotes()
 	var/list/emotes_to_add = list()
 	for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in subtypesof(/datum/emote/living/carbon/human/synthetic/working_joe))
-		if(!(emote.joe_flag & WORKING_JOE_EMOTE) || !initial(emote.key) || !initial(emote.say_message))
+		if(!(initial(emote.joe_flag) & WORKING_JOE_EMOTE) || !initial(emote.key) || !initial(emote.say_message))
 			continue
 
 		if(!(initial(emote.category) in GLOB.wj_categories))
@@ -543,7 +543,7 @@ GLOBAL_LIST_INIT(available_specialist_kit_boxes, list(
 /proc/setup_hazard_joe_emotes()
 	var/list/emotes_to_add = list()
 	for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in subtypesof(/datum/emote/living/carbon/human/synthetic/working_joe))
-		if(!(emote.joe_flag & HAZARD_JOE_EMOTE) || !initial(emote.key) || !initial(emote.say_message))
+		if(!(initial(emote.joe_flag) & HAZARD_JOE_EMOTE) || !initial(emote.key) || !initial(emote.say_message))
 			continue
 
 		if(!(initial(emote.category) in GLOB.hj_categories))

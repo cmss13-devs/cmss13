@@ -863,7 +863,7 @@
 	set name = "Toggle Working Joe Restrictions"
 	set category = "Admin.Flags"
 
-	if(!admin_holder || !check_rights(R_EVENT, FALSE))
+	if(!admin_holder || !check_rights(R_EVENT, TRUE))
 		return
 
 	if(!SSticker.mode)
@@ -877,7 +877,7 @@
 	set name = "Toggle Working Joe Respawns"
 	set category = "Admin.Flags"
 
-	if(!admin_holder || !check_rights(R_EVENT, FALSE))
+	if(!admin_holder || !check_rights(R_EVENT, TRUE))
 		return
 
 	if(!SSticker.mode)

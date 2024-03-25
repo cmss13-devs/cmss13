@@ -377,7 +377,7 @@
 		WEAR_HEAD = /obj/item/clothing/head/soft/sec/corp,
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/WY,
 		WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
-		WEAR_BODY = /obj/item/clothing/under/marine/officer/formal/servicedress,
+		WEAR_BODY = /obj/item/clothing/under/colonist/white_service,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/sec,
 		WEAR_IN_BACK = /obj/item/weapon/telebaton,
 		WEAR_JACKET = /obj/item/clothing/suit/storage/webbing,

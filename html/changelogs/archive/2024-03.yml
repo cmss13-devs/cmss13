@@ -270,3 +270,7 @@
       option.
   ihatethisengine:
   - bugfix: Fixed delayed launch launching lifeboat even if locked by queen
+2024-03-25:
+  Birdtalon, Kat 'APC' Smith, Thwomp, Waseemq1235:
+  - rscadd: Desk bell for cargo, medbay, brig, and AI reception.
+  - soundadd: Desk bell sound effect.

@@ -1021,7 +1021,7 @@ Additional game mode variables.
 			to_chat(joe_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a synth."))
 		return
 
-	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_DISABLE_JOE_RESPAWN) && joe_candidate.ckey in joes) // No joe respawns if already a joe before
+	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_DISABLE_JOE_RESPAWN) && (joe_candidate.ckey in joes)) // No joe respawns if already a joe before
 		to_chat(joe_candidate, SPAN_WARNING("Working Joe respawns are disabled!"))
 		return FALSE
 

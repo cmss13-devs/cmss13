@@ -38,9 +38,6 @@
 	},
 /turf/open/gm/dirtgrassborder/dirt/east,
 /area/lv873/outdoors/landing_zones_disembark)
-"abj" = (
-/turf/closed/wall/r_wall,
-/area/lv873/outdoors/welcome_center_exterior/east)
 "abs" = (
 /turf/open/gm/dirtgrassborder/dirt/east,
 /area/lv873/outdoors/flooded_streets/waste_treatment)
@@ -1580,6 +1577,17 @@
 /obj/structure/machinery/light,
 /turf/open/floor/wood,
 /area/lv873/indoors/hospital/reception)
+"aMI" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/snacks/packaged_burrito{
+	pixel_x = -6;
+	pixel_y = 8
+	},
+/obj/item/reagent_container/food/snacks/packaged_burger{
+	pixel_x = 10
+	},
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "aML" = (
 /obj/structure/closet/secure_closet/guncabinet,
 /obj/item/weapon/gun/pistol/m4a3{
@@ -1903,6 +1911,14 @@
 	dir = 8
 	},
 /area/lv873/indoors/south/slums)
+"aTU" = (
+/obj/structure/sink/kitchen{
+	dir = 4;
+	pixel_x = 8;
+	pixel_y = 7
+	},
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "aUt" = (
 /turf/open/asphalt/cement,
 /area/lv873/oob)
@@ -2723,6 +2739,10 @@
 	icon_state = "dark"
 	},
 /area/lv873/indoors/operations/hallway/south)
+"brj" = (
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
+/turf/open/floor/plating/catwalk/rusted,
+/area/lv873/indoors/northeast/slums)
 "brI" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -3744,6 +3764,7 @@
 	pixel_x = -5;
 	pixel_y = 16
 	},
+/obj/item/clothing/under/colonist/workwear/blue,
 /turf/open/floor/wood,
 /area/lv873/indoors/northeast/slums)
 "bRR" = (
@@ -3758,6 +3779,11 @@
 	icon_state = "dark"
 	},
 /area/lv873/indoors/operations/hallway/north)
+"bSJ" = (
+/obj/structure/closet/cabinet,
+/obj/item/clothing/under/liaison_suit/brown,
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "bSP" = (
 /turf/open/floor{
 	dir = 8;
@@ -3779,6 +3805,10 @@
 	icon_state = "floor4"
 	},
 /area/lv873/indoors/marshals/mainhall)
+"bTi" = (
+/obj/structure/prop/almayer/computers/sensor_computer2,
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "bTo" = (
 /obj/structure/surface/table,
 /obj/item/ashtray/plastic,
@@ -4110,6 +4140,13 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/lv873/landing_zone_1)
+"bYU" = (
+/obj/structure/machinery/light/small,
+/obj/structure/bed/chair/wood/normal{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/lv873/indoors/lone_buildings/clf_barracks)
 "bYW" = (
 /obj/structure/surface/rack,
 /obj/item/explosive/plastic,
@@ -5725,6 +5762,18 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv873/indoors/uscm_garrison/recruitment_office)
+"cNi" = (
+/obj/structure/surface/table/woodentable,
+/obj/structure/machinery/computer/cameras/wooden_tv{
+	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW.";
+	dir = 1;
+	layer = 3.2;
+	name = "Television set";
+	network = null;
+	pixel_y = 6
+	},
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "cNt" = (
 /obj/structure/platform/strata/metal{
 	dir = 4
@@ -5873,6 +5922,12 @@
 	icon_state = "whitegreen"
 	},
 /area/lv873/indoors/hospital/reception)
+"cRk" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/lv873/indoors/southeast/slums)
 "cRp" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/drinks/coffeecup/wy{
@@ -6156,12 +6211,6 @@
 	icon_state = "barber"
 	},
 /area/lv873/indoors/marshals/barracks)
-"cVn" = (
-/obj/structure/bed,
-/obj/item/bedsheet/captain,
-/obj/item/reagent_container/food/drinks/bottle/absinthe,
-/turf/open/floor/wood,
-/area/lv873/indoors/northeast/slums)
 "cVJ" = (
 /obj/structure/disposalpipe/segment{
 	pixel_x = -7
@@ -6253,8 +6302,10 @@
 	},
 /area/lv873/indoors/operations/lockerroom)
 "cXL" = (
-/obj/structure/surface/rack,
-/obj/item/ammo_magazine/handful/shotgun/incendiary,
+/obj/structure/surface/table/woodentable,
+/obj/item/paper_bin/wy{
+	pixel_y = 6
+	},
 /turf/open/floor/wood,
 /area/lv873/indoors/northeast/slums)
 "cXO" = (
@@ -7495,11 +7546,19 @@
 /area/lv873/indoors/lone_buildings/flynns_bar)
 "dAl" = (
 /turf/closed/wall/r_wall,
-/area/lv873/outdoors/flooded_streets/east)
+/area/lv873/indoors/flooded/east_apartments)
 "dAm" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
 /area/lv873/indoors/lone_buildings/recruiter_house)
+"dAt" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/microwave{
+	pixel_y = 16
+	},
+/obj/structure/machinery/light/small,
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "dAB" = (
 /obj/structure/closet/bodybag,
 /turf/open/floor{
@@ -7772,6 +7831,14 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
 /area/lv873/indoors/bungalow_manager)
+"dIM" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/tool/lighter,
+/turf/open/floor/carpet,
+/area/lv873/indoors/northeast/slums)
 "dJb" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -7891,6 +7958,10 @@
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/gm/grass/dirt,
 /area/lv873/outdoors/hospital/road_north_west)
+"dLE" = (
+/obj/structure/closet/secure_closet/engineering_personal,
+/turf/open/floor/plating/catwalk/rusted,
+/area/lv873/indoors/northeast/slums)
 "dLJ" = (
 /obj/item/ashtray/bronze{
 	pixel_y = 0;
@@ -7906,6 +7977,12 @@
 	},
 /turf/open/floor/carpet,
 /area/lv873/indoors/marshals/marshalsoffice)
+"dLL" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	name = "\improper North-East Power Substation"
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/lv873/indoors/northeast/slums)
 "dLR" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/explosive/grenade/custom/ied{
@@ -7916,6 +7993,9 @@
 	},
 /obj/item/explosive/grenade/custom/ied{
 	pixel_x = -5
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
 	},
 /turf/open/floor/wood,
 /area/lv873/indoors/lone_buildings/clf_barracks)
@@ -8002,6 +8082,16 @@
 /obj/item/trash/hotdog,
 /turf/open/gm/dirt/brown,
 /area/lv873/oob)
+"dPB" = (
+/obj/item/paper/crumpled{
+	pixel_x = -10;
+	pixel_y = 6
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "dPI" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/microwave{
@@ -8391,6 +8481,10 @@
 	icon_state = "whiteblue"
 	},
 /area/lv873/indoors/hospital/research/floor)
+"ecJ" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "ecL" = (
 /obj/structure/machinery/recharge_station,
 /turf/open/floor{
@@ -9028,6 +9122,10 @@
 /obj/item/ammo_box/magazine/misc/mre,
 /turf/open/asphalt/cement,
 /area/lv873/indoors/lone_buildings/army_surplus)
+"epq" = (
+/obj/structure/largecrate/supply/supplies/water,
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "epR" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/gm/road,
@@ -9097,6 +9195,10 @@
 	icon_state = "white"
 	},
 /area/lv873/indoors/marshals/mainhall)
+"erz" = (
+/obj/structure/closet/cabinet,
+/turf/open/floor/wood,
+/area/lv873/indoors/southeast/slums)
 "esa" = (
 /turf/open/floor{
 	icon_state = "dark2"
@@ -9185,6 +9287,9 @@
 /obj/item/storage/box/m56d/m2c,
 /turf/open/floor/plating,
 /area/lv873/indoors/corpo_armory)
+"eul" = (
+/turf/closed/wall/mineral/bone_resin,
+/area/lv873/indoors/northeast/slums)
 "eum" = (
 /obj/item/tool/soap/syndie{
 	pixel_y = -9;
@@ -9225,6 +9330,10 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/lv873/landing_zone_2)
+"euG" = (
+/obj/structure/bed/chair/office/dark,
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "euM" = (
 /obj/structure/reagent_dispensers/fueltank/gas,
 /obj/item/prop{
@@ -9446,6 +9555,12 @@
 	icon_state = "browndirt_road_1"
 	},
 /area/lv873/outdoors/colony_streets/east)
+"eyh" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/lv873/indoors/southeast/slums)
 "eym" = (
 /turf/open/gm/road{
 	icon_state = "browndirt_road_3";
@@ -9556,6 +9671,13 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv873/indoors/east/slums)
+"eCu" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/closet/secure_closet/engineering_personal,
+/turf/open/floor/plating/catwalk/rusted,
+/area/lv873/indoors/northeast/slums)
 "eCE" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -9689,6 +9811,10 @@
 	icon = 'icons/turf/ground_map_dirt.dmi'
 	},
 /area/lv873/indoors/flooded/east_apartments)
+"eJe" = (
+/obj/item/tool/pen/clicky,
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "eJn" = (
 /obj/structure/surface/rack,
 /obj/item/toy/deck/uno{
@@ -10667,7 +10793,7 @@
 	dir = 8
 	},
 /turf/open/gm/dirtgrassborder/dirt/west,
-/area/lv873/indoors/hospital/reception)
+/area/lv873/indoors/east/slums)
 "fiM" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/trash/plate{
@@ -10749,8 +10875,8 @@
 /turf/open/floor,
 /area/lv873/indoors/flooded/east_apartments)
 "fjZ" = (
-/obj/structure/machinery/faxmachine/cmb,
 /obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/faxmachine,
 /turf/open/floor/carpet,
 /area/lv873/indoors/marshals/marshalsoffice)
 "fkj" = (
@@ -11406,6 +11532,10 @@
 	},
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner2/north_east,
 /area/lv873/landing_zone_2)
+"fBm" = (
+/obj/structure/closet/secure_closet/freezer/fridge,
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "fBD" = (
 /obj/structure/machinery/vending/cola,
 /turf/open/floor,
@@ -11919,6 +12049,15 @@
 /obj/structure/window/framed/colony,
 /turf/open/gm/grass/dirt,
 /area/lv873/indoors/east/slums)
+"fMw" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 8
+	},
+/obj/item/spacecash/c10{
+	pixel_y = 0
+	},
+/turf/open/floor/wood,
+/area/lv873/indoors/lone_buildings/clf_barracks)
 "fMx" = (
 /turf/open/floor/wood,
 /area/lv873/indoors/lone_buildings/school)
@@ -12020,6 +12159,12 @@
 	icon_state = "plate"
 	},
 /area/lv873/indoors/ss_athens)
+"fOr" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/snacks/boiledspagetti,
+/obj/structure/machinery/light/small,
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "fOB" = (
 /obj/structure/machinery/floodlight,
 /turf/open/gm/dirt/brown,
@@ -12312,6 +12457,11 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/lv873/oob)
+"fUn" = (
+/obj/structure/bed/chair/wood/normal,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/wood,
+/area/lv873/indoors/lone_buildings/clf_barracks)
 "fUo" = (
 /obj/structure/sign/poster/ad{
 	pixel_y = -32
@@ -12622,9 +12772,6 @@
 /obj/item/reagent_container/food/drinks/bottle/absinthe,
 /turf/open/floor,
 /area/lv873/indoors/lone_buildings/liq_r_mart)
-"gbK" = (
-/turf/closed/wall/r_wall,
-/area/lv873/outdoors/colony_streets/southeast)
 "gbV" = (
 /obj/structure/closet/cabinet{
 	density = 0;
@@ -13331,6 +13478,11 @@
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/grass/dirt,
 /area/lv873/outdoors/lone_buildings/weyyu_hostel)
+"gyF" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/snacks/packaged_hdogs,
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "gyQ" = (
 /turf/open/floor/wood,
 /area/lv873/indoors/lone_buildings/jurossushi)
@@ -13387,6 +13539,16 @@
 	},
 /turf/open/floor/wood,
 /area/lv873/indoors/marshals/marshalsoffice)
+"gAC" = (
+/obj/structure/closet/secure_closet/guncabinet/riot_control,
+/obj/structure/sign/poster/clf{
+	pixel_x = -32
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/lv873/indoors/lone_buildings/clf_barracks)
 "gAJ" = (
 /obj/structure/reagent_dispensers/fueltank/gas/hydrogen{
 	anchored = 1
@@ -13400,6 +13562,11 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/lv873/outdoors/cmb/exterior)
+"gAO" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/microwave,
+/turf/open/floor/wood,
+/area/lv873/indoors/southeast/slums)
 "gAP" = (
 /turf/closed/wall/r_wall,
 /area/lv873/indoors/operations/offices/southwest)
@@ -13827,6 +13994,11 @@
 	},
 /turf/open/floor,
 /area/lv873/indoors/lone_buildings/army_surplus)
+"gJJ" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/hypospray/autoinjector/tricord,
+/turf/open/floor/wood,
+/area/lv873/indoors/southeast/slums)
 "gJK" = (
 /turf/open/floor{
 	dir = 4;
@@ -14657,9 +14829,6 @@
 "hij" = (
 /turf/open/gm/coast/dirt/beachcorner2/north_west,
 /area/lv873/outdoors/flooded_streets/east)
-"hiz" = (
-/turf/closed/wall,
-/area/lv873/outdoors/colony_streets/northeast)
 "hiK" = (
 /obj/structure/flora/jungle/vines,
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner2/south_east,
@@ -14711,9 +14880,6 @@
 	},
 /turf/open/floor/wood,
 /area/lv873/indoors/lone_buildings/cargo_lz)
-"hkx" = (
-/turf/closed/wall/r_wall,
-/area/lv873/outdoors/colony_streets/south)
 "hkF" = (
 /obj/item/ammo_magazine/m60{
 	max_rounds = 0;
@@ -14798,6 +14964,16 @@
 	icon_state = "redyellowfull"
 	},
 /area/lv873/indoors/lone_buildings/clf_barracks)
+"hlU" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/lv873/indoors/northeast/slums)
+"hmi" = (
+/obj/item/paper_bin/uscm,
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "hmt" = (
 /obj/structure/fence,
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -14868,6 +15044,13 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/lv873/landing_zone_1)
+"hoj" = (
+/obj/item/toy/deck{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/turf/open/floor/wood,
+/area/lv873/indoors/lone_buildings/clf_barracks)
 "hoX" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/north_east,
@@ -14986,6 +15169,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
 /area/lv873/indoors/lone_buildings/goon_and_chef_house)
+"hsA" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 4
+	},
+/turf/open/floor/carpet,
+/area/lv873/indoors/northeast/slums)
 "hsE" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/north_east,
@@ -16106,6 +16295,21 @@
 	icon_state = "floor4"
 	},
 /area/lv873/indoors/marshals/mainhall)
+"hSu" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 4
+	},
+/obj/item/spacecash/c100{
+	pixel_y = 12
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/wood,
+/area/lv873/indoors/lone_buildings/clf_barracks)
+"hSv" = (
+/obj/effect/decal/remains/robot,
+/obj/item/stack/cable_coil,
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "hSx" = (
 /obj/structure/ladder{
 	height = 1;
@@ -16385,6 +16589,9 @@
 /area/lv873/oob)
 "hYI" = (
 /obj/structure/closet/secure_closet/guncabinet/riot_control,
+/obj/structure/sign/poster/clf{
+	pixel_x = -32
+	},
 /turf/open/floor/wood,
 /area/lv873/indoors/lone_buildings/clf_barracks)
 "hYX" = (
@@ -16414,6 +16621,10 @@
 	icon_state = "barber"
 	},
 /area/lv873/indoors/power_station)
+"hZv" = (
+/obj/item/shard,
+/turf/open/floor/carpet,
+/area/lv873/indoors/northeast/slums)
 "hZz" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 10
@@ -17035,6 +17246,11 @@
 	icon_state = "whiteblue"
 	},
 /area/lv873/indoors/hospital/research/floor)
+"ioJ" = (
+/obj/structure/surface/table,
+/obj/item/trash/ceramic_plate,
+/turf/open/floor/wood,
+/area/lv873/indoors/southeast/slums)
 "ioK" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/drinks/drinkingglass{
@@ -17826,6 +18042,12 @@
 /obj/item/weapon/gun/rifle/mar40{
 	pixel_y = 6
 	},
+/obj/structure/sign/poster/clf{
+	pixel_x = -32
+	},
+/obj/structure/sign/poster/clf{
+	pixel_y = 32
+	},
 /turf/open/floor/wood,
 /area/lv873/indoors/lone_buildings/clf_barracks)
 "iEx" = (
@@ -18039,12 +18261,6 @@
 	icon_state = "whiteyellowfull"
 	},
 /area/lv873/indoors/lone_buildings/weyyu_hostel)
-"iJt" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor{
-	icon_state = "redyellowfull"
-	},
-/area/lv873/indoors/northeast/slums)
 "iJJ" = (
 /obj/structure/sign/safety/restrictedarea{
 	pixel_x = 8;
@@ -18498,6 +18714,11 @@
 	icon_state = "whitegreen"
 	},
 /area/lv873/indoors/hospital/reception)
+"iTe" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/tool/kitchen/utensil/knife,
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "iTl" = (
 /obj/structure/machinery/shower{
 	pixel_y = 17
@@ -18926,6 +19147,12 @@
 	},
 /obj/item/weapon/gun/rifle/mar40{
 	pixel_y = -9
+	},
+/obj/structure/sign/poster/clf{
+	pixel_x = -32
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
 	},
 /turf/open/floor/wood,
 /area/lv873/indoors/lone_buildings/clf_barracks)
@@ -20079,6 +20306,12 @@
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/gm/dirt/brown,
 /area/lv873/outdoors/colony_streets/southwest)
+"jHI" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/lv873/indoors/lone_buildings/clf_barracks)
 "jHO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/cigbutt,
@@ -20574,6 +20807,10 @@
 	icon_state = "stan_leftengine"
 	},
 /area/lv873/indoors/ss_athens)
+"jTu" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/lv873/indoors/uscm_garrison/garrison_bunks)
 "jTD" = (
 /turf/closed/wall/r_wall,
 /area/lv873/indoors/gated_community/director_of_coporate_relations)
@@ -20642,6 +20879,10 @@
 	icon_state = "darkblue2"
 	},
 /area/lv873/indoors/operations/hallway/south)
+"jVH" = (
+/obj/structure/closet/secure_closet/freezer/fridge,
+/turf/open/floor/wood,
+/area/lv873/indoors/southeast/slums)
 "jVO" = (
 /obj/structure/machinery/washing_machine,
 /turf/open/floor,
@@ -21011,10 +21252,6 @@
 /obj/structure/cargo_container/ferret/mid,
 /turf/open/gm/grass/dirt,
 /area/lv873/outdoors/colony_streets/west)
-"kgk" = (
-/obj/structure/window/framed/colony,
-/turf/open/floor/wood,
-/area/lv873/indoors/northeast/slums)
 "kgq" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 3
@@ -21333,6 +21570,9 @@
 /area/lv873/indoors/bungalow_manager)
 "koj" = (
 /obj/structure/surface/table,
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 1
+	},
 /turf/open/floor/wood,
 /area/lv873/indoors/northeast/slums)
 "kor" = (
@@ -21800,6 +22040,12 @@
 	},
 /turf/open/floor,
 /area/lv873/indoors/lone_buildings/liq_r_mart)
+"kAw" = (
+/obj/structure/platform_decoration/kutjevo/smooth{
+	dir = 8
+	},
+/turf/open/gm/grass/dirt,
+/area/lv873/outdoors/bungalow_manager_exterior)
 "kAK" = (
 /obj/structure/fence,
 /obj/structure/shuttle/engine/platform,
@@ -22050,9 +22296,6 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/lv873/outdoors/colony_streets/east)
-"kGx" = (
-/turf/closed/wall,
-/area/lv873/outdoors/hospital/break_garden)
 "kGE" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/prison,
@@ -22181,7 +22424,7 @@
 "kLG" = (
 /obj/effect/spawner/gibspawner/xeno,
 /turf/closed/wall/r_wall,
-/area/lv873/outdoors/landing_zones_disembark)
+/area/lv873/indoors/lz_sec_checkpoint)
 "kLN" = (
 /turf/open/floor{
 	dir = 1;
@@ -22333,7 +22576,7 @@
 	pixel_x = 4
 	},
 /turf/closed/wall/r_wall,
-/area/lv873/landing_zone_2)
+/area/lv873/indoors/aerospace_control)
 "kPd" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3";
@@ -23215,6 +23458,18 @@
 	icon_state = "darkblue2"
 	},
 /area/lv873/indoors/operations/hallway/north)
+"lko" = (
+/obj/structure/surface/table/woodentable,
+/obj/structure/machinery/computer/cameras/wooden_tv{
+	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW.";
+	dir = 8;
+	layer = 3.2;
+	name = "Television set";
+	network = null;
+	pixel_y = 20
+	},
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "lkM" = (
 /obj/structure/largecrate/supply/supplies/water,
 /turf/open/floor/wood,
@@ -23720,9 +23975,6 @@
 	icon_state = "plate"
 	},
 /area/lv873/indoors/lone_buildings/polemuseum)
-"lwL" = (
-/turf/closed/wall/r_wall,
-/area/lv873/outdoors/welcome_center_exterior/west)
 "lwN" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 8
@@ -25021,6 +25273,10 @@
 	icon_state = "dark"
 	},
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
+"mfb" = (
+/obj/structure/closet/secure_closet/freezer/fridge/full,
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "mfc" = (
 /obj/structure/machinery/shower{
 	pixel_y = 17
@@ -25483,9 +25739,6 @@
 	icon_state = "vault"
 	},
 /area/lv873/indoors/lone_buildings/weymart)
-"mqZ" = (
-/turf/closed/wall/r_wall,
-/area/lv873/outdoors/colony_streets/northeast)
 "mri" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
@@ -25815,6 +26068,10 @@
 	dir = 1
 	},
 /area/lv873/indoors/uscm_garrison/recruitment_office)
+"myL" = (
+/obj/structure/closet/cabinet,
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "mze" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/window{
@@ -26504,9 +26761,6 @@
 	},
 /turf/open/floor,
 /area/lv873/indoors/bungalow_manager)
-"mNS" = (
-/turf/closed/wall/r_wall,
-/area/lv873/outdoors/colony_streets/southwest)
 "mNW" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/north_west,
@@ -26783,10 +27037,10 @@
 	},
 /area/lv873/indoors/southwest/slums)
 "mUP" = (
-/obj/structure/surface/rack,
-/obj/item/tool/extinguisher/pyro{
-	pixel_x = 6;
-	pixel_y = 19
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_17";
+	pixel_x = 7;
+	pixel_y = 1
 	},
 /turf/open/floor/wood,
 /area/lv873/indoors/northeast/slums)
@@ -27503,6 +27757,12 @@
 	icon_state = "dark2"
 	},
 /area/lv873/indoors/operations/hallway/south)
+"nmE" = (
+/obj/structure/platform_decoration/kutjevo/smooth{
+	dir = 8
+	},
+/turf/open/asphalt/cement,
+/area/lv873/outdoors/bungalow_manager_exterior)
 "nmG" = (
 /turf/open/gm/dirtgrassborder/dirt/north,
 /area/lv873/oob)
@@ -27614,6 +27874,11 @@
 	icon_state = "darkblue2"
 	},
 /area/lv873/indoors/operations/hallway/west)
+"noV" = (
+/obj/effect/decal/cleanable/blood/gibs/robot,
+/obj/item/stack/rods,
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "npa" = (
 /obj/item/clothing/head/soft/trucker,
 /obj/item/trash/cigbutt/cigarbutt,
@@ -28080,6 +28345,12 @@
 	icon_state = "white"
 	},
 /area/lv873/indoors/welcome_center/lobby)
+"nBd" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "nBw" = (
 /obj/structure/surface/table,
 /obj/item/stack/sheet/mineral/plastic{
@@ -28141,6 +28412,10 @@
 	},
 /turf/open/floor/wood,
 /area/lv873/indoors/hospital/research/offices)
+"nBX" = (
+/obj/structure/prop/power_transformer,
+/turf/open/floor/plating/catwalk/rusted,
+/area/lv873/indoors/northeast/slums)
 "nBZ" = (
 /obj/structure/mineral_door/wood/open{
 	dir = 8
@@ -28178,6 +28453,13 @@
 	icon_state = "darkblue2"
 	},
 /area/lv873/indoors/operations/hallway/west)
+"nDb" = (
+/obj/item/paper/crumpled{
+	pixel_x = 7;
+	pixel_y = 8
+	},
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "nDd" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/gm/dirt/brown,
@@ -28724,6 +29006,12 @@
 	icon = 'icons/turf/ground_map_dirt.dmi'
 	},
 /area/lv873/indoors/flooded/east_apartments)
+"nRu" = (
+/obj/structure/platform_decoration/kutjevo/smooth{
+	dir = 1
+	},
+/turf/open/gm/grass/dirt,
+/area/lv873/outdoors/bungalow_manager_exterior)
 "nRD" = (
 /turf/open/floor/almayer/uscm/directional{
 	dir = 5
@@ -28961,6 +29249,11 @@
 	icon_state = "darkblue2"
 	},
 /area/lv873/indoors/operations/hallway/west)
+"nVx" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/trash/ceramic_plate,
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "nVy" = (
 /obj/structure/surface/table,
 /obj/item/tool/kitchen/utensil/knife,
@@ -29007,9 +29300,6 @@
 	},
 /turf/open/floor/wood,
 /area/lv873/indoors/lone_buildings/insurance)
-"nVY" = (
-/turf/closed/wall/r_wall,
-/area/lv873/outdoors/bungalow_manager_exterior)
 "nWb" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
@@ -29723,9 +30013,6 @@
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/dirt/east,
 /area/lv873/oob)
-"onP" = (
-/turf/closed/wall/r_wall,
-/area/lv873/outdoors/lone_buildings/gas_n_gear)
 "onQ" = (
 /turf/open/asphalt/cement,
 /area/lv873/indoors/lone_buildings/multidoor_garage)
@@ -30450,6 +30737,9 @@
 /obj/structure/bed/chair/comfy/orange{
 	dir = 4
 	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
 /turf/open/floor/wood,
 /area/lv873/indoors/northeast/slums)
 "oCE" = (
@@ -31062,9 +31352,6 @@
 	icon_state = "stan3"
 	},
 /area/lv873/indoors/ss_athens)
-"oOV" = (
-/turf/closed/wall/r_wall,
-/area/lv873/outdoors/lone_buildings/weyyu_hostel)
 "oPB" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass/dirt,
@@ -31180,10 +31467,6 @@
 	icon_state = "dark"
 	},
 /area/lv873/indoors/operations/hallway/west)
-"oSG" = (
-/obj/item/scalp,
-/turf/open/gm/dirt/brown,
-/area/lv873/oob)
 "oSS" = (
 /obj/structure/surface/table,
 /obj/item/trash/candle,
@@ -33185,7 +33468,7 @@
 	pixel_x = -4
 	},
 /turf/closed/wall/r_wall,
-/area/lv873/landing_zone_1)
+/area/lv873/indoors/aerospace_control)
 "pMd" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 1
@@ -34208,6 +34491,16 @@
 	icon_state = "barber"
 	},
 /area/lv873/indoors/lone_buildings/mechanic_shop)
+"qiu" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4
+	},
+/obj/item/paper/crumpled{
+	pixel_x = 10;
+	pixel_y = -4
+	},
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "qiY" = (
 /obj/structure/surface/table/reinforced{
 	flipped = 1;
@@ -34614,6 +34907,10 @@
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/north_west,
 /area/lv873/outdoors/colony_streets/northeast)
+"qsS" = (
+/obj/structure/bed/sofa/south/grey/left,
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "qtg" = (
 /obj/structure/barricade/sandbags/wired{
 	dir = 1;
@@ -34674,7 +34971,7 @@
 /area/lv873/indoors/hospital/reception)
 "qug" = (
 /turf/closed/wall/r_wall,
-/area/lv873/outdoors/flooded_streets/west)
+/area/lv873/indoors/flooded/west_apartments)
 "quK" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/gm/dirt/brown,
@@ -35155,9 +35452,6 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/lv873/outdoors/hospital/road_north_east)
-"qFs" = (
-/turf/closed/wall,
-/area/lv873/outdoors/lone_buildings/weyyu_hostel)
 "qFQ" = (
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/north_east,
 /area/lv873/oob)
@@ -35609,6 +35903,13 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv873/indoors/south/slums)
+"qRn" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/microwave{
+	pixel_y = 12
+	},
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "qRz" = (
 /obj/structure/machinery/vending/cola,
 /turf/open/floor{
@@ -35679,7 +35980,7 @@
 	dir = 8
 	},
 /turf/open/gm/grass/dirt,
-/area/lv873/indoors/hospital/reception)
+/area/lv873/indoors/east/slums)
 "qTA" = (
 /obj/structure/surface/table/woodentable,
 /obj/structure/machinery/faxmachine/corporate{
@@ -36098,6 +36399,10 @@
 "rcQ" = (
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/north_east,
 /area/lv873/outdoors/landing_zones_disembark)
+"rcS" = (
+/obj/structure/tunnel,
+/turf/open/gm/dirt/brown,
+/area/lv873/oob)
 "rcX" = (
 /obj/structure/toilet{
 	dir = 1
@@ -36322,6 +36627,10 @@
 "rjV" = (
 /turf/closed/wall,
 /area/lv873/indoors/uscm_garrison/io_office)
+"rka" = (
+/obj/structure/bed/sofa/south/grey/right,
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "rkb" = (
 /obj/structure/machinery/door/airlock/almayer/marine/alpha{
 	name = "\improper USCMC Showers"
@@ -36439,6 +36748,13 @@
 /obj/item/storage/box/lights/tubes,
 /turf/open/floor,
 /area/lv873/indoors/welcome_center/lobby)
+"rno" = (
+/obj/structure/surface/table/woodentable,
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "rnp" = (
 /obj/structure/barricade/sandbags/wired{
 	dir = 8;
@@ -37028,6 +37344,9 @@
 	},
 /obj/item/weapon/gun/rifle/mar40/carbine{
 	pixel_y = -5
+	},
+/obj/structure/sign/poster/clf{
+	pixel_x = -32
 	},
 /turf/open/floor/wood,
 /area/lv873/indoors/lone_buildings/clf_barracks)
@@ -37697,6 +38016,16 @@
 	},
 /turf/open/floor/wood,
 /area/lv873/indoors/lone_buildings/insurance)
+"rTZ" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/clothing/glasses/welding{
+	pixel_y = 9
+	},
+/obj/item/clothing/suit/storage/hazardvest{
+	pixel_y = -2
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/lv873/indoors/northeast/slums)
 "rUu" = (
 /obj/structure/sign/safety/bathwomens{
 	pixel_x = -25
@@ -38566,10 +38895,6 @@
 	icon_state = "dark2"
 	},
 /area/lv873/indoors/operations/reception)
-"snz" = (
-/obj/structure/fence,
-/turf/open/gm/dirtgrassborder/dirt/south,
-/area/lv873/indoors/northeast/slums)
 "snR" = (
 /obj/structure/surface/table/reinforced{
 	flipped = 1;
@@ -39063,6 +39388,12 @@
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/grass/dirt,
 /area/lv873/outdoors/colony_streets/southwest)
+"sAn" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/lv873/indoors/northeast/slums)
 "sAr" = (
 /obj/structure/barricade/wooden{
 	dir = 4
@@ -39087,6 +39418,14 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/lv873/indoors/operations/maintenance/south)
+"sAB" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/faxmachine/uscm,
+/obj/item/clothing/head/beret/marine/mp/tis{
+	pixel_y = 10
+	},
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "sAD" = (
 /obj/structure/machinery/vending/security/riot,
 /turf/open/floor,
@@ -39724,6 +40063,12 @@
 	},
 /turf/open/asphalt/cement,
 /area/lv873/indoors/lone_buildings/cargo_lz)
+"sPC" = (
+/obj/structure/platform_decoration/kutjevo/smooth{
+	dir = 4
+	},
+/turf/open/asphalt/cement,
+/area/lv873/outdoors/bungalow_manager_exterior)
 "sQd" = (
 /turf/open/floor{
 	icon_state = "darkbluecorners2";
@@ -40037,6 +40382,12 @@
 	},
 /turf/open/floor,
 /area/lv873/indoors/lone_buildings/liq_r_mart)
+"sVk" = (
+/obj/structure/sign/poster/clf{
+	pixel_y = 32
+	},
+/turf/open/floor/wood,
+/area/lv873/indoors/lone_buildings/clf_barracks)
 "sVq" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 1
@@ -40086,6 +40437,11 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv873/indoors/lone_buildings/engineer_alcoholic_house)
+"sVU" = (
+/obj/item/clothing/under/colonist/workwear/khaki,
+/obj/structure/closet/cabinet,
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "sWh" = (
 /obj/structure/surface/table/gamblingtable,
 /obj/item/toy/deck/uno{
@@ -41029,6 +41385,16 @@
 	dir = 1
 	},
 /area/lv873/outdoors/colony_streets/east)
+"tqg" = (
+/obj/structure/closet/secure_closet/guncabinet/riot_control,
+/obj/structure/sign/poster/clf{
+	pixel_y = 32
+	},
+/obj/structure/sign/poster/clf{
+	pixel_x = -32
+	},
+/turf/open/floor/wood,
+/area/lv873/indoors/lone_buildings/clf_barracks)
 "tql" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -41097,6 +41463,16 @@
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/wood,
 /area/lv873/indoors/hospital/research/offices)
+"trw" = (
+/obj/item/paper/crumpled{
+	pixel_x = 16;
+	pixel_y = 14
+	},
+/obj/structure/sign/poster/propaganda{
+	pixel_x = -32
+	},
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "trD" = (
 /turf/open/gm/dirtgrassborder/dirt/south,
 /area/lv873/landing_zone_1)
@@ -41241,6 +41617,14 @@
 "tuZ" = (
 /turf/closed/wall,
 /area/lv873/indoors/gated_community/head_of_corporate_engineering)
+"tvl" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/lv873/indoors/northeast/slums)
 "tvA" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -41781,6 +42165,10 @@
 	icon_state = "whiteblue"
 	},
 /area/lv873/indoors/hospital/research/offices)
+"tGR" = (
+/obj/item/reagent_container/food/drinks/bottle/wine,
+/turf/open/floor/carpet,
+/area/lv873/indoors/northeast/slums)
 "tHd" = (
 /obj/structure/toilet{
 	pixel_y = 16
@@ -42275,6 +42663,10 @@
 /obj/item/tool/pen/blue,
 /turf/open/floor/wood,
 /area/lv873/indoors/lone_buildings/school)
+"tTY" = (
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
+/turf/open/floor/plating/catwalk/rusted,
+/area/lv873/indoors/northeast/slums)
 "tUe" = (
 /obj/structure/sink{
 	pixel_y = 16
@@ -42310,6 +42702,13 @@
 /obj/structure/flora/bush/ausbushes/palebush,
 /turf/open/gm/grass/dirt,
 /area/lv873/outdoors/uscm_garrison_exterior/fenced)
+"tUK" = (
+/obj/item/paper/crumpled{
+	pixel_x = -7;
+	pixel_y = -6
+	},
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "tVg" = (
 /turf/open/gm/grass/dirt,
 /area/lv873/outdoors/lone_buildings/gas_n_gear)
@@ -42626,6 +43025,22 @@
 	icon_state = "white"
 	},
 /area/lv873/indoors/lone_buildings/weymart)
+"ubD" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/surface/table/woodentable,
+/obj/item/prop/flower_vase/bluewhiteflowers,
+/obj/item/tool/candle{
+	pixel_y = 10;
+	pixel_x = 10
+	},
+/obj/item/tool/candle{
+	pixel_y = 10;
+	pixel_x = -10
+	},
+/turf/open/floor/carpet,
+/area/lv873/indoors/northeast/slums)
 "ubF" = (
 /obj/structure/reagent_dispensers/fueltank/gas,
 /turf/open/asphalt/cement,
@@ -42796,6 +43211,11 @@
 /obj/item/ammo_magazine/pistol/holdout,
 /turf/open/floor/wood,
 /area/lv873/indoors/gated_community/director_of_corporate_research)
+"ufw" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/platform_decoration/kutjevo/smooth,
+/turf/open/gm/grass/dirt,
+/area/lv873/outdoors/bungalow_manager_exterior)
 "ufx" = (
 /obj/structure/bed/chair/wood/wings{
 	dir = 8
@@ -43258,6 +43678,10 @@
 	},
 /turf/open/floor/wood,
 /area/lv873/indoors/lone_buildings/jurossushi)
+"uoV" = (
+/obj/structure/mineral_door/resin/thick,
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "upo" = (
 /obj/structure/closet/fancy{
 	pixel_x = -8;
@@ -43499,6 +43923,17 @@
 	dir = 8
 	},
 /area/lv873/outdoors/colony_streets/southwest)
+"uvR" = (
+/obj/structure/surface/table,
+/obj/item/tool/extinguisher/pyro{
+	pixel_x = 6;
+	pixel_y = 19
+	},
+/obj/item/trash/plate{
+	pixel_y = 6
+	},
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "uwi" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -43923,6 +44358,10 @@
 	},
 /turf/open/floor/wood,
 /area/lv873/indoors/lone_buildings/clf_communications)
+"uJa" = (
+/obj/structure/coatrack,
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "uJc" = (
 /obj/item/stack/sheet/metal,
 /turf/open/gm/river{
@@ -44401,6 +44840,11 @@
 	},
 /turf/open/floor/wood,
 /area/lv873/indoors/lone_buildings/engineer_alcoholic_house)
+"uXP" = (
+/obj/effect/spawner/gibspawner/robot,
+/obj/item/stack/sheet/metal,
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "uXQ" = (
 /obj/structure/fence,
 /turf/open/gm/grass/dirt,
@@ -44484,6 +44928,12 @@
 	icon_state = "white"
 	},
 /area/lv873/indoors/lone_buildings/gas_n_gear)
+"uZg" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "uZA" = (
 /turf/open/gm/dirt/brown,
 /area/lv873/outdoors/colony_streets/southwest)
@@ -45137,6 +45587,12 @@
 	},
 /turf/open/floor/wood,
 /area/lv873/indoors/lone_buildings/travel_agency)
+"vql" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "vqp" = (
 /obj/structure/machinery/shower{
 	dir = 1
@@ -45159,6 +45615,11 @@
 	icon_state = "white"
 	},
 /area/lv873/indoors/lone_buildings/weyyu_hostel)
+"vqM" = (
+/obj/structure/closet/cabinet,
+/obj/item/ammo_magazine/handful/shotgun/incendiary,
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "vqO" = (
 /obj/item/stack/sheet/metal,
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/south_east,
@@ -45381,6 +45842,10 @@
 	dir = 8
 	},
 /area/lv873/indoors/operations/hallway/south)
+"vxB" = (
+/obj/structure/prop/almayer/computers/mission_planning_system,
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "vye" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner,
 /turf/open/gm/dirtgrassborder/dirt/south,
@@ -45536,6 +46001,13 @@
 	icon_state = "plate"
 	},
 /area/lv873/indoors/south/slums)
+"vDa" = (
+/obj/structure/surface/table/woodentable,
+/obj/structure/machinery/microwave{
+	pixel_y = 4
+	},
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "vDd" = (
 /turf/open/gm/road{
 	icon_state = "browndirt_road_3";
@@ -45927,6 +46399,14 @@
 	icon_state = "white"
 	},
 /area/lv873/indoors/lone_buildings/weyyu_hostel)
+"vNE" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/device/flashlight/lamp{
+	pixel_y = 16
+	},
+/obj/item/prop/flower_vase,
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "vNS" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/ammo_magazine/pistol/holdout{
@@ -45945,6 +46425,15 @@
 	icon_state = "barber"
 	},
 /area/lv873/indoors/marshals/mainhall)
+"vOl" = (
+/obj/structure/bed/chair/wood/wings{
+	dir = 8
+	},
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "vOy" = (
 /obj/item/tool/mop{
 	desc = "Unlock the power of Mop-Fu!";
@@ -46104,9 +46593,6 @@
 	icon = 'icons/turf/ground_map_dirt.dmi'
 	},
 /area/lv873/indoors/flooded/west_slums)
-"vRt" = (
-/turf/closed/wall/r_wall,
-/area/lv873/outdoors/colony_streets/east)
 "vRz" = (
 /obj/structure/surface/rack,
 /turf/open/floor,
@@ -46369,6 +46855,10 @@
 	},
 /turf/open/floor/wood,
 /area/lv873/indoors/gated_community/director_of_coporate_relations)
+"vWn" = (
+/obj/structure/surface/table/woodentable,
+/turf/open/floor/wood,
+/area/lv873/indoors/southeast/slums)
 "vWq" = (
 /turf/closed/wall,
 /area/lv873/indoors/lone_buildings/insurance)
@@ -46713,6 +47203,9 @@
 	icon_state = "darkblue2"
 	},
 /area/lv873/indoors/operations/lockerroom)
+"wdo" = (
+/turf/open/floor/carpet,
+/area/lv873/indoors/northeast/slums)
 "wdr" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
@@ -46778,6 +47271,12 @@
 	},
 /turf/open/floor/wood,
 /area/lv873/indoors/bungalow_manager)
+"wfe" = (
+/obj/structure/machinery/power/apc{
+	dir = 1
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/lv873/indoors/northeast/slums)
 "wfs" = (
 /turf/closed/wall,
 /area/lv873/indoors/hospital/operating_rooms)
@@ -46906,9 +47405,6 @@
 	icon_state = "dark"
 	},
 /area/lv873/indoors/aerospace_control)
-"wjq" = (
-/turf/closed/wall/r_wall,
-/area/lv873/outdoors/landing_zones_disembark)
 "wjt" = (
 /obj/item/stool,
 /turf/open/floor,
@@ -47099,9 +47595,6 @@
 /obj/structure/platform_decoration/strata/metal,
 /turf/open/floor/wood,
 /area/lv873/indoors/lone_buildings/polemuseum)
-"woE" = (
-/turf/closed/wall/r_wall,
-/area/lv873/outdoors/hospital/road_north_east)
 "woM" = (
 /obj/structure/largecrate/supply/explosives/mortar_flare,
 /turf/open/gm/road{
@@ -47454,6 +47947,12 @@
 /obj/item/stack/barbed_wire,
 /turf/open/floor/wood,
 /area/lv873/indoors/lone_buildings/clf_communications)
+"wyQ" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/lv873/indoors/lone_buildings/clf_barracks)
 "wzb" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 1
@@ -47595,10 +48094,17 @@
 	icon_state = "white"
 	},
 /area/lv873/indoors/lone_buildings/weyyu_hostel)
+"wCl" = (
+/turf/closed/wall/resin/thick,
+/area/lv873/indoors/northeast/slums)
 "wCK" = (
 /obj/item/storage/firstaid/adv/empty,
 /turf/open/asphalt/cement,
 /area/lv873/oob)
+"wCV" = (
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
+/turf/open/floor/plating/catwalk/rusted,
+/area/lv873/indoors/northeast/slums)
 "wDm" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
@@ -47862,6 +48368,7 @@
 	pixel_x = -8;
 	pixel_y = 25
 	},
+/obj/item/reagent_container/glass/bucket/mopbucket,
 /turf/open/floor/wood,
 /area/lv873/indoors/northeast/slums)
 "wJL" = (
@@ -48044,7 +48551,7 @@
 /turf/open/gm/road{
 	icon_state = "browndirt_road_1"
 	},
-/area/lv873/indoors/northeast/slums)
+/area/lv873/outdoors/colony_streets/northeast)
 "wME" = (
 /obj/structure/curtain/red,
 /obj/structure/prop/invuln/overhead_pipe{
@@ -48111,6 +48618,15 @@
 	icon_state = "red"
 	},
 /area/lv873/indoors/marshals/interrogation)
+"wOm" = (
+/obj/structure/toilet{
+	dir = 1
+	},
+/obj/structure/machinery/light/small,
+/turf/open/floor{
+	icon_state = "redyellowfull"
+	},
+/area/lv873/indoors/northeast/slums)
 "wOr" = (
 /obj/item/reagent_container/food/drinks/golden_cup{
 	desc = "Flynn's Bar awarded best bar in Isaac's Lament fifth time in a row!";
@@ -49287,6 +49803,11 @@
 	icon_state = "barber"
 	},
 /area/lv873/indoors/marshals/mainhall)
+"xrb" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/prop/almayer/computer/PC,
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "xrB" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
@@ -49373,6 +49894,9 @@
 "xuo" = (
 /turf/closed/wall/r_wall,
 /area/lv873/indoors/hospital/research/toilets)
+"xuu" = (
+/turf/open/floor/plating/catwalk/rusted,
+/area/lv873/indoors/northeast/slums)
 "xux" = (
 /obj/item/stack/sheet/metal/small_stack,
 /turf/open/gm/grass/dirt,
@@ -50091,19 +50615,6 @@
 	},
 /turf/open/floor/wood,
 /area/lv873/indoors/lone_buildings/flynns_bar)
-"xQc" = (
-/obj/structure/surface/table,
-/obj/structure/machinery/computer/cameras/wooden_tv{
-	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW.";
-	dir = 4;
-	layer = 3.2;
-	name = "Television set";
-	network = null;
-	pixel_x = -5;
-	pixel_y = -1
-	},
-/turf/open/floor/wood,
-/area/lv873/indoors/northeast/slums)
 "xQd" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2";
@@ -50324,6 +50835,13 @@
 "xUG" = (
 /turf/open/floor,
 /area/lv873/indoors/marshals/cells)
+"xUT" = (
+/obj/item/paper/crumpled{
+	pixel_y = 18
+	},
+/obj/item/tool/pen/clicky,
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "xUY" = (
 /turf/closed/wall,
 /area/lv873/indoors/hospital/research/toilets)
@@ -50365,6 +50883,10 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/lv873/oob)
+"xVB" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/wood,
+/area/lv873/indoors/lone_buildings/clf_barracks)
 "xVZ" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/dirt/north,
@@ -50879,6 +51401,9 @@
 /obj/item/clothing/under/colonist/clf{
 	pixel_x = 9;
 	pixel_y = 12
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
 	},
 /turf/open/floor/wood,
 /area/lv873/indoors/lone_buildings/clf_barracks)
@@ -51527,8 +52052,8 @@ vbZ
 vbZ
 vbZ
 vbZ
-nRr
-nRr
+vbZ
+vbZ
 vbZ
 vbZ
 vbZ
@@ -51749,11 +52274,11 @@ vbZ
 vbZ
 vbZ
 vbZ
-nRr
-nRr
-nRr
-nRr
-nRr
+vbZ
+vbZ
+vbZ
+vbZ
+bhp
 vbZ
 vbZ
 vbZ
@@ -51971,14 +52496,14 @@ oNn
 vbZ
 vbZ
 vbZ
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
+vbZ
+vbZ
+vbZ
+vbZ
+vbZ
+bhp
+bhp
+bhp
 vbZ
 vbZ
 vbZ
@@ -52195,16 +52720,16 @@ oNn
 vbZ
 vbZ
 vbZ
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
 vbZ
 vbZ
+vbZ
+vbZ
+vbZ
+vbZ
+bhp
+bhp
+nmG
+nRr
 nRr
 nRr
 nRr
@@ -52418,16 +52943,16 @@ oNn
 oNn
 vbZ
 vbZ
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
+vbZ
+vbZ
+vbZ
+vbZ
+vbZ
+vbZ
+vbZ
+vbZ
+bhp
+nmG
 nRr
 nRr
 vbZ
@@ -52642,16 +53167,16 @@ oNn
 oNn
 vbZ
 vbZ
-nRr
-nRr
-oSG
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
+vbZ
+vbZ
+vbZ
+vbZ
+vbZ
+vbZ
+vbZ
+vbZ
+vbZ
+vbZ
 vbZ
 vbZ
 vbZ
@@ -52866,16 +53391,16 @@ oNn
 oNn
 vbZ
 vbZ
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
+vbZ
+vbZ
+vbZ
+vbZ
+vbZ
+vbZ
+vbZ
+vbZ
+vbZ
+vbZ
 vbZ
 vbZ
 vbZ
@@ -53089,16 +53614,16 @@ oNn
 (10,1,1) = {"
 oNn
 vbZ
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
+vbZ
+vbZ
+vbZ
+vbZ
+vbZ
+vbZ
+vbZ
+vbZ
+vbZ
+vbZ
 vbZ
 vbZ
 vbZ
@@ -53313,16 +53838,16 @@ oNn
 (11,1,1) = {"
 oNn
 vbZ
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
+vbZ
+vbZ
+vbZ
+vbZ
+vbZ
+vbZ
+vbZ
+vbZ
+vbZ
+vbZ
 vbZ
 vbZ
 vbZ
@@ -53538,14 +54063,14 @@ oNn
 oNn
 vbZ
 vbZ
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
-nRr
+vbZ
+vbZ
+vbZ
+vbZ
+vbZ
+vbZ
+vbZ
+vbZ
 vbZ
 vbZ
 vbZ
@@ -53762,11 +54287,11 @@ oNn
 oNn
 vbZ
 vbZ
-nRr
-nRr
-nRr
-nRr
-nRr
+vbZ
+vbZ
+vbZ
+vbZ
+vbZ
 vbZ
 vbZ
 vbZ
@@ -53987,9 +54512,9 @@ oNn
 vbZ
 vbZ
 vbZ
-nRr
-nRr
-nRr
+vbZ
+vbZ
+vbZ
 vbZ
 vbZ
 vbZ
@@ -54210,10 +54735,10 @@ oNn
 oNn
 vbZ
 vbZ
-nRr
-nRr
-nRr
-nRr
+vbZ
+jrT
+dep
+vbZ
 vbZ
 vbZ
 vbZ
@@ -54433,11 +54958,11 @@ oNn
 (16,1,1) = {"
 oNn
 vbZ
-nRr
-nRr
-nRr
-nRr
-nRr
+jrT
+kkE
+vWV
+vWz
+dep
 vbZ
 vbZ
 vbZ
@@ -54471,7 +54996,7 @@ nmG
 dsE
 nmG
 dsE
-pCm
+qug
 xaD
 gUi
 bhp
@@ -54657,11 +55182,11 @@ oNn
 (17,1,1) = {"
 oNn
 vbZ
-nRr
+nmG
 nRr
 vbZ
 vbZ
-iwf
+tfr
 vbZ
 vbZ
 vbZ
@@ -54762,12 +55287,12 @@ eDV
 eDV
 eDV
 ekl
-onP
-onP
+xdZ
+xdZ
 kTq
 kTq
 kTq
-onP
+xdZ
 xdZ
 hgu
 xQO
@@ -54780,31 +55305,31 @@ xQO
 xuC
 hgu
 xdZ
-onP
+xdZ
 ueo
 ueo
 ueo
-onP
-oOV
-oOV
+xdZ
+lwa
+lwa
 bgk
 bgk
 bgk
-oOV
-oOV
-oOV
+lwa
+lwa
+lwa
 bgk
 bgk
 bgk
-oOV
-oOV
-oOV
+lwa
+lwa
+lwa
 bgk
 bgk
 bgk
-oOV
-oOV
-oOV
+lwa
+lwa
+lwa
 bgk
 bgk
 bgk
@@ -54817,22 +55342,22 @@ lwa
 bgk
 bgk
 bgk
-oOV
-oOV
-pCm
+lwa
+lwa
+eWz
 qer
 qer
 qer
-pCm
-pCm
-pCm
+eWz
+eWz
+eWz
 qer
 qer
 qer
-pCm
-pCm
-pCm
-pCm
+eWz
+eWz
+eWz
+eWz
 wTq
 wTq
 wTq
@@ -54881,7 +55406,7 @@ oNn
 (18,1,1) = {"
 oNn
 vbZ
-nRr
+nmG
 vbZ
 vbZ
 vbZ
@@ -55105,7 +55630,7 @@ oNn
 (19,1,1) = {"
 oNn
 vbZ
-iwf
+qFQ
 vbZ
 vbZ
 vbZ
@@ -55490,8 +56015,8 @@ rQP
 lLz
 mqA
 mqA
-qFs
-qFs
+dCQ
+dCQ
 dCQ
 dCQ
 dCQ
@@ -58355,29 +58880,29 @@ sFF
 ueo
 ueo
 ueo
-onP
+xdZ
 ueo
 ueo
 ueo
-onP
+xdZ
 ueo
 ueo
 ueo
-onP
+xdZ
 tVg
 jlE
 wRC
 wRC
 oSa
-oOV
+lwa
 bgk
 bgk
 bgk
-oOV
+lwa
 bgk
 bgk
 bgk
-oOV
+lwa
 bgk
 bgk
 bgk
@@ -59562,7 +60087,7 @@ wTq
 kEO
 ycu
 ucO
-mNS
+eWz
 bhp
 sRY
 bhp
@@ -59785,9 +60310,9 @@ uZA
 uZA
 jgS
 cIW
-mNS
-mNS
-pCm
+eWz
+eWz
+eWz
 bhp
 xaD
 vbZ
@@ -60905,9 +61430,9 @@ tMo
 rOS
 uZA
 uZA
-mNS
-mNS
-pCm
+eWz
+eWz
+eWz
 bhp
 bhp
 bhp
@@ -61130,7 +61655,7 @@ rOS
 uZA
 uZA
 pis
-mNS
+eWz
 bhp
 bhp
 bhp
@@ -62026,7 +62551,7 @@ uZA
 uZA
 uZA
 jNL
-mNS
+eWz
 bhp
 vbZ
 vbZ
@@ -63472,7 +63997,7 @@ cID
 cRa
 oJK
 dqX
-uBp
+jTu
 dqX
 dqX
 mVD
@@ -65672,12 +66197,12 @@ bhp
 bhp
 bhp
 bhp
-pCm
+dAl
 nmG
 dsE
 nmG
 dsE
-pCm
+dAl
 bhp
 bhp
 bhp
@@ -67405,9 +67930,9 @@ tZk
 sZQ
 rxw
 aUB
-hkx
-hkx
-hkx
+jmQ
+jmQ
+jmQ
 vbZ
 vbZ
 vbZ
@@ -67631,7 +68156,7 @@ gLG
 aUB
 reO
 llH
-hkx
+jmQ
 bhp
 vbZ
 vbZ
@@ -67855,7 +68380,7 @@ gBv
 aUB
 reO
 reO
-hkx
+jmQ
 bhp
 sRY
 vbZ
@@ -68373,25 +68898,25 @@ vbZ
 vbZ
 vbZ
 vbZ
-nVY
-nVY
+vQU
+vQU
 jOA
 jOA
 jOA
 jOA
 jOA
 jOA
-nVY
-nVY
-nVY
-nVY
+vQU
+vQU
+vQU
+vQU
 jOA
 jOA
 jOA
 jOA
 jOA
 jOA
-nVY
+vQU
 iwz
 iwz
 iwz
@@ -68597,7 +69122,7 @@ vbZ
 vbZ
 vbZ
 vbZ
-nVY
+vQU
 pZb
 bLO
 bLO
@@ -68751,7 +69276,7 @@ oZm
 dEm
 nqw
 wqX
-hkx
+jmQ
 bhp
 xaD
 bhp
@@ -68975,7 +69500,7 @@ soC
 nLe
 wLY
 llH
-hkx
+jmQ
 sRY
 bhp
 vbZ
@@ -69047,10 +69572,10 @@ vbZ
 bhp
 jOA
 eeo
-lfw
+ufw
 tvG
 tvG
-voE
+kAw
 hEU
 nus
 nus
@@ -69199,7 +69724,7 @@ rZL
 nLe
 reO
 reO
-hkx
+jmQ
 bhp
 bhp
 vbZ
@@ -69351,7 +69876,7 @@ bBt
 eYj
 ppo
 sYB
-kGx
+uhK
 qpM
 qpM
 qpM
@@ -69359,8 +69884,8 @@ qpM
 qpM
 qpM
 qpM
-kGx
-kGx
+uhK
+uhK
 reO
 xAV
 tKS
@@ -69584,7 +70109,7 @@ wGs
 wGs
 wGs
 dzw
-kGx
+uhK
 nmH
 xAV
 tKS
@@ -69746,7 +70271,7 @@ voE
 voE
 voE
 eeo
-nVY
+vQU
 qgs
 lHq
 lHq
@@ -69941,12 +70466,12 @@ vbZ
 vbZ
 bhp
 xaD
-nVY
+vQU
 eeo
-voE
+nRu
 mSI
 mSI
-gHh
+sPC
 gHh
 xyg
 nOb
@@ -69970,7 +70495,7 @@ lfw
 voE
 lfw
 utU
-nVY
+vQU
 bcy
 lHq
 qMp
@@ -70095,7 +70620,7 @@ pEN
 nLe
 reO
 reO
-hkx
+jmQ
 bhp
 xaD
 bhp
@@ -70165,12 +70690,12 @@ vbZ
 vbZ
 vbZ
 bhp
-nVY
+vQU
 eeo
-lfw
+ufw
 qmg
 qmg
-gHh
+nmE
 gHh
 xyg
 nOb
@@ -70319,7 +70844,7 @@ oxa
 nLe
 reO
 llH
-hkx
+jmQ
 bhp
 sRY
 bhp
@@ -70389,7 +70914,7 @@ vbZ
 vbZ
 vbZ
 vbZ
-nVY
+vQU
 eeo
 vZH
 rSH
@@ -70543,7 +71068,7 @@ nLe
 nLe
 reO
 reO
-hkx
+jmQ
 xaD
 bhp
 bhp
@@ -70613,7 +71138,7 @@ vbZ
 vbZ
 vbZ
 wtp
-nVY
+vQU
 eeo
 vZH
 qnp
@@ -70866,7 +71391,7 @@ voE
 lfw
 voE
 pZb
-nVY
+vQU
 jyz
 jyz
 jyz
@@ -71039,7 +71564,7 @@ vbZ
 vbZ
 vbZ
 vbZ
-bhp
+vbZ
 bhp
 bhp
 vbZ
@@ -71063,10 +71588,10 @@ wtp
 wtp
 jOA
 eeo
-voE
+nRu
 mSI
 mSI
-gHh
+sPC
 hYX
 vQV
 vQV
@@ -71090,24 +71615,24 @@ ylW
 voE
 voE
 eeo
-lwL
-lwL
-lwL
+vLw
+vLw
+vLw
 bht
 bht
 bht
 bht
-lwL
-lwL
-lwL
-lwL
+vLw
+vLw
+vLw
+vLw
 bht
 bht
 bht
 bht
-lwL
-lwL
-lwL
+vLw
+vLw
+vLw
 fTh
 lgh
 jdj
@@ -71264,8 +71789,8 @@ vbZ
 vbZ
 vbZ
 bhp
-vbZ
-vbZ
+bhp
+bhp
 vbZ
 vbZ
 vbZ
@@ -71314,8 +71839,8 @@ voE
 voE
 voE
 eeo
-lwL
-lwL
+vLw
+vLw
 azB
 fPz
 fPz
@@ -71330,8 +71855,8 @@ fPz
 fPz
 fPz
 mut
-lwL
-lwL
+vLw
+vLw
 fTh
 lgh
 jdj
@@ -71376,7 +71901,7 @@ lCA
 pPb
 cdU
 eEI
-kGx
+uhK
 reO
 xAV
 tKS
@@ -71439,7 +71964,7 @@ mqN
 reO
 reO
 wqX
-hkx
+jmQ
 bhp
 bhp
 bhp
@@ -71538,7 +72063,7 @@ lfw
 voE
 voE
 eeo
-lwL
+vLw
 azB
 hEI
 vcC
@@ -71555,7 +72080,7 @@ vcC
 vcC
 sxm
 mut
-lwL
+vLw
 fTh
 lgh
 yjY
@@ -71600,7 +72125,7 @@ lCA
 pPb
 cdU
 eEI
-kGx
+qkl
 nmH
 xAV
 tKS
@@ -71663,7 +72188,7 @@ mqN
 tOz
 reO
 llH
-hkx
+jmQ
 bhp
 xaD
 bhp
@@ -71887,7 +72412,7 @@ mqN
 reO
 reO
 reO
-hkx
+jmQ
 bhp
 bhp
 sRY
@@ -71922,7 +72447,7 @@ vbZ
 vbZ
 vbZ
 vbZ
-pQo
+vbZ
 mQI
 wtp
 igM
@@ -71957,7 +72482,7 @@ wtp
 wtp
 wtp
 wtp
-nVY
+vQU
 eeo
 voE
 gHh
@@ -72181,7 +72706,7 @@ tnO
 tnO
 tnO
 jxa
-nVY
+vQU
 eeo
 voE
 gHh
@@ -72405,7 +72930,7 @@ kIP
 kIP
 kIP
 khI
-nVY
+vQU
 eeo
 lfw
 gHh
@@ -72434,7 +72959,7 @@ lfw
 voE
 voE
 eeo
-lwL
+vLw
 aPn
 vcC
 vcC
@@ -72658,7 +73183,7 @@ voE
 voE
 voE
 eeo
-lwL
+vLw
 aPn
 vcC
 xlN
@@ -72882,7 +73407,7 @@ ylW
 voE
 voE
 eeo
-lwL
+vLw
 aPn
 vcC
 uYI
@@ -73392,7 +73917,7 @@ wGs
 wGs
 wGs
 xvn
-kGx
+qkl
 reO
 xAV
 tKS
@@ -73615,8 +74140,8 @@ qkl
 qpM
 qpM
 qpM
-kGx
-kGx
+qkl
+qkl
 llH
 xAV
 tKS
@@ -73749,7 +74274,7 @@ wtp
 niz
 wtp
 hcT
-nVY
+vQU
 utU
 bLO
 bLO
@@ -73769,16 +74294,16 @@ bLO
 bLO
 bLO
 bLO
-nVY
+vQU
 qVR
 iTX
 iTX
 weF
-nVY
+vQU
 bLO
 bLO
 gae
-lwL
+vLw
 aPn
 vcC
 vLw
@@ -73973,36 +74498,36 @@ vvK
 vvK
 xze
 hcT
-nVY
-nVY
+vQU
+vQU
 jOA
 jOA
 jOA
-nVY
-nVY
-nVY
+vQU
+vQU
+vQU
 jOA
 jOA
 jOA
-nVY
-nVY
-nVY
+vQU
+vQU
+vQU
 jOA
 jOA
 jOA
-nVY
-nVY
-nVY
-nVY
+vQU
+vQU
+vQU
+vQU
 gaj
 nVC
 nVC
 vgF
-nVY
-nVY
-nVY
-nVY
-nVY
+vQU
+vQU
+vQU
+vQU
+vQU
 qLd
 kib
 vLw
@@ -74197,7 +74722,7 @@ bak
 bak
 ucD
 oWT
-wjq
+oBJ
 wpR
 wpR
 wpR
@@ -74217,12 +74742,12 @@ wpR
 wpR
 wpR
 wpR
-wjq
+oBJ
 mMD
 jKZ
 jKZ
 bdT
-wjq
+oBJ
 ten
 ten
 ten
@@ -75471,7 +75996,7 @@ mqN
 xAV
 tKS
 tKS
-hkx
+jmQ
 bhp
 sRY
 bhp
@@ -75541,7 +76066,7 @@ pEj
 nha
 nha
 fZU
-wjq
+oBJ
 bay
 jKZ
 jKZ
@@ -75695,7 +76220,7 @@ mqN
 xAV
 tKS
 eAB
-hkx
+jmQ
 bhp
 bhp
 bhp
@@ -75919,7 +76444,7 @@ mqN
 xAV
 tKS
 tKS
-hkx
+jmQ
 bhp
 bhp
 vbZ
@@ -78229,7 +78754,7 @@ qPA
 qPA
 mkT
 kLl
-wjq
+oBJ
 wpR
 wpR
 wpR
@@ -78250,12 +78775,12 @@ jKZ
 vBJ
 cTF
 ten
-wjq
+oBJ
 mMD
 jKZ
 jKZ
 bdT
-wjq
+oBJ
 ten
 ten
 ten
@@ -78453,8 +78978,8 @@ kKv
 kKv
 ezn
 aSC
-wjq
-wjq
+oBJ
+oBJ
 eni
 eni
 eni
@@ -78471,18 +78996,18 @@ suL
 suL
 suL
 suL
-wjq
-wjq
-wjq
-wjq
+oBJ
+oBJ
+oBJ
+oBJ
 qyT
 dla
 dla
 jIm
-wjq
-wjq
-wjq
-abj
+oBJ
+oBJ
+oBJ
+qLd
 qLd
 kib
 qLd
@@ -78698,15 +79223,15 @@ sId
 sId
 sId
 sId
-mqZ
+oBJ
 oUN
 kjR
 kjR
 dWf
-mqZ
+oBJ
 sId
 gfx
-abj
+qLd
 wPp
 bWu
 qLd
@@ -79280,7 +79805,7 @@ tKS
 tKS
 tKS
 tKS
-hkx
+jmQ
 bhp
 vbZ
 vbZ
@@ -79504,7 +80029,7 @@ tKS
 tKS
 tKS
 tck
-hkx
+jmQ
 bhp
 vbZ
 bhp
@@ -79584,8 +80109,8 @@ mGF
 mGF
 rqM
 mGF
-mGF
-mGF
+uZg
+uZg
 mGF
 mGF
 jat
@@ -79602,7 +80127,7 @@ kGW
 sId
 jhF
 sId
-abj
+jOX
 wPp
 bWu
 bWu
@@ -79728,7 +80253,7 @@ tKS
 tKS
 tKS
 muq
-hkx
+jmQ
 bhp
 vbZ
 bhp
@@ -79826,7 +80351,7 @@ gvP
 ktt
 sId
 gfx
-abj
+jOX
 wPp
 bWu
 bWu
@@ -80032,8 +80557,8 @@ mGF
 qaJ
 jat
 mGF
-mGF
-mGF
+auY
+lko
 mGF
 mGF
 jat
@@ -80050,7 +80575,7 @@ dWf
 sId
 sId
 sId
-abj
+jOX
 wPp
 bWu
 hGB
@@ -80482,7 +81007,7 @@ jat
 ijC
 cwY
 jat
-mGF
+mhm
 mGF
 jat
 kjR
@@ -80624,7 +81149,7 @@ gVZ
 gVZ
 fmq
 hnj
-gbK
+mAS
 bhp
 vbZ
 bhp
@@ -80848,7 +81373,7 @@ gVZ
 gVZ
 gVZ
 mcV
-gbK
+mAS
 bhp
 bhp
 bhp
@@ -80946,7 +81471,7 @@ dWf
 sId
 sId
 sId
-abj
+jOX
 vQt
 vtL
 hGB
@@ -80963,24 +81488,24 @@ bWu
 hGB
 yed
 vry
-abj
+jOX
 vQt
 ihH
 ihH
 ihH
 ihH
-abj
+jPs
 wcr
 nVG
 nVG
 ejw
-woE
+jPs
 fYU
 fYU
 fYU
 fYU
 wZI
-woE
+jPs
 bNB
 quP
 qgp
@@ -81072,7 +81597,7 @@ gVZ
 gVZ
 gVZ
 aex
-gbK
+mAS
 bhp
 bhp
 vbZ
@@ -81170,8 +81695,8 @@ dWf
 sId
 hPZ
 kvp
-abj
-abj
+jOX
+jOX
 vQt
 ihH
 ihH
@@ -81186,25 +81711,25 @@ ihH
 ihH
 ihH
 vry
-abj
-abj
+jOX
+jOX
 vnz
 vnz
 vnz
 vnz
 vnz
-abj
+jPs
 dtp
 doU
 doU
 koF
-woE
+jPs
 cOC
 cOC
 cOC
 cOC
-woE
-woE
+jPs
+jPs
 lPt
 qgp
 ulR
@@ -81395,34 +81920,34 @@ hPZ
 ojk
 svb
 sId
-abj
-abj
+jOX
+jOX
 vnz
 vnz
 vnz
 vnz
-abj
-abj
-abj
-abj
+jOX
+jOX
+jOX
+jOX
 vnz
 cUG
 vnz
 vnz
-abj
-abj
+jOX
+jOX
 lPt
 bNB
 lPt
 lPt
 lPt
 lPt
-vRt
+sMo
 mbB
 kYH
 kYH
 fqk
-vRt
+sMo
 lPt
 cCO
 tki
@@ -81570,7 +82095,7 @@ vbZ
 vbZ
 vbZ
 vbZ
-vbZ
+bhp
 bhp
 vbZ
 vbZ
@@ -81821,9 +82346,9 @@ bhp
 rOJ
 cqA
 jat
-ijC
-cwY
-jat
+eCu
+dLE
+aBc
 oUN
 kjR
 kjR
@@ -81968,7 +82493,7 @@ gVZ
 gVZ
 aex
 kkq
-gbK
+mAS
 vbZ
 vbZ
 bhp
@@ -82045,9 +82570,9 @@ bhp
 rOJ
 vtu
 jat
-ijC
-kNb
-jat
+xuu
+xuu
+aBc
 oUN
 kjR
 kjR
@@ -82269,9 +82794,9 @@ sRY
 jat
 jat
 jat
-ryS
-jat
-jat
+xuu
+tTY
+aBc
 oUN
 kjR
 jat
@@ -82491,11 +83016,11 @@ bhp
 bhp
 gUi
 jat
-mGF
-mGF
-mGF
-mGF
-jat
+xuu
+nBX
+xuu
+rTZ
+aBc
 oUN
 kjR
 jat
@@ -82715,11 +83240,11 @@ bhp
 sRY
 bhp
 jat
-mGF
-mGF
-mGF
-mGF
-jat
+sAn
+xuu
+xuu
+wCV
+aBc
 oUN
 kjR
 jat
@@ -82939,11 +83464,11 @@ bhp
 bhp
 bhp
 jat
-mGF
-mGF
-mGF
-qaJ
-jat
+wfe
+xuu
+hlU
+brj
+aBc
 oUN
 kjR
 jat
@@ -83164,9 +83689,9 @@ xaD
 bhp
 jat
 jat
-ciS
+dLL
 jat
-jat
+aBc
 jat
 fzi
 kjR
@@ -83849,7 +84374,7 @@ hJP
 jat
 hJP
 jat
-hiz
+jat
 gfx
 oUN
 kjR
@@ -84073,7 +84598,7 @@ mGF
 jat
 mGF
 bcC
-hiz
+jat
 sId
 oUN
 kjR
@@ -84297,7 +84822,7 @@ mGF
 jat
 qaJ
 mGF
-hiz
+jat
 sId
 oUN
 kjR
@@ -84430,7 +84955,7 @@ gVZ
 gVZ
 gVZ
 mcV
-gbK
+mAS
 vbZ
 vbZ
 vbZ
@@ -84521,7 +85046,7 @@ mGF
 jat
 jat
 jat
-hiz
+jat
 siU
 oUN
 kjR
@@ -84744,7 +85269,7 @@ jat
 jat
 jat
 wMA
-snz
+iuV
 sId
 jhF
 oUN
@@ -85326,7 +85851,7 @@ gVZ
 aex
 bkC
 gyY
-gbK
+mAS
 bhp
 vbZ
 vbZ
@@ -85550,7 +86075,7 @@ gVZ
 aex
 gBY
 kkq
-gbK
+mAS
 bhp
 vbZ
 vbZ
@@ -85625,7 +86150,7 @@ vbZ
 vbZ
 vbZ
 bhp
-mqZ
+qUh
 sId
 siU
 dlr
@@ -85849,7 +86374,7 @@ vbZ
 vbZ
 vbZ
 bhp
-mqZ
+qUh
 jhF
 sId
 dlr
@@ -86073,7 +86598,7 @@ vbZ
 vbZ
 bhp
 bhp
-mqZ
+qUh
 sId
 gfx
 dlr
@@ -86670,7 +87195,7 @@ gVZ
 gVZ
 aex
 kkq
-gbK
+mAS
 vbZ
 vbZ
 vbZ
@@ -86969,8 +87494,8 @@ vbZ
 vbZ
 xaD
 pCm
-mqZ
-mqZ
+qUh
+qUh
 sId
 sId
 sId
@@ -87437,7 +87962,7 @@ kjR
 kjR
 pwC
 jat
-mGF
+myL
 mGF
 jat
 kjR
@@ -88089,8 +88614,8 @@ vbZ
 bhp
 vbZ
 pCm
-mqZ
-mqZ
+qUh
+qUh
 sId
 ktt
 oUN
@@ -88109,10 +88634,10 @@ dUU
 vIA
 vIA
 jat
-mGF
-mGF
-mGF
-mGF
+hsA
+hZv
+mfb
+vDa
 jat
 kjR
 fcf
@@ -88333,21 +88858,21 @@ dUU
 kjR
 kjR
 jat
-mhm
-mGF
-mGF
+ubD
+tGR
+ecJ
 mGF
 pbU
 kjR
 vye
 aBc
-mGF
-mGF
+qsS
+cNi
 mGF
 jat
 qaJ
-mGF
-mGF
+euG
+rno
 jat
 oUN
 kjR
@@ -88557,21 +89082,21 @@ dUU
 kjR
 kjR
 jat
+dIM
+wdo
 mGF
-mGF
-mGF
-mGF
+uJa
 jat
 kjR
 hZz
 aBc
-mGF
+rka
 mGF
 mGF
 rqM
 mGF
 mGF
-mGF
+sVU
 jat
 oUN
 kjR
@@ -88985,7 +89510,7 @@ nRr
 vbZ
 vbZ
 bhp
-mqZ
+qUh
 sId
 sId
 dUU
@@ -89209,7 +89734,7 @@ nRr
 vbZ
 sRY
 bhp
-mqZ
+qUh
 jhF
 sId
 dUU
@@ -89433,7 +89958,7 @@ nRr
 vbZ
 bhp
 bhp
-mqZ
+qUh
 sId
 sId
 dUU
@@ -90569,13 +91094,13 @@ dUU
 kjR
 pwC
 uYf
-hdu
 cTJ
+jHI
 cTJ
 kMX
 cTJ
 cTJ
-cTJ
+hSu
 cTJ
 uYf
 nOM
@@ -90585,8 +91110,8 @@ chh
 cTJ
 cTJ
 ehS
-hYI
-hYI
+tqg
+gAC
 hYI
 ehS
 dWd
@@ -90797,10 +91322,10 @@ uYf
 uYf
 uYf
 uYf
-cTJ
-cTJ
+hdu
+fUn
 kWJ
-bHW
+bYU
 uYf
 kjR
 kjR
@@ -91017,13 +91542,13 @@ dUU
 kjR
 wGf
 uYf
-hdu
 cTJ
+wyQ
 cTJ
 kMX
 cTJ
-cTJ
-cTJ
+hoj
+fMw
 cTJ
 uuy
 kjR
@@ -91033,7 +91558,7 @@ cTJ
 ygz
 xZC
 ehS
-cTJ
+sVk
 dLR
 moi
 ehS
@@ -91246,7 +91771,7 @@ qYm
 qYm
 uYf
 cTJ
-cTJ
+xVB
 cTJ
 cTJ
 uYf
@@ -91481,7 +92006,7 @@ kjR
 ukf
 ehS
 poY
-llb
+puB
 ehS
 wkv
 dVF
@@ -91917,7 +92442,7 @@ sId
 sId
 uYf
 qYm
-cTJ
+bHW
 uYf
 hlT
 llb
@@ -92828,13 +93353,13 @@ mGF
 mGF
 jat
 mGF
-mGF
+bcC
 mGF
 rqM
 mGF
 mGF
 mGF
-mGF
+fBm
 jat
 kjR
 kjR
@@ -93023,12 +93548,12 @@ bhp
 jat
 lyW
 lcD
-mGF
+ecJ
 mGF
 rqM
 mGF
 mGF
-mGF
+eJe
 cXL
 jat
 kjR
@@ -93053,12 +93578,12 @@ qaJ
 jat
 qaJ
 mGF
-mGF
+myL
 jat
+mhm
 mGF
 mGF
-mGF
-mGF
+fOr
 jat
 kjR
 kjR
@@ -93250,10 +93775,10 @@ fXY
 mGF
 mGF
 jat
+fPa
 mGF
-mGF
-mGF
-rBU
+nBd
+rno
 jat
 kjR
 kjR
@@ -93266,7 +93791,7 @@ mGF
 qUh
 wJJ
 mGF
-xQc
+bXC
 koj
 qUh
 mGF
@@ -93282,7 +93807,7 @@ jat
 mGF
 mGF
 mGF
-mGF
+qRn
 jat
 kjR
 kjR
@@ -93470,9 +93995,9 @@ vbZ
 bhp
 jat
 uQM
-koj
-koj
-mGF
+aMI
+gyF
+fBm
 jat
 jat
 rmu
@@ -93485,12 +94010,12 @@ kjR
 dWf
 rQU
 pfw
-auY
+nVx
 mGF
 rqM
 mGF
 mGF
-bXC
+vql
 qaJ
 qUh
 mGF
@@ -93498,14 +94023,14 @@ mGF
 mGF
 mGF
 jat
-mGF
-mGF
-mGF
-mGF
+xrb
+qiu
+trw
+nDb
 rqM
 mGF
 mGF
-mGF
+aTU
 mGF
 jat
 hvw
@@ -93698,7 +94223,7 @@ jat
 jat
 jat
 jat
-fPa
+vqM
 mGF
 mGF
 aBc
@@ -93708,7 +94233,7 @@ kjR
 kjR
 wGf
 qUh
-ufx
+vOl
 ufx
 mGF
 qUh
@@ -93722,10 +94247,10 @@ rYV
 rYV
 rYV
 jat
-mGF
-mGF
-mGF
-mGF
+sAB
+xUT
+tUK
+bTi
 jat
 jat
 ryS
@@ -93922,7 +94447,7 @@ bhp
 bhp
 bhp
 jat
-cVn
+qaJ
 mGF
 pjF
 jat
@@ -93937,7 +94462,7 @@ mGF
 mGF
 hxl
 qUh
-ijC
+tvl
 cwY
 qUh
 rBU
@@ -93947,12 +94472,12 @@ jyj
 cwY
 jat
 qaJ
-mGF
-mGF
-mGF
+dPB
+hmi
+vxB
 jat
 srD
-ijC
+vXD
 jat
 ktt
 dak
@@ -94158,8 +94683,8 @@ pwC
 qUh
 mUP
 mGF
-koj
-koj
+uvR
+dAt
 qUh
 aQs
 kNb
@@ -94385,7 +94910,7 @@ ciS
 qUh
 qUh
 qUh
-iJt
+rQU
 qUh
 qUh
 rBU
@@ -95054,7 +95579,7 @@ jat
 jat
 jat
 jat
-kgk
+aBc
 jat
 ciS
 jat
@@ -95131,7 +95656,7 @@ kYH
 kYH
 cOT
 rOY
-gdK
+gJJ
 rOY
 vdl
 xcV
@@ -95279,11 +95804,11 @@ oCA
 mGF
 rqM
 mGF
-mGF
+bcC
 mGF
 rqM
 mGF
-mGF
+bcC
 mGF
 aBc
 kjR
@@ -95506,8 +96031,8 @@ xXo
 ezC
 auY
 jat
-rBU
-mGF
+bSJ
+vNE
 qaJ
 aBc
 kjR
@@ -95947,7 +96472,7 @@ kjR
 kjR
 jat
 upy
-mGF
+bcC
 mGF
 mGF
 mGF
@@ -96161,7 +96686,7 @@ jat
 clB
 csE
 jat
-mGF
+epq
 mGF
 jMW
 jat
@@ -96179,7 +96704,7 @@ mpg
 sbq
 jat
 aQs
-kNb
+wOm
 jat
 kjR
 kjR
@@ -96254,7 +96779,7 @@ akD
 tDK
 akD
 mAS
-rOY
+jVH
 rOY
 rOY
 rOY
@@ -96397,9 +96922,9 @@ jat
 srB
 inD
 nVy
-mGF
+vql
 eOf
-auY
+iTe
 sbq
 jat
 cGM
@@ -96479,8 +97004,8 @@ lVO
 jDL
 mAS
 gdK
-gdK
-gdK
+gAO
+ioJ
 rOY
 rOY
 mAS
@@ -96632,8 +97157,8 @@ kjR
 kjR
 kjR
 qUh
-qUh
-ciS
+eul
+hSv
 qUh
 qUh
 fzi
@@ -96706,7 +97231,7 @@ ifJ
 ifJ
 ifJ
 rOY
-gdK
+eyh
 mAS
 mAS
 mAS
@@ -96855,15 +97380,15 @@ kjR
 kjR
 kjR
 kjR
-qUh
+wCl
 mGF
 mGF
 mGF
-qUh
-qUh
-qUh
-qUh
-qUh
+eul
+wCl
+wCl
+eul
+wCl
 qUh
 oUX
 oUX
@@ -96894,11 +97419,11 @@ tsX
 tsX
 tsX
 sMo
-vRt
+sMo
 mGv
 mGv
 mGv
-vRt
+sMo
 sMo
 eiA
 vYp
@@ -96926,11 +97451,11 @@ bhp
 gUi
 bhp
 mAS
-rOY
+erz
 rOY
 ifJ
 rOY
-rOY
+vWn
 mAS
 cPn
 gyY
@@ -97077,18 +97602,18 @@ kjR
 kjR
 kjR
 qUh
-qUh
-qUh
-qUh
-mGF
-mGF
-mGF
+wCl
+wCl
 qUh
 mGF
 mGF
 mGF
-mGF
 qUh
+mGF
+mGF
+mGF
+mGF
+wCl
 eKB
 eKB
 sMo
@@ -97131,11 +97656,11 @@ tdW
 xLn
 tdW
 sMo
-vRt
+sMo
 mGv
 mGv
 mGv
-vRt
+sMo
 pCm
 mce
 lmz
@@ -97154,7 +97679,7 @@ ftb
 rOY
 ygo
 rOY
-rOY
+cRk
 mAS
 gBY
 bkC
@@ -97300,17 +97825,17 @@ kjR
 kjR
 kjR
 ksZ
-qUh
+wCl
 hVj
 csE
-qUh
+eul
+mGF
+jyj
+mGF
+noV
 mGF
 mGF
-mGF
-rqM
-mGF
-mGF
-mGF
+jyj
 mGF
 qUh
 bjm
@@ -97368,11 +97893,10 @@ pCm
 pCm
 pCm
 pCm
-pCm
+mAS
 qer
 qer
 qer
-pCm
 mAS
 mAS
 mAS
@@ -97380,12 +97904,13 @@ mAS
 mAS
 mAS
 mAS
-dhe
+mAS
+mAS
 vcb
 vcb
 vcb
-dhe
-dhe
+mAS
+mAS
 dhe
 iRp
 iRp
@@ -97501,33 +98026,33 @@ qer
 qer
 pCm
 pCm
-mqZ
+qUh
 axW
 axW
 axW
 axW
-mqZ
-mqZ
-mqZ
+qUh
+qUh
+qUh
 axW
 axW
 axW
 qXO
-mqZ
-mqZ
-mqZ
+qUh
+qUh
+qUh
 axW
 axW
 axW
 axW
-mqZ
-mqZ
-mqZ
-mqZ
+qUh
+qUh
+qUh
+qUh
 qUh
 wfY
 ijC
-nez
+uXP
 mGF
 mGF
 mGF
@@ -97535,8 +98060,8 @@ qUh
 cmW
 cmW
 cmW
-qaJ
-qUh
+mGF
+wCl
 bhp
 bhp
 bhp
@@ -97547,11 +98072,11 @@ vbZ
 vbZ
 vbZ
 sMo
-vRt
+sMo
 xhY
 xhY
 xhY
-vRt
+sMo
 sMo
 sMo
 sMo
@@ -97748,18 +98273,18 @@ bhp
 vbZ
 vbZ
 vbZ
+eul
 qUh
+wCl
 qUh
+wCl
+uoV
+eul
 qUh
+wCl
+eul
 qUh
-qUh
-qUh
-qUh
-qUh
-qUh
-qUh
-qUh
-qUh
+wCl
 qUh
 vbZ
 bhp
@@ -98871,7 +99396,7 @@ vbZ
 vbZ
 vbZ
 vbZ
-nRr
+rcS
 vbZ
 vbZ
 vbZ

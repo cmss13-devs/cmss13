@@ -12,4 +12,4 @@
 	var/joe_flag = WORKING_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/get_sound(mob/living/user)
-    return ishazardjoe(user) ? haz_sound : sound
+	return ishazardjoe(user) ? haz_sound : sound

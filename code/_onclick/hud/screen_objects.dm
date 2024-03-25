@@ -148,7 +148,6 @@
 /atom/movable/screen/zone_sel/update_icon(mob/living/user)
 	overlays.Cut()
 	overlays += image('icons/mob/hud/zone_sel.dmi', "[selecting]")
-	user.zone_selected = selecting
 
 /atom/movable/screen/zone_sel/clicked(mob/user, list/mods)
 	if (..())
@@ -210,6 +209,7 @@
 							selecting = "eyes"
 
 	if(old_selecting != selecting)
+		user.zone_selected = selecting
 		update_icon(user)
 	return 1
 

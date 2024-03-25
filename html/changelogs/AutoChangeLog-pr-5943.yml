@@ -1,0 +1,5 @@
+author: "SabreML"
+delete-after: True
+changes:
+  - refactor: "Refactored the bodypart selection keybinds."
+  - bugfix: "Fixed a bug where selecting a new body zone would sometimes modify the wrong HUD element."

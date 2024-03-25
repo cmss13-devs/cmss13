@@ -49,6 +49,13 @@
 	say_message = "With Seegson, there is someone behind you, helping you every single step of the way."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
+/datum/emote/living/carbon/human/synthetic/working_joe/quip/seegson_tomorrow
+	key = "seegsontomorrow"
+	haz_sound = 'sound/voice/joe/tomorrow_together_haz.ogg'
+	say_message = "Seegson - Tomorrow, together."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = HAZARD_JOE_EMOTE
+
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/seegson_standards
 	key = "seegsonstandards"
 	sound = 'sound/voice/joe/seegson_standards.ogg'

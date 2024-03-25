@@ -1503,7 +1503,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 /obj/limb/head/limb_delimb(damage_source)
 	var/obj/item/clothing/head/helmet/owner_helmet = owner.head
 
-	if(!istype(owner_helmet) || !owner.allow_gun_usage)
+	if(!istype(owner_helmet))
 		droplimb(0, 0, damage_source)
 		return
 

@@ -4,8 +4,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/task_update/could_require_attention
 	key = "couldrequireattention"
 	sound = 'sound/voice/joe/could_require_attention.ogg'
+	haz_sound = 'sound/voice/joe/could_require_attention_haz.ogg'
 	say_message = "This could require my attention."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/task_update/let_me_help
 	key = "letmehelp"

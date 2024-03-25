@@ -46,11 +46,15 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/beyond_repair
 	key = "beyondrepair"
 	sound = 'sound/voice/joe/beyond_repair.ogg'
+	haz_sound = 'sound/voice/joe/beyond_repair_haz.ogg'
 	say_message = "Hmm, far beyond repair."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/notice/apollo_behalf
 	key = "apollobehalf"
 	sound = 'sound/voice/joe/apollo_behalf.ogg'
+	haz_sound = 'sound/voice/joe/apollo_behalf_haz.ogg'
 	say_message = "I will inform APOLLO on your behalf."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE

@@ -40,8 +40,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/back_to_work
 	key = "backtowork"
 	sound = 'sound/voice/joe/back_to_work.ogg'
+	haz_sound = 'sound/voice/joe/back_to_work_haz.ogg'
 	say_message = "Back to work."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/other_concerns
 	key = "otherconcerns"

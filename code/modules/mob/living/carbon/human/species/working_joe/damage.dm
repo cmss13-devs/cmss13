@@ -4,8 +4,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/damage/damage
 	key = "damage"
 	sound = 'sound/voice/joe/damage.ogg'
+	haz_sound = 'sound/voice/joe/damage_haz.ogg'
 	say_message = "Do not damage Seegson property."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/damage/that_stings
 	key = "thatstings"

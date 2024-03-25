@@ -14,8 +14,10 @@
 	key = "awful"
 	key_third_person = "mess"
 	sound = 'sound/voice/joe/awful.ogg'
+	haz_sound = 'sound/voice/joe/awful_haz.ogg'
 	say_message = "Tut, tut. What an awful mess."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/inexpensive
 	key = "inexpensive"

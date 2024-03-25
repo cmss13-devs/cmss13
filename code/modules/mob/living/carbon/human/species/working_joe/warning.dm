@@ -76,8 +76,10 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/dangerous_items
 	key = "dangerousitems"
 	sound = 'sound/voice/joe/dangerous_items.ogg'
+	haz_sound = 'sound/voice/joe/dangerous_items_haz.ogg'
 	say_message = "You are carrying some very dangerous items."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/patience
 	key = "patience"

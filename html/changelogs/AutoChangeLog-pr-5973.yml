@@ -1,5 +1,0 @@
-author: "Birdtalon, Kat 'APC' Smith, Thwomp, Waseemq1235"
-delete-after: True
-changes:
-  - rscadd: "Desk bell for cargo, medbay, brig, and AI reception."
-  - soundadd: "Desk bell sound effect."

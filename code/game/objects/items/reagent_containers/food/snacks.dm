@@ -3305,8 +3305,8 @@
 	icon_state = "hunk"
 	w_class = SIZE_MEDIUM
 	hitsound = "swing_hit"
-	force = 2
-	throwforce = 1
+	force = 4
+	throwforce = 2
 	bitesize = 20
 	wrapper = /obj/item/trash/chunk/hunk
 

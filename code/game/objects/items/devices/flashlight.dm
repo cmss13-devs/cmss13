@@ -12,6 +12,8 @@
 
 	light_range = 5
 	light_power = 1
+	ground_offset_x = 2
+	ground_offset_y = 6
 
 	actions_types = list(/datum/action/item_action)
 	var/on = FALSE
@@ -32,6 +34,11 @@
 		icon_state = "[initial(icon_state)]-on"
 	else
 		icon_state = initial(icon_state)
+
+/obj/item/device/flashlight/animation_spin(speed = 5, loop_amount = -1, clockwise = TRUE, sections = 3, angular_offset = 0, pixel_fuzz = 0)
+	clockwise = pick(TRUE, FALSE)
+	angular_offset = rand(360)
+	return ..()
 
 /obj/item/device/flashlight/proc/update_brightness(mob/user = null)
 	if(on)
@@ -231,7 +238,7 @@
 	desc = "A red USCM issued flare. There are instructions on the side, it reads 'pull cord, make light'."
 	w_class = SIZE_SMALL
 	light_power = 2
-	light_range = 7
+	light_range = 5
 	icon_state = "flare"
 	item_state = "flare"
 	actions = list() //just pull it manually, neckbeard.
@@ -296,8 +303,6 @@
 
 // Causes flares to stop with a rotation offset for visual purposes
 /obj/item/device/flashlight/flare/animation_spin(speed = 5, loop_amount = -1, clockwise = TRUE, sections = 3, angular_offset = 0, pixel_fuzz = 0)
-	clockwise = pick(TRUE, FALSE)
-	angular_offset = rand(360)
 	pixel_fuzz = 16
 	return ..()
 /obj/item/device/flashlight/flare/pickup()
@@ -482,13 +487,13 @@
 
 /obj/item/device/flashlight/flare/signal/activate_signal(mob/living/carbon/human/user)
 	..()
-	if(faction && cas_groups[faction])
+	if(faction && GLOB.cas_groups[faction])
 		signal = new(src)
-		signal.target_id = ++cas_tracking_id_increment
+		signal.target_id = ++GLOB.cas_tracking_id_increment
 		name = "[user.assigned_squad ? user.assigned_squad.name : "X"]-[signal.target_id] flare"
 		signal.name = name
 		signal.linked_cam = new(loc, name)
-		cas_groups[user.faction].add_signal(signal)
+		GLOB.cas_groups[user.faction].add_signal(signal)
 		anchored = TRUE
 		if(activate_message)
 			visible_message(SPAN_DANGER("[src]'s flame reaches full strength. It's fully active now."), null, 5)
@@ -508,14 +513,14 @@
 /obj/item/device/flashlight/flare/signal/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	if(signal)
-		cas_groups[faction].remove_signal(signal)
+		GLOB.cas_groups[faction].remove_signal(signal)
 		QDEL_NULL(signal)
 	return ..()
 
 /obj/item/device/flashlight/flare/signal/turn_off()
 	anchored = FALSE
 	if(signal)
-		cas_groups[faction].remove_signal(signal)
+		GLOB.cas_groups[faction].remove_signal(signal)
 		qdel(signal)
 	..()
 
@@ -544,9 +549,9 @@
 	turn_on()
 	faction = FACTION_MARINE
 	signal = new(src)
-	signal.target_id = ++cas_tracking_id_increment
+	signal.target_id = ++GLOB.cas_tracking_id_increment
 	name += " [rand(100, 999)]"
 	signal.name = name
 	signal.linked_cam = new(loc, name)
-	cas_groups[FACTION_MARINE].add_signal(signal)
+	GLOB.cas_groups[FACTION_MARINE].add_signal(signal)
 	anchored = TRUE

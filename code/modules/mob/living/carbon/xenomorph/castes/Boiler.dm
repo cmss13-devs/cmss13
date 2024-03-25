@@ -13,6 +13,7 @@
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_3
 
+	available_strains = list(/datum/xeno_strain/trapper)
 	behavior_delegate_type = /datum/behavior_delegate/boiler_base
 
 	evolution_allowed = FALSE
@@ -50,13 +51,16 @@
 	tier = 3
 	gib_chance = 100
 	drag_delay = 6 //pulling a big dead xeno is hard
-	mutation_type = BOILER_NORMAL
 	spit_delay  = 30 SECONDS
 	tileoffset = 3
 	viewsize = 7
 
 	icon_xeno = 'icons/mob/xenos/boiler.dmi'
 	icon_xenonid = 'icons/mob/xenonids/boiler.dmi'
+
+	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
+	weed_food_states = list("Boiler_1","Boiler_2","Boiler_3")
+	weed_food_states_flipped = list("Boiler_1","Boiler_2","Boiler_3")
 
 	var/datum/effect_system/smoke_spread/xeno_acid/smoke
 
@@ -69,8 +73,8 @@
 		/datum/action/xeno_action/activable/xeno_spit/bombard, //1st macro
 		/datum/action/xeno_action/onclick/shift_spits/boiler, //2nd macro
 		/datum/action/xeno_action/activable/spray_acid/boiler, //3rd macro
-		/datum/action/xeno_action/onclick/toggle_long_range/boiler, //4rd macro
-		/datum/action/xeno_action/onclick/acid_shroud, //4th macro
+		/datum/action/xeno_action/onclick/toggle_long_range/boiler, //4th macro
+		/datum/action/xeno_action/onclick/acid_shroud, //5th macro
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 
@@ -94,4 +98,3 @@
 // No special behavior for boilers
 /datum/behavior_delegate/boiler_base
 	name = "Base Boiler Behavior Delegate"
-

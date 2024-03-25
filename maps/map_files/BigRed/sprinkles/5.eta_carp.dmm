@@ -134,7 +134,7 @@
 /turf/open/mars,
 /area/bigredv2/caves/eta/xenobiology)
 "x" = (
-/obj/item/toy/farwadoll,
+/obj/item/toy/plush/farwa,
 /turf/open/ice,
 /area/bigredv2/caves/eta/xenobiology)
 "y" = (

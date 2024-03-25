@@ -65,7 +65,7 @@
 	icon_state = "livingspace"
 
 /area/whiskey_outpost/inside/supply
-	name = "\improper Supply Depo"
+	name = "\improper Supply Depot"
 	icon_state = "req"
 
 /*

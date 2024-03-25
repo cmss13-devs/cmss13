@@ -41,7 +41,7 @@
 #define TRANSIT_REQUEST 1
 #define TRANSIT_READY 2
 
-#define SHUTTLE_TRANSIT_BORDER 8
+#define SHUTTLE_TRANSIT_BORDER 16
 
 #define PARALLAX_LOOP_TIME 25
 #define HYPERSPACE_END_TIME 5
@@ -96,14 +96,16 @@
 #define MOBILE_SHUTTLE_ID_ERT2 "ert_pmc_shuttle"
 #define MOBILE_SHUTTLE_ID_ERT3 "ert_upp_shuttle"
 #define MOBILE_SHUTTLE_ID_ERT4 "ert_twe_shuttle"
-#define MOBILE_SHUTTLE_ID_ERT_SMALL "ert_rescue_shuttle"
-#define MOBILE_SHUTTLE_ID_ERT_BIG "ert_boarding_shuttle"
+#define MOBILE_SHUTTLE_ID_ERT_SMALL "ert_small_shuttle_north"
+#define MOBILE_SHUTTLE_ID_ERT_BIG "ert_shuttle_big"
 
 #define MOBILE_TRIJENT_ELEVATOR "trijentshuttle2"
-#define STAT_TRIJENT_LZ1 "trigent_lz1"
-#define STAT_TRIJENT_LZ2 "trigent_lz2"
-#define STAT_TRIJENT_ENGI "trigent_engineering"
-#define STAT_TRIJENT_OMEGA "trigent_omega"
+#define STAT_TRIJENT_EMPTY "trijent_empty"
+#define STAT_TRIJENT_OCCUPIED "trijent_occupied"
+#define STAT_TRIJENT_LZ1 "trijent_lz1"
+#define STAT_TRIJENT_LZ2 "trijent_lz2"
+#define STAT_TRIJENT_ENGI "trijent_engineering"
+#define STAT_TRIJENT_OMEGA "trijent_omega"
 
 #define MOBILE_SHUTTLE_LIFEBOAT_PORT "lifeboat-port"
 #define MOBILE_SHUTTLE_LIFEBOAT_STARBOARD "lifeboat-starboard"
@@ -115,6 +117,7 @@
 #define ALMAYER_DROPSHIP_LZ1 "almayer-hangar-lz1"
 #define ALMAYER_DROPSHIP_LZ2 "almayer-hangar-lz2"
 
+#define DROPSHIP_FLYBY_ID "special_flight"
 #define DROPSHIP_LZ1 "dropship-lz1"
 #define DROPSHIP_LZ2 "dropship-lz2"
 
@@ -131,3 +134,11 @@
 #define ESCAPE_SHUTTLE_SOUTH_PREFIX "escape_shuttle_s"
 
 #define ESCAPE_SHUTTLE_DOCK_PREFIX "almayer-hangar-escape-shuttle-"
+
+#define ERT_SHUTTLE_DEFAULT_RECHARGE 90 SECONDS
+
+#define ADMIN_LANDING_PAD_1 "base-ert1"
+#define ADMIN_LANDING_PAD_2 "base-ert2"
+#define ADMIN_LANDING_PAD_3 "base-ert3"
+#define ADMIN_LANDING_PAD_4 "base-ert4"
+#define ADMIN_LANDING_PAD_5 "base-ert5"

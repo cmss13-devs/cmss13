@@ -4,7 +4,8 @@
 	recalculate_move_delay = FALSE
 
 	if(interactee)// moving stops any kind of interaction
-		unset_interaction()
+		if(!(SEND_SIGNAL(src, COMSIG_HUMAN_MOVEMENT_CANCEL_INTERACTION) & COMPONENT_HUMAN_MOVEMENT_KEEP_USING))
+			unset_interaction()
 
 	if(species.slowdown)
 		. += species.slowdown
@@ -107,7 +108,7 @@
 	//Do we have a working jetpack
 	if(istype(back, /obj/item/tank/jetpack))
 		var/obj/item/tank/jetpack/J = back
-		if(((!check_drift) || (check_drift && J.stabilization_on)) && (!lying) && (J.allow_thrust(0.01, src)))
+		if(((!check_drift) || (check_drift && J.stabilization_on)) && (body_position == STANDING_UP) && (J.allow_thrust(0.01, src)))
 			inertia_dir = 0
 			return 1
 // if(!check_drift && J.allow_thrust(0.01, src))
@@ -139,3 +140,10 @@
 
 	prob_slip = round(prob_slip)
 	return(prob_slip)
+
+/// Updates [TRAIT_FLOORED] based on whether the mob has appropriate limbs to stand or not
+/mob/living/carbon/human/proc/update_leg_status()
+	if((has_limb("r_foot") && has_limb("r_leg")) || (has_limb("l_foot") && has_limb("l_leg")))
+		REMOVE_TRAIT(src, TRAIT_FLOORED, BODY_TRAIT)
+	else
+		ADD_TRAIT(src, TRAIT_FLOORED, BODY_TRAIT)

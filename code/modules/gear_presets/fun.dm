@@ -191,8 +191,8 @@
 	var/satchel_success = new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(new_human), WEAR_BACK)
 	var/waist_success = new_human.equip_to_slot_or_del(new /obj/item/storage/belt/grenade/large(new_human), WEAR_WAIST)
 	var/pouch_r_success = new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive(new_human), WEAR_R_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/claymore/hefa(new_human), WEAR_R_HAND)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/claymore/hefa(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/sword/hefa(new_human), WEAR_R_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/sword/hefa(new_human), WEAR_IN_BACK)
 
 	if(shoes_success)
 		var/obj/item/clothing/shoes/marine/knife/shoes = new_human.shoes
@@ -240,7 +240,7 @@
 
 /datum/equipment_preset/fun/santa
 	name = "Fun - Santa"
-	paygrade = "C"
+	paygrade = PAY_SHORT_CDNM
 	flags = EQUIPMENT_PRESET_EXTRA
 	skills = /datum/skills/everything
 	faction = FACTION_MARINE
@@ -289,6 +289,7 @@
 /datum/equipment_preset/upp/ivan
 	name = "Fun - Ivan"
 	flags = EQUIPMENT_PRESET_EXTRA
+	paygrade = PAY_SHORT_UE6
 	skills = /datum/skills/everything
 	assignment = "UPP Armsmaster"
 	rank = "UPP Armsmaster"
@@ -327,7 +328,7 @@
 	//head
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/ivanberet, WEAR_HEAD)
 	//limb
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)
 	//waist
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/ivan, WEAR_WAIST)
@@ -338,7 +339,7 @@
 
 /datum/equipment_preset/fun/van_bandolier
 	name = "Fun - Big Game Hunter"
-	paygrade = "CCMO"
+	paygrade = PAY_SHORT_CCMO
 	uses_special_name = TRUE
 	flags = EQUIPMENT_PRESET_EXTRA
 	skills = /datum/skills/everything
@@ -433,14 +434,14 @@
 	new_human.age = rand(1, 40)
 
 /datum/equipment_preset/fun/monkey/proc/get_random_name(mob/living/carbon/human/new_human)
-	return pick(monkey_names)
+	return pick(GLOB.monkey_names)
 
 /datum/equipment_preset/fun/monkey/marine
 	name = "Fun - Monkey Marine"
 
 	assignment = "Monkey Marine"
 	rank = "Monkey Marine"
-	paygrade = "ME2"
+	paygrade = PAY_SHORT_ME2
 
 /datum/equipment_preset/fun/monkey/marine/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)
@@ -457,10 +458,10 @@
 
 	assignment = "Monkey Soldier"
 	rank = "Monkey Soldier"
-	paygrade = "UE1"
+	paygrade = PAY_SHORT_UE1
 
 /datum/equipment_preset/fun/monkey/soldier/get_random_name(mob/living/carbon/human/new_human)
-	return new_human.gender == MALE ? pick(first_names_male_upp) : pick(first_names_female_upp)
+	return new_human.gender == MALE ? pick(GLOB.first_names_male_upp) : pick(GLOB.first_names_female_upp)
 
 /datum/equipment_preset/fun/monkey/soldier/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP(new_human), WEAR_BODY)

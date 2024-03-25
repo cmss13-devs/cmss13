@@ -21,4 +21,4 @@
 
 /datum/tech/cryomarine/on_unlock()
 	. = ..()
-	SSticker.mode.get_specific_call("Marine Cryo Reinforcement (Spec)", TRUE, FALSE, FALSE, announce_dispatch_message = FALSE)
+	SSticker.mode.get_specific_call(/datum/emergency_call/cryo_spec, TRUE, FALSE) // "Marine Cryo Reinforcement (Spec)"

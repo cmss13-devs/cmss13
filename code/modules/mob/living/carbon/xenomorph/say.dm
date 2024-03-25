@@ -1,7 +1,7 @@
 /mob/living/carbon/xenomorph/say(message)
 	var/verb = "says"
 	var/forced = 0
-	var/message_range = world_view_size
+	var/message_range = GLOB.world_view_size
 
 	if(client)
 		if(client.prefs.muted & MUTE_IC)
@@ -16,7 +16,7 @@
 	if(stat == UNCONSCIOUS)
 		return //Unconscious? Nope.
 
-	if(dazed > 0)
+	if(HAS_TRAIT(src, TRAIT_DAZED))
 		to_chat(src, SPAN_WARNING("You are too dazed to talk."))
 		return
 
@@ -96,6 +96,9 @@
 /mob/living/carbon/xenomorph/proc/hivemind_talk(message)
 	if(interference)
 		to_chat(src, SPAN_WARNING("A headhunter temporarily cut off your psychic connection!"))
+		return
+
+	if(SEND_SIGNAL(src, COMSIG_XENO_TRY_HIVEMIND_TALK, message) & COMPONENT_OVERRIDE_HIVEMIND_TALK)
 		return
 
 	hivemind_broadcast(message, hive)

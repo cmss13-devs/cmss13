@@ -14,8 +14,7 @@ CHANGING ICONS
 
 Several new procs have been added to the /icon datum to simplify working with icons. To use them,
 remember you first need to setup an /icon var like so:
-
-var/icon/my_icon = new('iconfile.dmi')
+	var/icon/my_icon = new('iconfile.dmi')
 
 icon/ChangeOpacity(amount = 1)
 	A very common operation in DM is to try to make an icon more or less transparent. Making an icon more
@@ -549,9 +548,9 @@ world
 	if (!value) return color
 
 	var/list/RGB = ReadRGB(color)
-	RGB[1] = Clamp(RGB[1]+value,0,255)
-	RGB[2] = Clamp(RGB[2]+value,0,255)
-	RGB[3] = Clamp(RGB[3]+value,0,255)
+	RGB[1] = clamp(RGB[1]+value,0,255)
+	RGB[2] = clamp(RGB[2]+value,0,255)
+	RGB[3] = clamp(RGB[3]+value,0,255)
 	return rgb(RGB[1],RGB[2],RGB[3])
 
 /proc/sort_atoms_by_layer(list/atoms)
@@ -682,8 +681,9 @@ world
  * * moving - whether or not to use a moving state for the given icon
  * * sourceonly - if TRUE, only generate the asset and send back the asset url, instead of tags that display the icon to players
  * * extra_clases - string of extra css classes to use when returning the icon string
+ * * keyonly - if TRUE, only returns the asset key to use get_asset_url manually. Overrides sourceonly.
  */
-/proc/icon2html(atom/thing, client/target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE, extra_classes = null)
+/proc/icon2html(atom/thing, client/target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE, extra_classes = null, keyonly = FALSE)
 	if (!thing)
 		return
 
@@ -714,6 +714,8 @@ world
 				SSassets.transport.register_asset(name, thing)
 			for (var/thing2 in targets)
 				SSassets.transport.send_assets(thing2, name)
+			if(keyonly)
+				return name
 			if(sourceonly)
 				return SSassets.transport.get_asset_url(name)
 			return "<img class='[extra_classes] icon icon-misc' src='[SSassets.transport.get_asset_url(name)]'>"
@@ -732,11 +734,12 @@ world
 		if (isnull(dir))
 			dir = thing.dir
 
-		if (ishuman(thing)) // Shitty workaround for a BYOND issue.
+		// Commented out because this is seemingly our source of bad icon operations
+		/* if (ishuman(thing)) // Shitty workaround for a BYOND issue.
 			var/icon/temp = icon2collapse
 			icon2collapse = icon()
 			icon2collapse.Insert(temp, dir = SOUTH)
-			dir = SOUTH
+			dir = SOUTH*/
 	else
 		if (isnull(dir))
 			dir = SOUTH
@@ -755,6 +758,8 @@ world
 		SSassets.transport.register_asset(key, rsc_ref, file_hash, icon_path)
 	for (var/client_target in targets)
 		SSassets.transport.send_assets(client_target, key)
+	if(keyonly)
+		return key
 	if(sourceonly)
 		return SSassets.transport.get_asset_url(key)
 	return "<img class='[extra_classes] icon icon-[icon_state]' src='[SSassets.transport.get_asset_url(key)]'>"
@@ -876,22 +881,93 @@ world
 	return image_to_center
 
 //For creating consistent icons for human looking simple animals
-/proc/get_flat_human_icon(icon_id, datum/equipment_preset/preset, datum/preferences/prefs, dummy_key, showDirs = GLOB.cardinals, outfit_override)
+/proc/get_flat_human_icon(icon_id, equipment_preset_dresscode, datum/preferences/prefs, dummy_key, showDirs = GLOB.cardinals, outfit_override)
 	var/static/list/humanoid_icon_cache = list()
 	if(!icon_id || !humanoid_icon_cache[icon_id])
 		var/mob/living/carbon/human/dummy/body = generate_or_wait_for_human_dummy(dummy_key)
+
 		if(prefs)
 			prefs.copy_all_to(body)
-		arm_equipment(body, preset)
+			body.update_body()
+			body.update_hair()
+
+		// Assumption: Is a list
+		if(outfit_override)
+			for(var/obj/item/cur_item as anything in outfit_override)
+				body.equip_to_appropriate_slot(cur_item)
+
+		// Assumption: Is a string or path
+		if(equipment_preset_dresscode)
+			arm_equipment(body, equipment_preset_dresscode)
 
 		var/icon/out_icon = icon('icons/effects/effects.dmi', "nothing")
-		for(var/D in showDirs)
-			body.setDir(D)
+		for(var/dir in showDirs)
+			body.setDir(dir)
 			var/icon/partial = getFlatIcon(body)
-			out_icon.Insert(partial, dir = D)
+			out_icon.Insert(partial, dir = dir)
 
 		humanoid_icon_cache[icon_id] = out_icon
 		dummy_key ? unset_busy_human_dummy(dummy_key) : qdel(body)
 		return out_icon
 	else
 		return humanoid_icon_cache[icon_id]
+
+/proc/get_flat_human_copy_icon(mob/living/carbon/human/original, equipment_preset_dresscode, showDirs = GLOB.cardinals, outfit_override)
+	var/mob/living/carbon/human/dummy/body = generate_or_wait_for_human_dummy(null)
+
+	if(original)
+		// From /datum/preferences/proc/copy_appearance_to
+		body.age = original.age
+		body.gender = original.gender
+		body.ethnicity = original.ethnicity
+		body.body_type = original.body_type
+
+		body.r_eyes = original.r_eyes
+		body.g_eyes = original.g_eyes
+		body.b_eyes = original.b_eyes
+
+		body.r_hair = original.r_hair
+		body.g_hair = original.g_hair
+		body.b_hair = original.b_hair
+
+		body.r_gradient = original.r_gradient
+		body.g_gradient = original.g_gradient
+		body.b_gradient = original.b_gradient
+		body.grad_style = original.grad_style
+
+		body.r_facial = original.r_facial
+		body.g_facial = original.g_facial
+		body.b_facial = original.b_facial
+
+		body.r_skin = original.r_skin
+		body.g_skin = original.g_skin
+		body.b_skin = original.b_skin
+
+		body.h_style = original.h_style
+		body.f_style = original.f_style
+
+		body.underwear = original.underwear
+		body.undershirt = original.undershirt
+
+		body.update_body()
+		body.update_hair()
+
+	// Assumption: Is a list
+	if(outfit_override)
+		for(var/obj/item/cur_item as anything in outfit_override)
+			body.equip_to_appropriate_slot(cur_item)
+
+	// Assumption: Is a string or path
+	if(equipment_preset_dresscode)
+		arm_equipment(body, equipment_preset_dresscode)
+
+	var/icon/out_icon = icon('icons/effects/effects.dmi', "nothing")
+	for(var/dir in showDirs)
+		body.setDir(dir)
+		var/icon/partial = getFlatIcon(body)
+		out_icon.Insert(partial, dir = dir)
+
+	// log_debug("get_flat_human_copy_icon called on ref=[REF(original)], instance=[original], type=[original.type], with [length(original.overlays)] overlays reduced to [length(body.overlays)] overlays")
+
+	qdel(body)
+	return out_icon

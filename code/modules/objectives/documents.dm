@@ -122,17 +122,17 @@
 	unacidable = TRUE
 	indestructible = 1
 	is_objective = TRUE
+	ground_offset_x = 9
+	ground_offset_y = 8
 	var/label // label on the document
 	var/renamed = FALSE //Once someone reads a document the item gets renamed based on the objective they are linked to)
 
 /obj/item/document_objective/Initialize(mapload, ...)
 	. = ..()
-	label = "[pick(alphabet_uppercase)][rand(100,999)]"
+	label = "[pick(GLOB.alphabet_uppercase)][rand(100,999)]"
 	objective = new objective_type(src)
 	retrieve_objective = new /datum/cm_objective/retrieve_item/document(src)
 	LAZYADD(objective.enables_objectives, retrieve_objective)
-	pixel_y = rand(-8, 8)
-	pixel_x = rand(-9, 9)
 
 /obj/item/document_objective/Destroy()
 	qdel(objective)

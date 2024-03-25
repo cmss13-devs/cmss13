@@ -180,11 +180,11 @@
 	var/t_dist = get_dist(user, t_turf)
 	if(!(t_dist > max_distance))
 		return
-	var/list/turf/path = getline2(user, t_turf, FALSE)
+	var/list/turf/path = get_line(user, t_turf, FALSE)
 	warning.forceMove(path[max_distance])
 
 /obj/item/hoverpack/proc/can_use_hoverpack(mob/living/carbon/human/user)
-	if(user.is_mob_incapacitated() || user.lying)
+	if(user.is_mob_incapacitated())
 		to_chat(user, SPAN_WARNING("You're a bit too incapacitated for that."))
 		return FALSE
 
@@ -204,7 +204,7 @@
 
 /datum/action/item_action/hover/can_use_action()
 	var/mob/living/carbon/human/H = owner
-	if(!H.is_mob_incapacitated() && !H.lying && holder_item == H.back)
+	if(!H.is_mob_incapacitated() && holder_item == H.back)
 		return TRUE
 
 /datum/action/item_action/hover/action_activate()

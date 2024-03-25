@@ -5,7 +5,7 @@
 	icon = 'icons/mob/xenos/effects.dmi'
 	icon_state = "egg_item"
 	w_class = SIZE_MASSIVE
-	flags_atom = OPENCONTAINER
+	flags_atom = FPRINT|OPENCONTAINER
 	flags_item = NOBLUDGEON
 	throw_range = 1
 	layer = MOB_LAYER
@@ -24,6 +24,17 @@
 
 	set_hive_data(src, hivenumber)
 	. = ..()
+
+	if(hivenumber == XENO_HIVE_NORMAL)
+		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
+
+/obj/item/xeno_egg/proc/forsaken_handling()
+	SIGNAL_HANDLER
+	if(is_ground_level(z))
+		hivenumber = XENO_HIVE_FORSAKEN
+		set_hive_data(src, XENO_HIVE_FORSAKEN)
+
+	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 
 /obj/item/xeno_egg/get_examine_text(mob/user)
 	. = ..()
@@ -93,14 +104,27 @@
 		if(weed.weed_strength >= WEED_LEVEL_WEAK && weed.linked_hive.hivenumber == hivenumber) //check for ANY weeds
 			any_weeds = weed
 
+	// If the user isn't an eggsac carrier, then they can only  plant eggs on hive weeds.
+	var/needs_hive_weeds = !istype(user.strain, /datum/xeno_strain/eggsac)
+
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	if(!any_weeds && !hive_weeds) //you need at least some weeds to plant on.
 		to_chat(user, SPAN_XENOWARNING("[src] must be planted on [lowertext(hive.prefix)]weeds."))
 		return
 
-	if(!hive_weeds)
+	if(!hive_weeds && needs_hive_weeds)
 		to_chat(user, SPAN_XENOWARNING("[src] can only be planted on [lowertext(hive.prefix)]hive weeds."))
 		return
+
+	if(istype(get_area(T), /area/interior))
+		to_chat(user, SPAN_XENOWARNING("[src] cannot be planted inside a vehicle."))
+		return
+
+	for(var/obj/object in T.contents)
+		var/obj/effect/alien/egg/xeno_egg = /obj/effect/alien/egg
+		if(object.layer > initial(xeno_egg.layer))
+			to_chat(user, SPAN_XENOWARNING("[src] cannot be planted below objects that would obscure it."))
+			return
 
 	user.visible_message(SPAN_XENONOTICE("[user] starts planting [src]."), SPAN_XENONOTICE("You start planting [src]."), null, 5)
 
@@ -117,9 +141,16 @@
 		return
 
 	for(var/obj/effect/alien/weeds/weed in T)
-		if(weed.weed_strength >= WEED_LEVEL_HIVE)
+		if(weed.weed_strength >= WEED_LEVEL_HIVE || !needs_hive_weeds)
 			user.use_plasma(30)
-			var/obj/effect/alien/egg/newegg = new /obj/effect/alien/egg(T, hivenumber)
+			var/obj/effect/alien/egg/newegg
+			if(weed.weed_strength >= WEED_LEVEL_HIVE)
+				newegg = new /obj/effect/alien/egg(T, hivenumber)
+			else if(weed.weed_strength >= WEED_LEVEL_STANDARD)
+				newegg = new /obj/effect/alien/egg/carrier_egg(T,hivenumber, user)
+			else
+				to_chat(user, SPAN_XENOWARNING("[src] can't be planted on these weeds."))
+				return
 
 			newegg.flags_embryo = flags_embryo
 

@@ -66,9 +66,9 @@
 				overlays += charge_icon + "_0"
 
 /obj/item/weapon/gun/energy/emp_act(severity)
+	. = ..()
 	cell.use(round(cell.maxcharge / severity))
 	update_icon()
-	..()
 
 /obj/item/weapon/gun/energy/load_into_chamber()
 	if(!cell || cell.charge < charge_cost)

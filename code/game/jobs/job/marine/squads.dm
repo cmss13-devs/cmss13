@@ -34,11 +34,11 @@
 	/// If uses the overlay
 	var/use_stripe_overlay = TRUE
 	/// Color for the squad marines gear overlays
-	var/equipment_color = "#FFFFFF"
+	var/equipment_color = COLOR_WHITE
 	/// The alpha for the armor overlay used by equipment color
 	var/armor_alpha = 125
 	/// Color for the squad marines langchat
-	var/chat_color = "#FFFFFF"
+	var/chat_color = COLOR_WHITE
 	/// Which special access do we grant them
 	var/list/access = list()
 	/// Can use any squad vendor regardless of squad connection
@@ -205,6 +205,17 @@
 	squad_type = "Team"
 	lead_icon = "soctl"
 	minimap_color = MINIMAP_SQUAD_SOF
+
+	active = FALSE
+	roundstart = FALSE
+	locked = TRUE
+
+/datum/squad/marine/cbrn
+	name = SQUAD_CBRN
+	equipment_color = "#3B2A7B" //Chemical Corps Purple
+	chat_color = "#553EB2"
+	radio_freq = CBRN_FREQ
+	minimap_color = "#3B2A7B"
 
 	active = FALSE
 	roundstart = FALSE
@@ -389,17 +400,17 @@
 
 /// Displays a message to squad members directly on the game map
 /datum/squad/proc/send_maptext(text = "", title_text = "", only_leader = 0)
-	var/message_colour = chat_color
+	var/message_color = chat_color
 	if(only_leader)
 		if(squad_leader)
 			if(!squad_leader.stat && squad_leader.client)
 				playsound_client(squad_leader.client, 'sound/effects/radiostatic.ogg', squad_leader.loc, 25, FALSE)
-				squad_leader.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, message_colour)
+				squad_leader.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, message_color)
 	else
 		for(var/mob/living/carbon/human/marine in marines_list)
 			if(!marine.stat && marine.client) //Only living and connected people in our squad
 				playsound_client(marine.client, 'sound/effects/radiostatic.ogg', marine.loc, 25, FALSE)
-				marine.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, message_colour)
+				marine.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order, message_color)
 
 /// Displays a message to the squad members in chat
 /datum/squad/proc/send_message(text = "", plus_name = 0, only_leader = 0)
@@ -604,7 +615,7 @@
 		if(JOB_SQUAD_MEDIC)
 			old_lead.comm_title = "HM"
 		if(JOB_SQUAD_TEAM_LEADER)
-			old_lead.comm_title = "TL"
+			old_lead.comm_title = "FTL"
 		if(JOB_SQUAD_SMARTGUN)
 			old_lead.comm_title = "SG"
 		if(JOB_SQUAD_LEADER)
@@ -638,10 +649,10 @@
 //Not a safe proc. Returns null if squads or jobs aren't set up.
 //Mostly used in the marine squad console in marine_consoles.dm.
 /proc/get_squad_by_name(text)
-	if(!RoleAuthority || RoleAuthority.squads.len == 0)
+	if(!GLOB.RoleAuthority || GLOB.RoleAuthority.squads.len == 0)
 		return null
 	var/datum/squad/S
-	for(S in RoleAuthority.squads)
+	for(S in GLOB.RoleAuthority.squads)
 		if(S.name == text)
 			return S
 	return null
@@ -749,7 +760,7 @@
 //moved the main proc for ft management from human.dm here to make it support both examine and squad info way to edit fts
 /datum/squad/proc/manage_fireteams(mob/living/carbon/human/target)
 	var/obj/item/card/id/ID = target.get_idcard()
-	if(!ID || !(ID.rank in ROLES_MARINES))
+	if(!ID || !(ID.rank in GLOB.ROLES_MARINES))
 		return
 	if(ID.rank == JOB_SQUAD_LEADER || squad_leader == target) //if SL/aSL are chosen
 		var/choice = tgui_input_list(squad_leader, "Manage Fireteams and Team leaders.", "Fireteams Management", list("Cancel", "Unassign Fireteam 1 Leader", "Unassign Fireteam 2 Leader", "Unassign Fireteam 3 Leader", "Unassign all Team Leaders"))

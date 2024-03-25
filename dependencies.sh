@@ -19,3 +19,5 @@ export SPACEMAN_DMM_VERSION=suite-1.7.2
 
 # Python version for mapmerge and other tools
 export PYTHON_VERSION=3.7.9
+
+export OPENDREAM_VERSION=tgs-min-compat

@@ -1,8 +1,6 @@
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call
 	name = "\improper Elevator Call"
 	desc = "Control panel for the elevator"
-	icon = 'icons/obj/structures/machinery/computer.dmi'
-	icon_state = "elevator_screen"
 	shuttleId = MOBILE_TRIJENT_ELEVATOR
 	is_call = TRUE
 	var/dockId
@@ -10,6 +8,13 @@
 
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/get_landing_zones()
 	return list(SSshuttle.getDock(dockId))
+
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/occupied
+	dockId = STAT_TRIJENT_OCCUPIED
+
+/obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/empty
+	dockId = STAT_TRIJENT_EMPTY
+
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call/trijent/lz1
 	dockId = STAT_TRIJENT_LZ1
 
@@ -38,8 +43,15 @@
 
 /obj/structure/machinery/computer/shuttle/elevator_controller/proc/get_landing_zones()
 	. = list()
+	var/obj/docking_port/mobile/trijent_elevator/shuttle = SSshuttle.getShuttle(shuttleId)
+
 	for(var/obj/docking_port/stationary/trijent_elevator/elev in SSshuttle.stationary)
-		. += list(elev)
+		if(!shuttle.elevator_network)
+			. += list(elev)
+			continue
+		if(shuttle.elevator_network == elev.elevator_network)
+			. += list(elev)
+			continue
 
 /obj/structure/machinery/computer/shuttle/elevator_controller/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)

@@ -22,33 +22,18 @@
 
 	playsound(src, unpacking_sound, 35)
 
-	/// Store the reference of the crate material
-	var/obj/item/stack/sheet/material_sheet
-	if(parts_type) // Create the crate material and store its reference
-		material_sheet = new parts_type(current_turf, 2)
+	// Move the contents back to the turf
+	for(var/atom/movable/moving_atom as anything in contents)
+		moving_atom.forceMove(current_turf)
 
-	// Move the objects back to the turf, above the crate material
-	for(var/atom/movable/moving_atom in contents)
-		var/atom/movable/current_atom = contents[1]
-		current_atom.forceMove(current_turf)
+	if(parts_type) // Create the crate material
+		new parts_type(current_turf, 2)
 
 	deconstruct(TRUE)
 
-	// Move the crate material to the bottom of the turf's contents
-	if(material_sheet)
-		move_to_bottom(material_sheet, current_turf)
-
-/// Custom proc to move an object to the bottom of the turf's contents
-/obj/structure/largecrate/proc/move_to_bottom(obj/moving_down, turf/current_turf)
-	if(!istype(moving_down) || !istype(current_turf))
-		return
-	for(var/atom/movable/checking_atom in current_turf.contents)
-		if(checking_atom != moving_down)
-			checking_atom.layer = max(checking_atom.layer, moving_down.layer + 0.1)
-
 /obj/structure/largecrate/deconstruct(disassembled = TRUE)
 	if(!disassembled)
-		new /obj/item/stack/sheet/wood(loc)
+		new parts_type(loc)
 	return ..()
 
 
@@ -252,8 +237,80 @@
 	name = "blue barrel"
 	desc = "A blue storage barrel."
 	icon_state = "barrel_blue"
+	var/strap_overlay = "+straps"
 	parts_type = /obj/item/stack/sheet/metal
 	unpacking_sound = 'sound/effects/metalhit.ogg'
+	var/straps = FALSE
+
+/obj/structure/largecrate/random/barrel/true_random
+	name = "barrel"
+	desc = "A barrel."
+	icon_state = "barrel_recolorable"
+	desc_lore = "From the future."
+	var/cap_doodad_state = ""
+	var/center_doodad_state = ""
+	var/color_override = null
+
+
+GLOBAL_LIST_EMPTY(rbarrel_cap_states) // Will be set up in generate_barrel_states
+GLOBAL_LIST_INIT(rbarrel_center_states, generate_barrel_states())
+GLOBAL_LIST_INIT(rbarrel_color_list, list(COLOR_SILVER,
+	COLOR_FLOORTILE_GRAY,
+	COLOR_MAROON,
+	COLOR_SOFT_RED,
+	COLOR_LIGHT_GRAYISH_RED,
+	COLOR_VERY_SOFT_YELLOW,
+	COLOR_OLIVE,
+	COLOR_DARK_MODERATE_LIME_GREEN,
+	COLOR_TEAL,
+	COLOR_MODERATE_BLUE,
+	COLOR_PURPLE,
+	COLOR_STRONG_VIOLET,
+	LIGHT_BEIGE,
+	COLOR_DARK_MODERATE_ORANGE,
+	COLOR_BROWN,
+	COLOR_DARK_BROWN))
+
+/proc/generate_barrel_states()
+	var/list/rbarrel_center_states = list()
+	var/icon/icon = new('icons/obj/structures/crates.dmi')
+	var/list/icon_list = icon_states(icon)
+	for(var/state in icon_list)
+		if(findtext(state,"+cap"))
+			GLOB.rbarrel_cap_states.Add(state)
+		if(findtext(state,"+center"))
+			rbarrel_center_states.Add(state)
+	// We are returning rbarrel_center_states (rather than setting GLOB) because we are called by the global initializer to set it
+	return rbarrel_center_states
+
+/obj/structure/largecrate/random/barrel/true_random/Initialize()
+	. = ..()
+
+	var/image/center_coloring = image(icon, src,"+_center")
+
+	if(!color_override)
+		center_coloring.color = pick(GLOB.rbarrel_color_list)
+
+	center_coloring.appearance_flags = RESET_COLOR|KEEP_APART
+	overlays += center_coloring
+	if(prob(25))
+		cap_doodad_state = pick(GLOB.rbarrel_cap_states)
+		overlays += image(icon,src,cap_doodad_state)
+	if(prob(50))
+		center_doodad_state = pick(GLOB.rbarrel_center_states)
+		overlays += image(icon,src,center_doodad_state)
+
+/obj/structure/largecrate/random/barrel/Initialize()
+	. = ..()
+	if(overlays)
+		overlays.Cut()
+	if(straps)
+		overlays += image(icon,icon_state = "+straps")
+
+/obj/structure/largecrate/random/barrel/unpack()
+	if(overlays)
+		overlays.Cut()
+	. = ..()
 
 /obj/structure/largecrate/random/barrel/blue
 	name = "blue barrel"
@@ -264,6 +321,7 @@
 	name = "red barrel"
 	desc = "A red storage barrel."
 	icon_state = "barrel_red"
+	straps = TRUE//the original sprite had straps, anyway, this is a harmless instance
 
 /obj/structure/largecrate/random/barrel/green
 	name = "green barrel"

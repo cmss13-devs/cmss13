@@ -26,17 +26,17 @@
 		if(prob(10))
 			first_name = "[capitalize(randomly_generate_japanese_word(rand(2, 3)))]"
 		else
-			first_name = "[pick(first_names_male_pmc)]"
+			first_name = "[pick(GLOB.first_names_male_pmc)]"
 		new_human.f_style = "5 O'clock Shadow"
 	else
 		if(prob(10))
 			first_name = "[capitalize(randomly_generate_japanese_word(rand(2, 3)))]"
 		else
-			first_name = "[pick(first_names_female_pmc)]"
+			first_name = "[pick(GLOB.first_names_female_pmc)]"
 	if(prob(25))
 		last_name = "[capitalize(randomly_generate_japanese_word(rand(2, 4)))]"
 	else
-		last_name = "[pick(last_names_pmc)]"
+		last_name = "[pick(GLOB.last_names_pmc)]"
 	random_name = "[first_name] [last_name]"
 	new_human.change_real_name(new_human, random_name)
 	new_human.age = rand(25,35)
@@ -61,7 +61,7 @@
 
 	assignment = JOB_PMC_STANDARD
 	rank = JOB_PMC_STANDARD
-	paygrade = "PMC-OP"
+	paygrade = PAY_SHORT_PMC_OP
 	skills = /datum/skills/pmc
 
 /datum/equipment_preset/pmc/pmc_standard/load_gear(mob/living/carbon/human/new_human)
@@ -203,7 +203,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	assignment = JOB_PMC_DETAINER
 	rank = JOB_PMC_DETAINER
-	paygrade = "PMC-EN"
+	paygrade = PAY_SHORT_PMC_EN
 	skills = /datum/skills/pmc
 
 /datum/equipment_preset/pmc/pmc_detainer/load_gear(mob/living/carbon/human/new_human)
@@ -332,7 +332,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	assignment = JOB_PMC_MEDIC
 	rank = JOB_PMC_MEDIC
-	paygrade = "PMC-MS"
+	paygrade = PAY_SHORT_PMC_MS
 	skills = /datum/skills/pmc/medic
 	headset_type = /obj/item/device/radio/headset/distress/pmc/medic
 
@@ -441,7 +441,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 		list("FIRSTAID KITS", 0, null, null, null),
 		list("Advanced Firstaid Kit", 12, /obj/item/storage/firstaid/adv, null, VENDOR_ITEM_RECOMMENDED),
-		list("Firstaid Kit", 5, /obj/item/storage/firstaid/regular, null, VENDOR_ITEM_REGULAR),
+		list("Firstaid Kit", 5, /obj/item/storage/firstaid/regular/response, null, VENDOR_ITEM_REGULAR),
 		list("Fire Firstaid Kit", 6, /obj/item/storage/firstaid/fire, null, VENDOR_ITEM_REGULAR),
 		list("Toxin Firstaid Kit", 6, /obj/item/storage/firstaid/toxin, null, VENDOR_ITEM_REGULAR),
 		list("Oxygen Firstaid Kit", 6, /obj/item/storage/firstaid/o2, null, VENDOR_ITEM_REGULAR),
@@ -507,7 +507,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	assignment = JOB_PMC_INVESTIGATOR
 	rank = JOB_PMC_INVESTIGATOR
-	paygrade = "PMC-MS" //Fixed from PMC2 to PMC-MS to display properly.
+	paygrade = PAY_SHORT_PMC_MS //Fixed from PMC2 to PMC-MS to display properly.
 	skills = /datum/skills/pmc/medic/chem
 	headset_type = /obj/item/device/radio/headset/distress/pmc/medic
 
@@ -619,7 +619,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 		list("FIRSTAID KITS", 0, null, null, null),
 		list("Advanced Firstaid Kit", 12, /obj/item/storage/firstaid/adv, null, VENDOR_ITEM_RECOMMENDED),
-		list("Firstaid Kit", 5, /obj/item/storage/firstaid/regular, null, VENDOR_ITEM_REGULAR),
+		list("Firstaid Kit", 5, /obj/item/storage/firstaid/regular/response, null, VENDOR_ITEM_REGULAR),
 		list("Fire Firstaid Kit", 6, /obj/item/storage/firstaid/fire, null, VENDOR_ITEM_REGULAR),
 		list("Toxin Firstaid Kit", 6, /obj/item/storage/firstaid/toxin, null, VENDOR_ITEM_REGULAR),
 		list("Oxygen Firstaid Kit", 6, /obj/item/storage/firstaid/o2, null, VENDOR_ITEM_REGULAR),
@@ -686,7 +686,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	assignment = JOB_PMC_LEADER
 	rank = JOB_PMC_LEADER
-	paygrade = "PMC-TL"
+	paygrade = PAY_SHORT_PMC_TL
 	role_comm_title = "SL"
 	skills = /datum/skills/pmc/SL
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command
@@ -842,7 +842,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	assignment = JOB_PMC_LEAD_INVEST
 	rank = JOB_PMC_LEAD_INVEST
-	paygrade = "PMC-TL"
+	paygrade = PAY_SHORT_PMC_TL
 	role_comm_title = "SL"
 	skills = /datum/skills/pmc/SL/chem
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command
@@ -985,7 +985,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	assignment = JOB_PMC_GUNNER
 	rank = JOB_PMC_GUNNER
-	paygrade = "PMC-SS"
+	paygrade = PAY_SHORT_PMC_SS
 	role_comm_title = "SG"
 	skills = /datum/skills/pmc/smartgunner
 
@@ -1090,7 +1090,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	assignment = JOB_PMC_SNIPER
 	rank = JOB_PMC_SNIPER
-	paygrade = "PMC-WS"
+	paygrade = PAY_SHORT_PMC_WS
 	role_comm_title = "Spc"
 	skills = /datum/skills/pmc/specialist
 	headset_type = /obj/item/device/radio/headset/distress/pmc/cct
@@ -1119,7 +1119,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular/response, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/sniper/elite, WEAR_J_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/sniper/elite, WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/sniper/elite, WEAR_IN_JACKET)
@@ -1212,7 +1212,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	assignment = JOB_PMC_CREWMAN
 	rank = JOB_PMC_CREWMAN
-	paygrade = "PMC-VS"
+	paygrade = PAY_SHORT_PMC_VS
 	skills = /datum/skills/pmc/tank_crew
 	headset_type = /obj/item/device/radio/headset/distress/pmc/cct
 
@@ -1340,7 +1340,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	assignment = JOB_PMC_XENO_HANDLER
 	rank = JOB_PMC_XENO_HANDLER
-	paygrade = "PMC-XS"
+	paygrade = PAY_SHORT_PMC_XS
 	role_comm_title = "XH"
 	skills = /datum/skills/pmc/xeno_handler
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_XENOMORPH)
@@ -1486,8 +1486,8 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	assignment = JOB_PMC_DOCTOR
 	rank = JOB_PMC_DOCTOR
-	paygrade = "PMC-DOC"
-	role_comm_title = "TRI"
+	paygrade = PAY_SHORT_PMC_DOC
+	role_comm_title = "SGN"
 	skills = /datum/skills/pmc/doctor
 	headset_type = /obj/item/device/radio/headset/distress/pmc/medic
 
@@ -1593,7 +1593,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 		list("FIRSTAID KITS", 0, null, null, null),
 		list("Advanced Firstaid Kit", 12, /obj/item/storage/firstaid/adv, null, VENDOR_ITEM_RECOMMENDED),
-		list("Firstaid Kit", 5, /obj/item/storage/firstaid/regular, null, VENDOR_ITEM_REGULAR),
+		list("Firstaid Kit", 5, /obj/item/storage/firstaid/regular/response, null, VENDOR_ITEM_REGULAR),
 		list("Fire Firstaid Kit", 6, /obj/item/storage/firstaid/fire, null, VENDOR_ITEM_REGULAR),
 		list("Toxin Firstaid Kit", 6, /obj/item/storage/firstaid/toxin, null, VENDOR_ITEM_REGULAR),
 		list("Oxygen Firstaid Kit", 6, /obj/item/storage/firstaid/o2, null, VENDOR_ITEM_REGULAR),
@@ -1660,7 +1660,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	assignment = JOB_PMC_ENGINEER
 	rank = JOB_PMC_ENGINEER
-	paygrade = "PMC-TECH"
+	paygrade = PAY_SHORT_PMC_TEC
 	role_comm_title = "TEC"
 	skills = /datum/skills/pmc/engineer
 	headset_type = /obj/item/device/radio/headset/distress/pmc/cct
@@ -1809,7 +1809,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	assignment = JOB_PMC_DIRECTOR
 	rank = JOB_PMC_DIRECTOR
-	paygrade = "PMC-DIR"
+	paygrade = PAY_SHORT_PMC_DIR
 	role_comm_title = "DIR"
 	skills = /datum/skills/pmc/director
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command/director
@@ -1848,6 +1848,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		idtype = /obj/item/card/id/pmc
 		assignment = JOB_PMC_SYNTH
 		rank = JOB_PMC_SYNTH
+		paygrade = PAY_SHORT_SYN
 		role_comm_title = "WY Syn"
 		headset_type = /obj/item/device/radio/headset/distress/pmc/command
 
@@ -1860,9 +1861,9 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	if(prob(10))
 		random_name = "[capitalize(randomly_generate_japanese_word(rand(2, 3)))]"
 	else if(new_human.gender == MALE)
-		random_name = "[pick(first_names_male_pmc)]"
+		random_name = "[pick(GLOB.first_names_male_pmc)]"
 	else
-		random_name = "[pick(first_names_female_pmc)]"
+		random_name = "[pick(GLOB.first_names_female_pmc)]"
 
 	if(new_human.gender == MALE)
 		new_human.f_style = "5 O'clock Shadow"
@@ -1938,7 +1939,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Surgical Webbing Vest (Equipped)", 0, /obj/item/clothing/accessory/storage/surg_vest/equipped, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Surgical Webbing Vest (Blue)(Equipped)", 0, /obj/item/clothing/accessory/storage/surg_vest/blue/equipped, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-		list("Tool Webbing", 0, /obj/item/clothing/accessory/storage/black_vest/tool_webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Tool Webbing", 0, /obj/item/clothing/accessory/storage/tool_webbing/equipped, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 
 		list("BACKPACK (CHOOSE 1)", 0, null, null, null),
@@ -1992,7 +1993,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 		list("FIRSTAID KITS", 0, null, null, null),
 		list("Advanced Firstaid Kit", 12, /obj/item/storage/firstaid/adv, null, VENDOR_ITEM_RECOMMENDED),
-		list("Firstaid Kit", 5, /obj/item/storage/firstaid/regular, null, VENDOR_ITEM_REGULAR),
+		list("Firstaid Kit", 5, /obj/item/storage/firstaid/regular/response, null, VENDOR_ITEM_REGULAR),
 		list("Fire Firstaid Kit", 6, /obj/item/storage/firstaid/fire, null, VENDOR_ITEM_REGULAR),
 		list("Toxin Firstaid Kit", 6, /obj/item/storage/firstaid/toxin, null, VENDOR_ITEM_REGULAR),
 		list("Oxygen Firstaid Kit", 6, /obj/item/storage/firstaid/o2, null, VENDOR_ITEM_REGULAR),

@@ -219,18 +219,9 @@
 
 	return 0
 
-
-/mob/living/carbon/human/has_legs()
-	. = 0
-	if(has_limb("r_foot") && has_limb("r_leg"))
-		.++
-	if(has_limb("l_foot") && has_limb("l_leg"))
-		.++
-
 /mob/living/carbon/human/proc/disable_special_flags()
 	status_flags |= CANPUSH
 	anchored = FALSE
-	frozen = FALSE
 
 /mob/living/carbon/human/proc/disable_special_items()
 	set waitfor = FALSE // Scout decloak animation uses sleep(), which is problematic for taser gun
@@ -256,6 +247,13 @@
 				var/datum/action/item_action/smartgun/toggle_motion_detector/TMD = locate(/datum/action/item_action/smartgun/toggle_motion_detector) in sg.actions
 				TMD.update_icon()
 				sg.motion_detector()
+		if(istype(i, /obj/item/clothing/suit/storage/marine/medium/rto/intel))
+			var/obj/item/clothing/suit/storage/marine/medium/rto/intel/xm4 = i
+			if(xm4.motion_detector)
+				xm4.motion_detector = FALSE
+				var/datum/action/item_action/intel/toggle_motion_detector/TMD = locate(/datum/action/item_action/intel/toggle_motion_detector) in xm4.actions
+				TMD.update_icon()
+				xm4.motion_detector()
 
 /mob/living/carbon/human/proc/disable_headsets()
 	//Disable all radios to reduce radio spam for dead people

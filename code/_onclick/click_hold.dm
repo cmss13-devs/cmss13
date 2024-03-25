@@ -94,3 +94,12 @@
 
 	// Add the hovered atom to the trace
 	LAZYADD(mouse_trace_history, over_obj)
+
+/client/MouseDrop(datum/src_object, datum/over_object, src_location, over_location, src_control, over_control, params)
+	. = ..()
+
+	if(over_object)
+		SEND_SIGNAL(over_object, COMSIG_ATOM_DROPPED_ON, src_object, src)
+
+	if(src_object)
+		SEND_SIGNAL(src_object, COMSIG_ATOM_DROP_ON, over_object, src)

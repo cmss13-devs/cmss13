@@ -538,18 +538,6 @@
 	icon_state = "white"
 	},
 /area/lv624/lazarus/research)
-"WJ" = (
-/obj/effect/landmark/crap_item,
-/obj/structure/machinery/door_control{
-	id = "secure_inner_blast";
-	name = "Secure Inner Doors";
-	pixel_x = -25;
-	pixel_y = 5
-	},
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/lv624/lazarus/research)
 "Zw" = (
 /obj/structure/surface/table,
 /obj/item/storage/fancy/vials/random,
@@ -670,7 +658,7 @@ al
 ar
 aJ
 Lo
-WJ
+gd
 ar
 aZ
 CC

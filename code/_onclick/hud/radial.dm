@@ -34,6 +34,12 @@ GLOBAL_LIST_EMPTY(radial_menus)
 
 
 /atom/movable/screen/radial/slice/clicked(mob/user)
+	if(QDELETED(src))
+		return
+
+	if(!parent)
+		CRASH("clicked() called on a radial slice with a null parent while not deleted/deleting")
+
 	if(user.client == parent.current_user)
 		if(next_page)
 			parent.next_page()

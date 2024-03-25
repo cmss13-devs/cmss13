@@ -1,9 +1,21 @@
+#define LIGHT_FLOOR_COLOR_BLUE 0
+#define LIGHT_FLOOR_COLOR_RED 1
+#define LIGHT_FLOOR_COLOR_GREEN 2
+#define LIGHT_FLOOR_COLOR_YELLOW 3
+#define LIGHT_FLOOR_COLOR_PURPLE 4
+#define LIGHT_FLOOR_COLOR_WHITE 5
+
 /turf/open/floor/light
 	name = "light floor"
 	desc = "Beware of breakdancing on these tiles, glass shards embedded in the head is not a fun time."
+	icon_state = "light_on"
 	tile_type = /obj/item/stack/tile/light
 	var/on = TRUE
-	var/state = 0
+	var/state = LIGHT_FLOOR_COLOR_BLUE
+
+/turf/open/floor/light/get_examine_text(mob/user)
+	. = ..()
+	. += "[src] is [broken ? "broken, and requires a replacement lightbulb":"[on ? "on" : "off"]"]."
 
 /turf/open/floor/light/is_light_floor()
 	return TRUE
@@ -12,22 +24,22 @@
 	. = ..()
 	if(on && !broken) //manages color, I feel like this switch is a sin.
 		switch(state)
-			if(0)
+			if(LIGHT_FLOOR_COLOR_BLUE)
 				icon_state = "light_on"
 				set_light(5)
-			if(1)
+			if(LIGHT_FLOOR_COLOR_RED)
 				icon_state = "light_on-r"
 				set_light(5)
-			if(2)
+			if(LIGHT_FLOOR_COLOR_GREEN)
 				icon_state = "light_on-g"
 				set_light(5)
-			if(3)
+			if(LIGHT_FLOOR_COLOR_YELLOW)
 				icon_state = "light_on-y"
 				set_light(5)
-			if(4)
+			if(LIGHT_FLOOR_COLOR_PURPLE)
 				icon_state = "light_on-p"
 				set_light(5)
-			if(5,-1)
+			if(LIGHT_FLOOR_COLOR_WHITE,-1) //change this later
 				icon_state = "light_on-w"
 				set_light(5)
 				state = -1
@@ -84,3 +96,68 @@
 		broken = TRUE
 		update_icon()
 		return XENO_ATTACK_ACTION
+
+/turf/open/floor/light/red
+	icon_state = "light_on-r"
+	state = LIGHT_FLOOR_COLOR_RED
+
+/turf/open/floor/light/green
+	icon_state = "light_on-g"
+	state = LIGHT_FLOOR_COLOR_GREEN
+
+/turf/open/floor/light/yellow
+	icon_state = "light_on-y"
+	state = LIGHT_FLOOR_COLOR_YELLOW
+
+/turf/open/floor/light/purple
+	icon_state = "light_on-p"
+	state = LIGHT_FLOOR_COLOR_PURPLE
+
+/turf/open/floor/light/white
+	icon_state = "light_on-w"
+	state = LIGHT_FLOOR_COLOR_WHITE
+
+/turf/open/floor/light/off
+	icon_state = "light_off"
+	on = FALSE
+
+/turf/open/floor/light/off/red
+	state = LIGHT_FLOOR_COLOR_RED
+
+/turf/open/floor/light/off/green
+	state = LIGHT_FLOOR_COLOR_GREEN
+
+/turf/open/floor/light/off/yellow
+	state = LIGHT_FLOOR_COLOR_YELLOW
+
+/turf/open/floor/light/off/purple
+	state = LIGHT_FLOOR_COLOR_PURPLE
+
+/turf/open/floor/light/off/white
+	state = LIGHT_FLOOR_COLOR_WHITE
+
+/turf/open/floor/light/broken
+	icon_state = "light_broken"
+	broken = TRUE
+
+/turf/open/floor/light/broken/red
+	state = LIGHT_FLOOR_COLOR_RED
+
+/turf/open/floor/light/broken/green
+	state = LIGHT_FLOOR_COLOR_GREEN
+
+/turf/open/floor/light/broken/yellow
+	state = LIGHT_FLOOR_COLOR_YELLOW
+
+/turf/open/floor/light/broken/purple
+	state = LIGHT_FLOOR_COLOR_PURPLE
+
+/turf/open/floor/light/broken/white
+	state = LIGHT_FLOOR_COLOR_WHITE
+
+#undef LIGHT_FLOOR_COLOR_BLUE
+#undef LIGHT_FLOOR_COLOR_RED
+#undef LIGHT_FLOOR_COLOR_GREEN
+#undef LIGHT_FLOOR_COLOR_YELLOW
+#undef LIGHT_FLOOR_COLOR_PURPLE
+#undef LIGHT_FLOOR_COLOR_WHITE

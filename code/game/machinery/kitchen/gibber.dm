@@ -27,7 +27,7 @@
 /obj/structure/machinery/gibber/autogibber/New()
 	..()
 	spawn(5)
-		for(var/i in cardinal)
+		for(var/i in GLOB.cardinals)
 			var/obj/structure/machinery/mineral/input/input_obj = locate( /obj/structure/machinery/mineral/input, get_step(loc, i) )
 			if(input_obj)
 				if(isturf(input_obj.loc))

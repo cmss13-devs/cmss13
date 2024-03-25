@@ -26,6 +26,10 @@
 	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_XENO_FRENZY
 	attack_delay = -1
 
+	available_strains = list(
+		/datum/xeno_strain/berserker,
+		/datum/xeno_strain/hedgehog,
+	)
 	behavior_delegate_type = /datum/behavior_delegate/ravager_base
 
 	minimum_evolve_time = 15 MINUTES
@@ -45,7 +49,6 @@
 	tier = 3
 	pixel_x = -16
 	old_x = -16
-	mutation_type = RAVAGER_NORMAL
 	claw_type = CLAW_TYPE_VERY_SHARP
 
 	base_actions = list(
@@ -62,6 +65,10 @@
 	icon_xeno = 'icons/mob/xenos/ravager.dmi'
 	icon_xenonid = 'icons/mob/xenonids/ravager.dmi'
 
+	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
+	weed_food_states = list("Ravager_1","Ravager_2","Ravager_3")
+	weed_food_states_flipped = list("Ravager_1","Ravager_2","Ravager_3")
+
 
 // Mutator delegate for base ravager
 /datum/behavior_delegate/ravager_base
@@ -73,7 +80,7 @@
 	var/super_empower_threshold = 3
 	var/dmg_buff_per_target = 2
 
-/datum/behavior_delegate/ravager_base/melee_attack_modify_damage(original_damage, mob/living/carbon/A)
+/datum/behavior_delegate/ravager_base/melee_attack_modify_damage(original_damage, mob/living/carbon/carbon)
 	var/damage_plus
 	if(empower_targets)
 		damage_plus = dmg_buff_per_target * empower_targets
@@ -90,21 +97,21 @@
 /datum/behavior_delegate/ravager_base/append_to_stat()
 	. = list()
 	var/shield_total = 0
-	for (var/datum/xeno_shield/XS in bound_xeno.xeno_shields)
-		if (XS.shield_source == XENO_SHIELD_SOURCE_RAVAGER)
-			shield_total += XS.amount
+	for (var/datum/xeno_shield/xeno_shield in bound_xeno.xeno_shields)
+		if (xeno_shield.shield_source == XENO_SHIELD_SOURCE_RAVAGER)
+			shield_total += xeno_shield.amount
 
 	. += "Empower Shield: [shield_total]"
 	. += "Bonus Slash Damage: [dmg_buff_per_target * empower_targets]"
 
 /datum/behavior_delegate/ravager_base/on_life()
 	var/datum/xeno_shield/rav_shield
-	for (var/datum/xeno_shield/XS in bound_xeno.xeno_shields)
-		if (XS.shield_source == XENO_SHIELD_SOURCE_RAVAGER)
-			rav_shield = XS
+	for (var/datum/xeno_shield/xeno_shield in bound_xeno.xeno_shields)
+		if (xeno_shield.shield_source == XENO_SHIELD_SOURCE_RAVAGER)
+			rav_shield = xeno_shield
 			break
 
 	if (rav_shield && ((rav_shield.last_damage_taken + shield_decay_time) < world.time))
 		QDEL_NULL(rav_shield)
-		to_chat(bound_xeno, SPAN_XENODANGER("You feel your shield decay!"))
+		to_chat(bound_xeno, SPAN_XENODANGER("We feel our shield decay!"))
 		bound_xeno.overlay_shields()

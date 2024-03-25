@@ -20,7 +20,7 @@
 	if(mind || client)
 		ghostize(FALSE)
 
-	GLOB.freed_mob_list |= WEAKREF(src)
+	GLOB.freed_mob_list |= src
 
 	if(!notify)
 		return

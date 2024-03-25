@@ -1,18 +1,18 @@
 //// Holds Xeno verbs that don't belong anywhere else.
 /mob/living/carbon/xenomorph/verb/hive_status()
 	set name = "Hive Status"
-	set desc = "Check the status of your current hive."
+	set desc = "Check the status of our current hive."
 	set category = "Alien"
 
 	if(!hive)
 		return
 
 	if((!hive.living_xeno_queen || SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST) && !hive.allow_no_queen_actions) //No Hive status on WO
-		to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
+		to_chat(src, SPAN_WARNING("There is no Queen. We are alone."))
 		return
 
 	if(interference)
-		to_chat(src, SPAN_WARNING("A headhunter temporarily cut off your psychic connection!"))
+		to_chat(src, SPAN_WARNING("A headhunter temporarily cut off our psychic connection!"))
 		return
 
 	hive.hive_ui.open_hive_status(src)
@@ -81,7 +81,7 @@
 	set desc = "Toggles the health and plasma HUD appearing above Xenomorphs."
 	set category = "Alien"
 
-	var/datum/mob_hud/H = huds[MOB_HUD_XENO_STATUS]
+	var/datum/mob_hud/H = GLOB.huds[MOB_HUD_XENO_STATUS]
 	if (xeno_mobhud)
 		H.remove_hud_from(usr, usr)
 	else
@@ -94,7 +94,7 @@
 	set desc = "Toggles the HUD that renders various negative status effects inflicted on humans."
 	set category = "Alien"
 
-	var/datum/mob_hud/H = huds[MOB_HUD_XENO_HOSTILE]
+	var/datum/mob_hud/H = GLOB.huds[MOB_HUD_XENO_HOSTILE]
 	if (xeno_hostile_hud)
 		H.remove_hud_from(usr, usr)
 	else

@@ -474,7 +474,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "iN" = (
-/obj/item/weapon/claymore/mercsword{
+/obj/item/weapon/sword{
 	pixel_x = -6;
 	pixel_y = 7
 	},
@@ -885,7 +885,7 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/claymore/mercsword{
+/obj/item/weapon/sword{
 	layer = 3.1;
 	pixel_x = 6;
 	pixel_y = 7
@@ -1132,7 +1132,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple/powered)
 "BI" = (
-/obj/item/weapon/claymore/mercsword{
+/obj/item/weapon/sword{
 	pixel_x = 6;
 	pixel_y = 7
 	},
@@ -1215,7 +1215,7 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/claymore/mercsword{
+/obj/item/weapon/sword{
 	layer = 3.1;
 	pixel_x = -6;
 	pixel_y = 7
@@ -1257,7 +1257,7 @@
 	dir = 4;
 	health = 80
 	},
-/obj/item/weapon/claymore/mercsword/machete{
+/obj/item/weapon/sword/machete{
 	desc = "This machete seems not standard issue, indeed it seems to be an ancient military design. Smells like the jungle.";
 	name = "\improper Dutch's Machete"
 	},

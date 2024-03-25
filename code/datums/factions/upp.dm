@@ -41,6 +41,8 @@
 			hud_icon_state = "co"
 		if(JOB_UPP_COMBAT_SYNTH)
 			hud_icon_state = "synth"
+		if(JOB_UPP_SUPPORT_SYNTH)
+			hud_icon_state = "synth"
 		if(JOB_UPP_COMMANDO)
 			hud_icon_state = "com"
 		if(JOB_UPP_COMMANDO_MEDIC)

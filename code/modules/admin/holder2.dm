@@ -1,4 +1,4 @@
-var/list/datum/admins/admin_datums = list()
+GLOBAL_LIST_INIT_TYPED(admin_datums, /datum/admins, list())
 
 GLOBAL_VAR_INIT(href_token, GenerateToken())
 GLOBAL_PROTECT(href_token)
@@ -9,11 +9,6 @@ GLOBAL_PROTECT(href_token)
 	var/client/owner = null
 	var/rights = 0
 	var/fakekey = null
-
-	var/admincaster_screen = 0 //See newscaster.dm under machinery for a full description
-	var/datum/feed_message/admincaster_feed_message = new /datum/feed_message   //These two will act as admin_holders.
-	var/datum/feed_channel/admincaster_feed_channel = new /datum/feed_channel
-	var/admincaster_signature //What you'll sign the newsfeeds as
 
 	var/href_token
 
@@ -31,11 +26,10 @@ GLOBAL_PROTECT(href_token)
 		error("Admin datum created without a ckey argument. Datum has been deleted")
 		qdel(src)
 		return
-	admincaster_signature = "Weyland-Yutani Officer #[rand(0,9)][rand(0,9)][rand(0,9)]"
 	rank = initial_rank
 	rights = initial_rights
 	href_token = GenerateToken()
-	admin_datums[ckey] = src
+	GLOB.admin_datums[ckey] = src
 	extra_titles = new_extra_titles
 
 // Letting admins edit their own permission giver is a poor idea
@@ -47,7 +41,6 @@ GLOBAL_PROTECT(href_token)
 		owner = C
 		owner.admin_holder = src
 		owner.add_admin_verbs()
-		owner.add_admin_whitelists()
 		owner.tgui_say.load()
 		owner.update_special_keybinds()
 		GLOB.admins |= C
@@ -138,8 +131,8 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 	return TRUE
 
 /client/proc/readmin()
-	if(admin_datums[ckey])
-		admin_datums[ckey].associate(src)
+	if(GLOB.admin_datums[ckey])
+		GLOB.admin_datums[ckey].associate(src)
 	return TRUE
 
 /datum/admins/proc/check_for_rights(rights_required)

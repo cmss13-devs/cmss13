@@ -8,7 +8,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_xeno_spit
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	cooldown_message = "You feel your corrosive glands swell with acid. You can spit again."
+	cooldown_message = "We feel our corrosive glands swell with acid. We can spit again."
 	//xeno_cooldown = 60 SECONDS useless var. funny shitcode
 
 /datum/action/xeno_action/onclick/charge_spit
@@ -34,7 +34,7 @@
 	action_type = XENO_ACTION_CLICK
 
 	plasma_cost = 50
-	xeno_cooldown = 80
+	xeno_cooldown = 8 SECONDS
 
 	// Configurable options
 	spray_type = ACID_SPRAY_LINE // Enum for the shape of spray to do

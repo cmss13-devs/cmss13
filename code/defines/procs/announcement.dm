@@ -45,13 +45,11 @@
 			if((H.faction != faction_to_display && !add_PMCs) || (H.faction != faction_to_display && add_PMCs && !(H.faction in FACTION_LIST_WY)) && !(faction_to_display in H.faction_group)) //faction checks
 				targets.Remove(H)
 
-		var/datum/ares_link/link = GLOB.ares_link
-		if(ares_can_log())
-			switch(logging)
-				if(ARES_LOG_MAIN)
-					link.log_ares_announcement(title, message)
-				if(ARES_LOG_SECURITY)
-					link.log_ares_security(title, message)
+		switch(logging)
+			if(ARES_LOG_MAIN)
+				log_ares_announcement(title, message)
+			if(ARES_LOG_SECURITY)
+				log_ares_security(title, message)
 
 	else if(faction_to_display == "Everyone (-Yautja)")
 		for(var/mob/M in targets)
@@ -92,25 +90,23 @@
 //AI announcement that uses talking into comms
 /proc/ai_announcement(message, sound_to_play = sound('sound/misc/interference.ogg'), logging = ARES_LOG_MAIN)
 	for(var/mob/M in (GLOB.human_mob_list + GLOB.dead_mob_list))
-		if(isobserver(M) || ishuman(M) && is_mainship_level(M.z))
+		if((isobserver(M) && M.client?.prefs?.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS) || ishuman(M) && is_mainship_level(M.z))
 			playsound_client(M.client, sound_to_play, M, vol = 45)
 
-	for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
+	for(var/mob/living/silicon/decoy/ship_ai/AI in GLOB.ai_mob_list)
 		INVOKE_ASYNC(AI, TYPE_PROC_REF(/mob/living/silicon/decoy/ship_ai, say), message)
 
-	var/datum/ares_link/link = GLOB.ares_link
-	if(ares_can_log())
-		switch(logging)
-			if(ARES_LOG_MAIN)
-				link.log_ares_announcement("[MAIN_AI_SYSTEM] Comms Update", message)
-			if(ARES_LOG_SECURITY)
-				link.log_ares_security("[MAIN_AI_SYSTEM] Security Update", message)
+	switch(logging)
+		if(ARES_LOG_MAIN)
+			log_ares_announcement("[MAIN_AI_SYSTEM] Comms Update", message)
+		if(ARES_LOG_SECURITY)
+			log_ares_security("[MAIN_AI_SYSTEM] Security Update", message)
 
 /proc/ai_silent_announcement(message, channel_prefix, bypass_cooldown = FALSE)
 	if(!message)
 		return
 
-	for(var/mob/living/silicon/decoy/ship_ai/AI in ai_mob_list)
+	for(var/mob/living/silicon/decoy/ship_ai/AI in GLOB.ai_mob_list)
 		if(channel_prefix)
 			message = "[channel_prefix][message]"
 		INVOKE_ASYNC(AI, TYPE_PROC_REF(/mob/living/silicon/decoy/ship_ai, say), message)
@@ -135,13 +131,11 @@
 
 	if(!isnull(signature))
 		message += "<br><br><i> Signed by, <br> [signature]</i>"
-	var/datum/ares_link/link = GLOB.ares_link
-	if(ares_can_log())
-		switch(ares_logging)
-			if(ARES_LOG_MAIN)
-				link.log_ares_announcement(title, message)
-			if(ARES_LOG_SECURITY)
-				link.log_ares_security(title, message)
+	switch(ares_logging)
+		if(ARES_LOG_MAIN)
+			log_ares_announcement(title, message)
+		if(ARES_LOG_SECURITY)
+			log_ares_security(title, message)
 
 	announcement_helper(message, title, targets, sound_to_play)
 
@@ -151,12 +145,10 @@
 	for(var/mob/T in targets)
 		if(isobserver(T))
 			continue
-		if(!ishuman(T) || isyautja(T) || !is_mainship_level(T.z))
+		if(!ishuman(T) || isyautja(T) || !is_mainship_level((get_turf(T))?.z))
 			targets.Remove(T)
 
-	var/datum/ares_link/link = GLOB.ares_link
-	if(ares_can_log())
-		link.log_ares_announcement("[title] Shipwide Update", message)
+	log_ares_announcement("[title] Shipwide Update", message)
 
 	announcement_helper(message, title, targets, sound_to_play)
 
@@ -169,4 +161,6 @@
 			continue
 
 		to_chat_spaced(T, html = "[SPAN_ANNOUNCEMENT_HEADER(title)]<br><br>[SPAN_ANNOUNCEMENT_BODY(message)]", type = MESSAGE_TYPE_RADIO)
+		if(isobserver(T) && !(T.client?.prefs?.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS))
+			continue
 		playsound_client(T.client, sound_to_play, T, vol = 45)

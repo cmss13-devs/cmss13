@@ -23,7 +23,7 @@
 	set src in usr
 	if(!ishuman(usr)) return
 
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !usr.loc || !isturf(usr.loc))
+	if(usr.is_mob_incapacitated() || !isturf(usr.loc))
 		to_chat(usr, SPAN_WARNING("Not right now!"))
 		return
 
@@ -35,7 +35,7 @@
 	set src in usr
 	if(!ishuman(usr)) return
 
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !usr.loc || !isturf(usr.loc))
+	if(usr.is_mob_incapacitated() || !isturf(usr.loc))
 		to_chat(usr, SPAN_WARNING("Not right now!"))
 		return
 
@@ -91,7 +91,7 @@
 	set src in usr
 	if(!ishuman(usr)) return
 
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !usr.loc || !isturf(usr.loc))
+	if(usr.is_mob_incapacitated() || !isturf(usr.loc))
 		to_chat(usr, SPAN_WARNING("Not right now!"))
 		return
 
@@ -103,7 +103,7 @@
 	set src in usr
 	if(!ishuman(usr)) return
 
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !usr.loc || !isturf(usr.loc))
+	if(usr.is_mob_incapacitated() || !isturf(usr.loc))
 		to_chat(usr, SPAN_WARNING("Not right now!"))
 		return
 
@@ -124,6 +124,9 @@
 //END FEET TEMPLATE
 
 /obj/item/storage/backpack/marine/fluff
+	xeno_types = null
+
+/obj/item/storage/backpack/marine/satchel/fluff
 	xeno_types = null
 
 /obj/item/clothing/gloves/marine/fluff   //MARINE GLOVES TEMPLATE
@@ -211,10 +214,10 @@
 	item_state = "armor_reflec"
 
 /obj/item/clothing/suit/storage/marine/fluff/sas_juggernaut //CKEY=sasoperative (UNIQUE)
-	name = "Juggernaut Armor"
+	name = "juggernaut armor"
 	desc = "Some fancy looking armor. DONOR ITEM"
-	icon_state = "rig-syndi"
-	item_state = "syndie_hardsuit"
+	icon_state = "skinnerarmor"
+	item_state = "skinnerarmor"
 
 /obj/item/clothing/suit/storage/marine/fluff/penguin //CKEY=tophatpenguin
 	name = "Trenchcoat"
@@ -418,11 +421,11 @@
 	item_state = "merc_armor"
 
 /obj/item/clothing/suit/storage/marine/fluff/steelpoint //CKEY=steelpoint (UNIQUE)
-	name = "M4X Armor"
-	desc = "Armor to the M4X!!!!  DONOR ITEM"
+	name = "M4-X Armor"
+	desc = "A next generation body armor system intended for Marines fighting against xenomorphs, the system is coated in a unique acid resistant polymer coating, as well as enhanced ballistics protection. This prototype version lacks those two features. DONOR ITEM"
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE
 	icon_state = "steelpoint_armor"
 	item_state = "steelpoint_armor"
-
 
 /obj/item/clothing/suit/storage/marine/fluff/valentine //CKEY=markvalentine
 	name = "Shocky's Armor"
@@ -584,13 +587,13 @@
 /obj/item/clothing/head/helmet/marine/fluff/santahat //CKEY=tophatpenguin
 	name = "Santa's hat"
 	desc = "Ho ho ho. Merrry X-mas!"
-	icon_state = "santahat"
+	icon_state = "santa_hat_red"
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEALLHAIR
 
 /obj/item/clothing/head/helmet/marine/fluff/sas_juggernaut //CKEY=sasoperative (UNIQUE)
-	name = "Juggernaut Helmet"
-	icon_state = "rig0-syndi"
+	name = "juggernaut helmet"
+	icon_state = "skinnerhelmet"
 	desc = "A red helmet, for pairing with JuggerNaut Armor. DONOR ITEM"
 
 /obj/item/clothing/head/helmet/marine/fluff/tristan //CKEY=tristan63
@@ -610,13 +613,6 @@
 	name = "Doom Helmet"
 	icon_state = "doom_helmet"
 	desc = "A Helmet, of a famous Earth warrior... Donor Item"
-	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
-
-/obj/item/clothing/head/helmet/marine/fluff/sas_juggernaut_alt //CKEY=sasoperative (UNIQUE)
-	name = "Juggernaut Helmet"
-	icon_state = "ncrhelmet"
-	desc = "A red helmet, for pairing with JuggerNaut Armor. DONOR ITEM"
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
 
@@ -846,10 +842,11 @@
 	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
 
 /obj/item/clothing/head/helmet/marine/fluff/steelpoint //CKEY=steelpoint (UNIQUE)
-	name = "M4X Helmet"
-	desc = "Helmets to the M4X!!!  DONOR ITEM"
+	name = "M4-X Helmet"
+	desc = "A next generation combat helmet intended to be paired with the M4-X armor. The full faced helmet provides complete light ballistic-resistant protection alongside enchanced acid resistance. This prototype version lacks those features. DONOR ITEM"
 	icon_state = "steelpoint_helmet"
 	item_state = "steelpoint_helmet"
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
 
@@ -975,8 +972,11 @@
 	icon_state = null
 	item_state = null
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
-	//DON'T GRAB STUFF BETWEEN THIS LINE
-	//AND THIS LINE
+
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/uniform_1.dmi',
+	)
+
 //END UNIFORM TEMPLATE
 
 /obj/item/clothing/under/marine/fluff/marinemedic //UNUSED
@@ -1152,8 +1152,8 @@
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/steelpoint //CKEY=steelpoint (UNIQUE)
-	name = "M4X Jumpsuit"
-	desc = "Jumpsuit to the M4X!!!  DONOR ITEM"
+	name = "M4-X Jumpsuit"
+	desc = "Jumpsuit issued alongside the M4-X armor. Considered outdated compared to the more modern armor system.  DONOR ITEM"
 	icon_state = "steelpoint_jumpsuit"
 	worn_state = "steelpoint_jumpsuit"
 	flags_jumpsuit = FALSE
@@ -1313,8 +1313,8 @@
 /obj/item/clothing/shoes/marine/fluff/vintage //CKEY=vintagepalmer
 	name = "Vintage Sandals"
 	desc = "Vintage Sandals, suitable for only the highest class of hipster.  DONOR ITEM"
-	icon_state = "wizard"
-	item_state = "wizard"
+	icon_state = "sandals"
+	item_state = "sandals"
 
 /obj/item/clothing/shoes/marine/fluff/feodrich //CKEY=feodrich (UNIQUE)
 	name = "Doom Shoes"
@@ -1323,10 +1323,10 @@
 	item_state = "doom_boots"
 
 /obj/item/clothing/shoes/marine/fluff/steelpoint //CKEY=steelpoint (UNIQUE)
-	name = "M4X Boot"
-	desc = "Boots to the M4X.  DONOR ITEM"
-	icon_state = "jackboots"
-	item_state = "jackboots"
+	name = "M4-X Boot"
+	desc = "Standard issue boots issued alongside M4-X armor, features a special coating of acid-resistant layering to allow its operator to move through acid-dretched environments safely. This prototype version lacks that feature.  DONOR ITEM"
+	icon_state = "marine"
+	item_state = "marine"
 
 //GENERIC GLASSES, GLOVES, AND MISC ////////////////////
 
@@ -1365,6 +1365,13 @@
 	desc = "A large security backpack, with a radio booster.  Donor Item"
 	icon_state = "securitypack"
 	item_state = "securitypack"
+
+/obj/item/storage/backpack/marine/satchel/fluff/sas_juggernaut //CKEY=sasoperative (UNIQUE)
+	name = "tactical radiopack"
+	desc = "A Radio backpack for use with the Juggernaut armor. DONOR ITEM"
+	icon_state = "skinnerpack"
+	item_state = "securitypack"
+	has_gamemode_skin = FALSE //same sprite for all gamemodes.
 
 /obj/item/clothing/glasses/fluff/alexwarhammer
 	name = "Black Jack's Dank Shades"

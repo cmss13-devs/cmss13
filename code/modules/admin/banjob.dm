@@ -7,23 +7,23 @@ won't recognize the older one, as an example.
 
 */
 
-var/jobban_runonce // Updates legacy bans with new info
-var/jobban_keylist[0] //to store the keys & ranks
+GLOBAL_VAR(jobban_runonce) // Updates legacy bans with new info
+GLOBAL_LIST_EMPTY(jobban_keylist)
 
 /proc/check_jobban_path(X)
 	. = ckey(X)
-	if(!islist(jobban_keylist[.])) //If it's not a list, we're in trouble.
-		jobban_keylist[.] = list()
+	if(!islist(GLOB.jobban_keylist[.])) //If it's not a list, we're in trouble.
+		GLOB.jobban_keylist[.] = list()
 
 /proc/jobban_fullban(mob/M, rank, reason)
 	if (!M || !M.ckey) return
 	rank = check_jobban_path(rank)
-	jobban_keylist[rank][M.ckey] = reason
+	GLOB.jobban_keylist[rank][M.ckey] = reason
 
 /proc/jobban_client_fullban(ckey, rank)
 	if (!ckey || !rank) return
 	rank = check_jobban_path(rank)
-	jobban_keylist[rank][ckey] = "Reason Unspecified"
+	GLOB.jobban_keylist[rank][ckey] = "Reason Unspecified"
 
 //returns a reason if M is banned from rank, returns 0 otherwise
 /proc/jobban_isbanned(mob/M, rank, datum/entity/player/P = null)
@@ -42,24 +42,22 @@ var/jobban_keylist[0] //to store the keys & ranks
 		if(guest_jobbans(rank))
 			if(CONFIG_GET(flag/guest_jobban) && IsGuestKey(M.key))
 				return "Guest Job-ban"
-			if(CONFIG_GET(flag/usewhitelist) && !check_whitelist(M))
-				return "Whitelisted Job"
 		var/datum/entity/player_job_ban/PJB = M.client.player_data.job_bans[rank]
 		return PJB ? PJB.text : null
 
 /proc/jobban_loadbanfile()
 	var/savefile/S=new("data/job_new.ban")
-	S["new_bans"] >> jobban_keylist
+	S["new_bans"] >> GLOB.jobban_keylist
 	log_admin("Loading jobban_rank")
-	S["runonce"] >> jobban_runonce
+	S["runonce"] >> GLOB.jobban_runonce
 
-	if (!length(jobban_keylist))
-		jobban_keylist=list()
+	if (!length(GLOB.jobban_keylist))
+		GLOB.jobban_keylist=list()
 		log_admin("jobban_keylist was empty")
 
 /proc/jobban_savebanfile()
 	var/savefile/S=new("data/job_new.ban")
-	S["new_bans"] << jobban_keylist
+	S["new_bans"] << GLOB.jobban_keylist
 
 /proc/jobban_unban(mob/M, rank)
 	jobban_remove("[M.ckey] - [ckey(rank)]")
@@ -70,7 +68,7 @@ var/jobban_keylist[0] //to store the keys & ranks
 /proc/jobban_remove(X)
 	var/regex/r1 = new("(.*) - (.*)")
 	if(r1.Find(X))
-		var/L[] = jobban_keylist[r1.group[2]]
+		var/L[] = GLOB.jobban_keylist[r1.group[2]]
 		L.Remove(r1.group[1])
 		return 1
 
@@ -89,7 +87,7 @@ var/jobban_keylist[0] //to store the keys & ranks
 	if(!M.ckey) //sanity
 		to_chat(usr, "This mob has no ckey")
 		return
-	if(!RoleAuthority)
+	if(!GLOB.RoleAuthority)
 		to_chat(usr, "The Role Authority is not set up!")
 		return
 
@@ -109,31 +107,31 @@ var/jobban_keylist[0] //to store the keys & ranks
 WARNING!*/
 //Regular jobs
 //Command (Blue)
-	jobs += generate_job_ban_list(M, P, ROLES_CIC, "CIC", "ddddff")
+	jobs += generate_job_ban_list(M, P, GLOB.ROLES_CIC, "CIC", "ddddff")
 	jobs += "<br>"
 // SUPPORT
-	jobs += generate_job_ban_list(M, P, ROLES_AUXIL_SUPPORT, "Support", "ccccff")
+	jobs += generate_job_ban_list(M, P, GLOB.ROLES_AUXIL_SUPPORT, "Support", "ccccff")
 	jobs += "<br>"
 // MPs
-	jobs += generate_job_ban_list(M, P, ROLES_POLICE, "Police", "ffdddd")
+	jobs += generate_job_ban_list(M, P, GLOB.ROLES_POLICE, "Police", "ffdddd")
 	jobs += "<br>"
 //Engineering (Yellow)
-	jobs += generate_job_ban_list(M, P, ROLES_ENGINEERING, "Engineering", "fff5cc")
+	jobs += generate_job_ban_list(M, P, GLOB.ROLES_ENGINEERING, "Engineering", "fff5cc")
 	jobs += "<br>"
 //Cargo (Yellow) //Copy paste, yada, yada. Hopefully Snail can rework this in the future.
-	jobs += generate_job_ban_list(M, P, ROLES_REQUISITION, "Requisition", "fff5cc")
+	jobs += generate_job_ban_list(M, P, GLOB.ROLES_REQUISITION, "Requisition", "fff5cc")
 	jobs += "<br>"
 //Medical (White)
-	jobs += generate_job_ban_list(M, P, ROLES_MEDICAL, "Medical", "ffeef0")
+	jobs += generate_job_ban_list(M, P, GLOB.ROLES_MEDICAL, "Medical", "ffeef0")
 	jobs += "<br>"
 //Marines
-	jobs += generate_job_ban_list(M, P, ROLES_MARINES, "Marines", "ffeeee")
+	jobs += generate_job_ban_list(M, P, GLOB.ROLES_MARINES, "Marines", "ffeeee")
 	jobs += "<br>"
 // MISC
-	jobs += generate_job_ban_list(M, P, ROLES_MISC, "Misc", "aaee55")
+	jobs += generate_job_ban_list(M, P, GLOB.ROLES_MISC, "Misc", "aaee55")
 	jobs += "<br>"
 // Xenos (Orange)
-	jobs += generate_job_ban_list(M, P, ROLES_XENO, "Xenos", "a268b1")
+	jobs += generate_job_ban_list(M, P, GLOB.ROLES_XENO, "Xenos", "a268b1")
 	jobs += "<br>"
 //Extra (Orange)
 	var/isbanned_dept = jobban_isbanned(M, "Syndicate", P)

@@ -52,7 +52,7 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/seegson_tomorrow
 	key = "seegsontomorrow"
 	haz_sound = 'sound/voice/joe/tomorrow_together_haz.ogg'
-	say_message = "Seegson - Tomorrow, together."
+	say_message = "Seegson. Tomorrow, together."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = HAZARD_JOE_EMOTE
 

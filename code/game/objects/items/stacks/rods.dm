@@ -4,7 +4,7 @@
 	singular_name = "metal rod"
 	icon_state = "rods"
 	flags_atom = FPRINT|CONDUCT
-	w_class = SIZE_MEDIUM
+	w_class = SIZE_SMALL
 	force = 9
 	throwforce = 15
 	throw_speed = SPEED_VERY_FAST
@@ -54,7 +54,7 @@ GLOBAL_LIST_INIT(rod_recipes, list (
 	singular_name = "plasteel rod"
 	icon_state = "rods_plasteel"
 	flags_atom = FPRINT
-	w_class = SIZE_MEDIUM
+	w_class = SIZE_SMALL
 	force = 9
 	throwforce = 15
 	throw_speed = SPEED_VERY_FAST

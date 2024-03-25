@@ -1,0 +1,5 @@
+author: "InsaneRed"
+delete-after: True
+changes:
+  - balance: "Wardens can heal eachother once again, but only half the health"
+  - qol: "Gives SPAN_XENOHIGHDANGER to heal/reju on positives, since its very easy to miss if you actually healed soembody."

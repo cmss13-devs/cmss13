@@ -481,8 +481,8 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		if("change_holo_card")
 			if(ishuman(target_mob))
 				var/mob/living/carbon/human/target_human = target_mob
-				target_human.change_holo_card(usr)
-				. = TRUE
+				target_human.change_holo_card(ui.user)
+				return TRUE
 
 /// legacy proc for to_chat messages on health analysers
 /mob/living/proc/health_scan(mob/living/carbon/human/user, ignore_delay = FALSE, show_limb_damage = TRUE, show_browser = TRUE, alien = FALSE, do_checks = TRUE) // ahem. FUCK WHOEVER CODED THIS SHIT AS NUMBERS AND NOT DEFINES.

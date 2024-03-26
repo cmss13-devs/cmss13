@@ -887,6 +887,8 @@
 	return
 
 /mob/living/carbon/human/proc/change_holo_card(mob/user)
+	if(isobserver(user))
+		return
 	if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 		to_chat(user, SPAN_WARNING("You're not trained to use this."))
 		return

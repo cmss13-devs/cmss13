@@ -193,12 +193,6 @@
 /mob/living/carbon/human/help_shake_act(mob/living/carbon/M)
 	//Target is us
 	if(src == M)
-		if(holo_card_color) //if we have a triage holocard printed on us, we remove it.
-			holo_card_color = null
-			update_targeted()
-			visible_message(SPAN_NOTICE("[src] removes the holo card on [gender==MALE?"himself":"herself"]."), \
-				SPAN_NOTICE("You remove the holo card on yourself."), null, 3)
-			return
 		check_for_injuries()
 		return
 

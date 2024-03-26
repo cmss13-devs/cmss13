@@ -100,14 +100,14 @@
 //Shockwaves
 //------------------------------------------
 
-/obj/effect/temp_visual/shockwave
+/obj/effect/shockwave
 	icon = 'icons/effects/light_overlays/shockwave.dmi'
 	icon_state = "shockwave"
 	plane = DISPLACEMENT_PLATE_RENDER_LAYER
 	pixel_x = -496
 	pixel_y = -496
 
-/obj/effect/temp_visual/shockwave/Initialize(mapload, radius)
+/obj/effect/shockwave/Initialize(mapload, radius)
 	. = ..()
 	deltimer(timerid)
 	QDEL_IN(src, 0.5 * radius)

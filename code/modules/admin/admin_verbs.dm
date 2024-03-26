@@ -68,6 +68,7 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/datum/admins/proc/alertall,
 	/datum/admins/proc/imaginary_friend,
 	/client/proc/toggle_admin_pings,
+	/client/proc/cmd_admin_open_ares,
 	/client/proc/cmd_admin_say, /*staff-only ooc chat*/
 	/client/proc/cmd_mod_say, /* alternate way of typing asay, no different than cmd_admin_say  */
 	/client/proc/cmd_admin_tacmaps_panel,
@@ -139,6 +140,7 @@ GLOBAL_LIST_INIT(admin_verbs_minor_event, list(
 	/client/proc/admin_biohazard_alert,
 	/client/proc/toggle_hardcore_perma,
 	/client/proc/toggle_bypass_joe_restriction,
+	/client/proc/toggle_joe_respawns,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_major_event, list(

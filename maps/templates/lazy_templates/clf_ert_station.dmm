@@ -1378,6 +1378,17 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/dirt,
 /area/adminlevel/ert_station/clf_station)
+"Ia" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/structure/machinery/power/apc/antag{
+	dir = 1
+	},
+/turf/open/floor/wood{
+	icon_state = "wood-broken3"
+	},
+/area/adminlevel/ert_station/clf_station)
 "Ie" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 1;
@@ -3006,7 +3017,7 @@ zO
 Ch
 ZI
 ZI
-MQ
+Ia
 mw
 mw
 LQ

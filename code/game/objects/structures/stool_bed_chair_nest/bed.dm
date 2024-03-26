@@ -20,6 +20,7 @@
 	var/buildstackamount = 1
 	var/foldabletype //To fold into an item (e.g. roller bed item)
 	var/buckling_y = 0 //pixel y shift to give to the buckled mob.
+	var/buckling_x = 0 //pixel x shift to give to the buckled mob.
 	var/obj/structure/closet/bodybag/buckled_bodybag
 	var/accepts_bodybag = FALSE //Whether you can buckle bodybags to this bed
 	var/base_bed_icon //Used by beds that change sprite when something is buckled to them
@@ -60,11 +61,15 @@
 	if(. && buckled_mob == M)
 		M.pixel_y = buckling_y
 		M.old_y = buckling_y
+		M.pixel_x = buckling_x
+		M.old_x = buckling_x
 		if(base_bed_icon)
 			density = TRUE
 	else
 		M.pixel_y = initial(buckled_mob.pixel_y)
 		M.old_y = initial(buckled_mob.pixel_y)
+		M.pixel_x = initial(buckled_mob.pixel_x)
+		M.old_x = initial(buckled_mob.pixel_x)
 		if(base_bed_icon)
 			density = FALSE
 

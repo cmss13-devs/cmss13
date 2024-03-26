@@ -1,0 +1,6 @@
+author: "Vicacrov"
+delete-after: True
+changes:
+  - rscadd: "Added holocards to health scans to improve communication between medical players. You can now assign holocards via the health analyzer and the body scanner as well. The health scan also tells you what the current holocard's colour means."
+  - rscadd: "Added a new purple holocard to tag infected marines."
+  - rscdel: "Clicking yourself no longer removes your own holocard."

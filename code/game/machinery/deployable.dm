@@ -51,9 +51,9 @@
 	else
 		switch(W.damtype)
 			if("fire")
-				src.health -= W.force * 0.75
+				src.health -= W.force * W.demolition_mod * 0.75
 			if("brute")
-				src.health -= W.force * 0.5
+				src.health -= W.force * W.demolition_mod * 0.5
 		if (src.health <= 0)
 			src.explode()
 		..()

@@ -53,7 +53,7 @@
 
 
 /obj/structure/lamarr/attackby(obj/item/W as obj, mob/user as mob)
-	src.health -= W.force
+	src.health -= W.force * W.demolition_mod
 	src.healthcheck()
 	..()
 	return

@@ -3298,6 +3298,7 @@
 	hitsound = "swing_hit"
 	force = 15
 	throwforce = 10
+	attack_speed = 10
 	demolition_mod = 0.3
 	bitesize = 2
 	wrapper = /obj/item/trash/chunk

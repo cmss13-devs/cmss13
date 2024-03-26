@@ -218,6 +218,10 @@
 			if(!client?.owned_battlepass)
 				return
 
+			if(!SSbattlepass.initialized)
+				to_chat(src, SPAN_WARNING("Please wait for battlepasses to initialize first."))
+				return
+
 			client.owned_battlepass.ui_interact(src)
 		else
 			new_player_panel()

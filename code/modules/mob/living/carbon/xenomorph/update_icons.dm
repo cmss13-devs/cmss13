@@ -245,6 +245,14 @@
 	apply_overlay(X_HALO_LAYER)
 	has_halo = TRUE
 
+/mob/living/carbon/xenomorph/proc/create_evil_halo()
+	if(has_halo)
+		return
+
+	overlays_standing[X_HALO_LAYER] = image("icon" = 'code/modules/battlepass/rewards/sprites/halo_red.dmi', "icon_state" = get_halo_iconname())
+	apply_overlay(X_HALO_LAYER)
+	has_halo = TRUE
+
 /mob/living/carbon/xenomorph/proc/create_custom_empower(icolor, ialpha = 255, small_xeno = FALSE)
 	remove_suit_layer()
 

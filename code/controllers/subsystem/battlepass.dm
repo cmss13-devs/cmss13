@@ -1,6 +1,7 @@
 SUBSYSTEM_DEF(battlepass)
 	name = "Battlepass"
 	flags = SS_NO_FIRE
+	init_order = SS_INIT_BATTLEPASS
 	/// The maximum tier the battlepass goes to
 	var/maximum_tier = 20
 	/// What season we're currently in
@@ -41,6 +42,13 @@ SUBSYSTEM_DEF(battlepass)
 				xeno_challenges[challenge_path] = initial(challenge_path.pick_weight)
 
 	RegisterSignal(src, COMSIG_SUBSYSTEM_POST_INITIALIZE, PROC_REF(do_postinit))
+
+	for(var/client/client as anything in GLOB.clients)
+		if(!client.owned_battlepass)
+			continue
+
+		client.owned_battlepass.verify_rewards()
+
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/battlepass/proc/do_postinit(datum/source)

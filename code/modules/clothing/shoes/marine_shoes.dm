@@ -31,8 +31,8 @@
 	var/base_icon_state
 
 /obj/item/clothing/shoes/marine/Initialize(mapload, ...)
-	. = ..()
 	base_icon_state = initial(icon_state)
+	. = ..()
 
 /obj/item/clothing/shoes/marine/update_icon()
 	if(stored_item)

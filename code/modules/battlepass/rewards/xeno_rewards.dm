@@ -31,10 +31,19 @@
 			return "oppPrae"
 
 /datum/battlepass_reward/xeno/halo
-	name = "Halo"
-	icon_state = "halo"
+	name = "Golden Halo"
+	icon_state = "golden_halo"
 	category = REWARD_CATEGORY_OVERLAY
 
 /datum/battlepass_reward/xeno/halo/on_claim(mob/living/carbon/xenomorph/target_mob)
 	target_mob.create_halo()
+	return TRUE
+
+/datum/battlepass_reward/xeno/evil_halo
+	name = "Red Halo"
+	icon_state = "red_halo"
+	category = REWARD_CATEGORY_OVERLAY
+
+/datum/battlepass_reward/xeno/evil_halo/on_claim(mob/living/carbon/xenomorph/target_mob)
+	target_mob.create_evil_halo()
 	return TRUE

@@ -33,7 +33,7 @@ interface BattlepassData {
 
 export const Battlepass = (props) => {
   return (
-    <Window width={900} height={325} theme="usmc" title="Battlepass">
+    <Window width={3400} height={325} theme="usmc" title="Battlepass">
       <Window.Content>
         <BattlepassContent />
       </Window.Content>
@@ -55,7 +55,7 @@ const BattlepassContent = (props) => {
         <BattlepassInfoContainer />
         <div
           style={{
-            'overflow-x': 'scroll',
+            'overflow-x': 'auto',
             'display': 'flex',
             'flex-wrap': 'nowrap',
             'position': 'relative',
@@ -73,6 +73,7 @@ const BattlepassContent = (props) => {
           </div>
           {rewards.map((reward, rewardIndex) => (
             <BattlepassRegularEntry
+              key={reward.tier}
               reward={reward}
               premiumReward={premium_rewards[rewardIndex]}
             />
@@ -101,7 +102,7 @@ const BattlepassInfoContainer = (props) => {
           Xp: {data.xp} / 10
         </b>
         {data.daily_challenges.map((challenge) => (
-          <BattlepassChallenge challenge={challenge} />
+          <BattlepassChallenge challenge={challenge} key={challenge.name} />
         ))}
       </Section>
     </div>

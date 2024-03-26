@@ -35,6 +35,8 @@
 	owned_battlepass.check_daily_challenge_reset()
 	owned_battlepass.load_rewards(battlepass_save["rewards"])
 	owned_battlepass.previous_on_tier_up_tier = battlepass_save["previous_on_tier_up_tier"]
+	if(SSbattlepass.initialized)
+		owned_battlepass.verify_rewards()
 
 /client/proc/save_battlepass()
 	var/savefile/battlepass_save = new("data/player_saves/[copytext(ckey,1,2)]/[ckey]/battlepass.sav")

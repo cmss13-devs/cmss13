@@ -73,8 +73,11 @@
 	/// Weakref to the owning client
 	var/datum/weakref/owning_client
 
-	/// All earned battlepass rewards
+	/// All earned battlepass reward instances
 	var/list/datum/battlepass_reward/rewards = list()
+
+	/// Typepaths of all earned battlepass rewards. This isn't saved because it's populated by loading the rewards list
+	var/list/reward_paths = list()
 
 	/// The tier of the battlepass the last time on_tier_up() was called
 	var/previous_on_tier_up_tier = 0
@@ -87,18 +90,24 @@
 		tier += tier_increase
 		on_tier_up()
 
-/datum/battlepass/proc/on_tier_up()
+/datum/battlepass/proc/on_tier_up(display_popup = TRUE)
+	if(previous_on_tier_up_tier == tier)
+		return
+
 	for(var/i in previous_on_tier_up_tier + 1 to tier)
 		var/reward_path = SSbattlepass.season_rewards[i]
 		var/datum/battlepass_reward/reward = new reward_path
 		rewards += reward
+		reward_paths += reward_path
 
-	display_tier_up_popup()
+	if(display_popup)
+		display_tier_up_popup()
 
 	var/list/types_in_rewards = list()
 	for(var/datum/battlepass_reward/reward as anything in rewards)
 		if(reward.type in types_in_rewards)
 			rewards -= reward
+			reward_paths -= reward.type
 			qdel(reward)
 			continue
 
@@ -116,6 +125,17 @@
 
 	user_client.mob.overlay_fullscreen("battlepass_tierup", /atom/movable/screen/fullscreen/battlepass)
 	addtimer(CALLBACK(user_client.mob, TYPE_PROC_REF(/mob, clear_fullscreen), "battlepass_tierup"), 1.2 SECONDS) // 1.2s is the length of the tierup anim
+
+/// Check that the user has all the rewards they should (in case rewards shifted in config or etc).
+/// Doesn't remove ones that aren't in their tiers (in case they have some from a previous season, for example)
+/datum/battlepass/proc/verify_rewards()
+	for(var/i in 1 to tier)
+		var/reward_path = SSbattlepass.season_rewards[i]
+		if(reward_path in reward_paths)
+			continue
+
+		rewards += new reward_path
+		reward_paths += reward_path
 
 /// Check if it's been 24h since daily challenges were last assigned
 /datum/battlepass/proc/check_daily_challenge_reset()
@@ -188,6 +208,7 @@
 
 		var/datum/battlepass_reward/reward = new path
 		rewards += reward
+		reward_paths += path
 		loaded_paths += path
 
 /// Called whenever a challenge is completed

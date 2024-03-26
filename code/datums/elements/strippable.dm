@@ -224,13 +224,13 @@
 	if (!ismob(source))
 		return FALSE
 
-	var/time_to_strip = HUMAN_STRIP_DELAY + equipping.time_to_equip
+	var/time_to_strip = HUMAN_STRIP_DELAY
 	var/mob/sourcemob = source
 
 	if (ishuman(sourcemob) && ishuman(user))
 		var/mob/living/carbon/human/sourcehuman = sourcemob
 		var/mob/living/carbon/human/userhuman = user
-		time_to_strip = userhuman.get_strip_delay(userhuman, sourcehuman) + equipping.time_to_equip
+		time_to_strip = userhuman.get_strip_delay(userhuman, sourcehuman)
 
 	if (!do_after(user, time_to_strip, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, source, INTERRUPT_MOVED, BUSY_ICON_FRIENDLY))
 		return FALSE
@@ -273,16 +273,12 @@
 
 	return finish_unequip_mob(item, source, user)
 
-/// Returns the delay of equipping this item to a mob
-/datum/strippable_item/mob_item_slot/proc/get_equip_delay(obj/item/equipping)
-	return equipping.time_to_equip
-
 /// A utility function for `/datum/strippable_item`s to start unequipping an item from a mob.
 /datum/strippable_item/mob_item_slot/proc/start_unequip_mob(obj/item/item, mob/living/carbon/human/source, mob/living/carbon/human/user)
-	var/time_to_strip = HUMAN_STRIP_DELAY + item.time_to_equip
+	var/time_to_strip = HUMAN_STRIP_DELAY
 
 	if (istype(source) && istype(user))
-		time_to_strip = user.get_strip_delay(user, source) + item.time_to_equip
+		time_to_strip = user.get_strip_delay(user, source)
 
 	if (!do_after(user, time_to_strip, INTERRUPT_ALL, BUSY_ICON_HOSTILE, source, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 		return FALSE

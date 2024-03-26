@@ -208,29 +208,29 @@
 	var/epicenter = src.loc ///center of the shockwave, set at the center of the tile that the mob is currently standing on
 
 	//shockwaves are iterated, counting down once per shriekwave, with the total amount being determined on the respective xeno ability tile
-	if(shriekwaves_left > 18)
+	if(shriekwaves_left > 12)
 		shriekwaves_left--
 		new /obj/effect/shockwave(epicenter, 11, 0.5, offset_y)
 		addtimer(CALLBACK(src, PROC_REF(create_shriekwave), epicenter, shriekwaves_left), 2)
 		return
-	if(shriekwaves_left > 12)
+	if(shriekwaves_left > 8)
 		shriekwaves_left--
 		new /obj/effect/shockwave(epicenter, 10, 0.5, offset_y)
-		addtimer(CALLBACK(src, PROC_REF(create_shriekwave), epicenter, shriekwaves_left), 2)
+		addtimer(CALLBACK(src, PROC_REF(create_shriekwave), epicenter, shriekwaves_left), 3)
 		return
 	if(shriekwaves_left > 4)
 		shriekwaves_left--
-		new /obj/effect/shockwave(epicenter, 9, 0.7, offset_y)
-		addtimer(CALLBACK(src, PROC_REF(create_shriekwave), epicenter, shriekwaves_left), 2)
+		new /obj/effect/shockwave(epicenter, 9, 0.5, offset_y)
+		addtimer(CALLBACK(src, PROC_REF(create_shriekwave), epicenter, shriekwaves_left), 3)
 		return
 	if(shriekwaves_left > 1)
 		shriekwaves_left--
-		new /obj/effect/shockwave(epicenter, 7.5, 0.7, offset_y)
-		addtimer(CALLBACK(src, PROC_REF(create_shriekwave), epicenter, shriekwaves_left), 2)
+		new /obj/effect/shockwave(epicenter, 7.5, 0.5, offset_y)
+		addtimer(CALLBACK(src, PROC_REF(create_shriekwave), epicenter, shriekwaves_left), 3)
 		return
 	if(shriekwaves_left == 1)
 		shriekwaves_left--
-		addtimer(CALLBACK(src, PROC_REF(create_shriekwave), epicenter, shriekwaves_left), 1)
+		new /obj/effect/shockwave(epicenter, 10, 0.7, offset_y)
 
 /mob/living/carbon/xenomorph/proc/create_stomp()
 	remove_suit_layer()

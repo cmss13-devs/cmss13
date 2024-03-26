@@ -12,7 +12,7 @@
 
 	playsound(xeno.loc, pick(predalien_roar), 75, 0, status = 0)
 	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits a guttural roar!"))
-	xeno.create_shriekwave(xeno, 10) //Adds the visual effect. Wom wom wom, 10 shriekwaves
+	xeno.create_shriekwave(xeno, 8) //Adds the visual effect. Wom wom wom, 10 shriekwaves
 	for(var/mob/living/carbon/carbon in view(7, xeno))
 		if(ishuman(carbon))
 			var/mob/living/carbon/human/human = carbon

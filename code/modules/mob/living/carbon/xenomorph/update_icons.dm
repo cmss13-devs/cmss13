@@ -196,31 +196,41 @@
 		overlays_standing[X_LEGCUFF_LAYER] = image("icon" = 'icons/mob/xenos/effects.dmi', "icon_state" = "legcuff", "layer" =-X_LEGCUFF_LAYER)
 		apply_overlay(X_LEGCUFF_LAYER)
 
-/mob/living/carbon/xenomorph/proc/create_shriekwave(color = null)
-	var/image/screech_image
+/mob/living/carbon/xenomorph/proc/create_shriekwave(shrieking_xeno, shriekwaves_left)
+	var/offset_y = 8
+	if(mob_size == MOB_SIZE_XENO)
+		offset_y = 24
+	if(mob_size == MOB_SIZE_IMMOBILE)
+		offset_y = 28
 
-	var/offset_x = 0
-	var/offset_y = 0
-	if(mob_size <= MOB_SIZE_XENO)
-		offset_x = -7
-		offset_y = -10
+	//the shockwave center is updated eachtime shockwave is called and offset relative to the mob_size.
+	//due to the speed of the shockwaves, it isn't required to be tied to the exact mob movements
+	var/epicenter = src.loc ///center of the shockwave, set at the center of the tile that the mob is currently standing on
 
-	if (color)
-		screech_image = image("icon"='icons/mob/xenos/overlay_effects64x64.dmi', "icon_state" = "shriek_waves_greyscale") // For Praetorian screech
-		screech_image.color = color
-	else
-		screech_image = image("icon"='icons/mob/xenos/overlay_effects64x64.dmi', "icon_state" = "shriek_waves") //Ehh, suit layer's not being used.
-
-	screech_image.pixel_x = offset_x
-	screech_image.pixel_y = offset_y
-
-	screech_image.appearance_flags |= RESET_COLOR
-
-	remove_suit_layer()
-
-	overlays_standing[X_SUIT_LAYER] = screech_image
-	apply_overlay(X_SUIT_LAYER)
-	addtimer(CALLBACK(src, PROC_REF(remove_overlay), X_SUIT_LAYER), 30)
+	//shockwaves are iterated, counting down once per shriekwave, with the total amount being determined on the respective xeno ability tile
+	if(shriekwaves_left > 18)
+		shriekwaves_left--
+		new /obj/effect/shockwave(epicenter, 11, 0.5, offset_y)
+		addtimer(CALLBACK(src, PROC_REF(create_shriekwave), epicenter, shriekwaves_left), 2)
+		return
+	if(shriekwaves_left > 12)
+		shriekwaves_left--
+		new /obj/effect/shockwave(epicenter, 10, 0.5, offset_y)
+		addtimer(CALLBACK(src, PROC_REF(create_shriekwave), epicenter, shriekwaves_left), 2)
+		return
+	if(shriekwaves_left > 4)
+		shriekwaves_left--
+		new /obj/effect/shockwave(epicenter, 9, 0.7, offset_y)
+		addtimer(CALLBACK(src, PROC_REF(create_shriekwave), epicenter, shriekwaves_left), 2)
+		return
+	if(shriekwaves_left > 1)
+		shriekwaves_left--
+		new /obj/effect/shockwave(epicenter, 7.5, 0.7, offset_y)
+		addtimer(CALLBACK(src, PROC_REF(create_shriekwave), epicenter, shriekwaves_left), 2)
+		return
+	if(shriekwaves_left == 1)
+		shriekwaves_left--
+		addtimer(CALLBACK(src, PROC_REF(create_shriekwave), epicenter, shriekwaves_left), 1)
 
 /mob/living/carbon/xenomorph/proc/create_stomp()
 	remove_suit_layer()

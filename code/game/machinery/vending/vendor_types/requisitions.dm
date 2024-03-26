@@ -67,7 +67,7 @@
 		list("Webbing", round(scale * 5), /obj/item/clothing/accessory/storage/webbing, VENDOR_ITEM_REGULAR),
 		list("Knife Webbing", round(scale * 1), /obj/item/clothing/accessory/storage/knifeharness, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", round(scale * 2), /obj/item/clothing/accessory/storage/droppouch, VENDOR_ITEM_REGULAR),
-		list("Individual First Aid Kit", round(scale * 6), /obj/item/clothing/accessory/storage/ifak, VENDOR_ITEM_REGULAR),
+		list("Individual First Aid Kit", round(scale * 10), /obj/item/clothing/accessory/storage/ifak, VENDOR_ITEM_REGULAR),
 
 		list("BACKPACKS", -1, null, null),
 		list("Lightweight IMP Backpack", round(scale * 15), /obj/item/storage/backpack/marine, VENDOR_ITEM_REGULAR),

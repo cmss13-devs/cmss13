@@ -83,6 +83,7 @@
 		/datum/equipment_preset/synth/survivor/medical_synth,
 		/datum/equipment_preset/synth/survivor/emt_synth,
 		/datum/equipment_preset/synth/survivor/scientist_synth,
+		/datum/equipment_preset/synth/survivor/archaeologist_synth,
 		/datum/equipment_preset/synth/survivor/engineer_synth,
 		/datum/equipment_preset/synth/survivor/janitor_synth,
 		/datum/equipment_preset/synth/survivor/chef_synth,

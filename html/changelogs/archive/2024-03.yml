@@ -274,3 +274,20 @@
   Birdtalon, Kat 'APC' Smith, Thwomp, Waseemq1235:
   - rscadd: Desk bell for cargo, medbay, brig, and AI reception.
   - soundadd: Desk bell sound effect.
+2024-03-26:
+  Huffie56:
+  - bugfix: move semiotic in north evac pod so you can't see it when your behind in
+      hull maintenance.
+  InsaneRed:
+  - balance: Wardens can heal eachother once again, but only half the health
+  - qol: Gives SPAN_XENOHIGHDANGER to heal/reju on positives, since its very easy
+      to miss if you actually healed soembody.
+  MobiusWon:
+  - rscadd: Uniforms vend with USCM patch.
+  SabreML:
+  - refactor: Refactored the bodypart selection keybinds.
+  - bugfix: Fixed a bug where selecting a new body zone would sometimes modify the
+      wrong HUD element.
+  vero5123:
+  - bugfix: fixes users not being able to resist out of the stasis bags
+  - bugfix: Fixes zombies missing claws on transformation

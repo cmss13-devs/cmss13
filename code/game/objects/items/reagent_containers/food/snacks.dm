@@ -54,8 +54,14 @@
 		qdel(src)
 		return FALSE
 
-	if(package)
-		to_chat(M, SPAN_WARNING("How do you expect to eat this with the package still on?"))
+	if(package && user.a_intent == INTENT_HARM)
+		return ..() // chunk box gaming
+
+	if(package && user.a_intent != INTENT_HARM)
+		if(user == M)
+			to_chat(M, SPAN_WARNING("How do you expect to eat this with the package still on?"))
+		else
+			to_chat(M, SPAN_WARNING("[M] tried to feed you a [src] with the package still on, what a silly goose!"))
 		return FALSE
 
 	if(istype(M, /mob/living/carbon))
@@ -3289,6 +3295,7 @@
 	name = "CHUNK box"
 	desc = "A bar of \"The <b>CHUNK</b>\" brand chocolate. <i>\"The densest chocolate permitted to exist according to federal law. We are legally required to ask you not to use this blunt object for anything other than nutrition.\"</i>"
 	icon_state = "chunk"
+	hitsound = "swing_hit"
 	force = 15
 	throwforce = 10
 	demolition_mod = 0.3
@@ -3305,7 +3312,6 @@
 	desc = "A 'crate', as the marketing called it, of \"The <b>HUNK</b>\" brand chocolate. An early version of the CHUNK box, the HUNK bar was hit by a class action lawsuit and forced to go into bankruptcy and get bought out by the Company when hundreds of customers had their teeth crack from simply attempting to eat the bar."
 	icon_state = "hunk"
 	w_class = SIZE_MEDIUM
-	hitsound = "swing_hit"
 	force = 35
 	throwforce = 50
 	bitesize = 20

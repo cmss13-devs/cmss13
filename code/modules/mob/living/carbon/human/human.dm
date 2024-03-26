@@ -890,6 +890,14 @@
 	if(isobserver(user))
 		return
 	if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+		// Removing your own holocard when you are not trained
+		if(user == src && holo_card_color)
+			if(tgui_alert(usr, "Are you sure you want to reset your own holocard?", "Resetting Holocard", list("Yes", "No")) != "Yes")
+				return
+			holo_card_color = null
+			to_chat(user, SPAN_NOTICE("You reset your holocard."))
+			update_targeted()
+			return
 		to_chat(user, SPAN_WARNING("You're not trained to use this."))
 		return
 	if(!has_species(src, "Human"))

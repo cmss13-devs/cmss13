@@ -283,7 +283,7 @@ as having entered the turf.
 		return
 
 	if(power >= 150) //shockwave for anything over 150 power
-		new /obj/effect/temp_visual/shockwave(epicenter, power/60)
+		new /obj/effect/shockwave(epicenter, power/60)
 
 	E.power = power
 	E.power_falloff = falloff

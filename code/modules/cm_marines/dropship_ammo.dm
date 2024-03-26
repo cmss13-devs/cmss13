@@ -176,9 +176,10 @@
 			create_shrapnel(impact_tile,1,0,0,shrapnel_type,cause_data,FALSE,100) //simulates a bullet
 			for(var/atom/movable/explosion_effect in impact_tile)
 				if(iscarbon(explosion_effect))
-					var/mob/living/carbon/bullet_effect = explosion_effect
-					explosion_effect.ex_act(EXPLOSION_THRESHOLD_VLOW, null, cause_data)
-					bullet_effect.apply_armoured_damage(directhit_damage,ARMOR_BULLET,BRUTE,null,penetration)
+					if(!HAS_TRAIT(explosion_effect, TRAIT_ABILITY_BURROWED))
+						var/mob/living/carbon/bullet_effect = explosion_effect
+						explosion_effect.ex_act(EXPLOSION_THRESHOLD_VLOW, null, cause_data)
+						bullet_effect.apply_armoured_damage(directhit_damage,ARMOR_BULLET,BRUTE,null,penetration)
 				else
 					explosion_effect.ex_act(EXPLOSION_THRESHOLD_VLOW)
 			new /obj/effect/particle_effect/expl_particles(impact_tile)

@@ -158,7 +158,7 @@
 		sourcemob.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(sourcemob)] is being stripped of [item] by [key_name(user)]</font>")
 		user.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(user)] is stripping [key_name(sourcemob)] of [item]</font>")
 
-	item.add_fingerprint(src)
+	item.add_fingerprint(user)
 
 	return TRUE
 
@@ -453,6 +453,9 @@
 
 			var/item = strippable_item.get_item(owner)
 			if (isnull(item))
+				return
+
+			if (!strippable_item.try_unequip(owner, user))
 				return
 
 			LAZYORASSOCLIST(interactions, user, key)

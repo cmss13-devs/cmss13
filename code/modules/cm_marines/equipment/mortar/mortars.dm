@@ -247,7 +247,7 @@
 				turf = our_turf
 				travel_time = 0.5 SECONDS
 			else
-				to_chat(user, SPAN_RED("The mortar's safe area accident inhibitors prevent you from firing at this time!"))
+				to_chat(user, SPAN_RED("You realize how bad of an idea this is and quickly stop."))
 				return
 
 		user.visible_message(SPAN_NOTICE("[user] starts loading \a [mortar_shell.name] into [src]."),

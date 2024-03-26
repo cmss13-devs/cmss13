@@ -381,7 +381,7 @@
 		WEAR_IN_BACK = /obj/item/reagent_container/food/drinks/bottle/tequila,
 		WEAR_IN_BACK = /obj/item/reagent_container/food/drinks/bottle/cognac,
 		WEAR_IN_BACK = /obj/item/reagent_container/food/drinks/bottle/grenadine,
-		WEAR_JACKET = /obj/item/clothing/suit/storage/lawyer/bluejacket,
+		WEAR_JACKET = /obj/item/clothing/suit/storage/wcoat,
 		WEAR_IN_JACKET = /obj/item/reagent_container/food/drinks/bottle/rum,
 		WEAR_HANDS = /obj/item/clothing/gloves/marine/black,
 		WEAR_R_HAND = /obj/item/storage/beer_pack,

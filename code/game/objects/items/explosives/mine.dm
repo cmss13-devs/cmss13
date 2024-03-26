@@ -321,7 +321,6 @@
 	name = "\improper G2 Electroshock grenade"
 	icon_state = "grenade_sebb_planted"
 	desc = "A G2 electroshock grenade planted as a landmine."
-	map_deployed = TRUE
 	pixel_y = -5
 
 /obj/item/explosive/mine/sebb/disarm()

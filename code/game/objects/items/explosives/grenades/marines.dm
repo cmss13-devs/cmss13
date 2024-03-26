@@ -505,6 +505,12 @@
 		to_chat(user, SPAN_WARNING("There already is a mine at this position!"))
 		return
 
+	if(ishuman(user))
+		var/mob/living/carbon/human/human = user
+		if(!human.allow_gun_usage)
+			to_chat(user, SPAN_WARNING("Your programming prevents you from using this!"))
+			return
+
 	if(user_turf && (user_turf.density || locate(/obj/structure/fence) in user_turf))
 		to_chat(user, SPAN_WARNING("You can't plant a mine here."))
 		return
@@ -523,6 +529,7 @@
 	user.visible_message(SPAN_NOTICE("[user] finishes deploying [src]."),
 		SPAN_NOTICE("You finish deploying [src]."))
 	var/obj/item/explosive/mine/sebb/planted = new /obj/item/explosive/mine/sebb(get_turf(user))
+	planted.iff_signal = user.faction // assuring IFF is set
 	planted.pixel_x += rand(-5, 5)
 	planted.pixel_y += rand(-5, 5)
 	qdel(src)

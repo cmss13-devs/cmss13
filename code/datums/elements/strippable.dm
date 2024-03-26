@@ -41,7 +41,7 @@
 		return
 
 	var/mob/overmob = over
-	if (!istype(overmob))
+	if (!ishuman(overmob))
 		return
 
 	if (!overmob.Adjacent(source))

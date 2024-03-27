@@ -455,15 +455,19 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 			LAZYSET(stats, S.stat_id, S)
 
 /datum/entity/player/proc/load_byond_account_age()
-	var/datum/http_request/request = new()
-	request.prepare(RUSTG_HTTP_METHOD_GET, "https://www.byond.com/members/[ckey]?format=text")
-	request.execute_blocking()
-	var/datum/http_response/response = request.into_response()
-	if(response.errored)
+	var/list/http_request = world.Export("http://byond.com/members/[ckey]?format=text")
+	if(!http_request)
+		log_admin("Could not check BYOND account age for [ckey] - no response from server.")
+		return
+
+	var/body = file2text(http_request["CONTENT"])
+	if(!body)
+		log_admin("Could not check BYOND account age for [ckey] - invalid response.")
 		return
 
 	var/static/regex/regex = regex("joined = \"(\\d{4}-\\d{2}-\\d{2})\"")
-	if(!regex.Find(response.body))
+	if(!regex.Find(body))
+		log_admin("Could not check BYOND account age for [ckey] - no valid date in response.")
 		return
 
 	byond_account_age = regex.group[1]

@@ -75,14 +75,15 @@ GLOBAL_LIST_INIT(job_squad_roles, JOB_SQUAD_ROLES_LIST)
 GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
 #define JOB_AUXILIARY_OFFICER "Auxiliary Support Officer"
-#define JOB_PILOT "Pilot Officer"
+#define JOB_CAS_PILOT "Gunship Pilot"
+#define JOB_DROPSHIP_PILOT "Dropship Pilot"
 #define JOB_DROPSHIP_CREW_CHIEF "Dropship Crew Chief"
 #define JOB_CREWMAN "Vehicle Crewman"
 #define JOB_INTEL "Intelligence Officer"
 #define JOB_DROPSHIP_ROLES   /datum/timelock/dropship
-#define JOB_DROPSHIP_ROLES_LIST   list(JOB_DROPSHIP_CREW_CHIEF, JOB_PILOT)
+#define JOB_DROPSHIP_ROLES_LIST   list(JOB_DROPSHIP_CREW_CHIEF, JOB_CAS_PILOT, JOB_DROPSHIP_PILOT)
 #define JOB_AUXILIARY_ROLES    /datum/timelock/auxiliary
-#define JOB_AUXILIARY_ROLES_LIST   list(JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_CREWMAN, JOB_INTEL)
+#define JOB_AUXILIARY_ROLES_LIST   list(JOB_CAS_PILOT, JOB_DROPSHIP_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_CREWMAN, JOB_INTEL)
 
 #define JOB_POLICE "Military Police"
 #define JOB_WARDEN "Military Warden"

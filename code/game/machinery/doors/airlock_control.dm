@@ -123,14 +123,16 @@
 		radio_connection.post_signal(src, signal, range = AIRLOCK_CONTROL_RANGE, filter = RADIO_AIRLOCK)
 
 
-/obj/structure/machinery/door/airlock/open(surpress_send)
+/obj/structure/machinery/door/airlock/open(forced)
 	. = ..()
-	if(!surpress_send) send_status()
+	if(!forced)
+		send_status()
 
 
-/obj/structure/machinery/door/airlock/close(surpress_send)
+/obj/structure/machinery/door/airlock/close(forced)
 	. = ..()
-	if(!surpress_send) send_status()
+	if(!forced)
+		send_status()
 
 
 /obj/structure/machinery/door/airlock/proc/set_frequency(new_frequency)

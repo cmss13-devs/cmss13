@@ -224,8 +224,23 @@
 /mob/living/resist_grab(moving_resist)
 	if(!pulledby)
 		return
-	if(pulledby.grab_level)
-		if(prob(50))
+	var/mob/user = src
+	// Passive grabs will also be broken, UNLESS pulledby has super strength, but this is ignored if you also have super strength
+	if(pulledby.grab_level || (!pulledby.grab_level && (HAS_TRAIT(pulledby, TRAIT_SUPER_STRONG) && !HAS_TRAIT(user, TRAIT_SUPER_STRONG))))
+		/// Chance for person to break free of grip, defaults to 50.
+		var/chance = 50
+		if(HAS_TRAIT(user, TRAIT_SUPER_STRONG))
+			chance += 30 // you are strong, you can overpower them easier
+		if(HAS_TRAIT(pulledby, TRAIT_SUPER_STRONG))
+			chance -= 30 // stronger grip
+		// above code means that if you are super strong, 80% chance to resist, otherwise, 20 percent. if both are super strong, standard 50.
+
+		//we do code to add floor and ceiling to chance
+		if(chance > 100)
+			chance = 100
+		else if(chance < 0)
+			chance = 0
+		if(prob(chance))
 			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 			visible_message(SPAN_DANGER("[src] has broken free of [pulledby]'s grip!"), null, null, 5)
 			pulledby.stop_pulling()

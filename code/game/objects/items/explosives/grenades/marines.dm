@@ -505,6 +505,11 @@
 		to_chat(user, SPAN_WARNING("There already is a mine at this position!"))
 		return
 
+	if(antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(src, user))
+		to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from planting!"))
+		msg_admin_niche("[key_name(user)] attempted to plant \a [src.name] in [get_area(src)] [ADMIN_JMP(src.loc)]")
+		return
+
 	if(ishuman(user))
 		var/mob/living/carbon/human/human = user
 		if(!human.allow_gun_usage)

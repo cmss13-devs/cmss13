@@ -244,13 +244,13 @@
 			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 			visible_message(SPAN_DANGER("[src] has broken free of [pulledby]'s grip!"), null, null, 5)
 			pulledby.stop_pulling()
-			return 1
+			return TRUE
 		if(moving_resist && client) //we resisted by trying to move
 			visible_message(SPAN_DANGER("[src] struggles to break free of [pulledby]'s grip!"), null, null, 5)
 			client.next_movement = world.time + (10*pulledby.grab_level) + client.move_delay
 	else
 		pulledby.stop_pulling()
-		return 1
+		return TRUE
 
 
 /mob/living/movement_delay()

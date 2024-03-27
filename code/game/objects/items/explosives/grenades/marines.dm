@@ -473,6 +473,7 @@
 	icon_state = "grenade_sebb"
 	item_state = "grenade_sebb"
 	det_time = 3 SECONDS
+	underslug_launchable = TRUE
 	/// Maximum range of effect
 	var/range = 5
 	/// Maximum possible damage before falloff.

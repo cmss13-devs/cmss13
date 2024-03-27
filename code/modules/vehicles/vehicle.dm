@@ -87,7 +87,7 @@
 				health -= W.force * W.demolition_mod * fire_dam_coeff
 			if("brute")
 				health -= W.force * W.demolition_mod * brute_dam_coeff
-		playsound(src.loc, "smash.ogg", 25, 1)
+		playsound(loc, "smash.ogg", 25, 1)
 		user.visible_message(SPAN_DANGER("[user] hits [src] with [W]."),SPAN_DANGER("You hit [src] with [W]."))
 		healthcheck()
 	else

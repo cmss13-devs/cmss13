@@ -121,7 +121,7 @@
 		playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
 		return
 	if(shattered)
-		playsound(src.loc, 'sound/effects/hit_on_shattered_glass.ogg', 25, 1)
+		playsound(loc, 'sound/effects/hit_on_shattered_glass.ogg', 25, 1)
 		user.visible_message(SPAN_WARNING("[user] hits [src] with [I],  but it's already broken!"), SPAN_WARNING("You hit [src] with [I], but it's already broken!"))
 		return
 	if(prob((I.force * I.demolition_mod ) * 2))

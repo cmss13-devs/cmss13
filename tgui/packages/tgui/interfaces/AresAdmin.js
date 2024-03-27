@@ -1594,7 +1594,7 @@ const TechLogs = (props, context) => {
     last_page,
     current_menu,
     records_tech,
-    access_level,
+    admin_login,
   } = data;
 
   return (

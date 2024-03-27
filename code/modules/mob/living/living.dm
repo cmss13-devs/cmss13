@@ -236,12 +236,12 @@
 		// above code means that if you are super strong, 80% chance to resist, otherwise, 20 percent. if both are super strong, standard 50.
 
 		if(prob(chance))
-			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-			visible_message(SPAN_DANGER("[src] has broken free of [pulledby]'s grip!"), null, null, 5)
+			playsound(user.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+			visible_message(SPAN_DANGER("[user] has broken free of [pulledby]'s grip!"), null, null, 5)
 			pulledby.stop_pulling()
 			return TRUE
 		if(moving_resist && client) //we resisted by trying to move
-			visible_message(SPAN_DANGER("[src] struggles to break free of [pulledby]'s grip!"), null, null, 5)
+			visible_message(SPAN_DANGER("[user] struggles to break free of [pulledby]'s grip!"), null, null, 5)
 			// +1 delay if super strong, also done as passive grabs would have a modifier of 0 otherwise, causing spam
 			if(HAS_TRAIT(pulledby, TRAIT_SUPER_STRONG) && !HAS_TRAIT(user, TRAIT_SUPER_STRONG))
 				client.next_movement = world.time + (10*(pulledby.grab_level + 1)) + client.move_delay

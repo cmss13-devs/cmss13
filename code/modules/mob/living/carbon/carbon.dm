@@ -208,6 +208,9 @@
 		if(worn_item.armor_bio == CLOTHING_ARMOR_HARDCORE)
 			bio_hardcore++
 
+	if(!mult)
+		return FALSE
+
 	if(bio_hardcore >= 2)
 		return FALSE
 

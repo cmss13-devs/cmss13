@@ -78,3 +78,6 @@
 #define COOLDOWN_ARES_SENSOR 60 SECONDS
 #define COOLDOWN_ARES_ACCESS_CONTROL 20 SECONDS
 #define COOLDOWN_ARES_VENT 60 SECONDS
+
+/// Time until someone can respawn as Working Joe
+#define JOE_JOIN_DEAD_TIME (15 MINUTES)

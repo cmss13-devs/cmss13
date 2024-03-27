@@ -387,14 +387,15 @@
 
 	.["destinations"] = list()
 	// add flight
-	.["destinations"] += list(
-		list(
-			"id" = DROPSHIP_FLYBY_ID,
-			"name" = "Flyby",
-			"available" = TRUE,
-			"error" = FALSE
+	if(!is_remote)
+		.["destinations"] += list(
+			list(
+				"id" = DROPSHIP_FLYBY_ID,
+				"name" = "Flyby",
+				"available" = TRUE,
+				"error" = FALSE
+			)
 		)
-	)
 
 	for(var/obj/docking_port/stationary/dock in compatible_landing_zones)
 		var/dock_reserved = FALSE

@@ -65,7 +65,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/chat_display_preferences = CHAT_TYPE_ALL
 	var/item_animation_pref_level = SHOW_ITEM_ANIMATIONS_ALL
 	var/pain_overlay_pref_level = PAIN_OVERLAY_BLURRY
-	var/UI_style_color = COLOR_WHITE
+	var/UI_style_color = "#ffffff"
 	var/UI_style_alpha = 255
 	var/View_MC = FALSE
 	var/window_skin = 0
@@ -245,7 +245,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/auto_observe = TRUE
 
 /datum/preferences/New(client/C)
-	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
+	key_bindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	macros = new(C, src)
 	if(istype(C))
 		owner = C
@@ -590,6 +590,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			dat += "<b>tgui Window Mode:</b> <a href='?_src_=prefs;preference=tgui_fancy'><b>[(tgui_fancy) ? "Fancy (default)" : "Compatible (slower)"]</b></a><br>"
 			dat += "<b>tgui Window Placement:</b> <a href='?_src_=prefs;preference=tgui_lock'><b>[(tgui_lock) ? "Primary monitor" : "Free (default)"]</b></a><br>"
 			dat += "<b>Play Admin Sounds:</b> <a href='?_src_=prefs;preference=hear_admin_sounds'><b>[(toggles_sound & SOUND_MIDI) ? "Yes" : "No"]</b></a><br>"
+			dat += "<b>Play Announcement Sounds As Ghost:</b> <a href='?_src_=prefs;preference=hear_observer_announcements'><b>[(toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Toggle Meme or Atmospheric Sounds:</b> <a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_admin_sound_types'>Toggle</a><br>"
 			dat += "<b>Set Eye Blur Type:</b> <a href='?src=\ref[src];action=proccall;procpath=/client/proc/set_eye_blur_type'>Set</a><br>"
 			dat += "<b>Play Lobby Music:</b> <a href='?_src_=prefs;preference=lobby_music'><b>[(toggles_sound & SOUND_LOBBY) ? "Yes" : "No"]</b></a><br>"
@@ -647,11 +648,16 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	show_browser(user, dat, "Preferences", "preferencebrowser")
 	onclose(user, "preferencewindow", src)
 
-//limit - The amount of jobs allowed per column. Defaults to 13 to make it look nice.
-//splitJobs - Allows you split the table by job. You can make different tables for each department by including their heads. Defaults to CE to make it look nice.
-//width - Screen' width. Defaults to 550 to make it look nice.
-//height - Screen's height. Defaults to 500 to make it look nice.
-/datum/preferences/proc/SetChoices(mob/user, limit = 19, list/splitJobs = list(JOB_CHIEF_REQUISITION), width = 950, height = 700)
+/**
+ * Job Preferences: Preferences for role at round start.
+ *
+ * Arguments:
+ * * limit - The amount of jobs allowed per column.
+ * * splitJobs - Allows you split the table by job. You can make different tables for each department by including their heads.
+ * * width - Screen' width.
+ * * height - Screen's height.
+ */
+/datum/preferences/proc/SetChoices(mob/user, limit = 20, list/splitJobs = list(JOB_CHIEF_REQUISITION, JOB_WO_CMO), width = 950, height = 750)
 	if(!GLOB.RoleAuthority)
 		return
 
@@ -760,11 +766,16 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	onclose(user, "mob_occupation", user.client, list("_src_" = "prefs", "preference" = "job", "task" = "close"))
 	return
 
-//limit - The amount of jobs allowed per column. Defaults to 13 to make it look nice.
-//splitJobs - Allows you split the table by job. You can make different tables for each department by including their heads. Defaults to CE to make it look nice.
-//width - Screen' width. Defaults to 550 to make it look nice.
-//height - Screen's height. Defaults to 500 to make it look nice.
-/datum/preferences/proc/set_job_slots(mob/user, limit = 19, list/splitJobs = list(JOB_CHIEF_REQUISITION), width = 950, height = 700)
+/**
+ * Job Assignments window: Assign unique characters to a particular job.
+ *
+ * Arguments:
+ * * limit - The amount of jobs allowed per column.
+ * * splitJobs - Allows you split the table by job. You can make different tables for each department by including their heads.
+ * * width - Screen' width.
+ * * height - Screen's height.
+ */
+/datum/preferences/proc/set_job_slots(mob/user, limit = 20, list/splitJobs = list(JOB_CHIEF_REQUISITION, JOB_WO_CMO), width = 950, height = 750)
 	if(!GLOB.RoleAuthority)
 		return
 
@@ -1818,6 +1829,9 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 					toggles_sound ^= SOUND_MIDI
 					if(!(toggles_sound & SOUND_MIDI))
 						user?.client?.tgui_panel?.stop_music()
+
+				if("hear_observer_announcements")
+					toggles_sound ^= SOUND_OBSERVER_ANNOUNCEMENTS
 
 				if("lobby_music")
 					toggles_sound ^= SOUND_LOBBY

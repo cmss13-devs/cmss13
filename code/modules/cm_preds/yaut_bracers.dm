@@ -1050,7 +1050,7 @@
 	if(!drain_power(caller, 50))
 		return
 
-	log_say("[caller.name != "Unknown" ? caller.name : "([caller.real_name])"] \[Yautja Translator\]: [msg] (CKEY: [caller.key]) (JOB: [caller.job])")
+	log_say("[caller.name != "Unknown" ? caller.name : "([caller.real_name])"] \[Yautja Translator\]: [msg] (CKEY: [caller.key]) (JOB: [caller.job]) (AREA: [get_area_name(caller)])")
 
 	var/list/heard = get_mobs_in_view(7, caller)
 	for(var/mob/M in heard)
@@ -1061,7 +1061,7 @@
 	var/span_class = "yautja_translator"
 	if(translator_type != "Modern")
 		if(translator_type == "Retro")
-			overhead_color = COLOR_WHITE
+			overhead_color = "#FFFFFF"
 			span_class = "retro_translator"
 		msg = replacetext(msg, "a", "@")
 		msg = replacetext(msg, "e", "3")

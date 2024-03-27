@@ -496,7 +496,7 @@
 	src.updatehealth()
 
 // damage MANY limbs, in random order
-/mob/living/proc/take_overall_damage(brute, burn, used_weapon = null)
+/mob/living/proc/take_overall_damage(brute, burn, used_weapon = null, limb_damage_chance = 80)
 	if(status_flags & GODMODE) return 0 //godmode
 	apply_damage(brute, BRUTE)
 	apply_damage(burn, BURN)
@@ -525,7 +525,8 @@
 	hallucination = 0
 	jitteriness = 0
 	dizziness = 0
-
+	stamina.apply_damage(-stamina.max_stamina)
+	
 	// restore all of a human's blood
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src

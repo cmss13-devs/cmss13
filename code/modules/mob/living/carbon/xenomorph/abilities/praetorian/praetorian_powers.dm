@@ -70,10 +70,9 @@
 		playsound(current_mob, 'sound/weapons/alien_tail_attack.ogg', 30, TRUE)
 
 	if (target_mobs.len >= shield_regen_threshold)
-		if (source_xeno.mutation_type == PRAETORIAN_VANGUARD)
-			var/datum/behavior_delegate/praetorian_vanguard/BD = source_xeno.behavior_delegate
-			if (istype(BD))
-				BD.regen_shield()
+		var/datum/behavior_delegate/praetorian_vanguard/behavior = source_xeno.behavior_delegate
+		if (istype(behavior))
+			behavior.regen_shield()
 
 	apply_cooldown()
 	return ..()
@@ -135,10 +134,9 @@
 		playsound(get_turf(H), "alien_claw_flesh", 30, 1)
 
 	if (target_mobs.len >= shield_regen_threshold)
-		if (X.mutation_type == PRAETORIAN_VANGUARD)
-			var/datum/behavior_delegate/praetorian_vanguard/BD = X.behavior_delegate
-			if (istype(BD))
-				BD.regen_shield()
+		var/datum/behavior_delegate/praetorian_vanguard/behavior = X.behavior_delegate
+		if (istype(behavior))
+			behavior.regen_shield()
 
 /datum/action/xeno_action/activable/cleave/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/vanguard_user = owner
@@ -545,16 +543,12 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	var/buffed = FALSE
 	apply_cooldown()
-	if (dancer_user.mutation_type == PRAETORIAN_DANCER)
-		var/found = FALSE
-		for (var/datum/effects/dancer_tag/dancer_tag_effect in target_carbon.effects_list)
-			found = TRUE
-			qdel(dancer_tag_effect)
-			break
-
-		buffed = found
+	var/buffed = FALSE
+	for (var/datum/effects/dancer_tag/dancer_tag_effect in target_carbon.effects_list)
+		buffed = TRUE
+		qdel(dancer_tag_effect)
+		break
 
 	if(ishuman(target_carbon))
 		var/mob/living/carbon/human/Hu = target_carbon
@@ -601,9 +595,6 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	if (xeno.mutation_type != PRAETORIAN_DANCER)
-		return
-
 	var/datum/behavior_delegate/praetorian_dancer/behavior = xeno.behavior_delegate
 	if (!istype(behavior))
 		return
@@ -624,9 +615,6 @@
 	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if (!istype(xeno))
-		return
-
-	if (xeno.mutation_type != PRAETORIAN_DANCER)
 		return
 
 	var/datum/behavior_delegate/praetorian_dancer/behavior = xeno.behavior_delegate
@@ -806,17 +794,16 @@
 
 		var/bonus_shield = 0
 
-		if (X.mutation_type == PRAETORIAN_WARDEN)
-			var/datum/behavior_delegate/praetorian_warden/BD = X.behavior_delegate
-			if (!istype(BD))
-				return
+		var/datum/behavior_delegate/praetorian_warden/behavior = X.behavior_delegate
+		if (!istype(behavior))
+			return
 
-			if (!BD.use_internal_hp_ability(shield_cost))
-				return
+		if (!behavior.use_internal_hp_ability(shield_cost))
+			return
 
-			bonus_shield = BD.internal_hitpoints*0.5
-			if (!BD.use_internal_hp_ability(bonus_shield))
-				bonus_shield = 0
+		bonus_shield = behavior.internal_hitpoints*0.5
+		if (!behavior.use_internal_hp_ability(bonus_shield))
+			bonus_shield = 0
 
 		var/total_shield_amount = shield_amount + bonus_shield
 
@@ -841,33 +828,37 @@
 		if (!X.Adjacent(A))
 			to_chat(X, SPAN_XENODANGER("We must be within touching distance of [targetXeno]!"))
 			return
-		if (targetXeno.mutation_type == PRAETORIAN_WARDEN)
-			to_chat(X, SPAN_XENODANGER("We cannot heal a sister of the same strain!"))
-			return
 		if (SEND_SIGNAL(targetXeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
 			to_chat(X, SPAN_XENOWARNING("We cannot heal this xeno!"))
 			return
 
 		var/bonus_heal = 0
+		var/datum/behavior_delegate/praetorian_warden/behavior = X.behavior_delegate
+		if (!istype(behavior))
+			return
 
-		if (X.mutation_type == PRAETORIAN_WARDEN)
-			var/datum/behavior_delegate/praetorian_warden/BD = X.behavior_delegate
-			if (!istype(BD))
-				return
+		if (!behavior.use_internal_hp_ability(heal_cost))
+			return
 
-			if (!BD.use_internal_hp_ability(heal_cost))
-				return
+		bonus_heal = behavior.internal_hitpoints*0.5
+		if (!behavior.use_internal_hp_ability(bonus_heal))
+			bonus_heal = 0
 
-			bonus_heal = BD.internal_hitpoints*0.5
-			if (!BD.use_internal_hp_ability(bonus_heal))
-				bonus_heal = 0
-
-		to_chat(X, SPAN_XENODANGER("We heal [targetXeno]!"))
+		to_chat(X, SPAN_XENOHIGHDANGER("We heal [targetXeno]!"))
 		to_chat(targetXeno, SPAN_XENOHIGHDANGER("We are healed by [X]!"))
-		targetXeno.gain_health(heal_amount + bonus_heal)
+		//Amount to heal in this cast of the ability
+		var/quantity_healed = heal_amount
+		if(istype(targetXeno.strain, /datum/xeno_strain/warden))
+			// Half the healing if warden
+			quantity_healed = quantity_healed / 2
+		else
+			quantity_healed = quantity_healed + bonus_heal
+
+		targetXeno.gain_health(quantity_healed)
 		targetXeno.visible_message(SPAN_BOLDNOTICE("[X] places its claws on [targetXeno], and its wounds are quickly sealed!")) //marines probably should know if a xeno gets healed
 		X.gain_health(heal_amount*0.5 + bonus_heal*0.5)
 		X.flick_heal_overlay(3 SECONDS, "#00B800")
+		behavior.transferred_healing += quantity_healed
 		use_plasma = TRUE //it's already hard enough to gauge health without hp showing on the mob
 		targetXeno.flick_heal_overlay(3 SECONDS, "#00B800")//so the visible_message and recovery overlay will warn marines and possibly predators that the xenomorph has been healed!
 
@@ -876,15 +867,14 @@
 			to_chat(X, SPAN_XENOHIGHDANGER("We cannot rejuvenate targets through overwatch!"))
 			return
 
-		if (X.mutation_type == PRAETORIAN_WARDEN)
-			var/datum/behavior_delegate/praetorian_warden/BD = X.behavior_delegate
-			if (!istype(BD))
-				return
+		var/datum/behavior_delegate/praetorian_warden/behavior = X.behavior_delegate
+		if (!istype(behavior))
+			return
 
-			if (!BD.use_internal_hp_ability(debuff_cost))
-				return
+		if (!behavior.use_internal_hp_ability(debuff_cost))
+			return
 
-		to_chat(X, SPAN_XENODANGER("We rejuvenate [targetXeno]!"))
+		to_chat(X, SPAN_XENOHIGHDANGER("We rejuvenate [targetXeno]!"))
 		to_chat(targetXeno, SPAN_XENOHIGHDANGER("We are rejuvenated by [X]!"))
 		targetXeno.visible_message(SPAN_BOLDNOTICE("[X] points at [targetXeno], and it spasms as it recuperates unnaturally quickly!")) //marines probably should know if a xeno gets rejuvenated
 		targetXeno.xeno_jitter(1 SECONDS) //it might confuse them as to why the queen got up half a second after being AT rocketed, and give them feedback on the Praetorian rejuvenating
@@ -907,8 +897,8 @@
 	if(!istype(X))
 		return
 
-	var/datum/behavior_delegate/praetorian_warden/BD = X.behavior_delegate
-	if(!istype(BD))
+	var/datum/behavior_delegate/praetorian_warden/behavior = X.behavior_delegate
+	if(!istype(behavior))
 		return
 
 	if(X.observed_xeno != null)
@@ -923,15 +913,15 @@
 		to_chat(X, SPAN_XENODANGER("We cannot retrieve ourself!"))
 		return
 
-	if(X.anchored)
-		to_chat(X, SPAN_XENODANGER("That sister cannot move!"))
-		return
-
 	if(!(A in view(7, X)))
 		to_chat(X, SPAN_XENODANGER("That sister is too far away!"))
 		return
 
 	var/mob/living/carbon/xenomorph/targetXeno = A
+
+	if(targetXeno.anchored)
+		to_chat(X, SPAN_XENODANGER("That sister cannot move!"))
+		return
 
 	if(!(targetXeno.resting || targetXeno.stat == UNCONSCIOUS))
 		if(targetXeno.mob_size > MOB_SIZE_BIG)
@@ -951,7 +941,7 @@
 	if(!check_plasma_owner())
 		return
 
-	if(!BD.use_internal_hp_ability(retrieve_cost))
+	if(!behavior.use_internal_hp_ability(retrieve_cost))
 		return
 
 	if(!check_and_use_plasma_owner())

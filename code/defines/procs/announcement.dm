@@ -90,7 +90,7 @@
 //AI announcement that uses talking into comms
 /proc/ai_announcement(message, sound_to_play = sound('sound/misc/interference.ogg'), logging = ARES_LOG_MAIN)
 	for(var/mob/M in (GLOB.human_mob_list + GLOB.dead_mob_list))
-		if(isobserver(M) || ishuman(M) && is_mainship_level(M.z))
+		if((isobserver(M) && M.client?.prefs?.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS) || ishuman(M) && is_mainship_level(M.z))
 			playsound_client(M.client, sound_to_play, M, vol = 45)
 
 	for(var/mob/living/silicon/decoy/ship_ai/AI in GLOB.ai_mob_list)
@@ -161,4 +161,6 @@
 			continue
 
 		to_chat_spaced(T, html = "[SPAN_ANNOUNCEMENT_HEADER(title)]<br><br>[SPAN_ANNOUNCEMENT_BODY(message)]", type = MESSAGE_TYPE_RADIO)
+		if(isobserver(T) && !(T.client?.prefs?.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS))
+			continue
 		playsound_client(T.client, sound_to_play, T, vol = 45)

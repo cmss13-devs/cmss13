@@ -21,23 +21,23 @@
 #define between(low, middle, high) (max(min(middle, high), low))
 
 //Offuscate x for coord system
-#define obfuscate_x(x) (x + GLOB.obfs_x)
+#define obfuscate_x(x) ((x) + GLOB.obfs_x)
 
 //Offuscate y for coord system
-#define obfuscate_y(y) (y + GLOB.obfs_y)
+#define obfuscate_y(y) ((y) + GLOB.obfs_y)
 
 //Deoffuscate x for coord system
-#define deobfuscate_x(x) (x - GLOB.obfs_x)
+#define deobfuscate_x(x) ((x) - GLOB.obfs_x)
 
 //Deoffuscate y for coord system
-#define deobfuscate_y(y) (y - GLOB.obfs_y)
+#define deobfuscate_y(y) ((y) - GLOB.obfs_y)
 
 #define can_xeno_build(T) (!T.density && !(locate(/obj/structure/fence) in T) && !(locate(/obj/structure/tunnel) in T) && (locate(/obj/effect/alien/weeds) in T))
 
 // For the purpose of a skillcheck, not having a skillset counts as being skilled in everything (!user.skills check)
 // Note that is_skilled() checks if the skillset contains the skill internally, so a has_skill check is unnecessary
-#define skillcheck(user, skill, req_level) ((!user.skills || user.skills.is_skilled(skill, req_level)))
-#define skillcheckexplicit(user, skill, req_level) ((!user.skills || user.skills.is_skilled(skill, req_level, TRUE)))
+#define skillcheck(user, skill, req_level) ((!user.skills || user.skills.is_skilled((skill), (req_level))))
+#define skillcheckexplicit(user, skill, req_level) ((!user.skills || user.skills.is_skilled((skill), (req_level), TRUE)))
 
 // Ensure the frequency is within bounds of what it should be sending/receiving at
 // Sets f within bounds via `clamp(round(f), 1441, 1489)`
@@ -48,7 +48,7 @@
 								)
 
 //Turns 1479 into 147.9
-#define format_frequency(f) "[round(f / 10)].[f % 10]"
+#define format_frequency(f) "[round((f) / 10)].[(f) % 10]"
 
 #define reverse_direction(direction) ( \
 											( dir & (NORTH|SOUTH) ? ~dir & (NORTH|SOUTH) : 0 ) | \
@@ -820,13 +820,23 @@
 		animation.master = target
 		flick(flick_anim, animation)
 
-//Will return the contents of an atom recursivly to a depth of 'searchDepth'
+///Will return the contents of an atom recursivly to a depth of 'searchDepth', not including starting atom
 /atom/proc/GetAllContents(searchDepth = 5, list/toReturn = list())
 	for(var/atom/part as anything in contents)
 		toReturn += part
 		if(part.contents.len && searchDepth)
 			part.GetAllContents(searchDepth - 1, toReturn)
 	return toReturn
+
+///Returns the src and all recursive contents as a list. Includes the starting atom.
+/atom/proc/get_all_contents(ignore_flag_1)
+	. = list(src)
+	var/i = 0
+	while(i < length(.))
+		var/atom/checked_atom = .[++i]
+		if(checked_atom.flags_atom & ignore_flag_1)
+			continue
+		. += checked_atom.contents
 
 /// Returns list of contents of a turf recursively, much like GetAllContents
 /// We only get containing atoms in the turf, excluding multitiles bordering on it
@@ -1904,8 +1914,6 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		region_y2["[i]"] = TRUE
 
 	return list(region_x1 & region_x2, region_y1 & region_y2)
-
-#define TURF_FROM_COORDS_LIST(List) (locate(List[1], List[2], List[3]))
 
 //Vars that will not be copied when using /DuplicateObject
 GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(

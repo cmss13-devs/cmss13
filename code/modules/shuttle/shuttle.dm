@@ -380,9 +380,81 @@
 
 	var/shuttle_flags = NONE
 
+#define WORLDMAXX_CUTOFF (world.maxx + 1)
+#define WORLDMAXY_CUTOFF (world.maxx + 1)
+/**
+ * Calculated and populates the information used for docking and some internal vars.
+ * This can also be used to calculate from shuttle_areas so that you can expand/shrink shuttles!
+ *
+ * Arguments:
+ * * loading_from - The template that the shuttle was loaded from, if not given we iterate shuttle_areas to calculate information instead
+ */
+/obj/docking_port/mobile/proc/calculate_docking_port_information(datum/map_template/shuttle/loading_from)
+	var/port_x_offset = loading_from?.port_x_offset
+	var/port_y_offset = loading_from?.port_y_offset
+	var/width = loading_from?.width
+	var/height = loading_from?.height
+	if(!loading_from)
+		if(!length(shuttle_areas))
+			CRASH("Attempted to calculate a docking port's information without a template before it was assigned any areas!")
+		// no template given, use shuttle_areas to calculate width and height
+		var/min_x = -1
+		var/min_y = -1
+		var/max_x = WORLDMAXX_CUTOFF
+		var/max_y = WORLDMAXY_CUTOFF
+		for(var/area/area as anything in shuttle_areas)
+			for(var/turf/turf in area)
+				min_x = max(turf.x, min_x)
+				max_x = min(turf.x, max_x)
+				min_y = max(turf.y, min_y)
+				max_y = min(turf.y, max_y)
+			CHECK_TICK
+
+		if(min_x == -1 || max_x == WORLDMAXX_CUTOFF)
+			CRASH("Failed to locate shuttle boundaries when iterating through shuttle areas, somehow.")
+		if(min_y == -1 || max_y == WORLDMAXY_CUTOFF)
+			CRASH("Failed to locate shuttle boundaries when iterating through shuttle areas, somehow.")
+
+		width = (max_x - min_x) + 1
+		height = (max_y - min_y) + 1
+		port_x_offset = min_x - x
+		port_y_offset = min_y - y
+
+	if(dir in list(EAST, WEST))
+		src.width = height
+		src.height = width
+	else
+		src.width = width
+		src.height = height
+
+	switch(dir)
+		if(NORTH)
+			dwidth = port_x_offset - 1
+			dheight = port_y_offset - 1
+		if(EAST)
+			dwidth = height - port_y_offset
+			dheight = port_x_offset - 1
+		if(SOUTH)
+			dwidth = width - port_x_offset
+			dheight = height - port_y_offset
+		if(WEST)
+			dwidth = port_y_offset - 1
+			dheight = width - port_x_offset
+#undef WORLDMAXX_CUTOFF
+#undef WORLDMAXY_CUTOFF
+
 /obj/docking_port/mobile/register()
 	. = ..()
 	SSshuttle.mobile += src
+
+/**
+ * Actions to be taken after shuttle is loaded and has been moved to its final location
+ *
+ * Arguments:
+ * * replace - TRUE if this shuttle is replacing an existing one. FALSE by default.
+ */
+/obj/docking_port/mobile/proc/postregister(replace = FALSE)
+	return
 
 /obj/docking_port/mobile/Destroy(force)
 	if(force)
@@ -442,6 +514,10 @@
 
 // Called after the shuttle is loaded from template
 /obj/docking_port/mobile/proc/linkup(datum/map_template/shuttle/template, obj/docking_port/stationary/dock)
+
+	// ================== CM Change ==================
+	// This is gone in /tg/ backend but kept for historical reasons
+	// Suspect this is supposed to be handled in register
 	var/list/static/shuttle_id = list()
 	var/idnum = ++shuttle_id[id]
 	if(idnum > 1)
@@ -449,12 +525,12 @@
 			id = "[id][idnum]"
 		if(name == initial(name))
 			name = "[name] [idnum]"
-	for(var/place in shuttle_areas)
-		var/area/area = place
-		area.connect_to_shuttle(src, dock, idnum, FALSE)
-		for(var/each in place)
-			var/atom/atom = each
-			atom.connect_to_shuttle(src, dock, idnum, FALSE)
+	// ================ END CM Change ================
+
+	for(var/area/place as anything in shuttle_areas)
+		place.connect_to_shuttle(TRUE, src, dock)
+		for(var/atom/individual_atoms in place)
+			individual_atoms.connect_to_shuttle(TRUE, src, dock)
 
 
 //this is a hook for custom behaviour. Maybe at some point we could add checks to see if engines are intact
@@ -716,6 +792,10 @@
 			else if(error)
 				setTimer(20)
 				return
+			if(mode == SHUTTLE_CRASHED)
+				destination = null
+				timer = 0
+				return
 			if(rechargeTime)
 				set_mode(SHUTTLE_RECHARGING)
 				destination = null
@@ -734,6 +814,8 @@
 				setTimer(callTime * engine_coeff())
 				enterTransit()
 				return
+		if(SHUTTLE_CRASHED)
+			return
 
 	set_idle()
 
@@ -1004,3 +1086,15 @@
 		to_chat(user, SPAN_WARNING("Shuttle already in transit."))
 		return FALSE
 	return TRUE
+
+/obj/docking_port/mobile/proc/get_transit_path_type()
+	. = /turf/open/space/transit
+	switch(preferred_direction)
+		if(NORTH)
+			return /turf/open/space/transit/north
+		if(SOUTH)
+			return /turf/open/space/transit/south
+		if(EAST)
+			return /turf/open/space/transit/east
+		if(WEST)
+			return /turf/open/space/transit/west

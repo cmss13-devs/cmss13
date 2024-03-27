@@ -79,6 +79,12 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 	// Fake death will make the scanner think they died of oxygen damage, thus it returns enough damage to kill minus already received damage.
 	return round(POSITIVE(200 - total_mob_damage))
 
+/datum/health_scan/proc/get_holo_card_color(mob/living/target_mob)
+	if(!ishuman(target_mob))
+		return
+	var/mob/living/carbon/human/human_mob = target_mob
+	return human_mob.holo_card_color
+
 /datum/health_scan/proc/get_health_value(mob/living/target_mob)
 	if(!(target_mob.status_flags & FAKEDEATH))
 		return target_mob.health
@@ -97,7 +103,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		"clone" = round(target_mob.getCloneLoss()),
 		"blood_type" = target_mob.blood_type,
 		"blood_amount" = target_mob.blood_volume,
-
+		"holocard" = get_holo_card_color(target_mob),
 		"hugged" = (locate(/obj/item/alien_embryo) in target_mob),
 	)
 
@@ -178,7 +184,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 				bleeding_check = TRUE
 				break
 
-			if((!limb.brute_dam && !limb.burn_dam && !(limb.status & LIMB_DESTROYED)) && !bleeding_check && !internal_bleeding_check && !(implant && detail_level >= DETAIL_LEVEL_BODYSCAN ) && !(limb.status & LIMB_UNCALIBRATED_PROSTHETIC) && !(limb.status & LIMB_BROKEN) && !(limb.status & LIMB_SPLINTED) && !(limb.status & LIMB_SPLINTED_INDESTRUCTIBLE))
+			if((!limb.brute_dam && !limb.burn_dam && !(limb.status & LIMB_DESTROYED)) && !bleeding_check && !internal_bleeding_check && !(implant && detail_level >= DETAIL_LEVEL_BODYSCAN ) && !(limb.status & LIMB_UNCALIBRATED_PROSTHETIC) && !(limb.status & LIMB_BROKEN) && !(limb.status & LIMB_SPLINTED) && !(limb.status & LIMB_SPLINTED_INDESTRUCTIBLE) && !(limb.get_incision_depth()))
 				continue
 			var/list/core_body_parts = list("head", "chest", "groin")
 			var/list/current_list = list(
@@ -190,7 +196,6 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 				"missing" = (limb.status & LIMB_DESTROYED),
 				"limb_status" = null,
 				"bleeding" = bleeding_check,
-				"open_incision" = limb.get_incision_depth(),
 				"implant" = implant,
 				"internal_bleeding" = internal_bleeding_check
 			)
@@ -247,6 +252,24 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 				limb_type = "Synthskin"
 			if(limb_type)
 				current_list["limb_type"] = limb_type
+
+			//checking for open incisions, but since eyes and mouths incisions are "head incisions" but not "head surgeries" gotta do some snowflake
+			if(limb.name == "head")
+				if(human_target_mob.active_surgeries["head"])
+					current_list["open_incision"] = TRUE
+
+				var/zone
+				if(human_target_mob.active_surgeries["eyes"])
+					zone = "eyes"
+				if(human_target_mob.active_surgeries["mouth"])
+					if(zone)
+						zone = "eyes and mouth"
+					else
+						zone = "mouth"
+				current_list["open_zone_incision"] = capitalize(zone)
+
+			else
+				current_list["open_incision"] = limb.get_incision_depth()
 
 			limb_data_lists["[limb.name]"] = current_list
 
@@ -449,6 +472,17 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 			data["ssd"] = "SSD detected." // SSD
 
 	return data
+
+/datum/health_scan/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+	switch(action)
+		if("change_holo_card")
+			if(ishuman(target_mob))
+				var/mob/living/carbon/human/target_human = target_mob
+				target_human.change_holo_card(ui.user)
+				return TRUE
 
 /// legacy proc for to_chat messages on health analysers
 /mob/living/proc/health_scan(mob/living/carbon/human/user, ignore_delay = FALSE, show_limb_damage = TRUE, show_browser = TRUE, alien = FALSE, do_checks = TRUE) // ahem. FUCK WHOEVER CODED THIS SHIT AS NUMBERS AND NOT DEFINES.

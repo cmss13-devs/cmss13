@@ -5,7 +5,7 @@
 
 	// Untracked vars
 	var/bgcolor = "#4a4a4a"
-	var/textcolor = COLOR_WHITE
+	var/textcolor = "#ffffff"
 
 BSQL_PROTECT_DATUM(/datum/entity/player_time)
 
@@ -62,7 +62,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 		"job" = role_id,
 		"playtime" = round(total_minutes MINUTES_TO_HOURS, 0.1),
 		"bgcolor" = "rgb(0, [Floor(128 * playtime_percentage)], [Floor(255 * playtime_percentage)])",
-		"textcolor" = COLOR_WHITE,
+		"textcolor" = "#FFFFFF",
 		"icondisplay" = icon_display
 	)
 
@@ -103,14 +103,14 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 			"job" = "Xenomorph",
 			"playtime" = round(owning_client.get_total_xeno_playtime() DECISECONDS_TO_HOURS, 0.1),
 			"bgcolor" = "#3a3a3a",
-			"textcolor" = COLOR_WHITE
+			"textcolor" = "#FFFFFF"
 		)
 
 		var/list/marine_playtime = list(
 			"job" = "Human",
 			"playtime" = round(owning_client.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1),
 			"bgcolor" = "#3a3a3a",
-			"textcolor" = COLOR_WHITE
+			"textcolor" = "#FFFFFF"
 		)
 
 		LAZYADD(xeno_playtimes, list(xeno_playtime))

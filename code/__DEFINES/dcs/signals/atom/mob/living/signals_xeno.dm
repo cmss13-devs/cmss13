@@ -71,3 +71,10 @@
 
 /// From /obj/effect/alien/resin/special/eggmorph/attack_alien: (mob/living/carbon/xenomorph/M)
 #define COMSIG_XENO_TAKE_HUGGER_FROM_MORPHER "xeno_take_hugger_from_morpher"
+
+/// From /mob/living/carbon/xenomorph/proc/handle_crit()
+#define COMSIG_XENO_ENTER_CRIT "xeno_entering_critical"
+
+/// From /mob/living/carbon/xenomorph/proc/hivemind_talk(): (message)
+#define COMSIG_XENO_TRY_HIVEMIND_TALK "xeno_try_hivemind_talk"
+	#define COMPONENT_OVERRIDE_HIVEMIND_TALK (1<<0)

@@ -14,6 +14,8 @@
 
 #define CEILING(x, y) ( -round(-(x) / (y)) * (y) )
 
+#define ROUND_UP(x) ( -round(-(x)))
+
 // round() acts like floor(x, 1) by default but can't handle other values
 #define FLOOR(x, y) ( round((x) / (y)) * (y) )
 
@@ -21,10 +23,10 @@
 #define MODULUS(x, y) ( (x) - (y) * round((x) / (y)) )
 
 // Returns true if val is from min to max, inclusive.
-#define ISINRANGE(val, min, max) (min <= val && val <= max)
+#define ISINRANGE(val, min, max) ((min) <= (val) && (val) <= (max))
 
 // Same as above, exclusive.
-#define ISINRANGE_EX(val, min, max) (min < val && val < max)
+#define ISINRANGE_EX(val, min, max) ((min) < (val) && (val) < (max))
 
 // Will filter out extra rotations and negative rotations
 // E.g: 540 becomes 180. -180 becomes 180.
@@ -34,4 +36,4 @@
 #define SIGN(x) ( ((x) > 0) - ((x) < 0) )
 
 /// Performs a linear interpolation between a and b. Note that amount=0 returns a, amount=1 returns b, and amount=0.5 returns the mean of a and b.
-#define LERP(a, b, amount) ( amount ? ((a) + ((b) - (a)) * (amount)) : a )
+#define LERP(a, b, amount) ( (amount) ? ((a) + ((b) - (a)) * (amount)) : (a) )

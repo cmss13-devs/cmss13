@@ -356,8 +356,7 @@
 	if(!can_touch(usr))
 		return
 
-	// Small regular mob, or very small xeno.
-	if(usr.mob_size == MOB_SIZE_SMALL || usr.mob_size == MOB_SIZE_XENO_VERY_SMALL)
+	if(usr.mob_size == MOB_SIZE_SMALL)
 		to_chat(usr, SPAN_WARNING("[isxeno(usr) ? "We are" : "You're"] too small to flip [src]."))
 		return
 

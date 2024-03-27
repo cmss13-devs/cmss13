@@ -1,5 +1,0 @@
-author: "Ben10083"
-delete-after: True
-changes:
-  - rscadd: "Working Joes can now respawn as a Working Joe after 15 minutes, previous restriction on respawn removed."
-  - admin: "New flag to disable Working Joe respawns"

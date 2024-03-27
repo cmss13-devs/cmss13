@@ -124,6 +124,7 @@
 	var/mob/living/carbon/human/human_user = user.mob
 	var/obj/item/clothing/head/helmet/marine/marine_helmet = human_user.head
 	if(!istype(marine_helmet))
+		// If their hat isn't a marine helmet, or is null, return.
 		return
 
 	// Cycle the HUD on the helmet.

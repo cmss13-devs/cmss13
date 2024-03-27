@@ -358,7 +358,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	unslashable = TRUE
 	unacidable = TRUE
 	exproof = 1
-	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
+	req_one_access = list(ACCESS_MARINE_DROPSHIP)
 
 /obj/structure/machinery/computer/shuttle_control/dropship1/Initialize()
 	. = ..()
@@ -382,7 +382,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	unslashable = TRUE
 	unacidable = TRUE
 	exproof = 1
-	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
+	req_one_access = list(ACCESS_MARINE_DROPSHIP)
 
 /obj/structure/machinery/computer/shuttle_control/dropship2/Initialize()
 	. = ..()

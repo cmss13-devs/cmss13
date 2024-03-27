@@ -3,7 +3,7 @@
 	desc = "A flight computer that can be used for autopilot or long-range flights."
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "console"
-	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
+	req_one_access = list(ACCESS_MARINE_DROPSHIP)
 	unacidable = TRUE
 	exproof = TRUE
 	needs_power = FALSE

@@ -190,8 +190,9 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			ui.open()
 
 /obj/structure/machinery/power/apc/ui_status(mob/user)
-	if(!opened && can_use(user, 1))
-		. = UI_INTERACTIVE
+	. = ..()
+	if(opened || !can_use(user, TRUE))
+		return UI_DISABLED
 
 /obj/structure/machinery/power/apc/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_state

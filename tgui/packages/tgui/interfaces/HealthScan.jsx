@@ -1,10 +1,11 @@
 import { useBackend } from '../backend';
-import { Section, ProgressBar, Box, LabeledList, NoticeBox, Stack, Icon, Divider, Flex } from '../components';
+import { Section, ProgressBar, Box, LabeledList, NoticeBox, Stack, Icon, Divider, Flex, Button } from '../components';
 import { Window } from '../layouts';
 
 export const HealthScan = (props) => {
-  const { data } = useBackend();
+  const { act, data } = useBackend();
   const {
+    patient_mob,
     patient,
     dead,
     health,
@@ -35,6 +36,7 @@ export const HealthScan = (props) => {
     permadead,
     advice,
     species,
+    holocard,
   } = data;
 
   const bloodpct = blood_amount / 560;
@@ -47,6 +49,18 @@ export const HealthScan = (props) => {
 
   const theme = Synthetic ? 'hackerman' : bodyscanner ? 'ntos' : 'default';
 
+  let holocard_message;
+  if (holocard === 'red') {
+    holocard_message = 'Patient needs life-saving treatment.';
+  } else if (holocard === 'orange') {
+    holocard_message = 'Patient needs non-urgent surgery.';
+  } else if (holocard === 'purple') {
+    holocard_message = 'Patient is infected with an XX-121 embryo.';
+  } else if (holocard === 'black') {
+    holocard_message = 'Patient is permanently deceased.';
+  } else {
+    holocard_message = 'Patient has no active holocard.';
+  }
   return (
     <Window width={500} height={bodyscanner ? 700 : 600} theme={theme}>
       <Window.Content scrollable>
@@ -142,6 +156,18 @@ export const HealthScan = (props) => {
                   </ProgressBar>
                 </Box>
               )}
+            </LabeledList.Item>
+            <LabeledList.Item label="Holocard">
+              <NoticeBox color={holocard} inline>
+                {holocard_message}
+              </NoticeBox>
+
+              <Button
+                inline
+                style={{ 'margin-left': '2%' }}
+                content="Change"
+                onClick={() => act('change_holo_card')}
+              />
             </LabeledList.Item>
           </LabeledList>
         </Section>
@@ -387,6 +413,11 @@ const ScannerLimbs = (props) => {
                   {limb.implant && bodyscanner ? (
                     <Box inline color={'white'} bold={1}>
                       [Embedded Object]
+                    </Box>
+                  ) : null}
+                  {limb.open_zone_incision ? (
+                    <Box inline color={'red'} bold={1}>
+                      [Open Surgical Incision In {limb.open_zone_incision}]
                     </Box>
                   ) : null}
                 </Flex.Item>

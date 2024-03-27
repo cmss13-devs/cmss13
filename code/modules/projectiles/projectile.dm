@@ -216,7 +216,7 @@
 	if(ammo.bonus_projectiles_amount && ammo.bonus_projectiles_type)
 		ammo.fire_bonus_projectiles(src)
 
-	path = getline2(starting, target_turf)
+	path = get_line(starting, target_turf)
 	p_x += clamp((rand()-0.5)*scatter*3, -8, 8)
 	p_y += clamp((rand()-0.5)*scatter*3, -8, 8)
 	update_angle(starting, target_turf)
@@ -381,7 +381,7 @@
 
 /obj/projectile/proc/retarget(atom/new_target, keep_angle = FALSE)
 	var/turf/current_turf = get_turf(src)
-	path = getline2(current_turf, new_target)
+	path = get_line(current_turf, new_target)
 	path.Cut(1, 2) // remove the turf we're already on
 	var/atom/source = keep_angle ? original : current_turf
 	update_angle(source, new_target)
@@ -910,8 +910,8 @@
 		apply_effects(arglist(P.ammo.debilitate))
 
 	. = TRUE
+	bullet_message(P, damaging = damage)
 	if(damage)
-		bullet_message(P)
 		apply_damage(damage, P.ammo.damage_type, P.def_zone, 0, 0, P)
 		P.play_hit_effect(src)
 
@@ -1042,6 +1042,7 @@
 
 	if((ammo_flags & AMMO_FLAME) && (src.caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE|FIRE_IMMUNITY_NO_DAMAGE))
 		to_chat(src, SPAN_AVOIDHARM("You shrug off the glob of flame."))
+		bullet_message(P, damaging = FALSE)
 		return
 
 	if(isxeno(P.firer))
@@ -1216,15 +1217,15 @@
 /// People getting shot by a large amount of bullets in a very short period of time can lag them out, with chat messages being one cause, so a 1s cooldown per hit message is introduced to assuage that
 /mob/var/shot_cooldown = 0
 
-/mob/proc/bullet_message(obj/projectile/P)
+/mob/proc/bullet_message(obj/projectile/P, damaging = TRUE)
 	if(!P)
 		return
-	if(COOLDOWN_FINISHED(src, shot_cooldown))
+	if(damaging && COOLDOWN_FINISHED(src, shot_cooldown))
 		visible_message(SPAN_DANGER("[src] is hit by the [P.name] in the [parse_zone(P.def_zone)]!"), \
 			SPAN_HIGHDANGER("[isxeno(src) ? "We" : "You"] are hit by the [P.name] in the [parse_zone(P.def_zone)]!"), null, 4, CHAT_TYPE_TAKING_HIT)
 		COOLDOWN_START(src, shot_cooldown, 1 SECONDS)
 
-
+	var/shot_from = P.shot_from ? " from \a [P.shot_from]" : ""
 	last_damage_data = P.weapon_cause_data
 	if(P.firer && ismob(P.firer))
 		var/mob/firingMob = P.firer
@@ -1232,7 +1233,7 @@
 		if(ishuman(firingMob) && ishuman(src) && faction == firingMob.faction && !A?.statistic_exempt) //One human shot another, be worried about it but do everything basically the same //special_role should be null or an empty string if done correctly
 			if(!istype(P.ammo, /datum/ammo/energy/taser))
 				GLOB.round_statistics.total_friendly_fire_instances++
-				var/ff_msg = "[key_name(firingMob)] shot [key_name(src)] with \a [P.name] in [get_area(firingMob)] [ADMIN_JMP(firingMob)] [ADMIN_PM(firingMob)]"
+				var/ff_msg = "[key_name(firingMob)] shot [key_name(src)] with \a [P][shot_from] in [get_area(firingMob)] [ADMIN_JMP(firingMob)] [ADMIN_PM(firingMob)]"
 				var/ff_living = TRUE
 				if(src.stat == DEAD)
 					ff_living = FALSE
@@ -1241,15 +1242,15 @@
 					var/mob/living/carbon/human/H = firingMob
 					H.track_friendly_fire(P.weapon_cause_data.cause_name)
 			else
-				msg_admin_attack("[key_name(firingMob)] tased [key_name(src)] in [get_area(firingMob)] ([firingMob.x],[firingMob.y],[firingMob.z]).", firingMob.x, firingMob.y, firingMob.z)
+				msg_admin_attack("[key_name(firingMob)] tased [key_name(src)][shot_from] in [get_area(firingMob)] ([firingMob.x],[firingMob.y],[firingMob.z]).", firingMob.x, firingMob.y, firingMob.z)
 		else
-			msg_admin_attack("[key_name(firingMob)] shot [key_name(src)] with \a [P.name] in [get_area(firingMob)] ([firingMob.x],[firingMob.y],[firingMob.z]).", firingMob.x, firingMob.y, firingMob.z)
-		attack_log += "\[[time_stamp()]\] <b>[key_name(firingMob)]</b> shot <b>[key_name(src)]</b> with \a <b>[P]</b> in [get_area(firingMob)]."
-		firingMob.attack_log += "\[[time_stamp()]\] <b>[key_name(firingMob)]</b> shot <b>[key_name(src)]</b> with \a <b>[P]</b> in [get_area(firingMob)]."
+			msg_admin_attack("[key_name(firingMob)] shot [key_name(src)] with \a [P][shot_from] in [get_area(firingMob)] ([firingMob.x],[firingMob.y],[firingMob.z]).", firingMob.x, firingMob.y, firingMob.z)
+		attack_log += "\[[time_stamp()]\] <b>[key_name(firingMob)]</b> shot <b>[key_name(src)]</b> with \a <b>[P]</b>[shot_from] in [get_area(firingMob)]."
+		firingMob.attack_log += "\[[time_stamp()]\] <b>[key_name(firingMob)]</b> shot <b>[key_name(src)]</b> with \a <b>[P]</b>[shot_from] in [get_area(firingMob)]."
 		return
 
-	attack_log += "\[[time_stamp()]\] <b>SOMETHING??</b> shot <b>[key_name(src)]</b> with a <b>[P]</b>"
-	msg_admin_attack("SOMETHING?? shot [key_name(src)] with \a [P] in [get_area(src)] ([loc.x],[loc.y],[loc.z]).", loc.x, loc.y, loc.z)
+	attack_log += "\[[time_stamp()]\] <b>[P.firer ? P.firer : "SOMETHING??"]</b> shot <b>[key_name(src)]</b> with a <b>[P]</b>[shot_from]"
+	msg_admin_attack("[P.firer ? P.firer : "SOMETHING??"] shot [key_name(src)] with \a [P][shot_from] in [get_area(src)] ([loc.x],[loc.y],[loc.z]).", loc.x, loc.y, loc.z)
 
 //Abby -- Just check if they're 1 tile horizontal or vertical, no diagonals
 /proc/get_adj_simple(atom/Loc1,atom/Loc2)

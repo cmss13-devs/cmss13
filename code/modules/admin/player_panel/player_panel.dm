@@ -493,6 +493,8 @@
 		.["client_ckey"] = targetClient.ckey
 
 		.["client_muted"] = targetClient.prefs.muted
+		.["client_age"] = targetClient.player_data.byond_account_age
+		.["first_join"] = targetClient.player_data.first_join_date
 		.["client_rank"] = targetClient.admin_holder ? targetClient.admin_holder.rank : "Player"
 		.["client_muted"] = targetClient.prefs.muted
 

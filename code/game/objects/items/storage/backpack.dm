@@ -494,6 +494,12 @@
 	desc = "A heavy-duty chestrig used by some USCM technicians."
 	icon_state = "marinesatch_techi"
 
+/obj/item/storage/backpack/marine/satchel/chestrig
+	name = "\improper USCM chestrig"
+	desc = "A chestrig used by some USCM personnel."
+	icon_state = "chestrig"
+	has_gamemode_skin = FALSE
+
 GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/rto)
 
 /obj/item/storage/backpack/marine/satchel/rto

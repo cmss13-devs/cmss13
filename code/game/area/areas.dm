@@ -66,7 +66,7 @@
 	var/powernet_name = "default" //Default powernet name. Change to something else to make completely separate powernets
 	var/requires_power = 1
 	var/unlimited_power = 0
-	var/always_unpowered = 0 //this gets overriden to 1 for space in area/New()
+	var/always_unpowered = 0 //this gets overridden to 1 for space in area/New()
 
 	//which channels are powered
 	var/power_equip = TRUE
@@ -103,12 +103,6 @@
 	reg_in_areas_in_z()
 	if(is_mainship_level(z))
 		GLOB.ship_areas += src
-
-	if(base_lighting_alpha)
-		return INITIALIZE_HINT_ROUNDSTART
-
-/area/LateInitialize()
-	. = ..()
 
 	update_base_lighting()
 

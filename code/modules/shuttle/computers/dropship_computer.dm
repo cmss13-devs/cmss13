@@ -93,7 +93,10 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
 		var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
-		ui = new(user, src, "DropshipFlightControl", "[shuttle.name] Flight Computer")
+		var/name = shuttle?.name
+		if(can_change_shuttle)
+			name = "Remote"
+		ui = new(user, src, "DropshipFlightControl", "[name] Flight Computer")
 		ui.open()
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/ui_status(mob/user, datum/ui_state/state)
@@ -116,7 +119,7 @@
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/ui_state(mob/user)
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
-	if(shuttle.is_hijacked)
+	if(shuttle?.is_hijacked)
 		return GLOB.never_state
 	return GLOB.not_incapacitated_and_adjacent_strict_state
 
@@ -125,14 +128,13 @@
 	compatible_landing_zones = get_landing_zones()
 	var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
 	// we convert the time to seconds for rendering to ui
-	.["max_flight_duration"] = shuttle.callTime / 10
-	.["max_pre_arrival_duration"] = shuttle.prearrivalTime / 10
-	.["max_refuel_duration"] = shuttle.rechargeTime / 10
-	.["max_engine_start_duration"] = shuttle.ignitionTime / 10
-	.["door_data"] = list("port", "starboard", "aft")
-	.["can_change_shuttle"] = can_change_shuttle
-	if(can_change_shuttle)
-		.["alternative_shuttles"] = alternative_shuttles()
+	if(shuttle)
+		.["max_flight_duration"] = shuttle.callTime / 10
+		.["max_pre_arrival_duration"] = shuttle.prearrivalTime / 10
+		.["max_refuel_duration"] = shuttle.rechargeTime / 10
+		.["max_engine_start_duration"] = shuttle.ignitionTime / 10
+		.["door_data"] = list("port", "starboard", "aft")
+	.["alternative_shuttles"] = alternative_shuttles()
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/alternative_shuttles()
 	. = list()
@@ -154,6 +156,10 @@
 
 	// if the dropship has crashed don't allow more interactions
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
+	if(!shuttle)
+		tgui_interact(user)
+		return
+
 	if(shuttle.mode == SHUTTLE_CRASHED)
 		to_chat(user, SPAN_NOTICE("\The [src] is not responsive"))
 		return
@@ -355,27 +361,29 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/ui_data(mob/user)
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
 	. = list()
-	.["shuttle_id"] = shuttle.id
-	.["shuttle_mode"] = shuttle.mode
-	.["flight_time"] = shuttle.timeLeft(0)
-	.["is_disabled"] = disabled || shuttle.is_hijacked
+	.["shuttle_id"] = shuttle?.id
+	.["shuttle_mode"] = shuttle?.mode
+	.["flight_time"] = shuttle?.timeLeft(0)
+	.["is_disabled"] = disabled
+	if(shuttle?.is_hijacked)
+		.["is_disabled"] = TRUE
 	.["locked_down"] = FALSE
 	.["can_fly_by"] = !is_remote
 	.["can_set_automated"] = is_remote
 	.["automated_control"] = list(
-		"is_automated" = shuttle.automated_hangar_id != null || shuttle.automated_lz_id != null,
-		"hangar_lz" = shuttle.automated_hangar_id,
-		"ground_lz" = shuttle.automated_lz_id
+		"is_automated" = shuttle?.automated_hangar_id != null || shuttle?.automated_lz_id != null,
+		"hangar_lz" = shuttle?.automated_hangar_id,
+		"ground_lz" = shuttle?.automated_lz_id
 	)
 	.["primary_lz"] = SSticker.mode.active_lz?.linked_lz
-	if(shuttle.destination)
-		.["target_destination"] = shuttle.in_flyby? "Flyby" : shuttle.destination.name
+	if(shuttle?.destination)
+		.["target_destination"] = shuttle?.in_flyby? "Flyby" : shuttle?.destination.name
 
-	.["door_status"] = is_remote ? list() : shuttle.get_door_data()
+	.["door_status"] = is_remote ? list() : shuttle?.get_door_data()
 	.["has_flyby_skill"] = skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT)
 
 	// Launch Alarm Variables
-	.["playing_launch_announcement_alarm"] = shuttle.playing_launch_announcement_alarm
+	.["playing_launch_announcement_alarm"] = shuttle?.playing_launch_announcement_alarm
 
 	.["destinations"] = list()
 	// add flight
@@ -394,7 +402,7 @@
 			if(dock == other_shuttle.destination)
 				dock_reserved = TRUE
 				break
-		var/can_dock = shuttle.canDock(dock)
+		var/can_dock = shuttle?.canDock(dock)
 		var/list/dockinfo = list(
 			"id" = dock.id,
 			"name" = dock.name,

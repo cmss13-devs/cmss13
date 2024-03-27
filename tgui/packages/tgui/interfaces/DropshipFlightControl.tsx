@@ -366,9 +366,7 @@ const RenderScreen = () => {
   const { data } = useBackend<DropshipNavigationProps>();
   return (
     <>
-      {data.shuttle_mode === 'idle' && data.can_change_shuttle === 1 && (
-        <DropshipSelector />
-      )}
+      {data.alternative_shuttles.length > 0 && <DropshipSelector />}
       {data.shuttle_mode === 'idle' && <DropshipDestinationSelection />}
       {data.shuttle_mode === 'idle' && data.can_set_automated === 1 && (
         <AutopilotConfig />
@@ -383,7 +381,7 @@ const RenderScreen = () => {
         <DropshipDestinationSelection />
       )}
       {data.door_status.length > 0 && <DropshipDoorControl />}
-      {<LaunchAnnouncementAlarm />}
+      {data.alternative_shuttles.length === 0 && <LaunchAnnouncementAlarm />}
     </>
   );
 };
@@ -392,9 +390,8 @@ export const DropshipFlightControl = () => {
   const { data } = useBackend<DropshipNavigationProps>();
   return (
     <Window theme="crtgreen" height={500} width={700}>
-      <Window.Content className="NavigationMenu">
-        {data.is_disabled === 1 && <DisabledScreen />}
-        {data.is_disabled === 0 && <RenderScreen />}
+      <Window.Content className="NavigationMenu" scrollable>
+        {data.is_disabled === 0 ? <RenderScreen /> : <DisabledScreen />}
       </Window.Content>
     </Window>
   );

@@ -382,13 +382,13 @@
 	transferable_ammo = TRUE
 	point_cost = 300
 	fire_mission_delay = 3 //high cooldown
-	explosion_strenght = 200
+	explosion_strength = 200
 	explosion_falloff = 44
 
 /obj/structure/ship_ammo/minirocket/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	impact.ceiling_debris_check(2)
 	spawn(5)
-		cell_explosion(impact, explosion_strenght, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob))
+		cell_explosion(impact, explosion_strength, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob))
 		var/datum/effect_system/expl_particles/expl_particles = new/datum/effect_system/expl_particles()
 		expl_particles.set_up(4, 0, impact)
 		expl_particles.start()
@@ -413,7 +413,7 @@
 	desc = "The AGR-59-I 'Mini-Mike' incendiary minirocket is a cheap and efficient means of putting hate down range AND setting them on fire! Though rockets lack a guidance package, it makes up for it in ammunition count. Can be loaded into the LAU-229 Rocket Pod."
 	icon_state = "minirocket_inc"
 	point_cost = 350
-	explosion_strenght = 130
+	explosion_strength = 130
 	explosion_falloff = 30
 
 /obj/structure/ship_ammo/minirocket/incendiary/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)

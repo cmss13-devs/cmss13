@@ -188,7 +188,7 @@
 /obj/item/device/m56d_post/attack_self(mob/user)
 	..()
 
-	if(!ishuman(user))
+	if(!ishuman(usr))
 		return
 	if(SSinterior.in_interior(user))
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
@@ -296,9 +296,9 @@
 	return XENO_ATTACK_ACTION
 
 /obj/structure/machinery/m56d_post/MouseDrop(over_object, src_location, over_location) //Drag the tripod onto you to fold it.
-	if(!ishuman(usr) || !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
+	if(!ishuman(usr))
 		return
-	var/mob/living/carbon/user = usr //this is us
+	var/mob/living/carbon/human/user = usr //this is us
 	if(over_object == user && in_range(src, user))
 		if(anchored && gun_mounted)
 			to_chat(user, SPAN_WARNING("\The [src] can't be folded while there's an unsecured gun mounted on it. Either complete the assembly or take the gun off with a crowbar."))
@@ -313,7 +313,7 @@
 		qdel(src)
 
 /obj/structure/machinery/m56d_post/attackby(obj/item/O, mob/user)
-	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS)) //first make sure theres no funkiness
+	if(!ishuman(user)) //first make sure theres no funkiness
 		return
 
 	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH)) //rotate the mount
@@ -568,7 +568,7 @@
 	return
 
 /obj/structure/machinery/m56d_hmg/attackby(obj/item/O as obj, mob/user as mob) //This will be how we take it apart.
-	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
+	if(!ishuman(user))
 		return ..()
 
 	if(QDELETED(O))
@@ -779,54 +779,9 @@
 	playsound(loc, empty_alarm, 25, 1)
 	update_icon() //final safeguard.
 
-// New proc for MGs and stuff replaced handle_manual_fire(). Same arguements though, so alls good.
-/obj/structure/machinery/m56d_hmg/handle_click(mob/living/carbon/user, atom/A, var/list/mods)
+/obj/structure/machinery/m56d_hmg/proc/try_fire()
 	if(!operator)
 		return
-		return HANDLE_CLICK_UNHANDLED
-	if(operator != user)
-		return HANDLE_CLICK_UNHANDLED
-	if(ishuman(user))
-		var/mob/living/carbon/human/human = user
-		if(!human.allow_gun_usage)
-			to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
-			return HANDLE_CLICK_UNHANDLED
-	if(istype(A,/atom/movable/screen))
-		return HANDLE_CLICK_UNHANDLED
-	if(is_bursting)
-		return HANDLE_CLICK_UNHANDLED
-	if(user.lying || get_dist(user,src) > 1 || user.is_mob_incapacitated())
-		user.unset_interaction()
-		return HANDLE_CLICK_UNHANDLED
-	if(user.get_active_hand() || user.get_inactive_hand())
-		to_chat(usr, SPAN_WARNING("You need two free hands to shoot \the [src]."))
-		return HANDLE_CLICK_UNHANDLED
-
-	target = A
-	if(!istype(target))
-		return HANDLE_CLICK_UNHANDLED
-
-	if(target.z != src.z || target.z == 0 || src.z == 0 || isnull(operator.loc) || isnull(src.loc))
-		return HANDLE_CLICK_UNHANDLED
-
-	if(get_dist(target,src.loc) > 15)
-		return HANDLE_CLICK_UNHANDLED
-
-	if(mods["middle"] || mods["shift"] || mods["alt"] || mods["ctrl"])
-		handle_modded_clicks(user, mods)
-		return HANDLE_CLICK_PASS_THRU
-
-	var/angle = get_dir(src, target)
-	//we can only fire in a 90 degree cone
-	if(target.loc != src.loc && target.loc != operator.loc)
-		if(dir & angle)
-			try_fire(user)
-			return HANDLE_CLICK_HANDLED
-		else if(handle_outside_cone(user))
-			return HANDLE_CLICK_HANDLED
-	return HANDLE_CLICK_UNHANDLED
-
-/obj/structure/machinery/m56d_hmg/proc/try_fire(mob/living/carbon/user)
 	if(!rounds)
 		to_chat(operator, SPAN_WARNING("<b>*click*</b>"))
 		playsound(src, 'sound/weapons/gun_empty.ogg', 25, 1, 5)
@@ -839,14 +794,9 @@
 	return fire_shot()
 
 /obj/structure/machinery/m56d_hmg/proc/handle_outside_cone(mob/living/carbon/human/user)
-/obj/structure/machinery/m56d_hmg/proc/handle_outside_cone(mob/living/carbon/user)
 	return FALSE
 
 /obj/structure/machinery/m56d_hmg/proc/muzzle_flash(angle) // Might as well keep this too.
-/obj/structure/machinery/m56d_hmg/proc/handle_modded_clicks(mob/living/carbon/user, var/list/mods)
-	return HANDLE_CLICK_PASS_THRU
-
-/obj/structure/machinery/m56d_hmg/proc/muzzle_flash(var/angle) // Might as well keep this too.
 	if(isnull(angle))
 		return
 
@@ -880,16 +830,9 @@
 	I.flick_overlay(src, 3)
 
 /obj/structure/machinery/m56d_hmg/MouseDrop(over_object, src_location, over_location) //Drag the MG to us to man it.
-	var/mob/living/carbon/user = usr
-	var/mob/living/carbon/human/human_user
-	if(!ishuman(user) || !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
-		to_chat_immediate(world,"a")
 	// If the gun sprite wasn't dragged onto the user, or the user isn't adjacent.
 	if(over_object != usr || !in_range(src, usr))
 		return
-	else
-		human_user = user
-	var/user_turf = get_turf(user)
 	// If the user is already manning the gun.
 	if(operator == usr)
 		// Exit the gun.
@@ -901,7 +844,6 @@
 /obj/structure/machinery/m56d_hmg/proc/try_mount_gun(mob/living/carbon/human/user)
 	// If the user isn't a human.
 	if(!istype(user))
-	if(!Adjacent(user))
 		return
 	// If the user is unconscious or dead.
 	if(user.stat)
@@ -912,13 +854,10 @@
 		to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
 		return
 
-					if(!human_user.allow_gun_usage)
-						to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
-						return
-					else
-						user.freeze()
-						user.set_interaction(src)
-						give_action(user, /datum/action/human_action/mg_exit)
+	// If the user is invisible.
+	if(user.alpha <= 60)
+		to_chat(user, SPAN_WARNING("You can't use [src] while cloaked!"))
+		return
 
 	// Make sure we're not manning two guns at once, tentacle arms.
 	if(user.interactee)
@@ -1123,39 +1062,6 @@
 	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You switch to <b>[gun_firemode]</b>."))
 	SEND_SIGNAL(src, COMSIG_GUN_FIRE_MODE_TOGGLE, gun_firemode)
 
-/obj/item/device/m2c_gun/proc/check_can_setup(mob/user, var/turf/rotate_check, var/turf/open/OT, var/list/ACR)
-	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
-		to_chat_immediate(world,"a2")
-		return FALSE
-	if(broken_gun)
-		to_chat(user, SPAN_WARNING("You can't set up \the [src], it's completely broken!"))
-		return FALSE
-	if(user.z == GLOB.interior_manager.interior_z)
-		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
-		return FALSE
-	if(OT.density || !isturf(OT))
-		to_chat(user, SPAN_WARNING("You can't set up \the [src] here."))
-		return FALSE
-	if(rotate_check.density)
-		to_chat(user, SPAN_WARNING("You can't set up \the [src] that way, there's a wall behind you!"))
-		return FALSE
-	if((locate(/obj/structure/barricade) in ACR) || (locate(/obj/structure/window_frame) in ACR) || (locate(/obj/structure/window) in ACR) || (locate(/obj/structure/windoor_assembly) in ACR))
-		to_chat(user, SPAN_WARNING("There are barriers nearby, you can't set up \the [src] here!"))
-		return FALSE
-	var/fail = FALSE
-	for(var/obj/X in OT.contents - src)
-		if(istype(X, /obj/structure/machinery/defenses))
-			fail = TRUE
-			break
-		else if(istype(X, /obj/structure/machinery/door))
-			fail = TRUE
-			break
-		else if(istype(X, /obj/structure/machinery/m56d_hmg))
-			fail = TRUE
-			break
-	if(fail)
-		to_chat(user, SPAN_WARNING("You can't install \the [src] here, something is in the way."))
-		return FALSE
 ///Set the target to its turf, so we keep shooting even when it was qdeled
 /obj/structure/machinery/m56d_hmg/proc/clean_target()
 	SIGNAL_HANDLER
@@ -1192,23 +1098,6 @@
 	if(!isturf(operator.loc))
 		return
 
-	var/obj/structure/machinery/m56d_hmg/auto/M =  new /obj/structure/machinery/m56d_hmg/auto(user.loc)
-	M.set_name_label(name_label)
-	M.setDir(user.dir) // Make sure we face the right direction
-	M.anchored = TRUE
-	playsound(M, 'sound/items/m56dauto_setup.ogg', 75, TRUE)
-	to_chat(user, SPAN_NOTICE("You deploy \the [M]."))
-	if((rounds > 0) && !user.get_inactive_hand())
-		user.set_interaction(M)
-	M.rounds = rounds
-	M.overheat_value = overheat_value
-	M.health = health
-	M.update_icon()
-	qdel(src)
-
-/obj/item/device/m2c_gun/attackby(var/obj/item/O as obj, mob/user as mob)
-	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
-		to_chat_immediate(world,"a3")
 	if(istype(object, /atom/movable/screen))
 		return
 

@@ -282,6 +282,9 @@ as having entered the turf.
 	if(QDELETED(E))
 		return
 
+	if(power >= 150) //shockwave for anything over 150 power
+		new /obj/effect/shockwave(epicenter, power/60)
+
 	E.power = power
 	E.power_falloff = falloff
 	E.falloff_shape = falloff_shape

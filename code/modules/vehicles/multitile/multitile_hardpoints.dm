@@ -149,13 +149,16 @@
 		hps += H
 
 	var/chosen_hp = tgui_input_list(usr, "Select a hardpoint to remove", "Hardpoint Removal", (hps + "Cancel"))
-	if(chosen_hp == "Cancel" || !chosen_hp || !in_range(src, user))
+	if(chosen_hp == "Cancel" || !chosen_hp || (get_dist(src, user) > 2)) //get_dist uses 2 because the vehicle is 3x3
 		return
 
 	var/obj/item/hardpoint/old = chosen_hp
 
 	if(!old)
 		to_chat(user, SPAN_WARNING("There is nothing installed there."))
+		return
+
+	if(!old.can_be_removed(user))
 		return
 
 	// It's in a holder

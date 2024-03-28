@@ -218,6 +218,15 @@ GLOBAL_DATUM_INIT(intel_system, /datum/intel_system, new())
 	GLOB.intel_system.store_single_objective(O)
 	return 1
 
+/obj/structure/machinery/computer/intel/disk_reader // ARC computer to save on tile space
+	name = "\improper SIGINT terminal"
+	desc = "An USCM computer capable of uploading data to the intelligence database. It has a disk reader slot built into the bottom, as well."
+	icon_state = "terminal"
+
+/obj/structure/machinery/computer/intel/disk_reader/Initialize()
+	. = ..()
+	AddComponent(/datum/component/disk_reader)
+
 // --------------------------------------------
 // *** View objectives with the computer ***
 // --------------------------------------------

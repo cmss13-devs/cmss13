@@ -72,6 +72,8 @@
 /// Vendors with this flag will fill retroactively based on latejoining players,
 /// and expect a scale multiplier instead of amount of items
 #define VEND_STOCK_DYNAMIC (1<<10)
+/// Vends props looking like the items instead of the actual items. Basically for tutorials.
+#define VEND_PROPS (1<<11)
 
 // Redemption Tokens
 #define VEND_TOKEN_ENGINEER "Engineer"

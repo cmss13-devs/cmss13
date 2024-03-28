@@ -269,6 +269,14 @@
 	icon = 'icons/effects/64x64hybrisa_decals.dmi'
 	icon_state = "workers_decal"
 
+// 64x128 Decals
+/obj/effect/hybrisa/decal/meridianlogo
+	icon = 'icons/effects/meridianlogo.dmi'
+	icon_state = "meridian_left"
+/obj/effect/hybrisa/decal/meridianlogo/meridianlogo_left
+	icon_state = "meridian_left"
+/obj/effect/hybrisa/decal/meridianlogo/meridianlogo_right
+	icon_state = "meridian_right"
 
 /// Dirt & Grime
 

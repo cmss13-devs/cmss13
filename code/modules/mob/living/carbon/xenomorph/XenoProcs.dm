@@ -262,9 +262,6 @@
 	move_delay = .
 
 
-/mob/living/carbon/xenomorph/show_inv(mob/user)
-	return
-
 /mob/living/carbon/xenomorph/proc/pounced_mob(mob/living/L)
 	// This should only be called back by a mob that has pounce, so no need to check
 	var/datum/action/xeno_action/activable/pounce/pounceAction = get_xeno_action_by_type(src, /datum/action/xeno_action/activable/pounce)

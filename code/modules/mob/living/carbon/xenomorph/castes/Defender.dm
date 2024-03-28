@@ -21,7 +21,7 @@
 	available_strains = list(/datum/xeno_strain/steel_crest)
 	behavior_delegate_type = /datum/behavior_delegate/defender_base
 
-	tackle_min = 2
+	tackle_min = 3
 	tackle_max = 4
 
 	minimum_evolve_time = 4 MINUTES

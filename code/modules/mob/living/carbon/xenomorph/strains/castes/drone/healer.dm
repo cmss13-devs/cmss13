@@ -26,7 +26,6 @@
 	drone.phero_modifier += XENO_PHERO_MOD_LARGE
 	drone.plasma_types += PLASMA_PHEROMONE
 	drone.damage_modifier -= XENO_DAMAGE_MOD_VERY_SMALL
-	drone.tackle_chance_modifier -= 5
 
 	drone.max_placeable = 3
 	drone.available_fruits = list(/obj/effect/alien/resin/fruit)

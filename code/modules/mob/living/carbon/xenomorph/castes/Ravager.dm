@@ -14,9 +14,8 @@
 	speed = XENO_SPEED_TIER_3
 	heal_standing = 0.66
 
-	tackle_min = 2
-	tackle_max = 5
-	tackle_chance = 35
+	tackle_min = 3
+	tackle_max = 6
 	tacklestrength_min = 4
 	tacklestrength_max = 5
 

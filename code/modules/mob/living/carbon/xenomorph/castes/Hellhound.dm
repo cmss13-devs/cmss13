@@ -18,7 +18,6 @@
 
 	tackle_min = 4
 	tackle_max = 5
-	tackle_chance = 40
 	tacklestrength_min = 4
 	tacklestrength_max = 4
 

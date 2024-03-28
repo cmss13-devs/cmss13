@@ -269,7 +269,7 @@
 	if (!ismob(M) || (get_dist(src, user) > 1) || user.is_mob_restrained() || user.stat || buckled_mob || M.buckled || !isturf(user.loc))
 		return
 
-	if (isXeno(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
+	if (isxeno(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do that, try a nest."))
 		return
 	if (iszombie(user))

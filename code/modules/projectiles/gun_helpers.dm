@@ -462,7 +462,6 @@ DEFINES in setup.dm, referenced here.
 /obj/item/weapon/gun/proc/get_active_firearm(mob/user, restrictive = TRUE)
 	if(user.is_mob_incapacitated() || !isturf(usr.loc))
 		return
-	if(!ishuman(usr))
 	if(!ishuman(usr) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		to_chat(user, SPAN_WARNING("Not right now."))
 		return

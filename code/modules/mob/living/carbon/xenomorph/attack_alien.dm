@@ -309,31 +309,15 @@
 	else
 		return FALSE // leave the dead alone
 
-/**This proc is here to prevent Xenomorphs from picking up objects (default attack_hand behaviour)
-Note that this is overriden by every proc concerning a child of obj unless inherited
-There is a trait that permits them to handle items.**/
-/obj/item/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(HAS_TRAIT(M, TRAIT_OPPOSABLE_THUMBS))
-		attack_hand(M)
+//This proc is here to prevent Xenomorphs from picking up objects (default attack_hand behaviour)
+//Note that this is overridden by every proc concerning a child of obj unless inherited
+/obj/item/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(HAS_TRAIT(xeno, TRAIT_OPPOSABLE_THUMBS))
+		attack_hand(xeno)
 		return XENO_NONCOMBAT_ACTION
 	return
 
-
-/obj/vehicle/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(M.a_intent == INTENT_HARM)
-		M.animation_attack_on(src)
-		M.flick_attack_overlay(src, "slash")
-		health -= 15
-		playsound(loc, "alien_claw_metal", 25, 1)
-		M.visible_message(SPAN_DANGER("[M] [M.slashes_verb] [src]."),SPAN_DANGER("You [M.slash_verb] [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
-		healthcheck()
-		return XENO_ATTACK_ACTION
-	else
-		attack_hand(M)
-		return XENO_NONCOMBAT_ACTION
-
-
-/obj/attack_larva(mob/living/carbon/Xenomorph/Larva/M)
+/obj/attack_larva(mob/living/carbon/xenomorph/larva/M)
 	return //larva can't do anything
 
 //Breaking tables and racks
@@ -398,7 +382,7 @@ There is a trait that permits them to handle items.**/
 /obj/structure/attack_alien(mob/living/carbon/xenomorph/M)
 	// fuck off dont destroy my unslashables
 	if(unslashable || health <= 0 && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
-		to_chat(M, SPAN_WARNING("You stare at \the [src] cluelessly."))
+		to_chat(M, SPAN_WARNING("We stare at \the [src] cluelessly."))
 		return XENO_NO_DELAY_ACTION
 
 /obj/structure/magazine_box/attack_alien(mob/living/carbon/Xenomorph/M)
@@ -685,9 +669,9 @@ There is a trait that permits them to handle items.**/
 
 //Xenomorphs can't use machinery, not even the "intelligent" ones
 //Exception is Queen and shuttles, because plot power
-	if(unslashable || health <= 0 && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
-		to_chat(M, SPAN_WARNING("You stare at \the [src] cluelessly."))
 /obj/structure/machinery/attack_alien(mob/living/carbon/xenomorph/M)
+	if(unslashable || health <= 0 && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
+		to_chat(M, SPAN_WARNING("We stare at \the [src] cluelessly."))
 		return XENO_NO_DELAY_ACTION
 
 	M.animation_attack_on(src)
@@ -704,10 +688,9 @@ There is a trait that permits them to handle items.**/
 	return XENO_ATTACK_ACTION
 
 // Destroying reagent dispensers
-/obj/structure/reagent_dispensers/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(unslashable || health <= 0 && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
-		to_chat(M, SPAN_WARNING("You stare at \the [src] cluelessly."))
 /obj/structure/reagent_dispensers/attack_alien(mob/living/carbon/xenomorph/M)
+	if(unslashable || health <= 0 && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
+		to_chat(M, SPAN_WARNING("We stare at \the [src] cluelessly."))
 		return XENO_NO_DELAY_ACTION
 
 	M.animation_attack_on(src)

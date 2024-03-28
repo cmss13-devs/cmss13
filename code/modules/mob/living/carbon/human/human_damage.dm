@@ -335,7 +335,11 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 	for(var/obj/limb/L as anything in parts)
 		var/armor = getarmor(L, armour_type)
 		var/modified_damage = armor_damage_reduction(armour_config, damage, armor, penetration, 0, 0)
-		L.take_damage(modified_damage / amount_of_parts)
+		if(damage_type == BURN)
+			L.take_damage(burn = modified_damage / amount_of_parts)
+		else
+			L.take_damage(modified_damage / amount_of_parts)
+
 	updatehealth()
 	UpdateDamageIcon()
 

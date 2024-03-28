@@ -6,7 +6,14 @@
 	var/particle_path
 
 /datum/battlepass_reward/general/particle/on_claim(mob/target_mob)
-	target_mob.particle_holder = new(target_mob, particle_path)
+	var/particles/new_particle = new particle_path()
+	new_particle.resize_pos(target_mob)
+	target_mob.particle_holder = new(target_mob, new_particle)
+	if(target_mob.icon_size == 48)
+		target_mob.particle_holder.pixel_x = 16
+	else if(target_mob.icon_size == 64)
+		target_mob.particle_holder.pixel_x = 16
+		target_mob.particle_holder.pixel_y = 16
 	return TRUE
 
 
@@ -31,7 +38,7 @@
 	particle_path = /particles/slime
 
 /datum/battlepass_reward/general/particle/slime_rainbow
-	name = "Rainbow Slime Particles"
+	name = "Rbw. Slime Particles"
 	icon_state = "rainbow_slime"
 	particle_path = /particles/slime/rainbow
 

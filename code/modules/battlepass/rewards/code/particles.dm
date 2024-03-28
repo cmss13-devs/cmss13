@@ -5,7 +5,7 @@
 	desc = "How are you reading this? Please make a bug report :)"
 	appearance_flags = KEEP_APART|KEEP_TOGETHER|TILE_BOUND|PIXEL_SCALE|LONG_GLIDE //movable appearance_flags plus KEEP_APART and KEEP_TOGETHER
 	vis_flags = VIS_INHERIT_PLANE
-	layer = ABOVE_MOB_LAYER
+	layer = ABOVE_XENO_LAYER
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	anchored = TRUE
 	/// Holds info about how this particle emitter works
@@ -14,7 +14,7 @@
 
 	var/atom/parent
 
-/obj/effect/abstract/particle_holder/Initialize(mapload, particle_path, particle_flags = NONE)
+/obj/effect/abstract/particle_holder/Initialize(mapload, particle_path_or_instance, particle_flags = NONE)
 	. = ..()
 	if(!loc)
 		stack_trace("particle holder was created with no loc!")
@@ -26,7 +26,10 @@
 	// Mouse opacity can get set to opaque by some objects when placed into the object's contents (storage containers).
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	src.particle_flags = particle_flags
-	particles = new particle_path()
+	if(ispath(particle_path_or_instance))
+		particles = new particle_path_or_instance()
+	else
+		particles = particle_path_or_instance
 	// /atom doesn't have vis_contents, /turf and /atom/movable do
 	var/atom/movable/lie_about_areas = parent
 	lie_about_areas.vis_contents += src
@@ -69,6 +72,8 @@
 /obj/effect/abstract/particle_holder/proc/set_particle_position(list/pos)
 	particles.position = pos
 
+/particles/proc/resize_pos(mob/assigned_mob)
+	return
 
 /particles/droplets
 	icon = 'icons/effects/particles/generic.dmi'
@@ -84,6 +89,9 @@
 	scale = generator(GEN_VECTOR, list(0.9,0.9), list(1.1,1.1), NORMAL_RAND)
 	gravity = list(0, -0.9)
 
+/particles/droplets/resize_pos(mob/assigned_mob)
+	var/is = assigned_mob.icon_size / 32
+	position = generator(GEN_BOX, list(-9*is, -9*is, 0), list(9*is,18*is,0), NORMAL_RAND)
 
 /particles/slime
 	icon = 'icons/effects/particles/goop.dmi'
@@ -100,6 +108,10 @@
 	position = generator(GEN_BOX, list(-8,-16,0), list(8,16,0), NORMAL_RAND)
 	spin = generator(GEN_NUM, -15, 15, NORMAL_RAND)
 	scale = list(0.75, 0.75)
+
+/particles/slime/resize_pos(mob/assigned_mob)
+	var/is = assigned_mob.icon_size / 32
+	position = generator(GEN_BOX, list(-8*is, -16*is, 0), list(8*is,16*is,0), NORMAL_RAND)
 
 /// Rainbow slime particles.
 /particles/slime/rainbow
@@ -125,6 +137,11 @@
 	rotation = 30
 	spin = generator(GEN_NUM, -20, 20)
 
+/particles/pollen/resize_pos(mob/assigned_mob)
+	var/is = assigned_mob.icon_size / 32
+	position = generator(GEN_CIRCLE, 0, 16*is, NORMAL_RAND)
+
+
 /particles/stink
 	icon = 'icons/effects/particles/stink.dmi'
 	icon_state = list("stink_1" = 1, "stink_2" = 2, "stink_3" = 2)
@@ -137,6 +154,10 @@
 	fade = 1 SECONDS
 	position = generator(GEN_CIRCLE, 0, 16, UNIFORM_RAND)
 	gravity = list(0, 0.25)
+
+/particles/stink/resize_pos(mob/assigned_mob)
+	var/is = assigned_mob.icon_size / 32
+	position = generator(GEN_CIRCLE, 0, 16*is, NORMAL_RAND)
 
 /particles/musical_notes
 	icon = 'icons/effects/particles/notes/note.dmi'
@@ -161,6 +182,10 @@
 	position = generator(GEN_CIRCLE, 0, 16, NORMAL_RAND)
 	drift = generator(GEN_VECTOR, list(0, -0.2), list(0, 0.2))
 	gravity = list(0, 0.95)
+
+/particles/musical_notes/resize_pos(mob/assigned_mob)
+	var/is = assigned_mob.icon_size / 32
+	position = generator(GEN_CIRCLE, 0, 16*is, NORMAL_RAND)
 
 /particles/musical_notes/holy
 	icon = 'icons/effects/particles/notes/note_holy.dmi'

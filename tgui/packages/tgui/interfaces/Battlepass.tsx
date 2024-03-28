@@ -64,7 +64,7 @@ const BattlepassContent = (props) => {
             style={{
               'position': 'absolute',
               'top': '70%',
-              'left': '10%',
+              'left': '38%',
               'font-size': '24px',
               'font-family': 'Verdana, Geneva, sans-serif',
               'z-index': '10',

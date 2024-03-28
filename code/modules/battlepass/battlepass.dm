@@ -5,6 +5,9 @@
 	if(!client)
 		return
 
+	if(!SSbattlepass.initialized)
+		return
+
 	client.owned_battlepass?.ui_interact(src)
 
 /mob/living/carbon/verb/claim_battlepass_reward()
@@ -31,23 +34,6 @@
 		claimed_reward_categories |= chosen_reward.category
 
 /mob/var/obj/effect/abstract/particle_holder/particle_holder
-
-/mob/verb/setparticle()
-	set category = "OOC"
-	set name = "setparticle"
-
-	if(particle_holder)
-		QDEL_NULL(particle_holder)
-
-	var/path = input(src, "particle")
-	if(!path)
-		return
-
-	var/made_path = text2path(path)
-	if(!made_path)
-		return
-
-	particle_holder = new(src, made_path)
 
 /// Each client possesses an instanced /datum/battlepass
 /datum/battlepass

@@ -177,6 +177,7 @@
 /datum/battlepass_reward/marine/m41a_reskin
 	name = "Golden M41A MK2"
 	icon_state = "m41a"
+	category = REWARD_CATEGORY_M41A_RESKIN
 
 /datum/battlepass_reward/marine/m41a_reskin/on_claim(mob/target_mob)
 	if(!ishuman(target_mob))
@@ -198,8 +199,23 @@
 	else if(target_human.r_hand && (target_human.r_hand.type in valid_rifles))
 		gotten_rifle = target_human.r_hand
 
+	if(!gotten_rifle)
+		to_chat(target_mob, SPAN_WARNING("You need an M41A MK2 rifle in a hand to claim this."))
+		return
+
 	gotten_rifle.base_gun_icon = "[gotten_rifle.base_gun_icon]_golden"
-	gotten_rifle.item_state = "[gotten_rifle.item_state]_golden"
+	gotten_rifle.item_state = "m41a_golden"
+	gotten_rifle.map_specific_decoration = FALSE
+	gotten_rifle.icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
+	gotten_rifle.item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_1.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/suit_slot.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/back.dmi',
+	)
+	gotten_rifle.item_state_slots = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/back.dmi',
+	)
 	gotten_rifle.update_icon()
 	target_human.update_inv_l_hand()
 	target_human.update_inv_r_hand()
@@ -209,6 +225,7 @@
 /datum/battlepass_reward/marine/m37_reskin
 	name = "Golden M37A2"
 	icon_state = "m37"
+	category = REWARD_CATEGORY_SHOTGUN_RESKIN
 
 /datum/battlepass_reward/marine/m37_reskin/on_claim(mob/target_mob)
 	if(!ishuman(target_mob))
@@ -223,8 +240,23 @@
 	else if(target_human.r_hand && (target_human.r_hand.type == /obj/item/weapon/gun/shotgun/pump))
 		gotten_rifle = target_human.r_hand
 
+	if(!gotten_rifle)
+		to_chat(target_mob, SPAN_WARNING("You need an M37A2 shotgun in a hand to claim this."))
+		return
+
 	gotten_rifle.base_gun_icon = "[gotten_rifle.base_gun_icon]_golden"
-	gotten_rifle.item_state = "[gotten_rifle.item_state]_golden"
+	gotten_rifle.item_state = "m37_golden"
+	gotten_rifle.map_specific_decoration = FALSE
+	gotten_rifle.icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
+	gotten_rifle.item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_1.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_1.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/suit_slot.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/back.dmi',
+	)
+	gotten_rifle.item_state_slots = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/back.dmi',
+	)
 	gotten_rifle.update_icon()
 	target_human.update_inv_l_hand()
 	target_human.update_inv_r_hand()

@@ -759,6 +759,33 @@
 		)
 	storage_flags = NONE //no verb, no quick draw, no tile gathering
 
+/obj/item/clothing/accessory/storage/ifak
+	name = "individual first-aid kit"
+	desc = "A compact pouch to carry essential medical items. It clips onto your uniform."
+	icon_state = "ifak"
+	slot = ACCESSORY_SLOT_UTILITY
+	hold = /obj/item/storage/internal/accessory/ifak/
+
+/obj/item/storage/internal/accessory/ifak
+	w_class = SIZE_LARGE
+	storage_slots = 5
+	max_w_class = SIZE_SMALL
+	can_hold = list(
+		/obj/item/stack/medical/ointment,
+		/obj/item/reagent_container/hypospray/autoinjector,
+		/obj/item/storage/pill_bottle/packet,
+		/obj/item/stack/medical/bruise_pack,
+		/obj/item/stack/medical/splint,
+		/obj/item/attachable/bayonet,
+	)
+
+/obj/item/storage/internal/accessory/ifak/fill_preset_inventory()
+	new /obj/item/reagent_container/hypospray/autoinjector/tricord(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/tramadol(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
+	new /obj/item/stack/medical/bruise_pack(src)
+	new /obj/item/stack/medical/splint(src)
+
 /obj/item/clothing/accessory/storage/holster
 	name = "shoulder holster"
 	desc = "A handgun holster with an attached pouch, allowing two magazines or speedloaders to be stored along with it."

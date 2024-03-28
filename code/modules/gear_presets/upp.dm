@@ -224,6 +224,7 @@
 		list("Shoulder Holster", 10, /obj/item/clothing/accessory/storage/holster, null, VENDOR_ITEM_REGULAR),
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
+		list("Individual First Aid Kit", 10, /obj/item/clothing/accessory/storage/ifak, null, VENDOR_ITEM_REGULAR),
 	)
 
 //*****************************************************************************************************/
@@ -393,6 +394,7 @@
 		list("Shoulder Holster", 10, /obj/item/clothing/accessory/storage/holster, null, VENDOR_ITEM_REGULAR),
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
+		list("Individual First Aid Kit", 10, /obj/item/clothing/accessory/storage/ifak, null, VENDOR_ITEM_REGULAR),
 	)
 
 //*****************************************************************************************************/
@@ -527,6 +529,7 @@
 		list("Shoulder Holster", 10, /obj/item/clothing/accessory/storage/holster, null, VENDOR_ITEM_REGULAR),
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
+		list("Individual First Aid Kit", 10, /obj/item/clothing/accessory/storage/ifak, null, VENDOR_ITEM_REGULAR),
 	)
 
 //*****************************************************************************************************/
@@ -654,6 +657,7 @@
 		list("Shoulder Holster", 10, /obj/item/clothing/accessory/storage/holster, null, VENDOR_ITEM_REGULAR),
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
+		list("Individual First Aid Kit", 10, /obj/item/clothing/accessory/storage/ifak, null, VENDOR_ITEM_REGULAR),
 	)
 
 //*****************************************************************************************************/
@@ -779,6 +783,7 @@
 		list("Shoulder Holster", 10, /obj/item/clothing/accessory/storage/holster, null, VENDOR_ITEM_REGULAR),
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
+		list("Individual First Aid Kit", 10, /obj/item/clothing/accessory/storage/ifak, null, VENDOR_ITEM_REGULAR),
 	)
 
 //*****************************************************************************************************/
@@ -947,6 +952,7 @@
 		list("Shoulder Holster", 10, /obj/item/clothing/accessory/storage/holster, null, VENDOR_ITEM_REGULAR),
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
+		list("Individual First Aid Kit", 10, /obj/item/clothing/accessory/storage/ifak, null, VENDOR_ITEM_REGULAR),
 	)
 
 //*****************************************************************************************************/
@@ -1099,6 +1105,7 @@
 		list("Shoulder Holster", 10, /obj/item/clothing/accessory/storage/holster, null, VENDOR_ITEM_REGULAR),
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
+		list("Individual First Aid Kit", 10, /obj/item/clothing/accessory/storage/ifak, null, VENDOR_ITEM_REGULAR),
 	)
 
 //*****************************************************************************************************/
@@ -1259,6 +1266,7 @@
 		list("Shoulder Holster", 10, /obj/item/clothing/accessory/storage/holster, null, VENDOR_ITEM_REGULAR),
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
+		list("Individual First Aid Kit", 10, /obj/item/clothing/accessory/storage/ifak, null, VENDOR_ITEM_REGULAR),
 	)
 
 //*****************************************************************************************************/
@@ -1416,6 +1424,7 @@
 		list("Shoulder Holster", 10, /obj/item/clothing/accessory/storage/holster, null, VENDOR_ITEM_REGULAR),
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
+		list("Individual First Aid Kit", 10, /obj/item/clothing/accessory/storage/ifak, null, VENDOR_ITEM_REGULAR),
 	)
 
 //*****************************************************************************************************/
@@ -1574,6 +1583,7 @@
 		list("Shoulder Holster", 10, /obj/item/clothing/accessory/storage/holster, null, VENDOR_ITEM_REGULAR),
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
+		list("Individual First Aid Kit", 10, /obj/item/clothing/accessory/storage/ifak, null, VENDOR_ITEM_REGULAR),
 	)
 
 //*****************************************************************************************************/
@@ -1732,6 +1742,7 @@
 		list("Shoulder Holster", 10, /obj/item/clothing/accessory/storage/holster, null, VENDOR_ITEM_REGULAR),
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
+		list("Individual First Aid Kit", 10, /obj/item/clothing/accessory/storage/ifak, null, VENDOR_ITEM_REGULAR),
 	)
 
 //*****************************************************************************************************/
@@ -1890,6 +1901,7 @@
 		list("Shoulder Holster", 10, /obj/item/clothing/accessory/storage/holster, null, VENDOR_ITEM_REGULAR),
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
+		list("Individual First Aid Kit", 10, /obj/item/clothing/accessory/storage/ifak, null, VENDOR_ITEM_REGULAR),
 	)
 
 //*****************************************************************************************************/
@@ -2048,6 +2060,7 @@
 		list("Shoulder Holster", 10, /obj/item/clothing/accessory/storage/holster, null, VENDOR_ITEM_REGULAR),
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
+		list("Individual First Aid Kit", 10, /obj/item/clothing/accessory/storage/ifak, null, VENDOR_ITEM_REGULAR),
 	)
 
 //*****************************************************************************************************/
@@ -2206,6 +2219,7 @@
 		list("Shoulder Holster", 10, /obj/item/clothing/accessory/storage/holster, null, VENDOR_ITEM_REGULAR),
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
+		list("Individual First Aid Kit", 10, /obj/item/clothing/accessory/storage/ifak, null, VENDOR_ITEM_REGULAR),
 	)
 
 //*****************************************************************************************************/
@@ -2364,6 +2378,7 @@
 		list("Shoulder Holster", 10, /obj/item/clothing/accessory/storage/holster, null, VENDOR_ITEM_REGULAR),
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
+		list("Individual First Aid Kit", 10, /obj/item/clothing/accessory/storage/ifak, null, VENDOR_ITEM_REGULAR),
 	)
 
 //*****************************************************************************************************/
@@ -2522,6 +2537,7 @@
 		list("Shoulder Holster", 10, /obj/item/clothing/accessory/storage/holster, null, VENDOR_ITEM_REGULAR),
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
+		list("Individual First Aid Kit", 10, /obj/item/clothing/accessory/storage/ifak, null, VENDOR_ITEM_REGULAR),
 	)
 
 //*****************************************************************************************************/
@@ -2664,6 +2680,7 @@
 		list("Surgical Webbing Vest", 0, /obj/item/clothing/accessory/storage/surg_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Surgical Webbing Vest (Blue)", 0, /obj/item/clothing/accessory/storage/surg_vest/blue, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Individual First Aid Kit", 0, /obj/item/clothing/accessory/storage/ifak, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 
 		list("SHOES (CHOOSE 1)", 0, null, null, null),
 		list("Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_REGULAR),
@@ -2874,7 +2891,8 @@
 		list("Brown Webbing Vest", 10, /obj/item/clothing/accessory/storage/black_vest/brown_vest, null, VENDOR_ITEM_RECOMMENDED),
 		list("Black Webbing Vest", 10, /obj/item/clothing/accessory/storage/black_vest, null, VENDOR_ITEM_RECOMMENDED),
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR),
-		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR)
+		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
+		list("Individual First Aid Kit", 10, /obj/item/clothing/accessory/storage/ifak, null, VENDOR_ITEM_REGULAR),
 	)
 
 //*****************************************************************************************************/
@@ -3001,6 +3019,7 @@
 		list("Shoulder Holster", 10, /obj/item/clothing/accessory/storage/holster, null, VENDOR_ITEM_REGULAR),
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
+		list("Individual First Aid Kit", 10, /obj/item/clothing/accessory/storage/ifak, null, VENDOR_ITEM_REGULAR),
 	)
 
 //*****************************************************************************************************/
@@ -3167,6 +3186,7 @@
 		list("Shoulder Holster", 10, /obj/item/clothing/accessory/storage/holster, null, VENDOR_ITEM_REGULAR),
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
+		list("Individual First Aid Kit", 10, /obj/item/clothing/accessory/storage/ifak, null, VENDOR_ITEM_REGULAR),
 	)
 
 //*****************************************************************************************************/
@@ -3318,6 +3338,7 @@
 		list("Shoulder Holster", 10, /obj/item/clothing/accessory/storage/holster, null, VENDOR_ITEM_REGULAR),
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
+		list("Individual First Aid Kit", 10, /obj/item/clothing/accessory/storage/ifak, null, VENDOR_ITEM_REGULAR),
 	)
 
 /datum/equipment_preset/upp/commando/low_threat
@@ -3489,6 +3510,7 @@
 		list("Shoulder Holster", 0, /obj/item/clothing/accessory/storage/holster, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Individual First Aid Kit", 0, /obj/item/clothing/accessory/storage/ifak, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 
 		list("WELDING PROTECTION (CHOOSE 1)", 0, null, null, null),
 		list("Welding Goggles", 0, /obj/item/clothing/glasses/welding, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
@@ -3533,7 +3555,8 @@
 		list("Brown Webbing Vest", 10, /obj/item/clothing/accessory/storage/black_vest/brown_vest, null, VENDOR_ITEM_RECOMMENDED),
 		list("Black Webbing Vest", 10, /obj/item/clothing/accessory/storage/black_vest, null, VENDOR_ITEM_RECOMMENDED),
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR),
-		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR)
+		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
+		list("Individual First Aid Kit", 10, /obj/item/clothing/accessory/storage/ifak, null, VENDOR_ITEM_REGULAR),
 	)
 
 //*****************************************************************************************************/
@@ -3676,4 +3699,5 @@
 		list("Shoulder Holster", 10, /obj/item/clothing/accessory/storage/holster, null, VENDOR_ITEM_REGULAR),
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
+		list("Individual First Aid Kit", 10, /obj/item/clothing/accessory/storage/ifak, null, VENDOR_ITEM_REGULAR),
 	)

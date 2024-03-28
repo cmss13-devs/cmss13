@@ -36,7 +36,7 @@
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return FALSE
 
-	if(harmful && !user.allow_gun_usage)
+	if(harmful && ishuman(user) && !user.allow_gun_usage)
 		to_chat(user, SPAN_WARNING("Your programming prevents you from using this!"))
 		return FALSE
 

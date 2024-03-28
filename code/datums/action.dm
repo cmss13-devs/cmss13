@@ -191,6 +191,8 @@
 		var/mob/living/carbon/human/human = owner
 		if(human.body_position == STANDING_UP)
 			return TRUE
+	if((HAS_TRAIT(owner, TRAIT_OPPOSABLE_THUMBS)) && !owner.is_mob_incapacitated())
+		return TRUE
 
 /datum/action/item_action/update_button_icon()
 	button.overlays.Cut()

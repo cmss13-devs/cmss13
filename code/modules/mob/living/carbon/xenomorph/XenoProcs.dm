@@ -649,6 +649,10 @@
 
 	tracked_marker = null
 
+	///This permits xenos with thumbs to fire guns and arm grenades. God help us all.
+/mob/living/carbon/Xenomorph/IsAdvancedToolUser()
+	return HAS_TRAIT(src, TRAIT_OPPOSABLE_THUMBS)
+
 /mob/living/carbon/xenomorph/proc/do_nesting_host(mob/current_mob, nest_structural_base)
 	var/list/xeno_hands = list(get_active_hand(), get_inactive_hand())
 

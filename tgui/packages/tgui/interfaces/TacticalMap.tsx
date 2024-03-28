@@ -13,7 +13,7 @@ interface TacMapProps {
   svgData: any;
   canViewTacmap: number;
   canDraw: number;
-  isXeno: boolean;
+  isxeno: boolean;
   canViewCanvas: number;
   newCanvasFlatImage: string;
   oldCanvasFlatImage: string;
@@ -104,7 +104,7 @@ export const TacticalMap = (props) => {
     <Window
       width={700}
       height={850}
-      theme={data.isXeno ? 'hive_status' : 'crtblue'}>
+      theme={data.isxeno ? 'hive_status' : 'crtblue'}>
       <Window.Content>
         <Section
           fitted
@@ -123,7 +123,7 @@ export const TacticalMap = (props) => {
                   return (
                     <Tabs.Tab
                       key={i}
-                      color={data.isXeno ? 'purple' : 'blue'}
+                      color={data.isxeno ? 'purple' : 'blue'}
                       selected={i === pageIndex}
                       disabled={page.canOpen(data) === 0}
                       icon={page.icon}

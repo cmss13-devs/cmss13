@@ -765,7 +765,7 @@ SUBSYSTEM_DEF(minimaps)
 	data["canDraw"] = FALSE
 	data["canViewTacmap"] = TRUE
 	data["canViewCanvas"] = FALSE
-	data["isXeno"] = FALSE
+	data["isxeno"] = FALSE
 
 	return data
 
@@ -781,7 +781,7 @@ SUBSYSTEM_DEF(minimaps)
 	var/is_xeno = istype(xeno)
 	var/faction = is_xeno ? xeno.hivenumber : user.faction
 
-	data["isXeno"] = is_xeno
+	data["isxeno"] = is_xeno
 	data["canViewTacmap"] = is_xeno
 	data["canViewCanvas"] = faction == FACTION_MARINE || faction == XENO_HIVE_NORMAL
 
@@ -799,7 +799,7 @@ SUBSYSTEM_DEF(minimaps)
 	data["canDraw"] = FALSE
 	data["canViewTacmap"] = FALSE
 	data["canViewCanvas"] = TRUE
-	data["isXeno"] = FALSE
+	data["isxeno"] = FALSE
 
 	return data
 
@@ -811,7 +811,7 @@ SUBSYSTEM_DEF(minimaps)
 	data["canDraw"] = FALSE
 	data["canViewTacmap"] = FALSE
 	data["canViewCanvas"] = TRUE
-	data["isXeno"] = TRUE
+	data["isxeno"] = TRUE
 
 	return data
 

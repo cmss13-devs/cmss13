@@ -120,11 +120,18 @@
 	if(.)
 		return
 
+	// Get the user's marine helmet (if they're wearing one)
 	var/mob/living/carbon/human/human_user = user.mob
-	var/obj/item/clothing/head/helmet/marine/marine_helmet = human_user?.head
-	var/cycled_hud = marine_helmet?.cycle_huds(human_user)
+	var/obj/item/clothing/head/helmet/marine/marine_helmet = human_user.head
+	if(!istype(marine_helmet))
+		// If their hat isn't a marine helmet, or is null, return.
+		return
 
+	// Cycle the HUD on the helmet.
+	var/cycled_hud = marine_helmet.cycle_huds(human_user)
+
+	// Update the helmet's 'cycle hud' action button
 	var/datum/action/item_action/cycle_helmet_huds/cycle_action = locate() in marine_helmet.actions
-	cycle_action.set_action_overlay(cycled_hud)
+	cycle_action?.set_action_overlay(cycled_hud)
 
 	return TRUE

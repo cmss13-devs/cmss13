@@ -1,4 +1,0 @@
-author: "Katskan"
-delete-after: True
-changes:
-  - balance: "Autocompressor gives 7 seconds of grace time every 7.5 seconds, instead of 7 seconds every 10 seconds. Approximately 93% efficient, increased from 70% efficient."

@@ -291,3 +291,26 @@
   vero5123:
   - bugfix: fixes users not being able to resist out of the stasis bags
   - bugfix: Fixes zombies missing claws on transformation
+2024-03-27:
+  Ben10083:
+  - rscadd: Working Joes can now respawn as a Working Joe after 15 minutes, previous
+      restriction on respawn removed.
+  - admin: New flag to disable Working Joe respawns
+  - rscadd: Hazard Joes now have their own emotes
+  - code_imp: Hazard Joes now a seperate species
+  - code_imp: Updated isworkingjoe and new ishazardjoe define
+  - refactor: Working Joe emotes and emote categories now a globally defined list
+  - soundadd: New Hazard Joe voicelines
+  Katskan:
+  - balance: Autocompressor gives 7 seconds of grace time every 7.5 seconds, instead
+      of 7 seconds every 10 seconds. Approximately 93% efficient, increased from 70%
+      efficient.
+  QuickLode:
+  - rscadd: adds a purple armband and uniform to Synth Vendor
+  - rscadd: adds a renamed uniform commonly used by colonists with a better name
+  Vicacrov:
+  - rscadd: Added holocards to health scans to improve communication between medical
+      players. You can now assign holocards via the health analyzer and the body scanner
+      as well. The health scan also tells you what the current holocard's colour means.
+  - rscadd: Added a new purple holocard to tag infected marines.
+  - rscdel: Clicking yourself no longer removes your own holocard.

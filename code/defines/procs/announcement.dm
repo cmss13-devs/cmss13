@@ -47,9 +47,9 @@
 
 		switch(logging)
 			if(ARES_LOG_MAIN)
-				log_ares_announcement(title, message)
+				log_ares_announcement(title, message, signature)
 			if(ARES_LOG_SECURITY)
-				log_ares_security(title, message)
+				log_ares_security(title, message, signature)
 
 	else if(faction_to_display == "Everyone (-Yautja)")
 		for(var/mob/M in targets)

@@ -107,6 +107,18 @@
 	desc = "This banner depicts Delta Squad's motto. The Marines of Delta Squad adopted it after picking an old bomber movie for movie night a while back."
 	icon_state = "maximumeffort"
 
+//============//
+//  Flags    //
+//==========//
+
+/obj/structure/sign/flag
+	icon = 'icons/obj/structures/props/flags.dmi'
+
+/obj/structure/sign/flag/upp
+	name = "\improper Union of Progressive Peoples Flag"
+	desc = "Unity through Strength, Freedom through Unity"
+	icon_state = "upp_flag"
+
 //=====================//
 // SEMIOTIC STANDARD  //
 //===================//

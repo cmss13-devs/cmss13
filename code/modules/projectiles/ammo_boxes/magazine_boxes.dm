@@ -497,6 +497,18 @@
 /obj/item/ammo_box/magazine/m2c/empty
 	empty = TRUE
 
+/obj/item/ammo_box/magazine/m2c/t37
+	name = "\improper ammo box (T37 x 8)"
+	icon_state = "base_t37"
+	overlay_ammo_type = ""
+	overlay_gun_type = "_t37"
+	overlay_content = "_t37"
+	magazine_type = /obj/item/ammo_magazine/m2c/t37
+	num_of_magazines = 8
+
+/obj/item/ammo_box/magazine/m2c/t37/empty
+	empty = TRUE
+
 //-----------------------M41AE2 Ammo Box-----------------------
 
 /obj/item/ammo_box/magazine/m41ae2

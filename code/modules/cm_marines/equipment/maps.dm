@@ -49,7 +49,7 @@
 					}
 				</script>
 				<p id='loading'>You start unfolding the map...</p>
-					<img onload="pageloaded(this)" src="[wikiurl]/[html_link]?printable=yes&remove_links=1" id="main_frame" alt=""></img>
+					<img onload="pageloaded(this)" src="https://cdn-forum.cm-ss13.com/original/2X/8/86abc5cad64e22e3cda69bc1d665eca076fa8b7d.jpeg?printable=yes&remove_links=1" id="main_frame" alt=""></img>
 				</body>
 
 				</html>
@@ -133,6 +133,12 @@
 	html_link = "images/9/94/New_Varadero.png"
 	color = "red"
 
+/obj/item/map/rosansk
+	name = "\improper Rosansk map"
+	desc = "A labeled blueprint of the UPP occupied city Rosansk"
+	html_link = "images/9/94/New_Varadero.png"
+	color = "red"
+
 GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 
 /proc/setup_all_maps()
@@ -149,7 +155,8 @@ GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 		MAP_CORSAT = new /obj/item/map/corsat(),
 		MAP_KUTJEVO = new /obj/item/map/kutjevo_map(),
 		MAP_LV522_CHANCES_CLAIM = new /obj/item/map/lv522_map(),
-		MAP_NEW_VARADERO = new /obj/item/map/new_varadero()
+		MAP_NEW_VARADERO = new /obj/item/map/new_varadero(),
+		MAP_ROSANSK = new /obj/item/map/rosansk()
 	)
 
 //used by marine equipment machines to spawn the correct map.

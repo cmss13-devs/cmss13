@@ -2,7 +2,7 @@
 	name = "Faction Clash"
 	config_tag = "Faction Clash"
 	flags_round_type = MODE_THUNDERSTORM|MODE_FACTION_CLASH
-	toggleable_flags = MODE_NO_SNIPER_SENTRY|MODE_NO_ATTACK_DEAD|MODE_NO_STRIPDRAG_ENEMY|MODE_STRONG_DEFIBS|MODE_BLOOD_OPTIMIZATION|MODE_NO_COMBAT_CAS
+	toggleable_flags = MODE_NO_SNIPER_SENTRY|MODE_NO_ATTACK_DEAD|MODE_NO_STRIPDRAG_ENEMY|MODE_STRONG_DEFIBS|MODE_BLOOD_OPTIMIZATION
 	taskbar_icon = 'icons/taskbar/gml_hvh.png'
 
 /datum/game_mode/extended/faction_clash/get_roles_list()
@@ -11,3 +11,10 @@
 /datum/game_mode/extended/faction_clash/post_setup()
 	. = ..()
 	SSweather.force_weather_holder(/datum/weather_ss_map_holder/faction_clash)
+	addtimer(CALLBACK(src, PROC_REF(ares_online)), 5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(map_announcement)), 20 SECONDS)
+
+/datum/game_mode/extended/proc/map_announcement()
+	if(SSmapping.configs[GROUND_MAP].announce_text)
+		var/rendered_announce_text = replacetext(SSmapping.configs[GROUND_MAP].announce_text, "###SHIPNAME###", MAIN_SHIP_NAME)
+		marine_announcement(rendered_announce_text, "[MAIN_SHIP_NAME]")

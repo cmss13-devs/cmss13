@@ -435,7 +435,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		)
 
 	//dropship part fabricator's points, so we can reference them globally (mostly for DEFCON)
-	var/dropship_points = 10000 //gains roughly 18 points per minute | Original points of 5k doubled due to removal of prespawned ammo.
+	var/dropship_points = 1075 //gains roughly 18 points per minute | Original points of 5k doubled due to removal of prespawned ammo.
 	var/tank_points = 0
 
 /datum/controller/supply/New()

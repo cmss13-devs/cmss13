@@ -1,0 +1,27 @@
+{
+    "override_map": true,
+    "map_name": "Rosansk",
+    "map_path": "templates/LV624",
+    "map_file": "AmphibiousLandingOverhauled.dmm",
+    "survivor_types": [
+        "/datum/equipment_preset/survivor/scientist/lv",
+        "/datum/equipment_preset/survivor/doctor/lv",
+        "/datum/equipment_preset/survivor/engineer/lv",
+        "/datum/equipment_preset/survivor/trucker/lv",
+        "/datum/equipment_preset/survivor/civilian"
+    ],
+    "map_item_type": "/obj/item/map/rosansk",
+    "announce_text": "A high-priority transmission has been intercepted indicating strategic movements within the UPP-controlled city of Rosansk, particularly focusing on the operational stronghold of their main oil refinery. In response, a tactical unit from the ###SHIPNAME### has been mobilized for immediate deployment.",
+    "monkey_types": [
+        "monkey"
+    ],
+    "traits": [{ "Ground": true }],
+    "camouflage": "urban",
+    "gamemodes": [
+        "Distress Signal",
+        "Hunter Games",
+        "Hive Wars",
+        "Faction Clash",
+        "Infection"
+    ]
+}

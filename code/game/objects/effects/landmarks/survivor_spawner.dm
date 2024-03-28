@@ -201,8 +201,8 @@
 //CMB Survivors//
 
 /obj/effect/landmark/survivor_spawner/fiorina_armory_cmb
-	equipment = /datum/equipment_preset/survivor/colonial_marshal
-	synth_equipment = /datum/equipment_preset/synth/survivor/cmb_synth
+	equipment = /datum/equipment_preset/survivor/cmb/standard
+	synth_equipment = /datum/equipment_preset/synth/survivor/cmb/synth
 	intro_text = list("<h2>You are a CMB Deputy!</h2>",\
 	"<span class='notice'>You are aware of the 'alien' threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive the infestation.</span>")
@@ -211,8 +211,8 @@
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
 
 /obj/effect/landmark/survivor_spawner/fiorina_armory_riot_control
-	equipment = /datum/equipment_preset/survivor/colonial_marshal/fiorina
-	synth_equipment = /datum/equipment_preset/synth/survivor/cmb_synth
+	equipment = /datum/equipment_preset/survivor/cmb/ua
+	synth_equipment = /datum/equipment_preset/synth/survivor/cmb/ua_synth
 	intro_text = list("<h2>You are a United Americas Riot Control Officer!</h2>",\
 	"<span class='notice'>You are aware of the 'alien' threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive the infestation.</span>")

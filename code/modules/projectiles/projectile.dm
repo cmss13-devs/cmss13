@@ -1046,14 +1046,13 @@
 		return
 
 	if(isxeno(P.firer) && ammo_flags & (AMMO_ACIDIC|AMMO_XENO)) //Xenomorph shooting spit. Xenos with thumbs and guns can fully FF.
-		if(isxeno(P.firer))
-			var/mob/living/carbon/xenomorph/X = P.firer
-			if(X.can_not_harm(src))
-				bullet_ping(P)
-				return -1
-			else
-				damage *= XVX_PROJECTILE_DAMAGEMULT
-				damage_result = damage
+		var/mob/living/carbon/xenomorph/X = P.firer
+		if(X.can_not_harm(src))
+			bullet_ping(P)
+			return -1
+		else
+			damage *= XVX_PROJECTILE_DAMAGEMULT
+			damage_result = damage
 
 	if(P.weapon_cause_data && P.weapon_cause_data.cause_name)
 		var/mob/M = P.weapon_cause_data.resolve_mob()

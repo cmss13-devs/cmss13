@@ -385,9 +385,9 @@
 		to_chat(M, SPAN_WARNING("We stare at \the [src] cluelessly."))
 		return XENO_NO_DELAY_ACTION
 
-/obj/structure/magazine_box/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/magazine_box/attack_alien(mob/living/carbon/xenomorph/xeno)
 	if(HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
-		attack_hand(M)
+		attack_hand(xeno)
 		return XENO_NONCOMBAT_ACTION
 	else
 		. = ..()

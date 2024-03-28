@@ -98,7 +98,7 @@
 			if(grant == "Cancel")
 				return
 
-			var/list/mob/living/carbon/Xenomorph/permit_recipients = list()
+			var/list/mob/living/carbon/xenomorph/permit_recipients = list()
 			var/list/datum/hive_status/permit_hives = list()
 			switch(alert(usr, "Do you wish to do this for one Xeno or an entire hive?", "Recipients", "Xeno", "Hive", "All Xenos"))
 				if("Xeno")
@@ -117,19 +117,19 @@
 
 			var/list/handled_xenos = list()
 
-			for(var/mob/living/carbon/Xenomorph/X as anything in permit_recipients)
-				if(QDELETED(X) || X.stat == DEAD) //Xenos might die before the admin picks them.
-					to_chat(usr, SPAN_HIGHDANGER("[X] died before her firearms permit could be issued!"))
+			for(var/mob/living/carbon/xenomorph/xeno as anything in permit_recipients)
+				if(QDELETED(xeno) || xeno.stat == DEAD) //Xenos might die before the admin picks them.
+					to_chat(usr, SPAN_HIGHDANGER("[xeno] died before her firearms permit could be issued!"))
 					continue
-				if(HAS_TRAIT(X, TRAIT_OPPOSABLE_THUMBS))
+				if(HAS_TRAIT(xeno, TRAIT_OPPOSABLE_THUMBS))
 					if(grant == "Revoke")
-						REMOVE_TRAIT(X, TRAIT_OPPOSABLE_THUMBS, TRAIT_SOURCE_HIVE)
-						to_chat(X, SPAN_XENOANNOUNCE("You forget how thumbs work. You feel a terrible sense of loss."))
-						handled_xenos += X
+						REMOVE_TRAIT(xeno, TRAIT_OPPOSABLE_THUMBS, TRAIT_SOURCE_HIVE)
+						to_chat(xeno, SPAN_XENOANNOUNCE("You forget how thumbs work. You feel a terrible sense of loss."))
+						handled_xenos += xeno
 				else if(grant == "Grant")
-					ADD_TRAIT(X, TRAIT_OPPOSABLE_THUMBS, TRAIT_SOURCE_HIVE)
-					to_chat(X, SPAN_XENOANNOUNCE("You suddenly comprehend the magic of opposable thumbs along with surprising kinesthetic intelligence. You could do... <b><i>so much</b></i> with this knowledge."))
-					handled_xenos += X
+					ADD_TRAIT(xeno, TRAIT_OPPOSABLE_THUMBS, TRAIT_SOURCE_HIVE)
+					to_chat(xeno, SPAN_XENOANNOUNCE("You suddenly comprehend the magic of opposable thumbs along with surprising kinesthetic intelligence. You could do... <b><i>so much</b></i> with this knowledge."))
+					handled_xenos += xeno
 
 			for(var/datum/hive_status/permit_hive as anything in permit_hives)
 				//Give or remove the trait from newly-born xenos in this hive.

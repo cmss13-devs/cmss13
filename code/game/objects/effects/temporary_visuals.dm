@@ -21,6 +21,19 @@
 	. = ..()
 	deltimer(timerid)
 
+//-----------------------------------------
+//HEAVY IMPACT
+//-----------------------------------------
+
+/obj/effect/temp_visual/heavy_impact
+	icon = 'icons/effects/heavyimpact.dmi'
+	icon_state = "heavyimpact"
+	duration = 13
+
+/obj/effect/temp_visual/heavyimpact/Initialize(mapload)
+	. = ..()
+	flick("heavyimpact", src)
+
 /obj/effect/temp_visual/dir_setting
 	randomdir = FALSE
 
@@ -95,4 +108,3 @@
 /obj/effect/temp_visual/dir_setting/bloodsplatter/synthsplatter
 	splatter_type = "csplatter"
 	color = BLOOD_COLOR_SYNTHETIC
-

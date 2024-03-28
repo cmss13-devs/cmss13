@@ -133,6 +133,18 @@
 
 	var/list/available_nicknumbers = list()
 
+
+	/// Hive buffs
+	var/buff_points = HIVE_STARTING_BUFFPOINTS
+
+	/// List of references to the currently active hivebuffs
+	var/list/active_hivebuffs
+	/// List of references to used hivebuffs
+	var/list/used_hivebuffs
+
+	/// List of references to hive pylons active in the game world
+	var/list/active_endgame_pylons
+
 	/*Stores the image()'s for the xeno evolution radial menu
 	To add an image for your caste - add an icon to icons/mob/xenos/radial_xenos.dmi
 	Icon size should be 32x32, to make them fit within the radial menu border size your icon 22x22 and leave 10px transparent border.
@@ -150,6 +162,10 @@
 		internal_faction = name
 	for(var/number in 1 to 999)
 		available_nicknumbers += number
+	LAZYINITLIST(active_hivebuffs)
+	LAZYINITLIST(used_hivebuffs)
+	LAZYINITLIST(active_endgame_pylons)
+
 	if(hivenumber != XENO_HIVE_NORMAL)
 		return
 
@@ -1327,6 +1343,68 @@
 	if(SSxevolution)
 		SSxevolution.override_power(hivenumber, evil, override)
 
+/// Hive buffs
+
+/// Get a list of hivebuffs which can be bought now.
+/datum/hive_status/proc/get_available_hivebuffs()
+	var/list/potential_hivebuffs = subtypesof(/datum/hivebuff)
+
+	var/num_of_free_pylons = 0
+	// First check if we have available pylons which are capable of supporting hivebuffs
+	for(var/obj/effect/alien/resin/special/pylon/endgame/pylon in active_endgame_pylons)
+		if(!pylon.sustained_buff)
+			num_of_free_pylons++
+
+	if(!num_of_free_pylons)
+		return
+
+	for(var/datum/hivebuff/possible_hivebuff as anything in potential_hivebuffs)
+		// Round isn't old enough yet
+		if(ROUND_TIME < SSticker.round_start_time + initial(possible_hivebuff.roundtime_to_enable))
+			potential_hivebuffs -= possible_hivebuff
+			continue
+
+		if(initial(possible_hivebuff.number_of_required_pylons) > LAZYLEN(active_endgame_pylons))
+			potential_hivebuffs -= possible_hivebuff
+			continue
+
+		//If this hive has buffs already active, check against other currently active hivebuffs
+		if(LAZYLEN(active_hivebuffs))
+			var/found
+			for(var/datum/hivebuff/active_buff in active_hivebuffs)
+				if(istype(active_buff, possible_hivebuff))
+					found = TRUE
+					break
+			if(found)
+				potential_hivebuffs -= possible_hivebuff
+				continue
+
+		//If this buff is unique, check if any other hivebuffs are active
+		if(initial(possible_hivebuff.is_unique) && LAZYLEN(active_hivebuffs))
+			potential_hivebuffs -= possible_hivebuff
+			continue
+
+		// If the buff is not reusable check against used hivebuffs.
+		if(!initial(possible_hivebuff.is_reusable) && LAZYLEN(used_hivebuffs))
+			var/found
+			for(var/datum/hivebuff/used_buff in used_hivebuffs)
+				if(istype(used_buff, possible_hivebuff))
+					found = TRUE
+					break
+			if(found)
+				potential_hivebuffs -= possible_hivebuff
+				continue
+
+	return potential_hivebuffs
+
+/datum/hive_status/proc/attempt_apply_hivebuff(datum/hivebuff/hivebuff, mob/living/purchasing_player, obj/effect/alien/resin/special/pylon/endgame/purchased_pylon)
+	var/datum/hivebuff/new_buff = new hivebuff(src)
+	if(!new_buff._on_engage(purchasing_player, purchased_pylon))
+		qdel(new_buff)
+		return FALSE
+	return TRUE
+
+
 //Xeno Resin Mark Shit, the very best place for it too :0)
 //Defines at the bottom of this list here will show up at the top in the mark menu
 /datum/xeno_mark_define
@@ -1387,3 +1465,4 @@
 	name = "Attack"
 	desc = "Attack the enemy here!"
 	icon_state = "attack"
+

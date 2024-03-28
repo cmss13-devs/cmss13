@@ -141,7 +141,19 @@
 	cover_range = WEED_RANGE_CORE
 	var/activated = FALSE
 
+	/// Hivebuff being sustained by this pylon
+	var/datum/hivebuff/sustained_buff
+
+	/// Cooldown between trying to activate a hive buff
+	COOLDOWN_DECLARE(buff_cooldown)
+
+/obj/effect/alien/resin/special/pylon/endgame/Initialize(mapload, mob/builder)
+	. = ..()
+	LAZYADD(linked_hive.active_endgame_pylons, src)
+
 /obj/effect/alien/resin/special/pylon/endgame/Destroy()
+	sustained_buff = null
+	LAZYREMOVE(linked_hive.active_endgame_pylons, src)
 	if(activated)
 		activated = FALSE
 
@@ -161,6 +173,21 @@
 				xeno_announcement(SPAN_XENOANNOUNCE("Another hive has lost control of the tall's communication relay at [get_area(src)]."), hivenumber, XENO_GENERAL_ANNOUNCE)
 		linked_hive.hive_ui.update_pylon_status()
 	return ..()
+
+/obj/effect/alien/resin/special/pylon/endgame/update_icon()
+	..()
+	if(sustained_buff)
+		icon_state = "[initial(icon_state)]_active"
+	else
+		icon_state = initial(icon_state)
+
+/obj/effect/alien/resin/special/pylon/endgame/proc/sustain_hivebuff(datum/hivebuff/buff)
+	sustained_buff = buff
+	update_icon()
+
+/obj/effect/alien/resin/special/pylon/endgame/proc/remove_hivebuff()
+	sustained_buff = null
+	update_icon()
 
 /// Checks if all comms towers are connected and then starts end game content on all pylons if they are
 /obj/effect/alien/resin/special/pylon/endgame/proc/comms_relay_connection()
@@ -194,6 +221,78 @@
 	linked_hive.partial_larva += (linked_hive.get_real_total_xeno_count() + linked_hive.stored_larva) * LARVA_ADDITION_MULTIPLIER
 	linked_hive.convert_partial_larva_to_full_larva()
 	linked_hive.hive_ui.update_burrowed_larva()
+
+/// APPLYING HIVE BUFFS ///
+
+/obj/effect/alien/resin/special/pylon/endgame/attack_alien(mob/living/carbon/xenomorph/xeno)
+	choose_hivebuff(xeno)
+	return XENO_NONCOMBAT_ACTION
+	///BIRDTALON: REVERT TO THIS AFTER TESTING
+	/*
+	if(!damaged && health == maxhealth && xeno.a_intent == INTENT_HELP && xeno.hivenumber == linked_hive.hivenumber && IS_XENO_LEADER(xeno))
+		if(!LAZYISIN(players_on_buff_cooldown, xeno))
+			choose_hivebuff(xeno)
+			return
+		else
+			to_chat(xeno, SPAN_XENONOTICE("We cannot choose a hive buff just yet. Try again later."))
+			return ..()
+	else
+		..() */
+
+/// To choose a hivebuff
+/obj/effect/alien/resin/special/pylon/endgame/proc/choose_hivebuff(mob/living/carbon/xenomorph/xeno)
+	if(!COOLDOWN_FINISHED(src, buff_cooldown))
+		to_chat(xeno, SPAN_XENONOTICE("We can't do that again yet!"))
+		return
+	var/list/buffs = list()
+	var/list/names = list()
+	var/list/radial_images = list()
+	var/major_available = FALSE
+	for(var/datum/hivebuff/buff as anything in linked_hive.get_available_hivebuffs())
+		var/buffname = initial(buff.name)
+		names += buffname
+		buffs[buffname] = buff
+		if(!major_available)
+			if(initial(buff.tier) == HIVEBUFF_TIER_MAJOR)
+				major_available = TRUE
+
+
+	if(!length(buffs))
+		to_chat(xeno, SPAN_XENONOTICE("No boons are available to us!"))
+		return
+
+	var/selection
+	var/list/radial_images_tiers = list(HIVEBUFF_TIER_MINOR = image('icons/ui_icons/hivebuff_radial.dmi', "minor"), HIVEBUFF_TIER_MAJOR = image('icons/ui_icons/hivebuff_radial.dmi', "major"))
+
+	if((xeno.client.prefs && xeno.client.prefs.no_radials_preference))
+		selection = tgui_input_list(xeno, "Pick a buff.", "Select Buff", names)
+	else
+		var/tier = HIVEBUFF_TIER_MINOR
+		if(major_available)
+			tier = show_radial_menu(xeno, src, radial_images_tiers, require_near = TRUE)
+
+		if(tier == HIVEBUFF_TIER_MAJOR)
+			for(var/filtered_buffname as anything in buffs)
+				var/datum/hivebuff/filtered_buff = buffs[filtered_buffname]
+				if(initial(filtered_buff.tier) == HIVEBUFF_TIER_MAJOR)
+					radial_images[initial(filtered_buff.name)] += image(initial(filtered_buff.hivebuff_radial_dmi), initial(filtered_buff.radial_icon))
+		else
+			for(var/filtered_buffname as anything in buffs)
+				var/datum/hivebuff/filtered_buff = buffs[filtered_buffname]
+				if(initial(filtered_buff.tier) == HIVEBUFF_TIER_MINOR)
+					radial_images[initial(filtered_buff.name)] += image(initial(filtered_buff.hivebuff_radial_dmi), initial(filtered_buff.radial_icon))
+
+		selection = show_radial_menu(xeno, src, radial_images, radius = 72, require_near = TRUE, tooltips = TRUE)
+	if(!selection || !Adjacent(xeno))
+		return
+
+	if(!buffs[selection])
+		to_chat(xeno, "This selection is impossible!")
+		return FALSE
+
+	xeno.hive.attempt_apply_hivebuff(buffs[selection], xeno, src)
+	COOLDOWN_START(src, buff_cooldown, 30 SECONDS)
+	return TRUE
 
 //Hive Core - Generates strong weeds, supports other buildings
 /obj/effect/alien/resin/special/pylon/core

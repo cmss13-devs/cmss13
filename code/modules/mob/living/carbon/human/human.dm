@@ -132,6 +132,28 @@
 		if(SShijack.sd_unlocked)
 			. += "Self Destruct Status: [SShijack.get_sd_eta()]"
 
+	var/mob/living/carbon/cortical_borer/B = has_brain_worms()
+	if(B && (B.borer_flags_status & BORER_STATUS_CONTROLLING))
+
+		var/CR = "Yes"
+		if(!B.can_reproduce)
+			CR = "Forbidden"
+		else if((B.enzymes < BORER_LARVAE_COST))
+			CR = "No"
+
+		. += ""
+		. += "Cortical Directive: [GLOB.brainlink.cortical_directive]"
+		. += "Borer: CONTROLLING"
+		. += "Name: [B.real_name]"
+		. += "Can Reproduce: [CR]"
+		. += "Enzymes: [round(B.enzymes)]/[round(B.max_enzymes)]"
+		. += "Health: [B.health]/[B.maxHealth]"
+		. += "Injuries: Brute:[round(B.getBruteLoss())] Burn:[round(B.getFireLoss())] Toxin:[round(B.getToxLoss())]"
+		. += ""
+		. += "Host Brain Damage: [brainloss]/100"
+		. += "Host Blood Level: [blood_volume / 5.6]%"
+
+
 /mob/living/carbon/human/ex_act(severity, direction, datum/cause_data/cause_data)
 	if(body_position == LYING_DOWN)
 		severity *= EXPLOSION_PRONE_MULTIPLIER

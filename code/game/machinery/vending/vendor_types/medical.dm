@@ -40,6 +40,88 @@
 	else
 		icon_state = "medlink_unclamped"
 
+// --- No Upper Tile / White
+/obj/structure/medical_supply_link/notop
+	name = "medilink supply port"
+	desc = "A complex network of pipes and machinery, linking to large storage systems below the deck. Medical vendors linked to this port will be able to infinitely restock supplies."
+	icon = 'icons/effects/warning_stripes.dmi'
+	icon_state = "medlink_unclamped_notop"
+	anchored = TRUE
+	density = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+	plane = FLOOR_PLANE
+	layer = ABOVE_TURF_LAYER //It's the floor, man
+
+/obj/structure/medical_supply_link/ex_act(severity, direction)
+	return FALSE
+
+/obj/structure/medical_supply_link/Initialize()
+	. = ..()
+	RegisterSignal(src, COMSIG_STRUCTURE_WRENCHED, PROC_REF(do_clamp_animation))
+	RegisterSignal(src, COMSIG_STRUCTURE_UNWRENCHED, PROC_REF(do_unclamp_animation))
+	update_icon()
+
+/obj/structure/medical_supply_link/deconstruct(disassembled)
+	return ..()
+
+/obj/structure/medical_supply_link/proc/do_clamp_animation() // clamp and unclamp animations for when vendor is wrench over supply link
+	flick("medlink_clamping_notop", src)
+	addtimer(CALLBACK(src, PROC_REF(update_icon), 2.6 SECONDS))
+	update_icon()
+
+/obj/structure/medical_supply_link/proc/do_unclamp_animation()
+	flick("medlink_unclamping_notop", src)
+	addtimer(CALLBACK(src, PROC_REF(update_icon), 2.6 SECONDS))
+	update_icon()
+
+/obj/structure/medical_supply_link/update_icon()
+	if(locate(/obj/structure/machinery/cm_vending/sorted/medical) in loc)
+		icon_state = "medlink_clamped_notop"
+	else
+		icon_state = "medlink_unclamped_notop"
+
+// --- No Upper Tile / Green
+/obj/structure/medical_supply_link/notopg
+	name = "medilink supply port"
+	desc = "A complex network of pipes and machinery, linking to large storage systems below the deck. Medical vendors linked to this port will be able to infinitely restock supplies."
+	icon = 'icons/effects/warning_stripes.dmi'
+	icon_state = "medlink_unclamped_notopg"
+	anchored = TRUE
+	density = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+	plane = FLOOR_PLANE
+	layer = ABOVE_TURF_LAYER //It's the floor, man
+
+/obj/structure/medical_supply_link/ex_act(severity, direction)
+	return FALSE
+
+/obj/structure/medical_supply_link/Initialize()
+	. = ..()
+	RegisterSignal(src, COMSIG_STRUCTURE_WRENCHED, PROC_REF(do_clamp_animation))
+	RegisterSignal(src, COMSIG_STRUCTURE_UNWRENCHED, PROC_REF(do_unclamp_animation))
+	update_icon()
+
+/obj/structure/medical_supply_link/deconstruct(disassembled)
+	return ..()
+
+/obj/structure/medical_supply_link/proc/do_clamp_animation() // clamp and unclamp animations for when vendor is wrench over supply link
+	flick("medlink_clamping_notopg", src)
+	addtimer(CALLBACK(src, PROC_REF(update_icon), 2.6 SECONDS))
+	update_icon()
+
+/obj/structure/medical_supply_link/proc/do_unclamp_animation()
+	flick("medlink_unclamping_notopg", src)
+	addtimer(CALLBACK(src, PROC_REF(update_icon), 2.6 SECONDS))
+	update_icon()
+
+/obj/structure/medical_supply_link/update_icon()
+	if(locate(/obj/structure/machinery/cm_vending/sorted/medical) in loc)
+		icon_state = "medlink_clamped_notopg"
+	else
+		icon_state = "medlink_unclamped_notopg"
+
 //------------SORTED MEDICAL VENDORS---------------
 
 /obj/structure/machinery/cm_vending/sorted/medical

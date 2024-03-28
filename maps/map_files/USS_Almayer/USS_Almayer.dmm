@@ -24506,7 +24506,7 @@
 /area/almayer/medical/operating_room_two)
 "eiz" = (
 /obj/structure/machinery/cm_vending/sorted/medical/bolted,
-/obj/structure/medical_supply_link,
+/obj/structure/medical_supply_link/notop,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"
@@ -27447,7 +27447,7 @@
 	pixel_y = -32
 	},
 /obj/structure/machinery/cm_vending/sorted/medical/bolted,
-/obj/structure/medical_supply_link,
+/obj/structure/medical_supply_link/notopg,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -34242,7 +34242,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/cm_vending/sorted/medical/bolted,
-/obj/structure/medical_supply_link,
+/obj/structure/medical_supply_link/notop,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"
@@ -34661,7 +34661,7 @@
 /area/almayer/living/numbertwobunks)
 "hRm" = (
 /obj/structure/machinery/cm_vending/sorted/medical/bolted,
-/obj/structure/medical_supply_link,
+/obj/structure/medical_supply_link/notopg,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -40207,7 +40207,7 @@
 /area/almayer/engineering/lower/engine_core)
 "jPf" = (
 /obj/structure/machinery/cm_vending/sorted/medical/bolted,
-/obj/structure/medical_supply_link,
+/obj/structure/medical_supply_link/notopg,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -46915,7 +46915,7 @@
 	pixel_y = -7
 	},
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry,
-/obj/structure/medical_supply_link,
+/obj/structure/medical_supply_link/notop,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -57209,7 +57209,7 @@
 	pixel_x = 1
 	},
 /obj/structure/machinery/cm_vending/sorted/medical/bolted,
-/obj/structure/medical_supply_link,
+/obj/structure/medical_supply_link/notopg,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_corner"

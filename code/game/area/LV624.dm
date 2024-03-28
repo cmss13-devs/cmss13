@@ -408,6 +408,10 @@
 	name = "\improper Fitness Room"
 	icon_state = "fitness"
 
+/area/lv624/lazarus/command
+	name = "\improper Command Dome"
+	icon_state = "head_quarters"
+
 /area/lv624/lazarus/hydroponics
 	name = "\improper Hydroponics"
 	icon_state = "hydro"

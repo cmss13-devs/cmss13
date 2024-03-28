@@ -270,6 +270,9 @@
 		var/obj/item/grab/G = W
 		if(istype(G.grabbed_thing, /mob/living))
 			var/mob/living/M = G.grabbed_thing
+			if(!src.Adjacent(M))
+				visible_message(SPAN_DANGER("[M] is too far to place onto [src]"))
+				return
 			if(user.a_intent == INTENT_HARM)
 				if(user.grab_level > GRAB_AGGRESSIVE)
 					if (prob(15))

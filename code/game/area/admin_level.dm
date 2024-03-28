@@ -113,6 +113,10 @@
 	name = "UPP Station"
 	icon_state = "green"
 
+/area/adminlevel/ert_station/pizza_station
+	name = "Pizza Galaxy"
+	icon_state = "red"
+
 /area/adminlevel/ert_station/clf_station
 	name = "CLF Station"
 	icon_state = "white"

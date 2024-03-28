@@ -1,8 +1,0 @@
-author: "Huffie56"
-delete-after: True
-changes:
-  - refactor: "refactored areas replaced stern hallway by aft added two new hallway area(fore, midship)"
-  - refactor: "refactored areas replaced midship maintenance by for and added two new maintenance  areas(fore, aft) with each starboard and port side."
-  - maptweak: "removed all the emergency shutter that weren't at the borders of each areas."
-  - maptweak: "added back the bear belt in a closet in a dormitory."
-  - maptweak: "reconnect some air  pipe in an hallway north upper engi."

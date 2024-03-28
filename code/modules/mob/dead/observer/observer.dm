@@ -33,7 +33,9 @@
 	layer = ABOVE_FLY_LAYER
 	stat = DEAD
 	mob_flags = KNOWS_TECHNOLOGY
-	var/adminlarva = FALSE
+
+	/// If the observer is an admin, are they excluded from the xeno queue?
+	var/admin_larva_protection = TRUE // Enabled by default
 	var/ghostvision = TRUE
 	var/can_reenter_corpse
 	var/started_as_observer //This variable is set to 1 when you enter the game as an observer.
@@ -809,10 +811,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set category = "Ghost.Settings"
 
 	if(client)
-		if(client.view != GLOB.world_view_size)
-			client.change_view(GLOB.world_view_size)
-		else
+		// Check the current zoom level and toggle to the next level cyclically
+		if (client.view == GLOB.world_view_size)
 			client.change_view(14)
+		else if (client.view == 14)
+			client.change_view(28)
+		else
+			client.change_view(GLOB.world_view_size)
 
 
 /mob/dead/observer/verb/toggle_darkness()

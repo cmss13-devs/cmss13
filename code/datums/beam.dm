@@ -175,6 +175,12 @@
 	strength = EYE_PROTECTION_FLASH
 	probability = 35
 
+/obj/effect/ebeam/laser/purple
+	name = "purple laser beam"
+	alpha = 255
+	strength = EYE_PROTECTION_FLASH
+	probability = 45
+
 /obj/effect/ebeam/laser/weak
 	name = "weak laser beam"
 	alpha = 150

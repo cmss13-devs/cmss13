@@ -65,6 +65,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 	var/chat_display_preferences = CHAT_TYPE_ALL
 	var/item_animation_pref_level = SHOW_ITEM_ANIMATIONS_ALL
 	var/pain_overlay_pref_level = PAIN_OVERLAY_BLURRY
+	var/flash_overlay_pref = FLASH_OVERLAY_WHITE
+	var/crit_overlay_pref = CRIT_OVERLAY_WHITE
 	var/UI_style_color = "#ffffff"
 	var/UI_style_alpha = 255
 	var/View_MC = FALSE
@@ -593,6 +595,8 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 			dat += "<b>Play Announcement Sounds As Ghost:</b> <a href='?_src_=prefs;preference=hear_observer_announcements'><b>[(toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Toggle Meme or Atmospheric Sounds:</b> <a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_admin_sound_types'>Toggle</a><br>"
 			dat += "<b>Set Eye Blur Type:</b> <a href='?src=\ref[src];action=proccall;procpath=/client/proc/set_eye_blur_type'>Set</a><br>"
+			dat += "<b>Set Flash Type:</b> <a href='?src=\ref[src];action=proccall;procpath=/client/proc/set_flash_type'>Set</a><br>"
+			dat += "<b>Set Crit Type:</b> <a href='?src=\ref[src];action=proccall;procpath=/client/proc/set_crit_type'>Set</a><br>"
 			dat += "<b>Play Lobby Music:</b> <a href='?_src_=prefs;preference=lobby_music'><b>[(toggles_sound & SOUND_LOBBY) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Play VOX Announcements:</b> <a href='?_src_=prefs;preference=sound_vox'><b>[(hear_vox) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Default Ghost Night Vision Level:</b> <a href='?_src_=prefs;preference=ghost_vision_pref;task=input'><b>[ghost_vision_pref]</b></a><br>"

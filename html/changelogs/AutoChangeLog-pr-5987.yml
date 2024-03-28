@@ -1,0 +1,4 @@
+author: "blackdragonTOW"
+delete-after: True
+changes:
+  - code_imp: "Added a third level of zoom to the Toggle Zoom verb"

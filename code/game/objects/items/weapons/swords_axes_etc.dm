@@ -23,7 +23,7 @@
 	icon_state = "baton"
 	item_state = "classic_baton"
 	flags_equip_slot = SLOT_WAIST
-	force = MELEE_FORCE_WEAK
+	force = MELEE_FORCE_NORMAL
 
 /obj/item/weapon/classic_baton/attack(mob/M as mob, mob/living/user as mob)
 	if(!..())

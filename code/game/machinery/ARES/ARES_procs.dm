@@ -29,6 +29,10 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	var/datum/ares_datacore/datacore
 
 	var/list/obj/structure/machinery/computer/working_joe/ticket_computers = list()
+	/// Linked security gas vents.
+	var/list/linked_vents = list()
+	/// The tag number for generated vent labels, if none is manually set.
+	var/tag_num = 1
 
 	/// Working Joe stuff
 	var/list/tickets_maintenance = list()

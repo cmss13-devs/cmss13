@@ -141,6 +141,23 @@
 			requesting_access += access_ticket.ticket_name
 	data["access_tickets"] = logged_access
 
+	var/list/security_vents = list()
+	for(var/obj/structure/pipes/vents/pump/no_boom/gas/vent in link.linked_vents)
+		if(!vent.vent_tag)
+			vent.vent_tag = "Security Vent #[link.tag_num]"
+			link.tag_num++
+
+		var/list/current_vent = list()
+		var/is_available = TRUE
+		if(!COOLDOWN_FINISHED(vent, vent_trigger_cooldown))
+			is_available = FALSE
+		current_vent["vent_tag"] = vent.vent_tag
+		current_vent["ref"] = "\ref[vent]"
+		current_vent["available"] = is_available
+		security_vents += list(current_vent)
+
+	data["security_vents"] = security_vents
+
 	return data
 
 /obj/structure/machinery/computer/working_joe/ui_status(mob/user, datum/ui_state/state)
@@ -211,6 +228,9 @@
 		if("page_maintenance")
 			last_menu = current_menu
 			current_menu = "maint_claim"
+		if("page_core_gas")
+			last_menu = current_menu
+			current_menu = "core_security_gas"
 
 		if("toggle_sound")
 			notify_sounds = !notify_sounds
@@ -412,6 +432,25 @@
 					to_chat(id_owner, SPAN_WARNING("AI visitation access rejected."))
 					playsound_client(id_owner?.client, 'sound/machines/pda_ping.ogg', src, 25, 0)
 			return TRUE
+
+		if("trigger_vent")
+			playsound = FALSE
+			var/obj/structure/pipes/vents/pump/no_boom/gas/sec_vent = locate(params["vent"])
+			if(!istype(sec_vent) || sec_vent.welded)
+				to_chat(operator, SPAN_WARNING("ERROR: Gas release failure."))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
+			if(!COOLDOWN_FINISHED(sec_vent, vent_trigger_cooldown))
+				to_chat(operator, SPAN_WARNING("ERROR: Insufficient gas reserve for this vent."))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
+			to_chat(operator, SPAN_WARNING("Initiating gas release from [sec_vent.vent_tag]."))
+			playsound(src, 'sound/machines/chime.ogg', 15, 1)
+			COOLDOWN_START(sec_vent, vent_trigger_cooldown, COOLDOWN_ARES_VENT)
+			ares_apollo_talk("Nerve Gas release imminent from [sec_vent.vent_tag].")
+			log_ares_security("Nerve Gas Release", "[last_login] released Nerve Gas from Vent '[sec_vent.vent_tag]'.")
+			sec_vent.create_gas(VENT_GAS_CN20_XENO, 6, 5 SECONDS)
+			log_admin("[key_name(operator)] released nerve gas from Vent '[sec_vent.vent_tag]' via ARES.")
 
 	if(playsound)
 		playsound(src, "keyboard_alt", 15, 1)

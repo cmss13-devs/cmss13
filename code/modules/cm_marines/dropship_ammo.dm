@@ -422,7 +422,7 @@
 		fire_spread(impact, create_cause_data(initial(name), source_mob), 3, 25, 20, "#EE6515")
 
 /obj/structure/ship_ammo/sentry
-	name = "\improper A/C-49-expl_particles Air Deployable Sentry"
+	name = "\improper A/C-49-P Air Deployable Sentry"
 	desc = "An omni-directional sentry, capable of defending an area from lightly armored hostile incursion. Can be loaded into the LAG-14 Internal Sentry Launcher."
 	icon_state = "launchable_sentry"
 	equipment_type = /obj/structure/dropship_equipment/weapon/launch_bay

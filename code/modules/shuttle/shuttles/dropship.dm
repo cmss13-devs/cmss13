@@ -326,3 +326,44 @@
 /datum/map_template/shuttle/normandy
 	name = "Normandy"
 	shuttle_id = DROPSHIP_NORMANDY
+
+/obj/docking_port/stationary/marine_dropship/airlock
+	name = "Generic Airlock Landing Zone"
+	var/airlock_area
+	var/airlock_id
+
+/obj/docking_port/stationary/marine_dropship/airlock/proc/get_doors()
+	var/list/door_list = list()
+
+	for(var/area/target_area in world)
+		if(!istype(target_area, airlock_area))
+			continue
+
+		for(var/obj/structure/machinery/door/door in target_area)
+			if(airlock_id && airlock_id == door.id)
+				door_list += list(door)
+
+	return door_list
+
+/obj/docking_port/stationary/marine_dropship/airlock/on_arrival(obj/docking_port/mobile/arriving_shuttle)
+	. = ..()
+
+	var/datum/door_controller/single/door_control = new()
+	door_control.doors = get_doors()
+	door_control.control_doors("open", FALSE, FALSE)
+	qdel(door_control)
+
+/obj/docking_port/stationary/marine_dropship/airlock/on_departure(obj/docking_port/mobile/departing_shuttle)
+	. = ..()
+
+	var/datum/door_controller/single/door_control = new()
+	door_control.doors = get_doors()
+	door_control.control_doors("force-lock-launch", TRUE)
+	qdel(door_control)
+
+/obj/docking_port/stationary/marine_dropship/airlock/lz1
+	name = "LZ1 Airlock Landing Zone"
+	id = DROPSHIP_LZ1
+	auto_open = TRUE
+	airlock_area = /area/fiorina/lz/near_lzI
+	airlock_id = "LZ1_Lockdown_Classic"

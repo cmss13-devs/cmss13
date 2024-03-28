@@ -62,3 +62,6 @@ endmap
 
 map whiskey_outpost_v2
 endmap
+
+map fop_v1_classic
+endmap

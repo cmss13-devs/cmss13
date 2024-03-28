@@ -31,7 +31,6 @@
 	icon_state = "budget_ds"
 	desc = "Distributes resources to the dropship fabricator."
 
-	announce_name = "ALMAYER SPECIAL ASSETS AUTHORIZED"
 	announce_message = "Additional dropship part fabricator points have been authorised for this operation."
 
 	required_points = 12

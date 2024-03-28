@@ -83,7 +83,10 @@
 		modify_acid(acid_slash_regen_standing)
 
 /datum/behavior_delegate/runner_acider/on_life()
-	modify_acid(acid_passive_regen)
+	if(acid_amount > 400)
+		return
+	else
+		modify_acid(acid_passive_regen)
 	if(!bound_xeno)
 		return
 	if(bound_xeno.stat == DEAD)

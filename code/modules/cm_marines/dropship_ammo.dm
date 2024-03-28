@@ -382,18 +382,20 @@
 	transferable_ammo = TRUE
 	point_cost = 300
 	fire_mission_delay = 3 //high cooldown
+	explosion_strenght = 200
+	explosion_falloff = 44
 
 /obj/structure/ship_ammo/minirocket/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	impact.ceiling_debris_check(2)
 	spawn(5)
-		cell_explosion(impact, 200, 44, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob))
-		var/datum/effect_system/expl_particles/P = new/datum/effect_system/expl_particles()
-		P.set_up(4, 0, impact)
-		P.start()
+		cell_explosion(impact, explosion_strenght, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob))
+		var/datum/effect_system/expl_particles/expl_particles = new/datum/effect_system/expl_particles()
+		expl_particles.set_up(4, 0, impact)
+		expl_particles.start()
 		spawn(5)
-			var/datum/effect_system/smoke_spread/S = new/datum/effect_system/smoke_spread()
-			S.set_up(1,0,impact,null)
-			S.start()
+			var/datum/effect_system/smoke_spread/smoke = new/datum/effect_system/smoke_spread()
+			smoke.set_up(1,0,impact,null)
+			smoke.start()
 		if(!ammo_count && loc)
 			qdel(src) //deleted after last minirocket is fired and impact the ground.
 
@@ -410,8 +412,9 @@
 	name = "\improper AGR-59-I 'Mini-Mike'"
 	desc = "The AGR-59-I 'Mini-Mike' incendiary minirocket is a cheap and efficient means of putting hate down range AND setting them on fire! Though rockets lack a guidance package, it makes up for it in ammunition count. Can be loaded into the LAU-229 Rocket Pod."
 	icon_state = "minirocket_inc"
-	point_cost = 500
-	fire_mission_delay = 3 //high cooldown
+	point_cost = 350
+	explosion_strenght = 130
+	explosion_falloff = 30
 
 /obj/structure/ship_ammo/minirocket/incendiary/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	..()
@@ -419,7 +422,7 @@
 		fire_spread(impact, create_cause_data(initial(name), source_mob), 3, 25, 20, "#EE6515")
 
 /obj/structure/ship_ammo/sentry
-	name = "\improper A/C-49-P Air Deployable Sentry"
+	name = "\improper A/C-49-expl_particles Air Deployable Sentry"
 	desc = "An omni-directional sentry, capable of defending an area from lightly armored hostile incursion. Can be loaded into the LAG-14 Internal Sentry Launcher."
 	icon_state = "launchable_sentry"
 	equipment_type = /obj/structure/dropship_equipment/weapon/launch_bay

@@ -13256,7 +13256,7 @@
 	},
 /area/bigredv2/outside/virology)
 "aNa" = (
-/obj/structure/closet/l3closet/general,
+/obj/structure/closet/l3closet/virology,
 /turf/open/floor{
 	icon_state = "white"
 	},

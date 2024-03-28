@@ -382,8 +382,8 @@
 	transferable_ammo = TRUE
 	point_cost = 300
 	fire_mission_delay = 3 //high cooldown
-	explosion_strength = 200
-	explosion_falloff = 44
+	var/explosion_strength = 200
+	var/explosion_falloff = 44
 
 /obj/structure/ship_ammo/minirocket/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	impact.ceiling_debris_check(2)

@@ -167,7 +167,7 @@
 			var/mob/M = G.grabbed_thing
 			var/atom/blocker = LinkBlocked(user, user.loc, loc)
 			if(!src.Adjacent(M))
-				visible_message(SPAN_DANGER("[M] is too far to place onto the [src]"))
+				visible_message(SPAN_DANGER("[M] is too far to place onto [src]."))
 				return FALSE
 			if(blocker)
 				to_chat(user, SPAN_WARNING("\The [blocker] is in the way!"))

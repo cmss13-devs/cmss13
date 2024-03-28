@@ -377,7 +377,7 @@
 	else
 		to_chat(user, SPAN_WARNING("You cut \the [src] away with \the [attacking_item]."))
 
-	var/damage = attacking_item.force / 3
+	var/damage = (attacking_item.force * attacking_item.demolition_mod) / 3
 	playsound(loc, "alien_resin_break", 25)
 
 	if(iswelder(attacking_item))

@@ -84,9 +84,9 @@
 		if(hasvar(W,"force") && hasvar(W,"damtype"))
 			switch(W.damtype)
 				if("fire")
-					src.health -= W.force * fire_dam_coeff
+					health -= W.force * W.demolition_mod * fire_dam_coeff
 				if("brute")
-					src.health -= W.force * brute_dam_coeff
+					health -= W.force * W.demolition_mod * brute_dam_coeff
 			..()
 			healthcheck()
 		else

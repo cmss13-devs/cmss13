@@ -219,6 +219,9 @@ type StripMenuItem =
       | {
           obscured: ObscuringLevel;
         }
+      | {
+          no_item_action: string;
+        }
     ) &
       Partial<Interactable>);
 
@@ -307,6 +310,9 @@ export const StripMenu = (props, context) => {
                     );
 
                     tooltip = `obscured ${slot.displayName}`;
+                  } else if ('no_item_action' in item) {
+                    tooltip = slot.displayName;
+                    alternateAction = ALTERNATE_ACTIONS[item.no_item_action];
                   }
 
                   return (

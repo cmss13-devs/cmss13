@@ -189,6 +189,9 @@
 	/// The ITEM_SLOT_* to equip to.
 	var/item_slot
 
+/datum/strippable_item/proc/has_no_item_alt_action()
+	return FALSE
+
 /datum/strippable_item/mob_item_slot/get_item(atom/source)
 	if (!ismob(source))
 		return null
@@ -357,6 +360,9 @@
 
 		var/obj/item/item = item_data.get_item(owner)
 		if (isnull(item))
+			if (item_data.has_no_item_alt_action())
+				LAZYINITLIST(result)
+				result["no_item_action"] = item_data.get_alternate_action(owner, user)
 			items[strippable_key] = result
 			continue
 
@@ -489,7 +495,7 @@
 				return
 
 			var/item = strippable_item.get_item(owner)
-			if (isnull(item))
+			if (isnull(item) && !strippable_item.has_no_item_alt_action())
 				return
 
 			if (isnull(strippable_item.get_alternate_action(owner, user)))

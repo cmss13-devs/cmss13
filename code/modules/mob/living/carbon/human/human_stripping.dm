@@ -145,6 +145,9 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 	key = STRIPPABLE_ITEM_SUIT
 	item_slot = SLOT_OCLOTHING
 
+/datum/strippable_item/mob_item_slot/suit/has_no_item_alt_action()
+	return TRUE
+
 /datum/strippable_item/mob_item_slot/suit/get_alternate_action(atom/source, mob/user)
 	if(!ishuman(source))
 		return

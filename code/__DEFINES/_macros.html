@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>code&#x2F;__DEFINES&#x2F;_macros.dm - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="code/__DEFINES/_macros.html#define">Define Details</a></header>
+<main>
+<h1>code/__DEFINES/_macros.dm 
+            <a href="https://github.com/cmss13-devs/cmss13/blob/701d7ccdc2d53bcdf0690caba38c2483042292c6/code/__DEFINES/_macros.dm">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;_macros.dm"/></a></h1>
+
+<table class="summary" cellspacing="0">
+        <tr><th><a href="code/__DEFINES/_macros.html#define/calculateticks">calculateticks</a></th><td>Converts your ticks to proper tenths.</td></tr>
+        <tr><th><a href="code/__DEFINES/_macros.html#define/tcheck">tcheck</a></th><td>Shorthand of checking and then sleeping a process based on world CPU.</td></tr>
+        <tr><th><a href="code/__DEFINES/_macros.html#define/text_ref">text_ref</a></th><td>Takes a datum as input, returns its ref string, or a cached version of it
+This allows us to cache \ref creation, which ensures it'll only ever happen once per datum, saving string tree time
+It is slightly less optimal then a []'d datum, but the cost is massively outweighed by the potential savings
+It will only work for datums mind, for datum reasons
+: because of the embedded typecheck</td></tr></table><h2 id="define">Define Details</h2>
+<h3 id="define/calculateticks"><aside class="declaration">#define </aside>calculateticks
+            <aside>(x)</aside>
+            <a href="https://github.com/cmss13-devs/cmss13/blob/701d7ccdc2d53bcdf0690caba38c2483042292c6/code/__DEFINES/_macros.dm#L5">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;_macros.dm 5"/></a>
+    </h3>
+    <p>Converts your ticks to proper tenths.</p><h3 id="define/tcheck"><aside class="declaration">#define </aside>tcheck
+            <aside>(CPU, TOSLEEP)</aside>
+            <a href="https://github.com/cmss13-devs/cmss13/blob/701d7ccdc2d53bcdf0690caba38c2483042292c6/code/__DEFINES/_macros.dm#L7">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;_macros.dm 7"/></a>
+    </h3>
+    <p>Shorthand of checking and then sleeping a process based on world CPU.</p><h3 id="define/text_ref"><aside class="declaration">#define </aside>text_ref
+            <aside>(datum)</aside>
+            <a href="https://github.com/cmss13-devs/cmss13/blob/701d7ccdc2d53bcdf0690caba38c2483042292c6/code/__DEFINES/_macros.dm#L20">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;_macros.dm 20"/></a>
+    </h3>
+    <p>Takes a datum as input, returns its ref string, or a cached version of it
+This allows us to cache \ref creation, which ensures it'll only ever happen once per datum, saving string tree time
+It is slightly less optimal then a []'d datum, but the cost is massively outweighed by the potential savings
+It will only work for datums mind, for datum reasons
+: because of the embedded typecheck</p></main>
+<footer>
+    colonialmarines.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/701d7ccdc2d53bcdf0690caba38c2483042292c6">701d7cc</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

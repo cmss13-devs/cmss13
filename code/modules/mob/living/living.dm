@@ -229,7 +229,7 @@
 	if(pulledby.grab_level || (!pulledby.grab_level && (HAS_TRAIT(pulledby, TRAIT_SUPER_STRONG) && !HAS_TRAIT(user, TRAIT_SUPER_STRONG))))
 		/// Chance for person to break free of grip, defaults to 50.
 		var/chance = 50
-		if(HAS_TRAIT(user, TRAIT_SUPER_STRONG))
+		if(HAS_TRAIT(user, TRAIT_SUPER_STRONG) && !isxeno(pulledby)) // no extra chance to resist warrior grabs
 			chance += 30 // you are strong, you can overpower them easier
 		if(HAS_TRAIT(pulledby, TRAIT_SUPER_STRONG))
 			chance -= 30 // stronger grip

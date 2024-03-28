@@ -44,7 +44,7 @@
 /area/bigredv2/outside/filtration_cave_cas)
 "el" = (
 /obj/structure/surface/table/almayer,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor,
 /area/bigred/ground/security)
 "ge" = (

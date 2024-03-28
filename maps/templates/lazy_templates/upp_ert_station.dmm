@@ -828,11 +828,11 @@
 "me" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clothing/suit/straight_jacket,
-/obj/item/handcuffs{
+/obj/item/restraint/handcuffs{
 	pixel_x = -4;
 	pixel_y = 1
 	},
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},

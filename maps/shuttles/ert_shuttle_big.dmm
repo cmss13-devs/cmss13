@@ -84,9 +84,9 @@
 	pixel_x = -2;
 	pixel_y = 3
 	},
-/obj/item/handcuffs,
-/obj/item/handcuffs,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
+/obj/item/restraint/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},

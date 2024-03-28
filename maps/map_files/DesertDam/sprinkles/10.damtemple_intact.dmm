@@ -139,7 +139,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/legcuffs/beartrap{
+/obj/item/restraint/legcuffs/beartrap{
 	pixel_x = -1;
 	pixel_y = 8
 	},

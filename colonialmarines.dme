@@ -492,6 +492,7 @@
 #include "code\datums\elements\bullet_trait\incendiary.dm"
 #include "code\datums\elements\bullet_trait\penetrating\heavy.dm"
 #include "code\datums\elements\bullet_trait\penetrating\penetrating.dm"
+#include "code\datums\elements\bullet_trait\penetrating\weak.dm"
 #include "code\datums\elements\traitbound\_traitbound.dm"
 #include "code\datums\elements\traitbound\crawler.dm"
 #include "code\datums\elements\traitbound\gun_silenced.dm"

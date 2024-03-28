@@ -109,8 +109,6 @@
 	containername = "M42A Incendiary Magazine Crate"
 	group = "Weapons Specialist Ammo"
 
-//XM43E1 - Disabled during testing per request.
-/*
 /datum/supply_packs/ammo_amr_marksman
 	name = "XM43E1 anti-materiel rifle marksman magazines crate (x5)"
 	contains = list(
@@ -122,9 +120,9 @@
 	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
-	containername = "XM43E1 Anti-Materiel Magazine Crate"
-	group = "Specialist Ammo"
-*/
+	containername = "XM43E1 Marksman Magazine Crate"
+	group = "Weapons Specialist Ammo"
+
 //M4RA
 
 /datum/supply_packs/ammo_scout_mix

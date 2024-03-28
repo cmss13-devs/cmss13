@@ -525,6 +525,8 @@
 	interact_item.add_fingerprint(src)
 	if(do_after(src, get_strip_delay(src, target_mob), INTERRUPT_ALL, BUSY_ICON_GENERIC, target_mob, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 		if(interact_item && Adjacent(target_mob) && interact_item == target_mob.get_item_by_slot(slot_to_process))
+			if(interact_item.light_on)
+				interact_item.turn_light(toggle_on = FALSE)
 			target_mob.drop_inv_item_on_ground(interact_item)
 			log_interact(src, target_mob, "[key_name(src)] removed [key_name(target_mob)]'s [interact_item.name] ([slot_to_process]) successfully.")
 

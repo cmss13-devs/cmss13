@@ -201,6 +201,7 @@
 /obj/structure/mineral_door/wood
 	mineralType = "wood"
 	hardness = 1
+	icon_state = "wood"
 
 /obj/structure/mineral_door/wood/Open()
 	isSwitchingStates = 1
@@ -235,4 +236,9 @@
 	density = FALSE
 	opacity = FALSE
 	state = 1
+	icon_state = "woodopen"
+
+/obj/structure/mineral_door/wood/open/Initialize()
+	. = ..()
+
 	icon_state = "woodopen"

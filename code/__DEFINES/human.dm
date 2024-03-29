@@ -178,7 +178,7 @@
 /// If you're hit by an acid DoT
 #define EFFECTS_LAYER 1
 
-#define TOTAL_LAYERS 42
+#define TOTAL_LAYERS 64
 //////////////////////////////////
 
 //Synthetic Defines

@@ -28,5 +28,10 @@
 	return FALSE
 
 /datum/job/special/uscm/ai_tech/generate_entry_message()
-	entry_message_body = "You are a visiting AI Service Technician aboard the [MAIN_SHIP_NAME]. Your goal is to ensure the onboard AI, [MAIN_AI_SYSTEM], is operating effectively. Your job involves heavy roleplay and requires you to behave like a high-ranking officer and to stay in character at all times. You are required to adhere to and obey <a href='"+LAW_PLACEHOLDER+"'>Marine Law</a>. Failure to do so may result in punitive action against you. Godspeed."
+	entry_message_body = "You are a USCM AI Service Technician temporarily assigned to the [MAIN_SHIP_NAME]. Your goal is to ensure the onboard AI, [MAIN_AI_SYSTEM], is operating effectively. Your job involves heavy roleplay and requires you to behave like a high-ranking officer and to stay in character at all times. You are required to adhere to and obey <a href='"+LAW_PLACEHOLDER+"'>Marine Law</a>. Failure to do so may result in punitive action against you. Godspeed."
 	return ..()
+
+/obj/effect/landmark/start/aist
+	name = JOB_AI_TECH
+	icon_state = "aist_spawn"
+	job = /datum/job/special/uscm/ai_tech

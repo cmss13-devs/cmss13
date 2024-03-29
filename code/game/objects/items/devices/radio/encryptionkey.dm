@@ -12,6 +12,7 @@
 	var/abstract = FALSE
 
 /obj/item/device/encryptionkey/binary
+	name = "APOLLO relay key"
 	icon_state = "binary_key"
 	translate_apollo = TRUE
 

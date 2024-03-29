@@ -559,6 +559,11 @@
 	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/cdrcom)
 	volume = RADIO_VOLUME_CRITICAL
 
+/obj/item/device/radio/headset/almayer/mcom/cdrcom/aist
+	name = "marine AI service technician headset"
+	desc = "Issued to USCM AISTs. Allows the wearer to listen to, and broadcast over, the APOLLO Link."
+	initial_keys = list(/obj/item/device/encryptionkey/binary, /obj/item/device/encryptionkey/cmpcom/cdrcom)
+
 /obj/item/device/radio/headset/almayer/mcom/synth
 	name = "marine synth headset"
 	desc = "Issued only to USCM synthetics. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel"

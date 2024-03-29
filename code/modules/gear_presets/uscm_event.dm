@@ -473,7 +473,7 @@
 	faction_group = list(FACTION_MARINE)
 	assignment = JOB_AI_TECH
 	rank = JOB_AI_TECH
-	paygrade = PAY_SHORT_MO3
+	paygrade = PAY_SHORT_MO2
 	role_comm_title = "AIST"
 	skills = /datum/skills/CE
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_GERMAN, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
@@ -512,7 +512,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/flash(new_human), WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight(new_human), WEAR_J_STORE)
 
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom/aist(new_human), WEAR_L_EAR)
 
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/sling(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/device/ai_tech_pda(new_human.back), WEAR_IN_L_STORE)

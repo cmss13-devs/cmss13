@@ -1,5 +1,5 @@
 /obj/item/device/ai_tech_pda
-	icon = 'icons/obj/items/synth/wj_pda.dmi'
+	icon = 'icons/obj/items/synth/ait_pda.dmi'
 	name = "T411 AIDT"
 	desc = "Artifical Intelligence Diagnostic Tablet model T411. Built to withstand a nuclear bomb."
 	icon_state = "karnak_off"

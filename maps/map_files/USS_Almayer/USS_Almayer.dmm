@@ -24844,6 +24844,12 @@
 /obj/structure/window/framed/almayer,
 /turf/open/floor/plating,
 /area/almayer/living/grunt_rnr)
+"ejS" = (
+/obj/structure/flora/pottedplant/random,
+/turf/open/floor/almayer/aicore/glowing/no_build{
+	icon_state = "w_ai_silver"
+	},
+/area/almayer/command/aist_office)
 "ejV" = (
 /obj/structure/closet,
 /obj/item/device/flashlight/pen,
@@ -36899,8 +36905,15 @@
 /turf/open/floor/plating,
 /area/almayer/maint/lower/constr)
 "ive" = (
-/obj/structure/machinery/keycard_auth{
-	pixel_y = 25
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = 8;
+	pixel_y = 18
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 18
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build{
 	icon_state = "w_ai_silver";
@@ -59668,6 +59681,18 @@
 /area/almayer/living/grunt_rnr)
 "qoZ" = (
 /obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/folder/white{
+	pixel_x = -12
+	},
+/obj/item/paper_bin/uscm{
+	pixel_y = 6
+	},
+/obj/item/tool/pen/fountain{
+	pixel_y = 3
+	},
+/obj/item/tool/pen/fountain{
+	pixel_y = 9
+	},
 /turf/open/floor/almayer/aicore/glowing/no_build{
 	icon_state = "w_ai_silver"
 	},
@@ -69855,6 +69880,9 @@
 /obj/structure/machinery/computer/view_objectives{
 	pixel_x = 15
 	},
+/obj/structure/machinery/keycard_auth{
+	pixel_y = 25
+	},
 /turf/open/floor/almayer/aicore/glowing/no_build{
 	icon_state = "w_ai_silver";
 	dir = 1
@@ -72332,6 +72360,7 @@
 	},
 /area/almayer/hallways/lower/port_midship_hallway)
 "uGA" = (
+/obj/structure/flora/pottedplant/random,
 /turf/open/floor/almayer/aicore/glowing/no_build{
 	icon_state = "w_ai_silver";
 	dir = 6
@@ -138326,7 +138355,7 @@ udd
 fFc
 eEU
 sYp
-hJR
+ejS
 qpq
 tLY
 wqm
@@ -138732,7 +138761,7 @@ udd
 fFc
 vjY
 bjM
-hJR
+ejS
 qpq
 gvS
 mLd

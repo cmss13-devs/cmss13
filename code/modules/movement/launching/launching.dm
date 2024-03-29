@@ -182,7 +182,6 @@
 
 	add_temp_pass_flags(pass_flags)
 
-	var/turf/start_turf = get_step_towards(src, LM.target)
 	var/last_loc = loc
 
 	var/early_exit = FALSE

@@ -194,6 +194,15 @@
 	flags_armor_protection = 0
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
+/obj/item/clothing/glasses/eyepatch_white
+	name = "white eyepatch"
+	gender = NEUTER
+	desc = "A white rectangular eyepatch made out of cloth, ostensibly for medical purposes. Still, even while recovering from an injury, do not underestimate the power of the Tyrant Eye!"
+	icon_state = "eyepatch_white"
+	item_state = "eyepatch_white"
+	flags_armor_protection = 0
+	flags_equip_slot = SLOT_EYES|SLOT_FACE
+
 /obj/item/clothing/glasses/monocle
 	name = "monocle"
 	gender = NEUTER

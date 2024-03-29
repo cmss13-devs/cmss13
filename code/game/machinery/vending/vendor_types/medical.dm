@@ -41,7 +41,7 @@
 		icon_state = "medlink_unclamped"
 
 // --- No Upper Tile / White
-/obj/structure/medical_supply_link/notop
+/obj/structure/medical_supply_link_notop
 	name = "medilink supply port"
 	desc = "A complex network of pipes and machinery, linking to large storage systems below the deck. Medical vendors linked to this port will be able to infinitely restock supplies."
 	icon = 'icons/effects/warning_stripes.dmi'
@@ -53,36 +53,36 @@
 	plane = FLOOR_PLANE
 	layer = ABOVE_TURF_LAYER //It's the floor, man
 
-/obj/structure/medical_supply_link/ex_act(severity, direction)
+/obj/structure/medical_supply_link_notop/ex_act(severity, direction)
 	return FALSE
 
-/obj/structure/medical_supply_link/Initialize()
+/obj/structure/medical_supply_link_notop/Initialize()
 	. = ..()
 	RegisterSignal(src, COMSIG_STRUCTURE_WRENCHED, PROC_REF(do_clamp_animation))
 	RegisterSignal(src, COMSIG_STRUCTURE_UNWRENCHED, PROC_REF(do_unclamp_animation))
 	update_icon()
 
-/obj/structure/medical_supply_link/deconstruct(disassembled)
+/obj/structure/medical_supply_link_notop/deconstruct(disassembled)
 	return ..()
 
-/obj/structure/medical_supply_link/proc/do_clamp_animation() // clamp and unclamp animations for when vendor is wrench over supply link
+/obj/structure/medical_supply_link_notop/proc/do_clamp_animation() // clamp and unclamp animations for when vendor is wrench over supply link
 	flick("medlink_clamping_notop", src)
 	addtimer(CALLBACK(src, PROC_REF(update_icon), 2.6 SECONDS))
 	update_icon()
 
-/obj/structure/medical_supply_link/proc/do_unclamp_animation()
+/obj/structure/medical_supply_link_notop/proc/do_unclamp_animation()
 	flick("medlink_unclamping_notop", src)
 	addtimer(CALLBACK(src, PROC_REF(update_icon), 2.6 SECONDS))
 	update_icon()
 
-/obj/structure/medical_supply_link/update_icon()
+/obj/structure/medical_supply_link_notop/update_icon()
 	if(locate(/obj/structure/machinery/cm_vending/sorted/medical) in loc)
 		icon_state = "medlink_clamped_notop"
 	else
 		icon_state = "medlink_unclamped_notop"
 
 // --- No Upper Tile / Green
-/obj/structure/medical_supply_link/notopg
+/obj/structure/medical_supply_link_notopg
 	name = "medilink supply port"
 	desc = "A complex network of pipes and machinery, linking to large storage systems below the deck. Medical vendors linked to this port will be able to infinitely restock supplies."
 	icon = 'icons/effects/warning_stripes.dmi'
@@ -94,29 +94,29 @@
 	plane = FLOOR_PLANE
 	layer = ABOVE_TURF_LAYER //It's the floor, man
 
-/obj/structure/medical_supply_link/ex_act(severity, direction)
+/obj/structure/medical_supply_link_notopg/ex_act(severity, direction)
 	return FALSE
 
-/obj/structure/medical_supply_link/Initialize()
+/obj/structure/medical_supply_link_notopg/Initialize()
 	. = ..()
 	RegisterSignal(src, COMSIG_STRUCTURE_WRENCHED, PROC_REF(do_clamp_animation))
 	RegisterSignal(src, COMSIG_STRUCTURE_UNWRENCHED, PROC_REF(do_unclamp_animation))
 	update_icon()
 
-/obj/structure/medical_supply_link/deconstruct(disassembled)
+/obj/structure/medical_supply_link_notopg/deconstruct(disassembled)
 	return ..()
 
-/obj/structure/medical_supply_link/proc/do_clamp_animation() // clamp and unclamp animations for when vendor is wrench over supply link
+/obj/structure/medical_supply_link_notopg/proc/do_clamp_animation() // clamp and unclamp animations for when vendor is wrench over supply link
 	flick("medlink_clamping_notopg", src)
 	addtimer(CALLBACK(src, PROC_REF(update_icon), 2.6 SECONDS))
 	update_icon()
 
-/obj/structure/medical_supply_link/proc/do_unclamp_animation()
+/obj/structure/medical_supply_link_notopg/proc/do_unclamp_animation()
 	flick("medlink_unclamping_notopg", src)
 	addtimer(CALLBACK(src, PROC_REF(update_icon), 2.6 SECONDS))
 	update_icon()
 
-/obj/structure/medical_supply_link/update_icon()
+/obj/structure/medical_supply_link_notopg/update_icon()
 	if(locate(/obj/structure/machinery/cm_vending/sorted/medical) in loc)
 		icon_state = "medlink_clamped_notopg"
 	else

@@ -19462,7 +19462,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/cm_vending/sorted/medical/bolted,
-/obj/structure/medical_supply_link/notop,
+/obj/structure/medical_supply_link_notop,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"
@@ -26501,7 +26501,7 @@
 /area/almayer/hallways/lower/port_aft_hallway)
 "eTC" = (
 /obj/structure/machinery/cm_vending/sorted/medical/bolted,
-/obj/structure/medical_supply_link/notop,
+/obj/structure/medical_supply_link_notop,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"
@@ -29656,7 +29656,7 @@
 	pixel_y = -7
 	},
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry,
-/obj/structure/medical_supply_link/notop,
+/obj/structure/medical_supply_link,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -35694,7 +35694,7 @@
 	},
 /area/almayer/maint/lower/constr)
 "ihw" = (
-/obj/structure/machinery/cm_vending/sorted/medical,
+/obj/structure/machinery/cm_vending/sorted/medical/blood,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_corner"
@@ -37189,10 +37189,11 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/upper/midship_hallway)
 "iMI" = (
-/obj/structure/machinery/cm_vending/sorted/medical/blood,
 /obj/structure/machinery/camera/autoname/almayer{
 	name = "ship-grade camera"
 	},
+/obj/structure/machinery/cm_vending/sorted/medical,
+/obj/structure/medical_supply_link_notop,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"
@@ -42012,7 +42013,7 @@
 	pixel_x = 1
 	},
 /obj/structure/machinery/cm_vending/sorted/medical/bolted,
-/obj/structure/medical_supply_link/notopg,
+/obj/structure/medical_supply_link_notopg,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_corner"
@@ -43656,7 +43657,7 @@
 /area/almayer/hallways/lower/port_fore_hallway)
 "kSC" = (
 /obj/structure/machinery/cm_vending/sorted/medical/bolted,
-/obj/structure/medical_supply_link/notopg,
+/obj/structure/medical_supply_link_notopg,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -55203,7 +55204,7 @@
 	pixel_y = -32
 	},
 /obj/structure/machinery/cm_vending/sorted/medical/bolted,
-/obj/structure/medical_supply_link/notopg,
+/obj/structure/medical_supply_link_notopg,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -70484,7 +70485,7 @@
 /area/almayer/maint/hull/upper/u_f_p)
 "uey" = (
 /obj/structure/machinery/cm_vending/sorted/medical/bolted,
-/obj/structure/medical_supply_link/notopg,
+/obj/structure/medical_supply_link_notopg,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},

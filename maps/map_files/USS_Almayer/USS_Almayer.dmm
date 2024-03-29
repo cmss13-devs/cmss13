@@ -52850,6 +52850,13 @@
 	icon_state = "plate"
 	},
 /area/almayer/maint/hull/upper/u_a_s)
+"odH" = (
+/obj/structure/pipes/vents/pump/no_boom/gas{
+	vent_tag = "Observation";
+	dir = 1
+	},
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "odN" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -58293,7 +58300,8 @@
 	},
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "pYi" = (
-/obj/structure/pipes/vents/pump/no_boom{
+/obj/structure/pipes/vents/pump/no_boom/gas{
+	vent_tag = "Access Corridor";
 	dir = 8
 	},
 /turf/open/floor/almayer/aicore/no_build{
@@ -75943,6 +75951,14 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/briefing)
+"vVi" = (
+/obj/effect/step_trigger/clone_cleaner,
+/obj/structure/pipes/vents/pump/no_boom/gas{
+	vent_tag = "Reception";
+	dir = 8
+	},
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "vVs" = (
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
@@ -82844,7 +82860,8 @@
 	},
 /area/almayer/maint/hull/lower/l_m_s)
 "yit" = (
-/obj/structure/pipes/vents/pump/no_boom{
+/obj/structure/pipes/vents/pump/no_boom/gas{
+	vent_tag = "Records";
 	dir = 1
 	},
 /turf/open/floor/almayer/aicore/no_build,
@@ -121280,7 +121297,7 @@ isC
 isC
 tFe
 xQV
-xQV
+vVi
 rNF
 aqU
 qjF
@@ -141635,7 +141652,7 @@ ebN
 ebN
 gbg
 uVv
-yit
+odH
 ebN
 cxc
 kBy

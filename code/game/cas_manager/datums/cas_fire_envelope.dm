@@ -388,8 +388,8 @@
 /datum/cas_fire_envelope/uscm_dropship
 	fire_length = 12
 	grace_period = 5 SECONDS
-	first_warning = 6.5 SECONDS
-	second_warning = 8.5 SECONDS
+	first_warning = 6 SECONDS
+	second_warning = 9 SECONDS
 	third_warning = 10 SECONDS
 	execution_start = 10 SECONDS
 	flyoff_period = 15 SECONDS

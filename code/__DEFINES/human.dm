@@ -153,7 +153,8 @@
 /// Unrevivable headshot overlays, suicide/execution.
 #define HEADSHOT_LAYER 18
 #define HEAD_LAYER 17
-#define HEAD_SQUAD_LAYER 16
+#define HEAD_SQUAD_LAYER 64
+#define HEAD_GARB_LAYER_1 16
 #define HEAD_GARB_LAYER_2 15 // These actual defines are unused but this space within the overlays list is
 #define HEAD_GARB_LAYER_3 14 //  |
 #define HEAD_GARB_LAYER_4 13 //  |

@@ -4,6 +4,7 @@
 	var/maximum_volume = 100
 	var/atom/my_atom = null
 	var/trigger_volatiles = FALSE
+	var/no_star_shape = FALSE
 	var/exploded = FALSE
 	var/datum/weakref/source_mob
 
@@ -165,13 +166,9 @@
 		if(specific_reagent)
 			if(istype(R, specific_reagent))
 				R.last_source_mob = WEAKREF(new_source_mob)
-				if(R.data_properties)
-					R.data_properties["last_source_mob"] = R.last_source_mob
 				return
 			continue
 		R.last_source_mob = WEAKREF(new_source_mob)
-		if(R.data_properties)
-			R.data_properties["last_source_mob"] = R.last_source_mob
 
 /datum/reagents/proc/copy_to(obj/target, amount=1, multiplier=1, preserve_data=1, safety = 0)
 	if(!target)
@@ -678,7 +675,7 @@
 		duration = max_fire_dur
 
 	// shape
-	if(supplemented > 0 && intensity > CHEM_FIRE_STAR_THRESHOLD)
+	if(supplemented > 0 && intensity > CHEM_FIRE_STAR_THRESHOLD && src.no_star_shape == FALSE)
 		flameshape = FLAMESHAPE_STAR
 
 	if(supplemented < 0 && intensity < CHEM_FIRE_IRREGULAR_THRESHOLD)

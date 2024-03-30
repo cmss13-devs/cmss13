@@ -471,7 +471,7 @@
 	if(result == "White")
 		prefs.flash_overlay_pref = FLASH_OVERLAY_WHITE
 		to_chat(src, SPAN_NOTICE("If flashed your vision will now be white."))
-	if(result == "Dark")
+	else if(result == "Dark")
 		prefs.flash_overlay_pref = FLASH_OVERLAY_DARK
 		to_chat(src, SPAN_NOTICE("If flashed your vision will now be dark."))
 	prefs.save_preferences()
@@ -481,7 +481,7 @@
 	if(result == "White")
 		prefs.crit_overlay_pref = CRIT_OVERLAY_WHITE
 		to_chat(src, SPAN_NOTICE("If in critical condition your vision will now be white."))
-	if(result == "Dark")
+	else if(result == "Dark")
 		prefs.crit_overlay_pref = CRIT_OVERLAY_DARK
 		to_chat(src, SPAN_NOTICE("If in critical condition your vision will now be dark."))
 	prefs.save_preferences()

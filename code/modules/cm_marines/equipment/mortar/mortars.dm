@@ -245,10 +245,10 @@
 			else
 				to_chat(user, SPAN_RED("You realize how bad of an idea this is and quickly stop."))
 				return
-
-		var/turf/deviation_turf = locate(target_turf.x + pick(-1,0,0,1), target_turf.y + pick(-1,0,0,1), target_turf.z) //Small amount of spread so that consecutive mortar shells don't all land on the same tile
-		if(deviation_turf)
-			target_turf = deviation_turf
+		else
+			var/turf/deviation_turf = locate(target_turf.x + pick(-1,0,0,1), target_turf.y + pick(-1,0,0,1), target_turf.z) //Small amount of spread so that consecutive mortar shells don't all land on the same tile
+			if(deviation_turf)
+				target_turf = deviation_turf
 
 		user.visible_message(SPAN_NOTICE("[user] starts loading \a [mortar_shell.name] into [src]."),
 		SPAN_NOTICE("You start loading \a [mortar_shell.name] into [src]."))

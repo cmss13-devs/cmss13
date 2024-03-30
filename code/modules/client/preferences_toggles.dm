@@ -453,6 +453,7 @@
 	else
 		CRASH("receive_random_tip() failed: null message")
 
+/// Toggle in character preferences and toggle preferences to configure what kind of blur overlay is used in game; Either blurry, impaired, or legacy.
 /client/proc/set_eye_blur_type()
 	var/result = tgui_alert(src, "What type of eye blur do you want?", "What type of eye blur do you want?", list("Blurry", "Impair", "Legacy"))
 	if(result == "Blurry")
@@ -466,6 +467,7 @@
 		to_chat(src, SPAN_NOTICE("Your vision will now have a legacy blurring effect. This is not recommended!"))
 	prefs.save_preferences()
 
+/// Toggle in character preferences and toggle preferences to configure what kind of flash overlay is used in game; Either white or black.
 /client/proc/set_flash_type()
 	var/result = tgui_alert(src, "What type of flash overlay do you want?", "What type of flash overlay do you want?", list("White", "Dark"))
 	if(result == "White")
@@ -476,6 +478,7 @@
 		to_chat(src, SPAN_NOTICE("If flashed your vision will now be dark."))
 	prefs.save_preferences()
 
+/// Toggle in character preferences and toggle preferences to configure what kind of crit overlay is used in game; Either white or grey.
 /client/proc/set_crit_type()
 	var/result = tgui_alert(src, "What type of crit overlay do you want?", "What type of crit overlay do you want?", list("White", "Dark"))
 	if(result == "White")

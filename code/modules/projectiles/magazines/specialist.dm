@@ -38,6 +38,18 @@
 	icon_state = "xm43e1"
 	ammo_band_icon = "+m42c_band"
 	ammo_band_icon_empty = "+m42c_band_e"
+
+/obj/item/ammo_magazine/sniper/wallpopper
+	name = "\improper XM43E1 marksman magazine (10x99mm)"
+	desc = "A magazine of caseless 10x99mm anti-materiel rounds, these rounds are made similarly to a hesh shell with a thin outer casing of metal and a small amount of plastic explosive, this allows the rounds to be used in long range light demolition, hence the nickname of wallpoppers. Due to the rounds less than reliable nature to chamber the magazine works more like a container for the munitions"
+	max_rounds = 6
+	caliber = "10x99mm"
+	default_ammo = /datum/ammo/bullet/sniper/wallpopper
+	gun_type = /obj/item/weapon/gun/rifle/sniper/XM43E1
+	icon_state = "xm43e1wp"
+	ammo_band_icon = "+m42c_band"
+	ammo_band_icon_empty = "+m42c_band_e"
+
 //M42C magazine
 
 /obj/item/ammo_magazine/sniper/elite

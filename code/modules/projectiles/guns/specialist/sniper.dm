@@ -384,15 +384,22 @@
 	recoil = RECOIL_AMOUNT_TIER_1
 
 /obj/item/weapon/gun/rifle/sniper/XM43E1/set_bullet_traits()
-	LAZYADD(traits_to_give, list(
-		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff),
-		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating/light),
-		BULLET_TRAIT_ENTRY_ID("turfs", /datum/element/bullet_trait_damage_boost, 3, GLOB.damage_boost_turfs),
-		BULLET_TRAIT_ENTRY_ID("breaching", /datum/element/bullet_trait_damage_boost, 3, GLOB.damage_boost_breaching),
-		//edited to take 5 shots for heavy resin and 3 for normal resin walls, since it wallbangs this shouldnt be a issue i dont think it would be an issue
-		BULLET_TRAIT_ENTRY_ID("pylons", /datum/element/bullet_trait_damage_boost, 2, GLOB.damage_boost_pylons)
-		//At 200 per shot it'll take 9 to break a Pylon (1800 HP). No Damage Boost vs other xeno structures yet, those will require a whole new list w/ the damage_boost trait.
-	))
+	if(istype(ammo, /datum/ammo/bullet/sniper/wallpopper))
+		LAZYADD(traits_to_give, list(
+			BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff),
+			BULLET_TRAIT_ENTRY_ID("turfs", /datum/element/bullet_trait_damage_boost, 30, GLOB.damage_boost_turfs), //2550, 2 taps colony walls, 4 taps reinforced walls
+			BULLET_TRAIT_ENTRY_ID("xeno turfs", /datum/element/bullet_trait_damage_boost, 0.23, GLOB.damage_boost_turfs_xeno), //2550*0.23 = 586, 2 taps resin walls, 3 taps thick resin
+			BULLET_TRAIT_ENTRY_ID("breaching", /datum/element/bullet_trait_damage_boost, 15, GLOB.damage_boost_breaching), //1275, enough to 1 tap airlocks
+			BULLET_TRAIT_ENTRY_ID("pylons", /datum/element/bullet_trait_damage_boost, 6, GLOB.damage_boost_pylons) //510, 4 shots to take out a pylon
+		))
+	if(istype(ammo, /datum/ammo/bullet/sniper/anti_materiel))
+		LAZYADD(traits_to_give, list(
+			BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff),
+			BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating/light),
+			BULLET_TRAIT_ENTRY_ID("turfs", /datum/element/bullet_trait_damage_boost, 3, GLOB.damage_boost_turfs),
+			BULLET_TRAIT_ENTRY_ID("breaching", /datum/element/bullet_trait_damage_boost, 3, GLOB.damage_boost_breaching),		//edited to take 5 shots for heavy resin and 3 for normal resin walls, since it wallbangs this shouldnt be a issue i dont think it would be an issue
+			BULLET_TRAIT_ENTRY_ID("pylons", /datum/element/bullet_trait_damage_boost, 2, GLOB.damage_boost_pylons)		//At 200 per shot it'll take 9 to break a Pylon (1800 HP). No Damage Boost vs other xeno structures yet, those will require a whole new list w/ the damage_boost trait.
+		))
 
 /*
 //Disabled until an identity is better defined. -Kaga

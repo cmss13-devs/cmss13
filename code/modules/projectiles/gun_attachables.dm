@@ -2797,7 +2797,7 @@ Defined in conflicts.dm of the #defines folder.
 	if(!breech_open)
 		to_chat(user, SPAN_WARNING("\The [src]'s breech must be open to load grenades! (use unique-action)"))
 		return
-	if(!istype(G) || istype(G, /obj/item/explosive/grenade/spawnergrenade/))
+	if(!istype(G) || istype(G, /obj/item/explosive/grenade/spawnergrenade/) || istype(G, /obj/item/explosive/grenade/custom))
 		to_chat(user, SPAN_WARNING("[src] doesn't accept that type of grenade."))
 		return
 	if(!G.active) //can't load live grenades

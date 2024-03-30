@@ -25,7 +25,7 @@
 	///Does it launch its grenades in a low arc or a high? Do they strike people in their path, or fly beyond?
 	var/is_lobbing = FALSE
 	///Verboten munitions. This is a blacklist. Anything in this list isn't loadable.
-	var/disallowed_grenade_types = list(/obj/item/explosive/grenade/spawnergrenade, /obj/item/explosive/grenade/alien, /obj/item/explosive/grenade/incendiary/molotov, /obj/item/explosive/grenade/flashbang)
+	var/disallowed_grenade_types = list(/obj/item/explosive/grenade/spawnergrenade, /obj/item/explosive/grenade/alien, /obj/item/explosive/grenade/incendiary/molotov, /obj/item/explosive/grenade/flashbang, /obj/item/explosive/grenade/custom)
 	///What is this weapon permitted to fire? This is a whitelist. Anything in this list can be fired. Anything.
 	var/valid_munitions = list(/obj/item/explosive/grenade)
 
@@ -200,8 +200,6 @@
 	fired.activate(user, FALSE)
 	fired.forceMove(get_turf(src))
 	fired.throw_atom(target, 20, SPEED_VERY_FAST, user, null, NORMAL_LAUNCH, pass_flags)
-
-
 
 //Doesn't use these. Listed for reference.
 /obj/item/weapon/gun/launcher/grenade/load_into_chamber()

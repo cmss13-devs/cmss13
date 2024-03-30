@@ -323,3 +323,9 @@
   - code_imp: Added a third level of zoom to the Toggle Zoom verb
   vero5123:
   - bugfix: Fixes teleporting when placing mobs onto chairs and beds.
+2024-03-30:
+  cuberound:
+  - qol: old cosmetic NVG can not be broken
+  iloveloopers:
+  - balance: You can now use the mortar while shipside during hijack, but only once.
+  - rscadd: Ghosts now get a warning when a custom mortar shell is about to land.

@@ -153,6 +153,8 @@
 		var/mob/living/carbon/xenomorph/X = AM
 		if (X.hivenumber != hivenumber)
 			apply_spray(AM)
+		else
+			X.ExtinguishMob()
 	else if(isVehicleMultitile(AM))
 		var/obj/vehicle/multitile/V = AM
 		V.handle_acidic_environment(src)

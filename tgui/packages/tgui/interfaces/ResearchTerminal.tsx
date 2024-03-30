@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
-import { Button, Stack, Section, Flex, Tabs, Box, LabeledList } from '../components';
+import { Button, Stack, Section, Flex, Tabs, Box } from '../components';
 import { Window } from '../layouts';
 import { Table, TableCell, TableRow } from '../components/Table';
 import { BoxProps } from '../components/Box';
@@ -7,15 +7,13 @@ import { BoxProps } from '../components/Box';
 export interface DocumentLog {
   ['XRF Scans']?: Array<DocumentRecord>;
 }
-
-export interface ChemicalContracts{
-  Array<Chemical>;
-}
 export interface Chemical {
   name: string;
   property_hint: string;
   recipe_hint: string;
+  id: string;
 }
+
 export interface DocumentRecord {
   document_title: string;
   time: string;
@@ -35,7 +33,8 @@ interface TerminalProps {
   'clearance_x_access': number;
   'photocopier_error': number;
   'printer_toner': number;
-  'contract_chems';
+  'contract_picked': number;
+  'contract_chems': Chemical[];
 }
 
 interface ConfirmationProps extends BoxProps {
@@ -167,34 +166,64 @@ interface CompoundData {
 }
 
 const Contracts = (_, context) => {
-  const { data } = useBackend<TerminalProps>(context);
-  return(
-    <LabeledList>
-        .map((x) => {
-            <LabeledList.Item
-              label={data.contract_chems[x].name}
-            />
-          });
-
-
-
-        })
-    </LabeledList>
-  )
-}
+  const { act, data } = useBackend<TerminalProps>(context);
+  return (
+    <Stack align="center" fill justify="center">
+      <Stack.Item grow>
+        <Section
+          title={<span>{data.contract_chems[0].name}</span>}
+          align="center">
+          <span>Difficulty: Easy</span>
+          <Button
+            fluid
+            icon="print"
+            content={data.contract_picked ? 'UNAVAILABLE' : 'Take Contract'}
+            disabled={data.contract_picked}
+            onClick={() =>
+              act('take_contract', { id: data.contract_chems[0].id })
+            }
+          />
+        </Section>
+      </Stack.Item>
+      <Stack.Item grow>
+        <Section
+          title={<span>{data.contract_chems[1].name}</span>}
+          align="center">
+          <span>Difficulty: Intermediate</span>
+          <Button
+            fluid
+            icon="print"
+            content={data.contract_picked ? 'UNAVAILABLE' : 'Take Contract'}
+            disabled={data.contract_picked}
+            onClick={() =>
+              act('take_contract', { id: data.contract_chems[1].id })
+            }
+          />
+        </Section>
+      </Stack.Item>
+      <Stack.Item grow>
+        <Section
+          title={<span>{data.contract_chems[2].name}</span>}
+          align="center">
+          <span>Difficulty: Hard</span>
+          <Button
+            fluid
+            icon="print"
+            content={data.contract_picked ? 'UNAVAILABLE' : 'Take Contract'}
+            disabled={data.contract_picked}
+            onClick={() =>
+              act('take_contract', { id: data.contract_chems[3].id })
+            }
+          />
+        </Section>
+      </Stack.Item>
+    </Stack>
+  );
+};
 
 const ResearchReportTable = (_, context) => {
   const { data } = useBackend<TerminalProps>(context);
   const [hideOld, setHideOld] = useLocalState(context, 'hide_old', true);
-  const documents = Object.keys(data.research_documents)
-    .map((x) => {
-      const output = data.research_documents[x] as DocumentRecord[];
-      output.forEach((y) => {
-        y.category = x;
-      });
-      return output;
-    })
-    .flat() as DocumentRecord[];
   return (
     <Stack vertical>
       <Stack.Item>
@@ -212,9 +241,6 @@ const ResearchReportTable = (_, context) => {
         </Flex>
       </Stack.Item>
       <hr />
-      <Stack.Item>
-        <CompoundTable docs={documents} timeLabel="Scan Time" canPrint />
-      </Stack.Item>
     </Stack>
   );
 };
@@ -520,7 +546,7 @@ const ResearchOverview = (_, context) => {
             {selectedTab === 1 && <ResearchManager />}
             {selectedTab === 2 && <ResearchReportTable />}
             {selectedTab === 3 && <PublishedMaterial />}
-            {selectedTab === 3 && <Contracts />}
+            {selectedTab === 4 && <Contracts />}
           </Stack.Item>
         </Stack>
       </div>

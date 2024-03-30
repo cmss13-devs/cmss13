@@ -148,8 +148,7 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 
 /datum/chemical_data/proc/reroll_chemicals()
 	to_world("in reroll")
-	var/list/contract_chems_here = list()
-	for(var/i = 1, i <= 3, i++)
+	for(var/i in 1 to 3)
 		to_world("in reroll2")
 		var/datum/reagent/generated/C = new /datum/reagent/generated
 		to_world("in reroll3")
@@ -170,7 +169,7 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 		to_world("in rerol53453434555l")
 		C.generate_assoc_recipe()
 		to_world("in rerol555543434343l")
-		contract_chems_here[C.id] = C
+		contract_chems_here[C.id] = C.id
 		to_world("in rerol51121212555l")
 	to_world("Contract chemical batch generated, names are [contract_chems_here[1]], [contract_chems_here[2]], and [contract_chems_here[3]] ")
 

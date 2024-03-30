@@ -102,13 +102,19 @@
 /obj/structure/machinery/computer/research/ui_static_data(mob/user)
 	var/list/contract = list()
 	for(var/i in GLOB.chemical_data.contract_chems_here)
-		var/datum/reagent/generated/contract_chem = i
-		var/datum/reagent/hint = pick(GLOB.chemical_reactions_list[contract_chem.id])
+		to_chat(user, i)
+		var/datum/reagent/contract_chem = GLOB.chemical_reagents_list[i]
+		to_chat(user, contract_chem)
+		var/datum/chemical_reaction/recipe = GLOB.chemical_reactions_list[i]
+		to_chat(user, pick(contract_chem.properties))
+		var/datum/reagent/hint = pick(recipe.required_reagents)
 		contract += list(list(
-			"name" = contract_chem.name,
+			"name" = contract_chem,
 			"property_hint" = pick(contract_chem.properties),
-			"recipe_hint" = hint.name,
+			"recipe_hint" = hint,
+			"id" = contract_chem.id
 		))
+	to_chat(contract[1])
 	var/list/data = list(
 		"base_purchase_cost" = base_purchase_cost,
 		"main_terminal" = main_terminal,
@@ -127,7 +133,8 @@
 		"published_documents" = GLOB.chemical_data.research_publications,
 		"clearance_x_access" = GLOB.chemical_data.clearance_x_access,
 		"photocopier_error" = !photocopier,
-		"printer_toner" = photocopier?.toner
+		"printer_toner" = photocopier?.toner,
+		"contract_picked" = GLOB.chemical_data.picked_chem
 	)
 	return data
 
@@ -212,4 +219,11 @@
 				GLOB.chemical_data.reached_x_access = TRUE
 				GLOB.chemical_data.update_credits(purchase_cost * -1)
 				visible_message(SPAN_NOTICE("Clearance Level X Acquired."))
+		if("take_contract")
+			var/chem_id = params["id"]
+			var/obj/item/paper/research_notes/chemical = new /obj/item/paper/research_notes(photocopier.loc)
+			chemical.note_type = "synthesis"
+			chemical.data = GLOB.chemical_reagents_list[chem_id]
+			chemical.generate()
+			GLOB.chemical_data.picked_chem = TRUE
 	playsound(loc, pick('sound/machines/computer_typing1.ogg','sound/machines/computer_typing2.ogg','sound/machines/computer_typing3.ogg'), 5, 1)

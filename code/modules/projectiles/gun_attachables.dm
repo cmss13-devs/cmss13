@@ -2876,6 +2876,14 @@ Defined in conflicts.dm of the #defines folder.
 	G.det_time = min(15, G.det_time)
 	G.throw_range = max_range
 	G.activate(user, FALSE)
+	if(G.customizable && G.detonator) //has to be after activate because the timer assembly will set it to a minimal of 3 seconds
+		if(istimer(G.detonator.a_left))
+			var/obj/item/device/assembly/timer/timer = G.detonator.a_left
+			timer.time = 15
+		else
+			if(istimer(G.detonator.a_right))
+				var/obj/item/device/assembly/timer/timer = G.detonator.a_right
+				timer.time = 15
 	G.forceMove(get_turf(gun))
 	G.throw_atom(target, max_range, SPEED_VERY_FAST, user, null, NORMAL_LAUNCH, pass_flags)
 	current_rounds--

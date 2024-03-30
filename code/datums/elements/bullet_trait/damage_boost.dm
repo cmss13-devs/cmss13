@@ -61,7 +61,7 @@ GLOBAL_LIST_INIT(damage_boost_vehicles, typecacheof(/obj/vehicle/multitile))
 		COMSIG_BULLET_PRE_HANDLE_OBJ,
 		COMSIG_BULLET_PRE_HANDLE_TURF,
 		COMSIG_BULLET_PRE_HANDLE_MOB,
-	), PROC_REF(handle_bullet))
+	), PROC_REF(handle_bullet), override = TRUE)
 
 /datum/element/bullet_trait_damage_boost/proc/check_type(atom/A)
 	if(istype(A, /obj/structure/machinery/door)) return "door"

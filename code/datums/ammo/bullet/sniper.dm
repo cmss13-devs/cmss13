@@ -107,6 +107,14 @@
 	damage = 100
 	shell_speed = AMMO_SPEED_TIER_6
 
+/datum/ammo/bullet/sniper/wallpopper/
+	name = "wallpopper sniper bullet"
+
+	shrapnel_chance = 0 // hesh leaves no shrapnel
+	accuracy = HIT_ACCURACY_TIER_8
+	damage = 55
+	shell_speed = AMMO_SPEED_TIER_6
+
 /datum/ammo/bullet/sniper/anti_materiel/on_hit_mob(mob/M,obj/projectile/P)
 	if((P.projectile_flags & PROJECTILE_BULLSEYE) && M == P.original)
 		var/mob/living/L = M
@@ -122,13 +130,25 @@
 		// keeping above for book keeping sake, damage isnt that high anymore, does way less, very similar to normal sniper
 		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
 
-/datum/ammo/bullet/sniper/wallpopper
-	name = "Wall-Popper bullet"
-	shrapnel_chance = 0 // its bassically hesh, no shrap from you
-	accuracy = HIT_ACCURACY_TIER_8
-	damage = 55
-	shell_speed = AMMO_SPEED_TIER_6
+/datum/ammo/bullet/sniper/wallpopper/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+			BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff),
+			// BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_damage_boost, 30, GLOB.damage_boost_turfs), //2550, 2 taps colony walls, 4 taps reinforced walls
+			// BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_damage_boost, 0.23, GLOB.damage_boost_turfs_xeno), //2550*0.23 = 586, 2 taps resin walls, 3 taps thick resin
+			// BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_damage_boost, 15, GLOB.damage_boost_breaching), //1275, enough to 1 tap airlocks
+			 // BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_damage_boost, 6, GLOB.damage_boost_pylons), //510, 4 shots to take out a pylon
+		))
 
+/datum/ammo/bullet/sniper/anti_materiel/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff),
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating/light),
+		// BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_damage_boost, 3, GLOB.damage_boost_turfs),
+		// BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_damage_boost, 3, GLOB.damage_boost_breaching),        //edited to take 5 shots for heavy resin and 3 for normal resin walls, since it wallbangs this shouldnt be a issue i dont think it would be an issue
+		// BULLET_TRAIT_ENTRY( /datum/element/bullet_trait_damage_boost, 2, GLOB.damage_boost_pylons)        //At 200 per shot it'll take 9 to break a Pylon (1800 HP). No Damage Boost vs other xeno structures yet, those will require a whole new list w/ the damage_boost trait.
+		))
 /datum/ammo/bullet/sniper/anti_materiel/vulture
 	damage = 400 // Fully intended to vaporize anything smaller than a mini cooper
 	accurate_range_min = 10

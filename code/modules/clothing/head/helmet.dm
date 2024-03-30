@@ -260,7 +260,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/clothing/glasses/sunglasses/big = "bigsunglasses",
 	/obj/item/clothing/glasses/sunglasses/sechud = "sechud",
 	/obj/item/clothing/glasses/eyepatch = "eyepatch",
-	/obj/item/clothing/glasses/eyepatch_white = "white eyepatch",
+	/obj/item/clothing/glasses/eyepatch/white = "white eyepatch",
 	/obj/item/clothing/glasses/regular/hipster = "persc-glasses",
 
 	// WALKMAN AND CASSETTES

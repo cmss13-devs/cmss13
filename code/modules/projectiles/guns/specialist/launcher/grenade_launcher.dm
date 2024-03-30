@@ -198,6 +198,14 @@
 	fired.throw_range = 20
 	fired.det_time = min(10, fired.det_time)
 	fired.activate(user, FALSE)
+	if(fired.customizable && fired.detonator) //has to be after activate because the timer assembly will set it to a minimal of 3 seconds
+		if(istimer(fired.detonator.a_left))
+			var/obj/item/device/assembly/timer/timer = fired.detonator.a_left
+			timer.time = 10
+		else
+			if(istimer(fired.detonator.a_right))
+				var/obj/item/device/assembly/timer/timer = fired.detonator.a_right
+				timer.time = 10
 	fired.forceMove(get_turf(src))
 	fired.throw_atom(target, 20, SPEED_VERY_FAST, user, null, NORMAL_LAUNCH, pass_flags)
 

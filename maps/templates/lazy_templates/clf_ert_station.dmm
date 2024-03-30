@@ -60,16 +60,6 @@
 /obj/item/roller,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
-"aD" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/weapon/twohanded/yautja/spear,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/adminlevel/ert_station/clf_station)
 "aE" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -162,13 +152,6 @@
 	dir = 1
 	},
 /turf/open/floor/wood,
-/area/adminlevel/ert_station/clf_station)
-"cq" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	icon_state = "p_stair_full"
-	},
-/turf/closed/wall/mineral/sandstone/runed,
 /area/adminlevel/ert_station/clf_station)
 "cx" = (
 /obj/structure/sink{
@@ -303,14 +286,6 @@
 /obj/structure/prop/wooden_cross,
 /turf/open/gm/dirt,
 /area/adminlevel/ert_station/clf_station)
-"fY" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 5;
-	icon_state = "p_stair_full"
-	},
-/turf/open/floor/sandstone/runed,
-/area/adminlevel/ert_station/clf_station)
 "gc" = (
 /obj/structure/closet/crate,
 /obj/item/device/encryptionkey/clf,
@@ -326,17 +301,6 @@
 "gj" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner,
 /turf/open/auto_turf/strata_grass/layer1,
-/area/adminlevel/ert_station/clf_station)
-"gH" = (
-/obj/item/hunting_trap{
-	desc = "A bizarre alien device used for trapping and killing prey.";
-	name = "Alien Mine"
-	},
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
-	},
-/turf/open/floor/sandstone/runed,
 /area/adminlevel/ert_station/clf_station)
 "gN" = (
 /obj/effect/decal/cleanable/egg_smudge,
@@ -660,14 +624,6 @@
 	icon_state = "kitchen"
 	},
 /area/adminlevel/ert_station/clf_station)
-"nE" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 10;
-	icon_state = "p_stair_full"
-	},
-/turf/closed/wall/mineral/sandstone/runed/decor,
-/area/adminlevel/ert_station/clf_station)
 "nJ" = (
 /obj/item/clothing/shoes/jackboots,
 /turf/open/floor/wood,
@@ -753,17 +709,6 @@
 	},
 /obj/structure/platform_decoration/kutjevo,
 /turf/open/auto_turf/strata_grass/layer1,
-/area/adminlevel/ert_station/clf_station)
-"oT" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 8;
-	icon_state = "p_stair_full"
-	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
 /area/adminlevel/ert_station/clf_station)
 "pk" = (
 /obj/structure/flora/grass/tallgrass/jungle,
@@ -1022,11 +967,6 @@
 	dir = 1
 	},
 /turf/open/auto_turf/strata_grass/layer1,
-/area/adminlevel/ert_station/clf_station)
-"vW" = (
-/obj/structure/closet/coffin/predator,
-/obj/item/weapon/gun/energy/yautja/plasmapistol,
-/turf/open/gm/dirt,
 /area/adminlevel/ert_station/clf_station)
 "wI" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -1441,14 +1381,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/dirt,
 /area/adminlevel/ert_station/clf_station)
-"HW" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 9;
-	icon_state = "p_stair_full"
-	},
-/turf/open/floor/sandstone/runed,
-/area/adminlevel/ert_station/clf_station)
 "Ia" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -1802,14 +1734,6 @@
 	icon_state = "wood-broken"
 	},
 /area/adminlevel/ert_station/clf_station)
-"Ps" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 1;
-	icon_state = "p_stair_full"
-	},
-/turf/open/floor/sandstone/runed,
-/area/adminlevel/ert_station/clf_station)
 "PC" = (
 /obj/item/trash/candle,
 /obj/structure/surface/table/woodentable/fancy,
@@ -2112,14 +2036,6 @@
 /obj/item/explosive/grenade/incendiary/molotov,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
-"WH" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 6;
-	icon_state = "p_stair_full"
-	},
-/turf/closed/wall/mineral/sandstone/runed,
-/area/adminlevel/ert_station/clf_station)
 "WM" = (
 /obj/structure/platform_decoration/kutjevo{
 	dir = 8
@@ -2178,17 +2094,6 @@
 "YB" = (
 /turf/open/gm/grass{
 	icon_state = "grass2"
-	},
-/area/adminlevel/ert_station/clf_station)
-"YX" = (
-/obj/structure/stairs/perspective{
-	color = "#b29082";
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
 	},
 /area/adminlevel/ert_station/clf_station)
 "Ze" = (
@@ -2315,13 +2220,13 @@ Rg
 vI
 ZO
 LO
-LO
-LO
-LO
-LO
 ax
 ax
-Rg
+ax
+ax
+ax
+ax
+ax
 ax
 ax
 "}
@@ -2357,13 +2262,13 @@ Rg
 Rg
 tJ
 LO
-gH
-HW
-oT
-nE
-Rg
-Rg
-Rg
+ax
+ax
+ax
+ax
+ax
+ax
+ax
 ax
 ax
 "}
@@ -2399,14 +2304,14 @@ Rg
 vI
 vI
 BC
-vI
-Ps
-aD
-cq
 ax
-Rg
-Rg
-Rg
+ax
+ax
+ax
+ax
+ax
+ax
+ax
 ax
 "}
 (5,1,1) = {"
@@ -2441,14 +2346,14 @@ Rg
 Rg
 iO
 LO
-gH
-fY
-YX
-WH
 ax
-Rg
-Rg
-Rg
+ax
+ax
+ax
+ax
+ax
+ax
+ax
 ax
 "}
 (6,1,1) = {"
@@ -2483,13 +2388,13 @@ Rg
 Rg
 ZO
 LO
-LO
-LO
-LO
-LO
 ax
 ax
-Rg
+ax
+ax
+ax
+ax
+ax
 ax
 ax
 "}
@@ -2530,8 +2435,8 @@ ax
 ax
 ax
 ax
-vW
-Rg
+ax
+ax
 ax
 ax
 "}

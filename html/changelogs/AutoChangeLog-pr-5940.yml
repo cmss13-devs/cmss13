@@ -1,5 +1,0 @@
-author: "iloveloopers"
-delete-after: True
-changes:
-  - balance: "You can now use the mortar while shipside during hijack, but only once."
-  - rscadd: "Ghosts now get a warning when a custom mortar shell is about to land."

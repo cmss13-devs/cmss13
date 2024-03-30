@@ -330,7 +330,7 @@ export const StripMenu = (props, context) => {
                         }}>
                         <Button
                           onClick={() => {
-                            if (item === null) {
+                            if (item === null || 'no_item_action' in item) {
                               act('equip', {
                                 key: keyAtSpot,
                               });

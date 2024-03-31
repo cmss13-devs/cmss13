@@ -39,6 +39,8 @@
 	var/job_options
 	/// If TRUE, this job will spawn w/ a cryo emergency kit during evac/red alert
 	var/gets_emergency_kit = TRUE
+	var/marine_sided = FALSE
+	var/xeno_sided = FALSE
 
 /datum/job/New()
 	. = ..()
@@ -239,7 +241,21 @@
 
 	setup_human(new_character, NP)
 
+	addtimer(CALLBACK(src, PROC_REF(add_to_battlepass_earners), new_character), BATTLEPASS_TIME_TO_EARN_REWARD)
+
 	return new_character
+
+/datum/job/proc/add_to_battlepass_earners(mob/living/carbon/human/character)
+	if(!character?.client?.ckey)
+		return
+
+	var/ckey = character.client.ckey
+
+	// You cannot double dip; marine or xeno only
+	if(marine_sided && !(ckey in SSbattlepass.xeno_battlepass_earners))
+		SSbattlepass.marine_battlepass_earners |= ckey
+	else if(xeno_sided && !(ckey in SSbattlepass.marine_battlepass_earners))
+		SSbattlepass.xeno_battlepass_earners |= ckey
 
 /datum/job/proc/equip_job(mob/living/M)
 	if(!istype(M))

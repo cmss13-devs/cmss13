@@ -30,6 +30,7 @@
 	owned_battlepass.owning_client = WEAKREF(src)
 	owned_battlepass.tier = battlepass_save["tier"]
 	owned_battlepass.xp = battlepass_save["xp"]
+	owned_battlepass.check_tier_up(FALSE)
 	owned_battlepass.daily_challenges_last_updated = battlepass_save["daily_challenges_last_updated"]
 	owned_battlepass.load_daily_challenges(battlepass_save["daily_challenges"])
 	owned_battlepass.check_daily_challenge_reset()

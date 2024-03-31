@@ -1,3 +1,6 @@
+/datum/job/special/uscm
+	marine_sided = TRUE
+
 /datum/job/special/uscm/colonel
 	title = JOB_COLONEL
 /datum/job/special/uscm/general

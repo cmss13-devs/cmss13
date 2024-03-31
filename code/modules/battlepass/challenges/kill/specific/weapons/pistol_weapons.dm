@@ -7,5 +7,5 @@
 		"M4A3 service pistol",
 	)
 	kill_requirement_upper = 1
-	completion_xp = 5 // pistols are tough
+	completion_xp = 7 // pistols are tough
 	challenge_category = CHALLENGE_HUMAN

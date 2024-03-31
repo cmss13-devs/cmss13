@@ -2,7 +2,8 @@
 	name = "Plant Resin Nodes"
 	desc = "Plant AMOUNT resin nodes."
 	challenge_category = CHALLENGE_XENO
-	completion_xp = 3
+	completion_xp = 5
+	pick_weight = 8
 	/// The minimum possible amount of nodes that need to be planted
 	var/minimum_nodes = 20 as num
 	/// The maximum
@@ -54,8 +55,10 @@
 	planted_nodes = save_list["planted_nodes"]
 
 /// When the xeno plants a resin node
-/datum/battlepass_challenge/plant_resin_nodes/proc/on_plant_node(datum/source)
+/datum/battlepass_challenge/plant_resin_nodes/proc/on_plant_node(datum/source, mob/planter)
 	SIGNAL_HANDLER
+	if(should_block_game_interaction(planter))
+		return
 
 	planted_nodes++
 	on_possible_challenge_completed()

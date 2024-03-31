@@ -69,12 +69,18 @@
 	var/previous_on_tier_up_tier = 0
 
 /datum/battlepass/proc/add_xp(xp_amount)
+	if(tier >= SSbattlepass.maximum_tier)
+		return
+
 	xp += xp_amount
+	check_tier_up(TRUE)
+
+/datum/battlepass/proc/check_tier_up(display_popup = TRUE)
 	if(xp >= xp_tierup)
 		var/tier_increase = round(xp / xp_tierup)
 		xp -= (tier_increase * xp_tierup)
 		tier += tier_increase
-		on_tier_up()
+		on_tier_up(display_popup)
 
 /datum/battlepass/proc/on_tier_up(display_popup = TRUE)
 	if(previous_on_tier_up_tier == tier)
@@ -109,8 +115,9 @@
 	if(!user_client.mob)
 		return
 
+	playsound_client(user_client, 'sound/effects/bp_levelup.mp3', get_turf(user_client.mob), 70, FALSE) // .mp3, sue me
 	user_client.mob.overlay_fullscreen("battlepass_tierup", /atom/movable/screen/fullscreen/battlepass)
-	addtimer(CALLBACK(user_client.mob, TYPE_PROC_REF(/mob, clear_fullscreen), "battlepass_tierup"), 1.2 SECONDS) // 1.2s is the length of the tierup anim
+	addtimer(CALLBACK(user_client.mob, TYPE_PROC_REF(/mob, clear_fullscreen), "battlepass_tierup"), 1.0 SECONDS)
 
 /// Check that the user has all the rewards they should (in case rewards shifted in config or etc).
 /// Doesn't remove ones that aren't in their tiers (in case they have some from a previous season, for example)
@@ -140,18 +147,20 @@
 	if(!owning_client)
 		return
 
-	// We give the player 1 marine challenge, 1 xeno challenge, and eventually 1 general challenge
+	// We give the player 2 marine challenges and 2 xeno challenges
 	QDEL_LIST(daily_challenges)
 
-	var/gotten_path = SSbattlepass.get_challenge(CHALLENGE_HUMAN)
-	var/datum/battlepass_challenge/human_challenge = new gotten_path(owning_client.resolve())
-	RegisterSignal(human_challenge, COMSIG_BATTLEPASS_CHALLENGE_COMPLETED, PROC_REF(on_challenge_complete))
-	daily_challenges += human_challenge
+	for(var/i in 1 to 2)
+		var/gotten_path = SSbattlepass.get_challenge(CHALLENGE_HUMAN)
+		var/datum/battlepass_challenge/human_challenge = new gotten_path(owning_client.resolve())
+		RegisterSignal(human_challenge, COMSIG_BATTLEPASS_CHALLENGE_COMPLETED, PROC_REF(on_challenge_complete))
+		daily_challenges += human_challenge
 
-	gotten_path = SSbattlepass.get_challenge(CHALLENGE_XENO)
-	var/datum/battlepass_challenge/xeno_challenge = new gotten_path(owning_client.resolve())
-	RegisterSignal(xeno_challenge, COMSIG_BATTLEPASS_CHALLENGE_COMPLETED, PROC_REF(on_challenge_complete))
-	daily_challenges += xeno_challenge
+	for(var/i in 1 to 2)
+		var/gotten_path = SSbattlepass.get_challenge(CHALLENGE_XENO)
+		var/datum/battlepass_challenge/xeno_challenge = new gotten_path(owning_client.resolve())
+		RegisterSignal(xeno_challenge, COMSIG_BATTLEPASS_CHALLENGE_COMPLETED, PROC_REF(on_challenge_complete))
+		daily_challenges += xeno_challenge
 
 	daily_challenges_last_updated = rustg_unix_timestamp()
 
@@ -275,12 +284,3 @@
 		))
 
 	return data
-
-/datum/battlepass/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	. = ..()
-	if(.)
-		return
-
-	switch(action)
-		if("emote")
-			return

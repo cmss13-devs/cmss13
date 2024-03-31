@@ -1,5 +1,5 @@
-import { useBackend } from '../backend';
-import { Box, Button, LabeledList, NoticeBox, ProgressBar, Section, Dimmer } from '../components';
+import { useBackend, useLocalState } from '../backend';
+import { Box, Button, LabeledList, NoticeBox, ProgressBar, Section, Dimmer, Stack } from '../components';
 import { Window } from '../layouts';
 import { InterfaceLockNoticeBox } from './common/InterfaceLockNoticeBox';
 import { classes, BooleanLike } from 'common/react';
@@ -33,7 +33,7 @@ interface BattlepassData {
 
 export const Battlepass = (props) => {
   return (
-    <Window width={3400} height={325} theme="usmc" title="Battlepass">
+    <Window width={1850} height={570} theme="usmc" title="Battlepass">
       <Window.Content>
         <BattlepassContent />
       </Window.Content>
@@ -45,8 +45,59 @@ const BattlepassContent = (props) => {
   const { act, data } = useBackend<BattlepassData>();
   const rewards = data.rewards;
   const premium_rewards = data.premium_rewards;
+  const [infoView, setInfoView] = useLocalState('info_view', false);
   return (
     <>
+      {infoView === true ? (
+        <Dimmer>
+          <div
+            style={{
+              'width': '800px',
+              'height': '440px',
+              'display': 'flex',
+              'background-color': '#0c0e1e',
+              'font-family': 'Verdana, Geneva, sans-serif',
+              'text-align': 'center',
+              'justifyContent': 'center',
+              'alignItems': 'center',
+              'font-size': '18px',
+              'padding': '10px',
+            }}>
+            <Section
+              title="Battlepass"
+              style={{
+                'width': '100%',
+                'height': '100%',
+              }}>
+              The battlepass system is a way of rewarding players with in-game
+              rewards for playing well. <br />
+              <br />
+              On the left of the UI, you can find your objectives. These
+              objectives are unique to you and reset every 24 hours. Completing
+              them gives you XP. The other way to obtain XP is by playing a
+              match to completion. Everyone gets XP regardless of winning or
+              losing, but the winning side earns more. <br /> <br />
+              Every 10 XP, your battlepass tier increases by 1, granting you new
+              rewards to use in game. You can claim rewards with the "Claim
+              Battlepass Reward" verb, and come back to this UI with the
+              "Battlepass" verb. <br /> <br />
+              The premium battlepass is coming soon, purchasable for only 1000
+              CMCoins. Expect 1 USD to be equivalent to 100 CMCoins.
+              <br /> <br />
+              <Button
+                fontSize="16px"
+                icon="xmark"
+                content="Exit"
+                onClick={() => {
+                  setInfoView(false);
+                }}
+              />
+            </Section>
+          </div>
+        </Dimmer>
+      ) : (
+        <> </>
+      )}
       <div
         style={{
           'display': 'flex',
@@ -57,17 +108,30 @@ const BattlepassContent = (props) => {
           style={{
             'overflow-x': 'auto',
             'display': 'flex',
-            'flex-wrap': 'nowrap',
+            'flex-wrap': 'wrap',
             'position': 'relative',
+            'max-width': '1500px',
+            'min-width': '1500px',
           }}>
           <div
             style={{
               'position': 'absolute',
-              'top': '70%',
-              'left': '38%',
+              'top': '32%',
+              'left': '35%',
               'font-size': '24px',
               'font-family': 'Verdana, Geneva, sans-serif',
-              'z-index': '10',
+              'z-index': `${infoView === true ? '0' : '10'}`,
+            }}>
+            Premium Battlepass coming soon!
+          </div>
+          <div
+            style={{
+              'position': 'absolute',
+              'top': '84%',
+              'left': '35%',
+              'font-size': '24px',
+              'font-family': 'Verdana, Geneva, sans-serif',
+              'z-index': `${infoView === true ? '0' : '10'}`,
             }}>
             Premium Battlepass coming soon!
           </div>
@@ -86,6 +150,7 @@ const BattlepassContent = (props) => {
 
 const BattlepassInfoContainer = (props) => {
   const { act, data } = useBackend<BattlepassData>();
+  const [infoView, setInfoView] = useLocalState('info_view', false);
   return (
     <div
       style={{
@@ -93,6 +158,15 @@ const BattlepassInfoContainer = (props) => {
         'border-right': 'solid',
       }}>
       <Section title="Season 1">
+        <Button
+          fontSize="12px"
+          icon="circle-info"
+          content="Information"
+          onClick={() => {
+            setInfoView(true);
+          }}
+        />
+        <br />
         <b
           style={{
             'font-size': '16px',
@@ -112,8 +186,13 @@ const BattlepassInfoContainer = (props) => {
 const BattlepassChallenge = (props) => {
   const challenge: BattlepassChallenge = props.challenge;
   return (
-    <Section title={challenge.name}>
+    <Section title={`${challenge.category} - ${challenge.name}`}>
       {challenge.desc}
+      <div
+        style={{
+          'padding-bottom': '4px',
+        }}
+      />
       <ProgressBar
         minValue={0}
         maxValue={1}

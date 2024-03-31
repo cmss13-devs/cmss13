@@ -14,6 +14,8 @@ SUBSYSTEM_DEF(battlepass)
 	var/list/season_rewards = list()
 	/// List of all paths of all premium battlepass rewards for the current season, in order
 	var/list/premium_season_rewards = list()
+	var/list/marine_battlepass_earners = list()
+	var/list/xeno_battlepass_earners = list()
 
 /datum/controller/subsystem/battlepass/Initialize()
 	if(!fexists("config/battlepass.json"))
@@ -70,3 +72,28 @@ SUBSYSTEM_DEF(battlepass)
 
 		if(CHALLENGE_XENO)
 			return pick_weight(xeno_challenges)
+
+
+/datum/controller/subsystem/battlepass/proc/give_sides_points(marine_points = 0, xeno_points = 0)
+	if(marine_points)
+		give_side_points(marine_points, marine_battlepass_earners)
+
+	if(xeno_points)
+		give_side_points(xeno_points, xeno_battlepass_earners)
+
+/datum/controller/subsystem/battlepass/proc/give_side_points(point_amount = 0, ckey_list)
+	if(!islist(ckey_list))
+		CRASH("give_side_points in SSbattlepass called without giving a list of ckeys")
+
+	for(var/ckey in ckey_list)
+		if(ckey in GLOB.directory)
+			var/client/ckey_client = GLOB.directory[ckey]
+			if(ckey_client.owned_battlepass)
+				ckey_client.owned_battlepass.add_xp(point_amount)
+		else
+			if(!fexists("data/player_saves/[copytext(ckey,1,2)]/[ckey]/battlepass.sav"))
+				continue
+
+			var/savefile/ckey_save = new("data/player_saves/[copytext(ckey,1,2)]/[ckey]/battlepass.sav")
+
+			ckey_save["xp"] += point_amount // if they're >=10 XP, it'll get sorted next time they log on

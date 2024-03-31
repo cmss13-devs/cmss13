@@ -6063,6 +6063,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/yautja_teleport,
 /turf/open/floor/plating/prison,
 /area/prison/maintenance/staff_research)
 "CJ" = (

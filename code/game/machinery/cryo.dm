@@ -210,8 +210,19 @@
 	if(beaker && occupant.reagents && beaker.reagents)
 		var/occupant_has_cryo_meds = occupant.reagents.get_reagent_amount("cryoxadone") >= 1 || occupant.reagents.get_reagent_amount("clonexadone") >= 1
 		var/beaker_has_cryo_meds = beaker.reagents.get_reagent_amount("cryoxadone") >= 1 || beaker.reagents.get_reagent_amount("clonexadone") >= 1
-		if(occupant_has_cryo_meds ^ beaker_has_cryo_meds)
-			// Either the occupant has cryo meds and the beaker doesn't or vice versa (not both)
+
+		// To administer, either the occupant has cryo meds and the beaker doesn't or vice versa (not both)
+		var/can_administer = (occupant_has_cryo_meds ^ beaker_has_cryo_meds) && length(beaker.reagents.reagent_list)
+		if(can_administer && occupant_has_cryo_meds)
+			// If its the case of the occupant has cryo meds and not the beaker, we need to pace out the dosage
+			// So lets make sure they don't already have some of the beaker drugs
+			for(var/datum/reagent/cur_beaker_reagent in beaker.reagents.reagent_list)
+				for(var/datum/reagent/cur_occupant_reagent in occupant.reagents.reagent_list)
+					if(cur_beaker_reagent.id == cur_occupant_reagent.id)
+						can_administer = FALSE
+						break
+
+		if(can_administer)
 			beaker.reagents.trans_to(occupant, 5)
 			beaker.reagents.reaction(occupant)
 

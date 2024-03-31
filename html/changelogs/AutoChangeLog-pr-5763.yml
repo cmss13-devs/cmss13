@@ -1,0 +1,5 @@
+author: "Huffie56"
+delete-after: True
+changes:
+  - refactor: "refactored the lambda areas."
+  - maptweak: "turned south padlock into a checkpoint."

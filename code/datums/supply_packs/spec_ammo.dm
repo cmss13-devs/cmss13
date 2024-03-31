@@ -125,6 +125,20 @@
 	group = "Weapons Specialist Ammo"
 
 
+/datum/supply_packs/ammo_amr_wallpopper
+	name = "XM43E1 anti-materiel rifle wallpopper magazines crate (x5)"
+	contains = list(
+		/obj/item/ammo_magazine/sniper/wallpopper,
+		/obj/item/ammo_magazine/sniper/wallpopper,
+		/obj/item/ammo_magazine/sniper/wallpopper,
+		/obj/item/ammo_magazine/sniper/wallpopper,
+		/obj/item/ammo_magazine/sniper/wallpopper,
+	)
+	cost = 30
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "XM43E1 Wall-Popper Magazine Crate"
+	group = "Weapons Specialist Ammo"
+
 //M4RA
 
 /datum/supply_packs/ammo_scout_mix

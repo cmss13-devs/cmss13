@@ -42,7 +42,7 @@
 /obj/item/ammo_magazine/sniper/wallpopper
 	name = "\improper XM43E1 wallpopper magazine (10x99mm)"
 	desc = "A magazine of caseless 10x99mm anti-materiel rounds, these rounds are made similarly to a hesh shell with a thin outer casing of metal and a small amount of plastic explosive, this allows the rounds to be used in long range light demolition, due to the main target of said demolition being walls, the nickname of wallpopper came to be, referencing the rivets bursting out of walls due to the pressure built up inside of the wall when the round impacts."
-	max_rounds = 6
+	max_rounds = 12
 	caliber = "10x99mm"
 	default_ammo = /datum/ammo/bullet/sniper/wallpopper
 	gun_type = /obj/item/weapon/gun/rifle/sniper/XM43E1

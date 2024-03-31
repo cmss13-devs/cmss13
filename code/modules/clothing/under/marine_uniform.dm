@@ -492,6 +492,7 @@
 	contained_sprite = TRUE
 	item_state_slots = null
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+	slowdown = SLOWDOWN_ARMOR_LIGHT
 
 /obj/item/clothing/under/marine/veteran/pmc/corporate/lead
 	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant is commonly worn by the lead of the 'goonsquad', as they are colloquially known."
@@ -888,7 +889,7 @@
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/uniform_1.dmi',
 	)
-	
+
 /obj/item/clothing/under/marine/reporter/black
 	icon_state = "cc_black"
 	worn_state = "cc_black"

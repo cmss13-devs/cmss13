@@ -5,4 +5,5 @@
 		/mob/living/carbon/xenomorph/defender,
 		/mob/living/carbon/xenomorph/sentinel,
 	)
+	pick_weight = 7
 	challenge_category = CHALLENGE_HUMAN

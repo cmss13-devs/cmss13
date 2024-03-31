@@ -1,4 +1,5 @@
 /datum/battlepass_reward/general
+	lifeform_type = "All"
 
 
 /datum/battlepass_reward/general/particle

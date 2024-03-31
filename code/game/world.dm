@@ -219,6 +219,7 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 		return json_encode(response)
 
 /world/Reboot(reason)
+	SSbattlepass.save_battlepasses()
 	Master.Shutdown()
 	send_reboot_sound()
 	var/server = CONFIG_GET(string/server)

@@ -1,4 +1,5 @@
 /datum/battlepass_reward/marine
+	lifeform_type = "Marine"
 
 /datum/battlepass_reward/marine/can_claim(mob/target_mob)
 	. = ..()

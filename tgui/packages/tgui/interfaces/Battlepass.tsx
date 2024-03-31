@@ -8,6 +8,7 @@ interface BattlepassReward {
   name: string;
   icon_state: string;
   tier: number;
+  lifeform_type: string;
 }
 
 interface BattlepassChallenge {
@@ -33,7 +34,7 @@ interface BattlepassData {
 
 export const Battlepass = (props) => {
   return (
-    <Window width={1850} height={570} theme="usmc" title="Battlepass">
+    <Window width={1850} height={610} theme="usmc" title="Battlepass">
       <Window.Content>
         <BattlepassContent />
       </Window.Content>
@@ -252,14 +253,24 @@ const BattlepassRegularEntry = (props) => {
         )}
         <div
           style={{
-            'display': 'flex',
-            'justifyContent': 'center',
-            'alignItems': 'center',
             'background-image': 'linear-gradient(black, transparent)',
           }}>
-          <span
-            className={classes(['battlepass96x96', `${reward.icon_state}`])}
-          />
+          <div
+            style={{
+              'display': 'flex',
+              'justifyContent': 'center',
+              'alignItems': 'center',
+            }}>
+            <span
+              className={classes(['battlepass96x96', `${reward.icon_state}`])}
+            />
+          </div>
+          <div
+            style={{
+              'text-align': 'center',
+            }}>
+            ({reward.lifeform_type})
+          </div>
         </div>
         {data.tier >= reward.tier ? (
           <div
@@ -292,17 +303,27 @@ const BattlepassRegularEntry = (props) => {
           }}>
           <div
             style={{
-              'display': 'flex',
-              'justifyContent': 'center',
-              'alignItems': 'center',
-              'background-image': 'linear-gradient(transparent, black)',
+              'background-image': 'linear-gradient(black, transparent)',
             }}>
-            <span
-              className={classes([
-                'battlepass96x96',
-                `${premiumReward.icon_state}`,
-              ])}
-            />
+            <div
+              style={{
+                'display': 'flex',
+                'justifyContent': 'center',
+                'alignItems': 'center',
+              }}>
+              <span
+                className={classes([
+                  'battlepass96x96',
+                  `${premiumReward.icon_state}`,
+                ])}
+              />
+            </div>
+            <div
+              style={{
+                'text-align': 'center',
+              }}>
+              ({premiumReward.lifeform_type})
+            </div>
           </div>
           <div
             style={{

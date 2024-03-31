@@ -12,6 +12,7 @@
 	var/category
 	/// If this item can bypass the 1-per-category limit
 	var/category_limit_bypass = FALSE
+	var/lifeform_type = "Marine"
 
 /datum/battlepass_reward/proc/can_claim(mob/target_mob)
 	if(!iscarbon(target_mob))

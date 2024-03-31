@@ -81,6 +81,10 @@ SUBSYSTEM_DEF(battlepass)
 	if(xeno_points)
 		give_side_points(xeno_points, xeno_battlepass_earners)
 
+/datum/controller/subsystem/battlepass/proc/save_battlepasses()
+	for(var/client/player as anything in GLOB.clients)
+		player.save_battlepass()
+
 /datum/controller/subsystem/battlepass/proc/give_side_points(point_amount = 0, ckey_list)
 	if(!islist(ckey_list))
 		CRASH("give_side_points in SSbattlepass called without giving a list of ckeys")

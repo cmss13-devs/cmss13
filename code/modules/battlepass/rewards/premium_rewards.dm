@@ -14,10 +14,12 @@
 /datum/battlepass_reward/damage_boost
 	name = "Damage Increase"
 	icon_state = "damage_boost"
+	lifeform_type = "All"
 
 /datum/battlepass_reward/extra_health
 	name = "25% Health Increase"
 	icon_state = "extra_health"
+	lifeform_type = "All"
 
 /datum/battlepass_reward/stims
 	name = "NST5MST5 Stim"
@@ -31,10 +33,12 @@
 /datum/battlepass_reward/predalien_larva
 	name = "Predalien Larva"
 	icon_state = "predalien_larva"
+	lifeform_type = "Xeno"
 
 /datum/battlepass_reward/hugger_skin
 	name = "Facehugger Skin"
 	icon_state = "cs_source"
+	lifeform_type = "Xeno"
 
 /datum/battlepass_reward/navy_l42a
 	name = "Navy L42A"

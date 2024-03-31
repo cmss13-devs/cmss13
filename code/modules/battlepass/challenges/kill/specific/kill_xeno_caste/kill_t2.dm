@@ -9,4 +9,5 @@
 	)
 	kill_requirement_lower = 1
 	kill_requirement_upper = 2
+	pick_weight = 7
 	challenge_category = CHALLENGE_HUMAN

@@ -254,8 +254,9 @@
 	for(var/datum/battlepass_reward/reward_path as anything in SSbattlepass.season_rewards)
 		data["rewards"] += list(list(
 			"name" = initial(reward_path.name),
-			"icon_state" = (initial(reward_path.icon_state)),
+			"icon_state" = initial(reward_path.icon_state),
 			"tier" = i,
+			"lifeform_type" = initial(reward_path.lifeform_type),
 		))
 		i++
 
@@ -265,8 +266,9 @@
 	for(var/datum/battlepass_reward/reward_path as anything in SSbattlepass.premium_season_rewards)
 		data["premium_rewards"] += list(list(
 			"name" = initial(reward_path.name),
-			"icon_state" = (initial(reward_path.icon_state)),
+			"icon_state" = initial(reward_path.icon_state),
 			"tier" = i,
+			"lifeform_type" = initial(reward_path.lifeform_type),
 		))
 		i++
 

@@ -79,6 +79,7 @@
 	item_state = "armor"
 	item_state_slots = null
 	contained_sprite = TRUE
+	slowdown = SLOWDOWN_ARMOR_LIGHT
 
 	flags_armor_protection = BODY_FLAG_CHEST
 	flags_cold_protection = BODY_FLAG_CHEST

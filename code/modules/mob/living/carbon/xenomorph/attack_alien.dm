@@ -198,7 +198,7 @@
 				tackle_min_offset += 2
 				tackle_max_offset += 2
 
-			var/successful
+			var/knocked_down
 			if(attacking_xeno.attempt_tackle(src, tackle_mult, tackle_min_offset, tackle_max_offset))
 				playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 				var/strength = rand(attacking_xeno.tacklestrength_min, attacking_xeno.tacklestrength_max)
@@ -207,7 +207,7 @@
 				attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno] tackles down [src]!"), \
 				SPAN_DANGER("We tackle down [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				SEND_SIGNAL(src, COMSIG_MOB_TACKLED_DOWN, attacking_xeno)
-				successful = TRUE
+				knocked_down = TRUE
 			else
 				playsound(loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
 				if (body_position == LYING_DOWN)
@@ -216,11 +216,11 @@
 				else
 					attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno] tries to tackle [src]"), \
 					SPAN_DANGER("We try to tackle [src]"), null, 5, CHAT_TYPE_XENO_COMBAT)
-				successful = FALSE
+				knocked_down = FALSE
 
-			attacking_xeno.attack_log += "\[[time_stamp()]\] <font color='red'>[successful ? "S" : "Uns"]uccessfully tackled [key_name(src)]</font>"
-			attack_log += "\[[time_stamp()]\] <font color='orange'>Has been [successful ? "" : "un"]successfully tackled by [key_name(attacking_xeno)]</font>"
-			log_attack("[key_name(attacking_xeno)] [successful ? "" : "un"]successfully tackled [key_name(src)] in [get_area(src)] ([loc.x],[loc.y],[loc.z]).", loc.x, loc.y, loc.z)
+			attacking_xeno.attack_log += "\[[time_stamp()]\] <font color='red'>[knocked_down ? "S" : "Uns"]uccessfully tackled [key_name(src)]</font>"
+			attack_log += "\[[time_stamp()]\] <font color='orange'>Has been [knocked_down ? "" : "un"]successfully tackled by [key_name(attacking_xeno)]</font>"
+			log_attack("[key_name(attacking_xeno)] [knocked_down ? "" : "un"]successfully tackled [key_name(src)] in [get_area(src)] ([loc.x],[loc.y],[loc.z]).", loc.x, loc.y, loc.z)
 	return XENO_ATTACK_ACTION
 
 

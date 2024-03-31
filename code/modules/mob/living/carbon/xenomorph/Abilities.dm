@@ -206,7 +206,7 @@
 
 	var/whisper = strip_html(input("Message:", "Psychic Whisper") as text|null)
 	if(whisper)
-		log_say("PsychicWhisper: [key_name(xeno_player)]->[target_mob.key] : [whisper]")
+		log_say("PsychicWhisper: [key_name(xeno_player)]->[target_mob.key] : [whisper] (AREA: [get_area_name(target_mob)])")
 		if(!istype(target_mob, /mob/living/carbon/xenomorph))
 			to_chat(target_mob, SPAN_XENOQUEEN("You hear a strange, alien voice in your head. \"[whisper]\""))
 		else
@@ -259,7 +259,7 @@
 		return
 	var/targetstring = english_list(target_list)
 	to_chat(xeno_player, SPAN_XENONOTICE("You said: \"[whisper]\" to [targetstring]"))
-	log_say("PsychicRadiance: [key_name(xeno_player)]->[targetstring] : [whisper]")
+	log_say("PsychicRadiance: [key_name(xeno_player)]->[targetstring] : [whisper] (AREA: [get_area_name(xeno_player)])")
 	for (var/mob/dead/observer/ghost as anything in GLOB.observer_list)
 		if(!ghost.client || isnewplayer(ghost))
 			continue

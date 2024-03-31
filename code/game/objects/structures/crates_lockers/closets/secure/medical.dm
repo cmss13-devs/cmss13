@@ -186,9 +186,7 @@
 
 /obj/structure/closet/secure_closet/professor_dummy/Initialize()
 	. = ..()
-	var/mob/living/carbon/human/dummy/professor_dummy/spawned_dummy = new(src)
-	var/datum/equipment_preset/dummy_preset = /datum/equipment_preset/other/professor_dummy
-	arm_equipment(spawned_dummy, initial(dummy_preset.name), TRUE, FALSE)
+	new /mob/living/carbon/human/professor_dummy(src)
 
 /obj/structure/closet/secure_closet/professor_dummy/togglelock(mob/living/user)
 	if(user.job == JOB_CMO || user.job == JOB_SEA)
@@ -197,13 +195,13 @@
 	to_chat(user, SPAN_WARNING("Only the [JOB_CMO] or the [JOB_SEA] can toggle this lock."))
 
 /obj/structure/closet/secure_closet/professor_dummy/dump_contents()
-	if(locate(/mob/living/carbon/human/dummy/professor_dummy) in src)
+	if(locate(/mob/living/carbon/human/professor_dummy) in src)
 		visible_message(SPAN_HIGHDANGER("Professor DUMMY should only be used for teaching medical personnel, exclusively done by the [JOB_CMO] or the [JOB_SEA]. Do not abuse it."))
 	return ..()
 
 /obj/structure/closet/secure_closet/professor_dummy/close()
 	for(var/mob/mob in loc)
-		if(!istype(mob, /mob/living/carbon/human/dummy/professor_dummy))
+		if(!istype(mob, /mob/living/carbon/human/professor_dummy))
 			visible_message(SPAN_WARNING("[src] won't budge!"))
 			return
 	..()
@@ -216,7 +214,7 @@
 	return
 
 /obj/structure/closet/secure_closet/professor_dummy/proc/check_and_destroy_dummy()
-	var/mob/dummy = locate(/mob/living/carbon/human/dummy/professor_dummy) in src
+	var/mob/dummy = locate(/mob/living/carbon/human/professor_dummy) in src
 	if(dummy)
 		visible_message(SPAN_DANGER("Something in [src] blows apart!"))
 		playsound(src, 'sound/effects/metal_crash.ogg', 25, 1)

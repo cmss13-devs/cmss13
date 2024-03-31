@@ -1,4 +1,8 @@
 #define HEAT_CAPACITY_HUMAN 100 //249840 J/K, for a 72 kg person.
+#define DEATH_STAGE_NONE 0
+#define DEATH_STAGE_EARLY 1
+#define DEATH_STAGE_WARNING 2
+#define DEATH_STAGE_CRITICAL 3
 
 /obj/structure/machinery/cryo_cell
 	name = "cryo cell"
@@ -19,6 +23,7 @@
 
 	var/mob/living/carbon/occupant = null
 	var/obj/item/reagent_container/glass/beaker = null
+	var/occupant_death_stage = DEATH_STAGE_NONE
 
 /obj/structure/machinery/cryo_cell/Initialize()
 	. = ..()
@@ -27,7 +32,6 @@
 /obj/structure/machinery/cryo_cell/Destroy()
 	QDEL_NULL(beaker)
 	. = ..()
-
 
 /obj/structure/machinery/cryo_cell/process()
 	if(!on)
@@ -38,8 +42,7 @@
 		var/mob/living/carbon/human/human_occupant = occupant
 		if(occupant.stat == DEAD && (!istype(human_occupant) || human_occupant.undefibbable))
 			go_out(TRUE, TRUE) //Whether auto-eject is on or not, we don't permit literal deadbeats to hang around.
-			playsound(src.loc, 'sound/machines/ping.ogg', 25, 1)
-			visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("[src] pings: Patient is dead!")]")
+			display_message("Patient is dead!", warning = TRUE)
 		else
 			process_occupant()
 
@@ -117,7 +120,7 @@
 	data["beakerContents"] = beakerContents
 	return data
 
-/obj/structure/machinery/cryo_cell/ui_act(action, list/params)
+/obj/structure/machinery/cryo_cell/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
@@ -144,7 +147,8 @@
 		if("notice")
 			release_notice = !release_notice
 			. = TRUE
-	updateUsrDialog()
+
+	updateUsrDialog(ui.user)
 
 /obj/structure/machinery/cryo_cell/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/reagent_container/glass))
@@ -159,20 +163,21 @@
 		beaker =  W
 
 		var/reagentnames = ""
-		for(var/datum/reagent/R in beaker.reagents.reagent_list)
-			reagentnames += ";[R.name]"
+		for(var/datum/reagent/cur_reagent in beaker.reagents.reagent_list)
+			reagentnames += ";[cur_reagent.name]"
 
-		msg_admin_niche("[key_name(user)] put \a [beaker] into \the [src], containing [reagentnames] at ([src.loc.x],[src.loc.y],[src.loc.z]) [ADMIN_JMP(src.loc)].", 1)
+		msg_admin_niche("[key_name(user)] put \a [beaker] into [src], containing [reagentnames] at ([src.loc.x],[src.loc.y],[src.loc.z]) [ADMIN_JMP(src.loc)].", 1)
 
 		if(user.drop_inv_item_to_loc(W, src))
-			user.visible_message("[user] adds \a [W] to \the [src]!", "You add \a [W] to \the [src]!")
+			user.visible_message("[user] adds \a [W] to [src]!", "You add \a [W] to [src]!")
 	else if(istype(W, /obj/item/grab))
-		if(isxeno(user)) return
-		var/obj/item/grab/G = W
-		if(!ismob(G.grabbed_thing))
+		if(isxeno(user))
 			return
-		var/mob/M = G.grabbed_thing
-		put_mob(M)
+		var/obj/item/grab/grabber = W
+		if(!ismob(grabber.grabbed_thing))
+			return
+		var/mob/grabbed_mob = grabber.grabbed_thing
+		put_mob(grabbed_mob)
 
 	updateUsrDialog()
 
@@ -195,6 +200,19 @@
 
 	occupant.bodytemperature += 2*(temperature - occupant.bodytemperature)
 	occupant.bodytemperature = max(occupant.bodytemperature, temperature) // this is so ugly i'm sorry for doing it i'll fix it later i promise
+
+	// Warnings if dead
+	if(occupant.stat == DEAD && ishuman(occupant))
+		var/mob/living/carbon/human/human_occupant = occupant
+		var/old_state = occupant_death_stage
+		if(world.time > occupant.timeofdeath + human_occupant.revive_grace_period - 1 MINUTES)
+			occupant_death_stage = DEATH_STAGE_CRITICAL
+		else if(world.time > occupant.timeofdeath + human_occupant.revive_grace_period - 2.5 MINUTES)
+			occupant_death_stage = DEATH_STAGE_WARNING
+		else
+			occupant_death_stage = DEATH_STAGE_EARLY
+		if(old_state != occupant_death_stage)
+			display_message("Patient is critical!", warning = TRUE)
 
 	// Passive healing if alive and cold enough
 	if(occupant.stat != DEAD)
@@ -235,16 +253,18 @@
 			beaker.reagents.trans_to(occupant, 5)
 			beaker.reagents.reaction(occupant)
 
-	if(!occupant.getBruteLoss(TRUE) && !occupant.getFireLoss(TRUE) && !occupant.getCloneLoss() && autoeject) //release the patient automatically when brute and burn are handled on non-robotic limbs
-		display_message("external wounds are")
-		go_out(TRUE)
-		return
-	if(occupant.health >= 100 && autoeject)
-		display_message("external wounds are")
-		go_out(TRUE)
-		return
+	if(autoeject)
+		//release the patient automatically when brute and burn are handled on non-robotic limbs
+		if(!occupant.getBruteLoss(TRUE) && !occupant.getFireLoss(TRUE) && !occupant.getCloneLoss())
+			display_message("Patient's external wounds are healed.", silent = release_notice)
+			go_out(TRUE)
+			return
+		if(occupant.health >= 100)
+			display_message("Patient's external wounds are healed.", silent = release_notice)
+			go_out(TRUE)
+			return
 
-/obj/structure/machinery/cryo_cell/proc/go_out(auto_eject = null, dead = null)
+/obj/structure/machinery/cryo_cell/proc/go_out(auto_eject = FALSE, dead = FALSE)
 	if(!(occupant))
 		return
 	if(occupant.client)
@@ -266,41 +286,45 @@
 	if(auto_eject) //Turn off and announce if auto-ejected because patient is recovered or dead.
 		on = FALSE
 		if(release_notice) //If auto-release notices are on as it should be, let the doctors know what's up
-			playsound(src.loc, 'sound/machines/ping.ogg', 100, 14)
-			var/reason = "Reason for release:</b> Patient recovery."
+			var/reason = "<b>Reason for release:</b> Patient recovery."
 			if(dead)
 				reason = "<b>Reason for release:</b> Patient death."
-			ai_silent_announcement("Patient [occupant] has been automatically released from \the [src] at: [get_area(occupant)]. [reason]", MED_FREQ)
+			ai_silent_announcement("Patient [occupant] has been automatically released from [src] at: [get_area(occupant)]. [reason]", MED_FREQ)
 	update_use_power(USE_POWER_IDLE)
 	update_icon()
 	return
 
-/obj/structure/machinery/cryo_cell/proc/put_mob(mob/living/carbon/M as mob)
+/obj/structure/machinery/cryo_cell/proc/put_mob(mob/living/carbon/cur_mob)
 	if(inoperable())
 		to_chat(usr, SPAN_DANGER("The cryo cell is not functioning."))
 		return
-	if(!istype(M) || isxeno(M))
+	if(!istype(cur_mob) || isxeno(cur_mob))
 		to_chat(usr, SPAN_DANGER("<B>The cryo cell cannot handle such a lifeform!</B>"))
 		return
 	if(occupant)
 		to_chat(usr, SPAN_DANGER("<B>The cryo cell is already occupied!</B>"))
 		return
-	if(M.abiotic())
+	if(cur_mob.abiotic())
 		to_chat(usr, SPAN_DANGER("Subject may not have abiotic items on."))
 		return
 	if(do_after(usr, 20, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-		to_chat(usr, SPAN_NOTICE("You move [M.name] inside the cryo cell."))
-		M.forceMove(src)
-		if(M.health >= -100 && (M.health <= 0 || M.sleeping))
-			to_chat(M, SPAN_NOTICE("<b>You feel cold liquid surround you. Your skin starts to freeze up.</b>"))
-		occupant = M
+		to_chat(usr, SPAN_NOTICE("You move [cur_mob.name] inside the cryo cell."))
+		cur_mob.forceMove(src)
+		if(cur_mob.health >= -100 && (cur_mob.health <= 0 || cur_mob.sleeping))
+			to_chat(cur_mob, SPAN_NOTICE("<b>You feel cold liquid surround you. Your skin starts to freeze up.</b>"))
+		occupant = cur_mob
+		occupant_death_stage = DEATH_STAGE_NONE
 		update_use_power(USE_POWER_ACTIVE)
 		update_icon()
 		return TRUE
 
-/obj/structure/machinery/cryo_cell/proc/display_message(msg)
-	playsound(src.loc, 'sound/machines/ping.ogg', 25, 1)
-	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("\The [src] pings: Patient's " + msg + " healed.")]")
+/obj/structure/machinery/cryo_cell/proc/display_message(msg, silent = FALSE, warning = FALSE)
+	if(!silent)
+		if(warning)
+			playsound(loc, 'sound/machines/twobeep.ogg', 40)
+		else
+			playsound(loc, 'sound/machines/ping.ogg', 25, 1)
+	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("[src] [warning ? "beeps" : "pings"]: [msg]")]")
 
 /obj/structure/machinery/cryo_cell/verb/move_eject()
 	set name = "Eject occupant"
@@ -335,8 +359,8 @@
 //clickdrag code - "resist to get out" code is in living_verbs.dm
 /obj/structure/machinery/cryo_cell/MouseDrop_T(mob/target, mob/user)
 	. = ..()
-	var/mob/living/H = user
-	if(!istype(H) || target != user) //cant make others get in. grab-click for this
+	var/mob/living/living_mob = user
+	if(!istype(living_mob) || target != user) //cant make others get in. grab-click for this
 		return
 
 	put_mob(target)
@@ -350,3 +374,8 @@
 
 /datum/data/function/proc/display()
 	return
+
+#undef DEATH_STAGE_NONE
+#undef DEATH_STAGE_EARLY
+#undef DEATH_STAGE_WARNING
+#undef DEATH_STAGE_CRITICAL

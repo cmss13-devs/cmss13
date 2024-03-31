@@ -123,11 +123,8 @@
 
 			if(attacking_xeno.behavior_delegate)
 				n_damage = attacking_xeno.behavior_delegate.melee_attack_modify_damage(n_damage, src)
-
-			if(attacking_xeno.behavior_delegate)
-				var/datum/behavior_delegate/MD = attacking_xeno.behavior_delegate
-				MD.melee_attack_additional_effects_target(src)
-				MD.melee_attack_additional_effects_self()
+				attacking_xeno.behavior_delegate.melee_attack_additional_effects_target(src)
+				attacking_xeno.behavior_delegate.melee_attack_additional_effects_self()
 
 			var/slash_noise = attacking_xeno.slash_sound
 			var/list/slashdata = list("n_damage" = n_damage, "slash_noise" = slash_noise)

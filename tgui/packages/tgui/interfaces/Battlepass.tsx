@@ -53,7 +53,7 @@ const BattlepassContent = (props) => {
           <div
             style={{
               'width': '800px',
-              'height': '440px',
+              'height': '460px',
               'display': 'flex',
               'background-color': '#0c0e1e',
               'font-family': 'Verdana, Geneva, sans-serif',
@@ -76,13 +76,16 @@ const BattlepassContent = (props) => {
               objectives are unique to you and reset every 24 hours. Completing
               them gives you XP. The other way to obtain XP is by playing a
               match to completion. Everyone gets XP regardless of winning or
-              losing, but the winning side earns more. <br /> <br />
+              losing, but the winning side earns more. Whichever side you join
+              first will be the side you gain XP for, even if you log out before
+              the round ends.
+              <br /> <br />
               Every 10 XP, your battlepass tier increases by 1, granting you new
               rewards to use in game. You can claim rewards with the "Claim
               Battlepass Reward" verb, and come back to this UI with the
               "Battlepass" verb. <br /> <br />
-              The premium battlepass is coming soon, purchasable for only 1000
-              CMCoins. Expect 1 USD to be equivalent to 100 CMCoins.
+              The premium battlepass is coming soon, purchasable for an
+              also-coming-soon 1000 ColonialCoins.
               <br /> <br />
               <Button
                 fontSize="16px"
@@ -173,7 +176,7 @@ const BattlepassInfoContainer = (props) => {
           }}>
           Tier: {data.tier} / {data.max_tier}
           <br />
-          Xp: {data.xp} / 10
+          XP: {data.xp} / 10
         </b>
         {data.daily_challenges.map((challenge) => (
           <BattlepassChallenge challenge={challenge} key={challenge.name} />

@@ -81,6 +81,7 @@
 		xp -= (tier_increase * xp_tierup)
 		tier += tier_increase
 		on_tier_up(display_popup)
+	update_static_data_for_all_viewers()
 
 /datum/battlepass/proc/on_tier_up(display_popup = TRUE)
 	if(previous_on_tier_up_tier == tier)
@@ -117,7 +118,7 @@
 
 	playsound_client(user_client, 'sound/effects/bp_levelup.mp3', get_turf(user_client.mob), 70, FALSE) // .mp3, sue me
 	user_client.mob.overlay_fullscreen("battlepass_tierup", /atom/movable/screen/fullscreen/battlepass)
-	addtimer(CALLBACK(user_client.mob, TYPE_PROC_REF(/mob, clear_fullscreen), "battlepass_tierup"), 1.0 SECONDS)
+	addtimer(CALLBACK(user_client.mob, TYPE_PROC_REF(/mob, clear_fullscreen), "battlepass_tierup", 0), 1.2 SECONDS)
 
 /// Check that the user has all the rewards they should (in case rewards shifted in config or etc).
 /// Doesn't remove ones that aren't in their tiers (in case they have some from a previous season, for example)
@@ -236,7 +237,7 @@
 	var/list/data = list()
 
 	data["tier"] = tier
-	data["xp"] = xp
+	data["xp"] = tier >= SSbattlepass.maximum_tier ? xp_tierup : xp
 	data["xp_tierup"] = xp_tierup
 
 	return data

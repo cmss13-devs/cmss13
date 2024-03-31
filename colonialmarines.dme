@@ -1509,6 +1509,7 @@
 #include "code\modules\battlepass\battlepass.dm"
 #include "code\modules\battlepass\battlepass_client.dm"
 #include "code\modules\battlepass\challenges\_battlepass_challenge.dm"
+#include "code\modules\battlepass\challenges\human_misc\defib_players.dm"
 #include "code\modules\battlepass\challenges\kill\_kill_enemies.dm"
 #include "code\modules\battlepass\challenges\kill\kill_humans.dm"
 #include "code\modules\battlepass\challenges\kill\kill_xenomorphs.dm"

@@ -70,3 +70,5 @@
 
 /// From /obj/item/proc/dig_out_shrapnel() : ()
 #define COMSIG_HUMAN_SHRAPNEL_REMOVED "human_shrapnel_removed"
+
+#define COMSIG_HUMAN_USED_DEFIB "human_used_defib"

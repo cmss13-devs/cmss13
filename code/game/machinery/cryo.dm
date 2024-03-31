@@ -299,21 +299,20 @@
 	set category = "Object"
 	set src in oview(1)
 	if(usr == occupant)//If the user is inside the tube...
-		if(usr.stat == 2)//and he's not dead....
+		if(usr.stat == DEAD)//and he's not dead....
 			return
 
-		if(alert(usr, "Would you like to activate the ejection sequence of the cryo cell? Healing may be in progress.", "Confirm", "Yes", "No") == "Yes")
+		if(tgui_alert(usr, "Would you like to activate the ejection sequence of the cryo cell? Healing may be in progress.", "Confirm", list("Yes", "No")) == "Yes")
 			to_chat(usr, SPAN_NOTICE("Cryo cell release sequence activated. This will take thirty seconds."))
-			visible_message(SPAN_WARNING ("The cryo cell's tank starts draining as its ejection lights blare!"))
+			visible_message(SPAN_WARNING("The cryo cell's tank starts draining as its ejection lights blare!"))
 			sleep(300)
 			if(!src || !usr || !occupant || (occupant != usr)) //Check if someone's released/replaced/bombed him already
 				return
 			go_out()//and release him from the eternal prison.
-		else
-			if(usr.stat != 0)
-				return
-			go_out()
-	return
+	else
+		if(usr.stat != CONSCIOUS)
+			return
+		go_out()
 
 /obj/structure/machinery/cryo_cell/verb/move_inside()
 	set name = "Move Inside"

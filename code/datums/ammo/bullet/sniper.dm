@@ -137,7 +137,7 @@
 			// BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_damage_boost, 30, GLOB.damage_boost_turfs), //2550, 2 taps colony walls, 4 taps reinforced walls
 			// BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_damage_boost, 0.23, GLOB.damage_boost_turfs_xeno), //2550*0.23 = 586, 2 taps resin walls, 3 taps thick resin
 			// BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_damage_boost, 15, GLOB.damage_boost_breaching), //1275, enough to 1 tap airlocks
-			 // BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_damage_boost, 6, GLOB.damage_boost_pylons), //510, 4 shots to take out a pylon
+			// BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_damage_boost, 6, GLOB.damage_boost_pylons), //510, 4 shots to take out a pylon
 		))
 
 /datum/ammo/bullet/sniper/anti_materiel/set_bullet_traits()

@@ -329,3 +329,9 @@
   iloveloopers:
   - balance: You can now use the mortar while shipside during hijack, but only once.
   - rscadd: Ghosts now get a warning when a custom mortar shell is about to land.
+2024-03-31:
+  SpartanBobby:
+  - maptweak: 'Changes to LV522: Less ledges overall'
+  - maptweak: 'Changes to LV522: More breakable entry to the reactor'
+  - maptweak: 'Changes to LV522: Removed dead end in reactor'
+  - maptweak: New weedable zone west of LZ2 T-comms tower

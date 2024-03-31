@@ -2787,9 +2787,6 @@
 /turf/open/floor/wood,
 /area/lv522/indoors/a_block/fitness/glass)
 "bBB" = (
-/obj/structure/prop/invuln/ice_prefab/trim{
-	dir = 8
-	},
 /obj/structure/cargo_container/grant/left,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/w_rockies)
@@ -3443,10 +3440,8 @@
 	},
 /area/lv522/indoors/a_block/fitness/glass)
 "bQq" = (
-/obj/structure/cargo_container/wy/mid{
-	layer = 5
-	},
-/turf/open/auto_turf/sand_white/layer0,
+/obj/structure/cargo_container/grant/rightmid,
+/turf/open/auto_turf/shale/layer2,
 /area/lv522/outdoors/w_rockies)
 "bQA" = (
 /obj/structure/largecrate/random,
@@ -4272,9 +4267,7 @@
 	dir = 1;
 	icon_state = "fab_2"
 	},
-/obj/structure/prop/invuln/ice_prefab{
-	icon_state = "fab_2"
-	},
+/obj/structure/prop/invuln/ice_prefab,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/w_rockies)
 "ckT" = (
@@ -6447,7 +6440,7 @@
 	},
 /area/lv522/atmos/east_reactor/south)
 "dcR" = (
-/obj/effect/alien/weeds/node/alpha,
+/obj/structure/cargo_container/grant/right,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/w_rockies)
 "ddo" = (
@@ -14774,9 +14767,12 @@
 	},
 /area/lv522/indoors/a_block/dorm_north)
 "gtS" = (
-/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/cargo_container/wy/mid,
 /turf/open/auto_turf/shale/layer2,
-/area/lv522/outdoors/colony_streets/north_street)
+/area/lv522/outdoors/w_rockies)
 "gtX" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/warning_stripes{
@@ -21645,6 +21641,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/structure/cargo_container/wy/left,
 /turf/open/auto_turf/shale/layer2,
 /area/lv522/outdoors/w_rockies)
 "iXM" = (
@@ -23695,9 +23692,12 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/mining)
 "jGh" = (
-/obj/structure/cargo_container/grant/right,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/cargo_container/wy/right,
 /turf/open/auto_turf/shale/layer1,
-/area/lv522/outdoors/colony_streets/north_west_street)
+/area/lv522/outdoors/w_rockies)
 "jGj" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/maintenance_jack,
@@ -23731,10 +23731,8 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/central_streets)
 "jHa" = (
-/obj/structure/cargo_container/wy/right{
-	layer = 5
-	},
-/turf/open/auto_turf/sand_white/layer0,
+/obj/structure/cargo_container/kelland/left,
+/turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/w_rockies)
 "jHb" = (
 /turf/open/gm/river,
@@ -24531,9 +24529,9 @@
 	},
 /area/lv522/indoors/a_block/dorms)
 "jVS" = (
-/obj/structure/cargo_container/kelland/right,
-/turf/open/auto_turf/sand_white/layer0,
-/area/lv522/outdoors/colony_streets/north_west_street)
+/obj/structure/cargo_container/horizontal/blue/top,
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/outdoors/w_rockies)
 "jVV" = (
 /obj/structure/prop/invuln/minecart_tracks,
 /obj/structure/closet/crate/miningcar{
@@ -26355,7 +26353,9 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/garage)
 "kBD" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/cargo_container/horizontal/blue/middle{
+	layer = 3.1
+	},
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/w_rockies)
 "kBJ" = (
@@ -26379,7 +26379,7 @@
 	},
 /area/lv522/atmos/cargo_intake)
 "kBT" = (
-/obj/structure/cargo_container/grant/left,
+/obj/structure/cargo_container/horizontal/blue/bottom,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/w_rockies)
 "kBU" = (
@@ -26900,10 +26900,6 @@
 	icon_state = "cement3"
 	},
 /area/lv522/outdoors/colony_streets/south_west_street)
-"kLQ" = (
-/obj/structure/cargo_container/grant/right,
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/outdoors/w_rockies)
 "kMi" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -26955,14 +26951,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/admin)
-"kNj" = (
-/obj/structure/prop/vehicles/crawler{
-	dir = 8;
-	icon_state = "crawler_crate_alt2";
-	layer = 3.1
-	},
-/turf/open/auto_turf/sand_white/layer0,
-/area/lv522/outdoors/w_rockies)
 "kNw" = (
 /obj/item/prop/alien/hugger,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -27181,7 +27169,7 @@
 /area/lv522/indoors/a_block/security)
 "kRf" = (
 /obj/structure/prop/invuln/ice_prefab/trim{
-	dir = 6
+	dir = 8
 	},
 /obj/structure/cargo_container/grant/rightmid,
 /turf/open/auto_turf/sand_white/layer0,
@@ -27537,13 +27525,6 @@
 	icon_state = "marked"
 	},
 /area/lv522/landing_zone_1/ceiling)
-"kWD" = (
-/obj/structure/prop/vehicles/crawler{
-	icon_state = "crawler_crate_alt2";
-	layer = 3.1
-	},
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/outdoors/w_rockies)
 "kWH" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
@@ -28060,10 +28041,11 @@
 /area/lv522/landing_zone_1)
 "lhb" = (
 /obj/structure/prop/invuln/ice_prefab{
-	dir = 9
+	dir = 5
 	},
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
-	icon_state = "solarpanel1"
+	icon_state = "solarpanel1";
+	pixel_x = 7
 	},
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/w_rockies)
@@ -28086,12 +28068,6 @@
 	icon_state = "darkredfull2"
 	},
 /area/lv522/outdoors/colony_streets/north_street)
-"lhC" = (
-/obj/structure/prop/invuln/ice_prefab{
-	dir = 5
-	},
-/turf/open/auto_turf/sand_white/layer0,
-/area/lv522/outdoors/w_rockies)
 "lhD" = (
 /obj/structure/barricade/handrail{
 	dir = 1
@@ -28833,10 +28809,6 @@
 	},
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/admin)
-"lxj" = (
-/obj/structure/prop/invuln/ice_prefab,
-/turf/open/auto_turf/sand_white/layer0,
-/area/lv522/outdoors/w_rockies)
 "lxp" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -32833,12 +32805,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorms)
-"mZM" = (
-/obj/structure/cargo_container/wy/left{
-	layer = 5
-	},
-/turf/open/auto_turf/sand_white/layer0,
-/area/lv522/outdoors/w_rockies)
 "mZN" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -34475,9 +34441,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/casino)
 "nFO" = (
-/obj/structure/prop/invuln/ice_prefab{
-	dir = 5
-	},
+/obj/structure/machinery/power/port_gen/pacman,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/w_rockies)
 "nGc" = (
@@ -37651,6 +37615,9 @@
 	dir = 1;
 	icon_state = "fab_2"
 	},
+/obj/structure/prop/invuln/ice_prefab{
+	icon_state = "fab_2"
+	},
 /turf/open/auto_turf/shale/layer2,
 /area/lv522/outdoors/w_rockies)
 "oOS" = (
@@ -39002,7 +38969,6 @@
 /area/lv522/outdoors/colony_streets/north_west_street)
 "prT" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/structure/cargo_container/grant/rightmid,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/w_rockies)
 "prU" = (
@@ -41795,10 +41761,6 @@
 	icon_state = "floor_plate"
 	},
 /area/lv522/outdoors/colony_streets/east_central_street)
-"qtl" = (
-/obj/structure/cargo_container/horizontal/blue/top,
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/outdoors/colony_streets/north_west_street)
 "qts" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -42868,12 +42830,6 @@
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/landing_zone_1)
-"qMX" = (
-/obj/structure/cargo_container/horizontal/blue/middle{
-	layer = 3.1
-	},
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/outdoors/colony_streets/north_west_street)
 "qNg" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Bedroom"
@@ -43556,13 +43512,6 @@
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
-"qXz" = (
-/obj/structure/cargo_container/horizontal/blue/bottom,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 10
-	},
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/outdoors/colony_streets/north_west_street)
 "qXH" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toy,
@@ -57529,10 +57478,6 @@
 	},
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/mining)
-"vZY" = (
-/obj/structure/cargo_container/grant/rightmid,
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/outdoors/w_rockies)
 "wac" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -58246,10 +58191,6 @@
 	icon_state = "marked"
 	},
 /area/lv522/indoors/lone_buildings/engineering)
-"wnl" = (
-/obj/structure/cargo_container/wy/mid,
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/outdoors/w_rockies)
 "wnu" = (
 /obj/structure/cargo_container/wy/right,
 /turf/open/auto_turf/shale/layer1,
@@ -60319,18 +60260,10 @@
 	icon_state = "brown"
 	},
 /area/lv522/atmos/cargo_intake)
-"xfe" = (
-/obj/structure/cargo_container/grant/left,
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/outdoors/colony_streets/north_west_street)
 "xfp" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/bridges/dorms_fitness)
-"xfr" = (
-/obj/structure/cargo_container/grant/rightmid,
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/outdoors/colony_streets/north_west_street)
 "xfu" = (
 /obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
@@ -61207,10 +61140,6 @@
 	icon_state = "plate"
 	},
 /area/lv522/atmos/cargo_intake)
-"xyf" = (
-/obj/structure/cargo_container/kelland/left,
-/turf/open/auto_turf/sand_white/layer0,
-/area/lv522/outdoors/colony_streets/north_west_street)
 "xyi" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/prison{
@@ -65727,9 +65656,9 @@ vtc
 jrT
 cpy
 cpy
-kBT
-uiK
-mZM
+sRA
+sRA
+sRA
 sRA
 sRA
 rWS
@@ -65954,9 +65883,9 @@ hSi
 vtc
 cpy
 cpy
-vZY
-dcR
-bQq
+rWS
+sRA
+sRA
 sRA
 rWS
 pRK
@@ -66181,9 +66110,9 @@ lMH
 vtc
 cpy
 cpy
-kLQ
+rWS
+rWS
 sRA
-jHa
 sRA
 obe
 pRM
@@ -67789,9 +67718,9 @@ cpy
 cpy
 cpy
 rWS
-sRA
-sRA
-sRA
+jVS
+kBD
+kBT
 ien
 ien
 ien
@@ -68238,7 +68167,7 @@ cpy
 cpy
 sRA
 sRA
-sRA
+jHa
 cpy
 rWS
 rWS
@@ -68465,7 +68394,7 @@ cpy
 cpy
 cpy
 sRA
-sRA
+nvB
 abt
 rWS
 sRA
@@ -68680,13 +68609,13 @@ auG
 uWO
 vtc
 vtc
-kBD
+sRA
 cpy
 cpy
 sRA
-sRA
+bBB
 rWS
-iXI
+gtS
 sRA
 cpy
 cpy
@@ -68907,13 +68836,13 @@ auG
 uWO
 uWO
 vtc
-kBD
+sRA
 cpy
 cpy
 sRA
+bQq
 rWS
-rWS
-kXo
+jGh
 sRA
 sRA
 cpy
@@ -69134,11 +69063,11 @@ vtc
 vtc
 uWO
 vtc
-kBT
+sRA
 uiK
 uiK
 sRA
-uiK
+dcR
 sRA
 bKq
 goY
@@ -69362,7 +69291,7 @@ vtc
 vtc
 uWO
 prT
-kWD
+sRA
 tTr
 pUR
 uiK
@@ -69381,8 +69310,8 @@ goY
 rsF
 sRA
 sRA
-wms
-ien
+sRA
+clY
 sjY
 clY
 clY
@@ -69588,7 +69517,7 @@ vtc
 vtc
 vtc
 uWO
-kLQ
+sRA
 sRA
 uiK
 uiK
@@ -69608,7 +69537,7 @@ hKE
 viA
 sRA
 sRA
-wnl
+sRA
 sjY
 sjY
 clY
@@ -69815,7 +69744,7 @@ uWO
 vtc
 vtc
 uWO
-kNj
+uiK
 sRA
 uiK
 uiK
@@ -69835,7 +69764,7 @@ uiK
 hRu
 uiK
 sRA
-wnu
+sRA
 sjY
 clY
 clY
@@ -70271,8 +70200,8 @@ uWO
 vtc
 bBB
 nFO
-lhC
-lxj
+uiK
+uiK
 sRA
 uiK
 uiK
@@ -70291,7 +70220,7 @@ uiK
 uiK
 sRA
 clY
-xfe
+clY
 clY
 xGc
 lvb
@@ -70518,7 +70447,7 @@ uiK
 uiK
 uiK
 wKj
-xfr
+clY
 clY
 hJZ
 slO
@@ -70745,8 +70674,8 @@ rGi
 uiK
 uiK
 hJZ
-jGh
-xyf
+clY
+hJZ
 hJZ
 slO
 hJZ
@@ -70973,7 +70902,7 @@ sRA
 ien
 ien
 ien
-jVS
+hJZ
 hJZ
 slO
 hJZ
@@ -71635,9 +71564,9 @@ ien
 sjY
 hJZ
 ien
-qtl
-qMX
-qXz
+clY
+clY
+rnG
 kYm
 hJZ
 hJZ
@@ -80256,10 +80185,10 @@ pjJ
 lCH
 vjW
 pjJ
-ien
-ugV
-ugV
-sSn
+clY
+hJZ
+hJZ
+jqF
 oxt
 hhD
 ahP
@@ -80482,11 +80411,11 @@ ylm
 pjJ
 lCH
 pjJ
-ien
-ien
-ien
-ugV
-ugV
+pjJ
+clY
+clY
+hJZ
+hJZ
 oxt
 fjr
 crH
@@ -80710,10 +80639,10 @@ vjW
 lCH
 pjJ
 pjJ
-pjJ
-pjJ
-fjr
-fjr
+clY
+clY
+clY
+clY
 oxt
 fjr
 crH
@@ -80937,10 +80866,10 @@ vjW
 hdu
 nCa
 nCa
-nCa
-nCa
-iKF
-gtS
+yhK
+yhK
+yhK
+iSf
 oVO
 nQx
 crH
@@ -81164,10 +81093,10 @@ sQu
 sQu
 sQu
 sQu
-sQu
-sQu
-tNr
-rxI
+ydA
+ydA
+hiK
+sjY
 oxt
 jDO
 sSn

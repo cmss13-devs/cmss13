@@ -176,13 +176,21 @@
 
 	updateUsrDialog()
 
+/obj/structure/machinery/cryo_cell/update_use_power(new_use_power)
+	var/changed = new_use_power != use_power
+	. = ..()
+	if(changed)
+		update_icon()
 
 /obj/structure/machinery/cryo_cell/update_icon()
 	icon_state = initial(icon_state)
-	icon_state = "[icon_state]-[on ? "on" : "off"]-[occupant ? "occupied" : "empty"]"
+	var/is_on = on && operable()
+	icon_state = "[icon_state]-[is_on ? "on" : "off"]-[occupant ? "occupied" : "empty"]"
 
 /obj/structure/machinery/cryo_cell/proc/process_occupant()
 	if(!occupant)
+		return
+	if(!operable())
 		return
 
 	occupant.bodytemperature += 2*(temperature - occupant.bodytemperature)

@@ -43,7 +43,7 @@
 	var/has_cryo_medicine = reagents.get_reagent_amount("cryoxadone") >= 1 || reagents.get_reagent_amount("clonexadone") >= 1
 	if(has_cryo_medicine)
 		var/obj/structure/machinery/cryo_cell/cryo = loc
-		if(!istype(cryo) || !cryo.on)
+		if(!istype(cryo) || !cryo.on || cryo.inoperable())
 			has_cryo_medicine = FALSE
 
 	for(var/datum/reagent/cur_reagent in reagents.reagent_list)

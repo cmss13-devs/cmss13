@@ -307,8 +307,8 @@
 	if(cur_mob.abiotic())
 		to_chat(usr, SPAN_DANGER("Subject may not have abiotic items on."))
 		return
-	if(do_after(usr, 20, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-		to_chat(usr, SPAN_NOTICE("You move [cur_mob.name] inside the cryo cell."))
+	if(do_after(usr, 2 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+		visible_message(SPAN_NOTICE("[usr] moves [usr == cur_mob ? "" : "[cur_mob] "]inside the cryo cell."))
 		cur_mob.forceMove(src)
 		if(cur_mob.health >= -100 && (cur_mob.health <= 0 || cur_mob.sleeping))
 			to_chat(cur_mob, SPAN_NOTICE("<b>You feel cold liquid surround you. Your skin starts to freeze up.</b>"))
@@ -337,14 +337,17 @@
 		if(tgui_alert(usr, "Would you like to activate the ejection sequence of the cryo cell? Healing may be in progress.", "Confirm", list("Yes", "No")) == "Yes")
 			to_chat(usr, SPAN_NOTICE("Cryo cell release sequence activated. This will take thirty seconds."))
 			visible_message(SPAN_WARNING("The cryo cell's tank starts draining as its ejection lights blare!"))
-			sleep(300)
-			if(!src || !usr || !occupant || (occupant != usr)) //Check if someone's released/replaced/bombed him already
-				return
-			go_out()//and release him from the eternal prison.
+			addtimer(CALLBACK(src, PROC_REF(finish_eject), usr), 30 SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
 	else
 		if(usr.stat != CONSCIOUS)
 			return
 		go_out()
+
+/obj/structure/machinery/cryo_cell/proc/finish_eject(mob/original)
+	//Check if someone's released/replaced/bombed him already
+	if(QDELETED(src) || QDELETED(original) || !occupant || (occupant != original))
+		return
+	go_out()//and release him from the eternal prison.
 
 /obj/structure/machinery/cryo_cell/verb/move_inside()
 	set name = "Move Inside"

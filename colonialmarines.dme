@@ -1520,6 +1520,7 @@
 #include "code\modules\battlepass\challenges\kill\specific\weapons\_kill_weapon.dm"
 #include "code\modules\battlepass\challenges\kill\specific\weapons\common_weapons.dm"
 #include "code\modules\battlepass\challenges\kill\specific\weapons\pistol_weapons.dm"
+#include "code\modules\battlepass\challenges\kill\specific\weapons\req_weapons.dm"
 #include "code\modules\battlepass\challenges\xeno_misc\berserker_empower.dm"
 #include "code\modules\battlepass\challenges\xeno_misc\facehug.dm"
 #include "code\modules\battlepass\challenges\xeno_misc\for_the_hive.dm"

@@ -1,0 +1,4 @@
+author: "SpartanBobby"
+delete-after: True
+changes:
+  - maptweak: "LV522 Cargo containers keeping FORECON out of the crashed ship have been moved back slightly allowing marines and xenos a new flank route"

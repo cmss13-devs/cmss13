@@ -41,8 +41,10 @@
 		return // Double checking due to Life() funny background=1
 
 	var/has_cryo_medicine = reagents.get_reagent_amount("cryoxadone") >= 1 || reagents.get_reagent_amount("clonexadone") >= 1
-	if(has_cryo_medicine && !istype(loc, /obj/structure/machinery/cryo_cell))
-		has_cryo_medicine = FALSE
+	if(has_cryo_medicine)
+		var/obj/structure/machinery/cryo_cell/cryo = loc
+		if(!istype(cryo) || !cryo.on)
+			has_cryo_medicine = FALSE
 
 	for(var/datum/reagent/cur_reagent in reagents.reagent_list)
 		if(!has_cryo_medicine && !istype(cur_reagent, /datum/reagent/generated))

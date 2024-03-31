@@ -835,10 +835,6 @@
 	icon_state = "sterile_white"
 	},
 /area/prison/hallway/engineering)
-"dl" = (
-/obj/structure/girder,
-/turf/open/space/basic,
-/area/prison/cellblock/maxsec/north)
 "dn" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/plating/prison,
@@ -31299,7 +31295,7 @@ aX
 kY
 zD
 bI
-dl
+ZZ
 GF
 RN
 oM
@@ -31511,7 +31507,7 @@ So
 Ou
 fi
 bI
-dl
+ZZ
 GF
 RN
 lG

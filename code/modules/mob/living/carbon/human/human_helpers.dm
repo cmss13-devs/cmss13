@@ -206,13 +206,13 @@
 	return FALSE
 
 
-/mob/living/carbon/human/is_mob_restrained(check_grab = 1)
+/mob/living/carbon/human/is_mob_restrained(check_grab = TRUE)
 	if(check_grab && pulledby && pulledby.grab_level >= GRAB_AGGRESSIVE)
 		return TRUE
 	if (handcuffed)
 		return TRUE
 	if (istype(wear_suit, /obj/item/clothing/suit/straight_jacket))
-		return 1
+		return TRUE
 
 	if (HAS_TRAIT(src, TRAIT_NESTED))
 		return TRUE

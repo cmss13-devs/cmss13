@@ -220,7 +220,7 @@
 
 			attacking_xeno.attack_log += "\[[time_stamp()]\] <font color='red'>[knocked_down ? "S" : "Uns"]uccessfully tackled [key_name(src)]</font>"
 			attack_log += "\[[time_stamp()]\] <font color='orange'>Has been [knocked_down ? "" : "un"]successfully tackled by [key_name(attacking_xeno)]</font>"
-			log_attack("[key_name(attacking_xeno)] [knocked_down ? "" : "un"]successfully tackled [key_name(src)] in [get_area(src)] ([loc.x],[loc.y],[loc.z]).", loc.x, loc.y, loc.z)
+			log_attack("[key_name(attacking_xeno)] [knocked_down ? "" : "un"]successfully tackled [key_name(src)] in [get_area(src)] ([loc.x],[loc.y],[loc.z]).")
 	return XENO_ATTACK_ACTION
 
 

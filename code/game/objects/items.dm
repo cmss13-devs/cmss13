@@ -966,7 +966,7 @@ cases. Override_icon_state should be a list.*/
 				continue
 			viewers_clients += M.client
 
-	flick_overlay_to_clients(pickup_animation, viewers_clients, 4)
+	//flick_overlay_to_clients(pickup_animation, viewers_clients, 4)
 
 	var/matrix/animation_matrix = new(pickup_animation.transform)
 	animation_matrix.Turn(pick(-30, 30))

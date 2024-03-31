@@ -381,6 +381,9 @@
 	icon_state = "marked"
 	},
 /area/prison/cellblock/mediumsec/west)
+"bA" = (
+/turf/closed/wall/r_wall/prison_unmeltable,
+/area/prison/hallway/central/north)
 "bB" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 1
@@ -29659,11 +29662,11 @@ gj
 gj
 fZ
 Qz
-aJ
-aJ
+bA
+bA
 oE
-aJ
-aJ
+bA
+bA
 Ql
 bX
 Ql
@@ -29871,11 +29874,11 @@ aJ
 UG
 Ei
 Ty
-aJ
+bA
 Vv
 Vv
 Vv
-aJ
+bA
 je
 AY
 je
@@ -30931,11 +30934,11 @@ aJ
 PA
 IF
 Qz
-aJ
+bA
 Vv
 gq
 gq
-aJ
+bA
 LT
 nQ
 kr
@@ -31143,8 +31146,8 @@ aJ
 aJ
 Jx
 GI
-aJ
-aJ
+bA
+bA
 gq
 gq
 oE
@@ -31356,7 +31359,7 @@ cI
 VL
 WQ
 GW
-aJ
+bA
 Vv
 Vv
 oE
@@ -31783,7 +31786,7 @@ cI
 oE
 gq
 gq
-aJ
+bA
 um
 rv
 LT
@@ -32204,7 +32207,7 @@ WQ
 oa
 cI
 cI
-aJ
+bA
 Vv
 Vv
 oE
@@ -32415,8 +32418,8 @@ aJ
 aJ
 Jx
 GI
-aJ
-aJ
+bA
+bA
 gq
 gq
 oE
@@ -32627,11 +32630,11 @@ aJ
 Xy
 fZ
 gj
-aJ
+bA
 Vv
 gq
 gq
-aJ
+bA
 Jc
 xB
 id
@@ -33687,11 +33690,11 @@ aJ
 Ty
 Ei
 UG
-aJ
+bA
 Vv
 Vv
 Vv
-aJ
+bA
 wv
 LC
 wv
@@ -33899,11 +33902,11 @@ Qz
 Qz
 fZ
 gj
-aJ
-aJ
+bA
+bA
 oE
-aJ
-aJ
+bA
+bA
 id
 vP
 id

@@ -39,7 +39,7 @@
 		if(occupant.stat == DEAD && (!istype(human_occupant) || human_occupant.undefibbable))
 			go_out(TRUE, TRUE) //Whether auto-eject is on or not, we don't permit literal deadbeats to hang around.
 			playsound(src.loc, 'sound/machines/ping.ogg', 25, 1)
-			visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("\The [src] pings: Patient is dead!")]")
+			visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("[src] pings: Patient is dead!")]")
 		else
 			process_occupant()
 
@@ -195,6 +195,7 @@
 		if(occupant.bodytemperature < T0C)
 			occupant.Sleeping(10)
 			occupant.apply_effect(10, PARALYZE)
+
 			if(occupant.getOxyLoss())
 				occupant.apply_damage(-1, OXY)
 

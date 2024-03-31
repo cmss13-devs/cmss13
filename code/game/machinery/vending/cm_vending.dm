@@ -517,7 +517,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		return
 
 	var/mob/living/carbon/human/human_user
-	var/mob/living/carbon/user = usr
+	var/mob/living/carbon/user = ui.user
 
 	if(ishuman(user))
 		human_user = usr

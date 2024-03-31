@@ -35,12 +35,13 @@
 		return
 
 	if(occupant)
-		if(occupant.stat != DEAD)
-			process_occupant()
-		else
+		var/mob/living/carbon/human/human_occupant = occupant
+		if(occupant.stat == DEAD && (!istype(human_occupant) || human_occupant.undefibbable))
 			go_out(TRUE, TRUE) //Whether auto-eject is on or not, we don't permit literal deadbeats to hang around.
 			playsound(src.loc, 'sound/machines/ping.ogg', 25, 1)
 			visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("\The [src] pings: Patient is dead!")]")
+		else
+			process_occupant()
 
 	updateUsrDialog()
 	return TRUE
@@ -181,17 +182,19 @@
 	icon_state = "[icon_state]-[on ? "on" : "off"]-[occupant ? "occupied" : "empty"]"
 
 /obj/structure/machinery/cryo_cell/proc/process_occupant()
-	if(occupant)
-		if(occupant.stat == DEAD)
-			return
-		occupant.bodytemperature += 2*(temperature - occupant.bodytemperature)
-		occupant.bodytemperature = max(occupant.bodytemperature, temperature) // this is so ugly i'm sorry for doing it i'll fix it later i promise
+	if(!occupant)
+		return
+
+	occupant.bodytemperature += 2*(temperature - occupant.bodytemperature)
+	occupant.bodytemperature = max(occupant.bodytemperature, temperature) // this is so ugly i'm sorry for doing it i'll fix it later i promise
+
+	// Passive healing if alive and cold enough
+	if(occupant.stat != DEAD)
 		occupant.recalculate_move_delay = TRUE
 		occupant.set_stat(UNCONSCIOUS)
 		if(occupant.bodytemperature < T0C)
 			occupant.Sleeping(10)
 			occupant.apply_effect(10, PARALYZE)
-
 			if(occupant.getOxyLoss())
 				occupant.apply_damage(-1, OXY)
 
@@ -202,20 +205,24 @@
 				var/heal_brute = occupant.getBruteLoss() ? min(1, 20/occupant.getBruteLoss()) : 0
 				var/heal_fire = occupant.getFireLoss() ? min(1, 20/occupant.getFireLoss()) : 0
 				occupant.heal_limb_damage(heal_brute,heal_fire)
-		var/has_cryo = occupant.reagents.get_reagent_amount("cryoxadone") >= 1
-		var/has_clonexa = occupant.reagents.get_reagent_amount("clonexadone") >= 1
-		var/has_cryo_medicine = has_cryo || has_clonexa
-		if(beaker && !has_cryo_medicine)
-			beaker.reagents.trans_to(occupant, 1, 10)
+
+	// Chemical healing if cryo meds are involved
+	if(beaker && occupant.reagents && beaker.reagents)
+		var/occupant_has_cryo_meds = occupant.reagents.get_reagent_amount("cryoxadone") >= 1 || occupant.reagents.get_reagent_amount("clonexadone") >= 1
+		var/beaker_has_cryo_meds = beaker.reagents.get_reagent_amount("cryoxadone") >= 1 || beaker.reagents.get_reagent_amount("clonexadone") >= 1
+		if(occupant_has_cryo_meds ^ beaker_has_cryo_meds)
+			// Either the occupant has cryo meds and the beaker doesn't or vice versa (not both)
+			beaker.reagents.trans_to(occupant, 5)
 			beaker.reagents.reaction(occupant)
-		if(!occupant.getBruteLoss(TRUE) && !occupant.getFireLoss(TRUE) && !occupant.getCloneLoss() && autoeject) //release the patient automatically when brute and burn are handled on non-robotic limbs
-			display_message("external wounds are")
-			go_out(TRUE)
-			return
-		if(occupant.health >= 100 && autoeject)
-			display_message("external wounds are")
-			go_out(TRUE)
-			return
+
+	if(!occupant.getBruteLoss(TRUE) && !occupant.getFireLoss(TRUE) && !occupant.getCloneLoss() && autoeject) //release the patient automatically when brute and burn are handled on non-robotic limbs
+		display_message("external wounds are")
+		go_out(TRUE)
+		return
+	if(occupant.health >= 100 && autoeject)
+		display_message("external wounds are")
+		go_out(TRUE)
+		return
 
 /obj/structure/machinery/cryo_cell/proc/go_out(auto_eject = null, dead = null)
 	if(!(occupant))

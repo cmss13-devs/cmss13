@@ -252,7 +252,7 @@
 	name = "\improper Corporate Saferoom"
 	icon_state = "vault"
 
-// all the lambda area bellow.
+// Lambda areas below:
 
 // Laboratory proper
 /area/bigredv2/caves/lambda

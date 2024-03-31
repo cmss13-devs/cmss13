@@ -309,6 +309,7 @@
 		if(new_xeno.client)
 			if(new_xeno.client.prefs.toggles_flashing & FLASH_POOLSPAWN)
 				window_flash(new_xeno.client)
+			SSbattlepass.xeno_battlepass_earners |= new_xeno.client.ckey
 
 		linked_hive.stored_larva--
 		linked_hive.hive_ui.update_burrowed_larva()

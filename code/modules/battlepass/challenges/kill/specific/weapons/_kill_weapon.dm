@@ -21,7 +21,7 @@
 	desc = "Kill [enemy_kills_required] Xenomorph\s using \an [weapon_to_use]."
 
 /datum/battlepass_challenge/kill_enemies/xenomorphs/weapon/on_kill(mob/source, mob/killed_mob, datum/cause_data/cause_data)
-	if(cause_data.cause_name != weapon_to_use)
+	if(!findtext(cause_data.cause_name, weapon_to_use))
 		return
 
 	return ..()

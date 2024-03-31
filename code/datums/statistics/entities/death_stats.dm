@@ -81,17 +81,17 @@
 
 	attack_log += "[log_message]."
 
-	if(!mind || statistic_exempt)
-		return
+	//if(!mind || statistic_exempt)
+	//	return
 
 	var/area/area = get_area(death_loc)
 	handle_observer_message(cause_data, cause_mob, death_loc, area)
 
 	// Perform logging above before get_player_from_key to avoid delays
-	var/datum/entity/statistic/death/new_death = DB_ENTITY(/datum/entity/statistic/death)
-	var/datum/entity/player/player_entity = get_player_from_key(mind.ckey)
-	if(player_entity)
-		new_death.player_id = player_entity.id
+	/*var/datum/entity/statistic/death/new_death = DB_ENTITY(/datum/entity/statistic/death)
+	//var/datum/entity/player/player_entity = get_player_from_key(mind.ckey)
+	//if(player_entity)
+	//	new_death.player_id = player_entity.id
 
 	if(SSperf_logging)
 		new_death.round_id = SSperf_logging.round.id
@@ -107,13 +107,13 @@
 	if(cause_player)
 		new_death.cause_player_id = cause_player.id
 	new_death.cause_role_name = cause_data?.role
-	new_death.cause_faction_name = cause_data?.faction
+	new_death.cause_faction_name = cause_data?.faction*/
 
 	if(cause_mob)
 		cause_mob.life_kills_total += life_value
 		SEND_SIGNAL(cause_mob, COMSIG_MOB_KILL_TOTAL_INCREASED, src, cause_data)
 
-	if(getBruteLoss())
+	/*if(getBruteLoss())
 		new_death.total_brute = round(getBruteLoss())
 	if(getFireLoss())
 		new_death.total_burn = round(getFireLoss())
@@ -139,7 +139,8 @@
 
 	new_death.save()
 	new_death.detach()
-	return new_death
+	return new_death*/
+	return null
 
 /mob/living/carbon/human/track_mob_death(datum/cause_data/cause_data, turf/death_loc)
 	. = ..()

@@ -299,6 +299,7 @@
 				msg_sea("NEW PLAYER: <b>[key_name(character, 0, 1, 0)]</b> only has [(round(client.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1))] hours as a human. Current role: [get_actual_job_name(character)] - Current location: [get_area(character)]")
 
 	character.client.init_verbs()
+	SSbattlepass.marine_battlepass_earners |= character.client.ckey
 	qdel(src)
 
 

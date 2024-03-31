@@ -107,6 +107,8 @@
 		types_in_rewards += reward.type
 
 	previous_on_tier_up_tier = tier
+	var/client/oc = owning_client.resolve()
+	log_game("[oc.mob] ([oc.key]) has increased to battlepass tier [tier]")
 
 /datum/battlepass/proc/display_tier_up_popup()
 	if(!owning_client)

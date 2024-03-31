@@ -423,6 +423,7 @@
 	declare_completion_announce_predators()
 	declare_completion_announce_medal_awards()
 	declare_fun_facts()
+	SSbattlepass.save_battlepasses()
 
 
 	add_current_round_status_to_end_results("Round End")

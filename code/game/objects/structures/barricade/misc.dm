@@ -106,6 +106,6 @@
 /obj/structure/barricade/wooden/hit_barricade(obj/item/I)
 	switch(I.damtype)
 		if("fire")
-			take_damage( I.force  * I.demolition_mod * 1.5 )
+			take_damage( I.force * I.demolition_mod * 1.5 )
 		if("brute")
 			take_damage( I.force * I.demolition_mod * 0.75 )

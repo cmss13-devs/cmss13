@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - rscadd: "Moved holocards to the squad hud"

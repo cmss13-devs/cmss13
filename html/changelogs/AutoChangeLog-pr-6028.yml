@@ -1,4 +1,0 @@
-author: "SabreML"
-delete-after: True
-changes:
-  - bugfix: "Fixed a runtime error preventing a 'Marine Minor' (Hive collapse) roundend state."

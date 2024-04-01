@@ -110,7 +110,7 @@
 /obj/structure/sign/banners/united_americas_flag
 	name = "\improper United Americas flag"
 	desc = "A flag of the United Americas. Inspires patriotism, fear, or revulsion depending on the viewer's political leanings."
-	icon_state = "ua_flag"
+	icon_state = "uaflag"
 
 //=====================//
 // SEMIOTIC STANDARD  //

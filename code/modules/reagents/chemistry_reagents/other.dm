@@ -613,6 +613,14 @@
 	color = "#664B63" // rgb: 102, 75, 99
 	chemclass = CHEM_CLASS_UNCOMMON
 
+/datum/reagent/foaming_agent/stabilized
+	name = "Stabilized metallic foam"
+	id = "stablefoam"
+	description = "Stabilized metallic foam that solidifies when exposed to an open flame"
+	reagent_state = LIQUID
+	color = "#d4b8d1"
+	chemclass = CHEM_CLASS_UNCOMMON
+
 /datum/reagent/nicotine
 	name = "Nicotine"
 	id = "nicotine"
@@ -689,6 +697,36 @@
 	burncolor = "#D05006"
 	burn_sprite = "red"
 	properties = list(PROPERTY_OXIDIZING = 6, PROPERTY_FUELING = 7, PROPERTY_FLOWING = 1)
+
+/datum/reagent/napalm/sticky
+	name = "Sticky-Napalm"
+	id = "stickynapalm"
+	description = "A custom napalm mix, stickier and lasts longer but lower damage"
+	reagent_state = LIQUID
+	color = "#f8e3b2"
+	chemfiresupp = FALSE
+	burncolor = "#f8e3b2"
+	burn_sprite = "dynamic"
+	properties = list(
+		PROPERTY_INTENSITY = BURN_LEVEL_TIER_2,
+		PROPERTY_DURATION = BURN_TIME_TIER_5,
+		PROPERTY_RADIUS = 5,
+	)
+
+/datum/reagent/napalm/high_damage
+	name = "High-Combustion Napalm Fuel"
+	id = "highdamagenapalm"
+	description = "A custom napalm mix, higher damage but not as sticky"
+	reagent_state = LIQUID
+	color = "#742424"
+	chemfiresupp = FALSE
+	burncolor = "#742424"
+	burn_sprite = "dynamic"
+	properties = list(
+		PROPERTY_INTENSITY = BURN_LEVEL_TIER_8,
+		PROPERTY_DURATION = BURN_TIME_TIER_1,
+		PROPERTY_RADIUS = 5,
+	)
 
 // This is the regular flamer fuel and pyro regular flamer fuel.
 /datum/reagent/napalm/ut

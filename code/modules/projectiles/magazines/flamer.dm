@@ -17,9 +17,9 @@
 	var/flamer_chem = "utnapthal"
 	flags_magazine = AMMUNITION_HIDE_AMMO
 
-	var/max_intensity = 40
+	var/max_intensity = 50
 	var/max_range = 5
-	var/max_duration = 30
+	var/max_duration = 50
 
 	var/fuel_pressure = 1 //How much fuel is used per tile fired
 	var/max_pressure = 10
@@ -90,7 +90,7 @@
 		to_chat(user, SPAN_WARNING("You can't mix fuel mixtures!"))
 		return
 
-	if(!to_add.intensityfire)
+	if(!to_add.intensityfire && to_add.id != "stablefoam")
 		to_chat(user, SPAN_WARNING("This chemical is not potent enough to be used in a flamethrower!"))
 		return
 

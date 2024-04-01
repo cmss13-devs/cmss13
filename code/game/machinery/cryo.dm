@@ -179,7 +179,7 @@
 		var/mob/grabbed_mob = grabber.grabbed_thing
 		put_mob(grabbed_mob)
 
-	updateUsrDialog()
+	updateUsrDialog(user)
 
 /obj/structure/machinery/cryo_cell/update_use_power(new_use_power)
 	var/changed = new_use_power != use_power

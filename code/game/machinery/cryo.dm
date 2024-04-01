@@ -256,11 +256,11 @@
 	if(autoeject)
 		//release the patient automatically when brute and burn are handled on non-robotic limbs
 		if(!occupant.getBruteLoss(TRUE) && !occupant.getFireLoss(TRUE) && !occupant.getCloneLoss())
-			display_message("Patient's external wounds are healed.", silent = release_notice)
+			display_message("Patient's external wounds are healed.")
 			go_out(TRUE)
 			return
 		if(occupant.health >= 100)
-			display_message("Patient's external wounds are healed.", silent = release_notice)
+			display_message("Patient's external wounds are healed.")
 			go_out(TRUE)
 			return
 
@@ -282,14 +282,14 @@
 	if(occupant.bodytemperature < 261 && occupant.bodytemperature >= 70)
 		occupant.bodytemperature = 261
 		occupant.recalculate_move_delay = TRUE
-	occupant = null
 	if(auto_eject) //Turn off and announce if auto-ejected because patient is recovered or dead.
 		on = FALSE
 		if(release_notice) //If auto-release notices are on as it should be, let the doctors know what's up
-			var/reason = "<b>Reason for release:</b> Patient recovery."
+			var/reason = "Reason for release: Patient recovery."
 			if(dead)
-				reason = "<b>Reason for release:</b> Patient death."
-			ai_silent_announcement("Patient [occupant] has been automatically released from [src] at: [get_area(occupant)]. [reason]", MED_FREQ)
+				reason = "Reason for release: Patient death."
+			ai_silent_announcement("Patient [occupant] has been automatically released from [src] at: [sanitize_area((get_area(occupant))?.name)]. [reason]", ":m")
+	occupant = null
 	update_use_power(USE_POWER_IDLE)
 	update_icon()
 	return
@@ -299,10 +299,10 @@
 		to_chat(usr, SPAN_DANGER("The cryo cell is not functioning."))
 		return
 	if(!istype(cur_mob) || isxeno(cur_mob))
-		to_chat(usr, SPAN_DANGER("<B>The cryo cell cannot handle such a lifeform!</B>"))
+		to_chat(usr, SPAN_DANGER("The cryo cell cannot handle such a lifeform!"))
 		return
 	if(occupant)
-		to_chat(usr, SPAN_DANGER("<B>The cryo cell is already occupied!</B>"))
+		to_chat(usr, SPAN_DANGER("The cryo cell is already occupied!"))
 		return
 	if(cur_mob.abiotic())
 		to_chat(usr, SPAN_DANGER("Subject may not have abiotic items on."))
@@ -311,7 +311,7 @@
 		visible_message(SPAN_NOTICE("[usr] moves [usr == cur_mob ? "" : "[cur_mob] "]inside the cryo cell."))
 		cur_mob.forceMove(src)
 		if(cur_mob.health >= -100 && (cur_mob.health <= 0 || cur_mob.sleeping))
-			to_chat(cur_mob, SPAN_NOTICE("<b>You feel cold liquid surround you. Your skin starts to freeze up.</b>"))
+			to_chat(cur_mob, SPAN_NOTICE("You feel cold liquid surround you. Your skin starts to freeze up."))
 		occupant = cur_mob
 		occupant_death_stage = DEATH_STAGE_NONE
 		update_use_power(USE_POWER_ACTIVE)

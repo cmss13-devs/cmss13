@@ -98,7 +98,7 @@
 	edge = 1
 	demolition_mod = 0.1
 	w_class = SIZE_TINY
-	throwforce = 1
+	throwforce = 5
 	flags_item = CAN_DIG_SHRAPNEL
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5

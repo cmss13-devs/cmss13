@@ -345,7 +345,7 @@
 
 /obj/structure/machinery/cryo_cell/proc/finish_eject(mob/original)
 	//Check if someone's released/replaced/bombed him already
-	if(QDELETED(src) || QDELETED(original) || !occupant || (occupant != original))
+	if(QDELETED(src) || QDELETED(original) || !occupant || occupant != original)
 		return
 	go_out()//and release him from the eternal prison.
 

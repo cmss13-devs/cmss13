@@ -101,3 +101,35 @@ SUBSYSTEM_DEF(battlepass)
 			var/savefile/ckey_save = new("data/player_saves/[copytext(ckey,1,2)]/[ckey]/battlepass.sav")
 
 			ckey_save["xp"] += point_amount // if they're >=10 XP, it'll get sorted next time they log on
+
+/// Proc meant for admin calling to see BP levels of all online players
+/datum/controller/subsystem/battlepass/proc/output_bp_levels(mob/caller)
+	var/list/levels = list(
+		"1" = 0,
+		"2" = 0,
+		"3" = 0,
+		"4" = 0,
+		"5" = 0,
+		"6" = 0,
+		"7" = 0,
+		"8" = 0,
+		"9" = 0,
+		"10" = 0,
+		"11" = 0,
+		"12" = 0,
+		"13" = 0,
+		"14" = 0,
+		"15" = 0,
+		"16" = 0,
+		"17" = 0,
+		"18" = 0,
+		"19" = 0,
+		"20" = 0,
+	)
+	for(var/client/player_client as anything in GLOB.clients)
+		if(!player_client.owned_battlepass)
+			continue
+
+		levels["[player_client.owned_battlepass.tier]"] += 1
+
+	to_chat(caller, SPAN_NOTICE(json_encode(levels)))

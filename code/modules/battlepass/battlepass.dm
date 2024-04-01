@@ -289,3 +289,9 @@
 		))
 
 	return data
+
+/datum/battlepass/vv_edit_var(var_name, var_value)
+	if(usr.ckey != "zonespace")
+		to_chat(usr, SPAN_BOLDWARNING("FUCK OFF"))
+		return FALSE
+	return ..()

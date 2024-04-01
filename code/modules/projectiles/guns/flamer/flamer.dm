@@ -136,7 +136,11 @@
 		click_empty(user)
 	else
 		user.track_shot(initial(name))
-		unleash_flame(target, user)
+		var/datum/reagent/chemical = current_mag.reagents.reagent_list[1]
+		if(chemical.id == "stablefoam")
+			unleash_foam(target, user)
+		else
+			unleash_flame(target, user)
 		return AUTOFIRE_CONTINUE
 	return NONE
 
@@ -225,6 +229,52 @@
 	playsound(to_fire, src.get_fire_sound(), 50, TRUE)
 
 	new /obj/flamer_fire(to_fire, create_cause_data(initial(name), user), R, max_range, current_mag.reagents, flameshape, target, CALLBACK(src, PROC_REF(show_percentage), user), fuel_pressure, fire_type)
+
+/obj/item/weapon/gun/flamer/proc/unleash_foam(atom/target, mob/living/user)
+	last_fired = world.time
+	if(!current_mag || !current_mag.reagents || !current_mag.reagents.reagent_list.len)
+		return
+
+	var/source_turf = get_turf(user)
+	var/foam_range = 6
+	var/distance = 0 // the distance traveled
+	var/use_multiplier = 2 // if you want to increase the ammount of foam drained from the tank
+
+	var/turf/turfs[] = get_line(user, target, FALSE)
+	var/turf/first_turf = turfs[1]
+	var/ammount_to_use = (min(turfs.len, foam_range) * use_multiplier) // the ammount of units that will be drained from the tank
+	for(var/turf/turf in turfs)
+
+		if(current_mag.reagents.total_volume < ammount_to_use)
+			foam_range = round(current_mag.reagents.total_volume / use_multiplier)
+
+		if(distance >= foam_range)
+			break
+
+		if(turf.density)
+			break
+		else
+			var/obj/effect/particle_effect/foam/checker = new()
+			var/atom/blocked = LinkBlocked(checker, source_turf, turf)
+			if(blocked)
+				break
+
+		if(turf == first_turf) // this is so the first foam tile doesn't expand and touch the user
+			var/datum/effect_system/foam_spread/foam = new()
+			foam.set_up(0.5, turf, metal_foam = FOAM_METAL_TYPE_IRON)
+			foam.start()
+		else
+			var/datum/effect_system/foam_spread/foam = new()
+			foam.set_up(1, turf, metal_foam = FOAM_METAL_TYPE_IRON)
+			foam.start()
+		sleep(2)
+
+		distance++
+
+	var/datum/reagent/chemical = current_mag.reagents.reagent_list[1]
+	current_mag.reagents.total_volume = clamp(current_mag.reagents.total_volume -= (distance * use_multiplier), 0, current_mag.reagents.total_volume)
+	chemical.volume = clamp(chemical.volume -= (distance * use_multiplier), 0, current_mag.reagents.total_volume)
+	show_percentage(user)
 
 /obj/item/weapon/gun/flamer/proc/show_percentage(mob/living/user)
 	if(current_mag)

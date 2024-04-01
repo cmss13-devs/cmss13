@@ -54,10 +54,10 @@
 		qdel(src)
 		return FALSE
 
-	if(package && user.a_intent == INTENT_HARM)
-		return ..() // chunk box gaming
+	if(package)
+		if(user.a_intent == INTENT_HARM)
+			return ..() // chunk box gaming
 
-	if(package && user.a_intent != INTENT_HARM)
 		if(user == M)
 			to_chat(M, SPAN_WARNING("How do you expect to eat this with the package still on?"))
 		else

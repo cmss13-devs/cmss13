@@ -127,6 +127,7 @@
 	switch(action)
 		if("power")
 			on = !on
+			update_use_power(on ? USE_POWER_ACTIVE : USE_POWER_IDLE)
 			update_icon()
 			. = TRUE
 		if("eject")
@@ -181,10 +182,10 @@
 
 	updateUsrDialog(user)
 
-/obj/structure/machinery/cryo_cell/update_use_power(new_use_power)
-	var/changed = new_use_power != use_power
+/obj/structure/machinery/cryo_cell/power_change(area/master_area)
 	. = ..()
-	if(changed)
+	if((occupant || on) && operable())
+		update_use_power(USE_POWER_ACTIVE)
 		update_icon()
 
 /obj/structure/machinery/cryo_cell/update_icon()

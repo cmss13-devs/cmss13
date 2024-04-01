@@ -75,7 +75,7 @@
 	if(ghostvision)
 		see_invisible = INVISIBILITY_OBSERVER
 	else
-		see_invisible = HIDE_INVISIBLE_OBSERVER
+		see_invisible = HIDE_VISIBLE_OBSERVER
 	to_chat(usr, SPAN_NOTICE("You [(ghostvision?"now":"no longer")] have ghost vision."))
 
 /mob/dead/observer/Initialize(mapload, mob/body)

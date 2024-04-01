@@ -61,7 +61,7 @@
 		if(user == M)
 			to_chat(M, SPAN_WARNING("How do you expect to eat this with the package still on?"))
 		else
-			to_chat(M, SPAN_WARNING("[M] made an endearing attempt to force feed you a snack, albeit with the charming mishap of leaving the packaging intact."))
+			to_chat(M, SPAN_WARNING("[M] made an endearing attempt to force feed you a snack with the packaging still on."))
 		return FALSE
 
 	if(istype(M, /mob/living/carbon))

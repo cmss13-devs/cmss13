@@ -2248,7 +2248,17 @@ obj/structure/prop/hybrisa/engineer/giantpod
 	unacidable = TRUE
 	indestructible = TRUE
 	density = TRUE
-
+obj/structure/prop/hybrisa/engineer/giantconsole
+	name = "Giant Console"
+	desc = "temp."
+	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi'
+	icon_state = "engineerconsole"
+	bound_height = 32
+	bound_width = 32
+	unslashable = TRUE
+	unacidable = TRUE
+	indestructible = TRUE
+	density = TRUE
 /obj/structure/prop/hybrisa/engineer/engineerpillar
 	icon = 'icons/obj/structures/props/zenithengineerpillarangled.dmi'
 	icon_state = "engineerpillar_SW1fade"

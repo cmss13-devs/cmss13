@@ -238,7 +238,8 @@
 	var/source_turf = get_turf(user)
 	var/foam_range = 6
 	var/distance = 0 // the distance traveled
-	var/use_multiplier = 2 // if you want to increase the ammount of foam drained from the tank
+	var/use_multiplier = 2.5 // if you want to increase the ammount of foam drained from the tank
+	var/datum/reagent/chemical = current_mag.reagents.reagent_list[1]
 
 	var/turf/turfs[] = get_line(user, target, FALSE)
 	var/turf/first_turf = turfs[1]
@@ -271,7 +272,11 @@
 
 		distance++
 
-	var/datum/reagent/chemical = current_mag.reagents.reagent_list[1]
+		if(current_mag.reagents.total_volume < use_multiplier) // there aren't enough units left for a single tile of foam, empty the tank
+			current_mag.reagents.total_volume = 0
+			chemical.volume = 0
+			break
+
 	current_mag.reagents.total_volume = clamp(current_mag.reagents.total_volume -= (distance * use_multiplier), 0, current_mag.reagents.total_volume)
 	chemical.volume = clamp(chemical.volume -= (distance * use_multiplier), 0, current_mag.reagents.total_volume)
 	show_percentage(user)

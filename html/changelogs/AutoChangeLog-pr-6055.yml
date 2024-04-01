@@ -1,0 +1,4 @@
+author: "sleepynecrons"
+delete-after: True
+changes:
+  - imageadd: "added missing backpack onmob states for \"classic\" gearset"

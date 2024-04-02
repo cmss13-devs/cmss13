@@ -136,8 +136,7 @@
 		click_empty(user)
 	else
 		user.track_shot(initial(name))
-		var/datum/reagent/chemical = current_mag.reagents.reagent_list[1]
-		if(chemical.id == "stablefoam")
+		if(current_mag.reagents.has_reagent("stablefoam"))
 			unleash_foam(target, user)
 		else
 			unleash_flame(target, user)
@@ -272,13 +271,14 @@
 
 		distance++
 
-		if(current_mag.reagents.total_volume < use_multiplier) // there aren't enough units left for a single tile of foam, empty the tank
-			current_mag.reagents.total_volume = 0
-			chemical.volume = 0
-			break
+	// this is likely not needed but I want to be on the safe side
+	current_mag.reagents.total_volume = clamp(current_mag.reagents.total_volume -= (distance * use_multiplier), 0, current_mag.reagents.maximum_volume)
 
-	current_mag.reagents.total_volume = clamp(current_mag.reagents.total_volume -= (distance * use_multiplier), 0, current_mag.reagents.total_volume)
-	chemical.volume = clamp(chemical.volume -= (distance * use_multiplier), 0, current_mag.reagents.total_volume)
+	chemical.volume = clamp(chemical.volume -= (distance * use_multiplier), 0, current_mag.reagents.maximum_volume)
+
+	if(current_mag.reagents.total_volume < use_multiplier) // there aren't enough units left for a single tile of foam, empty the tank
+		current_mag.reagents.clear_reagents()
+
 	show_percentage(user)
 
 /obj/item/weapon/gun/flamer/proc/show_percentage(mob/living/user)

@@ -44,9 +44,6 @@
 /obj/structure/medical_supply_link/notop
 	icon_state = "medlink_unclamped_notop"
 
-/obj/structure/medical_supply_link/notop/ex_act(severity, direction)
-	return FALSE
-
 /obj/structure/medical_supply_link/notop/Initialize()
 	. = ..()
 	RegisterSignal(src, COMSIG_STRUCTURE_WRENCHED, PROC_REF(do_clamp_animation_notop))

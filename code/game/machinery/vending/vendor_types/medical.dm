@@ -40,7 +40,8 @@
 
 // --- No Upper Tile / White
 /obj/structure/medical_supply_link/notop
-	icon_state = "medlink_unclamped_notop"
+	icon_state = "medlink_notop_unclamped"
+	base_state = "medlink_notop"
 
 /obj/structure/medical_supply_link/notop/Initialize()
 	. = ..()

@@ -43,28 +43,6 @@
 	icon_state = "medlink_notop_unclamped"
 	base_state = "medlink_notop"
 
-/obj/structure/medical_supply_link/notop/Initialize()
-	. = ..()
-	RegisterSignal(src, COMSIG_STRUCTURE_WRENCHED, PROC_REF(do_clamp_animation_notop))
-	RegisterSignal(src, COMSIG_STRUCTURE_UNWRENCHED, PROC_REF(do_unclamp_animation_notop))
-	update_icon()
-
-/obj/structure/medical_supply_link/notop/proc/do_clamp_animation_notop() // clamp and unclamp animations for when vendor is wrench over supply link
-	flick("medlink_clamping_notop", src)
-	addtimer(CALLBACK(src, PROC_REF(update_icon), 2.6 SECONDS))
-	update_icon()
-
-/obj/structure/medical_supply_link/notop/proc/do_unclamp_animation_notop()
-	flick("medlink_unclamping_notop", src)
-	addtimer(CALLBACK(src, PROC_REF(update_icon), 2.6 SECONDS))
-	update_icon()
-
-/obj/structure/medical_supply_link/notop/update_icon()
-	if(locate(/obj/structure/machinery/cm_vending/sorted/medical) in loc)
-		icon_state = "medlink_clamped_notop"
-	else
-		icon_state = "medlink_unclamped_notop"
-
 // --- No Upper Tile / Green
 /obj/structure/medical_supply_link/notopg
 	icon_state = "medlink_unclamped_notopg"

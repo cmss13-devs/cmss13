@@ -133,3 +133,28 @@ SUBSYSTEM_DEF(battlepass)
 		levels["[player_client.owned_battlepass.tier]"] += 1
 
 	to_chat(caller, SPAN_NOTICE(json_encode(levels)))
+
+
+/datum/controller/subsystem/battlepass/proc/get_bp_ge_to_tier(mob/caller, tiernum = 1)
+	var/i = 0
+	for(var/a in flist("data/player_saves/"))
+		for(var/ckey_str in flist("data/player_saves/[a]/"))
+			if(!fexists("data/player_saves/[a]/[ckey_str]/battlepass.sav"))
+				continue
+
+			var/savefile/save_obj = new("data/player_saves/[a]/[ckey_str]/battlepass.sav")
+			if(save_obj["tier"] >= tiernum)
+				i++
+	to_chat(caller, SPAN_NOTICE("[i]"))
+
+
+/datum/controller/subsystem/battlepass/proc/get_bp_xp_total(mob/caller)
+	var/xp = 0
+	for(var/a in flist("data/player_saves/"))
+		for(var/ckey_str in flist("data/player_saves/[a]/"))
+			if(!fexists("data/player_saves/[a]/[ckey_str]/battlepass.sav"))
+				continue
+
+			var/savefile/save_obj = new("data/player_saves/[a]/[ckey_str]/battlepass.sav")
+			xp += (((save_obj["tier"] - 1) * 10) + save_obj["xp"])
+	to_chat(caller, SPAN_NOTICE("[xp]"))

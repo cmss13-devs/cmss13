@@ -18,3 +18,6 @@
       been moved back slightly allowing marines and xenos a new flank route
   realforest2001:
   - code_imp: Removes an unused camera var.
+2024-04-02:
+  sleepynecrons:
+  - imageadd: added missing backpack onmob states for "classic" gearset

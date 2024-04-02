@@ -72,28 +72,6 @@
 /obj/structure/medical_supply_link/notopg/ex_act(severity, direction)
 	return FALSE
 
-/obj/structure/medical_supply_link/notopg/Initialize()
-	. = ..()
-	RegisterSignal(src, COMSIG_STRUCTURE_WRENCHED, PROC_REF(do_clamp_animation_notopg))
-	RegisterSignal(src, COMSIG_STRUCTURE_UNWRENCHED, PROC_REF(do_unclamp_animation_notopg))
-	update_icon()
-
-/obj/structure/medical_supply_link/notopg/proc/do_clamp_animation_notopg() // clamp and unclamp animations for when vendor is wrench over supply link
-	flick("medlink_clamping_notopg", src)
-	addtimer(CALLBACK(src, PROC_REF(update_icon), 2.6 SECONDS))
-	update_icon()
-
-/obj/structure/medical_supply_link/notopg/proc/do_unclamp_animation_notopg()
-	flick("medlink_unclamping_notopg", src)
-	addtimer(CALLBACK(src, PROC_REF(update_icon), 2.6 SECONDS))
-	update_icon()
-
-/obj/structure/medical_supply_link/notopg/update_icon()
-	if(locate(/obj/structure/machinery/cm_vending/sorted/medical) in loc)
-		icon_state = "medlink_clamped_notopg"
-	else
-		icon_state = "medlink_unclamped_notopg"
-
 //------------SORTED MEDICAL VENDORS---------------
 
 /obj/structure/machinery/cm_vending/sorted/medical

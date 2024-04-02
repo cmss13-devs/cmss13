@@ -20348,15 +20348,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/engineering/upper_engineering/starboard)
-"cJh" = (
-/obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/poddoor/shutters/almayer/open{
-	dir = 8;
-	id = "Warden Office Shutters";
-	name = "\improper Privacy Shutters"
-	},
-/turf/open/floor/plating,
-/area/almayer/shipboard/brig/cells)
 "cJm" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -93678,7 +93669,7 @@ kuJ
 sLA
 jSw
 xkd
-cJh
+qFu
 xkd
 xkd
 icM
@@ -94287,7 +94278,7 @@ wdF
 kQu
 cqM
 xkd
-cJh
+qFu
 xkd
 xkd
 pns

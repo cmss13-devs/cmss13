@@ -355,10 +355,6 @@
 	icon_state = "shale_0"
 	bleed_layer = 0
 
-/turf/open/auto_turf/hybrisashale/layer0_puddle
-	icon_state = "shale_0_puddle"
-	bleed_layer = 0
-
 /turf/open/auto_turf/hybrisashale/layer0_plate //for inner plate shenanigans
 	icon_state = "shale_1_alt"
 	bleed_layer = 0

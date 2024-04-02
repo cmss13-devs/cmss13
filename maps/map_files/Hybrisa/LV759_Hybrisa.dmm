@@ -150,7 +150,9 @@
 	layer = 4;
 	pixel_x = 6
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/north_street)
 "abm" = (
 /obj/structure/prop/hybrisa/containersextended/tanright{
@@ -661,7 +663,9 @@
 /obj/structure/platform_decoration/hybrisa/rockdark{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_west_street)
 "afP" = (
 /obj/structure/largecrate/random/barrel{
@@ -828,7 +832,9 @@
 	icon_state = "5-8";
 	level = 2
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "ahx" = (
 /obj/structure/surface/rack,
@@ -1815,7 +1821,9 @@
 /area/lv759/colonial_marshals/prisoners_cells)
 "ari" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "ark" = (
 /obj/effect/decal/cleanable/blood/drip,
@@ -2229,7 +2237,9 @@
 /obj/structure/platform{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "avA" = (
 /obj/structure/prop/structure_lattice{
@@ -2758,7 +2768,9 @@
 /area/lv759/indoors/garage_workshop)
 "aAH" = (
 /obj/item/stack/sheet/metal,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "aAJ" = (
 /obj/structure/machinery/blackbox_recorder,
@@ -3066,7 +3078,9 @@
 	pixel_y = 5
 	},
 /obj/structure/prop/ice_colony/ground_wire,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/east_central_street)
 "aEc" = (
 /obj/structure/surface/rack{
@@ -3976,7 +3990,9 @@
 /obj/structure/platform/hybrisa/rockdark{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_west_street)
 "aKZ" = (
 /obj/effect/decal/cleanable/dirt{
@@ -4509,7 +4525,9 @@
 /area/lv759/landing_zone/starglider)
 "aQO" = (
 /obj/structure/platform/hybrisa/rockdark,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "aQS" = (
 /turf/open/floor/prison{
@@ -4522,7 +4540,9 @@
 	dir = 8
 	},
 /obj/item/device/flashlight/lamp/tripod,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "aRh" = (
 /obj/structure/machinery/light{
@@ -4650,7 +4670,9 @@
 	dir = 8
 	},
 /obj/structure/platform_decoration/hybrisa/rockdark,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_west_street)
 "aSb" = (
 /turf/open/floor/corsat{
@@ -4821,7 +4843,9 @@
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 9
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "aUk" = (
 /obj/effect/hybrisa/decal/road/lines1,
@@ -4864,7 +4888,9 @@
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 6
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "aUU" = (
 /obj/effect/decal/cleanable/blood,
@@ -4908,7 +4934,9 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/east_central_street)
 "aVs" = (
 /obj/structure/platform{
@@ -4960,7 +4988,9 @@
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_east_street)
 "aVH" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
@@ -5082,7 +5112,9 @@
 /obj/structure/barricade/handrail/wire{
 	layer = 3
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "aWO" = (
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco3{
@@ -5191,7 +5223,9 @@
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "aYh" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -6029,7 +6063,7 @@
 /area/lv759/power_plant)
 "bfR" = (
 /obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice12";
+	icon_state = "lattice8";
 	pixel_y = 16
 	},
 /turf/closed/wall/strata_outpost_ribbed{
@@ -6336,7 +6370,10 @@
 	},
 /area/lv759/outdoors/colony_streets/north_street)
 "bjA" = (
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed3,
+/obj/structure/bed/roller/hospital_empty/bigrollerempty3{
+	dir = 4;
+	icon_state = "bigrollerempty3_up"
+	},
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "blue"
@@ -8237,7 +8274,9 @@
 	pixel_y = 5
 	},
 /obj/structure/prop/ice_colony/ground_wire,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_east_street)
 "bAp" = (
 /obj/structure/sign/nosmoking_1,
@@ -8640,7 +8679,9 @@
 	dir = 8;
 	layer = 1
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/landing_zone_1)
 "bEO" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass,
@@ -9497,7 +9538,9 @@
 "bOz" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/spawner/random/gun/shotgun/lowchance,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "bOD" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -9688,7 +9731,9 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "bQo" = (
 /obj/effect/decal/warning_stripes{
@@ -9733,7 +9778,9 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "bQH" = (
 /obj/effect/hybrisa/decal/road/lines1,
@@ -10021,7 +10068,9 @@
 	},
 /area/lv759/landing_zone/landing_zone_4)
 "bTP" = (
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed2,
+/obj/structure/bed/roller/hospital_empty/bigrollerempty{
+	icon_state = "bigrollerempty_up"
+	},
 /turf/open/floor/almayer/research/containment/corner_var1{
 	dir = 4
 	},
@@ -10277,7 +10326,9 @@
 /obj/structure/platform/hybrisa/metalplatform2{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "bVX" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
@@ -11083,8 +11134,9 @@
 /turf/open/hybrisa/street/cement1,
 /area/lv759/outdoors/colony_streets/north_street)
 "ccQ" = (
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed1{
-	dir = 1
+/obj/structure/bed/roller/hospital_empty/bigrollerempty2{
+	icon_state = "bigrollerempty2_up";
+	dir = 8
 	},
 /turf/open/floor/prison{
 	icon_state = "whitegreenfull"
@@ -11563,7 +11615,9 @@
 /obj/structure/machinery/light/small/blue{
 	dir = 1
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "civ" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -12572,8 +12626,9 @@
 /obj/structure/machinery/iv_drip{
 	pixel_y = 19
 	},
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed3{
-	layer = 4
+/obj/structure/bed/roller/hospital_empty/bigrollerempty3{
+	dir = 4;
+	icon_state = "bigrollerempty3_up"
 	},
 /turf/open/floor/prison{
 	dir = 6;
@@ -14352,7 +14407,9 @@
 /area/lv759/indoors/spaceport/engineering)
 "cIi" = (
 /obj/effect/hybrisa/decal/dirt,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "cIs" = (
 /obj/item/trash/cigbutt{
@@ -15073,7 +15130,9 @@
 	dir = 1;
 	pixel_y = 5
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/east_central_street)
 "cNV" = (
 /obj/structure/toilet,
@@ -15738,7 +15797,9 @@
 	dir = 4;
 	icon_state = "sandbag_3"
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "cTK" = (
 /obj/structure/platform{
@@ -16056,9 +16117,7 @@
 /obj/structure/closet/bodybag{
 	icon_state = "bodybag_open"
 	},
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed2{
-	icon_state = "bigrolleremptyblood_down"
-	},
+/obj/structure/bed/roller/hospital_empty/bigrollerempty,
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/lv759/indoors/hospital/morgue)
 "cWf" = (
@@ -16352,7 +16411,7 @@
 	pixel_y = 10
 	},
 /obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice12";
+	icon_state = "lattice8";
 	pixel_y = 16
 	},
 /turf/open/floor/prison{
@@ -16821,7 +16880,9 @@
 	dir = 4;
 	icon_state = "sandbag_3"
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "ddW" = (
 /obj/structure/dispenser/oxygen,
@@ -17963,7 +18024,9 @@
 /area/lv759/outdoors/colony_streets/north_west_street)
 "dnr" = (
 /obj/item/device/flashlight/lantern,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "dnz" = (
 /obj/structure/barricade/handrail,
@@ -18523,11 +18586,11 @@
 /obj/structure/barricade/handrail/wire{
 	dir = 8
 	},
+/obj/structure/platform/hybrisa/metalplatform2,
 /obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice12";
+	icon_state = "lattice4";
 	pixel_y = 16
 	},
-/obj/structure/platform/hybrisa/metalplatform2,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors)
 "dsk" = (
@@ -18844,7 +18907,9 @@
 /obj/structure/platform_decoration/hybrisa/rockdark{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "dvd" = (
 /obj/item/prop/alien/hugger,
@@ -18972,7 +19037,9 @@
 	},
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/clothing/head/hairflower,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "dwq" = (
 /obj/structure/platform/hybrisa/metalplatform6{
@@ -19224,7 +19291,9 @@
 /obj/structure/closet/crate/miningcar/yellow{
 	layer = 3
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "dzj" = (
 /obj/item/stack/sheet/cardboard,
@@ -19775,7 +19844,9 @@
 	icon_state = "lattice12";
 	pixel_y = 16
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "dEK" = (
 /obj/effect/hybrisa/decal/road/road_edge{
@@ -19863,7 +19934,9 @@
 /obj/structure/platform/hybrisa/rockdark{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "dFA" = (
 /obj/effect/hybrisa/decal/trash{
@@ -20275,7 +20348,9 @@
 	dir = 4
 	},
 /obj/structure/prop/ice_colony/ground_wire,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_east_street)
 "dJD" = (
 /obj/structure/platform/strata/metal{
@@ -20342,7 +20417,9 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/central_streets)
 "dJY" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -21944,7 +22021,9 @@
 /area/lv759/outdoors/colony_streets/south_east_street)
 "dYY" = (
 /obj/structure/prop/invuln/minecart_tracks,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "dZd" = (
 /turf/open/floor/hybrisa/carpet/carpetred,
@@ -22972,7 +23051,9 @@
 	layer = 2.1
 	},
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_west_street)
 "eid" = (
 /obj/structure/cargo_container/kelland/right,
@@ -23004,7 +23085,9 @@
 	pixel_y = 16
 	},
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "ein" = (
 /obj/effect/hybrisa/decal/trash{
@@ -23254,7 +23337,9 @@
 /obj/structure/platform/hybrisa/rockdark{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "elL" = (
 /turf/closed/shuttle/dropship2/WY/HorizonRunner{
@@ -23900,7 +23985,9 @@
 	level = 3;
 	pixel_x = 16
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_west_street)
 "esb" = (
 /obj/effect/decal/warning_stripes{
@@ -24084,7 +24171,9 @@
 /area/lv759/outdoors)
 "etN" = (
 /obj/structure/largecrate/random,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "etQ" = (
 /obj/structure/platform/hybrisa/rockdark,
@@ -24154,7 +24243,9 @@
 /obj/structure/platform{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_west_street)
 "eum" = (
 /obj/item/weapon/dart,
@@ -24213,7 +24304,9 @@
 	pixel_x = 11;
 	pixel_y = -2
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "euU" = (
 /turf/open/floor/strata{
@@ -24475,7 +24568,9 @@
 /obj/structure/platform{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/east_central_street)
 "eyf" = (
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/stationary{
@@ -24570,8 +24665,8 @@
 "ezg" = (
 /obj/item/bedsheet/medical,
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed2{
-	dir = 4
+/obj/structure/bed/roller/hospital_empty/bigrollerempty{
+	icon_state = "bigrollerempty_up"
 	},
 /turf/open/floor/prison{
 	icon_state = "whitegreen"
@@ -24589,7 +24684,9 @@
 /area/lv759/outdoors/colony_streets/central_streets)
 "ezl" = (
 /obj/effect/hybrisa/decal/dirt,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_west_street)
 "ezm" = (
 /obj/structure/platform/hybrisa/metalplatform1{
@@ -24670,7 +24767,9 @@
 /area/lv759/recycling_plant)
 "ezN" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform3,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "ezP" = (
 /obj/structure/cargo_container/grant/right,
@@ -24714,7 +24813,9 @@
 /obj/effect/hybrisa/decal/grate{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "eAd" = (
 /obj/structure/largecrate/random/case/small,
@@ -24897,7 +24998,9 @@
 	dir = 1
 	},
 /obj/item/stack/cable_coil/random,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_east_street)
 "eBM" = (
 /obj/structure/bed/chair/vehicle{
@@ -25317,7 +25420,9 @@
 /area/lv759/outdoors/colony_streets/south_east_street)
 "eGP" = (
 /obj/structure/largecrate/random/barrel/red,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "eGQ" = (
 /obj/effect/decal/warning_stripes{
@@ -25577,7 +25682,9 @@
 	dir = 1;
 	layer = 2.1
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "eJA" = (
 /obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark3,
@@ -25628,7 +25735,9 @@
 /obj/structure/platform_decoration/hybrisa/rockdark{
 	dir = 1
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "eJW" = (
 /obj/structure/surface/rack{
@@ -25832,7 +25941,9 @@
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 10
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "eLo" = (
 /obj/structure/machinery/blackbox_recorder,
@@ -26047,7 +26158,9 @@
 /obj/structure/platform{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/east_central_street)
 "eMr" = (
 /obj/structure/platform/hybrisa/metalplatform6{
@@ -26669,10 +26782,11 @@
 	icon_state = "gib6";
 	pixel_y = 12
 	},
-/obj/structure/prop/hybrisa/hospital/hospitalbedrollerbody3{
-	dir = 1
-	},
 /obj/structure/machinery/light,
+/obj/structure/bed/roller/hospital_empty/bigrollerbloodempty{
+	dir = 8;
+	icon_state = "bigrollerbloodempty_up"
+	},
 /turf/open/floor/prison{
 	icon_state = "whitegreen"
 	},
@@ -26800,7 +26914,9 @@
 /area/lv759/power_plant/gas_generators)
 "eTM" = (
 /obj/structure/platform/hybrisa/metalplatform2,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "eTP" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -27232,7 +27348,9 @@
 /obj/structure/platform{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "eYj" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -27694,7 +27812,9 @@
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "fbU" = (
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco1{
@@ -27891,7 +28011,9 @@
 /obj/structure/platform/hybrisa/rockdark{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "feu" = (
 /obj/structure/sign/safety/terminal{
@@ -27971,7 +28093,9 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "ffl" = (
 /turf/closed/shuttle/dropship2/transparent{
@@ -28038,7 +28162,9 @@
 /obj/structure/platform_decoration{
 	dir = 1
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_west_street)
 "ffz" = (
 /obj/structure/platform/hybrisa/metalplatform6{
@@ -28053,7 +28179,9 @@
 /obj/structure/machinery/light/blue{
 	dir = 1
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "ffA" = (
 /obj/structure/janitorialcart,
@@ -28747,7 +28875,9 @@
 	dir = 8
 	},
 /obj/structure/prop/ice_colony/ground_wire,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "fms" = (
 /obj/structure/bed/roller,
@@ -28767,7 +28897,9 @@
 /area/lv759/indoors/apartment_services/east)
 "fmC" = (
 /obj/effect/hybrisa/decal/dirt,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/east_central_street)
 "fmM" = (
 /obj/structure/barricade/sandbags,
@@ -28928,8 +29060,8 @@
 	},
 /area/lv759/indoors/hospital/pharmacy)
 "foe" = (
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed2{
-	icon_state = "bigrollerempty_down"
+/obj/structure/bed/roller/hospital_empty/bigrollerempty{
+	dir = 4
 	},
 /turf/open/floor/prison{
 	icon_state = "whitegreenfull"
@@ -29130,7 +29262,9 @@
 /area/lv759/indoors/weymart)
 "fpP" = (
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "fqa" = (
 /obj/structure/closet/secure_closet/medical3{
@@ -29387,7 +29521,9 @@
 "frS" = (
 /obj/structure/platform/hybrisa/metalplatform6,
 /obj/structure/machinery/light/blue,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/landing_zone_2)
 "frU" = (
 /obj/effect/decal/warning_stripes{
@@ -30191,7 +30327,9 @@
 /obj/structure/largecrate/random/case/double{
 	layer = 2
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "fzO" = (
 /obj/structure/barricade/handrail/wire{
@@ -30622,7 +30760,9 @@
 	},
 /area/lv759/outdoors)
 "fDR" = (
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/north_street)
 "fDU" = (
 /obj/structure/extinguisher_cabinet{
@@ -30703,7 +30843,9 @@
 	pixel_x = -20;
 	pixel_y = 23
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "fEu" = (
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red{
@@ -30916,7 +31058,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "fGn" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -30985,7 +31129,9 @@
 /area/lv759/outdoors)
 "fHb" = (
 /obj/structure/platform/hybrisa/metalplatform6,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/landing_zone_2)
 "fHg" = (
 /obj/structure/machinery/light{
@@ -30995,7 +31141,9 @@
 /area/lv759/indoors/apartment/east)
 "fHh" = (
 /obj/item/tool/shovel,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "fHl" = (
 /obj/structure/machinery/disposal,
@@ -33195,7 +33343,9 @@
 	icon_state = "2-6";
 	level = 2
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "gcs" = (
 /obj/structure/bed/sofa/south/white/right,
@@ -33523,7 +33673,9 @@
 /obj/structure/platform/hybrisa/metalplatform2{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "geQ" = (
 /obj/structure/prop/hybrisa/containersextended/blackwyleft,
@@ -34268,7 +34420,9 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/central_streets)
 "gmn" = (
 /obj/effect/hybrisa/decal/road/road_edge{
@@ -34290,8 +34444,8 @@
 	pixel_y = 5
 	},
 /obj/item/reagent_container/blood/empty,
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed2{
-	dir = 4
+/obj/structure/bed/roller/hospital_empty/bigrollerempty{
+	icon_state = "bigrollerempty_up"
 	},
 /turf/open/floor/prison{
 	icon_state = "whitegreen"
@@ -34704,7 +34858,9 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "gqn" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -34898,6 +35054,15 @@
 	},
 /turf/open/hybrisa/street/sidewalk,
 /area/lv759/outdoors/colony_streets/central_streets)
+"grz" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 4
+	},
+/obj/item/tool/weldingtool,
+/turf/open/floor/strata{
+	icon_state = "multi_tiles"
+	},
+/area/lv759/landing_zone/landing_zone_3)
 "grD" = (
 /obj/structure/platform{
 	dir = 1
@@ -35930,7 +36095,9 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/landing_zone_2)
 "gzZ" = (
 /obj/structure/sign/poster/wylogo,
@@ -35949,7 +36116,9 @@
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 5
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "gAm" = (
 /obj/structure/noticeboard,
@@ -36046,7 +36215,9 @@
 /area/lv759/outdoors/colony_streets/east_central_street)
 "gBx" = (
 /obj/effect/hybrisa/decal/grate,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "gBK" = (
 /obj/structure/platform/strata/metal{
@@ -36078,7 +36249,9 @@
 /obj/effect/hybrisa/decal/grate{
 	dir = 1
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "gBZ" = (
 /obj/structure/machinery/power/port_gen,
@@ -36382,7 +36555,9 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "gEq" = (
 /obj/structure/prop/hybrisa/vehicles/truck/truck4{
@@ -36477,7 +36652,9 @@
 	dir = 1;
 	icon_state = "sandbag_3"
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "gFC" = (
 /obj/structure/surface/rack,
@@ -36582,7 +36759,9 @@
 	pixel_x = -9;
 	pixel_y = -2
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_west_street)
 "gGs" = (
 /obj/effect/hybrisa/decal/road/lines1,
@@ -36909,11 +37088,15 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/north_street)
 "gJz" = (
 /obj/structure/machinery/light/small/blue,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/east_central_street)
 "gJF" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -37509,7 +37692,9 @@
 	dir = 8
 	},
 /obj/structure/platform/hybrisa/metalplatform6,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_east_street)
 "gPA" = (
 /obj/structure/cargo_container/horizontal/blue/middle,
@@ -38003,7 +38188,9 @@
 /obj/structure/platform/hybrisa/metalplatform2{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "gSU" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -38453,7 +38640,9 @@
 "gXh" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "gXq" = (
 /obj/structure/cable/white{
@@ -38610,7 +38799,9 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "gZk" = (
 /obj/structure/stairs,
@@ -39295,7 +39486,9 @@
 /area/lv759/outdoors)
 "hfO" = (
 /obj/structure/platform,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "hfP" = (
 /obj/structure/sink{
@@ -39341,7 +39534,9 @@
 /area/lv759/outdoors)
 "hgq" = (
 /obj/item/device/flashlight/lamp/tripod/grey,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_west_street)
 "hgr" = (
 /obj/effect/hybrisa/decal/checkpoint_decal{
@@ -40288,7 +40483,9 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_east_street)
 "hox" = (
 /obj/effect/decal/warning_stripes{
@@ -40780,12 +40977,6 @@
 	dir = 5
 	},
 /area/lv759/outdoors/colony_streets/east_central_street)
-"hsW" = (
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed1{
-	dir = 1
-	},
-/turf/open/floor/hybrisa/tile/tilewhitecheckered,
-/area/lv759/outdoors)
 "hsZ" = (
 /obj/effect/hybrisa/decal/gold/line3,
 /obj/item/shard,
@@ -41966,7 +42157,9 @@
 /obj/structure/prop/ice_colony/soil_net,
 /obj/structure/prop/ice_colony/ground_wire,
 /obj/structure/platform/hybrisa/rockdark,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "hCH" = (
 /obj/structure/sign/safety/hazard,
@@ -42040,7 +42233,9 @@
 "hDi" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt_2,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_east_street)
 "hDl" = (
 /obj/effect/hybrisa/decal/road/lines2,
@@ -42175,7 +42370,9 @@
 	dir = 1
 	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform4,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "hEs" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -42422,7 +42619,9 @@
 /obj/structure/platform/hybrisa/rockdark{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "hHe" = (
 /turf/open/floor/prison{
@@ -42507,7 +42706,9 @@
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco6{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "hHP" = (
 /obj/structure/bed/roller,
@@ -42743,7 +42944,9 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/east_central_street)
 "hKe" = (
 /obj/structure/bed/stool{
@@ -42978,7 +43181,9 @@
 	},
 /obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "hMN" = (
 /obj/structure/closet/secure_closet/miner,
@@ -43005,7 +43210,9 @@
 	},
 /obj/structure/platform/hybrisa/rockdark,
 /obj/item/prop/colony/used_flare,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "hMZ" = (
 /turf/open/hybrisa/street/cement2,
@@ -44093,7 +44300,9 @@
 /area/lv759/outdoors)
 "hXh" = (
 /obj/item/stack/sandbags_empty,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/north_street)
 "hXp" = (
 /obj/item/tool/pickaxe{
@@ -44256,15 +44465,16 @@
 	},
 /area/lv759/indoors/hospital/cryo_room)
 "hYW" = (
+/obj/structure/bed/roller/hospital_empty/bigrollerempty3{
+	dir = 4;
+	icon_state = "bigrollerempty3_up"
+	},
 /obj/structure/bed/chair/comfy/teal{
 	desc = "A hospital divider for privacy.";
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
 	icon_state = "hospitalcurtain";
 	name = "hospital divider";
 	pixel_y = -8
-	},
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed3{
-	layer = 2
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -44643,7 +44853,9 @@
 	icon_state = "5-8";
 	level = 2
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "idT" = (
 /obj/effect/decal/strata_decals/grime/grime4{
@@ -45588,7 +45800,9 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 1
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "imc" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -45994,7 +46208,9 @@
 /obj/structure/platform_decoration{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "iqf" = (
 /obj/structure/platform/hybrisa/rockdark{
@@ -46084,7 +46300,9 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "irf" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/marine/alpha{
@@ -47207,7 +47425,9 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "iAg" = (
 /obj/structure/disposalpipe/segment{
@@ -47238,7 +47458,9 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/east_central_street)
 "iAs" = (
 /obj/structure/platform_decoration/hybrisa/engineer_corner{
@@ -48390,7 +48612,9 @@
 /obj/structure/platform{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_west_street)
 "iKU" = (
 /obj/item/tool/warning_cone{
@@ -48595,7 +48819,9 @@
 /area/lv759/indoors/spaceport)
 "iNk" = (
 /obj/structure/girder,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "iNo" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -49029,7 +49255,9 @@
 /area/lv759/colonial_marshals/holding_cells)
 "iSk" = (
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco6,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "iSm" = (
 /obj/structure/prop/invuln/minecart_tracks{
@@ -49339,7 +49567,9 @@
 	pixel_x = -9;
 	pixel_y = -6
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "iUC" = (
 /turf/open/floor/prison{
@@ -49470,7 +49700,9 @@
 	dir = 8
 	},
 /obj/effect/hybrisa/decal/dirt,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "iVV" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -49510,7 +49742,9 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "iWh" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/multimonitormedium_off{
@@ -49992,7 +50226,9 @@
 /area/lv759/outdoors)
 "jbx" = (
 /obj/structure/machinery/floodlight,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "jbE" = (
 /obj/structure/platform/hybrisa/rockdark{
@@ -51046,7 +51282,9 @@
 	icon_state = "lattice12";
 	pixel_y = 16
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "jkl" = (
 /obj/structure/platform/hybrisa/metalplatform1{
@@ -51121,7 +51359,9 @@
 	dir = 8
 	},
 /obj/structure/prop/ice_colony/ground_wire,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_east_street)
 "jkG" = (
 /obj/structure/stairs,
@@ -51143,12 +51383,12 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice12";
-	pixel_y = 16
-	},
 /obj/structure/platform/hybrisa/metalplatform2{
 	dir = 8
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice4";
+	pixel_y = 16
 	},
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/outdoors)
@@ -51157,7 +51397,9 @@
 	dir = 8
 	},
 /obj/structure/machinery/light/small/blue,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "jkY" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -51219,7 +51461,9 @@
 	dir = 4
 	},
 /obj/item/trash/eat,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "jlt" = (
 /turf/open/floor/prison{
@@ -51716,9 +51960,8 @@
 "jqG" = (
 /obj/item/reagent_container/syringe/antiviral,
 /obj/effect/landmark/monkey_spawn,
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed2{
-	dir = 4;
-	layer = 2
+/obj/structure/bed/roller/hospital_empty/bigrollerempty{
+	icon_state = "bigrollerempty_up"
 	},
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv759/indoors/hospital/virology)
@@ -51733,7 +51976,9 @@
 	icon_state = "2-10";
 	level = 2
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "jrg" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -51962,7 +52207,9 @@
 /area/lv759/recycling_plant)
 "jsE" = (
 /obj/structure/cargo_container/kelland/left,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "jsO" = (
 /obj/effect/decal/warning_stripes{
@@ -53689,7 +53936,9 @@
 	pixel_x = -7;
 	pixel_y = 13
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "jJt" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -53727,7 +53976,9 @@
 /obj/structure/platform_decoration/hybrisa/rockdark{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_west_street)
 "jJM" = (
 /obj/item/ammo_casing/bullet,
@@ -53904,7 +54155,9 @@
 	pixel_x = 3;
 	pixel_y = 7
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/north_west_street)
 "jLy" = (
 /obj/item/tool/wet_sign{
@@ -54082,7 +54335,9 @@
 /obj/structure/machinery/light/blue{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "jNz" = (
 /obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
@@ -54260,7 +54515,9 @@
 	dir = 4;
 	layer = 2.8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "jOG" = (
 /obj/structure/window/reinforced{
@@ -55110,11 +55367,15 @@
 /obj/structure/girder,
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "jXB" = (
 /obj/item/tool/pickaxe/jackhammer,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "jXC" = (
 /obj/item/ammo_casing/bullet,
@@ -55555,7 +55816,9 @@
 /obj/item/reagent_container/food/drinks/cans/souto{
 	icon_state = "blank_can_crushed"
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "kbD" = (
 /obj/structure/platform/hybrisa/metalplatform6{
@@ -55910,7 +56173,8 @@
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
 	icon_state = "hospitalcurtain";
 	name = "hospital divider";
-	pixel_y = 9
+	pixel_y = 9;
+	layer = 4
 	},
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/lv759/outdoors)
@@ -56490,7 +56754,9 @@
 /obj/structure/platform_decoration/hybrisa/rockdark{
 	dir = 1
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "kkj" = (
 /obj/structure/largecrate/random/barrel{
@@ -56745,7 +57011,9 @@
 /obj/item/reagent_container/syringe{
 	icon_state = "broken"
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_east_street)
 "klV" = (
 /obj/effect/decal/warning_stripes{
@@ -56776,7 +57044,9 @@
 /obj/structure/platform/hybrisa/rockdark,
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt_2,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_east_street)
 "kme" = (
 /obj/structure/surface/table,
@@ -56802,7 +57072,9 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "kmr" = (
 /obj/effect/decal/medical_decals{
@@ -56976,7 +57248,9 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 1
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "knA" = (
 /obj/structure/platform/mineral{
@@ -57398,7 +57672,9 @@
 /obj/item/trash/cigbutt{
 	pixel_x = 7
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "kru" = (
 /obj/structure/closet/cabinet,
@@ -57979,6 +58255,21 @@
 	dir = 6
 	},
 /area/lv759/outdoors/colony_streets/east_central_street)
+"kvE" = (
+/obj/item/device/flashlight/lamp/tripod,
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	layer = 3.2
+	},
+/obj/item/tool/warning_cone{
+	layer = 2;
+	pixel_x = -13;
+	pixel_y = 11
+	},
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "blue3"
+	},
+/area/lv759/landing_zone/landing_zone_3)
 "kvG" = (
 /obj/structure/window/reinforced{
 	dir = 8;
@@ -58549,11 +58840,14 @@
 /obj/item/tool/shovel{
 	pixel_y = 12
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "kAT" = (
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed3{
-	dir = 1
+/obj/structure/bed/roller/hospital_empty/bigrollerempty3{
+	dir = 1;
+	icon_state = "bigrollerempty3_up"
 	},
 /turf/open/floor/prison{
 	dir = 8;
@@ -58953,7 +59247,9 @@
 	},
 /area/lv759/indoors/bar/maintenance)
 "kEw" = (
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed1,
+/obj/structure/bed/roller/hospital_empty/bigrollerempty2{
+	icon_state = "bigrollerempty2_up"
+	},
 /turf/open/floor/prison{
 	dir = 5;
 	icon_state = "blue"
@@ -59812,7 +60108,9 @@
 /obj/structure/platform{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "kMT" = (
 /obj/structure/window/framed/colony/reinforced,
@@ -59904,7 +60202,9 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_west_street)
 "kOe" = (
 /obj/item/paper/crumpled{
@@ -60137,7 +60437,9 @@
 	},
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "kQk" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -60264,7 +60566,9 @@
 /area/lv759/outdoors)
 "kRf" = (
 /obj/structure/platform,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_west_street)
 "kRg" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -61145,7 +61449,7 @@
 	pixel_y = 10
 	},
 /obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice12";
+	icon_state = "lattice4";
 	pixel_y = 16
 	},
 /turf/open/floor/prison{
@@ -61426,7 +61730,9 @@
 	},
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "lca" = (
 /obj/effect/decal/cleanable/blood{
@@ -61920,7 +62226,9 @@
 	dir = 4
 	},
 /obj/item/trash/candy,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/central_streets)
 "lgQ" = (
 /obj/structure/platform/hybrisa/metalplatform1{
@@ -62413,7 +62721,9 @@
 	dir = 1
 	},
 /obj/structure/barricade/wooden,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "llH" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -62813,7 +63123,9 @@
 	},
 /area/lv759/landing_zone/landing_zone_4)
 "lpo" = (
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/landing_zone_1)
 "lpq" = (
 /obj/effect/hybrisa/decal/road/road_edge{
@@ -62897,7 +63209,9 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "lqm" = (
 /obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark1,
@@ -63517,7 +63831,9 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/shard,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "luF" = (
 /obj/structure/platform/strata/metal{
@@ -63552,7 +63868,9 @@
 	layer = 3
 	},
 /obj/effect/decal/cleanable/blood/gibs/limb,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "lve" = (
 /obj/effect/decal/warning_stripes{
@@ -64899,7 +65217,9 @@
 /area/lv759/indoors/weymart)
 "lGt" = (
 /obj/structure/platform/hybrisa/rockdark,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_west_street)
 "lGw" = (
 /obj/structure/machinery/colony_floodlight/street{
@@ -64956,8 +65276,9 @@
 	layer = 2.1;
 	pixel_y = 19
 	},
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed3{
-	layer = 4
+/obj/structure/bed/roller/hospital_empty/bigrollerempty3{
+	dir = 4;
+	icon_state = "bigrollerempty3_up"
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -65014,7 +65335,9 @@
 /obj/item/trash/cigbutt{
 	pixel_x = 7
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "lHr" = (
 /turf/open/floor/prison{
@@ -65159,7 +65482,9 @@
 	pixel_y = 16
 	},
 /obj/item/ammo_casing/bullet,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "lIg" = (
 /obj/effect/hybrisa/decal/road/road_stop{
@@ -65656,7 +65981,9 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "lOg" = (
 /obj/effect/decal/warning_stripes{
@@ -65901,6 +66228,10 @@
 	},
 /area/lv759/landing_zone_1)
 "lPK" = (
+/obj/structure/bed/roller/hospital_empty/bigrollerempty{
+	dir = 8;
+	icon_state = "bigrollerempty_up"
+	},
 /obj/structure/bed/chair/comfy/teal{
 	desc = "A hospital divider for privacy.";
 	dir = 1;
@@ -65908,10 +66239,6 @@
 	icon_state = "hospitalcurtain";
 	name = "hospital divider";
 	pixel_y = -7
-	},
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed2{
-	dir = 1;
-	layer = 2
 	},
 /turf/open/floor/prison{
 	dir = 8;
@@ -66015,7 +66342,9 @@
 /obj/item/stack/sheet/wood{
 	pixel_y = -8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "lQO" = (
 /obj/effect/hybrisa/decal/dirt_2,
@@ -66380,7 +66709,9 @@
 	dir = 1
 	},
 /obj/structure/prop/invuln/minecart_tracks/bumper,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "lVr" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med,
@@ -66807,7 +67138,9 @@
 /obj/structure/fence{
 	icon = 'icons/obj/structures/props/darkfence.dmi'
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/east_central_street)
 "lYZ" = (
 /obj/structure/surface/table,
@@ -67077,7 +67410,9 @@
 /area/lv759/indoors/hospital/patient_ward)
 "mcj" = (
 /obj/structure/platform/hybrisa/metalplatform6,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "mco" = (
 /obj/item/tool/warning_cone{
@@ -67362,16 +67697,16 @@
 /turf/open/floor/hybrisa/tile/yellow_bigtile,
 /area/lv759/power_plant/workers_canteen)
 "mgm" = (
+/obj/structure/bed/roller/hospital_empty/bigrollerempty3{
+	dir = 1;
+	icon_state = "bigrollerempty3_up"
+	},
 /obj/structure/bed/chair/comfy/teal{
 	desc = "A hospital divider for privacy.";
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
 	icon_state = "hospitalcurtain";
 	name = "hospital divider";
 	pixel_y = -8
-	},
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed3{
-	dir = 8;
-	layer = 2
 	},
 /turf/open/floor/prison{
 	dir = 8;
@@ -67869,8 +68204,8 @@
 	},
 /area/lv759/indoors/chapel)
 "mkL" = (
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed2{
-	dir = 4
+/obj/structure/bed/roller/hospital_empty/bigrollerempty{
+	icon_state = "bigrollerempty_up"
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -68302,7 +68637,9 @@
 /area/lv759/landing_zone/horizon_runner)
 "moP" = (
 /obj/structure/prop/ice_colony/surveying_device,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "moV" = (
 /obj/item/tool/pickaxe{
@@ -68463,9 +68800,8 @@
 /area/lv759/indoors/chapel)
 "mqx" = (
 /obj/item/roller,
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed2{
-	dir = 8;
-	icon_state = "bigrollerempty_down"
+/obj/structure/bed/roller/hospital_empty/bigrollerempty{
+	dir = 8
 	},
 /turf/open/floor/prison{
 	icon_state = "whitegreenfull"
@@ -68500,7 +68836,7 @@
 	pixel_y = 19
 	},
 /obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice12";
+	icon_state = "lattice8";
 	pixel_y = 16
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -68589,7 +68925,9 @@
 /obj/structure/platform/hybrisa/metalplatform2{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_west_street)
 "mry" = (
 /obj/effect/hybrisa/decal/road/road_edge,
@@ -68693,7 +69031,9 @@
 	dir = 1
 	},
 /obj/structure/platform/hybrisa/metalplatform2,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "msm" = (
 /obj/structure/prop/hybrisa/misc/fake/pipes/pipe1,
@@ -69300,6 +69640,15 @@
 /obj/structure/noticeboard,
 /turf/closed/wall/r_wall/prison,
 /area/lv759/colonial_marshals/office)
+"myc" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice4";
+	pixel_y = 16
+	},
+/turf/closed/wall/strata_outpost_ribbed{
+	icon = 'icons/turf/walls/hybrisaresearchbrownwall.dmi'
+	},
+/area/lv759/outdoors)
 "mye" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/corsat,
@@ -69615,7 +69964,9 @@
 /area/lv759/outdoors)
 "mAu" = (
 /obj/structure/prop/ice_colony/soil_net,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "mAy" = (
 /obj/structure/platform_decoration/strata/metal{
@@ -69714,7 +70065,9 @@
 	dir = 8
 	},
 /obj/structure/prop/ice_colony/ground_wire,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "mBZ" = (
 /obj/item/trash/uscm_mre,
@@ -70019,7 +70372,9 @@
 	},
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "mED" = (
 /turf/open/floor/kutjevo/grey,
@@ -70065,7 +70420,9 @@
 	dir = 8
 	},
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_west_street)
 "mEU" = (
 /obj/effect/landmark/objective_landmark/medium,
@@ -70829,7 +71186,9 @@
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco6{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "mMl" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
@@ -71006,7 +71365,9 @@
 /obj/effect/hybrisa/decal/grate{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "mND" = (
 /obj/structure/bed/chair{
@@ -71032,7 +71393,9 @@
 /obj/structure/platform_decoration/hybrisa/rockdark{
 	dir = 1
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "mNP" = (
 /obj/structure/prop/vehicles/crawler{
@@ -71104,7 +71467,9 @@
 /obj/structure/prop/hybrisa/misc/fake/pipes/pipe1{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/north_street)
 "mOX" = (
 /obj/structure/largecrate/random{
@@ -71194,7 +71559,9 @@
 /obj/structure/platform_decoration/hybrisa/rockdark{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "mQc" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -71444,7 +71811,9 @@
 	light_power = 4;
 	light_range = 5
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_east_street)
 "mSo" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -71936,7 +72305,9 @@
 /obj/structure/platform_decoration/hybrisa/rockdark{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "mYs" = (
 /turf/closed/wall/hangar{
@@ -72810,7 +73181,9 @@
 /area/lv759/outdoors/colony_streets/north_east_street)
 "ngQ" = (
 /obj/structure/ore_box,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "ngW" = (
 /obj/structure/machinery/light/blue{
@@ -72902,9 +73275,8 @@
 /area/lv759/outdoors/colony_streets/central_streets)
 "nhV" = (
 /obj/effect/landmark/monkey_spawn,
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed2{
-	dir = 4;
-	layer = 2
+/obj/structure/bed/roller/hospital_empty/bigrollerempty{
+	icon_state = "bigrollerempty_up"
 	},
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv759/indoors/hospital/virology)
@@ -73429,7 +73801,9 @@
 /obj/structure/closet/crate/miningcar/yellow{
 	layer = 3
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "nnK" = (
 /turf/open/engineership/engineer_floor8{
@@ -74048,7 +74422,9 @@
 /area/lv759/indoors/hospital/central_hallway)
 "nts" = (
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed1,
+/obj/structure/bed/roller/hospital_empty/bigrollerempty2{
+	icon_state = "bigrollerempty2_up"
+	},
 /turf/open/floor/prison{
 	icon_state = "whitegreen"
 	},
@@ -74273,7 +74649,9 @@
 "nvu" = (
 /obj/item/prop/colony/used_flare,
 /obj/effect/decal/cleanable/blood,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "nvB" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -74723,7 +75101,9 @@
 	pixel_x = 1;
 	pixel_y = -1
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "nzS" = (
 /turf/open/floor/prison{
@@ -74732,8 +75112,9 @@
 	},
 /area/lv759/colonial_marshals/holding_cells)
 "nAn" = (
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed2{
-	dir = 1
+/obj/structure/bed/roller/hospital_empty/bigrollerempty{
+	dir = 8;
+	icon_state = "bigrollerempty_up"
 	},
 /turf/open/floor/prison{
 	dir = 8;
@@ -75196,7 +75577,9 @@
 	dir = 4
 	},
 /obj/structure/machinery/light/small/blue,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/east_central_street)
 "nEV" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -75395,7 +75778,7 @@
 /area/lv759/outdoors/colony_streets/north_west_street)
 "nHg" = (
 /obj/structure/closet/bodybag,
-/obj/structure/bed/roller,
+/obj/structure/bed/roller/hospital_empty/bigrollerempty,
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/lv759/indoors/hospital/morgue)
 "nHi" = (
@@ -76186,7 +76569,9 @@
 	dir = 1
 	},
 /obj/effect/hybrisa/decal/dirt,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "nPi" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -76300,7 +76685,9 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "nQp" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -76539,7 +76926,9 @@
 	level = 3;
 	pixel_x = 16
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "nTp" = (
 /obj/structure/machinery/meter,
@@ -77010,7 +77399,9 @@
 /area/lv759/outdoors)
 "nXx" = (
 /obj/structure/stairs,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "nXz" = (
 /obj/item/stack/sheet/metal,
@@ -77094,7 +77485,9 @@
 /obj/structure/prop/invuln/minecart_tracks/bumper{
 	dir = 1
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "nXX" = (
 /obj/structure/sign/safety/restrictedarea{
@@ -77221,7 +77614,9 @@
 /obj/item/stack/sheet/wood{
 	layer = 2.7
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "nZh" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -78188,9 +78583,7 @@
 /area/lv759/power_plant)
 "ogU" = (
 /obj/item/bedsheet/green,
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed2{
-	icon_state = "bigrollerempty_down"
-	},
+/obj/structure/bed/roller/hospital_empty/bigrollerempty,
 /turf/open/floor/prison{
 	icon_state = "whitegreen"
 	},
@@ -78990,7 +79383,9 @@
 /obj/structure/platform_decoration/hybrisa/rockdark{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "onQ" = (
 /obj/effect/decal/warning_stripes{
@@ -79595,7 +79990,7 @@
 	pixel_y = 19
 	},
 /obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice12";
+	icon_state = "lattice4";
 	pixel_y = 16
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -79701,7 +80096,9 @@
 	dir = 4
 	},
 /obj/structure/platform/hybrisa/metalplatform6,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "ote" = (
 /obj/structure/closet/emcloset,
@@ -80029,7 +80426,9 @@
 	},
 /area/lv759/indoors/hospital/operation)
 "owy" = (
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/landing_zone_2)
 "owX" = (
 /obj/structure/barricade/handrail/wire{
@@ -80095,7 +80494,9 @@
 	icon_state = "sandbag_0"
 	},
 /obj/item/prop/alien/hugger,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "oxy" = (
 /obj/structure/reagent_dispensers/fueltank,
@@ -80293,7 +80694,9 @@
 /obj/structure/barricade/handrail/wire{
 	layer = 3
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "ozy" = (
 /obj/effect/decal/medical_decals{
@@ -80642,7 +81045,9 @@
 /obj/structure/platform{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "oBV" = (
 /obj/structure/barricade/handrail{
@@ -81045,7 +81450,9 @@
 /area/lv759/indoors/pizzaria)
 "oGb" = (
 /obj/structure/barricade/wooden,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "oGf" = (
 /obj/effect/decal/cleanable/blood/gibs/limb,
@@ -81869,7 +82276,9 @@
 /area/lv759/outdoors)
 "oMY" = (
 /obj/item/lightstick/planted,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "oNc" = (
 /obj/structure/morgue,
@@ -82499,7 +82908,9 @@
 /obj/structure/platform/hybrisa/rockdark{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "oSl" = (
 /obj/effect/decal/warning_stripes{
@@ -82785,7 +83196,9 @@
 /obj/structure/prop/hybrisa/vehicles/colonycrawlers/mining{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "oUx" = (
 /obj/structure/platform/strata/metal,
@@ -83001,7 +83414,9 @@
 	dir = 4;
 	icon_state = "sandbag_1"
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "oVU" = (
 /obj/effect/hybrisa/decal/road/road_edge{
@@ -85853,6 +86268,22 @@
 	dir = 1
 	},
 /area/lv759/outdoors/colony_streets/north_street)
+"pyl" = (
+/obj/structure/prop/structure_lattice{
+	dir = 4
+	},
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	layer = 3.1;
+	level = 3;
+	pixel_y = 10
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice4";
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors)
 "pyt" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/effect/landmark/objective_landmark/medium,
@@ -86131,7 +86562,9 @@
 	pixel_y = 5
 	},
 /obj/structure/prop/ice_colony/ground_wire,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_east_street)
 "pAZ" = (
 /obj/effect/hybrisa/decal/road/road_stop{
@@ -86256,7 +86689,9 @@
 /obj/structure/platform/hybrisa/metalplatform2{
 	dir = 1
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "pCo" = (
 /obj/structure/bed/chair{
@@ -86437,7 +86872,9 @@
 	},
 /obj/item/device/flashlight/on,
 /obj/item/ammo_casing/bullet,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "pDQ" = (
 /turf/open/floor/prison{
@@ -86972,7 +87409,9 @@
 	level = 3;
 	pixel_x = 16
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "pIG" = (
 /obj/effect/decal/cleanable/blood,
@@ -87959,7 +88398,9 @@
 	icon_state = "sandbag_1"
 	},
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "pRn" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform1,
@@ -88119,7 +88560,9 @@
 	},
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/platform_decoration,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "pSC" = (
 /obj/structure/closet/firecloset,
@@ -88217,7 +88660,9 @@
 	dir = 8
 	},
 /obj/structure/platform/hybrisa/rockdark,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "pTI" = (
 /obj/effect/decal/cleanable/blood{
@@ -88357,11 +88802,12 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/structure/prop/hybrisa/hospital/hospitalbedrollerbody3{
-	dir = 1
-	},
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/effect/decal/cleanable/blood,
+/obj/structure/bed/roller/hospital_empty/bigrollerbloodempty{
+	dir = 8;
+	icon_state = "bigrollerbloodempty_up"
+	},
 /turf/open/floor/almayer{
 	icon_state = "black"
 	},
@@ -88939,6 +89385,10 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/east_central_street)
 "qaW" = (
+/obj/structure/bed/roller/hospital_empty/bigrollerempty3{
+	dir = 4;
+	icon_state = "bigrollerempty3_up"
+	},
 /obj/structure/bed/chair/comfy/teal{
 	desc = "A hospital divider for privacy.";
 	dir = 1;
@@ -88946,9 +89396,6 @@
 	icon_state = "hospitalcurtain";
 	name = "hospital divider";
 	pixel_y = -7
-	},
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed3{
-	layer = 2
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -88984,7 +89431,9 @@
 /area/lv759/outdoors/colony_streets/south_east_street)
 "qbG" = (
 /obj/item/reagent_container/ld50_syringe,
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed2,
+/obj/structure/bed/roller/hospital_empty/bigrollerempty{
+	icon_state = "bigrollerempty_up"
+	},
 /turf/open/floor/almayer/research/containment/corner_var1{
 	dir = 4
 	},
@@ -89159,7 +89608,9 @@
 /area/lv759/outdoors/colony_streets/east_central_street)
 "qdP" = (
 /obj/item/stack/rods,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "qdS" = (
 /obj/structure/prop/invuln/minecart_tracks{
@@ -89168,7 +89619,9 @@
 /obj/structure/closet/crate/miningcar/yellow{
 	layer = 3
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "qdT" = (
 /obj/effect/decal/warning_stripes{
@@ -89637,7 +90090,9 @@
 	icon_state = "lattice12";
 	pixel_y = 16
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "qhD" = (
 /obj/structure/platform/stair_cut{
@@ -91609,7 +92064,9 @@
 	dir = 4
 	},
 /obj/structure/prop/ice_colony/ground_wire,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "qzC" = (
 /obj/structure/sign/nosmoking_2{
@@ -91996,6 +92453,15 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/colony_streets/south_east_street)
+"qDP" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 4
+	},
+/obj/item/stack/sheet/metal,
+/turf/open/floor/strata{
+	icon_state = "multi_tiles"
+	},
+/area/lv759/landing_zone/landing_zone_3)
 "qDR" = (
 /obj/item/reagent_container/food/snacks/packaged_burger,
 /obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer5,
@@ -92046,7 +92512,9 @@
 /obj/structure/platform_decoration{
 	dir = 1
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "qEJ" = (
 /obj/structure/stairs{
@@ -92149,7 +92617,9 @@
 /obj/structure/barricade/handrail/strata{
 	layer = 3.1
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/east_central_street)
 "qFL" = (
 /turf/open/floor{
@@ -92264,7 +92734,9 @@
 	dir = 8;
 	health = 25000
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "qGK" = (
 /obj/structure/surface/table,
@@ -92853,9 +93325,8 @@
 	icon_state = "broken"
 	},
 /obj/effect/landmark/monkey_spawn,
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed2{
-	dir = 4;
-	layer = 2
+/obj/structure/bed/roller/hospital_empty/bigrollerempty{
+	icon_state = "bigrollerempty_up"
 	},
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv759/indoors/hospital/virology)
@@ -92930,7 +93401,9 @@
 /area/lv759/outdoors)
 "qMA" = (
 /obj/item/tool/pickaxe/drill,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "qMC" = (
 /obj/structure/largecrate/random{
@@ -94340,8 +94813,9 @@
 /turf/open/floor/almayer_hull,
 /area/lv759/outdoors/colony_streets/central_streets)
 "qYK" = (
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed1{
-	dir = 1
+/obj/structure/bed/roller/hospital_empty/bigrollerempty2{
+	icon_state = "bigrollerempty2_up";
+	dir = 8
 	},
 /turf/open/floor/prison{
 	icon_state = "whitegreen"
@@ -94921,7 +95395,9 @@
 	dir = 1;
 	icon_state = "sandbag_3"
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "reP" = (
 /obj/structure/barricade/handrail/wire{
@@ -95263,7 +95739,9 @@
 /turf/open/floor/hybrisa/metal/zbrownfloor_full,
 /area/lv759/indoors/chapel)
 "rhF" = (
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_west_street)
 "rhJ" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -95453,7 +95931,9 @@
 /area/lv759/landing_zone/landing_zone_4)
 "rjs" = (
 /obj/structure/platform_decoration/hybrisa/rockdark,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "rjv" = (
 /obj/structure/platform/hybrisa/metalplatform6{
@@ -96150,7 +96630,9 @@
 	icon_state = "1-9";
 	level = 2
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "rqA" = (
 /obj/effect/decal/strata_decals/grime/grime3,
@@ -96857,7 +97339,9 @@
 	pixel_y = 12
 	},
 /obj/effect/decal/cleanable/blood,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "rwI" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -96865,8 +97349,9 @@
 	pixel_x = 6;
 	pixel_y = 5
 	},
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed2{
-	dir = 1
+/obj/structure/bed/roller/hospital_empty/bigrollerempty{
+	dir = 8;
+	icon_state = "bigrollerempty_up"
 	},
 /turf/open/floor/prison{
 	icon_state = "whitegreenfull"
@@ -97053,7 +97538,9 @@
 /obj/structure/ore_box{
 	pixel_x = 5
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "ryy" = (
 /turf/open/floor{
@@ -97268,7 +97755,9 @@
 /area/lv759/outdoors)
 "rzM" = (
 /obj/item/ammo_casing/bullet,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "rzP" = (
 /obj/structure/platform_decoration/hybrisa/engineer_corner{
@@ -97335,7 +97824,9 @@
 /obj/structure/platform/hybrisa/metalplatform2{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "rAj" = (
 /obj/structure/prop/hybrisa/misc/fake/pipes/pipe1{
@@ -97464,7 +97955,9 @@
 /obj/structure/platform/hybrisa/rockdark{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_west_street)
 "rBt" = (
 /obj/structure/toilet{
@@ -98154,8 +98647,8 @@
 	pixel_y = 19
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/structure/prop/hybrisa/hospital/hospitalbedrollerbody3{
-	dir = 4
+/obj/structure/bed/roller/hospital_empty/bigrollerbloodempty{
+	icon_state = "bigrollerbloodempty_up"
 	},
 /turf/open/floor/prison{
 	icon_state = "whitegreenfull"
@@ -99343,7 +99836,9 @@
 	layer = 6;
 	pixel_y = 11
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/north_street)
 "rRm" = (
 /obj/structure/closet/secure_closet/brig,
@@ -100939,9 +101434,11 @@
 /turf/open/floor/hybrisa/carpet/carpetreddeco,
 /area/lv759/indoors/casino)
 "sgw" = (
-/obj/structure/bed/roller/hospital,
 /obj/structure/machinery/light{
 	dir = 4
+	},
+/obj/structure/bed/roller/hospital_empty/bigrollerempty{
+	icon_state = "bigrollerempty_up"
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -101612,7 +102109,9 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_west_street)
 "snz" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -101870,7 +102369,9 @@
 	pixel_x = 6;
 	pixel_y = -16
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "sps" = (
 /obj/effect/hybrisa/decal/road/road_edge{
@@ -102141,7 +102642,9 @@
 	dir = 4;
 	icon_state = "sandbag_1"
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "ssm" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -103341,7 +103844,9 @@
 /area/lv759/outdoors)
 "sBB" = (
 /obj/effect/hybrisa/decal/dirt,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_east_street)
 "sBE" = (
 /obj/effect/hybrisa/decal/road/lines3,
@@ -104110,7 +104615,9 @@
 	icon_state = "lattice12";
 	pixel_y = 16
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "sJC" = (
 /obj/item/stack/rods{
@@ -104581,17 +105088,20 @@
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "sMP" = (
 /obj/structure/cargo_container/kelland/left,
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/north_street)
 "sMR" = (
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed2{
-	dir = 1
-	},
 /obj/structure/machinery/light,
+/obj/structure/bed/roller/hospital_empty/bigrollerempty{
+	dir = 8;
+	icon_state = "bigrollerempty_up"
+	},
 /turf/open/floor/prison{
 	icon_state = "whitegreen"
 	},
@@ -104841,7 +105351,9 @@
 /obj/structure/fence{
 	icon = 'icons/obj/structures/props/darkfence.dmi'
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_east_street)
 "sOI" = (
 /obj/structure/stairs{
@@ -105161,7 +105673,7 @@
 	pixel_y = 10
 	},
 /obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice12";
+	icon_state = "lattice8";
 	pixel_y = 16
 	},
 /turf/open/floor/prison{
@@ -105170,9 +105682,9 @@
 	},
 /area/lv759/outdoors)
 "sRV" = (
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed1{
-	dir = 1;
-	layer = 2
+/obj/structure/bed/roller/hospital_empty/bigrollerempty2{
+	icon_state = "bigrollerempty2_up";
+	dir = 8
 	},
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/lv759/outdoors)
@@ -105442,7 +105954,9 @@
 /obj/structure/platform/hybrisa/rockdark{
 	dir = 1
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/north_street)
 "sUY" = (
 /obj/item/device/flashlight/lamp/tripod,
@@ -105546,7 +106060,9 @@
 	dir = 4
 	},
 /obj/structure/prop/ice_colony/ground_wire,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "sWG" = (
 /obj/item/trash/eat,
@@ -105556,7 +106072,9 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/central_streets)
 "sWK" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -105733,7 +106251,9 @@
 	dir = 8
 	},
 /obj/structure/platform/hybrisa/metalplatform6,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/east_central_street)
 "sYm" = (
 /obj/effect/decal/warning_stripes{
@@ -105879,7 +106399,9 @@
 	level = 3;
 	pixel_x = 16
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_west_street)
 "sZJ" = (
 /obj/structure/platform/kutjevo/smooth,
@@ -106116,7 +106638,10 @@
 /area/lv759/outdoors/colony_streets/east_central_street)
 "tbv" = (
 /obj/item/weapon/gun/shotgun/double/cane,
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed1,
+/obj/structure/bed/roller/hospital_empty/bigrollerempty2{
+	icon_state = "bigrollerempty2_up";
+	dir = 4
+	},
 /turf/open/floor/hybrisa/carpet/carpetpatternbrown,
 /area/lv759/indoors/apartment/east)
 "tbx" = (
@@ -106580,7 +107105,9 @@
 /obj/structure/platform/hybrisa/rockdark{
 	dir = 1
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "tfD" = (
 /obj/structure/largecrate/random,
@@ -106734,7 +107261,9 @@
 	dir = 8
 	},
 /obj/structure/platform/hybrisa/metalplatform6,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "tgE" = (
 /obj/structure/extinguisher_cabinet,
@@ -106965,6 +107494,22 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv759/indoors/apartment_services/west)
+"tjA" = (
+/obj/structure/bed/chair/comfy{
+	dir = 8;
+	icon_state = "comfychair_black"
+	},
+/obj/structure/machinery/light/spot/blue{
+	dir = 4
+	},
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 1
+	},
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "blue3"
+	},
+/area/lv759/landing_zone/landing_zone_3)
 "tjG" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/drinks/coffee{
@@ -107112,7 +107657,9 @@
 	dir = 8
 	},
 /obj/structure/platform/hybrisa/rockdark,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "tkG" = (
 /obj/structure/bed/chair/comfy/teal{
@@ -107807,7 +108354,9 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_west_street)
 "trj" = (
 /obj/item/stack/sheet/cardboard,
@@ -108071,7 +108620,9 @@
 	dir = 1;
 	icon_state = "trash_11"
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/central_streets)
 "tun" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med,
@@ -108182,7 +108733,9 @@
 	pixel_x = 14;
 	pixel_y = -4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "tvM" = (
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco6,
@@ -108357,7 +108910,9 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "tyq" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -109030,7 +109585,9 @@
 /obj/item/prop/alien/hugger,
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "tGf" = (
 /obj/effect/decal/warning_stripes{
@@ -109507,7 +110064,9 @@
 /area/lv759/oob)
 "tKd" = (
 /obj/structure/largecrate/random/barrel/white,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_west_street)
 "tKh" = (
 /obj/structure/platform/hybrisa/metalplatform1{
@@ -109635,7 +110194,9 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgib1"
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "tLr" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -109713,7 +110274,9 @@
 	dir = 1;
 	layer = 1
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "tMf" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -110533,7 +111096,9 @@
 "tUn" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/girder,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/indoors/hospital/morgue)
 "tUy" = (
 /turf/open/floor/strata{
@@ -110606,7 +111171,9 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 1
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/east_central_street)
 "tVm" = (
 /turf/open/floor/almayer{
@@ -111014,7 +111581,9 @@
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/outdoors)
 "tYy" = (
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/east_central_street)
 "tYA" = (
 /turf/closed/wall/r_wall/prison,
@@ -111033,7 +111602,9 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "tYN" = (
 /obj/structure/disposalpipe/tagger,
@@ -112242,8 +112813,8 @@
 	},
 /area/lv759/landing_zone_2/ceiling)
 "ujs" = (
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed2{
-	icon_state = "bigrollerempty_down"
+/obj/structure/bed/roller/hospital_empty/bigrollerempty{
+	dir = 4
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -112272,7 +112843,9 @@
 /obj/structure/platform{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "ujI" = (
 /obj/structure/platform_decoration/strata/metal{
@@ -112442,7 +113015,9 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 1
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "ukx" = (
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco6{
@@ -113765,7 +114340,9 @@
 /area/lv759/indoors/weyyu_office/pressroom)
 "uww" = (
 /obj/item/prop/colony/used_flare,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "uwI" = (
 /obj/structure/platform_decoration/hybrisa/rockdark{
@@ -114130,7 +114707,9 @@
 	pixel_y = 5
 	},
 /obj/structure/prop/ice_colony/ground_wire,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_east_street)
 "uAG" = (
 /obj/effect/hybrisa/decal/engineership_corners{
@@ -114292,7 +114871,9 @@
 	dir = 1;
 	layer = 2.1
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_west_street)
 "uBI" = (
 /obj/structure/machinery/door/airlock/almayer/engineering,
@@ -114466,7 +115047,9 @@
 	dir = 1
 	},
 /obj/effect/hybrisa/decal/dirt,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_east_street)
 "uCx" = (
 /obj/structure/platform/hybrisa/metalplatform6{
@@ -114656,7 +115239,9 @@
 	icon_state = "trash_6";
 	pixel_y = 12
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_east_street)
 "uDU" = (
 /obj/structure/janitorialcart,
@@ -115289,7 +115874,9 @@
 /obj/structure/platform{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "uIN" = (
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaldark{
@@ -115598,7 +116185,9 @@
 	pixel_x = 1;
 	pixel_y = -1
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_west_street)
 "uMn" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform1,
@@ -115680,7 +116269,9 @@
 /obj/structure/prop/hybrisa/vehicles/colonycrawlers/mining{
 	layer = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "uMR" = (
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red{
@@ -115972,7 +116563,9 @@
 	pixel_y = -5
 	},
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "uPn" = (
 /obj/structure/machinery/door/window/southleft{
@@ -116364,7 +116957,9 @@
 	dir = 1
 	},
 /obj/effect/hybrisa/decal/dirt,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "uRR" = (
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaldark{
@@ -116747,7 +117342,9 @@
 /obj/structure/platform/hybrisa/rockdark{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "uVp" = (
 /obj/structure/sink{
@@ -118084,7 +118681,9 @@
 /obj/structure/platform_decoration/hybrisa/rockdark{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/north_street)
 "vkx" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -118611,7 +119210,9 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/landing_zone_2)
 "vpP" = (
 /obj/structure/machinery/conveyor{
@@ -118805,6 +119406,19 @@
 	},
 /turf/open/floor/interior/wood,
 /area/lv759/outdoors)
+"vrG" = (
+/obj/effect/hybrisa/decal/dirt,
+/obj/effect/hybrisa/decal/dirt,
+/obj/item/stack/rods,
+/obj/item/clothing/head/hardhat{
+	pixel_x = 4;
+	pixel_y = 7
+	},
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "blue3"
+	},
+/area/lv759/landing_zone/landing_zone_3)
 "vrI" = (
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
@@ -119065,7 +119679,9 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/landing_zone_1)
 "vtC" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -119185,7 +119801,9 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "vuF" = (
 /obj/item/device/flashlight/lamp/tripod,
@@ -119332,7 +119950,9 @@
 	pixel_y = 21
 	},
 /obj/item/ammo_casing/bullet,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "vvW" = (
 /obj/structure/machinery/light/double/blue,
@@ -119831,7 +120451,9 @@
 	layer = 2;
 	pixel_x = -6
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "vAW" = (
 /obj/structure/sign/poster/wylogo,
@@ -120225,7 +120847,9 @@
 	dir = 1;
 	layer = 2.1
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_west_street)
 "vEu" = (
 /obj/structure/surface/rack,
@@ -120629,7 +121253,9 @@
 /obj/structure/barricade/sandbags{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "vIo" = (
 /obj/effect/decal/warning_stripes{
@@ -121030,7 +121656,9 @@
 	dir = 4
 	},
 /obj/structure/prop/ice_colony/ground_wire,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_east_street)
 "vLJ" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -121524,7 +122152,9 @@
 /area/lv759/outdoors/colony_streets/north_street)
 "vQB" = (
 /obj/structure/platform,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/landing_zone_1)
 "vQD" = (
 /obj/structure/bed/stool{
@@ -122630,7 +123260,9 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "waj" = (
 /obj/item/tool/warning_cone{
@@ -122778,7 +123410,9 @@
 /obj/structure/platform/hybrisa/metalplatform2{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "wbO" = (
 /obj/structure/platform/strata/metal{
@@ -123196,7 +123830,9 @@
 	icon_state = "trash_17";
 	pixel_y = 12
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/central_streets)
 "wfv" = (
 /obj/structure/platform{
@@ -123644,7 +124280,9 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_west_street)
 "wkx" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -124489,7 +125127,9 @@
 /area/lv759/indoors/chapel)
 "wsD" = (
 /obj/item/device/flashlight/lamp/tripod/grey,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "wsK" = (
 /obj/effect/hybrisa/decal/road/road_stop{
@@ -124582,7 +125222,9 @@
 /area/lv759/outdoors/colony_streets/north_east_street)
 "wub" = (
 /obj/item/tool/pickaxe,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "wuc" = (
 /obj/structure/machinery/light{
@@ -124925,7 +125567,9 @@
 /obj/structure/platform/hybrisa/rockdark{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/north_street)
 "wwO" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -125049,7 +125693,9 @@
 /obj/structure/platform{
 	layer = 2
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_west_street)
 "wxJ" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
@@ -125114,7 +125760,9 @@
 	pixel_y = -1
 	},
 /obj/structure/prop/ice_colony/ground_wire,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/east_central_street)
 "wys" = (
 /obj/effect/decal/strata_decals/grime/grime4{
@@ -125383,9 +126031,6 @@
 	},
 /area/lv759/indoors/weyyu_office/breakroom)
 "wBe" = (
-/obj/structure/bed/hybrisa/hospitalbeds/hospitalbed3{
-	layer = 4
-	},
 /obj/structure/machinery/iv_drip{
 	layer = 2.1;
 	pixel_y = 19
@@ -125397,6 +126042,10 @@
 	layer = 2;
 	name = "hospital divider";
 	pixel_y = 22
+	},
+/obj/structure/bed/roller/hospital_empty/bigrollerempty3{
+	dir = 4;
+	icon_state = "bigrollerempty3_up"
 	},
 /turf/open/floor/prison{
 	dir = 5;
@@ -125580,7 +126229,9 @@
 	dir = 1;
 	icon_state = "sandbag_1"
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "wCn" = (
 /obj/structure/surface/table/almayer,
@@ -126345,7 +126996,9 @@
 /obj/structure/platform/hybrisa/rockdark{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "wJD" = (
 /turf/closed/wall/hangar{
@@ -126359,7 +127012,9 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "wJW" = (
 /obj/structure/platform/hybrisa/metalplatform2,
@@ -126394,7 +127049,9 @@
 /obj/structure/prop/invuln/minecart_tracks/bumper{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "wKn" = (
 /obj/structure/barricade/handrail/wire{
@@ -126929,6 +127586,17 @@
 /obj/effect/hybrisa/decal/dirt_2,
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv759/outdoors)
+"wPH" = (
+/obj/effect/hybrisa/decal/dirt,
+/obj/effect/hybrisa/decal/dirt,
+/obj/item/tool/warning_cone{
+	pixel_x = 5;
+	pixel_y = 13
+	},
+/turf/open/floor/strata{
+	icon_state = "multi_tiles"
+	},
+/area/lv759/landing_zone/landing_zone_3)
 "wPO" = (
 /obj/item/device/flashlight/lamp/tripod/grey{
 	layer = 5
@@ -127163,7 +127831,9 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "wSO" = (
 /obj/structure/platform/hybrisa/metalplatform6{
@@ -127197,7 +127867,9 @@
 	icon_state = "5-10";
 	level = 2
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "wSZ" = (
 /obj/effect/hybrisa/decal/road/road_edge{
@@ -127337,7 +128009,9 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/east_central_street)
 "wTT" = (
 /obj/structure/surface/table/almayer,
@@ -127538,7 +128212,9 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate{
 	layer = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/north_street)
 "wWl" = (
 /obj/effect/decal/warning_stripes{
@@ -128377,7 +129053,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "xdh" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -128400,12 +129078,12 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice12";
-	pixel_y = 16
-	},
 /obj/structure/platform/hybrisa/metalplatform2{
 	dir = 4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice8";
+	pixel_y = 16
 	},
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/outdoors)
@@ -129345,11 +130023,11 @@
 /obj/structure/barricade/handrail/wire{
 	dir = 4
 	},
+/obj/structure/platform/hybrisa/metalplatform2,
 /obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice12";
+	icon_state = "lattice8";
 	pixel_y = 16
 	},
-/obj/structure/platform/hybrisa/metalplatform2,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors)
 "xnq" = (
@@ -129437,7 +130115,9 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/decal/cleanable/liquid_fuel,
 /obj/effect/decal/cleanable/blood/gibs/robot,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/east_central_street)
 "xnQ" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -129490,7 +130170,9 @@
 /obj/structure/platform_decoration/hybrisa/rockdark{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/north_street)
 "xoJ" = (
 /obj/structure/surface/table/almayer,
@@ -129944,7 +130626,9 @@
 	dir = 4
 	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform4,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "xsg" = (
 /obj/structure/machinery/disposal{
@@ -130634,7 +131318,9 @@
 /area/lv759/outdoors/colony_streets/south_west_street)
 "xwO" = (
 /obj/item/device/flashlight/on,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "xwR" = (
 /obj/structure/reagent_dispensers/fueltank,
@@ -130951,6 +131637,15 @@
 	icon_state = "platingdmg3"
 	},
 /area/lv759/outdoors)
+"xzt" = (
+/obj/effect/hybrisa/decal/dirt,
+/obj/effect/hybrisa/decal/dirt,
+/obj/item/tool/wirecutters,
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "blue3"
+	},
+/area/lv759/landing_zone/landing_zone_3)
 "xzz" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/structure/largecrate/random/mini/small_case{
@@ -131304,7 +131999,9 @@
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_east_street)
 "xBH" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -132580,7 +133277,9 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "xMB" = (
 /obj/item/trash/cigbutt{
@@ -132751,7 +133450,9 @@
 /obj/structure/platform/hybrisa/metalplatform2{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/east_central_street)
 "xOD" = (
 /obj/item/trash/buritto,
@@ -133530,7 +134231,9 @@
 /obj/structure/barricade/wooden{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "xXZ" = (
 /obj/structure/surface/table,
@@ -133554,7 +134257,9 @@
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 1
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "xYf" = (
 /obj/item/tool/warning_cone{
@@ -133738,7 +134443,9 @@
 	dir = 8;
 	layer = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/north_street)
 "xZC" = (
 /obj/structure/machinery/light/blue{
@@ -133763,7 +134470,9 @@
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 8
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors/colony_streets/south_west_street)
 "xZX" = (
 /obj/structure/surface/table/almayer,
@@ -134665,6 +135374,22 @@
 	dir = 10
 	},
 /area/lv759/outdoors/colony_streets/east_central_street)
+"yiO" = (
+/obj/structure/prop/structure_lattice{
+	dir = 4
+	},
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	layer = 3.1;
+	level = 3;
+	pixel_y = 10
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice8";
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors)
 "yiQ" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -134730,7 +135455,9 @@
 	},
 /area/lv759/landing_zone_1/ceiling)
 "yjt" = (
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
 /area/lv759/outdoors)
 "yjw" = (
 /obj/structure/platform/hybrisa/metalplatform1,
@@ -136251,7 +136978,7 @@ wds
 gfw
 eFu
 dDk
-hsW
+sRV
 sRV
 keD
 bnK
@@ -136998,8 +137725,8 @@ unn
 unn
 cAb
 cAb
-fVO
-fVO
+pyl
+pyl
 jkI
 uce
 crO
@@ -139266,7 +139993,7 @@ kCR
 vSV
 jqr
 jqr
-bfR
+myc
 kZq
 kZq
 tCj
@@ -139525,14 +140252,14 @@ rYT
 nuH
 uVo
 hgM
-fVO
-fVO
+pyl
+pyl
 kqH
 cOc
 cOc
 sbm
-fVO
-fVO
+pyl
+pyl
 bQE
 gfw
 vFQ
@@ -140785,14 +141512,14 @@ qmv
 vnZ
 hup
 xse
-fVO
-fVO
+yiO
+yiO
 gOY
 tvx
 tvx
 sbm
-fVO
-fVO
+yiO
+yiO
 bQE
 eTM
 vFQ
@@ -142290,7 +143017,7 @@ cIv
 vSV
 jqr
 jqr
-bfR
+myc
 kZq
 kZq
 tCj
@@ -143298,8 +144025,8 @@ unn
 unn
 cAb
 cAb
-fVO
-fVO
+yiO
+yiO
 xdl
 uOo
 jFL
@@ -146709,9 +147436,9 @@ pir
 aoY
 pir
 pir
-pir
-pir
-pir
+grz
+qDP
+wPH
 pir
 pir
 pir
@@ -146960,10 +147687,10 @@ bNt
 wTC
 qlA
 qlA
-skI
-jdG
-jdG
-qlA
+kvE
+vrG
+xzt
+tjA
 qlA
 wTC
 jdG

@@ -1940,36 +1940,6 @@
 /obj/structure/prop/hybrisa/hospital
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "hospital"
-
-/obj/structure/prop/hybrisa/hospital/hospitalbedrollerbody
-	name = "hospital bed"
-	desc = "A hospital bed, there's a body under the cloth..."
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
-	icon_state = "bigrollerbody_up"
-	density = TRUE
-	wrenchable = TRUE
-/obj/structure/prop/hybrisa/hospital/hospitalbedrollerbody1
-	name = "hospital bed"
-	desc = "A hospital bed, there's a body under the cloth..."
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
-	icon_state = "bigrollerbody2_up"
-	density = TRUE
-	wrenchable = TRUE
-/obj/structure/prop/hybrisa/hospital/hospitalbedrollerbody2
-	name = "hospital bed"
-	desc = "A hospital bed, there's a body under the cloth..."
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
-	icon_state = "bigrollerbodybloodalt_up"
-	density = TRUE
-	wrenchable = TRUE
-/obj/structure/prop/hybrisa/hospital/hospitalbedrollerbody3
-	name = "hospital bed"
-	desc = "A hospital bed, there's blood on the surface..."
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
-	icon_state = "bigrolleremptyblood_up"
-	density = TRUE
-	wrenchable = TRUE
-
 /obj/structure/prop/hybrisa/hospital/hospitaldivider
 	name = "hospital divider"
 	desc = "A hospital divider for privacy."

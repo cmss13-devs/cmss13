@@ -435,7 +435,7 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 /obj/structure/bed/roller/hospital
 	name = "hospital bed"
 	icon = 'icons/obj/structures/rollerbed.dmi'
-	icon_state = "bigrollerempty"
+	icon_state = "bigrollerempty_up"
 	foldabletype = null
 	base_bed_icon = "bigrollerempty"
 
@@ -503,3 +503,24 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 	base_bed_icon = "bigrollerbloodempty"
 	body_icon_state = "bigrollerblood"
 	body_preset = /datum/equipment_preset/corpse/colonist/random/burst
+
+/obj/structure/bed/roller/hospital_empty
+	icon_state = "bigrollerempty2_down"
+	foldabletype = null
+/obj/structure/bed/roller/hospital_empty/bigrollerempty
+	icon_state = "bigrollerempty_down"
+	buckling_y = 2
+	base_bed_icon = "bigrollerempty"
+/obj/structure/bed/roller/hospital_empty/bigrollerempty2
+	icon_state = "bigrollerempty2_down"
+	buckling_y = 2
+	base_bed_icon = "bigrollerempty2"
+/obj/structure/bed/roller/hospital_empty/bigrollerempty3
+	icon_state = "bigrollerempty3_down"
+	buckling_y = 2
+	base_bed_icon = "bigrollerempty3"
+/obj/structure/bed/roller/hospital_empty/bigrollerbloodempty
+	icon_state = "bigrollerbloodempty_down"
+	buckling_y = 2
+	base_bed_icon = "bigrollerbloodempty"
+

@@ -22,9 +22,6 @@
 	RegisterSignal(src, COMSIG_STRUCTURE_UNWRENCHED, PROC_REF(do_unclamp_animation))
 	update_icon()
 
-/obj/structure/medical_supply_link/deconstruct(disassembled)
-	return ..()
-
 /obj/structure/medical_supply_link/proc/do_clamp_animation() // clamp and unclamp animations for when vendor is wrench over supply link
 	flick("medlink_clamping", src)
 	addtimer(CALLBACK(src, PROC_REF(update_icon), 2.6 SECONDS))

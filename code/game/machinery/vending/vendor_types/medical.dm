@@ -23,20 +23,20 @@
 	update_icon()
 
 /obj/structure/medical_supply_link/proc/do_clamp_animation() // clamp and unclamp animations for when vendor is wrench over supply link
-	flick("medlink_clamping", src)
+	flick("[base_state]_clamping", src)
 	addtimer(CALLBACK(src, PROC_REF(update_icon), 2.6 SECONDS))
 	update_icon()
 
 /obj/structure/medical_supply_link/proc/do_unclamp_animation()
-	flick("medlink_unclamping", src)
+	flick("[base_state]_unclamping", src)
 	addtimer(CALLBACK(src, PROC_REF(update_icon), 2.6 SECONDS))
 	update_icon()
 
 /obj/structure/medical_supply_link/update_icon()
 	if(locate(/obj/structure/machinery/cm_vending/sorted/medical) in loc)
-		icon_state = "medlink_clamped"
+		icon_state = "[base_state]_clamped"
 	else
-		icon_state = "medlink_unclamped"
+		icon_state = "[base_state]_unclamped"
 
 // --- No Upper Tile / White
 /obj/structure/medical_supply_link/notop

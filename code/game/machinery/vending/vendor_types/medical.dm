@@ -5,6 +5,7 @@
 	desc = "A complex network of pipes and machinery, linking to large storage systems below the deck. Medical vendors linked to this port will be able to infinitely restock supplies."
 	icon = 'icons/effects/warning_stripes.dmi'
 	icon_state = "medlink_unclamped"
+	var/base_state = "medlink"
 	anchored = TRUE
 	density = FALSE
 	unslashable = TRUE

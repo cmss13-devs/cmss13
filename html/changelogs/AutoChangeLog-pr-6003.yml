@@ -1,5 +1,0 @@
-author: "vero5123"
-delete-after: True
-changes:
-  - bugfix: "lowers the scalpel and chunk box's ability to destroy various structures."
-  - rscadd: "chunk box is now a melee weapon"

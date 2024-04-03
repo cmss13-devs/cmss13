@@ -1,6 +1,6 @@
 /obj/vehicle/multitile/arc
-	name = "\improper M540-A Armored Recon Carrier"
-	desc = "An M540-A Armored Recon Carrier. A lightly armored reconnaissance and intelligence vehicle. Entrances on the sides."
+	name = "\improper M540-B Armored Recon Carrier"
+	desc = "An M540-B Armored Recon Carrier. A lightly armored reconnaissance and intelligence vehicle. Entrances on the sides."
 
 	icon = 'icons/obj/vehicles/arc.dmi'
 	icon_state = "arc_base"
@@ -194,11 +194,11 @@
 	if(!camera)
 		camera = new /obj/structure/machinery/camera/vehicle(src)
 	if(change_tag)
-		camera.c_tag = "#[rand(1,100)] M540-A \"[nickname]\" ARC"
+		camera.c_tag = "#[rand(1,100)] M540-B \"[nickname]\" ARC"
 		if(camera_int)
 			camera_int.c_tag = camera.c_tag + " interior"
 	else
-		camera.c_tag = "#[rand(1,100)] 540-A ARC"
+		camera.c_tag = "#[rand(1,100)] M540-B ARC"
 		if(camera_int)
 			camera_int.c_tag = camera.c_tag + " interior"
 

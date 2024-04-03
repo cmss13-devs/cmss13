@@ -12,7 +12,7 @@
 	health = 500
 
 	/// How long the antenna deploy/retract animation is, keep accurate to the sprite in the dmi
-	var/deploy_animation_time = 1.7 SECONDS
+	var/deploy_animation_time = 1.2 SECONDS
 	/// If the antenna is already deploying
 	var/deploying = FALSE
 

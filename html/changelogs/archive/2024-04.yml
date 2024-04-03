@@ -21,3 +21,7 @@
 2024-04-02:
   sleepynecrons:
   - imageadd: added missing backpack onmob states for "classic" gearset
+2024-04-03:
+  vero5123:
+  - bugfix: lowers the scalpel and chunk box's ability to destroy various structures.
+  - rscadd: chunk box is now a melee weapon

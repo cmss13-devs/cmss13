@@ -22,6 +22,7 @@
 	)
 
 /obj/item/clothing/gloves/synth/wy/pmc/preset/Initialize()
+	. = ..()
 	underglove = new /obj/item/clothing/gloves/marine/veteran/pmc(src)
 
 	var/obj/item/device/simi_chip/motion_detector/new_md = new
@@ -30,7 +31,6 @@
 	ability_chips += new_md
 	new_repair.forceMove(src)
 	ability_chips += new_repair
-	..()
 
 /obj/item/clothing/gloves/synth/testing
 	name = "XPK-140 SIMI wrist-mounted computer"

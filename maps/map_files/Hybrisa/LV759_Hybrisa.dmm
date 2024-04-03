@@ -1671,7 +1671,7 @@
 "apv" = (
 /obj/structure/machinery/door/airlock/almayer/generic/glass{
 	dir = 1;
-	name = "\improper Meridian Managers Office"
+	name = "Meridian Managers Office"
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -4136,8 +4136,7 @@
 /obj/structure/largecrate/random/mini/small_case,
 /obj/effect/spawner/random/tool,
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 2
+	icon_state = "N"
 	},
 /turf/open/floor/prison{
 	dir = 8;
@@ -13923,8 +13922,7 @@
 	pixel_y = 14
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 2
+	icon_state = "N"
 	},
 /turf/open/floor/prison{
 	dir = 8;
@@ -19665,9 +19663,7 @@
 	dir = 8
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1;
-	pixel_y = 1
+	icon_state = "W"
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/lv759/outdoors)
@@ -24282,7 +24278,7 @@
 	pixel_y = 20
 	},
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor/prison,
+/turf/open/floor/hybrisa/metal/zbrownfloor1,
 /area/lv759/indoors/chapel)
 "euK" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -25422,16 +25418,6 @@
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/auto_turf/sand_white/layer0{
 	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
-	},
-/area/lv759/outdoors)
-"eGQ" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1;
-	pixel_y = 1
-	},
-/turf/open/floor/prison{
-	icon_state = "ramptop"
 	},
 /area/lv759/outdoors)
 "eGS" = (
@@ -28403,8 +28389,7 @@
 	dir = 4
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
+	icon_state = "E"
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/lv759/outdoors)
@@ -34046,7 +34031,7 @@
 /area/lv759/outdoors/colony_streets/south_east_street)
 "giI" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
-	name = "\improper Meridian Showroom"
+	name = "Meridian Showroom"
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/chapel)
@@ -36040,18 +36025,6 @@
 	icon_state = "tcomms"
 	},
 /area/lv759/landing_zone/landing_zone_4)
-"gzK" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N"
-	},
-/turf/open/floor/almayer{
-	allow_construction = 0;
-	icon_state = "plate"
-	},
-/area/lv759/outdoors)
 "gzM" = (
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/hybrisa/street/sidewalk,
@@ -42960,10 +42933,6 @@
 /area/lv759/colonial_marshals/office)
 "hKf" = (
 /obj/structure/machinery/conveyor,
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 2
-	},
 /turf/open/floor/almayer{
 	allow_construction = 0;
 	icon_state = "plate"
@@ -43707,9 +43676,7 @@
 "hRe" = (
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco6,
 /obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1;
-	pixel_y = 1
+	icon_state = "W"
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/lv759/outdoors)
@@ -45161,14 +45128,13 @@
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv759/outdoors)
 "ifX" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice3";
 	pixel_x = 6;
 	pixel_y = 19
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
 	},
 /turf/open/floor/prison{
 	dir = 8;
@@ -48038,7 +48004,7 @@
 /area/lv759/outdoors/colony_streets/north_west_street)
 "iET" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
-	name = "\improper Meridian Lobby"
+	name = "Meridian Lobby"
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/chapel)
@@ -48566,8 +48532,7 @@
 	dir = 8
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
+	icon_state = "E"
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/lv759/outdoors)
@@ -48847,7 +48812,7 @@
 /area/lv759/outdoors)
 "iNB" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
-	name = "\improper Meridian Factory Floor"
+	name = "Meridian Factory Floor"
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/chapel)
@@ -50071,8 +50036,7 @@
 	pixel_y = 11
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = -1
+	icon_state = "S"
 	},
 /obj/item/reagent_container/glass/bucket{
 	pixel_x = -17;
@@ -56122,8 +56086,7 @@
 "keq" = (
 /obj/structure/largecrate/random/barrel/red,
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 2
+	icon_state = "N"
 	},
 /turf/open/floor/prison{
 	dir = 8;
@@ -67434,13 +67397,15 @@
 /turf/open/floor/hybrisa/carpet/carpetbluedeco,
 /area/lv759/indoors/apartment/west)
 "mcB" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
 /obj/item/stool{
 	pixel_x = -4;
 	pixel_y = 32
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
 	},
 /turf/open/floor/prison{
 	icon_state = "ramptop"
@@ -68550,11 +68515,6 @@
 "mnZ" = (
 /obj/structure/machinery/conveyor,
 /obj/item/smallDelivery,
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1;
-	pixel_y = 1
-	},
 /turf/open/floor/almayer{
 	allow_construction = 0;
 	icon_state = "plate"
@@ -68791,7 +68751,7 @@
 "mqw" = (
 /obj/structure/machinery/door/airlock/almayer/generic/autoname{
 	dir = 8;
-	name = "\improper Meridian Offices"
+	name = "Meridian Offices"
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -72694,11 +72654,10 @@
 	},
 /area/lv759/colonial_marshals/garage)
 "nbt" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
 /obj/item/tool/warning_cone,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "ramptop"
@@ -77302,8 +77261,7 @@
 /obj/structure/surface/rack,
 /obj/item/device/megaphone,
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = -1
+	icon_state = "S"
 	},
 /turf/open/floor/prison{
 	dir = 8;
@@ -81412,8 +81370,7 @@
 "oFo" = (
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco6,
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
+	icon_state = "N"
 	},
 /obj/structure/machinery/light/spot,
 /turf/open/floor/hybrisa/tile/tilebeige,
@@ -84545,17 +84502,6 @@
 /obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark3,
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/outdoors)
-"pgT" = (
-/obj/structure/machinery/door_control{
-	id = "workshop_br_g";
-	name = "Workshop Garage Lockdown";
-	pixel_x = 28
-	},
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "red"
-	},
-/area/lv759/colonial_marshals/hallway)
 "phf" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/smg/nailgun,
@@ -87079,8 +87025,7 @@
 /obj/item/clothing/suit/storage/hazardvest/black,
 /obj/item/clothing/suit/storage/hazardvest/black,
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 2
+	icon_state = "N"
 	},
 /turf/open/floor/prison{
 	dir = 8;
@@ -91781,9 +91726,6 @@
 	pixel_x = -9;
 	pixel_y = 20
 	},
-/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
-	dir = 4
-	},
 /turf/open/hybrisa/street/sidewalk{
 	dir = 4
 	},
@@ -93427,9 +93369,7 @@
 /area/lv759/indoors/chapel)
 "qMM" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1;
-	pixel_y = 1
+	icon_state = "W"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -97253,16 +97193,6 @@
 	icon_state = "kitchen"
 	},
 /area/lv759/indoors/spaceport)
-"rvL" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/turf/open/floor/almayer{
-	allow_construction = 0;
-	icon_state = "plate"
-	},
-/area/lv759/outdoors)
 "rvM" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor/plating{
@@ -102138,6 +102068,15 @@
 	icon_state = "black"
 	},
 /area/lv759/outdoors)
+"snM" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "ramptop"
+	},
+/area/lv759/outdoors)
 "snX" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -102880,8 +102819,7 @@
 /area/lv759/indoors/hospital/reception)
 "sue" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
+	icon_state = "E"
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice3";
@@ -103203,10 +103141,12 @@
 /area/lv759/outdoors)
 "swl" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
+	icon_state = "N"
 	},
 /obj/structure/machinery/light/spot,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
 /turf/open/floor/almayer{
 	allow_construction = 0;
 	icon_state = "plate"
@@ -104016,9 +103956,7 @@
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/outdoors)
 "sCY" = (
-/obj/structure/largecrate/random/barrel{
-	layer = 2
-	},
+/obj/structure/largecrate/random/barrel,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -104780,9 +104718,7 @@
 /area/lv759/outdoors)
 "sKE" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1;
-	pixel_y = 1
+	icon_state = "W"
 	},
 /obj/item/stack/sheet/wood{
 	layer = 2.7;
@@ -107547,7 +107483,7 @@
 "tjN" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
 	dir = 1;
-	name = "\improper Meridian Factory Floor"
+	name = "Meridian Factory Floor"
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/chapel)
@@ -109781,11 +109717,10 @@
 /obj/item/clothing/head/hardhat/white,
 /obj/item/clothing/head/hardhat/white,
 /obj/item/clothing/head/hardhat/white,
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 2
-	},
 /obj/structure/machinery/light/small,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "ramptop"
@@ -113282,6 +113217,14 @@
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"
+	},
+/area/lv759/outdoors)
+"umY" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/prison{
+	icon_state = "ramptop"
 	},
 /area/lv759/outdoors)
 "une" = (
@@ -118076,9 +118019,6 @@
 /area/lv759/outdoors/colony_streets/east_central_street)
 "vcJ" = (
 /obj/effect/hybrisa/decal/dirt,
-/obj/effect/decal/cleanable/cobweb{
-	dir = 8
-	},
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -120180,7 +120120,7 @@
 "vxw" = (
 /obj/structure/machinery/door/airlock/almayer/generic/autoname{
 	dir = 1;
-	name = "\improper Meridian Offices"
+	name = "Meridian Offices"
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -121483,18 +121423,6 @@
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"
-	},
-/area/lv759/outdoors)
-"vKD" = (
-/obj/structure/machinery/conveyor,
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1;
-	pixel_y = 1
-	},
-/turf/open/floor/almayer{
-	allow_construction = 0;
-	icon_state = "plate"
 	},
 /area/lv759/outdoors)
 "vKJ" = (
@@ -126379,9 +126307,7 @@
 	dir = 4
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1;
-	pixel_y = 1
+	icon_state = "W"
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/lv759/outdoors)
@@ -127805,11 +127731,6 @@
 	pixel_x = -2;
 	pixel_y = -3
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1;
-	pixel_y = 1
-	},
 /turf/open/floor/almayer{
 	allow_construction = 0;
 	icon_state = "plate"
@@ -128475,9 +128396,7 @@
 /area/lv759/outdoors)
 "wYl" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1;
-	pixel_y = 1
+	icon_state = "W"
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/lv759/outdoors)
@@ -131325,8 +131244,7 @@
 "xwR" = (
 /obj/structure/reagent_dispensers/fueltank,
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 2
+	icon_state = "N"
 	},
 /obj/structure/machinery/light/small,
 /turf/open/floor/prison{
@@ -178540,7 +178458,7 @@ bYR
 dNf
 mOv
 cDk
-pgT
+mRz
 gVA
 gVA
 kWY
@@ -186099,7 +186017,7 @@ iKt
 fhH
 oRv
 aFm
-gzK
+myr
 tHP
 tMG
 vLU
@@ -186351,7 +186269,7 @@ eck
 rky
 gXr
 pMC
-rvL
+myr
 pFC
 vLU
 uoF
@@ -186603,7 +186521,7 @@ lkZ
 ftN
 wbk
 fQA
-rvL
+myr
 aMi
 vLU
 qyW
@@ -187108,7 +187026,7 @@ gPM
 eck
 kHh
 mnZ
-vKD
+hKf
 wSq
 yav
 vAK
@@ -187612,8 +187530,8 @@ nkd
 saV
 kHh
 mcB
-kCR
-kCR
+umY
+umY
 kOr
 ppS
 tlC
@@ -188871,7 +188789,7 @@ gQZ
 scP
 gQZ
 djP
-lOq
+snM
 rEm
 tMG
 whU
@@ -189123,7 +189041,7 @@ oTH
 fYa
 fpv
 hxZ
-lOq
+snM
 dKb
 tMG
 wWX
@@ -189375,7 +189293,7 @@ hgI
 rKJ
 igh
 bMD
-lOq
+snM
 bbs
 tMG
 roy
@@ -190126,11 +190044,11 @@ cjE
 abu
 hgj
 xru
-eGQ
-eGQ
-eGQ
-eGQ
-eGQ
+umY
+umY
+umY
+umY
+umY
 blk
 lBC
 tMG

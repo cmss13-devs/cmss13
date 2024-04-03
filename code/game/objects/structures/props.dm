@@ -2187,7 +2187,7 @@
 
 /obj/structure/prop/hybrisa/engineer/spacejockey
 	name = "Giant Pilot"
-	desc = "temp."
+	desc = "A Giant Alien life form. Looks like it's been dead a long time. Fossilized. Looks like it's growing out of the chair. Bones are bent outward, like it exploded from inside."
 	icon = 'icons/obj/structures/props/engineerJockey.dmi'
 	icon_state = "spacejockey"
 	unslashable = TRUE
@@ -2196,8 +2196,8 @@
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/engineer/giantpodbroken
-	name = "Giant Pod"
-	desc = "temp."
+	name = "Giant Hypersleep Chamber"
+	desc = "What looks to be a Giant Hypersleep Chamber, this one appears to contain a Alien life form. it looks like it's been dead for a long time, Fossilized. From what you can see it's bones are bent outwards, the chambers outer shell has holes melted, pushing outwards. "
 	icon = 'icons/obj/structures/props/engineerPod.dmi'
 	icon_state = "pod_broken"
 	bound_height = 96
@@ -2208,8 +2208,8 @@
 	layer = ABOVE_MOB_LAYER
 	density = TRUE
 obj/structure/prop/hybrisa/engineer/giantpod
-	name = "Giant Pod"
-	desc = "temp."
+	name = "Giant Hypersleep Chamber"
+	desc = "What looks to be a Giant Hypersleep Chamber, a strange alien design, unlike anything you've ever seen before. It's empty."
 	icon = 'icons/obj/structures/props/engineerPod.dmi'
 	icon_state = "pod"
 	bound_height = 96
@@ -2219,8 +2219,8 @@ obj/structure/prop/hybrisa/engineer/giantpod
 	indestructible = TRUE
 	density = TRUE
 obj/structure/prop/hybrisa/engineer/giantconsole
-	name = "Giant Console"
-	desc = "temp."
+	name = "Giant Alien Console"
+	desc = "A Giant Alien console of some kind, unlike anything you've ever seen before. Who knows the purpose of this strange technology..."
 	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi'
 	icon_state = "engineerconsole"
 	bound_height = 32

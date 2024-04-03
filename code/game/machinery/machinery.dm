@@ -357,6 +357,6 @@ Class Procs:
 	name = "\improper Fuel Pump"
 	desc = "It is a machine that pump fuel in lifeboats."
 	icon = 'icons/obj/structures/machinery/fuelpump.dmi'
-	icon_state = "fuelpump"
+	icon_state = "fuelpump_off"
 	density = TRUE
 	anchored = TRUE

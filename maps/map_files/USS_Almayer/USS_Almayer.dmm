@@ -9880,13 +9880,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/starboard_missiles)
-"bbX" = (
-/obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/constructable_frame,
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/lifeboat_pumps/north2)
 "bbY" = (
 /obj/structure/machinery/cm_vending/clothing/smartgun/alpha,
 /turf/open/floor/almayer{
@@ -12829,12 +12822,6 @@
 	dir = 8
 	},
 /turf/open/floor/almayer,
-/area/almayer/lifeboat_pumps/north1)
-"bvd" = (
-/obj/structure/machinery/constructable_frame,
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
 /area/almayer/lifeboat_pumps/north1)
 "bve" = (
 /obj/structure/disposalpipe/segment,
@@ -21483,6 +21470,12 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
+"dci" = (
+/obj/structure/machinery/fuelpump,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/almayer/lifeboat_pumps/south1)
 "dck" = (
 /obj/structure/bed/stool,
 /turf/open/floor/almayer{
@@ -26100,14 +26093,6 @@
 	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
-"eGb" = (
-/obj/structure/machinery/constructable_frame{
-	icon_state = "box_2"
-	},
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/lifeboat_pumps/north2)
 "eGh" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/surgery/scalpel{
@@ -26158,6 +26143,10 @@
 	icon_state = "plate"
 	},
 /area/almayer/squads/req)
+"eHo" = (
+/obj/structure/machinery/fuelpump,
+/turf/open/floor/almayer,
+/area/almayer/lifeboat_pumps/north1)
 "eHx" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/faxmachine/uscm/command,
@@ -32632,13 +32621,6 @@
 	icon_state = "orange"
 	},
 /area/almayer/engineering/lower)
-"haM" = (
-/obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/constructable_frame,
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/lifeboat_pumps/south2)
 "haO" = (
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -43249,14 +43231,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/engineering/lower/workshop/hangar)
-"kJL" = (
-/obj/structure/machinery/constructable_frame{
-	icon_state = "box_2"
-	},
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/lifeboat_pumps/north1)
 "kJW" = (
 /obj/structure/machinery/door/window/westright,
 /obj/structure/machinery/shower{
@@ -43941,13 +43915,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/maint/hull/upper/u_m_p)
-"kUQ" = (
-/obj/effect/decal/cleanable/blood/oil/streak,
-/obj/structure/machinery/constructable_frame,
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/lifeboat_pumps/south1)
 "kUR" = (
 /turf/open/floor/almayer{
 	icon_state = "bluefull"
@@ -45585,12 +45552,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/maint/upper/u_a_p)
-"lxT" = (
-/obj/structure/machinery/constructable_frame,
-/turf/open/floor/almayer{
-	icon_state = "mono"
-	},
-/area/almayer/lifeboat_pumps/south2)
 "lxW" = (
 /obj/structure/sign/prop2{
 	pixel_y = 29
@@ -50081,6 +50042,10 @@
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
+"neU" = (
+/obj/structure/machinery/fuelpump,
+/turf/open/floor/almayer,
+/area/almayer/lifeboat_pumps/north2)
 "nff" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/USCMtray{
@@ -50560,6 +50525,10 @@
 	icon_state = "redfull"
 	},
 /area/almayer/hallways/upper/port)
+"nmg" = (
+/obj/structure/machinery/fuelpump,
+/turf/open/floor/almayer,
+/area/almayer/lifeboat_pumps/south2)
 "nmh" = (
 /obj/structure/sign/safety/distribution_pipes{
 	pixel_x = -17
@@ -62976,11 +62945,8 @@
 	},
 /area/almayer/maint/upper/u_m_p)
 "rBH" = (
-/obj/structure/machinery/constructable_frame{
-	icon_state = "box_2"
-	},
 /turf/open/floor/almayer{
-	icon_state = "mono"
+	icon_state = "test_floor4"
 	},
 /area/almayer/lifeboat_pumps/south1)
 "rCh" = (
@@ -106875,7 +106841,7 @@ add
 fsU
 aHU
 aTm
-awW
+eHo
 aTm
 jgF
 fsU
@@ -106921,7 +106887,7 @@ aJU
 gBW
 ouQ
 iun
-baw
+dci
 vPm
 qys
 gBW
@@ -107078,7 +107044,7 @@ awW
 auK
 aIr
 aTm
-bvd
+add
 aTm
 juX
 scu
@@ -107281,7 +107247,7 @@ awW
 avc
 aIv
 aTm
-kJL
+add
 cbM
 jzZ
 sLo
@@ -107327,7 +107293,7 @@ baw
 hJk
 yac
 vbB
-kUQ
+rBH
 vbB
 fDS
 iLd
@@ -107530,7 +107496,7 @@ aJU
 gBW
 ouQ
 vbB
-baw
+rBH
 tBq
 qys
 gBW
@@ -124129,7 +124095,7 @@ aeC
 wXh
 ayn
 atr
-aeA
+neU
 aex
 ciw
 wXh
@@ -124177,7 +124143,7 @@ vcE
 kpo
 iMx
 tGi
-lJY
+nmg
 bXe
 eyG
 kpo
@@ -124332,7 +124298,7 @@ aeA
 asY
 ayQ
 atr
-bbX
+aeC
 atr
 ciD
 ngl
@@ -124380,7 +124346,7 @@ lJY
 ttS
 wEO
 faO
-haM
+vcE
 bXe
 deg
 wLu
@@ -124535,7 +124501,7 @@ aeA
 atp
 ayR
 atr
-eGb
+aeC
 atr
 cji
 nqV
@@ -124583,7 +124549,7 @@ lJY
 hlX
 umh
 bXe
-lxT
+vcE
 tGi
 pfH
 wlF

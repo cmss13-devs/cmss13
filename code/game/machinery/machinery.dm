@@ -351,3 +351,12 @@ Class Procs:
 	icon_state = "autolathe"
 	density = TRUE
 	anchored = TRUE
+
+//fuel pomp
+/obj/structure/machinery/fuelpomp
+	name = "\improper Fuel Pomp"
+	desc = "It is a machine that pomp fuel in lifeboats."
+	icon = 'icons/obj/structures/machinery/fuelpomp.dmi'
+	icon_state = "fuelpomp"
+	density = TRUE
+	anchored = TRUE

@@ -896,7 +896,7 @@
 				return
 			holo_card_color = null
 			to_chat(user, SPAN_NOTICE("You reset your holocard."))
-			update_targeted()
+			hud_set_holocard()
 			return
 		to_chat(user, SPAN_WARNING("You're not trained to use this."))
 		return
@@ -917,7 +917,7 @@
 	else if(newcolor != holo_card_color)
 		holo_card_color = newcolor
 		to_chat(user, SPAN_NOTICE("You add a [newcolor] holo card on [src]."))
-	update_targeted()
+	hud_set_holocard()
 
 /mob/living/carbon/human/tgui_interact(mob/user, datum/tgui/ui) // I'M SORRY, SO FUCKING SORRY
 	. = ..()

@@ -1098,7 +1098,6 @@
 /area/strata/ug/interior/jungle/deep/minehead)
 "ads" = (
 /obj/structure/inflatable/popped/door,
-/obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata{
 	icon_state = "orange_cover"
 	},

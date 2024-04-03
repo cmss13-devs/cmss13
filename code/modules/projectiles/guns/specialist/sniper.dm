@@ -384,8 +384,8 @@
 	recoil = RECOIL_AMOUNT_TIER_1
 
 /obj/item/weapon/gun/rifle/sniper/XM43E1/replace_magazine(mob/user, obj/item/ammo_magazine/magazine)
-	. = ..()
-	set_bullet_trait_type()
+    . = ..()
+    set_bullet_trait_type()
 
 /obj/item/weapon/gun/rifle/sniper/XM43E1/proc/set_bullet_trait_type()
 	remove_bullet_trait("breaching")

@@ -122,13 +122,6 @@
 		// keeping above for book keeping sake, damage isnt that high anymore, does way less, very similar to normal sniper
 		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
 
-/datum/ammo/bullet/sniper/wallpopper
-	name = "Wall-Popper bullet"
-	shrapnel_chance = 0 // its bassically hesh, no shrap from you
-	accuracy = HIT_ACCURACY_TIER_8
-	damage = 55
-	shell_speed = AMMO_SPEED_TIER_6
-
 /datum/ammo/bullet/sniper/anti_materiel/vulture
 	damage = 400 // Fully intended to vaporize anything smaller than a mini cooper
 	accurate_range_min = 10

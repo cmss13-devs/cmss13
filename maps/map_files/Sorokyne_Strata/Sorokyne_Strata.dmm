@@ -4913,9 +4913,6 @@
 "app" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/cleanable/blood,
-/obj/structure/machinery/door/airlock/almayer/maint/colony{
-	dir = 2
-	},
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
 	},
@@ -5168,17 +5165,6 @@
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/strata{
-	icon_state = "multi_tiles"
-	},
-/area/strata/ag/interior/dorms)
-"aqb" = (
-/obj/effect/decal/cleanable/blood{
-	icon_state = "xgib2"
-	},
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
 	},
@@ -5834,9 +5820,6 @@
 	icon_state = "fake_wood"
 	},
 /area/strata/ag/interior/dorms)
-"arZ" = (
-/turf/open/auto_turf/snow/brown_base/layer1,
-/area/strata/ag/interior/outpost/canteen/lower_cafeteria)
 "asb" = (
 /obj/structure/platform/strata/metal,
 /turf/open/floor/strata{
@@ -23792,7 +23775,7 @@
 	dir = 8;
 	icon_state = "white_cyan2"
 	},
-/area/strata/ag/interior/outpost/canteen/lower_cafeteria)
+/area/strata/ag/interior/outpost/security)
 "bHp" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -25309,13 +25292,6 @@
 	icon_state = "floor2"
 	},
 /area/strata/ag/interior/outpost/med)
-"bUL" = (
-/obj/structure/machinery/vending/cola,
-/turf/open/floor/strata{
-	dir = 8;
-	icon_state = "white_cyan2"
-	},
-/area/strata/ag/interior/dorms)
 "bUM" = (
 /obj/structure/machinery/cm_vending/sorted/boozeomat,
 /turf/open/floor/strata{
@@ -29249,7 +29225,7 @@
 	dir = 8;
 	icon_state = "white_cyan2"
 	},
-/area/strata/ag/interior/outpost/canteen/lower_cafeteria)
+/area/strata/ag/interior/outpost/security)
 "cPq" = (
 /obj/structure/prop/ice_colony/surveying_device,
 /turf/open/floor/strata{
@@ -29639,6 +29615,13 @@
 	icon_state = "floor3"
 	},
 /area/strata/ag/interior/outpost/med)
+"dyA" = (
+/obj/structure/barricade/deployable,
+/turf/open/floor/strata{
+	dir = 8;
+	icon_state = "white_cyan2"
+	},
+/area/strata/ag/interior/outpost/security)
 "dyZ" = (
 /obj/structure/holostool,
 /turf/open/floor/strata{
@@ -29911,6 +29894,13 @@
 	icon_state = "fake_wood"
 	},
 /area/strata/ag/interior/outpost/gen/bball)
+"dVh" = (
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/dorms)
 "dWc" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
@@ -32345,6 +32335,9 @@
 	icon_state = "purp2"
 	},
 /area/strata/ug/interior/jungle/deep/tearlake)
+"icN" = (
+/turf/closed/wall/strata_outpost,
+/area/strata/ag/interior/outpost/security)
 "idq" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 8
@@ -32464,6 +32457,13 @@
 /obj/item/lightstick,
 /turf/open/floor/strata,
 /area/strata/ug/interior/outpost/jung/dorms/sec1)
+"iqD" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/dorms)
 "iqV" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /obj/effect/blocker/sorokyne_cold_water,
@@ -34585,6 +34585,13 @@
 	icon_state = "purp2"
 	},
 /area/strata/ug/interior/jungle/deep/structures/engi)
+"lMC" = (
+/obj/effect/landmark/corpsespawner/russian,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata{
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/dorms)
 "lNr" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
@@ -36112,6 +36119,15 @@
 	},
 /turf/open/gm/river,
 /area/strata/ag/exterior/research_decks)
+"ojB" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgib2"
+	},
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/dorms)
 "okE" = (
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ag/exterior/shed_five_caves)
@@ -41481,6 +41497,14 @@
 	icon_state = "fake_wood"
 	},
 /area/strata/ag/interior/landingzone_checkpoint)
+"wWx" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgib2"
+	},
+/turf/open/floor/strata{
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/dorms)
 "wWK" = (
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
@@ -42222,6 +42246,12 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/outpost/gen/bball/nest)
+"ybh" = (
+/obj/structure/surface/rack,
+/turf/open/floor/strata{
+	icon_state = "multi_tiles"
+	},
+/area/strata/ag/interior/dorms)
 "ybN" = (
 /obj/structure/window/framed/strata,
 /turf/open/floor/strata{
@@ -47268,7 +47298,7 @@ akW
 bSJ
 fHp
 ank
-bSJ
+aCE
 app
 apY
 aCE
@@ -47464,7 +47494,7 @@ crY
 avx
 bUq
 ctC
-ctC
+afW
 apZ
 ctC
 arX
@@ -47658,8 +47688,8 @@ ddp
 bXW
 bWy
 bUq
-bXW
 ctC
+afW
 aFO
 aCl
 crM
@@ -47853,8 +47883,8 @@ ddp
 alG
 amr
 anm
-bUL
 ctC
+afW
 aqa
 ctC
 arX
@@ -48048,8 +48078,8 @@ ddp
 bXW
 bWy
 bUq
-bXW
 ctC
+afW
 aFO
 ctC
 arY
@@ -48442,7 +48472,7 @@ bUM
 ctC
 aFO
 fno
-fno
+dVh
 ctC
 aup
 bWy
@@ -48633,11 +48663,11 @@ ddp
 fno
 bWy
 bUq
+bXW
 ctC
-ctC
-aqb
-fno
-fno
+aFO
+ojB
+iqD
 ctC
 auq
 cbj
@@ -48832,7 +48862,7 @@ aoo
 aHa
 aqc
 fno
-fno
+dVh
 ctC
 ctF
 avs
@@ -49219,7 +49249,7 @@ qUW
 qUW
 bUs
 wGx
-afW
+ybh
 aeD
 aeM
 aeM
@@ -49416,7 +49446,7 @@ aQX
 wGx
 eOI
 bKb
-afW
+lMC
 jIv
 ydR
 ctC
@@ -49610,7 +49640,7 @@ xSJ
 bUs
 bUO
 afW
-afW
+wWx
 afW
 asb
 jfh
@@ -66768,8 +66798,8 @@ aAR
 awJ
 aCQ
 aHh
-gLF
-gLF
+ijo
+ijo
 ijo
 ijo
 jEB
@@ -69696,7 +69726,7 @@ awJ
 aAR
 ijo
 aqC
-arG
+dyA
 wto
 cfx
 auM
@@ -69892,7 +69922,7 @@ awJ
 bVV
 arF
 arG
-cea
+ijo
 cfx
 cfx
 bZD
@@ -70278,8 +70308,8 @@ ayw
 ayw
 ayw
 ayw
-arZ
-bVX
+awJ
+ijo
 cOV
 bHo
 ijo
@@ -70473,10 +70503,10 @@ ayw
 ayw
 ayw
 aFv
-bVX
-bWN
-bWN
-bWN
+ijo
+icN
+icN
+icN
 ijo
 ijo
 ijo

@@ -360,6 +360,9 @@ Class Procs:
 	icon_state = "fuelpump_off"
 	density = TRUE
 	anchored = TRUE
+
+
+/obj/structure/machinery/fuelpump/update_icon()
 	if(stat & NOPOWER)
 		icon_state = "fuelpump_0"
 	else

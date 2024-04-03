@@ -172,11 +172,11 @@
 	if(can_pass_disease() && target_mob.can_pass_disease())
 		for(var/datum/disease/virus in viruses)
 			if(virus.spread_by_touch())
-				target_mob.contract_disease(virus, 0, 1, CONTACT_HANDS)
+				target_mob.contract_disease(virus, FALSE, TRUE, CONTACT_HANDS)
 
 		for(var/datum/disease/virus in target_mob.viruses)
 			if(virus.spread_by_touch())
-				contract_disease(virus, 0, 1, CONTACT_HANDS)
+				contract_disease(virus, FALSE, TRUE, CONTACT_HANDS)
 
 	target_mob.next_move += 7 //Adds some lag to the 'attack'. Adds up to 11 in combination with click_adjacent.
 	return
@@ -186,24 +186,17 @@
 	return TRUE
 
 /mob/living/carbon/human/can_pass_disease()
-	/// Multiplier for checked pieces.
+	// Multiplier for checked pieces.
 	var/mult = 0
-	/// Total amount of bio protection
+	// Total amount of bio protection
 	var/total_prot = 0
-	/// Super bio armor
+	// Super bio armor
 	var/bio_hardcore = 0
 
-	var/list/worn_clothes = list()
-	worn_clothes += head
-	worn_clothes += wear_suit
-	worn_clothes += hands
-	worn_clothes += glasses
-	worn_clothes += w_uniform
-	worn_clothes += shoes
-	worn_clothes += wear_mask
+	var/list/worn_clothes = list(head, wear_suit, hands, glasses, w_uniform, shoes, wear_mask)
 
 	for(var/obj/item/clothing/worn_item in worn_clothes)
-		total_prot = (total_prot + worn_item.armor_bio)
+		total_prot += worn_item.armor_bio
 		mult++
 		if(worn_item.armor_bio == CLOTHING_ARMOR_HARDCORE)
 			bio_hardcore++

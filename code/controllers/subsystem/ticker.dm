@@ -511,3 +511,10 @@ SUBSYSTEM_DEF(ticker)
 	if(mode)
 		mode.is_in_endgame = TRUE
 		mode.force_end_at = (world.time + 25 MINUTES)
+
+/datum/controller/subsystem/ticker/proc/check_bp_tier(ckey = "", tiernum = 1) //ZONENOTE, REMOVE, REMOVE BEFORE FULLMERGE
+	if(!fexists("data/player_saves/[copytext(ckey, 1, 2)]/[ckey]/battlepass.sav"))
+		return FALSE
+
+	var/savefile/save_obj = new("data/player_saves/[copytext(ckey, 1, 2)]/[ckey]/battlepass.sav")
+	return (save_obj["tier"] >= tiernum)

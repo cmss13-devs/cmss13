@@ -1452,7 +1452,7 @@
 	dir = 8;
 	icon_state = "white_cyan2"
 	},
-/area/strata/ag/interior)
+/area/strata/ag/interior/outpost/admin)
 "aer" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 8
@@ -8472,14 +8472,6 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/paths/north_outpost)
-"aAc" = (
-/obj/structure/bookcase{
-	icon_state = "book-5"
-	},
-/turf/open/floor/strata{
-	icon_state = "blue1"
-	},
-/area/strata/ag/interior)
 "aAd" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 8
@@ -14430,9 +14422,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/outpost/gen/foyer)
-"aTu" = (
-/turf/closed/wall/strata_outpost/reinforced,
-/area/strata/ag/interior)
 "aTv" = (
 /obj/structure/platform/strata{
 	dir = 4
@@ -16533,12 +16522,6 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/admin)
-"bbu" = (
-/obj/structure/curtain/shower,
-/turf/open/floor/strata{
-	icon_state = "blue1"
-	},
-/area/strata/ag/interior)
 "bbv" = (
 /obj/structure/machinery/gibber,
 /turf/open/floor/strata{
@@ -16865,9 +16848,6 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/asphalt/cement,
 /area/strata/ag/interior/administration)
-"bcM" = (
-/turf/closed/wall/strata_outpost,
-/area/strata/ag/interior)
 "bcN" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 4
@@ -18682,7 +18662,7 @@
 /turf/open/floor/strata{
 	icon_state = "orange_cover"
 	},
-/area/strata/ag/interior)
+/area/strata/ag/interior/outpost/engi/drome)
 "bjh" = (
 /obj/structure/pipes/vents/pump/on,
 /turf/open/floor/strata{
@@ -22748,10 +22728,6 @@
 	icon_state = "cyan1"
 	},
 /area/strata/ag/interior/outpost/med)
-"bzh" = (
-/obj/structure/sign/safety/maint,
-/turf/closed/wall/strata_outpost,
-/area/strata/ag/interior)
 "bzk" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2
@@ -23731,7 +23707,7 @@
 "bGq" = (
 /obj/structure/mirror,
 /turf/closed/wall/strata_outpost/reinforced,
-/area/strata/ag/interior)
+/area/strata/ag/interior/outpost/admin)
 "bGr" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21"
@@ -29719,12 +29695,6 @@
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/marsh)
-"dCM" = (
-/obj/structure/largecrate/random/case/double,
-/turf/open/floor/strata{
-	icon_state = "orange_cover"
-	},
-/area/strata/ag/interior)
 "dDr" = (
 /obj/structure/bed/chair,
 /obj/effect/landmark/objective_landmark/close,
@@ -31300,15 +31270,6 @@
 	icon_state = "blue1"
 	},
 /area/strata/ug/interior/outpost/jung/dorms/admin1)
-"ghM" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/cameras{
-	dir = 1
-	},
-/turf/open/floor/strata{
-	icon_state = "orange_cover"
-	},
-/area/strata/ag/interior)
 "ghV" = (
 /obj/structure/sign/safety/medical,
 /turf/closed/wall/strata_outpost,
@@ -41178,7 +41139,7 @@
 	dir = 8;
 	icon_state = "white_cyan2"
 	},
-/area/strata/ag/interior)
+/area/strata/ag/interior/outpost/admin)
 "wmZ" = (
 /turf/closed/wall/strata_ice/dirty,
 /area/strata/ag/interior/outpost/engi)
@@ -66260,7 +66221,7 @@ blV
 cik
 cik
 cik
-aTu
+bLb
 eSx
 bHA
 bKR
@@ -66455,7 +66416,7 @@ frL
 bpH
 csW
 blN
-aAc
+bsG
 eSx
 bHB
 bKS
@@ -66650,7 +66611,7 @@ blX
 bpI
 blX
 bsH
-aTu
+bLb
 vlm
 eSx
 eSx
@@ -66848,7 +66809,7 @@ bsI
 bGq
 wmX
 aeq
-bbu
+clK
 vOs
 bWk
 ceZ
@@ -67044,7 +67005,7 @@ bLb
 bHE
 bHE
 clK
-bLb
+vOs
 bWk
 cfg
 ckB
@@ -67239,7 +67200,7 @@ bzk
 bHE
 bHE
 blN
-bLb
+vOs
 bWk
 cfp
 ckC
@@ -67434,7 +67395,7 @@ bLb
 bCx
 bHE
 bLa
-bLb
+vOs
 bCz
 cft
 ckE
@@ -67629,7 +67590,7 @@ bLb
 bCy
 bHF
 bsG
-bLb
+vOs
 bWw
 cfJ
 bsW
@@ -67820,10 +67781,10 @@ cik
 cik
 ckE
 cft
-aTu
-aTu
-aTu
-aTu
+bLb
+bLb
+bLb
+bLb
 vOs
 bWx
 cgc
@@ -68015,10 +67976,10 @@ bjc
 cik
 bsO
 bCw
-bcM
-dCM
+bCz
+udp
 bjg
-ghM
+bHH
 bCz
 bCz
 cgd
@@ -68210,7 +68171,7 @@ bmc
 cik
 cfg
 ckC
-bzh
+cft
 udp
 csQ
 bPe
@@ -75011,7 +74972,7 @@ cjn
 cjn
 cjn
 cjn
-cpU
+cjn
 cjn
 aHP
 cdn
@@ -75206,7 +75167,7 @@ azm
 aAT
 bZI
 aDr
-cpU
+cjn
 hEz
 aHP
 aHP
@@ -75401,7 +75362,7 @@ bYm
 aAU
 bZI
 aDs
-cpU
+cjn
 cjn
 cjn
 aHO

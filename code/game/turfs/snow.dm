@@ -140,14 +140,14 @@
 	switch(heat_level)
 		if(1 to 19)
 			bleed_layer--
-			update_icon(1, 0)
+			update_icon(TRUE, FALSE)
 
 		if(20 to 39)
 			bleed_layer = max(bleed_layer - 2, 0)
-			update_icon(1, 0)
+			update_icon(TRUE, FALSE)
 		if(40 to INFINITY)
 			bleed_layer = 0
-			update_icon(1, 0)
+			update_icon(TRUE, FALSE)
 
 
 //SNOW LAYERS-----------------------------------//

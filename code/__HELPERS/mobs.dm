@@ -1,11 +1,14 @@
 #define isdeaf(A) (ismob(A) && ((A?:sdisabilities & DISABILITY_DEAF) || A?:ear_deaf))
 #define xeno_hivenumber(A) (isxeno(A) ? A?:hivenumber : FALSE)
 
-/proc/random_ethnicity()
-	return pick(GLOB.ethnicities_list)
+/proc/random_skin_color()
+	return pick(GLOB.skin_color_list)
 
 /proc/random_body_type()
-	return pick(GLOB.body_types_list)
+	return pick(GLOB.body_type_list)
+
+/proc/random_body_size()
+	return pick(GLOB.body_size_list)
 
 /proc/random_hair_style(gender, species = "Human")
 	var/h_style = "Crewcut"

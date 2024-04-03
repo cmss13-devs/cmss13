@@ -2,7 +2,8 @@
 	group = SPECIES_SYNTHETIC
 	name = SYNTH_GEN_THREE
 	name_plural = "synthetics"
-	uses_ethnicity = TRUE //Uses ethnic presets
+	uses_skin_color = TRUE //Uses skin color presets
+	special_body_types = TRUE
 
 	unarmed_type = /datum/unarmed_attack/punch/synthetic
 	pain_type = /datum/pain/synthetic
@@ -61,7 +62,8 @@
 
 /datum/species/synthetic/gen_one
 	name = SYNTH_GEN_ONE
-	uses_ethnicity = FALSE
+	uses_skin_color = FALSE
+	special_body_types = FALSE
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES)
 
 	hair_color = "#000000"
@@ -70,12 +72,14 @@
 
 /datum/species/synthetic/gen_two
 	name = SYNTH_GEN_TWO
-	uses_ethnicity = FALSE //2nd gen uses generic human look
+	uses_skin_color = FALSE //2nd gen uses generic human look
+	special_body_types = FALSE
 
 /datum/species/synthetic/colonial
 	name = SYNTH_COLONY
 	name_plural = "Colonial Synthetics"
-	uses_ethnicity = TRUE
+	uses_skin_color = TRUE
+	special_body_types = TRUE
 	burn_mod = 0.8
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG)
 
@@ -92,11 +96,13 @@
 
 /datum/species/synthetic/colonial/colonial_gen_two
 	name = SYNTH_COLONY_GEN_TWO
-	uses_ethnicity = FALSE //2nd gen uses generic human look
+	uses_skin_color = FALSE //2nd gen uses generic human look
+	special_body_types = FALSE
 
 /datum/species/synthetic/colonial/colonial_gen_one
 	name = SYNTH_COLONY_GEN_ONE
-	uses_ethnicity = FALSE
+	uses_skin_color = FALSE
+	special_body_types = FALSE
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES)
 	//sets colonial_gen_one synth's hair to black
 	hair_color = "#000000"
@@ -108,7 +114,8 @@
 /datum/species/synthetic/colonial/combat
 	name = SYNTH_COMBAT
 	name_plural = "Combat Synthetics"
-	uses_ethnicity = FALSE
+	uses_skin_color = FALSE
+	special_body_types = FALSE
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES)
 
 	burn_mod = 0.6 //made for combat
@@ -129,7 +136,7 @@
 /datum/species/synthetic/infiltrator
 	name = SYNTH_INFILTRATOR
 	name_plural = "Infiltrator Synthetics"
-	uses_ethnicity = TRUE
+	uses_skin_color = TRUE
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INFILTRATOR_SYNTH)
 
 	bloodsplatter_type = /obj/effect/temp_visual/dir_setting/bloodsplatter/human

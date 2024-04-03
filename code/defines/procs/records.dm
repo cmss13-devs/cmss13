@@ -7,7 +7,7 @@
 	general_record.fields["real_rank"] = "Unassigned"
 	general_record.fields["sex"] = "Male"
 	general_record.fields["age"] = "Unknown"
-	general_record.fields["ethnicity"] = "Unknown"
+	general_record.fields["skin_color"] = "Unknown"
 	general_record.fields["p_stat"] = "Active"
 	general_record.fields["m_stat"] = "Stable"
 	general_record.fields["species"] = "Human"

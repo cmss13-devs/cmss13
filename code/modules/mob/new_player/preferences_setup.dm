@@ -6,8 +6,9 @@
 		else
 			gender = FEMALE
 
-	ethnicity = random_ethnicity()
+	skin_color = random_skin_color()
 	body_type = random_body_type()
+	body_size = random_body_size()
 
 	h_style = random_hair_style(gender, species)
 	f_style = random_facial_hair_style(gender, species)

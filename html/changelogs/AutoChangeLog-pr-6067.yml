@@ -1,0 +1,4 @@
+author: "QuickLode"
+delete-after: True
+changes:
+  - qol: "Moves CL's Office and SEA's Office phone lines to \"Offices\" category."

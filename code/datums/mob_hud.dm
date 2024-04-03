@@ -152,7 +152,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 
 //medical hud used by ghosts
 /datum/mob_hud/medical/observer
-	hud_icons = list(HEALTH_HUD, STATUS_HUD_OOC, STATUS_HUD_XENO_CULTIST, STATUS_HUD_BRAINWORM)
+	hud_icons = list(HEALTH_HUD, STATUS_HUD_OOC, STATUS_HUD_XENO_CULTIST, HUD_BRAINWORM)
 
 
 //infection status that appears on humans, viewed by xenos only and observers.
@@ -175,7 +175,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	hud_icons = list(HUNTER_HUD)
 
 /datum/mob_hud/brainworm
-	hud_icons = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, HEALTH_HUD, STATUS_HUD_OOC, STATUS_HUD_XENO_CULTIST, STATUS_HUD_BRAINWORM)
+	hud_icons = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, HEALTH_HUD, STATUS_HUD_OOC, STATUS_HUD_XENO_CULTIST, HUD_BRAINWORM)
 //Security
 
 /datum/mob_hud/security
@@ -188,7 +188,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 
 //Factions
 /datum/mob_hud/faction
-	hud_icons = list(FACTION_HUD, ORDER_HUD)
+	hud_icons = list(FACTION_HUD, ORDER_HUD, HOLOCARD_HUD)
 	var/faction_to_check = FACTION_MARINE
 
 /datum/mob_hud/faction/add_to_single_hud(mob/user, mob/target)
@@ -212,7 +212,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	faction_to_check = FACTION_PMC
 
 /datum/mob_hud/faction/observer
-	hud_icons = list(FACTION_HUD, ORDER_HUD, HUNTER_CLAN)
+	hud_icons = list(FACTION_HUD, ORDER_HUD, HUNTER_CLAN, HOLOCARD_HUD)
 
 ///////// MOB PROCS //////////////////////////////:
 
@@ -291,7 +291,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 		CRASH("hud_list lacks HEALTH_HUD_XENO despite not being deleted in med_hud_set_health()")
 
 	var/image/holder = hud_list[HEALTH_HUD_XENO]
-	var/image/holder2 = hud_list[STATUS_HUD_BRAINWORM]
+	var/image/holder2 = hud_list[HUD_BRAINWORM]
 
 	var/health_hud_type = "xenohealth"
 	if(stat == DEAD)
@@ -382,7 +382,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	holder2.overlays.Cut()
 	var/image/holder3 = hud_list[STATUS_HUD_XENO_INFECTION]
 	var/image/holder4 = hud_list[STATUS_HUD_XENO_CULTIST]
-	var/image/holder5 = hud_list[STATUS_HUD_BRAINWORM]
+	var/image/holder5 = hud_list[HUD_BRAINWORM]
 
 	holder2.color = null
 	holder3.color = null
@@ -787,7 +787,13 @@ GLOBAL_DATUM(hud_icon_hudfocus, /image)
 		holder.overlays += GLOB.hud_icon_hudfocus
 	hud_list[ORDER_HUD] = holder
 
+/mob/proc/hud_set_holocard()
+	return
 
+// HOLOCARD HUD
+/mob/living/carbon/human/hud_set_holocard()
+	var/image/holder = hud_list[HOLOCARD_HUD]
+	holder.icon_state = holo_card_color ? "holo_card_[holo_card_color]" : "hudblank"
 
 // Xeno "hostile" HUD
 /mob/living/carbon/human/proc/update_xeno_hostile_hud()

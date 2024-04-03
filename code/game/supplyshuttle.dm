@@ -1367,7 +1367,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	ordered_vehicle = /obj/effect/vehicle_spawner/apc/unarmed/broken
 
 /datum/vehicle_order/arc
-	name = "M540 Armored Recon Carrier"
+	name = "M540-B Armored Recon Carrier"
 	ordered_vehicle = /obj/effect/vehicle_spawner/arc
 
 /datum/vehicle_order/arc/has_vehicle_lock()

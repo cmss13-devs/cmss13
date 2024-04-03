@@ -3287,6 +3287,11 @@
 	unacidable = 1;
 	unslashable = 1
 	},
+/obj/item/desk_bell{
+	pixel_x = -6;
+	pixel_y = 10;
+	anchored = 1
+	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "asH" = (
@@ -3923,10 +3928,10 @@
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "avM" = (
-/obj/structure/machinery/computer/cameras/almayer/ares{
+/obj/structure/machinery/computer/cameras/almayer{
 	dir = 8;
 	pixel_x = 17;
-	pixel_y = 6
+	pixel_y = 8
 	},
 /obj/structure/surface/table/reinforced/almayer_B{
 	climbable = 0;
@@ -3938,7 +3943,14 @@
 	pixel_y = 6
 	},
 /obj/item/tool/pen,
-/turf/open/floor/almayer/aicore/no_build,
+/obj/structure/machinery/computer/cameras/almayer/ares{
+	dir = 8;
+	pixel_x = 17;
+	pixel_y = -6
+	},
+/turf/open/floor/almayer/no_build{
+	icon_state = "ai_floors"
+	},
 /area/almayer/command/airoom)
 "avN" = (
 /obj/structure/machinery/telecomms/processor/preset_two,
@@ -4619,7 +4631,13 @@
 /obj/item/storage/belt/medical/full,
 /obj/structure/machinery/computer/working_joe{
 	dir = 8;
-	pixel_x = 17
+	pixel_x = 17;
+	pixel_y = 8
+	},
+/obj/structure/machinery/computer/cameras/almayer/ares{
+	dir = 8;
+	pixel_x = 17;
+	pixel_y = -6
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -5966,12 +5984,12 @@
 /area/almayer/living/grunt_rnr)
 "aDX" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/cameras/containment{
-	dir = 4
-	},
 /obj/structure/sign/safety/terminal{
 	pixel_x = 8;
 	pixel_y = 32
+	},
+/obj/structure/machinery/computer/cameras/almayer/ares{
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -9202,7 +9220,8 @@
 "aWb" = (
 /obj/structure/machinery/computer/working_joe{
 	dir = 4;
-	pixel_x = -17
+	pixel_x = -17;
+	pixel_y = 8
 	},
 /obj/structure/machinery/door_control/brbutton{
 	id = "engie_store";
@@ -9210,6 +9229,11 @@
 	pixel_x = -2;
 	pixel_y = 26;
 	req_one_access_txt = "6"
+	},
+/obj/structure/machinery/computer/cameras/almayer/ares{
+	dir = 4;
+	pixel_x = -17;
+	pixel_y = -6
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -16102,6 +16126,11 @@
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/surface/table/reinforced/almayer_blend/north,
+/obj/item/desk_bell{
+	pixel_x = -6;
+	pixel_y = -8;
+	anchored = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -16392,6 +16421,11 @@
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/surface/table/reinforced/almayer_blend,
+/obj/item/desk_bell{
+	pixel_x = -6;
+	pixel_y = 10;
+	anchored = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},
@@ -33286,6 +33320,11 @@
 	pixel_x = -1;
 	pixel_y = 3
 	},
+/obj/item/reagent_container/spray/cleaner{
+	layer = 3.04;
+	pixel_x = 5;
+	pixel_y = 22
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "hlH" = (
@@ -37738,12 +37777,13 @@
 	layer = 3.2;
 	pixel_y = 4
 	},
-/obj/structure/machinery/computer/secure_data{
-	dir = 4;
-	pixel_y = 23
-	},
 /obj/structure/machinery/light{
 	dir = 8
+	},
+/obj/structure/machinery/computer/secure_data{
+	dir = 4;
+	pixel_y = 23;
+	layer = 2.99
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -38453,15 +38493,6 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/item/clothing/mask/cigarette/pipe{
-	layer = 2.8;
-	pixel_y = -7
-	},
-/obj/item/reagent_container/spray/cleaner{
-	layer = 3.04;
-	pixel_x = -4;
-	pixel_y = 7
-	},
 /obj/structure/machinery/door_control/brbutton{
 	id = "Brig Lockdown Shutters";
 	name = "Brig Lockdown";
@@ -38479,6 +38510,9 @@
 	name = "ARES Emergency Lockdown Override";
 	pixel_x = 8;
 	pixel_y = 26
+	},
+/obj/structure/machinery/computer/cameras/almayer/ares{
+	dir = 4
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
@@ -38970,8 +39004,11 @@
 /obj/structure/machinery/door/window/eastleft{
 	req_access_txt = "8"
 	},
-/obj/item/book/manual/medical_diagnostics_manual,
-/obj/item/device/megaphone,
+/obj/item/desk_bell{
+	pixel_x = -6;
+	pixel_y = 10;
+	anchored = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green"
 	},
@@ -45992,6 +46029,14 @@
 "lFp" = (
 /turf/closed/wall/almayer,
 /area/almayer/engineering/lower/workshop/hangar)
+"lFq" = (
+/obj/structure/pipes/vents/pump/no_boom{
+	dir = 1
+	},
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "ai_plates"
+	},
+/area/almayer/command/airoom)
 "lFr" = (
 /obj/structure/machinery/firealarm{
 	dir = 8;
@@ -50466,14 +50511,13 @@
 /area/almayer/hallways/upper/starboard)
 "nkX" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/cameras/almayer_network{
-	dir = 4;
-	layer = 2.8;
-	pixel_y = 5
-	},
 /obj/structure/sign/safety/terminal{
 	pixel_x = 8;
 	pixel_y = 32
+	},
+/obj/structure/machinery/computer/cameras/almayer/ares{
+	dir = 4;
+	pixel_y = 5
 	},
 /turf/open/floor/almayer{
 	dir = 9;
@@ -51378,6 +51422,10 @@
 /obj/item/storage/box/drinkingglasses{
 	pixel_x = -1;
 	pixel_y = 2
+	},
+/obj/item/clothing/mask/cigarette/pipe{
+	layer = 2.8;
+	pixel_x = 14
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
@@ -56344,14 +56392,14 @@
 	},
 /area/almayer/living/briefing)
 "pmV" = (
-/obj/structure/prop/server_equipment/yutani_server/broken{
-	density = 0;
-	desc = "A powerful server tower housing various AI functions.";
-	name = "server tower";
-	pixel_y = 16
-	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom,
-/turf/open/floor/almayer/aicore/no_build,
+/obj/structure/machinery/computer/tech_control{
+	pixel_y = 16;
+	density = 0
+	},
+/turf/open/floor/almayer/no_build{
+	icon_state = "ai_floors"
+	},
 /area/almayer/command/airoom)
 "pnh" = (
 /obj/structure/ladder{
@@ -68610,6 +68658,8 @@
 	dir = 8;
 	pixel_x = 17
 	},
+/obj/item/device/megaphone,
+/obj/item/book/manual/medical_diagnostics_manual,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -77188,6 +77238,11 @@
 /obj/structure/machinery/status_display{
 	pixel_x = -32
 	},
+/obj/item/desk_bell{
+	anchored = 1;
+	pixel_x = -8;
+	pixel_y = 8
+	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
 "wpu" = (
@@ -77865,6 +77920,9 @@
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 1;
 	name = "ship-grade camera"
+	},
+/obj/item/desk_bell{
+	anchored = 1
 	},
 /turf/open/floor/almayer{
 	dir = 6;
@@ -139783,7 +139841,7 @@ cqm
 gTH
 qit
 ebN
-cxc
+qQS
 gwn
 pfT
 jYR
@@ -140594,8 +140652,8 @@ ebN
 ebN
 roH
 ebN
-ebN
-ebN
+daz
+daz
 daz
 wnh
 wnh
@@ -141406,8 +141464,8 @@ ebN
 ebN
 gXs
 ebN
-ebN
-ebN
+daz
+daz
 daz
 wnh
 wnh
@@ -141608,9 +141666,9 @@ ebN
 ebN
 gbg
 uVv
-yit
+lFq
 ebN
-cxc
+qQS
 kBy
 kBy
 gfu

@@ -811,10 +811,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set category = "Ghost.Settings"
 
 	if(client)
-		if(client.view != GLOB.world_view_size)
-			client.change_view(GLOB.world_view_size)
-		else
+		// Check the current zoom level and toggle to the next level cyclically
+		if (client.view == GLOB.world_view_size)
 			client.change_view(14)
+		else if (client.view == 14)
+			client.change_view(28)
+		else
+			client.change_view(GLOB.world_view_size)
 
 
 /mob/dead/observer/verb/toggle_darkness()

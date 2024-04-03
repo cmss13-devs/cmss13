@@ -168,7 +168,7 @@
 		to_chat(src, "Not even a [species.name] can speak to the dead.")
 		return
 
-	log_say("[key_name(src)] communed to [key_name(M)]: [text]")
+	log_say("[key_name(src)] communed to [key_name(M)]: [text] (AREA: [get_area_name(loc)])")
 
 	to_chat(M, SPAN_NOTICE(" Like lead slabs crashing into the ocean, alien thoughts drop into your mind: [text]"))
 	if(istype(M,/mob/living/carbon/human))
@@ -185,7 +185,7 @@
 
 	var/whisper = strip_html(input("Message:", "Psychic Whisper") as text|null)
 	if(whisper)
-		log_say("PsychicWhisper: [key_name(src)]->[target_mob.key] : [whisper]")
+		log_say("PsychicWhisper: [key_name(src)]->[target_mob.key] : [whisper] (AREA: [get_area_name(loc)])")
 		to_chat(target_mob, SPAN_XENOWARNING(" You hear a strange, alien voice in your head... <i>[whisper]</i>"))
 		to_chat(src, SPAN_XENOWARNING(" You said: \"[whisper]\" to [target_mob]"))
 		for (var/mob/dead/observer/ghost as anything in GLOB.observer_list)

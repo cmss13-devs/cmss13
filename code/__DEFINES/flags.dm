@@ -33,3 +33,9 @@
 #define EMOTE_IMPORTANT (1<<2)
 /// Does the emote not have a message?
 #define EMOTE_NO_MESSAGE (1<<3)
+
+// Bitflags for Working Joe emotes
+/// Working Joe emote
+#define WORKING_JOE_EMOTE (1<<0)
+/// Hazard Joe emote
+#define HAZARD_JOE_EMOTE (1<<1)

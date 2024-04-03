@@ -311,6 +311,29 @@
 	<BR>"}
 	show_browser(user, dat, name, "mob[name]")
 
+/**
+ * Handles any storage containers that the human is looking inside when auto-observed.
+ */
+/mob/living/carbon/human/auto_observed(mob/dead/observer/observer)
+	. = ..()
+
+	// If `src` doesn't have an inventory open.
+	if(!s_active)
+		return
+
+	// Add the storage interface to `observer`'s screen.
+	observer.client.add_to_screen(s_active.closer)
+	observer.client.add_to_screen(s_active.contents)
+
+	// If the storage has a set number of item slots.
+	if(s_active.storage_slots)
+		observer.client.add_to_screen(s_active.boxes)
+	// If the storage instead has a maximum combined item 'weight'.
+	else
+		observer.client.add_to_screen(s_active.storage_start)
+		observer.client.add_to_screen(s_active.storage_continue)
+		observer.client.add_to_screen(s_active.storage_end)
+
 // called when something steps onto a human
 // this handles mulebots and vehicles
 /mob/living/carbon/human/Crossed(atom/movable/AM)
@@ -811,25 +834,7 @@
 										R.fields[text("com_[counter]")] = text("Made by [U.get_authentification_name()] ([U.get_assignment()]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [GLOB.game_year]<BR>[t1]")
 
 	if(href_list["medholocard"])
-		if(!skillcheck(usr, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-			to_chat(usr, SPAN_WARNING("You're not trained to use this."))
-			return
-		if(!has_species(src, "Human"))
-			to_chat(usr, SPAN_WARNING("Triage holocards only works on humans."))
-			return
-		var/newcolor = tgui_input_list(usr, "Choose a triage holo card to add to the patient:", "Triage holo card", list("black", "red", "orange", "none"))
-		if(!newcolor) return
-		if(get_dist(usr, src) > 7)
-			to_chat(usr, SPAN_WARNING("[src] is too far away."))
-			return
-		if(newcolor == "none")
-			if(!holo_card_color) return
-			holo_card_color = null
-			to_chat(usr, SPAN_NOTICE("You remove the holo card on [src]."))
-		else if(newcolor != holo_card_color)
-			holo_card_color = newcolor
-			to_chat(usr, SPAN_NOTICE("You add a [newcolor] holo card on [src]."))
-		update_targeted()
+		change_holo_card(usr)
 
 	if(href_list["lookitem"])
 		var/obj/item/I = locate(href_list["lookitem"])
@@ -880,6 +885,39 @@
 					break
 	..()
 	return
+
+/mob/living/carbon/human/proc/change_holo_card(mob/user)
+	if(isobserver(user))
+		return
+	if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+		// Removing your own holocard when you are not trained
+		if(user == src && holo_card_color)
+			if(tgui_alert(user, "Are you sure you want to reset your own holocard?", "Resetting Holocard", list("Yes", "No")) != "Yes")
+				return
+			holo_card_color = null
+			to_chat(user, SPAN_NOTICE("You reset your holocard."))
+			hud_set_holocard()
+			return
+		to_chat(user, SPAN_WARNING("You're not trained to use this."))
+		return
+	if(!has_species(src, "Human"))
+		to_chat(user, SPAN_WARNING("Triage holocards only works on humans."))
+		return
+	var/newcolor = tgui_input_list(user, "Choose a triage holo card to add to the patient:", "Triage holo card", list("black", "red", "orange", "purple", "none"))
+	if(!newcolor)
+		return
+	if(get_dist(user, src) > 7)
+		to_chat(user, SPAN_WARNING("[src] is too far away."))
+		return
+	if(newcolor == "none")
+		if(!holo_card_color)
+			return
+		holo_card_color = null
+		to_chat(user, SPAN_NOTICE("You remove the holo card on [src]."))
+	else if(newcolor != holo_card_color)
+		holo_card_color = newcolor
+		to_chat(user, SPAN_NOTICE("You add a [newcolor] holo card on [src]."))
+	hud_set_holocard()
 
 /mob/living/carbon/human/tgui_interact(mob/user, datum/tgui/ui) // I'M SORRY, SO FUCKING SORRY
 	. = ..()

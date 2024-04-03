@@ -1,3 +1,7 @@
+// -------------------------------------------------------------------- //
+// Please ensure when updating this menu, changes are reflected in AresAdmin.js
+// -------------------------------------------------------------------- //
+
 import { useBackend } from '../backend';
 import { Flex, Box, Section, Button, Stack } from '../components';
 import { Window } from '../layouts';
@@ -18,6 +22,7 @@ const PAGES = {
   'security': () => Security,
   'requisitions': () => Requisitions,
   'emergency': () => Emergency,
+  'tech_log': () => TechLogs,
 };
 
 export const AresInterface = (props) => {
@@ -33,7 +38,7 @@ export const AresInterface = (props) => {
   }
 
   return (
-    <Window theme={themecolor} width={780} height={725}>
+    <Window theme={themecolor} width={800} height={725}>
       <Window.Content scrollable>
         <PageComponent />
       </Window.Content>
@@ -129,7 +134,7 @@ const MainMenu = (props) => {
 
         <Stack>
           <Stack.Item grow>
-            <h3>Access Level 0</h3>
+            <h3>Access Level 1</h3>
           </Stack.Item>
           <Stack.Item>
             <Button
@@ -156,10 +161,10 @@ const MainMenu = (props) => {
             />
           </Stack.Item>
         </Stack>
-        {access_level >= 1 && (
+        {access_level >= 2 && (
           <Stack>
             <Stack.Item grow>
-              <h3>Access Level 1</h3>
+              <h3>Access Level 2</h3>
             </Stack.Item>
             <Stack.Item>
               <Button
@@ -199,10 +204,10 @@ const MainMenu = (props) => {
             </Stack.Item>
           </Stack>
         )}
-        {access_level >= 2 && (
+        {access_level >= 3 && (
           <Stack>
             <Stack.Item grow>
-              <h3>Access Level 2</h3>
+              <h3>Access Level 3</h3>
             </Stack.Item>
             <Stack.Item>
               <Button
@@ -230,10 +235,10 @@ const MainMenu = (props) => {
             </Stack.Item>
           </Stack>
         )}
-        {access_level >= 4 && (
+        {access_level >= 5 && (
           <Stack>
             <Stack.Item grow>
-              <h3>Access Level 4</h3>
+              <h3>Access Level 5</h3>
             </Stack.Item>
             <Stack.Item>
               <Button.Confirm
@@ -252,7 +257,7 @@ const MainMenu = (props) => {
               <Button
                 content="ASRS Audit Log"
                 tooltip="Review the ASRS Audit Log."
-                icon="cart-shopping"
+                icon="magnifying-glass-dollar"
                 ml="auto"
                 px="2rem"
                 width="25vw"
@@ -260,12 +265,24 @@ const MainMenu = (props) => {
                 onClick={() => act('page_requisitions')}
               />
             </Stack.Item>
+            <Stack.Item>
+              <Button
+                content="Tech Control Log"
+                tooltip="Review the Intel Tech Log."
+                icon="magnifying-glass-chart"
+                ml="auto"
+                px="2rem"
+                width="25vw"
+                bold
+                onClick={() => act('page_tech')}
+              />
+            </Stack.Item>
           </Stack>
         )}
-        {access_level >= 5 && (
+        {access_level >= 6 && (
           <Stack>
             <Stack.Item grow>
-              <h3>Access Level 5</h3>
+              <h3>Access Level 6</h3>
             </Stack.Item>
             <Stack.Item>
               <Button
@@ -281,10 +298,10 @@ const MainMenu = (props) => {
             </Stack.Item>
           </Stack>
         )}
-        {access_level >= 8 && (
+        {access_level >= 9 && (
           <Stack>
             <Stack.Item grow>
-              <h3>Access Level 8</h3>
+              <h3>Access Level 9</h3>
             </Stack.Item>
             <Stack.Item>
               <Button
@@ -312,10 +329,10 @@ const MainMenu = (props) => {
             </Stack.Item>
           </Stack>
         )}
-        {access_level >= 10 && (
+        {access_level >= 11 && (
           <Stack>
             <Stack.Item grow>
-              <h3>Access Level 10</h3>
+              <h3>Maintenance Access</h3>
             </Stack.Item>
             {sudo === 0 && (
               <Stack.Item>
@@ -436,7 +453,7 @@ const AnnouncementLogs = (props) => {
                 <Button.Confirm
                   icon="trash"
                   tooltip="Delete Record"
-                  disabled={access_level < 3}
+                  disabled={access_level < 4}
                   onClick={() => act('delete_record', { record: record.ref })}
                 />
               </Flex.Item>
@@ -532,7 +549,7 @@ const BioscanLogs = (props) => {
                 <Button.Confirm
                   icon="trash"
                   tooltip="Delete Record"
-                  disabled={access_level < 4}
+                  disabled={access_level < 5}
                   onClick={() => act('delete_record', { record: record.ref })}
                 />
               </Flex.Item>
@@ -632,7 +649,7 @@ const BombardmentLogs = (props) => {
                 <Button.Confirm
                   icon="trash"
                   tooltip="Delete Record"
-                  disabled={access_level < 4}
+                  disabled={access_level < 5}
                   onClick={() => act('delete_record', { record: record.ref })}
                 />
               </Flex.Item>
@@ -1363,7 +1380,7 @@ const Security = (props) => {
                 <Button.Confirm
                   icon="trash"
                   tooltip="Delete Record"
-                  disabled={access_level < 7}
+                  disabled={access_level < 8}
                   onClick={() => act('delete_record', { record: record.ref })}
                 />
               </Flex.Item>
@@ -1538,6 +1555,118 @@ const Emergency = (props) => {
           disabled={!canNuke}
         />
       </Flex>
+    </>
+  );
+};
+
+const TechLogs = (props, context) => {
+  const { data, act } = useBackend(context);
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    records_tech,
+    access_level,
+  } = data;
+
+  return (
+    <>
+      <Section>
+        <Flex align="center">
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={last_page === current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+            />
+          </Box>
+
+          <h3>
+            {logged_in}, {access_text}
+          </h3>
+
+          <Button.Confirm
+            content="Logout"
+            icon="circle-user"
+            ml="auto"
+            px="2rem"
+            bold
+            onClick={() => act('logout')}
+          />
+        </Flex>
+      </Section>
+
+      <Section>
+        <h1 align="center">Tech Control Logs</h1>
+        {!!records_tech.length && (
+          <Flex
+            className="candystripe"
+            p=".75rem"
+            align="center"
+            fontSize="1.25rem">
+            <Flex.Item bold width="6rem" shrink="0" mr="1rem">
+              Time
+            </Flex.Item>
+            <Flex.Item width="15rem" grow bold>
+              Authenticator
+            </Flex.Item>
+            <Flex.Item width="40rem" textAlign="center">
+              Details
+            </Flex.Item>
+          </Flex>
+        )}
+        {records_tech.map((record, i) => {
+          return (
+            <Flex key={i} className="candystripe" p=".75rem" align="center">
+              <Flex.Item bold width="6rem" shrink="0" mr="1rem">
+                {record.time}
+              </Flex.Item>
+              <Flex.Item width="15rem" grow italic>
+                {record.user}
+              </Flex.Item>
+              {!!record.tier_changer && (
+                <Flex.Item
+                  width="40rem"
+                  ml="1rem"
+                  shrink="0"
+                  textAlign="center"
+                  color="red">
+                  {record.details}
+                </Flex.Item>
+              )}
+              {!record.tier_changer && (
+                <Flex.Item
+                  width="40rem"
+                  ml="1rem"
+                  shrink="0"
+                  textAlign="center">
+                  {record.details}
+                </Flex.Item>
+              )}
+
+              <Flex.Item ml="1rem">
+                <Button.Confirm
+                  icon="trash"
+                  tooltip="Delete Record"
+                  disabled={access_level < 4 || !!record.tier_changer}
+                  onClick={() => act('delete_record', { record: record.ref })}
+                />
+              </Flex.Item>
+            </Flex>
+          );
+        })}
+      </Section>
     </>
   );
 };

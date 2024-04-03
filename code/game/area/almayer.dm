@@ -2,6 +2,7 @@
 // Fore = West  | Aft = East //
 // Port = South | Starboard = North //
 // Bow = Western|Stern = Eastern //(those are the front and back small sections)
+// Naming convention is to start by port or starboard then put eitheir (bow,fore,midship,aft,stern)
 /area/almayer
 	icon = 'icons/turf/area_almayer.dmi'
 	// ambience = list('sound/ambience/shipambience.ogg')
@@ -28,26 +29,6 @@
 
 	if(hijack_evacuation_area)
 		SShijack.progress_areas[src] = power_equip
-
-/area/shuttle/almayer/elevator_maintenance/upperdeck
-	name = "\improper Upper Deck Maintenance Elevator"
-	icon_state = "shuttle"
-	fake_zlevel = 1
-
-/area/shuttle/almayer/elevator_maintenance/lowerdeck
-	name = "\improper Lower Deck Maintenance Elevator"
-	icon_state = "shuttle"
-	fake_zlevel = 2
-
-/area/shuttle/almayer/elevator_hangar/lowerdeck
-	name = "\improper Hangar Elevator"
-	icon_state = "shuttle"
-	fake_zlevel = 2 // lowerdeck
-
-/area/shuttle/almayer/elevator_hangar/underdeck
-	name = "\improper Hangar Elevator"
-	icon_state = "shuttle"
-	fake_zlevel = 3
 
 /obj/structure/machinery/computer/shuttle_control/almayer/hangar
 	name = "Elevator Console"
@@ -260,8 +241,11 @@
 /area/almayer/shipboard/brig/armory
 	name = "\improper Brig Armory"
 
-/area/almayer/shipboard/brig/main_office
-	name = "\improper Brig Main Office"
+/area/almayer/shipboard/brig/mp_bunks
+	name = "\improper Brig MP Bunks"
+
+/area/almayer/shipboard/brig/starboard_hallway
+	name = "\improper Brig Starboard Hallway"
 
 /area/almayer/shipboard/brig/perma
 	name = "\improper Brig Perma Cells"
@@ -269,8 +253,11 @@
 /area/almayer/shipboard/brig/cryo
 	name = "\improper Brig Cryo Pods"
 
-/area/almayer/shipboard/brig/surgery
-	name = "\improper Brig Surgery"
+/area/almayer/shipboard/brig/medical
+	name = "\improper Brig Medical"
+
+/area/almayer/shipboard/brig/interrogation
+	name = "\improper Brig Interrogation Room"
 
 /area/almayer/shipboard/brig/general_equipment
 	name = "\improper Brig General Equipment"
@@ -281,11 +268,15 @@
 /area/almayer/shipboard/brig/execution
 	name = "\improper Brig Execution Room"
 
+/area/almayer/shipboard/brig/execution_storage
+	name = "\improper Brig Execution Storage"
+
 /area/almayer/shipboard/brig/cic_hallway
 	name = "\improper Brig CiC Hallway"
 
 /area/almayer/shipboard/brig/dress
 	name = "\improper CIC Dress Uniform Room"
+
 /area/almayer/shipboard/brig/processing
 	name = "\improper Brig Processing and Holding"
 
@@ -295,6 +286,10 @@
 
 /area/almayer/shipboard/brig/chief_mp_office
 	name = "\improper Brig Chief MP Office"
+	icon_state = "chiefmpoffice"
+
+/area/almayer/shipboard/brig/warden_office
+	name = "\improper Brig Warden Office"
 	icon_state = "chiefmpoffice"
 
 /area/almayer/shipboard/sea_office
@@ -312,10 +307,6 @@
 	icon_state = "firingrange"
 	fake_zlevel = 2 // lowerdeck
 
-/area/almayer/shipboard/sensors
-	name = "\improper Sensor Room"
-	icon_state = "sensor"
-
 /area/almayer/hallways/hangar
 	name = "\improper Hangar"
 	icon_state = "hangar"
@@ -323,78 +314,65 @@
 	soundscape_playlist = SCAPE_PL_HANGAR
 	soundscape_interval = 50
 
-/area/almayer/hallways/vehiclehangar
+/area/almayer/hallways/lower
+	fake_zlevel = 2 // lowerdeck
+
+/area/almayer/hallways/lower/vehiclehangar
 	name = "\improper Lower Deck Vehicle Storage"
 	icon_state = "exoarmor"
-	fake_zlevel = 2
 
-/area/almayer/living
-	minimap_color = MINIMAP_AREA_COLONY
-
-/area/almayer/living/tankerbunks
-	name = "\improper Lower Deck Vehicle Crew Bunks"
-	icon_state = "livingspace"
-	fake_zlevel = 2
-
-/area/almayer/living/auxiliary_officer_office
-	name = "\improper Lower Deck Auxiliary Support Officer office"
-	icon_state = "livingspace"
-	fake_zlevel = 2
-
-/area/almayer/squads/tankdeliveries
-	name = "\improper Lower Deck Vehicle ASRS"
-	icon_state = "req"
-	fake_zlevel = 2
-
-/area/almayer/hallways/exoarmor
-	name = "\improper Lower Deck Vehicle Armor Storage"
-	icon_state = "exoarmor"
-	fake_zlevel = 2 // lowerdeck
-
-/area/almayer/hallways/repair_bay
+/area/almayer/hallways/lower/repair_bay
 	name = "\improper Lower Deck Deployment Workshop"
 	icon_state = "dropshiprepair"
-	fake_zlevel = 2 // lowerdeck
 
-/area/almayer/hallways/mission_planner
-	name = "\improper Lower Deck Dropship Central Computer Room"
-	icon_state = "missionplanner"
-	fake_zlevel = 2 // lowerdeck
-
-/area/almayer/hallways/starboard_umbilical
+/area/almayer/hallways/lower/starboard_umbilical
 	name = "\improper Lower Deck Starboard Umbilical Hallway"
 	icon_state = "starboardumbilical"
-	fake_zlevel = 2 // lowerdeck
 
-/area/almayer/hallways/port_umbilical
+/area/almayer/hallways/lower/port_umbilical
 	name = "\improper Lower Deck Port Umbilical Hallway"
 	icon_state = "portumbilical"
-	fake_zlevel = 2 // lowerdeck
 
-/area/almayer/hallways/aft_hallway
-	name = "\improper Upper Deck Aft Hallway"
-	icon_state = "aft"
-	fake_zlevel = 1 // upperdeck
-
-/area/almayer/hallways/stern_hallway
-	name = "\improper Upper Deck Stern Hallway"
-	icon_state = "stern"
-	fake_zlevel = 1 // upperdeck
-
-/area/almayer/hallways/port_hallway
-	name = "\improper Lower Deck Port Hallway"
+//port
+/area/almayer/hallways/lower/port_fore_hallway
+	name = "\improper Lower Deck Port-Fore Hallway"
 	icon_state = "port"
-	fake_zlevel = 2 // lowerdeck
 
-/area/almayer/hallways/starboard_hallway
-	name = "\improper Lower Deck Starboard Hallway"
+/area/almayer/hallways/lower/port_midship_hallway
+	name = "\improper Lower Deck Port-Midship Hallway"
+	icon_state = "port"
+
+/area/almayer/hallways/lower/port_aft_hallway
+	name = "\improper Lower Deck Port-Aft Hallway"
+	icon_state = "port"
+
+//starboard
+/area/almayer/hallways/lower/starboard_fore_hallway
+	name = "\improper Lower Deck Starboard-Fore Hallway"
 	icon_state = "starboard"
-	fake_zlevel = 2 // lowerdeck
 
-//new hallways areas
+/area/almayer/hallways/lower/starboard_midship_hallway
+	name = "\improper Lower Deck Starboard-Midship Hallway"
+	icon_state = "starboard"
+
+/area/almayer/hallways/lower/starboard_aft_hallway
+	name = "\improper Lower Deck Starboard-Aft Hallway"
+	icon_state = "starboard"
 
 /area/almayer/hallways/upper
 	fake_zlevel = 1 // upperdeck
+
+/area/almayer/hallways/upper/aft_hallway
+	name = "\improper Upper Deck Aft Hallway"
+	icon_state = "aft"
+
+/area/almayer/hallways/upper/fore_hallway
+	name = "\improper Upper Deck Fore Hallway"
+	icon_state = "stern"
+
+/area/almayer/hallways/upper/midship_hallway
+	name = "\improper Upper Deck Midship Hallway"
+	icon_state = "stern"
 
 /area/almayer/hallways/upper/port
 	name = "\improper Upper Deck Port Hallway"
@@ -404,6 +382,7 @@
 	name = "\improper Upper Deck Starboard Hallway"
 	icon_state = "starboard"
 
+//area that are used for transition between decks.
 /area/almayer/stair_clone
 	name = "\improper Lower Deck Stairs"
 	icon_state = "stairs_lowerdeck"
@@ -449,6 +428,18 @@
 
 /area/almayer/maint/upper/u_m_s
 	name = "\improper Upper Deck Starboard-Midship Maintenance"
+
+/area/almayer/maint/upper/u_f_p
+	name = "\improper Upper Deck Port-Fore Maintenance"
+
+/area/almayer/maint/upper/u_f_s
+	name = "\improper Upper Deck Starboard-Fore Maintenance"
+
+/area/almayer/maint/upper/u_a_p
+	name = "\improper Upper Deck Port-Aft Maintenance"
+
+/area/almayer/maint/upper/u_a_s
+	name = "\improper Upper Deck Starboard-Aft Maintenance"
 
 // hull areas
 /area/almayer/maint/hull
@@ -514,7 +505,7 @@
 	name = "\improper Upper Deck Starboard-Stern Hull"
 
 /area/almayer/maint/hull/upper/u_f_s
-	name = "\improper Upper Deck Fore-Starboard Hull"
+	name = "\improper Upper Deck Starboard-Fore Hull"
 
 /area/almayer/maint/hull/upper/u_m_s
 	name = "\improper Upper Deck Starboard-Midship Hull"
@@ -530,6 +521,19 @@
 
 /area/almayer/maint/hull/upper/u_a_p
 	name = "\improper Upper Deck Port-Aft Hull"
+
+/area/almayer/living
+	minimap_color = MINIMAP_AREA_COLONY
+
+/area/almayer/living/tankerbunks
+	name = "\improper Lower Deck Vehicle Crew Bunks"
+	icon_state = "livingspace"
+	fake_zlevel = 2
+
+/area/almayer/living/auxiliary_officer_office
+	name = "\improper Lower Deck Auxiliary Support Officer office"
+	icon_state = "livingspace"
+	fake_zlevel = 2
 
 /area/almayer/living/cryo_cells
 	name = "\improper Lower Deck Cryo Cells"
@@ -704,11 +708,6 @@
 	icon_state = "science"
 	fake_zlevel = 1 // upperdeck
 
-/area/almayer/medical/testlab
-	name = "\improper Medical Research workshop"
-	icon_state = "science"
-	fake_zlevel = 1 // upperdeck
-
 /area/almayer/medical/containment
 	name = "\improper Medical Research containment"
 	icon_state = "science"
@@ -808,26 +807,21 @@
 	hijack_evacuation_type = EVACUATION_TYPE_ADDITIVE
 
 /area/almayer/lifeboat_pumps/north1
-	name = "Starboard Fore Lifeboat Fuel Pump"
+	name = "Starboard-Fore Lifeboat Fuel Pump"
 
 /area/almayer/lifeboat_pumps/north2
-	name = "Starboard Aft Lifeboat Fuel Pump"
+	name = "Starboard-Aft Lifeboat Fuel Pump"
 
 /area/almayer/lifeboat_pumps/south1
-	name = "Port Fore Lifeboat Fuel Pump"
+	name = "Port-Fore Lifeboat Fuel Pump"
 
 /area/almayer/lifeboat_pumps/south2
-	name = "Port Aft Lifeboat Fuel Pump"
+	name = "Port-Aft Lifeboat Fuel Pump"
 
 /area/almayer/command/lifeboat
 	name = "\improper Lifeboat Docking Port"
 	icon_state = "selfdestruct"
 	fake_zlevel = 1 // upperdeck
-
-/area/almayer/ert_port
-	name = "\improper ERT Docking Port"
-	icon_state = "lifeboat"
-	flags_area = AREA_NOTUNNEL
 
 /area/space/almayer/lifeboat_dock
 	name = "\improper Port Lifeboat Docking"

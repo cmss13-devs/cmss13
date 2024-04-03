@@ -125,6 +125,7 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 	GLOB.world_runtime_log = "[GLOB.log_directory]/runtime.log"
 	GLOB.round_stats = "[GLOB.log_directory]/round_stats.log"
 	GLOB.scheduler_stats = "[GLOB.log_directory]/round_scheduler_stats.log"
+	GLOB.mapping_log = "[GLOB.log_directory]/mapping.log"
 	GLOB.strain_logs = "[GLOB.log_directory]/strain_logs.log"
 
 	start_log(GLOB.tgui_log)
@@ -134,6 +135,7 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 	start_log(GLOB.world_runtime_log)
 	start_log(GLOB.round_stats)
 	start_log(GLOB.scheduler_stats)
+	start_log(GLOB.mapping_log)
 	start_log(GLOB.strain_logs)
 
 	if(fexists(GLOB.config_error_log))
@@ -317,9 +319,39 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 /world/proc/on_tickrate_change()
 	SStimer.reset_buckets()
 
+/**
+ * Handles incresing the world's maxx var and intializing the new turfs and assigning them to the global area.
+ * If map_load_z_cutoff is passed in, it will only load turfs up to that z level, inclusive.
+ * This is because maploading will handle the turfs it loads itself.
+ */
+/world/proc/increase_max_x(new_maxx, map_load_z_cutoff = maxz)
+	if(new_maxx <= maxx)
+		return
+//	var/old_max = world.maxx
+	maxx = new_maxx
+	if(!map_load_z_cutoff)
+		return
+//	var/area/global_area = GLOB.areas_by_type[world.area] // We're guaranteed to be touching the global area, so we'll just do this
+//	var/list/to_add = block(
+//		locate(old_max + 1, 1, 1),
+//		locate(maxx, maxy, map_load_z_cutoff))
+//	global_area.contained_turfs += to_add
+
+/world/proc/increase_max_y(new_maxy, map_load_z_cutoff = maxz)
+	if(new_maxy <= maxy)
+		return
+//	var/old_maxy = maxy
+	maxy = new_maxy
+	if(!map_load_z_cutoff)
+		return
+//	var/area/global_area = GLOB.areas_by_type[world.area] // We're guarenteed to be touching the global area, so we'll just do this
+//	var/list/to_add = block(
+//		locate(1, old_maxy + 1, 1),
+//		locate(maxx, maxy, map_load_z_cutoff))
+//	global_area.contained_turfs += to_add
+
 /world/proc/incrementMaxZ()
 	maxz++
-	//SSmobs.MaxZChanged()
 
 /** For initializing and starting byond-tracy when BYOND_TRACY is defined
  * byond-tracy is a useful profiling tool that allows the user to view the CPU usage and execution time of procs as they run.
@@ -342,6 +374,7 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 /world/proc/HandleTestRun()
 	// Wait for the game ticker to initialize
 	Master.sleep_offline_after_initializations = FALSE
+	SSticker.start_immediately = TRUE
 	UNTIL(SSticker.initialized)
 
 	//trigger things to run the whole process

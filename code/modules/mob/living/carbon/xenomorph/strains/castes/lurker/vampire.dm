@@ -21,8 +21,7 @@
 	lurker.health_modifier -= XENO_HEALTH_MOD_MED
 	lurker.speed_modifier += XENO_SPEED_FASTMOD_TIER_1
 	lurker.armor_modifier += XENO_ARMOR_MOD_LARGE
-	lurker.melee_damage_lower = XENO_DAMAGE_TIER_3
-	lurker.melee_damage_upper = XENO_DAMAGE_TIER_3
+	lurker.damage_modifier -= XENO_DAMAGE_MOD_VERY_SMALL
 	lurker.attack_speed_modifier -= 2
 
 	lurker.recalculate_everything()

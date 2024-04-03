@@ -265,7 +265,7 @@
 			continue
 
 	if(groundside_humans > (groundside_xenos * GROUNDSIDE_XENO_MULTIPLIER))
-		SSticker.mode.get_specific_call("Xenomorphs Groundside (Forsaken)", TRUE, FALSE)
+		SSticker.mode.get_specific_call(/datum/emergency_call/forsaken_xenos, TRUE, FALSE) // "Xenomorphs Groundside (Forsaken)"
 
 	TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_GROUND_CHECK, 1 MINUTES)
 
@@ -332,7 +332,7 @@
 			if(HS.living_xeno_queen && !should_block_game_interaction(HS.living_xeno_queen.loc))
 				//Some Queen is alive, we shouldn't end the game yet
 				return
-		if (HS.totalXenos <= 3)
+		if(length(HS.totalXenos) <= 3)
 			round_finished = MODE_INFESTATION_M_MAJOR
 		else
 			round_finished = MODE_INFESTATION_M_MINOR

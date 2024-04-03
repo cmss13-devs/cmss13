@@ -373,7 +373,7 @@ const OffsetDetailed = (
     return <>error</>;
   }
   const ammoConsumption = weaponFm.offsets
-    .map((x) => (x === '-' ? props.equipment.burst : 0))
+    .map((x) => (x === '-' ? 0 : props.equipment.burst))
     .reduce(
       (accumulator, currentValue) => (accumulator ?? 0) + (currentValue ?? 0),
       0

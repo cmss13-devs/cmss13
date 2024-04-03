@@ -24,10 +24,10 @@ const PAGES = [
   },
 ];
 
-export const VoteMenu = (props, context) => {
-  const { data } = useBackend(context);
+export const VoteMenu = (props) => {
+  const { data } = useBackend();
 
-  const [pageIndex, setPageIndex] = useLocalState(context, 'pageIndex', 0);
+  const [pageIndex, setPageIndex] = useLocalState('pageIndex', 0);
 
   const PageComponent = PAGES[pageIndex].component();
 
@@ -58,8 +58,8 @@ export const VoteMenu = (props, context) => {
   );
 };
 
-const MainMenu = (props, context) => {
-  const { act, data } = useBackend(context);
+const MainMenu = (props) => {
+  const { act, data } = useBackend();
   const {
     vote_in_progress,
     vote_choices,
@@ -126,8 +126,8 @@ const MainMenu = (props, context) => {
   );
 };
 
-const StartVote = (props, context) => {
-  const { act, data } = useBackend(context);
+const StartVote = (props) => {
+  const { act, data } = useBackend();
   const { possible_vote_types, is_admin, vote_in_progress } = data;
 
   return (
@@ -163,8 +163,8 @@ const StartVote = (props, context) => {
   );
 };
 
-const SettingsMenu = (props, context) => {
-  const { act, data } = useBackend(context);
+const SettingsMenu = (props) => {
+  const { act, data } = useBackend();
   const { can_restart_vote, can_gamemode_vote } = data;
 
   return (

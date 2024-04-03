@@ -2,8 +2,8 @@ import { useBackend } from '../backend';
 import { Button, Flex, Section } from '../components';
 import { Window } from '../layouts';
 
-export const HiveFaction = (props, context) => {
-  const { act, data } = useBackend(context);
+export const HiveFaction = (props) => {
+  const { act, data } = useBackend();
   const { glob_factions, current_allies } = data;
 
   const onFactionButtonClick = (faction) =>

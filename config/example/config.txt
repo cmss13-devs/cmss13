@@ -4,6 +4,7 @@
 # $include dbconfig.txt
 # $include resources.txt
 # $include icon_source.txt
+# $include relays.txt
 
 ## Server name: This appears at the top of the screen in-game. In this case it will read "tgstation: station_name" where station_name is the randomly generated name of the station for the round. Remove the # infront of SERVERNAME and replace 'tgstation' with the name of your choice
 # SERVERNAME spacestation13
@@ -150,9 +151,6 @@ BANAPPEALS https://cm-ss13.com/viewforum.php?f=76
 
 ##Defines the ticklag for the world.  0.9 is the normal one, 0.5 is smoother.
 TICKLAG 0.5
-
-## Uncomment this to ban use of ToR
-#TOR_BAN
 
 ## Uncomment this to have country flags pop up in OOC alongside names if the user has the pref turned on (uses IP-API)
 #OOC_COUNTRY_FLAGS

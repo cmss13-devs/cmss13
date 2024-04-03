@@ -247,10 +247,8 @@
 		if(JOB_SQUAD_TEAM_LEADER)
 			return /datum/equipment_preset/uscm/tl_equipped
 		if(JOB_CO)
-			if(length(GLOB.RoleAuthority.roles_whitelist))
-				var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_CO]
-				return J.gear_preset_whitelist["[JOB_CO][J.get_whitelist_status(GLOB.RoleAuthority.roles_whitelist, owner)]"]
-			return /datum/equipment_preset/uscm_ship/commander
+			var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_CO]
+			return J.gear_preset_whitelist["[JOB_CO][J.get_whitelist_status(owner)]"]
 		if(JOB_SO)
 			return /datum/equipment_preset/uscm_ship/so
 		if(JOB_XO)
@@ -259,8 +257,10 @@
 			return /datum/equipment_preset/uscm_ship/auxiliary_officer
 		if(JOB_INTEL)
 			return /datum/equipment_preset/uscm/intel/full
-		if(JOB_PILOT)
-			return /datum/equipment_preset/uscm_ship/po/full
+		if(JOB_CAS_PILOT)
+			return /datum/equipment_preset/uscm_ship/gp/full
+		if(JOB_DROPSHIP_PILOT)
+			return /datum/equipment_preset/uscm_ship/dp/full
 		if(JOB_DROPSHIP_CREW_CHIEF)
 			return /datum/equipment_preset/uscm_ship/dcc/full
 		if(JOB_CORPORATE_LIAISON)
@@ -268,10 +268,8 @@
 		if(JOB_COMBAT_REPORTER)
 			return /datum/equipment_preset/uscm_ship/reporter
 		if(JOB_SYNTH)
-			if(length(GLOB.RoleAuthority.roles_whitelist))
-				var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_SYNTH]
-				return J.gear_preset_whitelist["[JOB_SYNTH][J.get_whitelist_status(GLOB.RoleAuthority.roles_whitelist, owner)]"]
-			return /datum/equipment_preset/synth/uscm
+			var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_SYNTH]
+			return J.gear_preset_whitelist["[JOB_SYNTH][J.get_whitelist_status(owner)]"]
 		if(JOB_WORKING_JOE)
 			return /datum/equipment_preset/synth/working_joe
 		if(JOB_POLICE)
@@ -317,10 +315,8 @@
 				return pick(SSmapping.configs[GROUND_MAP].CO_survivor_types)
 			return /datum/equipment_preset/uscm_ship/commander
 		if(JOB_PREDATOR)
-			if(length(GLOB.RoleAuthority.roles_whitelist))
-				var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
-				return J.gear_preset_whitelist["[JOB_PREDATOR][J.get_whitelist_status(GLOB.RoleAuthority.roles_whitelist, owner)]"]
-			return /datum/equipment_preset/yautja/blooded
+			var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
+			return J.gear_preset_whitelist["[JOB_PREDATOR][J.get_whitelist_status(owner)]"]
 
 	return /datum/equipment_preset/uscm/private_equipped
 

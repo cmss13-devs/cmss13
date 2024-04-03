@@ -49,7 +49,7 @@ GLOBAL_LIST_EMPTY(escape_menus)
 	show_page()
 
 	RegisterSignal(client, COMSIG_PARENT_QDELETING, PROC_REF(on_client_qdel))
-	RegisterSignal(client, COMSIG_CLIENT_MOB_LOGIN, PROC_REF(on_client_mob_login))
+	RegisterSignal(client, COMSIG_CLIENT_MOB_LOGGED_IN, PROC_REF(on_client_mob_login))
 
 	if (!isnull(ckey))
 		GLOB.escape_menus[ckey] = src

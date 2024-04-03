@@ -79,6 +79,7 @@
 	new /obj/item/ammo_magazine/sniper/anti_materiel(src)
 	new /obj/item/ammo_magazine/sniper/anti_materiel(src)
 	new /obj/item/ammo_magazine/sniper/anti_materiel(src)
+	new /obj/item/ammo_magazine/sniper/anti_materiel(src)
 
 /obj/item/storage/box/spec/scout
 	name = "\improper Scout equipment case"

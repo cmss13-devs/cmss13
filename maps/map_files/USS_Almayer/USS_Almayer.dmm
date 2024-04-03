@@ -36152,7 +36152,7 @@
 	},
 /obj/structure/transmitter/rotary{
 	name = "Senior Enlisted Advisor Office Telephone";
-	phone_category = "Almayer";
+	phone_category = "Offices";
 	phone_id = "Senior Enlisted Advisor's Office";
 	pixel_x = -3
 	},
@@ -50075,7 +50075,7 @@
 "neT" = (
 /obj/structure/transmitter/rotary{
 	name = "CL Office Telephone";
-	phone_category = "Almayer";
+	phone_category = "Offices";
 	phone_id = "CL Office"
 	},
 /obj/structure/surface/table/woodentable/fancy,

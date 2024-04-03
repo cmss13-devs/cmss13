@@ -15,7 +15,7 @@
 /// High Command, can read the deletion log.
 #define ARES_ACCESS_HIGH 9
 #define ARES_ACCESS_WY_COMMAND 10
-/// Debugging. Allows me to view everything without using a high command rank. Unlikely to stay in a full merge.
+/// Debugging. Allows me to view everything without using a high command rank.
 #define ARES_ACCESS_DEBUG 11
 
 #define ARES_RECORD_ANNOUNCE "Announcement Record"

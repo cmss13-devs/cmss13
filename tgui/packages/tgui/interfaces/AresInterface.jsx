@@ -280,7 +280,7 @@ const MainMenu = (props) => {
             </Stack.Item>
           </Stack>
         )}
-        {access_level >= 6 && (
+        {(access_level >= 6 || access_level === 3) && (
           <Stack>
             <Stack.Item grow>
               <h3>Access Level 6</h3>
@@ -299,13 +299,13 @@ const MainMenu = (props) => {
             </Stack.Item>
             <Stack.Item>
               <Button
-                content="Core Security Protocols"
+                content="Core Security"
                 tooltip="Utilise the AI Core security features."
                 icon="shield"
                 color="red"
                 ml="auto"
                 px="2rem"
-                width="27vw"
+                width="25vw"
                 bold
                 onClick={() => act('page_core_sec')}
               />

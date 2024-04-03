@@ -22,6 +22,8 @@
 	var/attack_speed = 11  //+3, Adds up to 10.  Added an extra 4 removed from /mob/proc/do_click()
 	///Used in attackby() to say how something was attacked "[x] has been [z.attack_verb] by [y] with [z]"
 	var/list/attack_verb
+	/// A multiplier to an object's force when used against a stucture.
+	var/demolition_mod = 1
 
 	health = null
 

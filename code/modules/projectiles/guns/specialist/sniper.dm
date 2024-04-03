@@ -19,6 +19,12 @@
 	var/sniper_beam_icon = "laser_beam"
 	var/skill_locked = TRUE
 
+	/// Variables for Focus Fire and alternate icons for lockon and laser.
+	var/enable_aimed_shot_icon_alt = FALSE
+	var/sniper_lockon_icon_max = "sniper_lockon_intense"
+	var/sniper_beam_icon_max = "laser_beam_intense"
+
+
 /obj/item/weapon/gun/rifle/sniper/get_examine_text(mob/user)
 	. = ..()
 	if(!has_aimed_shot)
@@ -117,7 +123,24 @@
 
 	f_aiming_time *= aim_multiplier
 
-	var/image/lockon_icon = image(icon = 'icons/effects/Targeted.dmi', icon_state = sniper_rifle.sniper_lockon_icon)
+	var/beam
+	var/lockon
+
+	if(istype(sniper_rifle, /obj/item/weapon/gun/rifle/sniper/XM43E1))
+		var/obj/item/weapon/gun/rifle/sniper/XM43E1/amr = sniper_rifle
+		if((amr.focused_fire_counter >= 1) && (target == amr.focused_fire_target?.resolve()))
+			sniper_rifle.enable_aimed_shot_icon_alt = TRUE
+		else
+			sniper_rifle.enable_aimed_shot_icon_alt = FALSE
+
+	if(sniper_rifle.enable_aimed_shot_icon_alt)
+		beam = sniper_rifle.sniper_beam_icon_max
+		lockon = sniper_rifle.sniper_lockon_icon_max
+	else
+		beam = sniper_rifle.sniper_beam_icon
+		lockon = sniper_rifle.sniper_lockon_icon
+
+	var/image/lockon_icon = image(icon = 'icons/effects/Targeted.dmi', icon_state = lockon)
 
 	var/x_offset =  -target.pixel_x + target.base_pixel_x
 	var/y_offset = (target.icon_size - world.icon_size) * 0.5 - target.pixel_y + target.base_pixel_y
@@ -128,7 +151,7 @@
 
 	var/image/lockon_direction_icon
 	if(!sniper_rifle.enable_aimed_shot_laser)
-		lockon_direction_icon = image(icon = 'icons/effects/Targeted.dmi', icon_state = "[sniper_rifle.sniper_lockon_icon]_direction", dir = get_cardinal_dir(target, human))
+		lockon_direction_icon = image(icon = 'icons/effects/Targeted.dmi', icon_state = "[lockon]_direction", dir = get_cardinal_dir(target, human))
 		lockon_direction_icon.pixel_x = x_offset
 		lockon_direction_icon.pixel_y = y_offset
 		target.overlays += lockon_direction_icon
@@ -138,7 +161,7 @@
 
 	var/datum/beam/laser_beam
 	if(sniper_rifle.enable_aimed_shot_laser)
-		laser_beam = target.beam(human, sniper_rifle.sniper_beam_icon, 'icons/effects/beam.dmi', (f_aiming_time + 1 SECONDS), beam_type = sniper_rifle.sniper_beam_type)
+		laser_beam = target.beam(human, beam, 'icons/effects/beam.dmi', (f_aiming_time + 1 SECONDS), beam_type = sniper_rifle.sniper_beam_type)
 		laser_beam.visuals.alpha = 0
 		animate(laser_beam.visuals, alpha = initial(laser_beam.visuals.alpha), f_aiming_time, easing = SINE_EASING|EASE_OUT)
 

@@ -380,8 +380,7 @@
 							relate(C)
 					if(!C.original_id)
 						C.original_id = target.data.id
-					C.id = encode_reagent(C)
-					C.name = C.id
+					encode_reagent(C)
 					if(C.id in simulations)
 						//We've already simulated this before, so we don't need to continue
 						C = GLOB.chemical_reagents_list[C.id]
@@ -577,8 +576,8 @@
 	var/obj/item/paper/research_report/report = new /obj/item/paper/research_report/(loc)
 	var/datum/reagent/D = GLOB.chemical_reagents_list[id]
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
-	report.name = "Simulation result for [D.name]"
-	report.info += "<center><img src = [asset.get_url_mappings()["wylogo.png"]]><HR><I><B>Official Company Document</B><BR>Simulated Synthesis Report</I><HR><H2>Result for [D.name]</H2></center>"
+	report.name = "Simulation result for [D.id]"
+	report.info += "<center><img src = [asset.get_url_mappings()["wylogo.png"]]><HR><I><B>Official Company Document</B><BR>Simulated Synthesis Report</I><HR><H2>Result for [D.id]</H2></center>"
 	report.generate(D)
 	report.info += "<BR><HR><font size = \"1\"><I>This report was automatically printed by the Synthesis Simulator.<BR>The [MAIN_SHIP_NAME], [time2text(world.timeofday, "MM/DD")]/[GLOB.game_year], [worldtime2text()]</I></font><BR>\n<span class=\"paper_field\"></span>"
 	playsound(loc, 'sound/machines/twobeep.ogg', 15, 1)
@@ -590,7 +589,9 @@
 	var/suffix = " "
 	for(var/datum/chem_property/P in C.properties)
 		suffix += P.code+"[P.level]"
-	return O.name + suffix
+	C.id = O.name + " " + copytext(md5(suffix),1,3) + suffix //Show random suffix AND real properties on research paper
+	C.name = O.name + " " + copytext(md5(suffix),1,3) //Show ONLY random suffix on health analyzers
+	return
 
 /obj/structure/machinery/chem_simulator/proc/complexity_to_string_list()
 	var/list/L = list()

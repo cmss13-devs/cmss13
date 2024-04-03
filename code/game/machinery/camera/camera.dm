@@ -10,7 +10,6 @@
 
 	var/list/network = list(CAMERA_NET_MILITARY)
 	var/c_tag = null
-	var/c_tag_order = 999
 	var/status = 1
 	anchored = TRUE
 	var/panel_open = FALSE // 0 = Closed / 1 = Open

@@ -205,7 +205,11 @@
 /obj/structure/machinery/computer/cameras/wooden_tv/prop
 	name = "Television Set"
 	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW."
-	network = null
+	network = list(CAMERA_NET_CORRESPONDENT)
+
+/obj/structure/machinery/computer/cameras/wooden_tv/prop/ui_state(mob/user)
+	return GLOB.default_state
+
 
 /obj/structure/machinery/computer/cameras/wooden_tv/ot
 	name = "Mortar Monitoring Set"

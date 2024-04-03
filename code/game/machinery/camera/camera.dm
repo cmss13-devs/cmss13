@@ -69,7 +69,7 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 		var/area/my_area = get_area(src)
 		if(my_area)
 			for(var/obj/structure/machinery/camera/autoname/current_camera in GLOB.machines)
-				if(current_camera == src) 
+				if(current_camera == src)
 					continue
 				var/area/current_camera_area = get_area(current_camera)
 				if(current_camera_area.type != my_area.type)
@@ -298,6 +298,18 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 		SPAN_NOTICE("You weld [src]."))
 		return 1
 	return 0
+
+/obj/structure/machinery/camera/correspondent
+	network = list(CAMERA_NET_CORRESPONDENT)
+	invisibility = 101
+	invuln = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	colony_camera_mapload = FALSE
+
+/obj/structure/machinery/camera/correspondent/Initialize(mapload, c_tag_name)
+	c_tag = c_tag_name
+	return ..()
 
 /obj/structure/machinery/camera/mortar
 	alpha = 0

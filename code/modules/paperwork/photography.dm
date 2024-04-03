@@ -357,6 +357,27 @@
 	pictures_max = 20
 	w_class = SIZE_HUGE
 	flags_equip_slot = NO_FLAGS //cannot be equiped
+	var/obj/structure/machinery/camera/correspondent/linked_cam
+
+/obj/item/device/camera/broadcasting/attack_self(mob/user) //wielding capabilities
+	. = ..()
+	if(flags_item & WIELDED)
+		linked_cam = new(loc, "[user] LIVE")
+		linked_cam.network = list(CAMERA_NET_CORRESPONDENT)
+		RegisterSignal(src, list(
+			COMSIG_ITEM_DROPPED,
+			COMSIG_ITEM_UNWIELD,
+			COMSIG_PARENT_QDELETING,
+		), PROC_REF(clear_broadcast))
+		to_chat(user, SPAN_NOTICE("[src] begins to buzz softly as you go live."))
+
+/obj/item/device/camera/broadcasting/proc/clear_broadcast()
+	QDEL_NULL(linked_cam)
+	UnregisterSignal(src, list(
+		COMSIG_ITEM_DROPPED,
+		COMSIG_ITEM_UNWIELD,
+		COMSIG_PARENT_QDELETING,
+	))
 
 /obj/item/photo/proc/construct(datum/picture/P)
 	icon = P.fields["icon"]

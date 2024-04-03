@@ -18,7 +18,7 @@ To know where to insert map files, we use a landmark object. This means placing 
 ### Example 1: Map Sprinkles
 The `map_sprinkle` node is usually already configured on maps, with a folder such as `maps/Nightmare/maps/BigRed/sprinkles`. It allows to randomly insert standalone map changes, by directly using map files.
 
-Each file will randomly be inserted depending on its name: `40.viro_open.dmm` for example has 40% chance to be included at `viro` landmark. Writing after the '_' is considered additional information for the viewer, and will not be taken into account with spawning. You can drop in extra files to take advantage of this.
+Each file will randomly be inserted depending on its name: `40.viro_open.dmm` for example has 40% chance to be included at `viro_open` landmark. You can drop in extra files to take advantage of this.
 
 ### Example 2: Map Variations
 `map_variations` work similarly, but only pick one file in the folder at random. For example, if you have three files:

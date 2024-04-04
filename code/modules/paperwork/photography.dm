@@ -362,7 +362,7 @@
 /obj/item/device/camera/broadcasting/attack_self(mob/user) //wielding capabilities
 	. = ..()
 	if(flags_item & WIELDED)
-		linked_cam = new(loc, "[user] LIVE")
+		linked_cam = new(loc, get_broadcast_name())
 		linked_cam.network = list(CAMERA_NET_CORRESPONDENT)
 		linked_cam.linked_broadcasting = src
 		RegisterSignal(src, list(
@@ -381,6 +381,12 @@
 		COMSIG_ITEM_UNWIELD,
 		COMSIG_PARENT_QDELETING,
 	))
+
+/obj/item/device/camera/broadcasting/proc/get_broadcast_name()
+	var/datum/component/label/src_label_component = GetComponent(/datum/component/label)
+	if(src_label_component)
+		return src_label_component.label_name
+	return "Broadcast [serial_number]"
 
 /obj/item/photo/proc/construct(datum/picture/P)
 	icon = P.fields["icon"]

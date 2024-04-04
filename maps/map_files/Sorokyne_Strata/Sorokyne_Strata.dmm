@@ -2556,7 +2556,7 @@
 /turf/open/floor/plating,
 /area/strata/ug/interior/jungle/deep/structures/res)
 "ahJ" = (
-/obj/structure/surface/rack,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -2569,6 +2569,7 @@
 	layer = 5.1;
 	name = "water pipe"
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/plating,
 /area/strata/ug/interior/jungle/deep/structures/res)
 "ahM" = (
@@ -4839,6 +4840,9 @@
 /area/strata/ug/interior/jungle/deep/structures/res)
 "aoW" = (
 /obj/structure/reagent_dispensers/watertank,
+/obj/structure/machinery/light/built{
+	dir = 1
+	},
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "floor3"
@@ -29308,6 +29312,10 @@
 	icon_state = "multi_tiles"
 	},
 /area/strata/ag/interior/outpost/engi/drome)
+"cVt" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/turf/open/auto_turf/ice/layer1,
+/area/strata/ag/interior/outpost/gen/bball/nest)
 "cWs" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 1
@@ -29534,6 +29542,17 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating,
 /area/strata/ag/interior/outpost/engi/drome/shuttle)
+"dqM" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/strata{
+	dir = 10;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ug/interior/jungle/deep/structures/res)
 "drI" = (
 /turf/open/floor/strata{
 	dir = 4;
@@ -31583,6 +31602,13 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating,
 /area/strata/ag/interior/outpost/engi/drome/shuttle)
+"gIz" = (
+/obj/item/stack/catwalk,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/strata/ug/interior/jungle/deep/structures/res)
 "gIL" = (
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
@@ -31637,6 +31663,13 @@
 	icon_state = "floor3"
 	},
 /area/strata/ag/exterior/shed_five_caves)
+"gOF" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "floor3"
+	},
+/area/strata/ug/interior/jungle/deep/structures/res)
 "gOL" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/asphalt/cement,
@@ -33806,11 +33839,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/east_carp)
-"kyf" = (
-/obj/item/stack/rods,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
-/turf/open/auto_turf/ice/layer1,
-/area/strata/ag/interior/outpost/gen/bball/nest)
 "kyr" = (
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/east_engi)
@@ -34540,6 +34568,12 @@
 	},
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh)
+"lJa" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/strata{
+	icon_state = "floor2"
+	},
+/area/strata/ug/interior/jungle/deep/structures/res)
 "lJz" = (
 /obj/structure/surface/rack,
 /obj/item/storage/toolbox/syndicate,
@@ -37285,6 +37319,17 @@
 /obj/structure/platform/strata/metal,
 /turf/open/gm/river,
 /area/strata/ag/interior/tcomms)
+"pZM" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/turf/open/floor/strata{
+	dir = 10;
+	icon_state = "multi_tiles"
+	},
+/area/strata/ug/interior/jungle/deep/structures/res)
 "pZS" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -37648,13 +37693,6 @@
 	icon_state = "cement1"
 	},
 /area/strata/ug/interior/jungle/platform/east/scrub)
-"qHo" = (
-/obj/effect/decal/cleanable/blood{
-	icon_state = "xgibdown1"
-	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
-/turf/open/auto_turf/snow/brown_base/layer0,
-/area/strata/ag/interior/outpost/gen/bball/nest)
 "qIt" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 4
@@ -37733,7 +37771,7 @@
 	},
 /area/strata/ag/exterior/landingzone_2)
 "qOm" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -39268,6 +39306,12 @@
 	},
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/river)
+"trM" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/strata/ug/interior/jungle/deep/structures/res)
 "tsz" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 8
@@ -40528,6 +40572,10 @@
 "vlm" = (
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/med)
+"vlC" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/turf/open/auto_turf/snow/brown_base/layer0,
+/area/strata/ag/interior/outpost/gen/bball/nest)
 "vlG" = (
 /turf/open/floor/strata{
 	icon_state = "orange_cover"
@@ -41125,6 +41173,10 @@
 /obj/item/tank/anesthetic,
 /turf/open/floor/strata,
 /area/strata/ag/interior/mountain)
+"whp" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/ug/interior/jungle/deep/tearlake)
 "whO" = (
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/medium,
@@ -42230,6 +42282,11 @@
 /obj/item/clothing/mask/cigarette/cigar/cohiba,
 /turf/open/floor/strata,
 /area/strata/ag/exterior/research_decks)
+"xZg" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/ug/interior/jungle/deep/east_carp)
 "xZk" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 8
@@ -63057,7 +63114,7 @@ cdo
 pIa
 ced
 ced
-cdo
+cVt
 cdo
 aHz
 aQB
@@ -63252,7 +63309,7 @@ pIa
 ced
 ced
 ced
-aam
+vlC
 aam
 aHz
 cfH
@@ -63445,7 +63502,7 @@ aan
 pIa
 ced
 ced
-aam
+vlC
 aam
 abr
 aam
@@ -64030,12 +64087,12 @@ cdo
 acU
 aaw
 cdo
-qHo
+aan
 aan
 aam
 cdo
 pIa
-cdo
+cVt
 aam
 aar
 wEU
@@ -64225,7 +64282,7 @@ cdo
 aJn
 cdo
 cdo
-kyf
+baH
 cdo
 aJn
 cdo
@@ -64422,7 +64479,7 @@ aKw
 aLu
 gjP
 cjq
-cjq
+gjP
 gGX
 cdo
 cjq
@@ -76081,7 +76138,7 @@ jLb
 jLb
 jLb
 eMz
-eMz
+whp
 dKj
 dKj
 dKj
@@ -76471,7 +76528,7 @@ jLb
 jLb
 eMz
 eMz
-jLb
+miy
 dKj
 dKj
 dKj
@@ -76861,7 +76918,7 @@ jLb
 eMz
 euZ
 jLb
-jLb
+miy
 dKj
 dKj
 dKj
@@ -81424,7 +81481,7 @@ bon
 agT
 vVK
 aoT
-vVK
+bHj
 bDm
 arN
 bHj
@@ -81620,7 +81677,7 @@ bon
 vVK
 vVK
 bHj
-bHj
+pNT
 pNT
 bHj
 bHj
@@ -81815,7 +81872,7 @@ bon
 vVK
 bHj
 bHj
-bHj
+pNT
 pNT
 pNT
 pNT
@@ -82010,10 +82067,10 @@ amX
 vVK
 bHj
 bHj
-bHj
-bHj
-bHj
-bHj
+pNT
+pNT
+pNT
+pNT
 pNT
 pNT
 pNT
@@ -82206,7 +82263,7 @@ bDm
 bHj
 bHj
 bHj
-bHj
+pNT
 bDm
 pNT
 avh
@@ -82597,7 +82654,7 @@ bHj
 bHj
 bHj
 ceQ
-ceQ
+chg
 chg
 avi
 chg
@@ -82791,8 +82848,8 @@ bHj
 bHj
 bHj
 bHj
-ceQ
-ceQ
+chg
+chg
 chg
 ceQ
 ceQ
@@ -82815,7 +82872,7 @@ jUA
 jUA
 jUA
 ceQ
-ceQ
+chg
 chg
 chg
 chg
@@ -82986,7 +83043,7 @@ bHj
 bHj
 bHj
 bHj
-ceQ
+chg
 civ
 chg
 chg
@@ -83009,7 +83066,7 @@ cei
 cei
 jUA
 jUA
-aNG
+ceQ
 ceQ
 ceQ
 ceQ
@@ -83181,10 +83238,10 @@ bHj
 bHj
 bHj
 bHj
-ceQ
-ceQ
-ceQ
-ceQ
+chg
+chg
+chg
+chg
 ceQ
 aFj
 jUA
@@ -83204,7 +83261,7 @@ chj
 aDz
 jUA
 jUA
-jUA
+aNG
 ceQ
 ceQ
 ceQ
@@ -83398,7 +83455,7 @@ jUA
 jUA
 cei
 jUA
-ceQ
+jUA
 jUA
 ceQ
 ceQ
@@ -84375,7 +84432,7 @@ jUA
 ceQ
 ceQ
 jUA
-ceQ
+jUA
 ceQ
 ceQ
 daq
@@ -84570,7 +84627,7 @@ jUA
 ceQ
 jUA
 jUA
-ceQ
+jUA
 ceQ
 ceQ
 daq
@@ -84784,7 +84841,7 @@ daq
 daq
 koG
 daq
-daq
+sKg
 sKg
 sKg
 sKg
@@ -84980,9 +85037,9 @@ daq
 daq
 daq
 sKg
-sKg
-sKg
-sKg
+dNM
+dNM
+dNM
 sKg
 sKg
 sKg
@@ -85130,7 +85187,7 @@ wUa
 uux
 aoV
 bAr
-bUo
+gOF
 uux
 ati
 bAr
@@ -85177,8 +85234,8 @@ cui
 dNM
 dNM
 dNM
-sKg
-sKg
+dNM
+dNM
 sKg
 sKg
 sKg
@@ -85325,7 +85382,7 @@ uux
 aYz
 aoW
 bAr
-aoY
+lJa
 uux
 bAr
 bAr
@@ -85372,8 +85429,8 @@ sKg
 sKg
 sKg
 dNM
-sKg
-sKg
+dNM
+dNM
 sKg
 sKg
 sKg
@@ -85520,7 +85577,7 @@ akL
 aod
 bUo
 acp
-bAr
+lJa
 uux
 uux
 uux
@@ -85565,9 +85622,9 @@ sKg
 sKg
 sKg
 sKg
-sKg
 dNM
-sKg
+xZg
+dNM
 sKg
 sKg
 sKg
@@ -85750,19 +85807,19 @@ daq
 sKg
 sKg
 sKg
+cgq
 daq
 daq
 daq
 daq
-daq
-sKg
 sKg
 sKg
 sKg
 dNM
 dNM
 dNM
-sKg
+dNM
+dNM
 sKg
 sKg
 sKg
@@ -85945,18 +86002,18 @@ sKg
 sKg
 sKg
 sKg
-daq
+cgq
 bwH
 daq
 bwH
 daq
-sKg
-sKg
 sKg
 sKg
 dNM
-sKg
-sKg
+dNM
+dNM
+dNM
+dNM
 sKg
 sKg
 sKg
@@ -86147,8 +86204,8 @@ daq
 daq
 sKg
 sKg
-sKg
-sKg
+dNM
+dNM
 dNM
 sKg
 sKg
@@ -86335,15 +86392,15 @@ sKg
 sKg
 sKg
 sKg
-daq
+cgq
 daq
 daq
 daq
 daq
 daq
 sKg
-sKg
-sKg
+dNM
+dNM
 dNM
 dNM
 lgv
@@ -86492,7 +86549,7 @@ bRl
 bRl
 aEN
 qOm
-ady
+pZM
 bAr
 bAr
 aqW
@@ -86538,7 +86595,7 @@ daq
 daq
 sKg
 sKg
-sKg
+dNM
 sKg
 sKg
 daq
@@ -86687,7 +86744,7 @@ akh
 aeW
 aEC
 qOm
-ady
+pZM
 bAr
 bAr
 aoX
@@ -86731,7 +86788,7 @@ daq
 bwH
 daq
 daq
-daq
+cgq
 sKg
 sKg
 sKg
@@ -86882,7 +86939,7 @@ akO
 bRl
 aDR
 qOm
-ady
+pZM
 bAr
 bAr
 bAr
@@ -86926,7 +86983,7 @@ daq
 daq
 daq
 daq
-daq
+cgq
 sKg
 sKg
 sKg
@@ -87653,8 +87710,8 @@ afx
 afY
 bKK
 ahk
-ahh
-ahm
+ahJ
+gIz
 ahi
 bMP
 akj
@@ -87662,9 +87719,9 @@ bMR
 bMR
 bMR
 bUo
-ady
-bAr
-bAr
+dqM
+lJa
+lJa
 aqZ
 adz
 atl
@@ -87858,7 +87915,7 @@ bMR
 bMR
 ane
 ady
-bAr
+lJa
 acp
 aqZ
 uux
@@ -88044,7 +88101,7 @@ afX
 afY
 ahh
 ahJ
-ahh
+trM
 ahh
 bMP
 akj
@@ -88295,7 +88352,7 @@ sKg
 sKg
 sKg
 dOR
-sKg
+dOR
 sKg
 sKg
 sKg
@@ -88487,10 +88544,10 @@ cpW
 cpW
 cpW
 cpW
-cpW
-cpW
 dQq
-cpW
+dQq
+dQq
+dQq
 cpW
 cpW
 cpW
@@ -88682,8 +88739,8 @@ cpW
 cpW
 cpW
 cpW
-cpW
-cpW
+dQq
+dQq
 dQq
 cpW
 cpW
@@ -88878,7 +88935,7 @@ aYy
 cpW
 cpW
 cpW
-cpW
+dQq
 dQq
 cpW
 cpW

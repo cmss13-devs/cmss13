@@ -206,10 +206,35 @@
 	name = "Television Set"
 	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW."
 	network = list(CAMERA_NET_CORRESPONDENT)
+	var/obj/item/device/camera/broadcasting/broadcastingcamera = null
 
 /obj/structure/machinery/computer/cameras/wooden_tv/prop/ui_state(mob/user)
 	return GLOB.default_state
 
+/obj/structure/machinery/computer/cameras/wooden_tv/prop/ui_act(action, params)
+	. = ..()
+	if(action != "switch_camera")
+		return .
+	broadcastingcamera = null
+	if (!istype(current, /obj/structure/machinery/camera/correspondent))
+		return .
+	var/obj/structure/machinery/camera/correspondent/corr_cam = current
+	if (!corr_cam.linked_broadcasting)
+		return .
+	broadcastingcamera = corr_cam.linked_broadcasting
+	RegisterSignal(broadcastingcamera, COMSIG_BROADCAST_GO_LIVE, TYPE_PROC_REF(/obj/structure/machinery/computer/cameras/wooden_tv/prop, go_back_live))
+
+/obj/structure/machinery/computer/cameras/wooden_tv/prop/ui_close(mob/user)
+	. = ..()
+	if (current == null && broadcastingcamera)
+		UnregisterSignal(broadcastingcamera, COMSIG_BROADCAST_GO_LIVE)
+		broadcastingcamera = null
+
+/obj/structure/machinery/computer/cameras/wooden_tv/prop/proc/go_back_live(obj/item/device/camera/broadcasting/broadcastingcamera)
+	SIGNAL_HANDLER
+	if (current.c_tag == "[broadcastingcamera.loc] LIVE")
+		current = broadcastingcamera.linked_cam
+		SEND_SIGNAL(src, COMSIG_CAMERA_SET_TARGET,  broadcastingcamera.linked_cam,  broadcastingcamera.linked_cam.view_range,  broadcastingcamera.linked_cam.view_range)
 
 /obj/structure/machinery/computer/cameras/wooden_tv/ot
 	name = "Mortar Monitoring Set"

@@ -364,11 +364,13 @@
 	if(flags_item & WIELDED)
 		linked_cam = new(loc, "[user] LIVE")
 		linked_cam.network = list(CAMERA_NET_CORRESPONDENT)
+		linked_cam.linked_broadcasting = src
 		RegisterSignal(src, list(
 			COMSIG_ITEM_DROPPED,
 			COMSIG_ITEM_UNWIELD,
 			COMSIG_PARENT_QDELETING,
 		), PROC_REF(clear_broadcast))
+		SEND_SIGNAL(src, COMSIG_BROADCAST_GO_LIVE)
 		to_chat(user, SPAN_NOTICE("[src] begins to buzz softly as you go live."))
 
 /obj/item/device/camera/broadcasting/proc/clear_broadcast()

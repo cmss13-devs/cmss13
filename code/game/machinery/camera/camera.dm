@@ -306,6 +306,7 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 	unslashable = TRUE
 	unacidable = TRUE
 	colony_camera_mapload = FALSE
+	var/linked_broadcasting
 
 /obj/structure/machinery/camera/correspondent/Initialize(mapload, c_tag_name)
 	c_tag = c_tag_name

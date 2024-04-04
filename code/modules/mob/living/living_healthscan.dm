@@ -79,6 +79,12 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 	// Fake death will make the scanner think they died of oxygen damage, thus it returns enough damage to kill minus already received damage.
 	return round(POSITIVE(200 - total_mob_damage))
 
+/datum/health_scan/proc/get_holo_card_color(mob/living/target_mob)
+	if(!ishuman(target_mob))
+		return
+	var/mob/living/carbon/human/human_mob = target_mob
+	return human_mob.holo_card_color
+
 /datum/health_scan/proc/get_health_value(mob/living/target_mob)
 	if(!(target_mob.status_flags & FAKEDEATH))
 		return target_mob.health
@@ -97,7 +103,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		"clone" = round(target_mob.getCloneLoss()),
 		"blood_type" = target_mob.blood_type,
 		"blood_amount" = target_mob.blood_volume,
-
+		"holocard" = get_holo_card_color(target_mob),
 		"hugged" = (locate(/obj/item/alien_embryo) in target_mob),
 	)
 
@@ -466,6 +472,17 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 			data["ssd"] = "SSD detected." // SSD
 
 	return data
+
+/datum/health_scan/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+	switch(action)
+		if("change_holo_card")
+			if(ishuman(target_mob))
+				var/mob/living/carbon/human/target_human = target_mob
+				target_human.change_holo_card(ui.user)
+				return TRUE
 
 /// legacy proc for to_chat messages on health analysers
 /mob/living/proc/health_scan(mob/living/carbon/human/user, ignore_delay = FALSE, show_limb_damage = TRUE, show_browser = TRUE, alien = FALSE, do_checks = TRUE) // ahem. FUCK WHOEVER CODED THIS SHIT AS NUMBERS AND NOT DEFINES.

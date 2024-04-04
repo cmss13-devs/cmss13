@@ -531,6 +531,8 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /datum/config_entry/string/round_results_webhook_url
 
+/datum/config_entry/string/important_log_channel
+
 /// InfluxDB v2 Host to connect to for sending statistics (over HTTP API)
 /datum/config_entry/string/influxdb_host
 /// InfluxDB v2 Bucket to send staistics to
@@ -627,3 +629,14 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 /datum/config_entry/flag/guest_ban
 
 /datum/config_entry/flag/auto_profile
+
+/// Relay Ping Browser configuration
+/datum/config_entry/keyed_list/connection_relay_ping
+	splitter = "|"
+	key_mode = KEY_MODE_TEXT_UNALTERED
+	value_mode = VALUE_MODE_TEXT
+
+/datum/config_entry/keyed_list/connection_relay_con
+	splitter = "|"
+	key_mode = KEY_MODE_TEXT_UNALTERED
+	value_mode = VALUE_MODE_TEXT

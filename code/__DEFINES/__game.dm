@@ -1,9 +1,3 @@
-#define RANGE_TURFS(RADIUS, CENTER) \
-block( \
-	locate(max(CENTER.x-(RADIUS),1),   max(CENTER.y-(RADIUS),1),   CENTER.z), \
-	locate(min(CENTER.x+(RADIUS),world.maxx), min(CENTER.y+(RADIUS),world.maxy), CENTER.z) \
-)
-
 //Admin perms are in global.dm.
 
 /// To make it even more clear that something is a bitfield.
@@ -108,6 +102,7 @@ block( \
 #define SOUND_ADMIN_MEME (1<<6)
 #define SOUND_ADMIN_ATMOSPHERIC (1<<7)
 #define SOUND_ARES_MESSAGE (1<<8)
+#define SOUND_OBSERVER_ANNOUNCEMENTS (1<<9)
 
 //toggles_chat
 #define CHAT_OOC (1<<0)
@@ -162,7 +157,7 @@ block( \
 
 #define TOGGLES_LANGCHAT_DEFAULT (LANGCHAT_SEE_EMOTES)
 
-#define TOGGLES_SOUND_DEFAULT (SOUND_ADMINHELP|SOUND_MIDI|SOUND_AMBIENCE|SOUND_LOBBY|SOUND_INTERNET|SOUND_ADMIN_MEME|SOUND_ADMIN_ATMOSPHERIC)
+#define TOGGLES_SOUND_DEFAULT (SOUND_ADMINHELP|SOUND_MIDI|SOUND_AMBIENCE|SOUND_LOBBY|SOUND_INTERNET|SOUND_ADMIN_MEME|SOUND_ADMIN_ATMOSPHERIC|SOUND_OBSERVER_ANNOUNCEMENTS)
 
 #define TOGGLES_FLASHING_DEFAULT (FLASH_ROUNDSTART|FLASH_ROUNDEND|FLASH_CORPSEREVIVE|FLASH_ADMINPM|FLASH_UNNEST)
 
@@ -379,6 +374,7 @@ block( \
 #define WALL_DEVWALL "devwall"
 #define WALL_DEVWALL_R "devwall_r"
 #define WALL_HUNTERSHIP "metal"//DMI specific name
+#define WALL_AICORE "aiwall"
 
 //Defines for dropship weapon gimbals
 #define GIMBAL_LEFT -1

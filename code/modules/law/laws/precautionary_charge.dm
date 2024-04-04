@@ -10,7 +10,7 @@
 
 /datum/law/precautionary_charge/insanity
 	name = "Insanity"
-	desc = "Acting in such a manner which makes the offender not sound clear of mind. The CMO or Synthetic can declare insanity on a Marine if the Marine is believed to not be of sound mind. The Marine once cleared to be of sound mind may be released from this particular charge."
+	desc = "Acting in such a manner which makes the offender not sound clear of mind. The subject, once cleared to be of sound mind, may be released from this particular charge. Excepting in cases of Suicide/Attempted Suicide, only the CMO/Synthetic may declare someone insane."
 
 /datum/law/precautionary_charge/prisoner_of_war
 	name = "Prisoner of War"

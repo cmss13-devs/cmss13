@@ -404,6 +404,7 @@
 			visible_message(SPAN_XENOWARNING("[src] hurls out the contents of their stomach!"), \
 			SPAN_XENOWARNING("We hurl out the contents of our stomach!"), null, 5)
 			playsound(get_true_location(loc), 'sound/voice/alien_drool2.ogg', 50, 1)
+			log_interact(src, victim, "[key_name(src)] regurgitated [key_name(victim)] at [get_area_name(loc)]")
 
 			if (stuns)
 				victim.adjust_effect(2, STUN)

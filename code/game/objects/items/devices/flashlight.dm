@@ -238,7 +238,7 @@
 	desc = "A red USCM issued flare. There are instructions on the side, it reads 'pull cord, make light'."
 	w_class = SIZE_SMALL
 	light_power = 2
-	light_range = 7
+	light_range = 5
 	icon_state = "flare"
 	item_state = "flare"
 	actions = list() //just pull it manually, neckbeard.

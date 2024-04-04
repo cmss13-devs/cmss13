@@ -5,21 +5,28 @@
 	climbable = TRUE
 	anchored = TRUE
 	density = TRUE
-	throwpass = TRUE //You can throw objects over this, despite its density.
+	/// You can throw objects over this, despite its density.
+	throwpass = TRUE
 	layer = BELOW_OBJ_LAYER
 	flags_atom = ON_BORDER
-	var/stack_type //The type of stack the barricade dropped when disassembled if any.
-	var/stack_amount = 5 //The amount of stack dropped when disassembled at full health
-	var/destroyed_stack_amount //to specify a non-zero amount of stack to drop when destroyed
+	/// The type of stack the barricade dropped when disassembled if any.
+	var/stack_type
+	/// The amount of stack dropped when disassembled at full health
+	var/stack_amount = 5
+	/// to specify a non-zero amount of stack to drop when destroyed
+	var/destroyed_stack_amount
 	health = 100 //Pretty tough. Changes sprites at 300 and 150
-	var/maxhealth = 100 //Basic code functions
+	var/maxhealth = 100
 	/// Used for calculating some stuff related to maxhealth as it constantly changes due to e.g. barbed wire. set to 100 to avoid possible divisions by zero
 	var/starting_maxhealth = 100
-	var/crusher_resistant = TRUE //Whether a crusher can ram through it.
-	var/force_level_absorption = 5 //How much force an item needs to even damage it at all.
+	/// Whether a crusher can ram through it.
+	var/crusher_resistant = TRUE
+	/// How much force an item needs to even damage it at all.
+	var/force_level_absorption = 5
 	var/barricade_hitsound
 	var/barricade_type = "barricade" //"metal", "plasteel", etc.
-	var/wire_icon = 'icons/obj/structures/barricades.dmi' //! Icon file used for the wiring
+	/// ! Icon file used for the wiring
+	var/wire_icon = 'icons/obj/structures/barricades.dmi'
 	var/can_change_dmg_state = TRUE
 	var/damage_state = BARRICADE_DMG_NONE
 	var/closed = FALSE
@@ -35,6 +42,8 @@
 	var/burn_flame_multiplier = 1
 	var/repair_materials = list()
 	var/metallic = TRUE
+	/// Lower limit of damage beyond which the barricade cannot be fixed by welder. Compared to damage_state. If null it can be repaired at any damage_state.
+	var/welder_lower_damage_limit = null
 
 /obj/structure/barricade/Initialize(mapload, mob/user)
 	. = ..()
@@ -324,7 +333,7 @@
 	take_damage(dam * burn_flame_multiplier)
 
 /obj/structure/barricade/proc/hit_barricade(obj/item/item)
-	take_damage(item.force * 0.5 * brute_multiplier)
+	take_damage(item.force * item.demolition_mod * 0.5 * brute_multiplier)
 
 /obj/structure/barricade/proc/take_damage(damage)
 	for(var/obj/structure/barricade/barricade in get_step(src,dir)) //discourage double-stacking barricades by removing health from opposing barricade
@@ -357,9 +366,8 @@
 		if(50 to 75) damage_state = BARRICADE_DMG_SLIGHT
 		if(75 to INFINITY) damage_state = BARRICADE_DMG_NONE
 
-/obj/structure/barricade/proc/weld_cade(obj/item/tool/weldingtool/welder, mob/user)
-	if(!metallic)
-		user.visible_message(SPAN_WARNING("You can't weld \the [src]!"))
+/obj/structure/barricade/proc/try_weld_cade(obj/item/tool/weldingtool/welder, mob/user, repeat = TRUE, skip_check = FALSE)
+	if(!skip_check && !can_weld(welder, user))
 		return FALSE
 
 	if(!(welder.remove_fuel(2, user)))
@@ -378,6 +386,16 @@
 	user.count_niche_stat(STATISTICS_NICHE_REPAIR_CADES)
 	update_health(-200)
 	playsound(src.loc, 'sound/items/Welder2.ogg', 25, TRUE)
+
+	var/current_tool = user.get_active_hand()
+	if(current_tool != welder)
+		return TRUE // Swapped hands or tool
+	if(repeat && can_weld(welder, user, silent = TRUE))
+		// Assumption: The implementation of can_weld will return false if fully repaired
+		if(!try_weld_cade(welder, user, repeat = TRUE, skip_check = TRUE))
+			// If this returned false, then we were interrupted or ran out of fuel, so stop looping
+			return TRUE
+
 	return TRUE
 
 /obj/structure/barricade/verb/count_rotate()
@@ -465,4 +483,30 @@
 	nailgun.current_mag.current_rounds -= 3
 	nailgun.in_chamber = null
 	nailgun.load_into_chamber()
+	return TRUE
+
+/obj/structure/barricade/proc/can_weld(obj/item/item, mob/user, silent)
+	if(user.action_busy)
+		return FALSE
+
+	if(!metallic)
+		if(!silent)
+			user.visible_message(SPAN_WARNING("You can't weld \the [src]!"))
+		return FALSE
+
+	if(!HAS_TRAIT(item, TRAIT_TOOL_BLOWTORCH))
+		if(!silent)
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+		return FALSE
+
+	if(health == maxhealth)
+		if(!silent)
+			to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
+		return FALSE
+
+	if(!(isnull(damage_state)) && !(isnull(welder_lower_damage_limit)) && damage_state >= welder_lower_damage_limit)
+		if(!silent)
+			to_chat(user, SPAN_WARNING("[src] has sustained too much structural damage to be repaired."))
+		return FALSE
+
 	return TRUE

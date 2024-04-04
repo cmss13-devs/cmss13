@@ -372,6 +372,7 @@
 		to_chat(user, SPAN_NOTICE("[src] begins to buzz softly as you go live."))
 
 /obj/item/device/camera/broadcasting/proc/clear_broadcast()
+	SIGNAL_HANDLER
 	QDEL_NULL(linked_cam)
 	UnregisterSignal(src, list(
 		COMSIG_ITEM_DROPPED,

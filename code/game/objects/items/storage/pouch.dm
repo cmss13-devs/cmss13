@@ -123,11 +123,11 @@
 /obj/item/storage/pouch/bayonet/upp
 	default_knife_type = /obj/item/attachable/bayonet/upp
 
-/obj/item/storage/pouch/bayonet/_item_insertion(obj/item/W, prevent_warning = 0)
+/obj/item/storage/pouch/bayonet/_item_insertion(obj/item/object, prevent_warning = 0)
 	..()
 	playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 
-/obj/item/storage/pouch/bayonet/_item_removal(obj/item/W, atom/new_location)
+/obj/item/storage/pouch/bayonet/_item_removal(obj/item/object, atom/new_location)
 	..()
 	playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 
@@ -264,11 +264,11 @@
 		current_gun = null
 		update_gun_icon()
 
-/obj/item/storage/pouch/pistol/can_be_inserted(obj/item/W, mob/user, stop_messages = FALSE) //A little more detailed than just 'the pouch is full'.
+/obj/item/storage/pouch/pistol/can_be_inserted(obj/item/object, mob/user, stop_messages = FALSE) //A little more detailed than just 'the pouch is full'.
 	. = ..()
 	if(!.)
 		return
-	if(current_gun && isgun(W))
+	if(current_gun && isgun(object))
 		if(!stop_messages)
 			to_chat(usr, SPAN_WARNING("[src] already holds a gun."))
 		return FALSE
@@ -404,9 +404,9 @@
 		/obj/item/ammo_magazine/handful,
 	)
 
-/obj/item/storage/pouch/magazine/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/ammo_magazine/shotgun))
-		var/obj/item/ammo_magazine/shotgun/M = W
+/obj/item/storage/pouch/magazine/attackby(obj/item/object, mob/user)
+	if(istype(object, /obj/item/ammo_magazine/shotgun))
+		var/obj/item/ammo_magazine/shotgun/M = object
 		if(istype(src, /obj/item/storage/pouch/magazine/pistol))
 			return..()
 		else
@@ -432,6 +432,86 @@
 		/obj/item/ammo_magazine/pistol/heavy,
 		/obj/item/ammo_magazine/revolver,
 	)
+
+/obj/item/storage/pouch/magazine/pistol
+	name = "pistol magazine pouch"
+	desc = "It can carry pistol magazines and revolver speedloaders."
+	max_w_class = SIZE_SMALL
+	icon_state = "pistol_mag"
+	storage_slots = 3
+
+	can_hold = list(
+		/obj/item/ammo_magazine/pistol,
+		/obj/item/ammo_magazine/pistol/heavy,
+		/obj/item/ammo_magazine/revolver,
+	)
+
+/obj/item/storage/pouch/magazine/pistol/holster
+	name = "pistol pouch with magazines"
+	desc = "It can carry pistol or revolver with magazines for them"
+	max_w_class = SIZE_SMALL
+	icon_state = "pistol_mag"
+	storage_slots = 4
+	w_class = SIZE_LARGE
+	max_w_class = SIZE_MEDIUM
+	var/obj/item/weapon/gun/current_gun
+	var/sheatheSound = 'sound/weapons/gun_pistol_sheathe.ogg'
+	var/drawSound = 'sound/weapons/gun_pistol_draw.ogg'
+	storage_flags = STORAGE_ALLOW_QUICKDRAW|STORAGE_FLAGS_POUCH
+	can_hold = list(
+
+//Can hold variety of pistols and revolvers together with ammo for them
+	/obj/item/weapon/gun/pistol,
+	/obj/item/weapon/gun/revolver,
+	/obj/item/ammo_magazine/pistol,
+	/obj/item/ammo_magazine/revolver,
+	)
+
+/obj/item/storage/pouch/magazine/pistol/holster/on_stored_atom_del(atom/movable/gun)
+	if(gun == current_gun)
+		current_gun = null
+
+/obj/item/storage/pouch/magazine/pistol/holster/can_be_inserted(obj/item/object, mob/user, stop_messages = FALSE)
+	if( ..() ) //If the parent did their thing, this should be fine. It pretty much handles all the checks.
+		if(isgun(object))
+			if(current_gun)
+				if(!stop_messages)
+					to_chat(usr, SPAN_WARNING("[src] already holds \a [object]."))
+				return
+		else //Must be ammo.
+			var/ammo_slots = storage_slots - 1 //We have a slot reserved for the gun
+			var/ammo_stored = length(contents)
+			if(current_gun)
+				ammo_stored--
+			if(ammo_stored >= ammo_slots)
+				if(!stop_messages)
+					to_chat(usr, SPAN_WARNING("[src] can't hold any more magazines."))
+				return
+		return 1
+
+/obj/item/storage/pouch/magazine/pistol/holster/_item_insertion(obj/item/object)
+	if(isgun(object))
+		current_gun = object //If there's no active gun, we want to make this our gun
+		playsound(src, sheatheSound, 15, TRUE)
+	. = ..()
+
+/obj/item/storage/pouch/magazine/pistol/holster/_item_removal(obj/item/object)
+	if(isgun(object))
+		current_gun = null
+		playsound(src, drawSound, 15, TRUE)
+	. = ..()
+
+/obj/item/storage/pouch/magazine/pistol/holster/attack_hand(mob/user, mods) //Mostly copied from gunbelt.
+	if(current_gun && ishuman(user) && loc == user)
+		if(mods && mods["alt"] && length(contents) > 1) //Withdraw the most recently inserted nongun item if possible.
+			var/obj/item/I = contents[length(contents)]
+			if(isgun(I))
+				I = contents[length(contents) - 1]
+			I.attack_hand(user)
+		else
+			current_gun.attack_hand(user)
+		return
+	..()
 
 /obj/item/storage/pouch/magazine/pistol/large
 	name = "large pistol magazine pouch"
@@ -543,9 +623,9 @@
 	)
 	flap = FALSE
 
-/obj/item/storage/pouch/shotgun/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/ammo_magazine/shotgun))
-		var/obj/item/ammo_magazine/shotgun/M = W
+/obj/item/storage/pouch/shotgun/attackby(obj/item/object, mob/user)
+	if(istype(object, /obj/item/ammo_magazine/shotgun))
+		var/obj/item/ammo_magazine/shotgun/M = object
 		dump_ammo_to(M, user, M.transfer_handful_amount)
 	else
 		return ..()
@@ -596,9 +676,9 @@
 		/obj/item/explosive/grenade,
 	)
 
-/obj/item/storage/pouch/explosive/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/storage/box/nade_box))
-		var/obj/item/storage/box/nade_box/M = W
+/obj/item/storage/pouch/explosive/attackby(obj/item/object, mob/user)
+	if(istype(object, /obj/item/storage/box/nade_box))
+		var/obj/item/storage/box/nade_box/M = object
 		dump_into(M,user)
 	else
 		return ..()
@@ -750,9 +830,9 @@
 	storage_slots = 6
 	can_hold = list(/obj/item/reagent_container/glass/beaker/vial)
 
-/obj/item/storage/pouch/vials/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/storage/fancy/vials))
-		var/obj/item/storage/fancy/vials/M = W
+/obj/item/storage/pouch/vials/attackby(obj/item/object, mob/user)
+	if(istype(object, /obj/item/storage/fancy/vials))
+		var/obj/item/storage/fancy/vials/M = object
 		dump_into(M,user)
 	else
 		return ..()
@@ -915,24 +995,24 @@
 	. = ..()
 	fill_with("tricordrazine")
 
-/obj/item/storage/pouch/pressurized_reagent_canister/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/reagent_container/glass/pressurized_canister))
+/obj/item/storage/pouch/pressurized_reagent_canister/attackby(obj/item/object, mob/user)
+	if(istype(object, /obj/item/reagent_container/glass/pressurized_canister))
 		if(inner)
 			to_chat(user, SPAN_WARNING("There already is a container inside [src]!"))
 		else
-			user.drop_inv_item_to_loc(W, src)
-			inner = W
-			contents -= W
-			to_chat(user, SPAN_NOTICE("You insert [W] into [src]!"))
+			user.drop_inv_item_to_loc(object, src)
+			inner = object
+			contents -= object
+			to_chat(user, SPAN_NOTICE("You insert [object] into [src]!"))
 			update_icon()
 		return
 
-	if(istype(W, /obj/item/reagent_container/hypospray/autoinjector/empty))
-		var/obj/item/reagent_container/hypospray/autoinjector/A = W
+	if(istype(object, /obj/item/reagent_container/hypospray/autoinjector/empty))
+		var/obj/item/reagent_container/hypospray/autoinjector/A = object
 		fill_autoinjector(A)
 		return ..()
-	else if(istype(W, /obj/item/reagent_container/hypospray/autoinjector))
-		to_chat(user, SPAN_WARNING("[W] is not compatible with this system!"))
+	else if(istype(object, /obj/item/reagent_container/hypospray/autoinjector))
+		to_chat(user, SPAN_WARNING("[object] is not compatible with this system!"))
 	return ..()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/proc/fill_autoinjector(obj/item/reagent_container/hypospray/autoinjector/autoinjector)
@@ -1113,9 +1193,9 @@
 	icon_state = "flare"
 	can_hold = list(/obj/item/device/flashlight/flare,/obj/item/device/flashlight/flare/signal)
 
-/obj/item/storage/pouch/flare/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/storage/box/m94))
-		var/obj/item/storage/box/m94/M = W
+/obj/item/storage/pouch/flare/attackby(obj/item/object, mob/user)
+	if(istype(object, /obj/item/storage/box/m94))
+		var/obj/item/storage/box/m94/M = object
 		dump_into(M,user)
 	else
 		return ..()
@@ -1404,11 +1484,11 @@
 	else
 		icon_state = initial(icon_state)
 
-/obj/item/storage/pouch/machete/_item_insertion(obj/item/W, prevent_warning = 0)
+/obj/item/storage/pouch/machete/_item_insertion(obj/item/object, prevent_warning = 0)
 	..()
 	playsound(src, sheathe_sound, vol = 15, vary = TRUE)
 
-/obj/item/storage/pouch/machete/_item_removal(obj/item/W, atom/new_location)
+/obj/item/storage/pouch/machete/_item_removal(obj/item/object, atom/new_location)
 	..()
 	playsound(src, draw_sound, vol = 15, vary = TRUE)
 

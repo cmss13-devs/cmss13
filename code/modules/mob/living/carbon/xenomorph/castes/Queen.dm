@@ -350,8 +350,6 @@
 		/datum/action/xeno_action/activable/xeno_spit/queen_macro, //third macro
 		/datum/action/xeno_action/onclick/shift_spits, //second macro
 	)
-	mutation_icon_state = QUEEN_NORMAL
-	mutation_type = QUEEN_NORMAL
 	claw_type = CLAW_TYPE_VERY_SHARP
 
 	var/queen_aged = FALSE
@@ -519,7 +517,7 @@
 				overwatch(observed_xeno, TRUE)
 
 		if(ovipositor && !is_mob_incapacitated(TRUE))
-			egg_amount += 0.07 * mutators.egg_laying_multiplier //one egg approximately every 30 seconds
+			egg_amount += 0.07 //one egg approximately every 30 seconds
 			if(egg_amount >= 1)
 				if(isturf(loc))
 					var/turf/T = loc
@@ -537,22 +535,6 @@
 	if(queen_age_timer_id != TIMER_ID_NULL)
 		var/time_left = time2text(timeleft(queen_age_timer_id) + 1 MINUTES, "mm") // We add a minute so that it basically ceilings the value.
 		. += "Maturity: [time_left == 1? "[time_left] minute" : "[time_left] minutes"] remaining"
-
-//Custom bump for crushers. This overwrites normal bumpcode from carbon.dm
-/mob/living/carbon/xenomorph/queen/Collide(atom/A)
-	set waitfor = 0
-
-	if(stat || !istype(A) || A == src)
-		return FALSE
-
-	if(now_pushing)
-		return FALSE//Just a plain ol turf, let's return.
-
-	var/turf/T = get_step(src, dir)
-	if(!T || !get_step_to(src, T)) //If it still exists, try to push it.
-		return ..()
-
-	return TRUE
 
 /mob/living/carbon/xenomorph/queen/proc/set_orders()
 	set category = "Alien"
@@ -587,7 +569,7 @@
 		to_chat(src, SPAN_DANGER("You cannot send Announcements (muted)."))
 		return
 	if(health <= 0)
-		to_chat(src, SPAN_WARNING("You can't do that while unconcious."))
+		to_chat(src, SPAN_WARNING("You can't do that while unconscious."))
 		return FALSE
 	if(!check_plasma(50))
 		return FALSE
@@ -611,7 +593,7 @@
 
 	xeno_announcement(input, hivenumber, "The words of the [name] reverberate in our head...")
 
-	log_and_message_admins("[key_name_admin(src)] has created a Word of the Queen report:")
+	message_admins("[key_name_admin(src)] has created a Word of the Queen report:")
 	log_admin("[key_name_admin(src)] Word of the Queen: [input]")
 	return TRUE
 
@@ -952,7 +934,7 @@
 	var/mob/living/carbon/xenomorph/queen/Queen = bound_xeno
 	if(Queen.ovipositor)
 		Queen.icon = Queen.queen_ovipositor_icon
-		Queen.icon_state = "[Queen.mutation_icon_state || Queen.mutation_type] Queen Ovipositor"
+		Queen.icon_state = "[Queen.get_strain_name()] Queen Ovipositor"
 		return TRUE
 
 	// Switch icon back and then let normal icon behavior happen

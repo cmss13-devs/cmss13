@@ -200,25 +200,30 @@
 		/obj/item/storage/fancy/cigarettes/arcturian_ace = 15,
 		/obj/item/storage/fancy/cigarettes/emeraldgreen = 15,
 		/obj/item/storage/fancy/cigarettes/wypacket = 15,
+		/obj/item/storage/fancy/cigarettes/trading_card = 15,
 		/obj/item/storage/fancy/cigarettes/lady_finger = 15,
 		/obj/item/storage/fancy/cigarettes/blackpack = 10,
 		/obj/item/storage/fancy/cigar/tarbacks = 5,
+
 		/obj/item/storage/box/matches = 10,
 		/obj/item/tool/lighter/random = 20,
 		/obj/item/tool/lighter/zippo = 5,
+
 	)
 
 	prices = list(
 		/obj/item/storage/fancy/cigarettes/kpack = 40,
 		/obj/item/storage/fancy/cigarettes/arcturian_ace = 25,
 		/obj/item/storage/fancy/cigarettes/emeraldgreen = 35,
-		/obj/item/storage/fancy/cigarettes/wypacket = 35,
+		/obj/item/storage/fancy/cigarettes/wypacket = 30,
+		/obj/item/storage/fancy/cigarettes/trading_card = 35,
 		/obj/item/storage/fancy/cigarettes/lady_finger = 30,
 		/obj/item/storage/fancy/cigarettes/blackpack = 75,
 		/obj/item/storage/fancy/cigar/tarbacks = 35,
 		/obj/item/storage/box/matches = 1,
 		/obj/item/tool/lighter/random = 10,
 		/obj/item/tool/lighter/zippo = 25,
+
 	)
 
 /obj/structure/machinery/vending/security
@@ -407,7 +412,7 @@
 	name = "\improper Rec-Vend"
 	desc = "Contains Weyland-Yutani approved recreational items, like Walkmans and Cards."
 	icon_state = "walkman"
-	product_ads = "The only place to have fun in the entire Marine Corps!;You'll find no better music from here to Arcturus!;Instructions not included with decks of cards!;No volume controls - you don't need them!;All products responsibly made by people having just as much fun as you will be!"
+	product_ads = "The only place to have fun in the entire Marine Corps!;You'll find no better music from here to Arcturus!;Instructions not included with decks of cards!;No volume controls - you don't need them!;All products responsibly made by people having just as much fun as you will be!;Say goodbye to the lucky strike military tobacco monopoly, with the new Weyland Yutani Military Trading Card Gold cigarette pack!"
 	vend_delay = 0.5 SECONDS
 	idle_power_usage = 200
 
@@ -436,6 +441,10 @@
 		/obj/item/tool/pen/blue = 10,
 		/obj/item/tool/pen/red = 10,
 		/obj/item/tool/pen/fountain = 3,
+		/obj/item/storage/fancy/cigarettes/trading_card = 20,
+		/obj/item/storage/fancy/trading_card = 20,
+		/obj/item/toy/trading_card = 50,
+
 	)
 
 	contraband = list(/obj/item/toy/sword = 2)
@@ -463,6 +472,10 @@
 		/obj/item/tool/pen/blue = 2,
 		/obj/item/tool/pen/red = 2,
 		/obj/item/tool/pen/fountain = 30,
+		/obj/item/storage/fancy/cigarettes/trading_card = 30,
+		/obj/item/storage/fancy/trading_card = 20,
+		/obj/item/toy/trading_card = 5,
+
 	)
 	product_type = VENDOR_PRODUCT_TYPE_RECREATIONAL
 

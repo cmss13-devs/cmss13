@@ -90,9 +90,11 @@
 		return
 	GLOB.nightmare_landmarks[insert_tag] = get_turf(src)
 /obj/effect/landmark/nightmare/Destroy()
-	if(insert_tag && autoremove \
-	   && GLOB.nightmare_landmarks[insert_tag] == get_turf(src))
-		GLOB.nightmare_landmarks.Remove(insert_tag)
+	if(insert_tag)
+		var/turf/turf = get_turf(src)
+		if(autoremove && GLOB.nightmare_landmarks[insert_tag] == turf)
+			GLOB.nightmare_landmarks.Remove(insert_tag)
+		GLOB.nightmare_landmark_tags_removed += insert_tag
 	return ..()
 
 /obj/effect/landmark/ert_spawns/distress
@@ -401,6 +403,24 @@
 /obj/effect/landmark/late_join/working_joe
 	name = "working joe late join"
 	job = JOB_WORKING_JOE
+
+
+/obj/effect/landmark/late_join/cmo
+	name = "Chief Medical Officer late join"
+	job = JOB_CMO
+
+/obj/effect/landmark/late_join/researcher
+	name = "Researcher late join"
+	job = JOB_RESEARCHER
+
+/obj/effect/landmark/late_join/doctor
+	name = "Doctor late join"
+	job = JOB_DOCTOR
+
+/obj/effect/landmark/late_join/nurse
+	name = "Nurse late join"
+	job = JOB_NURSE
+
 
 /obj/effect/landmark/late_join/Initialize(mapload, ...)
 	. = ..()

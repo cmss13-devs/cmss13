@@ -9,10 +9,9 @@ interface CasSimData {
   detonation_cooldown: number;
 }
 
-export const CasSim = (_props, context) => {
-  const { act, data } = useBackend<CasSimData>(context);
+export const CasSim = () => {
+  const { act, data } = useBackend<CasSimData>();
   const [simulationView, setSimulationView] = useLocalState(
-    context,
     'simulation_view',
     false
   );

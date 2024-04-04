@@ -2,7 +2,7 @@ import { toFixed } from 'common/math';
 import { storage } from 'common/storage';
 import { multiline } from 'common/string';
 import { createUuid } from 'common/uuid';
-import { Component, Fragment } from 'inferno';
+import { Component, Fragment } from 'react';
 import { useBackend, useLocalState } from '../backend';
 import { Box, Button, ByondUi, Divider, Input, Knob, LabeledControls, NumberInput, Section, Flex, Slider } from '../components';
 import { Window } from '../layouts';
@@ -11,7 +11,7 @@ const pod_grey = {
   color: 'grey',
 };
 
-export const PodLauncher = (props, context) => {
+export const PodLauncher = (props) => {
   return (
     <Window title="Supply Pod Menu" width={730} height={500} resizable>
       <PodLauncherContent />
@@ -19,7 +19,7 @@ export const PodLauncher = (props, context) => {
   );
 };
 
-const PodLauncherContent = (props, context) => {
+const PodLauncherContent = (props) => {
   return (
     <Window.Content>
       <Flex direction="column" height="100%">
@@ -132,8 +132,8 @@ const EFFECTS_LOAD = [
     selected: (data) => {
       return data['launch_choice'] === data.glob_launch_options.LAUNCH_ALL;
     },
-    onClick: (context) => {
-      const { act, data } = useBackend(context);
+    onClick: () => {
+      const { act, data } = useBackend();
       act('set_launch_option', { launch_option: 'LAUNCH_ALL' });
     },
   },
@@ -143,8 +143,8 @@ const EFFECTS_LOAD = [
     selected: (data) => {
       return data['launch_choice'] === data.glob_launch_options.LAUNCH_RANDOM;
     },
-    onClick: (context) => {
-      const { act, data } = useBackend(context);
+    onClick: () => {
+      const { act, data } = useBackend();
       act('set_launch_option', { launch_option: 'LAUNCH_RANDOM' });
     },
   },
@@ -157,8 +157,8 @@ const EFFECTS_LOAD = [
     selected: (data) => {
       return !data['launch_random_item'];
     },
-    onClick: (context) => {
-      const { act, data } = useBackend(context);
+    onClick: () => {
+      const { act, data } = useBackend();
       act('launch_random_item', { should_do: false });
     },
   },
@@ -168,8 +168,8 @@ const EFFECTS_LOAD = [
     selected: (data) => {
       return data['launch_random_item'];
     },
-    onClick: (context) => {
-      const { act, data } = useBackend(context);
+    onClick: () => {
+      const { act, data } = useBackend();
       act('launch_random_item', { should_do: true });
     },
   },
@@ -180,8 +180,8 @@ const EFFECTS_LOAD = [
     title: 'Clone',
     icon: 'clone',
     selected: (data) => data['launch_clone'],
-    onClick: (context) => {
-      const { act, data } = useBackend(context);
+    onClick: () => {
+      const { act, data } = useBackend();
       act('launch_clone', { should_do: !data['launch_clone'] });
     },
   },
@@ -189,8 +189,8 @@ const EFFECTS_LOAD = [
     title: 'Recall',
     icon: 'redo',
     selected: (data) => data['should_recall'],
-    onClick: (context) => {
-      const { act, data } = useBackend(context);
+    onClick: () => {
+      const { act, data } = useBackend();
       act('set_should_recall', { should_do: !data['should_recall'] });
     },
   },
@@ -203,8 +203,8 @@ const EFFECTS_NORMAL = [
     selected: (data) => {
       return data['gib_on_land'];
     },
-    onClick: (context) => {
-      const { act, data } = useBackend(context);
+    onClick: () => {
+      const { act, data } = useBackend();
       act('set_gib_on_land', { should_do: !data['gib_on_land'] });
     },
   },
@@ -214,8 +214,8 @@ const EFFECTS_NORMAL = [
     selected: (data) => {
       return data['stealth'];
     },
-    onClick: (context) => {
-      const { act, data } = useBackend(context);
+    onClick: () => {
+      const { act, data } = useBackend();
       act('set_stealth', { should_do: !data['stealth'] });
     },
   },
@@ -225,8 +225,8 @@ const EFFECTS_NORMAL = [
     selected: (data) => {
       return data['can_be_opened'];
     },
-    onClick: (context) => {
-      const { act, data } = useBackend(context);
+    onClick: () => {
+      const { act, data } = useBackend();
       act('set_can_be_opened', { should_do: !data['can_be_opened'] });
     },
   },
@@ -246,13 +246,9 @@ const EFFECTS_ALL = [
   },
 ];
 
-const ViewTabHolder = (props, context) => {
-  const { act, data } = useBackend(context);
-  const [tabPageIndex, setTabPageIndex] = useLocalState(
-    context,
-    'tabPageIndex',
-    1
-  );
+const ViewTabHolder = (props) => {
+  const { act, data } = useBackend();
+  const [tabPageIndex, setTabPageIndex] = useLocalState('tabPageIndex', 1);
   const { glob_tab_indexes, custom_dropoff, map_ref } = data;
   const TabPageComponent = TABPAGES[tabPageIndex].component();
   return (
@@ -342,7 +338,7 @@ const ViewTabHolder = (props, context) => {
   );
 };
 
-const TabPod = (props, context) => {
+const TabPod = (props) => {
   return (
     <Box color="label">
       Note: You can right click on this
@@ -352,8 +348,8 @@ const TabPod = (props, context) => {
   );
 };
 
-const TabBay = (props, context) => {
-  const { act, data } = useBackend(context);
+const TabBay = (props) => {
+  const { act, data } = useBackend();
   return (
     <>
       <Button
@@ -371,8 +367,8 @@ const TabBay = (props, context) => {
   );
 };
 
-const TabDrop = (props, context) => {
-  const { act, data } = useBackend(context);
+const TabDrop = (props) => {
+  const { act, data } = useBackend();
   return (
     <>
       <Button
@@ -390,8 +386,8 @@ const TabDrop = (props, context) => {
   );
 };
 
-const PodStatusPage = (props, context) => {
-  const { act, data } = useBackend(context);
+const PodStatusPage = (props) => {
+  const { act, data } = useBackend();
   return (
     <Section fill width="100%">
       <Flex>
@@ -422,7 +418,7 @@ const PodStatusPage = (props, context) => {
                           }
                           onClick={() => {
                             if (effect.onClick) {
-                              effect.onClick(context);
+                              effect.onClick();
                             }
                           }}
                           style={{
@@ -446,13 +442,9 @@ const PodStatusPage = (props, context) => {
   );
 };
 
-const ReverseMenu = (props, context) => {
-  const { act, data } = useBackend(context);
-  const [tabPageIndex, setTabPageIndex] = useLocalState(
-    context,
-    'tabPageIndex',
-    1
-  );
+const ReverseMenu = (props) => {
+  const { act, data } = useBackend();
+  const [tabPageIndex, setTabPageIndex] = useLocalState('tabPageIndex', 1);
   const { glob_tab_indexes, target_mode } = data;
   const { TARGET_MODE_DROPOFF, TARGET_MODE_NONE } = data.glob_target_mode;
   return (
@@ -522,8 +514,8 @@ class PresetsPage extends Component {
     storage.set('cm_podlauncher_preset_' + id, data);
   }
 
-  async loadDataFromPreset(id, context) {
-    const { act } = useBackend(this.context);
+  async loadDataFromPreset(id) {
+    const { act } = useBackend();
     act('load_preset', {
       payload: await storage.get('cm_podlauncher_preset_' + id),
     });
@@ -561,23 +553,11 @@ class PresetsPage extends Component {
   }
   render() {
     const { presets } = this.state;
-    const { act, data } = useBackend(this.context);
-    const [presetIndex, setSelectedPreset] = useLocalState(
-      this.context,
-      'presetIndex',
-      0
-    );
-    const [settingName, setEditingNameStatus] = useLocalState(
-      this.context,
-      'settingName',
-      0
-    );
-    const [newNameText, setText] = useLocalState(
-      this.context,
-      'newNameText',
-      ''
-    );
-    const [hue, setHue] = useLocalState(this.context, 'hue', 0);
+    const { act, data } = useBackend();
+    const [presetIndex, setSelectedPreset] = useLocalState('presetIndex', 0);
+    const [settingName, setEditingNameStatus] = useLocalState('settingName', 0);
+    const [newNameText, setText] = useLocalState('newNameText', '');
+    const [hue, setHue] = useLocalState('hue', 0);
     return (
       <Section
         scrollable
@@ -696,8 +676,8 @@ class PresetsPage extends Component {
   }
 }
 
-const LaunchPage = (props, context) => {
-  const { act, data } = useBackend(context);
+const LaunchPage = (props) => {
+  const { act, data } = useBackend();
   const { TARGET_MODE_LAUNCH, TARGET_MODE_NONE } = data.glob_target_mode;
   return (
     <Button
@@ -728,8 +708,8 @@ const LaunchPage = (props, context) => {
   );
 };
 
-const Timing = (props, context) => {
-  const { act, data } = useBackend(context);
+const Timing = (props) => {
+  const { act, data } = useBackend();
   return (
     <Section
       fill
@@ -773,8 +753,8 @@ const Timing = (props, context) => {
   );
 };
 
-const DelayHelper = (props, context) => {
-  const { act, data } = useBackend(context);
+const DelayHelper = (props) => {
+  const { act, data } = useBackend();
   const { delay_list, reverse = false, title } = props;
   return (
     <>
@@ -823,8 +803,8 @@ const DelayHelper = (props, context) => {
   );
 };
 
-const Damage = (props, context) => {
-  const { act, data } = useBackend(context);
+const Damage = (props) => {
+  const { act, data } = useBackend();
   return (
     <Section
       fill
@@ -860,13 +840,9 @@ const Damage = (props, context) => {
   );
 };
 
-const Explosion = (props, context) => {
-  const { act, data } = useBackend(context);
-  const [enabled, setEnabled] = useLocalState(
-    context,
-    'explosion_enabled',
-    false
-  );
+const Explosion = (props) => {
+  const { act, data } = useBackend();
+  const [enabled, setEnabled] = useLocalState('explosion_enabled', false);
   return (
     <Section
       fill
@@ -937,8 +913,8 @@ const Explosion = (props, context) => {
   );
 };
 
-const Container = (props, context) => {
-  const { act, data } = useBackend(context);
+const Container = (props) => {
+  const { act, data } = useBackend();
   return (
     <Section fill title="Container">
       <Slider

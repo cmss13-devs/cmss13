@@ -123,7 +123,7 @@
 	update_icon()
 
 /obj/effect/alien/weeds/node/weak
-	name = "weak resin node"
+	name = "weak weed node"
 	health = WEED_HEALTH_STANDARD
 	alpha = 127
 
@@ -377,7 +377,7 @@
 	else
 		to_chat(user, SPAN_WARNING("You cut \the [src] away with \the [attacking_item]."))
 
-	var/damage = attacking_item.force / 3
+	var/damage = (attacking_item.force * attacking_item.demolition_mod) / 3
 	playsound(loc, "alien_resin_break", 25)
 
 	if(iswelder(attacking_item))
@@ -469,7 +469,7 @@
 
 
 /obj/effect/alien/weeds/node
-	name = "resin node"
+	name = "weed node"
 	desc = "A weird, pulsating node."
 	icon_state = "weednode"
 	// Weed nodes start out with normal weed health and become stronger once they've stopped spreading

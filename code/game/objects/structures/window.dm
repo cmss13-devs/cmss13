@@ -286,7 +286,7 @@
 		to_chat(user, (state ? SPAN_NOTICE("You have pried the window into the frame.") : SPAN_NOTICE("You have pried the window out of the frame.")))
 	else
 		if(!not_damageable) //Impossible to destroy
-			health -= W.force
+			health -= W.force * W.demolition_mod
 			if(health <= 7  && !reinf && !static_frame && !not_deconstructable)
 				anchored = FALSE
 				update_nearby_icons()
@@ -593,6 +593,34 @@
 /obj/structure/window/framed/almayer/white/hull
 	name = "hull window"
 	desc = "An ultra-reinforced window designed to keep research a secure area. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
+	not_damageable = TRUE
+	not_deconstructable = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	health = 1000000 //Failsafe, shouldn't matter
+
+/obj/structure/window/framed/almayer/aicore
+	icon_state = "ai_rwindow0"
+	basestate = "ai_rwindow"
+	window_frame = /obj/structure/window_frame/almayer/aicore
+
+/obj/structure/window/framed/almayer/aicore/hull
+	name = "hull window"
+	desc = "An ultra-reinforced window designed to protect the AI Core. Made out of exotic materials to prevent hull breaches, nothing will get through here."
+	not_damageable = TRUE
+	not_deconstructable = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	health = 1000000 //Failsafe, shouldn't matter
+
+/obj/structure/window/framed/almayer/aicore/white
+	icon_state = "w_ai_rwindow0"
+	basestate = "w_ai_rwindow"
+	window_frame = /obj/structure/window_frame/almayer/aicore/white
+
+/obj/structure/window/framed/almayer/aicore/white/hull
+	name = "hull window"
+	desc = "An ultra-reinforced window designed to protect the AI Core. Made out of exotic materials to prevent hull breaches, nothing will get through here."
 	not_damageable = TRUE
 	not_deconstructable = TRUE
 	unslashable = TRUE

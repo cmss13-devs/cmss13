@@ -311,18 +311,18 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 	if(update) UpdateDamageIcon()
 
 // damage MANY limbs, in random order
-/mob/living/carbon/human/take_overall_damage(brute, burn, sharp = 0, edge = 0, used_weapon = null)
+/mob/living/carbon/human/take_overall_damage(brute, burn, used_weapon = null, limb_damage_chance = 80)
 	if(status_flags & GODMODE)
 		return //godmode
-	var/list/obj/limb/parts = get_damageable_limbs(80)
+	var/list/obj/limb/parts = get_damageable_limbs(limb_damage_chance)
 	var/amount_of_parts = length(parts)
 	for(var/obj/limb/L as anything in parts)
-		L.take_damage(brute / amount_of_parts, burn / amount_of_parts, sharp, edge, used_weapon)
+		L.take_damage(brute / amount_of_parts, burn / amount_of_parts, sharp = FALSE, edge = FALSE, used_weapon = used_weapon)
 	updatehealth()
 	UpdateDamageIcon()
 
-// damage MANY LIMBS, in random order
-/mob/living/carbon/human/proc/take_overall_armored_damage(damage, armour_type = ARMOR_MELEE, damage_type = BRUTE, limb_damage_chance = 80, penetration = 0, armour_break_pr_pen = 0, armour_break_flat = 0)
+// damage MANY LIMBS, in random order, but consider armor
+/mob/living/carbon/human/proc/take_overall_armored_damage(damage, armour_type = ARMOR_MELEE, damage_type = BRUTE, limb_damage_chance = 80, penetration = 0)
 	if(status_flags & GODMODE)
 		return //godmode
 	var/list/obj/limb/parts = get_damageable_limbs(limb_damage_chance)
@@ -330,6 +330,8 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 	var/armour_config = GLOB.marine_ranged
 	if(armour_type == ARMOR_MELEE)
 		armour_config = GLOB.marine_melee
+	if(armour_type == ARMOR_BOMB)
+		armour_config = GLOB.marine_explosive
 	for(var/obj/limb/L as anything in parts)
 		var/armor = getarmor(L, armour_type)
 		var/modified_damage = armor_damage_reduction(armour_config, damage, armor, penetration, 0, 0)

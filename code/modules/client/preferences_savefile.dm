@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 21
+#define SAVEFILE_VERSION_MAX 22
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -89,6 +89,12 @@
 			dual_wield_pref = DUAL_WIELD_FIRE
 		S["dual_wield_pref"] << dual_wield_pref
 
+	if(savefile_version < 22)
+		var/sound_toggles
+		S["toggles_sound"] >> sound_toggles
+		sound_toggles |= SOUND_OBSERVER_ANNOUNCEMENTS
+		S["toggles_sound"] << sound_toggles
+
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
 
@@ -100,7 +106,7 @@
 /proc/sanitize_keybindings(value)
 	var/list/base_bindings = sanitize_islist(value, list())
 	if(!length(base_bindings))
-		base_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key)
+		base_bindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key)
 	for(var/key in base_bindings)
 		base_bindings[key] = base_bindings[key] & GLOB.keybindings_by_name
 		if(!length(base_bindings[key]))
@@ -480,6 +486,10 @@
 	S["uplinklocation"] >> uplinklocation
 	S["exploit_record"] >> exploit_record
 
+	var/tutorial_string = ""
+	S["completed_tutorials"] >> tutorial_string
+	tutorial_savestring_to_list(tutorial_string)
+
 	//Sanitize
 	metadata = sanitize_text(metadata, initial(metadata))
 	real_name = reject_bad_name(real_name)
@@ -624,6 +634,8 @@
 
 	S["uplinklocation"] << uplinklocation
 	S["exploit_record"] << exploit_record
+
+	S["completed_tutorials"] << tutorial_list_to_savestring()
 
 	return 1
 

@@ -50,6 +50,7 @@
 #define SPAN_MENTORHELP(X) ("<span class='mentorhelp'>" + X + "</span>")
 #define SPAN_MENTORSAY(X) ("<span class='mentorsay'>" + X + "</span>")
 #define SPAN_MENTORBODY(X) ("<span class='mentorbody'>" + X + "</span>")
+#define SPAN_NICHE(X) "<span class='niche'>[X]</span>"
 
 #define SPAN_PM(X) "<span class='pm'>[X]</span>"
 
@@ -106,3 +107,4 @@
 #define SPAN_MAROON(X) "<font color=Maroon>[X]</font>"
 
 #define SPAN_STAFF_IC(X) "<span class='staff_ic'>[X]</span>"
+#define SPAN_BIGNOTICE(X) "<span class='bigannounce'>[X]</span>"

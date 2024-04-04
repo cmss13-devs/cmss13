@@ -84,7 +84,7 @@
 	/// that will be given to a projectile with the current ammo datum
 	var/list/list/traits_to_give
 
-	var/flamer_reagent_type = /datum/reagent/napalm/ut
+	var/flamer_reagent_id = "utnapthal"
 
 	/// The flicker that plays when a bullet hits a target. Usually red. Can be nulled so it doesn't show up at all.
 	var/hit_effect_color = "#FF0000"
@@ -106,7 +106,7 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	return
 
-/datum/ammo/proc/on_embed(mob/embedded_mob, obj/limb/target_organ)
+/datum/ammo/proc/on_embed(mob/embedded_mob, obj/limb/target_organ, silent = FALSE)
 	return
 
 /datum/ammo/proc/do_at_max_range(obj/projectile/P)
@@ -237,11 +237,12 @@
 
 		P.fire_at(new_target, original_P.firer, original_P.shot_from, P.ammo.max_range, P.ammo.shell_speed, original_P.original) //Fire!
 
-/datum/ammo/proc/drop_flame(turf/T, datum/cause_data/cause_data) // ~Art updated fire 20JAN17
-	if(!istype(T))
+/datum/ammo/proc/drop_flame(turf/turf, datum/cause_data/cause_data) // ~Art updated fire 20JAN17
+	if(!istype(turf))
 		return
-	if(locate(/obj/flamer_fire) in T)
+	if(locate(/obj/flamer_fire) in turf)
 		return
 
-	var/datum/reagent/R = new flamer_reagent_type()
-	new /obj/flamer_fire(T, cause_data, R)
+	var/datum/reagent/chemical = GLOB.chemical_reagents_list[flamer_reagent_id]
+
+	new /obj/flamer_fire(turf, cause_data, chemical)

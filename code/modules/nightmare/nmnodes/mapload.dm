@@ -94,13 +94,13 @@
 	. = ..()
 	if(!.) return
 	var/dir_path = context.get_file_path(filepath, "map")
-	var/regex/matcher = new(@"^([0-9]+)([\.\+])([^_]+)(_.*)?\.dmm$", "i")
+	var/regex/matcher = new(@"^([0-9]+)([\.\+])(([^_]+)(_.*))?\.dmm$", "i")
 	var/list/dircontents = flist(dir_path)
 	for(var/filename in dircontents)
 		if(!matcher.Find(filename))
 			continue
 #if !defined(UNIT_TESTS)
-		var/fprob = Clamp(text2num(matcher.group[1]) / 100, 0, 1)
+		var/fprob = clamp(text2num(matcher.group[1]) / 100, 0, 1)
 		if(fprob < rand())
 			continue
 #endif // Remove the possibility of chance for testing

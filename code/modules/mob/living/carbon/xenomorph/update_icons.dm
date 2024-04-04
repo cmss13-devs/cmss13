@@ -41,7 +41,7 @@
 			Q.queen_standing_icon = icon_xeno
 			Q.queen_ovipositor_icon = 'icons/mob/xenos/ovipositor.dmi'
 
-	var/mutation_caste_state = "[mutation_type] [caste.caste_type]"
+	var/mutation_caste_state = "[get_strain_icon()] [caste.caste_type]"
 	if(!walking_state_cache[mutation_caste_state])
 		var/cache_walking_state = FALSE
 		for(var/state in icon_states(icon))
@@ -64,7 +64,7 @@
 	if(behavior_delegate?.on_update_icons())
 		return
 
-	var/mutation_caste_state = "[mutation_icon_state || mutation_type] [caste.caste_type]"
+	var/mutation_caste_state = "[get_strain_icon()] [caste.caste_type]"
 	if(stat == DEAD)
 		icon_state = "[mutation_caste_state] Dead"
 		if(!(icon_state in icon_states(icon_xeno)))
@@ -307,8 +307,7 @@
 		wound_icon_holder.icon = 'icons/mob/xenos/wounds.dmi'
 
 	var/health_threshold
-	wound_icon_holder.layer = layer + 0.01
-	health_threshold = max(CEILING((health * 4) / (maxHealth), 1), 0) //From 0 to 4, in 25% chunks
+	health_threshold = max(Ceiling((health * 4) / (maxHealth)), 0) //From 0 to 4, in 25% chunks
 	if(health > HEALTH_THRESHOLD_DEAD)
 		if(health_threshold > 3)
 			wound_icon_holder.icon_state = "none"
@@ -322,10 +321,9 @@
 		else
 			wound_icon_holder.icon_state = handle_special_wound_states(health_threshold)
 
-
 ///Used to display the xeno wounds/backpacks without rapidly switching overlays
 /atom/movable/vis_obj
-	vis_flags = VIS_INHERIT_ID|VIS_INHERIT_DIR
+	vis_flags = VIS_INHERIT_ID|VIS_INHERIT_DIR|VIS_INHERIT_LAYER|VIS_INHERIT_PLANE
 	appearance_flags = RESET_COLOR
 
 /atom/movable/vis_obj/xeno_wounds

@@ -143,7 +143,7 @@
 		return
 
 	var/area/xeno_area = get_area(new_xeno)
-	if(!is_admin_level(new_xeno.z) || (xeno_area.flags_atom & AREA_ALLOW_XENO_JOIN))
+	if(!should_block_game_interaction(new_xeno) || (xeno_area.flags_atom & AREA_ALLOW_XENO_JOIN))
 		switch(new_xeno.tier) //They have evolved, add them to the slot count IF they are in regular game space
 			if(2)
 				hive.tier_2_xenos |= new_xeno
@@ -211,7 +211,10 @@
 		return FALSE
 
 	if(lock_evolve)
-		to_chat(src, SPAN_WARNING("You are banished and cannot reach the hivemind."))
+		if(banished)
+			to_chat(src, SPAN_WARNING("We are banished and cannot reach the hivemind."))
+		else
+			to_chat(src, SPAN_WARNING("We can't evolve."))
 		return FALSE
 
 	if(jobban_isbanned(src, JOB_XENOMORPH))//~who so genius to do this is?
@@ -269,7 +272,10 @@
 		return
 
 	if(lock_evolve)
-		to_chat(src, SPAN_WARNING("We are banished and cannot reach the hivemind."))
+		if(banished)
+			to_chat(src, SPAN_WARNING("We are banished and cannot reach the hivemind."))
+		else
+			to_chat(src, SPAN_WARNING("We can't deevolve."))
 		return FALSE
 
 

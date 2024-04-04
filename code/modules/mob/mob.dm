@@ -102,6 +102,8 @@
 				I = image('icons/mob/hud/sec_hud.dmi', src, "")
 			if(HUNTER_CLAN,HUNTER_HUD)
 				I = image('icons/mob/hud/hud_yautja.dmi', src, "")
+			if(HOLOCARD_HUD)
+				I = image('icons/mob/hud/marine_hud.dmi', src, "")
 		I.appearance_flags |= NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR
 		hud_list[hud] = I
 
@@ -463,6 +465,7 @@
 
 /mob/proc/swap_hand()
 	hand = !hand
+	SEND_SIGNAL(src, COMSIG_MOB_SWAPPED_HAND)
 
 //attempt to pull/grab something. Returns true upon success.
 /mob/proc/start_pulling(atom/movable/AM, lunge, no_msg)
@@ -760,7 +763,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 	recalculate_move_delay = TRUE
 
 	if(usr.stat)
-		to_chat(usr, "You are unconcious and cannot do that!")
+		to_chat(usr, "You are unconscious and cannot do that!")
 		return
 
 	if(usr.is_mob_restrained())
@@ -842,14 +845,8 @@ note dizziness decrements automatically in the mob's Life() proc.
 	handle_silent()
 	handle_drugged()
 	handle_slurring()
-	handle_dazed()
 	handle_slowed()
 	handle_superslowed()
-
-/mob/living/proc/handle_dazed()
-	if(dazed)
-		adjust_effect(-1, DAZE)
-	return dazed
 
 /mob/living/proc/handle_slowed()
 	if(slowed)
@@ -989,6 +986,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 /// Adds this list to the output to the stat browser
 /mob/proc/get_status_tab_items()
 	. = list()
+	SEND_SIGNAL(src, COMSIG_MOB_GET_STATUS_TAB_ITEMS, .)
 
 /mob/proc/get_role_name()
 	return
@@ -1056,3 +1054,14 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 /mob/proc/update_stat()
 	return
+
+/// Send src back to the lobby as a `/mob/new_player()`
+/mob/proc/send_to_lobby()
+	var/mob/new_player/new_player = new
+
+	if(!mind)
+		mind_initialize()
+
+	mind.transfer_to(new_player)
+
+	qdel(src)

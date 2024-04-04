@@ -6,7 +6,7 @@
 	w_class = SIZE_TINY
 
 	///The type of HUD our visor shows
-	var/hud_type = MOB_HUD_FACTION_USCM
+	var/hud_type = MOB_HUD_FACTION_MARINE
 
 	///The sound when toggling on the visor
 	var/toggle_on_sound = 'sound/handling/hud_on.ogg'
@@ -295,14 +295,14 @@
 /atom/movable/nvg_light
 	light_power = 0.5
 	light_range = 1
-	light_color = COLOUR_GREEN
+	light_color = COLOR_LIGHT_GREEN
 	light_system = MOVABLE_LIGHT
 	light_flags = LIGHT_ATTACHED
 
 /obj/item/device/helmet_visor/night_vision/marine_raider
 	name = "advanced night vision optic"
 	desc = "An insertable visor HUD into a standard USCM helmet. This type gives a form of night vision and is standard issue in special forces units."
-	hud_type = list(MOB_HUD_FACTION_USCM, MOB_HUD_MEDICAL_ADVANCED)
+	hud_type = list(MOB_HUD_FACTION_MARINE, MOB_HUD_MEDICAL_ADVANCED)
 	helmet_overlay = "nvg_sight_right_raider"
 	power_use = 0
 	visor_glows = FALSE

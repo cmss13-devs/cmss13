@@ -5,15 +5,15 @@ import { Box } from '../../components';
 import { mfdState } from './stateManagers';
 import { CameraProps } from './types';
 
-export const CameraMfdPanel = (props: MfdProps, context) => {
-  const { act } = useBackend(context);
-  const { setPanelState } = mfdState(context, props.panelStateId);
+export const CameraMfdPanel = (props: MfdProps) => {
+  const { act } = useBackend();
+  const { setPanelState } = mfdState(props.panelStateId);
   return (
     <MfdPanel
       panelStateId={props.panelStateId}
-      topButtons={[
-        { children: 'nvgon', onClick: () => act('nvg-enable') },
-        { children: 'nvgoff', onClick: () => act('nvg-disable') },
+      leftButtons={[
+        { children: 'NV-ON', onClick: () => act('nvg-enable') },
+        { children: 'NV-OFF', onClick: () => act('nvg-disable') },
       ]}
       bottomButtons={[{ children: 'EXIT', onClick: () => setPanelState('') }]}>
       <CameraPanel />
@@ -21,8 +21,8 @@ export const CameraMfdPanel = (props: MfdProps, context) => {
   );
 };
 
-const CameraPanel = (_, context) => {
-  const { data } = useBackend<CameraProps>(context);
+const CameraPanel = () => {
+  const { data } = useBackend<CameraProps>();
   return (
     <Box className="NavigationMenu">
       <ByondUi

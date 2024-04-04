@@ -798,7 +798,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 /datum/crewmonitor/ui_data(mob/user)
 	. = list(
 		"sensors" = update_data(),
-		"link_allowed" = isAI(user),
+		"link_allowed" = isSilicon(user),
 	)
 
 /datum/crewmonitor/proc/update_data()
@@ -819,7 +819,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 		var/turf/pos = get_turf(H)
 		if(!pos)
 			continue
-		if(is_admin_level(pos.z))
+		if(should_block_game_interaction(H))
 			continue
 
 		// The entry for this human
@@ -868,26 +868,17 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 
 	return results
 
+/*
+ * Unimplemented. Was for AIs tracking but we never had them working.
+ *
 /datum/crewmonitor/ui_act(action,params)
 	. = ..()
 	if(.)
 		return
 	switch (action)
 		if ("select_person")
-			// May work badly cause currently there is no player-controlled AI
-			var/mob/living/silicon/ai/AI = usr
-			if(!istype(AI))
-				return
-			var/mob/living/carbon/human/H
-			for(var/entry in data)
-				if(entry["name"] == params["name"])
-					H = locate(entry["ref"])
-					break
-			if(!H) // Sanity check
-				to_chat(AI, SPAN_NOTICE("ERROR: unable to track subject with ID '[params["name"]]'"))
-			else
-				// We do not care is there camera or no - we just know his location
-				AI.ai_actual_track(H)
+
+*/
 
 /datum/crewmonitor/proc/setup_for_faction(set_faction = FACTION_MARINE)
 	switch(set_faction)
@@ -913,9 +904,10 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				// 20-29: Aux Command
 				JOB_AUXILIARY_OFFICER = 20,
 				JOB_SYNTH = 21,
-				JOB_PILOT = 22,
-				JOB_DROPSHIP_CREW_CHIEF = 23,
-				JOB_INTEL = 24,
+				JOB_CAS_PILOT = 22,
+				JOB_DROPSHIP_PILOT = 23,
+				JOB_DROPSHIP_CREW_CHIEF = 24,
+				JOB_INTEL = 25,
 				// 30-39: Security
 				JOB_CHIEF_POLICE = 30,
 				JOB_PROVOST_TML = 30,

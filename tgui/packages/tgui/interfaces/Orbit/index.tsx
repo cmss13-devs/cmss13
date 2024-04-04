@@ -7,7 +7,7 @@ import { Window } from 'tgui/layouts';
 import { getDisplayName, isJobOrNameMatch, getHealthColor } from './helpers';
 import type { Observable, OrbitData } from './types';
 
-export const Orbit = (props, context) => {
+export const Orbit = (props) => {
   return (
     <Window title="Orbit" width={500} height={700}>
       <Window.Content scrollable>
@@ -27,19 +27,17 @@ export const Orbit = (props, context) => {
 };
 
 /** Controls filtering out the list of observables via search */
-const ObservableSearch = (props, context) => {
-  const { act, data } = useBackend<OrbitData>(context);
+const ObservableSearch = (props) => {
+  const { act, data } = useBackend<OrbitData>();
   const { humans = [], marines = [], survivors = [], xenos = [] } = data;
 
   let auto_observe = data.auto_observe;
 
   const [autoObserve, setAutoObserve] = useLocalState<boolean>(
-    context,
     'autoObserve',
     auto_observe ? true : false
   );
   const [searchQuery, setSearchQuery] = useLocalState<string>(
-    context,
     'searchQuery',
     ''
   );
@@ -110,8 +108,8 @@ const ObservableSearch = (props, context) => {
  * Renders a scrollable section replete with subsections for each
  * observable group.
  */
-const ObservableContent = (props, context) => {
-  const { data } = useBackend<OrbitData>(context);
+const ObservableContent = (props) => {
+  const { data } = useBackend<OrbitData>();
   const {
     humans = [],
     marines = [],
@@ -207,19 +205,16 @@ const ObservableContent = (props, context) => {
  * Displays a collapsible with a map of observable items.
  * Filters the results if there is a provided search query.
  */
-const ObservableSection = (
-  props: {
-    color?: string;
-    section: Array<Observable>;
-    title: string;
-  },
-  context
-) => {
+const ObservableSection = (props: {
+  readonly color?: string;
+  readonly section: Array<Observable>;
+  readonly title: string;
+}) => {
   const { color, section = [], title } = props;
   if (!section.length) {
     return null;
   }
-  const [searchQuery] = useLocalState<string>(context, 'searchQuery', '');
+  const [searchQuery] = useLocalState<string>('searchQuery', '');
   const filteredSection: Array<Observable> = flow([
     filter<Observable>((observable) =>
       isJobOrNameMatch(observable, searchQuery)
@@ -250,16 +245,16 @@ const ObservableSection = (
 };
 
 /** Renders an observable button that has tooltip info for living Observables*/
-const ObservableItem = (
-  props: { color?: string; item: Observable },
-  context
-) => {
-  const { act } = useBackend<OrbitData>(context);
+const ObservableItem = (props: {
+  readonly color?: string;
+  readonly item: Observable;
+}) => {
+  const { act } = useBackend<OrbitData>();
   const { color, item } = props;
   const { health, icon, full_name, nickname, orbiters, ref, background_color } =
     item;
 
-  const [autoObserve] = useLocalState<boolean>(context, 'autoObserve', false);
+  const [autoObserve] = useLocalState<boolean>('autoObserve', false);
 
   const displayHealth = typeof health === 'number';
 
@@ -294,7 +289,7 @@ const ObservableItem = (
 };
 
 /** Displays some info on the mob as a tooltip. */
-const ObservableTooltip = (props: { item: Observable }) => {
+const ObservableTooltip = (props: { readonly item: Observable }) => {
   const {
     item: { caste, health, job, full_name, icon, background_color },
   } = props;
@@ -331,14 +326,11 @@ const ObservableTooltip = (props: { item: Observable }) => {
 };
 
 /** Generates a small icon for buttons based on ICONMAP */
-const ObservableIcon = (
-  props: {
-    icon: Observable['icon'];
-    background_color: Observable['background_color'];
-  },
-  context
-) => {
-  const { data } = useBackend<OrbitData>(context);
+const ObservableIcon = (props: {
+  readonly icon: Observable['icon'];
+  readonly background_color: Observable['background_color'];
+}) => {
+  const { data } = useBackend<OrbitData>();
   const { icons = [] } = data;
   const { icon, background_color } = props;
   if (!icon || !icons[icon]) {
@@ -353,8 +345,8 @@ const ObservableIcon = (
       style={{
         transform: 'scale(2) translatey(-1px)',
         '-ms-interpolation-mode': 'nearest-neighbor',
-        'background-color': background_color ? background_color : null,
-        'vertical-align': 'middle',
+        'backgroundColor': background_color ? background_color : null,
+        'verticalAlign': 'middle',
       }}
     />
   );

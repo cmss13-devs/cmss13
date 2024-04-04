@@ -22,6 +22,8 @@
 	var/attack_speed = 11  //+3, Adds up to 10.  Added an extra 4 removed from /mob/proc/do_click()
 	///Used in attackby() to say how something was attacked "[x] has been [z.attack_verb] by [y] with [z]"
 	var/list/attack_verb
+	/// A multiplier to an object's force when used against a stucture.
+	var/demolition_mod = 1
 
 	health = null
 
@@ -275,7 +277,7 @@ cases. Override_icon_state should be a list.*/
 			size = "huge"
 		if(SIZE_MASSIVE)
 			size = "massive"
-	. += "This is a [blood_color ? blood_color != "#030303" ? "bloody " : "oil-stained " : ""][icon2html(src, user)][src.name]. It is a [size] item."
+	. += "This is a [blood_color ? blood_color != COLOR_OIL ? "bloody " : "oil-stained " : ""][icon2html(src, user)][src.name]. It is a [size] item."
 	if(desc)
 		. += desc
 	if(desc_lore)
@@ -364,6 +366,7 @@ cases. Override_icon_state should be a list.*/
 		qdel(src)
 
 	SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_DROPPED, src)
 	if(drop_sound && (src.loc?.z))
 		playsound(src, drop_sound, dropvol, drop_vary)
 	src.do_drop_animation(user)
@@ -708,7 +711,7 @@ cases. Override_icon_state should be a list.*/
 			if(WEAR_IN_SHOES)
 				if(human.shoes && istype(human.shoes, /obj/item/clothing/shoes))
 					var/obj/item/clothing/shoes/shoes = human.shoes
-					if(shoes.attempt_insert_item(human, src))
+					if(shoes.can_be_inserted(src))
 						return TRUE
 				return FALSE
 			if(WEAR_IN_SCABBARD)

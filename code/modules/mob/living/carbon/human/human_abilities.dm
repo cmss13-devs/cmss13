@@ -124,7 +124,7 @@ CULT
 
 /datum/action/human_action/activable/can_use_action()
 	var/mob/living/carbon/human/H = owner
-	if(istype(H) && !H.is_mob_incapacitated() && !H.dazed)
+	if(istype(H) && !H.is_mob_incapacitated() && !HAS_TRAIT(H, TRAIT_DAZED))
 		return TRUE
 
 // Called when the action is clicked on.

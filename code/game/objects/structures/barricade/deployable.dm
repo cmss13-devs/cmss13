@@ -24,40 +24,28 @@
 	. += SPAN_INFO("Drag its sprite onto yourself to undeploy.")
 
 /obj/structure/barricade/deployable/attackby(obj/item/item, mob/user)
-
 	if(iswelder(item))
-		if(!HAS_TRAIT(item, TRAIT_TOOL_BLOWTORCH))
-			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
-			return
-		if(user.action_busy)
-			return
-		var/obj/item/tool/weldingtool/welder = item
-		if(health == maxhealth)
-			to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
-			return
-
-		weld_cade(welder, user)
+		try_weld_cade(item, user)
 		return
 
-	else if(HAS_TRAIT(item, TRAIT_TOOL_CROWBAR))
+	if(HAS_TRAIT(item, TRAIT_TOOL_CROWBAR))
 		if(user.action_busy)
 			return
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You do not know how to collapse [src] using a crowbar..."))
 			return
+		user.visible_message(SPAN_NOTICE("[user] starts collapsing [src]."), \
+			SPAN_NOTICE("You begin collapsing [src]..."))
+		playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
+		if(do_after(user, 1.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, src))
+			collapse(usr)
 		else
-			user.visible_message(SPAN_NOTICE("[user] starts collapsing [src]."), \
-				SPAN_NOTICE("You begin collapsing [src]..."))
-			playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
-			if(do_after(user, 1.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, src))
-				collapse(usr)
-			else
-				to_chat(user, SPAN_WARNING("You stop collapsing [src]."))
+			to_chat(user, SPAN_WARNING("You stop collapsing [src]."))
 
 	if(try_nailgun_usage(item, user))
 		return
 
-	. = ..()
+	return ..()
 
 /obj/structure/barricade/deployable/MouseDrop(obj/over_object as obj)
 	if(!ishuman(usr))
@@ -202,7 +190,7 @@
 		to_chat(user, SPAN_INFO("You transfer [to_transfer] between the stacks."))
 		return
 
-	else if(iswelder(item))
+	if(iswelder(item))
 		if(!HAS_TRAIT(item, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
@@ -248,7 +236,7 @@
 		playsound(loc, 'sound/items/Welder2.ogg', 25, TRUE)
 		return
 
-	. = ..()
+	return ..()
 
 /obj/item/stack/folding_barricade/attack_hand(mob/user)
 	var/mob/living/carbon/human/human = user

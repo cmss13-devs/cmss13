@@ -5,6 +5,7 @@
 	icon_state = "watertank"
 	density = TRUE
 	anchored = FALSE
+	drag_delay = 1
 	health = 100 // Can be destroyed in 2-4 slashes.
 	flags_atom = CAN_BE_SYRINGED
 	wrenchable = TRUE
@@ -147,13 +148,6 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "ammoniatank"
 	chemical = "ammonia"
-
-/obj/structure/reagent_dispensers/oxygentank
-	name = "oxygentank"
-	desc = "An oxygen tank"
-	icon = 'icons/obj/objects.dmi'
-	icon_state = "oxygentank"
-	chemical = "oxygen"
 
 /obj/structure/reagent_dispensers/acidtank
 	name = "sulfuric acid tank"
@@ -394,6 +388,13 @@
 	icon_state = "hydrogentank"
 	chemical = "hydrogen"
 
+/obj/structure/reagent_dispensers/fueltank/oxygentank
+	name = "oxygentank"
+	desc = "An oxygen tank"
+	icon = 'icons/obj/objects.dmi'
+	icon_state = "oxygentank"
+	chemical = "oxygen"
+
 /obj/structure/reagent_dispensers/fueltank/custom
 	name = "reagent tank"
 	desc = "A reagent tank, typically used to store large quantities of chemicals."
@@ -432,6 +433,7 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "peppertank"
 	anchored = TRUE
+	drag_delay = 3
 	wrenchable =  FALSE
 	density = FALSE
 	amount_per_transfer_from_this = 45
@@ -445,6 +447,7 @@
 	icon_state = "water_cooler"
 	possible_transfer_amounts = null
 	anchored = TRUE
+	drag_delay = 3
 	chemical = "water"
 
 /obj/structure/reagent_dispensers/water_cooler/walk_past
@@ -460,6 +463,7 @@
 	icon_state = "beertankTEMP"
 	amount_per_transfer_from_this = 10
 	chemical = "beer"
+	drag_delay = 3
 
 /obj/structure/reagent_dispensers/beerkeg/alt
 	icon_state = "beertank_alt"
@@ -474,6 +478,7 @@
 	icon_state = "virusfoodtank"
 	amount_per_transfer_from_this = 10
 	anchored = TRUE
+	drag_delay = 3
 	wrenchable = FALSE
 	density = FALSE
 	chemical = "virusfood"

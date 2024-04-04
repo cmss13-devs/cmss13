@@ -5,9 +5,11 @@
 	icon_state = "0"
 	opacity = TRUE
 	layer = WALL_LAYER
-	var/hull = 0 //1 = Can't be deconstructed by tools or thermite. Used for Sulaco walls
+	/// 1 = Can't be deconstructed by tools or thermite. Used for Sulaco walls
+	var/hull = 0
 	var/walltype = WALL_METAL
-	var/junctiontype //when walls smooth with one another, the type of junction each wall is.
+	/// when walls smooth with one another, the type of junction each wall is.
+	var/junctiontype 
 	var/thermite = 0
 	var/melting = FALSE
 	var/claws_minimum = CLAW_TYPE_SHARP
@@ -21,7 +23,8 @@
 	)
 
 	var/damage = 0
-	var/damage_cap = HEALTH_WALL //Wall will break down to girders if damage reaches this point
+	/// Wall will break down to girders if damage reaches this point
+	var/damage_cap = HEALTH_WALL 
 
 	var/damage_overlay
 	var/global/damage_overlays[8]
@@ -30,12 +33,12 @@
 	var/image/bullet_overlay = null
 	var/list/wall_connections = list("0", "0", "0", "0")
 	var/neighbors_list = 0
-	var/max_temperature = 1800 //K, walls will take damage if they're next to a fire hotter than this
 	var/repair_materials = list("wood"= 0.075, "metal" = 0.15, "plasteel" = 0.3) //Max health % recovered on a nailgun repair
 
 	var/d_state = 0 //Normal walls are now as difficult to remove as reinforced walls
 
-	var/obj/effect/acid_hole/acided_hole //the acid hole inside the wall
+	/// the acid hole inside the wall
+	var/obj/effect/acid_hole/acided_hole 
 	var/acided_hole_dir = SOUTH
 
 	var/special_icon = 0
@@ -170,7 +173,7 @@
 		if (acided_hole)
 			. += SPAN_WARNING("There's a large hole in the wall that could've been caused by some sort of acid.")
 
-	if(flags_turf & TURF_ORGANIC)
+	if(turf_flags & TURF_ORGANIC)
 		return // Skip the part below. 'Organic' walls aren't deconstructable with tools.
 
 	switch(d_state)
@@ -335,7 +338,7 @@
 		var/mob/living/carbon/xenomorph/user_as_xenomorph = user
 		user_as_xenomorph.do_nesting_host(attacker_grab.grabbed_thing, src)
 
-	if(!ishuman(user) && !isrobot(user))
+	if(!ishuman(user))
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return
 

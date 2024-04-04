@@ -1,0 +1,35 @@
+2024-04-01:
+  Drathek:
+  - rscadd: Moved holocards to the squad hud
+  Huffie56:
+  - refactor: refactored the lambda areas.
+  - maptweak: turned south padlock into a checkpoint.
+  - bugfix: replace space bellow door in the temple by proper floor.
+  - maptweak: added a missing platform part.
+  SabreML:
+  - bugfix: Fixed a runtime error caused when trying to open an already opened backpack.
+  - bugfix: Fixed a few runtime errors caused by the 'Cycle Helmet HUD' keybind.
+  - bugfix: Fixed a runtime error preventing a 'Marine Minor' (Hive collapse) roundend
+      state.
+  Segrain:
+  - bugfix: Mortar works properly once again.
+  SpartanBobby:
+  - maptweak: LV522 Cargo containers keeping FORECON out of the crashed ship have
+      been moved back slightly allowing marines and xenos a new flank route
+  realforest2001:
+  - code_imp: Removes an unused camera var.
+2024-04-02:
+  sleepynecrons:
+  - imageadd: added missing backpack onmob states for "classic" gearset
+2024-04-03:
+  vero5123:
+  - bugfix: lowers the scalpel and chunk box's ability to destroy various structures.
+  - rscadd: chunk box is now a melee weapon
+2024-04-04:
+  QuickLode:
+  - qol: Moves CL's Office and SEA's Office phone lines to "Offices" category.
+  realforest2001:
+  - rscadd: Added AI Core camera consoles to CE, CO and Brig offices, along with CIC
+      and Lifeboat bubble.
+  - maptweak: Added Tech Control Console to ARES Core.
+  - rscadd: Added Tech Unlock logs to ARES Interface

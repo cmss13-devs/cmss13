@@ -2,10 +2,10 @@ import { useBackend } from '../../backend';
 import { Box, Button, Stack } from '../../components';
 import { useFiremissionXOffsetValue, useFiremissionYOffsetValue, useLazeTarget } from '../MfdPanels/stateManagers';
 
-const SvgButton = (
-  props: { transform?: string; onClick?: (e: any) => void },
-  context
-) => {
+const SvgButton = (props: {
+  readonly transform?: string;
+  readonly onClick?: (e: any) => void;
+}) => {
   return (
     <svg height="100" width="100">
       <g transform={props.transform} onClick={props.onClick}>
@@ -27,14 +27,12 @@ const SvgButton = (
   );
 };
 
-export const Dpad = (props, context) => {
-  const { act } = useBackend(context);
-  const { selectedTarget } = useLazeTarget(context);
+export const Dpad = (props) => {
+  const { act } = useBackend();
+  const { selectedTarget } = useLazeTarget();
 
-  const { fmXOffsetValue, setFmXOffsetValue } =
-    useFiremissionXOffsetValue(context);
-  const { fmYOffsetValue, setFmYOffsetValue } =
-    useFiremissionYOffsetValue(context);
+  const { fmXOffsetValue, setFmXOffsetValue } = useFiremissionXOffsetValue();
+  const { fmYOffsetValue, setFmYOffsetValue } = useFiremissionYOffsetValue();
 
   const min_value = -12;
   const max_value = 12;

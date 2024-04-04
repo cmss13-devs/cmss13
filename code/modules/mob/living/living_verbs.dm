@@ -66,7 +66,7 @@
 		if (BB.opened)
 			return
 		visible_message("[BB] begins to wiggle violently!")
-		if(do_after(src, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, BB))//5 second unzip from inside
+		if(do_after(src, 5 SECONDS, INTERRUPT_UNCONSCIOUS, BUSY_ICON_HOSTILE, BB))//5 second unzip from inside
 			BB.open()
 
 		///The medical machines below are listed separately to allow easier changes to each process
@@ -128,7 +128,7 @@
 		if(!do_after(src, (breakout_time*1 MINUTES), INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST))
 			return
 
-		if(!C || !src || stat != CONSCIOUS || loc != C || C.opened) //closet/user destroyed OR user dead/unconcious OR user no longer in closet OR closet opened
+		if(!C || !src || stat != CONSCIOUS || loc != C || C.opened) //closet/user destroyed OR user dead/unconscious OR user no longer in closet OR closet opened
 			return
 		//Perform the same set of checks as above for weld and lock status to determine if there is even still a point in 'resisting'...
 		if(istype(loc, /obj/structure/closet/secure_closet))

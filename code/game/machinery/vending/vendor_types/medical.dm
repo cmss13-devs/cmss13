@@ -192,7 +192,7 @@
 			return
 
 		if(requires_supply_link_port && !get_supply_link())
-			to_chat(user, SPAN_WARNING("\The [src] makes a buzzing noise as it rejects [S.name]. Looks like this vendor cannot restock non-full stacks outside of a medical bay's supply link."))
+			to_chat(user, SPAN_WARNING("[src] makes a buzzing noise as it rejects [S.name]. Looks like this vendor cannot restock non-full stacks outside of a medical bay's supply link."))
 			playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
 			return
 

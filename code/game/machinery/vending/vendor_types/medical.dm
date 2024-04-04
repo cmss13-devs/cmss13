@@ -45,7 +45,8 @@
 
 // --- No Upper Tile / Green
 /obj/structure/medical_supply_link/notopg
-	icon_state = "medlink_unclamped_notopg"
+	icon_state = "medlink_notopg_unclamped"
+	base_state = "medlink_notopg"
 
 /obj/structure/medical_supply_link/notopg/ex_act(severity, direction)
 	return FALSE

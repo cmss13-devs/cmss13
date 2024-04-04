@@ -226,7 +226,7 @@
 
 /obj/structure/machinery/computer/cameras/wooden_tv/prop/ui_close(mob/user)
 	. = ..()
-	if (current == null && broadcastingcamera)
+	if (!current && broadcastingcamera)
 		UnregisterSignal(broadcastingcamera, COMSIG_BROADCAST_GO_LIVE)
 		broadcastingcamera = null
 

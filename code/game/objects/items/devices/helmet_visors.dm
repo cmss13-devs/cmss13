@@ -274,7 +274,7 @@
 		return
 
 	if(user.client.view > 7)
-		to_chat(user, SPAN_WARNING("You cannot use \the [src] while using optics."))
+		to_chat(user, SPAN_WARNING("You cannot use [src] while using optics."))
 		return FALSE
 
 	if(!NVG_VISOR_USAGE(FALSE))

@@ -20,7 +20,7 @@
 //***************************************Recipe Generator**********************************************/
 //*****************************************************************************************************/
 
-/datum/chemical_reaction/proc/generate_recipe(list/complexity)
+/datum/chemical_reaction/proc/generate_recipe(list/complexity, list/required_reagents_to_add)
 	//Determine modifier for uneven recipe balance
 	var/modifier = rand(0,100)
 	if(modifier<=60)
@@ -43,6 +43,14 @@
 			modifier = 1
 		if(complexity)
 			add_component(my_modifier = modifier, class = complexity[i])
+		else if (required_reagents_to_add)
+			for(var/chemical_iteration in required_reagents_to_add)
+				if(i == 1)
+					add_component(chemical_iteration, modifier)
+				else
+					add_component(chemical_iteration, 1)
+				LAZYREMOVE(required_reagents_to_add, chemical_iteration)
+				continue
 		else
 			add_component(null, modifier)
 		//make sure the final recipe is not already being used. If it is, start over.
@@ -401,15 +409,16 @@
 			info += "<I>WARNING: Mixing too much at a time can cause spontanous explosion! Do not mix more than the OD threshold!</I>"
 	description = info
 
-/datum/reagent/proc/generate_assoc_recipe(list/complexity)
+/datum/reagent/proc/generate_assoc_recipe(list/complexity, list/required_reagents_to_add)
 	var/datum/chemical_reaction/generated/C = new /datum/chemical_reaction/generated
 	C.id = id
 	C.result = id
 	C.name = name
 	C.gen_tier = gen_tier
-	if(!C.generate_recipe(complexity))
+	if(!C.generate_recipe(complexity, required_reagents_to_add))
 		return //Generating a recipe failed, so return null
 	GLOB.chemical_reactions_list[C.id] = C
+
 	C.add_to_filtered_list()
 	return C
 

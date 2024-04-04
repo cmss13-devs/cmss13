@@ -11,6 +11,10 @@
 	chemclass = CHEM_CLASS_ULTRA
 	objective_value = OBJECTIVE_HIGH_VALUE
 	flags = REAGENT_SCANNABLE
+	/// One reagent for the recipe picked at the creation of chem without creating recipe datum but is guranteed to be a part of recipe when recipe datum is created. Used as a hint for research contracts.
+	var/reagent_recipe_hint = null
+	/// one consistent property hint picked from itself. Set when creating itself
+	var/property_hint = null
 
 /datum/reagent/generated/New()
 	//Generate stats
@@ -31,9 +35,6 @@
 		generate_recipe()
 		GLOB.chemical_reactions_list[id] = src
 	make_alike(GLOB.chemical_reactions_list[id])
-
-/////////Tier 1
-
 
 /datum/chemical_reaction/generated/on_reaction(datum/reagents/holder, created_volume)
 	var/datum/reagent/R = holder.has_reagent(id)

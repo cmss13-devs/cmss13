@@ -660,22 +660,20 @@
 /obj/item/paper/research_notes/proc/generate()
 	is_objective = TRUE
 	if(!note_type)
-		note_type = pick(prob(50);"synthesis",prob(35);"grant",prob(15);"test")
-	var/datum/reagent/generated/C = data
-	if(!C)
-		var/random_chem
-		if(tier)
-			random_chem = pick(GLOB.chemical_gen_classes_list[tier])
-		else
-			if(note_type == "test")
-				random_chem = pick(GLOB.chemical_gen_classes_list["T4"])
-			else
-				random_chem = pick( prob(55);pick(GLOB.chemical_gen_classes_list["T2"]),
-									prob(30);pick(GLOB.chemical_gen_classes_list["T3"]),
-									prob(15);pick(GLOB.chemical_gen_classes_list["T4"]))
-		if(!random_chem)
-			random_chem = pick(GLOB.chemical_gen_classes_list["T1"])
-		C = GLOB.chemical_reagents_list["[random_chem]"]
+		note_type = pick(prob(50);"synthesis",prob(35);"grant")
+	var/datum/reagent/generated/C
+	if(note_type == "synthesis")
+		C = data
+		if(!C)
+			C = new /datum/reagent/generated
+			C.id = "tau-[length(GLOB.chemical_gen_classes_list["tau"])]"
+			C.generate_name()
+			C.chemclass = CHEM_CLASS_RARE
+			C.gen_tier = rand(1, 2)
+			C.generate_stats()
+			GLOB.chemical_gen_classes_list["tau"] += C.id //Because each unique_vended should be unique, we do not save the chemclass anywhere but in the tau list
+			GLOB.chemical_reagents_list[C.id] = C
+			C.generate_assoc_recipe()
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 	var/txt = "<center><img src = [asset.get_url_mappings()["wylogo.png"]]><HR><I><B>Official Weyland-Yutani Document</B><BR>Experiment Notes</I><HR><H2>"
 	switch(note_type)

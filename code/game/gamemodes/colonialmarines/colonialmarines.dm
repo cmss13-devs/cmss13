@@ -121,7 +121,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(ares_online)), 5 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(map_announcement)), 20 SECONDS)
-
+	GLOB.chemical_data.reroll_chemicals() //kickstart the contract chemical "system"
 	return ..()
 
 #define MONKEYS_TO_TOTAL_RATIO 1/32
@@ -166,15 +166,6 @@
 	if(is_in_endgame)
 		check_hijack_explosions()
 		check_ground_humans()
-
-	if(next_research_allocation < world.time)
-		GLOB.chemical_data.reroll_chemicals()
-		next_research_allocation = world.time + research_reroll_interval
-	if(GLOB.chemical_data.picked_chem)
-		next_research_allocation = world.time + research_picked_interval
-		GLOB.chemical_data.picked_chem = FALSE
-
-
 
 	if(!round_finished)
 		var/datum/hive_status/hive

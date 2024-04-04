@@ -101,7 +101,14 @@
 	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
 		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
 		return
-	ui_interact(user)
+	tgui_interact(user)
+
+
+/obj/structure/machinery/computer/research/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "ChemSimulator", name)
+		ui.open()
 
 /obj/structure/machinery/chem_simulator/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 0)
 	var/list/data = list(
@@ -181,12 +188,6 @@
 		data["reference_categories"] = reference_property.categories_to_string()
 	else
 		data["reference_info"] = ""
-
-	ui = SSnano.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if(!ui)
-		ui = new(user, src, ui_key, "chem_simulator.tmpl", "Synthesis Simulator", 800, 550)
-		ui.set_initial_data(data)
-		ui.open()
 
 /obj/structure/machinery/chem_simulator/Topic(href, href_list)
 	. = ..()

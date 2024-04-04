@@ -1,8 +1,9 @@
 import { useBackend, useLocalState } from '../backend';
-import { Button, Stack, Section, Flex, Tabs, Box } from '../components';
+import { Button, Stack, Section, Flex, Tabs, Box, ProgressBar } from '../components';
 import { Window } from '../layouts';
 import { Table, TableCell, TableRow } from '../components/Table';
 import { BoxProps } from '../components/Box';
+import { map } from 'common/collections';
 
 export interface DocumentLog {
   ['XRF Scans']?: Array<DocumentRecord>;
@@ -12,6 +13,7 @@ export interface Chemical {
   property_hint: string;
   recipe_hint: string;
   id: string;
+  gen_tier: number;
 }
 
 export interface DocumentRecord {
@@ -33,8 +35,11 @@ interface TerminalProps {
   'clearance_x_access': number;
   'photocopier_error': number;
   'printer_toner': number;
-  'contract_picked': number;
+  'is_contract_picked': number;
   'contract_chems': Chemical[];
+  'world_time': number;
+  'next_reroll': number;
+  'contract_cooldown': number;
 }
 
 interface ConfirmationProps extends BoxProps {
@@ -164,62 +169,6 @@ interface CompoundData {
   type: DocInfo;
   isPublished: boolean;
 }
-
-const Contracts = (_, context) => {
-  const { act, data } = useBackend<TerminalProps>(context);
-  return (
-    <Stack align="center" fill justify="center">
-      <Stack.Item grow>
-        <Section
-          title={<span>{data.contract_chems[0].name}</span>}
-          align="center">
-          <span>Difficulty: Easy</span>
-          <Button
-            fluid
-            icon="print"
-            content={data.contract_picked ? 'UNAVAILABLE' : 'Take Contract'}
-            disabled={data.contract_picked}
-            onClick={() =>
-              act('take_contract', { id: data.contract_chems[0].id })
-            }
-          />
-        </Section>
-      </Stack.Item>
-      <Stack.Item grow>
-        <Section
-          title={<span>{data.contract_chems[1].name}</span>}
-          align="center">
-          <span>Difficulty: Intermediate</span>
-          <Button
-            fluid
-            icon="print"
-            content={data.contract_picked ? 'UNAVAILABLE' : 'Take Contract'}
-            disabled={data.contract_picked}
-            onClick={() =>
-              act('take_contract', { id: data.contract_chems[1].id })
-            }
-          />
-        </Section>
-      </Stack.Item>
-      <Stack.Item grow>
-        <Section
-          title={<span>{data.contract_chems[2].name}</span>}
-          align="center">
-          <span>Difficulty: Hard</span>
-          <Button
-            fluid
-            icon="print"
-            content={data.contract_picked ? 'UNAVAILABLE' : 'Take Contract'}
-            disabled={data.contract_picked}
-            onClick={() =>
-              act('take_contract', { id: data.contract_chems[3].id })
-            }
-          />
-        </Section>
-      </Stack.Item>
-    </Stack>
-  );
-};
 
 const ResearchReportTable = (_, context) => {
   const { data } = useBackend<TerminalProps>(context);
@@ -445,18 +394,77 @@ const XClearanceConfirmation = (props, context) => {
 };
 
 const ResearchManager = (_, context) => {
-  const { data } = useBackend<TerminalProps>(context);
+  const { act, data } = useBackend<TerminalProps>(context);
+  const timeLeft = data.next_reroll - data.world_time;
+  const timeLeftPct = timeLeft / data.contract_cooldown;
   return (
-    <Box>
-      <Stack vertical>
-        <Stack.Item>
-          <span>Credits available: {data.rsc_credits}</span>
-        </Stack.Item>
-      </Stack>
-      <hr />
-      <ImproveClearanceConfirmation />
-      <XClearanceConfirmation />
-    </Box>
+    <Section>
+      <Box>
+        <Stack vertical>
+          <Stack.Item>
+            <span>Credits available: {data.rsc_credits}</span>
+          </Stack.Item>
+        </Stack>
+        <hr />
+        <ImproveClearanceConfirmation />
+        <XClearanceConfirmation />
+      </Box>
+      <Section>
+        <Section title={'Chemical Contracts'}>
+          <ProgressBar
+            width="100%"
+            value={timeLeftPct}
+            ranges={{
+              average: [-Infinity, Infinity],
+            }}>
+            <Box textAlign="center">
+              Contracts Refresh in: {Math.ceil(timeLeft / 10)}
+            </Box>
+          </ProgressBar>
+        </Section>
+        {map((value, key) => (
+          <Flex grow direction="row">
+            <Flex.Item grow={1}>
+              <Section
+                title={<span>{data.contract_chems[key].name}</span>}
+                fill>
+                <span>
+                  Difficulty:{' '}
+                  {data.contract_chems[key].gen_tier === 1
+                    ? 'Easy'
+                    : data.contract_chems[key].gen_tier === 2
+                      ? 'Intermediate'
+                      : 'Hard'}
+                </span>
+                <Flex.Item>
+                  Early assesment shows one part of the recipe is{' '}
+                  {data.contract_chems[key].recipe_hint}
+                </Flex.Item>
+                <Flex.Item>
+                  Early testing shows property of{' '}
+                  {data.contract_chems[key].property_hint}
+                </Flex.Item>
+                <Button
+                  fluid
+                  icon="print"
+                  content={
+                    data.is_contract_picked ? 'UNAVAILABLE' : 'Take Contract'
+                  }
+                  disabled={data.is_contract_picked}
+                  tooltip={
+                    'Taking this contract will put a 5 minute cooldown on new chemical. You can only pick one.'
+                  }
+                  tooltipPosition="top"
+                  onClick={() =>
+                    act('take_contract', { id: data.contract_chems[key].id })
+                  }
+                />
+              </Section>
+            </Flex.Item>
+          </Flex>
+        ))(data.contract_chems)}
+      </Section>
+    </Section>
   );
 };
 
@@ -529,13 +537,6 @@ const ResearchOverview = (_, context) => {
           color="black">
           Published Material
         </Tabs.Tab>
-        <Tabs.Tab
-          selected={selectedTab === 4}
-          onClick={() => setSelectedTab(4)}
-          icon="book"
-          color="black">
-          Chemical Contracts
-        </Tabs.Tab>
       </Tabs>
       <div className="TabbedContent">
         <Stack vertical>
@@ -546,7 +547,6 @@ const ResearchOverview = (_, context) => {
             {selectedTab === 1 && <ResearchManager />}
             {selectedTab === 2 && <ResearchReportTable />}
             {selectedTab === 3 && <PublishedMaterial />}
-            {selectedTab === 4 && <Contracts />}
           </Stack.Item>
         </Stack>
       </div>

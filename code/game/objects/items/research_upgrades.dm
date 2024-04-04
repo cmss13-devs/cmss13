@@ -35,9 +35,7 @@
 	desc = "Somehow you got this, you shouldnt be able to, consider yourself special."
 	icon = 'icons/obj/items/disk.dmi'
 	icon_state = "datadisk1" // doesnt HAVE to be a disk!
-	///technology stored on this disk, goes through one to whatever levels of upgrades there are, set it to last upgrade in your line. 0 Excludes it from buying menu.
-	///price of the upgrade, if a single disk could mean many upgrades, use list in sync with upgrades to set its prices
-	var/value
+	var/value = null //these are used to have small variations in a same item, for exampple autodoc diffrences are shown in examine text. Used when inserting it.
 /obj/item/research_upgrades/autodoc
 	name = "Research Upgrade (AutoDoc)"
 	desc = "Research upgrade for AutoDoc, Technology on this disk is used "
@@ -70,22 +68,3 @@
 /obj/item/research_upgrades/property
 	name = "Research Market (Propety)"
 	desc = "Research points disk for chemical synthesis, insert this into research computer in order to sell the data and acquire one random chemical property of your choice."
-
-/obj/item/research_upgrades/packet
-	name = "Research Packet"
-	desc = " A plastic sealed opaque packet containing whatever research marvel the nerds upstairs were brewing, you shouldnt be able to see this!"
-	//icon = ***
-	//icon_state = ***
-	///What packet contains
-	var/list/could_contain = null
-	///is the packet open
-	var/is_opened = FALSE
-	///How many times to spawn the could_contain item(s
-	var/amount = 1
-	///How does a packet use could_contain list, 3 types of behavior - _EXACT gives user exactly what is in could_contain, _RANDOM gives user a thing from could contain on random basis, and _VALUE makes it follow value var(spawns second thing in the list if value is two)
-	var/behavior = PACKET_BEHAVIOR_EXACT
-
-
-
-
-

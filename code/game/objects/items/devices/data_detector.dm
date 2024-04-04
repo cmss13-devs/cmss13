@@ -12,8 +12,6 @@
 		/obj/item/device/healthanalyzer/objective,
 		/obj/item/device/autopsy_scanner/objective,
 		/obj/item/paper/research_notes,
-		/obj/item/reagent_container/glass/beaker/vial/random,
-		/obj/item/storage/fancy/vials/random,
 		/obj/structure/machinery/computer/objective,
 		/obj/item/limb/head/synth,
 	)
@@ -43,16 +41,10 @@
 		var/detected
 		for(var/DT in objects_to_detect)
 			if(istype(I, DT))
-				if(!detect_empty_vial_boxes && istype(I, /obj/item/storage/fancy/vials/random))
-					if(!I.contents)
-						continue
 				detected = TRUE
 			if(I.contents)
 				for(var/obj/item/CI in I.contents)
 					if(istype(CI, DT))
-						if(!detect_empty_vial_boxes && istype(I, /obj/item/storage/fancy/vials/random))
-							if(!I.contents)
-								continue
 						detected = TRUE
 						break
 			if(human_user && detected)
@@ -76,9 +68,6 @@
 			for(var/obj/I in M.contents_twice())
 				for(var/DT in objects_to_detect)
 					if(istype(I, DT))
-						if(!detect_empty_vial_boxes && istype(I, /obj/item/storage/fancy/vials/random))
-							if(!I.contents)
-								continue
 						detected = TRUE
 						break
 				if(detected)

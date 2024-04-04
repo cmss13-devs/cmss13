@@ -20,17 +20,11 @@
 	for(var/mob/new_player/np in GLOB.new_player_list)
 		np.new_player_panel_proc()
 	round_time_lobby = world.time
+	GLOB.chemical_data.reroll_chemicals() //kickstart the research chemical contract "system"
 	return ..()
 
 /datum/game_mode/extended/process()
 	. = ..()
-	if(next_research_allocation < world.time)
-		to_world("in process")
-		GLOB.chemical_data.reroll_chemicals()
-		next_research_allocation = world.time + research_reroll_interval
-	if(GLOB.chemical_data.picked_chem)
-		next_research_allocation = world.time + research_picked_interval
-		GLOB.chemical_data.picked_chem = FALSE
 
 /datum/game_mode/extended/check_finished()
 	if(round_finished)

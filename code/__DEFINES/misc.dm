@@ -162,11 +162,6 @@
 #define MATRIX_NVG 1
 #define MATRIX_WIDE 2
 
-//packet behavior defines
-#define PACKET_BEHAVIOR_RANDOM 0
-#define PACKET_BEHAVIOR_EXACT 1
-#define PACKET_BEHAVIOR_VALUE 2
-
 #define UPGRADE_EXCLUDE_BUY 0
 #define UPGRADE_CATEGORY 0.5 //lord forgive me
 #define UPGRADE_TIER_1 1
@@ -174,7 +169,7 @@
 #define UPGRADE_TIER_3 3
 #define UPGRADE_TIER_4 4
 #define UPGRADE_TIER_5 5
-//Value define\
+//Value define
 
 #define ITEM_MACHINERY_UPGRADE 0
 #define ITEM_ACCESSORY_UPGRADE 1

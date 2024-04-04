@@ -11,7 +11,9 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 	var/list/research_documents = list()
 	var/list/research_publications = list()
 	var/list/research_property_data = list() //starter properties are stored here
-	var/list/contract_chems_here = list() //3 chemicals that you get to pick
+	var/list/contract_chems = list() //3 chemicals that you get to pick
+	var/reroll_timer_id = TIMER_ID_NULL // holds our timer id for rerolls
+	var/next_reroll = null//when will next reroll happen
 	var/list/chemical_networks = list()
 	var/list/shared_item_storage = list()
 	var/list/shared_item_quantity = list()
@@ -147,31 +149,60 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 	chemical_not_completed_objective_list[chem.id] = chem.objective_value
 
 /datum/chemical_data/proc/reroll_chemicals()
-	to_world("in reroll")
-	for(var/i in 1 to 3)
-		to_world("in reroll2")
+	if(!isnull(contract_chems))
+		to_world("qdelling unclaimed chems.")
+		for(var/i in 1 to RESEARCH_CONTRACT_CHEM_AMOUNT)
+			if(contract_chems["contract-chem-[i]"] != null) //chances are, player picked something and list is shorter now.
+				qdel(contract_chems["contract-chem-[i]"])
+	contract_chems = list()
+	for(var/i in 1 to RESEARCH_CONTRACT_CHEM_AMOUNT)
 		var/datum/reagent/generated/C = new /datum/reagent/generated
-		to_world("in reroll3")
-		C.id = "tau-[length(GLOB.chemical_gen_classes_list["tau"])]"
-		to_world("in rerol44l")
+		C.id = "contract-chem-[i]"//we dont actually give it proper id.
 		C.generate_name()
-		to_world("in reroll5")
 		C.chemclass = CHEM_CLASS_RARE
-		to_world("in rerol66l")
-		C.gen_tier = i
-		to_world("in rerol6l")
+		C.gen_tier = rand(1,3)
 		C.generate_stats()
-		to_world("in rerol5555l")
-		GLOB.chemical_gen_classes_list["tau"] += C.id //Because each unique_vended should be unique, we do not save the chemclass anywhere but in the tau list
-		to_world("in rerol553939393355l")
-		to_world(C.id)
-		GLOB.chemical_reagents_list[C.id] = C
-		to_world("in rerol53453434555l")
-		C.generate_assoc_recipe()
-		to_world("in rerol555543434343l")
-		contract_chems_here[C.id] = C.id
-		to_world("in rerol51121212555l")
-	to_world("Contract chemical batch generated, names are [contract_chems_here[1]], [contract_chems_here[2]], and [contract_chems_here[3]] ")
+		var/roll = rand(1, 100)
+		switch(C.gen_tier) // pick a reagent hint.
+			if(1)
+				if(roll<=80)
+					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C1"])
+				else if(roll<=55)
+					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C2"])
+				else if(roll<=35)
+					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C3"])
+			if(2)
+				if(roll<=60)
+					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C1"])
+				else if(roll<=35)
+					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C2"])
+				else if(roll<=15)
+					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C3"])
+				else
+					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C4"])
+			if(3)
+				if(roll<=50)
+					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C3"])
+				else if(roll<=70)
+					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C4"])
+				else
+					C.reagent_recipe_hint = pick(GLOB.chemical_gen_classes_list["C5"])
+		C.property_hint = pick(C.properties)
+		contract_chems[C.id] = C
+	to_world("Contract chemical batch generated, names are [contract_chems[1]], [contract_chems[2]], and [contract_chems[3]] ")
+	reroll_timer_id = addtimer(CALLBACK(src, PROC_REF(reroll_chemicals)), 2 MINUTES, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE) //if picked, we will bump(set, not add) it up to 5 minutes in research.dm (machinery)
+	next_reroll = world.time + 2 MINUTES
+	if(picked_chem)
+		picked_chem = FALSE
+
+///Adds coontract chemicals to global lists and given proper ID, aswell as removed from contract chems since those are qdelled on reroll. only used when we are 100% certain its in user hands and not going to be removed
+/datum/chemical_data/proc/legalize_chem(datum/reagent/generated/chem) // we dont actually create the recipe for it or give it a proper id, frankly that would be too much pain to remove when we reroll them
+	LAZYREMOVE(contract_chems, chem)
+	chem.id = "tau-[length(GLOB.chemical_gen_classes_list["tau"])]"
+	GLOB.chemical_gen_classes_list["tau"] += chem.id
+	GLOB.chemical_reagents_list[chem.id] = chem
+	chem.generate_assoc_recipe(null, list(chem.reagent_recipe_hint))
+	return chem.id
 
 /datum/chemical_data/proc/get_tgui_data(chemid)
 	var/datum/reagent/chem = GLOB.chemical_reagents_list[chemid]

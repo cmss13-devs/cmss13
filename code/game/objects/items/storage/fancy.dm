@@ -350,25 +350,11 @@
 	can_hold = list(/obj/item/reagent_container/glass/beaker/vial,/obj/item/reagent_container/hypospray/autoinjector)
 	matter = list("plastic" = 2000)
 	var/start_vials = 6
-	var/is_random
 
 
 /obj/item/storage/fancy/vials/fill_preset_inventory()
-	if(is_random)
-		var/spawns = rand(1,4)
-		for(var/i=1; i <= storage_slots; i++)
-			if(i<=spawns)
-				new /obj/item/reagent_container/glass/beaker/vial/random(src)
-			else
-				new /obj/item/reagent_container/glass/beaker/vial(src)
-	else
-		for(var/i=1; i <= start_vials; i++)
-			new /obj/item/reagent_container/glass/beaker/vial(src)
-
-/obj/item/storage/fancy/vials/random
-	unacidable = TRUE
-	is_random = 1
-
+	for(var/i=1; i <= start_vials; i++)
+		new /obj/item/reagent_container/glass/beaker/vial(src)
 /obj/item/storage/fancy/vials/empty
 	start_vials = 0
 

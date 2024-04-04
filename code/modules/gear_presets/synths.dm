@@ -217,7 +217,6 @@
 		WEAR_EYES = /obj/item/clothing/glasses/hud/health,
 		WEAR_BODY = /obj/item/clothing/under/rank/scientist,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/chem,
-		WEAR_IN_BACK = /obj/item/reagent_container/glass/beaker/vial/random/good,
 		WEAR_IN_BACK = /obj/item/paper/research_notes/unique/tier_three,
 		WEAR_JACKET = /obj/item/clothing/suit/bio_suit,
 		WEAR_WAIST = /obj/item/storage/belt/medical/lifesaver/full,

@@ -269,6 +269,8 @@
 
 /// Scales cost of increasing clearance using credits
 #define RESEARCH_LEVEL_INCREASE_MULTIPLIER 3
+/// Amount of contract chemicals that should be generated
+#define RESEARCH_CONTRACT_CHEM_AMOUNT 3
 /// Scales tech level to max amplification level
 #define TECHTREE_LEVEL_MULTIPLIER 2
 

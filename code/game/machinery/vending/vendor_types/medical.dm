@@ -6,7 +6,6 @@
 	icon = 'icons/effects/warning_stripes.dmi'
 	icon_state = "medlink_unclamped"
 	var/base_state = "medlink"
-	var/base_state = "medlink"
 	anchored = TRUE
 	density = FALSE
 	unslashable = TRUE

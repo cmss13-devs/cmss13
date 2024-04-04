@@ -214,13 +214,13 @@
 /obj/structure/machinery/computer/cameras/wooden_tv/prop/ui_act(action, params)
 	. = ..()
 	if(action != "switch_camera")
-		return .
+		return
 	broadcastingcamera = null
 	if (!istype(current, /obj/structure/machinery/camera/correspondent))
-		return .
+		return
 	var/obj/structure/machinery/camera/correspondent/corr_cam = current
 	if (!corr_cam.linked_broadcasting)
-		return .
+		return
 	broadcastingcamera = corr_cam.linked_broadcasting
 	RegisterSignal(broadcastingcamera, COMSIG_BROADCAST_GO_LIVE, TYPE_PROC_REF(/obj/structure/machinery/computer/cameras/wooden_tv/prop, go_back_live))
 

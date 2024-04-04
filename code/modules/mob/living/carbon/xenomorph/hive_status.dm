@@ -1129,7 +1129,6 @@
 	prefix = "Weave "
 	allow_no_queen_actions = TRUE
 	allow_queen_evolve = FALSE
-	ignore_slots = TRUE
 	hive_inherant_traits = list(TRAIT_XENONID, TRAIT_NO_COLOR, TRAIT_NO_PREFIX, TRAIT_WEAVE_SENSITIVE)
 
 	var/bioscan_time = 0

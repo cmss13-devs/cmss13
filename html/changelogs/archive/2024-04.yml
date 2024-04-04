@@ -25,3 +25,11 @@
   vero5123:
   - bugfix: lowers the scalpel and chunk box's ability to destroy various structures.
   - rscadd: chunk box is now a melee weapon
+2024-04-04:
+  QuickLode:
+  - qol: Moves CL's Office and SEA's Office phone lines to "Offices" category.
+  realforest2001:
+  - rscadd: Added AI Core camera consoles to CE, CO and Brig offices, along with CIC
+      and Lifeboat bubble.
+  - maptweak: Added Tech Control Console to ARES Core.
+  - rscadd: Added Tech Unlock logs to ARES Interface

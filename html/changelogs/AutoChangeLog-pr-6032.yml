@@ -1,0 +1,5 @@
+author: "QuickLode"
+delete-after: True
+changes:
+  - balance: "Metal rods take up less space in an inventory (3 slots to 2)"
+  - code_imp: "removes some redundant code on plasteel rods"

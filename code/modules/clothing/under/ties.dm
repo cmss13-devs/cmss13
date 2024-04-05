@@ -768,6 +768,7 @@
 	hold = /obj/item/storage/internal/accessory/holster
 
 /obj/item/storage/internal/accessory/holster
+	storage_slots = 5
 	w_class = SIZE_LARGE
 	max_w_class = SIZE_MEDIUM
 	var/obj/item/weapon/gun/current_gun

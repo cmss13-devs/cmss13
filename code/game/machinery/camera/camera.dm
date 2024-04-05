@@ -301,7 +301,7 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 
 /obj/structure/machinery/camera/correspondent
 	network = list(CAMERA_NET_CORRESPONDENT)
-	invisibility = 101
+	invisibility = INVISIBILITY_ABSTRACT
 	invuln = TRUE
 	unslashable = TRUE
 	unacidable = TRUE

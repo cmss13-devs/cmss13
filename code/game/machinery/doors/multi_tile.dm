@@ -262,7 +262,7 @@
 		var/datum/door_controller/single/control = linked_dropship.door_control.door_controllers[direction]
 		if (control.status != SHUTTLE_DOOR_BROKEN)
 			return ..()
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI, SKILL_PILOT_TRAINED))
 			to_chat(user, SPAN_WARNING("You don't seem to understand how to restore a remote connection to [src]."))
 			return
 		if(user.action_busy)

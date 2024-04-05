@@ -308,10 +308,10 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 	colony_camera_mapload = FALSE
 	var/linked_broadcasting
 
-/obj/structure/machinery/camera/correspondent/Initialize(mapload, obj/item/device/camera/broadcasting/camera_item)
+/obj/structure/machinery/camera/correspondent/New(loc, obj/item/device/camera/broadcasting/camera_item)
+	. = ..()
 	c_tag = camera_item.get_broadcast_name()
 	linked_broadcasting = camera_item
-	return ..()
 
 /obj/structure/machinery/camera/mortar
 	alpha = 0

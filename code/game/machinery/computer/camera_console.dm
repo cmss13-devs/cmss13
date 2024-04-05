@@ -227,12 +227,17 @@
 		return
 	broadcastingcamera = corr_cam.linked_broadcasting
 	RegisterSignal(broadcastingcamera, COMSIG_BROADCAST_GO_LIVE, PROC_REF(go_back_live))
+	RegisterSignal(broadcastingcamera, COMSIG_PARENT_QDELETING, PROC_REF(clear_camera))
 
 /obj/structure/machinery/computer/cameras/wooden_tv/prop/ui_close(mob/user)
 	. = ..()
 	if (!current && broadcastingcamera)
-		UnregisterSignal(broadcastingcamera, COMSIG_BROADCAST_GO_LIVE)
-		broadcastingcamera = null
+		clear_camera()
+		
+/obj/structure/machinery/computer/cameras/wooden_tv/prop/proc/clear_camera()
+	SIGNAL_HANDLER
+	UnregisterSignal(broadcastingcamera, list(COMSIG_BROADCAST_GO_LIVE, COMSIG_PARENT_QDELETING))
+	broadcastingcamera = null
 
 /obj/structure/machinery/computer/cameras/wooden_tv/prop/proc/go_back_live(obj/item/device/camera/broadcasting/broadcastingcamera)
 	SIGNAL_HANDLER

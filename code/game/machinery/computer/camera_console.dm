@@ -238,7 +238,7 @@
 	SIGNAL_HANDLER
 	if (current.c_tag == broadcastingcamera.get_broadcast_name())
 		current = broadcastingcamera.linked_cam
-		SEND_SIGNAL(src, COMSIG_CAMERA_SET_TARGET,  broadcastingcamera.linked_cam,  broadcastingcamera.linked_cam.view_range,  broadcastingcamera.linked_cam.view_range)
+		SEND_SIGNAL(src, COMSIG_CAMERA_SET_TARGET, broadcastingcamera.linked_cam, broadcastingcamera.linked_cam.view_range, broadcastingcamera.linked_cam.view_range)
 
 /obj/structure/machinery/computer/cameras/wooden_tv/ot
 	name = "Mortar Monitoring Set"

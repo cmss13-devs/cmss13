@@ -378,7 +378,6 @@
 	UnregisterSignal(src, list(
 		COMSIG_ITEM_DROPPED,
 		COMSIG_ITEM_UNWIELD,
-		COMSIG_PARENT_QDELETING,
 	))
 
 /obj/item/device/camera/broadcasting/proc/get_broadcast_name()

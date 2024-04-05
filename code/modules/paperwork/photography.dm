@@ -359,6 +359,11 @@
 	flags_equip_slot = NO_FLAGS //cannot be equiped
 	var/obj/structure/machinery/camera/correspondent/linked_cam
 
+/obj/item/device/camera/broadcasting/Destroy()
+	if(!QDELETED(linked_cam))
+		clear_broadcast()
+	return ..()
+
 /obj/item/device/camera/broadcasting/attack_self(mob/user) //wielding capabilities
 	. = ..()
 	if(flags_item & WIELDED)

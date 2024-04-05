@@ -816,8 +816,8 @@
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The [name] is busy processing another action!")]")
 		return
 
-	var/obj/structure/closet/crate/C = locate() in current_squad.drop_pad.loc //This thing should ALWAYS exist.
-	if(!istype(C))
+	var/obj/structure/closet/crate/crate = locate() in current_squad.drop_pad.loc //This thing should ALWAYS exist.
+	if(!istype(crate))
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("No crate was detected on the drop pad. Get Requisitions on the line!")]")
 		return
 
@@ -844,19 +844,19 @@
 		return
 
 	busy = TRUE
-	C.visible_message(SPAN_WARNING("\The [C] loads into a launch tube. Stand clear!"))
-	SEND_SIGNAL(C, COMSIG_STRUCTURE_CRATE_SQUAD_LAUNCHED, current_squad)
+	crate.visible_message(SPAN_WARNING("\The [crate] loads into a launch tube. Stand clear!"))
+	SEND_SIGNAL(crate, COMSIG_STRUCTURE_CRATE_SQUAD_LAUNCHED, current_squad)
 	COOLDOWN_START(current_squad, next_supplydrop, 500 SECONDS)
 	if(ismob(usr))
 		var/mob/M = usr
 		M.count_niche_stat(STATISTICS_NICHE_CRATES)
 
-	playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehh
-	var/obj/structure/droppod/supply/pod = new(null, C)
+	playsound(crate.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehh
+	var/obj/structure/droppod/supply/pod = new(null, crate)
 	pod.launch(T)
-	log_ares_requisition("Supply Drop", "Launch [c.name] to X[x_supply], Y[y_supply].", usr.real_name)
-	log_game("[key_name(usr)] launched supply drop '[c.name]' to X[x_coord], Y[y_coord].")
-	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[C.name]' supply drop launched! Another launch will be available in five minutes.")]")
+	log_ares_requisition("Supply Drop", "Launch [crate.name] to X[x_supply], Y[y_supply].", usr.real_name)
+	log_game("[key_name(usr)] launched supply drop '[crate.name]' to X[x_coord], Y[y_coord].")
+	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[crate.name]' supply drop launched! Another launch will be available in five minutes.")]")
 	busy = FALSE
 
 /obj/structure/machinery/computer/overwatch/almayer

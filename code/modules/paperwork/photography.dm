@@ -360,30 +360,25 @@
 	var/obj/structure/machinery/camera/correspondent/linked_cam
 
 /obj/item/device/camera/broadcasting/Destroy()
-	if(!QDELETED(linked_cam))
-		clear_broadcast()
+	clear_broadcast()
 	return ..()
 
-/obj/item/device/camera/broadcasting/attack_self(mob/user) //wielding capabilities
+/obj/item/device/camera/broadcasting/wield(mob/user)
 	. = ..()
-	if(flags_item & WIELDED)
-		linked_cam = new(loc, get_broadcast_name())
-		linked_cam.network = list(CAMERA_NET_CORRESPONDENT)
-		linked_cam.linked_broadcasting = src
-		RegisterSignal(src, list(
-			COMSIG_ITEM_DROPPED,
-			COMSIG_ITEM_UNWIELD,
-		), PROC_REF(clear_broadcast))
-		SEND_SIGNAL(src, COMSIG_BROADCAST_GO_LIVE)
-		to_chat(user, SPAN_NOTICE("[src] begins to buzz softly as you go live."))
+	if(!.)
+		return
+	linked_cam = new(loc, get_broadcast_name())
+	SEND_SIGNAL(src, COMSIG_BROADCAST_GO_LIVE)
+	to_chat(user, SPAN_NOTICE("[src] begins to buzz softly as you go live."))
+
+/obj/item/device/camera/broadcasting/unwield(mob/user)
+	. = ..()
+	clear_broadcast()
 
 /obj/item/device/camera/broadcasting/proc/clear_broadcast()
 	SIGNAL_HANDLER
-	QDEL_NULL(linked_cam)
-	UnregisterSignal(src, list(
-		COMSIG_ITEM_DROPPED,
-		COMSIG_ITEM_UNWIELD,
-	))
+	if(!QDELETED(linked_cam))
+		QDEL_NULL(linked_cam)
 
 /obj/item/device/camera/broadcasting/proc/get_broadcast_name()
 	var/datum/component/label/src_label_component = GetComponent(/datum/component/label)

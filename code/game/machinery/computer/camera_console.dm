@@ -226,7 +226,7 @@
 	if (!corr_cam.linked_broadcasting)
 		return
 	broadcastingcamera = corr_cam.linked_broadcasting
-	RegisterSignal(broadcastingcamera, COMSIG_BROADCAST_GO_LIVE, TYPE_PROC_REF(/obj/structure/machinery/computer/cameras/wooden_tv/prop, go_back_live))
+	RegisterSignal(broadcastingcamera, COMSIG_BROADCAST_GO_LIVE, PROC_REF(go_back_live))
 
 /obj/structure/machinery/computer/cameras/wooden_tv/prop/ui_close(mob/user)
 	. = ..()

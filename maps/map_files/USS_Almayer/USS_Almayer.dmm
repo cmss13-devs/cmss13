@@ -6784,7 +6784,6 @@
 /turf/open/floor/grass,
 /area/almayer/living/starboard_garden)
 "aIC" = (
-/obj/structure/surface/table/almayer,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
@@ -6801,6 +6800,7 @@
 /obj/item/reagent_container/glass/beaker/large{
 	pixel_x = -6
 	},
+/obj/structure/surface/table/almayer,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -29655,8 +29655,9 @@
 	pixel_x = -17;
 	pixel_y = -7
 	},
-/obj/structure/machinery/cm_vending/sorted/medical/chemistry,
-/obj/structure/medical_supply_link,
+/obj/structure/machinery/chem_master{
+	vial_maker = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -42143,7 +42144,7 @@
 /area/almayer/squads/req)
 "krO" = (
 /obj/structure/machinery/cm_vending/sorted/medical,
-/obj/structure/medical_supply_link,
+/obj/structure/medical_supply_link/notop,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"
@@ -44507,8 +44508,14 @@
 	},
 /area/almayer/maint/hull/lower/stern)
 "lid" = (
-/obj/structure/machinery/chem_master{
-	vial_maker = 1
+/obj/structure/surface/table/almayer,
+/obj/item/stack/sheet/mineral/phoron{
+	amount = 25;
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/structure/machinery/reagentgrinder{
+	pixel_y = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -59988,22 +59995,11 @@
 /area/almayer/maint/hull/upper/u_a_p)
 "qAT" = (
 /obj/structure/machinery/light,
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/reagentgrinder{
-	pixel_y = 8
-	},
-/obj/item/stack/sheet/mineral/phoron{
-	amount = 25;
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/device/reagent_scanner{
-	pixel_x = -16;
-	pixel_y = 5
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out"
 	},
+/obj/structure/machinery/cm_vending/sorted/medical/chemistry,
+/obj/structure/medical_supply_link/notopg,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -68383,7 +68379,6 @@
 	icon_state = "W";
 	pixel_x = -1
 	},
-/obj/structure/surface/table/almayer,
 /obj/item/storage/firstaid/o2{
 	pixel_x = -6;
 	pixel_y = 6
@@ -68399,6 +68394,11 @@
 /obj/item/storage/firstaid/toxin{
 	pixel_x = 8;
 	pixel_y = -2
+	},
+/obj/structure/surface/table/almayer,
+/obj/item/device/reagent_scanner{
+	pixel_x = -16;
+	pixel_y = 5
 	},
 /turf/open/floor/almayer{
 	dir = 8;

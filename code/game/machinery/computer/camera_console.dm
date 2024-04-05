@@ -208,6 +208,10 @@
 	network = list(CAMERA_NET_CORRESPONDENT)
 	var/obj/item/device/camera/broadcasting/broadcastingcamera = null
 
+/obj/structure/machinery/computer/cameras/wooden_tv/prop/Destroy()
+	broadcastingcamera = null
+	return ..()
+
 /obj/structure/machinery/computer/cameras/wooden_tv/prop/ui_state(mob/user)
 	return GLOB.default_state
 

@@ -20104,7 +20104,7 @@
 /area/almayer/living/grunt_rnr)
 "cDH" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/computer/cameras/wooden_tv/prop{
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast{
 	pixel_y = 29
 	},
 /turf/open/floor/almayer{
@@ -62039,7 +62039,7 @@
 /area/almayer/engineering/lower/engine_core)
 "rjV" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/cameras/wooden_tv/prop{
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast{
 	dir = 8;
 	layer = 3.2;
 	pixel_x = -3;
@@ -81554,7 +81554,7 @@
 	},
 /area/almayer/shipboard/panic)
 "xML" = (
-/obj/structure/machinery/computer/cameras/wooden_tv/prop{
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast{
 	pixel_x = -4;
 	pixel_y = 2
 	},

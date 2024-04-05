@@ -28,7 +28,7 @@
 
 /obj/item/circuitboard/computer/cameras/tv
 	name = "Circuit board (Television Set)"
-	build_path = /obj/structure/machinery/computer/cameras/wooden_tv/prop
+	build_path = /obj/structure/machinery/computer/cameras/wooden_tv/broadcast
 	network = list(CAMERA_NET_CORRESPONDENT)
 	req_access = list()
 

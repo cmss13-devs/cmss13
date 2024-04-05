@@ -202,20 +202,20 @@
 	name = "Ship Security Cameras"
 	network = list(CAMERA_NET_ALMAYER)
 
-/obj/structure/machinery/computer/cameras/wooden_tv/prop
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast
 	name = "Television Set"
 	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW."
 	network = list(CAMERA_NET_CORRESPONDENT)
 	var/obj/item/device/camera/broadcasting/broadcastingcamera = null
 
-/obj/structure/machinery/computer/cameras/wooden_tv/prop/Destroy()
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/Destroy()
 	broadcastingcamera = null
 	return ..()
 
-/obj/structure/machinery/computer/cameras/wooden_tv/prop/ui_state(mob/user)
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/ui_state(mob/user)
 	return GLOB.default_state
 
-/obj/structure/machinery/computer/cameras/wooden_tv/prop/ui_act(action, params)
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/ui_act(action, params)
 	. = ..()
 	if(action != "switch_camera")
 		return
@@ -229,17 +229,17 @@
 	RegisterSignal(broadcastingcamera, COMSIG_BROADCAST_GO_LIVE, PROC_REF(go_back_live))
 	RegisterSignal(broadcastingcamera, COMSIG_PARENT_QDELETING, PROC_REF(clear_camera))
 
-/obj/structure/machinery/computer/cameras/wooden_tv/prop/ui_close(mob/user)
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/ui_close(mob/user)
 	. = ..()
 	if (!current && broadcastingcamera)
 		clear_camera()
-		
-/obj/structure/machinery/computer/cameras/wooden_tv/prop/proc/clear_camera()
+
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/proc/clear_camera()
 	SIGNAL_HANDLER
 	UnregisterSignal(broadcastingcamera, list(COMSIG_BROADCAST_GO_LIVE, COMSIG_PARENT_QDELETING))
 	broadcastingcamera = null
 
-/obj/structure/machinery/computer/cameras/wooden_tv/prop/proc/go_back_live(obj/item/device/camera/broadcasting/broadcastingcamera)
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/proc/go_back_live(obj/item/device/camera/broadcasting/broadcastingcamera)
 	SIGNAL_HANDLER
 	if (current.c_tag == broadcastingcamera.get_broadcast_name())
 		current = broadcastingcamera.linked_cam

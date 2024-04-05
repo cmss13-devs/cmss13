@@ -367,7 +367,7 @@
 	. = ..()
 	if(!.)
 		return
-	linked_cam = new(loc, get_broadcast_name())
+	linked_cam = new(loc, src)
 	SEND_SIGNAL(src, COMSIG_BROADCAST_GO_LIVE)
 	to_chat(user, SPAN_NOTICE("[src] begins to buzz softly as you go live."))
 

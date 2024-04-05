@@ -368,7 +368,6 @@
 		RegisterSignal(src, list(
 			COMSIG_ITEM_DROPPED,
 			COMSIG_ITEM_UNWIELD,
-			COMSIG_PARENT_QDELETING,
 		), PROC_REF(clear_broadcast))
 		SEND_SIGNAL(src, COMSIG_BROADCAST_GO_LIVE)
 		to_chat(user, SPAN_NOTICE("[src] begins to buzz softly as you go live."))

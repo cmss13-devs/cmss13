@@ -266,9 +266,11 @@
 			if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
 				to_chat(user, SPAN_WARNING("You don't seem to understand how to restore a remote connection to [src]."))
 				return
+			if(user.action_busy)
+				return
 			else
 				to_chat(user, SPAN_WARNING("You begin to restore the remote connection to [src]."))
-				if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
+				if(!do_after(user, 8 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
 					to_chat(user, SPAN_WARNING("You fail to restore a remote connection to [src]."))
 					return
 				unlock(TRUE)

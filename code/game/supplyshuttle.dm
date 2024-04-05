@@ -328,6 +328,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	var/obj/structure/droppod/supply/pod = new(null, C)
 	C.forceMove(pod)
 	pod.launch(T)
+	log_ares_requisition("Supply Drop", "Launch [c.name] to X[x_supply], Y[y_supply].", usr.real_name)
+	log_game("[key_name(usr)] launched supply drop '[c.name]' to X[x_coord], Y[y_coord].")
 	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[C.name]' supply drop launched! Another launch will be available in five minutes.")]")
 
 //A limited version of the above console

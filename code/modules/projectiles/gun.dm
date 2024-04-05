@@ -26,7 +26,7 @@
 	flags_atom = FPRINT|CONDUCT
 	flags_item = TWOHANDED
 	light_system = DIRECTIONAL_LIGHT
-	interup_tactical_Reload = INTERRUPT_INCAPACITATED
+	interup_tactical_reload = INTERRUPT_INCAPACITATED
 
 	var/accepted_ammo = list()
 	///Determines what kind of bullet is created when the gun is unloaded - used to match rounds to magazines. Set automatically when reloading.

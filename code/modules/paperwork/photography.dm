@@ -376,7 +376,6 @@
 	clear_broadcast()
 
 /obj/item/device/camera/broadcasting/proc/clear_broadcast()
-	SIGNAL_HANDLER
 	if(!QDELETED(linked_cam))
 		QDEL_NULL(linked_cam)
 

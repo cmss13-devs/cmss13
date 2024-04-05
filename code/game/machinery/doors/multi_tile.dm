@@ -262,9 +262,20 @@
 		var/datum/door_controller/single/control = linked_dropship.door_control.door_controllers[direction]
 		if (control.status != SHUTTLE_DOOR_BROKEN)
 			return ..()
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI, SKILL_PILOT, SKILL_PILOT_TRAINED))
-			to_chat(user, SPAN_WARNING("You don't seem to understand how to restore a remote connection to [src]."))
-			return
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
+				to_chat(user, SPAN_WARNING("You don't seem to understand how to restore a remote connection to [src]."))
+				return
+			else
+				to_chat(user, SPAN_WARNING("You begin to restore the remote connection to [src]."))
+				if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
+					to_chat(user, SPAN_WARNING("You fail to restore a remote connection to [src]."))
+					return
+				unlock(TRUE)
+				close(FALSE)
+				control.status = SHUTTLE_DOOR_UNLOCKED
+				to_chat(user, SPAN_WARNING("You successfully restored the remote connection to [src]."))
+				return
 		if(user.action_busy)
 			return
 

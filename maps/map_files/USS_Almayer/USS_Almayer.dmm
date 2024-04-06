@@ -20367,15 +20367,6 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/engineering/upper_engineering/starboard)
-"cJh" = (
-/obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/poddoor/shutters/almayer/open{
-	dir = 8;
-	id = "Warden Office Shutters";
-	name = "\improper Privacy Shutters"
-	},
-/turf/open/floor/plating,
-/area/almayer/shipboard/brig/cells)
 "cJm" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -28036,8 +28027,8 @@
 	pixel_y = 9;
 	req_access_txt = "3"
 	},
-/obj/structure/machinery/light{
-	dir = 1
+/obj/structure/machinery/computer/working_joe{
+	pixel_y = 16
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -33340,14 +33331,18 @@
 "hlI" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/recharger,
-/obj/structure/sign/safety/terminal{
-	pixel_y = 32
-	},
 /obj/structure/transmitter/rotary{
 	name = "Brig Wardens's Office Telephone";
 	phone_category = "MP Dept.";
 	phone_id = "Brig Warden's Office";
 	pixel_x = 15
+	},
+/obj/structure/sign/safety/terminal{
+	pixel_x = 8;
+	pixel_y = 32
+	},
+/obj/structure/machinery/light{
+	dir = 1
 	},
 /turf/open/floor/almayer{
 	dir = 9;
@@ -93708,7 +93703,7 @@ kuJ
 sLA
 jSw
 xkd
-cJh
+qFu
 xkd
 xkd
 icM
@@ -94317,7 +94312,7 @@ wdF
 kQu
 cqM
 xkd
-cJh
+qFu
 xkd
 xkd
 pns

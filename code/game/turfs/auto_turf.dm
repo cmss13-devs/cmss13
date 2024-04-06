@@ -76,7 +76,7 @@
 				addtimer(CALLBACK(src, PROC_REF(changing_layer), 0), 1)
 
 /turf/open/auto_turf/scorch(heat_level)
-	if(bleed_layer == 0)
+	if(bleed_layer <= 0)
 		return
 	switch(heat_level)
 		if(1 to 19)

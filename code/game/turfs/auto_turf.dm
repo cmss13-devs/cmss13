@@ -82,7 +82,6 @@
 		if(1 to 19)
 			var/new_bleed_layer = min(0, bleed_layer - 1)
 			addtimer(CALLBACK(src, PROC_REF(changing_layer), new_bleed_layer), 1)
-
 		if(20 to 39)
 			var/new_bleed_layer = max(bleed_layer - 2, 0)
 			addtimer(CALLBACK(src, PROC_REF(changing_layer), new_bleed_layer), 1)

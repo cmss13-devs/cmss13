@@ -333,7 +333,7 @@
 	take_damage(dam * burn_flame_multiplier)
 
 /obj/structure/barricade/proc/hit_barricade(obj/item/item)
-	take_damage(item.force * 0.5 * brute_multiplier)
+	take_damage(item.force * item.demolition_mod * 0.5 * brute_multiplier)
 
 /obj/structure/barricade/proc/take_damage(damage)
 	for(var/obj/structure/barricade/barricade in get_step(src,dir)) //discourage double-stacking barricades by removing health from opposing barricade

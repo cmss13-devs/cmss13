@@ -34,6 +34,11 @@ export const Cryo = () => {
 
 const CryoContent = (props) => {
   const { act, data } = useBackend();
+
+  let soundicon = 'volume-high';
+  if (!data.notify) {
+    soundicon = 'volume-xmark';
+  }
   return (
     <>
       <Section title="Occupant">
@@ -89,12 +94,30 @@ const CryoContent = (props) => {
               icon="eject"
               disabled={!data.hasOccupant}
               onClick={() => act('eject')}
-              content="eject patient"
+              content="Eject Patient"
             />
             <Button
               icon={data.autoEject ? 'sign-out-alt' : 'sign-in-alt'}
-              onClick={() => act('autoeject')}
+              width="6rem"
+              tooltipPosition="top"
+              tooltip={
+                'Auto eject is ' + (data.autoEject ? 'enabled.' : 'disabled.')
+              }
               content={data.autoEject ? 'Auto' : 'Manual'}
+              onClick={() => act('autoeject')}
+            />
+            <Button
+              icon={soundicon}
+              ml="auto"
+              mr="1rem"
+              width="5.5rem"
+              tooltipPosition="top"
+              tooltip={
+                'Auto eject notifications are ' +
+                (data.notify ? 'enabled.' : 'disabled.')
+              }
+              content={data.notify ? 'Notify' : 'Silent'}
+              onClick={() => act('notice')}
             />
           </LabeledList.Item>
         </LabeledList>

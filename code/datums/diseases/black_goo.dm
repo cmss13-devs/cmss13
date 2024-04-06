@@ -148,6 +148,8 @@
 	human.make_jittery(500)
 	sleep(30)
 	if(human && human.loc)
+		if(human.buckled)
+			human.buckled.unbuckle()
 		if(human.stat == DEAD)
 			human.revive(TRUE)
 			human.remove_language(LANGUAGE_ENGLISH) // You lose the ability to understand english. Language processing is handled in the mind not the body.

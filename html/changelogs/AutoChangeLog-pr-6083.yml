@@ -1,0 +1,4 @@
+author: "NervanCatos"
+delete-after: True
+changes:
+  - balance: "removes CT access to marine prep weapons racks, doubles ammo count of all regular ammo in req to compensate."

@@ -1,0 +1,5 @@
+author: "Kaga"
+delete-after: True
+changes:
+  - rscadd: "Added the XM43E1 Anti-Materiel Rifle as a pickable sidegrade option for USCM Sniper Specs through the vendor, mutually exclusive with the normal M42A Sniper Rifle. The AMR can shred obstacles, blow a hole through most infantry and their equipment, and even hit a collateral on multiple targets or through light cover, but its lack of specialized ammunition and small magazine mean that you'll need to make every shot count. Ammo can be bought from Req, at the same cost per magazine as the M42A."
+  - balance: "Completely updated the XM43E1 AMR, adding damage falloff to its wall-piercing properties whenever it hits something alongside range loss. Most things reduce its damage by 20%. Dense walls and big xenos reduce both the damage and range 3 times as much."

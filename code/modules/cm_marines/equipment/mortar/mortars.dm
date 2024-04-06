@@ -211,8 +211,8 @@
 /obj/structure/mortar/attackby(obj/item/item, mob/user)
 	if(istype(item, /obj/item/mortar_shell))
 		var/obj/item/mortar_shell/mortar_shell = item
-		var/turf/turf = locate(targ_x + dial_x + offset_x, targ_y + dial_y + offset_y, z)
-		var/area/area = get_area(turf)
+		var/turf/target_turf = locate(targ_x + dial_x + offset_x, targ_y + dial_y + offset_y, z)
+		var/area/target_area = get_area(target_turf)
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You don't have the training to fire [src]."))
 			return
@@ -223,32 +223,32 @@
 			if(targ_x == 0 && targ_y == 0) //Mortar wasn't set
 				to_chat(user, SPAN_WARNING("[src] needs to be aimed first."))
 				return
-			if(!turf)
+			if(!target_turf)
 				to_chat(user, SPAN_WARNING("You cannot fire [src] to this target."))
 				return
-			if(!istype(area))
+			if(!istype(target_area))
 				to_chat(user, SPAN_WARNING("This area is out of bounds!"))
 				return
-			if(CEILING_IS_PROTECTED(area.ceiling, CEILING_PROTECTION_TIER_2) || protected_by_pylon(TURF_PROTECTION_MORTAR, turf))
+			if(CEILING_IS_PROTECTED(target_area.ceiling, CEILING_PROTECTION_TIER_2) || protected_by_pylon(TURF_PROTECTION_MORTAR, target_turf))
 				to_chat(user, SPAN_WARNING("You cannot hit the target. It is probably underground."))
 				return
-			if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_LZ_PROTECTION) && area.is_landing_zone)
+			if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_LZ_PROTECTION) && target_area.is_landing_zone)
 				to_chat(user, SPAN_WARNING("You cannot bomb the landing zone!"))
 				return
 
-		if(!ship_side)
-			var/turf/T1 = locate(turf.x + pick(-1,0,0,1), turf.y + pick(-1,0,0,1), turf.z) //Small amount of spread so that consecutive mortar shells don't all land on the same tile
-			if(T1)
-				turf = T1
-		else
+		if(ship_side)
 			var/crash_occurred = (SSticker?.mode?.is_in_endgame)
 			if(crash_occurred)
 				var/turf/our_turf = get_turf(src)
-				turf = our_turf
+				target_turf = our_turf
 				travel_time = 0.5 SECONDS
 			else
 				to_chat(user, SPAN_RED("You realize how bad of an idea this is and quickly stop."))
 				return
+		else
+			var/turf/deviation_turf = locate(target_turf.x + pick(-1,0,0,1), target_turf.y + pick(-1,0,0,1), target_turf.z) //Small amount of spread so that consecutive mortar shells don't all land on the same tile
+			if(deviation_turf)
+				target_turf = deviation_turf
 
 		user.visible_message(SPAN_NOTICE("[user] starts loading \a [mortar_shell.name] into [src]."),
 		SPAN_NOTICE("You start loading \a [mortar_shell.name] into [src]."))
@@ -268,13 +268,13 @@
 			mortar_shell.cause_data = create_cause_data(initial(mortar_shell.name), user, src)
 			mortar_shell.forceMove(src)
 
-			var/turf/hit_turf = get_turf(src)
-			hit_turf.ceiling_debris_check(2)
+			var/turf/mortar_turf = get_turf(src)
+			mortar_turf.ceiling_debris_check(2)
 
 			for(var/mob/mob in range(7))
 				shake_camera(mob, 3, 1)
 
-			addtimer(CALLBACK(src, PROC_REF(handle_shell), hit_turf, mortar_shell), travel_time)
+			addtimer(CALLBACK(src, PROC_REF(handle_shell), target_turf, mortar_shell), travel_time)
 
 	if(HAS_TRAIT(item, TRAIT_TOOL_WRENCH))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
@@ -326,39 +326,40 @@
 	if(ship_side)
 		var/turf/our_turf = get_turf(src)
 		shell.detonate(our_turf)
-	else
-		if(istype(shell, /obj/item/mortar_shell/custom)) // big shell warning for ghosts
-			var/obj/effect/effect = new /obj/effect/mortar_effect(target)
-			QDEL_IN(effect, 5 SECONDS)
-			notify_ghosts(header = "Custom Shell", message = "A custom mortar shell is about to land at [get_area(target)].", source = effect)
+		return
 
-		playsound(target, 'sound/weapons/gun_mortar_travel.ogg', 50, 1)
-		var/relative_dir
-		for(var/mob/mob in range(15, target))
-			if(get_turf(mob) == target)
-				relative_dir = 0
-			else
-				relative_dir = Get_Compass_Dir(mob, target)
-			mob.show_message( \
-				SPAN_DANGER("A SHELL IS COMING DOWN [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
-				SPAN_DANGER("YOU HEAR SOMETHING COMING DOWN [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
-			)
-		sleep(2.5 SECONDS) // Sleep a bit to give a message
-		for(var/mob/mob in range(10, target))
-			if(get_turf(mob) == target)
-				relative_dir = 0
-			else
-				relative_dir = Get_Compass_Dir(mob, target)
-			mob.show_message( \
-				SPAN_HIGHDANGER("A SHELL IS ABOUT TO IMPACT [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
-				SPAN_HIGHDANGER("YOU HEAR SOMETHING VERY CLOSE COMING DOWN [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
-			)
-		sleep(2 SECONDS) // Wait out the rest of the landing time
-		target.ceiling_debris_check(2)
-		if(!protected_by_pylon(TURF_PROTECTION_MORTAR, target))
-			shell.detonate(target)
-		qdel(shell)
-		firing = FALSE
+	if(istype(shell, /obj/item/mortar_shell/custom)) // big shell warning for ghosts
+		var/obj/effect/effect = new /obj/effect/mortar_effect(target)
+		QDEL_IN(effect, 5 SECONDS)
+		notify_ghosts(header = "Custom Shell", message = "A custom mortar shell is about to land at [get_area(target)].", source = effect)
+
+	playsound(target, 'sound/weapons/gun_mortar_travel.ogg', 50, 1)
+	var/relative_dir
+	for(var/mob/mob in range(15, target))
+		if(get_turf(mob) == target)
+			relative_dir = 0
+		else
+			relative_dir = Get_Compass_Dir(mob, target)
+		mob.show_message( \
+			SPAN_DANGER("A SHELL IS COMING DOWN [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
+			SPAN_DANGER("YOU HEAR SOMETHING COMING DOWN [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
+		)
+	sleep(2.5 SECONDS) // Sleep a bit to give a message
+	for(var/mob/mob in range(10, target))
+		if(get_turf(mob) == target)
+			relative_dir = 0
+		else
+			relative_dir = Get_Compass_Dir(mob, target)
+		mob.show_message( \
+			SPAN_HIGHDANGER("A SHELL IS ABOUT TO IMPACT [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
+			SPAN_HIGHDANGER("YOU HEAR SOMETHING VERY CLOSE COMING DOWN [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
+		)
+	sleep(2 SECONDS) // Wait out the rest of the landing time
+	target.ceiling_debris_check(2)
+	if(!protected_by_pylon(TURF_PROTECTION_MORTAR, target))
+		shell.detonate(target)
+	qdel(shell)
+	firing = FALSE
 
 /obj/structure/mortar/proc/can_fire_at(mob/user, test_targ_x = targ_x, test_targ_y = targ_y, test_dial_x, test_dial_y)
 	var/dialing = test_dial_x || test_dial_y

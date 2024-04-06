@@ -1,0 +1,5 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Added ARES logging for launching supply drops."
+  - admin: "Added staff logs for launching supply drops."

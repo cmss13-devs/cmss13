@@ -225,22 +225,6 @@ There are several things that need to be remembered:
 			overlays_standing[HAIR_LAYER] = hair_s
 			apply_overlay(HAIR_LAYER)
 
-//Call when target overlay should be added/removed
-/mob/living/carbon/human/update_targeted()
-	remove_overlay(TARGETED_LAYER)
-
-	var/image/holo_card_image
-
-	if(holo_card_color)
-		holo_card_image = image("icon" = 'icons/effects/Targeted.dmi', "icon_state" = "holo_card_[holo_card_color]")
-
-	if(!holo_card_image)
-		return
-
-	holo_card_image.layer = -TARGETED_LAYER
-	overlays_standing[TARGETED_LAYER] = holo_card_image
-	apply_overlay(TARGETED_LAYER)
-
 //Call when someone is gauzed or splinted, or when one of those items are removed
 /mob/living/carbon/human/update_med_icon()
 	remove_overlay(MEDICAL_LAYER)

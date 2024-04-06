@@ -743,11 +743,8 @@
 	armor_internaldamage = CLOTHING_ARMOR_NONE
 	slowdown = SLOWDOWN_ARMOR_SUPER_LIGHT
 	storage_slots = 3
-
-/obj/item/clothing/suit/storage/marine/veteran/ua_riot/synth/Initialize()
-	flags_atom |= NO_NAME_OVERRIDE
-	flags_marine_armor |= SYNTH_ALLOWED
-	return ..()
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+	flags_marine_armor = ARMOR_SQUAD_OVERLAY|ARMOR_LAMP_OVERLAY|SYNTH_ALLOWED
 
 //================//=ROYAL MARINES=\\====================================\\
 //=======================================================================\\

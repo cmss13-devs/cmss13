@@ -115,7 +115,9 @@
 
 /// checks if there is a supply link in our location and we are anchored to it
 /obj/structure/machinery/cm_vending/sorted/medical/proc/get_supply_link()
-	var/linkpoint = locate(/obj/structure/medical_supply_link) in loc
+	if(!anchored)
+		return FALSE
+	var/obj/structure/medical_supply_link/linkpoint = locate() in loc
 	if(!linkpoint)
 		return FALSE
 	return TRUE

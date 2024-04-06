@@ -687,9 +687,9 @@ Additional game mode variables.
 	return TRUE
 
 /// Pick and setup a queen spawn from landmarks, then spawns the player there alongside any required setup
-/datum/game_mode/proc/pick_queen_spawn(datum/mind/ghost_mind, hivenumber = XENO_HIVE_NORMAL)
+/datum/game_mode/proc/pick_queen_spawn(mob/player, hivenumber = XENO_HIVE_NORMAL)
 	RETURN_TYPE(/turf)
-
+	var/datum/mind/ghost_mind = player.mind
 	var/mob/living/original = ghost_mind.current
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	if(hive.living_xeno_queen || !original || !original.client)
@@ -710,6 +710,9 @@ Additional game mode variables.
 		spawn_list_map[spawn_name] = T
 
 	var/selected_spawn = tgui_input_list(original, "Where do you want you and your hive to spawn?", "Queen Spawn", spawn_list_map, QUEEN_SPAWN_TIMEOUT, theme="hive_status")
+	if(hive.living_xeno_queen)
+		to_chat(original, SPAN_XENOANNOUNCE("You have taken too long to pick a spawn location, a queen has already evolved before you."))
+		player.send_to_lobby()
 	if(!selected_spawn)
 		selected_spawn = pick(spawn_list_map)
 		to_chat(original, SPAN_XENOANNOUNCE("You have taken too long to pick a spawn location, one has been chosen for you."))
@@ -1021,10 +1024,14 @@ Additional game mode variables.
 			to_chat(joe_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a synth."))
 		return
 
-	if((joe_candidate.ckey in joes) && !MODE_HAS_TOGGLEABLE_FLAG(MODE_BYPASS_JOE))
-		if(show_warning)
-			to_chat(joe_candidate, SPAN_WARNING("You already were a Working Joe this round!"))
-		return
+	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_DISABLE_JOE_RESPAWN) && (joe_candidate.ckey in joes)) // No joe respawns if already a joe before
+		to_chat(joe_candidate, SPAN_WARNING("Working Joe respawns are disabled!"))
+		return FALSE
+
+	var/deathtime = world.time - joe_candidate.timeofdeath
+	if((deathtime < JOE_JOIN_DEAD_TIME && (joe_candidate.ckey in joes)) && !MODE_HAS_TOGGLEABLE_FLAG(MODE_BYPASS_JOE))
+		to_chat(joe_candidate, SPAN_WARNING("You have been dead for [DisplayTimeText(deathtime)]. You need to wait <b>[DisplayTimeText(JOE_JOIN_DEAD_TIME - deathtime)]</b> before rejoining as a Working Joe!"))
+		return FALSE
 
 	// council doesn't count towards this conditional.
 	if(joe_job.get_whitelist_status(joe_candidate.client) == WHITELIST_NORMAL)

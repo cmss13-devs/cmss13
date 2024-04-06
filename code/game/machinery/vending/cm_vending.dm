@@ -566,6 +566,11 @@ GLOBAL_LIST_EMPTY(vending_products)
 								if("Sniper Set")
 									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SNIPER)
 									specialist_assignment = "Sniper"
+									GLOB.available_specialist_sets -= "Anti-materiel Sniper Set"
+								if("Anti-materiel Sniper Set")
+									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SNIPER)
+									specialist_assignment = "Heavy Sniper"
+									GLOB.available_specialist_sets -= "Sniper Set"
 								if("Demolitionist Set")
 									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_ROCKET)
 									specialist_assignment = "Demo"
@@ -1275,12 +1280,15 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 	if(vend_flags & VEND_UNIFORM_RANKS)
 		if(insignas_override)
 			var/obj/item/clothing/under/underclothes = new_item
+
 			//Gives ranks to the ranked
 			if(istype(underclothes) && user.wear_id && user.wear_id.paygrade)
 				var/rankpath = get_rank_pins(user.wear_id.paygrade)
 				if(rankpath)
 					var/obj/item/clothing/accessory/ranks/rank_insignia = new rankpath()
+					var/obj/item/clothing/accessory/patch/uscmpatch = new()
 					underclothes.attach_accessory(user, rank_insignia)
+					underclothes.attach_accessory(user, uscmpatch)
 
 	if(vend_flags & VEND_UNIFORM_AUTOEQUIP)
 		// autoequip

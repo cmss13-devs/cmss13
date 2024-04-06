@@ -1894,7 +1894,7 @@
 /area/lv624/ground/barrens/east_barrens/ceiling)
 "aja" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/turf/open/gm/dirtgrassborder/east,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/jungle/west_jungle)
 "ajc" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -2584,9 +2584,9 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "amK" = (
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
-/area/lv624/ground/river/west_river)
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
+/turf/open/gm/dirt,
+/area/lv624/ground/jungle/west_jungle)
 "amL" = (
 /obj/structure/flora/bush/ausbushes/palebush,
 /turf/open/gm/river,
@@ -3060,7 +3060,7 @@
 /area/lv624/lazarus/hydroponics)
 "aqq" = (
 /obj/structure/flora/bush/ausbushes/pointybush,
-/turf/open/gm/dirtgrassborder/west,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/lv624/ground/jungle/west_jungle)
 "aqr" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
@@ -3261,7 +3261,8 @@
 /turf/open/gm/dirtgrassborder/west,
 /area/lv624/lazarus/quartstorage/outdoors)
 "arE" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/lv624/ground/jungle/west_jungle)
 "arG" = (
 /obj/effect/landmark/survivor_spawner,
@@ -3336,8 +3337,8 @@
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/west_jungle)
 "asd" = (
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder/south,
+/obj/structure/flora/jungle/vines/light_3,
+/turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/jungle/west_jungle)
 "ase" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
@@ -3425,8 +3426,8 @@
 	},
 /area/lv624/lazarus/landing_zones/lz1)
 "asK" = (
-/obj/structure/flora/bush/ausbushes/pointybush,
-/turf/open/gm/grass/grass1,
+/obj/structure/flora/jungle/vines/light_3,
+/turf/open/gm/dirt,
 /area/lv624/ground/jungle/west_jungle)
 "asL" = (
 /obj/item/tool/warning_cone,
@@ -3496,16 +3497,12 @@
 	},
 /area/lv624/lazarus/research)
 "asX" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 6
-	},
-/turf/open/gm/grass/grass2,
+/obj/structure/flora/jungle/vines/light_3,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/west_jungle)
 "asY" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 10
-	},
-/turf/open/gm/grass/grass2,
+/obj/effect/landmark/monkey_spawn,
+/turf/open/gm/dirt,
 /area/lv624/ground/jungle/west_jungle)
 "asZ" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
@@ -4809,12 +4806,6 @@
 /obj/effect/landmark/lv624/xeno_tunnel,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/quartstorage/outdoors)
-"ayd" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 4
-	},
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/west_jungle)
 "ayg" = (
 /obj/structure/computerframe,
 /turf/open/floor/plating{
@@ -4844,12 +4835,6 @@
 	icon_state = "vault"
 	},
 /area/lv624/lazarus/robotics)
-"ayl" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 1
-	},
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/west_jungle)
 "aym" = (
 /obj/structure/machinery/autolathe,
 /turf/open/floor{
@@ -5013,10 +4998,6 @@
 	icon_state = "whitepurple"
 	},
 /area/lv624/lazarus/research)
-"ayN" = (
-/obj/structure/flora/bush/ausbushes/reedbush,
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
-/area/lv624/ground/jungle/west_jungle)
 "ayO" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8
@@ -7713,14 +7694,6 @@
 /area/lv624/lazarus/main_hall)
 "aIm" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/west_jungle)
-"aIn" = (
-/obj/structure/flora/bush/ausbushes/var3/sunnybush,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/west_jungle)
-"aIo" = (
-/obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_jungle)
 "aIp" = (
@@ -12227,10 +12200,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_central_jungle)
-"bbu" = (
-/obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/turf/open/gm/grass/grass2,
-/area/lv624/ground/jungle/west_jungle)
 "bbx" = (
 /obj/structure/flora/jungle/vines/light_1,
 /obj/structure/flora/jungle/vines/heavy,
@@ -12238,7 +12207,7 @@
 /area/lv624/ground/jungle/east_central_jungle)
 "bbC" = (
 /obj/effect/landmark/hunter_primary,
-/turf/open/gm/grass/grass2,
+/turf/open/gm/dirt,
 /area/lv624/ground/jungle/west_jungle)
 "bbH" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
@@ -16032,7 +16001,7 @@
 /area/lv624/lazarus/comms)
 "hJn" = (
 /obj/structure/flora/jungle/vines/light_2,
-/turf/open/gm/grass/grass2,
+/turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_jungle)
 "hJW" = (
 /turf/open/gm/dirtgrassborder/south,
@@ -21547,10 +21516,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
-"rvL" = (
-/obj/structure/flora/bush/ausbushes/ausbush,
-/turf/open/gm/grass/grass2,
-/area/lv624/ground/jungle/west_jungle)
 "rvW" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/grass/grass1,
@@ -23542,9 +23507,6 @@
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/colony/west_tcomms_road)
-"uSw" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
-/area/lv624/ground/jungle/west_jungle)
 "uSy" = (
 /turf/open/gm/coast/beachcorner2/north_east,
 /area/lv624/ground/barrens/east_barrens)
@@ -26058,7 +26020,7 @@ atC
 aAt
 aro
 aHE
-aIn
+aro
 asw
 asw
 asw
@@ -26278,13 +26240,13 @@ nsk
 nsk
 nsk
 aun
-aqS
-suv
-atZ
+ase
+arE
+atC
 vVD
-ayT
-aro
-aro
+asd
+atu
+asx
 aro
 asw
 asw
@@ -26505,20 +26467,20 @@ aYX
 alC
 alC
 auc
-amK
-arn
-asK
+aZb
+aAl
+ase
 pbd
 avf
-ayT
-aro
-aBk
-aro
-aIo
+asK
+aAl
+ase
+atu
+asx
 asw
 asw
 asw
-aro
+arP
 awb
 awe
 awe
@@ -26733,18 +26695,18 @@ aYS
 aud
 aud
 auP
-aqS
-rvL
-asc
-aro
-aro
-aro
-asw
-aro
-aro
-aro
-aro
-aro
+aAl
+aAl
+aAl
+aAl
+aAl
+aAl
+avf
+aAl
+aAl
+ase
+atu
+asx
 aro
 aro
 ata
@@ -26961,19 +26923,19 @@ arV
 aud
 aud
 auP
-aqS
+aAl
 avf
-aro
-awb
-ayd
-azg
-aro
-aro
-aIm
-aro
-aro
-arP
-asc
+aAl
+aAl
+aAl
+aAl
+aAl
+aAl
+aAl
+aAl
+aAl
+ase
+asx
 aro
 aro
 aro
@@ -27189,18 +27151,18 @@ aud
 amG
 bGb
 auP
-asd
+aAl
 avf
-asX
-awe
-awe
-ayl
-aro
-aro
-aro
-aIq
-aCO
-atu
+aAl
+aAl
+aAl
+aAl
+aAl
+aAl
+aAl
+asY
+aAl
+aAl
 aqq
 atu
 atu
@@ -27417,17 +27379,17 @@ aud
 aud
 asp
 auP
-aqS
-asc
-asY
-awe
-awe
-awV
-aro
-asw
-aro
-aCO
-aEe
+aAl
+aAl
+aAl
+aAl
+aAl
+aAl
+aAl
+avf
+avf
+aAl
+aAl
 aAl
 aAl
 aAl
@@ -27645,16 +27607,16 @@ aud
 aud
 aud
 auP
-aqS
-bbu
-asZ
-awz
-ayl
-aro
-atA
-aro
-asg
-axV
+aAl
+aAl
+aAl
+aAl
+aAl
+aAl
+aAl
+avf
+aAl
+aAl
 aAl
 aAl
 aAl
@@ -27873,16 +27835,16 @@ asF
 aud
 fQL
 aBn
-asd
-aro
-asX
-awe
-ayA
-ayd
-azg
-aro
-aCO
-aEe
+aAl
+aAl
+aAl
+aAl
+aAl
+aAl
+aAl
+aAl
+aAl
+aAl
 aAl
 aAl
 ayh
@@ -28101,15 +28063,15 @@ aud
 aud
 oym
 xuK
-ase
-asx
-ata
-awV
-asw
-ata
-awV
-aro
-axV
+aAl
+aAl
+aAl
+avf
+avf
+aAl
+aAl
+aAl
+aAl
 kQY
 knd
 knd
@@ -28329,15 +28291,15 @@ arU
 aud
 atJ
 aYR
-akZ
-aqS
-arP
-aro
-aro
-aro
-asc
-aCO
-aEe
+axw
+aAl
+aAl
+aAl
+avf
+avf
+aAl
+aAl
+aAl
 oek
 jga
 jga
@@ -28558,14 +28520,14 @@ xJA
 xJA
 bGb
 dmf
-ase
-atu
-atu
-asx
-aro
+aAl
+aAl
+aAl
+aAl
+aAl
 bbC
-axV
-ayh
+aAl
+kQY
 ayV
 jga
 azs
@@ -28789,10 +28751,10 @@ bBu
 knd
 knd
 axw
-ase
-atu
-atu
-aEe
+aAl
+aAl
+aAl
+aAl
 oek
 jga
 jga
@@ -29922,8 +29884,8 @@ aud
 aud
 asF
 auP
-aqR
-arE
+aAl
+aAl
 npf
 sTB
 sTB
@@ -30150,13 +30112,13 @@ aud
 aud
 bGb
 auP
-aqS
-uSw
-asa
-asa
-asa
-asa
-arE
+aAl
+aAl
+aAl
+aAl
+aAl
+aAl
+aAl
 awC
 sTB
 sTB
@@ -30378,13 +30340,13 @@ aud
 asp
 aud
 auP
-aqS
-arP
-asc
-asg
-aro
-atA
-axV
+aAl
+amK
+aAl
+aAl
+aAl
+aAl
+aAl
 aiS
 aAl
 aAl
@@ -30606,15 +30568,15 @@ aud
 aud
 aud
 auP
-aqS
+aAl
 aFm
 aFm
 auO
 aFm
 aFm
 aAl
-aqR
-asa
+aAl
+aAl
 aja
 asa
 asa
@@ -30834,16 +30796,16 @@ aud
 aud
 amG
 auP
-aqS
+aAl
 aFm
 aue
 auf
 aXC
 aFm
 aAl
-ayN
-asx
-ayT
+aqi
+aAl
+asX
 aAp
 aAp
 baN
@@ -31062,7 +31024,7 @@ aud
 aud
 aud
 asR
-aqS
+aAl
 aFm
 auf
 auf
@@ -31070,7 +31032,7 @@ aZp
 aFm
 aAl
 omu
-aqS
+aAl
 aAp
 aAp
 aAp
@@ -31290,7 +31252,7 @@ amG
 aud
 aul
 aBn
-aqS
+aAl
 aFQ
 aug
 wFx
@@ -31518,7 +31480,7 @@ aud
 bGb
 auP
 aqi
-ase
+aAl
 aFm
 aZn
 axp

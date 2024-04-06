@@ -1,5 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Changed all marine presets to use Dress Blues as their dress equipment."
-  - rscdel: "Excluding Whiskey Outpost, removed all previous dress equipment from vendors."

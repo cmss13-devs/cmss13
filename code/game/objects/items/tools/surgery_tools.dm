@@ -96,6 +96,7 @@
 	force = 10
 	sharp = IS_SHARP_ITEM_ACCURATE
 	edge = 1
+	demolition_mod = 0.1
 	w_class = SIZE_TINY
 	throwforce = 5
 	flags_item = CAN_DIG_SHRAPNEL

@@ -314,7 +314,10 @@
 
 //This proc is here to prevent Xenomorphs from picking up objects (default attack_hand behaviour)
 //Note that this is overridden by every proc concerning a child of obj unless inherited
-/obj/item/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/item/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(HAS_TRAIT(xeno, TRAIT_OPPOSABLE_THUMBS))
+		attack_hand(xeno)
+		return XENO_NONCOMBAT_ACTION
 	return
 
 /obj/attack_larva(mob/living/carbon/xenomorph/larva/M)
@@ -381,10 +384,16 @@
 //If we sent it to monkey we'd get some weird shit happening.
 /obj/structure/attack_alien(mob/living/carbon/xenomorph/M)
 	// fuck off dont destroy my unslashables
-	if(unslashable || health <= 0)
+	if(unslashable || health <= 0 && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
 		to_chat(M, SPAN_WARNING("We stare at \the [src] cluelessly."))
 		return XENO_NO_DELAY_ACTION
 
+/obj/structure/magazine_box/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
+		attack_hand(xeno)
+		return XENO_NONCOMBAT_ACTION
+	else
+		. = ..()
 
 //Beds, nests and chairs - unbuckling
 /obj/structure/bed/attack_alien(mob/living/carbon/xenomorph/M)
@@ -664,7 +673,7 @@
 //Xenomorphs can't use machinery, not even the "intelligent" ones
 //Exception is Queen and shuttles, because plot power
 /obj/structure/machinery/attack_alien(mob/living/carbon/xenomorph/M)
-	if(unslashable || health <= 0)
+	if(unslashable || health <= 0 && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
 		to_chat(M, SPAN_WARNING("We stare at \the [src] cluelessly."))
 		return XENO_NO_DELAY_ACTION
 
@@ -683,7 +692,7 @@
 
 // Destroying reagent dispensers
 /obj/structure/reagent_dispensers/attack_alien(mob/living/carbon/xenomorph/M)
-	if(unslashable || health <= 0)
+	if(unslashable || health <= 0 && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
 		to_chat(M, SPAN_WARNING("We stare at \the [src] cluelessly."))
 		return XENO_NO_DELAY_ACTION
 

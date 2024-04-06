@@ -460,9 +460,9 @@ DEFINES in setup.dm, referenced here.
 		else attack_verb = list("slashed", "stabbed", "speared", "torn", "punctured", "pierced", "gored") //Greater than 35
 
 /obj/item/weapon/gun/proc/get_active_firearm(mob/user, restrictive = TRUE)
-	if(!ishuman(usr))
-		return
 	if(user.is_mob_incapacitated() || !isturf(usr.loc))
+		return
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		to_chat(user, SPAN_WARNING("Not right now."))
 		return
 
@@ -782,7 +782,7 @@ DEFINES in setup.dm, referenced here.
 	if(flags_gun_features & GUN_BURST_FIRING)
 		return
 
-	if(!ishuman(usr))
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
 		return
 
 	if(usr.is_mob_incapacitated() || !usr.loc || !isturf(usr.loc))

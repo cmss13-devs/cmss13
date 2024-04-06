@@ -187,7 +187,7 @@
 	for(var/obj/item/reagent_container/glass/G in containers)
 		if(G.reagents.total_volume)
 			has_reagents = 1
-			reagents.no_star_shape = no_star_shape
+			reagents.allow_star_shape = allow_star_shape
 			break
 
 	if(!has_reagents)

@@ -90,7 +90,7 @@
 		to_chat(user, SPAN_WARNING("You can't mix fuel mixtures!"))
 		return
 
-	if(!to_add.intensityfire)
+	if(!to_add.intensityfire && to_add.id != "stablefoam")
 		to_chat(user, SPAN_WARNING("This chemical is not potent enough to be used in a flamethrower!"))
 		return
 
@@ -152,6 +152,7 @@
 	flamer_chem = "napalmex"
 
 	max_range = 7
+	max_duration = 30
 
 /obj/item/ammo_magazine/flamer_tank/custom
 	name = "custom incinerator tank"

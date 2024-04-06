@@ -237,7 +237,7 @@
 	name = "flare"
 	desc = "A red USCM issued flare. There are instructions on the side, it reads 'pull cord, make light'."
 	w_class = SIZE_SMALL
-	light_power = 1
+	light_power = 2
 	light_range = 6
 	icon_state = "flare"
 	item_state = "flare"

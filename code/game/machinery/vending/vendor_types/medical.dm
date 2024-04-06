@@ -59,7 +59,8 @@
 	vendor_theme = VENDOR_THEME_COMPANY
 	vend_delay = 0.5 SECONDS
 
-	var/requires_supply_link_port = TRUE // sets vendor to require medlink to be able to resupply
+	/// sets vendor to require a medlink to be able to resupply
+	var/requires_supply_link_port = TRUE
 
 	var/datum/health_scan/last_health_display
 

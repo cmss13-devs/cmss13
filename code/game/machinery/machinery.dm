@@ -366,7 +366,9 @@ Class Procs:
 	if(stat & NOPOWER)
 		icon_state = "fuelpump_off"
 	else
-		icon_state = "fuelpump_0"
+		icon_state = "fuelpump_on"
+		//if fuel pump 0
+
 		//if fuel pump 25
 
 		//if fuel pump 50

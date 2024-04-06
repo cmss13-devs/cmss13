@@ -87,6 +87,9 @@ SUBSYSTEM_DEF(hijack)
 	RegisterSignal(SSdcs, COMSIG_GLOB_GENERATOR_SET_OVERLOADING, PROC_REF(on_generator_overload))
 	return SS_INIT_SUCCESS
 
+	//gloabal list to register all the fuelpump
+	GLOBAL_LIST_INIT_TYPED(allfuelpump, /obj/structure/machinery/fuelpump, list())
+
 /datum/controller/subsystem/hijack/stat_entry(msg)
 	if(!SSticker?.mode?.is_in_endgame)
 		msg = " Not Hijack"
@@ -217,12 +220,16 @@ SUBSYSTEM_DEF(hijack)
 	switch(announce)
 		if(1)
 			marine_announcement("Emergency fuel replenishment is at 25 percent. Lifeboat emergency early launch is now available.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
+			update_icon(allfuelpump)
 		if(2)
 			marine_announcement("Emergency fuel replenishment is at 50 percent.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
+			update_icon(allfuelpump)
 		if(3)
 			marine_announcement("Emergency fuel replenishment is at 75 percent.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
+			update_icon(allfuelpump)
 		if(4)
 			marine_announcement("Emergency fuel replenishment is at 100 percent. Safe utilization of lifeboats and pods is now possible.", HIJACK_ANNOUNCE)
+			update_icon(allfuelpump)
 			if(!admin_sd_blocked)
 				addtimer(CALLBACK(src, PROC_REF(unlock_self_destruct)), 8 SECONDS)
 

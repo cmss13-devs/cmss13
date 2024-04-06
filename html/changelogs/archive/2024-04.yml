@@ -21,3 +21,32 @@
 2024-04-02:
   sleepynecrons:
   - imageadd: added missing backpack onmob states for "classic" gearset
+2024-04-03:
+  vero5123:
+  - bugfix: lowers the scalpel and chunk box's ability to destroy various structures.
+  - rscadd: chunk box is now a melee weapon
+2024-04-04:
+  QuickLode:
+  - qol: Moves CL's Office and SEA's Office phone lines to "Offices" category.
+  realforest2001:
+  - rscadd: Added AI Core camera consoles to CE, CO and Brig offices, along with CIC
+      and Lifeboat bubble.
+  - maptweak: Added Tech Control Console to ARES Core.
+  - rscadd: Added Tech Unlock logs to ARES Interface
+2024-04-05:
+  Drathek:
+  - bugfix: Fixed some number entry for your pin and access code in the EFTPOS
+  Git-Nivrak:
+  - qol: Acid sprays will now extinguish fire from other xenomorphs more consistently
+  ihatethisengine:
+  - balance: night vision optics no longer can be used with binoculars.
+  vero5123:
+  - bugfix: xenos can no longer attempt to use corrosive acid after death
+2024-04-06:
+  Huffie56:
+  - balance: add the ability to store fixOvein in the pouch medkit.
+  QuickLode:
+  - balance: Metal rods take up less space in an inventory (3 slots to 2)
+  - code_imp: removes some redundant code on plasteel rods
+  vero5123:
+  - bugfix: fixes queen getting stuck in the lobby if they take too long

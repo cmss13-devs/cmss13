@@ -359,7 +359,7 @@
 	name = "USCM Cargo Technician (CT)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
-	access = list(ACCESS_MARINE_CARGO, ACCESS_MARINE_PREP)
+	access = list(ACCESS_MARINE_CARGO)
 	assignment = JOB_CARGO_TECH
 	rank = JOB_CARGO_TECH
 	paygrade = PAY_SHORT_ME2

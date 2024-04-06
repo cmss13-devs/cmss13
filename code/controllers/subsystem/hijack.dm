@@ -83,8 +83,8 @@ SUBSYSTEM_DEF(hijack)
 	/// If ARES has announced the 50% point yet for SD
 	var/ares_sd_announced = FALSE
 
-	/// to fallow what stage fuel pump are in.
-	var/global/fuelpump_stage = 0
+/// to fallow what stage fuel pump are in.
+var/global/fuelpump_stage = 0
 
 
 /datum/controller/subsystem/hijack/Initialize(timeofday)

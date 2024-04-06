@@ -113,7 +113,7 @@
 /datum/ammo/flare/set_bullet_traits()
 	. = ..()
 	LAZYADD(traits_to_give, list(
-		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary, stacks = 2.5)
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary, stacks = 10)
 	))
 
 /datum/ammo/flare/on_hit_mob(mob/M,obj/projectile/P)

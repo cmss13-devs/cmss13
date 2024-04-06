@@ -237,8 +237,8 @@
 	name = "flare"
 	desc = "A red USCM issued flare. There are instructions on the side, it reads 'pull cord, make light'."
 	w_class = SIZE_SMALL
-	light_power = 2
-	light_range = 5
+	light_power = 1
+	light_range = 6
 	icon_state = "flare"
 	item_state = "flare"
 	actions = list() //just pull it manually, neckbeard.
@@ -253,7 +253,7 @@
 	/// Whether to use flame overlays for this flare type
 	var/show_flame = TRUE
 	/// Tint for the greyscale flare flame
-	var/flame_tint = "#ffcccc"
+	var/flame_tint = "#ff4545"
 	/// Color correction, added to the whole flame overlay
 	var/flame_base_tint = "#ff0000"
 	// "But, why are there two colors?"

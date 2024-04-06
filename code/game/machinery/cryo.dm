@@ -260,7 +260,7 @@
 			display_message("Patient's external wounds are healed.")
 			go_out(TRUE)
 			return
-		if(occupant.health >= 100)
+		if(occupant.health >= occupant.maxHealth)
 			display_message("Patient's external wounds are healed.")
 			go_out(TRUE)
 			return
@@ -311,7 +311,7 @@
 	if(do_after(usr, 2 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		visible_message(SPAN_NOTICE("[usr] moves [usr == cur_mob ? "" : "[cur_mob] "]inside the cryo cell."))
 		cur_mob.forceMove(src)
-		if(cur_mob.health >= -100 && (cur_mob.health <= 0 || cur_mob.sleeping))
+		if(cur_mob.health >= HEALTH_THRESHOLD_DEAD && (cur_mob.health <= 0 || cur_mob.sleeping))
 			to_chat(cur_mob, SPAN_NOTICE("You feel cold liquid surround you. Your skin starts to freeze up."))
 		occupant = cur_mob
 		occupant_death_stage = DEATH_STAGE_NONE

@@ -63,6 +63,8 @@ export const KeyBinds = (props) => {
                     </Flex.Item>
                     <Flex.Item>
                       <ButtonKeybind
+                        tooltip="Search by key"
+                        tooltipPosition="bottom-start"
                         icon="keyboard"
                         onFinish={(keysDown) => {
                           // The key(s) pressed by the user, byond-ified.

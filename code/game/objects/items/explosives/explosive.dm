@@ -24,7 +24,8 @@
 									"min_fire_rad" = 1, "min_fire_int" = 3, "min_fire_dur" = 3
 	)
 	var/falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
-	var/no_star_shape = FALSE //forces the shape of the flame to be normal if true
+	/// Whether a star shape is possible when the intensity meets CHEM_FIRE_STAR_THRESHOLD
+	var/allow_star_shape = TRUE
 	var/use_dir = FALSE
 	var/angle = 360
 	var/has_blast_wave_dampener = FALSE; //Whether or not the casing can be toggle between different falloff_mode

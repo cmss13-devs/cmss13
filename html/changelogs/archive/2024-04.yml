@@ -42,3 +42,11 @@
   - balance: night vision optics no longer can be used with binoculars.
   vero5123:
   - bugfix: xenos can no longer attempt to use corrosive acid after death
+2024-04-06:
+  Huffie56:
+  - balance: add the ability to store fixOvein in the pouch medkit.
+  QuickLode:
+  - balance: Metal rods take up less space in an inventory (3 slots to 2)
+  - code_imp: removes some redundant code on plasteel rods
+  vero5123:
+  - bugfix: fixes queen getting stuck in the lobby if they take too long

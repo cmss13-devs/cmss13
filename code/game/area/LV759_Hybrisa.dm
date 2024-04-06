@@ -19,8 +19,7 @@
 	name = "Hybrisa - Outdoors"
 	icon_state = "cliff_blocked" //because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
 	ceiling = CEILING_NONE
-	soundscape_playlist = SCAPE_PL_LV522_OUTDOORS
-
+	soundscape_playlist = SCAPE_PL_LV759_OUTDOORS
 /area/lv759/oob
 	name = "LV759 - Out Of Bounds"
 	icon_state = "unknown"
@@ -102,6 +101,11 @@
 	requires_power = FALSE
 
 //Outdoors areas
+/area/lv759/outdoors/caves
+	name = "Hybrisa - Caverns"
+	icon_state = "blue"
+	ceiling = CEILING_NONE
+	soundscape_playlist = SCAPE_PL_LV759_CAVES
 /area/lv759/outdoors/colony_streets
 	name = "Colony Streets"
 	icon_state = "green"
@@ -216,7 +220,8 @@
 	name = "LV759 - Weymart Floor"
 	icon_state = "blue"
 	minimap_color = MINIMAP_AREA_COMMAND
-	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
+	soundscape_interval = 35
+	soundscape_playlist = SCAPE_PL_LV759_WEYMART
 
 /area/lv759/indoors/weymart_backrooms
 	name = "LV759 - Weymart Backrooms"
@@ -427,3 +432,11 @@
 	name = "LV759 - Southern Public Restroom"
 	icon_state = "green"
 	minimap_color = MINIMAP_AREA_COLONY
+
+/area/lv759/derelict/derelictship
+	name = "LV759 - Derelict Ship"
+	icon_state = "purple"
+	minimap_color = MINIMAP_AREA_COLONY
+	ceiling = CEILING_MAX
+	soundscape_playlist = SCAPE_PL_LV759_DERELICTSHIP
+	soundscape_interval = 45

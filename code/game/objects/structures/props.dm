@@ -1377,7 +1377,7 @@
 // Hybrisa props
 
 /obj/structure/prop/hybrisa
-	icon = 'icons/obj/structures/props/vehiclesexpanded2.dmi'
+	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
 	icon_state = "pimp"
 
 // Cave props
@@ -1452,33 +1452,33 @@
 // Vehicles
 
 /obj/structure/prop/hybrisa/vehicles
-    icon = 'icons/obj/structures/props/vehiclesexpanded2.dmi'
+    icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
     icon_state = "SUV"
 
 /obj/structure/prop/hybrisa/vehicles/suv
-    icon = 'icons/obj/structures/props/vehiclesexpanded2.dmi'
+    icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
     icon_state = "SUV"
 
 /obj/structure/prop/hybrisa/vehicles/suvdamaged
-    icon = 'icons/obj/structures/props/vehiclesexpanded2.dmi'
+    icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
     icon_state = "SUV_damaged"
 
 /obj/structure/prop/hybrisa/vehicles/largetruck
-    icon = 'icons/obj/structures/props/vehiclesexpanded2.dmi'
+    icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
     icon_state = "zenithlongtruck3"
 
 /obj/structure/prop/hybrisa/vehicles/Car
-    icon = 'icons/obj/structures/props/vehiclesexpanded2.dmi'
+    icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
     icon_state = "MeridianCar_1"
 
 /obj/structure/prop/hybrisa/vehicles/Car
-    icon = 'icons/obj/structures/props/vehiclesexpanded2.dmi'
+    icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
     icon_state = "MeridianCar_1"
 
 /obj/structure/prop/hybrisa/vehicles/suv
 	name = "SUV"
 	desc = "Seems to be broken down."
-	icon = 'icons/obj/structures/props/vehiclesexpanded2.dmi'
+	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
 	icon_state = "SUV"
 	bound_height = 64
 	bound_width = 64
@@ -1503,7 +1503,7 @@
 /obj/structure/prop/hybrisa/vehicles/Car
 	name = "Mono-Spectra"
 	desc = "The 'Mono-Spectra', a mass-produced civilian vehicle for the colonial markets, in and outside of the United Americas. Produced by 'Meridian' a car marque and associated operating division of the Weyland-Yutani Corporation."
-	icon = 'icons/obj/structures/props/vehiclesexpanded2.dmi'
+	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
 	icon_state = "MeridianCar_1"
 	bound_height = 32
 	bound_width = 64
@@ -1536,7 +1536,7 @@
 /obj/structure/prop/hybrisa/vehicles/Car
 	name = "Mono-Spectra"
 	desc = "The 'Mono-Spectra', a mass-produced civilian vehicle for the colonial markets, in and outside of the United Americas. Produced by 'Meridian' a car marque and associated operating division of the Weyland-Yutani Corporation."
-	icon = 'icons/obj/structures/props/vehiclesexpanded2.dmi'
+	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
 	icon_state = "MeridianCar_1"
 	bound_height = 32
 	bound_width = 64
@@ -1598,7 +1598,7 @@
 	name = "truck"
 	icon_state = "zentruck1"
 	desc = "Seems to be broken down."
-	icon = 'icons/obj/structures/props/vehiclesexpanded2.dmi'
+	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
 	bound_height = 64
 	bound_width = 64
 	unslashable = TRUE
@@ -1623,7 +1623,7 @@
 	name = "mega-hauler truck"
 	icon_state = "zenithlongtruck4"
 	desc = "Seems to be broken down."
-	icon = 'icons/obj/structures/props/vehiclesexpanded2.dmi'
+	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
 	bound_height = 64
 	bound_width = 64
 	unslashable = TRUE
@@ -1662,7 +1662,7 @@
 
 /obj/structure/prop/hybrisa/vehicles/colonycrawlers
 	icon_state = "crawler_wy2"
-	icon = 'icons/obj/structures/props/vehiclesexpanded2.dmi'
+	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
 	bound_height = 64
 	bound_width = 64
 	unslashable = TRUE
@@ -1672,12 +1672,12 @@
 /obj/structure/prop/hybrisa/vehicles/colonycrawlers/mining
 	icon_state = "miningcrawler1"
 	desc = "It is a tread bound crawler used in harsh conditions. Supplied by The Kelland Mining Company; A subsidiary of Weyland Yutani."
-	icon = 'icons/obj/structures/props/vehiclesexpanded2.dmi'
+	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
 
 /obj/structure/prop/hybrisa/vehicles/colonycrawlers/science
 	icon_state = "crawler_wy2"
 	desc = "It is a tread bound crawler used in harsh conditions. This one is designed for personnel transportation. Supplied by Orbital Blue International; 'Your friends, in the Aerospace business.' A subsidiary of Weyland Yutani."
-	icon = 'icons/obj/structures/props/vehiclesexpanded2.dmi'
+	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
 
 // science crawlers
 
@@ -1686,10 +1686,10 @@
 
 /obj/structure/prop/hybrisa/vehicles/colonycrawlers/science/science1
 	icon_state = "crawler_wy1"
-	icon = 'icons/obj/structures/props/vehiclesexpanded2.dmi'
+	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
 /obj/structure/prop/hybrisa/vehicles/colonycrawlers/science/science2
 	icon_state = "crawler_wy2"
-	icon = 'icons/obj/structures/props/vehiclesexpanded2.dmi'
+	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
 
 // Mining Crawlers
 
@@ -1714,7 +1714,7 @@
 /obj/structure/prop/hybrisa/vehicles/suv/misc
 	name = "Weyland-Yutani rapid response vehicle"
 	desc = "Seems to be broken down."
-	icon = 'icons/obj/structures/props/vehiclesexpanded2.dmi'
+	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
 	icon_state = "WYSUV1"
 	bound_height = 64
 	bound_width = 64
@@ -1765,7 +1765,7 @@
 /obj/structure/prop/hybrisa/vehicles/van
 	name = "van"
 	desc = "Seems to be broken down."
-	icon = 'icons/obj/structures/props/vehiclesexpanded2.dmi'
+	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
 	icon_state = "greyvan"
 	bound_height = 64
 	bound_width = 64
@@ -2851,7 +2851,7 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 /obj/structure/prop/hybrisa/containersextended
 	name = "cargo container"
 	desc = "a cargo container."
-	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "blackwyleft"
 	bound_width = 32
 	bound_height = 32
@@ -2865,116 +2865,116 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 
 /obj/structure/prop/hybrisa/containersextended/blueleft
 	name = "cargo container"
-	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "blueleft"
 /obj/structure/prop/hybrisa/containersextended/blueright
 	name = "cargo container"
-	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "blueright"
 /obj/structure/prop/hybrisa/containersextended/greenleft
 	name = "cargo container"
-	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "greenleft"
 /obj/structure/prop/hybrisa/containersextended/greenright
 	name = "cargo container"
-	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "greenright"
 /obj/structure/prop/hybrisa/containersextended/tanleft
 	name = "cargo container"
-	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "tanleft"
 /obj/structure/prop/hybrisa/containersextended/tanright
 	name = "cargo container"
-	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "tanright"
 /obj/structure/prop/hybrisa/containersextended/redleft
 	name = "cargo container"
-	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "redleft"
 /obj/structure/prop/hybrisa/containersextended/redright
 	name = "cargo container"
-	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "redright"
 /obj/structure/prop/hybrisa/containersextended/greywyleft
 	name = "Weyland-Yutani cargo container"
-	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "greywyleft"
 /obj/structure/prop/hybrisa/containersextended/greywyright
 	name = "Weyland-Yutani cargo container"
-	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "greywyright"
 /obj/structure/prop/hybrisa/containersextended/lightgreywyleft
 	name = "Weyland-Yutani cargo container"
-	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "lightgreywyleft"
 /obj/structure/prop/hybrisa/containersextended/lightgreywyright
 	name = "Weyland-Yutani cargo container"
-	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "lightgreywyright"
 /obj/structure/prop/hybrisa/containersextended/blackwyleft
 	name = "Weyland-Yutani cargo container"
-	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "blackwyleft"
 /obj/structure/prop/hybrisa/containersextended/blackwyright
 	name = "Weyland-Yutani cargo container"
-	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "blackwyright"
 /obj/structure/prop/hybrisa/containersextended/whitewyleft
 	name = "Weyland-Yutani cargo container"
-	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "whitewyleft"
 /obj/structure/prop/hybrisa/containersextended/whitewyright
 	name = "Weyland-Yutani cargo container"
-	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "whitewyright"
 
 /obj/structure/prop/hybrisa/containersextended/tanwywingsleft
 	name = "cargo container"
-	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "tanwywingsleft"
 /obj/structure/prop/hybrisa/containersextended/tanwywingsright
 	name = "cargo container"
-	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "tanwywingsright"
 /obj/structure/prop/hybrisa/containersextended/greenwywingsleft
 	name = "cargo container"
-	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "greenwywingsleft"
 /obj/structure/prop/hybrisa/containersextended/greenwywingsright
 	name = "cargo container"
-	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "greenwywingsright"
 /obj/structure/prop/hybrisa/containersextended/bluewywingsleft
 	name = "cargo container"
-	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "bluewywingsleft"
 /obj/structure/prop/hybrisa/containersextended/bluewywingsright
 	name = "cargo container"
-	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "bluewywingsright"
 /obj/structure/prop/hybrisa/containersextended/redwywingsleft
 	name = "cargo container"
-	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "redwywingsleft"
 /obj/structure/prop/hybrisa/containersextended/redwywingsright
 	name = "cargo container"
-	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "redwywingsright"
 /obj/structure/prop/hybrisa/containersextended/medicalleft
 	name = "medical cargo containers"
-	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "medicalleft"
 /obj/structure/prop/hybrisa/containersextended/medicalright
 	name = "medical cargo containers"
-	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "medicalright"
 /obj/structure/prop/hybrisa/containersextended/emptymedicalleft
 	name = "medical cargo container"
-	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "emptymedicalleft"
 /obj/structure/prop/hybrisa/containersextended/emptymedicalright
 	name = "medical cargo container"
-	icon = 'icons/obj/structures/props/containersextended2.dmi'
+	icon = 'icons/obj/structures/props/containersextended.dmi'
 	icon_state = "emptymedicalright"
 
 /// Fake Platforms

@@ -87,3 +87,11 @@
 #define SCAPE_PL_ENG list('sound/soundscape/engamb1.ogg', 'sound/soundscape/engamb2.ogg', 'sound/soundscape/engamb3.ogg', 'sound/soundscape/engamb4.ogg', 'sound/soundscape/engamb5.ogg', 'sound/soundscape/engamb6.ogg', 'sound/soundscape/engamb7.ogg', )
 #define SCAPE_PL_HANGAR list('sound/soundscape/hangaramb1.ogg', 'sound/soundscape/hangaramb2.ogg', 'sound/soundscape/hangaramb3.ogg', 'sound/soundscape/hangaramb4.ogg', 'sound/soundscape/hangaramb5.ogg', 'sound/soundscape/hangaramb6.ogg', 'sound/soundscape/hangaramb7.ogg', 'sound/soundscape/hangaramb8.ogg', 'sound/soundscape/hangaramb9.ogg', 'sound/soundscape/hangaramb10.ogg', )
 #define SCAPE_PL_ARES list('sound/soundscape/mother.ogg')
+
+// Hybrisa Soundscapes
+
+#define SCAPE_PL_LV759_OUTDOORS list('sound/soundscape/lv759/outdoors/wind4.ogg','sound/soundscape/lv759/outdoors/wind5.ogg','sound/soundscape/lv759/outdoors/wind6.ogg','sound/soundscape/lv759/outdoors/wind7.ogg','sound/soundscape/lv759/outdoors/wind8.ogg','sound/soundscape/lv759/outdoors/wind9.ogg','sound/soundscape/lv759/outdoors/wind10.ogg','sound/soundscape/lv759/outdoors/wind11.ogg','sound/soundscape/lv759/outdoors/wind12.ogg','sound/soundscape/lv759/outdoors/wind13.ogg','sound/soundscape/lv759/outdoors/wind14.ogg','sound/soundscape/lv759/outdoors/wind15.ogg','sound/soundscape/lv759/outdoors/wind16.ogg',)
+#define SCAPE_PL_LV759_INDOORS list('sound/soundscape/lv522/indoors/indoor_wind.ogg','sound/soundscape/lv522/indoors/indoor_wind2.ogg')
+#define SCAPE_PL_LV759_DERELICTSHIP list('sound/soundscape/lv759/indoors/derelict1.ogg','sound/soundscape/lv759/indoors/derelict2.ogg','sound/soundscape/lv759/indoors/derelict3.ogg','sound/soundscape/lv759/indoors/derelict4.ogg')
+#define SCAPE_PL_LV759_CAVES list('sound/soundscape/lv759/outdoors/deepcave1.ogg','sound/soundscape/lv759/outdoors/deepcave2.ogg')
+#define SCAPE_PL_LV759_WEYMART list('sound/soundscape/lv759/indoors/weymart1.ogg','sound/soundscape/lv759/indoors/weymart2.ogg')

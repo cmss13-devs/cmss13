@@ -38,8 +38,8 @@
 	else
 		icon_state = "[base_state]_unclamped"
 
-// --- No Upper Tile / Green
-/obj/structure/medical_supply_link/notopg
+// --- Green
+/obj/structure/medical_supply_link/green
 	icon_state = "medlink_green_unclamped"
 	base_state = "medlink_green"
 

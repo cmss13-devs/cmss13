@@ -27,7 +27,9 @@
 	addtimer(CALLBACK(src, PROC_REF(update_icon), 2.6 SECONDS))
 	update_icon()
 
+/// Performs the unclamping animation when a structure is unanchored in our loc
 /obj/structure/medical_supply_link/proc/do_unclamp_animation()
+	SIGNAL_HANDLER
 	flick("[base_state]_unclamping", src)
 	addtimer(CALLBACK(src, PROC_REF(update_icon), 2.6 SECONDS))
 	update_icon()

@@ -355,6 +355,7 @@ Class Procs:
 //fuel pomp
 /obj/structure/machinery/fuelpump
 	name = "\improper Fuel Pump"
+	layer = ABOVE_MOB_LAYER
 	desc = "It is a machine that pump fuel in lifeboats."
 	icon = 'icons/obj/structures/machinery/fuelpump.dmi'
 	icon_state = "fuelpump_off"
@@ -369,7 +370,7 @@ Class Procs:
 		icon_state = "fuelpump_on"
 
 		//if fuel pump 0
-		if(fuelpump_stage == 0)
+		if(fuelpump_stage == 1)
 			icon_state = "fuelpump_0"
 		//if fuel pump 25
 		if(fuelpump_stage == 25)
@@ -383,3 +384,4 @@ Class Procs:
 		//if fuel pump 100
 		if(fuelpump_stage == 100)
 			icon_state = "fuelpump_100"
+//currently doesn't update properly

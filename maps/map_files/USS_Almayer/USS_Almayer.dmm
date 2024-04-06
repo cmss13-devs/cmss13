@@ -18731,6 +18731,10 @@
 	icon_state = "ai_floor3"
 	},
 /area/almayer/command/airoom)
+"cly" = (
+/obj/structure/flora/jungle/treeblocker,
+/turf/open/floor/almayer,
+/area/almayer/lifeboat_pumps/north2)
 "clE" = (
 /obj/structure/machinery/door/airlock/almayer/marine/delta/medic,
 /turf/open/floor/almayer{
@@ -21472,9 +21476,7 @@
 /area/almayer/living/briefing)
 "dci" = (
 /obj/structure/machinery/fuelpump,
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south1)
 "dck" = (
 /obj/structure/bed/stool,
@@ -34088,6 +34090,12 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/starboard_missiles)
+"hxQ" = (
+/obj/structure/flora/jungle/treeblocker,
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/lifeboat_pumps/north2)
 "hxZ" = (
 /obj/structure/surface/rack,
 /obj/item/tool/shovel/spade{
@@ -38773,6 +38781,12 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/upper_engineering/notunnel)
+"jgx" = (
+/obj/structure/flora/jungle/treeblocker,
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/lifeboat_pumps/south2)
 "jgF" = (
 /obj/structure/platform,
 /turf/open/floor/almayer{
@@ -47272,6 +47286,10 @@
 	icon_state = "plate"
 	},
 /area/almayer/squads/alpha)
+"mii" = (
+/obj/structure/flora/jungle/treeblocker,
+/turf/open/floor/almayer,
+/area/almayer/lifeboat_pumps/south2)
 "miy" = (
 /obj/structure/machinery/optable,
 /obj/structure/sign/safety/medical{
@@ -48035,6 +48053,12 @@
 	icon_state = "bluecorner"
 	},
 /area/almayer/squads/delta)
+"mvo" = (
+/obj/structure/flora/jungle/treeblocker,
+/turf/open/floor/almayer{
+	icon_state = "mono"
+	},
+/area/almayer/lifeboat_pumps/north1)
 "mvI" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 4;
@@ -48514,6 +48538,10 @@
 	icon_state = "sterile_green_side"
 	},
 /area/almayer/medical/medical_science)
+"mFI" = (
+/obj/structure/flora/jungle/treeblocker,
+/turf/open/floor/almayer,
+/area/almayer/lifeboat_pumps/north1)
 "mFL" = (
 /obj/effect/projector{
 	name = "Almayer_Up1";
@@ -62945,9 +62973,8 @@
 	},
 /area/almayer/maint/upper/u_m_p)
 "rBH" = (
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/obj/structure/flora/jungle/treeblocker,
+/turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south1)
 "rCh" = (
 /obj/structure/disposalpipe/segment{
@@ -107044,7 +107071,7 @@ awW
 auK
 aIr
 aTm
-add
+mvo
 aTm
 juX
 scu
@@ -107247,7 +107274,7 @@ awW
 avc
 aIv
 aTm
-add
+mvo
 cbM
 jzZ
 sLo
@@ -107450,7 +107477,7 @@ add
 fsU
 aHU
 aTm
-awW
+mFI
 aTm
 jgF
 fsU
@@ -124298,7 +124325,7 @@ aeA
 asY
 ayQ
 atr
-aeC
+hxQ
 atr
 ciD
 ngl
@@ -124346,7 +124373,7 @@ lJY
 ttS
 wEO
 faO
-vcE
+jgx
 bXe
 deg
 wLu
@@ -124501,7 +124528,7 @@ aeA
 atp
 ayR
 atr
-aeC
+hxQ
 atr
 cji
 nqV
@@ -124549,7 +124576,7 @@ lJY
 hlX
 umh
 bXe
-vcE
+jgx
 tGi
 pfH
 wlF
@@ -124704,7 +124731,7 @@ aeC
 wXh
 ayn
 atr
-aeA
+cly
 bXz
 ciw
 wXh
@@ -124752,7 +124779,7 @@ vcE
 kpo
 iMx
 bXe
-lJY
+mii
 mzF
 eyG
 kpo

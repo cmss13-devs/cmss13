@@ -241,6 +241,8 @@ GLOBAL_LIST_INIT_TYPED(allfuelpump, /obj/structure/machinery/fuelpump, list())
 /datum/controller/subsystem/hijack/proc/get_evac_eta()
 	switch(hijack_status)
 		if(HIJACK_OBJECTIVES_STARTED)
+			// if objectives started start pumping.
+			fuelpump_stage = 1
 			if(estimated_time_left == INFINITY)
 				return "Never"
 			return "[duration2text_sec(estimated_time_left)]"

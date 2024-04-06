@@ -19462,7 +19462,6 @@
 	dir = 4
 	},
 /obj/structure/machinery/cm_vending/sorted/medical/bolted,
-/obj/structure/medical_supply_link/notop,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"
@@ -26501,7 +26500,7 @@
 /area/almayer/hallways/lower/port_aft_hallway)
 "eTC" = (
 /obj/structure/machinery/cm_vending/sorted/medical/bolted,
-/obj/structure/medical_supply_link/notop,
+/obj/structure/medical_supply_link,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"
@@ -29655,9 +29654,8 @@
 	pixel_x = -17;
 	pixel_y = -7
 	},
-/obj/structure/machinery/chem_master{
-	vial_maker = 1
-	},
+/obj/structure/medical_supply_link,
+/obj/structure/machinery/cm_vending/sorted/medical/chemistry,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -37194,7 +37192,7 @@
 	name = "ship-grade camera"
 	},
 /obj/structure/machinery/cm_vending/sorted/medical,
-/obj/structure/medical_supply_link/notop,
+/obj/structure/medical_supply_link,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"
@@ -42144,7 +42142,7 @@
 /area/almayer/squads/req)
 "krO" = (
 /obj/structure/machinery/cm_vending/sorted/medical,
-/obj/structure/medical_supply_link/notop,
+/obj/structure/medical_supply_link,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"
@@ -44508,14 +44506,8 @@
 	},
 /area/almayer/maint/hull/lower/stern)
 "lid" = (
-/obj/structure/surface/table/almayer,
-/obj/item/stack/sheet/mineral/phoron{
-	amount = 25;
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/structure/machinery/reagentgrinder{
-	pixel_y = 8
+/obj/structure/machinery/chem_master{
+	vial_maker = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "mono"
@@ -59998,8 +59990,19 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out"
 	},
-/obj/structure/machinery/cm_vending/sorted/medical/chemistry,
-/obj/structure/medical_supply_link/notopg,
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/reagentgrinder{
+	pixel_y = 8
+	},
+/obj/item/stack/sheet/mineral/phoron{
+	amount = 25;
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/device/reagent_scanner{
+	pixel_x = -16;
+	pixel_y = 5
+	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -68396,10 +68399,6 @@
 	pixel_y = -2
 	},
 /obj/structure/surface/table/almayer,
-/obj/item/device/reagent_scanner{
-	pixel_x = -16;
-	pixel_y = 5
-	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_corner"

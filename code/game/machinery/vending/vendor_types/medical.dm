@@ -38,15 +38,10 @@
 	else
 		icon_state = "[base_state]_unclamped"
 
-// --- No Upper Tile / White
-/obj/structure/medical_supply_link/notop
-	icon_state = "medlink_notop_unclamped"
-	base_state = "medlink_notop"
-
 // --- No Upper Tile / Green
 /obj/structure/medical_supply_link/notopg
-	icon_state = "medlink_notopg_unclamped"
-	base_state = "medlink_notopg"
+	icon_state = "medlink_green_unclamped"
+	base_state = "medlink_green"
 
 //------------SORTED MEDICAL VENDORS---------------
 

@@ -12,7 +12,7 @@
 	max_container_volume = 210
 	allow_star_shape = FALSE
 	matter = list("metal" = 11250) //3 sheets
-	reaction_limits = list( "max_ex_power" = 215, "base_ex_falloff" = 90,"max_ex_shards" = 64,
+	reaction_limits = list( "max_ex_power" = 240, "base_ex_falloff" = 90,"max_ex_shards" = 64,
 							"max_fire_rad" = 6, "max_fire_int" = 40, "max_fire_dur" = 48,
 							"min_fire_rad" = 2, "min_fire_int" = 4, "min_fire_dur" = 5
 	)

@@ -135,7 +135,7 @@
 
 //Flames act
 /turf/open/snow/scorch(heat_level)
-	if(bleed_layer == 0)
+	if(bleed_layer <= 0)
 		return
 	switch(heat_level)
 		if(1 to 19)

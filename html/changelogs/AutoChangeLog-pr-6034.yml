@@ -1,0 +1,5 @@
+author: "Vanagandr, totalepicness"
+delete-after: True
+changes:
+  - rscadd: "Added a button to event panel to give xenomorphs opposable thumbs and firearms permits, to individuals, to hives, or to all xenos everywhere. They're clumsy, though, and have issues with fine manipulation sometimes. Remember that warriors cannot throw objects and make for poor grenadiers."
+  - rscadd: "Xenos with opposable thumbs can use buckles, drive vehicles, use machine guns and vendors without care for access or skills"

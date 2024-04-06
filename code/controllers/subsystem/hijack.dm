@@ -224,7 +224,7 @@ GLOBAL_LIST_INIT_TYPED(allfuelpump, /obj/structure/machinery/fuelpump, list())
 	switch(announce)
 		if(1)
 			marine_announcement("Emergency fuel replenishment is at 25 percent. Lifeboat emergency early launch is now available.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
-			fuelpump_stage 25
+			fuelpump_stage = 25
 		if(2)
 			marine_announcement("Emergency fuel replenishment is at 50 percent.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
 			fuelpump_stage = 50

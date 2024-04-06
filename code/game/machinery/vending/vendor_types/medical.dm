@@ -107,7 +107,8 @@
 	if(healthscan)
 		. += SPAN_NOTICE("The [src.name] offers assisted medical scan, for ease of usage with minimal training. Present the target in front of the scanner to scan.")
 
-/obj/structure/machinery/cm_vending/sorted/medical/proc/get_supply_link() // checks supply link location in relation to medvendor
+/// checks if there is a supply link in our location and we are anchored to it
+/obj/structure/machinery/cm_vending/sorted/medical/proc/get_supply_link()
 	var/linkpoint = locate(/obj/structure/medical_supply_link) in loc
 	if(!linkpoint)
 		return FALSE

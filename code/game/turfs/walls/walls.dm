@@ -482,7 +482,7 @@
 /turf/closed/wall/proc/try_weldingtool_usage(obj/item/W, mob/user)
 	if(!damage || !iswelder(W))
 		return FALSE
-	if(!(user.a_intent == INTENT_HELP))
+	if(user.a_intent != INTENT_HELP)
 		return FALSE
 
 	var/obj/item/tool/weldingtool/WT = W

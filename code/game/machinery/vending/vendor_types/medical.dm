@@ -37,7 +37,8 @@
 	update_icon()
 
 /obj/structure/medical_supply_link/update_icon()
-	if(locate(/obj/structure/machinery/cm_vending/sorted/medical) in loc)
+	var/obj/structure/machinery/cm_vending/sorted/medical/vendor = locate() in loc
+	if(vendor && vendor.anchored)
 		icon_state = "[base_state]_clamped"
 	else
 		icon_state = "[base_state]_unclamped"

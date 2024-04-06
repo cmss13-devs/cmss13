@@ -135,7 +135,7 @@
 			var/obj/item/stack/restock_stack = item_to_stock
 			if(restock_stack.amount < restock_stack.max_amount) // if the stack is not full
 				if(user)
-					to_chat(user, SPAN_WARNING("[src] makes a buzzing noise as it rejects [restock_stack]. Looks like this vendor cannot restock non-full stacks outside of a medical bay's supply link."))
+					to_chat(user, SPAN_WARNING("[src] makes a buzzing noise as it rejects [restock_stack]. Looks like this vendor cannot restock these without a connected supply link."))
 					playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
 				return FALSE
 	return TRUE

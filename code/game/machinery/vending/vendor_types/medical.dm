@@ -126,7 +126,7 @@
 			var/obj/item/reagent_container/container = item_to_stock
 			if(container.reagents.total_volume < container.reagents.maximum_volume)
 				if(user)
-					to_chat(user, SPAN_WARNING("[src] makes a buzzing noise as it rejects [container.name]. Looks like this vendor cannot refill these outside of a medical bay's supply link."))
+					to_chat(user, SPAN_WARNING("[src] makes a buzzing noise as it rejects [container.name]. Looks like this vendor cannot refill these without a connected supply link."))
 					playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
 				return FALSE
 

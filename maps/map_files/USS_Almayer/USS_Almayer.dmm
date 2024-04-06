@@ -19462,6 +19462,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/cm_vending/sorted/medical/bolted,
+/obj/structure/medical_supply_link,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"
@@ -42012,7 +42013,7 @@
 	pixel_x = 1
 	},
 /obj/structure/machinery/cm_vending/sorted/medical/bolted,
-/obj/structure/medical_supply_link/notopg,
+/obj/structure/medical_supply_link/green,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_corner"
@@ -43656,7 +43657,7 @@
 /area/almayer/hallways/lower/port_fore_hallway)
 "kSC" = (
 /obj/structure/machinery/cm_vending/sorted/medical/bolted,
-/obj/structure/medical_supply_link/notopg,
+/obj/structure/medical_supply_link/green,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -55203,7 +55204,7 @@
 	pixel_y = -32
 	},
 /obj/structure/machinery/cm_vending/sorted/medical/bolted,
-/obj/structure/medical_supply_link/notopg,
+/obj/structure/medical_supply_link/green,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},
@@ -70484,7 +70485,7 @@
 /area/almayer/maint/hull/upper/u_f_p)
 "uey" = (
 /obj/structure/machinery/cm_vending/sorted/medical/bolted,
-/obj/structure/medical_supply_link/notopg,
+/obj/structure/medical_supply_link/green,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side"
 	},

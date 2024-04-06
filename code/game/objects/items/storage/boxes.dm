@@ -759,7 +759,7 @@
 /obj/item/storage/box/MRE/proc/try_forced_folding(datum/source, mob/user)
 	SIGNAL_HANDLER
 
-	for(var/obj/item/reagent_container/food/snacks/packaged_meal/meal in src)
+	if(locate(/obj/item/reagent_container/food/snacks/packaged_meal) in src)
 		return
 
 	UnregisterSignal(src, COMSIG_ITEM_DROPPED)

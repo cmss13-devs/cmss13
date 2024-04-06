@@ -4,7 +4,7 @@
 	var/maximum_volume = 100
 	var/atom/my_atom = null
 	var/trigger_volatiles = FALSE
-	var/no_star_shape = FALSE
+	var/allow_star_shape = TRUE
 	var/exploded = FALSE
 	var/datum/weakref/source_mob
 

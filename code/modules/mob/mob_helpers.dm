@@ -639,7 +639,6 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	screen_alert.desc = message
 	screen_alert.action = action
 	screen_alert.target = source
-	source.set_light_on(FALSE)
 	if(!alert_overlay)
 		alert_overlay = new(source)
 		var/icon/source_icon = icon(source.icon)
@@ -658,8 +657,8 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 
 	alert_overlay.layer = FLOAT_LAYER
 	alert_overlay.plane = FLOAT_PLANE
+	alert_overlay.underlays.Cut()
 	screen_alert.overlays += alert_overlay
-	source.set_light_on(TRUE)
 
 /mob/proc/reset_lighting_alpha()
 	SIGNAL_HANDLER

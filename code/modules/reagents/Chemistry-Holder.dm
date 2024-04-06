@@ -679,7 +679,7 @@
 		duration = max_fire_dur
 
 	// shape
-	if(supplemented > 0 && intensity > CHEM_FIRE_STAR_THRESHOLD && src.no_star_shape == FALSE)
+	if(supplemented > 0 && intensity > CHEM_FIRE_STAR_THRESHOLD && allow_star_shape)
 		flameshape = FLAMESHAPE_STAR
 
 	if(supplemented < 0 && intensity < CHEM_FIRE_IRREGULAR_THRESHOLD)

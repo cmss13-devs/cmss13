@@ -38,12 +38,12 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
 	..()
 
-/datum/equipment_preset/survivor/interstellar_commerce_commission_liason/nv
+/datum/equipment_preset/survivor/interstellar_commerce_commission_liaison/nv
 	name = "Survivor - Interstellar Commerce Commission Liaison New Varadero"
 	assignment = "Interstellar Commerce Commission Corporate Liaison"
 
-/datum/equipment_preset/survivor/interstellar_commerce_commission_liason/nv/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/formal(new_human), WEAR_BODY)
+/datum/equipment_preset/survivor/interstellar_commerce_commission_liaison/nv/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/corporate_formal(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat/white(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/black(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight, WEAR_J_STORE)

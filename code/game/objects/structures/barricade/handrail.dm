@@ -67,7 +67,7 @@
 	reinforced = !reinforced
 	update_icon()
 
-/obj/structure/barricade/handrail/attackby(obj/item/W, mob/user)
+/obj/structure/barricade/handrail/attackby(obj/item/item, mob/user)
 	for(var/obj/effect/xenomorph/acid/A in src.loc)
 		if(A.acid_t == src)
 			to_chat(user, "You can't get near that, it's melting!")
@@ -75,7 +75,7 @@
 
 	switch(build_state)
 		if(BARRICADE_BSTATE_SECURED) //Non-reinforced. Wrench to unsecure. Screwdriver to disassemble into metal. 1 metal to reinforce.
-			if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH)) // Make unsecure
+			if(HAS_TRAIT(item, TRAIT_TOOL_WRENCH)) // Make unsecure
 				if(user.action_busy)
 					return
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
@@ -89,7 +89,7 @@
 				build_state = BARRICADE_BSTATE_UNSECURED
 				update_icon()
 				return
-			if(istype(W, /obj/item/stack/sheet/metal)) // Start reinforcing
+			if(istype(item, /obj/item/stack/sheet/metal)) // Start reinforcing
 				if(!can_be_reinforced)
 					return
 				if(user.action_busy)
@@ -97,7 +97,7 @@
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
 					to_chat(user, SPAN_WARNING("You are not trained to reinforce [src]..."))
 					return
-				var/obj/item/stack/sheet/metal/M = W
+				var/obj/item/stack/sheet/metal/M = item
 				playsound(src.loc, 'sound/items/Screwdriver2.ogg', 25, 1)
 				if(M.amount >= 1 && do_after(user, 30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) //Shouldnt be possible, but doesnt hurt to check
 					if(!M.use(1))
@@ -109,7 +109,7 @@
 				return
 
 		if(BARRICADE_BSTATE_UNSECURED)
-			if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH)) // Secure again
+			if(HAS_TRAIT(item, TRAIT_TOOL_WRENCH)) // Secure again
 				if(user.action_busy)
 					return
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
@@ -123,7 +123,7 @@
 				build_state = BARRICADE_BSTATE_SECURED
 				update_icon()
 				return
-			if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER)) // Disassemble into metal
+			if(HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER)) // Disassemble into metal
 				if(user.action_busy)
 					return
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
@@ -141,7 +141,7 @@
 
 		if(BARRICADE_BSTATE_FORTIFIED)
 			if(reinforced)
-				if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR)) // Un-reinforce
+				if(HAS_TRAIT(item, TRAIT_TOOL_CROWBAR)) // Un-reinforce
 					if(user.action_busy)
 						return
 					if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
@@ -155,8 +155,8 @@
 					reinforce()
 					return
 			else
-				if(iswelder(W)) // Finish reinforcing
-					if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+				if(iswelder(item)) // Finish reinforcing
+					if(!HAS_TRAIT(item, TRAIT_TOOL_BLOWTORCH))
 						to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 						return
 					if(user.action_busy)
@@ -198,3 +198,11 @@
 
 /obj/structure/barricade/handrail/sandstone/b
 	icon_state = "hr_sandstone_b"
+
+/obj/structure/barricade/handrail/pizza
+	name = "\improper diner half-wall"
+	icon_state = "hr_sandstone" //temp, getting sprites soontm
+	color = "#b51c0b"
+	can_be_reinforced = FALSE
+	projectile_coverage = PROJECTILE_COVERAGE_LOW
+	layer = MOB_LAYER + 0.01

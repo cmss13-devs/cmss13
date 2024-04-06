@@ -192,7 +192,7 @@
 	playsound(loc, "sparks", 25, 1)
 	if(shock_damage > 10)
 		src.visible_message(
-			SPAN_DANGER("[src] was shocked by the [source]!"), \
+			SPAN_DANGER("[src] was shocked by [source]!"), \
 			SPAN_DANGER("<B>You feel a powerful shock course through your body!</B>"), \
 			SPAN_DANGER("You hear a heavy electrical crack.") \
 		)
@@ -207,7 +207,7 @@
 
 	else
 		src.visible_message(
-			SPAN_DANGER("[src] was mildly shocked by the [source]."), \
+			SPAN_DANGER("[src] was mildly shocked by [source]."), \
 			SPAN_DANGER("You feel a mild shock course through your body."), \
 			SPAN_DANGER("You hear a light zapping.") \
 		)
@@ -415,6 +415,29 @@
 	<BR><A href='?src=\ref[user];mach_close=mob[name]'>Close</A>
 	<BR>"}
 	show_browser(user, dat, name, "mob[name]")
+
+/**
+ * Called by [/mob/dead/observer/proc/do_observe] when a carbon mob is observed by a ghost with [/datum/preferences/var/auto_observe] enabled.
+ *
+ * Any HUD changes past this point are handled by [/mob/dead/observer/proc/observe_target_screen_add]
+ * and [/mob/dead/observer/proc/observe_target_screen_remove].
+ *
+ * Override on subtype mobs if they have any extra HUD elements/behaviour.
+ */
+/mob/living/carbon/proc/auto_observed(mob/dead/observer/observer)
+	SHOULD_CALL_PARENT(TRUE)
+
+	LAZYINITLIST(observers)
+	observers |= observer
+	hud_used.show_hud(hud_used.hud_version, observer)
+
+	// Add the player's action buttons (not the actions themselves) to the observer's screen.
+	for(var/datum/action/action as anything in actions)
+		// Skip any hidden ones (of course).
+		if(action.hidden || action.player_hidden)
+			continue
+
+		observer.client.add_to_screen(action.button)
 
 //generates realistic-ish pulse output based on preset levels
 /mob/living/carbon/proc/get_pulse(method) //method 0 is for hands, 1 is for machines, more accurate

@@ -21,9 +21,9 @@
 	. = ..()
 
 	var/datum/supply_order/new_order = new()
-	new_order.ordernum = GLOB.supply_controller.ordernum
-	GLOB.supply_controller.ordernum++
-	new_order.object = GLOB.supply_controller.supply_packs["Encrypted Operational Nuke"]
+	new_order.ordernum = GLOB.supply_controller.ordernum++
+	var/actual_type = GLOB.supply_packs_types["Encrypted Operational Nuke"]
+	new_order.object = GLOB.supply_packs_datums[actual_type]
 	new_order.orderedby = MAIN_AI_SYSTEM
 	new_order.approvedby = MAIN_AI_SYSTEM
 

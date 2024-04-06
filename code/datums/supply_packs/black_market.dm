@@ -101,7 +101,7 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 			new /obj/item/clothing/head/helmet/marine/veteran/UPP(src)
 			new /obj/item/clothing/under/marine/veteran/UPP(src)
 			new /obj/item/clothing/suit/storage/marine/faction/UPP(src)
-			new /obj/item/clothing/shoes/marine/upp(src)
+			new /obj/item/clothing/shoes/marine/upp/knife(src)
 			new /obj/item/clothing/gloves/marine/veteran(src)
 			new /obj/item/storage/backpack/lightpack/five_slot(src)
 		if(5) //freelancer
@@ -642,7 +642,7 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	. = ..()
 	var/obj/item/paper/nope = new(src)
 	nope.name = "automated ASRS note"
-	nope.info = "Sorry! Your requested order of <b>USCM PONCHO (X2)</b> was not succesfully delivered because: 'No items of that type found in storage.'"
+	nope.info = "Sorry! Your requested order of <b>USCM PONCHO (X2)</b> was not successfully delivered because: 'No items of that type found in storage.'"
 	nope.color = "green"
 	nope.update_icon()
 
@@ -656,7 +656,7 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	. = ..()
 	var/obj/item/paper/nope = new(src)
 	nope.name = "automated ASRS note"
-	nope.info = "Sorry! Your requested order of <b> HIGH-EXPLOSIVE ARMOR-PIERCING M41A MAGAZINE (X3)</b> was not succesfully delivered because: 'ERROR: UNABLE TO ENTER COMPARTMENT EXIT CODE 2342: EXPLOSION HAZARD'"
+	nope.info = "Sorry! Your requested order of <b> HIGH-EXPLOSIVE ARMOR-PIERCING M41A MAGAZINE (X3)</b> was not successfully delivered because: 'ERROR: UNABLE TO ENTER COMPARTMENT EXIT CODE 2342: EXPLOSION HAZARD'"
 	nope.color = "green"
 	nope.update_icon()
 

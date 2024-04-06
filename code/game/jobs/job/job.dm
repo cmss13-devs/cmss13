@@ -66,10 +66,7 @@
 		return ""
 	return "[CONFIG_GET(string/wikiarticleurl)]/[replacetext(title, " ", "_")]"
 
-/datum/job/proc/get_whitelist_status(list/roles_whitelist, client/player)
-	if(!roles_whitelist)
-		return FALSE
-
+/datum/job/proc/get_whitelist_status(client/player)
 	return WHITELIST_NORMAL
 
 /datum/timelock
@@ -237,32 +234,10 @@
 	if(!istype(NP))
 		return
 
-	NP.spawning = TRUE
-	NP.close_spawn_windows()
-
 	var/mob/living/carbon/human/new_character = new(NP.loc)
 	new_character.lastarea = get_area(NP.loc)
 
-	NP.client.prefs.copy_all_to(new_character, title)
-
-	if (NP.client.prefs.be_random_body)
-		var/datum/preferences/TP = new()
-		TP.randomize_appearance(new_character)
-
-	new_character.job = NP.job
-	new_character.name = NP.real_name
-	new_character.voice = NP.real_name
-
-	if(NP.mind)
-		NP.mind_initialize()
-		NP.mind.transfer_to(new_character, TRUE)
-		NP.mind.setup_human_stats()
-
-	// Update the character icons
-	// This is done in set_species when the mob is created as well, but
-	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, regenerate_icons))
-	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, update_body), 1, 0)
-	INVOKE_ASYNC(new_character, TYPE_PROC_REF(/mob/living/carbon/human, update_hair))
+	setup_human(new_character, NP)
 
 	return new_character
 
@@ -274,7 +249,7 @@
 		var/mob/living/carbon/human/human = M
 
 		var/job_whitelist = title
-		var/whitelist_status = get_whitelist_status(GLOB.RoleAuthority.roles_whitelist, human.client)
+		var/whitelist_status = get_whitelist_status(human.client)
 
 		if(whitelist_status)
 			job_whitelist = "[title][whitelist_status]"
@@ -336,3 +311,10 @@
 /// Intended to be overwritten to handle any requirements for specific job variations that can be selected
 /datum/job/proc/filter_job_option(mob/job_applicant)
 	return job_options
+
+/datum/job/proc/check_whitelist_status(mob/user)
+	if(!(flags_startup_parameters & ROLE_WHITELISTED))
+		return TRUE
+
+	if(user.client.check_whitelist_status(flags_whitelist))
+		return TRUE

@@ -168,7 +168,7 @@
 		to_chat(src, "Not even a [species.name] can speak to the dead.")
 		return
 
-	log_say("[key_name(src)] communed to [key_name(M)]: [text]")
+	log_say("[key_name(src)] communed to [key_name(M)]: [text] (AREA: [get_area_name(loc)])")
 
 	to_chat(M, SPAN_NOTICE(" Like lead slabs crashing into the ocean, alien thoughts drop into your mind: [text]"))
 	if(istype(M,/mob/living/carbon/human))
@@ -178,16 +178,25 @@
 		to_chat(H, SPAN_DANGER("Your nose begins to bleed..."))
 		H.drip(1)
 
-/mob/living/carbon/human/proc/psychic_whisper(mob/M as mob in oview())
+/mob/living/carbon/human/proc/psychic_whisper(mob/target_mob as mob in oview())
 	set name = "Psychic Whisper"
 	set desc = "Whisper silently to someone over a distance."
 	set category = "Abilities"
 
-	var/msg = strip_html(input("Message:", "Psychic Whisper") as text|null)
-	if(msg)
-		log_say("PsychicWhisper: [key_name(src)]->[M.key] : [msg]")
-		to_chat(M, SPAN_XENOWARNING(" You hear a strange, alien voice in your head... \italic [msg]"))
-		to_chat(src, SPAN_XENOWARNING(" You said: \"[msg]\" to [M]"))
+	var/whisper = strip_html(input("Message:", "Psychic Whisper") as text|null)
+	if(whisper)
+		log_say("PsychicWhisper: [key_name(src)]->[target_mob.key] : [whisper] (AREA: [get_area_name(loc)])")
+		to_chat(target_mob, SPAN_XENOWARNING(" You hear a strange, alien voice in your head... <i>[whisper]</i>"))
+		to_chat(src, SPAN_XENOWARNING(" You said: \"[whisper]\" to [target_mob]"))
+		for (var/mob/dead/observer/ghost as anything in GLOB.observer_list)
+			if(!ghost.client || isnewplayer(ghost))
+				continue
+			if(ghost.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
+				var/rendered_message
+				var/human_track = "(<a href='byond://?src=\ref[ghost];track=\ref[src]'>F</a>)"
+				var/target_track = "(<a href='byond://?src=\ref[ghost];track=\ref[target_mob]'>F</a>)"
+				rendered_message = SPAN_XENOLEADER("PsychicWhisper: [real_name][human_track] to [target_mob.real_name][target_track], <span class='normal'>'[whisper]'</span>")
+				ghost.show_message(rendered_message, SHOW_MESSAGE_AUDIBLE)
 	return
 
 /mob/living/verb/lay_down()
@@ -202,7 +211,7 @@
 	if(new_resting == resting)
 		return
 	if(!COOLDOWN_FINISHED(src, rest_cooldown))
-		to_chat(src, SPAN_WARNING("You can't 'rest' that fast. Take a breather!"))
+		to_chat(src, SPAN_WARNING("[isxeno(src) ? "We" : "You"] can't 'rest' that fast. Take a breather!"))
 		return
 	COOLDOWN_START(src, rest_cooldown, 1 SECONDS)
 
@@ -211,24 +220,24 @@
 	if(new_resting)
 		if(body_position == LYING_DOWN)
 			if(!silent)
-				to_chat(src, SPAN_NOTICE("You will now try to stay lying down on the floor."))
+				to_chat(src, SPAN_NOTICE("[isxeno(src) ? "We" : "You"] will now try to stay lying down on the floor."))
 		else if(HAS_TRAIT(src, TRAIT_FORCED_STANDING) || (buckled && buckled.buckle_lying != NO_BUCKLE_LYING))
 			if(!silent)
-				to_chat(src, SPAN_NOTICE("You will now lay down as soon as you are able to."))
+				to_chat(src, SPAN_NOTICE("[isxeno(src) ? "We" : "You"] will now lay down as soon as [isxeno(src) ? "we" : "you"] are able to."))
 		else
 			if(!silent)
-				to_chat(src, SPAN_NOTICE("You lay down."))
+				to_chat(src, SPAN_NOTICE("[isxeno(src) ? "We" : "You"] lay down."))
 			set_lying_down()
 	else
 		if(body_position == STANDING_UP)
 			if(!silent)
-				to_chat(src, SPAN_NOTICE("You will now try to remain standing up."))
+				to_chat(src, SPAN_NOTICE("[isxeno(src) ? "We" : "You"] will now try to remain standing up."))
 		else if(HAS_TRAIT(src, TRAIT_FLOORED) || (buckled && buckled.buckle_lying != NO_BUCKLE_LYING))
 			if(!silent)
-				to_chat(src, SPAN_NOTICE("You will now stand up as soon as you are able to."))
+				to_chat(src, SPAN_NOTICE("[isxeno(src) ? "We" : "You"] will now stand up as soon as [isxeno(src) ? "we" : "you"] are able to."))
 		else
 			if(!silent)
-				to_chat(src, SPAN_NOTICE("You stand up."))
+				to_chat(src, SPAN_NOTICE("[isxeno(src) ? "We" : "You"] stand up."))
 			get_up(instant)
 
 //	SEND_SIGNAL(src, COMSIG_LIVING_RESTING, new_resting, silent, instant)

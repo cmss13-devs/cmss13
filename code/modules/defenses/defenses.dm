@@ -97,11 +97,13 @@
 	if(!(placed||static))
 		return FALSE
 
+	msg_admin_niche("[key_name(usr)] turned on [src] at [get_location_in_text(src)] [ADMIN_JMP(loc)]")
 	turned_on = TRUE
 	power_on_action()
 	update_icon()
 
 /obj/structure/machinery/defenses/proc/power_off()
+	msg_admin_niche("[key_name(usr)] turned off [src] at [get_location_in_text(src)] [ADMIN_JMP(loc)]")
 	turned_on = FALSE
 	power_off_action()
 	update_icon()
@@ -113,6 +115,7 @@
  * @param selection: configuration value for category.
  */
 /obj/structure/machinery/defenses/proc/update_choice(mob/user, category, selection)
+	msg_admin_niche("[key_name(user)] changed the [category] of [src] at [get_location_in_text(src)] to [selection] [ADMIN_JMP(loc)]")
 	if(category in selected_categories)
 		selected_categories[category] = selection
 		switch(category)
@@ -124,7 +127,6 @@
 	switch(category)
 		if("nickname")
 			nickname = selection
-			message_admins("[key_name_admin(user)] has labelled structure to [nickname]", user.x, user.y, user.z)
 			return TRUE
 	return FALSE
 
@@ -134,7 +136,7 @@
  */
 /obj/structure/machinery/defenses/proc/handle_iff(selection)
 	switch(selection)
-		if(FACTION_USCM)
+		if(FACTION_MARINE)
 			faction_group = FACTION_LIST_MARINE
 		if(FACTION_WEYLAND)
 			faction_group = FACTION_LIST_MARINE_WY
@@ -366,7 +368,7 @@
 		if(locked)
 			to_chat(user, SPAN_WARNING("The control panel on [src] is locked to non-engineers."))
 			return
-		user.visible_message(SPAN_NOTICE("[user] begins switching the [src] [turned_on? "off" : "on"]."), SPAN_NOTICE("You begin switching the [src] [turned_on? "off" : "on"]."))
+		user.visible_message(SPAN_NOTICE("[user] begins switching [src] [turned_on? "off" : "on"]."), SPAN_NOTICE("You begin switching [src] [turned_on? "off" : "on"]."))
 		if(!(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src)))
 			return
 
@@ -374,7 +376,7 @@
 		if(!can_be_near_defense)
 			for(var/obj/structure/machinery/defenses/def in urange(defense_check_range, loc))
 				if(def != src && def.turned_on && !def.can_be_near_defense)
-					to_chat(user, SPAN_WARNING("This is too close to a [def]!"))
+					to_chat(user, SPAN_WARNING("This is too close to \a [def]!"))
 					return
 
 		power_on()
@@ -451,7 +453,7 @@
 
 /obj/structure/machinery/defenses/bullet_act(obj/projectile/P)
 	bullet_ping(P)
-	visible_message(SPAN_WARNING("[src] is hit by the [P]!"))
+	visible_message(SPAN_WARNING("[src] is hit by [P]!"))
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ammo_flags & AMMO_ACIDIC) //Fix for xenomorph spit doing baby damage.
 		update_health(round(P.damage/3))

@@ -390,7 +390,7 @@
 	else if(status != LIGHT_BROKEN && status != LIGHT_EMPTY)
 
 
-		if(prob(1+W.force * 5))
+		if(prob(1+W.force * W.demolition_mod * 5))
 
 			to_chat(user, "You hit the light, and it smashes!")
 			for(var/mob/M as anything in viewers(src))
@@ -530,7 +530,7 @@
 
 	L.update()
 
-	if(user.put_in_active_hand(L)) //succesfully puts it in our active hand
+	if(user.put_in_active_hand(L)) //successfully puts it in our active hand
 		L.add_fingerprint(user)
 	else
 		L.forceMove(loc) //if not, put it on the ground

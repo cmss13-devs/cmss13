@@ -273,8 +273,6 @@
 
 
 /mob/living/carbon/human/show_inv(mob/living/user)
-	if(ismaintdrone(user))
-		return
 	var/obj/item/clothing/under/suit = null
 	if(istype(w_uniform, /obj/item/clothing/under))
 		suit = w_uniform
@@ -312,6 +310,29 @@
 	<BR><A href='?src=\ref[user];mach_close=mob[name]'>Close</A>
 	<BR>"}
 	show_browser(user, dat, name, "mob[name]")
+
+/**
+ * Handles any storage containers that the human is looking inside when auto-observed.
+ */
+/mob/living/carbon/human/auto_observed(mob/dead/observer/observer)
+	. = ..()
+
+	// If `src` doesn't have an inventory open.
+	if(!s_active)
+		return
+
+	// Add the storage interface to `observer`'s screen.
+	observer.client.add_to_screen(s_active.closer)
+	observer.client.add_to_screen(s_active.contents)
+
+	// If the storage has a set number of item slots.
+	if(s_active.storage_slots)
+		observer.client.add_to_screen(s_active.boxes)
+	// If the storage instead has a maximum combined item 'weight'.
+	else
+		observer.client.add_to_screen(s_active.storage_start)
+		observer.client.add_to_screen(s_active.storage_continue)
+		observer.client.add_to_screen(s_active.storage_end)
 
 // called when something steps onto a human
 // this handles mulebots and vehicles
@@ -694,10 +715,6 @@
 						var/mob/living/carbon/human/U = usr
 						new_comment["created_by"]["name"] = U.get_authentification_name()
 						new_comment["created_by"]["rank"] = U.get_assignment()
-					else if(istype(usr,/mob/living/silicon/robot))
-						var/mob/living/silicon/robot/U = usr
-						new_comment["created_by"]["name"] = U.name
-						new_comment["created_by"]["rank"] = "[U.modtype] [U.braintype]"
 					if(!islist(R.fields["comments"]))
 						R.fields["comments"] = list("1" = new_comment)
 					else
@@ -731,9 +748,6 @@
 										spawn()
 											if(istype(usr,/mob/living/carbon/human))
 												var/mob/living/carbon/human/U = usr
-												U.handle_regular_hud_updates()
-											if(istype(usr,/mob/living/silicon/robot))
-												var/mob/living/silicon/robot/U = usr
 												U.handle_regular_hud_updates()
 
 			if(!modified)
@@ -818,30 +832,9 @@
 									if(istype(usr,/mob/living/carbon/human))
 										var/mob/living/carbon/human/U = usr
 										R.fields[text("com_[counter]")] = text("Made by [U.get_authentification_name()] ([U.get_assignment()]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [GLOB.game_year]<BR>[t1]")
-									if(istype(usr,/mob/living/silicon/robot))
-										var/mob/living/silicon/robot/U = usr
-										R.fields[text("com_[counter]")] = text("Made by [U.name] ([U.modtype] [U.braintype]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [GLOB.game_year]<BR>[t1]")
 
 	if(href_list["medholocard"])
-		if(!skillcheck(usr, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-			to_chat(usr, SPAN_WARNING("You're not trained to use this."))
-			return
-		if(!has_species(src, "Human"))
-			to_chat(usr, SPAN_WARNING("Triage holocards only works on humans."))
-			return
-		var/newcolor = tgui_input_list(usr, "Choose a triage holo card to add to the patient:", "Triage holo card", list("black", "red", "orange", "none"))
-		if(!newcolor) return
-		if(get_dist(usr, src) > 7)
-			to_chat(usr, SPAN_WARNING("[src] is too far away."))
-			return
-		if(newcolor == "none")
-			if(!holo_card_color) return
-			holo_card_color = null
-			to_chat(usr, SPAN_NOTICE("You remove the holo card on [src]."))
-		else if(newcolor != holo_card_color)
-			holo_card_color = newcolor
-			to_chat(usr, SPAN_NOTICE("You add a [newcolor] holo card on [src]."))
-		update_targeted()
+		change_holo_card(usr)
 
 	if(href_list["lookitem"])
 		var/obj/item/I = locate(href_list["lookitem"])
@@ -892,6 +885,39 @@
 					break
 	..()
 	return
+
+/mob/living/carbon/human/proc/change_holo_card(mob/user)
+	if(isobserver(user))
+		return
+	if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+		// Removing your own holocard when you are not trained
+		if(user == src && holo_card_color)
+			if(tgui_alert(user, "Are you sure you want to reset your own holocard?", "Resetting Holocard", list("Yes", "No")) != "Yes")
+				return
+			holo_card_color = null
+			to_chat(user, SPAN_NOTICE("You reset your holocard."))
+			hud_set_holocard()
+			return
+		to_chat(user, SPAN_WARNING("You're not trained to use this."))
+		return
+	if(!has_species(src, "Human"))
+		to_chat(user, SPAN_WARNING("Triage holocards only works on humans."))
+		return
+	var/newcolor = tgui_input_list(user, "Choose a triage holo card to add to the patient:", "Triage holo card", list("black", "red", "orange", "purple", "none"))
+	if(!newcolor)
+		return
+	if(get_dist(user, src) > 7)
+		to_chat(user, SPAN_WARNING("[src] is too far away."))
+		return
+	if(newcolor == "none")
+		if(!holo_card_color)
+			return
+		holo_card_color = null
+		to_chat(user, SPAN_NOTICE("You remove the holo card on [src]."))
+	else if(newcolor != holo_card_color)
+		holo_card_color = newcolor
+		to_chat(user, SPAN_NOTICE("You add a [newcolor] holo card on [src]."))
+	hud_set_holocard()
 
 /mob/living/carbon/human/tgui_interact(mob/user, datum/tgui/ui) // I'M SORRY, SO FUCKING SORRY
 	. = ..()
@@ -1098,9 +1124,9 @@
 		for(var/datum/effects/bleeding/internal/internal_bleed in effects_list)
 			msg += "They have bloating and discoloration on their [internal_bleed.limb.display_name]\n"
 
-	if(knocked_out && stat != DEAD)
+	if(stat == UNCONSCIOUS)
 		msg += "They seem to be unconscious\n"
-	if(stat == DEAD)
+	else if(stat == DEAD)
 		if(src.check_tod() && is_revivable())
 			msg += "They're not breathing"
 		else
@@ -1173,7 +1199,7 @@
 		for(var/datum/cm_objective/Objective in src.mind.objective_memory.disks)
 			src.mind.objective_memory.disks -= Objective
 
-/mob/living/carbon/human/proc/set_species(new_species, default_colour)
+/mob/living/carbon/human/proc/set_species(new_species, default_color)
 	if(!new_species)
 		new_species = "Human"
 
@@ -1207,7 +1233,7 @@
 
 	species.create_organs(src)
 
-	if(species.base_color && default_colour)
+	if(species.base_color && default_color)
 		//Apply color.
 		r_skin = hex2num(copytext(species.base_color,2,4))
 		g_skin = hex2num(copytext(species.base_color,4,6))
@@ -1445,7 +1471,7 @@
 
 /mob/living/carbon/human/verb/remove_your_splints()
 	set name = "Remove Your Splints"
-	set category = "Object"
+	set category = "IC"
 
 	remove_splints()
 
@@ -1748,3 +1774,28 @@
 													// clamped to max 500
 	if(dizziness > 100 && !is_dizzy)
 		INVOKE_ASYNC(src, PROC_REF(dizzy_process))
+
+/proc/setup_human(mob/living/carbon/human/target, mob/new_player/new_player, is_late_join = FALSE)
+	new_player.spawning = TRUE
+	new_player.close_spawn_windows()
+	new_player.client.prefs.copy_all_to(target, new_player.job, is_late_join)
+
+	if(new_player.client.prefs.be_random_body)
+		var/datum/preferences/rand_prefs = new()
+		rand_prefs.randomize_appearance(target)
+
+	target.job = new_player.job
+	target.name = new_player.real_name
+	target.voice = new_player.real_name
+
+	if(new_player.mind)
+		new_player.mind_initialize()
+		new_player.mind.transfer_to(target, TRUE)
+		new_player.mind.setup_human_stats()
+
+	target.sec_hud_set_ID()
+	target.hud_set_squad()
+
+	INVOKE_ASYNC(target, TYPE_PROC_REF(/mob/living/carbon/human, regenerate_icons))
+	INVOKE_ASYNC(target, TYPE_PROC_REF(/mob/living/carbon/human, update_body), 1, 0)
+	INVOKE_ASYNC(target, TYPE_PROC_REF(/mob/living/carbon/human, update_hair))

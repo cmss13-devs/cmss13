@@ -419,11 +419,16 @@
 	)
 	SStgui.update_uis(src)
 
+	//Print speed based on w_class.
+	var/obj/item/item = making.path
+	var/size = initial(item.w_class)
+	var/print_speed = clamp(size, 2, 5) SECONDS
+
 	//Fancy autolathe animation.
 	icon_state = "[base_state]_n"
 
 	playsound(src, 'sound/machines/print.ogg', 25)
-	sleep(5 SECONDS)
+	sleep(print_speed)
 	playsound(src, 'sound/machines/print_off.ogg', 25)
 	icon_state = "[base_state]"
 

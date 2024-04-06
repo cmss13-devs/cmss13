@@ -7,6 +7,15 @@ export type OrbitData = {
   survivors: Observable[];
   xenos: Observable[];
   ert_members: Observable[];
+  upp: Observable[];
+  twe: Observable[];
+  clf: Observable[];
+  wy: Observable[];
+  freelancer: Observable[];
+  contractor: Observable[];
+  mercenary: Observable[];
+  dutch: Observable[];
+  marshal: Observable[];
   synthetics: Observable[];
   predators: Observable[];
   animals: Observable[];

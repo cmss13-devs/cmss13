@@ -450,6 +450,9 @@
 	shape = NVG_SHAPE_COSMETIC
 	garbage = TRUE
 
+/obj/item/prop/helmetgarb/helmet_nvg/cosmetic/break_nvg(mob/living/carbon/human/user, list/slashdata, mob/living/carbon/xenomorph/Xeno)
+	return
+
 /obj/item/prop/helmetgarb/helmet_nvg/marsoc //for Marine Raiders
 	name = "\improper Tactical M3 night vision goggles"
 	desc = "With an integrated self-recharging battery, nothing can stop you. Put them on your helmet and press the button and it's go-time."
@@ -601,6 +604,13 @@
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "compass"
 	w_class = SIZE_SMALL
+
+/obj/item/prop/helmetgarb/compass/get_examine_text(mob/user)
+	. = ..()
+	if(is_ground_level(user.z) && !SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_IN_SPACE])
+		. += SPAN_NOTICE("It seems you are facing [dir2text(user.dir)].")
+		return
+	. += SPAN_NOTICE("The needle is not moving.")
 
 /obj/item/prop/helmetgarb/bug_spray
 	name = "insect repellent"

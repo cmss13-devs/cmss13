@@ -123,7 +123,6 @@
 	desc = "It's an emergency medical kit containing lifesaving anti-toxic medication. With medical training you can fit this in a backpack."
 	icon_state = "antitoxin"
 	item_state = "firstaid-toxin"
-	possible_icons_full = list("antitoxin","antitoxfirstaid","antitoxfirstaid2","antitoxfirstaid3")
 
 /obj/item/storage/firstaid/toxin/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
@@ -173,7 +172,7 @@
 
 /obj/item/storage/firstaid/synth
 	name = "synthetic repair kit"
-	desc = "Contains equipment to repair a damaged synthetic. A tag on the back reads: 'Does not contain a shocking tool to repair disabled synthetics, nor a scanning device to detect specific damage; pack seperately.' With medical training you can fit this in a backpack."
+	desc = "Contains equipment to repair a damaged synthetic. A tag on the back reads: 'Does not contain a shocking tool to repair disabled synthetics, nor a scanning device to detect specific damage; pack separately.' With medical training you can fit this in a backpack."
 	icon_state = "bezerk"
 	item_state = "firstaid-advanced"
 	can_hold = list(
@@ -650,19 +649,19 @@
 	if(!idlock)
 		return TRUE
 
-	var/mob/living/carbon/human/H = user
+	var/mob/living/carbon/human/human_user = user
 
-	if(!allowed(user))
+	if(!allowed(human_user))
 		to_chat(user, SPAN_NOTICE("It must have some kind of ID lock..."))
 		return FALSE
 
-	var/obj/item/card/id/I = H.wear_id
-	if(!istype(I)) //not wearing an ID
-		to_chat(H, SPAN_NOTICE("It must have some kind of ID lock..."))
+	var/obj/item/card/id/idcard = human_user.wear_id
+	if(!istype(idcard)) //not wearing an ID
+		to_chat(human_user, SPAN_NOTICE("It must have some kind of ID lock..."))
 		return FALSE
 
-	if(I.registered_name != H.real_name)
-		to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
+	if(!idcard.check_biometrics(human_user))
+		to_chat(human_user, SPAN_WARNING("Wrong ID card owner detected."))
 		return FALSE
 
 	return TRUE

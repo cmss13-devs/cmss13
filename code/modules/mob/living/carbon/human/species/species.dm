@@ -92,9 +92,12 @@
 		"eyes" =  /datum/internal_organ/eyes
 		)
 
-	var/knock_down_reduction = 1 //how much the knocked_down effect is reduced per Life call.
-	var/stun_reduction = 1 //how much the stunned effect is reduced per Life call.
-	var/knock_out_reduction = 1 //same thing
+	/// Factor of reduction of  KnockDown duration.
+	var/knock_down_reduction = 1
+	/// Factor of reduction of Stun duration.
+	var/stun_reduction = 1
+	/// Factor of reduction of  KnockOut duration.
+	var/knock_out_reduction = 1
 
 	/// If different from 1, a signal is registered on post_spawn().
 	var/weed_slowdown_mult = 1

@@ -4,7 +4,7 @@
 	rank = JOB_CONTRACTOR
 	idtype = /obj/item/card/id/data
 	faction = FACTION_CONTRACTOR
-	faction_group = FACTION_LIST_ERT
+	faction_group = list(FACTION_CONTRACTOR)
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_SPANISH, LANGUAGE_RUSSIAN)
 	var/human_versus_human = FALSE
 	var/headset_type = /obj/item/device/radio/headset/distress/contractor
@@ -61,7 +61,7 @@
 
 /datum/equipment_preset/contractor/duty/standard
 	name = "Military Contractor (Standard)"
-	paygrade = "VAI"
+	paygrade = PAY_SHORT_VAI_S
 	role_comm_title = "Merc"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "VAIPO Mercenary"
@@ -160,7 +160,7 @@
 
 /datum/equipment_preset/contractor/duty/heavy
 	name = "Military Contractor (Machinegunner)"
-	paygrade = "VAI-G"
+	paygrade = PAY_SHORT_VAI_G
 	role_comm_title = "MG"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -205,7 +205,7 @@
 //*****************************************************************************************************/
 /datum/equipment_preset/contractor/duty/engi
 	name = "Military Contractor (Engineer)"
-	paygrade = "VAI-E"
+	paygrade = PAY_SHORT_VAI_E
 
 	role_comm_title = "Eng"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -252,7 +252,7 @@
 
 /datum/equipment_preset/contractor/duty/medic
 	name = "Military Contractor (Medic)"
-	paygrade = "VAI-M"
+	paygrade = PAY_SHORT_VAI_M
 	role_comm_title = "Med"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -289,16 +289,16 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/roller/surgical, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/tool/surgery/synthgraft, WEAR_IN_BACK) //Line in vest.
 	new_human.equip_to_slot_or_del(new /obj/item/device/healthanalyzer, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/smoke, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40/extended, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/mar40, WEAR_IN_BACK)
 
 //*****************************************************************************************************/
 
 /datum/equipment_preset/contractor/duty/leader
 	name = "Military Contractor (Leader)"
-	paygrade = "VAI-L"
+	paygrade = PAY_SHORT_VAI_L
 	role_comm_title = "TL"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -348,7 +348,7 @@
 //*****************************************************************************************************/
 /datum/equipment_preset/contractor/duty/synth
 	name = "Military Contractor (Synthetic)"
-	paygrade = "VAI-S"
+	paygrade = PAY_SHORT_VAI_SN
 	role_comm_title = "Syn"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -395,7 +395,6 @@
 	new_human.set_species(SYNTH_GEN_THREE)
 
 /datum/equipment_preset/contractor/duty/synth/load_gear(mob/living/carbon/human/new_human)
-	load_name(new_human)
 	//back
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/smartpack/black, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator, WEAR_IN_BACK) //1
@@ -439,7 +438,7 @@
 
 /datum/equipment_preset/contractor/covert/standard
 	name = "Military Contractor (Covert Standard)"
-	paygrade = "VAI"
+	paygrade = PAY_SHORT_VAI_S
 	role_comm_title = "Merc"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -540,7 +539,7 @@
 
 /datum/equipment_preset/contractor/covert/heavy
 	name = "Military Contractor (Covert Machinegunner)"
-	paygrade = "VAI-G"
+	paygrade = PAY_SHORT_VAI_G
 	role_comm_title = "MG"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -587,7 +586,7 @@
 //*****************************************************************************************************/
 /datum/equipment_preset/contractor/covert/engi
 	name = "Military Contractor (Covert Engineer)"
-	paygrade = "VAI-E"
+	paygrade = PAY_SHORT_VAI_E
 
 	role_comm_title = "Eng"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -635,7 +634,7 @@
 
 /datum/equipment_preset/contractor/covert/medic
 	name = "Military Contractor (Covert Medic)"
-	paygrade = "VAI-M"
+	paygrade = PAY_SHORT_VAI_M
 	role_comm_title = "Med"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -682,7 +681,7 @@
 
 /datum/equipment_preset/contractor/covert/leader
 	name = "Military Contractor (Covert Leader)"
-	paygrade = "VAI-L"
+	paygrade = PAY_SHORT_VAI_L
 	role_comm_title = "TL"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -733,7 +732,7 @@
 //*****************************************************************************************************/
 /datum/equipment_preset/contractor/covert/synth
 	name = "Military Contractor (Covert Synthetic)"
-	paygrade = "VAI-S"
+	paygrade = PAY_SHORT_VAI_SN
 	role_comm_title = "Syn"
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -782,7 +781,6 @@
 	new_human.set_species(SYNTH_GEN_THREE)
 
 /datum/equipment_preset/contractor/covert/synth/load_gear(mob/living/carbon/human/new_human)
-	load_name(new_human)
 	//back
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/smartpack/black, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator, WEAR_IN_BACK) //1

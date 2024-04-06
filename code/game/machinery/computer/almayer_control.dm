@@ -110,7 +110,7 @@
 		return
 	switch(action)
 		if("award")
-			print_medal(usr, src)
+			open_medal_panel(usr, src)
 			. = TRUE
 
 		// evac stuff start \\
@@ -134,6 +134,19 @@
 			. = TRUE
 
 		if("evacuation_cancel")
+			var/mob/living/carbon/human/human_user = usr
+			var/obj/item/card/id/idcard = human_user.get_active_hand()
+			var/bio_fail = FALSE
+			if(!istype(idcard))
+				idcard = human_user.wear_id
+			if(!istype(idcard))
+				bio_fail = TRUE
+			else if(!idcard.check_biometrics(human_user))
+				bio_fail = TRUE
+			if(bio_fail)
+				to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
+				return FALSE
+
 			if(!SShijack.cancel_evacuation())
 				to_chat(usr, SPAN_WARNING("You are unable to cancel the evacuation right now!"))
 				return FALSE
@@ -180,6 +193,19 @@
 			. = TRUE
 
 		if("ship_announce")
+			var/mob/living/carbon/human/human_user = usr
+			var/obj/item/card/id/idcard = human_user.get_active_hand()
+			var/bio_fail = FALSE
+			if(!istype(idcard))
+				idcard = human_user.wear_id
+			if(!istype(idcard))
+				bio_fail = TRUE
+			else if(!idcard.check_biometrics(human_user))
+				bio_fail = TRUE
+			if(bio_fail)
+				to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
+				return FALSE
+
 			if(!COOLDOWN_FINISHED(src, cooldown_message))
 				to_chat(usr, SPAN_WARNING("Please allow at least [COOLDOWN_TIMELEFT(src, cooldown_message)/10] second\s to pass between announcements."))
 				return FALSE
@@ -188,12 +214,8 @@
 				return FALSE
 
 			var/signed = null
-			if(ishuman(usr))
-				var/mob/living/carbon/human/human_user = usr
-				var/obj/item/card/id/id = human_user.wear_id
-				if(istype(id))
-					var/paygrade = get_paygrades(id.paygrade, FALSE, human_user.gender)
-					signed = "[paygrade] [id.registered_name]"
+			var/paygrade = get_paygrades(idcard.paygrade, FALSE, human_user.gender)
+			signed = "[paygrade] [idcard.registered_name]"
 
 			COOLDOWN_START(src, cooldown_message, COOLDOWN_COMM_MESSAGE)
 			shipwide_ai_announcement(input, COMMAND_SHIP_ANNOUNCE, signature = signed)

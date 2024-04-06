@@ -31,6 +31,7 @@ em {font-style: normal; font-weight: bold;}
 .mentorstaff {color: #b5850d; font-weight: bold;}
 .staffsay {color: #b5850d; font-weight: bold;}
 .staff_ic {color: #000099;}
+.niche {color: #386aff; font-weight: bold;}
 
 .name { font-weight: bold;}
 

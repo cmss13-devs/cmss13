@@ -2,49 +2,14 @@
 	macro_path = /datum/action/xeno_action/verb/verb_pounce
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	xeno_cooldown = 60
+	xeno_cooldown = 6 SECONDS
 	plasma_cost = 20
 
 	// Config options
-	distance = 6
 	knockdown = FALSE
 	knockdown_duration = 2.5
-	freeze_self = TRUE
 	freeze_time = 15
 	can_be_shield_blocked = TRUE
-
-/datum/action/xeno_action/activable/pounce/lurker/additional_effects_always()
-	var/mob/living/carbon/xenomorph/xeno = owner
-	if (!istype(xeno))
-		return
-	if (xeno.mutation_type == LURKER_NORMAL)
-		var/found = FALSE
-		for (var/mob/living/carbon/human/human in get_turf(xeno))
-			if(human.stat == DEAD)
-				continue
-			found = TRUE
-			break
-
-		if (found)
-			var/datum/action/xeno_action/onclick/lurker_invisibility/lurker_invis = get_xeno_action_by_type(xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
-			if (istype(lurker_invis))
-				lurker_invis.invisibility_off()
-
-/datum/action/xeno_action/activable/pounce/lurker/additional_effects(mob/living/living_mob)
-	var/mob/living/carbon/xenomorph/xeno = owner
-	if (!istype(xeno))
-		return
-
-	if (xeno.mutation_type == LURKER_NORMAL)
-		RegisterSignal(xeno, COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF, PROC_REF(remove_freeze), TRUE) // Suppresses runtime ever we pounce again before slashing
-
-/datum/action/xeno_action/activable/pounce/lurker/proc/remove_freeze(mob/living/carbon/xenomorph/xeno)
-	SIGNAL_HANDLER
-
-	var/datum/behavior_delegate/lurker_base/behaviour_del = xeno.behavior_delegate
-	if (istype(behaviour_del))
-		UnregisterSignal(xeno, COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF)
-		end_pounce_freeze()
 
 /datum/action/xeno_action/onclick/lurker_invisibility
 	name = "Turn Invisible"
@@ -70,7 +35,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_crippling_strike
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_ACTIVATE
-	xeno_cooldown = 100
+	xeno_cooldown = 10 SECONDS
 	plasma_cost = 20
 
 	var/buff_duration = 50

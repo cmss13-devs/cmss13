@@ -15,6 +15,7 @@
 
 	attack_delay = 2 // VERY high slash damage, but attacks relatively slowly
 
+	available_strains = list(/datum/xeno_strain/vampire)
 	behavior_delegate_type = /datum/behavior_delegate/lurker_base
 
 	deevolves_to = list(XENO_CASTE_RUNNER)
@@ -50,7 +51,6 @@
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
-	mutation_type = LURKER_NORMAL
 	claw_type = CLAW_TYPE_SHARP
 
 	tackle_min = 2
@@ -58,6 +58,10 @@
 
 	icon_xeno = 'icons/mob/xenos/lurker.dmi'
 	icon_xenonid = 'icons/mob/xenonids/lurker.dmi'
+
+	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
+	weed_food_states = list("Drone_1","Drone_2","Drone_3")
+	weed_food_states_flipped = list("Drone_1","Drone_2","Drone_3")
 
 /datum/behavior_delegate/lurker_base
 	name = "Base Lurker Behavior Delegate"
@@ -78,7 +82,7 @@
 		return original_damage
 
 	if (next_slash_buffed)
-		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You significantly strengthen your attack, slowing [target_carbon]!"))
+		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We significantly strengthen our attack, slowing [target_carbon]!"))
 		to_chat(target_carbon, SPAN_XENOHIGHDANGER("You feel a sharp pain as [bound_xeno] slashes you, slowing you down!"))
 		original_damage *= buffed_slash_damage_ratio
 		target_carbon.set_effect(get_xeno_stun_duration(target_carbon, 3), SUPERSLOW)
@@ -179,5 +183,5 @@
 	if(HAS_TRAIT(bumped_into, TRAIT_CLOAKED)) //ignore invisible scouts and preds
 		return
 
-	to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You bumped into someone and lost your invisibility!"))
+	to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We bumped into someone and lost our invisibility!"))
 	lurker_invisibility_action.invisibility_off()

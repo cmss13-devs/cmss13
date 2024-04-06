@@ -4,7 +4,8 @@
 	name = "Weyland-Yutani PMC (Squad)"
 	mob_max = 6
 	probability = 20
-	shuttle_id = "Distress_PMC"
+	shuttle_id = MOBILE_SHUTTLE_ID_ERT2
+	home_base = /datum/lazy_template/ert/weyland_station
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc
 	item_spawn = /obj/effect/landmark/ert_spawns/distress_pmc/item
 
@@ -34,7 +35,7 @@
 		leader = mob
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Squad Leader!"))
 		arm_equipment(mob, /datum/equipment_preset/pmc/pmc_leader, TRUE, TRUE)
-	else if(synths < max_synths && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_SYNTH) && GLOB.RoleAuthority.roles_whitelist[mob.ckey] & WHITELIST_SYNTHETIC)
+	else if(synths < max_synths && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_SYNTH) && mob.client.check_whitelist_status(WHITELIST_SYNTHETIC))
 		synths++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Support Synthetic!"))
 		arm_equipment(mob, /datum/equipment_preset/pmc/synth, TRUE, TRUE)

@@ -165,13 +165,14 @@
 #define COMSIG_KB_XENO_HIVE_STATUS "keybinding_hive_status"
 #define COMSIG_KB_XENO_HIDE "keybinding_hide"
 #define COMSIG_KB_XENO_EVOLVE "keybinding_evolve"
+#define COMSIG_KB_XENO_PURCHASE_STRAIN "keybinding_purchase_strain"
+
 // Yautja
 
 #define COMSIG_KB_YAUTJA_BUTCHER "keybinding_yautja_butcher"
 #define COMSIG_KB_YAUTJA_PRED_BUY "keybinding_yautja_pred_buy"
 #define COMSIG_KB_YAUTJA_MARK_PANEL "keybinding_yautja_mark_panel"
-#define COMSIG_KB_YAUTJA_MARK_FOR_HUNT "keybinding_yautja_mark_for_hunt"
-#define COMSIG_KB_YAUTJA_REMOVE_FROM_HUNT "keybinding_yautja_remove_from_hunt"
+#define COMSIG_KB_YAUTJA_TOGGLE_MARK_FOR_HUNT "keybinding_yautja_toggle_mark_for_hunt"
 
 // Yautja Bracer
 #define COMSIG_KB_YAUTJA_TOGGLE_NOTIFICATION_SOUND "keybinding_yautja_toggle_notification_sound"
@@ -192,6 +193,7 @@
 #define COMSIG_KB_YAUTJA_BRACERNAME "keybinding_yautja_bracername"
 #define COMSIG_KB_YAUTJA_IDCHIP "keybinding_yautja_idchip"
 #define COMSIG_KB_YAUTJA_LINK_BRACER "keybinding_yautja_link_bracer"
+#define COMSIG_KB_YAUTJA_CONTROL_FALCON "keybinding_yautja_control_falcon"
 
 //mask
 #define COMSIG_KB_YAUTJA_MASK_TOGGLE_ZOOM "keybinding_yautja_mask_toggle_zoom"

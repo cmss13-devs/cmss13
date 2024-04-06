@@ -165,9 +165,13 @@
 		if(specific_reagent)
 			if(istype(R, specific_reagent))
 				R.last_source_mob = WEAKREF(new_source_mob)
+				if(R.data_properties)
+					R.data_properties["last_source_mob"] = R.last_source_mob
 				return
 			continue
 		R.last_source_mob = WEAKREF(new_source_mob)
+		if(R.data_properties)
+			R.data_properties["last_source_mob"] = R.last_source_mob
 
 /datum/reagents/proc/copy_to(obj/target, amount=1, multiplier=1, preserve_data=1, safety = 0)
 	if(!target)
@@ -226,9 +230,9 @@
 	if(!my_atom) return
 	if(my_atom.flags_atom & NOREACT) return //Yup, no reactions here. No siree.
 
-	var/reaction_occured = 0
+	var/reaction_occurred = 0
 	do
-		reaction_occured = 0
+		reaction_occurred = 0
 		for(var/datum/reagent/R in reagent_list) // Usually a small list
 			if(R.original_id) //Prevent synthesised chem variants from being mixed
 				for(var/datum/reagent/O in reagent_list)
@@ -309,10 +313,10 @@
 					playsound(get_turf(my_atom), 'sound/effects/bubbles.ogg', 15, 1)
 
 					C.on_reaction(src, created_volume)
-					reaction_occured = 1
+					reaction_occurred = 1
 					break
 
-	while(reaction_occured)
+	while(reaction_occurred)
 	if(trigger_volatiles)
 		handle_volatiles()
 	if(exploded) //clear reagents only when everything has reacted
@@ -374,7 +378,7 @@
 	if(total_volume + amount > maximum_volume)
 		amount = maximum_volume - total_volume //Doesnt fit in. Make it disappear. Shouldnt happen. Will happen.
 
-	var/new_data = list("blood_type" = null, "blood_colour" = "#A10808", "viruses" = null, "resistances" = null, "last_source_mob" = null)
+	var/new_data = list("blood_type" = null, "blood_color" = "#A10808", "viruses" = null, "resistances" = null, "last_source_mob" = null)
 	if(data)
 		for(var/index in data)
 			new_data[index] = data[index]

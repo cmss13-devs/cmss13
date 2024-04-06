@@ -19,7 +19,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/datum/reagents/holder = null
 	var/reagent_state = SOLID
 	var/data = 0 //Scratchpad for random chemicals to do their own thing TODO: unify this somehow?
-	var/list/data_properties = list("blood_type" = null, "blood_colour" = "#A10808", "viruses" = null, "resistances" = null) //mostly for viruses...
+	var/list/data_properties = list("blood_type" = null, "blood_color" = "#A10808", "viruses" = null, "resistances" = null) //mostly for viruses...
 	var/volume = 0
 	var/nutriment_factor = 0
 	var/custom_metabolism = REAGENTS_METABOLISM
@@ -28,7 +28,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/overdose_dam = 1//Handeled by heart damage
 	var/spray_warning = FALSE //whether spraying that reagent creates an admin message.
 	//var/list/viruses = list()
-	var/color = "#000000" // rgb: 0, 0, 0 (does not support alpha channels - yet!)
+	var/color = COLOR_BLACK //(does not support alpha channels - yet!)
 	var/datum/weakref/last_source_mob
 	// For explosions
 	var/explosive = FALSE
@@ -151,6 +151,9 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 	handle_processing(M, mods, delta_time)
 	holder.remove_reagent(id, custom_metabolism * delta_time)
+
+	if(!holder)
+		return FALSE
 
 	return TRUE
 

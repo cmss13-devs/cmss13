@@ -150,7 +150,7 @@
 			if ((M.client && M.interactee == src))
 				is_in_use = 1
 				attack_hand(M)
-		if (ishighersilicon(usr))
+		if (isSilicon(usr))
 			if (!(usr in nearby))
 				if (usr.client && usr.interactee==src) // && M.interactee == src is omitted because if we triggered this by using the dialog, it doesn't matter if our machine changed in between triggering it and this - the dialog is probably still supposed to refresh.
 					is_in_use = 1
@@ -166,10 +166,7 @@
 			if ((M.client && M.interactee == src))
 				is_in_use = 1
 				src.interact(M)
-		var/ai_in_use = AutoUpdateAI(src)
-
-		if(!ai_in_use && !is_in_use)
-			in_use = 0
+		in_use = is_in_use
 
 /obj/proc/interact(mob/user)
 	return
@@ -236,6 +233,7 @@
 /obj/proc/unbuckle()
 	SIGNAL_HANDLER
 	if(buckled_mob && buckled_mob.buckled == src)
+		buckled_mob.clear_alert(ALERT_BUCKLED)
 		buckled_mob.set_buckled(null)
 		buckled_mob.anchored = initial(buckled_mob.anchored)
 
@@ -277,6 +275,11 @@
 	if (iszombie(user))
 		return
 
+	// mobs that become immobilized should not be able to buckle themselves.
+	if(M == user && HAS_TRAIT(user, TRAIT_IMMOBILIZED))
+		to_chat(user, SPAN_WARNING("You are unable to do this in your current state."))
+		return
+
 	if(density)
 		density = FALSE
 		if(!step(M, get_dir(M, src)) && loc != M.loc)
@@ -302,6 +305,7 @@
 /obj/proc/do_buckle(mob/living/target, mob/user)
 	send_buckling_message(target, user)
 	if (src && src.loc)
+		target.throw_alert(ALERT_BUCKLED, /atom/movable/screen/alert/buckled)
 		target.set_buckled(src)
 		target.forceMove(src.loc)
 		target.setDir(dir)

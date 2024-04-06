@@ -41,12 +41,17 @@
 	port_direction = EAST
 
 /obj/docking_port/mobile/crashable/lifeboat/evac_launch()
+	if (status == LIFEBOAT_LOCKED)
+		return
+
 	. = ..()
 
 	available = FALSE
 	set_mode(SHUTTLE_IGNITING)
 	on_ignition()
 	setTimer(ignitionTime)
+	alarm_sound_loop.stop()
+	playing_launch_announcement_alarm = FALSE
 
 /obj/docking_port/mobile/crashable/lifeboat/crash_check()
 	. = ..()
@@ -100,6 +105,8 @@
 
 /obj/docking_port/stationary/lifeboat_dock/proc/close_dock()
 	var/obj/docking_port/mobile/crashable/lifeboat/docked_shuttle = get_docked()
+	if(docked_shuttle.status == LIFEBOAT_LOCKED)
+		return
 	if(docked_shuttle)
 		for(var/obj/structure/machinery/door/airlock/multi_tile/door in docked_shuttle.doors)
 			INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat, close_and_lock))

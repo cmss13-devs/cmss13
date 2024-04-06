@@ -101,8 +101,6 @@
 /obj/structure/closet/crate/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.flags_item & ITEM_ABSTRACT) return
 	if(opened)
-		if(isrobot(user))
-			return
 		user.drop_inv_item_to_loc(W, loc)
 	else if(istype(W, /obj/item/packageWrap) || istype(W, /obj/item/stack/fulton))
 		return
@@ -337,7 +335,7 @@
 	icon_closed = "closed_supply"
 
 /obj/structure/closet/crate/trashcart
-	name = "\improper trash cart"
+	name = "trash cart"
 	desc = "A heavy, metal trashcart with wheels."
 	icon_state = "closed_trashcart"
 	icon_opened = "open_trashcart"
@@ -439,4 +437,3 @@
 	density = TRUE
 	icon_opened = "open_mcart_y"
 	icon_closed = "closed_mcart_y"
-

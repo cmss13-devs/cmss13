@@ -113,6 +113,19 @@
 
 		if("announce")
 			if(authenticated == 2)
+				var/mob/living/carbon/human/human_user = usr
+				var/obj/item/card/id/idcard = human_user.get_active_hand()
+				var/bio_fail = FALSE
+				if(!istype(idcard))
+					idcard = human_user.wear_id
+				if(!istype(idcard))
+					bio_fail = TRUE
+				else if(!idcard.check_biometrics(human_user))
+					bio_fail = TRUE
+				if(bio_fail)
+					to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
+					return FALSE
+
 				if(usr.client.prefs.muted & MUTE_IC)
 					to_chat(usr, SPAN_DANGER("You cannot send Announcements (muted)."))
 					return
@@ -130,7 +143,7 @@
 				cooldown_message = world.time
 
 		if("award")
-			print_medal(usr, src)
+			open_medal_panel(usr, src)
 
 		if("evacuation_start")
 			if(state == STATE_EVACUATION)
@@ -154,6 +167,19 @@
 			state = STATE_EVACUATION
 
 		if("evacuation_cancel")
+			var/mob/living/carbon/human/human_user = usr
+			var/obj/item/card/id/idcard = human_user.get_active_hand()
+			var/bio_fail = FALSE
+			if(!istype(idcard))
+				idcard = human_user.wear_id
+			if(!istype(idcard))
+				bio_fail = TRUE
+			else if(!idcard.check_biometrics(human_user))
+				bio_fail = TRUE
+			if(bio_fail)
+				to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
+				return FALSE
+
 			if(state == STATE_EVACUATION_CANCEL)
 				if(!SShijack.cancel_evacuation())
 					to_chat(usr, SPAN_WARNING("You are unable to cancel the evacuation right now!"))

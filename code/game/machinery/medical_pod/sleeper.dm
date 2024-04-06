@@ -208,6 +208,14 @@
 			var/amount = text2num(params["amount"])
 			if(!length(chemical) || amount <= 0)
 				return
+			if(!(amount in connected.amounts))
+				log_debug("[amount] is an invalid amount to inject in [src]!")
+				return
+			if(!(chemical in connected.available_chemicals))
+				log_debug("[chemical] is not available to inject in [src]!")
+				return
+			if(connected.occupant.reagents && connected.occupant.reagents.get_reagent_amount(chemical) + amount > connected.max_chem)
+				return
 			if(connected.occupant.health > connected.min_health || (chemical in connected.emergency_chems))
 				connected.inject_chemical(usr, chemical, amount)
 			else
@@ -391,7 +399,7 @@
 		to_chat(user, "[]\t -Toxin Content %: []", (occupant.getToxLoss() < 60 ? SPAN_NOTICE("") : SPAN_DANGER("")), occupant.getToxLoss())
 		to_chat(user, "[]\t -Burn Severity %: []", (occupant.getFireLoss() < 60 ? SPAN_NOTICE("") : SPAN_DANGER("")), occupant.getFireLoss())
 		to_chat(user, SPAN_NOTICE(" Expected time till occupant can safely awake: (note: These times are always inaccurate)"))
-		to_chat(user, SPAN_NOTICE(" \t [occupant.GetKnockOutValueNotADurationDoNotUse() / 5] second\s (if around 1 or 2 the sleeper is keeping them asleep.)"))
+		to_chat(user, SPAN_NOTICE(" \t [occupant.GetKnockOutDuration() * GLOBAL_STATUS_MULTIPLIER / (1 SECONDS)] second\s (if around 1 or 2 the sleeper is keeping them asleep.)"))
 	else
 		to_chat(user, SPAN_NOTICE(" There is no one inside!"))
 	return

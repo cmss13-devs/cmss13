@@ -2569,7 +2569,7 @@
 	languages = ALL_SYNTH_LANGUAGES_UPP
 
 	skills = /datum/skills/synthetic
-	assignment = JOB_UPP_COMBAT_SYNTH
+	assignment = JOB_UPP_SUPPORT_SYNTH
 	rank = JOB_UPP_COMBAT_SYNTH
 	paygrade = PAY_SHORT_SYN
 	idtype = /obj/item/card/id/dogtag

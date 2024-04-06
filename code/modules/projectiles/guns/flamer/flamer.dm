@@ -242,11 +242,11 @@
 
 	var/turf/turfs[] = get_line(user, target, FALSE)
 	var/turf/first_turf = turfs[1]
-	var/ammount_to_use = (min(turfs.len, foam_range) * use_multiplier) // the ammount of units that will be drained from the tank
+	var/ammount_required = (min(turfs.len, foam_range) * use_multiplier) // the ammount of units that this click requires
 	for(var/turf/turf in turfs)
 
-		if(current_mag.reagents.total_volume < ammount_to_use)
-			foam_range = round(current_mag.reagents.total_volume / use_multiplier)
+		if(chemical.volume < ammount_required)
+			foam_range = round(chemical.volume / use_multiplier)
 
 		if(distance >= foam_range)
 			break
@@ -271,12 +271,12 @@
 
 		distance++
 
-	// this is likely not needed but I want to be on the safe side
-	current_mag.reagents.total_volume = clamp(current_mag.reagents.total_volume -= (distance * use_multiplier), 0, current_mag.reagents.maximum_volume)
+	var/ammount_used = distance * use_multiplier // the actual ammount of units that we used
 
-	chemical.volume = clamp(chemical.volume -= (distance * use_multiplier), 0, current_mag.reagents.maximum_volume)
+	chemical.volume = max(chemical.volume -= ammount_used, 0)
+	current_mag.reagents.total_volume = chemical.volume // this is needed for show_percentage to work
 
-	if(current_mag.reagents.total_volume < use_multiplier) // there aren't enough units left for a single tile of foam, empty the tank
+	if(chemical.volume < use_multiplier) // there aren't enough units left for a single tile of foam, empty the tank
 		current_mag.reagents.clear_reagents()
 
 	show_percentage(user)

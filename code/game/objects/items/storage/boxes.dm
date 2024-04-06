@@ -774,23 +774,6 @@
 		isopened = 1
 		icon_state = "mealpackopened"
 
-/obj/item/storage/box/MRE/nofluff
-
-/obj/item/storage/box/MRE/nofluff/fill_preset_inventory()
-	pickfluffflavor()
-
-/obj/item/storage/box/MRE/nofluff/proc/pickfluffflavor()
-	var/main = pick("boneless pork ribs", "grilled chicken", "pizza square", "spaghetti chunks", "chicken tender")
-	var/second = pick("cracker", "cheese spread", "rice onigiri", "mashed potatoes", "risotto")
-	var/side = pick("biscuit", "meatballs", "pretzels", "peanuts", "sushi")
-	var/desert = pick("spiced apples", "chocolate brownie", "sugar cookie", "coco bar", "flan", "honey flan")
-	name = "[initial(name)] ([main])"
-	//1 in 3 chance of getting a fortune cookie
-	new /obj/item/reagent_container/food/snacks/packaged_meal(src, main)
-	new /obj/item/reagent_container/food/snacks/packaged_meal(src, second)
-	new /obj/item/reagent_container/food/snacks/packaged_meal(src, side)
-	new /obj/item/reagent_container/food/snacks/packaged_meal(src, desert)
-
 //food boxes for storage in bulk
 
 //meat

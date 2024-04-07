@@ -1,5 +1,0 @@
-author: "cuberound"
-delete-after: True
-changes:
-  - balance: "reduced GAU spread from 9x9 to 7x7"
-  - balance: "reduced GAU shots fired per shot back to 1 (bullets per tile from 0.99 to 0.82)"

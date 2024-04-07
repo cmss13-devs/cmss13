@@ -1,9 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - balance: "Cryotubes no longer multiply chemicals."
-  - balance: "Cryotubes can now allow chemicals to process in dead if cryoxadone or clonexadone is present."
-  - bugfix: "Fixed cryotubes not actually updating their icons/power usage when they become unpowered."
-  - bugfix: "Fixed cryotubes healing despite inoperable."
-  - bugfix: "The cryotube Eject Occupant verb now works for people other than the occupant (useful if inoperable)"
-  - ui: "Cryotubes can optionally announce again on the medical channel."

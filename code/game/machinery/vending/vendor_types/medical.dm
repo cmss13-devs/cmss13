@@ -122,13 +122,13 @@
 		return FALSE
 	return TRUE
 
-/obj/structure/machinery/cm_vending/sorted/medical/additional_restock_checks(obj/item/item_to_stock, mob/user)
+/obj/structure/machinery/cm_vending/sorted/medical/additional_restock_checks(obj/item/item_to_stock, mob/user, list/vendspec)
 	if(istype(item_to_stock, /obj/item/reagent_container/hypospray/autoinjector) || istype(item_to_stock, /obj/item/reagent_container/glass/bottle))
 		if(requires_supply_link_port && !get_supply_link())
 			var/obj/item/reagent_container/container = item_to_stock
 			if(container.reagents.total_volume < container.reagents.maximum_volume)
 				if(user)
-					to_chat(user, SPAN_WARNING("[src] makes a buzzing noise as it rejects [container.name]. Looks like this vendor cannot refill these without a connected supply link."))
+					to_chat(user, SPAN_WARNING("[src] makes a buzzing noise as it rejects [container]. Looks like this vendor cannot refill these without a connected supply link."))
 					playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
 				return FALSE
 
@@ -141,10 +141,22 @@
 					to_chat(user, SPAN_WARNING("[src] makes a buzzing noise as it rejects [restock_stack]. Looks like this vendor cannot restock these without a connected supply link."))
 					playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
 				return FALSE
+
+	var/dynamic_metadata = dynamic_stock_multipliers[vendspec]
+	if(dynamic_metadata)
+		if(requires_supply_link_port && !get_supply_link())
+			if(vendspec[2] >= dynamic_metadata[2])
+				to_chat(user, SPAN_WARNING("[src] is already full of [vendspec[1]]!"))
+				return FALSE
+	else
+		stack_trace("[src] could not find dynamic_stock_multipliers for [vendspec[1]]!")
 	return TRUE
 
 /obj/structure/machinery/cm_vending/sorted/medical/attackby(obj/item/I, mob/user)
-	if(stat == WORKING && LAZYLEN(chem_refill) && (istype(I, /obj/item/reagent_container/hypospray/autoinjector) || istype(I, /obj/item/reagent_container/glass/bottle))) // only if we are completely fine and working
+	if(stat != WORKING)
+		return ..()
+
+	if(istype(I, /obj/item/reagent_container/hypospray/autoinjector) || istype(I, /obj/item/reagent_container/glass/bottle))
 		if(!hacked)
 			if(!allowed(user))
 				to_chat(user, SPAN_WARNING("Access denied."))
@@ -154,26 +166,28 @@
 				to_chat(user, SPAN_WARNING("This machine isn't for you."))
 				return
 
-		var/obj/item/reagent_container/C = I
-		if(!(C.type in chem_refill))
-			to_chat(user, SPAN_WARNING("[src] cannot refill the [C.name]."))
+		var/obj/item/reagent_container/container = I
+		if(container.reagents.total_volume == container.reagents.maximum_volume)
+			stock(container, user)
 			return
 
-		if(C.reagents.total_volume == C.reagents.maximum_volume)
-			to_chat(user, SPAN_WARNING("[src] makes a warning noise. The [C.name] is currently full."))
+		if(!LAZYLEN(chem_refill) || !(container.type in chem_refill))
+			to_chat(user, SPAN_WARNING("[src] cannot refill [container]."))
 			return
 
 		if(requires_supply_link_port && !get_supply_link())
-			to_chat(user, SPAN_WARNING("[src] makes a buzzing noise as it rejects [C.name]. Looks like this vendor cannot refill these without a connected supply link."))
+			to_chat(user, SPAN_WARNING("[src] makes a buzzing noise as it rejects [container]. Looks like this vendor cannot refill these without a connected supply link."))
 			playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
 			return
 
-		to_chat(user, SPAN_NOTICE("[src] makes a whirring noise as it refills your [C.name]."))
+		to_chat(user, SPAN_NOTICE("[src] makes a whirring noise as it refills your [container.name]."))
 		// Since the reagent is deleted on use it's easier to make a new one instead of snowflake checking
-		var/obj/item/reagent_container/new_container = new C.type(src)
-		qdel(C)
+		var/obj/item/reagent_container/new_container = new container.type(src)
+		qdel(container)
 		user.put_in_hands(new_container)
-	else if(stat == WORKING && LAZYLEN(stack_refill) && (istype(I, /obj/item/stack)))
+		return
+
+	if((istype(I, /obj/item/stack)))
 		if(!hacked)
 			if(!allowed(user))
 				to_chat(user, SPAN_WARNING("Access denied."))
@@ -183,25 +197,26 @@
 				to_chat(user, SPAN_WARNING("This machine isn't for you."))
 				return
 
-		var/obj/item/stack/S = I
-		if(!(S.type in stack_refill))
-			to_chat(user, SPAN_WARNING("[src] cannot restock the [S.name]."))
+		var/obj/item/stack/item_stack = I
+		if(item_stack.amount == item_stack.max_amount)
+			stock(item_stack, user)
 			return
 
-		if(S.amount == S.max_amount)
-			to_chat(user, SPAN_WARNING("[src] makes a warning noise. The [S.name] is currently fully stacked."))
+		if(!LAZYLEN(stack_refill) || !(item_stack.type in stack_refill))
+			to_chat(user, SPAN_WARNING("[src] cannot restock [item_stack]."))
 			return
 
 		if(requires_supply_link_port && !get_supply_link())
-			to_chat(user, SPAN_WARNING("[src] makes a buzzing noise as it rejects [S.name]. Looks like this vendor cannot restock these without a connected supply link."))
+			to_chat(user, SPAN_WARNING("[src] makes a buzzing noise as it rejects [item_stack]. Looks like this vendor cannot restock these without a connected supply link."))
 			playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
 			return
 
-		to_chat(user, SPAN_NOTICE("[src] makes a whirring noise as it restocks your [S.name]."))
-		S.amount = S.max_amount
-		S.update_icon()
-	else
-		. = ..()
+		to_chat(user, SPAN_NOTICE("[src] makes a whirring noise as it restocks your [item_stack.name]."))
+		item_stack.amount = item_stack.max_amount
+		item_stack.update_icon()
+		return
+
+	return ..()
 
 /obj/structure/machinery/cm_vending/sorted/medical/MouseDrop(obj/over_object as obj)
 	if(stat == WORKING && over_object == usr && CAN_PICKUP(usr, src))
@@ -225,21 +240,21 @@
 /obj/structure/machinery/cm_vending/sorted/medical/populate_product_list(scale)
 	listed_products = list(
 		list("FIELD SUPPLIES", -1, null, null),
-		list("Burn Kit", round(scale * 6), /obj/item/stack/medical/advanced/ointment, VENDOR_ITEM_REGULAR),
-		list("Trauma Kit", round(scale * 6), /obj/item/stack/medical/advanced/bruise_pack, VENDOR_ITEM_REGULAR),
-		list("Ointment", round(scale * 6), /obj/item/stack/medical/ointment, VENDOR_ITEM_REGULAR),
-		list("Roll of Gauze", round(scale * 6), /obj/item/stack/medical/bruise_pack, VENDOR_ITEM_REGULAR),
-		list("Splints", round(scale * 6), /obj/item/stack/medical/splint, VENDOR_ITEM_REGULAR),
+		list("Burn Kit", round(scale * 8), /obj/item/stack/medical/advanced/ointment, VENDOR_ITEM_REGULAR),
+		list("Trauma Kit", round(scale * 8), /obj/item/stack/medical/advanced/bruise_pack, VENDOR_ITEM_REGULAR),
+		list("Ointment", round(scale * 8), /obj/item/stack/medical/ointment, VENDOR_ITEM_REGULAR),
+		list("Roll of Gauze", round(scale * 8), /obj/item/stack/medical/bruise_pack, VENDOR_ITEM_REGULAR),
+		list("Splints", round(scale * 8), /obj/item/stack/medical/splint, VENDOR_ITEM_REGULAR),
 
 		list("AUTOINJECTORS", -1, null, null),
-		list("Autoinjector (Bicaridine)", round(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/bicaridine, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Dexalin+)", round(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/dexalinp, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Epinephrine)", round(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/adrenaline, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Inaprovaline)", round(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/inaprovaline, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Kelotane)", round(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/kelotane, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Oxycodone)", round(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/oxycodone, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Tramadol)", round(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/tramadol, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Tricord)", round(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/tricord, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Bicaridine)", round(scale * 4), /obj/item/reagent_container/hypospray/autoinjector/bicaridine, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Dexalin+)", round(scale * 4), /obj/item/reagent_container/hypospray/autoinjector/dexalinp, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Epinephrine)", round(scale * 4), /obj/item/reagent_container/hypospray/autoinjector/adrenaline, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Inaprovaline)", round(scale * 4), /obj/item/reagent_container/hypospray/autoinjector/inaprovaline, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Kelotane)", round(scale * 4), /obj/item/reagent_container/hypospray/autoinjector/kelotane, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Oxycodone)", round(scale * 4), /obj/item/reagent_container/hypospray/autoinjector/oxycodone, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Tramadol)", round(scale * 4), /obj/item/reagent_container/hypospray/autoinjector/tramadol, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Tricord)", round(scale * 4), /obj/item/reagent_container/hypospray/autoinjector/tricord, VENDOR_ITEM_REGULAR),
 
 		list("LIQUID BOTTLES", -1, null, null),
 		list("Bottle (Bicaridine)", round(scale * 4), /obj/item/reagent_container/glass/bottle/bicaridine, VENDOR_ITEM_REGULAR),
@@ -252,25 +267,102 @@
 		list("Bottle (Tramadol)", round(scale * 4), /obj/item/reagent_container/glass/bottle/tramadol, VENDOR_ITEM_REGULAR),
 
 		list("PILL BOTTLES", -1, null, null),
-		list("Pill Bottle (Bicaridine)", round(scale * 2), /obj/item/storage/pill_bottle/bicaridine, VENDOR_ITEM_REGULAR),
-		list("Pill Bottle (Dexalin)", round(scale * 2), /obj/item/storage/pill_bottle/dexalin, VENDOR_ITEM_REGULAR),
-		list("Pill Bottle (Dylovene)", round(scale * 2), /obj/item/storage/pill_bottle/antitox, VENDOR_ITEM_REGULAR),
-		list("Pill Bottle (Inaprovaline)", round(scale * 2), /obj/item/storage/pill_bottle/inaprovaline, VENDOR_ITEM_REGULAR),
-		list("Pill Bottle (Kelotane)", round(scale * 2), /obj/item/storage/pill_bottle/kelotane, VENDOR_ITEM_REGULAR),
-		list("Pill Bottle (Peridaxon)", round(scale * 1), /obj/item/storage/pill_bottle/peridaxon, VENDOR_ITEM_REGULAR),
-		list("Pill Bottle (Tramadol)", round(scale * 2), /obj/item/storage/pill_bottle/tramadol, VENDOR_ITEM_REGULAR),
+		list("Pill Bottle (Bicaridine)", round(scale * 3), /obj/item/storage/pill_bottle/bicaridine, VENDOR_ITEM_REGULAR),
+		list("Pill Bottle (Dexalin)", round(scale * 3), /obj/item/storage/pill_bottle/dexalin, VENDOR_ITEM_REGULAR),
+		list("Pill Bottle (Dylovene)", round(scale * 3), /obj/item/storage/pill_bottle/antitox, VENDOR_ITEM_REGULAR),
+		list("Pill Bottle (Inaprovaline)", round(scale * 3), /obj/item/storage/pill_bottle/inaprovaline, VENDOR_ITEM_REGULAR),
+		list("Pill Bottle (Kelotane)", round(scale * 3), /obj/item/storage/pill_bottle/kelotane, VENDOR_ITEM_REGULAR),
+		list("Pill Bottle (Peridaxon)", round(scale * 2), /obj/item/storage/pill_bottle/peridaxon, VENDOR_ITEM_REGULAR),
+		list("Pill Bottle (Tramadol)", round(scale * 3), /obj/item/storage/pill_bottle/tramadol, VENDOR_ITEM_REGULAR),
 
 		list("MEDICAL UTILITIES", -1, null, null),
 		list("Emergency Defibrillator", round(scale * 3), /obj/item/device/defibrillator, VENDOR_ITEM_REGULAR),
 		list("Surgical Line", round(scale * 2), /obj/item/tool/surgery/surgical_line, VENDOR_ITEM_REGULAR),
 		list("Synth-Graft", round(scale * 2), /obj/item/tool/surgery/synthgraft, VENDOR_ITEM_REGULAR),
-		list("Hypospray", round(scale * 2), /obj/item/reagent_container/hypospray/tricordrazine, VENDOR_ITEM_REGULAR),
+		list("Hypospray", round(scale * 3), /obj/item/reagent_container/hypospray/tricordrazine, VENDOR_ITEM_REGULAR),
 		list("Health Analyzer", round(scale * 5), /obj/item/device/healthanalyzer, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern Medical Storage Rig", round(scale * 2), /obj/item/storage/belt/medical, VENDOR_ITEM_REGULAR),
 		list("Medical HUD Glasses", round(scale * 3), /obj/item/clothing/glasses/hud/health, VENDOR_ITEM_REGULAR),
-		list("Stasis Bag", round(scale * 2), /obj/item/bodybag/cryobag, VENDOR_ITEM_REGULAR),
+		list("Stasis Bag", round(scale * 4), /obj/item/bodybag/cryobag, VENDOR_ITEM_REGULAR),
 		list("Syringe", round(scale * 7), /obj/item/reagent_container/syringe, VENDOR_ITEM_REGULAR)
 	)
+
+/obj/structure/machinery/cm_vending/sorted/medical/populate_product_list_and_boxes(scale)
+	. = ..()
+
+	// If this isn't a medlinked vendor (that needs a link) and isn't dynamically changing we will spawn with stock randomly removed from it
+	if(vend_flags & VEND_STOCK_DYNAMIC)
+		return
+	if(!requires_supply_link_port)
+		return
+	if(get_supply_link())
+		return
+	var/turf/location = get_turf(src)
+	if(location && is_ground_level(location.z))
+		random_unstock()
+
+/obj/structure/machinery/cm_vending/sorted/medical/Initialize()
+	. = ..()
+
+	// If this is a medlinked vendor (that needs a link) and isn't dynamically changing it will periodically restock itself
+	if(vend_flags & VEND_STOCK_DYNAMIC)
+		return
+	if(!requires_supply_link_port)
+		return
+	if(!get_supply_link())
+		return
+	START_PROCESSING(SSslowobj, src)
+
+/obj/structure/machinery/cm_vending/sorted/medical/toggle_anchored(obj/item/W, mob/user)
+	. = ..()
+
+	// If the anchor state changed, this is a vendor that needs a link, and isn't dynamically changing, update whether we automatically restock
+	if(. && !(vend_flags & VEND_STOCK_DYNAMIC) && requires_supply_link_port)
+		if(get_supply_link())
+			START_PROCESSING(SSslowobj, src)
+		else
+			STOP_PROCESSING(SSslowobj, src)
+
+/obj/structure/machinery/cm_vending/sorted/medical/process()
+	if(!get_supply_link())
+		STOP_PROCESSING(SSslowobj, src)
+		return // Somehow we lost our link
+	automatic_restock()
+
+/// Randomly adjusts the amounts of listed_products towards their desired values
+/obj/structure/machinery/cm_vending/sorted/medical/proc/automatic_restock()
+	for(var/list/vendspec as anything in listed_products)
+		if(vendspec[2] < 0)
+			continue // It's a section title, not an actual entry
+		var/dynamic_metadata = dynamic_stock_multipliers[vendspec]
+		if(!dynamic_metadata)
+			stack_trace("[src] could not find dynamic_stock_multipliers for [vendspec[1]]!")
+			continue
+		if(vendspec[2] == dynamic_metadata[2])
+			continue // Already at desired value
+		if(vendspec[2] > dynamic_metadata[2])
+			vendspec[2]--
+			update_derived_ammo_and_boxes(vendspec)
+			continue // Returned some items to the void
+		if(prob(80))
+			continue // 20% chance to restock per entry
+		vendspec[2]++
+		update_derived_ammo_and_boxes_on_add(vendspec)
+
+/// Randomly removes amounts of listed_products
+/obj/structure/machinery/cm_vending/sorted/medical/proc/random_unstock()
+	for(var/list/vendspec as anything in listed_products)
+		var/amount = vendspec[2]
+		if(amount <= 0)
+			continue
+
+		// Chance to just be empty
+		if(prob(25))
+			vendspec[2] = 0
+			continue
+
+		// Otherwise its some amount between 1 and the original amount
+		vendspec[2] = rand(1, amount)
 
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry
 	name = "\improper Wey-Chem Plus"
@@ -419,14 +511,14 @@
 	wrenchable = FALSE
 	listed_products = list(
 		list("SUPPLIES", -1, null, null),
-		list("First-Aid Autoinjector", 1, /obj/item/reagent_container/hypospray/autoinjector/skillless, VENDOR_ITEM_REGULAR),
-		list("Pain-Stop Autoinjector", 1, /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol, VENDOR_ITEM_REGULAR),
-		list("Roll Of Gauze", 2, /obj/item/stack/medical/bruise_pack, VENDOR_ITEM_REGULAR),
-		list("Ointment", 2, /obj/item/stack/medical/ointment, VENDOR_ITEM_REGULAR),
-		list("Medical Splints", 1, /obj/item/stack/medical/splint, VENDOR_ITEM_REGULAR),
+		list("First-Aid Autoinjector", 2, /obj/item/reagent_container/hypospray/autoinjector/skillless, VENDOR_ITEM_REGULAR),
+		list("Pain-Stop Autoinjector", 2, /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol, VENDOR_ITEM_REGULAR),
+		list("Roll Of Gauze", 4, /obj/item/stack/medical/bruise_pack, VENDOR_ITEM_REGULAR),
+		list("Ointment", 4, /obj/item/stack/medical/ointment, VENDOR_ITEM_REGULAR),
+		list("Medical Splints", 2, /obj/item/stack/medical/splint, VENDOR_ITEM_REGULAR),
 
 		list("UTILITY", -1, null, null),
-		list("HF2 Health Analyzer", 1, /obj/item/device/healthanalyzer, VENDOR_ITEM_REGULAR)
+		list("HF2 Health Analyzer", 2, /obj/item/device/healthanalyzer, VENDOR_ITEM_REGULAR)
 	)
 
 	appearance_flags = TILE_BOUND
@@ -498,14 +590,14 @@
 	icon = 'icons/obj/structures/souto_land.dmi'
 	listed_products = list(
 		list("FIRST AID SUPPLIES", -1, null, null),
-		list("First-Aid Autoinjector", 1, /obj/item/reagent_container/hypospray/autoinjector/skillless, VENDOR_ITEM_REGULAR),
-		list("Pain-Stop Autoinjector", 1, /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol, VENDOR_ITEM_REGULAR),
-		list("Roll Of Gauze", 2, /obj/item/stack/medical/bruise_pack, VENDOR_ITEM_REGULAR),
-		list("Ointment", 2, /obj/item/stack/medical/ointment, VENDOR_ITEM_REGULAR),
-		list("Medical Splints", 1, /obj/item/stack/medical/splint, VENDOR_ITEM_REGULAR),
+		list("First-Aid Autoinjector", 2, /obj/item/reagent_container/hypospray/autoinjector/skillless, VENDOR_ITEM_REGULAR),
+		list("Pain-Stop Autoinjector", 2, /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol, VENDOR_ITEM_REGULAR),
+		list("Roll Of Gauze", 4, /obj/item/stack/medical/bruise_pack, VENDOR_ITEM_REGULAR),
+		list("Ointment", 4, /obj/item/stack/medical/ointment, VENDOR_ITEM_REGULAR),
+		list("Medical Splints", 2, /obj/item/stack/medical/splint, VENDOR_ITEM_REGULAR),
 
 		list("UTILITY", -1, null, null),
-		list("HF2 Health Analyzer", 1, /obj/item/device/healthanalyzer, VENDOR_ITEM_REGULAR),
+		list("HF2 Health Analyzer", 2, /obj/item/device/healthanalyzer, VENDOR_ITEM_REGULAR),
 
 		list("SOUTO", -1, null, null),
 		list("Souto Classic", 1, /obj/item/reagent_container/food/drinks/cans/souto/classic, VENDOR_ITEM_REGULAR),

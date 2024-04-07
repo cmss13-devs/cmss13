@@ -900,8 +900,14 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 	///this here is made to provide ability to restock vendors with different subtypes of same object, like handmade and manually filled ammo boxes.
 	var/list/corresponding_types_list
-	///If using [VEND_STOCK_DYNAMIC], assoc list of product entry to list of (product multiplier, awarded objects) - as seen in [/obj/structure/machinery/cm_vending/sorted/proc/populate_product_list]
-	///This allows us to backtrack and refill the stocks when new players latejoin
+	/**
+	 * If using [VEND_STOCK_DYNAMIC], assoc list of product entry to list of (1.0 scale product multiplier, awarded objects) - as seen in [/obj/structure/machinery/cm_vending/sorted/proc/populate_product_list]
+	 * This allows us to backtrack and refill the stocks when new players latejoin.
+	 *
+	 * If NOT using [VEND_STOCK_DYNAMIC], assoc list of product entry to list of (estimated 1.0 scale product multiplier, scaled product multiplier) - as seen in [/obj/structure/machinery/cm_vending/sorted/proc/populate_product_list]
+	 * This allows us to know the original amounts to know if the vendor is full of an item.
+	 * The 1.0 scale is estimated because it is a divided by the scale rather than repopulating the list at 1.0 scale - anything that is a fixed amount won't necessarily be correct.
+	 */
 	var/list/list/dynamic_stock_multipliers
 
 /obj/structure/machinery/cm_vending/sorted/Initialize()
@@ -917,22 +923,27 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 ///this proc, well, populates product list based on roundstart amount of players
 /obj/structure/machinery/cm_vending/sorted/proc/populate_product_list_and_boxes(scale)
+	dynamic_stock_multipliers = list()
 	if(vend_flags & VEND_STOCK_DYNAMIC)
 		populate_product_list(1.0)
-		dynamic_stock_multipliers = list()
 		for(var/list/vendspec in listed_products)
 			var/multiplier = vendspec[2]
 			if(multiplier > 0)
-				var/awarded = round(vendspec[2] * scale, 1) // Starting amount
+				var/awarded = round(multiplier * scale, 1) // Starting amount
 				//Record the multiplier and how many have actually been given out
-				dynamic_stock_multipliers[vendspec] = list(vendspec[2], awarded)
+				dynamic_stock_multipliers[vendspec] = list(multiplier, awarded)
 				vendspec[2] = awarded // Override starting amount
 	else
 		populate_product_list(scale)
+		for(var/list/vendspec in listed_products)
+			var/amount = vendspec[2]
+			if(amount > -1)
+				var/multiplier = Ceiling(amount / scale)
+				//Record the multiplier and how many have actually been given out
+				dynamic_stock_multipliers[vendspec] = list(multiplier, amount)
 
 	if(vend_flags & VEND_LOAD_AMMO_BOXES)
 		populate_ammo_boxes()
-	return
 
 ///Updates the vendor stock when the [/datum/game_mode/var/marine_tally] has changed and we're using [VEND_STOCK_DYNAMIC]
 ///Assumes the scale can only increase!!! Don't take their items away!
@@ -994,10 +1005,9 @@ GLOBAL_LIST_EMPTY(vending_products)
 		stock(I, user)
 
 /obj/structure/machinery/cm_vending/sorted/proc/stock(obj/item/item_to_stock, mob/user)
-	var/list/R
 	var/list/stock_listed_products = get_listed_products(user)
-	for(R in (stock_listed_products))
-		if(item_to_stock.type == R[3] && !istype(item_to_stock,/obj/item/storage))
+	for(var/list/vendspec as anything in stock_listed_products)
+		if(item_to_stock.type == vendspec[3] && !istype(item_to_stock, /obj/item/storage))
 
 			if(istype(item_to_stock, /obj/item/device/defibrillator))
 				var/obj/item/device/defibrillator/D = item_to_stock
@@ -1014,9 +1024,9 @@ GLOBAL_LIST_EMPTY(vending_products)
 					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs to be fully charged to restock it!"))
 					return
 
-			else if(!additional_restock_checks(item_to_stock, user))
+			else if(!additional_restock_checks(item_to_stock, user, vendspec))
 				// the error message needs to go in the proc
-				return FALSE
+				return
 
 			if(item_to_stock.loc == user) //Inside the mob's inventory
 				if(item_to_stock.flags_item & WIELDED)
@@ -1028,15 +1038,15 @@ GLOBAL_LIST_EMPTY(vending_products)
 				S.remove_from_storage(item_to_stock, user.loc)
 
 			qdel(item_to_stock)
-			user.visible_message(SPAN_NOTICE("[user] stocks [src] with \a [R[1]]."),
-			SPAN_NOTICE("You stock [src] with \a [R[1]]."))
-			R[2]++
-			update_derived_ammo_and_boxes_on_add(R)
+			user.visible_message(SPAN_NOTICE("[user] stocks [src] with \a [vendspec[1]]."),
+			SPAN_NOTICE("You stock [src] with \a [vendspec[1]]."))
+			vendspec[2]++
+			update_derived_ammo_and_boxes_on_add(vendspec)
 			updateUsrDialog()
 			return //We found our item, no reason to go on.
 
 /// additional restocking checks for individual vendor subtypes. Parse in item, do checks, return FALSE to fail. Include error message.
-/obj/structure/machinery/cm_vending/sorted/proc/additional_restock_checks(obj/item/item_to_stock, mob/user)
+/obj/structure/machinery/cm_vending/sorted/proc/additional_restock_checks(obj/item/item_to_stock, mob/user, list/vendspec)
 	return TRUE
 
 //sending an /empty ammo box type path here will return corresponding regular (full) type of this box

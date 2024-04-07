@@ -493,3 +493,21 @@
 				ai_silent_announcement("Reason given: [reason].", ".V")
 			COOLDOWN_START(datacore, ares_nuclear_cooldown, COOLDOWN_COMM_DESTRUCT)
 			return TRUE
+
+		if("bioscan")
+			if(!SSticker.mode)
+				return FALSE //Not a game mode?
+			if(world.time < FORCE_SCAN_LOCK)
+				to_chat(operator, SPAN_WARNING("Bio sensors are not yet ready to initiate a scan!"))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
+			if(!(COOLDOWN_FINISHED(datacore, ares_bioscan_cooldown)) || (world.time < (GLOB.last_human_bioscan + COOLDOWN_FORCE_SCAN)))
+				to_chat(operator, SPAN_WARNING("It is too soon since the last scan, wait for the sensor array to reset!"))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
+
+			GLOB.bioscan_data.ares_bioscan(FALSE, 2)
+			COOLDOWN_START(datacore, ares_bioscan_cooldown, COOLDOWN_FORCE_SCAN)
+			playsound(src, 'sound/machines/terminal_processing.ogg', 15, 1)
+			message_admins("BIOSCAN: [key_name(operator)] triggered a Marine bioscan via ARES AIST.")
+			return TRUE

@@ -281,7 +281,7 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/carbon/human/user = usr
+	var/mob/living/carbon/human/user = ui.user
 	var/playsound = TRUE
 
 	switch(action)
@@ -351,6 +351,9 @@
 		if("page_deleted_1to1")
 			last_menu = current_menu
 			current_menu = "deleted_talks"
+		if("page_tech")
+			last_menu = current_menu
+			current_menu = "tech_log"
 		if("page_access_management")
 			last_menu = current_menu
 			current_menu = "access_management"
@@ -559,36 +562,36 @@
 
 		if("general_quarters")
 			if(!COOLDOWN_FINISHED(datacore, ares_quarters_cooldown))
-				to_chat(usr, SPAN_WARNING("It has not been long enough since the last General Quarters call!"))
+				to_chat(user, SPAN_WARNING("It has not been long enough since the last General Quarters call!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 			if(GLOB.security_level < SEC_LEVEL_RED)
 				set_security_level(SEC_LEVEL_RED, no_sound = TRUE, announce = FALSE)
 			shipwide_ai_announcement("ATTENTION! GENERAL QUARTERS. ALL HANDS, MAN YOUR BATTLESTATIONS.", MAIN_AI_SYSTEM, 'sound/effects/GQfullcall.ogg')
-			log_game("[key_name(usr)] has called for general quarters via ARES.")
-			message_admins("[key_name_admin(usr)] has called for general quarters via ARES.")
+			log_game("[key_name(user)] has called for general quarters via ARES.")
+			message_admins("[key_name_admin(user)] has called for general quarters via ARES.")
 			log_ares_security("General Quarters", "[logged_in] has called for general quarters via ARES.")
 			COOLDOWN_START(datacore, ares_quarters_cooldown, 10 MINUTES)
 			. = TRUE
 
 		if("evacuation_start")
 			if(GLOB.security_level < SEC_LEVEL_RED)
-				to_chat(usr, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))
+				to_chat(user, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 
 			if(SShijack.evac_admin_denied)
-				to_chat(usr, SPAN_WARNING("The USCM has placed a lock on deploying the evacuation pods."))
+				to_chat(user, SPAN_WARNING("The USCM has placed a lock on deploying the evacuation pods."))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 
 			if(!SShijack.initiate_evacuation())
-				to_chat(usr, SPAN_WARNING("You are unable to initiate an evacuation procedure right now!"))
+				to_chat(user, SPAN_WARNING("You are unable to initiate an evacuation procedure right now!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 
-			log_game("[key_name(usr)] has called for an emergency evacuation via ARES.")
-			message_admins("[key_name_admin(usr)] has called for an emergency evacuation via ARES.")
+			log_game("[key_name(user)] has called for an emergency evacuation via ARES.")
+			message_admins("[key_name_admin(user)] has called for an emergency evacuation via ARES.")
 			log_ares_security("Initiate Evacuation", "[logged_in] has called for an emergency evacuation via ARES.")
 			. = TRUE
 
@@ -596,27 +599,27 @@
 			if(!SSticker.mode)
 				return FALSE //Not a game mode?
 			if(world.time < DISTRESS_TIME_LOCK)
-				to_chat(usr, SPAN_WARNING("You have been here for less than six minutes... what could you possibly have done!"))
+				to_chat(user, SPAN_WARNING("You have been here for less than six minutes... what could you possibly have done!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 			if(!COOLDOWN_FINISHED(datacore, ares_distress_cooldown))
-				to_chat(usr, SPAN_WARNING("The distress launcher is cooling down!"))
+				to_chat(user, SPAN_WARNING("The distress launcher is cooling down!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 			if(GLOB.security_level == SEC_LEVEL_DELTA)
-				to_chat(usr, SPAN_WARNING("The ship is already undergoing self destruct procedures!"))
+				to_chat(user, SPAN_WARNING("The ship is already undergoing self destruct procedures!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 			if(GLOB.security_level < SEC_LEVEL_RED)
-				to_chat(usr, SPAN_WARNING("The ship must be under red alert to launch a distress beacon!"))
+				to_chat(user, SPAN_WARNING("The ship must be under red alert to launch a distress beacon!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 
 			for(var/client/admin in GLOB.admins)
 				if((R_ADMIN|R_MOD) & admin.admin_holder.rights)
 					playsound_client(admin,'sound/effects/sos-morse-code.ogg',10)
-			SSticker.mode.request_ert(usr, TRUE)
-			to_chat(usr, SPAN_NOTICE("A distress beacon request has been sent to USCM High Command."))
+			SSticker.mode.request_ert(user, TRUE)
+			to_chat(user, SPAN_NOTICE("A distress beacon request has been sent to USCM High Command."))
 			COOLDOWN_START(datacore, ares_distress_cooldown, COOLDOWN_COMM_REQUEST)
 			return TRUE
 
@@ -624,25 +627,25 @@
 			if(!SSticker.mode)
 				return FALSE //Not a game mode?
 			if(world.time < NUCLEAR_TIME_LOCK)
-				to_chat(usr, SPAN_WARNING("It is too soon to request Nuclear Ordnance!"))
+				to_chat(user, SPAN_WARNING("It is too soon to request Nuclear Ordnance!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 			if(!COOLDOWN_FINISHED(datacore, ares_nuclear_cooldown))
-				to_chat(usr, SPAN_WARNING("The ordnance request frequency is garbled, wait for reset!"))
+				to_chat(user, SPAN_WARNING("The ordnance request frequency is garbled, wait for reset!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 			if(GLOB.security_level == SEC_LEVEL_DELTA || SSticker.mode.is_in_endgame)
-				to_chat(usr, SPAN_WARNING("The mission has failed catastrophically, what do you want a nuke for?!"))
+				to_chat(user, SPAN_WARNING("The mission has failed catastrophically, what do you want a nuke for?!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
-			var/reason = tgui_input_text(usr, "Please enter reason nuclear ordnance is required.", "Reason for Nuclear Ordnance")
+			var/reason = tgui_input_text(user, "Please enter reason nuclear ordnance is required.", "Reason for Nuclear Ordnance")
 			if(!reason)
 				return FALSE
 			for(var/client/admin in GLOB.admins)
 				if((R_ADMIN|R_MOD) & admin.admin_holder.rights)
 					playsound_client(admin,'sound/effects/sos-morse-code.ogg',10)
-			message_admins("[key_name(usr)] has requested use of Nuclear Ordnance (via ARES)! Reason: <b>[reason]</b> [CC_MARK(usr)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];nukeapprove=\ref[usr]'>APPROVE</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];nukedeny=\ref[usr]'>DENY</A>) [ADMIN_JMP_USER(usr)] [CC_REPLY(usr)]")
-			to_chat(usr, SPAN_NOTICE("A nuclear ordnance request has been sent to USCM High Command for the following reason: [reason]"))
+			message_admins("[key_name(user)] has requested use of Nuclear Ordnance (via ARES)! Reason: <b>[reason]</b> [CC_MARK(user)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];nukeapprove=\ref[user]'>APPROVE</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];nukedeny=\ref[user]'>DENY</A>) [ADMIN_JMP_USER(user)] [CC_REPLY(user)]")
+			to_chat(user, SPAN_NOTICE("A nuclear ordnance request has been sent to USCM High Command for the following reason: [reason]"))
 			log_ares_security("Nuclear Ordnance Request", "[logged_in] has sent a request for nuclear ordnance for the following reason: [reason]")
 			if(ares_can_interface())
 				ai_silent_announcement("[logged_in] has sent a request for nuclear ordnance to USCM High Command.", ".V")
@@ -650,7 +653,23 @@
 			COOLDOWN_START(datacore, ares_nuclear_cooldown, COOLDOWN_COMM_DESTRUCT)
 			return TRUE
 
+		if("bioscan")
+			if(!SSticker.mode)
+				return FALSE //Not a game mode?
+			if(world.time < FORCE_SCAN_LOCK)
+				to_chat(user, SPAN_WARNING("Bio sensors are not yet ready to initiate a scan!"))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
+			if(!(COOLDOWN_FINISHED(datacore, ares_bioscan_cooldown)) || (world.time < (GLOB.last_human_bioscan + COOLDOWN_FORCE_SCAN)))
+				to_chat(user, SPAN_WARNING("It is too soon since the last scan, wait for the sensor array to reset!"))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
 
+			GLOB.bioscan_data.ares_bioscan(FALSE, 2)
+			COOLDOWN_START(datacore, ares_bioscan_cooldown, COOLDOWN_FORCE_SCAN)
+			playsound(src, 'sound/machines/terminal_processing.ogg', 15, 1)
+			message_admins("BIOSCAN: [key_name(user)] triggered a Marine bioscan via ARES AIST.")
+			return TRUE
 
 
 	if(playsound)

@@ -362,6 +362,18 @@ const MainMenu = (props) => {
                 />
               </Stack.Item>
             )}
+            <Stack.Item>
+              <Button
+                content="Bioscan"
+                icon="satellite"
+                ml="auto"
+                px="2rem"
+                width="25vw"
+                bold
+                onClick={() => act('bioscan')}
+                tooltip="Trigger an immediate bioscan for diagnostics."
+              />
+            </Stack.Item>
           </Stack>
         )}
       </Section>

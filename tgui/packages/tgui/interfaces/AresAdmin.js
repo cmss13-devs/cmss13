@@ -341,7 +341,7 @@ const MainMenu = (props, context) => {
                 bold
                 onClick={() => act('sudo')}
                 disabled={admin_login}
-                tooltip="You cannot do this via remote terminal."
+                tooltip={remotetip}
               />
             </Stack.Item>
           )}
@@ -360,6 +360,19 @@ const MainMenu = (props, context) => {
               />
             </Stack.Item>
           )}
+          <Stack.Item>
+            <Button
+              content="Bioscan"
+              icon="satellite"
+              ml="auto"
+              px="2rem"
+              width="25vw"
+              bold
+              onClick={() => act('bioscan')}
+              disabled={remotelock}
+              tooltip="Trigger an immediate bioscan for diagnostics."
+            />
+          </Stack.Item>
         </Stack>
       </Section>
       <Section>

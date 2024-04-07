@@ -88,6 +88,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	COOLDOWN_DECLARE(ares_distress_cooldown)
 	COOLDOWN_DECLARE(ares_nuclear_cooldown)
 	COOLDOWN_DECLARE(ares_quarters_cooldown)
+	COOLDOWN_DECLARE(ares_bioscan_cooldown)
 
 // ------ ARES Logging Procs ------ //
 /proc/ares_is_active()

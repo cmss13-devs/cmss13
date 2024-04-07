@@ -83,17 +83,9 @@ SUBSYSTEM_DEF(hijack)
 	/// If ARES has announced the 50% point yet for SD
 	var/ares_sd_announced = FALSE
 
-
-
 /datum/controller/subsystem/hijack/Initialize(timeofday)
 	RegisterSignal(SSdcs, COMSIG_GLOB_GENERATOR_SET_OVERLOADING, PROC_REF(on_generator_overload))
 	return SS_INIT_SUCCESS
-
-//gloabal list to register all the fuelpump.
-GLOBAL_LIST_INIT_TYPED(all_fuel_pumps, /obj/structure/machinery/fuelpump, list())
-
-//global var to know what stage the fuel is in. fuel stage
-GLOBAL_VAR_INIT(fuel_stage,0)
 
 /datum/controller/subsystem/hijack/stat_entry(msg)
 	if(!SSticker?.mode?.is_in_endgame)
@@ -225,20 +217,12 @@ GLOBAL_VAR_INIT(fuel_stage,0)
 	switch(announce)
 		if(1)
 			marine_announcement("Emergency fuel replenishment is at 25 percent. Lifeboat emergency early launch is now available.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
-			fuel_stage = 25
-			update_progress(fuel_stage)
 		if(2)
 			marine_announcement("Emergency fuel replenishment is at 50 percent.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
-			fuel_stage = 50
-			update_progress(fuel_stage)
 		if(3)
 			marine_announcement("Emergency fuel replenishment is at 75 percent.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
-			fuel_stage = 75
-			update_progress(fuel_stage)
 		if(4)
 			marine_announcement("Emergency fuel replenishment is at 100 percent. Safe utilization of lifeboats and pods is now possible.", HIJACK_ANNOUNCE)
-			fuel_stage = 100
-			update_progress(fuel_stage)
 			if(!admin_sd_blocked)
 				addtimer(CALLBACK(src, PROC_REF(unlock_self_destruct)), 8 SECONDS)
 
@@ -246,9 +230,6 @@ GLOBAL_VAR_INIT(fuel_stage,0)
 /datum/controller/subsystem/hijack/proc/get_evac_eta()
 	switch(hijack_status)
 		if(HIJACK_OBJECTIVES_STARTED)
-			// if objectives started start pumping.
-			fuel_stage = 1
-			update_progress(fuel_stage)
 			if(estimated_time_left == INFINITY)
 				return "Never"
 			return "[duration2text_sec(estimated_time_left)]"

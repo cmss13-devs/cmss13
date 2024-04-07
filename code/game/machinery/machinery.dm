@@ -365,19 +365,9 @@ Class Procs:
 	icon_state = "fuelpump_off"
 	density = TRUE
 	anchored = TRUE
-	var/fuelpump_stage = 0
-
 
 /obj/structure/machinery/fuelpump/update_icon()
 	if(stat & NOPOWER)
 		icon_state = "fuelpump_off"
 	else
 		icon_state = "fuelpump_on"
-
-		if(fuelpump_stage >= 1)
-			icon_state="fuelpump_[fuelpump_stage]"
-//currently doesn't update properly
-
-/obj/structure/machinery/fuelpump/proc/update_progress(fuel_stage)
-	fuelpump_stage = fuel_stage
-	update_icon()

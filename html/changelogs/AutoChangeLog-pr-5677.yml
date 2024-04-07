@@ -1,0 +1,5 @@
+author: "Stan_albatross,kugamo,LTNTS,Drathek"
+delete-after: True
+changes:
+  - balance: "medical vendors, excepting nanomeds, can now only refill/restock stacks and autoinjectors/bottles when on special medical supply link ports that can only be found shipside. Sprite by kugamo."
+  - bugfix: "supply pads will no longer generate ambient occlusion."

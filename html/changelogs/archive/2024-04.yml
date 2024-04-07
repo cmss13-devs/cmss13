@@ -25,3 +25,88 @@
   vero5123:
   - bugfix: lowers the scalpel and chunk box's ability to destroy various structures.
   - rscadd: chunk box is now a melee weapon
+2024-04-04:
+  QuickLode:
+  - qol: Moves CL's Office and SEA's Office phone lines to "Offices" category.
+  realforest2001:
+  - rscadd: Added AI Core camera consoles to CE, CO and Brig offices, along with CIC
+      and Lifeboat bubble.
+  - maptweak: Added Tech Control Console to ARES Core.
+  - rscadd: Added Tech Unlock logs to ARES Interface
+2024-04-05:
+  Drathek:
+  - bugfix: Fixed some number entry for your pin and access code in the EFTPOS
+  Git-Nivrak:
+  - qol: Acid sprays will now extinguish fire from other xenomorphs more consistently
+  ihatethisengine:
+  - balance: night vision optics no longer can be used with binoculars.
+  vero5123:
+  - bugfix: xenos can no longer attempt to use corrosive acid after death
+2024-04-06:
+  Huffie56:
+  - balance: add the ability to store fixOvein in the pouch medkit.
+  QuickLode:
+  - balance: Metal rods take up less space in an inventory (3 slots to 2)
+  - code_imp: removes some redundant code on plasteel rods
+  vero5123:
+  - bugfix: fixes queen getting stuck in the lobby if they take too long
+2024-04-07:
+  Ben10083:
+  - balance: Mobs with super strength now have an advantage when resisting of a grab
+      is done, both as the grabber and the one being grabbed (Xenos not affected,
+      works as before).
+  - balance: Mobs with super strength no longer have their passive grabs a guaranteed
+      resist (unless both super).
+  Drathek:
+  - bugfix: Fixed objectives not getting displayed for CMB and cultist ERTs.
+  - balance: Cryotubes no longer multiply chemicals.
+  - balance: Cryotubes can now allow chemicals to process in dead if cryoxadone or
+      clonexadone is present.
+  - bugfix: Fixed cryotubes not actually updating their icons/power usage when they
+      become unpowered.
+  - bugfix: Fixed cryotubes healing despite inoperable.
+  - bugfix: The cryotube Eject Occupant verb now works for people other than the occupant
+      (useful if inoperable)
+  - ui: Cryotubes can optionally announce again on the medical channel.
+  InsaneRed:
+  - balance: Goon armor properly has slowdown now
+  Johannes2262:
+  - maptweak: All cell shutters are now linked to the button in the warden's office
+  Kaga:
+  - rscadd: Added the XM43E1 Anti-Materiel Rifle as a pickable sidegrade option for
+      USCM Sniper Specs through the vendor, mutually exclusive with the normal M42A
+      Sniper Rifle. The AMR can shred obstacles, blow a hole through most infantry
+      and their equipment, and even hit a collateral on multiple targets or through
+      light cover, but its lack of specialized ammunition and small magazine mean
+      that you'll need to make every shot count. Ammo can be bought from Req, at the
+      same cost per magazine as the M42A.
+  - balance: Completely updated the XM43E1 AMR, adding damage falloff to its wall-piercing
+      properties whenever it hits something alongside range loss. Most things reduce
+      its damage by 20%. Dense walls and big xenos reduce both the damage and range
+      3 times as much.
+  NervanCatos:
+  - balance: removes CT access to marine prep weapons racks, doubles ammo count of
+      all regular ammo in req to compensate.
+  SabreML:
+  - admin: Added attack logging for Xeno tackling.
+  Vanagandr, totalepicness:
+  - rscadd: Added a button to event panel to give xenomorphs opposable thumbs and
+      firearms permits, to individuals, to hives, or to all xenos everywhere. They're
+      clumsy, though, and have issues with fine manipulation sometimes. Remember that
+      warriors cannot throw objects and make for poor grenadiers.
+  - rscadd: Xenos with opposable thumbs can use buckles, drive vehicles, use machine
+      guns and vendors without care for access or skills
+  Waseemq1235:
+  - mapadd: Added an APOLLO maintenance controller to the Warden's Office.
+  cuberound:
+  - balance: greatly decreses snow removal time, now it depends on xenomorph size
+  - balance: allows movement during tactical reload (to perform tactical reload click
+      and drag from a magazine to gun in your hand)
+  - balance: reduced GAU spread from 9x9 to 7x7
+  - balance: reduced GAU shots fired per shot back to 1 (bullets per tile from 0.99
+      to 0.82)
+  realforest2001:
+  - rscadd: Added ARES logging for launching supply drops.
+  - admin: Added staff logs for launching supply drops.
+  vero5123:
+  - bugfix: Fixes armor light staying on after removal.

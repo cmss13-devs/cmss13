@@ -1,0 +1,6 @@
+author: "HumiliatedGoblin"
+delete-after: True
+changes:
+  - rscadd: "Adds a one hour medical timelock for DCC's"
+  - rscadd: "Adds a tip of the round to accommodate for this PR and #5808"
+  - balance: "DCCs and Pilots can now fix queen broken dropship doors"

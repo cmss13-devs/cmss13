@@ -461,6 +461,8 @@ cases. Override_icon_state should be a list.*/
 
 	if(item.flags_equip_slot & slotdefine2slotbit(slot))
 		if(is_type_in_list(item, uniform_restricted))
+			if(light_on)
+				turn_light(toggle_on = FALSE)
 			user.drop_inv_item_on_ground(src)
 			to_chat(user, SPAN_NOTICE("You drop \the [src] to the ground while unequipping \the [item]."))
 

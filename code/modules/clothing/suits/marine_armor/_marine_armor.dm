@@ -628,6 +628,7 @@
 	slowdown = SLOWDOWN_ARMOR_HEAVY
 	specialty = "M3-G4 grenadier"
 	unacidable = TRUE
+	light_range = 5
 
 /obj/item/clothing/suit/storage/marine/M3T
 	name = "\improper M3-T light armor"

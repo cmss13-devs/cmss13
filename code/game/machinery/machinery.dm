@@ -254,6 +254,10 @@ Class Procs:
 		return TRUE
 	if(user.is_mob_incapacitated())
 		return TRUE
+	if(!(istype(user, /mob/living/carbon/human) || isRemoteControlling(user) || istype(user, /mob/living/carbon/xenomorph)))
+		if(!HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
+			to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
+			return TRUE
 	if(!is_valid_user(user))
 		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return TRUE

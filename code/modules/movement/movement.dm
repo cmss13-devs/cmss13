@@ -138,7 +138,7 @@
 			if(old_z != dest_z)
 				onTransitZ(old_z, dest_z)
 			destination.Entered(src, oldloc)
-			if(destarea && old_area != destarea)
+			if(destarea && (old_area != destarea || !isturf(oldloc)))
 				destarea.Entered(src, oldloc)
 
 			for(var/atom/movable/AM in destination)

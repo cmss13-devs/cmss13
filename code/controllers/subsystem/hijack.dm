@@ -87,6 +87,12 @@ SUBSYSTEM_DEF(hijack)
 
 GLOBAL_LIST_INIT_TYPED(all_fuel_pumps, /obj/structure/machinery/fuelpump, list())
 
+//proc to update sprite pump
+/datum/proc/update_sprite()
+		// Update pump overlays
+	for(var/obj/structure/machinery/fuelpump/pump in GLOB.all_fuel_pumps)
+		pump.update_progress(announce_checkpoint)
+
 /datum/controller/subsystem/hijack/Initialize(timeofday)
 	RegisterSignal(SSdcs, COMSIG_GLOB_GENERATOR_SET_OVERLOADING, PROC_REF(on_generator_overload))
 	return SS_INIT_SUCCESS
@@ -162,10 +168,6 @@ GLOBAL_LIST_INIT_TYPED(all_fuel_pumps, /obj/structure/machinery/fuelpump, list()
 		announce_progress()
 		announce_checkpoint += initial(announce_checkpoint)
 
-		// Update pump overlays
-		for(var/obj/structure/machinery/fuelpump/pump in GLOB.all_fuel_pumps)
-			pump.update_progress(announce_checkpoint)
-
 	current_run_progress_additive = 0
 	current_run_progress_multiplicative = 1
 
@@ -215,12 +217,16 @@ GLOBAL_LIST_INIT_TYPED(all_fuel_pumps, /obj/structure/machinery/fuelpump, list()
 		switch(announce)
 			if(1)
 				xeno_announcement(SPAN_XENOANNOUNCE("The talls are a quarter of the way towards their goals. Disable the following areas: [xeno_warning_areas]"), hive.hivenumber, XENO_HIJACK_ANNOUNCE)
+				update_sprite()
 			if(2)
 				xeno_announcement(SPAN_XENOANNOUNCE("The talls are half way towards their goals. Disable the following areas: [xeno_warning_areas]"), hive.hivenumber, XENO_HIJACK_ANNOUNCE)
+				update_sprite()
 			if(3)
 				xeno_announcement(SPAN_XENOANNOUNCE("The talls are three quarters of the way towards their goals. Disable the following areas: [xeno_warning_areas]"), hive.hivenumber, XENO_HIJACK_ANNOUNCE)
+				update_sprite()
 			if(4)
 				xeno_announcement(SPAN_XENOANNOUNCE("The talls have completed their goals!"), hive.hivenumber, XENO_HIJACK_ANNOUNCE)
+				update_sprite()
 
 	switch(announce)
 		if(1)
@@ -238,6 +244,7 @@ GLOBAL_LIST_INIT_TYPED(all_fuel_pumps, /obj/structure/machinery/fuelpump, list()
 /datum/controller/subsystem/hijack/proc/get_evac_eta()
 	switch(hijack_status)
 		if(HIJACK_OBJECTIVES_STARTED)
+			update_sprite()
 			if(estimated_time_left == INFINITY)
 				return "Never"
 			return "[duration2text_sec(estimated_time_left)]"

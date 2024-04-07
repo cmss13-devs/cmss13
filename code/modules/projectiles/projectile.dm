@@ -1062,7 +1062,7 @@
 		bullet_message(P, damaging = FALSE)
 		return
 
-	if(isxeno(P.firer))
+	if(isxeno(P.firer) && ammo_flags & (AMMO_ACIDIC|AMMO_XENO)) //Xenomorph shooting spit. Xenos with thumbs and guns can fully FF.
 		var/mob/living/carbon/xenomorph/X = P.firer
 		if(X.can_not_harm(src))
 			bullet_ping(P)

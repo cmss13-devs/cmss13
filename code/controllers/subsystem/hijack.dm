@@ -163,7 +163,7 @@ GLOBAL_LIST_INIT_TYPED(all_fuel_pumps, /obj/structure/machinery/fuelpump, list()
 		announce_checkpoint += initial(announce_checkpoint)
 
 		// Update pump overlays
-		for(var/obj/structure/machinery/fuelpump/pump in all_fuel_pumps)
+		for(var/obj/structure/machinery/fuelpump/pump in GLOB.all_fuel_pumps)
 			pump.update_progress(announce_checkpoint)
 
 	current_run_progress_additive = 0

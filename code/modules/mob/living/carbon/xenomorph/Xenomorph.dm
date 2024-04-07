@@ -52,6 +52,8 @@
 	gender = NEUTER
 	icon_size = 48
 	black_market_value = KILL_MENDOZA
+	///How much to horizontally adjust the sprites of held item onmobs by. Based on icon size. Most xenos have hands about the same height as a human's.
+	var/xeno_inhand_item_offset
 	dead_black_market_value = 50
 	light_system = MOVABLE_LIGHT
 	var/obj/item/clothing/suit/wear_suit = null
@@ -429,7 +431,7 @@
 
 	GLOB.living_xeno_list += src
 	GLOB.xeno_mob_list += src
-
+	xeno_inhand_item_offset = (icon_size - 32) * 0.5
 	// More setup stuff for names, abilities etc
 	update_icon_source()
 	generate_name()

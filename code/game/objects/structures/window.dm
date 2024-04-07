@@ -286,7 +286,7 @@
 		to_chat(user, (state ? SPAN_NOTICE("You have pried the window into the frame.") : SPAN_NOTICE("You have pried the window out of the frame.")))
 	else
 		if(!not_damageable) //Impossible to destroy
-			health -= W.force
+			health -= W.force * W.demolition_mod
 			if(health <= 7  && !reinf && !static_frame && !not_deconstructable)
 				anchored = FALSE
 				update_nearby_icons()

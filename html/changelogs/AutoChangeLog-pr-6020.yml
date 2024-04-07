@@ -1,5 +1,0 @@
-author: "Ben10083"
-delete-after: True
-changes:
-  - balance: "Mobs with super strength now have an advantage when resisting of a grab is done, both as the grabber and the one being grabbed (Xenos not affected, works as before)."
-  - balance: "Mobs with super strength no longer have their passive grabs a guaranteed resist (unless both super)."

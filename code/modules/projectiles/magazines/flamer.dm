@@ -17,9 +17,9 @@
 	var/flamer_chem = "utnapthal"
 	flags_magazine = AMMUNITION_HIDE_AMMO
 
-	var/max_intensity = 50
+	var/max_intensity = 40
 	var/max_range = 5
-	var/max_duration = 50
+	var/max_duration = 30
 
 	var/fuel_pressure = 1 //How much fuel is used per tile fired
 	var/max_pressure = 10
@@ -152,7 +152,6 @@
 	flamer_chem = "napalmex"
 
 	max_range = 7
-	max_duration = 30
 
 /obj/item/ammo_magazine/flamer_tank/custom
 	name = "custom incinerator tank"

@@ -152,7 +152,6 @@
 	flamer_chem = "napalmex"
 
 	max_range = 7
-	max_duration = 30
 
 /obj/item/ammo_magazine/flamer_tank/custom
 	name = "custom incinerator tank"

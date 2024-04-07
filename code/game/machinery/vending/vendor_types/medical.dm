@@ -290,12 +290,8 @@
 /obj/structure/machinery/cm_vending/sorted/medical/populate_product_list_and_boxes(scale)
 	. = ..()
 
-	// If this isn't a medlinked vendor (that needs a link) and isn't dynamically changing we will spawn with stock randomly removed from it
+	// If this is groundside and isn't dynamically changing we will spawn with stock randomly removed from it
 	if(vend_flags & VEND_STOCK_DYNAMIC)
-		return
-	if(!requires_supply_link_port)
-		return
-	if(get_supply_link())
 		return
 	var/turf/location = get_turf(src)
 	if(location && is_ground_level(location.z))

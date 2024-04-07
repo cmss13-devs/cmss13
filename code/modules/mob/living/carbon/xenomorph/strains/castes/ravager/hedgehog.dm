@@ -21,7 +21,7 @@
 	ravager.plasma_max = 0
 	ravager.small_explosives_stun = TRUE
 	ravager.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_SMALL
-	ravager.damage_modifier -= XENO_DAMAGE_MOD_MED
+	ravager.damage_modifier -= XENO_DAMAGE_MOD_VERY_SMALL
 
 	ravager.recalculate_everything()
 

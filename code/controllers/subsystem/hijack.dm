@@ -161,9 +161,9 @@ GLOBAL_DATUM_INIT(all_fuel_pumps, /obj/structure/machinery/fuelpump, new())
 		announce_progress()
 		announce_checkpoint += initial(announce_checkpoint)
 
-        // Update pump overlays
-        for(var/obj/structure/machinery/fuelpump/pump in all_fuel_pumps)
-            pump.update_progress(announce_checkpoint)
+		// Update pump overlays
+		for(var/obj/structure/machinery/fuelpump/pump in all_fuel_pumps)
+			pump.update_progress(announce_checkpoint)
 
 	current_run_progress_additive = 0
 	current_run_progress_multiplicative = 1

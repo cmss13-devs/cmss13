@@ -366,7 +366,7 @@ Class Procs:
 	density = TRUE
 	anchored = TRUE
 	/// Progress towards evaccing, inherited from SShijack
-    var/current_progress = 0
+	var/current_progress = 0
 
 /obj/structure/machinery/fuelpump/update_icon()
 	if(stat & NOPOWER)

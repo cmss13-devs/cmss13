@@ -83,6 +83,9 @@ SUBSYSTEM_DEF(hijack)
 	/// If ARES has announced the 50% point yet for SD
 	var/ares_sd_announced = FALSE
 
+// global list of all the fuel pumps
+GLOBAL_DATUM_INIT(all_fuel_pumps, /obj/structure/machinery/fuelpump, new())
+
 /datum/controller/subsystem/hijack/Initialize(timeofday)
 	RegisterSignal(SSdcs, COMSIG_GLOB_GENERATOR_SET_OVERLOADING, PROC_REF(on_generator_overload))
 	return SS_INIT_SUCCESS
@@ -157,6 +160,10 @@ SUBSYSTEM_DEF(hijack)
 	if(current_progress >= announce_checkpoint)
 		announce_progress()
 		announce_checkpoint += initial(announce_checkpoint)
+
+        // Update pump overlays
+        for(var/obj/structure/machinery/fuelpump/pump in all_fuel_pumps)
+            pump.update_progress(announce_checkpoint)
 
 	current_run_progress_additive = 0
 	current_run_progress_multiplicative = 1

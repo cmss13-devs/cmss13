@@ -376,5 +376,5 @@ Class Procs:
 		icon_state = "fuelpump_[current_progress]"
 
 /obj/structure/machinery/fuelpump/proc/update_progress(new_progress)
-    current_progress = new_progress
-    update_icon()
+	current_progress = new_progress
+	update_icon()

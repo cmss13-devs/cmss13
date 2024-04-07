@@ -28,6 +28,7 @@
 #define ARES_RECORD_MAINTENANCE "Maintenance Ticket"
 #define ARES_RECORD_ACCESS "Access Ticket"
 #define ARES_RECORD_FLIGHT "Flight Record"
+#define ARES_RECORD_TECH "Tech Control Record"
 
 /// Not by ARES logged through marine_announcement()
 #define ARES_LOG_NONE 0
@@ -77,3 +78,6 @@
 /// Cooldowns
 #define COOLDOWN_ARES_SENSOR 60 SECONDS
 #define COOLDOWN_ARES_ACCESS_CONTROL 20 SECONDS
+
+/// Time until someone can respawn as Working Joe
+#define JOE_JOIN_DEAD_TIME (15 MINUTES)

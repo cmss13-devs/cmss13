@@ -29,21 +29,12 @@
 
 	if(!admin_holder)
 		return
+	if(!isobserver(mob))
+		to_chat(usr, SPAN_WARNING("You must be a ghost to use this."))
 
-	if(istype(mob,/mob/dead/observer))
-		var/mob/dead/observer/ghost = mob
-		if(ghost.adminlarva == 0)
-			ghost.adminlarva = 1
-			to_chat(usr, SPAN_BOLDNOTICE("You have disabled your larva protection."))
-		else if(ghost.adminlarva == 1)
-			ghost.adminlarva = 0
-			to_chat(usr, SPAN_BOLDNOTICE("You have re-activated your larva protection."))
-		else
-			to_chat(usr, SPAN_BOLDNOTICE("Something went wrong tell a coder"))
-	else if(istype(mob,/mob/new_player))
-		to_chat(src, "<font color='red'>Error: Lose larva Protection: Can't lose larva protection whilst in the lobby. Observe first.</font>")
-	else
-		to_chat(src, "<font color='red'>Error: Lose larva Protection: You must be a ghost to use this.</font>")
+	var/mob/dead/observer/ghost = mob
+	ghost.admin_larva_protection = !ghost.admin_larva_protection
+	to_chat(usr, SPAN_BOLDNOTICE("You have [ghost.admin_larva_protection ? "en" : "dis"]abled your larva protection."))
 
 /client/proc/unban_panel()
 	set name = "Unban Panel"
@@ -872,7 +863,7 @@
 	set name = "Toggle Working Joe Restrictions"
 	set category = "Admin.Flags"
 
-	if(!admin_holder || !check_rights(R_EVENT, FALSE))
+	if(!admin_holder || !check_rights(R_EVENT, TRUE))
 		return
 
 	if(!SSticker.mode)
@@ -881,3 +872,17 @@
 
 	SSticker.mode.toggleable_flags ^= MODE_BYPASS_JOE
 	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_BYPASS_JOE) ? "allowed players to bypass (except whitelist)" : "prevented players from bypassing"] Working Joe spawn conditions.")
+
+/client/proc/toggle_joe_respawns()
+	set name = "Toggle Working Joe Respawns"
+	set category = "Admin.Flags"
+
+	if(!admin_holder || !check_rights(R_EVENT, TRUE))
+		return
+
+	if(!SSticker.mode)
+		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
+		return
+
+	SSticker.mode.toggleable_flags ^= MODE_DISABLE_JOE_RESPAWN
+	message_admins("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_DISABLE_JOE_RESPAWN) ? "disabled" : "enabled"] Working Joe respawns.")

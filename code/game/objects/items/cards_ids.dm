@@ -67,7 +67,7 @@
 
 	/// The name registered_name on the card
 	var/registered_name = "Unknown"
-	var/registered_ref = null
+	var/datum/weakref/registered_ref = null
 	var/registered_gid = 0
 	flags_equip_slot = SLOT_ID
 

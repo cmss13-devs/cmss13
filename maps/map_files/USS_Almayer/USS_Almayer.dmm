@@ -46030,7 +46030,8 @@
 /turf/closed/wall/almayer,
 /area/almayer/engineering/lower/workshop/hangar)
 "lFq" = (
-/obj/structure/pipes/vents/pump/no_boom{
+/obj/structure/pipes/vents/pump/no_boom/gas{
+	vent_tag = "Observation";
 	dir = 1
 	},
 /turf/open/floor/almayer/aicore/no_build{
@@ -52880,13 +52881,6 @@
 	icon_state = "plate"
 	},
 /area/almayer/maint/hull/upper/u_a_s)
-"odH" = (
-/obj/structure/pipes/vents/pump/no_boom/gas{
-	vent_tag = "Observation";
-	dir = 1
-	},
-/turf/open/floor/almayer/aicore/no_build,
-/area/almayer/command/airoom)
 "odN" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/firedoor/border_only/almayer,

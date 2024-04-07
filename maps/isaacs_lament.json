@@ -2,6 +2,7 @@
     "map_name": "Isaac's Lament",
     "map_path": "map_files/Isaacs_Lament",
     "map_file": "Isaacs_Lament.dmm",
+    "webmap_url": "LV-873",
     "weather_holder": "/datum/weather_ss_map_holder/isaacs_lament",
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/isaacs",
@@ -16,6 +17,13 @@
         "/datum/equipment_preset/survivor/goon",
         "/datum/equipment_preset/survivor/clf",
         "/datum/equipment_preset/survivor/civilian"
+    ],
+    "defcon_triggers": [
+        3750,
+        2600,
+        1450,
+        875,
+        0.0
     ],
     "map_item_type": "/obj/item/map/isaacs_lament_map",
     "announce_text": "An automated distress signal has been received from the rural colony settlement of Isaac's Lament, on the border world of LV-873. A response team from the ###SHIPNAME### will be dispatched shortly to investigate.",

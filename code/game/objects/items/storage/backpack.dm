@@ -351,6 +351,12 @@
 /obj/item/storage/backpack/satchel/lockable/liaison
 	lock_overridable = FALSE
 
+/obj/item/storage/backpack/satchel/blue
+	icon_state = "satchel_blue"
+
+/obj/item/storage/backpack/satchel/black
+	icon_state = "satchel_black"
+
 /obj/item/storage/backpack/satchel/norm
 	name = "satchel"
 	desc = "A trendy-looking satchel."

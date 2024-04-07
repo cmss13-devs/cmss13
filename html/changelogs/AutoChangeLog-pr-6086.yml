@@ -1,4 +1,0 @@
-author: "cuberound"
-delete-after: True
-changes:
-  - balance: "allows movement during tactical reload (to perform tactical reload click and drag from a magazine to gun in your hand)"

@@ -510,6 +510,7 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/black(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flash(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas(new_human), WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight(new_human), WEAR_J_STORE)
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom/aist(new_human), WEAR_L_EAR)

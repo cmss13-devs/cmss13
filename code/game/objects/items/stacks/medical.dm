@@ -271,6 +271,8 @@
 	stack_id = "splint"
 
 	var/indestructible_splints = FALSE
+	/// Used to indicate when restocking this item cannot occur
+	var/contaminated = FALSE
 
 /obj/item/stack/medical/splint/attack(mob/living/carbon/M, mob/user)
 	if(..()) return 1
@@ -318,3 +320,14 @@
 		if(affecting.apply_splints(src, user, M, indestructible_splints)) // Referenced in external organ helpers.
 			use(1)
 			playsound(user, 'sound/handling/splint1.ogg', 25, 1, 2)
+
+/obj/item/stack/medical/splint/attackby(obj/item/W, mob/user)
+	. = ..()
+
+	// Whatever item isn't a full stack needs to be deemed contaminated if it was removed off a person
+	if(. && istype(W, /obj/item/stack/medical/splint))
+		var/obj/item/stack/medical/splint/other_splint = W
+		if(!QDELETED(src) && other_splint.contaminated)
+			contaminated = TRUE
+		if(other_splint.amount == other_splint.max_amount)
+			other_splint.contaminated = FALSE

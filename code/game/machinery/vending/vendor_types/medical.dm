@@ -134,6 +134,14 @@
 
 	//stacked items handling if the vendor cannot restock partial stacks
 	else if(istype(item_to_stock, /obj/item/stack))
+		if(istype(item_to_stock, /obj/item/stack/medical/splint))
+			var/obj/item/stack/medical/splint/splint_item = item_to_stock
+			if(splint_item.contaminated)
+				if(user)
+					to_chat(user, SPAN_WARNING("[src] makes a buzzing noise as it rejects [splint_item]. Looks like this vendor cannot disinfect them."))
+					playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
+				return FALSE
+
 		if(requires_supply_link_port && !get_supply_link())
 			var/obj/item/stack/restock_stack = item_to_stock
 			if(restock_stack.amount < restock_stack.max_amount) // if the stack is not full
@@ -210,6 +218,13 @@
 			to_chat(user, SPAN_WARNING("[src] makes a buzzing noise as it rejects [item_stack]. Looks like this vendor cannot restock these without a connected supply link."))
 			playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
 			return
+
+		if(istype(item_stack, /obj/item/stack/medical/splint))
+			var/obj/item/stack/medical/splint/splint_item = item_stack
+			if(splint_item.contaminated)
+				to_chat(user, SPAN_WARNING("[src] makes a buzzing noise as it rejects [splint_item]. Looks like this vendor cannot disinfect them."))
+				playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
+				return
 
 		to_chat(user, SPAN_NOTICE("[src] makes a whirring noise as it restocks your [item_stack.name]."))
 		item_stack.amount = item_stack.max_amount

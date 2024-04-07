@@ -361,6 +361,7 @@ Class Procs:
 	icon_state = "fuelpump_off"
 	density = TRUE
 	anchored = TRUE
+	var/fuelpump_stage = 0
 
 
 /obj/structure/machinery/fuelpump/update_icon()
@@ -369,19 +370,10 @@ Class Procs:
 	else
 		icon_state = "fuelpump_on"
 
-		//if fuel pump 0
-		if(fuelpump_stage == 1)
-			icon_state = "fuelpump_0"
-		//if fuel pump 25
-		if(fuelpump_stage == 25)
-			icon_state = "fuelpump_25"
-		//if fuel pump 50
-		if(fuelpump_stage == 50)
-			icon_state = "fuelpump_50"
-		//if fuel pump 75
-		if(fuelpump_stage == 75)
-			icon_state = "fuelpump_75"
-		//if fuel pump 100
-		if(fuelpump_stage == 100)
-			icon_state = "fuelpump_100"
+		if(fuelpump_stage >= 1)
+			icon_state="fuelpump_[fuelpump_stage]"
 //currently doesn't update properly
+
+/obj/structure/machinery/fuelpump/proc/update_progress(new_progress)
+    fuelpump_stage = global_fuel_stage
+    update_icon()

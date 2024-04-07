@@ -378,6 +378,6 @@ Class Procs:
 			icon_state="fuelpump_[fuelpump_stage]"
 //currently doesn't update properly
 
-/obj/structure/machinery/fuelpump/proc/update_progress(new_progress)
-    fuelpump_stage = global_fuel_stage
-    update_icon()
+/obj/structure/machinery/fuelpump/proc/update_progress(fuel_stage)
+	fuelpump_stage = fuel_stage
+	update_icon()

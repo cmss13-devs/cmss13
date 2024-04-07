@@ -84,7 +84,8 @@ SUBSYSTEM_DEF(hijack)
 	var/ares_sd_announced = FALSE
 
 // global list of all the fuel pumps
-GLOBAL_DATUM_INIT(all_fuel_pumps, /obj/structure/machinery/fuelpump, new())
+
+GLOBAL_LIST_INIT_TYPED(all_fuel_pumps, /obj/structure/machinery/fuelpump, list())
 
 /datum/controller/subsystem/hijack/Initialize(timeofday)
 	RegisterSignal(SSdcs, COMSIG_GLOB_GENERATOR_SET_OVERLOADING, PROC_REF(on_generator_overload))

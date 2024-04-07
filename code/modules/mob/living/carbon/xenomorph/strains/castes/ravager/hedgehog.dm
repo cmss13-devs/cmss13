@@ -1,6 +1,6 @@
 /datum/xeno_strain/hedgehog
 	name = RAVAGER_HEDGEHOG
-	description = "You lose your empower, charge, scissor cut and some slash damage, for a bit more explosive resistance, immunity to small explosions, and you gain several new abilities that allow you to become a spiky tank. You build up shards internally over time and also when taking damage that increase your armor's resilience. You can use these shards to power three new abilities: Spike Shield, which gives you a temporary shield that spits bone shards around you when damaged, Fire Spikes, which launches spikes at your target that slows them and does extra damage if they move, and finally, Spike Shed, which launches spikes all around yourself and gives you a temporary speed boost as an escape plan at the cost of all your stored shards and being unable to gain shards for thirty seconds."
+	description = "You lose your empower, charge, scissor cut and some slash damage, for a bit more explosive resistance, your explosion immunity scales with your shard count if you have more then half you get explosion immunity but if you have below half you lose it, and you gain several new abilities that allow you to become a spiky tank. You build up shards internally over time and also when taking damage that increase your armor's resilience. You can use these shards to power three new abilities: Spike Shield, which gives you a temporary shield that spits bone shards around you when damaged, Fire Spikes, which launches spikes at your target that slows them and does extra damage if they move, and finally, Spike Shed, which launches spikes all around yourself and gives you a temporary speed boost as an escape plan at the cost of all your stored shards and being unable to gain shards for thirty seconds."
 	flavor_description = "They will be of iron will and steely muscle. In great armor shall they be clad, and with the mightiest spikes will they be armed."
 	icon_state_prefix = "Hedgehog"
 
@@ -19,9 +19,9 @@
 
 /datum/xeno_strain/hedgehog/apply_strain(mob/living/carbon/xenomorph/ravager/ravager)
 	ravager.plasma_max = 0
-	ravager.small_explosives_stun = FALSE
+	ravager.small_explosives_stun = TRUE
 	ravager.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_SMALL
-	ravager.damage_modifier -= XENO_DAMAGE_MOD_SMALL
+	ravager.damage_modifier -= XENO_DAMAGE_MOD_MED
 
 	ravager.recalculate_everything()
 
@@ -72,7 +72,6 @@
 
 	bound_xeno.speed_modifier += shard_lock_speed_mod
 	bound_xeno.recalculate_speed()
-
 	shards_locked = FALSE
 
 // Return true if we have enough shards, false otherwise
@@ -103,6 +102,14 @@
 	var/percentage_shards = round((shards / max_shards) * 100, 10)
 	if(percentage_shards)
 		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_shards]")
+
+	if(percentage_shards >= 50)
+		bound_xeno.small_explosives_stun = FALSE
+		return
+	if(percentage_shards <= 50)
+		bound_xeno.small_explosives_stun = TRUE
+		return
+
 	return
 
 

@@ -301,7 +301,7 @@
 	point_cost = 600
 	fire_mission_delay = 0 //direct bombard only
 	/// the limits of the custom missile (same as shell)
-	var/list/reaction_limits = list( "max_ex_power" = 360, "base_ex_falloff" = 150, "max_ex_shards" = 128,
+	var/list/reaction_limits = list( "max_ex_power" = 360, "base_ex_falloff" = 145, "max_ex_shards" = 128,
 							"max_fire_rad" = 8, "max_fire_int" = 40, "max_fire_dur" = 48,
 							"min_fire_rad" = 3, "min_fire_int" = 5, "min_fire_dur" = 5
 	)

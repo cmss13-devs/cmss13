@@ -220,7 +220,6 @@
 	name = "LV759 - Weymart Floor"
 	icon_state = "blue"
 	minimap_color = MINIMAP_AREA_COMMAND
-	soundscape_interval = 35
 	soundscape_playlist = SCAPE_PL_LV759_WEYMART
 
 /area/lv759/indoors/weymart_backrooms
@@ -439,4 +438,3 @@
 	minimap_color = MINIMAP_AREA_COLONY
 	ceiling = CEILING_MAX
 	soundscape_playlist = SCAPE_PL_LV759_DERELICTSHIP
-	soundscape_interval = 45

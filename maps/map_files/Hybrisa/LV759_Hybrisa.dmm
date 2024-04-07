@@ -29907,6 +29907,13 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata,
 /area/lv759/colonial_marshals/prisoners_cells)
+"fuy" = (
+/obj/item/stack/rods{
+	pixel_y = 14
+	},
+/obj/item/shard,
+/turf/open/hybrisa/street/sidewalkcenter,
+/area/lv759/outdoors/colony_streets/east_central_street)
 "fuD" = (
 /obj/item/trash/cigbutt{
 	pixel_x = -1;
@@ -37521,6 +37528,14 @@
 	icon_state = "floor3"
 	},
 /area/lv759/power_plant/power_storage)
+"gMw" = (
+/obj/effect/hybrisa/decal/road/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/hybrisa/decal/road/lines3,
+/obj/item/shard,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/colony_streets/east_central_street)
 "gMG" = (
 /obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark1,
 /turf/open/auto_turf/hybrisashale/layer1,
@@ -53049,6 +53064,7 @@
 /obj/item/stack/rods{
 	pixel_y = 14
 	},
+/obj/item/shard,
 /turf/open/hybrisa/street/sidewalkcenter,
 /area/lv759/outdoors/colony_streets/east_central_street)
 "jzt" = (
@@ -94014,11 +94030,6 @@
 	},
 /area/lv759/indoors/bar/recroom)
 "qPB" = (
-/obj/effect/hybrisa/decal/road/lines2,
-/obj/effect/hybrisa/decal/road/road_edge{
-	icon_state = "road_edge_decal4"
-	},
-/obj/item/shard,
 /obj/item/smallDelivery,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/east_central_street)
@@ -127762,10 +127773,6 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/lv759/indoors/casino)
-"wNH" = (
-/obj/structure/grille,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/lv759/outdoors/caves)
 "wNK" = (
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco6{
 	dir = 4
@@ -180557,8 +180564,8 @@ lyx
 dBl
 wdb
 vDa
-egl
-uZY
+fuy
+gMw
 kht
 qNm
 bUm
@@ -189107,12 +189114,12 @@ sCG
 unn
 unn
 mfm
-wNH
-wNH
-wNH
-wNH
-wNH
-wNH
+eKu
+eKu
+eKu
+eKu
+eKu
+eKu
 gBT
 krP
 sZS

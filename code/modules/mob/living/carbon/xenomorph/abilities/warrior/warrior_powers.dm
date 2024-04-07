@@ -158,6 +158,7 @@
 			carbon.apply_effect(3, SLOW)
 
 		if(isyautja(carbon))
+			carbon.apply_effect(2, SLOW)
 			damage = rand(base_punch_damage_pred, base_punch_damage_pred + damage_variance)
 		else if(target_limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 			damage = rand(base_punch_damage_synth, base_punch_damage_synth + damage_variance)

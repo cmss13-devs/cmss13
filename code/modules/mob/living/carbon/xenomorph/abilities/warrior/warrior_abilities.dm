@@ -41,5 +41,5 @@
 	// Configurables
 	var/base_damage = 25
 	var/base_punch_damage_synth = 30
-	var/base_punch_damage_pred = 25
+	var/base_punch_damage_pred = 30
 	var/damage_variance = 5

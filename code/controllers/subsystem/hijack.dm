@@ -229,19 +229,19 @@ GLOBAL_VAR_INIT(fuelpump_stage,0)
 	switch(announce)
 		if(1)
 			marine_announcement("Emergency fuel replenishment is at 25 percent. Lifeboat emergency early launch is now available.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
-			fuelpump_stage = 25
+			GLOB.fuelpump_stage = 25
 			update_sprite()
 		if(2)
 			marine_announcement("Emergency fuel replenishment is at 50 percent.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
-			fuelpump_stage = 50
+			GLOB.fuelpump_stage = 50
 			update_sprite()
 		if(3)
 			marine_announcement("Emergency fuel replenishment is at 75 percent.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
-			fuelpump_stage = 75
+			GLOB.fuelpump_stage = 75
 			update_sprite()
 		if(4)
 			marine_announcement("Emergency fuel replenishment is at 100 percent. Safe utilization of lifeboats and pods is now possible.", HIJACK_ANNOUNCE)
-			fuelpump_stage = 100
+			GLOB.fuelpump_stage = 100
 			update_sprite()
 			if(!admin_sd_blocked)
 				addtimer(CALLBACK(src, PROC_REF(unlock_self_destruct)), 8 SECONDS)
@@ -250,7 +250,7 @@ GLOBAL_VAR_INIT(fuelpump_stage,0)
 /datum/controller/subsystem/hijack/proc/get_evac_eta()
 	switch(hijack_status)
 		if(HIJACK_OBJECTIVES_STARTED)
-			fuelpump_stage = 0
+			GLOB.fuelpump_stage = 0
 			if(estimated_time_left == INFINITY)
 				return "Never"
 			return "[duration2text_sec(estimated_time_left)]"

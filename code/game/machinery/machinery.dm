@@ -365,16 +365,26 @@ Class Procs:
 	icon_state = "fuelpump_off"
 	density = TRUE
 	anchored = TRUE
-	/// Progress towards evaccing, inherited from SShijack
-	var/fuel_level = 0
 
 /obj/structure/machinery/fuelpump/update_icon()
 	if(stat & NOPOWER)
 		icon_state = "fuelpump_off"
 	else
-		//icon_state = "fuelpump_on"
-		icon_state = "fuelpump_[fuel_level]"
-
+		switch(announce)
+		if(0)
+			icon_state = "fuelpump_0"
+		if(1)
+			icon_state = "fuelpump_on"
+		if(25)
+			icon_state = "fuelpump_25"
+		if(50)
+			icon_state = "fuelpump_50"
+		if(75)
+			icon_state = "fuelpump_75"
+		if(100)
+			icon_state = "fuelpump_100"
+/*
 /obj/structure/machinery/fuelpump/proc/update_progress(current_progress)
 	fuel_level = current_progress
 	update_icon()
+*/

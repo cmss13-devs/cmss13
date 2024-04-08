@@ -126,7 +126,7 @@
 		to_chat(user, SPAN_WARNING("You can't do this right now."))
 		return FALSE
 
-	if ((item.flags_inventory & CANTSTRIP) || (item.flags_item & NODROP) || (item.flags_item & ITEM_ABSTRACT))
+	if ((item.flags_inventory & CANTSTRIP) || (item.flags_item & ITEM_ABSTRACT))
 		return FALSE
 
 	if (ishuman(source))

@@ -360,7 +360,7 @@ Class Procs:
 /obj/structure/machinery/fuelpump
 	name = "\improper Fuel Pump"
 	layer = ABOVE_MOB_LAYER
-	desc = "It is a machine that pump fuel in lifeboats."
+	desc = "It is a machine that pumps fuel around the ship."
 	icon = 'icons/obj/structures/machinery/fuelpump.dmi'
 	icon_state = "fuelpump_off"
 	density = TRUE

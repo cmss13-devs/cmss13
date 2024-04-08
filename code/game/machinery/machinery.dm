@@ -371,18 +371,18 @@ Class Procs:
 		icon_state = "fuelpump_off"
 	else
 		switch(announce)
-		if(0)
-			icon_state = "fuelpump_0"
-		if(1)
-			icon_state = "fuelpump_on"
-		if(25)
-			icon_state = "fuelpump_25"
-		if(50)
-			icon_state = "fuelpump_50"
-		if(75)
-			icon_state = "fuelpump_75"
-		if(100)
-			icon_state = "fuelpump_100"
+			if(0)
+				icon_state = "fuelpump_0"
+			if(1)
+				icon_state = "fuelpump_on"
+			if(25)
+				icon_state = "fuelpump_25"
+			if(50)
+				icon_state = "fuelpump_50"
+			if(75)
+				icon_state = "fuelpump_75"
+			if(100)
+				icon_state = "fuelpump_100"
 /*
 /obj/structure/machinery/fuelpump/proc/update_progress(current_progress)
 	fuel_level = current_progress

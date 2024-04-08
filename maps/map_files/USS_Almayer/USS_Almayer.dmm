@@ -36498,6 +36498,10 @@
 	icon_state = "plate"
 	},
 /area/almayer/maint/hull/upper/p_bow)
+"iul" = (
+/obj/effect/step_trigger/clone_cleaner,
+/turf/closed/wall/almayer/reinforced,
+/area/almayer/command/airoom)
 "iun" = (
 /obj/effect/spawner/random/tool,
 /turf/open/floor/plating/plating_catwalk,
@@ -58551,6 +58555,7 @@
 	req_one_access_txt = "91;92";
 	dir = 1
 	},
+/obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/almayer/no_build{
 	icon_state = "test_floor4"
 	},
@@ -122659,8 +122664,8 @@ mOi
 sdl
 sdl
 bUx
-qQS
-aqU
+xQV
+iul
 tmK
 aug
 avL
@@ -122862,7 +122867,7 @@ mOi
 sdl
 sdl
 gfE
-qQS
+xQV
 pTt
 qQS
 cnp

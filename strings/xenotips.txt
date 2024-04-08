@@ -43,7 +43,7 @@ The secrete acid shortcut is (by default) Shift + C.
 Placing acid traps under map debris such as metal sheets, wooden planks or other semi-large to large items is good for catching marines by surprise.
 Burrower can place tunnels underneath tables or lockers.
 Remember that Lessers and Huggers cannot speak or use the Hivemind for three minutes after spawning.
-Shift-clicking on the Queen tracker allows you to set it to also track the Hive Core, any living leaders or any existing tunnels and not just the Queen. Tunnels are ordered by closest to furthest; top to bottom.
+Alt-clicking on the Queen tracker allows you to set it to also track the Hive Core, any living leaders or any existing tunnels and not just the Queen. Tunnels are ordered by closest to furthest; top to bottom.
 Be mindful of not body-blocking the escape of any fleeing sisters; this is especially true if they are heavily injured.
 As a Xenomorph, you are able to melt advanced body scanners, sleepers, MarineMeds and limb printers.
 You can break roller beds with a single slash to stop a medic from quickly transporting a body.

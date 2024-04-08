@@ -88,7 +88,7 @@ SUBSYSTEM_DEF(hijack)
 GLOBAL_LIST_INIT_TYPED(all_fuel_pumps, /obj/structure/machinery/fuelpump, list())
 
 //proc to update sprite pump
-/datum/controller/subsystem/hijack/proc/update_sprite(announce_checkpoint)
+/datum/controller/subsystem/hijack/proc/update_sprite(current_progress)
 		// Update pump overlays
 	for(var/obj/structure/machinery/fuelpump/pump in GLOB.all_fuel_pumps)
 		pump.update_progress(current_progress)

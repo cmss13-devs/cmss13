@@ -383,11 +383,11 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			msg += "Visit <a href=\"https://www.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.<br>"
 			src << browse(msg, "window=warning_popup")
 		else
-			to_chat_immediate(src, SPAN_DANGER("<b>Your version of BYOND may be getting out of date:</b>"))
-			to_chat_immediate(src, CONFIG_GET(string/client_warn_message))
-			to_chat_immediate(src, "Your version: [byond_version].[byond_build]")
-			to_chat_immediate(src, "Required version to remove this message: [warn_version].[warn_build] or later")
-			to_chat_immediate(src, "Visit <a href=\"https://www.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
+			to_chat(src, SPAN_DANGER("<b>Your version of BYOND may be getting out of date:</b>"))
+			to_chat(src, CONFIG_GET(string/client_warn_message))
+			to_chat(src, "Your version: [byond_version].[byond_build]")
+			to_chat(src, "Required version to remove this message: [warn_version].[warn_build] or later")
+			to_chat(src, "Visit <a href=\"https://www.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
 
 	if (num2text(byond_build) in GLOB.blacklisted_builds)
 		log_access("Failed login: [key] - blacklisted byond build ([byond_version].[byond_build])")

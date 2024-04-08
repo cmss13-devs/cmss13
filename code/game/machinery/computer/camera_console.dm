@@ -222,10 +222,10 @@
 	if(broadcastingcamera)
 		broadcastingcamera.viewers -= resolve_viewers(concurrent_users)
 		broadcastingcamera = null
-	if (!istype(current, /obj/structure/machinery/camera/correspondent))
+	if(!istype(current, /obj/structure/machinery/camera/correspondent))
 		return
 	var/obj/structure/machinery/camera/correspondent/corr_cam = current
-	if (!corr_cam.linked_broadcasting)
+	if(!corr_cam.linked_broadcasting)
 		return
 	broadcastingcamera = corr_cam.linked_broadcasting
 	broadcastingcamera.viewers += resolve_viewers(concurrent_users)

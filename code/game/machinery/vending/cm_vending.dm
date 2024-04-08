@@ -1005,34 +1005,37 @@ GLOBAL_LIST_EMPTY(vending_products)
 		stock(I, user)
 
 /obj/structure/machinery/cm_vending/sorted/proc/stock(obj/item/item_to_stock, mob/user)
+	if(istype(item_to_stock, /obj/item/storage))
+		return FALSE
+
 	var/list/stock_listed_products = get_listed_products(user)
 	for(var/list/vendspec as anything in stock_listed_products)
-		if(item_to_stock.type == vendspec[3] && !istype(item_to_stock, /obj/item/storage))
+		if(item_to_stock.type == vendspec[3])
 
 			if(istype(item_to_stock, /obj/item/device/defibrillator))
 				var/obj/item/device/defibrillator/defib = item_to_stock
 				if(!defib.dcell)
 					to_chat(user, SPAN_WARNING("[item_to_stock] needs a cell in it to be restocked!"))
-					return
+					return FALSE
 				if(defib.dcell.charge < defib.dcell.maxcharge)
 					to_chat(user, SPAN_WARNING("[item_to_stock] needs to be fully charged to restock it!"))
-					return
+					return FALSE
 
 			else if(istype(item_to_stock, /obj/item/cell))
 				var/obj/item/cell/cell = item_to_stock
 				if(cell.charge < cell.maxcharge)
 					to_chat(user, SPAN_WARNING("[item_to_stock] needs to be fully charged to restock it!"))
-					return
+					return FALSE
 
 			else if(istype(item_to_stock, /obj/item/stack))
 				var/obj/item/stack/item_stack = item_to_stock
 				if(item_stack.amount != item_stack.max_amount)
 					to_chat(user, SPAN_WARNING("[item_to_stock] needs to be a complete set to restock it!"))
-					return
+					return FALSE
 
-			else if(!additional_restock_checks(item_to_stock, user, vendspec))
+			if(!additional_restock_checks(item_to_stock, user, vendspec))
 				// the error message needs to go in the proc
-				return
+				return FALSE
 
 			if(item_to_stock.loc == user) //Inside the mob's inventory
 				if(item_to_stock.flags_item & WIELDED)
@@ -1049,10 +1052,19 @@ GLOBAL_LIST_EMPTY(vending_products)
 			vendspec[2]++
 			update_derived_ammo_and_boxes_on_add(vendspec)
 			updateUsrDialog()
-			return //We found our item, no reason to go on.
+			return TRUE //We found our item, no reason to go on.
+
+	return FALSE
 
 /// additional restocking checks for individual vendor subtypes. Parse in item, do checks, return FALSE to fail. Include error message.
 /obj/structure/machinery/cm_vending/sorted/proc/additional_restock_checks(obj/item/item_to_stock, mob/user, list/vendspec)
+	var/dynamic_metadata = dynamic_stock_multipliers[vendspec]
+	if(dynamic_metadata)
+		if(vendspec[2] >= dynamic_metadata[2])
+			to_chat(user, SPAN_WARNING("[src] is already full of [vendspec[1]]!"))
+			return FALSE
+	else
+		stack_trace("[src] could not find dynamic_stock_multipliers for [vendspec[1]]!")
 	return TRUE
 
 //sending an /empty ammo box type path here will return corresponding regular (full) type of this box

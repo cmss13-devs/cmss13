@@ -70,6 +70,8 @@
 	var/datum/health_scan/last_health_display
 
 	var/healthscan = TRUE
+	var/chem_refill_volume = 600
+	var/chem_refill_volume_max = 600
 	var/list/chem_refill = list(
 		/obj/item/reagent_container/hypospray/autoinjector/bicaridine,
 		/obj/item/reagent_container/hypospray/autoinjector/dexalinp,
@@ -104,7 +106,7 @@
 /obj/structure/machinery/cm_vending/sorted/medical/get_examine_text(mob/living/carbon/human/user)
 	. = ..()
 	if(healthscan)
-		. += SPAN_NOTICE("The [src.name] offers assisted medical scan, for ease of usage with minimal training. Present the target in front of the scanner to scan.")
+		. += SPAN_NOTICE("[src] offers assisted medical scans, for ease of use with minimal training. Present the target in front of the scanner to scan.")
 
 /// checks if there is a supply link in our location and we are anchored to it
 /obj/structure/machinery/cm_vending/sorted/medical/proc/get_supply_link()
@@ -116,30 +118,52 @@
 	return TRUE
 
 /obj/structure/machinery/cm_vending/sorted/medical/additional_restock_checks(obj/item/item_to_stock, mob/user, list/vendspec)
-	if(istype(item_to_stock, /obj/item/reagent_container/hypospray/autoinjector) || istype(item_to_stock, /obj/item/reagent_container/glass/bottle))
-		if(requires_supply_link_port && !get_supply_link())
-			var/obj/item/reagent_container/container = item_to_stock
-			if(container.reagents.total_volume < container.reagents.maximum_volume)
-				if(user)
-					to_chat(user, SPAN_WARNING("[src] makes a buzzing noise as it rejects [container]. Looks like this vendor cannot refill these without a connected supply link."))
-					playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
-				return FALSE
-
 	var/dynamic_metadata = dynamic_stock_multipliers[vendspec]
 	if(dynamic_metadata)
-		if(requires_supply_link_port && !get_supply_link())
-			if(vendspec[2] >= dynamic_metadata[2])
-				to_chat(user, SPAN_WARNING("[src] is already full of [vendspec[1]]!"))
-				return FALSE
+		if(vendspec[2] >= dynamic_metadata[2] && (!requires_supply_link_port || !get_supply_link()))
+			to_chat(user, SPAN_WARNING("[src] is already full of [vendspec[1]]!"))
+			return FALSE
 	else
 		stack_trace("[src] could not find dynamic_stock_multipliers for [vendspec[1]]!")
+
+	if(istype(item_to_stock, /obj/item/reagent_container))
+		if(istype(item_to_stock, /obj/item/reagent_container/syringe) || istype(item_to_stock, /obj/item/reagent_container/dropper))
+			var/obj/item/reagent_container/container = item_to_stock
+			if(container.reagents.total_volume != 0)
+				to_chat(user, SPAN_WARNING("[item_to_stock] needs to be empty to restock it!"))
+				return FALSE
+		else
+			return try_deduct_chem(item_to_stock, user)
+
+	return TRUE
+
+/// Attempts to consume our reagents needed for the container (doesn't actually change the container)
+/// Will return TRUE if reagents were deducated or no reagents were needed
+/obj/structure/machinery/cm_vending/sorted/medical/proc/try_deduct_chem(obj/item/reagent_container/container, mob/user)
+	var/missing_reagents = container.reagents.maximum_volume - container.reagents.total_volume
+	if(missing_reagents <= 0)
+		return TRUE
+	if(!LAZYLEN(chem_refill) || !(container.type in chem_refill))
+		if(container.reagents.total_volume == initial(container.reagents.total_volume))
+			return TRUE
+		to_chat(user, SPAN_WARNING("[src] cannot refill [container]."))
+		return FALSE
+	if(chem_refill_volume < missing_reagents)
+		var/auto_refill = requires_supply_link_port && get_supply_link()
+		to_chat(user, SPAN_WARNING("[src] blinks red and makes a buzzing noise as it rejects [container]. Looks like it doesn't have enough reagents [auto_refill ? "yet" : "left"]."))
+		playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
+		return FALSE
+
+	chem_refill_volume -= missing_reagents
+	to_chat(user, SPAN_NOTICE("[src] makes a whirring noise as it refills your [container.name]."))
+	playsound(src, 'sound/effects/refill.ogg', 25, 1, 3)
 	return TRUE
 
 /obj/structure/machinery/cm_vending/sorted/medical/attackby(obj/item/I, mob/user)
 	if(stat != WORKING)
 		return ..()
 
-	if(istype(I, /obj/item/reagent_container/hypospray/autoinjector) || istype(I, /obj/item/reagent_container/glass/bottle))
+	if(istype(I, /obj/item/reagent_container))
 		if(!hacked)
 			if(!allowed(user))
 				to_chat(user, SPAN_WARNING("Access denied."))
@@ -150,38 +174,26 @@
 				return
 
 		var/obj/item/reagent_container/container = I
+		if(istype(I, /obj/item/reagent_container/syringe) || istype(I, /obj/item/reagent_container/dropper))
+			stock(container, user)
+			return
+
 		if(container.reagents.total_volume == container.reagents.maximum_volume)
 			stock(container, user)
 			return
 
-		if(!LAZYLEN(chem_refill) || !(container.type in chem_refill))
-			to_chat(user, SPAN_WARNING("[src] cannot refill [container]."))
+		if(!try_deduct_chem(container, user))
 			return
 
-		if(requires_supply_link_port && !get_supply_link())
-			to_chat(user, SPAN_WARNING("[src] makes a buzzing noise as it rejects [container]. Looks like this vendor cannot refill these without a connected supply link."))
-			playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
-			return
-
-		to_chat(user, SPAN_NOTICE("[src] makes a whirring noise as it refills your [container.name]."))
 		// Since the reagent is deleted on use it's easier to make a new one instead of snowflake checking
 		var/obj/item/reagent_container/new_container = new container.type(src)
 		qdel(container)
 		user.put_in_hands(new_container)
 		return
 
-	if((istype(I, /obj/item/stack)))
-		if(!hacked)
-			if(!allowed(user))
-				to_chat(user, SPAN_WARNING("Access denied."))
-				return
-
-			if(LAZYLEN(vendor_role) && !vendor_role.Find(user.job))
-				to_chat(user, SPAN_WARNING("This machine isn't for you."))
-				return
-
-		stock(I, user)
-		return
+	else if(hacked || (allowed(user) && (!LAZYLEN(vendor_role) || vendor_role.Find(user.job))))
+		if(stock(I, user))
+			return
 
 	return ..()
 
@@ -193,7 +205,7 @@
 			return
 
 		if(!healthscan)
-			to_chat(user, SPAN_WARNING("\The [src] does not have health scanning function."))
+			to_chat(user, SPAN_WARNING("[src] does not have health scanning function."))
 			return
 
 		if (!last_health_display)
@@ -293,7 +305,10 @@
 	automatic_restock()
 
 /// Randomly adjusts the amounts of listed_products towards their desired values
+/// Reagents refill at a constant rate towards chem_refill_volume_max
 /obj/structure/machinery/cm_vending/sorted/medical/proc/automatic_restock()
+	chem_refill_volume = min(chem_refill_volume + 25, chem_refill_volume_max)
+
 	for(var/list/vendspec as anything in listed_products)
 		if(vendspec[2] < 0)
 			continue // It's a section title, not an actual entry
@@ -312,8 +327,11 @@
 		vendspec[2]++
 		update_derived_ammo_and_boxes_on_add(vendspec)
 
-/// Randomly removes amounts of listed_products
+/// Randomly removes amounts of listed_products and reagents
 /obj/structure/machinery/cm_vending/sorted/medical/proc/random_unstock()
+	// Random interval of 25 for reagents
+	chem_refill_volume = rand(0, chem_refill_volume_max * 0.04) * 25
+
 	for(var/list/vendspec as anything in listed_products)
 		var/amount = vendspec[2]
 		if(amount <= 0)
@@ -479,6 +497,8 @@
 
 	appearance_flags = TILE_BOUND
 
+	chem_refill_volume = 250
+	chem_refill_volume_max = 250
 	chem_refill = list(
 		/obj/item/reagent_container/hypospray/autoinjector/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
@@ -491,6 +511,8 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited
 	desc = "Wall-mounted Medical Equipment Dispenser. This version is more limited than standard USCM NanoMeds."
 
+	chem_refill_volume = 150
+	chem_refill_volume_max = 150
 	chem_refill = list(
 		/obj/item/reagent_container/hypospray/autoinjector/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
@@ -501,6 +523,7 @@
 	icon = 'icons/obj/structures/machinery/lifeboat.dmi'
 	icon_state = "medcab"
 	desc = "A wall-mounted cabinet containing medical supplies vital to survival. While better equipped, it can only refill basic supplies."
+
 	listed_products = list(
 		list("AUTOINJECTORS", -1, null, null),
 		list("First-Aid Autoinjector", 8, /obj/item/reagent_container/hypospray/autoinjector/skillless, VENDOR_ITEM_REGULAR),
@@ -521,6 +544,8 @@
 	unslashable = TRUE
 	wrenchable = FALSE
 	hackable = FALSE
+	chem_refill_volume = 500
+	chem_refill_volume_max = 500
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/populate_product_list(scale)
 	return

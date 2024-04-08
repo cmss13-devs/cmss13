@@ -376,14 +376,14 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	if (byond_version < warn_version || (byond_version == warn_version && byond_build < warn_build)) //We have words for this client.
 		if(CONFIG_GET(flag/client_warn_popup))
-			var/msg = "<b>Your version of byond may be getting out of date:</b><br>"
+			var/msg = "<b>Your version of BYOND may be getting out of date:</b><br>"
 			msg += CONFIG_GET(string/client_warn_message) + "<br><br>"
 			msg += "Your version: [byond_version].[byond_build]<br>"
 			msg += "Required version to remove this message: [warn_version].[warn_build] or later<br>"
 			msg += "Visit <a href=\"https://www.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.<br>"
 			src << browse(msg, "window=warning_popup")
 		else
-			to_chat_immediate(src, SPAN_DANGER("<b>Your version of byond may be getting out of date:</b>"))
+			to_chat_immediate(src, SPAN_DANGER("<b>Your version of BYOND may be getting out of date:</b>"))
 			to_chat_immediate(src, CONFIG_GET(string/client_warn_message))
 			to_chat_immediate(src, "Your version: [byond_version].[byond_build]")
 			to_chat_immediate(src, "Required version to remove this message: [warn_version].[warn_build] or later")

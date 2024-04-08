@@ -1010,18 +1010,24 @@ GLOBAL_LIST_EMPTY(vending_products)
 		if(item_to_stock.type == vendspec[3] && !istype(item_to_stock, /obj/item/storage))
 
 			if(istype(item_to_stock, /obj/item/device/defibrillator))
-				var/obj/item/device/defibrillator/D = item_to_stock
-				if(!D.dcell)
-					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs a cell in it to be restocked!"))
+				var/obj/item/device/defibrillator/defib = item_to_stock
+				if(!defib.dcell)
+					to_chat(user, SPAN_WARNING("[item_to_stock] needs a cell in it to be restocked!"))
 					return
-				if(D.dcell.charge < D.dcell.maxcharge)
-					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs to be fully charged to restock it!"))
+				if(defib.dcell.charge < defib.dcell.maxcharge)
+					to_chat(user, SPAN_WARNING("[item_to_stock] needs to be fully charged to restock it!"))
 					return
 
 			else if(istype(item_to_stock, /obj/item/cell))
-				var/obj/item/cell/C = item_to_stock
-				if(C.charge < C.maxcharge)
-					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs to be fully charged to restock it!"))
+				var/obj/item/cell/cell = item_to_stock
+				if(cell.charge < cell.maxcharge)
+					to_chat(user, SPAN_WARNING("[item_to_stock] needs to be fully charged to restock it!"))
+					return
+
+			else if(istype(item_to_stock, /obj/item/stack))
+				var/obj/item/stack/item_stack = item_to_stock
+				if(item_stack.amount != item_stack.max_amount)
+					to_chat(user, SPAN_WARNING("[item_to_stock] needs to be a complete set to restock it!"))
 					return
 
 			else if(!additional_restock_checks(item_to_stock, user, vendspec))
@@ -1034,8 +1040,8 @@ GLOBAL_LIST_EMPTY(vending_products)
 				user.temp_drop_inv_item(item_to_stock)
 
 			if(isstorage(item_to_stock.loc)) //inside a storage item
-				var/obj/item/storage/S = item_to_stock.loc
-				S.remove_from_storage(item_to_stock, user.loc)
+				var/obj/item/storage/container = item_to_stock.loc
+				container.remove_from_storage(item_to_stock, user.loc)
 
 			qdel(item_to_stock)
 			user.visible_message(SPAN_NOTICE("[user] stocks [src] with \a [vendspec[1]]."),

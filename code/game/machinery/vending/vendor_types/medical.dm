@@ -96,13 +96,6 @@
 		/obj/item/reagent_container/glass/bottle/peridaxon,
 		/obj/item/reagent_container/glass/bottle/tramadol,
 		)
-	var/list/stack_refill = list(
-		/obj/item/stack/medical/advanced/ointment,
-		/obj/item/stack/medical/advanced/bruise_pack,
-		/obj/item/stack/medical/ointment,
-		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/medical/splint
-		)
 
 /obj/structure/machinery/cm_vending/sorted/medical/Destroy()
 	QDEL_NULL(last_health_display)
@@ -129,16 +122,6 @@
 			if(container.reagents.total_volume < container.reagents.maximum_volume)
 				if(user)
 					to_chat(user, SPAN_WARNING("[src] makes a buzzing noise as it rejects [container]. Looks like this vendor cannot refill these without a connected supply link."))
-					playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
-				return FALSE
-
-	//stacked items handling if the vendor cannot restock partial stacks
-	else if(istype(item_to_stock, /obj/item/stack))
-		if(requires_supply_link_port && !get_supply_link())
-			var/obj/item/stack/restock_stack = item_to_stock
-			if(restock_stack.amount < restock_stack.max_amount) // if the stack is not full
-				if(user)
-					to_chat(user, SPAN_WARNING("[src] makes a buzzing noise as it rejects [restock_stack]. Looks like this vendor cannot restock these without a connected supply link."))
 					playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
 				return FALSE
 
@@ -197,23 +180,7 @@
 				to_chat(user, SPAN_WARNING("This machine isn't for you."))
 				return
 
-		var/obj/item/stack/item_stack = I
-		if(item_stack.amount == item_stack.max_amount)
-			stock(item_stack, user)
-			return
-
-		if(!LAZYLEN(stack_refill) || !(item_stack.type in stack_refill))
-			to_chat(user, SPAN_WARNING("[src] cannot restock [item_stack]."))
-			return
-
-		if(requires_supply_link_port && !get_supply_link())
-			to_chat(user, SPAN_WARNING("[src] makes a buzzing noise as it rejects [item_stack]. Looks like this vendor cannot restock these without a connected supply link."))
-			playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
-			return
-
-		to_chat(user, SPAN_NOTICE("[src] makes a whirring noise as it restocks your [item_stack.name]."))
-		item_stack.amount = item_stack.max_amount
-		item_stack.update_icon()
+		stock(I, user)
 		return
 
 	return ..()
@@ -377,7 +344,6 @@
 		/obj/item/reagent_container/glass/bottle/peridaxon,
 		/obj/item/reagent_container/glass/bottle/tramadol,
 	)
-	stack_refill = null
 
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry/populate_product_list(scale)
 	listed_products = list(
@@ -428,11 +394,6 @@
 		/obj/item/reagent_container/hypospray/autoinjector/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
 	)
-	stack_refill = list(
-		/obj/item/stack/medical/ointment,
-		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/medical/splint,
-	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed/populate_product_list(scale)
 	listed_products = list(
@@ -480,7 +441,6 @@
 
 	healthscan = FALSE
 	chem_refill = null
-	stack_refill = null
 
 /obj/structure/machinery/cm_vending/sorted/medical/blood/bolted
 	wrenchable = FALSE
@@ -527,11 +487,6 @@
 		/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless,
 	)
-	stack_refill = list(
-		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/medical/splint,
-		/obj/item/stack/medical/ointment,
-	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited
 	desc = "Wall-mounted Medical Equipment Dispenser. This version is more limited than standard USCM NanoMeds."
@@ -539,10 +494,6 @@
 	chem_refill = list(
 		/obj/item/reagent_container/hypospray/autoinjector/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
-	)
-	stack_refill = list(
-		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/medical/ointment,
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat
@@ -564,11 +515,6 @@
 		list("Ointment", 8, /obj/item/stack/medical/ointment, VENDOR_ITEM_REGULAR),
 		list("Roll of Gauze", 8, /obj/item/stack/medical/bruise_pack, VENDOR_ITEM_REGULAR),
 		list("Splints", 8, /obj/item/stack/medical/splint, VENDOR_ITEM_REGULAR)
-	)
-	stack_refill = list(
-		/obj/item/stack/medical/ointment,
-		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/medical/splint,
 	)
 
 	unacidable = TRUE

@@ -1331,7 +1331,7 @@ const FlightLogs = (props, context) => {
     last_page,
     current_menu,
     records_flight,
-    access_level,
+    admin_login,
   } = data;
 
   return (
@@ -1358,6 +1358,8 @@ const FlightLogs = (props, context) => {
 
           <h3>
             {logged_in}, {access_text}
+            <br />
+            Remote Admin: {admin_login}
           </h3>
 
           <Button.Confirm

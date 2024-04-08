@@ -390,8 +390,9 @@
 	return "Broadcast [serial_number]"
 
 /obj/item/device/camera/broadcasting/hear_talk(mob/living/sourcemob, message, verb = "says", datum/language/language, italics = FALSE)
-	for(var/mob/user in viewers)
-		if(user && user.client && user.client.prefs && !user.client.prefs.lang_chat_disabled && !user.ear_deaf && user.say_understands(sourcemob, language))
+	for(var/datum/weakref/user_ref in viewers)
+		var/mob/user = user_ref?.resolve()
+		if(istype(user) && user.client && user.client.prefs && !user.client.prefs.lang_chat_disabled && !user.ear_deaf && user.say_understands(sourcemob, language))
 			sourcemob.langchat_display_image(user)
 
 /obj/item/photo/proc/construct(datum/picture/P)

@@ -220,7 +220,7 @@
 	if(action != "switch_camera")
 		return
 	if(broadcastingcamera)
-		broadcastingcamera.viewers -= resolve_viewers(concurrent_users)
+		broadcastingcamera.viewers -= concurrent_users
 		broadcastingcamera = null
 	if(!istype(current, /obj/structure/machinery/camera/correspondent))
 		return
@@ -228,7 +228,7 @@
 	if(!corr_cam.linked_broadcasting)
 		return
 	broadcastingcamera = corr_cam.linked_broadcasting
-	broadcastingcamera.viewers += resolve_viewers(concurrent_users)
+	broadcastingcamera.viewers += concurrent_users
 	RegisterSignal(broadcastingcamera, COMSIG_BROADCAST_GO_LIVE, PROC_REF(go_back_live))
 	RegisterSignal(broadcastingcamera, COMSIG_PARENT_QDELETING, PROC_REF(clear_camera))
 
@@ -236,28 +236,22 @@
 	. = ..()
 	if(!broadcastingcamera)
 		return
-	broadcastingcamera.viewers -= user
+	broadcastingcamera.viewers -= WEAKREF(user)
 	if(!current)
 		clear_camera()
 
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast/proc/clear_camera()
 	SIGNAL_HANDLER
 	UnregisterSignal(broadcastingcamera, list(COMSIG_BROADCAST_GO_LIVE, COMSIG_PARENT_QDELETING))
-	broadcastingcamera.viewers -= resolve_viewers(concurrent_users)
+	broadcastingcamera.viewers -= concurrent_users
 	broadcastingcamera = null
 
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast/proc/go_back_live(obj/item/device/camera/broadcasting/broadcastingcamera)
 	SIGNAL_HANDLER
 	if(current.c_tag == broadcastingcamera.get_broadcast_name())
 		current = broadcastingcamera.linked_cam
-		broadcastingcamera.viewers += resolve_viewers(concurrent_users)
+		broadcastingcamera.viewers += concurrent_users
 		SEND_SIGNAL(src, COMSIG_CAMERA_SET_TARGET, broadcastingcamera.linked_cam, broadcastingcamera.linked_cam.view_range, broadcastingcamera.linked_cam.view_range)
-
-/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/proc/resolve_viewers(list/ref_users)
-	var/list/actual_users
-	for(var/datum/weakref/user_ref in ref_users)
-		actual_users += user_ref.resolve()
-	return actual_users
 
 /obj/structure/machinery/computer/cameras/wooden_tv/ot
 	name = "Mortar Monitoring Set"

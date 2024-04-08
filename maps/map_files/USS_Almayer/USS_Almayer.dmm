@@ -41347,7 +41347,9 @@
 	name = "\improper ARES Reception Shutters";
 	plane = -7
 	},
-/turf/open/floor/almayer/aicore/no_build,
+/turf/open/floor/almayer/no_build{
+	icon_state = "test_floor4"
+	},
 /area/almayer/command/airoom)
 "kbV" = (
 /obj/structure/platform{
@@ -69117,7 +69119,9 @@
 	name = "\improper ARES Reception Stairway Shutters";
 	plane = -7
 	},
-/turf/open/floor/almayer/aicore/no_build,
+/turf/open/floor/almayer/no_build{
+	icon_state = "test_floor4"
+	},
 /area/almayer/command/airoom)
 "tzd" = (
 /obj/structure/window/framed/almayer,

@@ -47,7 +47,7 @@ Alt-clicking on the Queen tracker allows you to set it to also track the Hive Co
 Be mindful of not body-blocking the escape of any fleeing sisters; this is especially true if they are heavily injured.
 As a Xenomorph, you are able to melt advanced body scanners, sleepers, MarineMeds and limb printers.
 You can break roller beds with a single slash to stop a medic from quickly transporting a body.
-As a Defender, lowering your crest gives you increased resistance to stuns from explosives and other stuns such as shotgun blasts.
+As a Defender, lowering your crest gives you increased resistance to stuns like explosives or shotgun shells.
 Tail stab will always hit the targetted limb and will do 1.2x your normal melee damage; it has a two tile range.
 If you suspect a door is shocked, you can tail stab it to check and receive a massively reduced stun than if you would have triggered it normally.
 You can use your tail stab to slowly damage and break doors; this takes some time.

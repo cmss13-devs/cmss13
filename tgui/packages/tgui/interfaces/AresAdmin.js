@@ -1796,9 +1796,9 @@ const TechLogs = (props, context) => {
               <Flex.Item ml="1rem">
                 <Button.Confirm
                   icon="trash"
-                  tooltip="Delete Record"
-                  disabled={current_menu}
                   onClick={() => act('delete_record', { record: record.ref })}
+                  disabled={remotelock}
+                  tooltip={deletetip}
                 />
               </Flex.Item>
             </Flex>

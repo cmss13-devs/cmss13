@@ -23,8 +23,6 @@
 	var/amount_sprites = FALSE
 	///does it show amount on top of the icon
 	var/display_maptext = TRUE
-	///whether the stack can be split into two different items
-	var/can_split = TRUE
 	//Coords for contents display, to make it play nice with inventory borders.
 	maptext_x = 4
 	maptext_y = 3
@@ -331,8 +329,6 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			return
 		if(amount <= 1)
 			return
-		if(!can_split)
-			return
 		var/desired = tgui_input_number(user, "How much would you like to split off from this stack?", "How much?", 1, amount-1, 1)
 		if(!desired)
 			return
@@ -350,7 +346,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 	return ..()
 
 /obj/item/stack/attack_hand(mob/user as mob)
-	if(user.get_inactive_hand() == src && can_split)
+	if(user.get_inactive_hand() == src)
 		var/obj/item/stack/new_stack = new type(user, 1)
 		transfer_fingerprints_to(new_stack)
 		user.put_in_hands(new_stack)

@@ -1522,7 +1522,6 @@
 					var/obj/item/stack/medical/splint/new_splint = new(user.loc)
 					new_splint.amount = 0 //we checked that we have at least one bodypart splinted, so we can create it no prob. Also we need amount to be 0
 					new_splint.add_fingerprint(user)
-					new_splint.contaminated = TRUE
 					for(var/obj/limb/cur_limb in to_splint)
 						amount_removed++
 						cur_limb.status &= ~LIMB_SPLINTED
@@ -1535,7 +1534,6 @@
 							new_splint.amount = 0
 							new_splint.add_fingerprint(user)
 							new_splint.add(1)
-							new_splint.contaminated = TRUE
 					if(new_splint.amount == 0)
 						qdel(new_splint) //we only removed nano splints
 					msg = "[user == target ? "their own":"\proper [target]'s"]"

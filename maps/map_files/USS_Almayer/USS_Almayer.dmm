@@ -52434,6 +52434,12 @@
 	icon_state = "plate"
 	},
 /area/almayer/maint/hull/upper/u_a_s)
+"nVe" = (
+/turf/open/floor/almayer/aicore/glowing/no_build{
+	icon_state = "ai_floor3";
+	light_range = 4
+	},
+/area/almayer/command/airoom)
 "nVi" = (
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
@@ -142456,7 +142462,7 @@ lmz
 lmz
 daz
 dnm
-clw
+nVe
 dnm
 ebN
 tId
@@ -142663,7 +142669,7 @@ qQS
 dnm
 ebN
 tId
-clw
+nVe
 qQS
 ebN
 dQl
@@ -142862,7 +142868,7 @@ bdH
 bdH
 wHQ
 jgv
-clw
+nVe
 dnm
 ebN
 tId

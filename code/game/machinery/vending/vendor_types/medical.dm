@@ -108,6 +108,12 @@
 	if(healthscan)
 		. += SPAN_NOTICE("[src] offers assisted medical scans, for ease of use with minimal training. Present the target in front of the scanner to scan.")
 
+/obj/structure/machinery/cm_vending/sorted/medical/ui_data(mob/user)
+	. = ..()
+	if(LAZYLEN(chem_refill))
+		.["reagents"] = chem_refill_volume
+		.["reagents_max"] = chem_refill_volume_max
+
 /// checks if there is a supply link in our location and we are anchored to it
 /obj/structure/machinery/cm_vending/sorted/medical/proc/get_supply_link()
 	if(!anchored)

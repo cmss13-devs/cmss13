@@ -1,10 +1,11 @@
 import { KEY_ESCAPE } from 'common/keycodes';
 import { useBackend, useLocalState } from '../backend';
-import { Button, Section, Flex, Box, Tooltip, Input, NoticeBox, Icon } from '../components';
+import { Button, Section, Flex, Box, Tooltip, Input, NoticeBox, Icon, ProgressBar } from '../components';
 import { Window } from '../layouts';
 import { classes } from 'common/react';
 import { BoxProps } from '../components/Box';
 import { Table, TableCell, TableRow } from '../components/Table';
+import { toFixed } from 'common/math';
 
 const THEME_COMP = 0;
 const THEME_USCM = 1;
@@ -37,6 +38,8 @@ interface VendingData {
   stock_listing: Array<number>;
   show_points?: boolean;
   current_m_points?: number;
+  reagents?: number;
+  reagents_max?: number;
 }
 
 interface VenableItem {
@@ -118,7 +121,7 @@ const VendableItemRow = (props: VenableItem) => {
 
   return (
     <>
-      <TableCell className="IconCell">
+      <TableCell className="IconCell" verticalAlign="top">
         <span
           className={classes([`Icon`, `vending32x32`, `${props.record.image}`])}
         />
@@ -164,7 +167,7 @@ const VendableClothingItemRow = (props: {
 
   return (
     <>
-      <TableCell className="IconCell">
+      <TableCell className="IconCell" verticalAlign="top">
         <span
           className={classes([`Icon`, `vending32x32`, `${props.record.image}`])}
         />
@@ -256,6 +259,7 @@ export const ViewVendingCategory = (props: VendingCategoryProps) => {
           return (
             <TableRow
               key={record.prod_index}
+              height="30px"
               className={classes([
                 'VendingItem',
                 i % 2 ? 'VendingFlexAlt' : undefined,
@@ -302,6 +306,8 @@ export const VendingSorted = () => {
   const isEmpty = categories.length === 0;
   const show_points = data.show_points ?? false;
   const points = data.current_m_points ?? 0;
+  const reagents = data.reagents ?? 0;
+  const reagents_max = data.reagents_max ?? 0;
   return (
     <Window height={800} width={400} theme={getTheme(data.theme)}>
       <Window.Content
@@ -331,6 +337,21 @@ export const VendingSorted = () => {
                 />
               </Flex.Item>
             </Flex>
+            {reagents_max > 0 && (
+              <Flex
+                align="center"
+                justify="space-between"
+                align-items="stretch">
+                <Flex.Item>
+                  <span className="Section__content">Reagents</span>
+                </Flex.Item>
+                <Flex.Item grow>
+                  <ProgressBar value={reagents} maxValue={reagents_max}>
+                    {toFixed(reagents) + ' units'}
+                  </ProgressBar>
+                </Flex.Item>
+              </Flex>
+            )}
           </Box>
         )}
 

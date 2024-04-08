@@ -40,7 +40,7 @@
 	return job_slot_formula(playercount,30,1,1,3)
 
 /proc/spec_slot_formula(playercount)
-	return job_slot_formula(playercount,20,1,2,4)
+	return job_slot_formula(playercount,20,1,4,4)
 
 /proc/sg_slot_formula(playercount)
 	return job_slot_formula(playercount,20,1,2,4)

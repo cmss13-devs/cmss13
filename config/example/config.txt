@@ -241,3 +241,5 @@ GAMEMODE_DEFAULT Extended
 
 ## How long the mob will take to chestburst, in seconds
 #EMBRYO_BURST_TIMER 450
+
+CLIENT_ERROR_VERSION 514

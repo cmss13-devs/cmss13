@@ -909,6 +909,8 @@ GLOBAL_LIST_EMPTY(vending_products)
 	 * The 1.0 scale is estimated because it is a divided by the scale rather than repopulating the list at 1.0 scale - anything that is a fixed amount won't necessarily be correct.
 	 */
 	var/list/list/dynamic_stock_multipliers
+	///indicates someone is performing a restock that isn't instant
+	var/being_restocked = FALSE
 
 /obj/structure/machinery/cm_vending/sorted/Initialize()
 	. = ..()
@@ -999,9 +1001,39 @@ GLOBAL_LIST_EMPTY(vending_products)
 	if(!ishuman(user))
 		return
 
+	// Try to bulk restock using a container
+	if(istype(A, /obj/item/storage))
+		var/obj/item/storage/container = A
+		if(!length(container.contents))
+			return
+		if(being_restocked)
+			to_chat(user, SPAN_WARNING("[src] is already being restocked, you will get in the way!"))
+			return
+
+		user.visible_message(SPAN_NOTICE("[user] starts stocking a bunch of supplies into [src]."), \
+		SPAN_NOTICE("You start stocking a bunch of supplies into [src]."))
+		being_restocked = TRUE
+
+		for(var/obj/item/item in container.contents)
+			if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, src))
+				being_restocked = FALSE
+				user.visible_message(SPAN_NOTICE("[user] stopped stocking [src] with supplies."), \
+				SPAN_NOTICE("You stop stocking [src] with supplies."))
+				return
+			if(QDELETED(item) || item.loc != container)
+				being_restocked = FALSE
+				user.visible_message(SPAN_NOTICE("[user] stopped stocking [src] with supplies."), \
+				SPAN_NOTICE("You stop stocking [src] with supplies."))
+				return
+			stock(item, user)
+
+		being_restocked = FALSE
+		user.visible_message(SPAN_NOTICE("[user] finishes stocking [src] with supplies."), \
+		SPAN_NOTICE("You finish stocking [src] with supplies."))
+		return
+
 	if(istype(A, /obj/item))
-		var/obj/item/I = A
-		stock(I, user)
+		stock(A, user)
 
 /obj/structure/machinery/cm_vending/sorted/proc/stock(obj/item/item_to_stock, mob/user)
 	if(istype(item_to_stock, /obj/item/storage))
@@ -1046,7 +1078,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 				container.remove_from_storage(item_to_stock, user.loc)
 
 			qdel(item_to_stock)
-			user.visible_message(SPAN_NOTICE("[user] stocks [src] with \a [vendspec[1]]."),
+			user.visible_message(SPAN_NOTICE("[user] stocks [src] with \a [vendspec[1]]."), \
 			SPAN_NOTICE("You stock [src] with \a [vendspec[1]]."))
 			vendspec[2]++
 			update_derived_ammo_and_boxes_on_add(vendspec)

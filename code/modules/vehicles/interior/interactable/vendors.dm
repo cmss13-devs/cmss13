@@ -113,7 +113,6 @@
 	wrenchable = FALSE
 	hackable = FALSE
 	density = FALSE
-	var/being_restocked = FALSE
 
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND | VEND_LOAD_AMMO_BOXES
 

@@ -370,12 +370,14 @@
 		return
 	linked_cam = new(loc, src)
 	flags_atom |= USES_HEARING
+	flags_atom |= USES_SEEING
 	SEND_SIGNAL(src, COMSIG_BROADCAST_GO_LIVE)
 	to_chat(user, SPAN_NOTICE("[src] begins to buzz softly as you go live."))
 
 /obj/item/device/camera/broadcasting/unwield(mob/user)
 	. = ..()
 	flags_atom &= ~USES_HEARING
+	flags_atom &= ~USES_SEEING
 	clear_broadcast()
 
 /obj/item/device/camera/broadcasting/proc/clear_broadcast()
@@ -393,6 +395,12 @@
 	for(var/datum/weakref/user_ref in viewers)
 		var/mob/user = user_ref?.resolve()
 		if(istype(user) && user.client && user.client.prefs && !user.client.prefs.lang_chat_disabled && !user.ear_deaf && user.say_understands(sourcemob, language))
+			sourcemob.langchat_display_image(user)
+
+/obj/item/device/camera/broadcasting/see_emote(mob/living/sourcemob, emote, audible = FALSE)
+	for(var/datum/weakref/user_ref in viewers)
+		var/mob/user = user_ref?.resolve()
+		if(istype(user) && user.client && user.client.prefs && (user.client.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES) && (!audible || !user.ear_deaf))
 			sourcemob.langchat_display_image(user)
 
 /obj/item/photo/proc/construct(datum/picture/P)

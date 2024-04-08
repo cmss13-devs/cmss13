@@ -208,6 +208,9 @@
 /obj/proc/hear_talk(mob/living/M as mob, msg, verb="says", datum/language/speaking, italics = 0)
 	return
 
+/obj/proc/see_emote(mob/living/M as mob, emote, audible = FALSE)
+	return
+
 /obj/attack_hand(mob/user)
 	if(can_buckle) manual_unbuckle(user)
 	else . = ..()

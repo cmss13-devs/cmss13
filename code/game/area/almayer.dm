@@ -83,6 +83,7 @@
 	name = "\improper AIST Office"
 	icon_state = "airoom"
 	fake_zlevel = 1 // upperdeck
+	soundscape_playlist = list()
 	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE
 	can_build_special = FALSE
 	is_resin_allowed = FALSE

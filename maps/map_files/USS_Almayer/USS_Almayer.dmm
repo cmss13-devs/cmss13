@@ -525,7 +525,7 @@
 "acJ" = (
 /obj/structure/machinery/door_control{
 	id = "ARES JoeCryo";
-	name = "Working Joe Cryogenics Lockdown";
+	name = "ARES WorkingJoe Bay Shutters";
 	req_one_access_txt = "91;92";
 	pixel_x = 24
 	},
@@ -3224,7 +3224,7 @@
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/machinery/disposal/delivery{
 	density = 0;
-	desc = "A pneumatic delivery unit. Sends items to the requisitions.";
+	desc = "A pneumatic delivery unit.";
 	icon_state = "delivery_engi";
 	name = "Security Vault";
 	pixel_y = 28;
@@ -6073,9 +6073,9 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES ReceptStairs2";
-	name = "Shutters";
+	name = "ARES Reception Stairway Shutters";
 	pixel_x = 24;
-	req_one_access_txt = "90;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -23489,7 +23489,7 @@
 "dQl" = (
 /obj/structure/machinery/door_control{
 	id = "ARES JoeCryo";
-	name = "Working Joe Cryogenics Lockdown";
+	name = "ARES WorkingJoe Bay Shutters";
 	req_one_access_txt = "91;92";
 	pixel_x = -24
 	},
@@ -30926,9 +30926,9 @@
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/machinery/door_control{
 	id = "ARES ReceptStairs2";
-	name = "Shutters";
+	name = "ARES Reception Stairway Shutters";
 	pixel_x = 24;
-	req_one_access_txt = "90;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -40913,9 +40913,9 @@
 /obj/effect/step_trigger/clone_cleaner,
 /obj/structure/machinery/door_control{
 	id = "ARES ReceptStairs1";
-	name = "ARES Core Access";
+	name = "ARES Reception Shutters";
 	pixel_y = -24;
-	req_one_access_txt = "90;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -68306,9 +68306,9 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES ReceptStairs1";
-	name = "ARES Core Access";
+	name = "ARES Reception Shutters";
 	pixel_y = 24;
-	req_one_access_txt = "90;91;92"
+	req_one_access_txt = "91;92"
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -69110,6 +69110,15 @@
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/shipboard/starboard_missiles)
+"tza" = (
+/obj/effect/step_trigger/clone_cleaner,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "ARES ReceptStairs2";
+	name = "\improper ARES Reception Stairway Shutters";
+	plane = -7
+	},
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "tzd" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -69695,7 +69704,7 @@
 "tJN" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "ARES JoeCryo";
-	name = "\improper ARES Reception Shutters";
+	name = "\improper ARES WorkingJoe Bay Shutters";
 	plane = -7;
 	dir = 4
 	},
@@ -143149,7 +143158,7 @@ rCi
 qQS
 qQS
 gzy
-kbK
+tza
 aEL
 kib
 rEL

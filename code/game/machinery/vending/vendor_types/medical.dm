@@ -352,6 +352,8 @@
 	req_access = list(ACCESS_MARINE_CHEMISTRY)
 
 	healthscan = FALSE
+	chem_refill_volume = 800
+	chem_refill_volume_max = 800
 	chem_refill = list(
 		/obj/item/reagent_container/glass/bottle/bicaridine,
 		/obj/item/reagent_container/glass/bottle/antitoxin,

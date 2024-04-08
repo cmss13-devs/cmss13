@@ -381,6 +381,7 @@
 /obj/item/device/camera/broadcasting/proc/clear_broadcast()
 	if(!QDELETED(linked_cam))
 		QDEL_NULL(linked_cam)
+	viewers.Cut()
 
 /obj/item/device/camera/broadcasting/proc/get_broadcast_name()
 	var/datum/component/label/src_label_component = GetComponent(/datum/component/label)

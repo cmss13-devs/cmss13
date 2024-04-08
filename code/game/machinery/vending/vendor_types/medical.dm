@@ -1,4 +1,4 @@
-//------------SUPPLY LINK FOR MEDICAL VENDORS---------------
+//------------SUPPLY LINK FOR MEDICAL VENDORS------------
 
 /obj/structure/medical_supply_link
 	name = "medilink supply port"
@@ -43,12 +43,147 @@
 	else
 		icon_state = "[base_state]_unclamped"
 
-// --- Green
 /obj/structure/medical_supply_link/green
 	icon_state = "medlink_green_unclamped"
 	base_state = "medlink_green"
 
-//------------SORTED MEDICAL VENDORS---------------
+
+//------------RESTOCK CARTS FOR MEDICAL VENDORS------------
+
+/obj/structure/restock_cart
+	name = "restock cart"
+	desc = "A rather heavy cart filled with various supplies to restock a vendor with."
+	icon = 'icons/obj/objects.dmi'
+	icon_state = "tank_normal" // Temporary
+	var/overlay_color = rgb(252, 186, 3) // Temporary
+	density = TRUE
+	anchored = FALSE
+	drag_delay = 2
+	health = 100 // Can be destroyed in 2-4 slashes.
+	unslashable = FALSE
+	///The quantity of things this can restock
+	var/supplies_remaining = 20
+	///The max quantity of things this can restock
+	var/supplies_max = 20
+	///The descriptor for the kind of things being restocked
+	var/supply_descriptor = "supplies"
+	///The sound to play when attacked
+	var/attacked_sound = 'sound/effects/metalhit.ogg'
+	///The sound to play when destroyed
+	var/destroyed_sound = 'sound/effects/metalhit.ogg'
+	///Random loot to spawn if destroyed as assoc list of type_path = max_quantity
+	var/list/destroyed_loot = list(
+		/obj/item/stack/sheet/metal = 2
+	)
+
+/obj/structure/restock_cart/medical
+	name = "\improper Wey-Yu restock cart"
+	desc = "A rather heavy cart filled with various supplies to restock a vendor with. Provided by Wey-Yu Pharmaceuticals Division(TM)."
+	icon = 'icons/obj/objects.dmi'
+	icon_state = "tank_normal" // Temporary
+	supplies_remaining = 20
+	supplies_max = 20
+	supply_descriptor = "sets of medical supplies"
+	destroyed_loot = list(
+		/obj/item/stack/medical/advanced/ointment = 3,
+		/obj/item/stack/medical/advanced/bruise_pack = 2,
+		/obj/item/stack/medical/ointment = 3,
+		/obj/item/stack/medical/bruise_pack = 2,
+		/obj/item/stack/medical/splint = 2,
+		/obj/item/device/healthanalyzer = 1,
+	)
+
+/obj/structure/restock_cart/medical/reagent
+	name = "\improper Wey-Yu reagent restock cart"
+	desc = "A rather heavy cart filled with various reagents to restock a vendor with. Provided by Wey-Yu Pharmaceuticals Division(TM)."
+	icon_state = "tank_normal" // Temporary
+	overlay_color = rgb(252, 115, 3) // Temporary
+	supplies_remaining = 1200
+	supplies_max = 1200
+	supply_descriptor = "units of medical reagents"
+	destroyed_sound = 'sound/effects/slosh.ogg'
+	destroyed_loot = list()
+
+/obj/structure/restock_cart/Initialize(mapload, ...)
+	. = ..()
+	supplies_remaining = min(supplies_remaining, supplies_max)
+	update_icon()
+
+/obj/structure/restock_cart/update_icon()
+	. = ..()
+	var/image/overlay_image = image(icon, icon_state = "tn_color") // Temporary
+	overlay_image.color = overlay_color
+	overlays += overlay_image
+
+/obj/structure/restock_cart/get_examine_text(mob/user)
+	. = ..()
+	if(get_dist(user, src) > 2 && user != loc)
+		return
+	. += SPAN_NOTICE("It contains:")
+	if(supplies_remaining)
+		. += SPAN_NOTICE(" [supplies_remaining] [supply_descriptor].")
+	else
+		. += SPAN_NOTICE(" Nothing.")
+
+/obj/structure/restock_cart/deconstruct(disassembled)
+	playsound(loc, destroyed_sound, 35, 1)
+	visible_message(SPAN_NOTICE("[src] falls apart as its contents spill everywhere!"))
+
+	// Assumption: supplies_max is > 0
+	if(supplies_remaining > 0 && length(destroyed_loot))
+		var/spawned_any = FALSE
+		var/probability = supplies_remaining / supplies_max
+		for(var/type_path in destroyed_loot)
+			if(prob(probability * 100))
+				for(var/amount in 1 to rand(1, destroyed_loot[type_path]))
+					new type_path(loc)
+					spawned_any = TRUE
+		if(!spawned_any) // It wasn't empty so atleast drop something
+			var/type_path = pick(destroyed_loot)
+			for(var/amount in 1 to rand(1, destroyed_loot[type_path]))
+				new type_path(loc)
+
+	return ..()
+
+/obj/structure/restock_cart/proc/healthcheck()
+	if(health <= 0)
+		deconstruct(FALSE)
+
+/obj/structure/restock_cart/bullet_act(obj/projectile/Proj)
+	health -= Proj.damage
+	playsound(src, attacked_sound, 25, 1)
+	healthcheck()
+	return TRUE
+
+/obj/structure/restock_cart/attack_alien(mob/living/carbon/xenomorph/user)
+	if(unslashable)
+		return XENO_NO_DELAY_ACTION
+	user.animation_attack_on(src)
+	health -= (rand(user.melee_damage_lower, user.melee_damage_upper))
+	playsound(src, attacked_sound, 25, 1)
+	user.visible_message(SPAN_DANGER("[user] slashes [src]!"), \
+	SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	healthcheck()
+	return XENO_ATTACK_ACTION
+
+/obj/structure/restock_cart/ex_act(severity)
+	if(indestructible)
+		return
+
+	switch(severity)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			if(prob(5))
+				deconstruct(FALSE)
+				return
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(50))
+				deconstruct(FALSE)
+				return
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			deconstruct(FALSE)
+			return
+
+//------------SORTED MEDICAL VENDORS------------
 
 /obj/structure/machinery/cm_vending/sorted/medical
 	name = "\improper Wey-Med Plus"
@@ -222,6 +357,63 @@
 		last_health_display.look_at(user, DETAIL_LEVEL_HEALTHANALYSER, bypass_checks = TRUE)
 		return
 
+/obj/structure/machinery/cm_vending/sorted/medical/MouseDrop_T(atom/movable/A, mob/user)
+	if(inoperable())
+		return
+	if(user.stat || user.is_mob_restrained())
+		return
+	if(get_dist(user, src) > 1 || get_dist(user, A) > 1)
+		return
+	if(!ishuman(user))
+		return
+
+	if(istype(A, /obj/structure/restock_cart/medical))
+		var/obj/structure/restock_cart/medical/cart = A
+		if(cart.supplies_remaining <= 0)
+			to_chat(user, SPAN_WARNING("[cart] is empty!"))
+			return
+		if(being_restocked)
+			to_chat(user, SPAN_WARNING("[src] is already being restocked, you will get in the way!"))
+			return
+
+		var/restocking_reagents = istype(cart, /obj/structure/restock_cart/medical/reagent)
+		if(restocking_reagents && !LAZYLEN(chem_refill))
+			to_chat(user, SPAN_WARNING("[src] doesn't use reagent canisters!"))
+			return
+
+		user.visible_message(SPAN_NOTICE("[user] starts stocking a bunch of supplies into [src]."), \
+		SPAN_NOTICE("You start stocking a bunch of supplies into [src]."))
+		being_restocked = TRUE
+
+		while(cart.supplies_remaining > 0)
+			if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, src))
+				being_restocked = FALSE
+				user.visible_message(SPAN_NOTICE("[user] stopped stocking [src] with supplies."), \
+				SPAN_NOTICE("You stop stocking [src] with supplies."))
+				return
+			if(QDELETED(cart) || get_dist(user, cart) > 1)
+				being_restocked = FALSE
+				user.visible_message(SPAN_NOTICE("[user] stopped stocking [src] with supplies."), \
+				SPAN_NOTICE("You stop stocking [src] with supplies."))
+				return
+
+			if(restocking_reagents)
+				var/reagent_added = restock_reagents(min(cart.supplies_remaining, 100))
+				if(reagent_added <= 0 || chem_refill_volume == chem_refill_volume_max)
+					break // All done
+				cart.supplies_remaining -= reagent_added
+			else
+				if(!restock_supplies(prob_to_skip = 0, can_remove = FALSE))
+					break // All done
+				cart.supplies_remaining--
+
+		being_restocked = FALSE
+		user.visible_message(SPAN_NOTICE("[user] finishes stocking [src] with supplies."), \
+		SPAN_NOTICE("You finish stocking [src] with supplies."))
+		return
+
+	return ..()
+
 /obj/structure/machinery/cm_vending/sorted/medical/populate_product_list(scale)
 	listed_products = list(
 		list("FIELD SUPPLIES", -1, null, null),
@@ -308,13 +500,13 @@
 	if(!get_supply_link())
 		STOP_PROCESSING(SSslowobj, src)
 		return // Somehow we lost our link
-	automatic_restock()
+	restock_supplies()
+	restock_reagents()
 
-/// Randomly adjusts the amounts of listed_products towards their desired values
-/// Reagents refill at a constant rate towards chem_refill_volume_max
-/obj/structure/machinery/cm_vending/sorted/medical/proc/automatic_restock()
-	chem_refill_volume = min(chem_refill_volume + 25, chem_refill_volume_max)
-
+/// Randomly (based on prob_to_skip) adjusts all amounts of listed_products towards their desired values by 1
+/// Returns the quantity of items added
+/obj/structure/machinery/cm_vending/sorted/medical/proc/restock_supplies(prob_to_skip = 80, can_remove = TRUE)
+	. = 0
 	for(var/list/vendspec as anything in listed_products)
 		if(vendspec[2] < 0)
 			continue // It's a section title, not an actual entry
@@ -325,13 +517,22 @@
 		if(vendspec[2] == dynamic_metadata[2])
 			continue // Already at desired value
 		if(vendspec[2] > dynamic_metadata[2])
-			vendspec[2]--
-			update_derived_ammo_and_boxes(vendspec)
+			if(can_remove)
+				vendspec[2]--
+				update_derived_ammo_and_boxes(vendspec)
 			continue // Returned some items to the void
-		if(prob(80))
-			continue // 20% chance to restock per entry
+		if(prob(prob_to_skip))
+			continue // 20% chance to restock per entry by default
 		vendspec[2]++
 		update_derived_ammo_and_boxes_on_add(vendspec)
+		.++
+
+/// Refills reagents towards chem_refill_volume_max
+/// Returns the quantity of reagents added
+/obj/structure/machinery/cm_vending/sorted/medical/proc/restock_reagents(additional_volume = 100)
+	var/old_value = chem_refill_volume
+	chem_refill_volume = min(chem_refill_volume + additional_volume, chem_refill_volume_max)
+	return chem_refill_volume - old_value
 
 /// Randomly removes amounts of listed_products and reagents
 /obj/structure/machinery/cm_vending/sorted/medical/proc/random_unstock()

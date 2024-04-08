@@ -22,6 +22,26 @@
 	containername = "medical crate"
 	group = "Medical"
 
+/datum/supply_packs/medical_restock_cart
+	name = "medical restock cart"
+	contains = list(
+		/obj/structure/restock_cart/medical,
+	)
+	cost = 20
+	containertype = null
+	containername = "medical restock cart"
+	group = "Medical"
+
+/datum/supply_packs/medical_reagent_cart
+	name = "medical reagent restock cart"
+	contains = list(
+		/obj/structure/restock_cart/medical/reagent,
+	)
+	cost = 20
+	containertype = null
+	containername = "medical reagent restock cart"
+	group = "Medical"
+
 /datum/supply_packs/pillbottle
 	name = "pill bottle crate (x2 each)"
 	contains = list(

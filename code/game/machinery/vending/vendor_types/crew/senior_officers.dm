@@ -2,7 +2,7 @@
 	name = "\improper ColMarTech Senior Officer Equipment Rack"
 	desc = "An automated equipment vendor for Senior Officers."
 	req_access = list(ACCESS_MARINE_SENIOR)
-	vendor_role = list(JOB_CHIEF_POLICE, JOB_CMO, JOB_XO, JOB_CHIEF_ENGINEER, JOB_CHIEF_REQUISITION, JOB_AUXILIARY_OFFICER)
+	vendor_role = list(JOB_CHIEF_POLICE, JOB_CMO, JOB_XO, JOB_CHIEF_ENGINEER, JOB_CHIEF_REQUISITION, JOB_AUXILIARY_OFFICER, JOB_AI_TECH)
 
 /obj/structure/machinery/cm_vending/clothing/senior_officer/get_listed_products(mob/user)
 	if(!user)
@@ -25,6 +25,8 @@
 		return GLOB.cm_vending_clothing_military_police_chief
 	else if(user.job == JOB_AUXILIARY_OFFICER)
 		return GLOB.cm_vending_clothing_auxiliary_officer
+	else if(user.job == JOB_AI_TECH)
+		return GLOB.cm_vending_clothing_aist
 	return ..()
 
 
@@ -495,4 +497,85 @@ GLOBAL_LIST_INIT(cm_vending_clothing_auxiliary_officer, list(
 		/obj/item/clothing/suit/storage/jacket/marine/dress,
 		/obj/item/clothing/head/marine/peaked,
 		/obj/item/clothing/under/marine/dress,
+	)
+
+
+
+//------------ AI SERVICE TECHNICIAN ---------------
+GLOBAL_LIST_INIT(cm_vending_clothing_aist, list(
+		list("STANDARD EQUIPMENT", 0, null, null, null),
+		list("Marine Formal Uniform", 0, /obj/item/clothing/under/marine/dress, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
+		list("Gloves", 0, /obj/item/clothing/gloves/yellow, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
+		list("Headset", 0, /obj/item/device/radio/headset/almayer/mcom/cdrcom/aist, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
+		list("Welding Goggles", 0, /obj/item/clothing/glasses/welding, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
+		list("Gas Mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
+		list("Toolbelt", 0, /obj/item/storage/belt/utility/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_MANDATORY),
+
+		list("SUIT (CHOOSE 1)", 0, null, null, null),
+		list("Black Hazard Vest", 0, /obj/item/clothing/suit/storage/hazardvest/black, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
+		list("Blue Hazard Vest", 0, /obj/item/clothing/suit/storage/hazardvest/blue, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
+		list("Orange Hazard Vest", 0, /obj/item/clothing/suit/storage/hazardvest, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
+		list("Yellow Hazard Vest", 0, /obj/item/clothing/suit/storage/hazardvest/yellow, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
+
+		list("HEADWEAR (OPTIONAL)", 0, null, null, null),
+		list("Welding Helmet", 0, /obj/item/clothing/head/welding, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
+
+		list("BAG (CHOOSE 1)", 0, null, null, null),
+		list("Secure Leather Satchel", 0, /obj/item/storage/backpack/satchel/lockable, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_RECOMMENDED),
+		list("USCM Satchel", 0, /obj/item/storage/backpack/marine/satchel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
+		list("Standard Backpack", 0, /obj/item/storage/backpack/marine, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
+		list("Technician Chestrig", 0, /obj/item/storage/backpack/marine/satchel/tech, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
+		list("Technician Welder-Satchel", 0, /obj/item/storage/backpack/marine/engineerpack/satchel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
+		list("Technician Welderpack", 0, /obj/item/storage/backpack/marine/engineerpack, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
+		list("Welding Kit", 0, /obj/item/tool/weldpack, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
+
+		list("PERSONAL SIDEARM (CHOOSE 1)", 0, null, null, null),
+		list("M2019 Blaster", 0, /obj/effect/essentials_set/m2019, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_MANDATORY),
+		list("M4A3 Service Pistol", 0, /obj/item/storage/belt/gun/m4a3/full, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_REGULAR),
+		list("Mod 88 Pistol", 0, /obj/item/storage/belt/gun/m4a3/mod88, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_REGULAR),
+		list("M44 Revolver", 0, /obj/item/storage/belt/gun/m44/mp, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+
+		list("COMBAT EQUIPMENT (COMBAT USE ONLY)", 0, null, null, null),
+		list("Officer M3 Armor", 0, /obj/item/clothing/suit/storage/marine/MP/SO, MARINE_CAN_BUY_COMBAT_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Officer M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/MP/SO, MARINE_CAN_BUY_COMBAT_HELMET, VENDOR_ITEM_MANDATORY),
+		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_COMBAT_SHOES, VENDOR_ITEM_MANDATORY),
+
+		list("POUCHES (CHOOSE 2)", 0, null, null, null),
+		list("First-Aid Pouch (Refillable Injectors)", 0, /obj/item/storage/pouch/firstaid/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("First-Aid Pouch (Splints, Gauze, Ointment)", 0, /obj/item/storage/pouch/firstaid/full/alternate, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("First-Aid Pouch (Pill Packets)", 0, /obj/item/storage/pouch/firstaid/full/pills, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("Sling Strap", 0, /obj/item/storage/pouch/sling, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("Large General Pouch", 0, /obj/item/storage/pouch/general/large, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("Tools Pouch (Full)", 0, /obj/item/storage/pouch/tools/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("Construction Pouch", 0, /obj/item/storage/pouch/construction, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("Electronics Pouch (Full)", 0, /obj/item/storage/pouch/electronics/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("Magazine Pouch", 0, /obj/item/storage/pouch/magazine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("Shotgun Shell Pouch", 0, /obj/item/storage/pouch/shotgun, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("Sidearm Pouch", 0, /obj/item/storage/pouch/pistol, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("Flare Pouch (Full)", 0, /obj/item/storage/pouch/flare/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("Fuel Tank Strap Pouch", 0, /obj/item/storage/pouch/flamertank, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+
+		list("ACCESSORIES (CHOOSE 1)", 0, null, null, null),
+		list("Shoulder Holster", 0, /obj/item/clothing/accessory/storage/holster, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Black Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Brown Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest/brown_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+
+		list("Spare Equipment", 0, null, null, null),
+		list("APOLLO Relay Key", 15, /obj/item/device/encryptionkey/binary, null, VENDOR_ITEM_REGULAR),
+		list("M2019 Ammo Refil", 15, /obj/effect/essentials_set/44sabot, null, VENDOR_ITEM_REGULAR),
+	))
+
+/obj/effect/essentials_set/m2019
+	spawned_gear_list = list(
+		/obj/item/weapon/gun/revolver/m44/custom/pkd_special,
+		/obj/item/ammo_magazine/revolver/pkd,
+		/obj/item/ammo_magazine/revolver/pkd,
+	)
+
+/obj/effect/essentials_set/44sabot
+	spawned_gear_list = list(
+		/obj/item/ammo_magazine/revolver/pkd,
+		/obj/item/ammo_magazine/revolver/pkd,
+		/obj/item/ammo_magazine/revolver/pkd,
 	)

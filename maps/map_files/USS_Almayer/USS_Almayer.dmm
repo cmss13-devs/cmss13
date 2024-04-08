@@ -34020,9 +34020,7 @@
 	},
 /area/almayer/living/offices)
 "hyx" = (
-/obj/structure/closet/secure_closet/personal/cabinet{
-	req_access = null
-	},
+/obj/structure/machinery/cm_vending/clothing/senior_officer,
 /turf/open/floor/almayer/aicore/glowing/no_build{
 	icon_state = "w_ai_silver";
 	dir = 5

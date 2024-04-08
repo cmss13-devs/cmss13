@@ -28340,7 +28340,7 @@
 	},
 /area/almayer/shipboard/brig/cryo)
 "fyA" = (
-/obj/structure/flora/jungle/treeblocker,
+/obj/structure/blocker/fuelpump,
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south2)
 "fyD" = (
@@ -31430,7 +31430,7 @@
 	},
 /area/almayer/medical/medical_science)
 "gGB" = (
-/obj/structure/flora/jungle/treeblocker,
+/obj/structure/blocker/fuelpump,
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south1)
 "gGI" = (
@@ -37848,7 +37848,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
 "iTc" = (
-/obj/structure/flora/jungle/treeblocker,
+/obj/structure/blocker/fuelpump,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -39288,7 +39288,7 @@
 /turf/open/floor/plating,
 /area/almayer/command/cic)
 "jof" = (
-/obj/structure/flora/jungle/treeblocker,
+/obj/structure/blocker/fuelpump,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -48213,7 +48213,7 @@
 	},
 /area/almayer/squads/charlie)
 "mzj" = (
-/obj/structure/flora/jungle/treeblocker,
+/obj/structure/blocker/fuelpump,
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/north2)
 "mzq" = (
@@ -71644,7 +71644,7 @@
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha_bravo_shared)
 "uCg" = (
-/obj/structure/flora/jungle/treeblocker,
+/obj/structure/blocker/fuelpump,
 /turf/open/floor/almayer{
 	icon_state = "mono"
 	},
@@ -76271,7 +76271,7 @@
 /turf/open/floor/almayer/research/containment/floor2,
 /area/almayer/medical/containment/cell/cl)
 "vZF" = (
-/obj/structure/flora/jungle/treeblocker,
+/obj/structure/blocker/fuelpump,
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/north1)
 "vZU" = (

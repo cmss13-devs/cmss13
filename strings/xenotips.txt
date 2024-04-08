@@ -52,6 +52,6 @@ Tail stab will always hit the targetted limb and will do 1.2x your normal melee 
 If you suspect a door is shocked, you can tail stab it to check and receive a massively reduced stun than if you would have triggered it normally.
 You can use your tail stab to slowly damage and break doors; this takes some time.
 Some smaller Xenomorphs such as Runners can hide behind barricades by resting against them, a good surprise tactic.
-Hivelords or Defenders with a lowered crest can open any existing holes in walls created by others such as Warriors; it may take several attempts to fully open the wall.
+Defenders with a lowered crest can open existing holes in walls.
 As a Defender, you can deal an additional stage of damage to an APC by lowering your crest and then attacking it.
 Any Xenomorph with acid can melt any kind of window frame; you may use this to create additional paths.

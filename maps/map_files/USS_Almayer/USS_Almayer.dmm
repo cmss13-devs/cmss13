@@ -3603,7 +3603,6 @@
 /area/almayer/command/airoom)
 "aug" = (
 /obj/structure/surface/table/reinforced/almayer_B{
-	climbable = 0;
 	indestructible = 1;
 	unacidable = 1;
 	unslashable = 1
@@ -3908,7 +3907,6 @@
 	req_one_access_txt = "91;92"
 	},
 /obj/structure/surface/table/reinforced/almayer_B{
-	climbable = 0;
 	indestructible = 1;
 	unacidable = 1;
 	unslashable = 1
@@ -3932,7 +3930,6 @@
 /area/almayer/command/airoom)
 "avM" = (
 /obj/structure/surface/table/reinforced/almayer_B{
-	climbable = 0;
 	indestructible = 1;
 	unacidable = 1;
 	unslashable = 1
@@ -26798,7 +26795,6 @@
 /area/almayer/living/briefing)
 "eYz" = (
 /obj/structure/surface/table/reinforced/almayer_B{
-	climbable = 0;
 	indestructible = 1;
 	unacidable = 1;
 	unslashable = 1
@@ -68298,7 +68294,6 @@
 /area/almayer/shipboard/brig/execution)
 "tmK" = (
 /obj/structure/surface/table/reinforced/almayer_B{
-	climbable = 0;
 	indestructible = 1;
 	unacidable = 1;
 	unslashable = 1
@@ -69603,7 +69598,6 @@
 /area/almayer/hallways/lower/port_aft_hallway)
 "tIm" = (
 /obj/structure/surface/table/reinforced/almayer_B{
-	climbable = 0;
 	indestructible = 1;
 	unacidable = 1;
 	unslashable = 1

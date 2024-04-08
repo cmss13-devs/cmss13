@@ -340,7 +340,7 @@ const MainMenu = (props, context) => {
                 width="25vw"
                 bold
                 onClick={() => act('sudo')}
-                disabled={admin_login}
+                disabled={remotelock}
                 tooltip={remotetip}
               />
             </Stack.Item>

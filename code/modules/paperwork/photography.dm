@@ -358,6 +358,7 @@
 	w_class = SIZE_HUGE
 	flags_equip_slot = NO_FLAGS //cannot be equiped
 	var/obj/structure/machinery/camera/correspondent/linked_cam
+	var/list/viewers = list()
 
 /obj/item/device/camera/broadcasting/Destroy()
 	clear_broadcast()
@@ -368,11 +369,13 @@
 	if(!.)
 		return
 	linked_cam = new(loc, src)
+	flags_atom |= USES_HEARING
 	SEND_SIGNAL(src, COMSIG_BROADCAST_GO_LIVE)
 	to_chat(user, SPAN_NOTICE("[src] begins to buzz softly as you go live."))
 
 /obj/item/device/camera/broadcasting/unwield(mob/user)
 	. = ..()
+	flags_atom &= ~USES_HEARING
 	clear_broadcast()
 
 /obj/item/device/camera/broadcasting/proc/clear_broadcast()
@@ -384,6 +387,11 @@
 	if(src_label_component)
 		return src_label_component.label_name
 	return "Broadcast [serial_number]"
+
+/obj/item/device/camera/broadcasting/hear_talk(mob/living/sourcemob, message, verb = "says", datum/language/language, italics = FALSE)
+	for(var/mob/user in listeners)
+		if(user && user.client && user.client.prefs && !user.client.prefs.lang_chat_disabled && !user.ear_deaf && user.say_understands(sourcemob, language))
+			sourcemob.langchat_display_image(user)
 
 /obj/item/photo/proc/construct(datum/picture/P)
 	icon = P.fields["icon"]

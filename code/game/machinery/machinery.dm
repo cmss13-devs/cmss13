@@ -370,7 +370,7 @@ Class Procs:
 	if(stat & NOPOWER)
 		icon_state = "fuelpump_off"
 	else
-		switch(announce)
+		switch(fuelpump_stage)
 			if(0)
 				icon_state = "fuelpump_0"
 			if(1)

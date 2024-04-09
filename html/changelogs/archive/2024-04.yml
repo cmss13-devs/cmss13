@@ -139,3 +139,6 @@
   - balance: flames melt the snow
   ihatethisengine:
   - rscadd: CC camera now can broadcast to TVs.
+2024-04-09:
+  vero5123:
+  - bugfix: Notifications should no longer emit light.

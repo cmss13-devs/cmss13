@@ -1,7 +1,10 @@
+/////Normal Photocopier/////
+
 /obj/structure/machinery/photocopier
 	name = "photocopier"
 	icon = 'icons/obj/structures/machinery/library.dmi'
 	icon_state = "bigscanner"
+	desc = "A photocopier used for copying...you know, photos! Also useful for copying documents in paper. This specific model have been manufactured by Seegson in a cheaper frame than most modern photocopiers, while also holding more primitive copying technology, such as more toner waste and less printing capabilities. Nonetheless, its cheap construction means cheaper costs, and for people that only need to print a paper or two most of the time, it becomes cost-effective."
 	anchored = TRUE
 	density = TRUE
 	use_power = USE_POWER_IDLE
@@ -12,8 +15,9 @@
 	var/obj/item/photo/photocopy = null
 	var/obj/item/paper_bundle/bundle = null
 	var/copies = 1 //how many copies to print!
-	var/toner = 30 //how much toner is left! woooooo~
+	var/toner = 45 //how much toner is left! woooooo~
 	var/maxcopies = 10 //how many copies can be copied at once- idea shamelessly stolen from bs12's copier!
+
 
 /obj/structure/machinery/photocopier/attack_remote(mob/user as mob)
 	return attack_hand(user)
@@ -140,7 +144,7 @@
 		if(toner == 0)
 			if(user.temp_drop_inv_item(O))
 				qdel(O)
-				toner = 30
+				toner = 45
 				to_chat(user, SPAN_NOTICE("You insert the toner cartridge into \the [src]."))
 				updateUsrDialog()
 		else
@@ -237,6 +241,71 @@
 	if(toner < 0)
 		toner = 0
 	return p
+
+
+
+
+//////Premium(upgraded) photocopier/////
+
+
+
+
+/obj/structure/machinery/photocopier/wyphotocopier
+	name = "photocopier"
+	icon = 'icons/obj/structures/machinery/library.dmi'
+	icon_state = "bigscannerpro"
+	desc = "A photocopier used for copying...you know, photos! Also useful for copying documents in paper. This specific model have been manufactured by Weyland-Yutani in a more modern and robust frame than the average photocopiers you see being sold by smaller companies, while also carrying some of the most advanced technologies on the area of paper-printing, such as bigger toner economy and much higher printing capabilities. All that makes it the favorite among consumers that need to print high amounts of paperwork on the performance of their daily duties."
+	anchored = TRUE
+	density = TRUE
+	use_power = USE_POWER_IDLE
+	idle_power_usage = 50
+	active_power_usage = 300
+	power_channel = POWER_CHANNEL_EQUIP
+	copies = 1 //how many copies to print!
+	toner = 180 //how much toner is left! woooooo~
+	maxcopies = 30 //how many copies can be copied at once- idea shamelessly stolen from bs12's copier!
+
+
+/obj/structure/machinery/photocopier/wyphotocopier/attackby(obj/item/O as obj, mob/user as mob)
+	if(istype(O, /obj/item/paper))
+		if(!copy && !photocopy && !bundle)
+			if(user.drop_inv_item_to_loc(O, src))
+				copy = O
+				to_chat(user, SPAN_NOTICE("You insert the paper into \the [src]."))
+				flick("bigscannerpro1", src)
+				updateUsrDialog()
+		else
+			to_chat(user, SPAN_NOTICE("There is already something in \the [src]."))
+	else if(istype(O, /obj/item/photo))
+		if(!copy && !photocopy && !bundle)
+			if(user.drop_inv_item_to_loc(O, src))
+				photocopy = O
+				to_chat(user, SPAN_NOTICE("You insert the photo into \the [src]."))
+				flick("bigscannerpro1", src)
+				updateUsrDialog()
+		else
+			to_chat(user, SPAN_NOTICE("There is already something in \the [src]."))
+	else if(istype(O, /obj/item/paper_bundle))
+		if(!copy && !photocopy && !bundle)
+			if(user.drop_inv_item_to_loc(O, src))
+				bundle = O
+				to_chat(user, SPAN_NOTICE("You insert the bundle into \the [src]."))
+				flick("bigscannerpro1", src)
+				updateUsrDialog()
+	else if(istype(O, /obj/item/device/toner))
+		if(toner == 0)
+			if(user.temp_drop_inv_item(O))
+				qdel(O)
+				toner = 180
+				to_chat(user, SPAN_NOTICE("You insert the toner cartridge into \the [src]."))
+				updateUsrDialog()
+		else
+			to_chat(user, SPAN_NOTICE("This cartridge is not yet ready for replacement! Use up the rest of the toner."))
+	else if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
+		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
+		anchored = !anchored
+		to_chat(user, SPAN_NOTICE("You [anchored ? "wrench" : "unwrench"] \the [src]."))
+	return
 
 
 /obj/item/device/toner

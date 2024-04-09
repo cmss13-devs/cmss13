@@ -56196,10 +56196,10 @@
 	},
 /area/almayer/living/briefing)
 "phj" = (
-/obj/structure/machinery/photocopier,
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
+/obj/structure/machinery/photocopier/wyphotocopier,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -69290,12 +69290,10 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/machinery/photocopier{
-	anchored = 0
-	},
 /obj/structure/sign/poster/art{
 	pixel_y = 32
 	},
+/obj/structure/machinery/photocopier/wyphotocopier,
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "tHk" = (

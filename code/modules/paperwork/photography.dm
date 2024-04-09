@@ -369,15 +369,13 @@
 	if(!.)
 		return
 	linked_cam = new(loc, src)
-	flags_atom |= USES_HEARING
-	flags_atom |= USES_SEEING
+	flags_atom |= (USES_HEARING|USES_SEEING)
 	SEND_SIGNAL(src, COMSIG_BROADCAST_GO_LIVE)
 	to_chat(user, SPAN_NOTICE("[src] begins to buzz softly as you go live."))
 
 /obj/item/device/camera/broadcasting/unwield(mob/user)
 	. = ..()
-	flags_atom &= ~USES_HEARING
-	flags_atom &= ~USES_SEEING
+	flags_atom &= ~(USES_HEARING|USES_SEEING)
 	clear_broadcast()
 
 /obj/item/device/camera/broadcasting/proc/clear_broadcast()

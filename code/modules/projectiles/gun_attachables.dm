@@ -2503,6 +2503,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/stock/smg/collapsible/brace/apply_on_weapon(obj/item/weapon/gun/G)
 	if(stock_activated)
 		G.flags_item |= NODROP
+		G.flags_item |= FORCEDROP_CONDITIONAL
 		accuracy_mod = -HIT_ACCURACY_MULT_TIER_3
 		scatter_mod = SCATTER_AMOUNT_TIER_8
 		recoil_mod = RECOIL_AMOUNT_TIER_2 //Hurts pretty bad if it's wielded.
@@ -2514,6 +2515,7 @@ Defined in conflicts.dm of the #defines folder.
 		attach_icon = "smg_brace_a_on"
 	else
 		G.flags_item &= ~NODROP
+		G.flags_item &= ~FORCEDROP_CONDITIONAL
 		accuracy_mod = 0
 		scatter_mod = 0
 		recoil_mod = 0

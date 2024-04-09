@@ -126,7 +126,7 @@
 		to_chat(user, SPAN_WARNING("You can't do this right now."))
 		return FALSE
 
-	if ((item.flags_inventory & CANTSTRIP) || ((item.flags_item & NODROP) && !(item.flags_item & NODROP_CONDITIONAL)) || (item.flags_item & ITEM_ABSTRACT))
+	if ((item.flags_inventory & CANTSTRIP) || ((item.flags_item & NODROP) && !(item.flags_item & FORCEDROP_CONDITIONAL)) || (item.flags_item & ITEM_ABSTRACT))
 		return FALSE
 
 	if (ishuman(source))
@@ -290,7 +290,7 @@
 
 /// A utility function for `/datum/strippable_item`s to finish unequipping an item from a mob.
 /datum/strippable_item/mob_item_slot/proc/finish_unequip_mob(obj/item/item, mob/source, mob/user)
-	if (!source.drop_inv_item_on_ground(item, force = (item.flags_item & NODROP_CONDITIONAL))) //force if we can drop the item in this case
+	if (!source.drop_inv_item_on_ground(item, force = (item.flags_item & FORCEDROP_CONDITIONAL))) //force if we can drop the item in this case
 		return FALSE
 
 	if (ismob(source))

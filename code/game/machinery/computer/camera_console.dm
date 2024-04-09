@@ -207,6 +207,7 @@
 	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW."
 	network = list(CAMERA_NET_CORRESPONDENT)
 	var/obj/item/device/camera/broadcasting/broadcastingcamera = null
+	circuit = /obj/item/circuitboard/computer/cameras/tv
 
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast/Destroy()
 	broadcastingcamera = null

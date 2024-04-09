@@ -82,6 +82,9 @@
 #define ANIMATED_SURGICAL_TOOL (1<<12)
 /// Has heat source but isn't 'on fire' and thus can be stored
 #define IGNITING_ITEM (1<<13)
+/// Cannot be dropped/unequpped usually
+/// If you just want to remove this flag but keep NODROP, you'd need to reapply NODROP
+#define NODROP_CONDITIONAL ((1<<14) | NODROP)
 //==========================================================================================
 
 

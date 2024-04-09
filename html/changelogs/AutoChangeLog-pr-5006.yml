@@ -1,6 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Added AI Core camera consoles to CE, CO and Brig offices, along with CIC and Lifeboat bubble."
-  - maptweak: "Added Tech Control Console to ARES Core."
-  - rscadd: "Added Tech Unlock logs to ARES Interface"

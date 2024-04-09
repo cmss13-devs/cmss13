@@ -1,6 +1,8 @@
 //Corrosive acid is consolidated -- it checks for specific castes for strength now, but works identically to each other.
 //The acid items are stored in XenoProcs.
 /mob/living/carbon/xenomorph/proc/corrosive_acid(atom/O, acid_type, plasma_cost)
+	if(!check_state())
+		return
 	if(!O.Adjacent(src))
 		if(istype(O,/obj/item/explosive/plastic))
 			var/obj/item/explosive/plastic/E = O

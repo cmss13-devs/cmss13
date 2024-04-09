@@ -110,3 +110,35 @@
   - admin: Added staff logs for launching supply drops.
   vero5123:
   - bugfix: Fixes armor light staying on after removal.
+2024-04-08:
+  BadAtThisGame302:
+  - rscadd: Added the new UPPA and Naval Patches to all UPP inserts.
+  - bugfix: Fixed the insulated gloves not having the insulated sprite.
+  - imageadd: added a black and blue satchel, also an updated red armband sprite courtesy
+      of AmoryBlaine
+  - imageadd: added a big UA flag, a UPP table and two new UPP patches all thanks
+      to the folks over at PVE. AmoryBlaine, Morrow and AndroBetel
+  HumiliatedGoblin:
+  - rscadd: Adds a one hour medical timelock for DCC's
+  - rscadd: 'Adds a tip of the round to accommodate for this PR and #5808'
+  - balance: DCCs and Pilots can now fix queen broken dropship doors
+  Mister-moon1:
+  - balance: increased GL and pyro armour light range to properly match other armours
+      like it.
+  SabreML:
+  - ui: Added a 'search by key' button to the Keybind menu.
+  Stan_albatross,kugamo,LTNTS,Drathek:
+  - balance: medical vendors, excepting nanomeds, can now only refill/restock stacks
+      and autoinjectors/bottles when on special medical supply link ports that can
+      only be found shipside. Sprite by kugamo.
+  - bugfix: supply pads will no longer generate ambient occlusion.
+  Steelpoint:
+  - rscadd: MRE's will now auto-delete if they do not contain and food items when
+      they are discarded.
+  cuberound:
+  - balance: flames melt the snow
+  ihatethisengine:
+  - rscadd: CC camera now can broadcast to TVs.
+2024-04-09:
+  vero5123:
+  - bugfix: Notifications should no longer emit light.

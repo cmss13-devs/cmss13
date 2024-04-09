@@ -29,6 +29,9 @@
 
 #define COMSIG_ITEM_PICKUP "item_pickup"
 
+///from /obj/item/device/camera/broadcasting/attack_self
+#define COMSIG_BROADCAST_GO_LIVE "broadcast_live"
+
 /// from /obj/item/proc/mob_can_equip
 #define COMSIG_ITEM_ATTEMPTING_EQUIP "item_attempting_equip"
 ///Return this in response if you don't want items equipped

@@ -310,6 +310,50 @@
 	playsound(src, 'sound/effects/refill.ogg', 10, 1, 3)
 	return TRUE
 
+/// Performs automatic restocking via medical cart - will set being_restocked true during the action
+/obj/structure/machinery/cm_vending/sorted/medical/proc/cart_restock(obj/structure/restock_cart/medical/cart, mob/user)
+	if(cart.supplies_remaining <= 0)
+		to_chat(user, SPAN_WARNING("[cart] is empty!"))
+		return
+	if(being_restocked)
+		to_chat(user, SPAN_WARNING("[src] is already being restocked, you will get in the way!"))
+		return
+
+	var/restocking_reagents = istype(cart, /obj/structure/restock_cart/medical/reagent)
+	if(restocking_reagents && !LAZYLEN(chem_refill))
+		to_chat(user, SPAN_WARNING("[src] doesn't use reagent canisters!"))
+		return
+
+	user.visible_message(SPAN_NOTICE("[user] starts stocking a bunch of supplies into [src]."), \
+	SPAN_NOTICE("You start stocking a bunch of supplies into [src]."))
+	being_restocked = TRUE
+
+	while(cart.supplies_remaining > 0)
+		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, src))
+			being_restocked = FALSE
+			user.visible_message(SPAN_NOTICE("[user] stopped stocking [src] with supplies."), \
+			SPAN_NOTICE("You stop stocking [src] with supplies."))
+			return
+		if(QDELETED(cart) || get_dist(user, cart) > 1)
+			being_restocked = FALSE
+			user.visible_message(SPAN_NOTICE("[user] stopped stocking [src] with supplies."), \
+			SPAN_NOTICE("You stop stocking [src] with supplies."))
+			return
+
+		if(restocking_reagents)
+			var/reagent_added = restock_reagents(min(cart.supplies_remaining, 100))
+			if(reagent_added <= 0 || chem_refill_volume == chem_refill_volume_max)
+				break // All done
+			cart.supplies_remaining -= reagent_added
+		else
+			if(!restock_supplies(prob_to_skip = 0, can_remove = FALSE))
+				break // All done
+			cart.supplies_remaining--
+
+	being_restocked = FALSE
+	user.visible_message(SPAN_NOTICE("[user] finishes stocking [src] with supplies."), \
+	SPAN_NOTICE("You finish stocking [src] with supplies."))
+
 /obj/structure/machinery/cm_vending/sorted/medical/attackby(obj/item/I, mob/user)
 	if(stat != WORKING)
 		return ..()
@@ -344,7 +388,13 @@
 		user.put_in_hands(new_container)
 		return
 
-	else if(hacked || (allowed(user) && (!LAZYLEN(vendor_role) || vendor_role.Find(user.job))))
+	if(ishuman(user) && istype(I, /obj/item/grab))
+		var/obj/item/grab/grabbed = I
+		if(istype(grabbed.grabbed_thing, /obj/structure/restock_cart/medical))
+			cart_restock(grabbed.grabbed_thing, user)
+			return
+
+	if(hacked || (allowed(user) && (!LAZYLEN(vendor_role) || vendor_role.Find(user.job))))
 		if(stock(I, user))
 			return
 
@@ -380,48 +430,7 @@
 		return
 
 	if(istype(A, /obj/structure/restock_cart/medical))
-		var/obj/structure/restock_cart/medical/cart = A
-		if(cart.supplies_remaining <= 0)
-			to_chat(user, SPAN_WARNING("[cart] is empty!"))
-			return
-		if(being_restocked)
-			to_chat(user, SPAN_WARNING("[src] is already being restocked, you will get in the way!"))
-			return
-
-		var/restocking_reagents = istype(cart, /obj/structure/restock_cart/medical/reagent)
-		if(restocking_reagents && !LAZYLEN(chem_refill))
-			to_chat(user, SPAN_WARNING("[src] doesn't use reagent canisters!"))
-			return
-
-		user.visible_message(SPAN_NOTICE("[user] starts stocking a bunch of supplies into [src]."), \
-		SPAN_NOTICE("You start stocking a bunch of supplies into [src]."))
-		being_restocked = TRUE
-
-		while(cart.supplies_remaining > 0)
-			if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, src))
-				being_restocked = FALSE
-				user.visible_message(SPAN_NOTICE("[user] stopped stocking [src] with supplies."), \
-				SPAN_NOTICE("You stop stocking [src] with supplies."))
-				return
-			if(QDELETED(cart) || get_dist(user, cart) > 1)
-				being_restocked = FALSE
-				user.visible_message(SPAN_NOTICE("[user] stopped stocking [src] with supplies."), \
-				SPAN_NOTICE("You stop stocking [src] with supplies."))
-				return
-
-			if(restocking_reagents)
-				var/reagent_added = restock_reagents(min(cart.supplies_remaining, 100))
-				if(reagent_added <= 0 || chem_refill_volume == chem_refill_volume_max)
-					break // All done
-				cart.supplies_remaining -= reagent_added
-			else
-				if(!restock_supplies(prob_to_skip = 0, can_remove = FALSE))
-					break // All done
-				cart.supplies_remaining--
-
-		being_restocked = FALSE
-		user.visible_message(SPAN_NOTICE("[user] finishes stocking [src] with supplies."), \
-		SPAN_NOTICE("You finish stocking [src] with supplies."))
+		cart_restock(A, user)
 		return
 
 	return ..()

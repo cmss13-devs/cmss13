@@ -142,3 +142,6 @@
 2024-04-09:
   vero5123:
   - bugfix: Notifications should no longer emit light.
+2024-04-10:
+  Drathek:
+  - rscadd: Added preference for a darker crit overlay and black flash overlay

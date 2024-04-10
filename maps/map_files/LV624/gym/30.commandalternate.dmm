@@ -630,6 +630,20 @@
 	icon_state = "whiteblue"
 	},
 /area/lv624/lazarus/command)
+"Co" = (
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
+	name = "\improper Command Dome";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/command)
+"CK" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/east_central_jungle)
 "CL" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/grass/grass1,
@@ -1402,4 +1416,21 @@ Bu
 Bu
 rF
 bB
+"}
+(16,1,1) = {"
+VU
+VU
+CK
+VU
+VU
+rF
+Bu
+Co
+Bu
+rF
+VU
+VU
+VU
+VU
+VU
 "}

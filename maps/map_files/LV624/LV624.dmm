@@ -4419,10 +4419,6 @@
 	icon_state = "whitebluefull"
 	},
 /area/lv624/lazarus/command)
-"awz" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/west_jungle)
 "awC" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/coast/beachcorner/north_east,
@@ -4775,9 +4771,6 @@
 	icon_state = "white"
 	},
 /area/lv624/lazarus/command)
-"axV" = (
-/turf/open/gm/dirtgrassborder/north,
-/area/lv624/ground/jungle/west_jungle)
 "axW" = (
 /obj/effect/decal/remains/xeno,
 /obj/structure/fence,
@@ -16274,7 +16267,7 @@
 "ifX" = (
 /obj/structure/machinery/colony_floodlight,
 /obj/effect/landmark/nightmare{
-	insert_tag = "lv-command"
+	insert_tag = "lv-gym"
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)

@@ -179,6 +179,8 @@
 // HIVE TRAITS
 /// If the Hive is a Xenonid Hive
 #define TRAIT_XENONID "t_xenonid"
+/// If the hive or xeno can use objects.
+#define TRAIT_OPPOSABLE_THUMBS "t_thumbs"
 /// If the mob is sensitive to The Weave
 #define TRAIT_WEAVE_SENSITIVE "t_weave_sensitive"
 /// If the Hive delays round end (this is overridden for some hives). Does not occur naturally. Must be applied in events.

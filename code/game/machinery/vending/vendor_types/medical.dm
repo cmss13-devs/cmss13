@@ -6,12 +6,13 @@
 	icon = 'icons/effects/warning_stripes.dmi'
 	icon_state = "medlink_unclamped"
 	var/base_state = "medlink"
+	plane = FLOOR_PLANE
+	layer = ABOVE_TURF_LAYER //It's the floor, man
+
 	anchored = TRUE
 	density = FALSE
 	unslashable = TRUE
 	unacidable = TRUE
-	plane = FLOOR_PLANE
-	layer = ABOVE_TURF_LAYER //It's the floor, man
 
 /obj/structure/medical_supply_link/ex_act(severity, direction)
 	return FALSE
@@ -56,11 +57,13 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "tank_normal" // Temporary
 	var/overlay_color = rgb(252, 186, 3) // Temporary
+
 	density = TRUE
 	anchored = FALSE
 	drag_delay = 2
 	health = 100 // Can be destroyed in 2-4 slashes.
 	unslashable = FALSE
+
 	///The quantity of things this can restock
 	var/supplies_remaining = 20
 	///The max quantity of things this can restock
@@ -81,6 +84,7 @@
 	desc = "A rather heavy cart filled with various supplies to restock a vendor with. Provided by Wey-Yu Pharmaceuticals Division(TM)."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "tank_normal" // Temporary
+
 	supplies_remaining = 20
 	supplies_max = 20
 	supply_descriptor = "sets of medical supplies"
@@ -98,6 +102,7 @@
 	desc = "A rather heavy cart filled with various reagents to restock a vendor with. Provided by Wey-Yu Pharmaceuticals Division(TM)."
 	icon_state = "tank_normal" // Temporary
 	overlay_color = rgb(252, 115, 3) // Temporary
+
 	supplies_remaining = 1200
 	supplies_max = 1200
 	supply_descriptor = "units of medical reagents"
@@ -199,14 +204,18 @@
 	vendor_theme = VENDOR_THEME_COMPANY
 	vend_delay = 0.5 SECONDS
 
-	/// sets vendor to require a medlink to be able to resupply
-	var/requires_supply_link_port = TRUE
+	/// Whether the vendor can use a medlink to be able to resupply automatically
+	var/allow_supply_link_restock = TRUE
 
+	/// Whether this vendor supports health scanning the user via mouse drop
+	var/healthscan = TRUE
 	var/datum/health_scan/last_health_display
 
-	var/healthscan = TRUE
+	/// The starting volume of the chem refill tank
 	var/chem_refill_volume = 600
+	/// The maximum volume of the chem refill tank
 	var/chem_refill_volume_max = 600
+	/// A list of item types that allow reagent refilling
 	var/list/chem_refill = list(
 		/obj/item/reagent_container/hypospray/autoinjector/bicaridine,
 		/obj/item/reagent_container/hypospray/autoinjector/dexalinp,
@@ -216,6 +225,7 @@
 		/obj/item/reagent_container/hypospray/autoinjector/oxycodone,
 		/obj/item/reagent_container/hypospray/autoinjector/tramadol,
 		/obj/item/reagent_container/hypospray/autoinjector/tricord,
+
 		/obj/item/reagent_container/hypospray/autoinjector/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
 
@@ -232,7 +242,7 @@
 		/obj/item/reagent_container/glass/bottle/oxycodone,
 		/obj/item/reagent_container/glass/bottle/peridaxon,
 		/obj/item/reagent_container/glass/bottle/tramadol,
-		)
+	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/Destroy()
 	QDEL_NULL(last_health_display)
@@ -261,7 +271,7 @@
 /obj/structure/machinery/cm_vending/sorted/medical/additional_restock_checks(obj/item/item_to_stock, mob/user, list/vendspec)
 	var/dynamic_metadata = dynamic_stock_multipliers[vendspec]
 	if(dynamic_metadata)
-		if(vendspec[2] >= dynamic_metadata[2] && (!requires_supply_link_port || !get_supply_link()))
+		if(vendspec[2] >= dynamic_metadata[2] && (!allow_supply_link_restock || !get_supply_link()))
 			to_chat(user, SPAN_WARNING("[src] is already full of [vendspec[1]]!"))
 			return FALSE
 	else
@@ -290,7 +300,7 @@
 		to_chat(user, SPAN_WARNING("[src] cannot refill [container]."))
 		return FALSE
 	if(chem_refill_volume < missing_reagents)
-		var/auto_refill = requires_supply_link_port && get_supply_link()
+		var/auto_refill = allow_supply_link_restock && get_supply_link()
 		to_chat(user, SPAN_WARNING("[src] blinks red and makes a buzzing noise as it rejects [container]. Looks like it doesn't have enough reagents [auto_refill ? "yet" : "left"]."))
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
 		return FALSE
@@ -316,15 +326,17 @@
 
 		var/obj/item/reagent_container/container = I
 		if(istype(I, /obj/item/reagent_container/syringe) || istype(I, /obj/item/reagent_container/dropper))
-			stock(container, user)
+			if(!stock(container, user))
+				return ..()
 			return
 
 		if(container.reagents.total_volume == container.reagents.maximum_volume)
-			stock(container, user)
+			if(!stock(container, user))
+				return ..()
 			return
 
 		if(!try_deduct_chem(container, user))
-			return
+			return ..()
 
 		// Since the reagent is deleted on use it's easier to make a new one instead of snowflake checking
 		var/obj/item/reagent_container/new_container = new container.type(src)
@@ -362,7 +374,7 @@
 		return
 	if(user.stat || user.is_mob_restrained())
 		return
-	if(get_dist(user, src) > 1 || get_dist(user, A) > 1)
+	if(get_dist(user, src) > 1 || get_dist(user, A) > 1) // More lenient
 		return
 	if(!ishuman(user))
 		return
@@ -480,7 +492,7 @@
 	// If this is a medlinked vendor (that needs a link) and isn't dynamically changing it will periodically restock itself
 	if(vend_flags & VEND_STOCK_DYNAMIC)
 		return
-	if(!requires_supply_link_port)
+	if(!allow_supply_link_restock)
 		return
 	if(!get_supply_link())
 		return
@@ -490,7 +502,7 @@
 	. = ..()
 
 	// If the anchor state changed, this is a vendor that needs a link, and isn't dynamically changing, update whether we automatically restock
-	if(. && !(vend_flags & VEND_STOCK_DYNAMIC) && requires_supply_link_port)
+	if(. && !(vend_flags & VEND_STOCK_DYNAMIC) && allow_supply_link_restock)
 		if(get_supply_link())
 			START_PROCESSING(SSslowobj, src)
 		else
@@ -557,8 +569,8 @@
 	desc = "Medical chemistry dispenser. Provided by Wey-Yu Pharmaceuticals Division(TM)."
 	icon_state = "chem"
 	req_access = list(ACCESS_MARINE_CHEMISTRY)
-
 	healthscan = FALSE
+
 	chem_refill_volume = 800
 	chem_refill_volume_max = 800
 	chem_refill = list(
@@ -605,9 +617,9 @@
 	name = "\improper Medical Equipment Vendor"
 	desc = "A vending machine dispensing various pieces of medical equipment."
 	req_one_access = list(ACCESS_ILLEGAL_PIRATE, ACCESS_UPP_GENERAL, ACCESS_CLF_GENERAL)
-	requires_supply_link_port = FALSE
 	req_access = null
 	vendor_theme = VENDOR_THEME_CLF
+	allow_supply_link_restock = FALSE
 
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed
 	name = "\improper ColMarTech MarineMed"
@@ -642,9 +654,9 @@
 	name = "\improper Basic Medical Supplies Vendor"
 	desc = "A vending machine dispensing basic medical supplies."
 	req_one_access = list(ACCESS_ILLEGAL_PIRATE, ACCESS_UPP_GENERAL, ACCESS_CLF_GENERAL)
-	requires_supply_link_port = FALSE
 	req_access = null
 	vendor_theme = VENDOR_THEME_CLF
+	allow_supply_link_restock = FALSE
 
 /obj/structure/machinery/cm_vending/sorted/medical/blood
 	name = "\improper MM Blood Dispenser"
@@ -652,46 +664,47 @@
 	icon_state = "blood"
 	wrenchable = TRUE
 	hackable = TRUE
-
-	listed_products = list(
-		list("BLOOD PACKS", -1, null, null),
-		list("A+ Blood Pack", 5, /obj/item/reagent_container/blood/APlus, VENDOR_ITEM_REGULAR),
-		list("A- Blood Pack", 5, /obj/item/reagent_container/blood/AMinus, VENDOR_ITEM_REGULAR),
-		list("B+ Blood Pack", 5, /obj/item/reagent_container/blood/BPlus, VENDOR_ITEM_REGULAR),
-		list("B- Blood Pack", 5, /obj/item/reagent_container/blood/BMinus, VENDOR_ITEM_REGULAR),
-		list("O+ Blood Pack", 5, /obj/item/reagent_container/blood/OPlus, VENDOR_ITEM_REGULAR),
-		list("O- Blood Pack", 5, /obj/item/reagent_container/blood/OMinus, VENDOR_ITEM_REGULAR),
-
-		list("MISCELLANEOUS", -1, null, null),
-		list("Empty Blood Pack", 5, /obj/item/reagent_container/blood, VENDOR_ITEM_REGULAR)
-	)
-
 	healthscan = FALSE
+	allow_supply_link_restock = FALSE
 	chem_refill = null
 
 /obj/structure/machinery/cm_vending/sorted/medical/blood/bolted
 	wrenchable = FALSE
 
 /obj/structure/machinery/cm_vending/sorted/medical/blood/populate_product_list(scale)
-	return
+	listed_products = list(
+		list("BLOOD PACKS", -1, null, null),
+		list("A+ Blood Pack", round(scale * 5), /obj/item/reagent_container/blood/APlus, VENDOR_ITEM_REGULAR),
+		list("A- Blood Pack", round(scale * 5), /obj/item/reagent_container/blood/AMinus, VENDOR_ITEM_REGULAR),
+		list("B+ Blood Pack", round(scale * 5), /obj/item/reagent_container/blood/BPlus, VENDOR_ITEM_REGULAR),
+		list("B- Blood Pack", round(scale * 5), /obj/item/reagent_container/blood/BMinus, VENDOR_ITEM_REGULAR),
+		list("O+ Blood Pack", round(scale * 5), /obj/item/reagent_container/blood/OPlus, VENDOR_ITEM_REGULAR),
+		list("O- Blood Pack", round(scale * 5), /obj/item/reagent_container/blood/OMinus, VENDOR_ITEM_REGULAR),
+
+		list("MISCELLANEOUS", -1, null, null),
+		list("Empty Blood Pack", round(scale * 5), /obj/item/reagent_container/blood, VENDOR_ITEM_REGULAR)
+	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/blood/antag
 	req_one_access = list(ACCESS_ILLEGAL_PIRATE, ACCESS_UPP_GENERAL, ACCESS_CLF_GENERAL)
-	requires_supply_link_port = FALSE
 	req_access = null
 	vendor_theme = VENDOR_THEME_CLF
+	allow_supply_link_restock = FALSE
+
+
+//------------WALL MED VENDORS------------
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med
 	name = "\improper NanoMed"
 	desc = "Wall-mounted Medical Equipment Dispenser."
 	icon_state = "wallmed"
-	vend_delay = 0.7 SECONDS
-	requires_supply_link_port = FALSE
-
+	appearance_flags = TILE_BOUND
 	req_access = list()
-
 	density = FALSE
 	wrenchable = FALSE
+	vend_delay = 0.7 SECONDS
+	allow_supply_link_restock = FALSE
+
 	listed_products = list(
 		list("SUPPLIES", -1, null, null),
 		list("First-Aid Autoinjector", 2, /obj/item/reagent_container/hypospray/autoinjector/skillless, VENDOR_ITEM_REGULAR),
@@ -703,8 +716,6 @@
 		list("UTILITY", -1, null, null),
 		list("HF2 Health Analyzer", 2, /obj/item/device/healthanalyzer, VENDOR_ITEM_REGULAR)
 	)
-
-	appearance_flags = TILE_BOUND
 
 	chem_refill_volume = 250
 	chem_refill_volume_max = 250
@@ -732,6 +743,10 @@
 	icon = 'icons/obj/structures/machinery/lifeboat.dmi'
 	icon_state = "medcab"
 	desc = "A wall-mounted cabinet containing medical supplies vital to survival. While better equipped, it can only refill basic supplies."
+	unacidable = TRUE
+	unslashable = TRUE
+	wrenchable = FALSE
+	hackable = FALSE
 
 	listed_products = list(
 		list("AUTOINJECTORS", -1, null, null),
@@ -749,10 +764,6 @@
 		list("Splints", 8, /obj/item/stack/medical/splint, VENDOR_ITEM_REGULAR)
 	)
 
-	unacidable = TRUE
-	unslashable = TRUE
-	wrenchable = FALSE
-	hackable = FALSE
 	chem_refill_volume = 500
 	chem_refill_volume_max = 500
 
@@ -762,8 +773,9 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/souto
 	name = "\improper SoutoMed"
 	desc = "In Soutoland (Trademark pending), one is never more than 6ft away from canned Havana goodness. Drink a Souto today! For a full selection of Souto products please visit a licensed retailer or vending machine. Also doubles as basic first aid station."
-	icon_state = "soutomed"
 	icon = 'icons/obj/structures/souto_land.dmi'
+	icon_state = "soutomed"
+
 	listed_products = list(
 		list("FIRST AID SUPPLIES", -1, null, null),
 		list("First-Aid Autoinjector", 2, /obj/item/reagent_container/hypospray/autoinjector/skillless, VENDOR_ITEM_REGULAR),

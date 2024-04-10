@@ -297,7 +297,7 @@
 
 	chem_refill_volume -= missing_reagents
 	to_chat(user, SPAN_NOTICE("[src] makes a whirring noise as it refills your [container.name]."))
-	playsound(src, 'sound/effects/refill.ogg', 25, 1, 3)
+	playsound(src, 'sound/effects/refill.ogg', 10, 1, 3)
 	return TRUE
 
 /obj/structure/machinery/cm_vending/sorted/medical/attackby(obj/item/I, mob/user)

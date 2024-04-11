@@ -78,7 +78,15 @@
 			context.add_task(task)
 			break
 
-
+/**
+ * Similar to variations mode, but rolls all files individually rather
+ * than picking one, using name for landmark. The prefix number is used
+ * as a percentage chance.
+ *
+ * Example:
+ *   some/folder/10.something_funny.dmm
+ * would have 10% chance to insert at the 'something_funny' landmark
+ */
 /datum/nmnode/mapload/sprinkles
 	id = "map_sprinkle"
 	name = "Map Sprinkles"

@@ -131,8 +131,9 @@
 		. += SPAN_NOTICE(" Nothing.")
 
 /obj/structure/restock_cart/deconstruct(disassembled)
-	playsound(loc, destroyed_sound, 35, 1)
-	visible_message(SPAN_NOTICE("[src] falls apart as its contents spill everywhere!"))
+	if(!disassembled)
+		playsound(loc, destroyed_sound, 35, 1)
+		visible_message(SPAN_NOTICE("[src] falls apart as its contents spill everywhere!"))
 
 	// Assumption: supplies_max is > 0
 	if(supplies_remaining > 0 && length(destroyed_loot))
@@ -147,6 +148,24 @@
 			var/type_path = pick(destroyed_loot)
 			for(var/amount in 1 to rand(1, destroyed_loot[type_path]))
 				new type_path(loc)
+
+	return ..()
+
+/obj/structure/restock_cart/attackby(obj/item/W, mob/user)
+	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+		if(user.action_busy)
+			return
+		playsound(src, 'sound/items/Ratchet.ogg', 25, 1)
+		user.visible_message(SPAN_NOTICE("[user] starts to deconstruct [src]."), \
+		SPAN_NOTICE("You start deconstructing [src]."))
+		if(!do_after(user, 5 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+			return
+		user.visible_message(SPAN_NOTICE("[user] deconstructs [src]."), \
+		SPAN_NOTICE("You deconstruct [src]."))
+		playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
+		var/obj/item/stack/sheet/metal/parts = new(loc)
+		deconstruct(TRUE)
+		return
 
 	return ..()
 

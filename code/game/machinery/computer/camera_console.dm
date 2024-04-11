@@ -223,17 +223,17 @@
 	if(action != "switch_camera")
 		return
 	if(broadcastingcamera)
-		broadcastingcamera.linked_tvs -= src
-		broadcastingcamera = null
+		clear_camera()
 	if(!istype(current, /obj/structure/machinery/camera/correspondent))
 		return
 	var/obj/structure/machinery/camera/correspondent/corr_cam = current
 	if(!corr_cam.linked_broadcasting)
 		return
 	broadcastingcamera = corr_cam.linked_broadcasting
-	broadcastingcamera.linked_tvs += src
 	RegisterSignal(broadcastingcamera, COMSIG_BROADCAST_GO_LIVE, PROC_REF(go_back_live))
 	RegisterSignal(broadcastingcamera, COMSIG_PARENT_QDELETING, PROC_REF(clear_camera))
+	RegisterSignal(broadcastingcamera, COMSIG_BROADCAST_HEAR_TALK, PROC_REF(transfer_talk))
+	RegisterSignal(broadcastingcamera, COMSIG_BROADCAST_SEE_EMOTE, PROC_REF(transfer_emote))
 
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast/ui_close(mob/user)
 	. = ..()
@@ -244,16 +244,32 @@
 
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast/proc/clear_camera()
 	SIGNAL_HANDLER
-	UnregisterSignal(broadcastingcamera, list(COMSIG_BROADCAST_GO_LIVE, COMSIG_PARENT_QDELETING))
-	broadcastingcamera.linked_tvs -= src
+	UnregisterSignal(broadcastingcamera, list(COMSIG_BROADCAST_GO_LIVE, COMSIG_PARENT_QDELETING, COMSIG_BROADCAST_HEAR_TALK, COMSIG_BROADCAST_SEE_EMOTE))
 	broadcastingcamera = null
 
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast/proc/go_back_live(obj/item/device/camera/broadcasting/broadcastingcamera)
 	SIGNAL_HANDLER
 	if(current.c_tag == broadcastingcamera.get_broadcast_name())
 		current = broadcastingcamera.linked_cam
-		broadcastingcamera.linked_tvs += src
 		SEND_SIGNAL(src, COMSIG_CAMERA_SET_TARGET, broadcastingcamera.linked_cam, broadcastingcamera.linked_cam.view_range, broadcastingcamera.linked_cam.view_range)
+
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/proc/transfer_talk(obj/item/camera, mob/living/sourcemob, message, verb = "says", datum/language/language, italics = FALSE, show_message_above_tv = FALSE)
+	SIGNAL_HANDLER
+	if(show_message_above_tv)
+		langchat_speech(message, get_mobs_in_view(7, src), language, sourcemob.langchat_color, FALSE, LANGCHAT_FAST_POP, list(sourcemob.langchat_styles))
+	for(var/datum/weakref/user_ref in concurrent_users)
+		var/mob/user = user_ref?.resolve()
+		if(istype(user) && user.client && user.client.prefs && !user.client.prefs.lang_chat_disabled && !user.ear_deaf && user.say_understands(sourcemob, language))
+			sourcemob.langchat_display_image(user)
+
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/proc/transfer_emote(obj/item/camera, mob/living/sourcemob, emote, audible = FALSE, show_message_above_tv = FALSE)
+	SIGNAL_HANDLER
+	if(show_message_above_tv)
+		langchat_speech(emote, get_mobs_in_view(7, src), null, null, TRUE, LANGCHAT_FAST_POP, list("emote"))
+	for(var/datum/weakref/user_ref in concurrent_users)
+		var/mob/user = user_ref?.resolve()
+		if(istype(user) && user.client && user.client.prefs && (user.client.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES) && (!audible || !user.ear_deaf))
+			sourcemob.langchat_display_image(user)
 
 /obj/structure/machinery/computer/cameras/wooden_tv/ot
 	name = "Mortar Monitoring Set"

@@ -358,7 +358,6 @@
 	w_class = SIZE_HUGE
 	flags_equip_slot = NO_FLAGS //cannot be equiped
 	var/obj/structure/machinery/camera/correspondent/linked_cam
-	var/list/linked_tvs = list()
 
 /obj/item/device/camera/broadcasting/Destroy()
 	clear_broadcast()
@@ -381,7 +380,6 @@
 /obj/item/device/camera/broadcasting/proc/clear_broadcast()
 	if(!QDELETED(linked_cam))
 		QDEL_NULL(linked_cam)
-	linked_tvs.Cut()
 
 /obj/item/device/camera/broadcasting/proc/get_broadcast_name()
 	var/datum/component/label/src_label_component = GetComponent(/datum/component/label)
@@ -390,28 +388,10 @@
 	return "Broadcast [serial_number]"
 
 /obj/item/device/camera/broadcasting/hear_talk(mob/living/sourcemob, message, verb = "says", datum/language/language, italics = FALSE)
-	var/show_message_above_tv = FALSE
-	if(get_dist(sourcemob, src) < 3)
-		show_message_above_tv = TRUE
-	for(var/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/tv in linked_tvs)
-		if(show_message_above_tv)
-			tv.langchat_speech(message, get_mobs_in_view(7, tv), language, sourcemob.langchat_color, FALSE, LANGCHAT_FAST_POP, list(sourcemob.langchat_styles))
-		for(var/datum/weakref/user_ref in tv.concurrent_users)
-			var/mob/user = user_ref?.resolve()
-			if(istype(user) && user.client && user.client.prefs && !user.client.prefs.lang_chat_disabled && !user.ear_deaf && user.say_understands(sourcemob, language))
-				sourcemob.langchat_display_image(user)
+	SEND_SIGNAL(src, COMSIG_BROADCAST_HEAR_TALK, sourcemob, message, verb, language, italics, get_dist(sourcemob, src) < 3)
 
 /obj/item/device/camera/broadcasting/see_emote(mob/living/sourcemob, emote, audible = FALSE)
-	var/show_message_above_tv = FALSE
-	if(audible && get_dist(sourcemob, src) < 3)
-		show_message_above_tv = TRUE
-	for(var/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/tv in linked_tvs)
-		if(show_message_above_tv)
-			tv.langchat_speech(emote, get_mobs_in_view(7, tv), null, null, TRUE, LANGCHAT_FAST_POP, list("emote"))
-		for(var/datum/weakref/user_ref in tv.concurrent_users)
-			var/mob/user = user_ref?.resolve()
-			if(istype(user) && user.client && user.client.prefs && (user.client.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES) && (!audible || !user.ear_deaf))
-				sourcemob.langchat_display_image(user)
+	SEND_SIGNAL(src, COMSIG_BROADCAST_SEE_EMOTE, sourcemob, emote, audible, get_dist(sourcemob, src) < 3 && audible)
 
 /obj/item/photo/proc/construct(datum/picture/P)
 	icon = P.fields["icon"]

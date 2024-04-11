@@ -258,8 +258,8 @@
 	if(show_message_above_tv)
 		langchat_speech(message, get_mobs_in_view(7, src), language, sourcemob.langchat_color, FALSE, LANGCHAT_FAST_POP, list(sourcemob.langchat_styles))
 	for(var/datum/weakref/user_ref in concurrent_users)
-		var/mob/user = user_ref?.resolve()
-		if(istype(user) && user.client && user.client.prefs && !user.client.prefs.lang_chat_disabled && !user.ear_deaf && user.say_understands(sourcemob, language))
+		var/mob/user = user_ref.resolve()
+		if(user?.client?.prefs && !user.client.prefs.lang_chat_disabled && !user.ear_deaf && user.say_understands(sourcemob, language))
 			sourcemob.langchat_display_image(user)
 
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast/proc/transfer_emote(obj/item/camera, mob/living/sourcemob, emote, audible = FALSE, show_message_above_tv = FALSE)
@@ -267,8 +267,8 @@
 	if(show_message_above_tv)
 		langchat_speech(emote, get_mobs_in_view(7, src), null, null, TRUE, LANGCHAT_FAST_POP, list("emote"))
 	for(var/datum/weakref/user_ref in concurrent_users)
-		var/mob/user = user_ref?.resolve()
-		if(istype(user) && user.client && user.client.prefs && (user.client.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES) && (!audible || !user.ear_deaf))
+		var/mob/user = user_ref.resolve()
+		if(user?.client?.prefs && (user.client.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES) && (!audible || !user.ear_deaf))
 			sourcemob.langchat_display_image(user)
 
 /obj/structure/machinery/computer/cameras/wooden_tv/ot

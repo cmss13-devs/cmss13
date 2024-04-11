@@ -96,7 +96,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 			var/block = FALSE
 
 			for(var/obj/item/clothing/clothing in M.get_equipped_items())
-				if(clothing.permeability_coefficient < chance) chance = clothing.permeability_coefficient
+				if(clothing.permeability_coefficient < chance)
+					chance = clothing.permeability_coefficient
 				if(istype(clothing, /obj/item/clothing/suit/bio_suit))
 					// bio suits are just about completely fool-proof - Doohl
 					// kind of a hacky way of making bio suits more resistant to chemicals but w/e
@@ -107,7 +108,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 					if(prob(75))
 						block = TRUE
 
-			chance = chance * 100
+			chance *= 100
 
 			if(prob(chance) && !block)
 				if(M.reagents)

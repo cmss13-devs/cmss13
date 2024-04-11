@@ -252,6 +252,7 @@
 
 		if(can_administer)
 			beaker.reagents.trans_to(occupant, 5)
+			beaker.reagents.reaction(occupant, TOUCH_NO_DUPLICATION)
 
 	if(autoeject)
 		//release the patient automatically when brute and burn are handled on non-robotic limbs

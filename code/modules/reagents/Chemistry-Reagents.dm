@@ -114,6 +114,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 				if(prob(chance) && !block)
 					if(M.reagents)
 						M.reagents.add_reagent(self.id,self.volume/2)
+		if(method == TOUCH_NO_DUPLICATION)
+			method = TOUCH
 		for(var/datum/chem_property/P in self.properties)
 			var/potency = P.level * 0.5
 			P.reaction_mob(M, method, volume, potency)

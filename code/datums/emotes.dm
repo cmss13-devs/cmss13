@@ -143,7 +143,7 @@
 			var/list/heard = get_mobs_in_view(7, user)
 			for(var/mob/current_mob in heard)
 				for(var/obj/object in current_mob.contents)
-					if((object.flags_atom & USES_SEEING) && (object.flags_atom & USES_HEARING))
+					if((object.flags_atom & USES_HEARING))
 						seeing_obj |= object
 				if(current_mob.ear_deaf)
 					heard -= current_mob

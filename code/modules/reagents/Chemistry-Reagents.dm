@@ -83,7 +83,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	for(var/datum/chem_property/P in properties)
 		P.post_update_reagent()
 
-/datum/reagent/proc/reaction_mob(mob/M, method=TOUCH, volume) //By default we have a chance to transfer some
+/datum/reagent/proc/reaction_mob(mob/M, method=TOUCH, volume, permeable) //By default we have a chance to transfer some
 	if(!istype(M, /mob/living)) return 0
 	var/datum/reagent/self = src
 	src = null   //of the reagent to the mob on TOUCHING it.
@@ -92,7 +92,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		if(!istype(self.holder.my_atom, /obj/effect/particle_effect/smoke/chem))
 			// If the chemicals are in a smoke cloud, do not try to let the chemicals "penetrate" into the mob's system (balance station 13) -- Doohl
 
-			if(method == TOUCH)
+			if(method == TOUCH && permeable)
 
 				var/chance = 1
 				var/block  = 0
@@ -114,8 +114,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 				if(prob(chance) && !block)
 					if(M.reagents)
 						M.reagents.add_reagent(self.id,self.volume/2)
-		if(method == TOUCH_NO_DUPLICATION)
-			method = TOUCH
 		for(var/datum/chem_property/P in self.properties)
 			var/potency = P.level * 0.5
 			P.reaction_mob(M, method, volume, potency)

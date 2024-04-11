@@ -155,10 +155,10 @@ GLOBAL_LIST_INIT(RESTRICTED_CAMERA_NETWORKS, list( //Those networks can only be 
 #define RESULT_REQUIRES_SNOW (1<<0)
 
 
+/// Reaction type from touching it
 #define TOUCH 1
+/// Reaction type from eating it
 #define INGEST 2
-/// Will convert to TOUCH after skipping permeability code in /datum/reagent/proc/reaction_mob
-#define TOUCH_NO_DUPLICATION 3
 
 /// Marks an object as organic. Used for alien structures and any other organic material
 #define OBJ_ORGANIC (1<<0)

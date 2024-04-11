@@ -163,7 +163,7 @@
 		user.visible_message(SPAN_NOTICE("[user] deconstructs [src]."), \
 		SPAN_NOTICE("You deconstruct [src]."))
 		playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
-		var/obj/item/stack/sheet/metal/parts = new(loc)
+		new /obj/item/stack/sheet/metal(loc)
 		deconstruct(TRUE)
 		return
 

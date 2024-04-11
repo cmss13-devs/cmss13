@@ -138,9 +138,9 @@
 	// Assumption: supplies_max is > 0
 	if(supplies_remaining > 0 && length(destroyed_loot))
 		var/spawned_any = FALSE
-		var/probability = supplies_remaining / supplies_max
+		var/probability = (supplies_remaining / supplies_max) * 100
 		for(var/type_path in destroyed_loot)
-			if(prob(probability * 100))
+			if(prob(probability))
 				for(var/amount in 1 to rand(1, destroyed_loot[type_path]))
 					new type_path(loc)
 					spawned_any = TRUE

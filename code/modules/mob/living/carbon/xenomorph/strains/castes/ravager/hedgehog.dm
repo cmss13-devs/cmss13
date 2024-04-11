@@ -105,10 +105,8 @@
 
 	if(percentage_shards >= 50)
 		bound_xeno.small_explosives_stun = FALSE
-		return
-	if(percentage_shards <= 50)
+	if(percentage_shards < 50)
 		bound_xeno.small_explosives_stun = TRUE
-		return
 
 	return
 

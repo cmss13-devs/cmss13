@@ -196,11 +196,6 @@
 	var/datum/reagent/napalm/blue/reagent = new()
 	new /obj/flamer_fire(turf, cause_data, reagent, 3)
 
-	var/datum/effect_system/smoke_spread/phosphorus/landingSmoke = new /datum/effect_system/smoke_spread/phosphorus
-	landingSmoke.set_up(3, 0, turf, null, 6, cause_data)
-	landingSmoke.start()
-	landingSmoke = null
-
 /datum/ammo/rocket/wp/on_hit_mob(mob/mob, obj/projectile/projectile)
 	drop_flame(get_turf(mob), projectile.weapon_cause_data)
 

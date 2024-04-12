@@ -164,19 +164,23 @@
 		SPAN_NOTICE("You deconstruct [src]."))
 		playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
 		new /obj/item/stack/sheet/metal(loc)
+		if(supplies_remaining)
+			msg_admin_niche("[key_name(user)] deconstructed [src] with [supplies_remaining] [supply_descriptor] remaining in [get_area(src)] [ADMIN_JMP(loc)]", loc.x, loc.y, loc.z)
 		deconstruct(TRUE)
 		return
 
 	return ..()
 
-/obj/structure/restock_cart/proc/healthcheck()
+/obj/structure/restock_cart/proc/healthcheck(mob/user)
 	if(health <= 0)
+		if(supplies_remaining && ishuman(user))
+			msg_admin_niche("[key_name(user)] destroyed [src] with [supplies_remaining] [supply_descriptor] remaining in [get_area(src)] [ADMIN_JMP(loc)]", loc.x, loc.y, loc.z)
 		deconstruct(FALSE)
 
 /obj/structure/restock_cart/bullet_act(obj/projectile/Proj)
 	health -= Proj.damage
 	playsound(src, attacked_sound, 25, 1)
-	healthcheck()
+	healthcheck(Proj.firer)
 	return TRUE
 
 /obj/structure/restock_cart/attack_alien(mob/living/carbon/xenomorph/user)
@@ -187,7 +191,7 @@
 	playsound(src, attacked_sound, 25, 1)
 	user.visible_message(SPAN_DANGER("[user] slashes [src]!"), \
 	SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-	healthcheck()
+	healthcheck(user)
 	return XENO_ATTACK_ACTION
 
 /obj/structure/restock_cart/ex_act(severity)
@@ -340,23 +344,23 @@
 
 	var/restocking_reagents = istype(cart, /obj/structure/restock_cart/medical/reagent)
 	if(restocking_reagents && !LAZYLEN(chem_refill))
-		to_chat(user, SPAN_WARNING("[src] doesn't use reagent canisters!"))
+		to_chat(user, SPAN_WARNING("[src] doesn't use [cart.supply_descriptor]!"))
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] starts stocking a bunch of supplies into [src]."), \
-	SPAN_NOTICE("You start stocking a bunch of supplies into [src]."))
+	user.visible_message(SPAN_NOTICE("[user] starts stocking [cart.supply_descriptor] supplies into [src]."), \
+	SPAN_NOTICE("You start stocking [cart.supply_descriptor] into [src]."))
 	being_restocked = TRUE
 
 	while(cart.supplies_remaining > 0)
-		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, src))
+		if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, src))
 			being_restocked = FALSE
-			user.visible_message(SPAN_NOTICE("[user] stopped stocking [src] with supplies."), \
-			SPAN_NOTICE("You stop stocking [src] with supplies."))
+			user.visible_message(SPAN_NOTICE("[user] stopped stocking [src] with [cart.supply_descriptor]."), \
+			SPAN_NOTICE("You stop stocking [src] with [cart.supply_descriptor]."))
 			return
 		if(QDELETED(cart) || get_dist(user, cart) > 1)
 			being_restocked = FALSE
-			user.visible_message(SPAN_NOTICE("[user] stopped stocking [src] with supplies."), \
-			SPAN_NOTICE("You stop stocking [src] with supplies."))
+			user.visible_message(SPAN_NOTICE("[user] stopped stocking [src] with [cart.supply_descriptor]."), \
+			SPAN_NOTICE("You stop stocking [src] with [cart.supply_descriptor]."))
 			return
 
 		if(restocking_reagents)
@@ -370,8 +374,8 @@
 			cart.supplies_remaining--
 
 	being_restocked = FALSE
-	user.visible_message(SPAN_NOTICE("[user] finishes stocking [src] with supplies."), \
-	SPAN_NOTICE("You finish stocking [src] with supplies."))
+	user.visible_message(SPAN_NOTICE("[user] finishes stocking [src] with [cart.supply_descriptor]."), \
+	SPAN_NOTICE("You finish stocking [src] with [cart.supply_descriptor]."))
 
 /obj/structure/machinery/cm_vending/sorted/medical/attackby(obj/item/I, mob/user)
 	if(stat != WORKING)

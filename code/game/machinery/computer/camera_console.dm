@@ -277,7 +277,7 @@
 
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast/examine(mob/user)
 	. = ..()
-	attack_hand(user)
+	attack_hand(user) //watch tv on examine if close enough
 
 /obj/structure/machinery/computer/cameras/wooden_tv/ot
 	name = "Mortar Monitoring Set"

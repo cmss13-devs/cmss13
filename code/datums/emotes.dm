@@ -153,8 +153,7 @@
 			run_langchat(user, heard)
 
 	for(var/obj/object as anything in seeing_obj)
-		if(object) //It's possible that it could be deleted in the meantime.
-			object.see_emote(user, msg, (emote_type & EMOTE_AUDIBLE))
+		object.see_emote(user, msg, (emote_type & EMOTE_AUDIBLE))
 
 	SEND_SIGNAL(user, COMSIG_MOB_EMOTED(key))
 

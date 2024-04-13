@@ -230,7 +230,7 @@ type StripMenuData = {
 };
 
 const StripContent = (props: { readonly item: StripMenuItem }) => {
-  if ('name' in props.item) {
+  if (props.item && 'name' in props.item) {
     return (
       <Box
         as="img"
@@ -240,7 +240,7 @@ const StripContent = (props: { readonly item: StripMenuItem }) => {
         className="StripMenu__contentbox"
       />
     );
-  } else if ('obscured' in props.item) {
+  } else if (props.item && 'obscured' in props.item) {
     return (
       <Icon
         name={

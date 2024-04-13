@@ -240,7 +240,8 @@ const StripContent = (props: { readonly item: StripMenuItem }) => {
         className="StripMenu__contentbox"
       />
     );
-  } else if (props.item && 'obscured' in props.item) {
+  }
+  if (props.item && 'obscured' in props.item) {
     return (
       <Icon
         name={
@@ -254,9 +255,8 @@ const StripContent = (props: { readonly item: StripMenuItem }) => {
         className="StripMenu__obscured"
       />
     );
-  } else {
-    return <> </>;
   }
+  return <> </>;
 };
 
 export const StripMenu = (props, context) => {

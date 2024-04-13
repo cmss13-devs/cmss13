@@ -275,6 +275,10 @@
 		if(user?.client?.prefs && (user.client.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES) && (!audible || !user.ear_deaf))
 			sourcemob.langchat_display_image(user)
 
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/examine(mob/user)
+	. = ..()
+	attack_hand(user)
+
 /obj/structure/machinery/computer/cameras/wooden_tv/ot
 	name = "Mortar Monitoring Set"
 	desc = "A Console linked to Mortar launched cameras."

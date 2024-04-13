@@ -229,10 +229,8 @@ type StripMenuData = {
   name: string;
 };
 
-const StripContent = (props: { readonly item: StripMenuItem | null }) => {
-  if (props.item === null) {
-    return null;
-  } else if ('name' in props.item) {
+const StripContent = (props: { readonly item: StripMenuItem }) => {
+  if ('name' in props.item) {
     return (
       <Box
         as="img"
@@ -347,7 +345,7 @@ export const StripMenu = (props, context) => {
                               className="StripMenu__itemslot"
                             />
                           )}
-                          <StripContent item={item} />
+                          {item && <StripContent item={item} />}
                           {slot.additionalComponent}
                         </Button>
 

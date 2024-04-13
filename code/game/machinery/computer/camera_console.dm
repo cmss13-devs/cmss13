@@ -216,7 +216,7 @@
 	return ..()
 
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast/ui_state(mob/user)
-	return GLOB.default_state
+	return GLOB.in_view
 
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast/ui_act(action, params)
 	. = ..()
@@ -277,7 +277,7 @@
 
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast/examine(mob/user)
 	. = ..()
-	attack_hand(user) //watch tv on examine if close enough
+	attack_hand(user) //watch tv on examine
 
 /obj/structure/machinery/computer/cameras/wooden_tv/ot
 	name = "Mortar Monitoring Set"

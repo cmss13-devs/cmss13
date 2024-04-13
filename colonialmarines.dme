@@ -2359,6 +2359,7 @@
 #include "code\modules\tgui\states\hands.dm"
 #include "code\modules\tgui\states\human_adjacent.dm"
 #include "code\modules\tgui\states\inventory.dm"
+#include "code\modules\tgui\states\in_view.dm"
 #include "code\modules\tgui\states\never.dm"
 #include "code\modules\tgui\states\new_player.dm"
 #include "code\modules\tgui\states\not_incapacitated.dm"

@@ -254,6 +254,8 @@ const StripContent = (props: { readonly item: StripMenuItem }) => {
         className="StripMenu__obscured"
       />
     );
+  } else {
+    return null;
   }
 };
 

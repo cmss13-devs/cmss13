@@ -13,7 +13,7 @@
 	chemclass = CHEM_CLASS_RARE
 
 
-/datum/reagent/blood/reaction_mob(mob/M, method=TOUCH, volume)
+/datum/reagent/blood/reaction_mob(mob/M, method=TOUCH, volume, permeable)
 	var/datum/reagent/blood/self = src
 	src = null
 	if(self.data_properties && self.data_properties["viruses"])
@@ -85,7 +85,7 @@
 	color = "#C81040" // rgb: 200, 16, 64
 	properties = list(PROPERTY_CURING = 4)
 
-/datum/reagent/vaccine/reaction_mob(mob/M, method=TOUCH, volume)
+/datum/reagent/vaccine/reaction_mob(mob/M, method=TOUCH, volume, permeable)
 	if(has_species(M,"Horror"))
 		return
 	var/datum/reagent/vaccine/self = src
@@ -124,7 +124,7 @@
 	src = null
 	O.extinguish()
 
-/datum/reagent/water/reaction_mob(mob/living/M, method=TOUCH, volume)//Splashing people with water can help put them out!
+/datum/reagent/water/reaction_mob(mob/living/M, method=TOUCH, volume, permeable)//Splashing people with water can help put them out!
 	if(!istype(M, /mob/living))
 		return
 	if(method == TOUCH)
@@ -517,7 +517,7 @@
 	if(volume >= 1 && istype(T))
 		T.clean_cleanables()
 
-/datum/reagent/space_cleaner/reaction_mob(mob/M, method=TOUCH, volume)
+/datum/reagent/space_cleaner/reaction_mob(mob/M, method=TOUCH, volume, permeable)
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
 		if(C.r_hand)
@@ -592,7 +592,7 @@
 	reagent_state = LIQUID
 	color = "#535E66" // rgb: 83, 94, 102
 
-/datum/reagent/xenomicrobes/reaction_mob(mob/M, method=TOUCH, volume)
+/datum/reagent/xenomicrobes/reaction_mob(mob/M, method=TOUCH, volume, permeable)
 	src = null
 	if((prob(10) && method==TOUCH) || method==INGEST)
 		M.contract_disease(new /datum/disease/xeno_transformation(0),1)
@@ -672,7 +672,7 @@
 	custom_metabolism = 100 //disappears immediately
 	properties = list(PROPERTY_RAVENING = 1)
 
-/datum/reagent/blackgoo/reaction_mob(mob/M, method=TOUCH, volume)
+/datum/reagent/blackgoo/reaction_mob(mob/M, method=TOUCH, volume, permeable)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.species.name == "Human")

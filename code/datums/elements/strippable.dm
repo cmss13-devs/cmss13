@@ -283,7 +283,7 @@
 	if (istype(source) && istype(user))
 		time_to_strip = user.get_strip_delay(user, source)
 
-	if (!do_after(user, time_to_strip, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, source, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
+	if (!do_after(user, time_to_strip, INTERRUPT_ALL, BUSY_ICON_HOSTILE, source, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 		return FALSE
 
 	return TRUE

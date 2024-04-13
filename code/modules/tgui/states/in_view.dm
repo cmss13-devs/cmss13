@@ -7,7 +7,7 @@ GLOBAL_DATUM_INIT(in_view, /datum/ui_state/in_view, new)
 	return UI_CLOSE // Don't allow interaction by default.
 
 /mob/ghost/in_view_can_use_topic(src_object)
-	return UI_UPDATE
+	return UI_UPDATE //ghost can just watch
 
 /mob/living/in_view_can_use_topic(src_object)
 	. = shared_ui_interaction(src_object)

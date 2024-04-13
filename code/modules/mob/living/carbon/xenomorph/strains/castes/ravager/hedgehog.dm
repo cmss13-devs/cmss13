@@ -105,8 +105,11 @@
 
 	if(percentage_shards >= 50)
 		bound_xeno.small_explosives_stun = FALSE
+		bound_xeno.remove_filter("hedge_unstunnable", 1, list("type" = "outline", "color" = "#421313", "size" = 1))
 	if(percentage_shards < 50)
 		bound_xeno.small_explosives_stun = TRUE
+		bound_xeno.add_filter("hedge_unstunnable", 1, list("type" = "outline", "color" = "#421313", "size" = 1))
+
 
 	return
 

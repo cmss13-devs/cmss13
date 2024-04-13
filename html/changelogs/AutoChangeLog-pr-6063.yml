@@ -1,0 +1,5 @@
+author: "BadAtThisGame302"
+delete-after: True
+changes:
+  - rscadd: "Added a CL Surv to Trijent and a CMB Surv to LV."
+  - qol: "Changes almost all survivors regardless of maps to fit a more modern artstyle with their uniforms and to remove any marine clothing, as well as updating various presets."

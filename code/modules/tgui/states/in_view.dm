@@ -6,6 +6,9 @@ GLOBAL_DATUM_INIT(in_view, /datum/ui_state/in_view, new)
 /mob/proc/in_view_can_use_topic(src_object)
 	return UI_CLOSE // Don't allow interaction by default.
 
+/mob/ghost/in_view_can_use_topic(src_object)
+	return UI_UPDATE
+
 /mob/living/in_view_can_use_topic(src_object)
 	. = shared_ui_interaction(src_object)
 	if(. > UI_CLOSE && loc) //must not be in nullspace.

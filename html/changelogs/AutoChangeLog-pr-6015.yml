@@ -1,0 +1,11 @@
+author: "QuickLode"
+delete-after: True
+changes:
+  - rscadd: "Adds four new Colony Synthetic Variants: Archaeologist, ICC, Landing Pad Attendant, Surveyor. These are distinctive RP quirks which should help players better choose roles they like, they also flesh out the variants."
+  - rscadd: "Diversifies Colony Synthetic weapons and loadouts to be more flavorful and fitting to their roles."
+  - balance: "nerfs the backpack of Corporate Protection Synthetic(to 5 spaces) and nailgun ammo for Engineering Synthetic(from 3 to 1)"
+  - balance: "Brings up several antiquated tools to slightly below 'CM' level (kitchen blades to about a knife, pickaxe to about a machete, police baton to a knife)"
+  - bugfix: "adds missing hit sound to pickaxe(slicing)"
+  - bugfix: "adds missing pouch for UPP Synthetic Survivor"
+  - spellcheck: "properly names reconaissance synthetic in spawn"
+  - rscdel: "removes Detective and Janitor Synthetic from rotation(temporary, until I can better reaestheticize their looks)"

@@ -35,6 +35,10 @@ $background-color: rgba(0, 0, 0, 0.33) !default;
   height: 100%;
 }
 
+.StripMenu__contentbox {
+  position: relative;
+}
+
 .StripMenu__itembutton {
   position: relative;
   width: 100%;

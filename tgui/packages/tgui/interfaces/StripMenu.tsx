@@ -229,6 +229,17 @@ type StripMenuData = {
   name: string;
 };
 
+const StripContent = (props: { readonly image: string }) => {
+  return (
+    <Box
+      as="img"
+      src={`data:image/jpeg;base64,${props.image}`}
+      height="100%"
+      width="100%"
+    />
+  );
+};
+
 export const StripMenu = (props, context) => {
   const { act, data } = useBackend<StripMenuData>();
 
@@ -275,13 +286,7 @@ export const StripMenu = (props, context) => {
                   } else if ('name' in item) {
                     alternateAction = ALTERNATE_ACTIONS[item.alternate];
 
-                    content = (
-                      <Box
-                        as="img"
-                        src={`data:image/jpeg;base64,${item.icon}`}
-                        className="StripMenu__iconbox"
-                      />
-                    );
+                    content = <StripContent image={item.icon} />;
 
                     tooltip = item.name;
                   } else if ('obscured' in item) {
@@ -341,7 +346,7 @@ export const StripMenu = (props, context) => {
                             />
                           )}
 
-                          <Box style={{ position: 'relative' }}>{content}</Box>
+                          <Box className="StripMenu__contentbox">{content}</Box>
 
                           {slot.additionalComponent}
                         </Button>

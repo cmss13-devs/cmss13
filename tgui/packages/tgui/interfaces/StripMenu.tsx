@@ -24,12 +24,11 @@ const CornerText = (props: {
 
   return (
     <Box
-      style={{
-        position: 'relative',
-        left: align === 'left' ? '2px' : '-2px',
-        'text-align': align,
-        'text-shadow': '1px 1px 1px #555',
-      }}>
+      className={
+        align === 'left'
+          ? 'StripMenu__cornertext_left'
+          : 'StripMenu__cornertext_right'
+      }>
       {children}
     </Box>
   );
@@ -280,12 +279,7 @@ export const StripMenu = (props, context) => {
                       <Box
                         as="img"
                         src={`data:image/jpeg;base64,${item.icon}`}
-                        height="100%"
-                        width="100%"
-                        style={{
-                          '-ms-interpolation-mode': 'nearest-neighbor',
-                          'vertical-align': 'middle',
-                        }}
+                        className="StripMenu__iconbox"
                       />
                     );
 
@@ -301,11 +295,7 @@ export const StripMenu = (props, context) => {
                         size={3}
                         ml={0}
                         mt={1.3}
-                        style={{
-                          'text-align': 'center',
-                          height: '100%',
-                          width: '100%',
-                        }}
+                        className="StripMenu__obscured"
                       />
                     );
 
@@ -322,12 +312,7 @@ export const StripMenu = (props, context) => {
                         width: BUTTON_DIMENSIONS,
                         height: BUTTON_DIMENSIONS,
                       }}>
-                      <Box
-                        style={{
-                          position: 'relative',
-                          width: '100%',
-                          height: '100%',
-                        }}>
+                      <Box className="StripMenu__itembox">
                         <Button
                           onClick={() => {
                             if (item === null || 'no_item_action' in item) {
@@ -342,29 +327,17 @@ export const StripMenu = (props, context) => {
                           }}
                           fluid
                           tooltip={tooltip}
+                          className="StripMenu__itembutton"
                           style={{
                             background: item?.interacting
                               ? 'hsl(39, 73%, 30%)'
                               : undefined,
-                            position: 'relative',
-                            width: '100%',
-                            height: '100%',
-                            padding: 0,
                           }}>
                           {slot.image && (
                             <Box
                               as="img"
                               src={resolveAsset(slot.image)}
-                              opacity={0.7}
-                              style={{
-                                position: 'absolute',
-                                width: '32px',
-                                height: '32px',
-                                left: '50%',
-                                top: '50%',
-                                transform:
-                                  'translateX(-50%) translateY(-50%) scale(0.8)',
-                              }}
+                              className="StripMenu__itemslot"
                             />
                           )}
 
@@ -381,13 +354,7 @@ export const StripMenu = (props, context) => {
                               });
                             }}
                             tooltip={alternateAction.text}
-                            style={{
-                              background: 'rgba(0, 0, 0, 0.6)',
-                              position: 'absolute',
-                              bottom: 0,
-                              right: 0,
-                              'z-index': 2,
-                            }}>
+                            className="StripMenu__alternativeaction">
                             <Icon name={alternateAction.icon} />
                           </Button>
                         )}

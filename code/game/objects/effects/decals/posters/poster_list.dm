@@ -217,15 +217,15 @@ Template
 // Hybrisa
 /datum/poster/poster_42
 	icon_state="poster42"
-	name = "Join the Colonial Marines. Enlist today, protect tomorrow!"
+	name = "Colonial Marines poster"
 	desc = "Join the Colonial Marines. Enlist today, protect tomorrow!"
 /datum/poster/poster_43
 	icon_state="poster43"
-	name = "Koorlander - lovingly machine-rolled for YOUR pleasure."
+	name = "Koorlander Gold"
 	desc = "Koorlander - lovingly machine-rolled for YOUR pleasure."
 /datum/poster/poster_44
 	icon_state="poster44"
-	name = "WASTE damages PROFIT - Think On!"
+	name = "Saftey poster"
 	desc = "WASTE damages PROFIT - Think On!"
 /datum/poster/poster_45
 	icon_state="poster45"
@@ -245,7 +245,7 @@ Template
 	desc = "This poster depicts a classic cola can. With a taste that's been around for centuries. Nobody can beat it."
 /datum/poster/poster_49
 	icon_state="poster49"
-	name = "Join the Colonial Marines. Enlist today, protect tomorrow!"
+	name = "Colonial Marines poster"
 	desc = "Join the Colonial Marines. Enlist today, protect tomorrow!"
 /datum/poster/poster_50
 	icon_state="poster50"
@@ -293,7 +293,7 @@ Template
 	desc = "A poster depicting a child in the arms of a Weyland Yutani 'Daniel' model Synthetic, Who thought this was a good idea?"
 /datum/poster/poster_61
 	icon_state="poster61"
-	name = "Silence is not a Virtue - Do Not Share Sensitive Information..."
+	name = "Saftey poster"
 	desc = "Silence is not a Virtue - Do Not Share Sensitive Information..."
 /datum/poster/poster_62
 	icon_state="poster62"
@@ -313,7 +313,7 @@ Template
 	desc = "This poster depicts the logo of the Colonial Marine Corps, Oorah!"
 /datum/poster/poster_66
 	icon_state="poster66"
-	name = "Save Resources! Switch Off Before You Clock Off."
+	name = "Saftey poster"
 	desc = "Save Resources! Switch Off Before You Clock Off."
 /datum/poster/poster_67
 	icon_state="poster67"
@@ -321,11 +321,11 @@ Template
 	desc = "A poster depicting a child holding the hands of a Weyland Yutani 'Daniel' model Synthetic, Who thought this was a good idea?"
 /datum/poster/poster_68
 	icon_state="poster68"
-	name = "Clutter Clouds the Mind - Clean Workstation = Clear Head!"
+	name = "Saftey poster"
 	desc = "Clutter Clouds the Mind - Clean Workstation = Clear Head!"
 /datum/poster/poster_69
 	icon_state="poster69"
-	name = "NO foreign objects allowed - that means YOU Smokey Joe!"
+	name = "Saftey poster"
 	desc = "NO foreign objects allowed - that means YOU Smokey Joe!"
 /datum/poster/poster_70
 	icon_state="poster70"
@@ -333,7 +333,7 @@ Template
 	desc = "Souto Blue. If you don't drink Souto, you probably do stuff like floss and value your kidneys...wimp. Printed in Havana."
 /datum/poster/poster_71
 	icon_state="poster71"
-	name = "REMEMBER - Check Once, Twice, Thrice!"
+	name = "Saftey poster"
 	desc = "REMEMBER - Check Once, Twice, Thrice!"
 /datum/poster/poster_72
 	icon_state="poster72"

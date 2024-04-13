@@ -2035,6 +2035,7 @@
 /obj/item/reagent_container/food/condiment/saltshaker{
 	pixel_x = 8
 	},
+/obj/item/poster,
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/lv759/lone_buildings/jacks_surplus)
 "arZ" = (
@@ -4487,6 +4488,14 @@
 /obj/item/storage/box/lights/mixed,
 /turf/open/floor/plating,
 /area/lv759/indoors/hospital/virology)
+"aNF" = (
+/obj/structure/barricade/handrail/hybrisa/handrail,
+/obj/effect/decal/hefa_cult_decals/d32{
+	desc = "You think you can make out the iconography of a Xenomorph.";
+	icon_state = "4"
+	},
+/turf/open/floor/plating,
+/area/lv759/oob)
 "aNQ" = (
 /obj/structure/closet/secure_closet,
 /obj/item/explosive/plastic{
@@ -4565,6 +4574,33 @@
 	},
 /turf/open/hybrisa/street/cement1,
 /area/lv759/outdoors/colony_streets/north_east_street)
+"aOH" = (
+/obj/effect/hybrisa/decal/trash{
+	icon_state = "trash_2";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/obj/effect/hybrisa/decal/trash{
+	icon_state = "trash_2"
+	},
+/obj/item/weapon/gun/shotgun/double/sawn,
+/obj/structure/bed/bedroll{
+	dir = 9;
+	layer = 4
+	},
+/obj/item/toy/plush/runner{
+	dir = 4;
+	layer = 4
+	},
+/obj/effect/decal/hefa_cult_decals/d32{
+	desc = "You think you can make out the iconography of a Xenomorph.";
+	icon_state = "4"
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/lv759/oob)
 "aOL" = (
 /obj/effect/landmark/monkey_spawn,
 /obj/structure/toilet{
@@ -4578,6 +4614,17 @@
 	icon_state = "marked"
 	},
 /area/lv759/outdoors/colony_streets/central_streets)
+"aPa" = (
+/obj/item/stack/sheet/cardboard,
+/obj/effect/hybrisa/decal/trash{
+	icon_state = "trash_17";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/obj/item/pizzabox,
+/obj/item/poster,
+/turf/open/floor/plating,
+/area/lv759/oob)
 "aPb" = (
 /obj/item/stack/cable_coil/cyan,
 /obj/effect/decal/warning_stripes{
@@ -8222,9 +8269,6 @@
 /area/lv759/indoors/spaceport/cargo)
 "bwp" = (
 /obj/structure/bed/bedroll,
-/obj/item/toy/plush/runner{
-	dir = 4
-	},
 /turf/open/floor{
 	dir = 6;
 	icon_state = "bcarpet07"
@@ -9957,9 +10001,8 @@
 /obj/item/stack/sheet/cardboard{
 	layer = 1
 	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
 	},
 /area/lv759/outdoors/colony_streets/south_east_street)
 "bNY" = (
@@ -11318,6 +11361,11 @@
 /obj/structure/disposaloutlet{
 	dir = 8
 	},
+/obj/structure/machinery/door_control/brbutton{
+	id = "secretlockdown4";
+	pixel_y = 24;
+	needs_power = 0
+	},
 /turf/open/floor/corsat,
 /area/lv759/indoors/hospital/virology)
 "bZS" = (
@@ -11981,6 +12029,11 @@
 /obj/structure/prop/hybrisa/misc/fake/wire/yellow,
 /obj/structure/prop/hybrisa/misc/fake/wire/red{
 	pixel_x = 4
+	},
+/obj/structure/machinery/door_control/brbutton{
+	id = "secretlockdown1";
+	pixel_y = 24;
+	needs_power = 0
 	},
 /turf/open/floor/plating,
 /area/whiskey_outpost/inside/caves)
@@ -13461,6 +13514,10 @@
 	icon_state = "cell_stripe"
 	},
 /area/lv759/lone_buildings/wy_security_checkpoint_east)
+"ctP" = (
+/obj/structure/sign/poster/pinup,
+/turf/closed/wall/r_wall/unmeltable,
+/area/lv759/oob)
 "ctQ" = (
 /obj/structure/closet/secure_closet/engineering_personal,
 /turf/open/floor/almayer{
@@ -15857,7 +15914,7 @@
 /obj/effect/decal/strata_decals/grime/grime3,
 /obj/effect/hybrisa/decal/dirt_2,
 /turf/open/floor/hybrisa/tile/tilewhite,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/lone_buildings/south_public_restroom)
 "cNW" = (
 /obj/item/reagent_container/blood/empty,
 /obj/structure/machinery/light/small{
@@ -20955,7 +21012,7 @@
 	},
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/hybrisa/tile/tilewhite,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/lone_buildings/south_public_restroom)
 "dGA" = (
 /obj/effect/hybrisa/decal/road/lines2,
 /turf/open/hybrisa/street/asphalt,
@@ -21701,8 +21758,8 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/item/ammo_magazine/pistol/mod88/rubber,
-/obj/item/weapon/gun/pistol/mod88/training,
+/obj/item/ammo_magazine/pistol/highpower,
+/obj/item/weapon/gun/pistol/highpower,
 /turf/open/floor/prison{
 	icon_state = "redfull"
 	},
@@ -21887,6 +21944,9 @@
 	icon_state = "cell_stripe"
 	},
 /area/lv759/colonial_marshals/wardens_office)
+"dOa" = (
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/lone_buildings/south_public_restroom)
 "dOb" = (
 /obj/structure/stairs{
 	dir = 1
@@ -24074,7 +24134,7 @@
 	pixel_y = 1
 	},
 /turf/open/floor/hybrisa/tile/tilewhite,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/lone_buildings/south_public_restroom)
 "ehw" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	dir = 1;
@@ -30157,6 +30217,12 @@
 	icon_state = "rasputin3"
 	},
 /area/whiskey_outpost/inside/caves)
+"fmc" = (
+/turf/closed/wall/kutjevo/rock{
+	desc = "Massive columns comprised of anicent sedimentary rocks loom before you.";
+	icon = 'icons/turf/walls/kutjevorockdark.dmi'
+	},
+/area/lv759/outdoors/colony_streets/south_east_street)
 "fmo" = (
 /obj/structure/machinery/colony_floodlight/street{
 	layer = 7;
@@ -30708,7 +30774,7 @@
 	pixel_y = 8
 	},
 /turf/open/floor/hybrisa/tile/tilewhite,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/lone_buildings/south_public_restroom)
 "fqH" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 8
@@ -30843,9 +30909,8 @@
 	icon_state = "trash_11"
 	},
 /obj/effect/hybrisa/decal/dirt_2,
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
 	},
 /area/lv759/outdoors/colony_streets/south_east_street)
 "fru" = (
@@ -34298,6 +34363,17 @@
 	dir = 4
 	},
 /area/lv759/outdoors/colony_streets/north_west_street)
+"fXN" = (
+/obj/structure/prop/hybrisa/misc/firebarreloff{
+	density = 1
+	},
+/obj/structure/prop/hybrisa/misc/fire/fire1{
+	pixel_y = 13
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/lv759/oob)
 "fXR" = (
 /obj/structure/machinery/shower{
 	dir = 4
@@ -35627,7 +35703,7 @@
 /obj/effect/decal/strata_decals/grime/grime4,
 /obj/effect/hybrisa/decal/dirt_2,
 /turf/open/floor/hybrisa/tile/tilewhite,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/lone_buildings/south_public_restroom)
 "gka" = (
 /obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark3,
 /turf/open/auto_turf/hybrisashale/layer1,
@@ -35738,7 +35814,7 @@
 	pixel_y = 8
 	},
 /turf/open/floor/hybrisa/tile/tilewhite,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/lone_buildings/south_public_restroom)
 "gkZ" = (
 /obj/structure/platform_decoration/strata/metal{
 	dir = 8
@@ -40366,6 +40442,16 @@
 	icon_state = "outerhull"
 	},
 /area/lv759/indoors/meridian/meridian_factory)
+"gXx" = (
+/obj/structure/barricade/handrail/hybrisa/handrail,
+/obj/effect/decal/hefa_cult_decals/d32{
+	desc = "You think you can make out the iconography of a Xenomorph."
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/lv759/oob)
 "gXA" = (
 /obj/structure/barricade/sandbags{
 	dir = 8
@@ -42629,7 +42715,6 @@
 "hrz" = (
 /obj/structure/platform/hybrisa/rockdark,
 /obj/item/stack/sheet/cardboard,
-/obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"
@@ -42806,7 +42891,7 @@
 	pixel_y = 8
 	},
 /turf/open/floor/hybrisa/tile/tilewhite,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/lone_buildings/south_public_restroom)
 "hsV" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red,
@@ -47021,15 +47106,13 @@
 /area/lv759/derelictship)
 "ifb" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/pistol/mod88/normalpoint/extended,
-/obj/item/ammo_magazine/pistol/mod88/normalpoint/extended,
-/obj/item/ammo_magazine/pistol/mod88,
-/obj/item/ammo_magazine/pistol/mod88,
-/obj/item/ammo_magazine/pistol/mod88,
-/obj/item/ammo_magazine/pistol/mod88,
-/obj/item/weapon/gun/pistol/mod88/flashlight,
-/obj/item/weapon/gun/pistol/mod88/flashlight,
 /obj/structure/magazine_box,
+/obj/item/weapon/gun/pistol/highpower,
+/obj/item/ammo_magazine/pistol/highpower,
+/obj/item/ammo_magazine/pistol/highpower,
+/obj/item/ammo_magazine/pistol/highpower,
+/obj/item/ammo_magazine/pistol/highpower,
+/obj/item/weapon/gun/pistol/highpower,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "red"
@@ -55824,16 +55907,6 @@
 	icon_state = "platingdmg3"
 	},
 /area/lv759/outdoors/caves/south_east_caves)
-"jFv" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 2;
-	name = "\improper Restroom"
-	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "platingdmg3"
-	},
-/area/whiskey_outpost/inside/caves)
 "jFx" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
@@ -55897,6 +55970,17 @@
 	},
 /turf/open/floor/corsat,
 /area/lv759/indoors/hospital/virology)
+"jGa" = (
+/obj/structure/barricade/handrail/hybrisa/handrail,
+/obj/effect/decal/hefa_cult_decals/d32{
+	desc = "You think you can make out the iconography of a Xenomorph.";
+	icon_state = "3"
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/lv759/oob)
 "jGh" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/flora/pottedplant{
@@ -58111,6 +58195,9 @@
 /obj/structure/prop/hybrisa/misc/blood/blood1{
 	layer = 4
 	},
+/obj/effect/hybrisa/decal/trash{
+	icon_state = "trash_2"
+	},
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"
@@ -58429,7 +58516,7 @@
 /obj/item/shard,
 /obj/effect/hybrisa/decal/dirt_2,
 /turf/open/floor/hybrisa/tile/tilewhite,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/lone_buildings/south_public_restroom)
 "kdT" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony,
 /obj/effect/hybrisa/decal/dirt,
@@ -59406,14 +59493,6 @@
 	},
 /turf/open/floor/interior/wood,
 /area/lv759/lone_buildings/jacks_surplus)
-"klU" = (
-/obj/item/reagent_container/syringe{
-	icon_state = "broken"
-	},
-/turf/open/auto_turf/sand_white/layer0{
-	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
-	},
-/area/lv759/outdoors/colony_streets/south_east_street)
 "klV" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -60917,6 +60996,12 @@
 "kxg" = (
 /obj/structure/machinery/light,
 /turf/open/floor/hybrisa/wood/blackwood,
+/area/lv759/indoors/weyyu_office/vip)
+"kxn" = (
+/obj/structure/bed/hybrisa/chairs/red{
+	layer = 4
+	},
+/turf/open/floor/hybrisa/carpet/carpetreddeco,
 /area/lv759/indoors/weyyu_office/vip)
 "kxB" = (
 /obj/structure/machinery/light/spot/blue,
@@ -62589,6 +62674,14 @@
 	icon_state = "floor3"
 	},
 /area/whiskey_outpost/inside/caves)
+"kMs" = (
+/obj/structure/barricade/handrail/hybrisa/handrail,
+/obj/effect/hybrisa/decal/trash{
+	icon_state = "trash_15";
+	pixel_y = 14
+	},
+/turf/open/floor/plating,
+/area/lv759/oob)
 "kMu" = (
 /turf/open/floor/hybrisa/tile/supermartfloor1,
 /area/lv759/indoors/bar/kitchen)
@@ -67383,6 +67476,17 @@
 	dir = 8
 	},
 /area/lv759/landing_zone_2)
+"lBN" = (
+/obj/structure/platform/hybrisa/metalplatform6{
+	dir = 1
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/blocker/invisible_wall,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 4
+	},
+/turf/open/gm/river,
+/area/lv759/oob)
 "lBO" = (
 /obj/structure/closet/crate/trashcart{
 	opened = 1
@@ -67686,7 +67790,7 @@
 	},
 /obj/effect/hybrisa/decal/dirt_2,
 /turf/open/floor/hybrisa/tile/tilewhite,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/lone_buildings/south_public_restroom)
 "lEN" = (
 /obj/structure/prop/almayer/computers/sensor_computer1{
 	desc = null;
@@ -69431,6 +69535,13 @@
 	icon_state = "73"
 	},
 /area/lv759/landing_zone/horizon_runner)
+"lUm" = (
+/obj/structure/barricade/handrail/hybrisa/handrail,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/lv759/oob)
 "lUn" = (
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco3,
 /turf/open/floor/hybrisa/metal/zbrownfloor_corner,
@@ -70661,6 +70772,17 @@
 /obj/structure/prop/hybrisa/misc/floorprops/floorglass2,
 /turf/open/floor/bluegrid,
 /area/whiskey_outpost/inside/caves)
+"mgU" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/platform/hybrisa/metalplatform6{
+	dir = 1
+	},
+/obj/structure/blocker/invisible_wall,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 4
+	},
+/turf/open/gm/river,
+/area/lv759/oob)
 "mgW" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/decal/cleanable/blood/oil/streak,
@@ -71635,11 +71757,10 @@
 	dir = 4;
 	health = 80
 	},
-/obj/item/ammo_magazine/pistol/mod88/rubber,
-/obj/item/ammo_magazine/pistol/mod88/rubber,
-/obj/item/weapon/gun/pistol/mod88/training,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
+/obj/item/ammo_magazine/pistol/highpower,
+/obj/item/weapon/gun/pistol/highpower,
 /turf/open/floor/prison{
 	icon_state = "redfull"
 	},
@@ -75492,7 +75613,7 @@
 	pixel_y = 13
 	},
 /turf/open/floor/hybrisa/tile/tilewhite,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/lone_buildings/south_public_restroom)
 "mZI" = (
 /obj/structure/closet/crate/trashcart{
 	desc = "A heavy, metal foodcart with wheels.";
@@ -77917,6 +78038,48 @@
 "nxj" = (
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/colony_streets/south_west_street)
+"nxn" = (
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	dir = 2;
+	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
+	id = "secretlockdown1";
+	indestructible = 1;
+	name = "Stuck Emergency Lockdown";
+	needs_power = 0;
+	unacidable = 1
+	},
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	dir = 2;
+	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
+	id = "secretlockdown2";
+	indestructible = 1;
+	name = "Stuck Emergency Lockdown";
+	needs_power = 0;
+	unacidable = 1
+	},
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	dir = 2;
+	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
+	id = "secretlockdown3";
+	indestructible = 1;
+	name = "Stuck Emergency Lockdown";
+	needs_power = 0;
+	unacidable = 1
+	},
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	dir = 2;
+	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
+	id = "secretlockdown4";
+	indestructible = 1;
+	name = "Stuck Emergency Lockdown";
+	needs_power = 0;
+	unacidable = 1
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/lv759/oob)
 "nxw" = (
 /turf/open/floor{
 	dir = 8;
@@ -81624,13 +81787,6 @@
 	pixel_x = -6;
 	pixel_y = 18
 	},
-/obj/item/ammo_magazine/revolver/upp,
-/obj/item/ammo_magazine/revolver/upp,
-/obj/item/ammo_magazine/revolver/upp,
-/obj/item/ammo_magazine/revolver/upp,
-/obj/item/ammo_magazine/revolver/upp,
-/obj/item/spacecash/c1000,
-/obj/item/weapon/gun/revolver/upp,
 /obj/effect/landmark/objective_landmark/far,
 /obj/structure/closet/walllocker{
 	pixel_y = 30
@@ -81638,6 +81794,7 @@
 /obj/structure/bed/hybrisa/chairs/red{
 	layer = 4
 	},
+/obj/item/storage/belt/gun/m4a3/highpower/tactical,
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/lv759/indoors/weyyu_office/vip)
 "oeL" = (
@@ -98285,6 +98442,22 @@
 "qUK" = (
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/lv759/recycling_plant)
+"qUP" = (
+/obj/effect/hybrisa/decal/trash{
+	icon_state = "trash_7"
+	},
+/obj/structure/largecrate/random/barrel/green{
+	layer = 4;
+	pixel_x = -6
+	},
+/obj/item/stack/sheet/cardboard{
+	layer = 1
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/lv759/outdoors/colony_streets/south_east_street)
 "qUU" = (
 /obj/structure/platform{
 	dir = 1
@@ -100656,6 +100829,20 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/hybrisa/street/sidewalk,
 /area/lv759/outdoors/colony_streets/central_streets)
+"rqt" = (
+/obj/structure/barricade/handrail/hybrisa/handrail,
+/obj/item/trash/c_tube{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon_state = "ztrashbag";
+	layer = 4;
+	name = "trash bag";
+	pixel_x = 3;
+	pixel_y = 20
+	},
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/lv759/oob)
 "rqv" = (
 /obj/structure/cable/white{
 	icon_state = "1-9";
@@ -104423,6 +104610,21 @@
 	},
 /turf/open/auto_turf/hybrisashale/layer0_plate,
 /area/lv759/outdoors/caves/south_caves)
+"rUT" = (
+/obj/structure/barricade/handrail/hybrisa/handrail,
+/obj/effect/hybrisa/decal/trash{
+	icon_state = "trash_5"
+	},
+/obj/effect/hybrisa/decal/trash{
+	icon_state = "trash_14";
+	pixel_y = 14
+	},
+/obj/structure/prop/broken_ladder,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/lv759/oob)
 "rVa" = (
 /obj/item/prop/colony/canister{
 	pixel_y = 7
@@ -105506,6 +105708,8 @@
 	},
 /obj/structure/platform/hybrisa/rockdark,
 /obj/effect/hybrisa/decal/dirt,
+/obj/item/weapon/broken_bottle,
+/obj/item/shard,
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/outdoors/colony_streets/south_east_street)
 "sfB" = (
@@ -107669,6 +107873,21 @@
 /obj/structure/window/reinforced,
 /turf/open/floor/corsat,
 /area/lv759/power_plant/fusion_generators)
+"sxV" = (
+/obj/effect/hybrisa/decal/trash{
+	icon_state = "trash_9";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/obj/item/phone,
+/obj/effect/decal/hefa_cult_decals/d32{
+	desc = "You think you can make out the iconography of a Xenomorph."
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/lv759/oob)
 "sxW" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/largecrate/random/barrel/black,
@@ -108140,8 +108359,14 @@
 /area/whiskey_outpost/inside/caves)
 "sBB" = (
 /obj/effect/hybrisa/decal/dirt,
-/turf/open/auto_turf/sand_white/layer0{
-	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+/obj/item/reagent_container/syringe{
+	icon_state = "broken"
+	},
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
 	},
 /area/lv759/outdoors/colony_streets/south_east_street)
 "sBE" = (
@@ -108246,6 +108471,11 @@
 	},
 /obj/item/stack/cable_coil/cut{
 	icon_state = "coil1"
+	},
+/obj/structure/machinery/door_control/brbutton{
+	id = "secretlockdown2";
+	pixel_y = 24;
+	needs_power = 0
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/spaceport/engineering)
@@ -108623,6 +108853,15 @@
 /obj/item/trash/eat,
 /obj/effect/hybrisa/decal/dirt_2,
 /obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/hybrisa/decal/trash{
+	icon_state = "trash_13";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/obj/effect/hybrisa/decal/trash{
+	icon_state = "trash_11";
+	pixel_y = 12
+	},
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv759/lone_buildings/south_public_restroom)
 "sGj" = (
@@ -113352,6 +113591,33 @@
 	light_range = 4
 	},
 /area/whiskey_outpost/inside/caves)
+"txD" = (
+/obj/effect/hybrisa/decal/trash{
+	icon_state = "trash_2";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/obj/item/trash/cigbutt,
+/obj/item/trash/c_tube{
+	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
+	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon_state = "ztrashbag";
+	name = "trash bag";
+	pixel_x = 2;
+	pixel_y = 20
+	},
+/obj/item/weapon/broken_bottle,
+/obj/item/shard,
+/obj/effect/decal/hefa_cult_decals/d32{
+	desc = "You think you can make out the iconography of a Xenomorph.";
+	icon_state = "4"
+	},
+/obj/effect/decal/hefa_cult_decals/d32{
+	desc = "You think you can make out the iconography of a Xenomorph.";
+	icon_state = "3"
+	},
+/turf/open/floor/plating,
+/area/lv759/oob)
 "txM" = (
 /obj/structure/machinery/colony_floodlight/street{
 	layer = 7;
@@ -116743,7 +117009,7 @@
 	},
 /obj/effect/hybrisa/decal/dirt_2,
 /turf/open/floor/hybrisa/tile/tilewhite,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/lone_buildings/south_public_restroom)
 "udx" = (
 /obj/effect/hybrisa/decal/gold/line4,
 /obj/structure/prop/hybrisa/misc/slotmachine{
@@ -117279,6 +117545,10 @@
 "uig" = (
 /obj/item/trash/candy,
 /obj/effect/hybrisa/decal/dirt_2,
+/obj/effect/hybrisa/decal/trash{
+	icon_state = "trash_15";
+	pixel_y = 14
+	},
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv759/lone_buildings/south_public_restroom)
 "uih" = (
@@ -119946,7 +120216,6 @@
 	layer = 1;
 	pixel_x = 12
 	},
-/obj/effect/hybrisa/decal/dirt_2,
 /obj/effect/hybrisa/decal/trash{
 	icon_state = "trash_6";
 	pixel_y = 12
@@ -124443,8 +124712,11 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/item/attachable/stock/mod88,
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/ammo_magazine/pistol/highpower,
+/obj/item/ammo_magazine/pistol/highpower,
+/obj/item/ammo_magazine/pistol/highpower,
+/obj/item/ammo_magazine/pistol/highpower,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "red"
@@ -129088,6 +129360,25 @@
 	},
 /turf/open/hybrisa/street/cement1,
 /area/lv759/outdoors/colony_streets/central_streets)
+"wiS" = (
+/obj/structure/barricade/handrail/hybrisa/handrail,
+/obj/effect/hybrisa/decal/trash{
+	icon_state = "trash_6";
+	pixel_y = 12
+	},
+/obj/item/trash/cigbutt,
+/obj/item/trash/eat{
+	pixel_x = 10;
+	pixel_y = 10
+	},
+/obj/structure/prop/fishing/pole_interactive{
+	dir = 1
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "platingdmg3"
+	},
+/area/lv759/oob)
 "wiV" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -131805,6 +132096,9 @@
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/hospital/central_hallway)
+"wGO" = (
+/turf/closed/wall/kutjevo/colony,
+/area/lv759/lone_buildings/jacks_surplus)
 "wGQ" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
@@ -132681,7 +132975,7 @@
 	},
 /obj/effect/hybrisa/decal/dirt_2,
 /turf/open/floor/hybrisa/tile/tilewhite,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/lone_buildings/south_public_restroom)
 "wPO" = (
 /obj/item/device/flashlight/lamp/tripod/grey{
 	layer = 5
@@ -136471,7 +136765,7 @@
 /obj/effect/hybrisa/decal/dirt_2,
 /obj/effect/hybrisa/decal/dirt_2,
 /turf/open/floor/hybrisa/tile/tilewhite,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/lone_buildings/south_public_restroom)
 "xwr" = (
 /obj/structure/stairs,
 /obj/structure/platform/hybrisa/metalplatform6{
@@ -140987,6 +141281,11 @@
 	color = "#6b675e"
 	},
 /obj/item/tool/wrench,
+/obj/structure/machinery/door_control/brbutton{
+	id = "secretlockdown3";
+	pixel_y = 24;
+	needs_power = 0
+	},
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate"
@@ -160430,7 +160729,7 @@ qsT
 uAK
 oKP
 sVa
-mZu
+kxn
 mZu
 jDO
 mfK
@@ -177911,11 +178210,11 @@ dXr
 ykN
 ram
 byU
-pYs
+bHK
 gjT
 dGy
 xwn
-pYs
+bHK
 unn
 unn
 unn
@@ -178163,11 +178462,11 @@ bDH
 bCN
 eLJ
 fzx
-pYs
-pYs
-pYs
+bHK
+bHK
+bHK
 udw
-pYs
+bHK
 unn
 unn
 unn
@@ -178414,12 +178713,12 @@ sCI
 mDw
 dXr
 eGO
-pYs
-pYs
+bHK
+bHK
 cNV
 dGy
 mZF
-pYs
+bHK
 unn
 unn
 unn
@@ -178666,12 +178965,12 @@ qrR
 kaX
 bCN
 qDO
-pYs
-pYs
-pYs
-pYs
+bHK
+bHK
+bHK
+bHK
 lEF
-pYs
+bHK
 unn
 unn
 unn
@@ -178919,11 +179218,11 @@ tXn
 kzX
 wWz
 gyS
-pYs
+bHK
 kdP
 eht
 hsO
-pYs
+bHK
 unn
 unn
 unn
@@ -179171,11 +179470,11 @@ rMz
 dXr
 kVy
 irB
-pYs
+bHK
 wPE
 hsO
 gkU
-pYs
+bHK
 unn
 unn
 unn
@@ -179423,12 +179722,12 @@ bEy
 xcI
 hLx
 gqq
-jFv
-jTn
+nrw
+dOa
 fqw
 hsO
-pYs
-pYs
+bHK
+bHK
 unn
 unn
 unn
@@ -182206,7 +182505,7 @@ fiE
 qIJ
 arY
 aup
-unn
+aup
 unn
 unn
 unn
@@ -182458,8 +182757,8 @@ eto
 iQy
 kIo
 aup
-unn
-unn
+aup
+aup
 unn
 unn
 unn
@@ -182710,9 +183009,9 @@ jwH
 cWV
 xjO
 aup
-unn
-unn
-unn
+wGO
+aup
+aup
 unn
 unn
 unn
@@ -182962,10 +183261,10 @@ aup
 aup
 aup
 aup
-unn
-unn
-unn
-unn
+wGO
+wGO
+aup
+aup
 unn
 unn
 unn
@@ -183213,11 +183512,11 @@ unn
 unn
 unn
 unn
-unn
-unn
-unn
-unn
-unn
+aup
+wGO
+wGO
+wGO
+aup
 unn
 unn
 unn
@@ -183464,12 +183763,12 @@ mSN
 grK
 kvK
 unn
-unn
-unn
-unn
-unn
-unn
-unn
+hcI
+hcI
+hcI
+hcI
+hcI
+hcI
 unn
 unn
 unn
@@ -183716,12 +184015,12 @@ wJD
 vVs
 gch
 dSW
-unn
-unn
-unn
-unn
-unn
-unn
+qUP
+nxn
+sxV
+aNF
+lBN
+hcI
 unn
 unn
 tNd
@@ -183968,12 +184267,12 @@ tQQ
 hrz
 giD
 bCQ
-unn
-unn
-unn
-unn
-unn
-unn
+hcI
+hcI
+fXN
+rqt
+lBN
+hcI
 unn
 unn
 tNd
@@ -184221,11 +184520,11 @@ kmb
 dSW
 giD
 unn
-unn
-unn
-unn
-unn
-unn
+hcI
+txD
+gXx
+lBN
+hcI
 unn
 unn
 unn
@@ -184471,13 +184770,13 @@ mdX
 lWf
 sPF
 sfA
-dSW
+fmc
 unn
-unn
-unn
-unn
-unn
-unn
+hcI
+aPa
+wiS
+lBN
+hcI
 unn
 unn
 unn
@@ -184725,11 +185024,11 @@ mbP
 unn
 unn
 unn
-unn
-unn
-unn
-unn
-unn
+ctP
+aOH
+kMs
+lBN
+hcI
 unn
 unn
 unn
@@ -184977,11 +185276,11 @@ aMQ
 uDR
 unn
 unn
-unn
-unn
-unn
-unn
-unn
+hcI
+hcI
+jGa
+lBN
+hcI
 unn
 unn
 unn
@@ -185228,12 +185527,12 @@ qri
 oqo
 frt
 sBB
-klU
 unn
-unn
-unn
-unn
-unn
+hcI
+hcI
+lUm
+lBN
+hcI
 unn
 unn
 unn
@@ -185481,11 +185780,11 @@ wBk
 aHh
 bNW
 unn
-unn
-unn
-unn
-unn
-unn
+hcI
+hcI
+rUT
+mgU
+hcI
 unn
 unn
 unn
@@ -185732,12 +186031,12 @@ wJD
 slV
 slV
 qza
-bHK
-bHK
-bHK
-bHK
-bHK
-bHK
+hcI
+hcI
+hcI
+hcI
+hcI
+hcI
 unn
 unn
 unn

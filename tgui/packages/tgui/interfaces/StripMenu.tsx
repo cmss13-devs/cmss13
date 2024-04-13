@@ -229,15 +229,33 @@ type StripMenuData = {
   name: string;
 };
 
-const StripContent = (props: { readonly image: string }) => {
-  return (
-    <Box
-      as="img"
-      src={`data:image/jpeg;base64,${props.image}`}
-      height="100%"
-      width="100%"
-    />
-  );
+const StripContent = (props: { readonly item: StripMenuItem | null }) => {
+  if (props.item === null) {
+    return;
+  } else if ('name' in props.item) {
+    return (
+      <Box
+        as="img"
+        src={`data:image/jpeg;base64,${props.item.icon}`}
+        height="100%"
+        width="100%"
+      />
+    );
+  } else if ('obscured' in props.item) {
+    return (
+      <Icon
+        name={
+          props.item.obscured === ObscuringLevel.Completely
+            ? 'ban'
+            : 'eye-slash'
+        }
+        size={3}
+        ml={0}
+        mt={1.3}
+        className="StripMenu__obscured"
+      />
+    );
+  }
 };
 
 export const StripMenu = (props, context) => {
@@ -285,25 +303,8 @@ export const StripMenu = (props, context) => {
                     tooltip = slot.displayName;
                   } else if ('name' in item) {
                     alternateAction = ALTERNATE_ACTIONS[item.alternate];
-
-                    content = <StripContent image={item.icon} />;
-
                     tooltip = item.name;
                   } else if ('obscured' in item) {
-                    content = (
-                      <Icon
-                        name={
-                          item.obscured === ObscuringLevel.Completely
-                            ? 'ban'
-                            : 'eye-slash'
-                        }
-                        size={3}
-                        ml={0}
-                        mt={1.3}
-                        className="StripMenu__obscured"
-                      />
-                    );
-
                     tooltip = `obscured ${slot.displayName}`;
                   } else if ('no_item_action' in item) {
                     tooltip = slot.displayName;
@@ -345,9 +346,9 @@ export const StripMenu = (props, context) => {
                               className="StripMenu__itemslot"
                             />
                           )}
-
-                          <Box className="StripMenu__contentbox">{content}</Box>
-
+                          <Box className="StripMenu__contentbox">
+                            <StripContent item={item} />
+                          </Box>
                           {slot.additionalComponent}
                         </Button>
 

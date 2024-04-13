@@ -179,7 +179,7 @@
 	},
 /obj/structure/prop/hybrisa/engineer/blackgoocontainer,
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "abq" = (
 /obj/structure/sign/safety/bulkhead_door{
 	pixel_x = -3
@@ -782,7 +782,7 @@
 	dir = 9;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "agL" = (
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
@@ -1018,7 +1018,7 @@
 	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform3,
 /turf/open/engineership/engineer_floor1,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "aiG" = (
 /obj/effect/decal/cleanable/blood/gibs/limb,
 /obj/effect/decal/cleanable/blood,
@@ -1385,7 +1385,7 @@
 	dir = 1
 	},
 /turf/open/engineership/engineer_floor2,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "alK" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_12";
@@ -1534,8 +1534,10 @@
 /turf/open/floor/strata,
 /area/lv759/colonial_marshals/armory)
 "amW" = (
-/obj/effect/hybrisa/decal/grate,
-/turf/open/auto_turf/hybrisashale/layer1,
+/obj/structure/platform_decoration/hybrisa/engineer_corner{
+	dir = 1
+	},
+/turf/open/auto_turf/hybrisashale/layer0_plate,
 /area/lv759/outdoors/caveplateau)
 "amY" = (
 /obj/structure/machinery/iv_drip,
@@ -1644,7 +1646,7 @@
 	dir = 1
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "aon" = (
 /obj/item/trash/cigbutt{
 	pixel_y = 8
@@ -1750,7 +1752,7 @@
 	},
 /obj/item/device/flashlight/lamp/tripod/grey,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "apv" = (
 /obj/structure/machinery/door/airlock/almayer/generic/glass{
 	dir = 1;
@@ -2284,7 +2286,7 @@
 	dir = 1
 	},
 /turf/open/engineership/engineer_floor1,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "auT" = (
 /turf/closed/wall/engineership{
 	name = "strange metal wall"
@@ -2411,7 +2413,7 @@
 /turf/open/engineership/engineer_floor8{
 	dir = 4
 	},
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "avR" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/bed/hybrisa/prisonbed{
@@ -2576,11 +2578,8 @@
 	},
 /area/lv759/indoors/weymart_maintenance)
 "axv" = (
-/obj/effect/hybrisa/decal/grate{
-	dir = 1
-	},
-/turf/open/auto_turf/hybrisashale/layer1,
-/area/lv759/outdoors/caveplateau)
+/turf/open/auto_turf/hybrisashale/layer0_plate,
+/area/lv759/outdoors/caves/central_caves)
 "axx" = (
 /obj/structure/platform_decoration/strata/metal{
 	dir = 8
@@ -3313,7 +3312,7 @@
 "aEE" = (
 /obj/structure/stairs,
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "aEI" = (
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco1{
 	dir = 4
@@ -3454,7 +3453,7 @@
 	pixel_y = 4
 	},
 /turf/open/floor/plating,
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_south)
 "aFy" = (
 /obj/item/stack/sheet/cardboard{
 	layer = 1
@@ -4310,7 +4309,7 @@
 /turf/open/floor/prison{
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "aMa" = (
 /obj/structure/window/framed/colony/reinforced,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -4958,7 +4957,7 @@
 	},
 /obj/item/stock_parts/matter_bin,
 /turf/open/engineership/engineer_floor2,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "aSG" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
@@ -4987,7 +4986,7 @@
 "aTg" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform1,
 /turf/open/engineership/engineer_floor3,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "aTv" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/tool/warning_cone{
@@ -5092,7 +5091,7 @@
 "aUv" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/engineership/engineer_floor2,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "aUy" = (
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 8
@@ -5310,7 +5309,7 @@
 	dir = 10;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_south)
 "aWh" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -5988,14 +5987,14 @@
 	layer = 2
 	},
 /turf/open/engineership/engineer_floor2,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "bcm" = (
 /obj/structure/platform_decoration/hybrisa/engineer_corner{
 	dir = 4
 	},
 /obj/structure/platform_decoration/hybrisa/engineer_corner,
 /turf/open/engineership/engineer_floor2,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "bcp" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/window/reinforced{
@@ -6516,7 +6515,7 @@
 /area/whiskey_outpost/inside/caves)
 "bhk" = (
 /turf/open/engineership/engineer_floor1,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "bhp" = (
 /turf/closed/wall/r_wall/bunker,
 /area/lv759/indoors/weymart_maintenance)
@@ -6646,7 +6645,7 @@
 /turf/open/engineership/engineer_floor13{
 	dir = 10
 	},
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "biZ" = (
 /obj/structure/prop/hybrisa/containersextended/greywyright,
 /turf/open/floor/strata{
@@ -6699,7 +6698,7 @@
 /turf/open/engineership/engineer_floor13{
 	dir = 4
 	},
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "bjC" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -6772,7 +6771,7 @@
 	dir = 4
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "bko" = (
 /obj/item/weapon/gun/rifle/mar40/carbine,
 /obj/effect/decal/cleanable/blood,
@@ -7690,7 +7689,7 @@
 	dir = 4;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "bsm" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/decal/strata_decals/grime/grime1,
@@ -7768,7 +7767,7 @@
 	locked = 1
 	},
 /turf/open/floor/plating,
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_north)
 "bsT" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco4,
@@ -8034,6 +8033,20 @@
 	icon_state = "darkbrown2"
 	},
 /area/lv759/power_plant)
+"bvk" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_2";
+	pixel_y = 6
+	},
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "red"
+	},
+/area/lv759/colonial_marshals/hallway_north)
 "bvl" = (
 /obj/structure/platform{
 	dir = 8
@@ -8342,7 +8355,7 @@
 	dir = 6;
 	icon_state = "multi_tiles"
 	},
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_south)
 "bxT" = (
 /obj/item/inflatable,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -8870,7 +8883,7 @@
 	pixel_x = -2
 	},
 /turf/open/engineership/engineer_floor2,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "bDc" = (
 /obj/effect/decal/strata_decals/grime/grime3{
 	icon_state = "grime1"
@@ -8965,7 +8978,7 @@
 	dir = 5;
 	icon_state = "plating"
 	},
-/area/lv759/power_plant)
+/area/lv759/power_plant/equipment_west)
 "bDS" = (
 /obj/structure/machinery/vending/snack{
 	density = 0;
@@ -9150,7 +9163,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_south)
 "bFx" = (
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
@@ -9208,7 +9221,7 @@
 /area/lv759/outdoors/colony_streets/north_west_street)
 "bGa" = (
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "bGe" = (
 /obj/item/reagent_container/hypospray/sedative,
 /turf/open/floor/prison{
@@ -9445,7 +9458,7 @@
 	pixel_y = 4
 	},
 /turf/open/floor/plating,
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_south)
 "bIJ" = (
 /obj/item/prop/colony/canister{
 	pixel_y = 11
@@ -9753,8 +9766,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/landing_zone_2)
 "bMm" = (
-/obj/structure/machinery/light/double/blue,
-/turf/open/hybrisa/street/cement1,
+/turf/closed/wall/r_wall/prison,
 /area/lv759/outdoors/colony_streets/east_central_street)
 "bMy" = (
 /obj/structure/flora/pottedplant{
@@ -9841,7 +9853,7 @@
 	dir = 4
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "bNq" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
@@ -9942,7 +9954,7 @@
 	dir = 5;
 	icon_state = "plating"
 	},
-/area/lv759/power_plant/south_hallway)
+/area/lv759/power_plant/equipment_east)
 "bOj" = (
 /obj/structure/prop/hybrisa/containersextended/tanwywingsleft,
 /turf/open/floor/prison{
@@ -10224,6 +10236,22 @@
 	icon_state = "whitegreenfull"
 	},
 /area/lv759/indoors/hospital/central_hallway)
+"bQB" = (
+/obj/item/prop/colony/canister{
+	pixel_x = 4;
+	pixel_y = 16
+	},
+/obj/item/tool/wet_sign{
+	pixel_x = -8;
+	pixel_y = 6
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/floor/corsat{
+	icon_state = "officetiles"
+	},
+/area/lv759/colonial_marshals/garage)
 "bQE" = (
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
@@ -10342,7 +10370,7 @@
 	},
 /obj/structure/machinery/light/small/blue,
 /turf/open/shuttle/escapepod,
-/area/lv759/power_plant/south_hallway)
+/area/lv759/power_plant/equipment_east)
 "bRA" = (
 /obj/structure/platform{
 	dir = 1;
@@ -10473,7 +10501,7 @@
 	},
 /obj/item/device/flashlight/lamp/tripod/grey,
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "bTd" = (
 /obj/structure/platform/hybrisa/metalplatform6,
 /obj/structure/barricade/handrail/hybrisa/handrail{
@@ -10504,6 +10532,12 @@
 	icon_state = "darkbrown2"
 	},
 /area/lv759/power_plant/south_hallway)
+"bTx" = (
+/obj/effect/hybrisa/decal/dirt,
+/turf/open/hybrisa/street/CMB_4x4_emblem{
+	dir = 1
+	},
+/area/lv759/outdoors/colony_streets/east_central_street)
 "bTF" = (
 /obj/effect/hybrisa/decal/gold/line3,
 /obj/structure/prop/hybrisa/misc/slotmachine{
@@ -10545,7 +10579,7 @@
 	pixel_y = 15
 	},
 /turf/open/engineership/engineer_floor3,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "bTX" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -10826,7 +10860,7 @@
 	dir = 4;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "bWj" = (
 /obj/structure/machinery/iv_drip{
 	pixel_y = 19
@@ -11985,7 +12019,7 @@
 	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform1,
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "cgU" = (
 /obj/structure/closet,
 /obj/effect/landmark/objective_landmark/close,
@@ -12056,7 +12090,7 @@
 	pixel_x = -4
 	},
 /turf/open/engineership/engineer_floor3,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "chG" = (
 /obj/effect/hybrisa/decal/road/lines3,
 /obj/structure/bed/chair/wheelchair,
@@ -12200,6 +12234,9 @@
 	},
 /turf/open/hybrisa/street/sidewalkcenter,
 /area/lv759/outdoors/colony_streets/north_west_street)
+"cjs" = (
+/turf/closed/wall/r_wall/prison,
+/area/lv759/colonial_marshals/hallway_north)
 "cjv" = (
 /turf/open/floor/prison{
 	dir = 9;
@@ -12290,7 +12327,7 @@
 "cjZ" = (
 /obj/structure/machinery/power/port_gen/pacman,
 /turf/open/floor/corsat,
-/area/lv759/power_plant)
+/area/lv759/power_plant/equipment_west)
 "ckl" = (
 /obj/item/tool/shovel,
 /obj/item/tool/warning_cone{
@@ -12360,7 +12397,7 @@
 	dir = 4
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "ckL" = (
 /obj/structure/platform{
 	dir = 1;
@@ -12688,7 +12725,7 @@
 	},
 /obj/structure/prop/hybrisa/engineer/engineerpillar/smallsouthwest1,
 /turf/open/engineership/engineer_floor2,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "cnB" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal11"
@@ -12895,6 +12932,12 @@
 	},
 /turf/open/hybrisa/street/cement1,
 /area/lv759/outdoors/colony_streets/north_west_street)
+"coN" = (
+/obj/structure/prop/ice_colony/surveying_device{
+	dir = 1
+	},
+/turf/open/auto_turf/hybrisashale/layer1,
+/area/lv759/outdoors/caves/central_caves)
 "coS" = (
 /turf/open/floor/prison{
 	dir = 1;
@@ -13323,12 +13366,18 @@
 	icon_state = "officetiles"
 	},
 /area/whiskey_outpost/inside/caves)
+"ctx" = (
+/turf/open/floor/prison{
+	dir = 6;
+	icon_state = "red"
+	},
+/area/lv759/colonial_marshals/hallway_north)
 "ctB" = (
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "ramptop"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_reception)
 "ctD" = (
 /obj/effect/hybrisa/decal/road/lines3,
 /obj/effect/hybrisa/decal/road/lines1,
@@ -13360,7 +13409,7 @@
 	dir = 5;
 	icon_state = "plating"
 	},
-/area/lv759/power_plant/south_hallway)
+/area/lv759/power_plant/equipment_east)
 "ctV" = (
 /obj/structure/platform/hybrisa/metalplatform1{
 	dir = 1;
@@ -13474,6 +13523,14 @@
 	name = "reinforced metal wall"
 	},
 /area/lv759/indoors/spaceport/security)
+"cuw" = (
+/obj/structure/prop/hybrisa/misc/stoneplanterseats/empty{
+	dir = 1;
+	layer = 5;
+	pixel_x = -6
+	},
+/turf/open/hybrisa/street/cement1,
+/area/lv759/colonial_marshals/garage)
 "cuy" = (
 /obj/structure/barricade/wooden,
 /turf/open/auto_turf/hybrisashale/layer1,
@@ -14100,6 +14157,12 @@
 	icon_state = "bcarpet08"
 	},
 /area/lv759/oob)
+"czP" = (
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/lv759/power_plant/transformers_north)
 "czS" = (
 /obj/item/stool,
 /obj/effect/decal/warning_stripes{
@@ -14201,7 +14264,7 @@
 	dir = 4
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "cAL" = (
 /obj/structure/machinery/light/spot/blue{
 	dir = 8
@@ -14440,7 +14503,7 @@
 	dir = 4;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_south)
 "cDl" = (
 /obj/item/trash/cigbutt{
 	pixel_x = -7;
@@ -14673,6 +14736,12 @@
 	icon_state = "cargo"
 	},
 /area/lv759/indoors/spaceport/baggagehandling)
+"cFR" = (
+/obj/structure/platform_decoration,
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/lv759/power_plant/transformers_south)
 "cFT" = (
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/hybrisa/metal/grated{
@@ -14994,7 +15063,7 @@
 /area/lv759/indoors/garage_office)
 "cIv" = (
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "cIx" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
@@ -15490,7 +15559,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_north)
 "cME" = (
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/plating{
@@ -15740,7 +15809,7 @@
 	},
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/hybrisa/tile/tilebeige,
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "cOc" = (
 /turf/open/floor/prison{
 	dir = 8;
@@ -15821,7 +15890,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "cOO" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/platform/hybrisa/metalplatform6{
@@ -16633,7 +16702,7 @@
 	},
 /obj/structure/inflatable/door,
 /turf/open/engineership/engineer_floor2,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "cVa" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
@@ -16824,7 +16893,7 @@
 	dir = 1;
 	icon_state = "cell_stripe"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "cXM" = (
 /obj/item/clothing/suit/bio_suit/virology,
 /obj/item/clothing/head/bio_hood/virology,
@@ -16844,9 +16913,13 @@
 /obj/structure/sign/safety/landingzone{
 	pixel_x = -17
 	},
-/obj/structure/machinery/disposal{
-	layer = 4
+/obj/structure/prop/hybrisa/misc/stoneplanterseats/empty{
+	dir = 1;
+	layer = 4;
+	pixel_x = -8;
+	pixel_y = 4
 	},
+/obj/structure/machinery/light/blue,
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "cXQ" = (
@@ -16957,7 +17030,7 @@
 	pixel_y = 4
 	},
 /turf/open/floor/plating,
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_south)
 "cYX" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/tool/warning_cone{
@@ -17668,7 +17741,7 @@
 /turf/open/engineership/engineer_floor14{
 	dir = 8
 	},
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "dfb" = (
 /obj/effect/hybrisa/decal/road/road_edge,
 /obj/effect/hybrisa/decal/road/lines1,
@@ -17971,7 +18044,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_south)
 "dhJ" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/machinery/door/poddoor/almayer/locked{
@@ -18340,7 +18413,7 @@
 	dir = 1;
 	layer = 4
 	},
-/turf/open/auto_turf/hybrisashale/layer0_plate,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/caveplateau)
 "dkg" = (
 /obj/effect/hybrisa/decal/road/road_edge{
@@ -18929,12 +19002,16 @@
 /obj/structure/prop/hybrisa/fakeplatforms/platform4,
 /turf/open/floor/plating,
 /area/lv759/outdoors/colony_streets/central_streets)
+"dpG" = (
+/obj/effect/hybrisa/decal/dirt,
+/turf/open/hybrisa/street/CMB_4x4_emblem,
+/area/lv759/outdoors/colony_streets/east_central_street)
 "dpI" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform1{
 	dir = 1
 	},
 /turf/open/engineership/engineer_floor2,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "dpJ" = (
 /turf/open/floor/hybrisa/metal/grated,
 /area/lv759/outdoors/colony_streets/central_streets)
@@ -19211,7 +19288,7 @@
 /turf/open/floor/prison{
 	icon_state = "ramptop"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_south)
 "dsa" = (
 /obj/structure/machinery/disposal{
 	layer = 4;
@@ -19461,7 +19538,7 @@
 	pixel_y = -1
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "dts" = (
 /obj/item/shard,
 /obj/effect/hybrisa/decal/bloodtrail{
@@ -19579,7 +19656,7 @@
 	dir = 10;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_reception)
 "duV" = (
 /obj/structure/platform_decoration/hybrisa/rockdark{
 	dir = 8
@@ -20011,13 +20088,19 @@
 	dir = 8
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "dzu" = (
 /obj/item/trash/cigbutt{
 	pixel_x = -10;
 	pixel_y = 14
 	},
 /turf/open/hybrisa/street/sidewalkfull,
+/area/lv759/outdoors/colony_streets/east_central_street)
+"dzv" = (
+/obj/effect/hybrisa/decal/dirt,
+/turf/open/hybrisa/street/CMB_4x4_emblem{
+	dir = 8
+	},
 /area/lv759/outdoors/colony_streets/east_central_street)
 "dzI" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -20190,6 +20273,14 @@
 /obj/structure/largecrate/random/barrel/black,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/caves/north_west_caves)
+"dAY" = (
+/obj/structure/platform/hybrisa/rockdark{
+	dir = 8
+	},
+/obj/structure/platform/hybrisa/rockdark,
+/obj/item/lightstick/planted,
+/turf/open/auto_turf/hybrisashale/layer1,
+/area/lv759/outdoors/caves/central_caves)
 "dBe" = (
 /obj/effect/hybrisa/decal/trash{
 	pixel_y = 12
@@ -20672,6 +20763,9 @@
 /area/lv759/outdoors/caves/central_caves)
 "dFu" = (
 /obj/effect/hybrisa/decal/dirt,
+/obj/item/prop/colony/usedbandage{
+	dir = 4
+	},
 /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/medium,
 /turf/open/hybrisa/street/sidewalk,
 /area/lv759/outdoors/colony_streets/central_streets)
@@ -20773,7 +20867,7 @@
 /obj/item/shard,
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/plating,
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "dHc" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/mask/tornscarf/desert,
@@ -21329,6 +21423,14 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/plating,
 /area/lv759/indoors/hospital/cryo_room)
+"dLa" = (
+/obj/structure/sign/poster/safety,
+/obj/structure/sign/poster/safety{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/turf/closed/wall/r_wall/prison,
+/area/lv759/colonial_marshals/garage)
 "dLc" = (
 /obj/structure/stairs,
 /obj/structure/barricade/handrail/strata{
@@ -21563,7 +21665,7 @@
 "dMH" = (
 /obj/structure/closet/secure_closet/engineering_welding,
 /turf/open/floor/corsat,
-/area/lv759/power_plant)
+/area/lv759/power_plant/equipment_west)
 "dMJ" = (
 /obj/structure/filingcabinet{
 	density = 0;
@@ -21989,7 +22091,7 @@
 	dir = 8
 	},
 /turf/open/floor/corsat,
-/area/lv759/power_plant)
+/area/lv759/power_plant/equipment_west)
 "dRm" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/stationary,
@@ -22477,7 +22579,6 @@
 /area/lv759/landing_zone_1/tunnel)
 "dVt" = (
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/closet,
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
@@ -22882,6 +22983,18 @@
 	},
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/east_central_street)
+"dZn" = (
+/obj/structure/prop/ice_colony/soil_net,
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 1
+	},
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
+/area/lv759/outdoors/caves/central_caves)
 "dZo" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal2"
@@ -23432,7 +23545,7 @@
 /obj/effect/hybrisa/decal/engineership_corners,
 /obj/structure/prop/hybrisa/fakeplatforms/platform3,
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "edP" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/glass{
 	dir = 1;
@@ -23697,7 +23810,7 @@
 	dir = 1
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "egl" = (
 /obj/item/stack/rods{
 	pixel_y = 14
@@ -23820,7 +23933,7 @@
 /obj/item/ammo_box/magazine/nailgun,
 /obj/item/ammo_box/magazine/nailgun,
 /turf/open/floor/corsat,
-/area/lv759/power_plant/south_hallway)
+/area/lv759/power_plant/equipment_east)
 "eht" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/shard,
@@ -24354,7 +24467,7 @@
 	pixel_y = 15
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "emX" = (
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 8
@@ -24509,7 +24622,7 @@
 /turf/open/floor/prison{
 	icon_state = "ramptop"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_south)
 "eov" = (
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco6,
 /turf/open/hybrisa/street/sidewalkfull,
@@ -24786,7 +24899,7 @@
 	name = "\improper Atmospheric Storage"
 	},
 /turf/open/floor/corsat,
-/area/lv759/power_plant)
+/area/lv759/power_plant/equipment_west)
 "ers" = (
 /obj/structure/sign/safety/high_voltage{
 	pixel_x = 11
@@ -24937,7 +25050,7 @@
 	},
 /obj/item/stock_parts/matter_bin/adv,
 /turf/open/engineership/engineer_floor3,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "esO" = (
 /obj/structure/bed/chair{
 	dir = 16
@@ -24986,7 +25099,7 @@
 	dir = 5;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_south)
 "eti" = (
 /turf/closed/shuttle/dropship2/WY/HorizonRunner{
 	icon_state = "rightengine_3"
@@ -25409,6 +25522,13 @@
 	icon_state = "bright_clean"
 	},
 /area/lv759/power_plant/fusion_generators)
+"exE" = (
+/obj/structure/platform/hybrisa/rockdark{
+	dir = 8
+	},
+/obj/structure/platform/hybrisa/rockdark,
+/turf/open/auto_turf/hybrisashale/layer2,
+/area/lv759/outdoors/caves/central_caves)
 "exI" = (
 /obj/structure/prop/hybrisa/vehicles/Car/Car_chassis{
 	dir = 1
@@ -25535,6 +25655,15 @@
 /obj/effect/hybrisa/decal/bloodtrail,
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/lv759/indoors/garage_office)
+"eyR" = (
+/obj/structure/fence{
+	icon = 'icons/obj/structures/props/darkfence.dmi'
+	},
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "ramptop"
+	},
+/area/lv759/power_plant/transformers_south)
 "ezg" = (
 /obj/item/bedsheet/medical,
 /obj/effect/hybrisa/decal/dirt,
@@ -25697,7 +25826,7 @@
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/engineership/engineer_floor3,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "eAi" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -25836,7 +25965,7 @@
 /obj/item/shard,
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/hybrisa/tile/tilebeige,
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "eBe" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/floor/plating/plating_catwalk/shiva,
@@ -25922,7 +26051,8 @@
 /area/lv759/lone_buildings/mining_outpost)
 "eCo" = (
 /obj/structure/prop/hybrisa/vehicles/colonycrawlers/science/science1{
-	dir = 8
+	dir = 8;
+	layer = 4
 	},
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/outdoors/caves/central_caves)
@@ -25979,7 +26109,7 @@
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/equipment_east)
 "eDu" = (
 /obj/structure/prop/ice_colony/soil_net,
 /obj/structure/prop/ice_colony/ground_wire{
@@ -26565,7 +26695,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_south)
 "eJh" = (
 /turf/closed/wall/r_wall/prison,
 /area/lv759/colonial_marshals/office)
@@ -26757,6 +26887,11 @@
 	dir = 1
 	},
 /area/lv759/outdoors/colony_streets/central_streets)
+"eKI" = (
+/obj/structure/platform_decoration/hybrisa/rockdark,
+/obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark1,
+/turf/open/auto_turf/hybrisashale/layer1,
+/area/lv759/outdoors/caves/central_caves)
 "eKK" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -26819,7 +26954,7 @@
 /area/lv759/indoors/spaceport)
 "eKX" = (
 /obj/effect/hybrisa/decal/road/lines3,
-/obj/structure/prop/dam/van{
+/obj/structure/prop/hybrisa/vehicles/van/hyperdynevan{
 	dir = 1
 	},
 /turf/open/hybrisa/street/asphalt,
@@ -26854,7 +26989,7 @@
 	layer = 2
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "eLm" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 10
@@ -26925,7 +27060,7 @@
 	dir = 4
 	},
 /turf/open/engineership/engineer_floor2,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "eLJ" = (
 /obj/item/trash/cigbutt{
 	pixel_x = -10;
@@ -27471,6 +27606,11 @@
 	dir = 1
 	},
 /area/lv759/outdoors/colony_streets/north_west_street)
+"eQp" = (
+/obj/structure/platform/hybrisa/rockdark,
+/obj/item/lightstick/planted,
+/turf/open/auto_turf/hybrisashale/layer1,
+/area/lv759/outdoors/caves/central_caves)
 "eQr" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal3"
@@ -27619,7 +27759,7 @@
 /obj/structure/platform_decoration/hybrisa/engineer_corner,
 /obj/effect/hybrisa/decal/engineership_corners,
 /turf/open/engineership/engineer_floor2,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "eRH" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -27685,6 +27825,14 @@
 	},
 /turf/open/floor/prison,
 /area/lv759/indoors/spaceport/engineering)
+"eSc" = (
+/obj/item/stock_parts/matter_bin/adv{
+	pixel_x = -5;
+	pixel_y = 9
+	},
+/obj/item/lightstick/planted,
+/turf/open/auto_turf/hybrisashale/layer1,
+/area/lv759/outdoors/caves/west_caves)
 "eSe" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 8
@@ -27835,7 +27983,7 @@
 	dir = 1
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "eTL" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/cable{
@@ -28685,7 +28833,7 @@
 	pixel_y = -4
 	},
 /turf/open/floor/plating,
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_north)
 "fbs" = (
 /turf/closed/shuttle/dropship2/WY/StarGlider{
 	icon_state = "30"
@@ -28698,6 +28846,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/item/toy/beach_ball/holoball,
 /turf/open/floor/hybrisa/metal/greenmetal1{
 	dir = 4
 	},
@@ -28727,6 +28876,12 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_west_street)
+"fbD" = (
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "ramptop"
+	},
+/area/lv759/colonial_marshals/hallway_south)
 "fbI" = (
 /turf/open/floor/strata{
 	dir = 6;
@@ -28908,7 +29063,7 @@
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
-/area/lv759/power_plant)
+/area/lv759/power_plant/equipment_west)
 "fdd" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/cameras/wooden_tv{
@@ -28937,7 +29092,7 @@
 	dir = 8
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "fdE" = (
 /obj/structure/machinery/light,
 /obj/structure/flora/pottedplant{
@@ -29191,6 +29346,19 @@
 	dir = 4
 	},
 /area/lv759/indoors/meridian/meridian_foyer)
+"ffM" = (
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
+/obj/effect/hybrisa/decal/dirt,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform{
+	dir = 1;
+	layer = 3.1
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/lv759/power_plant/transformers_south)
 "ffN" = (
 /turf/closed/wall/kutjevo/rock{
 	desc = "Massive columns comprised of anicent sedimentary rocks loom before you.";
@@ -29300,7 +29468,7 @@
 	dir = 4
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "fgV" = (
 /obj/structure/machinery/disposal,
 /obj/item/trash/burger,
@@ -29348,7 +29516,7 @@
 	pixel_y = -1
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "fhq" = (
 /obj/structure/closet/secure_closet,
 /turf/open/hybrisa/dropship/dropship3,
@@ -29524,7 +29692,7 @@
 	dir = 8;
 	icon_state = "ramptop"
 	},
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_north)
 "fjn" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -29693,17 +29861,6 @@
 	},
 /turf/open/floor/plating,
 /area/whiskey_outpost/inside/caves)
-"fkS" = (
-/obj/structure/machinery/door/poddoor/almayer/closed{
-	dir = 2;
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
-	id = "hybrisacolonylockdown";
-	indestructible = 1;
-	name = "Emergency Lockdown";
-	needs_power = 0;
-	unacidable = 1
-	},
-/turf/open/floor/plating)
 "fkV" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -29818,7 +29975,7 @@
 	dir = 8;
 	icon_state = "cell_stripe"
 	},
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_north)
 "flH" = (
 /obj/structure/bed/hybrisa/bunkbed1,
 /turf/open/floor/hybrisa/carpet/carpetfadedred,
@@ -30123,7 +30280,7 @@
 	pixel_y = 4
 	},
 /turf/open/engineership/engineer_floor1,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "foI" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/largecrate/random/secure,
@@ -30355,6 +30512,12 @@
 	dir = 1
 	},
 /area/lv759/outdoors/colony_streets/east_central_street)
+"fqn" = (
+/obj/effect/hybrisa/decal/dirt,
+/turf/open/floor/prison{
+	icon_state = "ramptop"
+	},
+/area/lv759/colonial_marshals/hallway_reception)
 "fqt" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/prop/hybrisa/misc/fake/wire/red{
@@ -30651,6 +30814,20 @@
 /obj/structure/cargo_container/kelland/left,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_street)
+"fsR" = (
+/obj/structure/bed/chair/comfy{
+	dir = 4;
+	icon_state = "comfychair_blue"
+	},
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "red"
+	},
+/area/lv759/colonial_marshals/hallway_central)
 "fsV" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/prop/hybrisa/vehicles/truck/truck3{
@@ -31121,7 +31298,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_reception)
 "fwS" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/stack/sheet/cardboard{
@@ -31256,7 +31433,7 @@
 	pixel_y = 2
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "fyF" = (
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = 10;
@@ -31894,7 +32071,7 @@
 	dir = 4
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "fEn" = (
 /obj/structure/bed/roller,
 /obj/structure/closet/bodybag,
@@ -32220,6 +32397,10 @@
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/lv759/indoors/apartment/east)
 "fHh" = (
+/obj/item/stock_parts/matter_bin/adv{
+	pixel_x = -5;
+	pixel_y = 9
+	},
 /obj/item/tool/shovel,
 /turf/open/auto_turf/sand_white/layer0{
 	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
@@ -33154,6 +33335,11 @@
 /obj/structure/platform_decoration/hybrisa/rockdark{
 	dir = 8
 	},
+/obj/item/stock_parts/matter_bin/adv{
+	pixel_x = -5;
+	pixel_y = 9
+	},
+/obj/item/stock_parts/matter_bin,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/caves/central_caves)
 "fQT" = (
@@ -33187,7 +33373,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_south)
 "fQY" = (
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco6{
 	dir = 8
@@ -33817,7 +34003,7 @@
 	dir = 1
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "fWC" = (
 /obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark2,
 /turf/open/auto_turf/hybrisashale/layer1,
@@ -34293,7 +34479,7 @@
 "gaB" = (
 /obj/structure/prop/hybrisa/engineer/blackgoocontainer,
 /turf/open/engineership/engineer_floor3,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "gaE" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer{
 	dir = 1;
@@ -34594,7 +34780,7 @@
 	dir = 8;
 	icon_state = "cell_stripe"
 	},
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_south)
 "gcP" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -34671,7 +34857,7 @@
 /turf/open/engineership/engineer_floor8{
 	dir = 4
 	},
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "gdu" = (
 /obj/structure/prop/hybrisa/misc/cabinet{
 	dir = 8;
@@ -34725,7 +34911,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "gdQ" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal2"
@@ -34808,7 +34994,7 @@
 /turf/open/engineership/engineer_floor8{
 	dir = 4
 	},
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "geH" = (
 /obj/effect/hybrisa/decal/road/lines2,
 /obj/effect/hybrisa/decal/road/road_stop{
@@ -34943,12 +35129,12 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "gfW" = (
-/obj/item/tool/warning_cone{
-	pixel_y = 17
+/obj/structure/barricade/handrail/hybrisa/road/metal/metaldark,
+/obj/effect/decal/cleanable/blood,
+/turf/open/hybrisa/street/sidewalkcenter{
+	dir = 1
 	},
-/obj/structure/machinery/light/double/blue,
-/turf/open/hybrisa/street/cement1,
-/area/lv759/outdoors/colony_streets/east_central_street)
+/area/lv759/outdoors/colony_streets/central_streets)
 "ggc" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 1
@@ -35135,9 +35321,6 @@
 "ghE" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
-	},
-/obj/structure/prop/ice_colony/ground_wire{
-	dir = 1
 	},
 /obj/structure/largecrate/random/mini/med{
 	pixel_x = -6;
@@ -35999,7 +36182,7 @@
 	dir = 10;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "gpL" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/prop/hybrisa/vehicles/largetruck/largetruckwy/wy1{
@@ -36083,7 +36266,7 @@
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_south)
 "gqu" = (
 /obj/structure/platform/hybrisa/metalplatform1{
 	dir = 4
@@ -36314,7 +36497,7 @@
 	color = "#505050"
 	},
 /turf/open/engineership/engineer_floor1,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "gsl" = (
 /obj/effect/decal/strata_decals/grime/grime3,
 /turf/open/floor{
@@ -36614,9 +36797,6 @@
 "guE" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
-	},
-/obj/structure/prop/ice_colony/ground_wire{
-	dir = 1
 	},
 /obj/structure/bed/stool{
 	buckling_y = 14;
@@ -36923,7 +37103,7 @@
 	pixel_y = 2
 	},
 /turf/open/engineership/engineer_floor3,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "gxd" = (
 /obj/structure/largecrate/random/barrel/green,
 /obj/effect/hybrisa/decal/dirt,
@@ -37206,7 +37386,7 @@
 /turf/open/floor/prison{
 	icon_state = "ramptop"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_south)
 "gzs" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
@@ -37566,7 +37746,7 @@
 	pixel_x = -2
 	},
 /turf/open/engineership/engineer_floor3,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "gCE" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
@@ -38447,6 +38627,14 @@
 	},
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/outdoors/caves/north_west_caves)
+"gKh" = (
+/obj/item/clothing/head/hardhat/white{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/item/stock_parts/matter_bin,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/caveplateau)
 "gKi" = (
 /obj/effect/hybrisa/decal/road/road_stop{
 	dir = 4;
@@ -38942,6 +39130,14 @@
 	},
 /turf/open/hybrisa/street/sidewalk,
 /area/lv759/outdoors/colony_streets/central_streets)
+"gPb" = (
+/obj/item/stock_parts/matter_bin/adv{
+	pixel_x = 6;
+	pixel_y = 13
+	},
+/obj/item/stock_parts/matter_bin,
+/turf/open/auto_turf/hybrisashale/layer1,
+/area/lv759/outdoors/caves/central_caves)
 "gPc" = (
 /turf/open/floor/prison{
 	dir = 10;
@@ -39587,7 +39783,7 @@
 	layer = 2
 	},
 /turf/open/engineership/engineer_floor2,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "gTl" = (
 /obj/structure/ore_box,
 /turf/open/auto_turf/hybrisashale/layer2,
@@ -39747,7 +39943,7 @@
 /turf/open/engineership/engineer_floor8{
 	dir = 4
 	},
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "gUv" = (
 /obj/structure/flora/pottedplant,
 /turf/open/floor/prison{
@@ -39786,6 +39982,10 @@
 /obj/structure/prop/hybrisa/cavedecor/stalagmite4,
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/outdoors/caves/east_caves)
+"gUP" = (
+/obj/structure/largecrate/random/barrel/purewhite,
+/turf/open/auto_turf/hybrisashale/layer1,
+/area/lv759/outdoors/caveplateau)
 "gUZ" = (
 /turf/closed/shuttle/dropship2/transparent{
 	desc = "The WY-LWI Horizon Runner HR-150, a collaborative creation of Lunnar-Welsun Industries and Weyland-Yutani. This small dropship is designed for short-range commercial transport.";
@@ -39845,7 +40045,7 @@
 	dir = 8;
 	icon_state = "ramptop"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_north)
 "gVL" = (
 /obj/structure/dropship_equipment/fuel/fuel_enhancer{
 	indestructible = 1
@@ -40011,7 +40211,7 @@
 "gXN" = (
 /obj/structure/platform_decoration/hybrisa/engineer_corner,
 /turf/open/engineership/engineer_floor1,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "gXO" = (
 /obj/effect/decal/medical_decals{
 	dir = 4;
@@ -40149,13 +40349,10 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/oob)
 "gZm" = (
-/obj/structure/extinguisher_cabinet,
-/obj/structure/machinery/door_control{
-	id = "marshalls_garage";
-	name = "Workshop Garage Lockdown";
-	pixel_x = 28
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/floor/corsat{
+	icon_state = "plate"
 	},
-/turf/closed/wall/r_wall/prison,
 /area/lv759/colonial_marshals/garage)
 "gZn" = (
 /obj/structure/sign/poster/corporate,
@@ -40335,7 +40532,7 @@
 	dir = 4
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "haV" = (
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 8
@@ -40362,6 +40559,11 @@
 	icon_state = "cargo"
 	},
 /area/whiskey_outpost/inside/caves)
+"hbb" = (
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/lv759/power_plant/equipment_east)
 "hbc" = (
 /obj/structure/platform/hybrisa/metalplatform1{
 	dir = 1
@@ -40492,7 +40694,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_south)
 "hco" = (
 /obj/structure/platform,
 /obj/structure/platform{
@@ -40622,6 +40824,22 @@
 	dir = 1
 	},
 /area/lv759/outdoors/colony_streets/east_central_street)
+"hdS" = (
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
+/obj/effect/hybrisa/decal/dirt,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/cable{
+	icon_state = "4-10"
+	},
+/obj/structure/platform{
+	dir = 1;
+	layer = 3.1
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/power_plant/transformers_north)
 "hdU" = (
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy4,
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -40656,7 +40874,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "hed" = (
 /obj/structure/noticeboard,
 /turf/closed/wall/r_wall/unmeltable,
@@ -41225,7 +41443,7 @@
 	layer = 4
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "hiK" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal9"
@@ -41882,6 +42100,11 @@
 /area/lv759/outdoors/colony_streets/east_central_street)
 "hoo" = (
 /obj/item/storage/briefcase,
+/obj/effect/hybrisa/decal/trash{
+	icon_state = "trash_5";
+	pixel_x = -8;
+	pixel_y = 12
+	},
 /turf/open/hybrisa/street/sidewalk{
 	dir = 4
 	},
@@ -42261,7 +42484,7 @@
 "hrF" = (
 /obj/structure/prop/hybrisa/engineer/blackgoocontainer,
 /turf/open/engineership/engineer_floor1,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "hrJ" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
@@ -42616,9 +42839,6 @@
 "huF" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
-	},
-/obj/structure/prop/ice_colony/ground_wire{
-	dir = 1
 	},
 /obj/structure/largecrate/random/barrel/medical,
 /turf/open/floor/plating,
@@ -42977,7 +43197,7 @@
 	dir = 4
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "hxK" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/trash/ceramic_plate{
@@ -43064,7 +43284,7 @@
 "hyn" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
 /turf/open/floor/corsat,
-/area/lv759/power_plant)
+/area/lv759/power_plant/equipment_west)
 "hyr" = (
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
@@ -43463,7 +43683,7 @@
 /turf/open/engineership/engineer_floor8{
 	dir = 4
 	},
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "hBy" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -43517,7 +43737,7 @@
 	},
 /obj/structure/platform_decoration/hybrisa/engineer_corner,
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "hBZ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -43563,7 +43783,7 @@
 	name = "circular light";
 	light_color = "#00ffa0"
 	},
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "hCg" = (
 /obj/structure/closet/hydrant{
 	pixel_y = 32
@@ -43646,7 +43866,7 @@
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_south)
 "hCK" = (
 /obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark1,
 /turf/open/auto_turf/hybrisashale/layer1,
@@ -44021,7 +44241,7 @@
 	dir = 8
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "hGb" = (
 /obj/structure/largecrate/random/barrel/black,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -44095,7 +44315,7 @@
 	},
 /obj/item/device/flashlight/lamp/tripod/grey,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "hGI" = (
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/hybrisa/street/roadlines4,
@@ -44445,6 +44665,12 @@
 	dir = 4
 	},
 /area/lv759/outdoors/colony_streets/south_east_street)
+"hJY" = (
+/obj/structure/prop/hybrisa/vehicles/colonycrawlers/science/science1{
+	layer = 4
+	},
+/turf/open/auto_turf/hybrisashale/layer1,
+/area/lv759/outdoors/caves/central_caves)
 "hKa" = (
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 8
@@ -44594,7 +44820,7 @@
 	pixel_y = 10
 	},
 /turf/open/engineership/engineer_floor3,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "hLx" = (
 /obj/item/tool/warning_cone{
 	pixel_x = 5;
@@ -44652,6 +44878,11 @@
 /turf/open/floor/hybrisa/tile/cuppajoesfloor,
 /area/lv759/indoors/spaceport/cuppajoes)
 "hMy" = (
+/obj/item/stock_parts/matter_bin,
+/obj/item/stock_parts/matter_bin/adv{
+	pixel_x = 6;
+	pixel_y = 13
+	},
 /obj/item/tool/shovel,
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/outdoors/caves/central_caves)
@@ -44690,7 +44921,7 @@
 	dir = 1
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "hML" = (
 /obj/structure/platform/hybrisa/rockdark{
 	dir = 4
@@ -44712,7 +44943,7 @@
 	dir = 8
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "hMU" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/road/road_stop{
@@ -45046,7 +45277,7 @@
 /turf/open/engineership/engineer_floor14{
 	dir = 8
 	},
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "hPq" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	name = "\improper Hospital -Triage"
@@ -45099,6 +45330,16 @@
 	icon_state = "wood"
 	},
 /area/lv759/indoors/apartment_services/east)
+"hPS" = (
+/obj/item/stock_parts/matter_bin/adv{
+	pixel_x = -5;
+	pixel_y = 9
+	},
+/obj/item/stock_parts/matter_bin,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
+/area/lv759/outdoors/caves/central_caves)
 "hPV" = (
 /obj/structure/bed/chair{
 	can_buckle = 0;
@@ -45368,7 +45609,7 @@
 	pixel_y = 18
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "hSw" = (
 /obj/effect/hybrisa/decal/road/lines2,
 /obj/structure/machinery/light/built{
@@ -45403,7 +45644,7 @@
 	layer = 4
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "hSM" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/drip{
@@ -45436,7 +45677,7 @@
 /turf/open/engineership/engineer_floor8{
 	dir = 4
 	},
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "hSX" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal3"
@@ -45631,7 +45872,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "hVc" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -45676,15 +45917,6 @@
 	icon_state = "black"
 	},
 /area/whiskey_outpost/inside/caves)
-"hVp" = (
-/obj/effect/hybrisa/decal/road/road_stop{
-	icon_state = "stop_decal4"
-	},
-/obj/structure/machinery/door/airlock/almayer/generic{
-	name = "\improper Hospital - Intensive Care"
-	},
-/turf/open/hybrisa/street/asphalt,
-/area/lv759/outdoors/colony_streets/north_east_street)
 "hVu" = (
 /obj/structure/machinery/disposal,
 /obj/structure/platform/hybrisa/metalplatform6{
@@ -45855,7 +46087,7 @@
 	color = "#505050"
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "hXh" = (
 /obj/item/stack/sandbags_empty,
 /turf/open/auto_turf/sand_white/layer0{
@@ -45907,7 +46139,7 @@
 	dir = 1
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "hXD" = (
 /obj/structure/machinery/vending/hydronutrients,
 /turf/open/floor/hybrisa/tile/cementflat,
@@ -46595,7 +46827,7 @@
 "ieN" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform1,
 /turf/open/engineership/engineer_floor2,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "ieV" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal3"
@@ -46621,7 +46853,7 @@
 	dir = 8
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "ifb" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/pistol/mod88/normalpoint/extended,
@@ -47621,6 +47853,13 @@
 	name = "reinforced metal wall"
 	},
 /area/lv759/indoors/garage_workshop)
+"inM" = (
+/obj/structure/platform/hybrisa/rockdark,
+/obj/structure/platform/hybrisa/rockdark{
+	dir = 4
+	},
+/turf/open/auto_turf/hybrisashale/layer1,
+/area/lv759/outdoors/caves/central_caves)
 "inP" = (
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/prison{
@@ -47974,6 +48213,12 @@
 	icon_state = "floor_plate"
 	},
 /area/lv759/outdoors/colony_streets/south_east_street)
+"irE" = (
+/turf/open/floor/prison{
+	dir = 6;
+	icon_state = "red"
+	},
+/area/lv759/colonial_marshals/hallway_central)
 "irH" = (
 /obj/structure/tent/med{
 	icon = 'icons/obj/structures/tents_deployed_urban.dmi'
@@ -48272,7 +48517,7 @@
 /turf/open/engineership/engineer_floor8{
 	dir = 4
 	},
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "iuj" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 2
@@ -48430,22 +48675,9 @@
 	},
 /area/lv759/outdoors/colony_streets/north_street)
 "ivz" = (
-/obj/effect/hybrisa/decal/dirt,
-/obj/item/prop/colony/canister{
-	pixel_x = 4;
-	pixel_y = 16
-	},
-/obj/item/tool/wet_sign{
-	pixel_x = -8;
-	pixel_y = 6
-	},
-/obj/structure/barricade/handrail/strata{
-	dir = 4
-	},
-/turf/open/floor/corsat{
-	icon_state = "officetiles"
-	},
-/area/lv759/colonial_marshals/garage)
+/obj/item/tool/warning_cone,
+/turf/open/hybrisa/street/cement1,
+/area/lv759/outdoors/colony_streets/east_central_street)
 "ivA" = (
 /turf/open/floor/prison{
 	dir = 1;
@@ -48711,7 +48943,7 @@
 	dir = 1
 	},
 /turf/open/engineership/engineer_floor3,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "ixv" = (
 /obj/effect/hybrisa/decal/road/lines2,
 /obj/effect/hybrisa/decal/road/road_stop{
@@ -48945,6 +49177,16 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/north_west_street)
+"izh" = (
+/obj/structure/prop/ice_colony/soil_net,
+/obj/structure/prop/ice_colony/ground_wire,
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8
+	},
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
+/area/lv759/outdoors/caves/central_caves)
 "izm" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -49074,7 +49316,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_reception)
 "iAd" = (
 /obj/structure/prop/ice_colony/soil_net,
 /obj/structure/prop/ice_colony/ground_wire,
@@ -49127,7 +49369,7 @@
 	dir = 4
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "iAv" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 4
@@ -49427,7 +49669,7 @@
 	pixel_x = 2
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_north)
 "iCM" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -49603,7 +49845,7 @@
 	dir = 4
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "iDU" = (
 /obj/structure/prop/invuln/overhead_pipe{
 	icon_state = "intact"
@@ -49874,9 +50116,8 @@
 	icon_state = "E";
 	pixel_x = 2
 	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "ramptop"
+/turf/open/floor/hybrisa/metal/grated{
+	dir = 1
 	},
 /area/lv759/landing_zone_2)
 "iGN" = (
@@ -49954,7 +50195,7 @@
 	dir = 9;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "iHH" = (
 /obj/structure/prop/hybrisa/containersextended/lightgreywyleft,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -50174,6 +50415,25 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/south_west_street)
+"iJH" = (
+/obj/structure/platform_decoration{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/wire{
+	dir = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/obj/structure/machinery/light/small/blue{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "cell_stripe"
+	},
+/area/lv759/power_plant/transformers_north)
 "iJP" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	desc = "A pipe.";
@@ -50465,7 +50725,7 @@
 	dir = 8
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "iNi" = (
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
@@ -50611,7 +50871,7 @@
 	dir = 1;
 	icon_state = "ramptop"
 	},
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_south)
 "iOP" = (
 /obj/effect/spawner/random/toolbox{
 	layer = 4
@@ -50923,7 +51183,7 @@
 	dir = 4
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "iRZ" = (
 /obj/structure/window/framed/prison/cell,
 /turf/open/floor/plating,
@@ -51029,7 +51289,7 @@
 	dir = 4
 	},
 /turf/open/engineership/engineer_floor2,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "iSS" = (
 /obj/structure/bed/chair/comfy/teal{
 	dir = 4
@@ -51088,7 +51348,7 @@
 	dir = 4
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "iTP" = (
 /obj/item/trash/cigbutt{
 	pixel_x = -3;
@@ -51221,7 +51481,7 @@
 	pixel_x = -5;
 	pixel_y = 12
 	},
-/turf/open/hybrisa/street/cement1,
+/turf/closed/wall/r_wall/prison,
 /area/lv759/outdoors/colony_streets/east_central_street)
 "iUA" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/redalertblank{
@@ -51262,7 +51522,7 @@
 /area/lv759/outdoors/caves/south_caves)
 "iUP" = (
 /turf/closed/wall/r_wall/prison,
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "iUR" = (
 /obj/effect/hybrisa/decal/road/lines3,
 /obj/effect/hybrisa/decal/road/lines1,
@@ -51336,7 +51596,7 @@
 	layer = 2
 	},
 /turf/open/engineership/engineer_floor2,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "iVP" = (
 /obj/effect/hybrisa/decal/road/lines1,
 /obj/effect/hybrisa/decal/dirt,
@@ -51679,7 +51939,7 @@
 	dir = 4
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "iYw" = (
 /obj/structure/machinery/conveyor{
 	dir = 8;
@@ -52122,7 +52382,7 @@
 	layer = 2
 	},
 /turf/open/engineership/engineer_floor2,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "jcI" = (
 /obj/item/reagent_container/glass/bucket{
 	pixel_x = -9;
@@ -52715,7 +52975,7 @@
 	dir = 8;
 	icon_state = "cell_stripe"
 	},
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_north)
 "jhv" = (
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/landing_zone_1/tunnel)
@@ -52889,7 +53149,7 @@
 /turf/open/engineership/engineer_floor8{
 	dir = 4
 	},
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "jjh" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform4,
 /turf/open/floor/plating,
@@ -53562,6 +53822,11 @@
 "joN" = (
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/whiskey_outpost/inside/caves)
+"joO" = (
+/turf/open/floor/prison{
+	icon_state = "ramptop"
+	},
+/area/lv759/colonial_marshals/hallway_north)
 "jpe" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
@@ -53832,7 +54097,7 @@
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/equipment_east)
 "jrQ" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/tool/warning_cone{
@@ -53853,7 +54118,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_north)
 "jrW" = (
 /obj/structure/cargo_container/wy/mid,
 /turf/open/hybrisa/street/sidewalk,
@@ -53976,6 +54241,11 @@
 	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
 	},
 /area/lv759/outdoors/caves/north_east_caves)
+"jsF" = (
+/obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder1,
+/obj/structure/platform/hybrisa/rockdark,
+/turf/open/auto_turf/hybrisashale/layer1,
+/area/lv759/outdoors/caves/central_caves)
 "jsO" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -54091,7 +54361,7 @@
 	pixel_y = 4
 	},
 /turf/open/engineership/engineer_floor2,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "jtZ" = (
 /turf/open/floor/strata{
 	dir = 8;
@@ -54195,7 +54465,7 @@
 	dir = 1
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "juJ" = (
 /obj/structure/surface/table,
 /obj/item/pizzabox/meat,
@@ -54313,13 +54583,13 @@
 /turf/open/floor/prison{
 	icon_state = "cell_stripe"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "jvZ" = (
-/obj/effect/hybrisa/decal/grate{
-	dir = 4
+/obj/structure/platform_decoration/hybrisa/rockdark{
+	dir = 1
 	},
 /turf/open/auto_turf/hybrisashale/layer1,
-/area/lv759/outdoors/caveplateau)
+/area/lv759/outdoors/caves/central_caves)
 "jwq" = (
 /obj/structure/prop/structure_lattice{
 	dir = 4
@@ -54414,7 +54684,7 @@
 "jxy" = (
 /obj/item/ammo_magazine/smg/nailgun,
 /turf/open/floor/corsat,
-/area/lv759/power_plant/south_hallway)
+/area/lv759/power_plant/equipment_east)
 "jxD" = (
 /obj/structure/largecrate/random/mini/small_case{
 	pixel_x = -9;
@@ -54868,7 +55138,7 @@
 /turf/open/engineership/engineer_floor8{
 	dir = 4
 	},
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "jBg" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal4"
@@ -55506,7 +55776,7 @@
 	dir = 10;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "jGD" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal4"
@@ -55604,7 +55874,7 @@
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
-/area/lv759/power_plant)
+/area/lv759/power_plant/equipment_west)
 "jIh" = (
 /obj/effect/hybrisa/decal/road/lines2,
 /obj/item/weapon/twohanded/folded_metal_chair{
@@ -55867,7 +56137,7 @@
 /area/lv759/outdoors/colony_streets/north_east_street)
 "jKA" = (
 /turf/open/engineership/engineer_floor2,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "jKB" = (
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
@@ -56029,7 +56299,7 @@
 	dir = 4;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "jLN" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/prop/invuln/lattice_prop{
@@ -56308,7 +56578,7 @@
 	pixel_y = -4
 	},
 /turf/open/floor/plating,
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_north)
 "jOp" = (
 /obj/structure/machinery/space_heater/radiator/red{
 	dir = 1;
@@ -56642,7 +56912,7 @@
 /turf/open/engineership/engineer_floor8{
 	dir = 4
 	},
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "jSb" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -56738,7 +57008,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_north)
 "jSM" = (
 /turf/open/floor/plating{
 	dir = 1;
@@ -56889,6 +57159,12 @@
 	icon_state = "floor_plate"
 	},
 /area/lv759/indoors/hospital/virology)
+"jTX" = (
+/obj/structure/largecrate/random/barrel/brown,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
+/area/lv759/outdoors/caves/central_caves)
 "jUa" = (
 /turf/closed/wall/kutjevo/rock{
 	desc = "Massive columns comprised of anicent sedimentary rocks loom before you.";
@@ -57203,7 +57479,7 @@
 "jWM" = (
 /obj/structure/prop/hybrisa/engineer/giantpod,
 /turf/open/engineership/engineer_floor2,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "jWQ" = (
 /obj/structure/barricade/handrail/strata{
 	layer = 8;
@@ -57345,20 +57621,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/colony_streets/south_west_street)
-"jYw" = (
-/obj/effect/hybrisa/decal/trash{
-	icon_state = "trash_17"
-	},
-/obj/effect/hybrisa/decal/trash{
-	icon_state = "trash_15";
-	pixel_x = -8;
-	pixel_y = 12
-	},
-/obj/item/stack/sheet/cardboard{
-	pixel_y = -12
-	},
-/turf/open/hybrisa/street/cement3,
-/area/lv759/outdoors/colony_streets/north_west_street)
 "jYA" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice8";
@@ -57527,7 +57789,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/structure/prop/ice_colony/ground_wire,
 /obj/structure/surface/rack,
 /obj/item/storage/box/lightstick/red{
 	layer = 2.9
@@ -58194,9 +58455,8 @@
 	},
 /area/lv759/power_plant/geothermal_generators)
 "kfK" = (
-/obj/effect/hybrisa/decal/trash{
-	icon_state = "trash_2";
-	pixel_y = 12
+/obj/structure/machinery/light/small{
+	dir = 8
 	},
 /turf/open/hybrisa/street/sidewalk{
 	dir = 8
@@ -58600,7 +58860,7 @@
 	dir = 4;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_reception)
 "kjf" = (
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/lone_buildings/wy_security_checkpoint_northeast)
@@ -59146,7 +59406,7 @@
 /area/lv759/indoors/spaceport/administration/east)
 "kmV" = (
 /turf/open/engineership/engineer_floor3,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "knb" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/closet/crate/plastic,
@@ -59669,7 +59929,7 @@
 	name = "\improper Atmospheric Storage"
 	},
 /turf/open/floor/plating,
-/area/lv759/power_plant/south_hallway)
+/area/lv759/power_plant/equipment_east)
 "krs" = (
 /obj/item/trash/cigbutt{
 	pixel_x = 7
@@ -60369,7 +60629,7 @@
 	dir = 4
 	},
 /turf/open/engineership/engineer_floor3,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "kwh" = (
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
@@ -60522,7 +60782,7 @@
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
 	},
-/area/lv759/colonial_marshals/office)
+/area/lv759/colonial_marshals/hallway_south)
 "kxW" = (
 /obj/structure/machinery/fuelcell_recycler,
 /obj/structure/machinery/power/terminal{
@@ -60587,7 +60847,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_south)
 "kyB" = (
 /obj/structure/prop/ice_colony/soil_net,
 /turf/open/auto_turf/sand_white/layer0{
@@ -61384,7 +61644,7 @@
 	dir = 4;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_reception)
 "kGp" = (
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/prison{
@@ -62275,7 +62535,7 @@
 "kND" = (
 /obj/structure/machinery/disposal,
 /turf/open/floor/hybrisa/tile/tilebeige,
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "kNS" = (
 /obj/effect/hybrisa/decal/road/lines3,
 /obj/effect/hybrisa/decal/dirt,
@@ -62391,7 +62651,7 @@
 	dir = 4
 	},
 /turf/open/engineership/engineer_floor3,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "kOS" = (
 /obj/effect/hybrisa/decal/road/road_edge,
 /obj/effect/hybrisa/decal/road/lines1,
@@ -62424,7 +62684,7 @@
 	},
 /obj/structure/largecrate/random/mini/small_case/c,
 /turf/open/engineership/engineer_floor1,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "kPe" = (
 /turf/closed/shuttle/dropship2/WY/HorizonRunner{
 	icon_state = "wy2"
@@ -62702,7 +62962,7 @@
 	},
 /obj/item/clothing/gloves/marine/veteran/insulated,
 /turf/open/floor/corsat,
-/area/lv759/power_plant/south_hallway)
+/area/lv759/power_plant/equipment_east)
 "kRG" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -62791,7 +63051,7 @@
 /obj/effect/hybrisa/decal/grate{
 	dir = 4
 	},
-/turf/open/auto_turf/hybrisashale/layer1,
+/turf/open/auto_turf/hybrisashale/layer0_plate,
 /area/lv759/outdoors/caves/central_caves)
 "kSx" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -62818,7 +63078,7 @@
 "kST" = (
 /obj/effect/decal/strata_decals/grime/grime3,
 /turf/open/floor/hybrisa/tile/tilebeige,
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "kSV" = (
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 4
@@ -62865,7 +63125,7 @@
 	dir = 1
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "kTu" = (
 /turf/closed/wall/r_wall/bunker{
 	name = "reinforced metal wall"
@@ -63243,7 +63503,7 @@
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_north)
 "kWz" = (
 /obj/effect/hybrisa/decal/road/lines2,
 /obj/effect/hybrisa/decal/road/road_edge{
@@ -63321,7 +63581,7 @@
 	dir = 5;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_north)
 "kXa" = (
 /obj/structure/platform/hybrisa/rockdark{
 	dir = 1
@@ -63586,6 +63846,17 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/plating,
 /area/lv759/indoors/hospital/morgue)
+"kZk" = (
+/obj/item/stock_parts/matter_bin/adv{
+	pixel_x = 6;
+	pixel_y = 13
+	},
+/obj/item/stock_parts/matter_bin/adv{
+	pixel_x = -5;
+	pixel_y = 9
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/caves/west_caves)
 "kZp" = (
 /obj/structure/platform_decoration,
 /obj/structure/machinery/light/blue{
@@ -63631,7 +63902,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_north)
 "kZD" = (
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 4
@@ -63799,7 +64070,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_south)
 "lbk" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -64182,7 +64453,7 @@
 /turf/open/engineership/engineer_floor8{
 	dir = 4
 	},
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "leG" = (
 /obj/structure/platform/hybrisa/metalplatformstair1,
 /obj/structure/stairs/perspective{
@@ -64646,7 +64917,7 @@
 	},
 /obj/structure/inflatable/door,
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "ljy" = (
 /obj/item/explosive/grenade/incendiary/molotov,
 /obj/item/explosive/grenade/incendiary/molotov,
@@ -64694,7 +64965,7 @@
 	},
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/engineership/engineer_floor2,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "ljU" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/item/attachable/magnetic_harness,
@@ -64805,7 +65076,7 @@
 	layer = 2
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "lkH" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out"
@@ -64936,7 +65207,7 @@
 	pixel_y = 4
 	},
 /turf/open/engineership/engineer_floor2,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "llP" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/decal/warning_stripes{
@@ -65382,7 +65653,7 @@
 	pixel_y = -4
 	},
 /turf/open/engineership/engineer_floor3,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "lpU" = (
 /obj/structure/platform/hybrisa/metalplatform3{
 	dir = 4
@@ -65690,7 +65961,7 @@
 	pixel_y = -4
 	},
 /turf/open/floor/plating,
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_north)
 "lrK" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/landmark/monkey_spawn,
@@ -66699,7 +66970,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "lzI" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -66710,7 +66981,7 @@
 	dir = 1;
 	icon_state = "cell_stripe"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "lzJ" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 4
@@ -66842,7 +67113,7 @@
 "lBa" = (
 /obj/item/device/flashlight/lamp/tripod/grey,
 /turf/open/engineership/engineer_floor3,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "lBd" = (
 /turf/closed/shuttle/dropship2/transparent{
 	icon = 'icons/turf/ert_shuttle.dmi';
@@ -67573,7 +67844,7 @@
 	dir = 5;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "lHh" = (
 /obj/structure/platform_decoration/hybrisa/rockdark{
 	dir = 8
@@ -67612,7 +67883,7 @@
 "lHz" = (
 /obj/item/stock_parts/matter_bin,
 /turf/open/engineership/engineer_floor3,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "lHA" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/stack/sheet/wood{
@@ -67633,7 +67904,7 @@
 	name = "\improper Engineering Shutters"
 	},
 /turf/open/floor/plating,
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_south)
 "lHL" = (
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco6,
 /obj/effect/hybrisa/decal/dirt,
@@ -67863,10 +68134,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "ramptop"
-	},
+/turf/open/floor/hybrisa/metal/grated,
 /area/lv759/outdoors/colony_streets/south_east_street)
 "lJu" = (
 /obj/item/weapon/gun/smg/mp5,
@@ -67967,7 +68235,7 @@
 	layer = 2
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "lKN" = (
 /obj/item/shard,
 /obj/effect/hybrisa/decal/road/lines1,
@@ -68047,7 +68315,7 @@
 	dir = 8
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "lLN" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal3"
@@ -68147,7 +68415,7 @@
 	dir = 1
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "lMQ" = (
 /obj/effect/hybrisa/decal/road/road_edge,
 /obj/effect/hybrisa/decal/road/lines1,
@@ -68290,9 +68558,8 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "ramptop"
+/turf/open/floor/hybrisa/metal/grated{
+	dir = 4
 	},
 /area/whiskey_outpost/inside/caves)
 "lOx" = (
@@ -68396,7 +68663,7 @@
 	dir = 8
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "lOW" = (
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaldark{
 	dir = 4
@@ -68636,6 +68903,24 @@
 	icon_state = "floor_plate"
 	},
 /area/lv759/outdoors/colony_streets/east_central_street)
+"lQT" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	layer = 4;
+	pixel_x = -8;
+	pixel_y = 21
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	layer = 3.3;
+	pixel_x = 8;
+	pixel_y = 21
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/lv759/colonial_marshals/north_office)
 "lQU" = (
 /obj/structure/prop/hybrisa/misc/fake/pipes/pipe2{
 	dir = 4
@@ -68842,7 +69127,7 @@
 /obj/effect/hybrisa/decal/grate{
 	dir = 1
 	},
-/turf/open/auto_turf/hybrisashale/layer1,
+/turf/open/auto_turf/hybrisashale/layer0_plate,
 /area/lv759/outdoors/caves/central_caves)
 "lTs" = (
 /obj/structure/platform/hybrisa/rockdark{
@@ -69657,7 +69942,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "mbw" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
@@ -70129,7 +70414,7 @@
 "mgG" = (
 /obj/structure/prop/hybrisa/engineer/giantpodbroken,
 /turf/open/engineership/engineer_floor2,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "mgJ" = (
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
@@ -70159,7 +70444,7 @@
 	dir = 4
 	},
 /turf/open/engineership/engineer_floor2,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "mgS" = (
 /obj/structure/platform/kutjevo{
 	dir = 1
@@ -70255,7 +70540,7 @@
 	dir = 4;
 	icon_state = "ramptop"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_south)
 "mhR" = (
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
@@ -70574,7 +70859,7 @@
 	pixel_y = 15
 	},
 /turf/open/engineership/engineer_floor2,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "mkH" = (
 /turf/open/floor/prison{
 	dir = 6;
@@ -71112,7 +71397,7 @@
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_north)
 "mqj" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -4;
@@ -71158,7 +71443,7 @@
 	pixel_y = -1
 	},
 /turf/open/engineership/engineer_floor3,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "mqv" = (
 /obj/item/paper/crumpled{
 	pixel_x = 6;
@@ -71628,7 +71913,7 @@
 	dir = 1;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "muf" = (
 /obj/structure/bed/roller,
 /turf/open/floor/prison{
@@ -71720,7 +72005,7 @@
 "muZ" = (
 /obj/structure/machinery/floodlight,
 /turf/open/floor/corsat,
-/area/lv759/power_plant)
+/area/lv759/power_plant/equipment_west)
 "mva" = (
 /obj/vehicle/train/cargo/trolley,
 /obj/structure/largecrate/random/mini/small_case{
@@ -71765,7 +72050,7 @@
 	dir = 1
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "mvG" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -13;
@@ -72037,7 +72322,7 @@
 "mye" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/corsat,
-/area/lv759/power_plant)
+/area/lv759/power_plant/equipment_west)
 "myf" = (
 /obj/structure/platform/strata/metal{
 	dir = 4
@@ -72333,7 +72618,7 @@
 /turf/open/floor/prison{
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "mAr" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy13"
@@ -72621,7 +72906,7 @@
 /turf/open/engineership/engineer_floor8{
 	dir = 4
 	},
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "mDw" = (
 /obj/effect/hybrisa/decal/road/lines3,
 /obj/effect/hybrisa/decal/road/road_edge{
@@ -72976,7 +73261,7 @@
 "mGr" = (
 /obj/structure/window/framed/prison/reinforced,
 /turf/open/floor/plating,
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_south)
 "mGE" = (
 /turf/open/floor/hybrisa/tile/cementflat,
 /area/lv759/landing_zone_2/ceiling)
@@ -72993,6 +73278,11 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/landing_zone_2)
+"mGR" = (
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/lv759/power_plant/transformers_north)
 "mGT" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -73035,7 +73325,7 @@
 /turf/open/engineership/engineer_floor8{
 	dir = 4
 	},
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "mHd" = (
 /obj/structure/bed/hybrisa/bunkbed1{
 	dir = 4
@@ -73180,16 +73470,27 @@
 	},
 /turf/open/hybrisa/street/sidewalk,
 /area/lv759/outdoors/colony_streets/north_street)
+"mIC" = (
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/lv759/power_plant/equipment_west)
 "mIM" = (
 /obj/structure/platform,
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/landing_zone_1)
 "mIP" = (
-/obj/effect/hybrisa/decal/grate{
-	dir = 4
+/obj/structure/largecrate/random/barrel/black{
+	pixel_x = 12;
+	pixel_y = 4
 	},
-/turf/open/auto_turf/hybrisashale/layer2,
-/area/lv759/outdoors/caveplateau)
+/obj/structure/largecrate/random/barrel/black{
+	pixel_x = -6
+	},
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
+/area/lv759/outdoors/caves/central_caves)
 "mIS" = (
 /obj/structure/mirror,
 /turf/closed/wall/hangar{
@@ -73709,6 +74010,22 @@
 	},
 /turf/open/floor/almayer_hull,
 /area/whiskey_outpost/inside/caves)
+"mNa" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/obj/structure/machinery/light/small/blue{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "cell_stripe"
+	},
+/area/lv759/power_plant/transformers_north)
 "mNg" = (
 /obj/structure/platform/stair_cut,
 /obj/effect/decal/warning_stripes{
@@ -74138,7 +74455,7 @@
 /area/whiskey_outpost/inside/caves)
 "mRs" = (
 /turf/open/engineership/engineer_floor13,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "mRv" = (
 /obj/item/tool/shovel,
 /turf/open/floor/plating{
@@ -74157,7 +74474,7 @@
 	dir = 6;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_reception)
 "mRH" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/engineership/engineer_floor13{
@@ -74173,7 +74490,7 @@
 	dir = 5;
 	icon_state = "plating"
 	},
-/area/lv759/power_plant/south_hallway)
+/area/lv759/power_plant/equipment_east)
 "mRN" = (
 /obj/item/reagent_container/blood/empty{
 	pixel_x = 6;
@@ -74223,7 +74540,7 @@
 "mSg" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/engineership/engineer_floor3,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "mSj" = (
 /obj/structure/platform_decoration{
 	dir = 8
@@ -74290,7 +74607,7 @@
 /turf/open/engineership/engineer_floor8{
 	dir = 4
 	},
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "mSx" = (
 /obj/structure/barricade/handrail/hybrisa/road/plastic/black{
 	dir = 4
@@ -76340,7 +76657,7 @@
 /turf/open/engineership/engineer_floor8{
 	dir = 8
 	},
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "nnQ" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -13;
@@ -76430,6 +76747,10 @@
 "noD" = (
 /turf/closed/wall/r_wall/prison,
 /area/lv759/colonial_marshals/holding_cells)
+"noP" = (
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/auto_turf/hybrisashale/layer2,
+/area/lv759/outdoors/caves/central_caves)
 "noT" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
@@ -76898,7 +77219,7 @@
 	dir = 5;
 	icon_state = "plating"
 	},
-/area/lv759/power_plant/south_hallway)
+/area/lv759/power_plant/equipment_east)
 "nsT" = (
 /obj/structure/machinery/mineral/processing_unit,
 /obj/effect/hybrisa/decal/dirt,
@@ -77186,7 +77507,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "nvm" = (
 /obj/effect/hybrisa/decal/road/lines2,
 /obj/effect/hybrisa/decal/road/road_edge{
@@ -77226,7 +77547,7 @@
 /obj/structure/platform_decoration/hybrisa/engineer_corner,
 /obj/structure/stairs,
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "nvF" = (
 /obj/structure/surface/table,
 /obj/item/storage/backpack/marine/fluff,
@@ -77565,7 +77886,7 @@
 	name = "\improper Engineering Shutters"
 	},
 /turf/open/floor/plating,
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_north)
 "nzf" = (
 /obj/item/device/flashlight/lamp/tripod/grey,
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
@@ -77739,15 +78060,17 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "nAZ" = (
-/obj/item/trash/cigbutt{
-	pixel_x = -10;
-	pixel_y = 14
+/obj/item/tool/warning_cone{
+	layer = 5;
+	pixel_y = 19
 	},
-/obj/item/trash/cigbutt{
-	pixel_x = -10;
-	pixel_y = 14
+/obj/structure/machinery/door_control{
+	id = "marshalls_garage";
+	name = "CMB - Garage Lockdown";
+	pixel_y = -20;
+	pixel_x = -4
 	},
 /turf/open/hybrisa/street/cement1,
 /area/lv759/outdoors/colony_streets/east_central_street)
@@ -78231,7 +78554,7 @@
 	dir = 6;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "nFX" = (
 /obj/structure/bed/chair{
 	dir = 8;
@@ -78516,6 +78839,13 @@
 	},
 /turf/open/floor/corsat,
 /area/lv759/power_plant/power_storage)
+"nIa" = (
+/obj/structure/prop/power_transformer,
+/turf/open/floor/strata{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/lv759/power_plant/transformers_south)
 "nIk" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal4"
@@ -78705,8 +79035,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/colonial_marshals/wardens_office)
 "nKs" = (
-/obj/structure/bed/roller,
-/obj/structure/closet/bodybag,
+/obj/structure/bed/roller/hospital,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "whitegreen"
@@ -78943,7 +79272,7 @@
 	dir = 8;
 	icon_state = "cell_stripe"
 	},
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_south)
 "nMm" = (
 /obj/structure/platform/hybrisa/rockdark{
 	dir = 4
@@ -78987,7 +79316,7 @@
 "nME" = (
 /obj/item/device/flashlight/lamp/tripod/grey,
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "nMH" = (
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall{
 	pixel_y = 20
@@ -79177,7 +79506,7 @@
 /obj/structure/closet/crate/science,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/engineership/engineer_floor1,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "nOL" = (
 /obj/structure/barricade/handrail/hybrisa/handrail{
 	dir = 1
@@ -79492,7 +79821,7 @@
 	dir = 1;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "nSc" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal4"
@@ -79638,7 +79967,7 @@
 	dir = 4
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "nTH" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal2"
@@ -79873,7 +80202,7 @@
 	dir = 5;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_reception)
 "nWa" = (
 /obj/structure/largecrate/random/barrel/blue,
 /obj/effect/decal/warning_stripes{
@@ -80170,7 +80499,7 @@
 	dir = 4;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "nYd" = (
 /obj/structure/largecrate/random/mini{
 	pixel_x = 6;
@@ -80211,7 +80540,7 @@
 	pixel_y = 2
 	},
 /turf/open/engineership/engineer_floor1,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "nYs" = (
 /obj/structure/bed/chair{
 	icon_state = "chair_alt";
@@ -80791,6 +81120,12 @@
 	icon_state = "darkyellow2"
 	},
 /area/whiskey_outpost/inside/caves)
+"ocV" = (
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "red"
+	},
+/area/lv759/colonial_marshals/hallway_central)
 "odd" = (
 /obj/structure/platform/hybrisa/metalplatform1{
 	dir = 1
@@ -81182,6 +81517,12 @@
 /obj/item/trash/cigbutt{
 	pixel_x = 1;
 	pixel_y = 8
+	},
+/obj/structure/prop/hybrisa/misc/stoneplanterseats/empty{
+	dir = 1;
+	layer = 4;
+	pixel_x = -8;
+	pixel_y = 4
 	},
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/north_west_street)
@@ -81705,9 +82046,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/obj/structure/prop/ice_colony/ground_wire{
-	dir = 1
-	},
 /obj/structure/largecrate/mule,
 /obj/structure/largecrate/random/mini{
 	layer = 4;
@@ -81747,14 +82085,14 @@
 	dir = 4;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_reception)
 "okr" = (
 /obj/item/stack/sheet/cardboard/small_stack,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating"
 	},
-/area/lv759/power_plant/south_hallway)
+/area/lv759/power_plant/equipment_east)
 "okF" = (
 /obj/structure/prop/invuln/overhead/flammable_pipe/fly{
 	dir = 8
@@ -82067,7 +82405,7 @@
 /obj/structure/platform_decoration/hybrisa/engineer_corner,
 /obj/structure/prop/hybrisa/engineer/engineerpillar/smallsouthwest1,
 /turf/open/engineership/engineer_floor2,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "onH" = (
 /obj/item/spacecash/c200,
 /obj/item/ammo_magazine/pistol/heavy/super/highimpact/ap,
@@ -82265,7 +82603,7 @@
 	dir = 8
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "ooJ" = (
 /obj/effect/hybrisa/decal/road/lines2,
 /obj/effect/hybrisa/decal/road/lines1,
@@ -82806,6 +83144,9 @@
 	},
 /turf/open/floor/hybrisa/carpet/carpetbeige,
 /area/lv759/indoors/meridian/meridian_office)
+"otc" = (
+/turf/open/floor/plating,
+/area/lv759/colonial_marshals/garage)
 "otd" = (
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 4
@@ -82846,7 +83187,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_north)
 "oto" = (
 /obj/effect/hybrisa/decal/road/lines1,
 /obj/effect/hybrisa/decal/tiretrack{
@@ -83072,7 +83413,7 @@
 /obj/structure/platform_decoration/hybrisa/engineer_corner,
 /obj/item/device/flashlight/lamp/tripod/grey,
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "ovt" = (
 /obj/item/trash/cigbutt{
 	pixel_x = -10;
@@ -83216,7 +83557,7 @@
 	dir = 4
 	},
 /turf/open/engineership/engineer_floor2,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "oxu" = (
 /obj/item/stack/sheet/wood{
 	pixel_y = -8
@@ -83327,6 +83668,12 @@
 /obj/structure/platform,
 /turf/open/floor/plating,
 /area/lv759/outdoors/caveplateau)
+"oys" = (
+/turf/open/floor/prison{
+	dir = 6;
+	icon_state = "red"
+	},
+/area/lv759/colonial_marshals/hallway_south)
 "oyy" = (
 /obj/item/prop/colony/used_flare,
 /turf/open/auto_turf/sand_white/layer0{
@@ -83814,6 +84161,10 @@
 /obj/effect/hybrisa/decal/road/lines3,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/east_central_street)
+"oBR" = (
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/auto_turf/hybrisashale/layer0_plate,
+/area/lv759/outdoors/caves/central_caves)
 "oBU" = (
 /obj/structure/platform{
 	dir = 8
@@ -83883,7 +84234,7 @@
 	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform1,
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "oCB" = (
 /obj/structure/bed/chair/vehicle{
 	pixel_x = 8
@@ -84378,6 +84729,18 @@
 	},
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/outdoors/caves/central_caves)
+"oHl" = (
+/obj/structure/largecrate/random/barrel/black{
+	layer = 3.2;
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/obj/structure/largecrate/random/barrel/black{
+	pixel_x = 12;
+	pixel_y = 4
+	},
+/turf/open/auto_turf/hybrisashale/layer2,
+/area/lv759/outdoors/caveplateau)
 "oHp" = (
 /obj/structure/machinery/computer/cameras/telescreen{
 	desc = "A broken Tele-Screen monitor.";
@@ -84444,7 +84807,7 @@
 	dir = 4
 	},
 /turf/open/engineership/engineer_floor3,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "oIb" = (
 /obj/structure/machinery/colony_floodlight/street{
 	layer = 7;
@@ -85055,7 +85418,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_south)
 "oMh" = (
 /obj/structure/largecrate/supply/medicine/optable,
 /obj/structure/largecrate/random/mini/med{
@@ -85645,7 +86008,7 @@
 "oRp" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform1,
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "oRv" = (
 /obj/structure/machinery/conveyor{
 	dir = 8;
@@ -85680,7 +86043,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "oRT" = (
 /obj/structure/bed/sofa/vert/white/top,
 /turf/open/floor/hybrisa/carpet/carpetdarkerblue,
@@ -85856,7 +86219,7 @@
 /turf/open/floor/prison{
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "oTk" = (
 /obj/structure/largecrate/random/barrel/black{
 	layer = 3.2;
@@ -86103,7 +86466,7 @@
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_south)
 "oUZ" = (
 /obj/structure/platform/hybrisa/metalplatform1{
 	dir = 8
@@ -86211,7 +86574,7 @@
 	dir = 1
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "oVP" = (
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/hybrisa/street/sidewalk{
@@ -86263,7 +86626,7 @@
 "oWm" = (
 /obj/structure/prop/hybrisa/engineer/blackgoocontainer,
 /turf/open/engineership/engineer_floor2,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "oWs" = (
 /obj/item/paper/crumpled,
 /obj/effect/landmark/objective_landmark/medium,
@@ -86277,7 +86640,7 @@
 	pixel_y = 15
 	},
 /turf/open/engineership/engineer_floor1,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "oWD" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/window/reinforced{
@@ -86292,11 +86655,6 @@
 	},
 /turf/open/floor/hybrisa/metal/bluemetalfull,
 /area/lv759/indoors/spaceport/administration/east)
-"oWE" = (
-/turf/closed/wall/strata_outpost_ribbed{
-	icon = 'icons/turf/walls/hybrisaresearchbrownwall.dmi'
-	},
-/area/lv759/outdoors/caves/west_caves)
 "oWH" = (
 /obj/structure/cargo_container/horizontal/blue/top,
 /obj/effect/hybrisa/decal/road/lines2,
@@ -86458,7 +86816,7 @@
 	pixel_y = 4
 	},
 /turf/open/engineership/engineer_floor1,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "oYF" = (
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/hybrisa/street/sidewalk{
@@ -86564,7 +86922,7 @@
 	dir = 6;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "oZz" = (
 /obj/item/toy/beach_ball,
 /obj/structure/platform/mineral{
@@ -87094,7 +87452,9 @@
 	pixel_x = -10;
 	pixel_y = 7
 	},
-/turf/open/hybrisa/street/cement1,
+/turf/open/hybrisa/street/sidewalk{
+	dir = 6
+	},
 /area/lv759/outdoors/colony_streets/east_central_street)
 "pdP" = (
 /obj/structure/surface/table,
@@ -87164,7 +87524,7 @@
 	},
 /obj/item/stock_parts/matter_bin,
 /turf/open/engineership/engineer_floor3,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "pek" = (
 /obj/effect/hybrisa/decal/road/lines3,
 /obj/structure/prop/invuln/lattice_prop{
@@ -87538,6 +87898,15 @@
 	dir = 1
 	},
 /area/lv759/indoors/garage_office)
+"pid" = (
+/obj/structure/fence{
+	icon = 'icons/obj/structures/props/darkfence.dmi'
+	},
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "ramptop"
+	},
+/area/lv759/power_plant/transformers_north)
 "pil" = (
 /obj/structure/bed/chair/vehicle{
 	dir = 1;
@@ -87671,7 +88040,7 @@
 	dir = 4;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_south)
 "pjd" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 4
@@ -88075,7 +88444,7 @@
 	dir = 4
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "pog" = (
 /obj/effect/spawner/random/gun/pistol/lowchance,
 /turf/open/floor{
@@ -88315,6 +88684,15 @@
 	},
 /turf/open/floor/hybrisa/carpet/carpetblue,
 /area/lv759/indoors/apartment/west)
+"pqI" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "red"
+	},
+/area/lv759/colonial_marshals/hallway_reception)
 "pqL" = (
 /obj/item/tool/wet_sign{
 	pixel_x = -11;
@@ -88687,7 +89065,7 @@
 	layer = 4
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "pts" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/barricade/handrail/hybrisa/road/wood/orange{
@@ -89102,7 +89480,7 @@
 	dir = 4
 	},
 /turf/open/engineership/engineer_floor1,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "pxu" = (
 /obj/structure/window/reinforced{
 	dir = 8;
@@ -89113,6 +89491,12 @@
 	icon_state = "black"
 	},
 /area/whiskey_outpost/inside/caves)
+"pxv" = (
+/obj/structure/sign/poster/safety,
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/lv759/power_plant/equipment_east)
 "pxy" = (
 /obj/structure/bed/roller,
 /obj/effect/decal/cleanable/blood,
@@ -89523,6 +89907,11 @@
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/weymart_maintenance)
+"pBg" = (
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/lv759/power_plant/transformers_south)
 "pBk" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal3"
@@ -89629,7 +90018,7 @@
 "pCl" = (
 /obj/structure/barricade/handrail/hybrisa/handrail,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "pCn" = (
 /obj/structure/platform/hybrisa/metalplatform2{
 	dir = 1
@@ -90086,7 +90475,7 @@
 "pGi" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/engineership/engineer_floor1,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "pGl" = (
 /obj/structure/platform_decoration/hybrisa/engineer_corner{
 	dir = 8
@@ -90095,7 +90484,7 @@
 	dir = 4
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "pGm" = (
 /obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark1{
 	layer = 4
@@ -90476,7 +90865,7 @@
 	dir = 1
 	},
 /turf/open/engineership/engineer_floor3,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "pJd" = (
 /obj/item/tool/weldingtool,
 /obj/effect/decal/cleanable/blood,
@@ -90618,7 +91007,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_south)
 "pKH" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/cleanable/blood{
@@ -91278,7 +91667,7 @@
 	pixel_y = 4
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "pQu" = (
 /obj/structure/platform/hybrisa/rockdark,
 /obj/structure/platform/hybrisa/rockdark{
@@ -91401,7 +91790,7 @@
 	layer = 2
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "pRo" = (
 /obj/structure/sign/safety/stairs,
 /turf/closed/wall/r_wall/bunker{
@@ -91454,9 +91843,8 @@
 	icon_state = "S"
 	},
 /obj/effect/hybrisa/decal/dirt,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "ramptop"
+/turf/open/floor/hybrisa/metal/grated{
+	dir = 4
 	},
 /area/lv759/landing_zone_2)
 "pRL" = (
@@ -91473,7 +91861,7 @@
 	color = "#505050"
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "pRT" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -91612,6 +92000,12 @@
 	icon_state = "floor_plate"
 	},
 /area/lv759/outdoors/colony_streets/south_east_street)
+"pSX" = (
+/obj/effect/hybrisa/decal/dirt,
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/lv759/power_plant/transformers_north)
 "pSY" = (
 /obj/structure/sign/safety/synth_storage,
 /turf/closed/wall/strata_outpost_ribbed{
@@ -91624,7 +92018,7 @@
 	},
 /obj/item/device/flashlight/lamp/tripod/grey,
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "pTi" = (
 /obj/effect/hybrisa/decal/road/lines1,
 /obj/effect/hybrisa/decal/road/road_edge,
@@ -91936,12 +92330,13 @@
 /turf/open/floor/hybrisa/tile/yellow_bigtile,
 /area/lv759/power_plant/workers_canteen)
 "pVX" = (
-/obj/structure/machinery/door/poddoor/shutters{
-	id = "marshalls_garage"
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
 	},
-/turf/open/floor/corsat{
-	icon_state = "officetiles"
+/obj/structure/barricade/handrail/strata{
+	dir = 8
 	},
+/turf/open/floor/plating,
 /area/lv759/colonial_marshals/garage)
 "pVY" = (
 /obj/effect/decal/warning_stripes{
@@ -92050,7 +92445,7 @@
 	dir = 5;
 	icon_state = "plating"
 	},
-/area/lv759/power_plant)
+/area/lv759/power_plant/equipment_west)
 "pWT" = (
 /obj/structure/platform/hybrisa/metalplatform3{
 	dir = 1
@@ -92468,16 +92863,13 @@
 	},
 /area/lv759/indoors/hospital/outgoing)
 "qby" = (
-/obj/effect/hybrisa/decal/road/road_edge{
-	icon_state = "road_edge_decal3"
-	},
-/obj/effect/hybrisa/decal/road/lines3,
-/obj/effect/hybrisa/decal/dirt,
 /obj/structure/prop/hybrisa/vehicles/truck/truck3{
 	dir = 4;
-	pixel_y = -14
+	pixel_y = 12
 	},
-/turf/open/hybrisa/street/asphalt,
+/turf/open/hybrisa/street/sidewalk{
+	dir = 1
+	},
 /area/lv759/outdoors/colony_streets/north_street)
 "qbz" = (
 /obj/effect/hybrisa/decal/dirt,
@@ -92835,7 +93227,7 @@
 	dir = 1
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "qeV" = (
 /obj/structure/prop/invuln/overhead_pipe{
 	icon_state = "intact"
@@ -93001,7 +93393,7 @@
 /turf/open/engineership/engineer_floor8{
 	dir = 4
 	},
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "qgi" = (
 /obj/item/prop/colony/usedbandage,
 /obj/effect/decal/cleanable/blood,
@@ -93486,6 +93878,19 @@
 	dir = 1
 	},
 /area/lv759/outdoors/colony_streets/north_west_street)
+"qkG" = (
+/obj/structure/machinery/light/double/blue,
+/obj/structure/tunnel/maint_tunnel/no_xeno_desc{
+	desc = "An entrance to a sewer tunnel. Pieces of debris keep you from getting a closer look.";
+	icon = 'icons/obj/structures/props/zenithrandomprops.dmi';
+	icon_state = "wymanhole";
+	pixel_x = -5;
+	pixel_y = 12
+	},
+/turf/open/hybrisa/street/sidewalk{
+	dir = 6
+	},
+/area/lv759/outdoors/colony_streets/east_central_street)
 "qkJ" = (
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
 	icon_state = "flagpole";
@@ -93760,7 +94165,7 @@
 	pixel_y = 12
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "qnZ" = (
 /obj/structure/closet/hydrant,
 /turf/closed/wall/strata_outpost_ribbed{
@@ -93868,7 +94273,7 @@
 	dir = 4
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "qoO" = (
 /obj/structure/prop/hybrisa/airport/dropshipventright,
 /turf/open/floor/plating,
@@ -94131,6 +94536,12 @@
 "qrc" = (
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/outdoors/colony_streets/central_streets)
+"qrh" = (
+/turf/open/floor/prison{
+	dir = 9;
+	icon_state = "red"
+	},
+/area/lv759/colonial_marshals/hallway_reception)
 "qri" = (
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
@@ -94206,7 +94617,7 @@
 	dir = 4
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "qrG" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal5"
@@ -94405,7 +94816,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "qtA" = (
 /obj/structure/platform{
 	dir = 1;
@@ -94562,7 +94973,7 @@
 	name = "\improper Marshal Office Complex Shutters"
 	},
 /turf/open/floor/plating,
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_south)
 "quG" = (
 /obj/structure/barricade/handrail/hybrisa/road/plastic/blue,
 /turf/open/hybrisa/street/sidewalk,
@@ -94701,7 +95112,7 @@
 	dir = 1
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "qvO" = (
 /obj/structure/barricade/handrail/hybrisa/handrail,
 /turf/open/hybrisa/street/cement1,
@@ -95013,7 +95424,7 @@
 	dir = 1
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "qyt" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10"
@@ -95188,7 +95599,7 @@
 	dir = 4
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "qzB" = (
 /obj/structure/prop/ice_colony/soil_net,
 /obj/structure/prop/ice_colony/ground_wire{
@@ -95630,7 +96041,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_north)
 "qEr" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/hybrisa/decal/bloodtrail{
@@ -95713,7 +96124,7 @@
 	pixel_y = -4
 	},
 /turf/open/engineership/engineer_floor1,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "qFk" = (
 /obj/item/trash/cigbutt,
 /turf/open/hybrisa/street/sidewalkfull,
@@ -96124,6 +96535,10 @@
 	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
 	},
 /area/lv759/outdoors/caves/north_west_caves)
+"qIE" = (
+/obj/effect/hybrisa/decal/grate,
+/turf/open/auto_turf/hybrisashale/layer0_plate,
+/area/lv759/outdoors/caves/central_caves)
 "qIF" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/prop/helmetgarb/spacejam_tickets{
@@ -97185,6 +97600,11 @@
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "3"
 	},
+/obj/effect/hybrisa/decal/trash{
+	icon_state = "trash_3";
+	pixel_x = -8;
+	pixel_y = 12
+	},
 /turf/open/hybrisa/street/sidewalk{
 	dir = 8
 	},
@@ -97453,7 +97873,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "qTT" = (
 /obj/structure/barricade/handrail/strata,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -97642,12 +98062,8 @@
 /obj/structure/sign/safety/landingzone{
 	pixel_x = -17
 	},
-/obj/structure/prop/hybrisa/misc/phonebox/lightup{
-	light_color = "#00AAFF";
-	light_on = 1;
-	light_power = 3;
-	light_range = 4;
-	pixel_x = 5
+/obj/structure/machinery/light/blue{
+	dir = 1
 	},
 /turf/open/hybrisa/street/cement3,
 /area/lv759/outdoors/colony_streets/north_west_street)
@@ -97871,7 +98287,7 @@
 	pixel_y = 4
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "qXJ" = (
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 4
@@ -97904,7 +98320,7 @@
 	pixel_y = 20
 	},
 /turf/open/engineership/engineer_floor3,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "qYg" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -98093,7 +98509,7 @@
 	dir = 1
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "qZs" = (
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaldark{
 	dir = 8
@@ -98350,7 +98766,7 @@
 /obj/structure/surface/rack,
 /obj/item/engi_upgrade_kit,
 /turf/open/floor/corsat,
-/area/lv759/power_plant/south_hallway)
+/area/lv759/power_plant/equipment_east)
 "rbH" = (
 /turf/open/floor/prison{
 	dir = 4;
@@ -98468,7 +98884,7 @@
 	dir = 4;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_reception)
 "rdn" = (
 /obj/structure/bed/chair{
 	dir = 16
@@ -98513,7 +98929,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "rdH" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/glass/paint{
@@ -98581,7 +98997,7 @@
 	dir = 4
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "reh" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/binoculars,
@@ -98725,7 +99141,7 @@
 	},
 /obj/structure/largecrate/random/barrel/black,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "rfq" = (
 /obj/structure/prop/hybrisa/cavedecor/stalagmite4,
 /turf/open/auto_turf/hybrisashale/layer1,
@@ -98782,7 +99198,7 @@
 	dir = 4;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "rfM" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal3"
@@ -98853,6 +99269,16 @@
 	icon_state = "marked"
 	},
 /area/lv759/outdoors/colony_streets/central_streets)
+"rgy" = (
+/obj/structure/platform{
+	dir = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/power_plant/transformers_south)
 "rgz" = (
 /obj/structure/barricade/handrail/hybrisa/road/plastic/black{
 	dir = 8
@@ -99004,6 +99430,15 @@
 	icon_state = "cell_stripe"
 	},
 /area/lv759/lone_buildings/wy_security_checkpoint_west)
+"rhO" = (
+/obj/item/clothing/head/hardhat/white{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
+/area/lv759/outdoors/caves/central_caves)
 "rhQ" = (
 /obj/structure/platform{
 	dir = 4
@@ -99091,9 +99526,10 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "riz" = (
-/obj/item/tool/warning_cone,
-/obj/structure/machinery/light/double/blue,
-/turf/open/hybrisa/street/cement1,
+/obj/effect/hybrisa/decal/dirt,
+/turf/open/hybrisa/street/CMB_4x4_emblem{
+	dir = 4
+	},
 /area/lv759/outdoors/colony_streets/east_central_street)
 "riB" = (
 /obj/structure/bed/chair/comfy/teal{
@@ -99179,7 +99615,7 @@
 /obj/structure/largecrate/random/case/small,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/engineership/engineer_floor3,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "rjH" = (
 /obj/item/weapon/twohanded/folded_metal_chair{
 	pixel_x = -7;
@@ -99196,7 +99632,7 @@
 	dir = 8
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "rjN" = (
 /obj/structure/barricade/handrail/kutjevo{
 	dir = 8;
@@ -99657,7 +100093,7 @@
 	pixel_y = 20
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "rnQ" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/faxmachine/uscm/brig/chief,
@@ -99830,7 +100266,7 @@
 	},
 /obj/item/stock_parts/matter_bin/super,
 /turf/open/engineership/engineer_floor1,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "rpP" = (
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble11{
 	pixel_x = -16;
@@ -99872,7 +100308,7 @@
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_reception)
 "rqe" = (
 /obj/structure/prop/hybrisa/containersextended/greywyright,
 /turf/open/hybrisa/street/sidewalk{
@@ -100031,7 +100467,7 @@
 /turf/open/floor/prison{
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "rrk" = (
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/stationary,
 /obj/structure/cable{
@@ -100614,7 +101050,7 @@
 /turf/open/floor/prison{
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "rwG" = (
 /obj/structure/prop/hybrisa/cavedecor/stalagmite2,
 /turf/open/auto_turf/hybrisashale/layer1,
@@ -101050,7 +101486,7 @@
 	},
 /obj/item/device/flashlight/lamp/tripod/grey,
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "rzU" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 1
@@ -101294,6 +101730,14 @@
 	icon_state = "plating_striped"
 	},
 /area/lv759/indoors/spaceport/baggagehandling)
+"rCF" = (
+/obj/structure/platform{
+	dir = 4
+	},
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/lv759/power_plant/transformers_south)
 "rCG" = (
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/lone_buildings/wy_security_checkpoint_west)
@@ -101397,6 +101841,15 @@
 	name = "reinforced metal wall"
 	},
 /area/lv759/indoors/meridian/meridian_foyer)
+"rDF" = (
+/obj/structure/sign/safety/high_voltage{
+	pixel_x = 11
+	},
+/obj/structure/sign/safety/restrictedarea,
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/lv759/power_plant/transformers_south)
 "rDH" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -101463,7 +101916,7 @@
 /area/lv759/outdoors/colony_streets/south_west_street)
 "rEg" = (
 /turf/open/floor/hybrisa/tile/tilebeige,
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "rEh" = (
 /obj/structure/sign/safety/bathunisex{
 	pixel_x = -16;
@@ -101571,7 +102024,7 @@
 	},
 /obj/item/storage/briefcase/inflatable,
 /turf/open/floor/corsat,
-/area/lv759/power_plant)
+/area/lv759/power_plant/equipment_west)
 "rEH" = (
 /obj/structure/platform/hybrisa/metalplatform2{
 	dir = 1
@@ -101627,6 +102080,11 @@
 	icon_state = "plate"
 	},
 /area/whiskey_outpost/inside/caves)
+"rEX" = (
+/turf/open/floor/prison{
+	icon_state = "ramptop"
+	},
+/area/lv759/colonial_marshals/hallway_reception)
 "rFa" = (
 /turf/open/floor/plating{
 	dir = 8;
@@ -101670,7 +102128,7 @@
 	dir = 5;
 	icon_state = "plating"
 	},
-/area/lv759/power_plant/south_hallway)
+/area/lv759/power_plant/equipment_east)
 "rFn" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
@@ -102677,7 +103135,7 @@
 	pixel_x = -4
 	},
 /turf/open/engineership/engineer_floor1,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "rMS" = (
 /obj/structure/machinery/deployable/barrier,
 /turf/open/floor/prison{
@@ -103007,7 +103465,7 @@
 	},
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "rPB" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal2"
@@ -103687,6 +104145,14 @@
 	icon_state = "red"
 	},
 /area/lv759/lone_buildings/wy_security_checkpoint_central)
+"rVA" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Marshal Office"
+	},
+/turf/open/floor/corsat{
+	icon_state = "officetiles"
+	},
+/area/lv759/colonial_marshals/hallway_south)
 "rVE" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -104112,7 +104578,7 @@
 "sak" = (
 /obj/structure/machinery/light/small,
 /turf/open/floor/hybrisa/tile/tilebeige,
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "san" = (
 /obj/structure/fence{
 	icon = 'icons/obj/structures/props/darkfence.dmi'
@@ -104311,7 +104777,7 @@
 /turf/open/floor/prison{
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "sbM" = (
 /obj/effect/hybrisa/decal/road/lines4,
 /obj/effect/hybrisa/decal/road/lines2,
@@ -104534,7 +105000,7 @@
 /obj/structure/platform_decoration/hybrisa/engineer_corner,
 /obj/structure/prop/hybrisa/engineer/blackgoocontainer,
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "sem" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -13;
@@ -104747,7 +105213,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_reception)
 "sfS" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -104768,7 +105234,10 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/structure/prop/ice_colony/ground_wire,
+/obj/item/clothing/head/hardhat/white{
+	pixel_x = -8;
+	pixel_y = 4
+	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -104960,7 +105429,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/structure/prop/ice_colony/ground_wire,
 /turf/open/floor/plating,
 /area/lv759/outdoors/caves/west_caves)
 "shw" = (
@@ -105012,6 +105480,16 @@
 	icon_state = "whitegreen"
 	},
 /area/lv759/indoors/hospital/central_hallway)
+"sij" = (
+/obj/structure/bed/chair/comfy{
+	dir = 4;
+	icon_state = "comfychair_blue"
+	},
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "red"
+	},
+/area/lv759/colonial_marshals/hallway_central)
 "sik" = (
 /obj/structure/prop/hybrisa/containersextended/blackwyleft,
 /turf/open/floor/strata{
@@ -105042,7 +105520,7 @@
 	dir = 8
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "siY" = (
 /obj/item/shard,
 /obj/effect/hybrisa/decal/dirt,
@@ -105509,7 +105987,7 @@
 	},
 /obj/structure/platform_decoration,
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "snm" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -105640,7 +106118,7 @@
 	},
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "sox" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 8
@@ -105787,7 +106265,7 @@
 	dir = 4
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "spq" = (
 /obj/structure/largecrate/random/barrel{
 	layer = 5;
@@ -105869,7 +106347,7 @@
 /turf/open/floor/prison{
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "sqh" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -105946,7 +106424,7 @@
 	pixel_y = 10
 	},
 /turf/open/engineership/engineer_floor3,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "sra" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/tool/warning_cone{
@@ -106840,7 +107318,7 @@
 /area/lv759/power_plant/fusion_generators)
 "sxW" = (
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/largecrate/random/barrel/red,
+/obj/structure/largecrate/random/barrel/black,
 /turf/open/floor/plating{
 	icon_state = "platingdmg1"
 	},
@@ -107476,11 +107954,11 @@
 /turf/open/hybrisa/street/sidewalkfull,
 /area/lv759/outdoors/colony_streets/north_street)
 "sCY" = (
-/obj/structure/largecrate/random/barrel,
-/turf/open/floor/corsat{
-	icon_state = "plate"
+/obj/structure/machinery/door/poddoor/shutters{
+	id = "marshalls_garage"
 	},
-/area/lv759/colonial_marshals/garage)
+/turf/open/hybrisa/street/roadlines3,
+/area/lv759/outdoors/colony_streets/east_central_street)
 "sDi" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/effect/landmark/objective_landmark/science,
@@ -107587,7 +108065,7 @@
 /obj/structure/largecrate/random/barrel/black,
 /obj/structure/prop/hybrisa/fakeplatforms/platform3,
 /turf/open/engineership/engineer_floor1,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "sEK" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/sign/safety/high_voltage{
@@ -107968,7 +108446,7 @@
 	pixel_y = 20
 	},
 /turf/open/engineership/engineer_floor1,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "sHA" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -108229,7 +108707,7 @@
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_south)
 "sKr" = (
 /obj/effect/decal/strata_decals/grime/grime1,
 /turf/open/floor{
@@ -108293,14 +108771,14 @@
 	dir = 8
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "sKJ" = (
 /obj/structure/prop/hybrisa/engineer/blackgoocontainer{
 	pixel_x = -6;
 	pixel_y = 4
 	},
 /turf/open/engineership/engineer_floor1,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "sKN" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1;
@@ -108343,7 +108821,7 @@
 /obj/effect/hybrisa/decal/grate{
 	dir = 8
 	},
-/turf/open/auto_turf/hybrisashale/layer1,
+/turf/open/auto_turf/hybrisashale/layer0_plate,
 /area/lv759/outdoors/caves/central_caves)
 "sLm" = (
 /obj/effect/decal/warning_stripes{
@@ -108871,7 +109349,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/structure/prop/ice_colony/ground_wire,
 /obj/structure/surface/rack,
 /obj/item/storage/briefcase/inflatable,
 /obj/item/storage/briefcase/inflatable,
@@ -108891,6 +109368,11 @@
 	},
 /turf/open/floor/plating,
 /area/lv759/landing_zone_2/ceiling)
+"sPj" = (
+/turf/open/floor/corsat{
+	icon_state = "officetiles"
+	},
+/area/lv759/colonial_marshals/hallway_reception)
 "sPv" = (
 /obj/structure/stairs{
 	dir = 1
@@ -108969,6 +109451,10 @@
 	icon_state = "marked"
 	},
 /area/lv759/outdoors/colony_streets/east_central_street)
+"sPZ" = (
+/obj/structure/largecrate/random/barrel/black,
+/turf/open/auto_turf/hybrisashale/layer1,
+/area/lv759/outdoors/caves/central_caves)
 "sQm" = (
 /obj/structure/prop/hybrisa/cavedecor/stalagmite4,
 /turf/open/auto_turf/hybrisashale/layer1,
@@ -109277,7 +109763,7 @@
 	},
 /obj/structure/platform_decoration,
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "sTm" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/barricade/sandbags,
@@ -109377,6 +109863,14 @@
 /obj/effect/hybrisa/decal/road/lines1,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_west_street)
+"sUg" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Marshal Office"
+	},
+/turf/open/floor/corsat{
+	icon_state = "officetiles"
+	},
+/area/lv759/colonial_marshals/hallway_north)
 "sUj" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/trash/candle,
@@ -109511,7 +110005,7 @@
 "sVt" = (
 /obj/structure/closet/firecloset/full,
 /turf/open/floor/corsat,
-/area/lv759/power_plant/south_hallway)
+/area/lv759/power_plant/equipment_east)
 "sVE" = (
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/hybrisa/tile/beige_bigtile,
@@ -109678,7 +110172,7 @@
 /turf/open/engineership/engineer_floor8{
 	dir = 4
 	},
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "sXv" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e";
@@ -109768,7 +110262,7 @@
 	dir = 8
 	},
 /turf/open/engineership/engineer_floor1,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "sYe" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox{
@@ -109840,7 +110334,7 @@
 /turf/open/floor/prison{
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "sYF" = (
 /obj/item/shard,
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaldark,
@@ -110128,6 +110622,11 @@
 	icon_state = "marked"
 	},
 /area/whiskey_outpost/inside/caves)
+"tbk" = (
+/turf/open/floor/corsat{
+	icon_state = "officetiles"
+	},
+/area/lv759/colonial_marshals/hallway_south)
 "tbm" = (
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco6,
 /turf/open/hybrisa/street/sidewalk{
@@ -110494,7 +110993,7 @@
 /turf/open/engineership/engineer_floor8{
 	dir = 4
 	},
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "tdW" = (
 /obj/structure/machinery/newscaster,
 /turf/closed/wall/hangar{
@@ -110786,7 +111285,7 @@
 "tgl" = (
 /obj/structure/platform_decoration/hybrisa/engineer_corner,
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "tgp" = (
 /obj/structure/prop/hybrisa/containersextended/tanwywingsleft{
 	layer = 6
@@ -111073,6 +111572,14 @@
 "tjy" = (
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/lone_buildings/wy_security_checkpoint_west)
+"tjF" = (
+/obj/structure/platform/hybrisa/rockdark{
+	dir = 4
+	},
+/obj/structure/platform/hybrisa/rockdark,
+/obj/structure/tunnel,
+/turf/open/auto_turf/hybrisashale/layer1,
+/area/lv759/outdoors/caves/central_caves)
 "tjG" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/drinks/coffee{
@@ -111113,7 +111620,7 @@
 	name = "Meridian - Factory Floor"
 	},
 /turf/open/floor/plating,
-/area/lv759/indoors/meridian/meridian_factory)
+/area/lv759/indoors/meridian/meridian_foyer)
 "tjS" = (
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red{
 	dir = 4
@@ -111678,7 +112185,7 @@
 "toU" = (
 /obj/structure/machinery/recharge_station,
 /turf/open/floor/corsat,
-/area/lv759/power_plant/south_hallway)
+/area/lv759/power_plant/equipment_east)
 "toX" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/surface/rack,
@@ -111878,7 +112385,7 @@
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_north)
 "tqH" = (
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
@@ -112015,7 +112522,7 @@
 	dir = 1
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "tsu" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/trash/c_tube{
@@ -112603,7 +113110,7 @@
 /turf/open/floor/prison{
 	icon_state = "ramptop"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_south)
 "tzK" = (
 /turf/closed/shuttle/dropship2/WY/StarGlider{
 	icon_state = "7"
@@ -112747,7 +113254,7 @@
 	dir = 8;
 	icon_state = "cell_stripe"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "tBD" = (
 /obj/effect/hybrisa/decal/road/road_edge,
 /obj/effect/decal/warning_stripes{
@@ -113157,7 +113664,7 @@
 	pixel_y = -4
 	},
 /turf/open/floor/plating,
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_north)
 "tFw" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -113431,6 +113938,9 @@
 "tHH" = (
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/lv759/indoors/apartment/west)
+"tHI" = (
+/turf/closed/wall/r_wall/prison,
+/area/lv759/colonial_marshals/hallway_south)
 "tHP" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/head/hardhat/white,
@@ -113840,7 +114350,7 @@
 	dir = 4
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "tLa" = (
 /obj/effect/hybrisa/decal/dirt,
 /turf/closed/wall/hangar{
@@ -114094,6 +114604,15 @@
 	},
 /turf/open/floor/almayer_hull,
 /area/whiskey_outpost/inside/caves)
+"tNo" = (
+/obj/structure/extinguisher_cabinet,
+/obj/structure/machinery/door_control{
+	id = "marshalls_garage";
+	name = "CMB - Garage Lockdown";
+	pixel_x = 28
+	},
+/turf/closed/wall/r_wall/prison,
+/area/lv759/outdoors/colony_streets/east_central_street)
 "tNx" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/telescreen,
 /turf/closed/wall/hangar{
@@ -114224,7 +114743,7 @@
 "tOJ" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform1,
 /turf/open/engineership/engineer_floor1,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "tOP" = (
 /obj/item/lightstick/red/spoke/planted,
 /obj/structure/platform_decoration{
@@ -114568,7 +115087,7 @@
 	pixel_x = 1
 	},
 /turf/open/engineership/engineer_floor3,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "tSl" = (
 /obj/item/stack/sheet/cardboard{
 	layer = 1
@@ -114692,7 +115211,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_south)
 "tTq" = (
 /obj/item/tool/wrench{
 	pixel_x = -7;
@@ -114862,7 +115381,7 @@
 /turf/open/floor/prison{
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "tUU" = (
 /obj/structure/platform/hybrisa/metalplatform2{
 	dir = 1
@@ -115795,8 +116314,9 @@
 /turf/open/floor/prison,
 /area/lv759/lone_buildings/mining_outpost)
 "udk" = (
-/obj/structure/prop/hybrisa/vehicles/suv/misc/maintenance{
-	dir = 1
+/obj/structure/prop/hybrisa/vehicles/van/hyperdynevan{
+	pixel_y = 4;
+	pixel_x = 4
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_west_street)
@@ -116249,7 +116769,7 @@
 /turf/open/engineership/engineer_floor8{
 	dir = 4
 	},
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "uha" = (
 /obj/structure/sink{
 	dir = 8;
@@ -116417,7 +116937,7 @@
 "uio" = (
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/hybrisa/tile/tilebeige,
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "uit" = (
 /obj/structure/platform_decoration/hybrisa/engineer_corner,
 /obj/effect/hybrisa/decal/engineership_corners{
@@ -116431,7 +116951,7 @@
 	pixel_y = -4
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "uiA" = (
 /obj/structure/platform/kutjevo/smooth{
 	climb_delay = 1;
@@ -116656,7 +117176,7 @@
 	},
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "ujV" = (
 /obj/effect/hybrisa/decal/road/roadmiddle{
 	dir = 8;
@@ -116888,7 +117408,7 @@
 /turf/open/engineership/engineer_floor8{
 	dir = 8
 	},
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "umg" = (
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco6{
 	dir = 8
@@ -117173,7 +117693,7 @@
 "uoj" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/corsat,
-/area/lv759/power_plant/south_hallway)
+/area/lv759/power_plant/equipment_east)
 "uom" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -117411,7 +117931,7 @@
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
-/area/lv759/power_plant/geothermal_generators)
+/area/lv759/power_plant/equipment_east)
 "upZ" = (
 /turf/open/floor/strata{
 	dir = 8;
@@ -117882,7 +118402,7 @@
 	dir = 8
 	},
 /turf/open/engineership/engineer_floor1,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "uum" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -117898,6 +118418,10 @@
 	icon_state = "red"
 	},
 /area/lv759/lone_buildings/wy_security_checkpoint_east)
+"uup" = (
+/obj/structure/window/framed/hangar/reinforced,
+/turf/open/floor/plating,
+/area/lv759/power_plant/power_storage)
 "uuz" = (
 /turf/open/floor/kutjevo/fake_wood,
 /area/lv759/indoors/bar)
@@ -117915,12 +118439,9 @@
 /obj/effect/hybrisa/decal/doubleroad/lines3{
 	pixel_y = -4
 	},
-/obj/structure/bed/roller/hospital,
-/obj/item/prop/colony/usedbandage{
-	dir = 4
-	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/drip,
+/obj/structure/bed/roller/hospital/bloody,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/central_streets)
 "uuO" = (
@@ -117958,7 +118479,7 @@
 	dir = 1
 	},
 /turf/open/engineership/engineer_floor1,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "uvb" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -117980,7 +118501,7 @@
 	dir = 1;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "uvo" = (
 /obj/structure/platform/hybrisa/metalplatform2{
 	dir = 8
@@ -118227,7 +118748,7 @@
 	},
 /obj/structure/platform_decoration,
 /turf/open/floor/plating,
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_north)
 "uxE" = (
 /turf/open/floor{
 	icon_state = "grimy"
@@ -118423,7 +118944,7 @@
 	dir = 4
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "uzI" = (
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble12{
 	pixel_x = -16;
@@ -118499,7 +119020,7 @@
 	dir = 8
 	},
 /turf/open/engineership/engineer_floor3,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "uAK" = (
 /obj/structure/bed/hybrisa/chairs/black{
 	dir = 1;
@@ -118663,7 +119184,7 @@
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
 	},
-/area/lv759/power_plant/geothermal_generators)
+/area/lv759/power_plant/power_storage)
 "uBJ" = (
 /obj/structure/machinery/light/small/blue{
 	dir = 4
@@ -118934,6 +119455,12 @@
 	icon_state = "floor3"
 	},
 /area/lv759/landing_zone/landing_zone_3)
+"uDj" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8
+	},
+/turf/open/auto_turf/hybrisashale/layer0_plate,
+/area/lv759/outdoors/caveplateau)
 "uDl" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/prop/hybrisa/containersextended/bluewywingsleft,
@@ -118950,7 +119477,7 @@
 	pixel_y = 2
 	},
 /turf/open/engineership/engineer_floor1,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "uDz" = (
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
@@ -119124,7 +119651,7 @@
 	dir = 1
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "uEs" = (
 /obj/structure/barricade/handrail/strata{
 	layer = 3.1
@@ -120010,7 +120537,7 @@
 	dir = 1
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "uMo" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Marshal Office"
@@ -120227,6 +120754,7 @@
 	level = 7;
 	pixel_y = 12
 	},
+/obj/structure/machinery/light/double/blue,
 /turf/open/hybrisa/street/sidewalk{
 	dir = 10
 	},
@@ -120702,7 +121230,7 @@
 	dir = 10;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "uRd" = (
 /obj/structure/machinery/vending/cola{
 	density = 0;
@@ -120711,7 +121239,7 @@
 /turf/open/floor/prison{
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "uRe" = (
 /obj/structure/prop/hybrisa/containersextended/blueleft,
 /turf/open/hybrisa/street/sidewalkfull,
@@ -120738,6 +121266,12 @@
 	icon_state = "multi_tiles"
 	},
 /area/whiskey_outpost/inside/caves)
+"uRo" = (
+/obj/structure/largecrate/random/barrel/black{
+	layer = 4
+	},
+/turf/open/auto_turf/hybrisashale/layer1,
+/area/lv759/outdoors/caves/central_caves)
 "uRq" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mgibbl2"
@@ -120763,7 +121297,7 @@
 	name = "\improper Marshal Offices Shutters"
 	},
 /turf/open/floor/plating,
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_reception)
 "uRA" = (
 /turf/open/floor/prison{
 	dir = 10;
@@ -120870,7 +121404,7 @@
 	dir = 8
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "uSt" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble12{
@@ -120900,7 +121434,7 @@
 	dir = 6;
 	icon_state = "multi_tiles"
 	},
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_north)
 "uSF" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -120990,7 +121524,7 @@
 	color = "#505050"
 	},
 /turf/open/engineership/engineer_floor3,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "uTx" = (
 /obj/structure/sign/poster/ad,
 /turf/closed/wall/hangar{
@@ -121157,7 +121691,7 @@
 	req_one_access_txt = "19;34;30"
 	},
 /turf/open/floor/plating,
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_south)
 "uUM" = (
 /obj/effect/hybrisa/decal/road/lines1,
 /obj/item/trash/uscm_mre,
@@ -121350,7 +121884,7 @@
 /area/lv759/landing_zone/landing_zone_4)
 "uWM" = (
 /turf/open/floor/corsat,
-/area/lv759/power_plant)
+/area/lv759/power_plant/equipment_west)
 "uWN" = (
 /obj/structure/closet/cabinet,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo,
@@ -121746,7 +122280,7 @@
 /obj/effect/landmark/objective_landmark/far,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/engineership/engineer_floor2,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "vbq" = (
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco6{
 	dir = 1;
@@ -121790,7 +122324,7 @@
 	layer = 2.9
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "vbC" = (
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaldark,
 /obj/effect/hybrisa/decal/tiretrack{
@@ -121808,7 +122342,7 @@
 "vbL" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor/corsat,
-/area/lv759/power_plant)
+/area/lv759/power_plant/equipment_west)
 "vbU" = (
 /obj/effect/hybrisa/decal/road/road_stop{
 	icon_state = "stop_decal4"
@@ -121925,6 +122459,7 @@
 	pixel_x = -10;
 	pixel_y = 7
 	},
+/obj/effect/hybrisa/decal/dirt_2,
 /turf/open/hybrisa/street/sidewalk{
 	dir = 1
 	},
@@ -122107,7 +122642,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_south)
 "veg" = (
 /obj/effect/hybrisa/decal/road/road_edge,
 /obj/effect/hybrisa/decal/road/lines1,
@@ -122259,7 +122794,7 @@
 	},
 /obj/structure/platform_decoration/hybrisa/engineer_corner,
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "vgj" = (
 /obj/item/device/flashlight/lamp/tripod,
 /obj/structure/machinery/light{
@@ -122409,7 +122944,7 @@
 	pixel_y = 12
 	},
 /turf/open/engineership/engineer_floor1,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "vin" = (
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco6{
 	dir = 1
@@ -122823,7 +123358,7 @@
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
-/area/lv759/power_plant/south_hallway)
+/area/lv759/power_plant/equipment_east)
 "vmn" = (
 /obj/effect/hybrisa/decal/road/lines3,
 /obj/effect/hybrisa/decal/road/road_stop{
@@ -123425,7 +123960,8 @@
 /area/whiskey_outpost/inside/caves)
 "vsi" = (
 /obj/structure/prop/ice_colony/surveying_device{
-	dir = 1
+	dir = 1;
+	layer = 4
 	},
 /obj/structure/platform/hybrisa/rockdark{
 	dir = 4
@@ -123736,7 +124272,7 @@
 /turf/open/floor/prison{
 	icon_state = "cell_stripe"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "vuP" = (
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/outdoors/caves/south_west_caves)
@@ -123841,7 +124377,7 @@
 	dir = 4;
 	icon_state = "redcorner"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "vvC" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 8
@@ -123859,7 +124395,7 @@
 	pixel_y = 4
 	},
 /turf/open/engineership/engineer_floor3,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "vvR" = (
 /obj/item/weapon/gun/rifle/mar40/carbine,
 /obj/effect/decal/cleanable/blood{
@@ -123916,7 +124452,7 @@
 	},
 /obj/structure/largecrate/random/barrel/black,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "vwr" = (
 /obj/effect/hybrisa/decal/checkpoint_decal{
 	dir = 4;
@@ -124719,8 +125255,9 @@
 	pixel_y = 8
 	},
 /obj/item/smallDelivery{
-	pixel_x = 13;
-	pixel_y = 12
+	pixel_x = 8;
+	pixel_y = 12;
+	layer = 2.9
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/east_central_street)
@@ -124776,7 +125313,7 @@
 	},
 /obj/structure/platform_decoration/hybrisa/engineer_corner,
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "vEo" = (
 /obj/structure/machinery/floodlight,
 /obj/effect/hybrisa/decal/dirt,
@@ -125234,6 +125771,14 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/landing_zone_2)
+"vIB" = (
+/obj/structure/prop/hybrisa/misc/stoneplanterseats/empty{
+	dir = 1;
+	layer = 5;
+	pixel_x = -6
+	},
+/turf/open/hybrisa/street/cement1,
+/area/lv759/colonial_marshals/north_office)
 "vID" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -4;
@@ -125643,7 +126188,7 @@
 	layer = 4.1
 	},
 /turf/open/engineership/engineer_floor1,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "vLU" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
@@ -125808,7 +126353,7 @@
 	pixel_y = 4
 	},
 /turf/open/engineership/engineer_floor3,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "vNx" = (
 /obj/item/ammo_casing/bullet,
 /turf/open/hybrisa/street/sidewalkcenter{
@@ -125978,7 +126523,7 @@
 "vPe" = (
 /obj/effect/hybrisa/decal/engineership_corners,
 /turf/open/engineership/engineer_floor3,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "vPf" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
@@ -126184,7 +126729,7 @@
 	dir = 1
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "vRd" = (
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
@@ -126547,7 +127092,7 @@
 	dir = 1
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "vTT" = (
 /obj/structure/largecrate/random,
 /obj/item/clipboard{
@@ -126601,7 +127146,7 @@
 	dir = 8
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "vUk" = (
 /obj/effect/hybrisa/decal/road/lines2,
 /obj/effect/decal/cleanable/blood,
@@ -127051,7 +127596,7 @@
 /obj/item/device/helmet_visor/welding_visor/mercenary,
 /obj/item/device/helmet_visor/welding_visor/mercenary,
 /turf/open/floor/corsat,
-/area/lv759/power_plant/south_hallway)
+/area/lv759/power_plant/equipment_east)
 "vYg" = (
 /obj/item/bedsheet/green,
 /obj/effect/hybrisa/decal/dirt,
@@ -127123,6 +127668,22 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/plating,
 /area/lv759/outdoors/caves/south_caves)
+"vYK" = (
+/obj/structure/platform_decoration{
+	dir = 4
+	},
+/obj/structure/barricade/handrail/wire{
+	dir = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "cell_stripe"
+	},
+/area/lv759/power_plant/transformers_south)
 "vYT" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -127298,7 +127859,7 @@
 	req_one_access_txt = "19;34;30"
 	},
 /turf/open/floor/plating,
-/area/lv759/power_plant)
+/area/lv759/power_plant/transformers_north)
 "waE" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -127436,6 +127997,10 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /turf/open/floor/almayer_hull,
 /area/lv759/outdoors/colony_streets/central_streets)
+"wcd" = (
+/obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder2,
+/turf/open/auto_turf/hybrisashale/layer1,
+/area/lv759/outdoors/caves/central_caves)
 "wcp" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecaldir"
@@ -127448,14 +128013,14 @@
 "wcs" = (
 /obj/effect/hybrisa/decal/engineership_corners,
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "wcH" = (
 /obj/effect/hybrisa/decal/warningstripes_angled_corner{
 	dir = 4;
 	pixel_y = -4
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "wcK" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -127851,7 +128416,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_south)
 "wfH" = (
 /obj/item/prop/colony/used_flare,
 /turf/open/auto_turf/sand_white/layer0{
@@ -127916,6 +128481,12 @@
 /obj/effect/hybrisa/decal/road/lines1,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/central_streets)
+"wgv" = (
+/obj/item/lightstick/planted,
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
+	},
+/area/lv759/outdoors/caves/central_caves)
 "wgx" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -4;
@@ -127956,7 +128527,7 @@
 	dir = 8
 	},
 /turf/open/engineership/engineer_floor2,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "wgQ" = (
 /obj/structure/surface/table,
 /obj/item/clothing/accessory/stethoscope,
@@ -128435,7 +129006,7 @@
 /turf/open/floor/prison{
 	icon_state = "ramptop"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_south)
 "wll" = (
 /obj/item/trash/cigbutt{
 	pixel_x = -1;
@@ -128840,7 +129411,7 @@
 /turf/open/engineership/engineer_floor14{
 	dir = 1
 	},
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "woE" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
@@ -129082,7 +129653,7 @@
 	name = "\improper Machine room"
 	},
 /turf/open/floor/corsat,
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/equipment_east)
 "wrv" = (
 /turf/open/floor/prison{
 	dir = 1;
@@ -129330,7 +129901,7 @@
 	layer = 2
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "wuq" = (
 /obj/effect/hybrisa/decal/road/lines1,
 /obj/structure/prop/hybrisa/vehicles/Car/Car_2{
@@ -129485,7 +130056,7 @@
 	dir = 1
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "wvm" = (
 /obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard2{
 	dir = 8;
@@ -129865,7 +130436,7 @@
 "wyG" = (
 /obj/item/device/flashlight/lamp/tripod/grey,
 /turf/open/engineership/engineer_floor1,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "wyI" = (
 /obj/structure/machinery/light/blue{
 	dir = 1
@@ -129912,7 +130483,7 @@
 	pixel_y = 4
 	},
 /turf/open/floor/plating,
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_south)
 "wzl" = (
 /turf/open/floor/almayer{
 	dir = 8;
@@ -130246,7 +130817,7 @@
 	},
 /obj/effect/hybrisa/decal/engineership_corners,
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "wCd" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal3"
@@ -130643,7 +131214,7 @@
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
-/area/lv759/power_plant/south_hallway)
+/area/lv759/power_plant/equipment_west)
 "wFc" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/prison{
@@ -131517,6 +132088,10 @@
 	},
 /turf/open/floor/hybrisa/tile/tileblue,
 /area/lv759/lone_buildings/mining_outpost)
+"wNg" = (
+/obj/item/stock_parts/matter_bin,
+/turf/open/auto_turf/hybrisashale/layer1,
+/area/lv759/outdoors/caveplateau)
 "wNl" = (
 /obj/structure/sign/poster/art,
 /turf/closed/wall/hangar{
@@ -131537,7 +132112,7 @@
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_north)
 "wNv" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -11;
@@ -131633,11 +132208,11 @@
 	},
 /obj/item/device/flashlight/lamp/tripod/grey,
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "wOX" = (
 /obj/structure/largecrate/random/case/small,
 /turf/open/engineership/engineer_floor1,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "wPf" = (
 /obj/item/clothing/under/color/orange,
 /obj/structure/bed/hybrisa/prisonbed,
@@ -131789,7 +132364,7 @@
 	dir = 8
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "wRb" = (
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
@@ -131872,7 +132447,7 @@
 /obj/effect/hybrisa/decal/engineership_corners,
 /obj/structure/prop/hybrisa/fakeplatforms/platform3,
 /turf/open/engineership/engineer_floor3,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "wRS" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	desc = "A pipe.";
@@ -132167,6 +132742,16 @@
 /obj/structure/prop/hybrisa/misc/machinery/screens/telescreen,
 /turf/closed/wall/r_wall/prison,
 /area/lv759/colonial_marshals/north_office)
+"wUk" = (
+/obj/structure/bed/chair/comfy{
+	dir = 8;
+	icon_state = "comfychair_blue"
+	},
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "red"
+	},
+/area/lv759/colonial_marshals/hallway_north)
 "wUm" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal2"
@@ -132330,6 +132915,9 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/plating,
 /area/lv759/indoors/bar/maintenance)
+"wWd" = (
+/turf/closed/wall/r_wall/prison,
+/area/lv759/colonial_marshals/hallway_reception)
 "wWg" = (
 /obj/structure/platform/hybrisa/rockdark{
 	dir = 1
@@ -132437,7 +133025,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/lv759/power_plant/power_storage)
+/area/lv759/power_plant/transformers_south)
 "wWV" = (
 /obj/structure/machinery/colony_floodlight/street{
 	layer = 7;
@@ -132480,6 +133068,10 @@
 	dir = 5
 	},
 /area/lv759/outdoors/colony_streets/north_street)
+"wXm" = (
+/obj/item/lightstick/planted,
+/turf/open/auto_turf/hybrisashale/layer0_plate,
+/area/lv759/outdoors/caves/central_caves)
 "wXq" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/prop/hybrisa/fakeplatforms/platform3,
@@ -132641,7 +133233,7 @@
 	},
 /obj/item/device/flashlight/lamp/tripod/grey,
 /turf/open/engineership/engineer_floor2,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "wYB" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal3"
@@ -133034,7 +133626,7 @@
 	dir = 10;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "xce" = (
 /obj/structure/prop/hybrisa/containersextended/greywyright,
 /turf/open/floor/almayer{
@@ -133074,7 +133666,7 @@
 	dir = 4;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_reception)
 "xcC" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -133286,7 +133878,7 @@
 	pixel_y = 15
 	},
 /turf/open/engineership/engineer_floor3,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "xdP" = (
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
@@ -133601,7 +134193,7 @@
 	dir = 8
 	},
 /turf/open/engineership/engineer_floor2,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "xgL" = (
 /obj/structure/prop/hybrisa/cavedecor/stalagmite0,
 /turf/open/auto_turf/hybrisashale/layer1,
@@ -133653,7 +134245,7 @@
 	dir = 8
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "xhH" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/road/lines3,
@@ -134045,6 +134637,15 @@
 	icon_state = "plate"
 	},
 /area/lv759/landing_zone_2/ceiling)
+"xlG" = (
+/obj/structure/window/framed/prison/reinforced,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "Office Complex 2";
+	name = "\improper Marshal Office Complex Shutters"
+	},
+/turf/open/floor/plating,
+/area/lv759/colonial_marshals/hallway_north)
 "xlK" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/telescreenbrokespark,
 /turf/closed/wall/hangar{
@@ -134254,7 +134855,7 @@
 	dir = 5;
 	icon_state = "plating"
 	},
-/area/lv759/power_plant)
+/area/lv759/power_plant/equipment_west)
 "xnB" = (
 /obj/structure/platform{
 	dir = 8
@@ -134500,7 +135101,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "xpU" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/prop/hybrisa/vehicles/suvdamaged/suv_damaged1{
@@ -134962,7 +135563,7 @@
 	dir = 1;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "xta" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -135571,7 +136172,7 @@
 /area/lv759/outdoors/colony_streets/east_central_street)
 "xxh" = (
 /turf/open/engineership/engineer_floor4,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "xxj" = (
 /obj/structure/barricade/handrail/hybrisa/handrail{
 	dir = 1
@@ -136071,7 +136672,7 @@
 /turf/open/engineership/engineer_floor8{
 	dir = 4
 	},
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "xAy" = (
 /turf/closed/shuttle/dropship2/transparent{
 	desc = "The WY-LWI Horizon Runner HR-150, a collaborative creation of Lunnar-Welsun Industries and Weyland-Yutani. This small dropship is designed for short-range commercial transport.";
@@ -136709,6 +137310,12 @@
 /obj/item/toy/deck,
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/lv759/indoors/casino)
+"xFm" = (
+/turf/open/floor/prison{
+	dir = 5;
+	icon_state = "red"
+	},
+/area/lv759/colonial_marshals/hallway_central)
 "xFn" = (
 /obj/structure/barricade/handrail{
 	dir = 4
@@ -136792,7 +137399,7 @@
 	pixel_y = 20
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "xFK" = (
 /obj/structure/surface/table/gamblingtable,
 /obj/item/toy/dice,
@@ -136876,9 +137483,8 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "ramptop"
+/turf/open/floor/hybrisa/metal/grated{
+	dir = 4
 	},
 /area/lv759/landing_zone_2)
 "xGq" = (
@@ -137106,7 +137712,7 @@
 	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform1,
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "xIo" = (
 /turf/open/floor/hybrisa/tile/cementflat,
 /area/whiskey_outpost/inside/caves)
@@ -137158,7 +137764,7 @@
 	layer = 2
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "xIF" = (
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/caves)
@@ -137735,7 +138341,7 @@
 /turf/open/floor/prison{
 	icon_state = "ramptop"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_south)
 "xOG" = (
 /obj/structure/platform_decoration/hybrisa/rockdark{
 	dir = 4
@@ -138168,7 +138774,7 @@
 	},
 /obj/structure/platform_decoration/hybrisa/engineer_corner,
 /turf/open/engineership/engineer_floor2,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "xUw" = (
 /obj/structure/sign/double/barsign{
 	light_color = "#990044";
@@ -138244,7 +138850,7 @@
 	dir = 8
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "xUQ" = (
 /obj/structure/closet/crate/plastic,
 /obj/item/reagent_container/food/condiment/hotsauce/cholula,
@@ -138623,6 +139229,12 @@
 /obj/structure/barricade/handrail/hybrisa/handrail,
 /turf/open/hybrisa/street/sidewalk,
 /area/lv759/outdoors/colony_streets/east_central_street)
+"xYx" = (
+/obj/structure/prop/ice_colony/surveying_device{
+	dir = 4
+	},
+/turf/open/auto_turf/hybrisashale/layer1,
+/area/lv759/outdoors/caves/central_caves)
 "xYB" = (
 /obj/structure/sign/nosmoking_1,
 /turf/closed/wall/hangar{
@@ -138854,8 +139466,13 @@
 /turf/open/hybrisa/street/sidewalkfull,
 /area/lv759/outdoors/colony_streets/east_central_street)
 "yaL" = (
-/obj/structure/sign/poster/safety,
-/turf/closed/wall/r_wall/prison,
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/obj/structure/closet,
+/turf/open/floor/corsat{
+	icon_state = "officetiles"
+	},
 /area/lv759/colonial_marshals/garage)
 "yaM" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform1{
@@ -138866,7 +139483,7 @@
 	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform1,
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "yaT" = (
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco6{
 	dir = 4
@@ -138901,7 +139518,7 @@
 	dir = 6;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "yba" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out"
@@ -138915,7 +139532,7 @@
 	pixel_x = -2
 	},
 /turf/open/engineership/engineer_floor1,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "ybg" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21"
@@ -139261,7 +139878,7 @@
 /area/lv759/outdoors/colony_streets/central_streets)
 "yeI" = (
 /turf/open/floor/corsat,
-/area/lv759/power_plant/south_hallway)
+/area/lv759/power_plant/equipment_east)
 "yeO" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
@@ -139675,7 +140292,7 @@
 	dir = 9;
 	icon_state = "red"
 	},
-/area/lv759/colonial_marshals/hallway)
+/area/lv759/colonial_marshals/hallway_central)
 "yix" = (
 /obj/structure/platform_decoration/hybrisa/rockdark,
 /obj/structure/platform/hybrisa/metalplatform6{
@@ -139888,7 +140505,7 @@
 	dir = 4
 	},
 /turf/open/engineership/engineer_floor1,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "yke" = (
 /obj/effect/hybrisa/decal/road/road_edge,
 /obj/effect/hybrisa/decal/road/lines1,
@@ -140120,7 +140737,7 @@
 	dir = 1
 	},
 /turf/open/engineership/engineer_floor9,
-/area/lv759/derelict/derelictship)
+/area/lv759/derelictship)
 "ylx" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/cable/white{
@@ -152581,7 +153198,7 @@ qVm
 ofI
 tYR
 dOU
-jYw
+tnW
 cXN
 iNi
 iNi
@@ -152834,7 +153451,7 @@ gsg
 iBq
 iBq
 gsg
-kfK
+gsg
 efu
 oZL
 gsg
@@ -152848,7 +153465,7 @@ pFy
 gsg
 kIl
 kIl
-gsg
+kfK
 gsg
 gsg
 gsg
@@ -155000,7 +155617,7 @@ unn
 unn
 unn
 unn
-vhL
+vuP
 unn
 wKx
 vuP
@@ -155234,7 +155851,7 @@ sAQ
 vhL
 sAQ
 clm
-ccp
+hQY
 unn
 cAb
 jqr
@@ -155248,11 +155865,11 @@ cAb
 unn
 unn
 unn
-sAQ
-vhL
-vhL
-vhL
-vhL
+wKx
+vuP
+vuP
+vuP
+vuP
 vuP
 gbg
 vuP
@@ -155489,7 +156106,7 @@ vhL
 sAQ
 nTP
 jOj
-oWE
+jqr
 cgq
 cgq
 cgq
@@ -155497,14 +156114,14 @@ hKH
 cgq
 jqr
 jOj
-sAQ
+wKx
 unn
-vhL
-hQY
-hQY
-hQY
-sAQ
-vhL
+vuP
+gbg
+gbg
+gbg
+wKx
+vuP
 gbg
 gbg
 gbg
@@ -155749,14 +156366,14 @@ cgq
 cgq
 sgG
 vhL
-vhL
-vhL
-hQY
-hQY
-hQY
-vhL
-vhL
-hQY
+vuP
+vuP
+gbg
+gbg
+gbg
+vuP
+vuP
+gbg
 gbg
 gbg
 vuP
@@ -156001,14 +156618,14 @@ hQY
 hQY
 vhL
 vhL
-vhL
-vhL
-vhL
-hQY
-vhL
-vhL
-hQY
-hQY
+vuP
+vuP
+vuP
+gbg
+vuP
+vuP
+gbg
+gbg
 gbg
 vuP
 gbg
@@ -156253,14 +156870,14 @@ hQY
 hQY
 hQY
 sAQ
-vhL
-vhL
-vhL
-vhL
-sAQ
-hQY
-hQY
-hQY
+vuP
+vuP
+vuP
+vuP
+wKx
+gbg
+gbg
+gbg
 vuP
 gbg
 wKx
@@ -156505,13 +157122,13 @@ hQY
 hQY
 hQY
 vhL
-vhL
-hQY
-hQY
-vhL
-hQY
-hQY
-vhL
+vuP
+gbg
+gbg
+vuP
+gbg
+gbg
+vuP
 unn
 unn
 vuP
@@ -156757,13 +157374,13 @@ hQY
 hQY
 hQY
 hQY
-hQY
-vhL
-hQY
-vhL
-vhL
-hQY
-sAQ
+gbg
+vuP
+gbg
+vuP
+vuP
+gbg
+wKx
 unn
 unn
 unn
@@ -157009,12 +157626,12 @@ hQY
 hQY
 vhL
 vhL
-hQY
-hQY
-vhL
-vhL
-sAQ
-vhL
+gbg
+gbg
+vuP
+vuP
+wKx
+vuP
 unn
 unn
 unn
@@ -157238,7 +157855,7 @@ hKH
 cgq
 cgq
 sOL
-nTP
+eSc
 hQY
 hQY
 vhL
@@ -157261,13 +157878,13 @@ hQY
 nTP
 clm
 vhL
-hQY
-vhL
-hQY
-sAQ
+gbg
+vuP
+gbg
+wKx
 unn
-vhL
-sAQ
+vuP
+wKx
 unn
 unn
 unn
@@ -157507,15 +158124,15 @@ hQY
 bcA
 irL
 sOg
-vhL
+hQY
 hQY
 hQY
 vhL
 unn
 vhL
-vhL
+vuP
 unn
-lnF
+gMG
 unn
 unn
 unn
@@ -157760,12 +158377,12 @@ bcA
 bcA
 hQY
 hQY
+hQY
 vhL
-sAQ
 unn
 unn
 unn
-sAQ
+wKx
 unn
 unn
 unn
@@ -158005,16 +158622,16 @@ unn
 unn
 unn
 vhL
+kZk
 bcA
-bcA
 hQY
 hQY
 hQY
 hQY
 hQY
 hQY
-vhL
-unn
+hQY
+nBd
 unn
 unn
 unn
@@ -158264,10 +158881,10 @@ hQY
 hQY
 hQY
 hQY
-nTP
-vhL
-vhL
-unn
+hQY
+hQY
+hQY
+nBd
 unn
 unn
 unn
@@ -158501,7 +159118,7 @@ hQY
 vhL
 hQY
 vhL
-pSI
+clm
 unn
 unn
 unn
@@ -158516,10 +159133,10 @@ bcA
 hQY
 hQY
 vhL
-sAQ
-unn
+hQY
+hQY
+hQY
 vhL
-hEl
 unn
 unn
 unn
@@ -158751,9 +159368,9 @@ bcA
 bcA
 hQY
 hQY
-prc
-prc
-jUa
+hQY
+hQY
+nGi
 unn
 unn
 unn
@@ -158766,13 +159383,13 @@ hQY
 bcA
 bcA
 hQY
+sAQ
+nTP
 vhL
-unn
-unn
-unn
-unn
-unn
-unn
+hQY
+hQY
+hQY
+vhL
 unn
 unn
 unn
@@ -159001,10 +159618,10 @@ hQY
 bcA
 bcA
 bcA
-smq
-prc
-smq
-smq
+bcA
+hQY
+bcA
+bcA
 unn
 unn
 pTu
@@ -159019,11 +159636,11 @@ hQY
 hQY
 vhL
 unn
-unn
-unn
-unn
-unn
-unn
+sAQ
+hQY
+hQY
+hQY
+sAQ
 unn
 unn
 unn
@@ -159245,10 +159862,10 @@ unn
 unn
 unn
 unn
-nTP
-vhL
-vhL
-hQY
+ohF
+oYd
+oYd
+prc
 oYd
 prc
 prc
@@ -159271,12 +159888,12 @@ hQY
 nTP
 unn
 unn
-unn
-unn
-unn
-unn
-unn
-unn
+sAQ
+vhL
+hQY
+hQY
+vhL
+sAQ
 unn
 unn
 unn
@@ -159498,8 +160115,8 @@ unn
 unn
 unn
 unn
-sAQ
-vhL
+rHL
+oYd
 oYd
 oYd
 oYd
@@ -159524,13 +160141,13 @@ unn
 unn
 unn
 unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
+oYd
+prc
+prc
+prc
+oYd
+pTu
+jUa
 unn
 ewU
 uni
@@ -159777,12 +160394,12 @@ unn
 unn
 unn
 unn
-unn
-unn
-unn
-unn
-unn
-unn
+oYd
+prc
+prc
+prc
+rHL
+pRL
 jTb
 icC
 jgr
@@ -160025,17 +160642,17 @@ smq
 smq
 gBx
 oYd
+rHL
+unn
+unn
+unn
+ohF
+prc
+prc
+rHL
 oYd
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-ewU
+rHL
+fWR
 uni
 auT
 auT
@@ -160280,14 +160897,14 @@ oYd
 jUa
 unn
 unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-ewU
+rHL
+prc
+prc
+prc
+prc
+prc
+oYd
+eQp
 jgr
 ogE
 isZ
@@ -160533,13 +161150,13 @@ oYd
 unn
 unn
 unn
-unn
-unn
-unn
-unn
-unn
-unn
-ewU
+pSI
+rhO
+oYd
+prc
+prc
+prc
+fWR
 jgr
 auT
 isZ
@@ -160764,7 +161381,7 @@ unn
 unn
 unn
 dMd
-prc
+hPS
 smq
 smq
 prc
@@ -160784,14 +161401,14 @@ pSI
 unn
 unn
 unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-ewU
+rHL
+mIP
+rHL
+prc
+prc
+prc
+oYd
+qiJ
 jgr
 auT
 isZ
@@ -161036,14 +161653,14 @@ rHL
 oYd
 unn
 unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-ewU
+wcd
+hJY
+gPb
+oYd
+prc
+oYd
+oYd
+fWR
 jgr
 ogE
 isZ
@@ -161288,14 +161905,14 @@ unn
 unn
 unn
 unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-ewU
+rHL
+oYd
+dZn
+odj
+xYx
+prc
+prc
+qiJ
 jgr
 auT
 isZ
@@ -161541,13 +162158,13 @@ unn
 unn
 unn
 unn
-unn
-unn
-unn
-unn
-unn
-unn
-ewU
+uRo
+nGk
+izh
+oYd
+prc
+rHL
+fWR
 qlM
 auT
 auT
@@ -161793,14 +162410,14 @@ unn
 unn
 unn
 unn
-unn
-unn
-unn
-unn
-unn
-unn
-lHS
-lnX
+jUa
+coN
+oYd
+prc
+oYd
+oYd
+jvZ
+exE
 jgr
 ogE
 auT
@@ -162042,17 +162659,17 @@ prc
 prc
 oYd
 ohF
-pSI
+noP
 unn
 unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-ewU
+pTu
+prc
+prc
+rHL
+oYd
+prc
+oYd
+nqU
 qlM
 auT
 auT
@@ -162213,7 +162830,7 @@ tqx
 xcZ
 dFu
 uuI
-sMf
+gfW
 mYE
 wuJ
 vOz
@@ -162297,15 +162914,15 @@ prc
 oYd
 ejv
 unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-lHS
-lnX
+jUa
+oYd
+prc
+prc
+prc
+prc
+prc
+jvZ
+dAY
 jgr
 auT
 auT
@@ -162546,26 +163163,26 @@ prc
 prc
 oYd
 prc
+rHL
+unn
+unn
+jUa
+rHL
 oYd
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-jTb
-icC
+prc
+prc
+oYd
+rHL
+qHt
+tjF
 jgr
 auT
+auT
+auT
 isZ
-isZ
-isZ
-isZ
-isZ
-isZ
+auT
+auT
+auT
 auT
 auT
 xUA
@@ -162799,16 +163416,16 @@ oYd
 prc
 prc
 prc
-oYd
+rHL
 unn
 oYd
-unn
-unn
-unn
-unn
-unn
-unn
-ewU
+prc
+prc
+prc
+prc
+prc
+oYd
+jsF
 uni
 auT
 auT
@@ -162816,7 +163433,7 @@ isZ
 isZ
 isZ
 isZ
-isZ
+auT
 auT
 auT
 aHb
@@ -163052,15 +163669,15 @@ prc
 prc
 prc
 prc
-oYd
-oYd
-pTu
-unn
 rHL
-unn
-unn
-jTb
-icC
+prc
+prc
+prc
+prc
+prc
+oYd
+eKI
+inM
 jgr
 auT
 isZ
@@ -163073,10 +163690,10 @@ auT
 qwo
 dkL
 vjG
-mil
-guz
+xAQ
+iep
 jbZ
-guz
+iep
 unn
 unn
 qqW
@@ -163305,13 +163922,13 @@ prc
 prc
 oYd
 prc
-oYd
 prc
-oYd
-oYd
+prc
+prc
+prc
+prc
 ohF
-unn
-ewU
+qiJ
 uni
 auT
 auT
@@ -163327,9 +163944,9 @@ mRH
 fHp
 jbZ
 guz
+iep
 guz
-guz
-fqe
+oCt
 tbU
 unn
 unn
@@ -163560,9 +164177,9 @@ prc
 prc
 prc
 prc
+rHL
 oYd
-oYd
-unn
+rHL
 ewU
 qlM
 auT
@@ -163578,7 +164195,7 @@ auT
 qwo
 fHp
 unn
-krT
+bbE
 jfJ
 jfJ
 jfJ
@@ -163813,7 +164430,7 @@ prc
 prc
 prc
 prc
-prc
+oYd
 unn
 lHS
 lie
@@ -163917,8 +164534,8 @@ kSc
 oZW
 lvW
 gvs
+jyx
 qby
-tZH
 vmx
 oyE
 aVc
@@ -164317,7 +164934,7 @@ gBY
 smq
 smq
 prc
-oYd
+prc
 prc
 oYd
 ohF
@@ -164568,12 +165185,12 @@ gBY
 prc
 prc
 prc
-rHL
+prc
 smq
 smq
 kSv
-alO
-oYd
+qIE
+axv
 oYd
 unn
 oYd
@@ -164599,7 +165216,7 @@ unn
 unn
 unn
 qAK
-cZw
+amW
 gCU
 bKp
 hPp
@@ -164817,17 +165434,17 @@ oYd
 prc
 prc
 oYd
-prc
-rHL
+oYd
 prc
 oYd
+prc
 smq
 jmf
 smq
 smq
-alO
+qIE
 pSI
-oYd
+axv
 oYd
 unn
 unn
@@ -164852,7 +165469,7 @@ unn
 wWZ
 dXX
 guz
-guz
+iep
 fVn
 qlM
 auT
@@ -165072,15 +165689,15 @@ prc
 rHL
 pTu
 pSI
-ohF
-oYd
+wgv
+prc
 sKR
 smq
 smq
 lTd
-oYd
+axv
 rHL
-ohF
+wXm
 uKB
 fAW
 rYp
@@ -165104,8 +165721,8 @@ jbZ
 guz
 vss
 iep
-guz
-cZw
+iep
+amW
 ndW
 qlM
 auT
@@ -165326,12 +165943,12 @@ unn
 unn
 rHL
 oYd
-oYd
+axv
 sKR
 lTd
 smq
 smq
-oYd
+axv
 iep
 xAQ
 oPG
@@ -165355,7 +165972,7 @@ iep
 guz
 iep
 vss
-jfJ
+uDj
 bwK
 guG
 mzJ
@@ -165507,7 +166124,7 @@ xLc
 qPQ
 fGC
 gsy
-fkS
+orj
 lsM
 eEs
 lPf
@@ -165579,8 +166196,8 @@ unn
 unn
 unn
 oYd
-oYd
-oYd
+axv
+axv
 smq
 smq
 iLf
@@ -165607,7 +166224,7 @@ iep
 guz
 guz
 iep
-qar
+vss
 uXe
 guG
 iep
@@ -165830,10 +166447,10 @@ unn
 unn
 unn
 oYd
-pSI
+oBR
 rHL
 ohF
-oYd
+axv
 iLf
 guG
 guG
@@ -166361,7 +166978,7 @@ vZY
 iep
 iep
 iLf
-amW
+vJi
 guz
 guz
 guz
@@ -166608,13 +167225,13 @@ unn
 unn
 aef
 nBo
-guG
+gKh
 eLR
 iep
 iLf
 guG
 guG
-amW
+vJi
 guz
 guz
 iep
@@ -167117,7 +167734,7 @@ guG
 iep
 guG
 rVo
-axv
+iwx
 iep
 iep
 iep
@@ -167369,7 +167986,7 @@ iep
 iep
 guG
 guG
-jbZ
+iep
 guG
 guG
 iep
@@ -168322,7 +168939,7 @@ aob
 unn
 ohF
 prc
-prc
+jTX
 gEn
 oZj
 ohF
@@ -168573,7 +169190,7 @@ qEL
 wnB
 unn
 unn
-oYd
+sPZ
 eCo
 tYK
 mBW
@@ -168786,7 +169403,7 @@ gsy
 orj
 eNn
 rcE
-fkS
+orj
 fgv
 sWK
 wRj
@@ -169389,7 +170006,7 @@ unn
 jbZ
 iep
 jbZ
-guz
+iep
 guz
 guz
 jbZ
@@ -169642,7 +170259,7 @@ guz
 iep
 guG
 guG
-jbZ
+iep
 guz
 iep
 iep
@@ -170030,16 +170647,16 @@ slb
 hyc
 aHJ
 eKa
-iHZ
-iHZ
-iHZ
-iHZ
-iHZ
-iHZ
-eQw
+hfZ
+hfZ
+hfZ
+hfZ
+hfZ
+hfZ
+jUp
 tjN
-iHZ
-iHZ
+hfZ
+hfZ
 iHZ
 gGV
 jgs
@@ -170120,8 +170737,8 @@ guz
 iLf
 guG
 guG
-amW
-srR
+vJi
+hmj
 guz
 guz
 nJw
@@ -170149,7 +170766,7 @@ iep
 iep
 guz
 guz
-srR
+hmj
 guz
 guz
 guz
@@ -170374,7 +170991,7 @@ guG
 guG
 oZJ
 guG
-guz
+iep
 iep
 iep
 oPD
@@ -170389,7 +171006,7 @@ vXB
 lhd
 iep
 iep
-guz
+iep
 guz
 jbZ
 srR
@@ -170398,7 +171015,7 @@ iep
 ffe
 qzB
 jbZ
-guz
+wNg
 jbZ
 guz
 guz
@@ -170642,7 +171259,7 @@ mIc
 iep
 guG
 guG
-jbZ
+iep
 guz
 guG
 guG
@@ -170773,13 +171390,13 @@ xsr
 aNg
 eGZ
 btb
-eFj
-eFj
-eFj
+mIC
+mIC
+mIC
 jHU
-eFj
-eFj
-mYs
+mIC
+mIC
+mIC
 mYs
 fEN
 deJ
@@ -170894,7 +171511,7 @@ mil
 guz
 guG
 guG
-jbZ
+iep
 iep
 guG
 guG
@@ -171025,13 +171642,13 @@ tEE
 nwy
 pEf
 tAe
-eFj
+mIC
 vbL
 uWM
 dRj
 rEw
 muZ
-mYs
+mIC
 mBJ
 czw
 aix
@@ -171277,13 +171894,13 @@ lVz
 xJc
 dQj
 dMY
-eFj
+mIC
 mye
 uWM
 bDR
 xnA
 muZ
-mYs
+mIC
 qIm
 psH
 dpf
@@ -171396,7 +172013,7 @@ unn
 unn
 unn
 srR
-jvZ
+iLf
 unj
 guG
 iep
@@ -171529,13 +172146,13 @@ lai
 bJm
 xWa
 scl
-eFj
+mIC
 hyn
 bDR
 uWM
 pWR
 muZ
-mYs
+mIC
 tQW
 fAK
 uQe
@@ -171647,7 +172264,7 @@ unn
 unn
 unn
 guz
-mIP
+iLf
 guG
 guG
 vJi
@@ -171781,7 +172398,7 @@ lai
 vXL
 rgA
 mra
-eFj
+mIC
 dMH
 bDR
 uWM
@@ -171899,7 +172516,7 @@ unn
 unn
 unn
 jbZ
-dmS
+mnW
 guG
 guG
 iwx
@@ -172033,13 +172650,13 @@ lSj
 kVG
 pMd
 eFj
-eFj
+mIC
 fcX
 erq
 erq
-eFj
-eFj
-mYs
+mIC
+mIC
+mIC
 cuP
 fAK
 rlQ
@@ -172151,7 +172768,7 @@ wZa
 unn
 srR
 guz
-guz
+iep
 mnW
 iwx
 iep
@@ -173153,7 +173770,7 @@ guz
 guz
 guz
 guz
-jbZ
+iep
 iep
 iep
 iep
@@ -173405,7 +174022,7 @@ guz
 guz
 srR
 dkf
-iep
+guG
 iep
 iep
 jbZ
@@ -173656,8 +174273,8 @@ bRP
 unn
 unn
 byX
-iep
-iep
+guG
+guG
 iep
 iep
 guz
@@ -173907,10 +174524,10 @@ unn
 unn
 unn
 unn
-jbZ
+oHl
 tbU
-iep
-iep
+guG
+guG
 guz
 guz
 jbZ
@@ -174159,10 +174776,10 @@ unn
 unn
 unn
 unn
-guz
+gUP
 srR
-iep
-iep
+qHc
+guG
 jbZ
 unn
 unn
@@ -175351,22 +175968,22 @@ slG
 vaO
 bsg
 bWh
-okn
-okn
-kGo
+sij
+sij
+fsR
 nXX
-mRz
+irE
 tBv
 tBv
-kWY
+xFm
 mGr
 cDk
-mRz
-ctB
-ctB
+oys
+fbD
+fbD
 ete
 pjc
-eJh
+tHI
 kiW
 aYk
 jwI
@@ -175611,14 +176228,14 @@ rEg
 rEg
 rEg
 rEg
-rqd
+rVA
 tzB
 tzB
 tzB
 eoq
 tzB
 xOD
-eJh
+tHI
 hKe
 aYk
 eIH
@@ -175863,7 +176480,7 @@ rEg
 rEg
 rEg
 rEg
-mqi
+tbk
 gzr
 drZ
 wlk
@@ -176094,7 +176711,7 @@ hWJ
 uYA
 toS
 eIX
-sfO
+cDO
 riQ
 jjZ
 dlF
@@ -176121,8 +176738,8 @@ lbi
 oMf
 aWg
 mhQ
-ctB
-eJh
+fbD
+tHI
 mNF
 sGA
 ooi
@@ -176368,13 +176985,13 @@ noD
 noD
 noD
 noD
-iUP
+tHI
 quF
 quF
-iUP
-ctB
+tHI
+fbD
 mhQ
-eJh
+tHI
 eJh
 elu
 eJh
@@ -176596,11 +177213,11 @@ mBl
 sje
 poM
 uNO
-rMi
-tYy
-dqh
+bMm
+bMm
+tNo
 gZm
-sCY
+qTs
 qvz
 kSf
 nbp
@@ -176623,10 +177240,10 @@ noD
 pTN
 nnB
 nnB
-iUP
-mqi
+tHI
+tbk
 sKo
-iUP
+tHI
 nnB
 oiQ
 vSd
@@ -176849,10 +177466,10 @@ kTA
 qOf
 low
 nAZ
-gfW
+bMm
 sfO
-sfO
-ivz
+bQB
+eZR
 eZR
 eZR
 eZR
@@ -177101,8 +177718,8 @@ lMQ
 lMQ
 iBj
 ktB
-ktB
-pVX
+sCY
+mop
 mop
 nER
 iUp
@@ -177353,9 +177970,9 @@ xDE
 xDE
 snC
 qie
-qie
-pVX
+sCY
 hmb
+otc
 dTA
 ujZ
 kVm
@@ -177365,7 +177982,7 @@ mgy
 sfO
 sfO
 rdx
-duU
+ocV
 rEg
 rEg
 vuK
@@ -177574,20 +178191,20 @@ eLe
 tTZ
 pLQ
 rbx
-tSy
-tSy
-pgA
-pgA
-pgA
-pgA
-tSy
+scG
+scG
+uup
+uup
+uup
+uup
+scG
 uBI
-tSy
+scG
 upT
-mYs
+hbb
 krm
-mYs
-mYs
+hbb
+hbb
 vmm
 tSC
 jEy
@@ -177605,9 +178222,9 @@ cfj
 cfj
 snC
 qie
-qie
-pVX
+sCY
 okm
+otc
 hSP
 jnc
 ggQ
@@ -177617,7 +178234,7 @@ aAB
 sfO
 sfO
 rfK
-mRz
+irE
 rEg
 rEg
 jvY
@@ -177840,7 +178457,7 @@ sVt
 nsJ
 vYc
 kRs
-mYs
+hbb
 tjS
 jEy
 wsT
@@ -177857,9 +178474,9 @@ bmw
 bmw
 kuJ
 qie
-qie
-pVX
+sCY
 vNX
+pVX
 bEi
 vNX
 vTn
@@ -178092,7 +178709,7 @@ uoj
 yeI
 okr
 bRx
-mYs
+hbb
 unP
 jEy
 wsT
@@ -178108,9 +178725,9 @@ mBl
 mBl
 mBl
 fkY
-rMi
-riz
-sfO
+ivz
+bMm
+dLa
 yaL
 dVt
 eZR
@@ -178344,7 +178961,7 @@ yeI
 nsJ
 nsJ
 toU
-mYs
+hbb
 gcA
 jEy
 ebn
@@ -178359,12 +178976,12 @@ nzv
 ffY
 kTA
 evt
-jEy
-rMi
-tYy
-nDX
-sfO
+tXA
+bMm
+bMm
+bMm
 iXb
+qTs
 qvz
 qTs
 qDE
@@ -178596,7 +179213,7 @@ yeI
 nsJ
 yeI
 ehp
-mYs
+hbb
 lmz
 iUU
 ewo
@@ -178612,8 +179229,8 @@ kJX
 iBV
 aFn
 jEy
-bMm
-sfO
+rMi
+cuw
 sfO
 sfO
 xpv
@@ -178843,12 +179460,12 @@ oly
 awC
 cFZ
 lyz
-scG
+hbb
 rFi
 jxy
 nsJ
 mRJ
-mYs
+hbb
 prm
 jEy
 ewo
@@ -178863,9 +179480,9 @@ qxa
 okJ
 bHd
 lFC
-jEy
-rMi
-rMi
+rjI
+mBl
+fkY
 uRz
 kjb
 mRz
@@ -178876,11 +179493,11 @@ kGo
 okn
 rdd
 xcA
-iUP
+wWd
 nFW
 rEg
 rEg
-kWY
+xFm
 noD
 noD
 noD
@@ -179095,12 +179712,12 @@ qWT
 dDg
 dDg
 xbk
-scG
+hbb
 ctQ
 yeI
 rbG
 bOb
-piK
+pxv
 thO
 jEy
 vWr
@@ -179115,19 +179732,19 @@ qxa
 hsv
 lHt
 kht
-wbj
-mBl
-fkY
+dpG
+riz
+rjI
 rqd
-tzB
-gzr
-tzB
-tzB
-tzB
-tzB
-gzr
-tzB
-tzB
+rEX
+fqn
+rEX
+rEX
+rEX
+rEX
+fqn
+rEX
+rEX
 rqd
 cNZ
 rEg
@@ -179323,8 +179940,8 @@ plb
 cnQ
 vwC
 vcr
-scG
-scG
+mGR
+mGR
 wNp
 kWx
 kWx
@@ -179334,24 +179951,24 @@ kWx
 kWx
 cMw
 nza
-eFj
+mGR
 ldt
 pLQ
 ukk
-scG
-wNp
+pBg
+cFR
 tTp
 tTp
 gqt
-wNp
+cFR
 tTp
 tTp
 gqt
-wNp
-kWx
-kWx
+cFR
+rCF
+rCF
 gqt
-scG
+pBg
 hCH
 ayK
 lWc
@@ -179366,21 +179983,21 @@ pow
 pow
 pow
 uZY
-kht
-rjI
-kTA
-low
-mqi
-gzr
-tzB
-tzB
-tzB
-tzB
-gzr
-tzB
-tzB
-gzr
-mqi
+lFC
+bTx
+dzv
+wbj
+sPj
+fqn
+rEX
+rEX
+rEX
+rEX
+fqn
+rEX
+rEX
+fqn
+sPj
 uio
 rEg
 rEg
@@ -179575,34 +180192,34 @@ hgv
 hNH
 lFC
 jUB
-iOL
+pid
 kZw
 jSL
-bxS
+czP
 uSE
 kZw
 jOm
-bxS
+czP
 uSE
 kZw
 lrI
-eFj
+mGR
 vgj
 pLQ
 ukk
 lHK
 vdV
 bxS
-uSE
+nIa
 eJg
 aFx
 bxS
-uSE
+nIa
 kyx
 fQX
 bxS
-uSE
-kZw
+nIa
+ffM
 wzf
 iOL
 ayK
@@ -179619,20 +180236,20 @@ pow
 pow
 uZY
 kht
-jEy
-rMi
+wbj
+ffY
 pdO
 uRz
 sfR
 iAb
 iAb
-xpR
+pqI
 duU
 ctB
 ctB
-iHC
+qrh
 fwN
-iUP
+wWd
 jGy
 rEg
 rEg
@@ -179827,18 +180444,18 @@ bif
 xkP
 kht
 rtJ
-iOL
-bFw
+pid
+hdS
 otk
-bxS
-bxS
-bFw
+czP
+czP
+hdS
 tFs
-bxS
-bxS
-bFw
+czP
+czP
+hdS
 fbr
-eFj
+mGR
 odN
 wCO
 ukk
@@ -179870,10 +180487,10 @@ qqK
 qxa
 sdS
 fXD
-kht
+lFC
 jEy
-bMm
-tYA
+rMi
+vIB
 tYA
 siw
 tME
@@ -180079,34 +180696,34 @@ bif
 sSv
 kht
 rtJ
-iOL
+pid
 flG
-nMl
+iJH
 iCI
 iCI
 jhu
-nMl
+iJH
 iCI
 iCI
 jhu
-gcM
+mNa
 waD
 jCI
 tyG
 kIc
 uUH
 nMl
-iCI
-iCI
-jhu
+rgy
+rgy
+vYK
 nMl
-iCI
-iCI
-jhu
+rgy
+rgy
+vYK
 nMl
-iCI
-iCI
-jhu
+rgy
+rgy
+vYK
 gcM
 iOL
 ayK
@@ -180123,9 +180740,9 @@ qxa
 hsv
 fXD
 kht
-jEy
-rMi
-nDX
+tXA
+bMm
+bMm
 tYA
 jTN
 lkx
@@ -180333,34 +180950,34 @@ kht
 rtJ
 tqE
 bsS
-scG
+mGR
 fjl
 fjl
 fjl
-scG
+mGR
 fjl
 fjl
 fjl
-oUV
-eFj
+pSX
+mGR
 lSj
 sev
 kMD
 vEQ
 oUV
-fjl
-fjl
-fjl
-scG
-fjl
-fjl
-fjl
-scG
-fjl
-fjl
-fjl
-scG
-tqE
+eyR
+eyR
+eyR
+pBg
+eyR
+eyR
+eyR
+pBg
+eyR
+eyR
+eyR
+pBg
+rDF
 ayK
 jEy
 dyK
@@ -180376,9 +180993,9 @@ azs
 fXD
 vcF
 bnY
-rMi
+cmW
 nDX
-tYA
+msP
 nKK
 xHq
 cVq
@@ -180628,9 +181245,9 @@ hsv
 fXD
 uHZ
 dsD
-rMi
+cmW
 nDX
-tYA
+msP
 oUH
 tRl
 fvX
@@ -180880,7 +181497,7 @@ maz
 rNo
 ccw
 jEy
-rMi
+cmW
 tYy
 tYA
 siw
@@ -181131,7 +181748,7 @@ pow
 vDy
 hSX
 lFC
-jEy
+tXA
 bMm
 tYA
 gWJ
@@ -181384,7 +182001,7 @@ eKX
 nNc
 kht
 jEy
-rMi
+cmW
 tYy
 msP
 rJo
@@ -181636,7 +182253,7 @@ hsv
 uZY
 kht
 jEy
-rMi
+cmW
 nDX
 msP
 hKl
@@ -181888,7 +182505,7 @@ yaW
 rzB
 aFn
 jEy
-rMi
+cmW
 tYy
 tYA
 pcR
@@ -182140,7 +182757,7 @@ oVP
 mBl
 wbj
 jEy
-rMi
+cmW
 nDX
 msP
 gDa
@@ -182391,11 +183008,11 @@ rjI
 kTA
 kTA
 kTA
-low
+qkG
 iUz
-nDX
-msP
-gDa
+bMm
+tYA
+lQT
 hYr
 fHS
 pUi
@@ -182902,14 +183519,14 @@ say
 bYR
 dNf
 mOv
-cDk
-mRz
+bvk
+ctx
 gVA
 gVA
 kWY
-iUP
+cjs
 jLJ
-mRz
+irE
 rEg
 rEg
 uvc
@@ -183154,12 +183771,12 @@ rdn
 bXn
 niO
 fii
-tzB
-tzB
-tzB
-tzB
-tzB
-rqd
+joO
+joO
+joO
+joO
+joO
+sUg
 rEg
 rEg
 rEg
@@ -183406,11 +184023,11 @@ esO
 fzW
 dNf
 nuK
-tzB
-tzB
-tzB
-tzB
-tzB
+joO
+joO
+joO
+joO
+joO
 mqi
 rEg
 uio
@@ -183659,11 +184276,11 @@ niO
 niO
 mOv
 qEq
-hVb
-hVb
-hVb
+wUk
+wUk
+wUk
 jrS
-iUP
+cjs
 lzG
 nAR
 qTS
@@ -183910,12 +184527,12 @@ aaQ
 niO
 niO
 rSG
-quF
-quF
-quF
-quF
-iUP
-iUP
+xlG
+xlG
+xlG
+xlG
+cjs
+cjs
 iUP
 dGG
 iUP
@@ -190630,7 +191247,7 @@ bWF
 gTD
 bWF
 bWF
-hVp
+vbU
 gqN
 njC
 gjQ
@@ -191694,12 +192311,12 @@ eOq
 unn
 unn
 unn
-pYs
+hcI
 unn
 unn
 unn
 unn
-pYs
+hcI
 nPx
 pdg
 nfU
@@ -191946,12 +192563,12 @@ qoe
 bmu
 unn
 unn
-pYs
-pYs
-pYs
-pYs
-pYs
-pYs
+hcI
+hcI
+hcI
+hcI
+hcI
+hcI
 fRC
 wsU
 xny

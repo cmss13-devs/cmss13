@@ -1,7 +1,7 @@
 //lv759 AREAS--------------------------------------//cabv
 
 /area/lv759
-	name = "LV759 - Hybrisa Prospera"
+	name = "Hybrisa Prospera"
 	icon = 'icons/turf/hybrisareas.dmi'
 	icon_state = "hybrisa"
 	can_build_special = TRUE
@@ -12,18 +12,18 @@
 
 /area/lv759/indoors
 	name = "Hybrisa - Outdoors"
-	icon_state = "cliff_blocked" //because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
+	icon_state = "cliff_blocked"//because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
 	ceiling = CEILING_METAL
 	soundscape_playlist = SCAPE_PL_LV522_INDOORS
 
 
 /area/lv759/outdoors
 	name = "Hybrisa - Outdoors"
-	icon_state = "cliff_blocked" //because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
+	icon_state = "cliff_blocked"//because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
 	ceiling = CEILING_NONE
 	soundscape_playlist = SCAPE_PL_LV759_OUTDOORS
 /area/lv759/oob
-	name = "LV759 - Out Of Bounds"
+	name = "Out Of Bounds"
 	icon_state = "oob"
 	ceiling = CEILING_MAX
 	is_resin_allowed = FALSE
@@ -172,11 +172,11 @@
 
 //Spaceport Indoors
 /area/lv759/indoors/spaceport
-	name = "North LZ1 - Spaceport Auxiliary"
+	name = "Weyland Yutani Celestia Gateway Space-Port - Spaceport Auxiliary"
 	icon_state = "green"
 	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/engineering
-	name = "North LZ1 - Spaceport Engineering"
+	name = "Weyland Yutani Celestia Gateway Space-Port - Engineering"
 	icon_state = "engine_smes"
 	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/administration/east
@@ -188,7 +188,7 @@
 	icon_state = "WYSpaceportadmin"
 	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/security
-	name = "North LZ1 - Spaceport Engineering"
+	name = "Weyland Yutani Celestia Gateway Space-Port - Security Office"
 	icon_state = "red"
 	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/cargo
@@ -216,269 +216,278 @@
 	icon_state = "WYSpaceport"
 	ceiling = CEILING_NONE
 /area/lv759/landing_zone/starglider
-	name = "Hybrisa - WY-LWI StarGlider SG-200"
+	name = "WY-LWI StarGlider SG-200"
 	icon_state = "wydropship"
 	requires_power = FALSE
 /area/lv759/landing_zone/horizon_runner
-	name = "Hybrisa - WY-LWI Horizon Runner HR-150"
+	name = "WY-LWI Horizon Runner HR-150"
 	icon_state = "wydropship"
 	requires_power = FALSE
 
 // Garage
 
 /area/lv759/indoors/garage_office
-	name = "LV759 - Garage Office"
+	name = "Garage - Office"
 	icon_state = "yellow"
 	minimap_color = MINIMAP_AREA_ENGI
 
 /area/lv759/indoors/garage_workshop
-	name = "LV759 - Garage Workshop"
+	name = "Garage - Workshop"
 	icon_state = "engine_smes"
 	minimap_color = MINIMAP_AREA_ENGI
 
 // Meridian Offices & Factory Floor
 /area/lv759/indoors/meridian/meridian_foyer
-	name = "LV759 - Meridian - Foyer"
+	name = "Meridian - Foyer"
 	icon_state = "meridian"
 	minimap_color = MINIMAP_AREA_COLONY
 	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
 /area/lv759/indoors/meridian/meridian_showroom
-	name = "LV759 - Meridian - Showroom"
+	name = "Meridian - Showroom"
 	icon_state = "meridian"
 	minimap_color = MINIMAP_AREA_COLONY
 	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
 /area/lv759/indoors/meridian/meridian_office
-	name = "LV759 - Meridian - Office"
+	name = "Meridian - Office"
 	icon_state = "meridian"
 	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/meridian/meridian_managersoffice
-	name = "LV759 - Meridian - Manager's Office"
+	name = "Meridian - Manager's Office"
 	icon_state = "meridian"
 	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/meridian/meridian_factory
-	name = "LV759 - Meridian - Factory Floor"
+	name = "Meridian - Factory Floor"
 	icon_state = "meridian_factory"
 	minimap_color = MINIMAP_AREA_COLONY
 
 // Apartments (Dorms)
 /area/lv759/indoors/apartment/west
-	name = "LV759 - West Apartment Bedrooms and Recroom"
+	name = "West Apartment Bedrooms and Recroom"
 	icon_state = "green"
 	minimap_color = MINIMAP_AREA_COLONY
 
 /area/lv759/indoors/apartment_services/west
-	name = "LV759 - West Apartment Services"
+	name = "West Apartment Services"
 	icon_state = "green"
 	minimap_color = MINIMAP_AREA_COLONY
 
 /area/lv759/indoors/apartment/east
-	name = "LV759 - East Apartment Bedrooms and Foyer"
+	name = "East Apartment Bedrooms and Foyer"
 	icon_state = "green"
 	minimap_color = MINIMAP_AREA_COLONY
 
 /area/lv759/indoors/apartment_services/east
-	name = "LV759 - East Apartment Services"
+	name = "East Apartment Services"
 	icon_state = "green"
 	minimap_color = MINIMAP_AREA_COLONY
 
 // Weyland-Yutani Offices
 /area/lv759/indoors/weyyu_office
-	name = "LV759 - Weyland Yutani Offices Hallways"
+	name = "Weyland Yutani Offices - Hallways"
 	icon_state = "blue"
 	minimap_color = MINIMAP_AREA_COMMAND
 
 /area/lv759/indoors/weyyu_office/floor
-	name = "LV759 - Weyland Yutani Offices Floor"
+	name = "Weyland Yutani Offices - Main Office Floor"
 
 /area/lv759/indoors/weyyu_office/breakroom
-	name = "LV759 - Weyland Yutani Offices Breakroom"
+	name = "Weyland Yutani Offices - Breakroom"
 
 /area/lv759/indoors/weyyu_office/vip
-	name = "LV759 - Weyland Yutani Offices VIP Meeting Room and Office"
+	name = "Weyland Yutani Offices - VIP Meeting Room & Office"
 
 /area/lv759/indoors/weyyu_office/pressroom
-	name = "LV759 - Weyland Yutani Offices Press Room"
+	name = "Weyland Yutani Offices - Press Room"
 
 // Bar & Entertainment Complex
 /area/lv759/indoors/bar
-	name = "LV759 - Bar"
+	name = "Bar"
 	icon_state = "green"
 	minimap_color = MINIMAP_AREA_COLONY
 
 /area/lv759/indoors/bar/entertainment
-	name = "LV759 - Bar - Entertainment Subsection"
+	name = "Bar - Entertainment Subsection"
 /area/lv759/indoors/bar/bathroom
-	name = "LV759 - Bar - Bathrooms"
+	name = "Bar - Bathrooms"
 /area/lv759/indoors/bar/maintenance
-	name = "LV759 - Bar - Maintenance"
+	name = "Bar - Maintenance"
 /area/lv759/indoors/bar/kitchen
-	name = "LV759 - Bar - Kitchen"
+	name = "Bar - Kitchen"
 /area/lv759/indoors/bar/botany
-	name = "LV759 - Bar - Botany"
+	name = "Bar - Botany"
 
 // Hosptial
 /area/lv759/indoors/hospital
 	icon_state = "medical"
 	minimap_color = MINIMAP_AREA_MEDBAY
 /area/lv759/indoors/hospital/paramedics_garage
-	name = "LV759 - Nova Medica Hospital Pavilion - Paramedic's Garage"
+	name = "Nova Medica Hospital Complex - Paramedic's Garage"
 /area/lv759/indoors/hospital/cryo_room
-	name = "LV759 - Nova Medica Hospital Pavilion - Cryo Ward"
+	name = "Nova Medica Hospital Complex - Cryo Ward"
 /area/lv759/indoors/hospital/emergency_room
-	name = "LV759 - Nova Medica Hospital Pavilion - Emergency Room"
+	name = "Nova Medica Hospital Complex - Emergency Room"
 /area/lv759/indoors/hospital/reception
-	name = "LV759 - Nova Medica Hospital Pavilion - Reception"
+	name = "Nova Medica Hospital Complex - Reception"
 /area/lv759/indoors/hospital/cmo_office
-	name = "LV759 - Nova Medica Hospital Pavilion - Chief Medical Officer's Office"
+	name = "Nova Medica Hospital Complex - Chief Medical Officer's Office"
 /area/lv759/indoors/hospital/maintenance
-	name = "LV759 - Nova Medica Hospital Pavilion - Engineering Maintenance"
+	name = "Nova Medica Hospital Complex - Engineering Maintenance"
 /area/lv759/indoors/hospital/pharmacy
-	name = "LV759 - Nova Medica Hospital Pavilion - Pharmacy and Outgoing Foyer"
+	name = "Nova Medica Hospital Complex - Pharmacy & Outgoing Foyer"
 /area/lv759/indoors/hospital/outgoing
-	name = "LV759 - Nova Medica Hospital Pavilion - Outgoing Ward"
+	name = "Nova Medica Hospital Complex - Outgoing Ward"
 /area/lv759/indoors/hospital/central_hallway
-	name = "LV759 - Nova Medica Hospital Pavilion - Central Hallway"
+	name = "Nova Medica Hospital Complex - Central Hallway"
 /area/lv759/indoors/hospital/east_hallway
-	name = "LV759 - Nova Medica Hospital Pavilion - East Hallway"
+	name = "Nova Medica Hospital Complex - East Hallway"
 /area/lv759/indoors/hospital/medical_storage
-	name = "LV759 - Nova Medica Hospital Pavilion - Medical Storage"
+	name = "Nova Medica Hospital Complex - Medical Storage"
 /area/lv759/indoors/hospital/operation
-	name = "LV759 - Nova Medica Hospital Pavilion - Operation Theatres and Observation"
+	name = "Nova Medica Hospital Complex - Operation Theatres & Observation"
 /area/lv759/indoors/hospital/patient_ward
-	name = "LV759 - Nova Medica Hospital Pavilion - Patient Ward"
+	name = "Nova Medica Hospital Complex - Patient Ward"
 /area/lv759/indoors/hospital/virology
-	name = "LV759 - Nova Medica Hospital Pavilion - Virology"
+	name = "Nova Medica Hospital Complex - Virology"
 /area/lv759/indoors/hospital/morgue
-	name = "LV759 - Nova Medica Hospital Pavilion - Morgue"
+	name = "Nova Medica Hospital Complex - Morgue"
 /area/lv759/indoors/hospital/icu
-	name = "LV759 - Nova Medica Hospital Pavilion - Intensive Care Ward"
+	name = "Nova Medica Hospital Complex - Intensive Care Ward"
 
 // Mining
 /area/lv759/lone_buildings/mining_outpost
-	name = "LV759 - North Mining Outpost"
+	name = "North Mining Outpost"
 	icon_state = "yellow"
 	minimap_color = MINIMAP_AREA_COLONY
 
 // Power-Plant (Engineering)
 /area/lv759/power_plant
-	name = "LV759 - Power Plant Central Hallway"
-	icon_state = "yellow"
+	name = "Weyland-Yutani DynaGrid Nexus - Central Hallway"
+	icon_state = "power0"
 	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/power_plant/south_hallway
-	name = "LV759 - Power Plant South Hallway"
+	name = "Weyland-Yutani DynaGrid Nexus - South Hallway"
 /area/lv759/power_plant/geothermal_generators
-	name = "LV759 - Power Plant Geothermal Generators Room"
+	name = "Weyland-Yutani DynaGrid Nexus - Geothermal Generators Room"
 /area/lv759/power_plant/power_storage
-	name = "LV759 - Power Plant Battery Array and Transformers"
+	name = "Weyland-Yutani DynaGrid Nexus - Power Storage Room"
+/area/lv759/power_plant/transformers_north
+	name = "Weyland-Yutani DynaGrid Nexus - Transformers - North"
+/area/lv759/power_plant/transformers_south
+	name = "Weyland-Yutani DynaGrid Nexus - Transformers - South"
 /area/lv759/power_plant/gas_generators
-	name = "LV759 - Power Plant Backup Gas Generators"
+	name = "Weyland-Yutani DynaGrid Nexus - Gas Mixing & Storage "
 /area/lv759/power_plant/fusion_generators
-	name = "LV759 - Power Plant Fusion Generators"
+	name = "Weyland-Yutani DynaGrid Nexus - Control Center"
 /area/lv759/power_plant/telecomms
-	name = "LV759 - Power Plant Telecommunications"
+	icon_state = "comms_1"
+	name = "Weyland-Yutani DynaGrid Nexus - Telecommunications"
 /area/lv759/power_plant/workers_canteen
-	name = "LV759 - Power Plant Worker's Canteen"
-
+	name = "Weyland-Yutani DynaGrid Nexus - Worker's Canteen"
+/area/lv759/power_plant/equipment_east
+	name = "Weyland-Yutani DynaGrid Nexus - Equipment Storage Room - East"
+/area/lv759/power_plant/equipment_west
+	name = "Weyland-Yutani DynaGrid Nexus - Equipment Storage Room - West"
 // Marshalls
 /area/lv759/colonial_marshals
-	name = "LV759 - CMB - Sentinel Outpost - Prisoner's Recroom"
+	name = "CMB - Sentinel Outpost - Prisoner's Recroom"
 	icon_state = "security_hub"
 	minimap_color = MINIMAP_AREA_SEC
 /area/lv759/colonial_marshals/prisoners_cells
-	name = "LV759 - CMB - Sentinel Outpost - Prisoner's Cells"
+	name = "CMB - Sentinel Outpost - Prisoner's Cells"
 /area/lv759/colonial_marshals/garage
-	name = "LV759 - CMB - Sentinel Outpost - Vehicle Deployment & Maintenace"
+	name = "CMB - Sentinel Outpost - Vehicle Deployment & Maintenace"
 /area/lv759/colonial_marshals/armory
-	name = "LV759 - CMB - Sentinel Outpost - Armory"
+	name = "CMB - Sentinel Outpost - Armory"
 /area/lv759/colonial_marshals/office
-	name = "LV759 - CMB - Sentinel Outpost - Office"
-/area/lv759/colonial_marshals/hallway
-	name = "LV759 - CMB - Sentinel Outpost - Central Hallway"
-/area/lv759/colonial_marshals/hallway
-	name = "LV759 - CMB - Sentinel Outpost - South Hallway"
-/area/lv759/colonial_marshals/hallway
-	name = "LV759 - CMB - Sentinel Outpost - Reception Hallway"
-/area/lv759/colonial_marshals/hallway
-	name = "LV759 - CMB - Sentinel Outpost - North Hallway"
+	name = "CMB - Sentinel Outpost - Office"
+/area/lv759/colonial_marshals/hallway_central
+	name = "CMB - Sentinel Outpost - Central Hallway"
+/area/lv759/colonial_marshals/hallway_south
+	name = "CMB - Sentinel Outpost - South Hallway"
+/area/lv759/colonial_marshals/hallway_reception
+	name = "CMB - Sentinel Outpost - Reception Hallway"
+/area/lv759/colonial_marshals/hallway_north
+	name = "CMB - Sentinel Outpost - North Hallway"
 /area/lv759/colonial_marshals/holding_cells
-	name = "LV759 - CMB - Sentinel Outpost - Holding Cells"
+	name = "CMB - Sentinel Outpost - Holding Cells"
 /area/lv759/colonial_marshals/head_office
-	name = "LV759 - CMB - Sentinel Outpost - Forensics Office"
+	name = "CMB - Sentinel Outpost - Forensics Office"
 /area/lv759/colonial_marshals/north_office
-	name = "LV759 - CMB - Sentinel Outpost - North Office"
+	name = "CMB - Sentinel Outpost - North Office"
 /area/lv759/colonial_marshals/wardens_office
-	name = "LV759 - CMB - Sentinel Outpost - Wardens Office"
+	name = "CMB - Sentinel Outpost - Wardens Office"
 /area/lv759/colonial_marshals/interrogation
-	name = "LV759 - CMB - Sentinel Outpost - Interrogation"
+	name = "CMB - Sentinel Outpost - Interrogation"
 /area/lv759/colonial_marshals/press_room
-	name = "LV759 - CMB - Sentinel Outpost - Court Room"
+	name = "CMB - Sentinel Outpost - Court Room"
 
 // Lone Buildings
 
 /area/lv759/lone_buildings/synthetic_storage
-	name = "LV759 - Synthetic Storage"
+	name = "Synthetic Storage"
 	icon_state = "yellow"
 	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/recycling_plant
-	name = "LV759 - Recycling Plant"
+	name = "Recycling Plant"
 	icon_state = "yellow"
 	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/recycling_plant/garage
-	name = "LV759 - Recycling Plant Garage"
+	name = "Recycling Plant Garage"
 	icon_state = "yellow"
 	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/lone_buildings/jacks_surplus
-	name = "LV759 - Jack's Surplus"
+	name = "Jack's Military Surplus"
 	icon_state = "green"
 	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/lone_buildings/south_public_restroom
-	name = "LV759 - Southern Public Restroom"
+	name = "Southern Public Restroom"
 	icon_state = "green"
 	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/casino
-	name = "LV759 - Night Gold Casino"
-	icon_state = "red"
+	name = "Night Gold Casino"
+	icon_state = "nightgold"
 	minimap_color = MINIMAP_AREA_ENGI
 /area/lv759/indoors/pizzaria
-	name = "LV759 - Pizzaria"
-	icon_state = "yellow"
+	name = "Pizzaria"
+	icon_state = "pizza"
 	minimap_color = MINIMAP_AREA_ENGI
 
 // Weymart
 /area/lv759/indoors/weymart
-	name = "LV759 - Weymart"
+	name = "Weymart"
 	icon_state = "weymart"
 	minimap_color = MINIMAP_AREA_COMMAND
 	soundscape_playlist = SCAPE_PL_LV759_WEYMART
 /area/lv759/indoors/weymart_backrooms
-	name = "LV759 - Weymart - Backrooms"
+	name = "Weymart - Backrooms"
 	icon_state = "weymartbackrooms"
 	minimap_color = MINIMAP_AREA_COMMAND
 /area/lv759/indoors/weymart_maintenance
-	name = "LV759 - Weymart - Maintenance"
+	name = "Weymart - Maintenance"
 	icon_state = "weymartbackrooms"
 	minimap_color = MINIMAP_AREA_COMMAND
 
 // WY Security Checkpoints
 /area/lv759/lone_buildings/wy_security_checkpoint_northeast
-	name = "LV759 - Weyland Yutani Security Checkpoint - North East"
+	name = "Weyland Yutani Security Checkpoint - North East"
 	icon_state = "security_checkpoint_northeast"
 	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/lone_buildings/wy_security_checkpoint_east
-	name = "LV759 - Weyland Yutani Security Checkpoint - East"
+	name = "Weyland Yutani Security Checkpoint - East"
 	icon_state = "security_checkpoint_east"
 /area/lv759/lone_buildings/wy_security_checkpoint_central
-	name = "LV759 - Weyland Yutani Security Checkpoint - Central"
+	name = "Weyland Yutani Security Checkpoint - Central"
 	icon_state = "security_checkpoint_central"
 /area/lv759/lone_buildings/wy_security_checkpoint_west
-	name = "LV759 - Weyland Yutani Security Checkpoint - West"
+	name = "Weyland Yutani Security Checkpoint - West"
 	icon_state = "security_checkpoint_west"
 /area/lv759/lone_buildings/wy_security_checkpoint_northwest
-	name = "LV759 - Weyland Yutani Security Checkpoint - North West"
+	name = "Weyland Yutani Security Checkpoint - North West"
 	icon_state = "security_checkpoint_northwest"
+
 // Misc
-/area/lv759/derelict/derelictship
-	name = "LV759 - Derelict Ship"
+/area/lv759/derelictship
+	name = "Derelict Ship"
 	icon_state = "derelictship"
 	minimap_color = MINIMAP_AREA_COLONY
 	ceiling = CEILING_MAX

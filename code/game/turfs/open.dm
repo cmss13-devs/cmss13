@@ -1011,6 +1011,8 @@
 	icon_state = "asphalt_old_roadlines3"
 /turf/open/hybrisa/street/roadlines4
 	icon_state = "asphalt_old_roadlines4"
+/turf/open/hybrisa/street/CMB_4x4_emblem
+	icon_state = "marshallsemblem_concrete_2x2"
 
 // Carpet
 

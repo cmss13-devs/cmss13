@@ -1799,7 +1799,15 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	density = TRUE
-
+/obj/structure/prop/hybrisa/vehicles/van/hyperdynevan
+	name = "Hyperdyne van"
+	desc = "Seems to be broken down."
+	icon_state = "hyperdynevan"
+	bound_height = 64
+	bound_width = 64
+	unslashable = TRUE
+	unacidable = TRUE
+	density = TRUE
 /obj/structure/prop/hybrisa/vehicles/crashedcarsleft
 	name = "car pileup"
 	desc = "Burned out wrecked vehicles block your path."

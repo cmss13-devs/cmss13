@@ -79,12 +79,11 @@
 	item_state = "armor"
 	item_state_slots = null
 	contained_sprite = TRUE
+	slowdown = SLOWDOWN_ARMOR_LIGHT
 
 	flags_armor_protection = BODY_FLAG_CHEST
 	flags_cold_protection = BODY_FLAG_CHEST
 	flags_heat_protection = BODY_FLAG_CHEST
-
-	slowdown = SLOWDOWN_ARMOR_NONE // only protects chest, but enables rapid movement
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/lead
 	desc = "A basic vest with a Weyland-Yutani badge on the right breast. This variant is worn by low-level guards that have elevated in rank due to 'good conduct in the field', also known as corporate bootlicking."

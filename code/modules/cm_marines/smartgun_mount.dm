@@ -70,7 +70,7 @@
 	return
 
 /obj/item/device/m56d_gun/attackby(obj/item/O as obj, mob/user as mob)
-	if(!ishuman(user))
+	if(!ishuman(user) || !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		return
 
 	if(QDELETED(O))
@@ -92,7 +92,7 @@
 		if(istype(machine, /obj/structure/machinery/m56d_hmg) || istype(machine, /obj/structure/machinery/m56d_post))
 			to_chat(user, SPAN_WARNING("This is too close to [machine]!"))
 			return
-	if(!ishuman(user))
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		return
 	if(!has_mount)
 		return
@@ -188,7 +188,7 @@
 /obj/item/device/m56d_post/attack_self(mob/user)
 	..()
 
-	if(!ishuman(usr))
+	if(!ishuman(usr) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		return
 	if(SSinterior.in_interior(user))
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
@@ -296,9 +296,9 @@
 	return XENO_ATTACK_ACTION
 
 /obj/structure/machinery/m56d_post/MouseDrop(over_object, src_location, over_location) //Drag the tripod onto you to fold it.
-	if(!ishuman(usr))
+	var/mob/living/carbon/user = usr //this is us
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		return
-	var/mob/living/carbon/human/user = usr //this is us
 	if(over_object == user && in_range(src, user))
 		if(anchored && gun_mounted)
 			to_chat(user, SPAN_WARNING("\The [src] can't be folded while there's an unsecured gun mounted on it. Either complete the assembly or take the gun off with a crowbar."))
@@ -313,7 +313,7 @@
 		qdel(src)
 
 /obj/structure/machinery/m56d_post/attackby(obj/item/O, mob/user)
-	if(!ishuman(user)) //first make sure theres no funkiness
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS)) //first make sure theres no funkiness
 		return
 
 	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH)) //rotate the mount
@@ -549,7 +549,7 @@
 
 /obj/structure/machinery/m56d_hmg/get_examine_text(mob/user) //Let us see how much ammo we got in this thing.
 	. = ..()
-	if(ishuman(user))
+	if(ishuman(user) || HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		if(rounds)
 			. += SPAN_NOTICE("It has [rounds] round\s out of [rounds_max].")
 		else
@@ -568,7 +568,7 @@
 	return
 
 /obj/structure/machinery/m56d_hmg/attackby(obj/item/O as obj, mob/user as mob) //This will be how we take it apart.
-	if(!ishuman(user))
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		return ..()
 
 	if(QDELETED(O))
@@ -692,16 +692,18 @@
 	update_health(round(P.damage / 10)) //Universal low damage to what amounts to a post with a gun.
 	return 1
 
-/obj/structure/machinery/m56d_hmg/attack_alien(mob/living/carbon/xenomorph/M) // Those Ayy lmaos.
-	if(islarva(M))
+/obj/structure/machinery/m56d_hmg/attack_alien(mob/living/carbon/xenomorph/xeno) // Those Ayy lmaos.
+	if(islarva(xeno))
 		return //Larvae can't do shit
-
-	M.visible_message(SPAN_DANGER("[M] has slashed [src]!"),
+	if(xeno.IsAdvancedToolUser() && xeno.a_intent == INTENT_HELP)
+		try_mount_gun(xeno)
+		return XENO_NO_DELAY_ACTION
+	xeno.visible_message(SPAN_DANGER("[xeno] has slashed [src]!"),
 	SPAN_DANGER("You slash [src]!"))
-	M.animation_attack_on(src)
-	M.flick_attack_overlay(src, "slash")
+	xeno.animation_attack_on(src)
+	xeno.flick_attack_overlay(src, "slash")
 	playsound(loc, "alien_claw_metal", 25)
-	update_health(rand(M.melee_damage_lower,M.melee_damage_upper))
+	update_health(rand(xeno.melee_damage_lower,xeno.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
 /obj/structure/machinery/m56d_hmg/proc/load_into_chamber()
@@ -841,17 +843,21 @@
 		// Try to man the gun
 		try_mount_gun(usr)
 
-/obj/structure/machinery/m56d_hmg/proc/try_mount_gun(mob/living/carbon/human/user)
+/obj/structure/machinery/m56d_hmg/proc/try_mount_gun(mob/living/carbon/user)
 	// If the user isn't a human.
 	if(!istype(user))
 		return
 	// If the user is unconscious or dead.
 	if(user.stat)
 		return
-
+	if(ishuman(user))
+		var/mob/living/carbon/human/human = user
+		if(!human.allow_gun_usage)
+			to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
+			return
 	// If the user isn't actually allowed to use guns.
-	if(!user.allow_gun_usage)
-		to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
+	else if (!HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
+		to_chat(user, SPAN_WARNING("You don't know what to do with [src]!"))
 		return
 
 	// If the user is invisible.

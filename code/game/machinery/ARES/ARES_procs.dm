@@ -80,6 +80,8 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	var/list/records_security = list()
 	/// Holds all (/datum/ares_record/flight)s
 	var/list/records_flight = list()
+	/// Holds all (/datum/ares_record/tech)s
+	var/list/records_tech = list()
 	/// Is nuke request usable or not?
 	var/nuke_available = TRUE
 
@@ -177,6 +179,16 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		return FALSE
 	var/datum/ares_datacore/datacore = GLOB.ares_datacore
 	datacore.records_flight.Add(new /datum/ares_record/flight(details, user_name))
+
+/proc/log_ares_tech(user_name, tier_tech = FALSE, title, details, point_cost, current_points)
+	if(!ares_can_log())
+		return FALSE
+	var/new_details = "[title] - [details]"
+	if(point_cost)
+		new_details += " - Used [point_cost] INT of [current_points]."
+	var/datum/ares_datacore/datacore = GLOB.ares_datacore
+	datacore.records_tech.Add(new /datum/ares_record/tech(title, new_details, user_name, tier_tech))
+
 // ------ End ARES Logging Procs ------ //
 
 // ------ ARES Interface Procs ------ //

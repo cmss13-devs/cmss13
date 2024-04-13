@@ -32,7 +32,7 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/hurt_yourself
 	key = "hurtyourself"
 	sound = 'sound/voice/joe/hurt_yourself.ogg'
-	say_message = "Your going to hurt yourself."
+	say_message = "You're going to hurt yourself."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/warning/someone_hurt

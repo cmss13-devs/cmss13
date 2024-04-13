@@ -61,10 +61,13 @@
 						else
 							user.drop_inv_item_on_ground(master_item)
 							user.put_in_r_hand(master_item)
-						return
 					else
 						user.drop_inv_item_on_ground(master_item)
 						user.put_in_r_hand(master_item)
+
+					if(master_item.light_on)
+						master_item.turn_light(toggle_on = FALSE)
+					return
 				if("l_hand")
 					if(master_item.time_to_unequip)
 						user.visible_message(SPAN_NOTICE("[user] starts taking off \the [master_item]."))
@@ -73,10 +76,13 @@
 						else
 							user.drop_inv_item_on_ground(master_item)
 							user.put_in_l_hand(master_item)
-						return
 					else
 						user.drop_inv_item_on_ground(master_item)
 						user.put_in_l_hand(master_item)
+
+					if(master_item.light_on)
+						master_item.turn_light(toggle_on = FALSE)
+					return
 			master_item.add_fingerprint(user)
 			return FALSE
 	return FALSE

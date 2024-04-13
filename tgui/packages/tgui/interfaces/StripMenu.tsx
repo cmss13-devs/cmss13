@@ -239,6 +239,7 @@ const StripContent = (props: { readonly item: StripMenuItem | null }) => {
         src={`data:image/jpeg;base64,${props.item.icon}`}
         height="100%"
         width="100%"
+        className="StripMenu__contentbox"
       />
     );
   } else if ('obscured' in props.item) {
@@ -346,9 +347,7 @@ export const StripMenu = (props, context) => {
                               className="StripMenu__itemslot"
                             />
                           )}
-                          <Box className="StripMenu__contentbox">
-                            <StripContent item={item} />
-                          </Box>
+                          <StripContent item={item} />
                           {slot.additionalComponent}
                         </Button>
 

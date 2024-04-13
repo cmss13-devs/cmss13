@@ -145,3 +145,16 @@
 2024-04-10:
   Drathek:
   - rscadd: Added preference for a darker crit overlay and black flash overlay
+2024-04-12:
+  BadAtThisGame302:
+  - bugfix: The CMB Deputy not being able to use his breaching charge by replacing
+      it with a rubber one.
+  InsaneRed:
+  - rscdel: Helmets no longer hide ears
+  TopHatPenguin:
+  - bugfix: Fixes Nightmare documentation example.
+2024-04-13:
+  Drathek:
+  - bugfix: Fixed cryotubes still duplicating chemicals because of touch reactions
+  HeresKozmos:
+  - rscadd: Added over a dozen new tips for playing Xenomorph.

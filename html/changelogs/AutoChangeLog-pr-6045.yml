@@ -1,0 +1,8 @@
+author: "Tim Harley cookpet"
+delete-after: True
+changes:
+  - balance: "OT rockets explosion power and falloff nerfed to be slightly more explosive than the OT M15 grenade (240 exp, 90 falloff)."
+  - balance: "OT rockets max container volume increased to 210 units (1 beaker, 1 bottle, 1 vial)."
+  - balance: "OT rockets max fire intensity increased to 40 and max duration increased to 48."
+  - balance: "OT rockets can no longer make a star shaped fire."
+  - balance: "OT rockets max range increased to 7 tiles."

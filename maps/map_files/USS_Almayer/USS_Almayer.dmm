@@ -10350,6 +10350,7 @@
 /area/almayer/medical/chemistry)
 "bek" = (
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed,
+/obj/structure/medical_supply_link,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side"
@@ -60166,6 +60167,7 @@
 	dir = 8
 	},
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed,
+/obj/structure/medical_supply_link,
 /turf/open/floor/almayer{
 	icon_state = "redfull"
 	},
@@ -76694,6 +76696,7 @@
 	pixel_x = 8;
 	pixel_y = 32
 	},
+/obj/structure/medical_supply_link,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},

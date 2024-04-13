@@ -1,0 +1,4 @@
+author: "Git-Nivrak"
+delete-after: True
+changes:
+  - rscadd: "Throws will now attempt to reach their target rather than the turf they were on when thrown"

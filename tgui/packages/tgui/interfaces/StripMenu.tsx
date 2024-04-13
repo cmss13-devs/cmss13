@@ -231,7 +231,7 @@ type StripMenuData = {
 
 const StripContent = (props: { readonly item: StripMenuItem | null }) => {
   if (props.item === null) {
-    return;
+    return null;
   } else if ('name' in props.item) {
     return (
       <Box

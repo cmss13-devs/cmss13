@@ -255,7 +255,7 @@ const StripContent = (props: { readonly item: StripMenuItem }) => {
       />
     );
   } else {
-    return null;
+    return <> </>;
   }
 };
 

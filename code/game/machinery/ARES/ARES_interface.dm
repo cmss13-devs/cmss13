@@ -9,10 +9,10 @@
 	var/current_menu = "login"
 	var/last_menu = ""
 
-	var/authentication = ARES_ACCESS_BASIC
+	var/authentication = ARES_ACCESS_LOGOUT
 
 	/// The last person to login.
-	var/last_login
+	var/last_login = "No User"
 	/// The person pretending to be last_login
 	var/sudo_holder
 
@@ -183,6 +183,17 @@
 		logged_orders += list(current_order)
 	data["records_requisition"] = logged_orders
 
+	var/list/logged_techs = list()
+	for(var/datum/ares_record/tech/tech_unlock as anything in datacore.records_tech)
+		var/list/current_tech = list()
+		current_tech["time"] = tech_unlock.time
+		current_tech["details"] = tech_unlock.details
+		current_tech["user"] = tech_unlock.user
+		current_tech["tier_changer"] = tech_unlock.is_tier
+		current_tech["ref"] = "\ref[tech_unlock]"
+		logged_techs += list(current_tech)
+	data["records_tech"] = logged_techs
+
 	var/list/logged_convos = list()
 	var/list/active_convo = list()
 	var/active_ref
@@ -218,17 +229,17 @@
 		return
 
 	playsound(src, "keyboard_alt", 15, 1)
+	var/mob/living/carbon/human/operator = ui.user
 
 	switch (action)
 		if("go_back")
 			if(!last_menu)
-				return to_chat(usr, SPAN_WARNING("Error, no previous page detected."))
+				return to_chat(operator, SPAN_WARNING("Error, no previous page detected."))
 			var/temp_holder = current_menu
 			current_menu = last_menu
 			last_menu = temp_holder
 
 		if("login")
-			var/mob/living/carbon/human/operator = usr
 			var/obj/item/card/id/idcard = operator.get_active_hand()
 			if(istype(idcard))
 				authentication = get_ares_access(idcard)
@@ -239,7 +250,7 @@
 					authentication = get_ares_access(idcard)
 					last_login = idcard.registered_name
 			else
-				to_chat(usr, SPAN_WARNING("You require an ID card to access this terminal!"))
+				to_chat(operator, SPAN_WARNING("You require an ID card to access this terminal!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 			if(authentication)
@@ -247,14 +258,14 @@
 			current_menu = "main"
 
 		if("sudo")
-			var/new_user = tgui_input_text(usr, "Enter Sudo Username", "Sudo User", encode = FALSE)
+			var/new_user = tgui_input_text(operator, "Enter Sudo Username", "Sudo User", encode = FALSE)
 			if(new_user)
 				if(new_user == sudo_holder)
 					last_login = sudo_holder
 					sudo_holder = null
 					return FALSE
 				if(new_user == last_login)
-					to_chat(usr, SPAN_WARNING("Already remote logged in as this user."))
+					to_chat(operator, SPAN_WARNING("Already remote logged in as this user."))
 					playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 					return FALSE
 				sudo_holder = last_login
@@ -275,6 +286,8 @@
 				last_login = sudo_holder
 				sudo_holder = null
 			datacore.interface_access_list += "[last_login] logged out at [worldtime2text()]."
+			last_login = "No User"
+			authentication = ARES_ACCESS_LOGOUT
 
 		if("home")
 			last_menu = current_menu
@@ -315,10 +328,15 @@
 		if("page_deleted_1to1")
 			last_menu = current_menu
 			current_menu = "deleted_talks"
+		if("page_tech")
+			last_menu = current_menu
+			current_menu = "tech_log"
 
 		// -- Delete Button -- //
 		if("delete_record")
 			var/datum/ares_record/record = locate(params["record"])
+			if(!istype(record))
+				return FALSE
 			if(record.record_name == ARES_RECORD_DELETED)
 				return FALSE
 			var/datum/ares_record/deletion/new_delete = new
@@ -341,6 +359,10 @@
 					new_title = "[record.title] at [record.time]"
 					new_details = "[record.details] Launched by [record.user]."
 					datacore.records_bombardment -= record
+				if(ARES_RECORD_TECH)
+					new_title = "[record.title] at [record.time]"
+					new_details = record.details
+					datacore.records_tech -= record
 
 			new_delete.details = new_details
 			new_delete.user = last_login
@@ -366,12 +388,14 @@
 			datacore.records_talking -= conversation
 
 		if("message_ares")
-			var/message = tgui_input_text(usr, "What do you wish to say to ARES?", "ARES Message", encode = FALSE)
+			var/message = tgui_input_text(operator, "What do you wish to say to ARES?", "ARES Message", encode = FALSE)
 			if(message)
-				message_ares(message, usr, params["active_convo"])
+				message_ares(message, operator, params["active_convo"])
 
 		if("read_record")
 			var/datum/ares_record/deleted_talk/conversation = locate(params["record"])
+			if(!istype(conversation))
+				return FALSE
 			deleted_1to1 = conversation.conversation
 			last_menu = current_menu
 			current_menu = "read_deleted"
@@ -379,36 +403,36 @@
 		// -- Emergency Buttons -- //
 		if("general_quarters")
 			if(!COOLDOWN_FINISHED(datacore, ares_quarters_cooldown))
-				to_chat(usr, SPAN_WARNING("It has not been long enough since the last General Quarters call!"))
+				to_chat(operator, SPAN_WARNING("It has not been long enough since the last General Quarters call!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 			if(GLOB.security_level < SEC_LEVEL_RED)
 				set_security_level(SEC_LEVEL_RED, no_sound = TRUE, announce = FALSE)
 			shipwide_ai_announcement("ATTENTION! GENERAL QUARTERS. ALL HANDS, MAN YOUR BATTLESTATIONS.", MAIN_AI_SYSTEM, 'sound/effects/GQfullcall.ogg')
-			log_game("[key_name(usr)] has called for general quarters via ARES.")
-			message_admins("[key_name_admin(usr)] has called for general quarters via ARES.")
+			log_game("[key_name(operator)] has called for general quarters via ARES.")
+			message_admins("[key_name_admin(operator)] has called for general quarters via ARES.")
 			log_ares_security("General Quarters", "[last_login] has called for general quarters via ARES.")
 			COOLDOWN_START(datacore, ares_quarters_cooldown, 10 MINUTES)
 			. = TRUE
 
 		if("evacuation_start")
 			if(GLOB.security_level < SEC_LEVEL_RED)
-				to_chat(usr, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))
+				to_chat(operator, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 
 			if(SShijack.evac_admin_denied)
-				to_chat(usr, SPAN_WARNING("The USCM has placed a lock on deploying the evacuation pods."))
+				to_chat(operator, SPAN_WARNING("The USCM has placed a lock on deploying the evacuation pods."))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 
 			if(!SShijack.initiate_evacuation())
-				to_chat(usr, SPAN_WARNING("You are unable to initiate an evacuation procedure right now!"))
+				to_chat(operator, SPAN_WARNING("You are unable to initiate an evacuation procedure right now!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 
-			log_game("[key_name(usr)] has called for an emergency evacuation via ARES.")
-			message_admins("[key_name_admin(usr)] has called for an emergency evacuation via ARES.")
+			log_game("[key_name(operator)] has called for an emergency evacuation via ARES.")
+			message_admins("[key_name_admin(operator)] has called for an emergency evacuation via ARES.")
 			log_ares_security("Initiate Evacuation", "[last_login] has called for an emergency evacuation via ARES.")
 			. = TRUE
 
@@ -416,27 +440,27 @@
 			if(!SSticker.mode)
 				return FALSE //Not a game mode?
 			if(world.time < DISTRESS_TIME_LOCK)
-				to_chat(usr, SPAN_WARNING("You have been here for less than six minutes... what could you possibly have done!"))
+				to_chat(operator, SPAN_WARNING("You have been here for less than six minutes... what could you possibly have done!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 			if(!COOLDOWN_FINISHED(datacore, ares_distress_cooldown))
-				to_chat(usr, SPAN_WARNING("The distress launcher is cooling down!"))
+				to_chat(operator, SPAN_WARNING("The distress launcher is cooling down!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 			if(GLOB.security_level == SEC_LEVEL_DELTA)
-				to_chat(usr, SPAN_WARNING("The ship is already undergoing self destruct procedures!"))
+				to_chat(operator, SPAN_WARNING("The ship is already undergoing self destruct procedures!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 			if(GLOB.security_level < SEC_LEVEL_RED)
-				to_chat(usr, SPAN_WARNING("The ship must be under red alert to launch a distress beacon!"))
+				to_chat(operator, SPAN_WARNING("The ship must be under red alert to launch a distress beacon!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 
 			for(var/client/admin in GLOB.admins)
 				if((R_ADMIN|R_MOD) & admin.admin_holder.rights)
 					playsound_client(admin,'sound/effects/sos-morse-code.ogg',10)
-			SSticker.mode.request_ert(usr, TRUE)
-			to_chat(usr, SPAN_NOTICE("A distress beacon request has been sent to USCM High Command."))
+			SSticker.mode.request_ert(operator, TRUE)
+			to_chat(operator, SPAN_NOTICE("A distress beacon request has been sent to USCM High Command."))
 			COOLDOWN_START(datacore, ares_distress_cooldown, COOLDOWN_COMM_REQUEST)
 			return TRUE
 
@@ -444,25 +468,25 @@
 			if(!SSticker.mode)
 				return FALSE //Not a game mode?
 			if(world.time < NUCLEAR_TIME_LOCK)
-				to_chat(usr, SPAN_WARNING("It is too soon to request Nuclear Ordnance!"))
+				to_chat(operator, SPAN_WARNING("It is too soon to request Nuclear Ordnance!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 			if(!COOLDOWN_FINISHED(datacore, ares_nuclear_cooldown))
-				to_chat(usr, SPAN_WARNING("The ordnance request frequency is garbled, wait for reset!"))
+				to_chat(operator, SPAN_WARNING("The ordnance request frequency is garbled, wait for reset!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 			if(GLOB.security_level == SEC_LEVEL_DELTA || SSticker.mode.is_in_endgame)
-				to_chat(usr, SPAN_WARNING("The mission has failed catastrophically, what do you want a nuke for?!"))
+				to_chat(operator, SPAN_WARNING("The mission has failed catastrophically, what do you want a nuke for?!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
-			var/reason = tgui_input_text(usr, "Please enter reason nuclear ordnance is required.", "Reason for Nuclear Ordnance")
+			var/reason = tgui_input_text(operator, "Please enter reason nuclear ordnance is required.", "Reason for Nuclear Ordnance")
 			if(!reason)
 				return FALSE
 			for(var/client/admin in GLOB.admins)
 				if((R_ADMIN|R_MOD) & admin.admin_holder.rights)
 					playsound_client(admin,'sound/effects/sos-morse-code.ogg',10)
-			message_admins("[key_name(usr)] has requested use of Nuclear Ordnance (via ARES)! Reason: <b>[reason]</b> [CC_MARK(usr)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];nukeapprove=\ref[usr]'>APPROVE</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];nukedeny=\ref[usr]'>DENY</A>) [ADMIN_JMP_USER(usr)] [CC_REPLY(usr)]")
-			to_chat(usr, SPAN_NOTICE("A nuclear ordnance request has been sent to USCM High Command for the following reason: [reason]"))
+			message_admins("[key_name(operator)] has requested use of Nuclear Ordnance (via ARES)! Reason: <b>[reason]</b> [CC_MARK(operator)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];nukeapprove=\ref[operator]'>APPROVE</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];nukedeny=\ref[operator]'>DENY</A>) [ADMIN_JMP_USER(operator)] [CC_REPLY(operator)]")
+			to_chat(operator, SPAN_NOTICE("A nuclear ordnance request has been sent to USCM High Command for the following reason: [reason]"))
 			log_ares_security("Nuclear Ordnance Request", "[last_login] has sent a request for nuclear ordnance for the following reason: [reason]")
 			if(ares_can_interface())
 				ai_silent_announcement("[last_login] has sent a request for nuclear ordnance to USCM High Command.", ".V")

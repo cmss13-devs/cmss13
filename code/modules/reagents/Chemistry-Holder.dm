@@ -165,9 +165,13 @@
 		if(specific_reagent)
 			if(istype(R, specific_reagent))
 				R.last_source_mob = WEAKREF(new_source_mob)
+				if(R.data_properties)
+					R.data_properties["last_source_mob"] = R.last_source_mob
 				return
 			continue
 		R.last_source_mob = WEAKREF(new_source_mob)
+		if(R.data_properties)
+			R.data_properties["last_source_mob"] = R.last_source_mob
 
 /datum/reagents/proc/copy_to(obj/target, amount=1, multiplier=1, preserve_data=1, safety = 0)
 	if(!target)
@@ -355,12 +359,12 @@
 		del_reagent(R.id)
 	return FALSE
 
-/datum/reagents/proc/reaction(atom/A, method=TOUCH, volume_modifier=0)
+/datum/reagents/proc/reaction(atom/A, method=TOUCH, volume_modifier=0, permeable_in_mobs=TRUE)
 	if(method != TOUCH && method != INGEST)
 		return
 	for(var/datum/reagent/R in reagent_list)
 		if(ismob(A))
-			R.reaction_mob(A, method, R.volume + volume_modifier)
+			R.reaction_mob(A, method, R.volume + volume_modifier, permeable_in_mobs)
 		else if(isturf(A))
 			R.reaction_turf(A, R.volume + volume_modifier)
 		else if(isobj(A))

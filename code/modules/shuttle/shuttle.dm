@@ -792,6 +792,10 @@
 			else if(error)
 				setTimer(20)
 				return
+			if(mode == SHUTTLE_CRASHED)
+				destination = null
+				timer = 0
+				return
 			if(rechargeTime)
 				set_mode(SHUTTLE_RECHARGING)
 				destination = null
@@ -810,6 +814,8 @@
 				setTimer(callTime * engine_coeff())
 				enterTransit()
 				return
+		if(SHUTTLE_CRASHED)
+			return
 
 	set_idle()
 

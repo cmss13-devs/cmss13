@@ -263,7 +263,7 @@
 			continue
 
 		// Mods with larva protection cannot be drafted
-		if((cur_obs.client.admin_holder && (cur_obs.client.admin_holder.rights & R_MOD)) && !cur_obs.adminlarva)
+		if(check_client_rights(cur_obs.client, R_MOD, FALSE) && cur_obs.admin_larva_protection)
 			continue
 
 		if(hive)

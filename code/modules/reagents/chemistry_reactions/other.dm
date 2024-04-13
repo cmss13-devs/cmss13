@@ -365,7 +365,7 @@
 	id = "stablefoam"
 	result = "stablefoam"
 	required_reagents = list("fluorosurfactant" = 1, "iron" = 1, "sulphuric acid" = 1)
-	result_amount = 3
+	result_amount = 1
 
 /datum/chemical_reaction/foam
 	name = "Foam"

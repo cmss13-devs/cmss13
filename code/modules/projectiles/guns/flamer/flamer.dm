@@ -237,7 +237,7 @@
 	var/source_turf = get_turf(user)
 	var/foam_range = 6 // the max range the foam will travel
 	var/distance = 0 // the distance traveled
-	var/use_multiplier = 2 // if you want to increase the ammount of foam drained from the tank
+	var/use_multiplier = 3 // if you want to increase the ammount of foam drained from the tank
 	var/datum/reagent/chemical = current_mag.reagents.reagent_list[1]
 
 	var/turf/turfs[] = get_line(user, target, FALSE)

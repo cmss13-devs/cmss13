@@ -241,7 +241,7 @@
 		burn_damage *= xeno_yautja_reduction
 
 	M.burn_skin(burn_damage)
-	M.adjust_fire_stacks(applied_fire_stacks, /datum/reagent/napalm/ut)
+	M.adjust_fire_stacks(applied_fire_stacks, "utnapthal")
 	M.IgniteMob()
 	M.updatehealth()
 

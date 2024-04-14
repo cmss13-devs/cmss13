@@ -1,0 +1,5 @@
+author: "Tim Harley cookpet"
+delete-after: True
+changes:
+  - rscadd: "Added 2 new flamer fuels craftable by OTs/Chemistry"
+  - balance: "CLF3 recipe now gives more units per reaction"

@@ -240,8 +240,9 @@
 	if(isyautja(M) || isxeno(M))
 		burn_damage *= xeno_yautja_reduction
 
+	var/reagent = new /datum/reagent/napalm/ut()
 	M.burn_skin(burn_damage)
-	M.adjust_fire_stacks(applied_fire_stacks, "utnapthal")
+	M.adjust_fire_stacks(applied_fire_stacks, reagent)
 	M.IgniteMob()
 	M.updatehealth()
 

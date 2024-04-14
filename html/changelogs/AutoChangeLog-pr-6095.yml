@@ -1,4 +1,0 @@
-author: "harryob"
-delete-after: True
-changes:
-  - code_imp: "515.1627 is now required for development - this is not enforced to play on the server, yet"

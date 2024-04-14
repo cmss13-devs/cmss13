@@ -179,14 +179,17 @@
 	if(!occupant)
 		visible_message(SPAN_DANGER("You hear a loud metallic grinding sound."))
 		return
+	var/synthetic = issynth(occupant)
 	use_power(1000)
-	visible_message(SPAN_DANGER("You hear a loud squelchy grinding sound."))
-	operating = 1
+	if(synthetic)
+		visible_message(SPAN_BOLDWARNING("[src] begins to emitt sparks out the top as a banging noise can be heard!"), SPAN_BOLDWARNING("You hear a myriad of loud bangs!"))
+	else
+		visible_message(SPAN_DANGER("You hear a loud squelchy grinding sound."))
+	operating = TRUE
 	update_icon()
 
 	var/totalslabs = 2
 
-	var/synthetic = issynth(occupant)
 
 	var/obj/item/reagent_container/food/snacks/meat/meat_template = /obj/item/reagent_container/food/snacks/meat/monkey
 	if(istype(occupant, /mob/living/carbon/xenomorph))
@@ -211,24 +214,26 @@
 		totalslabs = 0
 		var/mob/living/carbon/human/victim = occupant
 
-		// Check for arms and legs, and get grinding
-		var/obj/limb/limb = victim.get_limb("r_leg")
-		if(limb)
+		// Remove all limbs to allow synth to park closer at the supermarket
+		var/obj/limb/limb
+
+		if(victim.has_limb("l_leg"))
+			limb = victim.get_limb("r_leg")
 			totalslabs += 1
 			limb.droplimb(FALSE, TRUE, "gibber")
 
-		limb = victim.get_limb("l_leg")
-		if(limb)
+		if(victim.has_limb("l_leg"))
+			limb = victim.get_limb("l_leg")
 			totalslabs += 1
 			limb.droplimb(FALSE, TRUE, "gibber")
 
-		limb = victim.get_limb("r_arm")
-		if(limb)
+		if(victim.has_limb("r_arm"))
+			limb = victim.get_limb("r_arm")
 			totalslabs += 1
 			limb.droplimb(FALSE, TRUE, "gibber")
 
-		limb = victim.get_limb("l_arm")
-		if(limb)
+		if(victim.has_limb("l_arm"))
+			limb = victim.get_limb("l_arm")
 			totalslabs += 1
 			limb.droplimb(FALSE, TRUE, "gibber")
 
@@ -257,20 +262,21 @@
 		src.occupant.ghostize()
 
 	if(synthetic)
-		go_out(TRUE) //launch them out
+		to_chat(occupant, SPAN_HIGHDANGER("You can detect your limbs being ripped off your body, but it begins to malfunction as it reaches your torso!"))
+		addtimer(CALLBACK(src, PROC_REF(create_gibs), totalslabs, allmeat), gibtime)
+		addtimer(CALLBACK(src, PROC_REF(go_out), TRUE), gibtime)
 		return
-	QDEL_NULL(occupant)
 
-	addtimer(CALLBACK(src, PROC_REF(create_gibs), totalslabs, allmeat), gibtime)
+	QDEL_NULL(occupant)
 
 /obj/structure/machinery/gibber/proc/create_gibs(totalslabs, list/obj/item/reagent_container/food/snacks/allmeat)
 	playsound(loc, 'sound/effects/splat.ogg', 25, 1)
 	operating = FALSE
+	var/turf/Tx = locate(x - 1, y, z)
 	for (var/i in 1 to totalslabs)
 		var/obj/item/meatslab = allmeat[i]
-		var/turf/Tx = locate(x - i, y, z)
 		meatslab.forceMove(loc)
-		meatslab.throw_atom(Tx, i, SPEED_FAST, src)
+		meatslab.throw_atom(Tx, 1, SPEED_FAST, src)
 		if (!Tx.density)
 			if(istype(meatslab, /obj/item/reagent_container/food/snacks/meat/xenomeat))
 				new /obj/effect/decal/cleanable/blood/gibs/xeno(Tx)

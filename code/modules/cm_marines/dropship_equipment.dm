@@ -1341,82 +1341,30 @@
 	var/turf/location = get_turf(LT.signal_loc)
 	var/area/location_area = get_area(location)
 	if(CEILING_IS_PROTECTED(location_area.ceiling, CEILING_PROTECTION_TIER_1))
-		to_chat(user, SPAN_WARNING("You cannot jump to the target. It is probably underground."))
+		to_chat(user, SPAN_WARNING("You cannot find the target. It is probably underground."))
 		return
 
-	var/list/valid_turfs = list()
-	for(var/turf/T as anything in RANGE_TURFS(2, location))
-		var/area/t_area = get_area(T)
-		if(!t_area || CEILING_IS_PROTECTED(t_area.ceiling, CEILING_PROTECTION_TIER_1))
-			continue
-		if(T.density)
-			continue
+	linked_shuttle.paradrop_signal = LT
+	linked_shuttle.door_control.control_doors("force-unlock", "aft", TRUE)
+	RegisterSignal(linked_shuttle.paradrop_signal, COMSIG_PARENT_QDELETING, PROC_REF(clear_locked_turf_and_lock_aft))
+	RegisterSignal(linked_shuttle, COMSIG_SHUTTLE_SETMODE, PROC_REF(clear_locked_turf_and_lock_aft))
+
+/obj/structure/dropship_equipment/rappel_system/proc/clear_locked_turf_and_lock_aft()
+	SIGNAL_HANDLER
 		var/found_dense = FALSE
-		for(var/atom/A in T)
-			if(A.density && A.can_block_movement)
-				found_dense = TRUE
-				break
-		if(found_dense)
-			continue
-		if(protected_by_pylon(TURF_PROTECTION_MORTAR, T))
-			continue
-		valid_turfs += T
+	linked_shuttle.door_control.control_doors("force-lock", "aft", TRUE)
+	visible_message("[src] displays an alert as it loses the target signal.")
+	UnregisterSignal(linked_shuttle.paradrop_signal, COMSIG_PARENT_QDELETING)
+	UnregisterSignal(linked_shuttle, COMSIG_SHUTTLE_SETMODE)
 
-	if(!length(valid_turfs))
-		to_chat(user, SPAN_WARNING("There's nowhere safe for you to land, the landing zone is too congested."))
-		return
-
-	var/turf/deploy_turf = pick(valid_turfs)
-
-	var/obj/effect/warning/rappel/warning_zone = new(deploy_turf)
-	flick("rappel_hatch_opening", src)
-	icon_state = "rappel_hatch_open"
-	user.forceMove(loc)
-	user.client?.perspective = EYE_PERSPECTIVE
-	user.client?.eye = deploy_turf
-
-	if(!do_after(user, 4 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, user, INTERRUPT_MOVED) || !can_use(user) || protected_by_pylon(TURF_PROTECTION_MORTAR, deploy_turf))
-		qdel(warning_zone)
-		flick("rappel_hatch_closing", src)
-		icon_state = "rappel_hatch_closed"
-		user.client?.perspective = MOB_PERSPECTIVE
-		user.client?.eye = user
-		return
-
-	new /obj/effect/rappel_rope(deploy_turf)
-	user.forceMove(deploy_turf)
-	INVOKE_ASYNC(user, TYPE_PROC_REF(/mob/living/carbon/human, animation_rappel))
-	user.client?.perspective = MOB_PERSPECTIVE
-	user.client?.eye = user
-	deploy_turf.ceiling_debris_check(2)
-	playsound(deploy_turf, 'sound/items/rappel.ogg', 50, TRUE)
-
-	flick("rappel_hatch_closing", src)
-	icon_state = "rappel_hatch_closed"
-	qdel(warning_zone)
 
 /obj/structure/dropship_equipment/rappel_system/proc/can_use(mob/living/carbon/human/user)
 	if(linked_shuttle.mode != SHUTTLE_CALL)
 		to_chat(user, SPAN_WARNING("\The [src] can only be used while in flight."))
 		return FALSE
 
-	if(!linked_shuttle.in_flyby)
-		to_chat(user, SPAN_WARNING("\The [src] requires a flyby flight to be used."))
-		return FALSE
-
-	if(user.buckled)
-		to_chat(user, SPAN_WARNING("You cannot rappel while buckled!"))
-		return FALSE
-
 	if(user.is_mob_incapacitated())
 		to_chat(user, SPAN_WARNING("You are in no state to do that!"))
-		return FALSE
-
-	if(!istype(user.belt, harness))
-		to_chat(user, SPAN_WARNING("You must have a rappel harness equipped in order to use \the [src]!"))
-		return FALSE
-
-	if(user.action_busy)
 		return FALSE
 
 	return TRUE

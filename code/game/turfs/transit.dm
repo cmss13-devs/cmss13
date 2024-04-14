@@ -39,13 +39,38 @@
 	if(!istype(dropship) || dropship.mode != SHUTTLE_CALL)
 		return ..()
 
-	if(dropship.destination.id != DROPSHIP_LZ1 && dropship.destination.id != DROPSHIP_LZ2)
-		return ..() // we're not heading towards the LZs
-
 	// you just jumped out of a dropship heading towards the LZ, have fun living on the way down!
 	var/list/ground_z_levels = SSmapping.levels_by_trait(ZTRAIT_GROUND)
 	if(!length(ground_z_levels))
 		return ..()
+
+	if(dropship.paradrop_signal)
+		var/list/valid_turfs = list()
+		var/turf/location = get_turf(dropship.paradrop_signal.signal_loc)
+		for(var/turf/T as anything in RANGE_TURFS(7, location))
+			var/area/t_area = get_area(T)
+			if(!t_area || CEILING_IS_PROTECTED(t_area.ceiling, CEILING_PROTECTION_TIER_1))
+				continue
+			if(T.density)
+				continue
+			var/found_dense = FALSE
+			for(var/atom/A in T)
+				if(A.density && A.can_block_movement)
+					found_dense = TRUE
+					break
+			if(found_dense)
+				continue
+			if(protected_by_pylon(TURF_PROTECTION_MORTAR, T))
+				continue
+			valid_turfs += T
+
+		if(!length(valid_turfs))
+			to_chat(crosser, SPAN_WARNING("You couldn't find a fitting landing spot at desinated zone and had to find another place to land."))
+		else
+			var/turf/deploy_turf = pick(valid_turfs)
+			INVOKE_ASYNC(src, PROC_REF(handle_drop), crosser, deploy_turf, dropship.name)
+			return
+
 
 	var/list/area/potential_areas = shuffle(SSmapping.areas_in_z["[ground_z_levels[1]]"])
 
@@ -72,8 +97,40 @@
 
 	return ..() // they couldn't be dropped, just delete them
 
+/turf/open/space/transit/dropship/proc/handle_paradrop(atom/movable/crosser, turf/target, dropship_name)
+	if(QDELETED(crosser))
+		return
+
+	ADD_TRAIT(crosser, TRAIT_IMMOBILIZED, TRAIT_SOURCE_DROPSHIP_INTERACTION)
+	ADD_TRAIT(crosser, TRAIT_UNDENSE, TRAIT_SOURCE_DROPSHIP_INTERACTION)
+	to_chat(world, "test")
+	var/image/cables = image('icons/obj/structures/droppod_32x64.dmi', crosser, "chute_cables_static")
+	crosser.overlays += cables
+	var/image/chute = image('icons/obj/structures/droppod_64x64.dmi', crosser, "chute_static")
+
+	chute.pixel_x -= 16
+	chute.pixel_y += 16
+
+	crosser.overlays += chute
+	crosser.pixel_z = 360
+	crosser.forceMove(target)
+	animate(crosser, time = 40, pixel_z = 0, flags = ANIMATION_PARALLEL)
+	sleep(40)
+	REMOVE_TRAIT(crosser, TRAIT_IMMOBILIZED, TRAIT_SOURCE_DROPSHIP_INTERACTION)
+	REMOVE_TRAIT(crosser, TRAIT_UNDENSE, TRAIT_SOURCE_DROPSHIP_INTERACTION)
+	crosser.overlays -= chute
+	crosser.overlays -= cables
+
 /turf/open/space/transit/dropship/proc/handle_drop(atom/movable/crosser, turf/target, dropship_name)
 	if(QDELETED(crosser))
+		return
+	if(ishuman(crosser))
+		var/mob/living/carbon/human/crossing_human = crosser
+		if(istype(crossing_human.belt, /obj/item/rappel_harness))
+			handle_paradrop(crosser, target, dropship_name)
+			return
+	if(isxeno(crosser))
+		handle_paradrop(crosser, target, dropship_name)
 		return
 	ADD_TRAIT(crosser, TRAIT_IMMOBILIZED, TRAIT_SOURCE_DROPSHIP_INTERACTION)
 

@@ -20,7 +20,7 @@
 	var/expand = 1
 	animate_movement = 0
 	var/metal = FOAM_NOT_METAL
-	var/time_to_solidify = 2 SECONDS
+	var/time_to_solidify = 4 SECONDS
 
 
 /obj/effect/particle_effect/foam/Initialize(mapload, ismetal=0)

@@ -1,5 +1,5 @@
 import os, re
-from github import Github
+from github import Github, GithubException
 
 # Format - Key: Array[Label, [StringsToIgnore]]
 changelogToPrefix = {
@@ -39,9 +39,11 @@ fileToPrefix = {
 }
 
 githubLabel = "Github"
+missingLogLabel = "Missing Changelog"
 
 def get_labels(pr):
     labels = {}
+    failed = False
 
     files = pr.get_files()
     for file in files:
@@ -56,9 +58,16 @@ def get_labels(pr):
     if changelog_match is None:
         changelog_match = re.search(r":cl:(.*)/:cl:", pr.body, re.S | re.M)
         if changelog_match is None:
-            return labels
+            print("::warning ::No changelog detected.")
+            labels[missingLogLabel] = True
+            return labels, False
+
     lines = changelog_match.group(1).split('\n')
-    for line in lines:
+    failed = len(lines) <= 2 # Make sure its not an empty changelog
+    if failed:
+        print("::error ::Empty changelog.")
+
+    for line in lines[1:-1]: # Skip first line with authors and last
         line = line.strip()
         if not line:
             continue
@@ -68,15 +77,19 @@ def get_labels(pr):
         key = contentSplit.pop(0).strip()
         content = ":".join(contentSplit).strip()
 
-        if not key in changelogToPrefix:
+        if not key in changelogToPrefix: # Some key that we didn't expect
+            print(f"::error ::Invalid changelog entry: {line}")
+            failed = True
             continue
 
-        if content in changelogToPrefix[key][1]:
+        if content in changelogToPrefix[key][1]: # They left the template entry in
+            print(f"::error ::Invalid changelog entry: {line}")
+            failed = True
             continue
 
         labels[changelogToPrefix[key][0]] = True
 
-    return list(labels)
+    return list(labels), failed
 
 def main():
     g = Github(os.environ["TOKEN"])
@@ -84,18 +97,23 @@ def main():
 
     pr = repo.get_pull(int(os.environ["PR_NUMBER"]))
     if not pr:
-        print("Not a PR.")
+        print("::warning ::Not a PR.")
         return
 
-    labels = get_labels(pr)
+    labels, failed = get_labels(pr)
 
-    if labels is None: # no labels to add
-        print("No labels to add.")
-        return
+    if not missingLogLabel in labels:
+        try:
+            pr.remove_from_labels(missingLogLabel)
+        except GithubException as e:
+            if e.status == 404:
+                pass # 404 if we try to remove a label that isn't set
 
     for label in labels:
         pr.add_to_labels(label)
 
+    if failed:
+        exit(1)
 
 if __name__ == '__main__':
     main()

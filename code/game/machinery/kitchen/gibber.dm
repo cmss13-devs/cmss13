@@ -166,6 +166,7 @@
 	occupant.forceMove(loc)
 	if(launch)
 		// yeet them out of the gibber
+		visible_message(SPAN_DANGER("[occupant] suddenly is launched out of the [src]!"))
 		var/turf/Tx = locate(x - 3, y, z)
 		occupant.throw_atom(Tx, 3, SPEED_FAST, src, TRUE)
 	occupant = null

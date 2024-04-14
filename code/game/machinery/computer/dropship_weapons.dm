@@ -453,6 +453,45 @@
 
 			initiate_firemission(user, fm_tag, direction, text2num(offset_x_value), text2num(offset_y_value))
 			return TRUE
+		if("paradrop-lock")
+			to_chat(world, "test12314124")
+			var/obj/docking_port/mobile/marine_dropship/linked_shuttle = SSshuttle.getShuttle(shuttle_tag)
+			if(!linked_shuttle)
+				return FALSE
+			to_chat(world, "1")
+			if(linked_shuttle.mode != SHUTTLE_CALL)
+				return FALSE
+			to_chat(world, "2")
+			if(linked_shuttle.paradrop_signal)
+				clear_locked_turf_and_lock_aft()
+				return TRUE
+			to_chat(world, "3 [camera_target_id]")
+			var/datum/cas_signal/sig = get_cas_signal(camera_target_id)
+			if(!sig)
+				return FALSE
+			to_chat(world, "4 [camera_target_id]")
+			var/turf/location = get_turf(sig.signal_loc)
+			var/area/location_area = get_area(location)
+			if(CEILING_IS_PROTECTED(location_area.ceiling, CEILING_PROTECTION_TIER_1))
+				return FALSE
+			to_chat(world, "5 [camera_target_id]")
+			linked_shuttle.paradrop_signal = sig
+			linked_shuttle.door_control.control_doors("force-unlock", "aft", TRUE)
+			RegisterSignal(linked_shuttle.paradrop_signal, COMSIG_PARENT_QDELETING, PROC_REF(clear_locked_turf_and_lock_aft))
+			RegisterSignal(linked_shuttle, COMSIG_SHUTTLE_SETMODE, PROC_REF(clear_locked_turf_and_lock_aft))
+			to_chat(world, "test123141245555555555")
+			return TRUE
+
+/obj/structure/machinery/computer/dropship_weapons/proc/clear_locked_turf_and_lock_aft()
+	SIGNAL_HANDLER
+	var/obj/docking_port/mobile/marine_dropship/linked_shuttle = SSshuttle.getShuttle(shuttle_tag)
+	if(!linked_shuttle)
+		return
+	linked_shuttle.door_control.control_doors("force-lock", "aft", TRUE)
+	visible_message("[src] displays an alert as it loses the target signal.")
+	UnregisterSignal(linked_shuttle.paradrop_signal, COMSIG_PARENT_QDELETING)
+	UnregisterSignal(linked_shuttle, COMSIG_SHUTTLE_SETMODE)
+	linked_shuttle.paradrop_signal = null
 
 /obj/structure/machinery/computer/dropship_weapons/proc/get_weapon(eqp_tag)
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)

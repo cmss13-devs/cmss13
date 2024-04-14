@@ -11,7 +11,7 @@
 	if(isobserver(crosser) || crosser.anchored)
 		return
 
-	if(!isitem(crosser) && !isliving(crosser))
+	if(!isobj(crosser) && !isliving(crosser))
 		return
 
 	if(!istype(old_loc, /turf/open/space))
@@ -44,7 +44,16 @@
 	if(!length(ground_z_levels))
 		return ..()
 
-	if(dropship.paradrop_signal)
+	var/paradrop = FALSE
+
+	if(ishuman(crosser))
+		var/mob/living/carbon/human/crossing_human = crosser
+		if(istype(crossing_human.belt, /obj/item/rappel_harness))
+			paradrop = TRUE
+	else if(istype(crosser, /obj/structure/closet/crate))
+		paradrop = TRUE
+
+	if(dropship.paradrop_signal) //if dropship in paradrop mode, drop them near the signal. Whether they have a parachute or not
 		var/list/valid_turfs = list()
 		var/turf/location = get_turf(dropship.paradrop_signal.signal_loc)
 		for(var/turf/T as anything in RANGE_TURFS(7, location))
@@ -68,9 +77,8 @@
 			to_chat(crosser, SPAN_WARNING("You couldn't find a fitting landing spot at desinated zone and had to find another place to land."))
 		else
 			var/turf/deploy_turf = pick(valid_turfs)
-			INVOKE_ASYNC(src, PROC_REF(handle_drop), crosser, deploy_turf, dropship.name)
+			INVOKE_ASYNC(src, PROC_REF(handle_drop), crosser, deploy_turf, dropship.name, paradrop)
 			return
-
 
 	var/list/area/potential_areas = shuffle(SSmapping.areas_in_z["[ground_z_levels[1]]"])
 
@@ -92,9 +100,13 @@
 			continue // couldnt find one in 10 loops, check another area
 
 		// we found a good turf, lets drop em
-		INVOKE_ASYNC(src, PROC_REF(handle_drop), crosser, possible_turf, dropship.name)
+		INVOKE_ASYNC(src, PROC_REF(handle_drop), crosser, possible_turf, dropship.name, paradrop)
 		return
 
+	//we didn't find a turf to drop them... This shouldn't happen usually
+	if(paradrop) //don't delete them if they have a parachute
+		to_chat(crosser, "Your backpack hanged on a string to the dropship, get back inside until it's too late!")
+		return
 	return ..() // they couldn't be dropped, just delete them
 
 /turf/open/space/transit/dropship/proc/handle_paradrop(atom/movable/crosser, turf/target, dropship_name)
@@ -115,22 +127,22 @@
 	crosser.pixel_z = 360
 	crosser.forceMove(target)
 	animate(crosser, time = 40, pixel_z = 0, flags = ANIMATION_PARALLEL)
-	sleep(40)
-	REMOVE_TRAIT(crosser, TRAIT_IMMOBILIZED, TRAIT_SOURCE_DROPSHIP_INTERACTION)
-	REMOVE_TRAIT(crosser, TRAIT_UNDENSE, TRAIT_SOURCE_DROPSHIP_INTERACTION)
-	crosser.overlays -= chute
-	crosser.overlays -= cables
+	addtimer(CALLBACK(target, PROC_REF(ceiling_debris)), 2 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(clear_parachute), crosser, cables, chute), 4 SECONDS)
 
-/turf/open/space/transit/dropship/proc/handle_drop(atom/movable/crosser, turf/target, dropship_name)
+/turf/open/space/transit/dropship/proc/clear_parachute(atom/movable/crosser, image/cables, image/chute)
 	if(QDELETED(crosser))
 		return
-	if(ishuman(crosser))
-		var/mob/living/carbon/human/crossing_human = crosser
-		if(istype(crossing_human.belt, /obj/item/rappel_harness))
-			handle_paradrop(crosser, target, dropship_name)
-			return
-	if(isxeno(crosser))
+	REMOVE_TRAIT(crosser, TRAIT_IMMOBILIZED, TRAIT_SOURCE_DROPSHIP_INTERACTION)
+	REMOVE_TRAIT(crosser, TRAIT_UNDENSE, TRAIT_SOURCE_DROPSHIP_INTERACTION)
+	crosser.overlays -= cables
+	crosser.overlays -= chute
+
+/turf/open/space/transit/dropship/proc/handle_drop(atom/movable/crosser, turf/target, dropship_name, paradrop)
+	if(paradrop)
 		handle_paradrop(crosser, target, dropship_name)
+		return
+	if(QDELETED(crosser))
 		return
 	ADD_TRAIT(crosser, TRAIT_IMMOBILIZED, TRAIT_SOURCE_DROPSHIP_INTERACTION)
 
@@ -138,11 +150,16 @@
 	crosser.forceMove(target)
 	crosser.visible_message(SPAN_WARNING("[crosser] falls out of the sky."), SPAN_HIGHDANGER("As you fall out of the [dropship_name], you plummet towards the ground."))
 	animate(crosser, time = 6, pixel_z = 0, flags = ANIMATION_PARALLEL)
-
+	target.ceiling_debris()
 	REMOVE_TRAIT(crosser, TRAIT_IMMOBILIZED, TRAIT_SOURCE_DROPSHIP_INTERACTION)
 	if(isitem(crosser))
 		var/obj/item/item = crosser
 		item.explosion_throw(200) // give it a bit of a kick
+		return
+
+	if(isobj(crosser))
+		var/obj/obj = crosser
+		obj.ex_act(500)
 		return
 
 	if(!isliving(crosser))
@@ -157,6 +174,10 @@
 	fallen_mob.KnockDown(10) // 10 seconds
 	fallen_mob.Stun(3) // 3 seconds
 
+	// if(isxeno(fallen_mob))
+	// 	var/mob/living/carbon/xenomorph/xeno = fallen_mob
+	// 	xeno.gib(create_cause_data("falling from [dropship_name]", xeno))
+	// 	return
 
 	if(ishuman(fallen_mob))
 		var/mob/living/carbon/human/human = fallen_mob

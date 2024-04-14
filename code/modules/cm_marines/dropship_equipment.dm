@@ -1306,6 +1306,11 @@
 
 	var/harness = /obj/item/rappel_harness
 
+/obj/structure/dropship_equipment/rappel_system/ui_data(mob/user)
+	. = list()
+	.["signal"] = (linked_shuttle.paradrop_signal != null ? linked_shuttle.paradrop_signal : null)
+	.["locked"] = (linked_shuttle.paradrop_signal != null)
+
 /obj/structure/dropship_equipment/rappel_system/update_equipment()
 	if(ship_base)
 		icon_state = "rappel_hatch_closed"
@@ -1351,11 +1356,11 @@
 
 /obj/structure/dropship_equipment/rappel_system/proc/clear_locked_turf_and_lock_aft()
 	SIGNAL_HANDLER
-		var/found_dense = FALSE
 	linked_shuttle.door_control.control_doors("force-lock", "aft", TRUE)
 	visible_message("[src] displays an alert as it loses the target signal.")
 	UnregisterSignal(linked_shuttle.paradrop_signal, COMSIG_PARENT_QDELETING)
 	UnregisterSignal(linked_shuttle, COMSIG_SHUTTLE_SETMODE)
+	linked_shuttle.paradrop_signal = null
 
 
 /obj/structure/dropship_equipment/rappel_system/proc/can_use(mob/living/carbon/human/user)

@@ -148,6 +148,8 @@
 			continue
 
 		final_lifesteal++
+	if(isyautja(carbon))
+		bound_xeno.gain_health(20) // You heal a +20 health each time you slash a predator.
 
 // This part is then outside the for loop
 		if(final_lifesteal >= max_lifesteal)

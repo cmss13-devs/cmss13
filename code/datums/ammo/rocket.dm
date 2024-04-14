@@ -196,10 +196,10 @@
 	var/datum/reagent/napalm/blue/reagent = new()
 	new /obj/flamer_fire(turf, cause_data, reagent, 3)
 
-	var/datum/effect_system/smoke_spread/phosphorus/landing_Smoke = new /datum/effect_system/smoke_spread/phosphorus
-	landing_Smoke.set_up(3, 0, turf, null, 6, cause_data)
-	landing_Smoke.start()
-	landing_Smoke = null
+	var/datum/effect_system/smoke_spread/phosphorus/landingSmoke = new /datum/effect_system/smoke_spread/phosphorus
+	landingSmoke.set_up(3, 0, turf, null, 6, cause_data)
+	landingSmoke.start()
+	landingSmoke = null
 
 /datum/ammo/rocket/wp/on_hit_mob(mob/mob, obj/projectile/projectile)
 	drop_flame(get_turf(mob), projectile.weapon_cause_data)
@@ -272,23 +272,6 @@
 /datum/ammo/rocket/wp/quad/do_at_max_range(obj/projectile/projectile)
 	drop_flame(get_turf(projectile), projectile.weapon_cause_data)
 	explosion(projectile.loc,  -1, 2, 4, 5, , , ,projectile.weapon_cause_data)
-
-/datum/ammo/rocket/wp/quad/quadcucked
-	name = "thermobaric rocket"
-	flags_ammo_behavior = AMMO_ROCKET|AMMO_STRIKES_SURFACE
-
-	damage = 100
-	max_range = 32
-	shell_speed = AMMO_SPEED_TIER_3
-
-/datum/ammo/rocket/wp/quad/quadcucked/drop_flame(turf/turf, datum/cause_data/cause_data)
-	. = ..()
-	playsound(turf, 'sound/weapons/gun_flamethrower3.ogg', 75, 1, 7)
-	if(!istype(turf)) return
-	smoke.set_up(1, turf)
-	smoke.start()
-	var/datum/reagent/napalm/ut/reagent = new()
-	new /obj/flamer_fire(turf, cause_data, reagent, 3)
 
 /datum/ammo/rocket/custom
 	name = "custom rocket"

@@ -1,10 +1,10 @@
-/////Normal Photocopier/////
+/// Normal Photocopier, made by Seegson
 
 /obj/structure/machinery/photocopier
 	name = "photocopier"
 	icon = 'icons/obj/structures/machinery/library.dmi'
 	icon_state = "bigscanner"
-	desc = "A photocopier used for copying...you know, photos! Also useful for copying documents in paper. This specific model have been manufactured by Seegson in a cheaper frame than most modern photocopiers, while also holding more primitive copying technology, such as more toner waste and less printing capabilities. Nonetheless, its cheap construction means cheaper costs, and for people that only need to print a paper or two most of the time, it becomes cost-effective."
+	desc = "A photocopier used for copying... you know, photos! Also useful for copying documents in paper. This specific model have been manufactured by Seegson in a cheaper frame than most modern photocopiers, while also holding more primitive copying technology, such as more toner waste and less printing capabilities. Nonetheless, its cheap construction means cheaper costs, and for people that only need to print a paper or two most of the time, it becomes cost-effective."
 	anchored = TRUE
 	density = TRUE
 	use_power = USE_POWER_IDLE
@@ -245,22 +245,15 @@
 
 
 
-//////Premium(upgraded) photocopier/////
-
-
-
+/// Upgraded photocopier, straight upgrade from the Normal Photocopier, made by Weyland-Yutani
 
 /obj/structure/machinery/photocopier/wyphotocopier
 	name = "photocopier"
 	icon = 'icons/obj/structures/machinery/library.dmi'
 	icon_state = "bigscannerpro"
-	desc = "A photocopier used for copying...you know, photos! Also useful for copying documents in paper. This specific model have been manufactured by Weyland-Yutani in a more modern and robust frame than the average photocopiers you see being sold by smaller companies, while also carrying some of the most advanced technologies on the area of paper-printing, such as bigger toner economy and much higher printing capabilities. All that makes it the favorite among consumers that need to print high amounts of paperwork on the performance of their daily duties."
-	anchored = TRUE
-	density = TRUE
-	use_power = USE_POWER_IDLE
+	desc = "A photocopier used for copying... you know, photos! Also useful for copying documents in paper. This specific model have been manufactured by Weyland-Yutani in a more modern and robust frame than the average photocopiers you see being sold by smaller companies, while also carrying some of the most advanced technologies on the area of paper-printing, such as bigger toner economy and much higher printing capabilities. All that makes it the favorite among consumers that need to print high amounts of paperwork on the performance of their daily duties."
 	idle_power_usage = 50
 	active_power_usage = 300
-	power_channel = POWER_CHANNEL_EQUIP
 	copies = 1 //how many copies to print!
 	toner = 180 //how much toner is left! woooooo~
 	maxcopies = 30 //how many copies can be copied at once- idea shamelessly stolen from bs12's copier!

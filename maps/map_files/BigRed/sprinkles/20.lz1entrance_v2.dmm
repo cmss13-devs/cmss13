@@ -1,8 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
-	dir = 8;
-	icon_state = "landingstripe"
+	dir = 8
 	},
 /turf/open/floor{
 	dir = 8;
@@ -110,23 +109,20 @@
 	},
 /area/bigredv2/outside/space_port)
 "at" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidwarning"
+/turf/open/asphalt/cement{
+	icon_state = "cement2"
 	},
 /area/bigredv2/outside/space_port)
 "au" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidwarning"
+/turf/open/asphalt/cement{
+	icon_state = "cement4"
 	},
 /area/bigredv2/outside/space_port)
 "av" = (
 /obj/effect/landmark/crap_item,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "asteroidwarning"
+/turf/open/asphalt/cement{
+	icon_state = "cement9"
 	},
 /area/bigredv2/outside/space_port)
 "aw" = (
@@ -195,27 +191,21 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/asphalt/cement,
 /area/bigredv2/outside/space_port)
 "aF" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/asphalt/cement,
 /area/bigredv2/outside/space_port)
 "aG" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning"
+/turf/open/asphalt/cement{
+	icon_state = "cement1";
+	dir = 1
 	},
 /area/bigredv2/outside/space_port)
 "aI" = (
@@ -266,13 +256,13 @@
 /area/bigredv2/outside/space_port)
 "aN" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "asteroidwarning"
+/turf/open/asphalt/cement{
+	icon_state = "cement12"
 	},
 /area/bigredv2/outside/space_port)
 "aO" = (
-/turf/open/floor{
-	icon_state = "asteroidwarning"
+/turf/open/asphalt/cement{
+	icon_state = "cement12"
 	},
 /area/bigredv2/outside/space_port)
 "aP" = (
@@ -330,18 +320,14 @@
 /area/bigredv2/outside/space_port)
 "aW" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "asteroidwarning"
+/turf/open/asphalt/cement{
+	icon_state = "cement14"
 	},
 /area/bigredv2/outside/space_port)
 "aX" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/asphalt/cement,
 /area/bigredv2/outside/space_port)
 "aY" = (
 /obj/structure/surface/table,
@@ -473,24 +459,16 @@
 	},
 /area/bigredv2/outside/nw)
 "bv" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "asteroidwarning"
-	},
-/area/bigredv2/outside/nw)
-"bw" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached3"
 	},
 /area/bigredv2/outside/nw)
 "bx" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning"
+/obj/effect/decal/strata_decals/grime/grime2{
+	dir = 8
+	},
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached1"
 	},
 /area/bigredv2/outside/nw)
 "by" = (
@@ -499,10 +477,8 @@
 /area/bigredv2/outside/nw)
 "bz" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/obj/effect/decal/strata_decals/grime/grime4,
+/turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/nw)
 "bA" = (
 /turf/open/mars{
@@ -543,10 +519,7 @@
 	},
 /area/bigredv2/outside/nw)
 "bG" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/nw)
 "bH" = (
 /obj/structure/cargo_container/wy/left,
@@ -565,15 +538,7 @@
 "bJ" = (
 /obj/structure/cargo_container/wy/right,
 /turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
-/area/bigredv2/outside/nw)
-"bK" = (
-/obj/effect/landmark/crap_item,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 8;
+	dir = 4;
 	icon_state = "asteroidwarning"
 	},
 /area/bigredv2/outside/nw)
@@ -581,28 +546,19 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/nw)
 "bM" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/nw)
 "bN" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/nw)
 "bP" = (
 /obj/structure/cargo_container/kelland/left,
@@ -618,26 +574,21 @@
 /area/bigredv2/outside/nw)
 "bS" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor"
-	},
+/turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/nw)
 "bT" = (
 /obj/structure/fence,
 /turf/open/mars,
 /area/bigredv2/outside/nw)
 "bU" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning"
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached1"
 	},
 /area/bigredv2/outside/nw)
 "bV" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning"
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached1"
 	},
 /area/bigredv2/outside/nw)
 "bW" = (
@@ -657,9 +608,8 @@
 /area/template_noop)
 "bZ" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidwarning"
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached4"
 	},
 /area/bigredv2/outside/nw)
 "ca" = (
@@ -679,10 +629,215 @@
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/space_port)
+"ch" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/asphalt/cement_sunbleached,
+/area/bigredv2/outside/nw)
+"dO" = (
+/obj/effect/decal/strata_decals/grime/grime3,
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached3"
+	},
+/area/bigredv2/outside/nw)
+"eX" = (
+/turf/open/floor{
+	dir = 6;
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/nw)
+"fY" = (
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached12"
+	},
+/area/bigredv2/outside/nw)
+"fZ" = (
+/turf/open/floor{
+	dir = 5;
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/nw)
+"hf" = (
+/turf/open/asphalt/cement{
+	icon_state = "cement4"
+	},
+/area/bigredv2/outside/space_port)
+"iI" = (
+/turf/open/asphalt/cement,
+/area/bigredv2/outside/space_port)
+"jP" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached12"
+	},
+/area/bigredv2/outside/nw)
+"lu" = (
+/obj/item/trash/waffles{
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached4"
+	},
+/area/bigredv2/outside/nw)
+"ok" = (
+/obj/effect/decal/strata_decals/grime/grime3,
+/turf/open/asphalt/cement_sunbleached,
+/area/bigredv2/outside/nw)
+"qd" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached4"
+	},
+/area/bigredv2/outside/nw)
+"qi" = (
+/obj/effect/decal/strata_decals/grime/grime4,
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached3"
+	},
+/area/bigredv2/outside/nw)
+"rr" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/asphalt/cement,
+/area/bigredv2/outside/space_port)
+"rE" = (
+/obj/item/trash/cigbutt,
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached12"
+	},
+/area/bigredv2/outside/nw)
+"sh" = (
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached9"
+	},
+/area/bigredv2/outside/nw)
+"tS" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached3"
+	},
+/area/bigredv2/outside/nw)
+"vz" = (
+/obj/effect/decal/strata_decals/grime/grime4,
+/turf/open/asphalt/cement_sunbleached,
+/area/bigredv2/outside/nw)
+"wK" = (
+/turf/open/asphalt/cement{
+	icon_state = "cement1";
+	dir = 1
+	},
+/area/bigredv2/outside/space_port)
+"xn" = (
+/obj/effect/decal/strata_decals/grime/grime2{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached3"
+	},
+/area/bigredv2/outside/nw)
+"AK" = (
+/obj/item/trash/cigbutt{
+	pixel_x = 7;
+	pixel_y = 7
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/bigredv2/outside/nw)
+"BJ" = (
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached4"
+	},
+/area/bigredv2/outside/nw)
 "Dc" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/template_noop,
 /area/template_noop)
+"Gp" = (
+/obj/effect/decal/strata_decals/grime/grime2,
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached9"
+	},
+/area/bigredv2/outside/nw)
+"IP" = (
+/obj/effect/decal/cleanable/blood/gibs/body,
+/turf/open/asphalt/cement_sunbleached,
+/area/bigredv2/outside/nw)
+"LY" = (
+/turf/open/asphalt/cement{
+	icon_state = "cement15"
+	},
+/area/bigredv2/outside/space_port)
+"MW" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/asphalt/cement{
+	icon_state = "cement3"
+	},
+/area/bigredv2/outside/space_port)
+"Nw" = (
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached15"
+	},
+/area/bigredv2/outside/nw)
+"NG" = (
+/obj/effect/decal/strata_decals/grime/grime1{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached12"
+	},
+/area/bigredv2/outside/nw)
+"OZ" = (
+/obj/item/trash/hotdog{
+	pixel_x = -12;
+	pixel_y = -11
+	},
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached3"
+	},
+/area/bigredv2/outside/nw)
+"RL" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/asphalt/cement,
+/area/bigredv2/outside/space_port)
+"SM" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement{
+	icon_state = "cement3"
+	},
+/area/bigredv2/outside/space_port)
+"TR" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/asphalt/cement{
+	icon_state = "cement12"
+	},
+/area/bigredv2/outside/space_port)
+"TV" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -6;
+	pixel_y = -9
+	},
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached2"
+	},
+/area/bigredv2/outside/nw)
+"Xo" = (
+/obj/item/trash/popcorn{
+	pixel_y = 9
+	},
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached4"
+	},
+/area/bigredv2/outside/nw)
+"ZR" = (
+/obj/effect/decal/strata_decals/grime/grime1{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached3"
+	},
+/area/bigredv2/outside/nw)
 
 (1,1,1) = {"
 aa
@@ -718,20 +873,20 @@ bt
 bj
 bC
 bj
-bY
-bY
+sh
+bU
 Dc
 bY
-bY
-bY
+bU
+Nw
 bi
 "}
 (3,1,1) = {"
 ac
 ac
 at
-aD
-aN
+MW
+aW
 ac
 ac
 bj
@@ -741,8 +896,8 @@ bu
 bu
 bT
 bT
-bE
-bn
+BJ
+fY
 bi
 bi
 bi
@@ -750,7 +905,7 @@ bi
 (4,1,1) = {"
 ac
 ak
-at
+hf
 aE
 aN
 aV
@@ -763,7 +918,7 @@ bF
 bm
 bT
 bZ
-bX
+jP
 bi
 bi
 bi
@@ -771,8 +926,8 @@ bi
 (5,1,1) = {"
 ad
 ak
-at
-aD
+hf
+rr
 aO
 ak
 ac
@@ -784,7 +939,7 @@ bH
 bP
 bT
 bZ
-bn
+fY
 bi
 bi
 bi
@@ -793,7 +948,7 @@ bi
 ae
 al
 au
-aD
+rr
 aO
 aV
 ac
@@ -804,8 +959,8 @@ bE
 bI
 bQ
 bT
-bE
-bn
+BJ
+fY
 by
 bi
 bi
@@ -821,12 +976,12 @@ ac
 bn
 bu
 bu
-bE
+fZ
 bJ
-bn
+eX
 bT
-bE
-bn
+BJ
+fY
 bi
 bi
 bi
@@ -836,41 +991,41 @@ ac
 am
 au
 aE
-ak
+iI
+SM
 aW
-aW
+TV
+qi
+tS
+tS
+bv
+xn
+bv
+bG
 bG
 bv
-bv
-bF
-bK
-bv
-bv
-bG
-bG
-bv
-bv
+OZ
 bv
 "}
 (9,1,1) = {"
 ad
 ak
-at
+hf
 aF
-aM
+RL
 aX
-aM
-bz
-bw
-bz
-bz
+TR
+qd
+ch
+ch
+ch
 bL
 bG
+ok
 bG
 bG
 bG
-bG
-bG
+ok
 bS
 "}
 (10,1,1) = {"
@@ -878,15 +1033,15 @@ ad
 ak
 av
 aG
-ab
-ab
-ab
-bS
+wK
+wK
+LY
+Gp
 bx
-bx
+bU
 bG
 bM
-bG
+bS
 bU
 bU
 bU
@@ -905,9 +1060,9 @@ ac
 bq
 bu
 bu
-bE
+BJ
 bM
-bn
+NG
 bu
 bl
 bl
@@ -926,9 +1081,9 @@ ac
 bn
 bl
 bu
-bE
+bZ
 bM
-bn
+fY
 bu
 bl
 bl
@@ -947,13 +1102,13 @@ ac
 bn
 bs
 bl
-bE
+BJ
 bM
-bG
+bS
 bv
 bv
-bv
-bv
+ZR
+dO
 bv
 bv
 "}
@@ -968,11 +1123,11 @@ ac
 bo
 bi
 bA
-bE
+BJ
 bM
 bG
-bG
-bG
+vz
+IP
 bG
 bG
 bG
@@ -989,7 +1144,7 @@ ai
 bX
 bi
 bA
-bE
+lu
 bN
 bz
 bV
@@ -1010,9 +1165,9 @@ ai
 bp
 bi
 bB
-bE
+Xo
 bG
-bn
+fY
 bu
 bu
 bs
@@ -1031,9 +1186,9 @@ ai
 bn
 bi
 bB
-bE
-bG
-bn
+BJ
+AK
+rE
 bu
 ca
 bi
@@ -1052,9 +1207,9 @@ ac
 br
 bi
 bB
-bE
+BJ
 bG
-bn
+fY
 bW
 bi
 bi
@@ -1073,9 +1228,9 @@ ac
 bX
 bi
 bB
-bE
+BJ
 bG
-bn
+NG
 bW
 bi
 bi

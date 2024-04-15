@@ -68,6 +68,12 @@
 	icon_state = "mars_dirt_6"
 	},
 /area/bigredv2/outside/w)
+"s" = (
+/turf/open/floor{
+	dir = 10;
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/w)
 "U" = (
 /turf/open/mars{
 	icon_state = "mars_dirt_13"
@@ -149,7 +155,7 @@ f
 f
 h
 h
-h
+s
 "}
 (8,1,1) = {"
 a

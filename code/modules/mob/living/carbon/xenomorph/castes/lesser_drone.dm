@@ -128,9 +128,6 @@
 	adjust_effect(6, STUN)
 	apply_effect(6, WEAKEN)
 
-/mob/living/carbon/xenomorph/lesser_drone/get_status_tab_items()
-	. = ..()
-
 /datum/behavior_delegate/lesser_drone_base
 	name = "Base Lesser Drone Behavior Delegate"
 

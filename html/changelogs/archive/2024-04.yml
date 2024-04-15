@@ -219,3 +219,6 @@
       on the server, yet
   realforest2001:
   - bugfix: Fixes praetorian acid ball harming the prae and other xenos.
+2024-04-15:
+  LTNTS:
+  - maptweak: moves APC in Chance's Claim LZ1 to where it can actually be fixed

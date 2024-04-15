@@ -158,7 +158,6 @@
 	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_DROPSHIP_INTERACTION)
 	pixel_z = 360
 	forceMove(target)
-	visible_message(SPAN_WARNING("[src] falls out of the sky."), SPAN_HIGHDANGER("As you fall out of the [dropship_name], you plummet towards the ground."))
 	animate(src, time = 6, pixel_z = 0, flags = ANIMATION_PARALLEL)
 	INVOKE_ASYNC(target, TYPE_PROC_REF(/turf, ceiling_debris))
 	REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_DROPSHIP_INTERACTION)
@@ -171,6 +170,9 @@
 /obj/item/handle_airdrop(turf/target, dropship_name)
 	..()
 	if(QDELETED(src))
+		return
+	if(!indestructible && w_class == SIZE_SMALL) //small items will be lost, good riddance
+		deconstruct(FALSE)
 		return
 	src.explosion_throw(200) // give it a bit of a kick
 
@@ -185,6 +187,7 @@
 	Stun(3) // 3 seconds
 	// take a little bit more damage otherwise
 	take_overall_damage(400, used_weapon = "falling", limb_damage_chance = 100)
+	visible_message(SPAN_WARNING("[src] falls out of the sky."), SPAN_HIGHDANGER("As you fall out of the [dropship_name], you plummet towards the ground."))
 
 /mob/living/carbon/human/handle_airdrop(turf/target, dropship_name)
 	..()

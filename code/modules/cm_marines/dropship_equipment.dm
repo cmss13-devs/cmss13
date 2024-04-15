@@ -1303,6 +1303,7 @@
 	icon_state = "rappel_module_packaged"
 	point_cost = 50
 	combat_equipment = FALSE
+	var/system_cooldown
 
 	var/harness = /obj/item/rappel_harness
 

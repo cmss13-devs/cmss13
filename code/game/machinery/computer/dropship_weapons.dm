@@ -469,19 +469,31 @@
 			var/area/location_area = get_area(location)
 			if(CEILING_IS_PROTECTED(location_area.ceiling, CEILING_PROTECTION_TIER_1))
 				return FALSE
-			linked_shuttle.paradrop_signal = sig
-			linked_shuttle.door_control.control_doors("force-unlock", "aft", TRUE)
-			RegisterSignal(linked_shuttle.paradrop_signal, COMSIG_PARENT_QDELETING, PROC_REF(clear_locked_turf_and_lock_aft))
-			RegisterSignal(linked_shuttle, COMSIG_SHUTTLE_SETMODE, PROC_REF(clear_locked_turf_and_lock_aft))
 			var/equipment_tag = params["equipment_id"]
 			for(var/obj/structure/dropship_equipment/equipment as anything in shuttle.equipments)
 				var/mount_point = equipment.ship_base.attach_id
 				if(mount_point != equipment_tag)
 					continue
 				if(istype(equipment, /obj/structure/dropship_equipment/paradrop_system))
-					equipment.visible_message(SPAN_NOTICE("[equipment] hums as it locks to a signal."))
+					var/obj/structure/dropship_equipment/paradrop_system/paradrop_system = equipment
+					if(paradrop_system.system_cooldown > world.time)
+						to_chat(user, SPAN_WARNING("You toggled the system too recently."))
+						return
+					paradrop_system.system_cooldown = world.time + 5 SECONDS
+					paradrop_system.visible_message(SPAN_NOTICE("[equipment] hums as it locks to a signal."))
+					//paradrop_system.langchat_speech("Don't forget your paradrop harness little guy!", get_mobs_in_view(7, paradrop_system), null, "#c51f1f", TRUE, LANGCHAT_DEFAULT_POP) don't review I'll remove that (9 years ago)
 					break
+			linked_shuttle.paradrop_signal = sig
+			addtimer(CALLBACK(src, PROC_REF(open_aft_for_paradrop)), 2 SECONDS)
+			RegisterSignal(linked_shuttle.paradrop_signal, COMSIG_PARENT_QDELETING, PROC_REF(clear_locked_turf_and_lock_aft))
+			RegisterSignal(linked_shuttle, COMSIG_SHUTTLE_SETMODE, PROC_REF(clear_locked_turf_and_lock_aft))
 			return TRUE
+
+/obj/structure/machinery/computer/dropship_weapons/proc/open_aft_for_paradrop()
+	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttle_tag)
+	if(!shuttle || !shuttle.paradrop_signal || shuttle.mode != SHUTTLE_CALL)
+		return
+	shuttle.door_control.control_doors("force-unlock", "aft", TRUE)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/clear_locked_turf_and_lock_aft()
 	SIGNAL_HANDLER

@@ -14,6 +14,7 @@
         "/datum/equipment_preset/survivor/engineer/trijent/hydro",
         "/datum/equipment_preset/survivor/trucker/trijent",
         "/datum/equipment_preset/survivor/security/trijent",
+        "/datum/equipment_preset/survivor/corporate/trijent",
         "/datum/equipment_preset/survivor/clf",
         "/datum/equipment_preset/survivor/civilian"
     ],

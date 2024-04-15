@@ -101,7 +101,7 @@
 	w_class = SIZE_HUGE
 	icon_state = "offhand"
 	name = "offhand"
-	flags_item = DELONDROP|TWOHANDED|WIELDED
+	flags_item = DELONDROP|TWOHANDED|WIELDED|CANTSTRIP
 
 /obj/item/weapon/twohanded/offhand/unwield(mob/user)
 	if(flags_item & WIELDED)

@@ -1,0 +1,4 @@
+author: "ihatethisengine2"
+delete-after: True
+changes:
+  - rscadd: "ported stripping menu from TG"

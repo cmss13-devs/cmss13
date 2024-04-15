@@ -1,0 +1,4 @@
+author: "LTNTS"
+delete-after: True
+changes:
+  - maptweak: "moves APC in Chance's Claim LZ1 to where it can actually be fixed"

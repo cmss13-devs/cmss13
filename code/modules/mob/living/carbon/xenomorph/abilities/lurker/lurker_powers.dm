@@ -86,8 +86,8 @@
 	var/recharge_time = behavior.invis_recharge_time
 	if(behavior.invis_start_time > 0) // Sanity
 		refund_multiplier = clamp(refund_multiplier, 0, 1)
-		var/elapsed_time = world.time - behavior.invis_start_time
-		recharge_time -= (recharge_time - elapsed_time) * refund_multiplier
+		var/remaining = 1 - (world.time - behavior.invis_start_time) / behavior.invis_duration
+		recharge_time = behavior.invis_recharge_time - remaining * refund_multiplier * behavior.invis_recharge_time
 	apply_cooldown_override(recharge_time)
 
 	behavior.on_invisibility_off()

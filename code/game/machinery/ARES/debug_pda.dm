@@ -313,6 +313,27 @@
 			access_list += "[logged_in] at [worldtime2text()]."
 			current_menu = "main"
 
+		if("sudo")
+			var/new_user = tgui_input_text(user, "Enter Sudo Username", "Sudo User", encode = FALSE)
+			if(new_user)
+				if(new_user == link.interface.sudo_holder)
+					link.interface.last_login = link.interface.sudo_holder
+					link.interface.sudo_holder = null
+					return FALSE
+				if(new_user == link.interface.last_login)
+					to_chat(user, SPAN_WARNING("Already remote logged in as this user."))
+					playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+					return FALSE
+				link.interface.sudo_holder = link.interface.last_login
+				link.interface.last_login = new_user
+				datacore.interface_access_list += "[link.interface.last_login] at [worldtime2text()], Sudo Access."
+				return TRUE
+		if("sudo_logout")
+			datacore.interface_access_list += "[link.interface.last_login] at [worldtime2text()], Sudo Logout."
+			link.interface.last_login = link.interface.sudo_holder
+			link.interface.sudo_holder = null
+			return
+
 		// -- Page Changers -- //
 		if("logout")
 			current_menu = "login"

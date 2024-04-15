@@ -354,11 +354,8 @@
 
 /obj/item/clothing/mask/facehugger/proc/try_jump()
 	jump_timer = addtimer(CALLBACK(src, PROC_REF(try_jump)), time_between_jumps, TIMER_OVERRIDE|TIMER_STOPPABLE|TIMER_UNIQUE)
-	if(stat != CONSCIOUS || isnull(loc)) //Make sure we're conscious and not idle or dead.
-		jumps_left-- // Huggers should still lose hp, even when idle
 
-		if(!jumps_left)
-			end_lifecycle()
+	if(isnull(loc))
 		return
 
 	if(isxeno(loc))
@@ -366,7 +363,9 @@
 		if(X.caste.hugger_nurturing) // caste can prevent hugger death
 			return
 
-	leap_at_nearest_target()
+	if(stat == CONSCIOUS) //Make sure we're conscious and not idle or dead.
+		leap_at_nearest_target()
+	
 	jumps_left--
 	if(!jumps_left)
 		end_lifecycle()

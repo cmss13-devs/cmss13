@@ -124,7 +124,7 @@
 /mob/living/carbon/human/can_paradrop()
 	if(istype(belt, /obj/item/rappel_harness))
 		return TRUE
-	..()
+	return ..()
 
 /obj/structure/closet/crate/can_paradrop() //for now all crates can be paradropped
 	return TRUE
@@ -183,8 +183,8 @@
 	playsound(target, "bone_break", rand(20, 70), TRUE)
 	playsound(target, "bone_break", rand(20, 70), TRUE)
 
-	KnockDown(10) // 10 seconds
-	Stun(3) // 3 seconds
+	KnockDown(10)
+	Stun(3)
 	// take a little bit more damage otherwise
 	take_overall_damage(400, used_weapon = "falling", limb_damage_chance = 100)
 	visible_message(SPAN_WARNING("[src] falls out of the sky."), SPAN_HIGHDANGER("As you fall out of the [dropship_name], you plummet towards the ground."))
@@ -199,7 +199,6 @@
 	if(stat < DEAD)
 		death(last_damage_data)
 	status_flags |= PERMANENTLY_DEAD
-	return
 
 
 /turf/open/space/transit/dropship/alamo

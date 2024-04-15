@@ -1,0 +1,7 @@
+author: "Huffie56, Zenith, esselnek/sleepynecrons, samy/nauticall, drulikar."
+delete-after: True
+changes:
+  - rscadd: "Added fuel pump as machinery on the almayer sprite will change when power is on or off."
+  - rscadd: "Fuel pumps are animated when activated and have different state depending on how full the lifeboats are."
+  - imageadd: "added the fuel pump icon. updated by esselnek /sleepynecrons and Zenith, they where originally made by nauticall."
+  - maptweak: "added the fuel pump to the proper locations."

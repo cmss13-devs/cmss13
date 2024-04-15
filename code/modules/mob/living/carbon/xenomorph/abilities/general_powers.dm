@@ -926,7 +926,15 @@
 		return FALSE
 
 	var/distance = get_dist(stabbing_xeno, targetted_atom)
-	if(distance > 2)
+	var/size = stabbing_xeno.mob_size
+	var/range = 0
+
+	if (size < MOB_SIZE_BIG)
+		range = small_xeno_range
+	else
+		range = large_xeno_range
+
+	if(distance > range)
 		return FALSE
 
 	var/list/turf/path = get_line(stabbing_xeno, targetted_atom, include_start_atom = FALSE)

@@ -473,6 +473,9 @@
 	/// Used for defender's tail 'stab'.
 	var/blunt_stab = FALSE
 
+	var/small_xeno_range = 1
+	var/large_xeno_range = 2
+
 /datum/action/xeno_action/onclick/evolve
 	name = "Evolve"
 	action_icon_state = "evolve"

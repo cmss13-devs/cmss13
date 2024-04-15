@@ -851,7 +851,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		alpha = initial(alpha)
 	else
 		alpha = 0
-	to_chat(usr, SPAN_NOTICE("You are now [(self_visibility?"visible":"invisible")] to other mobs."))
+	to_chat(usr, SPAN_NOTICE("You are now [(self_visibility?"visible":"invisible")]."))
 
 /mob/dead/observer/verb/view_manifest()
 	set name = "View Crew Manifest"

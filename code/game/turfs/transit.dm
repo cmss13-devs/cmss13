@@ -24,6 +24,8 @@
 /turf/open/space/transit/proc/handle_crosser(atom/movable/crosser)
 	if(QDELETED(crosser))
 		return
+	if(crosser.can_paradrop()) //let's not delete people who arent meant to be deleted... This shouldn't happen normally, but if it does, congratulations, you gamed the system
+		return
 	qdel(crosser)
 
 /turf/open/space/transit/dropship
@@ -44,14 +46,7 @@
 	if(!length(ground_z_levels))
 		return ..()
 
-	var/paradrop = FALSE
-
-	if(ishuman(crosser))
-		var/mob/living/carbon/human/crossing_human = crosser
-		if(istype(crossing_human.belt, /obj/item/rappel_harness))
-			paradrop = TRUE
-	else if(istype(crosser, /obj/structure/closet/crate))
-		paradrop = TRUE
+	var/failed_drop = FALSE
 
 	if(dropship.paradrop_signal) //if dropship in paradrop mode, drop them near the signal. Whether they have a parachute or not
 		var/list/valid_turfs = list()
@@ -73,13 +68,17 @@
 				continue
 			valid_turfs += T
 
-		if(!length(valid_turfs))
-			to_chat(crosser, SPAN_WARNING("You couldn't find a fitting landing spot at desinated zone and had to find another place to land."))
-		else
+		if(length(valid_turfs)) //if we found a fitting place near the landing zone...
 			var/turf/deploy_turf = pick(valid_turfs)
-			INVOKE_ASYNC(src, PROC_REF(handle_drop), crosser, deploy_turf, dropship.name, paradrop)
+			if(crosser.can_paradrop())
+				INVOKE_ASYNC(crosser, TYPE_PROC_REF(/atom/movable, handle_paradrop), deploy_turf, dropship.name)
+				return
+			INVOKE_ASYNC(crosser, TYPE_PROC_REF(/atom/movable, handle_airdrop), deploy_turf, dropship.name)
 			return
 
+		failed_drop = TRUE //If we don't (which hopefully won't happen) we will try to just drop them somewhere else, emergency gameplay?
+
+	//find a random spot to drop them
 	var/list/area/potential_areas = shuffle(SSmapping.areas_in_z["[ground_z_levels[1]]"])
 
 	for(var/area/maybe_this_area in potential_areas)
@@ -99,99 +98,106 @@
 		if(!istype(possible_turf) || is_blocked_turf(possible_turf) || istype(possible_turf, /turf/open/space))
 			continue // couldnt find one in 10 loops, check another area
 
+		if(failed_drop)
+			to_chat(crosser, SPAN_BOLDWARNING("You got carried away from the dropping zone by the wind!"))
+
 		// we found a good turf, lets drop em
-		INVOKE_ASYNC(src, PROC_REF(handle_drop), crosser, possible_turf, dropship.name, paradrop)
+		if(crosser.can_paradrop())
+			INVOKE_ASYNC(crosser, TYPE_PROC_REF(/atom/movable, handle_paradrop), possible_turf, dropship.name)
+			return
+		INVOKE_ASYNC(crosser, TYPE_PROC_REF(/atom/movable, handle_airdrop), possible_turf, dropship.name)
 		return
 
 	//we didn't find a turf to drop them... This shouldn't happen usually
-	if(paradrop) //don't delete them if they have a parachute
-		to_chat(crosser, "Your backpack hanged on a string to the dropship, get back inside until it's too late!")
+	if(crosser.can_paradrop()) //don't delete them if they were supposed to paradrop
+		to_chat(crosser, SPAN_BOLDWARNING("Your harness got stuck and you got thrown back in the dropship."))
+		var/turf/projected = get_ranged_target_turf(crosser.loc, turn(dir, 180), 15)
+		INVOKE_ASYNC(crosser, TYPE_PROC_REF(/atom/movable, throw_atom), projected, 50, SPEED_FAST, null, TRUE)
 		return
 	return ..() // they couldn't be dropped, just delete them
 
-/turf/open/space/transit/dropship/proc/handle_paradrop(atom/movable/crosser, turf/target, dropship_name)
-	if(QDELETED(crosser))
-		return
 
-	ADD_TRAIT(crosser, TRAIT_IMMOBILIZED, TRAIT_SOURCE_DROPSHIP_INTERACTION)
-	ADD_TRAIT(crosser, TRAIT_UNDENSE, TRAIT_SOURCE_DROPSHIP_INTERACTION)
-	to_chat(world, "test")
-	var/image/cables = image('icons/obj/structures/droppod_32x64.dmi', crosser, "chute_cables_static")
-	crosser.overlays += cables
-	var/image/chute = image('icons/obj/structures/droppod_64x64.dmi', crosser, "chute_static")
+
+/atom/movable/proc/can_paradrop()
+	return FALSE
+
+/mob/living/carbon/human/can_paradrop()
+	if(istype(belt, /obj/item/rappel_harness))
+		return TRUE
+	..()
+
+/obj/structure/closet/crate/can_paradrop() //for now all crates can be paradropped
+	return TRUE
+
+/atom/movable/proc/handle_paradrop(turf/target, dropship_name)
+	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_DROPSHIP_INTERACTION)
+	ADD_TRAIT(src, TRAIT_UNDENSE, TRAIT_SOURCE_DROPSHIP_INTERACTION)
+	var/image/cables = image('icons/obj/structures/droppod_32x64.dmi', src, "chute_cables_static")
+	src.overlays += cables
+	var/image/chute = image('icons/obj/structures/droppod_64x64.dmi', src, "chute_static")
 
 	chute.pixel_x -= 16
 	chute.pixel_y += 16
 
-	crosser.overlays += chute
-	crosser.pixel_z = 360
-	crosser.forceMove(target)
-	animate(crosser, time = 40, pixel_z = 0, flags = ANIMATION_PARALLEL)
-	addtimer(CALLBACK(target, PROC_REF(ceiling_debris)), 2 SECONDS)
-	addtimer(CALLBACK(src, PROC_REF(clear_parachute), crosser, cables, chute), 4 SECONDS)
+	src.overlays += chute
+	src.pixel_z = 360
+	src.forceMove(target)
+	animate(src, time = 3.5 SECONDS, pixel_z = 0, flags = ANIMATION_PARALLEL)
+	addtimer(CALLBACK(target, TYPE_PROC_REF(/turf, ceiling_debris)), 2 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(clear_parachute), cables, chute), 3.5 SECONDS)
 
-/turf/open/space/transit/dropship/proc/clear_parachute(atom/movable/crosser, image/cables, image/chute)
-	if(QDELETED(crosser))
+/atom/movable/proc/clear_parachute(image/cables, image/chute)
+	if(QDELETED(src))
 		return
-	REMOVE_TRAIT(crosser, TRAIT_IMMOBILIZED, TRAIT_SOURCE_DROPSHIP_INTERACTION)
-	REMOVE_TRAIT(crosser, TRAIT_UNDENSE, TRAIT_SOURCE_DROPSHIP_INTERACTION)
-	crosser.overlays -= cables
-	crosser.overlays -= chute
+	REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_DROPSHIP_INTERACTION)
+	REMOVE_TRAIT(src, TRAIT_UNDENSE, TRAIT_SOURCE_DROPSHIP_INTERACTION)
+	overlays -= cables
+	overlays -= chute
 
-/turf/open/space/transit/dropship/proc/handle_drop(atom/movable/crosser, turf/target, dropship_name, paradrop)
-	if(paradrop)
-		handle_paradrop(crosser, target, dropship_name)
+/atom/movable/proc/handle_airdrop(turf/target, dropship_name)
+	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_DROPSHIP_INTERACTION)
+	pixel_z = 360
+	forceMove(target)
+	visible_message(SPAN_WARNING("[src] falls out of the sky."), SPAN_HIGHDANGER("As you fall out of the [dropship_name], you plummet towards the ground."))
+	animate(src, time = 6, pixel_z = 0, flags = ANIMATION_PARALLEL)
+	INVOKE_ASYNC(target, TYPE_PROC_REF(/turf, ceiling_debris))
+	REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_DROPSHIP_INTERACTION)
+
+/obj/handle_airdrop(turf/target, dropship_name)
+	..()
+	if(!indestructible && prob(30)) // throwing objects from the air is not always a good idea
+		deconstruct(FALSE)
+
+/obj/item/handle_airdrop(turf/target, dropship_name)
+	..()
+	if(QDELETED(src))
 		return
-	if(QDELETED(crosser))
-		return
-	ADD_TRAIT(crosser, TRAIT_IMMOBILIZED, TRAIT_SOURCE_DROPSHIP_INTERACTION)
+	src.explosion_throw(200) // give it a bit of a kick
 
-	crosser.pixel_z = 360
-	crosser.forceMove(target)
-	crosser.visible_message(SPAN_WARNING("[crosser] falls out of the sky."), SPAN_HIGHDANGER("As you fall out of the [dropship_name], you plummet towards the ground."))
-	animate(crosser, time = 6, pixel_z = 0, flags = ANIMATION_PARALLEL)
-	target.ceiling_debris()
-	REMOVE_TRAIT(crosser, TRAIT_IMMOBILIZED, TRAIT_SOURCE_DROPSHIP_INTERACTION)
-	if(isitem(crosser))
-		var/obj/item/item = crosser
-		item.explosion_throw(200) // give it a bit of a kick
-		return
-
-	if(isobj(crosser))
-		var/obj/obj = crosser
-		obj.ex_act(500)
-		return
-
-	if(!isliving(crosser))
-		return // don't know how you got here, but you shouldnt be here.
-	var/mob/living/fallen_mob = crosser
-
+/mob/living/handle_airdrop(turf/target, dropship_name)
+	..()
 	playsound(target, "punch", rand(20, 70), TRUE)
 	playsound(target, "punch", rand(20, 70), TRUE)
 	playsound(target, "bone_break", rand(20, 70), TRUE)
 	playsound(target, "bone_break", rand(20, 70), TRUE)
 
-	fallen_mob.KnockDown(10) // 10 seconds
-	fallen_mob.Stun(3) // 3 seconds
-
-	// if(isxeno(fallen_mob))
-	// 	var/mob/living/carbon/xenomorph/xeno = fallen_mob
-	// 	xeno.gib(create_cause_data("falling from [dropship_name]", xeno))
-	// 	return
-
-	if(ishuman(fallen_mob))
-		var/mob/living/carbon/human/human = fallen_mob
-		human.last_damage_data = create_cause_data("falling from [dropship_name]", human)
-		// I'd say falling from space is pretty much like getting hit by an explosion
-		human.take_overall_armored_damage(300, ARMOR_BOMB, limb_damage_chance = 100)
-		// but just in case, you will still take a ton of damage.
-		human.take_overall_damage(200, used_weapon = "falling", limb_damage_chance = 100)
-		if(human.stat != DEAD)
-			human.death(human.last_damage_data)
-		fallen_mob.status_flags |= PERMANENTLY_DEAD
-		return
+	KnockDown(10) // 10 seconds
+	Stun(3) // 3 seconds
 	// take a little bit more damage otherwise
-	fallen_mob.take_overall_damage(400, used_weapon = "falling", limb_damage_chance = 100)
+	take_overall_damage(400, used_weapon = "falling", limb_damage_chance = 100)
+
+/mob/living/carbon/human/handle_airdrop(turf/target, dropship_name)
+	..()
+	last_damage_data = create_cause_data("falling from [dropship_name]", src)
+	// I'd say falling from space is pretty much like getting hit by an explosion
+	take_overall_armored_damage(300, ARMOR_BOMB, limb_damage_chance = 100)
+	// but just in case, you will still take a ton of damage.
+	take_overall_damage(200, used_weapon = "falling", limb_damage_chance = 100)
+	if(stat != DEAD)
+		death(last_damage_data)
+	status_flags |= PERMANENTLY_DEAD
+	return
+
 
 /turf/open/space/transit/dropship/alamo
 	shuttle_tag = DROPSHIP_ALAMO

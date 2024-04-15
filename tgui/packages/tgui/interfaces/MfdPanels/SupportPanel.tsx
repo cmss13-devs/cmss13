@@ -28,7 +28,7 @@ export const SupportMfdPanel = (props: MfdProps) => {
   if (result?.shorthand === 'Sentry') {
     return <SentryMfdPanel panelStateId={props.panelStateId} />;
   }
-  if (result?.shorthand === 'Rappel') {
+  if (result?.shorthand === 'PDS') {
     return <ParadropMfdPanel panelStateId={props.panelStateId} />;
   }
   if (result?.shorthand === 'MG') {

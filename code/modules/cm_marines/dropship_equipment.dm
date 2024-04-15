@@ -1296,9 +1296,9 @@
 	fulton_cooldown = world.time + 50
 
 // Rappel deployment system
-/obj/structure/dropship_equipment/rappel_system
-	name = "\improper HPU-1 Rappel Deployment System"
-	shorthand = "Rappel"
+/obj/structure/dropship_equipment/paradrop_system
+	name = "\improper HPU-1 Paradrop Deployment System"
+	shorthand = "PDS"
 	equip_categories = list(DROPSHIP_CREW_WEAPON)
 	icon_state = "rappel_module_packaged"
 	point_cost = 50
@@ -1306,73 +1306,20 @@
 
 	var/harness = /obj/item/rappel_harness
 
-/obj/structure/dropship_equipment/rappel_system/ui_data(mob/user)
+/obj/structure/dropship_equipment/paradrop_system/ui_data(mob/user)
 	. = list()
 	.["signal"] = (linked_shuttle.paradrop_signal != null ? linked_shuttle.paradrop_signal : null)
 	.["locked"] = (linked_shuttle.paradrop_signal != null)
 
-/obj/structure/dropship_equipment/rappel_system/update_equipment()
+/obj/structure/dropship_equipment/paradrop_system/update_equipment()
 	if(ship_base)
 		icon_state = "rappel_hatch_closed"
 		density = FALSE
 	else
 		icon_state = "rappel_module_packaged"
 
-/obj/effect/warning/rappel
-	color = "#17d17a"
-
-/obj/structure/dropship_equipment/rappel_system/attack_hand(mob/living/carbon/human/user)
-	var/datum/cas_iff_group/cas_group = GLOB.cas_groups[FACTION_MARINE]
-	var/list/targets = cas_group.cas_signals
-
-	if(!LAZYLEN(targets))
-		to_chat(user, SPAN_NOTICE("No CAS signals found."))
-		return
-
-	if(!can_use(user))
-		return
-
-	var/user_input = tgui_input_list(user, "Choose a target to jump to.", name, targets)
-	if(!user_input)
-		return
-
-	if(!can_use(user))
-		return
-
-	var/datum/cas_signal/LT = user_input
-	if(!istype(LT) || !LT.valid_signal())
-		return
-
-	var/turf/location = get_turf(LT.signal_loc)
-	var/area/location_area = get_area(location)
-	if(CEILING_IS_PROTECTED(location_area.ceiling, CEILING_PROTECTION_TIER_1))
-		to_chat(user, SPAN_WARNING("You cannot find the target. It is probably underground."))
-		return
-
-	linked_shuttle.paradrop_signal = LT
-	linked_shuttle.door_control.control_doors("force-unlock", "aft", TRUE)
-	RegisterSignal(linked_shuttle.paradrop_signal, COMSIG_PARENT_QDELETING, PROC_REF(clear_locked_turf_and_lock_aft))
-	RegisterSignal(linked_shuttle, COMSIG_SHUTTLE_SETMODE, PROC_REF(clear_locked_turf_and_lock_aft))
-
-/obj/structure/dropship_equipment/rappel_system/proc/clear_locked_turf_and_lock_aft()
-	SIGNAL_HANDLER
-	linked_shuttle.door_control.control_doors("force-lock", "aft", TRUE)
-	visible_message("[src] displays an alert as it loses the target signal.")
-	UnregisterSignal(linked_shuttle.paradrop_signal, COMSIG_PARENT_QDELETING)
-	UnregisterSignal(linked_shuttle, COMSIG_SHUTTLE_SETMODE)
-	linked_shuttle.paradrop_signal = null
-
-
-/obj/structure/dropship_equipment/rappel_system/proc/can_use(mob/living/carbon/human/user)
-	if(linked_shuttle.mode != SHUTTLE_CALL)
-		to_chat(user, SPAN_WARNING("\The [src] can only be used while in flight."))
-		return FALSE
-
-	if(user.is_mob_incapacitated())
-		to_chat(user, SPAN_WARNING("You are in no state to do that!"))
-		return FALSE
-
-	return TRUE
+/obj/structure/dropship_equipment/paradrop_system/attack_hand(mob/living/carbon/human/user)
+	return
 
 // used in the simulation room for cas runs, removed the sound and ammo depletion methods.
 // copying code is definitely bad, but adding an unnecessary sim or not sim boolean check in the open_fire_firemission just doesn't seem right.

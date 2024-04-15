@@ -15,19 +15,22 @@ const ParadropPanel = (props: DropshipEquipment) => {
       <Stack.Item>
         <Stack vertical width="300px" align="center">
           <Stack.Item>
-            <h3>Paradrop System</h3>
+            <h3>{props.name}</h3>
           </Stack.Item>
-          {paradropData.signal && (
-            <Stack.Item>
-              <h3>Locked to: {paradropData.signal}</h3>
-              <h3>Paradrop available.</h3>
-            </Stack.Item>
-          )}
-          {!paradropData.signal && (
-            <Stack.Item>
-              <h3>No signal locked, paradrop system unavailable.</h3>
-            </Stack.Item>
-          )}
+          <Stack.Item>
+            <h3>
+              {paradropData.signal
+                ? 'Locked to ' + paradropData.signal + '.'
+                : 'No locked target found.'}
+            </h3>
+          </Stack.Item>
+          <Stack.Item>
+            <h3>
+              {paradropData.locked
+                ? 'Paradropping available.'
+                : 'Paradropping not available.'}
+            </h3>
+          </Stack.Item>
         </Stack>
       </Stack.Item>
       <Stack.Item width="100px">
@@ -55,7 +58,8 @@ export const ParadropMfdPanel = (props: MfdProps) => {
       leftButtons={[
         {
           children: deployLabel,
-          onClick: () => act('paradrop-lock'),
+          onClick: () =>
+            act('paradrop-lock', { equipment_id: paradrop?.mount_point }),
         },
       ]}
       bottomButtons={[

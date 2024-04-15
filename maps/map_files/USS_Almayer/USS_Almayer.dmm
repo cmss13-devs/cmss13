@@ -30249,7 +30249,7 @@
 	},
 /area/almayer/engineering/upper_engineering/starboard)
 "gpi" = (
-/obj/structure/dropship_equipment/rappel_system,
+/obj/structure/dropship_equipment/paradrop_system,
 /turf/open/floor/almayer{
 	icon_state = "test_floor4"
 	},

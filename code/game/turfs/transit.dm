@@ -196,7 +196,7 @@
 	take_overall_armored_damage(300, ARMOR_BOMB, limb_damage_chance = 100)
 	// but just in case, you will still take a ton of damage.
 	take_overall_damage(200, used_weapon = "falling", limb_damage_chance = 100)
-	if(stat != DEAD)
+	if(stat < DEAD)
 		death(last_damage_data)
 	status_flags |= PERMANENTLY_DEAD
 	return

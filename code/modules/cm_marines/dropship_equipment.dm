@@ -1309,8 +1309,8 @@
 
 /obj/structure/dropship_equipment/paradrop_system/ui_data(mob/user)
 	. = list()
-	.["signal"] = (linked_shuttle.paradrop_signal != null ? linked_shuttle.paradrop_signal : null)
-	.["locked"] = (linked_shuttle.paradrop_signal != null)
+	.["signal"] = "[linked_shuttle.paradrop_signal]"
+	.["locked"] = !!linked_shuttle.paradrop_signal
 
 /obj/structure/dropship_equipment/paradrop_system/update_equipment()
 	if(ship_base)

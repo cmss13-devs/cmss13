@@ -47,7 +47,7 @@ export const ParadropMfdPanel = (props: MfdProps) => {
   const paradrop = data.equipment_data.find(
     (x) => x.mount_point === equipmentState
   );
-  const deployLabel = (paradrop?.data?.locked ?? 0) === 1 ? 'CLEAR' : 'LOCK';
+  const deployLabel = paradrop?.data?.locked ? 'CLEAR' : 'LOCK';
 
   return (
     <MfdPanel

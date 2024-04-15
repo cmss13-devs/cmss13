@@ -144,7 +144,7 @@
 	ammo_used_per_firing = 40
 	point_cost = 275
 	fire_mission_delay = 2
-	var/bullet_spread_range = 3 //how far from the real impact turf can bullets land
+	var/bullet_spread_range = 4 //how far from the real impact turf can bullets land
 	var/shrapnel_type = /datum/ammo/bullet/shrapnel/gau //For siming 30mm bullet impacts.
 	var/directhit_damage = 105 //how much damage is to be inflicted to a mob, this is here so that we can hit resting mobs.
 	var/penetration = 10 //AP value pretty much
@@ -169,26 +169,27 @@
 
 	for(var/i = 1 to ammo_used_per_firing)
 		sleep(1)
-		var/turf/impact_tile = pick(turf_list)
-		var/datum/cause_data/cause_data = create_cause_data(fired_from.name, source_mob)
-		impact_tile.ex_act(EXPLOSION_THRESHOLD_VLOW, pick(GLOB.alldirs), cause_data)
-		create_shrapnel(impact_tile,1,0,0,shrapnel_type,cause_data,FALSE,100) //simulates a bullet
-		for(var/atom/movable/explosion_effect in impact_tile)
-			if(iscarbon(explosion_effect))
-				var/mob/living/carbon/bullet_effect = explosion_effect
-				explosion_effect.ex_act(EXPLOSION_THRESHOLD_VLOW, null, cause_data)
-				bullet_effect.apply_armoured_damage(directhit_damage,ARMOR_BULLET,BRUTE,null,penetration)
-			else
-				explosion_effect.ex_act(EXPLOSION_THRESHOLD_VLOW)
-		new /obj/effect/particle_effect/expl_particles(impact_tile)
-		if(!soundplaycooldown) //so we don't play the same sound 20 times very fast.
-			playsound(impact_tile, 'sound/effects/gauimpact.ogg',40,1,20)
-			soundplaycooldown = 3
-		soundplaycooldown--
-		if(!debriscooldown)
-			impact_tile.ceiling_debris_check(1)
-			debriscooldown = 6
-		debriscooldown--
+		for(var/j in 1 to 2) //rather than halving the sleep, were doubling the bullets shot "bang"
+			var/turf/impact_tile = pick(turf_list)
+			var/datum/cause_data/cause_data = create_cause_data(fired_from.name, source_mob)
+			impact_tile.ex_act(EXPLOSION_THRESHOLD_VLOW, pick(GLOB.alldirs), cause_data)
+			create_shrapnel(impact_tile,1,0,0,shrapnel_type,cause_data,FALSE,100) //simulates a bullet
+			for(var/atom/movable/explosion_effect in impact_tile)
+				if(iscarbon(explosion_effect))
+					var/mob/living/carbon/bullet_effect = explosion_effect
+					explosion_effect.ex_act(EXPLOSION_THRESHOLD_VLOW, null, cause_data)
+					bullet_effect.apply_armoured_damage(directhit_damage,ARMOR_BULLET,BRUTE,null,penetration)
+				else
+					explosion_effect.ex_act(EXPLOSION_THRESHOLD_VLOW)
+			new /obj/effect/particle_effect/expl_particles(impact_tile)
+			if(!soundplaycooldown) //so we don't play the same sound 20 times very fast.
+				playsound(impact_tile, 'sound/effects/gauimpact.ogg',40,1,20)
+				soundplaycooldown = 3
+			soundplaycooldown--
+			if(!debriscooldown)
+				impact_tile.ceiling_debris_check(1)
+				debriscooldown = 6
+			debriscooldown--
 	sleep(11) //speed of sound simulation
 	playsound(impact, 'sound/effects/gau.ogg',100,1,60)
 
@@ -300,9 +301,9 @@
 	travelling_time = 60
 	point_cost = 600
 	fire_mission_delay = 0 //direct bombard only
-	/// the limits of the custom missile (same as shell)
-	var/list/reaction_limits = list( "max_ex_power" = 360, "base_ex_falloff" = 150, "max_ex_shards" = 128,
-							"max_fire_rad" = 8, "max_fire_int" = 40, "max_fire_dur" = 48,
+	/// the limits of the custom missile
+	var/list/reaction_limits = list( "max_ex_power" = 300, "base_ex_falloff" = 90, "max_ex_shards" = 128,
+							"max_fire_rad" = 8, "max_fire_int" = 60, "max_fire_dur" = 48,
 							"min_fire_rad" = 3, "min_fire_int" = 5, "min_fire_dur" = 5
 	)
 	/// current assembly state of the missile
@@ -379,6 +380,7 @@
 				bomb.containers += container
 			bomb.forceMove(impact)
 			bomb.reaction_limits = reaction_limits
+			bomb.allow_star_shape = FALSE
 			bomb.prime(TRUE)
 	QDEL_IN(src, 0.5 SECONDS)
 

@@ -138,7 +138,7 @@
 								var/dist = cheap_pythag(T.x - location.x, T.y - location.y)
 								if(!dist)
 									dist = 1
-								R.reaction_mob(A, volume = R.volume / dist)
+								R.reaction_mob(A, volume = R.volume / dist, permeable = FALSE)
 							else if(istype(A, /obj))
 								R.reaction_obj(A, R.volume)
 					sleep(30)

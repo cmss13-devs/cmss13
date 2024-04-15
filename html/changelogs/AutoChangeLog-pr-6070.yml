@@ -1,4 +1,0 @@
-author: "SabreML"
-delete-after: True
-changes:
-  - ui: "Added a 'search by key' button to the Keybind menu."

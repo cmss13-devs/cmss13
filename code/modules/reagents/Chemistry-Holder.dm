@@ -4,6 +4,7 @@
 	var/maximum_volume = 100
 	var/atom/my_atom = null
 	var/trigger_volatiles = FALSE
+	var/allow_star_shape = TRUE
 	var/exploded = FALSE
 	var/datum/weakref/source_mob
 
@@ -359,12 +360,12 @@
 		del_reagent(R.id)
 	return FALSE
 
-/datum/reagents/proc/reaction(atom/A, method=TOUCH, volume_modifier=0)
+/datum/reagents/proc/reaction(atom/A, method=TOUCH, volume_modifier=0, permeable_in_mobs=TRUE)
 	if(method != TOUCH && method != INGEST)
 		return
 	for(var/datum/reagent/R in reagent_list)
 		if(ismob(A))
-			R.reaction_mob(A, method, R.volume + volume_modifier)
+			R.reaction_mob(A, method, R.volume + volume_modifier, permeable_in_mobs)
 		else if(isturf(A))
 			R.reaction_turf(A, R.volume + volume_modifier)
 		else if(isobj(A))
@@ -678,7 +679,7 @@
 		duration = max_fire_dur
 
 	// shape
-	if(supplemented > 0 && intensity > CHEM_FIRE_STAR_THRESHOLD)
+	if(supplemented > 0 && intensity > CHEM_FIRE_STAR_THRESHOLD && allow_star_shape)
 		flameshape = FLAMESHAPE_STAR
 
 	if(supplemented < 0 && intensity < CHEM_FIRE_IRREGULAR_THRESHOLD)

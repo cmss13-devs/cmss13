@@ -1,4 +1,0 @@
-author: "ihatethisengine"
-delete-after: True
-changes:
-  - rscadd: "CC camera now can broadcast to TVs."

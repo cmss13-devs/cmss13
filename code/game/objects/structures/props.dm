@@ -2595,7 +2595,18 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 	desc = "a small cabinet with drawers."
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "sidecabinet"
-
+/obj/structure/prop/hybrisa/misc/trash/green
+	name = "trash bin"
+	desc = "A Weyland-Yutani trash bin used for disposing your unwanted items, or you can just throw your shit on the ground like every other asshole."
+	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
+	icon_state = "trashgreen"
+	density = TRUE
+/obj/structure/prop/hybrisa/misc/trash/blue
+	name = "trash bin"
+	desc = "A Weyland-Yutani trash bin used for disposing your unwanted items, or you can just throw your shit on the ground like every other asshole."
+	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
+	icon_state = "trashblue"
+	density = TRUE
 /obj/structure/prop/hybrisa/misc/redmeter
 	name = "meter"
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'

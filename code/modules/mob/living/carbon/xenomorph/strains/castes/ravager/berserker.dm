@@ -20,6 +20,7 @@
 /datum/xeno_strain/berserker/apply_strain(mob/living/carbon/xenomorph/ravager/ravager)
 	ravager.plasma_max = 0
 	ravager.health_modifier -= XENO_HEALTH_MOD_MED
+	ravager.armor_modifier += XENO_ARMOR_MOD_VERY_SMALL
 	ravager.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
 	ravager.received_phero_caps["frenzy"] = 2.9 // Moderate
 

@@ -710,9 +710,9 @@
 	id = "highdamagenapalm"
 	description = "A custom napalm mix, higher damage but not as sticky"
 	reagent_state = LIQUID
-	color = "#742424"
+	color = "#c51c1c"
 	chemfiresupp = FALSE
-	burncolor = "#742424"
+	burncolor = "#c51c1c"
 	burn_sprite = "dynamic"
 	properties = list(
 		PROPERTY_INTENSITY = BURN_LEVEL_TIER_8,

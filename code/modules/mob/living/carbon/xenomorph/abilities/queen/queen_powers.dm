@@ -413,6 +413,8 @@
 			continue
 		if(possible_target.status_flags & CORRUPTED_ALLY)
 			continue
+		if(possible_target.hivenumber)
+			continue
 		target_list += possible_target
 
 	if(!length(target_list))

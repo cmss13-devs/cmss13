@@ -1028,33 +1028,17 @@
 /turf/open/floor/wood,
 /area/lv873/indoors/southwest/slums)
 "azR" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-2';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '2-6';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "2-6"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '2-10';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "2-10"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '9-10';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "9-10"
 	},
 /turf/open/asphalt/cement,
 /area/lv873/indoors/lone_buildings/clf_communications)
@@ -1086,12 +1070,8 @@
 /area/lv873/indoors/northeast/slums)
 "aBx" = (
 /obj/item/stack/cable_coil,
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '5-8';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "5-8"
 	},
 /turf/open/floor/wood,
 /area/lv873/indoors/lone_buildings/clf_communications)
@@ -2006,13 +1986,7 @@
 	},
 /area/lv873/indoors/power_station)
 "aVK" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '0-1';
-	name = "cable";
-	layer = 2.8
-	},
+/obj/structure/cable,
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8";
 	pixel_y = 0
@@ -2515,11 +2489,8 @@
 	pixel_y = -4
 	},
 /obj/item/paper/crumpled,
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '4-10';
-	name = "suspicious cable"
+/obj/structure/cable{
+	icon_state = "4-10"
 	},
 /turf/open/floor/wood,
 /area/lv873/indoors/southwest/slums)
@@ -3135,19 +3106,11 @@
 /turf/open/gm/dirtgrassborder/dirt/east,
 /area/lv873/outdoors/colony_streets/northeast)
 "bBr" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '2-6';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "2-6"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '2-10';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "2-10"
 	},
 /turf/open/asphalt/cement,
 /area/lv873/indoors/lone_buildings/clf_communications)
@@ -4698,12 +4661,8 @@
 /area/lv873/indoors/flooded/east_apartments)
 "cmQ" = (
 /obj/structure/machinery/telecomms/server,
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-9';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-9"
 	},
 /turf/open/asphalt/cement,
 /area/lv873/indoors/lone_buildings/clf_communications)
@@ -4789,12 +4748,8 @@
 /turf/open/floor/wood,
 /area/lv873/indoors/east/slums)
 "coJ" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '2-8';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "2-8"
 	},
 /turf/open/floor/plating,
 /area/lv873/oob)
@@ -5015,19 +4970,11 @@
 	},
 /area/lv873/indoors/southeast/slums)
 "cup" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '9-10';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "9-10"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '4-10';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "4-10"
 	},
 /turf/open/asphalt/cement,
 /area/lv873/indoors/lone_buildings/clf_communications)
@@ -5118,13 +5065,7 @@
 /area/lv873/indoors/hospital/research/floor)
 "cvW" = (
 /obj/structure/machinery/telecomms/server,
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '0-1';
-	name = "suspicious cable";
-	layer = 2.8
-	},
+/obj/structure/cable,
 /turf/open/asphalt/cement,
 /area/lv873/indoors/lone_buildings/clf_communications)
 "cwf" = (
@@ -5136,9 +5077,6 @@
 /area/lv873/outdoors/colony_streets/south)
 "cwl" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/cameras/wooden_tv/prop{
-	pixel_y = 11
-	},
 /turf/open/floor/wood,
 /area/lv873/indoors/southwest/slums)
 "cwM" = (
@@ -5327,12 +5265,8 @@
 /turf/open/floor/wood,
 /area/lv873/indoors/welcome_center/canteen)
 "cAt" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '4-8';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/open/floor/wood,
 /area/lv873/oob)
@@ -5500,33 +5434,17 @@
 	},
 /area/lv873/indoors/lone_buildings/weyyu_hostel)
 "cEn" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '2-10';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "2-10"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '2-6';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "2-6"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-2';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '2-5';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "2-5"
 	},
 /turf/open/asphalt/cement,
 /area/lv873/indoors/lone_buildings/clf_communications)
@@ -6678,19 +6596,11 @@
 	},
 /area/lv873/indoors/operations/hallway/south)
 "deR" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '4-8';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '4-9';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "4-9"
 	},
 /turf/open/floor/wood,
 /area/lv873/indoors/lone_buildings/clf_communications)
@@ -6888,12 +6798,8 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/lv873/indoors/operations/hallway/north)
 "dib" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-4';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-4"
 	},
 /turf/open/gm/dirt/brown,
 /area/lv873/oob)
@@ -7295,19 +7201,11 @@
 	},
 /area/lv873/indoors/welcome_center/offices)
 "drD" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '8-10';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "8-10"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '4-10';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "4-10"
 	},
 /turf/open/floor/wood,
 /area/lv873/indoors/lone_buildings/clf_communications)
@@ -8286,7 +8184,6 @@
 	pixel_x = 8
 	},
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -8581,12 +8478,8 @@
 /area/lv873/oob)
 "eaQ" = (
 /obj/item/trash/uscm_mre,
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '8-10';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "8-10"
 	},
 /turf/open/floor/wood,
 /area/lv873/indoors/lone_buildings/clf_communications)
@@ -8860,26 +8753,12 @@
 /area/lv873/outdoors/lone_buildings/cargo_lz)
 "egw" = (
 /obj/structure/machinery/telecomms/server,
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '0-1';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable,
+/obj/structure/cable{
+	icon_state = "2-6"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '2-6';
-	name = "suspicious cable";
-	layer = 2.8
-	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '2-10';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "2-10"
 	},
 /turf/open/asphalt/cement,
 /area/lv873/indoors/lone_buildings/clf_communications)
@@ -9530,12 +9409,8 @@
 /area/lv873/indoors/northeast/slums)
 "euM" = (
 /obj/structure/reagent_dispensers/fueltank/gas,
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '0-8';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "0-8"
 	},
 /turf/open/floor/wood,
 /area/lv873/indoors/lone_buildings/clf_communications)
@@ -10162,27 +10037,13 @@
 /area/lv873/indoors/lone_buildings/goon_and_chef_house)
 "eLz" = (
 /obj/structure/reagent_dispensers/fueltank/gas,
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '4-9';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "4-9"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '2-6';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "2-6"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '0-1';
-	name = "suspicious cable";
-	layer = 2.8
-	},
+/obj/structure/cable,
 /turf/open/floor/wood,
 /area/lv873/indoors/lone_buildings/clf_communications)
 "eLL" = (
@@ -10951,12 +10812,8 @@
 	},
 /area/lv873/indoors/hospital/reception)
 "fhg" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '2-6';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "2-6"
 	},
 /turf/open/floor/plating,
 /area/lv873/oob)
@@ -11120,12 +10977,8 @@
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner2/north_east,
 /area/lv873/landing_zone_1)
 "fkD" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '4-8';
-	name = "suspicious cable";
-	layer = 2.85
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /obj/structure/machinery/door/airlock/almayer/generic{
 	density = 2;
@@ -11681,12 +11534,8 @@
 /turf/open/floor/wood,
 /area/lv873/oob)
 "fyZ" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '4-8';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/open/floor/wood{
 	icon_state = "wood-broken4"
@@ -12224,19 +12073,11 @@
 /turf/open/gm/dirt/brown,
 /area/lv873/landing_zone_2)
 "fLp" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '4-10';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "4-10"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '2-6';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "2-6"
 	},
 /turf/open/floor/wood,
 /area/lv873/indoors/lone_buildings/clf_communications)
@@ -13277,12 +13118,8 @@
 	},
 /area/lv873/indoors/uscm_garrison/io_office)
 "ghH" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-8';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-8"
 	},
 /turf/open/gm/dirt/brown,
 /area/lv873/oob)
@@ -13649,12 +13486,8 @@
 /turf/open/gm/dirtgrassborder/dirt/north,
 /area/lv873/oob)
 "gtK" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-8';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-8"
 	},
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating,
@@ -13895,19 +13728,11 @@
 	},
 /area/lv873/indoors/east/slums)
 "gBv" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-6';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-6"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-10';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-10"
 	},
 /obj/item/stack/cable_coil,
 /obj/structure/machinery/light/small,
@@ -14767,12 +14592,8 @@
 /obj/structure/sign/safety/fire_haz{
 	pixel_x = 32
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-8';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-8"
 	},
 /turf/open/asphalt/cement,
 /area/lv873/indoors/lone_buildings/clf_communications)
@@ -15145,26 +14966,14 @@
 /turf/open/floor/wood,
 /area/lv873/indoors/bungalow_manager)
 "hhN" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '2-10';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "2-10"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '5-8';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "5-8"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '2-5';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "2-5"
 	},
 /turf/open/asphalt/cement,
 /area/lv873/indoors/lone_buildings/clf_communications)
@@ -15201,7 +15010,6 @@
 /area/lv873/oob)
 "hiP" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	dir = 8;
 	pixel_x = 4
 	},
@@ -18121,26 +17929,14 @@
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/south_west,
 /area/lv873/outdoors/colony_streets/west)
 "iya" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '4-5';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "4-5"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '4-8';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '2-6';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "2-6"
 	},
 /turf/open/floor/wood,
 /area/lv873/indoors/lone_buildings/clf_communications)
@@ -18604,20 +18400,10 @@
 /obj/structure/platform/strata/metal{
 	dir = 1
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-2';
-	name = "cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '0-1';
-	name = "cable";
-	layer = 2.8
-	},
+/obj/structure/cable,
 /obj/structure/machinery/vending/cigarette/colony{
 	layer = 3.25
 	},
@@ -20740,19 +20526,11 @@
 /turf/closed/wall,
 /area/lv873/indoors/hospital/outpatients_and_icu)
 "jGy" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '4-5';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "4-5"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-4';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-4"
 	},
 /turf/open/floor/wood{
 	icon_state = "wood-broken6"
@@ -20873,12 +20651,8 @@
 /turf/open/floor/wood,
 /area/lv873/indoors/bungalow_manager)
 "jIg" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '4-8';
-	name = "suspicious cable";
-	layer = 2.85
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Bathroom"
@@ -22475,12 +22249,8 @@
 /area/lv873/outdoors/bungalow_manager_exterior)
 "kuq" = (
 /obj/structure/prop/server_equipment/laptop,
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '2-5';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "2-5"
 	},
 /turf/open/floor/wood,
 /area/lv873/indoors/lone_buildings/clf_communications)
@@ -22830,12 +22600,8 @@
 /area/lv873/indoors/lone_buildings/liq_r_mart)
 "kEu" = (
 /obj/structure/largecrate/supply/supplies/mre,
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-4';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-4"
 	},
 /turf/open/floor/wood,
 /area/lv873/indoors/lone_buildings/clf_communications)
@@ -23046,12 +22812,8 @@
 /turf/closed/wall,
 /area/lv873/indoors/gated_community/director_of_corporate_research)
 "kKO" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '9-10';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "9-10"
 	},
 /obj/structure/machinery/light/small,
 /turf/open/asphalt/cement,
@@ -23699,12 +23461,8 @@
 /turf/open/floor/plating,
 /area/lv873/indoors/lone_buildings/trapped_house)
 "laA" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-6';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-6"
 	},
 /turf/open/floor/plating,
 /area/lv873/oob)
@@ -23818,20 +23576,10 @@
 	},
 /area/lv873/indoors/operations/reception)
 "lcG" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-2';
-	name = "cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '0-1';
-	name = "cable";
-	layer = 2.8
-	},
+/obj/structure/cable,
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/plating/plating_catwalk,
 /area/lv873/indoors/operations/offices/east)
@@ -25895,12 +25643,8 @@
 /obj/structure/machinery/power/apc{
 	dir = 1
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '4-5';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "4-5"
 	},
 /turf/open/floor/plating,
 /area/lv873/indoors/southwest/slums)
@@ -26101,12 +25845,8 @@
 /turf/open/floor/wood,
 /area/lv873/indoors/northeast/slums)
 "mhu" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-2';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
 /turf/open/floor/plating,
 /area/lv873/oob)
@@ -26858,20 +26598,10 @@
 /turf/open/floor/wood,
 /area/lv873/indoors/lone_buildings/clf_house)
 "mzz" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-2';
-	name = "cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '0-1';
-	name = "cable";
-	layer = 2.8
-	},
+/obj/structure/cable,
 /obj/structure/machinery/vending/snack/packaged,
 /turf/open/floor/plating/plating_catwalk,
 /area/lv873/indoors/operations/offices/east)
@@ -27147,10 +26877,6 @@
 /obj/item/clothing/glasses/disco_fever{
 	pixel_x = 5;
 	pixel_y = 20
-	},
-/obj/structure/machinery/computer/cameras/wooden_tv/prop{
-	pixel_x = 5;
-	pixel_y = 7
 	},
 /obj/item/ashtray/glass{
 	pixel_x = -11
@@ -27576,26 +27302,14 @@
 	},
 /area/lv873/indoors/lone_buildings/weyyu_hostel)
 "mOf" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '2-8';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "2-8"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-6';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-6"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-9';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-9"
 	},
 /obj/structure/machinery/power/apc{
 	dir = 4
@@ -27647,12 +27361,8 @@
 	pixel_x = 12;
 	pixel_y = 13
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-6';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-6"
 	},
 /turf/open/floor/plating,
 /area/lv873/indoors/southwest/slums)
@@ -28438,12 +28148,8 @@
 /turf/open/floor/wood,
 /area/lv873/indoors/south/slums)
 "niw" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '4-9';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "4-9"
 	},
 /turf/open/floor/plating,
 /area/lv873/oob)
@@ -28752,12 +28458,8 @@
 /area/lv873/outdoors/hospital/road_north_east)
 "nqw" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '4-8';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/open/gm/grass/dirt,
 /area/lv873/outdoors/colony_streets/south)
@@ -28984,12 +28686,8 @@
 /obj/structure/machinery/telecomms/hub{
 	pixel_x = -6
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '4-10';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "4-10"
 	},
 /turf/open/floor/wood,
 /area/lv873/oob)
@@ -29035,12 +28733,8 @@
 	},
 /area/lv873/indoors/lone_buildings/pizza)
 "nxx" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '4-8';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/open/floor/wood{
 	icon_state = "wood-broken3"
@@ -31001,12 +30695,8 @@
 /turf/open/gm/dirtgrassborder/dirt/west,
 /area/lv873/outdoors/colony_streets/southeast)
 "ooS" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '4-10';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "4-10"
 	},
 /turf/open/floor/plating,
 /area/lv873/indoors/southwest/slums)
@@ -32657,12 +32347,8 @@
 /turf/open/floor,
 /area/lv873/indoors/lone_buildings/liq_r_mart)
 "oZm" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-4';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-4"
 	},
 /obj/item/weapon/gun/rifle/mar40,
 /turf/open/floor/wood{
@@ -32670,12 +32356,8 @@
 	},
 /area/lv873/indoors/lone_buildings/clf_communications)
 "oZo" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '5-8';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "5-8"
 	},
 /turf/open/floor/plating,
 /area/lv873/oob)
@@ -33080,12 +32762,8 @@
 /obj/structure/sign/poster/clf{
 	pixel_y = 32
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '2-10';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "2-10"
 	},
 /turf/open/floor/wood,
 /area/lv873/indoors/lone_buildings/clf_communications)
@@ -33190,26 +32868,14 @@
 	},
 /area/lv873/oob)
 "pjA" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-9';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-9"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '2-8';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "2-8"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '8-10';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "8-10"
 	},
 /turf/open/floor/wood,
 /area/lv873/indoors/lone_buildings/clf_communications)
@@ -34140,12 +33806,8 @@
 	dir = 1;
 	pixel_y = -8
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '4-8';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -34512,12 +34174,8 @@
 /obj/structure/prop/server_equipment/laptop/closed{
 	pixel_y = 2
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '5-6';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "5-6"
 	},
 /obj/structure/machinery/light/small,
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -34731,12 +34389,8 @@
 /turf/open/floor/wood,
 /area/lv873/indoors/southwest/slums)
 "pTb" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-4';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-4"
 	},
 /turf/open/gm/grass/dirt,
 /area/lv873/outdoors/colony_streets/south)
@@ -36500,12 +36154,8 @@
 	pixel_y = 30;
 	req_one_access_txt = "2;3;12;19"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '4-10';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "4-10"
 	},
 /turf/open/asphalt/cement,
 /area/lv873/indoors/lone_buildings/clf_communications)
@@ -36600,20 +36250,10 @@
 /turf/closed/wall/r_wall,
 /area/lv873/indoors/marshals/interrogation)
 "qJH" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-2';
-	name = "cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '0-1';
-	name = "cable";
-	layer = 2.8
-	},
+/obj/structure/cable,
 /obj/structure/machinery/vending/cola,
 /obj/structure/machinery/light{
 	dir = 8
@@ -37613,16 +37253,6 @@
 /obj/structure/surface/table,
 /turf/open/floor,
 /area/lv873/indoors/flooded/east_apartments)
-"rib" = (
-/obj/structure/surface/table,
-/obj/structure/machinery/computer/cameras/wooden_tv/prop{
-	dir = 4;
-	pixel_y = 11
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/lv873/indoors/southwest/slums)
 "riu" = (
 /obj/structure/surface/table,
 /obj/item/storage/belt/marine/mar40,
@@ -38193,30 +37823,18 @@
 /turf/open/gm/grass/dirt,
 /area/lv873/outdoors/hospital/road_north_west)
 "rwS" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '4-8';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/open/floor/plating,
 /area/lv873/oob)
 "rxw" = (
 /obj/structure/reagent_dispensers/fueltank/gas,
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-6';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-6"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '9-10';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "9-10"
 	},
 /turf/open/asphalt/cement,
 /area/lv873/indoors/lone_buildings/clf_communications)
@@ -39172,19 +38790,9 @@
 /area/lv873/outdoors/uscm_garrison_exterior/fenced)
 "rVP" = (
 /obj/structure/machinery/telecomms/server,
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '0-1';
-	name = "suspicious cable";
-	layer = 2.8
-	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '2-10';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable,
+/obj/structure/cable{
+	icon_state = "2-10"
 	},
 /turf/open/asphalt/cement,
 /area/lv873/indoors/lone_buildings/clf_communications)
@@ -39404,12 +39012,8 @@
 /turf/open/floor/wood,
 /area/lv873/indoors/lone_buildings/engineer_alcoholic_house)
 "rZL" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '4-8';
-	name = "suspicious cable";
-	layer = 2.85
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Apartment"
@@ -39507,11 +39111,8 @@
 	network = null;
 	pixel_y = 6
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-8';
-	name = "suspicious cable"
+/obj/structure/cable{
+	icon_state = "1-8"
 	},
 /obj/structure/surface/table/woodentable/poor,
 /turf/open/floor/almayer{
@@ -40038,12 +39639,8 @@
 /area/lv873/outdoors/flooded_streets/west)
 "soC" = (
 /obj/item/trash/uscm_mre,
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '4-8';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/open/floor/wood,
 /area/lv873/indoors/lone_buildings/clf_communications)
@@ -40056,12 +39653,8 @@
 /area/lv873/indoors/hospital/storage_laundyroom_and_breakroom)
 "spc" = (
 /obj/structure/machinery/telecomms/server,
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '9-10';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "9-10"
 	},
 /turf/open/asphalt/cement,
 /area/lv873/indoors/lone_buildings/clf_communications)
@@ -40426,12 +40019,8 @@
 /obj/structure/machinery/microwave{
 	pixel_y = 14
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-6';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-6"
 	},
 /obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/wood,
@@ -41800,33 +41389,17 @@
 /turf/open/gm/coast/dirt/beachcorner2/north_east,
 /area/lv873/outdoors/flooded_streets/east)
 "sZQ" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-6';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-6"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-10';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-10"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '2-10';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "2-10"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-2';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
 /turf/open/asphalt/cement,
 /area/lv873/indoors/lone_buildings/clf_communications)
@@ -42568,19 +42141,11 @@
 /turf/open/floor/wood,
 /area/lv873/indoors/southwest/slums)
 "tqv" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-6';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-6"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '2-6';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "2-6"
 	},
 /turf/open/asphalt/cement,
 /area/lv873/indoors/lone_buildings/clf_communications)
@@ -42846,12 +42411,8 @@
 	},
 /area/lv873/indoors/lone_buildings/weymart)
 "txi" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '2-6';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "2-6"
 	},
 /turf/open/gm/dirt/brown,
 /area/lv873/oob)
@@ -43589,7 +43150,7 @@
 /area/lv873/indoors/uscm_garrison/io_office)
 "tOs" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/clothing/gloves/marine/veteran/insulated,
+/obj/item/clothing/gloves/yellow,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "barber"
@@ -43650,12 +43211,8 @@
 /turf/open/floor/wood,
 /area/lv873/indoors/gated_community/head_of_corporate_security)
 "tQe" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '9-10';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "9-10"
 	},
 /turf/open/floor/plating,
 /area/lv873/oob)
@@ -44040,26 +43597,14 @@
 /turf/open/floor/wood,
 /area/lv873/indoors/bungalow_manager)
 "tZk" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-6';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-6"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-10';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-10"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '2-10';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "2-10"
 	},
 /turf/open/asphalt/cement,
 /area/lv873/indoors/lone_buildings/clf_communications)
@@ -45738,12 +45283,8 @@
 /turf/open/asphalt/cement,
 /area/lv873/oob)
 "uNw" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '4-10';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "4-10"
 	},
 /turf/open/gm/dirt/brown,
 /area/lv873/oob)
@@ -46428,19 +45969,11 @@
 /turf/open/floor,
 /area/lv873/oob)
 "vgS" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-10';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-10"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-6';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-6"
 	},
 /turf/open/asphalt/cement,
 /area/lv873/indoors/lone_buildings/clf_communications)
@@ -47547,12 +47080,8 @@
 	pixel_x = 12;
 	pixel_y = 13
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '2-10';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "2-10"
 	},
 /turf/open/floor/plating,
 /area/lv873/indoors/southwest/slums)
@@ -47863,50 +47392,26 @@
 /turf/open/asphalt/cement,
 /area/lv873/oob)
 "vRQ" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '4-10';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "4-10"
 	},
 /turf/open/floor/plating,
 /area/lv873/oob)
 "vSe" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-6';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-6"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-10';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-10"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '2-10';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "2-10"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '2-6';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "2-6"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-9';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-9"
 	},
 /turf/open/asphalt/cement,
 /area/lv873/indoors/lone_buildings/clf_communications)
@@ -49422,12 +48927,8 @@
 	},
 /area/lv873/indoors/operations/xenobiological_research)
 "wEJ" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '4-8';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/open/gm/dirt/brown,
 /area/lv873/oob)
@@ -49777,12 +49278,8 @@
 /turf/open/gm/grass/dirt,
 /area/lv873/outdoors/colony_streets/southeast)
 "wLY" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '2-8';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "2-8"
 	},
 /turf/open/gm/grass/dirt,
 /area/lv873/outdoors/colony_streets/south)
@@ -51115,12 +50612,8 @@
 	},
 /area/lv873/indoors/marshals/mainhall)
 "xrL" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '2-8';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "2-8"
 	},
 /turf/open/floor/plating,
 /area/lv873/indoors/southwest/slums)
@@ -51612,12 +51105,8 @@
 	},
 /area/lv873/indoors/lone_buildings/weymart)
 "xEJ" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '2-8';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "2-8"
 	},
 /turf/open/gm/dirt/brown,
 /area/lv873/oob)
@@ -51723,11 +51212,8 @@
 /turf/open/floor/prison,
 /area/lv873/indoors/lone_buildings/neils_arcade)
 "xHa" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '4-10';
-	name = "suspicious cable"
+/obj/structure/cable{
+	icon_state = "4-10"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -51934,12 +51420,8 @@
 /turf/open/gm/grass/dirt,
 /area/lv873/oob)
 "xQq" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '4-8';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/open/asphalt/cement,
 /area/lv873/indoors/lone_buildings/clf_communications)
@@ -52492,26 +51974,14 @@
 /turf/open/floor/wood,
 /area/lv873/indoors/southwest/slums)
 "ybp" = (
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-6';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-6"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-10';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-10"
 	},
-/obj/item/prop{
-	color = "#FF0000";
-	icon = 'icons/obj/pipes/power_cond_white.dmi';
-	icon_state = '1-2';
-	name = "suspicious cable";
-	layer = 2.8
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
 /turf/open/asphalt/cement,
 /area/lv873/indoors/lone_buildings/clf_communications)
@@ -69915,7 +69385,7 @@ wAW
 jCs
 aOJ
 oaR
-rib
+qIh
 aOJ
 aOJ
 eai

@@ -183,3 +183,155 @@
 2024-03-16:
   nauticall:
   - bugfix: Makes pill bottle caps appear on closed pill bottles again.
+2024-03-17:
+  Huffie56:
+  - refactor: refactored areas replaced stern hallway by aft added two new hallway
+      area(fore, midship)
+  - refactor: refactored areas replaced midship maintenance by for and added two new
+      maintenance  areas(fore, aft) with each starboard and port side.
+  - maptweak: removed all the emergency shutter that weren't at the borders of each
+      areas.
+  - maptweak: added back the bear belt in a closet in a dormitory.
+  - maptweak: reconnect some air  pipe in an hallway north upper engi.
+  Segrain:
+  - bugfix: Ghosts no longer miss announcements seemingly at random.
+  SpartanBobby:
+  - maptweak: Removes some ledges on LV522
+  - maptweak: Removes unintended hullwalls on LV522
+  realforest2001:
+  - rscadd: Updated the Insanity law description.
+2024-03-18:
+  Katskan:
+  - balance: changed medical 4 skill speed multiplier from tier 2 to a non-standard
+      0.35
+  - balance: changed defib medical skill speed scaling
+  Nanu308:
+  - mapadd: Added the Galaxy Pizza Space Diner ERT station, for all your outer expanse
+      food needs!
+  - maptweak: Placed APC's on ert stations and minor tweaks+fixes.
+  Segrain:
+  - bugfix: Professor Dummy in CMO's office now works properly.
+2024-03-19:
+  567Turtle:
+  - rscadd: PO has been split into two roles, the gunship pilot and the dropship pilot,
+      no more arguing over who gets CAS.
+  Drathek:
+  - bugfix: Overdose death messages will now mention last mob that contributed to
+      the OD
+  - admin: Many additions to attack, say, interact, and niche logging
+  - admin: Temporary muted messages/actions are now niche logged instead of say logged
+  - ui: Added niche log filtering to TGChat (still requires admin niche logs preference)
+  SabreML:
+  - admin: Made the 'Join as Xeno' button disable the user's larva protection when
+      clicked by a moderator.
+  TheGamerdk:
+  - bugfix: Synths can now have their heads reattached without being sent to limbo-crit-hell.
+  TotalEpicness5:
+  - bugfix: Stamina damage can now be ahealed.
+  Waseemq1235:
+  - rscdel: Removes HEAP from all UPP vendor gear presets
+2024-03-20:
+  Huffie56:
+  - maptweak: Fix ugliness at 5 different areas.
+  - maptweak: added access restriction for doors that lack them(OT workshop, engi
+      dormitory, Upper engi back storage door.)
+  Katskan:
+  - rscadd: Added some new uniforms and hats
+  - rscadd: Added blood packs to vendor for 5 points, equal to a pill bottle
+  - rscadd: Added tactical prybar to vendor for 5 points
+  - rscadd: Added some surgical tools, very expensive costs essentially your entire
+      point budget to buy
+  realforest2001:
+  - rscadd: Changed all marine presets to use Dress Blues as their dress equipment.
+  - rscdel: Excluding Whiskey Outpost, removed all previous dress equipment from vendors.
+2024-03-21:
+  BadAtThisGame302:
+  - rscadd: Heavily Updated Corpse Code.
+  Birdtalon:
+  - admin: Xeno eggs now take fingerprints.
+  Huffie56:
+  - qol: 'add some balloons for CPR : one is for when it''s a success and the other
+      is when it''s a failure.'
+  - refactor: refactored poddoor file and shutters file.
+  Steelpoint:
+  - maptweak: Adds several cardboard box spawns in to squad prep rooms.
+2024-03-23:
+  Drathek:
+  - ui: Tweaked layout for role preferences windows
+  Vicacrov:
+  - rscadd: Tacmap announcements are now also muted if you have hear/silence ghost
+      announcements toggled on.
+2024-03-24:
+  DN9123:
+  - rscadd: Added a couple of fortunes in strings/fortunes.txt
+  - spellcheck: fixed a grammar error I found in strings/fortunes.txt
+  Segrain:
+  - admin: Spawning nondeathsquad MARSOC now properly recognises "current location"
+      option.
+  ihatethisengine:
+  - bugfix: Fixed delayed launch launching lifeboat even if locked by queen
+2024-03-25:
+  Birdtalon, Kat 'APC' Smith, Thwomp, Waseemq1235:
+  - rscadd: Desk bell for cargo, medbay, brig, and AI reception.
+  - soundadd: Desk bell sound effect.
+2024-03-26:
+  Huffie56:
+  - bugfix: move semiotic in north evac pod so you can't see it when your behind in
+      hull maintenance.
+  InsaneRed:
+  - balance: Wardens can heal eachother once again, but only half the health
+  - qol: Gives SPAN_XENOHIGHDANGER to heal/reju on positives, since its very easy
+      to miss if you actually healed soembody.
+  MobiusWon:
+  - rscadd: Uniforms vend with USCM patch.
+  SabreML:
+  - refactor: Refactored the bodypart selection keybinds.
+  - bugfix: Fixed a bug where selecting a new body zone would sometimes modify the
+      wrong HUD element.
+  vero5123:
+  - bugfix: fixes users not being able to resist out of the stasis bags
+  - bugfix: Fixes zombies missing claws on transformation
+2024-03-27:
+  Ben10083:
+  - rscadd: Working Joes can now respawn as a Working Joe after 15 minutes, previous
+      restriction on respawn removed.
+  - admin: New flag to disable Working Joe respawns
+  - rscadd: Hazard Joes now have their own emotes
+  - code_imp: Hazard Joes now a seperate species
+  - code_imp: Updated isworkingjoe and new ishazardjoe define
+  - refactor: Working Joe emotes and emote categories now a globally defined list
+  - soundadd: New Hazard Joe voicelines
+  Katskan:
+  - balance: Autocompressor gives 7 seconds of grace time every 7.5 seconds, instead
+      of 7 seconds every 10 seconds. Approximately 93% efficient, increased from 70%
+      efficient.
+  QuickLode:
+  - rscadd: adds a purple armband and uniform to Synth Vendor
+  - rscadd: adds a renamed uniform commonly used by colonists with a better name
+  Vicacrov:
+  - rscadd: Added holocards to health scans to improve communication between medical
+      players. You can now assign holocards via the health analyzer and the body scanner
+      as well. The health scan also tells you what the current holocard's colour means.
+  - rscadd: Added a new purple holocard to tag infected marines.
+  - rscdel: Clicking yourself no longer removes your own holocard.
+2024-03-29:
+  SpartanBobby:
+  - maptweak: Changes to hullwall placment on Kutjevo this PR should allow you to
+      break open much more of the colony buildings aswell as get into new areas to
+      flank and play around
+  blackdragonTOW:
+  - code_imp: Added a third level of zoom to the Toggle Zoom verb
+  vero5123:
+  - bugfix: Fixes teleporting when placing mobs onto chairs and beds.
+2024-03-30:
+  cuberound:
+  - qol: old cosmetic NVG can not be broken
+  iloveloopers:
+  - balance: You can now use the mortar while shipside during hijack, but only once.
+  - rscadd: Ghosts now get a warning when a custom mortar shell is about to land.
+2024-03-31:
+  SpartanBobby:
+  - maptweak: 'Changes to LV522: Less ledges overall'
+  - maptweak: 'Changes to LV522: More breakable entry to the reactor'
+  - maptweak: 'Changes to LV522: Removed dead end in reactor'
+  - maptweak: New weedable zone west of LZ2 T-comms tower

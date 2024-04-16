@@ -154,7 +154,7 @@
 		var/mob/living/carbon/xenomorph/larva/L = new(xeno_turf, null, hivenumber)
 		ghost_mind.transfer_to(L)
 
-/datum/game_mode/xenovs/pick_queen_spawn(datum/mind/ghost_mind, hivenumber = XENO_HIVE_NORMAL)
+/datum/game_mode/xenovs/pick_queen_spawn(mob/player, hivenumber = XENO_HIVE_NORMAL)
 	. = ..()
 	if(!.) return
 	// Spawn additional hive structures

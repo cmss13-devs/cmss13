@@ -15,6 +15,7 @@
 		/datum/action/xeno_action/onclick/plant_resin_fruit/greater, // fourth macro
 		/datum/action/xeno_action/onclick/change_fruit,
 		/datum/action/xeno_action/activable/transfer_plasma,
+		/datum/action/xeno_action/onclick/place_trap,
 	)
 
 	behavior_delegate_type = /datum/behavior_delegate/drone_gardener

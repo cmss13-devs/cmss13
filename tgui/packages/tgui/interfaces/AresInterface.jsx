@@ -628,7 +628,7 @@ const BombardmentLogs = (props) => {
               User
             </Flex.Item>
             <Flex.Item width="30rem" textAlign="center">
-              Coordinates
+              Details
             </Flex.Item>
           </Flex>
         )}

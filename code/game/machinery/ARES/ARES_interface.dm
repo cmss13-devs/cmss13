@@ -214,22 +214,7 @@
 	data["active_ref"] = active_ref
 	data["conversations"] = logged_convos
 
-	var/list/security_vents = list()
-	for(var/obj/structure/pipes/vents/pump/no_boom/gas/vent in link.linked_vents)
-		if(!vent.vent_tag)
-			vent.vent_tag = "Security Vent #[link.tag_num]"
-			link.tag_num++
-
-		var/list/current_vent = list()
-		var/is_available = TRUE
-		if(!COOLDOWN_FINISHED(vent, vent_trigger_cooldown))
-			is_available = FALSE
-		current_vent["vent_tag"] = vent.vent_tag
-		current_vent["ref"] = "\ref[vent]"
-		current_vent["available"] = is_available
-		security_vents += list(current_vent)
-
-	data["security_vents"] = security_vents
+	data["security_vents"] = get_ares_vents()
 
 	return data
 

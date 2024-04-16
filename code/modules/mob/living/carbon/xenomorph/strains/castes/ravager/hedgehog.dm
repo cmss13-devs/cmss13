@@ -21,7 +21,7 @@
 	ravager.plasma_max = 0
 	ravager.small_explosives_stun = TRUE
 	ravager.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_SMALL
-	ravager.damage_modifier -= XENO_DAMAGE_MOD_VERY_SMALL
+	ravager.damage_modifier -= XENO_DAMAGE_MOD_SMALL
 
 	ravager.recalculate_everything()
 
@@ -105,10 +105,10 @@
 
 	if(percentage_shards >= 50)
 		bound_xeno.small_explosives_stun = FALSE
-		bound_xeno.remove_filter("hedge_unstunnable", 1, list("type" = "outline", "color" = "#421313", "size" = 1))
+		bound_xeno.add_filter("hedge_unstunnable", 1, list("type" = "outline", "color" = "#421313", "size" = 1))
 	if(percentage_shards < 50)
 		bound_xeno.small_explosives_stun = TRUE
-		bound_xeno.add_filter("hedge_unstunnable", 1, list("type" = "outline", "color" = "#421313", "size" = 1))
+		bound_xeno.remove_filter("hedge_unstunnable", 1, list("type" = "outline", "color" = "#421313", "size" = 1))
 
 
 	return

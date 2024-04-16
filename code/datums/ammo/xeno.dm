@@ -186,7 +186,7 @@
 /datum/ammo/xeno/acid/prae_nade // Used by base prae's acid nade
 	name = "acid scatter"
 
-	flags_ammo_behavior = AMMO_STOPPED_BY_COVER
+	flags_ammo_behavior = AMMO_ACIDIC|AMMO_XENO|AMMO_STOPPED_BY_COVER
 	accuracy = HIT_ACCURACY_TIER_5
 	accurate_range = 32
 	max_range = 4

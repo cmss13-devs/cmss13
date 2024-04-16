@@ -174,13 +174,27 @@
 	holder.trigger_volatiles = TRUE
 	return
 
+/datum/chemical_reaction/custom/sticky
+	name = "Sticky-Napalm"
+	id = "stickynapalm"
+	result = "stickynapalm"
+	required_reagents = list("napalm" = 1, "fuel" = 1)
+	result_amount = 2
+
+/datum/chemical_reaction/custom/high_damage
+	name = "High-Combustion Napalm Fuel"
+	id = "highdamagenapalm"
+	result = "highdamagenapalm"
+	required_reagents = list("napalm" = 1, "chlorine trifluoride" = 1)
+	result_amount = 2
+
 // Chemfire supplement chemicals.
 /datum/chemical_reaction/chlorinetrifluoride
 	name = "Chlorine Trifluoride"
 	id = "chlorine trifluoride"
 	result = "chlorine trifluoride"
 	required_reagents = list("fluorine" = 3, "chlorine" = 1)
-	result_amount = 1
+	result_amount = 3
 
 /datum/chemical_reaction/chlorinetrifluoride/on_reaction(datum/reagents/holder, created_volume)
 	holder.trigger_volatiles = TRUE

@@ -14,7 +14,7 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 /world/New()
 	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
 	if (debug_server)
-		LIBCALL(debug_server, "auxtools_init")()
+		call_ext(debug_server, "auxtools_init")()
 		enable_debugging()
 	hub_password = "kMZy3U5jJHSiBQjr"
 
@@ -367,7 +367,7 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 		else
 			CRASH("unsupported platform")
 
-	var/init = LIBCALL(lib, "init")()
+	var/init = call_ext(lib, "init")()
 	if("0" != init)
 		CRASH("[lib] init error: [init]")
 

@@ -1,14 +1,14 @@
 /datum/tech/arc
-	name = "M540 Armored Recon Carrier"
-	desc = "Purchase an M540 Armored Recon Carrier, specialized in assisting groundside command. Able to be driven by Staff Officers, Executive Officers, and Commanding Officers."
+	name = "M540-B Armored Recon Carrier"
+	desc = "Purchase an M540-B Armored Recon Carrier, specialized in assisting groundside command. Able to be driven by Staff Officers, Executive Officers, and Commanding Officers."
 	icon_state = "upgrade"
 
 	required_points = 5
 
 	tier = /datum/tier/one
 
-	announce_name = "M540 ARC ACQUIRED"
-	announce_message = "An M540 Armored Recon Carrier has been authorized and will be delivered in the vehicle bay."
+	announce_name = "M540-B ARC ACQUIRED"
+	announce_message = "An M540-B Armored Recon Carrier has been authorized and will be delivered in the vehicle bay."
 
 	flags = TREE_FLAG_MARINE
 

@@ -403,7 +403,7 @@
 		WEAR_HEAD = /obj/item/clothing/head/soft/sec/corp,
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/WY,
 		WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
-		WEAR_BODY = /obj/item/clothing/under/marine/officer/formal/servicedress,
+		WEAR_BODY = /obj/item/clothing/under/colonist/white_service,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/sec,
 		WEAR_IN_BACK = /obj/item/weapon/telebaton,
 		WEAR_JACKET = /obj/item/clothing/suit/storage/webbing,
@@ -492,13 +492,30 @@
 	rank = JOB_WORKING_JOE
 	skills = /datum/skills/working_joe
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_APOLLO, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_GERMAN, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
+	/// Used to set species when loading race
+	var/joe_type = SYNTH_WORKING_JOE
 
 /datum/equipment_preset/synth/working_joe/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_GLOBAL)
 
 /datum/equipment_preset/synth/working_joe/load_race(mob/living/carbon/human/new_human)
-	new_human.set_species(SYNTH_WORKING_JOE)
+	. = ..()
+	new_human.set_species(joe_type)
+	new_human.h_style = "Bald"
+	new_human.f_style = "Shaved"
+	if(prob(5))
+		new_human.grad_style = "None" //No gradients for Working Joes
+		new_human.h_style = "Shoulder-length Hair" //Added the chance of hair as per Monkeyfist lore accuracy
+	new_human.r_eyes = 0
+	new_human.g_eyes = 0
+	new_human.b_eyes = 0
+	new_human.r_hair = 100
+	new_human.g_hair = 88
+	new_human.b_hair = 74
+	new_human.r_facial = 255
+	new_human.g_facial = 255
+	new_human.b_facial = 255
 
 /datum/equipment_preset/synth/working_joe/load_vanity(mob/living/carbon/human/new_human)
 	return
@@ -531,6 +548,7 @@
 
 /datum/equipment_preset/synth/working_joe/engi
 	name = "Synthetic - Hazmat Joe"
+	joe_type = SYNTH_HAZARD_JOE
 
 /datum/equipment_preset/synth/working_joe/engi/load_gear(mob/living/carbon/human/new_human)
 	var/choice = rand(1,2)
@@ -559,8 +577,10 @@
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/large_stack(new_human.back), WEAR_IN_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/glass/reinforced/large_stack(new_human.back), WEAR_IN_R_STORE)
 
+
 /datum/equipment_preset/synth/working_joe/load_race(mob/living/carbon/human/new_human)
 	. = ..()
+	new_human.set_species(joe_type)
 	new_human.h_style = "Bald"
 	new_human.f_style = "Shaved"
 	if(prob(5))

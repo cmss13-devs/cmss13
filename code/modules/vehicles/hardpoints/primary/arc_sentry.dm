@@ -22,10 +22,10 @@
 	muzzleflash_icon_state = "muzzle_flash_double"
 
 	muzzle_flash_pos = list(
-		"1" = list(1, 0),
-		"2" = list(1, -25),
-		"4" = list(16, -4),
-		"8" = list(-16, -4)
+		"1" = list(1, 4),
+		"2" = list(1, -29),
+		"4" = list(16, 3),
+		"8" = list(-16, 3)
 	)
 	gun_firemode = GUN_FIREMODE_BURSTFIRE
 	gun_firemode_list = list(
@@ -184,6 +184,11 @@
 
 	start_fire(object = sentry_target)
 
+/obj/item/hardpoint/primary/arc_sentry/proc/purge_target(mob/target)
+	if(target == sentry_target)
+		sentry_target = null
+	targets.Remove(target)
+
 /obj/item/hardpoint/primary/arc_sentry/can_be_removed(mob/remover)
 	var/obj/vehicle/multitile/arc/arc_owner = owner
 	if(!istype(arc_owner))
@@ -222,8 +227,3 @@
 	var/obj/item/hardpoint/sentry = shot_from
 	if(sentry.owner == hit_obj)
 		return COMPONENT_BULLET_PASS_THROUGH
-
-/obj/item/hardpoint/primary/arc_sentry/proc/purge_target(mob/target)
-	if(target == sentry_target)
-		sentry_target = null
-	targets.Remove(target)

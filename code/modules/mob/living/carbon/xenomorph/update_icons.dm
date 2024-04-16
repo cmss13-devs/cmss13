@@ -148,7 +148,12 @@
 		var/t_state = r_hand.item_state
 		if(!t_state)
 			t_state = r_hand.icon_state
-		overlays_standing[X_R_HAND_LAYER] = r_hand.get_mob_overlay(src, WEAR_R_HAND)
+		/*Move inhand image to the center of the sprite. Strictly speaking this should probably be like monkey get_offset_overlay_image() and tailor item icon
+		positions to the hands of the xeno, but outside of special occasions xenos can't really pick items up and this tends to look better than human default.*/
+		var/image/inhand_image = r_hand.get_mob_overlay(src, WEAR_R_HAND)
+		inhand_image.pixel_x = xeno_inhand_item_offset
+		overlays_standing[X_R_HAND_LAYER] = inhand_image
+
 		apply_overlay(X_R_HAND_LAYER)
 
 /mob/living/carbon/xenomorph/update_inv_l_hand()
@@ -161,7 +166,13 @@
 		var/t_state = l_hand.item_state
 		if(!t_state)
 			t_state = l_hand.icon_state
-		overlays_standing[X_L_HAND_LAYER] = l_hand.get_mob_overlay(src, WEAR_L_HAND)
+
+		/*Move inhand image overlay to the center of the sprite. Strictly speaking this should probably be like monkey get_offset_overlay_image() and tailor item icon
+		positions to the hands of the xeno, but outside of special occasions xenos can't really pick items up and this tends to look better than human default.*/
+		var/image/inhand_image = l_hand.get_mob_overlay(src, WEAR_L_HAND)
+		inhand_image.pixel_x = xeno_inhand_item_offset
+		overlays_standing[X_L_HAND_LAYER] = inhand_image
+
 		apply_overlay(X_L_HAND_LAYER)
 
 /mob/living/carbon/xenomorph/update_inv_back()

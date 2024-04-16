@@ -12,7 +12,7 @@
 	health = 500
 
 	/// How long the antenna deploy/retract animation is, keep accurate to the sprite in the dmi
-	var/deploy_animation_time = 1.7 SECONDS
+	var/deploy_animation_time = 1.2 SECONDS
 	/// If the antenna is already deploying
 	var/deploying = FALSE
 
@@ -81,3 +81,12 @@
 		return FALSE
 
 	return ..()
+
+/obj/item/hardpoint/support/arc_antenna/on_destroy()
+	var/obj/vehicle/multitile/arc/arc_owner = owner
+	if(!istype(arc_owner))
+		return
+
+	if(arc_owner.antenna_deployed)
+		retract_antenna()
+		addtimer(CALLBACK(arc_owner, TYPE_PROC_REF(/obj/vehicle/multitile/arc, finish_antenna_retract)), deploy_animation_time)

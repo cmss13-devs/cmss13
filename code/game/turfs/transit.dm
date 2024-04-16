@@ -122,7 +122,7 @@
 	return FALSE
 
 /mob/living/carbon/human/can_paradrop()
-	if(istype(belt, /obj/item/rappel_harness))
+	if(istype(belt, /obj/item/parachute))
 		return TRUE
 	return ..()
 

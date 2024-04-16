@@ -1305,7 +1305,7 @@
 	combat_equipment = FALSE
 	var/system_cooldown
 
-	var/harness = /obj/item/rappel_harness
+	var/harness = /obj/item/parachute
 
 /obj/structure/dropship_equipment/paradrop_system/ui_data(mob/user)
 	. = list()

@@ -7343,11 +7343,11 @@
 	req_one_access_txt = "3;22;2;19;7"
 	},
 /obj/structure/surface/rack,
-/obj/item/rappel_harness{
+/obj/item/parachute{
 	pixel_y = 8
 	},
-/obj/item/rappel_harness,
-/obj/item/rappel_harness{
+/obj/item/parachute,
+/obj/item/parachute{
 	pixel_y = -6
 	},
 /obj/structure/sign/safety/bulkhead_door{

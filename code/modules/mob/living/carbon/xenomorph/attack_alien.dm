@@ -864,11 +864,7 @@
 	M.visible_message("[M] slashes away at [src]!","We slash and claw at the bright light!", max_distance = 5, message_flags = CHAT_TYPE_XENO_COMBAT)
 	health  = max(health - rand(M.melee_damage_lower, M.melee_damage_upper), 0)
 	if(!health)
-		playsound(src, "glassbreak", 70, 1)
-		damaged = TRUE
-		if(is_lit)
-			set_light(0)
-		update_icon()
+		set_damaged()
 	else
 		playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
 	return XENO_ATTACK_ACTION

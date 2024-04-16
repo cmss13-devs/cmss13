@@ -222,3 +222,14 @@
 2024-04-15:
   LTNTS:
   - maptweak: moves APC in Chance's Claim LZ1 to where it can actually be fixed
+2024-04-16:
+  Huffie56, Zenith, esselnek/sleepynecrons, samy/nauticall, drulikar.:
+  - rscadd: Added fuel pump as machinery on the almayer sprite will change when power
+      is on or off.
+  - rscadd: Fuel pumps are animated when activated and have different state depending
+      on how full the lifeboats are.
+  - imageadd: added the fuel pump icon. updated by esselnek /sleepynecrons and Zenith,
+      they where originally made by nauticall.
+  - maptweak: added the fuel pump to the proper locations.
+  ihatethisengine2:
+  - rscadd: ported stripping menu from TG

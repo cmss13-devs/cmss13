@@ -46,12 +46,10 @@
 	if(!length(ground_z_levels))
 		return ..()
 
-	var/failed_drop = FALSE
-
 	if(dropship.paradrop_signal) //if dropship in paradrop mode, drop them near the signal. Whether they have a parachute or not
 		var/list/valid_turfs = list()
 		var/turf/location = get_turf(dropship.paradrop_signal.signal_loc)
-		for(var/turf/T as anything in RANGE_TURFS(7, location))
+		for(var/turf/T as anything in RANGE_TURFS(crosser.get_paradrop_scatter(), location))
 			var/area/t_area = get_area(T)
 			if(!t_area || CEILING_IS_PROTECTED(t_area.ceiling, CEILING_PROTECTION_TIER_1))
 				continue
@@ -67,16 +65,16 @@
 			if(protected_by_pylon(TURF_PROTECTION_MORTAR, T))
 				continue
 			valid_turfs += T
-
+		var/turf/deploy_turf
 		if(length(valid_turfs)) //if we found a fitting place near the landing zone...
-			var/turf/deploy_turf = pick(valid_turfs)
-			if(crosser.can_paradrop())
-				INVOKE_ASYNC(crosser, TYPE_PROC_REF(/atom/movable, handle_paradrop), deploy_turf, dropship.name)
-				return
-			INVOKE_ASYNC(crosser, TYPE_PROC_REF(/atom/movable, handle_airdrop), deploy_turf, dropship.name)
+			deploy_turf = pick(valid_turfs)
+		else //if we somehow did not. Drop them right on the signal then, there is nothing we can do
+			deploy_turf = location
+		if(crosser.can_paradrop())
+			INVOKE_ASYNC(crosser, TYPE_PROC_REF(/atom/movable, handle_paradrop), deploy_turf, dropship.name)
 			return
-
-		failed_drop = TRUE //If we don't (which hopefully won't happen) we will try to just drop them somewhere else, emergency gameplay?
+		INVOKE_ASYNC(crosser, TYPE_PROC_REF(/atom/movable, handle_airdrop), deploy_turf, dropship.name)
+		return
 
 	//find a random spot to drop them
 	var/list/area/potential_areas = shuffle(SSmapping.areas_in_z["[ground_z_levels[1]]"])
@@ -98,9 +96,6 @@
 		if(!istype(possible_turf) || is_blocked_turf(possible_turf) || istype(possible_turf, /turf/open/space))
 			continue // couldnt find one in 10 loops, check another area
 
-		if(failed_drop)
-			to_chat(crosser, SPAN_BOLDWARNING("You got carried away from the dropping zone by the wind!"))
-
 		// we found a good turf, lets drop em
 		if(crosser.can_paradrop())
 			INVOKE_ASYNC(crosser, TYPE_PROC_REF(/atom/movable, handle_paradrop), possible_turf, dropship.name)
@@ -116,18 +111,22 @@
 		return
 	return ..() // they couldn't be dropped, just delete them
 
-
-
 /atom/movable/proc/can_paradrop()
 	return FALSE
 
+/atom/movable/proc/get_paradrop_scatter()
+	return 7
+
 /mob/living/carbon/human/can_paradrop()
-	if(istype(belt, /obj/item/parachute))
+	if(istype(back, /obj/item/parachute))
 		return TRUE
 	return ..()
 
 /obj/structure/closet/crate/can_paradrop() //for now all crates can be paradropped
 	return TRUE
+
+/obj/structure/closet/crate/get_paradrop_scatter() //crates land closer to the signal
+	return 4
 
 /atom/movable/proc/handle_paradrop(turf/target, dropship_name)
 	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_DROPSHIP_INTERACTION)
@@ -142,6 +141,7 @@
 	src.overlays += chute
 	src.pixel_z = 360
 	src.forceMove(target)
+	playsound(target, 'sound/items/fulton.ogg', 30, 1)
 	animate(src, time = 3.5 SECONDS, pixel_z = 0, flags = ANIMATION_PARALLEL)
 	addtimer(CALLBACK(target, TYPE_PROC_REF(/turf, ceiling_debris)), 2 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(clear_parachute), cables, chute), 3.5 SECONDS)

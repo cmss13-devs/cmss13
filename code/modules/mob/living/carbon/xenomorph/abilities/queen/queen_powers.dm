@@ -409,6 +409,8 @@
 	var/datum/hive_status/corrupted/hive = user_xeno.hive
 	var/list/target_list = list()
 	for(var/mob/living/carbon/human/possible_target in view(7, user_xeno))
+		if(possible_target.stat == DEAD)
+			continue
 		if(possible_target.status_flags & CORRUPTED_ALLY)
 			continue
 		target_list += possible_target

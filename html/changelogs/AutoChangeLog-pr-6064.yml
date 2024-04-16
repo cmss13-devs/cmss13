@@ -1,7 +1,0 @@
-author: "BadAtThisGame302"
-delete-after: True
-changes:
-  - rscadd: "Added the new UPPA and Naval Patches to all UPP inserts."
-  - bugfix: "Fixed the insulated gloves not having the insulated sprite."
-  - imageadd: "added a black and blue satchel, also an updated red armband sprite courtesy of AmoryBlaine"
-  - imageadd: "added a big UA flag, a UPP table and two new UPP patches all thanks to the folks over at PVE. AmoryBlaine, Morrow and AndroBetel"

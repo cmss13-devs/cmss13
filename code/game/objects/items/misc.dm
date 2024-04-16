@@ -296,7 +296,7 @@
 	name = "parachute"
 	desc = "A simple, uncomfortable harness with just enough safety straps to make RnD pass health and safety. It comes with an in-built descender, but has no pouches for ammunition. You won't be able to paradrop without this thing."
 	icon = 'icons/obj/items/clothing/backpacks.dmi'
-	icon_state = "parachute"
-	item_state = "parachute"
+	icon_state = "parachute_pack"
+	item_state = "parachute_pack"
 	w_class = SIZE_MASSIVE
 	flags_equip_slot = SLOT_BACK

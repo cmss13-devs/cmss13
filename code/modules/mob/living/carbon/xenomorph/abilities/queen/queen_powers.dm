@@ -464,7 +464,7 @@
 		to_chat(user_xeno, SPAN_WARNING("We don't have personal allies."))
 		return
 
-	if(tgui_alert(user_xeno, "Are you sure you want to clear personal allies?", "Clear Personal Allies", list("Yes", "No"), 10 SECONDS) == "Yes")
+	if(tgui_alert(user_xeno, "Are you sure you want to clear personal allies?", "Clear Personal Allies", list("No", "Yes"), 10 SECONDS) == "Yes")
 		hive.clear_personal_allies()
 
 

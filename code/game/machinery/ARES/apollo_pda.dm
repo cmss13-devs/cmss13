@@ -166,7 +166,7 @@
 			requesting_access += access_ticket.ticket_name
 	data["access_tickets"] = logged_access
 
-	data["security_vents"] = get_ares_vents()
+	data["security_vents"] = link.get_ares_vents()
 
 	return data
 

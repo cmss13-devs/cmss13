@@ -214,7 +214,7 @@
 	data["active_ref"] = active_ref
 	data["conversations"] = logged_convos
 
-	data["security_vents"] = get_ares_vents()
+	data["security_vents"] = link.get_ares_vents()
 
 	return data
 

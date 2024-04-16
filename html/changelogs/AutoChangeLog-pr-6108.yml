@@ -1,0 +1,4 @@
+author: "usnpeepoo"
+delete-after: True
+changes:
+  - balance: "Berserker's rage lock-out duration increased slightly"

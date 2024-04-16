@@ -1,0 +1,4 @@
+author: "QuickLode"
+delete-after: True
+changes:
+  - balance: "M3A1 Synthetic Utility Vest only has a 10% slowdown."

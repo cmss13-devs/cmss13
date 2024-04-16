@@ -68,7 +68,10 @@
 
 /obj/structure/machinery/reagentgrinder/Destroy()
 	cleanup()
-	. = ..()
+
+	QDEL_NULL(beaker)
+
+	return ..()
 
 /obj/structure/machinery/reagentgrinder/update_icon()
 	icon_state = "juicer"+num2text(!isnull(beaker))

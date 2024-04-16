@@ -55,6 +55,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_admin_sound_types,
 	/client/proc/receive_random_tip,
 	/client/proc/set_eye_blur_type,
+	/client/proc/set_flash_type,
+	/client/proc/set_crit_type,
 ))
 
 /client/proc/reduce_minute_count()

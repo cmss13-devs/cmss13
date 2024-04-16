@@ -105,6 +105,7 @@ SUBSYSTEM_DEF(hijack)
 
 	if(hijack_status < HIJACK_OBJECTIVES_STARTED)
 		hijack_status = HIJACK_OBJECTIVES_STARTED
+		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_FUEL_PUMP_UPDATE)
 
 	if(current_progress >= required_progress)
 		if(hijack_status < HIJACK_OBJECTIVES_COMPLETE)
@@ -157,6 +158,7 @@ SUBSYSTEM_DEF(hijack)
 	if(current_progress >= announce_checkpoint)
 		announce_progress()
 		announce_checkpoint += initial(announce_checkpoint)
+		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_FUEL_PUMP_UPDATE)
 
 	current_run_progress_additive = 0
 	current_run_progress_multiplicative = 1

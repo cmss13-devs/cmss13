@@ -6863,7 +6863,7 @@
 /area/lv522/atmos/east_reactor)
 "dkJ" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/cameras/wooden_tv/prop{
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast{
 	dir = 8;
 	layer = 3;
 	pixel_x = 5;
@@ -9855,6 +9855,17 @@
 /obj/vehicle/train/cargo/engine,
 /turf/open/floor/plating,
 /area/lv522/landing_zone_1/tunnel)
+"evg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/lv624/fog_blocker/short,
+/obj/structure/machinery/power/apc/weak{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "greenfull"
+	},
+/area/lv522/landing_zone_1/ceiling)
 "evu" = (
 /obj/structure/tunnel/maint_tunnel{
 	pixel_y = 6
@@ -15281,7 +15292,7 @@
 /area/lv522/outdoors/nw_rockies)
 "gEQ" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/cameras/wooden_tv/prop{
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast{
 	dir = 1;
 	pixel_x = -10;
 	pixel_y = 6
@@ -20248,7 +20259,7 @@
 /area/lv522/outdoors/nw_rockies)
 "ivN" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/cameras/wooden_tv/prop{
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast{
 	pixel_y = 8
 	},
 /turf/open/floor/prison{
@@ -26446,7 +26457,7 @@
 /area/lv522/atmos/cargo_intake)
 "kCN" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/cameras/wooden_tv/prop{
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast{
 	pixel_y = 16
 	},
 /obj/item/trash/plate,
@@ -32795,7 +32806,7 @@
 /area/lv522/indoors/a_block/dorms)
 "mZK" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/cameras/wooden_tv/prop{
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast{
 	pixel_x = 16;
 	pixel_y = 7
 	},
@@ -54626,7 +54637,7 @@
 "val" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/cameras/wooden_tv/prop{
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast{
 	dir = 1;
 	pixel_y = 3
 	},
@@ -61924,15 +61935,6 @@
 	icon_state = "marked"
 	},
 /area/lv522/indoors/a_block/fitness)
-"xOS" = (
-/obj/structure/machinery/power/apc/weak{
-	dir = 1
-	},
-/obj/effect/landmark/lv624/fog_blocker/short,
-/turf/open/asphalt/cement{
-	icon_state = "cement12"
-	},
-/area/lv522/landing_zone_1)
 "xPa" = (
 /obj/structure/machinery/conveyor,
 /turf/open/floor/plating,
@@ -66660,7 +66662,7 @@ cpy
 tFx
 tFx
 wnP
-rzz
+evg
 syM
 rnT
 lBl
@@ -66889,7 +66891,7 @@ moz
 mvP
 ggS
 tFx
-xOS
+rnT
 lBl
 ttT
 pkH

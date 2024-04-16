@@ -127,7 +127,7 @@
 		if(!same_loc)
 			if(oldloc)
 				oldloc.Exited(src, destination)
-				if(old_area && old_area != destarea)
+				if(old_area && (old_area != destarea || !isturf(destination)))
 					old_area.Exited(src, destination)
 			for(var/atom/movable/AM in oldloc)
 				AM.Uncrossed(src)
@@ -138,7 +138,7 @@
 			if(old_z != dest_z)
 				onTransitZ(old_z, dest_z)
 			destination.Entered(src, oldloc)
-			if(destarea && old_area != destarea)
+			if(destarea && (old_area != destarea || !isturf(oldloc)))
 				destarea.Entered(src, oldloc)
 
 			for(var/atom/movable/AM in destination)

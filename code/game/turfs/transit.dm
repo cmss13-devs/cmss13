@@ -141,11 +141,15 @@
 	src.overlays += chute
 	src.pixel_z = 360
 	src.forceMove(target)
-	//playsound(target, 'sound/items/fulton.ogg', 30, 1)
+	playsound(src, 'sound/items/fulton.ogg', 30, 1)
 	animate(src, time = 3.5 SECONDS, pixel_z = 0, flags = ANIMATION_PARALLEL)
-	addtimer(CALLBACK(GLOBAL_PROC_REF(playsound), target, 'sound/items/fulton.ogg', 30, 1), 0.5 SECONDS)
 	addtimer(CALLBACK(target, TYPE_PROC_REF(/turf, ceiling_debris)), 2 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(clear_parachute), cables, chute), 3.5 SECONDS)
+
+/mob/living/carbon/handle_paradrop(turf/target, dropship_name)
+	..()
+	if(client)
+		playsound_client(client, 'sound/items/fulton.ogg', src, 50, 1) //for some reason you don't hear the sound while dropping, maybe because of force move?
 
 /atom/movable/proc/clear_parachute(image/cables, image/chute)
 	if(QDELETED(src))

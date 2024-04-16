@@ -50,7 +50,7 @@ SUBSYSTEM_DEF(ticker)
 
 	var/totalPlayers = 0 //used for pregame stats on statpanel
 	var/totalPlayersReady = 0 //used for pregame stats on statpanel
-	var/tutorial_disabled = FALSE //zonenote
+	var/tutorial_disabled = FALSE
 
 /datum/controller/subsystem/ticker/Initialize(timeofday)
 	load_mode()
@@ -511,10 +511,3 @@ SUBSYSTEM_DEF(ticker)
 	if(mode)
 		mode.is_in_endgame = TRUE
 		mode.force_end_at = (world.time + 25 MINUTES)
-
-/datum/controller/subsystem/ticker/proc/check_bp_tier(ckey = "", tiernum = 1) //ZONENOTE, REMOVE, REMOVE BEFORE FULLMERGE
-	if(!fexists("data/player_saves/[copytext(ckey, 1, 2)]/[ckey]/battlepass.sav"))
-		return FALSE
-
-	var/savefile/save_obj = new("data/player_saves/[copytext(ckey, 1, 2)]/[ckey]/battlepass.sav")
-	return (save_obj["tier"] >= tiernum)

@@ -15243,7 +15243,8 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "bMg" = (
-/obj/structure/pipes/vents/pump{
+/obj/structure/pipes/vents/pump/no_boom/gas{
+	vent_tag = "Synth Bay";
 	dir = 8
 	},
 /turf/open/floor/almayer/aicore/no_build,

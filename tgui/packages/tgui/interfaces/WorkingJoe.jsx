@@ -19,8 +19,13 @@ export const WorkingJoe = (props) => {
   const { current_menu } = data;
   const PageComponent = PAGES[current_menu]();
 
+  let themecolor = 'crtblue';
+  if (current_menu === 'core_security_gas') {
+    themecolor = 'crtred';
+  }
+
   return (
-    <Window theme="crtblue" width={950} height={725}>
+    <Window theme={themecolor} width={950} height={725}>
       <Window.Content scrollable>
         <PageComponent />
       </Window.Content>
@@ -243,12 +248,13 @@ const MainMenu = (props) => {
             <Stack.Item grow>
               <Button
                 content="Nerve Gas Control"
+                align="center"
                 tooltip="Release stored CN20-X nerve gas from security vents."
                 icon="wind"
                 color="red"
                 ml="auto"
                 px="2rem"
-                width="33vw"
+                width="100%"
                 bold
                 onClick={() => act('page_core_gas')}
               />
@@ -1039,9 +1045,11 @@ const CoreSecGas = (props) => {
           return (
             <Button.Confirm
               key={i}
+              align="center"
               content={vent.vent_tag}
               icon="wind"
               tooltip="Release Gas"
+              width="100%"
               disabled={access_level < 5 || !vent.available}
               onClick={() => act('trigger_vent', { vent: vent.ref })}
             />

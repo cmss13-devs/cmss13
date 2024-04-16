@@ -36,6 +36,8 @@ export const AresInterface = (props) => {
     themecolor = 'crtred';
   } else if (current_menu === 'emergency') {
     themecolor = 'crtred';
+  } else if (current_menu === 'core_security') {
+    themecolor = 'crtred';
   }
 
   return (
@@ -280,7 +282,7 @@ const MainMenu = (props) => {
             </Stack.Item>
           </Stack>
         )}
-        {(access_level >= 6 || access_level === 3) && (
+        {access_level >= 6 && (
           <Stack>
             <Stack.Item grow>
               <h3>Access Level 6</h3>
@@ -295,19 +297,6 @@ const MainMenu = (props) => {
                 width="25vw"
                 bold
                 onClick={() => act('page_access')}
-              />
-            </Stack.Item>
-            <Stack.Item>
-              <Button
-                content="Core Security"
-                tooltip="Utilise the AI Core security features."
-                icon="shield"
-                color="red"
-                ml="auto"
-                px="2rem"
-                width="25vw"
-                bold
-                onClick={() => act('page_core_sec')}
               />
             </Stack.Item>
           </Stack>
@@ -379,6 +368,27 @@ const MainMenu = (props) => {
           </Stack>
         )}
       </Section>
+      {(access_level === 3 || access_level >= 6) && (
+        <Section>
+          <h1 align="center">Core Security Protocols</h1>
+          <Stack>
+            <Stack.Item grow>
+              <Button
+                content="Nerve Gas Control"
+                align="center"
+                tooltip="Release stored CN20-X nerve gas from security vents."
+                icon="wind"
+                color="red"
+                ml="auto"
+                px="2rem"
+                width="100%"
+                bold
+                onClick={() => act('page_core_sec')}
+              />
+            </Stack.Item>
+          </Stack>
+        </Section>
+      )}
     </>
   );
 };
@@ -1742,9 +1752,11 @@ const CoreSec = (props) => {
           return (
             <Button.Confirm
               key={i}
+              align="center"
               content={vent.vent_tag}
               icon="wind"
               tooltip="Release Gas"
+              width="100%"
               disabled={
                 (access_level < 5 && access_level !== 3) || !vent.available
               }

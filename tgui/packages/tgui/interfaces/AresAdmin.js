@@ -33,6 +33,10 @@ export const AresAdmin = (props, context) => {
   let themecolor = 'crtyellow';
   if (sudo >= 1) {
     themecolor = 'crtred';
+  } else if (current_menu === 'emergency') {
+    themecolor = 'crtred';
+  } else if (current_menu === 'core_security') {
+    themecolor = 'crtred';
   }
 
   return (
@@ -349,6 +353,25 @@ const MainMenu = (props, context) => {
               />
             </Stack.Item>
           )}
+        </Stack>
+      </Section>
+      <Section>
+        <h1 align="center">Core Security Protocols</h1>
+        <Stack>
+          <Stack.Item grow>
+            <Button
+              content="Nerve Gas Control"
+              align="center"
+              tooltip="Release stored CN20-X nerve gas from security vents."
+              icon="wind"
+              color="red"
+              ml="auto"
+              px="2rem"
+              width="100%"
+              bold
+              onClick={() => act('page_core_sec')}
+            />
+          </Stack.Item>
         </Stack>
       </Section>
       <Section>
@@ -1708,10 +1731,10 @@ const CoreSec = (props) => {
   const {
     logged_in,
     access_text,
-    access_level,
     last_page,
     current_menu,
     security_vents,
+    admin_login,
   } = data;
 
   return (
@@ -1762,9 +1785,11 @@ const CoreSec = (props) => {
           return (
             <Button.Confirm
               key={i}
+              align="center"
               content={vent.vent_tag}
               icon="wind"
               tooltip="Release Gas"
+              width="100%"
               disabled={!vent.available}
               onClick={() => act('trigger_vent', { vent: vent.ref })}
             />

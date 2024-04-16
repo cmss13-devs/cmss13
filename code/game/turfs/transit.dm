@@ -172,6 +172,13 @@
 	if(!indestructible && prob(30)) // throwing objects from the air is not always a good idea
 		deconstruct(FALSE)
 
+/obj/structure/closet/handle_airdrop(turf/target, dropship_name) // good idea but no
+	if(!opened)
+		for(var/atom/movable/content in src)
+			INVOKE_ASYNC(content, TYPE_PROC_REF(/atom/movable, handle_airdrop), target, dropship_name)
+		open()
+	. = ..()
+
 /obj/item/handle_airdrop(turf/target, dropship_name)
 	..()
 	if(QDELETED(src))

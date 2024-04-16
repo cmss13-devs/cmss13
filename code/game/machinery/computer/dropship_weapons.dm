@@ -481,7 +481,6 @@
 						return
 					paradrop_system.system_cooldown = world.time + 5 SECONDS
 					paradrop_system.visible_message(SPAN_NOTICE("[equipment] hums as it locks to a signal."))
-					//paradrop_system.langchat_speech("Don't forget your paradrop harness little guy!", get_mobs_in_view(7, paradrop_system), null, "#c51f1f", TRUE, LANGCHAT_DEFAULT_POP) don't review I'll remove that (9 years ago)
 					break
 			linked_shuttle.paradrop_signal = sig
 			addtimer(CALLBACK(src, PROC_REF(open_aft_for_paradrop)), 2 SECONDS)

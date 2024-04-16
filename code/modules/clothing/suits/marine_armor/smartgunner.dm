@@ -48,6 +48,9 @@
 	if(slot != WEAR_BACK)
 		return
 
+	if(equipping_item.flags_item & SMARTGUNNER_BACKPACK_OVERRIDE)
+		return
+
 	. = COMPONENT_HUMAN_CANCEL_ATTEMPT_EQUIP
 
 	if(equipping_item.flags_equip_slot == SLOT_BACK)

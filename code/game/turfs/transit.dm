@@ -141,8 +141,9 @@
 	src.overlays += chute
 	src.pixel_z = 360
 	src.forceMove(target)
-	playsound(target, 'sound/items/fulton.ogg', 30, 1)
+	//playsound(target, 'sound/items/fulton.ogg', 30, 1)
 	animate(src, time = 3.5 SECONDS, pixel_z = 0, flags = ANIMATION_PARALLEL)
+	addtimer(CALLBACK(GLOBAL_PROC_REF(playsound), target, 'sound/items/fulton.ogg', 30, 1), 0.5 SECONDS)
 	addtimer(CALLBACK(target, TYPE_PROC_REF(/turf, ceiling_debris)), 2 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(clear_parachute), cables, chute), 3.5 SECONDS)
 

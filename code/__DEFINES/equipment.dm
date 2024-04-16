@@ -84,6 +84,8 @@
 #define IGNITING_ITEM (1<<13)
 /// Overrides NODROP in some cases (stripping)
 #define FORCEDROP_CONDITIONAL (1<<14)
+/// Overrides smartgunner no being able to wear backpacks
+#define SMARTGUNNER_BACKPACK_OVERRIDE (1<<15)
 //==========================================================================================
 
 

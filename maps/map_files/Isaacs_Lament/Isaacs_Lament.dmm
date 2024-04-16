@@ -18178,7 +18178,7 @@
 "iCC" = (
 /obj/structure/machinery/door_control{
 	desc = "A garage door opener.";
-	id = 'cargo_ship_l';
+	id = "cargo_ship_l";
 	name = "garage door opener";
 	pixel_x = 1;
 	pixel_y = 28;
@@ -27621,7 +27621,7 @@
 "mWq" = (
 /obj/structure/machinery/door_control{
 	desc = "A garage door opener.";
-	id = 'cargo_ship_r';
+	id = "cargo_ship_r";
 	name = "garage door opener";
 	pixel_x = 1;
 	pixel_y = 28;
@@ -49843,7 +49843,7 @@
 "wZf" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
-	id = 'cargo_ship_l';
+	id = "cargo_ship_l";
 	name = "\improper SS Athens Cargo Hold"
 	},
 /turf/open/floor/almayer{
@@ -50323,7 +50323,7 @@
 "xkF" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
-	id = 'cargo_ship_r';
+	id = "cargo_ship_r";
 	name = "\improper SS Athens Cargo Hold"
 	},
 /turf/open/floor/almayer{

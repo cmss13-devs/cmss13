@@ -182,21 +182,17 @@
 
 	add_temp_pass_flags(pass_flags)
 
-	var/turf/start_turf = get_step_towards(src, LM.target)
-	var/list/turf/path = get_line(start_turf, LM.target)
 	var/last_loc = loc
 
 	var/early_exit = FALSE
 	LM.dist = 0
-	for (var/turf/T in path)
-		if (!src || !throwing || loc != last_loc || !isturf(src.loc))
-			break
+	while (src && throwing && loc == last_loc && isturf(src.loc)) // While looks scary at first but it's basically just a for until LM.dist reaches LM.range
 		if (!LM || QDELETED(LM))
 			early_exit = TRUE
 			break
 		if (LM.dist >= LM.range)
 			break
-		if (!Move(T)) // If this returns FALSE, then a collision happened
+		if (!Move(get_step_towards(src, LM.target))) // If this returns FALSE, then a collision happened
 			break
 		last_loc = loc
 		if (++LM.dist >= LM.range)

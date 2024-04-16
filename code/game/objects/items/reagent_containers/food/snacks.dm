@@ -2744,6 +2744,10 @@
 	var/list/boxes = list() // If the boxes are stacked, they come here
 	var/boxtag = ""
 
+/obj/item/pizzabox/Destroy(force)
+	QDEL_NULL(pizza)
+	return ..()
+
 /obj/item/pizzabox/update_icon()
 
 	overlays = list()

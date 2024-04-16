@@ -45,7 +45,7 @@
 			return
 
 		antenna.retract_antenna()
-		addtimer(CALLBACK(vehicle, PROC_REF(finish_antenna_retract), vehicle, user), antenna.deploy_animation_time)
+		addtimer(CALLBACK(vehicle, PROC_REF(finish_antenna_retract), user), antenna.deploy_animation_time)
 
 	else
 		to_chat(user, SPAN_NOTICE("You begin to extend [antenna]..."))
@@ -56,33 +56,35 @@
 			return
 
 		antenna.deploy_antenna()
-		addtimer(CALLBACK(vehicle, PROC_REF(finish_antenna_deploy), vehicle, user), antenna.deploy_animation_time)
+		addtimer(CALLBACK(vehicle, PROC_REF(finish_antenna_deploy), user), antenna.deploy_animation_time)
 
-/obj/vehicle/multitile/arc/proc/finish_antenna_retract(obj/vehicle/multitile/arc/vehicle, mob/user)
-	var/obj/item/hardpoint/support/arc_antenna/antenna = locate() in vehicle.hardpoints
+/obj/vehicle/multitile/arc/proc/finish_antenna_retract(mob/user)
+	var/obj/item/hardpoint/support/arc_antenna/antenna = locate() in hardpoints
 	if(!antenna)
 		antenna.deploying = FALSE
 		return
 
-	to_chat(user, SPAN_NOTICE("You retract [antenna], enabling the ARC to move again."))
-	playsound(user, 'sound/machines/hydraulics_2.ogg', 80, TRUE)
-	vehicle.antenna_deployed = !vehicle.antenna_deployed
+	if(user)
+		to_chat(user, SPAN_NOTICE("You retract [antenna], enabling the ARC to move again."))
+		playsound(user, 'sound/machines/hydraulics_2.ogg', 80, TRUE)
+	antenna_deployed = !antenna_deployed
 	antenna.deploying = FALSE
-	vehicle.update_icon()
-	SEND_SIGNAL(vehicle, COMSIG_ARC_ANTENNA_TOGGLED)
+	update_icon()
+	SEND_SIGNAL(src, COMSIG_ARC_ANTENNA_TOGGLED)
 
-/obj/vehicle/multitile/arc/proc/finish_antenna_deploy(obj/vehicle/multitile/arc/vehicle, mob/user)
-	var/obj/item/hardpoint/support/arc_antenna/antenna = locate() in vehicle.hardpoints
+/obj/vehicle/multitile/arc/proc/finish_antenna_deploy(mob/user)
+	var/obj/item/hardpoint/support/arc_antenna/antenna = locate() in hardpoints
 	if(!antenna)
 		antenna.deploying = FALSE
 		return
 
-	to_chat(user, SPAN_NOTICE("You extend [antenna], locking the ARC in place."))
-	playsound(user, 'sound/machines/hydraulics_2.ogg', 80, TRUE)
-	vehicle.antenna_deployed = !vehicle.antenna_deployed
+	if(user)
+		to_chat(user, SPAN_NOTICE("You extend [antenna], locking the ARC in place."))
+		playsound(user, 'sound/machines/hydraulics_2.ogg', 80, TRUE)
+	antenna_deployed = !antenna_deployed
 	antenna.deploying = FALSE
-	vehicle.update_icon()
-	SEND_SIGNAL(vehicle, COMSIG_ARC_ANTENNA_TOGGLED)
+	update_icon()
+	SEND_SIGNAL(src, COMSIG_ARC_ANTENNA_TOGGLED)
 
 /obj/vehicle/multitile/arc/proc/open_arc_controls_guide()
 	set name = "Vehicle Controls Guide"

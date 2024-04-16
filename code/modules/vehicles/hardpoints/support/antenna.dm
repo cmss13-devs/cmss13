@@ -81,3 +81,12 @@
 		return FALSE
 
 	return ..()
+
+/obj/item/hardpoint/support/arc_antenna/on_destroy()
+	var/obj/vehicle/multitile/arc/arc_owner = owner
+	if(!istype(arc_owner))
+		return
+
+	if(arc_owner.antenna_deployed)
+		retract_antenna()
+		addtimer(CALLBACK(arc_owner, TYPE_PROC_REF(/obj/vehicle/multitile/arc, finish_antenna_retract)), deploy_animation_time)

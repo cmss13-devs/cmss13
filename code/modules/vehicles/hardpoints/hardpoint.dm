@@ -151,7 +151,7 @@
 	if(owner || indestructible)
 		return
 
-	health = max(0, health - severity / 2)
+	take_damage(severity / 2)
 	if(health <= 0)
 		visible_message(SPAN_WARNING("\The [src] disintegrates into useless pile of scrap under the damage it suffered."))
 		deconstruct(TRUE)
@@ -182,7 +182,14 @@
 		return TRUE
 
 /obj/item/hardpoint/proc/take_damage(damage)
+	if(health <= 0)
+		return
 	health = max(0, health - damage * damage_multiplier)
+	if(!health)
+		on_destroy()
+
+/obj/item/hardpoint/proc/on_destroy()
+	return
 
 /obj/item/hardpoint/proc/is_activatable()
 	if(health <= 0)

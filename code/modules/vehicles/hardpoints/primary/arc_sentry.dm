@@ -184,6 +184,11 @@
 
 	start_fire(object = sentry_target)
 
+/obj/item/hardpoint/primary/arc_sentry/proc/purge_target(mob/target)
+	if(target == sentry_target)
+		sentry_target = null
+	targets.Remove(target)
+
 /obj/item/hardpoint/primary/arc_sentry/can_be_removed(mob/remover)
 	var/obj/vehicle/multitile/arc/arc_owner = owner
 	if(!istype(arc_owner))
@@ -222,8 +227,3 @@
 	var/obj/item/hardpoint/sentry = shot_from
 	if(sentry.owner == hit_obj)
 		return COMPONENT_BULLET_PASS_THROUGH
-
-/obj/item/hardpoint/primary/arc_sentry/proc/purge_target(mob/target)
-	if(target == sentry_target)
-		sentry_target = null
-	targets.Remove(target)

@@ -1,7 +1,6 @@
 
 
 
-
 /// Dropship weaponry ammunition
 /obj/structure/ship_ammo
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
@@ -288,6 +287,11 @@
 	point_cost = 300
 	fire_mission_delay = 4 //We don't care because our ammo has just 1 rocket
 
+/obj/structure/ship_ammo/rocket/widowmaker/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
+	impact.ceiling_debris_check(3)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 300, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name)), source_mob), 0.5 SECONDS) //Your standard HE splash damage rocket. Good damage, good range, good speed, it's an all rounder
+	QDEL_IN(src, 0.5 SECONDS)
+
 /obj/structure/ship_ammo/rocket/custom_missile
 	name = "\improper AIM-224B-C 'Widowmaker Custom'"
 	desc = "A modified version of the AIM-224B missile, allows for custom reagent mix to be inserted in the receptacle"
@@ -377,11 +381,7 @@
 			bomb.reaction_limits = reaction_limits
 			bomb.allow_star_shape = FALSE
 			bomb.prime(TRUE)
-	QDEL_IN(src, 0.5 SECONDS)
-
-/obj/structure/ship_ammo/rocket/widowmaker/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
-	impact.ceiling_debris_check(3)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 300, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name)), source_mob), 0.5 SECONDS) //Your standard HE splash damage rocket. Good damage, good range, good speed, it's an all rounder
+			create_cause_data(initial(name), source_mob)
 	QDEL_IN(src, 0.5 SECONDS)
 
 /obj/structure/ship_ammo/rocket/banshee

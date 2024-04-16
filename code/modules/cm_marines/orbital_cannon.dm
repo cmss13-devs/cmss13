@@ -187,7 +187,7 @@ GLOBAL_LIST(ob_type_fuel_requirements)
 	var/ares_message = "Shell chambered."
 	if(misfuel)
 		message += " It is misfueled by [misfuel] units!"
-		ares_message += " It is misfueled by [misfuel] units!"
+		ares_message += "Fuel imbalance detected!"
 	message_admins(message, x, y, z)
 	log_ares_bombardment(user, lowertext(tray.warhead.name), ares_message)
 

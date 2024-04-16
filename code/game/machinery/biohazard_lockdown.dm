@@ -1,6 +1,6 @@
 #define LOCKDOWN_READY 0
 #define LOCKDOWN_ACTIVE 1
-GLOBAL_VAR_INIT(lockdown_state, LOCKDOWN_READY)
+GLOBAL_VAR_INIT(med_lockdown_state, LOCKDOWN_READY)
 
 /obj/structure/machinery/biohazard_lockdown
 	name = "Emergency Containment Breach"
@@ -51,7 +51,7 @@ GLOBAL_VAR_INIT(lockdown_state, LOCKDOWN_READY)
 	base_icon_state = "w_almayer_pdoor"
 
 /client/proc/admin_biohazard_alert()
-	set name = "Containment Breach Alert"
+	set name = "Research Containment Lockdown"
 	set category = "Admin.Ship"
 
 	if(!admin_holder ||!check_rights(R_EVENT))
@@ -83,13 +83,13 @@ GLOBAL_VAR_INIT(lockdown_state, LOCKDOWN_READY)
 		log += " (Admin Triggered)."
 		ares_log = "[MAIN_AI_SYSTEM] triggered Medical Research Biohazard Containment Lockdown."
 
-	switch(GLOB.lockdown_state)
+	switch(GLOB.med_lockdown_state)
 		if(LOCKDOWN_READY)
-			GLOB.lockdown_state = LOCKDOWN_ACTIVE
+			GLOB.med_lockdown_state = LOCKDOWN_ACTIVE
 			set_security_level(SEC_LEVEL_RED, TRUE, FALSE)
 			SEND_GLOBAL_SIGNAL(COMSIG_GLOB_RESEARCH_LOCKDOWN)
 		if(LOCKDOWN_ACTIVE)
-			GLOB.lockdown_state = LOCKDOWN_READY
+			GLOB.med_lockdown_state = LOCKDOWN_READY
 			message = "ATTENTION! \n\nBIOHAZARD CONTAINMENT LOCKDOWN LIFTED."
 			log = "[key_name(user)] lifted research bio lockdown!"
 			ares_log = "[user.name] lifted Medical Research Biohazard Containment Lockdown."

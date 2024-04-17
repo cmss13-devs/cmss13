@@ -46,7 +46,9 @@
 "al" = (
 /obj/structure/machinery/door/airlock/almayer/command/colony{
 	dir = 1;
-	name = "\improper Operations Meeting Room"
+	name = "\improper Operations Meeting Room";
+	density = 0;
+	icon_state = "door_open"
 	},
 /turf/open/floor{
 	icon_state = "delivery"
@@ -86,11 +88,17 @@
 	},
 /area/bigredv2/outside/admin_building)
 "at" = (
-/obj/structure/bed/chair/comfy/black,
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/barricade/metal/wired{
+	dir = 1;
+	icon_state = "metal_2"
+	},
 /turf/open/floor/carpet,
 /area/bigredv2/outside/admin_building)
 "au" = (
 /obj/effect/landmark/corpsespawner/wygoon,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs/body,
 /turf/open/floor/carpet,
 /area/bigredv2/outside/admin_building)
 "av" = (
@@ -118,6 +126,8 @@
 /area/bigredv2/outside/admin_building)
 "aA" = (
 /obj/effect/landmark/corpsespawner/wygoon,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs/body,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -191,6 +201,7 @@
 /area/bigredv2/outside/admin_building)
 "aO" = (
 /obj/item/storage/secure/briefcase,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/carpet,
 /area/bigredv2/outside/admin_building)
 "aP" = (
@@ -247,6 +258,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aY" = (
+/obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "darkred2"
@@ -284,6 +296,8 @@
 	dir = 4
 	},
 /obj/effect/landmark/corpsespawner/wygoon,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs/body,
 /turf/open/floor/carpet,
 /area/bigredv2/outside/admin_building)
 "bc" = (
@@ -367,6 +381,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "bn" = (
+/obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor{
 	dir = 10;
 	icon_state = "darkred2"
@@ -402,12 +417,29 @@
 	pixel_x = -6;
 	pixel_y = -4
 	},
+/obj/item/stack/sheet/metal{
+	pixel_x = -5;
+	pixel_y = 2
+	},
 /turf/open/floor/carpet,
+/area/bigredv2/outside/admin_building)
+"ek" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor{
+	icon_state = "darkred2"
+	},
+/area/bigredv2/outside/admin_building)
+"hu" = (
+/obj/effect/acid_hole{
+	dir = 4
+	},
+/turf/closed/wall/solaris,
 /area/bigredv2/outside/admin_building)
 "is" = (
 /obj/item/ammo_magazine/pistol/rubber{
 	current_rounds = 0
 	},
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -426,18 +458,17 @@
 	current_rounds = 0;
 	pixel_y = 11
 	},
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor{
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/admin_building)
-"mq" = (
-/obj/structure/window/framed/solaris/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "Operations";
-	name = "\improper Operations Shutters"
+"nX" = (
+/obj/item/stack/sheet/metal{
+	pixel_x = 3;
+	pixel_y = -11
 	},
-/turf/open/floor/plating,
+/turf/open/floor/carpet,
 /area/bigredv2/outside/admin_building)
 "rv" = (
 /obj/item/ammo_magazine/rifle{
@@ -445,6 +476,12 @@
 	},
 /turf/open/floor{
 	icon_state = "wood"
+	},
+/area/bigredv2/outside/admin_building)
+"sh" = (
+/obj/item/shard,
+/turf/open/floor{
+	icon_state = "darkred2"
 	},
 /area/bigredv2/outside/admin_building)
 "si" = (
@@ -491,6 +528,15 @@
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/admin_building)
+"vX" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/admin_building)
 "yf" = (
 /obj/structure/platform_decoration{
 	dir = 4
@@ -515,11 +561,28 @@
 /obj/item/ammo_magazine/pistol/rubber{
 	current_rounds = 0
 	},
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/carpet,
 /area/bigredv2/outside/admin_building)
 "Br" = (
 /obj/structure/surface/table,
 /obj/item/storage/firstaid/regular/empty,
+/turf/open/floor/carpet,
+/area/bigredv2/outside/admin_building)
+"Jd" = (
+/obj/item/stack/sheet/metal{
+	amount = 3
+	},
+/turf/open/floor/carpet,
+/area/bigredv2/outside/admin_building)
+"LR" = (
+/obj/item/shard,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/admin_building)
+"Ng" = (
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/carpet,
 /area/bigredv2/outside/admin_building)
 "ND" = (
@@ -555,9 +618,21 @@
 	},
 /turf/open/floor/carpet,
 /area/bigredv2/outside/admin_building)
+"SQ" = (
+/obj/structure/window_frame/solaris,
+/turf/open/floor/plating,
+/area/bigredv2/outside/admin_building)
+"XY" = (
+/obj/effect/landmark/corpsespawner/wygoon/lead,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs/body,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/admin_building)
 
 (1,1,1) = {"
-mq
+SQ
 ab
 ab
 ab
@@ -569,23 +644,23 @@ ab
 ab
 "}
 (2,1,1) = {"
-aj
+ek
 aD
 ar
 aA
 lz
-bl
+XY
 rv
 aZ
 bi
 ab
 "}
 (3,1,1) = {"
-aj
-ak
+sh
+SQ
 dp
 AC
-aJ
+Jd
 aO
 aJ
 aQ
@@ -610,7 +685,7 @@ ae
 jq
 aC
 aQ
-aC
+nX
 Sz
 bb
 bl
@@ -623,7 +698,7 @@ au
 aW
 aL
 aS
-aQ
+Ng
 bc
 bl
 is
@@ -631,8 +706,8 @@ is
 (7,1,1) = {"
 aj
 ae
+vX
 av
-aP
 aP
 QR
 aP
@@ -644,12 +719,12 @@ bl
 aj
 ae
 ae
-ad
+ak
 ad
 ad
 ae
 za
-ae
+hu
 ae
 "}
 (9,1,1) = {"
@@ -662,19 +737,19 @@ an
 aX
 ND
 bn
-bs
+ak
 "}
 (10,1,1) = {"
 ag
 vO
 aw
 bf
-ay
+LR
 aT
 ay
 bf
 ay
-bs
+ak
 "}
 (11,1,1) = {"
 am

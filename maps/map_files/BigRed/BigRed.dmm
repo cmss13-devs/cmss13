@@ -11601,6 +11601,9 @@
 	},
 /area/bigredv2/outside/bar)
 "aHI" = (
+/obj/item/weapon/dart/green{
+	pixel_y = -11
+	},
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet11-12"
@@ -12229,6 +12232,9 @@
 	},
 /area/bigredv2/outside/bar)
 "aJp" = (
+/obj/item/weapon/dart{
+	pixel_x = 10
+	},
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet9-4"
@@ -13682,20 +13688,16 @@
 /area/bigredv2/outside/admin_building)
 "aNz" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 1;
-	health = 25000
+/obj/structure/barricade/metal{
+	dir = 1
 	},
 /turf/open/floor{
 	icon_state = "white"
 	},
 /area/bigredv2/outside/admin_building)
 "aNA" = (
-/obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 1;
-	health = 25000
+/obj/structure/barricade/metal{
+	dir = 1
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -13771,6 +13773,9 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aNJ" = (
+/obj/structure/barricade/metal{
+	dir = 4
+	},
 /turf/open/floor{
 	dir = 5;
 	icon_state = "darkred2"
@@ -15779,7 +15784,6 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/item/prop/alien/hugger,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkred2"
@@ -16674,7 +16678,6 @@
 	phone_id = "Operations";
 	pixel_y = 24
 	},
-/obj/item/prop/alien/hugger,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkblue2"
@@ -17082,12 +17085,6 @@
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/admin_building)
-"aXk" = (
-/obj/item/prop/alien/hugger,
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/bigredv2/outside/admin_building)
 "aXl" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
@@ -17256,7 +17253,6 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aXO" = (
-/obj/item/prop/alien/hugger,
 /turf/open/floor{
 	icon_state = "darkblue2"
 	},
@@ -17398,7 +17394,6 @@
 /obj/structure/toilet{
 	dir = 8
 	},
-/obj/item/prop/alien/hugger,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -17504,13 +17499,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "dark"
-	},
-/area/bigredv2/outside/admin_building)
-"aYM" = (
-/obj/item/prop/alien/hugger,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "darkred2"
 	},
 /area/bigredv2/outside/admin_building)
 "aYN" = (
@@ -17707,15 +17695,6 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
-"aZz" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/item/prop/alien/hugger,
-/turf/open/floor{
-	icon_state = "wood"
-	},
-/area/bigredv2/outside/admin_building)
 "aZA" = (
 /turf/open/floor{
 	dir = 8;
@@ -17861,6 +17840,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
+/obj/structure/barricade/metal,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -18689,7 +18669,6 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/obj/item/prop/alien/hugger,
 /turf/open/floor/carpet,
 /area/bigredv2/outside/admin_building)
 "bcF" = (
@@ -18923,7 +18902,6 @@
 /area/bigredv2/outside/admin_building)
 "bdp" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/prop/alien/hugger,
 /turf/open/floor{
 	dir = 6;
 	icon_state = "darkred2"
@@ -30627,6 +30605,9 @@
 	pixel_y = -13;
 	pixel_x = 12
 	},
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
 /turf/open/mars,
 /area/bigredv2/outside/n)
 "fqE" = (
@@ -31287,6 +31268,15 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
+"fWk" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/barricade/metal,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/admin_building)
 "fWw" = (
 /turf/open/jungle{
 	bushes_spawn = 0;
@@ -32915,6 +32905,16 @@
 	icon_state = "asteroidfloor"
 	},
 /area/bigredv2/outside/nw)
+"hBa" = (
+/obj/item/trash/crushed_cup{
+	pixel_x = -7;
+	pixel_y = -8
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/ne)
 "hBl" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
@@ -34598,12 +34598,6 @@
 	icon_state = "mars_cave_6"
 	},
 /area/bigredv2/outside/ne)
-"jna" = (
-/obj/item/prop/alien/hugger,
-/turf/open/floor{
-	icon_state = "darkred2"
-	},
-/area/bigredv2/outside/admin_building)
 "jnR" = (
 /turf/open/floor{
 	dir = 9;
@@ -35881,6 +35875,16 @@
 	icon_state = "platingdmg3"
 	},
 /area/bigredv2/caves/mining)
+"kjD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/metal{
+	dir = 8
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkred2"
+	},
+/area/bigredv2/outside/admin_building)
 "kjH" = (
 /obj/structure/surface/table,
 /obj/item/stack/sheet/glass{
@@ -38564,6 +38568,16 @@
 	icon_state = "podhatchfloor"
 	},
 /area/bigredv2/outside/admin_building)
+"mIh" = (
+/obj/structure/surface/table/woodentable{
+	dir = 4;
+	flipped = 1
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
 "mIk" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/item/bedsheet/medical{
@@ -40624,14 +40638,6 @@
 	icon_state = "mars_dirt_4"
 	},
 /area/bigredv2/outside/ne)
-"oFY" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/item/prop/alien/hugger,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "darkred2"
-	},
-/area/bigredv2/outside/admin_building)
 "oHn" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -41140,12 +41146,6 @@
 	icon_state = "mars_dirt_10"
 	},
 /area/bigredv2/outside/filtration_plant)
-"pdG" = (
-/obj/item/prop/alien/hugger,
-/turf/open/floor{
-	icon_state = "wood"
-	},
-/area/bigredv2/outside/admin_building)
 "pdW" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_13"
@@ -41446,9 +41446,9 @@
 	},
 /area/bigredv2/outside/library)
 "psE" = (
-/obj/effect/landmark/objective_landmark/medium,
 /obj/item/ammo_casing/shell,
 /obj/effect/landmark/corpsespawner/colonist,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -41888,16 +41888,6 @@
 	icon_state = "darkred2"
 	},
 /area/bigredv2/caves/eta/research)
-"pNU" = (
-/obj/structure/bed,
-/obj/item/prop/alien/hugger,
-/obj/item/bedsheet/brown{
-	layer = 3.1
-	},
-/turf/open/floor{
-	icon_state = "wood"
-	},
-/area/bigredv2/outside/admin_building)
 "pOg" = (
 /obj/structure/machinery/compressor{
 	dir = 1
@@ -43978,7 +43968,7 @@
 /area/bigredv2/oob)
 "rJd" = (
 /obj/item/trash/uscm_mre{
-	pixel_y = 33;
+	pixel_y = 42;
 	pixel_x = -3
 	},
 /turf/open/floor,
@@ -45451,6 +45441,15 @@
 	icon_state = "mars_cave_11"
 	},
 /area/bigredv2/caves_lambda)
+"sOc" = (
+/obj/structure/barricade/metal{
+	dir = 4
+	},
+/turf/open/floor{
+	dir = 6;
+	icon_state = "darkred2"
+	},
+/area/bigredv2/outside/admin_building)
 "sOi" = (
 /obj/structure/airlock_assembly,
 /turf/open/floor/plating{
@@ -46070,11 +46069,6 @@
 	icon_state = "mars_cave_2"
 	},
 /area/bigredv2/outside/n)
-"toA" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/prop/alien/hugger,
-/turf/open/floor,
-/area/bigredv2/outside/admin_building)
 "toE" = (
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached1"
@@ -47565,6 +47559,9 @@
 	pixel_y = 5;
 	pixel_x = -4
 	},
+/obj/item/dartboard{
+	pixel_y = 28
+	},
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet11-12"
@@ -47612,6 +47609,16 @@
 	icon_state = "darkred2"
 	},
 /area/bigredv2/outside/admin_building)
+"uLh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/dart/green{
+	pixel_y = -10;
+	pixel_x = -11
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/bar)
 "uNn" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/mars{
@@ -49608,7 +49615,6 @@
 	icon_state = "W";
 	layer = 2.5
 	},
-/obj/item/prop/alien/hugger,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -68112,10 +68118,10 @@ mIc
 tap
 aof
 aNK
-aXL
+kjD
 bdo
 aof
-aZz
+cXG
 aOO
 aOO
 aOO
@@ -68322,7 +68328,7 @@ aGD
 aMf
 aPL
 aMf
-aXk
+aMf
 aof
 aTV
 aTV
@@ -68330,7 +68336,7 @@ din
 aof
 aWH
 aOM
-jna
+aUb
 asT
 aZC
 aZC
@@ -69621,7 +69627,7 @@ aHF
 aHF
 apD
 aND
-aXk
+aMf
 aMf
 aZS
 aof
@@ -69634,7 +69640,7 @@ aXj
 aOI
 aYh
 oDW
-oFY
+aRd
 bcI
 bcJ
 aRd
@@ -72456,7 +72462,7 @@ aWH
 xej
 ole
 eSN
-aPS
+fWk
 baI
 aYO
 bca
@@ -72679,7 +72685,7 @@ baJ
 bcb
 bcR
 bcc
-toA
+bQe
 apC
 aTh
 aIn
@@ -72877,7 +72883,7 @@ aMc
 apC
 aUd
 aYL
-aYM
+aOK
 aOK
 aOK
 aOM
@@ -73535,7 +73541,7 @@ aOO
 aOO
 aof
 aNP
-pdG
+aOO
 qXi
 aof
 aYq
@@ -73747,7 +73753,7 @@ aNQ
 aGG
 aPX
 aof
-pNU
+aNQ
 aOO
 aUg
 aof
@@ -73758,10 +73764,10 @@ aof
 aYr
 aof
 aNJ
-aUc
+sOc
 aof
 bbr
-toA
+bQe
 aYO
 fPB
 bQe
@@ -76779,7 +76785,7 @@ mRl
 wXE
 aEO
 aLs
-niT
+mIh
 wIi
 rAq
 aEO
@@ -77210,7 +77216,7 @@ aEO
 uwN
 uwN
 niz
-uwN
+uLh
 aKw
 aEO
 aEO
@@ -83268,7 +83274,7 @@ aBx
 ata
 ata
 ata
-aqa
+hBa
 rzR
 aCc
 aCc

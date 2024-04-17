@@ -253,7 +253,11 @@
 	},
 /area/bigredv2/outside/marshal_office)
 "aI" = (
-/obj/structure/airlock_assembly,
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+	dir = 1;
+	name = "\improper Marshal Office Prison";
+	icon_state = "door_open"
+	},
 /turf/open/floor{
 	icon_state = "delivery"
 	},
@@ -491,7 +495,9 @@
 /area/bigredv2/outside/marshal_office)
 "bq" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Marshal Office Brig"
+	name = "\improper Marshal Office Brig";
+	density = 0;
+	icon_state = "door_open"
 	},
 /turf/open/floor{
 	icon_state = "delivery"

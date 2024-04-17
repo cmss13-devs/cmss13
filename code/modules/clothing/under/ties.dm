@@ -693,7 +693,7 @@
 	new /obj/item/stack/nanopaste(src)
 	new /obj/item/tool/surgery/bonegel(src)
 	new /obj/item/tool/surgery/bonegel(src)
-	new /obj/item/tool/surgery/bonegel(src)
+	new /obj/item/reagent_container/blood/OMinus(src)
 
 /obj/item/clothing/accessory/storage/surg_vest/drop_black
 	name = "black surgical drop pouch"

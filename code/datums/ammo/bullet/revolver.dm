@@ -13,7 +13,7 @@
 
 /datum/ammo/bullet/revolver/marksman
 	name = "marksman revolver bullet"
-
+	damage = 55
 	shrapnel_chance = 0
 	damage_falloff = 0
 	accurate_range = 12

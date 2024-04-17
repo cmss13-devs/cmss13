@@ -1,4 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Added Nerve Gas Release control buttons to the ARES and APOLLO interfaces, allowing the AI core to be secured from large groups or xenomorphs. Built in cooldowns should prevent fatalities."

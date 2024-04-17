@@ -233,3 +233,17 @@
   - maptweak: added the fuel pump to the proper locations.
   ihatethisengine2:
   - rscadd: ported stripping menu from TG
+2024-04-17:
+  QuickLode:
+  - balance: M3A1 Synthetic Utility Vest only has a 10% slowdown.
+  iloveloopers:
+  - bugfix: You can no longer buckle xenos onto chairs
+  realforest2001:
+  - rscadd: Added Nerve Gas Release control buttons to the ARES and APOLLO interfaces,
+      allowing the AI core to be secured from large groups or xenomorphs. Built in
+      cooldowns should prevent fatalities.
+  - maptweak: Remodelled the AI Core Reception and WJ spawn area.
+  - maptweak: Switches AI Core cameras over to manual naming.
+  - imageadd: Added sprites for AI Core windows on black Almayer frames.
+  usnpeepoo:
+  - balance: Berserker's rage lock-out duration increased slightly

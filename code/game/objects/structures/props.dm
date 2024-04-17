@@ -1455,6 +1455,37 @@
     icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
     icon_state = "SUV"
 
+/obj/structure/prop/hybrisa/vehicles/proc/explode(dam, mob/M)
+    src.visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"), null, null, 1)
+    playsound(loc, 'sound/effects/car_crush.ogg', 25)
+    var/turf/Tsec = get_turf(src)
+    new /obj/item/stack/rods(Tsec)
+    new /obj/item/stack/rods(Tsec)
+    new /obj/item/stack/sheet/metal(Tsec)
+    new /obj/item/stack/sheet/metal(Tsec)
+    new /obj/item/stack/cable_coil/cut(Tsec)
+
+    new /obj/effect/spawner/gibspawner/robot(Tsec)
+    new /obj/effect/decal/cleanable/blood/oil(src.loc)
+
+    deconstruct(FALSE)
+/obj/structure/prop/hybrisa/vehicles/proc/take_damage(dam, mob/M)
+    if(health) //Prevents unbreakable objects from being destroyed
+        health -= dam
+        if(health <= 0)
+            explode()
+        else
+            update_icon()
+
+/obj/structure/prop/hybrisa/vehicles/attack_alien(mob/living/carbon/xenomorph/user)
+    take_damage(30)
+    update_icon()
+
+/obj/structure/prop/hybrisa/vehicles/bullet_act(obj/projectile/P)
+    if(P.ammo.damage)
+        take_damage(P.ammo.damage)
+        update_icon()
+
 /obj/structure/prop/hybrisa/vehicles/suv
     icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
     icon_state = "SUV"
@@ -1466,10 +1497,6 @@
 /obj/structure/prop/hybrisa/vehicles/largetruck
     icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
     icon_state = "zenithlongtruck3"
-
-/obj/structure/prop/hybrisa/vehicles/Car
-    icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
-    icon_state = "MeridianCar_1"
 
 /obj/structure/prop/hybrisa/vehicles/Car
     icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
@@ -1497,39 +1524,6 @@
 	icon_state = "SUV7"
 /obj/structure/prop/hybrisa/vehicles/suv/suv_8
 	icon_state = "SUV8"
-
-// Meridian Cars
-
-/obj/structure/prop/hybrisa/vehicles/Car
-	name = "Mono-Spectra"
-	desc = "The 'Mono-Spectra', a mass-produced civilian vehicle for the colonial markets, in and outside of the United Americas. Produced by 'Meridian' a car marque and associated operating division of the Weyland-Yutani Corporation."
-	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
-	icon_state = "MeridianCar_1"
-	bound_height = 32
-	bound_width = 64
-	unslashable = TRUE
-	unacidable = TRUE
-	density = TRUE
-	layer = ABOVE_MOB_LAYER
-/obj/structure/prop/hybrisa/vehicles/Car/Car_1
-	icon_state = "MeridianCar_2"
-/obj/structure/prop/hybrisa/vehicles/Car/Car_2
-	icon_state = "MeridianCar_3"
-/obj/structure/prop/hybrisa/vehicles/Car/Car_3
-	icon_state = "MeridianCar_4"
-/obj/structure/prop/hybrisa/vehicles/Car/Car_4
-	icon_state = "MeridianCar_5"
-/obj/structure/prop/hybrisa/vehicles/Car/Car_5
-	icon_state = "MeridianCar_6"
-
-// Car Chassis
-
-/obj/structure/prop/hybrisa/vehicles/Car/Car_chassis
-    desc = "A Mono-Spectra chassis in the early stages of assembly."
-
-/obj/structure/prop/hybrisa/vehicles/Car/Car_chassis
-	name = "Mono-Spectra Chassis"
-	icon_state = "MeridianCar_shell"
 
 // Meridian Cars
 

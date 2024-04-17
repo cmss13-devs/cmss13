@@ -1014,6 +1014,18 @@
 /turf/open/hybrisa/street/CMB_4x4_emblem
 	icon_state = "marshallsemblem_concrete_2x2"
 
+// Unweedable
+
+/turf/open/hybrisa/street/underground_unweedable
+	name = "floor"
+	icon = 'icons/turf/floors/hybrisafloors.dmi'
+	icon_state = "underground"
+	baseturfs = /turf/open/asphalt
+	allow_construction = FALSE
+
+/turf/open/hybrisa/street/underground_unweedable/is_weedable()
+	return NOT_WEEDABLE
+
 // Carpet
 
 

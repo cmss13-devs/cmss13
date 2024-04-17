@@ -195,11 +195,11 @@
 	name = "Weyland Yutani Celestia Gateway Space-Port - Maintenance - East"
 	icon_state = "WYSpaceport"
 	minimap_color = MINIMAP_AREA_LZ
-/area/lv759/indoors/spaceport/administration/east
+/area/lv759/indoors/spaceport/communications_office
 	name = "Weyland Yutani Celestia Gateway Space-Port - Communications & Administration Office"
 	icon_state = "WYSpaceportadmin"
 	minimap_color = MINIMAP_AREA_LZ
-/area/lv759/indoors/spaceport/administration/west
+/area/lv759/indoors/spaceport/flight_control_room
 	name = "Weyland Yutani Celestia Gateway Space-Port - Flight Control Room"
 	icon_state = "WYSpaceportadmin"
 	minimap_color = MINIMAP_AREA_LZ
@@ -231,23 +231,19 @@
 	name = "Weyland Yutani Celestia Gateway Space-Port - Kitchen"
 	icon_state = "WYSpaceportblue"
 	minimap_color = MINIMAP_AREA_LZ
-/area/lv759/landing_zone
-	name = "Hybrisa - Shuttle"
-	icon_state = "shuttle"
-	ceiling =  CEILING_METAL
-/area/lv759/landing_zone/landing_zone_3
+/area/lv759/indoors/spaceport/docking_bay_2
 	name = "Weyland Yutani Celestia Gateway Space-Port - Docking Bay: 2 - Refueling and Maintenance"
 	icon_state = "WYSpaceportblue"
 	ceiling = CEILING_NONE
-/area/lv759/landing_zone/landing_zone_4
+/area/lv759/indoors/spaceport/docking_bay_1
 	name = "Weyland Yutani Celestia Gateway Space-Port - Docking Bay: 1"
 	icon_state = "WYSpaceport"
 	ceiling = CEILING_NONE
-/area/lv759/landing_zone/starglider
+/area/lv759/indoors/spaceport/starglider
 	name = "WY-LWI StarGlider SG-200"
 	icon_state = "wydropship"
 	requires_power = FALSE
-/area/lv759/landing_zone/horizon_runner
+/area/lv759/indoors/spaceport/horizon_runner
 	name = "WY-LWI Horizon Runner HR-150"
 	icon_state = "wydropship"
 	requires_power = FALSE
@@ -425,43 +421,47 @@
 	name = "Nova Medica Hospital Complex - Janitors Closet"
 
 // Mining
-/area/lv759/lone_buildings/mining_outpost_north
+
+/area/lv759/indoors/mining_outpost
+	icon_state = "mining"
+	minimap_color = MINIMAP_AREA_COLONY
+/area/lv759/indoors/mining_outpost/north
 	name = "WY - KMCC - Mining Outpost - North"
 	icon_state = "mining"
 	minimap_color = MINIMAP_AREA_COLONY
-/area/lv759/lone_buildings/mining_outpost_north_maint
+/area/lv759/indoors/mining_outpost/north_maint
 	name = "WY - KMCC - Mining Outpost - North - Maintenance"
 	icon_state = "mining"
 	minimap_color = MINIMAP_AREA_COLONY
-/area/lv759/lone_buildings/mining_outpost_northeast
+/area/lv759/indoors/mining_outpost/northeast
 	name = "WY - KMCC - Mining Outpost - Northeast"
 	icon_state = "mining"
 	minimap_color = MINIMAP_AREA_COLONY
-/area/lv759/lone_buildings/mining_outpost_south
+/area/lv759/indoors/mining_outpost/south
 	name = "WY - KMCC - Mining Outpost - South"
 	icon_state = "mining"
 	minimap_color = MINIMAP_AREA_COLONY
-/area/lv759/lone_buildings/mining_vehicledeployment
+/area/lv759/indoors/mining_outpost/vehicledeployment
 	name = "WY - KMCC - Mining Vehicle Deployment South"
 	icon_state = "mining"
 	minimap_color = MINIMAP_AREA_COLONY
-/area/lv759/lone_buildings/mining_processing
+/area/lv759/indoors/mining_outpost/processing
 	name = "WY - KMCC - Mining Processing & Storage"
 	icon_state = "mining"
 	minimap_color = MINIMAP_AREA_COLONY
-/area/lv759/lone_buildings/mining_outpost_east
+/area/lv759/indoors/mining_outpost/east
 	name = "WY - KMCC - Mining Outpost - East"
 	icon_state = "mining"
 	minimap_color = MINIMAP_AREA_COLONY
-/area/lv759/lone_buildings/mining_outpost_east_dorms
+/area/lv759/indoors/mining_outpost/east_dorms
 	name = "WY - KMCC - Mining Outpost - East Dorms"
 	icon_state = "mining"
 	minimap_color = MINIMAP_AREA_COLONY
-/area/lv759/lone_buildings/mining_outpost_east_deploymentbay
+/area/lv759/indoors/mining_outpost/east_deploymentbay
 	name = "WY - KMCC - Mining Outpost - East - Deployment Bay"
 	icon_state = "mining"
 	minimap_color = MINIMAP_AREA_COLONY
-/area/lv759/lone_buildings/mining_outpost_east_command
+/area/lv759/indoors/mining_outpost/east_command
 	name = "WY - KMCC - Mining Outpost - East - Command Center"
 	icon_state = "mining"
 	minimap_color = MINIMAP_AREA_COLONY
@@ -481,114 +481,119 @@
 	minimap_color = MINIMAP_AREA_COLONY
 
 // Power-Plant (Engineering)
-/area/lv759/power_plant
+/area/lv759/indoors/power_plant
 	name = "Weyland-Yutani DynaGrid Nexus - Central Hallway"
 	icon_state = "power0"
 	minimap_color = MINIMAP_AREA_COLONY
-/area/lv759/power_plant/south_hallway
+/area/lv759/indoors/power_plant/south_hallway
 	name = "Weyland-Yutani DynaGrid Nexus - South Hallway"
-/area/lv759/power_plant/geothermal_generators
+/area/lv759/indoors/power_plant/geothermal_generators
 	name = "Weyland-Yutani DynaGrid Nexus - Geothermal Generators Room"
-/area/lv759/power_plant/power_storage
+/area/lv759/indoors/power_plant/power_storage
 	name = "Weyland-Yutani DynaGrid Nexus - Power Storage Room"
-/area/lv759/power_plant/transformers_north
+/area/lv759/indoors/power_plant/transformers_north
 	name = "Weyland-Yutani DynaGrid Nexus - Transformers - North"
-/area/lv759/power_plant/transformers_south
+/area/lv759/indoors/power_plant/transformers_south
 	name = "Weyland-Yutani DynaGrid Nexus - Transformers - South"
-/area/lv759/power_plant/gas_generators
+/area/lv759/indoors/power_plant/gas_generators
 	name = "Weyland-Yutani DynaGrid Nexus - Gas Mixing & Storage "
-/area/lv759/power_plant/fusion_generators
+/area/lv759/indoors/power_plant/fusion_generators
 	name = "Weyland-Yutani DynaGrid Nexus - Control Center"
-/area/lv759/power_plant/telecomms
+/area/lv759/indoors/power_plant/telecomms
 	icon_state = "comms_1"
 	name = "Weyland-Yutani DynaGrid Nexus - Telecommunications"
-/area/lv759/power_plant/workers_canteen
+/area/lv759/indoors/power_plant/workers_canteen
 	name = "Weyland-Yutani DynaGrid Nexus - Worker's Canteen"
-/area/lv759/power_plant/workers_canteen_kitchen
+/area/lv759/indoors/power_plant/workers_canteen_kitchen
 	name = "Weyland-Yutani DynaGrid Nexus - Worker's Canteen - Kitchen"
-/area/lv759/power_plant/equipment_east
+/area/lv759/indoors/power_plant/equipment_east
 	name = "Weyland-Yutani DynaGrid Nexus - Equipment Storage Room - East"
-/area/lv759/power_plant/equipment_west
+/area/lv759/indoors/power_plant/equipment_west
 	name = "Weyland-Yutani DynaGrid Nexus - Equipment Storage Room - West"
 
 // Marshalls
-/area/lv759/colonial_marshals
-	name = "CMB - Sentinel Outpost - Maximum Security Ward - Cells - Recreation Area & Showers"
+/area/lv759/indoors/colonial_marshals
+	name = "CMB - Sentinel Outpost"
 	icon_state = "security_hub"
 	minimap_color = MINIMAP_AREA_SEC
-/area/lv759/colonial_marshals/prisoners_cells
+/area/lv759/indoors/colonial_marshals/prisoners_cells
 	name = "CMB - Sentinel Outpost - Maximum Security Ward - Cells"
-/area/lv759/colonial_marshals/prisoners_foyer
+/area/lv759/indoors/colonial_marshals/prisoners_foyer
 	name = "CMB - Sentinel Outpost - Maximum Security Ward - Foyer"
-/area/lv759/colonial_marshals/garage
+/area/lv759/indoors/colonial_marshals/prisoners_recreation_area
+	name = "CMB - Sentinel Outpost - Maximum Security Ward - Recreation Area & Shower Room"
+/area/lv759/indoors/colonial_marshals/garage
 	name = "CMB - Sentinel Outpost - Vehicle Deployment & Maintenace"
-/area/lv759/colonial_marshals/armory_foyer
+/area/lv759/indoors/colonial_marshals/armory_foyer
 	name = "CMB - Sentinel Outpost - Armory Foyer"
-/area/lv759/colonial_marshals/armory
+/area/lv759/indoors/colonial_marshals/armory
 	name = "CMB - Sentinel Outpost - Armory"
-/area/lv759/colonial_marshals/armory_firingrange
+/area/lv759/indoors/colonial_marshals/armory_firingrange
 	name = "CMB - Sentinel Outpost - Firing Range"
-/area/lv759/colonial_marshals/armory_evidenceroom
+/area/lv759/indoors/colonial_marshals/armory_evidenceroom
 	name = "CMB - Sentinel Outpost - Evidence Room"
-/area/lv759/colonial_marshals/office
+/area/lv759/indoors/colonial_marshals/office
 	name = "CMB - Sentinel Outpost - Office"
-/area/lv759/colonial_marshals/hallway_central
+/area/lv759/indoors/colonial_marshals/hallway_central
 	name = "CMB - Sentinel Outpost - Central Hallway"
-/area/lv759/colonial_marshals/hallway_south
+/area/lv759/indoors/colonial_marshals/hallway_south
 	name = "CMB - Sentinel Outpost - South Hallway"
-/area/lv759/colonial_marshals/hallway_reception
+/area/lv759/indoors/colonial_marshals/hallway_reception
 	name = "CMB - Sentinel Outpost - Reception Hallway"
-/area/lv759/colonial_marshals/hallway_north
+/area/lv759/indoors/colonial_marshals/hallway_north
 	name = "CMB - Sentinel Outpost - North Hallway"
-/area/lv759/colonial_marshals/hallway_north_locker
+/area/lv759/indoors/colonial_marshals/hallway_north_locker
 	name = "CMB - Sentinel Outpost - North Hallway - Locker Room"
-/area/lv759/colonial_marshals/holding_cells
+/area/lv759/indoors/colonial_marshals/holding_cells
 	name = "CMB - Sentinel Outpost - Holding Cells"
-/area/lv759/colonial_marshals/head_office
+/area/lv759/indoors/colonial_marshals/head_office
 	name = "CMB - Sentinel Outpost - Forensics Office"
-/area/lv759/colonial_marshals/north_office
+/area/lv759/indoors/colonial_marshals/north_office
 	name = "CMB - Sentinel Outpost - North Office"
-/area/lv759/colonial_marshals/wardens_office
+/area/lv759/indoors/colonial_marshals/wardens_office
 	name = "CMB - Sentinel Outpost - Wardens Office"
-/area/lv759/colonial_marshals/interrogation
+/area/lv759/indoors/colonial_marshals/interrogation
 	name = "CMB - Sentinel Outpost - Interrogation"
-/area/lv759/colonial_marshals/press_room
+/area/lv759/indoors/colonial_marshals/press_room
 	name = "CMB - Sentinel Outpost - Court Room"
-/area/lv759/colonial_marshals/changing_room
+/area/lv759/indoors/colonial_marshals/changing_room
 	name = "CMB - Sentinel Outpost - Changing Room"
-/area/lv759/colonial_marshals/restroom
+/area/lv759/indoors/colonial_marshals/restroom
 	name = "CMB - Sentinel Outpost - Restroom & Showers"
-/area/lv759/colonial_marshals/south_maintenance
+/area/lv759/indoors/colonial_marshals/south_maintenance
 	name = "CMB - Sentinel Outpost - Maintenance - South"
-/area/lv759/colonial_marshals/north_maintenance
+/area/lv759/indoors/colonial_marshals/north_maintenance
 	name = "CMB - Sentinel Outpost - Maintenance - North"
-/area/lv759/colonial_marshals/southwest_maintenance
+/area/lv759/indoors/colonial_marshals/southwest_maintenance
 	name = "CMB - Sentinel Outpost - Maintenance - Southwest"
-// Lone Buildings
 
-/area/lv759/lone_buildings/synthetic_storage
-	name = "Synthetic Storage"
-	icon_state = "yellow"
-	minimap_color = MINIMAP_AREA_COLONY
-/area/lv759/recycling_plant
-	name = "Recycling Plant"
-	icon_state = "yellow"
-	minimap_color = MINIMAP_AREA_COLONY
-/area/lv759/recycling_plant/garage
-	name = "Recycling Plant Garage"
-	icon_state = "yellow"
-	minimap_color = MINIMAP_AREA_COLONY
-/area/lv759/lone_buildings/jacks_surplus
+
+// Jack's Surplus
+/area/lv759/indoors/jacks_surplus
 	name = "Jack's Military Surplus"
 	icon_state = "jacks"
 	minimap_color = MINIMAP_AREA_COLONY
 
+//Recycling Plant
+/area/lv759/indoors/recycling_plant
+	name = "Recycling Plant"
+	icon_state = "yellow"
+	minimap_color = MINIMAP_AREA_COLONY
+/area/lv759/indoors/recycling_plant/garage
+	name = "Recycling Plant Garage"
+	icon_state = "yellow"
+	minimap_color = MINIMAP_AREA_COLONY
+/area/lv759/indoors/recycling_plant/synthetic_storage
+	name = "Synthetic Storage"
+	icon_state = "yellow"
+	minimap_color = MINIMAP_AREA_COLONY
+
 // Restrooms
-/area/lv759/lone_buildings/south_public_restroom
+/area/lv759/indoors/south_public_restroom
 	name = "Public Restroom - South"
 	icon_state = "restroom"
 	minimap_color = MINIMAP_AREA_COLONY
-/area/lv759/lone_buildings/southwest_public_restroom
+/area/lv759/indoors/southwest_public_restroom
 	name = "Public Restroom - Southwest"
 	icon_state = "restroom"
 	minimap_color = MINIMAP_AREA_COLONY
@@ -598,15 +603,15 @@
 	name = "Night Gold Casino"
 	icon_state = "nightgold"
 	minimap_color = MINIMAP_AREA_ENGI
-/area/lv759/indoors/casino_office
+/area/lv759/indoors/casino/casino_office
 	name = "Night Gold Casino - Managers Office"
 	icon_state = "nightgold"
 	minimap_color = MINIMAP_AREA_ENGI
-/area/lv759/indoors/casino_restroom
+/area/lv759/indoors/casino/casino_restroom
 	name = "Night Gold Casino - Restroom"
 	icon_state = "nightgold"
 	minimap_color = MINIMAP_AREA_ENGI
-/area/lv759/indoors/casino_vault
+/area/lv759/indoors/casino/casino_vault
 	name = "Night Gold Casino - Vault"
 	icon_state = "nightgold"
 	minimap_color = MINIMAP_AREA_ENGI
@@ -629,30 +634,30 @@
 	icon_state = "weymart"
 	minimap_color = MINIMAP_AREA_COMMAND
 	soundscape_playlist = SCAPE_PL_LV759_WEYMART
-/area/lv759/indoors/weymart_backrooms
+/area/lv759/indoors/weymart/backrooms
 	name = "Weymart - Backrooms"
 	icon_state = "weymartbackrooms"
 	minimap_color = MINIMAP_AREA_COMMAND
-/area/lv759/indoors/weymart_maintenance
+/area/lv759/indoors/weymart/maintenance
 	name = "Weymart - Maintenance"
 	icon_state = "weymartbackrooms"
 	minimap_color = MINIMAP_AREA_COMMAND
 
 // WY Security Checkpoints
-/area/lv759/lone_buildings/wy_security_checkpoint_northeast
+/area/lv759/indoors/wy_security/checkpoint_northeast
 	name = "Weyland Yutani Security Checkpoint - North East"
 	icon_state = "security_checkpoint_northeast"
 	minimap_color = MINIMAP_AREA_COLONY
-/area/lv759/lone_buildings/wy_security_checkpoint_east
+/area/lv759/indoors/wy_security/checkpoint_east
 	name = "Weyland Yutani Security Checkpoint - East"
 	icon_state = "security_checkpoint_east"
-/area/lv759/lone_buildings/wy_security_checkpoint_central
+/area/lv759/indoors/wy_security/checkpoint_central
 	name = "Weyland Yutani Security Checkpoint - Central"
 	icon_state = "security_checkpoint_central"
-/area/lv759/lone_buildings/wy_security_checkpoint_west
+/area/lv759/indoors/wy_security/checkpoint_west
 	name = "Weyland Yutani Security Checkpoint - West"
 	icon_state = "security_checkpoint_west"
-/area/lv759/lone_buildings/wy_security_checkpoint_northwest
+/area/lv759/indoors/wy_security/checkpoint_northwest
 	name = "Weyland Yutani Security Checkpoint - North West"
 	icon_state = "security_checkpoint_northwest"
 
@@ -663,7 +668,7 @@
 	minimap_color = MINIMAP_AREA_COLONY
 	ceiling = CEILING_MAX
 	soundscape_playlist = SCAPE_PL_LV759_DERELICTSHIP
-/area/lv759/hobosecret
+/area/lv759/indoors/hobosecret
 	name = "Hidden Hobo Haven"
 	icon_state = "hobo"
 	ceiling = CEILING_MAX

@@ -5,6 +5,7 @@
 	mob_max = 7
 	probability = 5
 	auto_shuttle_launch = TRUE //because xenos can't use the shuttle console.
+	shuttle_id_locked = FALSE
 	hostility = TRUE
 
 /datum/emergency_call/xenos/New()

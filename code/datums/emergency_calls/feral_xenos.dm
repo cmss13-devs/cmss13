@@ -8,6 +8,7 @@
 	max_engineers = 3 //Combat T2 castes
 	probability = 5
 	auto_shuttle_launch = TRUE //because xenos can't use the shuttle console.
+	shuttle_id_locked = FALSE
 	hostility = TRUE
 
 /datum/emergency_call/feral_xenos/New()

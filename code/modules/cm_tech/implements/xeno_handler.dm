@@ -4,6 +4,7 @@
 	mob_max = 8
 	probability = 0
 	auto_shuttle_launch = TRUE //because xenos can't use the shuttle console.
+	shuttle_id_locked = FALSE
 	hostility = FALSE
 	spawn_max_amount = TRUE
 

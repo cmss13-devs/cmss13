@@ -51,6 +51,10 @@
 	var/max_smartgunners = 1
 	var/shuttle_id = MOBILE_SHUTTLE_ID_ERT1 //Empty shuttle ID means we're not using shuttles (aka spawn straight into cryo)
 	var/auto_shuttle_launch = TRUE
+
+	/// If the shuttle used by this ERT should be locked to ERT member IDs
+	var/shuttle_id_locked = TRUE
+
 	var/spawn_max_amount = FALSE
 
 	var/ert_message = "An emergency beacon has been activated"

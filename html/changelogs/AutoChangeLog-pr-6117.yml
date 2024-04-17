@@ -1,0 +1,6 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - maptweak: "Remodelled the AI Core Reception and WJ spawn area."
+  - maptweak: "Switches AI Core cameras over to manual naming."
+  - imageadd: "Added sprites for AI Core windows on black Almayer frames."

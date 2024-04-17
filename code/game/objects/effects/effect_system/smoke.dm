@@ -316,7 +316,7 @@
 	if(xeno_affecting)
 		stun_chance = 35
 	if(prob(stun_chance))
-		creature.apply_effect(1, WEAKEN)
+		creature.apply_effect(2, WEAKEN)
 
 	//Topical damage (neurotoxin on exposed skin)
 	if(xeno_creature)

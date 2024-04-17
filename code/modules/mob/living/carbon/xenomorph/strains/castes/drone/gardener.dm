@@ -267,6 +267,7 @@
 	var/obj/structure/mineral_door/resin/door = target_atom
 	var/turf/closed/wall/resin/wall = target_turf
 
+
 	var/wall_present = istype(wall) && wall.hivenumber == xeno.hivenumber
 	var/door_present = istype(door) && door.hivenumber == xeno.hivenumber
 	// Is my tile either a wall or a door

@@ -287,6 +287,22 @@
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
 
+/obj/item/clothing/suit/storage/marine/faction/UPP/support/synth
+	name = "\improper UL6 Synthetic personal armor"
+	desc = "Modified variant of the UL6 personel armor system intended to be useable by Synthetic units. Offers no protection but very little movement impairment."
+	flags_marine_armor = ARMOR_LAMP_OVERLAY|SYNTH_ALLOWED
+	armor_melee = CLOTHING_ARMOR_NONE
+	armor_bullet = CLOTHING_ARMOR_NONE
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_NONE
+	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
+	time_to_unequip = 0.5 SECONDS
+	time_to_equip = 1 SECONDS
+
 /obj/item/clothing/suit/storage/marine/faction/UPP/commando
 	name = "\improper UM5CU personal armor"
 	desc = "A modification of the UM5, designed for stealth operations."

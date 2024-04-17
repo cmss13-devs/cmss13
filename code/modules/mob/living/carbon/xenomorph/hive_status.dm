@@ -979,7 +979,7 @@
 	need_round_end_check = TRUE
 
 	var/list/defectors = list()
-	var/list/personal_allies = list()
+	var/list/datum/weakref/personal_allies = list()
 
 /datum/hive_status/corrupted/add_xeno(mob/living/carbon/xenomorph/xeno)
 	. = ..()
@@ -1324,39 +1324,32 @@
 	xeno_message(SPAN_XENOANNOUNCE("We sense that [english_list(defectors)] turned their backs against their sisters and the Queen in favor of their slavemasters!"), 3, hivenumber)
 	defectors.Cut()
 
-/datum/hive_status/corrupted/proc/add_personal_ally(mob/living/carbon/human/human)
-	personal_allies += human
-	human.status_flags |= CORRUPTED_ALLY
-	human.med_hud_set_status()
-	xeno_message(SPAN_XENOANNOUNCE("Our Queen proclaimed [human] our ally! We must not harm them."), 3, hivenumber)
+/datum/hive_status/corrupted/proc/add_personal_ally(mob/living/ally)
+	personal_allies += WEAKREF(ally)
+	ally.status_flags |= CORRUPTED_ALLY
+	ally.med_hud_set_status()
+	xeno_message(SPAN_XENOANNOUNCE("Our Queen proclaimed [ally] our ally! We must not harm them."), 3, hivenumber)
 
-/datum/hive_status/corrupted/proc/remove_personal_ally(mob/living/carbon/human/human)
-	if(!(human.status_flags & CORRUPTED_ALLY))
-		return
-	human.status_flags &= ~CORRUPTED_ALLY
-	human.med_hud_set_status()
-	personal_allies -= human
-	xeno_message(SPAN_XENOANNOUNCE("Our Queen has decided that [human] is no longer our ally!"), 3, hivenumber)
+/datum/hive_status/corrupted/proc/remove_personal_ally(datum/weakref/ally_ref)
+	personal_allies -= ally_ref
+	var/mob/living/ally = ally_ref.resolve()
+	if(istype(ally))
+		ally.status_flags &= ~CORRUPTED_ALLY
+		ally.med_hud_set_status()
+	xeno_message(SPAN_XENOANNOUNCE("Our Queen has decided that [ally] is no longer our ally!"), 3, hivenumber)
 
 /datum/hive_status/corrupted/proc/clear_personal_allies(death = FALSE)
-	for(var/mob/living/carbon/human/human in personal_allies)
-		human.status_flags &= ~CORRUPTED_ALLY
-		human.med_hud_set_status()
+	for(var/datum/weakref/ally_ref in personal_allies)
+		var/mob/living/ally = ally_ref.resolve()
+		if(!istype(ally))
+			continue
+		ally.status_flags &= ~CORRUPTED_ALLY
+		ally.med_hud_set_status()
 	personal_allies.Cut()
 	if(!death)
 		xeno_message(SPAN_XENOANNOUNCE("Our Queen has broken all personal alliances with the talls! Favoritism is no more."), 3, hivenumber)
 		return
 	xeno_message(SPAN_XENOWARNING("With the death of the Queen, her friends no longer matter to us."), 3, hivenumber)
-
-/datum/hive_status/corrupted/proc/sanitize_allies() //remove deleted mobs etc
-	var/list/new_list = list()
-	for(var/mob/living/carbon/human/human as anything in personal_allies)
-		if(QDELETED(human))
-			continue
-		if(!istype(human))
-			continue
-		new_list += human
-	personal_allies = new_list
 
 /datum/hive_status/corrupted/is_ally(mob/living/living_mob)
 	if(living_mob.status_flags & CORRUPTED_ALLY)

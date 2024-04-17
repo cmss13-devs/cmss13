@@ -404,8 +404,10 @@
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
 	if(user_xeno.hive.hivenumber != XENO_HIVE_CORRUPTED)
 		return
+
 	if(!user_xeno.check_state())
 		return
+
 	var/datum/hive_status/corrupted/hive = user_xeno.hive
 	var/list/target_list = list()
 	for(var/mob/living/carbon/human/possible_target in view(7, user_xeno))
@@ -420,11 +422,12 @@
 	if(!length(target_list))
 		to_chat(user_xeno, SPAN_WARNING("No talls in view."))
 		return
-	var/mob/living/carbon/human/target_mob = tgui_input_list(usr, "Target", "Set Up a Personal Alliance With...", target_list, theme="hive_status")
-
-	if(!target_mob) return
+	var/mob/living/target_mob = tgui_input_list(usr, "Target", "Set Up a Personal Alliance With...", target_list, theme="hive_status")
 
 	if(!user_xeno.check_state(TRUE))
+		return
+
+	if(!target_mob)
 		return
 
 	if(target_mob.hivenumber)
@@ -437,35 +440,66 @@
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
 	if(user_xeno.hive.hivenumber != XENO_HIVE_CORRUPTED)
 		return
+
 	if(!user_xeno.check_state())
 		return
+
 	var/datum/hive_status/corrupted/hive = user_xeno.hive
-	hive.sanitize_allies()
+
 	if(!length(hive.personal_allies))
 		to_chat(user_xeno, SPAN_WARNING("We don't have personal allies."))
 		return
-	var/mob/living/carbon/target_mob = tgui_input_list(usr, "Target", "Break the Personal Alliance With...", hive.personal_allies, theme="hive_status")
-	if(!target_mob) return
+
+	var/list/mob/living/allies = list()
+	var/list/datum/weakref/dead_refs = list()
+	for(var/datum/weakref/ally_ref in hive.personal_allies)
+		var/mob/living/ally = ally_ref.resolve()
+		if(istype(ally))
+			allies += ally
+			continue
+		dead_refs += ally_ref
+
+	hive.personal_allies -= dead_refs
+
+	if(!length(allies))
+		to_chat(user_xeno, SPAN_WARNING("We don't have personal allies."))
+		return
+
+	var/mob/living/target_mob = tgui_input_list(usr, "Target", "Break the Personal Alliance With...", allies, theme="hive_status")
+
+	if(!target_mob)
+		return
+
+	var/target_mob_ref = WEAKREF(target_mob)
+
+	if(!(target_mob_ref in hive.personal_allies))
+		return
 
 	if(!user_xeno.check_state(TRUE))
 		return
 
-	hive.remove_personal_ally(target_mob)
+	hive.remove_personal_ally(target_mob_ref)
 
 /datum/action/xeno_action/onclick/manage_hive/proc/clear_personal_allies()
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
 	if(user_xeno.hive.hivenumber != XENO_HIVE_CORRUPTED)
 		return
+
 	if(!user_xeno.check_state())
 		return
+
 	var/datum/hive_status/corrupted/hive = user_xeno.hive
-	hive.sanitize_allies()
 	if(!length(hive.personal_allies))
 		to_chat(user_xeno, SPAN_WARNING("We don't have personal allies."))
 		return
 
-	if(tgui_alert(user_xeno, "Are you sure you want to clear personal allies?", "Clear Personal Allies", list("No", "Yes"), 10 SECONDS) == "Yes")
-		hive.clear_personal_allies()
+	if(tgui_alert(user_xeno, "Are you sure you want to clear personal allies?", "Clear Personal Allies", list("No", "Yes"), 10 SECONDS) == "No")
+		return
+
+	if(!length(hive.personal_allies))
+		return
+
+	hive.clear_personal_allies()
 
 
 /datum/action/xeno_action/onclick/manage_hive/proc/banish()

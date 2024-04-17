@@ -87,7 +87,7 @@
 	//Job knowledge requirement
 	if(istype(user))
 		if(!skillcheck(user, skill_to_check, skill_level))
-			if(skill_to_check_alt && !skillcheck(user, skill_to_check_alt, skill_level_alt))
+			if(!skill_to_check_alt || (!skillcheck(user, skill_to_check_alt, skill_level_alt)))
 				to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 				return
 

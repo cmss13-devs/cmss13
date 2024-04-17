@@ -1333,15 +1333,15 @@
 /datum/hive_status/corrupted/proc/remove_personal_ally(datum/weakref/ally_ref)
 	personal_allies -= ally_ref
 	var/mob/living/ally = ally_ref.resolve()
-	if(istype(ally))
+	if(ally)
 		ally.status_flags &= ~CORRUPTED_ALLY
 		ally.med_hud_set_status()
-	xeno_message(SPAN_XENOANNOUNCE("Our Queen has decided that [ally] is no longer our ally!"), 3, hivenumber)
+	xeno_message(SPAN_XENOANNOUNCE("Our Queen has declared that [ally] is no longer our ally!"), 3, hivenumber)
 
 /datum/hive_status/corrupted/proc/clear_personal_allies(death = FALSE)
 	for(var/datum/weakref/ally_ref in personal_allies)
 		var/mob/living/ally = ally_ref.resolve()
-		if(!istype(ally))
+		if(!ally)
 			continue
 		ally.status_flags &= ~CORRUPTED_ALLY
 		ally.med_hud_set_status()

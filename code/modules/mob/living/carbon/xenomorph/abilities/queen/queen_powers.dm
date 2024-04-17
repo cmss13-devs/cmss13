@@ -452,9 +452,9 @@
 
 	var/list/mob/living/allies = list()
 	var/list/datum/weakref/dead_refs = list()
-	for(var/datum/weakref/ally_ref in hive.personal_allies)
+	for(var/datum/weakref/ally_ref as anything in hive.personal_allies)
 		var/mob/living/ally = ally_ref.resolve()
-		if(istype(ally))
+		if(ally)
 			allies += ally
 			continue
 		dead_refs += ally_ref
@@ -493,7 +493,7 @@
 		to_chat(user_xeno, SPAN_WARNING("We don't have personal allies."))
 		return
 
-	if(tgui_alert(user_xeno, "Are you sure you want to clear personal allies?", "Clear Personal Allies", list("No", "Yes"), 10 SECONDS) == "No")
+	if(tgui_alert(user_xeno, "Are you sure you want to clear personal allies?", "Clear Personal Allies", list("No", "Yes"), 10 SECONDS) != "Yes")
 		return
 
 	if(!length(hive.personal_allies))

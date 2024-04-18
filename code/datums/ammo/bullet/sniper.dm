@@ -229,7 +229,7 @@
 		if(stopping_power > 3)
 			living_target.Daze(0.1) // Visual cue that you got hit by something HARD.
 
-		// Base 1.8x damage to non-xeno targets (225), 1.6x + 10% current against Runners and Defenders (223), 1.2x + 20% current health against most non-Runner xenos, and +30% current health against Big xenos. -Kaga
+		// Base 1.8x damage to non-xeno targets (225), 1.6x + 10% current against Runners (223), 1.6x + 20% current health against most non-Runner xenos, and 1x + 30% current health against Big xenos. -Kaga
 		// This applies after pen reductions. After hitting 1 other thing, it deals 80% damage, or 40% after hitting a dense wall or big xeno.
 
 		if((focused_fire_active || isxeno(target_mob)) && !(target_mob.is_dead()))

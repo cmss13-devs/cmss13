@@ -390,6 +390,7 @@
 	new /obj/item/reagent_container/spray/pepper(src)
 	new /obj/item/device/clue_scanner(src)
 	new /obj/item/handcuffs(src)
+
 /obj/item/storage/belt/security/MP/UPP
 	name = "\improper Type 43 military police rig"
 	desc = "The Type 43 is the standard load-bearing equipment of the UPP. It consists of a modular belt with various clips. This version is filled with an array of small pouches, meant to carry non-lethal equipment and restraints."

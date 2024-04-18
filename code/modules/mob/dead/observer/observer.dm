@@ -1189,7 +1189,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!SSticker.HasRoundStarted())
 		var/time_remaining = SSticker.GetTimeLeft()
 		if(time_remaining > 0)
-			. += "Time To Start: [round(time_remaining)]s"
+			. += "Time To Start: [round(time_remaining)]s [SSticker.delay_start ? "(DELAYED)" : ""]"
 		else if(time_remaining == -10)
 			. += "Time To Start: DELAYED"
 		else

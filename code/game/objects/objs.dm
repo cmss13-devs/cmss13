@@ -142,31 +142,39 @@
 			return "on [t_his] feet"
 	return "...somewhere?"
 
-/obj/proc/updateUsrDialog()
-	if(in_use)
-		var/is_in_use = 0
-		var/list/nearby = viewers(1, src)
-		for(var/mob/M in nearby)
-			if ((M.client && M.interactee == src))
-				is_in_use = 1
-				attack_hand(M)
-		if (isSilicon(usr))
-			if (!(usr in nearby))
-				if (usr.client && usr.interactee==src) // && M.interactee == src is omitted because if we triggered this by using the dialog, it doesn't matter if our machine changed in between triggering it and this - the dialog is probably still supposed to refresh.
-					is_in_use = 1
-					attack_remote(usr)
-		in_use = is_in_use
+/obj/proc/updateUsrDialog(mob/user)
+	if(!user)
+		user = usr
+	if(!in_use || !user)
+		return
+
+	var/is_in_use = FALSE
+	var/list/nearby = viewers(1, src)
+	for(var/mob/cur_mob in nearby)
+		if(cur_mob.client && cur_mob.interactee == src)
+			is_in_use = TRUE
+			attack_hand(cur_mob)
+	if(isSilicon(user))
+		if(!(user in nearby))
+			if(user.client && user.interactee == src) // && M.interactee == src is omitted because if we triggered this by using the dialog, it doesn't matter if our machine changed in between triggering it and this - the dialog is probably still supposed to refresh.
+				is_in_use = TRUE
+				attack_remote(user)
+
+	in_use = is_in_use
 
 /obj/proc/updateDialog()
 	// Check that people are actually using the machine. If not, don't update anymore.
-	if(in_use)
-		var/list/nearby = viewers(1, src)
-		var/is_in_use = 0
-		for(var/mob/M in nearby)
-			if ((M.client && M.interactee == src))
-				is_in_use = 1
-				src.interact(M)
-		in_use = is_in_use
+	if(!in_use)
+		return
+
+	var/is_in_use = FALSE
+	var/list/nearby = viewers(1, src)
+	for(var/mob/cur_mob in nearby)
+		if(cur_mob.client && cur_mob.interactee == src)
+			is_in_use = TRUE
+			interact(cur_mob)
+
+	in_use = is_in_use
 
 /obj/proc/interact(mob/user)
 	return
@@ -269,7 +277,7 @@
 	if (!ismob(M) || (get_dist(src, user) > 1) || user.is_mob_restrained() || user.stat || buckled_mob || M.buckled || !isturf(user.loc))
 		return
 
-	if (isxeno(user))
+	if (isxeno(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do that, try a nest."))
 		return
 	if (iszombie(user))
@@ -292,10 +300,10 @@
 			if(M.loc != src.loc)
 				return
 			. = buckle_mob(M)
-	if (M.mob_size <= MOB_SIZE_XENO && M.stat == DEAD && istype(src, /obj/structure/bed/roller))
-		do_buckle(M, user)
-		return
-	if (M.mob_size > MOB_SIZE_HUMAN)
+	if (M.mob_size <= MOB_SIZE_XENO)
+		if ((M.stat == DEAD && istype(src, /obj/structure/bed/roller) || HAS_TRAIT(M, TRAIT_OPPOSABLE_THUMBS)))
+			do_buckle(M, user)
+	if ((M.mob_size > MOB_SIZE_HUMAN))
 		to_chat(user, SPAN_WARNING("[M] is too big to buckle in."))
 		return
 	do_buckle(M, user)

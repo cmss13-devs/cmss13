@@ -1,3 +1,53 @@
+//------------SUPPLY LINK FOR MEDICAL VENDORS---------------
+
+/obj/structure/medical_supply_link
+	name = "medilink supply port"
+	desc = "A complex network of pipes and machinery, linking to large storage systems below the deck. Medical vendors linked to this port will be able to infinitely restock supplies."
+	icon = 'icons/effects/warning_stripes.dmi'
+	icon_state = "medlink_unclamped"
+	var/base_state = "medlink"
+	anchored = TRUE
+	density = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+	plane = FLOOR_PLANE
+	layer = ABOVE_TURF_LAYER //It's the floor, man
+
+/obj/structure/medical_supply_link/ex_act(severity, direction)
+	return FALSE
+
+/obj/structure/medical_supply_link/Initialize()
+	. = ..()
+	RegisterSignal(src, COMSIG_STRUCTURE_WRENCHED, PROC_REF(do_clamp_animation))
+	RegisterSignal(src, COMSIG_STRUCTURE_UNWRENCHED, PROC_REF(do_unclamp_animation))
+	update_icon()
+
+/// Performs the clamping animation when a structure is anchored in our loc
+/obj/structure/medical_supply_link/proc/do_clamp_animation()
+	SIGNAL_HANDLER
+	flick("[base_state]_clamping", src)
+	addtimer(CALLBACK(src, PROC_REF(update_icon), 2.6 SECONDS))
+	update_icon()
+
+/// Performs the unclamping animation when a structure is unanchored in our loc
+/obj/structure/medical_supply_link/proc/do_unclamp_animation()
+	SIGNAL_HANDLER
+	flick("[base_state]_unclamping", src)
+	addtimer(CALLBACK(src, PROC_REF(update_icon), 2.6 SECONDS))
+	update_icon()
+
+/obj/structure/medical_supply_link/update_icon()
+	var/obj/structure/machinery/cm_vending/sorted/medical/vendor = locate() in loc
+	if(vendor && vendor.anchored)
+		icon_state = "[base_state]_clamped"
+	else
+		icon_state = "[base_state]_unclamped"
+
+// --- Green
+/obj/structure/medical_supply_link/green
+	icon_state = "medlink_green_unclamped"
+	base_state = "medlink_green"
+
 //------------SORTED MEDICAL VENDORS---------------
 
 /obj/structure/machinery/cm_vending/sorted/medical
@@ -13,6 +63,9 @@
 
 	vendor_theme = VENDOR_THEME_COMPANY
 	vend_delay = 0.5 SECONDS
+
+	/// sets vendor to require a medlink to be able to resupply
+	var/requires_supply_link_port = TRUE
 
 	var/datum/health_scan/last_health_display
 
@@ -60,6 +113,36 @@
 	if(healthscan)
 		. += SPAN_NOTICE("The [src.name] offers assisted medical scan, for ease of usage with minimal training. Present the target in front of the scanner to scan.")
 
+/// checks if there is a supply link in our location and we are anchored to it
+/obj/structure/machinery/cm_vending/sorted/medical/proc/get_supply_link()
+	if(!anchored)
+		return FALSE
+	var/obj/structure/medical_supply_link/linkpoint = locate() in loc
+	if(!linkpoint)
+		return FALSE
+	return TRUE
+
+/obj/structure/machinery/cm_vending/sorted/medical/additional_restock_checks(obj/item/item_to_stock, mob/user)
+	if(istype(item_to_stock, /obj/item/reagent_container/hypospray/autoinjector) || istype(item_to_stock, /obj/item/reagent_container/glass/bottle))
+		if(requires_supply_link_port && !get_supply_link())
+			var/obj/item/reagent_container/container = item_to_stock
+			if(container.reagents.total_volume < container.reagents.maximum_volume)
+				if(user)
+					to_chat(user, SPAN_WARNING("[src] makes a buzzing noise as it rejects [container.name]. Looks like this vendor cannot refill these without a connected supply link."))
+					playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
+				return FALSE
+
+	//stacked items handling if the vendor cannot restock partial stacks
+	else if(istype(item_to_stock, /obj/item/stack))
+		if(requires_supply_link_port && !get_supply_link())
+			var/obj/item/stack/restock_stack = item_to_stock
+			if(restock_stack.amount < restock_stack.max_amount) // if the stack is not full
+				if(user)
+					to_chat(user, SPAN_WARNING("[src] makes a buzzing noise as it rejects [restock_stack]. Looks like this vendor cannot restock these without a connected supply link."))
+					playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
+				return FALSE
+	return TRUE
+
 /obj/structure/machinery/cm_vending/sorted/medical/attackby(obj/item/I, mob/user)
 	if(stat == WORKING && LAZYLEN(chem_refill) && (istype(I, /obj/item/reagent_container/hypospray/autoinjector) || istype(I, /obj/item/reagent_container/glass/bottle))) // only if we are completely fine and working
 		if(!hacked)
@@ -78,6 +161,11 @@
 
 		if(C.reagents.total_volume == C.reagents.maximum_volume)
 			to_chat(user, SPAN_WARNING("[src] makes a warning noise. The [C.name] is currently full."))
+			return
+
+		if(requires_supply_link_port && !get_supply_link())
+			to_chat(user, SPAN_WARNING("[src] makes a buzzing noise as it rejects [C.name]. Looks like this vendor cannot refill these without a connected supply link."))
+			playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
 			return
 
 		to_chat(user, SPAN_NOTICE("[src] makes a whirring noise as it refills your [C.name]."))
@@ -102,6 +190,11 @@
 
 		if(S.amount == S.max_amount)
 			to_chat(user, SPAN_WARNING("[src] makes a warning noise. The [S.name] is currently fully stacked."))
+			return
+
+		if(requires_supply_link_port && !get_supply_link())
+			to_chat(user, SPAN_WARNING("[src] makes a buzzing noise as it rejects [S.name]. Looks like this vendor cannot restock these without a connected supply link."))
+			playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
 			return
 
 		to_chat(user, SPAN_NOTICE("[src] makes a whirring noise as it restocks your [S.name]."))
@@ -231,6 +324,7 @@
 	name = "\improper Medical Equipment Vendor"
 	desc = "A vending machine dispensing various pieces of medical equipment."
 	req_one_access = list(ACCESS_ILLEGAL_PIRATE, ACCESS_UPP_GENERAL, ACCESS_CLF_GENERAL)
+	requires_supply_link_port = FALSE
 	req_access = null
 	vendor_theme = VENDOR_THEME_CLF
 
@@ -272,6 +366,7 @@
 	name = "\improper Basic Medical Supplies Vendor"
 	desc = "A vending machine dispensing basic medical supplies."
 	req_one_access = list(ACCESS_ILLEGAL_PIRATE, ACCESS_UPP_GENERAL, ACCESS_CLF_GENERAL)
+	requires_supply_link_port = FALSE
 	req_access = null
 	vendor_theme = VENDOR_THEME_CLF
 
@@ -307,6 +402,7 @@
 
 /obj/structure/machinery/cm_vending/sorted/medical/blood/antag
 	req_one_access = list(ACCESS_ILLEGAL_PIRATE, ACCESS_UPP_GENERAL, ACCESS_CLF_GENERAL)
+	requires_supply_link_port = FALSE
 	req_access = null
 	vendor_theme = VENDOR_THEME_CLF
 
@@ -315,6 +411,7 @@
 	desc = "Wall-mounted Medical Equipment Dispenser."
 	icon_state = "wallmed"
 	vend_delay = 0.7 SECONDS
+	requires_supply_link_port = FALSE
 
 	req_access = list()
 

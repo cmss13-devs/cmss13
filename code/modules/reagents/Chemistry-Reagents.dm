@@ -83,43 +83,42 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	for(var/datum/chem_property/P in properties)
 		P.post_update_reagent()
 
-/datum/reagent/proc/reaction_mob(mob/M, method=TOUCH, volume) //By default we have a chance to transfer some
-	if(!istype(M, /mob/living)) return 0
+/datum/reagent/proc/reaction_mob(mob/M, method=TOUCH, volume, permeable) //By default we have a chance to transfer some
+	if(!istype(M, /mob/living))
+		return FALSE
 	var/datum/reagent/self = src
 	src = null   //of the reagent to the mob on TOUCHING it.
 
 	if(self.holder) //for catching rare runtimes
-		if(!istype(self.holder.my_atom, /obj/effect/particle_effect/smoke/chem))
+		if(method == TOUCH && permeable && !istype(self.holder.my_atom, /obj/effect/particle_effect/smoke/chem))
 			// If the chemicals are in a smoke cloud, do not try to let the chemicals "penetrate" into the mob's system (balance station 13) -- Doohl
+			var/chance = 1
+			var/block = FALSE
 
-			if(method == TOUCH)
+			for(var/obj/item/clothing/clothing in M.get_equipped_items())
+				if(clothing.permeability_coefficient < chance)
+					chance = clothing.permeability_coefficient
+				if(istype(clothing, /obj/item/clothing/suit/bio_suit))
+					// bio suits are just about completely fool-proof - Doohl
+					// kind of a hacky way of making bio suits more resistant to chemicals but w/e
+					if(prob(75))
+						block = TRUE
 
-				var/chance = 1
-				var/block  = 0
+				if(istype(clothing, /obj/item/clothing/head/bio_hood))
+					if(prob(75))
+						block = TRUE
 
-				for(var/obj/item/clothing/C in M.get_equipped_items())
-					if(C.permeability_coefficient < chance) chance = C.permeability_coefficient
-					if(istype(C, /obj/item/clothing/suit/bio_suit))
-						// bio suits are just about completely fool-proof - Doohl
-						// kind of a hacky way of making bio suits more resistant to chemicals but w/e
-						if(prob(75))
-							block = 1
+			chance *= 100
 
-					if(istype(C, /obj/item/clothing/head/bio_hood))
-						if(prob(75))
-							block = 1
+			if(prob(chance) && !block)
+				if(M.reagents)
+					M.reagents.add_reagent(self.id, self.volume * 0.5)
 
-				chance = chance * 100
+		for(var/datum/chem_property/property in self.properties)
+			var/potency = property.level * 0.5
+			property.reaction_mob(M, method, volume, potency)
 
-				if(prob(chance) && !block)
-					if(M.reagents)
-						M.reagents.add_reagent(self.id,self.volume/2)
-		for(var/datum/chem_property/P in self.properties)
-			var/potency = P.level * 0.5
-			P.reaction_mob(M, method, volume, potency)
-
-
-	return 1
+	return TRUE
 
 /datum/reagent/proc/reaction_obj(obj/O, volume)
 	for(var/datum/chem_property/P in properties)

@@ -896,7 +896,7 @@
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/uniform_1.dmi',
 	)
-	
+
 /obj/item/clothing/under/marine/reporter/black
 	icon_state = "cc_black"
 	worn_state = "cc_black"

@@ -245,8 +245,6 @@
 					to_chat(aimed_projectile.firer, SPAN_WARNING("Two hits! You're starting to get a good read on the target's patterns."))
 				if(3)
 					to_chat(aimed_projectile.firer, SPAN_WARNING("Bullseye! You're fully focused on the target."))
-					if(isxeno(target_mob))
-						to_chat(target_mob, SPAN_XENOHIGHDANGER("Another strike of searing heat slams precisely into a weakness in our exoskeleton, shattering it!"))
 				else
 					to_chat(aimed_projectile.firer, SPAN_WARNING("Bullseye!"))
 		else

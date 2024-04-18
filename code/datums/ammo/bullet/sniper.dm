@@ -122,18 +122,22 @@
 		// For reference: Scout Impact stuns for up to 1s and slows for up to 10s, Shotgun stuns for 1.4s and slows for 4s
 		if(living_mob.mob_size >= MOB_SIZE_BIG)
 			if(stopping_power >= 4)
-				to_chat(living_mob, SPAN_XENOHIGHDANGER("You are knocked off-balance by a heavy blow!"))
+				to_chat(living_mob, SPAN_XENOHIGHDANGER("You are knocked off-balance by the sudden massive impact!"))
 				living_mob.KnockDown(0.05) // Must deal more than 90 damage to mini-stun big mobs for 0.1s
 				// Can't interrupt a big mob unless it's completely alone with nothing blocking the shot.
 			else
-				to_chat(living_mob, SPAN_XENODANGER("You are shaken by the sudden impact!"))
+				to_chat(living_mob, SPAN_XENODANGER("You are shaken by the sudden heavy impact!"))
 		else
 			if(living_mob.body_position != LYING_DOWN)
-				to_chat(living_mob, SPAN_XENOHIGHDANGER("You are thrown back by a heavy blow!"))
+				to_chat(living_mob, SPAN_XENOHIGHDANGER("You are thrown back by the sudden massive force!"))
 				slam_back(living_mob, fired_projectile)
 			else
-				to_chat(living_mob, SPAN_XENODANGER("You are shaken by the sudden impact!"))
-			living_mob.KnockDown((stopping_power - 2)*0.05) // Up to 0.3s on a solo target.
+				to_chat(living_mob, SPAN_XENODANGER("You are shaken by the sudden heavy impact!"))
+
+			if(isxeno(living_mob))
+				living_mob.KnockDown((stopping_power - 2)*0.05) // Up to 0.3s on a solo target.
+			else
+				living_mob.KnockDown((stopping_power - 2)*0.5) // Up to 3s on non-xenos.
 
 	return stopping_power
 

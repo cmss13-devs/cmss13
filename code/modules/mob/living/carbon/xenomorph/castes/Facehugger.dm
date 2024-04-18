@@ -187,9 +187,11 @@
 
 	// For people who wish to remain anonymous
 	if(!client.prefs.playtime_perks)
-		age = XENO_NORMAL
+		age = XENO_NO_AGE
 
 	switch(age)
+		if(XENO_NO_AGE)
+			age_prefix = ""
 		if(XENO_NORMAL)
 			age_prefix = "Young "
 		if(XENO_MATURE)

@@ -207,7 +207,7 @@
 				focused_fire_active = 1
 				slow_duration = max(slow_duration-1, 0)
 				// Most T3s have around 650 to 700 HP, meaning the health modifier grants a MAXIMUM of around 195-210 damage for a total max of 320-335. This is fully focused (3 shots) and at max HP.
-				// Queen takes around 275 at max health and unfocused, 425 fully focused. Defender only takes 200 damage, even while fortified, but still causes falloff like a Big Xeno.
+				// Queen takes around 275 at max health and unfocused, 425 fully focused.
 				// At low health, does little more than a normal shot. Does WORSE than a normal shot if unfocused and hitting through blockers, all of which stack to reduce it.
 
 			var/final_xeno_damage = ((damage * size_damage_mod) + ((target.health + damage) * size_current_health_damage))

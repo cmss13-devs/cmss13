@@ -175,8 +175,12 @@
 
 /obj/item/clothing/mask/facehugger/equipped(mob/M)
 	SHOULD_CALL_PARENT(FALSE) // ugh equip sounds
-	// So picking up a hugger does not prematurely kill it
-	go_idle()
+
+	var/mob/living/carbon/xenomorph/xeno = M
+	
+	if(xeno.caste.hugger_nurturing || hivenumber == XENO_HIVE_TUTORIAL) // caste can prevent hugger death
+		jumps_left = initial(jumps_left)
+		go_idle()
 
 /obj/item/clothing/mask/facehugger/Crossed(atom/target)
 	has_proximity(target)
@@ -350,10 +354,18 @@
 	stat = UNCONSCIOUS
 	icon_state = "[initial(icon_state)]_inactive"
 	if(jump_timer)
+		jumps_left-- // Reduce a jump so you cannot infinitely juggle huggers unless nurturing \ tutorial
 		deltimer(jump_timer)
+
+		if(!jumps_left)
+			end_lifecycle()
+			return
+	
 	jump_timer = null
 	// Reset the jumps left to their original count
-	jumps_left = initial(jumps_left)
+	if(hivenumber == XENO_HIVE_TUTORIAL) // caste can prevent hugger death
+		jumps_left = initial(jumps_left)
+
 	addtimer(CALLBACK(src, PROC_REF(go_active)), rand(MIN_ACTIVE_TIME,MAX_ACTIVE_TIME))
 
 /obj/item/clothing/mask/facehugger/proc/try_jump()

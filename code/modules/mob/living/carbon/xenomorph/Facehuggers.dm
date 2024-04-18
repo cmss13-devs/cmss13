@@ -343,22 +343,22 @@
 	stat = CONSCIOUS
 	jump_timer = addtimer(CALLBACK(src, PROC_REF(try_jump)), time_between_jumps, TIMER_OVERRIDE|TIMER_STOPPABLE|TIMER_UNIQUE)
 
-/obj/item/clothing/mask/facehugger/proc/go_idle()
+/obj/item/clothing/mask/facehugger/proc/go_idle() //Idle state does not count toward the death timer.
 	if(stat == DEAD || stat == UNCONSCIOUS)
 		return
 
 	stat = UNCONSCIOUS
 	icon_state = "[initial(icon_state)]_inactive"
-
+	if(jump_timer)
+		deltimer(jump_timer)
+	jump_timer = null
+	// Reset the jumps left to their original count
+	jumps_left = initial(jumps_left)
 	addtimer(CALLBACK(src, PROC_REF(go_active)), rand(MIN_ACTIVE_TIME,MAX_ACTIVE_TIME))
 
 /obj/item/clothing/mask/facehugger/proc/try_jump()
 	jump_timer = addtimer(CALLBACK(src, PROC_REF(try_jump)), time_between_jumps, TIMER_OVERRIDE|TIMER_STOPPABLE|TIMER_UNIQUE)
 	if(stat != CONSCIOUS || isnull(loc)) //Make sure we're conscious and not idle or dead.
-		jumps_left-- // Huggers should still lose hp, even when idle
-
-		if(!jumps_left)
-			end_lifecycle()
 		return
 
 	if(isxeno(loc))

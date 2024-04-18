@@ -1,4 +1,0 @@
-author: "MrStonedOne, LemonInTheDark"
-delete-after: True
-changes:
-  - server: "config now allows you to warn players to upgrade their byond version, or bar them based on their byond version"

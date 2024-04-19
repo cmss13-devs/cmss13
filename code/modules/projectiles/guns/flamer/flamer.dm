@@ -136,10 +136,13 @@
 		click_empty(user)
 	else
 		user.track_shot(initial(name))
-		if(current_mag.reagents.has_reagent("stablefoam"))
-			unleash_foam(target, user)
+		if(istype(current_mag, /obj/item/ammo_magazine/flamer_tank/smoke))
+			unleash_smoke(target, user)
 		else
-			unleash_flame(target, user)
+			if(current_mag.reagents.has_reagent("stablefoam"))
+				unleash_foam(target, user)
+			else
+				unleash_flame(target, user)
 		return AUTOFIRE_CONTINUE
 	return NONE
 
@@ -228,6 +231,66 @@
 	playsound(to_fire, src.get_fire_sound(), 50, TRUE)
 
 	new /obj/flamer_fire(to_fire, create_cause_data(initial(name), user), R, max_range, current_mag.reagents, flameshape, target, CALLBACK(src, PROC_REF(show_percentage), user), fuel_pressure, fire_type)
+
+/obj/item/weapon/gun/flamer/proc/unleash_smoke(atom/target, mob/living/user)
+	last_fired = world.time
+	if(!current_mag || !current_mag.reagents || !current_mag.reagents.reagent_list.len)
+		return
+
+	var/source_turf = get_turf(user)
+	var/smoke_range = 7 // the max range the smoke will travel
+	var/distance = 0 // the distance traveled
+	var/use_multiplier = 2 // if you want to increase the ammount of units drained from the tank
+	var/units_in_smoke = 35 // the smoke overlaps a little so this much is probably already good
+
+	var/datum/reagent/chemical = current_mag.reagents.reagent_list[1]
+	var/datum/reagents/to_disperse = new() // this is the chemholder that will be used by the chemsmoke
+	to_disperse.add_reagent(chemical.id, units_in_smoke)
+	to_disperse.my_atom = src
+
+	var/turf/turfs[] = get_line(user, target, FALSE)
+	var/turf/first_turf = turfs[1]
+	var/turf/second_turf = turfs[2]
+	var/ammount_required = (min(turfs.len, smoke_range) * use_multiplier) // the ammount of units that this click requires
+	for(var/turf/turf in turfs)
+
+		if(chemical.volume < ammount_required)
+			smoke_range = round(chemical.volume / use_multiplier)
+
+		if(distance >= smoke_range)
+			break
+
+		if(turf.density)
+			break
+		else
+			var/obj/effect/particle_effect/smoke/chem/checker = new()
+			var/atom/blocked = LinkBlocked(checker, source_turf, turf)
+			if(blocked)
+				break
+
+		playsound(turf, 'sound/effects/smoke.ogg', 25, 1)
+		if(turf != first_turf && turf != second_turf) // we skip the first tile and make it small on the second so the smoke doesn't touch the user
+			var/datum/effect_system/smoke_spread/chem/smoke = new()
+			smoke.set_up(to_disperse, 5, loca = turf)
+			smoke.start()
+		if(turf == second_turf)
+			var/datum/effect_system/smoke_spread/chem/smoke = new()
+			smoke.set_up(to_disperse, 1, loca = turf)
+			smoke.start()
+		sleep(2)
+
+		distance++
+
+	var/ammount_used = distance * use_multiplier // the actual ammount of units that we used
+
+	chemical.volume = max(chemical.volume - ammount_used, 0)
+
+	current_mag.reagents.total_volume = chemical.volume // this is needed for show_percentage to work
+
+	if(chemical.volume < use_multiplier) // there aren't enough units left for a single tile of smoke, empty the tank
+		current_mag.reagents.clear_reagents()
+
+	show_percentage(user)
 
 /obj/item/weapon/gun/flamer/proc/unleash_foam(atom/target, mob/living/user)
 	last_fired = world.time

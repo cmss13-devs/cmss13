@@ -491,7 +491,7 @@
 	//------------------//
 	explosive = TRUE
 	power = 0.12
-	falloff_modifier = -0.1
+	falloff_modifier = 0.1
 	burncolor = "#ff9900"
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_FUELING = 5, PROPERTY_OXIDIZING = 3, PROPERTY_VISCOUS = 4, PROPERTY_TOXIC = 1)
@@ -894,7 +894,7 @@
 	description = "Ammonium nitrate fuel oil (ANFO) is a low cost bulk explosive commonly used for mining and construction operations."
 	explosive = TRUE
 	power = 1
-	falloff_modifier = -0.6
+	falloff_modifier = 0.2
 
 /datum/reagent/nitroglycerin
 	name = "Nitroglycerin"
@@ -905,7 +905,7 @@
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 	explosive = TRUE
 	power = 1
-	falloff_modifier = -0.5
+	falloff_modifier = 0.4
 
 /datum/reagent/cyclonite
 	name = "Cyclonite"
@@ -915,7 +915,7 @@
 	color = "#E3E0BA"
 	explosive = TRUE
 	power = 1.5
-	falloff_modifier = -0.4
+	falloff_modifier = 0.5
 
 /datum/reagent/cyclonite/on_mob_life(mob/living/M)
 	. = ..()
@@ -929,7 +929,7 @@
 	color = "#F5F5F5"
 	explosive = TRUE
 	power = 2
-	falloff_modifier = -0.2
+	falloff_modifier = 0.6
 	chemfiresupp = TRUE
 	properties = list(PROPERTY_OXIDIZING = 2)
 

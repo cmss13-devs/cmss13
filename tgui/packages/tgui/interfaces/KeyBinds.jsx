@@ -10,6 +10,20 @@ const KEY_MODS = {
   'CONTROL': true,
 };
 
+const KEY_CODE_TO_BYOND = {
+  DEL: 'Delete',
+  DOWN: 'South',
+  END: 'Southwest',
+  HOME: 'Northwest',
+  INSERT: 'Insert',
+  LEFT: 'West',
+  PAGEDOWN: 'Southeast',
+  PAGEUP: 'Northeast',
+  RIGHT: 'East',
+  ' ': 'Space',
+  UP: 'North',
+};
+
 const getAllKeybinds = (glob_keybinds) => {
   const all_keybinds = new Array();
   Object.keys(glob_keybinds).map((x) => all_keybinds.push(...glob_keybinds[x]));
@@ -272,6 +286,10 @@ export class ButtonKeybind extends Component {
     // Prevents repeating
     if (keysDown[pressedKey] && e.type === 'keydown') {
       return;
+    }
+
+    if (KEY_CODE_TO_BYOND[pressedKey]) {
+      pressedKey = KEY_CODE_TO_BYOND[pressedKey];
     }
 
     if (e.keyCode >= 96 && e.keyCode <= 105) {

@@ -613,6 +613,15 @@
 	color = "#664B63" // rgb: 102, 75, 99
 	chemclass = CHEM_CLASS_UNCOMMON
 
+/datum/reagent/foaming_agent/stabilized
+	name = "Stabilized metallic foam"
+	id = "stablefoam"
+	description = "Stabilized metallic foam that solidifies when exposed to an open flame"
+	reagent_state = LIQUID
+	color = "#d4b8d1"
+	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_TOXIC = 8)
+
 /datum/reagent/nicotine
 	name = "Nicotine"
 	id = "nicotine"
@@ -710,9 +719,9 @@
 	id = "highdamagenapalm"
 	description = "A custom napalm mix, higher damage but not as sticky"
 	reagent_state = LIQUID
-	color = "#742424"
+	color = "#c51c1c"
 	chemfiresupp = FALSE
-	burncolor = "#742424"
+	burncolor = "#c51c1c"
 	burn_sprite = "dynamic"
 	properties = list(
 		PROPERTY_INTENSITY = BURN_LEVEL_TIER_8,

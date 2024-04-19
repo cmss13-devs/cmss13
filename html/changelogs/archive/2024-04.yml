@@ -222,3 +222,51 @@
 2024-04-15:
   LTNTS:
   - maptweak: moves APC in Chance's Claim LZ1 to where it can actually be fixed
+2024-04-16:
+  Huffie56, Zenith, esselnek/sleepynecrons, samy/nauticall, drulikar.:
+  - rscadd: Added fuel pump as machinery on the almayer sprite will change when power
+      is on or off.
+  - rscadd: Fuel pumps are animated when activated and have different state depending
+      on how full the lifeboats are.
+  - imageadd: added the fuel pump icon. updated by esselnek /sleepynecrons and Zenith,
+      they where originally made by nauticall.
+  - maptweak: added the fuel pump to the proper locations.
+  ihatethisengine2:
+  - rscadd: ported stripping menu from TG
+2024-04-17:
+  QuickLode:
+  - balance: M3A1 Synthetic Utility Vest only has a 10% slowdown.
+  iloveloopers:
+  - bugfix: You can no longer buckle xenos onto chairs
+  realforest2001:
+  - rscadd: Added Nerve Gas Release control buttons to the ARES and APOLLO interfaces,
+      allowing the AI core to be secured from large groups or xenomorphs. Built in
+      cooldowns should prevent fatalities.
+  - maptweak: Remodelled the AI Core Reception and WJ spawn area.
+  - maptweak: Switches AI Core cameras over to manual naming.
+  - imageadd: Added sprites for AI Core windows on black Almayer frames.
+  usnpeepoo:
+  - balance: Berserker's rage lock-out duration increased slightly
+2024-04-18:
+  InsaneRed:
+  - balance: Hedgehog now gains explosion immunity to nades if you have above half
+      shard amount.
+  MrStonedOne, LemonInTheDark:
+  - server: config now allows you to warn players to upgrade their byond version,
+      or bar them based on their byond version
+  Steelpoint:
+  - balance: UPP Synthetic's loadout has been reworked to account for its new status
+      as a non-combatant.
+2024-04-19:
+  QuickLode:
+  - rscadd: Adds 3 variations of CMB Marshal and 4 variations of a UA Riot Police
+      Officer to Fiorina Prison Riot nightmare. These are fine men and women in uniform
+      prepared to engage what they suspect is a riot(or in the case of CMB, assisting
+      their underfunded and understaffed colleagues) however, they find something
+      much more sinister going on..
+  - rscadd: Adds a CMB Investigative Synthetic(r) and a UA Police Synthetic.
+  - rscadd: Allows police baton and telescopic baton to shield clash for intimidation
+      and riot tactics.
+  - rscadd: Allows M81 launcher to utilize less lethal baton round
+  - qol: removes taser from some security synthetics belts, replaced with a more synthetic
+      friendly version

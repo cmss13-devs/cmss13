@@ -155,7 +155,7 @@
 	toggle_state(user) // just flip dat switch
 
 /obj/structure/machinery/telecomms/relay/preset/tower/all
-	freq_listening = list()
+	freq_listening = list(UNIVERSAL_FREQ)
 
 /obj/structure/machinery/telecomms/relay/preset/tower/faction
 	name = "UPP telecommunications relay"
@@ -268,7 +268,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 			return
 		var/choice = tgui_input_list(user, "What do you wish to do?", "TC-3T comms tower", list("Wipe communication frequencies", "Add your faction's frequencies"))
 		if(choice == "Wipe communication frequencies")
-			freq_listening = null
+			freq_listening.Cut()
 			to_chat(user, SPAN_NOTICE("You wipe the preexisting frequencies from \the [src]."))
 			return
 		else if(choice == "Add your faction's frequencies")

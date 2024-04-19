@@ -146,6 +146,7 @@
 
 				xeno.visible_message(SPAN_WARNING("[xeno] devours [pulled]!"), \
 					SPAN_WARNING("We devour [pulled]!"), null, 5)
+				log_interact(xeno, pulled, "[key_name(xeno)] devoured [key_name(pulled)] at [get_area_name(xeno)]")
 
 				if(ishuman(pulled))
 					var/mob/living/carbon/human/pulled_human = pulled

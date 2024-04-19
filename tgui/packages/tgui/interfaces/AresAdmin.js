@@ -18,6 +18,8 @@ const PAGES = {
   'security': () => Security,
   'requisitions': () => Requisitions,
   'emergency': () => Emergency,
+  'tech_log': () => TechLogs,
+  'core_security': () => CoreSec,
   'admin_access_log': () => AdminAccessLogs,
   'access_management': () => AccessManagement,
   'maintenance_management': () => MaintManagement,
@@ -30,6 +32,10 @@ export const AresAdmin = (props, context) => {
 
   let themecolor = 'crtyellow';
   if (sudo >= 1) {
+    themecolor = 'crtred';
+  } else if (current_menu === 'emergency') {
+    themecolor = 'crtred';
+  } else if (current_menu === 'core_security') {
     themecolor = 'crtred';
   }
 
@@ -255,6 +261,18 @@ const MainMenu = (props, context) => {
               onClick={() => act('page_requisitions')}
             />
           </Stack.Item>
+          <Stack.Item>
+            <Button
+              content="Tech Control Log"
+              tooltip="Review the Intel Tech Log."
+              icon="magnifying-glass-chart"
+              ml="auto"
+              px="2rem"
+              width="25vw"
+              bold
+              onClick={() => act('page_tech')}
+            />
+          </Stack.Item>
         </Stack>
 
         <Stack>
@@ -335,6 +353,25 @@ const MainMenu = (props, context) => {
               />
             </Stack.Item>
           )}
+        </Stack>
+      </Section>
+      <Section>
+        <h1 align="center">Core Security Protocols</h1>
+        <Stack>
+          <Stack.Item grow>
+            <Button
+              content="Nerve Gas Control"
+              align="center"
+              tooltip="Release stored CN20-X nerve gas from security vents."
+              icon="wind"
+              color="red"
+              ml="auto"
+              px="2rem"
+              width="100%"
+              bold
+              onClick={() => act('page_core_sec')}
+            />
+          </Stack.Item>
         </Stack>
       </Section>
       <Section>
@@ -1315,6 +1352,8 @@ const FlightLogs = (props, context) => {
 
           <h3>
             {logged_in}, {access_text}
+            <br />
+            Remote Admin: {admin_login}
           </h3>
 
           <Button.Confirm
@@ -1569,6 +1608,194 @@ const Emergency = (props, context) => {
           disabled={access_text}
         />
       </Flex>
+    </>
+  );
+};
+
+const TechLogs = (props, context) => {
+  const { data, act } = useBackend(context);
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    records_tech,
+    admin_login,
+  } = data;
+
+  return (
+    <>
+      <Section>
+        <Flex align="center">
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={last_page === current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+            />
+          </Box>
+
+          <h3>
+            {logged_in}, {access_text}
+            <br />
+            Remote Admin: {admin_login}
+          </h3>
+
+          <Button.Confirm
+            content="Logout"
+            icon="circle-user"
+            ml="auto"
+            px="2rem"
+            bold
+            onClick={() => act('logout')}
+          />
+        </Flex>
+      </Section>
+
+      <Section>
+        <h1 align="center">Tech Control Logs</h1>
+        {!!records_tech.length && (
+          <Flex
+            className="candystripe"
+            p=".75rem"
+            align="center"
+            fontSize="1.25rem">
+            <Flex.Item bold width="6rem" shrink="0" mr="1rem">
+              Time
+            </Flex.Item>
+            <Flex.Item width="15rem" grow bold>
+              Authenticator
+            </Flex.Item>
+            <Flex.Item width="40rem" textAlign="center">
+              Details
+            </Flex.Item>
+          </Flex>
+        )}
+        {records_tech.map((record, i) => {
+          return (
+            <Flex key={i} className="candystripe" p=".75rem" align="center">
+              <Flex.Item bold width="6rem" shrink="0" mr="1rem">
+                {record.time}
+              </Flex.Item>
+              <Flex.Item width="15rem" grow italic>
+                {record.user}
+              </Flex.Item>
+              {!!record.tier_changer && (
+                <Flex.Item
+                  width="40rem"
+                  ml="1rem"
+                  shrink="0"
+                  textAlign="center"
+                  color="red">
+                  {record.details}
+                </Flex.Item>
+              )}
+              {!record.tier_changer && (
+                <Flex.Item
+                  width="40rem"
+                  ml="1rem"
+                  shrink="0"
+                  textAlign="center">
+                  {record.details}
+                </Flex.Item>
+              )}
+
+              <Flex.Item ml="1rem">
+                <Button.Confirm
+                  icon="trash"
+                  tooltip="Delete Record"
+                  disabled={current_menu}
+                  onClick={() => act('delete_record', { record: record.ref })}
+                />
+              </Flex.Item>
+            </Flex>
+          );
+        })}
+      </Section>
+    </>
+  );
+};
+
+const CoreSec = (props) => {
+  const { data, act } = useBackend();
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    security_vents,
+    admin_login,
+  } = data;
+
+  return (
+    <>
+      <Section>
+        <Flex align="center">
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={last_page === current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+            />
+          </Box>
+
+          <h3>
+            {logged_in}, {access_text}
+            <br />
+            Remote Admin: {admin_login}
+          </h3>
+
+          <Button.Confirm
+            content="Logout"
+            icon="circle-user"
+            ml="auto"
+            px="2rem"
+            bold
+            onClick={() => act('logout')}
+          />
+        </Flex>
+      </Section>
+
+      <Section>
+        <h1 align="center">Core Security Protocols</h1>
+      </Section>
+      <Section>
+        <h1 align="center">Nerve Gas Release</h1>
+        {security_vents.map((vent, i) => {
+          return (
+            <Button.Confirm
+              key={i}
+              align="center"
+              content={vent.vent_tag}
+              icon="wind"
+              tooltip="Release Gas"
+              width="100%"
+              disabled={!vent.available}
+              onClick={() => act('trigger_vent', { vent: vent.ref })}
+            />
+          );
+        })}
+      </Section>
     </>
   );
 };

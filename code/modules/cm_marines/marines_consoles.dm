@@ -904,9 +904,10 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				// 20-29: Aux Command
 				JOB_AUXILIARY_OFFICER = 20,
 				JOB_SYNTH = 21,
-				JOB_PILOT = 22,
-				JOB_DROPSHIP_CREW_CHIEF = 23,
-				JOB_INTEL = 24,
+				JOB_CAS_PILOT = 22,
+				JOB_DROPSHIP_PILOT = 23,
+				JOB_DROPSHIP_CREW_CHIEF = 24,
+				JOB_INTEL = 25,
 				// 30-39: Security
 				JOB_CHIEF_POLICE = 30,
 				JOB_PROVOST_TML = 30,
@@ -1083,6 +1084,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				// 50-59: Engineering
 				JOB_UPP_COMBAT_SYNTH = 50,
 				JOB_UPP_CREWMAN = 51,
+				JOB_UPP_SUPPORT_SYNTH = 52,
 				// 60-69: Soldiers
 				JOB_UPP_LEADER = 60,
 				JOB_UPP_SPECIALIST = 61,

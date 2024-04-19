@@ -357,6 +357,33 @@
 	pictures_max = 20
 	w_class = SIZE_HUGE
 	flags_equip_slot = NO_FLAGS //cannot be equiped
+	var/obj/structure/machinery/camera/correspondent/linked_cam
+
+/obj/item/device/camera/broadcasting/Destroy()
+	clear_broadcast()
+	return ..()
+
+/obj/item/device/camera/broadcasting/wield(mob/user)
+	. = ..()
+	if(!.)
+		return
+	linked_cam = new(loc, src)
+	SEND_SIGNAL(src, COMSIG_BROADCAST_GO_LIVE)
+	to_chat(user, SPAN_NOTICE("[src] begins to buzz softly as you go live."))
+
+/obj/item/device/camera/broadcasting/unwield(mob/user)
+	. = ..()
+	clear_broadcast()
+
+/obj/item/device/camera/broadcasting/proc/clear_broadcast()
+	if(!QDELETED(linked_cam))
+		QDEL_NULL(linked_cam)
+
+/obj/item/device/camera/broadcasting/proc/get_broadcast_name()
+	var/datum/component/label/src_label_component = GetComponent(/datum/component/label)
+	if(src_label_component)
+		return src_label_component.label_name
+	return "Broadcast [serial_number]"
 
 /obj/item/photo/proc/construct(datum/picture/P)
 	icon = P.fields["icon"]

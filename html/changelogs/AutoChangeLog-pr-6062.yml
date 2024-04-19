@@ -1,0 +1,5 @@
+author: "iloveloopers"
+delete-after: True
+changes:
+  - rscadd: "adds new flamer fuel type, stabilized metallic foam"
+  - rscadd: "Incinerator tanks can now hold stabilized metallic foam"

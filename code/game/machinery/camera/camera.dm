@@ -10,7 +10,6 @@
 
 	var/list/network = list(CAMERA_NET_MILITARY)
 	var/c_tag = null
-	var/c_tag_order = 999
 	var/status = 1
 	anchored = TRUE
 	var/panel_open = FALSE // 0 = Closed / 1 = Open
@@ -70,7 +69,7 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 		var/area/my_area = get_area(src)
 		if(my_area)
 			for(var/obj/structure/machinery/camera/autoname/current_camera in GLOB.machines)
-				if(current_camera == src) 
+				if(current_camera == src)
 					continue
 				var/area/current_camera_area = get_area(current_camera)
 				if(current_camera_area.type != my_area.type)
@@ -299,6 +298,22 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 		SPAN_NOTICE("You weld [src]."))
 		return 1
 	return 0
+
+/obj/structure/machinery/camera/correspondent
+	network = list(CAMERA_NET_CORRESPONDENT)
+	invisibility = INVISIBILITY_ABSTRACT
+	invuln = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	colony_camera_mapload = FALSE
+	var/obj/item/device/camera/broadcasting/linked_broadcasting
+
+/obj/structure/machinery/camera/correspondent/Initialize(mapload, obj/item/device/camera/broadcasting/camera_item)
+	. = ..()
+	if(!camera_item)
+		return INITIALIZE_HINT_QDEL
+	c_tag = camera_item.get_broadcast_name()
+	linked_broadcasting = camera_item
 
 /obj/structure/machinery/camera/mortar
 	alpha = 0

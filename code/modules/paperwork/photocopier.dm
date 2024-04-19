@@ -17,6 +17,7 @@
 	var/copies = 1 //how many copies to print!
 	var/toner = 45 //how much toner is left! woooooo~
 	var/maxcopies = 10 //how many copies can be copied at once- idea shamelessly stolen from bs12's copier!
+	var/animate_state = "bigscanner1" //what makes the animated icon flick when needed
 
 
 /obj/structure/machinery/photocopier/attack_remote(mob/user as mob)
@@ -120,7 +121,7 @@
 			if(user.drop_inv_item_to_loc(O, src))
 				copy = O
 				to_chat(user, SPAN_NOTICE("You insert the paper into \the [src]."))
-				flick("bigscanner1", src)
+				flick("animate_state", src)
 				updateUsrDialog()
 		else
 			to_chat(user, SPAN_NOTICE("There is already something in \the [src]."))
@@ -129,7 +130,7 @@
 			if(user.drop_inv_item_to_loc(O, src))
 				photocopy = O
 				to_chat(user, SPAN_NOTICE("You insert the photo into \the [src]."))
-				flick("bigscanner1", src)
+				flick("animate_state", src)
 				updateUsrDialog()
 		else
 			to_chat(user, SPAN_NOTICE("There is already something in \the [src]."))
@@ -138,13 +139,13 @@
 			if(user.drop_inv_item_to_loc(O, src))
 				bundle = O
 				to_chat(user, SPAN_NOTICE("You insert the bundle into \the [src]."))
-				flick("bigscanner1", src)
+				flick("animate_state", src)
 				updateUsrDialog()
 	else if(istype(O, /obj/item/device/toner))
 		if(toner == 0)
 			if(user.temp_drop_inv_item(O))
 				qdel(O)
-				toner = 45
+				toner = initial(toner)
 				to_chat(user, SPAN_NOTICE("You insert the toner cartridge into \the [src]."))
 				updateUsrDialog()
 		else
@@ -257,49 +258,12 @@
 	copies = 1 //how many copies to print!
 	toner = 180 //how much toner is left! woooooo~
 	maxcopies = 30 //how many copies can be copied at once- idea shamelessly stolen from bs12's copier!
+	animate_state = "bigscannerpro1" //what makes the animated icon flick when needed
 
 
-/obj/structure/machinery/photocopier/wyphotocopier/attackby(obj/item/O as obj, mob/user as mob)
-	if(istype(O, /obj/item/paper))
-		if(!copy && !photocopy && !bundle)
-			if(user.drop_inv_item_to_loc(O, src))
-				copy = O
-				to_chat(user, SPAN_NOTICE("You insert the paper into \the [src]."))
-				flick("bigscannerpro1", src)
-				updateUsrDialog()
-		else
-			to_chat(user, SPAN_NOTICE("There is already something in \the [src]."))
-	else if(istype(O, /obj/item/photo))
-		if(!copy && !photocopy && !bundle)
-			if(user.drop_inv_item_to_loc(O, src))
-				photocopy = O
-				to_chat(user, SPAN_NOTICE("You insert the photo into \the [src]."))
-				flick("bigscannerpro1", src)
-				updateUsrDialog()
-		else
-			to_chat(user, SPAN_NOTICE("There is already something in \the [src]."))
-	else if(istype(O, /obj/item/paper_bundle))
-		if(!copy && !photocopy && !bundle)
-			if(user.drop_inv_item_to_loc(O, src))
-				bundle = O
-				to_chat(user, SPAN_NOTICE("You insert the bundle into \the [src]."))
-				flick("bigscannerpro1", src)
-				updateUsrDialog()
-	else if(istype(O, /obj/item/device/toner))
-		if(toner == 0)
-			if(user.temp_drop_inv_item(O))
-				qdel(O)
-				toner = 180
-				to_chat(user, SPAN_NOTICE("You insert the toner cartridge into \the [src]."))
-				updateUsrDialog()
-		else
-			to_chat(user, SPAN_NOTICE("This cartridge is not yet ready for replacement! Use up the rest of the toner."))
-	else if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
-		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-		anchored = !anchored
-		to_chat(user, SPAN_NOTICE("You [anchored ? "wrench" : "unwrench"] \the [src]."))
-	return
 
+
+/// The actual toner cartridge
 
 /obj/item/device/toner
 	name = "toner cartridge"

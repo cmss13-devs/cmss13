@@ -121,7 +121,7 @@
 			if(user.drop_inv_item_to_loc(O, src))
 				copy = O
 				to_chat(user, SPAN_NOTICE("You insert the paper into \the [src]."))
-				flick("animate_state", src)
+				flick(animate_state, src)
 				updateUsrDialog()
 		else
 			to_chat(user, SPAN_NOTICE("There is already something in \the [src]."))
@@ -130,7 +130,7 @@
 			if(user.drop_inv_item_to_loc(O, src))
 				photocopy = O
 				to_chat(user, SPAN_NOTICE("You insert the photo into \the [src]."))
-				flick("animate_state", src)
+				flick(animate_state, src)
 				updateUsrDialog()
 		else
 			to_chat(user, SPAN_NOTICE("There is already something in \the [src]."))
@@ -139,7 +139,7 @@
 			if(user.drop_inv_item_to_loc(O, src))
 				bundle = O
 				to_chat(user, SPAN_NOTICE("You insert the bundle into \the [src]."))
-				flick("animate_state", src)
+				flick(animate_state, src)
 				updateUsrDialog()
 	else if(istype(O, /obj/item/device/toner))
 		if(toner == 0)

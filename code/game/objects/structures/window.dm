@@ -618,6 +618,28 @@
 	basestate = "w_ai_rwindow"
 	window_frame = /obj/structure/window_frame/almayer/aicore/white
 
+/obj/structure/window/framed/almayer/aicore/black
+	icon_state = "alm_ai_rwindow0"
+	basestate = "alm_ai_rwindow"
+	window_frame = /obj/structure/window_frame/almayer/aicore/black
+
+/obj/structure/window/framed/almayer/aicore/hull/black
+	icon_state = "alm_ai_rwindow0"
+	basestate = "alm_ai_rwindow"
+	window_frame = /obj/structure/window_frame/almayer/aicore/black
+	not_damageable = TRUE
+	not_deconstructable = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	health = 1000000 //Failsafe, shouldn't matter
+
+/obj/structure/window/framed/almayer/aicore/hull/black/hijack_bustable //I exist to explode after hijack, that is all.
+
+/obj/structure/window/framed/almayer/aicore/hull/black/hijack_bustable/Initialize()
+	. = ..()
+	if(is_mainship_level(z))
+		RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_IMPACTED, PROC_REF(deconstruct))
+
 /obj/structure/window/framed/almayer/aicore/white/hull
 	name = "hull window"
 	desc = "An ultra-reinforced window designed to protect the AI Core. Made out of exotic materials to prevent hull breaches, nothing will get through here."

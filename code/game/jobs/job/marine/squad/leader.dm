@@ -7,11 +7,17 @@
 	gear_preset = /datum/equipment_preset/uscm/leader
 	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>You are responsible for the men and women of your squad.</a> Make sure they are on task, working together, and communicating. You are also in charge of communicating with command and letting them know about the situation first hand. Keep out of harm's way."
 
-/datum/job/marine/leader/get_total_positions(latejoin=0)
+/datum/job/marine/leader/get_total_positions(latejoin = FALSE)
 	var/real_max_positions = 0
 	for(var/datum/squad/squad in GLOB.RoleAuthority.squads)
 		if(squad.roundstart && squad.usable && squad.faction == FACTION_MARINE && squad.name != "Root")
 			real_max_positions += squad.max_leaders
+
+	if(real_max_positions > total_positions_so_far)
+		total_positions_so_far = real_max_positions
+
+	spawn_positions = real_max_positions
+
 	return real_max_positions
 
 /datum/job/marine/leader/whiskey

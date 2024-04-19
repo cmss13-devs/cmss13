@@ -39,12 +39,6 @@
 /proc/int_slot_formula(playercount)
 	return job_slot_formula(playercount,15,1,1,3)
 
-/proc/spec_slot_formula(playercount)
-	return job_slot_formula(playercount,15,1,2,4)
-
-/proc/sg_slot_formula(playercount)
-	return job_slot_formula(playercount,15,1,2,4)
-
 /proc/synth_slot_formula(playercount)
 	return job_slot_formula(playercount,60,1,1,2)
 

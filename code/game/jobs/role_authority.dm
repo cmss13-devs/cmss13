@@ -216,11 +216,6 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	unassigned_players = shuffle(unassigned_players, 1) //Shuffle the players.
 
-	for(var/datum/squad/squad in squads)
-		if(!isnull(squad.active_at) && squad.active_at > length(GLOB.clients))
-			squad.roundstart = FALSE
-			squad.usable = FALSE
-
 	// How many positions do we open based on total pop
 	for(var/i in roles_by_name)
 		var/datum/job/J = roles_by_name[i]

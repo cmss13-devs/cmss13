@@ -248,19 +248,19 @@
 
 		// Synths wont die to this (on it's own at least), dont log as a gib
 		if(synthetic)
-			if(src.occupant.client) // Log still
-				src.occupant.attack_log += "\[[time_stamp()]\] Was delimbed by <b>[key_name(user)]</b>"
+			if(occupant.client) // Log still
+				occupant.attack_log += "\[[time_stamp()]\] Was delimbed by <b>[key_name(user)]</b>"
 				user.attack_log += "\[[time_stamp()]\] delimbed <b>[key_name(occupant)]</b>"
 				msg_admin_attack("[key_name(user)] delimbed [key_name(occupant)] with a gibber in [user.loc.name]([user.x], [user.y], [user.z]).", user.x, user.y, user.z)
 			continue
 
-		if(src.occupant.client) // Gibbed a cow with a client in it? log that shit
-			src.occupant.attack_log += "\[[time_stamp()]\] Was gibbed by <b>[key_name(user)]</b>"
+		if(occupant.client) // Gibbed a cow with a client in it? log that shit
+			occupant.attack_log += "\[[time_stamp()]\] Was gibbed by <b>[key_name(user)]</b>"
 			user.attack_log += "\[[time_stamp()]\] Gibbed <b>[key_name(occupant)]</b>"
 			msg_admin_attack("[key_name(user)] gibbed [key_name(occupant)] in [user.loc.name] ([user.x], [user.y], [user.z]).", user.x, user.y, user.z)
 
-		src.occupant.death(create_cause_data("gibber", user), TRUE)
-		src.occupant.ghostize()
+		occupant.death(create_cause_data("gibber", user), TRUE)
+		occupant.ghostize()
 
 	if(synthetic)
 		to_chat(occupant, SPAN_HIGHDANGER("You can detect your limbs being ripped off your body, but it begins to malfunction as it reaches your torso!"))

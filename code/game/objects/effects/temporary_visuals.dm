@@ -107,7 +107,7 @@
 	pixel_x = -496
 	pixel_y = -496
 
-/obj/effect/shockwave/Initialize(mapload, radius, speed, y_offset, x_offset)
+/obj/effect/shockwave/Initialize(mapload, radius, speed, easing_type, y_offset, x_offset)
 	. = ..()
 	if(!speed)
 		speed = 1
@@ -117,4 +117,8 @@
 		pixel_x += x_offset
 	QDEL_IN(src, 0.5 * radius * speed)
 	transform = matrix().Scale(32 / 1024, 32 / 1024)
-	animate(src, time = 0.5 * radius * speed, transform=matrix().Scale((32 / 1024) * radius * 1.5, (32 / 1024) * radius * 1.5))
+	if(!easing_type)
+		animate(src, time = 0.5 * radius * speed, transform=matrix().Scale((32 / 1024) * radius * 1.5, (32 / 1024) * radius * 1.5))
+		return
+	animate(src, time = 0.5 * radius * speed, transform=matrix().Scale((32 / 1024) * radius * 1.5, (32 / 1024) * radius * 1.5), easing = easing_type)
+

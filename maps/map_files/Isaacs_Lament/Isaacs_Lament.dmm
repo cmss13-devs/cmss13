@@ -24,7 +24,7 @@
 	icon_state = "4-8";
 	pixel_y = 0
 	},
-/turf/open/asphalt/cement,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/lv873/indoors/lone_buildings/tcomms)
 "aaZ" = (
 /obj/structure/surface/table/woodentable,
@@ -141,8 +141,8 @@
 	dir = 1;
 	name = "\improper Aerospace Traffic Control Tower"
 	},
-/turf/open/floor{
-	icon_state = "dark"
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/lv873/indoors/aerospace_control)
 "adB" = (
@@ -189,14 +189,8 @@
 	},
 /area/lv873/indoors/operations/maintenance/south)
 "adY" = (
+/obj/item/prop/alien/hugger,
 /obj/item/shard,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing? It appears to have been impaled by the pen. What badass pencil pusher did this?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2;
-	layer = 3
-	},
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/gm/grass/dirt,
 /area/lv873/outdoors/gated_community_exterior)
@@ -460,7 +454,7 @@
 /turf/open/gm/river{
 	icon = 'icons/turf/ground_map_dirt.dmi'
 	},
-/area/lv873/oob)
+/area/lv873/indoors/lone_buildings/flooded)
 "ajU" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -484,9 +478,7 @@
 	pixel_x = 4;
 	pixel_y = -2
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "ajW" = (
 /obj/structure/surface/table/gamblingtable,
@@ -642,7 +634,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2-8"
 	},
-/turf/open/floor/wood,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/lv873/indoors/lone_buildings/tcomms)
 "aok" = (
 /obj/structure/prop/almayer/computers/sensor_computer3,
@@ -703,7 +695,7 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/device/eftpos,
 /turf/open/floor,
-/area/lv873/oob)
+/area/lv873/indoors/east/slums)
 "aqM" = (
 /obj/structure/closet/secure_closet/personal{
 	pixel_x = -8
@@ -748,9 +740,7 @@
 	dir = 8
 	},
 /obj/item/trash/uscm_mre,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "arR" = (
 /obj/structure/largecrate/black_market/clf_supplies,
@@ -767,7 +757,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "2-4"
 	},
-/turf/open/floor/wood,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/lv873/indoors/lone_buildings/tcomms)
 "asq" = (
 /obj/structure/window/framed/wood/plain,
@@ -793,7 +783,7 @@
 /turf/open/gm/river{
 	icon = 'icons/turf/ground_map_dirt.dmi'
 	},
-/area/lv873/oob)
+/area/lv873/indoors/lone_buildings/flooded)
 "asv" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -820,7 +810,7 @@
 "asE" = (
 /obj/structure/prop/server_equipment/broken,
 /obj/structure/cable/heavyduty,
-/turf/open/floor/wood,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/lv873/indoors/lone_buildings/tcomms)
 "asL" = (
 /obj/structure/mineral_door/wood/open,
@@ -968,10 +958,6 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/dirtgrassborder/dirt/west,
 /area/lv873/outdoors/colony_streets/northeast)
-"axO" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/gm/dirtgrassborder/dirt/south,
-/area/lv873/indoors/east/slums)
 "axW" = (
 /obj/structure/fence,
 /turf/open/gm/grass/dirt,
@@ -984,10 +970,9 @@
 /area/lv873/outdoors/flooded_streets/waste_treatment)
 "ayL" = (
 /obj/structure/closet,
-/obj/item/clothing/under/rank/synthetic/frontier,
-/obj/item/clothing/under/rank/synthetic/utility,
 /obj/item/storage/pouch/survival/synth,
 /obj/item/storage/pouch/tools/synth,
+/obj/item/clothing/under/colonist/wy_joliet_shopsteward,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -1347,7 +1332,7 @@
 /obj/structure/extinguisher_cabinet/alt{
 	pixel_y = 26
 	},
-/turf/open/floor,
+/turf/open/asphalt/cement,
 /area/lv873/indoors/east/slums)
 "aHj" = (
 /obj/effect/decal/warning_stripes{
@@ -1435,7 +1420,7 @@
 /obj/item/weapon/baseballbat/metal,
 /obj/structure/machinery/light/small,
 /turf/open/floor,
-/area/lv873/oob)
+/area/lv873/indoors/east/slums)
 "aJm" = (
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -1673,7 +1658,7 @@
 /turf/open/gm/river{
 	icon = 'icons/turf/ground_map_dirt.dmi'
 	},
-/area/lv873/oob)
+/area/lv873/indoors/lone_buildings/flooded)
 "aOi" = (
 /obj/structure/largecrate/random/mini/med{
 	pixel_x = 3
@@ -2722,7 +2707,7 @@
 /turf/open/gm/river{
 	icon = 'icons/turf/ground_map_dirt.dmi'
 	},
-/area/lv873/oob)
+/area/lv873/indoors/lone_buildings/flooded)
 "bpx" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Bathroom"
@@ -2754,6 +2739,14 @@
 /obj/structure/cargo_container/lockmart/left,
 /turf/open/asphalt/cement,
 /area/lv873/outdoors/lone_buildings/cargo_lz)
+"bqg" = (
+/obj/structure/surface/table,
+/obj/item/prop/tableflag/uscm,
+/obj/item/prop/tableflag{
+	pixel_x = -8
+	},
+/turf/open/floor/wood,
+/area/lv873/indoors/northeast/slums)
 "brb" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -2769,6 +2762,14 @@
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
 /turf/open/floor/plating/catwalk/rusted,
 /area/lv873/indoors/northeast/slums)
+"brH" = (
+/obj/item/weapon/gun/pistol/m1911{
+	current_mag = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/lv873/indoors/aerospace_control)
 "brI" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -2882,6 +2883,13 @@
 /obj/structure/window/framed/colony,
 /turf/open/floor,
 /area/lv873/indoors/southeast/slums)
+"btF" = (
+/obj/structure/largecrate/random/barrel{
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/turf/open/gm/dirtgrassborder/dirt/grassdirt_corner2/south_west,
+/area/lv873/outdoors/colony_streets/east)
 "bun" = (
 /obj/structure/surface/table/woodentable,
 /obj/structure/machinery/computer/cameras/wooden_tv{
@@ -3144,6 +3152,19 @@
 "bBT" = (
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner2/south_east,
 /area/lv873/landing_zone_1)
+"bCd" = (
+/obj/structure/surface/rack,
+/obj/item/storage/box/packet/high_explosive{
+	pixel_y = 6
+	},
+/obj/item/storage/box/packet/high_explosive{
+	pixel_y = -3
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "vault"
+	},
+/area/lv873/indoors/uscm_garrison/armory)
 "bCg" = (
 /obj/structure/machinery/light/small,
 /turf/open/floor{
@@ -3285,8 +3306,8 @@
 /obj/item/newspaper{
 	name = "flight logs m-6 yr-2182"
 	},
-/turf/open/floor{
-	icon_state = "dark"
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/lv873/indoors/aerospace_control)
 "bFn" = (
@@ -3387,10 +3408,8 @@
 	},
 /area/lv873/indoors/southwest/slums)
 "bJC" = (
-/obj/item/weapon/broken_glass{
-	layer = 3
-	},
 /obj/item/trash/cigbutt,
+/obj/item/weapon/broken_glass,
 /turf/open/floor,
 /area/lv873/indoors/lone_buildings/liq_r_mart)
 "bKj" = (
@@ -3605,7 +3624,7 @@
 	name = "\improper Makeshift Telecommunications Hut";
 	locked = 1
 	},
-/turf/open/floor/wood,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/lv873/indoors/lone_buildings/tcomms)
 "bNB" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
@@ -3920,8 +3939,8 @@
 "bUv" = (
 /obj/effect/spawner/gibspawner/xeno,
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor{
-	icon_state = "dark"
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/lv873/indoors/aerospace_control)
 "bUL" = (
@@ -4100,12 +4119,7 @@
 	},
 /area/lv873/indoors/operations/hallway/west)
 "bXB" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/gm/dirt/brown,
 /area/lv873/outdoors/hospital/road_north_west)
 "bXC" = (
@@ -4379,9 +4393,7 @@
 "ceg" = (
 /obj/structure/surface/table/gamblingtable,
 /obj/item/reagent_container/food/drinks/flask/marine,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "cep" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -4489,9 +4501,7 @@
 	id = "tower";
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/plating,
 /area/lv873/indoors/aerospace_control)
 "chb" = (
 /obj/structure/cargo_container/watatsumi/mid,
@@ -4703,12 +4713,7 @@
 /area/lv873/oob)
 "cnK" = (
 /obj/structure/bed,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/gm/river{
 	icon = 'icons/turf/ground_map_dirt.dmi'
 	},
@@ -4930,34 +4935,9 @@
 /turf/open/floor/wood,
 /area/lv873/indoors/uscm_garrison/recruitment_office)
 "cuj" = (
-/obj/structure/surface/table/woodentable,
-/obj/item/clothing/head/det_hat/black{
-	pixel_y = 8;
-	pixel_x = 7
-	},
-/obj/item/clothing/head/det_hat{
-	pixel_y = 8;
-	pixel_x = 1
-	},
-/obj/item/clothing/head/feathertrilby{
-	pixel_y = 9;
-	pixel_x = -4
-	},
-/obj/item/clothing/head/fedora{
-	pixel_y = 10;
-	pixel_x = -10
-	},
-/obj/item/clothing/gloves/brown{
-	pixel_y = -6;
-	pixel_x = 1
-	},
-/obj/item/clothing/gloves/marine/dress{
-	pixel_x = -3;
-	pixel_y = -6
-	},
-/obj/item/clothing/gloves/black{
-	pixel_y = -5;
-	pixel_x = -7
+/obj/structure/coatrack,
+/obj/item/clothing/suit/storage/jacket/marine/bomber{
+	pixel_y = 4
 	},
 /turf/open/floor/wood,
 /area/lv873/indoors/bungalow_manager)
@@ -5007,9 +4987,7 @@
 	pixel_y = 0;
 	pixel_x = 32
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "cvE" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -5633,7 +5611,7 @@
 /turf/open/gm/river{
 	icon = 'icons/turf/ground_map_dirt.dmi'
 	},
-/area/lv873/oob)
+/area/lv873/indoors/lone_buildings/flooded)
 "cKa" = (
 /obj/structure/sign/poster/hero/voteno{
 	pixel_x = 32
@@ -6188,12 +6166,7 @@
 /obj/item/trash/cigbutt,
 /obj/item/shard,
 /obj/item/trash/plate,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/gm/river{
 	icon = 'icons/turf/ground_map_dirt.dmi'
 	},
@@ -6544,6 +6517,9 @@
 	},
 /turf/open/gm/dirtgrassborder/dirt/north,
 /area/lv873/outdoors/colony_streets/east)
+"ddS" = (
+/turf/open/floor/almayer,
+/area/lv873/indoors/uscm_garrison/garrison_bunks)
 "ddV" = (
 /obj/structure/closet/secure_closet/personal{
 	pixel_x = -8
@@ -6866,9 +6842,6 @@
 /area/lv873/oob)
 "djp" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/rifle/m41aMK1{
-	pixel_y = 2
-	},
 /obj/item/weapon/gun/rifle/m41aMK1{
 	pixel_y = -5
 	},
@@ -7466,6 +7439,11 @@
 	},
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner2/north_west,
 /area/lv873/indoors/corpo_armory)
+"dxj" = (
+/turf/open/floor/almayer{
+	icon_state = "plate"
+	},
+/area/lv873/indoors/aerospace_control)
 "dxH" = (
 /turf/open/floor{
 	icon_state = "whitegreencorner"
@@ -7475,13 +7453,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2;
-	layer = 3.02
-	},
+/obj/item/prop/alien/hugger,
 /obj/item/explosive/grenade/slug/baton,
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/almayer/uscm/directional,
@@ -7535,9 +7507,7 @@
 /area/lv873/indoors/southeast/slums)
 "dyC" = (
 /obj/structure/machinery/vending/cola,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "dyH" = (
 /obj/structure/toilet{
@@ -7667,7 +7637,7 @@
 /turf/open/gm/river{
 	icon = 'icons/turf/ground_map_dirt.dmi'
 	},
-/area/lv873/oob)
+/area/lv873/indoors/lone_buildings/flooded)
 "dBI" = (
 /turf/open/floor{
 	icon_state = "dark2"
@@ -8249,9 +8219,7 @@
 /obj/item/clothing/head/helmet/marine{
 	pixel_y = -5
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "dSO" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -8454,7 +8422,7 @@
 /turf/open/gm/river{
 	icon = 'icons/turf/ground_map_dirt.dmi'
 	},
-/area/lv873/oob)
+/area/lv873/indoors/lone_buildings/flooded)
 "eah" = (
 /turf/open/floor{
 	icon_state = "dark2"
@@ -8568,13 +8536,7 @@
 /turf/open/gm/road,
 /area/lv873/indoors/lone_buildings/gas_n_gear)
 "ecX" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing? It has been impaled by a knife";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2;
-	layer = 3
-	},
+/obj/item/prop/alien/hugger,
 /obj/item/tool/kitchen/knife{
 	pixel_y = -15
 	},
@@ -9090,11 +9052,6 @@
 	},
 /turf/open/floor,
 /area/lv873/indoors/lone_buildings/polemuseum)
-"enk" = (
-/obj/item/clothing/head/hairflower,
-/obj/item/trash/cigbutt/ucigbutt,
-/turf/open/floor/wood,
-/area/lv873/indoors/bungalow_manager)
 "env" = (
 /turf/open/gm/dirtgrassborder/dirt/west,
 /area/lv873/landing_zone_2)
@@ -9294,9 +9251,7 @@
 	icon_state = "4-8";
 	pixel_y = 0
 	},
-/turf/open/floor{
-	icon_state = "redyellowfull"
-	},
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/lv873/indoors/lone_buildings/tcomms)
 "esI" = (
 /obj/effect/alien/weeds/node,
@@ -9679,9 +9634,7 @@
 	dir = 8;
 	id = "tower"
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/plating,
 /area/lv873/indoors/aerospace_control)
 "eAo" = (
 /obj/structure/flora/jungle/hedge{
@@ -9711,13 +9664,10 @@
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/south_west,
 /area/lv873/outdoors/landing_zones_disembark)
 "eBi" = (
-/obj/structure/largecrate/random/barrel{
-	pixel_x = 2;
-	pixel_y = 3
-	},
 /obj/item/weapon/gun/pistol/skorpion{
 	pixel_y = 13
 	},
+/obj/effect/decal/cleanable/blood,
 /turf/open/gm/dirt/brown,
 /area/lv873/outdoors/colony_streets/east)
 "eBq" = (
@@ -9735,9 +9685,7 @@
 "eBX" = (
 /obj/structure/surface/table/gamblingtable,
 /obj/item/reagent_container/food/condiment/hotsauce/cholula,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "eCc" = (
 /turf/open/floor{
@@ -9873,9 +9821,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "eIy" = (
 /obj/structure/machinery/light{
@@ -9896,12 +9842,7 @@
 "eJb" = (
 /obj/item/trash/chips,
 /obj/item/trash/buritto,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/gm/river{
 	icon = 'icons/turf/ground_map_dirt.dmi'
 	},
@@ -9992,8 +9933,8 @@
 /obj/item/paper/crumpled/bloody/csheet{
 	pixel_y = -6
 	},
-/turf/open/floor{
-	icon_state = "dark"
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/lv873/indoors/aerospace_control)
 "eKS" = (
@@ -10449,9 +10390,6 @@
 /obj/item/ammo_magazine/rifle/m41aMK1{
 	pixel_x = -8
 	},
-/obj/item/ammo_magazine/rifle/m41aMK1{
-	pixel_x = 9
-	},
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkred2"
@@ -10594,9 +10532,6 @@
 "faI" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/lv873/indoors/operations/hallway/south)
-"faS" = (
-/turf/closed/wall,
-/area/lv873/outdoors/colony_streets/east)
 "fbb" = (
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -10789,6 +10724,9 @@
 	icon_state = "chapel"
 	},
 /area/lv873/indoors/south/slums)
+"ffR" = (
+/turf/closed/wall/r_wall,
+/area/lv873/indoors/lone_buildings/flooded)
 "fge" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 10
@@ -10838,9 +10776,7 @@
 /area/lv873/indoors/hospital/research/floor)
 "fhR" = (
 /obj/structure/bed/chair,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "fia" = (
 /turf/open/asphalt/cement,
@@ -11200,6 +11136,7 @@
 	pixel_x = 10;
 	pixel_y = 15
 	},
+/obj/item/trash/cigbutt/ucigbutt,
 /turf/open/floor/carpet,
 /area/lv873/indoors/bungalow_manager)
 "frq" = (
@@ -11422,9 +11359,10 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
+/obj/structure/sign/poster/art{
+	pixel_x = -25
 	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "fuX" = (
 /obj/item/shard,
@@ -11842,8 +11780,8 @@
 	pixel_y = -4;
 	pixel_x = 5
 	},
-/turf/open/floor{
-	icon_state = "dark"
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/lv873/indoors/aerospace_control)
 "fEW" = (
@@ -12313,7 +12251,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "0-2"
 	},
-/turf/open/floor/wood,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/lv873/indoors/lone_buildings/tcomms)
 "fPS" = (
 /obj/item/stack/sheet/metal,
@@ -12530,8 +12468,9 @@
 	name = "Emergency Tower Lockdown button";
 	id = "tower"
 	},
-/turf/open/floor{
-	icon_state = "dark"
+/obj/item/clothing/head/beret/eng,
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/lv873/indoors/aerospace_control)
 "fTZ" = (
@@ -12769,7 +12708,7 @@
 /turf/open/gm/river{
 	icon = 'icons/turf/ground_map_dirt.dmi'
 	},
-/area/lv873/oob)
+/area/lv873/indoors/lone_buildings/flooded)
 "fYU" = (
 /obj/structure/flora/jungle/hedge{
 	dir = 8
@@ -12892,12 +12831,6 @@
 	pixel_x = 8
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/item/weapon/gun/pistol/holdout/flashlight{
-	current_mag = null
-	},
-/obj/item/ammo_magazine/pistol/holdout{
-	current_rounds = 0
-	},
 /turf/open/floor{
 	dir = 4;
 	icon_state = "darkblue2"
@@ -12985,8 +12918,8 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/lv873/indoors/aerospace_control)
 "geO" = (
@@ -13128,12 +13061,7 @@
 /area/lv873/outdoors/flooded_streets/waste_treatment)
 "ghY" = (
 /obj/effect/decal/cleanable/blood/xeno,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "barber"
@@ -13254,12 +13182,7 @@
 	icon_state = "reinfflip1-";
 	dir = 4
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/gm/river{
 	icon = 'icons/turf/ground_map_dirt.dmi'
 	},
@@ -13721,12 +13644,6 @@
 "gAP" = (
 /turf/closed/wall/r_wall,
 /area/lv873/indoors/operations/offices/southwest)
-"gBe" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor{
-	icon_state = "redyellowfull"
-	},
-/area/lv873/indoors/east/slums)
 "gBv" = (
 /obj/structure/cable{
 	icon_state = "1-6"
@@ -13749,12 +13666,7 @@
 "gBB" = (
 /obj/effect/spawner/gibspawner/xeno,
 /obj/effect/decal/cleanable/blood/xeno,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/gm/road{
 	icon_state = "browndirt_road_1";
 	dir = 8
@@ -13876,9 +13788,7 @@
 	pixel_y = 4
 	},
 /obj/structure/machinery/light,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "gDr" = (
 /obj/structure/bed/chair/office/dark{
@@ -14222,7 +14132,6 @@
 /area/lv873/outdoors/flooded_streets/waste_treatment)
 "gKM" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/rifle/m41aMK1,
 /obj/item/ammo_magazine/rifle/m41aMK1{
 	pixel_x = -8
 	},
@@ -14320,12 +14229,7 @@
 /area/lv873/indoors/lone_buildings/weyyu_hostel)
 "gNe" = (
 /obj/structure/window_frame/colony/reinforced,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/plating,
 /area/lv873/indoors/lz_sec_checkpoint)
@@ -14620,9 +14524,7 @@
 	pixel_y = -2
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "gVS" = (
 /obj/structure/surface/table,
@@ -14702,6 +14604,11 @@
 	},
 /turf/open/floor,
 /area/lv873/indoors/welcome_center/offices)
+"gYW" = (
+/turf/open/gm/river{
+	icon = 'icons/turf/ground_map_dirt.dmi'
+	},
+/area/lv873/indoors/lone_buildings/flooded)
 "gYY" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -14786,9 +14693,7 @@
 /area/lv873/indoors/ss_athens)
 "haZ" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "hbr" = (
 /obj/structure/bed/chair{
@@ -14890,6 +14795,10 @@
 "hdT" = (
 /turf/open/gm/coast/dirt/beachcorner/south_west,
 /area/lv873/outdoors/flooded_streets/west)
+"hdY" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/south_west,
+/area/lv873/oob)
 "hen" = (
 /obj/structure/bed/chair{
 	dir = 8;
@@ -14941,9 +14850,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "hgu" = (
 /obj/structure/largecrate/random,
@@ -15754,9 +15661,7 @@
 	pixel_y = 6
 	},
 /obj/structure/surface/table/reinforced/prison,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "hCG" = (
 /obj/structure/machinery/washing_machine,
@@ -15886,7 +15791,7 @@
 /turf/open/gm/river{
 	icon = 'icons/turf/ground_map_dirt.dmi'
 	},
-/area/lv873/oob)
+/area/lv873/indoors/lone_buildings/flooded)
 "hFe" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor{
@@ -16396,7 +16301,8 @@
 "hQp" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/xenoautopsy{
-	pixel_y = 14
+	pixel_y = 14;
+	name = "jar shelf"
 	},
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/plating/plating_catwalk,
@@ -16523,10 +16429,6 @@
 	icon_state = "white"
 	},
 /area/lv873/indoors/lone_buildings/weyyu_hostel)
-"hTg" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/south_east,
-/area/lv873/indoors/east/slums)
 "hTw" = (
 /obj/structure/sign/safety/bathunisex{
 	pixel_x = -9;
@@ -16673,9 +16575,6 @@
 "hWu" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/rifle/m41aMK1,
-/obj/item/ammo_magazine/rifle/m41aMK1{
-	pixel_x = -8
-	},
 /turf/open/floor{
 	dir = 10;
 	icon_state = "darkred2"
@@ -16934,12 +16833,7 @@
 /area/lv873/indoors/hospital/reception)
 "ibP" = (
 /obj/structure/surface/table/woodentable,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/wood,
 /area/lv873/indoors/welcome_center/lobby)
 "ibS" = (
@@ -17233,9 +17127,6 @@
 "ijh" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/rifle/m41aMK1,
-/obj/item/ammo_magazine/rifle/m41aMK1{
-	pixel_x = -8
-	},
 /obj/item/ammo_magazine/rifle/m41aMK1{
 	pixel_x = 9
 	},
@@ -17772,8 +17663,8 @@
 /area/lv873/indoors/lone_buildings/goon_and_chef_house)
 "ivd" = (
 /obj/structure/machinery/vending/coffee,
-/turf/open/floor{
-	icon_state = "dark"
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/lv873/indoors/aerospace_control)
 "ivi" = (
@@ -18005,9 +17896,6 @@
 	icon_state = "wood-broken3"
 	},
 /area/lv873/indoors/southwest/slums)
-"izj" = (
-/turf/open/floor,
-/area/lv873/oob)
 "izl" = (
 /turf/open/floor{
 	dir = 8;
@@ -18167,12 +18055,7 @@
 /area/lv873/oob)
 "iCv" = (
 /obj/effect/decal/cleanable/blood/xeno,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/gm/grass/dirt,
 /area/lv873/indoors/lone_buildings/recruiter_house)
 "iCC" = (
@@ -18294,6 +18177,7 @@
 	pixel_x = -15
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	icon_state = "darkbluecorners2";
 	dir = 4
@@ -19189,9 +19073,7 @@
 	},
 /area/lv873/indoors/southeast/slums)
 "iYP" = (
-/obj/structure/machinery/medical_pod/sleeper{
-	dir = 1
-	},
+/obj/structure/machinery/cryopod,
 /turf/open/floor/almayer{
 	icon_state = "plate"
 	},
@@ -19301,12 +19183,6 @@
 	pixel_y = 0
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/gun/pistol/holdout/flashlight{
-	current_mag = null
-	},
-/obj/item/ammo_magazine/pistol/holdout{
-	current_rounds = 0
-	},
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
 	icon_state = "darkblue2"
@@ -19469,8 +19345,8 @@
 "jgK" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/spawner/gibspawner/xeno,
-/turf/open/floor{
-	icon_state = "dark"
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/lv873/indoors/aerospace_control)
 "jgS" = (
@@ -19744,7 +19620,7 @@
 /turf/open/gm/river{
 	icon = 'icons/turf/ground_map_dirt.dmi'
 	},
-/area/lv873/oob)
+/area/lv873/indoors/lone_buildings/flooded)
 "joh" = (
 /obj/item/stack/sheet/cardboard,
 /turf/open/floor/wood,
@@ -20149,7 +20025,7 @@
 "jxH" = (
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor,
-/area/lv873/oob)
+/area/lv873/indoors/east/slums)
 "jxI" = (
 /turf/open/floor{
 	icon_state = "dark"
@@ -21178,12 +21054,7 @@
 /area/lv873/indoors/lone_buildings/cheeseburger)
 "jUX" = (
 /obj/item/spacecash/c500/counterfeit,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/gm/river{
 	icon = 'icons/turf/ground_map_dirt.dmi'
 	},
@@ -21488,10 +21359,6 @@
 	icon_state = "browndirt_road_1"
 	},
 /area/lv873/outdoors/colony_streets/east)
-"kcA" = (
-/obj/structure/flora/jungle/vines,
-/turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/north_east,
-/area/lv873/oob)
 "kcG" = (
 /obj/structure/sink{
 	pixel_y = 22
@@ -22410,7 +22277,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "0-2"
 	},
-/turf/open/floor/wood,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/lv873/indoors/lone_buildings/tcomms)
 "kAk" = (
 /obj/structure/bed/chair,
@@ -22864,12 +22731,7 @@
 /area/lv873/indoors/hospital/lobby)
 "kMa" = (
 /obj/effect/decal/cleanable/blood/xeno,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/gm/dirt/brown,
 /area/lv873/outdoors/colony_streets/west)
 "kMq" = (
@@ -23065,6 +22927,9 @@
 /area/lv873/oob)
 "kQl" = (
 /obj/structure/machinery/vending/cola,
+/obj/structure/sign/banners/united_americas_flag{
+	pixel_y = 32
+	},
 /turf/open/floor{
 	dir = 9;
 	icon_state = "darkblue2"
@@ -23329,7 +23194,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2-4-8"
 	},
-/turf/open/floor/wood,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/lv873/indoors/lone_buildings/tcomms)
 "kXF" = (
 /obj/structure/closet/fancy,
@@ -23554,7 +23419,7 @@
 /turf/open/gm/river{
 	icon = 'icons/turf/ground_map_dirt.dmi'
 	},
-/area/lv873/oob)
+/area/lv873/indoors/lone_buildings/flooded)
 "lcD" = (
 /obj/item/reagent_container/food/snacks/cheesewedge/extramature{
 	pixel_x = 7
@@ -23939,7 +23804,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "1-4"
 	},
-/turf/open/floor/wood,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/lv873/indoors/lone_buildings/tcomms)
 "llE" = (
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/south_east,
@@ -23992,7 +23857,7 @@
 /turf/open/gm/river{
 	icon = 'icons/turf/ground_map_dirt.dmi'
 	},
-/area/lv873/oob)
+/area/lv873/indoors/lone_buildings/flooded)
 "lmP" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/prop/ice_colony/ground_wire{
@@ -24045,8 +23910,11 @@
 "lnK" = (
 /obj/item/trash/cigbutt,
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor{
-	icon_state = "dark"
+/obj/item/ammo_magazine/pistol/m1911{
+	current_rounds = 0
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/lv873/indoors/aerospace_control)
 "lnQ" = (
@@ -24343,8 +24211,8 @@
 	layer = 3;
 	pixel_x = 9
 	},
-/turf/open/floor{
-	icon_state = "dark"
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/lv873/indoors/aerospace_control)
 "luH" = (
@@ -24653,7 +24521,7 @@
 	icon_state = "book-5"
 	},
 /turf/open/floor,
-/area/lv873/oob)
+/area/lv873/indoors/east/slums)
 "lCA" = (
 /turf/open/gm/dirt/brown,
 /area/lv873/outdoors/hospital/break_garden)
@@ -24786,9 +24654,7 @@
 /area/lv873/indoors/lone_buildings/recruiter_house)
 "lEw" = (
 /obj/structure/machinery/cm_vending/sorted/marine_food,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "lFe" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -25583,7 +25449,7 @@
 /turf/open/gm/river{
 	icon = 'icons/turf/ground_map_dirt.dmi'
 	},
-/area/lv873/oob)
+/area/lv873/indoors/lone_buildings/flooded)
 "mcf" = (
 /obj/structure/machinery/optable,
 /obj/effect/decal/cleanable/blood,
@@ -25658,9 +25524,7 @@
 	name = "\improper Emergency Tower Lockdown";
 	id = "tower"
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/plating,
 /area/lv873/indoors/aerospace_control)
 "mdS" = (
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner2/north_east,
@@ -25749,9 +25613,10 @@
 /obj/item/ammo_box/magazine/l42a{
 	pixel_y = -2
 	},
-/turf/open/floor{
-	icon_state = "dark"
+/obj/structure/sign/banners/united_americas_flag{
+	pixel_y = 32
 	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "mfb" = (
 /obj/structure/closet/secure_closet/freezer/fridge/full,
@@ -25875,12 +25740,6 @@
 /area/lv873/indoors/gated_community/residence_bunkhouse)
 "mhy" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/weapon/gun/pistol/holdout/flashlight{
-	current_mag = null
-	},
-/obj/item/ammo_magazine/pistol/holdout{
-	current_rounds = 0
-	},
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -26109,7 +25968,7 @@
 /turf/open/gm/river{
 	icon = 'icons/turf/ground_map_dirt.dmi'
 	},
-/area/lv873/oob)
+/area/lv873/indoors/lone_buildings/flooded)
 "mpc" = (
 /obj/structure/machinery/computer/cameras/wooden_tv{
 	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW.";
@@ -26131,12 +25990,7 @@
 /turf/open/floor/wood,
 /area/lv873/indoors/northeast/slums)
 "mpt" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor/wood{
 	icon_state = "wood-broken6"
 	},
@@ -26161,7 +26015,7 @@
 /turf/open/gm/river{
 	icon = 'icons/turf/ground_map_dirt.dmi'
 	},
-/area/lv873/oob)
+/area/lv873/indoors/lone_buildings/flooded)
 "mqc" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
@@ -26185,9 +26039,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "mqA" = (
 /turf/open/gm/dirt/brown,
@@ -27434,8 +27286,8 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "dark"
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/lv873/indoors/aerospace_control)
 "mRF" = (
@@ -27589,9 +27441,7 @@
 /obj/item/storage/belt/gun/m4a3/m1911{
 	pixel_y = -1
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "mVI" = (
 /obj/item/stack/sheet/wood,
@@ -27732,7 +27582,7 @@
 /area/lv873/indoors/lone_buildings/school)
 "mYS" = (
 /obj/structure/reagent_dispensers/fueltank/gas,
-/turf/open/floor,
+/turf/open/asphalt/cement,
 /area/lv873/indoors/east/slums)
 "mYX" = (
 /obj/structure/window/framed/colony/reinforced,
@@ -27915,7 +27765,7 @@
 /turf/open/gm/river{
 	icon = 'icons/turf/ground_map_dirt.dmi'
 	},
-/area/lv873/oob)
+/area/lv873/indoors/lone_buildings/flooded)
 "ncB" = (
 /obj/structure/surface/rack,
 /turf/open/floor,
@@ -28120,8 +27970,8 @@
 /area/lv873/indoors/lone_buildings/polemuseum)
 "nhs" = (
 /obj/structure/machinery/vending/snack,
-/turf/open/floor{
-	icon_state = "dark"
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/lv873/indoors/aerospace_control)
 "nil" = (
@@ -28131,7 +27981,7 @@
 	pixel_y = 0;
 	pixel_x = -32
 	},
-/turf/open/floor/wood,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/lv873/indoors/lone_buildings/tcomms)
 "nio" = (
 /obj/structure/flora/jungle/vines,
@@ -28423,7 +28273,7 @@
 	icon_state = "4-8";
 	pixel_y = 0
 	},
-/turf/open/floor/wood,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/lv873/indoors/lone_buildings/tcomms)
 "npA" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -28501,12 +28351,7 @@
 /obj/item/stack/cable_coil,
 /obj/item/stack/sheet/metal,
 /obj/structure/machinery/light_construct,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/gm/river{
 	icon = 'icons/turf/ground_map_dirt.dmi'
 	},
@@ -28556,8 +28401,8 @@
 "nsh" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/machinery/prop/almayer/CICmap,
-/turf/open/floor{
-	icon_state = "dark"
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/lv873/indoors/aerospace_control)
 "nsi" = (
@@ -29080,9 +28925,7 @@
 "nFl" = (
 /obj/structure/surface/table/gamblingtable,
 /obj/item/toy/deck,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "nFm" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -29119,9 +28962,7 @@
 	id = "tower"
 	},
 /obj/structure/window/framed/colony/reinforced,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/plating,
 /area/lv873/indoors/aerospace_control)
 "nGi" = (
 /obj/structure/machinery/light{
@@ -29323,8 +29164,8 @@
 /obj/item/newspaper{
 	name = "lz1 flight logs m-7 yr-2182"
 	},
-/turf/open/floor{
-	icon_state = "dark"
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/lv873/indoors/aerospace_control)
 "nLw" = (
@@ -29467,7 +29308,7 @@
 "nPx" = (
 /obj/structure/prop/server_equipment,
 /obj/structure/cable/heavyduty,
-/turf/open/floor/wood,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/lv873/indoors/lone_buildings/tcomms)
 "nPC" = (
 /obj/structure/sign/safety/conference_room{
@@ -29483,9 +29324,7 @@
 /area/lv873/indoors/hospital/outpatients_and_icu)
 "nPN" = (
 /obj/structure/window/framed/colony/reinforced,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/plating,
 /area/lv873/indoors/operations/offices/east)
 "nPR" = (
 /turf/open/floor{
@@ -30030,18 +29869,12 @@
 /area/lv873/indoors/lone_buildings/engineer_trucker_bunkhouse)
 "nZN" = (
 /obj/structure/window_frame/colony/reinforced,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing? It appears to have been impaled by the pen. What badass pencil pusher did this?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2;
-	layer = 3
-	},
 /obj/item/tool/pen/clicky{
 	pixel_y = 0;
 	pixel_x = 3;
 	layer = 3.10
 	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/item/shard,
 /turf/open/floor/plating,
@@ -30063,8 +29896,8 @@
 /obj/effect/spawner/gibspawner/xeno,
 /obj/item/trash/buritto,
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor{
-	icon_state = "dark"
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/lv873/indoors/aerospace_control)
 "oal" = (
@@ -30479,12 +30312,7 @@
 /area/lv873/indoors/marshals/reception)
 "ojh" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/gm/dirt/brown,
 /area/lv873/landing_zone_2)
 "ojk" = (
@@ -30864,8 +30692,8 @@
 /obj/item/trash/cigbutt/cigarbutt,
 /obj/item/trash/hotdog,
 /obj/effect/spawner/gibspawner/human,
-/turf/open/floor{
-	icon_state = "dark"
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/lv873/indoors/aerospace_control)
 "osE" = (
@@ -30874,7 +30702,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "0-2"
 	},
-/turf/open/floor/wood,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/lv873/indoors/lone_buildings/tcomms)
 "osF" = (
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner2/north_west,
@@ -31581,8 +31409,8 @@
 /obj/item/newspaper{
 	name = "fax correspondence m-7 yr-2182"
 	},
-/turf/open/floor{
-	icon_state = "dark"
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/lv873/indoors/aerospace_control)
 "oIa" = (
@@ -31600,12 +31428,7 @@
 /area/lv873/indoors/flooded/east_apartments)
 "oIj" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/item/tool/kitchen/utensil/knife{
 	pixel_x = 16
 	},
@@ -31623,12 +31446,7 @@
 /area/lv873/oob)
 "oIZ" = (
 /obj/item/stack/sheet/metal,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/gm/river{
 	icon = 'icons/turf/ground_map_dirt.dmi'
 	},
@@ -31909,9 +31727,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "oOl" = (
 /obj/structure/surface/table,
@@ -31919,7 +31735,7 @@
 /turf/open/gm/river{
 	icon = 'icons/turf/ground_map_dirt.dmi'
 	},
-/area/lv873/oob)
+/area/lv873/indoors/lone_buildings/flooded)
 "oOn" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 8;
@@ -31946,7 +31762,7 @@
 /turf/open/gm/river{
 	icon = 'icons/turf/ground_map_dirt.dmi'
 	},
-/area/lv873/oob)
+/area/lv873/indoors/lone_buildings/flooded)
 "oOE" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan3"
@@ -31992,9 +31808,7 @@
 	pixel_y = 3
 	},
 /obj/item/reagent_container/food/drinks/cans/aspen,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "oQz" = (
 /obj/structure/bed/chair,
@@ -32274,7 +32088,6 @@
 /obj/item/book/manual/chef_recipes,
 /obj/item/book/manual/medical_diagnostics_manual,
 /obj/item/book/manual/security_space_law,
-/obj/item/book/manual/marine_law,
 /obj/item/book/manual/hydroponics_beekeeping,
 /obj/item/book/manual/detective,
 /obj/effect/landmark/objective_landmark/close,
@@ -32509,12 +32322,7 @@
 /obj/item/device/taperecorder/empty{
 	pixel_x = -12
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -33066,8 +32874,8 @@
 /obj/structure/tunnel,
 /obj/effect/spawner/gibspawner/xeno,
 /obj/effect/spawner/gibspawner/xeno,
-/turf/open/floor{
-	icon_state = "dark"
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/lv873/indoors/aerospace_control)
 "poH" = (
@@ -33382,9 +33190,6 @@
 /obj/item/storage/box/packet/high_explosive{
 	pixel_y = 2
 	},
-/obj/item/storage/box/packet/high_explosive{
-	pixel_y = -3
-	},
 /turf/open/floor{
 	dir = 8;
 	icon_state = "vault"
@@ -33486,13 +33291,14 @@
 	},
 /turf/open/floor/wood,
 /area/lv873/indoors/southwest/slums)
-"pwq" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
+"pvR" = (
+/obj/structure/largecrate/random/barrel{
+	pixel_x = 7
 	},
+/turf/open/gm/dirtgrassborder/dirt/south,
+/area/lv873/outdoors/colony_streets/east)
+"pwq" = (
+/obj/item/prop/alien/hugger,
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -33978,9 +33784,6 @@
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/rifle/m41aMK1,
 /obj/item/ammo_magazine/rifle/m41aMK1{
-	pixel_x = -8
-	},
-/obj/item/ammo_magazine/rifle/m41aMK1{
 	pixel_x = 9
 	},
 /obj/structure/machinery/light{
@@ -34066,12 +33869,7 @@
 /turf/open/floor/wood,
 /area/lv873/indoors/southwest/slums)
 "pLH" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/gm/dirt/brown,
 /area/lv873/outdoors/landing_zones_disembark)
@@ -34814,11 +34612,6 @@
 	},
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/north_west,
 /area/lv873/outdoors/colony_streets/northeast)
-"qdQ" = (
-/obj/structure/surface/rack,
-/obj/item/ammo_magazine/rifle/mar40/lmg,
-/turf/open/gm/dirt/brown,
-/area/lv873/oob)
 "qdT" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/microwave{
@@ -34913,9 +34706,7 @@
 	pixel_y = -4
 	},
 /obj/structure/surface/rack,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "qfw" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -35403,8 +35194,8 @@
 /area/lv873/indoors/hospital/reception)
 "qoh" = (
 /obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/wood,
-/area/lv873/oob)
+/turf/open/floor/plating,
+/area/lv873/indoors/lone_buildings/flooded)
 "qon" = (
 /obj/item/spacecash/c1{
 	pixel_x = -4;
@@ -35529,12 +35320,7 @@
 "qrP" = (
 /obj/structure/window_frame/colony,
 /obj/item/shard,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor{
 	icon_state = "whitebluefull"
 	},
@@ -35776,9 +35562,7 @@
 	pixel_y = 13
 	},
 /obj/structure/machinery/light,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "qxm" = (
 /obj/structure/sign/poster/pinup{
@@ -35909,9 +35693,11 @@
 "qzb" = (
 /obj/item/storage/beer_pack,
 /obj/structure/surface/table/reinforced/prison,
-/turf/open/floor{
-	icon_state = "dark"
+/obj/structure/sign/poster/pinup{
+	pixel_x = -6;
+	pixel_y = 32
 	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "qzf" = (
 /obj/structure/surface/table/gamblingtable,
@@ -35942,9 +35728,7 @@
 	pixel_y = -1;
 	pixel_x = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "qzE" = (
 /obj/structure/surface/rack,
@@ -36074,9 +35858,7 @@
 /area/lv873/outdoors/colony_streets/south)
 "qDx" = (
 /obj/structure/largecrate/supply/supplies/water,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "qDB" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -36124,9 +35906,7 @@
 /area/lv873/outdoors/colony_streets/east)
 "qFe" = (
 /obj/structure/machinery/computer/arcade,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "qFk" = (
 /obj/structure/sign/safety/security{
@@ -36687,7 +36467,7 @@
 /turf/open/gm/river{
 	icon = 'icons/turf/ground_map_dirt.dmi'
 	},
-/area/lv873/oob)
+/area/lv873/indoors/lone_buildings/flooded)
 "qUh" = (
 /turf/closed/wall/r_wall,
 /area/lv873/indoors/northeast/slums)
@@ -37423,6 +37203,12 @@
 	},
 /turf/open/floor,
 /area/lv873/indoors/flooded/east_apartments)
+"rmR" = (
+/obj/structure/sign/banners/united_americas_flag{
+	pixel_y = 32
+	},
+/turf/open/gm/dirtgrassborder/dirt/east,
+/area/lv873/outdoors/uscm_garrison_exterior/entrance)
 "rmT" = (
 /obj/item/trash/burger,
 /obj/item/trash/plate,
@@ -37464,7 +37250,7 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/turf/open/floor/wood,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/lv873/indoors/lone_buildings/tcomms)
 "rnU" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
@@ -37522,7 +37308,7 @@
 "rpM" = (
 /obj/structure/machinery/light,
 /turf/open/asphalt/cement,
-/area/lv873/outdoors/bungalow_manager_exterior)
+/area/lv873/indoors/bungalow_manager)
 "rqM" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Bedroom";
@@ -37660,9 +37446,7 @@
 	},
 /obj/item/trash/uscm_mre,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "rtG" = (
 /obj/structure/desertdam/decals/road_stop{
@@ -37714,9 +37498,7 @@
 /obj/item/clothing/under/marine,
 /obj/item/clothing/under/marine,
 /obj/item/clothing/under/marine,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "ruE" = (
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner2/north_east,
@@ -37937,12 +37719,7 @@
 /area/lv873/indoors/lone_buildings/flynns_bar)
 "rzi" = (
 /obj/item/shard,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/wood,
 /area/lv873/indoors/hospital/reception)
@@ -37998,21 +37775,14 @@
 	pixel_x = -9
 	},
 /obj/effect/landmark/corpsespawner/colonist,
-/obj/item/weapon/gun/pistol/m1911{
-	current_mag = null
-	},
 /obj/item/ammo_magazine/pistol/m1911{
 	current_rounds = 0
 	},
 /obj/item/trash/burger{
 	pixel_y = -8
 	},
-/obj/item/clothing/head/beret/eng,
-/obj/item/ammo_magazine/pistol/m1911{
-	current_rounds = 0
-	},
-/turf/open/floor{
-	icon_state = "dark"
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/lv873/indoors/aerospace_control)
 "rBv" = (
@@ -38359,7 +38129,6 @@
 	},
 /area/lv873/indoors/hospital/outpatients_and_icu)
 "rKl" = (
-/obj/structure/bed,
 /obj/effect/landmark/xeno_spawn,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -38610,9 +38379,7 @@
 	pixel_x = -33
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "rPK" = (
 /obj/structure/barricade/deployable,
@@ -39047,7 +38814,7 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/drinks/coffee,
 /turf/open/floor,
-/area/lv873/oob)
+/area/lv873/indoors/east/slums)
 "say" = (
 /obj/structure/disposalpipe/segment{
 	name = "pneumatic delivery system pipe";
@@ -39269,8 +39036,8 @@
 /obj/item/newspaper{
 	name = "flight logs m-1 yr-2182"
 	},
-/turf/open/floor{
-	icon_state = "dark"
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/lv873/indoors/aerospace_control)
 "sgw" = (
@@ -39367,9 +39134,7 @@
 	pixel_x = -5;
 	pixel_y = 1
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "siv" = (
 /obj/structure/surface/rack,
@@ -39397,12 +39162,6 @@
 	icon_state = "darkredfull2"
 	},
 /area/lv873/indoors/lone_buildings/pizza)
-"siE" = (
-/obj/structure/machinery/medical_pod/sleeper,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/lv873/indoors/ss_athens)
 "siG" = (
 /obj/structure/bed,
 /obj/item/bedsheet/captain,
@@ -39470,7 +39229,6 @@
 /obj/item/ammo_magazine/rifle/m41aMK1{
 	pixel_x = 9
 	},
-/obj/item/ammo_magazine/rifle/m41aMK1,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkred2"
@@ -39727,9 +39485,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/structure/bed,
 /obj/effect/landmark/xeno_spawn,
-/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "darkblue2"
@@ -39885,10 +39641,6 @@
 	icon_state = "redyellowfull"
 	},
 /area/lv873/indoors/southwest/slums)
-"suE" = (
-/obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/dirtgrassborder/dirt/grassdirt_corner2/north_east,
-/area/lv873/oob)
 "suG" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/prop/cash_register/off,
@@ -39942,7 +39694,7 @@
 /turf/open/gm/river{
 	icon = 'icons/turf/ground_map_dirt.dmi'
 	},
-/area/lv873/oob)
+/area/lv873/indoors/lone_buildings/flooded)
 "svP" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -40007,12 +39759,7 @@
 "syk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/xeno,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/floor,
 /area/lv873/indoors/lone_buildings/army_surplus)
 "syw" = (
@@ -40931,12 +40678,7 @@
 	icon_state = "road_edge_decal3";
 	pixel_y = -12
 	},
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /turf/open/gm/dirt/brown,
 /area/lv873/outdoors/landing_zones_disembark)
 "sRY" = (
@@ -41089,12 +40831,7 @@
 	},
 /area/lv873/indoors/lone_buildings/polemuseum)
 "sUh" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
@@ -41342,7 +41079,7 @@
 	pixel_y = 9
 	},
 /turf/open/floor,
-/area/lv873/oob)
+/area/lv873/indoors/east/slums)
 "sZg" = (
 /obj/structure/curtain/red{
 	pixel_x = 32
@@ -41877,8 +41614,8 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "dark"
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/lv873/indoors/aerospace_control)
 "tmu" = (
@@ -41957,12 +41694,7 @@
 /turf/open/floor,
 /area/lv873/indoors/gated_community/residence_bunkhouse)
 "toc" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/gm/grass/dirt,
 /area/lv873/indoors/lone_buildings/recruiter_house)
@@ -42525,9 +42257,7 @@
 	},
 /obj/item/reagent_container/food/drinks/cans/souto/grape,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "tyX" = (
 /obj/item/frame/table/wood,
@@ -42657,9 +42387,7 @@
 /area/lv873/indoors/gated_community/residence_bunkhouse)
 "tBM" = (
 /obj/structure/machinery/power/apc,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "tBQ" = (
 /obj/structure/cargo_container/arious/left,
@@ -42694,9 +42422,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "redyellowfull"
-	},
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/lv873/indoors/lone_buildings/tcomms)
 "tCB" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
@@ -42793,12 +42519,7 @@
 	},
 /area/lv873/indoors/operations/offices/east)
 "tEK" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/spawner/gibspawner/human,
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/gm/dirt/brown,
@@ -42963,7 +42684,7 @@
 /turf/open/gm/river{
 	icon = 'icons/turf/ground_map_dirt.dmi'
 	},
-/area/lv873/oob)
+/area/lv873/indoors/lone_buildings/flooded)
 "tIJ" = (
 /obj/structure/machinery/light/small,
 /turf/open/floor{
@@ -43409,9 +43130,7 @@
 /area/lv873/indoors/operations/hallway/west)
 "tUx" = (
 /obj/structure/machinery/light,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "tUC" = (
 /obj/structure/flora/bush/ausbushes/palebush,
@@ -43594,6 +43313,9 @@
 /area/lv873/indoors/lone_buildings/pizza)
 "tZj" = (
 /obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/faxmachine/corporate{
+	pixel_y = 7
+	},
 /turf/open/floor/wood,
 /area/lv873/indoors/bungalow_manager)
 "tZk" = (
@@ -43649,8 +43371,8 @@
 /obj/item/trash/cigbutt/bcigbutt,
 /obj/effect/spawner/gibspawner/xeno,
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor{
-	icon_state = "dark"
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/lv873/indoors/aerospace_control)
 "uaw" = (
@@ -43662,8 +43384,8 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/lz1{
 	pixel_x = -9
 	},
-/turf/open/floor{
-	icon_state = "dark"
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/lv873/indoors/aerospace_control)
 "uaE" = (
@@ -43678,22 +43400,6 @@
 	},
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner2/north_west,
 /area/lv873/outdoors/colony_streets/east)
-"uaR" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = 0
-	},
-/obj/effect/decal/cleanable/blood,
-/obj/item/weapon/gun/pistol/holdout/flashlight{
-	current_mag = null
-	},
-/obj/item/ammo_magazine/pistol/holdout{
-	current_rounds = 0
-	},
-/turf/open/floor{
-	icon_state = "darkblue2"
-	},
-/area/lv873/indoors/operations/hallway/north)
 "uaZ" = (
 /turf/open/gm/river{
 	icon = 'icons/turf/ground_map_dirt.dmi'
@@ -43834,8 +43540,8 @@
 	},
 /obj/item/tool/pen,
 /obj/structure/surface/table/reinforced/black,
-/turf/open/floor{
-	icon_state = "dark"
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/lv873/indoors/aerospace_control)
 "uds" = (
@@ -43947,7 +43653,7 @@
 	pixel_y = 8
 	},
 /turf/open/floor,
-/area/lv873/oob)
+/area/lv873/indoors/east/slums)
 "ugd" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
@@ -44057,17 +43763,9 @@
 	},
 /area/lv873/oob)
 "uiL" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing? It has been impaled by the broken glass";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2;
-	layer = 3
-	},
-/obj/item/weapon/broken_glass{
-	layer = 3
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/blood/xeno,
+/obj/item/weapon/broken_glass,
 /turf/open/floor,
 /area/lv873/indoors/lone_buildings/liq_r_mart)
 "uiQ" = (
@@ -44129,9 +43827,7 @@
 	layer = 3.5;
 	pixel_y = 13
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "ukw" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -44218,8 +43914,8 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "dark"
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/lv873/indoors/aerospace_control)
 "umC" = (
@@ -44277,9 +43973,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "uob" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -44575,12 +44269,7 @@
 /area/lv873/oob)
 "utr" = (
 /obj/item/shard,
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/gm/grass/dirt,
 /area/lv873/outdoors/hospital/road_north_east)
@@ -44803,17 +44492,6 @@
 "uAK" = (
 /turf/open/gm/dirtgrassborder/dirt/grassdirt_corner/south_west,
 /area/lv873/outdoors/gated_community_exterior)
-"uAM" = (
-/obj/structure/surface/rack,
-/obj/item/ammo_magazine/rifle/mar40/lmg{
-	pixel_x = -6
-	},
-/obj/item/ammo_magazine/rifle/mar40/lmg{
-	pixel_x = 7
-	},
-/obj/item/weapon/gun/rifle/mar40/lmg,
-/turf/open/gm/dirt/brown,
-/area/lv873/oob)
 "uBu" = (
 /obj/structure/machinery/computer/cameras/wooden_tv{
 	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW.";
@@ -45111,43 +44789,18 @@
 /area/lv873/outdoors/colony_streets/southeast)
 "uJT" = (
 /obj/structure/surface/table/woodentable,
-/obj/item/clothing/suit/storage/bomber{
-	pixel_y = -9;
-	pixel_x = -9
-	},
-/obj/item/clothing/suit/storage/bomber/alt{
-	pixel_y = -8;
-	pixel_x = -3
-	},
-/obj/item/clothing/suit/storage/wcoat{
-	pixel_y = -8;
-	pixel_x = 1
-	},
-/obj/item/clothing/suit/storage/snow_suit/liaison/modified{
-	pixel_x = 8;
-	pixel_y = -6
-	},
-/obj/item/clothing/suit/armor/hos/jensen{
-	pixel_y = 8;
-	pixel_x = -10
-	},
-/obj/item/clothing/suit/storage/det_suit/black{
-	pixel_y = 8
+/obj/item/clothing/head/feathertrilby{
+	pixel_y = 9;
+	pixel_x = -4
 	},
 /obj/item/clothing/suit/storage/manager{
-	pixel_y = 9;
+	pixel_y = -1;
 	pixel_x = 8
 	},
 /turf/open/floor/wood,
 /area/lv873/indoors/bungalow_manager)
 "uKg" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/weapon/gun/pistol/holdout/flashlight{
-	current_mag = null
-	},
-/obj/item/ammo_magazine/pistol/holdout{
-	current_rounds = 0
-	},
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -45338,7 +44991,7 @@
 /turf/open/gm/river{
 	icon = 'icons/turf/ground_map_dirt.dmi'
 	},
-/area/lv873/oob)
+/area/lv873/indoors/lone_buildings/flooded)
 "uPf" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/microwave{
@@ -45967,7 +45620,7 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/book,
 /turf/open/floor,
-/area/lv873/oob)
+/area/lv873/indoors/east/slums)
 "vgS" = (
 /obj/structure/cable{
 	icon_state = "1-10"
@@ -46024,12 +45677,7 @@
 	},
 /area/lv873/indoors/welcome_center/lobby)
 "viA" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor{
 	icon_state = "white"
@@ -46518,6 +46166,12 @@
 "vvK" = (
 /turf/open/gm/dirtgrassborder/dirt/west,
 /area/lv873/landing_zone_1)
+"vvN" = (
+/obj/structure/sign/poster/propaganda{
+	pixel_x = -32
+	},
+/turf/open/floor/almayer,
+/area/lv873/indoors/uscm_garrison/garrison_bunks)
 "vvY" = (
 /obj/structure/prop/invuln{
 	density = 0;
@@ -46879,7 +46533,7 @@
 	pixel_y = 9
 	},
 /turf/open/floor,
-/area/lv873/oob)
+/area/lv873/indoors/east/slums)
 "vFy" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/prop/flower_vase/bluewhiteflowers{
@@ -47045,9 +46699,7 @@
 /obj/item/clothing/suit/storage/marine/light{
 	pixel_y = -4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "vJQ" = (
 /obj/structure/surface/table/almayer,
@@ -47122,7 +46774,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
 	},
-/turf/open/floor/wood,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/lv873/indoors/lone_buildings/tcomms)
 "vLN" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
@@ -47507,16 +47159,12 @@
 	pixel_y = 12
 	},
 /obj/item/clothing/head/helmet/marine,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "vTT" = (
 /obj/structure/window_frame/hangar,
 /obj/item/shard,
-/turf/open/floor{
-	icon_state = "dark2"
-	},
+/turf/open/floor/plating,
 /area/lv873/indoors/operations/offices/east)
 "vUd" = (
 /obj/structure/machinery/light/small{
@@ -47704,9 +47352,7 @@
 	pixel_y = 13
 	},
 /obj/item/toy/crayon,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "vYd" = (
 /obj/structure/surface/table/woodentable,
@@ -47814,9 +47460,7 @@
 	pixel_y = 0
 	},
 /obj/structure/surface/table/reinforced/prison,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "wau" = (
 /turf/closed/wall/r_wall,
@@ -47999,25 +47643,7 @@
 /area/lv873/outdoors/colony_streets/southwest)
 "weR" = (
 /obj/structure/surface/table/woodentable,
-/obj/item/clothing/shoes/black{
-	pixel_y = 8;
-	pixel_x = -8
-	},
-/obj/item/clothing/shoes/laceup{
-	pixel_y = 8;
-	pixel_x = 6
-	},
-/obj/item/clothing/shoes/leather{
-	pixel_x = 7
-	},
-/obj/item/clothing/shoes/marine{
-	pixel_x = -10;
-	pixel_y = -4
-	},
-/obj/item/clothing/shoes/brown{
-	pixel_y = -8;
-	pixel_x = 6
-	},
+/obj/item/storage/secure/briefcase,
 /turf/open/floor/wood,
 /area/lv873/indoors/bungalow_manager)
 "wfe" = (
@@ -48066,7 +47692,7 @@
 /area/lv873/indoors/bungalow_manager)
 "wgE" = (
 /obj/structure/machinery/power/apc,
-/turf/open/floor/wood,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/lv873/indoors/lone_buildings/tcomms)
 "wgS" = (
 /obj/structure/ladder{
@@ -48126,9 +47752,7 @@
 	},
 /area/lv873/indoors/flooded/west_apartments)
 "wiE" = (
-/obj/structure/largecrate/random/barrel{
-	pixel_x = 7
-	},
+/obj/effect/spawner/gibspawner/human,
 /turf/open/gm/dirt/brown,
 /area/lv873/outdoors/colony_streets/east)
 "wjd" = (
@@ -48153,8 +47777,8 @@
 	pixel_y = -8
 	},
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor{
-	icon_state = "dark"
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/lv873/indoors/aerospace_control)
 "wjt" = (
@@ -48329,13 +47953,7 @@
 /turf/open/gm/grass/dirt,
 /area/lv873/outdoors/hospital/road_north_east)
 "wox" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing? It has been stabbed by a throwing knife.";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2;
-	layer = 3
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/item/weapon/throwing_knife{
 	pixel_y = -8;
@@ -48947,12 +48565,7 @@
 	},
 /area/lv873/indoors/hospital/research/reception)
 "wFd" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/gm/dirt/brown,
 /area/lv873/landing_zone_2)
@@ -49093,9 +48706,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "wIx" = (
 /turf/closed/wall,
@@ -49173,9 +48784,7 @@
 	pixel_y = 8
 	},
 /obj/item/storage/belt/marine,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "wKf" = (
 /obj/structure/surface/rack,
@@ -49585,8 +49194,8 @@
 /obj/item/trash/buritto{
 	pixel_y = 10
 	},
-/turf/open/floor{
-	icon_state = "dark"
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/lv873/indoors/aerospace_control)
 "wRC" = (
@@ -49784,8 +49393,11 @@
 	},
 /area/lv873/indoors/bungalow_manager)
 "wWJ" = (
-/turf/open/floor{
-	icon_state = "dark"
+/obj/item/ammo_magazine/pistol/m1911{
+	current_rounds = 0
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/lv873/indoors/aerospace_control)
 "wWN" = (
@@ -49878,18 +49490,11 @@
 /obj/structure/bed/bedroll{
 	dir = 5
 	},
-/obj/item/weapon/gun/pistol/m1911{
-	current_mag = null
-	},
 /obj/effect/landmark/corpsespawner/colonist,
-/obj/item/ammo_magazine/pistol/m1911{
-	current_rounds = 0
-	},
 /obj/effect/spawner/gibspawner/human,
 /obj/item/trash/cigbutt/cigarbutt,
-/obj/item/clothing/head/beret/eng,
-/turf/open/floor{
-	icon_state = "dark"
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/lv873/indoors/aerospace_control)
 "xao" = (
@@ -49900,8 +49505,11 @@
 /obj/structure/bed/bedroll{
 	dir = 4
 	},
-/turf/open/floor{
-	icon_state = "dark"
+/obj/item/ammo_magazine/pistol/m1911{
+	current_rounds = 0
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/lv873/indoors/aerospace_control)
 "xay" = (
@@ -49914,7 +49522,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "1-4-8"
 	},
-/turf/open/floor/wood,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/lv873/indoors/lone_buildings/tcomms)
 "xaB" = (
 /obj/structure/machinery/light{
@@ -50070,7 +49678,7 @@
 /turf/open/gm/river{
 	icon = 'icons/turf/ground_map_dirt.dmi'
 	},
-/area/lv873/oob)
+/area/lv873/indoors/lone_buildings/flooded)
 "xet" = (
 /obj/item/spacecash/c10,
 /turf/open/gm/river{
@@ -50252,9 +49860,7 @@
 /obj/structure/machinery/door/airlock/almayer/marine/alpha{
 	name = "\improper USCMC Bunks"
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "xjd" = (
 /turf/open/floor,
@@ -50542,6 +50148,7 @@
 "xpO" = (
 /obj/structure/closet,
 /obj/item/storage/belt,
+/obj/item/clothing/under/rank/synthetic/utility/yellow,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -50807,8 +50414,8 @@
 /obj/item/trash/cigbutt/cigarbutt,
 /obj/effect/spawner/gibspawner/xeno,
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor{
-	icon_state = "dark"
+/turf/open/floor/almayer{
+	icon_state = "plate"
 	},
 /area/lv873/indoors/aerospace_control)
 "xxi" = (
@@ -51115,6 +50722,11 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/item/ashtray/glass{
+	pixel_x = 5;
+	pixel_y = -4
+	},
+/obj/item/clothing/head/hairflower,
 /turf/open/floor/wood,
 /area/lv873/indoors/bungalow_manager)
 "xEY" = (
@@ -51319,9 +50931,7 @@
 "xKQ" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/box/uscm_mre,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "xKS" = (
 /obj/structure/sink{
@@ -51463,12 +51073,7 @@
 /turf/open/floor,
 /area/lv873/indoors/lone_buildings/army_surplus)
 "xQG" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/spawner/gibspawner/xeno,
 /obj/effect/spawner/gibspawner/human,
@@ -51495,12 +51100,7 @@
 /turf/open/asphalt/cement,
 /area/lv873/indoors/marshals/garage)
 "xRd" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/gm/dirt/brown,
 /area/lv873/landing_zone_1)
@@ -51645,12 +51245,7 @@
 /turf/closed/wall,
 /area/lv873/indoors/hospital/research/toilets)
 "xUZ" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	name = "????";
-	stat = 2
-	},
+/obj/item/prop/alien/hugger,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -51965,9 +51560,7 @@
 "ybb" = (
 /obj/structure/surface/rack,
 /obj/item/storage/belt/gun/flaregun/full,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/almayer,
 /area/lv873/indoors/uscm_garrison/garrison_bunks)
 "ybm" = (
 /obj/effect/decal/cleanable/blood,
@@ -53043,9 +52636,9 @@ vbZ
 vbZ
 vbZ
 vbZ
-vbZ
-vbZ
-vbZ
+bhp
+bhp
+bhp
 vbZ
 vbZ
 vbZ
@@ -53266,13 +52859,13 @@ vbZ
 vbZ
 vbZ
 vbZ
-vbZ
 bhp
 bhp
 bhp
 bhp
 bhp
 bhp
+gUi
 vbZ
 vbZ
 vbZ
@@ -53493,18 +53086,18 @@ bhp
 bhp
 xQd
 vbZ
-vbZ
 bhp
 bhp
 bhp
 bhp
+xvJ
 xQd
 bKx
 bhp
 gUi
-kcA
-suE
-qHA
+qFQ
+nwr
+nRr
 nRr
 nRr
 nRr
@@ -53712,23 +53305,23 @@ vbZ
 vbZ
 sRY
 bhp
-vbZ
-vbZ
+bhp
+bhp
 vbZ
 vbZ
 vbZ
 vbZ
 vbZ
 bhp
-vbZ
-vbZ
 bhp
+onr
+bKx
 xaD
 bhp
 bhp
 bhp
-vbZ
-vbZ
+qFQ
+nwr
 nRr
 nRr
 nRr
@@ -53937,22 +53530,22 @@ vbZ
 bhp
 bhp
 xQd
-vbZ
-vbZ
-vbZ
-vbZ
 bhp
 bhp
+vbZ
 bhp
 bhp
 vbZ
 vbZ
+vbZ
+xvJ
+suZ
 bhp
 bhp
 sRY
 bhp
 bhp
-vbZ
+qFQ
 nwr
 nRr
 nRr
@@ -54169,9 +53762,9 @@ bhp
 bhp
 bhp
 bhp
-vbZ
 xQd
-bhp
+xQd
+bKx
 bhp
 xQd
 bhp
@@ -54388,14 +53981,14 @@ vbZ
 bhp
 bhp
 bhp
-vbZ
-vbZ
+bhp
+bhp
 vkW
 kkE
 kkE
 kkE
-kkE
-dep
+rKB
+hdY
 vbZ
 vbZ
 vbZ
@@ -55847,12 +55440,12 @@ bhp
 bhp
 bhp
 bhp
-pCm
+ekl
 nmG
 dsE
 nmG
 dsE
-pCm
+ekl
 sRY
 bhp
 bhp
@@ -57305,7 +56898,7 @@ xzQ
 xzQ
 sAT
 jVU
-uaR
+uFU
 gBH
 gBH
 aWP
@@ -62787,7 +62380,7 @@ gRZ
 deT
 dqX
 hCv
-pgp
+ddS
 tyF
 fhR
 nFl
@@ -63011,9 +62604,9 @@ dda
 deT
 dqX
 qzb
-pgp
+ddS
 rtE
-pgp
+ddS
 vTO
 ceg
 mqx
@@ -63138,7 +62731,7 @@ xaD
 bhp
 vbZ
 nRr
-vbZ
+nRr
 vbZ
 vbZ
 vbZ
@@ -63235,9 +62828,9 @@ rkb
 dqX
 dqX
 rux
-pgp
-pgp
-pgp
+ddS
+ddS
+ddS
 hgt
 arM
 tUx
@@ -63363,7 +62956,7 @@ sRY
 vbZ
 nRr
 nRr
-vbZ
+nRr
 vbZ
 vbZ
 nRr
@@ -63454,16 +63047,16 @@ feC
 gRZ
 gRZ
 xWC
-pgp
-pgp
+ddS
+ddS
 eIh
-pgp
-pgp
+ddS
+ddS
 eIh
-pgp
-pgp
-pgp
-pgp
+ddS
+ddS
+ddS
+ddS
 qFe
 oJK
 rRh
@@ -63588,7 +63181,7 @@ vbZ
 nRr
 nRr
 nRr
-vbZ
+nRr
 vbZ
 nRr
 nRr
@@ -63685,7 +63278,7 @@ dqX
 dqX
 dqX
 qDx
-pgp
+ddS
 tBM
 dqX
 dqX
@@ -63903,14 +63496,14 @@ oJK
 oJK
 oJK
 ukr
-pgp
+ddS
 ukr
 dqX
 wJW
-pgp
-pgp
-pgp
-pgp
+vvN
+ddS
+ddS
+ddS
 gDo
 dqX
 jgV
@@ -64127,7 +63720,7 @@ hxX
 aHe
 oJK
 siq
-pgp
+ddS
 ajU
 dqX
 vJG
@@ -64258,7 +63851,7 @@ bKx
 vbZ
 vbZ
 vbZ
-vbZ
+nmG
 nRr
 nRr
 nRr
@@ -64351,11 +63944,11 @@ pgp
 nDQ
 oJK
 oOk
-pgp
+ddS
 qxi
 dqX
 gVP
-pgp
+ddS
 cnN
 alH
 dyk
@@ -64482,11 +64075,11 @@ bhp
 xaD
 bKx
 vbZ
+nmG
+nRr
+nRr
+nRr
 vbZ
-nRr
-nRr
-nRr
-nRr
 vbZ
 vbZ
 vbZ
@@ -64575,11 +64168,11 @@ pgp
 nDQ
 oJK
 vXZ
-pgp
+ddS
 ukr
 dqX
 meZ
-pgp
+ddS
 hDz
 eiP
 uWW
@@ -64804,9 +64397,9 @@ dqX
 dqX
 mVD
 ybb
-pgp
-pgp
-pgp
+ddS
+ddS
+ddS
 lEw
 dqX
 jgV
@@ -65030,7 +64623,7 @@ qzC
 haZ
 cvc
 eIh
-pgp
+ddS
 dyC
 dqX
 nJy
@@ -65378,7 +64971,7 @@ vbZ
 vbZ
 vbZ
 vbZ
-vbZ
+nmG
 nRr
 nRr
 vbZ
@@ -65602,8 +65195,8 @@ vbZ
 vbZ
 vbZ
 vbZ
-vbZ
-vbZ
+vWV
+nRr
 nRr
 vbZ
 vbZ
@@ -65822,14 +65415,14 @@ jma
 eSv
 fcV
 uMF
-nRr
-nRr
-nRr
+vbZ
 vbZ
 vbZ
 vbZ
 nRr
-vbZ
+nRr
+nRr
+nRr
 vbZ
 vbZ
 vbZ
@@ -66047,14 +65640,14 @@ uYz
 aXt
 uMF
 vbZ
-uAM
-nRr
 vbZ
 vbZ
 vbZ
 nRr
-vbZ
-vbZ
+nRr
+nRr
+nRr
+dsE
 vbZ
 vbZ
 vbZ
@@ -66271,14 +65864,14 @@ jwt
 xxi
 uMF
 vbZ
-qdQ
+vbZ
+vbZ
+vbZ
+vAu
 nRr
-vbZ
-vbZ
-vbZ
 nRr
-vbZ
-vbZ
+nRr
+dsE
 vbZ
 vbZ
 vbZ
@@ -66358,7 +65951,7 @@ fwL
 fwL
 djt
 tpf
-ptG
+bCd
 xVg
 cyp
 bFP
@@ -66502,7 +66095,7 @@ vbZ
 oJE
 nRr
 nRr
-vbZ
+dsE
 vbZ
 vbZ
 vbZ
@@ -66608,7 +66201,7 @@ chF
 uHg
 iJZ
 uHg
-nbD
+rmR
 fsW
 rRh
 rRh
@@ -66946,7 +66539,7 @@ vbZ
 vbZ
 vbZ
 vbZ
-nRr
+vbZ
 nRr
 nRr
 nRr
@@ -67169,7 +66762,7 @@ vbZ
 vbZ
 vbZ
 vbZ
-nRr
+vbZ
 nRr
 nRr
 nRr
@@ -71731,7 +71324,7 @@ mtg
 qYv
 dyj
 wgy
-enk
+wgy
 wgy
 wgy
 leB
@@ -77531,9 +77124,9 @@ qeO
 jov
 rJk
 adv
-wWJ
-wWJ
-wWJ
+dxj
+dxj
+brH
 nhs
 jni
 ryu
@@ -77981,7 +77574,7 @@ gMY
 mde
 fTT
 wZT
-wWJ
+dxj
 jgK
 jni
 qjC
@@ -88295,7 +87888,7 @@ bhp
 vbZ
 vbZ
 xaD
-pCm
+qUh
 qUh
 qUh
 sId
@@ -89415,7 +89008,7 @@ vbZ
 vbZ
 bhp
 vbZ
-pCm
+qUh
 qUh
 qUh
 sId
@@ -91512,10 +91105,10 @@ qgp
 ulR
 kYH
 kYH
-eff
-eff
-eff
-eff
+xsv
+xsv
+xsv
+xsv
 nXZ
 nXZ
 eff
@@ -91707,7 +91300,7 @@ kYH
 kYH
 bpU
 aeS
-faS
+xsv
 nXZ
 vaN
 rcC
@@ -91737,9 +91330,9 @@ kYH
 kYH
 qQb
 sau
-izj
+tsX
 vFb
-eff
+xsv
 nXZ
 nXZ
 eff
@@ -91931,7 +91524,7 @@ kYH
 kYH
 kYH
 rdv
-faS
+xsv
 ckt
 qUB
 qUB
@@ -91961,9 +91554,9 @@ kYH
 kYH
 qQb
 vgM
-izj
+tsX
 lBW
-eff
+xsv
 nXZ
 nXZ
 eff
@@ -92155,7 +91748,7 @@ mhQ
 mdS
 kYH
 bpU
-faS
+xsv
 ruh
 qUB
 qUB
@@ -92185,9 +91778,9 @@ kYH
 kYH
 qQb
 ugc
-izj
+tsX
 aqw
-eff
+xsv
 nXZ
 nNG
 eff
@@ -92379,7 +91972,7 @@ tcd
 wMi
 kYH
 kYH
-faS
+xsv
 kIk
 eSC
 isx
@@ -92409,9 +92002,9 @@ kYH
 kYH
 qQb
 sZe
-izj
+tsX
 aJk
-eff
+xsv
 nXZ
 nXZ
 eff
@@ -92633,9 +92226,9 @@ kYH
 kYH
 qQb
 vgM
-izj
+tsX
 jxH
-eff
+xsv
 nXZ
 nXZ
 eff
@@ -92856,10 +92449,10 @@ iUS
 kYH
 kYH
 enN
-eff
-izj
-eff
-eff
+xsv
+tsX
+xsv
+xsv
 juX
 juX
 eff
@@ -93293,8 +92886,8 @@ nfX
 xLn
 xLn
 nxe
-kYH
-rdv
+lnQ
+pvR
 iUS
 nfX
 xLn
@@ -93517,8 +93110,8 @@ xsv
 xLn
 cyC
 nxe
-kYH
-bpU
+vSU
+btF
 iUS
 iUS
 iUS
@@ -93731,7 +93324,7 @@ kYH
 kYH
 kYH
 vbI
-khe
+cDt
 cDt
 cDt
 cDt
@@ -93741,7 +93334,7 @@ xLn
 xLn
 xLn
 xsv
-kYH
+cxe
 kYH
 kYH
 gOo
@@ -93810,22 +93403,22 @@ dhe
 dhe
 dhe
 dhe
-taL
-taL
-taL
-taL
-taL
-taL
-taL
-taL
-taL
-taL
-taL
-taL
-taL
-taL
-taL
-taL
+dhe
+dhe
+dhe
+dhe
+dhe
+dhe
+dhe
+dhe
+dhe
+dhe
+dhe
+dhe
+dhe
+dhe
+dhe
+dhe
 dhe
 bhp
 bhp
@@ -93955,7 +93548,7 @@ kYH
 kYH
 kYH
 xAK
-wXa
+cDt
 cDt
 cDt
 cDt
@@ -94050,7 +93643,7 @@ lEm
 sZq
 wsP
 wGy
-taL
+dhe
 bhp
 bhp
 vbZ
@@ -94179,7 +93772,7 @@ mhQ
 mdS
 kYH
 xAK
-wXa
+cDt
 cDt
 cDt
 cDt
@@ -94191,7 +93784,7 @@ cyC
 xsv
 kGp
 oog
-lnQ
+kYH
 wiE
 sMo
 sMo
@@ -94274,7 +93867,7 @@ fcR
 onR
 rvq
 gMF
-taL
+dhe
 bhp
 bhp
 bKx
@@ -94414,9 +94007,9 @@ xsv
 xsv
 xsv
 sMo
-vSU
+kYH
 eBi
-cxe
+kYH
 sMo
 ovS
 dcr
@@ -94498,7 +94091,7 @@ kWY
 wsP
 kWY
 gMF
-taL
+dhe
 bhp
 bhp
 bhp
@@ -94722,7 +94315,7 @@ gMF
 gMF
 gMF
 gMF
-taL
+dhe
 bhp
 bhp
 bhp
@@ -95273,7 +94866,7 @@ eUw
 jyj
 cwY
 jat
-qaJ
+bqg
 dPB
 hmi
 vxB
@@ -97120,12 +96713,12 @@ kYH
 kYH
 bpU
 pkZ
-pCm
+ffR
 qoh
 qoh
 qoh
 qoh
-pCm
+ffR
 gbt
 qkC
 vdl
@@ -97344,13 +96937,13 @@ kYH
 kYH
 kYH
 cnQ
-pCm
+ffR
 moX
 svn
 moX
 lcm
-pCm
-pCm
+ffR
+ffR
 vdl
 vdl
 vdl
@@ -97557,7 +97150,7 @@ kxW
 mdS
 kYH
 kYH
-axO
+jmJ
 cyC
 xLn
 xLn
@@ -97569,12 +97162,12 @@ kYH
 cnQ
 kua
 aNZ
-lPH
+gYW
 asu
 xei
-lPH
+gYW
 oOs
-pCm
+ffR
 lQH
 oHH
 akD
@@ -97781,7 +97374,7 @@ tki
 kxW
 lAc
 lAc
-hTg
+jmJ
 cyC
 xLn
 cyC
@@ -97792,13 +97385,13 @@ kxW
 mdS
 rvQ
 uzq
-pCm
+ffR
 qTN
 fYP
 jnY
 mpK
 oOl
-pCm
+ffR
 jDL
 nVN
 jDL
@@ -97991,11 +97584,11 @@ sMo
 xLn
 xLn
 pjd
-tsX
-tsX
-tsX
-tsX
-tsX
+cDt
+cDt
+cDt
+cDt
+cDt
 sMo
 fEZ
 tki
@@ -98004,7 +97597,7 @@ lPt
 lPt
 sMo
 sMo
-gBe
+jmJ
 sMo
 cyC
 xLn
@@ -98015,14 +97608,14 @@ lPt
 bNB
 wMi
 rCe
-pCm
-pCm
-pCm
-pCm
+ffR
+ffR
+ffR
+ffR
 cJg
 dZH
-pCm
-pCm
+ffR
+ffR
 vdl
 cPK
 vdl
@@ -98215,11 +97808,11 @@ sMo
 xLn
 xLn
 sMo
-tsX
-tsX
-tsX
-tsX
-tsX
+cDt
+cDt
+cDt
+cDt
+cDt
 sMo
 sMo
 mGv
@@ -98239,14 +97832,14 @@ tki
 lPt
 kxW
 lAc
-pCm
+ffR
 ajL
 tIE
-pCm
+ffR
 bpo
-lPH
+gYW
 ncw
-pCm
+ffR
 bhp
 bhp
 bhp
@@ -98439,11 +98032,11 @@ sMo
 sMo
 cuv
 sMo
-tsX
-tsX
-tsX
-tsX
-tsX
+cDt
+cDt
+cDt
+cDt
+cDt
 sMo
 bhp
 bhp
@@ -98462,15 +98055,15 @@ sMo
 mGv
 mGv
 mGv
-sMo
-pCm
+ffR
+ffR
 mce
 lmz
 dAZ
-lPH
+gYW
 uOE
 hEZ
-pCm
+ffR
 xaD
 bhp
 sRY
@@ -98498,7 +98091,7 @@ iRp
 iRp
 txj
 bCQ
-siE
+iYP
 txj
 frG
 fOk
@@ -98664,10 +98257,10 @@ ovS
 vYp
 sMo
 aHi
-tsX
-tsX
-tsX
-tsX
+cDt
+cDt
+cDt
+cDt
 sMo
 bhp
 sRY
@@ -98687,15 +98280,15 @@ xaD
 bhp
 gUi
 sRY
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-pCm
-mAS
+ffR
+ffR
+ffR
+ffR
+ffR
+ffR
+ffR
+ffR
+ffR
 qer
 qer
 qer
@@ -98889,9 +98482,9 @@ dcr
 sMo
 mYS
 mYS
-tsX
-tsX
-tsX
+cDt
+cDt
+cDt
 sMo
 sRY
 xaD
@@ -98946,7 +98539,7 @@ mLW
 iRp
 txj
 gYY
-siE
+iYP
 oZW
 iRp
 iRp

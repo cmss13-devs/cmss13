@@ -270,3 +270,11 @@
   - rscadd: Allows M81 launcher to utilize less lethal baton round
   - qol: removes taser from some security synthetics belts, replaced with a more synthetic
       friendly version
+2024-04-20:
+  Huffie56:
+  - balance: Increase damage of standard revolver ammo from 55 to 72.
+  - balance: Marksman ammo remains 55 damage.
+  iloveloopers:
+  - rscadd: adds new flamer fuel type, stabilized metallic foam
+  - rscadd: Incinerator tanks can now hold stabilized metallic foam
+  - balance: High-Combustion napalm fuel is now easier to see on the ground

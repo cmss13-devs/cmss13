@@ -1,0 +1,4 @@
+author: "iloveloopers"
+delete-after: True
+changes:
+  - bugfix: "White phosphorus will no longer forcefully set a mob's fire_reagent to be UT napthal"

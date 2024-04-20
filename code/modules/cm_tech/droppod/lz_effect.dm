@@ -34,6 +34,7 @@
 
 /obj/effect/warning/explosive/proc/disappear()
 	qdel(src)
+
 /obj/effect/warning/explosive/gas
 	name = "gas warning"
 	color = "#42acd6"

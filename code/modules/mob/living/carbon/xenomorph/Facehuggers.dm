@@ -350,7 +350,7 @@
 	stat = CONSCIOUS
 	jump_timer = addtimer(CALLBACK(src, PROC_REF(try_jump)), time_between_jumps, TIMER_OVERRIDE|TIMER_STOPPABLE|TIMER_UNIQUE)
 
-/obj/item/clothing/mask/facehugger/proc/go_idle(delete_timer = TRUE) //Idle state does not count toward the death timer.
+/obj/item/clothing/mask/facehugger/proc/go_idle(var/delete_timer = TRUE) //Idle state does not count toward the death timer.
 	if(stat == DEAD || stat == UNCONSCIOUS)
 		return
 

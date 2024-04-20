@@ -11,17 +11,17 @@ const KEY_MODS = {
 };
 
 const KEY_CODE_TO_BYOND = {
-  DEL: 'Delete',
-  DOWN: 'South',
-  END: 'Southwest',
-  HOME: 'Northwest',
-  INSERT: 'Insert',
-  LEFT: 'West',
-  PAGEDOWN: 'Southeast',
-  PAGEUP: 'Northeast',
-  RIGHT: 'East',
+  'DEL': 'Delete',
+  'DOWN': 'South',
+  'END': 'Southwest',
+  'HOME': 'Northwest',
+  'INSERT': 'Insert',
+  'LEFT': 'West',
+  'PAGEDOWN': 'Southeast',
+  'PAGEUP': 'Northeast',
+  'RIGHT': 'East',
   ' ': 'Space',
-  UP: 'North',
+  'UP': 'North',
 };
 
 const getAllKeybinds = (glob_keybinds) => {

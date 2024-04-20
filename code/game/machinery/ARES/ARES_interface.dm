@@ -411,7 +411,7 @@
 			shipwide_ai_announcement("ATTENTION! GENERAL QUARTERS. ALL HANDS, MAN YOUR BATTLESTATIONS.", MAIN_AI_SYSTEM, 'sound/effects/GQfullcall.ogg')
 			log_game("[key_name(operator)] has called for general quarters via ARES.")
 			message_admins("[key_name_admin(operator)] has called for general quarters via ARES.")
-			log_ares_security("General Quarters", "[last_login] has called for general quarters via ARES.")
+			log_ares_security("General Quarters", "Called for general quarters via ARES.", last_login)
 			COOLDOWN_START(datacore, ares_quarters_cooldown, 10 MINUTES)
 			. = TRUE
 
@@ -433,7 +433,7 @@
 
 			log_game("[key_name(operator)] has called for an emergency evacuation via ARES.")
 			message_admins("[key_name_admin(operator)] has called for an emergency evacuation via ARES.")
-			log_ares_security("Initiate Evacuation", "[last_login] has called for an emergency evacuation via ARES.")
+			log_ares_security("Initiate Evacuation", "Called for an emergency evacuation via ARES.", last_login)
 			. = TRUE
 
 		if("distress")
@@ -487,7 +487,7 @@
 					playsound_client(admin,'sound/effects/sos-morse-code.ogg',10)
 			message_admins("[key_name(operator)] has requested use of Nuclear Ordnance (via ARES)! Reason: <b>[reason]</b> [CC_MARK(operator)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];nukeapprove=\ref[operator]'>APPROVE</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];nukedeny=\ref[operator]'>DENY</A>) [ADMIN_JMP_USER(operator)] [CC_REPLY(operator)]")
 			to_chat(operator, SPAN_NOTICE("A nuclear ordnance request has been sent to USCM High Command for the following reason: [reason]"))
-			log_ares_security("Nuclear Ordnance Request", "[last_login] has sent a request for nuclear ordnance for the following reason: [reason]")
+			log_ares_security("Nuclear Ordnance Request", "Sent a request for nuclear ordnance for the following reason: [reason]", last_login)
 			if(ares_can_interface())
 				ai_silent_announcement("[last_login] has sent a request for nuclear ordnance to USCM High Command.", ".V")
 				ai_silent_announcement("Reason given: [reason].", ".V")

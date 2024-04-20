@@ -260,10 +260,7 @@
 	animate_state = "bigscannerpro1"
 
 
-
-
-/// The actual toner cartridge
-
+/// The actual toner cartridge used in photcopiers
 /obj/item/device/toner
 	name = "toner cartridge"
 	icon_state = "tonercartridge"

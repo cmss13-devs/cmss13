@@ -15,8 +15,10 @@
 	var/obj/item/paper_bundle/bundle = null
 	var/copies = 1 //how many copies to print!
 	var/toner = 45 //how much toner is left! woooooo~
+	///how many copies can be copied at once
 	var/maxcopies = 10 //how many copies can be copied at once- idea shamelessly stolen from bs12's copier!
-	var/animate_state = "bigscanner1" //what makes the animated icon flick when needed
+	///the flick state to use when inserting paper into the machine
+	var/animate_state = "bigscanner1"
 
 
 /obj/structure/machinery/photocopier/attack_remote(mob/user as mob)

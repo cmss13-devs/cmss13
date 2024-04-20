@@ -76,9 +76,7 @@
 		return
 	addtimer(CALLBACK(src, PROC_REF(check_turf)), 0.2 SECONDS)
 	if(stat == CONSCIOUS && loc) //Make sure we're conscious and not idle or dead.
-		var/jumps_before = jumps_left
-		go_idle(FALSE)
-		jumps_left = jumps_before
+		go_idle()
 	if(attached)
 		attached = FALSE
 		die()
@@ -175,15 +173,10 @@
 	if(exposed_temperature > 300)
 		die()
 
-/obj/item/clothing/mask/facehugger/equipped(mob/holder)
+/obj/item/clothing/mask/facehugger/equipped(mob/M)
 	SHOULD_CALL_PARENT(FALSE) // ugh equip sounds
-	if (!isxeno(holder))
-		return
-
-	var/mob/living/carbon/xenomorph/xeno = holder
-
-	if (xeno.caste.hugger_nurturing || hivenumber == XENO_HIVE_TUTORIAL)
-		go_idle()
+	// So picking up a hugger does not prematurely kill it
+	go_idle()
 
 /obj/item/clothing/mask/facehugger/Crossed(atom/target)
 	has_proximity(target)
@@ -350,23 +343,22 @@
 	stat = CONSCIOUS
 	jump_timer = addtimer(CALLBACK(src, PROC_REF(try_jump)), time_between_jumps, TIMER_OVERRIDE|TIMER_STOPPABLE|TIMER_UNIQUE)
 
-/obj/item/clothing/mask/facehugger/proc/go_idle(var/delete_timer = TRUE) //Idle state does not count toward the death timer.
+/obj/item/clothing/mask/facehugger/proc/go_idle() //Idle state does not count toward the death timer.
 	if(stat == DEAD || stat == UNCONSCIOUS)
 		return
 
 	stat = UNCONSCIOUS
 	icon_state = "[initial(icon_state)]_inactive"
-	if(delete_timer)
-		if(jump_timer)
-			deltimer(jump_timer)
-		jump_timer = null
+	if(jump_timer)
+		deltimer(jump_timer)
+	jump_timer = null
 	// Reset the jumps left to their original count
 	jumps_left = initial(jumps_left)
 	addtimer(CALLBACK(src, PROC_REF(go_active)), rand(MIN_ACTIVE_TIME,MAX_ACTIVE_TIME))
 
 /obj/item/clothing/mask/facehugger/proc/try_jump()
 	jump_timer = addtimer(CALLBACK(src, PROC_REF(try_jump)), time_between_jumps, TIMER_OVERRIDE|TIMER_STOPPABLE|TIMER_UNIQUE)
-	if(isnull(loc)) //Make sure we're conscious and not idle or dead.
+	if(stat != CONSCIOUS || isnull(loc)) //Make sure we're conscious and not idle or dead.
 		return
 
 	if(isxeno(loc))
@@ -374,8 +366,7 @@
 		if(X.caste.hugger_nurturing) // caste can prevent hugger death
 			return
 
-	if(stat == CONSCIOUS)
-		leap_at_nearest_target()
+	leap_at_nearest_target()
 	jumps_left--
 	if(!jumps_left)
 		end_lifecycle()

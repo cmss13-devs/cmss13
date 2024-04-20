@@ -1,13 +1,8 @@
-#define LOCKDOWN_READY 0
-#define LOCKDOWN_ACTIVE 1
-GLOBAL_VAR_INIT(ai_lockdown_state, LOCKDOWN_READY)
-
 /obj/structure/machinery/aicore_lockdown
-	name = "Emergency Containment Breach"
+	name = "AI Core Lockdown"
 	icon_state = "big_red_button_tablev"
 	unslashable = TRUE
 	unacidable = TRUE
-	COOLDOWN_DECLARE(containment_lockdown)
 
 /obj/structure/machinery/aicore_lockdown/ex_act(severity)
 	return FALSE
@@ -29,30 +24,37 @@ GLOBAL_VAR_INIT(ai_lockdown_state, LOCKDOWN_READY)
 		flick(initial(icon_state) + "-denied", src)
 		return FALSE
 
-	if(!COOLDOWN_FINISHED(src, containment_lockdown))
-		to_chat(user, SPAN_BOLDWARNING("AI Core Lockdown procedures are on cooldown! They will be ready in [COOLDOWN_SECONDSLEFT(src, containment_lockdown)] seconds!"))
+	if(!COOLDOWN_FINISHED(GLOB.ares_datacore, aicore_lockdown))
+		to_chat(user, SPAN_BOLDWARNING("AI Core Lockdown procedures are on cooldown! They will be ready in [COOLDOWN_SECONDSLEFT(GLOB.ares_datacore, aicore_lockdown)] seconds!"))
 		return FALSE
 
 	add_fingerprint(user)
 	aicore_lockdown(user)
-	COOLDOWN_START(src, containment_lockdown, 5 MINUTES)
+	COOLDOWN_START(GLOB.ares_datacore, aicore_lockdown, 2 MINUTES)
 
 /obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown
 	name = "ARES Emergency Lockdown Shutter"
 	density = FALSE
+	open_layer = 1.9
+	plane = FLOOR_PLANE
 
 /obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown/aicore
 	icon_state = "aidoor1"
 	base_icon_state = "aidoor"
+
+/obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown/aicore/white
+	icon_state = "w_aidoor1"
+	base_icon_state = "w_aidoor"
+
+/obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown/white
+	icon_state = "w_almayer_pdoor1"
+	base_icon_state = "w_almayer_pdoor"
 
 /obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown/Initialize()
 	. = ..()
 	RegisterSignal(SSdcs, COMSIG_GLOB_AICORE_LOCKDOWN, PROC_REF(close))
 	RegisterSignal(SSdcs, COMSIG_GLOB_AICORE_LIFT, PROC_REF(open))
 
-/obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown/white
-	icon_state = "w_almayer_pdoor1"
-	base_icon_state = "w_almayer_pdoor"
 
 /client/proc/admin_aicore_alert()
 	set name = "AI Core Lockdown"
@@ -77,7 +79,7 @@ GLOBAL_VAR_INIT(ai_lockdown_state, LOCKDOWN_READY)
 	if(IsAdminAdvancedProcCall())
 		return PROC_BLOCKED
 
-	var/log = "[key_name(user)] triggered research AI core lockdown!"
+	var/log = "[key_name(user)] triggered AI core lockdown!"
 	var/ares_log = "[user.name] triggered triggered AI Core Emergency Lockdown."
 	if(!message)
 		message = "ATTENTION! \n\nCORE SECURITY ALERT. \n\nAI CORE UNDER LOCKDOWN."
@@ -87,13 +89,14 @@ GLOBAL_VAR_INIT(ai_lockdown_state, LOCKDOWN_READY)
 		log += " (Admin Triggered)."
 		ares_log = "[MAIN_AI_SYSTEM] triggered AI Core Emergency Lockdown."
 
-	switch(GLOB.ai_lockdown_state)
-		if(LOCKDOWN_READY)
-			GLOB.ai_lockdown_state = LOCKDOWN_ACTIVE
-			set_security_level(SEC_LEVEL_RED, TRUE, FALSE)
+	switch(GLOB.ares_datacore.ai_lockdown_state)
+		if(ARES_LOCKDOWN_READY)
+			GLOB.ares_datacore.ai_lockdown_state = ARES_LOCKDOWN_ACTIVE
+			if(GLOB.security_level < SEC_LEVEL_RED)
+				set_security_level(SEC_LEVEL_RED, TRUE, FALSE)
 			SEND_GLOBAL_SIGNAL(COMSIG_GLOB_AICORE_LOCKDOWN)
-		if(LOCKDOWN_ACTIVE)
-			GLOB.ai_lockdown_state = LOCKDOWN_READY
+		if(ARES_LOCKDOWN_ACTIVE)
+			GLOB.ares_datacore.ai_lockdown_state = ARES_LOCKDOWN_READY
 			message = "ATTENTION! \n\nAI CORE EMERGENCY LOCKDOWN LIFTED."
 			log = "[key_name(user)] lifted AI core lockdown!"
 			ares_log = "[user.name] lifted AI Core Emergency Lockdown."
@@ -101,12 +104,10 @@ GLOBAL_VAR_INIT(ai_lockdown_state, LOCKDOWN_READY)
 				log += " (Admin Triggered)."
 				ares_log = "[MAIN_AI_SYSTEM] lifted AI Core Emergency Lockdown."
 
-			set_security_level(SEC_LEVEL_BLUE, TRUE, FALSE)
+			if(GLOB.security_level > SEC_LEVEL_GREEN)
+				set_security_level(SEC_LEVEL_BLUE, TRUE, FALSE)
 			SEND_GLOBAL_SIGNAL(COMSIG_GLOB_AICORE_LIFT)
 
 	shipwide_ai_announcement(message, MAIN_AI_SYSTEM, 'sound/effects/biohazard.ogg')
 	message_admins(log)
 	log_ares_security("AI Core Lockdown", ares_log)
-
-#undef LOCKDOWN_READY
-#undef LOCKDOWN_ACTIVE

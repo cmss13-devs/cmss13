@@ -82,3 +82,7 @@
 
 /// Time until someone can respawn as Working Joe
 #define JOE_JOIN_DEAD_TIME (15 MINUTES)
+
+/// Lockdown defines
+#define ARES_LOCKDOWN_READY 0
+#define ARES_LOCKDOWN_ACTIVE 1

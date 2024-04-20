@@ -86,7 +86,8 @@ GLOBAL_VAR_INIT(med_lockdown_state, LOCKDOWN_READY)
 	switch(GLOB.med_lockdown_state)
 		if(LOCKDOWN_READY)
 			GLOB.med_lockdown_state = LOCKDOWN_ACTIVE
-			set_security_level(SEC_LEVEL_RED, TRUE, FALSE)
+			if(GLOB.security_level < SEC_LEVEL_RED)
+				set_security_level(SEC_LEVEL_RED, TRUE, FALSE)
 			SEND_GLOBAL_SIGNAL(COMSIG_GLOB_RESEARCH_LOCKDOWN)
 		if(LOCKDOWN_ACTIVE)
 			GLOB.med_lockdown_state = LOCKDOWN_READY
@@ -97,7 +98,8 @@ GLOBAL_VAR_INIT(med_lockdown_state, LOCKDOWN_READY)
 				log += " (Admin Triggered)."
 				ares_log = "[MAIN_AI_SYSTEM] lifted Medical Research Biohazard Containment Lockdown."
 
-			set_security_level(SEC_LEVEL_BLUE, TRUE, FALSE)
+			if(GLOB.security_level > SEC_LEVEL_GREEN)
+				set_security_level(SEC_LEVEL_BLUE, TRUE, FALSE)
 			SEND_GLOBAL_SIGNAL(COMSIG_GLOB_RESEARCH_LIFT)
 
 	shipwide_ai_announcement(message, MAIN_AI_SYSTEM, 'sound/effects/biohazard.ogg')

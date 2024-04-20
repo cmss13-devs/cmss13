@@ -14160,6 +14160,15 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/weapon_room)
+"bFg" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "ai_floor2"
+	},
+/area/almayer/command/airoom)
 "bFj" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -14601,15 +14610,7 @@
 	name = "\improper ARES Mainframe Shutters";
 	plane = -7
 	},
-/obj/structure/machinery/door/poddoor/almayer/blended/aicore/open{
-	closed_layer = 3.2;
-	id = "ARES Emergency";
-	layer = 3.2;
-	name = "ARES Emergency Lockdown";
-	needs_power = 0;
-	open_layer = 1.9;
-	plane = -7
-	},
+/obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown/aicore,
 /turf/open/floor/almayer/no_build{
 	icon_state = "test_floor4"
 	},
@@ -20167,15 +20168,15 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
-/obj/structure/disposaloutlet{
+/obj/structure/machinery/disposal/delivery{
 	density = 0;
-	desc = "An outlet for the pneumatic delivery system.";
-	icon_state = "delivery_outlet";
-	name = "take-ins";
-	pixel_x = -1;
+	desc = "A pneumatic delivery unit.";
+	icon_state = "delivery_engi";
+	name = "Returns";
 	pixel_y = 28;
-	range = 0
+	pixel_x = 25
 	},
+/obj/structure/surface/rack,
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "cJK" = (
@@ -22464,7 +22465,9 @@
 	autoname = 0;
 	c_tag = "AI - Secondary Processors"
 	},
-/turf/open/floor/almayer/aicore/glowing/no_build,
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "ai_floor2"
+	},
 /area/almayer/command/airoom)
 "dzG" = (
 /obj/structure/reagent_dispensers/peppertank{
@@ -25241,6 +25244,19 @@
 	icon_state = "plate"
 	},
 /area/almayer/shipboard/starboard_point_defense)
+"etM" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1
+	},
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "ai_floor2"
+	},
+/area/almayer/command/airoom)
 "etN" = (
 /obj/effect/landmark/yautja_teleport,
 /turf/open/floor/plating/plating_catwalk,
@@ -26358,7 +26374,7 @@
 /obj/structure/machinery/door_control{
 	id = "ARES StairsUpper";
 	name = "ARES Core Access";
-	pixel_x = -10;
+	pixel_x = -5;
 	pixel_y = -24;
 	req_one_access_txt = "91;92"
 	},
@@ -26366,19 +26382,13 @@
 	id = "ARES StairsLock";
 	name = "ARES Exterior Lockdown";
 	pixel_y = -24;
-	req_one_access_txt = "91;92"
+	req_one_access_txt = "91;92";
+	pixel_x = 6
 	},
 /obj/structure/surface/table/reinforced/almayer_B{
 	indestructible = 1;
 	unacidable = 1;
 	unslashable = 1
-	},
-/obj/structure/machinery/door_control{
-	id = "ARES Emergency";
-	name = "ARES Emergency Lockdown";
-	pixel_x = 10;
-	pixel_y = -24;
-	req_one_access_txt = "91;92"
 	},
 /obj/structure/machinery/computer/cameras/almayer{
 	dir = 4;
@@ -26769,18 +26779,19 @@
 /turf/open/floor/almayer,
 /area/almayer/living/offices)
 "eXy" = (
-/obj/effect/step_trigger/teleporter_vector{
+/obj/effect/projector{
 	name = "Almayer_AresDown";
 	vector_x = 96;
 	vector_y = -65
 	},
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /obj/structure/stairs{
-	dir = 1
+	dir = 1;
+	icon_state = "ramptop"
 	},
-/turf/open/floor/almayer/aicore/no_build,
+/turf/open/floor/almayer/aicore/glowing/no_build{
+	icon_state = "ai_floor3";
+	light_range = 3
+	},
 /area/almayer/command/airoom)
 "eXD" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -28784,7 +28795,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out"
 	},
-/turf/open/floor/almayer/aicore/glowing/no_build,
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "ai_floor2"
+	},
 /area/almayer/command/airoom)
 "fKh" = (
 /obj/structure/window/framed/almayer,
@@ -28951,15 +28964,6 @@
 	plane = -7
 	},
 /obj/effect/step_trigger/ares_alert/core,
-/obj/structure/machinery/door/poddoor/almayer/blended/aicore/open{
-	closed_layer = 3.2;
-	id = "ARES Emergency";
-	layer = 3.2;
-	name = "ARES Emergency Lockdown";
-	needs_power = 0;
-	open_layer = 1.9;
-	plane = -7
-	},
 /obj/structure/sign/safety/laser{
 	pixel_x = 32;
 	pixel_y = -8
@@ -28968,6 +28972,7 @@
 	pixel_x = 32;
 	pixel_y = 6
 	},
+/obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown/aicore,
 /turf/open/floor/almayer/no_build{
 	icon_state = "test_floor4"
 	},
@@ -31206,6 +31211,9 @@
 	req_access = null;
 	req_one_access_txt = "91;92";
 	dir = 1
+	},
+/obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown/aicore{
+	plane = -6
 	},
 /turf/open/floor/almayer/no_build{
 	icon_state = "test_floor4"
@@ -35739,7 +35747,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
 	},
-/turf/open/floor/almayer/aicore/glowing/no_build,
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "ai_floor2"
+	},
 /area/almayer/command/airoom)
 "igs" = (
 /obj/structure/surface/table/almayer,
@@ -36051,17 +36061,12 @@
 	name = "\improper ARES Core Shutters";
 	plane = -7
 	},
-/obj/structure/machinery/door/poddoor/almayer/blended/open{
-	id = "ARES Emergency";
-	name = "ARES Emergency Lockdown";
-	open_layer = 1.9;
-	plane = -7
-	},
 /obj/structure/disposalpipe/up/almayer{
 	id = "ares_vault_in";
 	name = "aicore";
 	dir = 2
 	},
+/obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown,
 /turf/open/floor/almayer/no_build{
 	icon_state = "test_floor4"
 	},
@@ -36683,9 +36688,9 @@
 	},
 /area/almayer/squads/delta)
 "izf" = (
-/obj/structure/disposalpipe/down/almayer{
+/obj/structure/disposalpipe/up/almayer{
 	dir = 4;
-	id = "ares_vault_in";
+	id = "ares_vault_out";
 	name = "aicore"
 	},
 /turf/closed/wall/almayer/aicore/hull,
@@ -38339,14 +38344,13 @@
 	pixel_x = -2;
 	pixel_y = 26
 	},
-/obj/structure/machinery/door_control/brbutton{
-	id = "ARES Emergency";
-	name = "ARES Emergency Lockdown Override";
-	pixel_x = 8;
-	pixel_y = 26
-	},
 /obj/structure/machinery/computer/cameras/almayer/ares{
 	dir = 4
+	},
+/obj/structure/machinery/aicore_lockdown{
+	icon_state = "big_red_button_wallv";
+	pixel_x = 8;
+	pixel_y = 26
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
@@ -39300,15 +39304,7 @@
 	plane = -7
 	},
 /obj/effect/step_trigger/ares_alert/core,
-/obj/structure/machinery/door/poddoor/almayer/blended/aicore/open{
-	closed_layer = 3.2;
-	id = "ARES Emergency";
-	layer = 3.2;
-	name = "ARES Emergency Lockdown";
-	needs_power = 0;
-	open_layer = 1.9;
-	plane = -7
-	},
+/obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown/aicore,
 /turf/open/floor/almayer/no_build{
 	icon_state = "test_floor4"
 	},
@@ -48270,6 +48266,10 @@
 /area/almayer/living/port_emb)
 "mAe" = (
 /obj/structure/window/framed/almayer/aicore/hull/black/hijack_bustable,
+/obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown{
+	plane = -6;
+	dir = 4
+	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "mAp" = (
@@ -48607,15 +48607,7 @@
 	name = "\improper ARES Mainframe Shutters";
 	plane = -7
 	},
-/obj/structure/machinery/door/poddoor/almayer/blended/aicore/open{
-	closed_layer = 3.2;
-	id = "ARES Emergency";
-	layer = 3.2;
-	name = "ARES Emergency Lockdown";
-	needs_power = 0;
-	open_layer = 1.9;
-	plane = -7
-	},
+/obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown/aicore,
 /turf/open/floor/almayer/no_build{
 	icon_state = "test_floor4"
 	},
@@ -49291,15 +49283,6 @@
 	plane = -7
 	},
 /obj/effect/step_trigger/ares_alert/core,
-/obj/structure/machinery/door/poddoor/almayer/blended/aicore/open{
-	closed_layer = 3.2;
-	id = "ARES Emergency";
-	layer = 3.2;
-	name = "ARES Emergency Lockdown";
-	needs_power = 0;
-	open_layer = 1.9;
-	plane = -7
-	},
 /obj/structure/sign/safety/terminal{
 	pixel_x = -18;
 	pixel_y = -8
@@ -49308,6 +49291,7 @@
 	pixel_x = -18;
 	pixel_y = 6
 	},
+/obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown/aicore,
 /turf/open/floor/almayer/no_build{
 	icon_state = "test_floor4"
 	},
@@ -50866,9 +50850,9 @@
 /turf/open/floor/plating,
 /area/almayer/engineering/starboard_atmos)
 "npq" = (
-/obj/structure/disposalpipe/up/almayer{
+/obj/structure/disposalpipe/down/almayer{
 	dir = 8;
-	id = "ares_vault_out";
+	id = "ares_vault_in";
 	name = "aicore"
 	},
 /turf/closed/wall/almayer/aicore/hull,
@@ -51959,15 +51943,17 @@
 	},
 /area/almayer/command/lifeboat)
 "nKO" = (
-/obj/structure/machinery/disposal/delivery{
-	density = 0;
-	desc = "A pneumatic delivery unit.";
-	icon_state = "delivery_engi";
-	name = "Returns";
-	pixel_y = 28
-	},
 /obj/structure/disposalpipe/trunk{
 	dir = 1
+	},
+/obj/structure/disposaloutlet{
+	density = 0;
+	desc = "An outlet for the pneumatic delivery system.";
+	icon_state = "delivery_outlet";
+	name = "take-ins";
+	pixel_x = 7;
+	pixel_y = 28;
+	range = 0
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -52089,6 +52075,19 @@
 	icon_state = "red"
 	},
 /area/almayer/hallways/upper/port)
+"nNA" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "ai_floor2"
+	},
+/area/almayer/command/airoom)
 "nNH" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -52718,6 +52717,19 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/cells)
+"nYg" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
+	},
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "ai_floor2"
+	},
+/area/almayer/command/airoom)
 "nYi" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer{
@@ -55897,6 +55909,20 @@
 	icon_state = "silver"
 	},
 /area/almayer/hallways/lower/repair_bay)
+"oYZ" = (
+/obj/effect/step_trigger/teleporter_vector{
+	name = "Almayer_AresDown";
+	vector_x = 96;
+	vector_y = -65
+	},
+/obj/structure/stairs{
+	dir = 1
+	},
+/turf/open/floor/almayer/aicore/glowing/no_build{
+	icon_state = "ai_floor3";
+	light_range = 3
+	},
+/area/almayer/command/airoom)
 "oZp" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/light,
@@ -64093,6 +64119,15 @@
 	icon_state = "silver"
 	},
 /area/almayer/hallways/lower/repair_bay)
+"rOz" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "ai_floor2"
+	},
+/area/almayer/command/airoom)
 "rOC" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -69482,12 +69517,7 @@
 	name = "\improper ARES Core Shutters";
 	plane = -7
 	},
-/obj/structure/machinery/door/poddoor/almayer/blended/open{
-	id = "ARES Emergency";
-	name = "ARES Emergency Lockdown";
-	open_layer = 1.9;
-	plane = -7
-	},
+/obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown,
 /turf/open/floor/almayer/no_build{
 	icon_state = "test_floor4"
 	},
@@ -71030,6 +71060,14 @@
 	icon_state = "test_floor4"
 	},
 /area/almayer/command/cichallway)
+"ujn" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "ai_floor2"
+	},
+/area/almayer/command/airoom)
 "ujz" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -72979,9 +73017,16 @@
 	unslashable = 1
 	},
 /obj/item/paper_bin/uscm{
-	pixel_y = 6
+	pixel_y = 6;
+	pixel_x = -12
 	},
-/obj/item/tool/pen,
+/obj/item/tool/pen{
+	pixel_x = -14
+	},
+/obj/structure/machinery/aicore_lockdown{
+	pixel_y = 4;
+	pixel_x = 3
+	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "uVc" = (
@@ -75231,7 +75276,9 @@
 	c_tag = "AI - Primary Processors";
 	autoname = 0
 	},
-/turf/open/floor/almayer/aicore/glowing/no_build,
+/turf/open/floor/almayer/aicore/no_build{
+	icon_state = "ai_floor2"
+	},
 /area/almayer/command/airoom)
 "vCO" = (
 /obj/effect/landmark/start/bridge,
@@ -77456,15 +77503,7 @@
 	alert_message = "Caution: Movement detected in ARES Core.";
 	cooldown_duration = 1200
 	},
-/obj/structure/machinery/door/poddoor/almayer/blended/aicore/open{
-	closed_layer = 3.2;
-	id = "ARES Emergency";
-	layer = 3.2;
-	name = "ARES Emergency Lockdown";
-	needs_power = 0;
-	open_layer = 1.9;
-	plane = -7
-	},
+/obj/structure/machinery/door/poddoor/almayer/blended/ai_lockdown/aicore,
 /turf/open/floor/almayer/no_build{
 	icon_state = "test_floor4"
 	},
@@ -78333,12 +78372,7 @@
 /area/almayer/maint/hull/lower/l_m_s)
 "wyQ" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/door_control{
-	id = "ARES Emergency";
-	indestructible = 1;
-	name = "ARES Emergency Lockdown";
-	req_one_access_txt = "91;92"
-	},
+/obj/structure/machinery/aicore_lockdown,
 /turf/open/floor/almayer/no_build{
 	icon_state = "plating"
 	},
@@ -121671,10 +121705,10 @@ sgH
 qdJ
 xIj
 mOi
-eXy
 vRA
+oYZ
 ezq
-ezq
+eXy
 tFe
 xQV
 pax
@@ -140209,7 +140243,7 @@ qQS
 bIp
 fKe
 dDp
-dDp
+bFg
 frM
 lcg
 daz
@@ -140411,9 +140445,9 @@ dIn
 rby
 bIp
 euN
+ujn
 sEK
-sEK
-mlb
+etM
 lcg
 daz
 lmz
@@ -140613,10 +140647,10 @@ lnS
 uVv
 flf
 ebN
-cxc
+rOz
 kBy
 kBy
-gfu
+nNA
 fPB
 daz
 lmz
@@ -142035,9 +142069,9 @@ yaQ
 vLz
 mFN
 kSy
+bFg
 dDp
-dDp
-frM
+nYg
 lcg
 daz
 lmz
@@ -142239,7 +142273,7 @@ qQS
 mFN
 igr
 sEK
-sEK
+ujn
 mlb
 lcg
 daz

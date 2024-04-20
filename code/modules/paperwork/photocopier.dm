@@ -243,10 +243,7 @@
 	return p
 
 
-
-
-/// Upgraded photocopier, straight upgrade from the Normal Photocopier, made by Weyland-Yutani
-
+/// Upgraded photocopier, straight upgrade from the normal photocopier, made by Weyland-Yutani
 /obj/structure/machinery/photocopier/wyphotocopier
 	name = "photocopier"
 	icon = 'icons/obj/structures/machinery/library.dmi'

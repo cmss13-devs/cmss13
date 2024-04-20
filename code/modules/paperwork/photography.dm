@@ -359,6 +359,12 @@
 	flags_equip_slot = NO_FLAGS //cannot be equiped
 	var/obj/structure/machinery/camera/correspondent/linked_cam
 
+/obj/item/device/camera/broadcasting/Initialize(mapload, ...)
+	. = ..()
+	linked_cam = new(loc, src)
+	linked_cam.status = FALSE
+	RegisterSignal(src, COMSIG_COMPONENT_ADDED, PROC_REF(handle_rename))
+
 /obj/item/device/camera/broadcasting/Destroy()
 	clear_broadcast()
 	return ..()
@@ -367,15 +373,22 @@
 	. = ..()
 	if(!.)
 		return
-	linked_cam = new(loc, src)
 	flags_atom |= (USES_HEARING|USES_SEEING)
+	linked_cam.status = TRUE
+	linked_cam.forceMove(loc)
 	SEND_SIGNAL(src, COMSIG_BROADCAST_GO_LIVE)
 	to_chat(user, SPAN_NOTICE("[src] begins to buzz softly as you go live."))
 
 /obj/item/device/camera/broadcasting/unwield(mob/user)
 	. = ..()
 	flags_atom &= ~(USES_HEARING|USES_SEEING)
-	clear_broadcast()
+	linked_cam.status = FALSE
+
+/obj/item/device/camera/broadcasting/proc/handle_rename(obj/item/camera, datum/component/label)
+	SIGNAL_HANDLER
+	if(!istype(label, /datum/component/label))
+		return
+	linked_cam.c_tag = get_broadcast_name()
 
 /obj/item/device/camera/broadcasting/proc/clear_broadcast()
 	if(!QDELETED(linked_cam))

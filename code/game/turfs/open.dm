@@ -1026,6 +1026,18 @@
 /turf/open/hybrisa/street/underground_unweedable/is_weedable()
 	return NOT_WEEDABLE
 
+// Engineer Ship Hull
+/turf/open/engineership/ship_hull
+	name = "strange metal wall"
+	desc = "Nigh indestructible walls that make up the hull of an unknown ancient ship."
+	icon = 'icons/turf/floors/engineership.dmi'
+	icon_state = "engineerwallfloor1"
+	baseturfs = /turf/open/asphalt
+	allow_construction = FALSE
+
+/turf/open/engineership/ship_hull/is_weedable()
+	return NOT_WEEDABLE
+
 // Carpet
 
 

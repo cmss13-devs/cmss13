@@ -1606,11 +1606,18 @@
 	icon_state = "zentruck4"
 /obj/structure/prop/hybrisa/vehicles/truck/truck4
 	icon_state = "zentruck5"
+/obj/structure/prop/hybrisa/vehicles/truck/truck5
+	icon_state = "truck_cargo"
+/obj/structure/prop/hybrisa/vehicles/truck/truck6
+	icon_state = "truck"
 /obj/structure/prop/hybrisa/vehicles/truck/garbage
 	name = "garbage truck"
 	icon_state = "zengarbagetruck"
 	desc = "Seems to be broken down."
-
+/obj/structure/prop/hybrisa/vehicles/truck/mining
+	name = "mining supply truck"
+	icon_state = "truck_mining"
+	desc = "Seems to be broken down."
 // large trucks
 
 /obj/structure/prop/hybrisa/vehicles/largetruck
@@ -1667,7 +1674,14 @@
 	icon_state = "miningcrawler1"
 	desc = "It is a tread bound crawler used in harsh conditions. Supplied by The Kelland Mining Company; A subsidiary of Weyland Yutani."
 	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
-
+/obj/structure/prop/hybrisa/vehicles/colonycrawlers/mining2
+	icon_state = "crawler_fuel"
+	desc = "It is a tread bound crawler used in harsh conditions. Supplied by The Kelland Mining Company; A subsidiary of Weyland Yutani."
+	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
+/obj/structure/prop/hybrisa/vehicles/colonycrawlers/mining3
+	icon_state = "crawler_covered_bed"
+	desc = "It is a tread bound crawler used in harsh conditions. Supplied by The Kelland Mining Company; A subsidiary of Weyland Yutani."
+	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
 /obj/structure/prop/hybrisa/vehicles/colonycrawlers/science
 	icon_state = "crawler_wy2"
 	desc = "It is a tread bound crawler used in harsh conditions. This one is designed for personnel transportation. Supplied by Orbital Blue International; 'Your friends, in the Aerospace business.' A subsidiary of Weyland Yutani."

@@ -252,7 +252,7 @@
 	name = "photocopier"
 	icon = 'icons/obj/structures/machinery/library.dmi'
 	icon_state = "bigscannerpro"
-	desc = "A photocopier used for copying... you know, photos! Also useful for copying documents in paper. This specific model have been manufactured by Weyland-Yutani in a more modern and robust frame than the average photocopiers you see being sold by smaller companies, while also carrying some of the most advanced technologies on the area of paper-printing, such as bigger toner economy and much higher printing capabilities. All that makes it the favorite among consumers that need to print high amounts of paperwork on the performance of their daily duties."
+	desc = "A photocopier used for copying... you know, photos! Also useful for copying documents on paper. This specific model has been manufactured by Weyland-Yutani in a more modern and robust frame than the average photocopiers you see from smaller companies. It uses some of the most advanced technologies in the area of paper-printing such as bigger toner economy and much higher printing capabilities. All that makes it the favorite among consumers that need to print high amounts of paperwork for their daily duties."
 	idle_power_usage = 50
 	active_power_usage = 300
 	copies = 1 //how many copies to print!

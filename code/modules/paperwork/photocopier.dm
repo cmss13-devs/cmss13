@@ -254,10 +254,10 @@
 	desc = "A photocopier used for copying... you know, photos! Also useful for copying documents on paper. This specific model has been manufactured by Weyland-Yutani in a more modern and robust frame than the average photocopiers you see from smaller companies. It uses some of the most advanced technologies in the area of paper-printing such as bigger toner economy and much higher printing capabilities. All that makes it the favorite among consumers that need to print high amounts of paperwork for their daily duties."
 	idle_power_usage = 50
 	active_power_usage = 300
-	copies = 1 //how many copies to print!
-	toner = 180 //how much toner is left! woooooo~
-	maxcopies = 30 //how many copies can be copied at once- idea shamelessly stolen from bs12's copier!
-	animate_state = "bigscannerpro1" //what makes the animated icon flick when needed
+	copies = 1
+	toner = 180
+	maxcopies = 30
+	animate_state = "bigscannerpro1"
 
 
 

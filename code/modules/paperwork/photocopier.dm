@@ -1,5 +1,4 @@
 /// Normal Photocopier, made by Seegson
-
 /obj/structure/machinery/photocopier
 	name = "photocopier"
 	icon = 'icons/obj/structures/machinery/library.dmi'

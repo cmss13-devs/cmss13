@@ -205,7 +205,7 @@
 
 	//the shockwave center is updated eachtime shockwave is called and offset relative to the mob_size.
 	//due to the speed of the shockwaves, it isn't required to be tied to the exact mob movements
-	var/epicenter = src.loc ///center of the shockwave, set at the center of the tile that the mob is currently standing on
+	var/epicenter = loc //center of the shockwave, set at the center of the tile that the mob is currently standing on
 	var/easing = QUAD_EASING | EASE_OUT
 	var/stage1_radius = rand(11, 12)
 	var/stage2_radius = rand(9, 11)

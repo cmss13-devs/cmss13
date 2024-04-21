@@ -128,6 +128,12 @@
 /obj/structure/closet/crate/get_paradrop_scatter() //crates land closer to the signal
 	return 4
 
+/obj/structure/largecrate/can_paradrop()
+	return TRUE
+
+/obj/structure/largecrate/get_paradrop_scatter()
+	return 4
+
 /atom/movable/proc/handle_paradrop(turf/target, dropship_name)
 	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_DROPSHIP_INTERACTION)
 	ADD_TRAIT(src, TRAIT_UNDENSE, TRAIT_SOURCE_DROPSHIP_INTERACTION)

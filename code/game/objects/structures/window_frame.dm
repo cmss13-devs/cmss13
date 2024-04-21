@@ -347,3 +347,20 @@
 	basestate = "strata_window"
 	unslashable = TRUE
 	unacidable = TRUE
+
+// Hosptial
+
+/obj/structure/window_frame/hybrisa/colony/hospital
+	icon = 'icons/turf/walls/hybrisa_hospital_colonywindows.dmi'
+	icon_state = "strata_window0_frame"
+	basestate = "strata_window"
+/obj/structure/window_frame/hybrisa/colony/hospital/reinforced
+	icon_state = "strata_window0_frame"
+	basestate = "strata_window"
+	reinforced = TRUE
+/obj/structure/window_frame/hybrisa/colony/hospital/hull
+	icon_state = "strata_window0_frame"
+	basestate = "strata_window"
+	unslashable = TRUE
+	unacidable = TRUE
+

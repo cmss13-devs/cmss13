@@ -234,11 +234,11 @@
 /area/lv759/indoors/spaceport/docking_bay_2
 	name = "Weyland Yutani Celestia Gateway Space-Port - Docking Bay: 2 - Refueling and Maintenance"
 	icon_state = "WYSpaceportblue"
-	ceiling = CEILING_NONE
+
 /area/lv759/indoors/spaceport/docking_bay_1
 	name = "Weyland Yutani Celestia Gateway Space-Port - Docking Bay: 1"
 	icon_state = "WYSpaceport"
-	ceiling = CEILING_NONE
+
 /area/lv759/indoors/spaceport/starglider
 	name = "WY-LWI StarGlider SG-200"
 	icon_state = "wydropship"

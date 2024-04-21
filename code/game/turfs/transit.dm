@@ -49,22 +49,22 @@
 	if(dropship.paradrop_signal) //if dropship in paradrop mode, drop them near the signal. Whether they have a parachute or not
 		var/list/valid_turfs = list()
 		var/turf/location = get_turf(dropship.paradrop_signal.signal_loc)
-		for(var/turf/T as anything in RANGE_TURFS(crosser.get_paradrop_scatter(), location))
-			var/area/t_area = get_area(T)
-			if(!t_area || CEILING_IS_PROTECTED(t_area.ceiling, CEILING_PROTECTION_TIER_1))
+		for(var/turf/turf as anything in RANGE_TURFS(crosser.get_paradrop_scatter(), location))
+			var/area/turf_area = get_area(turf)
+			if(!turf_area || CEILING_IS_PROTECTED(turf_area.ceiling, CEILING_PROTECTION_TIER_1))
 				continue
-			if(T.density)
+			if(turf.density)
 				continue
 			var/found_dense = FALSE
-			for(var/atom/A in T)
-				if(A.density && A.can_block_movement)
+			for(var/atom/turf_atom in turf)
+				if(turf_atom.density && turf_atom.can_block_movement)
 					found_dense = TRUE
 					break
 			if(found_dense)
 				continue
-			if(protected_by_pylon(TURF_PROTECTION_MORTAR, T))
+			if(protected_by_pylon(TURF_PROTECTION_MORTAR, turf))
 				continue
-			valid_turfs += T
+			valid_turfs += turf
 		var/turf/deploy_turf
 		if(length(valid_turfs)) //if we found a fitting place near the landing zone...
 			deploy_turf = pick(valid_turfs)
@@ -132,15 +132,15 @@
 	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_DROPSHIP_INTERACTION)
 	ADD_TRAIT(src, TRAIT_UNDENSE, TRAIT_SOURCE_DROPSHIP_INTERACTION)
 	var/image/cables = image('icons/obj/structures/droppod_32x64.dmi', src, "chute_cables_static")
-	src.overlays += cables
+	overlays += cables
 	var/image/chute = image('icons/obj/structures/droppod_64x64.dmi', src, "chute_static")
 
 	chute.pixel_x -= 16
 	chute.pixel_y += 16
 
-	src.overlays += chute
-	src.pixel_z = 360
-	src.forceMove(target)
+	overlays += chute
+	pixel_z = 360
+	forceMove(target)
 	playsound(src, 'sound/items/fulton.ogg', 30, 1)
 	animate(src, time = 3.5 SECONDS, pixel_z = 0, flags = ANIMATION_PARALLEL)
 	addtimer(CALLBACK(target, TYPE_PROC_REF(/turf, ceiling_debris)), 2 SECONDS)
@@ -186,7 +186,7 @@
 	if(!indestructible && w_class == SIZE_SMALL) //small items will be lost, good riddance
 		deconstruct(FALSE)
 		return
-	src.explosion_throw(200) // give it a bit of a kick
+	explosion_throw(200) // give it a bit of a kick
 
 /mob/living/handle_airdrop(turf/target, dropship_name)
 	..()

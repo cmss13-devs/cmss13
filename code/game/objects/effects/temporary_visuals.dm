@@ -117,8 +117,5 @@
 		pixel_x += x_offset
 	QDEL_IN(src, 0.5 * radius * speed)
 	transform = matrix().Scale(32 / 1024, 32 / 1024)
-	if(!easing_type)
-		animate(src, time = 0.5 * radius * speed, transform=matrix().Scale((32 / 1024) * radius * 1.5, (32 / 1024) * radius * 1.5))
-		return
 	animate(src, time = 0.5 * radius * speed, transform=matrix().Scale((32 / 1024) * radius * 1.5, (32 / 1024) * radius * 1.5), easing = easing_type)
 

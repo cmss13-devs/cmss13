@@ -284,4 +284,8 @@ GLOBAL_LIST_INIT(all_fences, list())
 				human.apply_effect(1,PARALYZE)
 	. = ..()
 
+/obj/structure/fence/electrified/Destroy()
+	if(src.cut)
+		return
+	src.cut = TRUE
 

@@ -125,11 +125,11 @@ GLOBAL_VAR_INIT(log_end, world.system_type == UNIX ? ascii2text(13) : "")
 	GLOB.STUI.admin.Add("\[[time]]OVERWATCH: [text]")
 	GLOB.STUI.processing |= STUI_LOG_ADMIN
 
-/proc/log_idmod(obj/item/card/id/target_id, msg)
+/proc/log_idmod(obj/item/card/id/target_id, msg, changer)
 	var/time = time_stamp()
 	if (CONFIG_GET(flag/log_idmod))
-		WRITE_LOG(GLOB.world_game_log, "ID MOD: [msg]")
-		LOG_REDIS("idmod", "\[[time]\] [msg]")
+		WRITE_LOG(GLOB.world_game_log, "ID MOD: ([changer]) [msg]")
+		LOG_REDIS("idmod", "\[[time]\] ([changer]) [msg]")
 	target_id.modification_log += "\[[time]]: [msg]"
 
 /proc/log_vote(text)

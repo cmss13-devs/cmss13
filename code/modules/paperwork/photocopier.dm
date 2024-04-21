@@ -3,7 +3,7 @@
 	name = "photocopier"
 	icon = 'icons/obj/structures/machinery/library.dmi'
 	icon_state = "bigscanner"
-	desc = "A photocopier used for copying... you know, photos! Also useful for copying documents on paper. This specific model has been manufactured by Seegson in a cheaper frame than most modern photocopiers . It uses more primitive copying technology resulting in more toner waste and less printing capabilities. Nonetheless, its cheap construction means cheaper costs."
+	desc = "A photocopier used for copying... you know, photos! Also useful for copying documents on paper. This specific model has been manufactured by Seegson in a cheaper frame than most modern photocopiers . It uses more primitive copying technology resulting in more toner waste and less printing capabilities. Nonetheless, its cheap construction means cheaper costs, and for people that only need to print a paper or two most of the time, it becomes cost-effective."
 	anchored = TRUE
 	density = TRUE
 	use_power = USE_POWER_IDLE
@@ -13,9 +13,9 @@
 	var/obj/item/paper/copy = null //what's in the copier!
 	var/obj/item/photo/photocopy = null
 	var/obj/item/paper_bundle/bundle = null
-	///how many copies to print
+	///how many copies to print!
 	var/copies = 1
-	///the toner capacity
+	//how much toner is left! woooooo~
 	var/toner = 45
 	///how many copies can be copied at once
 	var/maxcopies = 10 //how many copies can be copied at once- idea shamelessly stolen from bs12's copier!

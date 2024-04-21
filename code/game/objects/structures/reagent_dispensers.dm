@@ -146,7 +146,7 @@
 		else
 			to_chat(usr, SPAN_NOTICE("[src] is now filling"))
 		return TRUE
-	. = ..()
+	return ..()
 
 /obj/structure/reagent_dispensers/attackby(obj/item/hit_item, mob/living/user)
 	if(istype(hit_item, /obj/item/reagent_container))

@@ -374,8 +374,11 @@
 	if(!.)
 		return
 	flags_atom |= (USES_HEARING|USES_SEEING)
-	linked_cam.status = TRUE
-	linked_cam.forceMove(loc)
+	if(!linked_cam || QDELETED(linked_cam))
+		linked_cam = new(loc, src)
+	else
+		linked_cam.status = TRUE
+		linked_cam.forceMove(loc)
 	SEND_SIGNAL(src, COMSIG_BROADCAST_GO_LIVE)
 	to_chat(user, SPAN_NOTICE("[src] begins to buzz softly as you go live."))
 

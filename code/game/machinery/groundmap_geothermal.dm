@@ -201,6 +201,88 @@
 /obj/structure/machinery/power/geothermal/ex_act(severity, direction)
 	return FALSE //gameplay-wise these should really never go away
 
+/obj/structure/machinery/colony_electrified_fence_switch
+	name = "Colony electrified fence Switch"
+	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
+	icon_state = "panelnopower"
+	desc = "This switch controls the electrified fences. It only functions when there is power."
+	density = FALSE
+	anchored = TRUE
+	var/ispowered = FALSE
+	var/turned_on = 0 //has to be toggled in SOMEWHERE
+	use_power = USE_POWER_IDLE
+	unslashable = TRUE
+	unacidable = TRUE
+	var/list/fencelist = list() // This will save our list of electrified fences on the map
+	power_machine = TRUE
+
+/obj/structure/machinery/colony_electrified_fence_switch/Initialize(mapload, ...)
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/structure/machinery/colony_electrified_fence_switch/LateInitialize()
+	. = ..()
+	for(var/obj/structure/fence/electrified/fence in  GLOB.all_fences)
+		fencelist += fence
+		fence.fswitch = src
+	start_processing()
+
+/obj/structure/machinery/colony_electrified_fence_switch/Destroy()
+	for(var/obj/structure/fence/electrified/fence as anything in fencelist)
+		fence.fswitch = null
+	fencelist = null
+	return ..()
+
+/obj/structure/machinery/colony_electrified_fence_switch/update_icon()
+	if(!ispowered)
+		icon_state = "panelnopower"
+	else if(turned_on)
+		icon_state = "panelon"
+	else
+		icon_state = "paneloff"
+
+/obj/structure/machinery/colony_electrified_fence_switch/process()
+	var/lightpower = 0
+//	for(var/obj/structure/machinery/colony_floodlight/floodlight as anything in floodlist)
+//		if(!floodlight.is_lit)
+//			continue
+//		lightpower += floodlight.power_tick
+	use_power(lightpower)
+
+/obj/structure/machinery/colony_electrified_fence_switch/power_change()
+	..()
+	if((stat & NOPOWER))
+		if(ispowered && turned_on)
+			toggle_lights()
+		ispowered = FALSE
+		turned_on = FALSE
+		update_icon()
+	else
+		ispowered = TRUE
+		update_icon()
+
+/obj/structure/machinery/colony_electrified_fence_switch/proc/toggle_lights()
+	for(var/obj/structure/fence/electrified/fence as anything in fencelist)
+		fence.toggle_power()
+
+/obj/structure/machinery/colony_electrified_fence_switch/attack_hand(mob/user as mob)
+	if(!ishuman(user))
+		to_chat(user, "Nice try.")
+		return FALSE
+	if(!ispowered)
+		to_chat(user, "Nothing happens.")
+		return FALSE
+	playsound(src,'sound/items/Deconstruct.ogg', 30, 1)
+	use_power(5)
+	toggle_lights()
+	turned_on = !turned_on
+	update_icon()
+	return TRUE
+
+
+
+
+
 //Putting these here since it's power-related
 /obj/structure/machinery/colony_floodlight_switch
 	name = "Colony Floodlight Switch"

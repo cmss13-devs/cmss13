@@ -1,0 +1,6 @@
+author: "LC4492"
+delete-after: True
+changes:
+  - rscadd: "Adds a new, better variation of the normal photocopier."
+  - imageadd: "Adds a new sprite to the new photocopier variation and updates the sprites of both normal, and new photocopiers to look slightly better."
+  - maptweak: "Adds the new photocopiers to the CC and CL offices."

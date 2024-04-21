@@ -57,19 +57,19 @@
 		var/obj/vehicle/multitile/arc/arc_owner = owner
 		antenna_extended = arc_owner.antenna_deployed
 
-	var/image/I = image(icon = disp_icon, icon_state = "[disp_icon_state]_[antenna_extended ? "extended" : "cover"]_[is_broken ? "1" : "0"]", pixel_x = x_offset, pixel_y = y_offset, dir = new_dir)
+	var/image/antenna_img = image(icon = disp_icon, icon_state = "[disp_icon_state]_[antenna_extended ? "extended" : "cover"]_[is_broken ? "1" : "0"]", pixel_x = x_offset, pixel_y = y_offset, dir = new_dir)
 	switch(round((health / initial(health)) * 100))
 		if(0 to 20)
-			I.color = "#4e4e4e"
+			antenna_img.color = "#4e4e4e"
 		if(21 to 40)
-			I.color = "#6e6e6e"
+			antenna_img.color = "#6e6e6e"
 		if(41 to 60)
-			I.color = "#8b8b8b"
+			antenna_img.color = "#8b8b8b"
 		if(61 to 80)
-			I.color = "#bebebe"
+			antenna_img.color = "#bebebe"
 		else
-			I.color = null
-	return I
+			antenna_img.color = null
+	return antenna_img
 
 /obj/item/hardpoint/support/arc_antenna/can_be_removed(mob/remover)
 	var/obj/vehicle/multitile/arc/arc_owner = owner

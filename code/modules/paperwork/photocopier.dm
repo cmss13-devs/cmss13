@@ -3,7 +3,7 @@
 	name = "photocopier"
 	icon = 'icons/obj/structures/machinery/library.dmi'
 	icon_state = "bigscanner"
-	desc = "A photocopier used for copying... you know, photos! Also useful for copying documents in paper. This specific model have been manufactured by Seegson in a cheaper frame than most modern photocopiers, while also holding more primitive copying technology, such as more toner waste and less printing capabilities. Nonetheless, its cheap construction means cheaper costs, and for people that only need to print a paper or two most of the time, it becomes cost-effective."
+	desc = "A photocopier used for copying... you know, photos! Also useful for copying documents on paper. This specific model has been manufactured by Seegson in a cheaper frame than most modern photocopiers . It uses more primitive copying technology resulting in more toner waste and less printing capabilities. Nonetheless, its cheap construction means cheaper costs."
 	anchored = TRUE
 	density = TRUE
 	use_power = USE_POWER_IDLE

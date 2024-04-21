@@ -107,7 +107,7 @@
 	pixel_x = -496
 	pixel_y = -496
 
-/obj/effect/shockwave/Initialize(mapload, radius, speed, easing_type, y_offset, x_offset)
+/obj/effect/shockwave/Initialize(mapload, radius, speed, easing_type = LINEAR_EASING, y_offset, x_offset)
 	. = ..()
 	if(!speed)
 		speed = 1

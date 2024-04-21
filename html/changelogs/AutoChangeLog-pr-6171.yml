@@ -1,0 +1,4 @@
+author: "iloveloopers"
+delete-after: True
+changes:
+  - bugfix: "custom flamer fuels no longer work for increasing OT assembly's caps"

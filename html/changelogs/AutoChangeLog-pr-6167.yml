@@ -1,0 +1,4 @@
+author: "Zonespace27"
+delete-after: True
+changes:
+  - admin: "Unmarked tickets now mark themselves when an admin starts responding to one"

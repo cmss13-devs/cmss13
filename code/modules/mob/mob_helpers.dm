@@ -342,7 +342,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	return FALSE
 
 
-/mob/proc/abiotic(full_body = 0)
+/mob/proc/abiotic(full_body = FALSE)
 	if(full_body && ((src.l_hand && !( src.l_hand.flags_item & ITEM_ABSTRACT )) || (src.r_hand && !( src.r_hand.flags_item & ITEM_ABSTRACT )) || (src.back || src.wear_mask)))
 		return TRUE
 

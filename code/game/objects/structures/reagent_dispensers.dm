@@ -142,9 +142,9 @@
 	if(mods["alt"])
 		dispensing = !dispensing
 		if(dispensing)
-			to_chat(usr, SPAN_NOTICE("[src] is now dispensing"))
+			to_chat(user, SPAN_NOTICE("[src] is now dispensing"))
 		else
-			to_chat(usr, SPAN_NOTICE("[src] is now filling"))
+			to_chat(user, SPAN_NOTICE("[src] is now filling"))
 		return TRUE
 	return ..()
 

@@ -245,6 +245,7 @@ GLOBAL_LIST_INIT(all_fences, list())
 	var/electrified = FALSE
 	var/fswitch
 	throwpass = TRUE
+	unacidable = TRUE
 
 /obj/structure/fence/electrified/update_nearby_icons()
 	return
@@ -270,16 +271,17 @@ GLOBAL_LIST_INIT(all_fences, list())
 	GLOB.all_fences -= src
 
 /obj/structure/fence/electrified/attackby(obj/item/W, mob/user)
-	if(istype(user, /mob/living/carbon/human))
-		var/mob/living/carbon/human/human = user
-		if(human.gloves)
-			var/obj/item/clothing/gloves/G = human.gloves
-			if(G.siemens_coefficient != 0)
+	if(src.electrified && !src.cut)
+		if(istype(user, /mob/living/carbon/human))
+			var/mob/living/carbon/human/human = user
+			if(human.gloves)
+				var/obj/item/clothing/gloves/G = human.gloves
+				if(G.siemens_coefficient != 0)
+					human.apply_effect(1,STUN)
+					user.apply_effect(1,PARALYZE)
+			else
 				human.apply_effect(1,STUN)
-				user.apply_effect(1,PARALYZE)
-		else
-			human.apply_effect(1,STUN)
-			human.apply_effect(1,PARALYZE)
+				human.apply_effect(1,PARALYZE)
 	. = ..()
 
 

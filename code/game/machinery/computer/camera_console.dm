@@ -34,6 +34,7 @@
 
 /obj/structure/machinery/computer/cameras/Destroy()
 	SStgui.close_uis(src)
+	current = null
 	UnregisterSignal(src, COMSIG_CAMERA_MAPNAME_ASSIGNED)
 	last_camera_turf = null
 	concurrent_users = null

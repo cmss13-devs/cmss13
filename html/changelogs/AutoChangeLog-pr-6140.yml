@@ -1,5 +1,0 @@
-author: "Git-Nivrak"
-delete-after: True
-changes:
-  - bugfix: "You can no longer infinitely extend  facehugger's lifetime by REDACTED"
-  - balance: "Lessers now lose 5 hp every 2 seconds off weeds"

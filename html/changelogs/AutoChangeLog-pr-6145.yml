@@ -1,5 +1,0 @@
-author: "Ben10083"
-delete-after: True
-changes:
-  - rscadd: "Synthetics when shoved into meat gibber will not be delimbed and spawn their own flesh, but would not die (they are spat out as a torso and head)"
-  - admin: "Adjustment to meatgibber code to notify admins when a synthetic is being shoved into gibber"

@@ -278,3 +278,24 @@
   - rscadd: adds new flamer fuel type, stabilized metallic foam
   - rscadd: Incinerator tanks can now hold stabilized metallic foam
   - balance: High-Combustion napalm fuel is now easier to see on the ground
+2024-04-21:
+  567Turtle:
+  - balance: ' SO can now do basic surgeries'
+  Ben10083:
+  - rscadd: Synthetics when shoved into meat gibber will not be delimbed and spawn
+      their own flesh, but would not die (they are spat out as a torso and head)
+  - admin: Adjustment to meatgibber code to notify admins when a synthetic is being
+      shoved into gibber
+  Git-Nivrak:
+  - bugfix: You can no longer infinitely extend  facehugger's lifetime by REDACTED
+  - balance: Lessers now lose 5 hp every 2 seconds off weeds
+  - bugfix: Fixed a bug which made boilers go way faster than they should
+  LTNTS:
+  - rscadd: Adds Command Tablets to Provost Marshal+
+  iloveloopers:
+  - bugfix: White phosphorus will no longer forcefully set a mob's fire_reagent to
+      be UT napthal
+  realforest2001:
+  - rscadd: Added an ARES Log for chambering the OB Cannon.
+  vero5123:
+  - bugfix: toggling ghost vision now keeps the user's mob visible.

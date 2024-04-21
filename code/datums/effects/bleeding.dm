@@ -72,7 +72,9 @@
 				blood_loss -= THWEI_BLOOD_REDUCTION
 
 			if(affected_mob.bodytemperature < T0C && (affected_mob.reagents.get_reagent_amount("cryoxadone") || affected_mob.reagents.get_reagent_amount("clonexadone")))
-				blood_loss -= CRYO_BLOOD_REDUCTION
+				var/obj/structure/machinery/cryo_cell/cryo = affected_mob.loc
+				if(istype(cryo) && cryo.on && cryo.operable())
+					blood_loss -= CRYO_BLOOD_REDUCTION
 
 			var/mob/living/carbon/human/affected_human = affected_mob
 			if(istype(affected_human))

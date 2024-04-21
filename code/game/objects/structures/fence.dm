@@ -233,3 +233,37 @@
 		health -= round(exposed_volume / 100)
 		healthcheck(0) //Don't make hit sounds, it's dumb with fire/heat
 	..()
+
+GLOBAL_LIST_INIT(all_fences, list())
+
+/obj/structure/fence/electrified
+	name = "electrified fence "
+	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
+	icon_state = "highvoltagegrille"
+	basestate = "highvoltagegrille"
+	var/electrified = FALSE
+	var/fswitch
+
+/obj/structure/fence/electrified/update_nearby_icons()
+	return
+
+/obj/structure/fence/update_icon()
+	if(cut)
+		icon_state = "[basestate]_broken"
+	else
+		icon_state = "[basestate]"
+
+/obj/structure/fence/electrified/proc/toggle_power()
+    if(electrified)
+        electrified = FALSE
+    else
+        electrified = TRUE
+
+/obj/structure/fence/electrified/Initialize()
+	..()
+	GLOB.all_fences += src
+
+/obj/structure/fence/electrified/Destroy()
+	..()
+	GLOB.all_fences -= src
+

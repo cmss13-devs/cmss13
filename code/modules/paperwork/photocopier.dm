@@ -13,7 +13,8 @@
 	var/obj/item/paper/copy = null //what's in the copier!
 	var/obj/item/photo/photocopy = null
 	var/obj/item/paper_bundle/bundle = null
-	var/copies = 1 //how many copies to print!
+	///how many copies to print
+	var/copies = 1
 	var/toner = 45 //how much toner is left! woooooo~
 	///how many copies can be copied at once
 	var/maxcopies = 10 //how many copies can be copied at once- idea shamelessly stolen from bs12's copier!

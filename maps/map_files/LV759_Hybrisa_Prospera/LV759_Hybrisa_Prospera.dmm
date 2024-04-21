@@ -41324,11 +41324,6 @@
 	dir = 10
 	},
 /area/lv759/outdoors/colony_streets/east_central_street)
-"hdo" = (
-/turf/closed/wall/hangar{
-	name = "reinforced metal wall"
-	},
-/area/lv759/outdoors/colony_streets/central_streets)
 "hdw" = (
 /obj/item/trash/cigbutt{
 	pixel_x = -10;
@@ -48716,11 +48711,6 @@
 	dir = 1
 	},
 /area/lv759/outdoors/colony_streets/north_street)
-"iqX" = (
-/turf/closed/wall/hangar{
-	name = "reinforced metal wall"
-	},
-/area/lv759/indoors/apartment_services/east)
 "iqY" = (
 /obj/structure/foamed_metal,
 /turf/closed/wall/hybrisa/colony,
@@ -69910,11 +69900,6 @@
 	},
 /turf/open/floor/corsat,
 /area/lv759/indoors/power_plant/gas_generators)
-"lRX" = (
-/turf/closed/wall/hangar{
-	name = "reinforced metal wall"
-	},
-/area/lv759/outdoors/colony_streets/north_west_street)
 "lRZ" = (
 /obj/structure/largecrate/random/secure{
 	layer = 2
@@ -107451,11 +107436,6 @@
 	icon_state = "ramptop"
 	},
 /area/lv759/landing_zone_1)
-"soz" = (
-/turf/closed/wall/hangar{
-	name = "reinforced metal wall"
-	},
-/area/lv759/indoors/bar/bathroom)
 "soJ" = (
 /obj/structure/barricade/handrail{
 	dir = 4
@@ -156668,7 +156648,7 @@ aGt
 aGt
 bDq
 xgU
-lRX
+bJS
 lRu
 xJb
 xJb
@@ -156920,7 +156900,7 @@ ilM
 agT
 kTK
 gHn
-lRX
+bJS
 ojf
 tFn
 gps
@@ -157424,7 +157404,7 @@ aGt
 aGt
 aGt
 ihG
-lRX
+bJS
 oeR
 ozZ
 ina
@@ -157676,7 +157656,7 @@ cdJ
 gKi
 jFK
 fTI
-lRX
+bJS
 ojf
 ozZ
 ina
@@ -160005,7 +159985,7 @@ lUy
 mcs
 mcs
 svD
-hdo
+tqx
 hnm
 lGw
 czX
@@ -160257,7 +160237,7 @@ kAz
 cLv
 rlD
 ntu
-hdo
+tqx
 xcZ
 nvP
 nJv
@@ -161517,7 +161497,7 @@ wYE
 gxF
 kSE
 svD
-hdo
+tqx
 wpg
 nvP
 nJv
@@ -161769,7 +161749,7 @@ scD
 kvA
 sUH
 ntu
-hdo
+tqx
 xcZ
 sBk
 nJv
@@ -163281,7 +163261,7 @@ xsr
 uZy
 peN
 ntu
-hdo
+tqx
 dds
 nvP
 hiS
@@ -163533,7 +163513,7 @@ rcP
 adl
 bPN
 cZo
-hdo
+tqx
 xcZ
 nvP
 aMp
@@ -166555,7 +166535,7 @@ viL
 viL
 aBT
 mqR
-iqX
+otG
 kvw
 lTV
 xcZ
@@ -166807,7 +166787,7 @@ vKP
 dxl
 otG
 otG
-iqX
+otG
 eCG
 lTV
 hZm
@@ -167059,7 +167039,7 @@ otG
 bDc
 aBT
 uzq
-iqX
+otG
 lqS
 lTV
 uoi
@@ -167311,7 +167291,7 @@ irX
 gbU
 otG
 otG
-iqX
+otG
 kaL
 tqx
 xcZ
@@ -167563,7 +167543,7 @@ nZY
 viL
 aBT
 uzq
-iqX
+otG
 eCG
 lTV
 xcZ
@@ -167815,7 +167795,7 @@ reS
 viL
 otG
 otG
-iqX
+otG
 uNP
 lTV
 xcZ
@@ -168067,7 +168047,7 @@ sLF
 viL
 oaZ
 onX
-iqX
+otG
 oDz
 lTV
 xcZ
@@ -172320,7 +172300,7 @@ sHN
 kAe
 xUM
 xUM
-soz
+xUM
 rvf
 oZn
 pYy
@@ -172572,7 +172552,7 @@ xUM
 xqN
 xUM
 qdW
-soz
+xUM
 obA
 bwC
 xcZ
@@ -172824,7 +172804,7 @@ xUM
 bUl
 xUM
 vqW
-soz
+xUM
 vNr
 coY
 qOb
@@ -173076,7 +173056,7 @@ bsm
 gSg
 azF
 ueG
-soz
+xUM
 dNb
 coY
 xcZ
@@ -174588,7 +174568,7 @@ vFO
 tmt
 buQ
 buQ
-soz
+xUM
 ohX
 coY
 xcZ
@@ -174840,7 +174820,7 @@ xUM
 vqW
 xUM
 vqW
-soz
+xUM
 dNb
 coY
 xcZ
@@ -175092,7 +175072,7 @@ xUM
 rbE
 xUM
 arR
-soz
+xUM
 lAU
 bwC
 xcZ
@@ -175344,7 +175324,7 @@ xUM
 fla
 xUM
 xUM
-soz
+xUM
 dNb
 cel
 qOb

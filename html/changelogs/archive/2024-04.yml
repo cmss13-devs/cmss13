@@ -299,3 +299,24 @@
   - rscadd: Added an ARES Log for chambering the OB Cannon.
   vero5123:
   - bugfix: toggling ghost vision now keeps the user's mob visible.
+2024-04-22:
+  Git-Nivrak:
+  - rscdel: Reverted back to old throw logic
+  GrrrKitten:
+  - rscadd: Adds shockwave VFX to powerful explosions
+  - rscadd: Adds shockwave VFX to Queen + Predalien screech
+  LC4492:
+  - rscadd: Adds a new, better variation of the normal photocopier.
+  - imageadd: Adds a new sprite to the new photocopier variation and updates the sprites
+      of both normal, and new photocopiers to look slightly better.
+  - maptweak: Adds the new photocopiers to the CC and CL offices.
+  Zonespace27:
+  - admin: Unmarked tickets now mark themselves when an admin starts responding to
+      one
+  harryob:
+  - bugfix: you can bind to space again
+  iloveloopers:
+  - bugfix: custom flamer fuels no longer work for increasing OT assembly's caps
+  realforest2001:
+  - bugfix: Delaying round start now shows on the timer again.
+  - rscadd: Added ID Modification Log to the Access Report printout from an ID Console.

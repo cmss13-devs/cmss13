@@ -177,6 +177,16 @@
 
 			. =  TRUE
 
+	else if(istype(target, /obj/structure/fence/electrified))
+		var/obj/structure/fence/electrified/fence = target
+		if (fence.cut)
+			. = FALSE
+		else
+			src.visible_message(SPAN_DANGER("[src] smashes into [fence]!"))
+			fence.cut = TRUE
+			fence.update_icon()
+			. = TRUE
+
 	// Anything else?
 	else
 		if (isobj(target))

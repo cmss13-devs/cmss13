@@ -267,8 +267,9 @@ GLOBAL_LIST_INIT(all_fences, list())
 	GLOB.all_fences += src
 
 /obj/structure/fence/electrified/Destroy()
-	..()
 	GLOB.all_fences -= src
+	..()
+
 
 /obj/structure/fence/electrified/attackby(obj/item/W, mob/user)
 	if(src.electrified && !src.cut)
@@ -283,9 +284,4 @@ GLOBAL_LIST_INIT(all_fences, list())
 				human.apply_effect(1,STUN)
 				human.apply_effect(1,PARALYZE)
 	. = ..()
-
-/obj/structure/fence/electrified/Destroy()
-	if(src.cut)
-		return
-	src.cut = TRUE
 

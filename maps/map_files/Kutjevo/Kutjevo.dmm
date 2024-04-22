@@ -13120,6 +13120,7 @@
 /area/kutjevo/exterior/lz_dunes)
 "rQa" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/obj/structure/medical_supply_link/green,
 /turf/open/floor/kutjevo/colors/cyan/inner_corner{
 	dir = 1
 	},

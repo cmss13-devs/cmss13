@@ -3395,8 +3395,8 @@
 /turf/open/floor/plating,
 /area/lv759/outdoors/caves/west_caves)
 "aFe" = (
-/obj/structure/grille{
-	color = "#3e3e3e"
+/obj/structure/fence/electrified{
+	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/caves/north_east_caves)
@@ -10862,7 +10862,7 @@
 "bVc" = (
 /obj/structure/sign/safety/high_voltage{
 	pixel_x = 7;
-	pixel_y = -32
+	pixel_y = -26
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -27320,9 +27320,7 @@
 	},
 /area/lv759/outdoors/caves/north_caves)
 "eKu" = (
-/obj/structure/grille{
-	color = "#3e3e3e"
-	},
+/obj/structure/fence/electrified,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/caves/east_caves)
 "eKE" = (
@@ -31936,12 +31934,12 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/sign/safety/high_voltage{
-	pixel_x = 7;
-	pixel_y = -32
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
+	},
+/obj/structure/sign/safety/high_voltage{
+	pixel_x = 7;
+	pixel_y = -26
 	},
 /turf/open/hybrisa/street/sidewalk,
 /area/lv759/outdoors/colony_streets/north_west_street)
@@ -33027,9 +33025,7 @@
 	},
 /area/lv759/indoors/garage_restroom)
 "fIp" = (
-/obj/structure/grille{
-	color = "#3e3e3e"
-	},
+/obj/structure/fence/electrified,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/caves/west_caves)
 "fIt" = (
@@ -38710,9 +38706,7 @@
 /area/lv759/indoors/meridian/meridian_factory)
 "gGY" = (
 /obj/structure/catwalk/prison,
-/obj/structure/grille{
-	color = "#3e3e3e"
-	},
+/obj/structure/fence/electrified,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/caves/north_west_caves)
 "gHc" = (
@@ -41147,6 +41141,11 @@
 "hbz" = (
 /obj/structure/machinery/light{
 	dir = 1
+	},
+/obj/structure/machinery/power/apc{
+	dir = 1;
+	pixel_y = 24;
+	start_charge = 0
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/electical_systems/substation1)
@@ -46127,9 +46126,7 @@
 "hRY" = (
 /obj/structure/catwalk/prison,
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/grille{
-	color = "#3e3e3e"
-	},
+/obj/structure/fence/electrified,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/caves/north_west_caves)
 "hSe" = (
@@ -71526,12 +71523,12 @@
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/outdoors/caves/central_caves)
 "mik" = (
-/obj/structure/sign/safety/high_voltage{
-	pixel_x = 7;
-	pixel_y = -32
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out"
+	},
+/obj/structure/sign/safety/high_voltage{
+	pixel_x = 7;
+	pixel_y = -26
 	},
 /turf/open/hybrisa/street/sidewalk,
 /area/lv759/outdoors/colony_streets/north_west_street)
@@ -76966,6 +76963,10 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_street)
+"nhG" = (
+/obj/structure/machinery/colony_electrified_fence_switch,
+/turf/closed/wall/hybrisa/colony/reinforced/hull,
+/area/lv759/oob)
 "nhI" = (
 /obj/item/device/flashlight/lamp/tripod,
 /obj/structure/sign/safety/restrictedarea{
@@ -116112,9 +116113,7 @@
 /obj/structure/catwalk/prison,
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/grille{
-	color = "#3e3e3e"
-	},
+/obj/structure/fence/electrified,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/caves/north_west_caves)
 "tOx" = (
@@ -132438,8 +132437,8 @@
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/outdoors/caves/north_east_caves)
 "wCD" = (
-/obj/structure/grille{
-	color = "#3e3e3e"
+/obj/structure/fence/electrified{
+	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/caves/central_caves)
@@ -144621,7 +144620,7 @@ unn
 unn
 unn
 hcI
-hcI
+nhG
 mTO
 hvQ
 dYo

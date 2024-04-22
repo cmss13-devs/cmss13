@@ -236,6 +236,8 @@
 
 GLOBAL_LIST_INIT(all_fences, list())
 
+
+// Hybrisa Electric Fence
 /obj/structure/fence/electrified
 	name = "electrified fence "
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
@@ -247,11 +249,11 @@ GLOBAL_LIST_INIT(all_fences, list())
 /obj/structure/fence/electrified/update_nearby_icons()
 	return
 
-/obj/structure/fence/update_icon()
-	if(cut)
-		icon_state = "[basestate]_broken"
-	else
-		icon_state = "[basestate]"
+/obj/structure/fence/electrified/update_icon()
+    if(cut)
+        icon_state = "[basestate]_broken"
+    else
+        icon_state = "[basestate]"
 
 /obj/structure/fence/electrified/proc/toggle_power()
     if(electrified)

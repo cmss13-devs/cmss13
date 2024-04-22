@@ -221,8 +221,9 @@
 	spawn(2)
 		if(!src) return
 		for(var/obj/structure/fence/W in orange(src, 1))
-			if(abs(x - W.x) - abs(y - W.y)) //Doesn't count grilles, placed diagonally to src
-				junction |= get_dir(src, W)
+			if(istypestrict(W,/obj/structure/fence ))
+				if(abs(x - W.x) - abs(y - W.y)) //Doesn't count grilles, placed diagonally to src
+					junction |= get_dir(src, W)
 		if(cut)
 			icon_state = "broken[basestate][junction]"
 		else
@@ -243,11 +244,13 @@ GLOBAL_LIST_INIT(all_fences, list())
 	basestate = "highvoltagegrille"
 	var/electrified = FALSE
 	var/fswitch
+	throwpass = TRUE
+	unacidable = TRUE
 
 /obj/structure/fence/electrified/update_nearby_icons()
 	return
 
-/obj/structure/fence/update_icon()
+/obj/structure/fence/electrified/update_icon()
 	if(cut)
 		icon_state = "[basestate]_broken"
 	else
@@ -266,4 +269,19 @@ GLOBAL_LIST_INIT(all_fences, list())
 /obj/structure/fence/electrified/Destroy()
 	..()
 	GLOB.all_fences -= src
+
+/obj/structure/fence/electrified/attackby(obj/item/W, mob/user)
+	if(src.electrified && !src.cut)
+		if(istype(user, /mob/living/carbon/human))
+			var/mob/living/carbon/human/human = user
+			if(human.gloves)
+				var/obj/item/clothing/gloves/G = human.gloves
+				if(G.siemens_coefficient != 0)
+					human.apply_effect(1,STUN)
+					user.apply_effect(1,PARALYZE)
+			else
+				human.apply_effect(1,STUN)
+				human.apply_effect(1,PARALYZE)
+	. = ..()
+
 

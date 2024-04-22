@@ -60,6 +60,16 @@
 	. += ..()
 
 /obj/item/reagent_container/pill/attack(mob/M, mob/user)
+	var/list/reagents_in_pill = list()
+	for(var/datum/reagent/R in reagents.reagent_list)
+		reagents_in_pill += R.name
+
+	if(("Nitrogen" in reagents_in_pill) && ("Water" in reagents_in_pill))
+		if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_DOCTOR))
+			to_chat(user, SPAN_WARNING("You aren't certified to use this chemical mix!"))
+			message_admins("[user.ckey] is dirty metagamer metaknowledge abuser, ban them immediately!", user.x, user.y, user.z)
+			return
+
 	if(M == user)
 		if(istype(M, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M
@@ -69,9 +79,6 @@
 
 		M.visible_message(SPAN_NOTICE("[user] swallows [src]."),
 		SPAN_HELPFUL("You swallow [src]."))
-		var/list/reagents_in_pill = list()
-		for(var/datum/reagent/R in reagents.reagent_list)
-			reagents_in_pill += R.name
 		var/contained = english_list(reagents_in_pill)
 		msg_admin_niche("[key_name(user)] swallowed [src] (REAGENTS: [contained]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 		M.drop_inv_item_on_ground(src) //icon update

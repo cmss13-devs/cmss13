@@ -1,0 +1,5 @@
+author: "Drulikar"
+delete-after: True
+changes:
+  - balance: "Cryotubes now also cure external bleeding"
+  - bugfix: "Fixed internal bleeding granting blood on its last tick"

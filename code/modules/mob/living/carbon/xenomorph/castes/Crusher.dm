@@ -183,8 +183,7 @@
 			. = FALSE
 		else
 			src.visible_message(SPAN_DANGER("[src] smashes into [fence]!"))
-			fence.cut = TRUE
-			fence.update_icon()
+			fence.cut_grille()
 			. = TRUE
 
 	// Anything else?

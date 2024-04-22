@@ -270,6 +270,14 @@ GLOBAL_LIST_INIT(all_fences, list())
 	GLOB.all_fences -= src
 	..()
 
+/obj/structure/fence/electrified/proc/electrocute_human(mob/living/carbon/human/electrocuted)
+	var/mob/living/carbon/human/human = electrocuted
+	human.apply_effect(1,STUN)
+	human.apply_effect(1,PARALYZE)
+	var/datum/effect_system/spark_spread/spark_system = new
+	spark_system.set_up(5, 0, src)
+	spark_system.attach(src)
+	spark_system.start(src)
 
 /obj/structure/fence/electrified/attackby(obj/item/W, mob/user)
 	if(src.electrified && !src.cut)
@@ -278,10 +286,10 @@ GLOBAL_LIST_INIT(all_fences, list())
 			if(human.gloves)
 				var/obj/item/clothing/gloves/G = human.gloves
 				if(G.siemens_coefficient != 0)
-					human.apply_effect(1,STUN)
-					user.apply_effect(1,PARALYZE)
+					src.electrocute_human(human)
 			else
-				human.apply_effect(1,STUN)
-				human.apply_effect(1,PARALYZE)
+				src.electrocute_human(human)
 	. = ..()
+
+
 

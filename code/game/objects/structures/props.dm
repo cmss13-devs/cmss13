@@ -2335,6 +2335,18 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 	icon = 'icons/obj/structures/props/zenith64x64_signs.dmi'
 	icon_state = "barsign_on"
 
+// Small Sign
+/obj/structure/prop/hybrisa/signs/high_voltage
+	name = "warning sign"
+	desc = "DANGER - HIGH VOLTAGE - DEATH!."
+	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
+	icon_state = "shockyBig"
+/obj/structure/prop/hybrisa/signs/high_voltage/small
+	name = "warning sign"
+	desc = "DANGER - HIGH VOLTAGE - DEATH!."
+	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
+	icon_state = "shockyTiny"
+
 // Airport
 
 /obj/structure/prop/hybrisa/airport

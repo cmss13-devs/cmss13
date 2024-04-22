@@ -544,6 +544,8 @@
 	if(!get_supply_link())
 		STOP_PROCESSING(SSslowobj, src)
 		return // Somehow we lost our link
+	if(inoperable())
+		return
 	if(world.time - SSticker.mode.round_time_lobby > 20 MINUTES)
 		restock_supplies()
 	restock_reagents()

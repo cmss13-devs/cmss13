@@ -325,7 +325,7 @@
 /turf/open/floor/almayer/aicore/glowing
 	icon_state = "ai_floor2"
 	light_color = "#d69c46"
-	light_range = 2
+	light_range = 3
 
 /turf/open/floor/almayer/aicore/glowing/Initialize(mapload, ...)
 	. = ..()

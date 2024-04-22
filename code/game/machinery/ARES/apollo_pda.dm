@@ -239,9 +239,9 @@
 		if("page_maintenance")
 			last_menu = current_menu
 			current_menu = "maint_claim"
-		if("page_core_gas")
+		if("page_core_sec")
 			last_menu = current_menu
-			current_menu = "core_security_gas"
+			current_menu = "core_security"
 
 		if("toggle_sound")
 			notify_sounds = !notify_sounds

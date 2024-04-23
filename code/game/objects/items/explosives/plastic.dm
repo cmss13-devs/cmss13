@@ -173,7 +173,7 @@
 	update_icon()
 
 /obj/item/explosive/plastic/proc/can_place(mob/user, atom/target)
-	if(istype(target, /obj/structure/ladder) || istype(target, /obj/item) || istype(target, /turf/open) || istype(target, /obj/structure/barricade) || istype(target, /obj/structure/closet/crate))
+	if(istype(target, /obj/structure/ladder) || istype(target, /obj/item) || istype(target, /turf/open) || istype(target, /obj/structure/barricade) || istype(target, /obj/structure/closet/crate) || istype(target, /obj/structure/bed/chair/wheelchair))
 		return FALSE
 
 	if(istype(target, /obj/structure/closet))

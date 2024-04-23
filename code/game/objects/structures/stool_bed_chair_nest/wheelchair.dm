@@ -114,7 +114,7 @@
 
 /obj/structure/bed/chair/wheelchair/attackby(obj/item/item, mob/user)
 	if(istype(item, /obj/item/stack/cable_coil))
-		if(has_wire == TRUE)
+		if(has_wire)
 			to_chat(user, SPAN_WARNING("[src] is already wired!"))
 			return
 		else
@@ -146,16 +146,15 @@
 				return
 
 /obj/structure/bed/chair/wheelchair/proc/ring(mob/user)
-	if(has_wire)
+	if(bomb)
 		playsound(src, 'sound/misc/desk_bell.ogg', 80)
 		if(first_ring)
 			first_ring = FALSE // so you don't blow up on the first ring
 			return
-		if(bomb)
-			if(prob(15)) // last chance to look at me hector
-				bomb.cause_data = create_cause_data("Explosive Wheelchair", user, src)
-				if(iscarbon(buckled_mob))
-					var/mob/living/carbon/human = buckled_mob
-					human.gib(create_cause_data("Explosive Wheelchair", user, src)) //no surviving this
-				bomb.forceMove(get_turf(src)) //move to the turf so that the explosive power isn't halved
-				bomb.prime(TRUE)
+		if(prob(15)) // last chance to look at me hector
+			bomb.cause_data = create_cause_data("Explosive Wheelchair", user, src)
+			if(iscarbon(buckled_mob))
+				var/mob/living/carbon/human = buckled_mob
+				human.gib(create_cause_data("Explosive Wheelchair", user, src)) //no surviving this
+			bomb.forceMove(get_turf(src)) //move to the turf so that the explosive power isn't halved
+			bomb.prime(TRUE)

@@ -51,18 +51,11 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/Initialize(timeofday)
 	load_mode()
 
-	login_music = pick("sound/lobby/darkday.ogg",
-						"sound/lobby/govnovoz.ogg",
-						"sound/lobby/hf2.ogg",
-						"sound/lobby/lv426.ogg",
-						"sound/lobby/mesa.ogg",
-						"sound/lobby/primovictoria.ogg",
-						"sound/lobby/prosvistela.ogg",
-						"sound/lobby/rome.ogg",
-						"sound/lobby/teardrop.ogg",
-						"sound/lobby/warrior.ogg",
-						"sound/lobby/skeleti.ogg",
-												)
+	var/all_music = CONFIG_GET(keyed_list/lobby_music)
+	var/key = SAFEPICK(all_music)
+	if(key)
+		login_music = file(all_music[key])
+
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/ticker/fire(resumed = FALSE)

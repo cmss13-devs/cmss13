@@ -30,6 +30,13 @@
 		return FALSE
 	return TRUE
 
+/obj/item/desk_bell/attack_self(mob/user)
+	if(user.buckled && HAS_TRAIT(user, TRAIT_USING_WHEELCHAIR))
+		var/obj/structure/bed/chair/wheelchair/chair = user.buckled
+		chair.ring(user)
+	return ..()
+
+
 /obj/item/desk_bell/MouseDrop(atom/over_object)
 	var/mob/mob = usr
 	if(!Adjacent(mob) || anchored)

@@ -138,7 +138,7 @@
 			return
 		else
 			var/obj/item/explosive/plastic/custom/explosive = item
-			to_chat(user, SPAN_BLUE("You start rigging [src] with [explosive.name]."))
+			to_chat(user, SPAN_BLUE("You start rigging [src] with [explosive.name]..."))
 			if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 				user.drop_held_item()
 				src.contents += explosive

@@ -504,6 +504,10 @@
 		M.apply_damage(100,BURN)
 		M.apply_effect(1,STUN)
 		M.apply_effect(1,PARALYZE)
+		var/datum/effect_system/spark_spread/spark_system = new
+		spark_system.set_up(5, 0, src)
+		spark_system.attach(src)
+		spark_system.start(src)
 	. = ..()
 
 

@@ -114,10 +114,11 @@
 
 /obj/structure/bed/chair/wheelchair/attackby(obj/item/item, mob/user)
 	if(istype(item, /obj/item/stack/cable_coil))
-		if(has_wire)
+		if(has_wire == TRUE)
 			to_chat(user, SPAN_WARNING("[src] is already wired!"))
 			return
 		else
+			to_chat(user, SPAN_BLUE("You start wiring the wheelchair..."))
 			if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 				var/obj/item/stack/cable_coil/wire = item //aaaahh... wire
 				if(wire.use(5))
@@ -136,8 +137,9 @@
 			to_chat(user, SPAN_WARNING("[src] must be wired for you to rig it with [item]!"))
 			return
 		else
+			var/obj/item/explosive/plastic/custom/explosive = item
+			to_chat(user, SPAN_BLUE("You start rigging [src] with [explosive.name]."))
 			if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
-				var/obj/item/explosive/plastic/custom/explosive = item
 				user.drop_held_item()
 				src.contents += explosive
 				bomb = explosive

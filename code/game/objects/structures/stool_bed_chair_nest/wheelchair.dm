@@ -152,10 +152,10 @@
 			first_ring = FALSE // so you don't blow up on the first ring
 			return
 		if(bomb)
-			if(prob(15))
+			if(prob(15)) // last chance to look at me hector
 				bomb.cause_data = create_cause_data("Explosive Wheelchair", user, src)
 				if(iscarbon(buckled_mob))
 					var/mob/living/carbon/human = buckled_mob
-					human.gib(create_cause_data("Explosive Wheelchair", user, src))
+					human.gib(create_cause_data("Explosive Wheelchair", user, src)) //no surviving this
 				bomb.forceMove(get_turf(src)) //move to the turf so that the explosive power isn't halved
 				bomb.prime(TRUE)

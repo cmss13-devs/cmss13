@@ -1419,3 +1419,79 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	hull = 1
 	icon_state = "strata_hull"
 	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
+
+// Offices
+/turf/closed/wall/hybrisa/colony/office/ribbed //this guy is our reinforced replacement
+	name = "ribbed metal walls"
+	icon = 'icons/turf/walls/hybrisa_offices_colonywall.dmi'
+	icon_state = "strata_ribbed_outpost_"
+	desc = "A thick and chunky metal wall covered in jagged ribs."
+	walltype = WALL_STRATA_OUTPOST_RIBBED
+	damage_cap = HEALTH_WALL_REINFORCED
+
+/turf/closed/wall/hybrisa/colony/office
+	name = "bare metal walls"
+	icon = 'icons/turf/walls/hybrisa_offices_colonywall.dmi'
+	icon_state = "strata_bare_outpost_"
+	desc = "A thick and chunky metal wall. The surface is barren and imposing."
+	walltype = WALL_STRATA_OUTPOST_BARE
+
+/turf/closed/wall/hybrisa/colony/office/reinforced
+	name = "ribbed metal walls"
+	icon_state = "strata_ribbed_outpost_"
+	desc = "A thick and chunky metal wall covered in jagged ribs."
+	walltype = WALL_STRATA_OUTPOST_RIBBED
+	damage_cap = HEALTH_WALL_REINFORCED
+
+/turf/closed/wall/hybrisa/colony/office/reinforced/hull
+	hull = 1
+	icon_state = "strata_hull"
+	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
+
+// Engineering
+/turf/closed/wall/hybrisa/colony/engineering/ribbed //this guy is our reinforced replacement
+	name = "ribbed metal walls"
+	icon = 'icons/turf/walls/hybrisa_engineering_wall.dmi'
+	icon_state = "strata_ribbed_outpost_"
+	desc = "A thick and chunky metal wall covered in jagged ribs."
+	walltype = WALL_STRATA_OUTPOST_RIBBED
+	damage_cap = HEALTH_WALL_REINFORCED
+
+/turf/closed/wall/hybrisa/colony/engineering
+	name = "bare metal walls"
+	icon = 'icons/turf/walls/hybrisa_engineering_wall.dmi'
+	icon_state = "strata_bare_outpost_"
+	desc = "A thick and chunky metal wall. The surface is barren and imposing."
+	walltype = WALL_STRATA_OUTPOST_BARE
+
+/turf/closed/wall/hybrisa/colony/engineering/reinforced
+	name = "ribbed metal walls"
+	icon_state = "strata_ribbed_outpost_"
+	desc = "A thick and chunky metal wall covered in jagged ribs."
+	walltype = WALL_STRATA_OUTPOST_RIBBED
+	damage_cap = HEALTH_WALL_REINFORCED
+
+/turf/closed/wall/hybrisa/colony/engineering/reinforced/hull
+	hull = 1
+	icon_state = "strata_hull"
+	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
+
+// Space-Port
+/turf/closed/wall/hybrisa/spaceport
+	name = "metal wall"
+	icon = 'icons/turf/walls/hybrisa_spaceport_walls.dmi'
+	icon_state = "metal"
+	walltype = WALL_METAL
+/turf/closed/wall/hybrisa/spaceport_reinforced
+	name = "reinforced metal wall"
+	icon = 'icons/turf/walls/hybrisa_spaceport_walls.dmi'
+	icon_state = "rwall"
+	walltype = WALL_REINFORCED
+
+/turf/closed/wall/hybrisa/spaceport_unmeltable
+	name = "heavy reinforced wall"
+	desc = "A huge chunk of ultra-reinforced metal used to separate rooms. Looks virtually indestructible."
+	icon = 'icons/turf/walls/hybrisa_spaceport_walls.dmi'
+	icon_state = "hwall"
+	walltype = WALL_REINFORCED
+	hull = 1

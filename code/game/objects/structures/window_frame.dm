@@ -364,3 +364,45 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
+// Offices
+
+/obj/structure/window_frame/hybrisa/colony/office
+	icon = 'icons/turf/walls/hybrisa_offices_windows.dmi'
+	icon_state = "strata_window0_frame"
+	basestate = "strata_window"
+/obj/structure/window_frame/hybrisa/colony/office/reinforced
+	icon_state = "strata_window0_frame"
+	basestate = "strata_window"
+	reinforced = TRUE
+/obj/structure/window_frame/hybrisa/colony/office/hull
+	icon_state = "strata_window0_frame"
+	basestate = "strata_window"
+	unslashable = TRUE
+	unacidable = TRUE
+
+// Engineering
+/obj/structure/window_frame/hybrisa/colony/engineering
+	icon = 'icons/turf/walls/hybrisa_engineering_windows.dmi'
+	icon_state = "strata_window0_frame"
+	basestate = "strata_window"
+/obj/structure/window_frame/hybrisa/colony/engineering/reinforced
+	icon_state = "strata_window0_frame"
+	basestate = "strata_window"
+	reinforced = TRUE
+/obj/structure/window_frame/hybrisa/colony/engineering/hull
+	icon_state = "strata_window0_frame"
+	basestate = "strata_window"
+	unslashable = TRUE
+	unacidable = TRUE
+
+// Space-Port
+/obj/structure/window_frame/hybrisa/spaceport
+	icon = 'icons/turf/walls/hybrisa_spaceport_windows.dmi'
+	icon_state = "prison_rwindow0_frame"
+	basestate = "prison_rwindow"
+
+/obj/structure/window_frame/hybrisa/spaceport/reinforced
+	icon = 'icons/turf/walls/hybrisa_spaceport_windows.dmi'
+	icon_state = "prison_rwindow0_frame"
+	basestate = "prison_rwindow"
+	reinforced = TRUE

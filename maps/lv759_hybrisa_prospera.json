@@ -5,7 +5,7 @@
 	"map_file": "LV759_Hybrisa_Prospera.dmm",
     "webmap_url": "LV759",
 
-    "weather_holder": "/datum/weather_ss_map_holder/lv522_chances_claim",
+    "weather_holder": "/datum/weather_ss_map_holder/lv759_hybrisa_prospera",
     "survivor_types": [
         "/datum/equipment_preset/survivor/forecon/standard"
     ],
@@ -22,12 +22,10 @@
         580,
         0.0
     ],
-    "survivor_message": "You are USCM Force Reconnaissance (FORECON) marine from the USS Hanyut, stranded on this planet after your team was wiped out while investigating the distress signal. With your pilot dead along with the majority of your unit, you and your team have been running and gunning to survive... but with supplies low and food running out maybe your only means of survival is to move west to the crashed dropship to salvage anything useful.",
-    "announce_text": "Pan-Pan. This is the commanding officer of the USS Hanyut, USCMC FORECON. We are currently grounded on planet LV-522 in the immediate area of Chance's Claim. We are unable to contact the Hanyut and our dropships are unable to take off at this time. We are requesting assistance from any nearby vessels; this broadcast is set to repeat every 24 hours.",
+    "survivor_message": "As the city burns, you find yourself among the dwindling few who survived the initial onslaught, The catastrophic breach shattered the once-prosperous world of LV-759, home to a large industrial Weyland-Yutani colony known as Hybrisa Prospera. Through sheer will or cunning, you've evaded the relentless alien onslaught so far... but the nightmare persists.",
     "map_item_type": "/obj/item/map/lv759_map",
 	"monkey_types": [
-        "neaera",
-        "stok"
+        "monkey"
     ],
     "environment_traits": { "Fog": true },
     "traits": [{ "Ground": true }],

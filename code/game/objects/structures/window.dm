@@ -1100,3 +1100,85 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	health = 1000000
+
+// Office
+
+/obj/structure/window/framed/hybrisa/colony/office
+	name = "window"
+	icon = 'icons/turf/walls/hybrisa_offices_windows.dmi'
+	icon_state = "strata_window0"
+	basestate = "strata_window"
+	desc = "A glass window inside a wall frame."
+	health = 40
+	window_frame = /obj/structure/window_frame/hybrisa/colony/office
+
+/obj/structure/window/framed/hybrisa/colony/office/reinforced
+	name = "reinforced window"
+	icon_state = "strata_window0"
+	basestate = "strata_window"
+	desc = "A glass window. Light refracts incorrectly when looking through. It looks rather strong. Might take a few good hits to shatter it."
+	health = 100
+	reinf = 1
+	window_frame = /obj/structure/window_frame/hybrisa/colony/office/reinforced
+
+/obj/structure/window/framed/hybrisa/colony/office/hull
+	icon_state = "strata_window0"
+	basestate = "strata_window"
+	desc = "A glass window. Something tells you this one is somehow indestructible."
+	not_damageable = TRUE
+	not_deconstructable = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	health = 1000000
+
+// Engineering
+
+/obj/structure/window/framed/hybrisa/colony/engineering
+	name = "window"
+	icon = 'icons/turf/walls/hybrisa_engineering_windows.dmi'
+	icon_state = "strata_window0"
+	basestate = "strata_window"
+	desc = "A glass window inside a wall frame."
+	health = 40
+	window_frame = /obj/structure/window_frame/hybrisa/colony/engineering
+
+/obj/structure/window/framed/hybrisa/colony/engineering/reinforced
+	name = "reinforced window"
+	icon_state = "strata_window0"
+	basestate = "strata_window"
+	desc = "A glass window. Light refracts incorrectly when looking through. It looks rather strong. Might take a few good hits to shatter it."
+	health = 100
+	reinf = 1
+	window_frame = /obj/structure/window_frame/hybrisa/colony/engineering/reinforced
+
+/obj/structure/window/framed/hybrisa/colony/engineering/hull
+	icon_state = "strata_window0"
+	basestate = "strata_window"
+	desc = "A glass window. Something tells you this one is somehow indestructible."
+	not_damageable = TRUE
+	not_deconstructable = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	health = 1000000
+
+// Space-Port
+
+/obj/structure/window/framed/hybrisa/spaceport
+	name = "window"
+	icon = 'icons/turf/walls/hybrisa_spaceport_windows.dmi'
+	icon_state = "prison_window0"
+	basestate = "prison_window"
+	window_frame = /obj/structure/window_frame/hybrisa/spaceport
+/obj/structure/window/framed/hybrisa/spaceport/reinforced
+	name = "reinforced window"
+	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."
+	health = 100
+	reinf = 1
+	icon_state = "prison_rwindow0"
+	basestate = "prison_rwindow"
+	window_frame = /obj/structure/window_frame/hybrisa/spaceport/reinforced
+/obj/structure/window/framed/hybrisa/spaceport/cell
+	name = "window"
+	icon_state = "prison_cellwindow0"
+	basestate = "prison_cellwindow"
+	desc = "A glass window with a special rod matrix inside a wall frame."

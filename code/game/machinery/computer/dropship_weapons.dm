@@ -464,10 +464,12 @@
 				return TRUE
 			var/datum/cas_signal/sig = get_cas_signal(camera_target_id)
 			if(!sig)
+				to_chat(user, SPAN_WARNING("No signal chosen."))
 				return FALSE
 			var/turf/location = get_turf(sig.signal_loc)
 			var/area/location_area = get_area(location)
 			if(CEILING_IS_PROTECTED(location_area.ceiling, CEILING_PROTECTION_TIER_1))
+				to_chat(user, SPAN_WARNING("Target is obscured."))
 				return FALSE
 			var/equipment_tag = params["equipment_id"]
 			for(var/obj/structure/dropship_equipment/equipment as anything in shuttle.equipments)

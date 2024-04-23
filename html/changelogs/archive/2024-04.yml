@@ -320,3 +320,7 @@
   realforest2001:
   - bugfix: Delaying round start now shows on the timer again.
   - rscadd: Added ID Modification Log to the Access Report printout from an ID Console.
+2024-04-23:
+  Drulikar:
+  - balance: Cryotubes now also cure external bleeding
+  - bugfix: Fixed internal bleeding granting blood on its last tick

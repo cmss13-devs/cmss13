@@ -8,6 +8,9 @@
 	var/bloodiness = 0
 	var/move_delay = 6
 
+	var/has_wire = null
+	var/obj/item/explosive/plastic/bomb = null
+	var/first_ring = TRUE
 
 /obj/structure/bed/chair/wheelchair/handle_rotation()
 	overlays.Cut()
@@ -108,3 +111,51 @@
 	if(ishuman(target) && ishuman(user))
 		ADD_TRAIT(target, TRAIT_USING_WHEELCHAIR, TRAIT_SOURCE_BUCKLE)
 	. = ..()
+
+/obj/structure/bed/chair/wheelchair/attackby(obj/item/item, mob/user)
+	if(istype(item, /obj/item/stack/cable_coil))
+		if(has_wire == TRUE)
+			to_chat(user, SPAN_WARNING("[src] is already wired!"))
+			return
+		else
+			if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
+				var/obj/item/stack/cable_coil/wire = item //aaaahh... wire
+				if(wire.use(5))
+					has_wire = TRUE
+					to_chat(user, SPAN_BLUE("You wire [src] with the cable coil."))
+					return
+				else
+					to_chat(user, SPAN_WARNING("You need at least 5 pieces of cable coil to wire [src]!"))
+					return
+
+	if(istype(item, /obj/item/explosive/plastic/custom))
+		if(bomb)
+			to_chat(user, SPAN_WARNING("[src] is already rigged with an explosive!"))
+			return
+		if(!has_wire)
+			to_chat(user, SPAN_WARNING("[src] must be wired for you to rig it with [item]!"))
+			return
+		else
+			if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
+				var/obj/item/explosive/plastic/custom/explosive = item
+				user.drop_held_item()
+				src.contents += explosive
+				bomb = explosive
+				to_chat(user, SPAN_BLUE("You rig [src] with [explosive.name]."))
+				msg_admin_niche("[key_name(user, user.client)] rigged [explosive.name] on [src.name] at ([src.x],[src.y],[src.z] [ADMIN_JMP(src)]") //1984
+				return
+
+/obj/structure/bed/chair/wheelchair/proc/ring(mob/user)
+	if(has_wire)
+		playsound(src, 'sound/misc/desk_bell.ogg', 80)
+		if(first_ring)
+			first_ring = FALSE // so you don't blow up on the first ring
+			return
+		if(bomb)
+			if(prob(15))
+				bomb.cause_data = create_cause_data("Explosive Wheelchair", user, src)
+				if(iscarbon(buckled_mob))
+					var/mob/living/carbon/human = buckled_mob
+					human.gib(create_cause_data("Explosive Wheelchair", user, src))
+				bomb.forceMove(get_turf(src)) //move to the turf so that the explosive power isn't halved
+				bomb.prime(TRUE)

@@ -38,6 +38,10 @@
 	name = "\improper Dock Red - Space Port(Open)"
 	soundscape_playlist = SCAPE_PL_DESERT_STORM
 
+/area/dockred/outside/port_outside/landing_zone
+	is_landing_zone = TRUE
+	is_resin_allowed = FALSE
+
 /area/dockred/outside/bar
 	name = "\improper Dock Red - Bar"
 	icon_state = "bar"

@@ -4,17 +4,17 @@
 	var/behavior = UPGRADE_EXCLUDE_BUY // should this be on the list? whatever.
 	var/value_upgrade = 1000 // the price of the upgrade, refer to this : 1
 	var/item_reference // actual path to the item.
-	var/upgrade_type //which tab
+	var/upgrade_type = ITEM_MISC_UPGRADE //which tab
 
 /datum/research_upgrades/machinery
 	name = "Machinery"
-	desc = "todo"
 	behavior = UPGRADE_CATEGORY // one on the dropdown choices you get
 
 /datum/research_upgrades/machinery/autodoc
 	name = "AutoDoc Upgrade"
 	behavior = UPGRADE_EXCLUDE_BUY
 	item_reference = /obj/item/research_upgrades/autodoc
+	upgrade_type = ITEM_MACHINERY_UPGRADE
 
 /datum/research_upgrades/machinery/autodoc/internal_bleed
 	name = "AutoDoc Internal Bleeding Repair"
@@ -40,6 +40,7 @@
 	behavior = UPGRADE_TIER_4
 	value_upgrade = 8000
 
+
 /datum/research_upgrades/machinery/sleeper
 	name = "Sleeper Upgrade"
 	desc = "Research upgrade for Sleeper system, Technology on this disk is used on a sleeper to allow wider spectrum of chemicals to be administered, as well as upgrading diaslisys software."
@@ -58,6 +59,7 @@
 	value_upgrade = 2000
 	item_reference = /obj/item/research_upgrades/credits
 	behavior = UPGRADE_TIER_1
+	upgrade_type = ITEM_ACCESSORY_UPGRADE
 
 
 

@@ -1,6 +1,6 @@
 /obj/structure/machinery/xenoanalyzer
 	name = "Biomass Analyzer"
-	desc = "todo"
+	desc = "Analyzer of biological material which processes valuable matter into even more valueble data."
 	density = TRUE
 	anchored = TRUE
 	icon = 'icons/obj/structures/machinery/science_machines.dmi'
@@ -55,31 +55,23 @@
 /obj/structure/machinery/xenoanalyzer/ui_static_data(mob/user)
 	var/list/static_data = list()
 	static_data["upgrades"] = list()
+	static_data["categories"] = list()
 	for(var/upgrade_type in subtypesof(/datum/research_upgrades))
-		to_world("Ayo")
 		var/datum/research_upgrades/upgrade = upgrade_type
-		if(upgrade.behavior == UPGRADE_CATEGORY || upgrade.behavior == UPGRADE_EXCLUDE_BUY)
-			to_world(upgrade)
+		if(upgrade.behavior == UPGRADE_CATEGORY)
+			static_data["categories"] += upgrade.name
 			continue
-		to_world(upgrade)
-		to_world("oh2")
-		var/upgrade_name = (capitalize_first_letters(upgrade.name))
-		var/upgrade_price = (upgrade.value_upgrade)
-		to_world("oh12")
-		var/upgrade_desc = (initial(upgrade.desc))
-		to_world("oh1")
-		var/item = initial(upgrade.item_reference)
-		to_world(initial(upgrade.item_reference))
-		to_world(upgrade_name + "asd")
+		if(upgrade.behavior == UPGRADE_EXCLUDE_BUY)
+			continue
 		static_data["upgrades"] += list(list(
-			"name" = upgrade_name,
-			"desc" = upgrade_desc,
+			"name" = capitalize_first_letters(upgrade.name),
+			"desc" = capitalize_first_letters(upgrade.desc),
 			"vari" = upgrade.behavior,
-			"cost" = upgrade_price,
-			"ref" = item,
+			"cost" = upgrade.value_upgrade,
+			"ref" = initial(upgrade.item_reference),
 			"category" = initial(upgrade.upgrade_type)
 		))
-		to_world(item)
+		to_world(initial(upgrade.upgrade_type))
 	return static_data
 
 /obj/structure/machinery/xenoanalyzer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)

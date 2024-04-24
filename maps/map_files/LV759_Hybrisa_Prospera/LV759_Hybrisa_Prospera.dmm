@@ -3621,9 +3621,11 @@
 /obj/structure/fence{
 	icon = 'icons/obj/structures/props/electric_fence.dmi'
 	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "cell_stripe"
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/hybrisa/metal/stripe_red{
+	dir = 1
 	},
 /area/lv759/outdoors/caves/north_west_caves_outdoors)
 "aGp" = (
@@ -13111,9 +13113,12 @@
 /obj/structure/fence{
 	icon = 'icons/obj/structures/props/electric_fence.dmi'
 	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "cell_stripe"
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/turf/open/floor/hybrisa/metal/stripe_red{
+	dir = 4
 	},
 /area/lv759/indoors/caves/north_east_caves)
 "cnY" = (
@@ -24906,6 +24911,15 @@
 	dir = 1
 	},
 /area/lv759/outdoors/colony_streets/south_east_street)
+"ekB" = (
+/obj/structure/platform/hybrisa/metalplatform2{
+	dir = 4
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/oob)
 "ekD" = (
 /obj/structure/bed/chair{
 	icon_state = "chair_alt";
@@ -26972,9 +26986,11 @@
 /obj/structure/fence{
 	icon = 'icons/obj/structures/props/electric_fence.dmi'
 	},
-/turf/open/floor/prison{
-	icon_state = "cell_stripe"
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33
 	},
+/turf/open/floor/hybrisa/metal/stripe_red,
 /area/lv759/indoors/caves/north_west_caves)
 "eEK" = (
 /obj/structure/sign/safety/high_voltage{
@@ -31228,13 +31244,11 @@
 	},
 /area/lv759/indoors/caves/north_west_caves)
 "fpT" = (
-/obj/structure/platform/hybrisa/metalplatform2{
-	dir = 4
-	},
 /obj/structure/stairs{
 	color = "#b7b8b2";
 	dir = 1
 	},
+/obj/structure/platform_decoration/hybrisa/metalplatformdeco2,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate"
@@ -32828,9 +32842,11 @@
 /obj/structure/fence{
 	icon = 'icons/obj/structures/props/electric_fence.dmi'
 	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "cell_stripe"
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/hybrisa/metal/stripe_red{
+	dir = 1
 	},
 /area/lv759/outdoors/caves/north_west_caves_outdoors)
 "fEi" = (
@@ -33487,8 +33503,8 @@
 /area/whiskey_outpost/inside/caves)
 "fKI" = (
 /obj/structure/platform/hybrisa/rockdark,
-/obj/structure/platform_decoration{
-	dir = 8
+/obj/structure/platform{
+	dir = 4
 	},
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/outdoors/caves/north_west_caves_outdoors)
@@ -34294,9 +34310,11 @@
 /obj/structure/fence{
 	icon = 'icons/obj/structures/props/electric_fence.dmi'
 	},
-/turf/open/floor/prison{
-	icon_state = "cell_stripe"
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33
 	},
+/turf/open/floor/hybrisa/metal/stripe_red,
 /area/lv759/indoors/caves/north_west_caves)
 "fSm" = (
 /obj/structure/platform_decoration/hybrisa/rockdark{
@@ -39488,9 +39506,11 @@
 /obj/structure/fence{
 	icon = 'icons/obj/structures/props/electric_fence.dmi'
 	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "cell_stripe"
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/hybrisa/metal/stripe_red{
+	dir = 1
 	},
 /area/lv759/indoors/caves/east_caves)
 "gKp" = (
@@ -40315,12 +40335,6 @@
 	icon_state = "officetiles"
 	},
 /area/lv759/indoors/colonial_marshals/armory_firingrange)
-"gRj" = (
-/obj/structure/platform_decoration/hybrisa/metalplatformdeco2,
-/turf/open/auto_turf/sand_white/layer0{
-	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
-	},
-/area/lv759/outdoors/caves/north_west_caves_outdoors)
 "gRk" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mgibbl4"
@@ -44701,6 +44715,10 @@
 	color = "#a6aeab";
 	dir = 4
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"
@@ -46593,9 +46611,11 @@
 /obj/structure/fence{
 	icon = 'icons/obj/structures/props/electric_fence.dmi'
 	},
-/turf/open/floor/prison{
-	icon_state = "cell_stripe"
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33
 	},
+/turf/open/floor/hybrisa/metal/stripe_red,
 /area/lv759/indoors/caves/west_caves)
 "hSo" = (
 /obj/structure/closet/crate/construction,
@@ -59394,9 +59414,11 @@
 /obj/structure/fence{
 	icon = 'icons/obj/structures/props/electric_fence.dmi'
 	},
-/turf/open/floor/prison{
-	icon_state = "cell_stripe"
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33
 	},
+/turf/open/floor/hybrisa/metal/stripe_red,
 /area/lv759/outdoors/caves/north_west_caves_outdoors)
 "kcx" = (
 /turf/open/floor/prison,
@@ -59524,9 +59546,11 @@
 /obj/structure/fence{
 	icon = 'icons/obj/structures/props/electric_fence.dmi'
 	},
-/turf/open/floor/prison{
-	icon_state = "cell_stripe"
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33
 	},
+/turf/open/floor/hybrisa/metal/stripe_red,
 /area/lv759/outdoors/caves/north_west_caves_outdoors)
 "kdY" = (
 /obj/structure/extinguisher_cabinet{
@@ -61311,12 +61335,6 @@
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/mining_outpost/north)
-"krx" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
-/turf/closed/wall/hybrisa/colony/reinforced/hull,
-/area/lv759/oob)
 "krF" = (
 /obj/effect/decal/cleanable/vomit{
 	icon_state = "vomit_4"
@@ -72673,9 +72691,11 @@
 /obj/structure/fence{
 	icon = 'icons/obj/structures/props/electric_fence.dmi'
 	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "cell_stripe"
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/hybrisa/metal/stripe_red{
+	dir = 1
 	},
 /area/lv759/indoors/caves/north_west_caves)
 "mmb" = (
@@ -73265,6 +73285,9 @@
 "mrx" = (
 /obj/structure/platform/hybrisa/metalplatform2{
 	dir = 4
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/caves/north_west_caves_outdoors)
@@ -78818,9 +78841,12 @@
 /obj/structure/fence{
 	icon = 'icons/obj/structures/props/electric_fence.dmi'
 	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "cell_stripe"
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33
+	},
+/turf/open/floor/hybrisa/metal/stripe_red{
+	dir = 8
 	},
 /area/lv759/indoors/caves/north_east_caves)
 "nrO" = (
@@ -82224,6 +82250,11 @@
 "nXx" = (
 /obj/structure/stairs{
 	color = "#a6aeab"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_x = -1;
+	pixel_y = 2
 	},
 /turf/open/auto_turf/sand_white/layer0{
 	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
@@ -98267,9 +98298,12 @@
 /obj/structure/fence{
 	icon = 'icons/obj/structures/props/electric_fence.dmi'
 	},
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "cell_stripe"
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33
+	},
+/turf/open/floor/hybrisa/metal/stripe_red{
+	dir = 8
 	},
 /area/lv759/indoors/caves/central_caves)
 "qEN" = (
@@ -99980,9 +100014,12 @@
 /obj/structure/fence{
 	icon = 'icons/obj/structures/props/electric_fence.dmi'
 	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "cell_stripe"
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/turf/open/floor/hybrisa/metal/stripe_red{
+	dir = 4
 	},
 /area/lv759/indoors/caves/north_east_caves)
 "qSm" = (
@@ -113463,9 +113500,11 @@
 /obj/structure/fence{
 	icon = 'icons/obj/structures/props/electric_fence.dmi'
 	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "cell_stripe"
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/hybrisa/metal/stripe_red{
+	dir = 1
 	},
 /area/lv759/indoors/caves/west_caves)
 "tdG" = (
@@ -113673,9 +113712,11 @@
 /obj/structure/fence{
 	icon = 'icons/obj/structures/props/electric_fence.dmi'
 	},
-/turf/open/floor/prison{
-	icon_state = "cell_stripe"
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33
 	},
+/turf/open/floor/hybrisa/metal/stripe_red,
 /area/lv759/indoors/caves/east_caves)
 "tfw" = (
 /obj/structure/platform/hybrisa/rockdark{
@@ -115828,9 +115869,12 @@
 /obj/structure/fence{
 	icon = 'icons/obj/structures/props/electric_fence.dmi'
 	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "cell_stripe"
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/turf/open/floor/hybrisa/metal/stripe_red{
+	dir = 4
 	},
 /area/lv759/indoors/caves/central_caves)
 "tBv" = (
@@ -136891,9 +136935,11 @@
 /obj/structure/fence{
 	icon = 'icons/obj/structures/props/electric_fence.dmi'
 	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "cell_stripe"
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/hybrisa/metal/stripe_red{
+	dir = 1
 	},
 /area/lv759/indoors/caves/north_west_caves)
 "xdJ" = (
@@ -143960,9 +144006,11 @@
 /obj/structure/fence{
 	icon = 'icons/obj/structures/props/electric_fence.dmi'
 	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "cell_stripe"
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/hybrisa/metal/stripe_red{
+	dir = 1
 	},
 /area/lv759/outdoors/caves/north_west_caves_outdoors)
 "ylD" = (
@@ -154661,7 +154709,7 @@ bta
 bta
 rQG
 bta
-gRj
+rQG
 fpT
 mrx
 mrx
@@ -154669,7 +154717,7 @@ mrx
 mrx
 mrx
 mrx
-unn
+ekB
 unn
 unn
 unn
@@ -189041,7 +189089,7 @@ unn
 unn
 tNd
 jvG
-krx
+hcI
 hcI
 hcI
 hcI

@@ -6,9 +6,6 @@
 	var/item_reference // actual path to the item.
 	var/upgrade_type //which tab
 
-/datum/research_upgrades/proc/get_upgrade_desc(value) // get value-specific upgrade defines, only needed when you're planning to add more than one of simular upgrades. like one below
-	return
-
 /datum/research_upgrades/machinery
 	name = "Machinery"
 	desc = "todo"

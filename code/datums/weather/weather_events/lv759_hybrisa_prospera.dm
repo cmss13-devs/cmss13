@@ -34,4 +34,4 @@
 	effect_message = null
 	damage_per_tick = 0
 
-	ambience = 'sound/ambience/rainandthunderlong_quiet.ogg'
+	ambience = 'sound/ambience/rainandthunderlong.ogg'

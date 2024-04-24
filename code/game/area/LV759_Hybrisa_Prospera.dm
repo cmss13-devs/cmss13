@@ -1,4 +1,4 @@
-//lv759 AREAS--------------------------------------//cabv
+//lv759 AREAS--------------------------------------//
 
 /area/lv759
 	name = "Hybrisa Prospera"
@@ -16,12 +16,12 @@
 	ceiling = CEILING_METAL
 	soundscape_playlist = SCAPE_PL_LV522_INDOORS
 
-
 /area/lv759/outdoors
 	name = "Hybrisa - Outdoors"
 	icon_state = "cliff_blocked"//because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
 	ceiling = CEILING_NONE
 	soundscape_playlist = SCAPE_PL_LV759_OUTDOORS
+
 /area/lv759/oob
 	name = "Out Of Bounds"
 	icon_state = "oob"
@@ -80,36 +80,39 @@
 //Outdoors areas
 
 // Caves
-/area/lv759/outdoors/caves
+/area/lv759/indoors/caves
 	name = "Hybrisa - Caverns"
 	icon_state = "caves_north"
 	ceiling = CEILING_NONE
 	soundscape_playlist = SCAPE_PL_LV759_CAVES
-/area/lv759/outdoors/caves/west_caves
+/area/lv759/indoors/caves/west_caves
 	name = "Caverns - West"
 	icon_state = "caves_west"
-/area/lv759/outdoors/caves/east_caves
+/area/lv759/indoors/caves/east_caves
 	name = "Caverns - East"
 	icon_state = "caves_east"
-/area/lv759/outdoors/caves/south_caves
+/area/lv759/indoors/caves/south_caves
 	name = "Caverns - South"
 	icon_state = "caves_south"
-/area/lv759/outdoors/caves/south_east_caves
+/area/lv759/indoors/caves/south_east_caves
 	name = "Caverns - Southeast"
 	icon_state = "caves_southeast"
-/area/lv759/outdoors/caves/south_west_caves
+/area/lv759/indoors/caves/south_west_caves
 	name = "Caverns - Southwest"
 	icon_state = "caves_southwest"
-/area/lv759/outdoors/caves/north_west_caves
+/area/lv759/indoors/caves/north_west_caves
 	name = "Caverns - Northwest"
 	icon_state = "caves_northwest"
-/area/lv759/outdoors/caves/north_east_caves
+/area/lv759/outdoors/caves/north_west_caves_outdoors
+	name = "Caverns - Northwest"
+	icon_state = "caves_northwest"
+/area/lv759/indoors/caves/north_east_caves
 	name = "Caverns - Northeast"
 	icon_state = "caves_northeast"
-/area/lv759/outdoors/caves/north_caves
+/area/lv759/indoors/caves/north_caves
 	name = "Caverns - North"
 	icon_state = "caves_north"
-/area/lv759/outdoors/caves/central_caves
+/area/lv759/indoors/caves/central_caves
 	name = "Caverns - Central"
 	icon_state = "caves_central"
 
@@ -252,23 +255,23 @@
 
 /area/lv759/indoors/garage_reception
 	name = "Garage - Reception"
-	icon_state = "yellow"
+	icon_state = "garage"
 	minimap_color = MINIMAP_AREA_ENGI
 /area/lv759/indoors/garage_restroom
 	name = "Garage - Restroom"
-	icon_state = "yellow"
+	icon_state = "garage"
 	minimap_color = MINIMAP_AREA_ENGI
 /area/lv759/indoors/garage_workshop
 	name = "Garage - Workshop"
-	icon_state = "engine_smes"
+	icon_state = "garage"
 	minimap_color = MINIMAP_AREA_ENGI
 /area/lv759/indoors/garage_workshop_storage
 	name = "Garage - Workshop - Storage Room"
-	icon_state = "engine_smes"
+	icon_state = "garage"
 	minimap_color = MINIMAP_AREA_ENGI
 /area/lv759/indoors/garage_managersoffice
 	name = "Garage - Managers Office"
-	icon_state = "yellow"
+	icon_state = "garage"
 	minimap_color = MINIMAP_AREA_ENGI
 
 // Meridian Offices & Factory Floor
@@ -330,9 +333,13 @@
 
 // Weyland-Yutani Offices
 /area/lv759/indoors/weyyu_office
-	name = "Weyland Yutani Offices - Hallways"
-	icon_state = "blue"
+	name = "Weyland Yutani Offices - Reception Hallway"
+	icon_state = "wyoffice"
 	minimap_color = MINIMAP_AREA_COMMAND
+
+/area/lv759/indoors/weyyu_office/hallway
+	name = "Weyland Yutani Offices - West Foyer"
+	icon_state = "wyoffice"
 
 /area/lv759/indoors/weyyu_office/floor
 	name = "Weyland Yutani Offices - Main Office Floor"
@@ -341,21 +348,23 @@
 	name = "Weyland Yutani Offices - Breakroom"
 
 /area/lv759/indoors/weyyu_office/vip
-	name = "Weyland Yutani Offices - VIP Meeting Room & Office"
+	name = "Weyland Yutani Offices - Conference Room"
 
 /area/lv759/indoors/weyyu_office/pressroom
-	name = "Weyland Yutani Offices - Press Room"
+	name = "Weyland Yutani Offices - Assembly Hall"
+/area/lv759/indoors/weyyu_office/supervisor
+	name = "Weyland Yutani Offices - Colony Supervisors Office"
 
 // Bar & Entertainment Complex
 /area/lv759/indoors/bar
 	name = "Bar"
-	icon_state = "green"
+	icon_state = "bar"
 	minimap_color = MINIMAP_AREA_COLONY
 
 /area/lv759/indoors/bar/entertainment
 	name = "Bar - Entertainment Subsection"
 /area/lv759/indoors/bar/bathroom
-	name = "Bar - Bathrooms"
+	name = "Bar - Restrooms"
 /area/lv759/indoors/bar/maintenance
 	name = "Bar - Maintenance"
 /area/lv759/indoors/bar/kitchen
@@ -577,15 +586,14 @@
 //Recycling Plant
 /area/lv759/indoors/recycling_plant
 	name = "Recycling Plant"
-	icon_state = "yellow"
+	icon_state = "recycling"
 	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/recycling_plant/garage
 	name = "Recycling Plant Garage"
-	icon_state = "yellow"
 	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/recycling_plant/synthetic_storage
 	name = "Synthetic Storage"
-	icon_state = "yellow"
+	icon_state = "synthetic"
 	minimap_color = MINIMAP_AREA_COLONY
 
 // Restrooms

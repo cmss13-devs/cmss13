@@ -566,12 +566,14 @@
 		if(vendspec[2] > dynamic_metadata[2])
 			if(can_remove)
 				vendspec[2]--
-				update_derived_ammo_and_boxes(vendspec)
+				if(vend_flags & VEND_LOAD_AMMO_BOXES)
+					update_derived_ammo_and_boxes(vendspec)
 			continue // Returned some items to the void
 		if(prob(prob_to_skip))
 			continue // 20% chance to restock per entry by default
 		vendspec[2]++
-		update_derived_ammo_and_boxes_on_add(vendspec)
+		if(vend_flags & VEND_LOAD_AMMO_BOXES)
+			update_derived_ammo_and_boxes_on_add(vendspec)
 		.++
 
 /// Refills reagents towards chem_refill_volume_max

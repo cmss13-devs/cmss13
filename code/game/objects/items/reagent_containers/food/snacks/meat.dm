@@ -28,7 +28,8 @@
 	name = "synthetic meat"
 	desc = "A synthetic slab of flesh."
 
-/obj/item/reagent_container/food/snacks/meat/synthmeat/synthflesh //meat made from synthetics. Slightly toxic
+/// Meat made from synthetics. Slightly toxic
+/obj/item/reagent_container/food/snacks/meat/synthmeat/synthflesh
 	name = "synthetic flesh"
 	desc = "A slab of artificial, inorganic 'flesh' that resembles human meat. Probably came from a synth."
 	icon_state = "synthmeat"

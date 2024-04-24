@@ -152,7 +152,7 @@
 		var/num = copytext(reject_bad_text(input(usr,"Color? (1-12)", "Set \the [src]'s color", "")), 1, 3)
 		if(!num || !length(num) || text2num(num) <= 0 || text2num(num) > 12 || copytext(num, 2, 3) == " ")
 			to_chat(usr, SPAN_NOTICE("You clear the color off \the [src]."))
-			icon_state = "pill_canister"
+			loaded_pill_bottle.icon_state = "pill_canister"
 			update_icon()
 			return
 		loaded_pill_bottle.icon_state = "pill_canister" + num

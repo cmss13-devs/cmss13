@@ -96,13 +96,9 @@
 			process_organ()
 			. = TRUE
 		if("produce")
-			var/produce = text2path(params["ref"])
 			var/cost = text2num(params["cost"])
 			var/vari = text2num(params["varia"])
-			if(cost)
-				to_world(produce)
-				to_world(params["ref"] + " asadasdassss")
-
+			if(cost && !busy)
 				start_print_upgrade(params["ref"], cost, usr, vari)
 
 /obj/structure/machinery/xenoanalyzer/proc/eject_biomass()

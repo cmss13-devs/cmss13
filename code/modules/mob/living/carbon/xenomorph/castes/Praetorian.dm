@@ -52,11 +52,7 @@
 	mob_size = MOB_SIZE_BIG
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 3
-<<<<<<< HEAD
-	mutation_type = PRAETORIAN_NORMAL
 	organ_value = 3000
-=======
->>>>>>> master
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,

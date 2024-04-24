@@ -32,19 +32,16 @@
 	value_upgrade = 5000
 
 /datum/research_upgrades/machinery/autodoc/organ_damage
-	name = "AutoDoc Broken bone fixation"
+	name = "AutoDoc Broken Organ Repair"
 	desc = "Data and instruction set for AutoDoc making it capable to fix organ damage."
 	behavior = UPGRADE_TIER_3
 	value_upgrade = 4500
 
 /datum/research_upgrades/machinery/autodoc/larva_removal
-	name = "AutoDoc Broken bone fixation"
+	name = "AutoDoc Broken Embryo Removal"
 	desc = "Data and instruction set for AutoDoc making it mildy proficient in removing parasites left by unknown organism."
 	behavior = UPGRADE_TIER_4
 	value_upgrade = 8000
-
-
-
 
 /datum/research_upgrades/machinery/sleeper
 	name = "Sleeper Upgrade"
@@ -57,6 +54,13 @@
 /datum/research_upgrades/item
 	name = "Items"
 	behavior = UPGRADE_CATEGORY
+
+/datum/research_upgrades/item/research_credits
+	name = "Research Credits"
+	desc = "Sell the data acquired to the nearest Weyland-Yutani Science devision team for two points."
+	value_upgrade = 2000
+	item_reference = /obj/item/research_upgrades/credits
+	behavior = UPGRADE_TIER_1
 
 
 

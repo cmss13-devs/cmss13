@@ -5,7 +5,7 @@
 	  */
 
 /proc/initiate_surgery_moment(obj/item/tool, mob/living/carbon/target, obj/limb/affecting, mob/living/user)
-	if(!tool && !(affecting.status & LIMB_UNCALIBRATED_PROSTHETIC))x
+	if(!tool && !(affecting.status & LIMB_UNCALIBRATED_PROSTHETIC))
 		return FALSE
 	var/target_zone = user.zone_selected
 	var/list/available_surgeries = list()

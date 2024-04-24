@@ -404,12 +404,6 @@
 		for(var/trait in hive.hive_inherant_traits)
 			ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
 
-<<<<<<< HEAD
-	mutators.xeno = src
-
-
-=======
->>>>>>> master
 	//Set caste stuff
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
 		caste = GLOB.xeno_datum_list[caste_type]

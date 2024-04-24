@@ -11,7 +11,7 @@
 		/datum/surgery_step/xenomorph/cut_exoskeleton,
 		/datum/surgery_step/xenomorph/open_exoskeleton,
 		/datum/surgery_step/xenomorph/severe_connections,
-		/datum/surgery_step/xenomorph/remove_organ
+		/datum/surgery_step/xenomorph/remove_organ,
 	)
 	lying_required = FALSE
 	requires_bodypart_type = NONE

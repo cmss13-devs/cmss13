@@ -1,0 +1,5 @@
+author: "ihatethisengine"
+delete-after: True
+changes:
+  - rscadd: "Combat Correspondent can broadcast speech and emotes."
+  - rscadd: "Speech close enough to the camera will be shown above connected TVs as abovehead messages"

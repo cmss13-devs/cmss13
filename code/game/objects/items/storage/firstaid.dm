@@ -526,6 +526,22 @@
 		to_chat(usr, SPAN_NOTICE("You label \the [src] with '[str]' in big, blocky letters."))
 		update_icon()
 
+/obj/item/storage/pill_bottle/verb/set_color()
+	set category = "Object"
+	set name = "Set bottle color"
+	set src in usr
+
+	if(src && ishuman(usr))
+		var/num = copytext(reject_bad_text(input(usr,"Color? (1-12)", "Set \the [src]'s color", "")), 1, 3)
+		if(!num || !length(num) || text2num(num) <= 0 || text2num(num) > 12 || copytext(num, 2, 3) == " ")
+			to_chat(usr, SPAN_NOTICE("You clear the color off \the [src]."))
+			icon_state = "pill_canister"
+			update_icon()
+			return
+		icon_state = "pill_canister" + num
+		to_chat(usr, SPAN_NOTICE("You color \the [src]."))
+		update_icon()
+
 /obj/item/storage/pill_bottle/kelotane
 	name = "\improper Kelotane pill bottle"
 	icon_state = "pill_canister2"

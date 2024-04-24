@@ -2811,13 +2811,9 @@
 	name = "UPP Combat Synthetic"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	languages = ALL_SYNTH_LANGUAGES_UPP
 
-	skills = /datum/skills/synthetic
 	assignment = JOB_UPP_COMBAT_SYNTH
 	rank = JOB_UPP_COMBAT_SYNTH
-	paygrade = PAY_SHORT_SYN
-	idtype = /obj/item/card/id/dogtag
 
 /datum/equipment_preset/upp/synth/combat/load_skills(mob/living/carbon/human/new_human)
 	. = ..()

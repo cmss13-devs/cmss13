@@ -67,25 +67,6 @@
 	desc =	"Research points disk for chemical synthesis, insert this into research computer in order to sell the data and acquire two points" //need to balance this out somehow. either nerf passive income or remove grants from groundside
 
 
-/obj/item/research_upgrades/property
-	name = "Research Market (Propety)"
-	desc = "Research points disk for chemical synthesis, insert this into research computer in order to sell the data and acquire one random chemical property of your choice."
-
-/obj/item/research_upgrades/packet
-	name = "Research Packet"
-	desc = " A plastic sealed opaque packet containing whatever research marvel the nerds upstairs were brewing, you shouldnt be able to see this!"
-	//icon = ***
-	//icon_state = ***
-	///What packet contains
-	var/list/could_contain = null
-	///is the packet open
-	var/is_opened = FALSE
-	///How many times to spawn the could_contain item(s
-	var/amount = 1
-	///How does a packet use could_contain list, 3 types of behavior - _EXACT gives user exactly what is in could_contain, _RANDOM gives user a thing from could contain on random basis, and _VALUE makes it follow value var(spawns second thing in the list if value is two)
-	var/behavior = PACKET_BEHAVIOR_EXACT
-
-
 
 
 

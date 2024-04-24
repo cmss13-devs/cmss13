@@ -251,6 +251,7 @@
 	var/life_slow_reduction = -1.5
 	//Research organ harvesting.
 	var/organ_removed = FALSE
+	var/organ_value = 0 // value of organ in each caste, e.g. 10k is autodoc larva removal. runner is 500
 
 
 	//////////////////////////////////////////////////////////////////
@@ -349,16 +350,15 @@
 	else if(hivenumber)
 		src.hivenumber = hivenumber
 	//putting the organ in for research
-	if(!islarva(src))
+	if(organ_value != 0)
 		var/obj/item/organ/xeno/organ = new() //give
 		organ.forceMove(src)
-		organ.research_value = tier
-		if(!isqueen(src) || !ispredalien(src))
-			organ.icon_state = "heart_t[src.tier]"
-		if(isqueen(src)) //queens have tier 0
-			organ.research_value = 7 //queen is EXPENSIVE
-			organ.icon_state = "heart_t3"
+		organ.research_value = organ_value
 		organ.caste_origin = src.caste_type
+		if(!isqueen(src) && !ispredalien(src))
+			organ.icon_state = "heart_t[src.tier]"
+		else
+			organ.icon_state = "heart_t3"
 
 	var/datum/hive_status/hive = GLOB.hive_datum[src.hivenumber]
 

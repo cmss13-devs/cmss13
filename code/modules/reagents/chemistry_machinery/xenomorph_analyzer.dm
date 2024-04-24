@@ -14,6 +14,9 @@
 	var/caste_of_organ = null
 
 /obj/structure/machinery/xenoanalyzer/attack_hand(mob/user as mob)
+	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
+		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
+		return
 	tgui_interact(user)
 
 /obj/structure/machinery/xenoanalyzer/tgui_interact(mob/user, datum/tgui/ui)
@@ -33,7 +36,7 @@
 		return
 	if(!user.drop_inv_item_to_loc(W, src))
 		return
-	to_chat(user, SPAN_NOTICE("You fed organ in the machine."))
+	to_chat(user, SPAN_NOTICE("You place the organ in the machine"))
 	organ = W
 	caste_of_organ = organ.caste_origin
 
@@ -50,37 +53,33 @@
 	return data
 
 /obj/structure/machinery/xenoanalyzer/ui_static_data(mob/user)
-	to_world("Oof")
 	var/list/static_data = list()
 	static_data["upgrades"] = list()
 	for(var/upgrade_type in subtypesof(/datum/research_upgrades))
 		to_world("Ayo")
-		var/datum/research_upgrades/upgrade = new upgrade_type //gone
-		if(upgrade.behavior <= UPGRADE_CATEGORY)
+		var/datum/research_upgrades/upgrade = upgrade_type
+		if(upgrade.behavior == UPGRADE_CATEGORY || upgrade.behavior == UPGRADE_EXCLUDE_BUY)
 			to_world(upgrade)
 			continue
-		var/upgrade_variations = upgrade.behavior
-		for(var/iteration in 1 to upgrade_variations)
-			to_world(upgrade)
-			//var/upgrade_price = upgrade.value_upgrade[iteration]
-			to_world("oh2")
-			var/upgrade_name = (capitalize_first_letters(upgrade.name) + capitalize_first_letters(upgrade.get_upgrade_desc(iteration)))
-			var/upgrade_price = (upgrade.value_upgrade[iteration])
-			to_world("oh12")
-			var/upgrade_desc = (initial(upgrade.desc) + upgrade.get_upgrade_desc(iteration))
-			to_world("oh1")
-			var/item = initial(upgrade.item_reference)
-			to_world(initial(upgrade.item_reference))
-			to_world(upgrade_name + "asd")
-			static_data["upgrades"] += list(list(
-				"name" = upgrade_name,
-				"desc" = upgrade_desc,
-				"vari" = iteration,
-				"cost" = upgrade_price,
-				"ref" = item,
-				"category" = initial(upgrade.upgrade_type)
-			))
-			to_world(item)
+		to_world(upgrade)
+		to_world("oh2")
+		var/upgrade_name = (capitalize_first_letters(upgrade.name))
+		var/upgrade_price = (upgrade.value_upgrade)
+		to_world("oh12")
+		var/upgrade_desc = (initial(upgrade.desc))
+		to_world("oh1")
+		var/item = initial(upgrade.item_reference)
+		to_world(initial(upgrade.item_reference))
+		to_world(upgrade_name + "asd")
+		static_data["upgrades"] += list(list(
+			"name" = upgrade_name,
+			"desc" = upgrade_desc,
+			"vari" = upgrade.behavior,
+			"cost" = upgrade_price,
+			"ref" = item,
+			"category" = initial(upgrade.upgrade_type)
+		))
+		to_world(item)
 	return static_data
 
 /obj/structure/machinery/xenoanalyzer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -116,7 +115,7 @@
 	if(isnull(organ))
 		return
 	playsound(src.loc, 'sound/machines/blender.ogg', 25, 1)
-	biomass_points += organ.research_value * 1000 //inflatizng values less goo
+	biomass_points += organ.research_value
 	QDEL_NULL(organ)
 
 /obj/structure/machinery/xenoanalyzer/proc/start_print_upgrade(produce_path, cost, mob/user, variation)

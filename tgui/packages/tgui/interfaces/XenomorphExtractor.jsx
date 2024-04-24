@@ -30,7 +30,7 @@ export const XenomorphExtractor = (_props, context) => {
                 content={
                   !organ
                     ? 'Process Biomass'
-                    : 'Process Biomass, Expected value : ' + value * 1000
+                    : 'Process Biomass, Expected value : ' + value
                 }
                 disabled={!organ}
                 onClick={() => act('process_organ')}

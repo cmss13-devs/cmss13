@@ -3,7 +3,7 @@
 #define FLAY_STAGE_SKIN 3
 
 #define ABILITY_COST_DEFAULT 1
-#define ABILITY_COST_CHAIN 0
+#define ABILITY_COST_CHAIN 3
 #define ABILITY_COST_SCYTHE 5
 #define ABILITY_COST_SWORD 0
 #define ABILITY_COST_GLAIVE 0
@@ -192,9 +192,12 @@
 	if(!ability_cost)
 		return
 
+	progress_ability(target, user)
+
+/obj/item/weapon/yautja/proc/progress_ability(mob/living/target, mob/living/carbon/human/user)
 	if(target == user || target.stat == DEAD || isanimal(target))
 		to_chat(user, SPAN_DANGER("You think you're smart?")) //very funny
-		return
+		return FALSE
 
 	if(ability_charge < ability_charge_max)
 		ability_charge = min(ability_charge_max, ability_charge + ability_charge_rate)
@@ -202,6 +205,7 @@
 
 	if(ability_charge >= ability_cost)
 		ready_ability(target, user)
+	return TRUE
 
 /obj/item/weapon/yautja/unique_action(mob/user)
 	if(user.get_active_hand() != src)
@@ -239,11 +243,80 @@
 	attack_verb = list("whipped", "slashed","sliced","diced","shredded")
 	attack_speed = 0.8 SECONDS
 	hitsound = 'sound/weapons/chain_whip.ogg'
+
 	ability_cost = ABILITY_COST_CHAIN
+	ability_charge_max = ABILITY_COST_CHAIN
 
+	var/chain_range = 3
+	var/mob/trapped_mob
+	var/datum/effects/tethering/tether_effect
 
-/obj/item/weapon/yautja/chain/attack(mob/target, mob/living/user)
+/obj/item/weapon/yautja/chain/progress_ability(mob/living/target, mob/living/carbon/human/user)
+	if(trapped_mob)
+		return FALSE//No recharging ability while a mob is already captured.
+	..()
+
+/obj/item/weapon/yautja/chain/attack_self(mob/user)
+	..()
+	if(trapped_mob)
+		var/choice = tgui_alert(user, "Do you wish to release your captive?", "Confirmation", list("Yes", "No"))
+		if(choice != "Yes")
+			return FALSE
+		release_capture(user)
+		return TRUE
+	if(!(ability_charge >= ability_cost))
+		return FALSE
+	ability_primed = !ability_primed
+	var/message = "You tighten your grip on [src], preparing to whirl it around your target."
+	if(!ability_primed)
+		message = "You relax your grip on [src]."
+	to_chat(user, SPAN_WARNING(message))
+	return TRUE
+
+/obj/item/weapon/yautja/chain/attack(mob/living/target, mob/living/carbon/human/user)
 	. = ..()
+	if(!.)
+		return
+	if(ability_primed)
+		capture_target(user, target)
+
+/obj/item/weapon/yautja/chain/proc/capture_target(mob/living/user, mob/living/target)
+	var/list/tether_effects = apply_tether(user, target, range = chain_range, resistable = TRUE)
+	tether_effect = tether_effects["tetherer_tether"]
+	RegisterSignal(tether_effect, COMSIG_PARENT_QDELETING, PROC_REF(release_capture))
+	trapped_mob = target
+	ability_primed = FALSE
+	ability_charge = max(ability_charge - ability_cost, 0)
+
+/obj/item/weapon/yautja/chain/dropped(mob/user)
+	release_capture(user)
+	. = ..()
+
+/obj/item/weapon/yautja/chain/proc/release_capture(mob/user)
+	SIGNAL_HANDLER
+	anchored = FALSE
+	if(user)
+		to_chat(user, SPAN_WARNING("[src] is no longer wrapped around [trapped_mob]!"))
+		user.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(user)] has disarmed \the [src] at [get_location_in_text(user)].</font>")
+		log_attack("[key_name(user)] has disarmed \a [src] at [get_location_in_text(user)].")
+	if(trapped_mob)
+		if (isxeno(trapped_mob))
+			var/mob/living/carbon/xenomorph/X = trapped_mob
+			UnregisterSignal(X, COMSIG_XENO_PRE_HEAL)
+		trapped_mob = null
+	cleanup_tether()
+	remove_filter(ABILITY_FILTER_NAME)
+
+/obj/item/weapon/yautja/chain/Destroy()
+	cleanup_tether()
+	trapped_mob = null
+	. = ..()
+
+/obj/item/weapon/yautja/chain/proc/cleanup_tether()
+	if(tether_effect)
+		UnregisterSignal(tether_effect, COMSIG_PARENT_QDELETING)
+		qdel(tether_effect)
+		tether_effect = null
 
 /obj/item/weapon/yautja/sword
 	name = "clan sword"

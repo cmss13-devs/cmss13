@@ -144,7 +144,7 @@
 				src.contents += explosive
 				bomb = explosive
 				to_chat(user, SPAN_BLUE("You rig [src] with [explosive.name]."))
-				msg_admin_niche("[key_name(user, user.client)] rigged [explosive.name] on [src.name] at ([src.x],[src.y],[src.z] [ADMIN_JMP(src)]") //1984
+				msg_admin_niche("[key_name(user, user.client)] rigged [explosive.name] on [src.name] at ([src.x],[src.y],[src.z] [ADMIN_JMP(src)]")
 				return
 
 /obj/structure/bed/chair/wheelchair/proc/ring(mob/user)
@@ -154,6 +154,12 @@
 			first_ring = FALSE // so you don't blow up on the first ring
 			return
 		if(prob(15)) // last chance to look at me hector
+			if(user.faction == FACTION_MARINE && explosive_antigrief_check(bomb, user)) //1984
+				src.visible_message(SPAN_DANGER("\The [src] sparks but nothing happens!"))
+				var/datum/effect_system/spark_spread/sparks = new
+				sparks.set_up(7, FALSE, src.loc)
+				sparks.start()
+				return
 			bomb.cause_data = create_cause_data("Explosive Wheelchair", user, src)
 			if(iscarbon(buckled_mob))
 				var/mob/living/carbon/human = buckled_mob

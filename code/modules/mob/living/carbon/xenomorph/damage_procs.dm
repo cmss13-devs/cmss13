@@ -24,6 +24,7 @@
 		else
 			if(initiate_surgery_moment(item, src, "head" , user))
 				return
+		return
 	if(item.type in SURGERY_TOOLS_PINCH)
 		if(!iff_tag)
 			to_chat(user, SPAN_WARNING("\The [src] doesn't have an IFF tag to remove."))

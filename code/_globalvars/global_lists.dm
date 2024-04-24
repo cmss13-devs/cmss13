@@ -490,6 +490,7 @@ GLOBAL_LIST_EMPTY(timelocks)
 GLOBAL_LIST_INIT(available_specialist_sets, list(
 			"Scout Set",
 			"Sniper Set",
+			"Anti-materiel Sniper Set",
 			"Demolitionist Set",
 			"Heavy Grenadier Set",
 			"Pyro Set"
@@ -502,6 +503,7 @@ GLOBAL_LIST_INIT(available_specialist_kit_boxes, list(
 			"Sniper" = 2,
 			"Scout" = 2,
 			"Demo" = 2,
+			"Anti-materiel Sniper" = 2,
 			))
 
 /proc/init_global_referenced_datums()

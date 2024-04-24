@@ -396,3 +396,13 @@
 	. = ..()
 	reagents.add_reagent("tricordrazine", 60)
 	update_icon()
+
+/obj/item/reagent_container/glass/bottle/epinephrine
+	name = "\improper Epinephrine bottle"
+	desc = "A small bottle. Contains epinephrine - Used to increase a patients arterial blood pressure, amongst other actions, to assist in cardiopulmonary resuscitation." //"I can't lie to you about your odds of a successful resuscitation, but you have my sympathies"
+	volume = 60
+
+/obj/item/reagent_container/glass/bottle/epinephrine/Initialize()
+	. = ..()
+	reagents.add_reagent("adrenaline", 60)
+	update_icon()

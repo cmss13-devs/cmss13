@@ -2823,7 +2823,6 @@
 	. = ..()
 	new_human.allow_gun_usage = TRUE
 
-
 /datum/equipment_preset/upp/synth/combat/load_gear(mob/living/carbon/human/new_human)
 	//back
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)

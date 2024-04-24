@@ -90,8 +90,7 @@
 		to_chat(user, SPAN_WARNING("You can't mix fuel mixtures!"))
 		return
 
-	var/is_smoke_tank = istype(src, /obj/item/ammo_magazine/flamer_tank/smoke)
-	if(!to_add.intensityfire && to_add.id != "stablefoam" && !is_smoke_tank)
+	if(!to_add.intensityfire && to_add.id != "stablefoam" && !istype(src, /obj/item/ammo_magazine/flamer_tank/smoke))
 		to_chat(user, SPAN_WARNING("This chemical is not potent enough to be used in a flamethrower!"))
 		return
 

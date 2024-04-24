@@ -169,7 +169,7 @@
 #define UPGRADE_TIER_3 3
 #define UPGRADE_TIER_4 4
 #define UPGRADE_TIER_5 5
-//Value define\
+//Value define
 
 #define ITEM_MACHINERY_UPGRADE 0
 #define ITEM_ACCESSORY_UPGRADE 1

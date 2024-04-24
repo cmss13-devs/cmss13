@@ -135,6 +135,7 @@
 	return 4
 
 /atom/movable/proc/handle_paradrop(turf/target, dropship_name)
+	clear_active_explosives()
 	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_DROPSHIP_INTERACTION)
 	ADD_TRAIT(src, TRAIT_UNDENSE, TRAIT_SOURCE_DROPSHIP_INTERACTION)
 	var/image/cables = image('icons/obj/structures/droppod_32x64.dmi', src, "chute_cables_static")
@@ -165,7 +166,14 @@
 	overlays -= cables
 	overlays -= chute
 
+/atom/movable/proc/clear_active_explosives()
+	for(var/obj/item/explosive/explosive in contents)
+		if(!explosive.active)
+			continue
+		explosive.deconstruct(FALSE)
+
 /atom/movable/proc/handle_airdrop(turf/target, dropship_name)
+	clear_active_explosives()
 	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_DROPSHIP_INTERACTION)
 	pixel_z = 360
 	forceMove(target)
@@ -189,10 +197,16 @@
 	..()
 	if(QDELETED(src))
 		return
-	if(!indestructible && w_class == SIZE_SMALL) //small items will be lost, good riddance
+	if(!indestructible && w_class < SIZE_MEDIUM) //tiny and small items will be lost, good riddance
 		deconstruct(FALSE)
 		return
 	explosion_throw(200) // give it a bit of a kick
+
+/obj/item/explosive/handle_airdrop(turf/target, dropship_name)
+	if(active)
+		deconstruct(FALSE)
+		return
+	..()
 
 /mob/living/handle_airdrop(turf/target, dropship_name)
 	..()

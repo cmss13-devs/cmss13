@@ -1,0 +1,4 @@
+author: "Git-Nivrak"
+delete-after: True
+changes:
+  - bugfix: "Fixes boilers slowing themselves by using long range sight while resting."

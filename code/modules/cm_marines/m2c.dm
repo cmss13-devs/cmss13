@@ -73,7 +73,7 @@
 	icon_state = icon_name
 
 /obj/item/device/m2c_gun/proc/check_can_setup(mob/user, turf/rotate_check, turf/open/OT, list/ACR)
-	if(!ishuman(user))
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		return FALSE
 	if(broken_gun)
 		to_chat(user, SPAN_WARNING("You can't set up \the [src], it's completely broken!"))
@@ -148,7 +148,7 @@
 		HMG.try_mount_gun(user)
 
 /obj/item/device/m2c_gun/attackby(obj/item/O as obj, mob/user as mob)
-	if(!ishuman(user))
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		return
 
 	if(!iswelder(O) || user.action_busy)
@@ -330,7 +330,7 @@
 	update_icon()
 
 /obj/structure/machinery/m56d_hmg/auto/attackby(obj/item/O as obj, mob/user as mob)
-	if(!ishuman(user))
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		return
 	// RELOADING
 	if(istype(O, /obj/item/ammo_magazine/m2c))
@@ -456,13 +456,12 @@
 // DISASSEMBLY
 
 /obj/structure/machinery/m56d_hmg/auto/MouseDrop(over_object, src_location, over_location)
-	if(!ishuman(usr))
-		return
-	var/mob/living/carbon/human/user = usr
+	var/mob/living/carbon/user = usr
 	// If the user is unconscious or dead.
 	if(user.stat)
 		return
-
+	if(!ishuman(user)  && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
+		return
 	if(over_object == user && in_range(src, user))
 		if((rounds > 0) && (user.a_intent & (INTENT_GRAB)))
 			playsound(src.loc, 'sound/items/m56dauto_load.ogg', 75, 1)

@@ -92,6 +92,7 @@
 		list("Auxiliar Power Storage Unit", 2, /obj/item/circuitboard/machine/ghettosmes, VENDOR_ITEM_REGULAR),
 		list("Air Alarm Electronics", 2, /obj/item/circuitboard/airalarm, VENDOR_ITEM_REGULAR),
 		list("Security Camera Monitor", 2, /obj/item/circuitboard/computer/cameras, VENDOR_ITEM_REGULAR),
+		list("Television Set", 4, /obj/item/circuitboard/computer/cameras/tv, VENDOR_ITEM_REGULAR),
 		list("Station Alerts", 2, /obj/item/circuitboard/computer/stationalert, VENDOR_ITEM_REGULAR),
 		list("Arcade", 2, /obj/item/circuitboard/computer/arcade, VENDOR_ITEM_REGULAR),
 		list("Atmospheric Monitor", 2, /obj/item/circuitboard/computer/air_management, VENDOR_ITEM_REGULAR),

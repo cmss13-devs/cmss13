@@ -503,13 +503,13 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	if(slot in list(WEAR_L_HAND, WEAR_R_HAND))
 		set_gun_user(user)
-		if(HAS_TRAIT_FROM_ONLY(src, TRAIT_GUN_LIGHT_DEACTIVATED, user))
+		if(HAS_TRAIT_FROM_ONLY(src, TRAIT_GUN_LIGHT_DEACTIVATED, WEAKREF(user)))
 			force_light(on = TRUE)
-			REMOVE_TRAIT(src, TRAIT_GUN_LIGHT_DEACTIVATED, user)
+			REMOVE_TRAIT(src, TRAIT_GUN_LIGHT_DEACTIVATED, WEAKREF(user))
 	else
 		set_gun_user(null)
 		force_light(on = FALSE)
-		ADD_TRAIT(src, TRAIT_GUN_LIGHT_DEACTIVATED, user)
+		ADD_TRAIT(src, TRAIT_GUN_LIGHT_DEACTIVATED, WEAKREF(user))
 
 	return ..()
 
@@ -1419,6 +1419,10 @@ and you're good to go.
 				BP.generate_bullet(GLOB.ammo_list[projectile_to_fire.ammo.bonus_projectiles_type], 0, NO_FLAGS)
 				BP.accuracy = round(BP.accuracy * projectile_to_fire.accuracy/initial(projectile_to_fire.accuracy)) //Modifies accuracy of pellets per fire_bonus_projectiles.
 				BP.damage *= damage_buff
+
+				BP.bonus_projectile_check = 2
+				projectile_to_fire.bonus_projectile_check = 1
+
 				projectile_to_fire.give_bullet_traits(BP)
 				if(bullets_fired > 1)
 					BP.original = attacked_mob //original == the original target of the projectile. If the target is downed and this isn't set, the projectile will try to fly over it. Of course, it isn't going anywhere, but it's the principle of the thing. Very embarrassing.
@@ -1521,7 +1525,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		return //We just put the gun up. Can't do it that fast
 
 	if(ismob(user)) //Could be an object firing the gun.
-		if(!user.IsAdvancedToolUser())
+		if(!user.IsAdvancedToolUser() && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 			to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 			return
 
@@ -1751,7 +1755,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		else
 			total_recoil -= user.skills.get_skill_level(SKILL_FIREARMS)*RECOIL_AMOUNT_TIER_5
 
-	if(total_recoil > 0 && ishuman(user))
+	if(total_recoil > 0 && (ishuman(user) || HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS)))
 		if(total_recoil >= 4)
 			shake_camera(user, total_recoil * 0.5, total_recoil)
 		else
@@ -1763,7 +1767,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 /obj/item/weapon/gun/proc/muzzle_flash(angle,mob/user)
 	if(!muzzle_flash || flags_gun_features & GUN_SILENCED || isnull(angle))
 		return //We have to check for null angle here, as 0 can also be an angle.
-	if(!istype(user) || !istype(user.loc,/turf))
+	if(!istype(user) || !isturf(user.loc))
 		return
 
 	var/prev_light = light_range
@@ -1772,12 +1776,12 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		set_light_on(TRUE)
 		addtimer(CALLBACK(src, PROC_REF(reset_light_range), prev_light), 0.5 SECONDS)
 
-	var/image_layer = (user && user.dir == SOUTH) ? MOB_LAYER+0.1 : MOB_LAYER-0.1
-	var/offset = 5
-
-	var/image/I = image('icons/obj/items/weapons/projectiles.dmi',user,muzzle_flash,image_layer)
+	var/image/I = image('icons/obj/items/weapons/projectiles.dmi', user, muzzle_flash, user.dir == NORTH ? ABOVE_LYING_MOB_LAYER : FLOAT_LAYER)
 	var/matrix/rotate = matrix() //Change the flash angle.
-	rotate.Translate(0, offset)
+	if(iscarbonsizexeno(user))
+		var/mob/living/carbon/xenomorph/xeno = user
+		I.pixel_x = xeno.xeno_inhand_item_offset //To center it on the xeno sprite without being thrown off by rotation.
+	rotate.Translate(0, 5) //Y offset to push the flash overlay outwards.
 	rotate.Turn(angle)
 	I.transform = rotate
 	I.flick_overlay(user, 3)

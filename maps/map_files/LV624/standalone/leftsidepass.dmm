@@ -1,8 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"ab" = (
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/coast/north,
-/area/lv624/ground/river/west_river)
 "ac" = (
 /obj/effect/landmark/hunter_primary,
 /turf/open/gm/dirt,
@@ -53,39 +49,11 @@
 "ar" = (
 /turf/open/gm/coast/beachcorner/south_east,
 /area/lv624/ground/river/west_river)
-"as" = (
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirt,
-/area/lv624/ground/jungle/west_jungle)
-"at" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
-/area/lv624/ground/river/west_river)
 "au" = (
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/jungle/west_jungle)
-"av" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
-/area/lv624/ground/jungle/west_jungle)
 "aw" = (
-/obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/coast/beachcorner/south_west,
-/area/lv624/ground/jungle/west_jungle)
-"ax" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
-/area/lv624/ground/jungle/west_jungle)
-"ay" = (
-/obj/structure/flora/bush/ausbushes/ausbush,
-/turf/open/gm/grass/grass2,
-/area/lv624/ground/jungle/west_jungle)
-"az" = (
-/turf/open/gm/grass/grass2,
-/area/lv624/ground/jungle/west_jungle)
-"aA" = (
-/obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/turf/open/gm/grass/grass2,
-/area/lv624/ground/jungle/west_jungle)
-"aB" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/lv624/ground/jungle/west_jungle)
 "aC" = (
 /obj/structure/flora/jungle/vines/light_2,
@@ -93,47 +61,14 @@
 /area/lv624/ground/jungle/west_jungle)
 "aD" = (
 /obj/structure/flora/jungle/vines/light_1,
-/turf/open/gm/grass/grass2,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/lv624/ground/jungle/west_jungle)
 "aE" = (
-/obj/structure/flora/bush/ausbushes/pointybush,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/west_jungle)
-"aF" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 6
-	},
-/turf/open/gm/grass/grass2,
-/area/lv624/ground/jungle/west_jungle)
-"aG" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 10
-	},
-/turf/open/gm/grass/grass2,
-/area/lv624/ground/jungle/west_jungle)
-"aH" = (
-/obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/west_jungle)
-"aI" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 10
-	},
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/west_jungle)
-"aJ" = (
-/obj/structure/flora/bush/ausbushes/var3/leafybush,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/west_jungle)
-"aK" = (
-/turf/open/gm/dirtgrassborder/west,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/lv624/ground/jungle/west_jungle)
 "aU" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/river/west_river)
-"aV" = (
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/west_jungle)
 "aX" = (
 /turf/open/gm/coast/beachcorner2/south_east,
 /area/lv624/ground/river/west_river)
@@ -172,8 +107,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/river/west_river)
 "bV" = (
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirt,
 /area/lv624/ground/jungle/west_jungle)
 "gX" = (
 /turf/closed/wall/rock/brown,
@@ -268,7 +202,7 @@ ES
 ES
 ES
 qG
-au
+aE
 aD
 "}
 (4,1,1) = {"
@@ -282,8 +216,8 @@ ai
 ad
 ad
 aq
-at
-ax
+ES
+bV
 aE
 "}
 (5,1,1) = {"
@@ -297,9 +231,9 @@ bm
 bc
 bc
 bt
-au
-ay
-az
+bV
+bV
+bV
 "}
 (6,1,1) = {"
 bi
@@ -312,9 +246,9 @@ aj
 bc
 bc
 bt
-au
+bV
 Za
-aV
+bV
 "}
 (7,1,1) = {"
 bi
@@ -329,7 +263,7 @@ FJ
 bt
 bV
 Za
-aF
+bV
 "}
 (8,1,1) = {"
 bi
@@ -342,9 +276,9 @@ bc
 bc
 am
 bt
-au
-az
-aG
+bV
+bV
+bV
 "}
 (9,1,1) = {"
 bx
@@ -357,9 +291,9 @@ bc
 bc
 bc
 bt
-au
-aA
-aH
+bV
+bV
+bV
 "}
 (10,1,1) = {"
 bf
@@ -373,8 +307,8 @@ bc
 aX
 ar
 bV
-aV
-aF
+bV
+bV
 "}
 (11,1,1) = {"
 bi
@@ -386,10 +320,10 @@ bN
 bc
 bc
 bt
-as
-av
-aB
-aI
+bV
+bV
+bV
+bV
 "}
 (12,1,1) = {"
 bi
@@ -403,8 +337,8 @@ bc
 ao
 zW
 aw
-au
-aJ
+bV
+bV
 "}
 (13,1,1) = {"
 bx
@@ -418,12 +352,12 @@ bc
 bc
 ve
 Ms
-av
-aK
+bV
+bV
 "}
 (14,1,1) = {"
 bi
-ab
+bL
 af
 af
 af

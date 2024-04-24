@@ -904,8 +904,6 @@
 	name = "CLF Combat Synthetic"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	languages = ALL_SYNTH_LANGUAGES
-
 /datum/equipment_preset/clf/synth/combat/load_skills(mob/living/carbon/human/new_human)
 	. = ..()
 	new_human.allow_gun_usage = TRUE

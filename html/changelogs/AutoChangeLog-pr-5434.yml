@@ -1,5 +1,0 @@
-author: "TheGamerdk"
-delete-after: True
-changes:
-  - rscadd: "Groundside Operations console now shows ASL status"
-  - bugfix: "FTL is sorted correctly in Groundside Operations console"

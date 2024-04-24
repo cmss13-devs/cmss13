@@ -141,8 +141,8 @@
 #define WIELD_DELAY_VERY_SLOW 10
 #define WIELD_DELAY_HORRIBLE 12
 
-///This is how long you must wait after throwing something to throw again
-#define THROW_DELAY (0.4 SECONDS)
+///This is how long you must wait to throw again after throwing two things
+#define THROW_DELAY (1.5 SECONDS)
 
 //Explosion level thresholds. Upper bounds
 #define EXPLOSION_THRESHOLD_VLOW 50

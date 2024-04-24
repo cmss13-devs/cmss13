@@ -266,6 +266,8 @@
 
 /obj/effect/mine_tripwire/Destroy()
 	if(linked_claymore)
+		if(linked_claymore.tripwire == src)
+			linked_claymore.tripwire = null
 		linked_claymore = null
 	. = ..()
 

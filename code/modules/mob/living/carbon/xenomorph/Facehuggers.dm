@@ -38,6 +38,9 @@
 	/// the nearest human before dying
 	var/jumps_left = 2
 
+	var/time_to_live = 30 SECONDS
+	var/death_timer
+
 	var/icon_xeno = 'icons/mob/xenos/effects.dmi'
 	var/icon_xenonid = 'icons/mob/xenonids/xenonid_crab.dmi'
 
@@ -54,6 +57,9 @@
 	icon = new_icon
 	set_hive_data(src, hivenumber)
 	go_active()
+
+	if (hivenumber != XENO_HIVE_TUTORIAL)
+		death_timer = addtimer(CALLBACK(src, PROC_REF(end_lifecycle)), time_to_live, TIMER_OVERRIDE|TIMER_STOPPABLE|TIMER_UNIQUE)
 
 
 /obj/item/clothing/mask/facehugger/Destroy()
@@ -75,6 +81,10 @@
 	if(QDESTROYING(src))
 		return
 	addtimer(CALLBACK(src, PROC_REF(check_turf)), 0.2 SECONDS)
+
+	if(!death_timer && hivenumber != XENO_HIVE_TUTORIAL)
+		death_timer = addtimer(CALLBACK(src, PROC_REF(end_lifecycle)), time_to_live, TIMER_OVERRIDE|TIMER_STOPPABLE|TIMER_UNIQUE)
+
 	if(stat == CONSCIOUS && loc) //Make sure we're conscious and not idle or dead.
 		go_idle()
 	if(attached)
@@ -173,9 +183,18 @@
 	if(exposed_temperature > 300)
 		die()
 
-/obj/item/clothing/mask/facehugger/equipped(mob/M)
+/obj/item/clothing/mask/facehugger/equipped(mob/holder)
 	SHOULD_CALL_PARENT(FALSE) // ugh equip sounds
 	// So picking up a hugger does not prematurely kill it
+	if (!isxeno(holder))
+		return
+
+	var/mob/living/carbon/xenomorph/xeno = holder
+
+	if ((xeno.caste.hugger_nurturing || hivenumber == XENO_HIVE_TUTORIAL) && death_timer)
+		deltimer(death_timer)
+		death_timer = null
+
 	go_idle()
 
 /obj/item/clothing/mask/facehugger/Crossed(atom/target)
@@ -283,12 +302,14 @@
 
 	var/area/hug_area = get_area(src)
 	var/name = hugger ? "[hugger]" : "\a [src]"
-	if(hug_area)
-		notify_ghosts(header = "Hugged", message = "[human] has been hugged by [name] at [hug_area]!", source = human, action = NOTIFY_ORBIT)
-		to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[name]</b> at \the <b>[hug_area]</b>"))
-	else
-		notify_ghosts(header = "Hugged", message = "[human] has been hugged by [name]!", source = human, action = NOTIFY_ORBIT)
-		to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[name]</b>"))
+	if(hivenumber != XENO_HIVE_TUTORIAL) // prevent hugs from any tutorial huggers from showing up in dchat
+		if(hug_area)
+			notify_ghosts(header = "Hugged", message = "[human] has been hugged by [name] at [hug_area]!", source = human, action = NOTIFY_ORBIT)
+			to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[name]</b> at \the <b>[hug_area]</b>"))
+		else
+			notify_ghosts(header = "Hugged", message = "[human] has been hugged by [name]!", source = human, action = NOTIFY_ORBIT)
+			to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been facehugged by <b>[name]</b>"))
+
 	if(hug_area)
 		xeno_message(SPAN_XENOMINORWARNING("We sense that [name] has facehugged a host at \the [hug_area]!"), 1, hivenumber)
 	else
@@ -392,6 +413,9 @@
 			M.stored_huggers++
 			qdel(src)
 			return
+		// Tutorial facehuggers never time out
+		if(hivenumber == XENO_HIVE_TUTORIAL)
+			return
 	die()
 
 /obj/item/clothing/mask/facehugger/proc/die()
@@ -404,6 +428,10 @@
 	if(jump_timer)
 		deltimer(jump_timer)
 	jump_timer = null
+
+	if(death_timer)
+		deltimer(death_timer)
+	death_timer = null
 
 	if(!impregnated)
 		icon_state = "[initial(icon_state)]_dead"

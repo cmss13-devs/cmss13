@@ -56,7 +56,6 @@
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
-	mutation_type = SPITTER_NORMAL
 
 	icon_xeno = 'icons/mob/xenos/spitter.dmi'
 	icon_xenonid = 'icons/mob/xenonids/spitter.dmi'

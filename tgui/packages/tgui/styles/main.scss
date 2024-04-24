@@ -78,6 +78,7 @@
 @include meta.load-css('./interfaces/common/Dpad.scss');
 @include meta.load-css('./interfaces/common/ElectricalPanel.scss');
 @include meta.load-css('./interfaces/TacticalMap.scss');
+@include meta.load-css('./interfaces/StripMenu.scss');
 
 // Layouts
 @include meta.load-css('./layouts/Layout.scss');

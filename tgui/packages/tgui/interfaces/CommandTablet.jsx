@@ -2,8 +2,8 @@ import { useBackend } from '../backend';
 import { Button, Section, Flex, NoticeBox } from '../components';
 import { Window } from '../layouts';
 
-export const CommandTablet = (_props, context) => {
-  const { act, data } = useBackend(context);
+export const CommandTablet = () => {
+  const { act, data } = useBackend();
 
   const evacstatus = data.evac_status;
 

@@ -4,7 +4,7 @@
 // in case you wanted a vent to always smoke north for example
 /////////////////////////////////////////////
 
-/// Chance that cades block the gas. Smoke spread ticks are calculated very quickly so this has to be high to have a noticable effect.
+/// Chance that cades block the gas. Smoke spread ticks are calculated very quickly so this has to be high to have a noticeable effect.
 #define	BOILER_GAS_CADE_BLOCK_CHANCE 35
 
 /obj/effect/particle_effect/smoke
@@ -240,9 +240,9 @@
 	if(isyautja(M) || isxeno(M))
 		burn_damage *= xeno_yautja_reduction
 
+	var/reagent = new /datum/reagent/napalm/ut()
 	M.burn_skin(burn_damage)
-	M.adjust_fire_stacks(applied_fire_stacks)
-	M.fire_reagent = new /datum/reagent/napalm/ut()
+	M.adjust_fire_stacks(applied_fire_stacks, reagent)
 	M.IgniteMob()
 	M.updatehealth()
 
@@ -316,7 +316,7 @@
 	if(xeno_affecting)
 		stun_chance = 35
 	if(prob(stun_chance))
-		creature.apply_effect(1, WEAKEN)
+		creature.apply_effect(2, WEAKEN)
 
 	//Topical damage (neurotoxin on exposed skin)
 	if(xeno_creature)

@@ -155,7 +155,9 @@ GLOBAL_LIST_INIT(RESTRICTED_CAMERA_NETWORKS, list( //Those networks can only be 
 #define RESULT_REQUIRES_SNOW (1<<0)
 
 
+/// Reaction type from touching it
 #define TOUCH 1
+/// Reaction type from eating it
 #define INGEST 2
 
 /// Marks an object as organic. Used for alien structures and any other organic material
@@ -175,3 +177,8 @@ GLOBAL_LIST_INIT(RESTRICTED_CAMERA_NETWORKS, list( //Those networks can only be 
 #define CHECKS_PASSED 1
 #define STILL_ON_COOLDOWN 2
 #define NO_LIGHT_STATE_CHANGE 3
+
+//tool capabilities or something i don't know
+#define REMOVE_CROWBAR  (1<<0)
+#define BREAK_CROWBAR   (1<<1)
+#define REMOVE_SCREWDRIVER (1<<2)

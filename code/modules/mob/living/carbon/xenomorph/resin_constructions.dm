@@ -341,11 +341,11 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	construction_name = "thick resin membrane"
 	build_path = /obj/structure/alien/movable_wall/membrane/thick
 
-// Remote Resin Nodes for originally coded for Resin Whisperers
+// Remote Weed Nodes for originally coded for Resin Whisperers
 /datum/resin_construction/resin_obj/resin_node
-	name = "Resin Node"
+	name = "Weed Node"
 	desc = "Channel energy to spread our influence."
-	construction_name = "resin node"
+	construction_name = "weed node"
 	cost = (XENO_RESIN_MEMBRANE_THICK_COST * 2) // 3x the cost of a thick membrane. At the time of coding that is 95*2 = 190
 
 	build_path = /obj/effect/alien/weeds/node

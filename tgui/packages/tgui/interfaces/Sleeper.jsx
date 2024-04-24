@@ -1,5 +1,4 @@
 import { round } from 'common/math';
-import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
 import { Box, Button, Flex, Icon, LabeledList, NoticeBox, ProgressBar, Section } from '../components';
 import { Window } from '../layouts';
@@ -32,8 +31,8 @@ const tempColors = [
   'bad',
 ];
 
-export const Sleeper = (props, context) => {
-  const { act, data } = useBackend(context);
+export const Sleeper = (props) => {
+  const { act, data } = useBackend();
   const { hasOccupant } = data;
   const body = hasOccupant ? <SleeperMain /> : <SleeperEmpty />;
   const windowHeight = hasOccupant ? 850 : 150;
@@ -46,21 +45,21 @@ export const Sleeper = (props, context) => {
   );
 };
 
-const SleeperMain = (props, context) => {
-  const { act, data } = useBackend(context);
+const SleeperMain = (props) => {
+  const { act, data } = useBackend();
   const { occupant } = data;
   return (
-    <Fragment>
+    <>
       <SleeperDialysis />
       <SleeperOccupant />
       <SleeperDamage />
       <SleeperChemicals />
-    </Fragment>
+    </>
   );
 };
 
-const SleeperOccupant = (props, context) => {
-  const { act, data } = useBackend(context);
+const SleeperOccupant = (props) => {
+  const { act, data } = useBackend();
   const { occupant, auto_eject_dead } = data;
   return (
     <Section
@@ -114,7 +113,7 @@ const SleeperOccupant = (props, context) => {
           </ProgressBar>
         </LabeledList.Item>
         {!!occupant.hasBlood && (
-          <Fragment>
+          <>
             <LabeledList.Item label="Blood Level">
               <ProgressBar
                 min="0"
@@ -131,15 +130,15 @@ const SleeperOccupant = (props, context) => {
             <LabeledList.Item label="Pulse" verticalAlign="middle">
               {occupant.pulse} BPM
             </LabeledList.Item>
-          </Fragment>
+          </>
         )}
       </LabeledList>
     </Section>
   );
 };
 
-const SleeperDamage = (props, context) => {
-  const { data } = useBackend(context);
+const SleeperDamage = (props) => {
+  const { data } = useBackend();
   const { occupant } = data;
   return (
     <Section title="Occupant Damage">
@@ -161,8 +160,8 @@ const SleeperDamage = (props, context) => {
   );
 };
 
-const SleeperDialysis = (props, context) => {
-  const { act, data } = useBackend(context);
+const SleeperDialysis = (props) => {
+  const { act, data } = useBackend();
   const { hasOccupant, dialysis, occupant } = data;
   const canDialysis = dialysis;
   const dialysisDisabled = !hasOccupant || !occupant.totalreagents;
@@ -195,8 +194,8 @@ const SleeperDialysis = (props, context) => {
   );
 };
 
-const SleeperChemicals = (props, context) => {
-  const { act, data } = useBackend(context);
+const SleeperChemicals = (props) => {
+  const { act, data } = useBackend();
   const { occupant, chemicals, maxchem, amounts } = data;
   return (
     <Section title="Occupant Chemicals" flexGrow="1">
@@ -274,7 +273,7 @@ const SleeperChemicals = (props, context) => {
   );
 };
 
-const SleeperEmpty = (props, context) => {
+const SleeperEmpty = (props) => {
   return (
     <Section textAlign="center" flexGrow="1">
       <Flex height="100%">

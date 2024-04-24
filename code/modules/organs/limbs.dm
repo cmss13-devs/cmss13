@@ -580,8 +580,9 @@ This function completely restores a damaged organ to perfect condition.
 	if(brute_dam || burn_dam)
 		return TRUE
 	if(knitting_time > 0)
-		return 1
-	return 0
+		return TRUE
+	update_wounds()
+	return FALSE
 
 /obj/limb/process()
 

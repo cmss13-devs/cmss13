@@ -29,6 +29,9 @@
 
 #define COMSIG_ITEM_PICKUP "item_pickup"
 
+///from /obj/item/device/camera/broadcasting/attack_self
+#define COMSIG_BROADCAST_GO_LIVE "broadcast_live"
+
 /// from /obj/item/proc/mob_can_equip
 #define COMSIG_ITEM_ATTEMPTING_EQUIP "item_attempting_equip"
 ///Return this in response if you don't want items equipped
@@ -77,3 +80,4 @@
 #define COMSIG_CAMERA_SET_TARGET "camera_manager_set_target"
 #define COMSIG_CAMERA_SET_AREA "camera_manager_set_area"
 #define COMSIG_CAMERA_CLEAR "camera_manager_clear_target"
+#define COMSIG_CAMERA_REFRESH "camera_manager_refresh"

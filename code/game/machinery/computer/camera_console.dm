@@ -13,56 +13,34 @@
 	var/list/concurrent_users = list()
 
 	// Stuff needed to render the map
-	var/map_name
-	var/atom/movable/screen/map_view/cam_screen
-	var/atom/movable/screen/background/cam_background
+	var/camera_map_name
 
 	var/colony_camera_mapload = TRUE
 	var/admin_console = FALSE
 
-	/// All the plane masters that need to be applied.
-	var/list/cam_plane_masters
-
 /obj/structure/machinery/computer/cameras/Initialize(mapload)
 	. = ..()
-	// Map name has to start and end with an A-Z character,
-	// and definitely NOT with a square bracket or even a number.
-	// I wasted 6 hours on this. :agony:
-	map_name = "camera_console_[REF(src)]_map"
+
+	RegisterSignal(src, COMSIG_CAMERA_MAPNAME_ASSIGNED, PROC_REF(camera_mapname_update))
+
+	// camera setup
+	AddComponent(/datum/component/camera_manager)
+	SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 
 	if(colony_camera_mapload && mapload && is_ground_level(z))
 		network = list(CAMERA_NET_COLONY)
 
-	cam_plane_masters = list()
-	for(var/plane in subtypesof(/atom/movable/screen/plane_master) - /atom/movable/screen/plane_master/blackness)
-		var/atom/movable/screen/plane_master/instance = new plane()
-		instance.assigned_map = map_name
-		instance.del_on_map_removal = FALSE
-		if(instance.blend_mode_override)
-			instance.blend_mode = instance.blend_mode_override
-		instance.screen_loc = "[map_name]:CENTER"
-		cam_plane_masters += instance
-
-	// Initialize map objects
-	cam_screen = new
-	cam_screen.icon = null
-	cam_screen.name = "screen"
-	cam_screen.assigned_map = map_name
-	cam_screen.del_on_map_removal = FALSE
-	cam_screen.screen_loc = "[map_name]:1,1"
-	cam_background = new
-	cam_background.assigned_map = map_name
-	cam_background.del_on_map_removal = FALSE
 
 /obj/structure/machinery/computer/cameras/Destroy()
 	SStgui.close_uis(src)
 	QDEL_NULL(current)
-	QDEL_NULL(cam_screen)
-	QDEL_NULL(cam_background)
-	QDEL_NULL_LIST(cam_plane_masters)
+	UnregisterSignal(src, COMSIG_CAMERA_MAPNAME_ASSIGNED)
 	last_camera_turf = null
 	concurrent_users = null
 	return ..()
+
+/obj/structure/machinery/computer/cameras/proc/camera_mapname_update(source, value)
+	camera_map_name = value
 
 /obj/structure/machinery/computer/cameras/attack_remote(mob/user as mob)
 	return attack_hand(user)
@@ -90,8 +68,7 @@
 	// Update UI
 	ui = SStgui.try_update_ui(user, src, ui)
 
-	// Update the camera, showing static if necessary and updating data if the location has moved.
-	update_active_camera_screen()
+	SEND_SIGNAL(src, COMSIG_CAMERA_REFRESH)
 
 	if(!ui)
 		var/user_ref = WEAKREF(user)
@@ -103,11 +80,9 @@
 		// Turn on the console
 		if(length(concurrent_users) == 1 && is_living)
 			update_use_power(USE_POWER_ACTIVE)
-		// Register map objects
-		user.client.register_map_obj(cam_screen)
-		user.client.register_map_obj(cam_background)
-		for(var/plane in cam_plane_masters)
-			user.client.register_map_obj(plane)
+
+		SEND_SIGNAL(src, COMSIG_CAMERA_REGISTER_UI, user)
+
 		// Open UI
 		ui = new(user, src, "CameraConsole", name)
 		ui.open()
@@ -125,7 +100,7 @@
 
 /obj/structure/machinery/computer/cameras/ui_static_data()
 	var/list/data = list()
-	data["mapRef"] = map_name
+	data["mapRef"] = camera_map_name
 	var/list/cameras = get_available_cameras()
 	data["cameras"] = list()
 	for(var/i in cameras)
@@ -159,47 +134,10 @@
 		if(!selected_camera)
 			return TRUE
 
-		update_active_camera_screen()
+		SEND_SIGNAL(src, COMSIG_CAMERA_SET_TARGET, selected_camera, selected_camera.view_range, selected_camera.view_range)
 
 		return TRUE
 
-/obj/structure/machinery/computer/cameras/proc/update_active_camera_screen()
-	// Show static if can't use the camera
-	if(!current?.can_use())
-		show_camera_static()
-		return
-
-	// Is this camera located in or attached to a living thing, Vehicle or helmet? If so, assume the camera's loc is the living (or non) thing.
-	var/cam_location = current
-	if(isliving(current.loc) || isVehicle(current.loc))
-		cam_location = current.loc
-	else if(istype(current.loc, /obj/item/clothing/head/helmet/marine))
-		var/obj/item/clothing/head/helmet/marine/helmet = current.loc
-		cam_location = helmet.loc
-
-	// If we're not forcing an update for some reason and the cameras are in the same location,
-	// we don't need to update anything.
-	// Most security cameras will end here as they're not moving.
-	var/newturf = get_turf(cam_location)
-	if(last_camera_turf == newturf)
-		return
-
-	// Cameras that get here are moving, and are likely attached to some moving atom such as cyborgs.
-	last_camera_turf = get_turf(cam_location)
-
-	var/list/visible_things = current.isXRay() ? range(current.view_range, cam_location) : view(current.view_range, cam_location)
-
-	var/list/visible_turfs = list()
-	for(var/turf/visible_turf in visible_things)
-		visible_turfs += visible_turf
-
-	var/list/bbox = get_bbox_of_atoms(visible_turfs)
-	var/size_x = bbox[3] - bbox[1] + 1
-	var/size_y = bbox[4] - bbox[2] + 1
-
-	cam_screen.vis_contents = visible_turfs
-	cam_background.icon_state = "clear"
-	cam_background.fill_rect(1, 1, size_x, size_y)
 
 /obj/structure/machinery/computer/cameras/ui_close(mob/user)
 	var/user_ref = WEAKREF(user)
@@ -207,20 +145,15 @@
 	// Living creature or not, we remove you anyway.
 	concurrent_users -= user_ref
 	// Unregister map objects
-	user.client.clear_map(map_name)
+	SEND_SIGNAL(src, COMSIG_CAMERA_UNREGISTER_UI, user)
 	// Turn off the console
 	if(length(concurrent_users) == 0 && is_living)
 		current = null
+		SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 		last_camera_turf = null
 		if(use_power)
 			update_use_power(USE_POWER_IDLE)
 	user.unset_interaction()
-
-/obj/structure/machinery/computer/cameras/proc/show_camera_static()
-	cam_screen.vis_contents.Cut()
-	last_camera_turf = null
-	cam_background.icon_state = "scanline2"
-	cam_background.fill_rect(1, 1, DEFAULT_MAP_SIZE, DEFAULT_MAP_SIZE)
 
 // Returns the list of cameras accessible from this computer
 /obj/structure/machinery/computer/cameras/proc/get_available_cameras()
@@ -269,10 +202,48 @@
 	name = "Ship Security Cameras"
 	network = list(CAMERA_NET_ALMAYER)
 
-/obj/structure/machinery/computer/cameras/wooden_tv/prop
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast
 	name = "Television Set"
 	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW."
-	network = null
+	network = list(CAMERA_NET_CORRESPONDENT)
+	var/obj/item/device/camera/broadcasting/broadcastingcamera = null
+
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/Destroy()
+	broadcastingcamera = null
+	return ..()
+
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/ui_state(mob/user)
+	return GLOB.default_state
+
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/ui_act(action, params)
+	. = ..()
+	if(action != "switch_camera")
+		return
+	broadcastingcamera = null
+	if (!istype(current, /obj/structure/machinery/camera/correspondent))
+		return
+	var/obj/structure/machinery/camera/correspondent/corr_cam = current
+	if (!corr_cam.linked_broadcasting)
+		return
+	broadcastingcamera = corr_cam.linked_broadcasting
+	RegisterSignal(broadcastingcamera, COMSIG_BROADCAST_GO_LIVE, PROC_REF(go_back_live))
+	RegisterSignal(broadcastingcamera, COMSIG_PARENT_QDELETING, PROC_REF(clear_camera))
+
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/ui_close(mob/user)
+	. = ..()
+	if (!current && broadcastingcamera)
+		clear_camera()
+
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/proc/clear_camera()
+	SIGNAL_HANDLER
+	UnregisterSignal(broadcastingcamera, list(COMSIG_BROADCAST_GO_LIVE, COMSIG_PARENT_QDELETING))
+	broadcastingcamera = null
+
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/proc/go_back_live(obj/item/device/camera/broadcasting/broadcastingcamera)
+	SIGNAL_HANDLER
+	if (current.c_tag == broadcastingcamera.get_broadcast_name())
+		current = broadcastingcamera.linked_cam
+		SEND_SIGNAL(src, COMSIG_CAMERA_SET_TARGET, broadcastingcamera.linked_cam, broadcastingcamera.linked_cam.view_range, broadcastingcamera.linked_cam.view_range)
 
 /obj/structure/machinery/computer/cameras/wooden_tv/ot
 	name = "Mortar Monitoring Set"

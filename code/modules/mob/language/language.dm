@@ -23,7 +23,7 @@
 
 /datum/language/proc/broadcast(mob/living/speaker, message, speaker_mask)
 
-	log_say("[key_name(speaker)] : ([name]) [message]")
+	log_say("[key_name(speaker)] : ([name]) [message] (AREA: [get_area_name(speaker)])")
 
 	for(var/mob/player in GLOB.player_list)
 

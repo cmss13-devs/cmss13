@@ -7,7 +7,7 @@
 	desc = "An automated weapon rack hooked up to a big storage of standard-issue weapons."
 	icon_state = "guns"
 	req_access = list()
-	req_one_access = list(ACCESS_MARINE_DATABASE, ACCESS_MARINE_PREP, ACCESS_MARINE_CARGO)
+	req_one_access = list(ACCESS_MARINE_DATABASE, ACCESS_MARINE_PREP)
 	hackable = TRUE
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND
 
@@ -130,6 +130,7 @@
 		list("Technician Backpack", round(scale * 15), /obj/item/storage/backpack/marine/tech, VENDOR_ITEM_REGULAR),
 		list("Medical Backpack", round(scale * 15), /obj/item/storage/backpack/marine/medic, VENDOR_ITEM_REGULAR),
 		list("USCM Satchel", round(scale * 15), /obj/item/storage/backpack/marine/satchel, VENDOR_ITEM_REGULAR),
+		list("USCM Chestrig", round(scale * 15), /obj/item/storage/backpack/marine/satchel/chestrig, VENDOR_ITEM_REGULAR),
 		list("USCM Technical Satchel", round(scale * 15), /obj/item/storage/backpack/marine/satchel/tech, VENDOR_ITEM_REGULAR),
 		list("USCM Technical Chestrig", round(scale * 15), /obj/item/storage/backpack/marine/engineerpack/welder_chestrig, VENDOR_ITEM_REGULAR),
 		list("Medical Satchel", round(scale * 15), /obj/item/storage/backpack/marine/satchel/medic, VENDOR_ITEM_REGULAR),
@@ -279,6 +280,7 @@
 		list("M240 Incinerator Tank", round(scale * 3), /obj/item/ammo_magazine/flamer_tank, VENDOR_ITEM_REGULAR),
 		list("M56D Drum Magazine", round(scale * 2), /obj/item/ammo_magazine/m56d, VENDOR_ITEM_REGULAR),
 		list("M2C Box Magazine", round(scale * 2), /obj/item/ammo_magazine/m2c, VENDOR_ITEM_REGULAR),
+		list("Box of Breaching Shells (16g)", round(scale * 2), /obj/item/ammo_magazine/shotgun/light/breaching, VENDOR_ITEM_REGULAR),
 		list("HIRR Baton Slugs", round(scale * 6), /obj/item/explosive/grenade/slug/baton, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-S Star Shell", round(scale * 4), /obj/item/explosive/grenade/high_explosive/airburst/starshell, VENDOR_ITEM_REGULAR),
 		list("M74 AGM-S Hornet Shell", round(scale * 4), /obj/item/explosive/grenade/high_explosive/airburst/hornet_shell, VENDOR_ITEM_REGULAR),

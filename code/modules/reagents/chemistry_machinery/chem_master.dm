@@ -141,7 +141,23 @@
 			if(length(label) < 3)
 				loaded_pill_bottle.maptext_label = label
 				loaded_pill_bottle.update_icon()
+	else if(href_list["setcolor"])
+		// Checking for state changes
+		if(!loaded_pill_bottle)
+			return
 
+		if(!Adjacent(usr))
+			return
+
+		var/num = copytext(reject_bad_text(input(usr,"Color? (1-12)", "Set \the [src]'s color", "")), 1, 3)
+		if(!num || !length(num) || text2num(num) <= 0 || text2num(num) > 12 || copytext(num, 2, 3) == " ")
+			to_chat(usr, SPAN_NOTICE("You clear the color off \the [src]."))
+			icon_state = "pill_canister"
+			update_icon()
+			return
+		loaded_pill_bottle.icon_state = "pill_canister" + num
+		to_chat(usr, SPAN_NOTICE("You color \the [loaded_pill_bottle]."))
+		loaded_pill_bottle.update_icon()
 
 	else if(href_list["close"])
 		close_browser(user, "chemmaster")
@@ -356,6 +372,7 @@
 			if(loaded_pill_bottle)
 				dat += "<A href='?src=\ref[src];ejectp=1;user=\ref[user]'>Eject [loaded_pill_bottle] \[[loaded_pill_bottle.contents.len]/[loaded_pill_bottle.max_storage_space]\]</A><BR>"
 				dat += "<A href='?src=\ref[src];addlabelp=1;user=\ref[user]'>Add label to [loaded_pill_bottle] \[[loaded_pill_bottle.contents.len]/[loaded_pill_bottle.max_storage_space]\]</A><BR><BR>"
+				dat += "<A href='?src=\ref[src];setcolor=1;user=\ref[user]'>Set color to [loaded_pill_bottle] \[[loaded_pill_bottle.contents.len]/[loaded_pill_bottle.max_storage_space]\]</A><BR><BR>"
 				dat += "<A href='?src=\ref[src];transferp=1;'>Transfer [loaded_pill_bottle] \[[loaded_pill_bottle.contents.len]/[loaded_pill_bottle.max_storage_space]\] to the smartfridge</A><BR><BR>"
 			else
 				dat += "No pill bottle inserted.<BR><BR>"

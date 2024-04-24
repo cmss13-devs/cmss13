@@ -3112,6 +3112,10 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall2
 	name = "wall vent"
 	icon_state = "smallwallvent2"
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3
+	name = "wall vent"
+	icon_state = "smallwallvent3"
+
 
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/computer
 	name = "machinery"

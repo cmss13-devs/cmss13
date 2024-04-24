@@ -18,10 +18,10 @@
 	requires_bodypart = FALSE
 
 /datum/surgery/xenomorph/can_start(mob/user, mob/living/carbon/xenomorph/patient, obj/limb/L, obj/item/tool)
-	if(patient.stat == DEAD && !patient.organ_removed && !islarva(patient) && !ispredalien(patient))
+	if(patient.stat == DEAD && !patient.organ_removed && !islarva(patient) && !isfacehugger(patient))
 		return TRUE
-	if(islarva(patient) || ispredalien(patient))
-		to_chat(user, SPAN_DANGER("You cant extract organ from [patient.caste_type] as there is none!"))
+	if(islarva(patient) || isfacehugger(patient))
+		to_chat(user, SPAN_DANGER("This race is probably too small to have a mature organ worthy to extract..."))
 	return FALSE
 
 /datum/surgery_step/xenomorph/cut_exoskeleton

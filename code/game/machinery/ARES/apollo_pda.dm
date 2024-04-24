@@ -463,6 +463,13 @@
 			sec_vent.create_gas(VENT_GAS_CN20_XENO, 6, 5 SECONDS)
 			log_admin("[key_name(operator)] released nerve gas from Vent '[sec_vent.vent_tag]' via ARES.")
 
+		if("security_lockdown")
+			if(!COOLDOWN_FINISHED(datacore, aicore_lockdown))
+				to_chat(user, SPAN_BOLDWARNING("AI Core Lockdown procedures are on cooldown! They will be ready in [COOLDOWN_SECONDSLEFT(datacore, aicore_lockdown)] seconds!"))
+				return FALSE
+			aicore_lockdown(user)
+			return TRUE
+
 	if(playsound)
 		var/sound = pick('sound/machines/pda_button1.ogg', 'sound/machines/pda_button2.ogg')
 		playsound(src, sound, 15, TRUE)

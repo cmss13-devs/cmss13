@@ -60,7 +60,7 @@
 		return
 	if(istype(A, /obj/item/storage/pill_bottle))		
 		var/obj/item/storage/pill_bottle/target_pill_bottle = A
-		target_pill_bottle.choose_color() 
+		target_pill_bottle.choose_color(user)
 	
 	if(!label || !length(label))
 		remove_label(A, user)

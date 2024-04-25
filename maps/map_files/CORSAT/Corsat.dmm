@@ -27817,7 +27817,6 @@
 	name = "Secure Racks";
 	req_access_txt = "103"
 	},
-/obj/item/XenoItem/AntiAcid,
 /turf/open/floor/corsat{
 	icon_state = "purplewhite"
 	},
@@ -27836,21 +27835,6 @@
 	icon_state = "retrosquareslight"
 	},
 /area/corsat/gamma/medbay)
-"bAt" = (
-/obj/structure/surface/rack,
-/obj/structure/window/reinforced/toughened{
-	dir = 8
-	},
-/obj/structure/machinery/door/window/eastright{
-	dir = 1;
-	name = "Secure Racks";
-	req_access_txt = "103"
-	},
-/obj/item/XenoItem/ResinPaste,
-/turf/open/floor/corsat{
-	icon_state = "purplewhite"
-	},
-/area/corsat/omega/complex)
 "bAu" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/corsat{
@@ -76250,7 +76234,7 @@ crG
 aoc
 bBH
 bCv
-bAt
+bAq
 aoE
 bBO
 bUn

@@ -46,7 +46,11 @@
 	/// Direction to adjacent user from which we're allowed to do offset vending
 	var/list/vend_dir_whitelist
 
+	/// The actual inventory for this vendor as a list of lists
+	/// 1: name 2: amount 3: type 4: flag
 	var/list/listed_products = list()
+	/// Partial stacks to hold on to as an associated list of type : amount
+	var/list/partial_product_stacks = list()
 
 	// Are points associated with this vendor tied to its instance?
 	var/instanced_vendor_points = FALSE
@@ -947,6 +951,12 @@ GLOBAL_LIST_EMPTY(vending_products)
 	if(vend_flags & VEND_LOAD_AMMO_BOXES)
 		populate_ammo_boxes()
 
+	partial_product_stacks = list()
+	for(var/list/vendspec in listed_products)
+		var/current_type = vendspec[3]
+		if(ispath(current_type, /obj/item/stack))
+			partial_product_stacks[current_type] = 0
+
 ///Updates the vendor stock when the [/datum/game_mode/var/marine_tally] has changed and we're using [VEND_STOCK_DYNAMIC]
 ///Assumes the scale can only increase!!! Don't take their items away!
 /obj/structure/machinery/cm_vending/sorted/proc/update_dynamic_stock(new_scale)
@@ -1043,6 +1053,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	for(var/list/vendspec as anything in stock_listed_products)
 		if(item_to_stock.type == vendspec[3])
 
+			var/partial_stacks = 0
 			if(istype(item_to_stock, /obj/item/device/defibrillator))
 				var/obj/item/device/defibrillator/defib = item_to_stock
 				if(!defib.dcell)
@@ -1060,9 +1071,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 			else if(istype(item_to_stock, /obj/item/stack))
 				var/obj/item/stack/item_stack = item_to_stock
-				if(item_stack.amount != item_stack.max_amount)
-					to_chat(user, SPAN_WARNING("[item_to_stock] needs to be a complete set to restock it!"))
-					return FALSE
+				partial_stacks = item_stack.amount % item_stack.max_amount
 
 			if(!additional_restock_checks(item_to_stock, user, vendspec))
 				// the error message needs to go in the proc
@@ -1080,7 +1089,15 @@ GLOBAL_LIST_EMPTY(vending_products)
 			qdel(item_to_stock)
 			user.visible_message(SPAN_NOTICE("[user] stocks [src] with \a [vendspec[1]]."), \
 			SPAN_NOTICE("You stock [src] with \a [vendspec[1]]."))
-			vendspec[2]++
+			if(partial_stacks)
+				var/obj/item/stack/item_stack = item_to_stock
+				var/existing_stacks = partial_product_stacks[item_to_stock.type]
+				var/combined_stacks = existing_stacks + partial_stacks
+				if(existing_stacks == 0 || combined_stacks > item_stack.max_amount)
+					vendspec[2]++
+				partial_product_stacks[item_to_stock.type] = combined_stacks % item_stack.max_amount
+			else
+				vendspec[2]++
 			update_derived_ammo_and_boxes_on_add(vendspec)
 			updateUsrDialog()
 			return TRUE //We found our item, no reason to go on.
@@ -1092,8 +1109,16 @@ GLOBAL_LIST_EMPTY(vending_products)
 	var/dynamic_metadata = dynamic_stock_multipliers[vendspec]
 	if(dynamic_metadata)
 		if(vendspec[2] >= dynamic_metadata[2])
-			to_chat(user, SPAN_WARNING("[src] is already full of [vendspec[1]]!"))
-			return FALSE
+			if(!istype(item_to_stock, /obj/item/stack))
+				to_chat(user, SPAN_WARNING("[src] is already full of [vendspec[1]]!"))
+				return FALSE
+			var/obj/item/stack/item_stack = item_to_stock
+			if(partial_product_stacks[item_to_stock.type] == 0)
+				to_chat(user, SPAN_WARNING("[src] is already full of [vendspec[1]]!"))
+				return FALSE // No partial stack to fill
+			if((partial_product_stacks[item_to_stock.type] + item_stack.amount) > item_stack.max_amount)
+				to_chat(user, SPAN_WARNING("[src] is already full of [vendspec[1]]!"))
+				return FALSE // Exceeds partial stack to fill
 	else
 		stack_trace("[src] could not find dynamic_stock_multipliers for [vendspec[1]]!")
 	return TRUE
@@ -1302,14 +1327,20 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 
 /obj/structure/machinery/cm_vending/proc/vendor_inventory_ui_data(mob/user)
 	. = list()
-	var/list/ui_listed_products = get_listed_products(user)
-	var/list/ui_categories = list()
+	var/list/products = get_listed_products(user)
+	var/list/product_amounts = list()
+	var/list/product_partials = list()
 
-	for (var/i in 1 to length(ui_listed_products))
-		var/list/myprod = ui_listed_products[i] //we take one list from listed_products
-		var/p_amount = myprod[2] //amount left
-		ui_categories += list(p_amount)
-	.["stock_listing"] = ui_categories
+	for(var/i in 1 to length(products))
+		var/list/cur_prod = products[i] //we take one list from listed_products
+		product_amounts += list(cur_prod[2]) //amount left
+		var/cur_type = cur_prod[3]
+		var/cur_amount_partial = 0
+		if(cur_type in partial_product_stacks)
+			cur_amount_partial = partial_product_stacks[cur_type]
+		product_partials += list(cur_amount_partial)
+	.["stock_listing"] = product_amounts
+	.["stock_listing_partials"] = product_partials
 
 /obj/structure/machinery/cm_vending/proc/vendor_successful_vend(list/itemspec, mob/living/carbon/human/user)
 	if(stat & IN_USE)
@@ -1326,18 +1357,22 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 			sleep(vend_delay)
 
 		var/prod_type = itemspec[3]
-		if(islist(prod_type))
-			for(var/each_type in prod_type)
-				vendor_successful_vend_one(each_type, user, target_turf, itemspec[4] == MARINE_CAN_BUY_UNIFORM)
-				SEND_SIGNAL(src, COMSIG_VENDOR_SUCCESSFUL_VEND, src, itemspec, user)
-		else
-			vendor_successful_vend_one(prod_type, user, target_turf, itemspec[4] == MARINE_CAN_BUY_UNIFORM)
-			SEND_SIGNAL(src, COMSIG_VENDOR_SUCCESSFUL_VEND, src, itemspec, user)
-
+		var/stack_amount = 0
 		if(vend_flags & VEND_LIMITED_INVENTORY)
 			itemspec[2]--
+			if(itemspec[2] == 0)
+				stack_amount = partial_product_stacks[prod_type]
+				partial_product_stacks[prod_type] = 0
 			if(vend_flags & VEND_LOAD_AMMO_BOXES)
 				update_derived_ammo_and_boxes(itemspec)
+
+		if(islist(prod_type))
+			for(var/each_type in prod_type)
+				vendor_successful_vend_one(each_type, user, target_turf, itemspec[4] == MARINE_CAN_BUY_UNIFORM, stack_amount)
+				SEND_SIGNAL(src, COMSIG_VENDOR_SUCCESSFUL_VEND, src, itemspec, user)
+		else
+			vendor_successful_vend_one(prod_type, user, target_turf, itemspec[4] == MARINE_CAN_BUY_UNIFORM, stack_amount)
+			SEND_SIGNAL(src, COMSIG_VENDOR_SUCCESSFUL_VEND, src, itemspec, user)
 
 	else
 		to_chat(user, SPAN_WARNING("ERROR: itemspec is missing. Please report this to admins."))
@@ -1347,7 +1382,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 	icon_state = initial(icon_state)
 	update_icon()
 
-/obj/structure/machinery/cm_vending/proc/vendor_successful_vend_one(prod_type, mob/living/carbon/human/user, turf/target_turf, insignas_override)
+/obj/structure/machinery/cm_vending/proc/vendor_successful_vend_one(prod_type, mob/living/carbon/human/user, turf/target_turf, insignas_override, stack_amount)
 	var/obj/item/new_item
 	if(ispath(prod_type, /obj/item))
 		if(ispath(prod_type, /obj/item/weapon/gun))
@@ -1357,7 +1392,11 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 				prod_type = headset_type
 			else if(prod_type == /obj/item/clothing/gloves/marine)
 				prod_type = gloves_type
-			new_item = new prod_type(target_turf)
+			if(stack_amount > 0 && ispath(prod_type, /obj/item/stack))
+				new_item = new prod_type(target_turf, stack_amount)
+			else
+				new_item = new prod_type(target_turf)
+
 		new_item.add_fingerprint(user)
 	else
 		new_item = new prod_type(target_turf)
@@ -1413,17 +1452,22 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 	while(i <= length(products))
 		sleep(0.5)
 		var/list/itemspec = products[i]
+		var/itemspec_item = itemspec[3]
 		if(!itemspec[2] || itemspec[2] <= 0)
 			i++
 			continue
-		itemspec[2] -= 1
+		itemspec[2]--
 		var/list/spawned = list()
-		if(islist(itemspec[3]))
-			for(var/path in itemspec[3])
+		if(islist(itemspec_item))
+			for(var/path in itemspec_item)
 				spawned += new path(loc)
-		else if(itemspec[3])
-			var/path = itemspec[3]
-			spawned += new path(loc)
+		else if(itemspec_item)
+			if(itemspec[2] == 0 && partial_product_stacks[itemspec_item] > 0 && ispath(itemspec_item, /obj/item/stack))
+				var/stack_amount = partial_product_stacks[itemspec_item]
+				partial_product_stacks[itemspec_item] = 0
+				spawned += new itemspec_item(loc, stack_amount)
+			else
+				spawned += new itemspec_item(loc)
 		if(throw_objects)
 			for(var/atom/movable/spawned_atom in spawned)
 				INVOKE_ASYNC(spawned_atom, TYPE_PROC_REF(/atom/movable, throw_atom), pick(orange(src, 4)), 4, SPEED_FAST)

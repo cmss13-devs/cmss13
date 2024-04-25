@@ -295,8 +295,16 @@
 	var/dynamic_metadata = dynamic_stock_multipliers[vendspec]
 	if(dynamic_metadata)
 		if(vendspec[2] >= dynamic_metadata[2] && (!allow_supply_link_restock || !get_supply_link()))
-			to_chat(user, SPAN_WARNING("[src] is already full of [vendspec[1]]!"))
-			return FALSE
+			if(!istype(item_to_stock, /obj/item/stack))
+				to_chat(user, SPAN_WARNING("[src] is already full of [vendspec[1]]!"))
+				return FALSE
+			var/obj/item/stack/item_stack = item_to_stock
+			if(partial_product_stacks[item_to_stock.type] == 0)
+				to_chat(user, SPAN_WARNING("[src] is already full of [vendspec[1]]!"))
+				return FALSE // No partial stack to fill
+			if((partial_product_stacks[item_to_stock.type] + item_stack.amount) > item_stack.max_amount)
+				to_chat(user, SPAN_WARNING("[src] is already full of [vendspec[1]]!"))
+				return FALSE // Exceeds partial stack to fill
 	else
 		stack_trace("[src] could not find dynamic_stock_multipliers for [vendspec[1]]!")
 
@@ -561,11 +569,17 @@
 		if(!dynamic_metadata)
 			stack_trace("[src] could not find dynamic_stock_multipliers for [vendspec[1]]!")
 			continue
+		var/cur_type = vendspec[3]
 		if(vendspec[2] == dynamic_metadata[2])
+			if((cur_type in partial_product_stacks) && partial_product_stacks[cur_type] > 0)
+				partial_product_stacks[cur_type] = 0
+				.++
 			continue // Already at desired value
 		if(vendspec[2] > dynamic_metadata[2])
 			if(can_remove)
 				vendspec[2]--
+				if(cur_type in partial_product_stacks)
+					partial_product_stacks[cur_type] = 0
 				if(vend_flags & VEND_LOAD_AMMO_BOXES)
 					update_derived_ammo_and_boxes(vendspec)
 			continue // Returned some items to the void

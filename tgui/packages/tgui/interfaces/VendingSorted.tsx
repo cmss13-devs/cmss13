@@ -36,6 +36,7 @@ interface VendingData {
   theme: string;
   displayed_categories: VendingCategory[];
   stock_listing: Array<number>;
+  stock_listing_partials?: Array<number>;
   show_points?: boolean;
   current_m_points?: number;
   reagents?: number;
@@ -116,6 +117,9 @@ const VendableItemRow = (props: VenableItem) => {
 
   const quantity = data.stock_listing[record.prod_index - 1];
   const available = quantity > 0;
+  const partial_quantity =
+    data.stock_listing_partials?.[record.prod_index - 1] ?? 0;
+  const partialDesignation = partial_quantity > 0 ? '*' : '';
   const isMandatory = record.prod_color === VENDOR_ITEM_MANDATORY;
   const isRecommended = record.prod_color === VENDOR_ITEM_RECOMMENDED;
 
@@ -130,6 +134,7 @@ const VendableItemRow = (props: VenableItem) => {
       <TableCell>
         <span className={classes(['Text', !available && 'Failure'])}>
           {quantity}
+          {partialDesignation}
         </span>
       </TableCell>
 

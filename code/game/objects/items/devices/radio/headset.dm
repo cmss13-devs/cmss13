@@ -543,7 +543,7 @@
 
 /obj/item/device/radio/headset/almayer/mcl/aist
 	name = "corporate AI service technician headset"
-	desc = "A standard issue corporate liaison headset, modified for AIST responsibilities. Allows the wear to listen to, and broadcast over, the APOLLO Link. (Use :+)"
+	desc = "A standard issue corporate liaison headset, modified for AIST responsibilities. Allows the wearer to listen to, and broadcast over, the APOLLO Link. (Use :+)"
 	initial_keys = list(/obj/item/device/encryptionkey/binary, /obj/item/device/encryptionkey/mcom/cl)
 
 /obj/item/device/radio/headset/almayer/reporter

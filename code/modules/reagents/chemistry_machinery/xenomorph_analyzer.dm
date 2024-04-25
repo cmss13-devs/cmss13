@@ -120,11 +120,11 @@
 	if(cost > biomass_points)
 		to_chat(user, SPAN_WARNING("[src] makes a worrying beep and flashes red, theres not enough data processed to build the requested upgrade!"))
 		return
-	if(clearance_requirment < GLOB.chemical_data.clearance_level || clearance_requirment == 6 && !GLOB.chemical_data.reached_x_access)
+	if(clearance_requirment > GLOB.chemical_data.clearance_level || clearance_requirment == 6 && !GLOB.chemical_data.reached_x_access)
 		to_chat(user, SPAN_WARNING("[src] makes a annoying hum and flashes red, You dont have the legal access to the upgrade!"))
 		return
 	else
-		icon_state = "xeno_analyzer_on_printing"
+		icon_state = "xeno_analyzer_printing"
 		busy = TRUE
 		biomass_points -= cost
 		addtimer(CALLBACK(src, PROC_REF(print_upgrade), produce_path, variation), 5 SECONDS)

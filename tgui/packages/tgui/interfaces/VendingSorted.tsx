@@ -131,7 +131,7 @@ const VendableItemRow = (props: VenableItem) => {
         />
       </TableCell>
 
-      <TableCell>
+      <TableCell minWidth="3rem">
         <span className={classes(['Text', !available && 'Failure'])}>
           {quantity}
           {partialDesignation}
@@ -150,7 +150,10 @@ const VendableItemRow = (props: VenableItem) => {
 
       <TableCell>
         <DescriptionTooltip record={record}>
-          <Icon name="circle-info" className={classes(['RegularItemText'])} />
+          <Icon
+            name="circle-info"
+            className={classes(['RegularItemText', 'SmallIcon'])}
+          />
         </DescriptionTooltip>
       </TableCell>
     </>
@@ -200,7 +203,7 @@ const VendableClothingItemRow = (props: {
         <DescriptionTooltip record={record}>
           <Icon
             name="circle-info"
-            className={classes(['ShowDesc', 'RegularItemText'])}
+            className={classes(['ShowDesc', 'RegularItemText', 'SmallIcon'])}
           />
         </DescriptionTooltip>
       </TableCell>
@@ -301,7 +304,7 @@ export const VendingSorted = () => {
   const { data, act } = useBackend<VendingData>();
   if (data === undefined) {
     return (
-      <Window height={800} width={400}>
+      <Window height={800} width={450}>
         no data!
       </Window>
     );
@@ -314,7 +317,7 @@ export const VendingSorted = () => {
   const reagents = data.reagents ?? 0;
   const reagents_max = data.reagents_max ?? 0;
   return (
-    <Window height={800} width={400} theme={getTheme(data.theme)}>
+    <Window height={800} width={450} theme={getTheme(data.theme)}>
       <Window.Content
         scrollable
         className="Vendor"

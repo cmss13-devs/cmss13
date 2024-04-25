@@ -166,11 +166,11 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	var/datum/ares_datacore/datacore = GLOB.ares_datacore
 	datacore.records_bioscan.Add(new /datum/ares_record/bioscan(title, input))
 
-/proc/log_ares_bombardment(user_name, ob_name, coordinates)
+/proc/log_ares_bombardment(user_name, ob_name, message)
 	if(!ares_can_log())
 		return FALSE
 	var/datum/ares_datacore/datacore = GLOB.ares_datacore
-	datacore.records_bombardment.Add(new /datum/ares_record/bombardment(ob_name, "Bombardment fired at [coordinates].", user_name))
+	datacore.records_bombardment.Add(new /datum/ares_record/bombardment(ob_name, message, user_name))
 
 /proc/log_ares_announcement(title, message)
 	if(!ares_can_log())

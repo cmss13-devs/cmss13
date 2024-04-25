@@ -613,6 +613,15 @@
 	color = "#664B63" // rgb: 102, 75, 99
 	chemclass = CHEM_CLASS_UNCOMMON
 
+/datum/reagent/foaming_agent/stabilized
+	name = "Stabilized metallic foam"
+	id = "stablefoam"
+	description = "Stabilized metallic foam that solidifies when exposed to an open flame"
+	reagent_state = LIQUID
+	color = "#d4b8d1"
+	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_TOXIC = 8)
+
 /datum/reagent/nicotine
 	name = "Nicotine"
 	id = "nicotine"
@@ -696,9 +705,11 @@
 	description = "A custom napalm mix, stickier and lasts longer but lower damage"
 	reagent_state = LIQUID
 	color = "#f8e3b2"
-	chemfiresupp = FALSE
 	burncolor = "#f8e3b2"
 	burn_sprite = "dynamic"
+	intensitymod = -1.5
+	durationmod = -5
+	radiusmod = -0.5
 	properties = list(
 		PROPERTY_INTENSITY = BURN_LEVEL_TIER_2,
 		PROPERTY_DURATION = BURN_TIME_TIER_5,
@@ -710,10 +721,12 @@
 	id = "highdamagenapalm"
 	description = "A custom napalm mix, higher damage but not as sticky"
 	reagent_state = LIQUID
-	color = "#742424"
-	chemfiresupp = FALSE
-	burncolor = "#742424"
+	color = "#c51c1c"
+	burncolor = "#c51c1c"
 	burn_sprite = "dynamic"
+	intensitymod = -4.5
+	durationmod = -1
+	radiusmod = -0.5
 	properties = list(
 		PROPERTY_INTENSITY = BURN_LEVEL_TIER_8,
 		PROPERTY_DURATION = BURN_TIME_TIER_1,

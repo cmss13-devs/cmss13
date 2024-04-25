@@ -86,8 +86,14 @@
 	RegisterSignal(src, COMSIG_ARC_ANTENNA_TOGGLED, PROC_REF(on_antenna_toggle))
 
 /obj/vehicle/multitile/arc/crew_mousedown(datum/source, atom/object, turf/location, control, params)
-	return
+	var/list/modifiers = params2list(params)
+	if(modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK]) //don't step on examine, point, etc
+		return
 
+	switch(get_mob_seat(source))
+		if(VEHICLE_DRIVER)
+			if(modifiers[LEFT_CLICK] && modifiers[CTRL_CLICK])
+				activate_horn()
 
 /obj/vehicle/multitile/arc/get_examine_text(mob/user)
 	. = ..()

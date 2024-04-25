@@ -96,7 +96,7 @@
 			if(!istype(dest))
 				source.reagents.remove_reagent(reagent_id, amount)
 			else if(dest.reagents)
-				source.reagents.trans_id_to(dest, reagent_id, amount)
+				source.reagents.trans_id_to(dest, reagent_id, amount)	
 
 /obj/structure/machinery/chem_master/Topic(href, href_list)
 	. = ..()
@@ -149,15 +149,7 @@
 		if(!Adjacent(usr))
 			return
 
-		var/num = copytext(reject_bad_text(input(usr,"Color? (1-12)", "Set \the [src]'s color", "")), 1, 3)
-		if(!num || !length(num) || text2num(num) <= 0 || text2num(num) > 12 || copytext(num, 2, 3) == " ")
-			to_chat(usr, SPAN_NOTICE("You clear the color off \the [src]."))
-			loaded_pill_bottle.icon_state = "pill_canister"
-			update_icon()
-			return
-		loaded_pill_bottle.icon_state = "pill_canister" + num
-		to_chat(usr, SPAN_NOTICE("You color \the [loaded_pill_bottle]."))
-		loaded_pill_bottle.update_icon()
+		loaded_pill_bottle.choose_color()
 
 	else if(href_list["close"])
 		close_browser(user, "chemmaster")

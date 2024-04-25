@@ -59,14 +59,8 @@
 		to_chat(user, SPAN_WARNING("The label won't stick to that."))
 		return
 	if(istype(A, /obj/item/storage/pill_bottle))		
-		var/num = copytext(reject_bad_text(input(usr,"Color? (1-12 or blank)", "Set \the [A]'s color", "")), 1, 3)
-		if(!num || !length(num) || text2num(num) <= 0 || text2num(num) > 12 || copytext(num, 2, 3) == " ")
-			to_chat(usr, SPAN_NOTICE("You clear the color off \the [A]."))
-			A.icon_state = "pill_canister"
-			update_icon()
-		A.icon_state = "pill_canister" + num
-		to_chat(usr, SPAN_NOTICE("You color \the [A]."))
-		update_icon()
+		var/obj/item/storage/pill_bottle/target_pill_bottle = A
+		target_pill_bottle.choose_color() 
 	
 	if(!label || !length(label))
 		remove_label(A, user)

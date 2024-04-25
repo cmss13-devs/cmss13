@@ -522,10 +522,10 @@
 		"White" = "5",
 		"Light Green" = "6",
 		"Cyan" = "7",
-		"Red" = "8",
+		"Bordeaux" = "8",
 		"Aquamarine" = "9",
 		"Grey" = "10",
-		"Bordeaux" = "11",
+		"Red" = "11",
 		"Black" = "12",
 	)
 	var/selected_color = tgui_input_list(user, "Select a color.", "Color choice", possible_colors)

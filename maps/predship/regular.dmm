@@ -1184,14 +1184,6 @@
 	icon_state = "cult"
 	},
 /area/yautja)
-"dq" = (
-/obj/structure/surface/table/reinforced,
-/obj/item/XenoItem,
-/turf/open/floor/holofloor{
-	dir = 2;
-	icon_state = "cult"
-	},
-/area/yautja)
 "ds" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/alienjar,
@@ -3112,7 +3104,7 @@ dd
 Zv
 Zv
 ZI
-dq
+cv
 cu
 Zv
 Zv

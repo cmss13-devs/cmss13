@@ -10,7 +10,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_10_1"
 	},
-/area/vehicle/apc/command)
+/area/interior/vehicle/apc/command)
 "c" = (
 /obj/structure/bed/chair/vehicle{
 	dir = 1;
@@ -23,7 +23,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_5"
 	},
-/area/vehicle/apc/command)
+/area/interior/vehicle/apc/command)
 "d" = (
 /obj/structure/bed/chair/vehicle{
 	dir = 1;
@@ -36,7 +36,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_8_1"
 	},
-/area/vehicle/apc/command)
+/area/interior/vehicle/apc/command)
 "e" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "rear_1"
@@ -56,7 +56,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_12"
 	},
-/area/vehicle/apc/command)
+/area/interior/vehicle/apc/command)
 "h" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "rear_wheel_R";
@@ -79,7 +79,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_13"
 	},
-/area/vehicle/apc/command)
+/area/interior/vehicle/apc/command)
 "k" = (
 /turf/open/void/vehicle,
 /area/space)
@@ -123,7 +123,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_7_1"
 	},
-/area/vehicle/apc/command)
+/area/interior/vehicle/apc/command)
 "p" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "rear_6"
@@ -140,12 +140,12 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_8_1"
 	},
-/area/vehicle/apc/command)
+/area/interior/vehicle/apc/command)
 "r" = (
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_6"
 	},
-/area/vehicle/apc/command)
+/area/interior/vehicle/apc/command)
 "s" = (
 /obj/structure/machinery/prop/almayer/CICmap{
 	indestructible = 1;
@@ -155,7 +155,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_6"
 	},
-/area/vehicle/apc/command)
+/area/interior/vehicle/apc/command)
 "t" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "wheel_back_top_1";
@@ -168,7 +168,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_5"
 	},
-/area/vehicle/apc/command)
+/area/interior/vehicle/apc/command)
 "v" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "front_3"
@@ -194,7 +194,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_5"
 	},
-/area/vehicle/apc/command)
+/area/interior/vehicle/apc/command)
 "x" = (
 /obj/effect/landmark/interior/spawn/vehicle_driver_seat/armor{
 	dir = 4
@@ -202,12 +202,12 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_9_1"
 	},
-/area/vehicle/apc/command)
+/area/interior/vehicle/apc/command)
 "y" = (
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_14"
 	},
-/area/vehicle/apc/command)
+/area/interior/vehicle/apc/command)
 "z" = (
 /obj/structure/interior_wall/apc{
 	alpha = 100;
@@ -234,7 +234,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_11"
 	},
-/area/vehicle/apc/command)
+/area/interior/vehicle/apc/command)
 "C" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "front_1"
@@ -252,7 +252,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_0_1_15"
 	},
-/area/vehicle/apc/command)
+/area/interior/vehicle/apc/command)
 "F" = (
 /obj/structure/bed/chair/vehicle{
 	dir = 4
@@ -260,7 +260,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_11"
 	},
-/area/vehicle/apc/command)
+/area/interior/vehicle/apc/command)
 "G" = (
 /obj/effect/landmark/interior/spawn/entrance{
 	alpha = 50;
@@ -276,17 +276,17 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_12"
 	},
-/area/vehicle/apc/command)
+/area/interior/vehicle/apc/command)
 "H" = (
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_13"
 	},
-/area/vehicle/apc/command)
+/area/interior/vehicle/apc/command)
 "I" = (
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_13"
 	},
-/area/vehicle/apc/command)
+/area/interior/vehicle/apc/command)
 "J" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "wall"
@@ -314,7 +314,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_9_1"
 	},
-/area/vehicle/apc/command)
+/area/interior/vehicle/apc/command)
 "M" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "corner_small_R";
@@ -415,7 +415,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_6"
 	},
-/area/vehicle/apc/command)
+/area/interior/vehicle/apc/command)
 
 (1,1,1) = {"
 p

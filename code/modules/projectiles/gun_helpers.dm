@@ -390,12 +390,12 @@ DEFINES in setup.dm, referenced here.
 			user.visible_message(SPAN_NOTICE("[user] attaches [attachment] to [src]."),
 			SPAN_NOTICE("You attach [attachment] to [src]."), null, 4)
 			user.temp_drop_inv_item(attachment)
-			attachment.Attach(src)
+			attachment.Attach(src, user)
 			update_attachable(attachment.slot)
 			playsound(user, 'sound/handling/attachment_add.ogg', 15, 1, 4)
 			return TRUE
 
-/obj/item/weapon/gun/proc/on_detach(obj/item/attachable/attachment)
+/obj/item/weapon/gun/proc/on_detach(mob/user, obj/item/attachable/attachment)
 	return
 
 /obj/item/weapon/gun/proc/update_attachables() //Updates everything. You generally don't need to use this.
@@ -526,12 +526,7 @@ DEFINES in setup.dm, referenced here.
 
 	return FALSE
 
-//For the holster hotkey
-/mob/living/silicon/robot/verb/holster_verb(unholster_number_offset = 1 as num)
-	set name = "holster"
-	set hidden = TRUE
-	uneq_active()
-
+///For the holster hotkey
 /mob/living/carbon/human/verb/holster_verb(unholster_number_offset = 1 as num)
 	set name = "holster"
 	set hidden = TRUE

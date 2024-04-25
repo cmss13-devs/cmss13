@@ -14,6 +14,9 @@
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_4
 
+	available_strains = list(/datum/xeno_strain/eggsac)
+	behavior_delegate_type = /datum/behavior_delegate/carrier_base
+
 	evolution_allowed = FALSE
 	deevolves_to = list(XENO_CASTE_DRONE)
 	throwspeed = SPEED_AVERAGE
@@ -75,7 +78,6 @@
 		/mob/living/carbon/xenomorph/proc/rename_tunnel,
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
-	mutation_type = CARRIER_NORMAL
 
 	icon_xenonid = 'icons/mob/xenonids/carrier.dmi'
 
@@ -95,17 +97,8 @@
 	var/eggs_max = 0
 	var/laid_egg = 0
 
-/mob/living/carbon/xenomorph/carrier/update_icons()
-	. = ..()
-	if (mutation_type == CARRIER_NORMAL)
-		update_hugger_overlays()
-	if (mutation_type == CARRIER_EGGSAC)
-		update_eggsac_overlays()
-
 /mob/living/carbon/xenomorph/carrier/proc/update_hugger_overlays()
 	if(!hugger_overlays_icon)
-		return
-	if(mutation_type != CARRIER_NORMAL)
 		return
 
 	overlays -= hugger_overlays_icon
@@ -146,8 +139,6 @@
 /mob/living/carbon/xenomorph/carrier/proc/update_eggsac_overlays()
 	if(!eggsac_overlays_icon)
 		return
-	if(mutation_type != CARRIER_EGGSAC)
-		return
 
 	overlays -= eggsac_overlays_icon
 	eggsac_overlays_icon.overlays.Cut()
@@ -184,9 +175,6 @@
 	. = ..(cause, gibbed)
 	if(.)
 		var/chance = 75 //75% to drop an egg or hugger.
-		if(mutation_type == CARRIER_EGGSAC)
-			visible_message(SPAN_XENOWARNING("[src] throes as its eggsac bursts into a mess of acid!"))
-			playsound(src.loc, 'sound/effects/alien_egg_burst.ogg', 25, 1)
 
 		if(huggers_cur)
 			//Hugger explosion, like an egg morpher
@@ -206,6 +194,11 @@
 
 		if(eggs_dropped) //Checks whether or not to announce egg drop.
 			xeno_message(SPAN_XENOANNOUNCE("[src] has dropped some precious eggs!"), 2, hive.hivenumber)
+
+/mob/living/carbon/xenomorph/carrier/recalculate_actions()
+	. = ..()
+	huggers_max = caste.huggers_max
+	eggs_max = caste.eggs_max
 
 /mob/living/carbon/xenomorph/carrier/get_status_tab_items()
 	. = ..()
@@ -249,28 +242,6 @@
 		update_icons()
 	else
 		to_chat(src, SPAN_WARNING("We can't carry more facehuggers on you."))
-
-/mob/living/carbon/xenomorph/carrier/proc/store_eggs_in_egg_morpher(obj/effect/alien/resin/special/eggmorph/morpher)
-	if(morpher.linked_hive && (morpher.linked_hive.hivenumber != hivenumber))
-		to_chat(src, SPAN_WARNING("That egg morpher is tainted!"))
-		return
-
-	if(eggs_cur == 0)
-		to_chat(src, SPAN_WARNING("You are out of eggs!"))
-		return
-
-	if(eggs_cur > 0 && morpher.stored_huggers < morpher.huggers_to_grow_max)
-		var/eggs_to_transfer = min(eggs_cur, morpher.huggers_to_grow_max-morpher.stored_huggers)
-		morpher.stored_huggers += eggs_to_transfer
-		eggs_cur -= eggs_to_transfer
-		if(eggs_to_transfer == 1)
-			to_chat(src, SPAN_NOTICE("You slide one facehugger from an egg into \the [morpher]. Now sheltering: [eggs_cur] / [eggs_max]."))
-		else
-			to_chat(src, SPAN_NOTICE("You slide [eggs_to_transfer] facehuggers into \the [morpher] from your stored eggs. Now sheltering: [eggs_cur] / [eggs_max]."))
-		playsound(src.loc, "sound/effects/alien_egg_move.ogg", 25)
-		update_icons()
-	else
-		to_chat(src, SPAN_XENOWARNING("\The [morpher] is full of children."))
 
 
 /mob/living/carbon/xenomorph/carrier/proc/throw_hugger(atom/T)
@@ -388,7 +359,7 @@
 			if(on_fire)
 				to_chat(src, SPAN_WARNING("Touching \the [morpher] while you're on fire would burn the facehuggers in it!"))
 				return
-			store_eggs_in_egg_morpher(morpher)
+			store_huggers_from_egg_morpher(morpher)
 			return
 
 	var/obj/item/xeno_egg/E = get_active_hand()
@@ -432,3 +403,10 @@
 		return
 	GLOB.hive_datum[hivenumber].spawn_as_hugger(user, src)
 	huggers_cur--
+
+/datum/behavior_delegate/carrier_base
+	name = "Base Carrier Behavior Delegate"
+
+/datum/behavior_delegate/carrier_base/on_update_icons()
+	var/mob/living/carbon/xenomorph/carrier/bound_carrier = bound_xeno
+	bound_carrier.update_hugger_overlays()

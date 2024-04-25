@@ -5,6 +5,7 @@
     "webmap_url": "Trijent",
     "survivor_types": [
         "/datum/equipment_preset/survivor/doctor/trijent",
+        "/datum/equipment_preset/survivor/scientist/trijent",
         "/datum/equipment_preset/survivor/roughneck",
         "/datum/equipment_preset/survivor/chaplain/trijent",
         "/datum/equipment_preset/survivor/interstellar_commerce_commission_liaison",

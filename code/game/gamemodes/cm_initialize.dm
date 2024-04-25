@@ -159,7 +159,7 @@ Additional game mode variables.
 		else
 			if(!istype(player,/mob/dead)) continue //Otherwise we just want to grab the ghosts.
 
-		if(GLOB.RoleAuthority.roles_whitelist[player.ckey] & WHITELIST_PREDATOR)  //Are they whitelisted?
+		if(player?.client.check_whitelist_status(WHITELIST_PREDATOR))  //Are they whitelisted?
 			if(!player.client.prefs)
 				player.client.prefs = new /datum/preferences(player.client) //Somehow they don't have one.
 
@@ -192,7 +192,7 @@ Additional game mode variables.
 		if(show_warning) to_chat(pred_candidate, SPAN_WARNING("Something went wrong!"))
 		return
 
-	if(!(GLOB.RoleAuthority.roles_whitelist[pred_candidate.ckey] & WHITELIST_PREDATOR))
+	if(!(pred_candidate?.client.check_whitelist_status(WHITELIST_PREDATOR)))
 		if(show_warning) to_chat(pred_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a predator."))
 		return
 
@@ -205,9 +205,9 @@ Additional game mode variables.
 			to_chat(pred_candidate, SPAN_WARNING("You already were a Yautja! Give someone else a chance."))
 		return
 
-	if(show_warning && tgui_alert(pred_candidate, "Confirm joining the hunt. You will join as \a [lowertext(J.get_whitelist_status(GLOB.RoleAuthority.roles_whitelist, pred_candidate.client))] predator", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
+	if(show_warning && tgui_alert(pred_candidate, "Confirm joining the hunt. You will join as \a [lowertext(J.get_whitelist_status(pred_candidate.client))] predator", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
 		return
-	if(J.get_whitelist_status(GLOB.RoleAuthority.roles_whitelist, pred_candidate.client) == WHITELIST_NORMAL)
+	if(J.get_whitelist_status(pred_candidate.client) == WHITELIST_NORMAL)
 		var/pred_max = calculate_pred_max
 		if(pred_current_num >= pred_max)
 			if(show_warning) to_chat(pred_candidate, SPAN_WARNING("Only [pred_max] predators may spawn this round, but Councillors and Ancients do not count."))
@@ -263,10 +263,10 @@ Additional game mode variables.
 
 //If we are selecting xenomorphs, we NEED them to play the round. This is the expected behavior.
 //If this is an optional behavior, just override this proc or make an override here.
-/datum/game_mode/proc/initialize_starting_xenomorph_list(list/hives = list(XENO_HIVE_NORMAL), force_xenos = FALSE)
+/datum/game_mode/proc/initialize_starting_xenomorph_list(list/hives = list(XENO_HIVE_NORMAL), bypass_checks = FALSE)
 	var/list/datum/mind/possible_xenomorphs = get_players_for_role(JOB_XENOMORPH)
 	var/list/datum/mind/possible_queens = get_players_for_role(JOB_XENOMORPH_QUEEN)
-	if(possible_xenomorphs.len < xeno_required_num) //We don't have enough aliens, we don't consider people rolling for only Queen.
+	if(possible_xenomorphs.len < xeno_required_num && !bypass_checks) //We don't have enough aliens, we don't consider people rolling for only Queen.
 		to_world("<h2 style=\"color:red\">Not enough players have chosen to be a xenomorph in their character setup. <b>Aborting</b>.</h2>")
 		return
 
@@ -329,11 +329,11 @@ Additional game mode variables.
 	Our list is empty. This can happen if we had someone ready as alien and predator, and predators are picked first.
 	So they may have been removed from the list, oh well.
 	*/
-	if(LAZYLEN(xenomorphs) < xeno_required_num && LAZYLEN(picked_queens) != LAZYLEN(hives))
+	if(LAZYLEN(xenomorphs) < xeno_required_num && LAZYLEN(picked_queens) != LAZYLEN(hives) && !bypass_checks)
 		to_world("<h2 style=\"color:red\">Could not find any candidates after initial alien list pass. <b>Aborting</b>.</h2>")
 		return
 
-	return 1
+	return TRUE
 
 // Helper proc to set some constants
 /proc/setup_new_xeno(datum/mind/new_xeno)
@@ -938,7 +938,7 @@ Additional game mode variables.
 	var/marine_pop_size = 0
 	var/uscm_personnel_count = 0
 	for(var/mob/living/carbon/human/human as anything in GLOB.alive_human_list)
-		if(human.faction == FACTION_USCM)
+		if(human.faction == FACTION_MARINE)
 			uscm_personnel_count++
 			var/datum/job/job = GET_MAPPED_ROLE(human.job)
 			marine_pop_size += GLOB.RoleAuthority.calculate_role_weight(job)
@@ -1005,7 +1005,7 @@ Additional game mode variables.
 			to_chat(joe_candidate, SPAN_WARNING("Something went wrong!"))
 		return
 
-	if(!(GLOB.RoleAuthority.roles_whitelist[joe_candidate.ckey] & WHITELIST_JOE))
+	if(!joe_job.check_whitelist_status(joe_candidate))
 		if(show_warning)
 			to_chat(joe_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a synth."))
 		return
@@ -1016,7 +1016,7 @@ Additional game mode variables.
 		return
 
 	// council doesn't count towards this conditional.
-	if(joe_job.get_whitelist_status(GLOB.RoleAuthority.roles_whitelist, joe_candidate.client) == WHITELIST_NORMAL)
+	if(joe_job.get_whitelist_status(joe_candidate.client) == WHITELIST_NORMAL)
 		var/joe_max = joe_job.total_positions
 		if((joe_job.current_positions >= joe_max) && !MODE_HAS_TOGGLEABLE_FLAG(MODE_BYPASS_JOE))
 			if(show_warning)

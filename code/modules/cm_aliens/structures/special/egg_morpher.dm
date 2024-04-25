@@ -190,7 +190,8 @@
 	if(stored_huggers)
 		to_chat(M, SPAN_XENONOTICE("You retrieve a child."))
 		stored_huggers = max(0, stored_huggers - 1)
-		new /obj/item/clothing/mask/facehugger(loc, linked_hive.hivenumber)
+		var/obj/item/clothing/mask/facehugger/hugger = new(loc, linked_hive.hivenumber)
+		SEND_SIGNAL(M, COMSIG_XENO_TAKE_HUGGER_FROM_MORPHER, hugger)
 		return XENO_NONCOMBAT_ACTION
 	..()
 

@@ -46,31 +46,6 @@
 	full_name = "Toggle mark for hunt"
 	keybind_signal = COMSIG_KB_YAUTJA_TOGGLE_MARK_FOR_HUNT
 
-/datum/keybinding/yautja/mark_for_hunt/down(client/user)
-	. = ..()
-	if(.)
-		return
-	var/mob/living/carbon/human/H = user.mob
-	if(!isyautja(H))
-		return
-	H.mark_for_hunt()
-
-/datum/keybinding/yautja/remove_from_hunt
-	hotkey_keys = list("Unbound")
-	classic_keys = list("Unbound")
-	name = "remove_from_hunt"
-	full_name = "Remove from hunt"
-	keybind_signal = COMSIG_KB_YAUTJA_TOGGLE_MARK_FOR_HUNT
-
-/datum/keybinding/yautja/remove_from_hunt/down(client/user)
-	. = ..()
-	if(.)
-		return
-	var/mob/living/carbon/human/H = user.mob
-	if(!isyautja(H))
-		return
-	H.remove_from_hunt()
-
 // BRACER SPECIFIC \\
 
 // parent bracer \\

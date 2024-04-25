@@ -76,7 +76,7 @@ You must lead his Honor guard, his elite unit of marines, to protect the command
 	gear_preset = /datum/equipment_preset/wo/vhg
 
 /datum/job/command/bridge/whiskey/generate_entry_message(mob/living/carbon/human/H)
-	. = {"You were assigned to guard the commander in this hostile enviroment; that hasn't changed. Ensure your extra training and equipment isn't wasted!
+	. = {"You were assigned to guard the commander in this hostile environment; that hasn't changed. Ensure your extra training and equipment isn't wasted!
 You've survived through enough battles that you've been entrusted with more training, and can use overwatch consoles, as well as give orders.
 You're expected to defend not only the commander, but the bunker at large; leave the outside defenses to the marines.
 Glory to the commander. Glory to the USCM."}
@@ -90,7 +90,7 @@ Glory to the commander. Glory to the USCM."}
 	gear_preset = /datum/equipment_preset/wo/hgs
 
 /datum/job/command/tank_crew/whiskey/generate_entry_message(mob/living/carbon/human/H)
-	. = {"You were assigned to guard the commander in this hostile enviroment; that hasn't changed. Ensure your extra training and equipment isn't wasted!
+	. = {"You were assigned to guard the commander in this hostile environment; that hasn't changed. Ensure your extra training and equipment isn't wasted!
 You're expected to defend not only the commander, but the bunker at large; leave the outside defenses to the marines.
 You've been through much, and as such, have been given special-weapons training. Use it well.
 Glory to the commander. Glory to the USCM."}
@@ -104,7 +104,7 @@ Glory to the commander. Glory to the USCM."}
 	gear_preset = /datum/equipment_preset/wo/hg
 
 /datum/job/command/police/whiskey/generate_entry_message(mob/living/carbon/human/H)
-	. = {"You were assigned to guard the commander in this hostile enviroment; that hasn't changed. Ensure your extra training and equipment isn't wasted!
+	. = {"You were assigned to guard the commander in this hostile environment; that hasn't changed. Ensure your extra training and equipment isn't wasted!
 You're expected to defend not only the commander, but the bunker at large; leave the outside defenses to the marines.
 Glory to the commander. Glory to the USCM."}
 

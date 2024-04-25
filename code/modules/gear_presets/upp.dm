@@ -2590,7 +2590,7 @@
 
 //*****************************************************************************************************/
 /datum/equipment_preset/upp/synth
-	name = "UPP Combat Synthetic"
+	name = "UPP Synthetic"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	languages = ALL_SYNTH_LANGUAGES_UPP
@@ -2599,7 +2599,7 @@
 	assignment = JOB_UPP_COMBAT_SYNTH
 	rank = JOB_UPP_COMBAT_SYNTH
 	paygrade = PAY_SHORT_SYN
-	idtype = /obj/item/card/id/gold
+	idtype = /obj/item/card/id/dogtag
 
 /datum/equipment_preset/upp/synth/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(50;MALE,50;FEMALE)
@@ -2637,8 +2637,10 @@
 /datum/equipment_preset/upp/synth/load_race(mob/living/carbon/human/new_human)
 	new_human.set_species(SYNTH_GEN_THREE)
 
+/datum/equipment_preset/upp/synth/load_skills(mob/living/carbon/human/new_human)
+	new_human.allow_gun_usage = FALSE
+
 /datum/equipment_preset/upp/synth/load_gear(mob/living/carbon/human/new_human)
-	load_name(new_human)
 	//back
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/compact, WEAR_IN_BACK) //1
@@ -2658,22 +2660,18 @@
 	new_human.equip_to_slot_or_del(new hat, WEAR_HEAD)
 	//body
 	var/obj/item/clothing/under/marine/veteran/UPP/medic/UPP = new()
-	var/obj/item/clothing/accessory/storage/tool_webbing/equipped/W = new()
-	UPP.attach_accessory(new_human, W)
+	var/obj/item/clothing/accessory/storage/tool_webbing/equipped/webbing = new()
+	UPP.attach_accessory(new_human, webbing)
 	new_human.equip_to_slot_or_del(UPP, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/support, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/glass/bottle/tricordrazine, WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/bizon/upp, WEAR_J_STORE)
 	//waist
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/upp/full, WEAR_WAIST)
 	//limbs
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/upp, WEAR_HANDS)
-	//póckets
-	var/obj/item/storage/pouch/magazine/large/ppouch = new()
-	new_human.equip_to_slot_or_del(ppouch, WEAR_R_STORE)
-	for(var/i = 1 to ppouch.storage_slots)
-		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/bizon, WEAR_IN_R_STORE)
+	//pockets
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/full/pills, WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical, WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/surgery/surgical_line, WEAR_IN_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/surgery/synthgraft, WEAR_IN_L_STORE)

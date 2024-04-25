@@ -2,6 +2,7 @@
 #define ZOMBIE_INFECTION_STAGE_ONE 1
 #define ZOMBIE_INFECTION_STAGE_TWO 2
 #define ZOMBIE_INFECTION_STAGE_THREE 3
+#define ZOMBIE_INFECTION_STAGE_FOUR 4
 #define SLOW_INFECTION_RATE 1
 #define FAST_INFECTION_RATE 7
 #define STAGE_LEVEL_THRESHOLD 360
@@ -9,7 +10,7 @@
 
 /datum/disease/black_goo
 	name = "Black Goo"
-	max_stages = 3
+	max_stages = 4
 	cure = "Anti-Zed"
 	cure_id = "antiZed"
 	spread = "Bites"
@@ -120,17 +121,23 @@
 						stage_level += 42
 
 		if(ZOMBIE_INFECTION_STAGE_THREE)
-			//check if the mob is already a zombie and just return to avoid weird stuff, edge case if zombie_is_transforming deoesn't work.
+			// if zombie or transforming we upgrade it to stage four.
 			if(iszombie(infected_mob))
+				stage++
 				return
-
-			if(infected_mob.stat == DEAD && stage_counter != stage)
-				to_chat(infected_mob, SPAN_CENTERBOLD("Your zombie infection is now at stage three! Zombie transformation begin!"))
-				stage_counter = stage
-			hidden = list(0,0)
+			// if not a zombie(above check) and isn't transforming then we transform you into a zombie.
 			if(!zombie_is_transforming)
+				// if your dead we inform you that you're going to turn into a zombie.
+				if(infected_mob.stat == DEAD && stage_counter != stage)
+					to_chat(infected_mob, SPAN_CENTERBOLD("Your zombie infection is now at stage three! Zombie transformation begin!"))
+					stage_counter = stage
 				zombie_transform(infected_mob)
-			infected_mob.next_move_slowdown = max(infected_mob.next_move_slowdown, 2)
+				hidden = list(0,0)
+				infected_mob.next_move_slowdown = max(infected_mob.next_move_slowdown, 2)
+
+		if(ZOMBIE_INFECTION_STAGE_FOUR)
+			return
+			// final stage of infection it's to avoid running the above test once you're a zombie for now. maybe more later.
 
 /datum/disease/black_goo/proc/zombie_transform(mob/living/carbon/human/human)
 	set waitfor = 0
@@ -149,7 +156,7 @@
 		playsound(human.loc, 'sound/hallucinations/wail.ogg', 25, 1)
 		human.jitteriness = 0
 		human.set_species(SPECIES_ZOMBIE)
-		stage = 3
+		stage = 4
 		human.faction = FACTION_ZOMBIE
 		zombie_is_transforming = FALSE
 
@@ -310,6 +317,7 @@
 #undef ZOMBIE_INFECTION_STAGE_ONE
 #undef ZOMBIE_INFECTION_STAGE_TWO
 #undef ZOMBIE_INFECTION_STAGE_THREE
+#undef ZOMBIE_INFECTION_STAGE_FOUR
 #undef STAGE_LEVEL_THRESHOLD
 #undef SLOW_INFECTION_RATE
 #undef FAST_INFECTION_RATE

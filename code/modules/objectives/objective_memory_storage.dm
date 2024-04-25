@@ -128,7 +128,7 @@ GLOBAL_DATUM_INIT(intel_system, /datum/intel_system, new())
 		to_chat(user, SPAN_WARNING("Нажимаю на кнопки, но ничего не происходит."))
 		return FALSE
 	if(!GLOB.intel_system)
-		to_chat(user, SPAN_WARNING("Выдает ошибку подключения..."))
+		to_chat(user, SPAN_WARNING("Этот комъютер кажется не подключен ни к чему..."))
 		return FALSE
 	if(user.action_busy)
 		return FALSE

@@ -251,8 +251,6 @@
 /datum/equipment_preset/uscm/intel/full/load_gear(mob/living/carbon/human/new_human)
 
 	var/obj/item/clothing/under/marine/officer/intel/U = new(new_human)
-	var/obj/item/clothing/accessory/storage/webbing/W = new()
-	U.attach_accessory(new_human, W)
 	new_human.equip_to_slot_or_del(U, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/intel(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
@@ -856,14 +854,14 @@
 
 //Covert Raiders
 /datum/equipment_preset/uscm/marsoc/covert
-	name = "Marine Raiders (!DEATHSQUAD! Covert)"
+	name = "Marine Raider (!DEATHSQUAD! Covert)"
 	uses_special_name = TRUE
 /datum/equipment_preset/uscm/marsoc/covert/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = MALE
 	new_human.change_real_name(new_human, "[pick(GLOB.nato_phonetic_alphabet)]")
 	new_human.age = rand(20,30)
 /datum/equipment_preset/uscm/marsoc/covert/load_rank(mob/living/carbon/human/new_human)
-	return "O"
+	return PAY_SHORT_CDNM
 
 //Team Leader
 /datum/equipment_preset/uscm/marsoc/sl
@@ -891,7 +889,7 @@
 	new_human.change_real_name(new_human, "[pick(GLOB.nato_phonetic_alphabet)]")
 	new_human.age = rand(20,30)
 /datum/equipment_preset/uscm/marsoc/sl/covert/load_rank(mob/living/carbon/human/new_human)
-	return "O"
+	return PAY_SHORT_CDNM
 //Officer
 /datum/equipment_preset/uscm/marsoc/cmd
 	name = "Marine Raider Officer (!DEATHSQUAD!)"

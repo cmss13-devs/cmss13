@@ -44,7 +44,7 @@
 	var/thrall = FALSE //Used to affect icon generation.
 
 	///A list of all intrinsic mask actions
-	var/list/mask_actions = list(/datum/action/predator_action/mask/zoom, /datum/action/predator_action/mask/visor, /datum/action/item_action/specialist/yautja_aimed_shot)
+	var/list/mask_actions = list(/datum/action/predator_action/mask/zoom, /datum/action/predator_action/mask/visor)
 
 /obj/item/clothing/mask/gas/yautja/New(location, mask_number = rand(1,12), armor_material = "ebony", legacy = "None")
 	..()

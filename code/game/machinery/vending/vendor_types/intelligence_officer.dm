@@ -25,7 +25,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_intelligence_officer, list(
 		list("POUCHES", 0, null, null, null),
 		list("Large Magazine Pouch", 10, /obj/item/storage/pouch/magazine/large, null, VENDOR_ITEM_REGULAR),
 		list("Large Shotgun Shell Pouch", 10, /obj/item/storage/pouch/shotgun/large, null, VENDOR_ITEM_REGULAR),
-		list("Autoinjector Pouch (Full)", 15, /obj/item/storage/pouch/autoinjector/full/skillless, null, VENDOR_ITEM_RECOMMENDED),
+		list("Autoinjector Pouch (Full)", 15, /obj/item/storage/pouch/autoinjector/full, null, VENDOR_ITEM_RECOMMENDED),
 		list("Machete Pouch (Full)", 10, /obj/item/storage/pouch/machete/full, null, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", 0, null, null, null),
@@ -68,6 +68,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_intelligence_officer, list(
 
 		list("ARMOR (CHOOSE 1)", 0, null, null, null),
 		list("XM4 Pattern Intel Armor", 0, /obj/item/clothing/suit/storage/marine/medium/rto/intel, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("M3-L Pattern Light Armor", 0, /obj/item/clothing/suit/storage/marine/light, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 		list("Service Jacket", 0, /obj/item/clothing/suit/storage/jacket/marine/service, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 
 		list("BACKPACK (CHOOSE 1)", 0, null, null, null),

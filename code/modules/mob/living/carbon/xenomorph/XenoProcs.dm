@@ -292,8 +292,8 @@
 				return
 
 			if(isyautja(H))
-				if(H.check_shields(0, "the pounce", 1, get_dir(src,H)))
-					visible_message(SPAN_DANGER("[H] blocks the pounce of [src] with the combistick!"), SPAN_XENODANGER("[H] blocks your pouncing form with the combistick!"), null, 5)
+				if(H.check_shields(0, "the pounce", 1))
+					visible_message(SPAN_DANGER("[H] blocks the pounce of [src] with the combistick!"), SPAN_XENODANGER("[H] blocks our pouncing form with the combistick!"), null, 5)
 					apply_effect(3, WEAKEN)
 					throwing = FALSE
 					playsound(H, "bonk", 75, FALSE)

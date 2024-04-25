@@ -39,7 +39,7 @@
 
 	else if(medics < max_medics)
 		medics++
-		var/picked = pick(/mob/living/carbon/xenomorph/drone, /mob/living/carbon/xenomorph/hivelord, /mob/living/carbon/xenomorph/burrower)
+		var/picked = pick(/mob/living/carbon/xenomorph/drone, /mob/living/carbon/xenomorph/hivelord)
 		new_xeno = new picked(spawn_loc)
 
 	else if(engineers < max_engineers)

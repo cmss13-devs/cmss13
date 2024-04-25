@@ -24,11 +24,12 @@
 
 	/*A bunch of this stuff really needs to go under their own defines instead of being globally attached to mob.
 	A variable should only be globally attached to turfs/obj/whatever, when it is in fact needed as such.
-	The current method unnecessarily clusters up the variable list, especially for humans (although rearranging won't really clean it up a lot but the difference will be noticable for other mobs).
+	The current method unnecessarily clusters up the variable list, especially for humans (although rearranging won't really clean it up a lot but the difference will be noticeable for other mobs).
 	I'll make some notes on where certain variable defines should probably go.
 	Changing this around would probably require a good look-over the pre-existing code.
 	*/
-	var/list/observers //The list of people observing this mob.
+	/// The list of people observing this mob.
+	var/list/mob/dead/observer/observers
 	var/zone_selected = "chest"
 
 	var/use_me = 1 //Allows all mobs to use the me verb by default, will have to manually specify they cannot
@@ -366,10 +367,6 @@
 		switch(type)
 			if(/mob/living/carbon/human)
 				possibleverbs += typesof(/mob/living/carbon/proc,/mob/living/carbon/verb,/mob/living/carbon/human/verb,/mob/living/carbon/human/proc)
-			if(/mob/living/silicon/robot)
-				possibleverbs += typesof(/mob/living/silicon/proc,/mob/living/silicon/robot/proc,/mob/living/silicon/robot/verb)
-			if(/mob/living/silicon/ai)
-				possibleverbs += typesof(/mob/living/silicon/proc,/mob/living/silicon/ai/proc)
 		possibleverbs -= verbs
 		possibleverbs += "Cancel" // ...And one for the bottom
 
@@ -433,4 +430,3 @@
 			return
 
 		src.regenerate_icons()
-

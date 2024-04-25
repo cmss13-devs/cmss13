@@ -51,11 +51,6 @@
 	icon_state = "darkish"
 	},
 /area/bigredv2/outside/chapel)
-"aj" = (
-/turf/open/floor{
-	icon_state = "darkish"
-	},
-/area/bigredv2/outside/chapel)
 "ak" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -550,7 +545,7 @@ ab
 "}
 (10,1,1) = {"
 ac
-aj
+ae
 av
 aI
 aW

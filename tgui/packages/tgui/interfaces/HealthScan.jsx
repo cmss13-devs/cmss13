@@ -2,8 +2,8 @@ import { useBackend } from '../backend';
 import { Section, ProgressBar, Box, LabeledList, NoticeBox, Stack, Icon, Divider, Flex } from '../components';
 import { Window } from '../layouts';
 
-export const HealthScan = (props, context) => {
-  const { data } = useBackend(context);
+export const HealthScan = (props) => {
+  const { data } = useBackend();
   const {
     patient,
     dead,
@@ -242,8 +242,8 @@ export const HealthScan = (props, context) => {
   );
 };
 
-const ScannerChems = (props, context) => {
-  const { data } = useBackend(context);
+const ScannerChems = (props) => {
+  const { data } = useBackend();
   const { has_unknown_chemicals, chemicals_lists } = data;
   const chemicals = Object.values(chemicals_lists);
 
@@ -280,8 +280,8 @@ const ScannerChems = (props, context) => {
   );
 };
 
-const ScannerLimbs = (props, context) => {
-  const { data } = useBackend(context);
+const ScannerLimbs = (props) => {
+  const { data } = useBackend();
   const { limb_data_lists, detail_level } = data;
   const limb_data = Object.values(limb_data_lists);
   const bodyscanner = detail_level >= 1;
@@ -391,6 +391,11 @@ const ScannerLimbs = (props, context) => {
                       [Embedded Object]
                     </Box>
                   ) : null}
+                  {limb.open_zone_incision ? (
+                    <Box inline color={'red'} bold={1}>
+                      [Open Surgical Incision In {limb.open_zone_incision}]
+                    </Box>
+                  ) : null}
                 </Flex.Item>
               </>
             )}
@@ -401,8 +406,8 @@ const ScannerLimbs = (props, context) => {
   );
 };
 
-const ScannerOrgans = (props, context) => {
-  const { data } = useBackend(context);
+const ScannerOrgans = (props) => {
+  const { data } = useBackend();
   const { damaged_organs } = data;
 
   return (

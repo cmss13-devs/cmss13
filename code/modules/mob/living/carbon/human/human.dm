@@ -273,8 +273,6 @@
 
 
 /mob/living/carbon/human/show_inv(mob/living/user)
-	if(ismaintdrone(user))
-		return
 	var/obj/item/clothing/under/suit = null
 	if(istype(w_uniform, /obj/item/clothing/under))
 		suit = w_uniform
@@ -312,6 +310,29 @@
 	<BR><A href='?src=\ref[user];mach_close=mob[name]'>Close</A>
 	<BR>"}
 	show_browser(user, dat, name, "mob[name]")
+
+/**
+ * Handles any storage containers that the human is looking inside when auto-observed.
+ */
+/mob/living/carbon/human/auto_observed(mob/dead/observer/observer)
+	. = ..()
+
+	// If `src` doesn't have an inventory open.
+	if(!s_active)
+		return
+
+	// Add the storage interface to `observer`'s screen.
+	observer.client.add_to_screen(s_active.closer)
+	observer.client.add_to_screen(s_active.contents)
+
+	// If the storage has a set number of item slots.
+	if(s_active.storage_slots)
+		observer.client.add_to_screen(s_active.boxes)
+	// If the storage instead has a maximum combined item 'weight'.
+	else
+		observer.client.add_to_screen(s_active.storage_start)
+		observer.client.add_to_screen(s_active.storage_continue)
+		observer.client.add_to_screen(s_active.storage_end)
 
 // called when something steps onto a human
 // this handles mulebots and vehicles
@@ -694,10 +715,6 @@
 						var/mob/living/carbon/human/U = usr
 						new_comment["created_by"]["name"] = U.get_authentification_name()
 						new_comment["created_by"]["rank"] = U.get_assignment()
-					else if(istype(usr,/mob/living/silicon/robot))
-						var/mob/living/silicon/robot/U = usr
-						new_comment["created_by"]["name"] = U.name
-						new_comment["created_by"]["rank"] = "[U.modtype] [U.braintype]"
 					if(!islist(R.fields["comments"]))
 						R.fields["comments"] = list("1" = new_comment)
 					else
@@ -731,9 +748,6 @@
 										spawn()
 											if(istype(usr,/mob/living/carbon/human))
 												var/mob/living/carbon/human/U = usr
-												U.handle_regular_hud_updates()
-											if(istype(usr,/mob/living/silicon/robot))
-												var/mob/living/silicon/robot/U = usr
 												U.handle_regular_hud_updates()
 
 			if(!modified)
@@ -818,9 +832,6 @@
 									if(istype(usr,/mob/living/carbon/human))
 										var/mob/living/carbon/human/U = usr
 										R.fields[text("com_[counter]")] = text("Made by [U.get_authentification_name()] ([U.get_assignment()]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [GLOB.game_year]<BR>[t1]")
-									if(istype(usr,/mob/living/silicon/robot))
-										var/mob/living/silicon/robot/U = usr
-										R.fields[text("com_[counter]")] = text("Made by [U.name] ([U.modtype] [U.braintype]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [GLOB.game_year]<BR>[t1]")
 
 	if(href_list["medholocard"])
 		if(!skillcheck(usr, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
@@ -1173,7 +1184,7 @@
 		for(var/datum/cm_objective/Objective in src.mind.objective_memory.disks)
 			src.mind.objective_memory.disks -= Objective
 
-/mob/living/carbon/human/proc/set_species(new_species, default_colour)
+/mob/living/carbon/human/proc/set_species(new_species, default_color)
 	if(!new_species)
 		new_species = "Human"
 
@@ -1207,7 +1218,7 @@
 
 	species.create_organs(src)
 
-	if(species.base_color && default_colour)
+	if(species.base_color && default_color)
 		//Apply color.
 		r_skin = hex2num(copytext(species.base_color,2,4))
 		g_skin = hex2num(copytext(species.base_color,4,6))

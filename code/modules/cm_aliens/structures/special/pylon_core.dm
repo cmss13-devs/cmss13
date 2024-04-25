@@ -188,19 +188,10 @@
 	if(!linked_hive.hive_location || !linked_hive.living_xeno_queen)
 		return
 
-	var/list/hive_xenos = linked_hive.totalXenos
-
-	for(var/mob/living/carbon/xenomorph/xeno in hive_xenos)
-		if(!xeno.counts_for_slots)
-			hive_xenos -= xeno
-
-	var/real_total_xeno_count = length(hive_xenos) + linked_hive.stored_larva
-	var/total_human_count = length(GLOB.alive_human_list)
-
-	if(real_total_xeno_count > (total_human_count * ENDGAME_LARVA_CAP_MULTIPLIER))
+	if(linked_hive.check_if_hit_larva_from_pylon_limit())
 		return
 
-	linked_hive.partial_larva += total_human_count * LARVA_ADDITION_MULTIPLIER
+	linked_hive.partial_larva += (linked_hive.get_real_total_xeno_count() + linked_hive.stored_larva) * LARVA_ADDITION_MULTIPLIER
 	linked_hive.convert_partial_larva_to_full_larva()
 	linked_hive.hive_ui.update_burrowed_larva()
 

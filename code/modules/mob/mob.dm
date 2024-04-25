@@ -761,7 +761,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 	recalculate_move_delay = TRUE
 
 	if(usr.stat)
-		to_chat(usr, "You are unconcious and cannot do that!")
+		to_chat(usr, "You are unconscious and cannot do that!")
 		return
 
 	if(usr.is_mob_restrained())

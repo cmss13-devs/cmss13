@@ -1,5 +1,5 @@
 import { Box } from '../components';
-import { Component, createRef } from 'inferno';
+import { Component, createRef } from 'react';
 
 export class DrawnMap extends Component {
   constructor(props) {

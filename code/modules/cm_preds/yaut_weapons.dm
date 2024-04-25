@@ -938,7 +938,7 @@
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/set_gun_config_values()
 	..()
-	set_fire_delay(FIRE_DELAY_TIER_6*2)
+	set_fire_delay(FIRE_DELAY_TIER_4*2)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -1254,7 +1254,19 @@
 	return
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/dropped(mob/living/carbon/human/M)
-	flags_item &= ~DELONDROP
+	playsound(M, 'sound/weapons/pred_plasmacaster_off.ogg', 15, 1)
+	to_chat(M, SPAN_NOTICE("You deactivate your plasma caster."))
+
+	var/datum/action/predator_action/bracer/caster/caster_action
+	for(caster_action as anything in M.actions)
+		if(istypestrict(caster_action, /datum/action/predator_action/bracer/caster))
+			caster_action.update_button_icon(FALSE)
+			break
+
+	if(source)
+		forceMove(source)
+		source.caster_deployed = FALSE
+		return
 	..()
 
 	var/obj/item/clothing/gloves/yautja/hunter/bracers = M.gloves

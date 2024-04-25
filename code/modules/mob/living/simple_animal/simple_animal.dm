@@ -323,7 +323,7 @@
 		explosion_throw(severity, direction)
 
 /mob/living/simple_animal/adjustBruteLoss(damage)
-	health = Clamp(health - damage, 0, maxHealth)
+	health = clamp(health - damage, 0, maxHealth)
 
 /mob/living/simple_animal/proc/SA_attackable(target_mob)
 	if (isliving(target_mob))

@@ -3,6 +3,9 @@ GLOBAL_LIST_EMPTY(WYFaxes) //Departmental faxes
 GLOBAL_LIST_EMPTY(USCMFaxes)
 GLOBAL_LIST_EMPTY(ProvostFaxes)
 GLOBAL_LIST_EMPTY(CMBFaxes)
+GLOBAL_LIST_EMPTY(UPPFaxes)
+GLOBAL_LIST_EMPTY(TWEFaxes)
+GLOBAL_LIST_EMPTY(CLFFaxes)
 GLOBAL_LIST_EMPTY(GeneralFaxes) //Inter-machine faxes
 GLOBAL_LIST_EMPTY(fax_contents) //List of fax contents to maintain it even if source paper is deleted
 
@@ -33,6 +36,9 @@ GLOBAL_LIST_INIT(available_taskbar_icons, setup_taskbar_icons())
 GLOBAL_LIST_EMPTY(minimap_icons)
 
 GLOBAL_LIST_EMPTY(mainship_pipes)
+
+/// List of all the maps that have been cached for /proc/load_map
+GLOBAL_LIST_EMPTY(cached_maps)
 
 /proc/initiate_minimap_icons()
 	var/list/icons = list()
@@ -163,9 +169,6 @@ GLOBAL_LIST_INIT(language_keys, setup_language_keys()) //table of say codes for 
 GLOBAL_REFERENCE_LIST_INDEXED(origins, /datum/origin, name)
 GLOBAL_LIST_INIT(player_origins, USCM_ORIGINS)
 
-//Xeno mutators
-GLOBAL_REFERENCE_LIST_INDEXED_SORTED(xeno_mutator_list, /datum/xeno_mutator, name)
-
 //Xeno hives
 GLOBAL_LIST_INIT_TYPED(hive_datum, /datum/hive_status, list(
 	XENO_HIVE_NORMAL = new /datum/hive_status(),
@@ -180,6 +183,7 @@ GLOBAL_LIST_INIT_TYPED(hive_datum, /datum/hive_status, list(
 	XENO_HIVE_FORSAKEN = new /datum/hive_status/forsaken(),
 	XENO_HIVE_YAUTJA = new /datum/hive_status/yautja(),
 	XENO_HIVE_RENEGADE = new /datum/hive_status/corrupted/renegade(),
+	XENO_HIVE_TUTORIAL = new /datum/hive_status/tutorial()
 ))
 
 GLOBAL_LIST_INIT(xeno_evolve_times, setup_xeno_evolve_times())
@@ -490,7 +494,7 @@ GLOBAL_LIST_INIT(available_specialist_kit_boxes, list(
 			"Sniper" = 2,
 			"Scout" = 2,
 			"Demo" = 2,
-			"ST" = 2,
+			"ST" = 2
 			))
 
 /proc/init_global_referenced_datums()

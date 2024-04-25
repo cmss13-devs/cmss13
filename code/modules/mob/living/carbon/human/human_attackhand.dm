@@ -6,7 +6,7 @@
 
 	SEND_SIGNAL(attacking_mob, COMSIG_LIVING_ATTACKHAND_HUMAN, src)
 
-	if((attacking_mob != src) && check_shields(0, attacking_mob.name, attacker_dir = get_dir(attacking_mob,src)))
+	if((attacking_mob != src) && check_shields(0, attacking_mob.name))
 		visible_message(SPAN_DANGER("<B>[attacking_mob] attempted to touch [src]!</B>"), null, null, 5)
 		return FALSE
 
@@ -23,7 +23,7 @@
 						SPAN_NOTICE("You extinguished the fire on [src]."), null, 5)
 				return 1
 
-			// If unconcious with oxygen damage, do CPR. If dead, we do CPR
+			// If unconscious with oxygen damage, do CPR. If dead, we do CPR
 			if(!(stat == UNCONSCIOUS && getOxyLoss() > 0) && !(stat == DEAD))
 				help_shake_act(attacking_mob)
 				return 1
@@ -88,7 +88,7 @@
 				attack = attacking_mob.species.secondary_unarmed
 				return
 
-			last_damage_data = create_cause_data("fisticuffs", src)
+			last_damage_data = create_cause_data("fisticuffs", attacking_mob)
 			attacking_mob.attack_log += text("\[[time_stamp()]\] <font color='red'>[pick(attack.attack_verb)]ed [key_name(src)]</font>")
 			attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been [pick(attack.attack_verb)]ed by [key_name(attacking_mob)]</font>")
 			msg_admin_attack("[key_name(attacking_mob)] [pick(attack.attack_verb)]ed [key_name(src)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)

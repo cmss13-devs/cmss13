@@ -120,6 +120,12 @@
 		return TRUE
 	return FALSE
 
+
+/obj/structure/blocker/forcefield/multitile_vehicles/handle_vehicle_bump(obj/vehicle/multitile/multitile_vehicle)
+	if(multitile_vehicle.vehicle_flags & VEHICLE_BYPASS_BLOCKERS)
+		return TRUE
+	return FALSE
+
 /obj/structure/blocker/forcefield/human
 	types = list(/mob/living/carbon/human)
 	icon_state = "purple_line"

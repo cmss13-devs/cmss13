@@ -559,11 +559,6 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 //This proc is called when you want to place an item into the storage item.
 /obj/item/storage/attackby(obj/item/W as obj, mob/user as mob)
 	..()
-
-	if(isrobot(user))
-		to_chat(user, SPAN_NOTICE(" You're a robot. No."))
-		return //Robots can't interact with storage items.
-
 	return attempt_item_insertion(W, FALSE, user)
 
 /obj/item/storage/equipped(mob/user, slot, silent)

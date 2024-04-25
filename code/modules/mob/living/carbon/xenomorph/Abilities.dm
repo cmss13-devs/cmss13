@@ -196,32 +196,49 @@
 	plasma_cost = 0
 
 /datum/action/xeno_action/onclick/psychic_whisper/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/X = owner
-	if(X.client.prefs.muted & MUTE_IC)
-		to_chat(X, SPAN_DANGER("You cannot whisper (muted)."))
+	var/mob/living/carbon/xenomorph/xeno_player = owner
+	if(xeno_player.client.prefs.muted & MUTE_IC)
+		to_chat(xeno_player, SPAN_DANGER("You cannot whisper (muted)."))
 		return
-	if(!X.check_state(TRUE))
+	if(!xeno_player.check_state(TRUE))
 		return
 	var/list/target_list = list()
-	for(var/mob/living/possible_target in view(7, X))
-		if(possible_target == X || !possible_target.client) continue
+	for(var/mob/living/carbon/possible_target in view(7, xeno_player))
+		if(possible_target == xeno_player || !possible_target.client) continue
 		target_list += possible_target
 
-	var/mob/living/M = tgui_input_list(usr, "Target", "Send a Psychic Whisper to whom?", target_list, theme="hive_status")
-	if(!M) return
+	var/mob/living/carbon/target_mob = tgui_input_list(usr, "Target", "Send a Psychic Whisper to whom?", target_list, theme="hive_status")
+	if(!target_mob) return
 
-	if(!X.check_state(TRUE))
+	if(!xeno_player.check_state(TRUE))
 		return
 
-	var/msg = strip_html(input("Message:", "Psychic Whisper") as text|null)
-	if(msg)
-		log_say("PsychicWhisper: [key_name(X)]->[M.key] : [msg]")
-		if(!istype(M, /mob/living/carbon/xenomorph))
-			to_chat(M, SPAN_XENOQUEEN("You hear a strange, alien voice in your head. \"[msg]\""))
+	var/whisper = strip_html(input("Message:", "Psychic Whisper") as text|null)
+	if(whisper)
+		log_say("PsychicWhisper: [key_name(xeno_player)]->[target_mob.key] : [whisper]")
+		if(!istype(target_mob, /mob/living/carbon/xenomorph))
+			to_chat(target_mob, SPAN_XENOQUEEN("You hear a strange, alien voice in your head. \"[whisper]\""))
 		else
-			to_chat(M, SPAN_XENOQUEEN("You hear the voice of [X] resonate in your head. \"[msg]\""))
-		to_chat(X, SPAN_XENONOTICE("You said: \"[msg]\" to [M]"))
+			to_chat(target_mob, SPAN_XENOQUEEN("You hear the voice of [xeno_player] resonate in your head. \"[whisper]\""))
+		to_chat(xeno_player, SPAN_XENONOTICE("You said: \"[whisper]\" to [target_mob]"))
+
+		for(var/mob/dead/observer/ghost as anything in GLOB.observer_list)
+			if(!ghost.client || isnewplayer(ghost))
+				continue
+			if(ghost.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
+				var/rendered_message
+				var/xeno_track = "(<a href='byond://?src=\ref[ghost];track=\ref[xeno_player]'>F</a>)"
+				var/target_track = "(<a href='byond://?src=\ref[ghost];track=\ref[target_mob]'>F</a>)"
+				rendered_message = SPAN_XENOLEADER("PsychicWhisper: [xeno_player.real_name][xeno_track] to [target_mob.real_name][target_track], <span class='normal'>'[whisper]'</span>")
+				ghost.show_message(rendered_message, SHOW_MESSAGE_AUDIBLE)
+
 	return ..()
+
+/datum/action/xeno_action/onclick/psychic_whisper/can_use_action()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(xeno && !xeno.is_mob_incapacitated())
+		return TRUE
+	return FALSE
 
 /datum/action/xeno_action/onclick/psychic_radiance
 	name = "Psychic Radiance"
@@ -229,30 +246,44 @@
 	plasma_cost = 100
 
 /datum/action/xeno_action/onclick/psychic_radiance/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/X = owner
-	if(X.client.prefs.muted & MUTE_IC)
-		to_chat(X, SPAN_DANGER("You cannot whisper (muted)."))
+	var/mob/living/carbon/xenomorph/xeno_player = owner
+	if(xeno_player.client.prefs.muted & MUTE_IC)
+		to_chat(xeno_player, SPAN_DANGER("You cannot whisper (muted)."))
 		return
-	if(!X.check_state(TRUE))
+	if(!xeno_player.check_state(TRUE))
 		return
 	var/list/target_list = list()
-	var/msg = strip_html(input("Message:", "Psychic Radiance") as text|null)
-	if(!msg || !X.check_state(TRUE))
+	var/whisper = strip_html(input("Message:", "Psychic Radiance") as text|null)
+	if(!whisper || !xeno_player.check_state(TRUE))
 		return
-	for(var/mob/living/possible_target in view(12, X))
-		if(possible_target == X || !possible_target.client)
+	for(var/mob/living/possible_target in view(12, xeno_player))
+		if(possible_target == xeno_player || !possible_target.client)
 			continue
 		target_list += possible_target
 		if(!istype(possible_target, /mob/living/carbon/xenomorph))
-			to_chat(possible_target, SPAN_XENOQUEEN("You hear a strange, alien voice in your head. \"[msg]\""))
+			to_chat(possible_target, SPAN_XENOQUEEN("You hear a strange, alien voice in your head. \"[whisper]\""))
 		else
-			to_chat(possible_target, SPAN_XENOQUEEN("You hear the voice of [X] resonate in your head. \"[msg]\""))
+			to_chat(possible_target, SPAN_XENOQUEEN("You hear the voice of [xeno_player] resonate in your head. \"[whisper]\""))
 	if(!length(target_list))
 		return
 	var/targetstring = english_list(target_list)
-	to_chat(X, SPAN_XENONOTICE("You said: \"[msg]\" to [targetstring]"))
-	log_say("PsychicRadiance: [key_name(X)]->[targetstring] : [msg]")
+	to_chat(xeno_player, SPAN_XENONOTICE("You said: \"[whisper]\" to [targetstring]"))
+	log_say("PsychicRadiance: [key_name(xeno_player)]->[targetstring] : [whisper]")
+	for (var/mob/dead/observer/ghost as anything in GLOB.observer_list)
+		if(!ghost.client || isnewplayer(ghost))
+			continue
+		if(ghost.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
+			var/rendered_message
+			var/xeno_track = "(<a href='byond://?src=\ref[ghost];track=\ref[xeno_player]'>F</a>)"
+			rendered_message = SPAN_XENOLEADER("PsychicRadiance: [xeno_player.real_name][xeno_track] to [targetstring], <span class='normal'>'[whisper]'</span>")
+			ghost.show_message(rendered_message, SHOW_MESSAGE_AUDIBLE)
 	return ..()
+
+/datum/action/xeno_action/onclick/psychic_radiance/can_use_action()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(xeno && !xeno.is_mob_incapacitated())
+		return TRUE
+	return FALSE
 
 /datum/action/xeno_action/activable/queen_give_plasma
 	name = "Give Plasma (400)"
@@ -331,21 +362,6 @@
 		to_chat(X, SPAN_WARNING("You must overwatch the Xenomorph you want to give orders to."))
 		return
 	return ..()
-
-/datum/action/xeno_action/onclick/queen_award
-	name = "Give Royal Jelly (500)"
-	action_icon_state = "queen_award"
-	plasma_cost = 500
-
-/datum/action/xeno_action/onclick/queen_award/use_ability(atom/target)
-	var/mob/living/carbon/xenomorph/queen/xeno = owner
-	if(!xeno.check_state())
-		return
-	if(!xeno.check_plasma(plasma_cost))
-		return
-	if(give_jelly_award(xeno.hive))
-		xeno.use_plasma(plasma_cost)
-		return ..()
 
 /datum/action/xeno_action/onclick/queen_word
 	name = "Word of the Queen (50)"

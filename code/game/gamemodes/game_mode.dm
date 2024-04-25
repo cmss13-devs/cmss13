@@ -50,19 +50,21 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 
 ///can_start()
 ///Checks to see if the game can be setup and ran with the current number of players or whatnot.
-/datum/game_mode/proc/can_start()
-	var/playerC = 0
+/datum/game_mode/proc/can_start(bypass_checks = FALSE)
+	if(bypass_checks)
+		return TRUE
+	var/players = 0
 	for(var/mob/new_player/player in GLOB.new_player_list)
 		if((player.client)&&(player.ready))
-			playerC++
+			players++
 
 	if(GLOB.master_mode=="secret")
-		if(playerC >= required_players_secret)
+		if(players >= required_players_secret)
 			return 1
 	else
-		if(playerC >= required_players)
-			return 1
-	return 0
+		if(players >= required_players)
+			return TRUE
+	return FALSE
 
 
 ///pre_setup()
@@ -133,7 +135,7 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 		GLOB.round_statistics.track_round_end()
 	log_game("Round end result: [round_finished]")
 	to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|Раунд завершен|"))
-	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("Так заканчивается история экипажа [MAIN_SHIP_NAME] и их борьбы на объекте [SSmapping.configs[GROUND_MAP].map_name].\nРежим игры: [GLOB.master_mode]!\nГриф в конце раунда (EORG) запрещён. Убийство своих, спам в локальный игровой чат и прочие нарушение влекут за собой незамедлительный бан на 3 часа!"))
+	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("Так заканчивается история экипажа [MAIN_SHIP_NAME] и их борьбы на [SSmapping.configs[GROUND_MAP].map_name].\nРежим игры: [GLOB.master_mode]!\nГриф в конце раунда (EORG) запрещён. Убийство своих, спам в локальный игровой чат и прочие нарушение влекут за собой незамедлительный бан на 3 часа!"))
 
 /datum/game_mode/proc/declare_completion()
 	if(GLOB.round_statistics)

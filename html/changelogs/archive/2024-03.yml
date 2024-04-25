@@ -1,3 +1,41 @@
+2024-03-01:
+  BadAtThisGame302:
+  - rscadd: Added a new uniform to the Flight Control Operator.
+  - rscadd: Added a new faction IFF grouping for WY Survs.
+  - rscadd: Added the ICC and the CL survs to the WY IFF System.
+  - rscadd: Added the USCM CL to the WY IFF System.
+  Drathek BadAtThisGame:
+  - maptweak: Fixed various nightmare inserts that were not spawning; removing or
+      disabling others that were not in use.
+  - maptweak: Updated containerroom_xenos insert for Solaris Ridge to include coms
+      tower (BadAtThisGame)
+  - code_imp: Nightmare errors are now a runtime.
+  Huffie56:
+  - refactor: refactored stage three of black goo and added stage four.
+  Lok1:
+  - rscadd: maintenance stations stun when exiting like closets
+  Vicacrov:
+  - rscadd: 'You can now order the following in Requisitions: M2C ammo, M56D ammo,
+      UA 45-F mini sentry ammo, UA 60-FP sentry ammo.'
+2024-03-02:
+  GrrrKitten:
+  - rscadd: New Deployable Fax Backpack for the Civilian Combat Correspondent
+  - rscadd: New Wieldable Broadcasting Camera for the Civilian Combat Correspondent
+  - rscadd: Cameras can no longer be turned off but have to be wielded to take photos
+  - rscadd: Add's new Combat Correspondent vendor with CC's basic outfits and standard
+      gear
+  - bugfix: Fixes numerous camera/photo bugs
+  - imageadd: Adds new itemstates for the polaroid camera
+  TheGamerdk:
+  - refactor: Overwatch console will now save your filter settings
+  Vicacrov:
+  - bugfix: Hugger and acid traps no longer activate when they get shuttlecrushed.
+  Warfan1815:
+  - bugfix: Fixes the pulling of trading cards out of a pack message being visible
+      to other people
+  iloveloopers:
+  - bugfix: custom flamer chemicals now work on the flamer nozzle
+=======
 2024-03-14:
   BlackCrystalic:
   - code_imp: squads poplock redo

@@ -64,6 +64,7 @@
 	can_hold = list(
 		/obj/item/weapon/gun/shotgun/pump,
 		/obj/item/weapon/gun/shotgun/combat,
+		/obj/item/weapon/gun/shotgun/double/mou53,
 	)
 	has_gamemode_skin = TRUE
 

@@ -105,7 +105,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_5"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "an" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "corner_inverse_R";
@@ -189,7 +189,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_5"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "az" = (
 /obj/effect/landmark/interior/spawn/interior_viewport{
 	pixel_x = -6;
@@ -203,14 +203,14 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "dark_sterile_green_12"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "aA" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "front_wheel_L";
 	opacity = 0
 	},
 /turf/open/void/vehicle,
-/area/space)
+/area/interior/vehicle/apc)
 "aB" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "front_wheel_R"
@@ -246,7 +246,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "dark_sterile_green_7"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "aF" = (
 /obj/effect/landmark/interior/spawn/interior_camera{
 	dir = 10;
@@ -254,7 +254,7 @@
 	pixel_y = 38
 	},
 /turf/open/shuttle/vehicle,
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "aH" = (
 /obj/structure/bed/chair/vehicle{
 	pixel_x = 8
@@ -263,7 +263,7 @@
 	pixel_x = -8
 	},
 /turf/open/shuttle/vehicle,
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "aI" = (
 /obj/structure/bed/chair/vehicle{
 	pixel_x = -8
@@ -281,7 +281,7 @@
 	pixel_y = 28
 	},
 /turf/open/shuttle/vehicle,
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "aJ" = (
 /obj/structure/vehicle_locker{
 	pixel_y = 28
@@ -292,7 +292,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_6"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "aK" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/recharger,
@@ -303,7 +303,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "dark_sterile_green_11"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "aL" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8
@@ -317,13 +317,13 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "dark_sterile_green_5"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "aO" = (
 /obj/effect/landmark/interior/spawn/weapons_loader,
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_6"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "aP" = (
 /obj/structure/surface/table/reinforced/prison{
 	pixel_y = -3
@@ -343,16 +343,16 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_8_1"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "aQ" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8
 	},
 /turf/open/shuttle/vehicle,
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "aS" = (
 /turf/open/shuttle/vehicle,
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "aU" = (
 /obj/effect/landmark/interior/spawn/vehicle_driver_seat/armor{
 	dir = 4
@@ -360,18 +360,18 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_6"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "aV" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/prop/almayer/CICmap,
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_9_1"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "aW" = (
 /obj/structure/prop/vehicle/sensor_equipment,
 /turf/open/shuttle/vehicle,
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "aX" = (
 /obj/effect/landmark/interior/spawn/vehicle_support_gunner_seat/second,
 /obj/structure/prop/vehicle/firing_port_weapon{
@@ -382,7 +382,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_5"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "aY" = (
 /obj/structure/bed/chair/vehicle{
 	dir = 1;
@@ -391,7 +391,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_6"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "aZ" = (
 /obj/structure/bed/chair/vehicle{
 	dir = 1;
@@ -409,7 +409,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_5"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "ba" = (
 /obj/effect/landmark/interior/spawn/entrance{
 	alpha = 50;
@@ -420,7 +420,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_5"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "bc" = (
 /obj/structure/bed/chair/vehicle{
 	dir = 1;
@@ -431,7 +431,7 @@
 	pixel_x = -8
 	},
 /turf/open/shuttle/vehicle,
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 "bd" = (
 /obj/structure/interior_wall/apc{
 	alpha = 100;
@@ -462,7 +462,7 @@
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_5"
 	},
-/area/vehicle/apc)
+/area/interior/vehicle/apc)
 
 (1,1,1) = {"
 aa

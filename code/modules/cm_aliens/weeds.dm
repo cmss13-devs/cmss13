@@ -58,9 +58,9 @@
 	if(spread_on_semiweedable && weed_strength < WEED_LEVEL_HIVE)
 		if(color)
 			var/list/RGB = ReadRGB(color)
-			RGB[1] = Clamp(RGB[1] + 35, 0, 255)
-			RGB[2] = Clamp(RGB[2] + 35, 0, 255)
-			RGB[3] = Clamp(RGB[3] + 35, 0, 255)
+			RGB[1] = clamp(RGB[1] + 35, 0, 255)
+			RGB[2] = clamp(RGB[2] + 35, 0, 255)
+			RGB[3] = clamp(RGB[3] + 35, 0, 255)
 			color = rgb(RGB[1], RGB[2], RGB[3])
 		else
 			color = "#a1a1a1"
@@ -123,7 +123,7 @@
 	update_icon()
 
 /obj/effect/alien/weeds/node/weak
-	name = "weak resin node"
+	name = "weak weed node"
 	health = WEED_HEALTH_STANDARD
 	alpha = 127
 
@@ -469,7 +469,7 @@
 
 
 /obj/effect/alien/weeds/node
-	name = "resin node"
+	name = "weed node"
 	desc = "A weird, pulsating node."
 	icon_state = "weednode"
 	// Weed nodes start out with normal weed health and become stronger once they've stopped spreading

@@ -421,11 +421,11 @@
 	item_state = "merc_armor"
 
 /obj/item/clothing/suit/storage/marine/fluff/steelpoint //CKEY=steelpoint (UNIQUE)
-	name = "M4X Armor"
-	desc = "Armor to the M4X!!!!  DONOR ITEM"
+	name = "M4-X Armor"
+	desc = "A next generation body armor system intended for Marines fighting against xenomorphs, the system is coated in a unique acid resistant polymer coating, as well as enhanced ballistics protection. This prototype version lacks those two features. DONOR ITEM"
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE
 	icon_state = "steelpoint_armor"
 	item_state = "steelpoint_armor"
-
 
 /obj/item/clothing/suit/storage/marine/fluff/valentine //CKEY=markvalentine
 	name = "Shocky's Armor"
@@ -842,10 +842,11 @@
 	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
 
 /obj/item/clothing/head/helmet/marine/fluff/steelpoint //CKEY=steelpoint (UNIQUE)
-	name = "M4X Helmet"
-	desc = "Helmets to the M4X!!!  DONOR ITEM"
+	name = "M4-X Helmet"
+	desc = "A next generation combat helmet intended to be paired with the M4-X armor. The full faced helmet provides complete light ballistic-resistant protection alongside enchanced acid resistance. This prototype version lacks those features. DONOR ITEM"
 	icon_state = "steelpoint_helmet"
 	item_state = "steelpoint_helmet"
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
 
@@ -971,8 +972,11 @@
 	icon_state = null
 	item_state = null
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
-	//DON'T GRAB STUFF BETWEEN THIS LINE
-	//AND THIS LINE
+
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/uniform_1.dmi',
+	)
+
 //END UNIFORM TEMPLATE
 
 /obj/item/clothing/under/marine/fluff/marinemedic //UNUSED
@@ -1148,8 +1152,8 @@
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/steelpoint //CKEY=steelpoint (UNIQUE)
-	name = "M4X Jumpsuit"
-	desc = "Jumpsuit to the M4X!!!  DONOR ITEM"
+	name = "M4-X Jumpsuit"
+	desc = "Jumpsuit issued alongside the M4-X armor. Considered outdated compared to the more modern armor system.  DONOR ITEM"
 	icon_state = "steelpoint_jumpsuit"
 	worn_state = "steelpoint_jumpsuit"
 	flags_jumpsuit = FALSE
@@ -1309,8 +1313,8 @@
 /obj/item/clothing/shoes/marine/fluff/vintage //CKEY=vintagepalmer
 	name = "Vintage Sandals"
 	desc = "Vintage Sandals, suitable for only the highest class of hipster.  DONOR ITEM"
-	icon_state = "wizard"
-	item_state = "wizard"
+	icon_state = "sandals"
+	item_state = "sandals"
 
 /obj/item/clothing/shoes/marine/fluff/feodrich //CKEY=feodrich (UNIQUE)
 	name = "Doom Shoes"
@@ -1319,10 +1323,10 @@
 	item_state = "doom_boots"
 
 /obj/item/clothing/shoes/marine/fluff/steelpoint //CKEY=steelpoint (UNIQUE)
-	name = "M4X Boot"
-	desc = "Boots to the M4X.  DONOR ITEM"
-	icon_state = "jackboots"
-	item_state = "jackboots"
+	name = "M4-X Boot"
+	desc = "Standard issue boots issued alongside M4-X armor, features a special coating of acid-resistant layering to allow its operator to move through acid-dretched environments safely. This prototype version lacks that feature.  DONOR ITEM"
+	icon_state = "marine"
+	item_state = "marine"
 
 //GENERIC GLASSES, GLOVES, AND MISC ////////////////////
 

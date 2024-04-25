@@ -208,6 +208,14 @@
 			var/amount = text2num(params["amount"])
 			if(!length(chemical) || amount <= 0)
 				return
+			if(!(amount in connected.amounts))
+				log_debug("[amount] is an invalid amount to inject in [src]!")
+				return
+			if(!(chemical in connected.available_chemicals))
+				log_debug("[chemical] is not available to inject in [src]!")
+				return
+			if(connected.occupant.reagents && connected.occupant.reagents.get_reagent_amount(chemical) + amount > connected.max_chem)
+				return
 			if(connected.occupant.health > connected.min_health || (chemical in connected.emergency_chems))
 				connected.inject_chemical(usr, chemical, amount)
 			else

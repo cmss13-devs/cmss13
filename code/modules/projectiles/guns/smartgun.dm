@@ -497,7 +497,7 @@
 			if((angledegree*2) > angle_list[angle])
 				continue
 
-		path = getline2(user, M)
+		path = get_line(user, M)
 
 		if(path.len)
 			var/blocked = FALSE

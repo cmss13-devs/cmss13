@@ -1,7 +1,7 @@
 /mob/living/carbon/human/proc/parse_say_modes(message)
 	. = list("message_and_language", "modes" = list())
 	if(length(message) >= 1 && message[1] == ";")
-		.["message_and_language"] = copytext(message, 2)
+		.["message_and_language"] = copytext_char(message, 2)
 		.["modes"] += "headset"
 		return
 

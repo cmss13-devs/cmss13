@@ -193,12 +193,6 @@
 	icon_state = "plating"
 	},
 /area/event)
-"Z" = (
-/obj/effect/landmark/start/tank_crew,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
-/area/event)
 
 (1,1,1) = {"
 a
@@ -295,7 +289,7 @@ a
 A
 l
 L
-Z
+b
 b
 b
 b

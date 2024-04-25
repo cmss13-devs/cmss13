@@ -17,7 +17,7 @@
 		return //Unconscious? Nope.
 
 	if(HAS_TRAIT(src, TRAIT_DAZED))
-		to_chat(src, SPAN_WARNING("Мне не до разговоров."))
+		to_chat(src, SPAN_WARNING("You are too dazed to talk."))
 		return
 
 	if(copytext(message, 1, 2) == "*")
@@ -96,6 +96,9 @@
 /mob/living/carbon/xenomorph/proc/hivemind_talk(message)
 	if(interference)
 		to_chat(src, SPAN_WARNING("A headhunter temporarily cut off your psychic connection!"))
+		return
+
+	if(SEND_SIGNAL(src, COMSIG_XENO_TRY_HIVEMIND_TALK, message) & COMPONENT_OVERRIDE_HIVEMIND_TALK)
 		return
 
 	hivemind_broadcast(message, hive)

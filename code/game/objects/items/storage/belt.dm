@@ -903,6 +903,7 @@
 	var/drawSound = 'sound/weapons/gun_pistol_draw.ogg'
 	///Used to get flap overlay states as inserting a gun changes icon state.
 	var/base_icon
+	var/gun_has_gamemode_skin
 	can_hold = list(
 		/obj/item/weapon/gun/pistol,
 		/obj/item/ammo_magazine/pistol,
@@ -966,6 +967,14 @@
 		*/
 		playsound(src, drawSound, 7, TRUE)
 		var/image/gun_underlay = image(icon, current_gun.base_gun_icon)
+		if(gun_has_gamemode_skin)
+			switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+				if("snow")
+					gun_underlay = image(icon, "s_" + current_gun.base_gun_icon)
+				if("desert")
+					gun_underlay = image(icon, "d_" + current_gun.base_gun_icon)
+				if("classic")
+					gun_underlay = image(icon, "c_" + current_gun.base_gun_icon)
 		gun_underlay.pixel_x = holster_slots[slot]["icon_x"]
 		gun_underlay.pixel_y = holster_slots[slot]["icon_y"]
 		gun_underlay.color = current_gun.color
@@ -1185,6 +1194,60 @@
 		"1" = list(
 			"icon_x" = -11,
 			"icon_y" = -5))
+
+#define MAXIMUM_MAGAZINE_COUNT 2
+
+/obj/item/storage/belt/gun/xm51
+	name = "\improper M276 pattern XM51 holster rig"
+	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the XM51 breaching scattergun, allowing easier storage of the weapon. It features pouches for storing two magazines along with extra shells."
+	icon_state = "xm51_holster"
+	has_gamemode_skin = TRUE
+	gun_has_gamemode_skin = TRUE
+	storage_slots = 8
+	max_w_class = 5
+	can_hold = list(
+		/obj/item/weapon/gun/rifle/xm51,
+		/obj/item/ammo_magazine/rifle/xm51,
+		/obj/item/ammo_magazine/handful,
+	)
+	holster_slots = list(
+		"1" = list(
+			"icon_x" = 10,
+			"icon_y" = -1))
+
+	//Keep a track of how many magazines are inside the belt.
+	var/magazines = 0
+
+/obj/item/storage/belt/gun/xm51/attackby(obj/item/item, mob/user)
+	if(istype(item, /obj/item/ammo_magazine/shotgun/light/breaching))
+		var/obj/item/ammo_magazine/shotgun/light/breaching/ammo_box = item
+		dump_ammo_to(ammo_box, user, ammo_box.transfer_handful_amount)
+	else
+		return ..()
+
+/obj/item/storage/belt/gun/xm51/can_be_inserted(obj/item/item, mob/user, stop_messages = FALSE)
+	. = ..()
+	if(magazines >= MAXIMUM_MAGAZINE_COUNT && istype(item, /obj/item/ammo_magazine/rifle/xm51))
+		if(!stop_messages)
+			to_chat(usr, SPAN_WARNING("[src] can't hold any more magazines."))
+		return FALSE
+
+/obj/item/storage/belt/gun/xm51/handle_item_insertion(obj/item/item, prevent_warning = FALSE, mob/user)
+	. = ..()
+	if(istype(item, /obj/item/ammo_magazine/rifle/xm51))
+		magazines++
+
+/obj/item/storage/belt/gun/xm51/remove_from_storage(obj/item/item as obj, atom/new_location)
+	. = ..()
+	if(istype(item, /obj/item/ammo_magazine/rifle/xm51))
+		magazines--
+
+//If a magazine disintegrates due to acid or something else while in the belt, remove it from the count.
+/obj/item/storage/belt/gun/xm51/on_stored_atom_del(atom/movable/item)
+	if(istype(item, /obj/item/ammo_magazine/rifle/xm51))
+		magazines--
+
+#undef MAXIMUM_MAGAZINE_COUNT
 
 /obj/item/storage/belt/gun/m44
 	name = "\improper M276 pattern M44 holster rig"

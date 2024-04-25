@@ -776,7 +776,7 @@
 		to_chat(M, SPAN_WARNING("As you fall into unconsciousness you fail to activate your self-destruct device before you collapse."))
 		return
 	if(M.stat)
-		to_chat(M, SPAN_WARNING("Not while you're unconcious..."))
+		to_chat(M, SPAN_WARNING("Not while you're unconscious..."))
 		return
 
 	var/obj/item/grab/G = M.get_active_hand()
@@ -814,7 +814,7 @@
 				to_chat(M, SPAN_WARNING("Little too late for that now!"))
 				return
 			if(M.stat)
-				to_chat(M, SPAN_WARNING("Not while you're unconcious..."))
+				to_chat(M, SPAN_WARNING("Not while you're unconscious..."))
 				return
 			exploding = FALSE
 			to_chat(M, SPAN_NOTICE("Your bracers stop beeping."))
@@ -840,7 +840,7 @@
 			to_chat(M, SPAN_WARNING("Little too late for that now!"))
 			return
 		if(M.stat)
-			to_chat(M, SPAN_WARNING("Not while you're unconcious..."))
+			to_chat(M, SPAN_WARNING("Not while you're unconscious..."))
 			return
 		if(exploding)
 			return

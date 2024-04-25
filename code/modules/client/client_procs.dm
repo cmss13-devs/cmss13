@@ -319,12 +319,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	player_entity = setup_player_entity(ckey)
 
-	if(!CONFIG_GET(flag/no_localhost_rank))
-		var/static/list/localhost_addresses = list("127.0.0.1", "::1")
-		if(isnull(address) || (address in localhost_addresses))
-			var/datum/admins/admin = new("!localhost!", RL_HOST, ckey)
-			admin.associate(src)
-			GLOB.RoleAuthority.roles_whitelist[ckey] = WHITELIST_EVERYTHING
+	if(check_localhost_status())
+		var/datum/admins/admin = new("!localhost!", RL_HOST, ckey)
+		admin.associate(src)
 
 	//Admin Authorisation
 	admin_holder = GLOB.admin_datums[ckey]
@@ -447,7 +444,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	view = GLOB.world_view_size
 
-	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CLIENT_LOGIN, src)
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CLIENT_LOGGED_IN, src)
 
 	//////////////
 	//DISCONNECT//
@@ -878,3 +875,41 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	if(!selected_action.player_hidden && selected_action.hidden) //Inform the player that even if they are unhiding it, itll still not be visible
 		to_chat(user, SPAN_NOTICE("[selected_action] is forcefully hidden, bypassing player unhiding."))
+
+
+/client/proc/check_whitelist_status(flag_to_check)
+	if(check_localhost_status())
+		return TRUE
+
+	if((flag_to_check & WHITELIST_MENTOR) && CLIENT_IS_MENTOR(src))
+		return TRUE
+
+	if((flag_to_check & WHITELIST_JOE) && CLIENT_IS_STAFF(src))
+		return TRUE
+
+	if(!player_data)
+		load_player_data()
+	if(!player_data)
+		return FALSE
+
+	return player_data.check_whitelist_status(flag_to_check)
+
+/client/proc/check_whitelist_status_list(flags_to_check) /// Logical OR list, not match all.
+	var/success = FALSE
+	if(!player_data)
+		load_player_data()
+	for(var/bitfield in flags_to_check)
+		success = player_data.check_whitelist_status(bitfield)
+		if(success)
+			break
+	return success
+
+/client/proc/check_localhost_status()
+	if(CONFIG_GET(flag/no_localhost_rank))
+		return FALSE
+
+	var/static/list/localhost_addresses = list("127.0.0.1", "::1")
+	if(isnull(address) || (address in localhost_addresses))
+		return TRUE
+
+	return FALSE

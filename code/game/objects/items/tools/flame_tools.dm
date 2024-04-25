@@ -721,6 +721,22 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 		log_admin("[user] has engraved \the [src] with engraving \"[str]\". (CKEY: ([user.ckey]))")
 
+/obj/item/tool/lighter/zippo/black
+	name = "black Zippo lighter"
+	desc = "A fancy black Zippo lighter. Ignite in style."
+	icon_state = "blackzippo"
+	item_state = "blackzippo"
+	icon_on = "blackzippoon"
+	icon_off = "blackzippo"
+
+/obj/item/tool/lighter/zippo/blue
+	name = "blue Zippo lighter"
+	desc = "A fancy blue Zippo lighter. Ignite in style."
+	icon_state = "bluezippo"
+	item_state = "bluezippo"
+	icon_on = "bluezippoon"
+	icon_off = "bluezippo"
+
 /obj/item/tool/lighter/zippo/gold
 	name = "golden Zippo lighter"
 	desc = "A gold-anodized Zippo lighter. Ostentatious, but it certainly stands out."
@@ -729,6 +745,15 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_on = "goldzippoon"
 	icon_off = "goldzippo"
 	black_market_value = 30
+
+/obj/item/tool/lighter/zippo/executive
+	name = "Weyland-Yutani executive Zippo lighter"
+	desc = "A remarkable Zippo lighter embellished in the Company's black and gold shade."
+	icon_state = "execzippo"
+	item_state = "execzippo"
+	icon_on = "execzippoon"
+	icon_off = "execzippo"
+	black_market_value = 40
 
 /obj/item/tool/lighter/random
 

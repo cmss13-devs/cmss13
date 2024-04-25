@@ -168,7 +168,7 @@
 	override_being_removed = FALSE
 	if(dropship_control_lost)
 		remove_door_lock()
-		to_chat(user, SPAN_NOTICE("You succesfully removed the lockout!"))
+		to_chat(user, SPAN_NOTICE("You successfully removed the lockout!"))
 		playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
 
 	if(!shuttle.is_hijacked)
@@ -239,7 +239,7 @@
 	if(dropship.is_hijacked)
 		return
 
-	// door controls being overriden
+	// door controls being overridden
 	if(!dropship_control_lost)
 		dropship.control_doors("unlock", "all", TRUE)
 		dropship_control_lost = TRUE
@@ -467,7 +467,7 @@
 		if("set-automate")
 			var/almayer_lz = params["hangar_id"]
 			var/ground_lz = params["ground_id"]
-			var/delay = Clamp(params["delay"] SECONDS, DROPSHIP_MIN_AUTO_DELAY, DROPSHIP_MAX_AUTO_DELAY)
+			var/delay = clamp(params["delay"] SECONDS, DROPSHIP_MIN_AUTO_DELAY, DROPSHIP_MAX_AUTO_DELAY)
 
 			// TODO verify
 			if(almayer_lz == ground_lz)
@@ -492,7 +492,7 @@
 				if(!dropship.automated_launch) //If we're toggling it on...
 					var/auto_delay
 					auto_delay = tgui_input_number(usr, "Set the delay for automated departure after recharging (seconds)", "Automated Departure Settings", DROPSHIP_MIN_AUTO_DELAY/10, DROPSHIP_MAX_AUTO_DELAY/10, DROPSHIP_MIN_AUTO_DELAY/10)
-					dropship.automated_launch_delay = Clamp(auto_delay SECONDS, DROPSHIP_MIN_AUTO_DELAY, DROPSHIP_MAX_AUTO_DELAY)
+					dropship.automated_launch_delay = сlamp(auto_delay SECONDS, DROPSHIP_MIN_AUTO_DELAY, DROPSHIP_MAX_AUTO_DELAY)
 					dropship.set_automated_launch(!dropship.automated_launch)
 			*/
 		if("disable-automate")

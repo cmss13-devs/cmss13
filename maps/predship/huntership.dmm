@@ -835,8 +835,6 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/XenoItem/ChitinPlate,
-/obj/item/XenoItem/ChitinPlate,
 /obj/item/stack/sheet/xenochitin,
 /obj/item/stack/sheet/xenochitin,
 /turf/open/floor/corsat{
@@ -1691,18 +1689,6 @@
 	icon_state = "cult"
 	},
 /area/yautja)
-"fB" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/XenoItem/AntiAcid,
-/obj/item/XenoItem/AntiAcid,
-/obj/item/XenoItem/AntiAcid,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "squareswood"
-	},
-/area/yautja)
 "fF" = (
 /obj/structure/surface/rack{
 	color = "#6b675e";
@@ -1807,8 +1793,7 @@
 	name = "Armory Shutters";
 	needs_power = 0;
 	pixel_x = 24;
-	req_one_access_txt = "392";
-	needs_power = 0
+	req_one_access_txt = "392"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -4539,7 +4524,7 @@ bj
 cP
 cP
 bj
-fB
+ZM
 bL
 bL
 bL

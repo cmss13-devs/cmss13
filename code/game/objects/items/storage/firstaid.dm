@@ -513,7 +513,7 @@
 /obj/item/storage/pill_bottle/proc/choose_color(mob/user)
 	if(!user)
 		user = usr
-	var/list/possible_colors = list(
+	var/static/list/possible_colors = list(
 		"Orange" = "",
 		"Blue" = "1",
 		"Yellow" = "2",

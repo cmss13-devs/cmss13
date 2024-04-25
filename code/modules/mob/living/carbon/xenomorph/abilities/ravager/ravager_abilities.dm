@@ -121,10 +121,10 @@
 	xeno_cooldown = 9 SECONDS + 2.5 SECONDS // Left operand is the actual CD, right operand is the buffer for the shield duration
 
 	// Config values
-	var/shield_duration = 25 // Shield lasts 2.5 seconds by default.
+	var/shield_duration = 15 // Shield lasts 1.5 seconds by default.
 	var/shield_amount = 500 // Shield HP amount
-	var/shield_shrapnel_amount = 7  // How much shrapnel each shield hit should spawn
-	var/shard_cost = 150 // Minimum spikes to use this ability
+	var/shield_shrapnel_amount = 6  // How much shrapnel each shield hit should spawn
+	var/shard_cost = 200 // Minimum spikes to use this ability
 	var/shield_active = FALSE // Is our shield active.
 	var/real_hp_per_shield_hp = 0.5 // How many real HP we get for each shield HP
 

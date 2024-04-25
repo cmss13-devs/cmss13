@@ -5,6 +5,7 @@
 	var/value_upgrade = 1000 // the price of the upgrade, refer to this : 1
 	var/item_reference // actual path to the item.
 	var/upgrade_type = ITEM_MISC_UPGRADE //which tab
+	var/clearance_req = 5 //5x is level 6. Why is it not that way? no one knows.
 
 /datum/research_upgrades/machinery
 	name = "Machinery"
@@ -21,24 +22,28 @@
 	desc = "Data and instruction set for AutoDoc making it capable to fix internal bleedings extremely quick by injecting powerfull coagulant alongside physically fixing it."
 	behavior = UPGRADE_TIER_1
 	value_upgrade = 1000
+	clearance_req = 1
 
 /datum/research_upgrades/machinery/autodoc/broken_bone
 	name = "AutoDoc Broken Bone Fixation"
 	desc = "Data and instruction set for AutoDoc making it capable to set the fracture and inject bonegel without a single cut."
 	behavior = UPGRADE_TIER_2
 	value_upgrade = 5000
+	clearance_req = 3
 
 /datum/research_upgrades/machinery/autodoc/organ_damage
 	name = "AutoDoc Broken Organ Repair"
 	desc = "Data and instruction set for AutoDoc making it capable to fix organ damage."
 	behavior = UPGRADE_TIER_3
 	value_upgrade = 4500
+	clearance_req = 2
 
 /datum/research_upgrades/machinery/autodoc/larva_removal
 	name = "AutoDoc Broken Embryo Removal"
 	desc = "Data and instruction set for AutoDoc making it mildy proficient in removing parasites left by unknown organism."
 	behavior = UPGRADE_TIER_4
 	value_upgrade = 8000
+	clearance_req = 6
 
 
 /datum/research_upgrades/machinery/sleeper
@@ -48,6 +53,7 @@
 	value_upgrade = 1000
 	item_reference = /obj/item/research_upgrades/sleeper
 	upgrade_type = ITEM_MACHINERY_UPGRADE
+	clearance_req = 2
 
 /datum/research_upgrades/item
 	name = "Items"
@@ -60,6 +66,7 @@
 	item_reference = /obj/item/research_upgrades/credits
 	behavior = UPGRADE_TIER_1
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
+	clearance_req = 3
 
 
 

@@ -96,7 +96,7 @@
 			if(!istype(dest))
 				source.reagents.remove_reagent(reagent_id, amount)
 			else if(dest.reagents)
-				source.reagents.trans_id_to(dest, reagent_id, amount)	
+				source.reagents.trans_id_to(dest, reagent_id, amount)
 
 /obj/structure/machinery/chem_master/Topic(href, href_list)
 	. = ..()

@@ -124,14 +124,14 @@
 		to_chat(user, SPAN_WARNING("[src] makes a annoying hum and flashes red, You dont have the legal access to the upgrade!"))
 		return
 	else
+		icon_state = "xeno_analyzer_on_printing"
 		busy = TRUE
 		biomass_points -= cost
 		addtimer(CALLBACK(src, PROC_REF(print_upgrade), produce_path, variation), 5 SECONDS)
 
 /obj/structure/machinery/xenoanalyzer/proc/print_upgrade(produce_path, variation)
 	busy = FALSE
-	to_world(produce_path)
-	icon_state = "mixer0b"
+	icon_state = "xeno_analyzer_off"
 	var/obj/item/research_upgrades/upgrade = new produce_path(get_turf(src))
 	upgrade.value = variation
 

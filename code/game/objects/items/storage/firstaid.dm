@@ -521,7 +521,7 @@
 	selected_color = possible_colors[selected_color]
 
 	icon_state = "pill_canister" + selected_color
-	to_chat(usr, SPAN_NOTICE("You color \the [src]."))
+	to_chat(usr, SPAN_NOTICE("You color [src]."))
 	update_icon()
 
 /obj/item/storage/pill_bottle/verb/set_maptext()

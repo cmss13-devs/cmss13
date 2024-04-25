@@ -528,7 +528,7 @@
 		"Bordeaux" = "11",
 		"Black" = "12",
 	)
-	var/selected_color = tgui_input_list(usr, "Select a color.", "Color choice", possible_colors)
+	var/selected_color = tgui_input_list(user, "Select a color.", "Color choice", possible_colors)
 
 	if (!selected_color)
 		selected_color = ""

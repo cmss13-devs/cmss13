@@ -894,7 +894,6 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				JOB_PROVOST_MARSHAL = 02,//Grade O8
 				JOB_COLONEL = 04,//Grade O6
 				JOB_PROVOST_INSPECTOR = 04,
-				JOB_AI_TECH = 9,
 				// 10-19: Command
 				JOB_CO = 10,
 				JOB_XO = 11,
@@ -925,6 +924,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				JOB_SURGEON = 42,
 				JOB_NURSE = 43,
 				// 50-59: Engineering
+				JOB_AI_TECH = 50,
 				JOB_CHIEF_ENGINEER = 50,
 				JOB_ORDNANCE_TECH = 51,
 				JOB_MAINT_TECH = 52,

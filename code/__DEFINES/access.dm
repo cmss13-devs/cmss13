@@ -169,6 +169,8 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 #define ACCESS_LIST_MARINE_ALL "Almayer (ALL)"
 ///Used by the Wey-Yu - USCM Liaison
 #define ACCESS_LIST_MARINE_LIAISON "Wey-Yu (Liaison)"
+///Used by the Wey-Yu AIST aboard Almayer
+#define ACCESS_LIST_MARINE_LIAISON_AIST "Wey-Yu (AIST)"
 
 ///The accesses granted to emergency responders.
 #define ACCESS_LIST_EMERGENCY_RESPONSE "Almayer (ERT)"

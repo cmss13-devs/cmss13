@@ -69966,7 +69966,10 @@
 	},
 /area/almayer/living/grunt_rnr)
 "tLF" = (
-/obj/structure/machinery/cm_vending/clothing/senior_officer,
+/obj/structure/machinery/cm_vending/clothing/senior_officer{
+	req_one_access_txt = "1;92";
+	req_access = null
+	},
 /turf/open/floor/almayer/aicore/glowing/no_build{
 	icon_state = "w_ai_silver";
 	dir = 5

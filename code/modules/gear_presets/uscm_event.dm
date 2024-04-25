@@ -467,7 +467,7 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_event/ai_tech
-	name = "USCM AI Technician"
+	name = "AI Technician (USCM)"
 	flags = EQUIPMENT_PRESET_EXTRA
 	faction = FACTION_MARINE
 	faction_group = list(FACTION_MARINE)
@@ -520,3 +520,24 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/ai_tech_pda(new_human.back), WEAR_IN_L_STORE)
 
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(new_human), WEAR_R_STORE)
+
+/datum/equipment_preset/uscm_event/ai_tech/corporate
+	name = "AI Technician (Contractor)"
+	faction_group =	FACTION_LIST_MARINE_WY
+	paygrade = PAY_SHORT_WYC5
+
+	idtype = /obj/item/card/id/silver/cl
+
+/datum/equipment_preset/uscm_event/ai_tech/corporate/New()
+	. = ..()
+	/// WY version gets less access, but can use the CLs office.
+	access = get_access(ACCESS_LIST_MARINE_LIAISON_AIST)
+
+/datum/equipment_preset/uscm_event/ai_tech/corporate/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/blue(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcl/aist(new_human), WEAR_L_EAR)
+
+
+	..()

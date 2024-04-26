@@ -74345,14 +74345,14 @@
 	unacidable = 1;
 	unslashable = 1
 	},
-/obj/item/desk_bell{
-	pixel_y = 14;
-	pixel_x = -5;
-	anchored = 1
-	},
 /obj/structure/machinery/computer/working_joe{
 	layer = 3.3;
 	dir = 8
+	},
+/obj/item/desk_bell/ares{
+	pixel_y = 14;
+	pixel_x = -5;
+	anchored = 1
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)

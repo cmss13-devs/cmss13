@@ -93,3 +93,12 @@
 	flick("desk_bell_activate", src)
 	times_rang++
 	return TRUE
+
+/obj/item/desk_bell/ares
+	name = "AI core reception bell"
+
+/obj/item/desk_bell/ares/ring_bell(mob/living/user)
+	if(broken_ringer)
+		return FALSE
+	ares_apollo_talk("Attendence requested at AI Core Reception.")
+	..()

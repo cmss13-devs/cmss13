@@ -259,7 +259,7 @@
 		paper_text = replacetext(paper_text, "\[/grid\]", "</td></tr></table>")
 		paper_text = replacetext(paper_text, "\[row\]", "</td><tr>")
 		paper_text = replacetext(paper_text, "\[cell\]", "<td>")
-		paper_text = replacetext(paper_text, "\[logo\]", "<img src = [asset.get_url_mappings()["logo_wy.png"]]>")
+		paper_text = replacetext(paper_text, "\[wy_bw\]", "<img src = [asset.get_url_mappings()["logo_wy_bw.png"]]>")
 		paper_text = replacetext(paper_text, "\[wy\]", "<img src = [asset.get_url_mappings()["logo_wy.png"]]>")
 		paper_text = replacetext(paper_text, "\[uscm\]", "<img src = [asset.get_url_mappings()["logo_uscm.png"]]>")
 		paper_text = replacetext(paper_text, "\[upp\]", "<img src = [asset.get_url_mappings()["logo_upp.png"]]>")

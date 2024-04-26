@@ -4,7 +4,8 @@
  * @license MIT
  */
 
-import { useLocalState } from '../backend';
+import { useState } from 'react';
+
 import { Flex, Section, Tabs } from '../components';
 import { Pane, Window } from '../layouts';
 
@@ -22,8 +23,8 @@ const getStories = () => r.keys().map((path) => r(path));
 
 export const KitchenSink = (props) => {
   const { panel } = props;
-  const [theme] = useLocalState('kitchenSinkTheme');
-  const [pageIndex, setPageIndex] = useLocalState('pageIndex', 0);
+  const [theme] = useState(null);
+  const [pageIndex, setPageIndex] = useState(0);
   const stories = getStories();
   const story = stories[pageIndex];
   const Layout = panel ? Pane : Window;
@@ -38,7 +39,8 @@ export const KitchenSink = (props) => {
                   key={i}
                   color="transparent"
                   selected={i === pageIndex}
-                  onClick={() => setPageIndex(i)}>
+                  onClick={() => setPageIndex(i)}
+                >
                   {story.meta.title}
                 </Tabs.Tab>
               ))}

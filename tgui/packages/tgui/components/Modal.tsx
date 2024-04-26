@@ -5,18 +5,21 @@
  */
 
 import { classes } from 'common/react';
-import { computeBoxClassName, computeBoxProps } from './Box';
+
+import { BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 import { Dimmer } from './Dimmer';
 
-export const Modal = (props) => {
+export function Modal(props: BoxProps) {
   const { className, children, ...rest } = props;
+
   return (
     <Dimmer>
       <div
         className={classes(['Modal', className, computeBoxClassName(rest)])}
-        {...computeBoxProps(rest)}>
+        {...computeBoxProps(rest)}
+      >
         {children}
       </div>
     </Dimmer>
   );
-};
+}

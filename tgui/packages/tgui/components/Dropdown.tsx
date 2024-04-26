@@ -40,6 +40,8 @@ type Props = {
   menuWidth: string;
   /** Whether or not the arrow on the right hand side of the dropdown button is visible */
   noChevron: boolean;
+  /** Whether or not the scrollbar on the right hand side of the dropdown button is visible */
+  noScroll: boolean;
   /** Called when dropdown button is clicked */
   onClick: (event) => void;
   /** Dropdown renders over instead of below */
@@ -66,6 +68,7 @@ export const Dropdown = (props: Props) => {
     iconSpin,
     menuWidth = '15rem',
     noChevron,
+    noScroll,
     onClick,
     onSelected,
     options = [],
@@ -121,7 +124,11 @@ export const Dropdown = (props: Props) => {
       placement={over ? 'top-start' : 'bottom-start'}
       content={
         <div
-          className="Layout Dropdown__menu"
+          className={classes([
+            'Layout',
+            (noScroll && 'Dropdown__menu-noscroll') || 'Dropdown__menu',
+            over && 'Dropdown__over',
+          ])}
           style={{ minWidth: menuWidth }}
           ref={innerRef}>
           {options.length === 0 && (

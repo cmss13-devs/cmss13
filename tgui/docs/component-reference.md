@@ -65,17 +65,13 @@ it is used a lot in this framework.
 
 **Event handlers.**
 Event handlers are callbacks that you can attack to various element to
-listen for browser events. Inferno supports camelcase (`onClick`) and
-lowercase (`onclick`) event names.
+listen for browser events. React supports camelcase (`onClick`) event names.
 
-- Camel case names are what's called *synthetic* events, and are the
+- Camel case names are what's called _synthetic_ events, and are the
 **preferred way** of handling events in React, for efficiency and
 performance reasons. Please read
-[Inferno Event Handling](https://infernojs.org/docs/guides/event-handling)
+  [React Event Handling](https://react.dev/learn/responding-to-events)
 to understand what this is about.
-- Lower case names are native browser events and should be used sparingly,
-for example when you need an explicit IE8 support. **DO NOT** use
-lowercase event handlers unless you really know what you are doing.
 
 ## `tgui/components`
 
@@ -212,6 +208,7 @@ Buttons allow users to take actions, and make choices, with a single click.
 - See inherited props: [Box](#box)
 - `fluid: boolean` - Fill all available horizontal space.
 - `icon: string` - Adds an icon to the button.
+- `iconPosition?: string` - Set to `'right'` to align the icon to the right of the children
 - `color: string` - Button color, as defined in `variables.scss`.
   - There is also a special color `transparent` - makes the button
   transparent and slightly dim when inactive.
@@ -363,15 +360,13 @@ and displays selected entry.
 
 - See inherited props: [Box](#box)
 - See inherited props: [Icon](#icon)
-- `options: string[]` - An array of strings which will be displayed in the
-dropdown when open
-- `selected: string` - Currently selected entry
-- `width: number` - Width of dropdown button and resulting menu
+- `options: string[] | DropdownEntry[]` - An array of strings which will be displayed in the
+  dropdown when open. See Dropdown.tsx for more advanced usage with DropdownEntry
+- `selected: any` - Currently selected entry
 - `over: boolean` - Dropdown renders over instead of below
 - `color: string` - Color of dropdown button
-- `nochevron: boolean` - Whether or not the arrow on the right hand side of the dropdown button is visible
-- `noscroll: boolean` - Whether or not the dropdown menu should have a scroll bar
-- `displayText: string` - Text to always display in place of the selected text
+- `noChevron: boolean` - Whether or not the arrow on the right hand side of the dropdown button is visible
+- `displayText: ReactNode` - Text to always display in place of the selected text
 - `onClick: (e) => void` - Called when dropdown button is clicked
 - `onSelected: (value) => void` - Called when a value is picked from the list, `value` is the value that was picked
 
@@ -560,15 +555,18 @@ A basic text input, which allow users to enter text into a UI.
 **Props:**
 
 - See inherited props: [Box](#box)
-- `value: string` - Value of an input.
+- `value: string` - The initial value displayed on the input.
 - `placeholder: string` - Text placed into Input box when it's empty,
 otherwise nothing. Clears automatically when focused.
 - `fluid: boolean` - Fill all available horizontal space.
 - `selfClear: boolean` - Clear after hitting enter, as well as remain focused
 when this happens. Useful for things like chat inputs.
-- `onChange: (e, value) => void` - An event, which fires when you commit
-the text by either unfocusing the input box, or by pressing the Enter key.
-- `onInput: (e, value) => void` - An event, which fires on every keypress.
+- `onChange: (e, value) => void` - Fires when the user clicks out or presses enter.
+- `onEnter: (e, value) => void` - Fires when the user hits enter.
+- `onEscape: (e) => void` - Fires when the user hits escape.
+- `onInput: (e, value) => void` - Fires when the user types into the input.
+- `expensive: boolean` - Introduces a delay before updating the input. Useful for large filters,
+  where you don't want to update on every keystroke.
 
 ### `Knob`
 
@@ -666,7 +664,7 @@ to perform some sort of action), there is a way to do that:
 **Props:**
 
 - `className: string` - Applies a CSS class to the element.
-- `label: string|InfernoNode` - Item label.
+- `label: string|ReactNode` - Item label.
 - `labelWrap: boolean` - Lets the label wrap and makes it not take the minimum width.
 - `labelColor: string` - Sets the color of the label.
 - `color: string` - Sets the color of the content text.
@@ -732,8 +730,9 @@ to fine tune the value, or single click it to manually type a number.
 **Props:**
 
 - `animated: boolean` - Animates the value if it was changed externally.
+- `disabled: boolean` - Makes the input field uneditable & non draggable to prevent user changes
 - `fluid: boolean` - Fill all available horizontal space.
-- `value: number` - Value itself.
+- `value: string|number` - Value itself.
 - `unit: string` - Unit to display to the right of value.
 - `minValue: number` - Lowest possible value.
 - `maxValue: number` - Highest possible value.
@@ -741,18 +740,15 @@ to fine tune the value, or single click it to manually type a number.
 dragging the input.
 - `stepPixelSize: number` (default: 1) - Screen distance mouse needs
 to travel to adjust value by one `step`.
-- `width: string|number` - Width of the element, in `Box` units or pixels.
-- `height: string|numer` - Height of the element, in `Box` units or pixels.
-- `lineHeight: string|number` - lineHeight of the element, in `Box` units or pixels.
-- `fontSize: string|number` - fontSize of the element, in `Box` units or pixels.
-- `format: value => value` - Format value using this function before
+- `width: string` - Width of the element, in `Box` units or pixels.
+- `height: string` - Height of the element, in `Box` units or pixels.
+- `lineHeight: string` - lineHeight of the element, in `Box` units or pixels.
+- `fontSize: string` - fontSize of the element, in `Box` units or pixels.
+- `format: (value: number) => string` - Format value using this function before
 displaying it.
-- `suppressFlicker: number` - A number in milliseconds, for which the input
-will hold off from updating while events propagate through the backend.
-Default is about 250ms, increase it if you still see flickering.
-- `onChange: (e, value) => void` - An event, which fires when you release
+- `onChange: (value: number) => void` - An event, which fires when you release
 the input, or successfully enter a number.
-- `onDrag: (e, value) => void` - An event, which fires about every 500ms
+- `onDrag: (value: number) => void` - An event, which fires about every 500ms
 when you drag the input up and down, on release and on manual editing.
 
 ### `Popper`
@@ -761,9 +757,10 @@ Popper lets you position elements so that they don't go out of the bounds of the
 
 **Props:**
 
-- `popperContent: InfernoNode` - The content that will be put inside the popper.
-- `options?: { ... }` - An object of options to pass to `createPopper`. See [https://popper.js.org/docs/v2/constructors/#options], but the one you want most is `placement`. Valid placements are "bottom", "top", "left", and "right". You can affix "-start" and "-end" to achieve something like top left or top right respectively. You can also use "auto" (with an optional "-start" or "-end"), where a best fit will be chosen.
-- `additionalStyles: { ... }` - A map of CSS styles to add to the element that will contain the popper.
+- `content: ReactNode` - The content that will be put inside the popper.
+- `isOpen: boolean` - Whether or not the popper is open.
+- `onClickOutside?: (e) => void` - A function that will be called when the user clicks outside of the popper.
+- `placement?: string` - The placement of the popper. See [https://popper.js.org/docs/v2/constructors/#placement]
 
 ### `ProgressBar`
 
@@ -811,11 +808,11 @@ The RoundGauge component provides a visual representation of a single metric, as
   value={tankPressure}
   minValue={0}
   maxValue={pressureLimit}
-  alertAfter={pressureLimit * 0.70}
+  alertAfter={pressureLimit * 0.7}
   ranges={{
-    "good": [0, pressureLimit * 0.70],
-    "average": [pressureLimit * 0.70, pressureLimit * 0.85],
-    "bad": [pressureLimit * 0.85, pressureLimit],
+    good: [0, pressureLimit * 0.7],
+    average: [pressureLimit * 0.7, pressureLimit * 0.85],
+    bad: [pressureLimit * 0.85, pressureLimit],
   }}
   format={formatPressure} />
 ```

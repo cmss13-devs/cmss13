@@ -1,5 +1,5 @@
 @use 'sass:color';
-@use "sass:math";
+@use 'sass:math';
 @use 'sass:meta';
 
 $font-family: monospace;
@@ -139,7 +139,9 @@ $background-radial-opacity: 0.2 !default;
         rgba(0, 0, 255, 0.06)
       );
     z-index: 2;
-    background-size: 100% 2px, 3px 100%;
+    background-size:
+      100% 2px,
+      3px 100%;
     pointer-events: none;
   }
 
@@ -179,6 +181,30 @@ $background-radial-opacity: 0.2 !default;
     &:visited,
     &:target {
       color: base.$color-fg;
+    }
+  }
+
+  .Dropdown__control {
+    &:hover,
+    &:focus,
+    &:visited,
+    &:target {
+      .Dropdown__selected-text,
+      .Dropdown__arrow-button {
+        color: base.$color-bg;
+      }
+    }
+  }
+
+  .Dropdown__control.Button--disabled {
+    &:hover,
+    &:focus,
+    &:visited,
+    &:target {
+      .Dropdown__selected-text,
+      .Dropdown__arrow-button {
+        color: base.$color-fg;
+      }
     }
   }
 

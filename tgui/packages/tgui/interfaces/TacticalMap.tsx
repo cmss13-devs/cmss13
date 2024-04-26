@@ -1,5 +1,13 @@
 import { useBackend, useLocalState } from '../backend';
-import { Button, Dropdown, Section, Stack, ProgressBar, Box, Tabs } from '../components';
+import {
+  Button,
+  Dropdown,
+  Section,
+  Stack,
+  ProgressBar,
+  Box,
+  Tabs,
+} from '../components';
 import { Window } from '../layouts';
 import { CanvasLayer } from './CanvasLayer';
 import { DrawnMap } from './DrawnMap';
@@ -11,10 +19,10 @@ interface TacMapProps {
   updatedCanvas: boolean;
   themeId: number;
   svgData: any;
-  canViewTacmap: number;
-  canDraw: number;
+  canViewTacmap: boolean;
+  canDraw: boolean;
   isxeno: boolean;
-  canViewCanvas: number;
+  canViewCanvas: boolean;
   newCanvasFlatImage: string;
   oldCanvasFlatImage: string;
   actionQueueChange: number;
@@ -26,40 +34,40 @@ interface TacMapProps {
   canvasCooldownDuration: any;
   canvasCooldown: any;
   exportedTacMapImage: any;
-  tacmapReady: number;
+  tacmapReady: boolean;
 }
 
 const PAGES = [
   {
     title: 'Live Tacmap',
-    canOpen: (data) => {
-      return 1;
+    canOpen: (data: TacMapProps) => {
+      return true;
     },
     component: () => ViewMapPanel,
     icon: 'map',
-    canAccess: (data) => {
+    canAccess: (data: TacMapProps) => {
       return data.canViewTacmap;
     },
   },
   {
     title: 'Map View',
-    canOpen: (data) => {
-      return 1;
+    canOpen: (data: TacMapProps) => {
+      return true;
     },
     component: () => OldMapPanel,
     icon: 'eye',
-    canAccess: (data) => {
+    canAccess: (data: TacMapProps) => {
       return data.canViewCanvas;
     },
   },
   {
     title: 'Canvas',
-    canOpen: (data) => {
+    canOpen: (data: TacMapProps) => {
       return data.tacmapReady;
     },
     component: () => DrawMapPanel,
     icon: 'paintbrush',
-    canAccess: (data) => {
+    canAccess: (data: TacMapProps) => {
       return data.canDraw;
     },
   },
@@ -93,7 +101,7 @@ export const TacticalMap = (props) => {
   );
   const PageComponent = PAGES[pageIndex].component();
 
-  const handleTacmapOnClick = (i, pageTitle) => {
+  const handleTacmapOnClick = (i: number, pageTitle: string) => {
     setPageIndex(i);
     act('menuSelect', {
       selection: pageTitle,
@@ -111,13 +119,12 @@ export const TacticalMap = (props) => {
           width="688px"
           fontSize="20px"
           textAlign="center"
-          title="Tactical Map Options"
-          justify="space-evenly">
+          title="Tactical Map Options">
           <Stack justify="center" align="center" fontSize="15px">
             <Stack.Item>
               <Tabs height="37.5px">
                 {PAGES.map((page, i) => {
-                  if (page.canAccess(data) === 0) {
+                  if (!page.canAccess(data)) {
                     return;
                   }
                   return (
@@ -125,10 +132,13 @@ export const TacticalMap = (props) => {
                       key={i}
                       color={data.isxeno ? 'purple' : 'blue'}
                       selected={i === pageIndex}
-                      disabled={page.canOpen(data) === 0}
                       icon={page.icon}
-                      onClick={() => handleTacmapOnClick(i, page.title)}>
-                      {page.canOpen(data) === 0 ? 'loading' : page.title}
+                      onClick={() =>
+                        page.canOpen(data)
+                          ? handleTacmapOnClick(i, page.title)
+                          : null
+                      }>
+                      {page.canOpen(data) ? page.title : 'loading'}
                     </Tabs.Tab>
                   );
                 })}
@@ -146,7 +156,7 @@ const ViewMapPanel = (props) => {
   const { data } = useBackend<TacMapProps>();
 
   // byond ui can't resist trying to render
-  if (data.canViewTacmap === 0 || data.mapRef === null) {
+  if (!data.canViewTacmap || data.mapRef === null) {
     return <OldMapPanel {...props} />;
   }
 
@@ -167,12 +177,7 @@ const ViewMapPanel = (props) => {
 const OldMapPanel = (props) => {
   const { data } = useBackend<TacMapProps>();
   return (
-    <Section
-      fitted
-      height="86%"
-      justify="center"
-      align="center"
-      fontSize="30px">
+    <Section fitted height="86%" align="center" fontSize="30px">
       {data.canViewCanvas ? (
         <DrawnMap
           svgData={data.svgData}
@@ -198,7 +203,7 @@ const DrawMapPanel = (props) => {
     data.exportedTacMapImage = image;
   };
 
-  const handleColorSelection = (dataSelection) => {
+  const handleColorSelection = (dataSelection: string) => {
     if (colors[dataSelection] !== null && colors[dataSelection] !== undefined) {
       return colors[dataSelection];
     } else {
@@ -222,8 +227,7 @@ const DrawMapPanel = (props) => {
             {(!data.updatedCanvas && (
               <Button
                 height="20px"
-                fontSize="10px"
-                fluid={1}
+                fluid
                 disabled={!canUpdate}
                 color="red"
                 icon="download"
@@ -234,8 +238,7 @@ const DrawMapPanel = (props) => {
             )) || (
               <Button
                 height="20px"
-                fontSize="10px"
-                fluid={1}
+                fluid
                 color="green"
                 icon="bullhorn"
                 content="Announce"
@@ -251,8 +254,7 @@ const DrawMapPanel = (props) => {
           <Stack.Item grow>
             <Button
               height="20px"
-              fontSize="10px"
-              fluid={1}
+              fluid
               color="grey"
               icon="trash"
               content="Clear Canvas"
@@ -263,8 +265,7 @@ const DrawMapPanel = (props) => {
           <Stack.Item grow>
             <Button
               height="20px"
-              fontSize="10px"
-              fluid={1}
+              fluid
               color="grey"
               icon="recycle"
               content="Undo"
@@ -272,11 +273,11 @@ const DrawMapPanel = (props) => {
               onClick={() => act('undoChange')}
             />
           </Stack.Item>
-          <Stack.Item grow>
+          <Stack.Item>
             <Dropdown
-              height="21px"
-              noscroll={1}
-              fluid={1}
+              className="TacticalMapColorPicker"
+              noScroll
+              menuWidth="13rem"
               options={colorOptions}
               selected={data.toolbarColorSelection}
               color={data.toolbarColorSelection}
@@ -311,14 +312,14 @@ const DrawMapPanel = (props) => {
           </Stack.Item>
         </Stack>
       </Section>
-      <Section width="688px" justify="center" align="center" textAlign="center">
+      <Section width="688px" align="center" textAlign="center">
         <CanvasLayer
           selection={handleColorSelection(data.toolbarUpdatedSelection)}
           actionQueueChange={data.actionQueueChange}
           imageSrc={data.newCanvasFlatImage}
           key={data.lastUpdateTime}
           onImageExport={handleTacMapExport}
-          onUndo={(value) =>
+          onUndo={(value: string) =>
             act('selectColor', { color: findColorValue(value) })
           }
           onDraw={() => act('onDraw')}

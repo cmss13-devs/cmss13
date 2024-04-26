@@ -135,7 +135,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_m4ra_mag_box_ap
-	name = "Magazine box (MRRA, 16x AP mags)"
+	name = "Magazine box (M4RA, 16x AP mags)"
 	contains = list(
 		/obj/item/ammo_box/magazine/m4ra/ap,
 	)

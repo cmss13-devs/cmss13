@@ -173,7 +173,12 @@
 
 #define ITEM_MACHINERY_UPGRADE "Machinery" //*must* be same as category name.
 #define ITEM_ACCESSORY_UPGRADE "Items"
-#define ITEM_MISC_UPGRADE "Misc"
+#define ITEM_ARMOR_UPGRADE "Armor"
+
+//injector plate stuff
+#define OD_OFF 0
+#define OD_STRICT 1
+#define OD_DYNAMIC 2
 
 
 // RESEARCH UPGRADES DEFINES END

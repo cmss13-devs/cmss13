@@ -192,10 +192,15 @@
 	desc = "Attachment to the uniform which gives X(this shouldnt be in your handdssss)"
 	is_armor = FALSE
 	var/obj/item/clothing/attached_uni
+	///can the plate be recycled after X condition? 0 means it cannot be recycled, otherwise put in the biomass points to refund.
+	var/recyclable_value = 0
 
 /obj/item/clothing/accessory/health/research_plate/on_attached(obj/item/clothing/S, mob/living/carbon/human/user)
 	. = ..()
 	attached_uni = S
+
+/obj/item/clothing/accessory/health/research_plate/proc/can_recycle(mob/living/user) //override this proc for check if you can recycle the plate.
+	return FALSE
 
 /obj/item/clothing/accessory/health/research_plate/translator
 	name = "Exprimental Language Translator"
@@ -213,16 +218,18 @@
 		to_chat(user, SPAN_NOTICE("Translator makes a sad woop sound as its powering down."))
 		user.universal_understand = FALSE
 		UnregisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED)
+		attached_uni = null
 
 /obj/item/clothing/accessory/health/research_plate/translator/proc/on_removed_sig(mob/living/user, slot)
 	if(slot == attached_uni && user.universal_understand)
 		to_chat(user, SPAN_NOTICE("Plate makes a woop sound as it is powered down."))
 		user.universal_understand = FALSE
 		UnregisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED)
+		attached_uni = null
 
 /obj/item/clothing/accessory/health/research_plate/coagulator
 	name = "Experimental Blood Coagulator"
-	desc = "Stops bleedings by coordinated effort of multiple sensors and radioation emmiters. FDA requires to disclose the radiation is the most potent way to gain tumors, cancer, and death."
+	desc = "Stops bleedings by coordinated effort of multiple sensors and radioation emmiters. FDA requires us to disclose the dangers and potential results of continuious exposure to radiation"
 
 /obj/item/clothing/accessory/health/research_plate/coagulator/on_attached(obj/item/clothing/S, mob/living/carbon/human/user)
 	. = ..()
@@ -238,59 +245,116 @@
 		user.chem_effect_flags &= CHEM_EFFECT_NO_BLEEDING
 		to_chat(user, SPAN_NOTICE("You feel coagulator peeling off from your skin."))
 		UnregisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED)
+		attached_uni = null
 
 /obj/item/clothing/accessory/health/research_plate/coagulator/proc/on_removed_sig(mob/living/carbon/human/user, slot)
 	if(slot == attached_uni && user.chem_effect_flags & CHEM_EFFECT_NO_BLEEDING )
 		to_chat(user, SPAN_NOTICE("You feel coagulator peeling off from your skin."))
 		user.chem_effect_flags &= CHEM_EFFECT_NO_BLEEDING
 		UnregisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED)
+		attached_uni = null
 
 /obj/item/clothing/accessory/health/research_plate/emergency_injector
 	name = "Emergency Chemical Plate"
-	desc = "One-time disposable research plate packing all kinds of chemicals injected at user will by pressing two buttons on the sides simultaniously. The injection is painless, instant and packs more chemicals than your normal emergency injector. Features OD Protection."
-	var/od_protection = TRUE
+	desc = "One-time disposable research plate packing all kinds of chemicals injected at user will by pressing two buttons on the sides simultaniously. The injection is painless, instant and packs much more chemicals than your normal emergency injector. Features OD Protection in three modes."
+	var/od_protection_mode = OD_STRICT // 0 is off, 1 is strict, 2 is dynamic.
 	var/datum/action/item_action/activation
 	var/mob/living/wearer
 	var/used = FALSE
+	var/warning_type = FALSE // 1 means the player overdosed with OD_OFF mode. 2 means the plate adjusted the chemicals injected.
+	var/list/chemicals_to_inject = list(
+		"oxycodone" = 20,
+		"bicaridine" = 30,
+		"kelotane" = 30,
+		"meralyne" = 15,
+		"dermaline" = 15,
+		"dexalinp" = 1,
+		"inaprovaline" = 30,
+	)
+	recyclable_value = 500
 
 /obj/item/clothing/accessory/health/research_plate/emergency_injector/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_INFO("ALT-Clicking the plate will toggle overdose protection")
-	. += SPAN_INFO("Overdose protection seems to be [od_protection ? "on" : "off"]")
+	. += SPAN_INFO("Overdose protection seems to be [od_protection_mode == 1 ? "ON" : od_protection_mode == 2 ? "DYNAMIC" : "OFF"]")
+	if(used)
+		. += SPAN_WARNING("It is already used!")
 
 /obj/item/clothing/accessory/health/research_plate/emergency_injector/clicked(mob/user, list/mods)
+	. = ..()
 	if(mods["alt"])
-		od_protection = !od_protection
+		var/text = "You toogle overdose protection "
+		if(od_protection_mode == OD_DYNAMIC)
+			od_protection_mode = OD_OFF
+			text += "to OVERRIDE. Overdose protection is now offline."
+		else
+			od_protection_mode++
+			if(od_protection_mode == OD_DYNAMIC)
+				text += "to DYNAMIC. Overdose subsystems will inject chemicals but will not go above overdose levels."
+			else
+				text += "to STRICT. Overdose subsystems will refuse to inject if any of chemicals will overdose."
+		to_chat(user, SPAN_NOTICE(text))
+		return TRUE
+	return
+
+/obj/item/clothing/accessory/health/research_plate/emergency_injector/can_recycle(mob/living/user)
+	if(used)
+		return TRUE
+	return FALSE
 
 /obj/item/clothing/accessory/health/research_plate/emergency_injector/on_attached(obj/item/clothing/S, mob/living/carbon/human/user)
 	. = ..()
 	wearer = user
 	activation = new /datum/action/item_action/emergency_plate/inject_chemicals(src, attached_uni)
 	activation.give_to(wearer)
+	RegisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED, PROC_REF(on_removed_sig))
 
 /obj/item/clothing/accessory/health/research_plate/emergency_injector/on_removed(mob/living/user, obj/item/clothing/C)
 	. = ..()
+	qdel(activation)
+	UnregisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED)
+	attached_uni = null
+
+/obj/item/clothing/accessory/health/research_plate/emergency_injector/proc/on_removed_sig(mob/living/carbon/human/user, slot)
+	if(slot == attached_uni)
+		qdel(activation)
+		UnregisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED)
+		attached_uni = null
 
 /datum/action/item_action/emergency_plate/inject_chemicals/New(Target, obj/item/holder)
 	. = ..()
-	name = "Toggle Far Sight"
-	action_icon_state = "far_sight"
+	name = "Inject Emergency Plate"
+	action_icon_state = "regular2_100"
 	button.name = name
 	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
-
-/datum/action/item_action/emergency_plate/inject_chemicals/action_activate()
-	. = ..()
-	var/obj/item/clothing/accessory/health/research_plate/emergency_injector/inj = holder_item
-	to_world(inj.wearer)
-	to_world("asdasdasdasdsa")
-	if(inj.used)
-		return
-	inj.wearer.reagents.add_reagent("toxin", 100)
+	button.overlays += image('icons/obj/items/items.dmi', button, action_icon_state)
 
 /obj/item/clothing/accessory/health/research_plate/emergency_injector/ui_action_click(mob/owner, obj/item/holder)
-	to_world(wearer)
-	to_world("asdasdasdasdsa")
+	if(used)
+		to_chat(wearer, SPAN_DANGER("The plate inner reserve is empty, replace the plate!"))
+		return
+	for(var/chemical in chemicals_to_inject)
+		var/datum/reagent/reag = GLOB.chemical_reagents_list[chemical]
+		if(wearer.reagents.get_reagent_amount(chemical) + chemicals_to_inject[chemical] > reag.overdose)
+			if(od_protection_mode == OD_STRICT)
+				to_chat(wearer, SPAN_DANGER("You hold the two buttons, but the plate buzzes and refuses to inject, indicating the potential overdose!"))
+				return
+			else if (od_protection_mode == OD_DYNAMIC)
+				var/adjust_volume_to_inject = reag.overdose - wearer.reagents.get_reagent_amount(chemical)
+				chemicals_to_inject[chemical] = adjust_volume_to_inject
+				warning_type = 2
+		if(wearer.reagents.get_reagent_amount(chemical) + chemicals_to_inject[chemical] > reag.overdose && od_protection_mode == OD_OFF)
+			warning_type = 1
+		wearer.reagents.add_reagent(chemical, chemicals_to_inject[chemical])
+	if(warning_type == 1)
+		to_chat(wearer, SPAN_DANGER("You hold the two buttons, and the plate injects the chemicals, but makes a worrying beep, indicating overdose!"))
+	if(warning_type == 2)
+		to_chat(wearer, SPAN_DANGER("You hold the two buttons, and the plate injects the chemicals, but makes a reliefing beep, indicating it adjusted amounts it injected to prevent overdose!"))
+	playsound(src.loc, "sound/items/air_release.ogg", 100, TRUE)
+	used = TRUE
+
+
+
 
 
 

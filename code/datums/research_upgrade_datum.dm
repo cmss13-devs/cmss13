@@ -4,7 +4,7 @@
 	var/behavior = UPGRADE_EXCLUDE_BUY // should this be on the list? whatever.
 	var/value_upgrade = 1000 // the price of the upgrade, refer to this : 1
 	var/item_reference // actual path to the item.
-	var/upgrade_type = ITEM_MISC_UPGRADE //which tab
+	var/upgrade_type //which tab
 	var/clearance_req = 5 //5x is level 6. Why is it not that way? no one knows.
 
 /datum/research_upgrades/machinery
@@ -68,7 +68,46 @@
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
 	clearance_req = 3
 
+/datum/research_upgrades/item/laser_scalpel
+	name = "Lazer Scalpel"
+	desc = "A more advanced and robust version of the normal scalpel, allowing it to pierce through thick skin and chitin alike with extreme ease"
+	value_upgrade = 5000
+	item_reference = /obj/item/tool/surgery/scalpel/laser/advanced
+	behavior = UPGRADE_TIER_1
+	upgrade_type = ITEM_ACCESSORY_UPGRADE
+	clearance_req = 3
 
+/datum/research_upgrades/armor
+	name = "Armor"
+	behavior = UPGRADE_CATEGORY
+
+/datum/research_upgrades/armor/translator
+	name = "Universal Translator Plate"
+	desc = "A plate which, when attached to uniform, is able to translate any word spoken without data about that language, effectively allowing to translate new and old languages alike."
+	value_upgrade = 2000
+	behavior = UPGRADE_TIER_1
+	clearance_req = 4
+	upgrade_type = ITEM_ARMOR_UPGRADE
+	item_reference = /obj/item/clothing/accessory/health/research_plate/translator
+
+
+/datum/research_upgrades/armor/coagulator
+	name = "Active Blood Coagulator Plate"
+	desc = "Stops bleedings by coordinated effort of multiple sensors and radioation emmiters. FDA requires us to disclose the dangers and potential results of continuious exposure to radiation"
+	value_upgrade = 3000
+	behavior = UPGRADE_TIER_1
+	clearance_req = 2
+	upgrade_type = ITEM_ARMOR_UPGRADE
+	item_reference = /obj/item/clothing/accessory/health/research_plate/coagulator
+
+/datum/research_upgrades/armor/emergency_injector
+	name = "Medical Emergency Injector"
+	desc = "A medical plate with two buttons on the sides with hefty chemical tank. Attached to uniform and on simultanious press injects emergency dose of medical chemicals much larger than a normal emergency autoinjector. Single time use and is recycled in biomass printer. Features overdose protection"
+	value_upgrade = 1000
+	clearance_req = 3
+	behavior = UPGRADE_TIER_1
+	upgrade_type = ITEM_ARMOR_UPGRADE
+	item_reference = /obj/item/clothing/accessory/health/research_plate/emergency_injector
 
 
 

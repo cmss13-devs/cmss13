@@ -30,17 +30,27 @@
 	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
 		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
 		return
-	if(!istype(W, /obj/item/organ/xeno))
-		return
-	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-		to_chat(user, SPAN_WARNING("You were interupted!"))
-		return
-	if(!user.drop_inv_item_to_loc(W, src))
-		return
-	to_chat(user, SPAN_NOTICE("You place the organ in the machine"))
-	organ = W
-	icon_state = "xeno_analyzer_organ_on"
-	caste_of_organ = organ.caste_origin
+	if(istype(W, /obj/item/organ/xeno))
+		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			to_chat(user, SPAN_WARNING("You were interupted!"))
+			return
+		if(!user.drop_inv_item_to_loc(W, src))
+			return
+		to_chat(user, SPAN_NOTICE("You place the organ in the machine"))
+		organ = W
+		icon_state = "xeno_analyzer_organ_on"
+		caste_of_organ = organ.caste_origin
+	if(istype(W, /obj/item/clothing/accessory/health/research_plate))
+		var/obj/item/clothing/accessory/health/research_plate/plate = W
+		if(plate.recyclable_value == 0 && !plate.can_recycle(user))
+			to_chat(user, SPAN_WARNING("You cannot recycle this type of plate"))
+			return
+		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			to_chat(user, SPAN_WARNING("You were interupted!"))
+			return
+		to_chat(user, SPAN_NOTICE("You recycle the plate"))
+		biomass_points += plate.recyclable_value
+		qdel(W)
 
 /obj/structure/machinery/xenoanalyzer/ui_data(mob/user)
 	var/list/data = list()

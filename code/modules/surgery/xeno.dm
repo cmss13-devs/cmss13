@@ -31,7 +31,16 @@
 /datum/surgery_step/xenomorph/cut_exoskeleton
 	name = "Cut Exoskeleton Carapace"
 	desc = "cut the carapace open"
-	tools = SURGERY_TOOLS_SEVER_BONE
+	tools = list(\
+	/obj/item/tool/surgery/scalpel/laser/advanced = 1.5,\
+	/obj/item/tool/surgery/circular_saw = SURGERY_TOOL_MULT_IDEAL,\
+	/obj/item/weapon/twohanded/fireaxe = SURGERY_TOOL_MULT_SUBOPTIMAL,\
+	/obj/item/weapon/sword/machete = SURGERY_TOOL_MULT_SUBOPTIMAL,\
+	/obj/item/tool/hatchet = SURGERY_TOOL_MULT_SUBSTITUTE,\
+	/obj/item/tool/kitchen/knife/butcher = SURGERY_TOOL_MULT_SUBSTITUTE,\
+	/obj/item/attachable/bayonet = SURGERY_TOOL_MULT_BAD_SUBSTITUTE\
+	)
+
 	time = 4 SECONDS
 	preop_sound = 'sound/handling/clothingrustle1.ogg'
 	success_sound = 'sound/handling/bandage.ogg'

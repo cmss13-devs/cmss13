@@ -66,7 +66,7 @@ const Login = (props) => {
       <Box mb="2rem" fontFamily="monospace">
         WY-DOS Executive
       </Box>
-      <Box fontFamily="monospace">Version 8.2.3</Box>
+      <Box fontFamily="monospace">Version 8.3.4</Box>
       <Box fontFamily="monospace">Copyright © 2182, Weyland Yutani Corp.</Box>
 
       <Button

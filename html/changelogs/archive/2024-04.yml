@@ -343,3 +343,9 @@
       abovehead messages
   realforest2001:
   - bugfix: You can delete flight logs from ARES Interface again as intended.
+2024-04-26:
+  Git-Nivrak:
+  - qol: You can now change the color of pill bottles in the chem master or with a
+      hand labeler.
+  realforest2001:
+  - spellcheck: Fixes a typo for M4RA AP Ammo in the ASRS menu.

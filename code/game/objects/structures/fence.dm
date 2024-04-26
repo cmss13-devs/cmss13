@@ -293,5 +293,11 @@ GLOBAL_LIST_INIT(all_fences, list())
 				src.electrocute_human(human)
 	. = ..()
 
+/obj/structure/fence/electrified/ex_act(severity)
+	health -= severity/2
+	healthcheck(0, 1)
+
+
+
 
 

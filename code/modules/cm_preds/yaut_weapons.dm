@@ -189,7 +189,7 @@
 		var/mob/living/carbon/xenomorph/xenomorph = target
 		xenomorph.interference = xeno_interfere_amount
 
-	if(!ability_cost)
+	if(!ability_cost || !(HAS_TRAIT(user, TRAIT_YAUTJA_TECH)))
 		return
 
 	progress_ability(target, user)

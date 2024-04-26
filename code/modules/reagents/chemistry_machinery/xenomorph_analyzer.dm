@@ -3,8 +3,8 @@
 	desc = "Analyzer of biological material which processes valuable matter into even more valueble data."
 	density = TRUE
 	anchored = TRUE
-	icon = 'icons/obj/structures/machinery/science_machines.dmi'
-	icon_state = "mixer0b" //for the time while no sprites
+	icon = 'icons/obj/structures/machinery/science_machines_64x32.dmi'
+	icon_state = "xeno_analyzer_off" //for the time while no sprites
 	use_power = USE_POWER_NONE
 	wrenchable = FALSE
 	idle_power_usage = 40
@@ -12,6 +12,7 @@
 	var/obj/item/organ/xeno/organ = null
 	var/busy = FALSE
 	var/caste_of_organ = null
+	bound_x = 32
 
 /obj/structure/machinery/xenoanalyzer/attack_hand(mob/user as mob)
 	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
@@ -38,11 +39,14 @@
 		return
 	to_chat(user, SPAN_NOTICE("You place the organ in the machine"))
 	organ = W
+	icon_state = "xeno_analyzer_organ_on"
 	caste_of_organ = organ.caste_origin
 
 /obj/structure/machinery/xenoanalyzer/ui_data(mob/user)
 	var/list/data = list()
 	data["points"] = biomass_points
+	data["current_clearance"] = GLOB.chemical_data.clearance_level
+	data["is_x_level"] = GLOB.chemical_data.reached_x_access // why just why
 
 	if(organ)
 		data["organ"] = TRUE
@@ -68,8 +72,9 @@
 			"desc" = capitalize_first_letters(upgrade.desc),
 			"vari" = upgrade.behavior,
 			"cost" = upgrade.value_upgrade,
-			"ref" = initial(upgrade.item_reference),
-			"category" = initial(upgrade.upgrade_type)
+			"ref" = upgrade.item_reference,
+			"category" = upgrade.upgrade_type,
+			"clearance" = upgrade.clearance_req,
 		))
 		to_world(initial(upgrade.upgrade_type))
 	return static_data
@@ -85,13 +90,16 @@
 			. = TRUE
 
 		if("process_organ")
-			process_organ()
+			addtimer(CALLBACK(src, PROC_REF(process_organ)), 5 SECONDS)
+			icon_state = "xeno_analyzer_on_moving"
+			playsound(src.loc, 'sound/machines/blender.ogg', 25, TRUE)
 			. = TRUE
 		if("produce")
 			var/cost = text2num(params["cost"])
 			var/vari = text2num(params["varia"])
+			var/clearance_req = text2num(params["clearreq"])
 			if(cost && !busy)
-				start_print_upgrade(params["ref"], cost, usr, vari)
+				start_print_upgrade(params["ref"], cost, usr, vari, clearance_req)
 
 /obj/structure/machinery/xenoanalyzer/proc/eject_biomass()
 	if(isnull(organ))
@@ -102,28 +110,28 @@
 /obj/structure/machinery/xenoanalyzer/proc/process_organ()
 	if(isnull(organ))
 		return
-	playsound(src.loc, 'sound/machines/blender.ogg', 25, 1)
 	biomass_points += organ.research_value
+	icon_state = "xeno_analyzer_off"
 	QDEL_NULL(organ)
 
-/obj/structure/machinery/xenoanalyzer/proc/start_print_upgrade(produce_path, cost, mob/user, variation)
+/obj/structure/machinery/xenoanalyzer/proc/start_print_upgrade(produce_path, cost, mob/user, variation, clearance_requirment)
 	if (stat & NOPOWER)
-		icon_state = "drone_fab_nopower"
+		return
 	if(cost > biomass_points)
 		to_chat(user, SPAN_WARNING("[src] makes a worrying beep and flashes red, theres not enough data processed to build the requested upgrade!"))
 		return
+	if(clearance_requirment > GLOB.chemical_data.clearance_level || clearance_requirment == 6 && !GLOB.chemical_data.reached_x_access)
+		to_chat(user, SPAN_WARNING("[src] makes a annoying hum and flashes red, You dont have the legal access to the upgrade!"))
+		return
 	else
-		icon_state = "mixer1b"
+		icon_state = "xeno_analyzer_printing"
 		busy = TRUE
 		biomass_points -= cost
 		addtimer(CALLBACK(src, PROC_REF(print_upgrade), produce_path, variation), 5 SECONDS)
 
 /obj/structure/machinery/xenoanalyzer/proc/print_upgrade(produce_path, variation)
 	busy = FALSE
-	if(isnull(produce_path))
-		to_world("uhohhh")
-	to_world(produce_path)
-	icon_state = "mixer0b"
+	icon_state = "xeno_analyzer_off"
 	var/obj/item/research_upgrades/upgrade = new produce_path(get_turf(src))
 	upgrade.value = variation
 

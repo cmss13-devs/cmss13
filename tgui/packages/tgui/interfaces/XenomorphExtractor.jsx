@@ -5,7 +5,16 @@ import { Window } from '../layouts';
 export const XenomorphExtractor = (_props, context) => {
   const { act, data } = useBackend(context);
 
-  const { organ, points, upgrades, caste, value, categories } = data;
+  const {
+    organ,
+    points,
+    upgrades,
+    caste,
+    value,
+    categories,
+    current_clearance,
+    is_x_level,
+  } = data;
   const dropdownOptions = categories;
   const [selectedTab, setSelectedTab] = useLocalState('category', 'NONE');
 
@@ -51,52 +60,64 @@ export const XenomorphExtractor = (_props, context) => {
           )}
         </Section>
         <Divider />
-        <Dropdown
-          minWidth="30"
-          menuWidth="30"
-          width={150}
-          selected={selectedTab}
-          options={dropdownOptions}
-          color={'#876500'}
-          onSelected={(value) => setSelectedTab(value)}
-        />
-        <Flex height="200%" direction="row">
-          <Flex.Item>
-            <Box m={2}>
-              {selectedTab !== 'NONE' && (
-                <LabeledList>
-                  {upgrades.map((upgrades) =>
-                    upgrades.category === selectedTab ? (
-                      <LabeledList.Item
-                        key={upgrades.name}
-                        label={<NoticeBox>{upgrades.name}</NoticeBox>}
-                        buttons={
-                          <Box>
-                            <Button
-                              fluid={1}
-                              content={'Print ' + '  (' + upgrades.cost + ')'}
-                              icon="print"
-                              tooltip={upgrades.desc}
-                              tooltipPosition="left"
-                              onClick={() =>
-                                act('produce', {
-                                  ref: upgrades.ref,
-                                  cost: upgrades.cost,
-                                  varia: upgrades.vari,
-                                })
-                              }
-                            />
+        <Section title={<span> Select Technology to print.</span>}>
+          <Box ml={1}>
+            <Dropdown
+              selected={selectedTab}
+              options={dropdownOptions}
+              color={'#876500'}
+              onSelected={(value) => setSelectedTab(value)}
+            />
+          </Box>
+          <Flex height="200%" direction="row">
+            <Flex.Item>
+              <Box m={2} bold>
+                {selectedTab !== 'NONE' && (
+                  <LabeledList>
+                    {upgrades.map((upgrades) =>
+                      upgrades.category === selectedTab ? (
+                        <LabeledList.Item
+                          key={upgrades.name}
+                          label={
+                            <h3 style={{ color: '#ffbf00' }}>
+                              {upgrades.name}
+                            </h3>
+                          }
+                          buttons={
+                            <Box>
+                              <Button
+                                fluid={1}
+                                content={'Print ' + '  (' + upgrades.cost + ')'}
+                                icon="print"
+                                tooltip={upgrades.desc}
+                                tooltipPosition="left"
+                                onClick={() =>
+                                  act('produce', {
+                                    ref: upgrades.ref,
+                                    cost: upgrades.cost,
+                                    varia: upgrades.vari,
+                                    clearreq: upgrades.clearance,
+                                  })
+                                }
+                              />
+                            </Box>
+                          }>
+                          <Box mb={0.8}>
+                            Clearance{' '}
+                            {upgrades.clearance === 6
+                              ? '5X'
+                              : upgrades.clearance}{' '}
+                            Required
                           </Box>
-                        }
-                      />
-                    ) : null
-                  )}
-                </LabeledList>
-              )}{' '}
-              <span> Select Technology to print.</span>
-            </Box>
-          </Flex.Item>
-        </Flex>
+                        </LabeledList.Item>
+                      ) : null
+                    )}
+                  </LabeledList>
+                )}{' '}
+              </Box>
+            </Flex.Item>
+          </Flex>
+        </Section>
         {!!organ && (
           <Section title="Source Material">
             <NoticeBox>Biomass detected, Ready to process</NoticeBox>

@@ -26805,7 +26805,7 @@
 	},
 /area/almayer/living/briefing)
 "eYn" = (
-/obj/structure/filingcabinet/security,
+/obj/structure/filingcabinet/documentation/liaison,
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "eYp" = (
@@ -67805,6 +67805,16 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/port_midship_hallway)
+"teu" = (
+/obj/structure/filingcabinet/documentation/military_police{
+	pixel_y = 16;
+	density = 0
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "red"
+	},
+/area/almayer/shipboard/brig/processing)
 "tez" = (
 /obj/effect/landmark/ert_spawns/distress_cryo,
 /obj/effect/landmark/late_join,
@@ -94880,7 +94890,7 @@ cmM
 tzd
 tzd
 sgi
-bju
+teu
 wSm
 kAL
 xkd

@@ -78134,7 +78134,7 @@
 	},
 /area/almayer/lifeboat_pumps/south1)
 "wvo" = (
-/obj/structure/filingcabinet,
+/obj/structure/filingcabinet/security,
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "wvE" = (
@@ -117436,7 +117436,7 @@ mHY
 yei
 bBH
 fKh
-eYn
+wvo
 nQA
 nQA
 vEG
@@ -117639,7 +117639,7 @@ xIj
 xIj
 bBH
 fKh
-wvo
+eYn
 nQA
 nQA
 vEG

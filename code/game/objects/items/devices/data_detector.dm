@@ -17,7 +17,6 @@
 		/obj/structure/machinery/computer/objective,
 		/obj/item/limb/head/synth,
 	)
-	var/detect_empty_vial_boxes = FALSE
 
 /obj/item/device/motiondetector/intel/get_help_text()
 	. = "Green indicators on your HUD will show the location of intelligence objects detected by the scanner. Has two modes: slow long-range [SPAN_HELPFUL("(14 tiles)")] and fast short-range [SPAN_HELPFUL("(7 tiles)")]."
@@ -43,22 +42,19 @@
 		var/detected
 		for(var/DT in objects_to_detect)
 			if(istype(I, DT))
-				if(!detect_empty_vial_boxes && istype(I, /obj/item/storage/fancy/vials/random))
-					if(!I.contents)
-						continue
-				detected = TRUE
+				if((istype(I, /obj/item/storage/fancy/vials/random) && !I.contents.len) || (istype(I, /obj/item/reagent_container/glass/beaker/vial/random) && !I.reagents.total_volume))
+					break //We don't need to ping already looted containers
+				else
+					detected = TRUE
 			if(I.contents)
 				for(var/obj/item/CI in I.contents)
 					if(istype(CI, DT))
-						if(!detect_empty_vial_boxes && istype(I, /obj/item/storage/fancy/vials/random))
-							if(!I.contents)
-								continue
-						detected = TRUE
-						break
+						if((istype(I, /obj/item/storage/fancy/vials/random) && !I.contents.len) || (istype(I, /obj/item/reagent_container/glass/beaker/vial/random) && !I.reagents.total_volume))
+							break
+						else
+							detected = TRUE
 			if(human_user && detected)
 				show_blip(human_user, I)
-			if(detected)
-				break
 
 		if(detected)
 			detected_sound = TRUE
@@ -76,13 +72,10 @@
 			for(var/obj/I in M.contents_twice())
 				for(var/DT in objects_to_detect)
 					if(istype(I, DT))
-						if(!detect_empty_vial_boxes && istype(I, /obj/item/storage/fancy/vials/random))
-							if(!I.contents)
-								continue
-						detected = TRUE
-						break
-				if(detected)
-					break
+						if((istype(I, /obj/item/storage/fancy/vials/random) && !I.contents.len) || (istype(I, /obj/item/reagent_container/glass/beaker/vial/random) && !I.reagents.total_volume))
+							break
+						else
+							detected = TRUE
 
 		if(human_user && detected)
 			show_blip(human_user, M)

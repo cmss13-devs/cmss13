@@ -1,0 +1,4 @@
+author: "Lagomorphica"
+delete-after: True
+changes:
+  - balance: "The spotter laser designators, scout laser designators, and scout cloak are now unmeltable and indestructible to explosions."

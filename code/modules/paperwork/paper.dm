@@ -46,8 +46,7 @@
 	var/document_category
 	/// Name of the document.
 	var/document_title
-	/// Specific paper. This is the HTML file name.
-	var/doc_file_ref
+	var/datum/prefab_document/doc_datum_type
 
 //lipstick wiping is in code/game/obj/items/weapons/cosmetics.dm!
 
@@ -266,7 +265,7 @@
 		paper_text = replacetext(paper_text, "\[upp\]", "<img src = [asset.get_url_mappings()["logo_upp.png"]]>")
 		paper_text = replacetext(paper_text, "\[cmb\]", "<img src = [asset.get_url_mappings()["logo_cmb.png"]]>")
 
-		paper_text = "<font face=\"[deffont]\" color=[P ? P.pen_colour : "black"]>[paper_text]</font>"
+		paper_text = "<font face=\"[deffont]\" color=[P ? P.pen_color : "black"]>[paper_text]</font>"
 	else // If it is a crayon, and he still tries to use these, make them empty!
 		paper_text = replacetext(paper_text, "\[*\]", "")
 		paper_text = replacetext(paper_text, "\[hr\]", "")
@@ -280,7 +279,7 @@
 		paper_text = replacetext(paper_text, "\[cell\]", "")
 		paper_text = replacetext(paper_text, "\[logo\]", "")
 
-		paper_text = "<font face=\"[crayonfont]\" color=[P ? P.pen_colour : "black"]><b>[paper_text]</b></font>"
+		paper_text = "<font face=\"[crayonfont]\" color=[P ? P.pen_color : "black"]><b>[paper_text]</b></font>"
 
 // t = replacetext(t, "#", "") // Junk converted to nothing!
 
@@ -363,15 +362,13 @@
 /obj/item/paper/proc/compile_paper()
 	if(!is_prefab)
 		return FALSE
-	if(!document_category || !doc_file_ref)
+	if(!document_category || !doc_datum_type)
 		return FALSE
 
-	var/imported = file2text("paperwork/[document_category]/[doc_file_ref].html")
-	if(!imported)
-		log_debug("Paper Prefab: FAILED IMPORT")
-		return FALSE
+	var/datum/prefab_document/prefab = new doc_datum_type
+	info = prefab.contents
+	qdel(prefab)
 
-	info = imported
 	calculate_fields()
 	updateinfolinks()
 	update_icon()

@@ -58,10 +58,10 @@
 	if(isturf(A))
 		to_chat(user, SPAN_WARNING("The label won't stick to that."))
 		return
-	if(istype(A, /obj/item/storage/pill_bottle))		
+	if(istype(A, /obj/item/storage/pill_bottle))
 		var/obj/item/storage/pill_bottle/target_pill_bottle = A
 		target_pill_bottle.choose_color(user)
-	
+
 	if(!label || !length(label))
 		remove_label(A, user)
 		return
@@ -287,7 +287,7 @@
 
 /obj/item/tool/pen/white
 	desc = "It's a rare white ink pen."
-	pen_colour = "white"
+	pen_color = "white"
 
 /obj/item/tool/pen/white/clicky
 	desc = "It's a WY brand extra clicky white ink pen."
@@ -303,8 +303,8 @@
 /obj/item/tool/pen/multicolor/attack_self(mob/living/carbon/human/user)
 	if(on)
 		current_colour_index = (current_colour_index % length(colour_list)) + 1
-		pen_colour = colour_list[current_colour_index]
-		balloon_alert(user,"you twist the pen and change the ink color to [pen_colour].")
+		pen_color = colour_list[current_colour_index]
+		balloon_alert(user,"you twist the pen and change the ink color to [pen_color].")
 		if(clicky)
 			playsound(user.loc, 'sound/items/pen_click_on.ogg', 100, 1, 5)
 		update_pen_state()

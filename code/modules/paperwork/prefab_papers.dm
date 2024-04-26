@@ -1,3 +1,6 @@
+/datum/prefab_document
+	var/contents
+
 GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_title)
 /obj/structure/filingcabinet/documentation
 	name = "documents cabinet"
@@ -19,7 +22,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 		if(!istype(document))
 			continue
 		log_debug("DOCUMENT: Checking [document]")
-		if(!document.is_prefab || !document.doc_file_ref || (document.name == "paper"))
+		if(!document.is_prefab || !document.doc_datum_type || (document.name == "paper"))
 			log_debug("DOCUMENT: Prefab, Name or Ref fail.")
 			continue
 		if(!document.document_category || !(document.document_category in available_categories))
@@ -88,19 +91,19 @@ https://discord.com/channels/539888393836953604/539914145705885697/1187204942478
 
 /obj/item/paper/prefab/carbon/military_police/appeal_form
 	document_title = "PR301a - Appeals Form"
-	doc_file_ref = "appeal_form"
+	doc_datum_type = /datum/prefab_document/provost/appeal_form
 
 /obj/item/paper/prefab/carbon/military_police/dao_request
 	document_title = "PR301b - Delayed Action Order"
-	doc_file_ref = "dao_request"
+	doc_datum_type = /datum/prefab_document/provost/dao_request
 
 /obj/item/paper/prefab/carbon/military_police/confiscation_receipt
 	document_title = "PR356 - Confiscation Receipt"
-	doc_file_ref = "confiscation_receipt"
+	doc_datum_type = /datum/prefab_document/provost/confiscation_receipt
 
 /obj/item/paper/prefab/carbon/military_police/apology_notice
 	document_title = "NJ910 - Apology Notice"
-	doc_file_ref = "apology_notice"
+	doc_datum_type = /datum/prefab_document/provost/apology_notice
 
 
 /obj/item/paper/prefab/liaison
@@ -109,17 +112,17 @@ https://discord.com/channels/539888393836953604/539914145705885697/1187204942478
 
 /obj/item/paper/prefab/liaison/preserve_intent
 	document_title = "WY439 - Affidavit of Intent to Preserve"
-	doc_file_ref = "preserve_intent"
+	doc_datum_type = /datum/prefab_document/wey_yu/preserve_intent
 
 /obj/item/paper/prefab/liaison/liability
 	document_title = "WY440 - Affidavit of Liability"
-	doc_file_ref = "liability"
+	doc_datum_type = /datum/prefab_document/wey_yu/liability
 
 /obj/item/paper/prefab/liaison/nda_short
 	document_title = "WY441 - Confidentiality Agreement"
-	doc_file_ref = "nda_short"
+	doc_datum_type = /datum/prefab_document/wey_yu/nda_short
 
 /obj/item/paper/prefab/liaison/nda_long
 	document_title = "WY442 - Non Disclosure Agreement"
-	doc_file_ref = "nda_long"
+	doc_datum_type = /datum/prefab_document/wey_yu/nda_long
 

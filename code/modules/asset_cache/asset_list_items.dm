@@ -117,15 +117,15 @@
 /datum/asset/simple/paper
 	keep_local_name = TRUE
 	assets = list(
-		"logo_wy.png" = 'paperwork/reference_files/logo_wy.png',
-		"logo_uscm.png" = 'paperwork/reference_files/logo_uscm.png',
-		"logo_provost.png" = 'paperwork/reference_files/logo_provost.png',
-		"logo_upp.png" = 'paperwork/reference_files/logo_upp.png',
-		"logo_cmb.png" = 'paperwork/reference_files/logo_cmb.png',
-		"logo_wy_bw.png" = 'paperwork/reference_files/logo_wy_bw.png',
-		"background_white.jpg" = 'paperwork/reference_files/background_white.jpg',
-		"background_dark_fractal.png" = 'paperwork/reference_files/background_dark_fractal.png',
-		"colonialspacegruntsEZ.png" = 'paperwork/reference_files/colonialspacegruntsEZ.png',
+		"logo_wy.png" = 'paper_reference_files/logo_wy.png',
+		"logo_uscm.png" = 'paper_reference_files/logo_uscm.png',
+		"logo_provost.png" = 'paper_reference_files/logo_provost.png',
+		"logo_upp.png" = 'paper_reference_files/logo_upp.png',
+		"logo_cmb.png" = 'paper_reference_files/logo_cmb.png',
+		"logo_wy_bw.png" = 'paper_reference_files/logo_wy_bw.png',
+		"background_white.jpg" = 'paper_reference_files/background_white.jpg',
+		"background_dark_fractal.png" = 'paper_reference_files/background_dark_fractal.png',
+		"colonialspacegruntsEZ.png" = 'paper_reference_files/colonialspacegruntsEZ.png',
 	)
 
 /datum/asset/spritesheet/chat

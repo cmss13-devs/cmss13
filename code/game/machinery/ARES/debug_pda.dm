@@ -426,7 +426,7 @@
 			if(message)
 				link.interface.response_from_ares(message, params["active_convo"])
 				var/datum/ares_record/talk_log/conversation = locate(params["active_convo"])
-				var/admin_log = SPAN_STAFF_IC("<b>ADMINS/MODS: [SPAN_RED("[key_name(user)] replied to [conversation.user]'s ARES message")] [SPAN_GREEN("via Remote link.interface")] with: [SPAN_BLUE(message)] </b>")
+				var/admin_log = SPAN_STAFF_IC("<b>ADMINS/MODS: [SPAN_RED("[key_name(user)] replied to [conversation.user]'s ARES message")] [SPAN_GREEN("via [src]")] with: [SPAN_BLUE(message)] </b>")
 				for(var/client/admin in GLOB.admins)
 					if((R_ADMIN|R_MOD) & admin.admin_holder.rights)
 						to_chat(admin, admin_log)

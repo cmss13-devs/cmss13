@@ -543,6 +543,8 @@
 	name = "CMB - Sentinel Outpost - Evidence Room"
 /area/lv759/indoors/colonial_marshals/office
 	name = "CMB - Sentinel Outpost - Office"
+/area/lv759/indoors/colonial_marshals/reception
+	name = "CMB - Sentinel Outpost - Reception Office"
 /area/lv759/indoors/colonial_marshals/hallway_central
 	name = "CMB - Sentinel Outpost - Central Hallway"
 /area/lv759/indoors/colonial_marshals/hallway_south

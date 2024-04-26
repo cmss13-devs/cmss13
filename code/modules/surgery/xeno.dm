@@ -18,10 +18,12 @@
 	requires_bodypart = FALSE
 
 /datum/surgery/xenomorph/can_start(mob/user, mob/living/carbon/xenomorph/patient, obj/limb/L, obj/item/tool)
-	if(patient.stat == DEAD && !patient.organ_removed && !islarva(patient) && !isfacehugger(patient))
-		return TRUE
 	if(islarva(patient) || isfacehugger(patient))
 		to_chat(user, SPAN_DANGER("This race is probably too small to have a mature organ worthy to extract..."))
+	if(patient.tier == 3 && !istype(tool, /obj/item/tool/surgery/scalpel/laser/advanced))
+		to_chat(user, SPAN_DANGER("Chitin of this kind is too thick for an ordinary tool, you would need something special."))
+	if(patient.stat == DEAD && !patient.organ_removed)
+		return TRUE
 	return FALSE
 
 /datum/surgery_step/xenomorph/cut_exoskeleton
@@ -46,7 +48,7 @@
 			SPAN_NOTICE("[user] starts to [pick("smash", "crack", "break")] [target.caste_type] carapace with \the [tool], Recklessly, with acid splashing them!"))
 		if(user.head && !(user.head.flags_inventory & COVEREYES))
 			var/datum/internal_organ/eyes/user_eye = user.internal_organs_by_name["eyes"]
-			user_eye.take_damage(rand(3,5), TRUE)
+			user_eye.take_damage(rand(5,6), TRUE)
 			to_chat(user, SPAN_DANGER("Lots of acid gets into your eyes and on your skin!"))
 			user.emote("pain")
 		user.apply_damage(rand(10,25),BURN)

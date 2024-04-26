@@ -20,8 +20,10 @@
 /datum/surgery/xenomorph/can_start(mob/user, mob/living/carbon/xenomorph/patient, obj/limb/L, obj/item/tool)
 	if(islarva(patient) || isfacehugger(patient))
 		to_chat(user, SPAN_DANGER("This race is probably too small to have a mature organ worthy to extract..."))
-	if(patient.tier == 3 && !istype(tool, /obj/item/tool/surgery/scalpel/laser/advanced))
+		return FALSE
+	if(patient.tier > 2 && !istype(tool, /obj/item/tool/surgery/scalpel/laser/advanced))
 		to_chat(user, SPAN_DANGER("Chitin of this kind is too thick for an ordinary tool, you would need something special."))
+		return FALSE
 	if(patient.stat == DEAD && !patient.organ_removed)
 		return TRUE
 	return FALSE

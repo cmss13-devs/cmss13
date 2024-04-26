@@ -277,7 +277,11 @@
 		paper_text = replacetext(paper_text, "\[/table\]", "")
 		paper_text = replacetext(paper_text, "\[row\]", "")
 		paper_text = replacetext(paper_text, "\[cell\]", "")
-		paper_text = replacetext(paper_text, "\[logo\]", "")
+		paper_text = replacetext(paper_text, "\[wy\]", "")
+		paper_text = replacetext(paper_text, "\[wy_bw\]", "")
+		paper_text = replacetext(paper_text, "\[uscm\]", "")
+		paper_text = replacetext(paper_text, "\[upp\]", "")
+		paper_text = replacetext(paper_text, "\[cmb\]", "")
 
 		paper_text = "<font face=\"[crayonfont]\" color=[P ? P.pen_color : "black"]><b>[paper_text]</b></font>"
 

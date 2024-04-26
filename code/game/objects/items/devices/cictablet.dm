@@ -43,10 +43,10 @@
 		add_pmcs = FALSE
 	UnregisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP)
 
-/obj/item/device/cotablet/attack_self(mob/user as mob)
+/obj/item/device/cotablet/attack_self(mob/living/carbon/human/user as mob)
 	..()
 
-	if(src.allowed(user))
+	if(src.allowed(user) && user.wear_id?.check_biometrics(user))
 		tgui_interact(user)
 	else
 		to_chat(user, SPAN_DANGER("Access denied."))
@@ -123,7 +123,7 @@
 		if("award")
 			if(announcement_faction != FACTION_MARINE)
 				return
-			print_medal(usr, src)
+			open_medal_panel(usr, src)
 			. = TRUE
 
 		if("mapview")

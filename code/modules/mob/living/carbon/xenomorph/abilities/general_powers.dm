@@ -78,6 +78,7 @@
 
 	playsound(xeno.loc, "alien_resin_build", 25)
 	apply_cooldown()
+	SEND_SIGNAL(xeno, COMSIG_XENO_PLANT_RESIN_NODE)
 	return ..()
 
 /mob/living/carbon/xenomorph/lay_down()
@@ -363,6 +364,7 @@
 		current_aura = pheromone
 		visible_message(SPAN_XENOWARNING("\The [src] begins to emit strange-smelling pheromones."), \
 		SPAN_XENOWARNING("We begin to emit '[pheromone]' pheromones."), null, 5)
+		SEND_SIGNAL(src, COMSIG_XENO_START_EMIT_PHEROMONES, pheromone)
 		playsound(loc, "alien_drool", 25)
 
 	if(isqueen(src) && hive && hive.xeno_leader_list.len && anchored)
@@ -433,7 +435,7 @@
 	pre_pounce_effects()
 
 	X.pounce_distance = get_dist(X, A)
-	X.throw_atom(A, distance, throw_speed, X, pass_flags = pounce_pass_flags, collision_callbacks = pounce_callbacks)
+	X.throw_atom(A, distance, throw_speed, X, launch_type = LOW_LAUNCH, pass_flags = pounce_pass_flags, collision_callbacks = pounce_callbacks)
 	X.update_icons()
 
 	additional_effects_always()
@@ -481,7 +483,7 @@
 
 	// Build our list of target turfs based on
 	if (spray_type == ACID_SPRAY_LINE)
-		X.do_acid_spray_line(getline2(X, A, include_from_atom = FALSE), spray_effect_type, spray_distance)
+		X.do_acid_spray_line(get_line(X, A, include_start_atom = FALSE), spray_effect_type, spray_distance)
 
 	else if (spray_type == ACID_SPRAY_CONE)
 		X.do_acid_spray_cone(get_turf(A), spray_effect_type, spray_distance)
@@ -512,7 +514,7 @@
 
 /datum/action/xeno_action/onclick/xenohide/proc/unhide_on_stat(mob/living/carbon/xenomorph/source, new_stat, old_stat)
 	SIGNAL_HANDLER
-	if(new_stat >= UNCONSCIOUS && old_stat <= UNCONSCIOUS)
+	if(!QDELETED(source) && (new_stat >= UNCONSCIOUS && old_stat <= UNCONSCIOUS))
 		post_attack()
 
 /datum/action/xeno_action/onclick/place_trap/use_ability(atom/A)
@@ -638,7 +640,7 @@
 		if(!choice)
 			return
 		if(choice == "help")
-			var/message = "Placing a construction node creates a template for special structures that can benefit the hive, which require the insertion of [MATERIAL_CRYSTAL] to construct the following:<br>"
+			var/message = "Placing a construction node creates a template for special structures that can benefit the hive, which require the insertion of plasma to construct the following:<br>"
 			for(var/structure_name in X.hive.hive_structure_types)
 				var/datum/construction_template/xenomorph/structure_type = X.hive.hive_structure_types[structure_name]
 				message += "<b>[capitalize_first_letters(structure_name)]</b> - [initial(structure_type.description)]<br>"
@@ -927,7 +929,7 @@
 	if(distance > 2)
 		return FALSE
 
-	var/list/turf/path = getline2(stabbing_xeno, targetted_atom, include_from_atom = FALSE)
+	var/list/turf/path = get_line(stabbing_xeno, targetted_atom, include_start_atom = FALSE)
 	for(var/turf/path_turf as anything in path)
 		if(path_turf.density)
 			to_chat(stabbing_xeno, SPAN_WARNING("There's something blocking our strike!"))
@@ -1013,6 +1015,9 @@
 		// The xeno flips around for a second to impale the target with their tail. These look awsome.
 		stab_direction = turn(get_dir(stabbing_xeno, target), 180)
 		stab_overlay = "tail"
+	log_attack("[key_name(stabbing_xeno)] tailstabbed [key_name(target)] at [get_area_name(stabbing_xeno)]")
+	target.attack_log += text("\[[time_stamp()]\] <font color='orange'>was tailstabbed by [key_name(stabbing_xeno)]</font>")
+	stabbing_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>tailstabbed [key_name(target)]</font>")
 
 	stabbing_xeno.setDir(stab_direction)
 	stabbing_xeno.emote("tail")

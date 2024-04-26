@@ -289,8 +289,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 /obj/structure/machinery/computer/supply_drop_console/proc/handle_supplydrop()
 	SHOULD_NOT_SLEEP(TRUE)
-	var/obj/structure/closet/crate/C = check_pad()
-	if(!C)
+	var/obj/structure/closet/crate/crate = check_pad()
+	if(!crate)
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("No crate was detected on the drop pad. Get Requisitions on the line!")]")
 		return
 
@@ -316,19 +316,21 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The landing zone appears to be obstructed or out of bounds. Package would be lost on drop.")]")
 		return
 
-	C.visible_message(SPAN_WARNING("\The [C] loads into a launch tube. Stand clear!"))
-	current_squad.send_message("'[C.name]' supply drop incoming. Heads up!")
-	current_squad.send_maptext(C.name, "Incoming Supply Drop:")
+	crate.visible_message(SPAN_WARNING("\The [crate] loads into a launch tube. Stand clear!"))
+	current_squad.send_message("'[crate.name]' supply drop incoming. Heads up!")
+	current_squad.send_maptext(crate.name, "Incoming Supply Drop:")
 	COOLDOWN_START(src, next_fire, drop_cooldown)
 	if(ismob(usr))
 		var/mob/M = usr
 		M.count_niche_stat(STATISTICS_NICHE_CRATES)
 
-	playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehh
-	var/obj/structure/droppod/supply/pod = new(null, C)
-	C.forceMove(pod)
+	playsound(crate.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehh
+	var/obj/structure/droppod/supply/pod = new(null, crate)
+	crate.forceMove(pod)
 	pod.launch(T)
-	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[C.name]' supply drop launched! Another launch will be available in five minutes.")]")
+	log_ares_requisition("Supply Drop", "Launch [crate.name] to X[x_supply], Y[y_supply].", usr.real_name)
+	log_game("[key_name(usr)] launched supply drop '[crate.name]' to X[x_coord], Y[y_coord].")
+	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[crate.name]' supply drop launched! Another launch will be available in five minutes.")]")
 
 //A limited version of the above console
 //Can't pick squads, drops less often
@@ -383,7 +385,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	///How close the CMB is to investigating | 100 sends an ERT
 	var/black_market_heat = 0
 
-	/// This contains a list of all typepaths of sold items and how many times they've been recieved. Used to calculate points dropoff (Can't send down a hundred blue souto cans for infinite points)
+	/// This contains a list of all typepaths of sold items and how many times they've been received. Used to calculate points dropoff (Can't send down a hundred blue souto cans for infinite points)
 	var/list/black_market_sold_items
 
 	/// If the players killed him by sending a live hostile below.. this goes false and they can't order any more contraband.
@@ -667,9 +669,12 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	var/list/packages
 
 
-/obj/item/paper/manifest/read_paper(mob/user)
+/obj/item/paper/manifest/read_paper(mob/user, scramble = FALSE)
+	var/paper_info = info
+	if(scramble)
+		paper_info = stars_decode_html(info)
 	// Tossing ref in widow id as this allows us to read multiple manifests at same time
-	show_browser(user, "<BODY class='paper'>[info][stamps]</BODY>", null, "manifest\ref[src]", "size=550x650")
+	show_browser(user, "<BODY class='paper'>[paper_info][stamps]</BODY>", null, "manifest\ref[src]", "size=550x650")
 	onclose(user, "manifest\ref[src]")
 
 /obj/item/paper/manifest/proc/generate_contents()
@@ -749,7 +754,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	if(..())
 		return
 
-	if( isturf(loc) && (in_range(src, usr) || ishighersilicon(usr)) )
+	if( isturf(loc) && (in_range(src, usr) || isSilicon(usr)) )
 		usr.set_interaction(src)
 
 	if(href_list["order"])
@@ -799,7 +804,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			var/mob/living/carbon/human/H = usr
 			idname = H.get_authentification_name()
 			idrank = H.get_assignment()
-		else if(ishighersilicon(usr))
+		else if(isSilicon(usr))
 			idname = usr.real_name
 
 		GLOB.supply_controller.ordernum++
@@ -921,10 +926,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	if(..())
 		return
 
-	if(ismaintdrone(usr))
-		return
-
-	if(isturf(loc) && ( in_range(src, usr) || ishighersilicon(usr) ) )
+	if(isturf(loc) && in_range(src, usr) )
 		usr.set_interaction(src)
 
 	//Calling the shuttle
@@ -1277,7 +1279,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 /datum/controller/supply/proc/black_market_investigation()
 	black_market_heat = -1
-	SSticker.mode.get_specific_call("Inspection - Colonial Marshal Ledger Investigation Team", TRUE, TRUE)
+	SSticker.mode.get_specific_call(/datum/emergency_call/inspection_cmb/black_market, TRUE, TRUE) // "Inspection - Colonial Marshals Ledger Investigation Team"
 	log_game("Black Market Inspection auto-triggered.")
 
 /obj/structure/machinery/computer/supplycomp/proc/is_buyable(datum/supply_packs/supply_pack)
@@ -1402,11 +1404,13 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		return
 
 	dat += "Platform position: "
-	if (SSshuttle.vehicle_elevator.timeLeft())
+	if (SSshuttle.vehicle_elevator.mode != SHUTTLE_IDLE)
 		dat += "Moving"
 	else
 		if(is_mainship_level(SSshuttle.vehicle_elevator.z))
 			dat += "Raised"
+			if(!spent)
+				dat += "<br>\[<a href='?src=\ref[src];lower_elevator=1'>Lower</a>\]"
 		else
 			dat += "Lowered"
 	dat += "<br><hr>"
@@ -1442,18 +1446,12 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		world.log << "## ERROR: Eek. The supply/elevator datum is missing somehow."
 		return
 
-	if(!is_admin_level(SSshuttle.vehicle_elevator.z))
-		to_chat(usr, SPAN_WARNING("The elevator needs to be in the cargo bay dock to call a vehicle up. Ask someone to send it away."))
-		return
-
-	if(ismaintdrone(usr))
-		return
-
-	if(isturf(loc) && ( in_range(src, usr) || ishighersilicon(usr) ) )
+	if(isturf(loc) && ( in_range(src, usr) || isSilicon(usr) ) )
 		usr.set_interaction(src)
 
 	if(href_list["get_vehicle"])
-		if(is_mainship_level(SSshuttle.vehicle_elevator.z))
+		if(is_mainship_level(SSshuttle.vehicle_elevator.z) || SSshuttle.vehicle_elevator.mode != SHUTTLE_IDLE)
+			to_chat(usr, SPAN_WARNING("The elevator needs to be in the cargo bay dock to call a vehicle up!"))
 			return
 		// dunno why the +1 is needed but the vehicles spawn off-center
 		var/turf/middle_turf = get_turf(SSshuttle.vehicle_elevator)
@@ -1461,9 +1459,11 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		var/obj/vehicle/multitile/ordered_vehicle
 
 		var/datum/vehicle_order/VO = locate(href_list["get_vehicle"])
+		if(!(VO in vehicles))
+			return
 
-		if(!VO) return
-		if(VO.has_vehicle_lock()) return
+		if(VO?.has_vehicle_lock())
+			return
 
 		spent = TRUE
 		ordered_vehicle = new VO.ordered_vehicle(middle_turf)
@@ -1472,6 +1472,12 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		VO.on_created(ordered_vehicle)
 
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_VEHICLE_ORDERED, ordered_vehicle)
+
+	else if(href_list["lower_elevator"])
+		if(!is_mainship_level(SSshuttle.vehicle_elevator.z))
+			return
+
+		SSshuttle.vehicle_elevator.request(SSshuttle.getDock("adminlevel vehicle"))
 
 	add_fingerprint(usr)
 	updateUsrDialog()

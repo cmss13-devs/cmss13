@@ -1,0 +1,337 @@
+2024-03-01:
+  BadAtThisGame302:
+  - rscadd: Added a new uniform to the Flight Control Operator.
+  - rscadd: Added a new faction IFF grouping for WY Survs.
+  - rscadd: Added the ICC and the CL survs to the WY IFF System.
+  - rscadd: Added the USCM CL to the WY IFF System.
+  Drathek BadAtThisGame:
+  - maptweak: Fixed various nightmare inserts that were not spawning; removing or
+      disabling others that were not in use.
+  - maptweak: Updated containerroom_xenos insert for Solaris Ridge to include coms
+      tower (BadAtThisGame)
+  - code_imp: Nightmare errors are now a runtime.
+  Huffie56:
+  - refactor: refactored stage three of black goo and added stage four.
+  Lok1:
+  - rscadd: maintenance stations stun when exiting like closets
+  Vicacrov:
+  - rscadd: 'You can now order the following in Requisitions: M2C ammo, M56D ammo,
+      UA 45-F mini sentry ammo, UA 60-FP sentry ammo.'
+2024-03-02:
+  GrrrKitten:
+  - rscadd: New Deployable Fax Backpack for the Civilian Combat Correspondent
+  - rscadd: New Wieldable Broadcasting Camera for the Civilian Combat Correspondent
+  - rscadd: Cameras can no longer be turned off but have to be wielded to take photos
+  - rscadd: Add's new Combat Correspondent vendor with CC's basic outfits and standard
+      gear
+  - bugfix: Fixes numerous camera/photo bugs
+  - imageadd: Adds new itemstates for the polaroid camera
+  TheGamerdk:
+  - refactor: Overwatch console will now save your filter settings
+  Vicacrov:
+  - bugfix: Hugger and acid traps no longer activate when they get shuttlecrushed.
+  Warfan1815:
+  - bugfix: Fixes the pulling of trading cards out of a pack message being visible
+      to other people
+  iloveloopers:
+  - bugfix: custom flamer chemicals now work on the flamer nozzle
+2024-03-03:
+  Drathek:
+  - bugfix: Fixed skills not getting set for UPP and CLF synths
+  - spellcheck: Fixed naming of colony synth gen 1 and gen 2 being swapped
+  TheGamerdk:
+  - bugfix: Fixes the lifeboat black turfs of Doom
+  Vicacrov:
+  - qol: The Transfer Plasma ability now has a blue, healing overlay and causes a
+      second-long jitter upon success, to show the recipient that they are being targeted.
+  - rscadd: Larvae now do the attack animation when nudging.
+  harryob:
+  - admin: opening a new ticket via pming now automatically marks the ticket
+2024-03-04:
+  Foxtrot:
+  - rscadd: Added a CLF Team Leader spawn to the nightmare insert on LV-624
+  - spellcheck: Updated the CLF & PMC ship nightmare insert intro text
+  SabreML:
+  - rscadd: Made the vehicle bay elevator look and sound better when in use.
+  - bugfix: Fixed the vehicle bay elevator's front railings not closing when the elevator
+      was lowered.
+  - bugfix: Fixed the vehicle bay elevator's docking port falling down the elevator
+      shaft when it was lowered.
+  - bugfix: Fixed falling into the vehicle bay elevator shaft teleporting players
+      to the requisitions elevator.
+  TheGamerdk:
+  - rscadd: New View Given Medals button to see what medals you've given to others
+  - bugfix: Sensor tower no longer ignores half the hive
+  private-tristan:
+  - qol: Added balloon alerts to smartgunners
+  realforest2001:
+  - code_imp: Plastic Explosives and subtypes now have variable controlled skill checks
+      rather than hard-code.
+  - bugfix: MPs can now use Riot Breaching Charges as intended.
+2024-03-05:
+  Segrain:
+  - admin: Marking tickets properly recognises your ckey.
+  ZephyrTFA, harryob:
+  - rscadd: framework for new ert stations ported from tgstation/tgstation#71785,
+      by ZephyrTFA
+  - rscadd: distress beacons now start in transit to the ship, and will return to
+      their own home base. they can't keep going back and forth between the ship and
+      their base
+  realforest2001:
+  - imageadd: Added AI Core themed walls, windows and floors from Zenith.
+  - imageadd: Added AI Core themed blast doors from Zenith.
+  - imageadd: Added a few additional AI Core themed floors from myself.
+  - maptweak: Remapped the AI core to use the new walls/floors.
+  - rscadd: Added a subtype of AI Core floor that glows orange for thematic lighting.
+2024-03-06:
+  Drathek:
+  - bugfix: Fixed crashed/hijack dropship not staying in the crashed mode.
+  Vicacrov:
+  - rscadd: Added a professor dummy cabinet to the CMO office, containing Professor
+      DUMMY and its control tablet. It is a tool to teach new medical personnel with.
+      The cabinet is accessible by the CMO and the SEA only.
+  harryob:
+  - admin: byond account age and first time connected to server can now be seen in
+      the player panel
+  nauticall:
+  - mapadd: Revamped the Chinook event map.
+2024-03-08:
+  BadAtThisGame302:
+  - mapadd: added a new Fiorina nightmare insert with CMB and UA Officers responding
+      to the distress signal.
+  Drathek:
+  - bugfix: Fixes some issues with SMES and reactors connecting to the powernet
+  Vicacrov:
+  - spellcheck: Fixed some grammar issues when attacking spiderwebs and when producing
+      eggs as an eggsac carrier.
+  realforest2001:
+  - admin: Adds a remote admin ARES Interface so staff can see the interface remotely.
+  - admin: Staff can now approve and revoke ARES Access tickets via remote interface
+      if there are no Working Joes.
+  sleepynecrons:
+  - imageadd: changed warrior tail to old one
+  - imageadd: edited weed overlays to reflect altered tail shape
+  - imageadd: fixed holes in a couple warrior sprites
+2024-03-09:
+  Drathek:
+  - bugfix: Fix pod doors no longer updating adjacent tiles
+  iloveloopers:
+  - balance: ravager empower range is now 4 tiles
+2024-03-11:
+  Segrain:
+  - admin: Actually fixed the last case of being warned against interacting with ticket
+      already marked by you.
+2024-03-12:
+  Drathek:
+  - bugfix: Fix chestrig not displaying on maps with different skins (e.g. Shivas)
+  Katskan:
+  - balance: Medical Skill 4 reduced speed buff from -75% duration to -50% duration
+  - balance: Medical Skill 3 increased speed buff from -0% duration to -25% duration
+  Segrain:
+  - rscadd: Requisitions' vendor now has medical radio keys in stock.
+  - rscadd: CE and CMO can now get spare departmental headsets from their vendors
+      to recruit survivors without having to go to Requisitions.
+  - bugfix: Wiping frequencies off radiotowers no longer breaks them forever.
+  Stakeyng:
+  - balance: Drop pouch has more space (2 large (unchanged), 4 medium, 8 small)
+  ihatethisengine2:
+  - bugfix: Dropship door prying can now always be performed by queen even if open
+      or not locked
+  realforest2001:
+  - soundadd: Added pda_ping.ogg, sourced from Paradise SS13 mailapproved.ogg
+  - rscadd: Added notification sounds from certain APOLLO ticket interactions.
+  - rscadd: People making an access ticket request are now notified of the status
+      changes.
+2024-03-13:
+  Segrain:
+  - bugfix: Picking up clothes/armour with somebody else's medal attached no longer
+      makes the medal fall off (trying to wear them still does).
+  - bugfix: Doctors calling themselves surgeons now properly get playtime medals.
+  - bugfix: Playtime medals now use assignments instead of backend paygrade codes
+      (e.g. "Awarded to Squad Leader John Doe" instead of "Awarded to ME5 John Doe").
+2024-03-14:
+  Vicacrov:
+  - rscadd: Added an option to hear or silence announcement audio cues (queen screech,
+      CIC beep, etc.) while being an observer.
+  nauticall:
+  - imageadd: Resprites first aid kits, coffins, material stacks, mortar shells, and
+      chemistry items. Chemistry sprites ported from Baystation / Aurora.
+  - bugfix: Recolors several reagent sprites to be more in-line with their established
+      colors, such as on autoinjectors.
+  - bugfix: Fixed invisible cloth tables.
+  - bugfix: Fixed wrong shading on the large floodlight.
+2024-03-15:
+  Drathek:
+  - balance: The light replacer can now be used to skip the crowbar, welding, and
+      wire steps when repairing colony lights.
+  - bugfix: Fixes SMES and APC interfaces not checking adjacency or incapacitated
+      states
+  - spellcheck: Fixed examine text for colony lights (improper names and not powered
+      text)
+  Huffie56:
+  - balance: adding M44 Marksman Speed Loader and SU-6 Smartpistol Magazine in vendor
+      of (medic,comtech, SL) at a cost of 6 each.
+  - balance: adding M44 Marksman Speed Loader and SU-6 Smartpistol Magazine in vendor
+      of (rifleman, TL, IO) at a cost of 10 each.
+  - balance: adding VP78 case and SU-6 case in vendor of IO at a cost of 15 each.
+  - balance: adding M44 Marksman Speed Loader and SU-6 Smartpistol Magazine in SG
+      vendor for 10 point each.
+  - balance: adding the ability for to buy smartgun DV9 battery for 15 points in SG
+      vendor.
+  Segrain:
+  - qol: Middleclicking beds/chairs/etc is now a shortcut for buckling to them.
+2024-03-16:
+  nauticall:
+  - bugfix: Makes pill bottle caps appear on closed pill bottles again.
+2024-03-17:
+  Huffie56:
+  - refactor: refactored areas replaced stern hallway by aft added two new hallway
+      area(fore, midship)
+  - refactor: refactored areas replaced midship maintenance by for and added two new
+      maintenance  areas(fore, aft) with each starboard and port side.
+  - maptweak: removed all the emergency shutter that weren't at the borders of each
+      areas.
+  - maptweak: added back the bear belt in a closet in a dormitory.
+  - maptweak: reconnect some air  pipe in an hallway north upper engi.
+  Segrain:
+  - bugfix: Ghosts no longer miss announcements seemingly at random.
+  SpartanBobby:
+  - maptweak: Removes some ledges on LV522
+  - maptweak: Removes unintended hullwalls on LV522
+  realforest2001:
+  - rscadd: Updated the Insanity law description.
+2024-03-18:
+  Katskan:
+  - balance: changed medical 4 skill speed multiplier from tier 2 to a non-standard
+      0.35
+  - balance: changed defib medical skill speed scaling
+  Nanu308:
+  - mapadd: Added the Galaxy Pizza Space Diner ERT station, for all your outer expanse
+      food needs!
+  - maptweak: Placed APC's on ert stations and minor tweaks+fixes.
+  Segrain:
+  - bugfix: Professor Dummy in CMO's office now works properly.
+2024-03-19:
+  567Turtle:
+  - rscadd: PO has been split into two roles, the gunship pilot and the dropship pilot,
+      no more arguing over who gets CAS.
+  Drathek:
+  - bugfix: Overdose death messages will now mention last mob that contributed to
+      the OD
+  - admin: Many additions to attack, say, interact, and niche logging
+  - admin: Temporary muted messages/actions are now niche logged instead of say logged
+  - ui: Added niche log filtering to TGChat (still requires admin niche logs preference)
+  SabreML:
+  - admin: Made the 'Join as Xeno' button disable the user's larva protection when
+      clicked by a moderator.
+  TheGamerdk:
+  - bugfix: Synths can now have their heads reattached without being sent to limbo-crit-hell.
+  TotalEpicness5:
+  - bugfix: Stamina damage can now be ahealed.
+  Waseemq1235:
+  - rscdel: Removes HEAP from all UPP vendor gear presets
+2024-03-20:
+  Huffie56:
+  - maptweak: Fix ugliness at 5 different areas.
+  - maptweak: added access restriction for doors that lack them(OT workshop, engi
+      dormitory, Upper engi back storage door.)
+  Katskan:
+  - rscadd: Added some new uniforms and hats
+  - rscadd: Added blood packs to vendor for 5 points, equal to a pill bottle
+  - rscadd: Added tactical prybar to vendor for 5 points
+  - rscadd: Added some surgical tools, very expensive costs essentially your entire
+      point budget to buy
+  realforest2001:
+  - rscadd: Changed all marine presets to use Dress Blues as their dress equipment.
+  - rscdel: Excluding Whiskey Outpost, removed all previous dress equipment from vendors.
+2024-03-21:
+  BadAtThisGame302:
+  - rscadd: Heavily Updated Corpse Code.
+  Birdtalon:
+  - admin: Xeno eggs now take fingerprints.
+  Huffie56:
+  - qol: 'add some balloons for CPR : one is for when it''s a success and the other
+      is when it''s a failure.'
+  - refactor: refactored poddoor file and shutters file.
+  Steelpoint:
+  - maptweak: Adds several cardboard box spawns in to squad prep rooms.
+2024-03-23:
+  Drathek:
+  - ui: Tweaked layout for role preferences windows
+  Vicacrov:
+  - rscadd: Tacmap announcements are now also muted if you have hear/silence ghost
+      announcements toggled on.
+2024-03-24:
+  DN9123:
+  - rscadd: Added a couple of fortunes in strings/fortunes.txt
+  - spellcheck: fixed a grammar error I found in strings/fortunes.txt
+  Segrain:
+  - admin: Spawning nondeathsquad MARSOC now properly recognises "current location"
+      option.
+  ihatethisengine:
+  - bugfix: Fixed delayed launch launching lifeboat even if locked by queen
+2024-03-25:
+  Birdtalon, Kat 'APC' Smith, Thwomp, Waseemq1235:
+  - rscadd: Desk bell for cargo, medbay, brig, and AI reception.
+  - soundadd: Desk bell sound effect.
+2024-03-26:
+  Huffie56:
+  - bugfix: move semiotic in north evac pod so you can't see it when your behind in
+      hull maintenance.
+  InsaneRed:
+  - balance: Wardens can heal eachother once again, but only half the health
+  - qol: Gives SPAN_XENOHIGHDANGER to heal/reju on positives, since its very easy
+      to miss if you actually healed soembody.
+  MobiusWon:
+  - rscadd: Uniforms vend with USCM patch.
+  SabreML:
+  - refactor: Refactored the bodypart selection keybinds.
+  - bugfix: Fixed a bug where selecting a new body zone would sometimes modify the
+      wrong HUD element.
+  vero5123:
+  - bugfix: fixes users not being able to resist out of the stasis bags
+  - bugfix: Fixes zombies missing claws on transformation
+2024-03-27:
+  Ben10083:
+  - rscadd: Working Joes can now respawn as a Working Joe after 15 minutes, previous
+      restriction on respawn removed.
+  - admin: New flag to disable Working Joe respawns
+  - rscadd: Hazard Joes now have their own emotes
+  - code_imp: Hazard Joes now a seperate species
+  - code_imp: Updated isworkingjoe and new ishazardjoe define
+  - refactor: Working Joe emotes and emote categories now a globally defined list
+  - soundadd: New Hazard Joe voicelines
+  Katskan:
+  - balance: Autocompressor gives 7 seconds of grace time every 7.5 seconds, instead
+      of 7 seconds every 10 seconds. Approximately 93% efficient, increased from 70%
+      efficient.
+  QuickLode:
+  - rscadd: adds a purple armband and uniform to Synth Vendor
+  - rscadd: adds a renamed uniform commonly used by colonists with a better name
+  Vicacrov:
+  - rscadd: Added holocards to health scans to improve communication between medical
+      players. You can now assign holocards via the health analyzer and the body scanner
+      as well. The health scan also tells you what the current holocard's colour means.
+  - rscadd: Added a new purple holocard to tag infected marines.
+  - rscdel: Clicking yourself no longer removes your own holocard.
+2024-03-29:
+  SpartanBobby:
+  - maptweak: Changes to hullwall placment on Kutjevo this PR should allow you to
+      break open much more of the colony buildings aswell as get into new areas to
+      flank and play around
+  blackdragonTOW:
+  - code_imp: Added a third level of zoom to the Toggle Zoom verb
+  vero5123:
+  - bugfix: Fixes teleporting when placing mobs onto chairs and beds.
+2024-03-30:
+  cuberound:
+  - qol: old cosmetic NVG can not be broken
+  iloveloopers:
+  - balance: You can now use the mortar while shipside during hijack, but only once.
+  - rscadd: Ghosts now get a warning when a custom mortar shell is about to land.
+2024-03-31:
+  SpartanBobby:
+  - maptweak: 'Changes to LV522: Less ledges overall'
+  - maptweak: 'Changes to LV522: More breakable entry to the reactor'
+  - maptweak: 'Changes to LV522: Removed dead end in reactor'
+  - maptweak: New weedable zone west of LZ2 T-comms tower

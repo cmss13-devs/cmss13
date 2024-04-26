@@ -8,11 +8,12 @@
 	max_health = XENO_HEALTH_TIER_7
 	plasma_gain = XENO_PLASMA_GAIN_TIER_10
 	plasma_max = XENO_PLASMA_TIER_10
-	crystal_max = XENO_CRYSTAL_HIGH
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_1
 	armor_deflection = XENO_NO_ARMOR
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_2
+
+	available_strains = list(/datum/xeno_strain/resin_whisperer)
 
 	evolution_allowed = FALSE
 	caste_desc = "A builder of really big hives."
@@ -77,8 +78,6 @@
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
 
-	mutation_type = HIVELORD_NORMAL
-
 	icon_xeno = 'icons/mob/xenos/hivelord.dmi'
 	icon_xenonid = 'icons/mob/xenonids/hivelord.dmi'
 
@@ -122,10 +121,3 @@
 	toggle_resin_walker()
 	to_chat(bound_xeno, SPAN_WARNING("You feel dizzy as the world slows down."))
 	bound_xeno.recalculate_move_delay = TRUE
-
-/// This check mainly exists because of the new resin node ability for resin whisperer.
-/mob/living/carbon/xenomorph/hivelord/proc/on_weeds()
-	var/turf/turf = get_turf(src)
-	if(locate(/obj/effect/alien/weeds) in turf)
-		return TRUE
-	return FALSE

@@ -16,8 +16,6 @@
 	var/plasma_max = 10
 	var/plasma_gain = 5
 
-	var/crystal_max = 0
-
 	var/max_health = XENO_UNIVERSAL_HPMULT * 100
 	///Are they allowed to evolve (and have their evolution progress group)
 	var/evolution_allowed = 1
@@ -67,6 +65,9 @@
 	var/attack_delay = 0 //Bonus or pen to time in between attacks. + makes slashes slower.
 
 	var/agility_speed_increase = 0 // this opens up possibilities for balancing
+
+	/// A list of strain typepaths that are able to be chosen by this caste.
+	var/list/available_strains = list()
 
 	// The type of mutator delegate to instantiate on the base caste. Will
 	// be replaced when the Xeno chooses a strain.

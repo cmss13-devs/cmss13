@@ -1,0 +1,26 @@
+.Dpad {
+  background-color: #121212;
+  border-radius: 40px;
+  border: 2px solid #505050;
+  .Dpadwrapper {
+    padding-left: 4px;
+    padding-top: 4px;
+  }
+  .container {
+    width: 30px;
+    height: 30px;
+  }
+  .Button {
+    width: 25px;
+    height: 25px;
+    line-height: 20px;
+    font-family: monospace;
+    font-size: large;
+    background-color: #606060;
+    border: 2px solid #808080;
+  }
+
+  .TopButton {
+    color: red;
+  }
+}

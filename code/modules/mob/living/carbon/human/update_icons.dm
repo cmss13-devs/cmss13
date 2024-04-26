@@ -196,7 +196,7 @@ There are several things that need to be remembered:
 		if(facial_hair_style && facial_hair_style.species_allowed && (species.name in facial_hair_style.species_allowed))
 			var/image/facial_s = new/image("icon" = facial_hair_style.icon, "icon_state" = "[facial_hair_style.icon_state]_s")
 			facial_s.layer = -FACIAL_LAYER
-			if(facial_hair_style.do_colouration)
+			if(facial_hair_style.do_coloration)
 				facial_s.color = list(null, null, null, null, rgb(r_facial, g_facial, b_facial))
 			overlays_standing[FACIAL_LAYER] = facial_s
 			apply_overlay(FACIAL_LAYER)
@@ -206,7 +206,7 @@ There are several things that need to be remembered:
 		if(hair_style && (species.name in hair_style.species_allowed))
 			var/image/hair_s = new/image("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
 			hair_s.layer = -HAIR_LAYER
-			if(hair_style.do_colouration)
+			if(hair_style.do_coloration)
 				hair_s.color = list(null, null, null, null, rgb(r_hair, g_hair, b_hair))
 
 			if(grad_style)
@@ -224,22 +224,6 @@ There are several things that need to be remembered:
 
 			overlays_standing[HAIR_LAYER] = hair_s
 			apply_overlay(HAIR_LAYER)
-
-//Call when target overlay should be added/removed
-/mob/living/carbon/human/update_targeted()
-	remove_overlay(TARGETED_LAYER)
-
-	var/image/holo_card_image
-
-	if(holo_card_color)
-		holo_card_image = image("icon" = 'icons/effects/Targeted.dmi', "icon_state" = "holo_card_[holo_card_color]")
-
-	if(!holo_card_image)
-		return
-
-	holo_card_image.layer = -TARGETED_LAYER
-	overlays_standing[TARGETED_LAYER] = holo_card_image
-	apply_overlay(TARGETED_LAYER)
 
 //Call when someone is gauzed or splinted, or when one of those items are removed
 /mob/living/carbon/human/update_med_icon()

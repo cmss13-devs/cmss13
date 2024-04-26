@@ -25,7 +25,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_dash
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	xeno_cooldown = 110
+	xeno_cooldown = 11 SECONDS
 	plasma_cost = 50
 
 	// Config options
@@ -51,11 +51,11 @@
 	macro_path = /datum/action/xeno_action/verb/verb_cleave
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 120
+	xeno_cooldown = 12 SECONDS
 
 	// Root config
 	var/root_duration_unbuffed = 1 SECONDS
-	var/root_duration_buffed = 2.5 SECONDS
+	var/root_duration_buffed = 1.8 SECONDS
 
 	// Fling config
 	var/fling_dist_unbuffed = 3
@@ -129,7 +129,7 @@
 
 	// Config
 	var/max_distance = 7
-	var/windup = 7 DECISECONDS
+	var/windup = 8 DECISECONDS
 
 /datum/action/xeno_action/activable/oppressor_punch
 	name = "Dislocate"
@@ -138,7 +138,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_oppressor_punch
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	xeno_cooldown = 100
+	xeno_cooldown = 10 SECONDS
 	plasma_cost = 55
 
 	// Configurables
@@ -164,7 +164,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_crush
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 130
+	xeno_cooldown = 13 SECONDS
 	plasma_cost = 80
 
 	// Config
@@ -180,7 +180,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_prae_impale
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 130
+	xeno_cooldown = 13 SECONDS
 	plasma_cost = 80
 
 /datum/action/xeno_action/onclick/prae_dodge
@@ -191,7 +191,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	action_type = XENO_ACTION_CLICK
 	plasma_cost = 200
-	xeno_cooldown = 190
+	xeno_cooldown = 19 SECONDS
 
 	// Config
 	var/duration = 70
@@ -204,7 +204,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_prae_tail_trip
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 130
+	xeno_cooldown = 13 SECONDS
 	plasma_cost = 30
 
 	// Config
@@ -224,7 +224,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_dash
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	xeno_cooldown = 100
+	xeno_cooldown = 10 SECONDS
 	plasma_cost = 40
 
 	// Config options
@@ -255,7 +255,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
 	plasma_cost = 80
-	xeno_cooldown = 100
+	xeno_cooldown = 10 SECONDS
 
 	// Configurable options
 	spray_type = ACID_SPRAY_LINE
@@ -270,7 +270,7 @@
 /datum/action/xeno_action/activable/spray_acid/prae_warden
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	plasma_cost = 130
-	xeno_cooldown = 130
+	xeno_cooldown = 13 SECONDS
 
 
 	// Configurable options
@@ -288,7 +288,7 @@
 	// todo: macro
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	xeno_cooldown = 100
+	xeno_cooldown = 10 SECONDS
 	plasma_cost = 100
 
 	// Config

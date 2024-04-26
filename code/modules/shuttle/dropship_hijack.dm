@@ -51,6 +51,7 @@
 	// Break the ultra-reinforced windows.
 	// Break the briefing windows.
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_HIJACK_IMPACTED)
+	RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_LANDED, PROC_REF(finish_landing))
 
 	// Sleep while the explosions do their job
 	var/explosion_alive = TRUE
@@ -62,6 +63,7 @@
 				break
 		sleep(10)
 
+/datum/dropship_hijack/almayer/proc/finish_landing()
 	SShijack.announce_status_on_crash()
 	SSticker.hijack_ocurred()
 
@@ -174,13 +176,14 @@
 			turfs += get_area_turfs(/area/almayer/shipboard/brig/cic_hallway)
 			turfs += get_area_turfs(/area/almayer/shipboard/brig/cryo)
 			turfs += get_area_turfs(/area/almayer/shipboard/brig/evidence_storage)
-			turfs += get_area_turfs(/area/almayer/shipboard/brig/execution)
 			turfs += get_area_turfs(/area/almayer/shipboard/brig/general_equipment)
 			turfs += get_area_turfs(/area/almayer/shipboard/brig/lobby)
-			turfs += get_area_turfs(/area/almayer/shipboard/brig/main_office)
+			turfs += get_area_turfs(/area/almayer/shipboard/brig/starboard_hallway)
 			turfs += get_area_turfs(/area/almayer/shipboard/brig/perma)
 			turfs += get_area_turfs(/area/almayer/shipboard/brig/processing)
-			turfs += get_area_turfs(/area/almayer/shipboard/brig/surgery)
+			turfs += get_area_turfs(/area/almayer/shipboard/brig/medical)
+			turfs += get_area_turfs(/area/almayer/shipboard/brig/mp_bunks)
+			turfs += get_area_turfs(/area/almayer/shipboard/brig/chief_mp_office)
 			turfs += get_area_turfs(/area/almayer/command/cichallway)
 			turfs += get_area_turfs(/area/almayer/command/cic)
 		if("Upper deck Midship")
@@ -189,14 +192,13 @@
 			turfs += get_area_turfs(/area/almayer/medical/containment)
 			turfs += get_area_turfs(/area/almayer/medical/containment/cell)
 			turfs += get_area_turfs(/area/almayer/medical/medical_science)
-			turfs += get_area_turfs(/area/almayer/medical/testlab)
 			turfs += get_area_turfs(/area/almayer/medical/hydroponics)
 		if("Upper deck Aftship")
 			turfs += get_area_turfs(/area/almayer/engineering/upper_engineering)
 			turfs += get_area_turfs(/area/almayer/engineering/laundry)
 		if("Lower deck Foreship")
 			turfs += get_area_turfs(/area/almayer/hallways/hangar)
-			turfs += get_area_turfs(/area/almayer/hallways/vehiclehangar)
+			turfs += get_area_turfs(/area/almayer/hallways/lower/vehiclehangar)
 		if("Lower deck Midship")
 			turfs += get_area_turfs(/area/almayer/medical/chemistry)
 			turfs += get_area_turfs(/area/almayer/medical/lower_medical_lobby)
@@ -210,7 +212,7 @@
 			turfs += get_area_turfs(/area/almayer/squads/req)
 		if("Lower deck Aftship")
 			turfs += get_area_turfs(/area/almayer/living/cryo_cells)
-			turfs += get_area_turfs(/area/almayer/engineering/engineering_workshop)
+			turfs += get_area_turfs(/area/almayer/engineering/lower/workshop)
 		else
 			CRASH("Crash site [ship_section] unknown.")
 	return pick(turfs)

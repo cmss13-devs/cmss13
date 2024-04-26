@@ -58,6 +58,10 @@
 	if(isturf(A))
 		to_chat(user, SPAN_WARNING("The label won't stick to that."))
 		return
+	if(istype(A, /obj/item/storage/pill_bottle))		
+		var/obj/item/storage/pill_bottle/target_pill_bottle = A
+		target_pill_bottle.choose_color(user)
+	
 	if(!label || !length(label))
 		remove_label(A, user)
 		return
@@ -161,7 +165,7 @@
 	matter = list("metal" = 10)
 	inherent_traits = list(TRAIT_TOOL_PEN)
 	/// what color the ink is!
-	var/pen_colour = "black"
+	var/pen_color = "black"
 	var/on = TRUE
 	var/clicky = FALSE
 
@@ -180,7 +184,7 @@
 /obj/item/tool/pen/proc/update_pen_state()
 	overlays.Cut()
 	if(on)
-		overlays += "+[pen_colour]_tip"
+		overlays += "+[pen_color]_tip"
 
 /obj/item/tool/pen/attack(mob/M as mob, mob/user as mob)
 	if(!ismob(M))
@@ -256,7 +260,7 @@
 
 /obj/item/tool/pen/blue
 	desc = "It's a normal blue ink pen."
-	pen_colour = "blue"
+	pen_color = "blue"
 
 /obj/item/tool/pen/blue/clicky
 	desc = "It's a WY brand extra clicky blue ink pen."
@@ -265,7 +269,7 @@
 
 /obj/item/tool/pen/red
 	desc = "It's a normal red ink pen."
-	pen_colour = "red"
+	pen_color = "red"
 
 /obj/item/tool/pen/red/clicky
 	desc = "It's a WY brand extra clicky red ink pen."
@@ -274,7 +278,7 @@
 
 /obj/item/tool/pen/green
 	desc = "It's a normal green ink pen."
-	pen_colour = "green"
+	pen_color = "green"
 
 /obj/item/tool/pen/green/clicky
 	desc = "It's a WY brand extra clicky green ink pen."
@@ -422,6 +426,10 @@
 /obj/item/tool/stamp/denied
 	name = "\improper DENIED rubber stamp"
 	icon_state = "stamp-deny"
+
+/obj/item/tool/stamp/approved
+	name = "\improper APPROVED rubber stamp"
+	icon_state = "stamp-approve"
 
 /obj/item/tool/stamp/clown
 	name = "clown's rubber stamp"

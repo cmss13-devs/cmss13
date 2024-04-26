@@ -23,6 +23,7 @@
 	zenomorf.speed_modifier -= speed_buff_amount
 	zenomorf.armor_modifier += armor_buff_amount
 	zenomorf.recalculate_speed()
+	zenomorf.recalculate_armor()
 
 	/// Though the ability's other buffs are supposed to last for its duration, it's only supposed to enhance one spit.
 	RegisterSignal(zenomorf, COMSIG_XENO_POST_SPIT, PROC_REF(disable_spatter))
@@ -50,6 +51,7 @@
 	zenomorf.speed_modifier += speed_buff_amount
 	zenomorf.armor_modifier -= armor_buff_amount
 	zenomorf.recalculate_speed()
+	zenomorf.recalculate_armor()
 	to_chat(zenomorf, SPAN_XENOHIGHDANGER("We feel our movement speed slow down!"))
 	disable_spatter()
 	buffs_active = FALSE

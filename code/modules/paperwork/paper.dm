@@ -86,26 +86,25 @@
 
 /obj/item/paper/get_examine_text(mob/user)
 	. = ..()
-	if(in_range(user, src) || istype(user, /mob/dead/observer))
+	if(in_range(user, src) || isobserver(user))
 		if(!(istype(user, /mob/dead/observer) || istype(user, /mob/living/carbon/human) || isRemoteControlling(user)))
 			// Show scrambled paper if they aren't a ghost, human, or silicone.
-			if(photo_list)
-				for(var/photo in photo_list)
-					user << browse_rsc(photo_list[photo], photo)
-			show_browser(user, "<BODY class='paper'>[stars(info)][stamps]</BODY>", name, name, "size=650x700")
-			onclose(user, name)
+			read_paper(user,scramble = TRUE)
 		else
 			read_paper(user)
 	else
 		. += SPAN_NOTICE("It is too far away.")
 
-/obj/item/paper/proc/read_paper(mob/user)
+/obj/item/paper/proc/read_paper(mob/user, scramble = FALSE)
 	var/datum/asset/asset_datum = get_asset_datum(/datum/asset/simple/paper)
 	asset_datum.send(user)
 	if(photo_list)
 		for(var/photo in photo_list)
 			user << browse_rsc(photo_list[photo], photo)
-	show_browser(user, "<BODY class='paper'>[info][stamps]</BODY>", name, name, "size=650x700")
+	var/paper_info = info
+	if(scramble)
+		paper_info = stars_decode_html(info)
+	show_browser(user, "<BODY class='paper'>[paper_info][stamps]</BODY>", name, name, "size=650x700")
 	onclose(user, name)
 
 /obj/item/paper/verb/rename()
@@ -126,10 +125,7 @@
 
 /obj/item/paper/attack_remote(mob/living/silicon/ai/user as mob)
 	var/dist
-	if(istype(user) && user.camera) //is AI
-		dist = get_dist(src, user.camera)
-	else //cyborg or AI not seeing through a camera
-		dist = get_dist(src, user)
+	dist = get_dist(src, user)
 	if(dist < 2)
 		read_paper(user)
 	else
@@ -404,8 +400,8 @@
 			iscrayon = 1
 
 
-		// if paper is not in usr, then it must be near them, or in a clipboard or folder, which must be in or near usr
-		if(src.loc != usr && !src.Adjacent(usr) && !((istype(src.loc, /obj/item/clipboard) || istype(src.loc, /obj/item/folder)) && (src.loc.loc == usr || src.loc.Adjacent(usr)) ) )
+		// if paper is not in usr, then it must be near them, or in a clipboard, noticeboard or folder, which must be in or near usr
+		if(src.loc != usr && !src.Adjacent(usr) && !((istype(src.loc, /obj/item/clipboard) || istype(src.loc, /obj/structure/noticeboard) || istype(src.loc, /obj/item/folder)) && (src.loc.loc == usr || src.loc.Adjacent(usr)) ) )
 			return
 
 		t = replacetext(t, "\n", "<BR>")
@@ -451,10 +447,7 @@
 			if(!p.on)
 				to_chat(user, SPAN_NOTICE("Your pen is not on!"))
 				return
-		if ( istype(P, /obj/item/tool/pen/robopen) && P:mode == 2 )
-			P:RenamePaper(user,src)
-		else
-			show_browser(user, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name) // Update the window
+		show_browser(user, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name) // Update the window
 		//openhelp(user)
 		return
 

@@ -144,15 +144,12 @@
 
 /obj/effect/xenomorph/spray/Crossed(AM as mob|obj)
 	..()
-	if(ishuman(AM))
-		var/mob/living/carbon/human/H = AM
-		if(H.ally_of_hivenumber(hivenumber))
-			return
-		apply_spray(AM)
-	else if (isxeno(AM))
-		var/mob/living/carbon/xenomorph/X = AM
-		if (X.hivenumber != hivenumber)
-			apply_spray(AM)
+	if(isliving(AM))
+		var/mob/living/living_mob = AM
+		if(living_mob.ally_of_hivenumber(hivenumber))
+			living_mob.ExtinguishMob()
+		else
+			apply_spray(living_mob)
 	else if(isVehicleMultitile(AM))
 		var/obj/vehicle/multitile/V = AM
 		V.handle_acidic_environment(src)
@@ -500,13 +497,13 @@
 	QDEL_IN(src, ttl)
 
 /obj/effect/xenomorph/xeno_telegraph/red
-	color = COLOUR_DARK_RED
+	color = COLOR_DARK_RED
 
 /obj/effect/xenomorph/xeno_telegraph/brown
-	color = COLOUR_BROWN
+	color = COLOR_BROWN
 
 /obj/effect/xenomorph/xeno_telegraph/green
-	color = COLOUR_GREEN
+	color = COLOR_LIGHT_GREEN
 
 /// This has a brown icon state and does not have a color overlay by default.
 /obj/effect/xenomorph/xeno_telegraph/abduct_hook

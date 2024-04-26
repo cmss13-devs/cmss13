@@ -162,6 +162,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_chief_engineer, list(
 		list("M41A Pulse Rifle MK2", 0, /obj/item/storage/box/guncase/m41a, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_REGULAR),
 		list("M240 Incinerator Unit", 0, /obj/item/storage/box/guncase/flamer, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_REGULAR),
 
+		list("Spare Equipment", 0, null, null, null),
+		list("Technician's Headset", 15, /obj/item/device/radio/headset/almayer/mt, null, VENDOR_ITEM_REGULAR),
+
 	))
 
 
@@ -210,36 +213,63 @@ GLOBAL_LIST_INIT(cm_vending_clothing_req_officer, list(
 //------------ CHIEF MEDICAL OFFICER ---------------
 GLOBAL_LIST_INIT(cm_vending_clothing_cmo, list(
 
-		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
+		list("MEDICAL SET (MANDATORY)", 0, null, null, null),
+		list("Essential Medical Set", 0, /obj/effect/essentials_set/medical/doctor/cmo, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+
+		list("STANDARD EQUIPMENT", 0, null, null, null),
 		list("Gloves", 0, /obj/item/clothing/gloves/latex, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/cmo, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
-		list("Labcoat", 0, /obj/item/clothing/suit/storage/labcoat, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 
-		list("EYEWARE (CHOOSE 1)", 0, null, null, null),
+		list("EYEWEAR (CHOOSE 1)", 0, null, null, null),
 		list("Medical HUD Glasses", 0, /obj/item/clothing/glasses/hud/health, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
-		list("Reagent Scanner HUD Goggles", 0, /obj/item/clothing/glasses/science, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
+		list("Prescription Medical HUD Glasses", 0, /obj/item/clothing/glasses/hud/health/prescription, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
+		list("Reagent Scanner HUD Goggles", 0, /obj/item/clothing/glasses/science, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_RECOMMENDED),
+		list("Prescription Reagent Scanner HUD Goggles", 0, /obj/item/clothing/glasses/science/prescription, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_RECOMMENDED),
 
 		list("UNIFORM (CHOOSE 1)", 0, null, null, null),
-		list("Green Scrubs", 0, /obj/item/clothing/under/rank/medical/green, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
-		list("Blue Scrubs", 0, /obj/item/clothing/under/rank/medical/blue, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
-		list("Purple Scrubs", 0, /obj/item/clothing/under/rank/medical/purple, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+		list("Chief Medical Officer's Uniform", 0, /obj/item/clothing/under/rank/chief_medical_officer, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
 		list("Doctor Uniform", 0, /obj/item/clothing/under/rank/medical, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+		list("Green Scrubs", 0, /obj/item/clothing/under/rank/medical/green, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+		list("Blue Scrubs", 0, /obj/item/clothing/under/rank/medical/blue, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+		list("Light Blue Scrubs", 0, /obj/item/clothing/under/rank/medical/lightblue, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+		list("Purple Scrubs", 0, /obj/item/clothing/under/rank/medical/purple, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+
+		list("SUIT (CHOOSE 1)", 0, null, null, null),
+		list("Labcoat", 0, /obj/item/clothing/suit/storage/labcoat, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
+		list("Medical's apron", 0, /obj/item/clothing/suit/chef/classic/medical, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
+
+		list("SNOW GEAR (SNOW USE ONLY)", 0, null, null, null),
+		list("Snowcoat", 0, /obj/item/clothing/suit/storage/snow_suit/doctor, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Balaclava", 0, /obj/item/clothing/mask/balaclava, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
+		list("Snow Scarf", 0, /obj/item/clothing/mask/tornscarf, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
+
+		list("HEADWEAR (CHOOSE 1)", 0, null, null, null),
+		list("Chief Medical Officer's Peaked Cap", 0, /obj/item/clothing/head/cmo, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_RECOMMENDED),
+		list("Surgical Cap, Orange", 0, /obj/item/clothing/head/surgery/orange, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
+		list("Surgical Cap, Blue", 0, /obj/item/clothing/head/surgery/blue, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
+		list("Surgical Cap, Purple", 0, /obj/item/clothing/head/surgery/purple, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
+		list("Surgical Cap, Green", 0, /obj/item/clothing/head/surgery/green, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 
 		list("BAG (CHOOSE 1)", 0, null, null, null),
+
+		list("Standard Satchel", 0, /obj/item/storage/backpack/marine/satchel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
+		list("Standard Backpack", 0, /obj/item/storage/backpack/marine, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
 		list("Medical Satchel", 0, /obj/item/storage/backpack/marine/satchel/medic, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_RECOMMENDED),
-		list("Medical Backpack", 0, /obj/item/storage/backpack/marine/medic, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
-		list("USCM Satchel", 0, /obj/item/storage/backpack/marine/satchel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
-		list("USCM Backpack", 0, /obj/item/storage/backpack/marine, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
+		list("Medical Backpack", 0, /obj/item/storage/backpack/marine/medic, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_RECOMMENDED),
+
+		list("BELT (CHOOSE 1)", 0, null, null, null),
+		list("M276 Lifesaver Bag (Full)", 0, /obj/item/storage/belt/medical/lifesaver/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
+		list("M276 Medical Storage Rig (Full)", 0, /obj/item/storage/belt/medical/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
 
 		list("PERSONAL SIDEARM (CHOOSE 1)", 0, null, null, null),
 		list("M4A3 Service Pistol", 0, /obj/item/storage/belt/gun/m4a3/full, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_REGULAR),
 		list("Mod 88 Pistol", 0, /obj/item/storage/belt/gun/m4a3/mod88, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_REGULAR),
 		list("M44 Revolver", 0, /obj/item/storage/belt/gun/m44/mp, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
 
-		list("COMBAT EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Officer M3 Armor", 0, /obj/item/clothing/suit/storage/marine/MP/SO, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
-		list("Officer M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/MP/SO, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
-		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
+		list("COMBAT EQUIPMENT (COMBAT USE ONLY)", 0, null, null, null),
+		list("Officer M3 Armor", 0, /obj/item/clothing/suit/storage/marine/MP/SO, MARINE_CAN_BUY_COMBAT_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Officer M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/MP/SO, MARINE_CAN_BUY_COMBAT_HELMET, VENDOR_ITEM_MANDATORY),
+		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_COMBAT_SHOES, VENDOR_ITEM_MANDATORY),
 
 		list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Autoinjector Pouch", 0, /obj/item/storage/pouch/autoinjector, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
@@ -261,13 +291,89 @@ GLOBAL_LIST_INIT(cm_vending_clothing_cmo, list(
 		list("Black Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Brown Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest/brown_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+
+		list("Spare Equipment", 0, null, null, null),
+		list("Doctor's Headset", 15, /obj/item/device/radio/headset/almayer/doc, null, VENDOR_ITEM_REGULAR),
+		list("Researcher's Headset", 15, /obj/item/device/radio/headset/almayer/research, null, VENDOR_ITEM_REGULAR),
 	))
 
 
+/obj/effect/essentials_set/medical/doctor/cmo
+	spawned_gear_list = list(
+		/obj/item/device/defibrillator,
+		/obj/item/storage/firstaid/adv,
+		/obj/item/device/healthanalyzer,
+		/obj/item/tool/surgery/surgical_line,
+		/obj/item/tool/surgery/synthgraft,
+		/obj/item/device/flashlight/pen,
+		/obj/item/clothing/accessory/stethoscope,
+		/obj/item/storage/syringe_case,
+	)
 
 
 
 //------------ EXECUTIVE OFFFICER ---------------
+
+//------------WEAPON VENDOR---------------
+GLOBAL_LIST_INIT(cm_vending_gear_xo, list(
+		list("CAPTAIN'S PRIMARY (CHOOSE 1)", 0, null, null, null),
+		list("M41A MK1 Pulse Rifle", 0, /obj/item/storage/box/guncase/m41aMK1AP, MARINE_CAN_BUY_KIT, VENDOR_ITEM_MANDATORY),
+		list("MK221 Tactical Shotgun", 0, /obj/effect/essentials_set/xo/shotgunpreset, MARINE_CAN_BUY_KIT, VENDOR_ITEM_MANDATORY),
+
+		list("PRIMARY AMMUNITION", 0, null, null, null),
+		list("M41A MK1 Magazine", 40, /obj/item/ammo_magazine/rifle/m41aMK1, null, VENDOR_ITEM_RECOMMENDED),
+		list("M41A MK1 AP Magazine", 60, /obj/item/ammo_magazine/rifle/m41aMK1/ap, null, VENDOR_ITEM_RECOMMENDED),
+		list("Buckshot Shells", 20, /obj/item/ammo_magazine/shotgun/buckshot, null, VENDOR_ITEM_REGULAR),
+		list("Shotgun Slugs", 20, /obj/item/ammo_magazine/shotgun/slugs, null, VENDOR_ITEM_REGULAR),
+		list("Flechette Shells", 20, /obj/item/ammo_magazine/shotgun/flechette, null, VENDOR_ITEM_REGULAR),
+
+		list("EXPLOSIVES", 0, null, null, null),
+		list("HEDP Grenade Pack", 15, /obj/item/storage/box/packet/high_explosive, null, VENDOR_ITEM_REGULAR),
+		list("HEFA Grenade Pack", 15, /obj/item/storage/box/packet/hefa, null, VENDOR_ITEM_REGULAR),
+		list("WP Grenade Pack", 15, /obj/item/storage/box/packet/phosphorus, null, VENDOR_ITEM_REGULAR),
+
+		list("RAIL ATTACHMENTS", 0, null, null, null),
+		list("Red-Dot Sight", 15, /obj/item/attachable/reddot, null, VENDOR_ITEM_REGULAR),
+		list("Reflex Sight", 15, /obj/item/attachable/reflex, null, VENDOR_ITEM_REGULAR),
+		list("S4 2x Telescopic Mini-Scope", 15, /obj/item/attachable/scope/mini, null, VENDOR_ITEM_REGULAR),
+
+		list("Helmet Visors", 0, null, null, null),
+		list("Welding Visor", 5, /obj/item/device/helmet_visor/welding_visor, null, VENDOR_ITEM_RECOMMENDED),
+
+		list("UNDERBARREL ATTACHMENTS", 0, null, null, null),
+		list("Laser Sight", 15, /obj/item/attachable/lasersight, null, VENDOR_ITEM_REGULAR),
+		list("Angled Grip", 15, /obj/item/attachable/angledgrip, null, VENDOR_ITEM_REGULAR),
+		list("Vertical Grip", 15, /obj/item/attachable/verticalgrip, null, VENDOR_ITEM_REGULAR),
+		list("Underbarrel Shotgun", 15, /obj/item/attachable/attached_gun/shotgun, null, VENDOR_ITEM_REGULAR),
+		list("Underbarrel Extinguisher", 15, /obj/item/attachable/attached_gun/extinguisher, null, VENDOR_ITEM_REGULAR),
+		list("Underbarrel Flamethrower", 15, /obj/item/attachable/attached_gun/flamer, null, VENDOR_ITEM_REGULAR),
+		list("Underbarrel Grenade Launcher", 5, /obj/item/attachable/attached_gun/grenade, null, VENDOR_ITEM_REGULAR),
+
+		list("BARREL ATTACHMENTS", 0, null, null, null),
+		list("Extended Barrel", 15, /obj/item/attachable/extended_barrel, null, VENDOR_ITEM_REGULAR),
+		list("Recoil Compensator", 15, /obj/item/attachable/compensator, null, VENDOR_ITEM_REGULAR),
+		list("Suppressor", 15, /obj/item/attachable/suppressor, null, VENDOR_ITEM_REGULAR),
+	))
+
+/obj/effect/essentials_set/xo/shotgunpreset
+	spawned_gear_list = list(
+		/obj/item/weapon/gun/shotgun/combat,
+		/obj/item/ammo_magazine/shotgun/buckshot,
+		/obj/item/ammo_magazine/shotgun/slugs,
+	)
+
+/obj/structure/machinery/cm_vending/gear/executive_officer
+	name = "\improper ColMarTech Executive Officer Weapon Rack"
+	desc = "An automated weapons rack for the Executive Officer. It features a decent selection of weaponry meant only for the second in command of a ship."
+	req_access = list(ACCESS_MARINE_SENIOR)
+	vendor_role = list(JOB_XO)
+	icon_state = "guns"
+	use_snowflake_points = TRUE
+
+/obj/structure/machinery/cm_vending/gear/executive_officer/get_listed_products(mob/user)
+	return GLOB.cm_vending_gear_xo
+
+//------------UNIFORM/GEAR VENDOR---------------
 GLOBAL_LIST_INIT(cm_vending_clothing_xo, list(
 
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
@@ -284,6 +390,14 @@ GLOBAL_LIST_INIT(cm_vending_clothing_xo, list(
 		list("M4A3 Service Pistol", 0, /obj/item/storage/belt/gun/m4a3/commander, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_REGULAR),
 		list("Mod 88 Pistol", 0, /obj/item/storage/belt/gun/m4a3/mod88, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_REGULAR),
 		list("M44 Revolver", 0, /obj/item/storage/belt/gun/m44/mp, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_REGULAR),
+
+		list("BELTS (CHOOSE 1)", 0, null, null, null),
+		list("G8-A General Utility Pouch", 0, /obj/item/storage/backpack/general_belt, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
+		list("Military Police Belt", 0, /obj/item/storage/belt/security/MP/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
+		list("M276 Medical Storage Rig", 0, /obj/item/storage/belt/medical/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
+		list("M276 Ammo Load Rig", 0, /obj/item/storage/belt/marine, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
+		list("M276 Holster Toolrig", 0, /obj/item/storage/belt/gun/utility/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
+		list("M276 M82F Holster Rig", 0, /obj/item/storage/belt/gun/flaregun, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 
 		list("COMBAT EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Officer M3 Armor", 0, /obj/item/clothing/suit/storage/marine/MP/SO, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
@@ -311,7 +425,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_xo, list(
 		list("Medical Pouch", 0, /obj/item/storage/pouch/medical, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Document Pouch", 0, /obj/item/storage/pouch/document, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Shotgun Shell Pouch", 0, /obj/item/storage/pouch/shotgun, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-
 
 		list("ACCESSORIES (CHOOSE 1)", 0, null, null, null),
 		list("Shoulder Holster", 0, /obj/item/clothing/accessory/storage/holster, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),

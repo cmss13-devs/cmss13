@@ -138,9 +138,9 @@
 		dat += "<br>It will periodically alter the local temperature by [grown_seed.alter_temp] degrees Kelvin."
 
 	if(grown_seed.biolum)
-		dat += "<br>It is [grown_seed.biolum_colour ? "<font color='[grown_seed.biolum_colour]'>bio-luminescent</font>" : "bio-luminescent"]."
+		dat += "<br>It is [grown_seed.biolum_color ? "<font color='[grown_seed.biolum_color]'>bio-luminescent</font>" : "bio-luminescent"]."
 	if(grown_seed.flowers)
-		dat += "<br>It has [grown_seed.flower_colour ? "<font color='[grown_seed.flower_colour]'>flowers</font>" : "flowers"]."
+		dat += "<br>It has [grown_seed.flower_color ? "<font color='[grown_seed.flower_color]'>flowers</font>" : "flowers"]."
 
 	if(dat)
 		show_browser(user, dat, "Plant Analysis", "plant_analyzer")
@@ -157,7 +157,7 @@
 	name = "fertilizer bottle"
 	desc = "A small glass bottle. Can hold up to 10 units."
 	icon = 'icons/obj/items/chemistry.dmi'
-	icon_state = "bottle16"
+	icon_state = "fertilizer"
 	flags_atom = FPRINT| OPENCONTAINER
 	possible_transfer_amounts = null
 	w_class = SIZE_SMALL
@@ -179,15 +179,12 @@
 
 /obj/item/reagent_container/glass/fertilizer/ez
 	name = "bottle of E-Z-Nutrient"
-	icon_state = "bottle16"
 	fertilizer = "eznutrient"
 
 /obj/item/reagent_container/glass/fertilizer/l4z
 	name = "bottle of Left 4 Zed"
-	icon_state = "bottle18"
 	fertilizer = "left4zed"
 
 /obj/item/reagent_container/glass/fertilizer/rh
 	name = "bottle of Robust Harvest"
-	icon_state = "bottle15"
 	fertilizer = "robustharvest"

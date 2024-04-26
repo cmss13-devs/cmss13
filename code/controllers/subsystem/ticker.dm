@@ -8,6 +8,10 @@ SUBSYSTEM_DEF(ticker)
 
 	var/current_state = GAME_STATE_STARTUP //State of current round used by process()
 	var/force_ending = FALSE //Round was ended by admin intervention
+
+	/// If TRUE, there is no lobby phase, the game starts immediately.
+	var/start_immediately = FALSE
+
 	var/bypass_checks = FALSE //Bypass mode init checks
 	var/setup_failed = FALSE //If the setup has failed at any point
 	var/setup_started = FALSE
@@ -46,6 +50,7 @@ SUBSYSTEM_DEF(ticker)
 
 	var/totalPlayers = 0 //used for pregame stats on statpanel
 	var/totalPlayersReady = 0 //used for pregame stats on statpanel
+	var/tutorial_disabled = FALSE //zonenote
 
 /datum/controller/subsystem/ticker/Initialize(timeofday)
 	load_mode()
@@ -79,6 +84,10 @@ SUBSYSTEM_DEF(ticker)
 				var/mob/new_player/player = i
 				if(player.ready) // TODO: port this  == PLAYER_READY_TO_PLAY)
 					++totalPlayersReady
+
+			if(start_immediately)
+				time_left = 0
+
 			if(time_left < 0 || delay_start)
 				return
 
@@ -171,7 +180,27 @@ SUBSYSTEM_DEF(ticker)
 
 	CHECK_TICK
 	if(!mode.can_start(bypass_checks))
-		to_chat(world, "Reverting to pre-game lobby.")
+		to_chat(world, "Requirements to start [GLOB.master_mode] not met. Reverting to pre-game lobby.")
+		// Make only one more attempt
+		if(world.time - 2 * wait > CONFIG_GET(number/lobby_countdown) SECONDS)
+			flash_clients()
+			delay_start = TRUE
+			var/active_admins = 0
+			for(var/client/admin_client in GLOB.admins)
+				if(!admin_client.is_afk() && check_client_rights(admin_client, R_SERVER, FALSE))
+					active_admins = TRUE
+					break
+			if(active_admins)
+				to_chat(world, SPAN_CENTERBOLD("The game start has been delayed."))
+				message_admins(SPAN_ADMINNOTICE("Alert: Insufficent players ready to start [GLOB.master_mode].\nEither change mode and map or start round and bypass checks."))
+			else
+				var/fallback_mode = CONFIG_GET(string/gamemode_default)
+				SSticker.save_mode(fallback_mode)
+				GLOB.master_mode = fallback_mode
+				to_chat(world, SPAN_BOLDNOTICE("Notice: The Gamemode for next round has been set to [fallback_mode]"))
+				handle_map_reboot()
+		else
+			to_chat(world, "Attempting again...")
 		QDEL_NULL(mode)
 		GLOB.RoleAuthority.reset_roles()
 		return FALSE
@@ -186,7 +215,7 @@ SUBSYSTEM_DEF(ticker)
 	CHECK_TICK
 	mode.announce()
 	if(mode.taskbar_icon)
-		RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGIN, PROC_REF(handle_mode_icon))
+		RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGGED_IN, PROC_REF(handle_mode_icon))
 		set_clients_taskbar_icon(mode.taskbar_icon)
 
 	if(GLOB.perf_flags & PERF_TOGGLE_LAZYSS)
@@ -477,7 +506,6 @@ SUBSYSTEM_DEF(ticker)
 	SIGNAL_HANDLER
 
 	winset(C, null, "mainwindow.icon=[SSticker.mode.taskbar_icon]")
-
 
 /datum/controller/subsystem/ticker/proc/hijack_ocurred()
 	if(mode)

@@ -365,7 +365,8 @@
 
 	//If limb was damaged before and took enough damage, try to cut or tear it off
 	var/no_perma_damage = owner.status_flags & NO_PERMANENT_DAMAGE
-	if(previous_brute > 0 && !is_ff && body_part != BODY_FLAG_CHEST && body_part != BODY_FLAG_GROIN && !no_limb_loss && !no_perma_damage)
+	var/no_bone_break = owner.chem_effect_flags & CHEM_EFFECT_RESIST_FRACTURE
+	if(previous_brute > 0 && !is_ff && body_part != BODY_FLAG_CHEST && body_part != BODY_FLAG_GROIN && !no_limb_loss && !no_perma_damage && !no_bone_break)
 		if(CONFIG_GET(flag/limbs_can_break) && brute_dam >= max_damage * CONFIG_GET(number/organ_health_multiplier))
 			var/cut_prob = brute/max_damage * 5
 			if(prob(cut_prob))
@@ -547,6 +548,7 @@ This function completely restores a damaged organ to perfect condition.
 
 
 /obj/limb/proc/remove_all_bleeding(external = FALSE, internal = FALSE)
+	SEND_SIGNAL(src, COMSIG_LIMB_STOP_BLEEDING, external, internal)
 	if(external)
 		for(var/datum/effects/bleeding/external/B in bleeding_effects_list)
 			qdel(B)
@@ -578,8 +580,9 @@ This function completely restores a damaged organ to perfect condition.
 	if(brute_dam || burn_dam)
 		return TRUE
 	if(knitting_time > 0)
-		return 1
-	return 0
+		return TRUE
+	update_wounds()
+	return FALSE
 
 /obj/limb/process()
 
@@ -954,7 +957,13 @@ This function completely restores a damaged organ to perfect condition.
 		// OK so maybe your limb just flew off, but if it was attached to a pair of cuffs then hooray! Freedom!
 		release_restraints()
 
-		if(vital) owner.death(cause)
+		if(vital)
+			var/mob/caused_mob
+			if(istype(cause, /mob))
+				caused_mob = cause
+			if(!istype(cause, /datum/cause_data))
+				cause = create_cause_data("lost vital limb", caused_mob)
+			owner.death(cause)
 
 /*
 			HELPERS
@@ -1084,7 +1093,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 
 	//if the chance was not set by what called fracture(), the endurance check is done instead
 	if(bonebreak_probability == null) //bone break chance is based on endurance, 25% for survivors, erts, 100% for most everyone else.
-		bonebreak_probability = 100 / Clamp(owner.skills?.get_skill_level(SKILL_ENDURANCE)-1,1,100) //can't be zero
+		bonebreak_probability = 100 / clamp(owner.skills?.get_skill_level(SKILL_ENDURANCE)-1,1,100) //can't be zero
 
 	var/list/bonebreak_data = list("bonebreak_probability" = bonebreak_probability)
 	SEND_SIGNAL(owner, COMSIG_HUMAN_BONEBREAK_PROBABILITY, bonebreak_data)

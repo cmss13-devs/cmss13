@@ -3,7 +3,7 @@
 /datum/construction_template/xenomorph
 	name = "xenomorph structure"
 	build_type = /obj/effect/alien/resin/special
-	crystals_required = 45 * XENO_STRUCTURE_PLASMA_MULTIPLIER
+	plasma_required = 45 * XENO_STRUCTURE_PLASMA_MULTIPLIER
 	/// The hive that this structure belongs to.
 	var/datum/hive_status/hive_ref
 	/// The range around this structure which needs to be clear for it to be constructed.
@@ -29,7 +29,7 @@
 	description = "Heart of the hive, grows hive weeds (which are necessary for other structures), stores larva, spawns lesser drones, and protects the hive from skyfire."
 	build_type = /obj/effect/alien/resin/special/pylon/core
 	build_icon_state = "core"
-	crystals_required = 100 * XENO_STRUCTURE_PLASMA_MULTIPLIER
+	plasma_required = 100 * XENO_STRUCTURE_PLASMA_MULTIPLIER
 	block_range = 0
 
 /datum/construction_template/xenomorph/cluster
@@ -39,7 +39,7 @@
 	build_icon_state = "hive_cluster"
 	pixel_y = -8
 	pixel_x = -8
-	crystals_required = 50 * XENO_STRUCTURE_PLASMA_MULTIPLIER
+	plasma_required = 50 * XENO_STRUCTURE_PLASMA_MULTIPLIER
 	block_range = 0
 
 /datum/construction_template/xenomorph/cluster/set_structure_image()
@@ -50,7 +50,7 @@
 	description = "Remote section of the hive, grows hive weeds, spawns lesser drones, and protects sisters from air strikes."
 	build_type = /obj/effect/alien/resin/special/pylon
 	build_icon_state = "pylon"
-	crystals_required = 100 * XENO_STRUCTURE_PLASMA_MULTIPLIER
+	plasma_required = 100 * XENO_STRUCTURE_PLASMA_MULTIPLIER
 	block_range = 0
 
 /datum/construction_template/xenomorph/eggmorph

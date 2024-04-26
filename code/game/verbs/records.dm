@@ -97,13 +97,13 @@
 		return
 	target = ckey(target)
 
-	if(GLOB.RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_COMMANDER_COUNCIL)
+	if(check_whitelist_status(WHITELIST_COMMANDER_COUNCIL))
 		options |= "Commanding Officer"
 		edit_C = TRUE
-	if(GLOB.RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_SYNTHETIC_COUNCIL)
+	if(check_whitelist_status(WHITELIST_SYNTHETIC_COUNCIL))
 		options |= "Synthetic"
 		edit_S = TRUE
-	if(GLOB.RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_YAUTJA_COUNCIL)
+	if(check_whitelist_status(WHITELIST_YAUTJA_COUNCIL))
 		options |= "Yautja"
 		edit_Y = TRUE
 
@@ -116,17 +116,17 @@
 		if("Merit")
 			show_other_record(NOTE_MERIT, choice, target, TRUE)
 		if("Commanding Officer")
-			if(MA || (GLOB.RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_COMMANDER_LEADER))
+			if(MA || check_whitelist_status(WHITELIST_COMMANDER_LEADER))
 				show_other_record(NOTE_COMMANDER, choice, target, TRUE, TRUE)
 			else
 				show_other_record(NOTE_COMMANDER, choice, target, edit_C)
 		if("Synthetic")
-			if(MA || (GLOB.RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_SYNTHETIC_LEADER))
+			if(MA || check_whitelist_status(WHITELIST_SYNTHETIC_LEADER))
 				show_other_record(NOTE_SYNTHETIC, choice, target, TRUE, TRUE)
 			else
 				show_other_record(NOTE_SYNTHETIC, choice, target, edit_S)
 		if("Yautja")
-			if(MA || (GLOB.RoleAuthority.roles_whitelist[src.ckey] & WHITELIST_YAUTJA_LEADER))
+			if(MA || check_whitelist_status(WHITELIST_YAUTJA_LEADER))
 				show_other_record(NOTE_YAUTJA, choice, target, TRUE, TRUE)
 			else
 				show_other_record(NOTE_YAUTJA, choice, target, edit_Y)
@@ -184,6 +184,7 @@
 
 GLOBAL_DATUM_INIT(medals_view_tgui, /datum/medals_view_tgui, new)
 
+
 /datum/medals_view_tgui/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -194,7 +195,7 @@ GLOBAL_DATUM_INIT(medals_view_tgui, /datum/medals_view_tgui, new)
 	. = ..()
 	.["medals"] = list()
 
-	for(var/datum/view_record/medal_view/medal as anything in DB_VIEW(/datum/view_record/medal_view, DB_COMP("player_id", DB_EQUALS, user.client.player_data.id)))
+	for(var/datum/view_record/medal_view/medal as anything in get_medals(user))
 		var/xeno_medal = FALSE
 		if(medal.medal_type in GLOB.xeno_medals)
 			xeno_medal = TRUE
@@ -212,6 +213,10 @@ GLOBAL_DATUM_INIT(medals_view_tgui, /datum/medals_view_tgui, new)
 
 		.["medals"] += list(current_medal)
 
+/datum/medals_view_tgui/proc/get_medals(mob/user)
+	return DB_VIEW(/datum/view_record/medal_view, DB_COMP("player_id", DB_EQUALS, user.client.player_data.id))
+
+
 /datum/medals_view_tgui/ui_state(mob/user)
 	return GLOB.always_state
 
@@ -225,3 +230,23 @@ GLOBAL_DATUM_INIT(medals_view_tgui, /datum/medals_view_tgui, new)
 	set category = "OOC.Records"
 
 	GLOB.medals_view_tgui.tgui_interact(mob)
+
+GLOBAL_DATUM_INIT(medals_view_given_tgui, /datum/medals_view_tgui/given_medals, new)
+
+
+/datum/medals_view_tgui/given_medals/get_medals(mob/user)
+	return DB_VIEW(/datum/view_record/medal_view, DB_COMP("giver_player_id", DB_EQUALS, user.client.player_data.id))
+
+
+/datum/medals_view_tgui/given_medals/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "MedalsViewer", "[user.ckey]'s Given Medals")
+		ui.open()
+
+
+/client/verb/view_given_medals()
+	set name = "View Medals Given to Others"
+	set category = "OOC.Records"
+
+	GLOB.medals_view_given_tgui.tgui_interact(mob)

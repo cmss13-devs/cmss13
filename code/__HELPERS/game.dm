@@ -151,16 +151,6 @@
 	var/list/speaker_coverage = list()
 	for(var/obj/item/device/radio/R in radios)
 		if(R)
-			//Cyborg checks. Receiving message uses a bit of cyborg's charge.
-			var/obj/item/device/radio/borg/BR = R
-			if(istype(BR) && BR.myborg)
-				var/mob/living/silicon/robot/borg = BR.myborg
-				var/datum/robot_component/CO = borg.get_component("radio")
-				if(!CO)
-					continue //No radio component (Shouldn't happen)
-				if(!borg.is_component_functioning("radio") || !borg.cell_use_power(CO.active_usage))
-					continue //No power.
-
 			var/turf/speaker = get_turf(R)
 			if(speaker)
 				for(var/turf/T in hear(R.canhear_range,speaker))
@@ -273,7 +263,7 @@
 			continue
 
 		// Mods with larva protection cannot be drafted
-		if((cur_obs.client.admin_holder && (cur_obs.client.admin_holder.rights & R_MOD)) && !cur_obs.adminlarva)
+		if(check_client_rights(cur_obs.client, R_MOD, FALSE) && cur_obs.admin_larva_protection)
 			continue
 
 		if(hive)

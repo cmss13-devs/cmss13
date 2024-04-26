@@ -141,10 +141,13 @@
 	// if the dropship has crashed don't allow more interactions
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
 	if(shuttle.mode == SHUTTLE_CRASHED)
-		to_chat(user, SPAN_NOTICE("\The [src] is not responsive"))
+		to_chat(user, SPAN_NOTICE("[src] is unresponsive."))
 		return
 
 	if(dropship_control_lost)
+		if(shuttle.is_hijacked)
+			to_chat(user, SPAN_WARNING("The shuttle is not responding due to an unauthorized access attempt."))
+			return
 		var/remaining_time = timeleft(door_control_cooldown) / 10
 		to_chat(user, SPAN_WARNING("The shuttle is not responding due to an unauthorized access attempt. In large text it says the lockout will be automatically removed in [remaining_time] seconds."))
 		if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
@@ -168,7 +171,7 @@
 	override_being_removed = FALSE
 	if(dropship_control_lost)
 		remove_door_lock()
-		to_chat(user, SPAN_NOTICE("You succesfully removed the lockout!"))
+		to_chat(user, SPAN_NOTICE("You successfully removed the lockout!"))
 		playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
 
 	if(!shuttle.is_hijacked)
@@ -211,25 +214,35 @@
 
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/attack_alien(mob/living/carbon/xenomorph/xeno)
-	if(!is_ground_level(z))
-		to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but we can't comprehend their meaning."))
-		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
-		return
+	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
 
+	// If the attacking xeno isn't the queen.
 	if(xeno.hive_pos != XENO_QUEEN)
-		to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but we can't comprehend their meaning."))
-		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
-		return
+		// If the 'about to launch' alarm is playing, a xeno can whack the computer to stop it.
+		if(dropship.playing_launch_announcement_alarm)
+			stop_playing_launch_announcement_alarm()
+			xeno.animation_attack_on(src)
+			to_chat(xeno, SPAN_XENONOTICE("We slash at [src], silencing its squawking!"))
+			playsound(loc, 'sound/machines/terminal_shutdown.ogg', 20)
+		else
+			to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but we can't comprehend their meaning."))
+			playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, TRUE)
+		return XENO_NONCOMBAT_ACTION
+
+	if(!is_ground_level(z))
+		// "you" rather than "we" for this one since non-queen castes will have returned above.
+		to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but you can't comprehend their meaning."))
+		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, TRUE)
+		return XENO_NONCOMBAT_ACTION
 
 	if(is_remote)
 		groundside_alien_action(xeno)
 		return
 
-	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
 	if(dropship.is_hijacked)
 		return
 
-	// door controls being overriden
+	// door controls being overridden
 	if(!dropship_control_lost)
 		dropship.control_doors("unlock", "all", TRUE)
 		dropship_control_lost = TRUE
@@ -239,6 +252,7 @@
 			addtimer(CALLBACK(GLOB.almayer_orbital_cannon, TYPE_PROC_REF(/obj/structure/orbital_cannon, enable)), 10 MINUTES, TIMER_UNIQUE)
 		if(!GLOB.resin_lz_allowed)
 			set_lz_resin_allowed(TRUE)
+		stop_playing_launch_announcement_alarm()
 
 		to_chat(xeno, SPAN_XENONOTICE("You override the doors."))
 		xeno_message(SPAN_XENOANNOUNCE("The doors of the metal bird have been overridden! Rejoice!"), 3, xeno.hivenumber)
@@ -264,7 +278,6 @@
 		return
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/hijack(mob/user, force = FALSE)
-
 	// select crash location
 	var/turf/source_turf = get_turf(src)
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
@@ -287,9 +300,6 @@
 	hijack.fire()
 	GLOB.alt_ctrl_disabled = TRUE
 
-	dropship.alarm_sound_loop.stop()
-	dropship.playing_launch_announcement_alarm = FALSE
-
 	marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", "Dropship Alert", 'sound/AI/hijack.ogg', logging = ARES_LOG_SECURITY)
 	log_ares_flight("Unknown", "Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.")
 
@@ -299,7 +309,14 @@
 		hivenumber = xeno.hivenumber
 	xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"), 3, hivenumber)
 	xeno_message(SPAN_XENOANNOUNCE("The hive swells with power! You will now steadily gain pooled larva over time."), 2, hivenumber)
-	GLOB.hive_datum[hivenumber].abandon_on_hijack()
+	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
+	hive.abandon_on_hijack()
+	var/original_evilution = hive.evolution_bonus
+	hive.override_evilution(XENO_HIJACK_EVILUTION_BUFF, TRUE)
+	if(hive.living_xeno_queen)
+		var/datum/action/xeno_action/onclick/grow_ovipositor/ovi_ability = get_xeno_action_by_type(hive.living_xeno_queen, /datum/action/xeno_action/onclick/grow_ovipositor)
+		ovi_ability.reduce_cooldown(ovi_ability.xeno_cooldown)
+	addtimer(CALLBACK(hive, TYPE_PROC_REF(/datum/hive_status, override_evilution), original_evilution, FALSE), XENO_HIJACK_EVILUTION_TIME)
 
 	// Notify the yautja too so they stop the hunt
 	message_all_yautja("The serpent Queen has commanded the landing shuttle to depart.")
@@ -310,14 +327,14 @@
 		colonial_marines.add_current_round_status_to_end_results("Hijack")
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/remove_door_lock()
+	if(door_control_cooldown)
+		deltimer(door_control_cooldown)
+		door_control_cooldown = null
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
 	if(shuttle.is_hijacked)
 		return
 	playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
 	dropship_control_lost = FALSE
-	if(door_control_cooldown)
-		deltimer(door_control_cooldown)
-		door_control_cooldown = null
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/ui_data(mob/user)
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
@@ -411,7 +428,7 @@
 			update_equipment(is_optimised, FALSE)
 			var/list/local_data = ui_data(user)
 			var/found = FALSE
-			playsound(loc, get_sfx("terminal_button"), KEYBOARD_SOUND_VOLUME, 1)
+			playsound(loc, get_sfx("terminal_button"), 5, 1)
 			for(var/destination in local_data["destinations"])
 				if(destination["id"] == dock_id)
 					found = TRUE
@@ -453,7 +470,7 @@
 		if("set-automate")
 			var/almayer_lz = params["hangar_id"]
 			var/ground_lz = params["ground_id"]
-			var/delay = Clamp(params["delay"] SECONDS, DROPSHIP_MIN_AUTO_DELAY, DROPSHIP_MAX_AUTO_DELAY)
+			var/delay = clamp(params["delay"] SECONDS, DROPSHIP_MIN_AUTO_DELAY, DROPSHIP_MAX_AUTO_DELAY)
 
 			// TODO verify
 			if(almayer_lz == ground_lz)

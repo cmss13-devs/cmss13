@@ -7,7 +7,6 @@
 	max_health = XENO_HEALTH_LESSER_DRONE
 	plasma_gain = XENO_PLASMA_GAIN_TIER_7
 	plasma_max = XENO_PLASMA_TIER_3
-	crystal_max = XENO_CRYSTAL_LOW
 	xeno_explosion_resistance = XENO_NO_EXPLOSIVE_ARMOR
 	armor_deflection = XENO_NO_ARMOR
 	evasion = XENO_EVASION_LOW
@@ -17,9 +16,10 @@
 	can_be_revived = FALSE
 
 	build_time_mult = BUILD_TIME_MULT_LESSER_DRONE
+	behavior_delegate_type = /datum/behavior_delegate/lesser_drone_base
 
 	caste_desc = "A builder of hives."
-	can_hold_facehuggers = 1
+	can_hold_facehuggers = TRUE
 	can_hold_eggs = CAN_HOLD_TWO_HANDS
 	acid_level = 1
 	weed_level = WEED_LEVEL_STANDARD
@@ -75,14 +75,26 @@
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
 
-	mutation_type = DRONE_NORMAL
-
 	icon_xeno = 'icons/mob/xenos/lesser_drone.dmi'
 	icon_xenonid = 'icons/mob/xenonids/lesser_drone.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds.dmi'
 	weed_food_states = list("Lesser_Drone_1","Lesser_Drone_2","Lesser_Drone_3")
 	weed_food_states_flipped = list("Lesser_Drone_1","Lesser_Drone_2","Lesser_Drone_3")
+
+/mob/living/carbon/xenomorph/lesser_drone/Login()
+	var/last_ckey_inhabited = persistent_ckey
+	. = ..()
+	if(ckey == last_ckey_inhabited)
+		return
+
+	AddComponent(\
+		/datum/component/temporary_mute,\
+		"We aren't old enough to vocalize anything yet.",\
+		"We aren't old enough to communicate like this yet.",\
+		"We feel old enough to be able to vocalize and speak to the hivemind.",\
+		3 MINUTES,\
+	)
 
 /mob/living/carbon/xenomorph/lesser_drone/age_xeno()
 	if(stat == DEAD || !caste || QDELETED(src) || !client)
@@ -107,3 +119,10 @@
 
 /mob/living/carbon/xenomorph/lesser_drone/handle_ghost_message()
 	return
+
+/datum/behavior_delegate/lesser_drone_base
+	name = "Base Lesser Drone Behavior Delegate"
+
+/datum/behavior_delegate/lesser_drone_base/on_life()
+	if(bound_xeno.body_position == STANDING_UP && !(locate(/obj/effect/alien/weeds) in get_turf(bound_xeno)))
+		bound_xeno.adjustBruteLoss(5)

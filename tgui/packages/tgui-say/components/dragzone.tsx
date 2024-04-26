@@ -14,7 +14,7 @@ export const Dragzone = (props: Partial<DragzoneProps>) => {
   return (
     <div
       className={`dragzone-${direction}-${theme}`}
-      onmousedown={dragStartHandler}
+      onMouseDown={dragStartHandler}
     />
   );
 };

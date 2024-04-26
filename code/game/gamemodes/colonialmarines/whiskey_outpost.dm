@@ -20,7 +20,7 @@
 		/datum/job/command/bridge/whiskey = JOB_SO,
 		/datum/job/command/tank_crew/whiskey = JOB_CREWMAN,
 		/datum/job/command/police/whiskey = JOB_POLICE,
-		/datum/job/command/pilot/whiskey = JOB_PILOT,
+		/datum/job/command/pilot/whiskey = JOB_CAS_PILOT,
 		/datum/job/logistics/requisition/whiskey = JOB_CHIEF_REQUISITION,
 		/datum/job/civilian/professor/whiskey = JOB_CMO,
 		/datum/job/civilian/doctor/whiskey = JOB_DOCTOR,
@@ -194,7 +194,7 @@
 	announce_xeno_wave(wave)
 	if(xeno_wave == 7)
 		//Wave when Marines get reinforcements!
-		get_specific_call("Marine Reinforcements (Squad)", FALSE, TRUE)
+		get_specific_call(/datum/emergency_call/wo, FALSE, TRUE) // "Marine Reinforcements (Squad)"
 	xeno_wave = min(xeno_wave + 1, WO_MAX_WAVE)
 
 
@@ -262,7 +262,7 @@
 		GLOB.round_statistics.track_round_end()
 	if(finished == 1)
 		log_game("Round end result - xenos won")
-		to_world(SPAN_ROUND_HEADER("The Xenos have succesfully defended their hive from colonization."))
+		to_world(SPAN_ROUND_HEADER("The Xenos have successfully defended their hive from colonization."))
 		to_world(SPAN_ROUNDBODY("Well done, you've secured LV-624 for the hive!"))
 		to_world(SPAN_ROUNDBODY("It will be another five years before the USCM returns to the Neroid Sector, with the arrival of the 2nd 'Falling Falcons' Battalion and the USS Almayer."))
 		to_world(SPAN_ROUNDBODY("The xenomorph hive on LV-624 remains unthreatened until then..."))
@@ -520,8 +520,7 @@
 		return
 	if(user.is_mob_incapacitated())
 		return
-	if(ismaintdrone(usr) || \
-		istype(usr, /mob/living/carbon/xenomorph))
+	if(istype(usr, /mob/living/carbon/xenomorph))
 		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return
 	if(working)

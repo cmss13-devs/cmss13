@@ -3,7 +3,6 @@
 	desc = "Wakes up an additional specialist to fight against any threats."
 	icon_state = "overshield"
 
-	announce_name = "ALMAYER SPECIAL ASSETS AUTHORIZED"
 	announce_message = "An additional specialist is being taken out of cryo."
 
 	required_points = 8
@@ -21,4 +20,4 @@
 
 /datum/tech/cryomarine/on_unlock()
 	. = ..()
-	SSticker.mode.get_specific_call("Marine Cryo Reinforcement (Spec)", TRUE, FALSE)
+	SSticker.mode.get_specific_call(/datum/emergency_call/cryo_spec, TRUE, FALSE) // "Marine Cryo Reinforcement (Spec)"

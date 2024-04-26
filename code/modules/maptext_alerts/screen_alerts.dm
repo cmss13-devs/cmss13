@@ -64,6 +64,26 @@
 	style_open = "<span class='langchat' style=font-size:16pt;text-align:center valign='top'>"
 	style_close = "</span>"
 
+/atom/movable/screen/text/screen_text/command_order/tutorial
+	letters_per_update = 4 // overall, pretty fast while not immediately popping in
+	play_delay = 0.1
+	fade_out_delay = 2.5 SECONDS
+	fade_out_time = 0.5 SECONDS
+
+/atom/movable/screen/text/screen_text/command_order/tutorial/end_play()
+	if(!player)
+		qdel(src)
+		return
+
+	if(player.mob || HAS_TRAIT(player.mob, TRAIT_IN_TUTORIAL))
+		return ..()
+
+	for(var/atom/movable/screen/text/screen_text/command_order/tutorial/tutorial_message in player.screen_texts)
+		LAZYREMOVE(player.screen_texts, tutorial_message)
+		qdel(tutorial_message)
+
+	return ..()
+
 ///proc for actually playing this screen_text on a mob.
 /atom/movable/screen/text/screen_text/proc/play_to_client()
 	player?.add_to_screen(src)
@@ -221,6 +241,10 @@
 	. = ..()
 	if(!QDELETED(src))
 		openToolTip(usr, src, params, title = name, content = desc, theme = alerttooltipstyle)
+
+/atom/movable/screen/alert/MouseExited(location, control, params)
+	. = ..()
+	closeToolTip(usr)
 
 /atom/movable/screen/alert/notify_action
 	name = "Notification"

@@ -18,21 +18,6 @@
 	usr.show_message(t, SHOW_MESSAGE_VISIBLE)
 
 
-/client/proc/cmd_admin_robotize(mob/M in GLOB.mob_list)
-	set category = null
-	set name = "Make Robot"
-
-	if(!SSticker.mode)
-		alert("Wait until the game starts")
-		return
-	if(istype(M, /mob/living/carbon/human))
-		log_admin("[key_name(src)] has robotized [M.key].")
-		spawn(10)
-			M:Robotize()
-
-	else
-		alert("Invalid mob")
-
 /client/proc/cmd_admin_animalize(mob/M in GLOB.mob_list)
 	set category = null
 	set name = "Make Simple Animal"
@@ -130,8 +115,10 @@
 	var/height
 	if(istype(SSmapping.z_list[cur_z], /datum/space_level))
 		var/datum/space_level/cur_level = SSmapping.z_list[cur_z]
-		width = cur_level.x_bounds - half_chunk_size + 2
-		height = cur_level.y_bounds - half_chunk_size + 2
+		cur_x += cur_level.bounds[MAP_MINX] - 1
+		cur_y += cur_level.bounds[MAP_MINY] - 1
+		width = cur_level.bounds[MAP_MAXX] - cur_level.bounds[MAP_MINX] - half_chunk_size + 3
+		height = cur_level.bounds[MAP_MAXY] - cur_level.bounds[MAP_MINY] - half_chunk_size + 3
 	else
 		width = world.maxx - half_chunk_size + 2
 		height = world.maxy - half_chunk_size + 2
@@ -296,6 +283,8 @@
 		account_user.mind.store_memory(remembered_info)
 		account_user.mind.initial_account = generated_account
 
+	log_admin("[key_name(usr)] has created a new bank account for [key_name(account_user)].")
+
 /client/proc/cmd_assume_direct_control(mob/M in GLOB.mob_list)
 	set name = "Control Mob"
 	set desc = "Assume control of the mob"
@@ -354,3 +343,20 @@
 
 
 	show_browser(usr, "<TT>[str]</TT>", "Ticker Count", "tickercount")
+
+#ifdef TESTING
+GLOBAL_LIST_EMPTY(dirty_vars)
+
+/client/proc/see_dirty_varedits()
+	set category = "Debug.Mapping"
+	set name = "Dirty Varedits"
+
+	var/list/dat = list()
+	dat += "<h3>Abandon all hope ye who enter here</h3><br><br>"
+	for(var/thing in GLOB.dirty_vars)
+		dat += "[thing]<br>"
+		CHECK_TICK
+	var/datum/browser/popup = new(usr, "dirty_vars", "Dirty Varedits", nwidth = 900, nheight = 750)
+	popup.set_content(dat.Join())
+	popup.open()
+#endif

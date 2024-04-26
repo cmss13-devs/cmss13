@@ -155,8 +155,12 @@
 #define TRAIT_FORCED_STANDING "forcedstanding"
 /// Stuns preventing movement and using objects but without further impairement
 #define TRAIT_INCAPACITATED "incapacitated"
+/// Disoriented. Unable to talk properly, and unable to use some skills as Xeno
+#define TRAIT_DAZED "dazed"
 /// Apply this to identify a mob as merged with weeds
 #define TRAIT_MERGED_WITH_WEEDS "merged_with_weeds"
+/// Apply this to identify a mob as temporarily muted
+#define TRAIT_TEMPORARILY_MUTED "temporarily_muted"
 
 // SPECIES TRAITS
 /// Knowledge of Yautja technology
@@ -167,7 +171,7 @@
 #define TRAIT_FOREIGN_BIO "t_foreign_bio"
 /// Eye color changes on intent. (G1 Synths and WJs)
 #define TRAIT_INTENT_EYES "t_intent_eyes"
-/// Masked synthetic biology. Basic medHUDs will percieve the mob as human. (Infiltrator Synths)
+/// Masked synthetic biology. Basic medHUDs will perceive the mob as human. (Infiltrator Synths)
 #define TRAIT_INFILTRATOR_SYNTH "t_infiltrator_synth"
 /// Makes it impossible to strip the inventory of this mob.
 #define TRAIT_UNSTRIPPABLE "t_unstrippable"
@@ -175,7 +179,9 @@
 // HIVE TRAITS
 /// If the Hive is a Xenonid Hive
 #define TRAIT_XENONID "t_xenonid"
-/// If the Hive delays round end (this is overriden for some hives). Does not occur naturally. Must be applied in events.
+/// If the hive or xeno can use objects.
+#define TRAIT_OPPOSABLE_THUMBS "t_thumbs"
+/// If the Hive delays round end (this is overridden for some hives). Does not occur naturally. Must be applied in events.
 #define TRAIT_NO_HIVE_DELAY "t_no_hive_delay"
 /// If the Hive uses it's colors on the mobs. Does not occur naturally, excepting the Mutated hive.
 #define TRAIT_NO_COLOR "t_no_color"
@@ -221,6 +227,8 @@
 #define TRAIT_HARDCORE "t_hardcore"
 /// If the mob is able to use the vulture rifle or spotting scope
 #define TRAIT_VULTURE_USER "t_vulture_user"
+/// If the mob is currently loading a tutorial
+#define TRAIT_IN_TUTORIAL "t_IN_TUTORIAL"
 /// If the mob is cloaked in any form
 #define TRAIT_CLOAKED "t_cloaked"
 
@@ -261,6 +269,9 @@
 
 #define TRAIT_GUN_LIGHT_DEACTIVATED "t_gun_light_deactivated"
 
+/// If this ID belongs to an ERT member
+#define TRAIT_ERT_ID "ert_id"
+
 // Miscellaneous item traits.
 // Do NOT bloat this category, if needed make a new category (like shoe traits, xeno item traits...)
 
@@ -297,6 +308,7 @@ GLOBAL_LIST_INIT(mob_traits, list(
 	TRAIT_REAGENT_SCANNER,
 	TRAIT_ABILITY_BURROWED,
 	TRAIT_VULTURE_USER,
+	TRAIT_IN_TUTORIAL,
 ))
 
 /*
@@ -310,6 +322,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_IMMOBILIZED" = TRAIT_IMMOBILIZED,
 		"TRAIT_INCAPACITATED" = TRAIT_INCAPACITATED,
 		"TRAIT_FLOORED" = TRAIT_FLOORED,
+		"TRAIT_DAZED" = TRAIT_DAZED,
 		"TRAIT_UNDENSE" = TRAIT_UNDENSE,
 		"TRAIT_YAUTJA_TECH" = TRAIT_YAUTJA_TECH,
 		"TRAIT_SUPER_STRONG" = TRAIT_SUPER_STRONG,
@@ -336,6 +349,8 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_VULTURE_USER" = TRAIT_VULTURE_USER,
 		"TRAIT_CLOAKED" = TRAIT_CLOAKED,
 	),
+//	/mob/living/carbon/human = list(
+//	),
 	/mob/living/carbon/xenomorph = list(
 		"TRAIT_ABILITY_NO_PLASMA_TRANSFER" = TRAIT_ABILITY_NO_PLASMA_TRANSFER,
 		"TRAIT_ABILITY_OVIPOSITOR" = TRAIT_ABILITY_OVIPOSITOR,
@@ -403,6 +418,8 @@ GLOBAL_LIST(trait_name_map)
 #define TRAIT_SOURCE_JOB "t_s_job"
 ///Status trait forced by staff
 #define TRAIT_SOURCE_ADMIN "t_s_admin"
+/// Status trait coming from a tutorial
+#define TRAIT_SOURCE_TUTORIAL "t_s_tutorials"
 ///Status trait coming from equipment
 #define TRAIT_SOURCE_EQUIPMENT(slot) "t_s_equipment_[slot]"
 ///Status trait coming from skill
@@ -411,6 +428,9 @@ GLOBAL_LIST(trait_name_map)
 #define TRAIT_SOURCE_ATTACHMENT(slot) "t_s_attachment_[slot]"
 ///Status trait coming from ability
 #define TRAIT_SOURCE_ABILITY(ability) "t_s_ability_[ability]"
+#define TRAIT_SOURCE_LIMB(limb) "t_s_limb_[limb]"
+///Status trait coming from temporary_mute
+#define TRAIT_SOURCE_TEMPORARY_MUTE "t_s_temporary_mute"
 ///Status trait forced by the xeno action charge
 #define TRAIT_SOURCE_XENO_ACTION_CHARGE "t_s_xeno_action_charge"
 ///Status trait coming from a xeno nest
@@ -451,6 +471,8 @@ GLOBAL_LIST(trait_name_map)
 #define XENO_WEED_TRAIT "xeno_weed"
 /// traits associated with actively interacted machinery
 #define INTERACTION_TRAIT "interaction"
+/// traits associated with interacting with a dropship
+#define TRAIT_SOURCE_DROPSHIP_INTERACTION "dropship_interaction"
 /// traits bound by stunned status effects
 #define STUNNED_TRAIT "stunned"
 /// traits bound by knocked_down status effect

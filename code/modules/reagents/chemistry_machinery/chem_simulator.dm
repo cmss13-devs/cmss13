@@ -380,8 +380,7 @@
 							relate(C)
 					if(!C.original_id)
 						C.original_id = target.data.id
-					C.id = encode_reagent(C)
-					C.name = C.id
+					encode_reagent(C)
 					if(C.id in simulations)
 						//We've already simulated this before, so we don't need to continue
 						C = GLOB.chemical_reagents_list[C.id]
@@ -443,7 +442,7 @@
 	for(var/datum/chem_property/P in creation_template)
 		creation_cost += max(abs(P.value), 1) * P.level
 		if(P.level > 5) // a penalty is added at each level above 5 (+1 at 6, +2 at 7, +4 at 8, +5 at 9, +7 at 10)
-			creation_cost += P.level - 6 + n_ceil((P.level - 5) / 2)
+			creation_cost += P.level - 6 + Ceiling((P.level - 5) / 2)
 	creation_cost += ((new_od_level - 10) / 5) * 3 //3 cost for every 5 units above 10
 	for(var/rarity in creation_complexity)
 		switch(rarity)
@@ -590,7 +589,9 @@
 	var/suffix = " "
 	for(var/datum/chem_property/P in C.properties)
 		suffix += P.code+"[P.level]"
-	return O.name + suffix
+	C.id = O.name + " " + copytext(md5(suffix),1,3) + suffix //Show random suffix AND real properties on research paper
+	C.name = O.name + " " + copytext(md5(suffix),1,3) //Show ONLY random suffix on health analyzers
+	return
 
 /obj/structure/machinery/chem_simulator/proc/complexity_to_string_list()
 	var/list/L = list()

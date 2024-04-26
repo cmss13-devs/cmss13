@@ -34,7 +34,7 @@
 	action_type = XENO_ACTION_CLICK
 
 	plasma_cost = 50
-	xeno_cooldown = 80
+	xeno_cooldown = 8 SECONDS
 
 	// Configurable options
 	spray_type = ACID_SPRAY_LINE // Enum for the shape of spray to do

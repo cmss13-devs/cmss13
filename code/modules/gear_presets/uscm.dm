@@ -16,9 +16,9 @@
 	service_hat = list(/obj/item/clothing/head/cmcap)
 	service_shoes = list(/obj/item/clothing/shoes/dress)
 
-	dress_under = list(/obj/item/clothing/under/marine/dress)
-	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress)
-	dress_hat = list(/obj/item/clothing/head/marine/peaked)
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
+	dress_hat = list(/obj/item/clothing/head/marine/dress_cover)
 	dress_gloves = list(/obj/item/clothing/gloves/marine/dress)
 	dress_shoes = list(/obj/item/clothing/shoes/dress)
 	var/auto_squad_name
@@ -30,7 +30,7 @@
 
 /datum/equipment_preset/uscm/load_preset(mob/living/carbon/human/new_human, randomise, count_participant)
 	. = ..()
-	if(!auto_squad_name || (is_admin_level(new_human.z) && !ert_squad))
+	if(!auto_squad_name || (should_block_game_interaction(new_human) && !ert_squad))
 		return
 	if(!GLOB.data_core.manifest_modify(new_human.real_name, WEAKREF(new_human), assignment, rank))
 		GLOB.data_core.manifest_inject(new_human)
@@ -72,6 +72,8 @@
 	skills = /datum/skills/pfc
 
 	minimap_icon = "private"
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
 
 /datum/equipment_preset/uscm/pfc/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel
@@ -108,6 +110,8 @@
 	skills = /datum/skills/smartgunner
 
 	minimap_icon = "smartgunner"
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
 
 /datum/equipment_preset/uscm/sg/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel
@@ -227,6 +231,9 @@
 	utility_under = list(/obj/item/clothing/under/marine/officer/intel)
 
 	minimap_icon = "io"
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
+	dress_hat = list(/obj/item/clothing/head/marine/dress_cover/officer)
 
 /datum/equipment_preset/uscm/intel/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel
@@ -251,8 +258,6 @@
 /datum/equipment_preset/uscm/intel/full/load_gear(mob/living/carbon/human/new_human)
 
 	var/obj/item/clothing/under/marine/officer/intel/U = new(new_human)
-	var/obj/item/clothing/accessory/storage/webbing/W = new()
-	U.attach_accessory(new_human, W)
 	new_human.equip_to_slot_or_del(U, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/intel(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
@@ -281,6 +286,8 @@
 	skills = /datum/skills/specialist
 
 	minimap_icon = "spec"
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
 
 /datum/equipment_preset/uscm/spec/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel
@@ -340,6 +347,8 @@
 	minimap_icon = "medic"
 
 	utility_under = list(/obj/item/clothing/under/marine/medic)
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
 
 /datum/equipment_preset/uscm/medic/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/medic
@@ -402,6 +411,8 @@
 	minimap_icon = "engi"
 
 	utility_under = list(/obj/item/clothing/under/marine/engineer)
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
 
 /datum/equipment_preset/uscm/engineer/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/tech
@@ -465,6 +476,8 @@
 	skills = /datum/skills/pfc/crafty
 
 	minimap_icon = "private"
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
 
 /datum/equipment_preset/uscm/private_equipped/load_status(mob/living/carbon/human/new_human)
 	new_human.nutrition = NUTRITION_NORMAL
@@ -555,6 +568,8 @@
 	skills = /datum/skills/smartgunner
 
 	minimap_icon = "smartgunner"
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
 
 /datum/equipment_preset/uscm/smartgunner_equipped/load_status(mob/living/carbon/human/new_human)
 	new_human.nutrition = NUTRITION_NORMAL
@@ -594,6 +609,8 @@
 	minimap_icon = "engi"
 
 	utility_under = list(/obj/item/clothing/under/marine/engineer)
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
 
 /datum/equipment_preset/uscm/engineer_equipped/load_status(mob/living/carbon/human/new_human)
 	new_human.nutrition = NUTRITION_NORMAL
@@ -640,6 +657,8 @@
 	minimap_icon = "medic"
 
 	utility_under = list(/obj/item/clothing/under/marine/medic)
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
 
 /datum/equipment_preset/uscm/medic_equipped/load_status(mob/living/carbon/human/new_human)
 	new_human.nutrition = NUTRITION_NORMAL
@@ -692,6 +711,8 @@
 	skills = /datum/skills/specialist
 
 	minimap_icon = "spec"
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
 
 /datum/equipment_preset/uscm/specialist_equipped/load_status(mob/living/carbon/human/new_human)
 	new_human.nutrition = NUTRITION_NORMAL
@@ -856,14 +877,14 @@
 
 //Covert Raiders
 /datum/equipment_preset/uscm/marsoc/covert
-	name = "Marine Raiders (!DEATHSQUAD! Covert)"
+	name = "Marine Raider (!DEATHSQUAD! Covert)"
 	uses_special_name = TRUE
 /datum/equipment_preset/uscm/marsoc/covert/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = MALE
 	new_human.change_real_name(new_human, "[pick(GLOB.nato_phonetic_alphabet)]")
 	new_human.age = rand(20,30)
 /datum/equipment_preset/uscm/marsoc/covert/load_rank(mob/living/carbon/human/new_human)
-	return "O"
+	return PAY_SHORT_CDNM
 
 //Team Leader
 /datum/equipment_preset/uscm/marsoc/sl
@@ -875,6 +896,9 @@
 	skills = /datum/skills/commando/deathsquad/leader
 
 	minimap_icon = "leader"
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
+	dress_hat = list(/obj/item/clothing/head/marine/dress_cover/officer)
 
 /datum/equipment_preset/uscm/marsoc/sl/load_rank(mob/living/carbon/human/new_human)
 	if(new_human.client)
@@ -891,7 +915,7 @@
 	new_human.change_real_name(new_human, "[pick(GLOB.nato_phonetic_alphabet)]")
 	new_human.age = rand(20,30)
 /datum/equipment_preset/uscm/marsoc/sl/covert/load_rank(mob/living/carbon/human/new_human)
-	return "O"
+	return PAY_SHORT_CDNM
 //Officer
 /datum/equipment_preset/uscm/marsoc/cmd
 	name = "Marine Raider Officer (!DEATHSQUAD!)"
@@ -900,6 +924,9 @@
 	role_comm_title = "CMD."
 	paygrade = PAY_SHORT_MO3
 	skills = /datum/skills/commando/deathsquad/officer
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
+	dress_hat = list(/obj/item/clothing/head/marine/dress_cover/officer)
 
 /datum/equipment_preset/uscm/marsoc/cmd/load_rank(mob/living/carbon/human/new_human)
 	if(new_human.client)
@@ -958,6 +985,9 @@
 	skills = /datum/skills/commando/deathsquad/leader
 
 	minimap_icon = "leader"
+	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
+	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
+	dress_hat = list(/obj/item/clothing/head/marine/dress_cover/officer)
 
 /datum/equipment_preset/uscm/marsoc/sl/load_rank(mob/living/carbon/human/new_human)
 	if(new_human.client)

@@ -39,7 +39,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_crusher_stomp
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	xeno_cooldown = 180
+	xeno_cooldown = 18 SECONDS
 	plasma_cost = 30
 
 	var/damage = 65

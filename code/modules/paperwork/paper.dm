@@ -285,16 +285,16 @@
 
 		paper_text = "<font face=\"[crayonfont]\" color=[P ? P.pen_color : "black"]><b>[paper_text]</b></font>"
 
-// t = replacetext(t, "#", "") // Junk converted to nothing!
 
 	//Count the fields
-	calculate_fields()
+	calculate_fields(paper_text)
 	return paper_text
 
-/obj/item/paper/proc/calculate_fields()
+/obj/item/paper/proc/calculate_fields(message)
+	var/check_text = message ? message : info
 	var/laststart = 1
 	while(1)
-		var/i = findtext(info, "<span class=\"paper_field\">", laststart)
+		var/i = findtext(check_text, "<span class=\"paper_field\">", laststart)
 		if(i==0)
 			break
 		laststart = i+1

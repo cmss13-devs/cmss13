@@ -601,9 +601,8 @@
 /area/lv759/outdoors/colony_streets/north_west_street)
 "afc" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	indestructible = 1
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/tcomms_northwest)
@@ -810,10 +809,8 @@
 /obj/structure/sign/safety/restrictedarea{
 	pixel_x = -17
 	},
-/obj/structure/machinery/door/poddoor/almayer/closed{
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
-	id = "eta";
-	name = "Weyland-Yutani Research Facility Lockdown"
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown"
 	},
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/floor/corsat{
@@ -1172,7 +1169,7 @@
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 4;
 	id = "hybrisacheckpoint_center";
-	name = "\improper Storm Lock"
+	name = "\improper Lockdown"
 	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
@@ -1325,9 +1322,8 @@
 /area/lv759/indoors/spaceport/docking_bay_1)
 "alv" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "Entertainment Complex"
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/bar/entertainment)
@@ -1542,7 +1538,7 @@
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 4;
 	id = "hybrisacheckpoint_center";
-	name = "\improper Storm Lock"
+	name = "\improper Lockdown"
 	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
@@ -2579,6 +2575,9 @@
 "axe" = (
 /obj/structure/window/framed/hybrisa/colony/office,
 /obj/structure/window/framed/hybrisa/colony/office,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/lv759/indoors/weyyu_office/pressroom)
 "axf" = (
@@ -2997,10 +2996,6 @@
 	buckling_y = 5;
 	dir = 1;
 	pixel_y = 5
-	},
-/obj/item/trash/cigbutt{
-	pixel_x = 1;
-	pixel_y = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate"
@@ -4408,10 +4403,8 @@
 /area/lv759/indoors/colonial_marshals/hallway_central)
 "aMa" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "Dormitories";
-	name = "\improper Dormitories Shutters"
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/apartment/east)
@@ -4492,11 +4485,8 @@
 /turf/open/floor/plating,
 /area/lv759/landing_zone_2)
 "aMG" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Engineering";
-	name = "\improper Engineering Shutters"
-	},
 /obj/structure/window/framed/hybrisa/colony/engineering/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/power_plant)
 "aMI" = (
@@ -5266,8 +5256,8 @@
 	},
 /area/lv759/outdoors/colony_streets/central_streets)
 "aUA" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer,
 /obj/structure/window/framed/hybrisa/spaceport/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/docking_bay_1)
 "aUI" = (
@@ -6540,15 +6530,6 @@
 /obj/effect/hybrisa/decal/tiretrack,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_east_street)
-"bfX" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "General Store";
-	name = "\improper General Store Shutters"
-	},
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating,
-/area/lv759/indoors/weymart)
 "bge" = (
 /obj/item/weapon/gun/revolver/cmb,
 /obj/item/ammo_magazine/revolver/cmb{
@@ -7513,12 +7494,10 @@
 	},
 /area/lv759/indoors/wy_security/checkpoint_west)
 "bpe" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "Engineering";
-	name = "\improper Engineering Shutters"
-	},
 /obj/structure/window/framed/hybrisa/colony/engineering/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 8
+	},
 /turf/open/floor/plating,
 /area/lv759/indoors/power_plant/fusion_generators)
 "bph" = (
@@ -8311,6 +8290,7 @@
 /area/whiskey_outpost/inside/caves)
 "bvU" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/meridian/meridian_foyer)
 "bvY" = (
@@ -8639,9 +8619,7 @@
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco6{
 	dir = 1
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "sentinel_outpost_lockdown"
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/colonial_marshals/head_office)
 "byy" = (
@@ -8930,11 +8908,7 @@
 /area/lv759/outdoors/colony_streets/south_east_street)
 "bAs" = (
 /obj/structure/window/framed/hybrisa/colony/office,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Secretroom";
-	indestructible = 1;
-	unacidable = 1
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/weyyu_office/breakroom)
 "bAt" = (
@@ -8942,12 +8916,10 @@
 	dir = 4
 	},
 /obj/structure/window/framed/hybrisa/colony/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	indestructible = 1
-	},
-/obj/structure/machinery/cm_vending/gear/synth,
 /obj/structure/blocker/forcefield/vehicles,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 8
+	},
 /turf/open/floor/plating,
 /area/lv759/indoors/electical_systems/substation3)
 "bAA" = (
@@ -9364,9 +9336,8 @@
 /area/whiskey_outpost/inside/caves)
 "bET" = (
 /obj/structure/window/framed/hybrisa/colony/office,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "Sec-Armoury-Lockdown"
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/weyyu_office/hallway)
@@ -9486,6 +9457,11 @@
 "bGa" = (
 /turf/open/engineership/engineer_floor9,
 /area/lv759/derelictship)
+"bGd" = (
+/obj/structure/window/framed/hybrisa/colony/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
+/turf/open/floor/plating,
+/area/lv759/indoors/apartment/west)
 "bGe" = (
 /obj/item/reagent_container/hypospray/sedative,
 /turf/open/floor/prison{
@@ -10228,9 +10204,7 @@
 /area/lv759/indoors/power_plant/equipment_east)
 "bOg" = (
 /obj/structure/window/framed/hybrisa/marshalls/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "sentinel_outpost_lockdown"
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/colonial_marshals/head_office)
 "bOj" = (
@@ -10873,10 +10847,8 @@
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv759/indoors/bar/bathroom)
 "bUm" = (
-/obj/structure/machinery/door/poddoor/almayer/closed{
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
-	id = "eta";
-	name = "Weyland-Yutani Research Facility Lockdown"
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown"
 	},
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/floor/corsat{
@@ -12489,6 +12461,13 @@
 /obj/structure/platform/hybrisa/rockdark,
 /turf/open/auto_turf/hybrisashale/layer0_plate,
 /area/lv759/indoors/caves/south_west_caves)
+"ciE" = (
+/obj/structure/window/framed/hybrisa/colony/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/apartment/east)
 "ciH" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	name = "\improper Flight Control Room"
@@ -12806,6 +12785,7 @@
 /area/lv759/indoors/caves/west_caves)
 "clr" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/apartment/east)
 "cls" = (
@@ -13331,10 +13311,7 @@
 /area/lv759/outdoors/colony_streets/north_street)
 "coZ" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Dormitories";
-	name = "\improper Dormitories Shutters"
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/apartment_services/east)
 "cpk" = (
@@ -14090,10 +14067,8 @@
 	},
 /area/whiskey_outpost/inside/caves)
 "cvt" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Engineering"
-	},
 /obj/structure/window/framed/hybrisa/colony/engineering,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/power_plant/workers_canteen)
 "cvw" = (
@@ -15989,11 +15964,6 @@
 /turf/open/floor/prison,
 /area/lv759/outdoors/colony_streets/south_west_street)
 "cMw" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "Engineering";
-	name = "\improper Engineering Shutters"
-	},
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco6{
 	dir = 8
 	},
@@ -16001,6 +15971,9 @@
 	dir = 8
 	},
 /obj/structure/window/framed/hybrisa/colony/engineering/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 8
+	},
 /turf/open/floor/plating,
 /area/lv759/indoors/power_plant/transformers_north)
 "cME" = (
@@ -16292,8 +16265,7 @@
 "cOn" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "Reactor_e_entry_3"
+	dir = 4
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -16414,6 +16386,13 @@
 /obj/structure/machinery/light,
 /turf/open/floor/hybrisa/tile/cuppajoesfloor,
 /area/lv759/indoors/spaceport/cuppajoes)
+"cPd" = (
+/obj/structure/window/framed/hybrisa/colony/office,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/weyyu_office/pressroom)
 "cPh" = (
 /obj/structure/noticeboard,
 /turf/closed/wall/hybrisa/marhsalls_reinforced,
@@ -16800,6 +16779,7 @@
 "cSi" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/window/framed/hybrisa/colony/hospital/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/hospital/east_hallway)
 "cSl" = (
@@ -16925,6 +16905,9 @@
 	layer = 1;
 	pixel_x = -12;
 	pixel_y = -12
+	},
+/obj/structure/machinery/door/poddoor/hybrisa/white{
+	name = "\improper Lockdown"
 	},
 /turf/closed/shuttle/dropship2/transparent{
 	icon = 'icons/turf/ert_shuttle.dmi';
@@ -17877,12 +17860,8 @@
 	},
 /area/lv759/indoors/recycling_plant/garage)
 "dbd" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Secretroom";
-	indestructible = 1;
-	unacidable = 1
-	},
 /obj/structure/window/framed/hybrisa/colony/engineering/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/garage_reception)
 "dbo" = (
@@ -18468,6 +18447,13 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/hybrisa/tile/supermartfloor2,
 /area/lv759/indoors/power_plant/workers_canteen_kitchen)
+"dga" = (
+/obj/structure/window/framed/hybrisa/colony/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/casino/casino_office)
 "dgb" = (
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaldark{
 	dir = 1;
@@ -24359,12 +24345,10 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/caveplateau)
 "edY" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "Engineering";
-	name = "\improper Engineering Shutters"
-	},
 /obj/structure/window/framed/hybrisa/colony/engineering/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 8
+	},
 /turf/open/floor/plating,
 /area/lv759/indoors/power_plant/transformers_south)
 "eei" = (
@@ -24800,6 +24784,10 @@
 /obj/structure/closet/crate/trashcart,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/central_streets)
+"ehO" = (
+/obj/structure/window/framed/hybrisa/colony/office,
+/turf/open/floor/plating,
+/area/lv759/indoors/weyyu_office/hallway)
 "ehV" = (
 /obj/structure/bed/stool{
 	buckling_y = 14;
@@ -24899,6 +24887,12 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
+	},
+/obj/structure/machinery/door_control{
+	id = "hybrisameridianfactory_1";
+	name = "\improper Factory Floor Shutters button";
+	pixel_x = 24;
+	pixel_y = 11
 	},
 /turf/open/floor/prison{
 	dir = 1;
@@ -25813,9 +25807,8 @@
 /area/lv759/outdoors/caveplateau)
 "esp" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "Sec-Armoury-Lockdown"
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/wy_security/checkpoint_northeast)
@@ -27279,6 +27272,7 @@
 /area/whiskey_outpost/inside/caves)
 "eGl" = (
 /obj/structure/window/framed/hybrisa/colony/hospital/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/hospital/emergency_room)
 "eGr" = (
@@ -28358,10 +28352,7 @@
 /area/lv759/indoors/caves/north_west_caves)
 "eOX" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "General Store";
-	name = "\improper General Store Shutters"
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/jacks_surplus)
 "eOZ" = (
@@ -29224,6 +29215,7 @@
 /obj/structure/sign/safety/restrictedarea{
 	pixel_x = -17
 	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating,
 /area/lv759/landing_zone_1/ceiling)
 "eXi" = (
@@ -29637,6 +29629,11 @@
 	icon_state = "floor3"
 	},
 /area/lv759/indoors/spaceport/hallway_northwest)
+"faM" = (
+/obj/structure/window/framed/hybrisa/colony/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
+/turf/open/floor/plating,
+/area/lv759/landing_zone_1/ceiling)
 "faP" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -29871,11 +29868,9 @@
 /area/lv759/indoors/apartment_services/east)
 "fcz" = (
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/machinery/door/poddoor/almayer/closed{
-	dir = 4;
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
-	id = "eta";
-	name = "Weyland-Yutani Research Facility Lockdown"
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	dir = 8
 	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
@@ -33162,6 +33157,9 @@
 /area/whiskey_outpost/inside/caves)
 "fFc" = (
 /obj/structure/window/framed/hybrisa/spaceport/cell,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 8
+	},
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/engineering)
 "fFh" = (
@@ -33648,12 +33646,7 @@
 	icon_state = "lattice12";
 	pixel_y = 16
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
-	id = "Secretroom";
-	indestructible = 1;
-	unacidable = 1
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/shutters,
 /obj/structure/window/framed/hybrisa/research/reinforced,
 /turf/open/floor/plating,
 /area/whiskey_outpost/inside/caves)
@@ -33863,6 +33856,13 @@
 /obj/structure/sign/safety/firingrange,
 /turf/closed/wall/r_wall/biodome,
 /area/whiskey_outpost/inside/caves)
+"fMP" = (
+/obj/structure/window/framed/hybrisa/colony/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/apartment/west)
 "fMQ" = (
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/plating{
@@ -34121,10 +34121,8 @@
 	},
 /area/lv759/indoors/hospital/maintenance_north)
 "fPi" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Reactor_garage_2"
-	},
 /obj/structure/window/framed/hybrisa/colony/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/wy_security/checkpoint_central)
 "fPn" = (
@@ -35609,14 +35607,6 @@
 	},
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/lv759/indoors/weyyu_office/vip)
-"gbO" = (
-/obj/structure/window/framed/hybrisa/marshalls/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Marshal Offices";
-	name = "\improper Marshal Offices Shutters"
-	},
-/turf/open/floor/plating,
-/area/lv759/indoors/colonial_marshals/head_office)
 "gbP" = (
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/hybrisashale/layer2,
@@ -36863,9 +36853,7 @@
 /area/lv759/outdoors/caves/north_west_caves_outdoors)
 "gmE" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Reactor_garage_2"
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/recycling_plant/synthetic_storage)
 "gmK" = (
@@ -37634,10 +37622,8 @@
 /area/lv759/indoors/hospital/cryo_room)
 "gsU" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Reactor_garage_2"
-	},
 /obj/structure/blocker/forcefield/vehicles,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/electical_systems/substation3)
 "gsX" = (
@@ -38600,6 +38586,11 @@
 	icon_state = "orange_edge"
 	},
 /area/lv759/indoors/spaceport/docking_bay_1)
+"gAD" = (
+/obj/structure/window/framed/bunker/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
+/turf/open/floor/plating,
+/area/whiskey_outpost/inside/caves)
 "gAI" = (
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaldark{
 	layer = 3
@@ -40666,10 +40657,8 @@
 	},
 /area/lv759/indoors/meridian/meridian_factory)
 "gRZ" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Reactor_garage_2"
-	},
 /obj/structure/window/framed/hybrisa/colony/office,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/weyyu_office)
 "gSd" = (
@@ -40908,14 +40897,13 @@
 /area/lv759/indoors/colonial_marshals/armory_foyer)
 "gTw" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	indestructible = 1
-	},
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2{
 	dir = 4
 	},
 /obj/structure/blocker/forcefield/vehicles,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 8
+	},
 /turf/open/floor/plating,
 /area/lv759/indoors/electical_systems/substation3)
 "gTz" = (
@@ -42347,6 +42335,7 @@
 /area/lv759/indoors/spaceport/hallway_east)
 "hgC" = (
 /obj/structure/window/framed/hybrisa/colony/hospital/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/hospital/pharmacy)
 "hgG" = (
@@ -42996,6 +42985,11 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/plating,
 /area/lv759/indoors/colonial_marshals/garage)
+"hmh" = (
+/obj/structure/window/framed/hybrisa/colony/hospital/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
+/turf/open/floor/plating,
+/area/lv759/indoors/hospital/east_hallway)
 "hmi" = (
 /obj/item/reagent_container/food/drinks/cans/beer{
 	pixel_x = 8
@@ -43762,11 +43756,9 @@
 	},
 /area/whiskey_outpost/inside/caves)
 "hsp" = (
-/obj/structure/machinery/door/poddoor/almayer/closed{
-	dir = 4;
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
-	id = "eta";
-	name = "Weyland-Yutani Research Facility Lockdown"
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	dir = 8
 	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
@@ -44100,15 +44092,6 @@
 /obj/structure/largecrate/supply/explosives/mines,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/caveplateau)
-"hvj" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "Dormitories";
-	name = "\improper Dormitories Shutters"
-	},
-/obj/structure/window/framed/hybrisa/colony/reinforced,
-/turf/open/floor/plating,
-/area/lv759/indoors/apartment_services/east)
 "hvl" = (
 /turf/open/floor/hybrisa/metal/bluemetalcorner{
 	dir = 8
@@ -44611,9 +44594,7 @@
 /area/lv759/indoors/garage_restroom)
 "hzm" = (
 /obj/structure/window/framed/hybrisa/marshalls/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "sentinel_outpost_lockdown"
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/colonial_marshals/holding_cells)
 "hzo" = (
@@ -44966,6 +44947,13 @@
 	},
 /turf/open/floor/hybrisa/carpet/carpetbluedeco,
 /area/lv759/indoors/colonial_marshals/north_office)
+"hBN" = (
+/obj/structure/window/framed/hybrisa/colony/hospital/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/hospital/pharmacy)
 "hBO" = (
 /obj/structure/platform/hybrisa/metalplatform3{
 	dir = 4
@@ -45843,7 +45831,7 @@
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 4;
 	id = "hybrisacheckpoint_west";
-	name = "\improper Storm Lock"
+	name = "\improper Lockdown"
 	},
 /turf/open/floor/prison{
 	dir = 8;
@@ -45870,11 +45858,9 @@
 	},
 /area/lv759/indoors/apartment_services/west)
 "hJk" = (
-/obj/structure/machinery/door/poddoor/almayer/closed{
-	dir = 4;
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
-	id = "eta";
-	name = "Weyland-Yutani Research Facility Lockdown"
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/whiskey_outpost/inside/caves)
@@ -46646,7 +46632,7 @@
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 4;
 	id = "hybrisacheckpoint_west";
-	name = "\improper Storm Lock"
+	name = "\improper Lockdown"
 	},
 /turf/open/floor/prison{
 	dir = 8;
@@ -47075,6 +47061,11 @@
 	},
 /turf/open/hybrisa/street/sidewalk,
 /area/lv759/outdoors/colony_streets/south_east_street)
+"hUa" = (
+/obj/structure/window/framed/hybrisa/colony/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
+/turf/open/floor/plating,
+/area/lv759/indoors/apartment_services/west)
 "hUd" = (
 /obj/effect/hybrisa/decal/road/lines1,
 /obj/item/shard,
@@ -47277,8 +47268,7 @@
 /area/whiskey_outpost/inside/caves)
 "hVE" = (
 /obj/structure/window/framed/hybrisa/marshalls/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "sentinel_outpost_lockdown";
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -47301,11 +47291,6 @@
 	},
 /area/lv759/indoors/weymart)
 "hWb" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Secretroom";
-	indestructible = 1;
-	unacidable = 1
-	},
 /obj/structure/prop/hybrisa/signs/opensign{
 	light_color = "#00AAFF";
 	light_on = 1;
@@ -47313,6 +47298,7 @@
 	light_range = 4
 	},
 /obj/structure/window/framed/hybrisa/colony/engineering/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/garage_reception)
 "hWu" = (
@@ -47612,11 +47598,10 @@
 	},
 /area/lv759/indoors/spaceport/starglider)
 "hZa" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "Sec-Armoury-Lockdown"
-	},
 /obj/structure/window/framed/hybrisa/colony/office,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/lv759/indoors/weyyu_office/supervisor)
 "hZd" = (
@@ -47797,14 +47782,6 @@
 	icon_state = "whitegreenfull"
 	},
 /area/lv759/indoors/hospital/east_hallway)
-"iaP" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	indestructible = 1
-	},
-/obj/structure/window/framed/hybrisa/colony/reinforced,
-/turf/open/floor/plating,
-/area/lv759/indoors/tcomms_northwest)
 "iaS" = (
 /obj/effect/hybrisa/decal/trash{
 	icon_state = "trash_6";
@@ -48874,6 +48851,13 @@
 	dir = 8
 	},
 /area/lv759/indoors/meridian/meridian_factory)
+"ill" = (
+/obj/structure/window/framed/bunker/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/whiskey_outpost/inside/caves)
 "ilm" = (
 /obj/item/stack/sheet/cardboard/small_stack{
 	layer = 2
@@ -51676,16 +51660,14 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 8;
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
-	id = "Secretroom";
-	indestructible = 1;
-	unacidable = 1
-	},
 /obj/effect/hybrisa/decal/tiretrack{
 	dir = 8;
 	pixel_y = 12
+	},
+/obj/structure/machinery/door/poddoor/almayer{
+	dir = 4;
+	id = "hybrisameridianfactory_1";
+	name = "\improper Factory Floor Shutters"
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -52312,15 +52294,6 @@
 	icon_state = "marked"
 	},
 /area/lv759/indoors/spaceport/docking_bay_2)
-"iPg" = (
-/obj/structure/window/framed/hybrisa/colony/office,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Secretroom";
-	indestructible = 1;
-	unacidable = 1
-	},
-/turf/open/floor/plating,
-/area/lv759/indoors/weyyu_office/floor)
 "iPq" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -52457,11 +52430,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/obj/structure/machinery/door/poddoor/almayer/closed{
-	dir = 4;
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
-	id = "eta";
-	name = "Weyland-Yutani Research Facility Lockdown"
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	dir = 8
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -54938,9 +54909,7 @@
 /area/lv759/outdoors/colony_streets/central_streets)
 "jlB" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Entertainment Complex"
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/bar/entertainment)
 "jlN" = (
@@ -55085,6 +55054,9 @@
 "jnh" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
 /obj/structure/curtain/red,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/lv759/indoors/casino)
 "jnv" = (
@@ -55188,6 +55160,7 @@
 /area/whiskey_outpost/inside/caves)
 "joc" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/botany/botany_hallway)
 "jog" = (
@@ -55606,8 +55579,8 @@
 /turf/open/hybrisa/street/sidewalk,
 /area/lv759/landing_zone_2)
 "jrY" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer,
 /obj/structure/window/framed/hybrisa/colony/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/tcomms_northwest)
 "jsc" = (
@@ -55761,16 +55734,6 @@
 	icon_state = "red"
 	},
 /area/lv759/indoors/colonial_marshals/holding_cells)
-"jtb" = (
-/obj/structure/window/framed/hybrisa/research/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
-	id = "Secretroom";
-	indestructible = 1;
-	unacidable = 1
-	},
-/turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
 "jtp" = (
 /obj/structure/machinery/door/window/southright{
 	color = "#FF2300"
@@ -55835,11 +55798,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/structure/machinery/door/poddoor/almayer/closed{
-	dir = 4;
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
-	id = "eta";
-	name = "Weyland-Yutani Research Facility Lockdown"
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	dir = 8
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -55860,14 +55821,6 @@
 	icon_state = "red"
 	},
 /area/lv759/indoors/wy_security/checkpoint_west)
-"jtX" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "viro_lab_lockdown"
-	},
-/obj/structure/window/framed/hybrisa/colony/hospital/reinforced,
-/turf/open/floor/plating,
-/area/lv759/indoors/hospital/virology)
 "jtY" = (
 /obj/structure/platform_decoration/hybrisa/engineer_corner{
 	dir = 4
@@ -56089,11 +56042,10 @@
 	},
 /area/lv759/outdoors/colony_streets/north_street)
 "jvW" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "Sec-Armoury-Lockdown"
-	},
 /obj/structure/window/framed/hybrisa/colony/engineering,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 8
+	},
 /turf/open/floor/plating,
 /area/lv759/indoors/garage_managersoffice)
 "jvY" = (
@@ -56548,6 +56500,11 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo,
 /turf/open/floor/hybrisa/carpet/carpetpatternbrown,
 /area/lv759/indoors/apartment_services/east)
+"jzM" = (
+/obj/structure/window/framed/hybrisa/colony/engineering/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters,
+/turf/open/floor/plating,
+/area/lv759/indoors/power_plant/fusion_generators)
 "jzP" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/prop/hybrisa/vehicles/Car/Car_3{
@@ -57744,12 +57701,7 @@
 /area/whiskey_outpost/inside/caves)
 "jKU" = (
 /obj/effect/hybrisa/decal/dirt,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
-	id = "Secretroom";
-	indestructible = 1;
-	unacidable = 1
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/shutters,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -59249,11 +59201,7 @@
 /area/whiskey_outpost/inside/caves)
 "jYU" = (
 /obj/structure/window/framed/hybrisa/colony/office,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Secretroom";
-	indestructible = 1;
-	unacidable = 1
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/hybrisa/street/sidewalk,
 /area/lv759/indoors/weyyu_office/floor)
 "jZd" = (
@@ -60228,12 +60176,8 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/indoors/wy_security/checkpoint_west)
 "khj" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 8;
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
-	id = "Secretroom";
-	indestructible = 1;
-	unacidable = 1
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 8
 	},
 /obj/structure/window/framed/hybrisa/research/reinforced,
 /turf/open/floor/plating,
@@ -60822,7 +60766,24 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "klF" = (
-/obj/structure/closet/cabinet,
+/obj/structure/surface/table/reinforced/black,
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/item/ashtray/bronze{
+	icon_state = "ashtray_full_bl";
+	pixel_x = -7;
+	pixel_y = 5
+	},
 /turf/open/floor/hybrisa/metal/zbrownfloor1{
 	dir = 9
 	},
@@ -61590,10 +61551,8 @@
 /area/lv759/outdoors/colony_streets/central_streets)
 "kqO" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "Dormitories";
-	name = "\improper Dormitories Shutters"
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/apartment_services/east)
@@ -62554,9 +62513,7 @@
 /area/lv759/outdoors/colony_streets/central_streets)
 "kyh" = (
 /obj/structure/window/framed/hybrisa/marshalls/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "sentinel_outpost_lockdown"
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/colonial_marshals/press_room)
 "kyx" = (
@@ -64247,11 +64204,10 @@
 /turf/open/auto_turf/hybrisashale/layer0_plate,
 /area/lv759/indoors/caves/south_west_caves)
 "kMT" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	indestructible = 1
-	},
 /obj/structure/window/framed/hybrisa/spaceport,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 8
+	},
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/cuppajoes)
 "kMV" = (
@@ -64641,6 +64597,9 @@
 /area/whiskey_outpost/inside/caves)
 "kQr" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/lv759/indoors/meridian/meridian_showroom)
 "kQu" = (
@@ -67710,10 +67669,6 @@
 /area/lv759/indoors/caves/north_caves)
 "lrh" = (
 /obj/structure/window/framed/hybrisa/colony/office,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "Sec-Armoury-Lockdown"
-	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
 	},
@@ -68629,10 +68584,10 @@
 	},
 /area/whiskey_outpost/inside/caves)
 "lxr" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
+/obj/structure/window/framed/hybrisa/spaceport/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
 	dir = 8
 	},
-/obj/structure/window/framed/hybrisa/spaceport/reinforced,
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/hallway_east)
 "lxv" = (
@@ -68793,9 +68748,7 @@
 /area/lv759/indoors/caves/east_caves)
 "lyT" = (
 /obj/structure/window/framed/hybrisa/colony/hospital/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "viro_lab_lockdown"
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/hospital/virology)
 "lyX" = (
@@ -69022,6 +68975,11 @@
 	icon_state = "officetiles"
 	},
 /area/whiskey_outpost/inside/caves)
+"lAP" = (
+/obj/structure/window/framed/hybrisa/colony/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters,
+/turf/open/floor/plating,
+/area/lv759/indoors/apartment_services/east)
 "lAT" = (
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -69069,6 +69027,9 @@
 /turf/open/engineership/engineer_floor3,
 /area/lv759/derelictship)
 "lBd" = (
+/obj/structure/machinery/door/poddoor/hybrisa/white{
+	name = "\improper Lockdown"
+	},
 /turf/closed/shuttle/dropship2/transparent{
 	icon = 'icons/turf/ert_shuttle.dmi';
 	icon_state = "wy27";
@@ -69876,11 +69837,8 @@
 /turf/open/auto_turf/hybrisashale/layer2,
 /area/lv759/indoors/caves/west_caves)
 "lHK" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Engineering";
-	name = "\improper Engineering Shutters"
-	},
 /obj/structure/window/framed/hybrisa/colony/engineering/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/power_plant/transformers_south)
 "lHL" = (
@@ -71041,12 +70999,10 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/east_central_street)
 "lSj" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "Engineering";
-	name = "\improper Engineering Shutters"
-	},
 /obj/structure/window/framed/hybrisa/colony/engineering/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 8
+	},
 /turf/open/floor/plating,
 /area/lv759/indoors/power_plant)
 "lSr" = (
@@ -73650,9 +73606,7 @@
 /area/lv759/outdoors/colony_streets/central_streets)
 "mrh" = (
 /obj/structure/window/framed/hybrisa/marshalls/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "sentinel_outpost_lockdown"
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/colonial_marshals/north_office)
 "mri" = (
@@ -73838,9 +73792,7 @@
 /area/whiskey_outpost/inside/caves)
 "msP" = (
 /obj/structure/window/framed/hybrisa/marshalls/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "sentinel_outpost_lockdown"
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/colonial_marshals/reception)
 "msQ" = (
@@ -74272,11 +74224,10 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/whiskey_outpost/inside/caves)
 "mwH" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Engineering";
+/obj/structure/window/framed/hybrisa/colony/engineering,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
 	dir = 4
 	},
-/obj/structure/window/framed/hybrisa/colony/engineering,
 /turf/open/floor/plating,
 /area/lv759/indoors/power_plant/workers_canteen)
 "mwO" = (
@@ -76489,12 +76440,8 @@
 /turf/closed/wall/hybrisa/colony/hospital,
 /area/lv759/indoors/hospital/outgoing)
 "mQO" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 8;
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
-	id = "Secretroom";
-	indestructible = 1;
-	unacidable = 1
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 8
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -77654,14 +77601,6 @@
 	icon_state = "marked"
 	},
 /area/lv759/indoors/mining_outpost/vehicledeployment)
-"nbC" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	indestructible = 1
-	},
-/obj/structure/window/framed/hybrisa/marshalls/cell,
-/turf/open/floor/plating,
-/area/lv759/indoors/colonial_marshals/prisoners_recreation_area)
 "nbF" = (
 /obj/structure/largecrate/random/mini,
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red{
@@ -77769,9 +77708,8 @@
 /area/lv759/indoors/garage_workshop)
 "ncy" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	indestructible = 1
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/recycling_plant/synthetic_storage)
@@ -78221,9 +78159,7 @@
 /area/lv759/outdoors/colony_streets/central_streets)
 "nhk" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Reactor_garage_2"
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/wy_security/checkpoint_northeast)
 "nhz" = (
@@ -78996,10 +78932,8 @@
 	},
 /area/whiskey_outpost/inside/caves)
 "npm" = (
-/obj/structure/machinery/door/poddoor/almayer/closed{
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
-	id = "eta";
-	name = "Weyland-Yutani Research Facility Lockdown"
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown"
 	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
@@ -79095,12 +79029,7 @@
 /turf/open/floor/plating,
 /area/lv759/outdoors/colony_streets/north_street)
 "nqr" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
-	id = "Secretroom";
-	indestructible = 1;
-	unacidable = 1
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/shutters,
 /obj/structure/window/framed/hybrisa/research/reinforced,
 /turf/open/floor/plating,
 /area/whiskey_outpost/inside/caves)
@@ -80085,12 +80014,10 @@
 	},
 /area/lv759/indoors/spaceport/engineering)
 "nza" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "Engineering";
-	name = "\improper Engineering Shutters"
-	},
 /obj/structure/window/framed/hybrisa/colony/engineering/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 8
+	},
 /turf/open/floor/plating,
 /area/lv759/indoors/power_plant/transformers_north)
 "nzf" = (
@@ -83190,6 +83117,13 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/caves/north_west_caves_outdoors)
+"obh" = (
+/obj/structure/window/framed/hybrisa/colony/hospital/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/hospital/virology)
 "obr" = (
 /obj/structure/platform_decoration/hybrisa/rockdark{
 	dir = 1
@@ -83322,6 +83256,13 @@
 /obj/structure/ore_box,
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/indoors/caves/south_caves)
+"ocq" = (
+/obj/structure/window/framed/hybrisa/colony/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/landing_zone_1/ceiling)
 "ocs" = (
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaldark,
 /obj/effect/hybrisa/decal/tiretrack{
@@ -83433,6 +83374,7 @@
 /area/lv759/indoors/recycling_plant/garage)
 "odx" = (
 /obj/structure/window/framed/hybrisa/colony/engineering/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/power_plant/telecomms)
 "odz" = (
@@ -84974,10 +84916,8 @@
 	},
 /area/lv759/indoors/spaceport/security)
 "opx" = (
-/obj/structure/machinery/door/poddoor/almayer/closed{
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
-	id = "eta";
-	name = "Weyland-Yutani Research Facility Lockdown"
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown"
 	},
 /turf/open/floor/prison{
 	dir = 1;
@@ -87136,12 +87076,7 @@
 	},
 /area/lv759/indoors/hospital/icu)
 "oHI" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
-	id = "Secretroom";
-	indestructible = 1;
-	unacidable = 1
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/shutters,
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
@@ -87474,9 +87409,6 @@
 "oKB" = (
 /obj/structure/bed/hybrisa/chairs/red{
 	dir = 4
-	},
-/obj/structure/machinery/light{
-	dir = 8
 	},
 /turf/open/floor/hybrisa/carpet/carpetblackdeco,
 /area/lv759/indoors/casino/casino_office)
@@ -88919,6 +88851,7 @@
 /area/lv759/landing_zone_2/ceiling)
 "oVk" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/mining_outpost/northeast)
 "oVm" = (
@@ -89252,7 +89185,7 @@
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 4;
 	id = "hybrisacheckpoint_west";
-	name = "\improper Storm Lock"
+	name = "\improper Lockdown"
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -90051,8 +89984,8 @@
 	},
 /area/lv759/landing_zone_1)
 "pfs" = (
-/obj/structure/machinery/door/poddoor/almayer/blended/white{
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi'
+/obj/structure/machinery/door/poddoor/hybrisa/white{
+	name = "\improper Lockdown"
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -91641,11 +91574,8 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_street)
 "puD" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "General Store";
-	name = "\improper General Store Shutters"
-	},
 /obj/structure/window/framed/colony/reinforced,
+/obj/structure/machinery/door/poddoor/shutters/almayer,
 /turf/open/floor/plating,
 /area/lv759/indoors/weymart)
 "puE" = (
@@ -92083,6 +92013,13 @@
 	dir = 1
 	},
 /area/lv759/outdoors/colony_streets/north_west_street)
+"pyf" = (
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv759/indoors/weyyu_office/pressroom)
 "pyl" = (
 /obj/structure/prop/structure_lattice{
 	dir = 4
@@ -92500,6 +92437,13 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile,
 /area/lv759/indoors/recycling_plant/garage)
+"pBR" = (
+/obj/structure/window/framed/hybrisa/colony/engineering,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/recycling_plant)
 "pBU" = (
 /turf/open/floor/prison{
 	dir = 10
@@ -94120,10 +94064,7 @@
 /area/lv759/indoors/spaceport/flight_control_room)
 "pPT" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Dormitories";
-	name = "\improper Dormitories Shutters"
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/apartment/west)
 "pPU" = (
@@ -94944,10 +94885,10 @@
 	},
 /area/lv759/indoors/caves/east_caves)
 "pVP" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
+/obj/structure/window/framed/hybrisa/spaceport/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
 	dir = 8
 	},
-/obj/structure/window/framed/hybrisa/spaceport/reinforced,
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/cargo)
 "pVQ" = (
@@ -95818,6 +95759,9 @@
 /area/lv759/indoors/mining_outpost/east_deploymentbay)
 "qeI" = (
 /obj/structure/window/framed/hybrisa/colony/engineering,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/lv759/indoors/recycling_plant/garage)
 "qeJ" = (
@@ -96211,6 +96155,7 @@
 /area/lv759/outdoors/colony_streets/central_streets)
 "qhM" = (
 /obj/structure/window/framed/hybrisa/colony/hospital/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/hospital/central_hallway)
 "qhS" = (
@@ -96745,11 +96690,9 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/caves/north_west_caves)
 "qnE" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Engineering";
-	name = "\improper Engineering Shutters"
-	},
 /obj/structure/window/framed/hybrisa/colony/engineering/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/power_plant/fusion_generators)
 "qnK" = (
@@ -96958,14 +96901,18 @@
 /area/lv759/indoors/caves/north_west_caves)
 "qpw" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
-/obj/structure/curtain/red{
-	layer = 3.1
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
 	},
+/obj/structure/curtain/red,
 /turf/open/floor/plating,
 /area/lv759/indoors/casino)
 "qpx" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper General Store"
+	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/power_plant)
@@ -97597,8 +97544,7 @@
 /area/lv759/outdoors/colony_streets/north_east_street)
 "quF" = (
 /obj/structure/window/framed/hybrisa/marshalls/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "sentinel_outpost_lockdown";
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -98397,6 +98343,7 @@
 "qBo" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/window/framed/hybrisa/colony/hospital/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/hospital/pharmacy)
 "qBp" = (
@@ -99910,11 +99857,8 @@
 	},
 /area/lv759/indoors/wy_security/checkpoint_central)
 "qNV" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Engineering";
-	name = "\improper Engineering Shutters"
-	},
 /obj/structure/window/framed/hybrisa/colony/engineering/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/power_plant/south_hallway)
 "qNX" = (
@@ -102630,8 +102574,7 @@
 	},
 /area/lv759/outdoors/colony_streets/central_streets)
 "rkY" = (
-/obj/structure/machinery/door/poddoor/almayer/blended/white{
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
+/obj/structure/machinery/door/poddoor/hybrisa/white{
 	name = "\improper WY-LWI Horizon Runner HR-150 Cargo Hold"
 	},
 /turf/open/floor/almayer{
@@ -102829,7 +102772,7 @@
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 2;
 	id = "hybrisacheckpoint_northwest";
-	name = "\improper Checkpoint Lock"
+	name = "\improper Lockdown"
 	},
 /turf/open/floor/prison{
 	dir = 1;
@@ -103989,10 +103932,8 @@
 /area/whiskey_outpost/inside/caves)
 "rxc" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "Dormitories";
-	name = "\improper Dormitories Shutters"
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/apartment/west)
@@ -104118,9 +104059,8 @@
 /area/lv759/indoors/spaceport/baggagehandling)
 "ryb" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "Reactor_e_entry_3"
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/jacks_surplus)
@@ -105246,9 +105186,8 @@
 /area/lv759/indoors/apartment_services/east)
 "rGI" = (
 /obj/structure/window/framed/hybrisa/marshalls/cell,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	indestructible = 1
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/colonial_marshals/prisoners_recreation_area)
@@ -105710,6 +105649,11 @@
 	dir = 9
 	},
 /area/lv759/outdoors/colony_streets/north_west_street)
+"rKw" = (
+/obj/structure/window/framed/hybrisa/spaceport,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cuppajoes)
 "rKD" = (
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2{
 	dir = 4
@@ -106384,10 +106328,10 @@
 	},
 /area/lv759/indoors/weyyu_office/pressroom)
 "rPl" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
+/obj/structure/window/framed/hybrisa/spaceport/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
 	dir = 8
 	},
-/obj/structure/window/framed/hybrisa/spaceport/reinforced,
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/kitchen)
 "rPz" = (
@@ -106943,7 +106887,7 @@
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 2;
 	id = "hybrisacheckpoint_northwest";
-	name = "\improper Checkpoint Lock"
+	name = "\improper Lockdown"
 	},
 /turf/open/floor/prison{
 	icon_state = "cell_stripe"
@@ -107436,6 +107380,9 @@
 /area/whiskey_outpost/inside/caves)
 "rYY" = (
 /obj/structure/window/framed/hybrisa/colony/hospital/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/lv759/indoors/hospital/reception)
 "rZa" = (
@@ -109669,6 +109616,13 @@
 	icon_state = "ramptop"
 	},
 /area/lv759/indoors/wy_security/checkpoint_central)
+"ssQ" = (
+/obj/structure/window/framed/hybrisa/colony/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/apartment_services/east)
 "ssR" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/device/camera_film,
@@ -111521,10 +111475,8 @@
 /turf/open/floor/hybrisa/misc/wysmallright,
 /area/whiskey_outpost/inside/caves)
 "sHH" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Engineering"
-	},
 /obj/structure/window/framed/hybrisa/colony/engineering,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/power_plant/workers_canteen_kitchen)
 "sHJ" = (
@@ -112246,6 +112198,7 @@
 	},
 /obj/item/weapon/gun/pistol/clfpistol,
 /obj/structure/prop/server_equipment/laptop/closed,
+/obj/structure/machinery/light,
 /turf/open/floor/hybrisa/carpet/carpetblackdeco,
 /area/lv759/indoors/casino/casino_office)
 "sNT" = (
@@ -112812,6 +112765,13 @@
 /obj/structure/sign/poster/corporate,
 /turf/closed/wall/hybrisa/colony/hospital,
 /area/lv759/indoors/hospital/emergency_room)
+"sTt" = (
+/obj/structure/window/framed/hybrisa/colony/hospital/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/hospital/emergency_room)
 "sTG" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -113004,6 +112964,7 @@
 /obj/structure/curtain{
 	icon_state = "red"
 	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/weyyu_office/supervisor)
 "sVh" = (
@@ -114365,8 +114326,8 @@
 "tgC" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 2;
-	id = "hybrisacheckpoint_northeast";
-	name = "\improper Checkpoint Lock"
+	id = "hybrisacheckpoint_northwest";
+	name = "\improper Lockdown"
 	},
 /turf/open/floor/prison{
 	icon_state = "cell_stripe"
@@ -117942,6 +117903,11 @@
 	icon_state = "officetiles"
 	},
 /area/lv759/indoors/casino)
+"tPF" = (
+/obj/structure/window/framed/hybrisa/research/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters,
+/turf/open/floor/plating,
+/area/whiskey_outpost/inside/caves)
 "tPM" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -118387,15 +118353,13 @@
 /turf/closed/wall/hybrisa/colony,
 /area/lv759/indoors/apartment_services/west)
 "tTp" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "Engineering";
-	name = "\improper Engineering Shutters"
-	},
 /obj/structure/platform{
 	dir = 4
 	},
 /obj/structure/window/framed/hybrisa/colony/engineering/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 8
+	},
 /turf/open/floor/plating,
 /area/lv759/indoors/power_plant/transformers_south)
 "tTq" = (
@@ -121355,9 +121319,7 @@
 "urX" = (
 /obj/structure/window/framed/colony/reinforced,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "General Store";
-	name = "\improper General Store Shutters"
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/weymart)
@@ -121971,13 +121933,11 @@
 /turf/open/hybrisa/street/sidewalk,
 /area/lv759/outdoors/colony_streets/central_streets)
 "uxD" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "Engineering";
-	name = "\improper Engineering Shutters"
-	},
 /obj/structure/platform_decoration,
 /obj/structure/window/framed/hybrisa/colony/engineering/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 8
+	},
 /turf/open/floor/plating,
 /area/lv759/indoors/power_plant/transformers_north)
 "uxE" = (
@@ -121987,12 +121947,7 @@
 /area/lv759/indoors/apartment/east)
 "uxG" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
-	id = "Secretroom";
-	indestructible = 1;
-	unacidable = 1
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/shutters,
 /turf/open/floor/plating,
 /area/whiskey_outpost/inside/caves)
 "uxL" = (
@@ -124126,8 +124081,8 @@
 	},
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 2;
-	id = "hybrisacheckpoint_northeast";
-	name = "\improper Checkpoint Lock"
+	id = "hybrisacheckpoint_northwest";
+	name = "\improper Lockdown"
 	},
 /turf/open/floor/prison{
 	icon_state = "cell_stripe"
@@ -124251,10 +124206,8 @@
 	},
 /area/whiskey_outpost/inside/caves)
 "uPx" = (
-/obj/structure/machinery/door/poddoor/almayer/closed{
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
-	id = "eta";
-	name = "Weyland-Yutani Research Facility Lockdown"
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown"
 	},
 /turf/open/floor/prison{
 	icon_state = "cell_stripe"
@@ -124613,9 +124566,7 @@
 /area/lv759/indoors/bar)
 "uRz" = (
 /obj/structure/window/framed/hybrisa/marshalls/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "sentinel_outpost_lockdown"
-	},
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/colonial_marshals/hallway_reception)
 "uRA" = (
@@ -124822,6 +124773,13 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/central_streets)
+"uTh" = (
+/obj/structure/window/framed/hybrisa/colony/office,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/weyyu_office/vip)
 "uTj" = (
 /obj/structure/platform_decoration/hybrisa/rockdark{
 	dir = 4
@@ -125368,6 +125326,7 @@
 /area/lv759/outdoors/colony_streets/north_west_street)
 "uYP" = (
 /obj/structure/window/framed/hybrisa/colony/hospital/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/hospital/outgoing)
 "uYR" = (
@@ -125473,6 +125432,11 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/colony_streets/central_streets)
+"uZA" = (
+/obj/structure/window/framed/hybrisa/colony/engineering,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
+/turf/open/floor/plating,
+/area/lv759/indoors/recycling_plant/garage)
 "uZE" = (
 /obj/structure/filingcabinet{
 	density = 0;
@@ -125899,6 +125863,9 @@
 /area/whiskey_outpost/inside/caves)
 "vdr" = (
 /obj/structure/window/framed/hybrisa/colony/hospital/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/lv759/indoors/hospital/icu)
 "vdt" = (
@@ -126377,12 +126344,10 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 8;
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
-	id = "Secretroom";
-	indestructible = 1;
-	unacidable = 1
+/obj/structure/machinery/door/poddoor/almayer{
+	dir = 4;
+	id = "hybrisameridianfactory_1";
+	name = "\improper Factory Floor Shutters"
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -126551,12 +126516,8 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/central_streets)
 "vkV" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Secretroom";
-	indestructible = 1;
-	unacidable = 1
-	},
 /obj/structure/window/framed/hybrisa/colony/office,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/weyyu_office/supervisor)
 "vlb" = (
@@ -126704,6 +126665,7 @@
 /area/lv759/indoors/caves/east_caves)
 "vmj" = (
 /obj/structure/window/framed/hybrisa/colony/office,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/weyyu_office/pressroom)
 "vmn" = (
@@ -127887,12 +127849,10 @@
 /area/lv759/outdoors/colony_streets/east_central_street)
 "vwF" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Reactor_garage_2"
-	},
 /obj/structure/sign/safety/landingzone{
 	pixel_x = -17
 	},
+/obj/structure/machinery/door/poddoor/hybrisa/shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/wy_security/checkpoint_northeast)
 "vwG" = (
@@ -128174,6 +128134,9 @@
 /area/lv759/indoors/mining_outpost/south)
 "vzL" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/lv759/indoors/bar)
 "vzN" = (
@@ -128737,6 +128700,11 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/hybrisa/street/sidewalk,
 /area/lv759/outdoors/colony_streets/central_streets)
+"vEQ" = (
+/obj/structure/window/framed/hybrisa/colony/hospital/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters,
+/turf/open/floor/plating,
+/area/lv759/indoors/hospital/medical_storage)
 "vFc" = (
 /obj/effect/hybrisa/decal/road/road_stop,
 /turf/open/hybrisa/street/asphalt,
@@ -129956,7 +129924,8 @@
 /obj/structure/closet/walllocker,
 /obj/item/storage/backpack/marine/satchel/rto/small{
 	pixel_x = 7;
-	pixel_y = 19
+	pixel_y = 19;
+	layer = 4
 	},
 /obj/item/device/encryptionkey/commando,
 /obj/item/clothing/head/helmet/marine/veteran/pmc/gunner,
@@ -130538,6 +130507,10 @@
 "vTW" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	locked = 1
+	},
+/obj/structure/machinery/door/poddoor/hybrisa/white{
+	name = "\improper Lockdown";
+	dir = 4
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -131298,8 +131271,7 @@
 /area/lv759/indoors/mining_outpost/northeast)
 "wak" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "Reactor_e_entry_3"
+	dir = 4
 	},
 /turf/open/floor/corsat{
 	icon_state = "marked"
@@ -131756,6 +131728,13 @@
 	name = "reinforced metal wall"
 	},
 /area/lv759/indoors/caves/north_caves)
+"wem" = (
+/obj/structure/window/framed/hybrisa/colony/engineering,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/power_plant)
 "wen" = (
 /obj/item/tool/warning_cone{
 	pixel_x = 5;
@@ -134177,12 +134156,7 @@
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 4;
 	id = "hybrisacheckpoint_center";
-	name = "\improper Storm Lock"
-	},
-/obj/structure/machinery/door/poddoor/almayer/locked{
-	dir = 4;
-	id = "hybrisacheckpoint_center";
-	name = "\improper Storm Lock"
+	name = "\improper Lockdown"
 	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
@@ -135239,6 +135213,11 @@
 "wJD" = (
 /turf/closed/wall/hybrisa/colony,
 /area/lv759/outdoors/colony_streets/south_east_street)
+"wJJ" = (
+/obj/structure/window/framed/hybrisa/colony/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
+/turf/open/floor/plating,
+/area/lv759/indoors/meridian/meridian_showroom)
 "wJV" = (
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
@@ -136012,6 +135991,13 @@
 /obj/structure/prop/hybrisa/fakeplatforms/platform3,
 /turf/open/engineership/engineer_floor3,
 /area/lv759/derelictship)
+"wRR" = (
+/obj/structure/window/framed/hybrisa/colony/engineering/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/power_plant/telecomms)
 "wRS" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	desc = "A pipe.";
@@ -136082,11 +136068,9 @@
 	},
 /area/lv759/indoors/hospital/east_hallway)
 "wSF" = (
-/obj/structure/machinery/door/poddoor/almayer/closed{
-	dir = 4;
-	icon = 'icons/obj/structures/doors/zenithshutters.dmi';
-	id = "eta";
-	name = "Weyland-Yutani Research Facility Lockdown"
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	dir = 8
 	},
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/floor/plating,
@@ -137877,7 +137861,7 @@
 /area/lv759/landing_zone_2)
 "xhN" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating,
 /area/lv759/indoors/tcomms_northwest)
 "xhO" = (
@@ -138265,8 +138249,7 @@
 /area/lv759/landing_zone_2/ceiling)
 "xlG" = (
 /obj/structure/window/framed/hybrisa/marshalls/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "sentinel_outpost_lockdown";
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -139149,6 +139132,13 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/plating,
 /area/lv759/indoors/mining_outpost/processing)
+"xsp" = (
+/obj/structure/window/framed/hybrisa/colony/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/tcomms_northwest)
 "xsr" = (
 /turf/open/hybrisa/street/cement1,
 /area/lv759/outdoors/colony_streets/central_streets)
@@ -139782,6 +139772,9 @@
 /area/lv759/indoors/apartment_services/west)
 "xwu" = (
 /obj/structure/window/framed/hybrisa/colony/hospital/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/lv759/indoors/hospital/east_hallway)
 "xwx" = (
@@ -139823,11 +139816,10 @@
 	},
 /area/whiskey_outpost/inside/caves)
 "xwE" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "Sec-Armoury-Lockdown"
-	},
 /obj/structure/window/framed/hybrisa/colony/office,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/lv759/indoors/weyyu_office/floor)
 "xwI" = (
@@ -140103,7 +140095,7 @@
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 4;
 	id = "hybrisacheckpoint_west";
-	name = "\improper Storm Lock"
+	name = "\improper Lockdown"
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -140718,8 +140710,8 @@
 "xCP" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 2;
-	id = "hybrisacheckpoint_east";
-	name = "\improper Checkpoint Lock"
+	id = "hybrisacheckpoint_northwest";
+	name = "\improper Lockdown"
 	},
 /turf/open/floor/prison{
 	dir = 1;
@@ -142554,9 +142546,8 @@
 /area/lv759/indoors/power_plant/gas_generators)
 "xUe" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "Sec-Armoury-Lockdown"
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/garage_workshop)
@@ -144244,8 +144235,8 @@
 "yjr" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 2;
-	id = "hybrisacheckpoint_northeast";
-	name = "\improper Checkpoint Lock"
+	id = "hybrisacheckpoint_northwest";
+	name = "\improper Lockdown"
 	},
 /turf/open/floor/prison{
 	dir = 1;
@@ -144650,8 +144641,8 @@
 "ylX" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 2;
-	id = "hybrisacheckpoint_east";
-	name = "\improper Checkpoint Lock"
+	id = "hybrisacheckpoint_northwest";
+	name = "\improper Lockdown"
 	},
 /turf/open/floor/prison{
 	icon_state = "cell_stripe"
@@ -152372,7 +152363,7 @@ cLK
 hfL
 uJC
 bbT
-jtb
+tPF
 jZX
 cOd
 cOd
@@ -153929,7 +153920,7 @@ wHK
 jqr
 wHK
 wHK
-wHK
+tPF
 wHK
 jqr
 wHK
@@ -154547,7 +154538,7 @@ upZ
 cBg
 kUz
 fEA
-ycJ
+rKw
 tYR
 ouK
 ozZ
@@ -154799,7 +154790,7 @@ upZ
 btD
 uQL
 piQ
-ycJ
+rKw
 tYR
 ouK
 ozZ
@@ -155051,7 +155042,7 @@ upZ
 oLx
 kUz
 brk
-ycJ
+rKw
 tYR
 ouK
 ozZ
@@ -155579,8 +155570,8 @@ lmd
 lmd
 lmd
 smB
-smB
-smB
+dga
+dga
 smB
 aKO
 aKO
@@ -156058,7 +156049,7 @@ vVj
 uTH
 rVf
 woP
-ycJ
+rKw
 iHd
 xGS
 otF
@@ -156310,7 +156301,7 @@ qzW
 wyv
 heC
 hbY
-ycJ
+rKw
 iHd
 iwb
 udO
@@ -156562,7 +156553,7 @@ hXw
 vlJ
 kUz
 ixZ
-ycJ
+rKw
 lxJ
 eYZ
 fyh
@@ -159326,16 +159317,16 @@ ouK
 lvm
 juu
 mtw
-vmj
+cPd
 axe
 juu
 juu
-vmj
-vmj
+cPd
+cPd
 juu
 mtw
-vmj
-vmj
+cPd
+cPd
 juu
 drN
 mBa
@@ -161098,7 +161089,7 @@ kEb
 kEb
 kEb
 kEb
-kEb
+pyf
 vOv
 vmj
 mcs
@@ -161335,7 +161326,7 @@ roJ
 fnY
 hzH
 xEA
-iPg
+vRS
 nsz
 xCV
 xCV
@@ -161374,8 +161365,8 @@ lCo
 brx
 lCo
 lCo
-dqv
-dqv
+fMP
+fMP
 lCo
 qCx
 iMC
@@ -161839,7 +161830,7 @@ xEA
 xEA
 xEA
 xEA
-iPg
+vRS
 dTW
 hiw
 hiw
@@ -162092,10 +162083,10 @@ que
 fYy
 ggc
 agL
-bET
+ehO
 lrh
 lrh
-bET
+ehO
 dXf
 prd
 bZG
@@ -162636,7 +162627,7 @@ iVl
 hJF
 iVl
 hJF
-dqv
+bGd
 dpQ
 aNg
 cpX
@@ -162855,8 +162846,8 @@ xCc
 rLC
 rLC
 rLC
-nyf
-nyf
+uTh
+uTh
 rLC
 qXu
 qXu
@@ -162888,7 +162879,7 @@ uZa
 iVl
 hJF
 mFD
-dqv
+bGd
 oYM
 xsr
 qKg
@@ -163644,7 +163635,7 @@ knA
 oZz
 tvU
 wkB
-dqv
+bGd
 rfm
 wYE
 gxF
@@ -163896,7 +163887,7 @@ mDG
 liA
 uFN
 wkB
-dqv
+bGd
 gTN
 scD
 kvA
@@ -165677,7 +165668,7 @@ ofM
 nmy
 pEY
 tIA
-bfX
+urX
 urX
 aVI
 aVI
@@ -166662,7 +166653,7 @@ bZr
 bZr
 dOP
 dOP
-gzs
+hUa
 hbc
 toG
 nQZ
@@ -166938,7 +166929,7 @@ xUQ
 iyy
 avd
 iMA
-kQr
+wJJ
 vBa
 vMm
 jzo
@@ -167190,7 +167181,7 @@ npv
 oWS
 tES
 iMA
-kQr
+wJJ
 ref
 lUn
 nzJ
@@ -167442,7 +167433,7 @@ sCc
 ukh
 hrw
 iMA
-kQr
+wJJ
 ref
 gwl
 iob
@@ -167694,7 +167685,7 @@ olN
 dQU
 qUZ
 iMA
-kQr
+wJJ
 ref
 gwl
 uya
@@ -167946,7 +167937,7 @@ dig
 wuq
 pIX
 iMA
-kQr
+wJJ
 mmy
 sKw
 yld
@@ -168135,8 +168126,8 @@ tZH
 sln
 uNY
 kXk
-afc
-afc
+xsp
+xsp
 kXk
 bVD
 kdy
@@ -168147,34 +168138,34 @@ ivK
 ivK
 ohM
 ohM
-clr
-clr
+aMa
+aMa
 ohM
 ohM
 ohM
 ohM
-clr
-clr
+aMa
+aMa
 ohM
 bYl
 fah
 ohM
-clr
-clr
+aMa
+aMa
 ohM
 ohM
 ohM
 ohM
-clr
-clr
+aMa
+aMa
 ohM
 otG
 jHK
 cZP
-coZ
+lAP
 vOn
 vOn
-coZ
+lAP
 pPt
 bJT
 edd
@@ -168427,8 +168418,8 @@ otG
 eih
 xNw
 otG
-kqO
-kqO
+ssQ
+ssQ
 otG
 otG
 otG
@@ -169206,7 +169197,7 @@ qLX
 dQU
 pIX
 iMA
-kQr
+wJJ
 ref
 anf
 jzo
@@ -169458,7 +169449,7 @@ bpI
 iHc
 hZf
 iMA
-kQr
+wJJ
 ref
 gPQ
 nXK
@@ -170158,8 +170149,8 @@ jiD
 cXu
 gLu
 ohM
-aMa
-aMa
+ciE
+ciE
 ohM
 ohM
 kvP
@@ -170421,15 +170412,15 @@ ohM
 ohM
 ohM
 ohM
-aMa
-aMa
+ciE
+ciE
 ohM
 ohM
 ohM
 ohM
 ohM
-aMa
-aMa
+ciE
+ciE
 ohM
 lOy
 dWp
@@ -170940,7 +170931,7 @@ ooC
 ooC
 sGs
 vEL
-coZ
+lAP
 lnw
 map
 kME
@@ -171159,8 +171150,8 @@ tZH
 vmx
 uNY
 psD
-iaP
-iaP
+afc
+afc
 uNY
 uNY
 kqa
@@ -171444,7 +171435,7 @@ nmK
 iKc
 qtx
 nvP
-coZ
+lAP
 vQD
 aQr
 kME
@@ -171948,7 +171939,7 @@ rOy
 eIB
 wxG
 nvP
-coZ
+lAP
 qzY
 qzY
 djM
@@ -172453,15 +172444,15 @@ miD
 ooC
 uws
 otG
-kqO
+ssQ
+otG
+ssQ
 otG
 kqO
 otG
-hvj
+kqO
 otG
-hvj
-otG
-hvj
+kqO
 otG
 kqO
 otG
@@ -173506,7 +173497,7 @@ hcI
 hcI
 fed
 fed
-nbC
+rGI
 rGI
 wAL
 rGI
@@ -175724,7 +175715,7 @@ mYE
 rfM
 lLd
 nvP
-qnE
+jzM
 ssL
 vsv
 mkM
@@ -175976,7 +175967,7 @@ uQD
 rfM
 eAj
 nvP
-qnE
+jzM
 xJA
 dhX
 rLR
@@ -175984,7 +175975,7 @@ dyX
 dLS
 gRl
 seS
-qnE
+jzM
 scl
 uNt
 vXL
@@ -176480,7 +176471,7 @@ mYE
 rfM
 eAj
 vEL
-qnE
+jzM
 vmp
 vPO
 pDu
@@ -176732,7 +176723,7 @@ mYE
 tES
 ofM
 nvP
-qnE
+jzM
 chb
 lBG
 anN
@@ -182762,9 +182753,9 @@ tfg
 iwg
 mxo
 oph
-hgC
-hgC
-hgC
+hBN
+hBN
+hBN
 oph
 hQl
 giS
@@ -183004,7 +182995,7 @@ bYg
 oOG
 cnP
 erB
-eGl
+sTt
 erB
 hsB
 aIh
@@ -185557,11 +185548,11 @@ kds
 iiR
 jEy
 tgZ
-odx
+wRR
 tgZ
-odx
+wRR
 tgZ
-odx
+wRR
 tgZ
 tgZ
 bOl
@@ -188812,7 +188803,7 @@ qzn
 djh
 vqI
 nzK
-tTm
+vEQ
 cVm
 xYn
 qie
@@ -188833,16 +188824,16 @@ kuY
 gas
 jEy
 tgZ
-odx
+wRR
 tgZ
-odx
+wRR
 tgZ
-odx
+wRR
 tgZ
 tgZ
-bOl
+wem
 qpx
-bOl
+wem
 gAU
 gAU
 gAU
@@ -189064,7 +189055,7 @@ wBZ
 bgt
 vqI
 bdM
-tTm
+vEQ
 vhY
 xYn
 qie
@@ -189399,7 +189390,7 @@ kBL
 kBL
 kBL
 iDM
-gbO
+bOg
 huf
 rzu
 ceG
@@ -189568,7 +189559,7 @@ wBZ
 brL
 iVR
 dhr
-tTm
+vEQ
 vhY
 jEy
 iow
@@ -189820,7 +189811,7 @@ qzn
 jwt
 vqI
 thg
-tTm
+vEQ
 vhY
 jEy
 iow
@@ -191292,7 +191283,7 @@ pUf
 gzV
 pms
 nQm
-oVk
+wVq
 viy
 rsB
 egz
@@ -192341,9 +192332,9 @@ gHc
 fVZ
 kBk
 kBk
-kEo
-kEo
-kEo
+obh
+obh
+obh
 kBk
 nDX
 pvy
@@ -192817,7 +192808,7 @@ ezH
 csq
 oYv
 uPT
-xwu
+hmh
 tvZ
 cpk
 kbW
@@ -193370,13 +193361,13 @@ qeI
 qeI
 kdC
 kdC
-dNB
-dNB
+pBR
+pBR
 kdC
 tTV
 pZA
 kdC
-dNB
+pBR
 kdC
 kdC
 kdC
@@ -193417,7 +193408,7 @@ fXE
 jNj
 myr
 cDB
-sjK
+gAD
 pCF
 hof
 gdk
@@ -193563,7 +193554,7 @@ njC
 eyI
 bap
 bap
-qmR
+ocq
 bap
 qPe
 hZh
@@ -193669,7 +193660,7 @@ aza
 iYw
 myr
 keq
-sjK
+gAD
 iXz
 wlL
 mcj
@@ -193868,7 +193859,7 @@ hnC
 tge
 iin
 wld
-qeI
+uZA
 uDU
 ipM
 pBJ
@@ -193921,7 +193912,7 @@ hTz
 axf
 myr
 keq
-sjK
+gAD
 pGm
 oyV
 fKF
@@ -194069,7 +194060,7 @@ sgh
 ruO
 ikK
 hvq
-qmR
+faM
 cDj
 xvG
 dRo
@@ -194089,8 +194080,8 @@ ujd
 cri
 kBk
 kBk
-jtX
-kEo
+obh
+obh
 kBk
 kBk
 kBk
@@ -194120,7 +194111,7 @@ wNC
 eCB
 ykD
 rdW
-qeI
+uZA
 vWZ
 qIg
 vZV
@@ -194174,7 +194165,7 @@ jNj
 myr
 xwR
 tMG
-sjK
+ill
 abx
 oTX
 jlq
@@ -194825,7 +194816,7 @@ gaE
 hpv
 knG
 pyG
-qmR
+faM
 cDj
 sLx
 ooy
@@ -194930,7 +194921,7 @@ aFm
 myr
 tHP
 tMG
-sjK
+ill
 tMG
 mEi
 wSK
@@ -195073,11 +195064,11 @@ ohS
 qqH
 knG
 pCo
-qmR
+faM
 fLi
 knG
 iba
-qmR
+faM
 cDj
 rTe
 dRo
@@ -195181,7 +195172,7 @@ gXr
 pMC
 myr
 pFC
-sjK
+gAD
 uoF
 pDl
 kPL
@@ -195326,7 +195317,7 @@ rmt
 udh
 qmR
 bap
-qmR
+ocq
 knG
 byI
 qPe
@@ -195433,7 +195424,7 @@ wbk
 fQA
 myr
 aMi
-sjK
+gAD
 qyW
 oyV
 gqi
@@ -196136,7 +196127,7 @@ kQu
 eYj
 eYj
 jiJ
-qeI
+uZA
 gNe
 eKN
 wbb
@@ -196945,7 +196936,7 @@ hRe
 wDz
 mvR
 fGJ
-sjK
+gAD
 ddp
 kbC
 fdR
@@ -197197,7 +197188,7 @@ ieq
 lin
 pqM
 liv
-sjK
+gAD
 pCF
 wvx
 ccp

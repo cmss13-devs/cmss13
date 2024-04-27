@@ -2,9 +2,9 @@ SUBSYSTEM_DEF(techtree)
 	name = "Tech Tree"
 	init_order = SS_INIT_TECHTREE
 
-	flags = SS_NO_FIRE
+	flags = NO_FLAGS
 
-	wait = 5 SECONDS
+	wait = 1 MINUTES
 
 	var/list/datum/tech/techs = list()
 	var/list/datum/techtree/trees = list()
@@ -61,6 +61,11 @@ SUBSYSTEM_DEF(techtree)
 		to_chat(world, SPAN_BOLDANNOUNCE("[msg]"))
 
 	return SS_INIT_SUCCESS
+
+/datum/controller/subsystem/techtree/fire()
+	for(var/name in trees)
+		var/datum/techtree/tree_income = trees[name]
+		tree_income.add_points(0.1) // 6 поинов час, 2 поинта до высадки
 
 /datum/controller/subsystem/techtree/proc/activate_passive_nodes()
 	for(var/name in trees)

@@ -6,7 +6,7 @@
 
 	flags = TREE_FLAG_MARINE
 
-	required_points = 15
+	required_points = 6
 	tier = /datum/tier/one/additional
 
 /datum/tech/droppod/item/medic_czsp/get_options(mob/living/carbon/human/H, obj/structure/droppod/D)

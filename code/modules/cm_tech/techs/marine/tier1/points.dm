@@ -6,13 +6,13 @@
 	announce_name = "ALMAYER SPECIAL ASSETS AUTHORIZED"
 	announce_message = "Additional supply budget has been authorised for this operation."
 
-	required_points = 15
+	required_points = 5
 	increase_per_purchase = 1
 
 	flags = TREE_FLAG_MARINE
 	tier = /datum/tier/one
 
-	var/points_to_give = 100
+	var/points_to_give = 500
 
 /datum/tech/repeatable/req_points/proc/get_tech_scaling_value()
 	//We take the number of marine players, deduced from other lists, and then get a scale multiplier from it, to be used in arbitrary manners to distribute equipment
@@ -34,7 +34,7 @@
 	announce_name = "ALMAYER SPECIAL ASSETS AUTHORIZED"
 	announce_message = "Additional dropship part fabricator points have been authorised for this operation."
 
-	required_points = 12
+	required_points = 5
 	increase_per_purchase = 1
 
 	flags = TREE_FLAG_MARINE

@@ -6,7 +6,7 @@
 
 	flags = TREE_FLAG_MARINE
 
-	required_points = 25
+	required_points = 20
 	tier = /datum/tier/three/additional
 
 	droppod_input_message = "Choose an experimental to retrieve from the droppod."

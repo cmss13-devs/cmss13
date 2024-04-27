@@ -49,7 +49,7 @@
 			if(I.contents)
 				for(var/obj/item/CI in I.contents)
 					if(istype(CI, DT))
-						if((istype(I, /obj/item/storage/fancy/vials/random) && !I.contents.len) || (istype(I, /obj/item/reagent_container/glass/beaker/vial/random) && !I.reagents.total_volume))
+						if((istype(CI, /obj/item/storage/fancy/vials/random) && !CI.contents.len) || (istype(CI, /obj/item/reagent_container/glass/beaker/vial/random) && !CI.reagents.total_volume))
 							break
 						else
 							detected = TRUE

@@ -19,28 +19,28 @@
 
 /datum/research_upgrades/machinery/autodoc/internal_bleed
 	name = "AutoDoc Internal Bleeding Repair"
-	desc = "Data and instruction set for AutoDoc making it capable to fix internal bleedings extremely quick by injecting powerfull coagulant alongside physically fixing it."
+	desc = "A data and instruction set for the Autodoc, making it capable of rapidly fixing internal bleeding."
 	behavior = UPGRADE_TIER_1
 	value_upgrade = 1000
 	clearance_req = 1
 
 /datum/research_upgrades/machinery/autodoc/broken_bone
 	name = "AutoDoc Broken Bone Fixation"
-	desc = "Data and instruction set for AutoDoc making it capable to set the fracture and inject bonegel without a single cut."
+	desc = "A data instruction set for the Autodoc, making it capable of setting fractures and applying bonegel."
 	behavior = UPGRADE_TIER_2
 	value_upgrade = 5000
 	clearance_req = 3
 
 /datum/research_upgrades/machinery/autodoc/organ_damage
 	name = "AutoDoc Broken Organ Repair"
-	desc = "Data and instruction set for AutoDoc making it capable to fix organ damage."
+	desc = "A data and instruction set for the Autodoc, making it capable of fixing organ damage."
 	behavior = UPGRADE_TIER_3
 	value_upgrade = 4500
 	clearance_req = 2
 
 /datum/research_upgrades/machinery/autodoc/larva_removal
 	name = "AutoDoc Broken Embryo Removal"
-	desc = "Data and instruction set for AutoDoc making it mildy proficient in removing parasites left by unknown organism."
+	desc = "Data and instruction set for AutoDoc making it mildly proficient in removing parasites left by unknown organism."
 	behavior = UPGRADE_TIER_4
 	value_upgrade = 8000
 	clearance_req = 6
@@ -48,7 +48,7 @@
 
 /datum/research_upgrades/machinery/sleeper
 	name = "Sleeper Upgrade"
-	desc = "Research upgrade for Sleeper system, Technology on this disk is used on a sleeper to allow wider spectrum of chemicals to be administered, as well as upgrading diaslisys software."
+	desc = "Research upgrade for Sleeper system, technology on this disk is used on a sleeper to allow wider spectrum of chemicals to be administered, as well as upgrading dialysis software."
 	behavior = UPGRADE_TIER_1
 	value_upgrade = 1000
 	item_reference = /obj/item/research_upgrades/sleeper
@@ -61,7 +61,7 @@
 
 /datum/research_upgrades/item/research_credits
 	name = "Research Credits"
-	desc = "Sell the data acquired to the nearest Weyland-Yutani Science devision team for two points."
+	desc = "Sell the data acquired to the nearest Weyland-Yutani Science division team for two points."
 	value_upgrade = 2000
 	item_reference = /obj/item/research_upgrades/credits
 	behavior = UPGRADE_TIER_1
@@ -69,8 +69,8 @@
 	clearance_req = 3
 
 /datum/research_upgrades/item/laser_scalpel
-	name = "Lazer Scalpel"
-	desc = "A more advanced and robust version of the normal scalpel, allowing it to pierce through thick skin and chitin alike with extreme ease"
+	name = "Laser Scalpel"
+	desc = "An advanced, robust version of the normal scalpel, allowing it to pierce through thick skin and chitin alike with extreme ease."
 	value_upgrade = 5000
 	item_reference = /obj/item/tool/surgery/scalpel/laser/advanced
 	behavior = UPGRADE_TIER_1
@@ -83,7 +83,7 @@
 
 /datum/research_upgrades/armor/translator
 	name = "Universal Translator Plate"
-	desc = "A plate which, when attached to uniform, is able to translate any word heard by user without data about that language, effectively allowing to translate new and old languages alike."
+	desc = "A uniform-attachable plate capable of translating any unknown language heard by the wearer."
 	value_upgrade = 2000
 	behavior = UPGRADE_TIER_1
 	clearance_req = 4
@@ -93,7 +93,7 @@
 
 /datum/research_upgrades/armor/coagulator
 	name = "Active Blood Coagulator Plate"
-	desc = "Stops bleedings by coordinated effort of multiple sensors and radioation emmiters. FDA requires us to disclose the dangers and potential results of continuious exposure to radiation"
+	desc = "A uniform-attachable plate capable of coagulating any bleeding wounds the user possesses."
 	value_upgrade = 3000
 	behavior = UPGRADE_TIER_1
 	clearance_req = 2

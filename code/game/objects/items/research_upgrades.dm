@@ -38,6 +38,7 @@
 	///technology stored on this disk, goes through one to whatever levels of upgrades there are, set it to last upgrade in your line. 0 Excludes it from buying menu.
 	///price of the upgrade, if a single disk could mean many upgrades, use list in sync with upgrades to set its prices
 	var/value
+	
 /obj/item/research_upgrades/autodoc
 	name = "Research Upgrade (AutoDoc)"
 	desc = "Research upgrade for AutoDoc, Technology on this disk is used "

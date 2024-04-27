@@ -66,7 +66,7 @@
 		return
 	if(!user.drop_inv_item_to_loc(with, src))
 		return
-	to_chat(user, SPAN_NOTICE("You insert the data into the console, and the drive whirrs to life, reading the data"))
+	to_chat(user, SPAN_NOTICE("As you insert [with] into the console, you hear it whir to life as [src] reads it."))
 	connected.upgraded = TRUE
 	connected.available_chemicals = connected.upgraded_chemicals
 	connected.emergency_chems = connected.upgraded_emergency_chems

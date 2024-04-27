@@ -101,4 +101,4 @@
 	if(broken_ringer)
 		return FALSE
 	ares_apollo_talk("Attendence requested at AI Core Reception.")
-	..()
+	return ..()

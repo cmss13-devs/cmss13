@@ -26,7 +26,8 @@ export const ResearchMemories = () => {
                   color="blue"
                   selected={i === clueCategory}
                   icon={clue_category.icon}
-                  onClick={() => setClueCategory(i)}>
+                  onClick={() => setClueCategory(i)}
+                >
                   {clue_category.name}
                   {!!clue_category.clues.length &&
                     ' (' + clue_category.clues.length + ')'}
@@ -55,7 +56,8 @@ const CluesAdvanced = (props) => {
               className="candystripe"
               justify="space-between"
               px="1rem"
-              py=".5rem">
+              py=".5rem"
+            >
               <Flex.Item>{clue.text}</Flex.Item>
             </Flex>
           );
@@ -78,7 +80,8 @@ const Objectives = (props) => {
                 <Box
                   color={page.content_color ? page.content_color : 'white'}
                   inline
-                  preserveWhitespace>
+                  preserveWhitespace
+                >
                   {page.content + ' '}
                 </Box>
               )}

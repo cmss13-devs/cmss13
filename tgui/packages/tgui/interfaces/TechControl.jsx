@@ -5,10 +5,10 @@ import { Window } from '../layouts';
 export const TechControl = (props) => {
   const { act, data } = useBackend();
   data.leader_data = data.leader_data || {
-    'name': 'Unassigned',
-    'job': 'N/A',
-    'paygrade': 'N/A',
-    'rank': 0,
+    name: 'Unassigned',
+    job: 'N/A',
+    paygrade: 'N/A',
+    rank: 0,
   };
 
   const { leader_data, user_data } = data;

@@ -25,7 +25,7 @@ export const ListInput = (props) => {
   const [showSearchBar, setShowSearchBar] = useLocalState('search_bar', false);
   const [displayedArray, setDisplayedArray] = useLocalState(
     'displayed_array',
-    buttons
+    buttons,
   );
 
   // KeyPress
@@ -36,7 +36,7 @@ export const ListInput = (props) => {
   // Selected Button
   const [selectedButton, setSelectedButton] = useLocalState(
     'selected_button',
-    buttons[0]
+    buttons[0],
   );
 
   const handleKeyDown = (e) => {
@@ -79,7 +79,7 @@ export const ListInput = (props) => {
       }
     } else {
       const resultArray = displayedArray.filter(
-        (value) => value.substring(0, 1).toLowerCase() === charCode
+        (value) => value.substring(0, 1).toLowerCase() === charCode,
       );
 
       if (resultArray.length > 0) {
@@ -122,7 +122,8 @@ export const ListInput = (props) => {
                     setDisplayedArray(buttons);
                   }}
                 />
-              }>
+              }
+            >
               {displayedArray.map((button, i) => (
                 <Button
                   key={i}
@@ -151,7 +152,8 @@ export const ListInput = (props) => {
                     if (selectedButton === button) {
                       node.focus();
                     }
-                  }}>
+                  }}
+                >
                   {button}
                 </Button>
               ))}
@@ -166,8 +168,8 @@ export const ListInput = (props) => {
                   setDisplayedArray(
                     buttons.filter(
                       (val) =>
-                        val.toLowerCase().search(value.toLowerCase()) !== -1
-                    )
+                        val.toLowerCase().search(value.toLowerCase()) !== -1,
+                    ),
                   )
                 }
               />

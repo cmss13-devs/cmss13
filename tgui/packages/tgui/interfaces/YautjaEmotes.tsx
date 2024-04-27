@@ -1,7 +1,7 @@
+import { BooleanLike } from '../../common/react';
 import { useBackend, useLocalState } from '../backend';
 import { Box, Button, Divider, Section, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
-import { BooleanLike } from '../../common/react';
 
 type Emote = {
   id: string;
@@ -21,19 +21,20 @@ const EmoteTab = (props) => {
   const { categories, emotes, on_cooldown } = data;
   const [categoryIndex, setCategoryIndex] = useLocalState(
     'category_index',
-    'Fake Sound'
+    'Fake Sound',
   );
   const mapped_emote = emotes.filter(
-    (emote) => emote && emote.category === categoryIndex
+    (emote) => emote && emote.category === categoryIndex,
   );
   return (
     <Stack fill vertical>
       <Stack.Item>
         <span
           style={{
-            'position': 'relative',
-            'top': '8px',
-          }}>
+            position: 'relative',
+            top: '8px',
+          }}
+        >
           <Tabs>
             {categories.map((item, key) => (
               <Tabs.Tab
@@ -41,7 +42,8 @@ const EmoteTab = (props) => {
                 selected={item === categoryIndex}
                 onClick={() => {
                   setCategoryIndex(item);
-                }}>
+                }}
+              >
                 {item}
               </Tabs.Tab>
             ))}
@@ -57,7 +59,7 @@ const EmoteTab = (props) => {
                 <Stack>
                   <span
                     style={{
-                      'verticalAlign': 'middle',
+                      verticalAlign: 'middle',
                     }}
                   />{' '}
                   <Stack.Item>
@@ -67,7 +69,7 @@ const EmoteTab = (props) => {
                       width="32px"
                       style={{
                         '-ms-interpolation-mode': 'nearest-neighbor',
-                        'verticalAlign': 'middle',
+                        verticalAlign: 'middle',
                       }}
                     />
                   </Stack.Item>
@@ -100,7 +102,8 @@ export const YautjaEmotes = (props) => {
       width={750}
       height={600}
       theme="crtgreen"
-      title="Yautja Audio Panel">
+      title="Yautja Audio Panel"
+    >
       <Window.Content>
         <EmoteTab />
       </Window.Content>

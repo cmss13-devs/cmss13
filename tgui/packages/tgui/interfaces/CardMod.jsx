@@ -1,6 +1,15 @@
 import { Fragment } from 'react';
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Stack, Input, Section, Tabs, Table, NumberInput } from '../components';
+import {
+  Box,
+  Button,
+  Stack,
+  Input,
+  Section,
+  Tabs,
+  Table,
+  NumberInput,
+} from '../components';
 import { Window } from '../layouts';
 import { AccessList } from './common/AccessList';
 import { map } from 'common/collections';
@@ -43,7 +52,8 @@ export const CrewManifest = (props) => {
             })
           }
         />
-      }>
+      }
+    >
       {map((entries, department) => (
         <Section key={department} level={2} title={department}>
           <Table>
@@ -76,7 +86,7 @@ export const CardContent = (props) => {
   } = data;
   const [selectedDepartment, setSelectedDepartment] = useLocalState(
     'department',
-    Object.keys(jobs)[0]
+    Object.keys(jobs)[0],
   );
   const departmentJobs = jobs[selectedDepartment] || [];
   return (
@@ -118,7 +128,8 @@ export const CardContent = (props) => {
               }}
             />
           </>
-        }>
+        }
+      >
         <Button
           fluid
           icon="eject"
@@ -185,7 +196,8 @@ export const CardContent = (props) => {
                   color="bad"
                   onClick={() => act('PRG_terminate')}
                 />
-              }>
+              }
+            >
               <Button.Input
                 fluid
                 content="Custom..."
@@ -203,7 +215,8 @@ export const CardContent = (props) => {
                       <Tabs.Tab
                         key={department}
                         selected={department === selectedDepartment}
-                        onClick={() => setSelectedDepartment(department)}>
+                        onClick={() => setSelectedDepartment(department)}
+                      >
                         {department}
                       </Tabs.Tab>
                     ))}

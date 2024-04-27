@@ -1,3 +1,4 @@
+/* eslint-disable func-style */
 /**
  * @file
  * @copyright 2020 Aleksej Komarov
@@ -10,7 +11,7 @@ import { ReactNode } from 'react';
 import { BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 
 type Props = {
-  content?: ReactNode;
+  readonly content?: ReactNode;
 } & BoxProps;
 
 export function ColorBox(props: Props) {

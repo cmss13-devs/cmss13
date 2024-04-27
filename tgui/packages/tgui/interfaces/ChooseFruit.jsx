@@ -16,7 +16,8 @@ export const ChooseFruit = (props) => {
     <Window
       width={350}
       height={15 + fruits.length * heightScale}
-      theme="hive_status">
+      theme="hive_status"
+    >
       <Window.Content>
         <Section
           title="Fruits"
@@ -34,13 +35,15 @@ export const ChooseFruit = (props) => {
             />
           }
           scrollable
-          fill>
+          fill
+        >
           <Tabs vertical fluid fill>
             {fruits.map((val, index) => (
               <Tabs.Tab
                 key={index}
                 selected={val.id === selected_fruit}
-                onClick={() => act('choose_fruit', { type: val.id })}>
+                onClick={() => act('choose_fruit', { type: val.id })}
+              >
                 <Stack align="center">
                   <Stack.Item>
                     <span

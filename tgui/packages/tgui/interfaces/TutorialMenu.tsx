@@ -1,6 +1,7 @@
 import { classes } from 'common/react';
+
 import { useBackend, useLocalState } from '../backend';
-import { Section, Stack, Box, Divider, Button, Tabs } from '../components';
+import { Box, Button, Divider, Section, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
 
 type Tutorial = {
@@ -26,11 +27,11 @@ export const TutorialMenu = (props) => {
   const { tutorial_categories, completed_tutorials } = data;
   const [chosenTutorial, setTutorial] = useLocalState<Tutorial | null>(
     'tutorial',
-    null
+    null,
   );
   const [categoryIndex, setCategoryIndex] = useLocalState(
     'category_index',
-    'Space Station 13'
+    'Space Station 13',
   );
   return (
     <Window title="Tutorial Menu" width={800} height={600} theme="usmc">
@@ -39,9 +40,10 @@ export const TutorialMenu = (props) => {
           <Stack.Item>
             <span
               style={{
-                'position': 'relative',
-                'top': '0px',
-              }}>
+                position: 'relative',
+                top: '0px',
+              }}
+            >
               <Tabs>
                 {tutorial_categories.map((item, key) => (
                   <Tabs.Tab
@@ -49,7 +51,8 @@ export const TutorialMenu = (props) => {
                     selected={item.name === categoryIndex}
                     onClick={() => {
                       setCategoryIndex(item.name);
-                    }}>
+                    }}
+                  >
                     {item.name}
                   </Tabs.Tab>
                 ))}
@@ -63,9 +66,7 @@ export const TutorialMenu = (props) => {
                   (tutorial_category) =>
                     tutorial_category.name === categoryIndex &&
                     tutorial_category.tutorials.map((tutorial) => (
-                      <div
-                        style={{ 'paddingBottom': '12px' }}
-                        key={tutorial.id}>
+                      <div style={{ paddingBottom: '12px' }} key={tutorial.id}>
                         <Button
                           fontSize="15px"
                           textAlign="center"
@@ -77,11 +78,12 @@ export const TutorialMenu = (props) => {
                           }
                           width="100%"
                           key={tutorial.id}
-                          onClick={() => setTutorial(tutorial)}>
+                          onClick={() => setTutorial(tutorial)}
+                        >
                           {tutorial.name}
                         </Button>
                       </div>
-                    ))
+                    )),
                 )}
               </Section>
             </Stack.Item>
@@ -93,10 +95,11 @@ export const TutorialMenu = (props) => {
                     <Stack.Item>
                       <div
                         style={{
-                          'display': 'flex',
-                          'justifyContent': 'center',
-                          'alignItems': 'center',
-                        }}>
+                          display: 'flex',
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                        }}
+                      >
                         <Box key={chosenTutorial.id}>
                           <span
                             className={classes([
@@ -113,11 +116,12 @@ export const TutorialMenu = (props) => {
                     ) : (
                       <Stack.Item
                         style={{
-                          'color': '#5baa27',
-                          'paddingTop': '4px',
-                          'paddingBottom': '4px',
-                          'textAlign': 'center',
-                        }}>
+                          color: '#5baa27',
+                          paddingTop: '4px',
+                          paddingBottom: '4px',
+                          textAlign: 'center',
+                        }}
+                      >
                         Tutorial has been completed.
                       </Stack.Item>
                     )}

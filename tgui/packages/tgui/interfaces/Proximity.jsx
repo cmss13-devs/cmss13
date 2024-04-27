@@ -1,5 +1,12 @@
 import { useBackend } from '../backend';
-import { Button, Knob, LabeledList, Section, Slider, Tooltip } from '../components';
+import {
+  Button,
+  Knob,
+  LabeledList,
+  Section,
+  Slider,
+  Tooltip,
+} from '../components';
 import { Window } from '../layouts';
 
 export const Proximity = (props) => {
@@ -63,7 +70,8 @@ export const Proximity = (props) => {
             color={data.armed ? 'red' : 'green'}
             icon={data.armed ? 'exclamation-triangle' : 'bomb'}
             content={data.armed ? 'Armed' : 'Unarmed'}
-            onClick={() => act('set_armed', { armed: !data.armed })}>
+            onClick={() => act('set_armed', { armed: !data.armed })}
+          >
             <Tooltip
               position="top"
               content="Begins scanning for potential hostiles. Very dangerous if attached to any volatile materials."

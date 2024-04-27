@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
-import { Button, Flex, Section, Box, Tabs, LabeledList } from '../components';
+import { Box, Button, Flex, LabeledList, Section, Tabs } from '../components';
 import { Window } from '../layouts';
 
 type Clue = {
@@ -56,7 +56,8 @@ export const TechMemories = () => {
                   color="blue"
                   selected={i === clueCategory}
                   icon={clue_category.icon}
-                  onClick={() => setClueCategory(i)}>
+                  onClick={() => setClueCategory(i)}
+                >
                   {clue_category.name}
                   {!!clue_category.clues.length &&
                     ' (' + clue_category.clues.length + ')'}
@@ -85,7 +86,8 @@ const CluesAdvanced = (props: { readonly clues: Array<Clue> }) => {
               className="candystripe"
               justify="space-between"
               px="1rem"
-              py=".5rem">
+              py=".5rem"
+            >
               <Flex.Item>
                 {!!clue.color && (
                   <Box inline preserveWhitespace color={clue.color_name}>
@@ -127,7 +129,8 @@ const Objectives = (props) => {
           content={'Total earned credits: ' + data.total_tech_points}
           backgroundColor="transparent"
         />
-      }>
+      }
+    >
       <LabeledList>
         {data.objectives.map((page) => {
           return (
@@ -136,7 +139,8 @@ const Objectives = (props) => {
                 <Box
                   color={page.content_color ? page.content_color : 'white'}
                   inline
-                  preserveWhitespace>
+                  preserveWhitespace
+                >
                   {page.content + ' '}
                 </Box>
               )}

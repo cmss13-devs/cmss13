@@ -91,7 +91,7 @@ export const Dropdown = (props: Props) => {
       const endIndex = options.length - 1;
 
       let selectedIndex = options.findIndex(
-        (option) => getOptionValue(option) === selected
+        (option) => getOptionValue(option) === selected,
       );
 
       if (selectedIndex < 0) {
@@ -107,7 +107,7 @@ export const Dropdown = (props: Props) => {
 
       onSelected?.(getOptionValue(options[newIndex]));
     },
-    [disabled, onSelected, options, selected]
+    [disabled, onSelected, options, selected],
   );
 
   /** Allows the menu to be scrollable on open */
@@ -130,7 +130,8 @@ export const Dropdown = (props: Props) => {
             over && 'Dropdown__over',
           ])}
           style={{ minWidth: menuWidth }}
-          ref={innerRef}>
+          ref={innerRef}
+        >
           {options.length === 0 && (
             <div className="Dropdown__menuentry">No options</div>
           )}
@@ -148,13 +149,15 @@ export const Dropdown = (props: Props) => {
                 onClick={() => {
                   setOpen(false);
                   onSelected?.(value);
-                }}>
+                }}
+              >
                 {typeof option === 'string' ? option : option.displayText}
               </div>
             );
           })}
         </div>
-      }>
+      }
+    >
       <div>
         <div className="Dropdown" style={{ width: unit(width) }}>
           <div
@@ -172,7 +175,8 @@ export const Dropdown = (props: Props) => {
               }
               setOpen(!open);
               onClick?.(event);
-            }}>
+            }}
+          >
             {icon && (
               <Icon
                 mr={1}
@@ -185,7 +189,8 @@ export const Dropdown = (props: Props) => {
               className="Dropdown__selected-text"
               style={{
                 overflow: clipSelectedText ? 'hidden' : 'visible',
-              }}>
+              }}
+            >
               {displayText || selected}
             </span>
             {!noChevron && (

@@ -30,7 +30,8 @@ export const TechNode = (props) => {
                   content={'Tech points: ' + total_points}
                   backgroundColor="transparent"
                 />
-              }>
+              }
+            >
               <LabeledList>
                 <LabeledList.Item label="Name">{name}</LabeledList.Item>
                 <LabeledList.Item label="Description">{desc}</LabeledList.Item>

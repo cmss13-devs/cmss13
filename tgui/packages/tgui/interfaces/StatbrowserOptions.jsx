@@ -38,8 +38,8 @@ const Options = (props) => {
         {!Array.isArray(children)
           ? children
           : children.map((option, i) => (
-            <Flex.Item key={i}>{option}</Flex.Item>
-          ))}
+              <Flex.Item key={i}>{option}</Flex.Item>
+            ))}
       </Flex>
     </Section>
   );

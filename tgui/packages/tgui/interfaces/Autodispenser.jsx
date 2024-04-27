@@ -1,5 +1,14 @@
 import { useBackend } from '../backend';
-import { Section, ProgressBar, Box, Flex, NoticeBox, Button, LabeledList, NumberInput } from '../components';
+import {
+  Section,
+  ProgressBar,
+  Box,
+  Flex,
+  NoticeBox,
+  Button,
+  LabeledList,
+  NumberInput,
+} from '../components';
 import { Window } from '../layouts';
 
 export const Autodispenser = () => {
@@ -76,7 +85,8 @@ export const Autodispenser = () => {
                   bad: [-Infinity, 0.1],
                   average: [0.1, 0.33],
                   good: [0.33, Infinity],
-                }}>
+                }}
+              >
                 <Box textAlign="right">Energy: {energy}%</Box>
               </ProgressBar>
               <Box height="5px" />
@@ -159,10 +169,10 @@ export const Autodispenser = () => {
                 <NoticeBox>
                   {status === 2
                     ? 'Output: Internal buffer:' +
-                    buffervolume +
-                    'u / ' +
-                    buffermax +
-                    'u.'
+                      buffervolume +
+                      'u / ' +
+                      buffermax +
+                      'u.'
                     : 'Awaiting centrifuge.'}
                 </NoticeBox>
               )}
@@ -171,7 +181,8 @@ export const Autodispenser = () => {
                   <ProgressBar
                     width="100%"
                     value={outputPct}
-                    color={output_color ? output_color : 'blue'}>
+                    color={output_color ? output_color : 'blue'}
+                  >
                     <Box textAlign="right">
                       Beaker vol: {output_totalvol}u/{output_maxvol}u
                     </Box>

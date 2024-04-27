@@ -1,7 +1,7 @@
 import { useBackend } from '../../backend';
 import { Box } from '../../components';
 import { DropshipEquipment } from '../DropshipWeaponsConsole';
-import { MfdProps, MfdPanel } from './MultifunctionDisplay';
+import { MfdPanel, MfdProps } from './MultifunctionDisplay';
 import { mfdState, useEquipmentState, useWeaponState } from './stateManagers';
 import { EquipmentContext } from './types';
 
@@ -222,7 +222,8 @@ const EquipmentPanel = () => {
             id="diagonalHatch"
             patternUnits="userSpaceOnUse"
             width="4"
-            height="4">
+            height="4"
+          >
             <path
               stroke="#00e94e"
               stroke-width="1"
@@ -233,7 +234,8 @@ const EquipmentPanel = () => {
             id="smallGrid"
             width="20"
             height="20"
-            patternUnits="userSpaceOnUse">
+            patternUnits="userSpaceOnUse"
+          >
             <path
               d="M 20 0 L 0 0 0 20"
               fill="none"
@@ -245,7 +247,8 @@ const EquipmentPanel = () => {
             id="grid"
             width="100"
             height="100"
-            patternUnits="userSpaceOnUse">
+            patternUnits="userSpaceOnUse"
+          >
             <rect width="100" height="100" fill="url(#smallGrid)" />
             <path
               d="M 100 0 L 0 0 0 100"
@@ -336,7 +339,8 @@ export const EquipmentMfdPanel = (props: MfdProps) => {
           children: 'EXIT',
           onClick: () => setPanelState(''),
         },
-      ]}>
+      ]}
+    >
       <EquipmentPanel />
     </MfdPanel>
   );

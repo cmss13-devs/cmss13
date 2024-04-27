@@ -159,14 +159,14 @@ const CrewTableEntry = (props) => {
               toxdam,
               burndam,
               brutedam,
-              HEALTH_ICON_BY_LEVEL
+              HEALTH_ICON_BY_LEVEL,
             )}
             color={healthToAttribute(
               oxydam,
               toxdam,
               burndam,
               brutedam,
-              HEALTH_COLOR_BY_LEVEL
+              HEALTH_COLOR_BY_LEVEL,
             )}
             size={1}
           />
@@ -198,7 +198,8 @@ const CrewTableEntry = (props) => {
           side !== undefined
             ? COLORS.damageType['oxy']
             : COLORS.damageType['brute']
-        }>
+        }
+      >
         {area !== undefined ? (
           area
         ) : (

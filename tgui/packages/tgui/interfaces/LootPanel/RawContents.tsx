@@ -1,3 +1,4 @@
+/* eslint-disable func-style */
 import { createSearch } from 'common/string';
 
 import { Flex } from '../../components';
@@ -5,8 +6,8 @@ import { LootBox } from './LootBox';
 import { SearchItem } from './types';
 
 type Props = {
-  contents: SearchItem[];
-  searchText: string;
+  readonly contents: SearchItem[];
+  readonly searchText: string;
 };
 
 export function RawContents(props: Props) {

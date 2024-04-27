@@ -8,8 +8,8 @@ export const HiveFaction = (props) => {
 
   const onFactionButtonClick = (faction) =>
     act('set_ally', {
-      'should_ally': !current_allies[faction],
-      'target_faction': faction,
+      should_ally: !current_allies[faction],
+      target_faction: faction,
     });
 
   return (

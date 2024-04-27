@@ -1,3 +1,4 @@
+/* eslint-disable func-style */
 /**
  * @file
  * @copyright 2020 bobbahbrown (https://github.com/bobbahbrown)
@@ -12,7 +13,7 @@ import { Box, BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 
 type Props = {
   /** The current value of the metric. */
-  value: number;
+  readonly value: number;
 } & Partial<{
   /** When provided, will cause an alert symbol on the gauge to begin flashing in the color upon which the needle currently rests, as defined in `ranges`. */
   alertAfter: number;

@@ -1,5 +1,13 @@
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Flex, LabeledList, Section, Table, Tabs } from '../components';
+import {
+  Box,
+  Button,
+  Flex,
+  LabeledList,
+  Section,
+  Table,
+  Tabs,
+} from '../components';
 import { TableCell, TableRow } from '../components/Table';
 import { Window } from '../layouts';
 
@@ -150,10 +158,10 @@ const ShuttleManipulatorTemplates = (props) => {
   const selected = data.selected;
   const [selectedTemplateId, setSelectedTemplateId] = useLocalState(
     'templateId',
-    templateObject[0]?.shuttle_id ?? 0
+    templateObject[0]?.shuttle_id ?? 0,
   );
   const actualTemplate = templateObject.find(
-    (x) => x.shuttle_id === selectedTemplateId
+    (x) => x.shuttle_id === selectedTemplateId,
   );
   return (
     <Section>
@@ -164,7 +172,8 @@ const ShuttleManipulatorTemplates = (props) => {
               <Tabs.Tab
                 key={template.shuttle_id}
                 selected={selectedTemplateId === template.shuttle_id}
-                onClick={() => setSelectedTemplateId(template.shuttle_id)}>
+                onClick={() => setSelectedTemplateId(template.shuttle_id)}
+              >
                 {template.name}
               </Tabs.Tab>
             ))}
@@ -192,7 +201,8 @@ const ShuttleManipulatorTemplates = (props) => {
                     })
                   }
                 />
-              }>
+              }
+            >
               <LabeledList>
                 <LabeledList.Item label="Description">
                   {actualTemplate.description ?? 'None'}
@@ -248,7 +258,8 @@ const ShuttleManipulatorModification = (props) => {
                         })
                       }
                     />
-                  }>
+                  }
+                >
                   {existingShuttle.status}
                   {!!existingShuttle.timer && <>({existingShuttle.timeleft})</>}
                 </LabeledList.Item>

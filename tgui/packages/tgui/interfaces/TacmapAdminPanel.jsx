@@ -46,7 +46,8 @@ export const TacmapAdminPanel = (props) => {
       width={600}
       height={800}
       theme={pageIndex === 0 ? 'ntos' : 'hive_status'}
-      resizable>
+      resizable
+    >
       <Window.Content scrollable>
         <Stack direction="column" fill>
           <Stack.Item basis="content" grow={0} pb={1}>
@@ -62,7 +63,8 @@ export const TacmapAdminPanel = (props) => {
                     color={page.color}
                     selected={i === pageIndex}
                     icon={page.icon}
-                    onClick={() => setPageIndex(i)}>
+                    onClick={() => setPageIndex(i)}
+                  >
                     {page.title}
                   </Tabs.Tab>
                 );
@@ -115,12 +117,14 @@ const FactionPage = (props) => {
             })
           }
         />
-      }>
+      }
+    >
       {Object(ckeys).map((ckey, ckey_index) => (
         <Flex
           direction="row"
           key={ckey_index}
-          backgroundColor={ckey_index % 2 === 1 ? 'rgba(255,255,255,0.1)' : ''}>
+          backgroundColor={ckey_index % 2 === 1 ? 'rgba(255,255,255,0.1)' : ''}
+        >
           <Flex.Item grow={0} basis="content" mx={0.5} mt={0.8}>
             <Button.Checkbox
               content="View"

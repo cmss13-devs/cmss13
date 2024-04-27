@@ -1,5 +1,15 @@
 import { useBackend } from '../backend';
-import { Button, Section, LabeledList, ProgressBar, Divider, NumberInput, NoticeBox, Box, Tabs } from '../components';
+import {
+  Button,
+  Section,
+  LabeledList,
+  ProgressBar,
+  Divider,
+  NumberInput,
+  NoticeBox,
+  Box,
+  Tabs,
+} from '../components';
 import { Window } from '../layouts';
 
 export const SupplyDropConsole = () => {
@@ -33,7 +43,8 @@ export const SupplyDropConsole = () => {
                   onClick={() => {
                     act('pick_squad', { squad_name: val.squad_name });
                   }}
-                  key={val.squad_name}>
+                  key={val.squad_name}
+                >
                   <Box color={val.squad_color}>{val.squad_name}</Box>
                 </Tabs.Tab>
               );
@@ -72,7 +83,8 @@ export const SupplyDropConsole = () => {
                 content="Update"
                 onClick={() => act('refresh_pad')}
               />
-            }>
+            }
+          >
             <NoticeBox info={1} textAlign="center">
               {data.loaded
                 ? `Supply Pad Status :
@@ -91,7 +103,8 @@ export const SupplyDropConsole = () => {
                   good: [-Infinity, 0.33],
                   average: [0.33, 0.67],
                   bad: [0.67, Infinity],
-                }}>
+                }}
+              >
                 <Box textAlign="center">
                   {Math.ceil(timeLeft / 10)} seconds until next launch
                 </Box>

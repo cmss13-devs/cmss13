@@ -1,17 +1,17 @@
 import { useBackend, useLocalState } from '../backend';
 import {
+  Box,
   Button,
   Dropdown,
+  ProgressBar,
   Section,
   Stack,
-  ProgressBar,
-  Box,
   Tabs,
 } from '../components';
+import { ByondUi } from '../components';
 import { Window } from '../layouts';
 import { CanvasLayer } from './CanvasLayer';
 import { DrawnMap } from './DrawnMap';
-import { ByondUi } from '../components';
 
 interface TacMapProps {
   toolbarColorSelection: string;
@@ -84,20 +84,20 @@ const colorOptions = [
 ];
 
 const colors: Record<string, string> = {
-  'black': '#000000',
-  'red': '#fc0000',
-  'orange': '#f59a07',
-  'blue': '#0561f5',
-  'purple': '#c002fa',
-  'green': '#02c245',
-  'brown': '#5c351e',
+  black: '#000000',
+  red: '#fc0000',
+  orange: '#f59a07',
+  blue: '#0561f5',
+  purple: '#c002fa',
+  green: '#02c245',
+  brown: '#5c351e',
 };
 
 export const TacticalMap = (props) => {
   const { data, act } = useBackend<TacMapProps>();
   const [pageIndex, setPageIndex] = useLocalState(
     'pageIndex',
-    data.canViewTacmap ? 0 : 1
+    data.canViewTacmap ? 0 : 1,
   );
   const PageComponent = PAGES[pageIndex].component();
 
@@ -112,14 +112,16 @@ export const TacticalMap = (props) => {
     <Window
       width={700}
       height={850}
-      theme={data.isxeno ? 'hive_status' : 'crtblue'}>
+      theme={data.isxeno ? 'hive_status' : 'crtblue'}
+    >
       <Window.Content>
         <Section
           fitted
           width="688px"
           fontSize="20px"
           textAlign="center"
-          title="Tactical Map Options">
+          title="Tactical Map Options"
+        >
           <Stack justify="center" align="center" fontSize="15px">
             <Stack.Item>
               <Tabs height="37.5px">
@@ -137,7 +139,8 @@ export const TacticalMap = (props) => {
                         page.canOpen(data)
                           ? handleTacmapOnClick(i, page.title)
                           : null
-                      }>
+                      }
+                    >
                       {page.canOpen(data) ? page.title : 'loading'}
                     </Tabs.Tab>
                   );
@@ -212,7 +215,7 @@ const DrawMapPanel = (props) => {
   };
   const findColorValue = (oldValue: string) => {
     return (Object.keys(colors) as Array<string>).find(
-      (key) => colors[key] === (oldValue as string)
+      (key) => colors[key] === (oldValue as string),
     );
   };
 
@@ -221,7 +224,8 @@ const DrawMapPanel = (props) => {
       <Section
         title="Canvas Options"
         className={'canvas-options'}
-        width="688px">
+        width="688px"
+      >
         <Stack height="15px">
           <Stack.Item grow>
             {(!data.updatedCanvas && (
@@ -290,8 +294,9 @@ const DrawMapPanel = (props) => {
           className={'progress-stack'}
           position="absolute"
           width="98%"
-          style={{ 'zIndex': '1' }}
-          bottom="-40px">
+          style={{ zIndex: '1' }}
+          bottom="-40px"
+        >
           <Stack.Item grow>
             {data.canvasCooldown > 0 && (
               <ProgressBar
@@ -302,7 +307,8 @@ const DrawMapPanel = (props) => {
                   good: [-Infinity, 0.33],
                   average: [0.33, 0.67],
                   bad: [0.67, Infinity],
-                }}>
+                }}
+              >
                 <Box textAlign="center" fontSize="15px" textColor="white">
                   {Math.ceil(data.canvasCooldown / 10)} seconds until the canvas
                   changes can be updated

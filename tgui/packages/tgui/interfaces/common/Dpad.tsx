@@ -1,6 +1,10 @@
 import { useBackend } from '../../backend';
 import { Box, Button, Stack } from '../../components';
-import { useFiremissionXOffsetValue, useFiremissionYOffsetValue, useLazeTarget } from '../MfdPanels/stateManagers';
+import {
+  useFiremissionXOffsetValue,
+  useFiremissionYOffsetValue,
+  useLazeTarget,
+} from '../MfdPanels/stateManagers';
 
 const SvgButton = (props: {
   readonly transform?: string;
@@ -46,9 +50,9 @@ export const Dpad = (props) => {
     setFmXOffsetValue(xValue);
     setFmYOffsetValue(yValue);
     act('firemission-dual-offset-camera', {
-      'target_id': selectedTarget,
-      'x_offset_value': xValue,
-      'y_offset_value': yValue,
+      target_id: selectedTarget,
+      x_offset_value: xValue,
+      y_offset_value: yValue,
     });
   };
 

@@ -1,3 +1,4 @@
+/* eslint-disable func-style */
 /**
  * @file
  * @copyright 2020 Aleksej Komarov
@@ -371,13 +372,11 @@ type FileProps = {
 } & Props;
 
 /**  Accepts file input */
-// eslint-disable-next-line func-style
 function ButtonFile(props: FileProps) {
   const { accept, multiple, onSelectFiles, ...rest } = props;
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // eslint-disable-next-line func-style
   async function read(files: FileList) {
     const promises = Array.from(files).map((file) => {
       const reader = new FileReader();
@@ -391,7 +390,6 @@ function ButtonFile(props: FileProps) {
     return await Promise.all(promises);
   }
 
-  // eslint-disable-next-line func-style
   async function handleChange(event: ChangeEvent<HTMLInputElement>) {
     const files = event.target.files;
     if (files?.length) {

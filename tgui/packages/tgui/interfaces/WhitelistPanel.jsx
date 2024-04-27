@@ -3,8 +3,8 @@ import { Button, Stack, Section, Flex } from '../components';
 import { Window } from '../layouts';
 
 const PAGES = {
-  'Panel': () => PlayerList,
-  'Update': () => StatusUpdate,
+  Panel: () => PlayerList,
+  Update: () => StatusUpdate,
 };
 
 export const WhitelistPanel = (props, context) => {
@@ -53,7 +53,8 @@ const PlayerList = (props, context) => {
           className="candystripe"
           p=".75rem"
           align="center"
-          fontSize="1.25rem">
+          fontSize="1.25rem"
+        >
           <Flex.Item bold width="20rem" shrink="0" mr="5rem">
             CKey
           </Flex.Item>
@@ -140,7 +141,7 @@ const StatusUpdate = (props, context) => {
                 disabled={!editable}
                 onClick={() =>
                   act('update_number', {
-                    'wl_flag': !new_state
+                    wl_flag: !new_state
                       ? new_rights | bit.bitflag
                       : new_rights & ~bit.bitflag,
                   })
@@ -181,7 +182,7 @@ const StatusUpdate = (props, context) => {
                 disabled={!editable}
                 onClick={() =>
                   act('update_number', {
-                    'wl_flag': !new_state
+                    wl_flag: !new_state
                       ? new_rights | bit.bitflag
                       : new_rights & ~bit.bitflag,
                   })
@@ -222,7 +223,7 @@ const StatusUpdate = (props, context) => {
                 disabled={!editable}
                 onClick={() =>
                   act('update_number', {
-                    'wl_flag': !new_state
+                    wl_flag: !new_state
                       ? new_rights | bit.bitflag
                       : new_rights & ~bit.bitflag,
                   })
@@ -263,7 +264,7 @@ const StatusUpdate = (props, context) => {
                 disabled={!editable}
                 onClick={() =>
                   act('update_number', {
-                    'wl_flag': !new_state
+                    wl_flag: !new_state
                       ? new_rights | bit.bitflag
                       : new_rights & ~bit.bitflag,
                   })
@@ -280,7 +281,7 @@ const StatusUpdate = (props, context) => {
           textAlign="center"
           content="Update Whitelists"
           tooltip="Update Whitelists"
-          onClick={() => act('update_perms', { 'player': viewed_player.ckey })}
+          onClick={() => act('update_perms', { player: viewed_player.ckey })}
         />
       </Flex>
     </Section>

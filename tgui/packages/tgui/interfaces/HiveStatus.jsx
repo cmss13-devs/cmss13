@@ -2,7 +2,16 @@ import { classes } from 'common/react';
 import { createSearch } from 'common/string';
 import { Fragment } from 'react';
 import { useBackend, useLocalState } from '../backend';
-import { Input, Button, Flex, Divider, Collapsible, Icon, NumberInput, Table } from '../components';
+import {
+  Input,
+  Button,
+  Flex,
+  Divider,
+  Collapsible,
+  Icon,
+  NumberInput,
+  Table,
+} from '../components';
 import { Window } from '../layouts';
 
 const redFont = {
@@ -87,7 +96,8 @@ export const HiveStatus = (props) => {
       theme="hive_status"
       resizable
       width={600}
-      height={680}>
+      height={680}
+    >
       <Window.Content scrollable>
         <XenoCollapsible title="General Hive Information">
           <GeneralInformation />
@@ -180,7 +190,8 @@ const XenoCounts = (props) => {
                         <span
                           style={{
                             'margin-right': '4px',
-                          }}>
+                          }}
+                        >
                           {tier_slots[tier_str].open_slots}
                         </span>
                         remaining slot
@@ -194,7 +205,8 @@ const XenoCounts = (props) => {
                               <span
                                 style={{
                                   'margin-right': '4px',
-                                }}>
+                                }}
+                              >
                                 {
                                   tier_slots[tier_str].guaranteed_slots[
                                     caste_type
@@ -229,7 +241,8 @@ const XenoCounts = (props) => {
                           className="xenoCountCell"
                           backgroundColor={!!hive_color && hive_color}
                           textAlign="center"
-                          width={7}>
+                          width={7}
+                        >
                           {counts[caste]}
                         </Table.Cell>
                       ))}
@@ -348,7 +361,8 @@ const XenoList = (props) => {
         {xeno_entries.map((entry, i) => (
           <Table.Row
             key={i}
-            className={classes([entry.is_ssd ? 'ssdRow' : '', 'xenoListRow'])}>
+            className={classes([entry.is_ssd ? 'ssdRow' : '', 'xenoListRow'])}
+          >
             {/*
               Leader/SSD icon
               You might think using an image for rounded corners is stupid,
@@ -376,7 +390,8 @@ const XenoList = (props) => {
                   className="actionButton"
                   align="center"
                   justify="space-around"
-                  inline>
+                  inline
+                >
                   <Flex.Item>
                     <Button
                       content="Watch"
@@ -424,7 +439,8 @@ const XenoCollapsible = (props) => {
       title={title}
       backgroundColor={!!hive_color && hive_color}
       color={!hive_color && 'xeno'}
-      open>
+      open
+    >
       {children}
     </Collapsible>
   );

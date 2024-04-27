@@ -1,5 +1,14 @@
 import { useBackend, useLocalState } from '../backend';
-import { Section, Flex, ProgressBar, Box, Button, Tabs, Stack, Input } from '../components';
+import {
+  Section,
+  Flex,
+  ProgressBar,
+  Box,
+  Button,
+  Tabs,
+  Stack,
+  Input,
+} from '../components';
 import { capitalize } from 'common/string';
 import { Window } from '../layouts';
 import { ElectricalPanel } from './common/ElectricalPanel';
@@ -49,7 +58,8 @@ const MaterialsData = (props) => {
           <Flex.Item key={category} grow>
             <ProgressBar
               width="99%"
-              value={materials[category] / capacity[category]}>
+              value={materials[category] / capacity[category]}
+            >
               <Box textAlign="center">
                 {capitalize(category)}: {materials[category]}/
                 {capacity[category]}
@@ -155,13 +165,13 @@ const PrintablesSection = (props) => {
 
   const [currentCategory, setCategory] = useLocalState(
     'current_category',
-    'All'
+    'All',
   );
 
   const filteredPrintables = printables.filter(
     (val) =>
       (val.recipe_category === currentCategory || currentCategory === 'All') &&
-      val.name.toLowerCase().match(currentSearch)
+      val.name.toLowerCase().match(currentSearch),
   );
 
   return (
@@ -174,7 +184,8 @@ const PrintablesSection = (props) => {
                 <Tabs.Tab
                   selected={val === currentCategory}
                   onClick={() => setCategory(val)}
-                  key={val}>
+                  key={val}
+                >
                   {val}
                 </Tabs.Tab>
               ))}
@@ -206,13 +217,14 @@ const PrintablesSection = (props) => {
                             index: val.index,
                             multiplier: 1,
                           })
-                        }>
+                        }
+                      >
                         {' (' + // sorry for this shitcode, also yes this will break if an autolathe uses more than 2 material types
                           (val.materials[Object.keys(materials)[0]] &&
                           val.materials[Object.keys(materials)[1]]
                             ? val.materials[Object.keys(materials)[0]] +
-                            ', ' +
-                            val.materials[Object.keys(materials)[1]]
+                              ', ' +
+                              val.materials[Object.keys(materials)[1]]
                             : val.materials[Object.keys(materials)[0]]
                               ? val.materials[Object.keys(materials)[0]]
                               : val.materials[Object.keys(materials)[1]]) +
@@ -241,7 +253,7 @@ const PrintablesSection = (props) => {
                                     />
                                   </Flex.Item>
                                 </Fragment>
-                              )
+                              ),
                             )}
                           </Flex>
                         </Flex.Item>

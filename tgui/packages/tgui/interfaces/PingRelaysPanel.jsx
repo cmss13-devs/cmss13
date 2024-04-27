@@ -43,7 +43,7 @@ class PingApp extends Component {
         desc,
         'byond://' + connectURL,
         round(pong * 0.75), // The ping is inflated so lets compensate a bit
-        error
+        error,
       );
       this.setState((prevState) => ({
         currentIndex: prevState.currentIndex + 1,
@@ -65,7 +65,7 @@ class PingApp extends Component {
       this.startTest(
         this.props.relayNames[i],
         this.props.relayPings[i],
-        this.props.relayCons[i]
+        this.props.relayCons[i],
       );
     }
   }
@@ -92,7 +92,8 @@ class PingApp extends Component {
               }
               onClick={() =>
                 act('connect', { url: result.url, desc: result.desc })
-              }>
+              }
+            >
               {result.ping <= -1 && result.error === null && (
                 <Flex justify="space-between">
                   <Flex.Item>
@@ -124,9 +125,9 @@ class PingApp extends Component {
                       minValue={50}
                       minWidth={4}
                       ranges={{
-                        'good': [0, 200],
-                        'average': [200, 500],
-                        'bad': [500, 1000],
+                        good: [0, 200],
+                        average: [200, 500],
+                        bad: [500, 1000],
                       }}
                       format={(x) => x + 'ms'}
                       inline

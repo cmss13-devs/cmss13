@@ -1,7 +1,16 @@
 import { useBackend } from '../backend';
 import { addZeros } from 'common/math';
 import { Window } from '../layouts';
-import { Box, ColorBox, NoticeBox, Flex, ProgressBar, Button, LabeledList, Divider } from '../components';
+import {
+  Box,
+  ColorBox,
+  NoticeBox,
+  Flex,
+  ProgressBar,
+  Button,
+  LabeledList,
+  Divider,
+} from '../components';
 
 export const BrigCell = (props) => {
   const { data, act } = useBackend();
@@ -54,7 +63,8 @@ export const BrigCell = (props) => {
                     color={isActive ? 'green' : ''}
                     onClick={() =>
                       act('set_viewed_incident', { incident: incident.ref })
-                    }>
+                    }
+                  >
                     {incident.suspect}
                   </Button>
                 );
@@ -173,7 +183,8 @@ const IncidentDetails = (props) => {
           value={progress}
           p="1.25rem"
           color="average"
-          style={{ border: 'none', margin: 0 }}>
+          style={{ border: 'none', margin: 0 }}
+        >
           <Flex justify="center" fontSize="2rem" bold>
             {time_left_pretty}
           </Flex>
@@ -186,7 +197,8 @@ const IncidentDetails = (props) => {
           width="100%"
           textAlign="center"
           p="1rem"
-          fontSize="2rem">
+          fontSize="2rem"
+        >
           {statusText}
         </NoticeBox>
       )}

@@ -14,7 +14,8 @@ export const Binoculars = () => {
         <Section
           title="SIMPLIFIED COORDINATES OF TARGET"
           textAlign="center"
-          fontSize="15px">
+          fontSize="15px"
+        >
           <Box fontSize="30px">
             LONGITUDE : {x_coord}, LATITUDE : {y_coord}
           </Box>

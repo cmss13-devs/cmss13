@@ -1,6 +1,7 @@
 import { classes } from 'common/react';
+
 import { useBackend, useLocalState } from '../backend';
-import { Tabs, Box, Flex, Stack, Button, Icon } from '../components';
+import { Box, Button, Flex, Icon, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
 
 interface MarkProps {
@@ -34,7 +35,7 @@ type HivePosition = 0 | 1 | 2;
 const MenuActions = (props) => {
   const [historicalSelected, setHistoricalSelected] = useLocalState(
     'historicalSelected',
-    ''
+    '',
   );
   const { data, act } = useBackend<MarkProps>();
   return (
@@ -43,7 +44,8 @@ const MenuActions = (props) => {
         <Button
           color="xeno"
           disabled={historicalSelected === ''}
-          onClick={() => act('watch', { type: historicalSelected })}>
+          onClick={() => act('watch', { type: historicalSelected })}
+        >
           Watch
         </Button>
       </Flex.Item>
@@ -51,7 +53,8 @@ const MenuActions = (props) => {
         <Button
           color="xeno"
           disabled={historicalSelected === ''}
-          onClick={() => act('track', { type: historicalSelected })}>
+          onClick={() => act('track', { type: historicalSelected })}
+        >
           Track
         </Button>
       </Flex.Item>
@@ -63,7 +66,8 @@ const MenuActions = (props) => {
             onClick={() => {
               act('destroy', { type: historicalSelected });
               setHistoricalSelected('');
-            }}>
+            }}
+          >
             Destroy
           </Button>
         </Flex.Item>
@@ -74,7 +78,8 @@ const MenuActions = (props) => {
           <Button
             color="xeno"
             disabled={historicalSelected === ''}
-            onClick={() => act('force', { type: historicalSelected })}>
+            onClick={() => act('force', { type: historicalSelected })}
+          >
             Force Tracking
           </Button>
         </Flex.Item>
@@ -87,7 +92,7 @@ const MarkSelection = (props) => {
   const { data } = useBackend<MarkProps>();
   const [selectionMenu, setSelectionMenu] = useLocalState(
     'selectionMenu',
-    false
+    false,
   );
   const { selected_mark } = data;
   const mark_prototype =
@@ -104,7 +109,8 @@ const MarkSelection = (props) => {
             ])}
             color="xeno"
             onClick={() => setSelectionMenu(!selectionMenu)}
-            compact>
+            compact
+          >
             <MarkImage image={mark_prototype?.image} size="64x64" />
           </Button>
         </Stack.Item>
@@ -132,7 +138,7 @@ const MarkSelection = (props) => {
 
 const MarkImage = (
   props: { readonly image: string; readonly size: string },
-  _
+  _,
 ) => {
   return (
     <span
@@ -150,7 +156,7 @@ const HistoricalMark = (props: { readonly mark: PlacedMark }) => {
   const { mark } = props;
   const [historicalSelected, setHistoricalSelected] = useLocalState(
     'historicalSelected',
-    ''
+    '',
   );
 
   const isTracked =
@@ -165,9 +171,10 @@ const HistoricalMark = (props: { readonly mark: PlacedMark }) => {
             ? mark.id
             : historicalSelected === mark.id
               ? ''
-              : mark.id
+              : mark.id,
         )
-      }>
+      }
+    >
       <Flex className="MarkStack" direction="row" justify="space-between" fill>
         <Flex.Item className="ChooseMark__BuildIcon">
           <MarkImage image={mark.image} size="64x64" />
@@ -265,7 +272,8 @@ const MarkMeaningList = (props: { readonly onClick?: () => void }) => {
             if (props.onClick) {
               props.onClick();
             }
-          }}>
+          }}
+        >
           <Stack align="center">
             <Stack.Item>
               <MarkImage image={val.image} size="32x32" />

@@ -10,7 +10,7 @@ import { Component, createRef, RefObject } from 'react';
 import { Box, BoxProps } from './Box';
 
 type Props = {
-  data: number[][];
+  readonly data: number[][];
 } & Partial<{
   fillColor: string;
   rangeX: [number, number];

@@ -56,8 +56,8 @@ export const Smes = (props) => {
                 <Button
                   icon={inputAttempt ? 'sync-alt' : 'times'}
                   selected={inputAttempt}
-              onClick={() => act('tryinput')}
-            >
+                  onClick={() => act('tryinput')}
+                >
                   {inputAttempt ? 'Auto' : 'Off'}
                 </Button>
               }
@@ -141,8 +141,8 @@ export const Smes = (props) => {
                 <Button
                   icon={outputAttempt ? 'power-off' : 'times'}
                   selected={outputAttempt}
-              onClick={() => act('tryoutput')}
-            >
+                  onClick={() => act('tryoutput')}
+                >
                   {outputAttempt ? 'On' : 'Off'}
                 </Button>
               }

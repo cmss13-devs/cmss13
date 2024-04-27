@@ -1,11 +1,17 @@
 import { range } from 'common/collections';
+
 import { useBackend } from '../../backend';
 import { Box, Icon, Stack } from '../../components';
 import { DropshipEquipment } from '../DropshipWeaponsConsole';
-import { MfdProps, MfdPanel } from './MultifunctionDisplay';
+import { MfdPanel, MfdProps } from './MultifunctionDisplay';
 import { mfdState, useWeaponState } from './stateManagers';
+import {
+  getLastTargetName,
+  lazeMapper,
+  TargetLines,
+  useTargetOffset,
+} from './TargetAquisition';
 import { LazeTarget } from './types';
-import { getLastTargetName, lazeMapper, TargetLines, useTargetOffset } from './TargetAquisition';
 
 const EmptyWeaponPanel = (props) => {
   return <div>Nothing Listed</div>;
@@ -93,7 +99,8 @@ const WeaponPanel = (props: {
                 y={210}
                 text-anchor="end"
                 transform="rotate(-90 20 210)"
-                fontSize="2em">
+                fontSize="2em"
+              >
                 <tspan x={50} y={250} dy="1.2em">
                   NO TARGETS
                 </tspan>
@@ -138,7 +145,7 @@ export const WeaponMfdPanel = (props: MfdProps) => {
   const { targetOffset, setTargetOffset } = useTargetOffset(props.panelStateId);
   const weap = data.equipment_data.find((x) => x.mount_point === weaponState);
   const targets = range(targetOffset, targetOffset + 5).map((x) =>
-    lazeMapper(x)
+    lazeMapper(x),
   );
 
   return (
@@ -184,7 +191,8 @@ export const WeaponMfdPanel = (props: MfdProps) => {
           },
         },
       ]}
-      rightButtons={targets}>
+      rightButtons={targets}
+    >
       <Box className="NavigationMenu">
         {weap ? (
           <WeaponPanel equipment={weap} panelId={props.panelStateId} />

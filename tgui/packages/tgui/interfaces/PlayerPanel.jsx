@@ -1,6 +1,16 @@
 import { Fragment } from 'react';
 import { useBackend, useLocalState } from '../backend';
-import { Input, Button, Stack, Section, Tabs, Box, Dropdown, Slider, Tooltip } from '../components';
+import {
+  Input,
+  Button,
+  Stack,
+  Section,
+  Tabs,
+  Box,
+  Dropdown,
+  Slider,
+  Tooltip,
+} from '../components';
 import { Window } from '../layouts';
 
 const PAGES = [
@@ -222,7 +232,8 @@ export const PlayerPanel = (props) => {
                       color={page.color}
                       selected={i === pageIndex}
                       icon={page.icon}
-                      onClick={() => setPageIndex(i)}>
+                      onClick={() => setPageIndex(i)}
+                    >
                       {page.title}
                     </Tabs.Tab>
                   );
@@ -454,7 +465,7 @@ const PunishmentActions = (props) => {
                 disabled={!hasPermission(data, 'mob_mute')}
                 onClick={() =>
                   act('mob_mute', {
-                    'mute_flag': !isMuted
+                    mute_flag: !isMuted
                       ? client_muted | bit.bitflag
                       : client_muted & ~bit.bitflag,
                   })
@@ -544,12 +555,12 @@ const FunActions = (props) => {
   const { glob_span } = data;
   const [getSpanSetting, setSpanSetting] = useLocalState(
     'span_setting',
-    glob_span[0].span
+    glob_span[0].span,
   );
 
   const [lockExplode, setLockExplode] = useLocalState(
     'explode_lock_toggle',
-    true
+    true,
   );
   const [expPower, setExpPower] = useLocalState('exp_power', 50);
   const [falloff, setFalloff] = useLocalState('falloff', 75);
@@ -598,7 +609,8 @@ const FunActions = (props) => {
               onClick={() => setLockExplode(!lockExplode)}
               color={lockExplode ? 'good' : 'bad'}
             />
-          }>
+          }
+        >
           <Stack align="right" grow={1} mt={1}>
             <Stack.Item>
               <Button
@@ -607,7 +619,8 @@ const FunActions = (props) => {
                 disabled={lockExplode}
                 onClick={() =>
                   act('mob_explode', { power: expPower, falloff: falloff })
-                }>
+                }
+              >
                 <Box height="100%" pt={2} pb={2} textAlign="center">
                   Detonate
                 </Box>
@@ -654,7 +667,7 @@ const AntagActions = (props) => {
 
   const [selectedHivenumber, setHivenumber] = useLocalState(
     'selected_hivenumber',
-    Object.keys(glob_hives)[0]
+    Object.keys(glob_hives)[0],
   );
   return (
     <Section fill>
@@ -691,7 +704,8 @@ const AntagActions = (props) => {
             options={Object.keys(glob_hives)}
             onSelected={(value) => setHivenumber(value)}
           />
-        }>
+        }
+      >
         <Stack align="right" grow={1} mt={1}>
           {!!is_human && (
             <>
@@ -800,13 +814,14 @@ const PhysicalActions = (props) => {
                     setDelimbOption(
                       delimbOption & limb_flags[index]
                         ? delimbOption & ~limb_flags[index]
-                        : delimbOption | limb_flags[index]
+                        : delimbOption | limb_flags[index],
                     )
                   }
                 />
               ))}
             </Stack>
-          }>
+          }
+        >
           <Stack align="right" grow={1}>
             <Button.Confirm
               width="100%"
@@ -818,7 +833,7 @@ const PhysicalActions = (props) => {
                 act('mob_delimb', {
                   limbs: limb_flags.map(
                     (val, index) =>
-                      !!(delimbOption & val) && glob_limbs[limbs[index]]
+                      !!(delimbOption & val) && glob_limbs[limbs[index]],
                   ),
                 })
               }
@@ -833,7 +848,7 @@ const PhysicalActions = (props) => {
                 act('mob_relimb', {
                   limbs: limb_flags.map(
                     (val, index) =>
-                      !!(delimbOption & val) && glob_limbs[limbs[index]]
+                      !!(delimbOption & val) && glob_limbs[limbs[index]],
                   ),
                 })
               }
@@ -849,7 +864,8 @@ const PhysicalActions = (props) => {
               icon="undo"
               width="100%"
               disabled={!hasPermission(data, 'cryo_human')}
-              onClick={() => act('cryo_human')}>
+              onClick={() => act('cryo_human')}
+            >
               <Tooltip content="This will delete the mob, with all of their items and re-open the slot for other players to play." />
             </Button.Confirm>
           )}

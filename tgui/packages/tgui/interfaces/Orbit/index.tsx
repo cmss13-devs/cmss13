@@ -2,9 +2,20 @@ import { filter, sortBy } from 'common/collections';
 import { flow } from 'common/fp';
 import { capitalizeFirst, multiline } from 'common/string';
 import { useBackend, useLocalState } from 'tgui/backend';
-import { Box, Button, Collapsible, ColorBox, Icon, Input, LabeledList, Section, Stack } from 'tgui/components';
+import {
+  Box,
+  Button,
+  Collapsible,
+  ColorBox,
+  Icon,
+  Input,
+  LabeledList,
+  Section,
+  Stack,
+} from 'tgui/components';
 import { Window } from 'tgui/layouts';
-import { getDisplayName, isJobOrNameMatch, getHealthColor } from './helpers';
+
+import { getDisplayName, getHealthColor, isJobOrNameMatch } from './helpers';
 import type { Observable, OrbitData } from './types';
 
 export const Orbit = (props) => {
@@ -35,11 +46,11 @@ const ObservableSearch = (props) => {
 
   const [autoObserve, setAutoObserve] = useLocalState<boolean>(
     'autoObserve',
-    auto_observe ? true : false
+    auto_observe ? true : false,
   );
   const [searchQuery, setSearchQuery] = useLocalState<string>(
     'searchQuery',
-    ''
+    '',
   );
 
   /** Gets a list of Observables, then filters the most relevant to orbit */
@@ -48,7 +59,7 @@ const ObservableSearch = (props) => {
     const mostRelevant: Observable = flow([
       // Filters out anything that doesn't match search
       filter<Observable>((observable) =>
-        isJobOrNameMatch(observable, searchQuery)
+        isJobOrNameMatch(observable, searchQuery),
       ),
       // Sorts descending by orbiters
       sortBy<Observable>((observable) => -(observable.orbiters || 0)),
@@ -217,12 +228,12 @@ const ObservableSection = (props: {
   const [searchQuery] = useLocalState<string>('searchQuery', '');
   const filteredSection: Array<Observable> = flow([
     filter<Observable>((observable) =>
-      isJobOrNameMatch(observable, searchQuery)
+      isJobOrNameMatch(observable, searchQuery),
     ),
     sortBy<Observable>((observable) =>
       getDisplayName(observable.full_name, observable.nickname)
         .replace(/^"/, '')
-        .toLowerCase()
+        .toLowerCase(),
     ),
   ])(section);
   if (!filteredSection.length) {
@@ -235,7 +246,8 @@ const ObservableSection = (props: {
         bold
         color={color ?? 'grey'}
         open={!!color}
-        title={title + ` - (${filteredSection.length})`}>
+        title={title + ` - (${filteredSection.length})`}
+      >
         {filteredSection.map((poi, index) => {
           return <ObservableItem color={color} item={poi} key={index} />;
         })}
@@ -265,11 +277,12 @@ const ObservableItem = (props: {
         'border-color': color ? '#2185d0' : 'grey',
         'border-style': 'solid',
         'border-width': '1px',
-        'color': color ? 'white' : 'grey',
+        color: color ? 'white' : 'grey',
       }}
       onClick={() => act('orbit', { ref: ref })}
       tooltip={displayHealth && <ObservableTooltip item={item} />}
-      tooltipPosition="bottom-start">
+      tooltipPosition="bottom-start"
+    >
       {displayHealth && (
         <ColorBox
           color={getHealthColor(health)}
@@ -345,8 +358,8 @@ const ObservableIcon = (props: {
       style={{
         transform: 'scale(2) translatey(-1px)',
         '-ms-interpolation-mode': 'nearest-neighbor',
-        'backgroundColor': background_color ? background_color : null,
-        'verticalAlign': 'middle',
+        backgroundColor: background_color ? background_color : null,
+        verticalAlign: 'middle',
       }}
     />
   );

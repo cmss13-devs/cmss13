@@ -1,5 +1,15 @@
 import { useBackend } from '../backend';
-import { Button, Section, ProgressBar, Dimmer, Icon, NoticeBox, Box, Collapsible, Divider } from '../components';
+import {
+  Button,
+  Section,
+  ProgressBar,
+  Dimmer,
+  Icon,
+  NoticeBox,
+  Box,
+  Collapsible,
+  Divider,
+} from '../components';
 import { Window } from '../layouts';
 
 export const OrbitalCannonConsole = () => {
@@ -30,7 +40,8 @@ export const OrbitalCannonConsole = () => {
               ranges={{
                 bad: [-Infinity, 0.51],
                 good: [0.51, Infinity],
-              }}>
+              }}
+            >
               <Box textAlign="center">{data.fuel} Fuel Blocks loaded</Box>
             </ProgressBar>
           </Box>
@@ -59,7 +70,8 @@ export const OrbitalCannonConsole = () => {
                 good: [-Infinity, 0.33],
                 average: [0.33, 0.67],
                 bad: [0.67, Infinity],
-              }}>
+              }}
+            >
               <Box textAlign="center">
                 {Math.ceil(timeLeft / 10)} seconds until the cannon can be
                 chambered!

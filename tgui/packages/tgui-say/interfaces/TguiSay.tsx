@@ -1,9 +1,10 @@
+import { Component, createRef } from 'react';
 import { TextArea } from 'tgui/components';
-import { CHANNELS, WINDOW_SIZES } from '../constants';
+
 import { Dragzone } from '../components/dragzone';
+import { CHANNELS, WINDOW_SIZES } from '../constants';
 import { eventHandlerMap } from '../handlers';
 import { getCss, getTheme, timers } from '../helpers';
-import { Component, createRef } from 'react';
 import { Modal, State } from '../types';
 
 /** Primary class for the TGUI say modal. */
@@ -61,7 +62,8 @@ export class TguiSay extends Component<{}, State> {
               key="options"
               className={getCss('button', theme)}
               onClick={onClick}
-              type="submit">
+              type="submit"
+            >
               {buttonContent}
             </button>
           )}
@@ -84,7 +86,8 @@ export class TguiSay extends Component<{}, State> {
               className={getCss('button', theme)}
               onClick={onEscape}
               type="submit"
-              style={{ 'width': '2rem', 'marginRight': '5px' }}>
+              style={{ width: '2rem', marginRight: '5px' }}
+            >
               X
             </button>
           )}

@@ -1,9 +1,20 @@
 import { range } from 'common/collections';
+
 import { useBackend, useLocalState, useSharedState } from '../../backend';
 import { Box, Icon, Stack } from '../../components';
-import { MfdProps, MfdPanel } from './MultifunctionDisplay';
-import { mfdState, useFiremissionXOffsetValue, useFiremissionYOffsetValue, useLazeTarget } from './stateManagers';
-import { CasFiremission, EquipmentContext, FiremissionContext, TargetContext } from './types';
+import { MfdPanel, MfdProps } from './MultifunctionDisplay';
+import {
+  mfdState,
+  useFiremissionXOffsetValue,
+  useFiremissionYOffsetValue,
+  useLazeTarget,
+} from './stateManagers';
+import {
+  CasFiremission,
+  EquipmentContext,
+  FiremissionContext,
+  TargetContext,
+} from './types';
 
 const directionLookup = new Map<string, number>();
 directionLookup['SOUTH'] = 2;
@@ -14,7 +25,7 @@ directionLookup['EAST'] = 4;
 const useStrikeMode = () => {
   const [data, set] = useSharedState<string | undefined>(
     'strike-mode',
-    undefined
+    undefined,
   );
   return {
     strikeMode: data,
@@ -25,7 +36,7 @@ const useStrikeMode = () => {
 const useStrikeDirection = () => {
   const [data, set] = useSharedState<string | undefined>(
     'strike-direction',
-    undefined
+    undefined,
   );
   return {
     strikeDirection: data,
@@ -36,7 +47,7 @@ const useStrikeDirection = () => {
 const useWeaponSelectedState = () => {
   const [data, set] = useSharedState<number | undefined>(
     'target-weapon-select',
-    undefined
+    undefined,
   );
   return {
     weaponSelected: data,
@@ -47,7 +58,7 @@ const useWeaponSelectedState = () => {
 const useTargetFiremissionSelect = () => {
   const [data, set] = useSharedState<CasFiremission | undefined>(
     'target-firemission-select',
-    undefined
+    undefined,
   );
   return {
     firemissionSelected: data,
@@ -66,7 +77,7 @@ export const useTargetOffset = (panelId: string) => {
 const useTargetSubmenu = (panelId: string) => {
   const [data, set] = useSharedState<string | undefined>(
     `${panelId}_target_left`,
-    undefined
+    undefined,
   );
   return {
     leftButtonMode: data,
@@ -189,7 +200,7 @@ const leftButtonGenerator = (panelId: string) => {
               setLeftButtonMode(undefined);
             },
           };
-        })
+        }),
       );
     }
     if (strikeMode === 'firemission' && firemissionSelected === undefined) {
@@ -277,17 +288,17 @@ export const lazeMapper = (offset) => {
     children: buttomLabel(),
     onClick: target
       ? () => {
-        setSelectedTarget(target.target_tag);
-        act('firemission-dual-offset-camera', {
-          'target_id': target.target_tag,
-          'x_offset_value': fmXOffsetValue,
-          'y_offset_value': fmYOffsetValue,
-        });
-      }
+          setSelectedTarget(target.target_tag);
+          act('firemission-dual-offset-camera', {
+            target_id: target.target_tag,
+            x_offset_value: fmXOffsetValue,
+            y_offset_value: fmYOffsetValue,
+          });
+        }
       : () => {
-        act('set-camera', { 'equipment_id': null });
-        setSelectedTarget(undefined);
-      },
+          act('set-camera', { equipment_id: null });
+          setSelectedTarget(undefined);
+        },
   };
 };
 
@@ -322,7 +333,7 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
   const { targetOffset, setTargetOffset } = useTargetOffset(panelStateId);
   const [fmOffset, setFmOffset] = useLocalState(
     `${props.panelStateId}_fm_strike_select_offset`,
-    0
+    0,
   );
   const { leftButtonMode } = useTargetSubmenu(props.panelStateId);
 
@@ -334,8 +345,8 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
       ? data.equipment_data.find((x) => x.eqp_tag === weaponSelected)?.name
       : firemissionSelected !== undefined
         ? data.firemission_data.find(
-          (x) => x.mission_tag === firemissionSelected.mission_tag
-        )?.name
+            (x) => x.mission_tag === firemissionSelected.mission_tag,
+          )?.name
         : 'NONE';
 
   const strikeReady =
@@ -347,7 +358,7 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
       (strikeMode === 'firemission' && firemissionSelected !== undefined));
 
   const targets = range(targetOffset, targetOffset + 5).map((x) =>
-    lazeMapper(x)
+    lazeMapper(x),
   );
 
   if (
@@ -443,7 +454,8 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
         },
       ]}
       leftButtons={leftButtonGenerator(panelStateId)}
-      rightButtons={targets}>
+      rightButtons={targets}
+    >
       <Box className="NavigationMenu">
         <Stack>
           <Stack.Item width="50px">
@@ -456,7 +468,8 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
                   refX="0"
                   refY="3.5"
                   fill="#00e94e"
-                  orient="auto">
+                  orient="auto"
+                >
                   <polygon points="0 0, 10 3.5, 0 7" />
                 </marker>
               </defs>
@@ -493,7 +506,7 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
                 <h3>
                   Target selected:{' '}
                   {data.targets_data.find(
-                    (x) => x?.target_tag === selectedTarget
+                    (x) => x?.target_tag === selectedTarget,
                   )?.target_name ?? 'NONE'}
                 </h3>
               </Stack.Item>
@@ -528,7 +541,8 @@ export const TargetAquisitionMfdPanel = (props: MfdProps) => {
                     y={210}
                     text-anchor="end"
                     transform="rotate(-90 20 210)"
-                    fontSize="2em">
+                    fontSize="2em"
+                  >
                     <tspan x={50} y={250} dy="1.2em">
                       NO TARGETS
                     </tspan>

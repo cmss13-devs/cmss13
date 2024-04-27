@@ -57,12 +57,12 @@ export const Mortar = (props) => {
           <Button
             content="View Camera"
             style={{
-              'display': 'flex',
-              'position': 'absolute',
-              'top': '10px',
-              'right': '15px',
-              'height': '65px',
-              'width': '80px',
+              display: 'flex',
+              position: 'absolute',
+              top: '10px',
+              right: '15px',
+              height: '65px',
+              width: '80px',
               'white-space': 'normal',
               'text-align': 'center',
               'align-items': 'center',

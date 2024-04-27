@@ -1,16 +1,17 @@
-import { MfdPanel, MfdProps } from './MultifunctionDisplay';
-import { Box, Stack } from '../../components';
-import { useBackend, useLocalState } from '../../backend';
-import { mfdState, useEquipmentState } from './stateManagers';
 import { range } from 'common/collections';
+
+import { useBackend, useLocalState } from '../../backend';
+import { Box, Stack } from '../../components';
 import { Icon } from '../../components';
+import { MfdPanel, MfdProps } from './MultifunctionDisplay';
+import { mfdState, useEquipmentState } from './stateManagers';
 import { FultonProps } from './types';
 
 export const FultonMfdPanel = (props: MfdProps) => {
   const { data, act } = useBackend<FultonProps>();
   const [fulltonOffset, setFultonOffset] = useLocalState(
     `${props.panelStateId}_fultonoffset`,
-    0
+    0,
   );
   const { setPanelState } = mfdState(props.panelStateId);
   const { equipmentState } = useEquipmentState(props.panelStateId);
@@ -19,7 +20,7 @@ export const FultonMfdPanel = (props: MfdProps) => {
   const regex = /(\d+)/;
 
   const result = data.equipment_data.find(
-    (x) => x.mount_point === equipmentState
+    (x) => x.mount_point === equipmentState,
   );
 
   const fulton_mapper = (x: number) => {
@@ -35,11 +36,11 @@ export const FultonMfdPanel = (props: MfdProps) => {
   };
 
   const left_targets = range(fulltonOffset, fulltonOffset + 5).map(
-    fulton_mapper
+    fulton_mapper,
   );
 
   const right_targets = range(fulltonOffset + 5, fulltonOffset + 8).map(
-    fulton_mapper
+    fulton_mapper,
   );
 
   const all_targets = range(fulltonOffset, fulltonOffset + 8)
@@ -77,7 +78,8 @@ export const FultonMfdPanel = (props: MfdProps) => {
           children: 'EXIT',
           onClick: () => setPanelState(''),
         },
-      ]}>
+      ]}
+    >
       <Box className="NavigationMenu">
         <Stack>
           <Stack.Item width="100px">

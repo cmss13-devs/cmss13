@@ -1,7 +1,8 @@
-import { CHANNELS, RADIO_PREFIXES, WINDOW_SIZES } from '../constants';
 import { KEY_0, KEY_Z } from 'common/keycodes';
 import { classes } from 'common/react';
 import { debounce, throttle } from 'common/timer';
+
+import { CHANNELS, RADIO_PREFIXES, WINDOW_SIZES } from '../constants';
 
 /**
  * Window functions
@@ -107,7 +108,7 @@ export const storeChat = (message: string): void => {
 export const getCss = (
   element: string,
   theme?: string,
-  options?: string | number
+  options?: string | number,
 ): string =>
   classes([
     element,
@@ -130,7 +131,7 @@ export const getTheme = (
   lightMode: boolean,
   radioPrefix: string,
   channel: number,
-  availableChannels: ReadonlyArray<string>
+  availableChannels: ReadonlyArray<string>,
 ): string => {
   return (
     (lightMode && 'lightMode') ||
@@ -149,7 +150,7 @@ export const timers = {
   forceDebounce: debounce(
     (entry) => Byond.sendMessage('force', entry),
     1000,
-    true
+    true,
   ),
   typingThrottle: throttle(() => Byond.sendMessage('typing'), 4000),
 };
@@ -159,7 +160,7 @@ export const valueExists = (param: any): boolean =>
   param !== null && param !== undefined;
 
 export const getAvailableChannels = (
-  roles: Array<String>
+  roles: Array<String>,
 ): ReadonlyArray<string> => {
   const availableChannels: Array<string> = [...CHANNELS];
   if (!roles) {

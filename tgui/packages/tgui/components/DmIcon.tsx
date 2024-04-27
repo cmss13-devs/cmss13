@@ -1,3 +1,4 @@
+/* eslint-disable func-style */
 import { ReactNode, useEffect, useState } from 'react';
 
 import { resolveAsset } from '../assets';
@@ -18,9 +19,9 @@ enum Direction {
 
 type Props = {
   /** Required: The path of the icon */
-  icon: string;
+  readonly icon: string;
   /** Required: The state of the icon */
-  icon_state: string;
+  readonly icon_state: string;
 } & Partial<{
   /** Facing direction. See direction enum. Default is South */
   direction: Direction;

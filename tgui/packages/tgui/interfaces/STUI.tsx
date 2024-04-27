@@ -1,6 +1,15 @@
 import { useEffect, useState } from 'react';
+
 import { useBackend, useLocalState } from '../backend';
-import { Tabs, Section, Box, Flex, Input, Slider, LabeledList } from '../components';
+import {
+  Box,
+  Flex,
+  Input,
+  LabeledList,
+  Section,
+  Slider,
+  Tabs,
+} from '../components';
 import { Window } from '../layouts';
 
 type STUIData = {
@@ -122,14 +131,16 @@ const STUItabs = () => {
         color="green"
         icon="sync-alt"
         selected={1}
-        onClick={() => act('update')}>
+        onClick={() => act('update')}
+      >
         Update
       </Tabs.Tab>
       {tabs.map((tab) => (
         <Tabs.Tab
           key={tab}
           selected={tab === selectedTab}
-          onClick={() => setSelectedTab(tab)}>
+          onClick={() => setSelectedTab(tab)}
+        >
           {tab}
         </Tabs.Tab>
       ))}

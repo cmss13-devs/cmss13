@@ -12,7 +12,7 @@ import { CSS_COLORS } from '../constants';
 import { BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 
 type Props = {
-  value: number;
+  readonly value: number;
 } & Partial<{
   backgroundColor: string;
   className: string;

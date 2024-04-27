@@ -148,14 +148,14 @@ export class CanvasLayer extends Component {
         0,
         0,
         this.canvasRef.current.width,
-        this.canvasRef.current.height
+        this.canvasRef.current.height,
       );
       this.ctx.drawImage(
         this.img,
         0,
         0,
         this.canvasRef.current.width,
-        this.canvasRef.current.height
+        this.canvasRef.current.height,
       );
 
       this.lineStack = [];
@@ -179,14 +179,14 @@ export class CanvasLayer extends Component {
         0,
         0,
         this.canvasRef.current.width,
-        this.canvasRef.current.height
+        this.canvasRef.current.height,
       );
       this.ctx.drawImage(
         this.img,
         0,
         0,
         this.canvasRef.current.width,
-        this.canvasRef.current.height
+        this.canvasRef.current.height,
       );
       this.ctx.globalCompositeOperation = 'source-over';
 
@@ -229,7 +229,7 @@ export class CanvasLayer extends Component {
         0,
         0,
         this.canvasRef.current?.width,
-        this.canvasRef.current?.height
+        this.canvasRef.current?.height,
       );
     };
   }
@@ -243,7 +243,7 @@ export class CanvasLayer extends Component {
         x,
         y,
         colorSelection,
-      ]
+      ],
     );
     return combinedArray;
   }
@@ -266,7 +266,8 @@ export class CanvasLayer extends Component {
               'This drawing may be too complex to submit. (' +
               this.complexity +
               ')'
-            }>
+            }
+          >
             <Icon
               name="fa-solid fa-triangle-exclamation"
               size={2}

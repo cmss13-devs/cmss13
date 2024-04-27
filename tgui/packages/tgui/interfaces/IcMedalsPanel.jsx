@@ -13,7 +13,7 @@ export const IcMedalsPanel = (props) => {
 
   const [recommendationMedalTypes, setRecommendationMedalTypes] = useLocalState(
     'recommendation_types',
-    []
+    [],
   );
 
   return (
@@ -25,14 +25,16 @@ export const IcMedalsPanel = (props) => {
             fontSize="20px"
             icon="medal"
             color="danger"
-            onClick={() => act('grant_new_medal')}>
+            onClick={() => act('grant_new_medal')}
+          >
             Grant new medal
           </Button>
         </NoticeBox>
         {data.recommendations.map((recommendation, index) => (
           <Section
             key={index}
-            title={recommendation.name + ' (' + recommendation.rank + ')'}>
+            title={recommendation.name + ' (' + recommendation.rank + ')'}
+          >
             <Stack width="100%">
               <Stack.Item>
                 <Flex>
@@ -49,7 +51,8 @@ export const IcMedalsPanel = (props) => {
                           let new_array = recommendationMedalTypes;
                           new_array[index] = CONDUCT_MEDAL;
                           setRecommendationMedalTypes(new_array);
-                        }}>
+                        }}
+                      >
                         <span
                           className={classes([
                             'medal32x32',
@@ -71,7 +74,8 @@ export const IcMedalsPanel = (props) => {
                           let new_array = recommendationMedalTypes;
                           new_array[index] = VALOR_MEDAL;
                           setRecommendationMedalTypes(new_array);
-                        }}>
+                        }}
+                      >
                         <span
                           className={classes([
                             'medal32x32',
@@ -95,7 +99,8 @@ export const IcMedalsPanel = (props) => {
                           let new_array = recommendationMedalTypes;
                           new_array[index] = BRONZE_HEART_MEDAL;
                           setRecommendationMedalTypes(new_array);
-                        }}>
+                        }}
+                      >
                         <span
                           className={classes([
                             'medal32x32',
@@ -117,7 +122,8 @@ export const IcMedalsPanel = (props) => {
                           let new_array = recommendationMedalTypes;
                           new_array[index] = HEROISM_MEDAL;
                           setRecommendationMedalTypes(new_array);
-                        }}>
+                        }}
+                      >
                         <span
                           className={classes([
                             'medal32x32',

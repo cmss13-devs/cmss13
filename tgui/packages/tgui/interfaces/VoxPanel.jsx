@@ -40,7 +40,8 @@ export const VoxPanel = (props) => {
                 color={page.color}
                 selected={i === pageIndex}
                 icon={page.icon}
-                onClick={() => setPageIndex(i)}>
+                onClick={() => setPageIndex(i)}
+              >
                 {page.title}
               </Tabs.Tab>
             );
@@ -155,7 +156,8 @@ const SendVOX = (props) => {
                   setCurrentFaction(currentFaction);
                 }}
               />
-            }>
+            }
+          >
             <ComboBox
               buttons={factions}
               selected={currentFaction}
@@ -195,7 +197,8 @@ const SendVOX = (props) => {
               stepPixelSize={20}
               minValue={0}
               maxValue={100}
-              fluid>
+              fluid
+            >
               Volume: {volume}
             </Slider>
           </Flex.Item>
@@ -336,7 +339,8 @@ export const ComboBox = (props) => {
             tabIndex={0}
             onKeyDown={handleCombos}
             onKeyUp={handleCombos}
-            onSelectStart={() => false}>
+            onSelectStart={() => false}
+          >
             <Flex direction="column">
               {buttons.map((val) => (
                 <Flex.Item key={val}>

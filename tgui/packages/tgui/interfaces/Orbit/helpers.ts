@@ -47,7 +47,7 @@ export const getHealthColor = (health?: number) => {
 /** Checks if a full name or job title matches the search. */
 export const isJobOrNameMatch = (
   observable: Observable,
-  searchQuery: string
+  searchQuery: string,
 ) => {
   if (!searchQuery) {
     return true;

@@ -4,7 +4,19 @@ import { multiline } from 'common/string';
 import { createUuid } from 'common/uuid';
 import { Component, Fragment } from 'react';
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, ByondUi, Divider, Input, Knob, LabeledControls, NumberInput, Section, Flex, Slider } from '../components';
+import {
+  Box,
+  Button,
+  ByondUi,
+  Divider,
+  Input,
+  Knob,
+  LabeledControls,
+  NumberInput,
+  Section,
+  Flex,
+  Slider,
+} from '../components';
 import { Window } from '../layouts';
 
 const pod_grey = {
@@ -318,7 +330,8 @@ const ViewTabHolder = (props) => {
             onClick={() => act('clear_bay')}
           />
         </>
-      }>
+      }
+    >
       <Flex direction="column" height="100%">
         <Flex.Item>
           <TabPageComponent />
@@ -602,7 +615,8 @@ class PresetsPage extends Component {
               onClick={() => this.deletePreset(presetIndex)}
             />
           </>
-        }>
+        }
+      >
         {settingName === 1 && (
           <>
             <Button
@@ -653,23 +667,23 @@ class PresetsPage extends Component {
         )}
         {presets
           ? presets.map((preset, i) => (
-            <Button
-              key={i}
-              width="100%"
-              backgroundColor={`hsl(${preset.hue}, 50%, 50%)`}
-              onClick={() => setSelectedPreset(preset.id)}
-              content={preset.title}
-              style={
-                presetIndex === preset.id
-                  ? {
-                    'border-width': '1px',
-                    'border-style': 'solid',
-                    'border-color': `hsl(${preset.hue}, 80%, 80%)`,
-                  }
-                  : ''
-              }
-            />
-          ))
+              <Button
+                key={i}
+                width="100%"
+                backgroundColor={`hsl(${preset.hue}, 50%, 50%)`}
+                onClick={() => setSelectedPreset(preset.id)}
+                content={preset.title}
+                style={
+                  presetIndex === preset.id
+                    ? {
+                        'border-width': '1px',
+                        'border-style': 'solid',
+                        'border-color': `hsl(${preset.hue}, 80%, 80%)`,
+                      }
+                    : ''
+                }
+              />
+            ))
           : ''}
       </Section>
     );
@@ -725,19 +739,20 @@ const Timing = (props) => {
           tooltipPosition="top"
           onClick={() => {
             act('set_delays', {
-              'drop_time': 0,
-              'dropping_time': 35,
-              'open_time': 30,
-              'return_time': 300,
+              drop_time: 0,
+              dropping_time: 35,
+              open_time: 30,
+              return_time: 300,
             });
             act('set_reverse_delays', {
-              'drop_time': 0,
-              'dropping_time': 35,
-              'open_time': 30,
+              drop_time: 0,
+              dropping_time: 35,
+              open_time: 30,
             });
           }}
         />
-      }>
+      }
+    >
       <DelayHelper delay_list={DELAYS} title="Normal Timers" />
       {!!data.should_recall && (
         <>
@@ -818,11 +833,12 @@ const Damage = (props) => {
           tooltipPosition="top"
           onClick={() => {
             act('set_damage', {
-              'damage': 0,
+              damage: 0,
             });
           }}
         />
-      }>
+      }
+    >
       <Slider
         value={data.land_damage}
         ranges={{
@@ -859,19 +875,20 @@ const Explosion = (props) => {
             if (enabled) {
               setEnabled(false);
               act('set_explosive_parameters', {
-                'power': 0,
-                'falloff': 75,
+                power: 0,
+                falloff: 75,
               });
             } else {
               setEnabled(true);
               act('set_explosive_parameters', {
-                'power': 50,
-                'falloff': 75,
+                power: 50,
+                falloff: 75,
               });
             }
           }}
         />
-      }>
+      }
+    >
       {!!enabled && (
         <>
           <Slider

@@ -10,7 +10,7 @@ export const handleForce = function (this: Modal) {
   if (value && channel < 2) {
     this.timers.forceDebounce(
       availableChannels[channel],
-      channel === 0 ? radioPrefix + value : value
+      channel === 0 ? radioPrefix + value : value,
     );
     this.events.onReset(channel);
     if (size !== WINDOW_SIZES.small) {

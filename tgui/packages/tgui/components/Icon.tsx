@@ -13,7 +13,7 @@ import { BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 
 const FA_OUTLINE_REGEX = /-o$/;
 
-type IconPropsUnique = { name: string } & Partial<{
+type IconPropsUnique = { readonly name: string } & Partial<{
   size: number;
   spin: BooleanLike;
   className: string;
@@ -70,8 +70,8 @@ export const Icon = (props: IconProps) => {
 };
 
 type IconStackUnique = {
-  children: ReactNode;
-  className?: string;
+  readonly children: ReactNode;
+  readonly className?: string;
 };
 
 export type IconStackProps = IconStackUnique & BoxProps;

@@ -19,7 +19,8 @@ export const AltitudeControlConsole = () => {
               ranges={{
                 good: [-Infinity, 50],
                 bad: [51, Infinity],
-              }}>
+              }}
+            >
               <Box textAlign="center">{data.temp}% to overheat</Box>
             </ProgressBar>
           </Box>

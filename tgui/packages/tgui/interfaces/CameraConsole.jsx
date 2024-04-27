@@ -15,7 +15,7 @@ export const prevNextCamera = (cameras, activeCamera) => {
     return [];
   }
   const index = cameras.findIndex(
-    (camera) => camera.name === activeCamera.name
+    (camera) => camera.name === activeCamera.name,
   );
   return [cameras[index - 1]?.name, cameras[index + 1]?.name];
 };
@@ -43,7 +43,7 @@ export const CameraConsole = (props) => {
   const cameras = selectCameras(data.cameras);
   const [prevCameraName, nextCameraName] = prevNextCamera(
     cameras,
-    activeCamera
+    activeCamera,
   );
   return (
     <Window width={870} height={708} resizable>
@@ -126,7 +126,8 @@ export const CameraConsoleContent = (props) => {
                 act('switch_camera', {
                   name: camera.name,
                 })
-              }>
+              }
+            >
               {camera.name}
             </div>
           ))}

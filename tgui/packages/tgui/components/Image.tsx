@@ -1,3 +1,4 @@
+/* eslint-disable func-style */
 import { useRef } from 'react';
 
 import { BoxProps, computeBoxProps } from './Box';

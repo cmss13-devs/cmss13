@@ -33,7 +33,8 @@ const KillView = (props) => {
   return real_data.map((entry, index) => (
     <Collapsible
       key={index}
-      title={entry.mob_name + ' (' + entry.time_of_death + ')'}>
+      title={entry.mob_name + ' (' + entry.time_of_death + ')'}
+    >
       <Box>Mob: {entry.mob_name}</Box>
       {entry.job_name ? (
         <>

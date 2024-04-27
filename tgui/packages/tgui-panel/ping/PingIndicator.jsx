@@ -30,7 +30,8 @@ export const PingIndicator = (props) => {
       px="0.25em" // Override what light theme does to this
       tooltip="Ping relays"
       tooltipPosition="bottom-start"
-      onClick={() => act('ping_relays')}>
+      onClick={() => act('ping_relays')}
+    >
       <Box className="Ping__indicator" backgroundColor={color} />
       {roundtrip}
     </Button>

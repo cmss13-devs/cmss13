@@ -1,10 +1,11 @@
+import { classes } from 'common/react';
+import { ReactNode } from 'react';
+
 import { useBackend } from '../../backend';
 import { Button, Flex } from '../../components';
-import { CrtPanel } from '../CrtPanel';
 import { Table, TableCell, TableRow } from '../../components/Table';
-import { ReactNode } from 'react';
+import { CrtPanel } from '../CrtPanel';
 import { ButtonProps } from './types';
-import { classes } from 'common/react';
 
 export interface MfdProps {
   readonly panelStateId: string; // eslint-disable-line
@@ -29,7 +30,8 @@ export const MfdButton = (props: ButtonProps) => {
       className={classes([
         props.children && 'mfd_button_active',
         !props.children && 'mfd_button',
-      ])}>
+      ])}
+    >
       {props.children}
     </Button>
   );
@@ -46,7 +48,8 @@ export const HorizontalPanel = (props: {
     <Flex
       justify="center"
       align="space-evenly"
-      className="HorizontalButtonPanel">
+      className="HorizontalButtonPanel"
+    >
       {props.buttons.map((x, i) => (
         <Flex.Item key={i}>
           {x ? <MfdButton {...x} /> : <EmptyMfdButton />}
@@ -64,7 +67,8 @@ export const VerticalPanel = (props: {
       direction="column"
       justify="center"
       align="space-evenly"
-      className="VerticalButtonPanel">
+      className="VerticalButtonPanel"
+    >
       {props.buttons?.map((x, i) => (
         <Flex.Item key={i}>
           {x ? <MfdButton {...x} /> : <EmptyMfdButton />}
@@ -101,13 +105,13 @@ export const MfdPanel = (props: MfdProps) => {
 
   const topButtons = Array.from({ length: 5 }).map((_, i) => topProps[i] ?? {});
   const bottomButtons = Array.from({ length: 5 }).map(
-    (_, i) => botProps[i] ?? {}
+    (_, i) => botProps[i] ?? {},
   );
   const leftButtons = Array.from({ length: 5 }).map(
-    (_, i) => leftProps[i] ?? {}
+    (_, i) => leftProps[i] ?? {},
   );
   const rightButtons = Array.from({ length: 5 }).map(
-    (_, i) => rightProps[i] ?? {}
+    (_, i) => rightProps[i] ?? {},
   );
   return (
     <Table className="primarypanel">

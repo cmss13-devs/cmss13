@@ -1,5 +1,6 @@
 import { range } from 'common/collections';
 import { BooleanLike } from 'common/react';
+
 import { resolveAsset } from '../assets';
 import { useBackend } from '../backend';
 import { Box, Button, Icon, Stack } from '../components';
@@ -28,7 +29,8 @@ const CornerText = (props: {
         align === 'left'
           ? 'StripMenu__cornertext_left'
           : 'StripMenu__cornertext_right'
-      }>
+      }
+    >
       {children}
     </Box>
   );
@@ -318,7 +320,8 @@ export const StripMenu = (props, context) => {
                       style={{
                         width: BUTTON_DIMENSIONS,
                         height: BUTTON_DIMENSIONS,
-                      }}>
+                      }}
+                    >
                       <Box className="StripMenu__itembox">
                         <Button
                           onClick={() => {
@@ -339,7 +342,8 @@ export const StripMenu = (props, context) => {
                             background: item?.interacting
                               ? 'hsl(39, 73%, 30%)'
                               : undefined,
-                          }}>
+                          }}
+                        >
                           {slot.image && (
                             <Box
                               as="img"
@@ -359,7 +363,8 @@ export const StripMenu = (props, context) => {
                               });
                             }}
                             tooltip={alternateAction.text}
-                            className="StripMenu__alternativeaction">
+                            className="StripMenu__alternativeaction"
+                          >
                             <Icon name={alternateAction.icon} />
                           </Button>
                         )}

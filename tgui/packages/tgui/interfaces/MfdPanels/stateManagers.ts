@@ -3,7 +3,7 @@ import { useLocalState, useSharedState } from '../../backend';
 export const useEquipmentState = (panelId: string) => {
   const [data, set] = useSharedState<number | undefined>(
     `${panelId}_equipmentstate`,
-    undefined
+    undefined,
   );
   return {
     equipmentState: data,
@@ -14,7 +14,7 @@ export const useEquipmentState = (panelId: string) => {
 export const fmState = (panelId: string) => {
   const [data, set] = useLocalState<string | undefined>(
     `${panelId}_selected_fm`,
-    undefined
+    undefined,
   );
   return {
     selectedFm: data,
@@ -33,7 +33,7 @@ export const fmEditState = (panelId: string) => {
 export const fmWeaponEditState = (panelId: string) => {
   const [data, set] = useLocalState<number | undefined>(
     `${panelId}_edit_fm_weapon`,
-    undefined
+    undefined,
   );
   return {
     editFmWeapon: data,
@@ -59,7 +59,7 @@ export const otherMfdState = (otherPanelId: string | undefined) => {
 export const useWeaponState = (panelId: string) => {
   const [data, set] = useSharedState<number | undefined>(
     `${panelId}_weaponstate`,
-    undefined
+    undefined,
   );
   return {
     weaponState: data,
@@ -86,7 +86,7 @@ export const useFiremissionYOffsetValue = () => {
 export const useLazeTarget = () => {
   const [data, set] = useSharedState<number | undefined>(
     'laze-target',
-    undefined
+    undefined,
   );
   return {
     selectedTarget: data,

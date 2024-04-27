@@ -1,3 +1,4 @@
+/* eslint-disable func-style */
 import { KEY } from 'common/keys';
 import { BooleanLike } from 'common/react';
 import { useState } from 'react';

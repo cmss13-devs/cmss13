@@ -1,3 +1,4 @@
+/* eslint-disable func-style */
 import { createSearch } from 'common/string';
 import { useMemo } from 'react';
 
@@ -6,8 +7,8 @@ import { LootBox } from './LootBox';
 import { SearchGroup, SearchItem } from './types';
 
 type Props = {
-  contents: SearchItem[];
-  searchText: string;
+  readonly contents: SearchItem[];
+  readonly searchText: string;
 };
 
 export function GroupedContents(props: Props) {

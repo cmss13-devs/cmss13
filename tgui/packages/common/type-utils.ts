@@ -1,3 +1,4 @@
+/* eslint-disable func-style */
 /**
  * Helps visualize highly complex ui data on the fly.
  * @example

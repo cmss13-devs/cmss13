@@ -1,6 +1,15 @@
 import { classes } from 'common/react';
+
 import { useBackend } from '../../backend';
-import { Box, Button, Icon, Flex, NoticeBox, Stack, ColorBox } from '../../components';
+import {
+  Box,
+  Button,
+  ColorBox,
+  Flex,
+  Icon,
+  NoticeBox,
+  Stack,
+} from '../../components';
 import { BoxProps } from '../../components/Box';
 import { Table, TableRow } from '../../components/Table';
 
@@ -27,18 +36,21 @@ const ElectricalPanelClosed = (props: BoxProps) => {
         'PanelClosed',
         'ElectricalSafetySign',
         props.className,
-      ])}>
+      ])}
+    >
       <Flex
         direction="row"
         justify="space-between"
         fill
-        className="ElectricalSafetySign">
+        className="ElectricalSafetySign"
+      >
         <Flex.Item grow>
           <Flex
             justify="space-between"
             direction="column"
             fill
-            className={classes(['ElectricalSafetySign'])}>
+            className={classes(['ElectricalSafetySign'])}
+          >
             <Flex.Item>
               <Icon name="circle-xmark" />
             </Flex.Item>
@@ -55,7 +67,8 @@ const ElectricalPanelClosed = (props: BoxProps) => {
             fill
             wrap
             className="WarningIcon"
-            direction="column">
+            direction="column"
+          >
             <Flex.Item>
               <Icon name="bolt" size={2} />
             </Flex.Item>
@@ -73,7 +86,8 @@ const ElectricalPanelClosed = (props: BoxProps) => {
             align="flex-end"
             direction="column"
             fill
-            className={classes(['ElectricalSafetySign'])}>
+            className={classes(['ElectricalSafetySign'])}
+          >
             <Flex.Item>
               <Icon name="circle-xmark" />
             </Flex.Item>
@@ -142,7 +156,8 @@ const ElectricalPanelOpen = (props: BoxProps) => {
         direction="column"
         justify="space-between"
         fill
-        className="ElectricalSafetySign">
+        className="ElectricalSafetySign"
+      >
         <Flex.Item>
           <Table vertical className="WirePanel">
             {data.electrical.wires.map((x, index) => (

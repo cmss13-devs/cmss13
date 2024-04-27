@@ -1,5 +1,14 @@
 import { useBackend, useLocalState } from '../backend';
-import { Stack, Section, Tabs, Button, NoticeBox, Box, Dimmer, Icon } from '../components';
+import {
+  Stack,
+  Section,
+  Tabs,
+  Button,
+  NoticeBox,
+  Box,
+  Dimmer,
+  Icon,
+} from '../components';
 import { Window } from '../layouts';
 
 export const AntiAirConsole = (props) => {
@@ -20,7 +29,7 @@ const GeneralPanel = (props) => {
 
   const [selectedSection, setSelectedSection] = useLocalState(
     'selected_section',
-    null
+    null,
   );
 
   return (
@@ -54,7 +63,8 @@ const GeneralPanel = (props) => {
                       document.activeElement
                         ? document.activeElement.blur()
                         : false
-                    }>
+                    }
+                  >
                     {(!!(val.section_id === data.protecting_section) && (
                       <Box color="good">{val.section_id}</Box>
                     )) || <Box>{val.section_id}</Box>}

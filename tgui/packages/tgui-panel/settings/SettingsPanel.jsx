@@ -126,7 +126,7 @@ export const SettingsGeneral = (props) => {
             </Stack.Item>
             <Stack.Item>
               <Button
-                  ml={0.5}
+                ml={0.5}
                 content="Custom font"
                 icon={freeFont ? 'lock-open' : 'lock'}
                 color={freeFont ? 'good' : 'bad'}
@@ -204,25 +204,25 @@ const TextHighlightSettings = (props) => {
   return (
     <Section fill scrollable height="250px">
       <Stack vertical>
-          {highlightSettings.map((id, i) => (
-            <TextHighlightSetting
-              key={i}
-              id={id}
-              mb={i + 1 === highlightSettings.length ? 0 : '10px'}
-            />
-          ))}
-          {highlightSettings.length < MAX_HIGHLIGHT_SETTINGS && (
+        {highlightSettings.map((id, i) => (
+          <TextHighlightSetting
+            key={i}
+            id={id}
+            mb={i + 1 === highlightSettings.length ? 0 : '10px'}
+          />
+        ))}
+        {highlightSettings.length < MAX_HIGHLIGHT_SETTINGS && (
           <Stack.Item>
-              <Button
-                color="transparent"
-                icon="plus"
-                content="Add Highlight Setting"
-                onClick={() => {
-                  dispatch(addHighlightSetting());
-                }}
-              />
+            <Button
+              color="transparent"
+              icon="plus"
+              content="Add Highlight Setting"
+              onClick={() => {
+                dispatch(addHighlightSetting());
+              }}
+            />
           </Stack.Item>
-          )}
+        )}
       </Stack>
       <Divider />
       <Box>

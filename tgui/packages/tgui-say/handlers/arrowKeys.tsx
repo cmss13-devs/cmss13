@@ -1,4 +1,5 @@
 import { KEY_DOWN, KEY_UP } from 'common/keycodes';
+
 import { getHistoryLength } from '../helpers';
 import { Modal } from '../types';
 
@@ -6,7 +7,7 @@ import { Modal } from '../types';
 export const handleArrowKeys = function (
   this: Modal,
   direction: number,
-  value: string
+  value: string,
 ) {
   const { historyCounter } = this.fields;
   if (direction === KEY_UP && historyCounter < getHistoryLength()) {

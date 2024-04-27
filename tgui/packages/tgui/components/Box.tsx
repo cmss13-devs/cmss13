@@ -46,7 +46,7 @@ export type BoxProps = Partial<{
 
 // Don't you dare put this elsewhere
 type DangerDoNotUse = {
-  dangerouslySetInnerHTML?: {
+  readonly dangerouslySetInnerHTML?: {
     __html: any;
   };
 };

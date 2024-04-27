@@ -1,3 +1,4 @@
+/* eslint-disable func-style */
 /**
  * @file
  * @copyright 2020 Aleksej Komarov
@@ -23,7 +24,7 @@ export function LabeledControls(props: FlexProps) {
 }
 
 type ItemProps = {
-  label: string;
+  readonly label: string;
 } & FlexProps;
 
 function LabeledControlsItem(props: ItemProps) {

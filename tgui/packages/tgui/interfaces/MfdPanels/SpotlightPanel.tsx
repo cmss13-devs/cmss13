@@ -1,9 +1,9 @@
-import { MfdPanel, MfdProps } from './MultifunctionDisplay';
-import { Box, Stack } from '../../components';
 import { useBackend } from '../../backend';
+import { Box, Stack } from '../../components';
+import { DropshipEquipment } from '../DropshipWeaponsConsole';
+import { MfdPanel, MfdProps } from './MultifunctionDisplay';
 import { mfdState, useEquipmentState } from './stateManagers';
 import { EquipmentContext, SpotlightSpec } from './types';
-import { DropshipEquipment } from '../DropshipWeaponsConsole';
 
 const SpotPanel = (props: DropshipEquipment) => {
   const spotData = props.data as SpotlightSpec;
@@ -31,7 +31,7 @@ export const SpotlightMfdPanel = (props: MfdProps) => {
   const { setPanelState } = mfdState(props.panelStateId);
   const { equipmentState } = useEquipmentState(props.panelStateId);
   const spotlight = data.equipment_data.find(
-    (x) => x.mount_point === equipmentState
+    (x) => x.mount_point === equipmentState,
   );
   const deployLabel =
     (spotlight?.data?.deployed ?? 0) === 1 ? 'DISABLE' : 'ENABLE';
@@ -54,7 +54,8 @@ export const SpotlightMfdPanel = (props: MfdProps) => {
           children: 'EXIT',
           onClick: () => setPanelState(''),
         },
-      ]}>
+      ]}
+    >
       <Box className="NavigationMenu">
         {spotlight && <SpotPanel {...spotlight} />}
       </Box>

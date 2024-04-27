@@ -7,23 +7,23 @@ import { Flex, Box, Section, Button, Stack } from '../components';
 import { Window } from '../layouts';
 
 const PAGES = {
-  'login': () => Login,
-  'main': () => MainMenu,
-  'announcements': () => AnnouncementLogs,
-  'bioscans': () => BioscanLogs,
-  'bombardments': () => BombardmentLogs,
-  'apollo': () => ApolloLog,
-  'access_log': () => AccessLogs,
-  'delete_log': () => DeletionLogs,
-  'flight_log': () => FlightLogs,
-  'talking': () => ARESTalk,
-  'deleted_talks': () => DeletedTalks,
-  'read_deleted': () => ReadingTalks,
-  'security': () => Security,
-  'requisitions': () => Requisitions,
-  'emergency': () => Emergency,
-  'tech_log': () => TechLogs,
-  'core_security': () => CoreSec,
+  login: () => Login,
+  main: () => MainMenu,
+  announcements: () => AnnouncementLogs,
+  bioscans: () => BioscanLogs,
+  bombardments: () => BombardmentLogs,
+  apollo: () => ApolloLog,
+  access_log: () => AccessLogs,
+  delete_log: () => DeletionLogs,
+  flight_log: () => FlightLogs,
+  talking: () => ARESTalk,
+  deleted_talks: () => DeletedTalks,
+  read_deleted: () => ReadingTalks,
+  security: () => Security,
+  requisitions: () => Requisitions,
+  emergency: () => Emergency,
+  tech_log: () => TechLogs,
+  core_security: () => CoreSec,
 };
 
 export const AresInterface = (props) => {
@@ -61,7 +61,8 @@ const Login = (props) => {
       color="darkgrey"
       fontSize="2rem"
       mt="-3rem"
-      bold>
+      bold
+    >
       <Box fontFamily="monospace">ARES v3.2 Interface</Box>
       <Box mb="2rem" fontFamily="monospace">
         WY-DOS Executive
@@ -449,7 +450,8 @@ const AnnouncementLogs = (props) => {
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem">
+            fontSize="1.25rem"
+          >
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Time
             </Flex.Item>
@@ -545,7 +547,8 @@ const BioscanLogs = (props) => {
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem">
+            fontSize="1.25rem"
+          >
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Time
             </Flex.Item>
@@ -641,7 +644,8 @@ const BombardmentLogs = (props) => {
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem">
+            fontSize="1.25rem"
+          >
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Time
             </Flex.Item>
@@ -847,7 +851,8 @@ const DeletionLogs = (props) => {
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem">
+            fontSize="1.25rem"
+          >
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Deletion Time
             </Flex.Item>
@@ -1037,7 +1042,8 @@ const DeletedTalks = (props) => {
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem">
+            fontSize="1.25rem"
+          >
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Deletion Time
             </Flex.Item>
@@ -1188,7 +1194,8 @@ const Requisitions = (props) => {
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem">
+            fontSize="1.25rem"
+          >
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Time
             </Flex.Item>
@@ -1281,7 +1288,8 @@ const FlightLogs = (props) => {
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem">
+            fontSize="1.25rem"
+          >
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Time
             </Flex.Item>
@@ -1376,7 +1384,8 @@ const Security = (props) => {
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem">
+            fontSize="1.25rem"
+          >
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Time
             </Flex.Item>
@@ -1638,7 +1647,8 @@ const TechLogs = (props, context) => {
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem">
+            fontSize="1.25rem"
+          >
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
               Time
             </Flex.Item>
@@ -1665,7 +1675,8 @@ const TechLogs = (props, context) => {
                   ml="1rem"
                   shrink="0"
                   textAlign="center"
-                  color="red">
+                  color="red"
+                >
                   {record.details}
                 </Flex.Item>
               )}
@@ -1674,7 +1685,8 @@ const TechLogs = (props, context) => {
                   width="40rem"
                   ml="1rem"
                   shrink="0"
-                  textAlign="center">
+                  textAlign="center"
+                >
                   {record.details}
                 </Flex.Item>
               )}

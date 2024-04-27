@@ -1,6 +1,14 @@
 import { Fragment } from 'react';
 import { useBackend } from '../backend';
-import { Button, Section, Flex, NoticeBox, Collapsible, Divider, Box } from '../components';
+import {
+  Button,
+  Section,
+  Flex,
+  NoticeBox,
+  Collapsible,
+  Divider,
+  Box,
+} from '../components';
 import { Window } from '../layouts';
 
 export const AlmayerControl = (_props) => {
@@ -77,7 +85,8 @@ export const AlmayerControl = (_props) => {
                 color={alertLevelColor}
                 icon="triangle-exclamation"
                 disabled={AlertLevel === 3}
-                onClick={() => act('change_sec_level')}>
+                onClick={() => act('change_sec_level')}
+              >
                 Change alert level; current alert level: {alertLevelString}.
               </Button>
             </Flex.Item>
@@ -243,7 +252,8 @@ export const AlmayerControl = (_props) => {
                               act('delmessage', { number: entry.number })
                             }
                           />
-                        }>
+                        }
+                      >
                         <Box>{entry.text}</Box>
                       </Section>
                     </Flex.Item>

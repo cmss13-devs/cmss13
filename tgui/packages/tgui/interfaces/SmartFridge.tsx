@@ -1,4 +1,5 @@
 import { classes } from 'common/react';
+
 import { useBackend, useLocalState } from '../backend';
 import { Button, Icon, NoticeBox, Section, Stack, Tabs } from '../components';
 import { Table, TableCell, TableRow } from '../components/Table';
@@ -50,7 +51,7 @@ const Contents = (props: {
 }) => {
   const [tabIndex, setTabIndex] = useLocalState(
     `contentsTab_${props.isLocal}`,
-    'all'
+    'all',
   );
   const allItems = props.items;
 
@@ -86,7 +87,8 @@ const Contents = (props: {
               <Tabs.Tab
                 key={key}
                 selected={tabIndex === key}
-                onClick={() => setTabIndex(key)}>
+                onClick={() => setTabIndex(key)}
+              >
                 {displayName} ({items.length})
               </Tabs.Tab>
             );
@@ -111,7 +113,7 @@ const ContentItem = (props: {
 }) => {
   const { data, act } = useBackend<SmartFridgeData>();
   const { item } = props;
-  const itemref = { 'index': item.index, 'amount': 1, isLocal: props.isLocal };
+  const itemref = { index: item.index, amount: 1, isLocal: props.isLocal };
   return (
     <>
       <TableCell className="ItemIconCell">
@@ -126,7 +128,8 @@ const ContentItem = (props: {
           preserveWhitespace
           textAlign="center"
           icon="circle-down"
-          onClick={() => act('vend', itemref)}>
+          onClick={() => act('vend', itemref)}
+        >
           {item.display_name}
         </Button>
       </TableCell>

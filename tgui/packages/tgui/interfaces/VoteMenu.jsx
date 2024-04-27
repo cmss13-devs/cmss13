@@ -46,7 +46,8 @@ export const VoteMenu = (props) => {
                 color={page.color}
                 selected={i === pageIndex}
                 icon={page.icon}
-                onClick={() => setPageIndex(i)}>
+                onClick={() => setPageIndex(i)}
+              >
                 {page.title}
               </Tabs.Tab>
             );
@@ -82,7 +83,8 @@ const MainMenu = (props) => {
                         height="100%"
                         fontSize="110%"
                         textAlign="center"
-                        className="VoteMenu__Textbox">
+                        className="VoteMenu__Textbox"
+                      >
                         {key}
                       </Box>
                     </Flex.Item>

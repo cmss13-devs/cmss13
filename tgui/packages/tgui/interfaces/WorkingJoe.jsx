@@ -3,16 +3,16 @@ import { Flex, Box, Section, Button, Stack } from '../components';
 import { Window } from '../layouts';
 
 const PAGES = {
-  'login': () => Login,
-  'main': () => MainMenu,
-  'apollo': () => ApolloLog,
-  'login_records': () => LoginRecords,
-  'maint_reports': () => MaintReports,
-  'maint_claim': () => MaintManagement,
-  'access_requests': () => AccessRequests,
-  'access_tickets': () => AccessTickets,
-  'id_access': () => AccessID,
-  'core_security_gas': () => CoreSecGas,
+  login: () => Login,
+  main: () => MainMenu,
+  apollo: () => ApolloLog,
+  login_records: () => LoginRecords,
+  maint_reports: () => MaintReports,
+  maint_claim: () => MaintManagement,
+  access_requests: () => AccessRequests,
+  access_tickets: () => AccessTickets,
+  id_access: () => AccessID,
+  core_security_gas: () => CoreSecGas,
 };
 export const WorkingJoe = (props) => {
   const { data } = useBackend();
@@ -45,7 +45,8 @@ const Login = (props) => {
       color="darkgrey"
       fontSize="2rem"
       mt="-3rem"
-      bold>
+      bold
+    >
       <Box fontFamily="monospace">APOLLO Maintenance Controller</Box>
       <Box mb="2rem" fontFamily="monospace">
         WY-DOS Executive
@@ -434,7 +435,8 @@ const MaintReports = (props) => {
           color="darkgrey"
           fontSize="2rem"
           mt="-3rem"
-          bold>
+          bold
+        >
           <Button
             content="New Report"
             icon="exclamation-circle"
@@ -452,7 +454,8 @@ const MaintReports = (props) => {
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem">
+            fontSize="1.25rem"
+          >
             <Flex.Item bold width="5rem" shrink="0" mr="1.5rem">
               ID
             </Flex.Item>
@@ -583,7 +586,8 @@ const MaintManagement = (props) => {
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem">
+            fontSize="1.25rem"
+          >
             <Flex.Item bold width="5rem" shrink="0">
               ID
             </Flex.Item>
@@ -736,7 +740,8 @@ const AccessRequests = (props) => {
           color="darkgrey"
           fontSize="2rem"
           mt="-3rem"
-          bold>
+          bold
+        >
           <Button
             content="Create Ticket"
             icon="exclamation-circle"
@@ -755,7 +760,8 @@ const AccessRequests = (props) => {
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem">
+            fontSize="1.25rem"
+          >
             <Flex.Item bold width="5rem" shrink="0" mr="1.5rem">
               ID
             </Flex.Item>
@@ -887,7 +893,8 @@ const AccessTickets = (props) => {
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem">
+            fontSize="1.25rem"
+          >
             <Flex.Item bold width="5rem" shrink="0" mr="1.5rem">
               ID
             </Flex.Item>

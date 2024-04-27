@@ -7,11 +7,11 @@ import { Box } from './Box';
 import { Button } from './Button';
 
 type DialogProps = {
-  title: any;
-  onClose: () => void;
-  children: any;
-  width?: string;
-  height?: string;
+  readonly title: any;
+  readonly onClose: () => void;
+  readonly children: any;
+  readonly width?: string;
+  readonly height?: string;
 };
 
 export const Dialog = (props: DialogProps) => {
@@ -42,8 +42,8 @@ export const Dialog = (props: DialogProps) => {
 };
 
 type DialogButtonProps = {
-  onClick: () => void;
-  children: any;
+  readonly onClick: () => void;
+  readonly children: any;
 };
 
 const DialogButton = (props: DialogButtonProps) => {
@@ -62,10 +62,10 @@ const DialogButton = (props: DialogButtonProps) => {
 Dialog.Button = DialogButton;
 
 type UnsavedChangesDialogProps = {
-  documentName: string;
-  onSave: () => void;
-  onDiscard: () => void;
-  onClose: () => void;
+  readonly documentName: string;
+  readonly onSave: () => void;
+  readonly onDiscard: () => void;
+  readonly onClose: () => void;
 };
 
 export const UnsavedChangesDialog = (props: UnsavedChangesDialogProps) => {

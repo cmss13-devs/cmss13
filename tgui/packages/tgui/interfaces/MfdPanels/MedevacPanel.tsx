@@ -1,8 +1,9 @@
-import { MfdProps, MfdPanel } from './MultifunctionDisplay';
-import { Box, Divider, Flex, Stack } from '../../components';
-import { useBackend, useLocalState } from '../../backend';
 import { range } from 'common/collections';
+
+import { useBackend, useLocalState } from '../../backend';
+import { Box, Divider, Flex, Stack } from '../../components';
 import { Icon } from '../../components';
+import { MfdPanel, MfdProps } from './MultifunctionDisplay';
 import { mfdState, useEquipmentState } from './stateManagers';
 import { MedevacContext, MedevacTargets } from './types';
 
@@ -51,13 +52,13 @@ export const MedevacMfdPanel = (props: MfdProps) => {
   const { data, act } = useBackend<MedevacContext>();
   const [medevacOffset, setMedevacOffset] = useLocalState(
     `${props.panelStateId}_medevacoffset`,
-    0
+    0,
   );
   const { setPanelState } = mfdState(props.panelStateId);
   const { equipmentState } = useEquipmentState(props.panelStateId);
 
   const result = data.equipment_data.find(
-    (x) => x.mount_point === equipmentState
+    (x) => x.mount_point === equipmentState,
   );
   const medevacs = data.medevac_targets === null ? [] : data.medevac_targets;
   const medevac_mapper = (x: number) => {
@@ -73,11 +74,11 @@ export const MedevacMfdPanel = (props: MfdProps) => {
   };
 
   const left_targets = range(medevacOffset, medevacOffset + 5).map(
-    medevac_mapper
+    medevac_mapper,
   );
 
   const right_targets = range(medevacOffset + 5, medevacOffset + 8).map(
-    medevac_mapper
+    medevac_mapper,
   );
 
   const all_targets = range(medevacOffset, medevacOffset + 8)
@@ -115,7 +116,8 @@ export const MedevacMfdPanel = (props: MfdProps) => {
           children: 'EXIT',
           onClick: () => setPanelState(''),
         },
-      ]}>
+      ]}
+    >
       <Box className="NavigationMenu">
         <Flex justify="space-between">
           <Flex.Item>

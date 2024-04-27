@@ -5,7 +5,7 @@ import { Modal } from '../types';
 export const handleEnter = function (
   this: Modal,
   event: KeyboardEvent,
-  value: string
+  value: string,
 ) {
   const { channel } = this.state;
   const { maxLength, radioPrefix, availableChannels } = this.fields;

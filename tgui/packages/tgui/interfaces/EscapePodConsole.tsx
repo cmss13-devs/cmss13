@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Section, Flex, NoticeBox, Button, Box } from '../components';
+import { Box, Button, Flex, NoticeBox, Section } from '../components';
 import { Window } from '../layouts';
 
 interface EscapePodProps {

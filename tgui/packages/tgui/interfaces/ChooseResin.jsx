@@ -18,7 +18,8 @@ export const ChooseResin = (props) => {
     <Window
       width={350}
       height={15 + constructions.length * heightScale}
-      theme="hive_status">
+      theme="hive_status"
+    >
       <Window.Content>
         <Section
           title="Structures"
@@ -36,13 +37,15 @@ export const ChooseResin = (props) => {
             />
           }
           scrollable
-          fill>
+          fill
+        >
           <Tabs vertical fluid fill>
             {constructions.map((val, index) => (
               <Tabs.Tab
                 key={index}
                 selected={val.id === selected_resin}
-                onClick={() => act('choose_resin', { type: val.id })}>
+                onClick={() => act('choose_resin', { type: val.id })}
+              >
                 <Stack align="center">
                   <Stack.Item>
                     <span

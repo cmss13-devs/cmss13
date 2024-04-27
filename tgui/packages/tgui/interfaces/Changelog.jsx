@@ -1,7 +1,16 @@
 import { classes } from 'common/react';
 import { useBackend } from '../backend';
 import { Component, Fragment } from 'react';
-import { Box, Button, Dropdown, Icon, Section, Stack, Table, Tooltip } from '../components';
+import {
+  Box,
+  Button,
+  Dropdown,
+  Icon,
+  Section,
+  Stack,
+  Table,
+  Tooltip,
+} from '../components';
 import { Window } from '../layouts';
 import { resolveAsset } from '../assets';
 import dateformat from 'dateformat';
@@ -212,7 +221,8 @@ export class Changelog extends Component {
             href={
               'https://github.com/cmss13-devs/cmss13/commit/' +
               '9a001bf520f889b434acd295253a1052420860af'
-            }>
+            }
+          >
             commit 9a001bf520f889b434acd295253a1052420860af on 2020/14/9
           </a>
           {' is licensed under '}
@@ -284,10 +294,12 @@ export class Changelog extends Component {
                               className={classes([
                                 'Changelog__Cell',
                                 'Changelog__Cell--Icon',
-                              ])}>
+                              ])}
+                            >
                               <Tooltip
                                 position="right"
-                                content={changeType.desc}>
+                                content={changeType.desc}
+                              >
                                 <Icon
                                   color={changeType.color}
                                   name={changeType.icon}

@@ -1,5 +1,15 @@
 import { useBackend } from '../backend';
-import { Button, Section, ProgressBar, NoticeBox, Box, Dimmer, Icon, Dropdown, LabeledList } from '../components';
+import {
+  Button,
+  Section,
+  ProgressBar,
+  NoticeBox,
+  Box,
+  Dimmer,
+  Icon,
+  Dropdown,
+  LabeledList,
+} from '../components';
 import { Window } from '../layouts';
 
 export const TeleporterConsole = () => {
@@ -48,7 +58,8 @@ export const TeleporterConsole = () => {
                 good: [-Infinity, 0.33],
                 average: [0.33, 0.67],
                 bad: [0.67, Infinity],
-              }}>
+              }}
+            >
               <Box textAlign="center">
                 {Math.ceil(timeLeft / 10)} seconds until capacitors have
                 recharged.

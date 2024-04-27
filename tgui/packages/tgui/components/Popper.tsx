@@ -1,3 +1,4 @@
+/* eslint-disable func-style */
 import { Placement } from '@popperjs/core';
 import {
   PropsWithChildren,
@@ -10,9 +11,9 @@ import { usePopper } from 'react-popper';
 
 type RequiredProps = {
   /** The content to display in the popper */
-  content: ReactNode;
+  readonly content: ReactNode;
   /** Whether the popper is open */
-  isOpen: boolean;
+  readonly isOpen: boolean;
 };
 
 type OptionalProps = Partial<{

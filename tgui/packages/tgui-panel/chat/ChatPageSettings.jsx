@@ -14,11 +14,7 @@ import {
   Stack,
 } from 'tgui/components';
 
-import {
-  removeChatPage,
-  toggleAcceptedType,
-  updateChatPage,
-} from './actions';
+import { removeChatPage, toggleAcceptedType, updateChatPage } from './actions';
 import { MESSAGE_TYPES } from './constants';
 import { selectCurrentChatPage } from './selectors';
 
@@ -66,12 +62,12 @@ export const ChatPageSettings = (props) => {
               dispatch(
                 removeChatPage({
                   pageId: page.id,
-                  }),
+                }),
               )
-              }
-            >
-              Remove
-            </Button>
+            }
+          >
+            Remove
+          </Button>
         </Stack.Item>
       </Stack>
       <Divider />

@@ -12,7 +12,8 @@ export const HiveLeaders = (props) => {
       theme="hive_status"
       resizable
       width={250}
-      height={350}>
+      height={350}
+    >
       <Window.Content>
         <Section>
           <Table className="xeno_list">
@@ -26,7 +27,8 @@ export const HiveLeaders = (props) => {
               className="xenoListRow"
               backgroundColor="xeno"
               height="25px"
-              lineHeight="5px">
+              lineHeight="5px"
+            >
               <Table.Cell colspan={3} p={1}>
                 Queen
               </Table.Cell>
@@ -48,7 +50,8 @@ export const HiveLeaders = (props) => {
               className="xenoListRow"
               backgroundColor="xeno"
               height="25px"
-              lineHeight="5px">
+              lineHeight="5px"
+            >
               <Table.Cell colspan={3} p={1}>
                 Leaders
               </Table.Cell>

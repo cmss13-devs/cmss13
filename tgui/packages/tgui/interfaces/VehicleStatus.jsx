@@ -1,6 +1,14 @@
 import { Fragment } from 'react';
 import { useBackend } from '../backend';
-import { Section, Box, ProgressBar, NoticeBox, Collapsible, Flex, Divider } from '../components';
+import {
+  Section,
+  Box,
+  ProgressBar,
+  NoticeBox,
+  Collapsible,
+  Flex,
+  Divider,
+} from '../components';
 import { Window } from '../layouts';
 
 export const VehicleStatus = (props) => {
@@ -28,7 +36,8 @@ export const VehicleStatus = (props) => {
                 good: [0.7, Infinity],
                 average: [0.2, 0.7],
                 bad: [-Infinity, 0.2],
-              }}>
+              }}
+            >
               Hull integrity: {integrity}%
             </ProgressBar>
           ) : (
@@ -85,7 +94,8 @@ const HardpointsView = (props) => {
             good: [0.7, Infinity],
             average: [0.2, 0.7],
             bad: [-Infinity, 0.2],
-          }}>
+          }}
+        >
           Hardpoint integrity: {hardpoint.health}%
         </ProgressBar>
       ) : (
@@ -96,7 +106,8 @@ const HardpointsView = (props) => {
         <Flex direction="row">
           <ProgressBar
             value={hardpoint.current_rounds / hardpoint.max_rounds}
-            width={hardpoint.fpw ? '100%' : '49%'}>
+            width={hardpoint.fpw ? '100%' : '49%'}
+          >
             Ammo: {hardpoint.current_rounds} / {hardpoint.max_rounds}
           </ProgressBar>
           {hardpoint.fpw ? null : (
@@ -104,7 +115,8 @@ const HardpointsView = (props) => {
               <Box width="3px" />
               <ProgressBar
                 value={hardpoint.mags / hardpoint.max_mags}
-                width="49%">
+                width="49%"
+              >
                 Mags: {hardpoint.mags} / {hardpoint.max_mags}
               </ProgressBar>
             </>

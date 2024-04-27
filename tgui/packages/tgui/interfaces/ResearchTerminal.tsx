@@ -1,9 +1,9 @@
-import { useBackend, useLocalState } from '../backend';
-import { Button, Stack, Section, Flex, Tabs, Box } from '../components';
-import { Window } from '../layouts';
-import { Table, TableCell, TableRow } from '../components/Table';
 import { classes } from '../../common/react';
+import { useBackend, useLocalState } from '../backend';
+import { Box, Button, Flex, Section, Stack, Tabs } from '../components';
 import { BoxProps } from '../components/Box';
+import { Table, TableCell, TableRow } from '../components/Table';
+import { Window } from '../layouts';
 
 export interface DocumentLog {
   ['XRF Scans']?: Array<DocumentRecord>;
@@ -17,30 +17,30 @@ export interface DocumentRecord {
 }
 
 interface TerminalProps {
-  'clearance_level': number;
-  'research_documents': DocumentLog;
-  'published_documents': DocumentLog;
-  'rsc_credits': number;
-  'broker_cost': number;
-  'base_purchase_cost': number;
-  'main_terminal': number;
-  'terminal_view': number;
-  'clearance_x_access': number;
-  'photocopier_error': number;
-  'printer_toner': number;
+  clearance_level: number;
+  research_documents: DocumentLog;
+  published_documents: DocumentLog;
+  rsc_credits: number;
+  broker_cost: number;
+  base_purchase_cost: number;
+  main_terminal: number;
+  terminal_view: number;
+  clearance_x_access: number;
+  photocopier_error: number;
+  printer_toner: number;
 }
 
 const PurchaseDocs = () => {
   const { data, act } = useBackend<TerminalProps>();
   const [purchaseSelection, setPurchaseSelection] = useLocalState(
     'purchase_confirm',
-    '0'
+    '0',
   );
   const clearance_level = data.clearance_level;
   const all_levels = ['1', '2', '3', '4', '5'];
   const costs = { '1': 7, '2': 9, '3': 11, '4': 13, '5': 15 };
   const available_levels = Array.from(Array(clearance_level).keys()).map((x) =>
-    (x + 1).toString()
+    (x + 1).toString(),
   );
 
   return (
@@ -62,7 +62,8 @@ const PurchaseDocs = () => {
                     !available_levels.includes(x) && 'HiddenButton',
                   ])}
                   disabled={isDisabled}
-                  onClick={() => setPurchaseSelection(x)}>
+                  onClick={() => setPurchaseSelection(x)}
+                >
                   Level {x} {costs[x]}CR
                 </Button>
               </Flex.Item>
@@ -80,7 +81,8 @@ const PurchaseDocs = () => {
               });
               setPurchaseSelection('0');
             }}
-            onCancel={() => setPurchaseSelection('0')}>
+            onCancel={() => setPurchaseSelection('0')}
+          >
             <span>
               Are you sure you want to purchase a level{' '}
               <u>{purchaseSelection}</u> document?
@@ -109,7 +111,8 @@ const ConfirmationDialogue = (props: ConfirmationProps) => {
             <Button
               className="Button ConfirmButton"
               icon="check"
-              onClick={props.onConfirm}>
+              onClick={props.onConfirm}
+            >
               Confirm
             </Button>
           </Stack.Item>
@@ -138,8 +141,8 @@ const CompoundRecord = (props: CompoundRecordProps) => {
   const isMainTerminal = data.main_terminal === 1;
   const { compound } = props;
   const doc_ref = {
-    'print_type': compound.category,
-    'print_title': compound.id,
+    print_type: compound.category,
+    print_title: compound.id,
   };
   return (
     <TableRow key={compound.id}>
@@ -168,7 +171,8 @@ const CompoundRecord = (props: CompoundRecordProps) => {
           className="compound_actions"
           justify="space-around"
           align-items="stretch"
-          wrap={false}>
+          wrap={false}
+        >
           <Flex.Item>
             <Button icon="book" onClick={() => act('read_document', doc_ref)}>
               Read
@@ -179,7 +183,8 @@ const CompoundRecord = (props: CompoundRecordProps) => {
               <Button
                 disabled={data.photocopier_error || data.printer_toner === 0}
                 icon="print"
-                onClick={() => act('print', doc_ref)}>
+                onClick={() => act('print', doc_ref)}
+              >
                 Print
               </Button>
             </Flex.Item>
@@ -188,7 +193,8 @@ const CompoundRecord = (props: CompoundRecordProps) => {
             <Flex.Item>
               <Button
                 icon="upload"
-                onClick={() => act('publish_document', doc_ref)}>
+                onClick={() => act('publish_document', doc_ref)}
+              >
                 Publish
               </Button>
             </Flex.Item>
@@ -197,7 +203,8 @@ const CompoundRecord = (props: CompoundRecordProps) => {
             <Flex.Item>
               <Button
                 icon="remove"
-                onClick={() => act('unpublish_document', doc_ref)}>
+                onClick={() => act('unpublish_document', doc_ref)}
+              >
                 Unpublish
               </Button>
             </Flex.Item>
@@ -311,7 +318,7 @@ export const CompoundTable = (props: CompoundTableProps) => {
 
         if (
           x.type.time.localeCompare(
-            outputDocs.get(x.type.document)?.type.time ?? ''
+            outputDocs.get(x.type.document)?.type.time ?? '',
           )
         ) {
           outputDocs.set(x.type.document, x);
@@ -350,7 +357,8 @@ export const CompoundTable = (props: CompoundTableProps) => {
         <TableCell textAlign="center">
           <Button
             icon={iconRef('time', true)}
-            onClick={() => sortColClick('time')}>
+            onClick={() => sortColClick('time')}
+          >
             {props.timeLabel}
           </Button>
         </TableCell>
@@ -360,7 +368,8 @@ export const CompoundTable = (props: CompoundTableProps) => {
         <TableCell textAlign="center">
           <Button
             icon={iconRef('name', false)}
-            onClick={() => sortColClick('name')}>
+            onClick={() => sortColClick('name')}
+          >
             Compound
           </Button>
         </TableCell>
@@ -403,7 +412,7 @@ const ImproveClearanceConfirmation = (props) => {
   const { data, act } = useBackend<TerminalProps>();
   const [isConfirm, setConfirm] = useLocalState<string | undefined>(
     'purchase_confirmation',
-    undefined
+    undefined,
   );
   if (isConfirm === undefined || isConfirm !== 'broker_clearance') {
     return null;
@@ -416,7 +425,8 @@ const ImproveClearanceConfirmation = (props) => {
             act('broker_clearance');
             setConfirm(undefined);
           }}
-          onCancel={() => setConfirm(undefined)}>
+          onCancel={() => setConfirm(undefined)}
+        >
           <span>
             Are you sure you want to spend <u>{data.broker_cost}</u> research
             credits to increase the clearance immediately?
@@ -431,7 +441,7 @@ const XClearanceConfirmation = (props) => {
   const { data, act } = useBackend<TerminalProps>();
   const [isConfirm, setConfirm] = useLocalState<string | undefined>(
     'purchase_confirmation',
-    undefined
+    undefined,
   );
   if (isConfirm === undefined || isConfirm !== 'request_clearance_x_access') {
     return null;
@@ -444,7 +454,8 @@ const XClearanceConfirmation = (props) => {
             act('request_clearance_x_access');
             setConfirm(undefined);
           }}
-          onCancel={() => setConfirm(undefined)}>
+          onCancel={() => setConfirm(undefined)}
+        >
           <span>
             Are you sure you wish request clearance level <u>X</u> access for{' '}
             <u>5</u> credits?
@@ -520,21 +531,24 @@ const ResearchOverview = () => {
           selected={selectedTab === 1}
           onClick={() => setSelectedTab(1)}
           icon="gear"
-          color="black">
+          color="black"
+        >
           Manage Research
         </Tabs.Tab>
         <Tabs.Tab
           selected={selectedTab === 2}
           onClick={() => setSelectedTab(2)}
           icon="flask"
-          color="black">
+          color="black"
+        >
           View Chemicals
         </Tabs.Tab>
         <Tabs.Tab
           selected={selectedTab === 3}
           onClick={() => setSelectedTab(3)}
           icon="book"
-          color="black">
+          color="black"
+        >
           Published Material
         </Tabs.Tab>
       </Tabs>
@@ -559,7 +573,7 @@ const ClearanceImproveButton = () => {
   const [selectedTab, setSelectedTab] = useLocalState('research_tab', 1);
   const [confirm, setConfirm] = useLocalState<string | undefined>(
     'purchase_confirmation',
-    undefined
+    undefined,
   );
   const clearance_level = data.clearance_level;
   const x_access = data.clearance_x_access;
@@ -572,7 +586,8 @@ const ClearanceImproveButton = () => {
           onClick={() => {
             setSelectedTab(1);
             setConfirm('broker_clearance');
-          }}>
+          }}
+        >
           Improve {data.broker_cost}CR
         </Button>
       )}
@@ -583,7 +598,8 @@ const ClearanceImproveButton = () => {
             onClick={() => {
               setSelectedTab(1);
               setConfirm('request_clearance_x_access');
-            }}>
+            }}
+          >
             Request X (5)
           </Button>
         </Flex.Item>
@@ -604,7 +620,8 @@ export const ResearchTerminal = () => {
       <Window.Content scrollable className="ResearchTerminal">
         <Section
           title={`Clearance Level ${data.clearance_level}`}
-          buttons={<ClearanceImproveButton />}>
+          buttons={<ClearanceImproveButton />}
+        >
           <ResearchOverview />
         </Section>
       </Window.Content>

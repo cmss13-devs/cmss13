@@ -1,10 +1,20 @@
 import { KEY_ESCAPE } from 'common/keycodes';
-import { useBackend, useLocalState } from '../backend';
-import { Button, Section, Flex, Box, Tooltip, Input, NoticeBox, Icon } from '../components';
-import { Window } from '../layouts';
 import { classes } from 'common/react';
+
+import { useBackend, useLocalState } from '../backend';
+import {
+  Box,
+  Button,
+  Flex,
+  Icon,
+  Input,
+  NoticeBox,
+  Section,
+  Tooltip,
+} from '../components';
 import { BoxProps } from '../components/Box';
 import { Table, TableCell, TableRow } from '../components/Table';
+import { Window } from '../layouts';
 
 const THEME_COMP = 0;
 const THEME_USCM = 1;
@@ -63,7 +73,8 @@ const DescriptionTooltip = (props: RecordNameProps) => {
             'Description',
             isRecommended && 'RecommendedDescription',
             isMandatory && 'MandatoryDescription',
-          ])}>
+          ])}
+        >
           <ItemDescriptionViewer
             desc={record.prod_desc ?? ''}
             name={record.prod_name}
@@ -71,7 +82,8 @@ const DescriptionTooltip = (props: RecordNameProps) => {
             isMandatory={isMandatory}
           />
         </NoticeBox>
-      }>
+      }
+    >
       {props.children}
     </Tooltip>
   );
@@ -101,7 +113,8 @@ const VendButton = (props: VendButtonProps, _) => {
         }
       }}
       textAlign="center"
-      disabled={!props.available}>
+      disabled={!props.available}
+    >
       {props.children}
     </Button>
   );
@@ -135,7 +148,8 @@ const VendableItemRow = (props: VenableItem) => {
           isRecommended={isRecommended}
           isMandatory={isMandatory}
           available={available}
-          onClick={() => act('vend', record)}>
+          onClick={() => act('vend', record)}
+        >
           {record.prod_name}
         </VendButton>
       </TableCell>
@@ -183,7 +197,8 @@ const VendableClothingItemRow = (props: {
           isRecommended={isRecommended}
           isMandatory={isMandatory}
           available={available}
-          onClick={() => act('vend', record)}>
+          onClick={() => act('vend', record)}
+        >
           {record.prod_name}
         </VendButton>
       </TableCell>
@@ -259,7 +274,8 @@ export const ViewVendingCategory = (props: VendingCategoryProps) => {
               className={classes([
                 'VendingItem',
                 i % 2 ? 'VendingFlexAlt' : undefined,
-              ])}>
+              ])}
+            >
               {vendor_type === 'sorted' && <VendableItemRow record={record} />}
               {(vendor_type === 'clothing' || vendor_type === 'gear') && (
                 <VendableClothingItemRow
@@ -312,14 +328,16 @@ export const VendingSorted = () => {
           if (keyCode === KEY_ESCAPE) {
             act('cancel');
           }
-        }}>
+        }}
+      >
         {!isEmpty && !show_points && (
           <Box className={classes(['SearchBox'])}>
             <Flex
               align="center"
               justify="space-between"
               align-items="stretch"
-              className="Section__title">
+              className="Section__title"
+            >
               <Flex.Item>
                 <span className="Section__titleText">Search</span>
               </Flex.Item>
@@ -340,7 +358,8 @@ export const VendingSorted = () => {
               align="center"
               justify="space-between"
               align-items="stretch"
-              className="Section__title">
+              className="Section__title"
+            >
               <Flex.Item>
                 <span className="Section__titleText">Points Remaining</span>
               </Flex.Item>

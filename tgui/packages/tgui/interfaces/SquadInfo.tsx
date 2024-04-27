@@ -1,4 +1,5 @@
 import { classes } from 'common/react';
+
 import { useBackend } from '../backend';
 import { Box, Button, Flex, Section, Stack, Table } from '../components';
 import { BoxProps } from '../components/Box';
@@ -293,7 +294,8 @@ export const SquadInfo = () => {
         <Flex fill justify="space-around" direction="column">
           <Flex.Item>
             <Section
-              title={`${data.squad} Squad Leader: ${data.sl?.name ?? 'None'}`}>
+              title={`${data.squad} Squad Leader: ${data.sl?.name ?? 'None'}`}
+            >
               <SquadObjectives />
             </Section>
           </Flex.Item>

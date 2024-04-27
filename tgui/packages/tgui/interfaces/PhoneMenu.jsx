@@ -18,14 +18,14 @@ const GeneralPanel = (props) => {
   const { availability, last_caller } = data;
   const available_transmitters = Object.keys(data.available_transmitters);
   const transmitters = data.transmitters.filter((val1) =>
-    available_transmitters.includes(val1.phone_id)
+    available_transmitters.includes(val1.phone_id),
   );
 
   const [currentSearch, setSearch] = useLocalState('current_search', '');
 
   const [selectedPhone, setSelectedPhone] = useLocalState(
     'selected_phone',
-    null
+    null,
   );
 
   const categories = [];
@@ -38,7 +38,7 @@ const GeneralPanel = (props) => {
 
   const [currentCategory, setCategory] = useLocalState(
     'current_category',
-    categories[0]
+    categories[0],
   );
 
   let dnd_tooltip = 'Do Not Disturb is DISABLED';
@@ -65,7 +65,8 @@ const GeneralPanel = (props) => {
               <Tabs.Tab
                 selected={val === currentCategory}
                 onClick={() => setCategory(val)}
-                key={val}>
+                key={val}
+              >
                 {val}
               </Tabs.Tab>
             ))}
@@ -106,7 +107,8 @@ const GeneralPanel = (props) => {
                         ? document.activeElement.blur()
                         : false
                     }
-                    icon={val.phone_icon}>
+                    icon={val.phone_icon}
+                  >
                     {val.phone_id}
                   </Tabs.Tab>
                 );

@@ -1,3 +1,4 @@
+/* eslint-disable func-style */
 /**
  * @file
  * @copyright 2020 Aleksej Komarov
@@ -13,11 +14,11 @@ import { DraggableControl } from './DraggableControl';
 
 type Props = {
   /** Highest possible value. */
-  maxValue: number;
+  readonly maxValue: number;
   /** Lowest possible value. */
-  minValue: number;
+  readonly minValue: number;
   /** Value itself, controls the position of the cursor. */
-  value: number;
+  readonly value: number;
 } & Partial<{
   /** Animates the value if it was changed externally. */
   animated: boolean;

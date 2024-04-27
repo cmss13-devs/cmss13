@@ -1,7 +1,14 @@
 import { capitalizeAll } from 'common/string';
 import { Fragment } from 'react';
 import { useBackend } from '../backend';
-import { Section, Box, ProgressBar, Slider, NoticeBox, Button } from '../components';
+import {
+  Section,
+  Box,
+  ProgressBar,
+  Slider,
+  NoticeBox,
+  Button,
+} from '../components';
 import { Window } from '../layouts';
 
 export const SkillsMenu = (props) => {
@@ -21,7 +28,8 @@ export const SkillsMenu = (props) => {
               icon="sync-alt"
               onClick={() => act('refresh')}
             />
-          }>
+          }
+        >
           {skills ? (
             admin ? (
               <SkillsEdit />
@@ -66,7 +74,8 @@ const SkillsEdit = (props) => {
             level: value,
             oldlevel: skill.level,
           })
-        }>
+        }
+      >
         {capitalizeAll(skill.name)}: {skill.level}/{skill.maxlevel}
       </Slider>
       <Box height="3px" />

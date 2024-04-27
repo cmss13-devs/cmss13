@@ -3,9 +3,9 @@ import { Flex, LabeledList, Box, Section, Tabs, Button } from '../components';
 import { Window } from '../layouts';
 
 const PAGES = {
-  'main': () => MainMenu,
-  'incident_report': () => NewReport,
-  'new_charge': () => NewCharge,
+  main: () => MainMenu,
+  incident_report: () => NewReport,
+  new_charge: () => NewCharge,
 };
 
 export const Sentencing = (props) => {
@@ -34,7 +34,8 @@ const MainMenu = (props) => {
       color="darkgrey"
       fontSize="2rem"
       mt="-3rem"
-      bold>
+      bold
+    >
       <Box fontFamily="monospace">Jurisdictional Automated System</Box>
       <Box mb="2rem" fontFamily="monospace">
         WY-DOS Executive
@@ -128,7 +129,7 @@ const NewCharge = (props) => {
   const { laws } = data;
   const [chargeCategory, setChargeCategory] = useLocalState(
     'chargeCategory',
-    0
+    0,
   );
 
   return (
@@ -151,7 +152,8 @@ const NewCharge = (props) => {
             <Tabs.Tab
               key={i}
               selected={i === chargeCategory}
-              onClick={() => setChargeCategory(i)}>
+              onClick={() => setChargeCategory(i)}
+            >
               {category.label}
             </Tabs.Tab>
           ))}
@@ -199,7 +201,8 @@ const Charges = (props) => {
             className="candystripe"
             p=".75rem"
             align="center"
-            fontSize="1.25rem">
+            fontSize="1.25rem"
+          >
             <Flex.Item bold width="9rem" shrink="0" mr="1rem">
               Charge
             </Flex.Item>
@@ -211,7 +214,8 @@ const Charges = (props) => {
               shrink="0"
               textAlign="right"
               pr="3rem"
-              bold>
+              bold
+            >
               Extra
             </Flex.Item>
           </Flex>
@@ -267,7 +271,8 @@ const Evidence = (props) => {
               className="candystripe"
               p=".75rem"
               mb=".75rem"
-              align="center">
+              align="center"
+            >
               <Flex direction="column" align="middle" width="100%">
                 <Flex.Item bold mb=".5rem">
                   {witness.name}
@@ -280,7 +285,8 @@ const Evidence = (props) => {
                 direction="column"
                 width="2.5rem"
                 textAlign="center"
-                ml="1rem">
+                ml="1rem"
+              >
                 <Button
                   icon="pen"
                   width="100%"
@@ -318,7 +324,8 @@ const Evidence = (props) => {
               className="candystripe"
               p=".75rem"
               mb=".75rem"
-              align="center">
+              align="center"
+            >
               <Flex direction="column" align="middle" width="100%">
                 <Flex.Item bold mb=".5rem">
                   {evidence.name}
@@ -331,7 +338,8 @@ const Evidence = (props) => {
                 direction="column"
                 width="2.5rem"
                 textAlign="center"
-                ml="1rem">
+                ml="1rem"
+              >
                 <Button
                   icon="pen"
                   width="100%"

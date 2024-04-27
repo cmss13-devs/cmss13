@@ -1,3 +1,4 @@
+/* eslint-disable func-style */
 import { KEY } from 'common/keys';
 import { BooleanLike } from 'common/react';
 import { KeyboardEvent, useState } from 'react';
@@ -103,7 +104,7 @@ export function AlertModal(props) {
 }
 
 type ButtonDisplayProps = {
-  selected: number;
+  readonly selected: number;
 };
 
 /**

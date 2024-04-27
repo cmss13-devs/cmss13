@@ -26,7 +26,8 @@ export const MedalsPanel = (props) => {
       width={600}
       height={400}
       theme={pageIndex === 0 ? 'ntos' : 'hive_status'}
-      resizable>
+      resizable
+    >
       <Window.Content scrollable>
         <Stack direction="column" fill>
           <Stack.Item basis="content" grow={0} pb={1}>
@@ -42,7 +43,8 @@ export const MedalsPanel = (props) => {
                     color={page.color}
                     selected={i === pageIndex}
                     icon={page.icon}
-                    onClick={() => setPageIndex(i)}>
+                    onClick={() => setPageIndex(i)}
+                  >
                     {page.title}
                   </Tabs.Tab>
                 );
@@ -90,20 +92,23 @@ const MedalsPage = (props) => {
             onClick={() => act(isMarineMedal ? 'add_medal' : 'add_jelly')}
           />
         </>
-      }>
+      }
+    >
       <>
         {Object.keys(awards).map((recipient_name, recipient_index) => (
           <Section
             title={recipient_name + ckeys[recipient_name]}
             key={recipient_index}
-            m={1}>
+            m={1}
+          >
             {Object(awards[recipient_name]).map((medal, medalIndex) => (
               <Flex
                 direction="row"
                 key={medalIndex}
                 backgroundColor={
                   medalIndex % 2 === 1 ? 'rgba(255,255,255,0.1)' : ''
-                }>
+                }
+              >
                 <Flex.Item grow={1} align="center" m={1} p={0.2}>
                   A {medal}
                 </Flex.Item>

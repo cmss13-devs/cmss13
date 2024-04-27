@@ -1,5 +1,12 @@
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Section, ProgressBar, NoticeBox, Stack } from '../components';
+import {
+  Box,
+  Button,
+  NoticeBox,
+  ProgressBar,
+  Section,
+  Stack,
+} from '../components';
 
 interface CasSimData {
   configuration: any;
@@ -13,7 +20,7 @@ export const CasSim = () => {
   const { act, data } = useBackend<CasSimData>();
   const [simulationView, setSimulationView] = useLocalState(
     'simulation_view',
-    false
+    false,
   );
 
   const timeLeft = data.nextdetonationtime - data.worldtime;
@@ -40,7 +47,8 @@ export const CasSim = () => {
               good: [-Infinity, 0.33],
               average: [0.33, 0.67],
               bad: [0.67, Infinity],
-            }}>
+            }}
+          >
             <Box textAlign="center">
               {Math.ceil(timeLeft / 10)} seconds until the console&apos;s
               processors finish cooling!

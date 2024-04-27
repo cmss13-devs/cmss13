@@ -1,6 +1,8 @@
 import './styles/main.scss';
-import { TguiSay } from './interfaces/TguiSay';
+
 import { createRoot, Root } from 'react-dom/client';
+
+import { TguiSay } from './interfaces/TguiSay';
 
 let reactRoot: Root | null = null;
 

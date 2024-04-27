@@ -5,23 +5,23 @@ import { Window } from '../layouts';
 import { globalEvents } from '../events';
 
 const KEY_MODS = {
-  'SHIFT': true,
-  'ALT': true,
-  'CONTROL': true,
+  SHIFT: true,
+  ALT: true,
+  CONTROL: true,
 };
 
 const KEY_CODE_TO_BYOND = {
-  'DEL': 'Delete',
-  'DOWN': 'South',
-  'END': 'Southwest',
-  'HOME': 'Northwest',
-  'INSERT': 'Insert',
-  'LEFT': 'West',
-  'PAGEDOWN': 'Southeast',
-  'PAGEUP': 'Northeast',
-  'RIGHT': 'East',
+  DEL: 'Delete',
+  DOWN: 'South',
+  END: 'Southwest',
+  HOME: 'Northwest',
+  INSERT: 'Insert',
+  LEFT: 'West',
+  PAGEDOWN: 'Southeast',
+  PAGEUP: 'Northeast',
+  RIGHT: 'East',
   ' ': 'Space',
-  'UP': 'North',
+  UP: 'North',
 };
 
 const getAllKeybinds = (glob_keybinds) => {
@@ -44,7 +44,7 @@ export const KeyBinds = (props) => {
       : glob_keybinds[selectedTab];
 
   const filteredKeybinds = keybinds_to_use.filter((val) =>
-    val.full_name.toLowerCase().match(searchTerm)
+    val.full_name.toLowerCase().match(searchTerm),
   );
 
   return (
@@ -59,11 +59,13 @@ export const KeyBinds = (props) => {
                   <Button
                     color="red"
                     icon="undo"
-                    onClick={() => act('clear_all_keybinds')}>
+                    onClick={() => act('clear_all_keybinds')}
+                  >
                     Reset to Default
                   </Button>
                 </Flex.Item>
-              }>
+              }
+            >
               <Flex direction="column">
                 <Flex.Item>
                   <Flex align="baseline" mt="5px">
@@ -109,35 +111,35 @@ export const KeyBinds = (props) => {
           <Flex direction="column">
             {selectedTab === 'ALL' && !searchTerm.length
               ? Object.keys(glob_keybinds).map((category) => (
-                <Flex.Item key={category}>
-                  <Section title={category}>
-                    <Flex direction="column">
-                      {glob_keybinds[category].map((keybind) => (
-                        <Flex.Item key={keybind}>
-                          <KeybindElement keybind={keybind} />
-                          <Box
-                            backgroundColor="rgba(40, 40, 40, 255)"
-                            width="100%"
-                            height="2px"
-                            mt="2px"
-                          />
-                        </Flex.Item>
-                      ))}
-                    </Flex>
-                  </Section>
-                </Flex.Item>
-              ))
+                  <Flex.Item key={category}>
+                    <Section title={category}>
+                      <Flex direction="column">
+                        {glob_keybinds[category].map((keybind) => (
+                          <Flex.Item key={keybind}>
+                            <KeybindElement keybind={keybind} />
+                            <Box
+                              backgroundColor="rgba(40, 40, 40, 255)"
+                              width="100%"
+                              height="2px"
+                              mt="2px"
+                            />
+                          </Flex.Item>
+                        ))}
+                      </Flex>
+                    </Section>
+                  </Flex.Item>
+                ))
               : filteredKeybinds.map((keybind) => (
-                <Flex.Item key={keybind.full_name}>
-                  <KeybindElement keybind={keybind} />
-                  <Box
-                    backgroundColor="rgba(40, 40, 40, 255)"
-                    width="100%"
-                    height="2px"
-                    mt="2px"
-                  />
-                </Flex.Item>
-              ))}
+                  <Flex.Item key={keybind.full_name}>
+                    <KeybindElement keybind={keybind} />
+                    <Box
+                      backgroundColor="rgba(40, 40, 40, 255)"
+                      width="100%"
+                      height="2px"
+                      mt="2px"
+                    />
+                  </Flex.Item>
+                ))}
           </Flex>
         </Flex>
       </Window.Content>
@@ -266,7 +268,7 @@ export class ButtonKeybind extends Component {
     const { keysDown } = this.state;
 
     const listOfKeys = Object.keys(keysDown).filter(
-      (isTrue) => keysDown[isTrue]
+      (isTrue) => keysDown[isTrue],
     );
 
     onFinish(listOfKeys);
@@ -338,8 +340,8 @@ export class ButtonKeybind extends Component {
         content={
           focused
             ? Object.keys(keysDown)
-              .filter((isTrue) => keysDown[isTrue])
-              .join('+') || content
+                .filter((isTrue) => keysDown[isTrue])
+                .join('+') || content
             : content
         }
         selected={focused}

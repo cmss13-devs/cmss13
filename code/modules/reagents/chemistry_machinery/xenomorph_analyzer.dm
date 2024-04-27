@@ -72,10 +72,10 @@
 	static_data["categories"] = list()
 	for(var/upgrade_type in subtypesof(/datum/research_upgrades))
 		var/datum/research_upgrades/upgrade = upgrade_type
-		if(upgrade.behavior == UPGRADE_CATEGORY)
+		if(upgrade.behavior == RESEARCH_UPGRADE_CATEGORY)
 			static_data["categories"] += upgrade.name
 			continue
-		if(upgrade.behavior == UPGRADE_EXCLUDE_BUY)
+		if(upgrade.behavior == RESEARCH_UPGRADE_EXCLUDE_BUY)
 			continue
 		static_data["upgrades"] += list(list(
 			"name" = capitalize_first_letters(upgrade.name),

@@ -331,10 +331,11 @@
 			if(ORGAN_SURGERY)
 				switch(S.surgery_procedure)
 					if("damage")
-						if(prob(30)) visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Beginning organ restoration.");
+						if(prob(30))
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Beginning organ restoration.")
 						if(S.unneeded)
 							sleep(UNNEEDED_DELAY)
-							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.");
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.")
 							surgery_todo_list -= S
 							continue
 						open_incision(H,S.limb_ref)
@@ -352,7 +353,7 @@
 						if(istype(S.organ_ref,/datum/internal_organ))
 							S.organ_ref.rejuvenate()
 						else
-							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Organ is missing.");
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Organ is missing.")
 
 						// close them
 						if(S.limb_ref.name != "groin") // TODO: fix brute damage before closing
@@ -360,10 +361,11 @@
 						close_incision(H,S.limb_ref)
 
 					if("eyes")
-						if(prob(30)) visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Beginning corrective eye surgery.");
+						if(prob(30))
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Beginning corrective eye surgery.")
 						if(S.unneeded)
 							sleep(UNNEEDED_DELAY)
-							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.");
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.")
 							surgery_todo_list -= S
 							continue
 						if(istype(S.organ_ref,/datum/internal_organ/eyes))
@@ -393,30 +395,32 @@
 								E.heal_damage(E.damage)
 								E.eye_surgery_stage = 0
 					if("larva")
-						if(prob(99)) visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b>beeps: Removing unknown parasites.");
+						if(prob(30))
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b>beeps: Removing unknown parasites.")
 						if(!locate(/obj/item/alien_embryo) in occupant)
 							sleep(UNNEEDED_DELAY)
-							visible_message("[icon2html(src, viewers(src))] <b>[src]</b> speaks: Procedure has been deemed unnecessary."); // >:)
+							visible_message("[icon2html(src, viewers(src))] <b>[src]</b> speaks: Procedure has been deemed unnecessary.")// >:)
 							surgery_todo_list -= S
 							continue
 						sleep(SCALPEL_MAX_DURATION + HEMOSTAT_MAX_DURATION + REMOVE_OBJECT_MAX_DURATION)
-						var/obj/item/alien_embryo/A = locate() in occupant
-						var/mob/living/carbon/xenomorph/larva/L = locate() in occupant
-						if(L)
-							L.forceMove(get_turf(occupant)) //funny stealth larva bursts incoming
-							qdel(A)
+						var/obj/item/alien_embryo/alien_larva = locate() in occupant
+						var/mob/living/carbon/xenomorph/larva/living_xeno = locate() in occupant
+						if(living_xeno)
+							living_xeno.forceMove(get_turf(occupant)) //funny stealth larva bursts incoming
+							qdel(alien_larva)
 						else
-							A.forceMove(get_turf(occupant))
+							alien_larva.forceMove(get_turf(occupant))
 							occupant.status_flags &= ~XENO_HOST
 
 
 			if(LIMB_SURGERY)
 				switch(S.surgery_procedure)
 					if("internal")
-						if(prob(30)) visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Beginning internal bleeding procedure.");
+						if(prob(30))
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Beginning internal bleeding procedure.")
 						if(S.unneeded)
 							sleep(UNNEEDED_DELAY)
-							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.");
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.")
 							surgery_todo_list -= S
 							continue
 						open_incision(H,S.limb_ref)
@@ -431,10 +435,11 @@
 						close_incision(H,S.limb_ref)
 
 					if("broken")
-						if(prob(30)) visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Beginning broken bone procedure.");
+						if(prob(30))
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Beginning broken bone procedure.")
 						if(S.unneeded)
 							sleep(UNNEEDED_DELAY)
-							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.");
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.")
 							surgery_todo_list -= S
 							continue
 						open_incision(H,S.limb_ref)
@@ -453,10 +458,11 @@
 						close_incision(H,S.limb_ref)
 
 					if("missing")
-						if(prob(30)) visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Beginning limb replacement.");
+						if(prob(30))
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Beginning limb replacement.")
 						if(S.unneeded)
 							sleep(UNNEEDED_DELAY)
-							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.");
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.")
 							surgery_todo_list -= S
 							continue
 
@@ -607,7 +613,8 @@
 	unslashable = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 40
-	var/list/upgrades = list() // lists what kind of op we can get
+	/// What kind of upgrade do we have in this console? used by research upgrades. 1 is IB. 2 is bone frac. 3 is organ damage. 4 is larva removal
+	var/list/upgrades = list()
 
 /obj/structure/machinery/autodoc_console/Initialize()
 	. = ..()
@@ -777,21 +784,20 @@
 				if(isnull(surgeryqueue["toxin"]))
 					dat += "<a href='?src=\ref[src];toxin=1'>Bloodstream Toxin Removal</a><br>"
 				dat += "<br>"
-				to_chat(user, "here")
-				if(upgrades.len > 0)
+				if(upgrades.length() > 0)
 					dat += "<b>Orthopedic Surgeries</b>"
 					for(var/iter in upgrades)
 						switch(iter)
-							if(UPGRADE_TIER_2)
+							if(RESEARCH_UPGRADE_TIER_2)
 								if(isnull(surgeryqueue["broken"]))
 									dat += "<a href='?src=\ref[src];broken=1'>Broken Bone Surgery</a><br>"
-							if(UPGRADE_TIER_1)
+							if(RESEARCH_UPGRADE_TIER_1)
 								if(isnull(surgeryqueue["internal"]))
 									dat += "<a href='?src=\ref[src];internal=1'>Internal Bleeding Surgery</a><br>"
-							if(UPGRADE_TIER_3)
+							if(RESEARCH_UPGRADE_TIER_3)
 								if(isnull(surgeryqueue["organdamage"]))
 									dat += "<a href='?src=\ref[src];organdamage=1'>Organ Damage Treatment</a><br>"
-							if(UPGRADE_TIER_4)
+							if(RESEARCH_UPGRADE_TIER_4)
 								if(isnull(surgeryqueue["larva"]))
 									dat += "<a href='?src=\ref[src];larva=1'>Experimental Parasite Exctraction</a><br>"
 		else

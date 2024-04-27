@@ -7,7 +7,8 @@
 	var/base_icon_state = "regular2"
 
 	slot = ACCESSORY_SLOT_ARMOR_C
-	var/is_armor = TRUE // is it *armor* or something different & irrelevant and always passes damage & doesnt take damage to itself?
+	/// is it *armor* or something different & irrelevant and always passes damage & doesnt take damage to itself?
+	var/is_armor = TRUE
 	var/armor_health = 10
 	var/armor_maxhealth = 10
 	var/take_slash_damage = TRUE
@@ -195,6 +196,10 @@
 	///can the plate be recycled after X condition? 0 means it cannot be recycled, otherwise put in the biomass points to refund.
 	var/recyclable_value = 0
 
+/obj/item/clothing/accessory/health/research_plate/Destroy()
+	attached_uni = null
+	. = ..()
+
 /obj/item/clothing/accessory/health/research_plate/on_attached(obj/item/clothing/S, mob/living/carbon/human/user)
 	. = ..()
 	attached_uni = S
@@ -257,7 +262,7 @@
 /obj/item/clothing/accessory/health/research_plate/emergency_injector
 	name = "Emergency Chemical Plate"
 	desc = "One-time disposable research plate packing all kinds of chemicals injected at user will by pressing two buttons on the sides simultaniously. The injection is painless, instant and packs much more chemicals than your normal emergency injector. Features OD Protection in three modes."
-	var/od_protection_mode = OD_STRICT // 0 is off, 1 is strict, 2 is dynamic.
+	var/od_protection_mode = EMERGENCY_PLATE_OD_PROTECTION_STRICT
 	var/datum/action/item_action/activation
 	var/mob/living/wearer
 	var/used = FALSE
@@ -273,6 +278,12 @@
 	)
 	recyclable_value = 500
 
+/obj/item/clothing/accessory/health/research_plate/emergency_injector/Destroy()
+	var/mob/living/wearer = null
+	if(!QDELETED(activation))
+		QDEL_NULL(activation)
+	. = ..()
+
 /obj/item/clothing/accessory/health/research_plate/emergency_injector/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_INFO("ALT-Clicking the plate will toggle overdose protection")
@@ -284,12 +295,12 @@
 	. = ..()
 	if(mods["alt"])
 		var/text = "You toogle overdose protection "
-		if(od_protection_mode == OD_DYNAMIC)
-			od_protection_mode = OD_OFF
+		if(od_protection_mode == EMERGENCY_PLATE_OD_PROTECTION_DYNAMIC)
+			od_protection_mode = EMERGENCY_PLATE_OD_PROTECTION_OFF
 			text += "to OVERRIDE. Overdose protection is now offline."
 		else
 			od_protection_mode++
-			if(od_protection_mode == OD_DYNAMIC)
+			if(od_protection_mode == EMERGENCY_PLATE_OD_PROTECTION_DYNAMIC)
 				text += "to DYNAMIC. Overdose subsystems will inject chemicals but will not go above overdose levels."
 			else
 				text += "to STRICT. Overdose subsystems will refuse to inject if any of chemicals will overdose."
@@ -321,6 +332,7 @@
 		UnregisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED)
 		attached_uni = null
 
+//Action buttons
 /datum/action/item_action/emergency_plate/inject_chemicals/New(Target, obj/item/holder)
 	. = ..()
 	name = "Inject Emergency Plate"
@@ -336,14 +348,14 @@
 	for(var/chemical in chemicals_to_inject)
 		var/datum/reagent/reag = GLOB.chemical_reagents_list[chemical]
 		if(wearer.reagents.get_reagent_amount(chemical) + chemicals_to_inject[chemical] > reag.overdose)
-			if(od_protection_mode == OD_STRICT)
+			if(od_protection_mode == EMERGENCY_PLATE_OD_PROTECTION_STRICT)
 				to_chat(wearer, SPAN_DANGER("You hold the two buttons, but the plate buzzes and refuses to inject, indicating the potential overdose!"))
 				return
-			else if (od_protection_mode == OD_DYNAMIC)
+			else if (od_protection_mode == EMERGENCY_PLATE_OD_PROTECTION_DYNAMIC)
 				var/adjust_volume_to_inject = reag.overdose - wearer.reagents.get_reagent_amount(chemical)
 				chemicals_to_inject[chemical] = adjust_volume_to_inject
 				warning_type = 2
-		if(wearer.reagents.get_reagent_amount(chemical) + chemicals_to_inject[chemical] > reag.overdose && od_protection_mode == OD_OFF)
+		if(wearer.reagents.get_reagent_amount(chemical) + chemicals_to_inject[chemical] > reag.overdose && od_protection_mode == EMERGENCY_PLATE_OD_PROTECTION_OFF)
 			warning_type = 1
 		wearer.reagents.add_reagent(chemical, chemicals_to_inject[chemical])
 	if(warning_type == 1)
@@ -352,19 +364,3 @@
 		to_chat(wearer, SPAN_DANGER("You hold the two buttons, and the plate injects the chemicals, but makes a reliefing beep, indicating it adjusted amounts it injected to prevent overdose!"))
 	playsound(src.loc, "sound/items/air_release.ogg", 100, TRUE)
 	used = TRUE
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

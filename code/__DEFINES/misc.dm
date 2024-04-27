@@ -162,13 +162,13 @@
 #define MATRIX_NVG 1
 #define MATRIX_WIDE 2
 
-#define UPGRADE_EXCLUDE_BUY 0
-#define UPGRADE_CATEGORY 0.5 //lord forgive me
-#define UPGRADE_TIER_1 1
-#define UPGRADE_TIER_2 2
-#define UPGRADE_TIER_3 3
-#define UPGRADE_TIER_4 4
-#define UPGRADE_TIER_5 5
+#define RESEARCH_UPGRADE_EXCLUDE_BUY 0
+#define RESEARCH_UPGRADE_CATEGORY 0.5 //lord forgive me
+#define RESEARCH_UPGRADE_TIER_1 1
+#define RESEARCH_UPGRADE_TIER_2 2
+#define RESEARCH_UPGRADE_TIER_3 3
+#define RESEARCH_UPGRADE_TIER_4 4
+#define RESEARCH_UPGRADE_TIER_5 5
 //Value define
 
 #define ITEM_MACHINERY_UPGRADE "Machinery" //*must* be same as category name.
@@ -176,9 +176,9 @@
 #define ITEM_ARMOR_UPGRADE "Armor"
 
 //injector plate stuff
-#define OD_OFF 0
-#define OD_STRICT 1
-#define OD_DYNAMIC 2
+#define EMERGENCY_PLATE_OD_PROTECTION_OFF 0
+#define EMERGENCY_PLATE_OD_PROTECTION_STRICT 1
+#define EMERGENCY_PLATE_OD_PROTECTION_DYNAMIC 2
 
 
 // RESEARCH UPGRADES DEFINES END

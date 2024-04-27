@@ -270,7 +270,8 @@
 	var/reagent_removed_per_second = AMOUNT_PER_TIME(3, 1 SECONDS)
 	var/reagent_removed_per_second_upgraded = AMOUNT_PER_TIME(8, 1 SECONDS)
 	var/dialysis_started_reagent_vol = null // how many reagents the occupant had in them when we STARTED dialysis
-	var/upgraded = FALSE //research disk upgrade
+	///is it already upgraded by research disc and do we have upgraded chemicals?
+	var/upgraded = FALSE
 
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 15

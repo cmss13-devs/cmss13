@@ -129,6 +129,25 @@
 	if(N)
 		amount_per_transfer_from_this = N
 
+/obj/structure/reagent_dispensers/clicked(mob/user, list/mods)
+	if(!Adjacent(user))
+		return ..()
+
+	if(!ishuman(user))
+		return ..()
+
+	if(!reagents || reagents.locked)
+		return ..()
+
+	if(mods["alt"])
+		dispensing = !dispensing
+		if(dispensing)
+			to_chat(user, SPAN_NOTICE("[src] is now dispensing"))
+		else
+			to_chat(user, SPAN_NOTICE("[src] is now filling"))
+		return TRUE
+	return ..()
+
 /obj/structure/reagent_dispensers/attackby(obj/item/hit_item, mob/living/user)
 	if(istype(hit_item, /obj/item/reagent_container))
 		return

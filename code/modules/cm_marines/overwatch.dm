@@ -800,7 +800,7 @@
 	notify_ghosts(header = "Bombardment Inbound", message = "\A [ob_name] targeting [get_area(T)] has been fired!", source = T, alert_overlay = warhead_appearance, extra_large = TRUE)
 
 	/// Project ARES interface log.
-	log_ares_bombardment(user.name, ob_name, "X[x_bomb], Y[y_bomb] in [get_area(T)]")
+	log_ares_bombardment(user.name, ob_name, "Bombardment fired at X[x_bomb], Y[y_bomb] in [get_area(T)]")
 
 	busy = FALSE
 	if(istype(T))
@@ -886,9 +886,13 @@
 	density = FALSE
 	unslashable = TRUE
 	unacidable = TRUE
+	plane = FLOOR_PLANE
 	layer = 2.1 //It's the floor, man
 	var/squad = SQUAD_MARINE_1
 	var/sending_package = 0
+
+/obj/structure/supply_drop/ex_act(severity, direction)
+	return FALSE
 
 /obj/structure/supply_drop/Initialize(mapload, ...)
 	. = ..()

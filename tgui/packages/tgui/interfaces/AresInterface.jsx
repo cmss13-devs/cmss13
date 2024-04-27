@@ -23,6 +23,7 @@ const PAGES = {
   'requisitions': () => Requisitions,
   'emergency': () => Emergency,
   'tech_log': () => TechLogs,
+  'core_security': () => CoreSec,
 };
 
 export const AresInterface = (props) => {
@@ -34,6 +35,8 @@ export const AresInterface = (props) => {
   if (sudo >= 1) {
     themecolor = 'crtred';
   } else if (current_menu === 'emergency') {
+    themecolor = 'crtred';
+  } else if (current_menu === 'core_security') {
     themecolor = 'crtred';
   }
 
@@ -63,7 +66,7 @@ const Login = (props) => {
       <Box mb="2rem" fontFamily="monospace">
         WY-DOS Executive
       </Box>
-      <Box fontFamily="monospace">Version 8.2.3</Box>
+      <Box fontFamily="monospace">Version 8.3.4</Box>
       <Box fontFamily="monospace">Copyright © 2182, Weyland Yutani Corp.</Box>
 
       <Button
@@ -365,6 +368,27 @@ const MainMenu = (props) => {
           </Stack>
         )}
       </Section>
+      {(access_level === 3 || access_level >= 6) && (
+        <Section>
+          <h1 align="center">Core Security Protocols</h1>
+          <Stack>
+            <Stack.Item grow>
+              <Button
+                content="Nerve Gas Control"
+                align="center"
+                tooltip="Release stored CN20-X nerve gas from security vents."
+                icon="wind"
+                color="red"
+                ml="auto"
+                px="2rem"
+                width="100%"
+                bold
+                onClick={() => act('page_core_sec')}
+              />
+            </Stack.Item>
+          </Stack>
+        </Section>
+      )}
     </>
   );
 };
@@ -628,7 +652,7 @@ const BombardmentLogs = (props) => {
               User
             </Flex.Item>
             <Flex.Item width="30rem" textAlign="center">
-              Coordinates
+              Details
             </Flex.Item>
           </Flex>
         )}
@@ -1664,6 +1688,80 @@ const TechLogs = (props, context) => {
                 />
               </Flex.Item>
             </Flex>
+          );
+        })}
+      </Section>
+    </>
+  );
+};
+
+const CoreSec = (props) => {
+  const { data, act } = useBackend();
+  const {
+    logged_in,
+    access_text,
+    access_level,
+    last_page,
+    current_menu,
+    security_vents,
+  } = data;
+
+  return (
+    <>
+      <Section>
+        <Flex align="center">
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={last_page === current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+            />
+          </Box>
+
+          <h3>
+            {logged_in}, {access_text}
+          </h3>
+
+          <Button.Confirm
+            content="Logout"
+            icon="circle-user"
+            ml="auto"
+            px="2rem"
+            bold
+            onClick={() => act('logout')}
+          />
+        </Flex>
+      </Section>
+
+      <Section>
+        <h1 align="center">Core Security Protocols</h1>
+      </Section>
+      <Section>
+        <h1 align="center">Nerve Gas Release</h1>
+        {security_vents.map((vent, i) => {
+          return (
+            <Button.Confirm
+              key={i}
+              align="center"
+              content={vent.vent_tag}
+              icon="wind"
+              tooltip="Release Gas"
+              width="100%"
+              disabled={
+                (access_level < 5 && access_level !== 3) || !vent.available
+              }
+              onClick={() => act('trigger_vent', { vent: vent.ref })}
+            />
           );
         })}
       </Section>

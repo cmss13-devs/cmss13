@@ -60,6 +60,9 @@
 
 	var/message_prompt = "Message:"
 
+	if(AH && !AH.marked_admin)
+		AH.mark_ticket()
+
 	if((AH?.opening_responders && length(AH.ticket_interactions) == 1 ) || ((AH?.marked_admin && AH?.marked_admin != usr.ckey) && length(AH.ticket_interactions) == 2))
 		SEND_SOUND(src, sound('sound/machines/buzz-sigh.ogg', volume=30))
 		message_prompt += "\n\n**This ticket is already being responded to by: [length(AH.opening_responders) ? english_list(AH.opening_responders) : AH.marked_admin]**"

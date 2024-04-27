@@ -1,4 +1,0 @@
-author: "cuberound"
-delete-after: True
-changes:
-  - balance: "greatly decreses snow removal time, now it depends on xenomorph size"

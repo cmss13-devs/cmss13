@@ -365,6 +365,14 @@
 	ground_offset_x = 9
 	ground_offset_y = 8
 
+/obj/item/reagent_container/glass/beaker/vial/epinephrine
+	name = "epinephrine vial"
+
+/obj/item/reagent_container/glass/beaker/vial/epinephrine/Initialize()
+	. = ..()
+	reagents.add_reagent("adrenaline", 30)
+	update_icon()
+
 /obj/item/reagent_container/glass/beaker/vial/tricordrazine
 	name = "tricordrazine vial"
 

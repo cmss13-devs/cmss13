@@ -29,6 +29,10 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	var/datum/ares_datacore/datacore
 
 	var/list/obj/structure/machinery/computer/working_joe/ticket_computers = list()
+	/// Linked security gas vents.
+	var/list/linked_vents = list()
+	/// The tag number for generated vent labels, if none is manually set.
+	var/tag_num = 1
 
 	/// Working Joe stuff
 	var/list/tickets_maintenance = list()
@@ -49,6 +53,23 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	for(var/obj/effect/step_trigger/ares_alert/alert in linked_alerts)
 		alert.delink()
 	..()
+
+/datum/ares_link/proc/get_ares_vents()
+	var/list/security_vents = list()
+	var/datum/ares_link/link = GLOB.ares_link
+	for(var/obj/structure/pipes/vents/pump/no_boom/gas/vent in link.linked_vents)
+		if(!vent.vent_tag)
+			vent.vent_tag = "Security Vent #[link.tag_num]"
+			link.tag_num++
+
+		var/list/current_vent = list()
+		var/is_available = COOLDOWN_FINISHED(vent, vent_trigger_cooldown)
+		current_vent["vent_tag"] = vent.vent_tag
+		current_vent["ref"] = "\ref[vent]"
+		current_vent["available"] = is_available
+		security_vents += list(current_vent)
+	return security_vents
+
 
 /* BELOW ARE IN AdminAres.dm
 /datum/ares_link/tgui_interact(mob/user, datum/tgui/ui)
@@ -144,11 +165,11 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	var/datum/ares_datacore/datacore = GLOB.ares_datacore
 	datacore.records_bioscan.Add(new /datum/ares_record/bioscan(title, input))
 
-/proc/log_ares_bombardment(user_name, ob_name, coordinates)
+/proc/log_ares_bombardment(user_name, ob_name, message)
 	if(!ares_can_log())
 		return FALSE
 	var/datum/ares_datacore/datacore = GLOB.ares_datacore
-	datacore.records_bombardment.Add(new /datum/ares_record/bombardment(ob_name, "Bombardment fired at [coordinates].", user_name))
+	datacore.records_bombardment.Add(new /datum/ares_record/bombardment(ob_name, message, user_name))
 
 /proc/log_ares_announcement(title, message)
 	if(!ares_can_log())

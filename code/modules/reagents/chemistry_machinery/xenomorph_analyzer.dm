@@ -79,14 +79,13 @@
 			continue
 		static_data["upgrades"] += list(list(
 			"name" = capitalize_first_letters(upgrade.name),
-			"desc" = capitalize_first_letters(upgrade.desc),
+			"desc" = upgrade.desc,
 			"vari" = upgrade.behavior,
 			"cost" = upgrade.value_upgrade,
 			"ref" = upgrade.item_reference,
 			"category" = upgrade.upgrade_type,
 			"clearance" = upgrade.clearance_req,
 		))
-		to_world(initial(upgrade.upgrade_type))
 	return static_data
 
 /obj/structure/machinery/xenoanalyzer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)

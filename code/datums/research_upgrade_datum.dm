@@ -83,7 +83,7 @@
 
 /datum/research_upgrades/armor/translator
 	name = "Universal Translator Plate"
-	desc = "A plate which, when attached to uniform, is able to translate any word spoken without data about that language, effectively allowing to translate new and old languages alike."
+	desc = "A plate which, when attached to uniform, is able to translate any word heard by user without data about that language, effectively allowing to translate new and old languages alike."
 	value_upgrade = 2000
 	behavior = UPGRADE_TIER_1
 	clearance_req = 4

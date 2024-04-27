@@ -58,6 +58,7 @@ export const XenomorphExtractor = (_props, context) => {
               Recepticle is empty, analyzing is impossible!
             </NoticeBox>
           )}
+          {organ && <NoticeBox>Biomass detected, Ready to process</NoticeBox>}
         </Section>
         <Divider />
         <Section title={<span> Select Technology to print.</span>}>

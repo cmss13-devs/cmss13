@@ -131,7 +131,7 @@ export const settingsReducer = (state = initialState, action) => {
     } else {
       delete nextState.highlightSettingById[id];
       nextState.highlightSettings = nextState.highlightSettings.filter(
-        (sid) => sid !== id
+        (sid) => sid !== id,
       );
       if (!nextState.highlightSettings.length) {
         nextState.highlightSettings.push(defaultHighlightSetting.id);

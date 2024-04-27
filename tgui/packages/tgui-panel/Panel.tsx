@@ -6,6 +6,7 @@
 
 import { Button, Section, Stack } from 'tgui/components';
 import { Pane } from 'tgui/layouts';
+
 import { NowPlayingWidget, useAudio } from './audio';
 import { ChatPanel, ChatTabs } from './chat';
 import { useGame } from './game';
@@ -15,10 +16,6 @@ import { ReconnectButton } from './reconnect';
 import { SettingsPanel, useSettings } from './settings';
 
 export const Panel = (props) => {
-  // IE8-10: Needs special treatment due to missing Flex support
-  if (Byond.IS_LTE_IE10) {
-    return <HoboPanel />;
-  }
   const audio = useAudio();
   const settings = useSettings();
   const game = useGame();
@@ -29,6 +26,7 @@ export const Panel = (props) => {
       return <KitchenSink panel />;
     }
   }
+
   return (
     <Pane theme={settings.theme}>
       <Stack fill vertical>
@@ -99,30 +97,6 @@ export const Panel = (props) => {
           </Section>
         </Stack.Item>
       </Stack>
-    </Pane>
-  );
-};
-
-const HoboPanel = (props) => {
-  const settings = useSettings();
-  return (
-    <Pane theme={settings.theme}>
-      <Pane.Content scrollable>
-        <Button
-          style={{
-            position: 'fixed',
-            top: '1em',
-            right: '2em',
-            'z-index': 1000,
-          }}
-          selected={settings.visible}
-          onClick={() => settings.toggle()}>
-          Settings
-        </Button>
-        {(settings.visible && <SettingsPanel />) || (
-          <ChatPanel lineHeight={settings.lineHeight} />
-        )}
-      </Pane.Content>
     </Pane>
   );
 };

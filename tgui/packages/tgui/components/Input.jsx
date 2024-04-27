@@ -17,8 +17,8 @@ export const toInputValue = value => (
 );
 
 export class Input extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.inputRef = createRef();
     this.state = {
       editing: false,

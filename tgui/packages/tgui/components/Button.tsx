@@ -135,7 +135,8 @@ export const Button = (props: Props) => {
           event.preventDefault();
         }
       }}
-      {...computeBoxProps(rest)}>
+      {...computeBoxProps(rest)}
+    >
       <div className="Button__content">
         {icon && iconPosition !== 'right' && (
           <Icon
@@ -152,7 +153,8 @@ export const Button = (props: Props) => {
             className={classes([
               'Button--ellipsis',
               icon && 'Button__textMargin',
-            ])}>
+            ])}
+          >
             {toDisplay}
           </span>
         )}
@@ -237,7 +239,8 @@ const ButtonConfirm = (props: ConfirmProps) => {
       icon={clickedOnce ? confirmIcon : icon}
       color={clickedOnce ? confirmColor : color}
       onClick={handleClick}
-      {...rest}>
+      {...rest}
+    >
       {clickedOnce ? confirmContent : children}
     </Button>
   );
@@ -315,7 +318,8 @@ const ButtonInput = (props: InputProps) => {
         'Button--color--' + color,
       ])}
       {...rest}
-      onClick={() => setInInput(true)}>
+      onClick={() => setInInput(true)}
+    >
       {icon && <Icon name={icon} rotation={iconRotation} spin={iconSpin} />}
       <div>{toDisplay}</div>
       <input

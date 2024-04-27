@@ -279,7 +279,7 @@
 	recyclable_value = 500
 
 /obj/item/clothing/accessory/health/research_plate/emergency_injector/Destroy()
-	var/mob/living/wearer = null
+	wearer = null
 	if(!QDELETED(activation))
 		QDEL_NULL(activation)
 	. = ..()

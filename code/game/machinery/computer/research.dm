@@ -56,7 +56,7 @@
 	//biomass credits rewards
 	if(istype(B, /obj/item/research_upgrades/credits))
 		var/obj/item/research_upgrades/credits/cred = B
-		GLOB.chemical_data.update_credits(2)
+		GLOB.chemical_data.update_credits(cred.credit_value)
 		visible_message(SPAN_NOTICE("[user] inserts [cred] in [src], collecting 2 points from sales."))
 		qdel(cred)
 	//Clearance Updating

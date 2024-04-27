@@ -5,8 +5,20 @@
  */
 
 import { useDispatch, useSelector } from 'tgui/backend';
-import { Button, Collapsible, Divider, Input, Section, Stack } from 'tgui/components';
-import { removeChatPage, toggleAcceptedType, updateChatPage } from './actions';
+import {
+  Button,
+  Collapsible,
+  Divider,
+  Input,
+  Section,
+  Stack,
+} from 'tgui/components';
+
+import {
+  removeChatPage,
+  toggleAcceptedType,
+  updateChatPage,
+} from './actions';
 import { MESSAGE_TYPES } from './constants';
 import { selectCurrentChatPage } from './selectors';
 
@@ -18,13 +30,29 @@ export const ChatPageSettings = (props) => {
       <Stack align="center">
         <Stack.Item grow>
           <Input
-            fluid
+            width="100%"
             value={page.name}
             onChange={(e, value) =>
               dispatch(
                 updateChatPage({
                   pageId: page.id,
                   name: value,
+                }),
+              )
+            }
+          />
+        </Stack.Item>
+        <Stack.Item>
+          <Button.Checkbox
+            content="Mute"
+            checked={page.hideUnreadCount}
+            icon={page.hideUnreadCount ? 'bell-slash' : 'bell'}
+            tooltip="Disables unread counter"
+            onClick={() =>
+              dispatch(
+                updateChatPage({
+                  pageId: page.id,
+                  hideUnreadCount: !page.hideUnreadCount,
                 }),
               )
             }
@@ -42,8 +70,8 @@ export const ChatPageSettings = (props) => {
               )
               }
             >
-            Remove
-          </Button>
+              Remove
+            </Button>
         </Stack.Item>
       </Stack>
       <Divider />

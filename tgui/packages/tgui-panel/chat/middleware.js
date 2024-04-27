@@ -6,9 +6,27 @@
 
 import { storage } from 'common/storage';
 import DOMPurify from 'dompurify';
-import { loadSettings, updateSettings, addHighlightSetting, removeHighlightSetting, updateHighlightSetting } from '../settings/actions';
+
+import {
+  addHighlightSetting,
+  loadSettings,
+  removeHighlightSetting,
+  updateHighlightSetting,
+  updateSettings,
+} from '../settings/actions';
 import { selectSettings } from '../settings/selectors';
-import { addChatPage, changeChatPage, changeScrollTracking, loadChat, rebuildChat, removeChatPage, saveChatToDisk, toggleAcceptedType, updateMessageCount } from './actions';
+import {
+  addChatPage,
+  changeChatPage,
+  changeScrollTracking,
+  clearChat,
+  loadChat,
+  rebuildChat,
+  removeChatPage,
+  saveChatToDisk,
+  toggleAcceptedType,
+  updateMessageCount,
+} from './actions';
 import { MAX_PERSISTED_MESSAGES, MESSAGE_SAVE_INTERVAL } from './constants';
 import { createMessage, serializeMessage } from './model';
 import { chatRenderer } from './renderer';
@@ -137,6 +155,10 @@ export const chatMiddleware = (store) => {
     }
     if (type === saveChatToDisk.type) {
       chatRenderer.saveToDisk();
+      return;
+    }
+    if (type === clearChat.type) {
+      chatRenderer.clearChat();
       return;
     }
     return next(action);

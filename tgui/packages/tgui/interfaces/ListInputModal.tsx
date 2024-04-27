@@ -1,9 +1,18 @@
-import { Loader } from './common/Loader';
-import { InputButtons } from './common/InputButtons';
-import { Button, Input, Section, Stack } from '../components';
-import { useBackend, useLocalState } from '../backend';
-import { KEY_A, KEY_DOWN, KEY_ESCAPE, KEY_ENTER, KEY_UP, KEY_Z } from '../../common/keycodes';
+import { useState } from 'react';
+
+import {
+  KEY_A,
+  KEY_DOWN,
+  KEY_ENTER,
+  KEY_ESCAPE,
+  KEY_UP,
+  KEY_Z,
+} from '../../common/keycodes';
+import { useBackend } from '../backend';
+import { Autofocus, Button, Input, Section, Stack } from '../components';
 import { Window } from '../layouts';
+import { InputButtons } from './common/InputButtons';
+import { Loader } from './common/Loader';
 
 type ListInputData = {
   init_value: string;
@@ -24,18 +33,9 @@ export const ListInputModal = (props) => {
     timeout,
     title,
   } = data;
-  const [selected, setSelected] = useLocalState<number>(
-    'selected',
-    items.indexOf(init_value)
-  );
-  const [searchBarVisible, setSearchBarVisible] = useLocalState<boolean>(
-    'searchBarVisible',
-    items.length > 9
-  );
-  const [searchQuery, setSearchQuery] = useLocalState<string>(
-    'searchQuery',
-    ''
-  );
+  const [selected, setSelected] = useState(items.indexOf(init_value));
+  const [searchBarVisible, setSearchBarVisible] = useState(items.length > 9);
+  const [searchQuery, setSearchQuery] = useState('');
   // User presses up or down on keyboard
   // Simulates clicking an item
   const onArrowKey = (key: number) => {
@@ -97,7 +97,7 @@ export const ListInputModal = (props) => {
     setSearchQuery('');
   };
   const filteredItems = items.filter((item) =>
-    item?.toLowerCase().includes(searchQuery.toLowerCase())
+    item?.toLowerCase().includes(searchQuery.toLowerCase()),
   );
   // Dynamically changes the window height based on the message.
   const windowHeight =
@@ -129,7 +129,8 @@ export const ListInputModal = (props) => {
             event.preventDefault();
             act('cancel');
           }
-        }}>
+        }}
+      >
         <Section
           buttons={
             <Button
@@ -147,7 +148,8 @@ export const ListInputModal = (props) => {
           }
           className="ListInput__Section"
           fill
-          title={message}>
+          title={message}
+        >
           <Stack fill vertical>
             <Stack.Item grow>
               <ListDisplay
@@ -186,16 +188,16 @@ const ListDisplay = (props) => {
     props;
 
   return (
-    <Section fill scrollable tabIndex={0}>
+    <Section fill scrollable>
+      <Autofocus />
       {filteredItems.map((item, index) => {
         return (
           <Button
             color="transparent"
             fluid
-            id={index}
             key={index}
             onClick={() => onClick(index)}
-            onDblClick={(event) => {
+            onDoubleClick={(event) => {
               event.preventDefault();
               act('submit', { entry: filteredItems[selected] });
             }}
@@ -208,9 +210,10 @@ const ListDisplay = (props) => {
             }}
             selected={index === selected}
             style={{
-              'animation': 'none',
-              'transition': 'none',
-            }}>
+              animation: 'none',
+              transition: 'none',
+            }}
+          >
             {item.replace(/^\w/, (c) => c.toUpperCase())}
           </Button>
         );

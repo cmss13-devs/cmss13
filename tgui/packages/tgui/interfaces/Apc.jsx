@@ -1,5 +1,12 @@
 import { useBackend } from '../backend';
-import { Box, Button, LabeledList, NoticeBox, ProgressBar, Section } from '../components';
+import {
+  Box,
+  Button,
+  LabeledList,
+  NoticeBox,
+  ProgressBar,
+  Section,
+} from '../components';
 import { Window } from '../layouts';
 import { InterfaceLockNoticeBox } from './common/InterfaceLockNoticeBox';
 
@@ -42,16 +49,21 @@ const ApcContent = (props) => {
   const adjustedCellChange = data.powerCellStatus / 100;
   if (data.failTime > 0) {
     return (
-      <NoticeBox>
+      <NoticeBox info textAlign="center" mb={0}>
         <b>
           <h3>SYSTEM FAILURE</h3>
         </b>
-        <i>I/O regulators malfunction detected! Waiting for system reboot...</i>
+        I/O regulators have malfunctioned! <br />
+        Awaiting system reboot.
         <br />
-        Automatic reboot in {data.failTime} seconds...
+        Executing software reboot in {data.failTime} seconds...
+        <br />
+        <br />
         <Button
           icon="sync"
           content="Reboot Now"
+          tooltip="Force an interface reset."
+          tooltipPosition="bottom"
           onClick={() => act('reboot')}
         />
       </NoticeBox>
@@ -73,7 +85,8 @@ const ApcContent = (props) => {
                 disabled={locked}
                 onClick={() => act('breaker')}
               />
-            }>
+            }
+          >
             [ {externalPowerStatus.externalPowerText} ]
           </LabeledList.Item>
           <LabeledList.Item label="Power Cell">
@@ -89,8 +102,12 @@ const ApcContent = (props) => {
                 disabled={locked}
                 onClick={() => act('charge')}
               />
-            }>
-            [ {chargingStatus.chargingText} ]
+            }
+          >
+            [{' '}
+            {chargingStatus.chargingText +
+              (data.chargingStatus === 1 ? data.chargingPowerDisplay : '')}{' '}
+            ]
           </LabeledList.Item>
         </LabeledList>
       </Section>
@@ -107,7 +124,8 @@ const ApcContent = (props) => {
                     <Box
                       inline
                       mx={2}
-                      color={channel.status >= 2 ? 'good' : 'bad'}>
+                      color={channel.status >= 2 ? 'good' : 'bad'}
+                    >
                       {channel.status >= 2 ? 'On' : 'Off'}
                     </Box>
                     <Button
@@ -135,7 +153,8 @@ const ApcContent = (props) => {
                       onClick={() => act('channel', topicParams.off)}
                     />
                   </>
-                }>
+                }
+              >
                 {channel.powerLoad}
               </LabeledList.Item>
             );
@@ -165,7 +184,8 @@ const ApcContent = (props) => {
               />
             </>
           )
-        }>
+        }
+      >
         <LabeledList>
           <LabeledList.Item
             label="Cover Lock"

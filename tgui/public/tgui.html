@@ -77,11 +77,11 @@
 
   // Reviver for BYOND JSON
   var byondJsonReviver = function (key, value) {
-      if (typeof value === 'object' && value !== null && value.__number__) {
-        return parseFloat(value.__number__);
-      }
-      return value;
-    };
+    if (typeof value === 'object' && value !== null && value.__number__) {
+      return parseFloat(value.__number__);
+    }
+    return value;
+  };
 
   // Makes a BYOND call.
   // See: https://secure.byond.com/docs/ref/skinparams.html

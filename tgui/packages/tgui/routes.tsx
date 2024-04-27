@@ -13,23 +13,23 @@ const requireInterface = require.context('./interfaces');
 
 const routingError =
   (type: 'notFound' | 'missingExport', name: string) => () => {
-  return (
-    <Window>
-      <Window.Content scrollable>
-        {type === 'notFound' && (
-          <div>
-            Interface <b>{name}</b> was not found.
-          </div>
-        )}
-        {type === 'missingExport' && (
-          <div>
-            Interface <b>{name}</b> is missing an export.
-          </div>
-        )}
-      </Window.Content>
-    </Window>
-  );
-};
+    return (
+      <Window>
+        <Window.Content scrollable>
+          {type === 'notFound' && (
+            <div>
+              Interface <b>{name}</b> was not found.
+            </div>
+          )}
+          {type === 'missingExport' && (
+            <div>
+              Interface <b>{name}</b> is missing an export.
+            </div>
+          )}
+        </Window.Content>
+      </Window>
+    );
+  };
 
 // Displays an empty Window with scrollable content
 const SuspendedWindow = () => {
@@ -68,6 +68,7 @@ export const getRoutedComponent = () => {
       return require('./debug').KitchenSink;
     }
   }
+
   const name = config?.interface;
   const interfacePathBuilders = [
     (name: string) => `./${name}.tsx`,

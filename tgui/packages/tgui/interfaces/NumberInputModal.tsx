@@ -36,6 +36,7 @@ export const NumberInputModal = (props) => {
     }
     setInput(value);
   };
+
   // Dynamically changes the window height based on the message.
   const windowHeight =
     140 +

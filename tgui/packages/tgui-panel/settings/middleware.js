@@ -5,6 +5,7 @@
  */
 
 import { storage } from 'common/storage';
+
 import { setClientTheme } from '../themes';
 import {
   addHighlightSetting,

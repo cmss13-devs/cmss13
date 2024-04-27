@@ -21,6 +21,7 @@ import {
   Tabs,
   TextArea,
 } from 'tgui/components';
+
 import { ChatPageSettings } from '../chat';
 import { clearChat, rebuildChat, saveChatToDisk } from '../chat/actions';
 import { THEMES } from '../themes';
@@ -113,7 +114,7 @@ export const SettingsGeneral = (props) => {
               )) || (
                 <Input
                   value={fontFamily}
-                  onChange={(e, value) =>
+                  onChange={(value) =>
                     dispatch(
                       updateSettings({
                         fontFamily: value,
@@ -146,7 +147,7 @@ export const SettingsGeneral = (props) => {
             value={fontSize}
             unit="px"
             format={(value) => toFixed(value)}
-            onChange={(e, value) =>
+            onChange={(value) =>
               dispatch(
                 updateSettings({
                   fontSize: value,
@@ -164,7 +165,7 @@ export const SettingsGeneral = (props) => {
             maxValue={5}
             value={lineHeight}
             format={(value) => toFixed(value, 2)}
-            onDrag={(e, value) =>
+            onDrag={(value) =>
               dispatch(
                 updateSettings({
                   lineHeight: value,

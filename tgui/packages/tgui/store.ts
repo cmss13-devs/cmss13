@@ -50,11 +50,11 @@ export const configureStore = (options: ConfigureStoreOptions = {}): Store => {
   const middlewares: Middleware[] = !sideEffects
     ? []
     : [
-      ...(middleware?.pre || []),
-      assetMiddleware,
-      backendMiddleware,
-      ...(middleware?.post || []),
-    ];
+        ...(middleware?.pre || []),
+        assetMiddleware,
+        backendMiddleware,
+        ...(middleware?.post || []),
+      ];
 
   if (process.env.NODE_ENV !== 'production') {
     // We are using two if statements because Webpack is capable of

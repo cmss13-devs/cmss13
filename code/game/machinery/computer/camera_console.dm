@@ -230,6 +230,7 @@
 		if(ishuman(broadcastingcamera.loc))
 			var/mob/living/carbon/human/streamer = broadcastingcamera.loc
 			streamer.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>You've received a new donation!</u></span><br>" + message, /atom/movable/screen/text/screen_text/command_order, pick("#FF0000", "#008000", "#C71585", "#0000FF"))
+		broadcastingcamera.latestmessage = message
 		playsound(broadcastingcamera, 'sound/machines/ping.ogg', 25)
 
 		var/datum/transaction/T = new()

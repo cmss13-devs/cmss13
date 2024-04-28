@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, ProgressBar, Box, Section } from '../components';
+import { Box, Button, ProgressBar, Section } from '../components';
 import { Window } from '../layouts';
 import { createLogger } from '../logging';
 export const AltitudeControlConsole = () => {

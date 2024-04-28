@@ -1,16 +1,16 @@
 import { useBackend, useSharedState } from '../backend';
 import {
+  Box,
   Button,
+  Collapsible,
+  Divider,
+  Input,
+  LabeledControls,
+  NumberInput,
   Section,
   Stack,
-  Tabs,
   Table,
-  Box,
-  Input,
-  NumberInput,
-  LabeledControls,
-  Divider,
-  Collapsible,
+  Tabs,
 } from '../components';
 import { Window } from '../layouts';
 

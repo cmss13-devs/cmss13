@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Section, NoticeBox, Button } from '../components';
+import { Button, NoticeBox, Section } from '../components';
 import { Window } from '../layouts';
 
 export const FiltrationControl = () => {

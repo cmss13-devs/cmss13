@@ -6,8 +6,9 @@
 
 import { Color } from 'common/color';
 import { toFixed } from 'common/math';
-import { useSelector, useBackend } from 'tgui/backend';
-import { Button, Box } from 'tgui/components';
+import { useBackend, useSelector } from 'tgui/backend';
+import { Box, Button } from 'tgui/components';
+
 import { selectPing } from './selectors';
 
 export const PingIndicator = (props) => {

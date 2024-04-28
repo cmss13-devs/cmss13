@@ -4,12 +4,13 @@
  * @license MIT
  */
 
-import { KEY_UP, KEY_DOWN } from 'common/keycodes';
+import { KEY_DOWN, KEY_UP } from 'common/keycodes';
 import { clamp01 } from 'common/math';
+
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Section, Input, Stack } from '../components';
-import { Window } from '../layouts';
+import { Box, Button, Input, Section, Stack } from '../components';
 import { globalEvents } from '../events';
+import { Window } from '../layouts';
 
 let lastScrollTime = 0;
 

@@ -1,4 +1,3 @@
-import { map } from 'common/collections';
 import { toFixed } from 'common/math';
 
 import { useBackend } from '../backend';

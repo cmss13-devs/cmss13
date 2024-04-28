@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, Section, NoticeBox, Dimmer, Icon, Stack } from '../components';
+import { Button, Dimmer, Icon, NoticeBox, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
 export const NuclearBomb = () => {

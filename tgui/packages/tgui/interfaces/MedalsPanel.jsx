@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
-import { Tabs, Section, Button, Stack, Flex } from '../components';
+import { Button, Flex, Section, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
 
 const PAGES = [

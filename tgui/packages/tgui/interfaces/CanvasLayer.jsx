@@ -1,5 +1,6 @@
-import { Box, Icon, Tooltip } from '../components';
 import { Component, createRef } from 'react';
+
+import { Box, Icon, Tooltip } from '../components';
 
 // this file should probably not be in interfaces, should move it later.
 export class CanvasLayer extends Component {

@@ -1,15 +1,15 @@
 import { useBackend } from '../backend';
 import {
-  Section,
-  ProgressBar,
   Box,
-  LabeledList,
-  NoticeBox,
-  Stack,
-  Icon,
+  Button,
   Divider,
   Flex,
-  Button,
+  Icon,
+  LabeledList,
+  NoticeBox,
+  ProgressBar,
+  Section,
+  Stack,
 } from '../components';
 import { Window } from '../layouts';
 

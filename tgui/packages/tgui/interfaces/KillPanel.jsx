@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
+
 import { useBackend } from '../backend';
-import { Section, Box, NoticeBox, Collapsible } from '../components';
+import { Box, Collapsible, NoticeBox, Section } from '../components';
 import { Window } from '../layouts';
 
 export const KillPanel = (props) => {

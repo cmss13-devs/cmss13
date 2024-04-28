@@ -1,7 +1,8 @@
 import { map } from 'common/collections';
 import { classes } from 'common/react';
+
 import { useBackend } from '../backend';
-import { ProgressBar, Section, Box, Flex, Table, Divider } from '../components';
+import { Box, Divider, Flex, ProgressBar, Section, Table } from '../components';
 import { Window } from '../layouts';
 
 const GreedRedRange = {

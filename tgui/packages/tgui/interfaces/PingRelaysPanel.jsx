@@ -1,10 +1,11 @@
-import { useBackend } from '../backend';
-import { round } from 'common/math';
-import { Box, Stack, Button, Icon, RoundGauge, Flex } from '../components';
-import { Window } from '../layouts';
 import { Color } from 'common/color';
+import { round } from 'common/math';
 import { Ping } from 'common/ping';
 import { Component } from 'react';
+
+import { useBackend } from '../backend';
+import { Box, Button, Flex, Icon, RoundGauge, Stack } from '../components';
+import { Window } from '../layouts';
 
 const RED = new Color(220, 40, 40);
 

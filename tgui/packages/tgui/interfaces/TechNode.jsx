@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Stack, Section, LabeledList, Button } from '../components';
+import { Button, LabeledList, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
 export const TechNode = (props) => {

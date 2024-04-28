@@ -1,6 +1,7 @@
 import { classes } from 'common/react';
+
 import { useBackend, useLocalState } from '../backend';
-import { Tabs, Box, Section, Stack, Button } from '../components';
+import { Box, Button, Section, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
 
 export const INFINITE_BUILD_AMOUNT = -1;

@@ -1,13 +1,13 @@
 import { useBackend } from '../backend';
 import {
-  Button,
-  Section,
-  LabeledList,
-  ProgressBar,
-  Divider,
-  NumberInput,
-  NoticeBox,
   Box,
+  Button,
+  Divider,
+  LabeledList,
+  NoticeBox,
+  NumberInput,
+  ProgressBar,
+  Section,
   Tabs,
 } from '../components';
 import { Window } from '../layouts';

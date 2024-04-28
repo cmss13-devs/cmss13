@@ -1,13 +1,14 @@
 import { Fragment } from 'react';
+
 import { useBackend } from '../backend';
 import {
-  Section,
   Box,
-  ProgressBar,
-  NoticeBox,
   Collapsible,
-  Flex,
   Divider,
+  Flex,
+  NoticeBox,
+  ProgressBar,
+  Section,
 } from '../components';
 import { Window } from '../layouts';
 

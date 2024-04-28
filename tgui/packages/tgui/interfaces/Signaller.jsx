@@ -1,6 +1,7 @@
 import { toFixed } from 'common/math';
+
 import { useBackend } from '../backend';
-import { Button, Section, LabeledList, Slider } from '../components';
+import { Button, LabeledList, Section, Slider } from '../components';
 import { Window } from '../layouts';
 
 export const Signaller = (props) => {

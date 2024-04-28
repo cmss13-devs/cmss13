@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, LabeledList, Section, Slider, Flex, Box } from '../components';
+import { Box, Button, Flex, LabeledList, Section, Slider } from '../components';
 import { Window } from '../layouts';
 
 export const AcidVest = (_props) => {

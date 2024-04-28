@@ -1,8 +1,10 @@
 import { toFixed } from 'common/math';
+
 import { useBackend } from '../backend';
 import {
   Button,
   LabeledControls,
+  NoticeBox,
   NumberInput,
   RoundGauge,
   Section,

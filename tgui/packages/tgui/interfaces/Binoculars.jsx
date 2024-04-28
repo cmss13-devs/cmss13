@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Section, Box } from '../components';
+import { Box, Section } from '../components';
 import { Window } from '../layouts';
 
 export const Binoculars = () => {

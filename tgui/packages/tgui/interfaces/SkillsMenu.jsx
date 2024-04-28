@@ -1,13 +1,14 @@
 import { capitalizeAll } from 'common/string';
 import { Fragment } from 'react';
+
 import { useBackend } from '../backend';
 import {
-  Section,
   Box,
-  ProgressBar,
-  Slider,
-  NoticeBox,
   Button,
+  NoticeBox,
+  ProgressBar,
+  Section,
+  Slider,
 } from '../components';
 import { Window } from '../layouts';
 

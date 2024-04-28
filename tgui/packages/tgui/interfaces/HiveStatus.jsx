@@ -1,14 +1,15 @@
 import { classes } from 'common/react';
 import { createSearch } from 'common/string';
 import { Fragment } from 'react';
+
 import { useBackend, useLocalState } from '../backend';
 import {
-  Input,
   Button,
-  Flex,
-  Divider,
   Collapsible,
+  Divider,
+  Flex,
   Icon,
+  Input,
   NumberInput,
   Table,
 } from '../components';

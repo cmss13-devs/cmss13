@@ -1,19 +1,20 @@
+import { capitalize } from 'common/string';
+import { Fragment } from 'react';
+
 import { useBackend, useLocalState } from '../backend';
 import {
-  Section,
-  Flex,
-  ProgressBar,
   Box,
   Button,
-  Tabs,
-  Stack,
+  Flex,
   Input,
+  ProgressBar,
+  Section,
+  Stack,
+  Tabs,
 } from '../components';
-import { capitalize } from 'common/string';
 import { Window } from '../layouts';
-import { ElectricalPanel } from './common/ElectricalPanel';
-import { Fragment } from 'react';
 import { createLogger } from '../logging';
+import { ElectricalPanel } from './common/ElectricalPanel';
 
 export const Autolathe = () => {
   const { act, data } = useBackend();

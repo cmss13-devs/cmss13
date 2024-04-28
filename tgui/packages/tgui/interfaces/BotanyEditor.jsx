@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
+
 import { useBackend } from '../backend';
-import { Section, Button, Stack, LabeledList, NoticeBox } from '../components';
+import { Button, LabeledList, NoticeBox, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
 export const BotanyEditor = () => {

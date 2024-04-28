@@ -1,6 +1,7 @@
-import { useBackend, useLocalState } from '../backend';
-import { Button, Flex, Section, Tabs, Box, Input, Slider } from '../components';
 import { KEY_CTRL, KEY_SHIFT } from 'common/keycodes';
+
+import { useBackend, useLocalState } from '../backend';
+import { Box, Button, Flex, Input, Section, Slider, Tabs } from '../components';
 import { Window } from '../layouts';
 
 const PAGES = [

@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Flex, Box, Section, Button, Stack } from '../components';
+import { Box, Button, Flex, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
 const PAGES = {

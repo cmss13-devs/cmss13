@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, Flex, Section, Box } from '../components';
+import { Box, Button, Flex, Section } from '../components';
 import { Window } from '../layouts';
 
 export const TechControl = (props) => {

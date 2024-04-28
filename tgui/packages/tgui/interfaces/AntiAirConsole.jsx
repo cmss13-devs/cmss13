@@ -1,13 +1,13 @@
 import { useBackend, useLocalState } from '../backend';
 import {
-  Stack,
-  Section,
-  Tabs,
-  Button,
-  NoticeBox,
   Box,
+  Button,
   Dimmer,
   Icon,
+  NoticeBox,
+  Section,
+  Stack,
+  Tabs,
 } from '../components';
 import { Window } from '../layouts';
 

@@ -1,18 +1,19 @@
+import { map } from 'common/collections';
 import { Fragment } from 'react';
+
 import { useBackend, useLocalState } from '../backend';
 import {
   Box,
   Button,
-  Stack,
   Input,
-  Section,
-  Tabs,
-  Table,
   NumberInput,
+  Section,
+  Stack,
+  Table,
+  Tabs,
 } from '../components';
 import { Window } from '../layouts';
 import { AccessList } from './common/AccessList';
-import { map } from 'common/collections';
 
 export const CardMod = (props) => {
   const [tab2, setTab2] = useLocalState('tab2', 1);

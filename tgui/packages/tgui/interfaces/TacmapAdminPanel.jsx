@@ -1,7 +1,7 @@
 import { useBackend, useLocalState } from '../backend';
-import { Tabs, Section, Button, Stack, Flex } from '../components';
-import { DrawnMap } from './DrawnMap';
+import { Button, Flex, Section, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
+import { DrawnMap } from './DrawnMap';
 
 const PAGES = [
   {

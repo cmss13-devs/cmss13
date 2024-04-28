@@ -1,8 +1,9 @@
-import { Fragment } from 'react';
-import { useBackend } from '../backend';
-import { Section, Box, Button, Divider } from '../components';
-import { Window } from '../layouts';
 import { capitalize } from 'common/string';
+import { Fragment } from 'react';
+
+import { useBackend } from '../backend';
+import { Box, Button, Divider, Section } from '../components';
+import { Window } from '../layouts';
 
 export const LanguageMenu = (props) => {
   const { act, data } = useBackend();

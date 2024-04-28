@@ -1,5 +1,6 @@
-import { Box } from '../components';
 import { Component, createRef } from 'react';
+
+import { Box } from '../components';
 
 export class DrawnMap extends Component {
   constructor(props) {

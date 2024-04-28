@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
-import { Flex, Section, Box, Tabs, LabeledList } from '../components';
+import { Box, Flex, LabeledList, Section, Tabs } from '../components';
 import { Window } from '../layouts';
 
 export const ResearchMemories = () => {

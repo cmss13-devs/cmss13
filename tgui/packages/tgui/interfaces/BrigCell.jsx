@@ -1,16 +1,17 @@
-import { useBackend } from '../backend';
 import { addZeros } from 'common/math';
-import { Window } from '../layouts';
+
+import { useBackend } from '../backend';
 import {
   Box,
-  ColorBox,
-  NoticeBox,
-  Flex,
-  ProgressBar,
   Button,
-  LabeledList,
+  ColorBox,
   Divider,
+  Flex,
+  LabeledList,
+  NoticeBox,
+  ProgressBar,
 } from '../components';
+import { Window } from '../layouts';
 
 export const BrigCell = (props) => {
   const { data, act } = useBackend();

@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Section, Button, LabeledList, Flex } from '../components';
+import { Button, Flex, LabeledList, Section } from '../components';
 import { Window } from '../layouts';
 
 export const PartFabricator = (props) => {

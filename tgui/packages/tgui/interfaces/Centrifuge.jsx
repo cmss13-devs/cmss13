@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Section, Flex, Button, Box, Input, NoticeBox } from '../components';
+import { Box, Button, Flex, Input, NoticeBox, Section } from '../components';
 import { Window } from '../layouts';
 
 export const Centrifuge = () => {

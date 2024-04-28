@@ -1,6 +1,7 @@
 import { map } from 'common/collections';
+
 import { useBackend } from '../backend';
-import { Section, Table, Icon } from '../components';
+import { Icon, Section, Table } from '../components';
 import { Window } from '../layouts';
 
 export const HiveLeaders = (props) => {

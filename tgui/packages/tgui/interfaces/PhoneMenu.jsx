@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
-import { Stack, Section, Tabs, Input, Button } from '../components';
+import { Button, Input, Section, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
 
 export const PhoneMenu = (props) => {

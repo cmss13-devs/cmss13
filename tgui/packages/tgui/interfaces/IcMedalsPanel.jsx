@@ -1,7 +1,8 @@
-import { useBackend, useLocalState } from '../backend';
-import { Window } from '../layouts';
 import { classes } from 'common/react';
-import { NoticeBox, Section, Box, Button, Stack, Flex } from '../components';
+
+import { useBackend, useLocalState } from '../backend';
+import { Box, Button, Flex, NoticeBox, Section, Stack } from '../components';
+import { Window } from '../layouts';
 
 export const IcMedalsPanel = (props) => {
   const { act, data } = useBackend();

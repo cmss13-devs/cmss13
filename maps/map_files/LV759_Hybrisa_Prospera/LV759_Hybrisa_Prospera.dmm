@@ -5196,7 +5196,8 @@
 /area/lv759/indoors/caves/central_caves)
 "aTC" = (
 /obj/structure/machinery/atm{
-	pixel_y = 28
+	pixel_y = 28;
+	pixel_x = -2
 	},
 /obj/item/spacecash/c1{
 	pixel_x = 12;
@@ -10276,10 +10277,6 @@
 	icon_state = "floor_plate"
 	},
 /area/lv759/outdoors/colony_streets/east_central_street)
-"bOl" = (
-/obj/structure/window/framed/hybrisa/colony/engineering,
-/turf/open/floor/plating,
-/area/lv759/indoors/power_plant)
 "bOo" = (
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/hybrisa/street/cement1,
@@ -97344,9 +97341,6 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper General Store"
 	},
-/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
-	dir = 4
-	},
 /turf/open/floor/plating,
 /area/lv759/indoors/power_plant)
 "qpy" = (
@@ -114947,7 +114941,6 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	name = "\improper Hospital - North Hallway"
 	},
-/obj/structure/window/framed/hybrisa/colony,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "whitegreen"
@@ -186164,9 +186157,9 @@ tgZ
 wRR
 tgZ
 tgZ
-bOl
+wem
 jgg
-bOl
+wem
 gAU
 cRp
 voq

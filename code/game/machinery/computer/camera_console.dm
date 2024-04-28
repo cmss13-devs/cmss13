@@ -205,7 +205,7 @@
 
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast
 	name = "Television Set"
-	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW."
+	desc = "An old TV hooked up to a video cassette recorder, which has been modified to function as... money slot?"
 	network = list(CAMERA_NET_CORRESPONDENT)
 	stay_connected = TRUE
 	circuit = /obj/item/circuitboard/computer/cameras/tv
@@ -220,22 +220,25 @@
 		if(spacecash.counterfeit)
 			return
 
+
 		if(!broadcastingcamera.donationsaccount)
 			to_chat(user, SPAN_WARNING("Streamer is not accepting donations at this time."))
 			return
 
 		var/message = tgui_input_text(user, "What would you like to message the streamer? (48 Characters MAX)", "What?", max_length = 48)
-		!broadcastingcamera.donationsaccount.money += spacecash.worth
-		streamer.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>You've received a new donation!</u></span><br>" + message, /atom/movable/screen/text/screen_text/command_order, pick("#FF0000", "#008000", "#C71585", "#0000FF"))
+		broadcastingcamera.donationsaccount.money += spacecash.worth
+		if(ishuman(broadcastingcamera.loc))
+			var/mob/living/carbon/human/streamer = broadcastingcamera.loc
+			streamer.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>You've received a new donation!</u></span><br>" + message, /atom/movable/screen/text/screen_text/command_order, pick("#FF0000", "#008000", "#C71585", "#0000FF"))
 		playsound(broadcastingcamera, 'sound/machines/ping.ogg', 25)
 
 		var/datum/transaction/T = new()
-		T.target_name = acc.owner_name
+		T.target_name = broadcastingcamera.donationsaccount.owner_name
 		T.purpose = "Donation"
 		T.amount = spacecash:worth
 		T.date = GLOB.current_date_string
 		T.time = worldtime2text()
-		!broadcastingcamera.donationsaccount.transaction_log.Add(T)
+		broadcastingcamera.donationsaccount.transaction_log.Add(T)
 		qdel(spacecash)
 
 	..()

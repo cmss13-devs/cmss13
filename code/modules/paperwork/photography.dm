@@ -360,6 +360,10 @@
 	var/obj/structure/machinery/camera/correspondent/linked_cam
 	var/datum/money_account/donationsaccount
 
+/obj/item/device/camera/broadcasting/get_examine_text(mob/user)
+	. = ..()
+	. += "Linked account: [donationsaccount ? "account_number" : "None, swipe your ID-card to link it."]."
+
 /obj/item/device/camera/broadcasting/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/card/id))
 		var/obj/item/card/id/id = I

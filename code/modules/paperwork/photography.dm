@@ -360,13 +360,12 @@
 	var/obj/structure/machinery/camera/correspondent/linked_cam
 	var/datum/money_account/donationsaccount
 	var/latestmessage
-	var/latestsum
 
 /obj/item/device/camera/broadcasting/get_examine_text(mob/user)
 	. = ..()
 	. += "Linked account: [donationsaccount ? "[donationsaccount.account_number]" : "None, swipe your ID-card to link it"]."
 	if(latestmessage)
-		. += "Latest donation: [latestmessage], [latestsum]$."
+		. += "Latest donation: [latestmessage]"
 
 /obj/item/device/camera/broadcasting/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/card/id))

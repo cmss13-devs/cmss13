@@ -225,13 +225,14 @@
 			to_chat(user, SPAN_WARNING("Streamer is not accepting donations at this time."))
 			return
 
-		var/message = tgui_input_text(user, "What would you like to message the streamer? (48 Characters MAX)", "What?", max_length = 48)
+		var/message = tgui_input_text(user, "What would you like to message the streamer? (48 Characters MAX)", "Message", max_length = 48)
+		var/nickname = tgui_input_text(user, "What would you like your displayed name to be? (20 Characters MAX)", "Name?", max_length = 20)
+
 		broadcastingcamera.donationsaccount.money += spacecash.worth
 		if(ishuman(broadcastingcamera.loc))
 			var/mob/living/carbon/human/streamer = broadcastingcamera.loc
-			streamer.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>You've received a new donation of [spacecash.worth]$!</u></span><br>" + message, /atom/movable/screen/text/screen_text/command_order, pick("#FF0000", "#008000", "#C71585", "#0000FF"))
-		broadcastingcamera.latestmessage = message
-		broadcastingcamera.latestsum = spacecash.worth
+			streamer.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>You've received a new donation of [spacecash.worth]$ from [nickname]!</u></span><br>" + message, /atom/movable/screen/text/screen_text/command_order, pick("#FF0000", "#008000", "#C71585", "#0000FF"))
+		broadcastingcamera.latestmessage = "[nickname], [spacecash.worth], \"[message]\""
 		playsound(broadcastingcamera, 'sound/machines/ping.ogg', 25)
 
 		var/datum/transaction/T = new()

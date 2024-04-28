@@ -358,6 +358,15 @@
 	w_class = SIZE_HUGE
 	flags_equip_slot = NO_FLAGS //cannot be equiped
 	var/obj/structure/machinery/camera/correspondent/linked_cam
+	var/datum/money_account/donationsaccount
+
+/obj/item/device/camera/broadcasting/attackby(obj/item/I, mob/user)
+	if(istype(I, /obj/item/card/id))
+		var/obj/item/card/id/id = I
+		if(!id.associated_account_number)
+			return
+		donationsaccount = get_account(id.associated_account_number)
+		to_chat(user, SPAN_NOTICE("Account linked for donations!"))
 
 /obj/item/device/camera/broadcasting/Initialize(mapload, ...)
 	. = ..()

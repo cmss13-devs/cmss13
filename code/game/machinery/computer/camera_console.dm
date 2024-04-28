@@ -211,6 +211,35 @@
 	circuit = /obj/item/circuitboard/computer/cameras/tv
 	var/obj/item/device/camera/broadcasting/broadcastingcamera = null
 
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/attackby(obj/item/I, mob/user)
+	if(!broadcastingcamera)
+		return
+
+	if(istype(I, /obj/item/spacecash))
+		var/obj/item/spacecash/spacecash = I
+		if(spacecash.counterfeit)
+			return
+
+		if(!broadcastingcamera.donationsaccount)
+			to_chat(user, SPAN_WARNING("Streamer is not accepting donations at this time."))
+			return
+
+		var/message = tgui_input_text(user, "What would you like to message the streamer? (48 Characters MAX)", "What?", max_length = 48)
+		!broadcastingcamera.donationsaccount.money += spacecash.worth
+		streamer.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>You've received a new donation!</u></span><br>" + message, /atom/movable/screen/text/screen_text/command_order, pick("#FF0000", "#008000", "#C71585", "#0000FF"))
+		playsound(broadcastingcamera, 'sound/machines/ping.ogg', 25)
+
+		var/datum/transaction/T = new()
+		T.target_name = acc.owner_name
+		T.purpose = "Donation"
+		T.amount = spacecash:worth
+		T.date = GLOB.current_date_string
+		T.time = worldtime2text()
+		!broadcastingcamera.donationsaccount.transaction_log.Add(T)
+		qdel(spacecash)
+
+	..()
+
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast/Destroy()
 	broadcastingcamera = null
 	return ..()

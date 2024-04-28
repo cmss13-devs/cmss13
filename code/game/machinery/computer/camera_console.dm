@@ -226,7 +226,7 @@
 			return
 
 		var/message = tgui_input_text(user, "What would you like to message the streamer? (48 Characters MAX)", "Message", max_length = 48)
-		var/nickname = tgui_input_text(user, "What would you like your displayed name to be? (20 Characters MAX)", "Name?", max_length = 20)
+		var/nickname = tgui_input_text(user, "What would you like your displayed name to be? (20 Characters MAX)", "Name", max_length = 20)
 
 		broadcastingcamera.donationsaccount.money += spacecash.worth
 		if(ishuman(broadcastingcamera.loc))

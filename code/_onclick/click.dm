@@ -149,13 +149,26 @@
 		if(W.attack_speed && !src.contains(A)) //Not being worn or carried in the user's inventory somewhere, including internal storages.
 			next_move += W.attack_speed
 
-		if(!A.attackby(W, src, mods) && A && !QDELETED(A))
+		var/attackby_result = A.attackby(W, src, mods)
+
+		if(!attackby_result && A && !QDELETED(A))
 			// in case the attackby slept
 			if(!W)
 				UnarmedAttack(A, 1, mods)
 				return
 
-			W.afterattack(A, src, 1, mods)
+			W.afterattack(A, src, 1, mods)			
+
+			// Looks goofy when you swipe at the floor with a gun
+			if(istype(W, /obj/item/weapon/gun)) 
+				return
+
+			var/mob/living/self = src
+			self.animation_attack_on(A)
+			src.visible_message(SPAN_DANGER("[src] swipes at \the [A] with [W]!"), \
+			SPAN_DANGER("You swipe at \the [A] with [W]!"), null, 5, CHAT_TYPE_WEAPON_USE)
+
+
 	else
 		if(!isitem(A) && !issurface(A))
 			next_move += 4

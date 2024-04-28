@@ -4,3 +4,4 @@
 #define PAPER_CATEGORY_UPP "UPP"
 #define PAPER_CATEGORY_CMB "CMB"
 #define PAPER_CATEGORY_MP "Military Police"
+#define PAPER_CATEGORY_LIAISON "WY Liaison"

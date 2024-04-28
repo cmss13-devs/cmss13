@@ -30,9 +30,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 			continue
 		available_documents += docname
 	return
-/* HEY FOREST LOOK AT THIS TO MAKE THE IMAGES WORK
-https://discord.com/channels/539888393836953604/539914145705885697/1187204942478446662
-*/
+
 /obj/structure/filingcabinet/documentation/attack_hand(mob/user as mob)
 	var/choice = tgui_alert(user, "Do you wish to open the cabinet, or retrieve a document template?", "Action", list("Open", "Document"), 20 SECONDS)
 	switch(choice)
@@ -73,7 +71,8 @@ https://discord.com/channels/539888393836953604/539914145705885697/1187204942478
 /obj/structure/filingcabinet/documentation/military_police
 	available_categories = list(PAPER_CATEGORY_MP)
 /obj/structure/filingcabinet/documentation/liaison
-	available_categories = list(PAPER_CATEGORY_WEYYU)
+	available_categories = list(PAPER_CATEGORY_LIAISON)
+	remaining_documents = 45 //CL likely using more of these than most people.
 //########################################
 //########################################
 //########################################
@@ -91,38 +90,42 @@ https://discord.com/channels/539888393836953604/539914145705885697/1187204942478
 
 /obj/item/paper/prefab/carbon/military_police/appeal_form
 	document_title = "PR301a - Appeals Form"
-	doc_datum_type = /datum/prefab_document/provost/appeal_form
+	doc_datum_type = /datum/prefab_document/provost/mp/appeal_form
 
 /obj/item/paper/prefab/carbon/military_police/dao_request
 	document_title = "PR301b - Delayed Action Order"
-	doc_datum_type = /datum/prefab_document/provost/dao_request
+	doc_datum_type = /datum/prefab_document/provost/mp/dao_request
 
 /obj/item/paper/prefab/carbon/military_police/confiscation_receipt
 	document_title = "PR356 - Confiscation Receipt"
-	doc_datum_type = /datum/prefab_document/provost/confiscation_receipt
+	doc_datum_type = /datum/prefab_document/provost/mp/confiscation_receipt
 
 /obj/item/paper/prefab/carbon/military_police/apology_notice
 	document_title = "NJ910 - Apology Notice"
-	doc_datum_type = /datum/prefab_document/provost/apology_notice
+	doc_datum_type = /datum/prefab_document/provost/mp/apology_notice
 
 
 /obj/item/paper/prefab/liaison
 	name = "Blank WY Document"
-	document_category = PAPER_CATEGORY_WEYYU
+	document_category = PAPER_CATEGORY_LIAISON
+
+/obj/item/paper/prefab/liaison/ops_report
+	document_title = "WY435 - Liaison Operations Report"
+	doc_datum_type = /datum/prefab_document/wey_yu/liaison/ops_report
 
 /obj/item/paper/prefab/liaison/preserve_intent
 	document_title = "WY439 - Affidavit of Intent to Preserve"
-	doc_datum_type = /datum/prefab_document/wey_yu/preserve_intent
+	doc_datum_type = /datum/prefab_document/wey_yu/liaison/preserve_intent
 
 /obj/item/paper/prefab/liaison/liability
 	document_title = "WY440 - Affidavit of Liability"
-	doc_datum_type = /datum/prefab_document/wey_yu/liability
+	doc_datum_type = /datum/prefab_document/wey_yu/liaison/liability
 
 /obj/item/paper/prefab/liaison/nda_short
 	document_title = "WY441 - Confidentiality Agreement"
-	doc_datum_type = /datum/prefab_document/wey_yu/nda_short
+	doc_datum_type = /datum/prefab_document/wey_yu/liaison/nda_short
 
 /obj/item/paper/prefab/liaison/nda_long
 	document_title = "WY442 - Non Disclosure Agreement"
-	doc_datum_type = /datum/prefab_document/wey_yu/nda_long
+	doc_datum_type = /datum/prefab_document/wey_yu/liaison/nda_long
 

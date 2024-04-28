@@ -27463,12 +27463,6 @@
 /obj/effect/spawner/random/tool,
 /turf/open/floor/prison,
 /area/fiorina/station/civres_blue)
-"qHi" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "riot_control"
-	},
-/turf/open/floor/prison,
-/area/fiorina/station/security)
 "qHG" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_y = 25
@@ -68534,7 +68528,7 @@ uGY
 ihB
 ihB
 ubP
-qHi
+ubP
 gag
 sbF
 sbF
@@ -69578,12 +69572,12 @@ ihB
 ceC
 obh
 obh
-ceC
+nqN
 bxc
 jbF
 bBK
 ceC
-ceC
+uGY
 uGY
 uGY
 uGY
@@ -70002,7 +69996,7 @@ stw
 wQg
 qet
 mKp
-ceC
+nqN
 qJv
 bqF
 tNF
@@ -70209,15 +70203,15 @@ kjX
 ueP
 gag
 hQj
-uGY
-uGY
-uGY
-uGY
-uGY
+nqN
+nqN
+nqN
+nqN
+nqN
+nqN
 ceC
-ceC
-ceC
-ceC
+nqN
+nqN
 ceC
 unz
 gag
@@ -70650,7 +70644,7 @@ uGY
 ppq
 ubP
 ihB
-uGY
+nqN
 lJx
 fAf
 fAf
@@ -71060,7 +71054,7 @@ qdE
 uGY
 ltQ
 ltQ
-uGY
+nqN
 ltQ
 ayo
 uGY
@@ -71272,7 +71266,7 @@ uGY
 uGY
 fRq
 fRq
-uGY
+nqN
 fRq
 ygr
 xGt
@@ -71710,7 +71704,7 @@ uGY
 ceC
 uGY
 uGY
-uGY
+nqN
 qQd
 jwK
 jwK
@@ -71903,8 +71897,8 @@ dCM
 dCM
 dCM
 nqN
-uGY
-uGY
+nqN
+nqN
 uxv
 ceC
 ceC

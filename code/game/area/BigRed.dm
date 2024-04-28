@@ -293,9 +293,11 @@
 //Big Red V2
 /area/bigredv2
 	can_build_special = TRUE
+	powernet_name = "ground"
 	ambience_exterior = AMBIENCE_BIGRED
 	soundscape_playlist = SCAPE_PL_THUNDER
 	soundscape_interval = 50
+	minimap_color = MINIMAP_AREA_COLONY
 
 /area/bigredv2/oob
 	name = "Big Red Out of Bounds"

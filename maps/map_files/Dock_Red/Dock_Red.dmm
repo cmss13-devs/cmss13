@@ -568,7 +568,7 @@
 /turf/closed/wall/mineral/bone_resin,
 /area/dockred/caves/eta/storage)
 "bC" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/plating,
 /area/dockred/outside/cargo)
 "bD" = (
@@ -2535,7 +2535,7 @@
 	},
 /area/dockred/outside/port_inside)
 "hR" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor{
 	icon_state = "delivery"
 	},
@@ -8882,7 +8882,7 @@
 	},
 /area/dockred/caves/north)
 "By" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/plating,
 /area/dockred/caves/eta/storage)
 "BA" = (
@@ -16396,7 +16396,7 @@
 	},
 /area/dockred/outside/port_inside)
 "Yl" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/plating,
 /area/dockred/caves/lambda/xenobiology)
 "Yo" = (

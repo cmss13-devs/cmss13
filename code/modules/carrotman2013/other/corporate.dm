@@ -3,7 +3,7 @@
 /obj/item/storage/secure/briefcase/corpsec
 	name = "Corporate Security Equipment"
 	desc = "Contains single set of a corporate security equipment."
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'fray-marines/icons/obj/items/storage.dmi'
 	icon_state = "corporates"
 	item_state = "sec-case"
 	max_storage_space = 4
@@ -36,7 +36,7 @@
 	name = "Request Corporate Security"
 	desc = "Used to request a dispatch of corporate security squad."
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
-	icon_state = "corporateb"
+	icon_state = "big_red_button_tablev"
 	req_one_access = list(ACCESS_WY_GENERAL)
 	var/console_cooldown
 	var/console_cooldown_duration = COOLDOWN_CORPORATE_BUTTON

@@ -33160,9 +33160,6 @@
 	},
 /area/bigredv2/caves/mining)
 "lCt" = (
-/obj/structure/machinery/power/reactor/colony{
-	name = "Reactor Turbine"
-	},
 /turf/open/floor{
 	icon_state = "delivery"
 	},

@@ -2799,7 +2799,6 @@
 /turf/open/floor/kutjevo/colors,
 /area/khami_barrens/interior/marksman_residence)
 "cHW" = (
-/obj/structure/reagent_dispensers/oxygentank,
 /turf/open/floor/plating/kutjevo,
 /area/khami_barrens/interior/research_caves/research)
 "cIE" = (
@@ -5015,11 +5014,6 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/claymore/mercsword{
-	layer = 3.1;
-	pixel_x = 6;
-	pixel_y = 7
-	},
 /obj/item/clothing/shoes/yautja_flavor{
 	anchored = 1
 	},
@@ -6876,7 +6870,7 @@
 /turf/open/gm/grass/grass_dried,
 /area/khami_barrens/exterior/driedoasis/bridge)
 "gFV" = (
-/obj/structure/machinery/power/geothermal,
+/obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/kutjevo/colors/orange,
 /area/khami_barrens/interior/village/engineering/power)
 "gGt" = (
@@ -15876,11 +15870,6 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/weapon/claymore/mercsword{
-	layer = 2.99;
-	pixel_x = 6;
-	pixel_y = 7
-	},
 /obj/item/clothing/suit/armor/yautja_flavor{
 	anchored = 1
 	},
@@ -22288,7 +22277,6 @@
 /area/khami_barrens/interior/ruin_caves)
 "vVn" = (
 /obj/structure/surface/rack,
-/obj/item/fuelCell,
 /turf/open/floor/kutjevo/colors/orange,
 /area/khami_barrens/interior/village/engineering)
 "vVy" = (
@@ -23343,11 +23331,6 @@
 	icon = 'icons/mob/humans/species/r_synthetic.dmi';
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
-	},
-/obj/item/weapon/claymore/mercsword{
-	layer = 3.1;
-	pixel_x = 6;
-	pixel_y = 7
 	},
 /obj/item/clothing/suit/armor/yautja_flavor{
 	anchored = 1

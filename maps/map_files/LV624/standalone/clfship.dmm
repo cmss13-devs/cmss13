@@ -183,7 +183,7 @@
 /area/lv624/lazarus/crashed_ship)
 "fX" = (
 /obj/item/stool,
-/obj/effect/landmark/survivor_spawner/lv624_crashed_clf_leader,
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},

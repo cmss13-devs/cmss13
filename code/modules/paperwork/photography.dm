@@ -363,7 +363,7 @@
 
 /obj/item/device/camera/broadcasting/get_examine_text(mob/user)
 	. = ..()
-	. += "Linked account: [donationsaccount ? "account_number" : "None, swipe your ID-card to link it."]."
+	. += "Linked account: [donationsaccount ? "[donationsaccount.account_number]" : "None, swipe your ID-card to link it."]."
 	if(latestmessage)
 		. += "Latest donation: [latestmessage]."
 

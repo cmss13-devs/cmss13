@@ -2,7 +2,7 @@
 	// Dread it, run from it, destiny still arrives... or should I say, I do
 	name = PRAETORIAN_OPPRESSOR
 	description = "You abandon all of your acid-based abilities, your dash, some speed, and a bit of your slash damage for some resistance against small explosives, slashes that deal extra damage to prone targets, and a powerful hook ability that pulls up to three enemies towards you, slows them, and has varying effects depending on how many enemies you pull. You also gain a powerful punch that reduces your other abilities' cooldowns, pierces through armor, and does double damage in addition to rooting slowed targets. You can also knock enemies back and slow them with your new Tail Lash and quickly grab a tall, slow it, and pull it towards you with your unique Tail Stab."
-	flavor_description = "My reach is endless, this one will pull down the heavens.
+	flavor_description = "My reach is endless, this one will pull down the heavens."
 	icon_state_prefix = "Oppressor"
 
 	actions_to_remove = list(

@@ -1022,6 +1022,12 @@
 	icon_state = "underground"
 	baseturfs = /turf/open/asphalt
 	allow_construction = FALSE
+/turf/open/hybrisa/metal/underground_unweedable
+	name = "floor"
+	icon = 'icons/turf/floors/floors.dmi'
+	icon_state = "bcircuit"
+	allow_construction = FALSE
+
 
 /turf/open/hybrisa/street/underground_unweedable/is_weedable()
 	return NOT_WEEDABLE

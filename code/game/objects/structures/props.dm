@@ -3130,7 +3130,7 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 
 /obj/structure/prop/hybrisa/misc/stoneplanterseats
 	name = "concrete seated planter"
-	desc = "A decorative concrete planter with seating attached."
+	desc = "A decorative concrete planter with seating attached, the seats are fitted with synthetic leather, they've faded in time.."
 	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi'
 	icon_state = "planterseats"
 	bound_width = 32
@@ -3189,6 +3189,18 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 /obj/structure/prop/hybrisa/misc/phonebox/lightup
 	desc = "A phone-box, it doesn't seem to be working, the line must be down."
 	icon_state = "phonebox_closed_light"
+
+/obj/structure/prop/hybrisa/misc/bench
+	name = "bench"
+	desc = "A metal frame, with seats that are fitted with synthetic leather, they've faded in time."
+	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi'
+	icon_state = "seatedbench"
+	bound_width = 32
+	bound_height = 64
+	layer = 4
+	density = FALSE
+	health = 200
+	anchored = TRUE
 
 // Billboards, Signs and Posters
 

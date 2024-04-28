@@ -585,19 +585,26 @@
 	icon_state = "jacks"
 	minimap_color = MINIMAP_AREA_COLONY
 
-//Recycling Plant
+//Weyland Yutani - Resource Recovery Facility
 /area/lv759/indoors/recycling_plant
-	name = "Recycling Plant"
+	name = "Weyland Yutani - Resource Recovery Facility"
 	icon_state = "recycling"
 	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/recycling_plant/garage
-	name = "Recycling Plant Garage"
+	name = "Weyland Yutani - Resource Recovery Facility - Garage"
 	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/recycling_plant/synthetic_storage
 	name = "Synthetic Storage"
 	icon_state = "synthetic"
 	minimap_color = MINIMAP_AREA_COLONY
-
+/area/lv759/indoors/recycling_plant_office
+	name = "Weyland Yutani - Resource Recovery Facility - Office"
+	icon_state = "recycling"
+	minimap_color = MINIMAP_AREA_COLONY
+/area/lv759/indoors/recycling_plant_waste_disposal_incinerator
+	name = "Weyland Yutani - Resource Recovery Facility - Waste Disposal Incinerating Room"
+	icon_state = "recycling"
+	minimap_color = MINIMAP_AREA_COLONY
 // Restrooms
 /area/lv759/indoors/south_public_restroom
 	name = "Public Restroom - South"

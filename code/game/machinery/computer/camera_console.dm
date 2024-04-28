@@ -225,7 +225,10 @@
 			to_chat(user, SPAN_WARNING("Streamer is not accepting donations at this time."))
 			return
 
-		var/message = tgui_input_text(user, "What would you like to message the streamer? (48 Characters MAX)", "Message", max_length = 48)
+		var/message = "Thanks for your donation!"
+		if(spacecash.worth >= 10)
+			message = tgui_input_text(user, "What would you like to message the streamer? (48 Characters MAX)", "Message", max_length = 48)
+
 		var/nickname = tgui_input_text(user, "What would you like your displayed name to be? (20 Characters MAX)", "Name", max_length = 20)
 
 		broadcastingcamera.donationsaccount.money += spacecash.worth

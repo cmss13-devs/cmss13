@@ -257,11 +257,11 @@
 
 	entry_timer = 2 SECONDS
 
-	var/available_chemicals = list("inaprovaline", "paracetamol", "anti_toxin", "dexalin", "tricordrazine")
-	var/upgraded_chemicals = list("inaprovaline", "tramadol", "anti_toxin", "dexalinp", "tricordrazine", "alkysine", "imidazoline")
-	var/emergency_chems = list("inaprovaline", "paracetamol", "anti_toxin", "dexalin", "tricordrazine", "oxycodone", "bicaridine", "kelotane")
-	var/upgraded_emergency_chems = list("inaprovaline", "tramadol", "anti_toxin", "dexalinp", "tricordrazine", "oxycodone", "bicaridine", "kelotane", "meralyne", "dermaline", "alkysine", "imidazoline")
-	var/amounts = list(5, 10)
+	var/list/available_chemicals = list("inaprovaline", "paracetamol", "anti_toxin", "dexalin", "tricordrazine")
+	var/list/upgraded_chemicals = list("inaprovaline", "tramadol", "anti_toxin", "dexalinp", "tricordrazine", "alkysine", "imidazoline")
+	var/list/emergency_chems = list("inaprovaline", "paracetamol", "anti_toxin", "dexalin", "tricordrazine", "oxycodone", "bicaridine", "kelotane")
+	var/list/upgraded_emergency_chems = list("inaprovaline", "tramadol", "anti_toxin", "dexalinp", "tricordrazine", "oxycodone", "bicaridine", "kelotane", "meralyne", "dermaline", "alkysine", "imidazoline")
+	var/list/amounts = list(5, 10)
 	var/filtering = FALSE
 	var/obj/structure/machinery/sleep_console/connected
 	var/min_health = 10

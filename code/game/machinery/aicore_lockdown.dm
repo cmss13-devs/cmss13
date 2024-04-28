@@ -64,7 +64,7 @@
 
 	var/prompt = "Are you sure you want to trigger an AI Core lockdown? This will raise to red alert, and lockdown the AI Core."
 
-	if(GLOB.ares_datacore.ai_lockdown_state == ARES_LOCKDOWN_ACTIVE)
+	if(GLOB.ares_datacore.ai_lockdown_active == TRUE)
 		prompt = "Are you sure you want to lift the AI Core lockdown? This will lower to blue alert."
 
 	var/choice = tgui_alert(src, prompt, "Choose.", list("Yes", "No"), 20 SECONDS)
@@ -73,8 +73,8 @@
 
 	choice = tgui_alert(src, "Do you want to use a custom announcement?", "Choose.", list("Yes", "No"), 20 SECONDS)
 	if(choice == "Yes")
-		var/whattoannounce = tgui_input_text(src, "Please enter announcement text.", "what?")
-		aicore_lockdown(usr, whattoannounce, TRUE)
+		var/message = tgui_input_text(src, "Please enter announcement text.", "what?")
+		aicore_lockdown(usr, message, admin = TRUE)
 	else
 		aicore_lockdown(usr, admin = TRUE)
 	return TRUE
@@ -91,27 +91,26 @@
 		log += " (Admin Triggered)."
 		ares_log = "[MAIN_AI_SYSTEM] triggered AI Core Emergency Lockdown."
 
-	switch(GLOB.ares_datacore.ai_lockdown_state)
-		if(ARES_LOCKDOWN_READY)
-			GLOB.ares_datacore.ai_lockdown_state = ARES_LOCKDOWN_ACTIVE
-			if(!message)
-				message = "ATTENTION! \n\nCORE SECURITY ALERT. \n\nAI CORE UNDER LOCKDOWN."
-			if(GLOB.security_level < SEC_LEVEL_RED)
-				set_security_level(SEC_LEVEL_RED, TRUE, FALSE)
-			SEND_GLOBAL_SIGNAL(COMSIG_GLOB_AICORE_LOCKDOWN)
-		if(ARES_LOCKDOWN_ACTIVE)
-			GLOB.ares_datacore.ai_lockdown_state = ARES_LOCKDOWN_READY
-			if(!message)
-				message = "ATTENTION! \n\nAI CORE EMERGENCY LOCKDOWN LIFTED."
-			log = "[key_name(user)] lifted AI core lockdown!"
-			ares_log = "[user.name] lifted AI Core Emergency Lockdown."
-			if(admin)
-				log += " (Admin Triggered)."
-				ares_log = "[MAIN_AI_SYSTEM] lifted AI Core Emergency Lockdown."
+	if(GLOB.ares_datacore.ai_lockdown_active)
+		GLOB.ares_datacore.ai_lockdown_active = FALSE
+		if(!message)
+			message = "ATTENTION! \n\nAI CORE EMERGENCY LOCKDOWN LIFTED."
+		log = "[key_name(user)] lifted AI core lockdown!"
+		ares_log = "[user.name] lifted AI Core Emergency Lockdown."
+		if(admin)
+			log += " (Admin Triggered)."
+			ares_log = "[MAIN_AI_SYSTEM] lifted AI Core Emergency Lockdown."
 
-			if(GLOB.security_level > SEC_LEVEL_GREEN)
-				set_security_level(SEC_LEVEL_BLUE, TRUE, FALSE)
-			SEND_GLOBAL_SIGNAL(COMSIG_GLOB_AICORE_LIFT)
+		if(GLOB.security_level > SEC_LEVEL_GREEN)
+			set_security_level(SEC_LEVEL_BLUE, TRUE, FALSE)
+		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_AICORE_LIFT)
+	else
+		GLOB.ares_datacore.ai_lockdown_active = TRUE
+		if(!message)
+			message = "ATTENTION! \n\nCORE SECURITY ALERT. \n\nAI CORE UNDER LOCKDOWN."
+		if(GLOB.security_level < SEC_LEVEL_RED)
+			set_security_level(SEC_LEVEL_RED, TRUE, FALSE)
+		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_AICORE_LOCKDOWN)
 
 	COOLDOWN_START(GLOB.ares_datacore, aicore_lockdown, 2 MINUTES)
 	shipwide_ai_announcement(message, MAIN_AI_SYSTEM, 'sound/effects/biohazard.ogg')

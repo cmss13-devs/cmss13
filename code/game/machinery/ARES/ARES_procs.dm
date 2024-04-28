@@ -107,7 +107,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	var/nuke_available = TRUE
 
 	/// Status of the AI Core Lockdown
-	var/ai_lockdown_state = ARES_LOCKDOWN_READY
+	var/ai_lockdown_active = FALSE
 
 	COOLDOWN_DECLARE(ares_distress_cooldown)
 	COOLDOWN_DECLARE(ares_nuclear_cooldown)

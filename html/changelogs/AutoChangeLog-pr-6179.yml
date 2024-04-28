@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fixed hugger handling in drone tutorial: Now the hugger dying will put another hugger into the tutorial morpher."

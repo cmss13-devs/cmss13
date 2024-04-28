@@ -329,3 +329,27 @@
   - bugfix: Fixes boilers slowing themselves by using long range sight while resting.
   iloveloopers:
   - qol: Alt clicking a reagent tank will now toggle whether its dispensing or filling
+2024-04-25:
+  Drathek:
+  - bugfix: 'Fixed hugger handling in drone tutorial: Now the hugger dying will put
+      another hugger into the tutorial morpher.'
+  Steelpoint:
+  - rscadd: UPP and CLF Combat Synthetic preset is now available for admins to spawn
+      them in.
+  ihatethisengine:
+  - bugfix: spotlight no longer breaks after every flight
+  - rscadd: Combat Correspondent can broadcast speech and emotes.
+  - rscadd: Speech close enough to the camera will be shown above connected TVs as
+      abovehead messages
+  realforest2001:
+  - bugfix: You can delete flight logs from ARES Interface again as intended.
+2024-04-26:
+  Git-Nivrak:
+  - qol: You can now change the color of pill bottles in the chem master or with a
+      hand labeler.
+  realforest2001:
+  - spellcheck: Fixes a typo for M4RA AP Ammo in the ASRS menu.
+2024-04-27:
+  Lagomorphica:
+  - balance: The spotter laser designators, scout laser designators, and scout cloak
+      are now unmeltable and indestructible to explosions.

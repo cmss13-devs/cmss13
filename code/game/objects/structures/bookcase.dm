@@ -7,6 +7,25 @@
 	density = TRUE
 	opacity = TRUE
 
+/obj/structure/bookcase/deconstruct(disassembled)
+	var/metal = /obj/item/stack/sheet/metal
+	new metal(src.loc)
+	. = ..()
+
+/obj/structure/bookcase/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(xeno.a_intent == INTENT_HARM)
+		if(unslashable)
+			return
+		xeno.animation_attack_on(src)
+		playsound(src.loc, 'sound/effects/metalhit.ogg', 25, 1)
+		xeno.visible_message(SPAN_DANGER("[xeno] slices [src] apart!"),
+		SPAN_DANGER("We slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		deconstruct(FALSE)
+		return XENO_ATTACK_ACTION
+	else
+		attack_hand(xeno)
+		return XENO_NONCOMBAT_ACTION
+
 /obj/structure/bookcase/Initialize()
 	. = ..()
 	for(var/obj/item/I in loc)
@@ -26,6 +45,10 @@
 		else
 			name = ("bookcase ([strip_html(newname)])")
 			playsound(src, "paper_writing", 15, TRUE)
+	else if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
+		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
+		if(do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src, INTERRUPT_MOVED, BUSY_ICON_FRIENDLY))
+			deconstruct(FALSE)
 	else
 		..()
 

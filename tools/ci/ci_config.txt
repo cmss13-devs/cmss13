@@ -2,7 +2,7 @@
 DB_PROVIDER brsql
 
 # server address
-DB_ADDRESS localhost
+DB_ADDRESS mysql
 
 # server port
 DB_PORT 3306

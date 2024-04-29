@@ -65,7 +65,7 @@
 
 	if(show_wy_logo)
 		dat += "<div id='fax-logo'>"
-		dat += "<img src='[asset.get_url_mappings()["faxwylogo.png"]]' alt='Something fucked!'/>"
+		dat += "<img src='[asset.get_url_mappings()["wylogo.png"]]' alt='Something fucked!'/>"
 		dat += "</div>"
 
 	dat += "<div class='message-header-text'>"

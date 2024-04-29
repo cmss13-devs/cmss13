@@ -1,0 +1,5 @@
+author: "Sporticusmge"
+delete-after: True
+changes:
+  - rscadd: "Добавлена суперсила"
+  - balance: "Сикуси дает больше урона, но теперь 5% к шансу дизармнуть. Эндуранс дает +10% к редусу станов. Тактическая перезарядка возможна на бегу\n:cl:\n<!-- Both :cl:'s are required for the changelog to work! -->"

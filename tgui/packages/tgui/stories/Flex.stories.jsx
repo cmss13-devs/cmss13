@@ -45,7 +45,7 @@ const Story = (props) => {
           </Button>
         </Section>
       </Flex.Item>
-      <Flex.Item grow={1}>
+      <Flex.Item grow>
         <Flex height="100%" direction={direction}>
           <Flex.Item
             mr={direction === 'row' && 1}

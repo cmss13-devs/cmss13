@@ -110,7 +110,7 @@
 	. = list(
 		"title" = title,
 		"message" = message,
-		"buttons" = buttons
+		"buttons" = buttons,
 	)
 
 	if(timeout)

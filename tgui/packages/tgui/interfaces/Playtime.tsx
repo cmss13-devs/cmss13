@@ -76,7 +76,7 @@ export const Playtime = (props) => {
   return (
     <Window theme={selected !== 'xeno' ? 'usmc' : 'hive_status'}>
       <Window.Content className="PlaytimeInterface" scrollable>
-        <Tabs fluid={1}>
+        <Tabs fluid>
           <Tabs.Tab
             selected={selected === 'human'}
             onClick={() => setSelected('human')}

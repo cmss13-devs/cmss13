@@ -35,7 +35,7 @@ export const HiveLeaders = (props) => {
               </Table.Cell>
             </Table.Row>
 
-            {map((entry, i) => (
+            {map(queens, (entry, i) => (
               <Table.Row key={i}>
                 <Table.Cell className="noPadCell">
                   <div unselectable="on" className="leaderIcon">
@@ -45,7 +45,7 @@ export const HiveLeaders = (props) => {
                 <Table.Cell>{entry.designation}</Table.Cell>
                 <Table.Cell>{entry.caste_type}</Table.Cell>
               </Table.Row>
-            ))(queens)}
+            ))}
 
             <Table.Row
               className="xenoListRow"
@@ -58,7 +58,7 @@ export const HiveLeaders = (props) => {
               </Table.Cell>
             </Table.Row>
 
-            {map((entry, i) => (
+            {map(leaders, (entry, i) => (
               <Table.Row key={i}>
                 <Table.Cell className="noPadCell">
                   <div unselectable="on" className="leaderIcon">
@@ -68,7 +68,7 @@ export const HiveLeaders = (props) => {
                 <Table.Cell>{entry.designation}</Table.Cell>
                 <Table.Cell>{entry.caste_type}</Table.Cell>
               </Table.Row>
-            ))(leaders)}
+            ))}
           </Table>
         </Section>
       </Window.Content>

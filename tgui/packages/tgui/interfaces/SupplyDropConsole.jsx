@@ -28,7 +28,7 @@ export const SupplyDropConsole = () => {
     <Window width={350} height={350}>
       <Window.Content scrollable>
         {!!can_pick_squad && (
-          <NoticeBox info={1} fluid={1} textAlign="center">
+          <NoticeBox info={1} fluid textAlign="center">
             {data.current_squad
               ? `Current squad is :
                 ${data.current_squad}`
@@ -114,7 +114,7 @@ export const SupplyDropConsole = () => {
               fontSize="20px"
               textAlign="center"
               disabled={!!cantFire}
-              fluid={1}
+              fluid
               icon="paper-plane"
               color="good"
               content="Launch Supply Drop"

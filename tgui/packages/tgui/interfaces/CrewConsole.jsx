@@ -103,7 +103,7 @@ export const CrewConsole = () => {
 
 const CrewTable = (props) => {
   const { act, data } = useBackend();
-  const sensors = sortBy((s) => s.ijob)(data.sensors ?? []);
+  const sensors = sortBy(data.sensors ?? [], (s) => s.ijob);
   return (
     <Table>
       <Table.Row>

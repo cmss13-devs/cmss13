@@ -15,19 +15,12 @@ type NumberInputData = {
   min_value: number | null;
   timeout: number;
   title: string;
-  integer_only: 0 | 1;
+  round_value: boolean;
 };
 
 export const NumberInputModal = (props) => {
   const { act, data } = useBackend<NumberInputData>();
-  const {
-    init_value,
-    large_buttons,
-    message = '',
-    timeout,
-    title,
-    integer_only,
-  } = data;
+  const { init_value, large_buttons, message = '', timeout, title } = data;
   const [input, setInput] = useState(init_value);
 
   const setValue = (value: number) => {
@@ -67,7 +60,6 @@ export const NumberInputModal = (props) => {
                 onClick={setValue}
                 onChange={setValue}
                 onBlur={setValue}
-                integer_only={integer_only}
               />
             </Stack.Item>
             <Stack.Item>
@@ -83,8 +75,8 @@ export const NumberInputModal = (props) => {
 /** Gets the user input and invalidates if there's a constraint. */
 const InputArea = (props) => {
   const { act, data } = useBackend<NumberInputData>();
-  const { min_value, max_value, init_value } = data;
-  const { input, onClick, onChange, onBlur, integer_only } = props;
+  const { min_value, max_value, init_value, round_value } = data;
+  const { input, onClick, onChange, onBlur } = props;
 
   return (
     <Stack fill>
@@ -101,13 +93,13 @@ const InputArea = (props) => {
           autoFocus
           autoSelect
           fluid
+          allowFloats={!round_value}
           minValue={min_value}
           maxValue={max_value}
           onChange={(_, value) => onChange(value)}
           onBlur={(_, value) => onBlur(value)}
           onEnter={(_, value) => act('submit', { entry: value })}
           value={input}
-          allowFloats={integer_only === 1 ? false : true}
         />
       </Stack.Item>
       <Stack.Item>

@@ -173,7 +173,7 @@ export class InfinitePlane extends Component {
           <Stack.Item>
             <Button icon="minus" onClick={this.handleZoomDecrease} />
           </Stack.Item>
-          <Stack.Item grow={1}>
+          <Stack.Item grow>
             <ProgressBar
               minValue={ZOOM_MIN_VAL}
               value={zoom}

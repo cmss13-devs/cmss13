@@ -326,6 +326,7 @@ export const Filteriffic = (props) => {
           buttons={
             <Dropdown
               icon="plus"
+              verticalAlign="bottom"
               displayText="Add Filter"
               noChevron
               options={Object.keys(filterDefaults)}

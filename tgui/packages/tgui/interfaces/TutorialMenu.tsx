@@ -59,7 +59,7 @@ export const TutorialMenu = (props) => {
               </Tabs>
             </span>
           </Stack.Item>
-          <Stack fill grow>
+          <Stack fill>
             <Stack.Item grow mr={1}>
               <Section fill height="100%">
                 {tutorial_categories.map(

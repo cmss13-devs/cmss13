@@ -82,7 +82,7 @@ export const OrbitalCannonConsole = () => {
             <Button
               fontSize="20px"
               textAlign="center"
-              fluid={1}
+              fluid
               disabled={!fullyLoaded}
               icon="truck-loading"
               color="good"
@@ -95,14 +95,14 @@ export const OrbitalCannonConsole = () => {
                 <Button
                   fontSize="20px"
                   textAlign="center"
-                  fluid={1}
+                  fluid
                   icon="sign-out-alt"
                   color="good"
                   content="Unload tray"
                   onClick={() => act('unload_tray')}
                 />
               )) || (
-                <NoticeBox fontSize="15px" textAlign="center" fluid={1} danger>
+                <NoticeBox fontSize="15px" textAlign="center" fluid danger>
                   The tray is chambered, you cannot unchamber it.
                 </NoticeBox>
               )}
@@ -113,7 +113,7 @@ export const OrbitalCannonConsole = () => {
               fontSize="20px"
               textAlign="center"
               disabled={!!cantChamber || !fullyLoaded}
-              fluid={1}
+              fluid
               icon="sign-in-alt"
               color="good"
               content="Chamber tray"

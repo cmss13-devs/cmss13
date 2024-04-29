@@ -7,7 +7,7 @@ export const Default = () => {
   const node = (
     <Flex align="baseline">
       <Flex.Item mr={1}>Text {Math.random()}</Flex.Item>
-      <Flex.Item grow={1} basis={0}>
+      <Flex.Item grow basis={0}>
         Text {Math.random()}
       </Flex.Item>
     </Flex>

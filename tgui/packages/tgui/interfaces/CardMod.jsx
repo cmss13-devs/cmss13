@@ -21,7 +21,7 @@ export const CardMod = (props) => {
     <Window width={450} height={520} resizable>
       <Window.Content scrollable>
         <Box>
-          <Tabs fluid={1}>
+          <Tabs fluid>
             <Tabs.Tab selected={tab2 === 1} onClick={() => setTab2(1)}>
               Access Modifcation
             </Tabs.Tab>
@@ -55,7 +55,7 @@ export const CrewManifest = (props) => {
         />
       }
     >
-      {map((entries, department) => (
+      {map(manifest, (entries, department) => (
         <Section key={department} level={2} title={department}>
           <Table>
             {entries.map((entry) => (
@@ -66,7 +66,7 @@ export const CrewManifest = (props) => {
             ))}
           </Table>
         </Section>
-      ))(manifest)}
+      ))}
     </Section>
   );
 };
@@ -223,7 +223,7 @@ export const CardContent = (props) => {
                     ))}
                   </Tabs>
                 </Stack.Item>
-                <Stack.Item grow={1}>
+                <Stack.Item grow>
                   {departmentJobs.map((job) => (
                     <Button
                       fluid

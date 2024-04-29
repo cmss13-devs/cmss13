@@ -343,7 +343,7 @@ const XenoList = (props) => {
       </Flex.Item>
       <Flex.Item mb={2}>
         <Input
-          fluid={1}
+          fluid
           placeholder="Search..."
           onInput={(_, value) => setSearchKey(value)}
         />

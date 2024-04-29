@@ -61,7 +61,7 @@ export const CasSim = () => {
           <Stack.Item grow>
             {(!simulationView && (
               <Button
-                fluid={1}
+                fluid
                 icon="eye"
                 color="good"
                 content="Enter simulation"
@@ -72,7 +72,7 @@ export const CasSim = () => {
               />
             )) || (
               <Button
-                fluid={1}
+                fluid
                 icon="eye-slash"
                 color="good"
                 content="Exit simulation"
@@ -85,7 +85,7 @@ export const CasSim = () => {
           </Stack.Item>
           <Stack.Item grow>
             <Button
-              fluid={1}
+              fluid
               icon="repeat"
               color="good"
               content="Switch dummy type"
@@ -97,7 +97,7 @@ export const CasSim = () => {
           <Stack.Item grow>
             <Button
               disabled={!data.configuration}
-              fluid={1}
+              fluid
               icon="sign-in-alt"
               color="good"
               content="Switch firemission"
@@ -107,7 +107,7 @@ export const CasSim = () => {
           <Stack.Item grow>
             <Button.Confirm
               disabled={!canDetonate}
-              fluid={1}
+              fluid
               icon="bomb"
               color="good"
               content="Execute firemission?"

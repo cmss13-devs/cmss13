@@ -90,7 +90,7 @@ export const Smes = (props) => {
                     }
                   />
                 </Flex.Item>
-                <Flex.Item grow={1} mx={1}>
+                <Flex.Item grow mx={1}>
                   <Slider
                     value={inputLevel / POWER_MUL}
                     fillValue={inputAvailable / POWER_MUL}
@@ -177,7 +177,7 @@ export const Smes = (props) => {
                     }
                   />
                 </Flex.Item>
-                <Flex.Item grow={1} mx={1}>
+                <Flex.Item grow mx={1}>
                   <Slider
                     value={outputLevel / POWER_MUL}
                     minValue={0}

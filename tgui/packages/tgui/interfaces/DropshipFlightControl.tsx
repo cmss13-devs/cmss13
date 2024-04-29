@@ -201,7 +201,7 @@ const DestinationSelector = (props: DestinationProps) => {
                   </Flex.Item>
                 </>
               )}
-              <Flex.Item grow={1}>
+              <Flex.Item grow>
                 <Button
                   disabled={
                     props.availableOnly === false ? false : x.available === 0

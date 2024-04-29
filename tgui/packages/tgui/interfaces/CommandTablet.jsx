@@ -40,14 +40,14 @@ export const CommandTablet = () => {
           <Flex height="100%" direction="column">
             <Flex.Item>
               {!canAnnounce && (
-                <Button color="bad" warning={1} fluid={1} icon="ban">
+                <Button color="bad" warning={1} fluid icon="ban">
                   Announcement recharging:{' '}
                   {Math.ceil((data.endtime - data.worldtime) / 10)} secs
                 </Button>
               )}
               {!!canAnnounce && (
                 <Button
-                  fluid={1}
+                  fluid
                   icon="bullhorn"
                   title="Make an announcement"
                   content="Make an announcement"
@@ -58,7 +58,7 @@ export const CommandTablet = () => {
             </Flex.Item>
             <Flex.Item>
               <Button
-                fluid={1}
+                fluid
                 icon="medal"
                 title="Give a medal"
                 content="Give a medal"
@@ -67,7 +67,7 @@ export const CommandTablet = () => {
             </Flex.Item>
             <Flex.Item>
               <Button
-                fluid={1}
+                fluid
                 icon="globe-africa"
                 title="View tactical map"
                 content="View tactical map"
@@ -88,13 +88,13 @@ export const CommandTablet = () => {
                       disabled={1}
                       content={'Distress Beacon disabled'}
                       tooltip={distress_reason}
-                      fluid={1}
+                      fluid
                       icon="ban"
                     />
                   )}
                   {canDistress && (
                     <Button.Confirm
-                      fluid={1}
+                      fluid
                       color="orange"
                       icon="phone-volume"
                       content={'Send Distress Beacon'}
@@ -108,7 +108,7 @@ export const CommandTablet = () => {
                 {evacstatus === 0 && (
                   <Flex.Item>
                     <Button.Confirm
-                      fluid={1}
+                      fluid
                       color="orange"
                       icon="door-open"
                       content={'Initiate Evacuation'}

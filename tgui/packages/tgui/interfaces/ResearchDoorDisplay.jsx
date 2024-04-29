@@ -18,14 +18,14 @@ export const ResearchDoorDisplay = () => {
             <Flex.Item>
               {(!data.open_shutter && (
                 <Button
-                  fluid={1}
+                  fluid
                   icon="lock-open"
                   content="Open shutter"
                   onClick={() => act('shutter')}
                 />
               )) || (
                 <Button
-                  fluid={1}
+                  fluid
                   icon="lock"
                   content="Close shutter"
                   onClick={() => act('shutter')}
@@ -35,14 +35,14 @@ export const ResearchDoorDisplay = () => {
             <Flex.Item>
               {(!data.open_door && (
                 <Button
-                  fluid={1}
+                  fluid
                   icon="door-open"
                   content="Open door"
                   onClick={() => act('door')}
                 />
               )) || (
                 <Button
-                  fluid={1}
+                  fluid
                   icon="door-closed"
                   content="Close door"
                   onClick={() => act('door')}
@@ -52,7 +52,7 @@ export const ResearchDoorDisplay = () => {
             {!!data.has_divider && (
               <Flex.Item>
                 <Button
-                  fluid={1}
+                  fluid
                   icon="arrows-alt-v"
                   content="Toggle divider"
                   onClick={() => act('divider')}
@@ -63,14 +63,14 @@ export const ResearchDoorDisplay = () => {
               <Flex.Item>
                 {(!data.flash_charging && (
                   <Button
-                    fluid={1}
+                    fluid
                     icon="sun"
                     content="Activate flash"
                     onClick={() => act('flash')}
                   />
                 )) || (
                   <Button
-                    fluid={1}
+                    fluid
                     color="bad"
                     icon="sync-alt"
                     content="Flash recharging!"

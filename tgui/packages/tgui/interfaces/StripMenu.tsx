@@ -3,13 +3,13 @@ import { BooleanLike } from 'common/react';
 
 import { resolveAsset } from '../assets';
 import { useBackend } from '../backend';
-import { Box, Button, Icon, Stack } from '../components';
+import { Box, Button, Icon, Image, Stack } from '../components';
 import { Window } from '../layouts';
 
 const ROWS = 5;
 const COLUMNS = 6;
 
-const BUTTON_DIMENSIONS = '50px';
+const BUTTON_DIMENSIONS = '64px';
 
 type GridSpotKey = string;
 
@@ -234,11 +234,11 @@ type StripMenuData = {
 const StripContent = (props: { readonly item: StripMenuItem }) => {
   if (props.item && 'name' in props.item) {
     return (
-      <Box
-        as="img"
+      <Image
+        fixBlur
         src={`data:image/jpeg;base64,${props.item.icon}`}
-        height="100%"
-        width="100%"
+        width={BUTTON_DIMENSIONS}
+        height={BUTTON_DIMENSIONS}
         className="StripMenu__contentbox"
       />
     );
@@ -272,7 +272,7 @@ export const StripMenu = (props, context) => {
   }
 
   return (
-    <Window title={`Stripping ${data.name}`} width={400} height={400}>
+    <Window title={`Stripping ${data.name}`} width={430} height={400}>
       <Window.Content>
         <Stack fill vertical>
           {range(0, ROWS).map((row) => (
@@ -286,10 +286,8 @@ export const StripMenu = (props, context) => {
                     return (
                       <Stack.Item
                         key={key}
-                        style={{
-                          width: BUTTON_DIMENSIONS,
-                          height: BUTTON_DIMENSIONS,
-                        }}
+                        width={BUTTON_DIMENSIONS}
+                        height={BUTTON_DIMENSIONS}
                       />
                     );
                   }
@@ -345,9 +343,9 @@ export const StripMenu = (props, context) => {
                           }}
                         >
                           {slot.image && (
-                            <Box
-                              as="img"
+                            <Image
                               src={resolveAsset(slot.image)}
+                              fixBlur
                               className="StripMenu__itemslot"
                             />
                           )}

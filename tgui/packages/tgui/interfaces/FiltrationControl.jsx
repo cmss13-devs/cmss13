@@ -14,7 +14,7 @@ export const FiltrationControl = () => {
           {(!FiltOn && (
             <Button.Confirm
               textAlign="center"
-              fluid={1}
+              fluid
               icon="power-off"
               content="Start Filtration"
               fontSize="20px"

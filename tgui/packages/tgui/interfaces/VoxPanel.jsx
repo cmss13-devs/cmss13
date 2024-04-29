@@ -142,7 +142,7 @@ const SendVOX = (props) => {
   return (
     <>
       <Flex direction="row">
-        <Flex.Item grow={1}>
+        <Flex.Item grow>
           <Section
             title="Faction Select"
             fill
@@ -167,7 +167,7 @@ const SendVOX = (props) => {
             />
           </Section>
         </Flex.Item>
-        <Flex.Item grow={1} ml={1}>
+        <Flex.Item grow ml={1}>
           <Section title="VOX Type Select" fill>
             <ComboBox
               buttons={Object.keys(glob_vox_types)}
@@ -183,7 +183,7 @@ const SendVOX = (props) => {
       </Flex>
       <Flex mt={1} direction="column">
         <Section title="Sentence">
-          <Flex.Item grow={1}>
+          <Flex.Item grow>
             <Input
               fluid
               value={message}
@@ -205,7 +205,7 @@ const SendVOX = (props) => {
           </Flex.Item>
           <Flex.Item mt={1}>
             <Flex>
-              <Flex.Item grow={1}>
+              <Flex.Item grow>
                 <Button
                   content="Send to Self"
                   fluid
@@ -218,7 +218,7 @@ const SendVOX = (props) => {
                   }
                 />
               </Flex.Item>
-              <Flex.Item ml={1} grow={1}>
+              <Flex.Item ml={1} grow>
                 <Button
                   content="Send to Factions"
                   fluid
@@ -258,7 +258,7 @@ const SoundList = (props) => {
 
   return (
     <Flex direction="column">
-      <Flex.Item grow={1}>
+      <Flex.Item grow>
         <Section title="VOX Type Select" fill>
           <ComboBox
             buttons={Object.keys(glob_vox_types)}
@@ -332,7 +332,7 @@ export const ComboBox = (props) => {
   return (
     <Box props={rest}>
       <Flex width={width} height={height}>
-        <Flex.Item grow={1}>
+        <Flex.Item grow>
           <Section
             scrollable
             fill

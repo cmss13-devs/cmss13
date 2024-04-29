@@ -386,7 +386,7 @@ to the left, and certain elements to the right:
 
 ```jsx
 <Flex>
-  <Flex.Item grow={1}>
+  <Flex.Item grow>
     Button description
   </Flex.Item>
   <Flex.Item>
@@ -1064,7 +1064,7 @@ Tabs also support a vertical configuration. This is usually paired with
       ...
     </Tabs>
   </Stack.Item>
-  <Stack.Item grow={1} basis={0}>
+  <Stack.Item grow basis={0}>
     Tab content.
   </Stack.Item>
 </Stack>

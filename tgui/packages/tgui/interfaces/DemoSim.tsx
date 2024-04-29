@@ -68,7 +68,7 @@ export const DemoSim = () => {
               {(!simulationView && (
                 <Button
                   fontSize="16px"
-                  fluid={1}
+                  fluid
                   icon="eye"
                   color="good"
                   content="Enter simulation"
@@ -80,7 +80,7 @@ export const DemoSim = () => {
               )) || (
                 <Button
                   fontSize="16px"
-                  fluid={1}
+                  fluid
                   icon="eye-slash"
                   color="good"
                   content="Exit simulation"
@@ -94,7 +94,7 @@ export const DemoSim = () => {
             <Stack.Item grow>
               <Button
                 fontSize="16px"
-                fluid={1}
+                fluid
                 icon="repeat"
                 color="good"
                 content="Switch dummy type"
@@ -107,7 +107,7 @@ export const DemoSim = () => {
               <Button
                 fontSize="16px"
                 disabled={!data.configuration}
-                fluid={1}
+                fluid
                 icon="sign-in-alt"
                 color="good"
                 content="Eject explosive"
@@ -118,7 +118,7 @@ export const DemoSim = () => {
               <Button.Confirm
                 fontSize="16px"
                 disabled={!canDetonate}
-                fluid={1}
+                fluid
                 icon="bomb"
                 color="good"
                 content="Detonate explosive"

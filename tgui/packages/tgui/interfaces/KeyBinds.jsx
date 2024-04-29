@@ -160,6 +160,7 @@ const KeybindsDropdown = (props) => {
   return (
     <Dropdown
       width="360px"
+      menuWidth="360px"
       selected={selectedTab}
       options={dropdownOptions}
       disabled={searchTerm.length}
@@ -191,7 +192,7 @@ export const KeybindElement = (props) => {
           {keybind.full_name}
         </Box>
       </Flex.Item>
-      <Flex.Item grow={1}>
+      <Flex.Item grow>
         <Flex direction="column">
           {currentBoundKeys.map((val) => (
             <Flex.Item key={val}>

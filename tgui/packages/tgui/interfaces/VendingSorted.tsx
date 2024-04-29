@@ -105,7 +105,7 @@ const VendButton = (props: VendButtonProps, _) => {
         props.isMandatory && 'MandatoryVendButton',
       ])}
       preserveWhitespace
-      icon={props.text ? undefined : props.available ? 'circle-down' : 'xmark'}
+      icon={props.available ? 'circle-down' : 'xmark'}
       onMouseDown={(e) => {
         e.preventDefault();
         if (props.available) {

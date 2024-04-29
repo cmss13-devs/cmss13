@@ -25,7 +25,7 @@ export const TeleporterConsole = () => {
     data.source === data.destination;
 
   return (
-    <Window width={500} height={300} theme="weyland">
+    <Window width={500} height={380} theme="weyland">
       <Window.Content scrollable>
         <NoticeBox textAlign="center">
           This teleporter is operating on the {data.name} network.
@@ -68,7 +68,7 @@ export const TeleporterConsole = () => {
           )}
           <Box height="10px" />
           <LabeledList>
-            <LabeledList.Item label="Source">
+            <LabeledList.Item label="Source" verticalAlign="top">
               <Dropdown
                 displayText={data.source ? data.source : 'Select source'}
                 icon="right-from-bracket"
@@ -81,7 +81,7 @@ export const TeleporterConsole = () => {
                 }}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Destination">
+            <LabeledList.Item label="Destination" verticalAlign="top">
               <Dropdown
                 displayText={
                   data.destination ? data.destination : 'Select destination'
@@ -102,7 +102,7 @@ export const TeleporterConsole = () => {
             fontSize="20px"
             textAlign="center"
             disabled={!!cantFire}
-            fluid={1}
+            fluid
             icon="plane-departure"
             content="Commence Teleportation Sequence"
             onClick={() => act('teleport')}

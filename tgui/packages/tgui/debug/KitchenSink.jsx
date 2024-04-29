@@ -47,7 +47,7 @@ export const KitchenSink = (props) => {
             </Tabs>
           </Section>
         </Flex.Item>
-        <Flex.Item position="relative" grow={1}>
+        <Flex.Item position="relative" grow>
           <Layout.Content scrollable>{story.meta.render()}</Layout.Content>
         </Flex.Item>
       </Flex>

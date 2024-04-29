@@ -32,14 +32,14 @@ export const NuclearBomb = () => {
             <Stack.Item>
               {(!data.safety && (
                 <Button
-                  fluid={1}
+                  fluid
                   icon="lock"
                   content="Enable safety"
                   onClick={() => act('toggleSafety')}
                 />
               )) || (
                 <Button.Confirm
-                  fluid={1}
+                  fluid
                   icon="exclamation-triangle"
                   content="Disable safety"
                   onClick={() => act('toggleSafety')}
@@ -49,14 +49,14 @@ export const NuclearBomb = () => {
             <Stack.Item>
               {(!data.command_lockout && (
                 <Button
-                  fluid={1}
+                  fluid
                   icon="lock"
                   content="Enable command lockout"
                   onClick={() => act('toggleCommandLockout')}
                 />
               )) || (
                 <Button.Confirm
-                  fluid={1}
+                  fluid
                   icon="exclamation-triangle"
                   content="Disable command lockout"
                   onClick={() => act('toggleCommandLockout')}
@@ -66,14 +66,14 @@ export const NuclearBomb = () => {
             <Stack.Item>
               {(!data.anchor && (
                 <Button
-                  fluid={1}
+                  fluid
                   icon="lock"
                   content="Activate anchor"
                   onClick={() => act('toggleAnchor')}
                 />
               )) || (
                 <Button.Confirm
-                  fluid={1}
+                  fluid
                   icon="lock-open"
                   content="Deactivate anchor"
                   onClick={() => act('toggleAnchor')}
@@ -83,7 +83,7 @@ export const NuclearBomb = () => {
             <Stack.Item>
               {(!data.decrypting && (
                 <Button.Confirm
-                  fluid={1}
+                  fluid
                   icon="exclamation-triangle"
                   color="green"
                   content="Start decryption"
@@ -92,7 +92,7 @@ export const NuclearBomb = () => {
                 />
               )) || (
                 <Button.Confirm
-                  fluid={1}
+                  fluid
                   icon="power-off"
                   content="Stop decryption"
                   onClick={() => act('toggleEncryption')}
@@ -102,7 +102,7 @@ export const NuclearBomb = () => {
             <Stack.Item>
               {(!data.timing && (
                 <Button.Confirm
-                  fluid={1}
+                  fluid
                   icon="exclamation-triangle"
                   color="red"
                   content="Activate nuke"
@@ -111,7 +111,7 @@ export const NuclearBomb = () => {
                 />
               )) || (
                 <Button.Confirm
-                  fluid={1}
+                  fluid
                   icon="power-off"
                   content="Deactivate nuke"
                   onClick={() => act('toggleNuke')}

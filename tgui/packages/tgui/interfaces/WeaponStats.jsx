@@ -328,30 +328,30 @@ const DamageTable = (props) => {
           <Table.Cell bold textAlign="left">
             Armour Value
           </Table.Cell>
-          {map((entry, i) => (
+          {map(damage_armor_profile_headers, (entry, i) => (
             <Table.Cell bold key={i}>
               {entry}
             </Table.Cell>
-          ))(damage_armor_profile_headers)}
+          ))}
         </Table.Row>
         <Table.Row>
           <Table.Cell textAlign="left">Bioform</Table.Cell>
-          {map((entry, i) => <Table.Cell key={i}>{entry}</Table.Cell>)(
-            damage_armor_profile_xeno,
-          )}
+          {map(damage_armor_profile_xeno, (entry, i) => (
+            <Table.Cell key={i}>{entry}</Table.Cell>
+          ))}
         </Table.Row>
         <Table.Row>
           <Table.Cell textAlign="left">Humanoid</Table.Cell>
-          {map((entry, i) => <Table.Cell key={i}>{entry}</Table.Cell>)(
-            damage_armor_profile_marine,
-          )}
+          {map(damage_armor_profile_marine, (entry, i) => (
+            <Table.Cell key={i}>{entry}</Table.Cell>
+          ))}
         </Table.Row>
         {!glob_armourbreak ? (
           <Table.Row>
             <Table.Cell textAlign="left">Armor break</Table.Cell>
-            {map((entry, i) => <Table.Cell key={i}>{entry}</Table.Cell>)(
-              damage_armor_profile_armorbreak,
-            )}
+            {map(damage_armor_profile_armorbreak, (entry, i) => (
+              <Table.Cell key={i}>{entry}</Table.Cell>
+            ))}
           </Table.Row>
         ) : null}
       </Table>

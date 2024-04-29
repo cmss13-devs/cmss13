@@ -281,7 +281,6 @@ const DrawMapPanel = (props) => {
             <Dropdown
               className="TacticalMapColorPicker"
               noScroll
-              menuWidth="13rem"
               options={colorOptions}
               selected={data.toolbarColorSelection}
               color={data.toolbarColorSelection}

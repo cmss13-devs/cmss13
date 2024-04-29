@@ -196,7 +196,7 @@ const HistoricalMark = (props: { readonly mark: PlacedMark }) => {
                 </Stack.Item>
               </Stack>
             </Flex.Item>
-            <Flex.Item grow={1}>
+            <Flex.Item grow>
               <div className={classes(['MarkWatch'])}>
                 {mark.watching.map((x) => (
                   <div key={x}>
@@ -279,7 +279,7 @@ const MarkMeaningList = (props: { readonly onClick?: () => void }) => {
               <MarkImage image={val.image} size="32x32" />
             </Stack.Item>
             <Stack.Item grow>
-              <Box fontSiz>{val.desc}</Box>
+              <Box>{val.desc}</Box>
             </Stack.Item>
           </Stack>
         </Tabs.Tab>

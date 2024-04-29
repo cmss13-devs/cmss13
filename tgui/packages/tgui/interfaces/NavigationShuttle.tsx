@@ -103,7 +103,7 @@ export const DestionationSelection = () => {
                     </Flex.Item>
                   </>
                 )}
-                <Flex.Item grow={1}>
+                <Flex.Item grow>
                   <Button
                     disabled={x.available === 0}
                     onClick={() => {

@@ -4,7 +4,7 @@
 
 	flags = TREE_FLAG_XENO
 
-	required_points = 15
+	required_points = 10
 	tier = /datum/tier/two/additional
 
 	var/stat_name = "Shielding Slash Shield"

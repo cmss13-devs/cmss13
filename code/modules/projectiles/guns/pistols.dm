@@ -24,6 +24,7 @@
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/heavy_barrel/upgraded,
 		/obj/item/attachable/burstfire_assembly,
 	)
 
@@ -63,6 +64,7 @@
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/heavy_barrel/upgraded,
 		/obj/item/attachable/burstfire_assembly,
 	)
 
@@ -363,6 +365,7 @@
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/heavy_barrel/upgraded,
 	)
 
 /obj/item/weapon/gun/pistol/t73/leader/handle_starting_attachment()
@@ -427,6 +430,7 @@
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/heavy_barrel/upgraded,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/burstfire_assembly,
 	)
@@ -504,6 +508,7 @@
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/heavy_barrel/upgraded,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/reddot, // Rail
 		/obj/item/attachable/reflex,
@@ -599,6 +604,7 @@
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/heavy_barrel/upgraded,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/reflex,
@@ -699,6 +705,7 @@
 		/obj/item/attachable/flashlight/laser_light_combo,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/heavy_barrel/upgraded,
 	)
 
 /obj/item/weapon/gun/pistol/vp78/handle_starting_attachment()
@@ -849,6 +856,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/heavy_barrel/upgraded,
 		/obj/item/attachable/lasersight, //Underbarrel
 		/obj/item/attachable/burstfire_assembly,
 	)

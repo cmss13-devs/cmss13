@@ -321,6 +321,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/heavy_barrel/upgraded,
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/reddot, // Rail
@@ -379,6 +380,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/heavy_barrel/upgraded,
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/reddot, // Rail

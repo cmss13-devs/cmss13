@@ -400,19 +400,17 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "hbarrel_a"
 	hud_offset_mod = -3
 
-/obj/item/attachable/heavy_barrel/New()
-	..()
 	accuracy_mod = -HIT_ACCURACY_MULT_TIER_3
-	damage_mod = BULLET_DAMAGE_MULT_TIER_6
 	delay_mod = FIRE_DELAY_TIER_11
-
 	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_7
+	var/normal_damage_mod = BULLET_DAMAGE_MULT_TIER_6
+	var/shotgun_damage_mod = BULLET_DAMAGE_MULT_TIER_1
 
 /obj/item/attachable/heavy_barrel/Attach(obj/item/weapon/gun/G)
 	if(G.gun_category == GUN_CATEGORY_SHOTGUN)
-		damage_mod = BULLET_DAMAGE_MULT_TIER_1
+		damage_mod = shotgun_damage_mod
 	else
-		damage_mod = BULLET_DAMAGE_MULT_TIER_6
+		damage_mod = normal_damage_mod
 	..()
 
 /obj/item/attachable/compensator

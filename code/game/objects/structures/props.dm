@@ -1502,6 +1502,83 @@
     icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
     icon_state = "MeridianCar_1"
 
+
+// Very Large Vehicles
+
+/obj/structure/prop/hybrisa/vehicles/large_vehicles
+	icon = 'icons/obj/structures/props/128x32_vehiclesexpanded.dmi'
+	icon_state = "armoredtruck_wy_security_1"
+
+// Misc
+/obj/structure/prop/hybrisa/vehicles/large_vehicles/ambulance
+	name = "ambulance"
+	desc = "Seems to be broken down."
+	icon_state = "ambulance"
+	bound_height = 64
+	bound_width = 96
+
+// Armored Truck
+
+/obj/structure/prop/hybrisa/vehicles/large_vehicles/armored_trucks
+	icon_state = "armoredtruck_wy_security_1"
+	bound_height = 64
+	bound_width = 96
+/obj/structure/prop/hybrisa/vehicles/large_vehicles/armored_trucks/WY_Security/Truck_1
+	name = "Weyland-Yutani security truck"
+	desc = "Seems to be broken down."
+	icon_state = "armoredtruck_wy_security_1"
+
+/obj/structure/prop/hybrisa/vehicles/large_vehicles/armored_trucks/WY_Security/Truck_2
+	name = "Weyland-Yutani security truck"
+	desc = "Seems to be broken down."
+	icon_state = "armoredtruck_wy_security_2"
+
+// Armored Truck Goods
+/obj/structure/prop/hybrisa/vehicles/large_vehicles/armored_trucks/heavy_loader/white
+	name = "heavy loader truck"
+	desc = "Seems to be broken down."
+	icon_state = "armoredtruck_white_white"
+/obj/structure/prop/hybrisa/vehicles/large_vehicles/armored_trucks/heavy_loader/white_teal
+	name = "heavy loader truck"
+	desc = "Seems to be broken down."
+	icon_state = "armoredtruck_white_teal"
+/obj/structure/prop/hybrisa/vehicles/large_vehicles/armored_trucks/heavy_loader/blue_white
+	name = "heavy loader truck"
+	desc = "Seems to be broken down."
+	icon_state = "armoredtruck_blue_white"
+
+// Mega-Hauler Trucks 128x64
+
+/obj/structure/prop/hybrisa/vehicles/large_vehicles/mega_hauler_truck
+	name = "mega-hauler truck"
+	icon_state = "longtruck_kellandmining"
+	desc = "Seems to be broken down."
+	icon = 'icons/obj/structures/props/128x32_vehiclesexpanded.dmi'
+	bound_height = 64
+	bound_width = 128
+	unslashable = TRUE
+	unacidable = TRUE
+	density = TRUE
+
+/obj/structure/prop/hybrisa/vehicles/large_vehicles/mega_hauler_truck/kelland
+	icon_state = "longtruck_kellandmining"
+/obj/structure/prop/hybrisa/vehicles/large_vehicles/mega_hauler_truck/red_stripe
+	icon_state = "longtruck_blue_redstripe"
+/obj/structure/prop/hybrisa/vehicles/large_vehicles/mega_hauler_truck/blue_stripe
+	icon_state = "longtruck_red_bluestripe"
+/obj/structure/prop/hybrisa/vehicles/large_vehicles/mega_hauler_truck/brown
+	icon_state = "longtruck_brown"
+/obj/structure/prop/hybrisa/vehicles/large_vehicles/mega_hauler_truck/donk
+	icon_state = "longtruck_donk"
+
+//WY
+/obj/structure/prop/hybrisa/vehicles/large_vehicles/mega_hauler_truck/wy_black
+	name = "Weyland-Yutani mega-hauler truck"
+	icon_state = "longtruck_wy_black"
+/obj/structure/prop/hybrisa/vehicles/large_vehicles/mega_hauler_truck/wy_blue
+	name = "Weyland-Yutani mega-hauler truck"
+	icon_state = "longtruck_wy_blue"
+// SUV
 /obj/structure/prop/hybrisa/vehicles/suv
 	name = "SUV"
 	desc = "Seems to be broken down."
@@ -3046,22 +3123,13 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 	unacidable = TRUE
 	indestructible = TRUE
 
-/// Medical Details breakable
-
-/obj/structure/prop/hybrisa/decal/medical
-	name = "medical decal"
-	icon = 'icons/effects/medical_decals.dmi'
-	icon_state = "cryotop"
-	layer = 1
-
-
 // Grille
 
 /obj/structure/prop/hybrisa/misc/highvoltagegrille
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "highvoltagegrille"
 
-//
+// Greeblies
 /obj/structure/prop/hybrisa/misc/buildinggreeblies
 	name = "machinery"
 	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi'
@@ -3127,6 +3195,9 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 	name = "meter"
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "biggreenmeter1"
+
+
+// MISC
 
 /obj/structure/prop/hybrisa/misc/stoneplanterseats
 	name = "concrete seated planter"

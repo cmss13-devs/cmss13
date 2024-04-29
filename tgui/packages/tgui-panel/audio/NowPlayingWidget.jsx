@@ -34,7 +34,7 @@ export const NowPlayingWidget = (props) => {
       {(audio.playing && (
         <Flex.Item
           mx={0.5}
-          grow
+          grow={1}
           style={{
             whiteSpace: 'nowrap',
             overflow: 'hidden',
@@ -45,27 +45,27 @@ export const NowPlayingWidget = (props) => {
             <Collapsible title={title || 'Unknown Track'} color={'blue'}>
               <Section>
                 {URL !== 'Song Link Hidden' && (
-                  <Flex.Item grow color="label">
+                  <Flex.Item grow={1} color="label">
                     URL: {URL}
                   </Flex.Item>
                 )}
-                <Flex.Item grow color="label">
+                <Flex.Item grow={1} color="label">
                   Duration: {duration}
                 </Flex.Item>
                 {Artist !== 'Song Artist Hidden' &&
                   Artist !== 'Unknown Artist' && (
-                    <Flex.Item grow color="label">
+                    <Flex.Item grow={1} color="label">
                       Artist: {Artist}
                     </Flex.Item>
                   )}
                 {album !== 'Song Album Hidden' && album !== 'Unknown Album' && (
-                  <Flex.Item grow color="label">
+                  <Flex.Item grow={1} color="label">
                     Album: {album}
                   </Flex.Item>
                 )}
                 {upload_date !== 'Song Upload Date Hidden' &&
                   upload_date !== 'Unknown Date' && (
-                    <Flex.Item grow color="label">
+                    <Flex.Item grow={1} color="label">
                       Uploaded: {date}
                     </Flex.Item>
                   )}
@@ -74,7 +74,7 @@ export const NowPlayingWidget = (props) => {
           }
         </Flex.Item>
       )) || (
-        <Flex.Item grow color="label">
+        <Flex.Item grow={1} color="label">
           Nothing to play.
         </Flex.Item>
       )}

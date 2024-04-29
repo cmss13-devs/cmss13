@@ -34,18 +34,18 @@ const Story = (props) => {
     <Section fill>
       <Stack fill className="debug-layout">
         <SmallStackItems />
-        <Stack.Item grow>
+        <Stack.Item grow={1}>
           <Stack fill vertical zebra>
             <SmallStackItems />
             <Stack.Item>
               <Stack fill>
                 <SmallStackItems />
-                <Stack.Item grow />
+                <Stack.Item grow={1} />
                 <SmallStackItems />
                 <SmallStackItems />
               </Stack>
             </Stack.Item>
-            <Stack.Item grow />
+            <Stack.Item grow={1} />
             <SmallStackItems />
           </Stack>
         </Stack.Item>

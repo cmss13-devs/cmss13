@@ -223,7 +223,7 @@ export const CardContent = (props) => {
                     ))}
                   </Tabs>
                 </Stack.Item>
-                <Stack.Item grow>
+                <Stack.Item grow={1}>
                   {departmentJobs.map((job) => (
                     <Button
                       fluid

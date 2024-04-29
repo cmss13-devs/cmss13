@@ -95,7 +95,7 @@ export const PlayerPanel = (props) => {
             <Stack.Item width="80px" color="label">
               Name:
             </Stack.Item>
-            <Stack.Item grow align="right">
+            <Stack.Item grow={1} align="right">
               {(!!hasPermission(data, 'set_name') && (
                 <Input
                   width={25}
@@ -110,7 +110,7 @@ export const PlayerPanel = (props) => {
             <Stack.Item width="80px" color="label">
               Mob Type:
             </Stack.Item>
-            <Stack.Item grow align="right">
+            <Stack.Item grow={1} align="right">
               {mob_type}
             </Stack.Item>
             <Stack.Item align="right">
@@ -134,7 +134,7 @@ export const PlayerPanel = (props) => {
             <Stack.Item width="80px" color="label">
               Client:
             </Stack.Item>
-            <Stack.Item grow align="left">
+            <Stack.Item grow={1} align="left">
               {((canModifyCkey || !client_key) &&
                 hasPermission(data, 'set_ckey') && (
                   <Input
@@ -176,7 +176,7 @@ export const PlayerPanel = (props) => {
               <Stack.Item width="80px" color="label">
                 Rank:
               </Stack.Item>
-              <Stack.Item grow align="left">
+              <Stack.Item grow={1} align="left">
                 <Button
                   icon="window-restore"
                   content={client_rank}
@@ -200,7 +200,7 @@ export const PlayerPanel = (props) => {
               <Stack.Item width="80px" color="label">
                 Account age:
               </Stack.Item>
-              <Stack.Item grow align="right">
+              <Stack.Item grow={1} align="right">
                 {client_age}
               </Stack.Item>
             </Stack>
@@ -212,13 +212,13 @@ export const PlayerPanel = (props) => {
                   <Box position="relative">First join:</Box>
                 </Tooltip>
               </Stack.Item>
-              <Stack.Item grow align="right">
+              <Stack.Item grow={1} align="right">
                 {first_join}
               </Stack.Item>
             </Stack>
           )}
         </Section>
-        <Stack grow>
+        <Stack grow={1}>
           <Stack.Item>
             <Section fitted>
               <Tabs vertical>
@@ -242,7 +242,7 @@ export const PlayerPanel = (props) => {
               </Tabs>
             </Section>
           </Stack.Item>
-          <Stack.Item position="relative" grow basis={0} ml={1}>
+          <Stack.Item position="relative" grow={1} basis={0} ml={1}>
             <PageComponent />
           </Stack.Item>
         </Stack>
@@ -258,7 +258,7 @@ const GeneralActions = (props) => {
   return (
     <Section fill>
       <Section level={2} title="Damage">
-        <Stack align="right" grow>
+        <Stack align="right" grow={1}>
           <Button
             width="100%"
             icon="first-aid"
@@ -289,7 +289,7 @@ const GeneralActions = (props) => {
       </Section>
 
       <Section level={2} title="Teleportation">
-        <Stack align="right" grow>
+        <Stack align="right" grow={1}>
           <Button.Confirm
             width="100%"
             icon="reply"
@@ -314,7 +314,7 @@ const GeneralActions = (props) => {
       </Section>
 
       <Section level={2} title="Miscellaneous">
-        <Stack align="right" grow>
+        <Stack align="right" grow={1}>
           <Button.Checkbox
             width="100%"
             content="Toggle Sleeping"
@@ -342,28 +342,28 @@ const GeneralActions = (props) => {
           />
         </Stack>
         {hasPermission(data, 'mob_force_emote') && (
-          <Stack align="right" grow mt={2}>
+          <Stack align="right" grow={1} mt={2}>
             <Stack.Item width="100px" align="left" color="label">
               Force Say:
             </Stack.Item>
-            <Stack.Item align="right" grow>
+            <Stack.Item align="right" grow={1}>
               <Input
                 width="100%"
-                grow
+                grow={1}
                 onEnter={(e, value) => act('mob_force_say', { to_say: value })}
               />
             </Stack.Item>
           </Stack>
         )}
         {hasPermission(data, 'mob_force_emote') && (
-          <Stack align="right" grow mt={2}>
+          <Stack align="right" grow={1} mt={2}>
             <Stack.Item width="100px" align="left" color="label">
               Force Emote:
             </Stack.Item>
-            <Stack.Item align="right" grow>
+            <Stack.Item align="right" grow={1}>
               <Input
                 width="100%"
-                grow
+                grow={1}
                 onEnter={(e, value) =>
                   act('mob_force_emote', { to_emote: value })
                 }
@@ -382,7 +382,7 @@ const PunishmentActions = (props) => {
   return (
     <Section fill>
       <Section level={2} title="Banishment">
-        <Stack align="right" grow>
+        <Stack align="right" grow={1}>
           <Button.Confirm
             width="100%"
             icon="gavel"
@@ -411,7 +411,7 @@ const PunishmentActions = (props) => {
       </Section>
 
       <Section level={2} title="Permanent Banishment">
-        <Stack align="right" grow>
+        <Stack align="right" grow={1}>
           <Button.Confirm
             width="100%"
             icon="gavel"
@@ -432,7 +432,7 @@ const PunishmentActions = (props) => {
       </Section>
 
       <Section level={2} title="Record-keeping">
-        <Stack align="right" grow>
+        <Stack align="right" grow={1}>
           <Button
             width="100%"
             icon="clipboard-list"
@@ -453,7 +453,7 @@ const PunishmentActions = (props) => {
       </Section>
 
       <Section level={2} title="Mute">
-        <Stack align="right" grow>
+        <Stack align="right" grow={1}>
           {glob_mute_bits.map((bit, i) => {
             const isMuted = client_muted && client_muted & bit.bitflag;
             return (
@@ -478,7 +478,7 @@ const PunishmentActions = (props) => {
       </Section>
 
       <Section level={2} title="Human Name">
-        <Stack align="right" grow>
+        <Stack align="right" grow={1}>
           <Button
             width="100%"
             icon="clipboard-list"
@@ -502,7 +502,7 @@ const PunishmentActions = (props) => {
         </Stack>
       </Section>
       <Section level={2} title="Xenomorph Name">
-        <Stack align="right" grow>
+        <Stack align="right" grow={1}>
           <Button
             width="100%"
             icon="clipboard-list"
@@ -532,7 +532,7 @@ const TransformActions = (props) => {
     <Section fill>
       {Object.keys(glob_pp_transformables).map((element, i) => (
         <Section level={2} title={element} key={i}>
-          <Stack align="right" grow>
+          <Stack align="right" grow={1}>
             {glob_pp_transformables[element].map((option, optionIndex) => (
               <Button.Confirm
                 key={optionIndex}
@@ -569,7 +569,7 @@ const FunActions = (props) => {
     <Section fill>
       {hasPermission(data, 'mob_narrate') && (
         <Section level={2} title="Narrate">
-          <Stack align="right" grow>
+          <Stack align="right" grow={1}>
             {glob_span.map((spanData, i) => (
               <Button.Checkbox
                 content={spanData.name}
@@ -579,14 +579,14 @@ const FunActions = (props) => {
               />
             ))}
           </Stack>
-          <Stack align="right" grow mt={2}>
+          <Stack align="right" grow={1} mt={2}>
             <Stack.Item width="100px" align="left" color="label">
               Narrate:
             </Stack.Item>
-            <Stack.Item align="right" grow>
+            <Stack.Item align="right" grow={1}>
               <Input
                 width="100%"
-                grow
+                grow={1}
                 onEnter={(e, value) =>
                   act('mob_narrate', {
                     to_narrate: `<span class='${getSpanSetting}'>${value}</span>`,
@@ -612,7 +612,7 @@ const FunActions = (props) => {
             />
           }
         >
-          <Stack align="right" grow mt={1}>
+          <Stack align="right" grow={1} mt={1}>
             <Stack.Item>
               <Button
                 width="100%"
@@ -627,7 +627,7 @@ const FunActions = (props) => {
                 </Box>
               </Button>
             </Stack.Item>
-            <Stack.Item ml={1} grow>
+            <Stack.Item ml={1} grow={1}>
               <Slider
                 unit="Explosive Power"
                 value={expPower}
@@ -674,7 +674,7 @@ const AntagActions = (props) => {
     <Section fill>
       {!!is_human && (
         <Section level={2} title="Mutiny">
-          <Stack align="right" grow>
+          <Stack align="right" grow={1}>
             <Button
               width="100%"
               icon="chess-pawn"
@@ -708,7 +708,7 @@ const AntagActions = (props) => {
           />
         }
       >
-        <Stack align="right" grow mt={1}>
+        <Stack align="right" grow={1} mt={1}>
           {!!is_human && (
             <>
               <Button
@@ -805,7 +805,7 @@ const PhysicalActions = (props) => {
           level={2}
           title="Limbs"
           buttons={
-            <Stack align="right" grow>
+            <Stack align="right" grow={1}>
               {limbs.map((val, index) => (
                 <Button.Checkbox
                   key={index}
@@ -824,7 +824,7 @@ const PhysicalActions = (props) => {
             </Stack>
           }
         >
-          <Stack align="right" grow>
+          <Stack align="right" grow={1}>
             <Button.Confirm
               width="100%"
               icon="unlink"
@@ -912,7 +912,7 @@ const PhysicalActions = (props) => {
         </Stack>
       </Section>
       <Section title="Equipment" level={2}>
-        <Stack align="right" grow>
+        <Stack align="right" grow={1}>
           <Button
             width="100%"
             icon="user-tie"

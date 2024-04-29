@@ -196,7 +196,7 @@ const HistoricalMark = (props: { readonly mark: PlacedMark }) => {
                 </Stack.Item>
               </Stack>
             </Flex.Item>
-            <Flex.Item grow>
+            <Flex.Item grow={1}>
               <div className={classes(['MarkWatch'])}>
                 {mark.watching.map((x) => (
                   <div key={x}>

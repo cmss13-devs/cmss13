@@ -140,7 +140,7 @@ const FactionPage = (props) => {
               }
             />
           </Flex.Item>
-          <Flex.Item grow align="center" m={1} p={0.2}>
+          <Flex.Item grow={1} align="center" m={1} p={0.2}>
             {names[ckey_index]} ({ckey}) - {times[ckey_index]}
           </Flex.Item>
           <Flex.Item grow={0} basis="content" mr={0.5} mt={0.8}>

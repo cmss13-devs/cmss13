@@ -58,7 +58,7 @@ export const MedalsPanel = (props) => {
               isMarineMedal={pageIndex === 0}
             />
           </Stack.Item>
-          <Stack.Item grow mx={0}>
+          <Stack.Item grow={1} mx={0}>
             <Section fill />
           </Stack.Item>
         </Stack>
@@ -109,7 +109,7 @@ const MedalsPage = (props) => {
                   medalIndex % 2 === 1 ? 'rgba(255,255,255,0.1)' : ''
                 }
               >
-                <Flex.Item grow align="center" m={1} p={0.2}>
+                <Flex.Item grow={1} align="center" m={1} p={0.2}>
                   A {medal}
                 </Flex.Item>
                 <Flex.Item grow={0} basis="content" mr={0.5} mt={0.5}>

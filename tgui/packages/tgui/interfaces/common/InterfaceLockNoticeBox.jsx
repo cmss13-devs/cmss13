@@ -30,7 +30,7 @@ export const InterfaceLockNoticeBox = (props) => {
       <NoticeBox color="grey">
         <Flex align="center">
           <Flex.Item>Interface lock status:</Flex.Item>
-          <Flex.Item grow />
+          <Flex.Item grow={1} />
           <Flex.Item>
             <Button
               m={0}

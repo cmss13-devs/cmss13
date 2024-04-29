@@ -71,14 +71,14 @@ const MainMenu = (props) => {
 
   return (
     <Flex direction="column">
-      <Flex.Item grow>
+      <Flex.Item grow={1}>
         <Section title={vote_title} fill>
           {(!!vote_in_progress && (
             <Flex wrap="wrap">
               {Object.keys(vote_choices).map((key) => (
                 <Flex.Item basis="100%" mt={1} key={key}>
                   <Flex align="center">
-                    <Flex.Item grow>
+                    <Flex.Item grow={1}>
                       <Box
                         height="100%"
                         fontSize="110%"
@@ -172,7 +172,7 @@ const SettingsMenu = (props) => {
   return (
     <Section>
       <Flex>
-        <Flex.Item color="label" grow>
+        <Flex.Item color="label" grow={1}>
           Restart Votes:
         </Flex.Item>
         <Flex.Item align="right">
@@ -187,7 +187,7 @@ const SettingsMenu = (props) => {
         </Flex.Item>
       </Flex>
       <Flex mt={1}>
-        <Flex.Item color="label" grow>
+        <Flex.Item color="label" grow={1}>
           Gamemode Votes:
         </Flex.Item>
         <Flex.Item>

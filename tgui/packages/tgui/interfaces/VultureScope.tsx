@@ -64,7 +64,7 @@ const OffsetAdjuster = (props) => {
             </Flex>
             <Flex>
               <OffsetDirection dir={Direction.West} />
-              <Flex.Item grow basis={0}>
+              <Flex.Item grow={1} basis={0}>
                 <Button
                   disabled
                   textAlign="center"
@@ -94,7 +94,7 @@ const OffsetDirection = (props) => {
   const { dir } = props;
   const { data, act } = useBackend<ScopeData>();
   return (
-    <Flex.Item grow basis={0}>
+    <Flex.Item grow={1} basis={0}>
       <Button
         content={DirectionAbbreviation[dir]}
         tooltip={`Adjusts the scope's offset to the ${DirectionAbbreviation[dir]}`}
@@ -126,7 +126,7 @@ const PositionAdjuster = (props) => {
             </Flex>
             <Flex>
               <ScopePosition dir={Direction.West} />
-              <Flex.Item grow basis={0}>
+              <Flex.Item grow={1} basis={0}>
                 <Button
                   disabled
                   textAlign="center"
@@ -156,7 +156,7 @@ const ScopePosition = (props) => {
   const { dir } = props;
   const { data, act } = useBackend<ScopeData>();
   return (
-    <Flex.Item grow basis={0}>
+    <Flex.Item grow={1} basis={0}>
       <Button
         content={DirectionAbbreviation[dir]}
         tooltip={`Adjusts the scope's position to the ${DirectionAbbreviation[dir]}`}
@@ -178,7 +178,7 @@ const SecondarySection = (props) => {
   const { data, act } = useBackend<ScopeData>();
   return (
     <Section title="Breathing & Data" textAlign="center">
-      <Flex.Item grow basis={0}>
+      <Flex.Item grow={1} basis={0}>
         <Button
           content="Control Breathing"
           tooltip="Control your breathing for a short time, removing scope drift."

@@ -39,11 +39,11 @@ const PodLauncherContent = (props) => {
         <Flex.Item shrink={0}>
           <PodStatusPage />
         </Flex.Item>
-        <Flex.Item grow>
+        <Flex.Item grow={1}>
           <Flex height="100%">
-            <Flex.Item grow shrink={0} basis="14.1em">
+            <Flex.Item grow={1} shrink={0} basis="14.1em">
               <Flex height="100%" direction="column">
-                <Flex.Item grow>
+                <Flex.Item grow={1}>
                   <PresetsPage />
                 </Flex.Item>
                 <Flex.Item>
@@ -70,7 +70,7 @@ const PodLauncherContent = (props) => {
                 <Flex.Item>
                   <Explosion />
                 </Flex.Item>
-                <Flex.Item grow>
+                <Flex.Item grow={1}>
                   <Container />
                 </Flex.Item>
               </Flex>
@@ -337,7 +337,7 @@ const ViewTabHolder = (props) => {
         <Flex.Item>
           <TabPageComponent />
         </Flex.Item>
-        <Flex.Item grow mt={1}>
+        <Flex.Item grow={1} mt={1}>
           <ByondUi
             height="100%"
             params={{

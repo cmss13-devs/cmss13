@@ -111,7 +111,7 @@ const StatusUpdate = (props, context) => {
       </Flex>
       <h1 align="center">Whitelists for: {viewed_player.ckey}</h1>
       <Section title="Commanding Officer">
-        <Stack align="right" grow>
+        <Stack align="right" grow={1}>
           {co_flags.map((bit, i) => {
             const isWhitelisted = target_rights && target_rights & bit.bitflag;
             return (
@@ -126,7 +126,7 @@ const StatusUpdate = (props, context) => {
             );
           })}
         </Stack>
-        <Stack align="right" grow>
+        <Stack align="right" grow={1}>
           {co_flags.map((bit, i) => {
             const new_state = new_rights && new_rights & bit.bitflag;
             const editable = user_rights && bit.permission & user_rights;
@@ -152,7 +152,7 @@ const StatusUpdate = (props, context) => {
         </Stack>
       </Section>
       <Section title="Synthetic">
-        <Stack align="right" grow>
+        <Stack align="right" grow={1}>
           {syn_flags.map((bit, i) => {
             const isWhitelisted = target_rights && target_rights & bit.bitflag;
             return (
@@ -167,7 +167,7 @@ const StatusUpdate = (props, context) => {
             );
           })}
         </Stack>
-        <Stack align="right" grow>
+        <Stack align="right" grow={1}>
           {syn_flags.map((bit, i) => {
             const new_state = new_rights && new_rights & bit.bitflag;
             const editable = user_rights && bit.permission & user_rights;
@@ -193,7 +193,7 @@ const StatusUpdate = (props, context) => {
         </Stack>
       </Section>
       <Section title="Yautja">
-        <Stack align="right" grow>
+        <Stack align="right" grow={1}>
           {yaut_flags.map((bit, i) => {
             const isWhitelisted = target_rights && target_rights & bit.bitflag;
             return (
@@ -208,7 +208,7 @@ const StatusUpdate = (props, context) => {
             );
           })}
         </Stack>
-        <Stack align="right" grow>
+        <Stack align="right" grow={1}>
           {yaut_flags.map((bit, i) => {
             const new_state = new_rights && new_rights & bit.bitflag;
             const editable = user_rights && bit.permission & user_rights;
@@ -234,7 +234,7 @@ const StatusUpdate = (props, context) => {
         </Stack>
       </Section>
       <Section title="Misc">
-        <Stack align="right" grow>
+        <Stack align="right" grow={1}>
           {misc_flags.map((bit, i) => {
             const isWhitelisted = target_rights && target_rights & bit.bitflag;
             return (
@@ -249,7 +249,7 @@ const StatusUpdate = (props, context) => {
             );
           })}
         </Stack>
-        <Stack align="right" grow>
+        <Stack align="right" grow={1}>
           {misc_flags.map((bit, i) => {
             const new_state = new_rights && new_rights & bit.bitflag;
             const editable = user_rights && bit.permission & user_rights;

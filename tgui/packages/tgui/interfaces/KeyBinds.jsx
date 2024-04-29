@@ -192,7 +192,7 @@ export const KeybindElement = (props) => {
           {keybind.full_name}
         </Box>
       </Flex.Item>
-      <Flex.Item grow>
+      <Flex.Item grow={1}>
         <Flex direction="column">
           {currentBoundKeys.map((val) => (
             <Flex.Item key={val}>

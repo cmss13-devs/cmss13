@@ -83,7 +83,7 @@ export const STUI = () => {
               </LabeledList.Item>
             </LabeledList>
           </Flex.Item>
-          <Flex.Item mt={1} grow basis={0}>
+          <Flex.Item mt={1} grow={1} basis={0}>
             <RenderLogs logs={logs} />
           </Flex.Item>
         </Flex>

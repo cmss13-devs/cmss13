@@ -17,9 +17,9 @@ export const TechControl = (props) => {
     <Window width={500} height={250} resizable>
       <Window.Content>
         <Flex height="100%" justify="space-between">
-          <Flex.Item grow>
+          <Flex.Item grow={1}>
             <Flex direction="column" height="100%">
-              <Flex.Item grow>
+              <Flex.Item grow={1}>
                 <Section fill title="Leader Data">
                   <Flex direction="column">
                     <Flex.Item>

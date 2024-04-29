@@ -16,13 +16,6 @@ on:
 jobs:
   run_unit_tests:
     runs-on: ubuntu-latest
-    services:
-      mysql:
-        image: mysql:latest
-        env:
-          MYSQL_ROOT_PASSWORD: root
-        ports:
-          - 3306
     steps:
       - uses: actions/checkout@v3
       - name: Restore BYOND cache
@@ -32,8 +25,9 @@ jobs:
           key: ${{ runner.os }}-byond-${{ secrets.CACHE_PURGE_KEY }}
       - name: Setup database
         run: |
-          mysql -h mysql -u root -proot -e 'CREATE DATABASE cmdb;'
-          mysql -h mysql -u root -proot -e 'ALTER USER \'root\' IDENTIFIED WITH mysql_native_password BY \'password\'';
+          sudo systemctl start mysql
+          mysql -u root -proot -e 'CREATE DATABASE cmdb;'
+          mysql -u root -proot -e 'ALTER USER \'root\' IDENTIFIED WITH mysql_native_password BY \'password\'';
       - name: Install rust-g
         run: |
           sudo dpkg --add-architecture i386

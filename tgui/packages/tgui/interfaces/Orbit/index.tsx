@@ -1,13 +1,12 @@
 import { filter, sortBy } from 'common/collections';
-import { flow } from 'common/fp';
 import { capitalizeFirst, multiline } from 'common/string';
 import { useBackend, useLocalState } from 'tgui/backend';
 import {
-  Box,
   Button,
   Collapsible,
   ColorBox,
   Icon,
+  Image,
   Input,
   LabeledList,
   Section,
@@ -15,7 +14,12 @@ import {
 } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
-import { getDisplayName, getHealthColor, isJobOrNameMatch } from './helpers';
+import {
+  getDisplayName,
+  getHealthColor,
+  getMostRelevant,
+  isJobOrNameMatch,
+} from './helpers';
 import type { Observable, OrbitData } from './types';
 
 export const Orbit = (props) => {
@@ -55,16 +59,13 @@ const ObservableSearch = (props) => {
 
   /** Gets a list of Observables, then filters the most relevant to orbit */
   const orbitMostRelevant = (searchQuery: string) => {
-    /** Returns the most orbited observable that matches the search. */
-    const mostRelevant: Observable = flow([
-      // Filters out anything that doesn't match search
-      filter<Observable>((observable) =>
-        isJobOrNameMatch(observable, searchQuery),
-      ),
-      // Sorts descending by orbiters
-      sortBy<Observable>((observable) => -(observable.orbiters || 0)),
-      // Makes a single Observables list for an easy search
-    ])([humans, marines, survivors, xenos].flat())[0];
+    const mostRelevant = getMostRelevant(searchQuery, [
+      humans,
+      marines,
+      survivors,
+      xenos,
+    ]);
+
     if (mostRelevant !== undefined) {
       act('orbit', {
         ref: mostRelevant.ref,
@@ -83,8 +84,8 @@ const ObservableSearch = (props) => {
           <Input
             autoFocus
             fluid
-            onEnter={(e, value) => orbitMostRelevant(value)}
-            onInput={(e) => setSearchQuery(e.target.value)}
+            onEnter={(event, value) => orbitMostRelevant(value)}
+            onInput={(event, value) => setSearchQuery(value)}
             placeholder="Search..."
             value={searchQuery}
           />
@@ -222,20 +223,21 @@ const ObservableSection = (props: {
   readonly title: string;
 }) => {
   const { color, section = [], title } = props;
+
   if (!section.length) {
     return null;
   }
+
   const [searchQuery] = useLocalState<string>('searchQuery', '');
-  const filteredSection: Array<Observable> = flow([
-    filter<Observable>((observable) =>
-      isJobOrNameMatch(observable, searchQuery),
-    ),
-    sortBy<Observable>((observable) =>
+
+  const filteredSection = sortBy(
+    filter(section, (observable) => isJobOrNameMatch(observable, searchQuery)),
+    (observable) =>
       getDisplayName(observable.full_name, observable.nickname)
         .replace(/^"/, '')
         .toLowerCase(),
-    ),
-  ])(section);
+  );
+
   if (!filteredSection.length) {
     return null;
   }
@@ -283,12 +285,7 @@ const ObservableItem = (props: {
       tooltip={displayHealth && <ObservableTooltip item={item} />}
       tooltipPosition="bottom-start"
     >
-      {displayHealth && (
-        <ColorBox
-          color={getHealthColor(health)}
-          style={{ 'margin-right': '0.5em' }}
-        />
-      )}
+      {displayHealth && <ColorBox color={getHealthColor(health)} mr="0.5em" />}
       {capitalizeFirst(getDisplayName(full_name, nickname))}
       {!!orbiters && (
         <>
@@ -351,15 +348,14 @@ const ObservableIcon = (props: {
   }
 
   return (
-    <Box
-      as="img"
+    <Image
       mr={1.3}
       src={`data:image/jpeg;base64,${icons[icon]}`}
+      fixBlur
+      verticalAlign="middle"
+      backgroundColor={background_color ? background_color : undefined}
       style={{
         transform: 'scale(2) translatey(-1px)',
-        '-ms-interpolation-mode': 'nearest-neighbor',
-        backgroundColor: background_color ? background_color : null,
-        verticalAlign: 'middle',
       }}
     />
   );

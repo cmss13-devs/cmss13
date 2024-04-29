@@ -1,4 +1,5 @@
 import type { Observable } from './types';
+import { filter, sortBy } from 'common/collections';
 
 enum HEALTH {
   Good = 69,
@@ -19,6 +20,7 @@ export const getDisplayName = (full_name: string, nickname?: string) => {
   if (!nickname) {
     return full_name;
   }
+
   if (
     !full_name?.includes('[') ||
     full_name.match(/\(as /) ||
@@ -26,8 +28,28 @@ export const getDisplayName = (full_name: string, nickname?: string) => {
   ) {
     return nickname;
   }
+
   // return only the name before the first ' [' or ' ('
   return `"${full_name.split(/ \[| \(/)[0]}"`;
+};
+
+export const getMostRelevant = (
+  searchQuery: string,
+  observables: Observable[][],
+): Observable => {
+  const queriedObservables =
+    // Sorts descending by orbiters
+    sortBy(
+      // Filters out anything that doesn't match search
+      filter(
+        observables
+          // Makes a single Observables list for an easy search
+          .flat(),
+        (observable) => isJobOrNameMatch(observable, searchQuery),
+      ),
+      (observable) => -(observable.orbiters || 0),
+    );
+  return queriedObservables[0];
 };
 
 /** Returns the display color for certain health percentages */

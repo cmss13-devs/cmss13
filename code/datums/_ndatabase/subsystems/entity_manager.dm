@@ -69,7 +69,6 @@ GLOBAL_REAL(SSentity_manager, /datum/controller/subsystem/entity_manager)
 	NEW_SS_GLOBAL(SSentity_manager)
 
 /datum/controller/subsystem/entity_manager/proc/start_up()
-	set waitfor=0
 	UNTIL(SSdatabase.connection.connection_ready())
 	adapter = SSdatabase.connection.get_adapter()
 	prepare_tables()

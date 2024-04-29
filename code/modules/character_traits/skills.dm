@@ -64,7 +64,7 @@
 
 /datum/character_trait/skills/miniengie
 	trait_name = "Field Technician Training"
-	trait_desc = "Boosts the construction and engineering skills to 1. Crewmember received basic training in creating fortifications and maintaining simple machinery."
+	trait_desc = "Boosts the construction and engineering skills to 1. You received basic training in creating fortifications and maintaining simple machinery."
 	skill = SKILL_CONSTRUCTION
 	secondary_skill = SKILL_ENGINEER
 	cost = 2
@@ -90,7 +90,7 @@
 	trait_name = "JTAC Training"
 	trait_desc = "Boosts the JTAC skill by 1. Crewmember received additional training in using JTAC equipment."
 	skill = SKILL_JTAC
-	cost = 2
+	cost = 1
 
 /datum/character_trait/skills/spotter
 	trait_name = "Spotter Training"
@@ -100,13 +100,13 @@
 
 /datum/character_trait/skills/powerloader
 	trait_name = "Powerloader Usage Training"
-	trait_desc = "Boosts the powerloader skill to 1. Crewmember received training in operating powerloaders."
+	trait_desc = "Boosts the powerloader skill to 1. Before the army you worked on construction site, and you know how to operate caterpillar power loader."
 	skill = SKILL_POWERLOADER
-	cost = 2
+	cost = 1
 
 /datum/character_trait/skills/cqc
 	trait_name = "Close Quarters Training"
-	trait_desc = "Boosts the cqc skill to 1. Crewmember passed trough basic cqc course, and deals more damage in close combat (+1 brute per level), and have more chances to disarm the opponent (+10% per level)."
+	trait_desc = "Boosts the cqc skill to 1. Before the army You were involved in martial arts, and You can stand up for yourself. + 2.5 damage per lvl in cqc, and +10% to disarm an opponent"
 	skill = SKILL_CQC
 	skill_cap = 3
 	skill_increment = 1
@@ -114,7 +114,7 @@
 
 /datum/character_trait/skills/fireman
 	trait_name = "Heavy Lifting Training"
-	trait_desc = "Boosts the Fireman Carry skill to 1. Crewmember working out at the gym too much, and have a big muscles, physical strength allowed him to carry people on his back."
+	trait_desc = "Boosts the Fireman Carry skill to 1. You working out at the gym too much, and have a big muscles, physical strength allowed you to carry people on your back."
 	skill = SKILL_FIREMAN
 	skill_cap = 3
 	skill_increment = 1
@@ -122,7 +122,7 @@
 
 /datum/character_trait/skills/endurance
 	trait_name = "Advance Physical Training"
-	trait_desc = "Boosts the Endurance skill to 1. Crewmember passed trough advance physical training course, and now can better withstand agaisnt physical traumas and hazard conditions."
+	trait_desc = "Boosts the Endurance skill to 1. You passed trough advance physical training course, and now can better withstand agaisnt physical traumas and hazard conditions."
 	skill = SKILL_ENDURANCE
 	skill_cap = 3
 	skill_increment = 1
@@ -130,15 +130,16 @@
 
 /datum/character_trait/skills/intel
 	trait_name = "Intelligence training"
-	trait_desc = "Boosts the Intel skill to 1. Crewmember received training in quickly processing intelligence documents."
+	trait_desc = "Boosts the Intel skill to 1. You received training in quickly processing intelligence documents."
 	skill = SKILL_INTEL
-	cost = 2
+	cost = 1
 
 /datum/character_trait/skills/police
 	trait_name = "Police Training"
-	trait_desc = "Boosts the policing skill by 1. Crewmember received training in use of security equipment."
+	trait_desc = "Boosts the policing skill by 1. You received standard anti-riot equipment training, now you're available to use flash."
 	skill = SKILL_POLICE
 	cost = 2
+	applyable = FALSE
 
 /datum/character_trait/skills/surgery
 	trait_name = "Surgery Training"

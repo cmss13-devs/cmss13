@@ -98,7 +98,7 @@
 
 			var/extra_cqc_dmg = 0 //soft maximum of 5, this damage is added onto the final value depending on how much cqc skill you have
 			if(attacking_mob.skills)
-				extra_cqc_dmg = attacking_mob.skills?.get_skill_level(SKILL_CQC)
+				extra_cqc_dmg = attacking_mob.skills?.get_skill_level(SKILL_CQC) * 2.5
 			var/raw_damage = 0 //final value, gets absorbed by the armor and then deals the leftover to the mob
 
 			var/obj/limb/affecting = get_limb(rand_zone(attacking_mob.zone_selected, 70))
@@ -107,7 +107,6 @@
 			playsound(loc, attack.attack_sound, 25, 1)
 
 			visible_message(SPAN_DANGER("[attacking_mob] [pick(attack.attack_verb)]ed [src]!"), null, null, 5)
-
 			raw_damage = attack.damage + extra_cqc_dmg
 			var/final_damage = armor_damage_reduction(GLOB.marine_melee, raw_damage, armor, FALSE) // no penetration from punches
 			apply_damage(final_damage, BRUTE, affecting, sharp=attack.sharp, edge = attack.edge)

@@ -224,19 +224,34 @@
 /mob/living/resist_grab(moving_resist)
 	if(!pulledby)
 		return
-	if(pulledby.grab_level)
-		if(prob(50))
-			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-			visible_message(SPAN_DANGER("[src] has broken free of [pulledby]'s grip!"), null, null, 5)
-			pulledby.stop_pulling()
-			return 1
-		if(moving_resist && client) //we resisted by trying to move
-			visible_message(SPAN_DANGER("[src] struggles to break free of [pulledby]'s grip!"), null, null, 5)
-			client.next_movement = world.time + (10*pulledby.grab_level) + client.move_delay
-	else
-		pulledby.stop_pulling()
-		return 1
+	// vars for checks of strengh
+	var/pulledby_is_strong = HAS_TRAIT(pulledby, TRAIT_SUPER_STRONG)
+	var/src_is_strong = HAS_TRAIT(src, TRAIT_SUPER_STRONG)
 
+	if(!pulledby.grab_level && (!pulledby_is_strong || src_is_strong)) // if passive grab, check if puller is stronger than src, and if not, break free
+		pulledby.stop_pulling()
+		return TRUE
+
+// Chance for person to break free of grip, defaults to 50.
+	var/chance = 50
+	if(src_is_strong && !isxeno(pulledby)) // no extra chance to resist warrior grabs
+		chance += 20 // you are strong, you can overpower them easier
+	if(pulledby_is_strong)
+		chance -= 45 // stronger grip
+	// above code means that if you are super strong, 90% chance to resist, otherwise, 10 percent. if both are super strong, standard 50.
+
+	if(prob(chance))
+		playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+		visible_message(SPAN_DANGER("[src] has broken free of [pulledby]'s grip!"), max_distance = 5)
+		pulledby.stop_pulling()
+		return TRUE
+	if(moving_resist && client) //we resisted by trying to move
+		visible_message(SPAN_DANGER("[src] struggles to break free of [pulledby]'s grip!"), max_distance = 5)
+		// +1 delay if super strong, also done as passive grabs would have a modifier of 0 otherwise, causing spam
+		if(pulledby_is_strong && !src_is_strong)
+			client.next_movement = world.time + (10*(pulledby.grab_level + 1)) + client.move_delay
+		else
+			client.next_movement = world.time + (10*pulledby.grab_level) + client.move_delay
 
 /mob/living/movement_delay()
 	. = ..()

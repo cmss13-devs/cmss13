@@ -312,7 +312,7 @@ DEFINES in setup.dm, referenced here.
 			var/tac_reload_time = 15
 			if(user.skills)
 				tac_reload_time = max(15 - 5*user.skills.get_skill_level(SKILL_FIREARMS), 5)
-			if(do_after(user,tac_reload_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && magazine.loc == old_mag_loc && !current_mag)
+			if(do_after(user,tac_reload_time, (INTERRUPT_ALL & (~INTERRUPT_MOVED)) , BUSY_ICON_FRIENDLY) && magazine.loc == old_mag_loc && !current_mag)
 				if(isstorage(magazine.loc))
 					var/obj/item/storage/master_storage = magazine.loc
 					master_storage.remove_from_storage(magazine)

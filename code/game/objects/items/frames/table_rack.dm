@@ -100,6 +100,7 @@
 	desc = "A kit for a table, including a large, flat wooden surface and four legs. Some assembly required."
 	icon_state = "wood_tableparts"
 	flags_atom = FPRINT
+	matter = null
 	table_type = /obj/structure/surface/table/woodentable
 
 /obj/item/frame/table/wood/attackby(obj/item/W, mob/user)

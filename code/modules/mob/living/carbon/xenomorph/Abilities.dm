@@ -142,7 +142,7 @@
 
 	playsound(xeno.loc, pick(xeno.screech_sound_effect_list), 75, 0, status = 0)
 	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits an ear-splitting guttural roar!"))
-	xeno.create_shriekwave() //Adds the visual effect. Wom wom wom
+	xeno.create_shriekwave(14) //Adds the visual effect. Wom wom wom, 14 shriekwaves
 
 	for(var/mob/mob in view())
 		if(mob && mob.client)

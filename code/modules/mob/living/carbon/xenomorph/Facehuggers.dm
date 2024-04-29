@@ -38,6 +38,9 @@
 	/// the nearest human before dying
 	var/jumps_left = 2
 
+	var/time_to_live = 30 SECONDS
+	var/death_timer
+
 	var/icon_xeno = 'icons/mob/xenos/effects.dmi'
 	var/icon_xenonid = 'icons/mob/xenonids/xenonid_crab.dmi'
 
@@ -54,6 +57,9 @@
 	icon = new_icon
 	set_hive_data(src, hivenumber)
 	go_active()
+
+	if (hivenumber != XENO_HIVE_TUTORIAL)
+		death_timer = addtimer(CALLBACK(src, PROC_REF(end_lifecycle)), time_to_live, TIMER_OVERRIDE|TIMER_STOPPABLE|TIMER_UNIQUE)
 
 
 /obj/item/clothing/mask/facehugger/Destroy()
@@ -75,6 +81,10 @@
 	if(QDESTROYING(src))
 		return
 	addtimer(CALLBACK(src, PROC_REF(check_turf)), 0.2 SECONDS)
+
+	if(!death_timer && hivenumber != XENO_HIVE_TUTORIAL)
+		death_timer = addtimer(CALLBACK(src, PROC_REF(end_lifecycle)), time_to_live, TIMER_OVERRIDE|TIMER_STOPPABLE|TIMER_UNIQUE)
+
 	if(stat == CONSCIOUS && loc) //Make sure we're conscious and not idle or dead.
 		go_idle()
 	if(attached)
@@ -173,9 +183,18 @@
 	if(exposed_temperature > 300)
 		die()
 
-/obj/item/clothing/mask/facehugger/equipped(mob/M)
+/obj/item/clothing/mask/facehugger/equipped(mob/holder)
 	SHOULD_CALL_PARENT(FALSE) // ugh equip sounds
 	// So picking up a hugger does not prematurely kill it
+	if (!isxeno(holder))
+		return
+
+	var/mob/living/carbon/xenomorph/xeno = holder
+
+	if ((xeno.caste.hugger_nurturing || hivenumber == XENO_HIVE_TUTORIAL) && death_timer)
+		deltimer(death_timer)
+		death_timer = null
+
 	go_idle()
 
 /obj/item/clothing/mask/facehugger/Crossed(atom/target)
@@ -394,9 +413,6 @@
 			M.stored_huggers++
 			qdel(src)
 			return
-		// Tutorial facehuggers never time out
-		if(hivenumber == XENO_HIVE_TUTORIAL)
-			return
 	die()
 
 /obj/item/clothing/mask/facehugger/proc/die()
@@ -410,6 +426,10 @@
 		deltimer(jump_timer)
 	jump_timer = null
 
+	if(death_timer)
+		deltimer(death_timer)
+	death_timer = null
+
 	if(!impregnated)
 		icon_state = "[initial(icon_state)]_dead"
 	stat = DEAD
@@ -418,12 +438,15 @@
 	playsound(src.loc, 'sound/voice/alien_facehugger_dies.ogg', 25, 1)
 
 	if(ismob(loc)) //Make it fall off the person so we can update their icons. Won't update if they're in containers thou
-		var/mob/M = loc
-		M.drop_inv_item_on_ground(src)
+		var/mob/holder_mob = loc
+		holder_mob.drop_inv_item_on_ground(src)
 
 	layer = TURF_LAYER //so dead hugger appears below live hugger if stacked on same tile. (and below nested hosts)
 
-	addtimer(CALLBACK(src, PROC_REF(decay)), 3 MINUTES)
+	if(hivenumber == XENO_HIVE_TUTORIAL)
+		addtimer(CALLBACK(src, PROC_REF(decay)), 5 SECONDS)
+	else
+		addtimer(CALLBACK(src, PROC_REF(decay)), 3 MINUTES)
 
 /obj/item/clothing/mask/facehugger/proc/decay()
 	visible_message("[icon2html(src, viewers(src))] <span class='danger'>\The [src] decays into a mass of acid and chitin.</span>")

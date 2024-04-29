@@ -71,6 +71,11 @@
 			if(affected_mob.reagents.get_reagent_amount("thwei"))
 				blood_loss -= THWEI_BLOOD_REDUCTION
 
+			if(affected_mob.bodytemperature < T0C && (affected_mob.reagents.get_reagent_amount("cryoxadone") || affected_mob.reagents.get_reagent_amount("clonexadone")))
+				var/obj/structure/machinery/cryo_cell/cryo = affected_mob.loc
+				if(istype(cryo) && cryo.on && cryo.operable())
+					blood_loss -= CRYO_BLOOD_REDUCTION
+
 			var/mob/living/carbon/human/affected_human = affected_mob
 			if(istype(affected_human))
 				if(affected_human.chem_effect_flags & CHEM_EFFECT_NO_BLEEDING)
@@ -95,18 +100,19 @@
 	if(affected_mob.in_stasis == STASIS_IN_BAG)
 		return FALSE
 
-	if(affected_mob.bodytemperature < T0C && (affected_mob.reagents && affected_mob.reagents.get_reagent_amount("cryoxadone") || affected_mob.reagents.get_reagent_amount("clonexadone")))
-		blood_loss -= CRYO_BLOOD_REDUCTION
-
 	if(affected_mob.reagents) // Annoying QC check
 		if(affected_mob.reagents.get_reagent_amount("thwei"))
 			blood_loss -= THWEI_BLOOD_REDUCTION
+
+		if(affected_mob.bodytemperature < T0C && (affected_mob.reagents.get_reagent_amount("cryoxadone") || affected_mob.reagents.get_reagent_amount("clonexadone")))
+			blood_loss -= CRYO_BLOOD_REDUCTION
 
 		var/mob/living/carbon/human/affected_human = affected_mob
 		if(istype(affected_human))
 			if(affected_human.chem_effect_flags & CHEM_EFFECT_NO_BLEEDING)
 				return FALSE
 
+	blood_loss = max(blood_loss, 0) // Bleeding shouldn't give extra blood even if its only 1 tick
 	affected_mob.blood_volume = max(affected_mob.blood_volume - blood_loss, 0)
 
 	return TRUE

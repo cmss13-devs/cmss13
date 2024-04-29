@@ -141,6 +141,7 @@
 	desc = "A kit for a table, including a large, flat wooden and carpet surface and four legs. Some assembly required."
 	icon_state = "gamble_tableparts"
 	flags_atom = null
+	matter = null
 	table_type = /obj/structure/surface/table/gamblingtable
 
 /obj/item/frame/table/gambling/attackby(obj/item/W as obj, mob/user as mob)

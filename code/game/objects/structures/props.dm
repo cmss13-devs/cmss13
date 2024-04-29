@@ -1452,8 +1452,27 @@
 // Vehicles
 
 /obj/structure/prop/hybrisa/vehicles
-    icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
-    icon_state = "SUV"
+	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
+	icon_state = "SUV"
+	health = 600
+	var/damage_state = 0
+
+/obj/structure/prop/hybrisa/vehicles/update_icon()
+	switch(health)
+		if(500 to 600)
+			icon_state = initial(icon_state)
+			return
+		if(400 to 500)
+			damage_state = 1
+		if(300 to 400)
+			damage_state = 2
+		if(200 to 300)
+			damage_state = 3
+		if(100 to 200)
+			damage_state = 4
+		if(0 to 100)
+			damage_state = 5
+	icon_state = "[initial(icon_state)]_damage_[damage_state]"
 
 /obj/structure/prop/hybrisa/vehicles/proc/explode(dam, mob/M)
     src.visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"), null, null, 1)
@@ -1528,6 +1547,7 @@
 // Meridian Cars
 
 /obj/structure/prop/hybrisa/vehicles/Car
+	health = 600
 	name = "Mono-Spectra"
 	desc = "The 'Mono-Spectra', a mass-produced civilian vehicle for the colonial markets, in and outside of the United Americas. Produced by 'Meridian' a car marque and associated operating division of the Weyland-Yutani Corporation."
 	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
@@ -1538,6 +1558,15 @@
 	unacidable = TRUE
 	density = TRUE
 	layer = ABOVE_MOB_LAYER
+
+
+
+
+
+/obj/structure/prop/hybrisa/vehicles/Car/Red
+	icon = 'icons/obj/structures/props/car_damage_states.dmi'
+	icon_state = "car_red"
+
 /obj/structure/prop/hybrisa/vehicles/Car/Car_1
 	icon_state = "MeridianCar_2"
 /obj/structure/prop/hybrisa/vehicles/Car/Car_2

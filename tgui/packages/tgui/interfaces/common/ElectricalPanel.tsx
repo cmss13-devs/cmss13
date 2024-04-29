@@ -1,15 +1,7 @@
 import { classes } from 'common/react';
 
 import { useBackend } from '../../backend';
-import {
-  Box,
-  Button,
-  ColorBox,
-  Flex,
-  Icon,
-  NoticeBox,
-  Stack,
-} from '../../components';
+import { Box, Button, Flex, Icon, NoticeBox, Stack } from '../../components';
 import { BoxProps } from '../../components/Box';
 import { Table, TableRow } from '../../components/Table';
 
@@ -107,18 +99,18 @@ const WireControl = (props: {
 }) => {
   const { data, act } = useBackend<ElectricalData>();
   const target = props.index + 1;
-  let boxColor = 'green';
-  if (props.wire.cut) {
-    boxColor = 'red';
-  }
-  if (!data.electrical.powered) {
-    boxColor = 'grey';
-  }
   return (
     <Stack>
       <Stack.Item grow>{props.wire.desc}</Stack.Item>
-      <Stack.Item>
-        <ColorBox color={boxColor} align={'center'} />
+      <Stack.Item pr={1}>
+        <div
+          className={classes([
+            'led',
+            props.wire.cut === 0 && 'led-green',
+            props.wire.cut === 1 && 'led-red',
+            data.electrical.powered === 1 && 'led-off',
+          ])}
+        />
       </Stack.Item>
       <Stack.Item>
         {props.wire.cut === 0 && (
@@ -126,6 +118,7 @@ const WireControl = (props: {
             icon="scissors"
             onClick={() => act('cutwire', { wire: target })}
             tooltip={'Cut'}
+            tooltipPosition="left"
           />
         )}
         {props.wire.cut === 1 && (
@@ -133,6 +126,7 @@ const WireControl = (props: {
             icon="wrench"
             onClick={() => act('fixwire', { wire: target })}
             tooltip={'Fix'}
+            tooltipPosition="left"
           />
         )}
       </Stack.Item>
@@ -142,6 +136,7 @@ const WireControl = (props: {
           disabled={props.wire.cut === 1}
           onClick={() => act('pulsewire', { wire: target })}
           tooltip={'Pulse'}
+          tooltipPosition="left"
         />
       </Stack.Item>
     </Stack>
@@ -159,7 +154,7 @@ const ElectricalPanelOpen = (props: BoxProps) => {
         className="ElectricalSafetySign"
       >
         <Flex.Item>
-          <Table vertical className="WirePanel">
+          <Table className="WirePanel">
             {data.electrical.wires.map((x, index) => (
               <TableRow key={x.desc}>
                 <WireControl wire={x} index={index} />

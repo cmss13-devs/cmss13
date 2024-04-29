@@ -1,7 +1,15 @@
 import { classes } from 'common/react';
 
 import { useBackend, useLocalState } from '../backend';
-import { Button, Icon, NoticeBox, Section, Stack, Tabs } from '../components';
+import {
+  Button,
+  Icon,
+  NoticeBox,
+  Section,
+  Stack,
+  Tabs,
+  Tooltip,
+} from '../components';
 import { Table, TableCell, TableRow } from '../components/Table';
 import { Window } from '../layouts';
 import { ElectricalPanel } from './common/ElectricalPanel';
@@ -25,6 +33,7 @@ interface StorageItem {
   item: string;
   image: string;
   category: string;
+  desc: string;
 }
 
 const ContentsTable = (props: {
@@ -74,7 +83,7 @@ const Contents = (props: {
   const categoryIterable = Array.from(categories.entries());
   return (
     <Section title={props.title}>
-      <Tabs fill fluid>
+      <Tabs fill fluid className="CategoryTabs">
         {categoryIterable
           .sort((a, b) => a[0].localeCompare(b[0]))
           .map((value) => {
@@ -116,13 +125,15 @@ const ContentItem = (props: {
   const itemref = { index: item.index, amount: 1, isLocal: props.isLocal };
   return (
     <>
-      <TableCell className="ItemIconCell">
+      <TableCell className="ItemIcon" verticalAlign="top">
         <span
-          className={classes(['ItemIcon', `vending32x32`, `${item.image}`])}
+          className={classes([`ItemIcon`, `vending32x32`, `${item.image}`])}
         />
       </TableCell>
-      <TableCell className="ItemIconCell">{item.quantity}</TableCell>
-      <TableCell>
+      <TableCell className="ItemIconCell" minWidth="3rem">
+        {item.quantity}
+      </TableCell>
+      <TableCell width="100%">
         <Button
           className="VendButton"
           preserveWhitespace
@@ -134,15 +145,30 @@ const ContentItem = (props: {
         </Button>
       </TableCell>
       {data.networked === 1 && (
-        <TableCell>
+        <TableCell className="ItemIconCell">
           <Button
-            icon={props.isLocal ? 'upload' : 'download'}
+            icon={props.isLocal ? 'download' : 'upload'}
             onClick={() => act('transfer', itemref)}
           />
         </TableCell>
       )}
-      <TableCell>
-        <Icon name="circle-info" />
+      <TableCell className="ItemIconCell">
+        <Tooltip
+          position="bottom-start"
+          // className={classes(['Tooltip', props.className])}
+          content={
+            <NoticeBox info className={classes(['Description'])}>
+              <Section title={item.display_name}>
+                <span>{item.desc}</span>
+              </Section>
+            </NoticeBox>
+          }
+        >
+          <Icon
+            name="circle-info"
+            className={classes(['ShowDesc', 'RegularItemText', 'SmallIcon'])}
+          />
+        </Tooltip>
       </TableCell>
     </>
   );
@@ -154,7 +180,7 @@ export const SmartFridge = () => {
     <Window theme="weyland" width={400} height={600}>
       <Window.Content className="SmartFridge" scrollable>
         <Stack vertical>
-          {data.secure && (
+          {!!data.secure && (
             <Stack.Item>
               <NoticeBox>Smart Fridge is in secure mode</NoticeBox>
             </Stack.Item>

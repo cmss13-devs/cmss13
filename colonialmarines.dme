@@ -2495,6 +2495,7 @@
 #include "fray-marines\code\cm_tech\techs\xeno\tier3\rev_jelly.dm"
 #include "fray-marines\code\cm_tech\trees\xeno.dm"
 #include "fray-marines\code\datums\skills.dm"
+#include "fray-marines\code\datums\supply_packs\ammo.dm"
 #include "fray-marines\code\datums\supply_packs\gear.dm"
 #include "fray-marines\code\datums\supply_packs\weapons.dm"
 #include "fray-marines\code\game\jobs\command\auxiliary\mech_crew.dm"

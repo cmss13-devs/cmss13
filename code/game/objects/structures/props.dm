@@ -1455,7 +1455,6 @@
 	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
 	icon_state = "SUV"
 	health = 600
-	var/damage_state = 0
 
 /obj/structure/prop/hybrisa/vehicles/update_icon()
 	switch(health)

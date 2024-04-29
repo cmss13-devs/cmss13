@@ -47,7 +47,7 @@
 			playsound(src, "paper_writing", 15, TRUE)
 	else if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-		if(do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src, INTERRUPT_MOVED, BUSY_ICON_FRIENDLY))
+		if(do_after(user, 1 SECONDS, INTERRUPT_MOVED, BUSY_ICON_FRIENDLY, src))
 			deconstruct(FALSE)
 	else
 		..()

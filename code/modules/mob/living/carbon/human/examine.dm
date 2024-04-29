@@ -541,7 +541,7 @@
 					if(med_hud.hudusers[passed_human])
 						return TRUE
 			if("squadleader")
-				var/datum/mob_hud/faction_hud = GLOB.huds[MOB_HUD_FACTION_USCM]
+				var/datum/mob_hud/faction_hud = GLOB.huds[MOB_HUD_FACTION_MARINE]
 				if(passed_human.mind && passed_human.assigned_squad && passed_human.assigned_squad.squad_leader == passed_human && faction_hud.hudusers[passed_mob])
 					return TRUE
 			else

@@ -534,7 +534,7 @@
 
 //Copies a list, and all lists inside it recusively
 //Does not copy any other reference type
-/proc/deepCopyList(list/L)
+/proc/deep_copy_list(list/L)
 	if(!islist(L))
 		return L
 	. = L.Copy()
@@ -545,10 +545,10 @@
 			continue
 		var/value = .[key]
 		if(islist(value))
-			value = deepCopyList(value)
+			value = deep_copy_list(value)
 			.[key] = value
 		if(islist(key))
-			key = deepCopyList(key)
+			key = deep_copy_list(key)
 			.[i] = key
 			.[key] = value
 

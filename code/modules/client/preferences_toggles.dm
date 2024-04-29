@@ -25,6 +25,14 @@
 	prefs.save_preferences()
 	to_chat(src, SPAN_BOLDNOTICE("You will [(prefs.toggles_chat & CHAT_PRAYER) ? "now" : "no longer"] see prayerchat."))
 
+/client/verb/toggle_observer_announcement_sounds()
+	set name = "Hear/Silence Ghost Announcements"
+	set category = "Preferences.Sound"
+	set desc = "Toggle hearing a notification of announcements while being an observer."
+	prefs.toggles_sound ^= SOUND_OBSERVER_ANNOUNCEMENTS
+	prefs.save_preferences()
+	to_chat(usr, SPAN_BOLDNOTICE("You will [(prefs.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS) ? "now" : "no longer"] hear announcement sounds as an observer."))
+
 /client/verb/toggletitlemusic()
 	set name = "Hear/Silence LobbyMusic"
 	set category = "Preferences.Sound"
@@ -267,6 +275,8 @@
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_admin_sound_types'>Toggle Admin Sound Types</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/set_eye_blur_type'>Set Eye Blur Type</a><br>",
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/set_flash_type'>Set Flash Type</a><br>",
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/set_crit_type'>Set Crit Type</a><br>",
 	)
 
 	var/dat = ""
@@ -443,6 +453,7 @@
 	else
 		CRASH("receive_random_tip() failed: null message")
 
+/// Toggle in character preferences and toggle preferences to configure what kind of blur overlay is used in game; Either blurry, impaired, or legacy.
 /client/proc/set_eye_blur_type()
 	var/result = tgui_alert(src, "What type of eye blur do you want?", "What type of eye blur do you want?", list("Blurry", "Impair", "Legacy"))
 	if(result == "Blurry")
@@ -454,6 +465,28 @@
 	if(result == "Legacy")
 		prefs.pain_overlay_pref_level = PAIN_OVERLAY_LEGACY
 		to_chat(src, SPAN_NOTICE("Your vision will now have a legacy blurring effect. This is not recommended!"))
+	prefs.save_preferences()
+
+/// Toggle in character preferences and toggle preferences to configure what kind of flash overlay is used in game; Either white or black.
+/client/proc/set_flash_type()
+	var/result = tgui_alert(src, "What type of flash overlay do you want?", "What type of flash overlay do you want?", list("White", "Dark"))
+	if(result == "White")
+		prefs.flash_overlay_pref = FLASH_OVERLAY_WHITE
+		to_chat(src, SPAN_NOTICE("If flashed your vision will now be white."))
+	else if(result == "Dark")
+		prefs.flash_overlay_pref = FLASH_OVERLAY_DARK
+		to_chat(src, SPAN_NOTICE("If flashed your vision will now be dark."))
+	prefs.save_preferences()
+
+/// Toggle in character preferences and toggle preferences to configure what kind of crit overlay is used in game; Either white or grey.
+/client/proc/set_crit_type()
+	var/result = tgui_alert(src, "What type of crit overlay do you want?", "What type of crit overlay do you want?", list("White", "Dark"))
+	if(result == "White")
+		prefs.crit_overlay_pref = CRIT_OVERLAY_WHITE
+		to_chat(src, SPAN_NOTICE("If in critical condition your vision will now be white."))
+	else if(result == "Dark")
+		prefs.crit_overlay_pref = CRIT_OVERLAY_DARK
+		to_chat(src, SPAN_NOTICE("If in critical condition your vision will now be dark."))
 	prefs.save_preferences()
 
 /client/verb/toggle_tgui_say()

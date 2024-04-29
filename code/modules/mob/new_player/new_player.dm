@@ -347,7 +347,7 @@
 			roles_show ^= FLAG_SHOW_MEDICAL
 
 		else if(roles_show & FLAG_SHOW_MARINES && GLOB.ROLES_MARINES.Find(J.title))
-			dat += "<hr>Squad Riflemen:<br>"
+			dat += "<hr>Marines:<br>"
 			roles_show ^= FLAG_SHOW_MARINES
 
 		dat += "<a href='byond://?src=\ref[src];lobby_choice=SelectedJob;job_selected=[J.title]'>[J.disp_title] ([J.current_positions]) (Active: [active])</a><br>"
@@ -451,7 +451,7 @@
 
 	var/time_remaining = SSticker.GetTimeLeft()
 	if(time_remaining > 0)
-		. += "Time To Start: [round(time_remaining)]s"
+		. += "Time To Start: [round(time_remaining)]s[SSticker.delay_start ? " (DELAYED)" : ""]"
 	else if(time_remaining == -10)
 		. += "Time To Start: DELAYED"
 	else

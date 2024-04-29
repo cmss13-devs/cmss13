@@ -129,7 +129,7 @@
 
 		The 'pitter-patter' of 'rain' that the crews heard was in fact multiple rifles failing to penetrate through the vehicle's external armor. Once a number of the anti-materiel rifles were examined, it was deemed a high priority to produce a Corps version. In the process, the rifles were designed for a higher calibre then that of the rebel versions, so the M707 would be capable of penetrating the light vehicle armor of their UPP peers in the event of another Dog War or Tientsin."}
 
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi' // overriden with camos
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi' // overridden with camos
 	icon_state = "vulture"
 	item_state = "vulture"
 	cocked_sound = 'sound/weapons/gun_cocked2.ogg'
@@ -278,4 +278,10 @@
 
 
 /obj/item/weapon/gun/boltaction/vulture/skillless
+	bypass_trait = TRUE
+
+/obj/item/weapon/gun/boltaction/vulture/holo_target
+	current_mag = /obj/item/ammo_magazine/rifle/boltaction/vulture/holo_target
+
+/obj/item/weapon/gun/boltaction/vulture/holo_target/skillless
 	bypass_trait = TRUE

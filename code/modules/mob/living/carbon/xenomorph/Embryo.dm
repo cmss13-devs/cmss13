@@ -355,8 +355,9 @@
 			qdel(larva_embryo)
 
 		if(!victim.first_xeno)
-			to_chat(larva_embryo, SPAN_XENOHIGHDANGER("The Queen's will overwhelms our instincts..."))
-			to_chat(larva_embryo, SPAN_XENOHIGHDANGER("\"[hive.hive_orders]\""))
+			if(hive.hive_orders)
+				to_chat(larva_embryo, SPAN_XENOHIGHDANGER("The Queen's will overwhelms our instincts..."))
+				to_chat(larva_embryo, SPAN_XENOHIGHDANGER("\"[hive.hive_orders]\""))
 			log_attack("[key_name(victim)] chestbursted in [get_area_name(larva_embryo)] at X[victim.x], Y[victim.y], Z[victim.z]. The larva was [key_name(larva_embryo)].") //this is so that admins are not spammed with los logs
 
 	for(var/obj/item/alien_embryo/AE in victim)

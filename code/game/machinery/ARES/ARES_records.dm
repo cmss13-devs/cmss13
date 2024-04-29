@@ -45,7 +45,7 @@
 
 /datum/ares_record/flight/New(details, user)
 	time = worldtime2text()
-	src.title = "Flight Log"
+	title = "Flight Log"
 	src.details = details
 	src.user = user
 
@@ -57,6 +57,18 @@
 	src.title = title
 	src.details = details
 	src.user = user
+
+/datum/ares_record/tech
+	record_name = ARES_RECORD_TECH
+	/// If this tech unlock changed the tier.
+	var/is_tier = FALSE
+
+/datum/ares_record/tech/New(title, details, user, tier_tech)
+	time = worldtime2text()
+	src.title = title
+	src.details = details
+	src.user = user
+	is_tier = tier_tech
 
 /datum/ares_record/deletion
 	record_name = ARES_RECORD_DELETED

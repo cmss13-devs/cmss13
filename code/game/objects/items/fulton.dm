@@ -140,10 +140,12 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 	sleep(30)
 	original_location = get_turf(attached_atom)
 	playsound(loc, 'sound/items/fulton.ogg', 50, 1)
-	reservation = SSmapping.RequestBlockReservation(3, 3, turf_type_override = /turf/open/space)
-	var/middle_x = reservation.bottom_left_coords[1] + Floor((reservation.top_right_coords[1] - reservation.bottom_left_coords[1]) / 2)
-	var/middle_y = reservation.bottom_left_coords[2] + Floor((reservation.top_right_coords[2] - reservation.bottom_left_coords[2]) / 2)
-	var/turf/space_tile = locate(middle_x, middle_y, reservation.bottom_left_coords[3])
+	reservation = SSmapping.request_turf_block_reservation(3, 3, 1, turf_type_override = /turf/open/space)
+	var/turf/bottom_left_turf = reservation.bottom_left_turfs[1]
+	var/turf/top_right_turf = reservation.top_right_turfs[1]
+	var/middle_x = bottom_left_turf.x + Floor((top_right_turf.x - bottom_left_turf.x) / 2)
+	var/middle_y = bottom_left_turf.y + Floor((top_right_turf.y - bottom_left_turf.y) / 2)
+	var/turf/space_tile = locate(middle_x, middle_y, bottom_left_turf.z)
 	if(!space_tile)
 		visible_message(SPAN_WARNING("[src] begins beeping like crazy. Something is wrong!"))
 		return

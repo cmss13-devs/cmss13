@@ -52,6 +52,8 @@
 	gender = NEUTER
 	icon_size = 48
 	black_market_value = KILL_MENDOZA
+	///How much to horizontally adjust the sprites of held item onmobs by. Based on icon size. Most xenos have hands about the same height as a human's.
+	var/xeno_inhand_item_offset
 	dead_black_market_value = 50
 	light_system = MOVABLE_LIGHT
 	var/obj/item/clothing/suit/wear_suit = null
@@ -130,10 +132,8 @@
 	var/weed_level = WEED_LEVEL_STANDARD
 	var/acid_level = 0
 
-	// Mutator-related and other important vars
-	var/mutation_icon_state = null
-	var/mutation_type = null
-	var/datum/mutator_set/individual_mutators/mutators = new
+	/// The xeno's strain, if they've taken one.
+	var/datum/xeno_strain/strain = null
 
 	// Hive-related vars
 	var/datum/hive_status/hive
@@ -389,8 +389,6 @@
 		for(var/trait in hive.hive_inherant_traits)
 			ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
 
-	mutators.xeno = src
-
 	//Set caste stuff
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
 		caste = GLOB.xeno_datum_list[caste_type]
@@ -433,7 +431,7 @@
 
 	GLOB.living_xeno_list += src
 	GLOB.xeno_mob_list += src
-
+	xeno_inhand_item_offset = (icon_size - 32) * 0.5
 	// More setup stuff for names, abilities etc
 	update_icon_source()
 	generate_name()
@@ -661,8 +659,8 @@
 			. += "It appears to belong to [hive?.name ? "the [hive.name]" : "a different hive"]."
 
 	if(isxeno(user) || isobserver(user))
-		if(mutation_type != "Normal")
-			. += "It has specialized into a [mutation_type]."
+		if(strain)
+			. += "It has specialized into a [strain.name]."
 
 	if(iff_tag)
 		. += SPAN_NOTICE("It has an IFF tag sticking out of its carapace.")
@@ -693,7 +691,7 @@
 	selected_ability = null
 	queued_action = null
 
-	QDEL_NULL(mutators)
+	QDEL_NULL(strain)
 	QDEL_NULL(behavior_delegate)
 
 	built_structures = null
@@ -709,17 +707,10 @@
 	if(hardcore)
 		attack_log?.Cut() // Completely clear out attack_log to limit mem usage if we fail to delete
 
-	. = ..()
-
-	// Everything below fits the "we have to clear by principle it but i dont wanna break stuff" bill
-	mutators = null
-
-
+	return ..()
 
 /mob/living/carbon/xenomorph/slip(slip_source_name, stun_level, weaken_level, run_only, override_noslip, slide_steps)
 	return FALSE
-
-
 
 /mob/living/carbon/xenomorph/start_pulling(atom/movable/AM, lunge, no_msg)
 	if(SEND_SIGNAL(AM, COMSIG_MOVABLE_XENO_START_PULLING, src) & COMPONENT_ALLOW_PULL)
@@ -777,6 +768,11 @@
 	var/datum/mob_hud/MH = GLOB.huds[MOB_HUD_XENO_INFECTION]
 	MH.add_hud_to(src, src)
 
+// Transfer any observing players over to the xeno's new body (`target`) on evolve/de-evolve.
+/mob/living/carbon/xenomorph/transfer_observers_to(atom/target)
+	for(var/mob/dead/observer/observer as anything in observers)
+		observer.clean_observe_target()
+		observer.do_observe(target)
 
 /mob/living/carbon/xenomorph/check_improved_pointing()
 	//xeno leaders get a big arrow and less cooldown
@@ -823,10 +819,10 @@
 
 
 //*********************************************************//
-//********************Mutator functions********************//
+// ******************** Strain Procs **********************//
 //*********************************************************//
 
-//Call this function when major changes happen - evolutions, upgrades, mutators getting removed
+//Call this proc when major changes happen - evolutions, upgrades, mutators getting removed
 /mob/living/carbon/xenomorph/proc/recalculate_everything()
 	recalculate_stats()
 	recalculate_actions()
@@ -850,8 +846,8 @@
 	tackle_min = caste.tackle_min
 	tackle_max = caste.tackle_max
 	tackle_chance = caste.tackle_chance + tackle_chance_modifier
-	tacklestrength_min = caste.tacklestrength_min + mutators.tackle_strength_bonus + hive.mutators.tackle_strength_bonus
-	tacklestrength_max = caste.tacklestrength_max + mutators.tackle_strength_bonus + hive.mutators.tackle_strength_bonus
+	tacklestrength_min = caste.tacklestrength_min
+	tacklestrength_max = caste.tacklestrength_max
 
 /mob/living/carbon/xenomorph/proc/recalculate_health()
 	var/new_max_health = nocrit ? health_modifier + maxHealth : health_modifier + caste.max_health
@@ -907,18 +903,8 @@
 /mob/living/carbon/xenomorph/proc/recalculate_actions()
 	recalculate_acid()
 	recalculate_weeds()
-	pull_multiplier = mutators.pull_multiplier
-	if(isrunner(src))
-		//Xeno runners need a small nerf to dragging speed mutator
-		pull_multiplier = 1 - (1 - mutators.pull_multiplier) * 0.85
-		if(is_zoomed)
-			zoom_out()
-	if(iscarrier(src))
-		var/mob/living/carbon/xenomorph/carrier/carrier = src
-		carrier.huggers_max = caste.huggers_max
-		carrier.eggs_max = caste.eggs_max
-	need_weeds = mutators.need_weeds
-
+	// Modified on subtypes
+	pull_multiplier = initial(pull_multiplier)
 
 /mob/living/carbon/xenomorph/proc/recalculate_acid()
 	if(caste)
@@ -1043,7 +1029,7 @@
 		handle_ghost_message()
 
 /mob/living/carbon/xenomorph/proc/handle_ghost_message()
-	notify_ghosts("[src] ([mutation_type] [caste_type]) has ghosted and their body is up for grabs!", source = src)
+	notify_ghosts("[src] ([get_strain_name()] [caste_type]) has ghosted and their body is up for grabs!", source = src)
 
 /mob/living/carbon/xenomorph/larva/handle_ghost_message()
 	if(locate(/obj/effect/alien/resin/special/pylon/core) in range(2, get_turf(src)))

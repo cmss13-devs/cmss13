@@ -5,8 +5,6 @@
 #define UPLOAD_LIMIT 10485760 //Restricts client uploads to the server to 10MB //Boosted this thing. What's the worst that can happen?
 #define MIN_CLIENT_VERSION 0 //Just an ambiguously low version for now, I don't want to suddenly stop people playing.
 									//I would just like the code ready should it ever need to be used.
-#define GOOD_BYOND_MAJOR 513
-#define GOOD_BYOND_MINOR 1500
 
 GLOBAL_LIST_INIT(blacklisted_builds, list(
 	"1407" = "bug preventing client display overrides from working leads to clients being able to see things/mobs they shouldn't be able to see",
@@ -55,6 +53,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_admin_sound_types,
 	/client/proc/receive_random_tip,
 	/client/proc/set_eye_blur_type,
+	/client/proc/set_flash_type,
+	/client/proc/set_crit_type,
 ))
 
 /client/proc/reduce_minute_count()
@@ -362,14 +362,34 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		INVOKE_ASYNC(src, /client/proc/set_macros)
 
 	// Version check below if we ever need to start checking against BYOND versions again.
+	var/breaking_version = CONFIG_GET(number/client_error_version)
+	var/breaking_build = CONFIG_GET(number/client_error_build)
+	var/warn_version = CONFIG_GET(number/client_warn_version)
+	var/warn_build = CONFIG_GET(number/client_warn_build)
 
-	/*if((byond_version < world.byond_version) || ((byond_version == world.byond_version) && (byond_build < world.byond_build)))
-		src << "<span class='warning'>Your version of Byond (v[byond_version].[byond_build]) differs from the server (v[world.byond_version].[world.byond_build]). You may experience graphical glitches, crashes, or other errors. You will be disconnected until your version matches or exceeds the server version.<br> \
-		Direct Download (Windows Installer): http://www.byond.com/download/build/[world.byond_version]/[world.byond_version].[world.byond_build]_byond.exe <br> \
-		Other versions (search for [world.byond_build] or higher): http://www.byond.com/download/build/[world.byond_version]</span>"
+	if (byond_version < breaking_version || (byond_version == breaking_version && byond_build < breaking_build)) //Out of date client.
+		to_chat_immediate(src, SPAN_DANGER("<b>Your version of BYOND is too old:</b>"))
+		to_chat_immediate(src, CONFIG_GET(string/client_error_message))
+		to_chat_immediate(src, "Your version: [byond_version].[byond_build]")
+		to_chat_immediate(src, "Required version: [breaking_version].[breaking_build] or later")
+		to_chat_immediate(src, "Visit <a href=\"https://www.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
 		qdel(src)
-		return*/
-	//hardcode for now
+		return
+
+	if (byond_version < warn_version || (byond_version == warn_version && byond_build < warn_build)) //We have words for this client.
+		if(CONFIG_GET(flag/client_warn_popup))
+			var/msg = "<b>Your version of BYOND may be getting out of date:</b><br>"
+			msg += CONFIG_GET(string/client_warn_message) + "<br><br>"
+			msg += "Your version: [byond_version].[byond_build]<br>"
+			msg += "Required version to remove this message: [warn_version].[warn_build] or later<br>"
+			msg += "Visit <a href=\"https://www.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.<br>"
+			src << browse(msg, "window=warning_popup")
+		else
+			to_chat(src, SPAN_DANGER("<b>Your version of BYOND may be getting out of date:</b>"))
+			to_chat(src, CONFIG_GET(string/client_warn_message))
+			to_chat(src, "Your version: [byond_version].[byond_build]")
+			to_chat(src, "Required version to remove this message: [warn_version].[warn_build] or later")
+			to_chat(src, "Visit <a href=\"https://www.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
 
 	if (num2text(byond_build) in GLOB.blacklisted_builds)
 		log_access("Failed login: [key] - blacklisted byond build ([byond_version].[byond_build])")
@@ -379,10 +399,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		to_chat_immediate(src, SPAN_NOTICE(FONT_SIZE_LARGE("You will now be automatically disconnected. Have a CM day.")))
 		qdel(src)
 		return
-
-	//do this check after the blacklist check to avoid confusion
-	if((byond_version < GOOD_BYOND_MAJOR) || ((byond_version == GOOD_BYOND_MAJOR) && (byond_build < GOOD_BYOND_MINOR)))
-		to_chat(src, FONT_SIZE_HUGE(SPAN_BOLDNOTICE("YOUR BYOND VERSION IS NOT WELL SUITED FOR THIS SERVER. Download latest BETA build or you may suffer random crashes or disconnects.")))
 
 	// Initialize tgui panel
 	stat_panel.initialize(
@@ -444,7 +460,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	view = GLOB.world_view_size
 
-	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CLIENT_LOGIN, src)
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CLIENT_LOGGED_IN, src)
 
 	//////////////
 	//DISCONNECT//

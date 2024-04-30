@@ -258,7 +258,7 @@ const SoundList = (props) => {
 
   return (
     <Flex direction="column">
-      <Flex.Item grow={1}>
+      <Flex.Item>
         <Section title="VOX Type Select" fill>
           <ComboBox
             buttons={Object.keys(glob_vox_types)}
@@ -269,7 +269,7 @@ const SoundList = (props) => {
         </Section>
       </Flex.Item>
       {!!voxType && (
-        <Flex.Item mt={1}>
+        <Flex.Item grow={1} mt={1}>
           <Section title="Sound Files">
             <Input
               fluid

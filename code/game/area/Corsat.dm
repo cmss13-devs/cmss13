@@ -7,7 +7,7 @@
 	can_build_special = TRUE
 
 /area/corsat/landing/console
-	name = "\improper LZ1 'Gamma'"
+	name = "\improper LZ1 'NON FUNCTIONAL'"//Temp
 	icon_state = "corsat_telecomms"
 	requires_power = 0
 

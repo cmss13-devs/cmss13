@@ -250,13 +250,17 @@
 	playsound(target_turf, soundeffect, vol = 70, vary = TRUE, sound_range = 50, falloff = 8)
 
 /datum/cas_fire_envelope/proc/chat_warning(atom/target_turf, range = 10, warning_number = 1)
+	var/ds_identifier = "LARGE BIRD"
+	var/fm_identifier = "SPIT FIRE"
+	var/relative_dir
 	for(var/mob/mob in range(15, target_turf))
-		var/ds_identifier = "LARGE BIRD"
-		var/fm_identifier = "SPIT FIRE"
 		if (mob.mob_flags & KNOWS_TECHNOLOGY)
 			ds_identifier = "DROPSHIP"
-			fm_identifier = "FIRE"¨
-
+			fm_identifier = "FIRE"
+		if(get_turf(mob) == target_turf)
+			relative_dir = 0
+		else
+			relative_dir = Get_Compass_Dir(mob, target_turf)
 		switch(warning_number)
 			if(1)
 				mob.show_message( \

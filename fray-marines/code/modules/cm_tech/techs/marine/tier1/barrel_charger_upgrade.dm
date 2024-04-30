@@ -1,6 +1,7 @@
 /datum/tech/droppod/item/barrel
 	name = "Upgraded barrel charger modification"
 	desc = "Gives marines powerful modification UBC for your weapon"
+	icon = 'fray-marines/icons/effects/techtree/tech.dmi'
 	icon_state = "adv_bc"
 	droppod_name = "UBC Modification"
 

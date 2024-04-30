@@ -6,7 +6,7 @@
 	flags = TREE_FLAG_XENO
 
 	required_points = 10
-	tier = /datum/tier/three
+	tier = /datum/tier/three/additional
 
 	/// Speed multiplier off weeds for xenomorphs
 	var/offweed_speed_mult = 0.95

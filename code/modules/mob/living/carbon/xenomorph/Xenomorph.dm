@@ -849,6 +849,7 @@
 
 /mob/living/carbon/xenomorph/proc/recalculate_health()
 	var/new_max_health = nocrit ? health_modifier + maxHealth : health_modifier + caste.max_health
+	new_max_health = round(new_max_health * hive.healthstack)
 	if (new_max_health == maxHealth)
 		return
 	var/currentHealthRatio = 1

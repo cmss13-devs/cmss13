@@ -6,7 +6,7 @@
 	flags = TREE_FLAG_XENO
 
 	required_points = 6
-	tier = /datum/tier/three
+	tier = /datum/tier/three/additional
 
 	var/acid_damage_mult = 3
 

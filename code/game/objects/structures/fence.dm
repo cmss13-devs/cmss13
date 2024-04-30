@@ -242,7 +242,7 @@ GLOBAL_LIST_INIT(all_fences, list())
 /obj/structure/fence/electrified
 	name = "electrified fence "
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
-	icon_state = "highvoltagegrille"
+	icon_state = "highvoltagegrille_off"
 	basestate = "highvoltagegrille"
 	var/electrified = FALSE
 	var/fswitch
@@ -256,13 +256,17 @@ GLOBAL_LIST_INIT(all_fences, list())
 	if(cut)
 		icon_state = "[basestate]_broken"
 	else
-		icon_state = "[basestate]"
+		if(electrified)
+			icon_state = "[basestate]"
+		else
+			icon_state = "[basestate]_off"
 
 /obj/structure/fence/electrified/proc/toggle_power()
     if(electrified)
         electrified = FALSE
     else
         electrified = TRUE
+    src.update_icon()
 
 /obj/structure/fence/electrified/Initialize()
 	..()

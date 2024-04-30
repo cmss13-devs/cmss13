@@ -13,7 +13,7 @@
 	create_reagents(1000)
 	if(!real_name || !name)
 		change_real_name(src, "unknown")
-
+	AddElement(/datum/element/strippable, GLOB.strippable_human_items, TYPE_PROC_REF(/mob/living/carbon/human, should_strip))
 	. = ..()
 
 	prev_gender = gender // Debug for plural genders
@@ -272,44 +272,28 @@
 
 
 
-/mob/living/carbon/human/show_inv(mob/living/user)
-	var/obj/item/clothing/under/suit = null
-	if(istype(w_uniform, /obj/item/clothing/under))
-		suit = w_uniform
+/**
+ * Handles any storage containers that the human is looking inside when auto-observed.
+ */
+/mob/living/carbon/human/auto_observed(mob/dead/observer/observer)
+	. = ..()
 
-	user.set_interaction(src)
-	var/dat = {"
-	<B><HR><FONT size=3>[name]</FONT></B>
-	<BR><HR>
-	<BR><B>(Exo)Suit:</B> <A href='?src=\ref[src];item=[WEAR_JACKET]'>[(wear_suit ? wear_suit : "Nothing")]</A>
-	<BR><B>Suit Storage:</B> <A href='?src=\ref[src];item=[WEAR_J_STORE]'>[(s_store ? s_store : "Nothing")]</A> [((istype(wear_mask, /obj/item/clothing/mask) && istype(s_store, /obj/item/tank) && !( internal )) ? " <A href='?src=\ref[src];internal=1'>Set Internal</A>" : "")]
-	<BR><B>Back:</B> <A href='?src=\ref[src];item=[WEAR_BACK]'>[(back ? back : "Nothing")]</A> [((istype(wear_mask, /obj/item/clothing/mask) && istype(back, /obj/item/tank) && !( internal )) ? " <A href='?src=\ref[src];internal=1'>Set Internal</A>" : "")]
-	<BR><B>Head(Mask):</B> <A href='?src=\ref[src];item=[WEAR_FACE]'>[(wear_mask ? wear_mask : "Nothing")]</A>
-	<BR><B>Left Hand:</B> <A href='?src=\ref[src];item=[WEAR_L_HAND]'>[(l_hand ? l_hand  : "Nothing")]</A>
-	<BR><B>Right Hand:</B> <A href='?src=\ref[src];item=[WEAR_R_HAND]'>[(r_hand ? r_hand : "Nothing")]</A>
-	<BR><B>Gloves:</B> <A href='?src=\ref[src];item=[WEAR_HANDS]'>[(gloves ? gloves : "Nothing")]</A>
-	<BR><B>Eyes:</B> <A href='?src=\ref[src];item=[WEAR_EYES]'>[(glasses ? glasses : "Nothing")]</A>
-	<BR><B>Left Ear:</B> <A href='?src=\ref[src];item=[WEAR_L_EAR]'>[(wear_l_ear ? wear_l_ear : "Nothing")]</A>
-	<BR><B>Right Ear:</B> <A href='?src=\ref[src];item=[WEAR_R_EAR]'>[(wear_r_ear ? wear_r_ear : "Nothing")]</A>
-	<BR><B>Head:</B> <A href='?src=\ref[src];item=[WEAR_HEAD]'>[(head ? head : "Nothing")]</A>
-	<BR><B>Shoes:</B> <A href='?src=\ref[src];item=[WEAR_FEET]'>[(shoes ? shoes : "Nothing")]</A>
-	<BR><B>Belt:</B> <A href='?src=\ref[src];item=[WEAR_WAIST]'>[(belt ? belt : "Nothing")]</A> [((istype(wear_mask, /obj/item/clothing/mask) && istype(belt, /obj/item/tank) && !internal) ? " <A href='?src=\ref[src];internal=1'>Set Internal</A>" : "")]
-	<BR><B>Uniform:</B> <A href='?src=\ref[src];item=[WEAR_BODY]'>[(w_uniform ? w_uniform : "Nothing")]</A> [(suit) ? ((suit.has_sensor == UNIFORM_HAS_SENSORS) ? " <A href='?src=\ref[src];sensor=1'>Sensors</A>" : "") : null]
-	<BR><B>ID:</B> <A href='?src=\ref[src];item=[WEAR_ID]'>[(wear_id ? wear_id : "Nothing")]</A>
-	<BR><B>Left Pocket:</B> <A href='?src=\ref[src];item=[WEAR_L_STORE]'>[(l_store ? l_store : "Nothing")]</A>
-	<BR><B>Right Pocket:</B> <A href='?src=\ref[src];item=[WEAR_R_STORE]'>[(r_store ? r_store : "Nothing")]</A>
-	<BR>
-	[handcuffed ? "<BR><A href='?src=\ref[src];item=[WEAR_HANDCUFFS]'>Handcuffed</A>" : ""]
-	[legcuffed ? "<BR><A href='?src=\ref[src];item=[WEAR_LEGCUFFS]'>Legcuffed</A>" : ""]
-	[suit && LAZYLEN(suit.accessories) ? "<BR><A href='?src=\ref[src];tie=1'>Remove Accessory</A>" : ""]
-	[internal ? "<BR><A href='?src=\ref[src];internal=1'>Remove Internal</A>" : ""]
-	[istype(wear_id, /obj/item/card/id/dogtag) ? "<BR><A href='?src=\ref[src];item=id'>Retrieve Info Tag</A>" : ""]
-	<BR><A href='?src=\ref[src];splints=1'>Remove Splints</A>
-	<BR>
-	<BR><A href='?src=\ref[user];refresh=1'>Refresh</A>
-	<BR><A href='?src=\ref[user];mach_close=mob[name]'>Close</A>
-	<BR>"}
-	show_browser(user, dat, name, "mob[name]")
+	// If `src` doesn't have an inventory open.
+	if(!s_active)
+		return
+
+	// Add the storage interface to `observer`'s screen.
+	observer.client.add_to_screen(s_active.closer)
+	observer.client.add_to_screen(s_active.contents)
+
+	// If the storage has a set number of item slots.
+	if(s_active.storage_slots)
+		observer.client.add_to_screen(s_active.boxes)
+	// If the storage instead has a maximum combined item 'weight'.
+	else
+		observer.client.add_to_screen(s_active.storage_start)
+		observer.client.add_to_screen(s_active.storage_continue)
+		observer.client.add_to_screen(s_active.storage_end)
 
 // called when something steps onto a human
 // this handles mulebots and vehicles
@@ -403,9 +387,6 @@
 
 
 /mob/living/carbon/human/Topic(href, href_list)
-	if(href_list["refresh"])
-		if(interactee&&(in_range(src, usr)))
-			show_inv(interactee)
 
 	if(href_list["mach_close"])
 		var/t1 = text("window=[]", href_list["mach_close"])
@@ -449,76 +430,6 @@
 				else
 					what = usr.get_active_hand()
 					usr.stripPanelEquip(what,src,slot)
-
-	if(href_list["internal"])
-
-		if(!usr.action_busy && !usr.is_mob_incapacitated() && Adjacent(usr))
-			attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their internals toggled by [key_name(usr)]</font>")
-			usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to toggle [key_name(src)]'s' internals</font>")
-			if(internal)
-				usr.visible_message(SPAN_DANGER("<B>[usr] is trying to disable [src]'s internals</B>"), null, null, 3)
-			else
-				usr.visible_message(SPAN_DANGER("<B>[usr] is trying to enable [src]'s internals.</B>"), null, null, 3)
-
-			if(do_after(usr, POCKET_STRIP_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
-				if(internal)
-					internal.add_fingerprint(usr)
-					internal = null
-					visible_message("[src] is no longer running on internals.", null, null, 1)
-				else
-					if(istype(wear_mask, /obj/item/clothing/mask))
-						if(istype(back, /obj/item/tank))
-							internal = back
-						else if(istype(s_store, /obj/item/tank))
-							internal = s_store
-						else if(istype(belt, /obj/item/tank))
-							internal = belt
-						if(internal)
-							visible_message(SPAN_NOTICE("[src] is now running on internals."), null, null, 1)
-							internal.add_fingerprint(usr)
-
-				// Update strip window
-				if(usr.interactee == src && Adjacent(usr))
-					show_inv(usr)
-
-
-	if(href_list["splints"])
-		if(!usr.action_busy && !usr.is_mob_incapacitated() && Adjacent(usr))
-			if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(usr.faction_group))
-				to_chat(usr, SPAN_WARNING("You can't strip a crit or dead member of another faction!"))
-				return
-			attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their splints removed by [key_name(usr)]</font>")
-			usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to remove [key_name(src)]'s' splints </font>")
-			remove_splints(usr)
-
-	if(href_list["tie"])
-		if(!usr.action_busy && !usr.is_mob_incapacitated() && Adjacent(usr))
-			if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (stat == DEAD || health < HEALTH_THRESHOLD_CRIT) && !get_target_lock(usr.faction_group))
-				to_chat(usr, SPAN_WARNING("You can't strip a crit or dead member of another faction!"))
-				return
-			if(w_uniform && istype(w_uniform, /obj/item/clothing))
-				var/obj/item/clothing/under/U = w_uniform
-				if(!LAZYLEN(U.accessories))
-					return FALSE
-				var/obj/item/clothing/accessory/A = LAZYACCESS(U.accessories, 1)
-				if(LAZYLEN(U.accessories) > 1)
-					A = tgui_input_list(usr, "Select an accessory to remove from [U]", "Remove accessory", U.accessories)
-				if(!istype(A))
-					return
-				attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their accessory ([A]) removed by [key_name(usr)]</font>")
-				usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to remove [key_name(src)]'s' accessory ([A])</font>")
-				if(istype(A, /obj/item/clothing/accessory/holobadge) || istype(A, /obj/item/clothing/accessory/medal))
-					visible_message(SPAN_DANGER("<B>[usr] tears off \the [A] from [src]'s [U]!</B>"), null, null, 5)
-					if(U == w_uniform)
-						U.remove_accessory(usr, A)
-				else
-					if(HAS_TRAIT(src, TRAIT_UNSTRIPPABLE) && !is_mob_incapacitated()) //Can't strip the unstrippable!
-						to_chat(usr, SPAN_DANGER("[src] has an unbreakable grip on their equipment!"))
-						return
-					visible_message(SPAN_DANGER("<B>[usr] is trying to take off \a [A] from [src]'s [U]!</B>"), null, null, 5)
-					if(do_after(usr, get_strip_delay(usr, src), INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
-						if(U == w_uniform)
-							U.remove_accessory(usr, A)
 
 	if(href_list["sensor"])
 		if(!usr.action_busy && !usr.is_mob_incapacitated() && Adjacent(usr))
@@ -811,25 +722,7 @@
 										R.fields[text("com_[counter]")] = text("Made by [U.get_authentification_name()] ([U.get_assignment()]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [GLOB.game_year]<BR>[t1]")
 
 	if(href_list["medholocard"])
-		if(!skillcheck(usr, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-			to_chat(usr, SPAN_WARNING("You're not trained to use this."))
-			return
-		if(!has_species(src, "Human"))
-			to_chat(usr, SPAN_WARNING("Triage holocards only works on humans."))
-			return
-		var/newcolor = tgui_input_list(usr, "Choose a triage holo card to add to the patient:", "Triage holo card", list("black", "red", "orange", "none"))
-		if(!newcolor) return
-		if(get_dist(usr, src) > 7)
-			to_chat(usr, SPAN_WARNING("[src] is too far away."))
-			return
-		if(newcolor == "none")
-			if(!holo_card_color) return
-			holo_card_color = null
-			to_chat(usr, SPAN_NOTICE("You remove the holo card on [src]."))
-		else if(newcolor != holo_card_color)
-			holo_card_color = newcolor
-			to_chat(usr, SPAN_NOTICE("You add a [newcolor] holo card on [src]."))
-		update_targeted()
+		change_holo_card(usr)
 
 	if(href_list["lookitem"])
 		var/obj/item/I = locate(href_list["lookitem"])
@@ -880,6 +773,39 @@
 					break
 	..()
 	return
+
+/mob/living/carbon/human/proc/change_holo_card(mob/user)
+	if(isobserver(user))
+		return
+	if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+		// Removing your own holocard when you are not trained
+		if(user == src && holo_card_color)
+			if(tgui_alert(user, "Are you sure you want to reset your own holocard?", "Resetting Holocard", list("Yes", "No")) != "Yes")
+				return
+			holo_card_color = null
+			to_chat(user, SPAN_NOTICE("You reset your holocard."))
+			hud_set_holocard()
+			return
+		to_chat(user, SPAN_WARNING("You're not trained to use this."))
+		return
+	if(!has_species(src, "Human"))
+		to_chat(user, SPAN_WARNING("Triage holocards only works on humans."))
+		return
+	var/newcolor = tgui_input_list(user, "Choose a triage holo card to add to the patient:", "Triage holo card", list("black", "red", "orange", "purple", "none"))
+	if(!newcolor)
+		return
+	if(get_dist(user, src) > 7)
+		to_chat(user, SPAN_WARNING("[src] is too far away."))
+		return
+	if(newcolor == "none")
+		if(!holo_card_color)
+			return
+		holo_card_color = null
+		to_chat(user, SPAN_NOTICE("You remove the holo card on [src]."))
+	else if(newcolor != holo_card_color)
+		holo_card_color = newcolor
+		to_chat(user, SPAN_NOTICE("You add a [newcolor] holo card on [src]."))
+	hud_set_holocard()
 
 /mob/living/carbon/human/tgui_interact(mob/user, datum/tgui/ui) // I'M SORRY, SO FUCKING SORRY
 	. = ..()

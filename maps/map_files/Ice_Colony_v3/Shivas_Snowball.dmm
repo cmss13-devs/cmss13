@@ -7035,6 +7035,17 @@
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/aerodrome)
+"bws" = (
+/obj/structure/surface/rack,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/turf/open/floor/shiva{
+	dir = 10;
+	icon_state = "yellow"
+	},
+/area/shiva/interior/garage)
 "bwJ" = (
 /turf/open/floor/shiva{
 	dir = 4;
@@ -10088,6 +10099,12 @@
 	icon_state = "yellow"
 	},
 /area/shiva/interior/colony/medseceng)
+"ffg" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "panic_room"
+	},
+/turf/open/auto_turf/snow/layer3,
+/area/shiva/exterior/junkyard)
 "ffj" = (
 /turf/closed/shuttle/elevator{
 	dir = 10
@@ -10099,6 +10116,14 @@
 	icon_state = "yellow"
 	},
 /area/shiva/interior/lz2_habs)
+"ffo" = (
+/obj/structure/surface/rack,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/turf/open/floor/shiva{
+	icon_state = "yellow"
+	},
+/area/shiva/interior/garage)
 "ffw" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/shiva{
@@ -11995,10 +12020,6 @@
 	dir = 8;
 	icon_state = "wred"
 	},
-/area/shiva/interior/colony/medseceng)
-"hgx" = (
-/obj/structure/machinery/power/geothermal,
-/turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
 "hgI" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
@@ -15843,13 +15864,6 @@
 	icon_state = "yellowfull"
 	},
 /area/shiva/interior/colony/research_hab)
-"kTN" = (
-/obj/structure/machinery/power/geothermal,
-/turf/open/floor/shiva{
-	dir = 8;
-	icon_state = "yellowfull"
-	},
-/area/shiva/interior/lz2_habs)
 "kTP" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/auto_turf/snow/layer1,
@@ -18159,6 +18173,10 @@
 	},
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/interior/colony/medseceng)
+"npM" = (
+/obj/structure/machinery/power/reactor/colony,
+/turf/open/floor/plating,
+/area/shiva/interior/colony/medseceng)
 "npY" = (
 /obj/structure/inflatable,
 /turf/open/auto_turf/snow/layer3,
@@ -18414,6 +18432,13 @@
 /obj/structure/machinery/space_heater,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/warehouse/caves)
+"nED" = (
+/obj/structure/machinery/power/reactor/colony,
+/turf/open/floor/shiva{
+	dir = 8;
+	icon_state = "yellowfull"
+	},
+/area/shiva/interior/lz2_habs)
 "nEH" = (
 /obj/effect/landmark/monkey_spawn,
 /obj/effect/decal/warning_stripes{
@@ -18512,6 +18537,12 @@
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
+"nJu" = (
+/obj/structure/machinery/fuelcell_recycler/full,
+/turf/open/floor/shiva{
+	icon_state = "yellow"
+	},
+/area/shiva/interior/garage)
 "nKc" = (
 /obj/structure/machinery/door/airlock/almayer/medical/colony{
 	dir = 1;
@@ -19299,6 +19330,13 @@
 	},
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_lz2)
+"oDJ" = (
+/obj/structure/machinery/fuelcell_recycler/full,
+/turf/open/floor/shiva{
+	dir = 6;
+	icon_state = "yellow"
+	},
+/area/shiva/interior/garage)
 "oDM" = (
 /turf/open/floor/shiva{
 	dir = 10;
@@ -22109,12 +22147,6 @@
 /obj/structure/largecrate/random,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
-"rHQ" = (
-/obj/structure/machinery/power/geothermal,
-/turf/open/floor/shiva{
-	dir = 1
-	},
-/area/shiva/interior/garage)
 "rIj" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/shiva{
@@ -27253,6 +27285,12 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/shiva/interior/colony/botany)
+"xdk" = (
+/obj/structure/machinery/power/reactor/colony,
+/turf/open/floor/shiva{
+	dir = 1
+	},
+/area/shiva/interior/garage)
 "xdT" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
@@ -37065,7 +37103,7 @@ puZ
 puZ
 puZ
 anc
-kTN
+nED
 mCn
 uRi
 xQJ
@@ -37389,7 +37427,7 @@ puZ
 puZ
 puZ
 anc
-kTN
+nED
 mCn
 cce
 xQJ
@@ -37713,7 +37751,7 @@ puZ
 puZ
 puZ
 anc
-kTN
+nED
 mCn
 cce
 xQJ
@@ -43636,7 +43674,7 @@ tHd
 tHd
 jMf
 tHd
-jMf
+ffg
 tHd
 jMf
 ofw
@@ -53180,7 +53218,7 @@ ver
 ver
 ver
 fEO
-oDM
+bws
 ktd
 bFg
 bIV
@@ -53342,7 +53380,7 @@ ver
 ver
 ver
 ver
-pSD
+ffo
 ktd
 cZk
 bIV
@@ -54152,7 +54190,7 @@ aAh
 ver
 ver
 ver
-pSD
+nJu
 ktd
 cZk
 bFg
@@ -54314,7 +54352,7 @@ ver
 ver
 ver
 pNf
-aCA
+oDJ
 ktd
 gJo
 lTc
@@ -54955,11 +54993,11 @@ oQl
 oQl
 oQl
 ktd
-rHQ
+xdk
 tXd
 aAh
 pSD
-rHQ
+xdk
 ktd
 oQl
 oQl
@@ -55117,11 +55155,11 @@ oQl
 oQl
 oQl
 ktd
-rHQ
+xdk
 ush
 vUL
 aCA
-rHQ
+xdk
 ktd
 oQl
 oQl
@@ -55280,9 +55318,9 @@ oQl
 oQl
 ktd
 ktd
-rHQ
-rHQ
-rHQ
+xdk
+xdk
+xdk
 ktd
 ktd
 oQl
@@ -58299,16 +58337,16 @@ acT
 qDT
 eAZ
 acT
-hgx
+npM
 cso
 agh
-hgx
-hgx
-hgx
-hgx
+npM
+npM
+npM
+npM
 agh
 cso
-hgx
+npM
 acT
 aii
 agh
@@ -58461,7 +58499,7 @@ aDn
 eAZ
 eAZ
 aDn
-hgx
+npM
 cso
 agh
 cso
@@ -58470,7 +58508,7 @@ cso
 cso
 agh
 cso
-hgx
+npM
 acT
 acT
 aii
@@ -58626,10 +58664,10 @@ aek
 eXL
 cso
 agh
-hgx
-hgx
-hgx
-hgx
+npM
+npM
+npM
+npM
 agh
 cso
 qdd

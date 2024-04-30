@@ -59,8 +59,10 @@
 /atom/movable/screen/action_button/attack_ghost(mob/dead/observer/user)
 	return
 
-/atom/movable/screen/action_button/clicked(mob/user)
+/atom/movable/screen/action_button/clicked(mob/user, list/mods)
 	if(!user || !source_action)
+		return TRUE
+	if(source_action.owner != user)
 		return TRUE
 
 	if(source_action.can_use_action())
@@ -97,7 +99,7 @@
 	icon_state = "hide"
 	var/hidden = 0
 
-/atom/movable/screen/action_button/hide_toggle/clicked(mob/user, mods)
+/atom/movable/screen/action_button/hide_toggle/clicked(mob/user, list/mods)
 	user.hud_used.action_buttons_hidden = !user.hud_used.action_buttons_hidden
 	hidden = user.hud_used.action_buttons_hidden
 	if(hidden)
@@ -107,7 +109,7 @@
 		name = "Hide Buttons"
 		icon_state = "hide"
 	user.update_action_buttons()
-	return 1
+	return TRUE
 
 /atom/movable/screen/action_button/ghost/minimap/get_button_screen_loc(button_number)
 	return "SOUTH:6,CENTER+1:24"
@@ -146,7 +148,6 @@
 /atom/movable/screen/zone_sel/update_icon(mob/living/user)
 	overlays.Cut()
 	overlays += image('icons/mob/hud/zone_sel.dmi', "[selecting]")
-	user.zone_selected = selecting
 
 /atom/movable/screen/zone_sel/clicked(mob/user, list/mods)
 	if (..())
@@ -208,57 +209,57 @@
 							selecting = "eyes"
 
 	if(old_selecting != selecting)
+		user.zone_selected = selecting
 		update_icon(user)
 	return 1
 
-/atom/movable/screen/clicked(mob/user)
+/atom/movable/screen/gun
+	/// The proc/verb which should be called on the gun.
+	var/gun_proc_ref
+
+/atom/movable/screen/gun/clicked(mob/user, list/mods)
+	. = ..()
+	if(.)
+		return
+	// If the user has a gun in their active hand, call `gun_proc_ref` on it.
+	var/obj/item/weapon/gun/held_item = user.get_held_item()
+	if(istype(held_item))
+		INVOKE_ASYNC(held_item, gun_proc_ref)
+
+/atom/movable/screen/gun/attachment
+	name = "Activate weapon attachment"
+	icon_state = "gun_attach"
+	gun_proc_ref = TYPE_VERB_REF(/obj/item/weapon/gun, activate_attachment_verb)
+
+/atom/movable/screen/gun/rail_light
+	name = "Toggle rail flashlight"
+	icon_state = "gun_raillight"
+	gun_proc_ref = TYPE_VERB_REF(/obj/item/weapon/gun, activate_rail_attachment_verb)
+
+/atom/movable/screen/gun/eject_magazine
+	name = "Eject magazine"
+	icon_state = "gun_loaded"
+	gun_proc_ref = TYPE_VERB_REF(/obj/item/weapon/gun, empty_mag)
+
+/atom/movable/screen/gun/toggle_firemode
+	name = "Toggle firemode"
+	icon_state = "gun_burst"
+	gun_proc_ref = TYPE_VERB_REF(/obj/item/weapon/gun, use_toggle_burst)
+
+/atom/movable/screen/gun/unique_action
+	name = "Use unique action"
+	icon_state = "gun_unique"
+	gun_proc_ref = TYPE_VERB_REF(/obj/item/weapon/gun, use_unique_action)
+
+
+/atom/movable/screen/clicked(mob/user, list/mods)
 	if(!user)
 		return TRUE
 
 	if(isobserver(user))
 		return TRUE
 
-	switch(name)
-		if("equip")
-			if(ishuman(user))
-				var/mob/living/carbon/human/human = user
-				human.quick_equip()
-			return 1
-
-		if("Reset Machine")
-			user.unset_interaction()
-			return 1
-
-		if("Activate weapon attachment")
-			var/obj/item/weapon/gun/held_item = user.get_held_item()
-			if(istype(held_item))
-				held_item.activate_attachment_verb()
-			return 1
-
-		if("Toggle Rail Flashlight")
-			var/obj/item/weapon/gun/held_item = user.get_held_item()
-			if(istype(held_item))
-				held_item.activate_rail_attachment_verb()
-			return 1
-
-		if("Eject magazine")
-			var/obj/item/weapon/gun/held_item = user.get_held_item()
-			if(istype(held_item))
-				held_item.empty_mag()
-			return 1
-
-		if("Toggle burst fire")
-			var/obj/item/weapon/gun/held_item = user.get_held_item()
-			if(istype(held_item))
-				held_item.use_toggle_burst()
-			return 1
-
-		if("Use unique action")
-			var/obj/item/weapon/gun/held_item = user.get_held_item()
-			if(istype(held_item))
-				held_item.use_unique_action()
-			return 1
-	return 0
+	return FALSE
 
 
 /atom/movable/screen/inventory/clicked(mob/user)
@@ -584,6 +585,19 @@
 			icon_state = "nightvision_off"
 			vision_define = XENO_VISION_LEVEL_NO_NVG
 	to_chat(owner, SPAN_NOTICE("Night vision mode switched to <b>[vision_define]</b>."))
+
+/atom/movable/screen/equip
+	name = "equip"
+	icon_state = "act_equip"
+	layer = ABOVE_HUD_LAYER
+	plane = ABOVE_HUD_PLANE
+
+/atom/movable/screen/equip/clicked(mob/user)
+	. = ..()
+	if(. || !ishuman(user))
+		return TRUE
+	var/mob/living/carbon/human/human_user = user
+	human_user.quick_equip()
 
 /atom/movable/screen/bodytemp
 	name = "body temperature"

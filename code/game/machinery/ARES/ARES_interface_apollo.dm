@@ -18,6 +18,9 @@
 	/// The last person to login.
 	var/last_login
 
+	/// Notification sound
+	var/notify_sounds = TRUE
+
 
 /obj/structure/machinery/computer/working_joe/proc/link_systems(datum/ares_link/new_link = GLOB.ares_link, override)
 	if(link && !override)
@@ -33,6 +36,16 @@
 /obj/structure/machinery/computer/working_joe/Initialize(mapload, ...)
 	link_systems(override = FALSE)
 	. = ..()
+
+/obj/structure/machinery/computer/working_joe/proc/notify()
+	if(notify_sounds)
+		playsound(src, 'sound/machines/pda_ping.ogg', 25, 0)
+
+/obj/structure/machinery/computer/working_joe/proc/send_notifcation()
+	for(var/obj/structure/machinery/computer/working_joe/ticketer as anything in link.ticket_computers)
+		if(ticketer == src)
+			continue
+		ticketer.notify()
 
 /obj/structure/machinery/computer/working_joe/proc/delink()
 	if(link)
@@ -76,8 +89,9 @@
 	data["access_log"] = list()
 	data["access_log"] += datacore.apollo_login_list
 
-	data["apollo_log"] = list()
-	data["apollo_log"] += datacore.apollo_log
+	data["apollo_log"] = datacore.apollo_log
+
+	data["notify_sounds"] = notify_sounds
 
 	var/list/logged_maintenance = list()
 	for(var/datum/ares_ticket/maintenance/maint_ticket as anything in link.tickets_maintenance)
@@ -127,6 +141,8 @@
 			requesting_access += access_ticket.ticket_name
 	data["access_tickets"] = logged_access
 
+	data["security_vents"] = link.get_ares_vents()
+
 	return data
 
 /obj/structure/machinery/computer/working_joe/ui_status(mob/user, datum/ui_state/state)
@@ -142,12 +158,12 @@
 		return
 
 	var/playsound = TRUE
-	var/mob/living/carbon/human/operator = usr
+	var/mob/living/carbon/human/operator = ui.user
 
 	switch (action)
 		if("go_back")
 			if(!last_menu)
-				return to_chat(usr, SPAN_WARNING("Error, no previous page detected."))
+				return to_chat(operator, SPAN_WARNING("Error, no previous page detected."))
 			var/temp_holder = current_menu
 			current_menu = last_menu
 			last_menu = temp_holder
@@ -197,6 +213,12 @@
 		if("page_maintenance")
 			last_menu = current_menu
 			current_menu = "maint_claim"
+		if("page_core_gas")
+			last_menu = current_menu
+			current_menu = "core_security_gas"
+
+		if("toggle_sound")
+			notify_sounds = !notify_sounds
 
 		if("new_report")
 			var/priority_report = FALSE
@@ -223,6 +245,8 @@
 					link.tickets_maintenance += maint_ticket
 					if(priority_report)
 						ares_apollo_talk("Priority Maintenance Report: [maint_type] - ID [maint_ticket.ticket_id]. Seek and resolve.")
+					else
+						send_notifcation()
 					log_game("ARES: Maintenance Ticket '\ref[maint_ticket]' created by [key_name(operator)] as [last_login] with Category '[maint_type]' and Details of '[details]'.")
 					return TRUE
 			return FALSE
@@ -235,14 +259,14 @@
 			var/assigned = ticket.ticket_assignee
 			if(assigned)
 				if(assigned == last_login)
-					var/prompt = tgui_alert(usr, "You already claimed this ticket! Do you wish to drop your claim?", "Unclaim ticket", list("Yes", "No"))
+					var/prompt = tgui_alert(operator, "You already claimed this ticket! Do you wish to drop your claim?", "Unclaim ticket", list("Yes", "No"))
 					if(prompt != "Yes")
 						return FALSE
 					/// set ticket back to pending
 					ticket.ticket_assignee = null
 					ticket.ticket_status = TICKET_PENDING
 					return claim
-				var/choice = tgui_alert(usr, "This ticket has already been claimed by [assigned]! Do you wish to override their claim?", "Claim Override", list("Yes", "No"))
+				var/choice = tgui_alert(operator, "This ticket has already been claimed by [assigned]! Do you wish to override their claim?", "Claim Override", list("Yes", "No"))
 				if(choice != "Yes")
 					claim = FALSE
 			if(claim)
@@ -255,12 +279,14 @@
 			if(!istype(ticket))
 				return FALSE
 			if(ticket.ticket_submitter != last_login)
-				to_chat(usr, SPAN_WARNING("You cannot cancel a ticket that does not belong to you!"))
+				to_chat(operator, SPAN_WARNING("You cannot cancel a ticket that does not belong to you!"))
 				return FALSE
-			to_chat(usr, SPAN_WARNING("[ticket.ticket_type] [ticket.ticket_id] has been cancelled."))
+			to_chat(operator, SPAN_WARNING("[ticket.ticket_type] [ticket.ticket_id] has been cancelled."))
 			ticket.ticket_status = TICKET_CANCELLED
 			if(ticket.ticket_priority)
 				ares_apollo_talk("Priority [ticket.ticket_type] [ticket.ticket_id] has been cancelled.")
+			else
+				send_notifcation()
 			return TRUE
 
 		if("mark_ticket")
@@ -268,9 +294,9 @@
 			if(!istype(ticket))
 				return FALSE
 			if(ticket.ticket_assignee != last_login && ticket.ticket_assignee) //must be claimed by you or unclaimed.)
-				to_chat(usr, SPAN_WARNING("You cannot update a ticket that is not assigned to you!"))
+				to_chat(operator, SPAN_WARNING("You cannot update a ticket that is not assigned to you!"))
 				return FALSE
-			var/choice = tgui_alert(usr, "What do you wish to mark the ticket as?", "Mark", list(TICKET_COMPLETED, TICKET_REJECTED), 20 SECONDS)
+			var/choice = tgui_alert(operator, "What do you wish to mark the ticket as?", "Mark", list(TICKET_COMPLETED, TICKET_REJECTED), 20 SECONDS)
 			switch(choice)
 				if(TICKET_COMPLETED)
 					ticket.ticket_status = TICKET_COMPLETED
@@ -280,7 +306,9 @@
 					return FALSE
 			if(ticket.ticket_priority)
 				ares_apollo_talk("Priority [ticket.ticket_type] [ticket.ticket_id] has been [choice] by [last_login].")
-			to_chat(usr, SPAN_NOTICE("[ticket.ticket_type] [ticket.ticket_id] marked as [choice]."))
+			else
+				send_notifcation()
+			to_chat(operator, SPAN_NOTICE("[ticket.ticket_type] [ticket.ticket_id] marked as [choice]."))
 			return TRUE
 
 		if("new_access")
@@ -328,8 +356,6 @@
 				break
 
 			for(var/obj/item/card/id/identification in link.active_ids)
-				if(!istype(identification))
-					continue
 				if(identification.registered_gid != access_ticket.user_id_num)
 					continue
 
@@ -353,11 +379,9 @@
 		if("auth_access")
 			playsound = FALSE
 			var/datum/ares_ticket/access/access_ticket = locate(params["ticket"])
-			if(!access_ticket)
+			if(!istype(access_ticket))
 				return FALSE
 			for(var/obj/item/card/id/identification in link.waiting_ids)
-				if(!istype(identification))
-					continue
 				if(identification.registered_gid != access_ticket.user_id_num)
 					continue
 				identification.handle_ares_access(last_login, operator)
@@ -366,8 +390,6 @@
 				ares_apollo_talk("Access Ticket [access_ticket.ticket_id]: [access_ticket.ticket_submitter] was granted access by [last_login].")
 				return TRUE
 			for(var/obj/item/card/id/identification in link.active_ids)
-				if(!istype(identification))
-					continue
 				if(identification.registered_gid != access_ticket.user_id_num)
 					continue
 				identification.handle_ares_access(last_login, operator)
@@ -382,22 +404,48 @@
 			if(!istype(access_ticket))
 				return FALSE
 			if(access_ticket.ticket_assignee != last_login && access_ticket.ticket_assignee) //must be claimed by you or unclaimed.)
-				to_chat(usr, SPAN_WARNING("You cannot update a ticket that is not assigned to you!"))
+				to_chat(operator, SPAN_WARNING("You cannot update a ticket that is not assigned to you!"))
 				return FALSE
 			access_ticket.ticket_status = TICKET_REJECTED
-			to_chat(usr, SPAN_NOTICE("[access_ticket.ticket_type] [access_ticket.ticket_id] marked as rejected."))
+			to_chat(operator, SPAN_NOTICE("[access_ticket.ticket_type] [access_ticket.ticket_id] marked as rejected."))
 			ares_apollo_talk("Access Ticket [access_ticket.ticket_id]: [access_ticket.ticket_submitter] was rejected access by [last_login].")
+			for(var/obj/item/card/id/identification in link.waiting_ids)
+				if(identification.registered_gid != access_ticket.user_id_num)
+					continue
+				var/mob/living/carbon/human/id_owner = identification.registered_ref?.resolve()
+				if(id_owner)
+					to_chat(id_owner, SPAN_WARNING("AI visitation access rejected."))
+					playsound_client(id_owner?.client, 'sound/machines/pda_ping.ogg', src, 25, 0)
 			return TRUE
+
+		if("trigger_vent")
+			playsound = FALSE
+			var/obj/structure/pipes/vents/pump/no_boom/gas/sec_vent = locate(params["vent"])
+			if(!istype(sec_vent) || sec_vent.welded)
+				to_chat(operator, SPAN_WARNING("ERROR: Gas release failure."))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
+			if(!COOLDOWN_FINISHED(sec_vent, vent_trigger_cooldown))
+				to_chat(operator, SPAN_WARNING("ERROR: Insufficient gas reserve for this vent."))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
+			to_chat(operator, SPAN_WARNING("Initiating gas release from [sec_vent.vent_tag]."))
+			playsound(src, 'sound/machines/chime.ogg', 15, 1)
+			COOLDOWN_START(sec_vent, vent_trigger_cooldown, COOLDOWN_ARES_VENT)
+			ares_apollo_talk("Nerve Gas release imminent from [sec_vent.vent_tag].")
+			log_ares_security("Nerve Gas Release", "[last_login] released Nerve Gas from Vent '[sec_vent.vent_tag]'.")
+			sec_vent.create_gas(VENT_GAS_CN20_XENO, 6, 5 SECONDS)
+			log_admin("[key_name(operator)] released nerve gas from Vent '[sec_vent.vent_tag]' via ARES.")
 
 	if(playsound)
 		playsound(src, "keyboard_alt", 15, 1)
 
-/obj/item/card/id/proc/handle_ares_access(logged_in, mob/user)
+/obj/item/card/id/proc/handle_ares_access(logged_in = MAIN_AI_SYSTEM, mob/user)
 	var/operator = key_name(user)
 	var/datum/ares_link/link = GLOB.ares_link
 	if(logged_in == MAIN_AI_SYSTEM)
 		if(!user)
-			operator = "[MAIN_AI_SYSTEM] (Sensor Trip)"
+			operator = "[MAIN_AI_SYSTEM] (Automated)"
 		else
 			operator = "[user.ckey]/([MAIN_AI_SYSTEM])"
 	if(ACCESS_MARINE_AI_TEMP in access)
@@ -405,10 +453,18 @@
 		link.active_ids -= src
 		modification_log += "Temporary AI access revoked by [operator]"
 		to_chat(user, SPAN_NOTICE("Access revoked from [registered_name]."))
+		var/mob/living/carbon/human/id_owner = registered_ref?.resolve()
+		if(id_owner)
+			to_chat(id_owner, SPAN_WARNING("AI visitation access revoked."))
+			playsound_client(id_owner?.client, 'sound/machines/pda_ping.ogg', src, 25, 0)
 	else
 		access += ACCESS_MARINE_AI_TEMP
 		modification_log += "Temporary AI access granted by [operator]"
 		to_chat(user, SPAN_NOTICE("Access granted to [registered_name]."))
 		link.waiting_ids -= src
 		link.active_ids += src
+		var/mob/living/carbon/human/id_owner = registered_ref?.resolve()
+		if(id_owner)
+			to_chat(id_owner, SPAN_HELPFUL("AI visitation access granted."))
+			playsound_client(id_owner?.client, 'sound/machines/pda_ping.ogg', src, 25, 0)
 	return TRUE

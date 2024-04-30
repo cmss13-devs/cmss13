@@ -66,7 +66,15 @@ export const PlayerPanel = (props) => {
   const [pageIndex, setPageIndex] = useLocalState('pageIndex', 0);
   const [canModifyCkey, setModifyCkey] = useLocalState('canModifyCkey', false);
   const PageComponent = PAGES[pageIndex].component();
-  const { mob_name, mob_type, client_key, client_ckey, client_rank } = data;
+  const {
+    mob_name,
+    mob_type,
+    client_key,
+    client_ckey,
+    client_rank,
+    client_age,
+    first_join,
+  } = data;
 
   return (
     <Window title={`${mob_name} Player Panel`} width={600} height={500}>
@@ -176,6 +184,28 @@ export const PlayerPanel = (props) => {
               </Stack.Item>
             </Stack>
           )}
+          {client_age && (
+            <Stack mt={1}>
+              <Stack.Item width="80px" color="label">
+                Account age:
+              </Stack.Item>
+              <Stack.Item grow={1} align="right">
+                {client_age}
+              </Stack.Item>
+            </Stack>
+          )}
+          {first_join && (
+            <Stack mt={1}>
+              <Stack.Item width="80px" color="label">
+                <Tooltip content="This is estimated, and depending on database integrity, may not be accurate to a user's first join date.">
+                  <Box position="relative">First join:</Box>
+                </Tooltip>
+              </Stack.Item>
+              <Stack.Item grow={1} align="right">
+                {first_join}
+              </Stack.Item>
+            </Stack>
+          )}
         </Section>
         <Stack grow>
           <Stack.Item>
@@ -236,7 +266,6 @@ const GeneralActions = (props) => {
           />
           <Button.Confirm
             width="100%"
-            height="100%" // weird ass bug here, so height set to 100%
             icon="skull-crossbones"
             color="bad"
             content="Gib"
@@ -264,7 +293,6 @@ const GeneralActions = (props) => {
           />
           <Button
             width="100%"
-            height="100%"
             icon="share"
             content="Jump To"
             disabled={!hasPermission(data, 'jump_to')}
@@ -295,7 +323,6 @@ const GeneralActions = (props) => {
           />
           <Button
             width="100%"
-            height="100%"
             content="Send Back to Lobby"
             icon="history"
             disabled={!hasPermission(data, 'send_to_lobby')}
@@ -348,7 +375,7 @@ const PunishmentActions = (props) => {
             width="100%"
             icon="gavel"
             color="red"
-            content="Ban"
+            content="Timed Ban"
             disabled={!hasPermission(data, 'mob_ban')}
             onClick={() => act('mob_ban')}
           />
@@ -362,12 +389,32 @@ const PunishmentActions = (props) => {
           />
           <Button
             width="100%"
-            height="100%"
             icon="ban"
             color="red"
             content="Job-ban"
             disabled={!hasPermission(data, 'mob_jobban')}
             onClick={() => act('mob_jobban')}
+          />
+        </Stack>
+      </Section>
+
+      <Section level={2} title="Permanent Banishment">
+        <Stack align="right" grow>
+          <Button.Confirm
+            width="100%"
+            icon="gavel"
+            color="red"
+            content="Permanent Ban"
+            disabled={!hasPermission(data, 'permanent_ban')}
+            onClick={() => act('permanent_ban')}
+          />
+          <Button.Confirm
+            width="100%"
+            icon="gavel"
+            color="red"
+            content="Sticky Ban"
+            disabled={!hasPermission(data, 'sticky_ban')}
+            onClick={() => act('sticky_ban')}
           />
         </Stack>
       </Section>
@@ -382,6 +429,14 @@ const PunishmentActions = (props) => {
             disabled={!hasPermission(data, 'show_notes')}
             onClick={() => act('show_notes')}
           />
+          <Button
+            width="100%"
+            icon="clipboard-list"
+            color="average"
+            content="Check Ckey"
+            disabled={!hasPermission(data, 'check_ckey')}
+            onClick={() => act('check_ckey')}
+          />
         </Stack>
       </Section>
 
@@ -393,7 +448,6 @@ const PunishmentActions = (props) => {
               <Button.Checkbox
                 key={i}
                 width="100%"
-                height="100%"
                 checked={isMuted}
                 color={isMuted ? 'good' : 'bad'}
                 content={bit.name}
@@ -423,7 +477,6 @@ const PunishmentActions = (props) => {
           />
           <Button
             width="100%"
-            height="100%"
             icon="clipboard-list"
             color="bad"
             content={
@@ -448,7 +501,6 @@ const PunishmentActions = (props) => {
           />
           <Button
             width="100%"
-            height="100%"
             icon="clipboard-list"
             color="bad"
             content="Xeno name ban"
@@ -473,7 +525,6 @@ const TransformActions = (props) => {
               <Button.Confirm
                 key={optionIndex}
                 width="100%"
-                height="100%"
                 icon={option.icon}
                 color={option.color}
                 content={option.name}
@@ -513,7 +564,6 @@ const FunActions = (props) => {
                 key={i}
                 checked={getSpanSetting === spanData.span}
                 onClick={() => setSpanSetting(spanData.span)}
-                height="100%"
               />
             ))}
           </Stack>
@@ -553,7 +603,6 @@ const FunActions = (props) => {
             <Stack.Item>
               <Button
                 width="100%"
-                height="100%"
                 color="red"
                 disabled={lockExplode}
                 onClick={() =>
@@ -613,7 +662,6 @@ const AntagActions = (props) => {
         <Section level={2} title="Mutiny">
           <Stack align="right" grow={1}>
             <Button
-              height="100%"
               width="100%"
               icon="chess-pawn"
               color="orange"
@@ -622,7 +670,6 @@ const AntagActions = (props) => {
               content="Make Mutineer"
             />
             <Button
-              height="100%"
               width="100%"
               icon="crown"
               color="orange"
@@ -649,7 +696,6 @@ const AntagActions = (props) => {
           {!!is_human && (
             <>
               <Button
-                height="100%"
                 width="100%"
                 icon="chess-pawn"
                 color="purple"
@@ -662,7 +708,6 @@ const AntagActions = (props) => {
                 content="Make Xeno Cultist"
               />
               <Button
-                height="100%"
                 width="100%"
                 icon="crown"
                 color="purple"
@@ -679,7 +724,6 @@ const AntagActions = (props) => {
           )}
           {!!is_xeno && (
             <Button
-              height="100%"
               width="100%"
               icon="random"
               content="Change Hivenumber"
@@ -750,7 +794,6 @@ const PhysicalActions = (props) => {
                 <Button.Checkbox
                   key={index}
                   content={val}
-                  height="100%"
                   textAlign="center"
                   checked={delimbOption & limb_flags[index]}
                   onClick={() =>
@@ -782,7 +825,6 @@ const PhysicalActions = (props) => {
             />
             <Button.Confirm
               width="100%"
-              height="100%"
               icon="link"
               content="Relimb"
               color="green"
@@ -806,7 +848,6 @@ const PhysicalActions = (props) => {
               content="Send to cryogenics"
               icon="undo"
               width="100%"
-              height="100%"
               disabled={!hasPermission(data, 'cryo_human')}
               onClick={() => act('cryo_human')}>
               <Tooltip content="This will delete the mob, with all of their items and re-open the slot for other players to play." />
@@ -816,7 +857,6 @@ const PhysicalActions = (props) => {
             content="Drop all items"
             icon="dumpster"
             width="100%"
-            height="100%"
             disabled={!hasPermission(data, 'strip_equipment')}
             onClick={() => act('strip_equipment', { drop_items: true })}
           />
@@ -827,7 +867,6 @@ const PhysicalActions = (props) => {
               content="Set Squad"
               icon="clipboard-list"
               width="100%"
-              height="100%"
               disabled={!hasPermission(data, 'set_squad')}
               onClick={() => act('set_squad')}
             />
@@ -835,7 +874,6 @@ const PhysicalActions = (props) => {
               content="Set Faction"
               icon="clipboard-list"
               width="100%"
-              height="100%"
               disabled={!hasPermission(data, 'set_faction')}
               onClick={() => act('set_faction')}
             />
@@ -859,7 +897,6 @@ const PhysicalActions = (props) => {
         <Stack align="right" grow={1}>
           <Button
             width="100%"
-            height="100%"
             icon="user-tie"
             disabled={!hasPermission(data, 'select_equipment')}
             content="Select Equipment"
@@ -868,7 +905,6 @@ const PhysicalActions = (props) => {
           />
           <Button
             width="100%"
-            height="100%"
             icon="trash-alt"
             disabled={!hasPermission(data, 'select_equipment')}
             content="Strip Equipment"

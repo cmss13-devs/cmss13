@@ -55,7 +55,7 @@
 			.["docking_status"] = STATE_LAUNCHED
 	var/obj/structure/machinery/door/door = shuttle.door_handler.doors[1]
 	.["door_state"] = door.density
-	.["door_lock"] = shuttle.door_handler.is_locked
+	.["door_lock"] = shuttle.door_handler.status == SHUTTLE_DOOR_LOCKED
 	.["can_delay"] = TRUE//launch_status[2]
 	.["launch_without_evac"] = launch_without_evac
 
@@ -238,7 +238,7 @@
 
 /obj/structure/machinery/door/airlock/evacuation/Destroy()
 	if(linked_shuttle)
-		linked_shuttle.mode = SHUTTLE_CRASHED
+		linked_shuttle.set_mode(SHUTTLE_CRASHED)
 		linked_shuttle.door_handler.doors -= list(src)
 	. = ..()
 

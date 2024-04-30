@@ -107,8 +107,6 @@
 	new /obj/item/storage/pouch/medical(src)
 	new /obj/item/storage/pouch/syringe(src)
 	new /obj/item/storage/pouch/medkit(src)
-	if(is_mainship_level(z))
-		new /obj/item/device/radio/headset/almayer/cmo(src)
 	return
 /obj/structure/closet/secure_closet/chemical
 	name = "chemical closet"
@@ -171,3 +169,61 @@
 	. = ..()
 	new /obj/item/storage/surgical_tray(src)
 	new /obj/item/roller/surgical(src)
+
+/obj/structure/closet/secure_closet/professor_dummy
+	name = "professor dummy cabinet"
+	desc = "An ultrasafe cabinet containing Professor DUMMY and its tablet. Only accessible by Chief Medical Officers and Senior Listed Advisors."
+	icon_state = "surgical_wall_locked"
+	icon_closed = "surgical_wall_unlocked"
+	icon_locked = "surgical_wall_locked"
+	icon_opened = "surgical_wall_open"
+	icon_broken = "surgical_wall_spark"
+	health = null	// Unbreakable
+	unacidable = TRUE
+	unslashable = TRUE
+	store_mobs = TRUE
+	wall_mounted = TRUE
+
+/obj/structure/closet/secure_closet/professor_dummy/Initialize()
+	. = ..()
+	new /mob/living/carbon/human/professor_dummy(src)
+
+/obj/structure/closet/secure_closet/professor_dummy/togglelock(mob/living/user)
+	if(user.job == JOB_CMO || user.job == JOB_SEA)
+		return ..()
+
+	to_chat(user, SPAN_WARNING("Only the [JOB_CMO] or the [JOB_SEA] can toggle this lock."))
+
+/obj/structure/closet/secure_closet/professor_dummy/dump_contents()
+	if(locate(/mob/living/carbon/human/professor_dummy) in src)
+		visible_message(SPAN_HIGHDANGER("Professor DUMMY should only be used for teaching medical personnel, exclusively done by the [JOB_CMO] or the [JOB_SEA]. Do not abuse it."))
+	return ..()
+
+/obj/structure/closet/secure_closet/professor_dummy/close()
+	for(var/mob/mob in loc)
+		if(!istype(mob, /mob/living/carbon/human/professor_dummy))
+			visible_message(SPAN_WARNING("[src] won't budge!"))
+			return
+	..()
+
+	// Force locking upon closing it
+	locked = TRUE
+	update_icon()
+
+/obj/structure/closet/secure_closet/professor_dummy/flashbang(datum/source, obj/item/explosive/grenade/flashbang/FB)
+	return
+
+/obj/structure/closet/secure_closet/professor_dummy/proc/check_and_destroy_dummy()
+	var/mob/dummy = locate(/mob/living/carbon/human/professor_dummy) in src
+	if(dummy)
+		visible_message(SPAN_DANGER("Something in [src] blows apart!"))
+		playsound(src, 'sound/effects/metal_crash.ogg', 25, 1)
+		qdel(dummy)
+
+/obj/structure/closet/secure_closet/professor_dummy/emp_act(severity)
+	check_and_destroy_dummy()
+	..()
+
+/obj/structure/closet/secure_closet/professor_dummy/ex_act(severity)
+	check_and_destroy_dummy()
+	..()

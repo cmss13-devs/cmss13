@@ -265,7 +265,7 @@
 			continue
 
 	if(groundside_humans > (groundside_xenos * GROUNDSIDE_XENO_MULTIPLIER))
-		SSticker.mode.get_specific_call("Xenomorphs Groundside (Forsaken)", TRUE, FALSE)
+		SSticker.mode.get_specific_call(/datum/emergency_call/forsaken_xenos, TRUE, FALSE) // "Xenomorphs Groundside (Forsaken)"
 
 	TIMER_COOLDOWN_START(src, COOLDOWN_HIJACK_GROUND_CHECK, 1 MINUTES)
 
@@ -332,7 +332,7 @@
 			if(HS.living_xeno_queen && !should_block_game_interaction(HS.living_xeno_queen.loc))
 				//Some Queen is alive, we shouldn't end the game yet
 				return
-		if (HS.totalXenos <= 3)
+		if(length(HS.totalXenos) <= 3)
 			round_finished = MODE_INFESTATION_M_MAJOR
 		else
 			round_finished = MODE_INFESTATION_M_MINOR
@@ -372,10 +372,16 @@
 				var/living = headcount["total_headcount"]
 				if ((headcount["WY_headcount"] / living) > MAJORITY)
 					musical_track = pick('sound/theme/lastmanstanding_wy.ogg')
+					log_game("3rd party victory: Weyland-Yutani")
+					message_admins("3rd party victory: Weyland-Yutani")
 				else if ((headcount["UPP_headcount"] / living) > MAJORITY)
 					musical_track = pick('sound/theme/lastmanstanding_upp.ogg')
+					log_game("3rd party victory: Union of Progressive Peoples")
+					message_admins("3rd party victory: Union of Progressive Peoples")
 				else if ((headcount["CLF_headcount"] / living) > MAJORITY)
 					musical_track = pick('sound/theme/lastmanstanding_clf.ogg')
+					log_game("3rd party victory: Colonial Liberation Front")
+					message_admins("3rd party victory: Colonial Liberation Front")
 				else if ((headcount["marine_headcount"] / living) > MAJORITY)
 					musical_track = pick('sound/theme/neutral_melancholy2.ogg') //This is the theme song for Colonial Marines the game, fitting
 			else

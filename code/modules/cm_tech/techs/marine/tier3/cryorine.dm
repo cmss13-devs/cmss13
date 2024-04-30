@@ -4,7 +4,6 @@
 	desc = "Wakes up additional troops to fight against any threats."
 	icon_state = "cryotroops"
 
-	announce_name = "ALMAYER SPECIAL ASSETS AUTHORIZED"
 	announce_message = "Additional troops are being taken out of cryo."
 
 	required_points = 6
@@ -23,4 +22,4 @@
 
 /datum/tech/repeatable/cryomarine/on_unlock()
 	. = ..()
-	SSticker.mode.get_specific_call("Marine Cryo Reinforcements (Tech)", TRUE, FALSE)
+	SSticker.mode.get_specific_call(/datum/emergency_call/cryo_squad/tech, TRUE, FALSE) // "Marine Cryo Reinforcements (Tech)"

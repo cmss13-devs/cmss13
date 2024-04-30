@@ -55,7 +55,13 @@
 		return FALSE
 
 	if(package)
-		to_chat(M, SPAN_WARNING("How do you expect to eat this with the package still on?"))
+		if(user.a_intent == INTENT_HARM)
+			return ..() // chunk box gaming
+
+		if(user == M)
+			to_chat(M, SPAN_WARNING("How do you expect to eat this with the package still on?"))
+		else
+			to_chat(M, SPAN_WARNING("[user] made an endearing attempt to force feed you a snack with the packaging still on."))
 		return FALSE
 
 	if(istype(M, /mob/living/carbon))
@@ -641,8 +647,16 @@
 /obj/item/reagent_container/food/snacks/carpmeat/Initialize()
 	. = ..()
 	reagents.add_reagent("fish", 3)
-	reagents.add_reagent("carpotoxin", 3)
+	reagents.add_reagent("carpotoxin", 6)
 	src.bitesize = 6
+
+/obj/item/reagent_container/food/snacks/carpmeat/processed
+	name = "processed carp fillet"
+	desc = "A fillet of spess carp meat. This one has been processed to remove carpotoxin."
+
+/obj/item/reagent_container/food/snacks/carpmeat/processed/Initialize()
+	. = ..()
+	reagents.remove_reagent("carpotoxin", 6)
 
 /obj/item/reagent_container/food/snacks/fishfingers
 	name = "Fish Fingers"
@@ -653,7 +667,6 @@
 /obj/item/reagent_container/food/snacks/fishfingers/Initialize()
 	. = ..()
 	reagents.add_reagent("fish", 4)
-	reagents.add_reagent("carpotoxin", 3)
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/hugemushroomslice
@@ -802,7 +815,6 @@
 	. = ..()
 	reagents.add_reagent("bread", 3)
 	reagents.add_reagent("fish", 3)
-	reagents.add_reagent("carpotoxin", 3)
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/tofuburger
@@ -850,7 +862,6 @@
 	. = ..()
 	reagents.add_reagent("bread", 3)
 	reagents.add_reagent("meatprotein", 3)
-	reagents.add_reagent("xenoblood", 3)
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/clownburger
@@ -1070,7 +1081,6 @@
 	. = ..()
 	reagents.add_reagent("bread", 4)
 	reagents.add_reagent("meatprotein", 2)
-	reagents.add_reagent("xenoblood", 4)
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/wingfangchu
@@ -1084,7 +1094,6 @@
 	. = ..()
 	reagents.add_reagent("soysauce", 4)
 	reagents.add_reagent("meatprotein", 4)
-	reagents.add_reagent("xenoblood", 4)
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/human/kabob
@@ -1133,7 +1142,6 @@
 /obj/item/reagent_container/food/snacks/cubancarp/Initialize()
 	. = ..()
 	reagents.add_reagent("fish", 6)
-	reagents.add_reagent("carpotoxin", 3)
 	reagents.add_reagent("hotsauce", 3)
 	bitesize = 3
 
@@ -1690,7 +1698,6 @@
 /obj/item/reagent_container/food/snacks/fishandchips/Initialize()
 	. = ..()
 	reagents.add_reagent("fish", 6)
-	reagents.add_reagent("carpotoxin", 3)
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/sandwich
@@ -2172,7 +2179,6 @@
 	reagents.add_reagent("bread", 10)
 	reagents.add_reagent("meatprotein", 10)
 	reagents.add_reagent("cheese", 10)
-	reagents.add_reagent("xenoblood", 10)
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/xenomeatbreadslice
@@ -2738,6 +2744,10 @@
 	var/list/boxes = list() // If the boxes are stacked, they come here
 	var/boxtag = ""
 
+/obj/item/pizzabox/Destroy(force)
+	QDEL_NULL(pizza)
+	return ..()
+
 /obj/item/pizzabox/update_icon()
 
 	overlays = list()
@@ -3289,8 +3299,11 @@
 	name = "CHUNK box"
 	desc = "A bar of \"The <b>CHUNK</b>\" brand chocolate. <i>\"The densest chocolate permitted to exist according to federal law. We are legally required to ask you not to use this blunt object for anything other than nutrition.\"</i>"
 	icon_state = "chunk"
-	force = 15 //LEGAL LIMIT OF CHOCOLATE
+	hitsound = "swing_hit"
+	force = 15
 	throwforce = 10
+	attack_speed = 10
+	demolition_mod = 0.3
 	bitesize = 2
 	wrapper = /obj/item/trash/chunk
 
@@ -3304,8 +3317,7 @@
 	desc = "A 'crate', as the marketing called it, of \"The <b>HUNK</b>\" brand chocolate. An early version of the CHUNK box, the HUNK bar was hit by a class action lawsuit and forced to go into bankruptcy and get bought out by the Company when hundreds of customers had their teeth crack from simply attempting to eat the bar."
 	icon_state = "hunk"
 	w_class = SIZE_MEDIUM
-	hitsound = "swing_hit"
-	force = 35 //ILLEGAL LIMIT OF CHOCOLATE
+	force = 35
 	throwforce = 50
 	bitesize = 20
 	wrapper = /obj/item/trash/chunk/hunk

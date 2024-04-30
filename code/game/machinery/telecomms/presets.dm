@@ -155,7 +155,7 @@
 	toggle_state(user) // just flip dat switch
 
 /obj/structure/machinery/telecomms/relay/preset/tower/all
-	freq_listening = list()
+	freq_listening = list(UNIVERSAL_FREQ)
 
 /obj/structure/machinery/telecomms/relay/preset/tower/faction
 	name = "UPP telecommunications relay"
@@ -267,8 +267,8 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 			to_chat(user, SPAN_WARNING("\The [src.name] needs repairs to have frequencies added to its software!"))
 			return
 		var/choice = tgui_input_list(user, "What do you wish to do?", "TC-3T comms tower", list("Wipe communication frequencies", "Add your faction's frequencies"))
-		if(choice == "Wipe frequencies")
-			freq_listening = null
+		if(choice == "Wipe communication frequencies")
+			freq_listening.Cut()
 			to_chat(user, SPAN_NOTICE("You wipe the preexisting frequencies from \the [src]."))
 			return
 		else if(choice == "Add your faction's frequencies")
@@ -277,12 +277,16 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 			switch(user.faction)
 				if(FACTION_SURVIVOR)
 					freq_listening |= COLONY_FREQ
+					if(FACTION_MARINE in user.faction_group) //FORECON survivors
+						freq_listening |= SOF_FREQ
 				if(FACTION_CLF)
 					freq_listening |= CLF_FREQS
 				if(FACTION_UPP)
 					freq_listening |= UPP_FREQS
 				if(FACTION_WY,FACTION_PMC)
 					freq_listening |= PMC_FREQS
+				if(FACTION_TWE)
+					freq_listening |= RMC_FREQ
 				if(FACTION_YAUTJA)
 					to_chat(user, SPAN_WARNING("You decide to leave the human machine alone."))
 					return

@@ -2484,7 +2484,6 @@
 #include "fray-marines\code\cm_tech\techs\xeno\tier1\blockade.dm"
 #include "fray-marines\code\cm_tech\techs\xeno\tier1\build_for_all.dm"
 #include "fray-marines\code\cm_tech\techs\xeno\tier1\comms_disruption.dm"
-#include "fray-marines\code\cm_tech\techs\xeno\tier1\weed_damage_reduction.dm"
 #include "fray-marines\code\cm_tech\techs\xeno\tier2\evo_boost.dm"
 #include "fray-marines\code\cm_tech\techs\xeno\tier2\overshield.dm"
 #include "fray-marines\code\cm_tech\techs\xeno\tier2\shielding_slash.dm"

@@ -30,11 +30,15 @@
 /turf/open/floor/plating,
 /area/corsat/gamma/residential/east)
 "aan" = (
-/obj/structure/machinery/disposal,
-/turf/open/floor/corsat{
-	icon_state = "plate"
+/obj/structure/machinery/power/apc/hyper{
+	dir = 1;
+	pixel_y = 24;
+	start_charge = 0
 	},
-/area/corsat/gamma/foyer)
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/corsat/gamma/residential)
 "aap" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
@@ -1645,15 +1649,16 @@
 /turf/open/floor/corsat,
 /area/corsat/omega/checkpoint)
 "agF" = (
-/obj/structure/machinery/power/apc/high{
+/obj/structure/machinery/power/apc/hyper{
 	dir = 1;
 	pixel_y = 24;
 	start_charge = 0
 	},
 /turf/open/floor/corsat{
-	icon_state = "plate"
+	dir = 1;
+	icon_state = "redcorner"
 	},
-/area/corsat/gamma/foyer)
+/area/corsat/gamma/security)
 "agG" = (
 /turf/open/floor/corsat{
 	dir = 1;
@@ -5062,15 +5067,11 @@
 /turf/open/floor/plating,
 /area/corsat/gamma/rnr)
 "ast" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
 /turf/open/floor/corsat{
-	icon_state = "squares"
+	dir = 4;
+	icon_state = "yellowcorner"
 	},
-/area/corsat/gamma/residential)
+/area/corsat/gamma/foyer)
 "asu" = (
 /obj/structure/surface/rack,
 /obj/item/device/flashlight,
@@ -9702,6 +9703,12 @@
 	icon_state = "squares"
 	},
 /area/corsat/omega/airlocknorth/id)
+"aGr" = (
+/obj/structure/machinery/disposal,
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/corsat/gamma/foyer)
 "aGs" = (
 /obj/structure/toilet,
 /obj/structure/machinery/light/small{
@@ -13291,6 +13298,15 @@
 	icon_state = "retrosquares"
 	},
 /area/corsat/sigma/hangar/arrivals)
+"aTp" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "yellow"
+	},
+/area/corsat/gamma/foyer)
 "aTq" = (
 /obj/structure/machinery/light,
 /turf/open/floor/corsat{
@@ -23429,7 +23445,6 @@
 /area/corsat/gamma/rnr/library)
 "bCj" = (
 /obj/structure/surface/rack,
-/obj/item/clothing/glasses/thermal,
 /obj/structure/machinery/door/window/eastright{
 	name = "Prototype Racks";
 	req_access_txt = "103"
@@ -31230,18 +31245,10 @@
 	},
 /area/corsat/sigma/hangar)
 "dRz" = (
-/obj/structure/window/reinforced{
-	dir = 8
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "darkgreencorner"
 	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/obj/structure/flora/bush/ausbushes/var3/brflowers,
-/obj/structure/window/reinforced{
-	layer = 3.8
-	},
-/turf/open/gm/grass/grass1/weedable,
 /area/corsat/gamma/foyer)
 "dSa" = (
 /obj/effect/landmark/xeno_spawn,
@@ -31833,12 +31840,6 @@
 	icon_state = "red"
 	},
 /area/corsat/omega/security)
-"epI" = (
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "darkgreencorner"
-	},
-/area/corsat/gamma/foyer)
 "epN" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -33783,6 +33784,16 @@
 	icon_state = "squares"
 	},
 /area/corsat/sigma/hangar)
+"gew" = (
+/obj/structure/machinery/power/apc/high{
+	dir = 1;
+	pixel_y = 24;
+	start_charge = 0
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/corsat/gamma/foyer)
 "geN" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
@@ -34571,12 +34582,6 @@
 	icon_state = "whitebluefull"
 	},
 /area/corsat/gamma/residential/showers)
-"gKu" = (
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "yellow"
-	},
-/area/corsat/gamma/foyer)
 "gKQ" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -35434,15 +35439,6 @@
 	icon_state = "whitebluefull"
 	},
 /area/corsat/gamma/residential/showers)
-"hsD" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "yellow"
-	},
-/area/corsat/gamma/foyer)
 "hsJ" = (
 /obj/structure/surface/table,
 /obj/item/paper,
@@ -36931,14 +36927,6 @@
 	icon_state = "yellow"
 	},
 /area/corsat/sigma/south/engineering)
-"iCO" = (
-/obj/structure/surface/rack,
-/obj/item/device/chameleon,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "purplewhite"
-	},
-/area/corsat/sigma/south/complex)
 "iCP" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -40614,17 +40602,6 @@
 	icon_state = "red"
 	},
 /area/corsat/gamma/security/cells)
-"lUc" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "redcorner"
-	},
-/area/corsat/gamma/security)
 "lUI" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 1;
@@ -44917,12 +44894,6 @@
 	icon_state = "squares"
 	},
 /area/corsat/gamma/security/cells)
-"pMU" = (
-/turf/open/floor/corsat{
-	dir = 4;
-	icon_state = "yellowcorner"
-	},
-/area/corsat/gamma/foyer)
 "pMZ" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4;
@@ -47584,6 +47555,20 @@
 	},
 /turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
+"rTw" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/flora/bush/ausbushes/var3/brflowers,
+/obj/structure/window/reinforced{
+	layer = 3.8
+	},
+/turf/open/gm/grass/grass1/weedable,
+/area/corsat/gamma/foyer)
 "rTX" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -54292,6 +54277,12 @@
 "xKu" = (
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/sigma/airlock/east)
+"xKA" = (
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "yellow"
+	},
+/area/corsat/gamma/foyer)
 "xKC" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4;
@@ -62759,7 +62750,7 @@ ylo
 ylo
 ylo
 acM
-ast
+aan
 akH
 iVp
 qWr
@@ -71887,7 +71878,7 @@ rCN
 bRs
 vOi
 nxQ
-lUc
+agF
 arR
 arR
 arR
@@ -74367,7 +74358,7 @@ aRv
 asC
 bnr
 asC
-aan
+aGr
 aqG
 aqH
 eaL
@@ -74551,11 +74542,11 @@ mRB
 gcE
 mRB
 mRB
-epI
+dRz
 acD
 cut
 mRB
-epI
+dRz
 vMP
 qaO
 mRB
@@ -74563,7 +74554,7 @@ mRB
 mRB
 mRB
 afc
-epI
+dRz
 acD
 vMP
 qaO
@@ -75153,7 +75144,7 @@ vYt
 flo
 flo
 flo
-dRz
+rTw
 bHf
 ggq
 eqK
@@ -75162,7 +75153,7 @@ rhv
 flo
 flo
 flo
-dRz
+rTw
 bHf
 ggq
 qsC
@@ -75171,7 +75162,7 @@ rhv
 flo
 flo
 flo
-dRz
+rTw
 bHf
 ggq
 qsC
@@ -75774,7 +75765,7 @@ fMi
 aqJ
 koY
 koY
-pMU
+ast
 vMP
 aqJ
 koY
@@ -75966,21 +75957,21 @@ ann
 ann
 ann
 ann
-agF
+gew
 vsN
 vMP
 afg
-aan
+aGr
 aqi
 aqi
 aqi
 aqi
 aqi
 ahi
-gKu
+xKA
 vMP
 deR
-aan
+aGr
 aqy
 aqy
 aqy
@@ -76180,7 +76171,7 @@ biX
 taX
 aqi
 aqi
-gKu
+xKA
 nXR
 deR
 aqy
@@ -76586,7 +76577,7 @@ bkX
 aVi
 pYS
 aqi
-hsD
+aTp
 vMP
 deR
 amZ
@@ -76789,7 +76780,7 @@ mJy
 oTs
 voF
 aqi
-gKu
+xKA
 vMP
 deR
 aPW
@@ -91702,7 +91693,7 @@ ahu
 nJC
 aje
 akd
-iCO
+rhu
 aHZ
 lHI
 bTW

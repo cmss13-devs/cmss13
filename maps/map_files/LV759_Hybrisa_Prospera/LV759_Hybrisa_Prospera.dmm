@@ -7114,6 +7114,14 @@
 /obj/item/device/flashlight,
 /turf/open/floor/prison,
 /area/lv759/indoors/garage_workshop_storage)
+"blw" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	layer = 4.1;
+	pixel_y = 16
+	},
+/turf/closed/wall/hybrisa/colony,
+/area/lv759/indoors/apartment/east)
 "blx" = (
 /obj/structure/platform{
 	dir = 8
@@ -27219,7 +27227,8 @@
 	layer = 8;
 	level = 8;
 	pixel_y = 20;
-	dir = 9
+	dir = 8;
+	pixel_x = -4
 	},
 /turf/open/hybrisa/street/sidewalk{
 	dir = 4
@@ -43860,6 +43869,12 @@
 	icon_state = "lattice12";
 	pixel_y = 16
 	},
+/obj/structure/prop/hybrisa/BillboardsandSigns/BigBillboards{
+	layer = 8;
+	level = 8;
+	pixel_y = 20;
+	dir = 4
+	},
 /turf/open/hybrisa/street/sidewalkcenter{
 	dir = 8
 	},
@@ -49151,6 +49166,9 @@
 /area/lv759/outdoors/colony_streets/north_east_street)
 "ilJ" = (
 /obj/structure/sign/safety/restrictedarea,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2"
+	},
 /turf/closed/wall/hybrisa/colony,
 /area/lv759/indoors/tcomms_northwest)
 "ilL" = (
@@ -69688,6 +69706,12 @@
 	icon_state = "plate"
 	},
 /area/lv759/indoors/spaceport/kitchen)
+"lDq" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2"
+	},
+/turf/closed/wall/hybrisa/colony,
+/area/lv759/indoors/tcomms_northwest)
 "lDz" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 8
@@ -72413,6 +72437,15 @@
 	},
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/landing_zone_2)
+"mbU" = (
+/obj/structure/sign/poster/propaganda,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	layer = 4.1;
+	pixel_y = 16
+	},
+/turf/closed/wall/hybrisa/colony,
+/area/lv759/indoors/apartment/east)
 "mbW" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
@@ -74094,6 +74127,12 @@
 	icon_state = "lattice12";
 	pixel_y = 16
 	},
+/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
+	layer = 8;
+	level = 8;
+	pixel_y = 20;
+	dir = 1
+	},
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate"
@@ -75462,6 +75501,13 @@
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
 	pixel_y = 16
+	},
+/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
+	icon_state = "billboard2";
+	layer = 8;
+	level = 8;
+	pixel_y = 20;
+	dir = 9
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_east_street)
@@ -99557,6 +99603,17 @@
 	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
 	},
 /area/lv759/indoors/caves/south_east_caves)
+"qGG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice3"
+	},
+/turf/open/hybrisa/street/sidewalk{
+	dir = 1
+	},
+/area/lv759/outdoors/colony_streets/north_street)
 "qGK" = (
 /obj/effect/spawner/random/toolbox{
 	layer = 4
@@ -107915,6 +107972,13 @@
 	icon_state = "floor3"
 	},
 /area/lv759/indoors/power_plant/power_storage)
+"rXl" = (
+/obj/structure/platform/hybrisa/metalplatform1,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice3"
+	},
+/turf/open/hybrisa/street/sidewalk,
+/area/lv759/outdoors/colony_streets/north_street)
 "rXn" = (
 /obj/item/shard,
 /turf/open/floor/interior/wood,
@@ -107984,7 +108048,6 @@
 	pixel_y = 16
 	},
 /obj/structure/prop/hybrisa/BillboardsandSigns/Bigroadsigns/road_sign_1{
-	dir = 4;
 	pixel_y = 16
 	},
 /turf/open/hybrisa/street/sidewalk{
@@ -112135,7 +112198,7 @@
 	pixel_y = 16
 	},
 /obj/structure/prop/hybrisa/BillboardsandSigns/Bigroadsigns/road_sign_1{
-	dir = 1;
+	dir = 4;
 	pixel_y = 16
 	},
 /turf/open/hybrisa/street/asphalt,
@@ -119444,11 +119507,11 @@
 	icon_state = "lattice12";
 	pixel_y = 16
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard4{
-	pixel_y = 20;
+/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
 	layer = 8;
 	level = 8;
-	dir = 4
+	pixel_y = 20;
+	dir = 6
 	},
 /turf/open/hybrisa/street/sidewalk{
 	dir = 8
@@ -120048,8 +120111,7 @@
 	icon_state = "lattice12";
 	pixel_y = 16
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Bigroadsigns/road_sign_1{
-	dir = 4;
+/obj/structure/prop/hybrisa/BillboardsandSigns/Bigroadsigns/road_sign_2{
 	pixel_y = 16
 	},
 /turf/open/hybrisa/street/sidewalk{
@@ -120098,6 +120160,9 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice3"
 	},
 /turf/open/hybrisa/street/sidewalk{
 	dir = 1
@@ -169924,10 +169989,10 @@ mYf
 onU
 imz
 quM
-uNY
+lDq
 ubj
-gLu
-ohM
+rXl
+blw
 ohM
 ohM
 ohM
@@ -170933,9 +170998,9 @@ etV
 afc
 afc
 ilJ
-cXu
-gLu
-uMX
+qGG
+rXl
+mbU
 gcs
 cAU
 tbv

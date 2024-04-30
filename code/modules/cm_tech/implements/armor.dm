@@ -207,6 +207,22 @@
 /obj/item/clothing/accessory/health/research_plate/proc/can_recycle(mob/living/user) //override this proc for check if you can recycle the plate.
 	return FALSE
 
+
+/obj/item/clothing/accessory/health/research_plate/on_attached(obj/item/clothing/S, mob/living/carbon/human/user)
+	. = ..()
+	RegisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED, PROC_REF(on_removed_sig))
+
+/obj/item/clothing/accessory/health/research_plate/on_removed(mob/living/user, obj/item/clothing/C)
+	. = ..()
+	UnregisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED)
+
+/obj/item/clothing/accessory/health/research_plate/proc/on_removed_sig(mob/living/user, slot)
+	SIGNAL_HANDLER
+	if(slot != attached_uni)
+		return FALSE
+	UnregisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED)
+	return TRUE
+
 /obj/item/clothing/accessory/health/research_plate/translator
 	name = "Exprimental Language Translator"
 	desc = "Translates any language heard by the microphones on the plate without any linguistical input, allowing to translate languages never heard before and known languages alike."
@@ -214,7 +230,6 @@
 /obj/item/clothing/accessory/health/research_plate/translator/on_attached(obj/item/clothing/S, mob/living/carbon/human/user)
 	. = ..()
 	to_chat(user, SPAN_NOTICE("Translator Buzzes as it begins to listen for input"))
-	RegisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED, PROC_REF(on_removed_sig))
 	user.universal_understand = TRUE
 
 /obj/item/clothing/accessory/health/research_plate/translator/on_removed(mob/living/user, obj/item/clothing/C)
@@ -222,14 +237,15 @@
 	if(user.universal_understand)
 		to_chat(user, SPAN_NOTICE("Translator makes a sad woop sound as its powering down."))
 		user.universal_understand = FALSE
-		UnregisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED)
 		attached_uni = null
 
-/obj/item/clothing/accessory/health/research_plate/translator/proc/on_removed_sig(mob/living/user, slot)
-	if(slot == attached_uni && user.universal_understand)
+/obj/item/clothing/accessory/health/research_plate/translator/on_removed_sig(mob/living/user, slot)
+	. = ..()
+	if(. == FALSE)
+		return
+	if(user.universal_understand)
 		to_chat(user, SPAN_NOTICE("Plate makes a woop sound as it is powered down."))
 		user.universal_understand = FALSE
-		UnregisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED)
 		attached_uni = null
 
 /obj/item/clothing/accessory/health/research_plate/coagulator
@@ -241,7 +257,6 @@
 	if (user.chem_effect_flags & CHEM_EFFECT_NO_BLEEDING)
 		return
 	user.chem_effect_flags |= CHEM_EFFECT_NO_BLEEDING
-	RegisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED, PROC_REF(on_removed_sig))
 	to_chat(user, SPAN_NOTICE("You feel tickling as you activate the coagulator"))
 
 /obj/item/clothing/accessory/health/research_plate/coagulator/on_removed(mob/living/carbon/human/user, obj/item/clothing/C)
@@ -249,14 +264,15 @@
 	if (user.chem_effect_flags & CHEM_EFFECT_NO_BLEEDING)
 		user.chem_effect_flags &= CHEM_EFFECT_NO_BLEEDING
 		to_chat(user, SPAN_NOTICE("You feel coagulator peeling off from your skin."))
-		UnregisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED)
 		attached_uni = null
 
-/obj/item/clothing/accessory/health/research_plate/coagulator/proc/on_removed_sig(mob/living/carbon/human/user, slot)
-	if(slot == attached_uni && user.chem_effect_flags & CHEM_EFFECT_NO_BLEEDING )
+/obj/item/clothing/accessory/health/research_plate/coagulator/on_removed_sig(mob/living/carbon/human/user, slot)
+	. = ..()
+	if(. == FALSE)
+		return
+	if(user.chem_effect_flags & CHEM_EFFECT_NO_BLEEDING )
 		to_chat(user, SPAN_NOTICE("You feel coagulator peeling off from your skin."))
 		user.chem_effect_flags &= CHEM_EFFECT_NO_BLEEDING
-		UnregisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED)
 		attached_uni = null
 
 /obj/item/clothing/accessory/health/research_plate/emergency_injector
@@ -318,19 +334,18 @@
 	wearer = user
 	activation = new /datum/action/item_action/emergency_plate/inject_chemicals(src, attached_uni)
 	activation.give_to(wearer)
-	RegisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED, PROC_REF(on_removed_sig))
 
 /obj/item/clothing/accessory/health/research_plate/emergency_injector/on_removed(mob/living/user, obj/item/clothing/C)
 	. = ..()
 	qdel(activation)
-	UnregisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED)
 	attached_uni = null
 
-/obj/item/clothing/accessory/health/research_plate/emergency_injector/proc/on_removed_sig(mob/living/carbon/human/user, slot)
-	if(slot == attached_uni)
-		qdel(activation)
-		UnregisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED)
-		attached_uni = null
+/obj/item/clothing/accessory/health/research_plate/emergency_injector/on_removed_sig(mob/living/carbon/human/user, slot)
+	. = ..()
+	if(. == FALSE)
+		return
+	qdel(activation)
+	attached_uni = null
 
 //Action buttons
 /datum/action/item_action/emergency_plate/inject_chemicals/New(Target, obj/item/holder)

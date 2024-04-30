@@ -251,7 +251,7 @@
 /datum/cas_fire_envelope/proc/play_sound(atom/target_turf)
 	stat = FIRE_MISSION_STATE_ON_TARGET
 	change_current_loc(target_turf)
-	playsound(target_turf, soundeffect , vol = 70, vary = TRUE, sound_range = 50, falloff = 8)
+	playsound(target_turf, soundeffect, vol = 70, vary = TRUE, sound_range = 50, falloff = 8)
 
 /datum/cas_fire_envelope/proc/first_chat_warning(atom/target_turf)
 	for(var/mob/mob in range(15, target_turf))

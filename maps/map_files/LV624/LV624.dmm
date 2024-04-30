@@ -17035,6 +17035,17 @@
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
+"jQX" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/machinery/power/apc/nocharge{
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "grimy"
+	},
+/area/lv624/lazarus/hop)
 "jRm" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/north_nexus_road)
@@ -51003,7 +51014,7 @@ aSA
 aSA
 aTC
 aQM
-aUD
+jQX
 aVq
 aVM
 aSB

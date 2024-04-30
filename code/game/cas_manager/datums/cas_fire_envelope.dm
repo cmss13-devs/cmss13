@@ -39,10 +39,6 @@
 	for(var/datum/cas_fire_mission/mission in missions)
 		.["missions"] += list(mission.ui_data(user))
 
-
-/datum/cas_fire_envelope/proc/get_total_duration()
-	return flyoff_period
-
 /datum/cas_fire_envelope/proc/update_weapons(list/obj/structure/dropship_equipment/weapon/weapons)
 	for(var/datum/cas_fire_mission/mission in missions)
 		mission.update_weapons(weapons, fire_length)
@@ -253,52 +249,30 @@
 	change_current_loc(target_turf)
 	playsound(target_turf, soundeffect, vol = 70, vary = TRUE, sound_range = 50, falloff = 8)
 
-/datum/cas_fire_envelope/proc/first_chat_warning(atom/target_turf)
+/datum/cas_fire_envelope/proc/chat_warning(atom/target_turf, range = 10, warning_number = 1)
 	for(var/mob/mob in range(15, target_turf))
 		var/ds_identifier = "LARGE BIRD"
 		var/fm_identifier = "SPIT FIRE"
 		if (mob.mob_flags & KNOWS_TECHNOLOGY)
 			ds_identifier = "DROPSHIP"
-			fm_identifier = "FIRE"
+			fm_identifier = "FIRE"¨
 
-		mob.show_message( \
-			SPAN_HIGHDANGER("YOU HEAR THE [ds_identifier] ROAR AS IT PREPARES TO [fm_identifier] NEAR YOU!"),SHOW_MESSAGE_VISIBLE, \
-			SPAN_HIGHDANGER("YOU HEAR SOMETHING FLYING CLOSER TO YOU!") , SHOW_MESSAGE_AUDIBLE \
-		)
-
-/datum/cas_fire_envelope/proc/second_chat_warning(atom/initial_turf)
-	var/relative_dir
-	for(var/mob/mob in range(15, initial_turf))
-		if(get_turf(mob) == initial_turf)
-			relative_dir = 0
-		else
-			relative_dir = Get_Compass_Dir(mob, initial_turf)
-
-		var/ds_identifier = "LARGE BIRD"
-		if (mob.mob_flags & KNOWS_TECHNOLOGY)
-			ds_identifier = "DROPSHIP"
-
-		mob.show_message( \
-			SPAN_HIGHDANGER("A [ds_identifier] FLIES [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
-			SPAN_HIGHDANGER("YOU HEAR SOMETHING GO [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
-		)
-
-/datum/cas_fire_envelope/proc/third_chat_warning(atom/initial_turf)
-	var/relative_dir
-	for(var/mob/mob in range(10, initial_turf))
-		if(get_turf(mob) == initial_turf)
-			relative_dir = 0
-		else
-			relative_dir = Get_Compass_Dir(mob, initial_turf)
-
-		var/ds_identifier = "LARGE BIRD"
-		if (mob.mob_flags & KNOWS_TECHNOLOGY)
-			ds_identifier = "DROPSHIP"
-
-		mob.show_message( \
-			SPAN_HIGHDANGER("A [ds_identifier] FIRES [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 1, \
-			SPAN_HIGHDANGER("YOU HEAR SOMETHING FIRE [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), 2 \
-		)
+		switch(warning_number)
+			if(1)
+				mob.show_message( \
+					SPAN_HIGHDANGER("YOU HEAR THE [ds_identifier] ROAR AS IT PREPARES TO [fm_identifier] NEAR YOU!"),SHOW_MESSAGE_VISIBLE, \
+					SPAN_HIGHDANGER("YOU HEAR SOMETHING FLYING CLOSER TO YOU!") , SHOW_MESSAGE_AUDIBLE \
+				)
+			if(2)
+				mob.show_message( \
+					SPAN_HIGHDANGER("A [ds_identifier] FLIES [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
+					SPAN_HIGHDANGER("YOU HEAR SOMETHING GO [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
+				)
+			if(3)
+				mob.show_message( \
+					SPAN_HIGHDANGER("A [ds_identifier] FLIES [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_VISIBLE, \
+					SPAN_HIGHDANGER("YOU HEAR SOMETHING GO [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
+				)
 
 /datum/cas_fire_envelope/proc/open_fire(atom/target_turf,datum/cas_fire_mission/mission,dir)
 	stat = FIRE_MISSION_STATE_FIRING
@@ -338,9 +312,9 @@
 
 
 	addtimer(CALLBACK(src, PROC_REF(play_sound), target_turf), grace_period)
-	addtimer(CALLBACK(src, PROC_REF(first_chat_warning), target_turf), first_warning)
-	addtimer(CALLBACK(src, PROC_REF(second_chat_warning), target_turf), second_warning)
-	addtimer(CALLBACK(src, PROC_REF(third_chat_warning), target_turf), third_warning)
+	addtimer(CALLBACK(src, PROC_REF(chat_warning), target_turf, 15, 1), first_warning)
+	addtimer(CALLBACK(src, PROC_REF(chat_warning), target_turf, 15, 2), second_warning)
+	addtimer(CALLBACK(src, PROC_REF(chat_warning), target_turf, 10, 3), third_warning)
 	addtimer(CALLBACK(src, PROC_REF(open_fire), target_turf, mission,dir), execution_start)
 	addtimer(CALLBACK(src, PROC_REF(flyoff)), flyoff_period)
 	addtimer(CALLBACK(src, PROC_REF(end_cooldown)), cooldown_period)

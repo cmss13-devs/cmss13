@@ -1,0 +1,20 @@
+[
+	{
+		"type": "pick", "name": "CORSAT Lockdown Pathing",
+        "choices": [
+			{ "weight": 3, "type": "def", "values": { "corsat-path": "none"   } },
+			{ "weight": 4, "type": "def", "values": { "corsat-path": "gamma-north"   } },
+			{ "weight": 4, "type": "def", "values": { "corsat-path": "gamma-control"   } },
+			{ "weight": 4, "type": "def", "values": { "corsat-path": "theta-east"   } },
+			{ "weight": 4, "type": "def", "values": { "corsat-path": "theta-control"   } },
+			{ "weight": 1, "type": "def", "values": { "corsat-path": "highsec"   } }
+		]
+	},
+	{
+		"type": "pick", "name": "Sigma Major Variation",
+		"choices": [
+			{ "type": "def", "values": { "dome-sigma": "regular" } },
+			{ "type": "def", "values": { "dome-sigma": "ice" } }
+		]
+	}
+]

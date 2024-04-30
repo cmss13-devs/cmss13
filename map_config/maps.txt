@@ -30,7 +30,6 @@ endmap
 map corsat
 	minplayers 130
 	voteweight 0
-	disabled
 endmap
 
 map desert_dam

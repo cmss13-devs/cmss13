@@ -30,15 +30,14 @@
 /turf/open/floor/plating,
 /area/corsat/gamma/residential/east)
 "aan" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
+/obj/effect/landmark/teleporter_loc/corsat_sigma_remote{
+	index = "10"
 	},
 /turf/open/floor/corsat{
-	icon_state = "squares"
+	dir = 10;
+	icon_state = "corsat_teleporter_static"
 	},
-/area/corsat/gamma/residential)
+/area/corsat/gamma/sigmaremote/teleporter)
 "aap" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
@@ -1649,16 +1648,19 @@
 /turf/open/floor/corsat,
 /area/corsat/omega/checkpoint)
 "agF" = (
-/obj/structure/machinery/power/apc/hyper{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
+/obj/structure/window/reinforced{
+	dir = 8
 	},
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "redcorner"
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
 	},
-/area/corsat/gamma/security)
+/obj/structure/flora/bush/ausbushes/var3/brflowers,
+/obj/structure/window/reinforced{
+	layer = 3.8
+	},
+/turf/open/gm/grass/grass1/weedable,
+/area/corsat/gamma/foyer)
 "agG" = (
 /turf/open/floor/corsat{
 	dir = 1;
@@ -4582,6 +4584,15 @@
 	icon_state = "squares"
 	},
 /area/corsat/gamma/engineering/atmos)
+"aqF" = (
+/obj/effect/landmark/teleporter_loc/corsat_sigma_remote{
+	index = "5"
+	},
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "corsat_teleporter_static"
+	},
+/area/corsat/gamma/sigmaremote/teleporter)
 "aqG" = (
 /turf/open/floor/corsat{
 	dir = 1;
@@ -5067,11 +5078,14 @@
 /turf/open/floor/plating,
 /area/corsat/gamma/rnr)
 "ast" = (
-/turf/open/floor/corsat{
-	dir = 4;
-	icon_state = "yellowcorner"
+/obj/effect/landmark/teleporter_loc/corsat_sigma_remote{
+	index = "17"
 	},
-/area/corsat/gamma/foyer)
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "corsat_teleporter_static"
+	},
+/area/corsat/gamma/sigmaremote/teleporter)
 "asu" = (
 /obj/structure/surface/rack,
 /obj/item/device/flashlight,
@@ -9704,11 +9718,14 @@
 	},
 /area/corsat/omega/airlocknorth/id)
 "aGr" = (
-/obj/structure/machinery/disposal,
-/turf/open/floor/corsat{
-	icon_state = "plate"
+/obj/effect/landmark/teleporter_loc/corsat_sigma_remote{
+	index = "23"
 	},
-/area/corsat/gamma/foyer)
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "corsat_teleporter_static"
+	},
+/area/corsat/gamma/sigmaremote/teleporter)
 "aGs" = (
 /obj/structure/toilet,
 /obj/structure/machinery/light/small{
@@ -13299,9 +13316,6 @@
 	},
 /area/corsat/sigma/hangar/arrivals)
 "aTp" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "yellow"
@@ -13487,6 +13501,12 @@
 	icon_state = "brown"
 	},
 /area/corsat/sigma/cargo)
+"aUn" = (
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "darkgreencorner"
+	},
+/area/corsat/gamma/foyer)
 "aUo" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -24407,6 +24427,15 @@
 	icon_state = "plate"
 	},
 /area/corsat/gamma/foyer)
+"bHg" = (
+/obj/effect/landmark/teleporter_loc/corsat_sigma_remote{
+	index = "13"
+	},
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "corsat_teleporter_static"
+	},
+/area/corsat/gamma/sigmaremote/teleporter)
 "bHi" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -31245,9 +31274,12 @@
 	},
 /area/corsat/sigma/hangar)
 "dRz" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/corsat{
 	dir = 1;
-	icon_state = "darkgreencorner"
+	icon_state = "yellow"
 	},
 /area/corsat/gamma/foyer)
 "dSa" = (
@@ -31840,6 +31872,15 @@
 	icon_state = "red"
 	},
 /area/corsat/omega/security)
+"epI" = (
+/obj/effect/landmark/teleporter_loc/corsat_sigma_remote{
+	index = "15"
+	},
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "corsat_teleporter_static"
+	},
+/area/corsat/gamma/sigmaremote/teleporter)
 "epN" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -32037,6 +32078,15 @@
 	dir = 4
 	},
 /area/corsat/gamma/sigmaremote)
+"ewW" = (
+/obj/effect/landmark/teleporter_loc/corsat_sigma_remote{
+	index = "20"
+	},
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "corsat_teleporter_static"
+	},
+/area/corsat/gamma/sigmaremote/teleporter)
 "ewX" = (
 /obj/effect/landmark/corpsespawner/pmc,
 /turf/open/shuttle/dropship{
@@ -33705,6 +33755,15 @@
 	icon_state = "bluegrey"
 	},
 /area/corsat/omega/offices)
+"gcl" = (
+/obj/effect/landmark/teleporter_loc/corsat_sigma_remote{
+	index = "1"
+	},
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "corsat_teleporter_static"
+	},
+/area/corsat/gamma/sigmaremote/teleporter)
 "gcs" = (
 /turf/open/floor/corsat{
 	icon_state = "purplewhitecorner"
@@ -33785,15 +33844,14 @@
 	},
 /area/corsat/sigma/hangar)
 "gew" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
+/obj/effect/landmark/teleporter_loc/corsat_sigma_remote{
+	index = "8"
 	},
 /turf/open/floor/corsat{
-	icon_state = "plate"
+	dir = 10;
+	icon_state = "corsat_teleporter_static"
 	},
-/area/corsat/gamma/foyer)
+/area/corsat/gamma/sigmaremote/teleporter)
 "geN" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
@@ -34582,6 +34640,15 @@
 	icon_state = "whitebluefull"
 	},
 /area/corsat/gamma/residential/showers)
+"gKu" = (
+/obj/effect/landmark/teleporter_loc/corsat_sigma_remote{
+	index = "14"
+	},
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "corsat_teleporter_static"
+	},
+/area/corsat/gamma/sigmaremote/teleporter)
 "gKQ" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -35439,6 +35506,15 @@
 	icon_state = "whitebluefull"
 	},
 /area/corsat/gamma/residential/showers)
+"hsD" = (
+/obj/effect/landmark/teleporter_loc/corsat_sigma_remote{
+	index = "22"
+	},
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "corsat_teleporter_static"
+	},
+/area/corsat/gamma/sigmaremote/teleporter)
 "hsJ" = (
 /obj/structure/surface/table,
 /obj/item/paper,
@@ -36054,6 +36130,15 @@
 	icon_state = "plate"
 	},
 /area/corsat/gamma/engineering/core)
+"hOb" = (
+/obj/effect/landmark/teleporter_loc/corsat_sigma_remote{
+	index = "25"
+	},
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "corsat_teleporter_static"
+	},
+/area/corsat/gamma/sigmaremote/teleporter)
 "hOw" = (
 /obj/structure/bed/chair/office/light{
 	dir = 1
@@ -36160,6 +36245,15 @@
 	icon_state = "yellow"
 	},
 /area/corsat/gamma/engineering)
+"hRZ" = (
+/obj/effect/landmark/teleporter_loc/corsat_sigma_remote{
+	index = "6"
+	},
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "corsat_teleporter_static"
+	},
+/area/corsat/gamma/sigmaremote/teleporter)
 "hSo" = (
 /turf/open/floor/corsat{
 	dir = 1;
@@ -36927,6 +37021,15 @@
 	icon_state = "yellow"
 	},
 /area/corsat/sigma/south/engineering)
+"iCO" = (
+/obj/effect/landmark/teleporter_loc/corsat_sigma_remote{
+	index = "9"
+	},
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "corsat_teleporter_static"
+	},
+/area/corsat/gamma/sigmaremote/teleporter)
 "iCP" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -38200,6 +38303,16 @@
 	icon_state = "retrosquares"
 	},
 /area/corsat/sigma/hangar/arrivals)
+"jRf" = (
+/obj/structure/machinery/power/apc/high{
+	dir = 1;
+	pixel_y = 24;
+	start_charge = 0
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/corsat/gamma/foyer)
 "jRl" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/gm/dirt,
@@ -40371,6 +40484,16 @@
 	icon_state = "white"
 	},
 /area/corsat/gamma/residential/east)
+"lJz" = (
+/obj/structure/machinery/power/apc/hyper{
+	dir = 1;
+	pixel_y = 24;
+	start_charge = 0
+	},
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/corsat/gamma/residential)
 "lJR" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 1;
@@ -40602,6 +40725,17 @@
 	icon_state = "red"
 	},
 /area/corsat/gamma/security/cells)
+"lUc" = (
+/obj/structure/machinery/power/apc/hyper{
+	dir = 1;
+	pixel_y = 24;
+	start_charge = 0
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "redcorner"
+	},
+/area/corsat/gamma/security)
 "lUI" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 1;
@@ -43939,6 +44073,15 @@
 	icon_state = "blue"
 	},
 /area/corsat/gamma/hallwaysouth)
+"oQZ" = (
+/obj/effect/landmark/teleporter_loc/corsat_sigma_remote{
+	index = "19"
+	},
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "corsat_teleporter_static"
+	},
+/area/corsat/gamma/sigmaremote/teleporter)
 "oRo" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -44389,6 +44532,9 @@
 	},
 /area/corsat/sigma/south/robotics)
 "piZ" = (
+/obj/effect/landmark/teleporter_loc/corsat_sigma_remote{
+	index = "12"
+	},
 /turf/open/floor/corsat{
 	dir = 10;
 	icon_state = "corsat_teleporter_static"
@@ -44894,6 +45040,12 @@
 	icon_state = "squares"
 	},
 /area/corsat/gamma/security/cells)
+"pMU" = (
+/turf/open/floor/corsat{
+	dir = 4;
+	icon_state = "yellowcorner"
+	},
+/area/corsat/gamma/foyer)
 "pMZ" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4;
@@ -45921,6 +46073,15 @@
 	icon_state = "blue"
 	},
 /area/corsat/sigma/hangar)
+"qBI" = (
+/obj/effect/landmark/teleporter_loc/corsat_sigma_remote{
+	index = "11"
+	},
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "corsat_teleporter_static"
+	},
+/area/corsat/gamma/sigmaremote/teleporter)
 "qBJ" = (
 /turf/open/floor/corsat{
 	icon_state = "green"
@@ -46449,6 +46610,15 @@
 	icon_state = "squares"
 	},
 /area/corsat/gamma/cargo)
+"qZX" = (
+/obj/effect/landmark/teleporter_loc/corsat_sigma_remote{
+	index = "7"
+	},
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "corsat_teleporter_static"
+	},
+/area/corsat/gamma/sigmaremote/teleporter)
 "rba" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -46928,6 +47098,15 @@
 	icon_state = "containment_corner_variant_2"
 	},
 /area/corsat/gamma/sigmaremote)
+"rvz" = (
+/obj/effect/landmark/teleporter_loc/corsat_sigma_remote{
+	index = "18"
+	},
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "corsat_teleporter_static"
+	},
+/area/corsat/gamma/sigmaremote/teleporter)
 "rvC" = (
 /obj/structure/machinery/power/apc/high{
 	dir = 1;
@@ -47357,6 +47536,15 @@
 	icon_state = "purplewhitecorner"
 	},
 /area/corsat/sigma/south/complex)
+"rKW" = (
+/obj/effect/landmark/teleporter_loc/corsat_sigma_remote{
+	index = "21"
+	},
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "corsat_teleporter_static"
+	},
+/area/corsat/gamma/sigmaremote/teleporter)
 "rLp" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 8;
@@ -47556,19 +47744,14 @@
 /turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "rTw" = (
-/obj/structure/window/reinforced{
-	dir = 8
+/obj/effect/landmark/teleporter_loc/corsat_sigma_remote{
+	index = "2"
 	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "corsat_teleporter_static"
 	},
-/obj/structure/flora/bush/ausbushes/var3/brflowers,
-/obj/structure/window/reinforced{
-	layer = 3.8
-	},
-/turf/open/gm/grass/grass1/weedable,
-/area/corsat/gamma/foyer)
+/area/corsat/gamma/sigmaremote/teleporter)
 "rTX" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -48423,6 +48606,15 @@
 	icon_state = "darkgreen"
 	},
 /area/corsat/gamma/residential)
+"sGH" = (
+/obj/effect/landmark/teleporter_loc/corsat_sigma_remote{
+	index = "3"
+	},
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "corsat_teleporter_static"
+	},
+/area/corsat/gamma/sigmaremote/teleporter)
 "sGQ" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
 /turf/open/gm/dirtgrassborder/west,
@@ -49013,6 +49205,15 @@
 	icon_state = "purplewhite"
 	},
 /area/corsat/theta/biodome/complex)
+"tfC" = (
+/obj/effect/landmark/teleporter_loc/corsat_sigma_remote{
+	index = "16"
+	},
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "corsat_teleporter_static"
+	},
+/area/corsat/gamma/sigmaremote/teleporter)
 "tfP" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/condiment/saltshaker,
@@ -50645,6 +50846,15 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/corsat/theta/biodome)
+"uCg" = (
+/obj/effect/landmark/teleporter_loc/corsat_sigma_remote{
+	index = "4"
+	},
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "corsat_teleporter_static"
+	},
+/area/corsat/gamma/sigmaremote/teleporter)
 "uCU" = (
 /turf/open/floor/corsat{
 	dir = 8;
@@ -52263,6 +52473,12 @@
 	icon_state = "darkgreen"
 	},
 /area/corsat/gamma/residential)
+"vRk" = (
+/obj/structure/machinery/disposal,
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/corsat/gamma/foyer)
 "vRJ" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
@@ -54278,11 +54494,14 @@
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/sigma/airlock/east)
 "xKA" = (
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "yellow"
+/obj/effect/landmark/teleporter_loc/corsat_sigma_remote{
+	index = "24"
 	},
-/area/corsat/gamma/foyer)
+/turf/open/floor/corsat{
+	dir = 10;
+	icon_state = "corsat_teleporter_static"
+	},
+/area/corsat/gamma/sigmaremote/teleporter)
 "xKC" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4;
@@ -58898,11 +59117,11 @@ ylo
 abF
 gKQ
 hho
-piZ
-piZ
-piZ
-piZ
-piZ
+gcl
+hRZ
+qBI
+tfC
+rKW
 qaY
 jGk
 aax
@@ -59101,11 +59320,11 @@ ylo
 abF
 gYL
 hho
+rTw
+qZX
 piZ
-piZ
-piZ
-piZ
-piZ
+ast
+hsD
 qaY
 gYL
 aax
@@ -59304,11 +59523,11 @@ ylo
 abF
 gYL
 hho
-piZ
-piZ
-piZ
-piZ
-piZ
+sGH
+gew
+bHg
+rvz
+aGr
 qaY
 gYL
 aEa
@@ -59507,11 +59726,11 @@ ylo
 abF
 gYL
 hho
-piZ
-piZ
-piZ
-piZ
-piZ
+uCg
+iCO
+gKu
+oQZ
+xKA
 qaY
 gYL
 aax
@@ -59710,11 +59929,11 @@ ylo
 abF
 gKQ
 hho
-piZ
-piZ
-piZ
-piZ
-piZ
+aqF
+aan
+epI
+ewW
+hOb
 qaY
 jGk
 aax
@@ -62750,7 +62969,7 @@ ylo
 ylo
 ylo
 acM
-aan
+lJz
 akH
 iVp
 qWr
@@ -71878,7 +72097,7 @@ rCN
 bRs
 vOi
 nxQ
-agF
+lUc
 arR
 arR
 arR
@@ -74358,7 +74577,7 @@ aRv
 asC
 bnr
 asC
-aGr
+vRk
 aqG
 aqH
 eaL
@@ -74542,11 +74761,11 @@ mRB
 gcE
 mRB
 mRB
-dRz
+aUn
 acD
 cut
 mRB
-dRz
+aUn
 vMP
 qaO
 mRB
@@ -74554,7 +74773,7 @@ mRB
 mRB
 mRB
 afc
-dRz
+aUn
 acD
 vMP
 qaO
@@ -75144,7 +75363,7 @@ vYt
 flo
 flo
 flo
-rTw
+agF
 bHf
 ggq
 eqK
@@ -75153,7 +75372,7 @@ rhv
 flo
 flo
 flo
-rTw
+agF
 bHf
 ggq
 qsC
@@ -75162,7 +75381,7 @@ rhv
 flo
 flo
 flo
-rTw
+agF
 bHf
 ggq
 qsC
@@ -75765,7 +75984,7 @@ fMi
 aqJ
 koY
 koY
-ast
+pMU
 vMP
 aqJ
 koY
@@ -75957,21 +76176,21 @@ ann
 ann
 ann
 ann
-gew
+jRf
 vsN
 vMP
 afg
-aGr
+vRk
 aqi
 aqi
 aqi
 aqi
 aqi
 ahi
-xKA
+aTp
 vMP
 deR
-aGr
+vRk
 aqy
 aqy
 aqy
@@ -76171,7 +76390,7 @@ biX
 taX
 aqi
 aqi
-xKA
+aTp
 nXR
 deR
 aqy
@@ -76577,7 +76796,7 @@ bkX
 aVi
 pYS
 aqi
-aTp
+dRz
 vMP
 deR
 amZ
@@ -76780,7 +76999,7 @@ mJy
 oTs
 voF
 aqi
-xKA
+aTp
 vMP
 deR
 aPW

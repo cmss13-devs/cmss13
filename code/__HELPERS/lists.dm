@@ -391,6 +391,19 @@
 	original += result
 	return original
 
+/// Returns a list of atoms sorted by each entry's distance to `target`.
+/proc/sort_list_dist(list/atom/list_to_sort, atom/target)
+	var/list/distances = list()
+	for(var/atom/A as anything in list_to_sort)
+		// Just in case this happens anyway.
+		if(!istype(A))
+			stack_trace("sort_list_dist() was called with a list containing a non-atom object. ([A.type])")
+			return list_to_sort
+
+		distances[A] = get_dist_sqrd(A, target)
+
+	return sortTim(distances, GLOBAL_PROC_REF(cmp_numeric_asc), TRUE)
+
 //Converts a bitfield to a list of numbers (or words if a wordlist is provided)
 /proc/bitfield2list(bitfield = 0, list/wordlist)
 	var/list/r = list()
@@ -521,7 +534,7 @@
 
 //Copies a list, and all lists inside it recusively
 //Does not copy any other reference type
-/proc/deepCopyList(list/L)
+/proc/deep_copy_list(list/L)
 	if(!islist(L))
 		return L
 	. = L.Copy()
@@ -532,10 +545,10 @@
 			continue
 		var/value = .[key]
 		if(islist(value))
-			value = deepCopyList(value)
+			value = deep_copy_list(value)
 			.[key] = value
 		if(islist(key))
-			key = deepCopyList(key)
+			key = deep_copy_list(key)
 			.[i] = key
 			.[key] = value
 

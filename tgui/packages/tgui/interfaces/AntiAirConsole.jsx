@@ -2,8 +2,8 @@ import { useBackend, useLocalState } from '../backend';
 import { Stack, Section, Tabs, Button, NoticeBox, Box, Dimmer, Icon } from '../components';
 import { Window } from '../layouts';
 
-export const AntiAirConsole = (props, context) => {
-  const { act, data } = useBackend(context);
+export const AntiAirConsole = (props) => {
+  const { act, data } = useBackend();
   return (
     <Window width={400} height={300}>
       <Window.Content>
@@ -13,13 +13,12 @@ export const AntiAirConsole = (props, context) => {
   );
 };
 
-const GeneralPanel = (props, context) => {
-  const { act, data } = useBackend(context);
+const GeneralPanel = (props) => {
+  const { act, data } = useBackend();
 
   const sections = data.sections;
 
   const [selectedSection, setSelectedSection] = useLocalState(
-    context,
     'selected_section',
     null
   );

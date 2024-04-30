@@ -31,13 +31,12 @@ interface PlacedMark extends Mark {
 // The position of the xeno in the hive (0 = normal xeno; 1 = queen; 2+ = hive leader)
 type HivePosition = 0 | 1 | 2;
 
-const MenuActions = (props, context) => {
+const MenuActions = (props) => {
   const [historicalSelected, setHistoricalSelected] = useLocalState(
-    context,
     'historicalSelected',
     ''
   );
-  const { data, act } = useBackend<MarkProps>(context);
+  const { data, act } = useBackend<MarkProps>();
   return (
     <Flex fill justify="space-between" className="ActionMenu">
       <Flex.Item>
@@ -84,10 +83,9 @@ const MenuActions = (props, context) => {
   );
 };
 
-const MarkSelection = (props, context) => {
-  const { data } = useBackend<MarkProps>(context);
+const MarkSelection = (props) => {
+  const { data } = useBackend<MarkProps>();
   const [selectionMenu, setSelectionMenu] = useLocalState(
-    context,
     'selectionMenu',
     false
   );
@@ -132,7 +130,10 @@ const MarkSelection = (props, context) => {
   );
 };
 
-const MarkImage = (props: { image: string; size: string }, _) => {
+const MarkImage = (
+  props: { readonly image: string; readonly size: string },
+  _
+) => {
   return (
     <span
       className={classes([
@@ -144,11 +145,10 @@ const MarkImage = (props: { image: string; size: string }, _) => {
   );
 };
 
-const HistoricalMark = (props: { mark: PlacedMark }, context) => {
-  const { data } = useBackend<MarkProps>(context);
+const HistoricalMark = (props: { readonly mark: PlacedMark }) => {
+  const { data } = useBackend<MarkProps>();
   const { mark } = props;
   const [historicalSelected, setHistoricalSelected] = useLocalState(
-    context,
     'historicalSelected',
     ''
   );
@@ -211,8 +211,8 @@ const HistoricalMark = (props: { mark: PlacedMark }, context) => {
   );
 };
 
-const MarkHistory = (props, context) => {
-  const { data } = useBackend<MarkProps>(context);
+const MarkHistory = (props) => {
+  const { data } = useBackend<MarkProps>();
 
   const { mark_list_infos } = data;
   return (
@@ -236,14 +236,9 @@ const MarkHistory = (props, context) => {
   );
 };
 
-export const MarkMenu = (props, context) => {
+export const MarkMenu = (props) => {
   return (
-    <Window
-      title={'Mark Menu'}
-      theme="hive_status"
-      resizable
-      width={560}
-      height={680}>
+    <Window title={'Mark Menu'} theme="hive_status" width={560} height={680}>
       <Window.Content scrollable className="MarkMenu">
         <Stack vertical>
           <Stack.Item>
@@ -255,8 +250,8 @@ export const MarkMenu = (props, context) => {
   );
 };
 
-const MarkMeaningList = (props: { onClick?: () => void }, context) => {
-  const { data, act } = useBackend<MarkProps>(context);
+const MarkMeaningList = (props: { readonly onClick?: () => void }) => {
+  const { data, act } = useBackend<MarkProps>();
   const { mark_meanings, selected_mark } = data;
 
   return (

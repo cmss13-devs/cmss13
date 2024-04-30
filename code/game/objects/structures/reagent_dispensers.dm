@@ -5,6 +5,7 @@
 	icon_state = "watertank"
 	density = TRUE
 	anchored = FALSE
+	drag_delay = 1
 	health = 100 // Can be destroyed in 2-4 slashes.
 	flags_atom = CAN_BE_SYRINGED
 	wrenchable = TRUE
@@ -128,6 +129,25 @@
 	if(N)
 		amount_per_transfer_from_this = N
 
+/obj/structure/reagent_dispensers/clicked(mob/user, list/mods)
+	if(!Adjacent(user))
+		return ..()
+
+	if(!ishuman(user))
+		return ..()
+
+	if(!reagents || reagents.locked)
+		return ..()
+
+	if(mods["alt"])
+		dispensing = !dispensing
+		if(dispensing)
+			to_chat(user, SPAN_NOTICE("[src] is now dispensing"))
+		else
+			to_chat(user, SPAN_NOTICE("[src] is now filling"))
+		return TRUE
+	return ..()
+
 /obj/structure/reagent_dispensers/attackby(obj/item/hit_item, mob/living/user)
 	if(istype(hit_item, /obj/item/reagent_container))
 		return
@@ -147,13 +167,6 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "ammoniatank"
 	chemical = "ammonia"
-
-/obj/structure/reagent_dispensers/oxygentank
-	name = "oxygentank"
-	desc = "An oxygen tank"
-	icon = 'icons/obj/objects.dmi'
-	icon_state = "oxygentank"
-	chemical = "oxygen"
 
 /obj/structure/reagent_dispensers/acidtank
 	name = "sulfuric acid tank"
@@ -394,6 +407,13 @@
 	icon_state = "hydrogentank"
 	chemical = "hydrogen"
 
+/obj/structure/reagent_dispensers/fueltank/oxygentank
+	name = "oxygentank"
+	desc = "An oxygen tank"
+	icon = 'icons/obj/objects.dmi'
+	icon_state = "oxygentank"
+	chemical = "oxygen"
+
 /obj/structure/reagent_dispensers/fueltank/custom
 	name = "reagent tank"
 	desc = "A reagent tank, typically used to store large quantities of chemicals."
@@ -432,6 +452,7 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "peppertank"
 	anchored = TRUE
+	drag_delay = 3
 	wrenchable =  FALSE
 	density = FALSE
 	amount_per_transfer_from_this = 45
@@ -445,6 +466,7 @@
 	icon_state = "water_cooler"
 	possible_transfer_amounts = null
 	anchored = TRUE
+	drag_delay = 3
 	chemical = "water"
 
 /obj/structure/reagent_dispensers/water_cooler/walk_past
@@ -460,6 +482,7 @@
 	icon_state = "beertankTEMP"
 	amount_per_transfer_from_this = 10
 	chemical = "beer"
+	drag_delay = 3
 
 /obj/structure/reagent_dispensers/beerkeg/alt
 	icon_state = "beertank_alt"
@@ -474,6 +497,7 @@
 	icon_state = "virusfoodtank"
 	amount_per_transfer_from_this = 10
 	anchored = TRUE
+	drag_delay = 3
 	wrenchable = FALSE
 	density = FALSE
 	chemical = "virusfood"

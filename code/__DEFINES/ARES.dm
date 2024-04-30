@@ -1,21 +1,22 @@
+#define ARES_ACCESS_LOGOUT 0
 /// Generic access for 1:1 conversations with ARES and unrestricted commands.
-#define ARES_ACCESS_BASIC 0
+#define ARES_ACCESS_BASIC 1
 /// Secure Access, can read ARES Announcements and Bioscans.
-#define ARES_ACCESS_COMMAND 1
-#define ARES_ACCESS_JOE 2
+#define ARES_ACCESS_COMMAND 2
+#define ARES_ACCESS_JOE 3
 /// CL, can read Apollo Log and also Delete Announcements.
-#define ARES_ACCESS_CORPORATE 3
+#define ARES_ACCESS_CORPORATE 4
 /// Senior Command, can Delete Bioscans.
-#define ARES_ACCESS_SENIOR 4
+#define ARES_ACCESS_SENIOR 5
 /// Synth, CE & Commanding Officer, can read the access log.
-#define ARES_ACCESS_CE 5
-#define ARES_ACCESS_SYNTH 6
-#define ARES_ACCESS_CO 7
+#define ARES_ACCESS_CE 6
+#define ARES_ACCESS_SYNTH 7
+#define ARES_ACCESS_CO 8
 /// High Command, can read the deletion log.
-#define ARES_ACCESS_HIGH 8
-#define ARES_ACCESS_WY_COMMAND 9
-/// Debugging. Allows me to view everything without using a high command rank. Unlikely to stay in a full merge.
-#define ARES_ACCESS_DEBUG 10
+#define ARES_ACCESS_HIGH 9
+#define ARES_ACCESS_WY_COMMAND 10
+/// Debugging. Allows me to view everything without using a high command rank.
+#define ARES_ACCESS_DEBUG 11
 
 #define ARES_RECORD_ANNOUNCE "Announcement Record"
 #define ARES_RECORD_ANTIAIR "AntiAir Control Log"
@@ -27,6 +28,7 @@
 #define ARES_RECORD_MAINTENANCE "Maintenance Ticket"
 #define ARES_RECORD_ACCESS "Access Ticket"
 #define ARES_RECORD_FLIGHT "Flight Record"
+#define ARES_RECORD_TECH "Tech Control Record"
 
 /// Not by ARES logged through marine_announcement()
 #define ARES_LOG_NONE 0
@@ -67,6 +69,16 @@
 #define TICKET_OPEN "OPEN"
 #define TICKET_CLOSED "CLOSED"
 
+// Priority status changes.
+/// Upgraded to Priority
+#define TICKET_PRIORITY "priority"
+/// Downgraded from Priority
+#define TICKET_NON_PRIORITY "non-priority"
+
 /// Cooldowns
 #define COOLDOWN_ARES_SENSOR 60 SECONDS
 #define COOLDOWN_ARES_ACCESS_CONTROL 20 SECONDS
+#define COOLDOWN_ARES_VENT 60 SECONDS
+
+/// Time until someone can respawn as Working Joe
+#define JOE_JOIN_DEAD_TIME (15 MINUTES)

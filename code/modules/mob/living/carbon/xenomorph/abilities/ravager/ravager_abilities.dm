@@ -29,7 +29,7 @@
 	xeno_cooldown = 18 SECONDS
 
 	// Config values (mutable)
-	var/empower_range = 3
+	var/empower_range = 4
 	var/max_targets = 6
 	var/main_empower_base_shield = 0
 	var/initial_activation_shield = 50

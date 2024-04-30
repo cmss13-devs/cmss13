@@ -10039,20 +10039,6 @@
 	icon_state = "bluegreycorner"
 	},
 /area/corsat/theta/airlock/east)
-"aCR" = (
-/obj/structure/machinery/power/geothermal{
-	desc = "A high-tech thermoelectric generator fueled by a superheated uranium rod.";
-	fail_rate = 4;
-	name = "\improper G-17 Thermoelectric Generator"
-	},
-/obj/structure/cable/yellow{
-	d2 = 4;
-	icon_state = "0-4"
-	},
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/corsat/sigma/southeast/generator)
 "aCS" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	name = "Reception Desk";
@@ -10653,20 +10639,6 @@
 	icon_state = "retrosquares"
 	},
 /area/corsat/omega/airlocknorth)
-"aEp" = (
-/obj/structure/machinery/power/geothermal{
-	desc = "A high-tech thermoelectric generator fueled by a superheated uranium rod.";
-	fail_rate = 4;
-	name = "\improper G-17 Thermoelectric Generator"
-	},
-/obj/structure/cable/yellow{
-	d2 = 4;
-	icon_state = "0-4"
-	},
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/corsat/gamma/engineering/core)
 "aEq" = (
 /obj/structure/window/framed/corsat,
 /turf/open/floor/plating,
@@ -10675,22 +10647,6 @@
 /obj/structure/window/framed/corsat,
 /turf/open/floor/plating,
 /area/corsat/gamma/cargo/lobby)
-"aEs" = (
-/obj/structure/machinery/power/geothermal{
-	desc = "A high-tech thermoelectric generator fueled by a superheated uranium rod.";
-	fail_rate = 4;
-	name = "\improper G-17 Thermoelectric Generator"
-	},
-/obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "0-8";
-	layer = 2.1
-	},
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/corsat/gamma/engineering/core)
 "aEt" = (
 /turf/open/floor/corsat{
 	icon_state = "arrow_west"
@@ -10724,22 +10680,6 @@
 	icon_state = "darkgreen"
 	},
 /area/corsat/gamma/hangar/monorail)
-"aEA" = (
-/obj/structure/machinery/power/geothermal{
-	desc = "A high-tech thermoelectric generator fueled by a superheated uranium rod.";
-	fail_rate = 4;
-	name = "\improper G-17 Thermoelectric Generator"
-	},
-/obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "0-8";
-	layer = 2.1
-	},
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/corsat/sigma/southeast/generator)
 "aEC" = (
 /turf/open/floor/corsat{
 	dir = 4;
@@ -11295,6 +11235,9 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/structure/surface/rack,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "yellow"
@@ -15046,6 +14989,10 @@
 /turf/open/floor/plating,
 /area/corsat/gamma/engineering/lobby)
 "aPX" = (
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/structure/surface/rack,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "yellow"
@@ -18863,6 +18810,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/machinery/fuelcell_recycler/full,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -26593,15 +26541,6 @@
 	icon_state = "squares"
 	},
 /area/corsat/sigma/south/robotics)
-"bwY" = (
-/obj/structure/surface/rack,
-/obj/item/circuitboard/mecha/gygax/main,
-/obj/item/circuitboard/mecha/gygax/targeting,
-/obj/item/circuitboard/mecha/gygax/peripherals,
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
-/area/corsat/sigma/south/robotics)
 "bwZ" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/screwdriver,
@@ -26720,12 +26659,6 @@
 	icon_state = "yellow"
 	},
 /area/corsat/sigma/south/robotics)
-"bxr" = (
-/obj/structure/prop/mech/mech_parts/part/durand_head,
-/turf/open/floor/corsat{
-	icon_state = "arrow_north"
-	},
-/area/corsat/sigma/south/robotics)
 "bxs" = (
 /obj/structure/surface/table/almayer,
 /obj/item/book/manual/ripley_build_and_repair,
@@ -26740,18 +26673,6 @@
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "yellow"
-	},
-/area/corsat/sigma/south/robotics)
-"bxu" = (
-/obj/structure/prop/mech/mech_parts/part/durand_right_arm,
-/turf/open/floor/corsat{
-	icon_state = "arrow_west"
-	},
-/area/corsat/sigma/south/robotics)
-"bxv" = (
-/obj/structure/prop/mech/mech_parts/part/durand_torso,
-/turf/open/floor/corsat{
-	icon_state = "cargo"
 	},
 /area/corsat/sigma/south/robotics)
 "bxw" = (
@@ -26776,12 +26697,6 @@
 "bxz" = (
 /turf/open/floor/corsat{
 	icon_state = "cargo"
-	},
-/area/corsat/sigma/south/robotics)
-"bxA" = (
-/obj/structure/prop/mech/mech_parts/part/durand_left_leg,
-/turf/open/floor/corsat{
-	icon_state = "arrow_east"
 	},
 /area/corsat/sigma/south/robotics)
 "bxB" = (
@@ -27747,13 +27662,6 @@
 	icon_state = "purplewhitecorner"
 	},
 /area/corsat/omega/complex)
-"bzU" = (
-/obj/structure/surface/table/almayer,
-/obj/item/book/manual/robotics_cyborgs,
-/turf/open/floor/corsat{
-	icon_state = "yellow"
-	},
-/area/corsat/sigma/south/robotics)
 "bzV" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/robotanalyzer,
@@ -36828,6 +36736,7 @@
 /obj/structure/machinery/camera/autoname{
 	network = list("gamma")
 	},
+/obj/structure/machinery/fuelcell_recycler/full,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "yellow"
@@ -37464,6 +37373,19 @@
 	icon_state = "whitetancorner"
 	},
 /area/corsat/sigma/dorms)
+"drE" = (
+/obj/structure/machinery/power/reactor/colony{
+	desc = "A high-tech thermoelectric generator fueled by a superheated uranium rod.";
+	name = "\improper G-17 Thermoelectric Generator"
+	},
+/obj/structure/cable/yellow{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/corsat/gamma/engineering/core)
 "drW" = (
 /turf/open/floor/corsat{
 	dir = 8;
@@ -38187,6 +38109,17 @@
 	icon_state = "bluegreycorner"
 	},
 /area/corsat/gamma/hangar/flightcontrol)
+"dSc" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/item/fuel_cell,
+/obj/structure/surface/rack,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "yellow"
+	},
+/area/corsat/gamma/engineering/core)
 "dSi" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
@@ -40888,6 +40821,12 @@
 	icon_state = "yellow"
 	},
 /area/corsat/gamma/engineering)
+"fTK" = (
+/obj/structure/prop/mech/parts/durand_left_leg,
+/turf/open/floor/corsat{
+	icon_state = "arrow_east"
+	},
+/area/corsat/sigma/south/robotics)
 "fTT" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
@@ -43759,6 +43698,21 @@
 	},
 /turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
+"hNL" = (
+/obj/structure/machinery/power/reactor/colony{
+	desc = "A high-tech thermoelectric generator fueled by a superheated uranium rod.";
+	name = "\improper G-17 Thermoelectric Generator"
+	},
+/obj/structure/cable/yellow{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "0-8";
+	layer = 2.1
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/corsat/gamma/engineering/core)
 "hOb" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/r_wall/biodome,
@@ -45478,6 +45432,15 @@
 "jfP" = (
 /turf/closed/wall/biodome,
 /area/corsat/gamma/rnr)
+"jfW" = (
+/obj/structure/surface/rack,
+/obj/item/circuitboard/exosuit/main/max,
+/obj/item/circuitboard/exosuit/peripherals/max/targeting,
+/obj/item/circuitboard/exosuit/peripherals/max,
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/corsat/sigma/south/robotics)
 "jgb" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/tool/surgery/retractor,
@@ -50633,6 +50596,12 @@
 	icon_state = "white"
 	},
 /area/corsat/gamma/residential/east)
+"mZm" = (
+/obj/structure/prop/mech/parts/durand_head,
+/turf/open/floor/corsat{
+	icon_state = "arrow_north"
+	},
+/area/corsat/sigma/south/robotics)
 "naG" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
@@ -51778,6 +51747,15 @@
 	icon_state = "whitetan"
 	},
 /area/corsat/gamma/residential/west)
+"nSp" = (
+/obj/structure/surface/rack,
+/obj/item/circuitboard/exosuit/peripherals/alice,
+/obj/item/circuitboard/exosuit/main/alice,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "yellow"
+	},
+/area/corsat/sigma/south/robotics)
 "nSA" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -52654,6 +52632,12 @@
 	icon_state = "plate"
 	},
 /area/corsat/gamma/biodome/complex)
+"oCt" = (
+/obj/structure/prop/mech/parts/durand_torso,
+/turf/open/floor/corsat{
+	icon_state = "cargo"
+	},
+/area/corsat/sigma/south/robotics)
 "oCz" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -52932,6 +52916,15 @@
 	icon_state = "squares"
 	},
 /area/corsat/omega/complex)
+"oNi" = (
+/obj/structure/surface/rack,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/corsat/sigma/southeast/generator)
 "oNI" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -53481,6 +53474,18 @@
 	icon_state = "squares"
 	},
 /area/corsat/omega/security)
+"phl" = (
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/structure/surface/rack,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "yellow"
+	},
+/area/corsat/gamma/engineering/core)
 "phK" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
@@ -54284,6 +54289,14 @@
 	icon_state = "bluegrey"
 	},
 /area/corsat/sigma/south/offices)
+"pUy" = (
+/obj/structure/surface/rack,
+/obj/item/circuitboard/exosuit/peripherals/work_loader,
+/obj/item/circuitboard/exosuit/peripherals/work_loader,
+/turf/open/floor/corsat{
+	icon_state = "yellow"
+	},
+/area/corsat/sigma/south/robotics)
 "pUA" = (
 /turf/open/floor/corsat{
 	dir = 8;
@@ -56478,6 +56491,13 @@
 	icon_state = "squares"
 	},
 /area/corsat/sigma/hangar/security)
+"ryn" = (
+/obj/structure/machinery/fuelcell_recycler/full,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "yellow"
+	},
+/area/corsat/gamma/engineering/core)
 "ryE" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/corsat{
@@ -57427,6 +57447,21 @@
 	icon_state = "red"
 	},
 /area/corsat/omega/hangar/security)
+"sgN" = (
+/obj/structure/machinery/power/reactor/colony{
+	desc = "A high-tech thermoelectric generator fueled by a superheated uranium rod.";
+	name = "\improper G-17 Thermoelectric Generator"
+	},
+/obj/structure/cable/yellow{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "0-8";
+	layer = 2.1
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/corsat/sigma/southeast/generator)
 "sgX" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -58835,14 +58870,6 @@
 	icon_state = "plate"
 	},
 /area/corsat/gamma/freezer)
-"thp" = (
-/obj/structure/surface/rack,
-/obj/item/circuitboard/mecha/ripley/peripherals,
-/obj/item/circuitboard/mecha/ripley/peripherals,
-/turf/open/floor/corsat{
-	icon_state = "yellow"
-	},
-/area/corsat/sigma/south/robotics)
 "thv" = (
 /obj/structure/machinery/power/apc/high{
 	dir = 1;
@@ -59869,15 +59896,6 @@
 	},
 /turf/open/ice,
 /area/corsat/gamma/biodome)
-"tWD" = (
-/obj/structure/surface/rack,
-/obj/item/circuitboard/mecha/odysseus/peripherals,
-/obj/item/circuitboard/mecha/odysseus/main,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "yellow"
-	},
-/area/corsat/sigma/south/robotics)
 "tWM" = (
 /obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor/corsat{
@@ -63622,6 +63640,12 @@
 	icon_state = "retrosquareslight"
 	},
 /area/corsat/gamma/sigmaremote)
+"wKf" = (
+/obj/structure/prop/mech/parts/durand_right_arm,
+/turf/open/floor/corsat{
+	icon_state = "arrow_west"
+	},
+/area/corsat/sigma/south/robotics)
 "wKh" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -65395,6 +65419,14 @@
 	icon_state = "squares"
 	},
 /area/corsat/sigma/cargo)
+"yhI" = (
+/obj/structure/surface/rack,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/corsat/sigma/southeast/generator)
 "yhK" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
@@ -65435,6 +65467,19 @@
 	icon_state = "purplewhite"
 	},
 /area/corsat/gamma/sigmaremote)
+"ykJ" = (
+/obj/structure/machinery/power/reactor/colony{
+	desc = "A high-tech thermoelectric generator fueled by a superheated uranium rod.";
+	name = "\improper G-17 Thermoelectric Generator"
+	},
+/obj/structure/cable/yellow{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/turf/open/floor/corsat{
+	icon_state = "plate"
+	},
+/area/corsat/sigma/southeast/generator)
 "ykO" = (
 /turf/open/floor/corsat{
 	icon_state = "red"
@@ -93715,9 +93760,9 @@ apI
 aau
 axp
 aqa
-aEp
-aEp
-aEp
+drE
+drE
+drE
 axB
 apZ
 bnl
@@ -94205,9 +94250,9 @@ apI
 aFY
 aqa
 aqa
-aEp
-aEp
-aEp
+drE
+drE
+drE
 sNG
 kRO
 ufN
@@ -94937,7 +94982,7 @@ aEq
 aEq
 agK
 apI
-aPX
+ryn
 aqa
 aqa
 hKc
@@ -95427,12 +95472,12 @@ ouk
 bqM
 buz
 apI
-aFY
+dSc
 aqa
 aqa
-aEs
-aEs
-aEs
+hNL
+hNL
+hNL
 sNG
 kRO
 ufN
@@ -95672,7 +95717,7 @@ oUz
 boV
 bOc
 apI
-aPX
+phl
 aqa
 aqa
 aPS
@@ -95920,9 +95965,9 @@ apI
 aau
 axp
 aqa
-aEs
-aEs
-aEs
+hNL
+hNL
+hNL
 orz
 iYR
 bnl
@@ -109532,7 +109577,7 @@ pbS
 auJ
 bxm
 aCs
-bxu
+wKf
 bxy
 aMi
 fVm
@@ -109776,8 +109821,8 @@ ahu
 vzc
 auJ
 bEg
-bxr
-bxv
+mZm
+oCt
 bxz
 pCi
 lLe
@@ -110023,7 +110068,7 @@ auJ
 hqv
 aCs
 bxw
-bxA
+fTK
 fbs
 bxF
 auJ
@@ -110525,7 +110570,7 @@ auK
 bxJ
 byb
 aMi
-bzU
+ydU
 auR
 ylo
 ylo
@@ -112238,7 +112283,7 @@ auJ
 bxT
 aMi
 aMi
-thp
+pUy
 auR
 ylo
 ylo
@@ -112478,7 +112523,7 @@ aMi
 aMi
 aMi
 kjH
-tWD
+nSp
 auJ
 bvL
 bxW
@@ -112723,7 +112768,7 @@ aMi
 uJq
 qAk
 kad
-bwY
+jfW
 aEx
 auR
 auR
@@ -121745,11 +121790,11 @@ auO
 atl
 aCz
 unf
-aCR
+ykJ
 aCz
-aCR
+ykJ
 aCz
-aCR
+ykJ
 aEK
 sWd
 xoK
@@ -122235,11 +122280,11 @@ aXX
 atl
 aZE
 unf
-aEA
+sgN
 aCz
-aCR
+ykJ
 aCz
-aEA
+sgN
 apE
 apN
 aqp
@@ -122723,13 +122768,13 @@ alw
 alw
 alw
 atl
-aCz
+oNi
 unf
-aEA
+sgN
 aCz
-aEA
+sgN
 aCz
-aEA
+sgN
 aEK
 aEK
 aqU
@@ -122968,7 +123013,7 @@ auU
 avf
 asX
 ati
-aCz
+yhI
 apz
 dFP
 dFP

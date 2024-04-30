@@ -13,7 +13,7 @@ interface TacMapProps {
   svgData: any;
   canViewTacmap: number;
   canDraw: number;
-  isXeno: boolean;
+  isxeno: boolean;
   canViewCanvas: number;
   newCanvasFlatImage: string;
   oldCanvasFlatImage: string;
@@ -85,10 +85,9 @@ const colors: Record<string, string> = {
   'brown': '#5c351e',
 };
 
-export const TacticalMap = (props, context) => {
-  const { data, act } = useBackend<TacMapProps>(context);
+export const TacticalMap = (props) => {
+  const { data, act } = useBackend<TacMapProps>();
   const [pageIndex, setPageIndex] = useLocalState(
-    context,
     'pageIndex',
     data.canViewTacmap ? 0 : 1
   );
@@ -105,7 +104,7 @@ export const TacticalMap = (props, context) => {
     <Window
       width={700}
       height={850}
-      theme={data.isXeno ? 'hive_status' : 'crtblue'}>
+      theme={data.isxeno ? 'hive_status' : 'crtblue'}>
       <Window.Content>
         <Section
           fitted
@@ -124,7 +123,7 @@ export const TacticalMap = (props, context) => {
                   return (
                     <Tabs.Tab
                       key={i}
-                      color={data.isXeno ? 'purple' : 'blue'}
+                      color={data.isxeno ? 'purple' : 'blue'}
                       selected={i === pageIndex}
                       disabled={page.canOpen(data) === 0}
                       icon={page.icon}
@@ -143,12 +142,12 @@ export const TacticalMap = (props, context) => {
   );
 };
 
-const ViewMapPanel = (props, context) => {
-  const { data } = useBackend<TacMapProps>(context);
+const ViewMapPanel = (props) => {
+  const { data } = useBackend<TacMapProps>();
 
   // byond ui can't resist trying to render
   if (data.canViewTacmap === 0 || data.mapRef === null) {
-    return <OldMapPanel {...props} context={context} />;
+    return <OldMapPanel {...props} />;
   }
 
   return (
@@ -165,8 +164,8 @@ const ViewMapPanel = (props, context) => {
   );
 };
 
-const OldMapPanel = (props, context) => {
-  const { data } = useBackend<TacMapProps>(context);
+const OldMapPanel = (props) => {
+  const { data } = useBackend<TacMapProps>();
   return (
     <Section
       fitted
@@ -189,8 +188,8 @@ const OldMapPanel = (props, context) => {
   );
 };
 
-const DrawMapPanel = (props, context) => {
-  const { data, act } = useBackend<TacMapProps>(context);
+const DrawMapPanel = (props) => {
+  const { data, act } = useBackend<TacMapProps>();
 
   const timeLeftPct = data.canvasCooldown / data.canvasCooldownDuration;
   const canUpdate = data.canvasCooldown <= 0 && !data.updatedCanvas;
@@ -290,7 +289,7 @@ const DrawMapPanel = (props, context) => {
           className={'progress-stack'}
           position="absolute"
           width="98%"
-          style={{ 'z-index': '1' }}
+          style={{ 'zIndex': '1' }}
           bottom="-40px">
           <Stack.Item grow>
             {data.canvasCooldown > 0 && (

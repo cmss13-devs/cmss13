@@ -6,15 +6,14 @@ import { range } from 'common/collections';
 import { Icon } from '../../components';
 import { FultonProps } from './types';
 
-export const FultonMfdPanel = (props: MfdProps, context) => {
-  const { data, act } = useBackend<FultonProps>(context);
+export const FultonMfdPanel = (props: MfdProps) => {
+  const { data, act } = useBackend<FultonProps>();
   const [fulltonOffset, setFultonOffset] = useLocalState(
-    context,
     `${props.panelStateId}_fultonoffset`,
     0
   );
-  const { setPanelState } = mfdState(context, props.panelStateId);
-  const { equipmentState } = useEquipmentState(context, props.panelStateId);
+  const { setPanelState } = mfdState(props.panelStateId);
+  const { equipmentState } = useEquipmentState(props.panelStateId);
 
   const fultons = [...data.fulton_targets];
   const regex = /(\d+)/;
@@ -55,7 +54,7 @@ export const FultonMfdPanel = (props: MfdProps, context) => {
         {
           children: <Icon name="arrow-up" />,
           onClick: () => {
-            if (fulltonOffset >= 1) {
+            if (fulltonOffset > 0) {
               setFultonOffset(fulltonOffset - 1);
             }
           },
@@ -69,6 +68,9 @@ export const FultonMfdPanel = (props: MfdProps, context) => {
             }
           },
         },
+      ]}
+      topButtons={[
+        { children: 'EQUIP', onClick: () => setPanelState('equipment') },
       ]}
       bottomButtons={[
         {

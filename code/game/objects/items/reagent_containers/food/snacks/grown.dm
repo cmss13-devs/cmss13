@@ -62,7 +62,7 @@
 	name = "cherries"
 	desc = "Great for toppings!"
 	icon_state = "cherry"
-	filling_color = "#FF0000"
+	filling_color = COLOR_RED
 	gender = PLURAL
 	plantname = "cherry"
 
@@ -357,7 +357,7 @@
 	name = "chili"
 	desc = "It's spicy! Wait... IT'S BURNING ME!!"
 	icon_state = "chilipepper"
-	filling_color = "#FF0000"
+	filling_color = COLOR_RED
 	plantname = "chili"
 
 /obj/item/reagent_container/food/snacks/grown/eggplant
@@ -379,7 +379,7 @@
 	name = "tomato"
 	desc = "I say to-mah-to, you say tom-mae-to."
 	icon_state = "tomato"
-	filling_color = "#FF0000"
+	filling_color = COLOR_RED
 	potency = 10
 	plantname = "tomato"
 
@@ -395,7 +395,7 @@
 	desc = "I say to-mah-to, you say tom-mae-to... OH GOD IT'S EATING MY LEGS!!"
 	icon_state = "killertomato"
 	potency = 10
-	filling_color = "#FF0000"
+	filling_color = COLOR_RED
 	potency = 30
 	plantname = "killertomato"
 
@@ -414,7 +414,7 @@
 	desc = "So bloody...so...very...bloody....AHHHH!!!!"
 	icon_state = "bloodtomato"
 	potency = 10
-	filling_color = "#FF0000"
+	filling_color = COLOR_RED
 	plantname = "bloodtomato"
 
 /obj/item/reagent_container/food/snacks/grown/bloodtomato/launch_impact(atom/hit_atom)
@@ -502,7 +502,7 @@
 	desc = "<I>Amanita Muscaria</I>: Learn poisonous mushrooms by heart. Only pick mushrooms you know."
 	icon_state = "amanita"
 	potency = 10
-	filling_color = "#FF0000"
+	filling_color = COLOR_RED
 	plantname = "amanita"
 
 /obj/item/reagent_container/food/snacks/grown/mushroom/angel

@@ -30,10 +30,9 @@ interface TerminalProps {
   'printer_toner': number;
 }
 
-const PurchaseDocs = (_, context) => {
-  const { data, act } = useBackend<TerminalProps>(context);
+const PurchaseDocs = () => {
+  const { data, act } = useBackend<TerminalProps>();
   const [purchaseSelection, setPurchaseSelection] = useLocalState(
-    context,
     'purchase_confirm',
     '0'
   );
@@ -96,11 +95,11 @@ const PurchaseDocs = (_, context) => {
 };
 
 interface ConfirmationProps extends BoxProps {
-  onConfirm: () => any;
-  onCancel: () => any;
+  readonly onConfirm: () => any;
+  readonly onCancel: () => any;
 }
 
-const ConfirmationDialogue = (props: ConfirmationProps, context) => {
+const ConfirmationDialogue = (props: ConfirmationProps) => {
   return (
     <Stack vertical className="Confirm-Dialogue">
       <Stack.Item>{props.children}</Stack.Item>
@@ -125,17 +124,17 @@ const ConfirmationDialogue = (props: ConfirmationProps, context) => {
   );
 };
 
-const NoCompoundsDetected = (_, context) => {
+const NoCompoundsDetected = () => {
   return <span>ERROR: no chemicals have been detected.</span>;
 };
 
 interface CompoundRecordProps extends BoxProps {
-  compound: CompoundData;
-  canPrint: boolean;
+  readonly compound: CompoundData;
+  readonly canPrint: boolean;
 }
 
-const CompoundRecord = (props: CompoundRecordProps, context) => {
-  const { data, act } = useBackend<TerminalProps>(context);
+const CompoundRecord = (props: CompoundRecordProps) => {
+  const { data, act } = useBackend<TerminalProps>();
   const isMainTerminal = data.main_terminal === 1;
   const { compound } = props;
   const doc_ref = {
@@ -223,9 +222,9 @@ interface CompoundData {
   isPublished: boolean;
 }
 
-const ResearchReportTable = (_, context) => {
-  const { data } = useBackend<TerminalProps>(context);
-  const [hideOld, setHideOld] = useLocalState(context, 'hide_old', true);
+const ResearchReportTable = () => {
+  const { data } = useBackend<TerminalProps>();
+  const [hideOld, setHideOld] = useLocalState('hide_old', true);
   const documents = Object.keys(data.research_documents)
     .map((x) => {
       const output = data.research_documents[x] as DocumentRecord[];
@@ -260,14 +259,14 @@ const ResearchReportTable = (_, context) => {
 };
 
 export interface CompoundTableProps extends BoxProps {
-  docs: DocumentRecord[];
-  timeLabel: string;
-  canPrint: boolean;
+  readonly docs: DocumentRecord[];
+  readonly timeLabel: string;
+  readonly canPrint: boolean;
 }
 
-export const CompoundTable = (props: CompoundTableProps, context) => {
-  const { data } = useBackend<TerminalProps>(context);
-  const [hideOld] = useLocalState(context, 'hide_old', true);
+export const CompoundTable = (props: CompoundTableProps) => {
+  const { data } = useBackend<TerminalProps>();
+  const [hideOld] = useLocalState('hide_old', true);
   const published = Object.keys(data.published_documents)
     .map((x) => {
       const output = data.published_documents[x] as DocumentRecord[];
@@ -277,8 +276,8 @@ export const CompoundTable = (props: CompoundTableProps, context) => {
       return output;
     })
     .flat() as DocumentRecord[];
-  const [sortby, setSortBy] = useLocalState(context, 'sort_by', 'time');
-  const [sortdir, setSortdir] = useLocalState(context, 'sort_dir', 'asc');
+  const [sortby, setSortBy] = useLocalState('sort_by', 'time');
+  const [sortdir, setSortdir] = useLocalState('sort_dir', 'asc');
 
   const documents = props.docs;
 
@@ -400,10 +399,9 @@ const TonerEmpty = () => {
   return <span>ERROR: Printer toner is empty.</span>;
 };
 
-const ImproveClearanceConfirmation = (props, context) => {
-  const { data, act } = useBackend<TerminalProps>(context);
+const ImproveClearanceConfirmation = (props) => {
+  const { data, act } = useBackend<TerminalProps>();
   const [isConfirm, setConfirm] = useLocalState<string | undefined>(
-    context,
     'purchase_confirmation',
     undefined
   );
@@ -429,10 +427,9 @@ const ImproveClearanceConfirmation = (props, context) => {
   );
 };
 
-const XClearanceConfirmation = (props, context) => {
-  const { data, act } = useBackend<TerminalProps>(context);
+const XClearanceConfirmation = (props) => {
+  const { data, act } = useBackend<TerminalProps>();
   const [isConfirm, setConfirm] = useLocalState<string | undefined>(
-    context,
     'purchase_confirmation',
     undefined
   );
@@ -458,8 +455,8 @@ const XClearanceConfirmation = (props, context) => {
   );
 };
 
-const ResearchManager = (_, context) => {
-  const { data } = useBackend<TerminalProps>(context);
+const ResearchManager = () => {
+  const { data } = useBackend<TerminalProps>();
   return (
     <Box>
       <Stack vertical>
@@ -475,8 +472,8 @@ const ResearchManager = (_, context) => {
   );
 };
 
-const ErrorStack = (_, context) => {
-  const { data } = useBackend<TerminalProps>(context);
+const ErrorStack = () => {
+  const { data } = useBackend<TerminalProps>();
   return (
     <Stack>
       {data.photocopier_error === 1 && (
@@ -493,8 +490,8 @@ const ErrorStack = (_, context) => {
   );
 };
 
-const PublishedMaterial = (props, context) => {
-  const { data } = useBackend<TerminalProps>(context);
+const PublishedMaterial = (props) => {
+  const { data } = useBackend<TerminalProps>();
   const documents = Object.keys(data.published_documents)
     .map((x) => {
       const output = data.published_documents[x] as DocumentRecord[];
@@ -514,12 +511,8 @@ const PublishedMaterial = (props, context) => {
   );
 };
 
-const ResearchOverview = (_, context) => {
-  const [selectedTab, setSelectedTab] = useLocalState(
-    context,
-    'research_tab',
-    1
-  );
+const ResearchOverview = () => {
+  const [selectedTab, setSelectedTab] = useLocalState('research_tab', 1);
   return (
     <div className="TabWrapper">
       <Tabs fluid>
@@ -561,15 +554,10 @@ const ResearchOverview = (_, context) => {
   );
 };
 
-const ClearanceImproveButton = (_, context) => {
-  const { data } = useBackend<TerminalProps>(context);
-  const [selectedTab, setSelectedTab] = useLocalState(
-    context,
-    'research_tab',
-    1
-  );
+const ClearanceImproveButton = () => {
+  const { data } = useBackend<TerminalProps>();
+  const [selectedTab, setSelectedTab] = useLocalState('research_tab', 1);
   const [confirm, setConfirm] = useLocalState<string | undefined>(
-    context,
     'purchase_confirmation',
     undefined
   );
@@ -609,8 +597,8 @@ const ClearanceImproveButton = (_, context) => {
   );
 };
 
-export const ResearchTerminal = (_, context) => {
-  const { data } = useBackend<TerminalProps>(context);
+export const ResearchTerminal = () => {
+  const { data } = useBackend<TerminalProps>();
   return (
     <Window width={480 * 2} height={320 * 2} theme="crtyellow">
       <Window.Content scrollable className="ResearchTerminal">

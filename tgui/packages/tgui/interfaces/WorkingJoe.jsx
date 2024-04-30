@@ -12,14 +12,20 @@ const PAGES = {
   'access_requests': () => AccessRequests,
   'access_tickets': () => AccessTickets,
   'id_access': () => AccessID,
+  'core_security_gas': () => CoreSecGas,
 };
-export const WorkingJoe = (props, context) => {
-  const { data } = useBackend(context);
+export const WorkingJoe = (props) => {
+  const { data } = useBackend();
   const { current_menu } = data;
   const PageComponent = PAGES[current_menu]();
 
+  let themecolor = 'crtblue';
+  if (current_menu === 'core_security_gas') {
+    themecolor = 'crtred';
+  }
+
   return (
-    <Window theme="crtblue" width={950} height={725}>
+    <Window theme={themecolor} width={950} height={725}>
       <Window.Content scrollable>
         <PageComponent />
       </Window.Content>
@@ -27,8 +33,8 @@ export const WorkingJoe = (props, context) => {
   );
 };
 
-const Login = (props, context) => {
-  const { act } = useBackend(context);
+const Login = (props) => {
+  const { act } = useBackend();
 
   return (
     <Flex
@@ -61,13 +67,23 @@ const Login = (props, context) => {
   );
 };
 
-const MainMenu = (props, context) => {
-  const { data, act } = useBackend(context);
-  const { logged_in, access_text, last_page, current_menu, access_level } =
-    data;
+const MainMenu = (props) => {
+  const { data, act } = useBackend();
+  const {
+    logged_in,
+    access_text,
+    last_page,
+    current_menu,
+    access_level,
+    notify_sounds,
+  } = data;
   let can_request_access = 'Yes';
   if (access_level > 2) {
     can_request_access = 'No';
+  }
+  let soundicon = 'volume-high';
+  if (!notify_sounds) {
+    soundicon = 'volume-xmark';
   }
 
   return (
@@ -86,10 +102,16 @@ const MainMenu = (props, context) => {
             <Button
               icon="house"
               ml="auto"
-              mr="1rem"
               tooltip="Navigation Menu"
               onClick={() => act('home')}
               disabled={current_menu === 'main'}
+            />
+            <Button
+              icon={soundicon}
+              ml="auto"
+              mr="1rem"
+              tooltip="Mute/Un-Mute notifcation sounds."
+              onClick={() => act('toggle_sound')}
             />
           </Box>
 
@@ -219,12 +241,33 @@ const MainMenu = (props, context) => {
           </Stack>
         )}
       </Section>
+      {access_level >= 5 && (
+        <Section>
+          <h1 align="center">Core Security Protocols</h1>
+          <Stack>
+            <Stack.Item grow>
+              <Button
+                content="Nerve Gas Control"
+                align="center"
+                tooltip="Release stored CN20-X nerve gas from security vents."
+                icon="wind"
+                color="red"
+                ml="auto"
+                px="2rem"
+                width="100%"
+                bold
+                onClick={() => act('page_core_gas')}
+              />
+            </Stack.Item>
+          </Stack>
+        </Section>
+      )}
     </>
   );
 };
 
-const ApolloLog = (props, context) => {
-  const { data, act } = useBackend(context);
+const ApolloLog = (props) => {
+  const { data, act } = useBackend();
   const { logged_in, access_text, last_page, current_menu, apollo_log } = data;
 
   return (
@@ -279,8 +322,8 @@ const ApolloLog = (props, context) => {
   );
 };
 
-const LoginRecords = (props, context) => {
-  const { data, act } = useBackend(context);
+const LoginRecords = (props) => {
+  const { data, act } = useBackend();
   const { logged_in, access_text, last_page, current_menu, access_log } = data;
 
   return (
@@ -335,8 +378,8 @@ const LoginRecords = (props, context) => {
   );
 };
 
-const MaintReports = (props, context) => {
-  const { data, act } = useBackend(context);
+const MaintReports = (props) => {
+  const { data, act } = useBackend();
   const {
     logged_in,
     access_text,
@@ -484,8 +527,8 @@ const MaintReports = (props, context) => {
     </>
   );
 };
-const MaintManagement = (props, context) => {
-  const { data, act } = useBackend(context);
+const MaintManagement = (props) => {
+  const { data, act } = useBackend();
   const {
     logged_in,
     access_text,
@@ -635,8 +678,8 @@ const MaintManagement = (props, context) => {
     </>
   );
 };
-const AccessRequests = (props, context) => {
-  const { data, act } = useBackend(context);
+const AccessRequests = (props) => {
+  const { data, act } = useBackend();
   const {
     logged_in,
     access_text,
@@ -794,8 +837,8 @@ const AccessRequests = (props, context) => {
   );
 };
 
-const AccessTickets = (props, context) => {
-  const { data, act } = useBackend(context);
+const AccessTickets = (props) => {
+  const { data, act } = useBackend();
   const { logged_in, access_text, last_page, current_menu, access_tickets } =
     data;
 
@@ -941,6 +984,75 @@ const AccessTickets = (props, context) => {
                 )}
               </Flex.Item>
             </Flex>
+          );
+        })}
+      </Section>
+    </>
+  );
+};
+
+const CoreSecGas = (props) => {
+  const { data, act } = useBackend();
+  const {
+    logged_in,
+    access_text,
+    access_level,
+    last_page,
+    current_menu,
+    security_vents,
+  } = data;
+
+  return (
+    <>
+      <Section>
+        <Flex align="center">
+          <Box>
+            <Button
+              icon="arrow-left"
+              px="2rem"
+              textAlign="center"
+              tooltip="Go back"
+              onClick={() => act('go_back')}
+              disabled={last_page === current_menu}
+            />
+            <Button
+              icon="house"
+              ml="auto"
+              mr="1rem"
+              tooltip="Navigation Menu"
+              onClick={() => act('home')}
+            />
+          </Box>
+
+          <h3>
+            {logged_in}, {access_text}
+          </h3>
+
+          <Button.Confirm
+            content="Logout"
+            icon="circle-user"
+            ml="auto"
+            px="2rem"
+            bold
+            onClick={() => act('logout')}
+          />
+        </Flex>
+      </Section>
+
+      <Section>
+        <h1 align="center">Nerve Gas Release</h1>
+        {security_vents.map((vent, i) => {
+          return (
+            <Button.Confirm
+              key={i}
+              align="center"
+              content={vent.vent_tag}
+              icon="wind"
+              tooltip="Release Gas"
+              width="100%"
+              disabled={access_level < 5 || !vent.available}
+              onClick={() => act('trigger_vent', { vent: vent.ref })}
+            />
           );
         })}
       </Section>

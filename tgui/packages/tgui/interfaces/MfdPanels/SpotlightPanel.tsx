@@ -26,13 +26,16 @@ const SpotPanel = (props: DropshipEquipment) => {
   );
 };
 
-export const SpotlightMfdPanel = (props: MfdProps, context) => {
-  const { act, data } = useBackend<EquipmentContext>(context);
-  const { setPanelState } = mfdState(context, props.panelStateId);
-  const { equipmentState } = useEquipmentState(context, props.panelStateId);
+export const SpotlightMfdPanel = (props: MfdProps) => {
+  const { act, data } = useBackend<EquipmentContext>();
+  const { setPanelState } = mfdState(props.panelStateId);
+  const { equipmentState } = useEquipmentState(props.panelStateId);
   const spotlight = data.equipment_data.find(
     (x) => x.mount_point === equipmentState
   );
+  const deployLabel =
+    (spotlight?.data?.deployed ?? 0) === 1 ? 'DISABLE' : 'ENABLE';
+
   return (
     <MfdPanel
       panelStateId={props.panelStateId}
@@ -41,7 +44,7 @@ export const SpotlightMfdPanel = (props: MfdProps, context) => {
       ]}
       leftButtons={[
         {
-          children: 'DEPLOY',
+          children: deployLabel,
           onClick: () =>
             act('deploy-equipment', { equipment_id: spotlight?.mount_point }),
         },

@@ -9,7 +9,7 @@ import { clamp01 } from 'common/math';
 import { useBackend, useLocalState } from '../backend';
 import { Box, Button, Section, Input, Stack } from '../components';
 import { Window } from '../layouts';
-import { globalEvents } from '../events.js';
+import { globalEvents } from '../events';
 
 let lastScrollTime = 0;
 
@@ -17,42 +17,24 @@ const prohibitPassthrough = (key) => {
   key.event.preventDefault();
 };
 
-export const ListInput = (props, context) => {
-  const { act, data } = useBackend(context);
+export const ListInput = (props) => {
+  const { act, data } = useBackend();
   const { title, message, buttons, timeout, theme } = data;
 
   // Search
-  const [showSearchBar, setShowSearchBar] = useLocalState(
-    context,
-    'search_bar',
-    false
-  );
+  const [showSearchBar, setShowSearchBar] = useLocalState('search_bar', false);
   const [displayedArray, setDisplayedArray] = useLocalState(
-    context,
     'displayed_array',
     buttons
   );
 
   // KeyPress
-  const [searchArray, setSearchArray] = useLocalState(
-    context,
-    'search_array',
-    []
-  );
-  const [searchIndex, setSearchIndex] = useLocalState(
-    context,
-    'search_index',
-    0
-  );
-  const [lastCharCode, setLastCharCode] = useLocalState(
-    context,
-    'last_char_code',
-    null
-  );
+  const [searchArray, setSearchArray] = useLocalState('search_array', []);
+  const [searchIndex, setSearchIndex] = useLocalState('search_index', 0);
+  const [lastCharCode, setLastCharCode] = useLocalState('last_char_code', null);
 
   // Selected Button
   const [selectedButton, setSelectedButton] = useLocalState(
-    context,
     'selected_button',
     buttons[0]
   );
@@ -141,9 +123,9 @@ export const ListInput = (props, context) => {
                   }}
                 />
               }>
-              {displayedArray.map((button) => (
+              {displayedArray.map((button, i) => (
                 <Button
-                  key={button}
+                  key={i}
                   fluid
                   color="transparent"
                   id={button}
@@ -179,6 +161,7 @@ export const ListInput = (props, context) => {
             <Stack.Item>
               <Input
                 fluid
+                autoFocus
                 onInput={(e, value) =>
                   setDisplayedArray(
                     buttons.filter(

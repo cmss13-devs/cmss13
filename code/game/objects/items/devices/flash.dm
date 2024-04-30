@@ -102,17 +102,6 @@
 		else //if not carbon or sillicn
 			flashfail = TRUE
 
-		if(isrobot(user))
-			spawn(0)
-				var/atom/movable/overlay/animation = new(user.loc)
-				animation.layer = user.layer + 1
-				animation.icon_state = "blank"
-				animation.icon = 'icons/mob/mob.dmi'
-				animation.master = user
-				flick("blspell", animation)
-				sleep(5)
-				qdel(animation)
-
 		if(!flashfail)
 			if(!isSilicon(M))
 				user.visible_message(SPAN_DANGER("[user] blinds [M] with \the [src]!"))

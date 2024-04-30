@@ -337,13 +337,13 @@
 	msg_admin_niche("[usr ? key_name(usr) : "Someone"] is launching Fire Mission '[mission.name]' at ([target_turf.x],[target_turf.y],[target_turf.z]) [ADMIN_JMP(target_turf)]")
 
 
-	addtimer(CALLBACK(src, PROC_REF( play_sound), target_turf), grace_period)
-	addtimer(CALLBACK(src, PROC_REF( first_chat_warning), target_turf), first_warning)
-	addtimer(CALLBACK(src, PROC_REF( second_chat_warning), target_turf), second_warning)
-	addtimer(CALLBACK(src, PROC_REF( third_chat_warning), target_turf), third_warning)
-	addtimer(CALLBACK(src, PROC_REF( open_fire), target_turf, mission,dir), execution_start)
-	addtimer(CALLBACK(src, PROC_REF( flyoff)), flyoff_period)
-	addtimer(CALLBACK(src, PROC_REF( end_cooldown)), cooldown_period)
+	addtimer(CALLBACK(src, PROC_REF(play_sound), target_turf), grace_period)
+	addtimer(CALLBACK(src, PROC_REF(first_chat_warning), target_turf), first_warning)
+	addtimer(CALLBACK(src, PROC_REF(second_chat_warning), target_turf), second_warning)
+	addtimer(CALLBACK(src, PROC_REF(third_chat_warning), target_turf), third_warning)
+	addtimer(CALLBACK(src, PROC_REF(open_fire), target_turf, mission,dir), execution_start)
+	addtimer(CALLBACK(src, PROC_REF(flyoff)), flyoff_period)
+	addtimer(CALLBACK(src, PROC_REF(end_cooldown)), cooldown_period)
 
 /**
  * Change attack vector for firemission

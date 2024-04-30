@@ -145,7 +145,7 @@ export const CardContent = (props) => {
               minValue={111111}
               maxValue={999999}
               width="60px"
-              onChange={(e, value) =>
+              onChange={(value) =>
                 act('PRG_account', {
                   account: value,
                 })

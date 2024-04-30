@@ -223,7 +223,7 @@ export const Autodispenser = () => {
                     minValue={0.1}
                     maxValue={10}
                     value={multiplier}
-                    onChange={(e, value) =>
+                    onChange={(value) =>
                       act('set_multiplier', { set_multiplier: `${value}` })
                     }
                   />
@@ -235,7 +235,7 @@ export const Autodispenser = () => {
                     minValue={1}
                     maxValue={100}
                     value={cycle_limit}
-                    onChange={(e, value) =>
+                    onChange={(value) =>
                       act('set_cycles', { set_cycles: `${value}` })
                     }
                   />

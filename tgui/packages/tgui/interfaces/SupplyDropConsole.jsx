@@ -60,7 +60,7 @@ export const SupplyDropConsole = () => {
                 minValue={-1000}
                 maxValue={1000}
                 value={data.x_offset}
-                onChange={(e, value) => act('set_x', { set_x: `${value}` })}
+                onChange={(value) => act('set_x', { set_x: `${value}` })}
               />
             </LabeledList.Item>
             <LabeledList.Item label="Latitude">
@@ -70,7 +70,7 @@ export const SupplyDropConsole = () => {
                 minValue={-1000}
                 maxValue={1000}
                 value={data.y_offset}
-                onChange={(e, value) => act('set_y', { set_y: `${value}` })}
+                onChange={(value) => act('set_y', { set_y: `${value}` })}
               />
             </LabeledList.Item>
           </LabeledList>

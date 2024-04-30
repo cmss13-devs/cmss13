@@ -26,7 +26,7 @@ export const Mortar = (props) => {
                 minValue={-1000}
                 maxValue={1000}
                 value={target_x}
-                onChange={(_, value) => setTargetX(value)}
+                onChange={(value) => setTargetX(value)}
               />
             </LabeledList.Item>
             <LabeledList.Item label="Target Y">
@@ -36,7 +36,7 @@ export const Mortar = (props) => {
                 minValue={-1000}
                 maxValue={1000}
                 value={target_y}
-                onChange={(_, value) => setTargetY(value)}
+                onChange={(value) => setTargetY(value)}
               />
             </LabeledList.Item>
           </LabeledList>
@@ -84,7 +84,7 @@ export const Mortar = (props) => {
                 minValue={-10}
                 maxValue={10}
                 value={dial_x}
-                onChange={(_, value) => setDialX(value)}
+                onChange={(value) => setDialX(value)}
               />
             </LabeledList.Item>
             <LabeledList.Item label="Y Offset">
@@ -95,7 +95,7 @@ export const Mortar = (props) => {
                 minValue={-10}
                 maxValue={10}
                 value={dial_y}
-                onChange={(_, value) => setDialY(value)}
+                onChange={(value) => setDialY(value)}
               />
             </LabeledList.Item>
           </LabeledList>

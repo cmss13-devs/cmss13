@@ -598,14 +598,14 @@ const SupplyDrop = (props) => {
             <LabeledControls.Item label="LONGITUDE">
               <NumberInput
                 value={supplyX}
-                onChange={(e, value) => setSupplyX(value)}
+                onChange={(value) => setSupplyX(value)}
                 width="75px"
               />
             </LabeledControls.Item>
             <LabeledControls.Item label="LATITUDE">
               <NumberInput
                 value={supplyY}
-                onChange={(e, value) => setSupplyY(value)}
+                onChange={(value) => setSupplyY(value)}
                 width="75px"
               />
             </LabeledControls.Item>
@@ -671,14 +671,14 @@ const OrbitalBombardment = (props) => {
             <LabeledControls.Item label="LONGITUDE">
               <NumberInput
                 value={OBX}
-                onChange={(e, value) => setOBX(value)}
+                onChange={(value) => setOBX(value)}
                 width="75px"
               />
             </LabeledControls.Item>
             <LabeledControls.Item label="LATITUDE">
               <NumberInput
                 value={OBY}
-                onChange={(e, value) => setOBY(value)}
+                onChange={(value) => setOBY(value)}
                 width="75px"
               />
             </LabeledControls.Item>
@@ -739,8 +739,6 @@ const SavedCoordinates = (props) => {
     }
   };
 
-  console.log(props);
-
   return (
     <Stack.Item>
       <Box bold textAlign="center">
@@ -765,7 +763,7 @@ const SavedCoordinates = (props) => {
               <Input
                 width="100%"
                 value={coords.comment}
-                onChange={(e, value) =>
+                onChange={(value) =>
                   act('change_coordinate_comment', {
                     comment: value,
                     index: coords.index,

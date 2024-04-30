@@ -336,7 +336,7 @@ const XenoList = (props) => {
               value={maxHealth}
               minValue={0}
               maxValue={100}
-              onChange={(_, value) => setMaxHealth(value)}
+              onChange={(value) => setMaxHealth(value)}
             />
           </Flex.Item>
         </Flex>

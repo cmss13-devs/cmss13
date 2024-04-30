@@ -187,7 +187,7 @@
 	icon_state = "engPlatform_corners"
 
 /obj/effect/hybrisa/decal/egg_base
-	name = "strange tentacle?"
-	desc = "Strange tentacle looking things?"
+	name = "strange goop"
+	desc = null
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "egg_base"

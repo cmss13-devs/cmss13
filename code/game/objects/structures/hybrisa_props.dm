@@ -568,6 +568,8 @@ var/damage_state = 0
 	name = "stalagmite"
 	icon_state = "stalagmite"
 	desc = "A cave stalagmite."
+	layer = TURF_LAYER
+	plane = FLOOR_PLANE
 /obj/structure/prop/hybrisa/cavedecor/stalagmite0
 	icon_state = "stalagmite"
 /obj/structure/prop/hybrisa/cavedecor/stalagmite1

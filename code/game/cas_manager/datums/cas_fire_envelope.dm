@@ -389,8 +389,8 @@
 	fire_length = 12
 	grace_period = 5 SECONDS
 	first_warning = 6 SECONDS
-	second_warning = 9 SECONDS
-	third_warning = 10 SECONDS
+	second_warning = 8 SECONDS
+	third_warning = 9 SECONDS
 	execution_start = 10 SECONDS
 	flyoff_period = 15 SECONDS
 	cooldown_period = 25 SECONDS

@@ -1454,7 +1454,21 @@
 /obj/structure/prop/hybrisa/vehicles
 	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
 	icon_state = "SUV"
-	health = 3000
+	var/damage_state = 0
+	var/brute_multiplier = 1
+
+/obj/structure/prop/hybrisa/vehicles/attack_alien(mob/living/carbon/xenomorph/user)
+	user.animation_attack_on(src)
+	take_damage( rand(user.melee_damage_lower, user.melee_damage_upper) * brute_multiplier)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	if(health <= 0)
+		user.visible_message(SPAN_DANGER("[user] slices [src] apart!"), \
+		SPAN_DANGER("We slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	else
+		user.visible_message(SPAN_DANGER("[user] [user.slashes_verb] [src]!"), \
+		SPAN_DANGER("We [user.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	update_icon()
+	return XENO_ATTACK_ACTION
 
 /obj/structure/prop/hybrisa/vehicles/update_icon()
 	switch(health)
@@ -1495,10 +1509,6 @@ var/damage_state = 0
             explode()
         else
             update_icon()
-
-/obj/structure/prop/hybrisa/vehicles/attack_alien(mob/living/carbon/xenomorph/user)
-    take_damage(30)
-    update_icon()
 
 /obj/structure/prop/hybrisa/vehicles/bullet_act(obj/projectile/P)
     if(P.ammo.damage)

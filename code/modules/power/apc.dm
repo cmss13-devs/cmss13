@@ -1374,5 +1374,5 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 #undef APC_UPDATE_ICON_COOLDOWN
 
 // apc that start at zero charge.
-/obj/structure/machinery/power/apc/nocharge.
+/obj/structure/machinery/power/apc/nocharge
 	start_charge = 0

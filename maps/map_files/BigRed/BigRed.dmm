@@ -28483,17 +28483,12 @@
 /turf/open/mars,
 /area/bigredv2/caves/eta/xenobiology)
 "dyG" = (
-/obj/structure/platform/kutjevo/rock{
-	dir = 4;
-	layer = 2.9
-	},
 /obj/effect/decal/cleanable/generic,
 /obj/effect/decal/cleanable/ash{
 	pixel_y = 19
 	},
-/obj/structure/platform/kutjevo/rock,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_14"
 	},
 /area/bigredv2/outside/nw)
 "dyH" = (
@@ -29885,24 +29880,12 @@
 	},
 /area/bigredv2/caves/lambda/breakroom)
 "eJK" = (
-/obj/structure/platform/kutjevo/rock{
-	dir = 1
-	},
-/obj/structure/platform_decoration/kutjevo/rock{
-	dir = 8
-	},
 /obj/item/prop/colony/canister{
 	pixel_y = -10
 	},
-/obj/structure/platform/kutjevo/rock{
-	dir = 8
-	},
-/obj/structure/platform/kutjevo/rock{
-	dir = 4
-	},
 /obj/effect/decal/cleanable/generic,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_19"
 	},
 /area/bigredv2/outside/nw)
 "eJU" = (
@@ -33810,7 +33793,9 @@
 /area/bigredv2/caves/mining)
 "iqG" = (
 /obj/structure/flora/grass/desert/lightgrass_2,
-/turf/open/mars,
+/turf/open/mars{
+	icon_state = "mars_dirt_10"
+	},
 /area/bigredv2/outside/nw)
 "iqT" = (
 /obj/structure/surface/rack,
@@ -34604,6 +34589,14 @@
 	icon_state = "darkblue2"
 	},
 /area/bigredv2/caves/eta/research)
+"jnS" = (
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_3"
+	},
+/turf/open/mars{
+	icon_state = "mars_dirt_14"
+	},
+/area/bigredv2/outside/nw)
 "jnV" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	desc = "A pipe.";
@@ -36627,12 +36620,6 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_cave_cas)
 "kUT" = (
-/obj/structure/platform/kutjevo/rock{
-	dir = 1
-	},
-/obj/structure/platform_decoration/kutjevo/rock{
-	dir = 8
-	},
 /obj/item/trash/syndi_cakes{
 	pixel_y = -15;
 	pixel_x = -3
@@ -36641,12 +36628,9 @@
 	pixel_x = -6;
 	pixel_y = -5
 	},
-/obj/structure/platform/kutjevo/rock{
-	dir = 4
-	},
 /obj/effect/decal/cleanable/generic,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_13"
 	},
 /area/bigredv2/outside/nw)
 "kUW" = (
@@ -36972,14 +36956,6 @@
 	},
 /area/bigredv2/outside/c)
 "lmL" = (
-/obj/structure/platform/kutjevo/rock,
-/obj/structure/platform/kutjevo/rock{
-	dir = 8;
-	pixel_x = -3
-	},
-/obj/structure/platform/kutjevo/rock{
-	dir = 4
-	},
 /obj/item/prop{
 	desc = "A blood bag with a hole in it. The rats must have gotten to it first.";
 	icon = 'icons/obj/items/bloodpack.dmi';
@@ -36999,7 +36975,7 @@
 	pixel_y = 19
 	},
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_9"
 	},
 /area/bigredv2/outside/nw)
 "lmO" = (
@@ -39589,20 +39565,12 @@
 	},
 /area/bigredv2/outside/library)
 "nFA" = (
-/obj/structure/platform/kutjevo/rock{
-	dir = 8;
-	layer = 2.9;
-	pixel_x = -3
-	},
 /obj/structure/platform_decoration/kutjevo/rock{
 	layer = 3.1
 	},
 /obj/effect/decal/cleanable/generic,
-/obj/structure/platform/kutjevo/rock{
-	dir = 1
-	},
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_19"
 	},
 /area/bigredv2/outside/nw)
 "nFB" = (
@@ -41415,10 +41383,6 @@
 	},
 /area/bigredv2/caves_north)
 "prB" = (
-/obj/structure/platform/kutjevo/rock{
-	dir = 8;
-	layer = 2.9
-	},
 /obj/item/reagent_container/spray/cleaner{
 	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
 	name = "Surgery Cleaner";
@@ -41427,9 +41391,8 @@
 	},
 /obj/item/reagent_container/food/drinks/cup,
 /obj/effect/decal/cleanable/generic,
-/obj/structure/platform/kutjevo/rock,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_9"
 	},
 /area/bigredv2/outside/nw)
 "prU" = (
@@ -42755,6 +42718,12 @@
 	icon_state = "asteroidfloor"
 	},
 /area/bigredv2/outside/ne)
+"qCB" = (
+/obj/structure/flora/grass/desert/lightgrass_3,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_20"
+	},
+/area/bigredv2/outside/nw)
 "qCK" = (
 /turf/open/floor{
 	icon_state = "asteroidwarning"
@@ -44792,12 +44761,6 @@
 	},
 /turf/open/floor{
 	icon_state = "delivery"
-	},
-/area/bigredv2/outside/marshal_office)
-"soH" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whitegreen"
 	},
 /area/bigredv2/outside/marshal_office)
 "spr" = (
@@ -47153,7 +47116,9 @@
 /area/bigredv2/outside/nw)
 "uqM" = (
 /obj/structure/closet/crate/trashcart,
-/turf/open/mars,
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_4"
+	},
 /area/bigredv2/outside/nw)
 "uqX" = (
 /obj/item/trash/eat{
@@ -49010,13 +48975,6 @@
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/mining)
 "wfi" = (
-/obj/structure/platform/kutjevo/rock{
-	dir = 8;
-	layer = 2.9
-	},
-/obj/structure/platform_decoration/kutjevo/rock{
-	dir = 8
-	},
 /obj/item/trash/snack_bowl{
 	pixel_x = 1;
 	pixel_y = -12
@@ -49034,7 +48992,7 @@
 	pixel_y = 19
 	},
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_16"
 	},
 /area/bigredv2/outside/nw)
 "wfk" = (
@@ -50125,6 +50083,11 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
+"xcv" = (
+/turf/open/mars_cave{
+	icon_state = "mars_cave_14"
+	},
+/area/bigredv2/outside/nw)
 "xcz" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -50279,12 +50242,6 @@
 /turf/open/mars,
 /area/bigredv2/outside/space_port_lz2)
 "xkd" = (
-/obj/structure/platform/kutjevo/rock,
-/obj/structure/platform/kutjevo/rock{
-	dir = 4;
-	layer = 2.9;
-	pixel_x = 4
-	},
 /obj/item/prop{
 	desc = "A blood bag with a hole in it. The rats must have gotten to it first.";
 	icon = 'icons/obj/items/bloodpack.dmi';
@@ -50295,11 +50252,8 @@
 	layer = 2.8
 	},
 /obj/effect/decal/cleanable/generic,
-/obj/structure/platform/kutjevo/rock{
-	dir = 1
-	},
 /turf/open/mars_cave{
-	icon_state = "mars_cave_2"
+	icon_state = "mars_cave_20"
 	},
 /area/bigredv2/outside/nw)
 "xkq" = (
@@ -65030,9 +64984,9 @@ aeI
 sPM
 aeI
 aiB
-ahV
-ahV
-ahV
+ahP
+ahP
+ahP
 rTX
 vXi
 pyo
@@ -65248,9 +65202,9 @@ aiw
 ahQ
 aeI
 iqG
-aeI
+ahP
 uqM
-aiA
+ahP
 fCG
 bHX
 ahP
@@ -65464,7 +65418,7 @@ agy
 acp
 ahR
 aeI
-aeI
+aiA
 eJK
 wfi
 prB
@@ -65681,14 +65635,14 @@ adS
 acp
 ahR
 aeI
-rgo
-efC
+jnS
+qCB
 kUT
 dyG
 vXi
 tJe
 xkd
-ahP
+xcv
 srH
 alD
 ayR
@@ -65899,8 +65853,8 @@ acp
 ajx
 ahQ
 aeI
-aeI
-aiz
+aiB
+ahP
 ahP
 iFw
 pyo
@@ -69162,7 +69116,7 @@ anc
 acp
 acp
 acp
-soH
+acp
 fSX
 aqL
 aqL

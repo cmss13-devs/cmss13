@@ -93,6 +93,8 @@ var/damage_state = 0
 /obj/structure/prop/hybrisa/vehicles/large_vehicles
 	icon = 'icons/obj/structures/props/128x32_vehiclesexpanded.dmi'
 	icon_state = "armoredtruck_wy_security_1"
+	density = TRUE
+	layer = ABOVE_MOB_LAYER
 
 // Misc
 /obj/structure/prop/hybrisa/vehicles/large_vehicles/ambulance
@@ -2009,5 +2011,25 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 	density = FALSE
 
 
+// Hybrisa Lattice
 
+/obj/structure/prop/hybrisa/lattice_prop
+	desc = "A support lattice."
+	name = "lattice"
+	icon = 'icons/obj/structures/props/hybrisa_lattice.dmi'
+	icon_state = "lattice1"
+	density = FALSE
+	layer = RIPPLE_LAYER
 
+/obj/structure/prop/hybrisa/lattice_prop/lattice_1
+	icon_state = "lattice1"
+/obj/structure/prop/hybrisa/lattice_prop/lattice_2
+	icon_state = "lattice2"
+/obj/structure/prop/hybrisa/lattice_prop/lattice_3
+	icon_state = "lattice3"
+/obj/structure/prop/hybrisa/lattice_prop/lattice_4
+	icon_state = "lattice4"
+/obj/structure/prop/hybrisa/lattice_prop/lattice_5
+	icon_state = "lattice5"
+/obj/structure/prop/hybrisa/lattice_prop/lattice_6
+	icon_state = "lattice6"

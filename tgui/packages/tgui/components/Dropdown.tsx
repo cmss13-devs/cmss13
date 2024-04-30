@@ -82,7 +82,6 @@ export function Dropdown(props: Props) {
     iconSpin,
     menuWidth = '15rem',
     noChevron,
-    noScroll,
     onClick,
     onSelected,
     options = [],
@@ -155,15 +154,7 @@ export function Dropdown(props: Props) {
       onClickOutside={() => setOpen(false)}
       placement={over ? 'top-start' : 'bottom-start'}
       content={
-        <div
-          className={classes([
-            'Layout',
-            (noScroll && 'Dropdown__menu-noscroll') || 'Dropdown__menu',
-            over && 'Dropdown__over',
-          ])}
-          style={{ minWidth: menuWidth }}
-          ref={innerRef}
-        >
+        <div className="Layout" style={{ minWidth: menuWidth }} ref={innerRef}>
           {options.length === 0 && (
             <div className="Dropdown__menuentry">No options</div>
           )}

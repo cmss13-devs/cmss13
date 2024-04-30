@@ -31,7 +31,7 @@ const MapPanel = () => {
           id: data.tactical_map_ref,
           type: 'map',
         }}
-        class="MapPanel"
+        className="MapPanel"
       />
     </Box>
   );

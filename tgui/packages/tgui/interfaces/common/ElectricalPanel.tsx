@@ -33,14 +33,12 @@ const ElectricalPanelClosed = (props: BoxProps) => {
       <Flex
         direction="row"
         justify="space-between"
-        fill
         className="ElectricalSafetySign"
       >
         <Flex.Item grow>
           <Flex
             justify="space-between"
             direction="column"
-            fill
             className={classes(['ElectricalSafetySign'])}
           >
             <Flex.Item>
@@ -51,12 +49,11 @@ const ElectricalPanelClosed = (props: BoxProps) => {
             </Flex.Item>
           </Flex>
         </Flex.Item>
-        <Flex.Item fill>
+        <Flex.Item>
           <Flex
             justify="space-around"
             align="center"
             inline
-            fill
             wrap
             className="WarningIcon"
             direction="column"
@@ -77,7 +74,6 @@ const ElectricalPanelClosed = (props: BoxProps) => {
             justify="space-between"
             align="flex-end"
             direction="column"
-            fill
             className={classes(['ElectricalSafetySign'])}
           >
             <Flex.Item>

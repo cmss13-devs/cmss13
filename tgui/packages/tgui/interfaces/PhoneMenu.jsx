@@ -81,7 +81,7 @@ const GeneralPanel = (props) => {
           />
         </Stack.Item>
         <Stack.Item grow>
-          <Section fill scrollable onComponentDidMount={(node) => node.focus()}>
+          <Section fill scrollable>
             <Tabs vertical>
               {transmitters.map((val) => {
                 if (

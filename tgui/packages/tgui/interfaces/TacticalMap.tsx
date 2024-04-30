@@ -171,7 +171,7 @@ const ViewMapPanel = (props) => {
           type: 'map',
           'background-color': 'none',
         }}
-        class="TacticalMap"
+        className="TacticalMap"
       />
     </Section>
   );
@@ -280,7 +280,7 @@ const DrawMapPanel = (props) => {
           <Stack.Item>
             <Dropdown
               className="TacticalMapColorPicker"
-              noScroll
+              menuWidth="15rem"
               options={colorOptions}
               selected={data.toolbarColorSelection}
               color={data.toolbarColorSelection}

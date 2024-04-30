@@ -138,9 +138,6 @@ export const ListInput = (props) => {
                   onBlur={() => {
                     globalEvents.off('keydown', prohibitPassthrough);
                   }}
-                  onComponentWillUnmount={() => {
-                    globalEvents.off('keydown', prohibitPassthrough);
-                  }}
                   onClick={() => {
                     if (selectedButton === button) {
                       act('choose', { choice: button });
@@ -148,11 +145,6 @@ export const ListInput = (props) => {
                       setSelectedButton(button);
                     }
                     setLastCharCode(null);
-                  }}
-                  onComponentDidMount={(node) => {
-                    if (selectedButton === button) {
-                      node.focus();
-                    }
                   }}
                 >
                   {button}

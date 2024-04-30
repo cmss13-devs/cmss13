@@ -14,13 +14,13 @@
 
 
 /obj/item/XenoBio/Chitin
-	name = "Alien Chitin"
+	name = "Chunk of Chitin"
 	desc = "A chunk of alien Chitin"
 	icon_state = "chitin-chunk"
 
 
 /obj/item/XenoBio/Blood
-	name = "Alien Blood"
+	name = "Blood Vial"
 	desc = "A sample of alien Blood"
 	icon_state = "blood-vial"
 

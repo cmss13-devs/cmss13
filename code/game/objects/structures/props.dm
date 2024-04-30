@@ -1454,24 +1454,25 @@
 /obj/structure/prop/hybrisa/vehicles
 	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
 	icon_state = "SUV"
-	health = 600
+	health = 3000
 
 /obj/structure/prop/hybrisa/vehicles/update_icon()
 	switch(health)
-		if(500 to 600)
+		if(2500 to 3000)
 			icon_state = initial(icon_state)
 			return
-		if(400 to 500)
+		if(2000 to 2500)
 			damage_state = 1
-		if(300 to 400)
+		if(1500 to 2000)
 			damage_state = 2
-		if(200 to 300)
+		if(1000 to 1500)
 			damage_state = 3
-		if(100 to 200)
+		if(500 to 1000)
 			damage_state = 4
-		if(0 to 100)
+		if(0 to 500)
 			damage_state = 5
 	icon_state = "[initial(icon_state)]_damage_[damage_state]"
+var/damage_state = 0
 
 /obj/structure/prop/hybrisa/vehicles/proc/explode(dam, mob/M)
     src.visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"), null, null, 1)
@@ -1623,7 +1624,6 @@
 // Meridian Cars
 
 /obj/structure/prop/hybrisa/vehicles/Car
-	health = 600
 	name = "Mono-Spectra"
 	desc = "The 'Mono-Spectra', a mass-produced civilian vehicle for the colonial markets, in and outside of the United Americas. Produced by 'Meridian' a car marque and associated operating division of the Weyland-Yutani Corporation."
 	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
@@ -3333,6 +3333,24 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 	desc = "A advertisement billboard."
 	icon = 'icons/obj/structures/props/32x64_zenithbillboards.dmi'
 	icon_state = "billboard4"
+
+// Big Road Signs
+/obj/structure/prop/hybrisa/BillboardsandSigns/Bigroadsigns
+	name = "road sign"
+	desc = "A road sign."
+	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi'
+	icon_state = "roadsign_1"
+	bound_width = 64
+	bound_height = 32
+	density = FALSE
+	health = 200
+	anchored = TRUE
+	layer = 8
+/obj/structure/prop/hybrisa/BillboardsandSigns/Bigroadsigns/road_sign_1
+	icon_state = "roadsign_1"
+/obj/structure/prop/hybrisa/BillboardsandSigns/Bigroadsigns/road_sign_2
+	icon_state = "roadsign_2"
+
 // Car Factory
 
 /obj/structure/prop/hybrisa/Factory

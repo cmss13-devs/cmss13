@@ -10814,6 +10814,12 @@
 /obj/item/device/flashlight/lamp/tripod/grey,
 /turf/open/engineership/engineer_floor9,
 /area/lv759/derelictship)
+"bSY" = (
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "floor3"
+	},
+/area/lv759/indoors/meridian/meridian_factory)
 "bTd" = (
 /obj/structure/platform/hybrisa/metalplatform6,
 /obj/structure/barricade/handrail/hybrisa/handrail{
@@ -29987,6 +29993,12 @@
 	icon_state = "lattice12";
 	pixel_y = 16
 	},
+/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
+	dir = 10;
+	layer = 8;
+	level = 8;
+	pixel_y = 20
+	},
 /turf/open/hybrisa/street/sidewalkcenter{
 	dir = 8
 	},
@@ -32318,6 +32330,13 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/hybrisa/metal/grated,
 /area/lv759/outdoors/colony_streets/central_streets)
+"fvC" = (
+/obj/structure/prop/hybrisa/vehicles/Car/Red,
+/turf/open/floor/strata{
+	dir = 4;
+	icon_state = "floor3"
+	},
+/area/lv759/indoors/meridian/meridian_factory)
 "fvI" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/decal/cleanable/blood,
@@ -42740,6 +42759,10 @@
 "hih" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/obj/structure/prop/hybrisa/BillboardsandSigns/Bigroadsigns/road_sign_1{
+	dir = 4;
 	pixel_y = 16
 	},
 /turf/open/hybrisa/street/sidewalk{
@@ -54105,6 +54128,13 @@
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
 	pixel_y = 16
+	},
+/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard4{
+	pixel_y = 20;
+	pixel_x = -5;
+	layer = 8;
+	level = 8;
+	dir = 6
 	},
 /turf/open/hybrisa/street/sidewalk{
 	dir = 8
@@ -67833,6 +67863,12 @@
 	icon_state = "lattice12";
 	pixel_y = 16
 	},
+/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
+	dir = 8;
+	layer = 8;
+	level = 8;
+	pixel_y = 20
+	},
 /turf/open/hybrisa/street/sidewalk{
 	dir = 4
 	},
@@ -71002,10 +71038,10 @@
 	pixel_y = 16
 	},
 /obj/structure/prop/hybrisa/BillboardsandSigns/BigBillboards{
+	dir = 4;
 	layer = 8;
 	level = 8;
-	pixel_y = 20;
-	dir = 5
+	pixel_y = 20
 	},
 /turf/open/hybrisa/street/sidewalkcenter{
 	dir = 8
@@ -71553,12 +71589,8 @@
 	pixel_x = -11;
 	pixel_y = 6
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
-	dir = 8;
-	icon_state = "billboard2";
-	layer = 8;
-	level = 8;
-	pixel_y = 20
+/obj/structure/prop/hybrisa/BillboardsandSigns/Bigroadsigns/road_sign_2{
+	pixel_y = 16
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/north_street)
@@ -72386,11 +72418,8 @@
 	icon_state = "lattice12";
 	pixel_y = 16
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
-	dir = 1;
-	layer = 8;
-	level = 8;
-	pixel_y = 20
+/obj/structure/prop/hybrisa/BillboardsandSigns/Bigroadsigns/road_sign_1{
+	pixel_y = 16
 	},
 /turf/open/hybrisa/street/sidewalk{
 	dir = 4
@@ -74222,13 +74251,11 @@
 	icon_state = "lattice12";
 	pixel_y = 16
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
-	dir = 8;
-	layer = 8;
-	level = 8;
-	pixel_y = 20
-	},
 /obj/effect/hybrisa/decal/dirt,
+/obj/structure/prop/hybrisa/BillboardsandSigns/Bigroadsigns/road_sign_1{
+	dir = 8;
+	pixel_y = 16
+	},
 /turf/open/hybrisa/street/sidewalk{
 	dir = 4
 	},
@@ -79140,6 +79167,12 @@
 	icon_state = "lattice12";
 	pixel_y = 16
 	},
+/obj/structure/prop/hybrisa/BillboardsandSigns/BigBillboards{
+	layer = 8;
+	level = 8;
+	pixel_y = 20;
+	dir = 6
+	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/east_central_street)
 "nnB" = (
@@ -79201,12 +79234,9 @@
 	icon_state = "lattice12";
 	pixel_y = 16
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
-	dir = 7;
-	icon_state = "billboard2";
-	layer = 8;
-	level = 8;
-	pixel_y = 20
+/obj/structure/prop/hybrisa/BillboardsandSigns/Bigroadsigns/road_sign_1{
+	dir = 1;
+	pixel_y = 16
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/east_central_street)
@@ -86551,6 +86581,13 @@
 	icon_state = "lattice12";
 	pixel_y = 16
 	},
+/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
+	dir = 7;
+	icon_state = "billboard2";
+	layer = 8;
+	level = 8;
+	pixel_y = 20
+	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/east_central_street)
 "ozn" = (
@@ -92643,6 +92680,12 @@
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
 	pixel_y = 16
+	},
+/obj/structure/prop/hybrisa/BillboardsandSigns/BigBillboards{
+	layer = 8;
+	level = 8;
+	pixel_y = 20;
+	dir = 5
 	},
 /turf/open/hybrisa/street/sidewalkcenter{
 	dir = 8
@@ -100931,6 +100974,22 @@
 	icon_state = "plate"
 	},
 /area/lv759/landing_zone_2/ceiling)
+"qRC" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
+	layer = 8;
+	level = 8;
+	pixel_x = -26;
+	pixel_y = 20;
+	dir = 5
+	},
+/turf/open/hybrisa/street/sidewalk{
+	dir = 4
+	},
+/area/lv759/outdoors/colony_streets/north_street)
 "qRH" = (
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 4
@@ -107924,6 +107983,10 @@
 	layer = 7;
 	pixel_y = 16
 	},
+/obj/structure/prop/hybrisa/BillboardsandSigns/Bigroadsigns/road_sign_1{
+	dir = 4;
+	pixel_y = 16
+	},
 /turf/open/hybrisa/street/sidewalk{
 	dir = 4
 	},
@@ -110975,7 +111038,8 @@
 /area/lv759/indoors/power_plant)
 "syA" = (
 /obj/structure/prop/hybrisa/vehicles/Car{
-	dir = 4
+	dir = 4;
+	layer = 2.9
 	},
 /turf/open/hybrisa/street/sidewalk{
 	dir = 1
@@ -112070,6 +112134,10 @@
 	icon_state = "lattice12";
 	pixel_y = 16
 	},
+/obj/structure/prop/hybrisa/BillboardsandSigns/Bigroadsigns/road_sign_1{
+	dir = 1;
+	pixel_y = 16
+	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/central_streets)
 "sHu" = (
@@ -112647,11 +112715,8 @@
 	icon_state = "lattice12";
 	pixel_y = 16
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/BigBillboards{
-	dir = 4;
-	layer = 8;
-	level = 8;
-	pixel_y = 20
+/obj/structure/prop/hybrisa/BillboardsandSigns/Bigroadsigns/road_sign_1{
+	pixel_y = 16
 	},
 /turf/open/hybrisa/street/sidewalkcenter{
 	dir = 8
@@ -119978,6 +120043,19 @@
 	icon_state = "blue_plate"
 	},
 /area/lv759/indoors/hospital/outgoing)
+"uaZ" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/obj/structure/prop/hybrisa/BillboardsandSigns/Bigroadsigns/road_sign_1{
+	dir = 4;
+	pixel_y = 16
+	},
+/turf/open/hybrisa/street/sidewalk{
+	dir = 4
+	},
+/area/lv759/outdoors/colony_streets/central_streets)
 "uba" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 8
@@ -125736,6 +125814,14 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/east_central_street)
+"uUW" = (
+/turf/open/engineership/engineer_floor5{
+	light_on = 1;
+	light_power = 6;
+	light_range = 14;
+	name = "circular light"
+	},
+/area/lv759/indoors/meridian/meridian_factory)
 "uVe" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal4"
@@ -126992,7 +127078,8 @@
 	pixel_y = 20;
 	pixel_x = -6;
 	layer = 8;
-	level = 8
+	level = 8;
+	dir = 1
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
@@ -130640,6 +130727,22 @@
 /obj/effect/hybrisa/decal/road/lines3,
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/lv759/indoors/weyyu_office/pressroom)
+"vOw" = (
+/obj/effect/hybrisa/decal/road/road_stop{
+	icon_state = "stop_decal2"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
+	dir = 10;
+	layer = 8;
+	level = 8;
+	pixel_y = 20
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/colony_streets/central_streets)
 "vOz" = (
 /obj/effect/hybrisa/decal/road/lines2,
 /turf/open/hybrisa/street/asphalt,
@@ -132482,6 +132585,10 @@
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/obj/structure/prop/hybrisa/BillboardsandSigns/Bigroadsigns/road_sign_1{
+	dir = 1;
 	pixel_y = 16
 	},
 /turf/open/hybrisa/street/asphalt,
@@ -137229,6 +137336,10 @@
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/obj/structure/prop/hybrisa/BillboardsandSigns/Bigroadsigns/road_sign_1{
+	dir = 1;
 	pixel_y = 16
 	},
 /turf/open/hybrisa/street/asphalt,
@@ -158414,17 +158525,17 @@ unn
 unn
 unn
 unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
 unn
 unn
 unn
@@ -158666,17 +158777,17 @@ unn
 unn
 unn
 unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
+bSY
+bSY
+fvC
+bSY
+bSY
+fvC
+bSY
+bSY
+fvC
+bSY
+bSY
 unn
 unn
 unn
@@ -158918,17 +159029,17 @@ unn
 unn
 unn
 unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
 unn
 unn
 unn
@@ -159170,17 +159281,17 @@ unn
 unn
 unn
 unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
 unn
 unn
 unn
@@ -159422,17 +159533,17 @@ unn
 unn
 unn
 unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
+bSY
+bSY
+uUW
+bSY
+bSY
+uUW
+bSY
+bSY
+uUW
+bSY
+bSY
 unn
 unn
 unn
@@ -159674,17 +159785,17 @@ unn
 unn
 unn
 unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
 unn
 unn
 unn
@@ -159926,17 +160037,17 @@ unn
 unn
 unn
 unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
+bSY
+bSY
+fvC
+bSY
+bSY
+fvC
+bSY
+bSY
+fvC
+bSY
+bSY
 unn
 unn
 unn
@@ -160178,17 +160289,17 @@ unn
 unn
 unn
 unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
 unn
 unn
 unn
@@ -160430,17 +160541,17 @@ unn
 unn
 unn
 unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
 unn
 unn
 unn
@@ -160682,17 +160793,17 @@ unn
 unn
 unn
 unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
+bSY
+bSY
+uUW
+bSY
+bSY
+uUW
+bSY
+bSY
+uUW
+bSY
+bSY
 unn
 unn
 unn
@@ -160934,17 +161045,17 @@ unn
 unn
 unn
 unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
 unn
 unn
 unn
@@ -161186,17 +161297,17 @@ unn
 unn
 unn
 unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
+bSY
+bSY
+fvC
+bSY
+bSY
+fvC
+bSY
+bSY
+fvC
+bSY
+bSY
 unn
 unn
 unn
@@ -161438,17 +161549,17 @@ unn
 unn
 unn
 unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
 unn
 unn
 unn
@@ -161690,17 +161801,17 @@ unn
 unn
 unn
 unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
 unn
 unn
 unn
@@ -161942,17 +162053,17 @@ unn
 unn
 unn
 unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
-unn
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
+bSY
 unn
 unn
 unn
@@ -168565,7 +168676,7 @@ lak
 xjx
 rdQ
 rdQ
-eLp
+qRC
 rdQ
 iHo
 ejf
@@ -174375,7 +174486,7 @@ dQU
 tES
 lOl
 miD
-pls
+uaZ
 miD
 kql
 miD
@@ -174879,7 +174990,7 @@ dQU
 tRJ
 kGp
 qgN
-lkq
+vOw
 ygz
 ygz
 ygz

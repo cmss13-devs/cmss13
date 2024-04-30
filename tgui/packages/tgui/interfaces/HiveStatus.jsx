@@ -190,7 +190,7 @@ const XenoCounts = (props) => {
                       <div>
                         <span
                           style={{
-                            'margin-right': '4px',
+                            marginRight: '4px',
                           }}
                         >
                           {tier_slots[tier_str].open_slots}
@@ -205,7 +205,7 @@ const XenoCounts = (props) => {
                             <Fragment key={i}>
                               <span
                                 style={{
-                                  'margin-right': '4px',
+                                  marginRight: '4px',
                                 }}
                               >
                                 {

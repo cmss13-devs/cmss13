@@ -339,9 +339,9 @@ const ViewTabHolder = (props) => {
         </Flex.Item>
         <Flex.Item grow={1} mt={1}>
           <ByondUi
+            className="CameraPanel"
             height="100%"
             params={{
-              zoom: 0,
               id: map_ref,
               type: 'map',
             }}
@@ -436,11 +436,11 @@ const PodStatusPage = (props) => {
                             }
                           }}
                           style={{
-                            'vertical-align': 'middle',
-                            'margin-left': j !== 0 ? '1px' : '0px',
-                            'margin-right':
+                            verticalAlign: 'middle',
+                            marginLeft: j !== 0 ? '1px' : '0px',
+                            marginRight:
                               j !== list.list.length - 1 ? '1px' : '0px',
-                            'border-radius': '5px',
+                            borderRadius: '5px',
                           }}
                         />
                       )}
@@ -677,9 +677,9 @@ class PresetsPage extends Component {
                 style={
                   presetIndex === preset.id
                     ? {
-                        'border-width': '1px',
-                        'border-style': 'solid',
-                        'border-color': `hsl(${preset.hue}, 80%, 80%)`,
+                        borderWidth: '1px',
+                        borderStyle: 'solid',
+                        borderColor: `hsl(${preset.hue}, 80%, 80%)`,
                       }
                     : ''
                 }

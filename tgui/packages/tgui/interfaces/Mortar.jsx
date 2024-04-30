@@ -44,8 +44,8 @@ export const Mortar = (props) => {
             content="Set Target"
             icon="crosshairs"
             style={{
-              'margin-top': '5px',
-              'margin-left': '10px',
+              marginTop: '5px',
+              marginLeft: '10px',
             }}
             onClick={() =>
               act('set_target', {
@@ -63,9 +63,9 @@ export const Mortar = (props) => {
               right: '15px',
               height: '65px',
               width: '80px',
-              'white-space': 'normal',
-              'text-align': 'center',
-              'align-items': 'center',
+              whiteSpace: 'normal',
+              textAlign: 'center',
+              alignItems: 'center',
             }}
             onClick={() =>
               act('operate_cam', {
@@ -103,8 +103,8 @@ export const Mortar = (props) => {
             content="Dial Offset"
             icon="wrench"
             style={{
-              'margin-top': '5px',
-              'margin-left': '10px',
+              marginTop: '5px',
+              marginLeft: '10px',
             }}
             onClick={() =>
               act('set_offset', {

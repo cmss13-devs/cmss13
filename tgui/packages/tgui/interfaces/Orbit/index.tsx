@@ -276,9 +276,9 @@ const ObservableItem = (props: {
     <Button
       color={'transparent'}
       style={{
-        'border-color': color ? '#2185d0' : 'grey',
-        'border-style': 'solid',
-        'border-width': '1px',
+        borderColor: color ? '#2185d0' : 'grey',
+        borderStyle: 'solid',
+        borderWidth: '1px',
         color: color ? 'white' : 'grey',
       }}
       onClick={() => act('orbit', { ref: ref })}

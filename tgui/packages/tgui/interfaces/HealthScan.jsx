@@ -177,7 +177,7 @@ export const HealthScan = (props) => {
 
               <Button
                 inline
-                style={{ 'margin-left': '2%' }}
+                style={{ marginLeft: '2%' }}
                 content="Change"
                 onClick={() => act('change_holo_card')}
               />

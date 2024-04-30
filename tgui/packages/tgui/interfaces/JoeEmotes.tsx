@@ -68,7 +68,6 @@ const EmoteTab = (props) => {
                       height="20px"
                       width="32px"
                       style={{
-                        '-ms-interpolation-mode': 'nearest-neighbor',
                         verticalAlign: 'middle',
                       }}
                     />

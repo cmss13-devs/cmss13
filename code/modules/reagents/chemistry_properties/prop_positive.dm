@@ -202,8 +202,7 @@
 /datum/chem_property/positive/musclestimulating/process(mob/living/M, potency = 1)
 	M.reagent_move_delay_modifier -= POTENCY_MULTIPLIER_VLOW * potency
 	M.recalculate_move_delay = TRUE
-	M.take_limb_damage(1 * potency) // you're moving too hard and hurting yourself
-	M.nutrition = max (0, M.nutrition - 30 * HUNGER_FACTOR)
+	M.nutrition = max (0, M.nutrition - 100 * HUNGER_FACTOR)
 	if(prob(10))
 		M.emote(pick("twitch","blink_r","shiver"))
 

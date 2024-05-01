@@ -1,0 +1,5 @@
+author: "HumiliatedGoblin"
+delete-after: True
+changes:
+  - qol: "Now needs help intent to repair walls"
+  - qol: "Now needs disarm, grab and harm intent to deconstruct walls"

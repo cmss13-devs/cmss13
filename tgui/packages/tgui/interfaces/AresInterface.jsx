@@ -386,6 +386,20 @@ const MainMenu = (props) => {
                 onClick={() => act('page_core_sec')}
               />
             </Stack.Item>
+            <Stack.Item grow>
+              <Button.Confirm
+                content="AI Core Lockdown"
+                align="center"
+                tooltip="Activate/Deactivate the AI Core Lockdown."
+                icon="lock"
+                color="red"
+                ml="auto"
+                px="2rem"
+                width="100%"
+                bold
+                onClick={() => act('security_lockdown')}
+              />
+            </Stack.Item>
           </Stack>
         </Section>
       )}

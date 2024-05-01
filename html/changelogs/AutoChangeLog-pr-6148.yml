@@ -1,0 +1,10 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - balance: "Lurker invisibility recharge time is now 20s (up from 15s)"
+  - balance: "Lurker invisibility now ends when devouring but refunds 50% of time unused"
+  - balance: "Lurker invisibility bump now refunds 50% of time unused"
+  - balance: "Lurker invisibility can now be toggled refunding 90% of time unused (with dbl click prevention)"
+  - rscdel: "Removed defender crest toggle balloon alerts"
+  - bugfix: "Lurker invisibility code is refactored to properly use cooldowns and now doesn't incorrectly get interrupted by bump code"
+  - rscadd: "Lurker invisibility recharge time is now displayed in status tab"

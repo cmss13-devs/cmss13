@@ -409,11 +409,17 @@
 	name = "\improper Sigma Remote Complex"
 	icon_state = "sigma_complex_remote"
 
+/area/corsat/gamma/sigmaremote/residential
+	name = "\improper Auxiliary Teleporter Complex"
+
 /area/corsat/gamma/sigmaremote/teleporter
 	name = "\improper Sigma Remote Teleporter"
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "shuttle"
 	ceiling = CEILING_METAL
+
+/area/corsat/gamma/sigmaremote/teleporter/residential
+	name = "\improper Auxiliary Teleporter"
 
 /area/corsat/gamma/airlock/north
 	name = "\improper Gamma Dome North Airlock"

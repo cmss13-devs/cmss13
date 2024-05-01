@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - maptweak: "Added medlinks to WO"
+  - maptweak: "Added a medlink to each ground map"

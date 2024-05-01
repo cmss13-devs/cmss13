@@ -48,11 +48,8 @@
 	},
 /area/lv624/lazarus/medbay)
 "hW" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Medbay APC";
-	pixel_y = 30;
-	start_charge = 0
+/obj/structure/machinery/power/apc/nocharge{
+	dir = 1
 	},
 /turf/open/floor{
 	icon_state = "white"

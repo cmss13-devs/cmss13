@@ -25,6 +25,12 @@
 		UnregisterSignal(xeno, COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF)
 		end_pounce_freeze()
 
+/datum/action/xeno_action/onclick/lurker_invisibility/can_use_action()
+	if(!..())
+		return FALSE
+	var/mob/living/carbon/xenomorph/xeno = owner
+	return xeno.deselect_timer < world.time // We clicked the same ability in a very short time
+
 /datum/action/xeno_action/onclick/lurker_invisibility/use_ability(atom/targeted_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
 
@@ -34,6 +40,8 @@
 		return
 	if(!check_and_use_plasma_owner())
 		return
+
+	xeno.deselect_timer = world.time + 5 // Half a second to prevent double clicks
 
 	if(xeno.stealth)
 		invisibility_off(0.9) // Near full refund of remaining time

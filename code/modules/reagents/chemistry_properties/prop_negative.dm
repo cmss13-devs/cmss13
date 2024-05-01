@@ -84,6 +84,7 @@
 	rarity = PROPERTY_COMMON
 	starter = TRUE
 	value = 1 //has a combat use
+	cost_penalty = FALSE
 
 /datum/chem_property/negative/corrosive/process(mob/living/M, potency = 1, delta_time)
 	..()
@@ -243,6 +244,7 @@
 	description = "Ruptures endothelial cells making up bloodvessels, causing blood to escape from the circulatory system."
 	rarity = PROPERTY_UNCOMMON
 	value = 2
+	cost_penalty = FALSE
 
 /datum/chem_property/negative/hemorrhaging/process(mob/living/M, potency = 1, delta_time)
 	if(!ishuman(M))
@@ -411,6 +413,7 @@
 	description = "Breaks down neurons causing widespread damage to the central nervous system and brain functions. Exposure may cause disorientation or unconsciousness to affected persons."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_TOXICANT|PROPERTY_TYPE_STIMULANT
+	cost_penalty = FALSE
 
 /datum/chem_property/negative/neurotoxic/process(mob/living/M, potency = 1)
 	M.apply_damage(POTENCY_MULTIPLIER_MEDIUM * potency, BRAIN)

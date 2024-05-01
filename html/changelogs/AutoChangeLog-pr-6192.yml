@@ -1,0 +1,4 @@
+author: "Git-Nivrak"
+delete-after: True
+changes:
+  - rscadd: "Survivors can now receive command announcements with IFF and a marine headset."

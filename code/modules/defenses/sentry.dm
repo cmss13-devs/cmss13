@@ -271,6 +271,11 @@
 	if(!(world.time-last_fired >= fire_delay) || !turned_on || !ammo || QDELETED(target))
 		return
 
+	if(isliving(A))
+		var/mob/living/vent_mob = A
+		if(vent_mob.is_ventcrawling)
+			return
+
 	if(world.time-last_fired >= 30 SECONDS) //if we haven't fired for a while, beep first
 		playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
 		sleep(3)

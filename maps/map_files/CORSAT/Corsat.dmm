@@ -35809,10 +35809,6 @@
 	icon_state = "corsat_teleporter_static"
 	},
 /area/corsat/sigma/south/complex/teleporter)
-"iAm" = (
-/obj/structure/lattice,
-/turf/closed/wall/r_wall/biodome/biodome_unmeltable,
-/area/corsat/gamma/cargo)
 "iAy" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -88296,8 +88292,8 @@ lhl
 avG
 lhl
 lps
-iAm
-iAm
+lps
+lps
 hot
 hot
 hot
@@ -90160,7 +90156,7 @@ hot
 hot
 hot
 hot
-tRm
+hot
 hot
 ajq
 bhc
@@ -92634,7 +92630,7 @@ hot
 hot
 aSa
 aSa
-jOE
+hot
 aSa
 jOE
 aSa

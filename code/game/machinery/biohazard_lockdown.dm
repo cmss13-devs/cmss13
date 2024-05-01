@@ -64,7 +64,7 @@ GLOBAL_VAR_INIT(med_lockdown_state, LOCKDOWN_READY)
 	prompt = tgui_alert(src, "Do you want to use a custom announcement?", "Choose.", list("Yes", "No"), 20 SECONDS)
 	if(prompt == "Yes")
 		var/message = tgui_input_text(src, "Please enter announcement text.", "what?")
-		biohazard_lockdown(usr, message, TRUE)
+		biohazard_lockdown(usr, message, admin = TRUE)
 	else
 		biohazard_lockdown(usr, admin = TRUE)
 	return TRUE

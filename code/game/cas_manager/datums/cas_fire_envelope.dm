@@ -241,14 +241,13 @@
 /datum/cas_fire_envelope/proc/check_firemission_loc(datum/cas_signal/target_turf)
 	return TRUE //redefined in child class
 
-/**
- * Execute firemission.
- */
+/// Step 1: Sets the stat to FIRE_MISSION_STATE_ON_TARGET and starts the sound effect for the fire mission.
 /datum/cas_fire_envelope/proc/play_sound(atom/target_turf)
 	stat = FIRE_MISSION_STATE_ON_TARGET
 	change_current_loc(target_turf)
 	playsound(target_turf, soundeffect, vol = 70, vary = TRUE, sound_range = 50, falloff = 8)
 
+/// Step 2, 3, 4: Warns nearby mobs of the incoming fire mission. Warning as 1 is non-precise, whereas 2 and 3 are precise.
 /datum/cas_fire_envelope/proc/chat_warning(atom/target_turf, range = 10, warning_number = 1)
 	var/ds_identifier = "LARGE BIRD"
 	var/fm_identifier = "SPIT FIRE"
@@ -278,14 +277,17 @@
 					SPAN_HIGHDANGER("YOU HEAR SOMETHING GO [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
 				)
 
+/// Step 5: Actually executes the fire mission updating stat to FIRE_MISSION_STATE_FIRING and then FIRE_MISSION_STATE_OFF_TARGET
 /datum/cas_fire_envelope/proc/open_fire(atom/target_turf,datum/cas_fire_mission/mission,dir)
 	stat = FIRE_MISSION_STATE_FIRING
 	mission.execute_firemission(linked_console, target_turf, dir, fire_length, step_delay, src)
 	stat = FIRE_MISSION_STATE_OFF_TARGET
 
+/// Step 6: Sets the fire mission stat to FIRE_MISSION_STATE_COOLDOWN
 /datum/cas_fire_envelope/proc/flyoff()
 	stat = FIRE_MISSION_STATE_COOLDOWN
 
+/// Step 7: Sets the fire mission stat to FIRE_MISSION_STATE_IDLE
 /datum/cas_fire_envelope/proc/end_cooldown()
 	stat = FIRE_MISSION_STATE_IDLE
 

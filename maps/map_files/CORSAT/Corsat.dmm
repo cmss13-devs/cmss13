@@ -48715,11 +48715,6 @@
 /obj/structure/flora/bush/ausbushes/palebush,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/corsat/theta/biodome)
-"tRm" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/space)
 "tRA" = (
 /obj/structure/barricade/handrail{
 	dir = 8
@@ -92632,7 +92627,7 @@ aSa
 aSa
 hot
 aSa
-jOE
+aSa
 aSa
 aSa
 aSa
@@ -92829,7 +92824,7 @@ hot
 hot
 hot
 hot
-tRm
+hot
 hot
 hot
 hot
@@ -92837,7 +92832,7 @@ hot
 aSa
 aSa
 aSa
-aSa
+hot
 hot
 hot
 aSa
@@ -92904,7 +92899,7 @@ aen
 mTa
 aen
 aen
-ajq
+qAl
 ajq
 ylo
 ylo
@@ -93109,8 +93104,8 @@ inY
 cZu
 xoj
 aen
-ajq
-ajq
+qAl
+qAl
 apV
 aki
 aki
@@ -93314,10 +93309,10 @@ bgZ
 wcB
 aen
 aen
-ajq
-ajq
-apV
-apV
+qAl
+qAl
+alw
+alw
 bKH
 bKJ
 bKL
@@ -93519,10 +93514,10 @@ bgZ
 bgZ
 wcB
 aen
-ajq
-ajq
-apV
-apV
+qAl
+qAl
+alw
+alw
 bKG
 bKI
 aUP
@@ -93727,7 +93722,7 @@ ehC
 ajq
 ajq
 apV
-apV
+alw
 bKE
 sor
 amG
@@ -94693,7 +94688,7 @@ ylo
 ylo
 ylo
 aSa
-jOE
+aSa
 aSa
 aSa
 aSa
@@ -95919,7 +95914,7 @@ hot
 hot
 hot
 hot
-tRm
+hot
 hot
 hot
 hot

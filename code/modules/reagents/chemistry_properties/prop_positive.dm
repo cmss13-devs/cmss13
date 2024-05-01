@@ -28,6 +28,7 @@
 	rarity = PROPERTY_COMMON
 	starter = TRUE
 	value = 1
+	cost_penalty = FALSE
 
 /datum/chem_property/positive/anticorrosive/process(mob/living/M, potency = 1)
 	M.heal_limb_damage(0, potency)
@@ -47,6 +48,7 @@
 	rarity = PROPERTY_COMMON
 	starter = TRUE
 	value = 1
+	cost_penalty = FALSE
 
 /datum/chem_property/positive/neogenetic/process(mob/living/M, potency = 1)
 	M.heal_limb_damage(potency, 0)
@@ -167,10 +169,9 @@
 	value = 3
 
 /datum/chem_property/positive/nervestimulating/process(mob/living/M, potency = 1)
-	M.adjust_effect(potency*-1, PARALYZE)
-	M.adjust_effect(potency*-1, STUN)
-	M.adjust_effect(potency*-1, WEAKEN)
-	M.adjust_effect(-0.5*potency, STUN)
+	M.adjust_effect(potency*-0.80, PARALYZE)
+	M.adjust_effect(potency*-0.80, STUN)
+	M.adjust_effect(potency*-0.80, WEAKEN)
 	if(potency > CREATE_MAX_TIER_1)
 		M.stuttering = max(M.stuttering - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 		M.confused = max(M.confused - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
@@ -201,7 +202,8 @@
 /datum/chem_property/positive/musclestimulating/process(mob/living/M, potency = 1)
 	M.reagent_move_delay_modifier -= POTENCY_MULTIPLIER_VLOW * potency
 	M.recalculate_move_delay = TRUE
-	M.nutrition = max (0, M.nutrition - 0.5 * HUNGER_FACTOR)
+	M.take_limb_damage(1 * potency) // you're moving too hard and hurting yourself
+	M.nutrition = max (0, M.nutrition - 30 * HUNGER_FACTOR)
 	if(prob(10))
 		M.emote(pick("twitch","blink_r","shiver"))
 
@@ -399,7 +401,7 @@
 				L.time_to_knit = 600 // 6 mins
 		if(L.time_to_knit && (L.status & LIMB_BROKEN) && L.knitting_time == -1)
 			if(!(L.status & LIMB_SPLINTED))
-				potency -= 2.5 // It'll work, but we're effectively 5 level lower.
+				potency -= 1 // It'll work, but we're effectively 2 levels lower.
 			if(potency > 0)
 				var/total_knitting_time = world.time + L.time_to_knit - min(150*potency, L.time_to_knit - 50)
 				L.knitting_time = total_knitting_time
@@ -450,6 +452,7 @@
 	description = "Causes a temporal freeze of all neurological processes and cellular respirations in the brain. This allows the brain to be preserved for long periods of time."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_REACTANT
+	cost_penalty = FALSE
 
 /datum/chem_property/positive/neurocryogenic/process(mob/living/M, potency = 1, delta_time)
 	if(prob(10 * delta_time))
@@ -548,6 +551,7 @@
 	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_REACTANT
 	value = 3
+	cost_penalty = FALSE
 	COOLDOWN_DECLARE(ghost_notif)
 
 /datum/chem_property/positive/defibrillating/on_delete(mob/living/M)
@@ -684,6 +688,7 @@
 	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_COMBUSTIBLE
 	value = 2
+	cost_penalty = FALSE
 
 	var/intensitymod_per_level = 0
 	var/radiusmod_per_level = 0
@@ -777,8 +782,6 @@
 	rarity = PROPERTY_COMMON
 	value = 1
 	range_per_level = 1
-	duration_per_level = -1
-	intensity_per_level = -1
 
 	intensitymod_per_level = -0.05
 	radiusmod_per_level = 0.05
@@ -835,6 +838,7 @@
 	description = "Disrupts certain neurological processes related to communication in animals."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_TOXICANT
+	cost_penalty = FALSE
 
 /datum/chem_property/positive/disrupting/process(mob/living/M, potency = 1)
 	to_chat(M, SPAN_NOTICE("Your mind feels oddly... quiet."))
@@ -857,6 +861,7 @@
 	description = "Neutralizes certain reactive chemicals and plasmas on contact. Unsafe to administer intravenously."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_IRRITANT
+	cost_penalty = FALSE
 
 /datum/chem_property/positive/neutralizing/process(mob/living/M, potency = 1)
 	M.apply_damages(0, potency, potency * POTENCY_MULTIPLIER_LOW)
@@ -992,3 +997,37 @@
 
 /datum/chem_property/positive/anticarcinogenic/process_critical(mob/living/M, potency = 1)
 	M.take_limb_damage(POTENCY_MULTIPLIER_MEDIUM * potency)//Hyperactive apoptosis
+
+/datum/chem_property/positive/regulating
+	name = PROPERTY_REGULATING
+	code = "REG"
+	description = "The chemical regulates its own metabolization, any ammount overdosed is turned into sugar."
+	rarity = PROPERTY_COMMON
+	category = PROPERTY_TYPE_METABOLITE
+	max_level = 1
+	value = 0
+
+/datum/chem_property/positive/regulating/reset_reagent()
+	holder.flags = initial(holder.flags)
+	..()
+
+/datum/chem_property/positive/regulating/update_reagent()
+	holder.flags |= REAGENT_CANNOT_OVERDOSE
+	..()
+
+/datum/chem_property/positive/firepenetrating
+	name = PROPERTY_FIRE_PENETRATING
+	code = "PTR"
+	description = "Gives the chemical a unique, anomalous combustion chemistry, causing the flame to react with flame-resistant material and obliterate through it."
+	rarity = PROPERTY_RARE
+	category = PROPERTY_TYPE_REACTANT
+	value = 8
+	max_level = 1
+
+/datum/chem_property/positive/firepenetrating/reset_reagent()
+	holder.fire_penetrating = initial(holder.fire_penetrating)
+	..()
+
+/datum/chem_property/positive/firepenetrating/update_reagent()
+	holder.fire_penetrating = TRUE
+	..()

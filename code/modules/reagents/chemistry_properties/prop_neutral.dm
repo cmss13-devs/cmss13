@@ -592,6 +592,7 @@
 	rarity = PROPERTY_RARE
 	starter = FALSE
 	value = 3
+	cost_penalty = FALSE
 	var/heal_amount = 0.75
 
 /datum/chem_property/neutral/transformative/process(mob/living/M, potency = 1, delta_time)

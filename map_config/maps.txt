@@ -28,8 +28,7 @@ map fiorina_sciannex
 endmap
 
 map corsat
-	minplayers 130
-	voteweight 0
+	minplayers 100
 endmap
 
 map desert_dam

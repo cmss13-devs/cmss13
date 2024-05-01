@@ -7,7 +7,7 @@
 	can_build_special = TRUE
 
 /area/corsat/landing/console
-	name = "\improper LZ1 'NON FUNCTIONAL'"//Temp
+	name = "\improper LZ1 'Gamma'"
 	icon_state = "corsat_telecomms"
 	requires_power = 0
 
@@ -21,6 +21,29 @@
 	icon_state = "corsat_hull"
 	ceiling = CEILING_REINFORCED_METAL
 
+/area/corsat/comms
+	name = "CORSAT Auxiliary Comms Relay"
+	icon_state = "corsat_hull"
+	ceiling = CEILING_REINFORCED_METAL
+
+/area/corsat/comms/flight_control
+	name = "CORSAT Auxiliary Comms Relay (Flight Control)"
+
+/area/corsat/comms/gamma_halls
+	name = "CORSAT Auxiliary Comms Relay (Gamma Halls)"
+
+/area/corsat/comms/gamma_cargo
+	name = "CORSAT Auxiliary Comms Relay (Gamma Cargo)"
+
+/area/corsat/comms/sigma_cargo
+	name = "CORSAT Auxiliary Comms Relay (Sigma Cargo)"
+
+/area/corsat/comms/sigma_residential
+	name = "CORSAT Auxiliary Comms Relay (Sigma Residential)"
+
+/area/corsat/comms/sigma_biodome
+	name = "CORSAT Auxiliary Comms Relay (Sigma Biodome)"
+
 //SIGMA SECTOR
 
 /area/corsat/sigma
@@ -31,6 +54,18 @@
 	name = "\improper Sigma Sector North Hallway"
 	icon_state = "sigma_hallway_north"
 	is_resin_allowed = FALSE
+
+/area/corsat/sigma/north/engineering
+	name = "\improper Primary Engineering"
+	icon_state = "gamma_engineering"
+
+/area/corsat/sigma/north/engineering/lobby
+	name = "\improper Primary Engineering Lobby"
+	icon_state = "gamma_engineering"
+
+/area/corsat/sigma/north/engineering/core
+	name = "\improper CORSAT Generator Core"
+	icon_state = "corsat_core"
 
 /area/corsat/sigma/hangar
 	name = "\improper Landing Bay Sigma"
@@ -250,7 +285,7 @@
 	icon_state = "flight_center"
 
 /area/corsat/gamma/hangar/security
-	name = "\improper Gamma Hangar Security"
+	name = "\improper Gamma Cargo Security"
 	icon_state = "gamma_hangar_security"
 
 /area/corsat/gamma/hangar/arrivals
@@ -258,12 +293,12 @@
 	icon_state = "gamma_arrivals"
 
 /area/corsat/gamma/foyer
-	name = "\improper Gamma Foyer"
+	name = "\improper Gamma Sector North Hallways"
 	icon_state = "gamma_foyer"
 	is_resin_allowed = FALSE
 
 /area/corsat/gamma/hallwaymain
-	name = "\improper Gamma Sector West Hallway"
+	name = "\improper Gamma Sector South-West Hallway"
 	icon_state = "gamma_hallway_main"
 
 /area/corsat/gamma/hallwaysouth
@@ -274,16 +309,21 @@
 	name = "\improper Gamma Residential Hallway"
 	icon_state = "gamma_hallway_main"
 
-/area/corsat/gamma/residential/west
+/area/corsat/gamma/residential/generator
+	name = "\improper CORSAT Emergency Generators"
+	icon_state = "secondary_core"
+	ceiling = CEILING_METAL
+
+/area/corsat/gamma/residential/academy
 	name = "\improper CORSAT Academy"
 	icon_state = "gamma_residential_west"
 
-/area/corsat/gamma/residential/east
-	name = "\improper Gamma North Residential"
+/area/corsat/gamma/residential/north
+	name = "\improper CORSAT Residential Module"
 	icon_state = "gamma_residential_east"
 
 /area/corsat/gamma/residential/maint
-	name = "\improper Gamma Residential Maintenance"
+	name = "\improper CORSAT Academy Maintenance"
 	icon_state = "gamma_residential_maint"
 
 /area/corsat/gamma/residential/researcher
@@ -389,21 +429,10 @@
 	name = "\improper CORSAT Library"
 	icon_state = "corsat_library"
 
-/area/corsat/gamma/engineering
-	name = "\improper Gamma Engineering"
-	icon_state = "gamma_engineering"
 
-/area/corsat/gamma/engineering/lobby
-	name = "\improper Gamma Engineering Lobby"
-	icon_state = "gamma_engineering"
-
-/area/corsat/gamma/engineering/atmos
+/area/corsat/gamma/atmos
 	name = "\improper CORSAT Atmospherics"
 	icon_state = "gamma_atmos"
-
-/area/corsat/gamma/engineering/core
-	name = "\improper CORSAT Generator Core"
-	icon_state = "corsat_core"
 
 /area/corsat/gamma/sigmaremote
 	name = "\improper Sigma Remote Complex"

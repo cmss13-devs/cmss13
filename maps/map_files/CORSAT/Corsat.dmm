@@ -37124,11 +37124,6 @@
 	icon_state = "whitetan"
 	},
 /area/corsat/gamma/residential/west)
-"jOE" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/open/space,
-/area/space)
 "jPa" = (
 /obj/structure/tunnel{
 	id = "hole4"
@@ -94700,7 +94695,7 @@ aSa
 aSa
 aSa
 aSa
-jOE
+aSa
 ajq
 ajq
 ajq

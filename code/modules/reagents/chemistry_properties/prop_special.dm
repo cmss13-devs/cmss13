@@ -6,28 +6,15 @@
 /datum/chem_property/special/boosting
 	name = PROPERTY_BOOSTING
 	code = "BST"
-	description = "Boosts the potency of all other properties in this chemical when inside the body."
+	description = "Boosts the potency of all other properties in this chemical when inside the body by up to 4 levels."
 	rarity = PROPERTY_LEGENDARY
 	category = PROPERTY_TYPE_METABOLITE
+	max_level = 4
 
 /datum/chem_property/special/boosting/pre_process(mob/living/M)
+	if(max_level > level)
+		level = max_level
 	return list(REAGENT_BOOST = level)
-
-/datum/chem_property/special/regulating
-	name = PROPERTY_REGULATING
-	code = "REG"
-	description = "The chemical regulates its own metabolization and can thus never cause overdosis."
-	rarity = PROPERTY_LEGENDARY
-	category = PROPERTY_TYPE_METABOLITE
-	max_level = 1
-
-/datum/chem_property/special/regulating/reset_reagent()
-	holder.flags = initial(holder.flags)
-	..()
-
-/datum/chem_property/special/regulating/update_reagent()
-	holder.flags |= REAGENT_CANNOT_OVERDOSE
-	..()
 
 /datum/chem_property/special/hypergenetic
 	name = PROPERTY_HYPERGENETIC
@@ -351,21 +338,4 @@
 
 	holder.durationfire += 1 * level
 	holder.durationmod += 0.1 * level
-	..()
-
-/datum/chem_property/special/firepenetrating
-	name = PROPERTY_FIRE_PENETRATING
-	code = "PTR"
-	description = "Gives the chemical a unique, anomalous combustion chemistry, causing the flame to react with flame-resistant material and obliterate through it."
-	rarity = PROPERTY_LEGENDARY
-	category = PROPERTY_TYPE_REACTANT
-	value = 8
-	max_level = 1
-
-/datum/chem_property/special/firepenetrating/reset_reagent()
-	holder.fire_penetrating = initial(holder.fire_penetrating)
-	..()
-
-/datum/chem_property/special/firepenetrating/update_reagent()
-	holder.fire_penetrating = TRUE
 	..()

@@ -549,11 +549,12 @@
 /area/corsat/omega
 	name = "\improper Sector Omega"
 	icon_state = "corsat_hull"
-	ceiling = CEILING_REINFORCED_METAL
+	ceiling = CEILING_GLASS
 
 /area/corsat/omega/biodome
 	name = "\improper Biodome Omega"
 	icon_state = "omega_biodome"
+	ceiling = CEILING_REINFORCED_METAL
 
 /area/corsat/omega/hangar
 	name = "\improper Landing Bay Omega"
@@ -575,10 +576,12 @@
 /area/corsat/omega/complex
 	name = "\improper Omega Research Complex"
 	icon_state = "omega_complex"
+	ceiling = CEILING_REINFORCED_METAL
 
 /area/corsat/omega/containment
 	name = "\improper Omega Research Containment"
 	icon_state = "omega_containment"
+	ceiling = CEILING_REINFORCED_METAL
 
 /area/corsat/omega/security
 	name = "\improper Omega Security Hub"
@@ -603,14 +606,17 @@
 /area/corsat/omega/airlocknorth
 	name = "\improper Omega Dome North Airlock"
 	icon_state = "omega_airlock"
+	ceiling = CEILING_REINFORCED_METAL
 
 /area/corsat/omega/airlocknorth/id
 	name = "\improper Omega North ID Checkpoint"
 	icon_state = "corsat_id"
+	ceiling = CEILING_REINFORCED_METAL
 
 /area/corsat/omega/control
 	name = "\improper Omega Dome Control Module"
 	icon_state = "omega_control"
+	ceiling = CEILING_REINFORCED_METAL
 
 //INACCESSIBLE
 

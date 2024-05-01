@@ -1,0 +1,6 @@
+author: "Huffie56"
+delete-after: True
+changes:
+  - maptweak: "Officer cafeteria added back missing emergency shutters and move the pipes from bellow the windows."
+  - maptweak: "Starboard aft hull removed the two walls."
+  - maptweak: "Upper engi area around lobby remove pipping going bellow window also rework the area to better fit aestetic of almayer."

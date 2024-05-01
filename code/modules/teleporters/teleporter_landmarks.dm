@@ -71,3 +71,7 @@
 /obj/effect/landmark/teleporter_loc/corsat_sigma_remote
 	location_id = "Sigma Remote"
 	linked_teleporter = "Corsat_Teleporter"
+
+/obj/effect/landmark/teleporter_loc/corsat_auxiliary
+	location_id = "Cargo Auxiliary"
+	linked_teleporter = "Corsat_Teleporter"

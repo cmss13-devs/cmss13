@@ -5829,7 +5829,7 @@
 /area/lv759/outdoors/colony_streets/north_street)
 "aYR" = (
 /obj/effect/hybrisa/decal/dirt,
-/turf/open/auto_turf/hybrisashale/layer2,
+/turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/outdoors/caves/north_west_caves_outdoors)
 "aYS" = (
 /turf/open/floor/hybrisa/metal/bluemetal1{
@@ -12660,13 +12660,6 @@
 	icon_state = "multi_tiles"
 	},
 /area/lv759/indoors/spaceport/flight_control_room)
-"ciL" = (
-/obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark1,
-/obj/structure/platform/hybrisa/rockdark{
-	dir = 8
-	},
-/turf/open/auto_turf/hybrisashale/layer1,
-/area/lv759/outdoors/caves/north_west_caves_outdoors)
 "ciZ" = (
 /obj/structure/platform/hybrisa/metalplatform6,
 /obj/structure/barricade/handrail/wire{
@@ -16178,13 +16171,11 @@
 /turf/open/floor/prison,
 /area/lv759/outdoors/colony_streets/south_west_street)
 "cMw" = (
-/obj/structure/platform_decoration/hybrisa/metalplatformdeco6{
-	dir = 8
-	},
-/obj/structure/platform_decoration{
-	dir = 8
-	},
 /obj/structure/window/framed/hybrisa/colony/engineering/reinforced,
+/obj/structure/platform_decoration{
+	dir = 8;
+	layer = 4
+	},
 /obj/structure/machinery/door/poddoor/hybrisa/shutters{
 	dir = 8
 	},
@@ -24619,6 +24610,10 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/caveplateau)
 "edY" = (
+/obj/structure/platform{
+	dir = 4;
+	layer = 4
+	},
 /obj/structure/window/framed/hybrisa/colony/engineering/reinforced,
 /obj/structure/machinery/door/poddoor/hybrisa/shutters{
 	dir = 8
@@ -95832,6 +95827,15 @@
 	icon_state = "officetiles"
 	},
 /area/whiskey_outpost/inside/caves)
+"pVw" = (
+/obj/structure/platform/hybrisa/rockdark{
+	dir = 1
+	},
+/obj/structure/platform/hybrisa/rockdark{
+	dir = 8
+	},
+/turf/open/auto_turf/hybrisashale/layer2,
+/area/lv759/outdoors/caves/north_west_caves_outdoors)
 "pVB" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -98774,7 +98778,9 @@
 /obj/structure/platform/hybrisa/metalplatform1{
 	dir = 4
 	},
-/turf/open/hybrisa/street/cement1,
+/turf/open/floor/hybrisa/metal/grated{
+	dir = 4
+	},
 /area/lv759/outdoors/colony_streets/central_streets)
 "qwH" = (
 /obj/effect/landmark/corpsespawner/pizza,
@@ -115766,7 +115772,6 @@
 	dir = 4
 	},
 /obj/structure/platform/hybrisa/rockdark,
-/obj/structure/tunnel,
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/indoors/caves/central_caves)
 "tjG" = (
@@ -119602,12 +119607,13 @@
 /turf/closed/wall/hybrisa/colony,
 /area/lv759/indoors/apartment_services/west)
 "tTp" = (
-/obj/structure/platform{
-	dir = 4
-	},
 /obj/structure/window/framed/hybrisa/colony/engineering/reinforced,
 /obj/structure/machinery/door/poddoor/hybrisa/shutters{
 	dir = 8
+	},
+/obj/structure/platform{
+	dir = 4;
+	layer = 4
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/power_plant/transformers_south)
@@ -120306,7 +120312,9 @@
 /obj/effect/hybrisa/decal/trash{
 	icon_state = "trash_6"
 	},
-/turf/open/hybrisa/street/cement1,
+/turf/open/floor/hybrisa/metal/grated{
+	dir = 4
+	},
 /area/lv759/outdoors/colony_streets/central_streets)
 "tYX" = (
 /obj/item/stack/sheet/wood/medium_stack,
@@ -123218,8 +123226,10 @@
 /turf/open/hybrisa/street/sidewalk,
 /area/lv759/outdoors/colony_streets/central_streets)
 "uxD" = (
-/obj/structure/platform_decoration,
 /obj/structure/window/framed/hybrisa/colony/engineering/reinforced,
+/obj/structure/platform_decoration{
+	layer = 4
+	},
 /obj/structure/machinery/door/poddoor/hybrisa/shutters{
 	dir = 8
 	},
@@ -128714,6 +128724,12 @@
 	icon_state = "red"
 	},
 /area/lv759/indoors/colonial_marshals/armory_foyer)
+"vsA" = (
+/obj/structure/platform_decoration/hybrisa/rockdark{
+	dir = 4
+	},
+/turf/open/auto_turf/hybrisashale/layer2,
+/area/lv759/outdoors/caves/north_west_caves_outdoors)
 "vsD" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
@@ -141916,6 +141932,13 @@
 	},
 /turf/open/floor/hybrisa/tile/supermartfloor1,
 /area/lv759/indoors/bar/kitchen)
+"xAP" = (
+/obj/structure/platform/hybrisa/rockdark,
+/obj/structure/platform/hybrisa/rockdark{
+	dir = 4
+	},
+/turf/open/auto_turf/hybrisashale/layer2,
+/area/lv759/outdoors/caves/north_west_caves_outdoors)
 "xAQ" = (
 /obj/item/device/flashlight/lamp/tripod/grey,
 /turf/open/auto_turf/hybrisashale/layer0_plate,
@@ -147813,10 +147836,10 @@ hcI
 hcI
 unn
 unn
-bta
-piy
+joL
+pVw
 pxi
-ciL
+pxi
 blz
 unn
 unn
@@ -149089,7 +149112,7 @@ rQG
 bta
 rQG
 lms
-bta
+ntJ
 unn
 unn
 unn
@@ -149341,8 +149364,8 @@ rQG
 rQG
 rQG
 vkl
-ntJ
 bta
+plV
 unn
 unn
 plV
@@ -149833,7 +149856,7 @@ bta
 rQG
 rQG
 wKf
-hhG
+xAP
 bta
 plV
 unn
@@ -153375,7 +153398,7 @@ lVI
 lVI
 cUq
 bfm
-cRn
+bfm
 bfm
 mCI
 sPc
@@ -153879,7 +153902,7 @@ kQv
 kQv
 nZt
 uBF
-plV
+bta
 iLN
 dez
 tui
@@ -154879,7 +154902,7 @@ unn
 unn
 bta
 piy
-fSm
+vsA
 rQG
 ffy
 uOU
@@ -155894,7 +155917,7 @@ plV
 unn
 unn
 unn
-bta
+plV
 mNe
 crA
 yeo
@@ -156135,7 +156158,7 @@ rQG
 rQG
 rQG
 rQG
-bta
+plV
 bta
 rQG
 bta
@@ -156389,9 +156412,9 @@ rQG
 bta
 bta
 gmM
-bta
+plV
 rQG
-bta
+plV
 rQG
 lms
 unn
@@ -157139,8 +157162,8 @@ iKK
 foB
 wKf
 kmh
-mLG
-mLG
+mTU
+mTU
 unn
 lmd
 lmd
@@ -157390,7 +157413,7 @@ hcI
 unn
 unn
 hhG
-bta
+plV
 jBI
 unn
 unn
@@ -165041,7 +165064,7 @@ bcA
 bcA
 unn
 unn
-pTu
+wgs
 unn
 unn
 unn
@@ -167058,7 +167081,7 @@ oYd
 rHL
 rHL
 oYd
-pTu
+oYd
 unn
 unn
 unn
@@ -174532,7 +174555,7 @@ nuP
 nuP
 nuP
 gMC
-scl
+nuP
 nuP
 nuP
 sqD
@@ -185374,7 +185397,7 @@ lxb
 ukk
 pBg
 cFR
-edY
+tTp
 edY
 gqt
 cFR

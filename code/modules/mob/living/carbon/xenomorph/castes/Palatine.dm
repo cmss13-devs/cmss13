@@ -42,7 +42,6 @@
 	mob_size = MOB_SIZE_BIG
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 3
-	mutation_type = "Normal"
 	counts_for_slots = FALSE
 	claw_type = CLAW_TYPE_VERY_SHARP
 

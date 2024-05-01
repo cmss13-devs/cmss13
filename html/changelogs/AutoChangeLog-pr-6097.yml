@@ -1,0 +1,5 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - balance: "FM sound is 4 seconds before CAS open fire from 5"
+  - balance: "FM direction warning is 1 seconds before CAS open fire from 1.5"

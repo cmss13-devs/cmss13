@@ -106,9 +106,13 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	/// Is nuke request usable or not?
 	var/nuke_available = TRUE
 
+	/// Status of the AI Core Lockdown
+	var/ai_lockdown_active = FALSE
+
 	COOLDOWN_DECLARE(ares_distress_cooldown)
 	COOLDOWN_DECLARE(ares_nuclear_cooldown)
 	COOLDOWN_DECLARE(ares_quarters_cooldown)
+	COOLDOWN_DECLARE(aicore_lockdown)
 
 // ------ ARES Logging Procs ------ //
 /proc/ares_is_active()

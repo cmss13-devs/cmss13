@@ -46,7 +46,7 @@
 	var/atom/movable/screen/toggle_burst
 	var/atom/movable/screen/unique_action
 
-	var/atom/movable/screen/zone_sel
+	var/atom/movable/screen/zone_sel/zone_sel
 	var/atom/movable/screen/pull_icon
 	var/atom/movable/screen/throw_icon
 	var/atom/movable/screen/oxygen_icon
@@ -230,6 +230,7 @@
 	hud_version = display_hud_version
 	persistent_inventory_update(screenmob)
 	mymob.update_action_buttons(TRUE)
+	reorganize_alerts(screenmob)
 	mymob.reload_fullscreens()
 
 	// ensure observers get an accurate and up-to-date view

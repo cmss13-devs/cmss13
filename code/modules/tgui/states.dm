@@ -64,10 +64,10 @@
 	//if(!client && !HAS_TRAIT(src, TRAIT_PRESERVE_UI_WITHOUT_CLIENT))
 	if(!client)
 		return UI_CLOSE
-	// Disable UIs if unconcious.
+	// Disable UIs if unconscious.
 	else if(stat)
 		return UI_DISABLED
-	// Update UIs if incapicitated but concious.
+	// Update UIs if incapicitated but conscious.
 	else if(is_mob_incapacitated())
 		return UI_UPDATE
 	return UI_INTERACTIVE
@@ -79,13 +79,6 @@
 	if(. == UI_INTERACTIVE)
 		return UI_UPDATE
 */
-
-/mob/living/silicon/robot/shared_ui_interaction(src_object)
-	// Disable UIs if the object isn't installed in the borg AND the borg is either locked, has a dead cell, or no cell.
-	var/atom/device = src_object
-	if((istype(device) && device.loc != src) && (!cell || cell.charge <= 0 || lockcharge))
-		return UI_DISABLED
-	return ..()
 
 /**
  * public
@@ -110,5 +103,28 @@
 	// Disable if 5 tiles away.
 	else if(dist <= 5)
 		return UI_DISABLED
+	// Otherwise, we got nothing.
+	return UI_CLOSE
+
+/**
+ * public
+ *
+ * Check if in view. Can interact only if adjacent, updates within max distance, otherwise closes
+ *
+ * required src_object atom/movable The object which owns the UI.
+ *
+ * return UI_state The state of the UI.
+ */
+/mob/living/proc/shared_living_ui_in_view(atom/movable/src_object, viewcheck = TRUE, max_distance = 7)
+	// If the object is obscured, close it.
+	if(viewcheck && !(src_object in view(src)))
+		return UI_CLOSE
+	var/dist = get_dist(src_object, src)
+	// Open and interact if 1-0 tiles away.
+	if(dist <= 1)
+		return UI_INTERACTIVE
+	// View only if within distance.
+	else if(dist <= max_distance)
+		return UI_UPDATE
 	// Otherwise, we got nothing.
 	return UI_CLOSE

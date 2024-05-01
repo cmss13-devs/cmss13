@@ -42,6 +42,11 @@
 				continue
 			if(is_mainship_level(H.z)) // People on ship see everything
 				continue
+
+			// If they have iff AND a marine headset they will recieve announcements
+			if ((FACTION_MARINE in H.wear_id?.faction_group) && (istype(H.wear_l_ear, /obj/item/device/radio/headset/almayer) || istype(H.wear_r_ear, /obj/item/device/radio/headset/almayer)))
+				continue
+
 			if((H.faction != faction_to_display && !add_PMCs) || (H.faction != faction_to_display && add_PMCs && !(H.faction in FACTION_LIST_WY)) && !(faction_to_display in H.faction_group)) //faction checks
 				targets.Remove(H)
 
@@ -90,7 +95,7 @@
 //AI announcement that uses talking into comms
 /proc/ai_announcement(message, sound_to_play = sound('sound/misc/interference.ogg'), logging = ARES_LOG_MAIN)
 	for(var/mob/M in (GLOB.human_mob_list + GLOB.dead_mob_list))
-		if(isobserver(M) || ishuman(M) && is_mainship_level(M.z))
+		if((isobserver(M) && M.client?.prefs?.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS) || ishuman(M) && is_mainship_level(M.z))
 			playsound_client(M.client, sound_to_play, M, vol = 45)
 
 	for(var/mob/living/silicon/decoy/ship_ai/AI in GLOB.ai_mob_list)
@@ -145,7 +150,7 @@
 	for(var/mob/T in targets)
 		if(isobserver(T))
 			continue
-		if(!ishuman(T) || isyautja(T) || !is_mainship_level(T.z))
+		if(!ishuman(T) || isyautja(T) || !is_mainship_level((get_turf(T))?.z))
 			targets.Remove(T)
 
 	log_ares_announcement("[title] Shipwide Update", message)
@@ -161,4 +166,6 @@
 			continue
 
 		to_chat_spaced(T, html = "[SPAN_ANNOUNCEMENT_HEADER(title)]<br><br>[SPAN_ANNOUNCEMENT_BODY(message)]", type = MESSAGE_TYPE_RADIO)
+		if(isobserver(T) && !(T.client?.prefs?.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS))
+			continue
 		playsound_client(T.client, sound_to_play, T, vol = 45)

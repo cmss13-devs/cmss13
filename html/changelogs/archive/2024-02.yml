@@ -1,0 +1,477 @@
+2024-02-01:
+  BadAtThisGame302:
+  - bugfix: fixed the CMB Trijent Survivor
+  BadAtThisGame302, AmoryBlaine:
+  - rscadd: Added new brown laceups, adds new ties and tweaks current ones, as well
+      as new suit, bomber, vest, and corporate clothes to the game. Sprites by AmoryBlaine.
+  - imageadd: added six new Corporate clothes sprites (Casual/Ivy/Formal/Black/Brown/Blue),
+      three suit vest sprites (Brown/Tan/Grey), three bomber jacket sprites (Khaki/Red/Grey),
+      and five suit jacket sprites (Khaki/Formal/Black/Brown/Blue).
+  Huffie56:
+  - rscdel: Removed "security robot module" from robot_module.dm
+  - refactor: change the name of Ripley in game to P-1000, gygax to MAX, Durand to
+      MOX, Odysseus to Alice to be more in line with the lore.
+2024-02-02:
+  BadAtThisGame302:
+  - rscadd: Replaced the Political Survivor surv name with State Contractor
+  - rscadd: Added a USCMC Recruiter to the Solaris surv pool.
+  - rscadd: Added a USCM Survivor template anycase anyone wants to add USCM Survivors
+      to other maps.
+  - bugfix: Every other surv has no 'Ridge' next to Solaris in their assignments,
+      only the CL. Fixes this.
+  - spellcheck: Embellished the Solaris Ridge announce text, to make it so the Company
+      and more fluff about it's actual role like the wiki states.
+  Diegoflores31:
+  - rscadd: Disabler bolts now deal a little oxygen damage on each hit.
+  - rscadd: Replaces Skill lock system on stunbatons with a high chance of hiting
+      yourself
+  - qol: adds jittery and sway to Stunbaton and Disabler beams
+  Drathek:
+  - balance: Compared to originally, corpsmen now have access to medbay vendors, and
+      chemistry only requires chemistry access.
+  - bugfix: 'Fixed unintended change to medbay vendors access:'
+  Huffie56:
+  - maptweak: added warning stripe bellow doors that didn't have them.
+  - maptweak: Removed a bed sheet in medical to restore the lore of the unknown alpha
+      that stole it.
+  - maptweak: Reconnect the CIC armory to one of the brig door armory allowing them
+      to open it at a distance.
+  InsaneRed:
+  - balance: Oppressor tailstab no longer ignores armor, and it now roots instead
+      of stunning.
+  NervanCatos:
+  - qol: added M3-L Pattern Light Armor to IO Prep
+  SabreML:
+  - bugfix: Fixed lesser drones not being able to flip tables.
+  VileBeggar:
+  - rscadd: Added the XM51 breaching scattergun, available in small quantities as
+      a restricted weapon within Requisitions.
+  blackdragonTOW:
+  - imageadd: altered the turret flag to the UA flag, from generic orange
+  - bugfix: Flag turrets now correct reference the destroyed state
+  harryob:
+  - bugfix: medals should save more reliably
+  hislittlecuzingames:
+  - balance: Nightmare inserts of crashed ships on Solaris (big red) and Desert dam
+      can do surgury in them INSTANCE EDIT
+  mullenpaul:
+  - refactor: camera consoles now use camera manager component
+  private-tristan:
+  - balance: Burrower can no longer spawn as part of the feral xeno ERT
+2024-02-03:
+  Drathek:
+  - ui: Refactored backend for Weapon Stats panel to use spritesheets instead.
+2024-02-04:
+  BadAtThisGame302:
+  - bugfix: fixed the CL jackets/vests/bomber jackets sprites.
+  Drathek:
+  - imageadd: Changed green fire sprites to work better with lights
+  - balance: Reduced how many fire stacks a flaregun shot provides
+  - balance: Reduced starshell's damage, but fixed the application of the incend bullet
+      trait.
+  - balance: Reverted damage changes to tazers and batons.
+  Huffie56:
+  - bugfix: 'revert PR #5553 as it is causing issues with color on atmo pipe.'
+  LTNTS:
+  - imageadd: stamp sprites for TWE, UPP and CLF
+  - code_imp: added TWE, UPP and CLF channels
+  MistChristmas:
+  - maptweak: Add Brig Photocopier
+  Segrain:
+  - bugfix: Some cases of calculations for "time remaining until something" no longer
+      display incorrect results.
+  Stakeyng:
+  - qol: Removes the need to cycle through helmet visors that contain HUD effects
+      that are already active on your character.
+  cuberound:
+  - balance: increases flare pouch storage slots from 8 to 16
+2024-02-05:
+  Drathek:
+  - bugfix: Added more null testing to helmet visors.
+  Poltava:
+  - imageadd: updated intel expedition chestrig sprite
+  SpartanBobby:
+  - maptweak: Fixes the two gauss sentry guns that were boxxed in by a mapper over
+      a year ago on ice 3
+  Warfan1815:
+  - bugfix: Open surgical incisions now show up on a health scanner even if there
+      is nothing else wrong.
+  - bugfix: Open surgical incisions in the head "zones" (mouth and eyes) now show
+      up independently on health scanner
+  cuberound:
+  - balance: increases healing node heal from 10hp every 5 sec to 20 hp every 5 sec
+2024-02-06:
+  InsaneRed:
+  - rscadd: Warden Praetorians can now see how much healing they've done.
+  - qol: Re-organizes the warden ''hotbar''
+  - bugfix: SO's M3 armor now has the proper description.
+  Vicacrov:
+  - bugfix: Fixes Defenders staying Fortified in critical state - Fortify now automatically
+      toggles itself off upon the Defender getting critted.
+2024-02-07:
+  InsaneRed:
+  - balance: Scout specialist incin/high impact mag crates now only has 3 instead
+      of 5
+  Steelpoint:
+  - rscadd: USCM Chestrig has been added to squad prep vendors, alternative sprite
+      of a satchel, similar in appearance to the welder-chestrig.
+2024-02-08:
+  Megaddd:
+  - imageadd: added 4 bone-gel fill level sprite states
+  SpartanBobby:
+  - maptweak: changes to LV624 Engineering and T-comms, mostly detailing but changes
+      some doors and object placement
+2024-02-09:
+  Huffie56:
+  - refactor: turning newscasters into "props".
+  - qol: added two new section to replace ammunition section primary ammunition and
+      sidearm ammunition and rearranged it for team leader.
+  - balance: added the ability for comtech, medic, and squad leader to buy M4A3 (HP
+      and AP) and VP78 magazines for 3 points and M44 Heavy for 6 points.
+  - balance: added the ability for SG to buy M4A3 (HP and AP) and VP78 magazines for
+      5 points and M44 Heavy for 10 points.
+  - balance: added the ability for rifleman to buy M4A3 (HP and AP) and VP78 magazines
+      for 5 points.
+2024-02-10:
+  Drathek:
+  - bugfix: Fixed an oversight with burst point blank firing
+  SabreML:
+  - bugfix: Fixed trash carts not being pick-uppable by the dropship's fulton recovery
+      system.
+  blackdragonTOW:
+  - admin: added logging for 3rd party victory events
+  private-tristan:
+  - rscadd: Pizza ERT is back, although incredibly unlikely to occur
+  - bugfix: UPP ERT no longer rolls 3 times (1 for random, 1 for friendly, and 1 for
+      hostile), due to this, UPP comms will always be scrambled at the beginning,
+      no way to tell intentions before meeting.
+  - rscadd: Chem Goon Research Consultant now spawns with reagent scanner goggles.
+2024-02-11:
+  Drathek:
+  - bugfix: Fix gardener fruit count not always updating
+  Vicacrov:
+  - bugfix: Fixed Warden Praetorians being able to move around the ovipositored Queen
+      with their Retrieve ability.
+2024-02-12:
+  Stakeyng:
+  - qol: Lets you put an extra accessory item in your helmet.
+  harryob:
+  - server: tor banning functionality is removed
+2024-02-13:
+  Huffie56:
+  - refactor: refactored watercloset.dm file.
+  SabreML:
+  - ui: Made the Tutorial Menu automatically close when a tutorial is started.
+  - code_imp: Made the tutorial Xenomorph not inherit the user's 'age' prefix.
+  - code_imp: Added a basic unit test for tutorials.
+2024-02-14:
+  SabreML:
+  - bugfix: Fixed crates and similar objects layering below the dropship's fulton
+      recovery system.
+  Zonespace Drathek:
+  - balance: Lesser drones and Facehuggers cannot speak, custom emote, or point for
+      3 minutes after spawning
+2024-02-15:
+  InsaneRed:
+  - balance: Drop pouch now scales the same as normal webbing
+  SabreML:
+  - bugfix: Fixed some changelog icons being smaller than others.
+  Vicacrov:
+  - maptweak: LV-624 tfort's floodlights are now colony floodlights.
+  VileBeggar:
+  - qol: Attaching the bipod to weapons that have full auto (HPR included) will give
+      you a button toggle for immediately switching to full auto when deploying the
+      bipod.
+2024-02-16:
+  BadAtThisGame302:
+  - rscadd: Added two new beacons for the CL, Lawyer and Bodyguard.
+  - rscadd: Added an Executive Specialist and Executive Supervisor Lawyer preset.
+  - rscadd: Added a cyanide pill in the CLs briefcase for an easy way out.
+  - rscadd: Added a Wey-Yu Coffee Mug in the CLs briefcase as a souvenir sale.
+  Drathek:
+  - bugfix: Fixed xeno tutorial allowing evolution/de-evolution
+  - bugfix: Fixed some runtimes with tutorials
+  SabreML:
+  - bugfix: Fixed the 'Clear' button not resetting the number of keybind assignment
+      slots. (Keybinds menu)
+  - refactor: Refactored xeno strains.
+  - rscadd: Added a keybind setting to open the 'Purchase Strain' window. (Also renamed
+      the macro)
+  cuberound:
+  - balance: m4ra ammo looses about 1/5 of initial effect duration per 10 tiles traveled
+  harryob:
+  - admin: permanent and sticky bans are now handled in game, instead of being managed
+      externally
+2024-02-17:
+  MobiusWon:
+  - rscadd: Adds integral Motion Detector to XM4 IO Armor
+  - balance: Uniform utility accessories (I.E. Webbing) no longer can be equipped
+      while the XM4 is worn. Armor slots increased to 5 to compensate.
+  Steelpoint:
+  - balance: Royal Marine Commando's firearms now have a higher rate of fire, comparable
+      to the M41A.
+  mullenpaul:
+  - code_imp: rework logic of restrictedinput component to reduce checks
+2024-02-19:
+  Blundir:
+  - imageadd: updated many old/legacy sprites
+  Diegoflores31:
+  - balance: Tail Jab will now target enemies on the same tile it was targeted.
+  - balance: Aiming Tail Jab directly on a target will do an additional 15 damage
+2024-02-20:
+  BeagleGaming1:
+  - balance: Xenos can slash reactors
+  - balance: Reactors that are damaged will still run until reaching weld damage or
+      being manually de-activated
+  - balance: Reactors that are damaged will lose fuel (when applicable) and fail more
+      often when fuel runs out, new cells need to be used to reset the fail rate
+  - balance: Reactors can be damaged by bullets or explosions
+  - code_imp: Updated Power all ship reactors admin button code
+  - imageadd: Updated reactor sprites
+  - maptweak: Minor changes to reactors and surrounding areas
+  Drathek:
+  - code_imp: Autowiki now skips guns and mags without icon_states
+  - code_imp: Unit testing for spritesheets now enforces css requirements for class
+      names
+  - imageadd: Gun stats lineart now uses the no_name sprite again for guns without
+      lineart
+  - rscdel: Removed death messages for lesser drones and facehuggers that are still
+      temporarily muted
+  Huffie56:
+  - balance: add the ability for SG to buy an VP78 or an SU-6 each for 15 points.
+  SabreML:
+  - ui: Added tooltips to entry icons in the changelog.
+  - code_imp: Added a unit test for xeno strains.
+  Vicacrov:
+  - bugfix: Fixes a missing examine text when you hit an exactly half-full ammo magazine
+      against your helmet.
+  Zonespace27:
+  - bugfix: You can no longer remove vehicle parts from a vehicle at a distance
+2024-02-21:
+  Contrabang:
+  - rscadd: Falling out of a Dropship en route to an LZ, now lets your corpse plummet
+      to the ground instead of being deleted.
+  Drathek:
+  - maptweak: Fixed access for two doors on the Almayer
+  - balance: Corrected vampire lurker damage values (Effectively reduction by 5 damage
+      for most attacks)
+  Stakeyng:
+  - rscadd: mou is now compatible with the shotgun scabbard
+  VileBeggar:
+  - rscadd: The Vulture can now be loaded with holo-targetting rounds which have severely
+      hampered ballistic performance, but mark any target that is hit, increasing
+      their damage taken by 33% for a brief period of time.
+  hislittlecuzingames:
+  - maptweak: tweaked Trijent Dam to add a new choke point.
+  private-tristan:
+  - rscdel: VAIMS (vaipo med spec) no longer gets a redundant burn line
+  - balance: VAIMS now gets an extra MAR mag.
+  - bugfix: Forsaken and Feral xenos can now (correctly) use hive-status
+  - spellcheck: fixed a case where we/our wouldn't be used when attempting to access
+      hive status with no queen
+2024-02-22:
+  BadAtThisGame302:
+  - rscadd: Implemented a probability of playing a static-filled transmission as the
+      distress received response.
+  Drathek:
+  - bugfix: Fixed automatic CMB ERT caused by black market heat
+  - code_imp: get_specific_call now only accepts a path or a string of a path
+  - ui: Fix broken admin Medals Panel
+  - spellcheck: Reworded message when a facehugger's temporary mute ends to not mention
+      hivemind
+  Huffie56:
+  - refactor: refactored files with the aim of making fixing barricade with a welder
+      more constant.
+  - bugfix: being unable to repair more than one metal barricade at the time.
+  Kaga:
+  - bugfix: Fixed a bug that broke ID-Lockable items in presets. Rejoice, PMC Snipers,
+      pre-equipped USCM Specs, UPP Commandos, and WY Deathsquads.
+  LaylaMcC:
+  - rscadd: Increased levels of acidic blood and carpotoxin in xenomeat and carp fillets.
+  - rscdel: Xenomeat and carp fillet-based recipes no longer add additional acidic
+      blood or carpotoxin.
+  - qol: Master level domestic skill allows the use of the food processor to remove
+      acidic blood and carpotoxin from xenomeat and carp fillets.
+  - bugfix: Turning named pieces of human meat into meatballs will retain the human's
+      name.
+  SabreML:
+  - rscadd: Added 'observe' functionality to Xenomorphs, allowing observers to view
+      the target's UI.
+  - rscadd: Made observing a player also show their action buttons.
+  - refactor: Refactored the 'gun action' buttons, making them show their names in
+      the status bar when hovered over.
+  TheGamerdk:
+  - rscadd: CIC can now view helmet cameras of Command Staff. Literally 1984
+  iloveloopers:
+  - qol: Autolathes are now significantly faster.
+2024-02-23:
+  AtticusRezzer:
+  - bugfix: Fixed the incorrect area flag in lifeboats allowing tunneling
+  Drathek:
+  - balance: Increased same tile weed expansion delay for queen from 7s to 10s
+  Huffie56:
+  - maptweak: split each Hallway area port and starboard into three areas.(fore midship
+      aft)
+  - maptweak: change the area around north and south west staircase to remove emergency
+      shutters.
+  - maptweak: change the area west of squad preparation room to remove emergency shutter.
+  - maptweak: change the area west of lower engi to make emergency shutter be at the
+      frontier of the area.
+  InsaneRed:
+  - rscadd: Added a new ability to the predalien "Feral Rush" that increases it's
+      armor and speed for a short duration.
+  - rscadd: Added two new abilities to the predalien "Feral Frenzy" and a toggle.
+      The predalien can now switch between a single target GUT and an AOE one, both
+      of which has damage that scale with your kills.
+  - rscdel: Removed the predaliens gib ability
+  - rscdel: Removed the predaliens "pounce" ability
+  - rscdel: Removed the predaliens "Ground Smash" ability
+  - balance: Predalien no longer has plasma costs, or plasma.
+  - balance: The Plasma Rifle, which is ONLY used to hunt abominations now has a higher
+      ROF and has incin bullets.
+  - spellcheck: Re-wrote the predalien text to be more up to date and remove missinformation
+  - qol: Everyone can see how many kills the predalien has by examining it.
+  - rscadd: Added  a "Feral Smash" ability that lets you grab somebody and smash them
+      to the ground, this scales with kills and is a devastating attack.
+  - balance: Removed screenshake from predalien's screech
+  - balance: Predalien removes fire stacks faster.
+  - bugfix: Girders are now slashable by very_sharp_claws instead of just having a
+      queen chack
+  SabreML:
+  - bugfix: Fixed the search function of TGUI input lists.
+  - qol: Made the TGUI input list search bar automatically focus when toggled.
+  - bugfix: Fixed Xenomorphs not having their caste's tackle duration values applied
+      to them.
+  fira:
+  - code_imp: Updated mapping backend from /tg/ upstream.
+  iloveloopers:
+  - qol: Reagent tanks can now be dragged faster.
+2024-02-24:
+  BadAtThisGame302:
+  - rscadd: Added a CL and Goon nightmare insert spawn.
+  - mapadd: added a new nightmare insert on LV which revamps the Corporate Dome into
+      a holdout.
+  SabreML:
+  - bugfix: Fixed the 88 Mod 4 pistol's holster sprite.
+  Segrain:
+  - admin: Check Ckey verb is now available on player panel.
+  - bugfix: Fully healed limbs should now properly remove the overlays for their wounds
+      and bandages.
+  TopHatPenguin:
+  - rscdel: Removes part of MOPP suit desc.
+  Warfan1815:
+  - rscadd: Added WeyYu Trading Cards (they come in packs of 5, single, or in special
+      packs of WeyYu Gold) buyable at rec vendor (and/or colony tobacco vendors in
+      the case of the special cigarette packs)
+  - imageadd: Added sprites of the WeyYu Trading Cards, trading card packs, and special
+      WeyYu Gold cigarette packs.
+2024-02-25:
+  Drathek:
+  - ui: Added the relay ping browser accessed by the tgchat ping to test and use alternative
+      connections to the server
+  - ui: Added onConfirmChange prop to Button.Confirm component.
+  - config: Added CONNECTION_RELAY_PING and CONNECTION_RELAY_CON in the relays.txt
+      config that is optionally included in config.txt
+  - rscadd: Welding a barricade will now repeat automatically if it can still be repaired.
+  - balance: 'Reverted multi-welding change to barricades: All barricades must be
+      welded one at a time.'
+  - refactor: Refactored more barricade code.
+  Huffie56:
+  - refactor: refactor marine_armor.dm and split it into multiples files.
+  SabreML:
+  - bugfix: Fixed 'hidden' action buttons being shown to observing players.
+  - qol: Made any observers transfer over when a Xenomorph evolves/de-evolves.
+  SpartanBobby:
+  - maptweak: Edits to secure storage LV624s detailing
+  - maptweak: Make a few unabreakable walls on kutjevo breakable, touches the east
+      botony caves flanks ands removes some ledges from combat routes
+  - maptweak: Edits to southwest dorms LV522
+  - maptweak: Redetails bigred Libary
+2024-02-26:
+  Mister-moon1:
+  - balance: Reverted flare range buff 7->5 tiles
+  SpartanBobby:
+  - maptweak: Edits to southyard sci-annex
+  harryob:
+  - admin: marking a ticket now actually stops other people from messing with your
+      marked ticket
+  realforest2001:
+  - admin: Mods can now run votes where appropriate.
+  - admin: Moved a few event verbs from Admin level to Senior Mod.
+  - admin: Added a log to creating new bank accounts.
+2024-02-27:
+  BadAtThisGame302:
+  - mapadd: added a new nightmare insert in the Operations Panic Room on Shivas
+  - rscadd: Added trucker hats to the Solaris and Trijent Trucker survs.
+  - rscadd: Added the CMB Marshal jacket to the CMB Marshal.
+  - imageadd: Differentiated the CMB Deputy and CMB Marshal jackets to accurately
+      know which is which. Courtesy of AmoryBlaine.
+  - imageadd: Added new insulated gloves, coveralls (Tan/Red), updated the blue coveralls,
+      Five Colonist Clothes (Grey/Khaki/Pink/Blue/Green), updated the Orange/Blue/Black
+      hazard vests and updated the CMB Uniform and Cap. Courtesy of AmoryBlaine.
+  Drathek:
+  - bugfix: Fixed a runtime when swapping tools during cade welding
+  Huffie56:
+  - rscadd: adding vendor for maintenance technician.
+  - code_imp: remove some item that maintenance technician spawned with and put them
+      in is vendor instead.
+  - maptweak: replaced secured closet by vendor for maintenance technician.
+  - balance: set base price for B12 to 30 and for the M4 to 20.
+  - balance: Medic comtech and SL have a discount of 20% for the B12 and M4. (B12=24
+      & M4=16=)
+  - balance: removed the free M4 for FTL but added FTL the option to buy it for 20.
+  - balance: changed the price of Drop Pouch from 15 to 10.
+  InsaneRed:
+  - balance: Oppressor tailhook is now 8 deciseconds instead of 7.
+  Megaddd:
+  - balance: health analyzer no longer shows large custom research chem property text
+      rows.
+  SabreML:
+  - qol: Added a failure message when trying to remove a built-in helmet visor.
+  paulrpg,kugamo:
+  - imageadd: shuttle rotation sprites added
+  - maptweak: escape pods now use new floors
+2024-02-28:
+  Birdtalon:
+  - bugfix: Admin verbs - Hide will now hide Control Mob verb
+  Drathek:
+  - bugfix: Fixed the Mass Screenshot Debug verb bounds
+  LTNTS:
+  - rscadd: 'brig areas: warden office, MP bunks, starboard hallway, interrogation
+      room, evidence storage'
+  - spellcheck: changes brig surgery to brig medical
+  - code_imp: removed some brig areas from hijack, added other brig areas
+  SabreML:
+  - bugfix: Fixed acid pillars shooting nested marines.
+  Segrain:
+  - bugfix: FORECON and RMC now can add their frequences to groundside radiotowers.
+  - bugfix: Fisticuffs attacks are no longer attributed to wrong mob.
+  - admin: TWE mobs are now properly counted on Who screen.
+  - spellcheck: Changed names of "resin node" and "resin hole" to "weed node" and
+      "resin trap" respectfully.
+  - bugfix: CLF survivors no longer incorrectly get told that they are not hostile
+      to marines.
+  Warfan1815:
+  - spellcheck: Fixed the order of trading cards (as they were accidentally inverted)
+  Zonespace27:
+  - bugfix: M707 spotting scope should no longer teleport its user.
+  - bugfix: M707's attachments should now correctly reflect the map's camouflage.
+  ihatethisengine:
+  - balance: Pried open dropship hatches cannot be remotely locked anymore
+  mullenpaul:
+  - bugfix: ammo consumption logic for cas tgui correctly counts
+2024-02-29:
+  MobiusWon:
+  - balance: Readds M4 armor to FTL vendor as a default item
+  Nanu:
+  - balance: Removed the ability for Combat Synths in the UPP/CLF ERT to use guns,
+      as well as the CLF Survivor Synth.
+  - rscadd: Did a few minor tweaks to help fill in some of the space given by the
+      removal of guns/ammo from the Combat Synths loadout.
+  Segrain:
+  - bugfix: Removed an exploit involving crates.
+  cuberound:
+  - balance: omnisentrygun price down to 300, but it goes up 100 points after each
+      purchase
+  mullenpaul:
+  - code_imp: removed duplicated signal code from dropship equipment

@@ -82,15 +82,15 @@ GLOBAL_LIST(ob_type_fuel_requirements)
 
 	if(!tray.warhead)
 		if(user)
-			to_chat(user, "no warhead in the tray, loading operation cancelled.")
+			to_chat(user, SPAN_WARNING("No warhead in the tray, loading operation cancelled."))
 		return
 
 	if(tray.fuel_amt < 1)
-		to_chat(user, "no solid fuel in the tray, loading operation cancelled.")
+		to_chat(user, SPAN_WARNING("No solid fuel in the tray, loading operation cancelled."))
 		return
 
 	if(loaded_tray)
-		to_chat(user, "Tray is already loaded.")
+		to_chat(user, SPAN_WARNING("Tray is already loaded."))
 		return
 
 	tray.forceMove(src)
@@ -184,9 +184,12 @@ GLOBAL_LIST(ob_type_fuel_requirements)
 	chambered_tray = TRUE
 	var/misfuel = get_misfuel_amount()
 	var/message = "[key_name(user)] chambered the Orbital Bombardment cannon."
+	var/ares_message = "Shell chambered."
 	if(misfuel)
 		message += " It is misfueled by [misfuel] units!"
+		ares_message += " Fuel imbalance detected!"
 	message_admins(message, x, y, z)
+	log_ares_bombardment(user, lowertext(tray.warhead.name), ares_message)
 
 	update_icon()
 
@@ -224,8 +227,8 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	var/area/area = get_area(T)
 	var/off_x = (inaccurate_fuel + 1) * round(rand(-3,3), 1)
 	var/off_y = (inaccurate_fuel + 1) * round(rand(-3,3), 1)
-	var/target_x = Clamp(T.x + off_x, 1, world.maxx)
-	var/target_y = Clamp(T.y + off_y, 1, world.maxy)
+	var/target_x = clamp(T.x + off_x, 1, world.maxx)
+	var/target_y = clamp(T.y + off_y, 1, world.maxy)
 	var/turf/target = locate(target_x, target_y, T.z)
 	var/area/target_area = get_area(target)
 
@@ -685,4 +688,3 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 		return TRUE
 
 	tgui_interact(user)
-

@@ -49,11 +49,11 @@
 	drop_flame(get_turf(P), P.weapon_cause_data)
 
 /datum/ammo/flamethrower/tank_flamer
-	flamer_reagent_type = /datum/reagent/napalm/blue
+	flamer_reagent_id = "napalmx"
 
 /datum/ammo/flamethrower/sentry_flamer
 	flags_ammo_behavior = AMMO_IGNORE_ARMOR|AMMO_IGNORE_COVER|AMMO_FLAME
-	flamer_reagent_type = /datum/reagent/napalm/blue
+	flamer_reagent_id = "napalmx"
 
 	accuracy = HIT_ACCURACY_TIER_8
 	accurate_range = 6
@@ -113,7 +113,7 @@
 /datum/ammo/flare/set_bullet_traits()
 	. = ..()
 	LAZYADD(traits_to_give, list(
-		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary, stacks = 2.5)
 	))
 
 /datum/ammo/flare/on_hit_mob(mob/M,obj/projectile/P)
@@ -156,11 +156,13 @@
 	name = "starshell ash"
 	icon_state = "starshell_bullet"
 	max_range = 5
+	damage = 2.5
 	flare_type = /obj/item/device/flashlight/flare/on/starshell_ash
 
 /datum/ammo/flare/starshell/set_bullet_traits()
 	LAZYADD(traits_to_give, list(
-		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff, /datum/element/bullet_trait_incendiary)
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff),
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary, stacks = 1)
 	))
 
 /datum/ammo/souto
@@ -178,7 +180,7 @@
 	accurate_range = 12
 	shell_speed = AMMO_SPEED_TIER_1
 
-/datum/ammo/souto/on_embed(mob/embedded_mob, obj/limb/target_organ)
+/datum/ammo/souto/on_embed(mob/embedded_mob, obj/limb/target_organ, silent = FALSE)
 	if(ishuman(embedded_mob) && !isyautja(embedded_mob))
 		if(istype(target_organ))
 			target_organ.embed(new can_type)
@@ -191,7 +193,7 @@
 				for(var/obj/item/reagent_container/food/drinks/cans/souto/S in P.contents)
 					M.put_in_active_hand(S)
 					for(var/mob/O in viewers(GLOB.world_view_size, P)) //find all people in view.
-						O.show_message(SPAN_DANGER("[M] catches the [S]!"), SHOW_MESSAGE_VISIBLE) //Tell them the can was caught.
+						O.show_message(SPAN_DANGER("[M] catches [S]!"), SHOW_MESSAGE_VISIBLE) //Tell them the can was caught.
 					return //Can was caught.
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M

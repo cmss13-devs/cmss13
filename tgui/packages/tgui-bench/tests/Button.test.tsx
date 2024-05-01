@@ -1,4 +1,4 @@
-import { linkEvent } from 'inferno';
+import { linkEvent } from 'react';
 import { Button } from 'tgui/components';
 import { createRenderer } from 'tgui/renderer';
 

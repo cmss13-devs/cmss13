@@ -4,9 +4,9 @@
 	//Handle side effects from stasis
 	switch(in_stasis)
 		if(STASIS_IN_BAG)
-			// I hate whoever wrote this and statuses with a passion
-			knocked_down = knocked_down? --knocked_down : knocked_down + 10 //knocked_down set.
-			if(knocked_down <= 0)
-				knocked_down_callback()
+			// At least 6 seconds, but reduce by 2s every time - IN ADDITION to normal recovery
+			// Don't ask me why and feel free to change it
+			KnockDown(3)
+			AdjustKnockDown(-1)
 		if(STASIS_IN_CRYO_CELL)
 			if(sleeping < 10) sleeping += 10 //Puts the mob to sleep indefinitely.

@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 21
+#define SAVEFILE_VERSION_MAX 22
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -89,6 +89,12 @@
 			dual_wield_pref = DUAL_WIELD_FIRE
 		S["dual_wield_pref"] << dual_wield_pref
 
+	if(savefile_version < 22)
+		var/sound_toggles
+		S["toggles_sound"] >> sound_toggles
+		sound_toggles |= SOUND_OBSERVER_ANNOUNCEMENTS
+		S["toggles_sound"] << sound_toggles
+
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
 
@@ -100,7 +106,7 @@
 /proc/sanitize_keybindings(value)
 	var/list/base_bindings = sanitize_islist(value, list())
 	if(!length(base_bindings))
-		base_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key)
+		base_bindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key)
 	for(var/key in base_bindings)
 		base_bindings[key] = base_bindings[key] & GLOB.keybindings_by_name
 		if(!length(base_bindings[key]))
@@ -144,6 +150,8 @@
 	S["UI_style_alpha"] >> UI_style_alpha
 	S["item_animation_pref_level"] >> item_animation_pref_level
 	S["pain_overlay_pref_level"] >> pain_overlay_pref_level
+	S["flash_overlay_pref"] >> flash_overlay_pref
+	S["crit_overlay_pref"] >> crit_overlay_pref
 	S["stylesheet"] >> stylesheet
 	S["window_skin"] >> window_skin
 	S["fps"] >> fps
@@ -188,11 +196,6 @@
 	S["co_affiliation"] >> affiliation
 	S["yautja_status"] >> yautja_status
 	S["synth_status"] >> synth_status
-	S["key_bindings"] >> key_bindings
-	check_keybindings()
-
-	var/list/remembered_key_bindings
-	S["remembered_key_bindings"] >> remembered_key_bindings
 
 	S["lang_chat_disabled"] >> lang_chat_disabled
 	S["show_permission_errors"] >> show_permission_errors
@@ -206,6 +209,10 @@
 	S["autofit_viewport"] >> auto_fit_viewport
 	S["adaptive_zoom"] >> adaptive_zoom
 	S["tooltips"] >> tooltips
+	S["key_bindings"] >> key_bindings
+
+	var/list/remembered_key_bindings
+	S["remembered_key_bindings"] >> remembered_key_bindings
 
 	//Sanitize
 	ooccolor = sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))
@@ -228,6 +235,8 @@
 	UI_style_alpha = sanitize_integer(UI_style_alpha, 0, 255, initial(UI_style_alpha))
 	item_animation_pref_level = sanitize_integer(item_animation_pref_level, SHOW_ITEM_ANIMATIONS_NONE, SHOW_ITEM_ANIMATIONS_ALL, SHOW_ITEM_ANIMATIONS_ALL)
 	pain_overlay_pref_level = sanitize_integer(pain_overlay_pref_level, PAIN_OVERLAY_BLURRY, PAIN_OVERLAY_LEGACY, PAIN_OVERLAY_BLURRY)
+	flash_overlay_pref = sanitize_integer(flash_overlay_pref, FLASH_OVERLAY_WHITE, FLASH_OVERLAY_DARK)
+	crit_overlay_pref = sanitize_integer(crit_overlay_pref, CRIT_OVERLAY_WHITE, CRIT_OVERLAY_DARK)
 	window_skin = sanitize_integer(window_skin, 0, SHORT_REAL_LIMIT, initial(window_skin))
 	ghost_vision_pref = sanitize_inlist(ghost_vision_pref, list(GHOST_VISION_LEVEL_NO_NVG, GHOST_VISION_LEVEL_MID_NVG, GHOST_VISION_LEVEL_FULL_NVG), GHOST_VISION_LEVEL_MID_NVG)
 	ghost_orbit = sanitize_inlist(ghost_orbit, GLOB.ghost_orbits, initial(ghost_orbit))
@@ -274,6 +283,9 @@
 	pref_job_slots = sanitize_islist(pref_job_slots, list())
 	vars["fps"] = fps
 
+	check_keybindings()
+	S["key_bindings"] << key_bindings
+
 	if(remembered_key_bindings)
 		for(var/i in GLOB.keybindings_by_name)
 			if(!(i in remembered_key_bindings))
@@ -319,6 +331,8 @@
 	S["tgui_say"] << tgui_say
 	S["item_animation_pref_level"] << item_animation_pref_level
 	S["pain_overlay_pref_level"] << pain_overlay_pref_level
+	S["flash_overlay_pref"] << flash_overlay_pref
+	S["crit_overlay_pref"] << crit_overlay_pref
 	S["stylesheet"] << stylesheet
 	S["be_special"] << be_special
 	S["default_slot"] << default_slot
@@ -478,6 +492,10 @@
 	S["uplinklocation"] >> uplinklocation
 	S["exploit_record"] >> exploit_record
 
+	var/tutorial_string = ""
+	S["completed_tutorials"] >> tutorial_string
+	tutorial_savestring_to_list(tutorial_string)
+
 	//Sanitize
 	metadata = sanitize_text(metadata, initial(metadata))
 	real_name = reject_bad_name(real_name)
@@ -623,6 +641,8 @@
 	S["uplinklocation"] << uplinklocation
 	S["exploit_record"] << exploit_record
 
+	S["completed_tutorials"] << tutorial_list_to_savestring()
+
 	return 1
 
 /// checks through keybindings for outdated unbound keys and updates them
@@ -651,7 +671,7 @@
 					addedbind = TRUE
 		if(!addedbind)
 			notadded += kb
-	save_preferences()
+
 	if(length(notadded))
 		addtimer(CALLBACK(src, PROC_REF(announce_conflict), notadded), 5 SECONDS)
 

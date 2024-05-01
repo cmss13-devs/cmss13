@@ -26,7 +26,7 @@
 			hud_used.alien_plasma_display.icon_state = "power_display_empty"
 		update_icons()
 
-	if(!is_admin_level(z)) //so xeno players don't get death messages from admin tests
+	if(!should_block_game_interaction(src)) //so xeno players don't get death messages from admin tests
 		if(isqueen(src))
 			var/mob/living/carbon/xenomorph/queen/XQ = src
 			playsound(loc, 'sound/voice/alien_queen_died.ogg', 75, 0)
@@ -84,7 +84,8 @@
 			playsound(loc, prob(50) == 1 ? 'sound/voice/alien_death.ogg' : 'sound/voice/alien_death2.ogg', 25, 1)
 		var/area/A = get_area(src)
 		if(hive && hive.living_xeno_queen)
-			xeno_message("Hive: [src] has <b>died</b>[A? " at [sanitize_area(A.name)]":""]! [banished ? "They were banished from the hive." : ""]", death_fontsize, hivenumber)
+			if(!HAS_TRAIT(src, TRAIT_TEMPORARILY_MUTED))
+				xeno_message("Hive: [src] has <b>died</b>[A? " at [sanitize_area(A.name)]":""]! [banished ? "They were banished from the hive." : ""]", death_fontsize, hivenumber)
 
 	if(hive && IS_XENO_LEADER(src)) //Strip them from the Xeno leader list, if they are indexed in here
 		hive.remove_hive_leader(src)
@@ -109,8 +110,8 @@
 
 	if(hardcore)
 		QDEL_IN(src, 3 SECONDS)
-	//else if(!gibbed)  // At the moment we only support humans
-		//AddComponent(/datum/component/weed_food)
+	else if(!gibbed)
+		AddComponent(/datum/component/weed_food)
 
 	if(hive)
 		hive.remove_xeno(src)
@@ -132,6 +133,7 @@
 				notify_ghosts(header = "Last Xenomorph", message = "There is only one Xenomorph left: [X.name].", source = X, action = NOTIFY_ORBIT)
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_DEATH, src, gibbed)
+	give_action(src, /datum/action/ghost/xeno)
 
 /mob/living/carbon/xenomorph/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	var/obj/effect/decal/remains/xeno/remains = new(get_turf(src))

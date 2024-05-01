@@ -24,6 +24,8 @@
 									"min_fire_rad" = 1, "min_fire_int" = 3, "min_fire_dur" = 3
 	)
 	var/falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
+	/// Whether a star shape is possible when the intensity meets CHEM_FIRE_STAR_THRESHOLD
+	var/allow_star_shape = TRUE
 	var/use_dir = FALSE
 	var/angle = 360
 	var/has_blast_wave_dampener = FALSE; //Whether or not the casing can be toggle between different falloff_mode
@@ -185,6 +187,7 @@
 	for(var/obj/item/reagent_container/glass/G in containers)
 		if(G.reagents.total_volume)
 			has_reagents = 1
+			reagents.allow_star_shape = allow_star_shape
 			break
 
 	if(!has_reagents)
@@ -262,8 +265,8 @@
 
 	if(falloff_mode == EXPLOSION_FALLOFF_SHAPE_LINEAR)
 		falloff_mode = EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL
-		to_chat(usr, SPAN_NOTICE("You enable the [src]'s blast wave dampener, limiting the blast radius."))
+		to_chat(usr, SPAN_NOTICE("You enable [src]'s blast wave dampener, limiting the blast radius."))
 	else
 		falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
-		to_chat(usr, SPAN_NOTICE("You disable the [src]'s blast wave dampener, restoring the blast radius to full."))
+		to_chat(usr, SPAN_NOTICE("You disable [src]'s blast wave dampener, restoring the blast radius to full."))
 	playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)

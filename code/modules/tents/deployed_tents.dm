@@ -93,7 +93,7 @@
 	SPAN_DANGER("You [M.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 
 	if(health <= 0)
-		visible_message(SPAN_BOLDWARNING("The [src] collapses!"))
+		visible_message(SPAN_BOLDWARNING("[src] collapses!"))
 		qdel(src)
 
 	return XENO_ATTACK_ACTION
@@ -102,13 +102,13 @@
 	var/obj/item/tool/shovel/shovel = item
 	if(!istype(shovel) || shovel.folded || user.action_busy)
 		return
-	visible_message(SPAN_HIGHDANGER("[user] is trying to tear down the [src]"))
+	visible_message(SPAN_HIGHDANGER("[user] is trying to tear down [src]"))
 	playsound(src, 'sound/items/paper_ripped.ogg', 25, 1)
 
 	if(!do_after(user, 150, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE, src) || QDELETED(src))
 		return
 
-	visible_message(SPAN_HIGHDANGER("[user] tears down the [src]"))
+	visible_message(SPAN_HIGHDANGER("[user] tears down [src]"))
 	playsound(src, 'sound/items/paper_ripped.ogg', 25, 1)
 	qdel(src)
 

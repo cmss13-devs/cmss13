@@ -70,6 +70,7 @@
 
 
 /datum/player_action/cryo_human/act(client/user, mob/target, list/params)
+	var/datum/job/job = GET_MAPPED_ROLE(target.job)
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
 		if(H.assigned_squad)
@@ -95,7 +96,8 @@
 			S.forget_marine_in_squad(H)
 		message_admins("[key_name_admin(user)] sent [key_name_admin(target)] ([H.job]) to cryogenics.")
 
-	SSticker.mode.latejoin_tally-- //Cryoing someone out removes someone from the Marines, blocking further larva spawns until accounted for
+	//Cryoing someone out removes someone from the Marines, blocking further larva spawns until accounted for
+	SSticker.mode.latejoin_update(job, -1)
 
 	//Handle job slot/tater cleanup.
 	GLOB.RoleAuthority.free_role(GLOB.RoleAuthority.roles_for_mode[target.job], TRUE)

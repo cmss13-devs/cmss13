@@ -19,6 +19,8 @@
 	var/build_state = BARRICADE_BSTATE_SECURED //Look at __game.dm for barricade defines
 	var/upgrade = null
 
+	welder_lower_damage_limit = BARRICADE_DMG_HEAVY
+
 /obj/structure/barricade/metal/update_icon()
 	. = ..()
 	if(dir > 2)
@@ -42,26 +44,20 @@
 		if(BARRICADE_UPGRADE_ANTIFF)
 			. += SPAN_NOTICE("The cade is protected by a composite upgrade.")
 
+/obj/structure/barricade/metal/can_weld(obj/item/item, mob/user, silent)
+	if(!..())
+		return FALSE
+
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+		if(!silent)
+			to_chat(user, SPAN_WARNING("You're not trained to repair [src]..."))
+		return FALSE
+
+	return TRUE
+
 /obj/structure/barricade/metal/attackby(obj/item/item, mob/user)
 	if(iswelder(item))
-		if(!HAS_TRAIT(item, TRAIT_TOOL_BLOWTORCH))
-			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
-			return
-		if(user.action_busy)
-			return
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-			to_chat(user, SPAN_WARNING("You're not trained to repair [src]..."))
-			return
-		var/obj/item/tool/weldingtool/welder = item
-		if(damage_state == BARRICADE_DMG_HEAVY)
-			to_chat(user, SPAN_WARNING("[src] has sustained too much structural damage to be repaired."))
-			return
-
-		if(health == maxhealth)
-			to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
-			return
-
-		weld_cade(welder, user)
+		try_weld_cade(item, user)
 		return
 
 	if(try_nailgun_usage(item, user))
@@ -110,7 +106,7 @@
 						to_chat(user, SPAN_NOTICE("You lack the required metal."))
 						return
 					if((usr.get_active_hand()) != metal)
-						to_chat(user, SPAN_WARNING("You must be holding the [metal] to upgrade \the [src]!"))
+						to_chat(user, SPAN_WARNING("You must be holding [metal] to upgrade [src]!"))
 						return
 
 					switch(choice)
@@ -150,7 +146,7 @@
 						to_chat(user, SPAN_NOTICE("You lack the required metal."))
 						return
 					if((usr.get_active_hand()) != metal)
-						to_chat(user, SPAN_WARNING("You must be holding the [metal] to upgrade \the [src]!"))
+						to_chat(user, SPAN_WARNING("You must be holding [metal] to upgrade [src]!"))
 						return
 
 					switch(choice)
@@ -204,11 +200,13 @@
 					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
 					return
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
+				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+					return
 				user.visible_message(SPAN_NOTICE("[user] set [src]'s protection panel back."),
 				SPAN_NOTICE("You set [src]'s protection panel back."))
 				build_state = BARRICADE_BSTATE_SECURED
 				return
+
 			if(HAS_TRAIT(item, TRAIT_TOOL_WRENCH))
 				if(user.action_busy)
 					return
@@ -216,13 +214,15 @@
 					to_chat(user, SPAN_WARNING("You are not trained to disassemble [src]..."))
 					return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
+				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+					return
 				user.visible_message(SPAN_NOTICE("[user] loosens [src]'s anchor bolts."),
 				SPAN_NOTICE("You loosen [src]'s anchor bolts."))
 				anchored = FALSE
 				build_state = BARRICADE_BSTATE_MOVABLE
 				update_icon() //unanchored changes layer
 				return
+
 		if(BARRICADE_BSTATE_MOVABLE) //Anchor bolts loosened step. Apply crowbar to unseat the panel and take apart the whole thing. Apply wrench to resecure anchor bolts
 			if(HAS_TRAIT(item, TRAIT_TOOL_WRENCH))
 				if(user.action_busy)
@@ -239,13 +239,15 @@
 					to_chat(user, SPAN_WARNING("[src] must be secured on a proper surface!"))
 					return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
+				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+					return
 				user.visible_message(SPAN_NOTICE("[user] secures [src]'s anchor bolts."),
 				SPAN_NOTICE("You secure [src]'s anchor bolts."))
 				build_state = BARRICADE_BSTATE_UNSECURED
 				anchored = TRUE
 				update_icon() //unanchored changes layer
 				return
+
 			if(HAS_TRAIT(item, TRAIT_TOOL_CROWBAR))
 				if(user.action_busy)
 					return
@@ -262,7 +264,7 @@
 					deconstruct(TRUE) //Note : Handles deconstruction too !
 				return
 
-	. = ..()
+	return ..()
 
 /obj/structure/barricade/metal/wired/New()
 	maxhealth += 50
@@ -271,7 +273,7 @@
 	is_wired = TRUE
 	climbable = FALSE
 	update_icon()
-	. = ..()
+	return ..()
 
 /obj/structure/barricade/metal/wired/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()

@@ -244,7 +244,8 @@
 
 	H.skills = null //no restriction on what the contestants can do
 
-	H.apply_effect(15, WEAKEN)
+	H.KnockDown(15)
+	H.Stun(15)
 	H.nutrition = NUTRITION_NORMAL
 
 	var/randjob = rand(0,10)

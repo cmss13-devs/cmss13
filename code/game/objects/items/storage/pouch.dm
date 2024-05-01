@@ -824,6 +824,7 @@
 		/obj/item/roller = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
 		/obj/item/bodybag = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
 		/obj/item/reagent_container/blood = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
+		/obj/item/tool/surgery/FixOVein = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
 	)
 	can_hold_skill_only = TRUE
 
@@ -976,7 +977,7 @@
 		to_chat(user, SPAN_WARNING("[O] is empty!"))
 		return
 
-	var/amt_to_remove = Clamp(O.reagents.total_volume, 0, inner.volume)
+	var/amt_to_remove = clamp(O.reagents.total_volume, 0, inner.volume)
 	if(!amt_to_remove)
 		to_chat(user, SPAN_WARNING("[O] is empty!"))
 		return
@@ -989,7 +990,7 @@
 		fill_autoinjector(contents[1])
 
 	//Top up our inner reagent canister after filling up the injector
-	amt_to_remove = Clamp(O.reagents.total_volume, 0, inner.volume)
+	amt_to_remove = clamp(O.reagents.total_volume, 0, inner.volume)
 	if(amt_to_remove)
 		O.reagents.trans_to(inner, amt_to_remove)
 
@@ -1107,8 +1108,8 @@
 	name = "flare pouch"
 	desc = "A pouch designed to hold flares. Refillable with an M94 flare pack."
 	max_w_class = SIZE_SMALL
-	storage_slots = 8
-	max_storage_space = 8
+	storage_slots = 16
+	max_storage_space = 16
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
 	icon_state = "flare"
 	can_hold = list(/obj/item/device/flashlight/flare,/obj/item/device/flashlight/flare/signal)
@@ -1270,6 +1271,21 @@
 	new /obj/item/tool/wrench(src)
 	new /obj/item/explosive/plastic(src)
 	new /obj/item/explosive/plastic(src)
+
+/obj/item/storage/pouch/tools/tactical/upp
+	name = "synthetic tools pouch"
+	desc = "Special issue tools pouch for UPP synthetics. Due to the enhanced strength of the synthetic and its inability to feel discomfort, this pouch is designed to maximize internal space with no concern for its wearer's comfort."
+	icon_state = "tools"
+	storage_slots = 7
+
+/obj/item/storage/pouch/tools/tactical/upp/fill_preset_inventory()
+	new /obj/item/tool/wrench(src)
+	new /obj/item/tool/crowbar(src)
+	new /obj/item/tool/wirecutters(src)
+	new /obj/item/device/multitool(src)
+	new /obj/item/tool/weldingtool(src)
+	new /obj/item/stack/cable_coil(src)
+	new /obj/item/stack/cable_coil(src)
 
 /obj/item/storage/pouch/tools/uppsynth/fill_preset_inventory()
 	new /obj/item/tool/crowbar(src)

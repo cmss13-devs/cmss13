@@ -1,5 +1,6 @@
 SUBSYSTEM_DEF(nano)
 	name  = "Nano UI"
+	flags = SS_NO_INIT
 	wait  = 2 SECONDS
 	priority = SS_PRIORITY_NANOUI
 	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY

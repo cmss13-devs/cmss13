@@ -48,8 +48,8 @@
 	if (usr.stat || usr.is_mob_restrained())
 		return
 	var/turf/current_location = get_turf(usr)//What turf is the user on?
-	if(!current_location || is_admin_level(current_location.z))//If turf was not found or they're on z level 2.
-		to_chat(usr, "The [src] is malfunctioning.")
+	if(!current_location || should_block_game_interaction(current_location))//If turf was not found or they're on z level 2.
+		to_chat(usr, "[src] is malfunctioning.")
 		return
 	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))))
 		usr.set_interaction(src)
@@ -140,7 +140,7 @@
 	..()
 
 	var/turf/current_location = get_turf(user)//What turf is the user on?
-	if(!current_location || is_admin_level(current_location.z))//If turf was not found or they're on z level 2
+	if(!current_location || should_block_game_interaction(current_location))//If turf was not found or they're on z level 2
 		to_chat(user, SPAN_NOTICE("\The [src] is malfunctioning."))
 		return
 	var/list/L = list(  )
@@ -177,4 +177,3 @@
 	P.creator = src
 	src.add_fingerprint(user)
 	return
-

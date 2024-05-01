@@ -14,6 +14,7 @@
 	speed = XENO_SPEED_TIER_2
 	heal_standing = 0.66
 
+	available_strains = list(/datum/xeno_strain/charger)
 	behavior_delegate_type = /datum/behavior_delegate/crusher_base
 
 	minimum_evolve_time = 15 MINUTES
@@ -63,11 +64,13 @@
 	)
 
 	claw_type = CLAW_TYPE_VERY_SHARP
-	mutation_icon_state = CRUSHER_NORMAL
-	mutation_type = CRUSHER_NORMAL
 
 	icon_xeno = 'icons/mob/xenos/crusher.dmi'
 	icon_xenonid = 'icons/mob/xenonids/crusher.dmi'
+
+	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
+	weed_food_states = list("Crusher_1","Crusher_2","Crusher_3")
+	weed_food_states_flipped = list("Crusher_1","Crusher_2","Crusher_3")
 
 // Refactored to handle all of crusher's interactions with object during charge.
 /mob/living/carbon/xenomorph/proc/handle_collision(atom/target)
@@ -77,21 +80,21 @@
 	//Barricade collision
 	else if (istype(target, /obj/structure/barricade))
 		var/obj/structure/barricade/B = target
-		visible_message(SPAN_DANGER("[src] rams into [B] and skids to a halt!"), SPAN_XENOWARNING("You ram into [B] and skid to a halt!"))
+		visible_message(SPAN_DANGER("[src] rams into [B] and skids to a halt!"), SPAN_XENOWARNING("We ram into [B] and skid to a halt!"))
 
 		B.Collided(src)
 		. =  FALSE
 
 	else if (istype(target, /obj/vehicle/multitile))
 		var/obj/vehicle/multitile/M = target
-		visible_message(SPAN_DANGER("[src] rams into [M] and skids to a halt!"), SPAN_XENOWARNING("You ram into [M] and skid to a halt!"))
+		visible_message(SPAN_DANGER("[src] rams into [M] and skids to a halt!"), SPAN_XENOWARNING("We ram into [M] and skid to a halt!"))
 
 		M.Collided(src)
 		. = FALSE
 
 	else if (istype(target, /obj/structure/machinery/m56d_hmg))
 		var/obj/structure/machinery/m56d_hmg/HMG = target
-		visible_message(SPAN_DANGER("[src] rams [HMG]!"), SPAN_XENODANGER("You ram [HMG]!"))
+		visible_message(SPAN_DANGER("[src] rams [HMG]!"), SPAN_XENODANGER("We ram [HMG]!"))
 		playsound(loc, "punch", 25, 1)
 		HMG.CrusherImpact()
 		. =  FALSE
@@ -128,7 +131,7 @@
 
 	else if (istype(target, /obj/structure/machinery/defenses))
 		var/obj/structure/machinery/defenses/DF = target
-		visible_message(SPAN_DANGER("[src] rams [DF]!"), SPAN_XENODANGER("You ram [DF]!"))
+		visible_message(SPAN_DANGER("[src] rams [DF]!"), SPAN_XENODANGER("We ram [DF]!"))
 
 		if (!DF.unacidable)
 			playsound(loc, "punch", 25, 1)
@@ -144,7 +147,7 @@
 		if (V.unslashable)
 			. = FALSE
 		else
-			visible_message(SPAN_DANGER("[src] smashes straight into [V]!"), SPAN_XENODANGER("You smash straight into [V]!"))
+			visible_message(SPAN_DANGER("[src] smashes straight into [V]!"), SPAN_XENODANGER("We smash straight into [V]!"))
 			playsound(loc, "punch", 25, 1)
 			V.tip_over()
 
@@ -161,7 +164,7 @@
 		if (V.unslashable)
 			. = FALSE
 		else
-			visible_message(SPAN_DANGER("[src] smashes straight into [V]!"), SPAN_XENODANGER("You smash straight into [V]!"))
+			visible_message(SPAN_DANGER("[src] smashes straight into [V]!"), SPAN_XENODANGER("We smash straight into [V]!"))
 			playsound(loc, "punch", 25, 1)
 			V.tip_over()
 
@@ -180,7 +183,7 @@
 			if (O.unacidable)
 				. = FALSE
 			else if (O.anchored)
-				visible_message(SPAN_DANGER("[src] crushes [O]!"), SPAN_XENODANGER("You crush [O]!"))
+				visible_message(SPAN_DANGER("[src] crushes [O]!"), SPAN_XENODANGER("We crush [O]!"))
 				if(O.contents.len) //Hopefully won't auto-delete things inside crushed stuff.
 					var/turf/T = get_turf(src)
 					for(var/atom/movable/S in T.contents) S.forceMove(T)
@@ -191,7 +194,7 @@
 			else
 				if(O.buckled_mob)
 					O.unbuckle()
-				visible_message(SPAN_WARNING("[src] knocks [O] aside!"), SPAN_XENOWARNING("You knock [O] aside.")) //Canisters, crates etc. go flying.
+				visible_message(SPAN_WARNING("[src] knocks [O] aside!"), SPAN_XENOWARNING("We knock [O] aside.")) //Canisters, crates etc. go flying.
 				playsound(loc, "punch", 25, 1)
 
 				var/impact_range = 2
@@ -277,5 +280,5 @@
 
 /datum/behavior_delegate/crusher_base/on_update_icons()
 	if(bound_xeno.throwing || is_charging) //Let it build up a bit so we're not changing icons every single turf
-		bound_xeno.icon_state = "[bound_xeno.mutation_icon_state || bound_xeno.mutation_type] Crusher Charging"
+		bound_xeno.icon_state = "[bound_xeno.get_strain_icon()] Crusher Charging"
 		return TRUE

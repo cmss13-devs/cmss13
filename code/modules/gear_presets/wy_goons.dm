@@ -61,7 +61,7 @@
 
 	assignment = JOB_WY_GOON
 	rank = JOB_WY_GOON
-	paygrade = "WEY-GOON"
+	paygrade = PAY_SHORT_CPO
 	skills = /datum/skills/MP
 
 /datum/equipment_preset/goon/standard/load_gear(mob/living/carbon/human/new_human)
@@ -94,7 +94,7 @@
 
 	assignment = JOB_WY_GOON_LEAD
 	rank = JOB_WY_GOON_LEAD
-	paygrade = "WEY-GOON-L"
+	paygrade = PAY_SHORT_CSPO
 	skills = /datum/skills/MP
 
 /datum/equipment_preset/goon/lead/New()
@@ -130,12 +130,13 @@
 
 	assignment = JOB_WY_GOON_RESEARCHER
 	rank = JOB_WY_GOON_RESEARCHER
-	paygrade = "CCMO"
+	paygrade = PAY_SHORT_CCMO
 	skills = /datum/skills/researcher
 
 /datum/equipment_preset/goon/researcher/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/science, WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/corporate_formal, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate, WEAR_FEET)
 

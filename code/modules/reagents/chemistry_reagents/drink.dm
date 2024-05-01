@@ -163,8 +163,10 @@
 
 /datum/reagent/drink/milk/on_mob_life(mob/living/M)
 	. = ..()
-	if(!.) return
-	if(M.getBruteLoss() && prob(20)) M.heal_limb_damage(1,0)
+	if(!.)
+		return
+	if(M.getBruteLoss() && prob(20))
+		M.heal_limb_damage(1,0)
 	holder.remove_reagent("capsaicin", 10*REAGENTS_METABOLISM)
 	holder.remove_reagent("hotsauce", 10*REAGENTS_METABOLISM)
 
@@ -220,7 +222,7 @@
 	name = "Cherry Souto"
 	id = "souto_cherry"
 	description = "A cherry flavored soda that's canned in Havanna"
-	color = "#800000"
+	color = COLOR_MAROON
 
 /datum/reagent/drink/souto/lime
 	name = "Lime Souto"
@@ -492,7 +494,7 @@
 	name = "Lemonade"
 	description = "Oh the nostalgia..."
 	id = "lemonade"
-	color = "#FFFF00" // rgb: 255, 255, 0
+	color = COLOR_YELLOW
 
 //*****************************************************************************************************/
 //***************************************Remove When Safe**********************************************/
@@ -555,8 +557,7 @@
 /datum/reagent/neurotoxin/on_mob_life(mob/living/carbon/M)
 	. = ..()
 	if(!.) return
-	if(!HAS_TRAIT(src, TRAIT_FLOORED))
-		M.apply_effect(5, WEAKEN)
+	M.KnockDown(5)
 	if(!data) data = 1
 	data++
 	M.dizziness +=6

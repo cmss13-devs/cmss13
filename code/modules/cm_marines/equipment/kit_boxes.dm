@@ -69,6 +69,26 @@
 	// spotter
 	new /obj/item/storage/box/kit/spotter(src)
 
+/obj/item/storage/box/spec/sniper/anti_materiel/fill_preset_inventory()
+	name = "\improper AMR equipment case"
+	desc = "A large case containing an experimental XM43E1, a set of M45 ghillie armor and helmet, a M42 scout sight, ammunition, spotter equipment, and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
+	new /obj/item/clothing/suit/storage/marine/ghillie(src)
+	new /obj/item/clothing/head/helmet/marine/ghillie(src)
+	new /obj/item/clothing/glasses/night/m42_night_goggles(src)
+	new /obj/item/weapon/gun/rifle/sniper/XM43E1(src)
+	new /obj/item/ammo_magazine/sniper/anti_materiel(src)
+	new /obj/item/ammo_magazine/sniper/anti_materiel(src)
+	new /obj/item/ammo_magazine/sniper/anti_materiel(src)
+	new /obj/item/ammo_magazine/sniper/anti_materiel(src)
+	new /obj/item/ammo_magazine/sniper/anti_materiel(src)
+	new /obj/item/storage/backpack/marine/smock(src)
+	new /obj/item/weapon/gun/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/facepaint/sniper(src)
+	// spotter
+	new /obj/item/storage/box/kit/spotter(src)
+
 /obj/item/storage/box/spec/scout
 	name = "\improper Scout equipment case"
 	desc = "A large case containing an M4RA battle rifle, M3-S light armor and helmet, M4RA battle sight, M68 thermal cloak, V3 reactive thermal tarp, improved scout laser designator, ammunition and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
@@ -165,8 +185,12 @@
 	var/squad_assignment_update = TRUE
 
 //this one is delivered via ASRS as a reward for DEFCON/techwebs/whatever else we will have
-/obj/item/spec_kit/asrs
+/obj/item/spec_kit/rifleman
+	squad_assignment_update = FALSE
 	allowed_roles_list = list(JOB_SQUAD_MARINE, JOB_WO_SQUAD_MARINE)
+
+/obj/item/spec_kit/rifleman/jobless
+	allowed_roles_list = list()
 
 /obj/item/spec_kit/cryo
 	squad_assignment_update = FALSE
@@ -212,6 +236,17 @@
 				return FALSE
 			return TRUE
 
+/obj/item/spec_kit/rifleman/can_use(mob/living/carbon/human/user)
+	if(!length(allowed_roles_list))
+		return TRUE
+
+	for(var/allowed_role in allowed_roles_list)
+		if(user.job == allowed_role)//Alternate check to normal kit as this is distributed to people without SKILL_SPEC_TRAINED.
+			if(skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_KITTED) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
+				to_chat(user, SPAN_WARNING("You already have specialization, give this kit to someone else!"))
+				return FALSE
+			return TRUE
+
 /obj/item/spec_kit/proc/select_and_spawn(mob/living/carbon/human/user)
 	var/selection = tgui_input_list(user, "Pick your specialist equipment type.", "Specialist Kit Selection", GLOB.available_specialist_kit_boxes)
 	if(!selection || QDELETED(src))
@@ -241,6 +276,10 @@
 		if("Sniper")
 			spec_box = new /obj/item/storage/box/spec/sniper(T)
 			specialist_assignment = "Sniper"
+			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SNIPER)
+		if("Anti-materiel Sniper")
+			spec_box = new /obj/item/storage/box/spec/sniper/anti_materiel(T)
+			specialist_assignment = "Heavy Sniper"
 			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SNIPER)
 		if("Scout")
 			spec_box = new /obj/item/storage/box/spec/scout(T)

@@ -40,8 +40,8 @@
 		return
 
 	if(QDELETED(buckled_mob))
-		vehicle.set_seated_mob(seat, null)
 		M.unset_interaction()
+		vehicle.set_seated_mob(seat, null)
 		if(M.client)
 			M.client.change_view(GLOB.world_view_size, vehicle)
 			M.client.pixel_x = 0
@@ -108,7 +108,9 @@
 				to_chat(user, SPAN_WARNING("You are unable to use heavy weaponry."))
 			return
 
-	for(var/obj/item/I in user.contents) //prevents shooting while zoomed in, but zoom can still be activated and used without shooting
+		if(!HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
+			return
+	for(var/obj/item/I in user.contents)		//prevents shooting while zoomed in, but zoom can still be activated and used without shooting
 		if(I.zoom)
 			I.zoom(user)
 
@@ -174,8 +176,8 @@
 		return
 
 	if(QDELETED(buckled_mob))
-		vehicle.set_seated_mob(seat, null)
 		M.unset_interaction()
+		vehicle.set_seated_mob(seat, null)
 		if(M.client)
 			M.client.change_view(GLOB.world_view_size, vehicle)
 			M.client.pixel_x = 0
@@ -252,8 +254,8 @@
 		return
 
 	if(QDELETED(buckled_mob))
-		vehicle.set_seated_mob(seat, null)
 		M.unset_interaction()
+		vehicle.set_seated_mob(seat, null)
 		if(M.client)
 			M.client.change_view(GLOB.world_view_size, vehicle)
 			M.client.pixel_x = 0

@@ -209,7 +209,7 @@
 
 /obj/structure/proc/toggle_anchored(obj/item/W, mob/user)
 	if(!wrenchable)
-		to_chat(user, SPAN_WARNING("The [src] cannot be [anchored ? "un" : ""]anchored."))
+		to_chat(user, SPAN_WARNING("[src] cannot be [anchored ? "un" : ""]anchored."))
 		return FALSE
 	else
 		// Wrenching is faster if we are better at engineering
@@ -219,8 +219,12 @@
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 			if(anchored)
 				user.visible_message(SPAN_NOTICE("[user] anchors [src] into place."),SPAN_NOTICE("You anchor [src] into place."))
+				for(var/obj/medlink in loc)
+					SEND_SIGNAL(medlink, COMSIG_STRUCTURE_WRENCHED, src)
 			else
 				user.visible_message(SPAN_NOTICE("[user] unanchors [src]."),SPAN_NOTICE("You unanchor [src]."))
+				for(var/obj/medlink in loc)
+					SEND_SIGNAL(medlink, COMSIG_STRUCTURE_UNWRENCHED, src)
 			return TRUE
 
 /obj/structure/get_applying_acid_time()

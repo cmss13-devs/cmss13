@@ -136,7 +136,10 @@
 		click_empty(user)
 	else
 		user.track_shot(initial(name))
-		unleash_flame(target, user)
+		if(current_mag.reagents.has_reagent("stablefoam"))
+			unleash_foam(target, user)
+		else
+			unleash_flame(target, user)
 		return AUTOFIRE_CONTINUE
 	return NONE
 
@@ -205,16 +208,16 @@
 	var/flameshape = R.flameshape
 	var/fire_type = R.fire_type
 
-	R.intensityfire = Clamp(R.intensityfire, current_mag.reagents.min_fire_int, current_mag.reagents.max_fire_int)
-	R.durationfire = Clamp(R.durationfire, current_mag.reagents.min_fire_dur, current_mag.reagents.max_fire_dur)
-	R.rangefire = Clamp(R.rangefire, current_mag.reagents.min_fire_rad, current_mag.reagents.max_fire_rad)
+	R.intensityfire = clamp(R.intensityfire, current_mag.reagents.min_fire_int, current_mag.reagents.max_fire_int)
+	R.durationfire = clamp(R.durationfire, current_mag.reagents.min_fire_dur, current_mag.reagents.max_fire_dur)
+	R.rangefire = clamp(R.rangefire, current_mag.reagents.min_fire_rad, current_mag.reagents.max_fire_rad)
 	var/max_range = R.rangefire
 	if (max_range < fuel_pressure) //Used for custom tanks, allows for higher ranges
-		max_range = Clamp(fuel_pressure, 0, current_mag.reagents.max_fire_rad)
+		max_range = clamp(fuel_pressure, 0, current_mag.reagents.max_fire_rad)
 	if(R.rangefire == -1)
 		max_range = current_mag.reagents.max_fire_rad
 
-	var/turf/temp[] = getline2(get_turf(user), get_turf(target))
+	var/turf/temp[] = get_line(get_turf(user), get_turf(target))
 
 	var/turf/to_fire = temp[2]
 
@@ -225,6 +228,59 @@
 	playsound(to_fire, src.get_fire_sound(), 50, TRUE)
 
 	new /obj/flamer_fire(to_fire, create_cause_data(initial(name), user), R, max_range, current_mag.reagents, flameshape, target, CALLBACK(src, PROC_REF(show_percentage), user), fuel_pressure, fire_type)
+
+/obj/item/weapon/gun/flamer/proc/unleash_foam(atom/target, mob/living/user)
+	last_fired = world.time
+	if(!current_mag || !current_mag.reagents || !current_mag.reagents.reagent_list.len)
+		return
+
+	var/source_turf = get_turf(user)
+	var/foam_range = 6 // the max range the foam will travel
+	var/distance = 0 // the distance traveled
+	var/use_multiplier = 3 // if you want to increase the ammount of foam drained from the tank
+	var/datum/reagent/chemical = current_mag.reagents.reagent_list[1]
+
+	var/turf/turfs[] = get_line(user, target, FALSE)
+	var/turf/first_turf = turfs[1]
+	var/ammount_required = (min(turfs.len, foam_range) * use_multiplier) // the ammount of units that this click requires
+	for(var/turf/turf in turfs)
+
+		if(chemical.volume < ammount_required)
+			foam_range = round(chemical.volume / use_multiplier)
+
+		if(distance >= foam_range)
+			break
+
+		if(turf.density)
+			break
+		else
+			var/obj/effect/particle_effect/foam/checker = new()
+			var/atom/blocked = LinkBlocked(checker, source_turf, turf)
+			if(blocked)
+				break
+
+		if(turf == first_turf) // this is so the first foam tile doesn't expand and touch the user
+			var/datum/effect_system/foam_spread/foam = new()
+			foam.set_up(0.5, turf, metal_foam = FOAM_METAL_TYPE_IRON)
+			foam.start()
+		else
+			var/datum/effect_system/foam_spread/foam = new()
+			foam.set_up(1, turf, metal_foam = FOAM_METAL_TYPE_IRON)
+			foam.start()
+		sleep(2)
+
+		distance++
+
+	var/ammount_used = distance * use_multiplier // the actual ammount of units that we used
+
+	chemical.volume = max(chemical.volume - ammount_used, 0)
+
+	current_mag.reagents.total_volume = chemical.volume // this is needed for show_percentage to work
+
+	if(chemical.volume < use_multiplier) // there aren't enough units left for a single tile of foam, empty the tank
+		current_mag.reagents.clear_reagents()
+
+	show_percentage(user)
 
 /obj/item/weapon/gun/flamer/proc/show_percentage(mob/living/user)
 	if(current_mag)
@@ -375,29 +431,6 @@
 	. = ..()
 	set_fire_delay(FIRE_DELAY_TIER_7)
 
-GLOBAL_LIST_EMPTY(flamer_particles)
-/particles/flamer_fire
-	icon = 'icons/effects/particles/fire.dmi'
-	icon_state = "bonfire"
-	width = 100
-	height = 100
-	count = 1000
-	spawning = 8
-	lifespan = 0.7 SECONDS
-	fade = 1 SECONDS
-	grow = -0.01
-	velocity = list(0, 0)
-	position = generator("box", list(-16, -16), list(16, 16), NORMAL_RAND)
-	drift = generator("vector", list(0, -0.2), list(0, 0.2))
-	gravity = list(0, 0.95)
-	scale = generator("vector", list(0.3, 0.3), list(1,1), NORMAL_RAND)
-	rotation = 30
-	spin = generator("num", -20, 20)
-
-/particles/flamer_fire/New(set_color)
-	..()
-	color = set_color
-
 /obj/flamer_fire
 	name = "fire"
 	desc = "Ouch!"
@@ -454,10 +487,6 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 
 	set_light(l_color = R.burncolor)
 
-	if(!GLOB.flamer_particles[R.burncolor])
-		GLOB.flamer_particles[R.burncolor] = new /particles/flamer_fire(R.burncolor)
-	particles = GLOB.flamer_particles[R.burncolor]
-
 	tied_reagent = new R.type() // Can't get deleted this way
 	tied_reagent.make_alike(R)
 
@@ -505,15 +534,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 		INVOKE_ASYNC(FS, TYPE_PROC_REF(/datum/flameshape, handle_fire_spread), src, fire_spread_amount, burn_dam, fuel_pressure)
 	//Apply fire effects onto everyone in the fire
 
-	// Melt a single layer of snow
-	if (istype(loc, /turf/open/snow))
-		var/turf/open/snow/S = loc
-
-		if (S.bleed_layer > 0)
-			S.bleed_layer--
-			S.update_icon(1, 0)
-
-	//scorch mah grass HNNGGG
+	//scorch mah grass HNNGGG and muh SNOW hhhhGGG
 	if (istype(loc, /turf/open))
 		var/turf/open/scorch_turf_target = loc
 		if(scorch_turf_target.scorchable)
@@ -648,7 +669,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 		burn_damage = 0
 
 	if(!burn_damage)
-		to_chat(M, SPAN_DANGER("You step over the flames."))
+		to_chat(M, SPAN_DANGER("[isxeno(M) ? "We" : "You"] step over the flames."))
 		return
 
 	M.last_damage_data = weapon_cause_data
@@ -659,7 +680,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 		if(FIRE_VARIANT_TYPE_B)
 			if(isxeno(M))
 				var/mob/living/carbon/xenomorph/X = M
-				X.armor_deflection?(variant_burn_msg=" You feel the flames weakening your exoskeleton!"):(variant_burn_msg=" You feel the flaming chemicals eating into your body!")
+				X.armor_deflection?(variant_burn_msg=" We feel the flames weakening our exoskeleton!"):(variant_burn_msg=" You feel the flaming chemicals eating into your body!")
 	to_chat(M, SPAN_DANGER("You are burned![variant_burn_msg?"[variant_burn_msg]":""]"))
 	M.updatehealth()
 

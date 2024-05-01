@@ -107,23 +107,6 @@
 	walk(src,0)
 	. = ..()
 
-/*
- * Inventory
- */
-/mob/living/simple_animal/parrot/show_inv(mob/user as mob)
-	user.set_interaction(src)
-	if(user.stat) return
-
-	var/dat = "<div align='center'><b>Inventory of [name]</b></div><p>"
-	if(ears)
-		dat += "<br><b>Headset:</b> [ears] (<a href='?src=\ref[src];remove_inv=ears'>Remove</a>)"
-	else
-		dat += "<br><b>Headset:</b> <a href='?src=\ref[src];add_inv=ears'>Nothing</a>"
-
-	user << browse(dat, text("window=mob[];size=325x500", name))
-	onclose(user, "mob[real_name]")
-	return
-
 /mob/living/simple_animal/parrot/Topic(href, href_list)
 
 	//Can the usr physically do this?
@@ -131,7 +114,7 @@
 		return
 
 	//Is the usr's mob type able to do this?
-	if(ishuman(usr) || isrobot(usr))
+	if(ishuman(usr))
 
 		//Removing from inventory
 		if(href_list["remove_inv"])
@@ -413,7 +396,7 @@
 				if(!parrot_perch || parrot_interest.loc != parrot_perch.loc)
 					held_item = parrot_interest
 					parrot_interest.forceMove(src)
-					visible_message("[src] grabs the [held_item]!", SPAN_NOTICE("You grab the [held_item]!"), "You hear the sounds of wings flapping furiously.")
+					visible_message("[src] grabs [held_item]!", SPAN_NOTICE("You grab [held_item]!"), "You hear the sounds of wings flapping furiously.")
 
 			parrot_interest = null
 			parrot_state = PARROT_SWOOP|PARROT_RETURN
@@ -577,7 +560,7 @@
 		return -1
 
 	if(held_item)
-		to_chat(src, SPAN_DANGER("You are already holding the [held_item]"))
+		to_chat(src, SPAN_DANGER("You are already holding [held_item]"))
 		return 1
 
 	for(var/obj/item/I in view(1,src))
@@ -590,7 +573,7 @@
 
 			held_item = I
 			I.forceMove(src)
-			visible_message("[src] grabs the [held_item]!", SPAN_NOTICE("You grab the [held_item]!"), "You hear the sounds of wings flapping furiously.")
+			visible_message("[src] grabs [held_item]!", SPAN_NOTICE("You grab [held_item]!"), "You hear the sounds of wings flapping furiously.")
 			return held_item
 
 	to_chat(src, SPAN_DANGER("There is nothing of interest to take."))
@@ -605,7 +588,7 @@
 		return -1
 
 	if(held_item)
-		to_chat(src, SPAN_DANGER("You are already holding the [held_item]"))
+		to_chat(src, SPAN_DANGER("You are already holding [held_item]"))
 		return 1
 
 	var/obj/item/stolen_item = null
@@ -620,7 +603,7 @@
 		if(stolen_item)
 			if(C.drop_inv_item_to_loc(stolen_item, src))
 				held_item = stolen_item
-				visible_message("[src] grabs the [held_item] out of [C]'s hand!", SPAN_NOTICE("You snag the [held_item] out of [C]'s hand!"), "You hear the sounds of wings flapping furiously.")
+				visible_message("[src] grabs [held_item] out of [C]'s hand!", SPAN_NOTICE("You snag [held_item] out of [C]'s hand!"), "You hear the sounds of wings flapping furiously.")
 				return held_item
 
 	to_chat(src, SPAN_DANGER("There is nothing of interest to take."))
@@ -655,11 +638,11 @@
 			var/obj/item/explosive/grenade/G = held_item
 			G.forceMove(src.loc)
 			G.prime()
-			to_chat(src, "You let go of the [held_item]!")
+			to_chat(src, "You let go of [held_item]!")
 			held_item = null
 			return 1
 
-	to_chat(src, "You drop the [held_item].")
+	to_chat(src, "You drop [held_item].")
 
 	held_item.forceMove(src.loc)
 	held_item = null

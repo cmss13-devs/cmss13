@@ -1,5 +1,0 @@
-author: "harryob"
-delete-after: True
-changes:
-  - bugfix: "the health indicator in the tooltip and colorbox is still present when a POI has 0 health"
-  - bugfix: "admins can refresh the orbit menu without runtimes"

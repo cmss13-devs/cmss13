@@ -409,16 +409,12 @@
 	path = /obj/item/reagent_container/blood
 
 /datum/autolathe/recipe/medilathe/bluespace
-	name = "bluespace beaker"
+	name = "high-capacity beaker"
 	path = /obj/item/reagent_container/glass/beaker/bluespace
 
 /datum/autolathe/recipe/medilathe/bonesetter
 	name = "bonesetter"
 	path = /obj/item/tool/surgery/bonesetter
-
-/datum/autolathe/recipe/medilathe/bonegel
-	name = "bone gel"
-	path = /obj/item/tool/surgery/bonegel
 
 /datum/autolathe/recipe/medilathe/fixovein
 	name = "FixOVein"

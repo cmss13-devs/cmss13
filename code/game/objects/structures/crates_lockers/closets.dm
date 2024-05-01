@@ -200,7 +200,7 @@
 
 /obj/structure/closet/attack_animal(mob/living/user)
 	if(user.wall_smash)
-		visible_message(SPAN_DANGER("[user] destroys the [src]. "))
+		visible_message(SPAN_DANGER("[user] destroys [src]."))
 		for(var/atom/movable/A as mob|obj in src)
 			A.forceMove(src.loc)
 		qdel(src)
@@ -244,8 +244,6 @@
 				user.visible_message(SPAN_NOTICE("[user] has pried apart [src] with [W]."), "You pry apart [src].")
 				qdel(src)
 				return
-		if(isrobot(user))
-			return
 		user.drop_inv_item_to_loc(W,loc)
 
 	else if(istype(W, /obj/item/packageWrap) || istype(W, /obj/item/explosive/plastic))

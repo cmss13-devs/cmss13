@@ -373,41 +373,49 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 //------------INTERACTION PROCS---------------
 
-/obj/structure/machinery/cm_vending/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/machinery/cm_vending/attack_alien(mob/living/carbon/xenomorph/user)
 	if(stat & TIPPED_OVER || indestructible)
-		to_chat(M, SPAN_WARNING("There's no reason to bother with that old piece of trash."))
+		to_chat(user, SPAN_WARNING("There's no reason to bother with that old piece of trash."))
 		return XENO_NO_DELAY_ACTION
 
-	if(M.a_intent == INTENT_HARM && !unslashable)
-		M.animation_attack_on(src)
-		if(prob(M.melee_damage_lower))
+	if(user.a_intent == INTENT_HARM && !unslashable)
+		user.animation_attack_on(src)
+		if(prob(user.melee_damage_lower))
 			playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
-			M.visible_message(SPAN_DANGER("[M] smashes [src] beyond recognition!"), \
+			user.visible_message(SPAN_DANGER("[user] smashes [src] beyond recognition!"), \
 			SPAN_DANGER("You enter a frenzy and smash [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 			malfunction()
 			tip_over()
 		else
-			M.visible_message(SPAN_DANGER("[M] slashes [src]!"), \
+			user.visible_message(SPAN_DANGER("[user] slashes [src]!"), \
 			SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 			playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
 		return XENO_ATTACK_ACTION
 
-	if(M.action_busy)
+	if(user.action_busy)
 		return XENO_NO_DELAY_ACTION
-
-	M.visible_message(SPAN_WARNING("[M] begins to lean against [src]."), \
+	if(user.a_intent == INTENT_HELP && user.IsAdvancedToolUser())
+		user.set_interaction(src)
+		tgui_interact(user)
+		if(!hacked)
+			to_chat(user, SPAN_WARNING("You slash open [src]'s front panel, revealing the items within."))
+			var/datum/effect_system/spark_spread/spark_system = new
+			spark_system.set_up(5, 5, get_turf(src))
+			hacked = TRUE
+		return XENO_ATTACK_ACTION
+	user.visible_message(SPAN_WARNING("[user] begins to lean against [src]."), \
 	SPAN_WARNING("You begin to lean against [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	var/shove_time = 80
-	if(M.mob_size >= MOB_SIZE_BIG)
+	if(user.mob_size >= MOB_SIZE_BIG)
 		shove_time = 30
-	if(istype(M,/mob/living/carbon/xenomorph/crusher))
+	if(istype(user,/mob/living/carbon/xenomorph/crusher))
 		shove_time = 15
 
-	xeno_attack_delay(M) //Adds delay here and returns nothing because otherwise it'd cause lag *after* finishing the shove.
+	xeno_attack_delay(user) //Adds delay here and returns nothing because otherwise it'd cause lag *after* finishing the shove.
 
-	if(do_after(M, shove_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-		M.animation_attack_on(src)
-		M.visible_message(SPAN_DANGER("[M] knocks [src] down!"), \
+	if(do_after(user, shove_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		user.animation_attack_on(src)
+		user.visible_message(SPAN_DANGER("[user] knocks [src] down!"), \
 		SPAN_DANGER("You knock [src] down!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		tip_over()
 	return XENO_NO_DELAY_ACTION
@@ -439,6 +447,27 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 	user.set_interaction(src)
 	tgui_interact(user)
+
+/// Handles redeeming coin tokens.
+/obj/structure/machinery/cm_vending/proc/redeem_token(obj/item/coin/marine/token, mob/user)
+	var/reward_typepath
+	switch(token.token_type)
+		if(VEND_TOKEN_VOID)
+			to_chat(user, SPAN_WARNING("ERROR: TOKEN NOT RECOGNISED."))
+			return FALSE
+		if(VEND_TOKEN_SPEC)
+			reward_typepath = /obj/item/spec_kit/rifleman
+		else
+			to_chat(user, SPAN_WARNING("ERROR: INCORRECT TOKEN."))
+			return FALSE
+
+	if(reward_typepath && user.drop_inv_item_to_loc(token, src))
+		to_chat(user, SPAN_NOTICE("You insert \the [token] into \the [src]."))
+		var/obj/new_item = new reward_typepath(get_turf(src))
+		user.put_in_any_hand_if_possible(new_item)
+		return TRUE
+	return FALSE
+
 
 //------------TGUI PROCS---------------
 
@@ -487,7 +516,12 @@ GLOBAL_LIST_EMPTY(vending_products)
 	if(.)
 		return
 
-	var/mob/living/carbon/human/user = usr
+	var/mob/living/carbon/human/human_user
+	var/mob/living/carbon/user = ui.user
+
+	if(ishuman(user))
+		human_user = usr
+
 	switch (action)
 		if ("vend")
 			if(stat & IN_USE)
@@ -507,8 +541,11 @@ GLOBAL_LIST_EMPTY(vending_products)
 					to_chat(usr, SPAN_WARNING("The floor is too cluttered, make some space."))
 					vend_fail()
 					return FALSE
-
-			if((!user.assigned_squad && squad_tag) || (!user.assigned_squad?.omni_squad_vendor && (squad_tag && user.assigned_squad.name != squad_tag)))
+			if(HAS_TRAIT(user,TRAIT_OPPOSABLE_THUMBS)) // the big monster 7 ft with thumbs does not care for squads
+				vendor_successful_vend(itemspec, usr)
+				add_fingerprint(usr)
+				return TRUE
+			if((!human_user.assigned_squad && squad_tag) || (!human_user.assigned_squad?.omni_squad_vendor && (squad_tag && human_user.assigned_squad.name != squad_tag)))
 				to_chat(user, SPAN_WARNING("This machine isn't for your squad."))
 				vend_fail()
 				return FALSE
@@ -533,8 +570,8 @@ GLOBAL_LIST_EMPTY(vending_products)
 								to_chat(user, SPAN_WARNING("That set is already taken."))
 								vend_fail()
 								return FALSE
-							var/obj/item/card/id/ID = user.wear_id
-							if(!istype(ID) || ID.registered_ref != WEAKREF(usr))
+							var/obj/item/card/id/ID = human_user.wear_id
+							if(!istype(ID) || !ID.check_biometrics(user))
 								to_chat(user, SPAN_WARNING("You must be wearing your [SPAN_INFO("dog tags")] to select a specialization!"))
 								return FALSE
 							var/specialist_assignment
@@ -545,6 +582,11 @@ GLOBAL_LIST_EMPTY(vending_products)
 								if("Sniper Set")
 									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SNIPER)
 									specialist_assignment = "Sniper"
+									GLOB.available_specialist_sets -= "Anti-materiel Sniper Set"
+								if("Anti-materiel Sniper Set")
+									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SNIPER)
+									specialist_assignment = "Heavy Sniper"
+									GLOB.available_specialist_sets -= "Sniper Set"
 								if("Demolitionist Set")
 									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_ROCKET)
 									specialist_assignment = "Demo"
@@ -555,10 +597,10 @@ GLOBAL_LIST_EMPTY(vending_products)
 									user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_PYRO)
 									specialist_assignment = "Pyro"
 								else
-									to_chat(user, SPAN_WARNING("<b>Something bad occured with [src], tell a Dev.</b>"))
+									to_chat(user, SPAN_WARNING("<b>Something bad occurred with [src], tell a Dev.</b>"))
 									vend_fail()
 									return FALSE
-							ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + JOB_SQUAD_SPECIALIST + " ([specialist_assignment])")
+							ID.set_assignment((human_user.assigned_squad ? (human_user.assigned_squad.name + " ") : "") + JOB_SQUAD_SPECIALIST + " ([specialist_assignment])")
 							GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), ID.assignment)
 							GLOB.available_specialist_sets -= p_name
 						else if(vendor_role.Find(JOB_SYNTH))
@@ -738,28 +780,37 @@ GLOBAL_LIST_EMPTY(vending_products)
 		hack_access(user)
 		return TRUE
 
+	///If we want to redeem a token
+	else if(istype(W, /obj/item/coin/marine))
+		if(!can_access_to_vend(user, ignore_hack = TRUE))
+			return FALSE
+		. = redeem_token(W, user)
+		return
+
 	..()
 
 /obj/structure/machinery/cm_vending/proc/get_listed_products(mob/user)
 	return listed_products
 
-/obj/structure/machinery/cm_vending/proc/can_access_to_vend(mob/user, display=TRUE)
-	if(!hacked)
+/obj/structure/machinery/cm_vending/proc/can_access_to_vend(mob/user, display = TRUE, ignore_hack = FALSE)
+	if(HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS)) // We're just going to skip the mess of access checks assuming xenos with thumbs are human and just allow them to access because it's funny
+		return TRUE
+	if(!hacked || ignore_hack)
 		if(!allowed(user))
 			if(display)
 				to_chat(user, SPAN_WARNING("Access denied."))
 				vend_fail()
 			return FALSE
 
-		var/mob/living/carbon/human/H = user
-		var/obj/item/card/id/I = H.wear_id
-		if(!istype(I))
+		var/mob/living/carbon/human/human_user = user
+		var/obj/item/card/id/idcard = human_user.wear_id
+		if(!istype(idcard))
 			if(display)
 				to_chat(user, SPAN_WARNING("Access denied. No ID card detected"))
 				vend_fail()
 			return FALSE
 
-		if(I.registered_name != user.real_name)
+		if(!idcard.check_biometrics(human_user))
 			if(display)
 				to_chat(user, SPAN_WARNING("Wrong ID card owner detected."))
 				vend_fail()
@@ -847,8 +898,11 @@ GLOBAL_LIST_EMPTY(vending_products)
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND
 	show_points = FALSE
 
-	//this here is made to provide ability to restock vendors with different subtypes of same object, like handmade and manually filled ammo boxes.
+	///this here is made to provide ability to restock vendors with different subtypes of same object, like handmade and manually filled ammo boxes.
 	var/list/corresponding_types_list
+	///If using [VEND_STOCK_DYNAMIC], assoc list of product entry to list of (product multiplier, awarded objects) - as seen in [/obj/structure/machinery/cm_vending/sorted/proc/populate_product_list]
+	///This allows us to backtrack and refill the stocks when new players latejoin
+	var/list/list/dynamic_stock_multipliers
 
 /obj/structure/machinery/cm_vending/sorted/Initialize()
 	. = ..()
@@ -861,14 +915,44 @@ GLOBAL_LIST_EMPTY(vending_products)
 	GLOB.cm_vending_vendors -= src
 	return ..()
 
-//this proc, well, populates product list based on roundstart amount of players
+///this proc, well, populates product list based on roundstart amount of players
 /obj/structure/machinery/cm_vending/sorted/proc/populate_product_list_and_boxes(scale)
-	populate_product_list(scale)
+	if(vend_flags & VEND_STOCK_DYNAMIC)
+		populate_product_list(1.0)
+		dynamic_stock_multipliers = list()
+		for(var/list/vendspec in listed_products)
+			var/multiplier = vendspec[2]
+			if(multiplier > 0)
+				var/awarded = round(vendspec[2] * scale, 1) // Starting amount
+				//Record the multiplier and how many have actually been given out
+				dynamic_stock_multipliers[vendspec] = list(vendspec[2], awarded)
+				vendspec[2] = awarded // Override starting amount
+	else
+		populate_product_list(scale)
+
 	if(vend_flags & VEND_LOAD_AMMO_BOXES)
 		populate_ammo_boxes()
 	return
 
-//this proc, well, populates product list based on roundstart amount of players
+///Updates the vendor stock when the [/datum/game_mode/var/marine_tally] has changed and we're using [VEND_STOCK_DYNAMIC]
+///Assumes the scale can only increase!!! Don't take their items away!
+/obj/structure/machinery/cm_vending/sorted/proc/update_dynamic_stock(new_scale)
+	if(!(vend_flags & VEND_STOCK_DYNAMIC))
+		return
+	for(var/list/vendspec in dynamic_stock_multipliers)
+		var/list/metadata = dynamic_stock_multipliers[vendspec]
+		var/multiplier = metadata[1] // How much do we multiply scales by
+		var/previous_max_amount = metadata[2] // How many we already handed out at old scale
+		var/projected_max_amount = round(new_scale * multiplier, 1) // How much we would have had total now in total
+		var/amount_to_add = round(projected_max_amount - previous_max_amount, 1) // Rounding just in case
+		if(amount_to_add > 0)
+			metadata[2] += amount_to_add
+			vendspec[2] += amount_to_add
+			update_derived_ammo_and_boxes_on_add(vendspec)
+
+///this proc, well, populates product list based on roundstart amount of players
+///do not rely on scale here if you use VEND_STOCK_DYNAMIC because it's already taken into account
+///this is here for historical reasons and should ONLY be called by populate_product_list_and_boxes if you want dynamic stocks and ammoboxes to work
 /obj/structure/machinery/cm_vending/sorted/proc/populate_product_list(scale)
 	return
 
@@ -924,11 +1008,15 @@ GLOBAL_LIST_EMPTY(vending_products)
 					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs to be fully charged to restock it!"))
 					return
 
-			if(istype(item_to_stock, /obj/item/cell))
+			else if(istype(item_to_stock, /obj/item/cell))
 				var/obj/item/cell/C = item_to_stock
 				if(C.charge < C.maxcharge)
 					to_chat(user, SPAN_WARNING("\The [item_to_stock] needs to be fully charged to restock it!"))
 					return
+
+			else if(!additional_restock_checks(item_to_stock, user))
+				// the error message needs to go in the proc
+				return FALSE
 
 			if(item_to_stock.loc == user) //Inside the mob's inventory
 				if(item_to_stock.flags_item & WIELDED)
@@ -946,6 +1034,10 @@ GLOBAL_LIST_EMPTY(vending_products)
 			update_derived_ammo_and_boxes_on_add(R)
 			updateUsrDialog()
 			return //We found our item, no reason to go on.
+
+/// additional restocking checks for individual vendor subtypes. Parse in item, do checks, return FALSE to fail. Include error message.
+/obj/structure/machinery/cm_vending/sorted/proc/additional_restock_checks(obj/item/item_to_stock, mob/user)
+	return TRUE
 
 //sending an /empty ammo box type path here will return corresponding regular (full) type of this box
 //if there is one set in corresponding_box_types or will return FALSE otherwise
@@ -1178,8 +1270,10 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 		if(islist(prod_type))
 			for(var/each_type in prod_type)
 				vendor_successful_vend_one(each_type, user, target_turf, itemspec[4] == MARINE_CAN_BUY_UNIFORM)
+				SEND_SIGNAL(src, COMSIG_VENDOR_SUCCESSFUL_VEND, src, itemspec, user)
 		else
 			vendor_successful_vend_one(prod_type, user, target_turf, itemspec[4] == MARINE_CAN_BUY_UNIFORM)
+			SEND_SIGNAL(src, COMSIG_VENDOR_SUCCESSFUL_VEND, src, itemspec, user)
 
 		if(vend_flags & VEND_LIMITED_INVENTORY)
 			itemspec[2]--
@@ -1212,12 +1306,15 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 	if(vend_flags & VEND_UNIFORM_RANKS)
 		if(insignas_override)
 			var/obj/item/clothing/under/underclothes = new_item
+
 			//Gives ranks to the ranked
 			if(istype(underclothes) && user.wear_id && user.wear_id.paygrade)
 				var/rankpath = get_rank_pins(user.wear_id.paygrade)
 				if(rankpath)
 					var/obj/item/clothing/accessory/ranks/rank_insignia = new rankpath()
+					var/obj/item/clothing/accessory/patch/uscmpatch = new()
 					underclothes.attach_accessory(user, rank_insignia)
+					underclothes.attach_accessory(user, uscmpatch)
 
 	if(vend_flags & VEND_UNIFORM_AUTOEQUIP)
 		// autoequip

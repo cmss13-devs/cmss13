@@ -166,7 +166,7 @@
 			if (ST.use(1))
 				var/obj/structure/window/WD = new wtype(loc)
 				WD.set_constructed_window(dir_to_set)
-				to_chat(user, SPAN_NOTICE("You place the [WD] on [src]."))
+				to_chat(user, SPAN_NOTICE("You place [WD] on [src]."))
 		return
 //window placing end
 

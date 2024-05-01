@@ -113,7 +113,7 @@
 		w_class = SIZE_MEDIUM
 		attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	else
-		to_chat(user, SPAN_NOTICE("The [src] can now be concealed."))
+		to_chat(user, SPAN_NOTICE("[src] can now be concealed."))
 		force = initial(force)
 		edge = 0
 		sharp = 0

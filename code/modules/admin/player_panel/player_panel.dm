@@ -188,6 +188,8 @@
 	for(var/mob/M in mobs)
 		if(!M.ckey)
 			continue
+		if(!CLIENT_HAS_RIGHTS(usr.client, R_STEALTH) && (M.client && (CLIENT_IS_STEALTHED(M.client))))
+			continue
 
 		var/color = i % 2 == 0 ? "#6289b7" : "#48709d"
 
@@ -204,12 +206,7 @@
 				else
 					M_job = "Carbon-based"
 			else if(isSilicon(M)) //silicon
-				if(isAI(M))
-					M_job = "AI"
-				else if(isrobot(M))
-					M_job = "Cyborg"
-				else
-					M_job = "Silicon-based"
+				M_job = "Silicon-based"
 			else if(isanimal(M)) //simple animals
 				if(iscorgi(M))
 					M_job = "Corgi"
@@ -290,10 +287,8 @@
 
 		dat += "<tr><td>[(M.client ? "[M.client]" : "No client")]</td>"
 		dat += "<td><a href='?src=\ref[usr];priv_msg=[M.ckey]'>[M.name]</a></td>"
-		if(isAI(M))
+		if(isSilicon(M))
 			dat += "<td>AI</td>"
-		else if(isrobot(M))
-			dat += "<td>Cyborg</td>"
 		else if(ishuman(M))
 			dat += "<td>[M.real_name]</td>"
 		else if(istype(M, /mob/new_player))
@@ -498,6 +493,8 @@
 		.["client_ckey"] = targetClient.ckey
 
 		.["client_muted"] = targetClient.prefs.muted
+		.["client_age"] = targetClient.player_data.byond_account_age
+		.["first_join"] = targetClient.player_data.first_join_date
 		.["client_rank"] = targetClient.admin_holder ? targetClient.admin_holder.rank : "Player"
 		.["client_muted"] = targetClient.prefs.muted
 

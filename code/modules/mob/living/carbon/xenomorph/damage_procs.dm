@@ -81,6 +81,7 @@
 		powerfactor_value = min(powerfactor_value,20)
 		if(powerfactor_value > 0 && small_explosives_stun)
 			KnockDown(powerfactor_value/5)
+			Stun(powerfactor_value/5) // Due to legacy knockdown being considered an impairement
 			if(mob_size < MOB_SIZE_BIG)
 				Slow(powerfactor_value)
 				Superslow(powerfactor_value/2)
@@ -298,7 +299,7 @@
 	. = ..()
 	switch(fire.fire_variant)
 		if(FIRE_VARIANT_TYPE_B)
-			if(!armor_deflection_debuff) //Only adds another reset timer if the debuff is currently on 0, so at the start or after a reset has recently occured.
+			if(!armor_deflection_debuff) //Only adds another reset timer if the debuff is currently on 0, so at the start or after a reset has recently occurred.
 				reset_xeno_armor_debuff_after_time(src, delta_time*10)
 			fire.type_b_debuff_xeno_armor(src) //Always reapplies debuff each time to minimize gap.
 
@@ -312,4 +313,4 @@
 			fire.set_on_fire(src) //Deals an extra proc of fire when you're crossing it. 30 damage per tile crossed, plus 15 per Process().
 			next_move_slowdown = next_move_slowdown + (SLOWDOWN_AMT_GREENFIRE * resist_modifier)
 			if(resist_modifier > 0)
-				to_chat(src, SPAN_DANGER("You feel pieces of your exoskeleton fusing with the viscous fluid below and tearing off as you struggle to move through the flames!"))
+				to_chat(src, SPAN_DANGER("We feel pieces of our exoskeleton fusing with the viscous fluid below and tearing off as we struggle to move through the flames!"))

@@ -7,7 +7,6 @@
 const webpack = require('webpack');
 const path = require('path');
 const ExtractCssPlugin = require('mini-css-extract-plugin');
-const { createBabelConfig } = require('./babel.config.js');
 
 const createStats = (verbose) => ({
   assets: verbose,
@@ -33,18 +32,9 @@ module.exports = (env = {}, argv) => {
     context: path.resolve(__dirname),
     target: ['web', 'es3', 'browserslist:ie 8'],
     entry: {
-      'tgui': [
-        './packages/tgui-polyfill',
-        './packages/tgui',
-      ],
-      'tgui-panel': [
-        './packages/tgui-polyfill',
-        './packages/tgui-panel',
-      ],
-      'tgui-say': [
-        './packages/tgui-polyfill',
-        './packages/tgui-say',
-      ],
+      'tgui': ['./packages/tgui-polyfill', './packages/tgui'],
+      'tgui-panel': ['./packages/tgui-polyfill', './packages/tgui-panel'],
+      'tgui-say': ['./packages/tgui-polyfill', './packages/tgui-say'],
     },
     output: {
       path: argv.useTmpFolder
@@ -55,19 +45,16 @@ module.exports = (env = {}, argv) => {
       chunkLoadTimeout: 15000,
     },
     resolve: {
-      extensions: ['.tsx', '.ts', '.js'],
+      extensions: ['.jsx', '.tsx', '.ts', '.js'],
       alias: {},
     },
     module: {
       rules: [
         {
-          test: /\.(js|cjs|ts|tsx)$/,
+          test: /\.([tj]s(x)?|cjs)$/,
           use: [
             {
-              loader: require.resolve('babel-loader'),
-              options: createBabelConfig({
-                removeConsole: !bench,
-              }),
+              loader: require.resolve('swc-loader'),
             },
           ],
         },
@@ -143,17 +130,11 @@ module.exports = (env = {}, argv) => {
 
   // Production build specific options
   if (mode === 'production') {
-    const TerserPlugin = require('terser-webpack-plugin');
+    const { EsbuildPlugin } = require('esbuild-loader');
     config.optimization.minimizer = [
-      new TerserPlugin({
-        extractComments: false,
-        terserOptions: {
-          ie8: true,
-          output: {
-            ascii_only: true,
-            comments: false,
-          },
-        },
+      new EsbuildPlugin({
+        target: 'ie8',
+        css: true,
       }),
     ];
   }

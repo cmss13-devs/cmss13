@@ -17,6 +17,7 @@
 		/obj/item/storage/firstaid = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
 		/obj/item/storage/toolkit = list(SKILL_ENGINEER, SKILL_ENGINEER_ENGI),
 		)
+	drop_sound = "armorequip"
 	var/worn_accessible = FALSE //whether you can access its content while worn on the back
 	var/obj/item/card/id/locking_id = null
 	var/is_id_lockable = FALSE
@@ -124,6 +125,9 @@
 	..()
 
 /obj/item/storage/backpack/proc/is_accessible_by(mob/user)
+	// If the user is already looking inside this backpack.
+	if(user.s_active == src)
+		return TRUE
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(!worn_accessible)
@@ -347,6 +351,12 @@
 /obj/item/storage/backpack/satchel/lockable/liaison
 	lock_overridable = FALSE
 
+/obj/item/storage/backpack/satchel/blue
+	icon_state = "satchel_blue"
+
+/obj/item/storage/backpack/satchel/black
+	icon_state = "satchel_black"
+
 /obj/item/storage/backpack/satchel/norm
 	name = "satchel"
 	desc = "A trendy-looking satchel."
@@ -460,6 +470,12 @@
 	icon_state = "marinebigsatch"
 	max_storage_space = 20
 
+/obj/item/storage/backpack/marine/satchel/intel/chestrig
+	name = "\improper USCM expedition chestrig"
+	desc = "A heavy-duty IMP based chestrig, can quickly be accessed with only one hand. Usually issued to USCM intelligence officers."
+	icon_state = "intel_chestrig"
+	max_storage_space = 20
+
 /obj/item/storage/backpack/marine/satchel
 	name = "\improper USCM satchel"
 	desc = "A heavy-duty satchel carried by some USCM soldiers and support personnel."
@@ -486,6 +502,12 @@
 	name = "\improper USCM technician chestrig"
 	desc = "A heavy-duty chestrig used by some USCM technicians."
 	icon_state = "marinesatch_techi"
+
+/obj/item/storage/backpack/marine/satchel/chestrig
+	name = "\improper USCM chestrig"
+	desc = "A chestrig used by some USCM personnel."
+	icon_state = "chestrig"
+	has_gamemode_skin = FALSE
 
 GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/rto)
 
@@ -707,6 +729,8 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	name = "\improper M68 Thermal Cloak"
 	desc = "The lightweight thermal dampeners and optical camouflage provided by this cloak are weaker than those found in standard USCM ghillie suits. In exchange, the cloak can be worn over combat armor and offers the wearer high maneuverability and adaptability to many environments."
 	icon_state = "scout_cloak"
+	unacidable = TRUE
+	indestructible = TRUE
 	uniform_restricted = list(/obj/item/clothing/suit/storage/marine/M3S) //Need to wear Scout armor and helmet to equip this.
 	has_gamemode_skin = FALSE //same sprite for all gamemode.
 	var/camo_active = FALSE

@@ -386,3 +386,7 @@
 		return FALSE
 	. = ..()
 
+/obj/item/explosive/plastic/hybrasia/mining
+	var/id = 1
+	anchored = TRUE
+	unacidable = TRUE

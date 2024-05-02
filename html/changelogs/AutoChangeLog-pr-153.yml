@@ -1,0 +1,5 @@
+author: "BlackCrystalic"
+delete-after: True
+changes:
+  - rscadd: "Crash gamemode and related stuff for it"
+  - bugfix: "no more auto game start without xenoplayers"

@@ -109,7 +109,7 @@
 	if(parent_turf)
 		UnregisterSignal(parent_turf, COMSIG_WEEDNODE_GROWTH)
 	if(parent_buckle)
-		UnregisterSignal(parent_buckle, COSMIG_OBJ_AFTER_BUCKLE)
+		UnregisterSignal(parent_buckle, COMSIG_OBJ_AFTER_BUCKLE)
 	if(parent_nest)
 		UnregisterSignal(parent_nest, COMSIG_PARENT_QDELETING)
 	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
@@ -148,7 +148,7 @@
 
 	qdel(src)
 
-/// SIGNAL_HANDLER for COSMIG_OBJ_AFTER_BUCKLE
+/// SIGNAL_HANDLER for COMSIG_OBJ_AFTER_BUCKLE
 /datum/component/weed_food/proc/on_after_buckle(obj/source, mob/buckled)
 	SIGNAL_HANDLER
 
@@ -220,12 +220,12 @@
 			return FALSE // Still buckled to the same thing
 		if(!istype(parent_mob.buckled, /obj/structure/bed/nest))
 			if(parent_buckle) // Still have a lingering reference somehow?
-				UnregisterSignal(parent_buckle, COSMIG_OBJ_AFTER_BUCKLE)
+				UnregisterSignal(parent_buckle, COMSIG_OBJ_AFTER_BUCKLE)
 			parent_buckle = parent_mob.buckled
-			RegisterSignal(parent_mob.buckled, COSMIG_OBJ_AFTER_BUCKLE, PROC_REF(on_after_buckle))
+			RegisterSignal(parent_mob.buckled, COMSIG_OBJ_AFTER_BUCKLE, PROC_REF(on_after_buckle))
 			return FALSE
 	if(parent_buckle)
-		UnregisterSignal(parent_buckle, COSMIG_OBJ_AFTER_BUCKLE)
+		UnregisterSignal(parent_buckle, COMSIG_OBJ_AFTER_BUCKLE)
 		parent_buckle = null
 
 	if(parent_mob.is_xeno_grabbable())
@@ -282,16 +282,16 @@
 			return FALSE // Still buckled to the same thing somehow?
 		if(!istype(parent_mob.buckled, /obj/structure/bed/nest))
 			if(parent_buckle) // Still have a lingering reference somehow?
-				UnregisterSignal(parent_buckle, COSMIG_OBJ_AFTER_BUCKLE)
+				UnregisterSignal(parent_buckle, COMSIG_OBJ_AFTER_BUCKLE)
 			parent_buckle = parent_mob.buckled
-			RegisterSignal(parent_mob.buckled, COSMIG_OBJ_AFTER_BUCKLE, PROC_REF(on_after_buckle))
+			RegisterSignal(parent_mob.buckled, COMSIG_OBJ_AFTER_BUCKLE, PROC_REF(on_after_buckle))
 			return FALSE
 		else
 			parent_nest = parent_mob.buckled
 			RegisterSignal(parent_nest, COMSIG_PARENT_QDELETING, PROC_REF(on_nest_deletion))
 
 	if(parent_buckle)
-		UnregisterSignal(parent_buckle, COSMIG_OBJ_AFTER_BUCKLE)
+		UnregisterSignal(parent_buckle, COMSIG_OBJ_AFTER_BUCKLE)
 		parent_buckle = null
 
 	if(SEND_SIGNAL(parent_mob, COMSIG_ATTEMPT_MOB_PULL) & COMPONENT_CANCEL_MOB_PULL)

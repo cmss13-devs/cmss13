@@ -110,7 +110,7 @@
 	ability_name = "Long spit"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	xeno_cooldown = 3.5 SECONDS
+	xeno_cooldown = 6 SECONDS
 	plasma_cost = 50
 
 /datum/action/xeno_action/activable/sniper/long_spit/use_ability(atom/target)

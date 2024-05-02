@@ -1142,7 +1142,6 @@
 /area/yautja)
 "cC" = (
 /obj/structure/machinery/autolathe/yautja,
-/obj/structure/closet/wardrobe/chaplain_black,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"

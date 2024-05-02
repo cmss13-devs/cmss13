@@ -125383,6 +125383,15 @@
 	},
 /turf/open/floor/corsat,
 /area/lv759/indoors/power_plant/gas_generators)
+"uLI" = (
+/obj/structure/prop/hybrisa/misc/trafficlight{
+	dir = 8;
+	pixel_y = 10
+	},
+/turf/open/hybrisa/street/sidewalk{
+	dir = 1
+	},
+/area/lv759/outdoors/colony_streets/east_central_street)
 "uLL" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 4;
@@ -182472,7 +182481,7 @@ fZd
 oto
 drP
 gGs
-aFn
+uLI
 jEy
 xUd
 mKH
@@ -182724,7 +182733,7 @@ iow
 nNm
 pow
 uZY
-kht
+aFn
 jEy
 pgg
 dmu

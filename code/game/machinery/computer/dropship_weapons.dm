@@ -754,7 +754,7 @@
 	if (!dropship.in_flyby || dropship.mode != SHUTTLE_CALL)
 		to_chat(user, SPAN_WARNING("Has to be in Fly By mode"))
 		return FALSE
-	if (dropship.timer && dropship.timeLeft(1) < firemission_envelope.get_total_duration())
+	if (dropship.timer && dropship.timeLeft(1) < firemission_envelope.flyoff_period)
 		to_chat(user, SPAN_WARNING("Not enough time to complete the Fire Mission"))
 		return FALSE
 	var/datum/cas_signal/recorded_loc = firemission_envelope.recorded_loc

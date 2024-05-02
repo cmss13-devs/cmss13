@@ -138,6 +138,7 @@ GLOBAL_LIST_INIT(admin_verbs_minor_event, list(
 	/client/proc/adminpanelweapons,
 	/client/proc/admin_general_quarters,
 	/client/proc/admin_biohazard_alert,
+	/client/proc/admin_aicore_alert,
 	/client/proc/toggle_hardcore_perma,
 	/client/proc/toggle_bypass_joe_restriction,
 	/client/proc/toggle_joe_respawns,

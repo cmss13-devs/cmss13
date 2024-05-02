@@ -120,6 +120,7 @@
 #define CANDAZE (1<<18)
 #define CANSLOW (1<<19)
 #define NO_PERMANENT_DAMAGE (1<<20)
+#define CORRUPTED_ALLY (1<<21)
 
 // =============================
 // hive types

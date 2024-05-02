@@ -5,7 +5,6 @@
  */
 
 import { clamp } from 'common/math';
-import { pureComponentHooks } from 'common/react';
 import { Component, createRef } from 'react';
 import { AnimatedNumber } from './AnimatedNumber';
 
@@ -276,7 +275,6 @@ export class DraggableControl extends Component {
   }
 }
 
-DraggableControl.defaultHooks = pureComponentHooks;
 DraggableControl.defaultProps = {
   minValue: -Infinity,
   maxValue: +Infinity,

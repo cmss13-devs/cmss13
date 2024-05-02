@@ -266,12 +266,6 @@
 	},
 /area/lv624/lazarus/research)
 "aL" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	name = "Research APC";
-	pixel_y = 30;
-	start_charge = 0
-	},
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
@@ -516,6 +510,16 @@
 	icon_state = "freezerfloor"
 	},
 /area/lv624/lazarus/research)
+"Hj" = (
+/obj/effect/landmark/crap_item,
+/obj/structure/machinery/power/apc/nocharge{
+	dir = 1
+	},
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/lv624/lazarus/research)
 "Lo" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/decal/remains/human,
@@ -724,7 +728,7 @@ Zw
 al
 aE
 ab
-ec
+Hj
 ak
 al
 ab

@@ -25,8 +25,9 @@
 /datum/xeno_strain/sniper/apply_strain(mob/living/carbon/xenomorph/spitter/spitter)
 	. = ..()
 	spitter.plasmapool_modifier = 1.4 // +40% plasma pool
-	spitter.health_modifier -= XENO_HEALTH_MOD_VERY_LARGE
+	spitter.health_modifier -= XENO_HEALTH_MOD_VERY_LARGE*2
 	spitter.armor_modifier -= XENO_ARMOR_MOD_VERY_SMALL
+	spitter.speed_modifier += XENO_SPEED_SLOWMOD_TIER_1
 	spitter.attack_speed_modifier += 2
 
 	spitter.recalculate_everything()
@@ -111,10 +112,20 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	xeno_cooldown = 6 SECONDS
-	plasma_cost = 50
+	plasma_cost = 30
+	var/delay = 1 SECONDS
 
 /datum/action/xeno_action/activable/sniper/long_spit/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!do_after(xeno, delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+		return
+
+	if(!xeno.check_state())
+		return
+
+	if(!action_cooldown_check())
+		to_chat(src, SPAN_WARNING("We must wait for your spit glands to refill."))
+		return
 	var/datum/xeno_strain/sniper/strain = xeno.strain
 	if(strain.power_spit_active)
 		spit(target, /datum/ammo/xeno/acid/sniper/charged)
@@ -129,10 +140,20 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	xeno_cooldown = 5.5 SECONDS
-	plasma_cost = 45
+	plasma_cost = 15
+	var/delay = 2 SECONDS
 
 /datum/action/xeno_action/activable/sniper/buster_spit/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!xeno.check_state())
+		return
+
+	if(!action_cooldown_check())
+		to_chat(src, SPAN_WARNING("We must wait for your spit glands to refill."))
+		return
+
+	if(!do_after(xeno, delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+		return
 	var/datum/xeno_strain/sniper/strain = xeno.strain
 	if(strain.power_spit_active)
 		spit(target, /datum/ammo/xeno/acid/buster/charged)
@@ -147,10 +168,20 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_5
 	xeno_cooldown = 10 SECONDS
-	plasma_cost = 80
+	plasma_cost = 40
+	var/delay = 3 SECONDS
 
 /datum/action/xeno_action/activable/sniper/pain_packer/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!xeno.check_state())
+		return
+
+	if(!action_cooldown_check())
+		to_chat(src, SPAN_WARNING("We must wait for your spit glands to refill."))
+		return
+
+	if(!do_after(xeno, delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+		return
 	var/datum/xeno_strain/sniper/strain = xeno.strain
 	if(strain.power_spit_active)
 		spit(target, /datum/ammo/xeno/acid/pain_packer/charged)
@@ -160,13 +191,6 @@
 
 /datum/action/xeno_action/activable/sniper/proc/spit(atom/target, ammo_type)
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if(!xeno.check_state())
-		return
-
-	if(!action_cooldown_check())
-		to_chat(src, SPAN_WARNING("We must wait for your spit glands to refill."))
-		return
-
 	var/turf/current_turf = get_turf(xeno)
 
 	if(!current_turf)

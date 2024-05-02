@@ -216,15 +216,15 @@
 	damage = 5
 	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_XENO
 	damage_falloff = 0.1
-	shell_speed = AMMO_SPEED_TIER_2
-	debilitate = list(3,1,0,1,20,4,4,15)
+	shell_speed = AMMO_SPEED_TIER_1
+	debilitate = list(1,1,0,1,20,4,4,15)
 
 /datum/ammo/xeno/acid/pain_packer/charged
 	accurate_range = 20
 	max_range = 20
 	damage_falloff = 0
-	shell_speed = AMMO_SPEED_TIER_4
-	debilitate = list(3,3,1,1,20,4,4,15)
+	shell_speed = AMMO_SPEED_TIER_2
+	debilitate = list(2,3,1,1,20,4,4,15)
 
 /datum/ammo/xeno/acid/praetorian
 	name = "acid splash"

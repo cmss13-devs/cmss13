@@ -1468,10 +1468,10 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/XenoItem/AntiAcid{
+/obj/item/xeno_item/anti_acid{
 	pixel_x = -6
 	},
-/obj/item/XenoItem/AntiAcid{
+/obj/item/xeno_item/anti_acid{
 	pixel_x = 4
 	},
 /obj/effect/landmark/objective_landmark/close,

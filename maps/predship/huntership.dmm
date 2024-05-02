@@ -835,8 +835,8 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/XenoItem/ChitinPlate,
-/obj/item/XenoItem/ChitinPlate,
+/obj/item/xeno_item/chitin_plate,
+/obj/item/xeno_item/chitin_plate,
 /obj/item/stack/sheet/xenochitin,
 /obj/item/stack/sheet/xenochitin,
 /turf/open/floor/corsat{
@@ -1695,9 +1695,9 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/XenoItem/AntiAcid,
-/obj/item/XenoItem/AntiAcid,
-/obj/item/XenoItem/AntiAcid,
+/obj/item/xeno_item/anti_acid,
+/obj/item/xeno_item/anti_acid,
+/obj/item/xeno_item/anti_acid,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"

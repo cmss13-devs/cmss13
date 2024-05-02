@@ -4912,7 +4912,7 @@
 /area/bigredv2/caves/lambda/xenobiology)
 "aoJ" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/XenoBio/Resin,
+/obj/item/xeno_piece/resin,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whitepurple"
@@ -14076,8 +14076,8 @@
 /area/bigredv2/caves/eta/research)
 "aPg" = (
 /obj/structure/surface/table,
-/obj/item/XenoBio/Blood,
-/obj/item/XenoBio/Blood,
+/obj/item/xeno_piece/blood,
+/obj/item/xeno_piece/blood,
 /obj/item/paper,
 /turf/open/floor{
 	icon_state = "darkredcorners2"
@@ -25570,8 +25570,8 @@
 /area/bigredv2/caves/eta/xenobiology)
 "bCg" = (
 /obj/structure/surface/table,
-/obj/item/XenoBio/Blood,
-/obj/item/XenoBio/Blood,
+/obj/item/xeno_piece/blood,
+/obj/item/xeno_piece/blood,
 /obj/item/tool/pen,
 /turf/open/floor{
 	dir = 4;
@@ -38359,7 +38359,7 @@
 	name = "trophy board";
 	pixel_y = 30
 	},
-/obj/item/XenoBio/Chitin{
+/obj/item/xeno_piece/chitin{
 	anchored = 1;
 	pixel_y = 27
 	},

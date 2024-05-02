@@ -381,6 +381,9 @@
 // Carrier strain flags
 #define CARRIER_EGGSAC "Eggsac"
 
+// Spitter strain flags
+#define SPITTER_SNIPER "Sniper"
+
 // Boiler strain flags
 #define BOILER_TRAPPER "Trapper"
 

@@ -173,6 +173,7 @@
 
 /datum/ammo/xeno/acid/sniper
 	name = "long acid spit"
+	icon_state = "xeno_long"
 	accuracy = HIT_ACCURACY_TIER_MAX
 	accurate_range = 16
 	max_range = 20
@@ -192,6 +193,7 @@
 
 /datum/ammo/xeno/acid/buster
 	name = "buster spit"
+	icon_state = "xeno_long"
 	accuracy = HIT_ACCURACY_TIER_MAX
 	accurate_range = 6
 	max_range = 12
@@ -210,6 +212,7 @@
 
 /datum/ammo/xeno/acid/pain_packer
 	name = "pain packer spit"
+	icon_state = "xeno_long"
 	accuracy = HIT_ACCURACY_TIER_MAX
 	accurate_range = 16
 	max_range = 16

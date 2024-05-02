@@ -1,0 +1,4 @@
+author: "BlackCrystalic"
+delete-after: True
+changes:
+  - bugfix: "Some workaround on walker (the mech)"

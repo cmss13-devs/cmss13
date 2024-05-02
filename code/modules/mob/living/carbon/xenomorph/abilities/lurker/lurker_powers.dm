@@ -12,7 +12,8 @@
 
 	if(found)
 		var/datum/action/xeno_action/onclick/lurker_invisibility/lurker_invis = get_xeno_action_by_type(xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
-		lurker_invis.invisibility_off()
+		if(lurker_invis)
+			lurker_invis.invisibility_off()
 
 /datum/action/xeno_action/activable/pounce/lurker/additional_effects(mob/living/living_mob)
 	var/mob/living/carbon/xenomorph/xeno = owner

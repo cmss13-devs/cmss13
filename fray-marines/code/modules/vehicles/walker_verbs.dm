@@ -35,7 +35,7 @@
 	set category = "Vehicle"
 	set src in range(0)
 
-	statistics()
+	tgui_interact(usr)
 
 /obj/vehicle/walker/verb/select_weapon()
 	set name = "Select Weapon"

@@ -82,7 +82,10 @@
 	return image(owner.icon, equip_state + hardpoint)
 
 /obj/item/walker_gun/proc/display_ammo(user)
-	to_chat(user , "<span class='warning'>[name] fired! [ammo.current_rounds]/[ammo.max_rounds] remaining!")
+	if(ammo)
+		to_chat(user, SPAN_WARNING("[name] fired! [ammo.current_rounds]/[ammo.max_rounds] rounds remaining!"))
+	else
+		to_chat(user, SPAN_WARNING("[name] fired! NO rounds remaining!"))
 
 /obj/item/walker_gun/proc/set_bursting(bursting = FALSE)
 	return
@@ -163,10 +166,10 @@
 	display_ammo(user)
 	visible_message("<span class='danger'>[owner.name] fires from [name]!</span>", "<span class='warning'>You hear [istype(P.ammo, /datum/ammo/bullet) ? "gunshot" : "blast"]!</span>")
 
-	var/angle = round(Get_Angle(owner,target))
+	var/angle = round(Get_Angle(owner, target))
 	muzzle_flash(angle)
 
-	if(ammo.current_rounds <= 0)
+	if(ammo && ammo.current_rounds <= 0)
 		ammo.loc = owner.loc
 		ammo = null
 		visible_message("[owner.name]'s systems deployed used magazine.","")

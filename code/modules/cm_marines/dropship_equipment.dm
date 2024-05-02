@@ -524,12 +524,6 @@
 		if(light_on)
 			set_light(0)
 
-/obj/structure/dropship_equipment/electronics/spotlights/on_launch()
-	set_light(0)
-
-/obj/structure/dropship_equipment/electronics/spotlights/on_arrival()
-	set_light(brightness)
-
 /obj/structure/dropship_equipment/electronics/spotlights/ui_data(mob/user)
 	. = list()
 	var/is_deployed = light_on

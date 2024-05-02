@@ -1,4 +1,0 @@
-author: "iloveloopers"
-delete-after: True
-changes:
-  - qol: "Alt clicking a reagent tank will now toggle whether its dispensing or filling"

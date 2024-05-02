@@ -27889,6 +27889,14 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/library)
+"efh" = (
+/obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/obj/structure/medical_supply_link,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "darkyellow2"
+	},
+/area/bigredv2/caves/eta/research)
 "efK" = (
 /obj/structure/machinery/computer/crew{
 	density = 0;
@@ -66550,7 +66558,7 @@ bvY
 kdr
 kdr
 aBv
-bwZ
+efh
 bxo
 bxz
 bxo

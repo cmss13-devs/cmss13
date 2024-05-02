@@ -11583,6 +11583,7 @@
 /area/shiva/exterior/junkyard)
 "gHh" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/obj/structure/medical_supply_link,
 /turf/open/floor/shiva{
 	dir = 9;
 	icon_state = "wred"

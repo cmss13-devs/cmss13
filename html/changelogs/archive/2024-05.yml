@@ -1,5 +1,7 @@
 2024-05-02:
   BlackCrystalic:
   - refactor: WHO in TGUI
+  - rscadd: Crash gamemode and related stuff for it
+  - bugfix: no more auto game start without xenoplayers
   Noname995:
   - rscadd: Healthup!!!

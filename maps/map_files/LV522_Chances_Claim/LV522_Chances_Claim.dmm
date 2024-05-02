@@ -44755,6 +44755,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/structure/medical_supply_link/green,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "white_cyan3"

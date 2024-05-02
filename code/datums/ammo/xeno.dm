@@ -176,7 +176,6 @@
 	accuracy = HIT_ACCURACY_TIER_MAX
 	accurate_range = 20
 	damage = 7
-	spit_cost = 25
 	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_XENO
 	damage_falloff = -0.5
 	max_range = 24
@@ -195,7 +194,6 @@
 	accurate_range = 6
 	max_range = 12
 	damage = 14
-	spit_cost = 25
 	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_XENO|AMMO_ANTISTRUCT
 	damage_falloff = 0.1
 	penetration = ARMOR_PENETRATION_TIER_4
@@ -205,7 +203,6 @@
 	accurate_range = 18
 	max_range = 18
 	damage = 45
-	spit_cost = 25
 	damage_falloff = 0.3
 	penetration = 0
 	shell_speed = AMMO_SPEED_TIER_2
@@ -216,7 +213,6 @@
 	accurate_range = 16
 	max_range = 16
 	damage = 5
-	spit_cost = 25
 	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_XENO
 	damage_falloff = 0.1
 	penetration = ARMOR_PENETRATION_TIER_4

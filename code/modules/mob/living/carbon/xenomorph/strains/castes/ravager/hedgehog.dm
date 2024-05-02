@@ -1,7 +1,7 @@
 /datum/xeno_strain/hedgehog
 	name = RAVAGER_HEDGEHOG
 	description = "You lose your empower, charge, scissor cut, and some slash damage in exchange for more explosive resistance. Your resistance scales with your shard count and at 50% grants you immunity to some explosive stuns. You accumulate shards over time and when taking damage. You can use these shards to power three new abilities: Spike Shield which gives you a temporary shield that spits bone shards around you when damaged; Fire Spikes which launches spikes at your target to slow them and deal damage when they move; and Spike Shed which launches all your spikes, grants a temporary speed boost, and disables shard generation for thirty seconds."
-	flavor_description = "They will be of iron will and steely muscle. In great armor shall they be clad, and with the mightiest spikes will they be armed."
+	flavor_description = "You will pierce them a million times, show them what it feels like. This one will become my shield."
 	icon_state_prefix = "Hedgehog"
 
 	actions_to_remove = list(

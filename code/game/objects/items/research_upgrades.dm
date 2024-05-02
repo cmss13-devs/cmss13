@@ -36,6 +36,7 @@
 	icon_state = "datadisk1" // doesnt HAVE to be a disk!
 	///technology stored on this disk, goes through one to whatever levels of upgrades there are.
 	var/value
+
 /obj/item/research_upgrades/autodoc
 	name = "Research Upgrade (AutoDoc)"
 	value = RESEARCH_UPGRADE_TIER_1

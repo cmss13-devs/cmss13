@@ -3,5 +3,6 @@
   - refactor: WHO in TGUI
   - rscadd: Crash gamemode and related stuff for it
   - bugfix: no more auto game start without xenoplayers
+  - bugfix: Some workaround on walker (the mech)
   Noname995:
   - rscadd: Healthup!!!

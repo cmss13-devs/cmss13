@@ -203,13 +203,13 @@
 
 /obj/structure/barricade/handrail/hybrisa
 	icon_state = "plasticroadbarrierred"
+	stack_amount = 0 //we do not want it to drop any stuff when destroyed
+	destroyed_stack_amount = 0
 
 // Plastic
 /obj/structure/barricade/handrail/hybrisa/road/plastic
 	name = "plastic road barrier"
 	icon_state = "plasticroadbarrierred"
-	stack_type = /obj/item/stack/sheet/mineral/plastic
-	debris = list(/obj/item/stack/sheet/mineral/plastic)
 	barricade_hitsound = 'sound/effects/thud.ogg'
 
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red
@@ -229,10 +229,6 @@
 /obj/structure/barricade/handrail/hybrisa/road/wood
 	name = "wood road barrier"
 	icon_state = "roadbarrierwood"
-	stack_type = /obj/item/stack/sheet/wood
-	debris = list(/obj/item/stack/sheet/wood)
-	stack_amount = 2
-	destroyed_stack_amount = 1
 	barricade_hitsound = 'sound/effects/woodhit.ogg'
 /obj/structure/barricade/handrail/hybrisa/road/wood/orange
 	name = "wood road barrier"
@@ -245,8 +241,6 @@
 /obj/structure/barricade/handrail/hybrisa/road/metal
 	name = "metal road barrier"
 	icon_state = "centerroadbarrier"
-	stack_type = /obj/item/stack/sheet/metal
-	debris = list(/obj/item/stack/sheet/metal)
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaltan
 	name = "metal road barrier"
 	icon_state = "centerroadbarrier"

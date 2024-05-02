@@ -208,7 +208,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	if(istype(CO_surv_job))
 		CO_surv_job.set_spawn_positions(GLOB.players_preassigned)
 
-	if(SSnightmare.get_scenario_value("predator_round") && !Check_WO())
+	if(SSnightmare.get_scenario_value("predator_round") && MODE_HAS_FLAG(MODE_FOG_ACTIVATED))
 		SSticker.mode.flags_round_type |= MODE_PREDATOR
 		send2chat("Predator round!", CONFIG_GET(string/new_round_alert_channel))
 		// Set predators starting amount based on marines assigned
@@ -486,7 +486,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	if(new_job.flags_startup_parameters & ROLE_ADD_TO_SQUAD) //Are we a muhreen? Randomize our squad. This should go AFTER IDs. //TODO Robust this later.
 		randomize_squad(new_human)
 
-	if(Check_WO() && GLOB.job_squad_roles.Find(GET_DEFAULT_ROLE(new_human.job))) //activates self setting proc for marine headsets for WO
+	if(check_wo() && GLOB.job_squad_roles.Find(GET_DEFAULT_ROLE(new_human.job))) //activates self setting proc for marine headsets for WO
 		var/datum/game_mode/whiskey_outpost/WO = SSticker.mode
 		WO.self_set_headset(new_human)
 

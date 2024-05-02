@@ -45,7 +45,7 @@
 						return FALSE
 
 					var/deathtime = world.time - timeofdeath
-					if(deathtime < XENO_JOIN_DEAD_LARVA_TIME)
+					if(deathtime < GLOB.xeno_join_dead_larva_time)
 						var/message = "You have been dead for [DisplayTimeText(deathtime)]."
 						message = SPAN_WARNING("[message]")
 						to_chat(src, message)

@@ -28119,6 +28119,12 @@
 	icon_state = "darkyellow2"
 	},
 /area/bigredv2/outside/engineering)
+"dXb" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "crash"
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "dXs" = (
 /obj/item/tool/pickaxe{
 	pixel_y = 12
@@ -30341,6 +30347,14 @@
 	icon_state = "bcircuit"
 	},
 /area/bigredv2/outside/telecomm/warehouse)
+"hyP" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "crash"
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_cave_7"
+	},
+/area/bigredv2/caves_se)
 "hzg" = (
 /obj/structure/cable{
 	icon_state = "1-6"
@@ -32580,6 +32594,14 @@
 	icon_state = "mars_cave_3"
 	},
 /area/bigredv2/caves/mining)
+"kEv" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "crash"
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_cave_6"
+	},
+/area/bigredv2/caves_east)
 "kFe" = (
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/floor{
@@ -36081,6 +36103,16 @@
 	icon_state = "platingdmg3"
 	},
 /area/bigredv2/caves/mining)
+"qaz" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/nightmare{
+	insert_tag = "crash"
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_cave_2"
+	},
+/area/bigredv2/caves_se)
 "qaK" = (
 /obj/structure/largecrate,
 /turf/open/floor{
@@ -39766,6 +39798,14 @@
 	icon_state = "mars_dirt_4"
 	},
 /area/bigredv2/caves/mining)
+"vlF" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "crash"
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_cave_2"
+	},
+/area/bigredv2/caves_se)
 "vmm" = (
 /obj/structure/barricade/wooden,
 /turf/open/floor{
@@ -41496,6 +41536,16 @@
 	icon_state = "mars_cave_13"
 	},
 /area/bigredv2/caves/mining)
+"xSb" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/nightmare{
+	insert_tag = "crash"
+	},
+/turf/open/mars_cave{
+	icon_state = "mars_cave_23"
+	},
+/area/bigredv2/caves_se)
 "xTM" = (
 /obj/structure/closet/medical_wall,
 /turf/closed/wall/solaris/reinforced,
@@ -42077,7 +42127,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+dXb
 "}
 (2,1,1) = {"
 aaa
@@ -77813,8 +77863,8 @@ aao
 aao
 bLA
 bLA
-bLA
-bvR
+qaz
+xSb
 aao
 aao
 aao
@@ -78029,9 +78079,9 @@ aao
 aao
 izh
 izh
-bTW
+hyP
 izh
-izh
+vlF
 tgL
 ucN
 aao
@@ -78246,7 +78296,7 @@ izh
 izh
 izh
 izh
-bTW
+hyP
 izh
 izh
 uPm
@@ -79308,7 +79358,7 @@ aao
 aao
 aao
 aao
-aao
+dXb
 sON
 rAs
 rAs
@@ -79332,7 +79382,7 @@ aao
 aao
 bTW
 jGd
-izh
+vlF
 uPm
 izh
 aao
@@ -79549,7 +79599,7 @@ aao
 aao
 bTW
 izh
-izh
+vlF
 uPm
 izh
 izh
@@ -79757,7 +79807,7 @@ gCE
 gCE
 gCE
 gCE
-rAs
+kEv
 gCE
 gCE
 cVL

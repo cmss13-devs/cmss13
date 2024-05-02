@@ -7,8 +7,9 @@
 	if(!hive)
 		return
 
-	if((!hive.living_xeno_queen || SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST) && !hive.allow_no_queen_actions) //No Hive status on WO
+	if(!hive.living_xeno_queen && !hive.allow_no_queen_actions) //No Hive status on WO
 		to_chat(src, SPAN_WARNING("There is no Queen. We are alone."))
+
 		return
 
 	if(interference)
@@ -32,7 +33,7 @@
 		to_chat(src, SPAN_NOTICE("You seem compelled to protect [english_list(iff_tag.faction_groups, "no one")]."))
 		return
 
-	if((!hive.living_xeno_queen || Check_WO()) && !hive.allow_no_queen_actions) //No Hive status on WO
+	if((!hive.living_xeno_queen || check_wo()) && !hive.allow_no_queen_actions) //No Hive status on WO
 		to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
 		return
 

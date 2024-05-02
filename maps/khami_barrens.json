@@ -31,6 +31,7 @@
     "camouflage": "desert",
     "gamemodes": [
         "Distress Signal",
+        "Crash",
         "Infection"
     ]
 }

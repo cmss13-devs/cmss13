@@ -1,3 +1,4 @@
+/*relocated to fray-marines same dir
 /obj/item/device/pinpointer
 	name = "pinpointer"
 	icon_state = "pinoff"
@@ -144,3 +145,4 @@
 		if("Disk Recovery")
 			mode = 0
 			return attack_self()
+*/

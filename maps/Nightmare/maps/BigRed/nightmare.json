@@ -12,5 +12,10 @@
 	{ "type": "pick",     "chance": 0.50, "choices": [
 		{ "weight": 3, "type": "map_insert", "landmark": "medbay-passage", "path": "standalone/medbay-passage.dmm" },
 		{ "weight": 1, "type": "map_insert", "landmark": "medbay-v3",   "path": "standalone/medbay-v3.dmm" }
-	]}
+	]},
+	{
+        "type": "map_sprinkle",
+        "path": "crash/",
+        "when": { "gamemode": "Crash" }
+    }
 ]

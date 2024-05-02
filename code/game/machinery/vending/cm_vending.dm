@@ -586,7 +586,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 							GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), ID.assignment)
 							GLOB.available_specialist_sets -= p_name
 						else if(vendor_role.Find(JOB_SYNTH))
-							if(user.job != JOB_SYNTH)
+							if(user.job != JOB_SYNTH && user.job != JOB_CRASH_SYNTH)
 								to_chat(user, SPAN_WARNING("Only USCM Synthetics may vend experimental tool tokens."))
 								vend_fail()
 								return FALSE

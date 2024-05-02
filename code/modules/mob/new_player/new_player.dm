@@ -121,7 +121,7 @@
 					return TRUE
 				if(!client.prefs?.preview_dummy)
 					client.prefs.update_preview_icon()
-				var/mob/dead/observer/observer = new /mob/dead/observer(get_turf(pick(GLOB.latejoin)), client.prefs.preview_dummy)
+				var/mob/dead/observer/observer = new /mob/dead/observer(null, client.prefs.preview_dummy)
 				observer.set_lighting_alpha_from_pref(client)
 				spawning = TRUE
 				observer.started_as_observer = TRUE

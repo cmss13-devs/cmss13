@@ -764,7 +764,7 @@
 
 		GLOB.master_mode = href_list["c_mode2"]
 		message_admins("[key_name_admin(usr)] set the mode as [GLOB.master_mode].")
-		to_world(SPAN_NOTICE("<b><i>The mode is now: [GLOB.master_mode]!</i></b>"))
+		to_world(SPAN_NOTICE("<b><i>The mode for the next round: [GLOB.master_mode]!</i></b>"))
 		Game() // updates the main game menu
 		SSticker.save_mode(GLOB.master_mode)
 

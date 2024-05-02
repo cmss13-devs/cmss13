@@ -3,6 +3,7 @@
 #define EQUIPMENT_PRESET_EXTRA (1<<1)
 #define EQUIPMENT_PRESET_START_OF_ROUND_WO (1<<2)
 #define EQUIPMENT_PRESET_MARINE (1<<3)
+#define EQUIPMENT_PRESET_START_OF_ROUND_CRASH (1<<4)
 
 /datum/equipment_preset
 	var/name = "Preset"

@@ -316,6 +316,12 @@
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/khami_barrens/exterior/stonyfields/north)
+"amT" = (
+/obj/structure/machinery/computer/nuke_disk_generator/blue,
+/turf/open/floor/kutjevo/multi_tiles{
+	dir = 6
+	},
+/area/khami_barrens/exterior/lz_dunes)
 "amY" = (
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 1
@@ -3714,6 +3720,10 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/khami_barrens/interior/ruin_caves)
+"dFz" = (
+/obj/effect/landmark/crash/nuclear_spawn,
+/turf/open/auto_turf/sand/layer1,
+/area/khami_barrens/exterior/ruins)
 "dFB" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -3861,6 +3871,13 @@
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/khami_barrens/exterior/stonyfields/north)
+"dLs" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/machinery/computer/nuke_disk_generator/green,
+/turf/open/floor/kutjevo/fake_wood,
+/area/khami_barrens/interior/research_caves/research)
 "dLx" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 10
@@ -5102,6 +5119,10 @@
 	},
 /turf/open/floor/kutjevo/fake_wood,
 /area/khami_barrens/interior/village/residence/company)
+"eQE" = (
+/obj/effect/landmark/crash/nuclear_spawn,
+/turf/open/auto_turf/sand/layer1,
+/area/khami_barrens/exterior/lz_dunes)
 "eQN" = (
 /obj/structure/closet/firecloset/full,
 /turf/open/floor/kutjevo/colors/cyan/edge{
@@ -6266,6 +6287,10 @@
 	dir = 1
 	},
 /area/khami_barrens/interior/research_caves/checkpoint)
+"gcA" = (
+/obj/effect/landmark/crash/nuclear_spawn,
+/turf/open/auto_turf/sand/layer1,
+/area/khami_barrens/exterior/stonyfields)
 "gcF" = (
 /obj/structure/surface/rack,
 /obj/effect/decal/cleanable/dirt,
@@ -6701,6 +6726,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/machinery/computer/nuke_disk_generator/red,
 /turf/open/floor/kutjevo/colors/red/inner_corner,
 /area/khami_barrens/interior/hunting_lodge)
 "gyh" = (
@@ -7582,6 +7608,12 @@
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/khami_barrens/exterior/scrubland)
+"htH" = (
+/obj/effect/landmark/crash/resin_silo_spawn,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_2"
+	},
+/area/khami_barrens/interior/ruin_caves/north)
 "hue" = (
 /obj/item/prop/alien/hugger,
 /turf/open/floor/kutjevo/fake_wood,
@@ -8031,6 +8063,12 @@
 	icon_state = "kitchen"
 	},
 /area/khami_barrens/interior/hunting_lodge)
+"hSa" = (
+/obj/effect/landmark/crash/resin_silo_spawn,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_2"
+	},
+/area/khami_barrens/interior/resin_caves/deep)
 "hSr" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -13220,6 +13258,7 @@
 /obj/structure/platform/mineral/sandstone/runed{
 	dir = 8
 	},
+/obj/effect/landmark/crash/nuclear_spawn,
 /turf/open/auto_turf/sand/layer2,
 /area/khami_barrens/interior/ruin_caves)
 "nck" = (
@@ -16603,6 +16642,12 @@
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/khami_barrens/interior/ruin_caves)
+"quK" = (
+/obj/effect/landmark/crash/resin_silo_spawn,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_2"
+	},
+/area/khami_barrens/interior/ruin_caves/south)
 "qvh" = (
 /obj/structure/bed/chair,
 /obj/effect/decal/cleanable/dirt,
@@ -22837,6 +22882,11 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/sandstone/runed,
 /area/khami_barrens/interior/ruin_caves)
+"wwE" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/obj/effect/landmark/crash/nuclear_spawn,
+/turf/open/auto_turf/sand/layer1,
+/area/khami_barrens/exterior/stonyfields/north)
 "wwT" = (
 /turf/open/gm/coast{
 	dir = 1;
@@ -27243,7 +27293,7 @@ mXO
 cVm
 cVm
 cVm
-cVm
+htH
 cVm
 cVm
 cVm
@@ -27404,7 +27454,7 @@ kYz
 eUL
 eUL
 eUL
-url
+wwE
 url
 url
 eUL
@@ -27976,7 +28026,7 @@ eCT
 eCT
 eCT
 eCT
-eCT
+quK
 jui
 eCT
 eCT
@@ -36411,7 +36461,7 @@ vdC
 vdC
 vdC
 eUL
-pwK
+dFz
 pwK
 lQZ
 vdC
@@ -45385,7 +45435,7 @@ eUL
 eUL
 eUL
 oHL
-oHL
+gcA
 eUL
 mLC
 mLC
@@ -54968,7 +55018,7 @@ mWJ
 mWJ
 mWJ
 mWJ
-mWJ
+hSa
 dsf
 mWJ
 mWJ
@@ -56008,7 +56058,7 @@ rAZ
 qqZ
 swu
 ssw
-fYV
+dLs
 hue
 euy
 ubw
@@ -64789,7 +64839,7 @@ gpX
 pLY
 yhn
 gLn
-gUH
+amT
 drh
 inE
 dyR
@@ -66091,7 +66141,7 @@ eUL
 eUL
 eUL
 eUL
-vys
+eQE
 vys
 vys
 vys
@@ -71618,7 +71668,7 @@ mWJ
 mWJ
 dsf
 mWJ
-mWJ
+hSa
 mWJ
 mWJ
 mWJ

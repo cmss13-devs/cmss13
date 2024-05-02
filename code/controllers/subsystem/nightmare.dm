@@ -23,12 +23,14 @@ SUBSYSTEM_DEF(nightmare)
 		load_file("[global_nightmare_path]/[NIGHTMARE_FILE_BASE]", "[NIGHTMARE_CTX_GLOBAL]-[NIGHTMARE_ACT_BASE]")
 	load_map_config(NIGHTMARE_CTX_GROUND, GROUND_MAP)
 	load_map_config(NIGHTMARE_CTX_SHIP, SHIP_MAP)
+	set_scenario_value("gamemode", GLOB.master_mode)
 	for(var/context_name in contexts)
 		resolve_nodes(context_name, NIGHTMARE_ACT_SCENARIO)
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/nightmare/proc/resolve_nodes(context_name, scope)
 	var/datum/nmcontext/context = contexts[context_name]
+	context.set_scenario_value("gamemode", GLOB.master_mode)
 	var/datum/nmnode/nodes = roots["[context_name]-[scope]"]
 	nodes?.invoke(context)
 
@@ -66,6 +68,7 @@ SUBSYSTEM_DEF(nightmare)
 		if(stat != NIGHTMARE_STATUS_RUNNING)
 			return TRUE // Panic Abort
 		var/datum/nmcontext/context = contexts[context_name]
+		context.set_scenario_value("gamemode", GLOB.master_mode)
 		var/ret = context.run_tasks()
 		if(ret != NIGHTMARE_TASK_OK)
 			log_debug("Nightmare: Failed tasks execution for [context_name]")

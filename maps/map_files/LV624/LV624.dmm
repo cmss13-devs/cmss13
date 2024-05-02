@@ -14880,6 +14880,12 @@
 	icon_state = "whiteyellowfull"
 	},
 /area/lv624/ground/caves/sand_temple)
+"fxT" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "crash"
+	},
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/jungle/south_west_jungle)
 "fyA" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/grass/grass1,
@@ -15449,13 +15455,6 @@
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_jungle)
-"gAS" = (
-/obj/effect/vehicle_spawner/van/decrepit,
-/obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/lv624/lazarus/corporate_dome)
 "gBG" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
@@ -25367,7 +25366,7 @@ aac
 aaa
 aaa
 aaa
-aaa
+fxT
 "}
 (2,1,1) = {"
 aac
@@ -36053,7 +36052,7 @@ mgs
 xgE
 rNq
 kWH
-gAS
+mqw
 rNq
 xgE
 xgE

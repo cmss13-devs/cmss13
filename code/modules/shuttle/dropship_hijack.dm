@@ -7,9 +7,6 @@
 	var/target_ship_section
 	var/hijacked_bypass_aa = FALSE
 	var/final_announcement = FALSE
-	var/ship_killed = FALSE
-	var/messaged = FALSE
-	var/ferry_crashed = FALSE
 
 /datum/dropship_hijack/almayer/proc/crash_landing()
 	//break APCs
@@ -120,21 +117,17 @@
 			offset_target = target // Welp the offsetting failed so...
 		crash_site.forceMove(offset_target)
 		marine_announcement("Вражеское судно направляющееся к [target_ship_section] было успешно ликвидировано.", "Система IX-50 MGAD", 'sound/effects/gau.ogg', logging = ARES_LOG_SECURITY)
-		target_ship_section = offset_target
+		target_ship_section = new_target_ship_section
 		// TODO mobs not alerted
 		for(var/area/internal_area in shuttle.shuttle_areas)
 			for(var/turf/internal_turf in internal_area)
 				for(var/mob/M in internal_turf)
-					to_chat(M, SPAN_DANGER("Корабль сильно трясет, в то время как взрывы сотрясают его!"))
-					to_chat(M, SPAN_DANGER("Я чувствую как корабль разворачивается и меняет направление!"))
+					to_chat(M, SPAN_DANGER("The ship jostles violently as explosions rock the ship!"))
+					to_chat(M, SPAN_DANGER("Вы чувствуете как корабль резко поворачивается и меняет направление!"))
 					shake_camera(M, 60, 2)
 			playsound_area(internal_area, 'sound/effects/antiair_explosions.ogg')
-		ferry_crashed = TRUE
-		GLOB.almayer_aa_cannon.recharging = TRUE
+
 	hijacked_bypass_aa = TRUE
-	GLOB.almayer_aa_cannon.protecting_section = ""
-
-
 
 /datum/dropship_hijack/almayer/proc/check_final_approach()
 	// if our duration isn't far enough away
@@ -147,14 +140,10 @@
 	if(final_announcement)
 		return
 
-	notify_ghosts(header = "Крушение", message = "Десантный корабль терпит крушение!", source = crash_site, extra_large = TRUE)
-
-	shuttle.crashing = TRUE
+	marine_announcement("ДЕСАНТНЫЙ КОРАБЛЬ ПРЯМО ПО КУРСУ. АВАРИЯ НЕИЗБЕЖНА." , "ТРЕВОГА", 'sound/AI/dropship_emergency.ogg', logging = ARES_LOG_SECURITY)
 
 	notify_ghosts(header = "Столкновение с десантным кораблем", message = "Десантный корабль вот-вот упадет на [get_area_name(crash_site)]!", source = crash_site, extra_large = TRUE)
-	if(ferry_crashed == FALSE)
-		marine_announcement("ДЕСАНТНЫЙ КОРАБЛЬ ПРЯМО ПО КУРСУ. АВАРИЯ НЕИЗБЕЖНА." , "ТРЕВОГА", 'sound/AI/dropship_emergency.ogg', logging = ARES_LOG_SECURITY)
-		final_announcement = TRUE
+	final_announcement = TRUE
 
 	playsound_area(get_area(crash_site), 'sound/effects/engine_landing.ogg', 100)
 	playsound_area(get_area(crash_site), channel = SOUND_CHANNEL_AMBIENCE, status = SOUND_UPDATE)
@@ -225,34 +214,6 @@
 			turfs += get_area_turfs(/area/almayer/engineering/lower/workshop)
 		else
 			CRASH("Crash site [ship_section] unknown.")
-	return pick(turfs)
-
-/datum/dropship_hijack/almayer/proc/get_crashcolony_turf()
-	var/map_name = SSmapping.configs[GROUND_MAP].map_name
-	var/list/turfs = list()
-	switch(map_name)
-		if(MAP_LV_624)
-			turfs += get_area_turfs(/area/lv624/ground/river/central_river)
-		if(MAP_DESERT_DAM)
-			turfs += get_area_turfs(/area/desert_dam/exterior/valley/valley_northwest)
-		if(MAP_BIG_RED)
-			turfs += get_area_turfs(/area/bigredv2/outside/medical)
-		if(MAP_DOCK_RED)
-			turfs += get_area_turfs(/area/dockred/outside/port_outside)
-		if(MAP_PRISON_STATION)
-			turfs += get_area_turfs(/area/prison/canteen)
-		if(MAP_SOROKYNE_STRATA)
-			turfs += get_area_turfs(/area/strata/ag/exterior/marsh)
-		if(MAP_CORSAT)
-			turfs += get_area_turfs(/area/corsat/gamma/hallwaysouth)
-		if(MAP_KUTJEVO)
-			turfs += get_area_turfs(/area/kutjevo/interior/complex/botany)
-		if(MAP_ICE_COLONY_V3)
-			turfs += get_area_turfs(/area/ice_colony/surface/dorms)
-		if(MAP_NEW_VARADERO)
-			turfs += get_area_turfs(/area/varadero/interior/medical)
-		else
-			CRASH("Crash site [map_name] unknown.")
 	return pick(turfs)
 
 #undef HIJACK_CRASH_SITE_OFFSET_X

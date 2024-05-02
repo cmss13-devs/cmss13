@@ -52,7 +52,7 @@
 	if(!istype(new_dock, /obj/docking_port/stationary/transit) && crashing)
 		new_dock.on_crash()
 		on_crash()
-		crashing = FALSE
+		addtimer(VARSET_CALLBACK(src, crashing, FALSE), 10 SECONDS)
 
 	. = preflight_check(old_turfs, new_turfs, areas_to_move, rotation)
 	if(.)

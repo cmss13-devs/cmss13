@@ -20,6 +20,7 @@ SUBSYSTEM_DEF(shuttle)
 	var/list/transit_request_failures = list()
 
 	var/obj/docking_port/mobile/vehicle_elevator/vehicle_elevator
+	var/obj/docking_port/mobile/crashmode/uss_crash
 
 	var/list/hidden_shuttle_turfs = list() //all turfs hidden from navigation computers associated with a list containing the image hiding them and the type of the turf they are pretending to be
 	var/list/hidden_shuttle_turf_images = list() //only the images from the above list

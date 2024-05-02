@@ -1,0 +1,6 @@
+GLOBAL_LIST_EMPTY(nuke_spawn_locs)
+GLOBAL_LIST_EMPTY(resin_silo_spawn_locs)
+GLOBAL_LIST_EMPTY(xeno_resin_silos)
+
+GLOBAL_LIST_EMPTY(nuke_list)
+GLOBAL_LIST_EMPTY(nuke_disk_generators)

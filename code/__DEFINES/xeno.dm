@@ -162,10 +162,6 @@
 #define WEED_BASE_GROW_SPEED (5 SECONDS)
 #define WEED_BASE_DECAY_SPEED (10 SECONDS)
 
-/// The time you must be dead to join as a xeno larva
-#define XENO_JOIN_DEAD_LARVA_TIME (2.5 MINUTES)
-/// The time you must be dead to join as xeno (not larva)
-#define XENO_JOIN_DEAD_TIME (5 MINUTES)
 /// The time of inactivity you cannot exceed to join as a xeno
 #define XENO_JOIN_AFK_TIME_LIMIT (5 MINUTES)
 /// The amount of time after round start before buried larva spawns are disallowed

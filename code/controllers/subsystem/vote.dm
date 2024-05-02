@@ -100,10 +100,9 @@ SUBSYSTEM_DEF(vote)
 				if(choices["Continue Playing"] >= greatest_votes)
 					greatest_votes = choices["Continue Playing"]
 	. = list()
-	if(greatest_votes)
-		for(var/option in choices_adjusted)
-			if(choices_adjusted[option] == greatest_votes)
-				. += option
+	for(var/option in choices_adjusted)
+		if(choices_adjusted[option] == greatest_votes)
+			. += option
 	return .
 
 
@@ -276,8 +275,8 @@ SUBSYSTEM_DEF(vote)
 					var/datum/game_mode/M = mode_type
 					if(initial(M.config_tag))
 						var/vote_cycle_met = !initial(M.vote_cycle) || (text2num(SSperf_logging?.round?.id) % initial(M.vote_cycle) == 0)
-						//var/min_players_met = length(GLOB.clients) >= M.required_players // Cannot read /datum/game_mode/whiskey_outpost(/datum/game_mode/whiskey_outpost).required_players
-						if(initial(M.votable) && vote_cycle_met/* && min_players_met*/)
+						var/population_met = (!initial(M.population_min) || initial(M.population_min) < length(GLOB.clients)) && (!initial(M.population_max) || initial(M.population_max) > length(GLOB.clients))
+						if(initial(M.votable) && vote_cycle_met && population_met)
 							choices += initial(M.config_tag)
 			if("groundmap")
 				question = "Ground map vote"

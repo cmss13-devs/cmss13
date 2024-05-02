@@ -45,5 +45,10 @@
 	{
 		"type": "include", "name": "Standalone variations",
 		"file": "mapgen_variations.json"
-	}
+	},
+	{
+        "type": "map_sprinkle",
+        "path": "crash/",
+        "when": { "gamemode": "Crash" }
+    }
 ]

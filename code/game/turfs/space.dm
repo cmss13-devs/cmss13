@@ -77,7 +77,8 @@
 
 /turf/open/space/Entered(atom/movable/A)
 	..()
-	if ((!(A) || src != A.loc)) return
+	if((!(A) || src != A.loc) || istype(A, /obj/effect/step_trigger/teleporter/random))
+		return
 
 	inertial_drift(A)
 

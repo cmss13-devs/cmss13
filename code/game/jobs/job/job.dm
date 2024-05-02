@@ -270,7 +270,7 @@
 		if(flags_startup_parameters & ROLE_ADD_TO_SQUAD) //Are we a muhreen? Randomize our squad. This should go AFTER IDs. //TODO Robust this later.
 			GLOB.RoleAuthority.randomize_squad(human)
 
-		if(Check_WO() && GLOB.job_squad_roles.Find(GET_DEFAULT_ROLE(human.job))) //activates self setting proc for marine headsets for WO
+		if(check_wo() && GLOB.job_squad_roles.Find(GET_DEFAULT_ROLE(human.job))) //activates self setting proc for marine headsets for WO
 			var/datum/game_mode/whiskey_outpost/WO = SSticker.mode
 			WO.self_set_headset(human)
 

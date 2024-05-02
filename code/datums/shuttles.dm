@@ -88,6 +88,9 @@
 	M.linkup(M)
 
 
+/datum/map_template/shuttle/uss_crash
+	shuttle_id = DROPSHIP_CRASH
+	name = "USS Crash"
 
 /datum/map_template/shuttle/vehicle
 	shuttle_id = MOBILE_SHUTTLE_VEHICLE_ELEVATOR

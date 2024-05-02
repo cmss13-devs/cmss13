@@ -3589,7 +3589,7 @@
 "akX" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/tool/pen,
-/obj/item/XenoBio/Blood,
+/obj/item/oldresearch/Blood,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkpurple2"

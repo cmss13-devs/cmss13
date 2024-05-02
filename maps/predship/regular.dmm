@@ -1177,8 +1177,8 @@
 /area/yautja)
 "dp" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/XenoBio/Blood,
-/obj/item/XenoBio/Blood,
+/obj/item/oldresearch/Blood,
+/obj/item/oldresearch/Blood,
 /turf/open/floor/holofloor{
 	dir = 2;
 	icon_state = "cult"
@@ -1194,8 +1194,8 @@
 /area/yautja)
 "dz" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/XenoBio/Resin,
-/obj/item/XenoBio/Resin,
+/obj/item/oldresearch/Resin,
+/obj/item/oldresearch/Resin,
 /turf/open/floor/holofloor{
 	dir = 2;
 	icon_state = "cult"

@@ -192,6 +192,7 @@
 	name = "Experimental Uniform Attachment"
 	desc = "Attachment to the uniform which gives X(this shouldnt be in your handdssss)"
 	is_armor = FALSE
+	icon_state = "plate_research"
 	var/obj/item/clothing/attached_uni
 	///can the plate be recycled after X condition? 0 means it cannot be recycled, otherwise put in the biomass points to refund.
 	var/recyclable_value = 0

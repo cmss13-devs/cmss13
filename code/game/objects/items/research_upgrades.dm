@@ -1,5 +1,5 @@
 //prop items
-/obj/item/XenoBio
+/obj/item/oldresearch
 	name = "Alien Organ"
 	desc = "Looking at it makes you want to vomit"
 	icon = 'icons/obj/items/Marine_Research.dmi'
@@ -7,19 +7,19 @@
 	black_market_value = 50
 	//For all of them for now, until we have specific organs/more techs
 
-/obj/item/XenoBio/Resin
+/obj/item/oldresearch/Resin
 	name = "Alien Resin"
 	desc = "A piece of alien Resin"
 	icon_state = "biomass"
 
 
-/obj/item/XenoBio/Chitin
+/obj/item/oldresearch/Chitin
 	name = "Chunk of Chitin"
 	desc = "A chunk of alien Chitin"
 	icon_state = "chitin-chunk"
 
 
-/obj/item/XenoBio/Blood
+/obj/item/oldresearch/Blood
 	name = "Blood Vial"
 	desc = "A sample of alien Blood"
 	icon_state = "blood-vial"

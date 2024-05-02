@@ -3194,6 +3194,7 @@
 /area/corsat/sigma/dorms)
 "amS" = (
 /obj/structure/surface/table/reinforced,
+/obj/item/weapon/gun/smg/mp5,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "red"
@@ -11904,9 +11905,6 @@
 /turf/open/floor/corsat,
 /area/corsat/emergency_access)
 "aQP" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
 /turf/open/floor/corsat{
 	dir = 9;
 	icon_state = "yellow"
@@ -14236,10 +14234,11 @@
 /area/corsat/sigma/biodome/scrapyard)
 "aYK" = (
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 4
 	},
 /turf/open/floor/corsat{
-	icon_state = "plate"
+	dir = 4;
+	icon_state = "yellow"
 	},
 /area/corsat/gamma/residential/generator)
 "aYL" = (
@@ -25799,6 +25798,7 @@
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/tool,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -29497,14 +29497,13 @@
 	},
 /area/corsat/sigma/hangar/checkpoint)
 "dmz" = (
-/obj/structure/machinery/door/airlock/almayer/engineering/colony{
-	dir = 2;
-	name = "Engineering";
-	req_one_access_txt = "102"
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
 	},
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/closed/wall/biodome,
-/area/corsat/sigma/hangar/arrivals)
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/corsat/gamma/foyer)
 "dmD" = (
 /obj/structure/machinery/door_control{
 	id = "SigmaGate";
@@ -35240,8 +35239,8 @@
 	},
 /area/corsat/omega/hallways)
 "hRI" = (
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 1
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
 	},
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
@@ -39948,6 +39947,14 @@
 	icon_state = "retrosquareslight"
 	},
 /area/corsat/sigma/south/complex)
+"lYW" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/corsat{
+	icon_state = "squares"
+	},
+/area/corsat/gamma/residential/generator)
 "lYX" = (
 /obj/effect/landmark/teleporter_loc/corsat_sigma_local{
 	index = "1"
@@ -58452,11 +58459,11 @@ adz
 awz
 awz
 awz
-vda
-vda
-vda
-vda
-vda
+leP
+leP
+leP
+leP
+leP
 awz
 awz
 dLL
@@ -59276,11 +59283,11 @@ adz
 adz
 awz
 awz
-vda
-vda
-vda
-vda
-vda
+leP
+leP
+leP
+leP
+leP
 awz
 awz
 dLL
@@ -59480,7 +59487,7 @@ adz
 adz
 adz
 adz
-vda
+leP
 vgn
 vaY
 vaY
@@ -59686,7 +59693,7 @@ adz
 adz
 adz
 adz
-vda
+leP
 eeN
 tdi
 adH
@@ -59892,7 +59899,7 @@ adz
 adz
 adz
 adz
-vda
+leP
 rCO
 qGn
 adH
@@ -61128,7 +61135,7 @@ adz
 adz
 adz
 adz
-vda
+leP
 vgn
 ulb
 adH
@@ -61334,7 +61341,7 @@ adz
 adz
 adz
 adz
-vda
+leP
 ttB
 adH
 adH
@@ -61540,7 +61547,7 @@ adz
 adz
 adz
 adz
-vda
+leP
 rCO
 jme
 ome
@@ -61562,7 +61569,7 @@ aec
 hId
 apT
 apT
-apT
+aek
 aek
 apT
 aqr
@@ -62157,7 +62164,7 @@ adz
 adz
 adz
 adz
-vda
+leP
 ueK
 dbY
 dbY
@@ -62363,7 +62370,7 @@ adz
 adz
 adz
 adz
-vda
+leP
 sxI
 vsP
 vsP
@@ -62569,7 +62576,7 @@ adz
 adz
 adz
 adz
-vda
+leP
 ueK
 koV
 pSu
@@ -62775,7 +62782,7 @@ adz
 adz
 adz
 adz
-vda
+leP
 tNT
 jgy
 vsP
@@ -63004,7 +63011,7 @@ aec
 hId
 apT
 apT
-apT
+aek
 aek
 apT
 ifX
@@ -65839,7 +65846,7 @@ adz
 adz
 dxy
 dxy
-xXl
+lYW
 xXl
 heH
 heH
@@ -66662,7 +66669,7 @@ adV
 adz
 adz
 uev
-aYK
+waS
 kZp
 aWU
 waS
@@ -67084,7 +67091,7 @@ xXl
 nrD
 xXl
 ycd
-vLX
+beX
 vLX
 arN
 arU
@@ -67283,7 +67290,7 @@ dxy
 waS
 evY
 caU
-caU
+aYK
 caU
 iRj
 xXl
@@ -68920,7 +68927,7 @@ oRo
 oRo
 oRo
 oRo
-oRo
+fpL
 oRo
 oRo
 oRo
@@ -69126,7 +69133,7 @@ acD
 acD
 acD
 acD
-acD
+vMP
 acD
 acD
 acD
@@ -69332,7 +69339,7 @@ akH
 akH
 akH
 akH
-akH
+dmz
 pdh
 rEq
 rEq
@@ -69538,7 +69545,7 @@ ajY
 ajY
 axa
 akH
-akH
+dmz
 bnn
 ggq
 aGr
@@ -69744,7 +69751,7 @@ akH
 akH
 bhJ
 akH
-akH
+dmz
 bnn
 ggq
 hKD
@@ -69950,7 +69957,7 @@ akH
 akH
 aLW
 akH
-akH
+dmz
 bnn
 ggq
 kWz
@@ -70156,7 +70163,7 @@ akH
 akH
 aLW
 akH
-akH
+dmz
 bnn
 ggq
 qpo
@@ -70362,7 +70369,7 @@ fGS
 lER
 aod
 akH
-akH
+dmz
 bnn
 ggq
 amp
@@ -70568,7 +70575,7 @@ bfS
 bfS
 viq
 akH
-akH
+dmz
 qaO
 mRB
 mRB
@@ -70774,7 +70781,7 @@ fpL
 oRo
 oRo
 oRo
-oRo
+wBJ
 oRo
 oRo
 oRo
@@ -103304,7 +103311,7 @@ bQL
 bad
 aqj
 gff
-dmz
+axz
 ckY
 ckY
 jQT

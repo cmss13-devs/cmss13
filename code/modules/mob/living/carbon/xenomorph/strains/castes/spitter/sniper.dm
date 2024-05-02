@@ -194,7 +194,7 @@
 	apply_cooldown()
 
 /datum/action/xeno_action/onclick/toggle_long_range/sniper
-	name = "Toggle Scopped Sight"
+	name = "Toggle Scoped Sight"
 	action_icon_state = "toggle_long_range"
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_2

@@ -174,18 +174,20 @@
 /datum/ammo/xeno/acid/sniper
 	name = "long acid spit"
 	accuracy = HIT_ACCURACY_TIER_MAX
-	accurate_range = 20
+	accurate_range = 16
+	max_range = 20
 	damage = 7
 	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_XENO
 	damage_falloff = -0.5
-	max_range = 24
-	penetration = ARMOR_PENETRATION_TIER_6
+	penetration = ARMOR_PENETRATION_TIER_4
 	shell_speed = AMMO_SPEED_TIER_5
 
 /datum/ammo/xeno/acid/sniper/charged
+	accurate_range = 22
+	max_range = 22
 	damage = 10
 	damage_falloff = -0.7
-	penetration = ARMOR_PENETRATION_TIER_8
+	penetration = ARMOR_PENETRATION_TIER_6
 	shell_speed = AMMO_SPEED_TIER_6
 
 /datum/ammo/xeno/acid/buster
@@ -196,7 +198,7 @@
 	damage = 14
 	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_XENO|AMMO_ANTISTRUCT
 	damage_falloff = 0.1
-	penetration = ARMOR_PENETRATION_TIER_4
+	penetration = 0
 	shell_speed = AMMO_SPEED_TIER_1
 
 /datum/ammo/xeno/acid/buster/charged
@@ -204,7 +206,6 @@
 	max_range = 18
 	damage = 45
 	damage_falloff = 0.3
-	penetration = 0
 	shell_speed = AMMO_SPEED_TIER_2
 
 /datum/ammo/xeno/acid/pain_packer
@@ -215,13 +216,12 @@
 	damage = 5
 	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_XENO
 	damage_falloff = 0.1
-	penetration = ARMOR_PENETRATION_TIER_4
 	shell_speed = AMMO_SPEED_TIER_2
 	debilitate = list(3,1,0,1,20,4,4,15)
 
 /datum/ammo/xeno/acid/pain_packer/charged
-	accurate_range = 24
-	max_range = 24
+	accurate_range = 20
+	max_range = 20
 	damage_falloff = 0
 	shell_speed = AMMO_SPEED_TIER_4
 	debilitate = list(3,3,1,1,20,4,4,15)

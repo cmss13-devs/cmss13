@@ -146,8 +146,8 @@
 	ability_name = "Pain Packer spit"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_5
-	xeno_cooldown = 6.5 SECONDS
-	plasma_cost = 35
+	xeno_cooldown = 10 SECONDS
+	plasma_cost = 55
 
 /datum/action/xeno_action/activable/sniper/pain_packer/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner

@@ -38,7 +38,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_charge_spit
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	action_type = XENO_ACTION_ACTIVATE
-	plasma_cost = 90
+	plasma_cost = 120
 	xeno_cooldown = 35 SECONDS
 
 	// Config
@@ -111,7 +111,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	xeno_cooldown = 3.5 SECONDS
-	plasma_cost = 30
+	plasma_cost = 50
 
 /datum/action/xeno_action/activable/sniper/long_spit/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -147,7 +147,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_5
 	xeno_cooldown = 10 SECONDS
-	plasma_cost = 55
+	plasma_cost = 80
 
 /datum/action/xeno_action/activable/sniper/pain_packer/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner

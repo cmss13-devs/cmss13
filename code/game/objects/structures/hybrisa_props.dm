@@ -1837,11 +1837,25 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 
 /obj/structure/prop/hybrisa/misc/detonator
 	name = "inactive detonator"
-	desc = "A detonator for explosives, this one appears to be missing a vital component."
+	desc = "A detonator for explosives, armed and ready."
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "detonator"
 	density = TRUE
 	anchored = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	indestructible = TRUE
+	var/id = 1
+	var/range = 15
+
+/obj/structure/prop/hybrisa/misc/detonator/attack_hand(mob/user)
+	for(var/obj/item/explosive/plastic/hybrasia/mining/explosive in range(range))
+		if(explosive.id == id)
+			var/turf/target_turf
+			target_turf = get_turf(explosive.loc)
+			var/datum/cause_data/temp_cause = create_cause_data(src, user)
+			explosive.handle_explosion(target_turf,temp_cause)
+
 
 /obj/structure/prop/hybrisa/misc/firehydrant
 	name = "fire hydrant"

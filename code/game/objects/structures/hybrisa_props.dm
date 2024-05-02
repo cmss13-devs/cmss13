@@ -2035,3 +2035,26 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 	icon_state = "lattice5"
 /obj/structure/prop/hybrisa/lattice_prop/lattice_6
 	icon_state = "lattice6"
+
+// Street light
+/obj/structure/prop/hybrisa/misc/trafficlight
+	name = "traffic light"
+	desc = "A traffic light"
+	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi'
+	icon_state = "trafficlight"
+	bound_width = 32
+	bound_height = 32
+	density = TRUE
+	health = 200
+	anchored = TRUE
+	layer = ABOVE_MOB_LAYER
+
+/obj/structure/prop/hybrisa/misc/trafficlight/trafficlight_on
+	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi'
+	icon_state = "trafficlight_on"
+/obj/structure/prop/hybrisa/misc/trafficlight/trafficlight_alt_on
+	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi'
+	icon_state = "trafficlight_alt_on"
+/obj/structure/prop/hybrisa/misc/trafficlight/trafficlight_alt
+	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi'
+	icon_state = "trafficlight_alt"

@@ -522,6 +522,8 @@
 	// If this is groundside and isn't dynamically changing we will spawn with stock randomly removed from it
 	if(vend_flags & VEND_STOCK_DYNAMIC)
 		return
+	if(Check_WO())
+		return
 	var/turf/location = get_turf(src)
 	if(location && is_ground_level(location.z))
 		random_unstock()

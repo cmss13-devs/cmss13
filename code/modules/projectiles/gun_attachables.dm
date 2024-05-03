@@ -1761,8 +1761,6 @@ Defined in conflicts.dm of the #defines folder.
 	//but at the same time you are slow when 2 handed
 	aim_speed_mod = CONFIG_GET(number/slowdown_med)
 
-	matter = list("wood" = 2000)
-
 	select_gamemode_skin(type)
 
 /obj/item/attachable/stock/double
@@ -3219,6 +3217,10 @@ Defined in conflicts.dm of the #defines folder.
 	var/datum/reagent/flamer_reagent = gun.current_mag.reagents.reagent_list[1]
 	if(flamer_reagent.volume < FLAME_REAGENT_USE_AMOUNT * fuel_per_projectile)
 		to_chat(user, SPAN_WARNING("\The [gun] doesn't have enough fuel to launch a projectile!"))
+		return
+
+	if(istype(flamer_reagent, /datum/reagent/foaming_agent/stabilized))
+		to_chat(user, SPAN_WARNING("This chemical will clog the nozzle!"))
 		return
 
 	gun.last_fired = world.time

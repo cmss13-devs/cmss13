@@ -18,8 +18,6 @@
 	macro_path = /datum/action/xeno_action/verb/verb_lurker_invisibility
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 1 // This ability never goes off cooldown 'naturally'. Cooldown is applied manually as a super-large value in the use_ability proc
-					// and reset by the behavior_delegate whenever the ability ends (because it can be ended by things like slashes, that we can't easily track here)
 	plasma_cost = 20
 
 	var/duration = 30 SECONDS // 30 seconds base

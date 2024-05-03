@@ -78,6 +78,8 @@
 #define SEE_INVISIBLE_LEVEL_TWO 45 //Used by some other stuff in code. It's really poorly organized.
 #define INVISIBILITY_LEVEL_TWO 45 //Used by some other stuff in code. It's really poorly organized.
 
+#define HIDE_INVISIBLE_OBSERVER 59 // define for when we want to hide all observer mobs.
+
 #define INVISIBILITY_OBSERVER 60
 #define SEE_INVISIBLE_OBSERVER 60
 

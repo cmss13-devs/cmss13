@@ -295,7 +295,9 @@
 
 /datum/action/xeno_action/onclick/toggle_long_range/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
-	xeno.speed_modifier = initial(xeno.speed_modifier)// Reset the speed modifier should you be disrupted while zooming or whatnot
+
+	if (!xeno.check_state())
+		return
 
 	if(xeno.observed_xeno)
 		return

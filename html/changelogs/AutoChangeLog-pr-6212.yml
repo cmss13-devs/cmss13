@@ -1,0 +1,5 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - bugfix: "Whitelist notes now work properly. Council can add notes to players regarding whitelist issues."
+  - rscadd: "Changing whitelist flags with the Whitelist Panel now automatically adds a note with the reason."

@@ -208,6 +208,9 @@
 /obj/proc/hear_talk(mob/living/M as mob, msg, verb="says", datum/language/speaking, italics = 0)
 	return
 
+/obj/proc/see_emote(mob/living/M as mob, emote, audible = FALSE)
+	return
+
 /obj/attack_hand(mob/user)
 	if(can_buckle) manual_unbuckle(user)
 	else . = ..()
@@ -231,7 +234,7 @@
 
 /obj/proc/afterbuckle(mob/M as mob) // Called after somebody buckled / unbuckled
 	handle_rotation() // To be removed when we have full dir support in set_buckled
-	SEND_SIGNAL(src, COSMIG_OBJ_AFTER_BUCKLE, buckled_mob)
+	SEND_SIGNAL(src, COMSIG_OBJ_AFTER_BUCKLE, buckled_mob)
 	if(!buckled_mob)
 		UnregisterSignal(M, COMSIG_PARENT_QDELETING)
 	else

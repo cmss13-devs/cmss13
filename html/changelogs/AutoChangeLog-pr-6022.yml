@@ -1,8 +1,0 @@
-author: "QuickLode"
-delete-after: True
-changes:
-  - rscadd: "Adds 3 variations of CMB Marshal and 4 variations of a UA Riot Police Officer to Fiorina Prison Riot nightmare. These are fine men and women in uniform prepared to engage what they suspect is a riot(or in the case of CMB, assisting their underfunded and understaffed colleagues) however, they find something much more sinister going on.."
-  - rscadd: "Adds a CMB Investigative Synthetic(r) and a UA Police Synthetic."
-  - rscadd: "Allows police baton and telescopic baton to shield clash for intimidation and riot tactics."
-  - rscadd: "Allows M81 launcher to utilize less lethal baton round"
-  - qol: "removes taser from some security synthetics belts, replaced with a more synthetic friendly version"

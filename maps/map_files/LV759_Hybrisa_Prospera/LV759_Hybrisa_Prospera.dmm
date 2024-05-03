@@ -10926,12 +10926,6 @@
 /obj/item/device/flashlight/lamp/tripod/grey,
 /turf/open/engineership/engineer_floor9,
 /area/lv759/derelictship)
-"bSY" = (
-/turf/open/floor/strata{
-	dir = 4;
-	icon_state = "floor3"
-	},
-/area/lv759/indoors/meridian/meridian_factory)
 "bTd" = (
 /obj/effect/hybrisa/decal/trash{
 	icon_state = "trash_5";
@@ -13101,7 +13095,6 @@
 	},
 /obj/item/shard,
 /obj/structure/prop/hybrisa/BillboardsandSigns/BigBillboards{
-	dir = 9;
 	pixel_y = 34
 	},
 /turf/open/hybrisa/street/sidewalk{
@@ -25162,13 +25155,13 @@
 /turf/open/hybrisa/street/sidewalk,
 /area/lv759/landing_zone_2)
 "eig" = (
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard2{
-	dir = 8;
-	pixel_y = 34
-	},
 /obj/structure/largecrate/random/mini/small_case{
 	pixel_x = 5;
 	pixel_y = 7
+	},
+/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
+	dir = 8;
+	pixel_y = 34
 	},
 /turf/open/floor/strata{
 	dir = 1;
@@ -32526,13 +32519,6 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/hybrisa/metal/grated,
 /area/lv759/outdoors/colony_streets/central_streets)
-"fvC" = (
-/obj/structure/prop/hybrisa/vehicles/Car/Red,
-/turf/open/floor/strata{
-	dir = 4;
-	icon_state = "floor3"
-	},
-/area/lv759/indoors/meridian/meridian_factory)
 "fvI" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/decal/cleanable/blood,
@@ -45522,6 +45508,16 @@
 	icon_state = "officetiles"
 	},
 /area/lv759/indoors/weymart)
+"hBD" = (
+/obj/effect/hybrisa/decal/road/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_y = -8
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/colony_streets/north_street)
 "hBH" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/emails{
@@ -54190,10 +54186,6 @@
 	},
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/indoors/caves/north_east_caves)
-"iZT" = (
-/obj/item/weapon/twohanded/folded_metal_chair,
-/turf/open/hybrisa/street/asphalt,
-/area/lv759/outdoors/colony_streets/north_street)
 "jab" = (
 /obj/structure/prop/hybrisa/containersextended/tanwywingsright,
 /turf/open/floor/prison{
@@ -55371,10 +55363,12 @@
 /obj/structure/barricade/handrail/strata{
 	layer = 3.1
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/BigBillboards{
-	dir = 10;
+/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard3{
 	pixel_y = 34;
-	pixel_x = -6
+	layer = 8;
+	level = 8;
+	dir = 8;
+	pixel_x = -15
 	},
 /turf/open/floor/prison{
 	icon_state = "cell_stripe"
@@ -58652,8 +58646,8 @@
 	},
 /area/lv759/indoors/caves/central_caves)
 "jNz" = (
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
-	dir = 8;
+/obj/structure/prop/hybrisa/BillboardsandSigns/BigBillboards{
+	dir = 1;
 	pixel_y = 34
 	},
 /turf/open/floor/strata{
@@ -59588,8 +59582,7 @@
 	pixel_y = 20;
 	pixel_x = -8;
 	layer = 8;
-	level = 8;
-	dir = 6
+	level = 8
 	},
 /turf/open/hybrisa/street/sidewalk{
 	dir = 8
@@ -69808,9 +69801,9 @@
 	icon_state = "11-6";
 	level = 2
 	},
-/obj/item/explosive/plastic{
-	desc = "A compact explosive charge for controlled demolitions. Looks to be made from C4";
-	name = "Mining explosives"
+/obj/item/explosive/plastic/hybrisa/mining{
+	name = "large mining charge";
+	icon_state = "custom_plastic_explosive_locked"
 	},
 /turf/open/auto_turf/hybrisashale/layer2,
 /area/lv759/indoors/caves/south_caves)
@@ -74591,14 +74584,14 @@
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile,
 /area/lv759/indoors/recycling_plant/garage)
 "mrU" = (
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
-	layer = 8;
-	level = 8;
-	pixel_y = 20;
-	dir = 1
-	},
 /obj/structure/prop/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16
+	},
+/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard3{
+	pixel_y = 20;
+	layer = 8;
+	level = 8;
+	dir = 1
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -85632,7 +85625,6 @@
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
 	pixel_y = 28
 	},
-/obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"
@@ -92472,15 +92464,12 @@
 	},
 /area/whiskey_outpost/inside/caves)
 "prU" = (
-/obj/structure/prop/hybrisa/misc/detonator{
-	pixel_y = 7
-	},
 /obj/structure/cable/white{
-	icon_state = "0-10";
+	icon_state = "1-10";
 	level = 2
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
+/turf/open/auto_turf/sand_white/layer0{
+	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
 	},
 /area/lv759/indoors/caves/south_caves)
 "prY" = (
@@ -93247,7 +93236,7 @@
 	layer = 8;
 	level = 8;
 	pixel_y = 20;
-	dir = 5
+	dir = 9
 	},
 /obj/structure/prop/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16
@@ -99099,9 +99088,11 @@
 	pixel_x = 9;
 	pixel_y = -2
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard1{
-	dir = 8;
-	pixel_y = 34
+/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard3{
+	pixel_y = 34;
+	layer = 8;
+	level = 8;
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	allow_construction = 0;
@@ -99248,7 +99239,7 @@
 	desc = "A compact explosive charge for controlled demolitions. Looks to be made from C4";
 	name = "Mining explosives"
 	},
-/turf/open/auto_turf/hybrisashale/layer1,
+/turf/open/floor/plating,
 /area/lv759/indoors/caves/south_caves)
 "qyw" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
@@ -102167,7 +102158,7 @@
 	dir = 8;
 	layer = 3
 	},
-/obj/structure/machinery/light/spot{
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -112249,7 +112240,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/structure/machinery/light/spot,
+/obj/structure/machinery/light/double,
 /turf/open/floor/strata{
 	icon_state = "floor3"
 	},
@@ -124801,9 +124792,11 @@
 /obj/structure/platform/strata/metal{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/BigBillboards{
-	dir = 1;
-	pixel_y = 34
+/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard3{
+	pixel_y = 34;
+	layer = 8;
+	level = 8;
+	dir = 8
 	},
 /turf/open/floor/strata{
 	icon_state = "orange_edge"
@@ -125706,6 +125699,18 @@
 	},
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/whiskey_outpost/inside/caves)
+"uOp" = (
+/obj/structure/prop/hybrisa/misc/detonator{
+	pixel_y = 7
+	},
+/obj/structure/cable/white{
+	icon_state = "1-2";
+	layer = 5
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/lv759/indoors/caves/south_caves)
 "uOv" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
@@ -126650,14 +126655,6 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/east_central_street)
-"uUW" = (
-/turf/open/engineership/engineer_floor5{
-	light_on = 1;
-	light_power = 6;
-	light_range = 14;
-	name = "circular light"
-	},
-/area/lv759/indoors/meridian/meridian_factory)
 "uVe" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal4"
@@ -126955,7 +126952,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/obj/structure/machinery/light/spot{
+/obj/structure/machinery/light/double{
 	dir = 1
 	},
 /turf/open/floor/strata{
@@ -127900,15 +127897,15 @@
 	icon_state = "lattice12";
 	pixel_y = 16
 	},
-/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard4{
-	pixel_y = 20;
-	pixel_x = -6;
-	layer = 8;
-	level = 8;
-	dir = 1
-	},
 /obj/structure/prop/hybrisa/lattice_prop/lattice_6{
 	pixel_y = 16
+	},
+/obj/structure/prop/hybrisa/BillboardsandSigns/Billboardsmedium/Billboard3{
+	pixel_y = 20;
+	layer = 8;
+	level = 8;
+	pixel_x = -6;
+	dir = 1
 	},
 /turf/open/floor/hybrisa/metal/grated{
 	dir = 4
@@ -131447,14 +131444,14 @@
 	},
 /area/lv759/indoors/spaceport/security)
 "vNr" = (
-/obj/structure/prop/hybrisa/BillboardsandSigns/BigBillboards{
-	dir = 4;
-	pixel_y = 34
-	},
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
 	},
 /obj/effect/hybrisa/decal/dirt,
+/obj/structure/prop/hybrisa/BillboardsandSigns/BigBillboards{
+	dir = 10;
+	pixel_y = 34
+	},
 /turf/open/floor/hybrisa/metal/grated{
 	dir = 1
 	},
@@ -137658,6 +137655,9 @@
 	},
 /obj/structure/platform/hybrisa/metalplatform1{
 	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall2{
+	pixel_y = 25
 	},
 /turf/open/floor/prison{
 	icon_state = "ramptop"
@@ -159466,17 +159466,17 @@ unn
 unn
 unn
 unn
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
 unn
 unn
 unn
@@ -159718,17 +159718,17 @@ unn
 unn
 unn
 unn
-bSY
-bSY
-fvC
-bSY
-bSY
-fvC
-bSY
-bSY
-fvC
-bSY
-bSY
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
 unn
 unn
 unn
@@ -159970,17 +159970,17 @@ unn
 unn
 unn
 unn
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
 unn
 unn
 unn
@@ -160222,17 +160222,17 @@ unn
 unn
 unn
 unn
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
 unn
 unn
 unn
@@ -160474,17 +160474,17 @@ unn
 unn
 unn
 unn
-bSY
-bSY
-uUW
-bSY
-bSY
-uUW
-bSY
-bSY
-uUW
-bSY
-bSY
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
 unn
 unn
 unn
@@ -160726,17 +160726,17 @@ unn
 unn
 unn
 unn
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
 unn
 unn
 unn
@@ -160978,17 +160978,17 @@ unn
 unn
 unn
 unn
-bSY
-bSY
-fvC
-bSY
-bSY
-fvC
-bSY
-bSY
-fvC
-bSY
-bSY
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
 unn
 unn
 unn
@@ -161230,17 +161230,17 @@ unn
 unn
 unn
 unn
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
 unn
 unn
 unn
@@ -161482,17 +161482,17 @@ unn
 unn
 unn
 unn
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
 unn
 unn
 unn
@@ -161734,17 +161734,17 @@ unn
 unn
 unn
 unn
-bSY
-bSY
-uUW
-bSY
-bSY
-uUW
-bSY
-bSY
-uUW
-bSY
-bSY
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
 unn
 unn
 unn
@@ -161986,17 +161986,17 @@ unn
 unn
 unn
 unn
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
 unn
 unn
 unn
@@ -162238,17 +162238,17 @@ unn
 unn
 unn
 unn
-bSY
-bSY
-fvC
-bSY
-bSY
-fvC
-bSY
-bSY
-fvC
-bSY
-bSY
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
 unn
 unn
 unn
@@ -162490,17 +162490,17 @@ unn
 unn
 unn
 unn
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
 unn
 unn
 unn
@@ -162742,17 +162742,17 @@ unn
 unn
 unn
 unn
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
 unn
 unn
 unn
@@ -162994,17 +162994,17 @@ unn
 unn
 unn
 unn
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
-bSY
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
+unn
 unn
 unn
 unn
@@ -181461,7 +181461,7 @@ jVQ
 vNj
 jyx
 gDJ
-iZT
+lvW
 jIh
 ebq
 bwC
@@ -181965,7 +181965,7 @@ pdm
 pdm
 kWK
 pvK
-pdm
+hBD
 iXq
 mVj
 dcO
@@ -185526,7 +185526,7 @@ rbI
 pDD
 dDg
 dDg
-qWT
+dDg
 qWT
 dDg
 dDg
@@ -187190,7 +187190,7 @@ fng
 beZ
 unn
 qyv
-qRk
+uOp
 prU
 yjt
 yjt
@@ -187441,9 +187441,9 @@ unn
 fng
 beZ
 hdz
-yjt
 rFa
-qRk
+rFa
+yjt
 yjt
 hdz
 unn

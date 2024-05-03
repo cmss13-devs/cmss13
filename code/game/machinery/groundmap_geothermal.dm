@@ -201,88 +201,6 @@
 /obj/structure/machinery/power/geothermal/ex_act(severity, direction)
 	return FALSE //gameplay-wise these should really never go away
 
-/obj/structure/machinery/colony_electrified_fence_switch
-	name = "Colony electrified fence Switch"
-	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
-	icon_state = "panelnopower"
-	desc = "This switch controls the electrified fences. It only functions when there is power."
-	density = FALSE
-	anchored = TRUE
-	var/ispowered = FALSE
-	var/turned_on = 0 //has to be toggled in SOMEWHERE
-	use_power = USE_POWER_IDLE
-	unslashable = TRUE
-	unacidable = TRUE
-	var/list/fencelist = list() // This will save our list of electrified fences on the map
-	power_machine = TRUE
-
-/obj/structure/machinery/colony_electrified_fence_switch/Initialize(mapload, ...)
-	. = ..()
-	return INITIALIZE_HINT_LATELOAD
-
-/obj/structure/machinery/colony_electrified_fence_switch/LateInitialize()
-	. = ..()
-	for(var/obj/structure/fence/electrified/fence in  GLOB.all_fences)
-		fencelist += fence
-		fence.fswitch = src
-	start_processing()
-
-/obj/structure/machinery/colony_electrified_fence_switch/Destroy()
-	for(var/obj/structure/fence/electrified/fence as anything in fencelist)
-		fence.fswitch = null
-	fencelist = null
-	return ..()
-
-/obj/structure/machinery/colony_electrified_fence_switch/update_icon()
-	if(!ispowered)
-		icon_state = "panelnopower"
-	else if(turned_on)
-		icon_state = "panelon"
-	else
-		icon_state = "paneloff"
-
-/obj/structure/machinery/colony_electrified_fence_switch/process()
-	var/lightpower = 0
-//	for(var/obj/structure/machinery/colony_floodlight/floodlight as anything in floodlist)
-//		if(!floodlight.is_lit)
-//			continue
-//		lightpower += floodlight.power_tick
-	use_power(lightpower)
-
-/obj/structure/machinery/colony_electrified_fence_switch/power_change()
-	..()
-	if((stat & NOPOWER))
-		if(ispowered && turned_on)
-			toggle_lights()
-		ispowered = FALSE
-		turned_on = FALSE
-		update_icon()
-	else
-		ispowered = TRUE
-		update_icon()
-
-/obj/structure/machinery/colony_electrified_fence_switch/proc/toggle_lights()
-	for(var/obj/structure/fence/electrified/fence as anything in fencelist)
-		fence.toggle_power()
-
-/obj/structure/machinery/colony_electrified_fence_switch/attack_hand(mob/user as mob)
-	if(!ishuman(user))
-		to_chat(user, "Nice try.")
-		return FALSE
-	if(!ispowered)
-		to_chat(user, "Nothing happens.")
-		return FALSE
-	playsound(src,'sound/items/Deconstruct.ogg', 30, 1)
-	use_power(5)
-	toggle_lights()
-	turned_on = !turned_on
-	update_icon()
-	return TRUE
-
-
-
-
-
 //Putting these here since it's power-related
 /obj/structure/machinery/colony_floodlight_switch
 	name = "Colony Floodlight Switch"
@@ -543,9 +461,92 @@
 		else if(!is_lit)
 			. += SPAN_INFO("It doesn't seem powered.")
 
+
+// Hybrisa Electrical Stuff
+/obj/structure/machinery/colony_electrified_fence_switch
+	name = "Colony Electrified Fence Switch"
+	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
+	icon_state = "panelnopower"
+	desc = "This switch controls the electrified fences. It only functions when there is power."
+	density = FALSE
+	anchored = TRUE
+	var/ispowered = FALSE
+	var/turned_on = 0 //has to be toggled in SOMEWHERE
+	use_power = USE_POWER_IDLE
+	unslashable = TRUE
+	unacidable = TRUE
+	var/list/fencelist = list() // This will save our list of electrified fences on the map
+	power_machine = TRUE
+
+/obj/structure/machinery/colony_electrified_fence_switch/Initialize(mapload, ...)
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/structure/machinery/colony_electrified_fence_switch/LateInitialize()
+	. = ..()
+	for(var/obj/structure/fence/electrified/fence in  GLOB.all_fences)
+		fencelist += fence
+		fence.fswitch = src
+	start_processing()
+
+/obj/structure/machinery/colony_electrified_fence_switch/Destroy()
+	for(var/obj/structure/fence/electrified/fence as anything in fencelist)
+		fence.fswitch = null
+	fencelist = null
+	return ..()
+
+/obj/structure/machinery/colony_electrified_fence_switch/update_icon()
+	if(!ispowered)
+		icon_state = "panelnopower"
+	else if(turned_on)
+		icon_state = "panelon"
+	else
+		icon_state = "paneloff"
+
+/obj/structure/machinery/colony_electrified_fence_switch/process()
+	var/lightpower = 0
+//	for(var/obj/structure/machinery/colony_floodlight/floodlight as anything in floodlist)
+//		if(!floodlight.is_lit)
+//			continue
+//		lightpower += floodlight.power_tick
+	use_power(lightpower)
+
+/obj/structure/machinery/colony_electrified_fence_switch/power_change()
+	..()
+	if((stat & NOPOWER))
+		if(ispowered && turned_on)
+			toggle_lights()
+		ispowered = FALSE
+		turned_on = FALSE
+		update_icon()
+	else
+		ispowered = TRUE
+		update_icon()
+
+/obj/structure/machinery/colony_electrified_fence_switch/proc/toggle_lights()
+	for(var/obj/structure/fence/electrified/fence as anything in fencelist)
+		fence.toggle_power()
+
+/obj/structure/machinery/colony_electrified_fence_switch/attack_hand(mob/user as mob)
+	if(!ishuman(user))
+		to_chat(user, "Nice try.")
+		return FALSE
+	if(!ispowered)
+		to_chat(user, "Nothing happens.")
+		return FALSE
+	playsound(src,'sound/items/Deconstruct.ogg', 30, 1)
+	use_power(5)
+	toggle_lights()
+	turned_on = !turned_on
+	update_icon()
+	return TRUE
+
+// Hybrisa Streetlights
 /obj/structure/machinery/colony_floodlight/street
 	name = "Colony Streetlight"
+	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi'
 	icon_state = "street_off"
+	layer = ABOVE_XENO_LAYER
 
 /obj/structure/machinery/colony_floodlight/street/update_icon()
 	if(damaged)
@@ -554,6 +555,57 @@
 		icon_state = "street_on"
 	else
 		icon_state = "street_off"
+
+#undef FLOODLIGHT_REPAIR_UNSCREW
+#undef FLOODLIGHT_REPAIR_CROWBAR
+#undef FLOODLIGHT_REPAIR_WELD
+#undef FLOODLIGHT_REPAIR_CABLE
+#undef FLOODLIGHT_REPAIR_SCREW
+
+// Traffic
+
+/obj/structure/machinery/colony_floodlight/traffic
+	name = "traffic light"
+	desc = "A traffic light"
+	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi'
+	icon_state = "trafficlight"
+	bound_width = 32
+	bound_height = 32
+	density = TRUE
+	health = 200
+	layer = ABOVE_XENO_LAYER
+
+/obj/structure/machinery/colony_floodlight/traffic/update_icon()
+	if(damaged)
+		icon_state = "trafficlight"
+	else if(is_lit)
+		icon_state = "trafficlight_on"
+	else
+		icon_state = "trafficlight"
+
+#undef FLOODLIGHT_REPAIR_UNSCREW
+#undef FLOODLIGHT_REPAIR_CROWBAR
+#undef FLOODLIGHT_REPAIR_WELD
+#undef FLOODLIGHT_REPAIR_CABLE
+#undef FLOODLIGHT_REPAIR_SCREW
+/obj/structure/machinery/colony_floodlight/traffic_alt
+	name = "traffic light"
+	desc = "A traffic light"
+	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi'
+	icon_state = "trafficlight_alt"
+	bound_width = 32
+	bound_height = 32
+	density = TRUE
+	health = 200
+	layer = ABOVE_XENO_LAYER
+
+/obj/structure/machinery/colony_floodlight/traffic_alt/update_icon()
+	if(damaged)
+		icon_state = "trafficlight_alt"
+	else if(is_lit)
+		icon_state = "trafficlight_alt_on"
+	else
+		icon_state = "trafficlight_alt"
 
 #undef FLOODLIGHT_REPAIR_UNSCREW
 #undef FLOODLIGHT_REPAIR_CROWBAR

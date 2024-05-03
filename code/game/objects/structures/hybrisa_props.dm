@@ -1836,11 +1836,11 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 	indestructible = TRUE
 
 /obj/structure/prop/hybrisa/misc/detonator
-	name = "inactive detonator"
+	name = "detonator"
 	desc = "A detonator for explosives, armed and ready."
 	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
 	icon_state = "detonator"
-	density = TRUE
+	density = FALSE
 	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
@@ -1849,7 +1849,7 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 	var/range = 15
 
 /obj/structure/prop/hybrisa/misc/detonator/attack_hand(mob/user)
-	for(var/obj/item/explosive/plastic/hybrasia/mining/explosive in range(range))
+	for(var/obj/item/explosive/plastic/hybrisa/mining/explosive in range(range))
 		if(explosive.id == id)
 			var/turf/target_turf
 			target_turf = get_turf(explosive.loc)

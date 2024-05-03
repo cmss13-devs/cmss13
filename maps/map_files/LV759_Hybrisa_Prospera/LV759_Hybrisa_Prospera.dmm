@@ -34207,6 +34207,13 @@
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/caves/north_east_caves)
+"fLz" = (
+/obj/structure/barricade/handrail/hybrisa/handrail,
+/obj/structure/machinery/colony_floodlight/traffic,
+/turf/open/floor/prison{
+	icon_state = "cell_stripe"
+	},
+/area/lv759/indoors/electical_systems/substation1)
 "fLX" = (
 /obj/structure/prop/hybrisa/Factory/Robotic_arm{
 	layer = 4;
@@ -42541,6 +42548,7 @@
 	dir = 8
 	},
 /obj/structure/platform_decoration,
+/obj/structure/machinery/colony_floodlight/traffic,
 /turf/open/floor/plating,
 /area/lv759/indoors/power_plant/power_storage)
 "hdV" = (
@@ -91405,6 +91413,19 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/prison,
 /area/lv759/outdoors/colony_streets/south_west_street)
+"phW" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/obj/structure/machinery/colony_floodlight/traffic_alt,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "plating"
+	},
+/area/lv759/indoors/power_plant/power_storage)
 "phY" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/road/road_stop{
@@ -108622,6 +108643,14 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/tcomms_northwest)
+"rXu" = (
+/obj/structure/barricade/handrail/hybrisa/handrail,
+/obj/effect/hybrisa/decal/dirt,
+/obj/structure/machinery/colony_floodlight/traffic_alt,
+/turf/open/floor/prison{
+	icon_state = "cell_stripe"
+	},
+/area/lv759/indoors/electical_systems/substation1)
 "rXv" = (
 /obj/structure/largecrate/random/mini/med{
 	layer = 3.01;
@@ -148999,7 +149028,7 @@ unn
 hcI
 hcI
 hbz
-hvQ
+fLz
 dYo
 noi
 nuN
@@ -149251,7 +149280,7 @@ unn
 hcI
 iKK
 nQl
-ffh
+rXu
 dYo
 tKj
 tKj
@@ -184264,7 +184293,7 @@ lxb
 uHj
 hlv
 tEM
-ajB
+phW
 ajB
 ajB
 ajB

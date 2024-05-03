@@ -1,6 +1,6 @@
 /datum/xeno_strain/watcher
 	name = FACEHUGGER_WATCHER
-	description = "You lose your ability to hide in exchange to see further and the ability to no longer take damage outside of weeds. This enables you to stalk your host from a distance and wait for the perfect oppertunity to strike."
+	description = "You lose your ability to hide in exchange to see further. This enables you to stalk your host from a distance and wait for the perfect oppertunity to strike."
 	flavor_description = "No need to hide when you can see the danger."
 
 	actions_to_remove = list(
@@ -19,3 +19,7 @@
 // This has no special effects, it's just here to skip `/datum/behavior_delegate/facehugger_base/on_life()`.
 /datum/behavior_delegate/facehugger_watcher
 	name = "Watcher Facehugger Behavior Delegate"
+
+/datum/behavior_delegate/facehugger_watcher/on_life()
+	if(bound_xeno.body_position == STANDING_UP && !(locate(/obj/effect/alien/weeds) in get_turf(bound_xeno)))
+		bound_xeno.adjustBruteLoss(1)

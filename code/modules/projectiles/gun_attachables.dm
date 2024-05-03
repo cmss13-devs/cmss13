@@ -1761,8 +1761,6 @@ Defined in conflicts.dm of the #defines folder.
 	//but at the same time you are slow when 2 handed
 	aim_speed_mod = CONFIG_GET(number/slowdown_med)
 
-	matter = null
-
 	select_gamemode_skin(type)
 
 /obj/item/attachable/stock/double

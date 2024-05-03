@@ -504,18 +504,13 @@
 		icon_state = "paneloff"
 
 /obj/structure/machinery/colony_electrified_fence_switch/process()
-	var/lightpower = 0
-//	for(var/obj/structure/machinery/colony_floodlight/floodlight as anything in floodlist)
-//		if(!floodlight.is_lit)
-//			continue
-//		lightpower += floodlight.power_tick
-	use_power(lightpower)
+	return
 
 /obj/structure/machinery/colony_electrified_fence_switch/power_change()
 	..()
 	if((stat & NOPOWER))
 		if(ispowered && turned_on)
-			toggle_lights()
+			toggle_fences()
 		ispowered = FALSE
 		turned_on = FALSE
 		update_icon()
@@ -523,7 +518,7 @@
 		ispowered = TRUE
 		update_icon()
 
-/obj/structure/machinery/colony_electrified_fence_switch/proc/toggle_lights()
+/obj/structure/machinery/colony_electrified_fence_switch/proc/toggle_fences()
 	for(var/obj/structure/fence/electrified/fence as anything in fencelist)
 		fence.toggle_power()
 
@@ -536,7 +531,7 @@
 		return FALSE
 	playsound(src,'sound/items/Deconstruct.ogg', 30, 1)
 	use_power(5)
-	toggle_lights()
+	toggle_fences()
 	turned_on = !turned_on
 	update_icon()
 	return TRUE
@@ -565,6 +560,7 @@
 // Traffic
 
 /obj/structure/machinery/colony_floodlight/traffic
+	lum_value = 0
 	name = "traffic light"
 	desc = "A traffic light"
 	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi'
@@ -589,6 +585,7 @@
 #undef FLOODLIGHT_REPAIR_CABLE
 #undef FLOODLIGHT_REPAIR_SCREW
 /obj/structure/machinery/colony_floodlight/traffic_alt
+	lum_value = 0
 	name = "traffic light"
 	desc = "A traffic light"
 	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi'

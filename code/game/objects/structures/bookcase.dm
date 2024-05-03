@@ -16,7 +16,7 @@
 		if(unslashable)
 			return
 		xeno.animation_attack_on(src)
-		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
+		playsound(src.loc, 'sound/effects/metalhit.ogg', 25, 1)
 		xeno.visible_message(SPAN_DANGER("[xeno] slices [src] apart!"),
 		SPAN_DANGER("We slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		deconstruct(FALSE)
@@ -38,7 +38,7 @@
 		O.forceMove(src)
 		update_icon()
 	else if(HAS_TRAIT(O, TRAIT_TOOL_PEN))
-		var/newname = stripped_input(usr, "What would you like to title this bookshelf?")
+		var/newname = stripped_input(user, "What would you like to title this bookshelf?")
 		if(!newname)
 			return
 		else
@@ -47,7 +47,8 @@
 	else if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 		if(do_after(user, 1 SECONDS, INTERRUPT_MOVED, BUSY_ICON_FRIENDLY, src))
-			deconstruct(TRUE)
+			visible_message(SPAN_DANGER("[user] deconstructs the bookcase!"))
+			deconstruct(FALSE)
 	else
 		..()
 
@@ -55,7 +56,7 @@
 	if(contents.len)
 		var/obj/item/book/choice = input("Which book would you like to remove from the shelf?") as null|obj in contents
 		if(choice)
-			if(usr.is_mob_incapacitated() || !in_range(loc, usr))
+			if(user.is_mob_incapacitated() || !in_range(loc, user))
 				return
 			if(ishuman(user))
 				if(!user.get_active_hand())
@@ -89,7 +90,7 @@
 
 
 /obj/structure/bookcase/manuals/medical
-	name = "Medical Manuals bookcase"
+	name = "medical manuals bookcase"
 
 /obj/structure/bookcase/manuals/medical/Initialize()
 	. = ..()
@@ -100,7 +101,7 @@
 
 
 /obj/structure/bookcase/manuals/engineering
-	name = "Engineering Manuals bookcase"
+	name = "engineering manuals bookcase"
 
 /obj/structure/bookcase/manuals/engineering/Initialize()
 	. = ..()
@@ -112,7 +113,7 @@
 	update_icon()
 
 /obj/structure/bookcase/manuals/research_and_development
-	name = "R&D Manuals bookcase"
+	name = "R&D manuals bookcase"
 
 /obj/structure/bookcase/manuals/research_and_development/Initialize()
 	. = ..()

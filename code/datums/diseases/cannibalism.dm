@@ -17,7 +17,7 @@
 	cure_chance = 100
 	severity = "Medium"
 	agent = "Prions"
-	hidden = FALSE
+	hidden = list(1,0)
 	permeability_mod = 2
 	desc = "If left untreated the patient will fall into permanent insanity"
 	survive_mob_death = FALSE

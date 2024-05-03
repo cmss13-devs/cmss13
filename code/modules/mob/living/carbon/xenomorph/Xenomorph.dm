@@ -251,7 +251,8 @@
 	var/life_slow_reduction = -1.5
 	//Research organ harvesting.
 	var/organ_removed = FALSE
-	var/organ_value = 0 // value of organ in each caste, e.g. 10k is autodoc larva removal. runner is 500
+	/// value of organ in each caste, e.g. 10k is autodoc larva removal. runner is 500
+	var/organ_value = 0 
 
 
 	//////////////////////////////////////////////////////////////////
@@ -354,7 +355,7 @@
 		var/obj/item/organ/xeno/organ = new() //give
 		organ.forceMove(src)
 		organ.research_value = organ_value
-		organ.caste_origin = src.caste_type
+		organ.caste_origin = caste_type
 		if(!isqueen(src) && !ispredalien(src))
 			organ.icon_state = "heart_t[src.tier]"
 		else

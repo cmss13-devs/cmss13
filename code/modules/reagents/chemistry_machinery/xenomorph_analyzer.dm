@@ -8,11 +8,11 @@
 	use_power = USE_POWER_NONE
 	wrenchable = FALSE
 	idle_power_usage = 40
+	bound_x = 32
 	var/biomass_points = 0 //most important thing in this
 	var/obj/item/organ/xeno/organ = null
 	var/busy = FALSE
 	var/caste_of_organ = null
-	bound_x = 32
 
 /obj/structure/machinery/xenoanalyzer/attack_hand(mob/user as mob)
 	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
@@ -26,22 +26,22 @@
 		ui = new(user, src, "XenomorphExtractor", name)
 		ui.open()
 
-/obj/structure/machinery/xenoanalyzer/attackby(obj/item/W, mob/user)
+/obj/structure/machinery/xenoanalyzer/attackby(obj/item/attacked_item, mob/user)
 	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
 		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
 		return
-	if(istype(W, /obj/item/organ/xeno))
+	if(istype(attacked_item, /obj/item/organ/xeno))
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			to_chat(user, SPAN_WARNING("You were interupted!"))
 			return
-		if(!user.drop_inv_item_to_loc(W, src))
+		if(!user.drop_inv_item_to_loc(attacked_item, src))
 			return
 		to_chat(user, SPAN_NOTICE("You place the organ in the machine"))
-		organ = W
+		organ = attacked_item
 		icon_state = "xeno_analyzer_organ_on"
 		caste_of_organ = organ.caste_origin
-	if(istype(W, /obj/item/clothing/accessory/health/research_plate))
-		var/obj/item/clothing/accessory/health/research_plate/plate = W
+	if(istype(attacked_item, /obj/item/clothing/accessory/health/research_plate))
+		var/obj/item/clothing/accessory/health/research_plate/plate = attacked_item
 		if(plate.recyclable_value == 0 && !plate.can_recycle(user))
 			to_chat(user, SPAN_WARNING("You cannot recycle this type of plate"))
 			return
@@ -50,7 +50,7 @@
 			return
 		to_chat(user, SPAN_NOTICE("You recycle the plate"))
 		biomass_points += plate.recyclable_value
-		qdel(W)
+		qdel(attacked_item)
 
 /obj/structure/machinery/xenoanalyzer/ui_data(mob/user)
 	var/list/data = list()
@@ -101,7 +101,7 @@
 		if("process_organ")
 			addtimer(CALLBACK(src, PROC_REF(process_organ)), 5 SECONDS)
 			icon_state = "xeno_analyzer_on_moving"
-			playsound(src.loc, 'sound/machines/blender.ogg', 25, TRUE)
+			playsound(loc, 'sound/machines/blender.ogg', 25, TRUE)
 			. = TRUE
 		if("produce")
 			var/cost = text2num(params["cost"])
@@ -132,24 +132,15 @@
 	if(clearance_requirment > GLOB.chemical_data.clearance_level || clearance_requirment == 6 && !GLOB.chemical_data.reached_x_access)
 		to_chat(user, SPAN_WARNING("[src] makes a annoying hum and flashes red, You dont have the legal access to the upgrade!"))
 		return
-	else
-		icon_state = "xeno_analyzer_printing"
-		busy = TRUE
-		biomass_points -= cost
-		addtimer(CALLBACK(src, PROC_REF(print_upgrade), produce_path, variation), 5 SECONDS)
+
+	icon_state = "xeno_analyzer_printing"
+	busy = TRUE
+	biomass_points -= cost
+	addtimer(CALLBACK(src, PROC_REF(print_upgrade), produce_path, variation), 5 SECONDS)
 
 /obj/structure/machinery/xenoanalyzer/proc/print_upgrade(produce_path, variation)
 	busy = FALSE
 	icon_state = "xeno_analyzer_off"
 	var/obj/item/research_upgrades/upgrade = new produce_path(get_turf(src))
 	upgrade.value = variation
-
-
-
-
-
-
-
-
-
 

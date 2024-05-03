@@ -189,8 +189,8 @@
 		qdel(src)
 
 /obj/item/clothing/accessory/health/research_plate
-	name = "Experimental Uniform Attachment"
-	desc = "Attachment to the uniform which gives X(this shouldnt be in your handdssss)"
+	name = "experimental uniform attachment"
+	desc = "Attachment to the uniform which gives X (this shouldn't be in your handdssss)"
 	is_armor = FALSE
 	icon_state = "plate_research"
 	var/obj/item/clothing/attached_uni
@@ -201,9 +201,9 @@
 	attached_uni = null
 	. = ..()
 
-/obj/item/clothing/accessory/health/research_plate/on_attached(obj/item/clothing/S, mob/living/carbon/human/user)
+/obj/item/clothing/accessory/health/research_plate/on_attached(obj/item/clothing/attached_to, mob/living/carbon/human/user)
 	. = ..()
-	attached_uni = S
+	attached_uni = attached_to
 
 /obj/item/clothing/accessory/health/research_plate/proc/can_recycle(mob/living/user) //override this proc for check if you can recycle the plate.
 	return FALSE
@@ -225,18 +225,18 @@
 	return TRUE
 
 /obj/item/clothing/accessory/health/research_plate/translator
-	name = "Exprimental Language Translator"
+	name = "experimental language translator"
 	desc = "Translates any language heard by the microphones on the plate without any linguistical input, allowing to translate languages never heard before and known languages alike."
 
 /obj/item/clothing/accessory/health/research_plate/translator/on_attached(obj/item/clothing/S, mob/living/carbon/human/user)
 	. = ..()
-	to_chat(user, SPAN_NOTICE("Translator Buzzes as it begins to listen for input"))
+	to_chat(user, SPAN_NOTICE("[src] buzzes as it begins to listen for input."))
 	user.universal_understand = TRUE
 
 /obj/item/clothing/accessory/health/research_plate/translator/on_removed(mob/living/user, obj/item/clothing/C)
 	. = ..()
 	if(user.universal_understand)
-		to_chat(user, SPAN_NOTICE("Translator makes a sad woop sound as its powering down."))
+		to_chat(user, SPAN_NOTICE("[src] makes a sad woop sound as it powers down."))
 		user.universal_understand = FALSE
 		attached_uni = null
 
@@ -245,45 +245,46 @@
 	if(. == FALSE)
 		return
 	if(user.universal_understand)
-		to_chat(user, SPAN_NOTICE("Plate makes a woop sound as it is powered down."))
+		to_chat(user, SPAN_NOTICE("[src] makes a woop sound as it is powered down."))
 		user.universal_understand = FALSE
 		attached_uni = null
 
 /obj/item/clothing/accessory/health/research_plate/coagulator
-	name = "Experimental Blood Coagulator"
-	desc = "Stops bleedings by coordinated effort of multiple sensors and radioation emmiters. FDA requires us to disclose the dangers and potential results of continuious exposure to radiation"
+	name = "experimental blood coagulator"
+	desc = "A device that encourages clotting through the coordinated effort of multiple sensors and radiation emitters. The Surgeon General warns that continuous exposure to radiation may be hazardous to your health."
 
 /obj/item/clothing/accessory/health/research_plate/coagulator/on_attached(obj/item/clothing/S, mob/living/carbon/human/user)
 	. = ..()
 	if (user.chem_effect_flags & CHEM_EFFECT_NO_BLEEDING)
 		return
 	user.chem_effect_flags |= CHEM_EFFECT_NO_BLEEDING
-	to_chat(user, SPAN_NOTICE("You feel tickling as you activate the coagulator"))
+	to_chat(user, SPAN_NOTICE("You feel tickling as you activate [src]."))
 
 /obj/item/clothing/accessory/health/research_plate/coagulator/on_removed(mob/living/carbon/human/user, obj/item/clothing/C)
 	. = ..()
 	if (user.chem_effect_flags & CHEM_EFFECT_NO_BLEEDING)
 		user.chem_effect_flags &= CHEM_EFFECT_NO_BLEEDING
-		to_chat(user, SPAN_NOTICE("You feel coagulator peeling off from your skin."))
+		to_chat(user, SPAN_NOTICE("You feel [src] peeling off from your skin."))
 		attached_uni = null
 
 /obj/item/clothing/accessory/health/research_plate/coagulator/on_removed_sig(mob/living/carbon/human/user, slot)
 	. = ..()
 	if(. == FALSE)
 		return
-	if(user.chem_effect_flags & CHEM_EFFECT_NO_BLEEDING )
+	if(user.chem_effect_flags & CHEM_EFFECT_NO_BLEEDING)
 		to_chat(user, SPAN_NOTICE("You feel coagulator peeling off from your skin."))
 		user.chem_effect_flags &= CHEM_EFFECT_NO_BLEEDING
 		attached_uni = null
 
 /obj/item/clothing/accessory/health/research_plate/emergency_injector
-	name = "Emergency Chemical Plate"
-	desc = "One-time disposable research plate packing all kinds of chemicals injected at user will by pressing two buttons on the sides simultaniously. The injection is painless, instant and packs much more chemicals than your normal emergency injector. Features OD Protection in three modes."
+	name = "emergency chemical plate"
+	desc = "One-time disposable research plate packing all kinds of chemicals injected at the will of the user by pressing two buttons on the sides simultaneously. The injection is painless, instant and packs much more chemicals than your normal emergency injector. Features OD Protection in three modes."
 	var/od_protection_mode = EMERGENCY_PLATE_OD_PROTECTION_STRICT
 	var/datum/action/item_action/activation
 	var/mob/living/wearer
 	var/used = FALSE
-	var/warning_type = FALSE // 1 means the player overdosed with OD_OFF mode. 2 means the plate adjusted the chemicals injected.
+	/// 1 means the player overdosed with OD_OFF mode. 2 means the plate adjusted the chemicals injected.
+	var/warning_type = FALSE 
 	var/list/chemicals_to_inject = list(
 		"oxycodone" = 20,
 		"bicaridine" = 30,
@@ -311,7 +312,7 @@
 /obj/item/clothing/accessory/health/research_plate/emergency_injector/clicked(mob/user, list/mods)
 	. = ..()
 	if(mods["alt"])
-		var/text = "You toogle overdose protection "
+		var/text = "You toggle overdose protection "
 		if(od_protection_mode == EMERGENCY_PLATE_OD_PROTECTION_DYNAMIC)
 			od_protection_mode = EMERGENCY_PLATE_OD_PROTECTION_OFF
 			text += "to OVERRIDE. Overdose protection is now offline."
@@ -338,14 +339,14 @@
 
 /obj/item/clothing/accessory/health/research_plate/emergency_injector/on_removed(mob/living/user, obj/item/clothing/C)
 	. = ..()
-	qdel(activation)
+	QDEL_NULL(activation)
 	attached_uni = null
 
 /obj/item/clothing/accessory/health/research_plate/emergency_injector/on_removed_sig(mob/living/carbon/human/user, slot)
 	. = ..()
 	if(. == FALSE)
 		return
-	qdel(activation)
+	QDEL_NULL(activation)
 	attached_uni = null
 
 //Action buttons
@@ -359,7 +360,7 @@
 
 /obj/item/clothing/accessory/health/research_plate/emergency_injector/ui_action_click(mob/owner, obj/item/holder)
 	if(used)
-		to_chat(wearer, SPAN_DANGER("The plate inner reserve is empty, replace the plate!"))
+		to_chat(wearer, SPAN_DANGER("[src]'s inner reserve is empty, replace the plate!"))
 		return
 	for(var/chemical in chemicals_to_inject)
 		var/datum/reagent/reag = GLOB.chemical_reagents_list[chemical]
@@ -367,7 +368,7 @@
 			if(od_protection_mode == EMERGENCY_PLATE_OD_PROTECTION_STRICT)
 				to_chat(wearer, SPAN_DANGER("You hold the two buttons, but the plate buzzes and refuses to inject, indicating the potential overdose!"))
 				return
-			else if (od_protection_mode == EMERGENCY_PLATE_OD_PROTECTION_DYNAMIC)
+			if (od_protection_mode == EMERGENCY_PLATE_OD_PROTECTION_DYNAMIC)
 				var/adjust_volume_to_inject = reag.overdose - wearer.reagents.get_reagent_amount(chemical)
 				chemicals_to_inject[chemical] = adjust_volume_to_inject
 				warning_type = 2
@@ -377,6 +378,6 @@
 	if(warning_type == 1)
 		to_chat(wearer, SPAN_DANGER("You hold the two buttons, and the plate injects the chemicals, but makes a worrying beep, indicating overdose!"))
 	if(warning_type == 2)
-		to_chat(wearer, SPAN_DANGER("You hold the two buttons, and the plate injects the chemicals, but makes a reliefing beep, indicating it adjusted amounts it injected to prevent overdose!"))
-	playsound(src.loc, "sound/items/air_release.ogg", 100, TRUE)
+		to_chat(wearer, SPAN_DANGER("You hold the two buttons, and the plate injects the chemicals, but makes a relieving beep, indicating it adjusted amounts it injected to prevent overdose!"))
+	playsound(loc, "sound/items/air_release.ogg", 100, TRUE)
 	used = TRUE

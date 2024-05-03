@@ -1,5 +1,4 @@
-
-//Research stuff to extract stuff from xenomorphs for goodies. In other words, to extract usefull material that could be used to upgrade marines and etc.
+//Research stuff to extract stuff from xenomorphs for goodies. In other words, to extract useful material that could be used to upgrade marines etc.
 
 /datum/surgery/xenomorph
 	name = "Experimental Harvesting Surgery"
@@ -31,14 +30,14 @@
 /datum/surgery_step/xenomorph/cut_exoskeleton
 	name = "Cut Exoskeleton Carapace"
 	desc = "cut the carapace open"
-	tools = list(\
-	/obj/item/tool/surgery/scalpel/laser/advanced = 1.5,\
-	/obj/item/tool/surgery/circular_saw = SURGERY_TOOL_MULT_IDEAL,\
-	/obj/item/weapon/twohanded/fireaxe = SURGERY_TOOL_MULT_SUBOPTIMAL,\
-	/obj/item/weapon/sword/machete = SURGERY_TOOL_MULT_SUBOPTIMAL,\
-	/obj/item/tool/hatchet = SURGERY_TOOL_MULT_SUBSTITUTE,\
-	/obj/item/tool/kitchen/knife/butcher = SURGERY_TOOL_MULT_SUBSTITUTE,\
-	/obj/item/attachable/bayonet = SURGERY_TOOL_MULT_BAD_SUBSTITUTE\
+	tools = list(
+		/obj/item/tool/surgery/scalpel/laser/advanced = 1.5,
+		/obj/item/tool/surgery/circular_saw = SURGERY_TOOL_MULT_IDEAL,
+		/obj/item/weapon/twohanded/fireaxe = SURGERY_TOOL_MULT_SUBOPTIMAL,
+		/obj/item/weapon/sword/machete = SURGERY_TOOL_MULT_SUBOPTIMAL,
+		/obj/item/tool/hatchet = SURGERY_TOOL_MULT_SUBSTITUTE,
+		/obj/item/tool/kitchen/knife/butcher = SURGERY_TOOL_MULT_SUBSTITUTE,
+		/obj/item/attachable/bayonet = SURGERY_TOOL_MULT_BAD_SUBSTITUTE
 	)
 
 	time = 4 SECONDS

@@ -113,7 +113,7 @@
 	update_icon()
 
 /obj/structure/bookcase/manuals/research_and_development
-	name = "R&D manuals bookcase"
+	name = "\improper R&D manuals bookcase"
 
 /obj/structure/bookcase/manuals/research_and_development/Initialize()
 	. = ..()

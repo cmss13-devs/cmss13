@@ -9,8 +9,8 @@
 /datum/disease/prion
 	name = "Human Prion Disease"
 	max_stages = 3
-	cure = "Ultrazine"
-	cure_id = "ultrazine" // Give the cl some good rp.
+	cure = "Lithium"
+	cure_id = "lithium"
 	spread = "Human Meat Consumption"
 	spread_type = NON_CONTAGIOUS
 	affected_species = list("Human")

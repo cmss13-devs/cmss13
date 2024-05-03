@@ -229,8 +229,9 @@
 //************************************/
 
 /obj/structure/machinery/microwave/proc/cook(time_multiplier = 1)
-	if(inoperable())
+	if(inoperable() || operating)
 		return
+
 	start()
 	if (reagents.total_volume==0 && !(locate(/obj) in contents)) //dry run
 		if (!wzhzhzh(10 * time_multiplier))

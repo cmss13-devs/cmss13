@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed weeded corpses staying weeded if they were transported by shuttle"

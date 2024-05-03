@@ -1,0 +1,4 @@
+author: "Git-Nivrak"
+delete-after: True
+changes:
+  - bugfix: "Synths no longer get affected by boiler's neurotoxin"

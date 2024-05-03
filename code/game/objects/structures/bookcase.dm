@@ -8,9 +8,8 @@
 	opacity = TRUE
 
 /obj/structure/bookcase/deconstruct(disassembled)
-	var/metal = /obj/item/stack/sheet/metal
-	new metal(src.loc)
-	. = ..()
+	new /obj/item/stack/sheet/metal(loc)
+	return ..()
 
 /obj/structure/bookcase/attack_alien(mob/living/carbon/xenomorph/xeno)
 	if(xeno.a_intent == INTENT_HARM)

@@ -1694,4 +1694,4 @@
 		if(item == get_active_hand() || item == get_inactive_hand())
 			item.showoff(src)
 			return TRUE
-	..()
+	return ..()

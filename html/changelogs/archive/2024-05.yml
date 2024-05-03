@@ -37,3 +37,8 @@
   - imageadd: Added directional blast door sprites from Thwomper for blended black
       shutters.
   - code_imp: Renamed operator var in apollo console code to user.
+2024-05-03:
+  InsaneRed:
+  - spellcheck: New flavor text and better strain information
+  realforest2001:
+  - rscadd: Added the name of an announcement sender, if one exists, to ARES logs.

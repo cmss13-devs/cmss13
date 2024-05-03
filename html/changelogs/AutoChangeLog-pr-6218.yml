@@ -1,0 +1,4 @@
+author: "iloveloopers"
+delete-after: True
+changes:
+  - balance: "Kutjevo ledges now take only 0.2 seconds to climb instead of 1 whole second"

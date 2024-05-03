@@ -281,7 +281,7 @@
 	if(isturf(human.loc))
 		forceMove(human.loc)//Just checkin
 
-	if(!human.handle_hugger_attachment(src))
+	if(!human.handle_hugger_attachment(src, hugger))
 		return FALSE
 
 	attached = TRUE
@@ -491,15 +491,14 @@
 /**
  * Human hugger handling
  */
-
-/mob/living/carbon/human/proc/handle_hugger_attachment(obj/item/clothing/mask/facehugger/hugger)
+/mob/living/carbon/human/proc/handle_hugger_attachment(obj/item/clothing/mask/facehugger/hugger, mob/living/carbon/xenomorph/facehugger/mob_hugger)
 	var/can_infect = TRUE
 	if(!has_limb("head"))
 		hugger.visible_message(SPAN_WARNING("[hugger] looks for a face to hug on [src], but finds none!"))
 		hugger.go_idle()
 		return FALSE
 
-	if(species && !species.handle_hugger_attachment(src, hugger))
+	if(species && !species.handle_hugger_attachment(src, hugger, mob_hugger))
 		return FALSE
 
 	if(head && !(head.flags_item & NODROP))
@@ -546,10 +545,10 @@
 
 	return can_infect
 
-/datum/species/proc/handle_hugger_attachment(mob/living/carbon/human/target, obj/item/clothing/mask/facehugger/hugger)
+/datum/species/proc/handle_hugger_attachment(mob/living/carbon/human/target, obj/item/clothing/mask/facehugger/hugger, mob/living/carbon/xenomorph/facehugger/mob_hugger)
 	return TRUE
 
-/datum/species/yautja/handle_hugger_attachment(mob/living/carbon/human/target, obj/item/clothing/mask/facehugger/hugger)
+/datum/species/yautja/handle_hugger_attachment(mob/living/carbon/human/target, obj/item/clothing/mask/facehugger/hugger,  mob/living/carbon/xenomorph/facehugger/mob_hugger)
 	var/catch_chance = 50
 	if(target.dir == GLOB.reverse_dir[hugger.dir])
 		catch_chance += 20
@@ -563,7 +562,10 @@
 
 	if(!target.stat && target.dir != hugger.dir && prob(catch_chance)) //Not facing away
 		target.visible_message(SPAN_NOTICE("[target] snatches [hugger] out of the air and squashes it!"))
-		hugger.die()
+		if(mob_hugger)
+			mob_hugger.death(create_cause_data("squished"))
+		else
+			hugger.die()
 		return FALSE
 
 	return TRUE

@@ -631,6 +631,7 @@
 #include "code\datums\skills\synthetic.dm"
 #include "code\datums\skills\upp.dm"
 #include "code\datums\skills\uscm.dm"
+#include "code\datums\skills\wygoons.dm"
 #include "code\datums\stamina\_stamina.dm"
 #include "code\datums\stamina\none.dm"
 #include "code\datums\statistics\cause_data.dm"

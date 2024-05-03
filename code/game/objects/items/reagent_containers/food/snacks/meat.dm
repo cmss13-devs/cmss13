@@ -43,6 +43,11 @@
 	name = "human meat"
 	desc = "A slab of flesh for cannibals."
 
+/obj/item/reagent_container/food/snacks/meat/human/Initialize()
+	. = ..()
+	if(prob(50))
+		reagents.add_reagent("prion", 10)
+
 /obj/item/reagent_container/food/snacks/meat/monkey
 	//same as plain meat
 

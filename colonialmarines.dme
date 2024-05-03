@@ -427,6 +427,7 @@
 #include "code\datums\diseases\beesease.dm"
 #include "code\datums\diseases\black_goo.dm"
 #include "code\datums\diseases\brainrot.dm"
+#include "code\datums\diseases\cannibalism.dm"
 #include "code\datums\diseases\cold.dm"
 #include "code\datums\diseases\cold9.dm"
 #include "code\datums\diseases\fake_gbs.dm"

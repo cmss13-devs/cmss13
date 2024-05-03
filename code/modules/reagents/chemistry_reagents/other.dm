@@ -1069,3 +1069,17 @@
 	chemclass = CHEM_CLASS_SPECIAL
 	properties = list(PROPERTY_TRANSFORMATIVE = 4, PROPERTY_NUTRITIOUS = 3, PROPERTY_HEMOGENIC = 1)
 	flags = REAGENT_SCANNABLE
+
+/datum/reagent/prion
+	name = "Bad Meat"
+	id = "prion"
+	description = "A reagent containing misfolded proteins, capable of causing human prion disease."
+	reagent_state = LIQUID
+	color = "#222222"
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
+
+/datum/reagent/prion/reaction_mob(mob/infected_mob, method=TOUCH, volume, permeable)
+	if(!ishuman_strict(infected_mob))
+		return
+	var/mob/living/carbon/human/infected_human = infected_mob
+	infected_human.contract_disease(new /datum/disease/prion)

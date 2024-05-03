@@ -16,7 +16,7 @@
 		if(unslashable)
 			return
 		xeno.animation_attack_on(src)
-		playsound(src.loc, 'sound/effects/metalhit.ogg', 25, 1)
+		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
 		xeno.visible_message(SPAN_DANGER("[xeno] slices [src] apart!"),
 		SPAN_DANGER("We slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		deconstruct(FALSE)

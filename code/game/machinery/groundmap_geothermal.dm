@@ -573,7 +573,7 @@
 
 /obj/structure/machinery/colony_floodlight/traffic/update_icon()
 	if(damaged)
-		icon_state = "trafficlight"
+		icon_state = "trafficlight_damaged"
 	else if(is_lit)
 		icon_state = "trafficlight_on"
 	else
@@ -598,7 +598,7 @@
 
 /obj/structure/machinery/colony_floodlight/traffic_alt/update_icon()
 	if(damaged)
-		icon_state = "trafficlight_alt"
+		icon_state = "trafficlight_alt_damaged"
 	else if(is_lit)
 		icon_state = "trafficlight_alt_on"
 	else

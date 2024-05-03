@@ -1,0 +1,4 @@
+author: "iloveloopers"
+delete-after: True
+changes:
+  - qol: "Bookcases can now be wrenched or slashed to be deconstructed"

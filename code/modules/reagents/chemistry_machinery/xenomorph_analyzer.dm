@@ -111,6 +111,7 @@
 /obj/structure/machinery/xenoanalyzer/proc/eject_biomass()
 	if(isnull(organ))
 		return
+	icon_state = "xeno_analyzer_off"
 	organ.forceMove(get_turf(src))
 	organ = null
 

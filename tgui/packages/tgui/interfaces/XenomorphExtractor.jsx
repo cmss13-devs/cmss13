@@ -53,12 +53,13 @@ export const XenomorphExtractor = (_props, context) => {
           </Stack>
         </Section>
         <Section title="Biological Material">
-          {!organ && (
+          {!organ ? (
             <NoticeBox danger>
               Recepticle is empty, analyzing is impossible!
             </NoticeBox>
+          ) : (
+            <NoticeBox notice>Biomass accepted. Ready to analyze.</NoticeBox>
           )}
-          {organ && <NoticeBox>Biomass detected, Ready to process</NoticeBox>}
         </Section>
         <Divider />
         <Section title={<span> Select Technology to print.</span>}>
@@ -117,11 +118,6 @@ export const XenomorphExtractor = (_props, context) => {
             </Flex.Item>
           </Flex>
         </Section>
-        {!!organ && (
-          <Section title="Source Material">
-            <NoticeBox>Biomass detected, Ready to process</NoticeBox>
-          </Section>
-        )}
       </Window.Content>
     </Window>
   );

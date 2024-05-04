@@ -521,18 +521,44 @@
 				overwatch(observed_xeno, TRUE)
 
 		if(ovipositor && !is_mob_incapacitated(TRUE))
-			egg_amount += 0.07 //one egg approximately every 30 seconds
-			if(egg_amount >= 1 && !egg_autoplant)
-				if(isturf(loc))
-					var/turf/T = loc
-					if(T.contents.len <= 25) //so we don't end up with a million object on that turf.
-						egg_amount--
-						new /obj/item/xeno_egg(loc, hivenumber)
+			if(egg_autoplant)
+				egg_amount += 0.0525 // one egg every 45 seconds. Ovi is now planting eggs as well as making them so it's slower.
+			else
+				egg_amount += 0.07 //one egg approximately every 30 seconds
 
-/mob/living/carbon/xenomorph/queen/proc/trigger_autoplant
-	var/list/turf/surroundings = oview(range, src) // Fill a list of stuff in the range so we won't have to spam oview
+			if(egg_amount >= 1)
+				egg_amount--
+				if(egg_autoplant)
+					INVOKE_ASYNC(src, PROC_REF(trigger_autoplant))
+				else if(isturf(loc)) //so we don't end up with a million object on that turf.
+					var/turf/turf = loc
+					if(turf.contents.len <= 25)
+						new /obj/item/xeno_egg(loc, hivenumber)  // plop an egg
+
+/mob/living/carbon/xenomorph/queen/proc/trigger_autoplant()
+	// viable turfs within surroundings we can plant eggs on
+	var/list/turf/suitable_turfs = list()
+	// turfs within range and view
+	var/list/turf/surroundings = oview(egg_planting_range, src)
+
 	for(var/turf/turf in surroundings)
-	var/list/turf/suitable_turfs
+		var/obj/effect/alien/weeds/weeds = locate(/obj/effect/alien/weeds) in turf
+		if(check_alien_construction(turf, silent = TRUE) && weeds)
+			if(weeds.weed_strength >= WEED_LEVEL_HIVE && weeds.linked_hive.hivenumber == hivenumber)
+				suitable_turfs.Add(turf)
+
+	if(suitable_turfs.len == 0)
+		to_chat(src,SPAN_XENONOTICE("There is no more suitable ground to plant eggs! Automatic planting disabled!"))
+		egg_autoplant = FALSE
+		return
+
+	if(!do_after(src, 1 SECONDS, INTERRUPT_INCAPACITATED, BUSY_ICON_BUILD)) // mostly intended as a visual effect
+		return
+
+	var/obj/effect/alien/egg/newegg = new /obj/effect/alien/egg(pick(suitable_turfs), hivenumber)
+	playsound(get_turf(src), 'sound/effects/splat.ogg', 15, 1)
+
+	src.visible_message(SPAN_XENONOTICE("[src]'s ovipositor plants the [newegg]."))
 
 	/**todos
 	 * run check on every tile for suitable tiles
@@ -541,6 +567,7 @@
 	 * set suitable cd
 	 * maybe plant egg every 60s instead of 30
 	 */
+
 /mob/living/carbon/xenomorph/queen/get_status_tab_items()
 	. = ..()
 	var/stored_larvae = GLOB.hive_datum[hivenumber].stored_larva
@@ -854,6 +881,7 @@
 		give_action(src, path)
 
 	add_verb(src, /mob/living/carbon/xenomorph/proc/xeno_tacmap)
+	add_verb(src, /mob/living/carbon/xenomorph/queen/proc/ovi_egg_autoplant)
 
 	ADD_TRAIT(src, TRAIT_ABILITY_NO_PLASMA_TRANSFER, TRAIT_SOURCE_ABILITY("Ovipositor"))
 	ADD_TRAIT(src, TRAIT_ABILITY_OVIPOSITOR, TRAIT_SOURCE_ABILITY("Ovipositor"))
@@ -903,12 +931,13 @@
 	give_combat_abilities()
 
 	remove_verb(src, /mob/living/carbon/xenomorph/proc/xeno_tacmap)
+	remove_verb(src, /mob/living/carbon/xenomorph/queen/proc/ovi_egg_autoplant)
 
 	REMOVE_TRAIT(src, TRAIT_ABILITY_NO_PLASMA_TRANSFER, TRAIT_SOURCE_ABILITY("Ovipositor"))
 	REMOVE_TRAIT(src, TRAIT_ABILITY_OVIPOSITOR, TRAIT_SOURCE_ABILITY("Ovipositor"))
 
 	recalculate_actions()
-
+	egg_autoplant = FALSE
 	egg_amount = 0
 	extra_build_dist = initial(extra_build_dist)
 	egg_planting_range = initial(egg_planting_range)

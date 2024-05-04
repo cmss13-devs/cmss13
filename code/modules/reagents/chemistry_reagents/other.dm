@@ -1076,7 +1076,7 @@
 	description = "A reagent containing misfolded proteins, capable of causing human prion disease."
 	reagent_state = LIQUID
 	color = "#222222"
-	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
+	custom_metabolism = AMOUNT_PER_TIME(1, 2 SECONDS)
 
 /datum/reagent/prion/reaction_mob(mob/infected_mob, method=TOUCH, volume, permeable)
 	if(!ishuman_strict(infected_mob))

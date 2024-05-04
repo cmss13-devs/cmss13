@@ -1,0 +1,4 @@
+author: "BasilHerb"
+delete-after: True
+changes:
+  - rscadd: "Type 80 bayonet to the mouths of the following mobs: CLF Soldier, CLF Specialist, CLF Medic, CLF Engineer, CLF Leader."

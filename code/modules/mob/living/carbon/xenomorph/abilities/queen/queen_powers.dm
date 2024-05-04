@@ -853,3 +853,17 @@
 	set category = "Alien"
 	hive.tacmap.tgui_interact(src)
 
+/mob/living/carbon/xenomorph/queen/proc/ovi_egg_autoplant()
+	set name = "Toggle Egg Autoplanting"
+	set desc = "Toggle if eggs automatically plant within a 5 tile radius"
+	set category = "Alien"
+
+	var/mob/living/carbon/xenomorph/queen/queen = owner
+
+	if(!queen.check_state())
+		return FALSE
+	if(ovipositor) // check if we are ovi, then toggle
+		if(egg_autoplant)
+			egg_autoplant = FALSE
+		else
+			egg_autoplant = TRUE

@@ -49,6 +49,7 @@
 
 	royal_caste = TRUE
 
+
 /proc/update_living_queens() // needed to update when you change a queen to a different hive
 	outer_loop:
 		var/datum/hive_status/hive
@@ -277,6 +278,9 @@
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Queen_1","Queen_2","Queen_3")
 	weed_food_states_flipped = list("Queen_1","Queen_2","Queen_3")
+
+	// Whether eggs automatically plant
+	var/egg_autoplant = FALSE
 
 	var/breathing_counter = 0
 	var/ovipositor = FALSE //whether the Queen is attached to an ovipositor
@@ -518,13 +522,25 @@
 
 		if(ovipositor && !is_mob_incapacitated(TRUE))
 			egg_amount += 0.07 //one egg approximately every 30 seconds
-			if(egg_amount >= 1)
+			if(egg_amount >= 1 && !egg_autoplant)
 				if(isturf(loc))
 					var/turf/T = loc
 					if(T.contents.len <= 25) //so we don't end up with a million object on that turf.
 						egg_amount--
 						new /obj/item/xeno_egg(loc, hivenumber)
 
+/mob/living/carbon/xenomorph/queen/proc/trigger_autoplant
+	var/list/turf/surroundings = oview(range, src) // Fill a list of stuff in the range so we won't have to spam oview
+	for(var/turf/turf in surroundings)
+	var/list/turf/suitable_turfs
+
+	/**todos
+	 * run check on every tile for suitable tiles
+	 * pick a random suitable tile
+	 * if no suitable tile found, disable and return to normal egg mode
+	 * set suitable cd
+	 * maybe plant egg every 60s instead of 30
+	 */
 /mob/living/carbon/xenomorph/queen/get_status_tab_items()
 	. = ..()
 	var/stored_larvae = GLOB.hive_datum[hivenumber].stored_larva

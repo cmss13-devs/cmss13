@@ -21,5 +21,11 @@
 	name = "Watcher Facehugger Behavior Delegate"
 
 /datum/behavior_delegate/facehugger_watcher/on_life()
-	if(bound_xeno.body_position == STANDING_UP && !(locate(/obj/effect/alien/weeds) in get_turf(bound_xeno)) && !bound_xeno.is_zoomed)
-		bound_xeno.adjustBruteLoss(1)
+	// Sap health if we're standing, not on weeds, and not zoomed out
+	if(bound_xeno.body_position != STANDING_UP)
+		return
+	if(bound_xeno.is_zoomed)
+		return
+	if(locate(/obj/effect/alien/weeds) in get_turf(bound_xeno))
+		return
+	bound_xeno.adjustBruteLoss(1)

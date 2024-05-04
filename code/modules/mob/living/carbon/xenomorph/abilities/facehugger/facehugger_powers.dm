@@ -26,3 +26,13 @@
 			to_chat(owner, SPAN_WARNING("We cannot do that while squeezing and scuttling!"))
 			return FALSE
 	return ..()
+
+/datum/action/xeno_action/onclick/toggle_long_range/facehugger/use_ability()
+	. = ..()
+
+	var/mob/living/carbon/xenomorph/facehugger/facehugger = owner
+
+	if (facehugger.is_zoomed)
+		ADD_TRAIT(facehugger, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Long-Range Sight"))
+	else
+		REMOVE_TRAIT(facehugger, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Long-Range Sight"))

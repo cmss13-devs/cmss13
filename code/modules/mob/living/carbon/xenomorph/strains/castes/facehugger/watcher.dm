@@ -7,7 +7,7 @@
 		/datum/action/xeno_action/onclick/xenohide,
 	)
 	actions_to_add = list(
-		/datum/action/xeno_action/onclick/toggle_long_range/runner,
+		/datum/action/xeno_action/onclick/toggle_long_range/facehugger,
 	)
 
 	behavior_delegate_type = /datum/behavior_delegate/facehugger_watcher
@@ -21,5 +21,5 @@
 	name = "Watcher Facehugger Behavior Delegate"
 
 /datum/behavior_delegate/facehugger_watcher/on_life()
-	if(bound_xeno.body_position == STANDING_UP && !(locate(/obj/effect/alien/weeds) in get_turf(bound_xeno)))
+	if(bound_xeno.body_position == STANDING_UP && !(locate(/obj/effect/alien/weeds) in get_turf(bound_xeno)) && !bound_xeno.is_zoomed)
 		bound_xeno.adjustBruteLoss(1)

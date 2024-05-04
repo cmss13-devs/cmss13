@@ -221,7 +221,8 @@ var/damage_state = 0
 	icon_state = "MeridianCar_5"
 /obj/structure/prop/hybrisa/vehicles/Car/Car_5
 	icon_state = "MeridianCar_6"
-
+/obj/structure/prop/hybrisa/vehicles/Car/Car_6
+	icon_state = "MeridianCar_7"
 // Car Chassis
 
 /obj/structure/prop/hybrisa/vehicles/Car/Car_chassis

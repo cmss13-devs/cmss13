@@ -373,13 +373,15 @@
 /datum/action/xeno_action/onclick/manage_hive/use_ability(atom/Atom)
 	var/mob/living/carbon/xenomorph/queen/queen_manager = owner
 	plasma_cost = 0
-	var/list/options = list("Banish (500)", "Re-Admit (100)", "De-evolve (500)", "Reward Jelly (500)", "Exchange larva for evolution (100)",)
+	var/list/options = list("Banish (500)", "Re-Admit (100)", "De-evolve (500)", "Reward Jelly (500)", "Exchange larva for evolution (100)")
 	if(queen_manager.hive.hivenumber == XENO_HIVE_CORRUPTED)
 		var/datum/hive_status/corrupted/hive = queen_manager.hive
 		options += "Add Personal Ally"
 		if(length(hive.personal_allies))
 			options += "Remove Personal Ally"
 			options += "Clear Personal Allies"
+	if(queen_manager.ovipositor)
+		options += "Toggle Egg Autoplanting"
 
 	var/choice = tgui_input_list(queen_manager, "Manage The Hive", "Hive Management",  options, theme="hive_status")
 	switch(choice)
@@ -399,6 +401,8 @@
 			remove_personal_ally()
 		if("Clear Personal Allies")
 			clear_personal_allies()
+		if("Toggle Egg Autoplanting")
+			queen_manager.ovi_egg_autoplant()
 
 /datum/action/xeno_action/onclick/manage_hive/proc/add_personal_ally()
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
@@ -857,7 +861,7 @@
 	set name = "Toggle Egg Autoplanting"
 	set desc = "Toggle if eggs automatically plant within a 5 tile radius"
 	set category = "Alien"
-
+	
 	var/mob/living/carbon/xenomorph/queen/queen = src
 
 	if(!queen.check_state())

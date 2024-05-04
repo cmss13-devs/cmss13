@@ -560,14 +560,6 @@
 
 	src.visible_message(SPAN_XENONOTICE("[src]'s ovipositor plants the [newegg]."))
 
-	/**todos
-	 * run check on every tile for suitable tiles
-	 * pick a random suitable tile
-	 * if no suitable tile found, disable and return to normal egg mode
-	 * set suitable cd
-	 * maybe plant egg every 60s instead of 30
-	 */
-
 /mob/living/carbon/xenomorph/queen/get_status_tab_items()
 	. = ..()
 	var/stored_larvae = GLOB.hive_datum[hivenumber].stored_larva

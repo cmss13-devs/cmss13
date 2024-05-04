@@ -207,10 +207,11 @@
 			user.apply_damage(15, BURN, "l_hand")
 		else
 			user.apply_damage(15, BURN, "r_hand")
-	target.organ_removed = TRUE
 	var/obj/item/organ/xeno/organ = locate() in target
-	organ.forceMove(target.loc)
-	target.update_wounds()
+	if(!isnull(organ))
+		organ.forceMove(target.loc)
+		target.update_wounds()
+		target.organ_removed = TRUE
 
 /datum/surgery_step/xenomorph/remove_organ/failure(mob/living/carbon/human/user, mob/living/carbon/xenomorph/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(tool)

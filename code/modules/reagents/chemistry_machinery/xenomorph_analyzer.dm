@@ -104,11 +104,9 @@
 			playsound(loc, 'sound/machines/blender.ogg', 25, TRUE)
 			. = TRUE
 		if("produce")
-			var/cost = text2num(params["cost"])
-			var/vari = text2num(params["varia"])
-			var/clearance_req = text2num(params["clearreq"])
-			if(cost && !busy)
-				start_print_upgrade(params["ref"], cost, usr, vari, clearance_req)
+			if(!busy)
+
+				start_print_upgrade(text2path(params["ref"]), usr, text2num(params["vari"]))
 
 /obj/structure/machinery/xenoanalyzer/proc/eject_biomass()
 	if(isnull(organ))
@@ -123,19 +121,30 @@
 	icon_state = "xeno_analyzer_off"
 	QDEL_NULL(organ)
 
-/obj/structure/machinery/xenoanalyzer/proc/start_print_upgrade(produce_path, cost, mob/user, variation, clearance_requirment)
+/obj/structure/machinery/xenoanalyzer/proc/start_print_upgrade(produce_path, mob/user, variation)
 	if (stat & NOPOWER)
 		return
-	if(cost > biomass_points)
+	var/path_exists = FALSE
+	var/datum/research_upgrades/upgrade
+	for(var/datum_upgrades in subtypesof(/datum/research_upgrades))
+		upgrade = datum_upgrades
+		if(upgrade.behavior == RESEARCH_UPGRADE_CATEGORY || upgrade.behavior == RESEARCH_UPGRADE_EXCLUDE_BUY)
+			continue
+		if(produce_path == upgrade.item_reference)
+			path_exists = TRUE
+			break
+	if(!path_exists)
+		to_chat(user, SPAN_WARNING("[src] makes a suspicious wail before powering down."))
+		return
+	if(upgrade.value_upgrade > biomass_points)
 		to_chat(user, SPAN_WARNING("[src] makes a worrying beep and flashes red, theres not enough data processed to build the requested upgrade!"))
 		return
-	if(clearance_requirment > GLOB.chemical_data.clearance_level || clearance_requirment == 6 && !GLOB.chemical_data.reached_x_access)
+	if(upgrade.clearance_req > GLOB.chemical_data.clearance_level || upgrade.clearance_req == 6 && !GLOB.chemical_data.reached_x_access)
 		to_chat(user, SPAN_WARNING("[src] makes a annoying hum and flashes red, You dont have the legal access to the upgrade!"))
 		return
-
 	icon_state = "xeno_analyzer_printing"
 	busy = TRUE
-	biomass_points -= cost
+	biomass_points -= upgrade.value_upgrade
 	addtimer(CALLBACK(src, PROC_REF(print_upgrade), produce_path, variation), 5 SECONDS)
 
 /obj/structure/machinery/xenoanalyzer/proc/print_upgrade(produce_path, variation)

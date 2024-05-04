@@ -361,6 +361,10 @@
 /mob/living/carbon/xenomorph/queen/can_destroy_special()
 	return TRUE
 
+
+/mob/living/carbon/xenomorph/queen/get_organ_icon()
+	return "heart_t3"
+
 /mob/living/carbon/xenomorph/queen/corrupted
 	hivenumber = XENO_HIVE_CORRUPTED
 

@@ -97,6 +97,9 @@ You must still listen to the queen.
 "})
 	emote("roar")
 
+/mob/living/carbon/xenomorph/predalien/get_organ_icon()
+	return "heart_t3"
+
 
 /mob/living/carbon/xenomorph/predalien/resist_fire()
 		..()

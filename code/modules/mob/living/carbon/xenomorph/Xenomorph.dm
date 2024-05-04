@@ -252,7 +252,7 @@
 	//Research organ harvesting.
 	var/organ_removed = FALSE
 	/// value of organ in each caste, e.g. 10k is autodoc larva removal. runner is 500
-	var/organ_value = 0 
+	var/organ_value = 0
 
 
 	//////////////////////////////////////////////////////////////////
@@ -356,10 +356,7 @@
 		organ.forceMove(src)
 		organ.research_value = organ_value
 		organ.caste_origin = caste_type
-		if(!isqueen(src) && !ispredalien(src))
-			organ.icon_state = "heart_t[src.tier]"
-		else
-			organ.icon_state = "heart_t3"
+		organ.icon_state = get_organ_icon()
 
 	var/datum/hive_status/hive = GLOB.hive_datum[src.hivenumber]
 
@@ -1000,6 +997,9 @@
 
 	visible_message(SPAN_DANGER("[src] has successfully extinguished themselves!"), \
 		SPAN_NOTICE("We extinguish ourselves."), null, 5)
+
+/mob/living/carbon/xenomorph/proc/get_organ_icon()
+	return "heart_t[tier]"
 
 /mob/living/carbon/xenomorph/resist_restraints()
 	if(!legcuffed)

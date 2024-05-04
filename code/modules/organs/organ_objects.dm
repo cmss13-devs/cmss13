@@ -120,7 +120,9 @@
 	icon_state = "heart_t1"
 	organ_tag = "heart"
 	black_market_value = 60
+	///value of the organ in the recycler, heavily varies from size and tier
 	var/research_value = 1 //depending on the size and tier
+	///the caste in a string, which is used in a xenoanalyzer
 	var/caste_origin // used for desc in xenoanalyzer
 
 //These are here so they can be printed out via the fabricator.

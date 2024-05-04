@@ -233,21 +233,25 @@
 	to_chat(user, SPAN_NOTICE("[src] buzzes as it begins to listen for input."))
 	user.universal_understand = TRUE
 
-/obj/item/clothing/accessory/health/research_plate/translator/on_removed(mob/living/user, obj/item/clothing/C)
+/obj/item/clothing/accessory/health/research_plate/translator/on_removed(mob/living/carbon/human/user, obj/item/clothing/C)
 	. = ..()
 	if(user.universal_understand)
 		to_chat(user, SPAN_NOTICE("[src] makes a sad woop sound as it powers down."))
-		user.universal_understand = FALSE
 		attached_uni = null
+		if(user.chem_effect_flags & CHEM_EFFECT_HYPER_THROTTLE) // we are currently under effect of simular univeral understand drug.
+			return
+		user.universal_understand = FALSE
 
-/obj/item/clothing/accessory/health/research_plate/translator/on_removed_sig(mob/living/user, slot)
+/obj/item/clothing/accessory/health/research_plate/translator/on_removed_sig(mob/living/carbon/human/user, slot)
 	. = ..()
 	if(. == FALSE)
 		return
 	if(user.universal_understand)
 		to_chat(user, SPAN_NOTICE("[src] makes a woop sound as it is powered down."))
-		user.universal_understand = FALSE
+		if(user.chem_effect_flags & CHEM_EFFECT_HYPER_THROTTLE) // we are currently under effect of simular univeral understand drug.
+			return
 		attached_uni = null
+		user.universal_understand = FALSE
 
 /obj/item/clothing/accessory/health/research_plate/coagulator
 	name = "experimental blood coagulator"
@@ -284,7 +288,7 @@
 	var/mob/living/wearer
 	var/used = FALSE
 	/// 1 means the player overdosed with OD_OFF mode. 2 means the plate adjusted the chemicals injected.
-	var/warning_type = FALSE 
+	var/warning_type = FALSE
 	var/list/chemicals_to_inject = list(
 		"oxycodone" = 20,
 		"bicaridine" = 30,
@@ -371,13 +375,13 @@
 			if (od_protection_mode == EMERGENCY_PLATE_OD_PROTECTION_DYNAMIC)
 				var/adjust_volume_to_inject = reag.overdose - wearer.reagents.get_reagent_amount(chemical)
 				chemicals_to_inject[chemical] = adjust_volume_to_inject
-				warning_type = 2
+				warning_type = EMERGENCY_PLATE_ADJUSTED_WARNING
 		if(wearer.reagents.get_reagent_amount(chemical) + chemicals_to_inject[chemical] > reag.overdose && od_protection_mode == EMERGENCY_PLATE_OD_PROTECTION_OFF)
-			warning_type = 1
+			warning_type = EMERGENCY_PLATE_OD_WARNING
 		wearer.reagents.add_reagent(chemical, chemicals_to_inject[chemical])
-	if(warning_type == 1)
+	if(warning_type == EMERGENCY_PLATE_OD_WARNING)
 		to_chat(wearer, SPAN_DANGER("You hold the two buttons, and the plate injects the chemicals, but makes a worrying beep, indicating overdose!"))
-	if(warning_type == 2)
+	if(warning_type == EMERGENCY_PLATE_ADJUSTED_WARNING)
 		to_chat(wearer, SPAN_DANGER("You hold the two buttons, and the plate injects the chemicals, but makes a relieving beep, indicating it adjusted amounts it injected to prevent overdose!"))
 	playsound(loc, "sound/items/air_release.ogg", 100, TRUE)
 	used = TRUE

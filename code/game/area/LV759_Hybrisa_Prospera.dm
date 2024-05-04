@@ -190,8 +190,16 @@
 	name = "Weyland Yutani Celestia Gateway Space-Port - Hallway - East"
 	icon_state = "WYSpaceport"
 	minimap_color = MINIMAP_AREA_LZ
+/area/lv759/indoors/spaceport/heavyequip
+	name = "Weyland Yutani Celestia Gateway Space-Port - Heavy Equipment Storage"
+	icon_state = "WYSpaceport"
+	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/engineering
-	name = "Weyland Yutani Celestia Gateway Space-Port - Engineering"
+	name = "Weyland Yutani Celestia Gateway Space-Port - Fuel Storage & Processing"
+	icon_state = "WYSpaceport"
+	minimap_color = MINIMAP_AREA_LZ
+/area/lv759/indoors/spaceport/janitor
+	name = "Weyland Yutani Celestia Gateway Space-Port - Janitorial Storage Room"
 	icon_state = "WYSpaceport"
 	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/maintenance_east
@@ -311,24 +319,66 @@
 	minimap_color = MINIMAP_AREA_COLONY
 
 // Apartments (Dorms)
-/area/lv759/indoors/apartment/west
-	name = "West Apartment Bedrooms and Recroom"
-	icon_state = "green"
+/area/lv759/indoors/apartment/westfoyer
+	name = "Westhaven Apartment Complex - West - Foyer"
+	icon_state = "apartments"
 	minimap_color = MINIMAP_AREA_COLONY
 
-/area/lv759/indoors/apartment_services/west
-	name = "West Apartment Services"
-	icon_state = "green"
+/area/lv759/indoors/apartment/westhallway
+	name = "Westhaven Apartment Complex - West - Hallway"
+	icon_state = "apartments"
+	minimap_color = MINIMAP_AREA_COLONY
+/area/lv759/indoors/apartment/westbedrooms
+	name = "Westhaven Apartment Complex - West - Bedrooms"
+	icon_state = "apartments"
+	minimap_color = MINIMAP_AREA_COLONY
+/area/lv759/indoors/apartment/westshowers
+	name = "Westhaven Apartment Complex - West - Showers"
+	icon_state = "apartments"
+	minimap_color = MINIMAP_AREA_COLONY
+/area/lv759/indoors/apartment/westrestroom
+	name = "Westhaven Apartment Complex - West - Restrooms"
+	icon_state = "apartments"
+	minimap_color = MINIMAP_AREA_COLONY
+/area/lv759/indoors/apartment/westentertainment
+	name = "Westhaven Apartment Complex - West - Recreation Hub"
+	icon_state = "apartments"
 	minimap_color = MINIMAP_AREA_COLONY
 
-/area/lv759/indoors/apartment/east
-	name = "East Apartment Bedrooms and Foyer"
-	icon_state = "green"
+
+
+/area/lv759/indoors/apartment/eastentrance
+	name = "Westhaven Apartment Complex - East - Entrance Room"
+	icon_state = "apartments"
+	minimap_color = MINIMAP_AREA_COLONY
+/area/lv759/indoors/apartment/eastfoyer
+	name = "Westhaven Apartment Complex - East - Foyer"
+	icon_state = "apartments"
+	minimap_color = MINIMAP_AREA_COLONY
+/area/lv759/indoors/apartment/eastrestroomsshower
+	name = "Westhaven Apartment Complex - East - Restrooms & Showers"
+	icon_state = "apartments"
+	minimap_color = MINIMAP_AREA_COLONY
+/area/lv759/indoors/apartment/eastbedrooms
+	name = "Westhaven Apartment Complex - East - Bedrooms"
+	icon_state = "apartments"
+	minimap_color = MINIMAP_AREA_COLONY
+/area/lv759/indoors/apartment/eastbedroomsstorage
+	name = "Westhaven Apartment Complex - East - Bedrooms - Storage Room"
+	icon_state = "apartments"
 	minimap_color = MINIMAP_AREA_COLONY
 
-/area/lv759/indoors/apartment_services/east
-	name = "East Apartment Services"
-	icon_state = "green"
+/area/lv759/indoors/apartment/northfoyer
+	name = "Westhaven Apartment Complex - North - Foyer"
+	icon_state = "apartments"
+	minimap_color = MINIMAP_AREA_COLONY
+/area/lv759/indoors/apartment/northhallway
+	name = "Westhaven Apartment Complex - North - Hallway"
+	icon_state = "apartments"
+	minimap_color = MINIMAP_AREA_COLONY
+/area/lv759/indoors/apartment/northapartments
+	name = "Westhaven Apartment Complex - North - Luxury Apartments"
+	icon_state = "apartments"
 	minimap_color = MINIMAP_AREA_COLONY
 
 // Weyland-Yutani Offices
@@ -635,7 +685,7 @@
 
 // Pizza
 /area/lv759/indoors/pizzaria
-	name = "Pizzaria"
+	name = "Pizza Galaxy - Outpost Zeta"
 	icon_state = "pizza"
 	minimap_color = MINIMAP_AREA_ENGI
 

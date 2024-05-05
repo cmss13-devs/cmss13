@@ -1,6 +1,6 @@
 /datum/tech/xeno/powerup/health_up
 	name = "HealthUP!"
-	desc = "Strengthens hide of xeno for more survival rate. Increases max health for xeno"
+	desc = "Strengthens hide of xeno for more survival rate. Increases max health for xeno and instantly heal xeno"
 	icon = 'fray-marines/icons/effects/techtree/tech.dmi'
 	icon_state = "healthup"
 

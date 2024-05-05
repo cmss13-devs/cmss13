@@ -2515,6 +2515,7 @@
 #include "fray-marines\code\modules\cm_tech\techs\xeno\tier3\artillery_blob.dm"
 #include "fray-marines\code\modules\cm_tech\techs\xeno\tier3\endurance.dm"
 #include "fray-marines\code\modules\cm_tech\techs\xeno\tier3\rev_jelly.dm"
+#include "fray-marines\code\modules\cm_tech\techs\xeno\tier4\fireres.dm"
 #include "fray-marines\code\modules\cm_tech\techs\xeno\tier4\health_up.dm"
 #include "fray-marines\code\modules\cm_tech\trees\xeno.dm"
 #include "fray-marines\code\modules\gear_presets\usmc.dm"

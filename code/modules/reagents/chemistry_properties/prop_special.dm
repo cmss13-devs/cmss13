@@ -12,7 +12,7 @@
 	max_level = 4
 
 /datum/chem_property/special/boosting/pre_process(mob/living/M)
-	if(max_level > level)
+	if(level > max_level)
 		level = max_level
 	return list(REAGENT_BOOST = level)
 

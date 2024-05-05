@@ -964,13 +964,8 @@
 
 	msg = process_chat_markup(msg, list("*"))
 
-	for(var/mob/living/cur_mob in GLOB.brainlink.living_borers)
-		if(cur_mob.client) // Send to borers
-			to_chat(cur_mob, SPAN_XOOC("Cortical Impulse: [msg]"))
+	GLOB.brainlink.impulse_broadcast(msg)
 
-	for(var/mob/dead/observer/cur_mob in GLOB.observer_list)
-		if(cur_mob.client) // Send to observers
-			to_chat(cur_mob, SPAN_XOOC("Cortical Impulse: [src.key]([src.admin_holder.rank]): [msg]"))
 
 /mob/living/carbon/human/proc/make_borer_host(worm_generation = 1, worm_repro = 1)
 	if(has_brain_worms())

@@ -2,12 +2,49 @@
 	var/list/living_borers = list()
 	var/list/datum/borer_chem/borer_chemicals = list()
 	var/cortical_directive = "Seek hosts and spread. Avoid detection where possible. Do not assume control without need." // Default directive.
+	var/hardmode = FALSE
+	var/pulse_triggered = FALSE
 
 /datum/borer_brainlink/New()
 	. = ..()
 	borer_chemicals = generate_borer_chems()
 
 GLOBAL_DATUM_INIT(brainlink, /datum/borer_brainlink, new)
+
+/datum/borer_brainlink/proc/impulse_broadcast(message, size = "Large")
+	var/transmission = SPAN_XOOC("Cortical Impulse: [message]")
+	if(size != "Large")
+		transmission = SPAN_XENOBOLDNOTICE("Cortical Impulse: [message]")
+
+	for(var/mob/living/cur_mob in living_borers)
+		if(cur_mob.client) // Send to borers
+			to_chat(cur_mob, transmission)
+
+	for(var/mob/dead/observer/cur_mob in GLOB.observer_list)
+		if(cur_mob.client) // Send to observers
+			to_chat(cur_mob, transmission)
+
+/datum/borer_brainlink/proc/handle_death(mob/living/carbon/cortical_borer/the_dead)
+	impulse_broadcast("[the_dead.real_name] has died!", "Small")
+	if(!pulse_triggered && (the_dead.generation <= 1))
+		for(var/mob/living/carbon/cortical_borer/borer in living_borers)
+			if(borer.generation <= 1)
+				continue
+			death_pulse(DEATH_CAUSE_PRIMARIES)
+			break
+	return
+
+/datum/borer_brainlink/proc/death_pulse(source = DEATH_CAUSE_UNKNOWN)
+	pulse_triggered = TRUE
+	var/death_message = "A wave of death flows across the cortical link!"
+	switch(source)
+		if(DEATH_CAUSE_PRIMARIES)
+			death_message += " All the Primaries have fallen! There is no one strong enough to maintain the link!"
+		if(DEATH_CAUSE_UNKNOWN)
+			death_message += " The devastation is unprecedented, and the cause unclear..."
+	impulse_broadcast(death_message)
+	for(var/mob/living/borer in living_borers)
+		borer.death(create_cause_data("Cortical Link Collapse"))
 
 /datum/borer_brainlink/proc/generate_borer_chems()
 	var/list/chem_list = list()
@@ -22,15 +59,8 @@ GLOBAL_DATUM_INIT(brainlink, /datum/borer_brainlink, new)
 /datum/borer_brainlink/proc/update_directive(new_directive)
 	cortical_directive = new_directive
 
-	for(var/mob/living/cur_mob in GLOB.brainlink.living_borers)
-		if(cur_mob.client) // Send to borers
-			to_chat(cur_mob, SPAN_XOOC("Cortical Impulse: The Cortical Directive has changed."))
-			to_chat(cur_mob, SPAN_XENOBOLDNOTICE("[new_directive]."))
-
-	for(var/mob/dead/observer/cur_mob in GLOB.observer_list)
-		if(cur_mob.client) // Send to observers
-			to_chat(cur_mob, SPAN_XOOC("Cortical Impulse: The Cortical Directive has changed."))
-			to_chat(cur_mob, SPAN_XENOBOLDNOTICE("[new_directive]."))
+	impulse_broadcast("The Cortical Directive has changed.")
+	impulse_broadcast(new_directive, size = "Small")
 
 /mob/living/captive_brain
 	name = "captive mind"
@@ -328,8 +358,7 @@ GLOBAL_DATUM_INIT(brainlink, /datum/borer_brainlink, new)
 	leave_host()
 	. = ..()
 	if(!is_admin_level(z))
-		var/datum/language/corticalborer/c_link = GLOB.all_languages[LANGUAGE_BORER]
-		c_link.broadcast(src, "Has Died", real_name, TRUE)
+		GLOB.brainlink.handle_death(src)
 
 /mob/living/carbon/cortical_borer/rejuvenate()
 	..()

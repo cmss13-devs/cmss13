@@ -24,7 +24,7 @@
 /// Open the WJ's emote panel, which allows them to use voicelines
 /datum/species/synthetic/colonial/working_joe/open_emote_panel()
 	var/datum/joe_emote_panel/ui = new(usr)
-	ui.ui_interact(usr)
+	ui.tgui_interact(usr)
 
 
 /datum/action/joe_emote_panel
@@ -77,7 +77,7 @@
 		wj_emotes = emotes_to_add
 
 
-/datum/joe_emote_panel/proc/ui_interact(mob/user, datum/tgui/ui)
+/datum/joe_emote_panel/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "JoeEmotes")

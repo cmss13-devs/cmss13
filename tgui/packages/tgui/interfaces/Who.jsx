@@ -54,25 +54,27 @@ export const Who = (props, context) => {
             </Section>
           </Stack.Item>
           <Stack.Item mt={0.2} grow>
-            <WhoCollapsible title={'Players - ' + all_clients} color="good">
-              {filtered_total_players.length ? (
-                <Section>
-                  {filtered_total_players.map((x, index) => (
-                    <GetPlayerInfo
-                      key={index}
-                      admin={admin}
-                      ckey={x.ckey}
-                      ckey_color={x.ckey_color}
-                      color={x.color}
-                      text={x.text}
-                    />
-                  ))}
-                </Section>
-              ) : null}
-            </WhoCollapsible>
+            <Section>
+              <WhoCollapsible title={'Players - ' + all_clients} color="good">
+                {filtered_total_players.length ? (
+                  <Box>
+                    {filtered_total_players.map((x, index) => (
+                      <GetPlayerInfo
+                        key={index}
+                        admin={admin}
+                        ckey={x.ckey}
+                        ckey_color={x.ckey_color}
+                        color={x.color}
+                        text={x.text}
+                      />
+                    ))}
+                  </Box>
+                ) : null}
+              </WhoCollapsible>
+            </Section>
             {admin !== 0 ? (
-              <WhoCollapsible title="Information" color="olive">
-                <Section>
+              <Section>
+                <WhoCollapsible title="Information" color="olive">
                   <Box direction="column">
                     {additional_info.length
                       ? additional_info.map((x, index) => (
@@ -105,8 +107,8 @@ export const Who = (props, context) => {
                       ))
                       : null}
                   </Box>
-                </Section>
-              </WhoCollapsible>
+                </WhoCollapsible>
+              </Section>
             ) : null}
           </Stack.Item>
         </Stack>

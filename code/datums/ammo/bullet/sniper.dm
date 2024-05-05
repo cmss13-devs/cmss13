@@ -111,23 +111,33 @@
 /datum/ammo/bullet/sniper/anti_materiel/proc/stopping_power_knockback(mob/living/living_mob, obj/projectile/fired_projectile)
 	var/stopping_power = min(CEILING((fired_projectile.damage/30), 1), 5) // This is from bullet damage, and does not take Aimed Shot into account.
 
+	. = stopping_power
+
 	if(!living_mob || living_mob == fired_projectile.firer)
 		return stopping_power
 
 	if(stopping_power > 2)
-		// If above 60 damage, screenshake. This maxes out at (3,4) like buckshot and heavy rounds. (1,2) (2,3) or (3,4)
-		shake_camera(living_mob, (stopping_power - 2), (stopping_power - 1))
 
 		// Depending on target size and damage, may apply a mini-stun to interrupt channels. Support your allies!
 		// For reference: Scout Impact stuns for up to 1s and slows for up to 10s, Shotgun stuns for 1.4s and slows for 4s
 		if(living_mob.mob_size >= MOB_SIZE_BIG)
+			// If above 90 damage, screenshake. This maxes out at (2,3), weaker than other impact rounds.
+			if(stopping_power > 3)
+				shake_camera(living_mob, (stopping_power - 3), (stopping_power - 2))
+			if(HAS_TRAIT(living_mob, TRAIT_CHARGING) && isxeno(living_mob))
+				to_chat(living_mob, SPAN_WARNING("A sudden massive impact strikes you, but your charge will not be stopped!"))
+				return stopping_power
 			if(stopping_power >= 4)
 				to_chat(living_mob, SPAN_XENOHIGHDANGER("You are knocked off-balance by the sudden massive impact!"))
+				if(living_mob.mob_size >= MOB_SIZE_IMMOBILE && !((fired_projectile.projectile_flags & PROJECTILE_BULLSEYE) && living_mob == fired_projectile.original)) // Queens and Crushers
+					return stopping_power // For Crushers and Queens, must be aimed at them.
 				living_mob.KnockDown(0.05) // Must deal more than 90 damage to mini-stun big mobs for 0.1s
 				// Can't interrupt a big mob unless it's completely alone with nothing blocking the shot.
 			else
 				to_chat(living_mob, SPAN_XENODANGER("You are shaken by the sudden heavy impact!"))
 		else
+			// If above 60 damage, screenshake. This maxes out at (3,4) like buckshot and heavy rounds. (1,2) (2,3) or (3,4)
+			shake_camera(living_mob, (stopping_power - 2), (stopping_power - 1))
 			if(living_mob.body_position != LYING_DOWN)
 				to_chat(living_mob, SPAN_XENOHIGHDANGER("You are thrown back by the sudden massive force!"))
 				slam_back(living_mob, fired_projectile)
@@ -137,7 +147,11 @@
 			if(isxeno(living_mob))
 				living_mob.KnockDown((stopping_power - 2)*0.05) // Up to 0.3s on a solo target.
 			else
-				living_mob.KnockDown((stopping_power - 2)*0.5) // Up to 3s on non-xenos.
+				if(living_mob.stamina)
+					living_mob.apply_stamina_damage(fired_projectile.ammo.damage, fired_projectile.def_zone, ARMOR_BULLET)
+					// Not sure what this comes out to exactly, but follows the example of other heavy ammo like slugs of applying full base damage as stamina damage.
+				else
+					living_mob.KnockDown((stopping_power - 2)*0.3) // Rare exception of up to 1.8s on non-xenos without stamina.
 
 	return stopping_power
 
@@ -222,10 +236,10 @@
 		else
 			living_target.apply_armoured_damage((damage*size_damage_mod), ARMOR_BULLET, BRUTE, null, penetration)
 
-		if(slow_duration)
+		if(slow_duration && (living_target.mob_size != MOB_SIZE_XENO_SMALL) && !(HAS_TRAIT(living_target, TRAIT_CHARGING))) // Runners and Charging Crushers are not slowed.
 			living_target.Slow((slow_duration / 2))
-		if(slow_duration >= 2)
-			living_target.Superslow((slow_duration / 4))
+			if(slow_duration >= 2)
+				living_target.Superslow((slow_duration / 4))
 		if(stopping_power > 3)
 			living_target.Daze(0.1) // Visual cue that you got hit by something HARD.
 

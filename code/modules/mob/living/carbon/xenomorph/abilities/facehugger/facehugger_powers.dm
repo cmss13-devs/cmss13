@@ -36,7 +36,6 @@
 	. = ..()
 
 	var/mob/living/carbon/xenomorph/facehugger/facehugger = owner
-
 	REMOVE_TRAIT(facehugger, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Long-Range Sight"))
 
 /datum/action/xeno_action/onclick/toggle_long_range/facehugger/on_zoom_in()

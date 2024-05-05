@@ -11,7 +11,7 @@
 //parent types
 
 /area/lv759/indoors
-	name = "Hybrisa - Outdoors"
+	name = "Hybrisa - Indoors"
 	icon_state = "cliff_blocked"//because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
 	ceiling = CEILING_METAL
 	soundscape_playlist = SCAPE_PL_LV522_INDOORS
@@ -44,11 +44,6 @@
 /area/lv759/landing_zone_1/tunnel
 	name = "Hybrisa - Landing Zone One Tunnels"
 	ceiling = CEILING_METAL
-
-/area/shuttle/drop1/lv759
-	name = "Hybrisa - Dropship Alamo Landing Zone"
-	icon_state = "shuttle"
-	icon = 'icons/turf/area_shiva.dmi'
 
 /area/lv759/landing_zone_1/lz1_console
 	name = "Hybrisa - Dropship Alamo Console"
@@ -83,7 +78,7 @@
 /area/lv759/indoors/caves
 	name = "Hybrisa - Caverns"
 	icon_state = "caves_north"
-	ceiling = CEILING_NONE
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 	soundscape_playlist = SCAPE_PL_LV759_CAVES
 /area/lv759/indoors/caves/west_caves
 	name = "Caverns - West"
@@ -128,19 +123,6 @@
 	name = "Colony Streets"
 	icon_state = "colonystreets_north"
 	ceiling = CEILING_NONE
-/area/lv759/outdoors/colony_streets/windbreaker
-	name = "Colony Windbreakers"
-	icon_state = "tcomsatcham"
-	requires_power = FALSE
-	ceiling = CEILING_NONE
-
-/area/lv759/outdoors/colony_streets/windbreaker/observation
-	name = "Colony Windbreakers - Observation"
-	icon_state = "purple"
-	requires_power = FALSE
-	ceiling = CEILING_GLASS
-	soundscape_playlist = SCAPE_PL_LV522_INDOORS
-
 /area/lv759/outdoors/colony_streets/central_streets
 	name = "Central Street - West"
 	icon_state = "colonystreets_west"
@@ -160,6 +142,7 @@
 /area/lv759/outdoors/colony_streets/south_west_street
 	name = "Colony Streets - Southwest - WY Checkpoint Passthrough"
 	icon_state = "colonystreets_southwest"
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 
 /area/lv759/outdoors/colony_streets/north_west_street
 	name = "Colony Streets - Northwest"
@@ -738,7 +721,7 @@
 /area/lv759/indoors/hobosecret
 	name = "Hidden Hobo Haven"
 	icon_state = "hobo"
-	ceiling = CEILING_MAX
+	ceiling = CEILING_REINFORCED_METAL
 	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL
 	soundscape_playlist = SCAPE_PL_LV759_CAVES

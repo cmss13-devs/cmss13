@@ -609,3 +609,100 @@
 #undef FLOODLIGHT_REPAIR_WELD
 #undef FLOODLIGHT_REPAIR_CABLE
 #undef FLOODLIGHT_REPAIR_SCREW
+
+// Engineer Floor lights
+
+/obj/structure/machinery/engineerconsole_switch
+	name = "Giant Alien Console"
+	icon = 'icons/obj/structures/props/64x64_zenithrandomprops.dmi'
+	icon_state = "engineerconsole"
+	desc = "A Giant Alien console of some kind, unlike anything you've ever seen before. Who knows the purpose of this strange technology..."
+	bound_height = 32
+	bound_width = 32
+	unslashable = TRUE
+	unacidable = TRUE
+	indestructible = TRUE
+	density = TRUE
+	anchored = TRUE
+	layer = TURF_LAYER
+	var/ispowered = TRUE
+	var/turned_on = 0 //has to be toggled in engineering
+	use_power = USE_POWER_NONE
+	var/list/floodlist = list() // This will save our list of floodlights on the map
+	power_machine = TRUE
+
+/obj/structure/machinery/engineerconsole_switch/Initialize(mapload, ...)
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/structure/machinery/engineerconsole_switch/LateInitialize()
+	. = ..()
+	for(var/obj/structure/machinery/colony_floodlight/engineer_circular/F in GLOB.machines)
+		floodlist += F
+		F.fswitch = src
+	start_processing()
+
+/obj/structure/machinery/engineerconsole_switch/Destroy()
+	for(var/obj/structure/machinery/colony_floodlight/engineer_circular/floodlight as anything in floodlist)
+		floodlight.fswitch = null
+	floodlist = null
+	return ..()
+
+
+/obj/structure/machinery/engineerconsole_switch/update_icon()
+	if(!ispowered)
+		icon_state = "engineerconsole"
+	else if(turned_on)
+		icon_state = "engineerconsole"
+	else
+		icon_state = "engineerconsole"
+
+/obj/structure/machinery/engineerconsole_switch/process()
+	var/lightpower = 0
+	for(var/obj/structure/machinery/colony_floodlight/engineer_circular/C in floodlist)
+		if(!C.is_lit)
+			continue
+		lightpower += C.power_tick
+	use_power(lightpower)
+
+/obj/structure/machinery/engineerconsole_switch/power_change()
+	..()
+	if((stat & NOPOWER))
+		if(ispowered && turned_on)
+			toggle_lights()
+		ispowered = FALSE
+		turned_on = 0
+		update_icon()
+	else
+		ispowered = TRUE
+		update_icon()
+
+/obj/structure/machinery/engineerconsole_switch/proc/toggle_lights()
+	for(var/obj/structure/machinery/colony_floodlight/engineer_circular/F in floodlist)
+		spawn(rand(0,50))
+			F.is_lit = !F.is_lit
+			if(!F.damaged)
+				if(F.is_lit) //Shut it down
+					F.set_light(F.lum_value)
+				else
+					F.set_light(0)
+			F.update_icon()
+	return 0
+
+/obj/structure/machinery/colony_floodlight/engineer_circular
+	name = "circular light"
+	icon_state = "engineerlight_off"
+	desc = "A huge circular light"
+	icon = 'icons/obj/structures/props/zenithrandomprops.dmi'
+	density = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+	wrenchable = FALSE
+
+/obj/structure/machinery/colony_floodlight/engineer_circular/update_icon()
+	if(damaged)
+		icon_state = "engineerlight_damaged"
+	else if(is_lit)
+		icon_state = "engineerlight_on"
+	else
+		icon_state = "engineerlight_off"

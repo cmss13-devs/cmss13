@@ -189,40 +189,59 @@ var/damage_state = 0
 /obj/structure/prop/hybrisa/vehicles/suv/suv_8
 	icon_state = "SUV8"
 
-// Meridian Cars
-
-/obj/structure/prop/hybrisa/vehicles/Car
+// Meridian Cars - Damage States
+/obj/structure/prop/hybrisa/vehicles/Meridian
 	name = "Mono-Spectra"
 	desc = "The 'Mono-Spectra', a mass-produced civilian vehicle for the colonial markets, in and outside of the United Americas. Produced by 'Meridian' a car marque and associated operating division of the Weyland-Yutani Corporation."
-	icon = 'icons/obj/structures/props/vehiclesexpanded.dmi'
-	icon_state = "MeridianCar_1"
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/meridian_red.dmi'
+	icon_state = "meridian_red"
 	bound_height = 32
 	bound_width = 64
-	unslashable = TRUE
-	unacidable = TRUE
 	density = TRUE
 	layer = ABOVE_MOB_LAYER
+/obj/structure/prop/hybrisa/vehicles/Meridian/Red
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/meridian_red.dmi'
+	icon_state = "meridian_red"
+/obj/structure/prop/hybrisa/vehicles/Meridian/Black
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/meridian_black.dmi'
+	icon_state = "meridian_black"
+/obj/structure/prop/hybrisa/vehicles/Meridian/Blue
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/meridian_blue.dmi'
+	icon_state = "meridian_blue"
+/obj/structure/prop/hybrisa/vehicles/Meridian/Brown
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/meridian_brown.dmi'
+	icon_state = "meridian_brown"
+/obj/structure/prop/hybrisa/vehicles/Meridian/Cop
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/meridian_cop.dmi'
+	icon_state = "meridian_cop"
+/obj/structure/prop/hybrisa/vehicles/Meridian/Desat_Blue
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/meridian_desatblue.dmi'
+	icon_state = "meridian_desatblue"
+/obj/structure/prop/hybrisa/vehicles/Meridian/Green
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/meridian_green.dmi'
+	icon_state = "meridian_green"
+/obj/structure/prop/hybrisa/vehicles/Meridian/Light_Blue
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/meridian_lightblue.dmi'
+	icon_state = "meridian_lightblue"
+/obj/structure/prop/hybrisa/vehicles/Meridian/Pink
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/meridian_pink.dmi'
+	icon_state = "meridian_pink"
+/obj/structure/prop/hybrisa/vehicles/Meridian/Purple
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/meridian_purple.dmi'
+	icon_state = "meridian_purple"
+/obj/structure/prop/hybrisa/vehicles/Meridian/Turquoise
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/meridian_turquoise.dmi'
+	icon_state = "meridian_turquoise"
+/obj/structure/prop/hybrisa/vehicles/Meridian/Orange
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/meridian_orange.dmi'
+	icon_state = "meridian_orange"
+/obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/meridian_wy.dmi'
+	icon_state = "meridian_wy"
+/obj/structure/prop/hybrisa/vehicles/Meridian/Taxi
+	icon = 'icons/obj/structures/props/hybrisa_vehicles/meridian_taxi.dmi'
+	icon_state = "meridian_taxi"
 
-
-
-
-
-/obj/structure/prop/hybrisa/vehicles/Car/Red
-	icon = 'icons/obj/structures/props/car_damage_states.dmi'
-	icon_state = "car_red"
-
-/obj/structure/prop/hybrisa/vehicles/Car/Car_1
-	icon_state = "MeridianCar_2"
-/obj/structure/prop/hybrisa/vehicles/Car/Car_2
-	icon_state = "MeridianCar_3"
-/obj/structure/prop/hybrisa/vehicles/Car/Car_3
-	icon_state = "MeridianCar_4"
-/obj/structure/prop/hybrisa/vehicles/Car/Car_4
-	icon_state = "MeridianCar_5"
-/obj/structure/prop/hybrisa/vehicles/Car/Car_5
-	icon_state = "MeridianCar_6"
-/obj/structure/prop/hybrisa/vehicles/Car/Car_6
-	icon_state = "MeridianCar_7"
 // Car Chassis
 
 /obj/structure/prop/hybrisa/vehicles/Car/Car_chassis

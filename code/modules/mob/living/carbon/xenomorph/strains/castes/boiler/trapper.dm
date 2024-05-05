@@ -1,7 +1,7 @@
 /datum/xeno_strain/trapper
 	name = BOILER_TRAPPER
-	description = "You trade your ability to bombard, lance, and dump your acid in order to gain some speed and the ability to create acid explosions and restrain talls within them. With your longer-range vision, set up traps that immobilize your opponents and place acid mines which deal damage to talls and barricades and reduce the cooldown of your trap deployment for every tall hit. Finally, hit talls with your Acid Shotgun ability which adds a stack of insight to empower the next trap you place once you reach a maximum of ten insight. A point-blank shot or a shot on a stunned target will instantly apply ten stacks."
-	flavor_description = "Hsss, I love the smell of burnin' tallhost flesh in the mornin'."
+	description = "You trade your ability to bombard, lance, and dump your acid in order to gain some speed and the ability to create acid explosions and restrain enemies within them. With your longer-range vision, set up traps that immobilize your opponents and place acid mines which deal damage to enemies and barricades and reduce the cooldown of your trap deployment for every enemy hit. Finally, hit enemies with your Acid Shotgun ability which adds a stack of insight to empower the next trap you place once you reach a maximum of ten insight. A point-blank shot or a shot on a stunned target will instantly apply ten stacks."
+	flavor_description = "The battlefield is my canvas, this one, my painter. Melt them where they stand."
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/xeno_spit/bombard,

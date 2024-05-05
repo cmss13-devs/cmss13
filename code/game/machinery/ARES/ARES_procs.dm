@@ -175,11 +175,14 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	var/datum/ares_datacore/datacore = GLOB.ares_datacore
 	datacore.records_bombardment.Add(new /datum/ares_record/bombardment(ob_name, message, user_name))
 
-/proc/log_ares_announcement(title, message)
+/proc/log_ares_announcement(title, message, signature)
 	if(!ares_can_log())
 		return FALSE
+	var/final_msg = message
+	if(signature)
+		final_msg = "[signature]: - [final_msg]"
 	var/datum/ares_datacore/datacore = GLOB.ares_datacore
-	datacore.records_announcement.Add(new /datum/ares_record/announcement(title, message))
+	datacore.records_announcement.Add(new /datum/ares_record/announcement(title, final_msg))
 
 /proc/log_ares_requisition(source, details, user_name)
 	if(!ares_can_log())
@@ -187,11 +190,14 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	var/datum/ares_datacore/datacore = GLOB.ares_datacore
 	datacore.records_asrs.Add(new /datum/ares_record/requisition_log(source, details, user_name))
 
-/proc/log_ares_security(title, details)
+/proc/log_ares_security(title, details, signature)
 	if(!ares_can_log())
 		return FALSE
+	var/final_msg = details
+	if(signature)
+		final_msg = "[signature]: - [final_msg]"
 	var/datum/ares_datacore/datacore = GLOB.ares_datacore
-	datacore.records_security.Add(new /datum/ares_record/security(title, details))
+	datacore.records_security.Add(new /datum/ares_record/security(title, final_msg))
 
 /proc/log_ares_antiair(details)
 	if(!ares_can_log())

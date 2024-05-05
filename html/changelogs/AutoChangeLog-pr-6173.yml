@@ -1,7 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Changed the AI Core Lockdown to the same system as Research Lockdown."
-  - rscadd: "Added a subtype of desk bell for the AI Core reception desk that sends an alert over APOLLO Link."
-  - imageadd: "Added directional blast door sprites from Thwomper for blended black shutters."
-  - code_imp: "Renamed operator var in apollo console code to user."

@@ -683,7 +683,7 @@
 			F.is_lit = !F.is_lit
 			if(!F.damaged)
 				if(F.is_lit) //Shut it down
-					F.set_light(F.lum_value)
+					F.set_light(l_range = F.lum_value,l_power = F.light_power , l_color = F.light_color)
 				else
 					F.set_light(0)
 			F.update_icon()
@@ -713,6 +713,9 @@ GLOBAL_LIST_INIT(ship_floodlights, list())
 	unslashable = TRUE
 	unacidable = TRUE
 	wrenchable = FALSE
+	light_color =  "#00ffa0"
+	lum_value = 14
+	light_power = 6
 
 /obj/structure/machinery/colony_floodlight/engineer_circular/update_icon()
 	if(damaged)

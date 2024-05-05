@@ -107,9 +107,9 @@ const GetAddInfo = (props, context) => {
 const GetPlayerInfo = (props, context) => {
   const { act } = useBackend(context);
   const { admin, ckey, ckey_color, color, text } = props;
-  return admin ? (
+  return admin !== 0 ? (
     <Button
-      color={'transparent'}
+      color={ckey_color}
       style={{
         'border-color': color,
         'border-style': 'solid',
@@ -123,9 +123,9 @@ const GetPlayerInfo = (props, context) => {
     </Button>
   ) : (
     <Button
-      color={'transparent'}
+      color={ckey_color}
       style={{
-        'border-color': color,
+        'border-color': '#2185d0',
         'border-style': 'solid',
         'border-width': '1px',
         'color': ckey_color,

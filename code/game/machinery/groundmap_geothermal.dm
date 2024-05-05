@@ -636,7 +636,7 @@
 
 /obj/structure/machinery/engineerconsole_switch/LateInitialize()
 	. = ..()
-	for(var/obj/structure/machinery/colony_floodlight/engineer_circular/F in GLOB.machines)
+	for(var/obj/structure/machinery/colony_floodlight/engineer_circular/F in GLOB.ship_floodlights)
 		floodlist += F
 		F.fswitch = src
 	start_processing()
@@ -688,6 +688,21 @@
 			F.update_icon()
 	return 0
 
+/obj/structure/machinery/engineerconsole_switch/attack_hand(mob/user as mob)
+	if(!ishuman(user))
+		to_chat(user, "Nice try.")
+		return FALSE
+	if(!ispowered)
+		to_chat(user, "Nothing happens.")
+		return FALSE
+	playsound(src,'sound/items/Deconstruct.ogg', 30, 1)
+	toggle_lights()
+	turned_on = !turned_on
+	update_icon()
+	return TRUE
+
+
+GLOBAL_LIST_INIT(ship_floodlights, list())
 /obj/structure/machinery/colony_floodlight/engineer_circular
 	name = "circular light"
 	icon_state = "engineerlight_off"
@@ -705,3 +720,13 @@
 		icon_state = "engineerlight_on"
 	else
 		icon_state = "engineerlight_off"
+
+/obj/structure/machinery/colony_floodlight/engineer_circular/Initialize()
+	. = ..()
+	GLOB.ship_floodlights += src
+
+
+/obj/structure/machinery/colony_floodlight/engineer_circular/Destroy()
+	. = ..()
+	GLOB.ship_floodlights -= src
+

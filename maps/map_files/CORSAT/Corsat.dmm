@@ -179,7 +179,6 @@
 "aaF" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
-	locked = 0;
 	name = "CORSAT Armory";
 	req_access_txt = "101"
 	},
@@ -2354,7 +2353,6 @@
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	damage_cap = 4000;
 	dir = 1;
-	locked = 0;
 	name = "\improper Emergency Access";
 	req_access_txt = "100";
 	req_one_access = null
@@ -5915,7 +5913,6 @@
 "arv" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	damage_cap = 4000;
-	locked = 0;
 	name = "\improper Emergency Access";
 	req_access_txt = "100";
 	req_one_access = null
@@ -21812,8 +21809,7 @@
 /area/corsat/gamma/engineering)
 "bij" = (
 /obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0
+	name = "Floodlight"
 	},
 /turf/open/auto_turf/snow/layer3,
 /area/corsat/gamma/biodome)
@@ -27730,6 +27726,7 @@
 /area/corsat/gamma/medbay)
 "bAg" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/obj/structure/medical_supply_link,
 /turf/open/floor/corsat{
 	dir = 5;
 	icon_state = "greenwhite"
@@ -28903,7 +28900,6 @@
 /area/corsat/omega/checkpoint)
 "bDv" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	locked = 0;
 	name = "Security Armory";
 	req_access_txt = "101"
 	},
@@ -30361,8 +30357,7 @@
 /area/corsat/gamma/airlock/control)
 "bJE" = (
 /obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0
+	name = "Floodlight"
 	},
 /turf/open/mars,
 /area/corsat/sigma/biodome)
@@ -34127,8 +34122,7 @@
 /area/corsat/sigma/airlock/control)
 "bVD" = (
 /obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0
+	name = "Floodlight"
 	},
 /turf/open/floor{
 	dir = 1;
@@ -35377,7 +35371,6 @@
 /obj/structure/machinery/door/airlock/almayer/research/glass/colony{
 	dir = 1;
 	name = "Weapons Development";
-	req_access = null;
 	req_one_access_txt = "103"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -35704,8 +35697,7 @@
 /area/corsat/omega/control)
 "caS" = (
 /obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0
+	name = "Floodlight"
 	},
 /turf/open/floor/plating,
 /area/corsat/sigma/biodome/testgrounds)
@@ -37777,8 +37769,7 @@
 /area/corsat/omega/hallways)
 "dFb" = (
 /obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0
+	name = "Floodlight"
 	},
 /turf/open/auto_turf/snow/layer0,
 /area/corsat/gamma/biodome)
@@ -48426,7 +48417,6 @@
 /obj/structure/machinery/door/airlock/almayer/research/glass/colony{
 	dir = 1;
 	name = "Teleportation Lab";
-	req_access = null;
 	req_one_access_txt = "103"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -49060,8 +49050,7 @@
 /area/corsat/omega/airlocknorth/id)
 "lUY" = (
 /obj/structure/machinery/floodlight{
-	name = "Floodlight";
-	unacidable = 0
+	name = "Floodlight"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/auto_turf/snow/layer3,
@@ -50928,7 +50917,6 @@
 /obj/structure/machinery/door/airlock/almayer/research/glass/colony{
 	dir = 1;
 	name = "Teleportation Chamber";
-	req_access = null;
 	req_one_access_txt = "101;103"
 	},
 /turf/open/floor/corsat{
@@ -61763,7 +61751,6 @@
 "vqF" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	damage_cap = 4000;
-	locked = 0;
 	name = "\improper Emergency Access";
 	req_access_txt = "100";
 	req_one_access = null

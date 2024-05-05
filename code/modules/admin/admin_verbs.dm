@@ -72,6 +72,7 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/client/proc/cmd_admin_say, /*staff-only ooc chat*/
 	/client/proc/cmd_mod_say, /* alternate way of typing asay, no different than cmd_admin_say  */
 	/client/proc/cmd_admin_tacmaps_panel,
+	/client/proc/other_records,
 	))
 
 GLOBAL_LIST_INIT(admin_verbs_admin, list(
@@ -138,6 +139,7 @@ GLOBAL_LIST_INIT(admin_verbs_minor_event, list(
 	/client/proc/adminpanelweapons,
 	/client/proc/admin_general_quarters,
 	/client/proc/admin_biohazard_alert,
+	/client/proc/admin_aicore_alert,
 	/client/proc/toggle_hardcore_perma,
 	/client/proc/toggle_bypass_joe_restriction,
 	/client/proc/toggle_joe_respawns,

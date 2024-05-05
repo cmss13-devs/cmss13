@@ -375,65 +375,48 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		J.current_positions--
 		return 1
 
-/datum/authority/branch/role/proc/free_role_admin(datum/job/J, latejoin = 1, user) //Specific proc that used for admin "Free Job Slots" verb (round tab)
-	if(!istype(J) || J.total_positions == -1)
+/datum/authority/branch/role/proc/free_role_admin(datum/job/job, latejoin = TRUE, user) //Specific proc that used for admin "Free Job Slots" verb (round tab)
+	if(!istype(job) || job.total_positions == -1)
 		return
-	if(J.current_positions < 1) //this should be filtered earlier, but we still check just in case
-		to_chat(user, "There are no [J] job slots occupied.")
+	if(job.current_positions < 1) //this should be filtered earlier, but we still check just in case
+		to_chat(user, "There are no [job] job slots occupied.")
 		return
 
 //here is the main reason this proc exists - to remove freed squad jobs from squad,
 //so latejoining person ends in the squad which's job was freed and not random one
-	var/datum/squad/sq = null
-	if(GLOB.job_squad_roles.Find(J.title))
+	var/datum/squad/squad = null
+	if(GLOB.job_squad_roles.Find(job.title))
 		var/list/squad_list = list()
-		for(sq in GLOB.RoleAuthority.squads)
-			if(sq.roundstart && sq.usable && sq.name != "Root")
-				squad_list += sq
-		sq = null
-		sq = input(user, "Select squad you want to free [J.title] slot from.", "Squad Selection")  as null|anything in squad_list
-		if(!sq)
+		for(squad in GLOB.RoleAuthority.squads)
+			if(squad.roundstart && squad.usable && squad.name != "Root")
+				squad_list += squad
+		squad = null
+		squad = tgui_input_list(user, "Select squad you want to free [job.title] slot from.", "Squad Selection", squad_list)
+		if(!squad)
 			return
-		switch(J.title)
-			if(JOB_SQUAD_ENGI)
-				if(sq.num_engineers > 0)
-					sq.num_engineers--
-				else
-					to_chat(user, "There are no [J.title] slots occupied in [sq.name] Squad.")
-					return
-			if(JOB_SQUAD_MEDIC)
-				if(sq.num_medics > 0)
-					sq.num_medics--
-				else
-					to_chat(user, "There are no [J.title] slots occupied in [sq.name] Squad.")
-					return
-			if(JOB_SQUAD_SPECIALIST)
-				if(sq.num_specialists > 0)
-					sq.num_specialists--
-				else
-					to_chat(user, "There are no [J.title] slots occupied in [sq.name] Squad.")
-					return
-			if(JOB_SQUAD_SMARTGUN)
-				if(sq.num_smartgun > 0)
-					sq.num_smartgun--
-				else
-					to_chat(user, "There are no [J.title] slots occupied in [sq.name] Squad.")
-					return
+		var/slot_check
+		switch(job.title)
 			if(JOB_SQUAD_TEAM_LEADER)
-				if(sq.num_tl > 0)
-					sq.num_tl--
-				else
-					to_chat(user, "There are no [J.title] slots occupied in [sq.name] Squad.")
-					return
-			if(JOB_SQUAD_LEADER)
-				if(sq.num_leaders > 0)
-					sq.num_leaders--
-				else
-					to_chat(user, "There are no [J.title] slots occupied in [sq.name] Squad.")
-					return
-	J.current_positions--
-	message_admins("[key_name(user)] freed the [J.title] job slot[sq ? " in [sq.name] Squad" : ""].")
-	return 1
+				slot_check = "leaders"
+			if(JOB_SQUAD_SPECIALIST)
+				slot_check = "specialists"
+			if(JOB_SQUAD_SMARTGUN)
+				slot_check = "smartgun"
+			if(JOB_SQUAD_TEAM_LEADER)
+				slot_check = "tl"
+			if(JOB_SQUAD_MEDIC)
+				slot_check = "medics"
+			if(JOB_SQUAD_ENGI)
+				slot_check = "engineers"
+
+		if(squad.vars["num_[slot_check]"] > 0)
+			squad.vars["num_[slot_check]"]--
+		else
+			to_chat(user, "There are no [job.title] slots occupied in [squad.name] Squad.")
+			return
+	job.current_positions--
+	message_admins("[key_name(user)] freed the [job.title] job slot[squad ? " in [squad.name] Squad" : ""].")
+	return TRUE
 
 /datum/authority/branch/role/proc/modify_role(datum/job/J, amount)
 	if(!istype(J))
@@ -549,24 +532,25 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		if(!intel_squad || !istype(intel_squad)) //Something went horribly wrong!
 			to_chat(human, "Something went wrong with randomize_squad()! Tell a coder!")
 			return
-		intel_squad.put_marine_in_squad(human) //Found one, finish up
+		intel_squad.put_marine_in_squad(human)
 		return
 
 	//dirty mess with code, sorry guidelines
 	var/slot_check
 	if(human.job != "Reinforcements")
-		if(human.job == JOB_SQUAD_ENGI)
-			slot_check = "engineers"
-		else if(human.job == JOB_SQUAD_MEDIC)
-			slot_check = "medics"
-		else if(human.job == JOB_SQUAD_LEADER)
-			slot_check = "leaders"
-		else if(human.job == JOB_SQUAD_SPECIALIST)
-			slot_check = "specialists"
-		else if(human.job == JOB_SQUAD_TEAM_LEADER)
-			slot_check = "tl"
-		else if(human.job == JOB_SQUAD_SMARTGUN)
-			slot_check = "smartgun"
+		switch(GET_DEFAULT_ROLE(human.job))
+			if(JOB_SQUAD_ENGI)
+				slot_check = "engineers"
+			if(JOB_SQUAD_MEDIC)
+				slot_check = "medics"
+			if(JOB_SQUAD_TEAM_LEADER)
+				slot_check = "tl"
+			if(JOB_SQUAD_SMARTGUN)
+				slot_check = "smartgun"
+			if(JOB_SQUAD_SPECIALIST)
+				slot_check = "specialists"
+			if(JOB_SQUAD_LEADER)
+				slot_check = "leaders"
 
 	//we make a list of squad that is randomized so alpha isn't always lowest squad.
 	var/list/mixed_squads = list()
@@ -575,7 +559,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			mixed_squads += squad
 
 	var/preferred_squad
-	if(human && human.client && human.client.prefs.preferred_squad)
+	if(human?.client?.prefs?.preferred_squad)
 		preferred_squad = human.client.prefs.preferred_squad
 
 	var/datum/squad/lowest
@@ -584,11 +568,13 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			if(squad.vars["num_[slot_check]"] >= squad.vars["max_[slot_check]"])
 				continue
 
-		if(preferred_squad == "None" && squad.put_marine_in_squad(human))
-			return squad
+		if(preferred_squad == "None")
+			if(squad.put_marine_in_squad(human))
+				return
 
-		if(squad == preferred_squad && squad.put_marine_in_squad(human)) //fav squad has a spot for us, no more searching needed.
-			return squad
+		else if(squad.name == preferred_squad) //fav squad has a spot for us, no more searching needed.
+			if(squad.put_marine_in_squad(human))
+				return
 
 		if(!lowest)
 			lowest = squad
@@ -600,7 +586,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	if(!lowest || !lowest.put_marine_in_squad(human))
 		to_world("Warning! Bug in get_random_squad()!")
 		return
-	return lowest
+	return
 
 /datum/authority/branch/role/proc/get_caste_by_text(name)
 	var/mob/living/carbon/xenomorph/M

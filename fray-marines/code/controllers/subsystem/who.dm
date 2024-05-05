@@ -137,13 +137,13 @@ SUBSYSTEM_DEF(who)
 
 	new_list_data["additional_info"] += list(list(
 		"content" = "USS `Almayer` Personnel: [additiona_data["uscm"]]",
-		"color" = "#2d199b",
+		"color" = "#3e26c8",
 		"text" = "Players playing as USS `Almayer` Personnel",
 	))
 
 	new_list_data["additional_info"] += list(list(
 		"content" = "Marines: [additiona_data["uscm_marines"]]",
-		"color" = "#2d199b",
+		"color" = "#3e26c8",
 		"text" = "Players playing as Marines",
 	))
 
@@ -154,7 +154,7 @@ SUBSYSTEM_DEF(who)
 	))
 
 	new_list_data["additional_info"] += list(list(
-		"content" = "Infected Yautjes: [additiona_data["infected_preds"]])",
+		"content" = "Infected Yautjes: [additiona_data["infected_preds"]]",
 		"color" = "#7ABA19",
 		"text" = "Players playing as Infected Yautja",
 	))

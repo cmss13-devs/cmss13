@@ -23,23 +23,22 @@ map khami_barrens
 endmap
 
 map dockred
+	maxplayers 30
 endmap
 
 map prison_station_fop
 endmap
 
 map fiorina_sciannex
-	minplayers 130
+	minplayers 80
 endmap
 
 map corsat
-	minplayers 130
-	voteweight 0
-	disabled
+	minplayers 80
 endmap
 
 map desert_dam
-	minplayers 130
+	minplayers 80
 endmap
 
 map ice_colony_v2
@@ -55,11 +54,11 @@ map kutjevo
 endmap
 
 map sorokyne_strata
-	minplayers 130
+	minplayers 80
 endmap
 
 map lv522_chances_claim
-	minplayers 130
+	minplayers 80
 endmap
 
 map new_varadero

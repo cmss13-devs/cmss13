@@ -624,7 +624,6 @@
 	indestructible = TRUE
 	density = TRUE
 	anchored = TRUE
-	layer = TURF_LAYER
 	var/ispowered = TRUE
 	var/turned_on = 0 //has to be toggled in engineering
 	use_power = USE_POWER_NONE
@@ -716,7 +715,6 @@ GLOBAL_LIST_INIT(ship_floodlights, list())
 	light_color =  "#00ffa0"
 	lum_value = 14
 	light_power = 6
-
 /obj/structure/machinery/colony_floodlight/engineer_circular/update_icon()
 	if(damaged)
 		icon_state = "engineerlight_damaged"

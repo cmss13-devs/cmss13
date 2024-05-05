@@ -166,7 +166,7 @@
 	if(burning)
 		return
 	burning = TRUE
-	cause_data = flame_cause_data
+	cause_data = create_cause_data("Burning Mortar Shell", flame_cause_data.resolve_mob(), src)
 	handle_fire()
 
 /obj/item/mortar_shell/proc/handle_fire()

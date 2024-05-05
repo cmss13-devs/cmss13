@@ -441,6 +441,10 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 				if(hive && hive.color)
 					holder3.color = hive.color
 
+		if(status_flags & CORRUPTED_ALLY)
+			holder4.color = "#80ff80"
+			holder4.icon_state = "hudalien_ally"
+
 		if(stat == DEAD || status_flags & FAKEDEATH)
 			if(revive_enabled)
 				if(!client)

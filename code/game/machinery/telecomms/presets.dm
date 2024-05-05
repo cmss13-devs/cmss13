@@ -313,7 +313,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	if(corrupted)
 		return
 
-	if(!inoperable())
+	if(!inoperable() || on)
 		return
 
 	if(!weeded_turf.weeds)

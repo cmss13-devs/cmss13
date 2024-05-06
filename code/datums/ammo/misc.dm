@@ -51,6 +51,8 @@
 /datum/ammo/flamethrower/tank_flamer
 	flamer_reagent_id = "napalmx"
 
+	max_range = 8
+
 /datum/ammo/flamethrower/sentry_flamer
 	flags_ammo_behavior = AMMO_IGNORE_ARMOR|AMMO_IGNORE_COVER|AMMO_FLAME
 	flamer_reagent_id = "napalmx"
@@ -266,6 +268,9 @@
 	name = "smoke grenade shell"
 	nade_type = /obj/item/explosive/grenade/smokebomb
 	icon_state = "smoke_shell"
+
+/datum/ammo/grenade_container/tank_glauncher
+	max_range = 8
 
 /datum/ammo/hugger_container
 	name = "hugger shell"

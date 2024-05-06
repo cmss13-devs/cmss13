@@ -178,7 +178,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 	V.add_hardpoint(FPW)
 	FPW.dir = turn(V.dir, 90)
 	FPW.name = "Left "+ initial(FPW.name)
-	FPW.origins = list(2, 0)
+	FPW.origins = list(1, 0)
 	FPW.muzzle_flash_pos = list(
 		"1" = list(-18, 14),
 		"2" = list(18, -42),
@@ -191,7 +191,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 	V.add_hardpoint(FPW)
 	FPW.dir = turn(V.dir, -90)
 	FPW.name = "Right "+ initial(FPW.name)
-	FPW.origins = list(-2, 0)
+	FPW.origins = list(-1, 0)
 	FPW.muzzle_flash_pos = list(
 		"1" = list(16, 14),
 		"2" = list(-18, -42),

@@ -241,10 +241,43 @@
 	no_panel = 1
 	not_weldable = 1
 	var/queen_pryable = TRUE
+	var/obj/docking_port/mobile/marine_dropship/linked_dropship
+
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ex_act(severity)
 	return
 
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/attackby(obj/item/item, mob/user)
+	if(HAS_TRAIT(item, TRAIT_TOOL_MULTITOOL))
+		var/direction
+		switch(id)
+			if("starboard_door")
+				direction = "starboard"
+			if("port_door")
+				direction = "port"
+			if("aft_door")
+				direction = "aft"
+		if(!linked_dropship || !linked_dropship.door_control.door_controllers[direction])
+			return ..()
+		var/datum/door_controller/single/control = linked_dropship.door_control.door_controllers[direction]
+		if (control.status != SHUTTLE_DOOR_BROKEN)
+			return ..()
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI) && !skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
+			to_chat(user, SPAN_WARNING("You don't seem to understand how to restore a remote connection to [src]."))
+			return
+		if(user.action_busy)
+			return
+
+		to_chat(user, SPAN_WARNING("You begin to restore the remote connection to [src]."))
+		if(!do_after(user, (skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI) ? 5 SECONDS : 8 SECONDS), INTERRUPT_ALL, BUSY_ICON_BUILD))
+			to_chat(user, SPAN_WARNING("You fail to restore a remote connection to [src]."))
+			return
+		unlock(TRUE)
+		close(FALSE)
+		control.status = SHUTTLE_DOOR_UNLOCKED
+		to_chat(user, SPAN_WARNING("You successfully restored the remote connection to [src]."))
+		return
+	..()
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/unlock()
 	if(is_reserved_level(z))
@@ -258,13 +291,31 @@
 	if(!queen_pryable)
 		return ..()
 
-	if(!locked)
-		return ..()
+	if(xeno.action_busy)
+		return
 
-	to_chat(xeno, SPAN_NOTICE("You try and force the doors open"))
+	var/direction
+	switch(id)
+		if("starboard_door")
+			direction = "starboard"
+		if("port_door")
+			direction = "port"
+		if("aft_door")
+			direction = "aft"
+	var/datum/door_controller/single/control
+	if(linked_dropship && linked_dropship.door_control.door_controllers[direction])
+		control = linked_dropship.door_control.door_controllers[direction]
+
+	if(control && control.status == SHUTTLE_DOOR_BROKEN)
+		to_chat(xeno, SPAN_NOTICE("The door is already disabled."))
+		return
+
+	to_chat(xeno, SPAN_WARNING("You try and force the doors open!"))
 	if(do_after(xeno, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		if(control)
+			control.status = SHUTTLE_DOOR_BROKEN
 		unlock(TRUE)
-		open(1)
+		open(TRUE)
 		lock(TRUE)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1
@@ -336,7 +387,7 @@
 				continue
 			INVOKE_ASYNC(atom_movable, TYPE_PROC_REF(/atom/movable, throw_atom), projected, 1, SPEED_FAST, null, FALSE)
 
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock, idnum, override)
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/connect_to_shuttle(mapload, obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
 	. = ..()
 	if(istype(port, /obj/docking_port/mobile/crashable/lifeboat))
 		var/obj/docking_port/mobile/crashable/lifeboat/lifeboat = port
@@ -382,6 +433,194 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor/proc/bolt_explosion()
 	var/turf/turf = get_step(src, throw_dir|dir)
 	cell_explosion(turf, 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("lifeboat explosive bolt"))
+
+// Elevator door
+/obj/structure/machinery/door/airlock/multi_tile/elevator
+	icon = 'icons/obj/structures/doors/4x1_elevator.dmi'
+	icon_state = "door_closed"
+	width = 4
+	openspeed = 22
+
+/obj/structure/machinery/door/airlock/multi_tile/elevator/research
+	name = "\improper Research Elevator Hatch"
+
+/obj/structure/machinery/door/airlock/multi_tile/elevator/arrivals
+	name = "\improper Arrivals Elevator Hatch"
+
+/obj/structure/machinery/door/airlock/multi_tile/elevator/dormatory
+	name = "\improper Dormitory Elevator Hatch"
+
+/obj/structure/machinery/door/airlock/multi_tile/elevator/freight
+	name = "\improper Freight Elevator Hatch"
+
+
+/obj/structure/machinery/door/airlock/multi_tile/elevator/access
+	icon = 'icons/obj/structures/doors/4x1_elevator_access.dmi'
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/elevator/access/research
+	name = "\improper Research Elevator Hatch"
+
+/obj/structure/machinery/door/airlock/multi_tile/elevator/access/arrivals
+	name = "\improper Arrivals Elevator Hatch"
+
+/obj/structure/machinery/door/airlock/multi_tile/elevator/access/dormatory
+	name = "\improper Dormitory Elevator Hatch"
+
+/obj/structure/machinery/door/airlock/multi_tile/elevator/access/freight
+	name = "\improper Freight Elevator Hatch"
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor
+	name = "\improper Security Airlock"
+	icon = 'icons/obj/structures/doors/2x1secdoor.dmi'
+	req_access = list(ACCESS_MARINE_BRIG)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/colony
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/reinforced
+	masterkey_resist = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/reinforced/colony
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/reinforced/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass
+	icon = 'icons/obj/structures/doors/2x1secdoor_glass.dmi'
+	opacity = FALSE
+	glass = TRUE
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/colony
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced
+	masterkey_resist = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced/colony
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass/reinforced/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor
+	name = "\improper Engineering Airlock"
+	icon = 'icons/obj/structures/doors/2x1engidoor.dmi'
+	req_access = list()
+	req_one_access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_ENGINEERING)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/colony
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass
+	icon = 'icons/obj/structures/doors/2x1engidoor_glass.dmi'
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine
+	icon = 'icons/obj/structures/doors/2x1prepdoor.dmi'
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/colony
+	req_access = null
+	req_one_access = list(ACCESS_CIVILIAN_PUBLIC)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/alpha
+	name = "\improper Alpha Squad Preparations"
+	icon = 'icons/obj/structures/doors/2x1prepdoor_alpha.dmi'
+	req_access = list(ACCESS_MARINE_PREP)
+	req_one_access = list(ACCESS_MARINE_DATABASE, ACCESS_MARINE_CARGO, ACCESS_MARINE_ALPHA)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/bravo
+	name = "\improper Bravo Squad Preparations"
+	icon = 'icons/obj/structures/doors/2x1prepdoor_bravo.dmi'
+	req_access = list(ACCESS_MARINE_PREP)
+	req_one_access = list(ACCESS_MARINE_DATABASE, ACCESS_MARINE_CARGO, ACCESS_MARINE_BRAVO)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/charlie
+	name = "\improper Charlie Squad Preparations"
+	icon = 'icons/obj/structures/doors/2x1prepdoor_charlie.dmi'
+	req_access = list(ACCESS_MARINE_PREP)
+	req_one_access = list(ACCESS_MARINE_DATABASE, ACCESS_MARINE_CARGO, ACCESS_MARINE_CHARLIE)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/delta
+	name = "\improper Delta Squad Preparations"
+	icon = 'icons/obj/structures/doors/2x1prepdoor_delta.dmi'
+	req_access = list(ACCESS_MARINE_PREP)
+	req_one_access = list(ACCESS_MARINE_DATABASE, ACCESS_MARINE_CARGO, ACCESS_MARINE_DELTA)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared
+	name = "\improper Squads Preparations"
+	icon = 'icons/obj/structures/doors/prepdoor.dmi'
+	req_one_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_DATABASE, ACCESS_MARINE_CARGO, ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/alpha_bravo
+	name = "\improper Alpha-Bravo Squads Preparations"
+	icon = 'icons/obj/structures/doors/2x1prepdoor_alpha.dmi'
+	req_one_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_DATABASE, ACCESS_MARINE_CARGO, ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/alpha_bravo/yellow
+	icon = 'icons/obj/structures/doors/2x1prepdoor_bravo.dmi'
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/charlie_delta
+	name = "\improper Charlie-Delta Squads Preparations"
+	icon = 'icons/obj/structures/doors/2x1prepdoor_charlie.dmi'
+	req_one_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_DATABASE, ACCESS_MARINE_CARGO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/charlie_delta/blue
+	icon = 'icons/obj/structures/doors/2x1prepdoor_delta.dmi'
+
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/2x1personaldoor.dmi'
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2/glass
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/2x1personaldoor_glass.dmi'
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2/glass/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer
+	name = "\improper Airlock"
+	icon = 'icons/obj/structures/doors/2x1almayerdoor.dmi'
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass
+	icon = 'icons/obj/structures/doors/2x1almayerdoor_glass.dmi'
+	opacity = FALSE
+	glass = TRUE
+
 
 // Elevator door
 /obj/structure/machinery/door/airlock/multi_tile/elevator

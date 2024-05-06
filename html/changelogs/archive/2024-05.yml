@@ -75,3 +75,15 @@
   - bugfix: Fixes sentries firing at xenos while vent crawling.
   - bugfix: fixes hugger not dying when squished by predator
   - bugfix: Burrower can no longer tunnel across the map.
+2024-05-06:
+  Git-Nivrak:
+  - balance: Watcher is now immobilized when zoomed out and loses health off weeds
+      when not zoomed out
+  ihatethisengine:
+  - balance: SADAR backblast now knockdowns and is reduced by xeno explosion resistance
+  s5nt:
+  - rscadd: Added more materials to pred ship including more sandstone, wood, table
+      parts, etc for lodge construction, along with more pred specific food to the
+      pred kitchen.
+  - maptweak: Slightly expanded pred ship material storage area by moving bracer storage
+      over to the left side of the ship.

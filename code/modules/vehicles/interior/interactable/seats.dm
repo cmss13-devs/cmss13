@@ -18,6 +18,7 @@
 
 	// Which vehicle skill level required to use this
 	var/required_skill = SKILL_VEHICLE_SMALL
+	req_access = list()
 
 /obj/structure/bed/chair/comfy/vehicle/ex_act()
 	return
@@ -79,7 +80,9 @@
 		if(target == user)
 			to_chat(user, SPAN_WARNING("You have no idea how to drive this thing!"))
 		return FALSE
-
+	if(!allowed(target))
+		to_chat(user, SPAN_WARNING("The driving console blinks as it refuses your ID, Access Denied"))
+		return FALSE
 	if(vehicle)
 		vehicle.vehicle_faction = target.faction
 

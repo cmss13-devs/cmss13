@@ -17,7 +17,7 @@
 
 	interior_map = /datum/map_template/interior/arc
 
-	passengers_slots = 3
+	passengers_slots = 4
 	xenos_slots = 5
 
 	entrances = list(
@@ -28,6 +28,7 @@
 	entrance_speed = 0.5 SECONDS
 
 	required_skill = SKILL_VEHICLE_LARGE
+	driving_access = ACCESS_MARINE_COMMAND
 
 	movement_sound = 'sound/vehicles/tank_driving.ogg'
 

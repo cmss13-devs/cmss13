@@ -71,6 +71,7 @@
 	S.layer = layer
 	S.vehicle = I.exterior
 	S.required_skill = S.vehicle.required_skill
+	S.req_access += S.vehicle.driving_access
 	S.setDir(dir)
 	S.alpha = alpha
 	S.update_icon()
@@ -116,6 +117,7 @@
 	S.icon_state = icon_state
 	S.vehicle = I.exterior
 	S.required_skill = S.vehicle.required_skill
+	S.req_access += S.vehicle.driving_access
 	S.setDir(dir)
 	S.update_icon()
 	S.alpha = alpha

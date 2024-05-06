@@ -65,7 +65,7 @@
 
 	// The amount of skill required to drive the vehicle
 	var/required_skill = SKILL_VEHICLE_SMALL
-
+	var/driving_access = null
 
 	req_access = list() //List of accesses you need to enter
 	req_one_access = list() //List of accesses you need one of to enter

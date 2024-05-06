@@ -175,12 +175,12 @@
 #define TRAIT_INFILTRATOR_SYNTH "t_infiltrator_synth"
 /// Makes it impossible to strip the inventory of this mob.
 #define TRAIT_UNSTRIPPABLE "t_unstrippable"
+/// If the species can use objects.
+#define TRAIT_OPPOSABLE_THUMBS "t_thumbs"
 
 // HIVE TRAITS
 /// If the Hive is a Xenonid Hive
 #define TRAIT_XENONID "t_xenonid"
-/// If the hive or xeno can use objects.
-#define TRAIT_OPPOSABLE_THUMBS "t_thumbs"
 /// If the Hive delays round end (this is overridden for some hives). Does not occur naturally. Must be applied in events.
 #define TRAIT_NO_HIVE_DELAY "t_no_hive_delay"
 /// If the Hive uses it's colors on the mobs. Does not occur naturally, excepting the Mutated hive.
@@ -348,6 +348,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_CANNOT_EAT" = TRAIT_CANNOT_EAT,
 		"TRAIT_VULTURE_USER" = TRAIT_VULTURE_USER,
 		"TRAIT_CLOAKED" = TRAIT_CLOAKED,
+		"TRAIT_OPPOSABLE_THUMBS" = TRAIT_OPPOSABLE_THUMBS,
 	),
 //	/mob/living/carbon/human = list(
 //	),

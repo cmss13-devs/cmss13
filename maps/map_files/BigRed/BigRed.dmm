@@ -26626,7 +26626,7 @@
 /area/bigredv2/caves/mining)
 "cry" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/handcuffs,
+/obj/item/restraint/handcuffs,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "redfull"

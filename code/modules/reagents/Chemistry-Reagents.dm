@@ -78,9 +78,12 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		P.reset_reagent()
 
 	for(var/datum/chem_property/P in properties)
-		var/mods = handle_pre_processing()
-		var/potency = mods[REAGENT_EFFECT] * ((P.level+mods[REAGENT_BOOST]) * 0.5)
-		P.update_reagent(potency)
+		if(P.name == PROPERTY_BOOSTING)
+			var/boost = P.pre_process()
+			var/potency = boost[REAGENT_EFFECT] * ((P.level+boost[REAGENT_BOOST]) * 0.5)
+			P.update_reagent(potency)
+		else
+			P.update_reagent()
 
 	for(var/datum/chem_property/P in properties)
 		P.post_update_reagent()

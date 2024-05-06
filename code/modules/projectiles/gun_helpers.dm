@@ -776,7 +776,7 @@ DEFINES in setup.dm, referenced here.
 		return
 
 	flags_gun_features ^= GUN_LIMIT_AMMO_DISPLAY
-	to_chat(usr, SPAN_NOTICE("You toggle the ammo to display on every [SPAN_BOLD(flags_gun_features & GUN_LIMIT_AMMO_DISPLAY ? "fifth" : "single")] bullet."))
+	to_chat(usr, SPAN_NOTICE("You toggle the weapon to display the ammo on every [SPAN_BOLD(flags_gun_features & GUN_LIMIT_AMMO_DISPLAY ? "fifth" : "single")] bullet."))
 
 /obj/item/weapon/gun/verb/toggle_gun_safety()
 	set category = "Weapons"

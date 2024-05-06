@@ -29,48 +29,62 @@
 	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL
 
-//Landing Zone 1
+// Landing Zone 1
 
-/area/lv759/landing_zone_1
-	name = "Hybrisa - Landing Zone One"
-	icon_state = "explored"
+/area/lv759/outdoors/landing_zone_1
+	name = "Nova Medica Hospital Complex - Emergency Response Landing Zone One"
+	icon_state = "medical_lz1"
 	is_resin_allowed =  FALSE
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_LZ
-
-/area/lv759/landing_zone_1/ceiling
+	ceiling = CEILING_NONE
+/area/lv759/indoors/landing_zone_1/flight_control_room
+	name = "Nova Medica Hospital Complex - Emergency Response Landing Zone One - Flight Control Room"
+	icon_state = "hybrisa"
 	ceiling = CEILING_METAL
-
-/area/lv759/landing_zone_1/tunnel
-	name = "Hybrisa - Landing Zone One Tunnels"
-	ceiling = CEILING_METAL
-
-/area/lv759/landing_zone_1/lz1_console
-	name = "Hybrisa - Dropship Alamo Console"
-	icon_state = "tcomsatcham"
+/area/lv759/indoors/landing_zone_1/lz1_console
+	name = "Nova Medica Hospital Complex - Emergency Response Landing Zone One - Dropship Alamo Console"
+	icon_state = "hybrisa"
 	requires_power = FALSE
+	ceiling = CEILING_METAL
 
-//Landing Zone 2
-
-/area/lv759/landing_zone_2
-	name = "Hybrisa - Landing Zone Two"
-	icon_state = "explored"
+// Landing Zone 2
+/area/lv759/outdoors/landing_zone_2
+	name = "KMCC Interstellar Freight Hub - Landing Zone Two"
+	icon_state = "mining_lz2"
 	is_resin_allowed =  FALSE
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_LZ
-
-/area/lv759/landing_zone_2/ceiling
-	ceiling = CEILING_METAL
-
-/area/shuttle/drop2/lv759
-	name = "Hybrisa - Dropship Normandy Landing Zone"
-	icon_state = "shuttle2"
-	icon = 'icons/turf/area_shiva.dmi'
-
-/area/lv759/landing_zone_2/lz2_console
-	name = "Hybrisa - Dropship Normandy Console"
-	icon_state = "tcomsatcham"
+	ceiling = CEILING_NONE
+/area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room
+	name = "KMCC Interstellar Freight Hub - Flight Control Room"
+	icon_state = "hybrisa"
+/area/lv759/indoors/landing_zone_2/kmcc_hub_security
+	name = "KMCC Interstellar Freight Hub - Security Checkpoint Office"
+	icon_state = "security_checkpoint"
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_north
+	name = "KMCC Interstellar Freight Hub - Passenger Departures - Lounge North"
+	icon_state = "hybrisa"
+/area/lv759/indoors/landing_zone_2/kmcc_hub_fuel
+	name = "KMCC Interstellar Freight Hub - Fuel Storage & Maintenance - North"
+	icon_state = "hybrisa"
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_south
+	name = "KMCC Interstellar Freight Hub - Passenger Departures - Lounge South"
+	icon_state = "hybrisa"
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway
+	name = "KMCC Interstellar Freight Hub - Passenger Departures - Hallway"
+	icon_state = "hybrisa"
+/area/lv759/indoors/landing_zone_2/kmcc_hub_south_office
+	name = "KMCC Interstellar Freight Hub - Passenger Departures - South Office"
+	icon_state = "hybrisa"
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance
+	name = "KMCC Interstellar Freight Hub - Passenger Departures - Maintenance"
+	icon_state = "hybrisa"
+/area/lv759/indoors/landing_zone_2/kmcc_hub/lz2_console
+	name = "KMCC Interstellar Freight Hub - Dropship Normandy Console"
+	icon_state = "hybrisa"
 	requires_power = FALSE
+	ceiling = CEILING_METAL
 
 //Outdoors areas
 

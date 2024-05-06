@@ -325,11 +325,20 @@
 /turf/open/floor/almayer/aicore/glowing
 	icon_state = "ai_floor2"
 	light_color = "#d69c46"
-	light_range = 2
+	light_range = 3
 
 /turf/open/floor/almayer/aicore/glowing/Initialize(mapload, ...)
 	. = ..()
 	set_light_on(TRUE)
+
+	RegisterSignal(SSdcs, COMSIG_GLOB_AICORE_LOCKDOWN, PROC_REF(start_emergency_light_on))
+	RegisterSignal(SSdcs, COMSIG_GLOB_AICORE_LIFT, PROC_REF(start_emergency_light_off))
+
+/turf/open/floor/almayer/aicore/glowing/proc/start_emergency_light_on()
+	set_light(l_color = "#c70f0f")
+
+/turf/open/floor/almayer/aicore/glowing/proc/start_emergency_light_off()
+	set_light(l_color = "#d69c46")
 
 /turf/open/floor/almayer/aicore/no_build
 	allow_construction = FALSE

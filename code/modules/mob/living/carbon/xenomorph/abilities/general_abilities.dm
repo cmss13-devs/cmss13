@@ -295,7 +295,9 @@
 
 /datum/action/xeno_action/onclick/toggle_long_range/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
-	xeno.speed_modifier = initial(xeno.speed_modifier)// Reset the speed modifier should you be disrupted while zooming or whatnot
+
+	if (!xeno.check_state())
+		return
 
 	if(xeno.observed_xeno)
 		return
@@ -326,6 +328,9 @@
 		xeno.speed_modifier -= movement_slowdown
 		xeno.recalculate_speed()
 	button.icon_state = "template"
+
+/datum/action/xeno_action/onclick/toggle_long_range/proc/on_zoom_in()
+	return
 
 /datum/action/xeno_action/onclick/toggle_long_range/proc/handle_mob_move_or_look(mob/living/carbon/xenomorph/xeno, actually_moving, direction, specific_direction)
 	SIGNAL_HANDLER

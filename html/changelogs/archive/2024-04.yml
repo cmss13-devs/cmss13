@@ -1,0 +1,355 @@
+2024-04-01:
+  Drathek:
+  - rscadd: Moved holocards to the squad hud
+  Huffie56:
+  - refactor: refactored the lambda areas.
+  - maptweak: turned south padlock into a checkpoint.
+  - bugfix: replace space bellow door in the temple by proper floor.
+  - maptweak: added a missing platform part.
+  SabreML:
+  - bugfix: Fixed a runtime error caused when trying to open an already opened backpack.
+  - bugfix: Fixed a few runtime errors caused by the 'Cycle Helmet HUD' keybind.
+  - bugfix: Fixed a runtime error preventing a 'Marine Minor' (Hive collapse) roundend
+      state.
+  Segrain:
+  - bugfix: Mortar works properly once again.
+  SpartanBobby:
+  - maptweak: LV522 Cargo containers keeping FORECON out of the crashed ship have
+      been moved back slightly allowing marines and xenos a new flank route
+  realforest2001:
+  - code_imp: Removes an unused camera var.
+2024-04-02:
+  sleepynecrons:
+  - imageadd: added missing backpack onmob states for "classic" gearset
+2024-04-03:
+  vero5123:
+  - bugfix: lowers the scalpel and chunk box's ability to destroy various structures.
+  - rscadd: chunk box is now a melee weapon
+2024-04-04:
+  QuickLode:
+  - qol: Moves CL's Office and SEA's Office phone lines to "Offices" category.
+  realforest2001:
+  - rscadd: Added AI Core camera consoles to CE, CO and Brig offices, along with CIC
+      and Lifeboat bubble.
+  - maptweak: Added Tech Control Console to ARES Core.
+  - rscadd: Added Tech Unlock logs to ARES Interface
+2024-04-05:
+  Drathek:
+  - bugfix: Fixed some number entry for your pin and access code in the EFTPOS
+  Git-Nivrak:
+  - qol: Acid sprays will now extinguish fire from other xenomorphs more consistently
+  ihatethisengine:
+  - balance: night vision optics no longer can be used with binoculars.
+  vero5123:
+  - bugfix: xenos can no longer attempt to use corrosive acid after death
+2024-04-06:
+  Huffie56:
+  - balance: add the ability to store fixOvein in the pouch medkit.
+  QuickLode:
+  - balance: Metal rods take up less space in an inventory (3 slots to 2)
+  - code_imp: removes some redundant code on plasteel rods
+  vero5123:
+  - bugfix: fixes queen getting stuck in the lobby if they take too long
+2024-04-07:
+  Ben10083:
+  - balance: Mobs with super strength now have an advantage when resisting of a grab
+      is done, both as the grabber and the one being grabbed (Xenos not affected,
+      works as before).
+  - balance: Mobs with super strength no longer have their passive grabs a guaranteed
+      resist (unless both super).
+  Drathek:
+  - bugfix: Fixed objectives not getting displayed for CMB and cultist ERTs.
+  - balance: Cryotubes no longer multiply chemicals.
+  - balance: Cryotubes can now allow chemicals to process in dead if cryoxadone or
+      clonexadone is present.
+  - bugfix: Fixed cryotubes not actually updating their icons/power usage when they
+      become unpowered.
+  - bugfix: Fixed cryotubes healing despite inoperable.
+  - bugfix: The cryotube Eject Occupant verb now works for people other than the occupant
+      (useful if inoperable)
+  - ui: Cryotubes can optionally announce again on the medical channel.
+  InsaneRed:
+  - balance: Goon armor properly has slowdown now
+  Johannes2262:
+  - maptweak: All cell shutters are now linked to the button in the warden's office
+  Kaga:
+  - rscadd: Added the XM43E1 Anti-Materiel Rifle as a pickable sidegrade option for
+      USCM Sniper Specs through the vendor, mutually exclusive with the normal M42A
+      Sniper Rifle. The AMR can shred obstacles, blow a hole through most infantry
+      and their equipment, and even hit a collateral on multiple targets or through
+      light cover, but its lack of specialized ammunition and small magazine mean
+      that you'll need to make every shot count. Ammo can be bought from Req, at the
+      same cost per magazine as the M42A.
+  - balance: Completely updated the XM43E1 AMR, adding damage falloff to its wall-piercing
+      properties whenever it hits something alongside range loss. Most things reduce
+      its damage by 20%. Dense walls and big xenos reduce both the damage and range
+      3 times as much.
+  NervanCatos:
+  - balance: removes CT access to marine prep weapons racks, doubles ammo count of
+      all regular ammo in req to compensate.
+  SabreML:
+  - admin: Added attack logging for Xeno tackling.
+  Vanagandr, totalepicness:
+  - rscadd: Added a button to event panel to give xenomorphs opposable thumbs and
+      firearms permits, to individuals, to hives, or to all xenos everywhere. They're
+      clumsy, though, and have issues with fine manipulation sometimes. Remember that
+      warriors cannot throw objects and make for poor grenadiers.
+  - rscadd: Xenos with opposable thumbs can use buckles, drive vehicles, use machine
+      guns and vendors without care for access or skills
+  Waseemq1235:
+  - mapadd: Added an APOLLO maintenance controller to the Warden's Office.
+  cuberound:
+  - balance: greatly decreses snow removal time, now it depends on xenomorph size
+  - balance: allows movement during tactical reload (to perform tactical reload click
+      and drag from a magazine to gun in your hand)
+  - balance: reduced GAU spread from 9x9 to 7x7
+  - balance: reduced GAU shots fired per shot back to 1 (bullets per tile from 0.99
+      to 0.82)
+  realforest2001:
+  - rscadd: Added ARES logging for launching supply drops.
+  - admin: Added staff logs for launching supply drops.
+  vero5123:
+  - bugfix: Fixes armor light staying on after removal.
+2024-04-08:
+  BadAtThisGame302:
+  - rscadd: Added the new UPPA and Naval Patches to all UPP inserts.
+  - bugfix: Fixed the insulated gloves not having the insulated sprite.
+  - imageadd: added a black and blue satchel, also an updated red armband sprite courtesy
+      of AmoryBlaine
+  - imageadd: added a big UA flag, a UPP table and two new UPP patches all thanks
+      to the folks over at PVE. AmoryBlaine, Morrow and AndroBetel
+  HumiliatedGoblin:
+  - rscadd: Adds a one hour medical timelock for DCC's
+  - rscadd: 'Adds a tip of the round to accommodate for this PR and #5808'
+  - balance: DCCs and Pilots can now fix queen broken dropship doors
+  Mister-moon1:
+  - balance: increased GL and pyro armour light range to properly match other armours
+      like it.
+  SabreML:
+  - ui: Added a 'search by key' button to the Keybind menu.
+  Stan_albatross,kugamo,LTNTS,Drathek:
+  - balance: medical vendors, excepting nanomeds, can now only refill/restock stacks
+      and autoinjectors/bottles when on special medical supply link ports that can
+      only be found shipside. Sprite by kugamo.
+  - bugfix: supply pads will no longer generate ambient occlusion.
+  Steelpoint:
+  - rscadd: MRE's will now auto-delete if they do not contain and food items when
+      they are discarded.
+  cuberound:
+  - balance: flames melt the snow
+  ihatethisengine:
+  - rscadd: CC camera now can broadcast to TVs.
+2024-04-09:
+  vero5123:
+  - bugfix: Notifications should no longer emit light.
+2024-04-10:
+  Drathek:
+  - rscadd: Added preference for a darker crit overlay and black flash overlay
+2024-04-12:
+  BadAtThisGame302:
+  - bugfix: The CMB Deputy not being able to use his breaching charge by replacing
+      it with a rubber one.
+  InsaneRed:
+  - rscdel: Helmets no longer hide ears
+  TopHatPenguin:
+  - bugfix: Fixes Nightmare documentation example.
+2024-04-13:
+  Drathek:
+  - bugfix: Fixed cryotubes still duplicating chemicals because of touch reactions
+  HeresKozmos:
+  - rscadd: Added over a dozen new tips for playing Xenomorph.
+2024-04-14:
+  BadAtThisGame302:
+  - rscadd: Added a CL Surv to Trijent and a CMB Surv to LV.
+  - qol: Changes almost all survivors regardless of maps to fit a more modern artstyle
+      with their uniforms and to remove any marine clothing, as well as updating various
+      presets.
+  Ben10083:
+  - spellcheck: fixed a grammar mistake in a Working Joe voiceline
+  Drathek:
+  - bugfix: Fixed colony lights deconstructing sometimes after explosions
+  - maptweak: Added medlinks under the marinemeds in medbay, hangar panic room, and
+      CIC armory.
+  - rscadd: Patting someone that is dizzy will no longer unrest them
+  - bugfix: Fixed unboxed machines not connecting to the power net
+  Git-Nivrak:
+  - rscadd: Throws will now attempt to reach their target rather than the turf they
+      were on when thrown
+  Huffie56:
+  - balance: added the option to buy restricted firearm for the specialist SU-6 and
+      VP78 each for 15points.
+  - balance: added the option to buy sidearm ammunition M44 (heavy and Marksman) and
+      SU-6 mag for 10 point each.
+  - balance: added the option to buy sidearm ammunition M4A3 HP and AP for 5 point
+      each.
+  - balance: added the option to buy a whistle for 5 point and a data detector for
+      10 point.
+  - balance: added the option to buy binoculars for 5 point range finder for 10 point
+      and laser designator for 15 point.
+  JohnFulpWillard:
+  - imageadd: Added the Quebec flag to OOC for all Quebecois.
+  QuickLode:
+  - rscadd: 'Adds four new Colony Synthetic Variants: Archaeologist, ICC, Landing
+      Pad Attendant, Surveyor. These are distinctive RP quirks which should help players
+      better choose roles they like, they also flesh out the variants.'
+  - rscadd: Diversifies Colony Synthetic weapons and loadouts to be more flavorful
+      and fitting to their roles.
+  - balance: nerfs the backpack of Corporate Protection Synthetic(to 5 spaces) and
+      nailgun ammo for Engineering Synthetic(from 3 to 1)
+  - balance: Brings up several antiquated tools to slightly below 'CM' level (kitchen
+      blades to about a knife, pickaxe to about a machete, police baton to a knife)
+  - bugfix: adds missing hit sound to pickaxe(slicing)
+  - bugfix: adds missing pouch for UPP Synthetic Survivor
+  - spellcheck: properly names reconaissance synthetic in spawn
+  - rscdel: removes Detective and Janitor Synthetic from rotation(temporary, until
+      I can better reaestheticize their looks)
+  Tim Harley cookpet:
+  - rscadd: Added 2 new flamer fuels craftable by OTs/Chemistry
+  - balance: CLF3 recipe now gives more units per reaction
+  - balance: OT rockets explosion power and falloff nerfed to be slightly more explosive
+      than the OT M15 grenade (240 exp, 90 falloff).
+  - balance: OT rockets max container volume increased to 210 units (1 beaker, 1 bottle,
+      1 vial).
+  - balance: OT rockets max fire intensity increased to 40 and max duration increased
+      to 48.
+  - balance: OT rockets can no longer make a star shaped fire.
+  - balance: OT rockets max range increased to 7 tiles.
+  harryob:
+  - code_imp: 515.1627 is now required for development - this is not enforced to play
+      on the server, yet
+  realforest2001:
+  - bugfix: Fixes praetorian acid ball harming the prae and other xenos.
+2024-04-15:
+  LTNTS:
+  - maptweak: moves APC in Chance's Claim LZ1 to where it can actually be fixed
+2024-04-16:
+  Huffie56, Zenith, esselnek/sleepynecrons, samy/nauticall, drulikar.:
+  - rscadd: Added fuel pump as machinery on the almayer sprite will change when power
+      is on or off.
+  - rscadd: Fuel pumps are animated when activated and have different state depending
+      on how full the lifeboats are.
+  - imageadd: added the fuel pump icon. updated by esselnek /sleepynecrons and Zenith,
+      they where originally made by nauticall.
+  - maptweak: added the fuel pump to the proper locations.
+  ihatethisengine2:
+  - rscadd: ported stripping menu from TG
+2024-04-17:
+  QuickLode:
+  - balance: M3A1 Synthetic Utility Vest only has a 10% slowdown.
+  iloveloopers:
+  - bugfix: You can no longer buckle xenos onto chairs
+  realforest2001:
+  - rscadd: Added Nerve Gas Release control buttons to the ARES and APOLLO interfaces,
+      allowing the AI core to be secured from large groups or xenomorphs. Built in
+      cooldowns should prevent fatalities.
+  - maptweak: Remodelled the AI Core Reception and WJ spawn area.
+  - maptweak: Switches AI Core cameras over to manual naming.
+  - imageadd: Added sprites for AI Core windows on black Almayer frames.
+  usnpeepoo:
+  - balance: Berserker's rage lock-out duration increased slightly
+2024-04-18:
+  InsaneRed:
+  - balance: Hedgehog now gains explosion immunity to nades if you have above half
+      shard amount.
+  MrStonedOne, LemonInTheDark:
+  - server: config now allows you to warn players to upgrade their byond version,
+      or bar them based on their byond version
+  Steelpoint:
+  - balance: UPP Synthetic's loadout has been reworked to account for its new status
+      as a non-combatant.
+2024-04-19:
+  QuickLode:
+  - rscadd: Adds 3 variations of CMB Marshal and 4 variations of a UA Riot Police
+      Officer to Fiorina Prison Riot nightmare. These are fine men and women in uniform
+      prepared to engage what they suspect is a riot(or in the case of CMB, assisting
+      their underfunded and understaffed colleagues) however, they find something
+      much more sinister going on..
+  - rscadd: Adds a CMB Investigative Synthetic(r) and a UA Police Synthetic.
+  - rscadd: Allows police baton and telescopic baton to shield clash for intimidation
+      and riot tactics.
+  - rscadd: Allows M81 launcher to utilize less lethal baton round
+  - qol: removes taser from some security synthetics belts, replaced with a more synthetic
+      friendly version
+2024-04-20:
+  Huffie56:
+  - balance: Increase damage of standard revolver ammo from 55 to 72.
+  - balance: Marksman ammo remains 55 damage.
+  iloveloopers:
+  - rscadd: adds new flamer fuel type, stabilized metallic foam
+  - rscadd: Incinerator tanks can now hold stabilized metallic foam
+  - balance: High-Combustion napalm fuel is now easier to see on the ground
+2024-04-21:
+  567Turtle:
+  - balance: ' SO can now do basic surgeries'
+  Ben10083:
+  - rscadd: Synthetics when shoved into meat gibber will not be delimbed and spawn
+      their own flesh, but would not die (they are spat out as a torso and head)
+  - admin: Adjustment to meatgibber code to notify admins when a synthetic is being
+      shoved into gibber
+  Git-Nivrak:
+  - bugfix: You can no longer infinitely extend  facehugger's lifetime by REDACTED
+  - balance: Lessers now lose 5 hp every 2 seconds off weeds
+  - bugfix: Fixed a bug which made boilers go way faster than they should
+  LTNTS:
+  - rscadd: Adds Command Tablets to Provost Marshal+
+  iloveloopers:
+  - bugfix: White phosphorus will no longer forcefully set a mob's fire_reagent to
+      be UT napthal
+  realforest2001:
+  - rscadd: Added an ARES Log for chambering the OB Cannon.
+  vero5123:
+  - bugfix: toggling ghost vision now keeps the user's mob visible.
+2024-04-22:
+  Git-Nivrak:
+  - rscdel: Reverted back to old throw logic
+  GrrrKitten:
+  - rscadd: Adds shockwave VFX to powerful explosions
+  - rscadd: Adds shockwave VFX to Queen + Predalien screech
+  LC4492:
+  - rscadd: Adds a new, better variation of the normal photocopier.
+  - imageadd: Adds a new sprite to the new photocopier variation and updates the sprites
+      of both normal, and new photocopiers to look slightly better.
+  - maptweak: Adds the new photocopiers to the CC and CL offices.
+  Zonespace27:
+  - admin: Unmarked tickets now mark themselves when an admin starts responding to
+      one
+  harryob:
+  - bugfix: you can bind to space again
+  iloveloopers:
+  - bugfix: custom flamer fuels no longer work for increasing OT assembly's caps
+  realforest2001:
+  - bugfix: Delaying round start now shows on the timer again.
+  - rscadd: Added ID Modification Log to the Access Report printout from an ID Console.
+2024-04-23:
+  Drulikar:
+  - balance: Cryotubes now also cure external bleeding
+  - bugfix: Fixed internal bleeding granting blood on its last tick
+2024-04-24:
+  Git-Nivrak:
+  - bugfix: Fixes boilers slowing themselves by using long range sight while resting.
+  iloveloopers:
+  - qol: Alt clicking a reagent tank will now toggle whether its dispensing or filling
+2024-04-25:
+  Drathek:
+  - bugfix: 'Fixed hugger handling in drone tutorial: Now the hugger dying will put
+      another hugger into the tutorial morpher.'
+  Steelpoint:
+  - rscadd: UPP and CLF Combat Synthetic preset is now available for admins to spawn
+      them in.
+  ihatethisengine:
+  - bugfix: spotlight no longer breaks after every flight
+  - rscadd: Combat Correspondent can broadcast speech and emotes.
+  - rscadd: Speech close enough to the camera will be shown above connected TVs as
+      abovehead messages
+  realforest2001:
+  - bugfix: You can delete flight logs from ARES Interface again as intended.
+2024-04-26:
+  Git-Nivrak:
+  - qol: You can now change the color of pill bottles in the chem master or with a
+      hand labeler.
+  realforest2001:
+  - spellcheck: Fixes a typo for M4RA AP Ammo in the ASRS menu.
+2024-04-27:
+  Lagomorphica:
+  - balance: The spotter laser designators, scout laser designators, and scout cloak
+      are now unmeltable and indestructible to explosions.

@@ -22085,6 +22085,7 @@
 	dir = 8;
 	health = 80
 	},
+/obj/structure/medical_supply_link,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "sterile_white"

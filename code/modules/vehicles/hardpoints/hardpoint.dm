@@ -125,6 +125,8 @@
 
 	/// Currently selected target to fire at. Set with set_target().
 	var/atom/target
+	/// The type of projectile to fire
+	var/projectile_type = /obj/projectile
 
 //-----------------------------
 //------GENERAL PROCS----------
@@ -149,7 +151,7 @@
 	if(owner || indestructible)
 		return
 
-	health = max(0, health - severity / 2)
+	take_damage(severity / 2)
 	if(health <= 0)
 		visible_message(SPAN_WARNING("\The [src] disintegrates into useless pile of scrap under the damage it suffered."))
 		deconstruct(TRUE)
@@ -159,7 +161,7 @@
 	return
 
 /obj/item/hardpoint/proc/generate_bullet(mob/user, turf/origin_turf)
-	var/obj/projectile/P = new(origin_turf, create_cause_data(initial(name), user))
+	var/obj/projectile/P = new projectile_type(origin_turf, create_cause_data(initial(name), user))
 	P.generate_bullet(new ammo.default_ammo)
 	// Apply bullet traits from gun
 	for(var/entry in traits_to_give)
@@ -180,7 +182,14 @@
 		return TRUE
 
 /obj/item/hardpoint/proc/take_damage(damage)
+	if(health <= 0)
+		return
 	health = max(0, health - damage * damage_multiplier)
+	if(!health)
+		on_destroy()
+
+/obj/item/hardpoint/proc/on_destroy()
+	return
 
 /obj/item/hardpoint/proc/is_activatable()
 	if(health <= 0)
@@ -581,7 +590,6 @@
 
 /// Wrapper proc for the autofire system to ensure the important args aren't null.
 /obj/item/hardpoint/proc/fire_wrapper(atom/target, mob/living/user, params)
-	SHOULD_NOT_OVERRIDE(TRUE)
 	if(!target)
 		target = src.target
 	if(!user)
@@ -717,7 +725,9 @@
 	var/is_broken = health <= 0
 	var/image/I = image(icon = disp_icon, icon_state = "[disp_icon_state]_[is_broken ? "1" : "0"]", pixel_x = x_offset, pixel_y = y_offset, dir = new_dir)
 	switch(round((health / initial(health)) * 100))
-		if(0 to 20)
+		if(0)
+			I.color = "#888888"
+		if(1 to 20)
 			I.color = "#4e4e4e"
 		if(21 to 40)
 			I.color = "#6e6e6e"
@@ -792,3 +802,11 @@
 
 /obj/item/hardpoint/get_applying_acid_time()
 	return 10 SECONDS //you are not supposed to be able to easily combat-melt irreplaceable things.
+
+/// Proc to be overridden if you want to have special conditions preventing the removal of the hardpoint. Add chat messages in this proc if you want to tell the player why
+/obj/item/hardpoint/proc/can_be_removed(mob/remover)
+	SHOULD_CALL_PARENT(TRUE)
+
+	if(remover.stat > CONSCIOUS)
+		return FALSE
+	return TRUE

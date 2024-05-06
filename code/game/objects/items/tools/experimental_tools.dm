@@ -157,7 +157,7 @@
 		end_cpr()
 		return PROCESS_KILL
 
-	if(world.time > last_pump + 10 SECONDS)
+	if(world.time > last_pump + 7.5 SECONDS)
 		last_pump = world.time
 		if(H.stat == UNCONSCIOUS)
 			var/suff = min(H.getOxyLoss(), 10) //Pre-merge level, less healing, more prevention of dying.

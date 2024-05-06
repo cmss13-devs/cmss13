@@ -64959,6 +64959,14 @@
 /obj/structure/machinery/camera/autoname/lz_camera,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/landing_pad_one)
+"uIC" = (
+/obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/obj/structure/medical_supply_link/green,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "whitegreenfull"
+	},
+/area/desert_dam/building/medical/treatment_room)
 "uKo" = (
 /obj/structure/platform/mineral/sandstone/runed{
 	dir = 4
@@ -102788,7 +102796,7 @@ cvU
 cvU
 cCn
 ctW
-cEy
+uIC
 cEB
 cGg
 cHc

@@ -1,5 +1,6 @@
-import type { Observable } from './types';
 import { filter, sortBy } from 'common/collections';
+
+import type { Observable } from './types';
 
 enum HEALTH {
   Good = 69,

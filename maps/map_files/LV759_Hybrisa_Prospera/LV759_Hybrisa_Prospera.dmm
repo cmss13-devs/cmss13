@@ -25888,9 +25888,6 @@
 	icon_state = "orange_edge"
 	},
 /area/whiskey_outpost/inside/caves)
-"epq" = (
-/turf/closed/wall/hybrisa/colony/reinforced/hull,
-/area/lv759/indoors/jacks_surplus)
 "epJ" = (
 /obj/structure/barricade/handrail/hybrisa/handrail{
 	dir = 4
@@ -30517,9 +30514,6 @@
 	},
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/indoors/caves/north_caves)
-"fed" = (
-/turf/closed/wall/hybrisa/marhsalls_unmeltable,
-/area/lv759/indoors/colonial_marshals/prisoners_recreation_area)
 "feh" = (
 /turf/closed/wall/hybrisa/colony,
 /area/lv759/indoors/apartment/westshowers)
@@ -59626,8 +59620,6 @@
 	},
 /turf/open/hybrisa/street/cement1,
 /area/lv759/outdoors/colony_streets/central_streets)
-"jUZ" = (
-/turf/closed/wall/hybrisa/colony/reinforced/hull)
 "jVg" = (
 /turf/open/floor/hybrisa/metal/zbrownfloor1{
 	dir = 9
@@ -93526,9 +93518,6 @@
 	},
 /turf/open/floor/hybrisa/metal/bluemetalfull,
 /area/lv759/indoors/spaceport/communications_office)
-"pxT" = (
-/turf/closed/wall/kutjevo/colony/reinforced/hull,
-/area/lv759/indoors/south_public_restroom)
 "pxU" = (
 /obj/structure/machinery/colony_floodlight/street{
 	layer = 7;
@@ -109911,7 +109900,8 @@
 "sfB" = (
 /obj/structure/blocker/forcefield/vehicles,
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
-	autoname = 1
+	autoname = 1;
+	locked = 1
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -118536,9 +118526,6 @@
 	dir = 9
 	},
 /area/lv759/indoors/meridian/meridian_foyer)
-"tBn" = (
-/turf/closed/wall/hybrisa/colony/reinforced/hull,
-/area/lv759/indoors/southwest_public_restroom)
 "tBo" = (
 /obj/structure/fence{
 	icon = 'icons/obj/structures/props/electric_fence.dmi'
@@ -119108,9 +119095,6 @@
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/corsat,
 /area/lv759/oob)
-"tHg" = (
-/turf/closed/wall/hybrisa/colony/reinforced/hull,
-/area/lv759/indoors/south_public_restroom)
 "tHk" = (
 /obj/structure/pipes/portables_connector{
 	dir = 1
@@ -137473,9 +137457,6 @@
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/hospital/central_hallway)
-"wGO" = (
-/turf/closed/wall/kutjevo/colony/reinforced/hull,
-/area/lv759/indoors/jacks_surplus)
 "wGQ" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
@@ -142935,7 +142916,8 @@
 "xzO" = (
 /obj/structure/blocker/forcefield/vehicles,
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
-	autoname = 1
+	autoname = 1;
+	locked = 1
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/electical_systems/substation1)
@@ -176306,15 +176288,15 @@ hcI
 hcI
 hcI
 hcI
-fed
-fed
+mpH
+mpH
 rGI
 rGI
 wAL
 rGI
 rGI
-fed
-fed
+mpH
+mpH
 mpH
 unn
 unn
@@ -183902,7 +183884,7 @@ aCU
 aCU
 aCU
 aCU
-tBn
+hcI
 unn
 unn
 unn
@@ -184154,7 +184136,7 @@ aCU
 gjT
 dGy
 xwn
-tBn
+hcI
 unn
 unn
 unn
@@ -184406,7 +184388,7 @@ aCU
 aCU
 aCU
 udw
-tBn
+hcI
 unn
 unn
 unn
@@ -184658,7 +184640,7 @@ aCU
 cNV
 dGy
 mZF
-tBn
+hcI
 unn
 unn
 unn
@@ -184910,7 +184892,7 @@ aCU
 aCU
 aCU
 lEF
-tBn
+hcI
 unn
 unn
 unn
@@ -185162,7 +185144,7 @@ aCU
 kdP
 eht
 hsO
-tBn
+hcI
 unn
 unn
 unn
@@ -185414,7 +185396,7 @@ aCU
 wPE
 hsO
 gkU
-tBn
+hcI
 unn
 unn
 unn
@@ -185666,8 +185648,8 @@ bzE
 dOa
 fqw
 hsO
-tBn
-tBn
+hcI
+hcI
 unn
 unn
 unn
@@ -185919,8 +185901,8 @@ aup
 aup
 rKF
 aup
-epq
-epq
+hcI
+hcI
 unn
 unn
 unn
@@ -186172,11 +186154,11 @@ bcp
 fnL
 aGN
 aup
-epq
-epq
-epq
-epq
-epq
+hcI
+hcI
+hcI
+hcI
+hcI
 unn
 xpe
 aEB
@@ -187184,7 +187166,7 @@ elP
 jUh
 vTt
 fqh
-epq
+hcI
 unn
 unn
 unn
@@ -187436,7 +187418,7 @@ lxc
 vqR
 qkN
 iRt
-epq
+hcI
 unn
 unn
 unn
@@ -187688,7 +187670,7 @@ qkN
 qkN
 cwt
 dHc
-epq
+hcI
 unn
 unn
 unn
@@ -187940,7 +187922,7 @@ wmq
 stw
 eqi
 cXQ
-epq
+hcI
 unn
 unn
 unn
@@ -188192,7 +188174,7 @@ aup
 aup
 aup
 aup
-epq
+hcI
 unn
 unn
 unn
@@ -188444,8 +188426,8 @@ aup
 fiE
 qIJ
 arY
-epq
-epq
+hcI
+hcI
 unn
 unn
 unn
@@ -188696,9 +188678,9 @@ xVm
 eto
 iQy
 kIo
-epq
-epq
-epq
+hcI
+hcI
+hcI
 unn
 unn
 unn
@@ -188948,10 +188930,10 @@ aup
 jwH
 cWV
 xjO
-epq
-wGO
-epq
-epq
+hcI
+lCG
+hcI
+hcI
 unn
 unn
 unn
@@ -189200,11 +189182,11 @@ aup
 aup
 aup
 aup
-epq
-wGO
-wGO
-epq
-epq
+hcI
+lCG
+lCG
+hcI
+hcI
 unn
 unn
 unn
@@ -189452,11 +189434,11 @@ unn
 unn
 unn
 unn
-epq
-wGO
-wGO
-wGO
-epq
+hcI
+lCG
+lCG
+lCG
+hcI
 unn
 unn
 unn
@@ -192227,9 +192209,9 @@ bHK
 ihO
 bHK
 lTT
-tHg
-tHg
-tHg
+hcI
+hcI
+hcI
 unn
 unn
 unn
@@ -192479,10 +192461,10 @@ tLa
 kmv
 bHK
 xtY
-tHg
-pxT
-tHg
-tHg
+hcI
+lCG
+hcI
+hcI
 unn
 unn
 unn
@@ -192731,11 +192713,11 @@ bHK
 cjH
 uig
 jig
-tHg
-pxT
-pxT
-tHg
-tHg
+hcI
+lCG
+lCG
+hcI
+hcI
 unn
 unn
 unn
@@ -192983,12 +192965,12 @@ nrw
 dYT
 nBl
 sGf
-tHg
-pxT
-pxT
-pxT
-tHg
-tHg
+hcI
+lCG
+lCG
+lCG
+hcI
+hcI
 unn
 unn
 unn
@@ -193235,17 +193217,17 @@ bHK
 bHK
 obr
 bHK
-tHg
-jUZ
-jUZ
-jUZ
-jUZ
-jUZ
-jUZ
-jUZ
-jUZ
-jUZ
-jUZ
+hcI
+hcI
+hcI
+hcI
+hcI
+hcI
+hcI
+hcI
+hcI
+hcI
+hcI
 hcI
 nPO
 epP

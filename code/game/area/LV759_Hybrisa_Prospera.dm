@@ -172,79 +172,79 @@
 
 //Spaceport Indoors
 /area/lv759/indoors/spaceport/hallway_northeast
-	name = "Weyland Yutani Celestia Gateway Space-Port - Hallway - Northeast"
+	name = "Weyland-Yutani Celestia Gateway Space-Port - Hallway - Northeast"
 	icon_state = "WYSpaceport"
 	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/hallway_north
-	name = "Weyland Yutani Celestia Gateway Space-Port - Hallway - North"
+	name = "Weyland-Yutani Celestia Gateway Space-Port - Hallway - North"
 	icon_state = "WYSpaceport"
 	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/hallway_northwest
-	name = "Weyland Yutani Celestia Gateway Space-Port - Hallway - Northwest"
+	name = "Weyland-Yutani Celestia Gateway Space-Port - Hallway - Northwest"
 	icon_state = "WYSpaceport"
 	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/hallway_east
-	name = "Weyland Yutani Celestia Gateway Space-Port - Hallway - East"
+	name = "Weyland-Yutani Celestia Gateway Space-Port - Hallway - East"
 	icon_state = "WYSpaceport"
 	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/heavyequip
-	name = "Weyland Yutani Celestia Gateway Space-Port - Heavy Equipment Storage"
+	name = "Weyland-Yutani Celestia Gateway Space-Port - Heavy Equipment Storage"
 	icon_state = "WYSpaceport"
 	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/engineering
-	name = "Weyland Yutani Celestia Gateway Space-Port - Fuel Storage & Processing"
+	name = "Weyland-Yutani Celestia Gateway Space-Port - Fuel Storage & Processing"
 	icon_state = "WYSpaceport"
 	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/janitor
-	name = "Weyland Yutani Celestia Gateway Space-Port - Janitorial Storage Room"
+	name = "Weyland-Yutani Celestia Gateway Space-Port - Janitorial Storage Room"
 	icon_state = "WYSpaceport"
 	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/maintenance_east
-	name = "Weyland Yutani Celestia Gateway Space-Port - Maintenance - East"
+	name = "Weyland-Yutani Celestia Gateway Space-Port - Maintenance - East"
 	icon_state = "WYSpaceport"
 	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/communications_office
-	name = "Weyland Yutani Celestia Gateway Space-Port - Communications & Administration Office"
+	name = "Weyland-Yutani Celestia Gateway Space-Port - Communications & Administration Office"
 	icon_state = "WYSpaceportadmin"
 	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/flight_control_room
-	name = "Weyland Yutani Celestia Gateway Space-Port - Flight Control Room"
+	name = "Weyland-Yutani Celestia Gateway Space-Port - Flight Control Room"
 	icon_state = "WYSpaceportadmin"
 	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/security
-	name = "Weyland Yutani Celestia Gateway Space-Port - Security- Observation & Office"
+	name = "Weyland-Yutani Celestia Gateway Space-Port - Security- Observation & Office"
 	icon_state = "security_checkpoint"
 	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/security_office
-	name = "Weyland Yutani Celestia Gateway Space-Port - Office"
+	name = "Weyland-Yutani Celestia Gateway Space-Port - Office"
 	icon_state = "security_checkpoint"
 	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/cargo
-	name = "Weyland Yutani Celestia Gateway Space-Port - Cargo"
+	name = "Weyland-Yutani Celestia Gateway Space-Port - Cargo"
 	icon_state = "WYSpaceportcargo"
 	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/cargo_maintenance
-	name = "Weyland Yutani Celestia Gateway Space-Port - Cargo - Maintenance"
+	name = "Weyland-Yutani Celestia Gateway Space-Port - Cargo - Maintenance"
 	icon_state = "WYSpaceportcargo"
 	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/baggagehandling
-	name = "Weyland Yutani Celestia Gateway Space-Port - Baggage Storage & Handling"
+	name = "Weyland-Yutani Celestia Gateway Space-Port - Baggage Storage & Handling"
 	icon_state = "WYSpaceportbaggage"
 	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/cuppajoes
-	name = "Weyland Yutani Celestia Gateway Space-Port - Cuppa Joe's"
+	name = "Weyland-Yutani Celestia Gateway Space-Port - Cuppa Joe's"
 	icon_state = "cuppajoes"
 	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/kitchen
-	name = "Weyland Yutani Celestia Gateway Space-Port - Kitchen"
+	name = "Weyland-Yutani Celestia Gateway Space-Port - Kitchen"
 	icon_state = "WYSpaceportblue"
 	minimap_color = MINIMAP_AREA_LZ
 /area/lv759/indoors/spaceport/docking_bay_2
-	name = "Weyland Yutani Celestia Gateway Space-Port - Docking Bay: 2 - Refueling and Maintenance"
+	name = "Weyland-Yutani Celestia Gateway Space-Port - Docking Bay: 2 - Refueling and Maintenance"
 	icon_state = "WYSpaceportblue"
 
 /area/lv759/indoors/spaceport/docking_bay_1
-	name = "Weyland Yutani Celestia Gateway Space-Port - Docking Bay: 1"
+	name = "Weyland-Yutani Celestia Gateway Space-Port - Docking Bay: 1"
 	icon_state = "WYSpaceport"
 
 /area/lv759/indoors/spaceport/starglider
@@ -380,27 +380,27 @@
 
 // Weyland-Yutani Offices
 /area/lv759/indoors/weyyu_office
-	name = "Weyland Yutani Offices - Reception Hallway"
+	name = "Weyland-Yutani Offices - Reception Hallway"
 	icon_state = "wyoffice"
 	minimap_color = MINIMAP_AREA_COMMAND
 
 /area/lv759/indoors/weyyu_office/hallway
-	name = "Weyland Yutani Offices - West Foyer"
+	name = "Weyland-Yutani Offices - West Foyer"
 	icon_state = "wyoffice"
 
 /area/lv759/indoors/weyyu_office/floor
-	name = "Weyland Yutani Offices - Main Office Floor"
+	name = "Weyland-Yutani Offices - Main Office Floor"
 
 /area/lv759/indoors/weyyu_office/breakroom
-	name = "Weyland Yutani Offices - Breakroom"
+	name = "Weyland-Yutani Offices - Breakroom"
 
 /area/lv759/indoors/weyyu_office/vip
-	name = "Weyland Yutani Offices - Conference Room"
+	name = "Weyland-Yutani Offices - Conference Room"
 
 /area/lv759/indoors/weyyu_office/pressroom
-	name = "Weyland Yutani Offices - Assembly Hall"
+	name = "Weyland-Yutani Offices - Assembly Hall"
 /area/lv759/indoors/weyyu_office/supervisor
-	name = "Weyland Yutani Offices - Colony Supervisors Office"
+	name = "Weyland-Yutani Offices - Colony Supervisors Office"
 
 // Bar & Entertainment Complex
 /area/lv759/indoors/bar
@@ -632,24 +632,24 @@
 	icon_state = "jacks"
 	minimap_color = MINIMAP_AREA_COLONY
 
-//Weyland Yutani - Resource Recovery Facility
+//Weyland-Yutani - Resource Recovery Facility
 /area/lv759/indoors/recycling_plant
-	name = "Weyland Yutani - Resource Recovery Facility"
+	name = "Weyland-Yutani - Resource Recovery Facility"
 	icon_state = "recycling"
 	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/recycling_plant/garage
-	name = "Weyland Yutani - Resource Recovery Facility - Garage"
+	name = "Weyland-Yutani - Resource Recovery Facility - Garage"
 	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/recycling_plant/synthetic_storage
 	name = "Synthetic Storage"
 	icon_state = "synthetic"
 	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/recycling_plant_office
-	name = "Weyland Yutani - Resource Recovery Facility - Office"
+	name = "Weyland-Yutani - Resource Recovery Facility - Office"
 	icon_state = "recycling"
 	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/recycling_plant_waste_disposal_incinerator
-	name = "Weyland Yutani - Resource Recovery Facility - Waste Disposal Incinerating Room"
+	name = "Weyland-Yutani - Resource Recovery Facility - Waste Disposal Incinerating Room"
 	icon_state = "recycling"
 	minimap_color = MINIMAP_AREA_COLONY
 // Restrooms
@@ -709,20 +709,20 @@
 
 // WY Security Checkpoints
 /area/lv759/indoors/wy_security/checkpoint_northeast
-	name = "Weyland Yutani Security Checkpoint - North East"
+	name = "Weyland-Yutani Security Checkpoint - North East"
 	icon_state = "security_checkpoint_northeast"
 	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/wy_security/checkpoint_east
-	name = "Weyland Yutani Security Checkpoint - East"
+	name = "Weyland-Yutani Security Checkpoint - East"
 	icon_state = "security_checkpoint_east"
 /area/lv759/indoors/wy_security/checkpoint_central
-	name = "Weyland Yutani Security Checkpoint - Central"
+	name = "Weyland-Yutani Security Checkpoint - Central"
 	icon_state = "security_checkpoint_central"
 /area/lv759/indoors/wy_security/checkpoint_west
-	name = "Weyland Yutani Security Checkpoint - West"
+	name = "Weyland-Yutani Security Checkpoint - West"
 	icon_state = "security_checkpoint_west"
 /area/lv759/indoors/wy_security/checkpoint_northwest
-	name = "Weyland Yutani Security Checkpoint - North West"
+	name = "Weyland-Yutani Security Checkpoint - North West"
 	icon_state = "security_checkpoint_northwest"
 
 // Misc

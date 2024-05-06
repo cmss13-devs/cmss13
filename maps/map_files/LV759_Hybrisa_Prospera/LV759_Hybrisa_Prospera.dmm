@@ -2644,9 +2644,6 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
-"axv" = (
-/turf/open/auto_turf/hybrisashale/layer0_plate,
-/area/lv759/indoors/caves/central_caves)
 "axx" = (
 /obj/structure/platform_decoration/strata/metal{
 	dir = 8
@@ -65723,12 +65720,6 @@
 	icon_state = "officetiles"
 	},
 /area/lv759/indoors/weyyu_office/breakroom)
-"kSv" = (
-/obj/effect/hybrisa/decal/grate{
-	dir = 4
-	},
-/turf/open/auto_turf/hybrisashale/layer0_plate,
-/area/lv759/indoors/caves/central_caves)
 "kSx" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/faxmachine,
@@ -72050,12 +72041,6 @@
 /obj/structure/window/framed/hybrisa/marshalls/reinforced,
 /turf/open/floor/plating,
 /area/lv759/indoors/colonial_marshals/armory_foyer)
-"lTd" = (
-/obj/effect/hybrisa/decal/grate{
-	dir = 1
-	},
-/turf/open/auto_turf/hybrisashale/layer0_plate,
-/area/lv759/indoors/caves/central_caves)
 "lTh" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -87864,10 +87849,6 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/east_central_street)
-"oBR" = (
-/obj/item/device/flashlight/lamp/tripod/grey,
-/turf/open/auto_turf/hybrisashale/layer0_plate,
-/area/lv759/indoors/caves/central_caves)
 "oBT" = (
 /obj/structure/stairs/perspective{
 	dir = 1;
@@ -100883,10 +100864,6 @@
 	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
 	},
 /area/lv759/indoors/caves/north_west_caves)
-"qIE" = (
-/obj/effect/hybrisa/decal/grate,
-/turf/open/auto_turf/hybrisashale/layer0_plate,
-/area/lv759/indoors/caves/central_caves)
 "qIF" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/prop/helmetgarb/spacejam_tickets{
@@ -113715,12 +113692,6 @@
 	dir = 10
 	},
 /area/lv759/outdoors/colony_streets/north_west_street)
-"sKR" = (
-/obj/effect/hybrisa/decal/grate{
-	dir = 8
-	},
-/turf/open/auto_turf/hybrisashale/layer0_plate,
-/area/lv759/indoors/caves/central_caves)
 "sLd" = (
 /obj/structure/machinery/prop/almayer/computer/PC{
 	dir = 4;
@@ -139329,10 +139300,6 @@
 	dir = 5
 	},
 /area/lv759/outdoors/colony_streets/north_street)
-"wXm" = (
-/obj/item/lightstick/planted,
-/turf/open/auto_turf/hybrisashale/layer0_plate,
-/area/lv759/indoors/caves/central_caves)
 "wXq" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/prop/hybrisa/fakeplatforms/platform3,
@@ -171316,7 +171283,7 @@ smq
 prc
 prc
 oYd
-pSI
+mil
 lHS
 qqW
 qqW
@@ -171568,9 +171535,9 @@ smq
 prc
 prc
 prc
-oYd
-ohF
-oYd
+guz
+srR
+guz
 unn
 unn
 unn
@@ -171820,12 +171787,12 @@ prc
 prc
 smq
 smq
-kSv
-qIE
-axv
-oYd
+iLf
+vJi
+iep
+guz
 unn
-oYd
+guz
 unn
 unn
 unn
@@ -172072,12 +172039,12 @@ oYd
 prc
 smq
 jmf
-smq
-smq
-qIE
-pSI
-axv
-oYd
+guG
+guG
+vJi
+mil
+iep
+guz
 unn
 unn
 jbZ
@@ -172323,13 +172290,13 @@ pTu
 pSI
 wgv
 prc
-sKR
-smq
-smq
-lTd
-axv
-rHL
-wXm
+mnW
+guG
+guG
+iwx
+iep
+jbZ
+hmj
 uKB
 fAW
 rYp
@@ -172574,13 +172541,13 @@ oYd
 unn
 unn
 rHL
-oYd
-axv
-sKR
-lTd
-smq
-smq
-axv
+guz
+iep
+mnW
+iwx
+guG
+guG
+iep
 iep
 xAQ
 oPG
@@ -172827,11 +172794,11 @@ unn
 unn
 unn
 unn
-oYd
-axv
-axv
-smq
-smq
+guz
+iep
+iep
+guG
+guG
 iLf
 vJi
 iep
@@ -173078,11 +173045,11 @@ unn
 unn
 unn
 unn
-oYd
-oBR
-rHL
-ohF
-axv
+guz
+xAQ
+jbZ
+srR
+iep
 iLf
 guG
 guG
@@ -173333,7 +173300,7 @@ unn
 unn
 unn
 unn
-rHL
+jbZ
 mDc
 mnW
 guG

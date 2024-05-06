@@ -95,3 +95,4 @@
 #define SCAPE_PL_LV759_DERELICTSHIP list('sound/soundscape/lv759/indoors/derelict1.ogg','sound/soundscape/lv759/indoors/derelict2.ogg','sound/soundscape/lv759/indoors/derelict3.ogg','sound/soundscape/lv759/indoors/derelict4.ogg','sound/soundscape/lv759/indoors/derelict5.ogg','sound/soundscape/lv759/indoors/derelict6.ogg','sound/soundscape/lv759/indoors/derelict7.ogg','sound/soundscape/lv759/indoors/derelict8.ogg')
 #define SCAPE_PL_LV759_CAVES list('sound/soundscape/lv759/outdoors/deepcave1.ogg','sound/soundscape/lv759/outdoors/deepcave2.ogg')
 #define SCAPE_PL_LV759_WEYMART list('sound/soundscape/lv759/indoors/weymart1.ogg','sound/soundscape/lv759/indoors/weymart2.ogg','sound/soundscape/lv759/indoors/weymart3.ogg','sound/soundscape/lv759/indoors/weymart4.ogg')
+#define SCAPE_PL_LV759_PLATEAU_OUTDOORS list('sound/soundscape/lv759/outdoors/derelict_plateau_1.ogg','sound/soundscape/lv759/outdoors/derelict_plateau_2.ogg',)

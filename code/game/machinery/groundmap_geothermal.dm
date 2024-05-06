@@ -712,12 +712,11 @@ GLOBAL_LIST_INIT(ship_floodlights, list())
 	unslashable = TRUE
 	unacidable = TRUE
 	wrenchable = FALSE
+	layer = TURF_LAYER
 	light_color =  "#00ffa0"
 	lum_value = 14
 	light_power = 6
-	light_color =  "#00ffa0"
-	lum_value = 14
-	light_power = 6
+
 /obj/structure/machinery/colony_floodlight/engineer_circular/update_icon()
 	if(damaged)
 		icon_state = "engineerlight_off"

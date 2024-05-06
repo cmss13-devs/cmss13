@@ -14,7 +14,7 @@
 	name = "Hybrisa - Indoors"
 	icon_state = "cliff_blocked"//because this is a PARENT TYPE and you should not be using it and should also be changing the icon!!!
 	ceiling = CEILING_METAL
-	soundscape_playlist = SCAPE_PL_LV522_INDOORS
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 
 /area/lv759/outdoors
 	name = "Hybrisa - Outdoors"
@@ -130,7 +130,7 @@
 	name = "Caverns - Plateau"
 	icon_state = "caves_plateau"
 	ceiling = CEILING_NONE
-	soundscape_playlist = SCAPE_PL_LV522_OUTDOORS
+	soundscape_playlist = SCAPE_PL_LV759_PLATEAU_OUTDOORS
 
 // Colony Streets
 /area/lv759/outdoors/colony_streets

@@ -725,7 +725,9 @@
 	var/is_broken = health <= 0
 	var/image/I = image(icon = disp_icon, icon_state = "[disp_icon_state]_[is_broken ? "1" : "0"]", pixel_x = x_offset, pixel_y = y_offset, dir = new_dir)
 	switch(round((health / initial(health)) * 100))
-		if(0 to 20)
+		if(0)
+			I.color = "#888888"
+		if(1 to 20)
 			I.color = "#4e4e4e"
 		if(21 to 40)
 			I.color = "#6e6e6e"

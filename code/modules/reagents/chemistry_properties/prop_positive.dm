@@ -705,7 +705,7 @@
 
 	..()
 
-/datum/chem_property/positive/fire/update_reagent(potency)
+/datum/chem_property/positive/fire/update_reagent(potency = 1)
 	holder.chemfiresupp = TRUE
 
 	holder.radiusmod += radiusmod_per_level * potency * 2

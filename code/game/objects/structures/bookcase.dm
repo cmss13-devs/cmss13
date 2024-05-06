@@ -7,6 +7,24 @@
 	density = TRUE
 	opacity = TRUE
 
+/obj/structure/bookcase/deconstruct(disassembled)
+	new /obj/item/stack/sheet/metal(loc)
+	return ..()
+
+/obj/structure/bookcase/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(xeno.a_intent == INTENT_HARM)
+		if(unslashable)
+			return
+		xeno.animation_attack_on(src)
+		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
+		xeno.visible_message(SPAN_DANGER("[xeno] slices [src] apart!"),
+		SPAN_DANGER("We slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		deconstruct(FALSE)
+		return XENO_ATTACK_ACTION
+	else
+		attack_hand(xeno)
+		return XENO_NONCOMBAT_ACTION
+
 /obj/structure/bookcase/Initialize()
 	. = ..()
 	for(var/obj/item/I in loc)
@@ -20,12 +38,18 @@
 		O.forceMove(src)
 		update_icon()
 	else if(HAS_TRAIT(O, TRAIT_TOOL_PEN))
-		var/newname = stripped_input(usr, "What would you like to title this bookshelf?")
+		var/newname = stripped_input(user, "What would you like to title this bookshelf?")
 		if(!newname)
 			return
 		else
 			name = ("bookcase ([strip_html(newname)])")
 			playsound(src, "paper_writing", 15, TRUE)
+	else if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
+		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
+		if(do_after(user, 1 SECONDS, INTERRUPT_MOVED, BUSY_ICON_FRIENDLY, src))
+			user.visible_message("[user] deconstructs [src].", \
+				"You deconstruct [src].", "You hear a noise.")
+			deconstruct(FALSE)
 	else
 		..()
 
@@ -33,7 +57,7 @@
 	if(contents.len)
 		var/obj/item/book/choice = input("Which book would you like to remove from the shelf?") as null|obj in contents
 		if(choice)
-			if(usr.is_mob_incapacitated() || !in_range(loc, usr))
+			if(user.is_mob_incapacitated() || !in_range(loc, user))
 				return
 			if(ishuman(user))
 				if(!user.get_active_hand())
@@ -67,7 +91,7 @@
 
 
 /obj/structure/bookcase/manuals/medical
-	name = "Medical Manuals bookcase"
+	name = "medical manuals bookcase"
 
 /obj/structure/bookcase/manuals/medical/Initialize()
 	. = ..()
@@ -78,7 +102,7 @@
 
 
 /obj/structure/bookcase/manuals/engineering
-	name = "Engineering Manuals bookcase"
+	name = "engineering manuals bookcase"
 
 /obj/structure/bookcase/manuals/engineering/Initialize()
 	. = ..()
@@ -90,7 +114,7 @@
 	update_icon()
 
 /obj/structure/bookcase/manuals/research_and_development
-	name = "R&D Manuals bookcase"
+	name = "\improper R&D manuals bookcase"
 
 /obj/structure/bookcase/manuals/research_and_development/Initialize()
 	. = ..()

@@ -334,11 +334,12 @@
 
 	// Checked here because we want to be able to null the mob in a seat
 	if(!istype(M))
-		return
+		return FALSE
 
 	M.set_interaction(src)
 	M.reset_view(src)
 	give_action(M, /datum/action/human_action/vehicle_unbuckle)
+	return TRUE
 
 /// Get crewmember of seat.
 /obj/vehicle/multitile/proc/get_seat_mob(seat)

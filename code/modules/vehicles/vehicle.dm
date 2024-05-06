@@ -84,10 +84,10 @@
 	else if(W.force)
 		switch(W.damtype)
 			if("fire")
-				health -= W.force * fire_dam_coeff
+				health -= W.force * W.demolition_mod * fire_dam_coeff
 			if("brute")
-				health -= W.force * brute_dam_coeff
-		playsound(src.loc, "smash.ogg", 25, 1)
+				health -= W.force * W.demolition_mod * brute_dam_coeff
+		playsound(loc, "smash.ogg", 25, 1)
 		user.visible_message(SPAN_DANGER("[user] hits [src] with [W]."),SPAN_DANGER("You hit [src] with [W]."))
 		healthcheck()
 	else
@@ -159,10 +159,11 @@
 
 	// Checked here because we want to be able to null the mob in a seat
 	if(!istype(M))
-		return
+		return FALSE
 
 	M.forceMove(src)
 	M.set_interaction(src)
+	return TRUE
 
 /obj/vehicle/proc/turn_on()
 	if(stat)

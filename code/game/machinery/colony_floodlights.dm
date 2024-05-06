@@ -281,6 +281,27 @@
 		else if(!is_lit)
 			. += SPAN_INFO("It doesn't seem powered.")
 
+/obj/structure/machinery/colony_floodlight/ex_act(severity)
+	switch(severity)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			if(prob(25))
+				set_damaged()
+				return
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(50))
+				set_damaged()
+				return
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			set_damaged()
+			return
+
+/obj/structure/machinery/colony_floodlight/proc/set_damaged()
+	playsound(src, "glassbreak", 70, 1)
+	damaged = TRUE
+	if(is_lit)
+		set_light(0)
+	update_icon()
+
 /obj/structure/machinery/colony_floodlight/proc/toggle_light()
 	is_lit = !is_lit
 	if(!damaged)

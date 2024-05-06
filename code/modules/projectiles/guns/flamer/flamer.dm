@@ -136,7 +136,10 @@
 		click_empty(user)
 	else
 		user.track_shot(initial(name))
-		unleash_flame(target, user)
+		if(current_mag.reagents.has_reagent("stablefoam"))
+			unleash_foam(target, user)
+		else
+			unleash_flame(target, user)
 		return AUTOFIRE_CONTINUE
 	return NONE
 
@@ -225,6 +228,59 @@
 	playsound(to_fire, src.get_fire_sound(), 50, TRUE)
 
 	new /obj/flamer_fire(to_fire, create_cause_data(initial(name), user), R, max_range, current_mag.reagents, flameshape, target, CALLBACK(src, PROC_REF(show_percentage), user), fuel_pressure, fire_type)
+
+/obj/item/weapon/gun/flamer/proc/unleash_foam(atom/target, mob/living/user)
+	last_fired = world.time
+	if(!current_mag || !current_mag.reagents || !current_mag.reagents.reagent_list.len)
+		return
+
+	var/source_turf = get_turf(user)
+	var/foam_range = 6 // the max range the foam will travel
+	var/distance = 0 // the distance traveled
+	var/use_multiplier = 3 // if you want to increase the ammount of foam drained from the tank
+	var/datum/reagent/chemical = current_mag.reagents.reagent_list[1]
+
+	var/turf/turfs[] = get_line(user, target, FALSE)
+	var/turf/first_turf = turfs[1]
+	var/ammount_required = (min(turfs.len, foam_range) * use_multiplier) // the ammount of units that this click requires
+	for(var/turf/turf in turfs)
+
+		if(chemical.volume < ammount_required)
+			foam_range = round(chemical.volume / use_multiplier)
+
+		if(distance >= foam_range)
+			break
+
+		if(turf.density)
+			break
+		else
+			var/obj/effect/particle_effect/foam/checker = new()
+			var/atom/blocked = LinkBlocked(checker, source_turf, turf)
+			if(blocked)
+				break
+
+		if(turf == first_turf) // this is so the first foam tile doesn't expand and touch the user
+			var/datum/effect_system/foam_spread/foam = new()
+			foam.set_up(0.5, turf, metal_foam = FOAM_METAL_TYPE_IRON)
+			foam.start()
+		else
+			var/datum/effect_system/foam_spread/foam = new()
+			foam.set_up(1, turf, metal_foam = FOAM_METAL_TYPE_IRON)
+			foam.start()
+		sleep(2)
+
+		distance++
+
+	var/ammount_used = distance * use_multiplier // the actual ammount of units that we used
+
+	chemical.volume = max(chemical.volume - ammount_used, 0)
+
+	current_mag.reagents.total_volume = chemical.volume // this is needed for show_percentage to work
+
+	if(chemical.volume < use_multiplier) // there aren't enough units left for a single tile of foam, empty the tank
+		current_mag.reagents.clear_reagents()
+
+	show_percentage(user)
 
 /obj/item/weapon/gun/flamer/proc/show_percentage(mob/living/user)
 	if(current_mag)
@@ -478,15 +534,7 @@
 		INVOKE_ASYNC(FS, TYPE_PROC_REF(/datum/flameshape, handle_fire_spread), src, fire_spread_amount, burn_dam, fuel_pressure)
 	//Apply fire effects onto everyone in the fire
 
-	// Melt a single layer of snow
-	if (istype(loc, /turf/open/snow))
-		var/turf/open/snow/S = loc
-
-		if (S.bleed_layer > 0)
-			S.bleed_layer--
-			S.update_icon(1, 0)
-
-	//scorch mah grass HNNGGG
+	//scorch mah grass HNNGGG and muh SNOW hhhhGGG
 	if (istype(loc, /turf/open))
 		var/turf/open/scorch_turf_target = loc
 		if(scorch_turf_target.scorchable)

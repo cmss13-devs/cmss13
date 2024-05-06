@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 //
 // Specific momentum based damage defines
 
@@ -27,16 +26,22 @@
 		/datum/action/xeno_action/onclick/crusher_stomp,
 		/datum/action/xeno_action/onclick/crusher_shield,
 	)
-	actions_to_add = list(
+	mutator_actions_to_add = list(
 		/datum/action/xeno_action/onclick/charger_charge,
 		/datum/action/xeno_action/activable/tumble,
 		/datum/action/xeno_action/onclick/crusher_stomp/charger,
 		/datum/action/xeno_action/activable/fling/charger,
 	)
-
+	keystone = TRUE
 	behavior_delegate_type = /datum/behavior_delegate/crusher_charger
 
-/datum/xeno_strain/charger/apply_strain(mob/living/carbon/xenomorph/crusher/crusher)
+/datum/xeno_mutator/charger/apply_mutator(datum/mutator_set/individual_mutators/mutator_set)
+	. = ..()
+	if (. == 0)
+		return
+
+	var/mob/living/carbon/xenomorph/crusher/crusher = mutator_set.xeno
+	crusher.mutation_type = CRUSHER_CHARGER
 	crusher.small_explosives_stun = FALSE
 	crusher.health_modifier += XENO_HEALTH_MOD_LARGE
 	crusher.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
@@ -44,6 +49,10 @@
 	crusher.damage_modifier -= XENO_DAMAGE_MOD_SMALL
 	crusher.ignore_aura = "frenzy" // no funny crushers going 7 morbillion kilometers per second
 	crusher.phero_modifier = -crusher.caste.aura_strength
+	crusher.recalculate_pheromones()
+	mutator_update_actions(crusher)
+	mutator_set.recalculate_actions(description, flavor_description)
+	apply_behavior_holder(crusher)
 	crusher.recalculate_everything()
 
 /datum/behavior_delegate/crusher_charger
@@ -66,41 +75,15 @@
 	if(xeno.dir & REVERSE_DIR(projectile_direction))
 		// During the charge windup, crusher gets an extra 15 directional armor in the direction its charging
 		damagedata["armor"] += frontal_armor
-=======
-			overlays.Cut()
-			overlays += "ccharger-o[newlevel]"
-
-			chargelevel = newlevel
->>>>>>> parent of 0b26d2ad7e (Hybrisa Merge 2)
 	else
-		overlays.Cut()
-
-/obj/structure/machinery/cell_charger/get_examine_text(mob/user)
-	. = ..()
-	. += "There's [charging ? "a" : "no"] cell in the charger."
-	if(charging)
-		. += "Current charge: [charging.charge] ([charging.percent()]%)"
-
-/obj/structure/machinery/cell_charger/attackby(obj/item/W, mob/user)
-	if(stat & BROKEN)
-		return
-
-	if(istype(W, /obj/item/cell) && anchored)
-		if(charging)
-			to_chat(user, SPAN_DANGER("There is already a cell in the charger."))
-			return
-		else
-			var/area/a = loc.loc // Gets our locations location, like a dream within a dream
-			if(!isarea(a))
-				return
-			if(a.power_equip == 0) // There's no APC in this area, don't try to cheat power!
-				to_chat(user, SPAN_DANGER("The [name] blinks red as you try to insert the cell!"))
+		for(var/side_direction in get_perpen_dir(xeno.dir))
+			if(projectile_direction == side_direction)
+				damagedata["armor"] += side_armor
 				return
 
-<<<<<<< HEAD
 /datum/behavior_delegate/crusher_charger/on_update_icons()
 	if(HAS_TRAIT(bound_xeno, TRAIT_CHARGING) && bound_xeno.body_position == STANDING_UP)
-		bound_xeno.icon_state = "[bound_xeno.get_strain_icon()] Crusher Charging"
+		bound_xeno.icon_state = "[bound_xeno.mutation_icon_state || bound_xeno.mutation_type] Crusher Charging"
 		return TRUE
 
 // Fallback proc for shit that doesn't have a collision def
@@ -169,56 +152,48 @@
 	if(charger_ability.momentum >= 3)
 		if(unacidable)
 			charger_ability.stop_momentum()
-=======
-			if(user.drop_inv_item_to_loc(W, src))
-				charging = W
-				user.visible_message("[user] inserts a cell into the charger.", "You insert a cell into the charger.")
-				chargelevel = -1
-				start_processing()
-		updateicon()
-	else if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
-		if(charging)
-			to_chat(user, SPAN_DANGER("Remove the cell first!"))
->>>>>>> parent of 0b26d2ad7e (Hybrisa Merge 2)
 			return
+		xeno.visible_message(
+			SPAN_DANGER("[xeno] smashes straight into \the [src]!"),
+			SPAN_XENODANGER("You smash straight into \the [src]!")
+		)
+		playsound(loc, "punch", 25, TRUE)
+		tip_over()
+		step_away(src, xeno)
+		step_away(src, xeno)
+		charger_ability.lose_momentum(2)
+		return XENO_CHARGE_TRY_MOVE
 
-		anchored = !anchored
-		to_chat(user, "You [anchored ? "attach" : "detach"] the cell charger [anchored ? "to" : "from"] the ground.")
-		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
+	charger_ability.stop_momentum()
 
-/obj/structure/machinery/cell_charger/attack_hand(mob/user)
-	if(charging)
-		usr.put_in_hands(charging)
-		charging.add_fingerprint(user)
-		charging.update_icon()
 
-		src.charging = null
-		user.visible_message("[user] removes the cell from the charger.", "You remove the cell from the charger.")
-		chargelevel = -1
-		updateicon()
-		stop_processing()
+// Barine Vending machines
 
-/obj/structure/machinery/cell_charger/attack_remote(mob/user)
-	return
+/obj/structure/machinery/cm_vending/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+	if(charger_ability.momentum >= CCA_MOMENTUM_LOSS_THIRD)
+		xeno.visible_message(
+			SPAN_DANGER("[xeno] smashes straight into \the [src]!"),
+			SPAN_XENODANGER("You smash straight into \the [src]!")
+		)
+		playsound(loc, "punch", 25, TRUE)
+		tip_over()
+		charger_ability.lose_momentum(CCA_MOMENTUM_LOSS_QUARTER)
+		return XENO_CHARGE_TRY_MOVE
 
-/obj/structure/machinery/cell_charger/emp_act(severity)
-	. = ..()
-	if(inoperable())
+	charger_ability.stop_momentum()
+
+// Legacy doors
+
+/obj/structure/mineral_door/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+	if(!charger_ability.momentum)
+		charger_ability.stop_momentum()
 		return
-	if(charging)
-		charging.emp_act(severity)
 
+	playsound(loc, "punch", 25, TRUE)
+	Dismantle(TRUE)
+	charger_ability.lose_momentum(CCA_MOMENTUM_LOSS_QUARTER)
+	return XENO_CHARGE_TRY_MOVE
 
-/obj/structure/machinery/cell_charger/process()
-	if((inoperable()) || !anchored)
-		update_use_power(USE_POWER_NONE)
-		return
-
-	if (charging && !charging.fully_charged())
-		charging.give(active_power_usage*CELLRATE)
-		update_use_power(USE_POWER_ACTIVE)
-
-<<<<<<< HEAD
 // Tables & shelves, etc
 
 /obj/structure/surface/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
@@ -285,6 +260,19 @@
 		charger_ability.stop_momentum()
 		return
 	update_health(CHARGER_DAMAGE_CADE)
+	playsound(loc, 'sound/effects/grillehit.ogg', 25, 1)
+	if(QDELETED(src))
+		if(prob(50))
+			charger_ability.lose_momentum(CCA_MOMENTUM_LOSS_MIN)
+		return XENO_CHARGE_TRY_MOVE
+
+	charger_ability.stop_momentum()
+
+/obj/structure/fence/electrified/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
+	if(!charger_ability.momentum)
+		charger_ability.stop_momentum()
+		return
+	attack_generic(xeno,CHARGER_DAMAGE_CADE)
 	playsound(loc, 'sound/effects/grillehit.ogg', 25, 1)
 	if(QDELETED(src))
 		if(prob(50))

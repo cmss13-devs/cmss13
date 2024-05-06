@@ -862,14 +862,13 @@
 	set desc = "Toggle if eggs automatically plant within a 5 tile radius"
 	set category = "Alien"
 	
-	var/mob/living/carbon/xenomorph/queen/queen = src
 
-	if(!queen.check_state())
+	if(!check_state())
 		return FALSE
 	if(ovipositor) // check if we are ovi, then toggle
 		if(egg_autoplant)
 			egg_autoplant = FALSE
-			to_chat(queen, SPAN_XENONOTICE("You disable automatic egg planting."))
+			to_chat(src, SPAN_XENONOTICE("You disable automatic egg planting."))
 		else
 			egg_autoplant = TRUE
-			to_chat(queen, SPAN_XENONOTICE("You enable automatic egg planting."))
+			to_chat(src, SPAN_XENONOTICE("You enable automatic egg planting."))

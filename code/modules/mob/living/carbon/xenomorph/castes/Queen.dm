@@ -279,7 +279,7 @@
 	weed_food_states = list("Queen_1","Queen_2","Queen_3")
 	weed_food_states_flipped = list("Queen_1","Queen_2","Queen_3")
 
-	// Whether eggs automatically plant
+	/// Whether eggs automatically plant
 	var/egg_autoplant = FALSE
 
 	var/breathing_counter = 0
@@ -535,6 +535,7 @@
 					if(turf.contents.len <= 25)
 						new /obj/item/xeno_egg(loc, hivenumber)  // plop an egg
 
+/// Called via Life() to automatically place eggs around the queen when egg_autoplant is true
 /mob/living/carbon/xenomorph/queen/proc/trigger_autoplant()
 	// viable turfs within surroundings we can plant eggs on
 	var/list/turf/suitable_turfs = list()
@@ -548,7 +549,7 @@
 				suitable_turfs.Add(turf)
 
 	if(suitable_turfs.len == 0)
-		to_chat(src,SPAN_XENONOTICE("There is no more suitable ground to plant eggs! Automatic planting disabled!"))
+		to_chat(src, SPAN_XENONOTICE("There is no more suitable ground to plant eggs! Automatic planting disabled!"))
 		egg_autoplant = FALSE
 		return
 
@@ -558,7 +559,7 @@
 	var/obj/effect/alien/egg/newegg = new /obj/effect/alien/egg(pick(suitable_turfs), hivenumber)
 	playsound(get_turf(src), 'sound/effects/splat.ogg', 15, 1)
 
-	src.visible_message(SPAN_XENONOTICE("[src]'s ovipositor plants the [newegg]."))
+	visible_message(SPAN_XENONOTICE("[src]'s ovipositor plants the [newegg]."))
 
 /mob/living/carbon/xenomorph/queen/get_status_tab_items()
 	. = ..()

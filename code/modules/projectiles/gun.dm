@@ -1606,14 +1606,13 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(active_attachable)
 		return
 
-	// spam control.
-	if(current_mag.current_rounds % 5 != 0 && current_mag.current_rounds > 15)
-		return
-
 	if(!user)
 		user = gun_user
 
 	if(flags_gun_features & GUN_AMMO_COUNTER && current_mag)
+		// spam control.
+		if(current_mag.current_rounds % 5 != 0 && current_mag.current_rounds > 15)
+			return
 		var/chambered = in_chamber ? TRUE : FALSE
 		to_chat(user, SPAN_DANGER("[current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ROUNDS REMAINING"))
 

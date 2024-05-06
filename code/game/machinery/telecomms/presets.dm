@@ -306,14 +306,16 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	else
 		update_icon()
 
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/update_state()
+	..()
+	if(inoperable())
+		handle_xeno_acquisition(get_turf(src))
+
 /// Handles xenos corrupting the tower when weeds touch the turf it is located on
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/handle_xeno_acquisition(turf/weeded_turf)
 	SIGNAL_HANDLER
 
 	if(corrupted)
-		return
-
-	if(operable())
 		return
 
 	if(!weeded_turf.weeds)
@@ -329,6 +331,9 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 		return
 
 	if(SSticker.mode.is_in_endgame)
+		return
+
+	if(operable())
 		return
 
 	if(ROUND_TIME < XENO_COMM_ACQUISITION_TIME)

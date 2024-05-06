@@ -11,6 +11,7 @@
 	pain_type = /datum/pain/monkey
 	unarmed_type = /datum/unarmed_attack/bite
 	secondary_unarmed_type = /datum/unarmed_attack
+	mob_inherent_traits = list(TRAIT_OPPOSABLE_THUMBS)
 	death_message = "lets out a faint chimper as it collapses and stops moving..."
 	knock_down_reduction = 0.5
 	stun_reduction = 0.5

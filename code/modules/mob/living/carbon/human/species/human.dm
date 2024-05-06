@@ -87,6 +87,7 @@
 	primitive = /mob/living/carbon/human/monkey
 	unarmed_type = /datum/unarmed_attack/punch
 	flags = HAS_SKIN_TONE|HAS_LIPS|HAS_UNDERWEAR|HAS_HARDCRIT
+	mob_inherent_traits = list(TRAIT_OPPOSABLE_THUMBS)
 	mob_flags = KNOWS_TECHNOLOGY
 	uses_ethnicity = TRUE
 

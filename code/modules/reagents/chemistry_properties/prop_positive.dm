@@ -705,16 +705,16 @@
 
 	..()
 
-/datum/chem_property/positive/fire/update_reagent()
+/datum/chem_property/positive/fire/update_reagent(potency)
 	holder.chemfiresupp = TRUE
 
-	holder.radiusmod += radiusmod_per_level * level
-	holder.durationmod += durationmod_per_level * level
-	holder.intensitymod += intensitymod_per_level * level
+	holder.radiusmod += radiusmod_per_level * potency * 2
+	holder.durationmod += durationmod_per_level * potency * 2
+	holder.intensitymod += intensitymod_per_level * potency * 2
 
-	holder.rangefire += range_per_level * level
-	holder.durationfire += duration_per_level * level
-	holder.intensityfire += intensity_per_level * level
+	holder.rangefire += range_per_level * potency * 2
+	holder.durationfire += duration_per_level * potency * 2
+	holder.intensityfire += intensity_per_level * potency * 2
 
 	..()
 

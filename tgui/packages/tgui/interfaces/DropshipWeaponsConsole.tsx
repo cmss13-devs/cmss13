@@ -348,7 +348,7 @@ export const DropshipWeaponsConsole = () => {
     <Window height={700} width={1420}>
       <Window.Content>
         <Box className="WeaponsConsoleBackground">
-          <Stack horizontal className="WeaponsConsole">
+          <Stack className="WeaponsConsole">
             <Stack.Item>
               <PrimaryPanel
                 panelStateId="left-screen"

@@ -33,7 +33,6 @@
 	)
 	burst_delay = 2
 	burst_amount = 3
-	projectile_type = /obj/projectile/arc_sentry
 
 	/// Potential targets the turret can shoot at
 	var/list/targets = list()
@@ -96,12 +95,6 @@
 		return NONE
 
 	return try_fire(target, null, params)
-
-
-/obj/item/hardpoint/primary/arc_sentry/generate_bullet(mob/user, turf/origin_turf)
-	var/obj/projectile/arc_sentry/made_projectile = ..()
-	made_projectile.permutated += owner
-	return made_projectile
 
 /obj/item/hardpoint/primary/arc_sentry/start_fire(datum/source, atom/object, turf/location, control, params)
 	if(QDELETED(object))
@@ -199,31 +192,3 @@
 		return FALSE
 
 	return ..()
-
-/obj/projectile/arc_sentry/Initialize(mapload, datum/cause_data/cause_data)
-	. = ..()
-	RegisterSignal(src, COMSIG_BULLET_POST_HANDLE_OBJ, PROC_REF(check_passthrough))
-
-/obj/projectile/arc_sentry/check_canhit(turf/current_turf, turf/next_turf)
-	var/proj_dir = get_dir(current_turf, next_turf)
-	var/obj/item/hardpoint/arc_sentry = shot_from
-	if(!(arc_sentry.owner in current_turf) && !(arc_sentry.owner in next_turf) && (proj_dir & (proj_dir - 1)) && !current_turf.Adjacent(next_turf))
-		ammo.on_hit_turf(current_turf, src)
-		current_turf.bullet_act(src)
-		return TRUE
-
-	// Check for hits that would occur when moving to turf, such as a blocking cade
-	if(scan_a_turf(next_turf, proj_dir))
-		return TRUE
-
-	return FALSE
-
-/obj/projectile/arc_sentry/proc/check_passthrough(datum/source, obj/hit_obj, bool)
-	SIGNAL_HANDLER
-
-	if(!istype(shot_from, /obj/item/hardpoint))
-		return
-
-	var/obj/item/hardpoint/sentry = shot_from
-	if(sentry.owner == hit_obj)
-		return COMPONENT_BULLET_PASS_THROUGH

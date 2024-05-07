@@ -199,6 +199,14 @@
 /obj/structure/barricade/handrail/sandstone/b
 	icon_state = "hr_sandstone_b"
 
+/obj/structure/barricade/handrail/pizza
+	name = "\improper diner half-wall"
+	icon_state = "hr_sandstone" //temp, getting sprites soontm
+	color = "#b51c0b"
+	can_be_reinforced = FALSE
+	projectile_coverage = PROJECTILE_COVERAGE_LOW
+	layer = MOB_LAYER + 0.01
+
 // Hybrisa Barricades
 
 /obj/structure/barricade/handrail/hybrisa

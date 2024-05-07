@@ -125,10 +125,9 @@ const Objectives = (props) => {
     <Section
       title="Objectives"
       buttons={
-        <Button
-          content={'Total earned credits: ' + data.total_tech_points}
-          backgroundColor="transparent"
-        />
+        <Button backgroundColor="transparent">
+          {'Total earned credits: ' + data.total_tech_points}
+        </Button>
       }
     >
       <LabeledList>

@@ -61,11 +61,12 @@ const ApcContent = (props) => {
         <br />
         <Button
           icon="sync"
-          content="Reboot Now"
           tooltip="Force an interface reset."
           tooltipPosition="bottom"
           onClick={() => act('reboot')}
-        />
+        >
+          Reboot Now
+        </Button>
       </NoticeBox>
     );
   }
@@ -80,11 +81,12 @@ const ApcContent = (props) => {
             buttons={
               <Button
                 icon={data.isOperating ? 'power-off' : 'times'}
-                content={data.isOperating ? 'On' : 'Off'}
                 selected={data.isOperating && !locked}
                 disabled={locked}
                 onClick={() => act('breaker')}
-              />
+              >
+                {data.isOperating ? 'On' : 'Off'}
+              </Button>
             }
           >
             [ {externalPowerStatus.externalPowerText} ]
@@ -98,10 +100,11 @@ const ApcContent = (props) => {
             buttons={
               <Button
                 icon={data.chargeMode ? 'sync' : 'times'}
-                content={data.chargeMode ? 'Auto' : 'Off'}
                 disabled={locked}
                 onClick={() => act('charge')}
-              />
+              >
+                {data.chargeMode ? 'Auto' : 'Off'}
+              </Button>
             }
           >
             [{' '}
@@ -130,28 +133,31 @@ const ApcContent = (props) => {
                     </Box>
                     <Button
                       icon="sync"
-                      content="Auto"
                       selected={
                         !locked &&
                         (channel.status === 1 || channel.status === 3)
                       }
                       disabled={locked}
                       onClick={() => act('channel', topicParams.auto)}
-                    />
+                    >
+                      Auto
+                    </Button>
                     <Button
                       icon="power-off"
-                      content="On"
                       selected={!locked && channel.status === 2}
                       disabled={locked}
                       onClick={() => act('channel', topicParams.on)}
-                    />
+                    >
+                      On
+                    </Button>
                     <Button
                       icon="times"
-                      content="Off"
                       selected={!locked && channel.status === 0}
                       disabled={locked}
                       onClick={() => act('channel', topicParams.off)}
-                    />
+                    >
+                      Off
+                    </Button>
                   </>
                 }
               >
@@ -172,16 +178,15 @@ const ApcContent = (props) => {
               {!!data.malfStatus && (
                 <Button
                   icon={malfStatus.icon}
-                  content={malfStatus.content}
                   color="bad"
                   onClick={() => act(malfStatus.action)}
-                />
+                >
+                  {malfStatus.content}
+                </Button>
               )}
-              <Button
-                icon="lightbulb-o"
-                content="Overload"
-                onClick={() => act('overload')}
-              />
+              <Button icon="lightbulb-o" onClick={() => act('overload')}>
+                Overload
+              </Button>
             </>
           )
         }
@@ -193,10 +198,11 @@ const ApcContent = (props) => {
               <Button
                 tooltip="APC cover can be pried open with a crowbar."
                 icon={data.coverLocked ? 'lock' : 'unlock'}
-                content={data.coverLocked ? 'Engaged' : 'Disengaged'}
                 disabled={locked}
                 onClick={() => act('cover')}
-              />
+              >
+                {data.coverLocked ? 'Engaged' : 'Disengaged'}
+              </Button>
             }
           />
         </LabeledList>

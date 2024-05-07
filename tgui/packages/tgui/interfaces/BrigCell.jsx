@@ -22,20 +22,22 @@ export const BrigCell = (props) => {
       <Window.Content scrollable>
         <Flex justify="center" mt="2rem" mb=".5rem">
           <Button
-            content="Toggle Shutters"
             height="100%"
             mr="1rem"
             px="2rem"
             py=".25rem"
             onClick={() => act('toggle_doors')}
-          />
+          >
+            Toggle Shutters
+          </Button>
           <Button
-            content="Activate Flash"
             height="100%"
             px="2rem"
             py=".25rem"
             onClick={() => act('flash')}
-          />
+          >
+            Activate Flash
+          </Button>
         </Flex>
 
         <Divider />
@@ -257,7 +259,6 @@ const IncidentDetails = (props) => {
 
           {!!can_pardon && (
             <Button.Confirm
-              content="Pardon"
               tooltip="Pardon"
               icon="gavel"
               px="2rem"
@@ -265,7 +266,9 @@ const IncidentDetails = (props) => {
               mt="1rem"
               height="100%"
               onClick={() => act('pardon')}
-            />
+            >
+              Pardon
+            </Button.Confirm>
           )}
         </Flex>
       )}

@@ -20,22 +20,24 @@ export const HiveFaction = (props) => {
             {glob_factions['Xenomorph'].map((faction) => (
               <Button.Checkbox
                 key={faction}
-                content={faction}
                 width="100%"
                 checked={current_allies[faction]}
                 onClick={() => onFactionButtonClick(faction)}
-              />
+              >
+                {faction}
+              </Button.Checkbox>
             ))}
           </Section>
           <Section title="Human" height="100%" width="100%" ml={1}>
             {glob_factions['Human'].map((faction) => (
               <Button.Checkbox
                 key={faction}
-                content={faction}
                 width="100%"
                 checked={current_allies[faction]}
                 onClick={() => onFactionButtonClick(faction)}
-              />
+              >
+                {faction}
+              </Button.Checkbox>
             ))}
           </Section>
         </Flex>

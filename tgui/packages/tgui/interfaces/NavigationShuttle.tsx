@@ -283,10 +283,11 @@ const LaunchHome = (props) => {
     <Section title="Automatic Return Enabled" className="DestinationSelector">
       <Button.Confirm
         fluid
-        content={'Return Home'}
         confirmContent={'One-way navigation enabled - confirm?'}
         onClick={() => act('launch_home')}
-      />
+      >
+        {'Return Home'}
+      </Button.Confirm>
     </Section>
   );
 };

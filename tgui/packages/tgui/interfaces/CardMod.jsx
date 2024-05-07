@@ -46,13 +46,14 @@ export const CrewManifest = (props) => {
       buttons={
         <Button
           icon="print"
-          content="Print"
           onClick={() =>
             act('PRG_print', {
               mode: 0,
             })
           }
-        />
+        >
+          Print
+        </Button>
       }
     >
       {map(manifest, (entries, department) => (
@@ -112,31 +113,30 @@ export const CardContent = (props) => {
           <>
             <Button
               icon="print"
-              content="Print"
               disabled={!has_id || !authenticated}
               onClick={() =>
                 act('PRG_print', {
                   mode: 1,
                 })
               }
-            />
+            >
+              Print
+            </Button>
             <Button
               icon={authenticated ? 'sign-out-alt' : 'sign-in-alt'}
-              content={authenticated ? 'Log Out' : 'Log In'}
               color={authenticated ? 'bad' : 'good'}
               onClick={() => {
                 act(authenticated ? 'PRG_logout' : 'PRG_authenticate');
               }}
-            />
+            >
+              {authenticated ? 'Log Out' : 'Log In'}
+            </Button>
           </>
         }
       >
-        <Button
-          fluid
-          icon="eject"
-          content={id_name}
-          onClick={() => act('PRG_eject')}
-        />
+        <Button fluid icon="eject" onClick={() => act('PRG_eject')}>
+          {id_name}
+        </Button>
         {!!has_id && !!authenticated && (
           <>
             Linked Account:
@@ -193,22 +193,24 @@ export const CardContent = (props) => {
               buttons={
                 <Button.Confirm
                   icon="exclamation-triangle"
-                  content="Terminate"
                   color="bad"
                   onClick={() => act('PRG_terminate')}
-                />
+                >
+                  Terminate
+                </Button.Confirm>
               }
             >
               <Button.Input
                 fluid
-                content="Custom..."
                 onCommit={(e, value) =>
                   act('PRG_assign', {
                     assign_target: 'Custom',
                     custom_name: value,
                   })
                 }
-              />
+              >
+                Custom...
+              </Button.Input>
               <Stack>
                 <Stack.Item>
                   <Tabs vertical>
@@ -228,13 +230,14 @@ export const CardContent = (props) => {
                     <Button
                       fluid
                       key={job.job}
-                      content={job.display_name}
                       onClick={() =>
                         act('PRG_assign', {
                           assign_target: job.job,
                         })
                       }
-                    />
+                    >
+                      {job.display_name}
+                    </Button>
                   ))}
                 </Stack.Item>
               </Stack>

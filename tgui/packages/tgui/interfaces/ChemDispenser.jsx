@@ -35,13 +35,14 @@ export const ChemDispenser = (props) => {
               key={amount}
               icon="plus"
               selected={amount === data.amount}
-              content={amount}
               onClick={() =>
                 act('amount', {
                   target: amount,
                 })
               }
-            />
+            >
+              {amount}
+            </Button>
           ))}
         >
           <Box mr={-1}>
@@ -51,13 +52,14 @@ export const ChemDispenser = (props) => {
                 icon="arrow-alt-circle-down"
                 width="129.5px"
                 lineHeight={1.75}
-                content={chemical.title}
                 onClick={() =>
                   act('dispense', {
                     reagent: chemical.id,
                   })
                 }
-              />
+              >
+                {chemical.title}
+              </Button>
             ))}
           </Box>
         </Section>
@@ -67,9 +69,10 @@ export const ChemDispenser = (props) => {
             <Button
               key={amount}
               icon="minus"
-              content={amount}
               onClick={() => act('remove', { amount })}
-            />
+            >
+              {amount}
+            </Button>
           ))}
         >
           <LabeledList>
@@ -79,10 +82,11 @@ export const ChemDispenser = (props) => {
                 !!data.isBeakerLoaded && (
                   <Button
                     icon="eject"
-                    content="Eject"
                     disabled={!data.isBeakerLoaded}
                     onClick={() => act('eject')}
-                  />
+                  >
+                    Eject
+                  </Button>
                 )
               }
             >

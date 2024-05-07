@@ -76,21 +76,19 @@ const MedalsPage = (props) => {
       title={isMarineMedal ? 'Medal Awards' : 'Royal Jellies'}
       buttons={
         <>
-          <Button
-            icon="clock"
-            content="Refresh"
-            ml={0.5}
-            onClick={() => act('refresh')}
-          />
+          <Button icon="clock" ml={0.5} onClick={() => act('refresh')}>
+            Refresh
+          </Button>
           <Button
             icon="plus"
             color="green"
-            content={isMarineMedal ? 'Add a medal' : 'Add a jelly'}
             align="center"
             width={8.5}
             ml={0.5}
             onClick={() => act(isMarineMedal ? 'add_medal' : 'add_jelly')}
-          />
+          >
+            {isMarineMedal ? 'Add a medal' : 'Add a jelly'}
+          </Button>
         </>
       }
     >
@@ -116,7 +114,6 @@ const MedalsPage = (props) => {
                   <Button.Confirm
                     icon="trash"
                     color="white"
-                    content="Rescind"
                     confirmColor="bad"
                     width={6.5}
                     textAlign="center"
@@ -127,7 +124,9 @@ const MedalsPage = (props) => {
                         index: medalIndex,
                       })
                     }
-                  />
+                  >
+                    Rescind
+                  </Button.Confirm>
                 </Flex.Item>
               </Flex>
             ))}

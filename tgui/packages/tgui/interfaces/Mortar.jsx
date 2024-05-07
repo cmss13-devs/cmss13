@@ -41,7 +41,6 @@ export const Mortar = (props) => {
             </LabeledList.Item>
           </LabeledList>
           <Button
-            content="Set Target"
             icon="crosshairs"
             style={{
               marginTop: '5px',
@@ -53,9 +52,10 @@ export const Mortar = (props) => {
                 target_y: target_y,
               })
             }
-          />
+          >
+            Set Target
+          </Button>
           <Button
-            content="View Camera"
             style={{
               display: 'flex',
               position: 'absolute',
@@ -72,7 +72,9 @@ export const Mortar = (props) => {
                 camera: 1,
               })
             }
-          />
+          >
+            View Camera
+          </Button>
         </Section>
         <Section>
           <LabeledList>
@@ -100,7 +102,6 @@ export const Mortar = (props) => {
             </LabeledList.Item>
           </LabeledList>
           <Button
-            content="Dial Offset"
             icon="wrench"
             style={{
               marginTop: '5px',
@@ -112,7 +113,9 @@ export const Mortar = (props) => {
                 dial_y: dial_y,
               })
             }
-          />
+          >
+            Dial Offset
+          </Button>
         </Section>
       </Window.Content>
     </Window>

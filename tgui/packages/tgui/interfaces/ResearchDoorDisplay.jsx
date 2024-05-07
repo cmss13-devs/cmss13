@@ -17,36 +17,24 @@ export const ResearchDoorDisplay = () => {
             </Flex.Item>
             <Flex.Item>
               {(!data.open_shutter && (
-                <Button
-                  fluid
-                  icon="lock-open"
-                  content="Open shutter"
-                  onClick={() => act('shutter')}
-                />
+                <Button fluid icon="lock-open" onClick={() => act('shutter')}>
+                  Open shutter
+                </Button>
               )) || (
-                <Button
-                  fluid
-                  icon="lock"
-                  content="Close shutter"
-                  onClick={() => act('shutter')}
-                />
+                <Button fluid icon="lock" onClick={() => act('shutter')}>
+                  Close shutter
+                </Button>
               )}
             </Flex.Item>
             <Flex.Item>
               {(!data.open_door && (
-                <Button
-                  fluid
-                  icon="door-open"
-                  content="Open door"
-                  onClick={() => act('door')}
-                />
+                <Button fluid icon="door-open" onClick={() => act('door')}>
+                  Open door
+                </Button>
               )) || (
-                <Button
-                  fluid
-                  icon="door-closed"
-                  content="Close door"
-                  onClick={() => act('door')}
-                />
+                <Button fluid icon="door-closed" onClick={() => act('door')}>
+                  Close door
+                </Button>
               )}
             </Flex.Item>
             {!!data.has_divider && (
@@ -54,27 +42,22 @@ export const ResearchDoorDisplay = () => {
                 <Button
                   fluid
                   icon="arrows-alt-v"
-                  content="Toggle divider"
                   onClick={() => act('divider')}
-                />
+                >
+                  Toggle divider
+                </Button>
               </Flex.Item>
             )}
             {!!data.has_flash && (
               <Flex.Item>
                 {(!data.flash_charging && (
-                  <Button
-                    fluid
-                    icon="sun"
-                    content="Activate flash"
-                    onClick={() => act('flash')}
-                  />
+                  <Button fluid icon="sun" onClick={() => act('flash')}>
+                    Activate flash
+                  </Button>
                 )) || (
-                  <Button
-                    fluid
-                    color="bad"
-                    icon="sync-alt"
-                    content="Flash recharging!"
-                  />
+                  <Button fluid color="bad" icon="sync-alt">
+                    Flash recharging!
+                  </Button>
                 )}
               </Flex.Item>
             )}

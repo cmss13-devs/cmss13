@@ -64,23 +64,25 @@ export const CasSim = () => {
                 fluid
                 icon="eye"
                 color="good"
-                content="Enter simulation"
                 onClick={() => {
                   act('start_watching');
                   setSimulationView(true);
                 }}
-              />
+              >
+                Enter simulation
+              </Button>
             )) || (
               <Button
                 fluid
                 icon="eye-slash"
                 color="good"
-                content="Exit simulation"
                 onClick={() => {
                   act('stop_watching');
                   setSimulationView(false);
                 }}
-              />
+              >
+                Exit simulation
+              </Button>
             )}
           </Stack.Item>
           <Stack.Item grow>
@@ -88,9 +90,10 @@ export const CasSim = () => {
               fluid
               icon="repeat"
               color="good"
-              content="Switch dummy type"
               onClick={() => act('switchmode')}
-            />
+            >
+              Switch dummy type
+            </Button>
           </Stack.Item>
         </Stack>
         <Stack>
@@ -100,9 +103,10 @@ export const CasSim = () => {
               fluid
               icon="sign-in-alt"
               color="good"
-              content="Switch firemission"
               onClick={() => act('switch_firemission')}
-            />
+            >
+              Switch firemission
+            </Button>
           </Stack.Item>
           <Stack.Item grow>
             <Button.Confirm
@@ -110,10 +114,11 @@ export const CasSim = () => {
               fluid
               icon="bomb"
               color="good"
-              content="Execute firemission?"
               confirmContent="Confirm?"
               onClick={() => act('execute_simulated_firemission')}
-            />
+            >
+              Execute firemission?
+            </Button.Confirm>
           </Stack.Item>
         </Stack>
         <Stack />

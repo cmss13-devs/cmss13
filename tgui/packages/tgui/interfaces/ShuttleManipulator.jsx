@@ -40,16 +40,16 @@ export const ShuttleManipulatorStatus = (props) => {
           <Table.Row key={shuttle.id}>
             <Table.Cell width="11rem">
               <Button
-                content="JMP"
                 key={shuttle.id}
                 onClick={() =>
                   act('jump_to', {
                     id: shuttle.id,
                   })
                 }
-              />
+              >
+                JMP
+              </Button>
               <Button
-                content="Fly"
                 key={shuttle.id}
                 disabled={!shuttle.can_fly}
                 onClick={() =>
@@ -57,10 +57,11 @@ export const ShuttleManipulatorStatus = (props) => {
                     id: shuttle.id,
                   })
                 }
-              />
+              >
+                Fly
+              </Button>
               {shuttle.has_disable === 1 && shuttle.is_disabled === 0 && (
                 <Button
-                  content="Disable"
                   key={shuttle.id}
                   disabled={!shuttle.can_fly}
                   onClick={() =>
@@ -68,11 +69,12 @@ export const ShuttleManipulatorStatus = (props) => {
                       id: shuttle.id,
                     })
                   }
-                />
+                >
+                  Disable
+                </Button>
               )}
               {shuttle.has_disable === 1 && shuttle.is_disabled === 1 && (
                 <Button
-                  content="Enable"
                   key={shuttle.id}
                   disabled={!shuttle.can_fly}
                   onClick={() =>
@@ -80,7 +82,9 @@ export const ShuttleManipulatorStatus = (props) => {
                       id: shuttle.id,
                     })
                   }
-                />
+                >
+                  Enable
+                </Button>
               )}
             </Table.Cell>
             <Table.Cell>{shuttle.name}</Table.Cell>
@@ -92,7 +96,6 @@ export const ShuttleManipulatorStatus = (props) => {
                 <>
                   ({shuttle.timeleft})
                   <Button
-                    content="Fast Travel"
                     key={shuttle.id}
                     disabled={!shuttle.can_fast_travel}
                     onClick={() =>
@@ -100,7 +103,9 @@ export const ShuttleManipulatorStatus = (props) => {
                         id: shuttle.id,
                       })
                     }
-                  />
+                  >
+                    Fast Travel
+                  </Button>
                 </>
               )}
             </Table.Cell>
@@ -146,14 +151,15 @@ export const ShuttleManipulatorTemplates = (props) => {
                 key={actualTemplate.id}
                 buttons={
                   <Button
-                    content={isSelected ? 'Selected' : 'Select'}
                     selected={isSelected}
                     onClick={() =>
                       act('select_template', {
                         id: actualTemplate.id,
                       })
                     }
-                  />
+                  >
+                    {isSelected ? 'Selected' : 'Select'}
+                  </Button>
                 }
               >
                 {(!!actualTemplate.description ||
@@ -221,13 +227,14 @@ export const ShuttleManipulatorModification = (props) => {
                   label="Status"
                   buttons={
                     <Button
-                      content="Jump To"
                       onClick={() =>
                         act('jump_to', {
                           id: existingShuttle.id,
                         })
                       }
-                    />
+                    >
+                      Jump To
+                    </Button>
                   }
                 >
                   {existingShuttle.status}
@@ -240,31 +247,34 @@ export const ShuttleManipulatorModification = (props) => {
           )}
           <Section title="Template Actions">
             <Button.Confirm
-              content="Load"
               color="good"
               onClick={() =>
                 act('load', {
                   id: selected.id,
                 })
               }
-            />
+            >
+              Load
+            </Button.Confirm>
             <Button
-              content="Preview"
               onClick={() =>
                 act('preview', {
                   id: selected.id,
                 })
               }
-            />
+            >
+              Preview
+            </Button>
             <Button
-              content="Replace"
               color="bad"
               onClick={() =>
                 act('replace', {
                   id: selected.id,
                 })
               }
-            />
+            >
+              Replace
+            </Button>
           </Section>
         </>
       ) : (

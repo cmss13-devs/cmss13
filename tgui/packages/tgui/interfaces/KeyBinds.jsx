@@ -239,14 +239,15 @@ export const KeybindElement = (props) => {
           }}
         />
         <Button
-          content="Clear"
           onClick={() =>
             act('clear_keybind', {
               keybinding: keybind.name,
               key: currentBoundKeys,
             })
           }
-        />
+        >
+          Clear
+        </Button>
       </Flex.Item>
     </Flex>
   );
@@ -339,13 +340,6 @@ export class ButtonKeybind extends Component {
     return (
       <Button
         {...rest}
-        content={
-          focused
-            ? Object.keys(keysDown)
-                .filter((isTrue) => keysDown[isTrue])
-                .join('+') || content
-            : content
-        }
         selected={focused}
         inline
         onClick={(e) => {
@@ -357,7 +351,13 @@ export class ButtonKeybind extends Component {
         onFocus={() => this.doFocus()}
         onBlur={() => this.doBlur()}
         onKeyDown={(e) => this.handleKeyPress(e)}
-      />
+      >
+        {focused
+          ? Object.keys(keysDown)
+              .filter((isTrue) => keysDown[isTrue])
+              .join('+') || content
+          : content}
+      </Button>
     );
   }
 }

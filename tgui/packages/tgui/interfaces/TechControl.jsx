@@ -59,7 +59,6 @@ export const TechControl = (props) => {
               <Flex direction="column" height="100%">
                 <Flex.Item>
                   <Button
-                    content="Take Command"
                     disabled={
                       (user_data.rank || 0) < leader_data.rank ||
                       user_data.is_leader
@@ -67,17 +66,20 @@ export const TechControl = (props) => {
                     textAlign="center"
                     width="100%"
                     onClick={() => act('override_leader')}
-                  />
+                  >
+                    Take Command
+                  </Button>
                 </Flex.Item>
                 <Flex.Item mt={1}>
                   <Button
-                    content="Resign Command"
                     disabled={!user_data.is_leader}
                     color="red"
                     textAlign="center"
                     width="100%"
                     onClick={() => act('giveup_control')}
-                  />
+                  >
+                    Resign Command
+                  </Button>
                 </Flex.Item>
               </Flex>
             </Section>

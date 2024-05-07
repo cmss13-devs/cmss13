@@ -76,7 +76,6 @@ export const Tank = (props) => {
               />
               <Button
                 icon="undo"
-                content=""
                 disabled={data.ReleasePressure === data.defaultReleasePressure}
                 onClick={() =>
                   act('pressure', {
@@ -93,10 +92,11 @@ export const Tank = (props) => {
                 fontSize="11px"
                 disabled={!data.mask_connected}
                 color={data.valve_open ? 'danger' : null}
-                content={data.valve_open ? 'Open' : 'Closed'}
                 icon={data.valve_open ? 'lock-open' : 'lock'}
                 onClick={() => act('valve')}
-              />
+              >
+                {data.valve_open ? 'Open' : 'Closed'}
+              </Button>
             </LabeledControls.Item>
           </LabeledControls>
         </Section>

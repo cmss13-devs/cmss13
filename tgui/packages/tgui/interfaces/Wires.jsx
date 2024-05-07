@@ -26,32 +26,35 @@ export const Wires = (props) => {
                     <Button
                       width="60px"
                       color={wire.cut ? 'green' : 'red'}
-                      content={wire.cut ? 'Mend' : 'Cut'}
                       icon={wire.cut ? 'link' : 'cut'}
                       onClick={() =>
                         act('cut', {
                           wire: wire.number,
                         })
                       }
-                    />
+                    >
+                      {wire.cut ? 'Mend' : 'Cut'}
+                    </Button>
                     <Button
-                      content="Pulse"
                       icon="wave-square"
                       onClick={() =>
                         act('pulse', {
                           wire: wire.number,
                         })
                       }
-                    />
+                    >
+                      Pulse
+                    </Button>
                     <Button
-                      content={wire.attached ? 'Detach' : 'Attach'}
                       icon="paperclip"
                       onClick={() =>
                         act('attach', {
                           wire: wire.number,
                         })
                       }
-                    />
+                    >
+                      {wire.attached ? 'Detach' : 'Attach'}
+                    </Button>
                   </>
                 }
               >

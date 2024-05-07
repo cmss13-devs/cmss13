@@ -119,18 +119,18 @@ const GeneralPanel = (props) => {
         {!!selectedPhone && (
           <Stack.Item>
             <Button
-              content="Dial"
               color="good"
               fluid
               textAlign="center"
               onClick={() => act('call_phone', { phone_id: selectedPhone })}
-            />
+            >
+              Dial
+            </Button>
           </Stack.Item>
         )}
         {!!last_caller && <Stack.Item>Last Caller: {last_caller}</Stack.Item>}
         <Stack.Item>
           <Button
-            content="Do Not Disturb"
             color="red"
             tooltip={dnd_tooltip}
             disabled={dnd_locked === 'Yes'}
@@ -138,7 +138,9 @@ const GeneralPanel = (props) => {
             fluid
             textAlign="center"
             onClick={() => act('toggle_dnd')}
-          />
+          >
+            Do Not Disturb
+          </Button>
         </Stack.Item>
       </Stack>
     </Section>

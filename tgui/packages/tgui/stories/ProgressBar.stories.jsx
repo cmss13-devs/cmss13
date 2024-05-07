@@ -41,14 +41,8 @@ const Story = (props) => {
       <Box mt={1}>
         <LabeledList mt="2em">
           <LabeledList.Item label="Adjust value">
-            <Button
-              content="-0.1"
-              onClick={() => setProgress(progress - 0.1)}
-            />
-            <Button
-              content="+0.1"
-              onClick={() => setProgress(progress + 0.1)}
-            />
+            <Button onClick={() => setProgress(progress - 0.1)}>-0.1</Button>
+            <Button onClick={() => setProgress(progress + 0.1)}>+0.1</Button>
           </LabeledList.Item>
           <LabeledList.Item label="Override color">
             <Input value={color} onChange={(e, value) => setColor(value)} />

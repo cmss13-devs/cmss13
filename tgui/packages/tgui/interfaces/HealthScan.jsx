@@ -178,9 +178,10 @@ export const HealthScan = (props) => {
               <Button
                 inline
                 style={{ marginLeft: '2%' }}
-                content="Change"
                 onClick={() => act('change_holo_card')}
-              />
+              >
+                Change
+              </Button>
             </LabeledList.Item>
           </LabeledList>
         </Section>

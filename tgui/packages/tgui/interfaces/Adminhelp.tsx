@@ -100,7 +100,6 @@ export const Adminhelp = (props) => {
             <Button
               color="good"
               fluid
-              content="Submit"
               textAlign="center"
               onClick={() =>
                 act('ahelp', {
@@ -108,7 +107,9 @@ export const Adminhelp = (props) => {
                   message: ahelpMessage,
                 })
               }
-            />
+            >
+              Submit
+            </Button>
           </Stack.Item>
         </Stack>
       </Window.Content>

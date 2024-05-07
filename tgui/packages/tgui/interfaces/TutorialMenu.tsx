@@ -127,7 +127,6 @@ export const TutorialMenu = (props) => {
                     )}
                     <Stack.Item>
                       <Button
-                        content="Start Tutorial"
                         textAlign="center"
                         width="100%"
                         onClick={() =>
@@ -135,7 +134,9 @@ export const TutorialMenu = (props) => {
                             tutorial_path: chosenTutorial.path,
                           })
                         }
-                      />
+                      >
+                        Start Tutorial
+                      </Button>
                     </Stack.Item>
                   </Stack>
                 ) : (

@@ -366,17 +366,16 @@ const TabBay = (props) => {
   const { act, data } = useBackend();
   return (
     <>
+      <Button icon="street-view" onClick={() => act('goto_bay')}>
+        Teleport
+      </Button>
       <Button
-        content="Teleport"
-        icon="street-view"
-        onClick={() => act('goto_bay')}
-      />
-      <Button
-        content={data.old_area ? data.old_area.substring(0, 17) : 'Go Back'}
         disabled={!data.old_area}
         icon="undo-alt"
         onClick={() => act('goto_prev_turf')}
-      />
+      >
+        {data.old_area ? data.old_area.substring(0, 17) : 'Go Back'}
+      </Button>
     </>
   );
 };
@@ -385,17 +384,16 @@ const TabDrop = (props) => {
   const { act, data } = useBackend();
   return (
     <>
+      <Button icon="street-view" onClick={() => act('goto_dropoff')}>
+        Teleport
+      </Button>
       <Button
-        content="Teleport"
-        icon="street-view"
-        onClick={() => act('goto_dropoff')}
-      />
-      <Button
-        content={data.old_area ? data.old_area.substring(0, 17) : 'Go Back'}
         disabled={!data.old_area}
         icon="undo-alt"
         onClick={() => act('goto_prev_turf')}
-      />
+      >
+        {data.old_area ? data.old_area.substring(0, 17) : 'Go Back'}
+      </Button>
     </>
   );
 };
@@ -426,7 +424,6 @@ const PodStatusPage = (props) => {
                           tooltipPosition={list.tooltipPosition}
                           tooltipOverrideLong
                           icon={effect.icon}
-                          content={effect.content}
                           selected={
                             effect.selected ? effect.selected(data) : false
                           }
@@ -442,7 +439,9 @@ const PodStatusPage = (props) => {
                               j !== list.list.length - 1 ? '1px' : '0px',
                             borderRadius: '5px',
                           }}
-                        />
+                        >
+                          {effect.content}
+                        </Button>
                       )}
                     </Flex.Item>
                   ))}
@@ -466,7 +465,6 @@ const ReverseMenu = (props) => {
       <Flex fill direction="column">
         <Flex.Item maxHeight="20px">
           <Button
-            content="Dropoff Turf"
             selected={target_mode === TARGET_MODE_DROPOFF}
             tooltip={multiline`
               Where the pods
@@ -484,7 +482,9 @@ const ReverseMenu = (props) => {
                 });
               }
             }}
-          />
+          >
+            Dropoff Turf
+          </Button>
           <Button
             inline
             icon="trash"
@@ -590,7 +590,6 @@ class PresetsPage extends Component {
             <Button
               inline
               color="transparent"
-              content=""
               icon="download"
               tooltip="Saves preset"
               tooltipOverrideLong
@@ -600,7 +599,6 @@ class PresetsPage extends Component {
             <Button
               inline
               color="transparent"
-              content=""
               icon="upload"
               tooltip="Loads preset"
               onClick={() => {
@@ -673,7 +671,6 @@ class PresetsPage extends Component {
                 width="100%"
                 backgroundColor={`hsl(${preset.hue}, 50%, 50%)`}
                 onClick={() => setSelectedPreset(preset.id)}
-                content={preset.title}
                 style={
                   presetIndex === preset.id
                     ? {
@@ -683,7 +680,9 @@ class PresetsPage extends Component {
                       }
                     : ''
                 }
-              />
+              >
+                {preset.title}
+              </Button>
             ))
           : ''}
       </Section>
@@ -703,11 +702,6 @@ const LaunchPage = (props) => {
       tooltipOverrideLong
       selected={data.target_mode === TARGET_MODE_LAUNCH}
       tooltipPosition="top"
-      content={
-        <Box bold fontSize="1.4em" lineHeight={3}>
-          LAUNCH
-        </Box>
-      }
       onClick={() => {
         if (data.target_mode === TARGET_MODE_LAUNCH) {
           act('set_target_mode', {
@@ -719,7 +713,11 @@ const LaunchPage = (props) => {
           });
         }
       }}
-    />
+    >
+      <Box bold fontSize="1.4em" lineHeight={3}>
+        LAUNCH
+      </Box>
+    </Button>
   );
 };
 

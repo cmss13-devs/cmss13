@@ -82,16 +82,15 @@ const SleeperOccupant = (props) => {
           <Button
             icon={auto_eject_dead ? 'toggle-on' : 'toggle-off'}
             selected={auto_eject_dead}
-            content={auto_eject_dead ? 'On' : 'Off'}
             onClick={() =>
               act('auto_eject_dead_' + (auto_eject_dead ? 'off' : 'on'))
             }
-          />
-          <Button
-            icon="user-slash"
-            content="Eject"
-            onClick={() => act('ejectify')}
-          />
+          >
+            {auto_eject_dead ? 'On' : 'Off'}
+          </Button>
+          <Button icon="user-slash" onClick={() => act('ejectify')}>
+            Eject
+          </Button>
         </>
       }
     >
@@ -188,9 +187,10 @@ const SleeperDialysis = (props) => {
           disabled={dialysisDisabled}
           selected={canDialysis}
           icon={canDialysis ? 'toggle-on' : 'toggle-off'}
-          content={canDialysis ? 'Active' : 'Inactive'}
           onClick={() => act('togglefilter')}
-        />
+        >
+          {canDialysis ? 'Active' : 'Inactive'}
+        </Button>
       }
     >
       {!occupant.totalreagents && (
@@ -265,7 +265,6 @@ const SleeperChemicals = (props) => {
                       occupant.stat === 2
                     }
                     icon="syringe"
-                    content={'Inject ' + a + 'u'}
                     title={
                       'Inject ' +
                       a +
@@ -281,7 +280,9 @@ const SleeperChemicals = (props) => {
                         amount: a,
                       })
                     }
-                  />
+                  >
+                    {'Inject ' + a + 'u'}
+                  </Button>
                 ))}
               </Flex>
             </Section>

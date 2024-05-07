@@ -90,11 +90,12 @@ const MainMenu = (props) => {
                     </Flex.Item>
                     <Flex.Item pl={1}>
                       <Button
-                        content="Vote"
                         color="good"
                         textAlign="center"
                         onClick={() => act('vote', { voted_for: key })}
-                      />
+                      >
+                        Vote
+                      </Button>
                     </Flex.Item>
                     {!!(vote_has_voted || is_admin) && (
                       <Flex.Item>
@@ -111,10 +112,11 @@ const MainMenu = (props) => {
                   width="100%"
                   icon="stop-circle"
                   color="teal"
-                  content="Cancel Current Vote"
                   mt={1}
                   onClick={() => act('cancel')}
-                />
+                >
+                  Cancel Current Vote
+                </Button.Confirm>
               )}
             </Flex>
           )) || (
@@ -146,7 +148,6 @@ const StartVote = (props) => {
           return (
             <Flex.Item key={key} basis="100%" mb="1%" height="30px">
               <Button
-                content={element.name}
                 pt={1}
                 pb={1}
                 textAlign="center"
@@ -156,7 +157,9 @@ const StartVote = (props) => {
                 color={element.color}
                 disabled={!canUseElement}
                 onClick={() => act('initiate_vote', { vote_type: key })}
-              />
+              >
+                {element.name}
+              </Button>
             </Flex.Item>
           );
         })}
@@ -177,13 +180,14 @@ const SettingsMenu = (props) => {
         </Flex.Item>
         <Flex.Item align="right">
           <Button
-            content={can_restart_vote ? 'Unlocked' : 'Locked'}
             icon={can_restart_vote ? 'lock-open' : 'lock'}
             color={can_restart_vote ? 'good' : 'bad'}
             onClick={() => act('toggle_restart')}
             tooltip="Controls whether players can make restart votes."
             tooltipPosition="left"
-          />
+          >
+            {can_restart_vote ? 'Unlocked' : 'Locked'}
+          </Button>
         </Flex.Item>
       </Flex>
       <Flex mt={1}>
@@ -192,13 +196,14 @@ const SettingsMenu = (props) => {
         </Flex.Item>
         <Flex.Item>
           <Button
-            content={can_gamemode_vote ? 'Unlocked' : 'Locked'}
             icon={can_gamemode_vote ? 'lock-open' : 'lock'}
             color={can_gamemode_vote ? 'good' : 'bad'}
             onClick={() => act('toggle_gamemode')}
             tooltip="Controls whether players can make gamemode votes."
             tooltipPosition="left"
-          />
+          >
+            {can_gamemode_vote ? 'Unlocked' : 'Locked'}
+          </Button>
         </Flex.Item>
       </Flex>
     </Section>

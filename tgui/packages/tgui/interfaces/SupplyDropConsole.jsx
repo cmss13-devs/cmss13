@@ -78,11 +78,9 @@ export const SupplyDropConsole = () => {
           <Section
             title="Supply Pad Status"
             buttons={
-              <Button
-                icon="sync-alt"
-                content="Update"
-                onClick={() => act('refresh_pad')}
-              />
+              <Button icon="sync-alt" onClick={() => act('refresh_pad')}>
+                Update
+              </Button>
             }
           >
             <NoticeBox info={1} textAlign="center">
@@ -117,9 +115,10 @@ export const SupplyDropConsole = () => {
               fluid
               icon="paper-plane"
               color="good"
-              content="Launch Supply Drop"
               onClick={() => act('send_beacon')}
-            />
+            >
+              Launch Supply Drop
+            </Button>
           </Section>
         </Section>
       </Window.Content>

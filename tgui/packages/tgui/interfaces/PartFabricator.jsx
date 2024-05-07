@@ -30,7 +30,6 @@ const GeneralPanel = (props, context) => {
                   className="underline"
                   buttons={
                     <Button
-                      content={'Fabricate  (' + Equipment.cost + ')'}
                       icon="wrench"
                       tooltip={Equipment.desc}
                       tooltipPosition="left"
@@ -40,7 +39,9 @@ const GeneralPanel = (props, context) => {
                           is_ammo: Equipment.is_ammo,
                         })
                       }
-                    />
+                    >
+                      {'Fabricate  (' + Equipment.cost + ')'}
+                    </Button>
                   }
                 />
               ))}
@@ -58,7 +59,6 @@ const GeneralPanel = (props, context) => {
                   buttons={
                     Ammo.name === 'A/C-49-P Air Deployable Sentry' ? (
                       <Button
-                        content={'Fabricate  (' + omnisentrygun_price + ')'}
                         icon="wrench"
                         tooltip={Ammo.desc}
                         tooltipPosition="left"
@@ -69,10 +69,11 @@ const GeneralPanel = (props, context) => {
                             is_ammo: Ammo.is_ammo,
                           })
                         }
-                      />
+                      >
+                        {'Fabricate  (' + omnisentrygun_price + ')'}
+                      </Button>
                     ) : (
                       <Button
-                        content={'Fabricate  (' + Ammo.cost + ')'}
                         icon="wrench"
                         tooltip={Ammo.desc}
                         tooltipPosition="left"
@@ -82,7 +83,9 @@ const GeneralPanel = (props, context) => {
                             is_ammo: Ammo.is_ammo,
                           })
                         }
-                      />
+                      >
+                        {'Fabricate  (' + Ammo.cost + ')'}
+                      </Button>
                     )
                   }
                 />

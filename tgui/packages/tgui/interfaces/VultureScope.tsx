@@ -96,7 +96,6 @@ const OffsetDirection = (props) => {
   return (
     <Flex.Item grow={1} basis={0}>
       <Button
-        content={DirectionAbbreviation[dir]}
         tooltip={`Adjusts the scope's offset to the ${DirectionAbbreviation[dir]}`}
         disabled={
           data.valid_offset_dirs.indexOf(dir) === -1 || data.scope_cooldown
@@ -107,7 +106,9 @@ const OffsetDirection = (props) => {
         lineHeight={3}
         m={-0.2}
         fluid
-      />
+      >
+        {DirectionAbbreviation[dir]}
+      </Button>
     </Flex.Item>
   );
 };
@@ -158,7 +159,6 @@ const ScopePosition = (props) => {
   return (
     <Flex.Item grow={1} basis={0}>
       <Button
-        content={DirectionAbbreviation[dir]}
         tooltip={`Adjusts the scope's position to the ${DirectionAbbreviation[dir]}`}
         disabled={
           data.valid_adjust_dirs.indexOf(dir) === -1 || data.scope_cooldown
@@ -169,7 +169,9 @@ const ScopePosition = (props) => {
         lineHeight={3}
         m={-0.2}
         fluid
-      />
+      >
+        {DirectionAbbreviation[dir]}
+      </Button>
     </Flex.Item>
   );
 };
@@ -180,7 +182,6 @@ const SecondarySection = (props) => {
     <Section title="Breathing & Data" textAlign="center">
       <Flex.Item grow={1} basis={0}>
         <Button
-          content="Control Breathing"
           tooltip="Control your breathing for a short time, removing scope drift."
           disabled={data.breath_cooldown}
           textAlign="center"
@@ -189,7 +190,9 @@ const SecondarySection = (props) => {
           lineHeight={3}
           m={-0.2}
           fluid
-        />
+        >
+          Control Breathing
+        </Button>
       </Flex.Item>
       <div style={{ padding: '6px' }} />
       <Flex.Item>

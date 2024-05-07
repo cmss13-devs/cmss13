@@ -71,24 +71,26 @@ export const DemoSim = () => {
                   fluid
                   icon="eye"
                   color="good"
-                  content="Enter simulation"
                   onClick={() => {
                     act('start_watching');
                     setSimulationView(true);
                   }}
-                />
+                >
+                  Enter simulation
+                </Button>
               )) || (
                 <Button
                   fontSize="16px"
                   fluid
                   icon="eye-slash"
                   color="good"
-                  content="Exit simulation"
                   onClick={() => {
                     act('stop_watching');
                     setSimulationView(false);
                   }}
-                />
+                >
+                  Exit simulation
+                </Button>
               )}
             </Stack.Item>
             <Stack.Item grow>
@@ -97,9 +99,10 @@ export const DemoSim = () => {
                 fluid
                 icon="repeat"
                 color="good"
-                content="Switch dummy type"
                 onClick={() => act('switchmode')}
-              />
+              >
+                Switch dummy type
+              </Button>
             </Stack.Item>
           </Stack>
           <Stack>
@@ -110,9 +113,10 @@ export const DemoSim = () => {
                 fluid
                 icon="sign-in-alt"
                 color="good"
-                content="Eject explosive"
                 onClick={() => act('eject')}
-              />
+              >
+                Eject explosive
+              </Button>
             </Stack.Item>
             <Stack.Item grow>
               <Button.Confirm
@@ -121,10 +125,11 @@ export const DemoSim = () => {
                 fluid
                 icon="bomb"
                 color="good"
-                content="Detonate explosive"
                 confirmContent="Confirm?"
                 onClick={() => act('detonate')}
-              />
+              >
+                Detonate explosive
+              </Button.Confirm>
             </Stack.Item>
           </Stack>
         </Section>

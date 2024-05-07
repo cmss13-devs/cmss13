@@ -72,11 +72,12 @@ const ObjectDisplay = (props) => {
     <Section>
       <Button
         icon="redo-alt"
-        content={scanning ? 'Scanning...' : 'Scan'}
         color="blue"
         disabled={scanning}
         onClick={() => act('scan')}
-      />
+      >
+        {scanning ? 'Scanning...' : 'Scan'}
+      </Button>
       {!object.length && !scanning && <div>No trackable signals found</div>}
       {!scanning &&
         object.map((object) => (

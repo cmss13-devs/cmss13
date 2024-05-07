@@ -74,7 +74,6 @@ const EmoteTab = (props) => {
                   </Stack.Item>
                   <Stack.Item mt={-0.5}>
                     <Button
-                      content={item.text}
                       disabled={on_cooldown}
                       tooltip={item.id}
                       onClick={() =>
@@ -82,7 +81,9 @@ const EmoteTab = (props) => {
                           emotePath: item.path,
                         })
                       }
-                    />
+                    >
+                      {item.text}
+                    </Button>
                   </Stack.Item>
                 </Stack>
                 <Divider />

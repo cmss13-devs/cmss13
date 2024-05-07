@@ -287,7 +287,6 @@ const XenoList = (props) => {
           <Flex.Item>
             <Button.Checkbox
               inline
-              content="Name"
               checked={searchFilters.name}
               backgroundColor={searchFilters.name && hive_color}
               onClick={() =>
@@ -296,10 +295,11 @@ const XenoList = (props) => {
                   name: !searchFilters.name,
                 })
               }
-            />
+            >
+              Name
+            </Button.Checkbox>
             <Button.Checkbox
               inline
-              content="Strain"
               checked={searchFilters.strain}
               backgroundColor={searchFilters.strain && hive_color}
               onClick={() =>
@@ -308,10 +308,11 @@ const XenoList = (props) => {
                   strain: !searchFilters.strain,
                 })
               }
-            />
+            >
+              Strain
+            </Button.Checkbox>
             <Button.Checkbox
               inline
-              content="Location"
               checked={searchFilters.location}
               backgroundColor={searchFilters.location && hive_color}
               onClick={() =>
@@ -320,7 +321,9 @@ const XenoList = (props) => {
                   location: !searchFilters.location,
                 })
               }
-            />
+            >
+              Location
+            </Button.Checkbox>
           </Flex.Item>
         </Flex>
       </Flex.Item>
@@ -395,14 +398,15 @@ const XenoList = (props) => {
                 >
                   <Flex.Item>
                     <Button
-                      content="Watch"
                       color="xeno"
                       onClick={() =>
                         act('overwatch', {
                           target_ref: entry.ref,
                         })
                       }
-                    />
+                    >
+                      Watch
+                    </Button>
                   </Flex.Item>
                   {!!is_in_ovi && <QueenOviButtons target_ref={entry.ref} />}
                 </Flex>
@@ -455,25 +459,27 @@ const QueenOviButtons = (props) => {
     <>
       <Flex.Item>
         <Button
-          content="Heal"
           color="green"
           onClick={() =>
             act('heal', {
               target_ref: target_ref,
             })
           }
-        />
+        >
+          Heal
+        </Button>
       </Flex.Item>
       <Flex.Item>
         <Button
-          content="Give Plasma"
           color="blue"
           onClick={() =>
             act('give_plasma', {
               target_ref: target_ref,
             })
           }
-        />
+        >
+          Give Plasma
+        </Button>
       </Flex.Item>
     </>
   );

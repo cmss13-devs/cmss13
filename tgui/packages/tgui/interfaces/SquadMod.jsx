@@ -11,12 +11,9 @@ export const SquadMod = (props) => {
         <Section>
           <Stack vertical>
             <Stack.Item>
-              <Button
-                fluid
-                icon="eject"
-                content={id_name}
-                onClick={() => act('PRG_eject')}
-              />
+              <Button fluid icon="eject" onClick={() => act('PRG_eject')}>
+                {id_name}
+              </Button>
             </Stack.Item>
             {!has_id && (
               <Stack.Item>
@@ -45,14 +42,15 @@ export const SquadMod = (props) => {
               <Button
                 key={entry.name}
                 fluid
-                content={entry.name}
                 backgroundColor={entry.color}
                 onClick={() =>
                   act('PRG_squad', {
                     name: entry.name,
                   })
                 }
-              />
+              >
+                {entry.name}
+              </Button>
             ))}
           </Section>
         )}

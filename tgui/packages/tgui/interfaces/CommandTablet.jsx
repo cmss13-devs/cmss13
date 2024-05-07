@@ -50,10 +50,11 @@ export const CommandTablet = () => {
                   fluid
                   icon="bullhorn"
                   title="Make an announcement"
-                  content="Make an announcement"
                   onClick={() => act('announce')}
                   disabled={!canAnnounce}
-                />
+                >
+                  Make an announcement
+                </Button>
               )}
             </Flex.Item>
             <Flex.Item>
@@ -61,18 +62,20 @@ export const CommandTablet = () => {
                 fluid
                 icon="medal"
                 title="Give a medal"
-                content="Give a medal"
                 onClick={() => act('award')}
-              />
+              >
+                Give a medal
+              </Button>
             </Flex.Item>
             <Flex.Item>
               <Button
                 fluid
                 icon="globe-africa"
                 title="View tactical map"
-                content="View tactical map"
                 onClick={() => act('mapview')}
-              />
+              >
+                View tactical map
+              </Button>
             </Flex.Item>
             {data.faction === 'USCM' && (
               <Section title="Evacuation">
@@ -86,23 +89,25 @@ export const CommandTablet = () => {
                   {!canDistress && (
                     <Button
                       disabled={1}
-                      content={'Distress Beacon disabled'}
                       tooltip={distress_reason}
                       fluid
                       icon="ban"
-                    />
+                    >
+                      {'Distress Beacon disabled'}
+                    </Button>
                   )}
                   {canDistress && (
                     <Button.Confirm
                       fluid
                       color="orange"
                       icon="phone-volume"
-                      content={'Send Distress Beacon'}
                       confirmColor="bad"
                       confirmContent="Confirm?"
                       confirmIcon="question"
                       onClick={() => act('distress')}
-                    />
+                    >
+                      {'Send Distress Beacon'}
+                    </Button.Confirm>
                   )}
                 </Flex.Item>
                 {evacstatus === 0 && (
@@ -111,13 +116,14 @@ export const CommandTablet = () => {
                       fluid
                       color="orange"
                       icon="door-open"
-                      content={'Initiate Evacuation'}
                       confirmColor="bad"
                       confirmContent="Confirm?"
                       confirmIcon="question"
                       onClick={() => act('evacuation_start')}
                       disabled={!canEvac}
-                    />
+                    >
+                      {'Initiate Evacuation'}
+                    </Button.Confirm>
                   </Flex.Item>
                 )}
                 {evacstatus === 1 && (

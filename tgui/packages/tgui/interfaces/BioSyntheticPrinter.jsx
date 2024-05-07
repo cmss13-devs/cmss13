@@ -62,12 +62,13 @@ export const BioSyntheticPrinter = () => {
                   }
                   buttons={
                     <Button
-                      content="print"
                       color="good"
                       disabled={data.metal_amt < val.metal || !!Working}
                       textAlign="center"
                       onClick={() => act('print', { recipe_id: val.recipe_id })}
-                    />
+                    >
+                      print
+                    </Button>
                   }
                 >
                   <Box>

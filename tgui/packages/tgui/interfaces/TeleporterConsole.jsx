@@ -104,9 +104,10 @@ export const TeleporterConsole = () => {
             disabled={!!cantFire}
             fluid
             icon="plane-departure"
-            content="Commence Teleportation Sequence"
             onClick={() => act('teleport')}
-          />
+          >
+            Commence Teleportation Sequence
+          </Button.Confirm>
         </Section>
         {!!data.teleporting && (
           <Dimmer fontSize="32px">

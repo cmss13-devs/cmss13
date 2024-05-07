@@ -29,7 +29,6 @@ const LanguagesView = (props) => {
     <Fragment key={index}>
       <Button
         fluid
-        content={capitalize(lang.name) + ' (:' + lang.key + ')'}
         tooltip={index === 0 ? 'Default language' : 'Make default'}
         color={index === 0 ? 'good' : null}
         onClick={() =>
@@ -37,7 +36,9 @@ const LanguagesView = (props) => {
             key: lang.key,
           })
         }
-      />
+      >
+        {capitalize(lang.name) + ' (:' + lang.key + ')'}
+      </Button>
       <Box height="3px" />
       <Box>{lang.desc}</Box>
       <Divider />

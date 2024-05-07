@@ -127,13 +127,14 @@ export const SettingsGeneral = (props) => {
             <Stack.Item>
               <Button
                 ml={0.5}
-                content="Custom font"
                 icon={freeFont ? 'lock-open' : 'lock'}
                 color={freeFont ? 'good' : 'bad'}
                 onClick={() => {
                   setFreeFont(!freeFont);
                 }}
-              />
+              >
+                Custom font
+              </Button>
             </Stack.Item>
           </Stack>
         </LabeledList.Item>
@@ -179,19 +180,21 @@ export const SettingsGeneral = (props) => {
       <Stack fill>
         <Stack.Item grow mt={0.15}>
           <Button
-            content="Save chat log"
             icon="save"
             tooltip="Export current tab history into HTML file"
             onClick={() => dispatch(saveChatToDisk())}
-          />
+          >
+            Save chat log
+          </Button>
         </Stack.Item>
         <Stack.Item mt={0.15}>
           <Button.Confirm
-            content="Clear chat"
             icon="trash"
             tooltip="Erase current tab history"
             onClick={() => dispatch(clearChat())}
-          />
+          >
+            Clear chat
+          </Button.Confirm>
         </Stack.Item>
       </Stack>
     </Section>
@@ -216,11 +219,12 @@ const TextHighlightSettings = (props) => {
             <Button
               color="transparent"
               icon="plus"
-              content="Add Highlight Setting"
               onClick={() => {
                 dispatch(addHighlightSetting());
               }}
-            />
+            >
+              Add Highlight Setting
+            </Button>
           </Stack.Item>
         )}
       </Stack>
@@ -253,7 +257,6 @@ const TextHighlightSetting = (props) => {
       <Stack mb={1} color="label" align="baseline">
         <Stack.Item grow>
           <Button
-            content="Delete"
             color="transparent"
             icon="times"
             onClick={() =>
@@ -263,12 +266,13 @@ const TextHighlightSetting = (props) => {
                 }),
               )
             }
-          />
+          >
+            Delete
+          </Button>
         </Stack.Item>
         <Stack.Item>
           <Button.Checkbox
             checked={highlightWholeMessage}
-            content="Whole Message"
             tooltip="If this option is selected, the entire message will be highlighted in yellow."
             onClick={() =>
               dispatch(
@@ -278,11 +282,12 @@ const TextHighlightSetting = (props) => {
                 }),
               )
             }
-          />
+          >
+            Whole Message
+          </Button.Checkbox>
         </Stack.Item>
         <Stack.Item>
           <Button.Checkbox
-            content="Exact"
             checked={matchWord}
             tooltipPosition="bottom-start"
             tooltip="If this option is selected, only exact matches (no extra letters before or after) will trigger. Not compatible with punctuation. Overriden if regex is used."
@@ -294,11 +299,12 @@ const TextHighlightSetting = (props) => {
                 }),
               )
             }
-          />
+          >
+            Exact
+          </Button.Checkbox>
         </Stack.Item>
         <Stack.Item>
           <Button.Checkbox
-            content="Case"
             tooltip="If this option is selected, the highlight will be case-sensitive."
             checked={matchCase}
             onClick={() =>
@@ -309,7 +315,9 @@ const TextHighlightSetting = (props) => {
                 }),
               )
             }
-          />
+          >
+            Case
+          </Button.Checkbox>
         </Stack.Item>
         <Stack.Item>
           <ColorBox mr={1} color={highlightColor} />

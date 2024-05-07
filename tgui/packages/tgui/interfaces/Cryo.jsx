@@ -103,8 +103,9 @@ const CryoContent = (props) => {
               icon="eject"
               disabled={!data.hasOccupant}
               onClick={() => act('eject')}
-              content="Eject Patient"
-            />
+            >
+              Eject Patient
+            </Button>
             <Button
               icon={data.autoEject ? 'sign-out-alt' : 'sign-in-alt'}
               width="6rem"
@@ -112,9 +113,10 @@ const CryoContent = (props) => {
               tooltip={
                 'Auto eject is ' + (data.autoEject ? 'enabled.' : 'disabled.')
               }
-              content={data.autoEject ? 'Auto' : 'Manual'}
               onClick={() => act('autoeject')}
-            />
+            >
+              {data.autoEject ? 'Auto' : 'Manual'}
+            </Button>
             <Button
               icon={soundicon}
               ml="auto"
@@ -125,9 +127,10 @@ const CryoContent = (props) => {
                 'Auto eject notifications are ' +
                 (data.notify ? 'enabled.' : 'disabled.')
               }
-              content={data.notify ? 'Notify' : 'Silent'}
               onClick={() => act('notice')}
-            />
+            >
+              {data.notify ? 'Notify' : 'Silent'}
+            </Button>
           </LabeledList.Item>
         </LabeledList>
       </Section>
@@ -138,8 +141,9 @@ const CryoContent = (props) => {
             icon="eject"
             disabled={!data.isBeakerLoaded}
             onClick={() => act('ejectbeaker')}
-            content="Eject"
-          />
+          >
+            Eject
+          </Button>
         }
       >
         <BeakerContents

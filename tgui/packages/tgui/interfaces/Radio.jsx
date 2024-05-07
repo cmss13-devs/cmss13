@@ -88,18 +88,20 @@ export const Radio = (props) => {
                   ml={1}
                   icon="bullhorn"
                   selected={useCommand}
-                  content={`High volume ${useCommand ? 'ON' : 'OFF'}`}
                   onClick={() => act('command')}
-                />
+                >
+                  {`High volume ${useCommand ? 'ON' : 'OFF'}`}
+                </Button>
               )}
               {!!subspaceSwitchable && (
                 <Button
                   ml={1}
                   icon="bullhorn"
                   selected={subspace}
-                  content={`Subspace Tx ${subspace ? 'ON' : 'OFF'}`}
                   onClick={() => act('subspace')}
-                />
+                >
+                  {`Subspace Tx ${subspace ? 'ON' : 'OFF'}`}
+                </Button>
               )}
             </LabeledList.Item>
             {!!subspace && (
@@ -114,13 +116,14 @@ export const Radio = (props) => {
                     <Button
                       icon={channel.status ? 'check-square-o' : 'square-o'}
                       selected={channel.status}
-                      content={channel.name + ' ' + channel.hotkey}
                       onClick={() =>
                         act('channel', {
                           channel: channel.name,
                         })
                       }
-                    />
+                    >
+                      {channel.name + ' ' + channel.hotkey}
+                    </Button>
                   </Box>
                 ))}
               </LabeledList.Item>

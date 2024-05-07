@@ -16,11 +16,12 @@ export const FiltrationControl = () => {
               textAlign="center"
               fluid
               icon="power-off"
-              content="Start Filtration"
               fontSize="20px"
               color="good"
               onClick={() => act('activate_filt')}
-            />
+            >
+              Start Filtration
+            </Button.Confirm>
           )) || (
             <NoticeBox textAlign="center" success={1} fontSize="20px">
               Filtration is online

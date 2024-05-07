@@ -15,9 +15,10 @@ export const Timer = (props) => {
             fluid
             color={data.is_timing ? 'green' : 'red'}
             icon="clock"
-            content={data.is_timing ? 'Enabled' : 'Disabled'}
             onClick={() => act('set_timing', { should_time: !data.is_timing })}
-          />
+          >
+            {data.is_timing ? 'Enabled' : 'Disabled'}
+          </Button>
         </Section>
         <Section>
           <Slider

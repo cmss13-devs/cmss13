@@ -236,23 +236,25 @@ const DrawMapPanel = (props) => {
                 color="red"
                 icon="download"
                 className="text-center"
-                content="Update Canvas"
                 onClick={() => act('updateCanvas')}
-              />
+              >
+                Update Canvas
+              </Button>
             )) || (
               <Button
                 height="20px"
                 fluid
                 color="green"
                 icon="bullhorn"
-                content="Announce"
                 className="text-center"
                 onClick={() =>
                   act('selectAnnouncement', {
                     image: data.exportedTacMapImage,
                   })
                 }
-              />
+              >
+                Announce
+              </Button>
             )}
           </Stack.Item>
           <Stack.Item grow>
@@ -261,10 +263,11 @@ const DrawMapPanel = (props) => {
               fluid
               color="grey"
               icon="trash"
-              content="Clear Canvas"
               className="text-center"
               onClick={() => act('clearCanvas')}
-            />
+            >
+              Clear Canvas
+            </Button>
           </Stack.Item>
           <Stack.Item grow>
             <Button
@@ -272,10 +275,11 @@ const DrawMapPanel = (props) => {
               fluid
               color="grey"
               icon="recycle"
-              content="Undo"
               className="text-center"
               onClick={() => act('undoChange')}
-            />
+            >
+              Undo
+            </Button>
           </Stack.Item>
           <Stack.Item>
             <Dropdown

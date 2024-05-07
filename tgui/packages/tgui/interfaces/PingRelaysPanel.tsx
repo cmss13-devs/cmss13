@@ -58,7 +58,6 @@ class PingApp extends Component<PingAppProps> {
     this.pinger.ping(
       'http://' + pingURL,
       (error: string | null, pong: number) => {
-        console.error('start: ' + this.state.currentIndex);
         // reading state is too unreliable now somereason so we have to use realCurrentIndex
         this.results[this.realCurrentIndex++]?.update(
           desc,

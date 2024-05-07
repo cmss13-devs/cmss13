@@ -94,14 +94,14 @@ export const Autodispenser = () => {
                 Status: {statusmessage} {error ? error : null}
               </NoticeBox>
               <Button.Confirm
-                content="Clear memory"
                 icon="trash"
                 fluid
                 disabled={memoryEmpty}
                 onClick={() => act('clearmemory')}
-              />
+              >
+                Clear memory
+              </Button.Confirm>
               <Button
-                content="Run program"
                 icon="play"
                 tooltip={
                   memoryEmpty
@@ -118,7 +118,9 @@ export const Autodispenser = () => {
                   (!output_container && outputmode === 0)
                 }
                 onClick={() => act('runprogram')}
-              />
+              >
+                Run program
+              </Button>
               <Box height="5px" />
               <NoticeBox color={input_container ? null : 'red'}>
                 {input_container
@@ -127,29 +129,32 @@ export const Autodispenser = () => {
               </NoticeBox>
               {(!memoryEmpty && (
                 <Button.Confirm
-                  content="Save box to memory"
                   tooltip="This will overwrite the current saved box"
                   icon="floppy-disk"
                   fluid
                   disabled={!input_container}
                   onClick={() => act('saveprogram')}
-                />
+                >
+                  Save box to memory
+                </Button.Confirm>
               )) || (
                 <Button
-                  content="Save box to memory"
                   icon="floppy-disk"
                   fluid
                   disabled={!input_container}
                   onClick={() => act('saveprogram')}
-                />
+                >
+                  Save box to memory
+                </Button>
               )}
               <Button
-                content="Eject box"
                 icon="eject"
                 fluid
                 disabled={!input_container}
                 onClick={() => act('ejectI')}
-              />
+              >
+                Eject box
+              </Button>
               <Box height="5px" />
               {outputmode === 0 && (
                 <NoticeBox color={output_container ? null : 'red'}>
@@ -192,7 +197,6 @@ export const Autodispenser = () => {
               )}
               {outputmode === 0 && (
                 <Button.Confirm
-                  content="Flush beaker"
                   tooltip={
                     output_container
                       ? 'This will flush ' + output_container + "'s contents."
@@ -202,16 +206,19 @@ export const Autodispenser = () => {
                   fluid
                   disabled={!output_container}
                   onClick={() => act('dispose')}
-                />
+                >
+                  Flush beaker
+                </Button.Confirm>
               )}
               {(output_container || outputmode === 0) && (
                 <Button
-                  content="Eject beaker"
                   icon="eject"
                   fluid
                   disabled={!output_container}
                   onClick={() => act('ejectO')}
-                />
+                >
+                  Eject beaker
+                </Button>
               )}
             </Section>
             <Section title="Settings">
@@ -243,23 +250,26 @@ export const Autodispenser = () => {
               </LabeledList>
               <Box height="5px" />
               <Button
-                content={'Autorun: ' + (automode ? 'enabled' : 'disabled')}
                 icon={automode ? 'repeat' : 'dice-one'}
                 fluid
                 onClick={() => act('toggleauto')}
-              />
+              >
+                {'Autorun: ' + (automode ? 'enabled' : 'disabled')}
+              </Button>
               <Button
-                content={'Smartlink: ' + (smartlink ? 'enabled' : 'disabled')}
                 icon={smartlink ? 'link' : 'link-slash'}
                 fluid
                 onClick={() => act('togglesmart')}
-              />
+              >
+                {'Smartlink: ' + (smartlink ? 'enabled' : 'disabled')}
+              </Button>
               <Button
-                content={'Outputting to: ' + outputmessage}
                 icon={outputicon}
                 fluid
                 onClick={() => act('toggleoutput')}
-              />
+              >
+                {'Outputting to: ' + outputmessage}
+              </Button>
             </Section>
           </Flex.Item>
           <Flex.Item>

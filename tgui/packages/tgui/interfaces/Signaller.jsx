@@ -16,9 +16,10 @@ export const Signaller = (props) => {
             fluid
             textAlign="center"
             icon="satellite-dish"
-            content="Trigger"
             onClick={() => act('send_signal')}
-          />
+          >
+            Trigger
+          </Button>
         </Section>
         <Section>
           <LabeledList>

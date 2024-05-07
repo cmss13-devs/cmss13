@@ -86,9 +86,10 @@ export const OrbitalCannonConsole = () => {
               disabled={!fullyLoaded}
               icon="truck-loading"
               color="good"
-              content="Load tray"
               onClick={() => act('load_tray')}
-            />
+            >
+              Load tray
+            </Button>
           )) || (
             <Box>
               {(!data.chamberedtray && (
@@ -98,9 +99,10 @@ export const OrbitalCannonConsole = () => {
                   fluid
                   icon="sign-out-alt"
                   color="good"
-                  content="Unload tray"
                   onClick={() => act('unload_tray')}
-                />
+                >
+                  Unload tray
+                </Button>
               )) || (
                 <NoticeBox fontSize="15px" textAlign="center" fluid danger>
                   The tray is chambered, you cannot unchamber it.
@@ -116,10 +118,11 @@ export const OrbitalCannonConsole = () => {
               fluid
               icon="sign-in-alt"
               color="good"
-              content="Chamber tray"
               confirmContent="You cannot unchamber the tray. Confirm?"
               onClick={() => act('chamber_tray')}
-            />
+            >
+              Chamber tray
+            </Button.Confirm>
           )}
         </Section>
         {(!data.linkedtray || !data.linkedcannon || !!data.disabled) && (

@@ -36,14 +36,15 @@ export const InterfaceLockNoticeBox = (props) => {
               m={0}
               color={locked ? 'red' : 'green'}
               icon={locked ? 'lock' : 'unlock'}
-              content={locked ? 'Locked' : 'Unlocked'}
               disabled={preventLocking}
               onClick={() => {
                 if (onLockStatusChange) {
                   onLockStatusChange(!locked);
                 }
               }}
-            />
+            >
+              {locked ? 'Locked' : 'Unlocked'}
+            </Button>
           </Flex.Item>
         </Flex>
       </NoticeBox>

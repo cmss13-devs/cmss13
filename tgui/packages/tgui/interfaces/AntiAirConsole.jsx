@@ -76,20 +76,22 @@ const GeneralPanel = (props) => {
         </Stack.Item>
         <Stack.Item height="60px">
           <Button
-            content="Set as section to track"
             color="good"
             fluid
             textAlign="center"
             onClick={() => act('protect', { section_id: selectedSection })}
-          />
+          >
+            Set as section to track
+          </Button>
           {!!data.protecting_section && (
             <Button.Confirm
-              content="Stop tracking"
               color="bad"
               fluid
               textAlign="center"
               onClick={() => act('deactivate')}
-            />
+            >
+              Stop tracking
+            </Button.Confirm>
           )}
         </Stack.Item>
       </Stack>

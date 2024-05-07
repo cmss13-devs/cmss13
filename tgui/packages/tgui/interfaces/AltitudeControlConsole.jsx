@@ -32,9 +32,10 @@ export const AltitudeControlConsole = () => {
               textAlign="center"
               fluid
               disabled={data.alt === 0.5}
-              content="Set to: Low Altitude"
               onClick={() => act('low_alt')}
-            />
+            >
+              Set to: Low Altitude
+            </Button>
           }
           {
             <Button
@@ -42,9 +43,10 @@ export const AltitudeControlConsole = () => {
               textAlign="center"
               fluid
               disabled={data.alt === 1}
-              content="Set to: Medium Altitude"
               onClick={() => act('med_alt')}
-            />
+            >
+              Set to: Medium Altitude
+            </Button>
           }
           {
             <Button
@@ -52,9 +54,10 @@ export const AltitudeControlConsole = () => {
               textAlign="center"
               fluid
               disabled={data.alt === 1.5}
-              content="Set to: High Altitude"
               onClick={() => act('high_alt')}
-            />
+            >
+              Set to: High Altitude
+            </Button>
           }
         </Section>
       </Window.Content>

@@ -243,7 +243,6 @@ const FilterEntry = (props) => {
             }
           />
           <Button.Input
-            content="Rename"
             placeholder={name}
             onCommit={(e, new_name) =>
               act('rename_filter', {
@@ -252,7 +251,9 @@ const FilterEntry = (props) => {
               })
             }
             width="90px"
-          />
+          >
+            Rename
+          </Button.Input>
           <Button.Confirm
             icon="minus"
             onClick={() => act('remove_filter', { name: name })}
@@ -312,10 +313,11 @@ export const Filteriffic = (props) => {
                   onChange={(e, value) => setMassApplyPath(value)}
                 />
                 <Button.Confirm
-                  content="Apply"
                   confirmContent="ARE YOU SURE?"
                   onClick={() => act('mass_apply', { path: massApplyPath })}
-                />
+                >
+                  Apply
+                </Button.Confirm>
               </>
             ) : (
               <Box inline onDoubleClick={() => setHiddenSecret(true)}>

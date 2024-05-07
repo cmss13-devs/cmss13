@@ -88,7 +88,9 @@ const CurrentlyMaking = (props) => {
   return (
     <>
       <Box height="5px" />
-      <Button fluid textAlign="center" content={MakingName} />
+      <Button fluid textAlign="center">
+        {MakingName}
+      </Button>
     </>
   );
 };
@@ -111,14 +113,12 @@ const QueueList = (props) => {
           <Flex.Item key={index}>
             <Flex direction="row">
               <Flex.Item>
-                <Button
-                  content={
-                    item.index +
+                <Button>
+                  {item.index +
                     ': ' +
                     capitalize(item.name) +
-                    (item.multiplier > 1 ? ' (x' + item.multiplier + ')' : '')
-                  }
-                />
+                    (item.multiplier > 1 ? ' (x' + item.multiplier + ')' : '')}
+                </Button>
                 <Box width="5px" />
               </Flex.Item>
               <Flex.Item>
@@ -210,7 +210,6 @@ const PrintablesSection = (props) => {
                     <Flex.Item grow>
                       <Button
                         fluid
-                        content={capitalize(val.name)}
                         disabled={!val.can_make}
                         color={val.hidden ? 'red' : null}
                         onClick={() =>
@@ -220,7 +219,8 @@ const PrintablesSection = (props) => {
                           })
                         }
                       >
-                        {' (' + // sorry for this shitcode, also yes this will break if an autolathe uses more than 2 material types
+                        {capitalize(val.name) +
+                          ' (' + // sorry for this shitcode, also yes this will break if an autolathe uses more than 2 material types
                           (val.materials[Object.keys(materials)[0]] &&
                           val.materials[Object.keys(materials)[1]]
                             ? val.materials[Object.keys(materials)[0]] +
@@ -244,14 +244,15 @@ const PrintablesSection = (props) => {
                                   {index !== 0 ? <Box width="2.5px" /> : null}
                                   <Flex.Item>
                                     <Button
-                                      content={'x' + entry}
                                       onClick={() =>
                                         act('make', {
                                           index: val.index,
                                           multiplier: entry,
                                         })
                                       }
-                                    />
+                                    >
+                                      {'x' + entry}
+                                    </Button>
                                   </Flex.Item>
                                 </Fragment>
                               ),

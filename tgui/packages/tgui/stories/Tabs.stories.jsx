@@ -22,7 +22,6 @@ const Story = (props) => {
       <Section>
         <Button.Checkbox
           inline
-          content="vertical"
           checked={tabProps.vertical}
           onClick={() =>
             setTabProps({
@@ -30,10 +29,11 @@ const Story = (props) => {
               vertical: !tabProps.vertical,
             })
           }
-        />
+        >
+          vertical
+        </Button.Checkbox>
         <Button.Checkbox
           inline
-          content="leftSlot"
           checked={tabProps.leftSlot}
           onClick={() =>
             setTabProps({
@@ -41,10 +41,11 @@ const Story = (props) => {
               leftSlot: !tabProps.leftSlot,
             })
           }
-        />
+        >
+          leftSlot
+        </Button.Checkbox>
         <Button.Checkbox
           inline
-          content="rightSlot"
           checked={tabProps.rightSlot}
           onClick={() =>
             setTabProps({
@@ -52,10 +53,11 @@ const Story = (props) => {
               rightSlot: !tabProps.rightSlot,
             })
           }
-        />
+        >
+          rightSlot
+        </Button.Checkbox>
         <Button.Checkbox
           inline
-          content="icon"
           checked={tabProps.icon}
           onClick={() =>
             setTabProps({
@@ -63,10 +65,11 @@ const Story = (props) => {
               icon: !tabProps.icon,
             })
           }
-        />
+        >
+          icon
+        </Button.Checkbox>
         <Button.Checkbox
           inline
-          content="fluid"
           checked={tabProps.fluid}
           onClick={() =>
             setTabProps({
@@ -74,10 +77,11 @@ const Story = (props) => {
               fluid: !tabProps.fluid,
             })
           }
-        />
+        >
+          fluid
+        </Button.Checkbox>
         <Button.Checkbox
           inline
-          content="centered"
           checked={tabProps.centered}
           onClick={() =>
             setTabProps({
@@ -85,7 +89,9 @@ const Story = (props) => {
               centered: !tabProps.centered,
             })
           }
-        />
+        >
+          centered
+        </Button.Checkbox>
       </Section>
       <Section fitted>
         <TabsPrefab />

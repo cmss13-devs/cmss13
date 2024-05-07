@@ -20,19 +20,21 @@ export const BotanyEditor = () => {
               <Button
                 fluid
                 icon="eject"
-                content={disk ? 'Eject ' + disk : 'Eject disk'}
                 disabled={!disk}
                 onClick={() => act('eject_disk')}
-              />
+              >
+                {disk ? 'Eject ' + disk : 'Eject disk'}
+              </Button>
             </Stack.Item>
             <Stack.Item>
               <Button
                 fluid
                 icon="eject"
-                content={seed ? 'Eject ' + seed : 'Eject target seeds'}
                 disabled={!seed}
                 onClick={() => act('eject_packet')}
-              />
+              >
+                {seed ? 'Eject ' + seed : 'Eject target seeds'}
+              </Button>
             </Stack.Item>
           </Stack>
         </Section>
@@ -68,10 +70,11 @@ export const BotanyEditor = () => {
                 <Button
                   fluid
                   icon="download"
-                  content="Apply gene mods"
                   disabled={!seed || degraded}
                   onClick={() => act('apply_gene')}
-                />
+                >
+                  Apply gene mods
+                </Button>
               </LabeledList.Item>
             </LabeledList>
           </Section>

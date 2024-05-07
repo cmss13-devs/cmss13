@@ -70,7 +70,6 @@ const Login = (props, context) => {
       <Box fontFamily="monospace">Copyright © 2182, Weyland Yutani Corp.</Box>
 
       <Button
-        content="Login"
         icon="id-card"
         width="30vw"
         textAlign="center"
@@ -78,7 +77,9 @@ const Login = (props, context) => {
         p="1rem"
         mt="5rem"
         onClick={() => act('login')}
-      />
+      >
+        Login
+      </Button>
     </Flex>
   );
 };
@@ -118,13 +119,14 @@ const MainMenu = (props, context) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -137,7 +139,6 @@ const MainMenu = (props, context) => {
           </Stack.Item>
           <Stack.Item>
             <Button
-              content="Announcement Logs"
               tooltip="Access the AI Announcement logs."
               icon="bullhorn"
               ml="auto"
@@ -145,11 +146,12 @@ const MainMenu = (props, context) => {
               width="25vw"
               bold
               onClick={() => act('page_announcements')}
-            />
+            >
+              Announcement Logs
+            </Button>
           </Stack.Item>
           <Stack.Item>
             <Button
-              content="ARES Communication"
               tooltip="Direct communication 1:1 with ARES."
               icon="comments"
               ml="auto"
@@ -157,7 +159,9 @@ const MainMenu = (props, context) => {
               width="25vw"
               bold
               onClick={() => act('page_1to1')}
-            />
+            >
+              ARES Communication
+            </Button>
           </Stack.Item>
         </Stack>
 
@@ -167,7 +171,6 @@ const MainMenu = (props, context) => {
           </Stack.Item>
           <Stack.Item>
             <Button
-              content="Flight Records"
               tooltip="Read the Dropship Flight Control Records."
               icon="jet-fighter-up"
               ml="auto"
@@ -175,11 +178,12 @@ const MainMenu = (props, context) => {
               width="25vw"
               bold
               onClick={() => act('page_flight')}
-            />
+            >
+              Flight Records
+            </Button>
           </Stack.Item>
           <Stack.Item>
             <Button
-              content="Bioscan Logs"
               tooltip="Access the Bioscan records."
               icon="eye"
               ml="auto"
@@ -187,11 +191,12 @@ const MainMenu = (props, context) => {
               width="25vw"
               bold
               onClick={() => act('page_bioscans')}
-            />
+            >
+              Bioscan Logs
+            </Button>
           </Stack.Item>
           <Stack.Item>
             <Button
-              content="Bombardment Logs"
               tooltip="Access Orbital Bombardment logs."
               icon="meteor"
               ml="auto"
@@ -199,7 +204,9 @@ const MainMenu = (props, context) => {
               width="25vw"
               bold
               onClick={() => act('page_bombardments')}
-            />
+            >
+              Bombardment Logs
+            </Button>
           </Stack.Item>
         </Stack>
 
@@ -209,7 +216,6 @@ const MainMenu = (props, context) => {
           </Stack.Item>
           <Stack.Item>
             <Button
-              content="Security Updates"
               tooltip="Read the Security Updates."
               icon="file-shield"
               ml="auto"
@@ -217,11 +223,12 @@ const MainMenu = (props, context) => {
               width="25vw"
               bold
               onClick={() => act('page_security')}
-            />
+            >
+              Security Updates
+            </Button>
           </Stack.Item>
           <Stack.Item>
             <Button
-              content="View Apollo Log"
               tooltip="Read the Apollo Link logs."
               icon="clipboard"
               ml="auto"
@@ -229,7 +236,9 @@ const MainMenu = (props, context) => {
               width="25vw"
               bold
               onClick={() => act('page_apollo')}
-            />
+            >
+              View Apollo Log
+            </Button>
           </Stack.Item>
         </Stack>
 
@@ -239,7 +248,6 @@ const MainMenu = (props, context) => {
           </Stack.Item>
           <Stack.Item>
             <Button
-              content="Emergency Protocols"
               tooltip="Access emergency protocols."
               icon="shield"
               color="red"
@@ -248,11 +256,12 @@ const MainMenu = (props, context) => {
               width="25vw"
               bold
               onClick={() => act('page_emergency')}
-            />
+            >
+              Emergency Protocols
+            </Button>
           </Stack.Item>
           <Stack.Item>
             <Button
-              content="ASRS Audit Log"
               tooltip="Review the ASRS Audit Log."
               icon="cart-shopping"
               ml="auto"
@@ -260,11 +269,12 @@ const MainMenu = (props, context) => {
               width="25vw"
               bold
               onClick={() => act('page_requisitions')}
-            />
+            >
+              ASRS Audit Log
+            </Button>
           </Stack.Item>
           <Stack.Item>
             <Button
-              content="Tech Control Log"
               tooltip="Review the Intel Tech Log."
               icon="magnifying-glass-chart"
               ml="auto"
@@ -272,7 +282,9 @@ const MainMenu = (props, context) => {
               width="25vw"
               bold
               onClick={() => act('page_tech')}
-            />
+            >
+              Tech Control Log
+            </Button>
           </Stack.Item>
         </Stack>
 
@@ -282,7 +294,6 @@ const MainMenu = (props, context) => {
           </Stack.Item>
           <Stack.Item>
             <Button
-              content="View Access Log"
               tooltip="View the recent logins."
               icon="users"
               ml="auto"
@@ -290,7 +301,9 @@ const MainMenu = (props, context) => {
               width="25vw"
               bold
               onClick={() => act('page_access')}
-            />
+            >
+              View Access Log
+            </Button>
           </Stack.Item>
         </Stack>
         <Stack>
@@ -299,7 +312,6 @@ const MainMenu = (props, context) => {
           </Stack.Item>
           <Stack.Item>
             <Button
-              content="View Deletion Log"
               tooltip="View the deletion log."
               icon="sd-card"
               ml="auto"
@@ -307,11 +319,12 @@ const MainMenu = (props, context) => {
               width="25vw"
               bold
               onClick={() => act('page_deleted')}
-            />
+            >
+              View Deletion Log
+            </Button>
           </Stack.Item>
           <Stack.Item>
             <Button
-              content="View Deleted 1:1's"
               tooltip="View the deleted 1:1 conversations with ARES."
               icon="sd-card"
               ml="auto"
@@ -319,7 +332,9 @@ const MainMenu = (props, context) => {
               width="25vw"
               bold
               onClick={() => act('page_deleted_1to1')}
-            />
+            >
+              View Deleted 1:1&apos;s
+            </Button>
           </Stack.Item>
         </Stack>
         <Stack>
@@ -329,7 +344,6 @@ const MainMenu = (props, context) => {
           {sudo === 0 && (
             <Stack.Item>
               <Button
-                content="Sudo Login"
                 tooltip="You cannot do this via remote console."
                 icon="user-secret"
                 ml="auto"
@@ -337,13 +351,14 @@ const MainMenu = (props, context) => {
                 width="25vw"
                 bold
                 disabled={access_text}
-              />
+              >
+                Sudo Login
+              </Button>
             </Stack.Item>
           )}
           {sudo >= 1 && (
             <Stack.Item>
               <Button
-                content="Sudo Logout"
                 tooltip="You cannot do this via remote console."
                 icon="user-secret"
                 ml="auto"
@@ -351,7 +366,9 @@ const MainMenu = (props, context) => {
                 width="25vw"
                 bold
                 disabled={access_text}
-              />
+              >
+                Sudo Logout
+              </Button>
             </Stack.Item>
           )}
         </Stack>
@@ -361,7 +378,6 @@ const MainMenu = (props, context) => {
         <Stack>
           <Stack.Item grow>
             <Button
-              content="Nerve Gas Control"
               align="center"
               tooltip="Release stored CN20-X nerve gas from security vents."
               icon="wind"
@@ -371,7 +387,9 @@ const MainMenu = (props, context) => {
               width="100%"
               bold
               onClick={() => act('page_core_sec')}
-            />
+            >
+              Nerve Gas Control
+            </Button>
           </Stack.Item>
         </Stack>
       </Section>
@@ -382,7 +400,6 @@ const MainMenu = (props, context) => {
           </Stack.Item>
           <Stack.Item>
             <Button
-              content="Remote Access Log"
               tooltip="View which admins have been using ARES."
               icon="user-secret"
               ml="auto"
@@ -390,7 +407,9 @@ const MainMenu = (props, context) => {
               width="25vw"
               bold
               onClick={() => act('page_admin_list')}
-            />
+            >
+              Remote Access Log
+            </Button>
           </Stack.Item>
         </Stack>
         <Stack>
@@ -399,7 +418,6 @@ const MainMenu = (props, context) => {
           </Stack.Item>
           <Stack.Item>
             <Button
-              content="Access Tickets"
               tooltip="View and update access tickets."
               icon="user-tag"
               ml="auto"
@@ -407,11 +425,12 @@ const MainMenu = (props, context) => {
               width="25vw"
               bold
               onClick={() => act('page_access_management')}
-            />
+            >
+              Access Tickets
+            </Button>
           </Stack.Item>
           <Stack.Item>
             <Button
-              content="Maintenance Tickets"
               tooltip="View, create and update maintenance tickets."
               icon="user-tag"
               ml="auto"
@@ -419,7 +438,9 @@ const MainMenu = (props, context) => {
               width="25vw"
               bold
               onClick={() => act('page_maint_management')}
-            />
+            >
+              Maintenance Tickets
+            </Button>
           </Stack.Item>
         </Stack>
       </Section>
@@ -467,13 +488,14 @@ const AnnouncementLogs = (props, context) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -565,13 +587,14 @@ const BioscanLogs = (props, context) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -663,13 +686,14 @@ const BombardmentLogs = (props, context) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -765,13 +789,14 @@ const ApolloLog = (props, context) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -830,13 +855,14 @@ const AccessLogs = (props, context) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -895,13 +921,14 @@ const DeletionLogs = (props, context) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -991,13 +1018,14 @@ const ARESTalk = (props, context) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -1008,13 +1036,14 @@ const ARESTalk = (props, context) => {
       <Section align="center">
         {!active_convo.length && (
           <Button
-            content="New Conversation"
             icon="pen"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('new_conversation')}
-          />
+          >
+            New Conversation
+          </Button>
         )}
         {active_convo.map((message, i) => {
           return (
@@ -1027,17 +1056,17 @@ const ARESTalk = (props, context) => {
           <Stack justify="center">
             <Stack.Item>
               <Button
-                content="Reply as ARES"
                 icon="pen"
                 ml="auto"
                 px="2rem"
                 bold
                 onClick={() => act('ares_reply', { active_convo: active_ref })}
-              />
+              >
+                Reply as ARES
+              </Button>
             </Stack.Item>
             <Stack.Item>
               <Button
-                content="Send Fake Message"
                 icon="pen"
                 ml="auto"
                 px="2rem"
@@ -1046,14 +1075,15 @@ const ARESTalk = (props, context) => {
                 onClick={() =>
                   act('fake_message_ares', { active_convo: active_ref })
                 }
-              />
+              >
+                Send Fake Message
+              </Button>
             </Stack.Item>
           </Stack>
         )}
       </Section>
       <Section align="center">
         <Button.Confirm
-          content="Clear Conversation"
           icon="trash"
           tooltip="Clears the conversation. Please note, your 1:1 conversation is only visible to you."
           width="30vw"
@@ -1064,7 +1094,9 @@ const ARESTalk = (props, context) => {
             act('clear_conversation', { active_convo: active_ref })
           }
           disabled={!active_convo.length}
-        />
+        >
+          Clear Conversation
+        </Button.Confirm>
       </Section>
     </>
   );
@@ -1110,13 +1142,14 @@ const DeletedTalks = (props, context) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -1204,13 +1237,14 @@ const ReadingTalks = (props, context) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -1268,13 +1302,14 @@ const Requisitions = (props, context) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -1364,13 +1399,14 @@ const FlightLogs = (props, context) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -1462,13 +1498,14 @@ const Security = (props, context) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -1552,20 +1589,20 @@ const Emergency = (props, context) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
       <h1 align="center">Emergency Protocols</h1>
       <Flex align="center" justify="center" height="50%" direction="column">
         <Button.Confirm
-          content="Call General Quarters"
           tooltip="You cannot do this via remote console."
           icon="triangle-exclamation"
           color="red"
@@ -1576,9 +1613,10 @@ const Emergency = (props, context) => {
           mt="5rem"
           bold
           disabled={access_text}
-        />
+        >
+          Call General Quarters
+        </Button.Confirm>
         <Button.Confirm
-          content="Initiate Evacuation"
           tooltip="You cannot do this via remote console."
           icon="shuttle-space"
           color="red"
@@ -1589,9 +1627,10 @@ const Emergency = (props, context) => {
           mt="5rem"
           bold
           disabled={access_text}
-        />
+        >
+          Initiate Evacuation
+        </Button.Confirm>
         <Button.Confirm
-          content="Launch Distress Beacon"
           tooltip="You cannot do this via remote console."
           icon="circle-exclamation"
           color="red"
@@ -1602,9 +1641,10 @@ const Emergency = (props, context) => {
           mt="5rem"
           bold
           disabled={access_text}
-        />
+        >
+          Launch Distress Beacon
+        </Button.Confirm>
         <Button.Confirm
-          content="Request Nuclear Device"
           tooltip="You cannot do this via remote console."
           icon="circle-radiation"
           color="red"
@@ -1615,7 +1655,9 @@ const Emergency = (props, context) => {
           mt="5rem"
           bold
           disabled={access_text}
-        />
+        >
+          Request Nuclear Device
+        </Button.Confirm>
       </Flex>
     </>
   );
@@ -1661,13 +1703,14 @@ const TechLogs = (props, context) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -1778,13 +1821,14 @@ const CoreSec = (props) => {
           </h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -1798,13 +1842,14 @@ const CoreSec = (props) => {
             <Button.Confirm
               key={i}
               align="center"
-              content={vent.vent_tag}
               icon="wind"
               tooltip="Release Gas"
               width="100%"
               disabled={!vent.available}
               onClick={() => act('trigger_vent', { vent: vent.ref })}
-            />
+            >
+              {vent.vent_tag}
+            </Button.Confirm>
           );
         })}
       </Section>
@@ -1852,13 +1897,14 @@ const AdminAccessLogs = (props, context) => {
           <h3>Remote Admin: {admin_login}</h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -1906,13 +1952,14 @@ const AccessManagement = (props, context) => {
           <h3>Remote Admin: {admin_login}</h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -2052,13 +2099,14 @@ const MaintManagement = (props, context) => {
           <h3>Remote Admin: {admin_login}</h3>
 
           <Button.Confirm
-            content="Logout"
             icon="circle-user"
             ml="auto"
             px="2rem"
             bold
             onClick={() => act('logout')}
-          />
+          >
+            Logout
+          </Button.Confirm>
         </Flex>
       </Section>
 
@@ -2076,14 +2124,15 @@ const MaintManagement = (props, context) => {
           bold
         >
           <Button
-            content="New Report"
             icon="exclamation-circle"
             width="30vw"
             textAlign="center"
             fontSize="1.5rem"
             mt="5rem"
             onClick={() => act('new_report')}
-          />
+          >
+            New Report
+          </Button>
         </Flex>
 
         {!!maintenance_tickets.length && (

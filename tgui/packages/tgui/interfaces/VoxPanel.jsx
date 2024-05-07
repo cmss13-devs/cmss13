@@ -148,7 +148,6 @@ const SendVOX = (props) => {
             fill
             buttons={
               <Button
-                content="Select All"
                 color="transparent"
                 onClick={() => {
                   for (let i = 0; i < factions.length; i++) {
@@ -156,7 +155,9 @@ const SendVOX = (props) => {
                   }
                   setCurrentFaction(currentFaction);
                 }}
-              />
+              >
+                Select All
+              </Button>
             }
           >
             <ComboBox
@@ -207,7 +208,6 @@ const SendVOX = (props) => {
             <Flex>
               <Flex.Item grow={1}>
                 <Button
-                  content="Send to Self"
                   fluid
                   onClick={() =>
                     act('play_to_self', {
@@ -216,11 +216,12 @@ const SendVOX = (props) => {
                       volume: volume,
                     })
                   }
-                />
+                >
+                  Send to Self
+                </Button>
               </Flex.Item>
               <Flex.Item ml={1} grow={1}>
                 <Button
-                  content="Send to Factions"
                   fluid
                   onClick={() =>
                     act('play_to_players', {
@@ -230,7 +231,9 @@ const SendVOX = (props) => {
                       volume: volume,
                     })
                   }
-                />
+                >
+                  Send to Factions
+                </Button>
               </Flex.Item>
             </Flex>
           </Flex.Item>
@@ -282,14 +285,15 @@ const SoundList = (props) => {
                 .map((val) => (
                   <Flex.Item key={val} ml={1} mt={1}>
                     <Button
-                      content={val}
                       onClick={() =>
                         act('play_to_self', {
                           vox_type: voxType,
                           message: val,
                         })
                       }
-                    />
+                    >
+                      {val}
+                    </Button>
                   </Flex.Item>
                 ))}
             </Flex>
@@ -348,14 +352,15 @@ export const ComboBox = (props) => {
                   <Button
                     color="transparent"
                     fluid
-                    content={val}
                     selected={
                       typeof selected === 'object' && selected
                         ? selected[val]
                         : selected === val
                     }
                     onClick={(e) => handleOnClick(e, val)}
-                  />
+                  >
+                    {val}
+                  </Button>
                 </Flex.Item>
               ))}
             </Flex>

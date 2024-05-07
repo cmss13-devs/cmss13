@@ -54,7 +54,6 @@ type Props = Partial<{
   iconRotation: number;
   iconSpin: BooleanLike;
   onClick: (e: any) => void;
-  onConfirmChange: (clickedOnce: boolean) => void;
   selected: BooleanLike;
   tooltip: ReactNode;
   tooltipPosition: Placement;
@@ -208,6 +207,7 @@ type ConfirmProps = Partial<{
   confirmColor: string;
   confirmContent: ReactNode;
   confirmIcon: string;
+  onConfirmChange: (clickedOnce: boolean) => void;
 }> &
   Props;
 
@@ -228,14 +228,15 @@ const ButtonConfirm = (props: ConfirmProps) => {
   const [clickedOnce, setClickedOnce] = useState(false);
 
   const handleClick = (event: MouseEvent<HTMLDivElement>) => {
-    onConfirmChange?.(clickedOnce);
     if (!clickedOnce) {
       setClickedOnce(true);
+      onConfirmChange?.(clickedOnce);
       return;
     }
 
     onClick?.(event);
     setClickedOnce(false);
+    onConfirmChange?.(clickedOnce);
   };
 
   return (

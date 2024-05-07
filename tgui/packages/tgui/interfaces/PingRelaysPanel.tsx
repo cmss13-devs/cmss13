@@ -1,33 +1,48 @@
-import { Color } from 'common/color';
 import { round } from 'common/math';
 import { Ping } from 'common/ping';
+import { BooleanLike } from 'common/react';
 import { Component } from 'react';
 
 import { useBackend } from '../backend';
 import { Box, Button, Flex, Icon, RoundGauge, Stack } from '../components';
 import { Window } from '../layouts';
 
-const RED = new Color(220, 40, 40);
+const RED = '#dc2828';
 
 export class PingResult {
-  constructor(desc = 'Loading...', url = '', ping = -1) {
-    this.desc = desc;
-    this.url = url;
-    this.ping = ping;
-    this.error = null;
-  }
+  desc: string = 'Loading...';
+  url: string = '';
+  ping: number = -1;
+  error: string | null = null;
 
-  update = function (desc, url, ping, error) {
+  update(desc: string, url: string, ping: number, error: string | null) {
     this.desc = desc;
     this.url = url;
     this.ping = ping;
     this.error = error;
-  };
+  }
 }
 
-class PingApp extends Component {
-  constructor() {
-    super();
+type PingAppProps = {
+  readonly relayNames: Array<string>;
+  readonly relayPings: Array<string>;
+  readonly relayCons: Array<string>;
+};
+
+type State = {
+  currentIndex: number;
+  lastClickedIndex: number;
+  lastClickedState: BooleanLike;
+};
+
+class PingApp extends Component<PingAppProps> {
+  pinger: Ping;
+  results: PingResult[];
+  state: State;
+  realCurrentIndex: number;
+
+  constructor(props: PingAppProps) {
+    super(props);
 
     this.pinger = new Ping();
     this.results = new Array();
@@ -36,23 +51,30 @@ class PingApp extends Component {
       lastClickedIndex: 0,
       lastClickedState: false,
     };
+    this.realCurrentIndex = 0;
   }
 
-  startTest(desc, pingURL, connectURL) {
-    this.pinger.ping('http://' + pingURL, (error, pong) => {
-      this.results[this.state.currentIndex]?.update(
-        desc,
-        'byond://' + connectURL,
-        round(pong * 0.75), // The ping is inflated so lets compensate a bit
-        error,
-      );
-      this.setState((prevState) => ({
-        currentIndex: prevState.currentIndex + 1,
-      }));
-    });
+  startTest(desc: string, pingURL: string, connectURL: string) {
+    this.pinger.ping(
+      'http://' + pingURL,
+      (error: string | null, pong: number) => {
+        console.error('start: ' + this.state.currentIndex);
+        // reading state is too unreliable now somereason so we have to use realCurrentIndex
+        this.results[this.realCurrentIndex++]?.update(
+          desc,
+          'byond://' + connectURL,
+          round(pong * 0.75, 0), // The ping is inflated so lets compensate a bit
+          error,
+        );
+        // We still have to set a state to cause a redraw
+        this.setState((prevState: State) => ({
+          currentIndex: prevState.currentIndex + 1,
+        }));
+      },
+    );
   }
 
-  handleConfirmChange(index, newState) {
+  handleConfirmChange(index: number, newState: boolean) {
     if (newState || this.state.lastClickedIndex === index) {
       this.setState({ lastClickedIndex: index });
       this.setState({ lastClickedState: newState });
@@ -60,6 +82,8 @@ class PingApp extends Component {
   }
 
   componentDidMount() {
+    // We have to set a state to cause a redraw (buttons are now populated)
+    this.realCurrentIndex = 0;
     this.setState({ currentIndex: 0 });
     for (let i = 0; i < this.props.relayNames.length; i++) {
       this.results.push(new PingResult());
@@ -87,7 +111,7 @@ class PingApp extends Component {
               height={2}
               confirmContent=""
               confirmColor="caution"
-              disabled={result.ping === -1 || result.error}
+              disabled={result.ping === -1 || result.error !== null}
               onConfirmChange={(clickedOnce) =>
                 this.handleConfirmChange(i, clickedOnce)
               }
@@ -159,8 +183,14 @@ class PingApp extends Component {
   }
 }
 
+type PingRelaysPanelData = {
+  relay_names: Array<string>;
+  relay_pings: Array<string>;
+  relay_cons: Array<string>;
+};
+
 export const PingRelaysPanel = () => {
-  const { data } = useBackend();
+  const { data } = useBackend<PingRelaysPanelData>();
   const { relay_names, relay_pings, relay_cons } = data;
 
   return (

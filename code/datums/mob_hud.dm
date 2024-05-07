@@ -422,6 +422,10 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 				if(hive && hive.color)
 					holder3.color = hive.color
 
+				if(stat == DEAD || status_flags & FAKEDEATH)
+					holder2.alpha = 100
+					holder3.alpha = 100
+
 		if(stat == DEAD || status_flags & FAKEDEATH)
 			if(revive_enabled)
 				if(!client)

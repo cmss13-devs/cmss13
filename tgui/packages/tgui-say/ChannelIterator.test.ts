@@ -13,7 +13,7 @@ describe('ChannelIterator', () => {
     expect(channelIterator.next()).toBe('Me');
     expect(channelIterator.next()).toBe('OOC');
     expect(channelIterator.next()).toBe('LOOC');
-    expect(channelIterator.next()).toBe('Say'); // Mod, Mentor, and Admin are blacklisted so it should be skipped
+    expect(channelIterator.next()).toBe('Say'); // Mentor, and ASAY are blacklisted so it should be skipped
   });
 
   it('should set a channel properly', () => {
@@ -42,7 +42,7 @@ describe('ChannelIterator', () => {
   });
 
   it('should not leak a message from a blacklisted channel', () => {
-    channelIterator.set('Admin');
-    expect(channelIterator.next()).toBe('Admin');
+    channelIterator.set('ASAY');
+    expect(channelIterator.next()).toBe('ASAY');
   });
 });

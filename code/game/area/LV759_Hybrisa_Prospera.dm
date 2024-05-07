@@ -85,6 +85,14 @@
 	icon_state = "hybrisa"
 	requires_power = FALSE
 	ceiling = CEILING_METAL
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo
+	name = "KMCC Interstellar Freight Hub - Cargo Processing Center"
+	icon_state = "mining_cargo"
+	minimap_color = MINIMAP_AREA_COLONY
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north
+	name = "KMCC Interstellar Freight Hub - Cargo Processing Center - Maintenance"
+	icon_state = "mining"
+	minimap_color = MINIMAP_AREA_COLONY
 
 //Outdoors areas
 
@@ -482,46 +490,49 @@
 	icon_state = "mining"
 	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/mining_outpost/north
-	name = "WY - KMCC - Mining Outpost - North"
+	name = "KMCC - Mining Outpost - North"
 	icon_state = "mining"
 	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/mining_outpost/north_maint
-	name = "WY - KMCC - Mining Outpost - North - Maintenance"
+	name = "KMCC - Mining Outpost - North - Maintenance"
 	icon_state = "mining"
 	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/mining_outpost/northeast
-	name = "WY - KMCC - Mining Outpost - Northeast"
+	name = "KMCC - Mining Outpost - Northeast"
 	icon_state = "mining"
 	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/mining_outpost/south
-	name = "WY - KMCC - Mining Outpost - South"
+	name = "KMCC - Mining Outpost - South"
 	icon_state = "mining"
 	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/mining_outpost/vehicledeployment
-	name = "WY - KMCC - Mining Vehicle Deployment South"
+	name = "KMCC - Mining Vehicle Deployment South"
 	icon_state = "mining"
 	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/mining_outpost/processing
-	name = "WY - KMCC - Mining Processing & Storage"
+	name = "KMCC - Mining Processing & Storage"
 	icon_state = "mining"
 	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/mining_outpost/east
-	name = "WY - KMCC - Mining Outpost - East"
+	name = "KMCC - Mining Outpost - East"
 	icon_state = "mining"
 	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/mining_outpost/east_dorms
-	name = "WY - KMCC - Mining Outpost - East Dorms"
+	name = "KMCC - Mining Outpost - East Dorms"
 	icon_state = "mining"
 	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/mining_outpost/east_deploymentbay
-	name = "WY - KMCC - Mining Outpost - East - Deployment Bay"
+	name = "KMCC - Mining Outpost - East - Deployment Bay"
 	icon_state = "mining"
 	minimap_color = MINIMAP_AREA_COLONY
 /area/lv759/indoors/mining_outpost/east_command
-	name = "WY - KMCC - Mining Outpost - East - Command Center"
+	name = "KMCC - Mining Outpost - East - Command Center"
 	icon_state = "mining"
 	minimap_color = MINIMAP_AREA_COLONY
-
+/area/lv759/indoors/mining_outpost/cargo_maint
+	name = "KMCC - Mining Outpost - East - Maintenance"
+	icon_state = "mining"
+	minimap_color = MINIMAP_AREA_COLONY
 // Electrical Substations
 /area/lv759/indoors/electical_systems/substation1
 	name = "Electrical Systems - Substation One - Control Room"

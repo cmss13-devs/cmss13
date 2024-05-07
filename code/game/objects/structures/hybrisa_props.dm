@@ -2056,6 +2056,7 @@ obj/structure/prop/hybrisa/engineer/giantconsole
 	icon_state = "lattice1"
 	density = FALSE
 	layer = RIPPLE_LAYER
+	health = 6000
 
 /obj/structure/prop/hybrisa/lattice_prop/lattice_1
 	icon_state = "lattice1"

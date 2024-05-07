@@ -185,7 +185,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "abx" = (
 /obj/structure/sign/safety/synth_storage{
 	desc = "Semiotic Standard denoting the nearby presence of a cargo depot.";
@@ -194,7 +194,7 @@
 /turf/closed/wall/r_wall/bunker{
 	name = "reinforced metal wall"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "abC" = (
 /obj/structure/machinery/door/airlock/almayer/secure/autoname,
 /turf/open/floor/corsat{
@@ -470,7 +470,7 @@
 	pixel_y = 2
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "adT" = (
 /obj/structure/largecrate/random/barrel/purewhite,
 /turf/open/hybrisa/street/sidewalk{
@@ -732,12 +732,6 @@
 	},
 /turf/closed/wall/hybrisa/colony,
 /area/lv759/indoors/apartment/northapartments)
-"agc" = (
-/obj/structure/sign/safety/maint,
-/turf/closed/wall/r_wall/bunker{
-	name = "reinforced metal wall"
-	},
-/area/lv759/indoors/mining_outpost/east_command)
 "age" = (
 /turf/open/floor/hybrisa/tile/cementflat,
 /area/lv759/indoors/botany/botany_mainroom)
@@ -2312,7 +2306,7 @@
 /turf/open/floor/prison{
 	icon_state = "ramptop"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "auN" = (
 /obj/structure/reagent_dispensers/water_cooler{
 	pixel_x = 11;
@@ -2631,7 +2625,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "axq" = (
 /obj/effect/hybrisa/decal/road/lines1,
 /obj/effect/hybrisa/decal/road/road_edge{
@@ -2824,7 +2818,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "azb" = (
 /obj/structure/prop/hybrisa/vehicles/van/vanmining{
 	dir = 1
@@ -3512,7 +3506,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "aFn" = (
 /obj/structure/machinery/colony_floodlight/street{
 	layer = 7;
@@ -3726,7 +3720,7 @@
 	dir = 8;
 	icon_state = "platingdmg3"
 	},
-/area/lv759/indoors/mining_outpost/south)
+/area/lv759/indoors/caves/south_east_caves)
 "aGH" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/decal/cleanable/blood/xeno,
@@ -4425,7 +4419,7 @@
 	dir = 8;
 	icon_state = "ramptop"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "aMl" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/largecrate/random/barrel{
@@ -4944,7 +4938,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "aRu" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/trash/cigbutt{
@@ -5739,7 +5733,7 @@
 	pixel_x = 1
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "aYf" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -6110,7 +6104,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "bbx" = (
 /obj/structure/closet,
 /obj/item/clothing/mask/rebreather/scarf/tacticalmask/black,
@@ -7265,7 +7259,7 @@
 /turf/open/floor/prison{
 	icon_state = "ramptop"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "blq" = (
 /obj/structure/machinery/door/airlock/hybrisa/generic_solid/autoname{
 	dir = 1
@@ -8092,7 +8086,7 @@
 	pixel_y = 14
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "bsI" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -8592,7 +8586,7 @@
 /turf/open/floor/prison{
 	icon_state = "cell_stripe"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "bxi" = (
 /obj/item/trash/cigbutt,
 /obj/effect/hybrisa/decal/dirt,
@@ -10297,7 +10291,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "bOz" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/spawner/random/gun/shotgun/lowchance,
@@ -10345,7 +10339,7 @@
 "bOV" = (
 /obj/structure/prop/invuln/overhead_pipe,
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "bOX" = (
 /obj/structure/machinery/landinglight/ds2/spoke,
 /obj/structure/barricade/handrail/strata{
@@ -11262,6 +11256,10 @@
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/strata,
 /area/lv759/indoors/colonial_marshals/prisoners_cells)
+"bWr" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/auto_turf/hybrisashale/layer2,
+/area/lv759/outdoors/landing_zone_2)
 "bWE" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -11813,7 +11811,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "caK" = (
 /obj/structure/prop/hybrisa/misc/fake/pipes/pipe1,
 /obj/structure/prop/hybrisa/misc/fake/wire/yellow{
@@ -12389,7 +12387,7 @@
 	needs_power = 0
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "cfU" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/spray/plantbgone{
@@ -12748,7 +12746,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "cjF" = (
 /obj/structure/prop/hybrisa/misc/stoneplanterseats/empty{
 	dir = 1;
@@ -14175,7 +14173,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "cuH" = (
 /obj/effect/hybrisa/decal/trash{
 	icon_state = "trash_4"
@@ -15193,7 +15191,7 @@
 	dir = 8;
 	icon_state = "ramptop"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "cDD" = (
 /obj/item/device/flashlight/on,
 /obj/effect/decal/warning_stripes{
@@ -15478,7 +15476,7 @@
 	pixel_y = 7
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "cGq" = (
 /obj/structure/sign/safety/chem_lab,
 /turf/closed/wall/hybrisa/research/reinforced,
@@ -16369,7 +16367,7 @@
 /turf/closed/wall/r_wall/bunker{
 	name = "reinforced metal wall"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "cNi" = (
 /turf/open/auto_turf/hybrisashale/layer2,
 /area/lv759/outdoors/colony_streets/north_street)
@@ -16904,7 +16902,7 @@
 "cQL" = (
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/prison,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "cQM" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -17192,13 +17190,6 @@
 	},
 /turf/open/hybrisa/dropship/dropship3,
 /area/whiskey_outpost/inside/caves)
-"cTF" = (
-/obj/structure/machinery/door/airlock/almayer/maint/reinforced/colony{
-	autoname = 1;
-	name = "autoname reinforced"
-	},
-/turf/open/floor/plating,
-/area/lv759/indoors/mining_outpost/east_command)
 "cTI" = (
 /obj/structure/barricade/sandbags{
 	dir = 4;
@@ -17207,7 +17198,7 @@
 /turf/open/auto_turf/sand_white/layer0{
 	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
 	},
-/area/lv759/indoors/mining_outpost/south)
+/area/lv759/indoors/caves/south_east_caves)
 "cTK" = (
 /obj/structure/platform{
 	dir = 1;
@@ -17401,7 +17392,7 @@
 /turf/closed/wall/r_wall/bunker{
 	name = "reinforced metal wall"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "cUN" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall{
@@ -17899,7 +17890,7 @@
 /obj/structure/platform/hybrisa/metalplatform6,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/hybrisashale/layer2,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "cZA" = (
 /obj/structure/closet/crate/secure,
 /turf/open/floor/almayer{
@@ -18375,7 +18366,7 @@
 	},
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/hybrisashale/layer1,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "dds" = (
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
@@ -18424,7 +18415,7 @@
 /turf/open/auto_turf/sand_white/layer0{
 	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
 	},
-/area/lv759/indoors/mining_outpost/south)
+/area/lv759/indoors/caves/south_east_caves)
 "ddW" = (
 /obj/structure/dispenser/oxygen,
 /obj/structure/pipes/standard/simple/visible{
@@ -18948,7 +18939,7 @@
 	icon_state = "S"
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "dhQ" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -13;
@@ -19291,7 +19282,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "djS" = (
 /obj/effect/hybrisa/decal/road/lines3,
 /turf/open/floor/prison{
@@ -20116,7 +20107,7 @@
 	name = "autoname reinforced"
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "drs" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/wallegg_on{
 	light_color = "#efa531";
@@ -20850,7 +20841,7 @@
 /turf/closed/wall/r_wall/bunker{
 	name = "reinforced metal wall"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "dxD" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -21396,7 +21387,7 @@
 	icon_state = "W"
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "dCr" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal3"
@@ -22241,7 +22232,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "dJP" = (
 /obj/item/trash/cigbutt{
 	pixel_x = 4
@@ -22294,7 +22285,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "dKh" = (
 /turf/open/floor/strata{
 	dir = 8;
@@ -23984,6 +23975,7 @@
 /obj/item/storage/belt/gun/flaregun/full,
 /obj/effect/hybrisa/decal/dirt_2,
 /obj/structure/closet/crate/secure/weyland,
+/obj/item/prop/geiger_counter,
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "platingdmg3"
@@ -24102,7 +24094,7 @@
 	},
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/hybrisashale/layer1,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "dZD" = (
 /obj/item/shard,
 /turf/open/floor/prison{
@@ -24287,7 +24279,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "eaP" = (
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/plating,
@@ -24479,7 +24471,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "ecp" = (
 /obj/structure/platform_decoration/strata/metal,
 /turf/open/floor/strata{
@@ -24752,7 +24744,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "eeV" = (
 /obj/structure/barricade/handrail/strata{
 	layer = 3.1
@@ -25443,7 +25435,7 @@
 	pixel_y = 9
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "elt" = (
 /obj/item/tool/shovel,
 /obj/structure/platform{
@@ -26088,7 +26080,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "erm" = (
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = 10;
@@ -26284,7 +26276,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "esS" = (
 /obj/effect/decal/cleanable/dirt{
 	icon_state = "thermite";
@@ -26819,7 +26811,7 @@
 	dir = 1
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "exw" = (
 /obj/item/trash/kepler,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -27191,7 +27183,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "eAp" = (
 /obj/structure/machinery/conveyor{
 	dir = 8;
@@ -27228,7 +27220,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "eAB" = (
 /obj/structure/platform/strata/metal{
 	dir = 8
@@ -27627,7 +27619,7 @@
 /obj/item/stool,
 /obj/effect/hybrisa/decal/road/lines3,
 /turf/open/hybrisa/street/asphalt,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "eEY" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/invisible_wall,
@@ -28296,7 +28288,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "eKH" = (
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
@@ -28801,7 +28793,7 @@
 	pixel_y = 11
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "eOH" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1;
@@ -29380,7 +29372,7 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/plating,
-/area/lv759/indoors/mining_outpost/south)
+/area/lv759/indoors/caves/south_east_caves)
 "eTW" = (
 /obj/item/trash/candy,
 /obj/effect/hybrisa/decal/dirt,
@@ -29775,7 +29767,7 @@
 "eXU" = (
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/hybrisa/tile/cementflat,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "eYa" = (
 /obj/effect/decal/medical_decals{
 	dir = 1;
@@ -30487,7 +30479,7 @@
 	},
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/hybrisashale/layer2,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "fdX" = (
 /obj/item/ammo_casing/bullet,
 /obj/structure/machinery/light/double/blue,
@@ -30555,7 +30547,7 @@
 	color = "#a6aeab"
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "feN" = (
 /obj/structure/prop/hybrisa/Factory/Robotic_arm{
 	dir = 4;
@@ -30724,7 +30716,7 @@
 /turf/open/auto_turf/sand_white/layer0{
 	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "ffA" = (
 /obj/structure/janitorialcart,
 /obj/item/tool/mop{
@@ -30989,7 +30981,7 @@
 	icon_state = "E"
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "fhI" = (
 /obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/blood/xeno,
@@ -31319,7 +31311,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "fkS" = (
 /obj/structure/platform/hybrisa/metalplatform6,
 /obj/structure/platform/hybrisa/metalplatform6{
@@ -31833,7 +31825,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "fpx" = (
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaldark{
 	dir = 1;
@@ -32359,7 +32351,7 @@
 	dir = 1;
 	icon_state = "cargo_arrow"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "ftI" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/hybrisa/decal/dirt,
@@ -32393,7 +32385,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "ftP" = (
 /obj/item/clothing/shoes/marine/corporate,
 /turf/open/floor/strata{
@@ -33183,6 +33175,11 @@
 	icon_state = "officetiles"
 	},
 /area/whiskey_outpost/inside/caves)
+"fAk" = (
+/obj/effect/hybrisa/decal/dirt,
+/obj/effect/hybrisa/decal/dirt,
+/turf/open/floor/plating,
+/area/lv759/indoors/caves/south_east_caves)
 "fAl" = (
 /obj/effect/hybrisa/decal/road/road_stop{
 	icon_state = "stop_decal2"
@@ -33358,7 +33355,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo_arrow"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "fCs" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/decal/cleanable/blood/oil/streak,
@@ -33447,7 +33444,7 @@
 /turf/open/floor/prison{
 	icon_state = "ramptop"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "fCY" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door_control{
@@ -33969,7 +33966,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "fGN" = (
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/hybrisa/tile/greenfull_bigtile,
@@ -34322,7 +34319,7 @@
 	},
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/hybrisashale/layer2,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "fKG" = (
 /turf/open/floor/hybrisa/metal/bluemetal1{
 	dir = 10
@@ -34967,7 +34964,7 @@
 	dir = 1;
 	icon_state = "cargo_arrow"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "fQI" = (
 /obj/structure/prop/hybrisa/misc/fake/pipes/pipe3{
 	dir = 8
@@ -35782,7 +35779,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "fXF" = (
 /obj/effect/hybrisa/decal/trash{
 	icon_state = "trash_2"
@@ -35844,7 +35841,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "fYj" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
@@ -36247,7 +36244,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "gbo" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -36523,7 +36520,7 @@
 /obj/item/paper/crumpled,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/hybrisashale/layer1,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "gdp" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/prop/hybrisa/misc/trash/green{
@@ -36639,7 +36636,7 @@
 	level = 2
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "gen" = (
 /obj/structure/machinery/gibber,
 /turf/open/floor/corsat{
@@ -37331,7 +37328,7 @@
 	pixel_y = 12
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "glK" = (
 /obj/structure/machinery/light/small/blue{
 	dir = 1
@@ -37828,7 +37825,7 @@
 /turf/open/auto_turf/sand_white/layer0{
 	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "gqn" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/explosive/grenade/incendiary/molotov{
@@ -38571,7 +38568,7 @@
 "gvD" = (
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "gvE" = (
 /obj/structure/platform_decoration{
 	dir = 1
@@ -38808,7 +38805,7 @@
 	dir = 8;
 	icon_state = "ramptop"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "gxw" = (
 /turf/open/floor/prison{
 	dir = 1;
@@ -39179,7 +39176,7 @@
 /obj/structure/window/framed/bunker/reinforced,
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "gAI" = (
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaldark{
 	layer = 3
@@ -40463,7 +40460,7 @@
 	dir = 5;
 	icon_state = "darkbrown2"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "gLC" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -40719,7 +40716,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "gOh" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 8
@@ -40964,7 +40961,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "gPN" = (
 /obj/effect/hybrisa/decal/road/road_stop{
 	icon_state = "stop_decal5"
@@ -41159,7 +41156,7 @@
 	dir = 4;
 	icon_state = "cargo_arrow"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "gRb" = (
 /obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark2,
 /turf/open/auto_turf/hybrisashale/layer1,
@@ -41266,7 +41263,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "gRU" = (
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/lv759/indoors/apartment/westfoyer)
@@ -41814,7 +41811,7 @@
 	dir = 1;
 	icon_state = "cell_stripe"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "gWi" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/faxmachine,
@@ -41931,7 +41928,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "gXs" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice1";
@@ -42278,7 +42275,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "haN" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -42695,7 +42692,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "heb" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -42735,7 +42732,7 @@
 /turf/closed/wall/r_wall/bunker{
 	name = "reinforced metal wall"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "hel" = (
 /obj/effect/hybrisa/decal/road/road_edge,
 /obj/effect/decal/warning_stripes{
@@ -42959,7 +42956,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "hgq" = (
 /obj/item/device/flashlight/lamp/tripod/grey,
 /turf/open/auto_turf/sand_white/layer0{
@@ -43021,7 +43018,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "hgL" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/prop/hybrisa/fakeplatforms/platform4{
@@ -43478,7 +43475,7 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "hkT" = (
 /obj/structure/sign/poster/kellandmining{
 	layer = 2.9
@@ -43940,13 +43937,13 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "hof" = (
 /obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark1{
 	layer = 4
 	},
 /turf/open/auto_turf/hybrisashale/layer1,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "hog" = (
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
@@ -44204,7 +44201,7 @@
 /turf/open/floor/corsat{
 	icon_state = "marked"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "hqF" = (
 /obj/structure/platform/hybrisa/metalplatformstair2,
 /obj/structure/stairs{
@@ -44732,7 +44729,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "hvh" = (
 /obj/structure/largecrate/supply/explosives/mines,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -44905,7 +44902,7 @@
 	dir = 8;
 	icon_state = "cargo_arrow"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "hwF" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 8
@@ -45118,7 +45115,7 @@
 	dir = 1;
 	icon_state = "cargo_arrow"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "hyc" = (
 /obj/effect/hybrisa/decal/road/lines4,
 /obj/effect/hybrisa/decal/road/lines3,
@@ -45331,6 +45328,12 @@
 	},
 /turf/open/floor/hybrisa/tile/cuppajoesfloor,
 /area/lv759/indoors/spaceport/cuppajoes)
+"hzD" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "cargo_arrow"
+	},
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "hzH" = (
 /obj/item/device/toner,
 /turf/open/floor/hybrisa/carpet/carpetblack,
@@ -45788,7 +45791,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "hCU" = (
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco6,
 /turf/open/hybrisa/street/sidewalkfull,
@@ -45861,7 +45864,7 @@
 	dir = 8;
 	icon_state = "platingdmg3"
 	},
-/area/lv759/indoors/mining_outpost/south)
+/area/lv759/indoors/caves/south_east_caves)
 "hDv" = (
 /obj/item/device/flashlight/lamp/tripod,
 /obj/structure/barricade/handrail/hybrisa/handrail{
@@ -46102,7 +46105,7 @@
 	pixel_x = 1
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "hFo" = (
 /obj/structure/platform/strata/metal{
 	dir = 8
@@ -46571,7 +46574,7 @@
 /obj/structure/platform/hybrisa/metalplatform6,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/hybrisashale/layer2,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "hJz" = (
 /obj/structure/machinery/colony_floodlight/street{
 	layer = 7;
@@ -46582,6 +46585,10 @@
 	dir = 4
 	},
 /area/lv759/outdoors/colony_streets/north_west_street)
+"hJA" = (
+/obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark2,
+/turf/open/auto_turf/hybrisashale/layer1,
+/area/lv759/outdoors/landing_zone_2)
 "hJF" = (
 /turf/open/floor/hybrisa/carpet/carpetfadedred,
 /area/lv759/indoors/apartment/westentertainment)
@@ -46651,7 +46658,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "hKg" = (
 /obj/structure/window/framed/hybrisa/spaceport/cell,
 /turf/open/floor/plating,
@@ -47429,7 +47436,7 @@
 	icon_state = "W"
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "hRg" = (
 /obj/structure/sign/poster/corporate,
 /turf/closed/wall/hybrisa/colony,
@@ -47502,7 +47509,7 @@
 	pixel_x = -20
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "hRL" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/decal/cleanable/blood/oil/streak,
@@ -47675,7 +47682,7 @@
 /obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark1,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/hybrisashale/layer1,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "hTz" = (
 /obj/structure/machinery/conveyor{
 	dir = 8;
@@ -47692,7 +47699,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "hTA" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -48155,7 +48162,7 @@
 	pixel_y = 6
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "hXQ" = (
 /obj/structure/bed/chair/office/light{
 	dir = 1
@@ -48465,6 +48472,14 @@
 /obj/structure/platform{
 	dir = 1;
 	layer = 1
+	},
+/obj/item/weed_extract{
+	pixel_x = 6;
+	pixel_y = 2
+	},
+/obj/item/weed_extract{
+	pixel_x = -5;
+	pixel_y = -2
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -48808,7 +48823,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "iel" = (
 /obj/structure/platform/strata/metal,
 /obj/structure/platform/strata/metal{
@@ -48846,7 +48861,7 @@
 	pixel_x = 1
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "iet" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal2"
@@ -49070,7 +49085,7 @@
 	dir = 8;
 	icon_state = "ramptop"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "ifZ" = (
 /obj/structure/fence{
 	icon = 'icons/obj/structures/props/dark_fence.dmi'
@@ -49125,7 +49140,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "igj" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
@@ -49703,7 +49718,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "ilm" = (
 /obj/item/stack/sheet/cardboard/small_stack{
 	layer = 2
@@ -50199,7 +50214,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "ipA" = (
 /obj/structure/machinery/light/blue{
 	dir = 4
@@ -50264,7 +50279,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "iqa" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/platform_decoration/hybrisa/rockdark,
@@ -50736,7 +50751,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "iuu" = (
 /obj/structure/machinery/power/apc{
 	dir = 1
@@ -50930,7 +50945,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo_arrow"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "ivW" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/drinks/coffee{
@@ -51036,7 +51051,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "iwn" = (
 /obj/item/trash/eat{
 	pixel_x = 10;
@@ -51510,6 +51525,9 @@
 	},
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/lv759/indoors/apartment/northapartments)
+"izE" = (
+/turf/open/floor/prison,
+/area/lv759/outdoors/landing_zone_2)
 "izF" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/hybrisa/street/asphalt,
@@ -51661,6 +51679,12 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
+"iAE" = (
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "cell_stripe"
+	},
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "iAI" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -52115,7 +52139,7 @@
 	dir = 1;
 	icon_state = "cell_stripe"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "iEi" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/machinery/light/small/blue{
@@ -52737,7 +52761,7 @@
 	icon_state = "E"
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "iKA" = (
 /obj/structure/closet/secure_closet/freezer/fridge/full,
 /obj/structure/machinery/light/spot,
@@ -53256,7 +53280,7 @@
 	dir = 1;
 	icon_state = "cell_stripe"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "iPZ" = (
 /turf/open/floor/prison{
 	dir = 1;
@@ -53813,7 +53837,7 @@
 /turf/open/auto_turf/sand_white/layer0{
 	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "iUC" = (
 /turf/open/floor/prison{
 	dir = 10;
@@ -54163,7 +54187,7 @@
 	},
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/hybrisashale/layer2,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "iXF" = (
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
@@ -54293,7 +54317,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "iYB" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/frame,
 /turf/closed/wall/r_wall/biodome,
@@ -54365,7 +54389,7 @@
 	dir = 8;
 	icon_state = "ramptop"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "iZo" = (
 /obj/structure/machinery/colony_floodlight/street{
 	layer = 7;
@@ -54459,6 +54483,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
 "jah" = (
+/obj/structure/blocker/invisible_wall,
 /turf/closed/shuttle/dropship2/WY/StarGlider{
 	icon_state = "damaged_console1"
 	},
@@ -55066,7 +55091,7 @@
 	pixel_x = -10
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "jfS" = (
 /obj/structure/machinery/shower{
 	pixel_y = 16
@@ -55303,7 +55328,7 @@
 	pixel_y = -8
 	},
 /turf/open/floor/plating,
-/area/lv759/indoors/mining_outpost/south)
+/area/lv759/indoors/caves/south_east_caves)
 "jhQ" = (
 /obj/structure/bed/chair{
 	dir = 8;
@@ -55489,7 +55514,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "jjN" = (
 /turf/open/floor/prison,
 /area/lv759/indoors/garage_workshop_storage)
@@ -55692,6 +55717,11 @@
 /obj/effect/hybrisa/decal/road/lines4,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/east_central_street)
+"jlm" = (
+/turf/closed/wall/r_wall/bunker{
+	name = "reinforced metal wall"
+	},
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "jlp" = (
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red{
 	dir = 4
@@ -55714,7 +55744,7 @@
 /turf/open/auto_turf/sand_white/layer0{
 	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "jlt" = (
 /turf/open/floor/prison{
 	dir = 4;
@@ -55844,7 +55874,7 @@
 	},
 /obj/item/prop/alien/hugger,
 /turf/open/auto_turf/hybrisashale/layer1,
-/area/lv759/indoors/mining_outpost/south)
+/area/lv759/indoors/caves/south_east_caves)
 "jna" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/trash/cigbutt,
@@ -56376,7 +56406,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "jrK" = (
 /obj/structure/sign/poster/safety{
 	pixel_x = 5
@@ -57368,7 +57398,7 @@
 	pixel_y = 28
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "jAc" = (
 /obj/structure/bed/chair,
 /obj/effect/hybrisa/decal/dirt,
@@ -58378,7 +58408,7 @@
 /turf/open/auto_turf/sand_white/layer0{
 	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "jJt" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -58656,7 +58686,7 @@
 	dir = 8;
 	icon_state = "ramptop"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "jMi" = (
 /obj/structure/bed/chair{
 	dir = 8;
@@ -58736,18 +58766,13 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "jNm" = (
 /obj/structure/prop/invuln/overhead_pipe,
 /turf/closed/wall/r_wall/bunker{
 	name = "reinforced metal wall"
 	},
-/area/whiskey_outpost/inside/caves)
-"jNn" = (
-/turf/open/auto_turf/sand_white/layer0{
-	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
-	},
-/area/lv759/indoors/mining_outpost/south)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "jNs" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -59008,7 +59033,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "jPO" = (
 /obj/structure/platform{
 	dir = 1;
@@ -59283,7 +59308,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "jSK" = (
 /obj/structure/morgue{
 	dir = 8
@@ -59752,7 +59777,7 @@
 	},
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "jWr" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -60105,7 +60130,7 @@
 	pixel_x = -20
 	},
 /turf/open/floor/prison,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "jZX" = (
 /obj/structure/largecrate/random/barrel/black,
 /turf/open/floor/prison{
@@ -60339,7 +60364,7 @@
 /turf/open/auto_turf/sand_white/layer0{
 	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "kbD" = (
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
@@ -60380,7 +60405,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "kbN" = (
 /obj/structure/window/reinforced{
 	dir = 1;
@@ -60688,7 +60713,7 @@
 	dir = 8;
 	icon_state = "ramptop"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "ker" = (
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 4
@@ -60815,6 +60840,16 @@
 /obj/structure/sign/poster/pinup,
 /turf/closed/wall/hybrisa/colony,
 /area/lv759/indoors/apartment/westentertainment)
+"kfB" = (
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	allow_construction = 0;
+	icon_state = "plate"
+	},
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "kfD" = (
 /obj/structure/machinery/light,
 /turf/open/floor/hybrisa/carpet/carpetbeige,
@@ -61085,6 +61120,8 @@
 /area/lv759/outdoors/colony_streets/south_east_street)
 "kib" = (
 /obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/rifle/mar40/carbine,
+/obj/item/ammo_casing/bullet,
 /turf/open/hybrisa/street/sidewalkcenter,
 /area/lv759/outdoors/colony_streets/south_west_street)
 "kid" = (
@@ -62001,7 +62038,7 @@
 	dir = 8;
 	icon_state = "platingdmg3"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "kox" = (
 /obj/effect/hybrisa/decal/road/lines2,
 /obj/effect/hybrisa/decal/road/lines1,
@@ -62393,7 +62430,7 @@
 /turf/open/auto_turf/sand_white/layer0{
 	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "kru" = (
 /obj/structure/closet/cabinet,
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
@@ -62651,7 +62688,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "ksY" = (
 /obj/structure/platform{
 	dir = 1;
@@ -62971,7 +63008,7 @@
 	pixel_y = 5
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "kuV" = (
 /obj/structure/sign/nosmoking_1,
 /obj/structure/sign/safety/east{
@@ -63601,7 +63638,7 @@
 	pixel_y = 10
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "kAm" = (
 /obj/structure/prop/hybrisa/vehicles/Meridian/Orange{
 	icon_state = "meridian_orange_damage_2";
@@ -63820,7 +63857,7 @@
 	name = "autoname reinforced"
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "kBD" = (
 /obj/structure/platform/strata/metal{
 	dir = 4
@@ -63866,7 +63903,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "kCl" = (
 /turf/open/floor/hybrisa/tile/blacktileshiny,
 /area/lv759/indoors/casino/casino_restroom)
@@ -63959,7 +63996,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "kDd" = (
 /obj/structure/prop/hybrisa/cavedecor/stalagmite2,
 /turf/open/auto_turf/hybrisashale/layer1,
@@ -64025,7 +64062,7 @@
 	color = "#a6aeab"
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "kDq" = (
 /obj/structure/bed/roller,
 /obj/item/stack/medical/splint,
@@ -64185,7 +64222,7 @@
 	},
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/hybrisashale/layer1,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "kFE" = (
 /obj/structure/platform/hybrisa/metalplatform6,
 /turf/open/hybrisa/street/sidewalk{
@@ -64313,7 +64350,7 @@
 	dir = 4
 	},
 /turf/open/auto_turf/hybrisashale/layer2,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "kGC" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "docstriping"
@@ -64631,7 +64668,7 @@
 /turf/open/floor/prison{
 	icon_state = "cell_stripe"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "kJe" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/stack/rods,
@@ -65240,7 +65277,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "kOu" = (
 /obj/structure/sign/safety/ladder,
 /turf/closed/wall/hybrisa/colony/reinforced/hull,
@@ -65321,6 +65358,12 @@
 /obj/structure/largecrate/random/mini/small_case/c,
 /turf/open/engineership/engineer_floor1,
 /area/lv759/derelictship)
+"kPd" = (
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/almayer{
+	icon_state = "cargo"
+	},
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "kPe" = (
 /turf/closed/shuttle/dropship2/WY/HorizonRunner{
 	icon_state = "wy2"
@@ -65374,7 +65417,7 @@
 /obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark1,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/hybrisashale/layer1,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "kPM" = (
 /obj/structure/morgue{
 	dir = 8
@@ -65464,7 +65507,7 @@
 /turf/open/auto_turf/sand_white/layer0{
 	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
 	},
-/area/lv759/indoors/mining_outpost/south)
+/area/lv759/indoors/caves/south_east_caves)
 "kQk" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/prop/hybrisa/misc/trash/green{
@@ -65873,6 +65916,14 @@
 /obj/structure/platform{
 	dir = 1;
 	layer = 1
+	},
+/obj/item/xenos_claw{
+	pixel_x = 7;
+	pixel_y = 2
+	},
+/obj/item/xenos_claw{
+	pixel_x = -6;
+	pixel_y = -1
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -67124,7 +67175,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "ldS" = (
 /obj/structure/sign/poster/safety,
 /turf/closed/wall/hybrisa/colony/engineering,
@@ -67231,7 +67282,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "leP" = (
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
@@ -67584,7 +67635,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "liu" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitorsmall_off{
 	pixel_x = 1
@@ -67613,7 +67664,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "liA" = (
 /turf/open/gm/river/desert/shallow_edge{
 	dir = 1
@@ -68252,7 +68303,7 @@
 	pixel_y = 8
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "lnW" = (
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/lv759/indoors/colonial_marshals/restroom)
@@ -70001,7 +70052,7 @@
 	dir = 10;
 	icon_state = "floor_plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "lBC" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -70013,7 +70064,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "lBG" = (
 /obj/item/clothing/gloves/marine/veteran/insulated,
 /obj/effect/decal/cleanable/generic,
@@ -70244,7 +70295,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "lDF" = (
 /obj/structure/sign/safety/medical{
 	pixel_x = 8;
@@ -70784,7 +70835,7 @@
 /turf/open/auto_turf/sand_white/layer0{
 	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "lHr" = (
 /turf/open/floor/prison{
 	icon_state = "whitegreenfull"
@@ -71339,6 +71390,14 @@
 	dir = 1
 	},
 /area/lv759/outdoors/colony_streets/east_central_street)
+"lNm" = (
+/obj/structure/machinery/door/airlock/almayer/maint/reinforced/colony{
+	autoname = 1;
+	name = "autoname reinforced";
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "lNp" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -71415,7 +71474,7 @@
 	dir = 6;
 	icon_state = "darkbrown2"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "lOe" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 8
@@ -71444,7 +71503,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "lOl" = (
 /turf/open/hybrisa/street/sidewalk{
 	dir = 5
@@ -72653,7 +72712,7 @@
 	pixel_y = -6
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "lYg" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -73002,7 +73061,7 @@
 /turf/open/auto_turf/sand_white/layer0{
 	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "mco" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -9;
@@ -73036,7 +73095,7 @@
 /turf/open/floor/prison{
 	icon_state = "ramptop"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "mcQ" = (
 /obj/structure/prop/hybrisa/vehicles/colonycrawlers/science/science1,
 /turf/open/floor/strata{
@@ -73235,7 +73294,7 @@
 	},
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "mfa" = (
 /obj/item/paper/crumpled{
 	pixel_x = 15;
@@ -73994,7 +74053,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "mlk" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -74325,7 +74384,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "moa" = (
 /turf/open/floor/prison{
 	dir = 4;
@@ -74690,6 +74749,11 @@
 	icon_state = "blackfull"
 	},
 /area/whiskey_outpost/inside/caves)
+"mrs" = (
+/obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark2,
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/auto_turf/hybrisashale/layer1,
+/area/lv759/outdoors/landing_zone_2)
 "mrv" = (
 /obj/structure/machinery/disposal,
 /obj/item/trash/burger,
@@ -75227,7 +75291,7 @@
 	icon_state = "NW-out"
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "mvV" = (
 /obj/structure/closet/crate/trashcart{
 	desc = "A heavy, metal foodcart with wheels.";
@@ -75526,7 +75590,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "myv" = (
 /obj/structure/machinery/botany{
 	pixel_y = 8
@@ -75675,7 +75739,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "mzH" = (
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco6,
 /obj/effect/hybrisa/decal/dirt,
@@ -76197,7 +76261,7 @@
 	},
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/hybrisashale/layer2,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "mEn" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/trash,
@@ -76821,7 +76885,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "mKi" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
@@ -78530,7 +78594,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "mZF" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/decal/strata_decals/grime/grime3,
@@ -78605,7 +78669,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "nak" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "docstripingdir"
@@ -78726,7 +78790,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "nbp" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
@@ -78748,7 +78812,7 @@
 	dir = 8;
 	icon_state = "ramptop"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "nbv" = (
 /turf/closed/shuttle/dropship2/transparent{
 	desc = "The WY-LWI Horizon Runner HR-150, a collaborative creation of Lunnar-Welsun Industries and Weyland-Yutani. This small dropship is designed for short-range commercial transport.";
@@ -79710,7 +79774,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "nkj" = (
 /obj/item/trash/c_tube{
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!";
@@ -79988,6 +80052,7 @@
 	pixel_x = 14;
 	pixel_y = 3
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/shuttle{
 	icon_state = "rasputin14"
 	},
@@ -80496,7 +80561,7 @@
 /obj/structure/platform/hybrisa/metalplatform6,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/hybrisashale/layer1,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "nsk" = (
 /obj/item/paper/crumpled{
 	pixel_x = 15;
@@ -80986,6 +81051,11 @@
 	icon_state = "plating_striped"
 	},
 /area/lv759/indoors/power_plant/fusion_generators)
+"nwX" = (
+/turf/open/floor/prison{
+	icon_state = "cell_stripe"
+	},
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "nxf" = (
 /turf/open/floor/hybrisa/metal/metalwhitefull,
 /area/lv759/indoors/spaceport/cuppajoes)
@@ -80996,7 +81066,7 @@
 /obj/structure/platform/hybrisa/metalplatform6,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/hybrisashale/layer1,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "nxh" = (
 /obj/item/storage/pill_bottle/packet/bicaridine,
 /obj/effect/decal/cleanable/blood/drip,
@@ -81197,7 +81267,7 @@
 	},
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "nyK" = (
 /obj/structure/prop/invuln/minecart_tracks/bumper{
 	dir = 8
@@ -81543,7 +81613,7 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/prop/colony/used_flare,
 /turf/open/floor/plating,
-/area/lv759/indoors/mining_outpost/south)
+/area/lv759/indoors/caves/south_east_caves)
 "nBt" = (
 /obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark1,
 /turf/open/auto_turf/hybrisashale/layer1,
@@ -81619,7 +81689,7 @@
 	pixel_y = 10
 	},
 /turf/open/hybrisa/street/asphalt,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "nCi" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/platform{
@@ -82394,12 +82464,6 @@
 /obj/item/trash/cigbutt,
 /turf/open/floor/hybrisa/carpet/carpetbeige,
 /area/lv759/indoors/garage_reception)
-"nIS" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 8
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/whiskey_outpost/inside/caves)
 "nIX" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal3"
@@ -82798,7 +82862,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "nME" = (
 /obj/item/device/flashlight/lamp/tripod/grey,
 /turf/open/engineership/engineer_floor9,
@@ -83014,7 +83078,7 @@
 	dir = 1;
 	icon_state = "cell_stripe"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "nOA" = (
 /obj/structure/reagent_dispensers/water_cooler/stacks{
 	density = 0;
@@ -83947,7 +84011,7 @@
 	dir = 8;
 	icon_state = "ramptop"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "nWT" = (
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
@@ -83986,7 +84050,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "nXc" = (
 /obj/structure/machinery/colony_floodlight/street{
 	layer = 7;
@@ -84206,7 +84270,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "nYw" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
@@ -84794,7 +84858,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "odt" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4;
@@ -84892,7 +84956,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "odY" = (
 /obj/effect/hybrisa/decal/trash{
 	icon_state = "trash_7";
@@ -85009,6 +85073,10 @@
 /obj/item/storage/belt/gun/m4a3/highpower/tactical,
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/lv759/indoors/weyyu_office/supervisor)
+"oeK" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/auto_turf/hybrisashale/layer1,
+/area/lv759/outdoors/landing_zone_2)
 "oeL" = (
 /obj/structure/prop/almayer/computers/sensor_computer3{
 	desc = null;
@@ -85448,6 +85516,10 @@
 	icon_state = "ramptop"
 	},
 /area/lv759/indoors/caves/north_west_caves)
+"oiE" = (
+/obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark1,
+/turf/open/auto_turf/hybrisashale/layer1,
+/area/lv759/outdoors/landing_zone_2)
 "oiH" = (
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/almayer{
@@ -87414,7 +87486,7 @@
 	},
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/hybrisashale/layer1,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "oyW" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -88261,7 +88333,7 @@
 	},
 /obj/structure/machinery/light/spot,
 /turf/open/floor/hybrisa/tile/tilebeige,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "oFv" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -88811,7 +88883,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "oKi" = (
 /obj/structure/closet/firecloset,
 /obj/effect/hybrisa/decal/dirt,
@@ -88958,6 +89030,11 @@
 /obj/structure/prop/ice_colony/ground_wire,
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/outdoors/caveplateau)
+"oLm" = (
+/turf/open/floor/prison{
+	icon_state = "ramptop"
+	},
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "oLn" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
@@ -89796,7 +89873,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "oRD" = (
 /obj/structure/reagent_dispensers/oxygentank,
 /obj/structure/machinery/light{
@@ -90086,7 +90163,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "oTQ" = (
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/hybrisa/tile/tilegrey,
@@ -90106,7 +90183,7 @@
 	},
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/hybrisashale/layer1,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "oUb" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal7"
@@ -91011,7 +91088,7 @@
 /obj/structure/prop/invuln/overhead_pipe,
 /obj/structure/largecrate/random,
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "pbJ" = (
 /obj/item/device/flashlight/lamp/tripod/grey,
 /obj/structure/barricade/handrail/wire{
@@ -91253,7 +91330,7 @@
 	icon_state = "SE-out"
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "pdG" = (
 /obj/effect/hybrisa/decal/road/road_stop{
 	dir = 8;
@@ -92371,7 +92448,7 @@
 	dir = 8;
 	icon_state = "ramptop"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "pol" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -92529,7 +92606,7 @@
 /obj/effect/hybrisa/decal/road/lines5,
 /obj/effect/hybrisa/decal/road/lines4,
 /turf/open/hybrisa/street/asphalt,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "ppV" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/blocker/forcefield/vehicles,
@@ -92674,7 +92751,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "pqO" = (
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/plating,
@@ -93193,7 +93270,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "pvj" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
@@ -93257,7 +93334,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "pvK" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal7"
@@ -93705,7 +93782,7 @@
 	health = 25000
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "pzt" = (
 /obj/structure/bed/chair{
 	can_buckle = 0;
@@ -93726,7 +93803,7 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/prop/invuln/overhead_pipe,
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "pzv" = (
 /obj/item/trash/cigbutt{
 	pixel_x = -10;
@@ -93804,7 +93881,7 @@
 /obj/item/storage/box/lights/mixed,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "pzU" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 4
@@ -94093,7 +94170,7 @@
 	},
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/hybrisashale/layer1,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "pCL" = (
 /turf/open/floor/plating,
 /area/lv759/indoors/apartment/eastfoyer)
@@ -94137,7 +94214,7 @@
 	},
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/hybrisashale/layer2,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "pDu" = (
 /obj/structure/window/reinforced{
 	dir = 1;
@@ -94451,7 +94528,7 @@
 	dir = 8;
 	icon_state = "ramptop"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "pFL" = (
 /obj/structure/barricade/handrail{
 	dir = 4
@@ -94505,7 +94582,7 @@
 	},
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/hybrisashale/layer1,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "pGn" = (
 /obj/structure/machinery/colony_floodlight/street{
 	layer = 7;
@@ -95318,7 +95395,7 @@
 	dir = 1;
 	icon_state = "cell_stripe"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "pMD" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	desc = "A pipe.";
@@ -97181,7 +97258,7 @@
 /turf/open/auto_turf/sand_white/layer0{
 	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
 	},
-/area/lv759/indoors/mining_outpost/south)
+/area/lv759/indoors/caves/south_east_caves)
 "qdR" = (
 /obj/structure/platform/hybrisa/rockdark{
 	dir = 1
@@ -97409,7 +97486,7 @@
 /obj/structure/prop/invuln/overhead_pipe,
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "qfp" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/conveyor{
@@ -98535,6 +98612,7 @@
 	},
 /area/lv759/indoors/spaceport/heavyequip)
 "qpF" = (
+/obj/structure/blocker/invisible_wall,
 /turf/closed/shuttle/dropship2/WY/StarGlider{
 	icon_state = "damaged_console3"
 	},
@@ -98851,7 +98929,7 @@
 	pixel_x = 4
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "qsw" = (
 /obj/structure/disposalpipe/junction{
 	dir = 8
@@ -99711,7 +99789,7 @@
 	},
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/hybrisashale/layer1,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "qyY" = (
 /obj/structure/machinery/colony_floodlight/street{
 	layer = 7;
@@ -101453,7 +101531,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "qMN" = (
 /obj/structure/prop/structure_lattice{
 	dir = 4
@@ -101492,7 +101570,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "qNd" = (
 /obj/item/stack/sheet/metal,
 /obj/item/stack/rods,
@@ -101708,6 +101786,9 @@
 	icon_state = "ramptop"
 	},
 /area/whiskey_outpost/inside/caves)
+"qOY" = (
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/landing_zone_2)
 "qOZ" = (
 /obj/structure/platform_decoration{
 	dir = 8
@@ -101933,7 +102014,7 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/device/assembly/mousetrap/armed,
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "qQK" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/sentry/highchance,
@@ -102864,7 +102945,7 @@
 	icon_state = "S"
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "qYX" = (
 /turf/open/floor/strata{
 	dir = 6;
@@ -103336,7 +103417,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "rdw" = (
 /obj/structure/prop/hybrisa/misc/fake/wire/blue{
 	dir = 4;
@@ -104029,7 +104110,7 @@
 /obj/structure/platform/hybrisa/metalplatform6,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/hybrisashale/layer1,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "riY" = (
 /obj/structure/stairs{
 	color = "#b7b8b2";
@@ -104168,7 +104249,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "rkD" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -104200,7 +104281,7 @@
 	pixel_y = 7
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "rkH" = (
 /obj/structure/coatrack{
 	icon_state = "coatrack1"
@@ -104226,7 +104307,7 @@
 	pixel_x = 20
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "rkN" = (
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
@@ -104733,7 +104814,7 @@
 /turf/closed/wall/r_wall/bunker{
 	name = "reinforced metal wall"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "rpv" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
 /obj/structure/prop/hybrisa/misc/fake/pipes/pipe1,
@@ -104889,6 +104970,15 @@
 	icon_state = "blue"
 	},
 /area/lv759/indoors/hospital/outgoing)
+"rqK" = (
+/obj/effect/decal/cleanable/blood/drip{
+	icon_state = "2"
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/colony_streets/south_west_street)
 "rqL" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -104903,7 +104993,7 @@
 /obj/structure/platform/hybrisa/metalplatform6,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/hybrisashale/layer1,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "rqU" = (
 /obj/effect/hybrisa/decal/road/lines3,
 /obj/effect/hybrisa/decal/road/road_edge{
@@ -105298,6 +105388,9 @@
 	icon_state = "floor_plate"
 	},
 /area/whiskey_outpost/inside/caves)
+"ruJ" = (
+/turf/open/floor/plating,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "ruK" = (
 /obj/structure/platform/hybrisa/rockdark{
 	dir = 1
@@ -105882,7 +105975,7 @@
 /obj/structure/largecrate/random,
 /obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "rzr" = (
 /obj/item/stack/sheet/wood{
 	layer = 2.7;
@@ -106001,6 +106094,7 @@
 /obj/item/shard,
 /obj/item/shard,
 /obj/effect/decal/cleanable/blood,
+/obj/structure/blocker/invisible_wall,
 /turf/open/shuttle{
 	icon_state = "rasputin14"
 	},
@@ -106464,7 +106558,7 @@
 	pixel_y = 28
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "rDS" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform1{
 	dir = 4
@@ -106535,7 +106629,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "rEp" = (
 /obj/structure/platform{
 	dir = 1;
@@ -106967,7 +107061,7 @@
 	},
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "rGZ" = (
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 8
@@ -107210,7 +107304,7 @@
 	},
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/hybrisashale/layer1,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "rJa" = (
 /obj/item/paper/crumpled,
 /turf/open/floor/corsat{
@@ -107404,7 +107498,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "rKL" = (
 /obj/item/trash/cigbutt{
 	pixel_y = 8
@@ -107879,7 +107973,7 @@
 	dir = 10;
 	icon_state = "darkbrown2"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "rOa" = (
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
@@ -109372,7 +109466,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "saW" = (
 /obj/structure/machinery/floodlight,
 /turf/open/auto_turf/sand_white/layer0{
@@ -110184,6 +110278,7 @@
 /turf/open/floor/plating,
 /area/whiskey_outpost/inside/caves)
 "shT" = (
+/obj/structure/blocker/invisible_wall,
 /turf/closed/shuttle/dropship2/WY/StarGlider{
 	icon_state = "damaged_console2"
 	},
@@ -110382,7 +110477,7 @@
 "sjK" = (
 /obj/structure/window/framed/bunker/reinforced,
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "sjL" = (
 /obj/structure/surface/rack,
 /obj/effect/hybrisa/decal/dirt,
@@ -110628,7 +110723,7 @@
 "slI" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/plating,
-/area/lv759/indoors/mining_outpost/south)
+/area/lv759/indoors/caves/south_east_caves)
 "slK" = (
 /obj/structure/surface/rack,
 /obj/item/tool/wet_sign{
@@ -110825,7 +110920,7 @@
 	dir = 8;
 	icon_state = "ramptop"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "snX" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -111102,7 +111197,7 @@
 	},
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/mech_bay_recharge_floor,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "sqa" = (
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
@@ -111381,7 +111476,7 @@
 /turf/open/auto_turf/sand_white/layer0{
 	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
 	},
-/area/lv759/indoors/mining_outpost/south)
+/area/lv759/indoors/caves/south_east_caves)
 "ssm" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall{
@@ -111652,7 +111747,7 @@
 /turf/open/floor/prison{
 	icon_state = "ramptop"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "suj" = (
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco3{
 	dir = 4
@@ -111954,7 +112049,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "swm" = (
 /obj/structure/showcase{
 	breakable = 1;
@@ -113206,7 +113301,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "sGG" = (
 /obj/structure/sign/safety/restrictedarea{
 	pixel_x = 32;
@@ -113647,7 +113742,7 @@
 	layer = 2
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "sKH" = (
 /obj/structure/platform_decoration/hybrisa/engineer_corner{
 	dir = 8
@@ -114793,7 +114888,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "sUK" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/stack/rods,
@@ -116340,7 +116435,7 @@
 /obj/item/tool/shovel,
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/plating,
-/area/lv759/indoors/mining_outpost/south)
+/area/lv759/indoors/caves/south_east_caves)
 "thu" = (
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 4
@@ -116459,7 +116554,7 @@
 	dir = 1
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "tiI" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/decal/cleanable/blood,
@@ -116469,7 +116564,7 @@
 /area/lv759/indoors/mining_outpost/south)
 "tiJ" = (
 /turf/closed/wall/hybrisa/colony/reinforced,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "tiM" = (
 /obj/structure/bed/sofa{
 	icon_state = "couch_hori1"
@@ -116650,7 +116745,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "tkz" = (
 /obj/structure/platform{
 	dir = 4
@@ -116796,7 +116891,7 @@
 /obj/item/stack/sheet/cardboard/small_stack,
 /obj/item/stack/sheet/wood,
 /turf/open/hybrisa/street/asphalt,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "tlF" = (
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco6,
 /obj/structure/platform/hybrisa/metalplatform6{
@@ -117480,7 +117575,7 @@
 	icon_state = "SW-out"
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "trj" = (
 /obj/item/stack/sheet/cardboard,
 /obj/structure/prop/hybrisa/misc/fake/pipes/pipe1,
@@ -118250,7 +118345,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "tyA" = (
 /obj/item/trash/kepler,
 /obj/effect/hybrisa/decal/dirt,
@@ -118299,7 +118394,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "tyZ" = (
 /obj/effect/hybrisa/decal/road/lines4,
 /obj/effect/hybrisa/decal/road/road_edge{
@@ -118976,7 +119071,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "tGf" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -119109,7 +119204,7 @@
 	dir = 8
 	},
 /turf/open/auto_turf/hybrisashale/layer2,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "tHv" = (
 /obj/structure/platform/hybrisa/metalplatform2,
 /obj/structure/blocker/forcefield/vehicles,
@@ -119191,7 +119286,7 @@
 	dir = 8;
 	icon_state = "ramptop"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "tHQ" = (
 /turf/open/floor/plating,
 /area/lv759/indoors/power_plant/telecomms)
@@ -119411,7 +119506,7 @@
 	pixel_y = 14
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "tJD" = (
 /obj/effect/hybrisa/decal/road/lines1,
 /turf/open/hybrisa/street/asphalt,
@@ -119578,6 +119673,7 @@
 	color = "#6b675e"
 	},
 /obj/structure/machinery/cell_charger,
+/obj/item/prop/almayer/handheld1,
 /turf/open/floor/plating/plating_catwalk,
 /area/whiskey_outpost/inside/caves)
 "tKO" = (
@@ -119832,7 +119928,7 @@
 /turf/closed/wall/r_wall/bunker{
 	name = "reinforced metal wall"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "tMJ" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 4
@@ -120400,7 +120496,7 @@
 /turf/open/floor/prison{
 	icon_state = "ramptop"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "tSd" = (
 /obj/effect/hybrisa/decal/trash{
 	icon_state = "trash_7"
@@ -120454,9 +120550,6 @@
 	dir = 1
 	},
 /area/lv759/outdoors/colony_streets/central_streets)
-"tSq" = (
-/turf/open/auto_turf/hybrisashale/layer2,
-/area/lv759/indoors/mining_outpost/south)
 "tSt" = (
 /obj/item/trash/cigbutt{
 	pixel_x = -3;
@@ -120942,7 +121035,7 @@
 	health = 25000
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "tWO" = (
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
 	dir = 1
@@ -122950,7 +123043,7 @@
 /turf/open/floor/prison{
 	icon_state = "ramptop"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "une" = (
 /obj/structure/platform/hybrisa/metalplatform1{
 	dir = 1;
@@ -123171,7 +123264,7 @@
 	},
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/hybrisashale/layer1,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "uoI" = (
 /obj/item/shard,
 /obj/effect/decal/cleanable/blood,
@@ -124101,7 +124194,7 @@
 	pixel_x = 20
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "uxB" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -124611,7 +124704,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "uBL" = (
 /turf/open/floor/prison{
 	icon_state = "ramptop"
@@ -125006,7 +125099,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "uEk" = (
 /turf/open/floor/hybrisa/metal/grated{
 	dir = 1
@@ -126330,7 +126423,7 @@
 	pixel_y = 28
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "uOA" = (
 /obj/structure/sign/safety/restrictedarea{
 	pixel_x = -17
@@ -127205,7 +127298,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "uUD" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal3"
@@ -127335,7 +127428,7 @@
 	dir = 8
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "uVU" = (
 /obj/structure/sign/safety/refridgeration,
 /turf/closed/wall/hybrisa/research/reinforced,
@@ -129412,7 +129505,7 @@
 	},
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/hybrisashale/layer1,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "vqh" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood,
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
@@ -129637,7 +129730,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "vsd" = (
 /obj/structure/foamed_metal,
 /turf/closed/wall/hybrisa/colony/ribbed,
@@ -129667,7 +129760,7 @@
 	},
 /obj/item/trash/eat,
 /turf/open/auto_turf/hybrisashale/layer1,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "vsi" = (
 /obj/structure/prop/ice_colony/surveying_device{
 	dir = 1;
@@ -130186,7 +130279,7 @@
 "vvW" = (
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "vwb" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Restroom"
@@ -130699,7 +130792,7 @@
 /obj/effect/hybrisa/decal/road/lines5,
 /obj/effect/hybrisa/decal/road/lines1,
 /turf/open/hybrisa/street/asphalt,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "vAO" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
@@ -131341,7 +131434,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "vGr" = (
 /obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
 	name = "Emergency Lockdown";
@@ -131479,7 +131572,7 @@
 /turf/closed/wall/r_wall/bunker{
 	name = "reinforced metal wall"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "vHP" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/item/ammo_casing/bullet,
@@ -132080,7 +132173,7 @@
 	layer = 5
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "vMR" = (
 /obj/structure/monorail,
 /obj/structure/prop/invuln/overhead/flammable_pipe/fly{
@@ -132265,7 +132358,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo_arrow"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "vOf" = (
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/hybrisa/street/sidewalk{
@@ -133065,6 +133158,10 @@
 	},
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/lv759/indoors/colonial_marshals/office)
+"vUV" = (
+/obj/structure/prop/hybrisa/boulders/smallboulderdark/boulder_dark3,
+/turf/open/auto_turf/hybrisashale/layer1,
+/area/lv759/outdoors/landing_zone_2)
 "vUY" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -133313,7 +133410,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "vWQ" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal2"
@@ -133852,7 +133949,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "wbl" = (
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red{
 	dir = 8
@@ -134293,7 +134390,7 @@
 /turf/open/floor/plating{
 	icon_state = "platingdmg1"
 	},
-/area/lv759/indoors/mining_outpost/south)
+/area/lv759/indoors/caves/south_east_caves)
 "weR" = (
 /obj/effect/hybrisa/decal/checkpoint_decal{
 	dir = 1;
@@ -134566,7 +134663,7 @@
 	pixel_x = 20
 	},
 /turf/open/auto_turf/hybrisashale/layer2,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "whW" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -134760,7 +134857,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "wjV" = (
 /obj/structure/platform_decoration/strata/metal,
 /turf/open/floor/strata{
@@ -135387,6 +135484,7 @@
 /obj/effect/acid_hole{
 	indestructible = 1
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/closed/shuttle/dropship2/WY/StarGlider{
 	icon_state = "79"
 	},
@@ -135669,7 +135767,7 @@
 	dir = 4
 	},
 /turf/open/floor/mech_bay_recharge_floor,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "wrQ" = (
 /obj/structure/toilet{
 	dir = 1
@@ -135798,7 +135896,7 @@
 	},
 /obj/effect/hybrisa/decal/road/lines3,
 /turf/open/hybrisa/street/asphalt,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "wtZ" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaldark{
@@ -136064,7 +136162,7 @@
 "wvx" = (
 /obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder1,
 /turf/open/auto_turf/hybrisashale/layer1,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "wvC" = (
 /obj/item/trash/cigbutt{
 	pixel_x = 1;
@@ -136251,7 +136349,7 @@
 	dir = 1;
 	icon_state = "cell_stripe"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "wxr" = (
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
 	dir = 8
@@ -136489,7 +136587,7 @@
 	dir = 8;
 	icon_state = "cargo_arrow"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "wzn" = (
 /obj/structure/platform_decoration/hybrisa/rockdark{
 	dir = 4
@@ -136750,7 +136848,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "wBx" = (
 /obj/effect/hybrisa/decal/road/road_edge,
 /obj/effect/hybrisa/decal/road/lines1,
@@ -137067,7 +137165,7 @@
 	icon_state = "W"
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "wDB" = (
 /obj/effect/hybrisa/decal/trash{
 	icon_state = "trash_11"
@@ -137150,7 +137248,7 @@
 /obj/structure/prop/invuln/overhead_pipe,
 /obj/structure/janitorialcart,
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "wEd" = (
 /obj/effect/landmark/corpsespawner/pmc,
 /obj/effect/decal/cleanable/blood{
@@ -137177,7 +137275,7 @@
 /turf/open/floor/prison{
 	icon_state = "ramptop"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "wEq" = (
 /obj/effect/hybrisa/decal/road/lines4,
 /obj/effect/hybrisa/decal/road/road_edge{
@@ -137356,7 +137454,7 @@
 /obj/item/tool/pickaxe/drill,
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/plating,
-/area/lv759/indoors/mining_outpost/south)
+/area/lv759/indoors/caves/south_east_caves)
 "wGk" = (
 /obj/effect/hybrisa/decal/road/road_edge{
 	icon_state = "road_edge_decal4"
@@ -137572,7 +137670,7 @@
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/road/lines3,
 /turf/open/hybrisa/street/asphalt,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "wIl" = (
 /turf/open/floor/prison{
 	dir = 8;
@@ -137647,7 +137745,7 @@
 	icon_state = "S"
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "wIL" = (
 /turf/open/floor/hybrisa/metal/zbrownfloor1{
 	dir = 1
@@ -137799,7 +137897,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "wKs" = (
 /obj/structure/machinery/colony_floodlight/street{
 	layer = 7;
@@ -137873,7 +137971,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "wKV" = (
 /obj/structure/window/framed/hybrisa/spaceport/cell,
 /turf/open/floor/plating,
@@ -138073,6 +138171,12 @@
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/mining_outpost/vehicledeployment)
+"wMI" = (
+/turf/open/floor/almayer{
+	allow_construction = 0;
+	icon_state = "plate"
+	},
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "wML" = (
 /obj/structure/barricade/handrail/kutjevo{
 	dir = 4;
@@ -138651,7 +138755,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "wSx" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -138688,7 +138792,7 @@
 /turf/open/auto_turf/sand_white/layer0{
 	icon = 'icons/turf/floors/hybrisa_dirt.dmi'
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "wSO" = (
 /obj/structure/platform/hybrisa/metalplatform6{
 	dir = 1
@@ -139272,7 +139376,7 @@
 	pixel_y = 28
 	},
 /turf/open/auto_turf/hybrisashale/layer2,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "wWZ" = (
 /obj/item/device/flashlight/lamp/tripod/grey,
 /obj/structure/prop/ice_colony/ground_wire{
@@ -139444,7 +139548,7 @@
 	icon_state = "W"
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "wYq" = (
 /obj/structure/machinery/colony_floodlight/street{
 	layer = 7;
@@ -139715,7 +139819,7 @@
 	},
 /obj/item/trash/cigbutt,
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "xaD" = (
 /obj/structure/closet/hydrant{
 	pixel_y = 32
@@ -139743,9 +139847,6 @@
 	icon_state = "red"
 	},
 /area/lv759/indoors/colonial_marshals/armory_foyer)
-"xaN" = (
-/turf/closed/wall/wood,
-/area/lv759/indoors/mining_outpost/south)
 "xaR" = (
 /obj/structure/closet/crate/trashcart{
 	desc = "A heavy, metal foodcart with wheels.";
@@ -140080,7 +140181,7 @@
 /turf/open/floor/almayer{
 	icon_state = "cargo_arrow"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "xdw" = (
 /turf/closed/wall/hybrisa/colony/engineering/reinforced,
 /area/lv759/indoors/garage_managersoffice)
@@ -140396,7 +140497,7 @@
 /obj/item/clothing/head/soft/grey,
 /obj/structure/prop/hybrisa/misc/graffiti/graffiti1,
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "xgw" = (
 /obj/structure/closet/secure_closet/security,
 /obj/item/clothing/under/marine/veteran/pmc/corporate,
@@ -140428,7 +140529,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "xgE" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 4
@@ -141005,7 +141106,7 @@
 /turf/closed/wall/r_wall/bunker{
 	name = "reinforced metal wall"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "xmu" = (
 /turf/open/floor/strata{
 	dir = 8;
@@ -141541,6 +141642,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/blood/gibs/body,
+/obj/structure/blocker/invisible_wall,
 /turf/open/shuttle{
 	icon_state = "rasputin14"
 	},
@@ -141637,7 +141739,7 @@
 /turf/open/floor/prison{
 	icon_state = "ramptop"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "xrA" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/multimonitorsmall_off,
 /turf/closed/wall/hybrisa/colony,
@@ -141905,7 +142007,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "xto" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/prop/hybrisa/fakeplatforms/platform1,
@@ -142442,7 +142544,7 @@
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "xwt" = (
 /obj/structure/bedsheetbin,
 /obj/item/clothing/under/blackskirt,
@@ -142536,7 +142638,7 @@
 	dir = 8;
 	icon_state = "ramptop"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "xwV" = (
 /obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
 	dir = 1
@@ -142778,7 +142880,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/lv759/indoors/mining_outpost/south)
+/area/lv759/indoors/caves/south_east_caves)
 "xza" = (
 /obj/item/stack/rods,
 /turf/open/floor/plating{
@@ -143155,7 +143257,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "xBB" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/hybrisa/decal/dirt,
@@ -143405,7 +143507,7 @@
 /obj/structure/platform_decoration/hybrisa/metalplatformdeco6,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/hybrisashale/layer1,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "xDn" = (
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/hybrisa/tile/asteroidwarning_bigtile,
@@ -143786,7 +143888,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "xFX" = (
 /obj/structure/platform_decoration{
 	dir = 1
@@ -143850,7 +143952,7 @@
 	dir = 1;
 	icon_state = "cell_stripe"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "xGH" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -143910,7 +144012,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance_north)
 "xGW" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mgibbl4"
@@ -144067,7 +144169,7 @@
 /area/lv759/outdoors/landing_zone_2)
 "xIo" = (
 /turf/open/floor/hybrisa/tile/cementflat,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "xIq" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_25"
@@ -145070,7 +145172,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "xSu" = (
 /obj/item/trash/cigbutt{
 	pixel_x = -10;
@@ -145123,7 +145225,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "xSR" = (
 /turf/open/floor/hybrisa/carpet/carpetbluedeco,
 /area/lv759/indoors/apartment/westbedrooms)
@@ -145289,9 +145391,6 @@
 "xUM" = (
 /turf/closed/wall/hybrisa/colony,
 /area/lv759/indoors/bar/bathroom)
-"xUN" = (
-/turf/open/auto_turf/hybrisashale/layer1,
-/area/lv759/indoors/mining_outpost/south)
 "xUO" = (
 /obj/structure/platform_decoration/hybrisa/engineer_corner{
 	dir = 8
@@ -145446,7 +145545,7 @@
 	dir = 1
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "xWa" = (
 /obj/effect/hybrisa/decal/dirt,
 /obj/effect/decal/warning_stripes{
@@ -145930,7 +146029,7 @@
 	allow_construction = 0;
 	icon_state = "plate"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "yaE" = (
 /obj/structure/prop/hybrisa/containersextended/blackwyright,
 /turf/open/floor/strata{
@@ -146680,7 +146779,7 @@
 	dir = 9;
 	icon_state = "darkbrown2"
 	},
-/area/whiskey_outpost/inside/caves)
+/area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "yhz" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/flora/pottedplant{
@@ -147355,7 +147454,7 @@
 	},
 /obj/effect/hybrisa/decal/road/lines5,
 /turf/open/hybrisa/street/asphalt,
-/area/whiskey_outpost/inside/caves)
+/area/lv759/outdoors/landing_zone_2)
 "ylA" = (
 /obj/structure/sign/nosmoking_1,
 /turf/closed/wall/hybrisa/colony/reinforced,
@@ -154310,7 +154409,7 @@ nXc
 gKu
 jWH
 oPE
-cWT
+rqK
 sRE
 jDl
 adV
@@ -169721,7 +169820,7 @@ oYd
 prc
 prc
 prc
-oYd
+prc
 rHL
 oYd
 unn
@@ -169972,8 +170071,8 @@ oYd
 prc
 prc
 prc
-oYd
-oYd
+prc
+prc
 oYd
 unn
 unn
@@ -170224,9 +170323,9 @@ prc
 prc
 prc
 prc
+prc
+prc
 oYd
-nBd
-unn
 unn
 unn
 unn
@@ -170476,10 +170575,10 @@ prc
 prc
 prc
 prc
-oYd
-unn
-unn
-unn
+prc
+prc
+prc
+rHL
 unn
 unn
 unn
@@ -170728,10 +170827,10 @@ oYd
 prc
 prc
 prc
+prc
+prc
+rHL
 oYd
-unn
-unn
-unn
 unn
 unn
 unn
@@ -170980,10 +171079,10 @@ rHL
 rHL
 prc
 prc
+prc
+prc
+prc
 oYd
-rHL
-unn
-unn
 unn
 unn
 unn
@@ -171231,11 +171330,11 @@ aJN
 oYd
 vQc
 prc
-prc
+oYd
+oYd
 prc
 oYd
-unn
-unn
+rHL
 unn
 unn
 unn
@@ -171487,8 +171586,8 @@ prc
 prc
 oYd
 oYd
-unn
-unn
+prc
+rHL
 unn
 unn
 unn
@@ -171735,12 +171834,12 @@ unn
 unn
 ejv
 prc
+oYd
+oYd
+oYd
 prc
-prc
-prc
+oYd
 rHL
-unn
-unn
 unn
 unn
 unn
@@ -171988,11 +172087,11 @@ aJN
 oYd
 oYd
 prc
+oYd
+prc
 prc
 prc
 oYd
-unn
-unn
 unn
 unn
 unn
@@ -172243,7 +172342,7 @@ rHL
 prc
 prc
 prc
-rHL
+prc
 oYd
 unn
 unn
@@ -185416,7 +185515,7 @@ oRp
 bhk
 jKA
 jKA
-mgG
+jWM
 aUv
 gUs
 jKA
@@ -196422,10 +196521,10 @@ myr
 keq
 gAD
 iXz
-wlL
+efy
 mcj
 wKU
-jhX
+qOY
 bxK
 bxK
 bxK
@@ -196678,7 +196777,7 @@ oyV
 fKF
 rIU
 tFN
-jhX
+qOY
 cOa
 qXH
 cky
@@ -196930,7 +197029,7 @@ abx
 oTX
 jlq
 tFN
-xIF
+izE
 cOa
 qXH
 cky
@@ -197177,11 +197276,11 @@ iYw
 myr
 leO
 vGk
-coS
+iAE
 tyx
-nIS
-nIS
-jhX
+xWk
+xWk
+qOY
 jZU
 cOa
 qXH
@@ -197417,7 +197516,7 @@ iUE
 ssY
 tRx
 aol
-scP
+wMI
 caH
 esQ
 esQ
@@ -197429,11 +197528,11 @@ kbL
 myr
 eeR
 iwm
-coS
+iAE
 vWL
 hdV
 hdV
-jhX
+qOY
 cQL
 hts
 hts
@@ -197522,7 +197621,7 @@ unn
 xyY
 aGF
 unn
-tSq
+rJq
 unn
 rzw
 rzw
@@ -197686,7 +197785,7 @@ tMG
 mEi
 wSK
 tFN
-xIF
+izE
 cOa
 qXH
 cky
@@ -197771,10 +197870,10 @@ unn
 unn
 unn
 unn
-kcO
-oSe
-jNn
-jNn
+xQj
+mzT
+rzw
+rzw
 rzw
 sBj
 rJq
@@ -197925,7 +198024,7 @@ kos
 tMG
 exv
 wIH
-xuZ
+nwX
 eck
 rky
 gXr
@@ -197938,7 +198037,7 @@ pDl
 kPL
 cZz
 tFN
-xIF
+izE
 cOa
 qXH
 cky
@@ -198024,9 +198123,9 @@ hcI
 hcI
 wFW
 tho
-jNn
+rzw
 jmQ
-xUN
+sBj
 sBj
 uww
 cuy
@@ -198178,7 +198277,7 @@ sjK
 sjK
 qYM
 xdr
-lkZ
+kPd
 ftN
 wbk
 fQA
@@ -198190,7 +198289,7 @@ oyV
 gqi
 rqM
 tFN
-xIF
+izE
 cOa
 qXH
 cky
@@ -198274,11 +198373,11 @@ dcT
 akn
 mhK
 lXj
-tDg
-coo
-kcO
-jNn
-jNn
+fAk
+gud
+xQj
+rzw
+rzw
 rzw
 xXU
 nZf
@@ -198439,7 +198538,7 @@ tMG
 tMG
 xmr
 iut
-nIS
+xWk
 bsC
 eOE
 vvW
@@ -198528,9 +198627,9 @@ oSe
 oSe
 nBs
 slI
-jNn
-coo
-xaN
+rzw
+gud
+rua
 unn
 unn
 rzw
@@ -198685,7 +198784,7 @@ ivV
 iek
 gPM
 eck
-kHh
+hzD
 mnZ
 hKf
 wSq
@@ -198782,7 +198881,7 @@ eTP
 weL
 hDt
 kQg
-xaN
+rua
 unn
 unn
 rET
@@ -198937,7 +199036,7 @@ kJd
 gbn
 hCN
 eck
-coS
+iAE
 hKf
 hKf
 hKf
@@ -199034,7 +199133,7 @@ jhN
 qdP
 ddV
 cTI
-xaN
+rua
 unn
 unn
 unn
@@ -199181,7 +199280,7 @@ hAf
 lLh
 aol
 xgT
-scP
+wMI
 sjK
 sjK
 qYM
@@ -199189,7 +199288,7 @@ vOe
 wjS
 nkd
 saV
-kHh
+hzD
 mcB
 umY
 umY
@@ -199433,15 +199532,15 @@ aol
 eRM
 qeG
 ulI
-scP
+wMI
 tMG
 xVY
 dhN
-xuZ
+nwX
 eck
 sUI
 eck
-coS
+iAE
 oFo
 tMG
 tMG
@@ -199685,7 +199784,7 @@ xCa
 eRM
 eRM
 xCa
-scP
+wMI
 kDp
 hRK
 trg
@@ -199702,7 +199801,7 @@ kbC
 fdR
 nxg
 tFN
-xIF
+izE
 cOa
 qXH
 ctL
@@ -199937,7 +200036,7 @@ aol
 gQp
 cdB
 vdc
-scP
+wMI
 haL
 lDz
 pqM
@@ -199951,10 +200050,10 @@ liv
 gAD
 pCF
 wvx
-ccp
+mkN
 cZz
 tFN
-xIF
+izE
 cOa
 qXH
 ctL
@@ -200206,7 +200305,7 @@ kGy
 kGy
 lHh
 tFN
-xIF
+izE
 cOa
 aXE
 cky
@@ -200445,17 +200544,17 @@ hoa
 iEh
 ksQ
 poj
-scP
+wMI
 gQZ
-scP
+wMI
 gQZ
 djP
 snM
 rEm
 tMG
 whU
-wlL
-bkD
+efy
+hJA
 hJr
 tFN
 cQL
@@ -200706,11 +200805,11 @@ snM
 dKb
 tMG
 wWX
-wlL
-uAC
+efy
+nRc
 riS
 tFN
-xIF
+izE
 cOa
 qXH
 cky
@@ -200953,16 +201052,16 @@ xSs
 hgI
 rKJ
 igh
-bMD
+kfB
 snM
 bbs
 tMG
-mSV
-hoR
+mrs
+vUV
 vsg
 jJl
 tFN
-xIF
+izE
 cOa
 qXH
 cky
@@ -201209,12 +201308,12 @@ ftF
 ifX
 eqW
 tMG
-aDJ
-aIc
+oeK
+oiE
 xDm
 kFs
 tFN
-jhX
+qOY
 cOa
 qXH
 cky
@@ -201450,22 +201549,22 @@ ory
 tfl
 spJ
 tRW
-kCR
+oLm
 wxp
 poj
-scP
+wMI
 wzl
 jjD
 hwz
-scP
+wMI
 nbt
 vsc
 tMG
-gbP
-uAC
+bWr
+nRc
 riS
 eAA
-jhX
+qOY
 jQZ
 jQZ
 jQZ
@@ -201690,9 +201789,9 @@ aSr
 kBJ
 aLt
 bkG
-tMG
-tMG
-tMG
+jlm
+jlm
+jlm
 usc
 bnF
 uEs
@@ -201942,7 +202041,7 @@ hcI
 hcI
 rpr
 drp
-tMG
+jlm
 pzQ
 jfP
 usc
@@ -201954,7 +202053,7 @@ btV
 tfl
 wrP
 wEl
-kCR
+oLm
 gWh
 xtn
 tky
@@ -202194,7 +202293,7 @@ unn
 hcI
 rkM
 gvD
-tMG
+jlm
 tyV
 gvD
 tfl
@@ -202446,30 +202545,30 @@ unn
 hcI
 rDP
 qQH
-tMG
-tMG
+jlm
+jlm
 kBA
-tfl
-tfl
-tfl
-tfl
-agc
-cTF
-tfl
-tMG
-tMG
-tMG
-tMG
+jlm
+jlm
+jlm
+jlm
+hej
 kBA
-tMG
-tMG
-tMG
-tMG
-tMG
+jlm
+jlm
+jlm
+jlm
+jlm
+kBA
+jlm
+jlm
+jlm
+jlm
+jlm
 drp
 hej
-tMG
-tMG
+jlm
+jlm
 jQZ
 nkD
 dnZ
@@ -202702,20 +202801,20 @@ mlj
 nyH
 jSI
 gvD
-xjm
-xjm
-fEz
+ruJ
+ruJ
+lNm
 gvD
 gvD
-xjm
+ruJ
 gvD
-xjm
+ruJ
 gvD
 kCg
 hkM
 gvD
 gvD
-fEz
+lNm
 uEg
 gvD
 gvD
@@ -203203,24 +203302,24 @@ hcI
 cfS
 eaN
 qso
-tMG
-tMG
-tMG
-tMG
-tMG
-tMG
+jlm
+jlm
+jlm
+jlm
+jlm
+jlm
 jzY
 xGU
 cGo
-tMG
-tMG
-tMG
-tMG
-tMG
-tMG
-tMG
-tMG
-tMG
+jlm
+jlm
+jlm
+jlm
+jlm
+jlm
+jlm
+jlm
+jlm
 uOy
 oKg
 jWq

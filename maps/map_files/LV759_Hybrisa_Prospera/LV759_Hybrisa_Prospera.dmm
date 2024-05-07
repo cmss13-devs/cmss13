@@ -599,7 +599,7 @@
 	},
 /area/lv759/indoors/meridian/meridian_foyer)
 "aeT" = (
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecalleft"
 	},
@@ -3070,7 +3070,8 @@
 	icon_state = "E"
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor5"
+	icon_state = "floor1";
+	dir = 1
 	},
 /area/lv759/indoors/power_plant/geothermal_generators)
 "aBI" = (
@@ -6290,7 +6291,7 @@
 	icon_state = "road_edge_decal3"
 	},
 /obj/effect/hybrisa/decal/road/lines3,
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
@@ -7281,7 +7282,7 @@
 	icon_state = "NE-out"
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor12"
+	icon_state = "floor1"
 	},
 /area/lv759/indoors/power_plant/geothermal_generators)
 "blz" = (
@@ -7342,9 +7343,9 @@
 /area/lv759/indoors/spaceport/docking_bay_1)
 "bmi" = (
 /obj/structure/surface/rack,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	layer = 3.3
@@ -10722,7 +10723,7 @@
 	layer = 2.5
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor0"
+	icon_state = "floor1"
 	},
 /area/lv759/indoors/power_plant/geothermal_generators)
 "bRB" = (
@@ -15714,9 +15715,9 @@
 	icon_state = "N"
 	},
 /obj/structure/surface/rack,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
 /turf/open/floor/corsat,
 /area/lv759/indoors/spaceport/engineering)
 "cIi" = (
@@ -16956,7 +16957,7 @@
 /area/lv759/oob)
 "cRA" = (
 /obj/structure/surface/rack,
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
@@ -18246,7 +18247,7 @@
 	},
 /area/lv759/indoors/hospital/patient_ward)
 "dcF" = (
-/obj/structure/reagent_dispensers/oxygentank,
+/obj/structure/reagent_dispensers/fueltank/oxygentank,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "whitegreen"
@@ -24599,7 +24600,7 @@
 /area/lv759/outdoors/landing_zone_2)
 "edL" = (
 /obj/structure/surface/table/almayer,
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /obj/item/tool/screwdriver{
 	pixel_x = 5;
 	pixel_y = -4
@@ -25779,8 +25780,8 @@
 /area/lv759/outdoors/colony_streets/south_east_street)
 "eof" = (
 /obj/structure/surface/rack,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
 /turf/open/floor/plating,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
 "eoj" = (
@@ -26772,7 +26773,7 @@
 /obj/structure/platform/strata/metal{
 	dir = 4
 	},
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /obj/structure/machinery/light/spot/blue{
 	dir = 8
 	},
@@ -27503,7 +27504,7 @@
 	pixel_x = -13;
 	pixel_y = 11
 	},
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "orange_edge"
@@ -27548,7 +27549,8 @@
 	dir = 8
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor11"
+	icon_state = "floor1";
+	dir = 4
 	},
 /area/lv759/indoors/power_plant/fusion_generators)
 "eEs" = (
@@ -31022,7 +31024,7 @@
 /area/lv759/indoors/hospital/reception)
 "fhR" = (
 /obj/structure/surface/rack,
-/obj/item/fuelCell{
+/obj/item/fuel_cell{
 	layer = 4
 	},
 /obj/effect/decal/warning_stripes{
@@ -31167,8 +31169,8 @@
 /area/lv759/indoors/colonial_marshals/holding_cells)
 "fjA" = (
 /obj/structure/surface/rack,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -32982,7 +32984,7 @@
 	icon_state = "E"
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor5"
+	icon_state = "floor1"
 	},
 /area/lv759/indoors/power_plant/geothermal_generators)
 "fyU" = (
@@ -41144,7 +41146,8 @@
 /area/lv759/indoors/hospital/virology)
 "gQW" = (
 /turf/open/shuttle/escapepod{
-	icon_state = "floor8"
+	icon_state = "floor1";
+	dir = 8
 	},
 /area/lv759/indoors/power_plant/fusion_generators)
 "gQX" = (
@@ -47229,7 +47232,8 @@
 	dir = 8
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor8"
+	icon_state = "floor1";
+	dir = 8
 	},
 /area/lv759/indoors/power_plant/fusion_generators)
 "hPC" = (
@@ -54542,7 +54546,7 @@
 /area/lv759/outdoors/colony_streets/north_west_street)
 "jbe" = (
 /obj/structure/machinery/fuelcell_recycler,
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /obj/structure/prop/hybrisa/misc/fake/wire/red{
 	pixel_x = 4
 	},
@@ -61133,7 +61137,8 @@
 	dir = 4
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor11"
+	icon_state = "floor1";
+	dir = 4
 	},
 /area/lv759/indoors/power_plant/fusion_generators)
 "kij" = (
@@ -66149,7 +66154,8 @@
 	dir = 8
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor11"
+	icon_state = "floor1";
+	dir = 4
 	},
 /area/lv759/indoors/power_plant/fusion_generators)
 "kVX" = (
@@ -67020,9 +67026,9 @@
 	icon_state = "N"
 	},
 /obj/structure/surface/rack,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
 /obj/structure/machinery/light/small/blue,
 /turf/open/floor/corsat,
 /area/lv759/indoors/spaceport/engineering)
@@ -72620,10 +72626,10 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/item/fuelCell{
+/obj/item/fuel_cell{
 	layer = 4
 	},
-/obj/item/fuelCell{
+/obj/item/fuel_cell{
 	layer = 4
 	},
 /turf/open/floor/strata{
@@ -72927,7 +72933,7 @@
 	layer = 5
 	},
 /obj/structure/cable/white{
-	color = "9f8700";
+	color = "#9f8700";
 	icon_state = "1-10";
 	layer = 5
 	},
@@ -74367,8 +74373,8 @@
 /area/lv759/outdoors/caveplateau)
 "mnY" = (
 /obj/structure/surface/rack,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
@@ -79185,7 +79191,8 @@
 	icon_state = "NE-out"
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor12"
+	icon_state = "floor1";
+	dir = 1
 	},
 /area/lv759/indoors/power_plant/geothermal_generators)
 "neL" = (
@@ -80385,9 +80392,9 @@
 /area/lv759/indoors/bar/entertainment)
 "nqE" = (
 /obj/structure/surface/rack,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
@@ -85360,7 +85367,8 @@
 	dir = 4
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor8"
+	icon_state = "floor1";
+	dir = 8
 	},
 /area/lv759/indoors/power_plant/fusion_generators)
 "ohi" = (
@@ -87753,7 +87761,7 @@
 	layer = 2.5
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor0"
+	icon_state = "floor1"
 	},
 /area/lv759/indoors/power_plant/geothermal_generators)
 "oAR" = (
@@ -88834,8 +88842,8 @@
 /area/lv759/indoors/power_plant/telecomms)
 "oJS" = (
 /obj/structure/surface/rack,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -89875,7 +89883,7 @@
 	},
 /area/lv759/indoors/landing_zone_2/kmcc_hub_cargo)
 "oRD" = (
-/obj/structure/reagent_dispensers/oxygentank,
+/obj/structure/reagent_dispensers/fueltank/oxygentank,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -95284,7 +95292,8 @@
 /area/lv759/indoors/weyyu_office/hallway)
 "pLd" = (
 /turf/open/shuttle/escapepod{
-	icon_state = "floor11"
+	icon_state = "floor1";
+	dir = 4
 	},
 /area/lv759/indoors/power_plant/fusion_generators)
 "pLg" = (
@@ -99291,7 +99300,7 @@
 	},
 /area/lv759/indoors/hospital/emergency_room)
 "qvb" = (
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "multi_tiles"
@@ -103855,7 +103864,7 @@
 /obj/structure/machinery/power/terminal{
 	dir = 4
 	},
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /turf/open/floor/plating/kutjevo,
 /area/whiskey_outpost/inside/caves)
 "rgN" = (
@@ -105785,7 +105794,7 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/docking_bay_1)
 "rxU" = (
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/lv759/outdoors/landing_zone_2)
 "rxY" = (
@@ -111987,7 +111996,7 @@
 	icon_state = "SE-out"
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor4"
+	icon_state = "floor1"
 	},
 /area/lv759/indoors/power_plant/geothermal_generators)
 "svV" = (
@@ -113316,7 +113325,7 @@
 	},
 /area/lv759/indoors/spaceport/docking_bay_2)
 "sGK" = (
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/strata{
 	dir = 4;
@@ -121441,9 +121450,9 @@
 /area/lv759/indoors/caves/central_caves)
 "tZA" = (
 /obj/structure/surface/rack,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	layer = 3.3
@@ -125705,10 +125714,10 @@
 /area/lv759/indoors/caves/north_caves)
 "uIo" = (
 /obj/structure/surface/rack,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
@@ -126311,7 +126320,7 @@
 	icon_state = "NW-out"
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor2"
+	icon_state = "floor1"
 	},
 /area/lv759/indoors/power_plant/geothermal_generators)
 "uND" = (
@@ -132290,7 +132299,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/spaceport/engineering)
 "vNG" = (
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/floor/strata{
 	icon_state = "multi_tiles"
@@ -133977,7 +133986,7 @@
 	icon_state = "NW-out"
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor2"
+	icon_state = "floor1"
 	},
 /area/lv759/indoors/power_plant/geothermal_generators)
 "wbC" = (
@@ -136744,7 +136753,8 @@
 	icon_state = "SE-out"
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor4"
+	icon_state = "floor1";
+	dir = 1
 	},
 /area/lv759/indoors/power_plant/geothermal_generators)
 "wAL" = (
@@ -143210,7 +143220,7 @@
 	},
 /area/lv759/outdoors/colony_streets/central_streets)
 "xBb" = (
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /turf/open/floor/strata{
 	dir = 4;
 	icon_state = "orange_edge"
@@ -145619,7 +145629,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/obj/item/fuelCell,
+/obj/item/fuel_cell,
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/prison{
 	icon_state = "ramptop"

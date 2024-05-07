@@ -87,3 +87,6 @@
       pred kitchen.
   - maptweak: Slightly expanded pred ship material storage area by moving bracer storage
       over to the left side of the ship.
+2024-05-07:
+  Zonespace, d.1.n.a. (original sprites), esselnek (new sprites):
+  - rscadd: Added the M540-B Armored Recon Carrier as a t1 intel purchase.

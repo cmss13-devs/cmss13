@@ -42,17 +42,15 @@
 		var/detected
 		for(var/DT in objects_to_detect)
 			if(istype(I, DT))
-				if((istype(I, /obj/item/storage/fancy/vials/random) && !I.contents.len) || (istype(I, /obj/item/reagent_container/glass/beaker/vial/random) && !I.reagents.total_volume))
+				if((istype(I, /obj/item/storage/fancy/vials/random) && !length(I.contents)) || (istype(I, /obj/item/reagent_container/glass/beaker/vial/random) && !I.reagents?.total_volume))
 					break //We don't need to ping already looted containers
-				else
-					detected = TRUE
+				detected = TRUE
 			if(I.contents)
 				for(var/obj/item/CI in I.contents)
 					if(istype(CI, DT))
-						if((istype(CI, /obj/item/storage/fancy/vials/random) && !CI.contents.len) || (istype(CI, /obj/item/reagent_container/glass/beaker/vial/random) && !CI.reagents.total_volume))
+						if((istype(CI, /obj/item/storage/fancy/vials/random) && !length(CI.contents)) || (istype(CI, /obj/item/reagent_container/glass/beaker/vial/random) && !CI.reagents?.total_volume))
 							break
-						else
-							detected = TRUE
+						detected = TRUE
 			if(human_user && detected)
 				show_blip(human_user, I)
 
@@ -72,10 +70,9 @@
 			for(var/obj/I in M.contents_twice())
 				for(var/DT in objects_to_detect)
 					if(istype(I, DT))
-						if((istype(I, /obj/item/storage/fancy/vials/random) && !I.contents.len) || (istype(I, /obj/item/reagent_container/glass/beaker/vial/random) && !I.reagents.total_volume))
+						if((istype(I, /obj/item/storage/fancy/vials/random) && !length(I.contents)) || (istype(I, /obj/item/reagent_container/glass/beaker/vial/random) && !I.reagents?.total_volume))
 							break
-						else
-							detected = TRUE
+						detected = TRUE
 
 		if(human_user && detected)
 			show_blip(human_user, M)

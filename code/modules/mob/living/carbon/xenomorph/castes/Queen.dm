@@ -545,7 +545,7 @@
 
 	for(var/turf/turf in surroundings) // In every tile, w check if there are weeds, that we can build there and if it can be obscured
 		var/obj/effect/alien/weeds/weeds = locate(/obj/effect/alien/weeds) in turf
-		if(check_alien_construction(turf, silent = TRUE) && weeds && !check_if_can_be_obscured(turf,xeno_egg))
+		if(check_alien_construction(turf, silent = TRUE) && weeds && !check_if_can_be_obscured(turf,xeno_egg) && !istype(get_area(turf), /area/interior))
 			if(weeds.weed_strength >= WEED_LEVEL_HIVE && weeds.linked_hive.hivenumber == hivenumber)
 				suitable_turfs.Add(turf)
 
@@ -553,7 +553,6 @@
 		to_chat(src, SPAN_XENONOTICE("There is no more suitable ground to plant eggs! Automatic planting disabled!"))
 		egg_autoplant = FALSE
 		return
-
 	if(!src.check_plasma(30)) // Skip this cycle if we don't have enough plasma
 		return
 
@@ -562,7 +561,7 @@
 
 	var/obj/effect/alien/egg/new_egg = new(pick(suitable_turfs), hivenumber)
 	playsound(get_turf(src), 'sound/effects/splat.ogg', 15, 1)
-	src.use_plasma(30)
+	use_plasma(30)
 	visible_message(SPAN_XENONOTICE("[src]'s ovipositor plants the [new_egg]."))
 
 /mob/living/carbon/xenomorph/queen/get_status_tab_items()

@@ -93,6 +93,10 @@
 			to_chat(src, SPAN_XENOWARNING("Our sister's psychic connection is cut off!"))
 			return
 
+		if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
+			to_chat(src, SPAN_XENOWARNING("We cannot do this in our current state!"))
+			return
+
 		if(observed_xeno && targetXeno && observed_xeno == targetXeno)
 			if(istype(targetXeno, /obj/effect/alien/resin/marker))
 				to_chat(src, SPAN_XENOWARNING("We are already watching that mark!"))

@@ -425,6 +425,10 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 				if(stat == DEAD || status_flags & FAKEDEATH)
 					holder2.alpha = 100
 					holder3.alpha = 100
+          
+		if(status_flags & CORRUPTED_ALLY)
+			holder4.color = "#80ff80"
+			holder4.icon_state = "hudalien_ally"
 
 		if(stat == DEAD || status_flags & FAKEDEATH)
 			if(revive_enabled)

@@ -12,6 +12,9 @@
 		return min
 	return round(clamp((marine_count/factor)+c, min, max))
 
+/proc/tank_crew_slot_formula(playercount)
+	return job_slot_formula(playercount, 1,1,1,1)
+
 /proc/medic_slot_formula(playercount)
 	return job_slot_formula(playercount,40,1,3,5)
 

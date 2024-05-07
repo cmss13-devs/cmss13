@@ -307,10 +307,10 @@ const ButtonInput = (props: InputProps) => {
 
     if (inInput) {
       input.value = currentValue || '';
-      try {
+      setTimeout(() => {
         input.focus();
         input.select();
-      } catch {}
+      }, 1);
     }
   }, [inInput, currentValue]);
 

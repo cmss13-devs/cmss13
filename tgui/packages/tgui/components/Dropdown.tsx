@@ -45,8 +45,6 @@ type Props = {
   menuWidth: string;
   /** Whether or not the arrow on the right hand side of the dropdown button is visible */
   noChevron: boolean;
-  /** Whether or not the scrollbar on the right hand side of the dropdown button is visible */
-  noScroll: boolean;
   /** Called when dropdown button is clicked */
   onClick: (event) => void;
   /** Dropdown renders over instead of below */
@@ -154,7 +152,11 @@ export function Dropdown(props: Props) {
       onClickOutside={() => setOpen(false)}
       placement={over ? 'top-start' : 'bottom-start'}
       content={
-        <div className="Layout" style={{ minWidth: menuWidth }} ref={innerRef}>
+        <div
+          className="Layout Dropdown__menu"
+          style={{ minWidth: menuWidth }}
+          ref={innerRef}
+        >
           {options.length === 0 && (
             <div className="Dropdown__menuentry">No options</div>
           )}

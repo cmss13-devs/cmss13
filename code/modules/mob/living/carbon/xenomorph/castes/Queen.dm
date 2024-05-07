@@ -541,10 +541,11 @@
 	var/list/turf/suitable_turfs = list()
 	// turfs within range and view
 	var/list/turf/surroundings = oview(egg_planting_range, src)
+	var/obj/effect/alien/egg/xeno_egg = /obj/effect/alien/egg // Placeholder var
 
-	for(var/turf/turf in surroundings)
+	for(var/turf/turf in surroundings) // In every tile, w check if there are weeds, that we can build there and if it can be obscured
 		var/obj/effect/alien/weeds/weeds = locate(/obj/effect/alien/weeds) in turf
-		if(check_alien_construction(turf, silent = TRUE) && weeds)
+		if(check_alien_construction(turf, silent = TRUE) && weeds && !check_if_can_be_obscured(turf,xeno_egg))
 			if(weeds.weed_strength >= WEED_LEVEL_HIVE && weeds.linked_hive.hivenumber == hivenumber)
 				suitable_turfs.Add(turf)
 
@@ -553,13 +554,16 @@
 		egg_autoplant = FALSE
 		return
 
+	if(!src.check_plasma(30)) // Skip this cycle if we don't have enough plasma
+		return
+
 	if(!do_after(src, 1 SECONDS, INTERRUPT_INCAPACITATED, BUSY_ICON_BUILD)) // mostly intended as a visual effect
 		return
 
-	var/obj/effect/alien/egg/newegg = new /obj/effect/alien/egg(pick(suitable_turfs), hivenumber)
+	var/obj/effect/alien/egg/new_egg = new(pick(suitable_turfs), hivenumber)
 	playsound(get_turf(src), 'sound/effects/splat.ogg', 15, 1)
-
-	visible_message(SPAN_XENONOTICE("[src]'s ovipositor plants the [newegg]."))
+	src.use_plasma(30)
+	visible_message(SPAN_XENONOTICE("[src]'s ovipositor plants the [new_egg]."))
 
 /mob/living/carbon/xenomorph/queen/get_status_tab_items()
 	. = ..()
@@ -868,6 +872,7 @@
 		/datum/action/xeno_action/activable/secrete_resin/remote/queen, //fifth macro
 		/datum/action/xeno_action/onclick/queen_tacmap,
 		/datum/action/xeno_action/onclick/eye,
+		/datum/action/xeno_action/onclick/egg_autoplant,
 	)
 
 	for(var/path in immobile_abilities)

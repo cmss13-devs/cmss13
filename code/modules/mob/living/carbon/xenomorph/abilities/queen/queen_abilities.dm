@@ -197,3 +197,14 @@
 /datum/action/xeno_action/activable/blockade/proc/handle_dismount_ovipositor(mob/living/carbon/xenomorph/queen/Q)
 	SIGNAL_HANDLER
 	hide_from(Q)
+
+/datum/action/xeno_action/onclick/egg_autoplant
+	name = "Toggle egg autoplanting"
+	action_icon_state = "retrieve_egg"
+	ability_name = "toggle egg autoplanting"
+	action_type = XENO_ACTION_TOGGLE
+
+/datum/action/xeno_action/onclick/egg_autoplant/give_to(mob/living/carbon/xenomorph/queen/Q)
+	. = ..()
+	if(!Q.ovipositor)
+		hide_from(Q)

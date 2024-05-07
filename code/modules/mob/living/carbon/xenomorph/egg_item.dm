@@ -84,20 +84,20 @@
 	playsound(T, 'sound/effects/splat.ogg', 15, 1)
 	qdel(src)
 
-/obj/item/xeno_egg/proc/plant_egg(mob/living/carbon/xenomorph/user, turf/T, proximity = TRUE)
+/obj/item/xeno_egg/proc/plant_egg(mob/living/carbon/xenomorph/user, turf/cur_turf, proximity = TRUE)
 	if(!proximity)
 		return // no message because usual behavior is not to show any
 	if(!user.hive)
 		to_chat(user, SPAN_XENOWARNING("Your hive cannot procreate."))
 		return
-	if(!user.check_alien_construction(T))
+	if(!user.check_alien_construction(cur_turf))
 		return
 	if(!user.check_plasma(30))
 		return
 
 	var/obj/effect/alien/weeds/hive_weeds
 	var/obj/effect/alien/weeds/any_weeds
-	for(var/obj/effect/alien/weeds/weed in T)
+	for(var/obj/effect/alien/weeds/weed in cur_turf)
 		if(weed.weed_strength >= WEED_LEVEL_HIVE && weed.linked_hive.hivenumber == hivenumber)
 			hive_weeds = weed
 			break
@@ -116,15 +116,14 @@
 		to_chat(user, SPAN_XENOWARNING("[src] can only be planted on [lowertext(hive.prefix)]hive weeds."))
 		return
 
-	if(istype(get_area(T), /area/interior))
+	if(istype(get_area(cur_turf), /area/interior))
 		to_chat(user, SPAN_XENOWARNING("[src] cannot be planted inside a vehicle."))
 		return
 
-	for(var/obj/object in T.contents)
-		var/obj/effect/alien/egg/xeno_egg = /obj/effect/alien/egg
-		if(object.layer > initial(xeno_egg.layer))
-			to_chat(user, SPAN_XENOWARNING("[src] cannot be planted below objects that would obscure it."))
-			return
+	var/obj/effect/alien/egg/xeno_egg = /obj/effect/alien/egg // Placeholder var
+	if(user.check_if_can_be_obscured(cur_turf, xeno_egg))
+		to_chat(user, SPAN_XENOWARNING("[src] cannot be planted below objects that would obscure it."))
+		return
 
 	user.visible_message(SPAN_XENONOTICE("[user] starts planting [src]."), SPAN_XENONOTICE("You start planting [src]."), null, 5)
 
@@ -135,19 +134,19 @@
 		plant_time = 10
 	if(!do_after(user, plant_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
-	if(!user.check_alien_construction(T))
+	if(!user.check_alien_construction(cur_turf))
 		return
 	if(!user.check_plasma(30))
 		return
 
-	for(var/obj/effect/alien/weeds/weed in T)
+	for(var/obj/effect/alien/weeds/weed in cur_turf)
 		if(weed.weed_strength >= WEED_LEVEL_HIVE || !needs_hive_weeds)
 			user.use_plasma(30)
 			var/obj/effect/alien/egg/newegg
 			if(weed.weed_strength >= WEED_LEVEL_HIVE)
-				newegg = new /obj/effect/alien/egg(T, hivenumber)
+				newegg = new /obj/effect/alien/egg(cur_turf, hivenumber)
 			else if(weed.weed_strength >= WEED_LEVEL_STANDARD)
-				newegg = new /obj/effect/alien/egg/carrier_egg(T,hivenumber, user)
+				newegg = new /obj/effect/alien/egg/carrier_egg(cur_turf, hivenumber, user)
 			else
 				to_chat(user, SPAN_XENOWARNING("[src] can't be planted on these weeds."))
 				return
@@ -155,7 +154,7 @@
 			newegg.flags_embryo = flags_embryo
 
 			newegg.add_hiddenprint(user)
-			playsound(T, 'sound/effects/splat.ogg', 15, 1)
+			playsound(cur_turf, 'sound/effects/splat.ogg', 15, 1)
 			qdel(src)
 			break
 

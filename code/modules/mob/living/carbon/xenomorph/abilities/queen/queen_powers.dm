@@ -380,8 +380,6 @@
 		if(length(hive.personal_allies))
 			options += "Remove Personal Ally"
 			options += "Clear Personal Allies"
-	if(queen_manager.ovipositor)
-		options += "Toggle Egg Autoplanting"
 
 	var/choice = tgui_input_list(queen_manager, "Manage The Hive", "Hive Management",  options, theme="hive_status")
 	switch(choice)
@@ -401,8 +399,6 @@
 			remove_personal_ally()
 		if("Clear Personal Allies")
 			clear_personal_allies()
-		if("Toggle Egg Autoplanting")
-			queen_manager.ovi_egg_autoplant()
 
 /datum/action/xeno_action/onclick/manage_hive/proc/add_personal_ally()
 	var/mob/living/carbon/xenomorph/queen/user_xeno = owner
@@ -858,11 +854,6 @@
 	hive.tacmap.tgui_interact(src)
 
 /mob/living/carbon/xenomorph/queen/proc/ovi_egg_autoplant()
-	set name = "Toggle Egg Autoplanting"
-	set desc = "Toggle if eggs automatically plant within a 5 tile radius"
-	set category = "Alien"
-	
-
 	if(!check_state())
 		return FALSE
 	if(ovipositor) // check if we are ovi, then toggle
@@ -872,3 +863,7 @@
 		else
 			egg_autoplant = TRUE
 			to_chat(src, SPAN_XENONOTICE("You enable automatic egg planting."))
+
+/datum/action/xeno_action/onclick/egg_autoplant/use_ability()
+	var/mob/living/carbon/xenomorph/queen/queen = owner
+	queen.ovi_egg_autoplant()

@@ -42,6 +42,7 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 	var/atom/movable/screen/map_view/cam_screen
 	var/atom/movable/screen/background/cam_background
 	var/map_name
+	var/list/cam_plane_masters
 
 	var/list/ordered_area = list()
 	var/list/launch_list = list()
@@ -132,17 +133,37 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 	map_name = "admin_supplypod_bay_[REF(src)]_map"
 	// Initialize map objects
 	cam_screen = new
+	cam_screen.icon = null
 	cam_screen.name = "screen"
 	cam_screen.assigned_map = map_name
 	cam_screen.del_on_map_removal = TRUE
 	cam_screen.screen_loc = "[map_name]:1,1"
+	cam_screen.appearance_flags |= TILE_BOUND
 
 	cam_background = new
 	cam_background.assigned_map = map_name
 	cam_background.del_on_map_removal = TRUE
+	cam_background.appearance_flags |= TILE_BOUND
+
+	cam_plane_masters = list()
+	for(var/plane in subtypesof(/atom/movable/screen/plane_master) - /atom/movable/screen/plane_master/blackness)
+		var/atom/movable/screen/plane_master/instance = new plane()
+		add_plane(instance)
+
 	refresh_view()
 	holder.register_map_obj(cam_screen)
 	holder.register_map_obj(cam_background)
+	for(var/plane_id in cam_plane_masters)
+		holder.register_map_obj(cam_plane_masters[plane_id])
+
+/datum/admin_podlauncher/proc/add_plane(atom/movable/screen/plane_master/instance)
+	instance.assigned_map = map_name
+	instance.appearance_flags |= TILE_BOUND
+	instance.del_on_map_removal = FALSE
+	if(instance.blend_mode_override)
+		instance.blend_mode = instance.blend_mode_override
+	instance.screen_loc = "[map_name]:CENTER"
+	cam_plane_masters["[instance.plane]"] = instance
 
 /datum/admin_podlauncher/proc/refresh_view()
 	switch(tab_index)
@@ -432,4 +453,5 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 	user.client?.clear_map(map_name)
 	QDEL_NULL(cam_screen)
 	QDEL_NULL(cam_background)
+	QDEL_LIST_ASSOC_VAL(cam_plane_masters)
 	qdel(src)

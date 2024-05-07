@@ -2,7 +2,7 @@ import './styles/main.scss';
 
 import { createRoot, Root } from 'react-dom/client';
 
-import { TguiSay } from './interfaces/TguiSay';
+import { TguiSay } from './TguiSay';
 
 let reactRoot: Root | null = null;
 

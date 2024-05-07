@@ -1,11 +1,8 @@
-/** Radio channels */
-export const CHANNELS = ['Say', 'Comms', 'Me', 'OOC', 'LOOC'] as const;
-
 /** Window sizes in pixels */
 export enum WINDOW_SIZES {
   small = 30,
-  medium = 50,
-  large = 70,
+  medium = 45,
+  large = 60,
   width = 380,
 }
 

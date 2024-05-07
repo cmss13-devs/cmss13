@@ -5,8 +5,8 @@
  */
 
 import { KEY_ENTER, KEY_ESCAPE, KEY_SPACE } from 'common/keycodes';
-import { classes, pureComponentHooks } from 'common/react';
-import { Component, createRef } from 'inferno';
+import { classes } from 'common/react';
+import { Component, createRef } from 'react';
 import { createLogger } from '../logging';
 import { Box, computeBoxClassName, computeBoxProps } from './Box';
 import { Icon } from './Icon';
@@ -134,8 +134,6 @@ export const Button = (props) => {
   return buttonContent;
 };
 
-Button.defaultHooks = pureComponentHooks;
-
 export const ButtonCheckbox = (props) => {
   const { checked, ...rest } = props;
   return (
@@ -172,6 +170,9 @@ export class ButtonConfirm extends Component {
     } else {
       window.removeEventListener('click', this.handleClick);
     }
+    if (this.props.onConfirmChange) {
+      this.props.onConfirmChange(clickedOnce);
+    }
   }
 
   render() {
@@ -183,6 +184,7 @@ export class ButtonConfirm extends Component {
       color,
       content,
       onClick,
+      onConfirmChange,
       ...rest
     } = this.props;
     return (
@@ -273,7 +275,7 @@ export class ButtonInput extends Component {
           className="NumberInput__input"
           style={{
             'display': !this.state.inInput ? 'none' : undefined,
-            'text-align': 'left',
+            'textAlign': 'left',
           }}
           onBlur={(e) => {
             if (!this.state.inInput) {

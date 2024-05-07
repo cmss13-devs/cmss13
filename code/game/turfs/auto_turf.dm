@@ -75,6 +75,19 @@
 			if(bleed_layer)
 				addtimer(CALLBACK(src, PROC_REF(changing_layer), 0), 1)
 
+/turf/open/auto_turf/scorch(heat_level)
+	if(bleed_layer <= 0)
+		return
+	switch(heat_level)
+		if(1 to 19)
+			var/new_bleed_layer = min(0, bleed_layer - 1)
+			addtimer(CALLBACK(src, PROC_REF(changing_layer), new_bleed_layer), 1)
+		if(20 to 39)
+			var/new_bleed_layer = max(bleed_layer - 2, 0)
+			addtimer(CALLBACK(src, PROC_REF(changing_layer), new_bleed_layer), 1)
+		if(40 to INFINITY)
+			addtimer(CALLBACK(src, PROC_REF(changing_layer), 0), 1)
+
 
 //Actual auto-turfs now
 
@@ -146,6 +159,7 @@
 
 //Ice colony snow
 /turf/open/auto_turf/snow
+	scorchable = TRUE
 	name = "auto-snow"
 	icon = 'icons/turf/floors/snow2.dmi'
 	icon_state = "snow_0"
@@ -198,7 +212,8 @@
 
 	while(bleed_layer > 0)
 		xeno_attack_delay(M)
-		if(!do_after(M, 12, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+		var/size = max(M.mob_size, 1)
+		if(!do_after(M, 12/size, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 			return XENO_NO_DELAY_ACTION
 
 		if(!bleed_layer)

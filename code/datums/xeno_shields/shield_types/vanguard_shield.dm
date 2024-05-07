@@ -50,7 +50,6 @@
 	if (!istype(linked_xeno))
 		return
 
-	if (linked_xeno.mutation_type == PRAETORIAN_VANGUARD)
-		var/datum/behavior_delegate/praetorian_vanguard/BD = linked_xeno.behavior_delegate
-		if (istype(BD))
-			BD.last_combat_time = world.time
+	var/datum/behavior_delegate/praetorian_vanguard/behavior = linked_xeno.behavior_delegate
+	if (istype(behavior))
+		behavior.last_combat_time = world.time

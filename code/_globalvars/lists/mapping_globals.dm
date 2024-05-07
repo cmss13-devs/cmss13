@@ -53,6 +53,7 @@ GLOBAL_LIST_EMPTY(teleporter_landmarks)
 
 GLOBAL_LIST_INIT(cardinals, list(NORTH, SOUTH, EAST, WEST))
 GLOBAL_LIST_EMPTY(nightmare_landmarks)
+GLOBAL_LIST_EMPTY(nightmare_landmark_tags_removed)
 
 GLOBAL_LIST_EMPTY(ship_areas)
 

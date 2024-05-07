@@ -170,9 +170,9 @@
 	else
 		switch(W.damtype)
 			if("fire")
-				health -= W.force
+				health -= W.force * W.demolition_mod
 			if("brute")
-				health -= W.force * 0.1
+				health -= W.force * W.demolition_mod * 0.1
 		healthcheck(1, 1, user, W)
 		..()
 

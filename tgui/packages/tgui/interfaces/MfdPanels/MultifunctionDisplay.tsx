@@ -2,7 +2,7 @@ import { useBackend } from '../../backend';
 import { Button, Flex } from '../../components';
 import { CrtPanel } from '../CrtPanel';
 import { Table, TableCell, TableRow } from '../../components/Table';
-import { InfernoNode } from 'inferno';
+import { ReactNode } from 'react';
 import { ButtonProps } from './types';
 import { classes } from 'common/react';
 
@@ -12,12 +12,12 @@ export interface MfdProps {
   readonly leftButtons?: Array<ButtonProps>;
   readonly rightButtons?: Array<ButtonProps>;
   readonly bottomButtons?: Array<ButtonProps>;
-  readonly children?: InfernoNode;
+  readonly children?: ReactNode;
   readonly otherPanelStateId?: string; // eslint-disable-line
 }
 
-export const MfdButton = (props: ButtonProps, context) => {
-  const { act } = useBackend(context);
+export const MfdButton = (props: ButtonProps) => {
+  const { act } = useBackend();
   return (
     <Button
       onClick={() => {
@@ -39,10 +39,9 @@ export const EmptyMfdButton = () => {
   return <MfdButton />;
 };
 
-export const HorizontalPanel = (
-  props: { readonly buttons: Array<ButtonProps> },
-  context
-) => {
+export const HorizontalPanel = (props: {
+  readonly buttons: Array<ButtonProps>;
+}) => {
   return (
     <Flex
       justify="center"
@@ -57,10 +56,9 @@ export const HorizontalPanel = (
   );
 };
 
-export const VerticalPanel = (
-  props: { readonly buttons?: Array<ButtonProps> },
-  context
-) => {
+export const VerticalPanel = (props: {
+  readonly buttons?: Array<ButtonProps>;
+}) => {
   return (
     <Flex
       direction="column"

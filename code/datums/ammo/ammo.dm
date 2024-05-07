@@ -84,7 +84,7 @@
 	/// that will be given to a projectile with the current ammo datum
 	var/list/list/traits_to_give
 
-	var/flamer_reagent_type = /datum/reagent/napalm/ut
+	var/flamer_reagent_id = "utnapthal"
 
 	/// The flicker that plays when a bullet hits a target. Usually red. Can be nulled so it doesn't show up at all.
 	var/hit_effect_color = "#FF0000"
@@ -230,6 +230,7 @@
 		P.generate_bullet(GLOB.ammo_list[bonus_projectiles_type]) //No bonus damage or anything.
 		P.accuracy = round(P.accuracy * original_P.accuracy/initial(original_P.accuracy)) //if the gun changes the accuracy of the main projectile, it also affects the bonus ones.
 		original_P.give_bullet_traits(P)
+		P.bonus_projectile_check = 2 //It's a bonus projectile!
 
 		var/total_scatter_angle = P.scatter
 		final_angle += rand(-total_scatter_angle, total_scatter_angle)
@@ -237,11 +238,12 @@
 
 		P.fire_at(new_target, original_P.firer, original_P.shot_from, P.ammo.max_range, P.ammo.shell_speed, original_P.original) //Fire!
 
-/datum/ammo/proc/drop_flame(turf/T, datum/cause_data/cause_data) // ~Art updated fire 20JAN17
-	if(!istype(T))
+/datum/ammo/proc/drop_flame(turf/turf, datum/cause_data/cause_data) // ~Art updated fire 20JAN17
+	if(!istype(turf))
 		return
-	if(locate(/obj/flamer_fire) in T)
+	if(locate(/obj/flamer_fire) in turf)
 		return
 
-	var/datum/reagent/R = new flamer_reagent_type()
-	new /obj/flamer_fire(T, cause_data, R)
+	var/datum/reagent/chemical = GLOB.chemical_reagents_list[flamer_reagent_id]
+
+	new /obj/flamer_fire(turf, cause_data, chemical)

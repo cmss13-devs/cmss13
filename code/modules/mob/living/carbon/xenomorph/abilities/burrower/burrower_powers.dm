@@ -126,7 +126,7 @@
 		return
 
 	var/area/A = get_area(T)
-	if(A.flags_area & AREA_NOTUNNEL)
+	if(A.flags_area & AREA_NOTUNNEL || get_dist(src, T) > 15)
 		to_chat(src, SPAN_XENOWARNING("There's no way to tunnel over there."))
 		return
 
@@ -156,7 +156,7 @@
 		addtimer(CALLBACK(src, PROC_REF(process_tunnel), T), 1 SECONDS)
 
 /mob/living/carbon/xenomorph/proc/do_tunnel(turf/T)
-	to_chat(src, SPAN_NOTICE("We tunnel to your destination."))
+	to_chat(src, SPAN_NOTICE("We tunnel to the destination."))
 	anchored = FALSE
 	forceMove(T)
 	burrow_off()

@@ -18,8 +18,8 @@ const PAGES = [
   },
 ];
 
-export const TacmapAdminPanel = (props, context) => {
-  const { data } = useBackend(context);
+export const TacmapAdminPanel = (props) => {
+  const { data } = useBackend();
   const {
     uscm_map,
     xeno_map,
@@ -37,7 +37,7 @@ export const TacmapAdminPanel = (props, context) => {
     last_update_time,
   } = data;
 
-  const [pageIndex, setPageIndex] = useLocalState(context, 'pageIndex', 0);
+  const [pageIndex, setPageIndex] = useLocalState('pageIndex', 0);
 
   const PageComponent = PAGES[pageIndex].component();
 
@@ -95,8 +95,8 @@ export const TacmapAdminPanel = (props, context) => {
   );
 };
 
-const FactionPage = (props, context) => {
-  const { act } = useBackend(context);
+const FactionPage = (props) => {
+  const { act } = useBackend();
   const { svg, ckeys, names, times, selected_map, is_uscm } = props;
 
   return (

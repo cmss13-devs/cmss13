@@ -211,7 +211,39 @@
 	icon_state = "containment_window"
 	opacity = FALSE
 
+//AI Core
 
+/turf/closed/wall/almayer/aicore
+	walltype = WALL_AICORE
+	icon = 'icons/turf/walls/almayer_aicore.dmi'
+	icon_state = "aiwall"
+
+/turf/closed/wall/almayer/aicore/reinforced
+	name = "reinforced hull"
+	damage_cap = HEALTH_WALL_REINFORCED
+	icon_state = "reinforced"
+
+/turf/closed/wall/almayer/aicore/hull
+	name = "ultra reinforced hull"
+	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas"
+	hull = TRUE
+	icon_state = "hull"
+
+/turf/closed/wall/almayer/aicore/white
+	walltype = WALL_AICORE
+	icon = 'icons/turf/walls/almayer_aicore_white.dmi'
+	icon_state = "aiwall"
+
+/turf/closed/wall/almayer/aicore/white/reinforced
+	name = "reinforced hull"
+	damage_cap = HEALTH_WALL_REINFORCED
+	icon_state = "reinforced"
+
+/turf/closed/wall/almayer/aicore/white/hull
+	name = "ultra reinforced hull"
+	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas"
+	hull = TRUE
+	icon_state = "hull"
 
 
 //Sulaco walls.
@@ -720,7 +752,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/should_track_build = FALSE
 	var/datum/cause_data/construction_data
-	flags_turf = TURF_ORGANIC
+	turf_flags = TURF_ORGANIC
 
 /turf/closed/wall/resin/Initialize(mapload)
 	. = ..()
@@ -766,6 +798,14 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 	damage_cap = HEALTH_WALL_XENO_THICK
 	icon_state = "thickresin"
 	walltype = WALL_THICKRESIN
+
+/turf/closed/wall/resin/tutorial
+	name = "tutorial resin wall"
+	desc = "Weird slime solidified into a wall. Remarkably resilient."
+	hivenumber = XENO_HIVE_TUTORIAL
+
+/turf/closed/wall/resin/tutorial/attack_alien(mob/living/carbon/xenomorph/xeno)
+	return
 
 /turf/closed/wall/resin/membrane
 	name = "resin membrane"
@@ -1004,7 +1044,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 /obj/structure/alien/movable_wall/attackby(obj/item/W, mob/living/user)
 	if(!(W.flags_item & NOBLUDGEON))
 		user.animation_attack_on(src)
-		take_damage(W.force*RESIN_MELEE_DAMAGE_MULTIPLIER, user)
+		take_damage(W.force*RESIN_MELEE_DAMAGE_MULTIPLIER*W.demolition_mod, user)
 		playsound(src, "alien_resin_break", 25)
 	else
 		return attack_hand(user)
@@ -1240,7 +1280,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/wall/indestructible/splashscreen)
 
 	if(!(W.flags_item & NOBLUDGEON))
 		user.animation_attack_on(src)
-		take_damage(W.force*RESIN_MELEE_DAMAGE_MULTIPLIER, user)
+		take_damage(W.force*RESIN_MELEE_DAMAGE_MULTIPLIER*W.demolition_mod, user)
 		playsound(src, "alien_resin_break", 25)
 	else
 		return attack_hand(user)

@@ -15,6 +15,21 @@
 	icon_state = "black"
 	mouse_opacity = FALSE
 
+/// Cordon turf marking z-level boundaries and surrounding reservations
+/turf/closed/cordon
+	name = "world border"
+	icon = 'icons/turf/shuttle.dmi'
+	icon_state = "pclosed"
+	layer = ABOVE_TURF_LAYER
+	baseturfs = /turf/closed/cordon
+
+/// Used as placeholder turf when something went really wrong, as per /tg/ string lists handler
+/turf/closed/cordon/debug
+	name = "debug turf"
+	desc = "This turf shouldn't be here and probably result of incorrect turf replacement. Adminhelp about it or report it in an issue."
+	color = "#660088"
+	baseturfs = /turf/closed/cordon/debug
+
 /turf/closed/mineral //mineral deposits
 	name = "Rock"
 	icon = 'icons/turf/walls/walls.dmi'

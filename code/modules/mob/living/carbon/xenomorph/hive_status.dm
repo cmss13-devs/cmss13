@@ -12,7 +12,7 @@
 	var/egg_planting_range = 15
 	var/slashing_allowed = XENO_SLASH_ALLOWED //This initial var allows the queen to turn on or off slashing. Slashing off means harm intent does much less damage.
 	var/construction_allowed = NORMAL_XENO //Who can place construction nodes for special structures
-	var/destruction_allowed = XENO_LEADER //Who can destroy special structures
+	var/destruction_allowed = NORMAL_XENO //Who can destroy special structures
 	var/unnesting_allowed = TRUE
 	var/hive_orders = "" //What orders should the hive have
 	var/color = null
@@ -46,7 +46,6 @@
 	var/allowed_nest_distance = 15 //How far away do we allow nests from an ovied Queen. Default 15 tiles.
 	var/obj/effect/alien/resin/special/pylon/core/hive_location = null //Set to ref every time a core is built, for defining the hive location
 
-	var/datum/mutator_set/hive_mutators/mutators = new
 	var/tier_slot_multiplier = 1
 	var/larva_gestation_multiplier = 1
 	var/bonus_larva_spawn_chance = 1
@@ -54,7 +53,6 @@
 	/// how many burrowed is going to spawn during larva surge
 	var/hijack_burrowed_left = 0
 
-	var/ignore_slots = FALSE
 	var/dynamic_evolution = TRUE
 	var/evolution_rate = 3 // Only has use if dynamic_evolution is false
 	var/evolution_bonus = 0
@@ -143,7 +141,6 @@
 	var/static/list/evolution_menu_images
 
 /datum/hive_status/New()
-	mutators.hive = src
 	hive_ui = new(src)
 	mark_ui = new(src)
 	faction_ui = new(src)
@@ -279,7 +276,6 @@
 
 /datum/hive_status/proc/set_living_xeno_queen(mob/living/carbon/xenomorph/queen/queen)
 	if(!queen)
-		mutators.reset_mutators()
 		SStracking.delete_leader("hive_[hivenumber]")
 		SStracking.stop_tracking("hive_[hivenumber]", living_xeno_queen)
 		SShive_status.wait = 10 SECONDS
@@ -293,10 +289,8 @@
 	recalculate_hive()
 
 /datum/hive_status/proc/recalculate_hive()
-	if (!living_xeno_queen)
-		queen_leader_limit = 0 //No leaders for a Hive without a Queen!
-	else
-		queen_leader_limit = 4 + mutators.leader_count_boost
+	//No leaders for a Hive without a Queen!
+	queen_leader_limit = living_xeno_queen ? 4 : 0
 
 	if (xeno_leader_list.len > queen_leader_limit)
 		var/diff = 0
@@ -309,11 +303,6 @@
 		for (var/i in xeno_leader_list.len + 1 to queen_leader_limit)
 			open_xeno_leader_positions += i
 			xeno_leader_list.len++
-
-
-	tier_slot_multiplier = mutators.tier_slot_multiplier
-	larva_gestation_multiplier = mutators.larva_gestation_multiplier
-	bonus_larva_spawn_chance = mutators.bonus_larva_spawn_chance
 
 	hive_ui.update_all_data()
 
@@ -524,7 +513,7 @@
 			xeno_name = "Larva ([X.nicknumber])"
 		xenos["[X.nicknumber]"] = list(
 			"name" = xeno_name,
-			"strain" = X.mutation_type,
+			"strain" = X.get_strain_name(),
 			"ref" = "\ref[X]"
 		)
 
@@ -990,6 +979,7 @@
 	need_round_end_check = TRUE
 
 	var/list/defectors = list()
+	var/list/datum/weakref/personal_allies = list()
 
 /datum/hive_status/corrupted/add_xeno(mob/living/carbon/xenomorph/xeno)
 	. = ..()
@@ -1062,7 +1052,6 @@
 	allow_no_queen_actions = TRUE
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
-	ignore_slots = TRUE
 	latejoin_burrowed = FALSE
 
 /datum/hive_status/forsaken
@@ -1077,12 +1066,34 @@
 	allow_no_queen_actions = TRUE
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
-	ignore_slots = TRUE
 	latejoin_burrowed = FALSE
 
 	need_round_end_check = TRUE
 
 /datum/hive_status/forsaken/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
+	return FALSE
+
+/datum/hive_status/tutorial
+	name = "Tutorial Hive"
+	reporting_id = "tutorial"
+	hivenumber = XENO_HIVE_TUTORIAL
+	prefix = "Inquisitive "
+	latejoin_burrowed = FALSE
+
+	dynamic_evolution = FALSE
+	allow_queen_evolve = TRUE
+	evolution_without_ovipositor = FALSE
+	allow_no_queen_actions = TRUE
+
+	///Can have many tutorials going at once.
+	hive_structures_limit = list(
+		XENO_STRUCTURE_CORE = 999,
+		XENO_STRUCTURE_CLUSTER = 999,
+		XENO_STRUCTURE_EGGMORPH = 999,
+		XENO_STRUCTURE_RECOVERY = 999,
+	)
+
+/datum/hive_status/tutorial/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
 	return FALSE
 
 /datum/hive_status/yautja
@@ -1095,7 +1106,6 @@
 	allow_no_queen_actions = TRUE
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
-	ignore_slots = TRUE
 	latejoin_burrowed = FALSE
 
 	need_round_end_check = TRUE
@@ -1125,7 +1135,6 @@
 	allow_no_queen_actions = TRUE
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
-	ignore_slots = TRUE
 	latejoin_burrowed = FALSE
 
 	var/mob/living/carbon/human/leader
@@ -1245,9 +1254,9 @@
 
 	if(living_xeno_queen)
 		if(allies[faction])
-			xeno_message(SPAN_XENOANNOUNCE("Your Queen set up an alliance with [faction]!"), 3, hivenumber)
+			xeno_message(SPAN_XENOANNOUNCE("Our Queen set up an alliance with [faction]!"), 3, hivenumber)
 		else
-			xeno_message(SPAN_XENOANNOUNCE("Your Queen broke the alliance with [faction]!"), 3, hivenumber)
+			xeno_message(SPAN_XENOANNOUNCE("Our Queen broke the alliance with [faction]!"), 3, hivenumber)
 
 	for(var/number in GLOB.hive_datum)
 		var/datum/hive_status/target_hive = GLOB.hive_datum[number]
@@ -1283,14 +1292,14 @@
 	addtimer(CALLBACK(src, PROC_REF(handle_defectors), faction), 11 SECONDS)
 
 /datum/hive_status/corrupted/proc/give_defection_choice(mob/living/carbon/xenomorph/xeno, faction)
-	if(tgui_alert(xeno, "Your Queen has broken the alliance with the [faction]. The device inside your carapace begins to suppress your connection with the Hive. Do you remove it and stay loyal to her?", "Alliance broken!", list("Stay loyal", "Obey the talls"), 10 SECONDS) == "Obey the talls")
+	if(tgui_alert(xeno, "Our Queen has broken the alliance with the [faction]. The device inside our carapace begins to suppress our connection with the Hive. Do we remove it and stay loyal to her?", "Alliance broken!", list("Stay loyal", "Obey the talls"), 10 SECONDS) == "Obey the talls")
 		if(!xeno.iff_tag)
 			to_chat(xeno, SPAN_XENOWARNING("It's too late now. The device is gone and our service to the Queen continues."))
 			return
 		defectors += xeno
 		xeno.set_hive_and_update(XENO_HIVE_RENEGADE)
 		to_chat(xeno, SPAN_XENOANNOUNCE("You lost the connection with your Hive. Now you have no Queen, only your masters."))
-		to_chat(xeno, SPAN_NOTICE("Our instincts have changed, we seem compelled to protect [english_list(xeno.iff_tag.faction_groups, "no one")]."))
+		to_chat(xeno, SPAN_NOTICE("Your instincts have changed, you seem compelled to protect [english_list(xeno.iff_tag.faction_groups, "no one")]."))
 		return
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] rips out [xeno.iff_tag]!"), SPAN_XENOWARNING("We rip out [xeno.iff_tag]! For the Hive!"))
 	xeno.adjustBruteLoss(50)
@@ -1305,19 +1314,57 @@
 			continue
 		if(!(faction in xeno.iff_tag.faction_groups))
 			continue
-		xeno.visible_message(SPAN_XENOWARNING("[xeno] rips out [xeno.iff_tag]!"), SPAN_XENOWARNING("You rip out [xeno.iff_tag]! For the hive!"))
+		xeno.visible_message(SPAN_XENOWARNING("[xeno] rips out [xeno.iff_tag]!"), SPAN_XENOWARNING("We rip out [xeno.iff_tag]! For the hive!"))
 		xeno.adjustBruteLoss(50)
 		xeno.iff_tag.forceMove(get_turf(xeno))
 		xeno.iff_tag = null
 	if(!length(defectors))
 		return
 
-	xeno_message(SPAN_XENOANNOUNCE("You sense that [english_list(defectors)] turned their backs against their sisters and the Queen in favor of their slavemasters!"), 3, hivenumber)
+	xeno_message(SPAN_XENOANNOUNCE("We sense that [english_list(defectors)] turned their backs against their sisters and the Queen in favor of their slavemasters!"), 3, hivenumber)
 	defectors.Cut()
+
+/datum/hive_status/corrupted/proc/add_personal_ally(mob/living/ally)
+	personal_allies += WEAKREF(ally)
+	ally.status_flags |= CORRUPTED_ALLY
+	ally.med_hud_set_status()
+	xeno_message(SPAN_XENOANNOUNCE("Our Queen proclaimed [ally] our ally! We must not harm them."), 3, hivenumber)
+
+/datum/hive_status/corrupted/proc/remove_personal_ally(datum/weakref/ally_ref)
+	personal_allies -= ally_ref
+	var/mob/living/ally = ally_ref.resolve()
+	if(ally)
+		ally.status_flags &= ~CORRUPTED_ALLY
+		ally.med_hud_set_status()
+	xeno_message(SPAN_XENOANNOUNCE("Our Queen has declared that [ally] is no longer our ally!"), 3, hivenumber)
+
+/datum/hive_status/corrupted/proc/clear_personal_allies(death = FALSE)
+	for(var/datum/weakref/ally_ref in personal_allies)
+		var/mob/living/ally = ally_ref.resolve()
+		if(!ally)
+			continue
+		ally.status_flags &= ~CORRUPTED_ALLY
+		ally.med_hud_set_status()
+	personal_allies.Cut()
+	if(!death)
+		xeno_message(SPAN_XENOANNOUNCE("Our Queen has broken all personal alliances with the talls! Favoritism is no more."), 3, hivenumber)
+		return
+	xeno_message(SPAN_XENOWARNING("With the death of the Queen, her friends no longer matter to us."), 3, hivenumber)
+
+/datum/hive_status/corrupted/is_ally(mob/living/living_mob)
+	if(living_mob.status_flags & CORRUPTED_ALLY)
+		return TRUE
+	return ..()
 
 /datum/hive_status/proc/override_evilution(evil, override)
 	if(SSxevolution)
 		SSxevolution.override_power(hivenumber, evil, override)
+
+/datum/hive_status/corrupted/on_queen_death()
+	..()
+	if(!length(personal_allies))
+		return
+	clear_personal_allies(TRUE)
 
 //Xeno Resin Mark Shit, the very best place for it too :0)
 //Defines at the bottom of this list here will show up at the top in the mark menu

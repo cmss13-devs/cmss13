@@ -76,6 +76,9 @@
 		else
 			display_list = GLOB.cm_vending_vehicle_crew_tank_spare
 
+	else if(selected_vehicle == "ARC")
+		display_list = GLOB.cm_vending_vehicle_crew_arc
+
 	else if(selected_vehicle == "APC")
 		if(available_categories)
 			display_list = GLOB.cm_vending_vehicle_crew_apc
@@ -245,6 +248,11 @@ GLOBAL_LIST_INIT(cm_vending_vehicle_crew_apc_spare, list(
 	list("WHEELS", 0, null, null, null),
 	list("APC Wheels", 200, /obj/item/hardpoint/locomotion/apc_wheels, null, VENDOR_ITEM_REGULAR)))
 
+GLOBAL_LIST_INIT(cm_vending_vehicle_crew_arc, list(
+	list("STARTING KIT SELECTION:", 0, null, null, null),
+
+	list("WHEELS", 0, null, null, null),
+	list("Replacement ARC Wheels", 0, /obj/item/hardpoint/locomotion/arc_wheels, VEHICLE_TREADS_AVAILABLE, VENDOR_ITEM_MANDATORY)))
 
 //------------WEAPONS RACK---------------
 

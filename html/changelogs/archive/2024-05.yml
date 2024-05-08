@@ -37,3 +37,56 @@
   - imageadd: Added directional blast door sprites from Thwomper for blended black
       shutters.
   - code_imp: Renamed operator var in apollo console code to user.
+2024-05-03:
+  InsaneRed:
+  - spellcheck: New flavor text and better strain information
+  realforest2001:
+  - rscadd: Added the name of an announcement sender, if one exists, to ARES logs.
+2024-05-04:
+  AndroBetel:
+  - qol: Pointing at an item in your hands shows it off.
+  BasilHerb:
+  - rscadd: 'Type 80 bayonet to the mouths of the following mobs: CLF Soldier, CLF
+      Specialist, CLF Medic, CLF Engineer, CLF Leader.'
+  Drathek:
+  - bugfix: Fixed weeded corpses staying weeded if they were transported by shuttle
+  Git-Nivrak:
+  - bugfix: Synths no longer get affected by boiler's neurotoxin
+  coldironwarrior:
+  - rscadd: Added eyewear options, more glove options to the SEA vendor
+  - rscadd: SEAs now get full versions of the utility holster belt
+  - rscdel: Removed the CPR dummy from the SEA vendor
+  iloveloopers:
+  - qol: Bookcases can now be wrenched or slashed to be deconstructed
+  - balance: Kutjevo ledges now take only 0.2 seconds to climb instead of 1 whole
+      second
+  kivts:
+  - bugfix: Infinite metal oversight fix.
+  realforest2001:
+  - bugfix: Whitelist notes now work properly. Council can add notes to players regarding
+      whitelist issues.
+  - rscadd: Changing whitelist flags with the Whitelist Panel now automatically adds
+      a note with the reason.
+  - rscadd: Added skillsets specific to WY Goons.
+  - rscadd: Added a WY Goon Engineer preset.
+  vero5123:
+  - bugfix: Fixes microwave food duplication
+  - bugfix: Fixes scout being able to be decapitated with a helmet on while cloaked.
+  - bugfix: Fixes sentries firing at xenos while vent crawling.
+  - bugfix: fixes hugger not dying when squished by predator
+  - bugfix: Burrower can no longer tunnel across the map.
+2024-05-06:
+  Git-Nivrak:
+  - balance: Watcher is now immobilized when zoomed out and loses health off weeds
+      when not zoomed out
+  ihatethisengine:
+  - balance: SADAR backblast now knockdowns and is reduced by xeno explosion resistance
+  s5nt:
+  - rscadd: Added more materials to pred ship including more sandstone, wood, table
+      parts, etc for lodge construction, along with more pred specific food to the
+      pred kitchen.
+  - maptweak: Slightly expanded pred ship material storage area by moving bracer storage
+      over to the left side of the ship.
+2024-05-07:
+  Zonespace, d.1.n.a. (original sprites), esselnek (new sprites):
+  - rscadd: Added the M540-B Armored Recon Carrier as a t1 intel purchase.

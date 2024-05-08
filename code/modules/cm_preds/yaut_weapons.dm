@@ -263,6 +263,7 @@
 		if(choice != "Yes")
 			return FALSE
 		release_capture(user)
+		reset_tether()
 		return TRUE
 	if(!(ability_charge >= ability_cost))
 		return FALSE
@@ -283,39 +284,47 @@
 /obj/item/weapon/yautja/chain/proc/capture_target(mob/living/user, mob/living/target)
 	var/list/tether_effects = apply_tether(user, target, range = chain_range, resistable = TRUE)
 	tether_effect = tether_effects["tetherer_tether"]
-	RegisterSignal(tether_effect, COMSIG_PARENT_QDELETING, PROC_REF(release_capture))
+	RegisterSignal(tether_effect, COMSIG_PARENT_QDELETING, PROC_REF(reset_tether))
+	RegisterSignal(target, COMSIG_MOB_DEATH, PROC_REF(reset_tether))
+	/// Uncertain if I want this in place, as would make the chainwhip decidedly more powerful vs xenos.
+	//if(isxeno(target))
+	//	RegisterSignal(target, COMSIG_XENO_PRE_HEAL, PROC_REF(block_heal))
 	trapped_mob = target
 	ability_primed = FALSE
 	ability_charge = max(ability_charge - ability_cost, 0)
 
 /obj/item/weapon/yautja/chain/dropped(mob/user)
 	release_capture(user)
+	reset_tether()
 	. = ..()
 
 /obj/item/weapon/yautja/chain/proc/release_capture(mob/user)
 	SIGNAL_HANDLER
-	anchored = FALSE
 	if(user)
 		to_chat(user, SPAN_WARNING("[src] is no longer wrapped around [trapped_mob]!"))
 		user.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(user)] has disarmed \the [src] at [get_location_in_text(user)].</font>")
 		log_attack("[key_name(user)] has disarmed \a [src] at [get_location_in_text(user)].")
 	if(trapped_mob)
-		if (isxeno(trapped_mob))
-			var/mob/living/carbon/xenomorph/X = trapped_mob
-			UnregisterSignal(X, COMSIG_XENO_PRE_HEAL)
-		trapped_mob = null
-	cleanup_tether()
+		//if(isxeno(trapped_mob))
+		//	var/mob/living/carbon/xenomorph/xeno = trapped_mob
+		//	UnregisterSignal(xeno, COMSIG_XENO_PRE_HEAL)
+		UnregisterSignal(trapped_mob, COMSIG_MOB_DEATH)
+	trapped_mob = null
 	remove_filter(ABILITY_FILTER_NAME)
 
 /obj/item/weapon/yautja/chain/Destroy()
-	cleanup_tether()
-	trapped_mob = null
+	release_capture()
+	reset_tether()
 	. = ..()
 
-/obj/item/weapon/yautja/chain/proc/cleanup_tether()
+/obj/item/weapon/yautja/chain/proc/reset_tether()
+	SIGNAL_HANDLER
+	if(trapped_mob)
+		release_capture()
 	if(tether_effect)
 		UnregisterSignal(tether_effect, COMSIG_PARENT_QDELETING)
-		qdel(tether_effect)
+		if(!QDESTROYING(tether_effect))
+			qdel(tether_effect)
 		tether_effect = null
 
 /obj/item/weapon/yautja/sword

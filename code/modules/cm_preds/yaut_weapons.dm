@@ -294,8 +294,9 @@
 	ability_charge = max(ability_charge - ability_cost, 0)
 
 /obj/item/weapon/yautja/chain/dropped(mob/user)
-	release_capture(user)
-	reset_tether()
+	if(trapped_mob || tether_effect)
+		release_capture(user)
+		reset_tether()
 	. = ..()
 
 /obj/item/weapon/yautja/chain/proc/release_capture(mob/user)

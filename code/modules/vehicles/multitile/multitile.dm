@@ -347,6 +347,10 @@
 	M.reset_view(src)
 	give_action(M, /datum/action/human_action/vehicle_unbuckle)
 
+//It's breaking it, so we don't throwing it anyways
+/obj/vehicle/multitile/throw_atom(atom/target, range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS, list/end_throw_callbacks, list/collision_callbacks)
+	return FALSE
+
 /// Get crewmember of seat.
 /obj/vehicle/multitile/proc/get_seat_mob(seat)
 	return seats[seat]

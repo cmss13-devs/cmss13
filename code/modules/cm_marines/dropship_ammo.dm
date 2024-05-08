@@ -297,11 +297,11 @@
 	desc = "A modified version of the AIM-224B missile, allows for custom reagent mix to be inserted in the receptacle"
 	icon_state = "custom_missile"
 	ammo_name = "rocket"
-	travelling_time = 60
-	point_cost = 600
+	travelling_time = 40
+	point_cost = 350
 	fire_mission_delay = 0 //direct bombard only
 	/// the limits of the custom missile
-	var/list/reaction_limits = list( "max_ex_power" = 300, "base_ex_falloff" = 90, "max_ex_shards" = 128,
+	var/list/reaction_limits = list( "max_ex_power" = 300, "base_ex_falloff" = 60, "max_ex_shards" = 128,
 							"max_fire_rad" = 8, "max_fire_int" = 60, "max_fire_dur" = 48,
 							"min_fire_rad" = 3, "min_fire_int" = 5, "min_fire_dur" = 5
 	)

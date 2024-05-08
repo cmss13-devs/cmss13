@@ -26,7 +26,10 @@ map dockred
 	maxplayers 30
 endmap
 
-map prison_station_fop
+#map prison_station_fop
+#endmap
+
+map prison_station_fop_ru
 endmap
 
 map fiorina_sciannex

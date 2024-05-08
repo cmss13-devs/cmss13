@@ -1,0 +1,46 @@
+{
+    "map_name": "Fiorina Cellblocks",
+    "map_path": "map_files/FOP_v2_Cellblocks_RU",
+    "map_file": "Prison_Station_FOP_RU.dmm",
+    "survivor_types": [
+        "/datum/equipment_preset/survivor/scientist/fiorina",
+        "/datum/equipment_preset/survivor/doctor/fiorina",
+        "/datum/equipment_preset/survivor/interstellar_human_rights_observer",
+        "/datum/equipment_preset/survivor/security/fiorina",
+        "/datum/equipment_preset/survivor/prisoner",
+        "/datum/equipment_preset/survivor/prisoner",
+        "/datum/equipment_preset/survivor/gangleader",
+        "/datum/equipment_preset/survivor/engineer/fiorina",
+        "/datum/equipment_preset/survivor/clf",
+        "/datum/equipment_preset/survivor/civilian"
+    ],
+    "defcon_triggers": [
+        3750,
+        2600,
+        1450,
+        875,
+        0.0
+    ],
+    "survivor_message": "You are a survivor of the attack on Fiorina Orbital Penitentiary. You worked or lived on the prison station, and managed to avoid the alien attacks... until now.",
+    "map_item_type": "/obj/item/map/FOP_map",
+    "announce_text": "An automated distress signal has been received from maximum-security prison \"Fiorina Orbital Penitentiary\". A response team from the ###SHIPNAME### will be dispatched shortly to investigate.",
+    "environment_traits": {
+        "Lockdown": true,
+        "InSpace": true
+    },
+    "traits": [{ "Ground": true }],
+    "nightmare_path": "maps/Nightmare/maps/FOP_v2_Cellblocks_RU/",
+    "xvx_hives": {
+        "xeno_hive_alpha": 0,
+        "xeno_hive_bravo": 0,
+        "xeno_hive_charlie": 0
+    },
+    "camouflage": "classic",
+    "gamemodes": [
+        "Distress Signal",
+        "Hunter Games",
+        "Hive Wars",
+        "Faction Clash",
+        "Infection"
+    ]
+}

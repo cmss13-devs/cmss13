@@ -1,4 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Added the name of an announcement sender, if one exists, to ARES logs."

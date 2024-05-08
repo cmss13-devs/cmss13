@@ -29,7 +29,7 @@
 	name = "Hedgehog Ravager Behavior Delegate"
 
 	// Shard config
-	var/max_shards = 250
+	var/max_shards = 300
 	var/shard_gain_onlife = 5
 	var/shards_per_projectile = 10
 	var/shards_per_slash = 15

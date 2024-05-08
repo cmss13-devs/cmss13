@@ -412,6 +412,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		"Operations",
 		"Weapons",
 		"Vehicle Ammo",
+		"Vehicle Equipment",
 		"Attachments",
 		"Ammo",
 		"Weapons Specialist Ammo",
@@ -1366,6 +1367,13 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 /datum/vehicle_order/apc/empty
 	name = "Barebones M577 Armored Personal Carrier"
 	ordered_vehicle = /obj/effect/vehicle_spawner/apc/unarmed/broken
+
+/datum/vehicle_order/arc
+	name = "M540-B Armored Recon Carrier"
+	ordered_vehicle = /obj/effect/vehicle_spawner/arc
+
+/datum/vehicle_order/arc/has_vehicle_lock()
+	return
 
 /obj/structure/machinery/computer/supplycomp/vehicle/Initialize()
 	. = ..()

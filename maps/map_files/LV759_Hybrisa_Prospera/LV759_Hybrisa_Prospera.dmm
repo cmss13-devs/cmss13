@@ -3642,7 +3642,8 @@
 /obj/item/maintenance_jack,
 /obj/item/device/multitool,
 /turf/open/shuttle/escapepod{
-	icon_state = "floor8"
+	icon_state = "floor1";
+	dir = 8
 	},
 /area/lv759/indoors/electical_systems/substation2)
 "aGd" = (
@@ -7282,7 +7283,8 @@
 	icon_state = "NE-out"
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor1"
+	icon_state = "floor0";
+	dir = 8
 	},
 /area/lv759/indoors/power_plant/geothermal_generators)
 "blz" = (
@@ -10723,7 +10725,7 @@
 	layer = 2.5
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor1"
+	icon_state = "floor0"
 	},
 /area/lv759/indoors/power_plant/geothermal_generators)
 "bRB" = (
@@ -11925,7 +11927,6 @@
 /obj/effect/decal/cleanable/generic,
 /obj/effect/hybrisa/decal/dirt,
 /obj/structure/machinery/door/airlock/dropship_hatch/two{
-	dir = 1;
 	name = "\improper WY-LWI StarGlider SG-200 airlock"
 	},
 /turf/open/floor/corsat{
@@ -42091,7 +42092,8 @@
 	dir = 8
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor8"
+	icon_state = "floor1";
+	dir = 1
 	},
 /area/lv759/indoors/electical_systems/substation2)
 "gZh" = (
@@ -46095,7 +46097,7 @@
 /area/whiskey_outpost/inside/caves)
 "hFe" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname,
-/turf/closed/wall/hybrisa/colony/reinforced,
+/turf/open/floor/plating,
 /area/lv759/indoors/meridian/meridian_maintenance_south)
 "hFm" = (
 /obj/structure/platform/hybrisa/metalplatformstair2,
@@ -49114,7 +49116,6 @@
 /area/lv759/indoors/power_plant/gas_generators)
 "igf" = (
 /obj/structure/machinery/door/airlock/dropship_hatch/two{
-	dir = 1;
 	name = "\improper WY-LWI Horizon Runner HR-150 airlock"
 	},
 /turf/open/floor/corsat{
@@ -67821,11 +67822,8 @@
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/outdoors/caveplateau)
 "lkd" = (
-/obj/structure/closet/secure_closet/personal{
-	opened = 1
-	},
 /obj/structure/machinery/light/spot/blue,
-/obj/item/clothing/suit/storage/hazardvest/blue,
+/obj/structure/closet/secure_closet/personal,
 /turf/open/floor/hybrisa/metal/zbrownfloor1,
 /area/lv759/indoors/meridian/meridian_foyer)
 "lkh" = (
@@ -79191,8 +79189,8 @@
 	icon_state = "NE-out"
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor1";
-	dir = 1
+	icon_state = "floor0";
+	dir = 8
 	},
 /area/lv759/indoors/power_plant/geothermal_generators)
 "neL" = (
@@ -87761,7 +87759,7 @@
 	layer = 2.5
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor1"
+	icon_state = "floor0"
 	},
 /area/lv759/indoors/power_plant/geothermal_generators)
 "oAR" = (
@@ -104055,7 +104053,8 @@
 	layer = 6
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor8"
+	icon_state = "floor1";
+	dir = 8
 	},
 /area/lv759/indoors/electical_systems/substation2)
 "riy" = (
@@ -106905,7 +106904,6 @@
 	layer = 2.5
 	},
 /obj/structure/machinery/door/airlock/dropship_hatch/two{
-	dir = 1;
 	name = "\improper WY-LWI StarGlider SG-200 airlock"
 	},
 /turf/open/floor/corsat{
@@ -111996,7 +111994,8 @@
 	icon_state = "SE-out"
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor1"
+	icon_state = "floor0";
+	dir = 4
 	},
 /area/lv759/indoors/power_plant/geothermal_generators)
 "svV" = (
@@ -117770,7 +117769,8 @@
 /area/lv759/indoors/spaceport/cargo)
 "tsM" = (
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/medical_solid/autoname{
-	dir = 1
+	dir = 1;
+	locked = 1
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/hospital/virology)
@@ -118476,7 +118476,8 @@
 	icon_state = "E"
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor2"
+	icon_state = "floor0";
+	dir = 8
 	},
 /area/lv759/indoors/electical_systems/substation2)
 "tAe" = (
@@ -122323,7 +122324,8 @@
 "uhq" = (
 /obj/structure/machinery/light/spot,
 /turf/open/shuttle/escapepod{
-	icon_state = "floor8"
+	icon_state = "floor1";
+	dir = 8
 	},
 /area/lv759/indoors/electical_systems/substation2)
 "uhs" = (
@@ -123522,7 +123524,8 @@
 	layer = 4
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor11"
+	icon_state = "floor1";
+	dir = 1
 	},
 /area/lv759/indoors/electical_systems/substation2)
 "uqM" = (
@@ -126320,7 +126323,8 @@
 	icon_state = "NW-out"
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor1"
+	icon_state = "floor0";
+	dir = 1
 	},
 /area/lv759/indoors/power_plant/geothermal_generators)
 "uND" = (
@@ -133986,7 +133990,8 @@
 	icon_state = "NW-out"
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor1"
+	icon_state = "floor0";
+	dir = 1
 	},
 /area/lv759/indoors/power_plant/geothermal_generators)
 "wbC" = (
@@ -136753,8 +136758,8 @@
 	icon_state = "SE-out"
 	},
 /turf/open/shuttle/escapepod{
-	icon_state = "floor1";
-	dir = 1
+	icon_state = "floor0";
+	dir = 4
 	},
 /area/lv759/indoors/power_plant/geothermal_generators)
 "wAL" = (
@@ -140605,7 +140610,6 @@
 /area/lv759/indoors/colonial_marshals/head_office)
 "xhn" = (
 /obj/structure/closet/secure_closet/personal,
-/obj/item/clothing/suit/storage/hazardvest/blue,
 /turf/open/floor/hybrisa/metal/zbrownfloor1,
 /area/lv759/indoors/meridian/meridian_foyer)
 "xhE" = (

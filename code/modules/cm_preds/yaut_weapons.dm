@@ -248,6 +248,7 @@
 	ability_charge_max = ABILITY_COST_CHAIN
 
 	var/chain_range = 3
+	var/chain_duration = 30 SECONDS
 	var/mob/trapped_mob
 	var/datum/effects/tethering/tether_effect
 
@@ -286,9 +287,7 @@
 	tether_effect = tether_effects["tetherer_tether"]
 	RegisterSignal(tether_effect, COMSIG_PARENT_QDELETING, PROC_REF(reset_tether))
 	RegisterSignal(target, COMSIG_MOB_DEATH, PROC_REF(reset_tether))
-	/// Uncertain if I want this in place, as would make the chainwhip decidedly more powerful vs xenos.
-	//if(isxeno(target))
-	//	RegisterSignal(target, COMSIG_XENO_PRE_HEAL, PROC_REF(block_heal))
+	addtimer(CALLBACK(src, PROC_REF(reset_tether), user), chain_duration)
 	trapped_mob = target
 	ability_primed = FALSE
 	ability_charge = max(ability_charge - ability_cost, 0)
@@ -303,8 +302,8 @@
 	SIGNAL_HANDLER
 	if(user)
 		to_chat(user, SPAN_WARNING("[src] is no longer wrapped around [trapped_mob]!"))
-		user.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(user)] has disarmed \the [src] at [get_location_in_text(user)].</font>")
-		log_attack("[key_name(user)] has disarmed \a [src] at [get_location_in_text(user)].")
+		//user.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(user)] has disarmed \the [src] at [get_location_in_text(user)].</font>")
+		//log_attack("[key_name(user)] has disarmed \a [src] at [get_location_in_text(user)].")
 	if(trapped_mob)
 		//if(isxeno(trapped_mob))
 		//	var/mob/living/carbon/xenomorph/xeno = trapped_mob

@@ -1249,8 +1249,9 @@
 	layer = 3.3
 	},
 /obj/item/stack/cable_coil/orange,
-/turf/open/floor/strata{
-	icon_state = "multi_tiles"
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "black"
 	},
 /area/whiskey_outpost/inside/caves)
 "akn" = (
@@ -4374,12 +4375,8 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_x = -1;
-	pixel_y = 2
-	},
 /obj/item/device/encryptionkey/WY,
+/obj/item/device/motiondetector/m717,
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
 	},
@@ -8561,9 +8558,9 @@
 /obj/structure/machinery/space_heater/radiator/red{
 	dir = 8
 	},
-/turf/open/floor/corsat{
+/turf/open/floor/prison{
 	dir = 4;
-	icon_state = "brown"
+	icon_state = "yellow"
 	},
 /area/whiskey_outpost/inside/caves)
 "bwZ" = (
@@ -13949,6 +13946,9 @@
 "csR" = (
 /obj/structure/surface/rack,
 /obj/item/bodybag/tarp/reactive,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall3{
+	pixel_y = 28
+	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
 	},
@@ -35206,9 +35206,9 @@
 	icon_state = "E";
 	layer = 3.33
 	},
-/turf/open/floor/corsat{
+/turf/open/floor/prison{
 	dir = 4;
-	icon_state = "brown"
+	icon_state = "yellow"
 	},
 /area/whiskey_outpost/inside/caves)
 "fTb" = (
@@ -36398,8 +36398,9 @@
 	},
 /obj/item/stack/rods,
 /obj/item/stock_parts/manipulator,
-/turf/open/floor/strata{
-	icon_state = "multi_tiles"
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "black"
 	},
 /area/whiskey_outpost/inside/caves)
 "gcy" = (
@@ -36768,9 +36769,9 @@
 	icon_state = "5-9";
 	layer = 5
 	},
-/turf/open/floor/corsat{
+/turf/open/floor/prison{
 	dir = 4;
-	icon_state = "brown"
+	icon_state = "yellow"
 	},
 /area/whiskey_outpost/inside/caves)
 "gfD" = (
@@ -37492,8 +37493,9 @@
 	icon_state = "E";
 	layer = 3.33
 	},
-/turf/open/floor/strata{
-	icon_state = "multi_tiles"
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "black"
 	},
 /area/whiskey_outpost/inside/caves)
 "gni" = (
@@ -38942,8 +38944,8 @@
 	},
 /obj/item/tool/screwdriver,
 /obj/item/stack/cable_coil/cyan,
-/turf/open/floor/strata{
-	icon_state = "multi_tiles"
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
 	},
 /area/whiskey_outpost/inside/caves)
 "gyx" = (
@@ -42488,6 +42490,20 @@
 	},
 /turf/open/floor/hybrisa/tile/cuppajoesfloor,
 /area/lv759/indoors/spaceport/cuppajoes)
+"hce" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out"
+	},
+/obj/structure/cable/white{
+	color = "550d0d";
+	icon_state = "4-5";
+	layer = 5
+	},
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "black"
+	},
+/area/whiskey_outpost/inside/caves)
 "hcf" = (
 /turf/closed/wall/hybrisa/marhsalls_reinforced,
 /area/lv759/indoors/colonial_marshals/hallway_north_locker)
@@ -44060,8 +44076,8 @@
 /obj/structure/prop/hybrisa/misc/machinery/screens/multimonitorbig_off{
 	dir = 1
 	},
-/turf/closed/wall/hybrisa/spaceport_reinforced,
-/area/lv759/indoors/spaceport/flight_control_room)
+/turf/closed/wall/hybrisa/spaceport_unmeltable,
+/area/lv759/oob)
 "hpd" = (
 /obj/structure/platform/hybrisa/metalplatform3,
 /turf/open/floor/hybrisa/carpet/carpetbeige,
@@ -45670,9 +45686,9 @@
 	icon_state = "2-10";
 	layer = 5
 	},
-/turf/open/floor/corsat{
+/turf/open/floor/prison{
 	dir = 1;
-	icon_state = "brown"
+	icon_state = "yellow"
 	},
 /area/whiskey_outpost/inside/caves)
 "hCb" = (
@@ -52590,12 +52606,17 @@
 	color = "#6b675e"
 	},
 /obj/effect/spawner/random/technology_scanner,
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_x = -1;
-	pixel_y = 2
-	},
 /obj/effect/landmark/objective_landmark/science,
+/obj/structure/cable/white{
+	color = "550d0d";
+	icon_state = "1-9";
+	layer = 5
+	},
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	layer = 4;
+	pixel_x = 16;
+	pixel_y = 8
+	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
 	},
@@ -52670,9 +52691,13 @@
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/turf/open/floor/corsat{
+/obj/effect/hybrisa/decal/trash{
+	icon_state = "trash_8";
+	pixel_y = 12
+	},
+/turf/open/floor/prison{
 	dir = 9;
-	icon_state = "brown"
+	icon_state = "yellow"
 	},
 /area/whiskey_outpost/inside/caves)
 "iJy" = (
@@ -54218,8 +54243,8 @@
 	light_range = 5;
 	pixel_x = 2
 	},
-/turf/closed/wall/hybrisa/spaceport_reinforced,
-/area/lv759/indoors/spaceport/flight_control_room)
+/turf/closed/wall/hybrisa/spaceport_unmeltable,
+/area/lv759/oob)
 "iXP" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -54580,6 +54605,16 @@
 	},
 /turf/open/auto_turf/hybrisashale/layer1,
 /area/lv759/indoors/caves/south_caves)
+"jbF" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	layer = 2.5
+	},
+/turf/open/floor/almayer{
+	dir = 6;
+	icon_state = "black"
+	},
+/area/whiskey_outpost/inside/caves)
 "jbJ" = (
 /obj/structure/machinery/light/small,
 /obj/item/stack/sheet/mineral/gold,
@@ -58419,11 +58454,6 @@
 	color = "#6b675e"
 	},
 /obj/item/bodybag/tarp/reactive,
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_x = -1;
-	pixel_y = 2
-	},
 /obj/structure/cable/white{
 	color = "550d0d";
 	icon_state = "4-5";
@@ -59789,6 +59819,12 @@
 	},
 /obj/item/tool/wirecutters/tactical,
 /obj/item/device/assembly/voice,
+/obj/structure/cable/white{
+	color = "#550d0d";
+	icon_state = "1-10";
+	layer = 5;
+	level = 2
+	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
 	},
@@ -62837,9 +62873,9 @@
 	pixel_x = -1;
 	pixel_y = 2
 	},
-/turf/open/floor/corsat{
+/turf/open/floor/prison{
 	dir = 1;
-	icon_state = "brown"
+	icon_state = "yellow"
 	},
 /area/whiskey_outpost/inside/caves)
 "kuf" = (
@@ -64372,9 +64408,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/hospital/morgue)
-"kGR" = (
-/turf/closed/wall/hybrisa/spaceport,
-/area/lv759/indoors/spaceport/docking_bay_1)
 "kGU" = (
 /obj/effect/hybrisa/decal/dirt,
 /turf/open/hybrisa/street/sidewalk,
@@ -64848,12 +64881,6 @@
 	icon_state = "officetiles"
 	},
 /area/lv759/indoors/weymart/backrooms)
-"kKn" = (
-/obj/structure/prop/hybrisa/misc/machinery/screens/multimonitormedium_off{
-	dir = 1
-	},
-/turf/closed/wall/hybrisa/spaceport_reinforced,
-/area/lv759/indoors/spaceport/flight_control_room)
 "kKq" = (
 /obj/structure/machinery/light/small/blue,
 /turf/open/floor/prison{
@@ -64861,9 +64888,9 @@
 	},
 /area/lv759/indoors/hospital/icu)
 "kKw" = (
-/obj/structure/showcase,
-/turf/open/floor/strata{
-	icon_state = "multi_tiles"
+/obj/item/circuitboard,
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
 	},
 /area/whiskey_outpost/inside/caves)
 "kKz" = (
@@ -65707,10 +65734,6 @@
 	pixel_x = -12
 	},
 /obj/item/robot_parts/robot_suit,
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	layer = 3.33
-	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
 	},
@@ -67342,8 +67365,8 @@
 	icon_state = "4-5";
 	layer = 5
 	},
-/turf/open/floor/strata{
-	icon_state = "multi_tiles"
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
 	},
 /area/whiskey_outpost/inside/caves)
 "lfo" = (
@@ -73877,14 +73900,10 @@
 	},
 /area/lv759/indoors/spaceport/docking_bay_1)
 "mkd" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/device/motiondetector/m717,
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 3.3
-	},
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/tool,
+/obj/effect/spawner/random/tool,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
 	},
@@ -79051,8 +79070,17 @@
 /obj/item/clothing/glasses/science{
 	layer = 4
 	},
-/turf/open/floor/strata{
-	icon_state = "multi_tiles"
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out"
+	},
+/obj/effect/hybrisa/decal/trash{
+	icon_state = "trash_4";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "black"
 	},
 /area/whiskey_outpost/inside/caves)
 "ndh" = (
@@ -81234,14 +81262,14 @@
 /turf/open/floor/plating/kutjevo,
 /area/lv759/outdoors/landing_zone_1)
 "nys" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_x = -1;
-	pixel_y = 2
-	},
 /obj/item/tool/pen,
-/turf/open/floor/strata{
-	icon_state = "multi_tiles"
+/obj/structure/cable/white{
+	color = "550d0d";
+	icon_state = "8-10";
+	layer = 5
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
 	},
 /area/whiskey_outpost/inside/caves)
 "nyu" = (
@@ -82160,11 +82188,6 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_x = -1;
-	pixel_y = 2
-	},
 /obj/item/clothing/accessory/storage/black_vest/acid_harness,
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
@@ -82450,13 +82473,11 @@
 	},
 /area/whiskey_outpost/inside/caves)
 "nIL" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_x = -1;
-	pixel_y = 2
+/obj/structure/bed/chair/office/light{
+	dir = 4
 	},
-/turf/open/floor/strata{
-	icon_state = "multi_tiles"
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
 	},
 /area/whiskey_outpost/inside/caves)
 "nIO" = (
@@ -84126,9 +84147,14 @@
 /area/lv759/indoors/caves/west_caves)
 "nXz" = (
 /obj/item/stack/sheet/metal,
-/turf/open/floor/corsat{
+/obj/structure/cable/white{
+	color = "550d0d";
+	icon_state = "6-8";
+	layer = 5
+	},
+/turf/open/floor/prison{
 	dir = 8;
-	icon_state = "brown"
+	icon_state = "yellow"
 	},
 /area/whiskey_outpost/inside/caves)
 "nXB" = (
@@ -84698,8 +84724,13 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/caves/south_caves)
 "obM" = (
-/turf/open/floor/corsat{
-	icon_state = "brown"
+/obj/structure/cable/white{
+	color = "550d0d";
+	icon_state = "5-9";
+	layer = 5
+	},
+/turf/open/floor/prison{
+	icon_state = "yellow"
 	},
 /area/whiskey_outpost/inside/caves)
 "obP" = (
@@ -85974,9 +86005,10 @@
 	color = "#6b675e"
 	},
 /obj/item/device/gripper,
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	layer = 3.33
+/obj/structure/cable/white{
+	color = "550d0d";
+	icon_state = "2-6";
+	layer = 5
 	},
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
@@ -86969,9 +87001,9 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/colony_streets/east_central_street)
 "oub" = (
-/turf/open/floor/corsat{
+/turf/open/floor/prison{
 	dir = 8;
-	icon_state = "brown"
+	icon_state = "yellow"
 	},
 /area/whiskey_outpost/inside/caves)
 "oug" = (
@@ -89803,9 +89835,9 @@
 	icon_state = "5-6";
 	layer = 5
 	},
-/turf/open/floor/corsat{
+/turf/open/floor/prison{
 	dir = 1;
-	icon_state = "brown"
+	icon_state = "yellow"
 	},
 /area/whiskey_outpost/inside/caves)
 "oQN" = (
@@ -91712,8 +91744,8 @@
 /area/lv759/outdoors/colony_streets/north_street)
 "phm" = (
 /obj/structure/machinery/light,
-/turf/open/floor/corsat{
-	icon_state = "brown"
+/turf/open/floor/prison{
+	icon_state = "yellow"
 	},
 /area/whiskey_outpost/inside/caves)
 "phq" = (
@@ -95950,9 +95982,9 @@
 	icon_state = "1-4";
 	layer = 5
 	},
-/turf/open/floor/corsat{
+/turf/open/floor/prison{
 	dir = 4;
-	icon_state = "brown"
+	icon_state = "yellow"
 	},
 /area/whiskey_outpost/inside/caves)
 "pRl" = (
@@ -99755,15 +99787,9 @@
 	},
 /area/lv759/indoors/spaceport/security)
 "qyC" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
+/obj/structure/surface/rack,
 /obj/item/circuitboard,
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 3.3
-	},
-/obj/item/prop/almayer/handheld1,
+/obj/item/cell/hyper,
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
 	},
@@ -102776,8 +102802,9 @@
 	icon_state = "6-8";
 	layer = 5
 	},
-/turf/open/floor/strata{
-	icon_state = "multi_tiles"
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "black"
 	},
 /area/whiskey_outpost/inside/caves)
 "qXE" = (
@@ -103530,6 +103557,16 @@
 	dir = 8
 	},
 /area/lv759/outdoors/colony_streets/central_streets)
+"reC" = (
+/obj/item/paper/crumpled,
+/obj/effect/hybrisa/decal/trash{
+	icon_state = "trash_5";
+	pixel_y = 12
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4"
+	},
+/area/whiskey_outpost/inside/caves)
 "reI" = (
 /obj/structure/prop/hybrisa/vehicles/truck{
 	dir = 1;
@@ -107314,9 +107351,9 @@
 /area/lv759/outdoors/landing_zone_2)
 "rJa" = (
 /obj/item/paper/crumpled,
-/turf/open/floor/corsat{
+/turf/open/floor/prison{
 	dir = 8;
-	icon_state = "brown"
+	icon_state = "yellow"
 	},
 /area/whiskey_outpost/inside/caves)
 "rJd" = (
@@ -107404,8 +107441,12 @@
 	icon_state = "8-10";
 	layer = 5
 	},
-/turf/open/floor/strata{
-	icon_state = "multi_tiles"
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out"
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "black"
 	},
 /area/whiskey_outpost/inside/caves)
 "rKa" = (
@@ -108972,9 +109013,9 @@
 	icon_state = "2-6";
 	layer = 5
 	},
-/turf/open/floor/corsat{
+/turf/open/floor/prison{
 	dir = 4;
-	icon_state = "brown"
+	icon_state = "yellow"
 	},
 /area/whiskey_outpost/inside/caves)
 "rWm" = (
@@ -110094,9 +110135,10 @@
 	icon_state = "E";
 	layer = 3.33
 	},
-/turf/open/floor/corsat{
+/obj/item/stack/sheet/metal,
+/turf/open/floor/prison{
 	dir = 6;
-	icon_state = "brown"
+	icon_state = "yellow"
 	},
 /area/whiskey_outpost/inside/caves)
 "sgf" = (
@@ -112714,8 +112756,9 @@
 	icon_state = "W";
 	layer = 3.3
 	},
-/turf/open/floor/strata{
-	icon_state = "multi_tiles"
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "black"
 	},
 /area/whiskey_outpost/inside/caves)
 "sBt" = (
@@ -113431,9 +113474,9 @@
 	pixel_x = 2
 	},
 /obj/item/tool/pen,
-/turf/open/floor/corsat{
+/turf/open/floor/prison{
 	dir = 5;
-	icon_state = "brown"
+	icon_state = "yellow"
 	},
 /area/whiskey_outpost/inside/caves)
 "sHE" = (
@@ -123911,9 +123954,9 @@
 /turf/open/floor/kutjevo/fake_wood,
 /area/lv759/indoors/bar)
 "uuA" = (
-/turf/open/floor/corsat{
+/turf/open/floor/prison{
 	dir = 10;
-	icon_state = "brown"
+	icon_state = "yellow"
 	},
 /area/whiskey_outpost/inside/caves)
 "uuI" = (
@@ -127478,9 +127521,9 @@
 	pixel_y = 2
 	},
 /obj/item/paper/crumpled,
-/turf/open/floor/corsat{
+/turf/open/floor/prison{
 	dir = 1;
-	icon_state = "brown"
+	icon_state = "yellow"
 	},
 /area/whiskey_outpost/inside/caves)
 "uWu" = (
@@ -129622,8 +129665,8 @@
 	light_power = 3;
 	light_range = 5
 	},
-/turf/closed/wall/hybrisa/spaceport_reinforced,
-/area/lv759/indoors/spaceport/flight_control_room)
+/turf/closed/wall/hybrisa/spaceport_unmeltable,
+/area/lv759/oob)
 "vrd" = (
 /obj/structure/machinery/space_heater/radiator/red{
 	dir = 8
@@ -132951,9 +132994,9 @@
 	icon_state = "E";
 	pixel_x = 2
 	},
-/turf/open/floor/corsat{
+/turf/open/floor/prison{
 	dir = 4;
-	icon_state = "brown"
+	icon_state = "yellow"
 	},
 /area/whiskey_outpost/inside/caves)
 "vTn" = (
@@ -134987,6 +135030,7 @@
 /obj/item/device/assembly/prox_sensor,
 /obj/item/stack/sheet/plasteel/large_stack,
 /obj/effect/landmark/objective_landmark/science,
+/obj/item/prop/almayer/handheld1,
 /turf/open/floor/corsat{
 	icon_state = "officetiles"
 	},
@@ -146626,6 +146670,11 @@
 	dir = 4
 	},
 /area/lv759/outdoors/colony_streets/central_streets)
+"yga" = (
+/turf/open/floor/prison{
+	icon_state = "yellow"
+	},
+/area/whiskey_outpost/inside/caves)
 "ygd" = (
 /obj/effect/hybrisa/decal/road/roadmiddle{
 	dir = 8;
@@ -148043,7 +148092,7 @@ tew
 aKR
 uSS
 cRq
-mlS
+cRq
 mlS
 mlS
 mlS
@@ -148295,7 +148344,7 @@ bbJ
 aKR
 hJm
 cRq
-mlS
+cRq
 gQX
 aXD
 cgJ
@@ -148307,30 +148356,30 @@ aeM
 paG
 fbI
 iIe
-kGR
+cRq
 psJ
 psJ
-kGR
-kGR
-psJ
-psJ
-psJ
-kGR
-kGR
+cRq
+cRq
 psJ
 psJ
 psJ
-kGR
-kGR
+cRq
+cRq
 psJ
 psJ
 psJ
-kGR
-kGR
+cRq
+cRq
 psJ
 psJ
 psJ
-kGR
+cRq
+cRq
+psJ
+psJ
+psJ
+cRq
 ary
 vfY
 vfY
@@ -148686,7 +148735,7 @@ gmT
 gmT
 gcw
 gmT
-jhM
+hce
 obM
 iVZ
 uOG
@@ -148939,7 +148988,7 @@ kRZ
 omp
 jWr
 nys
-obM
+yga
 sRQ
 eFu
 eFu
@@ -149187,7 +149236,7 @@ oHc
 kua
 kKw
 aLO
-sRQ
+jqr
 jqr
 iJe
 nIL
@@ -149442,8 +149491,8 @@ jJt
 qyC
 mkd
 jVH
-nIL
-obM
+reC
+yga
 xSS
 jqr
 eFu
@@ -149555,7 +149604,7 @@ eNr
 aKR
 mzY
 cRq
-kKn
+iWh
 xTC
 oaS
 ptg
@@ -149694,8 +149743,8 @@ qXD
 akj
 sBr
 sBr
-jhM
-obM
+jbF
+yga
 fly
 jqr
 eFu
@@ -149806,8 +149855,8 @@ fFc
 gsZ
 qFO
 fFc
-pAz
-mlS
+cRq
+cRq
 mlS
 pPO
 mlS

@@ -28080,6 +28080,9 @@
 	icon_state = "retrosquareslight"
 	},
 /area/corsat/theta/biodome/hydroeast)
+"cas" = (
+/turf/closed/wall/r_wall/biodome,
+/area/corsat/gamma/residential/showers)
 "cau" = (
 /obj/structure/machinery/power/apc/high{
 	dir = 8;
@@ -29074,6 +29077,10 @@
 	icon_state = "tan"
 	},
 /area/corsat/gamma/residential/researcher)
+"cRJ" = (
+/obj/structure/window/framed/corsat/hull/research,
+/turf/open/floor/plating,
+/area/corsat/gamma/residential/academy)
 "cSi" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/mars{
@@ -34125,6 +34132,10 @@
 	icon_state = "squares"
 	},
 /area/corsat/gamma/residential/generator)
+"heI" = (
+/obj/structure/window/framed/corsat/research,
+/turf/open/floor/plating,
+/area/corsat/gamma/rnr/library)
 "heL" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -42947,8 +42958,8 @@
 	},
 /area/corsat/gamma/hallwaymain)
 "oVr" = (
-/obj/structure/window/framed/corsat,
-/turf/open/space/basic,
+/obj/structure/window/framed/corsat/research,
+/turf/open/floor/plating,
 /area/corsat/gamma/residential/academy)
 "oVF" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
@@ -43084,7 +43095,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "Auditorium"
 	},
-/turf/open/space/basic,
+/turf/open/floor/plating,
 /area/corsat/gamma/residential/academy)
 "oZW" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
@@ -43166,7 +43177,7 @@
 	},
 /area/corsat/gamma/hallwaymain)
 "peh" = (
-/turf/open/space/basic,
+/turf/open/floor/plating,
 /area/corsat/gamma/residential/academy)
 "pfG" = (
 /obj/structure/machinery/light,
@@ -44712,8 +44723,7 @@
 	},
 /area/corsat/gamma/residential/academy)
 "qww" = (
-/obj/structure/window/framed/corsat,
-/turf/open/floor/plating,
+/turf/closed/wall/r_wall/biodome,
 /area/corsat/gamma/hallwaymain)
 "qwM" = (
 /turf/open/floor/corsat{
@@ -47911,11 +47921,11 @@
 	},
 /area/corsat/omega/complex)
 "tgJ" = (
-/obj/structure/window/framed/corsat/hull,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "Omega_Academy";
 	name = "\improper Privacy Shutters"
 	},
+/obj/structure/window/framed/corsat/research,
 /turf/open/floor/plating,
 /area/corsat/gamma/residential/academy)
 "tgV" = (
@@ -49025,6 +49035,9 @@
 	icon_state = "squares"
 	},
 /area/corsat/omega/cargo)
+"uhy" = (
+/turf/closed/wall/r_wall/biodome,
+/area/corsat/gamma/residential/academy)
 "uia" = (
 /obj/effect/landmark/teleporter_loc/corsat_auxiliary{
 	index = "13"
@@ -55152,9 +55165,9 @@ vaY
 vaY
 iWx
 awz
-leP
-leP
-leP
+cRJ
+cRJ
+cRJ
 awz
 adJ
 pPp
@@ -55166,7 +55179,7 @@ tIP
 vaY
 jOn
 adJ
-awz
+uhy
 bjR
 aZz
 dgq
@@ -55349,7 +55362,7 @@ adz
 adz
 adz
 adz
-leP
+cRJ
 pJo
 pEj
 aEJ
@@ -55357,7 +55370,7 @@ uEl
 cwe
 bHe
 ahd
-vda
+oVr
 dLL
 adH
 fEI
@@ -55372,7 +55385,7 @@ aZM
 aZn
 uCU
 jOn
-awz
+uhy
 btU
 bry
 aHw
@@ -55555,7 +55568,7 @@ adz
 adz
 adz
 adz
-leP
+cRJ
 pJo
 lgv
 sBc
@@ -55563,7 +55576,7 @@ pEj
 adH
 qvB
 fEI
-vda
+oVr
 dLL
 adH
 fEI
@@ -55578,7 +55591,7 @@ pEj
 bab
 adH
 mts
-awz
+uhy
 btX
 bFg
 aHw
@@ -55761,7 +55774,7 @@ adz
 adz
 adz
 adz
-leP
+cRJ
 pJo
 pEj
 jsq
@@ -55967,7 +55980,7 @@ adz
 adz
 adz
 adz
-leP
+cRJ
 pJo
 hrf
 jsq
@@ -56391,7 +56404,7 @@ diI
 adH
 adH
 uCU
-vda
+oVr
 ulb
 aEJ
 qFK
@@ -56814,7 +56827,7 @@ pEj
 bab
 adH
 cLZ
-awz
+uhy
 opl
 bry
 egM
@@ -57009,7 +57022,7 @@ adJ
 ulb
 adH
 xUd
-vda
+oVr
 jme
 eZq
 aZh
@@ -57020,7 +57033,7 @@ aZh
 uyE
 xUd
 oBX
-awz
+uhy
 bEM
 bFi
 aHw
@@ -57202,7 +57215,7 @@ adz
 adz
 adz
 adz
-leP
+cRJ
 dLL
 aEJ
 pEj
@@ -57408,7 +57421,7 @@ adz
 adz
 adz
 adz
-leP
+cRJ
 dLL
 aEJ
 pEj
@@ -57614,7 +57627,7 @@ adz
 adz
 adz
 adz
-leP
+cRJ
 kaf
 aEJ
 lgv
@@ -58029,11 +58042,11 @@ adz
 awz
 awz
 awz
-leP
-leP
-leP
-leP
-leP
+cRJ
+cRJ
+cRJ
+cRJ
+cRJ
 awz
 awz
 dLL
@@ -58853,11 +58866,11 @@ adz
 adz
 awz
 awz
-leP
-leP
-leP
-leP
-leP
+cRJ
+cRJ
+cRJ
+cRJ
+cRJ
 awz
 awz
 dLL
@@ -59057,7 +59070,7 @@ adz
 adz
 adz
 adz
-leP
+cRJ
 pPp
 vaY
 vaY
@@ -59065,7 +59078,7 @@ vaY
 vaY
 vaY
 iWx
-awz
+adJ
 dLL
 adH
 fEI
@@ -59263,7 +59276,7 @@ adz
 adz
 adz
 adz
-leP
+cRJ
 dLL
 adH
 adH
@@ -59469,7 +59482,7 @@ adz
 adz
 adz
 adz
-leP
+cRJ
 jbj
 eZq
 adH
@@ -59882,7 +59895,7 @@ adz
 adz
 adz
 adz
-leP
+cRJ
 adH
 adH
 adH
@@ -60088,7 +60101,7 @@ adz
 adz
 adz
 adz
-leP
+cRJ
 adH
 adH
 adH
@@ -60294,7 +60307,7 @@ adz
 adz
 adz
 adz
-leP
+cRJ
 adH
 adH
 adH
@@ -60705,7 +60718,7 @@ adz
 adz
 adz
 adz
-leP
+cRJ
 pPp
 ulb
 adH
@@ -60911,7 +60924,7 @@ adz
 adz
 adz
 adz
-leP
+cRJ
 dLL
 adH
 adH
@@ -61117,7 +61130,7 @@ adz
 adz
 adz
 adz
-leP
+cRJ
 jbj
 jme
 jme
@@ -61325,11 +61338,11 @@ adz
 awz
 awz
 adJ
-vda
-vda
-vda
-vda
-vda
+oVr
+oVr
+oVr
+oVr
+oVr
 adJ
 adJ
 dLL
@@ -63994,11 +64007,11 @@ adz
 adz
 awz
 awz
-leP
-leP
-leP
-leP
-leP
+cRJ
+cRJ
+cRJ
+cRJ
+cRJ
 awz
 awz
 dLL
@@ -64621,7 +64634,7 @@ adH
 oZQ
 dLL
 fEI
-vda
+oVr
 qwr
 adH
 lgv
@@ -64827,7 +64840,7 @@ adH
 peh
 dLL
 fEI
-vda
+oVr
 qwr
 adH
 mmr
@@ -65033,7 +65046,7 @@ adH
 oVr
 dLL
 fEI
-vda
+oVr
 pvh
 adH
 pEj
@@ -65436,19 +65449,19 @@ adz
 adz
 awz
 awz
-leP
-leP
-leP
-leP
-leP
+oVr
+oVr
+oVr
+oVr
+oVr
 awz
 awz
 dLL
 fEI
 awz
-vda
-vda
-vda
+leP
+leP
+leP
 awz
 adJ
 adJ
@@ -65651,11 +65664,11 @@ iWx
 awz
 dLL
 fEI
-vda
+leP
 adz
 adz
 adz
-qww
+aek
 dSv
 htZ
 htZ
@@ -65845,7 +65858,7 @@ ylo
 adz
 adz
 adz
-leP
+cRJ
 jJQ
 ulb
 adH
@@ -65857,11 +65870,11 @@ uCU
 vaY
 ulb
 prF
-vda
+leP
 adz
 adz
 adz
-qww
+aek
 aem
 aec
 aec
@@ -66051,7 +66064,7 @@ ylo
 adz
 adz
 adz
-leP
+cRJ
 kfJ
 tdi
 adH
@@ -66063,11 +66076,11 @@ lQk
 mIa
 adH
 puF
-vda
+leP
 adz
 adz
 adz
-qww
+aek
 aem
 aec
 aec
@@ -66269,11 +66282,11 @@ adH
 adH
 xUd
 pJa
-vda
+leP
 adz
 adz
 adz
-qww
+aek
 aem
 aec
 aec
@@ -66476,9 +66489,9 @@ adH
 pgn
 adJ
 awz
-qww
-qww
-qww
+aek
+aek
+aek
 apT
 aem
 aec
@@ -67063,15 +67076,15 @@ qEw
 qEw
 qEw
 qEw
-qEw
-qEw
-qEw
-apT
-apT
-apT
-apT
-apT
-apT
+cas
+cas
+cas
+qww
+qww
+qww
+qww
+qww
+qww
 asa
 gtr
 aec
@@ -67905,7 +67918,7 @@ aRe
 aRf
 bCd
 aRe
-qzy
+heI
 pvh
 adH
 adH
@@ -68111,7 +68124,7 @@ jnA
 bCb
 bCe
 asy
-qzy
+heI
 khv
 jme
 lkH
@@ -68532,9 +68545,9 @@ mRp
 asy
 asr
 asp
-akt
-adz
-pWi
+asp
+asp
+pSu
 pSu
 pSu
 qwO
@@ -68738,9 +68751,9 @@ asy
 fsL
 asy
 asr
-akt
-akt
-pWi
+asp
+asp
+pSu
 qtl
 qGn
 qxR
@@ -82876,7 +82889,7 @@ adz
 adz
 adz
 adz
-axn
+apw
 agt
 awL
 jwf
@@ -83082,7 +83095,7 @@ adz
 adz
 adz
 adz
-axn
+apw
 agt
 auc
 ozl
@@ -83288,7 +83301,7 @@ adz
 adz
 adz
 adz
-axn
+apw
 agt
 akJ
 afa
@@ -85554,7 +85567,7 @@ adz
 adz
 adz
 adz
-axn
+apw
 agt
 oHI
 aVw
@@ -85760,7 +85773,7 @@ adz
 adz
 adz
 adz
-axn
+apw
 agt
 ozl
 oHI
@@ -85966,7 +85979,7 @@ adz
 adz
 adz
 adz
-axn
+apw
 agt
 ozl
 agm
@@ -86172,7 +86185,7 @@ adz
 adz
 adz
 adz
-axn
+apw
 awf
 ozl
 aHb

@@ -976,17 +976,18 @@
 /obj/structure/window/framed/corsat/hull
 	name = "hull window"
 	desc = "A glass window with a special rod matrix inside a wall frame. This one has an automatic shutter system to prevent any atmospheric breach."
+	icon_state = "hull_window"
 	health = 200
 	var/triggered = FALSE //indicates if the shutters have already been triggered
 
 /obj/structure/window/framed/corsat/hull/research
-	icon_state = "paddedresearch_rwindow0"
+	icon_state = "hull_window_rsr"
 	basestate = "paddedresearch_rwindow"
 	window_frame = /obj/structure/window_frame/corsat/research
 	health = 300
 
 /obj/structure/window/framed/corsat/hull/security
-	icon_state = "paddedsec_rwindow0"
+	icon_state = "hull_window_sec"
 	basestate = "paddedsec_rwindow"
 	window_frame = /obj/structure/window_frame/corsat/security
 	health = 400
@@ -1019,7 +1020,7 @@
 
 	INVOKE_ASYNC(pressure_door, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
-/obj/structure/window/framed/corsat/indestructible/
+/obj/structure/window/framed/corsat/indestructible
 	name = "hull window"
 	desc = "A glass window with a special rod matrix inside a wall frame. This one has been reinforced to take almost anything the universe can throw at it."
 	not_damageable = TRUE

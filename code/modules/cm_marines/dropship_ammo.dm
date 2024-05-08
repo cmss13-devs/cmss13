@@ -378,7 +378,6 @@
 				container.forceMove(bomb)
 				bomb.containers += container
 			bomb.forceMove(impact)
-			bomb.reaction_limits = reaction_limits
 			bomb.allow_star_shape = FALSE
 			bomb.prime(TRUE)
 			create_cause_data(initial(name), source_mob)

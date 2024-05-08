@@ -12,9 +12,7 @@
 #define LEFT 1
 #define RIGHT 2
 
-#define CEILING(x, y) ( -round(-(x) / (y)) * (y) )
-
-#define ROUND_UP(x) ( -round(-(x)))
+#define CEILING(x, y) ( ceil((x) / (y)) * (y) )
 
 // round() acts like floor(x, 1) by default but can't handle other values
 #define FLOOR(x, y) ( round((x) / (y)) * (y) )

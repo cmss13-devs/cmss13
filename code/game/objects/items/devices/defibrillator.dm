@@ -282,7 +282,7 @@
 
 /obj/item/device/defibrillator/synthetic
 	name = "synthetic sparker"
-	desc ="Functioning similarly to a regular defibrillator, this device is designed to restart a synthetic unit via electric shock."
+	desc = "Functioning similarly to a regular defibrillator, this device is designed to restart a synthetic unit via electric shock."
 	icon = 'icons/obj/items/experimental_tools.dmi'
 	icon_state = "compact_defib"
 	item_state = "defib"
@@ -314,3 +314,7 @@
 		return FALSE
 
 	return TRUE
+
+/obj/item/device/defibrillator/synthetic/one_shot
+	desc = "Functioning similarly to a regular defibrillator, this device is designed to restart a synthetic unit via electric shock. This one can only be used once before needing a recharge and is intended for rebooting Working Joes."
+	charge_cost = 1000

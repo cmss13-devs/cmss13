@@ -269,7 +269,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/device/cassette_tape/pop3 = "cassette_orange",
 	/obj/item/device/cassette_tape/pop4 = "cassette_pink_stripe",
 	/obj/item/device/cassette_tape/heavymetal = "cassette_red_black",
-	/obj/item/device/cassette_tape/hairmetal = "cassette_red_stripe",
+	/obj/item/device/cassette_tape/industrial = "cassette_red_stripe",
 	/obj/item/device/cassette_tape/indie = "cassette_rising_sun",
 	/obj/item/device/cassette_tape/hiphop = "cassette_orange_blue",
 	/obj/item/device/cassette_tape/nam = "cassette_green",

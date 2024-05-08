@@ -13,10 +13,13 @@
 GLOBAL_LIST_INIT(cm_vending_walkman, list(
 	list("WALKMAN", -1, null, null),
 	list("Blue Cassette", 10, /obj/item/device/cassette_tape/pop1, VENDOR_ITEM_REGULAR),
-	list("Orange Cassette", 10, /obj/item/device/cassette_tape/pop3, VENDOR_ITEM_REGULAR),
 	list("Rainbow Cassette", 10, /obj/item/device/cassette_tape/pop2, VENDOR_ITEM_REGULAR),
+	list("Orange Cassette", 10, /obj/item/device/cassette_tape/pop3, VENDOR_ITEM_REGULAR),
+	list("Pink Cassette", 10, /obj/item/device/cassette_tape/pop4, VENDOR_ITEM_REGULAR),
 	list("Green Cassette", 10, /obj/item/device/cassette_tape/nam, VENDOR_ITEM_REGULAR),
+	list("Blue stripe Cassette", 10, /obj/item/device/cassette_tape/hiphop, VENDOR_ITEM_REGULAR),
 	list("Red-Black Cassette", 10, /obj/item/device/cassette_tape/heavymetal, VENDOR_ITEM_REGULAR),
+	list("Red stripe Cassette", 10, /obj/item/device/cassette_tape/industrial, VENDOR_ITEM_REGULAR),
 	list("Walkman", 50, /obj/item/device/walkman, VENDOR_ITEM_REGULAR),
 	list("Cassette Pouch", 15, /obj/item/storage/pouch/cassette, VENDOR_ITEM_REGULAR),
 

@@ -302,6 +302,7 @@
 /*
 	TAPES
 */
+
 /obj/item/device/cassette_tape
 	name = "cassette Tape"
 	desc = "A cassette tape"
@@ -374,7 +375,7 @@
 /obj/item/device/cassette_tape/pop4
 	name = "pink cassette"
 	id = 5
-	desc = "A plastic cassette tape with a pink striped sticker.\nSeems empty."
+	desc = "A plastic cassette tape with a pink striped sticker.\nFrom shizoidov with love."
 	icon_state = "cassette_pink_stripe"
 	side1_icon = "cassette_pink_stripe"
 	songs = list("side1" = list("sound/music/walkman/pop4/4-1-1.ogg",\
@@ -387,7 +388,7 @@
 /obj/item/device/cassette_tape/heavymetal
 	name = "red-black cassette"
 	id = 6
-	desc = "A plastic cassette tape with a red and black sticker."
+	desc = "A plastic cassette tape with a red and black sticker.\nFrom Rocky with love."
 	icon_state = "cassette_red_black"
 	side1_icon = "cassette_red_black"
 	songs = list("side1" = list("sound/music/walkman/heavymetal/5-1-1.ogg",\
@@ -397,18 +398,18 @@
 								"sound/music/walkman/heavymetal/5-2-2.ogg",\
 								"sound/music/walkman/heavymetal/5-2-3.ogg"))
 
-/obj/item/device/cassette_tape/hairmetal
+/obj/item/device/cassette_tape/industrial
 	name = "red striped cassette"
 	id = 7
-	desc = "A plastic cassette tape with a gray sticker with red stripes.\nSeems empty."
+	desc = "A plastic cassette tape with a gray sticker with red stripes.\nFrom Rocky with love."
 	icon_state = "cassette_red_stripe"
 	side1_icon = "cassette_red_stripe"
-	songs = list("side1" = list("sound/music/walkman/hairmetal/6-1-1.ogg",\
-								"sound/music/walkman/hairmetal/6-1-2.ogg",\
-								"sound/music/walkman/hairmetal/6-1-3.ogg"),\
-				"side2" = list("sound/music/walkman/hairmetal/6-2-1.ogg",\
-								"sound/music/walkman/hairmetal/6-2-2.ogg",\
-								"sound/music/walkman/hairmetal/6-2-3.ogg"))
+	songs = list("side1" = list("sound/music/walkman/industrial/6-1-1.ogg",\
+								"sound/music/walkman/industrial/6-1-2.ogg",\
+								"sound/music/walkman/industrial/6-1-3.ogg"),\
+				"side2" = list("sound/music/walkman/industrial/6-2-1.ogg",\
+								"sound/music/walkman/industrial/6-2-2.ogg",\
+								"sound/music/walkman/industrial/6-2-3.ogg"))
 
 /obj/item/device/cassette_tape/indie
 	name = "rising sun cassette"
@@ -426,15 +427,15 @@
 /obj/item/device/cassette_tape/hiphop
 	name = "blue stripe cassette"
 	id = 9
-	desc = "An orange plastic cassette tape with a blue stripe.\nSeems empty."
+	desc = "An orange plastic cassette tape with a blue stripe.\nFrom Cat with love."
 	icon_state = "cassette_orange_blue"
 	side1_icon = "cassette_orange_blue"
-	songs = list("side1" = list("sound/music/walkman/hiphop/8-1-1.ogg",\
-								"sound/music/walkman/hiphop/8-1-2.ogg",\
-								"sound/music/walkman/hiphop/8-1-3.ogg"),\
-				"side2" = list("sound/music/walkman/hiphop/8-2-1.ogg",\
-								"sound/music/walkman/hiphop/8-2-2.ogg",\
-								"sound/music/walkman/hiphop/8-2-3.ogg"))
+	songs = list("side1" = list("sound/music/walkman/pop8/8-1-1.ogg",\
+								"sound/music/walkman/pop8/8-1-2.ogg",\
+								"sound/music/walkman/pop8/8-1-3.ogg"),\
+				"side2" = list("sound/music/walkman/pop8/8-2-1.ogg",\
+								"sound/music/walkman/pop8/8-2-2.ogg",\
+								"sound/music/walkman/pop8/8-2-3.ogg"))
 
 /obj/item/device/cassette_tape/nam
 	name = "green cassette"

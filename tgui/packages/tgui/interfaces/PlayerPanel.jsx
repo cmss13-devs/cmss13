@@ -270,6 +270,7 @@ const GeneralActions = (props) => {
             width="100%"
             icon="first-aid"
             color="green"
+            confirmColor="green"
             disabled={!hasPermission(data, 'mob_rejuvenate')}
             onClick={() => act('mob_rejuvenate')}
           >
@@ -308,13 +309,13 @@ const GeneralActions = (props) => {
           >
             Bring
           </Button.Confirm>
-          <Button.Confirm
+          <Button
             width="100%"
             disabled={!hasPermission(data, 'jump_to')}
             onClick={() => act('mob_follow')}
           >
             Follow
-          </Button.Confirm>
+          </Button>
           <Button
             width="100%"
             icon="share"

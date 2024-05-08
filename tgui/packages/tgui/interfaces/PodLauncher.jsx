@@ -250,7 +250,7 @@ const EFFECTS_ALL = [
     list: EFFECTS_LOAD,
     label: 'Load From',
     alt_label: 'Load',
-    tooltipPosition: 'right',
+    tooltipPosition: 'bottom',
   },
   {
     list: EFFECTS_NORMAL,
@@ -564,6 +564,9 @@ class PresetsPage extends Component {
       }
     }
     storage.set('cm_podlauncher_presetlist', presets);
+    this.setState({
+      presets: presets,
+    });
   }
   render() {
     const { presets } = this.state;
@@ -584,6 +587,7 @@ class PresetsPage extends Component {
                 color="transparent"
                 icon="plus"
                 tooltip="New Preset"
+                tooltipPosition="bottom"
                 onClick={() => setEditingNameStatus(1)}
               />
             )}
@@ -601,6 +605,7 @@ class PresetsPage extends Component {
               color="transparent"
               icon="upload"
               tooltip="Loads preset"
+              tooltipPosition="bottom"
               onClick={() => {
                 this.loadDataFromPreset(presetIndex);
               }}

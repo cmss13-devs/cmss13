@@ -286,7 +286,7 @@ const LaunchHome = (props) => {
         confirmContent={'One-way navigation enabled - confirm?'}
         onClick={() => act('launch_home')}
       >
-        {'Return Home'}
+        Return Home
       </Button.Confirm>
     </Section>
   );

@@ -1343,6 +1343,11 @@
 /obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
 /obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
 /obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -1807,8 +1812,7 @@
 	name = "Armory Shutters";
 	needs_power = 0;
 	pixel_x = 24;
-	req_one_access_txt = "392";
-	needs_power = 0
+	req_one_access_txt = "392"
 	},
 /turf/open/floor/corsat{
 	dir = 1;
@@ -2358,6 +2362,10 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
+"yf" = (
+/obj/effect/spawner,
+/turf/open/shuttle/predship,
+/area/yautja)
 "yH" = (
 /obj/structure/closet/secure_closet/freezer/fridge/groceries,
 /turf/open/floor{
@@ -2577,6 +2585,18 @@
 	color = "#5e5d5d";
 	dir = 10;
 	icon_state = "multi_tiles"
+	},
+/area/yautja)
+"Fo" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/stack/sheet/wood/large_stack,
+/obj/item/stack/sheet/wood/large_stack,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
 	},
 /area/yautja)
 "Ft" = (
@@ -2908,6 +2928,27 @@
 	pixel_y = -25
 	},
 /turf/open/shuttle/predship,
+/area/yautja)
+"KP" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/item/reagent_container/food/snacks/fortunecookie/prefilled{
+	name = "placeholder";
+	desc = "someday there will be something here."
+	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
 /area/yautja)
 "KV" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -4670,7 +4711,7 @@ at
 bw
 bS
 cP
-cP
+yf
 cP
 cP
 cP
@@ -5320,7 +5361,7 @@ bL
 SB
 bL
 bj
-wQ
+KP
 cP
 bL
 wQ
@@ -6400,7 +6441,7 @@ bL
 cP
 bL
 bj
-bL
+Fo
 bL
 JH
 JH

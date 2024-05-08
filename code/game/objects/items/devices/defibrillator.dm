@@ -284,12 +284,18 @@
 	name = "synthetic sparker"
 	desc = "Functioning similarly to a regular defibrillator, this device is designed to restart a synthetic unit via electric shock."
 	icon = 'icons/obj/items/experimental_tools.dmi'
-	icon_state = "compact_defib"
+	icon_state = "sparker"
 	item_state = "defib"
 	w_class = SIZE_SMALL
 	charge_cost = 300
 	skill_to_check_alt = SKILL_ENGINEER
 	skill_level_alt = SKILL_ENGINEER_ENGI
+
+/obj/item/device/defibrillator/synthetic/update_icon()
+	icon_state = initial(icon_state)
+	overlays.Cut()
+	if(ready)
+		icon_state += "_out"
 
 /obj/item/device/defibrillator/synthetic/check_revive(mob/living/carbon/human/H, mob/living/carbon/human/user)
 	if(!issynth(H))
@@ -318,3 +324,4 @@
 /obj/item/device/defibrillator/synthetic/one_shot
 	desc = "Functioning similarly to a regular defibrillator, this device is designed to restart a synthetic unit via electric shock. This one can only be used once before needing a recharge and is intended for rebooting Working Joes."
 	charge_cost = 1000
+	icon_state = "sparker_once"

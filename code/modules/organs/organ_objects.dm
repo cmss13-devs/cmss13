@@ -115,7 +115,7 @@
 	organ_type = /datum/internal_organ/liver
 
 /obj/item/organ/xeno
-	name = "Acidic Heart"
+	name = "acidic heart"
 	desc = "Acidic heart removed from a xenomorph. It spews droplets of acid every so often."
 	icon_state = "heart_t1"
 	organ_tag = "heart"

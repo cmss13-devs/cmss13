@@ -28,12 +28,13 @@
  * * timeout - The timeout of the alert, after which the list input will close and qdel itself. Set to zero for no timeout.
  * * theme - The ui theme to use for the TGUI window.
  * * default - If an option is already preselected on the UI. Current values, etc.
+ * * ui_state - The TGUI UI state that will be returned in ui_state(). Default: always_state
  */
-/proc/tgui_input_list(mob/user, message, title = "Select", list/buttons, timeout = 0, theme = null, default)
+/proc/tgui_input_list(mob/user, message, title = "Select", list/buttons, timeout = 0, theme = null, default, ui_state = GLOB.always_state)
 	if (!user)
 		user = usr
 	if(!length(buttons))
-		return
+		return null
 	if (!istype(user))
 		if (istype(user, /client))
 			var/client/client = user
@@ -44,7 +45,7 @@
 	if(isnull(user.client))
 		return null
 
-	var/datum/tgui_list_input/input = new(user, message, title, buttons, timeout, theme, default)
+	var/datum/tgui_list_input/input = new(user, message, title, buttons, timeout, theme, default, ui_state)
 	if(input.invalid)
 		qdel(input)
 		return
@@ -67,19 +68,24 @@
  * * timeout - The timeout of the alert, after which the list_input will close and qdel itself. Set to zero for no timeout.
  * * theme - The ui theme to use for the TGUI window.
  * * default - If an option is already preselected on the UI. Current values, etc.
+ * * ui_state - The TGUI UI state that will be returned in ui_state(). Default: always_state
  */
-/proc/tgui_input_list_async(mob/user, message, title = "Select", list/buttons, datum/callback/callback, timeout = 60 SECONDS, theme = null, default)
+/proc/tgui_input_list_async(mob/user, message, title = "Select", list/buttons, datum/callback/callback, timeout = 60 SECONDS, theme = null, default, ui_state = GLOB.always_state)
 	if (!user)
 		user = usr
 	if(!length(buttons))
-		return
+		return null
 	if (!istype(user))
 		if (istype(user, /client))
 			var/client/client = user
 			user = client.mob
 		else
 			return null
-	var/datum/tgui_list_input/async/input = new(user, message, title, buttons, callback, timeout, theme, default)
+
+	if(isnull(user.client))
+		return null
+
+	var/datum/tgui_list_input/async/input = new(user, message, title, buttons, callback, timeout, theme, default, ui_state)
 	if(input.invalid)
 		qdel(input)
 		return
@@ -110,17 +116,20 @@
 	var/timeout
 	/// Boolean field describing if the tgui_list_input was closed by the user.
 	var/closed
+	/// The TGUI UI state that will be returned in ui_state(). Default: always_state
+	var/datum/ui_state/state
 	/// String field for the theme to use
 	var/ui_theme
 	/// Whether the tgui list input is invalid or not (i.e. due to all list entries being null)
 	var/invalid = FALSE
 
-/datum/tgui_list_input/New(mob/user, message, title, list/buttons, timeout, theme = null, default)
+/datum/tgui_list_input/New(mob/user, message, title, list/buttons, timeout, theme = null, default, ui_state)
 	src.title = title
 	src.message = message
 	src.buttons = list()
 	src.buttons_map = list()
 	src.default = default
+	src.state = ui_state
 	src.ui_theme = theme
 	var/list/repeat_items = list()
 	// Gets rid of illegal characters
@@ -144,8 +153,8 @@
 
 /datum/tgui_list_input/Destroy(force, ...)
 	SStgui.close_uis(src)
-	buttons = null
-	QDEL_NULL(buttons)
+	state = null
+	buttons = null // TG QDEL_NULLs this
 	return ..()
 
 /**
@@ -167,7 +176,7 @@
 	closed = TRUE
 
 /datum/tgui_list_input/ui_state(mob/user)
-	return GLOB.always_state
+	return state
 
 /datum/tgui_list_input/ui_static_data(mob/user)
 	var/list/data = list()
@@ -186,7 +195,7 @@
 		data["timeout"] = clamp((timeout - (world.time - start_time) - 1 SECONDS) / (timeout - 1 SECONDS), 0, 1)
 	return data
 
-/datum/tgui_list_input/ui_act(action, list/params)
+/datum/tgui_list_input/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if (.)
 		return
@@ -215,7 +224,7 @@
 	/// The callback to be invoked by the tgui_modal upon having a choice made.
 	var/datum/callback/callback
 
-/datum/tgui_list_input/async/New(mob/user, message, title, list/buttons, callback, timeout, theme = null, default)
+/datum/tgui_list_input/async/New(mob/user, message, title, list/buttons, callback, timeout, theme = null, default, ui_state)
 	..(user, title, message, buttons, timeout, theme, default)
 	src.callback = callback
 
@@ -227,12 +236,10 @@
 	. = ..()
 	qdel(src)
 
-/datum/tgui_list_input/async/ui_act(action, list/params)
+/datum/tgui_list_input/async/set_choice(choice)
 	. = ..()
-	if (!. || choice == null)
-		return
-	callback.InvokeAsync(choice)
-	qdel(src)
+	if(!isnull(src.choice))
+		callback?.InvokeAsync(src.choice)
 
 /datum/tgui_list_input/async/wait()
 	return

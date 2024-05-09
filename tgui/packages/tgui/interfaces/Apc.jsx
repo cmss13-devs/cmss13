@@ -1,12 +1,5 @@
 import { useBackend } from '../backend';
-import {
-  Box,
-  Button,
-  LabeledList,
-  NoticeBox,
-  ProgressBar,
-  Section,
-} from '../components';
+import { Box, Button, LabeledList, ProgressBar, Section } from '../components';
 import { Window } from '../layouts';
 import { InterfaceLockNoticeBox } from './common/InterfaceLockNoticeBox';
 
@@ -47,7 +40,7 @@ const ApcContent = (props) => {
     powerStatusMap[data.chargingStatus] || powerStatusMap[0];
   const channelArray = data.powerChannels || [];
   const adjustedCellChange = data.powerCellStatus / 100;
-  if (data.failTime > 0) {
+  /* if (data.failTime > 0) {
     return (
       <NoticeBox info textAlign="center" mb={0}>
         <b>
@@ -69,7 +62,7 @@ const ApcContent = (props) => {
         </Button>
       </NoticeBox>
     );
-  }
+  }*/
   return (
     <>
       <InterfaceLockNoticeBox />
@@ -107,10 +100,7 @@ const ApcContent = (props) => {
               </Button>
             }
           >
-            [{' '}
-            {chargingStatus.chargingText +
-              (data.chargingStatus === 1 ? data.chargingPowerDisplay : '')}{' '}
-            ]
+            [ {chargingStatus.chargingText} ]
           </LabeledList.Item>
         </LabeledList>
       </Section>

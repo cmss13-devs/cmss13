@@ -819,7 +819,7 @@
 		return
 
 	var/list/alerts = list()
-	for(var/i in RANGE_TURFS(Floor(width/2), T))
+	for(var/i as anything in RANGE_TURFS(Floor(width/2), T))
 		alerts += new /obj/effect/warning/alien(i)
 
 	if(!do_after(Q, time_taken, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))

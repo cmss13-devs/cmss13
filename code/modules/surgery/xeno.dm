@@ -206,8 +206,8 @@
 	var/obj/item/organ/xeno/organ = locate() in target
 	if(!isnull(organ))
 		organ.forceMove(target.loc)
-		target.update_wounds()
 		target.organ_removed = TRUE
+		target.update_wounds()
 
 /datum/surgery_step/xenomorph/remove_organ/failure(mob/living/carbon/human/user, mob/living/carbon/xenomorph/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(tool)

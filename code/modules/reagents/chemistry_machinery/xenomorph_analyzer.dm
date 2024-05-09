@@ -102,10 +102,12 @@
 			. = TRUE
 
 		if("process_organ")
-			addtimer(CALLBACK(src, PROC_REF(process_organ)), 5 SECONDS)
-			icon_state = "xeno_analyzer_on_moving"
-			playsound(loc, 'sound/machines/blender.ogg', 25, TRUE)
-			. = TRUE
+			if(!busy)
+				addtimer(CALLBACK(src, PROC_REF(process_organ)), 5 SECONDS)
+				icon_state = "xeno_analyzer_on_moving"
+				playsound(loc, 'sound/machines/blender.ogg', 25, TRUE)
+				. = TRUE
+				busy = TRUE
 		if("produce")
 			if(!busy)
 
@@ -124,6 +126,7 @@
 	biomass_points += organ.research_value
 	icon_state = "xeno_analyzer_off"
 	QDEL_NULL(organ)
+	busy = FALSE
 
 /obj/structure/machinery/xenoanalyzer/proc/start_print_upgrade(produce_path, mob/user, variation)
 	if (stat & NOPOWER)

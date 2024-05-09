@@ -113,7 +113,7 @@ export const XenomorphExtractor = (_props, context) => {
                       ) : null
                     )}
                   </LabeledList>
-                )}{' '}
+                )}
               </Box>
             </Flex.Item>
           </Flex>

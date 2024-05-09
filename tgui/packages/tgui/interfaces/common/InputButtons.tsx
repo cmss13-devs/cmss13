@@ -1,3 +1,5 @@
+import { BooleanLike } from 'common/react';
+
 import { useBackend } from '../../backend';
 import { Box, Button, Flex } from '../../components';
 
@@ -11,12 +13,13 @@ type InputButtonsProps = {
   readonly on_submit?: () => void;
   readonly on_cancel?: () => void;
   readonly message?: string;
+  readonly submit_disabled: BooleanLike;
 };
 
 export const InputButtons = (props: InputButtonsProps) => {
   const { act, data } = useBackend<InputButtonsData>();
   const { large_buttons, swapped_buttons } = data;
-  const { input, message, on_submit, on_cancel } = props;
+  const { input, message, on_submit, on_cancel, submit_disabled } = props;
 
   let on_submit_actual = on_submit;
   if (!on_submit_actual) {
@@ -38,6 +41,7 @@ export const InputButtons = (props: InputButtonsProps) => {
       fluid={!!large_buttons}
       height={!!large_buttons && 2}
       onClick={on_submit_actual}
+      disabled={submit_disabled}
       m={0.5}
       pl={2}
       pr={2}

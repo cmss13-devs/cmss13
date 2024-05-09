@@ -45,6 +45,8 @@ export const CheckboxInput = (props) => {
   const [searchQuery, setSearchQuery] = useState('');
   const search = createSearch(searchQuery, (item: string) => item);
   const toDisplay = items.filter(search);
+  const submitDisabled =
+    selections.length < min_checked || selections.length > max_checked;
 
   const selectItem = (name: string) => {
     const newSelections = selections.includes(name)
@@ -105,7 +107,10 @@ export const CheckboxInput = (props) => {
           </Stack>
           <Stack.Item mt={0.7}>
             <Section>
-              <InputButtons input={selections} />
+              <InputButtons
+                input={selections}
+                submit_disabled={submitDisabled}
+              />
             </Section>
           </Stack.Item>
         </Stack>
